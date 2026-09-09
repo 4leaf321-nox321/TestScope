@@ -19,7 +19,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
-import { cn } from '@/shared/lib/utils'
+import { AxisList } from '@/modules/vocabulary/AxisList'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 
 export default function VocabularyPage() {
@@ -43,27 +43,7 @@ export default function VocabularyPage() {
       <ErrorNotice error={axes.error ?? terms.error} />
 
       <div className="flex gap-6">
-        {/* 축 목록. **값 수를 함께 보여 준다** — 비어 있는 축과 채워진 축이 같아
-            보이면 어디를 채워야 하는지 알 수 없다. */}
-        <ul className="w-56 shrink-0 space-y-1">
-          {(axes.data ?? []).map((axis) => (
-            <li key={axis.slug}>
-              <button
-                type="button"
-                onClick={() => setSlug(axis.slug)}
-                className={cn(
-                  'flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-sm',
-                  axis.slug === current
-                    ? 'bg-accent text-accent-foreground font-medium'
-                    : 'text-muted-foreground hover:bg-accent/60',
-                )}
-              >
-                <span className="truncate">{axis.label}</span>
-                <span className="text-xs">{axis.term_count}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <AxisList axes={axes.data ?? []} current={current} onSelect={setSlug} />
 
         <div className="min-w-0 flex-1 space-y-3">
           {/* 축 설명을 보여 준다 — 고르는 사람이 축의 뜻을 모르면 비슷한 축 둘 중
