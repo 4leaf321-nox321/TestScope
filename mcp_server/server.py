@@ -482,8 +482,25 @@ async def get_specs(ctx: Context, model_id: str) -> dict[str, Any]:
 
     둘을 겹쳐 봐야 「무엇이 아직 안 적혔나」 가 보인다 — 여기에 빈 칸까지 실으면
     한 기종을 볼 때마다 수백 줄이 오간다.
+
+    **정의가 없는 값은 여기 안 온다.** 카탈로그 원문 전체는 `get_model` 의
+    `raw_specs` 에 있다 — 사양을 채우기 전에 그것을 먼저 읽어라.
     """
     return await _get(ctx, f"/equipment-models/{model_id}/specs")
+
+
+@mcp.tool()
+async def get_model(ctx: Context, model_id: str) -> dict[str, Any]:
+    """기종 하나 — 계열·분류·보유 대수, 그리고 **카탈로그 원문**(`raw_specs`).
+
+    원문은 제조사 카탈로그에 적힌 그대로다. 정의가 있는 칸만 사양표(`get_specs`)에
+    들어가고, 정의가 없는 것은 여기에만 있다 — 원본에 950종 넘는 키가 있고 대부분이
+    한 카탈로그에만 나온다.
+
+    **사양을 채울 때 이것을 먼저 읽어라.** 원문에 값이 있는데 사양표가 비어 있으면,
+    그 값에 맞는 정의가 아직 없다는 뜻이다. 그때는 지어내지 말고 사람에게 알려라.
+    """
+    return await _get(ctx, f"/equipment-models/{model_id}")
 
 
 @mcp.tool()

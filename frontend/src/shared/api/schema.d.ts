@@ -2016,6 +2016,10 @@ export interface components {
             summary: string | null;
             /** Spec Note */
             spec_note: string | null;
+            /** Raw Specs */
+            raw_specs: {
+                [key: string]: unknown;
+            };
             /** Unit Count */
             unit_count: number;
             /** Operational Count */
@@ -2191,6 +2195,10 @@ export interface components {
             source_id: string | null;
             /** Source Path */
             source_path: string | null;
+            /** Raw Limits */
+            raw_limits: {
+                [key: string]: unknown;
+            };
             /** Model Count */
             model_count: number;
             /** Unit Count */

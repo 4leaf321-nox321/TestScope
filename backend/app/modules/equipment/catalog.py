@@ -208,6 +208,7 @@ def series_out(db: Session, row: EquipmentSeries, viewer: User) -> EquipmentSeri
         spec_note=row.spec_note,
         source_id=row.source_id,
         source_path=source.path if source else None,
+        raw_limits=row.raw_limits or {},
         model_count=models,
         unit_count=len(units),
         operational_count=sum(1 for one in units if one.status in AVAILABLE_STATUSES),
@@ -472,6 +473,7 @@ def model_out(db: Session, row: EquipmentModel, viewer: User) -> EquipmentModelO
         status=row.status,
         summary=row.summary,
         spec_note=row.spec_note,
+        raw_specs=row.raw_specs or {},
         unit_count=len(units),
         # **대수만 보면 여유 있어 보인다.** 다섯 대 중 한 대만 가동인 경우가 있다.
         operational_count=sum(1 for one in units if one.status in AVAILABLE_STATUSES),

@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import date, datetime
+from typing import Any
 
 from sqlalchemy import (
     Boolean,
@@ -44,6 +45,7 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -162,6 +164,14 @@ class EquipmentSeries(Base):
     spec_note: Mapped[str | None] = mapped_column(Text, nullable=True)
     """사양으로 못 담는 것 — 옵션 목록·특징 문장 같은 것."""
 
+    raw_limits: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, default=dict, server_default="{}"
+    )
+    """계열 사양표(`limits`) 원문 그대로.
+
+    기종이 여럿인 계열에서 이 값은 **봉투**다 — 0.5~300 kN 은 어느 기종의 값도
+    아니라 수치로 안 들인다(ADR 0006). 그래도 사람이 읽을 값이라 원문을 남긴다."""
+
     source_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("spec_sources.id", ondelete="SET NULL"),
@@ -272,6 +282,25 @@ class EquipmentModel(Base):
     summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     spec_note: Mapped[str | None] = mapped_column(Text, nullable=True)
     """사양으로 못 담는 것 중 이 기종만의 단서."""
+
+    raw_specs: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, server_default="{}")
+    """제조사 카탈로그의 **사양 원문 그대로.**
+
+    ## 왜 통째로 남기나
+
+    정의로 세운 칸은 사양값(`ModelSpecValue`)이 갖는다. 하지만 원본에는 정의가 없는
+    키가 950종 넘게 있고, 그 값 1,400여 건이 지금까지 **버려지고 있었다.** 한 카탈로그에만
+    나오는 것이 대부분이라 정의로 세우면 관리 화면이 죽고, 안 세우면 사라진다.
+
+    그래서 **둘 다 한다**: 아는 것은 사양값으로, 전부는 여기에. 반년 뒤 「이 기종
+    카탈로그에 뭐라고 적혀 있었나」 를 물을 자리가 생긴다.
+
+    ## JSONB 인 이유 — ADR 0005 와 어긋나지 않는다
+
+    거기서 JSONB 를 물린 것은 **정의를 통제하기 위해서**였다(RESTRICT·쓰임 수).
+    이 칸은 정의하는 자리가 아니라 **보존하는 자리**다 — 아무것도 이것을 참조하지
+    않고, 검색도 이것을 안 본다. 「모르는 것을 버리지 않되 아는 척도 안 한다.」
+    """
 
     created_by_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True

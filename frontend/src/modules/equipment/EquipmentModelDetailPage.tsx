@@ -96,6 +96,37 @@ export default function EquipmentModelDetailPage() {
         onSaved={() => model.reload()}
       />
 
+      {Object.keys(one.raw_specs).length > 0 && (
+        <details className="rounded-md border p-4">
+          <summary className="cursor-pointer text-base font-semibold">
+            카탈로그 원문
+            <span className="text-muted-foreground ml-2 text-sm font-normal">
+              {Object.keys(one.raw_specs).length}개 항목
+            </span>
+          </summary>
+          <p className="text-muted-foreground mt-2 text-sm">
+            제조사 카탈로그에 적힌 그대로입니다. <strong>위 사양표는 정의가 있는 칸만</strong>
+            담고, 여기에는 정의가 없는 것까지 전부 있습니다 — 원본에 950종 넘는 키가 있고
+            대부분이 한 카탈로그에만 나옵니다. 정의로 세우면 목록이 못 쓰게 되고, 안 세우면
+            사라지므로 둘 다 합니다.
+          </p>
+          <dl className="mt-3 space-y-1 text-sm">
+            {Object.entries(one.raw_specs).map(([key, value]) => (
+              <div key={key} className="flex flex-wrap items-baseline gap-2">
+                <dt className="text-muted-foreground w-56 shrink-0 font-mono text-xs">
+                  {key}
+                </dt>
+                <dd className="min-w-0 break-all">
+                  {typeof value === 'object' && value !== null
+                    ? JSON.stringify(value)
+                    : String(value)}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+      )}
+
       <section className="space-y-3">
         <div>
           <h2 className="text-base font-semibold">계열의 사양서 역량</h2>

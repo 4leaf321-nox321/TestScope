@@ -173,18 +173,63 @@ def main() -> int:
                 node(sid, "document", label=s["url"], url=s["url"], web_only=True)
             edges.append({"source": e["id"], "type": "documented_in", "target": sid, **({"pages": s["pages"]} if s.get("pages") else {})})
 
-    # --- 경고: limits 키가 온톨로지에 없는 것 (실패시키지는 않는다) ---
-    known_keys = {k["key"] for k in load(ONT / "condition_keys.json")["keys"]}
+    # --- 사양 키 검사: limits 는 막고, specs 는 기준선으로 조인다 -------------
+    #
+    # 두 층의 성격이 다르다. `limits` 는 계열 봉투라 좁고 통제되지만, `models[].specs`
+    # 는 자유 형식이라 제조사마다 제 이름으로 적는다 — 지금 1,100종 넘는다.
+    #
+    # 전부 막으면 오늘 당장 실패한다. 그래서 **기준선**을 둔다: 지금 것은 봐주되
+    # **늘면 실패시킨다.** 새 카탈로그를 넣을 때마다 「등록할 것인가, 기존 것의
+    # 별칭인가」 를 그 자리에서 묻게 되고, 자연히 줄어든다.
+    ont_rows = load(ONT / "condition_keys.json")["keys"]
+    known_keys = {k["key"] for k in ont_rows}
+    for row in ont_rows:
+        known_keys |= set(row.get("aliases") or [])
+        known_keys |= set(row.get("unit_variants") or {})
+
     unregistered: dict[str, int] = {}
+    spec_unregistered: dict[str, int] = {}
     for e in equipment.values():
         for k in (e.get("limits") or {}):
             if k not in known_keys:
                 unregistered[k] = unregistered.get(k, 0) + 1
+        for m in (e.get("models") or []):
+            for k in (m.get("specs") or {}):
+                if k in ("note", "uncertain") or k in known_keys:
+                    continue
+                spec_unregistered[k] = spec_unregistered.get(k, 0) + 1
+
     if unregistered:
         print(f"경고: condition_keys.json 에 없는 limits 키 {len(unregistered)} 종 "
               f"(총 {sum(unregistered.values())}회). 축 이름이 흩어지면 검색이 갈라진다. "
               f"자주 쓰이는 것부터 등록할 것: "
               + ", ".join(k for k, _ in sorted(unregistered.items(), key=lambda x: -x[1])[:8]))
+
+    baseline_file = ONT / "unregistered_baseline.json"
+    baseline = load(baseline_file)["count"] if baseline_file.exists() else None
+    found = len(spec_unregistered)
+    if baseline is None:
+        baseline_file.write_text(json.dumps({
+            "_comment": "등재 안 된 기종 사양 키의 기준선. **줄이는 것은 자유, 늘리는 것은 실패다.**"
+                        " 새 키가 필요하면 condition_keys.json 에 등록하고 이 수를 낮춘다."
+                        " tools_suggest_keys.py 가 후보를 뽑아 준다.",
+            "count": found,
+        }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print(f"기준선을 세웠습니다: 등재 안 된 기종 사양 키 {found} 종")
+    elif found > baseline:
+        newest = sorted(spec_unregistered.items(), key=lambda x: -x[1])[:10]
+        print(f"실패: 등재 안 된 기종 사양 키가 {baseline} -> {found} 종으로 늘었습니다.")
+        print("  새 키를 쓰려면 ontology/condition_keys.json 에 등록하세요"
+              " (tools_suggest_keys.py 가 후보를 뽑아 줍니다).")
+        print("  많이 쓰인 것: " + ", ".join(f"{k}({n})" for k, n in newest))
+        return 1
+    elif found < baseline:
+        baseline_file.write_text(json.dumps({
+            "_comment": load(baseline_file)["_comment"], "count": found,
+        }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print(f"등재 안 된 기종 사양 키 {baseline} -> {found} 종 (기준선을 낮췄습니다)")
+    else:
+        print(f"등재 안 된 기종 사양 키 {found} 종 (기준선 유지)")
 
     graph = {"nodes": list(nodes.values()), "edges": edges,
              "counts": {"nodes": len(nodes), "edges": len(edges), "equipment": len(equipment)}}

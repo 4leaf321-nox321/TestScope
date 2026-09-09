@@ -6545,6 +6545,11 @@
             ],
             "title": "Spec Note"
           },
+          "raw_specs": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Raw Specs"
+          },
           "unit_count": {
             "type": "integer",
             "title": "Unit Count"
@@ -6585,6 +6590,7 @@
           "status",
           "summary",
           "spec_note",
+          "raw_specs",
           "unit_count",
           "operational_count",
           "capabilities",
@@ -7200,6 +7206,11 @@
             ],
             "title": "Source Path"
           },
+          "raw_limits": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Raw Limits"
+          },
           "model_count": {
             "type": "integer",
             "title": "Model Count"
@@ -7254,6 +7265,7 @@
           "spec_note",
           "source_id",
           "source_path",
+          "raw_limits",
           "model_count",
           "unit_count",
           "operational_count",

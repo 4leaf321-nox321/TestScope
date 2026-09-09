@@ -1,5 +1,5 @@
 {
- "_comment": "limits{} 와 models[].specs{} 의 키. TestAtlas ConditionKey 와 겹치는 것은 testatlas_key 로 표시. 단위는 키 이름에 박는다. 2026-09-10 감사에서 객체가 실제로 쓰던 키 163 종을 등록했다. 이 파일에 없는 키를 쓰면 build_graph.py 가 경고한다(실패시키지는 않는다). 힘 계열 키는 이름이 여럿이지만(force_kN·dynamic_force_kN·test_load_kgf …) testatlas_key 가 모두 force 다. '20 kN 되나' 를 물을 때 한 축으로 합쳐 봐야 한다.",
+ "_comment": "limits{} 와 models[].specs{} 의 키. TestAtlas ConditionKey 와 겹치는 것은 testatlas_key 로 표시. 단위는 키 이름에 박는다. aliases 는 같은 것을 다르게 부르는 이름, unit_variants 는 같은 사양의 다른 단위(계수). role 은 measure(기본) · descriptive(서술이라 비교가 안 된다) · not_spec(사양이 아니다). 이 파일에 없는 키를 쓰면 build_graph 가 경고한다.",
  "keys": [
   {
    "key": "ac_withstand_voltage_kV",
@@ -13,7 +13,10 @@
    "label": "가속도",
    "dimension": "acceleration",
    "unit": "g",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "acceleration": 1.0
+   }
   },
   {
    "key": "acceleration_gRMS",
@@ -28,6 +31,26 @@
    "dimension": "angle",
    "unit": "deg",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "accuracy",
+   "label": "정확도",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "note": "「±0.5% of reading down to 1/1000」 처럼 조건절이 붙는다",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "accuracy_class",
+   "label": "정확도 등급",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "aliases": [
+    "class"
+   ],
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "accuracy_degC",
@@ -67,7 +90,10 @@
    "label": "대역폭",
    "dimension": "frequency",
    "unit": "Hz",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "bandwidth": 1.0
+   }
   },
   {
    "key": "bending_moment_Nm",
@@ -132,11 +158,27 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "control",
+   "label": "제어 방식",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "control_period_ms",
    "label": "제어 주기",
    "dimension": "time",
    "unit": "ms",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "cooling",
+   "label": "냉각 방식",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "cooling_rate_K_min",
@@ -168,7 +210,11 @@
    "key": "crosshead_travel_mm",
    "label": "크로스헤드 이동량",
    "dimension": "length",
-   "unit": "mm"
+   "unit": "mm",
+   "aliases": [
+    "max_stroke_mm",
+    "tensile_stroke_mm"
+   ]
   },
   {
    "key": "current_A",
@@ -189,7 +235,10 @@
    "label": "차단 전류",
    "dimension": "current",
    "unit": "A",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "cutoff_current": 1.0
+   }
   },
   {
    "key": "data_interval_ms",
@@ -210,6 +259,13 @@
    "dimension": "voltage",
    "unit": "kV",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "depth_mm",
+   "label": "세로",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "detector_megapixels",
@@ -354,9 +410,15 @@
   },
   {
    "key": "footprint_mm",
-   "label": "외형 (H×W×D 또는 W×D×H, note 참조)",
+   "label": "외형 치수",
    "dimension": "length",
-   "unit": "mm"
+   "unit": "mm",
+   "aliases": [
+    "dimensions_mm",
+    "outside_mm",
+    "outer_mm"
+   ],
+   "note": "[W, D, H] 배열이거나 {W,D,H} 객체. 낱개 이름(width_mm 등)은 아래 셋"
   },
   {
    "key": "force_N",
@@ -371,7 +433,27 @@
    "label": "하중 용량",
    "dimension": "force",
    "unit": "kN",
-   "testatlas_key": "force"
+   "testatlas_key": "force",
+   "unit_variants": {
+    "force_N": 0.001,
+    "force_kgf": 0.00980665,
+    "force_gf": 9.80665e-06
+   },
+   "aliases": [
+    "capacity_kN",
+    "max_load_kN",
+    "nominal_load_kN",
+    "rated_load_kN"
+   ]
+  },
+  {
+   "key": "force_resolution",
+   "label": "하중 분해능",
+   "dimension": "",
+   "unit": "",
+   "note": "단위가 카탈로그마다 다르다(N·% of reading). 원문을 살린다",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "fra_current_A",
@@ -408,6 +490,14 @@
    "testatlas_key": "frequency"
   },
   {
+   "key": "functions",
+   "label": "시험 기능",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "gauge_length_mm",
    "label": "표점 거리",
    "dimension": "length",
@@ -439,7 +529,8 @@
    "label": "경도 척도",
    "dimension": "",
    "unit": "",
-   "note": "HRC, HRB, HV, HB, HK, Shore A/D, IRHD, Leeb 등"
+   "note": "HRC, HRB, HV, HB, HK, Shore A/D, IRHD, Leeb 등",
+   "role": "descriptive"
   },
   {
    "key": "harmonic_order",
@@ -473,6 +564,13 @@
    "label": "승온 속도",
    "dimension": "temperature_rate",
    "unit": "K/min"
+  },
+  {
+   "key": "height_mm",
+   "label": "높이",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "helium_pumping_speed_L_s",
@@ -525,6 +623,17 @@
    "label": "압입 하중(나노)",
    "dimension": "force",
    "unit": "mN"
+  },
+  {
+   "key": "inner_mm",
+   "label": "내부 치수",
+   "dimension": "length",
+   "unit": "mm",
+   "aliases": [
+    "inside_mm"
+   ],
+   "note": "챔버·시험실 안쪽. 바깥 치수와 다른 물음이다",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "input_elements",
@@ -589,6 +698,15 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "item_no",
+   "label": "품번",
+   "dimension": "",
+   "unit": "",
+   "role": "not_spec",
+   "note": "제조사 주문 번호. 사양이 아니므로 정의로 세우지 않는다",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "leak_rate_mbar_L_s",
    "label": "누설률",
    "dimension": "leak_rate",
@@ -627,6 +745,14 @@
    "testatlas_key": "force"
   },
   {
+   "key": "loading",
+   "label": "가력 방식",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "luminance_cd_m2",
    "label": "휘도",
    "dimension": "luminance",
@@ -638,6 +764,22 @@
    "label": "배율",
    "dimension": "ratio",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "max_force_at_full_speed_kN",
+   "label": "최고 속도에서의 하중",
+   "dimension": "force",
+   "unit": "kN",
+   "note": "최대 하중과 다르다",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "max_speed_at_full_force_mm_min",
+   "label": "최대 하중에서의 속도",
+   "dimension": "speed",
+   "unit": "mm/min",
+   "note": "최고 속도와 다르다",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "measurement_channels",
@@ -791,7 +933,29 @@
    "key": "position_resolution_nm",
    "label": "위치 분해능",
    "dimension": "length",
-   "unit": "nm"
+   "unit": "nm",
+   "unit_variants": {
+    "position_resolution_mm": 1000000.0,
+    "position_resolution_um": 1000.0,
+    "travel_resolution_um": 1000.0,
+    "resolution_um": 1000.0,
+    "displacement_resolution_um": 1000.0
+   }
+  },
+  {
+   "key": "power",
+   "label": "전원",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "aliases": [
+    "electrical",
+    "power_supply",
+    "power_requirement",
+    "power_requirements"
+   ],
+   "note": "상·전압·주파수가 한 문장으로 온다. 소비 전력(power_W)과 다른 칸",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "power_VA",
@@ -804,7 +968,10 @@
    "label": "전력",
    "dimension": "power",
    "unit": "W",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "power_kW": 1000.0
+   }
   },
   {
    "key": "power_kW",
@@ -839,7 +1006,12 @@
    "label": "압력",
    "dimension": "pressure",
    "unit": "bar",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "pressure_MPa": 10.0,
+    "pressure_kPa": 0.01,
+    "pressure_Pa": 1e-05
+   }
   },
   {
    "key": "pressure_psi",
@@ -854,6 +1026,14 @@
    "dimension": "pressure",
    "unit": "Pa",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "principle",
+   "label": "측정 원리",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "profile_storage",
@@ -893,6 +1073,14 @@
    "testatlas_key": "force"
   },
   {
+   "key": "refrigerant",
+   "label": "냉매",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "regenerative_efficiency_pct",
    "label": "회생 효율",
    "dimension": "ratio",
@@ -904,7 +1092,10 @@
    "label": "반복도",
    "dimension": "ratio",
    "unit": "%",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "repeatability": 1.0
+   }
   },
   {
    "key": "residual_thd_n_dB",
@@ -1205,7 +1396,10 @@
    "label": "시험 온도",
    "dimension": "temperature",
    "unit": "degC",
-   "testatlas_key": "temperature"
+   "testatlas_key": "temperature",
+   "unit_variants": {
+    "temperature": 1.0
+   }
   },
   {
    "key": "temperature_fluctuation_degC",
@@ -1233,7 +1427,11 @@
    "label": "경도 시험 하중",
    "dimension": "force",
    "unit": "kgf",
-   "testatlas_key": "force"
+   "testatlas_key": "force",
+   "unit_variants": {
+    "test_load_gf": 0.001,
+    "test_load_N": 0.101972
+   }
   },
   {
    "key": "test_opening_mm",
@@ -1250,11 +1448,40 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "test_room_depth_mm",
+   "label": "시험실 깊이",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "test_room_height_mm",
+   "label": "시험실 높이",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "test_room_width_mm",
+   "label": "시험실 폭",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "test_time_s",
    "label": "시험 시간",
    "dimension": "time",
    "unit": "s",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "test_zones",
+   "label": "시험 구역",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "thermal_conductivity_W_mK",
@@ -1290,10 +1517,21 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "tool_connection",
+   "label": "공구 연결부",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "torque_Nm",
    "label": "토크",
    "dimension": "torque",
-   "unit": "N·m"
+   "unit": "N·m",
+   "unit_variants": {
+    "torque_mNm": 0.001
+   }
   },
   {
    "key": "torque_mNm",
@@ -1330,6 +1568,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "type",
+   "label": "형식",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
    "key": "velocity_change_m_s",
    "label": "속도 변화",
    "dimension": "speed",
@@ -1361,7 +1607,10 @@
    "key": "vertical_test_space_mm",
    "label": "수직 시험 공간",
    "dimension": "length",
-   "unit": "mm"
+   "unit": "mm",
+   "aliases": [
+    "vertical_daylight_mm"
+   ]
   },
   {
    "key": "viscosity_Pa_s",
@@ -1388,13 +1637,26 @@
    "label": "마모 깊이",
    "dimension": "length",
    "unit": "mm",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "wear_depth_mm": 1.0
+   }
   },
   {
    "key": "weight_kg",
    "label": "무게",
    "dimension": "mass",
-   "unit": "kg"
+   "unit": "kg",
+   "unit_variants": {
+    "weight_g": 0.001
+   }
+  },
+  {
+   "key": "width_mm",
+   "label": "가로",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
    "key": "wire_cross_section_mm2",

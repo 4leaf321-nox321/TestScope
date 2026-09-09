@@ -239,6 +239,44 @@ def step_methods(
     return methods
 
 
+def _ontology(cat: Catalog) -> dict[str, Any]:
+    data: dict[str, Any] = json.loads(
+        (cat.root / "ontology" / "condition_keys.json").read_text(encoding="utf-8")
+    )
+    return data
+
+
+def _ontology_map(cat: Catalog) -> dict[str, tuple[str, float]]:
+    """온톨로지가 선언한 **별칭과 단위 변형**을 대표 키로 잇는다.
+
+    ## 왜 온톨로지에 두나
+
+    `nominal_load_kN` 이 `force_kN` 의 다른 이름이라는 것은 **카탈로그 도메인
+    지식**이지 TestAtlas 내부 사정이 아니다. 여기 손 매핑표에 적어 두면 같은 지식이
+    두 저장소에 갈라지고, 갈라진 뒤에는 어느 쪽이 맞는지 알 방법이 없다.
+
+    단위 변형은 계수까지 온톨로지가 갖는다 — `force_N` 은 0.001 을 곱해 kN 이 된다.
+    """
+    out: dict[str, tuple[str, float]] = {}
+    for row in _ontology(cat)["keys"]:
+        key = row["key"]
+        for alias in row.get("aliases") or []:
+            out[alias] = (key, 1.0)
+        for variant, factor in (row.get("unit_variants") or {}).items():
+            out[variant] = (key, float(factor))
+    return out
+
+
+def _ontology_roles(cat: Catalog) -> dict[str, str]:
+    """키마다 무엇으로 다루나 — `measure` · `descriptive` · `not_spec`.
+
+    **서술과 품번은 정의로 세우지 않는다.** 「제어 방식」 이나 주문 번호를 사양 칸으로
+    만들면 「사양 추가」 목록이 그것들로 채워지고, 그때 목록은 못 쓰게 된다. 값은
+    버리지 않는다 — 원문(`raw_specs`)에 그대로 남는다.
+    """
+    return {row["key"]: row.get("role") or "measure" for row in _ontology(cat)["keys"]}
+
+
 def _key_shape(cat: Catalog, key: str) -> str:
     """그 키의 값이 실제로 어떤 모양인가 — 정의의 `kind` 를 여기서 정한다.
 
@@ -272,13 +310,31 @@ def _key_shape(cat: Catalog, key: str) -> str:
     return "text"
 
 
+def _alias_targets(db: Session, cat: Catalog) -> dict[str, tuple[str, float]]:
+    """온톨로지의 별칭·단위 변형을 **우리 정의 이름**으로 옮긴다.
+
+    온톨로지는 자기 키(`force_kN`)로 말하고 우리 정의는 다른 이름(`force_capacity`)
+    을 쓴다. 그 사이를 잇는 것이 손 매핑표이므로, 별칭이 가리키는 대표 키를 한 번 더
+    통과시킨다 — 안 그러면 별칭은 있는데 갈 곳이 없다.
+    """
+    promoted = {row["source_key"]: row["key"] for row in _promotable(cat)}
+    out: dict[str, tuple[str, float]] = {}
+    for source_key, (base, factor) in _ontology_map(cat).items():
+        target = SOURCE_SPEC_MAP.get(base)
+        if target is not None:
+            out[source_key] = (target[0], factor * target[1])
+        elif base in promoted:
+            out[source_key] = (promoted[base], factor)
+    return out
+
+
 def _promotable(cat: Catalog) -> list[dict[str, Any]]:
     """온톨로지에서 승격할 키들. **흔한 것부터, 이미 있는 것은 빼고.**"""
+    # 서술·비사양은 정의로 세우지 않는다 — 값은 원문에 그대로 남는다.
     onto = {
         row["key"]: row
-        for row in json.loads(
-            (cat.root / "ontology" / "condition_keys.json").read_text(encoding="utf-8")
-        )["keys"]
+        for row in _ontology(cat)["keys"]
+        if (row.get("role") or "measure") == "measure"
     }
     per_object: collections.Counter[str] = collections.Counter()
     for obj in cat.objects:
@@ -448,7 +504,13 @@ def step_definitions(
         for model in obj.get("models") or []:
             keys |= set(model.get("specs") or {})
         per_object.update(keys)
-    promoted_keys = {row["source_key"] for row in _promotable(cat)}
+    # **온톨로지가 아는 것은 보류가 아니다.** 서술(descriptive)과 품번(not_spec)도
+    # 등록된 것이고, 값은 원문에 그대로 남는다 — 보류 목록에 두면 아직 할 일이
+    # 남은 것처럼 보여서 사람이 그 목록을 안 믿게 된다.
+    known_by_ontology = set(_ontology_map(cat))
+    for row in _ontology(cat)["keys"]:
+        known_by_ontology.add(row["key"])
+    promoted_keys = {row["source_key"] for row in _promotable(cat)} | known_by_ontology
     pending = sorted(
         (
             (count, key)
@@ -788,6 +850,7 @@ def _import_specs(
     definitions: dict[str, SpecDefinition],
     source: SpecSource | None,
     promoted: dict[str, tuple[str, float]],
+    aliases: dict[str, tuple[str, float]],
 ) -> int:
     taken = set(
         db.scalars(
@@ -813,7 +876,7 @@ def _import_specs(
             continue
         # 손으로 이어 둔 것이 먼저다 — 거기에는 단위 환산 같은 판단이 들어 있다.
         # 없으면 온톨로지에서 승격한 이름으로 찾는다.
-        mapped = SOURCE_SPEC_MAP.get(key) or promoted.get(key)
+        mapped = SOURCE_SPEC_MAP.get(key) or aliases.get(key) or promoted.get(key)
         if mapped is None:
             continue
         definition = definitions.get(mapped[0])
@@ -901,7 +964,7 @@ def _model_note(row: dict[str, Any]) -> str | None:
 
 def step_models(
     db: Session, cat: Catalog, series: dict[str, EquipmentSeries], actor: User | None
-) -> tuple[int, int, int]:
+) -> tuple[int, int, int, int]:
     """4. 기종과 그 사양값. **수치가 갈리는 자리**(ADR 0006).
 
     ## 계열 사양표(limits)를 어떻게 다루나
@@ -915,8 +978,11 @@ def step_models(
     sources = {row.path: row for row in db.scalars(select(SpecSource))}
     # 온톨로지에서 승격한 키 -> (정의 key, 배율 1). 원본이 이미 그 단위로 적는다.
     promoted = {row["source_key"]: (row["key"], 1.0) for row in _promotable(cat)}
+    # 온톨로지가 선언한 별칭·단위 변형. **손 매핑표보다 뒤에 본다** — 거기에는
+    # 이쪽만 아는 판단(정의 이름이 다른 것)이 들어 있다.
+    aliases = _alias_targets(db, cat)
     marker = "원본 확인 필요"
-    models = values = flagged = 0
+    models = values = flagged = kept = 0
 
     for obj in cat.objects:
         parent = series[obj["id"]]
@@ -955,13 +1021,25 @@ def step_models(
                 flagged += 1
             made_here.append(found)
             values += _import_specs(
-                db, found, row.get("specs") or {}, definitions, source, promoted
+                db, found, row.get("specs") or {}, definitions, source, promoted, aliases
             )
+            # **원문을 통째로 남긴다.** 정의가 없는 키가 950종 넘고, 그 값은
+            # 지금까지 버려지고 있었다 — 아는 것은 사양값으로, 전부는 여기에.
+            if row.get("specs") and not found.raw_specs:
+                found.raw_specs = row["specs"]
+                kept += 1
 
         limits = obj.get("limits") or {}
         if limits and len(made_here) == 1:
-            values += _import_specs(db, made_here[0], limits, definitions, source, promoted)
-        elif limits:
+            values += _import_specs(
+                db, made_here[0], limits, definitions, source, promoted, aliases
+            )
+        if limits and not parent.raw_limits:
+            kept += 1
+            # 봉투는 수치로 안 들이지만(ADR 0006) **원문은 남긴다** — 사람이 읽을
+            # 값이고, 기종 사양이 빈 계열에서는 이것이 유일한 근거다.
+            parent.raw_limits = limits
+        if limits and len(made_here) > 1:
             envelope = " · ".join(
                 f"{key} {_as_text(raw)}" for key, raw in sorted(limits.items())
             )
@@ -971,7 +1049,7 @@ def step_models(
                     f"{block}\n{parent.spec_note}" if parent.spec_note else block
                 )
         db.flush()
-    return models, values, flagged
+    return models, values, flagged, kept
 
 
 def step_relations(db: Session, cat: Catalog, series: dict[str, EquipmentSeries]) -> int:
@@ -1028,7 +1106,7 @@ def main() -> int:
         methods = step_methods(db, cat, items, actor)
         definitions, pending = step_definitions(db, cat, categories)
         series, capabilities = step_series(db, cat, makers, categories, items, methods, actor)
-        models, values, flagged = step_models(db, cat, series, actor)
+        models, values, flagged, kept = step_models(db, cat, series, actor)
         relations = step_relations(db, cat, series)
 
         if args.dry_run:
@@ -1043,6 +1121,8 @@ def main() -> int:
         print(f"  사양 정의 새로 {definitions}")
         print(f"  계열 {len(series)} · 계열 역량 새로 {capabilities}")
         print(f"  기종 새로 {models} · 사양값 새로 {values}")
+        if kept:
+            print(f"  원문 보존 {kept}건 (정의가 없는 값도 통째로 남는다)")
         if flagged:
             print(f"  원본 확인 필요로 표시한 기종 {flagged}")
         print(f"  계열 관계 새로 {relations}")

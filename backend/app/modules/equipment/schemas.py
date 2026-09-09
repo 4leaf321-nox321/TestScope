@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import date, datetime
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -190,6 +191,9 @@ class EquipmentSeriesOut(BaseModel):
     spec_note: str | None
     source_id: uuid.UUID | None
     source_path: str | None
+    raw_limits: dict[str, Any]
+    """계열 사양표 원문. 기종이 여럿이면 이 값은 **봉투**라 수치로 안 들이지만
+    (ADR 0006), 사람이 읽을 값이라 원문을 남긴다."""
 
     model_count: int
     """이 계열에 든 기종 수. **0 이면 아무도 이 계열을 가리킬 수 없다** — 보유
@@ -284,6 +288,14 @@ class EquipmentModelOut(BaseModel):
     status: str
     summary: str | None
     spec_note: str | None
+    raw_specs: dict[str, Any]
+    """제조사 카탈로그의 **사양 원문 그대로.**
+
+    정의로 세운 칸은 위 사양표가 갖는다. 여기에는 정의가 없는 것까지 전부 있다 —
+    원본에 950종 넘는 키가 있고 대부분이 한 카탈로그에만 나온다. 정의로 세우면
+    관리 화면이 죽고, 안 세우면 사라진다. **그래서 둘 다 한다.**
+
+    화면은 이것을 접어서 보여 준다: 「카탈로그 원문」."""
 
     unit_count: int
     """이 기종을 몇 대 가졌나. **카탈로그가 답해야 하는 첫 물음이다.**"""
