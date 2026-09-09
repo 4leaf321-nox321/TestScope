@@ -10901,6 +10901,102 @@
    "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0503 (자료실 카탈로그 게시판. 다운로드 링크에 세션 nonce 가 붙어 직접 링크를 남길 수 없다 — 게시판에서 다시 받아야 한다)"
   },
   {
+   "id": "mtdi-specimen-preparation",
+   "kind": "equipment",
+   "label": "MTDI Metallographic Specimen Preparation Line (KANTA abrasive cutters, DIAMO precision cutters, ETOS mounting presses, FOBOS grinder-polishers)",
+   "label_ko": "엠티디아이 금속조직 시편 전처리 계열 (KANTA 고속절단기·DIAMO 정밀절단기·ETOS 마운팅 프레스·FOBOS 연마기)",
+   "equipment_kind": "equipment_series",
+   "category": "cutting_mounting_polishing",
+   "manufacturer": "mtdi",
+   "limits": {
+    "rotation_rpm": {
+     "min": 50,
+     "max": 5000,
+     "note": "FOBOS 연마 50~500, KANTA 고속절단 500~3,500(보급형 2,800 고정), DIAMO 정밀절단 60~5,000(기종별)"
+    },
+    "specimen_max_mm": {
+     "max": 80,
+     "note": "KANTA 절단 용량 — 판재 80 mm(D) x 60 mm(H), 봉재 80 mm(12 인치 휠 기준). DIAMO 는 Ø30(최대 Ø40)"
+    },
+    "temperature_degC": {
+     "max": 200,
+     "note": "ETOS 마운팅 프레스 성형 온도(제한 210 °C)"
+    },
+    "pressure_bar": {
+     "max": 210,
+     "note": "ETOS 유압 최대 210 bar(3,000 psi)"
+    },
+    "power_kW": {
+     "min": 0.18,
+     "max": 11,
+     "note": "DIAMO-100E 0.18 kW 부터 ETOS-300 6채널 7.5~11 kW 까지"
+    },
+    "weight_kg": {
+     "min": 24,
+     "max": 600
+    }
+   },
+   "models": [
+    "KANTA-050E (보급형 수동 고속절단기, 탁상형)",
+    "KANTA-E (보급형 수동 절단기, 레버 타입)",
+    "KANTA-S (표준형 반자동 절단기, 회전 핸들)",
+    "KANTA-F (고급형 자동 절단기)",
+    "DIAMO-100F (고급형 자동 정밀절단기)",
+    "DIAMO-100S (표준형 반자동 정밀절단기)",
+    "DIAMO-100E (보급형 수동 정밀절단기)",
+    "ETOS 1채널 마운팅 프레스",
+    "ETOS 2채널 마운팅 프레스",
+    "ETOS-300 (다채널 마운팅 프레스)",
+    "FOBOS-E Series (보급형 수동 연마기)",
+    "FOBOS-S Series (표준형 수동·자동 연마기)",
+    "FOBOS-F Series (고급형 수동·자동 연마기)"
+   ],
+   "confidence": "limited",
+   "file": "equipment/mtdi/mtdi-specimen-preparation.json"
+  },
+  {
+   "id": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=36",
+   "kind": "document",
+   "label": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=36",
+   "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=36",
+   "web_only": true
+  },
+  {
+   "id": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=39",
+   "kind": "document",
+   "label": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=39",
+   "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=39",
+   "web_only": true
+  },
+  {
+   "id": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=40",
+   "kind": "document",
+   "label": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=40",
+   "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=40",
+   "web_only": true
+  },
+  {
+   "id": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=33",
+   "kind": "document",
+   "label": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=33",
+   "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=33",
+   "web_only": true
+  },
+  {
+   "id": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=35",
+   "kind": "document",
+   "label": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=35",
+   "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=35",
+   "web_only": true
+  },
+  {
+   "id": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=30",
+   "kind": "document",
+   "label": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=30",
+   "url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=30",
+   "web_only": true
+  },
+  {
    "id": "mtdi-torsion-tester",
    "kind": "equipment",
    "label": "MTDI Order-Made Torsion Tester (axial-torsion, high temperature)",
@@ -26092,6 +26188,67 @@
    ]
   },
   {
+   "source": "mtdi-specimen-preparation",
+   "type": "manufactured_by",
+   "target": "mtdi"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "in_category",
+   "target": "category:cutting_mounting_polishing"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "same_family_as",
+   "target": "mtdi-electrolytic-etching-machine"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "requires",
+   "target": "utility-cooling-water",
+   "note": "절단기 냉각수·마운팅 프레스 수냉"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "documented_in",
+   "target": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=36"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "documented_in",
+   "target": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=39"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "documented_in",
+   "target": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=40"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "documented_in",
+   "target": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=33"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "documented_in",
+   "target": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=35"
+  },
+  {
+   "source": "mtdi-specimen-preparation",
+   "type": "documented_in",
+   "target": "web:http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=30"
+  },
+  {
    "source": "mtdi-torsion-tester",
    "type": "manufactured_by",
    "target": "mtdi"
@@ -31569,8 +31726,8 @@
   }
  ],
  "counts": {
-  "nodes": 1467,
-  "edges": 2855,
-  "equipment": 193
+  "nodes": 1474,
+  "edges": 2867,
+  "equipment": 194
  }
 }

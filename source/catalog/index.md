@@ -1,6 +1,6 @@
 # 장비 카탈로그 색인
 
-장비 객체 193 개 · 제조사 78 · 노드 1467 · 엣지 2855
+장비 객체 194 개 · 제조사 78 · 노드 1474 · 엣지 2867
 
 `limits` 는 시리즈 전체 범위. 단위는 키 이름에 있다(kN, mm/min, degC …). 빈 칸은 미기재.
 
@@ -351,6 +351,7 @@
 | [mtdi-circumference-tensile-tester](equipment/mtdi/mtdi-circumference-tensile-tester.json) | burst_pressure_tester | burst_pressure, tensile | – | – | pressure_bar=≤1000; power_kW=0.15–23.8 | limited |
 | [mtdi-electrolytic-etching-machine](equipment/mtdi/mtdi-electrolytic-etching-machine.json) | electrolytic_etcher | surface_topography | – | – | voltage_V=0–30; weight_kg=27 | limited |
 | [mtdi-fld-300s](equipment/mtdi/mtdi-fld-300s.json) | formability_tester | formability, tensile | 981, 1961, 2942 | ≤900 | crosshead_travel_mm=≤200; crosshead_speed_mm_min=≤250; pressure_bar=≤210; data_rate_Hz=≤250000; power_kW=22 | catalog |
+| [mtdi-specimen-preparation](equipment/mtdi/mtdi-specimen-preparation.json) | cutting_mounting_polishing | surface_topography | – | ≤200 | rotation_rpm=50–5000; specimen_max_mm=≤80; pressure_bar=≤210; power_kW=0.18–11; weight_kg=24–600 | limited |
 | [mtdi-torsion-tester](equipment/mtdi/mtdi-torsion-tester.json) | torsion_tester | torsion, tensile, fatigue | ≤98 | -170–1100 | torque_Nm=≤981; rotation_rpm=0.1–1500; rotation_deg=≤360; crosshead_speed_mm_min=0.001–500; data_rate_Hz=≤100000; power_kW=45 | catalog |
 | [mtdi-uc-furnace-chambers](equipment/mtdi/mtdi-uc-furnace-chambers.json) | furnace | tensile, compression, creep | – | -170–1100 | chamber_volume_L=– | catalog |
 | [mtdi-wear-friction-testers](equipment/mtdi/mtdi-wear-friction-testers.json) | tribometer | friction_coefficient, friction_wear_tribo, abrasion | – | ≤1100 | force_N=≤100000; rotation_rpm=1–15000; frequency_Hz=0.1–5; sliding_speed_m_s=–; torque_Nm=≤50; data_rate_Hz=≤250000; power_kW=1.5–13 | catalog |

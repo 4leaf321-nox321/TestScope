@@ -1,0 +1,261 @@
+{
+  "id": "mtdi-specimen-preparation",
+  "kind": "equipment_series",
+  "name": "MTDI Metallographic Specimen Preparation Line (KANTA abrasive cutters, DIAMO precision cutters, ETOS mounting presses, FOBOS grinder-polishers)",
+  "name_ko": "엠티디아이 금속조직 시편 전처리 계열 (KANTA 고속절단기·DIAMO 정밀절단기·ETOS 마운팅 프레스·FOBOS 연마기)",
+  "manufacturer": "mtdi",
+  "brand": "KANTA / DIAMO / ETOS / FOBOS",
+  "category": "cutting_mounting_polishing",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "금속조직 관찰용 시편을 만드는 네 갈래 계열. **KANTA 고속절단기**는 10·12 인치 휠로 판재 80 mm(D) x 60 mm(H)·봉재 80 mm 를 자르고 500~3,500 rpm, 냉각수 50 L 독립 펌프를 쓴다(보급형 KANTA-050E 는 2,800 rpm 고정, 탁상형). **DIAMO 정밀절단기**는 4~7 인치 휠(Arbor 12.7 mm)로 Ø30 mm(최대 Ø40)를 자르고 절단 위치를 1 µm 단위로 조절하며, 고급형 DIAMO-100F 는 300~5,000 rpm·1 kW BLDC 에 절단 부하율을 재어 Y축 속도를 자동 조절한다. **ETOS 마운팅 프레스**는 몰드 Ø25~38 mm(옵션 40~50), 최대 210 bar(3,000 psi) 자동 유압, 최대 200 °C(제한 210 °C)에 수냉·공랭 자동 냉각을 쓰고 1·2 채널형과 6 채널 다채널형(ETOS-300)이 있다. **FOBOS 연마기**는 8~12 인치 디스크(3점 고정, 경질 아노다이징 알루미늄)를 50~500 rpm 으로 돌리고 1구·2구, 수동·Auto Head 구성을 고른다.",
+  "test_items": [
+    "surface_topography"
+  ],
+  "measurands": [
+    "dimensional_metrology",
+    "surface_roughness"
+  ],
+  "materials": [
+    "metals and alloys",
+    "ceramics",
+    "composites",
+    "metallographic specimens"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "rotation_rpm": {
+      "min": 50,
+      "max": 5000,
+      "note": "FOBOS 연마 50~500, KANTA 고속절단 500~3,500(보급형 2,800 고정), DIAMO 정밀절단 60~5,000(기종별)"
+    },
+    "specimen_max_mm": {
+      "max": 80,
+      "note": "KANTA 절단 용량 — 판재 80 mm(D) x 60 mm(H), 봉재 80 mm(12 인치 휠 기준). DIAMO 는 Ø30(최대 Ø40)"
+    },
+    "temperature_degC": {
+      "max": 200,
+      "note": "ETOS 마운팅 프레스 성형 온도(제한 210 °C)"
+    },
+    "pressure_bar": {
+      "max": 210,
+      "note": "ETOS 유압 최대 210 bar(3,000 psi)"
+    },
+    "power_kW": {
+      "min": 0.18,
+      "max": 11,
+      "note": "DIAMO-100E 0.18 kW 부터 ETOS-300 6채널 7.5~11 kW 까지"
+    },
+    "weight_kg": {
+      "min": 24,
+      "max": 600
+    }
+  },
+  "models": [
+    {
+      "model": "KANTA-050E (보급형 수동 고속절단기, 탁상형)",
+      "specs": {
+        "type": "보급형 수동 절단기(탁상형)",
+        "dimensions_mm": "690W x 790D x 670H",
+        "power": "AC 280V, 50 Hz, 3 kW",
+        "motor": "SIEMENS 방수 모터 3 kW (3HP)",
+        "wheel": "10 인치 (Arbor 32 mm)",
+        "rotation_rpm": "2,800 고정",
+        "cutting_capacity": "판재 80 mm(D) x 60 mm(H), 봉재 80 mm (12 인치 기준)",
+        "control": "POWER, START, STOP, Pump ON/OFF",
+        "cooling": "독립 펌프, 냉각수 50 L, 탱크 바퀴 장착"
+      },
+      "note": "전원이 'AC 280V' 로 적혀 있는데 220V 또는 380V 의 오기로 보인다 — 페이지 표기 그대로 옮겼다",
+      "uncertain": true
+    },
+    {
+      "model": "KANTA-E (보급형 수동 절단기, 레버 타입)",
+      "specs": {
+        "dimensions_mm": "840W x 860D x 1470H",
+        "weight_kg": 215,
+        "power": "AC 220V, 3상, 60 Hz, 2.7 kW",
+        "motor": "SIEMENS 방수 모터 2.2 kW (3HP)",
+        "wheel": "10·12 인치 (Arbor 32 mm)",
+        "rotation_rpm": {"min": 500, "max": 3500},
+        "cutting_capacity": "판재 80 mm(D) x 60 mm(H), 봉재 80 mm",
+        "cooling": "2단 필터 독립 펌프, 냉각수 50 L",
+        "control": "POWER, START, STOP, Pump ON/OFF, RPM 노브"
+      }
+    },
+    {
+      "model": "KANTA-S (표준형 반자동 절단기, 회전 핸들)",
+      "specs": {
+        "dimensions_mm": "900W x 950D x 1490H",
+        "weight_kg": 385,
+        "power": "AC 220V, 3상, 60 Hz, 2.7 kW",
+        "rotation_rpm": {"min": 500, "max": 3500},
+        "control": "5.6 인치 TFT LCD 터치스크린, 비상정지, 부하율 표시, 디지털 회전속도 설정, 설정값 저장 5개, 절전 모드"
+      }
+    },
+    {
+      "model": "KANTA-F (고급형 자동 절단기)",
+      "specs": {
+        "dimensions_mm": "900W x 1015D x 1490H",
+        "weight_kg": 378,
+        "power": "AC 220V, 3상, 60 Hz, 3.1 kW",
+        "rotation_rpm": {"min": 500, "max": 3500},
+        "control": "5.6 인치 TFT LCD 터치스크린",
+        "features": ["X·Y축 이동 위치 입력(X축 옵션)", "절단 위치 0.005 mm 디지털 표시", "조이스틱 고속·저속 설정", "자동 연속 절단(X축 자동 옵션)", "접이식 전면 개폐 도어", "전면/상부 투시형"]
+      }
+    },
+    {
+      "model": "DIAMO-100F (고급형 자동 정밀절단기)",
+      "specs": {
+        "type": "고급형 정밀 절단기",
+        "dimensions_mm": "560W x 760D x 330H",
+        "weight_kg": 70,
+        "power": "AC 220V, 단상, 50~60 Hz, 900 W",
+        "motor": "1 kW BLDC",
+        "wheel": "4~7 인치 (Arbor 12.7 mm)",
+        "rotation_rpm": {"min": 300, "max": 5000},
+        "rotation_direction": "CCW, CW",
+        "cutting_capacity": "Ø30 (4~7 인치 휠), 최대 Ø40",
+        "cutting_oil_L": 4,
+        "positioning": "0.001 mm 스텝, 최대 80 mm",
+        "control": "5.6 인치 TFT LCD 터치스크린, 부하율 측정으로 절단속도 자동 변경, 조이스틱 스테이지 조작, 설정값 저장 5개, 연속 절단",
+        "options": ["로테이션 기능 — 절단 끝 버(Burr) 최소화"]
+      }
+    },
+    {
+      "model": "DIAMO-100S (표준형 반자동 정밀절단기)",
+      "specs": {
+        "dimensions_mm": "400W x 540D x 450H",
+        "weight_kg": 38,
+        "power": "AC 220V, 단상, 50~60 Hz, 220 W",
+        "motor": "200 W BLDC",
+        "rotation_rpm": {"min": 100, "max": 1000},
+        "rotation_direction": "CCW, CW",
+        "cutting_oil_L": 3,
+        "control": "7 인치 TFT LCD 터치스크린, 1 µm 절단 위치 조절, 회전속도 자동보정"
+      }
+    },
+    {
+      "model": "DIAMO-100E (보급형 수동 정밀절단기)",
+      "specs": {
+        "dimensions_mm": "320W x 425D x 375H",
+        "weight_kg": 24,
+        "power": "AC 220V, 단상, 50~60 Hz, 180 W",
+        "motor": "200 W BLDC",
+        "rotation_rpm": {"min": 60, "max": 600},
+        "rotation_direction": "CCW",
+        "cutting_capacity": "Ø30 (5 인치 휠)",
+        "cutting_oil_L": 0.8,
+        "control": "POWER, START, STOP, Pump ON/OFF, 다이얼 RPM 조절, 시편 절단 후 자동 정지"
+      },
+      "note": "표에 전원이 '180kW' 로 인쇄돼 있으나 같은 급 기종(220 W·900 W)과 모터(200 W BLDC)에 비추어 180 W 의 오기로 읽었다"
+    },
+    {
+      "model": "ETOS 1채널 마운팅 프레스",
+      "specs": {
+        "type": "1 채널 성형기",
+        "dimensions_mm": "560W x 560D x 530H",
+        "weight_kg": 71,
+        "power": "AC 220V, 단상, 50~60 Hz, 2.2 kW",
+        "mold_diameter_mm": "25~38 (옵션 40~50)",
+        "pressure": "자동 유압 펌프, 최대 210 bar (3,000 psi)",
+        "cooling": "솔레노이드 밸브 자동 냉각(수냉·공랭)",
+        "temperature_degC": {"max": 200, "limit": 210},
+        "languages": ["한국어", "영어", "중국어"],
+        "control": "POWER, START, STOP, 비상정지, 성형 조건 설정·확인, 실린더 수동 승강, 압력·온도 제한, 설정값 저장 5개"
+      }
+    },
+    {
+      "model": "ETOS 2채널 마운팅 프레스",
+      "specs": {
+        "type": "2 채널 성형기",
+        "dimensions_mm": "560W x 560D x 530H",
+        "weight_kg": 102,
+        "power": "AC 220V, 단상, 50~60 Hz, 3.5 kW",
+        "mold_diameter_mm": "25~38 (옵션 40~50)",
+        "pressure": "최대 210 bar",
+        "temperature_degC": {"max": 200, "limit": 210},
+        "features": ["채널별 독립 성형"]
+      }
+    },
+    {
+      "model": "ETOS-300 (다채널 마운팅 프레스)",
+      "specs": {
+        "type": "다채널 성형기",
+        "dimensions_mm": "1410W x 800D x 1550H",
+        "weight_kg": 600,
+        "weight_basis": "6 채널 기준",
+        "power": "AC 220V, 단상, 50~60 Hz, 7.5~11 kW (3 채널 이상)",
+        "mold_diameter_mm": "25~38 (옵션 40~50)",
+        "pressure": "자동 유압 펌프, 최대 210 bar",
+        "temperature_degC": {"max": 200, "limit": 210},
+        "display": "15 인치 터치스크린",
+        "features": ["채널별 독립 성형", "유압 계통 손상 시 다른 채널 동작", "몰드 두 개에 파워팩 하나", "냉각순환장치로 표면 온도 최소화", "어큐뮬레이터로 소음 방지·내구성 향상", "음성 안내"]
+      }
+    },
+    {
+      "model": "FOBOS-E Series (보급형 수동 연마기)",
+      "specs": {
+        "motor": "200 W BLDC",
+        "disc_size_inch": "8 (10·12 옵션)",
+        "disc": "3점 고정, 경질 아노다이징 알루미늄",
+        "rotation_rpm": {"min": 50, "max": 500},
+        "rotation_direction": "CCW, CW",
+        "power": "AC 220V, 단상, 50~60 Hz, 430 W(1구) / 460 W(2구)",
+        "dimensions_mm": "1구 수동 480W x 650D x 315H / 2구 수동 800W x 650D x 315H",
+        "weight_kg": "1구 수동 38 / 2구 수동 68",
+        "control": "냉각수 수동·자동 공급, 디스크 속도 조절, 2디스크 독립 제어, 3.5 인치 화면"
+      }
+    },
+    {
+      "model": "FOBOS-S Series (표준형 수동·자동 연마기)",
+      "specs": {
+        "motor": "300 W BLDC",
+        "disc_size_inch": "8 (10·12 옵션)",
+        "rotation_rpm": {"min": 50, "max": 500},
+        "dimensions_mm": "1구 + Auto Head 480W x 650D x 660H / 2구 Auto Head 800W x 650D x 660H",
+        "weight_kg": "1구 Auto Head 69 / 2구 Auto Head 100",
+        "control": "회전 RPM 표시·입력, 연마 시간 설정(1초 단위), 설정값 저장 5개, Auto Head 장착 가능"
+      }
+    },
+    {
+      "model": "FOBOS-F Series (고급형 수동·자동 연마기)",
+      "specs": {
+        "motor": "400 W BLDC",
+        "disc_size_inch": "12 (8·10 교환 가능)",
+        "rotation_rpm": {"min": 50, "max": 500},
+        "control": "7 인치 터치스크린, 스케줄 기능, 회전 RPM 표시·입력, 연마 시간 설정, 설정값 저장 5개, Auto Head 장착 가능"
+      }
+    }
+  ],
+  "features": [
+    "절단·마운팅·연마를 한 제조사 계열로 갖춘다",
+    "정밀절단기는 절단 부하율을 재어 이송 속도를 자동 조절",
+    "마운팅 프레스는 채널별 독립 성형과 압력·온도 제한",
+    "연마기는 2 디스크 독립 제어와 Auto Head",
+    "세 계열 모두 설정값 저장·불러오기 5개"
+  ],
+  "options": [
+    "DIAMO 로테이션 기능(버 최소화)",
+    "KANTA-F X축 자동(자동 연속 절단)",
+    "ETOS 몰드 Ø40~50",
+    "FOBOS Auto Head, 디스크 8/10/12 인치 교환"
+  ],
+  "relations": [
+    {"type": "performs", "target": "surface_topography"},
+    {"type": "same_family_as", "target": "mtdi-electrolytic-etching-machine"},
+    {"type": "requires", "target": "utility-cooling-water", "note": "절단기 냉각수·마운팅 프레스 수냉"}
+  ],
+  "sources": [
+    {"url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=36", "retrieved": "2026-09-10", "note": "DIAMO-100F 사양 및 DIAMO 3기종 비교표(HTML)"},
+    {"url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=39", "retrieved": "2026-09-10", "note": "KANTA-050E 사양(HTML)"},
+    {"url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=40", "retrieved": "2026-09-10", "note": "KANTA-E/S/F 비교표(HTML)"},
+    {"url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=33", "retrieved": "2026-09-10", "note": "ETOS-300 다채널 성형기 사양(HTML)"},
+    {"url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=35", "retrieved": "2026-09-10", "note": "ETOS 1·2채널 성형기 비교표(HTML)"},
+    {"url": "http://www.mtdi.co.kr/bbs/board.php?bo_table=m0101&wr_id=30", "retrieved": "2026-09-10", "note": "FOBOS-E/S/F 연마기 비교표(HTML)"}
+  ],
+  "confidence": "limited",
+  "notes": "**PDF 카탈로그(이미지 스캔)에는 사양이 없었는데 제품 페이지에는 HTML `<table>` 로 있었다** — SALT 와 같은 함정이다. 앞서 MTDI 제품 페이지를 'MINOS-300' 하나만 보고 '사양이 이미지' 라고 판단했던 것이 틀렸다. 웹 전용 출처라 `sources[].url` 로 적고 `confidence: limited` 를 유지한다. 남은 불확실: (1) KANTA-050E 전원이 'AC 280V' 로 인쇄돼 있어 `uncertain: true` 를 달았다(220 또는 380 V 의 오기로 보이나 확정하지 못한다). (2) DIAMO-100E 전원 '180kW' 는 같은 급 기종(220 W·900 W)과 모터(200 W BLDC)에 비추어 180 W 의 오기로 읽었다 — 이건 자릿수가 명백해 note 로만 적었다. (3) FOBOS 는 비교표에 전원·치수가 계열별로 뭉뚱그려져 있어 기종별로 나누지 못한 항목이 있다. ETOS-400UV(wr_id 51)는 페이지에 표가 없어 담지 못했다."
+}

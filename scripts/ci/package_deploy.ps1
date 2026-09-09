@@ -124,6 +124,26 @@ foreach ($mod in @('fastapi', 'uvicorn', 'sqlalchemy', 'alembic', 'psycopg', 'bc
 }
 Write-Host "  wheel $($wheels.Count) 개, 의존성 검사 통과"
 
+# --- MCP 서버 ------------------------------------------------------------------
+# **앱과 별도 venv 라 wheel 도 따로 담는다.** MCP 가 없어도 앱은 돌아야 하므로
+# 여기서 실패해도 패키징은 계속된다 — 다만 조용히 넘어가지 않고 경고를 남긴다.
+if (Test-Path .\mcp_server\server.py) {
+    Write-Host 'MCP 서버 포함'
+    New-Item -ItemType Directory -Force -Path .\deploy\mcp_server\guide | Out-Null
+    Copy-Item -Force .\mcp_server\server.py .\deploy\mcp_server\server.py
+    Copy-Item -Force .\mcp_server\requirements.txt .\deploy\mcp_server\requirements.txt
+    Copy-Item -Force .\mcp_server\README.md .\deploy\mcp_server\README.md
+    Copy-Item -Force .\mcp_server\guide\GUIDE.md .\deploy\mcp_server\guide\GUIDE.md
+
+    & $py -m pip wheel -r .\deploy\mcp_server\requirements.txt -w .\deploy\mcp_server\packages
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning 'MCP wheel 번들을 만들지 못했습니다 — 이 패키지로는 MCP 서버가 안 뜹니다(앱은 정상).'
+    } else {
+        $mcpWheels = (Get-ChildItem .\deploy\mcp_server\packages -Filter '*.whl' -ErrorAction SilentlyContinue).Count
+        Write-Host "  MCP wheel $mcpWheels 개"
+    }
+}
+
 # --- 스크립트와 빌드 정보 ------------------------------------------------------
 Write-Host '실행·배포 스크립트 추가'
 Copy-Item -Force .\scripts\ci\run_server_template.ps1 .\deploy\run_server.ps1
