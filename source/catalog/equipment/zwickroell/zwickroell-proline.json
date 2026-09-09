@@ -1,0 +1,37 @@
+{
+  "id": "zwickroell-proline",
+  "kind": "equipment_series",
+  "name": "ProLine materials testing machines (Z005 – Z100)",
+  "name_ko": "즈윅로엘 ProLine 만능재료시험기 (Z005–Z100)",
+  "manufacturer": "zwickroell",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "표준화 시험용 보급형 라인. 여기 값은 RetroLine(testControl II 개조 패키지) 문서에서 읽은 세대별 프레임 Vmax 와 시험공간이다 — 현행 ProLine 카탈로그 PDF 는 미확보(DirectIndustry 뷰어만).",
+  "test_items": ["tensile", "compression", "flexure", "peel", "tear"],
+  "measurands": ["tensile_strength", "elongation", "youngs_modulus", "flexural_strength"],
+  "materials": ["plastics", "metals", "textiles", "components"],
+  "standards": {"compliance": ["DIN EN ISO 7500-1", "ASTM E4"], "test_methods": []},
+  "limits": {
+    "force_kN": {"min": 5, "max": 100, "values": [5, 10, 20, 30, 50, 100]},
+    "crosshead_speed_mm_min": {"max": 1000, "note": "Z005 500, Z010 1000, Z020 500, Z030 300, Z050 180 또는 600, Z100 300 (3세대 기준)"},
+    "vertical_test_space_mm": {"min": 570, "max": 1450},
+    "horizontal_test_space_mm": {"min": 440, "max": 640}
+  },
+  "models": [
+    {"model": "ProLine Z005/TS", "specs": {"force_kN": 5, "crosshead_speed_mm_min": {"max": 500}, "vertical_test_space_mm": 570, "horizontal_test_space_mm": 440}},
+    {"model": "ProLine Z005/TN", "specs": {"force_kN": 5, "crosshead_speed_mm_min": {"max": 500}, "vertical_test_space_mm": 1070, "horizontal_test_space_mm": 440}},
+    {"model": "ProLine Z010/TN", "specs": {"force_kN": 10, "crosshead_speed_mm_min": {"max": 1000}, "vertical_test_space_mm": 1050, "horizontal_test_space_mm": 440}},
+    {"model": "ProLine Z010/TH", "specs": {"force_kN": 10, "crosshead_speed_mm_min": {"max": 1000}, "vertical_test_space_mm": 1450, "horizontal_test_space_mm": 440}},
+    {"model": "ProLine Z020/TN", "specs": {"force_kN": 20, "crosshead_speed_mm_min": {"max": 500}, "vertical_test_space_mm": 1050, "horizontal_test_space_mm": 440}},
+    {"model": "ProLine Z030/TN", "specs": {"force_kN": 30, "crosshead_speed_mm_min": {"max": 300}, "vertical_test_space_mm": 1370, "horizontal_test_space_mm": 440}},
+    {"model": "ProLine Z050/TN", "specs": {"force_kN": 50, "crosshead_speed_mm_min": {"max": 600}, "vertical_test_space_mm": 1370, "horizontal_test_space_mm": 440}, "note": "구형 BT1 은 180 mm/min"},
+    {"model": "ProLine Z100/TN", "specs": {"force_kN": 100, "crosshead_speed_mm_min": {"max": 300}, "vertical_test_space_mm": 1360, "horizontal_test_space_mm": 640}}
+  ],
+  "accuracy": {"force": "Class 0.5/1 (DIN EN ISO 7500-1, ASTM E4), up to 165% Fmax, 24 bit"},
+  "features": ["testControl II retrofit available (RetroLine)", "testXpert III"],
+  "relations": [{"type": "same_family_as", "target": "zwickroell-allroundline"}],
+  "sources": [{"file": "zwickroell/retroline-testcontrol-ii-proline-de.pdf", "pages": [2, 3], "note": "독일어 PI — 프레임 사양은 RetroLine 개조 대상 표에서 읽음"}],
+  "confidence": "limited",
+  "notes": "현행 ProLine 카탈로그를 받으면 이 파일을 갱신할 것."
+}

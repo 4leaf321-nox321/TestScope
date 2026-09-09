@@ -1,0 +1,32 @@
+{
+  "id": "tinius-olsen-torsion-testers",
+  "kind": "equipment_series",
+  "name": "Tinius Olsen Torsion Testers 1,000 – 30,000 N·m",
+  "name_ko": "티니우스 올센 비틀림 시험기 (1,000–30,000 N·m)",
+  "manufacturer": "tinius-olsen",
+  "category": "torsion_tester",
+  "drive": "electromechanical",
+  "description": "양방향 토크 부하·측정. 1,000 N·m(벤치, 5–360 °/min), 6,000/12,000/30,000 N·m(플로어, 5–180 °/min). 시편 지름 38–127 mm, 길이 457–2286 mm(표준 척 간격 2.1 m). 토크 정확도 ±0.5 % (0.2–100 %). Horizon 소프트웨어.",
+  "test_items": ["torsion"],
+  "measurands": ["torsional_strength", "torque_angle", "shear_modulus"],
+  "materials": ["metals", "shafts", "fasteners", "wire", "tubes"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E143", "ASTM A938", "ISO 7800"]},
+  "limits": {
+    "torque_Nm": {"min": 1000, "max": 30000, "values": [1000, 6000, 12000, 30000]},
+    "rotation_speed_deg_min": {"min": 5, "max": 360},
+    "specimen_diameter_mm": {"max": 127},
+    "specimen_length_mm": {"max": 2286}
+  },
+  "models": [
+    {"model": "1,000 N·m (10,000 in·lbf)", "form_factor": "benchtop", "specs": {"torque_Nm": 1000, "specimen_diameter_mm": 38, "specimen_length_mm": 457, "rotation_speed_deg_min": {"min": 5, "max": 360}, "footprint_mm": {"L": 1570, "D": 630, "H": 730}, "weight_kg": 500}},
+    {"model": "6,000 N·m (60,000 in·lbf)", "form_factor": "floor", "specs": {"torque_Nm": 6000, "specimen_diameter_mm": 76, "specimen_length_mm": 1829, "rotation_speed_deg_min": {"min": 5, "max": 180}, "footprint_mm": {"L": 3760, "D": 900, "H": 1980}, "weight_kg": 2800}},
+    {"model": "12,000 N·m (120,000 in·lbf)", "form_factor": "floor", "specs": {"torque_Nm": 12000, "specimen_diameter_mm": 76, "specimen_length_mm": 1524, "rotation_speed_deg_min": {"min": 5, "max": 180}, "footprint_mm": {"L": 4470, "D": 1140, "H": 1980}, "weight_kg": 3500}},
+    {"model": "30,000 N·m (300,000 in·lbf)", "form_factor": "floor", "specs": {"torque_Nm": 30000, "specimen_diameter_mm": 127, "specimen_length_mm": 2286, "rotation_speed_deg_min": {"min": 5, "max": 180}, "footprint_mm": {"L": 5590, "D": 1620, "H": 2130}, "weight_kg": 6130}}
+  ],
+  "accuracy": {"torque": "±0.5% of indicated from 0.2% to 100% capacity", "angle": "±0.1% of reading or 0.05°", "speed": "±0.1% of set speed"},
+  "environment": {"operating_temp_degC": [0, 38], "humidity_pct": [10, 90], "power": "220/240 VAC 50–60 Hz"},
+  "options": ["bidirectional grips", "Horizon torsion module"],
+  "relations": [],
+  "sources": [{"file": "tinius-olsen/torsion-testers-tt0000en03.pdf", "pages": [2, 3]}],
+  "confidence": "catalog"
+}

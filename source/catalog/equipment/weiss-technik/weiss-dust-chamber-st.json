@@ -1,0 +1,20 @@
+{
+  "id": "weiss-dust-chamber-st",
+  "kind": "equipment_series",
+  "name": "Weiss Technik Dust Test Chambers Type ST",
+  "name_ko": "바이스 테크닉 ST 타입 분진 시험 챔버",
+  "manufacturer": "weiss-technik",
+  "category": "dust_chamber",
+  "form_factor": "floor",
+  "description": "IP5X(방진형)·IP6X(밀진형) 등급 확인용 분진 챔버. 활석(talcum)·애리조나 분진 등을 순환시켜 하우징 내부로의 고형물 침투를 평가한다. 자동차·가전·산업용 인클로저 시험에 쓴다.",
+  "test_items": ["dust_ingress"],
+  "measurands": ["ip_rating", "dust_penetration"],
+  "materials": ["enclosures", "connectors", "automotive components", "outdoor electronics", "luminaires"],
+  "standards": {"compliance": [], "test_methods": ["IEC 60529", "IEC 60068-2-68", "ISO 20653", "MIL-STD-810 Method 510", "DIN 40050"]},
+  "limits": {"chamber": {"values": ["yes"]}},
+  "models": [{"model": "Type ST 분진 챔버", "specs": {"test_media": "talcum / Arizona dust", "ip_grades": ["IP5X", "IP6X"]}, "uncertain": true}],
+  "relations": [{"type": "simulates_environment", "target": "environment-dust"}],
+  "sources": [{"file": "weiss-technik/dust-test-chambers-st.pdf", "note": "Neurtek(유통사) 미러"}, {"file": "mil-std/method-510-7-sand-and-dust.pdf", "note": "MIL-STD-810H 시험법 원문(배경 자료)"}],
+  "confidence": "limited",
+  "notes": "모델별 챔버 용적·분진 농도·순환 풍속 표 미확보."
+}

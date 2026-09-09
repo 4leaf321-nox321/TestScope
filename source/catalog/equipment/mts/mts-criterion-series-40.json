@@ -1,0 +1,438 @@
+{
+  "id": "mts-criterion-series-40",
+  "kind": "equipment_series",
+  "name": "MTS Criterion Series 40 Electromechanical Universal Test Systems",
+  "name_ko": "MTS Criterion 40 시리즈 전기기계식 만능시험기",
+  "manufacturer": "mts",
+  "brand": "Criterion",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "MTS 의 연구·개발용 전기기계식 UTM. Model 41/42(단일컬럼 1/5 kN), 43(테이블 10/30/50 kN), 44(플로어 30 kN, dual zone), 45(플로어 50/100/300/600 kN), C45.126(1200 kN). 데이터 5 kHz, 최소 속도 0.005 mm/min. TestSuite TW 소프트웨어.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear",
+    "peel",
+    "tear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength"
+  ],
+  "materials": [
+    "plastics",
+    "fine wire",
+    "fibers",
+    "biomaterials",
+    "thin films",
+    "adhesives",
+    "foam",
+    "packaging",
+    "paper",
+    "metals",
+    "composites",
+    "elastomers",
+    "wood",
+    "textiles",
+    "building components",
+    "large fasteners"
+  ],
+  "standards": {
+    "compliance": [
+      "ISO 7500-1 Class 0.5 / Class 1",
+      "ASTM E4",
+      "ISO 9513",
+      "ASTM E83"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 0.001,
+      "max": 1200,
+      "values": [
+        1,
+        5,
+        10,
+        30,
+        50,
+        100,
+        300,
+        600,
+        1200
+      ],
+      "note": "로드셀 옵션 1 N ~ 1200 kN"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.005,
+      "max": 3000
+    },
+    "vertical_test_space_mm": {
+      "min": 820,
+      "max": 2000
+    },
+    "horizontal_test_space_mm": {
+      "min": 100,
+      "max": 1000
+    },
+    "data_rate_Hz": {
+      "max": 5000
+    },
+    "temperature_degC": {
+      "note": "Model 44/45: fluid baths, high-temperature furnace, environmental chamber 장착 가능 (범위는 부속에 따름)"
+    },
+    "chamber": {
+      "values": [
+        "optional"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "C41.103",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 1,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 3000
+        },
+        "position_resolution_nm": 50,
+        "horizontal_test_space_mm": 100,
+        "vertical_test_space_mm": 1100,
+        "crosshead_travel_mm": 900,
+        "footprint_mm": {
+          "H": 1520,
+          "W": 560,
+          "D": 530
+        },
+        "weight_kg": 60,
+        "power_W": 1000
+      }
+    },
+    {
+      "model": "C42.503",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 5,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 2000
+        },
+        "position_resolution_nm": 50,
+        "horizontal_test_space_mm": 100,
+        "vertical_test_space_mm": 820,
+        "vertical_test_space_mm_ext": 1120,
+        "crosshead_travel_mm": 650,
+        "footprint_mm": {
+          "H": 1332,
+          "W": 704,
+          "D": 636
+        },
+        "weight_kg": 112,
+        "power_W": 1000
+      }
+    },
+    {
+      "model": "C43.104",
+      "form_factor": "dual_column_tabletop",
+      "specs": {
+        "force_kN": 10,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 2000
+        },
+        "position_resolution_nm": 50,
+        "horizontal_test_space_mm": 425,
+        "vertical_test_space_mm": 1200,
+        "vertical_test_space_mm_ext": 1500,
+        "crosshead_travel_mm": 1000,
+        "footprint_mm": {
+          "H": 1616,
+          "W": 794,
+          "D": 757
+        },
+        "weight_kg": 175,
+        "power_W": 2000
+      }
+    },
+    {
+      "model": "C43.304",
+      "form_factor": "dual_column_tabletop",
+      "specs": {
+        "force_kN": 30,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 1020
+        },
+        "position_resolution_nm": 60,
+        "horizontal_test_space_mm": 420,
+        "vertical_test_space_mm": 1200,
+        "vertical_test_space_mm_ext": 1500,
+        "crosshead_travel_mm": 1000,
+        "footprint_mm": {
+          "H": 1752,
+          "W": 826,
+          "D": 768
+        },
+        "weight_kg": 305,
+        "power_W": 2400
+      }
+    },
+    {
+      "model": "C43.504",
+      "form_factor": "dual_column_tabletop",
+      "specs": {
+        "force_kN": 50,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 750
+        },
+        "position_resolution_nm": 60,
+        "horizontal_test_space_mm": 420,
+        "vertical_test_space_mm": 1200,
+        "vertical_test_space_mm_ext": 1500,
+        "crosshead_travel_mm": 1000,
+        "footprint_mm": {
+          "H": 1752,
+          "W": 826,
+          "D": 768
+        },
+        "weight_kg": 305,
+        "power_W": 2400
+      }
+    },
+    {
+      "model": "C44.304",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 30,
+        "test_zones": "single or dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 1020
+        },
+        "position_resolution_nm": 60,
+        "horizontal_test_space_mm": 400,
+        "vertical_test_space_mm": 1190,
+        "vertical_test_space_mm_ext": 1490,
+        "crosshead_travel_mm": 1000,
+        "footprint_mm": {
+          "H": 1951,
+          "W": 861,
+          "D": 689
+        },
+        "weight_kg": 395,
+        "power_W": 2400
+      }
+    },
+    {
+      "model": "C45.504",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 50,
+        "test_zones": "single or dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 750
+        },
+        "position_resolution_nm": 47,
+        "horizontal_test_space_mm": 600,
+        "vertical_test_space_mm": 1220,
+        "vertical_test_space_mm_ext": 1520,
+        "crosshead_travel_mm": 1000,
+        "footprint_mm": {
+          "H": 2269,
+          "W": 1315,
+          "D": 957
+        },
+        "weight_kg": 1195,
+        "power_W": 2400
+      }
+    },
+    {
+      "model": "C45.504 Wide",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 50,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 750
+        },
+        "horizontal_test_space_mm": 1000,
+        "vertical_test_space_mm": 1520,
+        "crosshead_travel_mm": 1300,
+        "footprint_mm": {
+          "H": 2554,
+          "W": 1710,
+          "D": 957
+        },
+        "weight_kg": 1700,
+        "power_W": 2400
+      }
+    },
+    {
+      "model": "C45.105",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 100,
+        "test_zones": "single or dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 750
+        },
+        "position_resolution_nm": 47,
+        "horizontal_test_space_mm": 600,
+        "vertical_test_space_mm": 1220,
+        "vertical_test_space_mm_ext": 1520,
+        "crosshead_travel_mm": 1000,
+        "footprint_mm": {
+          "H": 2269,
+          "W": 1315,
+          "D": 957
+        },
+        "weight_kg": 1195,
+        "power_W": 4400
+      }
+    },
+    {
+      "model": "C45.305",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 300,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 750
+        },
+        "position_resolution_nm": 49,
+        "horizontal_test_space_mm": 650,
+        "vertical_test_space_mm": 1540,
+        "vertical_test_space_mm_ext": 1840,
+        "crosshead_travel_mm": 1100,
+        "footprint_mm": {
+          "H": 2535,
+          "W": 1362,
+          "D": 1100
+        },
+        "weight_kg": 1605,
+        "power_W": 5200,
+        "power": "3PH 380–480 V"
+      }
+    },
+    {
+      "model": "C45.605",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 600,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 254
+        },
+        "position_resolution_nm": 16,
+        "horizontal_test_space_mm": 750,
+        "vertical_test_space_mm": 2000,
+        "crosshead_travel_mm": 1750,
+        "footprint_mm": {
+          "H": 3490,
+          "W": 1660,
+          "D": 1272
+        },
+        "weight_kg": 3500,
+        "power_W": 5200,
+        "power": "3PH 380–480 V"
+      }
+    },
+    {
+      "model": "C45.126",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 1200,
+        "force_options_kN": [
+          1000,
+          1200
+        ],
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 254
+        },
+        "position_resolution_nm": 25,
+        "horizontal_test_space_mm": 860,
+        "vertical_test_space_mm": 1800,
+        "crosshead_travel_mm": 1500,
+        "footprint_mm": {
+          "H": 3408,
+          "W": 1948,
+          "D": 1669
+        },
+        "weight_kg": 6000,
+        "power": "3PH 380–415/440–480 V, 25 A, 12 kW"
+      },
+      "note": "정적유압 없이 전기기계식으로 1200 kN. 별도 브로슈어(2026)"
+    }
+  ],
+  "accuracy": {
+    "force": "±0.5% of applied force (1–100% of rated); ±1.0% (0.5–1%)",
+    "speed": "±0.1% of set speed (≥0.01 mm/min), ±0.2% (<0.01 mm/min)",
+    "displacement": "±0.008 mm or ±0.05% of set displacement",
+    "strain": "±0.5% of applied strain"
+  },
+  "environment": {
+    "operating_temp_degC": [
+      5,
+      40
+    ],
+    "humidity_pct": [
+      5,
+      85
+    ],
+    "max_altitude_m": 2000
+  },
+  "features": [
+    "ICE controller 5000 Hz DAQ / 5000 Hz control loop",
+    "TestSuite TW software",
+    "dual zone test space (44/45)",
+    "over-force protection 110%"
+  ],
+  "options": [
+    "fluid baths",
+    "high-temperature furnace",
+    "environmental chamber",
+    "647.100 side-loading hydraulic wedge grips (C45.126)"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "mts-exceed-series-40",
+      "note": "Exceed 는 생산·QC 용 보급형"
+    }
+  ],
+  "sources": [
+    {
+      "file": "mts/criterion-series-40-brochure.pdf",
+      "pages": [
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "file": "mts/criterion-c45-126-brochure.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "mts/criterion-exceed-accessories-catalog.pdf",
+      "note": "그립·지그·신율계 카탈로그(84쪽)"
+    }
+  ],
+  "confidence": "catalog"
+}

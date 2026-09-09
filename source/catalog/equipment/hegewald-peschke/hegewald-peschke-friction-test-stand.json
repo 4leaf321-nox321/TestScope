@@ -1,0 +1,91 @@
+{
+  "id": "hegewald-peschke-friction-test-stand",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Friction Test Stand (41-032-100)",
+  "name_ko": "헤게발트 운트 페슈케 마찰 시험대",
+  "manufacturer": "hegewald-peschke",
+  "category": "tribometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "원통-핀(cylinder & pin) 짝을 맞대어 미끄럼 마찰과 마모를 재는 시험대. 마찰 속도·수직력·온도·습도를 모두 구간 안에서 무단 조절한다. 시험부가 기후 제어 가능한 챔버 안에 있고 문의 창으로 시험을 볼 수 있다. 수직력 최대 2000 N, 마찰력 최대 1000 N, 마찰 속도 최대 10 m/s 이고 정지 상태에서 회전 방향을 바꿀 수 있다. 시편은 원통 Ø50 x 40 mm 와 핀 Ø8 mm 이하(또는 8 x 8 mm, 길이 약 20 mm)이며 측정 가능한 마모 길이는 약 2 mm. 가속 시험과 장기 시험을 모두 하고, 시간 기준 또는 측정값 한계 초과로 정지시킨다. 시험 시작 전 기후 조건을 미리 잡을 수 있다.",
+  "test_items": [
+    "friction_coefficient",
+    "friction_wear_tribo",
+    "abrasion"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_depth",
+    "wear_rate",
+    "normal_force",
+    "surface_temperature"
+  ],
+  "materials": [
+    "metals",
+    "coatings",
+    "polymers",
+    "sliding pairs"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_N": {
+      "max": 2000,
+      "note": "수직력. 마찰력은 최대 1000 N"
+    },
+    "sliding_speed_m_s": {
+      "max": 10
+    },
+    "specimen_diameter_mm": {
+      "max": 50,
+      "note": "원통 Ø50 x 40 mm. 핀은 Ø8 mm 이하 또는 8 x 8 mm, 길이 약 20 mm"
+    },
+    "wear_depth": {
+      "max": 2,
+      "unit": "mm",
+      "note": "측정 가능한 마모 길이"
+    }
+  },
+  "models": [
+    {
+      "model": "Friction test stand (41-032-100)",
+      "specs": {
+        "normal_force_N_max": 2000,
+        "friction_force_N_max": 1000,
+        "friction_speed_m_s_max": 10,
+        "rotation_direction": "정지 상태에서 방향 전환 가능",
+        "specimen_cylinder_mm": "Ø50 x 40",
+        "specimen_pin_mm": "Ø8 이하 또는 8 x 8, 길이 약 20",
+        "measurable_wear_length_mm": 2,
+        "test_procedures": ["가속 시험", "장기 시험"],
+        "shutdown": "시간 기준 또는 측정값 한계 초과",
+        "climate": "기후 제어 챔버 내 시험부, 시험 전 사전 조건화 가능",
+        "data": "PC 로 측정값 취득, 기록 범위 설정 가능",
+        "footprint_mm": "1365 x 720 x 1500 (WxDxH, 외부 기후 챔버 제외)"
+      }
+    }
+  ],
+  "features": [
+    "마찰 속도·수직력·온도·습도 무단 조절",
+    "기후 제어 챔버 안에서 시험, 문 창으로 관찰",
+    "정지 시 회전 방향 전환",
+    "측정값 한계 초과 시 자동 정지",
+    "완제품 상태로 납품, 부속으로 확장"
+  ],
+  "options": [
+    "외부 기후 제어 유닛",
+    "보호 장치",
+    "고객 요구에 맞춘 시편 홀더"
+  ],
+  "relations": [
+    {"type": "performs", "target": "friction_coefficient"},
+    {"type": "performs", "target": "friction_wear_tribo"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/41-032-100-friction-test-stand.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "catalog",
+  "notes": "온도·습도를 '구간 안에서 무단 조절' 한다고 적으면서 정작 그 구간의 수치를 적지 않는다 — 기후 조건 범위가 문서에 없어 `temperature_degC`·`humidity_pct` 를 비워 뒀다. 무게도 표 아래가 잘려 나오지 않는다. `wear_depth` 는 온톨로지의 조건 키가 아니라 이 문서의 '측정 가능한 마모 길이' 를 담기 위해 쓴 키다."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "zwickroell-arbm120-rotary-bending",
+  "kind": "equipment_model",
+  "name": "ARBM 120 Amsler Rotary Bending Machine",
+  "name_ko": "즈윅로엘 ARBM 120 암슬러 회전굽힘 피로시험기",
+  "manufacturer": "zwickroell",
+  "brand": "Amsler",
+  "category": "rotating_bending_fatigue",
+  "drive": "rotating_bending",
+  "form_factor": "floor",
+  "description": "굽힘 모멘트 2.5–120 N·m(0.5 N·m 단계), 회전 500–5000 r/min, 최대 굽힘각 7°, 사이클 카운터 1×10^8(옵션 1×10^9). 시편 지름 2–20 mm(ER32 콜릿), 그립 간격 50–200 mm. AHTF 850-A 고온 퍼니스 옵션 200–850 °C.",
+  "test_items": ["fatigue"],
+  "measurands": ["fatigue_life", "sn_curve", "fatigue_limit"],
+  "materials": ["metals", "steel", "aluminium"],
+  "standards": {"compliance": ["IP 33"], "test_methods": ["ISO 1143", "JIS Z 2274"]},
+  "limits": {
+    "bending_moment_Nm": {"min": 2.5, "max": 120},
+    "rotation_rpm": {"min": 500, "max": 5000},
+    "frequency_Hz": {"min": 8.3, "max": 83.3, "note": "rpm/60"},
+    "specimen_diameter_mm": {"min": 2, "max": 20},
+    "grip_span_mm": {"min": 50, "max": 200, "note": "고온 시험 160–200"},
+    "temperature_degC": {"min": 200, "max": 850, "note": "AHTF 850-A 퍼니스 장착 시"}
+  },
+  "models": [{"model": "ARBM 120", "specs": {"bending_moment_Nm": {"min": 2.5, "max": 120}, "rotation_rpm": {"min": 500, "max": 5000}, "max_cycles": 100000000, "footprint_mm": {"W": 1520, "D": 1010, "H": 1450}, "weight_kg": 690, "power_kW": 1.8, "power_kW_with_furnace": 2.3, "hydraulic": "5 bar, 2 L/min, 30 L reservoir"}}],
+  "accuracy": {"furnace_control": "PID ±2 °C, heating 45±5 min to 850 °C"},
+  "environment": {"power": "3×380/400 V 16 A"},
+  "options": ["AHTF 850-A high-temperature furnace", "load weights 1–100 N (2 boxes)", "axis alignment tool"],
+  "relations": [{"type": "extends_temperature", "target": "zwickroell-ahtf-850-furnace", "note": "200–850 °C"}],
+  "sources": [{"file": "zwickroell/arbm120-rotary-bending-pi-en.pdf", "pages": [3, 4, 5]}],
+  "confidence": "catalog"
+}

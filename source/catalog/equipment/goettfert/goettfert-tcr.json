@@ -1,0 +1,79 @@
+{
+  "id": "goettfert-tcr",
+  "kind": "equipment_series",
+  "name": "GÖTTFERT TCR Thermoset Capillary Rheometer",
+  "name_ko": "괴트페르트 TCR 열경화성 수지용 모세관 레오미터",
+  "manufacturer": "goettfert",
+  "brand": "RHEOGRAPH",
+  "category": "capillary_rheometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "열경화성 수지(듀로플라스트)의 품질 시험용 모세관 레오미터. 75 kN 피스톤 힘 모세관 레오미터를 기반으로 만들었다. 온도 제어되는 공급 배럴에서 미리 정한 온도·압력·부피로 재료를 조질한 뒤 최대 1600 bar 로 유동 나선(flow spiral) 금형에 밀어 넣는다. 나선에는 압력 변환기 최대 5 개와 온도 구배 센서 4 개가 박혀 있어, 주입 온도대의 유동성과 금형 안 유로를 따라가는 가교(crosslinking) 거동을 함께 본다. 경화된 시편을 빼내기 쉽도록 시험 배럴이 다이 플레이트의 원뿔 시트에 들어가고 다이 플레이트는 분할·탈착된다. 다이 플레이트가 상부 금형과 단열돼 금형과 다이의 온도를 다르게 잡을 수 있다. 정압 또는 정속 측정이 모두 된다.",
+  "test_items": [
+    "rheology_capillary"
+  ],
+  "measurands": [
+    "viscosity",
+    "cure",
+    "cure_kinetics",
+    "gel_point"
+  ],
+  "materials": [
+    "thermosets",
+    "phenolic/epoxy molding compounds",
+    "rubber compounds"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "max": 75,
+      "note": "기반이 되는 모세관 레오미터의 피스톤 힘"
+    },
+    "pressure_bar": {
+      "max": 1600,
+      "note": "유동 나선으로 밀어 넣는 최대 압력"
+    }
+  },
+  "models": [
+    {
+      "model": "Thermoset Capillary Rheometer (TCR)",
+      "specs": {
+        "piston_force_kN": 75,
+        "injection_pressure_bar_max": 1600,
+        "pressure_transducers_in_spiral": 5,
+        "temperature_gradient_sensors": 4,
+        "mold": "유동 나선(flow spiral), 분할·탈착식 다이 플레이트",
+        "measuring_modes": ["정압", "정속"]
+      }
+    }
+  ],
+  "features": [
+    "유동 나선 금형에 압력 변환기 5 개·온도 구배 센서 4 개",
+    "금형과 다이의 온도를 따로 설정(다이 플레이트 단열)",
+    "경화 시편 제거를 위한 원뿔 시트 분할 배럴",
+    "온도 제어 공급 배럴에서 사전 조질",
+    "재료 배치(batch) 간 가공 특성 비교에 적합"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "rheology_capillary"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [14, 15]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "14~15쪽에 서술만 있고 사양표가 없다. 온도 범위·치수·중량·전원은 브로슈어에 나오지 않아 비워 뒀다."
+}

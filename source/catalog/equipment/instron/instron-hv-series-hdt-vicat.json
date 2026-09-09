@@ -1,0 +1,33 @@
+{
+  "id": "instron-hv-series-hdt-vicat",
+  "kind": "equipment_series",
+  "name": "Instron HV Series HDT & Vicat Testers (HV3S / HV6M / HV6X) and CEAST HV3 / HV6 / HV6A / HDT Vicat 500 AlOxide",
+  "name_ko": "인스트론 HV 시리즈 HDT·비캣 시험기 (CEAST HV3/HV6, AlOxide 500 °C 포함)",
+  "manufacturer": "instron",
+  "brand": "CEAST",
+  "category": "hdt_vicat",
+  "form_factor": "benchtop",
+  "description": "실리콘 오일 배스 20–300 °C, 온도 분해능 0.1 °C, LVDT 0.001 mm. HV3S: 3 스테이션 수동, HV6M: 6 스테이션 기계 이동·수동 하중, HV6X: 6 스테이션 전자동(하중 자동). 구형 CEAST HV3/HV6/HV6A(6 스테이션 자동 리프트·하중). CEAST HDT Vicat 500 AlOxide: 산화알루미늄 유동층으로 50–500 °C(PEEK·PEI·LCP).",
+  "test_items": ["hdt", "vicat"],
+  "measurands": ["hdt", "vst"],
+  "materials": ["thermoplastics", "high-temperature thermoplastics (PEEK, PEI, LCP)"],
+  "standards": {"compliance": [], "test_methods": ["ISO 75-1", "ISO 75-2", "ASTM D648", "ISO 306", "ASTM D1525"]},
+  "limits": {
+    "temperature_degC": {"min": 20, "max": 500, "note": "오일 배스 20–300; AlOxide 50–500"},
+    "stations": {"values": [3, 6]},
+    "heating_rate_K_h": {"values": [50, 120]}
+  },
+  "models": [
+    {"model": "HV3S", "specs": {"stations": 3, "temperature_degC": {"min": 20, "max": 300}, "oil_capacity_L": 9, "station_movement": "manual", "weights": "manual", "footprint_mm": {"W": 938, "D": 480, "H": 713}, "weight_kg": 80, "power_W": 3000}},
+    {"model": "HV6M", "specs": {"stations": 6, "temperature_degC": {"min": 20, "max": 300}, "oil_capacity_L": 16, "station_movement": "machine", "weights": "manual", "footprint_mm": {"W": 1291, "D": 480, "H": 780}, "weight_kg": 140, "power_W": 3000}},
+    {"model": "HV6X", "specs": {"stations": 6, "temperature_degC": {"min": 20, "max": 300}, "oil_capacity_L": 16, "station_movement": "machine", "weights": "machine", "footprint_mm": {"W": 1291, "D": 550, "H": 900}, "weight_kg": 160, "power_W": 3000}},
+    {"model": "CEAST HV3 / HV6 / HV6A (legacy)", "specs": {"stations": [3, 6], "temperature_degC": {"max": 300}, "note": "HV6A: automatic station lift and weight application"}},
+    {"model": "CEAST HDT Vicat 500 AlOxide", "specs": {"temperature_degC": {"min": 50, "max": 500}, "heating_medium": "aluminium oxide fluid bed (20–60 µm), hot air"}}
+  ],
+  "accuracy": {"temperature_resolution_degC": 0.1, "lvdt_resolution_mm": 0.001},
+  "environment": {"power": "230 V ±10 % 50/60 Hz, max 3000 W", "interfaces": "Ethernet (PC), USB (printer)"},
+  "options": ["VisualTHERM software", "nitrogen diffuser", "automatic cooling"],
+  "relations": [],
+  "sources": [{"file": "instron/hv-series-hdt-vicat.pdf", "pages": [14]}, {"file": "instron/ceast-hdt-vicat-3-6-stations-pod.pdf", "pages": [2]}, {"file": "instron/ceast-aloxide-hdt-vicat-500c.pdf", "pages": [1, 2, 3], "note": "보도자료"}],
+  "confidence": "catalog"
+}

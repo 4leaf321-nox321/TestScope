@@ -1,0 +1,28 @@
+{
+  "id": "struers-duramin-40",
+  "kind": "equipment_series",
+  "name": "Struers Duramin-40 automatic micro/macro hardness tester",
+  "name_ko": "스트루어스 Duramin-40 자동 마이크로/매크로 경도계",
+  "manufacturer": "struers",
+  "category": "vickers_knoop_hardness",
+  "form_factor": "benchtop",
+  "description": "세 가지 하중 범위(10 gf–10 kgf, 10 gf–31.25 kgf, 1 gf–62.5 kgf). 자동 6 위치 터렛, 수동/모터 XY 스테이지, 모터 Z축, 충돌 방지, 내장 PC. Kc 파괴인성·매핑·용접 측정 모듈.",
+  "test_items": ["hardness_vickers", "hardness_knoop", "hardness_brinell"],
+  "measurands": ["hardness_HV", "hardness_HK", "hardness_HB", "fracture_toughness"],
+  "materials": ["metals", "ceramics", "coatings", "welds"],
+  "standards": {"compliance": [], "test_methods": ["ISO 6507-1", "ASTM E384", "ISO 4545-1", "ISO 6506-1"]},
+  "limits": {
+    "test_load_gf": {"min": 1, "max": 62500, "note": "모델별 10 gf–10 kgf / 10 gf–31.25 kgf / 1 gf–62.5 kgf"},
+    "hardness_scales": {"values": ["HV", "HK", "HBW"]}
+  },
+  "models": [
+    {"model": "Duramin-40 M1/A1 (10 gf – 10 kgf)", "specs": {"test_load_gf": {"min": 10, "max": 10000}}},
+    {"model": "Duramin-40 M2/A2 (10 gf – 31.25 kgf)", "specs": {"test_load_gf": {"min": 10, "max": 31250}}},
+    {"model": "Duramin-40 M3/A3 (1 gf – 62.5 kgf)", "specs": {"test_load_gf": {"min": 1, "max": 62500}}}
+  ],
+  "options": ["motorised XY stage", "overview camera", "dual monitors", "Kc fracture / mapping / weld modules"],
+  "relations": [],
+  "sources": [{"file": "struers/duramin-40-technical-sheet.pdf", "pages": [1]}],
+  "confidence": "catalog",
+  "notes": "기술 시트 2쪽이 주소록이라 상세 사양(시편 높이·스테이지 이동량) 미기재."
+}

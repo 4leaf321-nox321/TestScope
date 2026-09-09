@@ -1,0 +1,32 @@
+{
+  "id": "linseis-tma-l71-l72",
+  "kind": "equipment_series",
+  "name": "LINSEIS TMA L71 EM / L71 / L72 Thermomechanical Analyzers",
+  "name_ko": "린자이스 TMA L71/L72 열기계분석기",
+  "manufacturer": "linseis",
+  "category": "tma",
+  "form_factor": "benchtop",
+  "description": "L71 EM/L71: -150~1000 °C, 힘 0.001–5.7 N(L71 20 N 옵션). L72: -180~500 °C 또는 RT~1400/1600/1750/2000/2400 °C, 힘 0.001–20 N, 동적 TMA 0.05–1(50) Hz. 분해능 0.125 nm, 감도 1.25 nm, CTE 정밀도 ±0.1 %. 팽창·응력/변형·크리프·완화·동적 TMA(E', E'', tanδ). 시편 20–50 mm, Ø≤10; 필름 25 mm.",
+  "test_items": ["tma", "dma", "creep", "relaxation", "dilatometry"],
+  "measurands": ["cte", "softening_point", "glass_transition", "storage_modulus", "youngs_modulus"],
+  "materials": ["polymers", "metals", "ceramics", "films", "fibers"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E831", "ISO 11359", "ASTM E1545"]},
+  "limits": {
+    "temperature_degC": {"min": -180, "max": 2400},
+    "force_N": {"min": 0.001, "max": 20},
+    "frequency_Hz": {"min": 0.01, "max": 50},
+    "heating_rate_K_min": {"min": 0.1, "max": 100},
+    "sample_length_mm": {"min": 20, "max": 50},
+    "specimen_diameter_mm": {"max": 10}
+  },
+  "models": [
+    {"model": "TMA L71 EM", "specs": {"temperature_degC": {"min": -150, "max": 1000}, "force_N": {"min": 0.001, "max": 5.7}, "frequency_Hz": [1, 5]}},
+    {"model": "TMA L71", "specs": {"temperature_degC": {"min": -150, "max": 1000}, "force_N": {"min": 0.001, "max": 20}}},
+    {"model": "TMA L72", "specs": {"temperature_degC": {"min": -180, "max": 2400}, "temperature_variants": ["-180~500", "RT~1400", "RT~1600", "RT~1750", "RT~2000", "RT~2400"], "force_N": {"min": 0.001, "max": 20}, "frequency_Hz": {"min": 0.05, "max": 50}}}
+  ],
+  "accuracy": {"temperature": "±1 °C precision, isothermal ±0.1 °C", "cte": "±0.1 % or better", "displacement_resolution_nm": 0.125, "baseline_drift_um": 1},
+  "options": ["digital MFC L40/2051/MFC", "sample holders L77/150 expansion, L77/130 stress-strain"],
+  "relations": [],
+  "sources": [{"file": "linseis/tma-product-brochure.pdf", "pages": [18, 19, 24]}],
+  "confidence": "catalog"
+}

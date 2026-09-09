@@ -1,0 +1,107 @@
+{
+  "id": "daekyung-tech-dtb-brinell",
+  "kind": "equipment_series",
+  "name": "Daekyung Tech DTB-500 / DTB-600N Brinell Hardness Tester",
+  "name_ko": "대경테크 DTB-500·DTB-600N 브리넬 경도기",
+  "manufacturer": "daekyung-tech",
+  "brand": "DKTD",
+  "category": "brinell_hardness",
+  "drive": "hydraulic",
+  "form_factor": "floor",
+  "description": "강구 압자를 일정 시험하중으로 시편에 압입해 자국 지름으로 브리넬 경도를 구하는 유압식 경도기. 시험하중 500·750·1000·1500·2000·2500·3000 kgf 를 무게추 조합(A·B·C·D 4 조)으로 만들고, 압자는 Ø5 mm 와 Ø10 mm 텅스텐 초경합금구를 기본으로 쓴다(Ø1·2.5 mm 도 가능). 부하하중 오차는 ±0.5 % 이내, 시험 최대 높이 175 mm. DTB-500 은 수동 유압 펌프로 가압하고, DTB-600N 은 제어 BOX 와 컨트롤 판넬을 갖춘 220 V 전동식이다. 자국 지름은 계측현미경(옵션)으로 읽는다.",
+  "test_items": [
+    "hardness_brinell"
+  ],
+  "measurands": [
+    "hardness_hbw",
+    "indent_diagonal"
+  ],
+  "materials": [
+    "강",
+    "주철",
+    "동 및 동합금",
+    "경합금"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "KS B 0805"
+    ]
+  },
+  "limits": {
+    "test_load_kgf": {
+      "values": [500, 750, 1000, 1500, 2000, 2500, 3000],
+      "note": "무게추 4 조(A·B·C·D) 조합으로 만든다"
+    },
+    "specimen_height_mm": {
+      "max": 175,
+      "note": "시험 최대 높이"
+    },
+    "hardness_scales": {
+      "values": ["HBW"],
+      "note": "초경(텅스텐)구 압자 HBW. 과거 강구 압자는 HBS/HB. 브리넬 값 320 이하는 HB 로 약기"
+    },
+    "weight_kg": {
+      "max": 135
+    }
+  },
+  "models": [
+    {
+      "model": "DTB-500",
+      "specs": {
+        "test_load_kgf": [500, 750, 1000, 1500, 2000, 2500, 3000],
+        "max_specimen_height_mm": 175,
+        "footprint_mm": "470 x 600 x 1140",
+        "weight_kg": 135,
+        "load_accuracy_pct": 0.5,
+        "loading": "수동 유압 펌프(펌프 작동 레버·유압 밸브·오일탱크)",
+        "hydraulic_oil": "#68",
+        "power_supply": null
+      },
+      "note": "전기 사양이 매뉴얼에 없다 — 수동 유압식이라 전원이 필요 없는 것으로 보이지만 문서가 명시하지는 않는다"
+    },
+    {
+      "model": "DTB-600N",
+      "specs": {
+        "test_load_kgf": [500, 750, 1000, 1500, 2000, 2500, 3000],
+        "max_specimen_height_mm": 175,
+        "footprint_mm": "470 x 600 x 1140",
+        "weight_kg": 135,
+        "load_accuracy_pct": 0.5,
+        "loading": "전동, 컨트롤 판넬 + 제어 BOX, START 버튼",
+        "hydraulic_oil": "#68",
+        "power_supply": "220 V, 50 W, 1 ph, 50~60 Hz",
+        "current_A": 1
+      }
+    }
+  ],
+  "accuracy": {
+    "load_accuracy": "부하하중 오차 ±0.5 % 이내"
+  },
+  "features": [
+    "무게추 4 조(A·B·C·D)로 7 단계 시험하중 구성",
+    "Ø5·Ø10 mm 텅스텐 초경합금구 압자 기본 제공(Ø1·Ø2.5 mm 도 사용 가능)",
+    "평앤빌 Ø80, V앤빌 Ø63, 대형 평앤빌 Ø200 기본 부속",
+    "보조 오일탱크에서 메인 실린더로 유압유 자동 보충(통상 5 년에 1 회 교환)",
+    "KS B 0805 의 0.25 < d/D < 0.60 조건과 재질별 P/D² 선정표를 매뉴얼에 수록"
+  ],
+  "options": [
+    "시험 Table",
+    "브리넬 표준 경도 시편",
+    "계측현미경"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "hardness_brinell"
+    }
+  ],
+  "sources": [
+    {
+      "file": "daekyung-tech/dktd-600-brinell-manual.pdf",
+      "pages": [1, 13, 15, 16, 17, 30, 31]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "출처가 카탈로그가 아니라 설치·사용설명서(Ver.1005/BRINELL)라 정량 사양이 두 쪽뿐이다. 문서 안에서 기종 표기가 어긋난다 — 표지와 목차와 명판은 DTB-500 / DTB-600N 인데 사양 쪽(15·16쪽) 제목만 DTR-500 / DTR-600N 으로 인쇄돼 있다. 15쪽을 렌더링해 확인했고(`catalog/pages/dktd-p15-spec.png`), 명판 예시(13쪽 MODEL: DTB-600N)를 따라 DTB 로 적었다. 두 기종의 치수·중량·최대 높이·하중 단계가 문서상 완전히 같고 차이는 가압 방식(수동 유압 / 전동)뿐이다. 경도 측정 범위(HB 상한)는 압자 재질로만 서술돼 있다 — 강구 압자는 HB 450 이하, 초경합금구 압자는 HB 600~650 까지. 이는 압자의 한계이지 장비 사양표의 값이 아니라 limits 에 넣지 않았다."
+}

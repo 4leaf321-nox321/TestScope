@@ -1,0 +1,34 @@
+{
+  "id": "instron-8800-servohydraulic",
+  "kind": "equipment_series",
+  "name": "Instron 8800 Series Servohydraulic Fatigue Testing Systems (8872 / 8874 tabletop, 8801 / 8802 / 8862 floor)",
+  "name_ko": "인스트론 8800 시리즈 서보유압 피로시험기",
+  "manufacturer": "instron",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "8872: 테이블형 ±25 kN, 스트로크 100 mm. 8874: 테이블형 2축 ±25 kN / ±100 N·m, 회전 ±130°. 8801: 플로어 ±100 kN(브로슈어 미확보), 8802 ±250 kN. Dynacell 피로 로드셀, 8800MT 컨트롤러(24 bit), WaveMatrix3/Bluehill. 3621 HPU(18.5/30/45 kW, 207 bar).",
+  "test_items": ["fatigue", "fracture_toughness", "tensile", "compression", "flexure", "torsion", "high_speed_tensile"],
+  "measurands": ["fatigue_life", "sn_curve", "da_dN", "K_IC", "J_IC", "dynamic_stiffness"],
+  "materials": ["metals", "composites", "biomaterials", "medical devices", "components"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E466", "ASTM E606", "ASTM E647", "ASTM E399", "ASTM E1820", "ISO 1099", "ISO 12106", "ISO 12135"]},
+  "limits": {
+    "dynamic_force_kN": {"min": 25, "max": 250, "values": [25, 100, 250], "note": "8872/8874 ±25; 8801 ±100; 8802 ±250"},
+    "torque_Nm": {"values": [100], "note": "8874"},
+    "stroke_mm": {"values": [100]},
+    "frequency_Hz": {"note": "servohydraulic; typical fatigue up to tens of Hz (not stated)"},
+    "vertical_test_space_mm": {"max": 1067},
+    "temperature_degC": {"note": "3119-600 chambers / furnaces compatible"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "8872", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 25, "stroke_mm": 100, "vertical_test_space_mm": 1067, "frame_stiffness_kN_mm": 260, "weight_kg": 287, "hydraulic_pressure_bar": 207, "power_VA": 800}},
+    {"model": "8874", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 25, "torque_Nm": 100, "rotation_deg": 130, "stroke_mm": 100, "vertical_test_space_mm": 1033, "frame_stiffness_kN_mm": 260, "torsional_stiffness_kNm_deg": 870, "weight_kg": 327, "hydraulic_pressure_bar": 207, "power_VA": 800}},
+    {"model": "8801", "form_factor": "floor", "specs": {"dynamic_force_kN": 100}, "note": "웹 검색 요약 기준(브로슈어 다운로드 실패)", "uncertain": true}
+  ],
+  "accuracy": {"load": "±0.5% of indicated load or ±0.005% of load cell capacity (1–100%), whichever greater"},
+  "environment": {"operating_temp_degC": [10, 38], "humidity_pct": [10, 90], "power": "1PH 90–132 / 180–264 VAC", "hydraulic": "3621-002/003/004 HPU 18.5/30/45 kW, 207 bar, 37.9–113.6 L/min, water cooled"},
+  "options": ["2742-301 ±30 kN hydraulic wedge grips", "2780-118 fracture mechanics grips", "2810-181 3-point fatigue bend fixture", "8260C ±25 kN/±100 Nm grips (8874)", "3119-600 chambers"],
+  "relations": [{"type": "requires", "target": "instron-3621-hydraulic-power-unit"}, {"type": "compatible_accessory", "target": "instron-3119-600-environmental-chambers"}, {"type": "extends_temperature", "target": "instron-3119-600-environmental-chambers"}],
+  "sources": [{"file": "instron/servohydraulic-fatigue-brochure.pdf", "pages": [9, 11, 23]}, {"file": "instron/8874-biaxial-servohydraulic.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

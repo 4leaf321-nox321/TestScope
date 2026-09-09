@@ -1,0 +1,969 @@
+{
+ "_comment": "제조사 노드. id 는 pdf/ 하위 폴더명과 같다. TestAtlas 축 manufacturer 의 값 후보.",
+ "manufacturers": [
+  {
+   "id": "admesy",
+   "name": "Admesy",
+   "country": "NL",
+   "website": "https://www.admesy.com",
+   "domains": [
+    "display_color_analyzer"
+   ],
+   "note": "PDF 미확보 — 다운로드 실패, 빈 폴더 정리함"
+  },
+  {
+   "id": "ametek-lloyd",
+   "name": "AMETEK / Lloyd Instruments",
+   "country": "GB",
+   "parent": "AMETEK",
+   "brands": [
+    "Lloyd Instruments",
+    "Chatillon"
+   ],
+   "website": "https://www.ametektest.com",
+   "domains": [
+    "universal_testing_machine",
+    "force_tester"
+   ]
+  },
+  {
+   "id": "anton-paar",
+   "name": "Anton Paar",
+   "name_ko": "안톤파",
+   "country": "AT",
+   "website": "https://www.anton-paar.com",
+   "domains": [
+    "rotational_rheometer",
+    "instrumented_indentation",
+    "tribometer"
+   ]
+  },
+  {
+   "id": "arbin",
+   "name": "Arbin Instruments",
+   "country": "US",
+   "website": "https://www.arbin.com",
+   "domains": [
+    "battery_cycler"
+   ]
+  },
+  {
+   "id": "ateq",
+   "name": "ATEQ",
+   "country": "FR",
+   "website": "https://www.ateq-leaktesting.com",
+   "domains": [
+    "pressure_decay_leak_tester"
+   ]
+  },
+  {
+   "id": "audio-precision",
+   "name": "Audio Precision",
+   "country": "US",
+   "website": "https://www.ap.com",
+   "domains": [
+    "audio_analyzer"
+   ]
+  },
+  {
+   "id": "bareiss",
+   "name": "Bareiss",
+   "country": "DE",
+   "website": "https://www.bareiss.de",
+   "domains": [
+    "shore_irhd_hardness"
+   ]
+  },
+  {
+   "id": "bruel-kjaer",
+   "name": "Brüel & Kjær (HBK)",
+   "name_ko": "브루엘 앤 케아",
+   "country": "DK",
+   "website": "https://www.bksv.com",
+   "domains": [
+    "head_torso_simulator",
+    "vibration_shaker"
+   ]
+  },
+  {
+   "id": "bruker",
+   "name": "Bruker (Hysitron)",
+   "country": "US",
+   "brands": [
+    "Hysitron",
+    "UMT TriboLab"
+   ],
+   "website": "https://www.bruker.com",
+   "domains": [
+    "instrumented_indentation",
+    "tribometer"
+   ],
+   "note": "Hysitron 브로슈어는 bruker.com 등록 폼 뒤에 있다. 옛 도메인 hysitron.com 의 archive.org 스냅샷(2015)에서 TI 950·PI 95·TS 75 확보"
+  },
+  {
+   "id": "buehler",
+   "name": "Buehler (Wilson)",
+   "name_ko": "뷸러 (윌슨)",
+   "country": "US",
+   "parent": "ITW",
+   "brands": [
+    "Wilson",
+    "Wolpert(legacy)",
+    "Reicherter(legacy)"
+   ],
+   "website": "https://www.buehler.com",
+   "domains": [
+    "rockwell_hardness",
+    "vickers_knoop_hardness",
+    "brinell_hardness",
+    "universal_hardness"
+   ]
+  },
+  {
+   "id": "chroma",
+   "name": "Chroma ATE",
+   "name_ko": "크로마",
+   "country": "TW",
+   "website": "https://www.chromaate.com",
+   "domains": [
+    "hipot_safety_analyzer",
+    "ac_power_source",
+    "electronic_load",
+    "battery_cycler"
+   ]
+  },
+  {
+   "id": "cscforce",
+   "name": "C.S.C. Force Measurement",
+   "country": "US",
+   "website": "https://cscforce.com",
+   "domains": [
+    "crimp_pull_tester"
+   ]
+  },
+  {
+   "id": "csz",
+   "name": "Cincinnati Sub-Zero (CSZ)",
+   "country": "US",
+   "website": "https://www.cszindustrial.com",
+   "domains": [
+    "climatic_chamber",
+    "thermal_shock_chamber",
+    "altitude_chamber"
+   ]
+  },
+  {
+   "id": "daekyung-tech",
+   "name": "Daekyung Tech (대경테크)",
+   "name_ko": "대경테크",
+   "country": "KR",
+   "brands": [
+    "DTU",
+    "DTT"
+   ],
+   "website": "http://www.dktt.co.kr",
+   "domains": [
+    "universal_testing_machine",
+    "hydraulic_utm",
+    "torsion_tester"
+   ],
+   "note": "PDF 미확보"
+  },
+  {
+   "id": "defelsko",
+   "name": "DeFelsko",
+   "country": "US",
+   "website": "https://www.defelsko.com",
+   "domains": [
+    "scratch_hardness_tester",
+    "adhesion_tester"
+   ]
+  },
+  {
+   "id": "emco-test",
+   "name": "EMCO-TEST",
+   "country": "AT",
+   "parent": "ZwickRoell group",
+   "website": "https://www.emcotest.com",
+   "domains": [
+    "rockwell_hardness",
+    "vickers_knoop_hardness",
+    "universal_hardness"
+   ]
+  },
+  {
+   "id": "epsilon",
+   "name": "Epsilon Technology Corp.",
+   "name_ko": "엡실론 테크놀로지",
+   "country": "US",
+   "website": "https://www.epsilontech.com",
+   "domains": [
+    "extensometer"
+   ],
+   "note": "국내는 MTDI 가 유통한다. 데이터시트도 MTDI 카탈로그 게시판에서 확보했다"
+  },
+  {
+   "id": "erichsen",
+   "name": "ERICHSEN",
+   "country": "DE",
+   "website": "https://www.erichsen.de",
+   "domains": [
+    "scratch_hardness_tester",
+    "adhesion_tester"
+   ]
+  },
+  {
+   "id": "espec",
+   "name": "ESPEC",
+   "name_ko": "에스펙",
+   "country": "JP",
+   "website": "https://www.espec.co.jp",
+   "domains": [
+    "climatic_chamber",
+    "thermal_shock_chamber",
+    "hast_chamber",
+    "halt_hass_chamber",
+    "dust_chamber",
+    "altitude_chamber",
+    "battery_abuse_tester"
+   ],
+   "note": "Qualmark(HALT/HASS) 인수"
+  },
+  {
+   "id": "ets-lindgren",
+   "name": "ETS-Lindgren",
+   "name_ko": "ETS-린드그렌",
+   "country": "US",
+   "parent": "ESCO Technologies",
+   "website": "https://www.ets-lindgren.com",
+   "domains": [
+    "accessory",
+    "environmental_simulation"
+   ],
+   "note": "라이브 사이트의 PDF 링크가 200 과 함께 HTML 게이트를 준다. archive.org 스냅샷(2023~2025)에서 확보 — 브로슈어가 마케팅 층위라 기종별 사양표가 없다"
+  },
+  {
+   "id": "flir",
+   "name": "Teledyne FLIR",
+   "country": "US",
+   "website": "https://www.flir.com",
+   "domains": [
+    "thermal_imager"
+   ]
+  },
+  {
+   "id": "goettfert",
+   "name": "GÖTTFERT",
+   "country": "DE",
+   "website": "https://www.goettfert.com",
+   "domains": [
+    "capillary_rheometer",
+    "melt_flow_indexer"
+   ],
+   "note": "PDF 미확보"
+  },
+  {
+   "id": "hegewald-peschke",
+   "name": "Hegewald & Peschke",
+   "country": "DE",
+   "website": "https://www.hegewald-peschke.com",
+   "domains": [
+    "universal_testing_machine"
+   ],
+   "note": "PDF 미확보 — DirectIndustry 뷰어만 존재"
+  },
+  {
+   "id": "helmut-fischer",
+   "name": "Helmut Fischer",
+   "country": "DE",
+   "website": "https://www.helmut-fischer.com",
+   "domains": [
+    "xrf_thickness"
+   ]
+  },
+  {
+   "id": "hioki",
+   "name": "HIOKI",
+   "name_ko": "히오키",
+   "country": "JP",
+   "website": "https://www.hioki.com",
+   "domains": [
+    "insulation_tester",
+    "power_analyzer"
+   ]
+  },
+  {
+   "id": "hirayama",
+   "name": "Hirayama Manufacturing",
+   "name_ko": "히라야마",
+   "country": "JP",
+   "website": "https://www.hirayama-hmc.co.jp",
+   "domains": [
+    "hast_chamber"
+   ]
+  },
+  {
+   "id": "hitachi-high-tech",
+   "name": "Hitachi High-Tech Analytical Science",
+   "country": "JP",
+   "brands": [
+    "NEXTA"
+   ],
+   "website": "https://www.hitachi-hightech.com",
+   "domains": [
+    "dsc",
+    "sta",
+    "tma",
+    "dma"
+   ]
+  },
+  {
+   "id": "hot-disk",
+   "name": "Hot Disk AB",
+   "country": "SE",
+   "website": "https://www.hotdiskinstruments.com",
+   "domains": [
+    "thermal_conductivity"
+   ]
+  },
+  {
+   "id": "imv",
+   "name": "IMV Corporation",
+   "name_ko": "아이엠브이",
+   "country": "JP",
+   "website": "https://www.imv.co.jp",
+   "domains": [
+    "vibration_shaker"
+   ]
+  },
+  {
+   "id": "inficon",
+   "name": "INFICON",
+   "country": "CH",
+   "website": "https://www.inficon.com",
+   "domains": [
+    "helium_leak_detector"
+   ]
+  },
+  {
+   "id": "innovatest",
+   "name": "INNOVATEST",
+   "country": "NL",
+   "website": "https://www.innovatest-europe.com",
+   "domains": [
+    "brinell_hardness",
+    "rockwell_hardness",
+    "universal_hardness"
+   ]
+  },
+  {
+   "id": "instron",
+   "name": "Instron",
+   "name_ko": "인스트론",
+   "country": "US",
+   "parent": "Illinois Tool Works (ITW)",
+   "brands": [
+    "CEAST",
+    "Dynatup",
+    "ElectroPuls"
+   ],
+   "website": "https://www.instron.com",
+   "domains": [
+    "universal_testing_machine",
+    "servohydraulic_fatigue",
+    "electrodynamic_fatigue",
+    "pendulum_impact",
+    "drop_tower_impact",
+    "melt_flow_indexer",
+    "hdt_vicat",
+    "torsion_tester",
+    "environmental_chamber",
+    "extensometer"
+   ]
+  },
+  {
+   "id": "instrument-systems",
+   "name": "Instrument Systems",
+   "country": "DE",
+   "website": "https://www.instrumentsystems.com",
+   "domains": [
+    "imaging_colorimeter",
+    "spectroradiometer"
+   ],
+   "note": "Konica Minolta 그룹"
+  },
+  {
+   "id": "ipc",
+   "name": "IPC (표준화 단체)",
+   "country": "US",
+   "website": "https://www.ipc.org",
+   "note": "장비 제조사가 아님 — 시험법 문서 출처"
+  },
+  {
+   "id": "keysight",
+   "name": "Keysight Technologies",
+   "name_ko": "키사이트",
+   "country": "US",
+   "website": "https://www.keysight.com",
+   "domains": [
+    "emi_receiver",
+    "power_analyzer"
+   ]
+  },
+  {
+   "id": "kic",
+   "name": "KIC Thermal",
+   "country": "US",
+   "website": "https://kicthermal.com",
+   "domains": [
+    "thermal_profiler"
+   ]
+  },
+  {
+   "id": "kikusui",
+   "name": "Kikusui Electronics",
+   "name_ko": "키쿠스이",
+   "country": "JP",
+   "website": "https://www.kikusui.co.jp",
+   "domains": [
+    "hipot_safety_analyzer",
+    "ac_power_source",
+    "electronic_load"
+   ]
+  },
+  {
+   "id": "kla",
+   "name": "KLA Instruments (Nanomechanics)",
+   "country": "US",
+   "website": "https://www.kla.com",
+   "domains": [
+    "instrumented_indentation"
+   ]
+  },
+  {
+   "id": "konica-minolta",
+   "name": "Konica Minolta Sensing",
+   "name_ko": "코니카미놀타",
+   "country": "JP",
+   "website": "https://sensing.konicaminolta.us",
+   "domains": [
+    "spectroradiometer",
+    "display_color_analyzer",
+    "imaging_colorimeter"
+   ]
+  },
+  {
+   "id": "lansmont",
+   "name": "Lansmont Corporation",
+   "country": "US",
+   "website": "https://www.lansmont.com",
+   "domains": [
+    "drop_tester",
+    "shock_test_machine",
+    "vibration_shaker"
+   ]
+  },
+  {
+   "id": "limotem",
+   "name": "QMESYS (큐머시스)",
+   "name_ko": "큐머시스",
+   "country": "KR",
+   "note": "PDF 는 유통사 리모템(limotem) 사이트에서 받음",
+   "website": "https://qmesys.com",
+   "domains": [
+    "universal_testing_machine"
+   ]
+  },
+  {
+   "id": "linseis",
+   "name": "LINSEIS",
+   "country": "DE",
+   "website": "https://www.linseis.com",
+   "domains": [
+    "tma",
+    "dilatometer",
+    "thermal_conductivity",
+    "dsc",
+    "tga"
+   ]
+  },
+  {
+   "id": "maccor",
+   "name": "Maccor",
+   "country": "US",
+   "website": "https://www.maccor.com",
+   "domains": [
+    "battery_cycler"
+   ]
+  },
+  {
+   "id": "malvern-panalytical",
+   "name": "Malvern Panalytical",
+   "country": "GB",
+   "brands": [
+    "Kinexus"
+   ],
+   "website": "https://www.malvernpanalytical.com",
+   "domains": [
+    "rotational_rheometer"
+   ]
+  },
+  {
+   "id": "mecmesin",
+   "name": "Mecmesin",
+   "name_ko": "멕메신",
+   "country": "GB",
+   "parent": "PPT Group",
+   "website": "https://www.mecmesin.com",
+   "domains": [
+    "force_tester",
+    "universal_testing_machine"
+   ]
+  },
+  {
+   "id": "mettler-toledo",
+   "name": "METTLER TOLEDO",
+   "name_ko": "메틀러 토레도",
+   "country": "CH",
+   "website": "https://www.mt.com",
+   "domains": [
+    "dsc",
+    "tga",
+    "sta",
+    "dma",
+    "tma"
+   ]
+  },
+  {
+   "id": "mil-std",
+   "name": "US DoD (MIL-STD)",
+   "country": "US",
+   "note": "장비 제조사가 아님 — 시험법 문서 출처"
+  },
+  {
+   "id": "misc",
+   "name": "출처 미상/복합",
+   "note": "여러 곳에서 모은 백서·표준 문서 보관용"
+  },
+  {
+   "id": "mitutoyo",
+   "name": "Mitutoyo",
+   "name_ko": "미쓰토요",
+   "country": "JP",
+   "website": "https://www.mitutoyo.com",
+   "domains": [
+    "rockwell_hardness",
+    "vickers_knoop_hardness",
+    "portable_hardness"
+   ]
+  },
+  {
+   "id": "molex",
+   "name": "Molex",
+   "country": "US",
+   "website": "https://www.molex.com",
+   "domains": [
+    "crimp_pull_tester"
+   ],
+   "note": "커넥터 제조사 — 자사 시험기도 공급"
+  },
+  {
+   "id": "mtdi",
+   "name": "MTDI (엠티디아이)",
+   "name_ko": "엠티디아이",
+   "country": "KR",
+   "brands": [
+    "MINOS",
+    "ARTE"
+   ],
+   "website": "http://www.mtdi.co.kr",
+   "domains": [
+    "universal_testing_machine",
+    "creep_tester"
+   ],
+   "note": "mtdi.co.kr 자료실 카탈로그 게시판에서 확보(세션 nonce 필요, `|` 를 %7C 로 인코딩). 카탈로그 절반은 사양이 이미지라 아직 값으로 못 옮겼다"
+  },
+  {
+   "id": "mts",
+   "name": "MTS Systems",
+   "name_ko": "MTS",
+   "country": "US",
+   "parent": "ITW",
+   "brands": [
+    "Criterion",
+    "Exceed",
+    "Landmark",
+    "Acumen",
+    "Bionix"
+   ],
+   "website": "https://www.mts.com",
+   "domains": [
+    "universal_testing_machine",
+    "servohydraulic_fatigue",
+    "electrodynamic_fatigue"
+   ]
+  },
+  {
+   "id": "netzsch",
+   "name": "NETZSCH Analyzing & Testing",
+   "name_ko": "네취",
+   "country": "DE",
+   "website": "https://analyzing-testing.netzsch.com",
+   "domains": [
+    "dsc",
+    "tga",
+    "sta",
+    "dma",
+    "tma",
+    "dilatometer",
+    "thermal_conductivity"
+   ]
+  },
+  {
+   "id": "neware",
+   "name": "Neware Technology",
+   "country": "CN",
+   "website": "https://www.neware.net",
+   "domains": [
+    "battery_cycler"
+   ]
+  },
+  {
+   "id": "newtons4th",
+   "name": "Newtons4th (N4L)",
+   "country": "GB",
+   "website": "https://www.newtons4th.com",
+   "domains": [
+    "power_analyzer"
+   ]
+  },
+  {
+   "id": "nikon",
+   "name": "Nikon Metrology",
+   "name_ko": "니콘",
+   "country": "JP",
+   "website": "https://industry.nikon.com",
+   "domains": [
+    "xray_inspection"
+   ]
+  },
+  {
+   "id": "noiseken",
+   "name": "Noise Laboratory (NOISEKEN)",
+   "name_ko": "노이즈켄",
+   "country": "JP",
+   "website": "https://www.noiseken.com",
+   "domains": [
+    "esd_simulator",
+    "transient_generator"
+   ]
+  },
+  {
+   "id": "nordson-dage",
+   "name": "Nordson Test & Inspection (DAGE / Sonoscan)",
+   "country": "US",
+   "website": "https://www.nordson.com",
+   "domains": [
+    "bond_tester",
+    "xray_inspection",
+    "acoustic_microscope"
+   ]
+  },
+  {
+   "id": "perkinelmer",
+   "name": "PerkinElmer",
+   "country": "US",
+   "website": "https://www.perkinelmer.com",
+   "domains": [
+    "dsc",
+    "tga",
+    "dma"
+   ]
+  },
+  {
+   "id": "proceq",
+   "name": "Proceq (Screening Eagle)",
+   "country": "CH",
+   "website": "https://www.screeningeagle.com",
+   "domains": [
+    "portable_hardness"
+   ]
+  },
+  {
+   "id": "q-lab",
+   "name": "Q-Lab Corporation",
+   "country": "US",
+   "website": "https://www.q-lab.com",
+   "domains": [
+    "weathering_tester",
+    "corrosion_chamber"
+   ]
+  },
+  {
+   "id": "rohde-schwarz",
+   "name": "Rohde & Schwarz",
+   "name_ko": "로데슈바르츠",
+   "country": "DE",
+   "website": "https://www.rohde-schwarz.com",
+   "domains": [
+    "emi_receiver"
+   ]
+  },
+  {
+   "id": "salt",
+   "name": "SALT Co. (Light-SALT)",
+   "name_ko": "살트",
+   "country": "KR",
+   "brands": [
+    "ST-1000"
+   ],
+   "domains": [
+    "universal_testing_machine",
+    "hydraulic_utm",
+    "servohydraulic_fatigue"
+   ],
+   "note": "light-salt.kr 이 열리지만 제품 사양이 이미지라 텍스트로 못 뽑는다. PDF 카탈로그 없음"
+  },
+  {
+   "id": "shimadzu",
+   "name": "Shimadzu",
+   "name_ko": "시마즈",
+   "country": "JP",
+   "brands": [
+    "AUTOGRAPH"
+   ],
+   "website": "https://www.shimadzu.com",
+   "domains": [
+    "universal_testing_machine",
+    "hydraulic_utm",
+    "servohydraulic_fatigue",
+    "instrumented_indentation",
+    "vickers_knoop_hardness"
+   ]
+  },
+  {
+   "id": "shinyei",
+   "name": "Shinyei Testing Machinery",
+   "name_ko": "신에이",
+   "country": "JP",
+   "website": "https://www.shinyei-tm.com",
+   "domains": [
+    "drop_tester",
+    "shock_test_machine"
+   ],
+   "note": "구 Yoshida Seiki"
+  },
+  {
+   "id": "siemens",
+   "name": "Siemens Digital Industries (Simcenter)",
+   "name_ko": "지멘스",
+   "country": "DE",
+   "website": "https://plm.sw.siemens.com",
+   "domains": [
+    "thermal_transient_tester"
+   ],
+   "note": "구 Mentor Graphics MicReD"
+  },
+  {
+   "id": "stable-micro-systems",
+   "name": "Stable Micro Systems",
+   "country": "GB",
+   "website": "https://www.stablemicrosystems.com",
+   "domains": [
+    "texture_analyser"
+   ]
+  },
+  {
+   "id": "struers",
+   "name": "Struers",
+   "country": "DK",
+   "website": "https://www.struers.com",
+   "domains": [
+    "vickers_knoop_hardness",
+    "universal_hardness"
+   ]
+  },
+  {
+   "id": "ta-instruments",
+   "name": "TA Instruments",
+   "country": "US",
+   "parent": "Waters",
+   "brands": [
+    "Discovery",
+    "ElectroForce"
+   ],
+   "website": "https://www.tainstruments.com",
+   "domains": [
+    "dsc",
+    "tga",
+    "dma",
+    "rotational_rheometer",
+    "electrodynamic_fatigue"
+   ],
+   "note": "tainstruments.com 은 curl 차단 — 브로슈어는 유통사 미러에서 받음"
+  },
+  {
+   "id": "taber",
+   "name": "Taber Industries",
+   "country": "US",
+   "website": "https://www.taberindustries.com",
+   "domains": [
+    "abrasion_tester"
+   ]
+  },
+  {
+   "id": "teseq",
+   "name": "Teseq / AMETEK CTS",
+   "country": "CH",
+   "website": "https://www.ametek-cts.com",
+   "domains": [
+    "esd_simulator",
+    "transient_generator"
+   ]
+  },
+  {
+   "id": "testometric",
+   "name": "Testometric",
+   "country": "GB",
+   "website": "https://www.testometric.co.uk",
+   "domains": [
+    "universal_testing_machine"
+   ]
+  },
+  {
+   "id": "thermo-fisher",
+   "name": "Thermo Fisher Scientific (HAAKE)",
+   "country": "US",
+   "brands": [
+    "HAAKE"
+   ],
+   "website": "https://www.thermofisher.com",
+   "domains": [
+    "rotational_rheometer",
+    "capillary_rheometer"
+   ]
+  },
+  {
+   "id": "thermotron",
+   "name": "Thermotron Industries",
+   "country": "US",
+   "website": "https://thermotron.com",
+   "domains": [
+    "climatic_chamber",
+    "thermal_shock_chamber",
+    "vibration_shaker"
+   ]
+  },
+  {
+   "id": "tinius-olsen",
+   "name": "Tinius Olsen",
+   "name_ko": "티니우스 올센",
+   "country": "US",
+   "website": "https://www.tiniusolsen.com",
+   "domains": [
+    "universal_testing_machine",
+    "hydraulic_utm",
+    "torsion_tester",
+    "melt_flow_indexer",
+    "pendulum_impact",
+    "hdt_vicat"
+   ]
+  },
+  {
+   "id": "tira",
+   "name": "TIRA GmbH",
+   "country": "DE",
+   "website": "https://www.tira-gmbh.de",
+   "domains": [
+    "vibration_shaker"
+   ],
+   "note": "TIRAvib 51075/52110/52120 확보 (PDF 는 B&K 유통본이라 bruel-kjaer 폴더에 있음)"
+  },
+  {
+   "id": "tqc-sheen",
+   "name": "TQC Sheen (Industrial Physics)",
+   "country": "NL",
+   "website": "https://industrialphysics.com",
+   "domains": [
+    "scratch_hardness_tester",
+    "adhesion_tester"
+   ]
+  },
+  {
+   "id": "unholtz-dickie",
+   "name": "Unholtz-Dickie",
+   "country": "US",
+   "website": "https://www.udco.com",
+   "domains": [
+    "vibration_shaker"
+   ],
+   "note": "제품 카탈로그 PDF 다운로드 차단"
+  },
+  {
+   "id": "usb-if",
+   "name": "USB Implementers Forum",
+   "country": "US",
+   "website": "https://www.usb.org",
+   "note": "장비 제조사가 아님 — 시험법 문서 출처"
+  },
+  {
+   "id": "uson",
+   "name": "Uson (PAC)",
+   "country": "US",
+   "website": "https://www.uson.com",
+   "domains": [
+    "pressure_decay_leak_tester"
+   ],
+   "note": "현행 데이터시트는 등록 폼 뒤. archive.org 스냅샷(2003~2021)에서 Sprint LC/GT·Qualitek mR 확보 — 자료가 오래됐다"
+  },
+  {
+   "id": "weiss-technik",
+   "name": "Weiss Technik",
+   "name_ko": "바이스 테크닉",
+   "country": "DE",
+   "website": "https://www.weiss-technik.com",
+   "domains": [
+    "climatic_chamber",
+    "thermal_shock_chamber",
+    "dust_chamber",
+    "corrosion_chamber"
+   ],
+   "note": "Schunk 그룹"
+  },
+  {
+   "id": "yokogawa",
+   "name": "Yokogawa Test & Measurement",
+   "name_ko": "요코가와",
+   "country": "JP",
+   "website": "https://tmi.yokogawa.com",
+   "domains": [
+    "power_analyzer"
+   ]
+  },
+  {
+   "id": "zwickroell",
+   "name": "ZwickRoell",
+   "name_ko": "즈윅로엘",
+   "country": "DE",
+   "brands": [
+    "Zwick",
+    "Roell",
+    "Amsler",
+    "Indentec",
+    "EMCO-TEST(관계사)"
+   ],
+   "website": "https://www.zwickroell.com",
+   "domains": [
+    "universal_testing_machine",
+    "pendulum_impact",
+    "creep_tester",
+    "resonance_fatigue",
+    "rotating_bending_fatigue",
+    "hardness",
+    "melt_flow_indexer",
+    "hdt_vicat",
+    "environmental_chamber"
+   ]
+  }
+ ]
+}

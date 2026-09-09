@@ -1,0 +1,29 @@
+{
+  "id": "anton-paar-nanoindentation",
+  "kind": "equipment_series",
+  "name": "Anton Paar Nanoindentation Testers (UNHT3 / UNHT3 HTV / UNHT3 Bio, NHT3, Hit 300, NST3 nano scratch)",
+  "name_ko": "안톤파 나노인덴테이션 시험기 (UNHT3·NHT3·Hit 300·NST3)",
+  "manufacturer": "anton-paar",
+  "category": "instrumented_indentation",
+  "form_factor": "benchtop",
+  "description": "NHT3: 0.1–500 mN(웹 검색 요약), 상면 참조(top surface referencing)로 열안정 대기 불요, Quick Matrix 600 회/h. UNHT3: 초고분해능, 열드리프트 10 fm/s 능동 표면 참조, HTV 진공 800 °C, Bio 연질·생체. Hit 300: 범용 보급형. NST3: 나노 스크래치.",
+  "test_items": ["instrumented_indentation", "friction_wear_tribo"],
+  "measurands": ["indentation_hardness", "indentation_modulus", "creep", "viscoelastic_properties", "scratch_resistance"],
+  "materials": ["thin films", "coatings", "hard materials", "soft materials", "biological materials", "polymers"],
+  "standards": {"compliance": [], "test_methods": ["ISO 14577", "ASTM E2546"]},
+  "limits": {
+    "indentation_force_mN": {"min": 0.1, "max": 500, "note": "NHT3 (웹 요약); UNHT3 는 더 낮은 하중 — 수치 미기재", "uncertain": true},
+    "temperature_degC": {"max": 800, "note": "UNHT3 HTV 진공 챔버"}
+  },
+  "models": [
+    {"model": "UNHT3", "specs": {"thermal_drift_fm_s": 10, "referencing": "active surface referencing"}},
+    {"model": "UNHT3 HTV", "specs": {"temperature_degC": {"max": 800}, "environment": "vacuum"}},
+    {"model": "UNHT3 Bio", "specs": {"note": "soft & biological materials"}},
+    {"model": "NHT3", "specs": {"indentation_force_mN": {"min": 0.1, "max": 500}, "throughput_per_h": 600}, "uncertain": true},
+    {"model": "Hit 300", "specs": {"note": "general purpose"}},
+    {"model": "NST3", "specs": {"note": "nano scratch tester"}}
+  ],
+  "relations": [],
+  "sources": [{"file": "anton-paar/document-17877.pdf", "pages": [8], "note": "종합 카탈로그 소개문만 — 전용 데이터시트 미확보(anton-paar.com 문서 다운로드가 카탈로그 전체 PDF 로 연결됨)"}],
+  "confidence": "limited"
+}

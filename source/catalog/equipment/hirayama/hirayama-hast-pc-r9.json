@@ -1,0 +1,214 @@
+{
+  "id": "hirayama-hast-pc-r9",
+  "kind": "equipment_series",
+  "name": "Hirayama HAST Chambers PC-304R9 / PC-422R9 (and PC-R8 / PC-R8D dual)",
+  "name_ko": "히라야마 HAST 챔버 PC-304R9 / PC-422R9 (PC-R8D 듀얼 포함)",
+  "manufacturer": "hirayama",
+  "category": "hast_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "불포화 가압 습열(HAST) 시험 챔버. 시험조(건구)와 증기발생기(습구)를 완전히 분리한 이중 용기(dual vessel) 구조라 교반팬이 필요 없고 팬 베어링 마모 오염 걱정이 없다. PC-422R9: 유효 챔버 67 L / 유효 시험공간 40 L, 65~100 %RH, 65 %RH 에서 최대 150 °C. 반도체 패키지 수분 침투·부식 가속 평가(JEDEC JESD22-A110 등)에 쓴다.",
+  "test_items": [
+    "hast",
+    "damp_heat"
+  ],
+  "measurands": [
+    "failure_time",
+    "insulation_resistance",
+    "corrosion"
+  ],
+  "materials": [
+    "semiconductor packages",
+    "MEMS",
+    "electronic components",
+    "PCB",
+    "connectors"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "JEDEC JESD22-A110",
+      "IEC 60068-2-66",
+      "IEC 60749",
+      "JIS C 0096:2001",
+      "EIAJ ED-4701/100-102",
+      "JPCA-ET08:2002"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 105,
+      "max": 162.5,
+      "note": "습도에 따라 상한이 달라진다. 100 %RH: PC-304 105.0~151.4 / PC-422 105.0~133.3. 85 %RH: PC-304 110.0~157.5 / PC-422 105.0~140.0. 65 %RH: PC-304 118.0~162.5 / PC-422 118.0~150.0"
+    },
+    "humidity_pct": {
+      "min": 65,
+      "max": 100,
+      "note": "표준 HAST 조건 85 %RH ±5. 포화(saturated)·불포화(unsaturated) 2가지 제어 모드"
+    },
+    "chamber_volume_L": {
+      "min": 26,
+      "max": 84.4,
+      "note": "PC-304 계열 26~34.5 L, PC-422 계열 67~84.4 L"
+    },
+    "chamber": {
+      "values": [
+        "yes"
+      ]
+    },
+    "pressure_MPa": {
+      "min": 0.019,
+      "max": 0.393,
+      "note": "PC-304 계열 0.019~0.393 MPa, PC-422 계열 0.019~0.208 MPa"
+    }
+  },
+  "models": [
+    {
+      "model": "PC-304R9",
+      "specs": {
+        "chamber_mm": "φ300 × D373 / D522",
+        "chamber_volume_L": [
+          26,
+          34.5
+        ],
+        "usable_space_mm": "φ220 × D350",
+        "temperature_degC": {
+          "at_100RH": [
+            105.0,
+            151.4
+          ],
+          "at_85RH": [
+            110.0,
+            157.5
+          ],
+          "at_65RH": [
+            118.0,
+            162.5
+          ]
+        },
+        "pressure_MPa": [
+          0.019,
+          0.393
+        ],
+        "humidity_pct": [
+          65,
+          100
+        ],
+        "vessel": "dual vessel"
+      }
+    },
+    {
+      "model": "PC-422R9",
+      "specs": {
+        "chamber_mm": "φ420 × D485 / D657",
+        "chamber_volume_L": [
+          67,
+          84.4
+        ],
+        "usable_space_mm": "φ340 × D475",
+        "test_space_L": 40,
+        "temperature_degC": {
+          "at_100RH": [
+            105.0,
+            133.3
+          ],
+          "at_85RH": [
+            105.0,
+            140.0
+          ],
+          "at_65RH": [
+            118.0,
+            150.0
+          ]
+        },
+        "pressure_MPa": [
+          0.019,
+          0.208
+        ],
+        "humidity_pct": [
+          65,
+          100
+        ],
+        "vessel": "dual vessel",
+        "bias_terminals": 20,
+        "chamber_finish": "스테인리스 전해연마"
+      }
+    },
+    {
+      "model": "PC-304R8 / PC-422R8 (구형)",
+      "specs": {
+        "note": "챔버 치수·온습도·압력 범위는 R9 와 동일. IEC 60068-2-66 대응",
+        "vessel": "dual vessel"
+      }
+    },
+    {
+      "model": "PC-304R8D / PC-422R8D (듀얼)",
+      "specs": {
+        "note": "독립된 2개 HAST 챔버(증기발생기·컨트롤러·배기 각각)를 한 설치면적에 — 처리량 2배. 챔버 사양은 단일형과 동일"
+      }
+    },
+    {
+      "model": "PC-702R8",
+      "specs": {},
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "이중 용기 구조(시험조·증기발생기 완전 분리)",
+    "교반팬 불필요 — 팬 베어링 마모 오염 없음",
+    "포화·불포화 2가지 제어 모드",
+    "전동 클램프(버튼으로 도어 개폐)",
+    "전압 인가(bias) 단자 20개 (PC-422R9)",
+    "USB 데이터 기록 (R9)",
+    "원격 조작 소프트웨어·집중 감시 (R9)",
+    "자동 세정 모드 (R9)",
+    "스테인리스 전해연마 챔버"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-unsaturated-pressurized-vapour"
+    },
+    {
+      "type": "performs",
+      "target": "hast"
+    },
+    {
+      "type": "successor_of",
+      "target": "placeholder-hirayama-pc-r8"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hirayama/hast-pc-304r9-422r9-presentation.pdf",
+      "pages": [
+        5,
+        7,
+        13
+      ],
+      "note": "유통사(SIMAC) 발표자료 — 모델별 상세 사양표는 미포함"
+    }
+  ],
+  "confidence": "limited",
+  "compliance_marks": [
+    "CE",
+    "S-Mark",
+    "중국 SELO"
+  ],
+  "performance": {
+    "heat_up": "상온 → +120 °C, 85 %RH 도달 약 70분"
+  },
+  "web_references": [
+    {
+      "url": "https://www.wewontech.com/hirayama-hast-chambers/",
+      "retrieved": "2026-09-10",
+      "note": "PC-304/422 R8·R8D·R9 의 온도-습도별 범위, 압력 범위, 챔버 치수·용적 표. 유통사 페이지이며 제조사 PDF 가 아니다"
+    },
+    {
+      "url": "https://hastest.com/product/pc-422r9-series-hast/",
+      "retrieved": "2026-09-10",
+      "note": "유효 시험공간 치수(PC-304R9 φ220×D350, PC-422R9 φ340×D475), 바이어스 단자 20개, R9 신규 기능"
+    }
+  ],
+  "notes": "히라야마 본사 PDF 데이터시트를 확보하지 못했다. 보유한 PDF 는 유통사(SIMAC) 발표자료로 스캔 슬라이드라 텍스트·사양표가 없다. 여기 기록한 정량값은 web_references 의 유통사 페이지에서 교차 확인한 것이며 제조사 1차 자료로 재검증이 필요하다."
+}

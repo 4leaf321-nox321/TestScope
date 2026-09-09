@@ -1,0 +1,44 @@
+{
+  "id": "nordson-dage-4000plus-bondtester",
+  "kind": "equipment_model",
+  "name": "Nordson DAGE 4000Plus Bondtester",
+  "name_ko": "노드슨 데이지 4000Plus 본드 테스터",
+  "manufacturer": "nordson-dage",
+  "brand": "4000Plus",
+  "category": "bond_tester",
+  "form_factor": "benchtop",
+  "description": "와이어 본드·솔더 볼·범프·필러의 접합 강도를 전단(shear)과 인장(pull)으로 평가하는 본드 테스터. 교체식 로드 카트리지로 하중 범위를 바꾼다: 푸시 최대 50 kg, 풀 최대 100 kg, 전단 최대 200 kg(특수 지그 사용 시 500 kg 까지). XY 스테이지는 한 축 최대 300 mm 이송. 리본 풀, 핫 범프/핀 풀, 구리선 1차 본드 볼 풀, 스터드·범프·필러 인장, 피로(fatigue) 풀·전단, 패시베이션층 전단 등 특수 시험 모드를 지원한다.",
+  "test_items": ["wire_bond_strength"],
+  "measurands": ["shear_force", "pull_force", "failure_mode", "fatigue_life"],
+  "materials": ["gold wire bonds", "copper wire bonds", "aluminium ribbon", "solder balls", "solder bumps", "copper pillars", "studs", "die attach"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["MIL-STD-883 Method 2011 (본드 강도)", "MIL-STD-883 Method 2019 (다이 전단)", "JESD22-B116 (와이어본드 전단)", "JESD22-B117 (BGA 볼 전단)", "IPC-9708"]
+  },
+  "limits": {
+    "push_force_kgf": {"max": 50, "note": "푸시 카트리지"},
+    "pull_force_kgf": {"max": 100, "note": "풀 카트리지"},
+    "shear_force_kgf": {"max": 200, "note": "전단 카트리지. 특수 지그 사용 시 500 kg 까지"},
+    "stage_travel_mm": {"max": 300, "note": "한 축 기준"}
+  },
+  "models": [
+    {"model": "4000Plus", "specs": {"push_cartridge_kg": 50, "pull_cartridge_kg": 100, "shear_cartridge_kg": 200, "shear_with_special_fixture_kg": 500, "xy_stage_travel_mm": 300}}
+  ],
+  "test_modes": [
+    "리본 풀(Ribbon pull)",
+    "핫 범프/핀 풀(Hot bump/pin pull)",
+    "구리선 1차 본드 볼 풀",
+    "스터드·범프·필러 인장(전용 풀 조)",
+    "피로 풀·전단(Fatigue pull/shear)",
+    "패시베이션층 전단(Passivation layer shear)",
+    "다이 전단(Die shear)"
+  ],
+  "features": ["교체식 로드 카트리지(푸시/풀/전단)", "광범위 로드 툴(훅·조·전단 툴)", "XY 스테이지 최대 300 mm", "고확도·고재현성 하중 측정", "피로 해석 모드"],
+  "options": ["전단 500 kg 특수 지그", "맞춤 풀 조(custom pull jaws)", "패시베이션 전단 전용 로드 툴", "다양한 XY 스테이지"],
+  "relations": [
+    {"type": "performs", "target": "wire_bond_strength"},
+    {"type": "same_family_as", "target": "nordson-dage-quadra-xray"}
+  ],
+  "sources": [{"file": "nordson-dage/4000plus-bondtester-brochure.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog"
+}

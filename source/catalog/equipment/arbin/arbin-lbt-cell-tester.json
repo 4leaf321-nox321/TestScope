@@ -1,0 +1,42 @@
+{
+  "id": "arbin-lbt-cell-tester",
+  "kind": "equipment_series",
+  "name": "Arbin LBT Battery Cell Testing System",
+  "name_ko": "아빈 LBT 배터리 셀 시험 시스템",
+  "manufacturer": "arbin",
+  "brand": "LBT",
+  "category": "battery_cycler",
+  "form_factor": "rack",
+  "description": "코인셀·파우치셀 등 소형 셀의 충방전 사이클 시험용 다채널 시스템. 채널마다 4개의 전류 레인지를 갖고 24 bit 전압 측정 분해능(1 µV 미만), 100 ppm 미만 정밀도, 0.02 % 미만 제어 확도를 제공한다. 채널별 임베디드 컨트롤러가 초고속 데이터 로깅을 담당하고, 채널을 병렬로 묶어 전류를 늘릴 수 있다.",
+  "test_items": ["battery_cycle_life"],
+  "measurands": ["capacity", "coulombic_efficiency", "internal_resistance", "voltage_profile", "energy_efficiency"],
+  "materials": ["lithium-ion cells", "coin cells", "pouch cells", "battery materials", "supercapacitors"],
+  "standards": {"compliance": [], "test_methods": ["IEC 61960", "IEC 62660-1", "UL 1642", "GB/T 31485"]},
+  "limits": {
+    "voltage_V": {"min": -5, "max": 10, "note": "모델별 -5~5 V / 0~5 V / 0~10 V"},
+    "current_A": {"min": 0.0001, "max": 10, "note": "100 µA~10 A. 채널당 4개 레인지, 병렬 연결로 확장"},
+    "channel_power_W": {"max": 100}
+  },
+  "models": [
+    {"model": "LBT20084 ±5V - 200mA", "specs": {"voltage_V": {"min": -5, "max": 5}, "current_ranges": ["200 mA", "10 mA", "1 mA", "100 µA"], "max_channel_power_W": 1}},
+    {"model": "LBT21084 ±5V - 1A", "specs": {"voltage_V": {"min": -5, "max": 5}, "current_ranges": ["1 A", "50 mA", "2 mA", "100 µA"], "max_channel_power_W": 5}},
+    {"model": "LBT21084 5V - 5A", "specs": {"voltage_V": {"min": 0, "max": 5}, "current_ranges": ["5 A", "500 mA", "20 mA", "1 mA"], "max_channel_power_W": 25, "note": "-5~5 V 레인지도 선택 가능"}},
+    {"model": "LBT21084 5V - 10A", "specs": {"voltage_V": {"min": 0, "max": 5}, "current_ranges": ["10 A", "500 mA", "20 mA", "1 mA"], "max_channel_power_W": 50, "note": "-5~5 V 레인지도 선택 가능"}},
+    {"model": "LBT21084 10V - 10A", "specs": {"voltage_V": {"min": 0, "max": 10}, "current_ranges": ["10 A", "500 mA", "20 mA", "1 mA"], "max_channel_power_W": 100}}
+  ],
+  "accuracy": {
+    "voltage_resolution": "1 µV 미만 (24 bit)",
+    "voltage_precision": "100 ppm (0.01 %) 미만",
+    "voltage_control_accuracy": "0.02 % 미만",
+    "input_impedance": "10 GΩ",
+    "current_noise_free_resolution": "0.0003 % (18 bit)"
+  },
+  "features": ["채널당 4개 전류 레인지 자동 전환", "24 bit 전압 측정", "채널별 임베디드 컨트롤러(초고속 로깅)", "완전 병렬 연결 가능", "MITS Pro 시험 스케줄 소프트웨어"],
+  "relations": [
+    {"type": "performs", "target": "battery_cycle_life"},
+    {"type": "same_family_as", "target": "arbin-mstat"},
+    {"type": "same_family_as", "target": "arbin-evts"}
+  ],
+  "sources": [{"file": "arbin/lbt-cell-testing-rev04.pdf", "pages": [1, 3]}],
+  "confidence": "catalog"
+}

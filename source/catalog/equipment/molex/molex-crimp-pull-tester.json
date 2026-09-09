@@ -1,0 +1,29 @@
+{
+  "id": "molex-crimp-pull-tester",
+  "kind": "equipment_model",
+  "name": "Molex Hand-Held Wire Crimp Pull-Force Tester",
+  "name_ko": "몰렉스 휴대형 와이어 크림프 인장력 시험기",
+  "manufacturer": "molex",
+  "brand": "Molex",
+  "category": "crimp_pull_tester",
+  "form_factor": "handheld",
+  "description": "압착(크림프) 단자와 전선의 접합 인장 강도를 현장에서 측정하는 휴대형 시험기. 전선 범위 0.05~5.00 mm²(10~30 AWG)로 폭넓어 여러 대를 갖출 필요가 없다. 최대 890 N(200 lbf)까지 압착 전선을 시험하며, 측정값을 lbf·kgf·N 여러 단위로 표시한다. 내장 충전 배터리 또는 AC 어댑터로 구동해 인장 시험기가 없는 설비에서도 사용할 수 있다.",
+  "test_items": ["crimp_pull_strength"],
+  "measurands": ["pull_force", "crimp_tensile_strength", "failure_mode"],
+  "materials": ["crimped terminals", "wire harnesses", "connectors", "automotive wiring", "appliance wiring"],
+  "standards": {"compliance": [], "test_methods": ["UL 486A-486B", "IEC 60352-2", "SAE/USCAR-21", "IPC/WHMA-A-620"]},
+  "limits": {
+    "pull_force_N": {"max": 890, "note": "200 lbf"},
+    "wire_cross_section_mm2": {"min": 0.05, "max": 5.00, "note": "10~30 AWG"}
+  },
+  "models": [
+    {"model": "Hand-Held Wire Crimp Pull-Force Tester", "specs": {"max_pull_force_N": 890, "max_pull_force_lbf": 200, "wire_range_mm2": {"min": 0.05, "max": 5.00}, "wire_range_awg": {"min": 10, "max": 30}, "units": ["lbf", "kgf", "N"], "power": "내장 충전 배터리 또는 AC 어댑터"}}
+  ],
+  "features": ["휴대형·현장 사용", "폭넓은 전선 굵기 대응(10~30 AWG)", "다중 단위 표시(lbf/kgf/N)", "배터리 또는 AC 구동", "정확한 축방향 인장을 위한 본체 설계"],
+  "relations": [
+    {"type": "performs", "target": "crimp_pull_strength"},
+    {"type": "same_family_as", "target": "cscforce-wt-205m"}
+  ],
+  "sources": [{"file": "molex/hand-held-wire-crimp-pull-force-tester.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "innovatest-nexus-3200",
+  "kind": "equipment_model",
+  "name": "INNOVATEST NEXUS 3200 Brinell hardness tester (semi-automatic)",
+  "name_ko": "이노바테스트 NEXUS 3200 브리넬 경도계",
+  "manufacturer": "innovatest",
+  "category": "brinell_hardness",
+  "form_factor": "benchtop",
+  "description": "로드셀 폐루프 62.5–3000 kgf 브리넬. BIOS 광학 스캐너로 압흔 측정, IMPRESSIONS LT 소프트웨어, 6.5\" 터치. 작업 높이/목 깊이 220/220 mm.",
+  "test_items": ["hardness_brinell"],
+  "measurands": ["hardness_HB"],
+  "materials": ["castings", "forgings", "steel", "non-ferrous"],
+  "standards": {"compliance": ["ISO 6506", "ASTM E10", "JIS"], "test_methods": ["ISO 6506-1", "ASTM E10"]},
+  "limits": {
+    "test_load_kgf": {"min": 62.5, "max": 3000},
+    "hardness_scales": {"values": ["HBW 2.5/62.5", "HBW 2.5/187.5", "HBW 5/62.5", "HBW 5/125", "HBW 5/250", "HBW 5/750", "HBW 10/100", "HBW 10/125", "HBW 10/250", "HBW 10/500", "HBW 10/1000", "HBW 10/1500", "HBW 10/3000"]},
+    "specimen_height_mm": {"max": 220},
+    "throat_depth_mm": {"values": [220]}
+  },
+  "models": [{"model": "NEXUS 3200", "specs": {"test_load_kgf": {"min": 62.5, "max": 3000}, "footprint_mm": {"W": 190, "D": 617, "H": 790}, "weight_kg": 130}}],
+  "accuracy": {"force_tolerance": "<0.5%", "dwell": "1–99 s"},
+  "environment": {"operating_temp_degC": [10, 35], "humidity_pct": [10, 90], "power": "100–240 VAC 1Ph"},
+  "options": ["BIOS-1/BIOS-2 optical scanners", "large T-slot tables 350×250 / 450×350 mm", "spring-loaded clamping"],
+  "relations": [],
+  "sources": [{"file": "innovatest/nexus-3200-brinell-spec-sheet.pdf", "pages": [2]}],
+  "confidence": "catalog"
+}

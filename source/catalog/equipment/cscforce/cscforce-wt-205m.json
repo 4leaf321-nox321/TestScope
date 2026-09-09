@@ -1,0 +1,31 @@
+{
+  "id": "cscforce-wt-205m",
+  "kind": "equipment_model",
+  "name": "Mark-10 WT-205M Wire Crimp Pull Tester",
+  "name_ko": "마크텐 WT-205M 와이어 크림프 인장 시험기",
+  "manufacturer": "cscforce",
+  "brand": "Mark-10",
+  "category": "crimp_pull_tester",
+  "form_factor": "benchtop",
+  "description": "압착 전선의 인장력을 최대 200 lbF(1 kN)까지 측정하는 전용 시험기. 파단까지 인장, 지정 하중까지 인장, 하중 유지(비파괴) 세 가지 모드를 지원한다. 전선 홀더는 AWG 3(0.25 in, 6.3 mm)까지의 굵기를 여러 슬롯으로 수용하고, 클램프식 홀더가 다양한 소재를 잡는다. 적·녹 표시등과 음향 경보로 합부를 즉시 알리며, 시편 파단 시 자동 역주행·최대 하중 저장·자동 영점 복귀로 연속 시험 효율을 높인다. MESUR Lite 소프트웨어로 연속 또는 단일 데이터를 PC 로 옮길 수 있고, 내장 메모리 데이터는 일괄 다운로드된다.",
+  "test_items": ["crimp_pull_strength"],
+  "measurands": ["pull_force", "peak_force", "crimp_tensile_strength"],
+  "materials": ["crimped terminals", "wire harnesses", "cables", "connectors", "automotive wiring"],
+  "standards": {"compliance": [], "test_methods": ["UL 486A-486B", "IEC 60352-2", "SAE/USCAR-21", "IPC/WHMA-A-620"]},
+  "limits": {
+    "pull_force_N": {"max": 1000, "note": "200 lbF"},
+    "wire_diameter_mm": {"max": 6.3, "note": "AWG 3 (0.25 in)"}
+  },
+  "models": [
+    {"model": "WT-205M", "specs": {"max_force_N": 1000, "max_force_lbf": 200, "max_wire_awg": 3, "max_wire_diameter_mm": 6.3, "modes": ["파단까지 인장", "지정 하중까지 인장", "하중 유지(비파괴)"], "indicators": "적·녹 표시등 + 음향 경보"}}
+  ],
+  "features": ["실시간·최대 하중 동시 표시", "다중 슬롯 전선 홀더 + 클램프식 홀더", "합부 표시등·음향 경보", "파단 시 자동 역주행·최대값 저장·자동 영점", "프로파일 기능(시험 조건 저장)", "MESUR Lite 데이터 수집 소프트웨어", "내장 메모리 일괄 다운로드"],
+  "options": ["맞춤 전선 홀더(소재별 평가 후 추천)", "MESUR gauge 소프트웨어"],
+  "relations": [
+    {"type": "performs", "target": "crimp_pull_strength"},
+    {"type": "same_family_as", "target": "molex-crimp-pull-tester"}
+  ],
+  "sources": [{"file": "cscforce/wt-205m-wire-crimp-pull-tester.pdf", "pages": [1, 2]}],
+  "confidence": "catalog",
+  "notes": "PDF 는 Mark-10 사의 WT-205M 자료다. 제조사 폴더명이 cscforce(유통사)로 되어 있어 manufacturers.json 의 표기를 정리할 필요가 있다."
+}

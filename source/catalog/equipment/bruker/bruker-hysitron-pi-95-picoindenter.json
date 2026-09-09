@@ -1,0 +1,117 @@
+{
+  "id": "bruker-hysitron-pi-95-picoindenter",
+  "kind": "equipment_series",
+  "name": "Bruker Hysitron PI 95 TEM PicoIndenter",
+  "name_ko": "브루커 하이시트론 PI 95 TEM 피코인덴터",
+  "manufacturer": "bruker",
+  "brand": "Hysitron",
+  "category": "nanoindenter",
+  "subcategory": "in_situ_tem",
+  "drive": "electromechanical",
+  "form_factor": "portable",
+  "description": "투과전자현미경(TEM) 안에 넣어 쓰는 측면 삽입형 나노기계 시험 장치. 나노 구조를 보면서 동시에 하중-변위 곡선을 얻고, 곡선과 TEM 영상을 시간 동기해 기록한다. 변형이 일어난 뒤(post mortem)가 아니라 일어나는 그 순간을 보므로, 힘·변위 변화의 여러 원인을 구별할 수 있는 것이 이 장비의 값이다. 정전용량형 변위 센싱을 쓰고, 압자 팁을 시료 바로 맞은편에 두어 직렬 하중 기구가 만드는 곡선 왜곡을 피한다. 변환기는 두 종류다 — 소형(Miniature) 변환기가 최대 힘 1500 µN·최대 변위 5000 nm·공진 약 110 Hz, MEMS 변환기가 1000 µN·2000 nm·약 1800 Hz. 힘 잡음 바닥 <200 nN, 변위 잡음 바닥 <1 nm 이며 실제 값은 홀더 종류와 TEM 환경에 따라 달라진다. 소형 평압자를 달면 개별 나노입자·나노필러의 압축 시험을 하고, 접촉 면적을 TEM 으로 재어 응력을 계산할 수 있다.",
+  "test_items": [
+    "instrumented_indentation",
+    "compression"
+  ],
+  "measurands": [
+    "indentation_hardness",
+    "indentation_modulus",
+    "compressive_strength",
+    "force_deflection",
+    "failure_mode"
+  ],
+  "materials": [
+    "nanoparticles and nanopillars",
+    "thin films",
+    "semiconductors",
+    "metals (nanoscale)",
+    "nanoscale structures"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_N": {
+      "max": 0.0015,
+      "note": "1500 µN(소형 변환기). MEMS 변환기는 1000 µN"
+    },
+    "displacement_um": {
+      "max": 5,
+      "note": "5000 nm(소형 변환기). MEMS 변환기는 2000 nm"
+    },
+    "frequency_Hz": {
+      "min": 110,
+      "max": 1800,
+      "note": "변환기 공진 주파수 — 소형 약 110 Hz, MEMS 약 1800 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "PI 95 — Miniature Transducer",
+      "specs": {
+        "document_no": "SAM-0073-A",
+        "max_force_uN": 1500,
+        "max_displacement_nm": 5000,
+        "resonance_frequency_Hz": 110,
+        "force_noise_floor_nN": 200,
+        "displacement_noise_floor_nm": 1,
+        "sensing": "정전용량형 변위 센싱",
+        "mounting": "TEM 측면 삽입형 홀더"
+      }
+    },
+    {
+      "model": "PI 95 — MEMS Transducer",
+      "specs": {
+        "max_force_uN": 1000,
+        "max_displacement_nm": 2000,
+        "resonance_frequency_Hz": 1800,
+        "force_noise_floor_nN": 200,
+        "displacement_noise_floor_nm": 1,
+        "note": "JEOL 호환 시스템 전용"
+      }
+    }
+  ],
+  "accuracy": {
+    "force_noise_floor": "<200 nN (홀더 종류와 TEM 환경에 따라 달라진다)",
+    "displacement_noise_floor": "<1 nm (같은 단서)"
+  },
+  "features": [
+    "TEM 안에서 in-situ 나노기계 시험 — 변형 순간을 보면서 정량 곡선 취득",
+    "하중-변위 곡선과 TEM 영상의 시간 동기",
+    "압자 팁을 시료 바로 맞은편에 배치 — 직렬 하중 기구가 만드는 곡선 왜곡 회피",
+    "소형 평압자로 개별 나노입자·나노필러 압축",
+    "TEM 으로 접촉 면적을 재어 응력 계산",
+    "2006 R&D 100 Award 수상"
+  ],
+  "options": [
+    "MEMS 변환기(JEOL 호환 시스템)",
+    "소형 평압자(flat punch)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "instrumented_indentation"
+    },
+    {
+      "type": "performs",
+      "target": "compression"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruker-hysitron-ti-950-triboindenter"
+    }
+  ],
+  "sources": [
+    {
+      "file": "bruker/hysitron-pi-95-tem-picoindenter-datasheet.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "hysitron.com 의 archive.org 스냅샷(2015-07-03)에서 받았다 — Bruker 인수 전 자료다. 변환기 사양표는 열이 흩어져 나와 2쪽 오른쪽 열을 렌더링해 대조했다(`catalog/pages/pi95-specs2.png`) — 소형 1500 µN/5000 nm/110 Hz, MEMS 1000 µN/2000 nm/1800 Hz 로 확정했다. 장비 치수는 '쓰는 현미경에 따라 달라진다' 고만 적혀 있어 기록하지 않았다. 힘·변위 잡음 바닥은 홀더와 TEM 환경에 따라 달라진다는 단서가 붙어 있어 그대로 옮겼다."
+}

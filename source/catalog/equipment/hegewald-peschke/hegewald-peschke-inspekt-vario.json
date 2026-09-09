@@ -1,0 +1,198 @@
+{
+  "id": "hegewald-peschke-inspekt-vario",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt vario Component Testing Machines (100 kN – 2500 kN)",
+  "name_ko": "헤게발트 운트 페슈케 inspekt vario 부품 시험기 (100~2500 kN)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "subcategory": "component_testing",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "시편이 아니라 완성 부품·구조물을 시험하도록 시험 공간을 크게 키운 전기기계식 시험기. 정격은 100·250·400·600·1200·1500·2000·2500 kN 여덟 단계, 시험 공간 폭은 610·750·1000 mm 중에서 고르고 높이는 구성에 따라 1900 mm 부터 5000 mm 까지 간다 — 같은 정격이라도 시험 공간이 크게 달라지는 것이 이 계열의 성격이다. 볼스크류 2 개와 경화 가이드 컬럼 4 개로 정밀한 힘 전달과 높은 횡력 안정성을 얻고, 힘·변위·변형 제어를 모두 한다. 300 kN 급 개별 구성 inspekt S 300 kN 은 시험 공간 높이 3500 mm·폭 1680 mm 에 프레임 강성 200 kN/mm, 속도 0.002~450 mm/min, 무게 7200 kg 이다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "compressive_strength",
+    "flexural_strength",
+    "force_deflection",
+    "failure_mode",
+    "shear_strength"
+  ],
+  "materials": [
+    "structural components",
+    "welded and bonded assemblies",
+    "metals",
+    "composites",
+    "building products"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1 (옵션 Class 0.5)",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 100,
+      "max": 2500,
+      "note": "100 / 250 / 400 / 600 / 1200 / 1500 / 2000 / 2500 kN 여덟 단계"
+    },
+    "vertical_test_space_mm": {
+      "min": 1900,
+      "max": 5000,
+      "note": "구성에 따라. 카탈로그 예시 — 2500 kN 에서 1900 mm, 600 kN 에서 5000 mm"
+    },
+    "horizontal_test_space_mm": {
+      "values": [
+        610,
+        750,
+        1000
+      ],
+      "note": "시험 공간 폭 선택"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.002,
+      "max": 450,
+      "note": "inspekt S 300 kN 기준. 다른 정격의 속도는 문서에 없다"
+    },
+    "frame_stiffness_kN_mm": {
+      "values": [
+        200
+      ],
+      "note": "inspekt S 300 kN 기준"
+    },
+    "weight_kg": {
+      "values": [
+        7200
+      ],
+      "note": "inspekt S 300 kN 기준"
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt S 300 kN (10-006-300)",
+      "specs": {
+        "test_load_kN": 300,
+        "mechanical": "무백래시 볼스크류 2, 경화 가이드 컬럼 4",
+        "frame_stiffness_kN_mm": 200,
+        "force_measuring_range": "정격의 0.1~100 %, DIN EN ISO 7500-1 / ASTM E4 Class 1 (옵션 0.5), 장착 로드셀에 따름",
+        "test_speed_mm_min": {
+          "min": 0.002,
+          "max": 450
+        },
+        "travel_resolution_um": 0.2,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 5.0 kVA, 제어함에 16CEE 플러그 4 m 케이블, 10~30 °C, 20~80 % 습도",
+        "height_mm": 4700,
+        "test_room_height_mm": 3500,
+        "max_stroke_mm": 3250,
+        "width_mm": 2550,
+        "width_with_control_mm": 3150,
+        "test_room_width_mm": 1680,
+        "depth_mm": 1150,
+        "weight_kg": 7200
+      },
+      "note": "vario 계열 안에서 유일하게 개별 데이터시트를 확보한 구성이다"
+    },
+    {
+      "model": "inspekt vario 구성 예시",
+      "specs": {
+        "examples": [
+          {
+            "test_load_kN": 100,
+            "test_room_height_mm": 2300
+          },
+          {
+            "test_load_kN": 150,
+            "test_room_height_mm": null
+          },
+          {
+            "test_load_kN": 250,
+            "test_room_height_mm": 2500
+          },
+          {
+            "test_load_kN": 300,
+            "test_room_height_mm": 3500
+          },
+          {
+            "test_load_kN": 600,
+            "test_room_height_mm": 5000
+          },
+          {
+            "test_load_kN": 2500,
+            "test_room_height_mm": 1900
+          }
+        ],
+        "test_room_width_mm": [
+          610,
+          750,
+          1000
+        ],
+        "control_modes": [
+          "힘 제어",
+          "변위 제어",
+          "변형 제어"
+        ]
+      },
+      "note": "카탈로그가 사양표가 아니라 설치 사례로 정격-시험공간 조합을 보여 준다. 150 kN 예시는 시험 공간 높이가 잘려 나오지 않았다",
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "부품·구조물을 통째로 받는 대형 시험 공간",
+    "정격과 시험 공간을 따로 고르는 구성 방식",
+    "볼스크류 2 + 경화 가이드 컬럼 4 — 횡력 안정성",
+    "힘·변위·변형 제어"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "tensile"
+    },
+    {
+      "type": "performs",
+      "target": "compression"
+    },
+    {
+      "type": "performs",
+      "target": "flexure"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/component-testing-machines-inspekt-vario.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-006-300-component-testing-machine-inspekt-s-300kn.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/bauteilpruefmaschinen-inspekt-vario.pdf",
+      "pages": [
+        1
+      ],
+      "note": "같은 카탈로그의 독일어판"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "vario 카탈로그는 사양표 없이 설치 사례로 정격-시험공간 조합을 보여 주는 형식이라, 정격별 속도·강성·무게가 확정되지 않는다. 그래서 예시 항목에 `uncertain: true` 를 달았다. 확정된 기종은 개별 데이터시트가 있는 inspekt S 300 kN 하나뿐이다. `bauteilpruefmaschinen-inspekt-vario.pdf` 는 같은 카탈로그의 독일어판이며 출처에 함께 넣었다."
+}

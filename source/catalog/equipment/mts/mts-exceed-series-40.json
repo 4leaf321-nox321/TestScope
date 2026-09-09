@@ -1,0 +1,284 @@
+{
+  "id": "mts-exceed-series-40",
+  "kind": "equipment_series",
+  "name": "MTS Exceed Series 40 Electromechanical Universal Test Systems",
+  "name_ko": "MTS Exceed 40 시리즈 전기기계식 만능시험기",
+  "manufacturer": "mts",
+  "brand": "Exceed",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "생산·QC 용 단조 시험 라인. E42(5 kN 단일컬럼), E43(10/50 kN 테이블), E44(30 kN 플로어 dual zone), E45(100/300/600 kN 플로어 dual zone). 데이터 2500 Hz, 제어 5000 Hz, 최소 속도 0.001 mm/min.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear",
+    "peel"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength"
+  ],
+  "materials": [
+    "plastics",
+    "thin films",
+    "fibers",
+    "adhesives",
+    "foam",
+    "elastomers",
+    "biomaterials",
+    "wood",
+    "paper",
+    "thin metals",
+    "wire",
+    "high-strength metals",
+    "components",
+    "fasteners",
+    "composites"
+  ],
+  "standards": {
+    "compliance": [
+      "ISO 7500-1 Class 0.5 / Class 1",
+      "ASTM E4",
+      "ISO 9513",
+      "ASTM E83"
+    ],
+    "test_methods": [
+      "ASTM",
+      "ISO",
+      "DIN",
+      "EN",
+      "BS template library"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "min": 0.005,
+      "max": 600,
+      "values": [
+        5,
+        10,
+        30,
+        50,
+        100,
+        300,
+        600
+      ]
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.001,
+      "max": 508
+    },
+    "vertical_test_space_mm": {
+      "min": 700,
+      "max": 1450
+    },
+    "horizontal_test_space_mm": {
+      "min": 100,
+      "max": 750
+    },
+    "data_rate_Hz": {
+      "max": 2500
+    },
+    "chamber": {
+      "values": [
+        "optional"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "E42.503",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 5,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 508
+        },
+        "position_resolution_nm": 51,
+        "vertical_test_space_mm": 700,
+        "vertical_test_space_mm_ext": 1000,
+        "horizontal_test_space_mm": 100,
+        "footprint_mm": {
+          "H": 1300
+        }
+      }
+    },
+    {
+      "model": "E43.104",
+      "form_factor": "dual_column_tabletop",
+      "specs": {
+        "force_kN": 10,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 508
+        },
+        "position_resolution_nm": 41,
+        "vertical_test_space_mm": 1000,
+        "vertical_test_space_mm_ext": 1300,
+        "horizontal_test_space_mm": 340,
+        "footprint_mm": {
+          "H": 1617
+        }
+      }
+    },
+    {
+      "model": "E43.504",
+      "form_factor": "dual_column_tabletop",
+      "specs": {
+        "force_kN": 50,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 508
+        },
+        "position_resolution_nm": 60,
+        "vertical_test_space_mm": 1000,
+        "vertical_test_space_mm_ext": 1300,
+        "horizontal_test_space_mm": 420
+      }
+    },
+    {
+      "model": "E44.304",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 30,
+        "test_zones": "dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 508
+        },
+        "position_resolution_nm": 40,
+        "vertical_test_space_mm": 1150,
+        "vertical_test_space_mm_ext": 1450,
+        "horizontal_test_space_mm": 400,
+        "footprint_mm": {
+          "H": 1862,
+          "W": 845,
+          "D": 716
+        },
+        "weight_kg": 435,
+        "power": "1PH 200–240 V 1200 W"
+      }
+    },
+    {
+      "model": "E45.105",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 100,
+        "test_zones": "dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 508
+        },
+        "position_resolution_nm": 41,
+        "vertical_test_space_mm": 1050,
+        "vertical_test_space_mm_ext": 1350,
+        "horizontal_test_space_mm": 600,
+        "footprint_mm": {
+          "H": 2133,
+          "W": 1230,
+          "D": 870
+        },
+        "weight_kg": 1400,
+        "power": "1PH 200–240 V 2000 W"
+      }
+    },
+    {
+      "model": "E45.305",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 300,
+        "test_zones": "dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 250
+        },
+        "position_resolution_nm": 17,
+        "vertical_test_space_mm": 1100,
+        "vertical_test_space_mm_ext": 1400,
+        "horizontal_test_space_mm": 580,
+        "footprint_mm": {
+          "H": 2360,
+          "W": 1215,
+          "D": 960
+        },
+        "weight_kg": 1700,
+        "power": "3PH 380–415/440–480 V 5000 W"
+      }
+    },
+    {
+      "model": "E45.605",
+      "form_factor": "floor",
+      "specs": {
+        "force_kN": 600,
+        "test_zones": "dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 254
+        },
+        "position_resolution_nm": 16,
+        "vertical_test_space_mm": 1300,
+        "horizontal_test_space_mm": 750,
+        "footprint_mm": {
+          "H": 2820,
+          "W": 1660,
+          "D": 1272
+        },
+        "weight_kg": 3500,
+        "power": "3PH 380–415/440–480 V 5000 W"
+      }
+    }
+  ],
+  "accuracy": {
+    "force": "±0.5% of applied (1–100%), ±1.0% (0.5–1%) low-profile cells; S-beam ±1.0%",
+    "speed": "±0.5% (≥0.01 mm/min), ±1.0% (<0.01 mm/min)",
+    "position": "within ±0.5%",
+    "strain": "±0.5% of applied strain"
+  },
+  "environment": {
+    "operating_temp_degC": [
+      5,
+      40
+    ],
+    "humidity_pct": [
+      5,
+      85
+    ],
+    "max_altitude_m": 2000
+  },
+  "features": [
+    "TestSuite TW / TW Essential",
+    "one-direction calibration",
+    "TEDS load cells",
+    "dual-zone (E44/E45)",
+    "optional T-slot table"
+  ],
+  "relations": [
+    {
+      "type": "same_family_as",
+      "target": "mts-criterion-series-40"
+    }
+  ],
+  "sources": [
+    {
+      "file": "mts/exceed-series-40-brochure.pdf",
+      "pages": [
+        6,
+        8,
+        10,
+        11
+      ]
+    },
+    {
+      "file": "mts/criterion-exceed-accessories-catalog.pdf",
+      "note": "Criterion 과 공용 부속 카탈로그"
+    }
+  ],
+  "confidence": "catalog"
+}

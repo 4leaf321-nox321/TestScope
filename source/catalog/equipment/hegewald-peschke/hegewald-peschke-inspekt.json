@@ -1,0 +1,497 @@
+{
+  "id": "hegewald-peschke-inspekt",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt Electromechanical Universal Testing Machines (100 kN – 2500 kN floor models)",
+  "name_ko": "헤게발트 운트 페슈케 inspekt 전기기계식 만능재료시험기 (바닥형 100~2500 kN)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "볼스크류 2 개와 경화 가이드 컬럼 4 개로 짜인 바닥형 만능재료시험기. 인장·압축·굽힘·박리·전단 시험을 한다. 하중 프레임이 시험 공간 높이·폭을 바꿀 수 있게 설계돼 있고, 이동 크로스헤드 위쪽(3 kN 또는 50 kN)과 옵션 측면에 부시험 공간을 둔다. 힘 측정은 사용하는 로드셀에 따라 정격의 0.1~100 % 구간에서 DIN EN ISO 7500-1 / ASTM E4 Class 1(옵션 Class 0.5). 시험 속도는 기종마다 다르고 100 kN 이 0.0001~1000 mm/min 으로 가장 넓다. 프레임 강성은 100 kN 의 170 kN/mm 부터 1500 kN 의 1685 kN/mm 까지. 노(furnace)·온도 챔버 같은 주변 장치와 신장계·프로브·광학 센서용 측정 채널을 붙일 수 있다(기본 확장 슬롯 3, 옵션 7). 제어·해석은 LabMaster 소프트웨어가 한다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "shear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength",
+    "flexural_modulus",
+    "peel_strength",
+    "shear_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "metals",
+    "plastics",
+    "composites (CFRP/GFRP)",
+    "elastomers",
+    "components and finished products"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1 (옵션 Class 0.5)",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 100,
+      "max": 2500,
+      "note": "바닥형 기종. 이동 크로스헤드 위 부시험 공간은 3 kN(100~250 kN) 또는 50 kN(400~1500 kN)"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 6e-05,
+      "max": 1000,
+      "note": "기종별로 다르다. 100·150 kN 0.0001~1000, 200·250 kN 0.00006~600, 400 kN 0.0001~500(10-106-9x4) 또는 0.00008~400(10-040-900), 600 kN 0.0001~300, 1200·1500 kN 0.0001~250, 2500 kN 0.002~250"
+    },
+    "vertical_test_space_mm": {
+      "min": 1200,
+      "max": 1900,
+      "note": "표준 시험 공간 높이. 400·600 kN 확장형 1850, 1200 kN 확장형 2210"
+    },
+    "horizontal_test_space_mm": {
+      "min": 610,
+      "max": 1020
+    },
+    "frame_stiffness_kN_mm": {
+      "min": 170,
+      "max": 1685,
+      "note": "로드셀과 공구 어댑터 변형 포함. 2500 kN 기종은 700 kN/mm 로 1500 kN 기종(1685)보다 낮다"
+    },
+    "weight_kg": {
+      "min": 1050,
+      "max": 10000
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt 100 kN",
+      "specs": {
+        "item_no": "10-101-x0x",
+        "nominal_load_kN": 100,
+        "upper_test_room_load_kN": 3,
+        "frame_stiffness_kN_mm": 170,
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 1000
+        },
+        "travel_resolution_um": 0.002,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 4.0 kW, 16CEE",
+        "tool_connection": "R60/30 또는 LK135-12xM12-IG",
+        "height_mm": 2150,
+        "test_room_height_mm": 1210,
+        "max_stroke_mm": 1090,
+        "width_mm": 1080,
+        "test_room_width_mm": 610,
+        "depth_mm": 700,
+        "weight_kg": 1050
+      }
+    },
+    {
+      "model": "inspekt 150 kN",
+      "specs": {
+        "item_no": "10-101-x1x",
+        "nominal_load_kN": 150,
+        "upper_test_room_load_kN": 3,
+        "frame_stiffness_kN_mm": 170,
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 1000
+        },
+        "travel_resolution_um": 0.002,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 4.0 kW, 16CEE",
+        "tool_connection": "R60/30 또는 LK135-12xM12-IG",
+        "height_mm": 2150,
+        "test_room_height_mm": 1210,
+        "max_stroke_mm": 1090,
+        "width_mm": 1080,
+        "test_room_width_mm": 610,
+        "depth_mm": 700,
+        "weight_kg": 1080
+      }
+    },
+    {
+      "model": "inspekt 200 kN",
+      "specs": {
+        "item_no": "10-101-x2x",
+        "nominal_load_kN": 200,
+        "upper_test_room_load_kN": 3,
+        "frame_stiffness_kN_mm": 260,
+        "crosshead_speed_mm_min": {
+          "min": 6e-05,
+          "max": 600
+        },
+        "travel_resolution_um": 0.0012,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 4.0 kW, 16CEE",
+        "tool_connection": "R60/30 또는 LK135-12xM12-IG",
+        "height_mm": 2150,
+        "test_room_height_mm": 1200,
+        "max_stroke_mm": 1070,
+        "width_mm": 1080,
+        "test_room_width_mm": 610,
+        "depth_mm": 700,
+        "weight_kg": 1100
+      }
+    },
+    {
+      "model": "inspekt 250 kN",
+      "specs": {
+        "item_no": "10-101-x2x",
+        "nominal_load_kN": 250,
+        "upper_test_room_load_kN": 3,
+        "frame_stiffness_kN_mm": 260,
+        "crosshead_speed_mm_min": {
+          "min": 6e-05,
+          "max": 600
+        },
+        "travel_resolution_um": 0.0012,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 4.0 kW, 16CEE",
+        "tool_connection": "R60/30 또는 LK135-12xM12-IG",
+        "height_mm": 2150,
+        "test_room_height_mm": 1200,
+        "max_stroke_mm": 1070,
+        "width_mm": 1080,
+        "test_room_width_mm": 610,
+        "depth_mm": 700,
+        "weight_kg": 1100
+      },
+      "note": "200 kN 과 같은 자료번호(10-101-x2x)를 쓰고 프레임 치수·강성·속도가 같다. 정격 하중만 다르다"
+    },
+    {
+      "model": "inspekt 400 kN",
+      "specs": {
+        "item_no": "10-106-9x4",
+        "nominal_load_kN": 400,
+        "upper_test_room_load_kN": 50,
+        "frame_stiffness_kN_mm": 390,
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 500
+        },
+        "travel_resolution_um": 0.05,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 7.0 kW, 32CEE",
+        "tool_connection": "M64x4 또는 LK184-8xM16-IG",
+        "standard_10-x05-914": {
+          "height_mm": 2450,
+          "test_room_height_mm": 1350,
+          "max_stroke_mm": 1110,
+          "width_mm": 1350,
+          "test_room_width_mm": 750,
+          "depth_mm": 850,
+          "weight_kg": 2300
+        },
+        "extended_10-x05-924": {
+          "height_mm": 2950,
+          "test_room_height_mm": 1850,
+          "max_stroke_mm": 1610,
+          "width_mm": 1350,
+          "test_room_width_mm": 750,
+          "depth_mm": 850,
+          "weight_kg": 2400
+        }
+      }
+    },
+    {
+      "model": "inspekt 400 kN (10-040-900 구성)",
+      "specs": {
+        "item_no": "10-040-900",
+        "nominal_load_kN": 400,
+        "frame_stiffness_kN_mm": 390,
+        "crosshead_speed_mm_min": {
+          "min": 8e-05,
+          "max": 400
+        },
+        "travel_resolution_um": 0.0012,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 4.5 kVA, 기계 제어부에 16CEE 플러그 4 m 케이블",
+        "tool_connection": "M64x4 또는 LK184-8xM16-IG",
+        "height_mm": 2150,
+        "test_room_height_mm": 1150,
+        "max_stroke_mm": 980,
+        "width_mm": 1040,
+        "width_with_control_mm": 1600,
+        "test_room_width_mm": 610,
+        "depth_mm": 710,
+        "weight_kg": 1150
+      },
+      "note": "같은 400 kN 인데 자료번호가 다른 별개 구성이다. 10-106-9x4 구성보다 프레임이 작고(폭 1040 vs 1350, 무게 1150 vs 2300 kg) 전력도 낮으며(4.5 vs 7.0 kVA), 속도 하한이 더 낮고(0.00008 vs 0.0001) 이동 분해능이 훨씬 좋다(0.0012 vs 0.05 µm). 강성만 390 kN/mm 로 같다"
+    },
+    {
+      "model": "inspekt 600 kN",
+      "specs": {
+        "item_no": "10-106-9x6",
+        "nominal_load_kN": 600,
+        "upper_test_room_load_kN": 50,
+        "frame_stiffness_kN_mm": 550,
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 300
+        },
+        "travel_resolution_um": 0.05,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 7.0 kW, 32CEE",
+        "tool_connection": "M64x4 또는 LK184-8xM16-IG",
+        "standard_10-x05-916": {
+          "height_mm": 2450,
+          "test_room_height_mm": 1350,
+          "max_stroke_mm": 1110,
+          "width_mm": 1350,
+          "test_room_width_mm": 750,
+          "depth_mm": 850,
+          "weight_kg": 2300
+        },
+        "extended_10-x05-906": {
+          "height_mm": 2950,
+          "test_room_height_mm": 1850,
+          "max_stroke_mm": 1610,
+          "width_mm": 1350,
+          "test_room_width_mm": 750,
+          "depth_mm": 850,
+          "weight_kg": 2400
+        }
+      }
+    },
+    {
+      "model": "inspekt 1200 kN",
+      "specs": {
+        "item_no": "10-106-9x2",
+        "nominal_load_kN": 1200,
+        "upper_test_room_load_kN": 50,
+        "frame_stiffness_kN_mm": 750,
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 250
+        },
+        "travel_resolution_um": 0.05,
+        "electrical": "3NPE 400 VAC 50 Hz (TN), 12.0 kVA, 전단 퓨즈 35 A",
+        "tool_connection": "M72x4 또는 LK250-12xM30-IG",
+        "standard_10-x05-902": {
+          "height_mm": 3160,
+          "test_room_height_mm": 1710,
+          "max_stroke_mm": 1460,
+          "width_mm": 1860,
+          "test_room_width_mm": 880,
+          "depth_mm": 1250,
+          "weight_kg": 6500
+        },
+        "extended_10-x05-922": {
+          "height_mm": 3660,
+          "test_room_height_mm": 2210,
+          "max_stroke_mm": 1960,
+          "width_mm": 1860,
+          "test_room_width_mm": 880,
+          "depth_mm": 1250,
+          "weight_kg": 7000
+        }
+      }
+    },
+    {
+      "model": "inspekt 1500 kN",
+      "specs": {
+        "item_no": "10-106-915",
+        "nominal_load_kN": 1500,
+        "upper_test_room_load_kN": 50,
+        "frame_stiffness_kN_mm": 1685,
+        "crosshead_speed_mm_min": {
+          "min": 0.0001,
+          "max": 250
+        },
+        "travel_resolution_um": 0.05,
+        "electrical": "3NPE 400 VAC 50 Hz (TN), 16 kVA, 전단 퓨즈 35 A, 고정 배선",
+        "tool_connection": "M72x4 또는 LK250-12xM30-IG",
+        "height_mm": 3160,
+        "test_room_height_mm": 1840,
+        "max_stroke_mm": 1410,
+        "width_mm": 1930,
+        "test_room_width_mm": 1020,
+        "depth_mm": 1170,
+        "weight_kg": 8500
+      }
+    },
+    {
+      "model": "inspekt SE 2500 kN",
+      "specs": {
+        "item_no": "10-021-002",
+        "nominal_load_kN": 2500,
+        "frame_stiffness_kN_mm": 700,
+        "crosshead_speed_mm_min": {
+          "min": 0.002,
+          "max": 250
+        },
+        "travel_resolution_um": 0.0076,
+        "force_measurement": "최대 2.5 MN. 정확도는 쓰는 기준 힘 변환기에 달렸다(이중 브리지 변환기 권장)",
+        "electrical": "3NPE 400 V 50 Hz (TN), 25.0 kVA, 퓨즈 35 A, 고정 배선, RCD AC/DC 감응형",
+        "controller": "EDC 580",
+        "height_mm": 3300,
+        "test_room_height_mm": 1900,
+        "max_stroke_mm": 1500,
+        "width_mm": 1800,
+        "test_room_width_mm": 1000,
+        "depth_mm": 1100,
+        "weight_kg": 10000
+      },
+      "note": "힘 측정 항목이 다른 기종과 다르다 — Class 1/0.5 등급이 아니라 '쓰는 기준 힘 변환기에 따른다' 로만 적혀 있다. 교정기(calibration machine)로도 쓰이는 구성이기 때문으로 보인다"
+    }
+  ],
+  "accuracy": {
+    "force": "DIN EN ISO 7500-1 / ASTM E4 Class 1, 정격의 0.1~100 % 구간(옵션 Class 0.5). 실제 범위는 장착한 로드셀에 따른다"
+  },
+  "environment": {
+    "operating_temperature_degC": {
+      "min": 5,
+      "max": 40
+    },
+    "operating_humidity_pct": {
+      "min": 20,
+      "max": 80
+    }
+  },
+  "features": [
+    "볼스크류 2 개 + 경화 가이드 컬럼 4 개 — 횡력 안정성과 축강성",
+    "케이싱과 벨로우즈 커버로 생산 현장에서도 쓸 수 있는 구조",
+    "브러시리스 AC 서보 구동 — 정적 시험과 교번·연속 하중 모두",
+    "표준 상·하 시험 공간, 옵션 측면 시험 공간",
+    "시험 공간 높이·폭을 바꾸는 가변 하중 프레임",
+    "적응형 제어기, 센서 자동 인식 및 교정 데이터 저장",
+    "과부하 보호, 시편 파단 검출, 리턴 기능",
+    "데이터 취득 카드용 자유 슬롯 3(옵션 7)",
+    "Ethernet(LAN) 또는 USB, 표준 50 Hz",
+    "LabMaster 소프트웨어 — 인장·압축·굽힘·박리 모듈 전부 추가비용 없이 포함"
+  ],
+  "options": [
+    "노(oven)·온도 챔버 등 온도 제어 장치",
+    "클립온·장거리·광학 신장계",
+    "보호 장치(CE 적합 보호 하우징)",
+    "다중 시험 공간(측면 또는 이동 크로스헤드 위)",
+    "시험 속도 증대",
+    "로드셀 이동 유닛 또는 로드셀 병렬 장착용 개조 크로스헤드",
+    "T 홈 플레이트 등 부속",
+    "시험 공간 확장(H +250/+550 mm, B +140/+430 mm)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "tensile"
+    },
+    {
+      "type": "performs",
+      "target": "compression"
+    },
+    {
+      "type": "performs",
+      "target": "flexure"
+    },
+    {
+      "type": "performs",
+      "target": "peel"
+    },
+    {
+      "type": "performs",
+      "target": "shear"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt-table"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt-blue"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt-solo"
+    },
+    {
+      "type": "extends_temperature",
+      "target": "hegewald-peschke-temperature-chambers"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-grips"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-extensometers"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/inspekt-static-utm-overview.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-100kn-datasheet.pdf",
+      "pages": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-150kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-200kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-250kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-400kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-600kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-1200kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-1500kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-021-002-utm-se-inspekt-2500kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-040-900-universal-testing-machine-inspekt-400kn-1.pdf",
+      "pages": [
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "기종마다 별도 데이터시트가 있어 사양이 기종 단위로 확정된다. 100 kN 데이터시트 4쪽의 '시험 공간 확장' 표(H/B 확장별 무게·치수·강성)는 열이 흩어져 나와 옮기지 않았다 — 표준 구성 값만 기록했다. 하중 프레임과 로드셀이 분리돼 있어 실제 힘 범위는 장착 로드셀이 정한다 — 이 객체의 정격은 프레임 용량이다. 400 kN 은 자료번호가 다른 두 구성(10-106-9x4 / 10-040-900)이 있고 프레임 크기·무게·전력·이동 분해능이 크게 다르다 — 정격만 보고 같은 장비로 취급하면 안 된다."
+}

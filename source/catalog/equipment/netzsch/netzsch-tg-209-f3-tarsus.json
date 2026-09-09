@@ -1,0 +1,25 @@
+{
+  "id": "netzsch-tg-209-f3-tarsus",
+  "kind": "equipment_model",
+  "name": "NETZSCH TG 209 F3 Tarsus Thermogravimetric Analyzer",
+  "name_ko": "네취 TG 209 F3 Tarsus 열중량분석기",
+  "manufacturer": "netzsch",
+  "category": "tga",
+  "form_factor": "benchtop",
+  "description": "톱로딩 TGA. RT~1000 °C, 승온 0.001–200 K/min, 냉각 약 25 min(He 12 min), 최대 시료 2 g, 분해능 0.1 µg. 교환 센서(대용량/고감도 c-DTA/내식), 자동 시료교환기 20개, 자동 진공 사이클, 2 g 내장 질량 교정.",
+  "test_items": ["tga"],
+  "measurands": ["mass_loss", "decomposition_temperature", "filler_content", "glass_fiber_content", "moisture", "ash", "caloric_effects (c-DTA)"],
+  "materials": ["polymers", "elastomers", "PVC", "PA66/GF", "organics", "pharmaceuticals", "cosmetics", "food"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E1131", "ISO 11358", "ASTM E1868", "ASTM D6370"]},
+  "limits": {
+    "temperature_degC": {"min": 20, "max": 1000},
+    "heating_rate_K_min": {"min": 0.001, "max": 200},
+    "sample_mass_mg": {"max": 2000},
+    "balance_resolution_ug": {"values": [0.1]}
+  },
+  "models": [{"model": "TG 209 F3 Tarsus", "specs": {"temperature_degC": {"min": 20, "max": 1000}, "heating_rate_K_min": {"min": 0.001, "max": 200}, "sample_mass_mg": 2000, "balance_resolution_ug": 0.1, "cooling_time_min": 25, "crucibles": "Al2O3 85/300/350 µl, Pt/Rh, Al, Au, SiO2, Ag, ZrO2", "asc_positions": 20}}],
+  "options": ["mass flow controllers", "automatic sample changer (20)", "c-DTA sensor", "corrosion-resistant sensor", "AutoEvaluation / Identify"],
+  "relations": [],
+  "sources": [{"file": "netzsch/tg-209-f3-tarsus.pdf", "pages": [11, 12, 13, 14]}],
+  "confidence": "catalog"
+}

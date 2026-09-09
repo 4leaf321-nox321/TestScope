@@ -1,0 +1,131 @@
+{
+  "id": "mtdi-fld-300s",
+  "kind": "equipment_series",
+  "name": "MTDI FLD-300S Forming Limit Diagram Tester",
+  "name_ko": "엠티디아이 FLD-300S 성형한계도(FLD) 시험기",
+  "manufacturer": "mtdi",
+  "category": "formability_tester",
+  "drive": "hydraulic",
+  "form_factor": "floor",
+  "description": "판재의 성형성을 상온·중온·고온에서 분석해 성형한계도(FLD)를 그리는 유압식 시험기. 인코넬 몰드·다이를 써서 최대 900 °C 에서 시험한다. 블랭크 홀더와 펀치의 하중을 각각 소프트웨어로 조절하고, 펀치는 변위 제어와 하중 제어를 모두 지원해 여러 방식의 시험을 한다. 블랭크 홀더와 펀치의 이동거리는 각 200 mm, 이동속도는 각 250 mm/min. 유압 유닛은 AC 모터 22 kW, 최대 210 bar. 샘플링 속도 최대 250 kS/s. 블랭크와 펀치의 로드셀 하중을 실시간으로 확인·저장하고, CCD 카메라(옵션)로 성형 상태를 실시간으로 보며 에어리어 센서로 안전을 감시한다. 블랭크 홀더 전체를 들어 올리는 리프트 장치가 있다.",
+  "test_items": [
+    "formability",
+    "tensile"
+  ],
+  "measurands": [
+    "forming_limit_curve",
+    "major_strain",
+    "minor_strain",
+    "r_value",
+    "dome_height",
+    "force_deflection",
+    "failure_mode"
+  ],
+  "materials": [
+    "sheet metal",
+    "steel and aluminium sheet",
+    "high temperature formed panels"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "values": [
+        981,
+        1961,
+        2942
+      ],
+      "note": "블랭크 홀더·펀치 각각 100 / 200 / 300 tonf 구성. kN 환산값(1 tonf = 9.80665 kN)이며 카탈로그 원 표기는 tonf 다"
+    },
+    "temperature_degC": {
+      "max": 900,
+      "note": "인코넬 몰드·다이 기준(변경 가능). 중저온 분위기 퍼니스는 -100~300 °C, 카트리지 히터는 최대 400 °C"
+    },
+    "crosshead_travel_mm": {
+      "max": 200,
+      "note": "블랭크 홀더·펀치 각각 200 mm"
+    },
+    "crosshead_speed_mm_min": {
+      "max": 250,
+      "note": "블랭크 홀더·펀치 각각 250 mm/min"
+    },
+    "pressure_bar": {
+      "max": 210,
+      "note": "유압 유닛"
+    },
+    "data_rate_Hz": {
+      "max": 250000,
+      "note": "샘플링 최대 250 kS/s"
+    },
+    "power_kW": {
+      "values": [
+        22
+      ],
+      "note": "유압 유닛 AC 모터"
+    },
+    "footprint_mm": {
+      "note": "2650(W) x 2150(D) x 2700(H)"
+    }
+  },
+  "models": [
+    {
+      "model": "FLD-300S",
+      "specs": {
+        "temperature_max_degC": 900,
+        "mold_die_material": "인코넬(Inconel)",
+        "travel_mm": "블랭크 홀더·펀치 각 200",
+        "speed_mm_min": "블랭크 홀더·펀치 각 250",
+        "hydraulic_unit": "AC 모터 22 kW, 최대 210 bar",
+        "sampling_rate": "최대 250 kS/s",
+        "control": "펀치 변위 제어 / 하중 제어, 블랭크 홀딩·펀치 하중을 각각 소프트웨어로 조절",
+        "monitoring": [
+          "블랭크·펀치 로드셀 하중 실시간 확인·저장",
+          "CCD 카메라 실시간 성형 확인(옵션)",
+          "에어리어 센서 안전 감시"
+        ],
+        "lift": "블랭크 홀더 전체를 들어 올리는 리프트",
+        "load_tonf": "블랭크 홀더·펀치 각 100 / 200 / 300 tonf",
+        "footprint_mm": "2650 W x 2150 D x 2700 H",
+        "electrical": "AC 380 V, 3상, 50~60 Hz, 60 A"
+      }
+    }
+  ],
+  "features": [
+    "최대 900 °C 고온 성형 시험(인코넬 몰드·다이)",
+    "블랭크 홀딩 하중과 펀치 하중을 따로 제어",
+    "펀치 변위 제어·하중 제어 모두 지원",
+    "실시간 그래프 표시와 수동 운전 UI, Test Wizard",
+    "에어리어 센서 안전 감시"
+  ],
+  "options": [
+    "CCD 카메라 실시간 성형 확인",
+    "고온 분위기 퍼니스(최대 900 °C)",
+    "중저온 분위기 퍼니스(-100~300 °C)",
+    "카트리지 히터(최대 400 °C), 센서 보호용 단열재, 수냉 냉각"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "formability"
+    },
+    {
+      "type": "performs",
+      "target": "tensile"
+    }
+  ],
+  "sources": [
+    {
+      "file": "mtdi/fld-300s-forming-limit-diagram-tester.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "mtdi.co.kr 자료실 카탈로그 게시판에서 받았다 — 다운로드 링크에 nonce 가 붙어 세션 쿠키가 필요하고, nonce 의 `|` 를 %7C 로 인코딩해야 curl 이 받는다. 사양표는 텍스트 추출이 각 행의 앞부분을 잘라 하중이 '00, 200, 300tonf' 로 나왔다 — 3쪽을 렌더링해 **블랭크 홀더·펀치 각 100/200/300 tonf** 로 확정했다(`catalog/pages/mtdi-fld-specs2.png`). 같은 렌더링으로 치수 2650x2150x2700 mm 와 전원 AC 380 V 3상 60 A 도 얻었다. 온톨로지에 성형성 분류(`formability_tester`)와 시험 항목(`formability`)을 새로 만들어 제대로 걸었다. tonf -> kN 환산은 우리가 한 것이고 카탈로그 원 표기는 tonf 다."
+}

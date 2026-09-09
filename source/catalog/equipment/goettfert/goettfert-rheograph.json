@@ -1,0 +1,231 @@
+{
+  "id": "goettfert-rheograph",
+  "kind": "equipment_series",
+  "name": "GÖTTFERT RHEOGRAPH 20 / 25 / 50 / 75 / 120 High Pressure Capillary Rheometer",
+  "name_ko": "괴트페르트 RHEOGRAPH 20·25·50·75·120 고압 모세관 레오미터",
+  "manufacturer": "goettfert",
+  "brand": "RHEOGRAPH",
+  "category": "capillary_rheometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "서보 구동 피스톤으로 용융 고분자를 모세관 다이에 밀어 넣어 전단속도-점도 곡선을 얻는 고압 모세관 레오미터. 시험력 20/25/50/75/120 kN 다섯 기종이고, 시험 배럴은 1·2·3 배럴 구성에 9.55~30 mm 지름을 고른다. 피스톤 속도 0.00004~40 mm/s(0.0024~2400 mm/min, 1:1,000,000)로 낮은 전단속도부터 가공 전단속도까지 한 장비로 덮는다. 온도는 실온 +5 °C 부터 400 °C(옵션 500 °C), 3x Pt100 으로 제어하고 표시 분해능 0.01 °C. 압력 변환기는 20~2500 bar(RG20 은 2000 bar)에 범위 정확도 0.2 %, 신호 분해능은 정격의 0.005 %(2000 bar 기준 0.1 bar)로 시장 표준 대비 측정 범위가 한 자릿수 넓다고 적는다. PVT·열전도도·역압챔버·신장(RHEOTENS·HAUL-OFF)·다이 스웰·샤크스킨 애드온을 붙이는 플랫폼이다.",
+  "test_items": [
+    "rheology_capillary"
+  ],
+  "measurands": [
+    "viscosity",
+    "shear_modulus",
+    "extensional_viscosity",
+    "melt_density"
+  ],
+  "materials": [
+    "thermoplastics",
+    "elastomers/rubber",
+    "PVC dry blend",
+    "filled compounds"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 11443",
+      "ASTM D3835",
+      "ASTM D5099",
+      "ISO 17744",
+      "ASTM D5930"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "min": 20,
+      "max": 120,
+      "note": "시험력(피스톤 힘) 20 / 25 / 50 / 75 / 120 kN"
+    },
+    "temperature_degC": {
+      "max": 400,
+      "note": "실온 +5 °C 부터. 옵션 500 °C. 표시 분해능 0.01 °C, 3x Pt100"
+    },
+    "pressure_bar": {
+      "min": 20,
+      "max": 2500,
+      "note": "압력 변환기 측정 범위. RG20 은 20~2000 bar. 범위 정확도 0.2 %"
+    },
+    "piston_speed_mm_min": {
+      "min": 0.0024,
+      "max": 2400,
+      "note": "0.00004~40 mm/s. RG20 만 0.0001~30 mm/s(0.006~1800 mm/min)"
+    },
+    "bore_diameter_mm": {
+      "values": [9.55, 12, 15, 20, 25, 30],
+      "note": "시험 배럴 지름. 기종별 조합은 models 참조"
+    },
+    "weight_kg": {
+      "min": 270,
+      "max": 650
+    }
+  },
+  "models": [
+    {
+      "model": "RHEOGRAPH 20 (RG20)",
+      "specs": {
+        "test_force_kN": 20,
+        "barrel_1_diameter_mm": [9.55, 12, 15, 20],
+        "barrel_2_configuration": ["2x12", "2x15", "1x12+1x15", "2x20"],
+        "barrel_3_configuration": [],
+        "pressure_transducer_range_bar": {"min": 20, "max": 2000},
+        "pressure_transducer_accuracy_pct": 0.2,
+        "position_resolution_mm": 0.000053,
+        "piston_speed_mm_s": {"min": 0.0001, "max": 30},
+        "force_accuracy_class": 0.02,
+        "force_accuracy_pct": 0.4,
+        "max_pressure_force_transducers": "5/2",
+        "power_supply": "1x 230 V, 50/60 Hz",
+        "footprint_mm": "850 x 635 x 1550 (장비) / 600 x 600 x 550 (테이블)",
+        "weight_kg": 270
+      },
+      "note": "시리즈에서 유일하게 3-배럴 구성이 없고, 속도·위치 분해능·전원도 다른 기종과 다르다. 반면 2-배럴 2x20 mm 조합은 RG120 과 함께 ● 로 인쇄돼 있다."
+    },
+    {
+      "model": "RHEOGRAPH 25 (RG25)",
+      "specs": {
+        "test_force_kN": 25,
+        "barrel_1_diameter_mm": [9.55, 12, 15, 20, 25],
+        "barrel_2_configuration": ["2x12", "2x15", "1x12+1x15"],
+        "barrel_3_configuration": ["2x12+1x15", "3x12"],
+        "pressure_transducer_range_bar": {"min": 20, "max": 2500},
+        "pressure_transducer_accuracy_pct": 0.2,
+        "position_resolution_mm": 0.0000016,
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "force_accuracy_class": 0.02,
+        "force_accuracy_pct": 0.4,
+        "max_pressure_force_transducers": "5/2",
+        "power_supply": "3x 400 V / 3x 230 V, 50/60 Hz",
+        "footprint_mm": "1255 x 600 x 1739 (장비) / 790 x 600 x 620 (테이블)",
+        "weight_kg": 450
+      }
+    },
+    {
+      "model": "RHEOGRAPH 50 (RG50)",
+      "specs": {
+        "test_force_kN": 50,
+        "barrel_1_diameter_mm": [9.55, 12, 15, 20, 25],
+        "barrel_2_configuration": ["2x12", "2x15", "1x12+1x15"],
+        "barrel_3_configuration": ["2x12+1x15", "3x12"],
+        "pressure_transducer_range_bar": {"min": 20, "max": 2500},
+        "pressure_transducer_accuracy_pct": 0.2,
+        "position_resolution_mm": 0.0000016,
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "force_accuracy_class": 0.02,
+        "force_accuracy_pct": 0.4,
+        "max_pressure_force_transducers": "5/2",
+        "power_supply": "3x 400 V / 3x 230 V, 50/60 Hz",
+        "footprint_mm": "1255 x 600 x 1739 (장비) / 790 x 600 x 620 (테이블)",
+        "weight_kg": 480
+      }
+    },
+    {
+      "model": "RHEOGRAPH 75 (RG75)",
+      "specs": {
+        "test_force_kN": 75,
+        "barrel_1_diameter_mm": [9.55, 12, 15, 20, 25, 30],
+        "barrel_2_configuration": ["2x12", "2x15", "1x12+1x15"],
+        "barrel_3_configuration": ["2x12+1x15", "3x12"],
+        "pressure_transducer_range_bar": {"min": 20, "max": 2500},
+        "pressure_transducer_accuracy_pct": 0.2,
+        "position_resolution_mm": 0.0000016,
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "force_accuracy_class": 0.02,
+        "force_accuracy_pct": 0.4,
+        "max_pressure_force_transducers": "5/3",
+        "power_supply": "3x 400 V / 3x 230 V, 50/60 Hz",
+        "footprint_mm": "1255 x 600 x 1739 (장비) / 790 x 700 x 620 (테이블)",
+        "weight_kg": 630
+      },
+      "note": "Thermoset Capillary Rheometer(TCR)의 기반이 되는 75 kN 피스톤 힘 기종"
+    },
+    {
+      "model": "RHEOGRAPH 120 (RG120)",
+      "specs": {
+        "test_force_kN": 120,
+        "barrel_1_diameter_mm": [9.55, 12, 15, 20, 25, 30],
+        "barrel_2_configuration": ["2x12", "2x15", "1x12+1x15", "2x20"],
+        "barrel_3_configuration": ["2x12+1x15", "3x12", "3x15", "3x20"],
+        "pressure_transducer_range_bar": {"min": 20, "max": 2500},
+        "pressure_transducer_accuracy_pct": 0.2,
+        "position_resolution_mm": 0.0000016,
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "force_accuracy_class": 0.02,
+        "force_accuracy_pct": 0.4,
+        "max_pressure_force_transducers": "5/3",
+        "power_supply": "3x 400 V / 3x 230 V, 50/60 Hz",
+        "footprint_mm": "1255 x 600 x 1739 (장비) / 790 x 700 x 620 (테이블)",
+        "weight_kg": 650
+      },
+      "note": "시험력이 커서 시리즈 중 가장 높은 전단속도까지 간다"
+    }
+  ],
+  "accuracy": {
+    "pressure_range_accuracy": "0.2 % of range",
+    "pressure_signal_resolution": "정격의 0.005 % (2000 bar 변환기에서 0.1 bar, 30,000 psi 에서 1.5 psi)",
+    "force_transducer_class": "0.02 등급, 1~100 % 구간에서 0.4 %",
+    "temperature_display": "+/- 0.01 °C"
+  },
+  "features": [
+    "1:1,000,000 피스톤 속도 범위",
+    "0~40 mm/s 를 0.6 s 에 내는 고동특성 피스톤 가속",
+    "압력 변환기 자동 인식(Plug & Test)",
+    "5 점 온도 교정·제어 데이터셋",
+    "장비 내장 PC + 14.48 cm(5.7 인치) 컬러 QVGA 터치스크린",
+    "스크립트 가능한 LabRheo 소프트웨어, WinRheo II 해석",
+    "정속 또는 정압/정력 측정 모드",
+    "3 단 과부하 검출",
+    "Rabinowitsch-Weissenberg·Bagley·Mooney·Hagenbach·Gleissle 보정",
+    "Carreau-Winter·Cross·Yasuda·Sabia·Münstedt·Ostwald-de Waele 유동곡선 근사, WLF·Arrhenius 시프트 마스터커브"
+  ],
+  "options": [
+    "Melt Cutting Unit",
+    "Slit Die",
+    "RHEOTENS",
+    "HAUL-OFF",
+    "용융 온도 측정용 열전대",
+    "시험 챔버 외부 온도 제어",
+    "내식·내마모 배럴 시스템",
+    "질소 퍼지 유닛",
+    "공압식 또는 배터리식 청소 장치",
+    "500 °C 고온 옵션"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "rheology_capillary"
+    },
+    {
+      "type": "extends_capability",
+      "target": "goettfert-rheograph-add-ons",
+      "note": "PVT·열전도도·역압챔버·신장·다이 스웰·샤크스킨 애드온"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph-auto"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph-25e"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-tcr"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-counter-pressure-viscosimeter"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [4, 5, 6, 7, 22, 23]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "23쪽 사양표는 텍스트 추출이 열을 흩뜨려 배럴 조합·속도·전원·치수가 뒤섞여 나왔다. `tools_render_pages.py` 로 23쪽을 렌더링하고 배럴 구역을 6배로 확대해 점(●)과 대시(-)의 열 위치를 눈으로 대조한 뒤 기록했다. 그 결과 RG20 은 3-배럴 구성이 없고, 반대로 2-배럴 2x20 mm 조합은 RG20 과 RG120 에만 ● 가 찍혀 있다 — 힘이 가장 작은 기종에 큰 2-배럴 조합이 붙는 셈이라 원본 표기가 특이하지만 인쇄된 그대로 옮겼다. 확인이 필요하면 `catalog/pages/rheograph-capillary-rheometer-brochure-p23.png` 를 보면 된다."
+}

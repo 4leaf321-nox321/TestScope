@@ -1,0 +1,118 @@
+{
+  "id": "epsilon-3542-3442-axial-extensometers",
+  "kind": "sensor",
+  "name": "Epsilon Model 3542 / 3542L / 3442 Axial Extensometers",
+  "name_ko": "엡실론 3542·3542L·3442 축방향 신장계",
+  "manufacturer": "epsilon",
+  "brand": "Epsilon",
+  "category": "extensometer",
+  "form_factor": "portable",
+  "description": "스트레인게이지식 접촉 신장계. 이중 플렉셔(dual flexure) 구조라 튼튼하고 진동에 둔감해 비교적 높은 주파수에서도 쓴다 — 인장·압축·주기 시험을 모두 한다. **3542** 는 범용으로 표점거리 10~80 mm(0.5~2 인치), 전스케일 측정 범위 변형률 5~100 %. 표점거리 100 mm(4 인치) 이상은 3542L 을 쓴다. **3442** 는 소형으로 표점거리를 3 mm 까지 짧게, 50 mm 까지 길게 잡고 게이지 세팅 핀으로 표점거리를 정확히 맞춘다. 표준품이 ASTM E83 class B-1 정확도를 만족하고 시험 성적서가 딸리며, ISO 9513 class 0.5 성적서도 받을 수 있다. 온도는 표준(-ST)이 -40~+100 °C, 옵션(-LHT)이 **-270~+200 °C** 로 극저온까지 간다. 한 손으로 붙이는 퀵어태치 키트가 기본이고 스프링·고무밴드 장착도 된다. 출력 2~4 mV/V(기종별), 여기 전압 5~10 VDC 권장(최대 12 V), 2.5 m 일체형 초유연 케이블. 무게 약 30 g.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "fatigue"
+  ],
+  "measurands": [
+    "elongation",
+    "youngs_modulus",
+    "yield_strength",
+    "axial_strain"
+  ],
+  "materials": [
+    "metals",
+    "plastics",
+    "composites",
+    "ceramics"
+  ],
+  "standards": {
+    "compliance": [
+      "ASTM E83 class B-1 (표준품)",
+      "ISO 9513 class 0.5 (성적서 선택 가능)"
+    ],
+    "test_methods": [
+      "ASTM D695 (복합재 압축 지그 직결 구성)"
+    ]
+  },
+  "limits": {
+    "gauge_length_mm": {
+      "min": 3,
+      "max": 80,
+      "note": "3442 가 3~50 mm, 3542 가 10~80 mm(0.5~2 인치). 100 mm 이상은 3542L"
+    },
+    "temperature_degC": {
+      "min": -270,
+      "max": 200,
+      "note": "표준(-ST) -40~+100 °C. -LHT 옵션에서만 -270~+200 °C"
+    },
+    "displacement_mm": {
+      "note": "측정 범위는 표점거리와 조합으로 정해진다 — 3542 는 전스케일 변형률 5~100 %, 3442 예시로 표점 6 mm 에 ±1.0 mm(±16.7 %) 또는 +5.0/-1.0 mm(+83 %/-17 %)"
+    },
+    "weight_kg": {
+      "max": 0.03,
+      "note": "약 30 g"
+    }
+  },
+  "models": [
+    {
+      "model": "Model 3542 (범용 축방향)",
+      "specs": {
+        "gauge_length_mm": {"min": 10, "max": 80, "note": "0.5~2 인치 규격도 있다"},
+        "full_scale_strain_pct": {"min": 5, "max": 100},
+        "principle": "스트레인게이지, 이중 플렉셔",
+        "accuracy": "ASTM E83 class B-1(표준). ISO 9513 class 0.5 성적서 선택",
+        "temperature_standard_degC": {"min": -40, "max": 100},
+        "temperature_option_LHT_degC": {"min": -270, "max": 200},
+        "excitation": "5~10 VDC 권장(최대 12 VDC/VAC)",
+        "output_mV_per_V": {"min": 2, "max": 4},
+        "cable": "일체형 초유연 케이블 2.5 m",
+        "quick_attach_kit_mm": "두께 12 x 폭 31",
+        "weight_g": 30,
+        "modes": ["인장", "압축", "주기(cyclic)"]
+      },
+      "note": "표점거리 100 mm(4 인치) 이상은 Model 3542L 을 쓴다"
+    },
+    {
+      "model": "Model 3442 (소형)",
+      "specs": {
+        "gauge_length_mm": {"min": 3, "max": 50},
+        "principle": "스트레인게이지, 이중 플렉셔",
+        "gauge_setting": "게이지 세팅 핀으로 표점거리 정확히 설정. 표점거리 어댑터 키트로 여러 표점거리 구성",
+        "temperature_option_LHT_degC": {"min": -270, "max": 200},
+        "example_ranges": ["표점 6.0 mm + ±1.0 mm(±16.7 % 변형)", "표점 6.0 mm + +5.0/-1.0 mm(+83 %/-17 % 변형)"],
+        "modes": ["인장", "압축"]
+      }
+    }
+  ],
+  "accuracy": {
+    "standard": "ASTM E83 class B-1, 시험 성적서 포함",
+    "option": "ISO 9513 class 0.5 성적서"
+  },
+  "features": [
+    "이중 플렉셔 — 진동에 둔감해 높은 주파수 운전 가능",
+    "한 손 장착 퀵어태치 키트(제거하면 스프링·고무밴드 장착)",
+    "스트레인게이지식이라 스트레인게이지용 전자부와 그대로 호환",
+    "-270 °C 극저온 옵션",
+    "ASTM D695 복합재 압축 지그에 직결 가능",
+    "표점거리·측정범위·온도범위를 자유 조합(일부 예외)"
+  ],
+  "options": [
+    "-LHT 고저온 사양(-270~+200 °C)",
+    "ISO 9513 class 0.5 성적서",
+    "표점거리 어댑터 키트(3442)",
+    "복합재 압축 지그 직결 클립",
+    "신호 조절기·스트레인 미터"
+  ],
+  "relations": [
+    {"type": "performs", "target": "tensile"},
+    {"type": "performs", "target": "compression"},
+    {"type": "fits_on", "target": "mtdi-fld-300s", "note": "국내는 MTDI 가 유통하며 자사 시험기에 함께 공급한다"}
+  ],
+  "sources": [
+    {"file": "mtdi/epsilon-extensometer-3542-series.pdf", "pages": [1, 2]},
+    {"file": "mtdi/epsilon-extensometer-3442-series.pdf", "pages": [1, 2]},
+    {"file": "mtdi/epsilon-extensometer-rod-tips.pdf", "pages": [1], "note": "로드 팁 형상 선택 안내 — 직선 치즐 팁이 가장 범용"}
+  ],
+  "confidence": "catalog",
+  "notes": "**Epsilon Technology 제품이고 MTDI 가 국내 유통한다** — 문서를 MTDI 카탈로그 게시판에서 받았기 때문에 `pdf/mtdi/` 아래 있지만 제조사는 Epsilon 이다(TIRA-Brüel&Kjær 와 같은 처리). 이 객체를 만들려고 온톨로지 `manufacturers.json` 에 `epsilon` 을 추가했다. 측정 범위가 단일 값이 아니라 표점거리와의 조합으로 정해져 데이터시트가 조합표를 싣는데, 그 표는 옮기지 않고 범위와 예시만 적었다 — 조합이 수십 가지라 이 객체의 층위를 넘는다. 3542L(표점 100 mm 이상)은 별도 데이터시트이며 확보하지 않았다."
+}

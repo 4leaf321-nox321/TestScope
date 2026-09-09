@@ -1,0 +1,34 @@
+{
+  "id": "nordson-dage-sonoscan-gen6",
+  "kind": "equipment_model",
+  "name": "Nordson Sonoscan Gen6 C-Mode Scanning Acoustic Microscope (C-SAM)",
+  "name_ko": "노드슨 소노스캔 Gen6 C-모드 주사 음향 현미경",
+  "manufacturer": "nordson-dage",
+  "brand": "Sonoscan",
+  "category": "acoustic_microscope",
+  "form_factor": "floor",
+  "description": "초음파로 패키지 내부의 박리(delamination)·보이드·크랙을 비파괴로 찾아내는 C-모드 주사 음향 현미경. 관성 균형 리니어 모터 스캐너로 진동을 억제하고, 타워 기준 스캔 플랫폼과 시료 고정구로 위치 재현성을 확보한다. 개방형 스캔 영역이라 단품부터 300 mm 웨이퍼, JEDEC 트레이까지 적재가 쉽다. PolyGate, SonoSimulator, VRM(가상 재스캔), 옵션 FDI(주파수 영역 이미징) 같은 고급 기능과 DIA(디지털 영상 해석)로 음향 데이터를 정량화한다. 시료에 맞는 트랜스듀서를 교체 장착하고 DI 수를 매질로 사용.",
+  "test_items": ["acoustic_delamination"],
+  "measurands": ["delamination_area", "void_percentage", "crack_detection", "die_attach_coverage", "interface_integrity"],
+  "materials": ["semiconductor packages", "MEMS", "SSL LEDs", "power modules", "solar cells", "wafers", "high-tech materials"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["J-STD-020 (MSL 평가)", "IPC/JEDEC J-STD-035 (음향 현미경 검사)", "MIL-STD-883 Method 2030"]
+  },
+  "limits": {
+    "wafer_size_mm": {"max": 300, "note": "단품부터 300 mm 웨이퍼까지. JEDEC 트레이 적재 가능"},
+    "transducer_frequency_MHz": {"note": "교체식 트랜스듀서로 결정 — 매뉴얼에 주파수 목록 미기재", "uncertain": true}
+  },
+  "models": [
+    {"model": "Gen6 C-SAM", "specs": {"scanner": "관성 균형 리니어 모터", "scan_reference": "타워 장착 기준 플랫폼 + 시료 고정구", "max_sample": "300 mm 웨이퍼", "coupling_medium": "DI 수", "transducer": "교체식"}}
+  ],
+  "features": ["관성 균형 리니어 모터 스캐너(진동 최소화)", "타워 기준 스캔 플랫폼", "개방형 조명 스캔 영역", "PolyGate", "SonoSimulator", "VRM(Virtual Rescanning Mode)", "DIA(Digital Image Analysis) 정량화", "JEDEC 트레이 스캔"],
+  "options": ["FDI(Frequency Domain Imaging)", "고주파/저주파 트랜스듀서 세트"],
+  "relations": [
+    {"type": "performs", "target": "acoustic_delamination"},
+    {"type": "same_family_as", "target": "nordson-dage-quadra-xray"}
+  ],
+  "sources": [{"file": "nordson-dage/sonoscan-gen6-c-sam-manual.pdf", "pages": [1, 2, 3]}],
+  "confidence": "limited",
+  "notes": "확보한 문서가 운용 매뉴얼이라 트랜스듀서 주파수 범위·분해능·스캔 속도 같은 정량 사양이 없다. 제품 데이터시트 추가 확보 필요."
+}

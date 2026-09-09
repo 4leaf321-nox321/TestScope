@@ -1,0 +1,34 @@
+{
+  "id": "flir-t800-series",
+  "kind": "equipment_series",
+  "name": "FLIR T800 Series Thermal Imaging Camera (T840 / T860 / T865)",
+  "name_ko": "플리어 T800 시리즈 열화상 카메라",
+  "manufacturer": "flir",
+  "brand": "T-Series",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "640×480 IR 해상도, 180° 회전 렌즈 블록을 갖춘 휴대형 열화상 카메라. 전자부품·PCB·전력설비의 발열 분포와 핫스폿을 비접촉으로 측정한다. -20 °C 부터 최대 2000 °C 까지 온도 레인지를 전환하며, T865 는 -40 °C 까지 측정하고 제한 온도 구간에서 ±1 °C / ±1 % 확도를 낸다. 6° 망원 렌즈를 조합하면 원거리 소형 표적도 검사 가능. 1-Touch Level/Span 으로 즉시 대비를 맞춘다.",
+  "test_items": ["thermography"],
+  "measurands": ["surface_temperature", "temperature_distribution", "hotspot_location", "thermal_gradient"],
+  "materials": ["PCB assemblies", "semiconductor packages", "power electronics", "motors", "electrical panels", "batteries", "building envelopes"],
+  "standards": {"compliance": [], "test_methods": ["IEC 62446-3 (PV)", "ASTM E1934", "ISO 18434-1"]},
+  "limits": {
+    "temperature_degC": {"min": -40, "max": 2000, "note": "T840/T860: -20~120 / 0~650 / 300~1500 °C. T865: -40 부터, 상한 300~2000 °C"},
+    "ir_resolution_pixels": {"max": 307200, "note": "640×480"},
+    "accuracy_degC": {"note": "±2 °C (-20~100 °C) 또는 ±2 % (100~650 °C, 300~1500 °C); T865 는 제한 구간(5~100 °C)에서 ±1 °C / ±1 %"}
+  },
+  "models": [
+    {"model": "T840", "specs": {"ir_resolution": [640, 480], "temperature_ranges_degC": [[-20, 120], [0, 650], [300, 1500]], "accuracy": "±2 °C (-20~100 °C), ±2 % (100~650 °C / 300~1500 °C)", "rotating_lens_block_deg": 180}},
+    {"model": "T860", "specs": {"ir_resolution": [640, 480], "temperature_ranges_degC": [[-20, 120], [0, 650], [300, 1500]]}, "uncertain": true},
+    {"model": "T865", "specs": {"ir_resolution": [640, 480], "temperature_ranges_degC": [[-40, 120], [0, 650], [300, 2000]], "accuracy": "±1 °C (5~100 °C) 또는 ±1 %; 그 외 구간 ±2 °C / ±2 %", "note": "6° 망원 렌즈 조합 시 원거리 소형 표적 검사"}}
+  ],
+  "features": ["180° 회전 렌즈 블록", "1-Touch Level/Span", "매크로 모드(24° 렌즈)", "교환식 렌즈(6° 망원 등)", "고해상도 IR 센서"],
+  "options": ["6° 망원 IR 렌즈", "24° 표준 렌즈", "광각 렌즈", "매크로 렌즈"],
+  "relations": [
+    {"type": "performs", "target": "thermography"},
+    {"type": "same_family_as", "target": "flir-t660"}
+  ],
+  "sources": [{"file": "flir/t800-series-datasheet.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog",
+  "notes": "T840/T860/T865 3열 사양표가 추출 텍스트에서 뒤섞였다. T840 과 T865 는 본문 서술로 교차 확인했고 T860 은 uncertain 으로 남겼다."
+}

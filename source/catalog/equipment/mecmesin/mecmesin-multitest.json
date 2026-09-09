@@ -1,0 +1,37 @@
+{
+  "id": "mecmesin-multitest",
+  "kind": "equipment_series",
+  "name": "MultiTest-dV / MultiTest-i motorised force test stands",
+  "name_ko": "멕메신 MultiTest-dV / MultiTest-i 모터 구동 힘 시험 스탠드",
+  "manufacturer": "mecmesin",
+  "category": "force_tester",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "MultiTest-dV: 0.5/1/2.5 kN 단일컬럼 스탠드 + 디지털 포스게이지(VFG/AFG, 2.5 N–2.5 kN, ±0.1 % FS) 또는 ELS 로드셀. MultiTest-i: PC 제어(Emperor) 0.5–50 kN, 1000 readings/s. 제품·부품 QC 용 인장·압축·박리·탑로드.",
+  "test_items": ["tensile", "compression", "peel", "flexure", "friction_coefficient"],
+  "measurands": ["peak_force", "tensile_strength", "peel_strength", "compressive_strength"],
+  "materials": ["packaging", "cosmetics containers", "syringes", "components", "adhesives", "springs"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "force_kN": {"min": 0.002, "max": 50, "values": [0.5, 1, 2.5, 5, 10, 25, 50]},
+    "crosshead_speed_mm_min": {"min": 0.1, "max": 1200, "note": "dV 0.1–1200; -i 1–1000 (5 kN 500, 50 kN 400)"},
+    "crosshead_travel_mm": {"min": 500, "max": 1200}
+  },
+  "models": [
+    {"model": "MultiTest-dV 0.5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 0.5, "crosshead_travel_mm": 1186, "vertical_daylight_mm": 1267, "throat_depth_mm": 70.5, "crosshead_speed_mm_min": {"min": 0.1, "max": 1200}, "footprint_mm": {"H": 1616, "W": 290, "D": 414}, "weight_kg": 31}},
+    {"model": "MultiTest-dV 1", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1, "crosshead_travel_mm": 986, "vertical_daylight_mm": 1067, "crosshead_speed_mm_min": {"min": 0.1, "max": 1200}, "footprint_mm": {"H": 1416, "W": 290, "D": 414}, "weight_kg": 27.5}},
+    {"model": "MultiTest-dV 2.5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 2.5, "crosshead_travel_mm": 507, "vertical_daylight_mm": 588, "crosshead_speed_mm_min": {"min": 0.1, "max": 1200, "note": "2 kN 초과 시 750 권장"}, "footprint_mm": {"H": 941, "W": 290, "D": 414}, "weight_kg": 24}},
+    {"model": "MultiTest 0.5-i", "form_factor": "single_column_tabletop", "specs": {"force_kN": 0.5, "crosshead_speed_mm_min": {"min": 1, "max": 1000}, "crosshead_travel_mm": 1200, "vertical_daylight_mm": 1359, "throat_depth_mm": 67, "weight_kg": 38}},
+    {"model": "MultiTest 1-i", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1, "crosshead_speed_mm_min": {"min": 1, "max": 1000}, "crosshead_travel_mm": 1000, "vertical_daylight_mm": 1159, "weight_kg": 36}},
+    {"model": "MultiTest 2.5-i", "form_factor": "single_column_tabletop", "specs": {"force_kN": 2.5, "crosshead_speed_mm_min": {"min": 1, "max": 1000}, "crosshead_travel_mm": 500, "vertical_daylight_mm": 590, "weight_kg": 22}},
+    {"model": "MultiTest 5-i", "form_factor": "single_column_tabletop", "specs": {"force_kN": 5, "crosshead_speed_mm_min": {"min": 1, "max": 500}, "crosshead_travel_mm": 590, "vertical_daylight_mm": 710, "throat_depth_mm": 95, "weight_kg": 38}},
+    {"model": "MultiTest 10-i", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "crosshead_speed_mm_min": {"min": 1, "max": 1000}, "crosshead_travel_mm": 950, "vertical_daylight_mm": 1140, "horizontal_test_space_mm": 400, "weight_kg": 140}},
+    {"model": "MultiTest 25-i", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 25, "crosshead_speed_mm_min": {"min": 1, "max": 1000, "note": "10 kN 초과 시 500 권장"}, "crosshead_travel_mm": 950, "vertical_daylight_mm": 1140, "horizontal_test_space_mm": 400, "weight_kg": 140}},
+    {"model": "MultiTest 50-i", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_speed_mm_min": {"min": 1, "max": 400, "note": "25 kN 초과 시 250 권장"}, "crosshead_travel_mm": 1100, "vertical_daylight_mm": 1330, "horizontal_test_space_mm": 420, "weight_kg": 285}}
+  ],
+  "accuracy": {"force_gauge": "VFG/AFG ±0.1% of full scale", "speed_dV": "±2% of indicated speed or ±20 µm/min", "speed_i": "±0.2% of indicated speed", "position": "±0.13 mm / 300 mm, resolution 0.001 mm"},
+  "environment": {"operating_temp_degC": [10, 35], "power": "230 V 50 Hz / 110 V 60 Hz"},
+  "relations": [{"type": "same_family_as", "target": "mecmesin-omnitest"}],
+  "sources": [{"file": "mecmesin/multitest-dv-brochure-2023.pdf", "pages": [2, 3, 8]}, {"file": "mecmesin/multitest-i-brochure.pdf", "pages": [2, 8, 9]}],
+  "confidence": "catalog"
+}

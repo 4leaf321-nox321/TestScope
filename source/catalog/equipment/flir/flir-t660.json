@@ -1,0 +1,32 @@
+{
+  "id": "flir-t660",
+  "kind": "equipment_model",
+  "name": "FLIR T650sc / T660 Thermal Imaging Camera",
+  "name_ko": "플리어 T660 열화상 카메라",
+  "manufacturer": "flir",
+  "brand": "T-Series",
+  "category": "thermal_imager",
+  "form_factor": "handheld",
+  "description": "640×480 네이티브 해상도의 고급 휴대형 열화상 카메라. UltraMax 화상 개선으로 최대 1.2 MP 상당(4배)의 열 해상도를 얻는다. 열 감도(NETD)는 30 °C 에서 0.03~0.04 °C 이하 수준으로 미세한 온도차를 잡아내고, 온도 교정은 최대 2000 °C 까지. 교환식 렌즈로 시야각과 스폿 크기를 용도에 맞춘다.",
+  "test_items": ["thermography"],
+  "measurands": ["surface_temperature", "temperature_distribution", "hotspot_location", "thermal_gradient"],
+  "materials": ["PCB assemblies", "semiconductor packages", "power electronics", "motors", "electrical equipment", "building envelopes"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E1934", "ISO 18434-1"]},
+  "limits": {
+    "temperature_degC": {"max": 2000, "note": "온도 교정 상한 2000 °C. 하한은 사양표 확인 요"},
+    "ir_resolution_pixels": {"max": 307200, "note": "640×480 네이티브 (307,200 화소). UltraMax 적용 시 최대 1.2 MP 상당"},
+    "thermal_sensitivity_degC": {"max": 0.04, "note": "30 °C 에서 <0.04 °C, 상위 사양 <0.03 °C, 최상 <0.02 °C"}
+  },
+  "models": [
+    {"model": "T660", "specs": {"ir_resolution": [640, 480], "ultramax_resolution_MP": 1.2, "thermal_sensitivity_degC": "<0.03 °C @ 30 °C", "accuracy": "±2 °C 또는 읽음값의 ±2 % 중 큰 값 (25 °C 공칭); 제한 온도 구간에서는 ±1 °C 또는 ±1 %", "max_calibration_degC": 2000}}
+  ],
+  "features": ["UltraMax 화상 개선(해상도 4배)", "교환식 렌즈", "고감도(<0.02~0.04 °C)", "640×480 네이티브 검출기"],
+  "options": ["교환식 렌즈 세트(망원·광각·매크로)"],
+  "relations": [
+    {"type": "performs", "target": "thermography"},
+    {"type": "same_family_as", "target": "flir-t800-series"}
+  ],
+  "sources": [{"file": "flir/t660-datasheet.pdf", "pages": [2, 3, 6, 7]}],
+  "confidence": "catalog",
+  "notes": "사양표가 2개 모델 병기 형식이어서 열 감도·확도 값이 어느 모델의 것인지 텍스트만으로는 완전히 분리되지 않는다. 온도 측정 하한은 확정하지 못했다."
+}

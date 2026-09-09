@@ -1,0 +1,117 @@
+{
+  "id": "buehler-wilson-hardness",
+  "kind": "equipment_series",
+  "name": "Buehler Wilson Hardness Testers (Rockwell / Vickers / Knoop / Brinell, VH3100 etc.)",
+  "name_ko": "뷸러 윌슨 경도 시험기 (로크웰·비커스·누프·브리넬)",
+  "manufacturer": "buehler",
+  "brand": "Wilson",
+  "category": "hardness",
+  "form_factor": "benchtop",
+  "description": "Reicherter·Wolpert·Wilson 계보를 잇는 경도 시험기 제품군. Wilson 은 최초의 로크웰 시험기를 상용화했고 누프·비커스 시험의 기준을 세웠다. 1993년 Wilson 과 Wolpert 가 결합하면서 폐루프 제어 로크웰 시험기로 라인업을 넓혔고, 현재는 브리넬·비커스·로크웰·누프 전 방식을 아우른다. VH3100 은 현행 마이크로/매크로 비커스 계열 모델.",
+  "test_items": [
+    "hardness_rockwell",
+    "hardness_vickers",
+    "hardness_brinell",
+    "hardness_knoop"
+  ],
+  "measurands": [
+    "hardness_hrc",
+    "hardness_hv",
+    "hardness_hbw",
+    "hardness_hk",
+    "indent_diagonal"
+  ],
+  "materials": [
+    "metals",
+    "welds",
+    "case-hardened parts",
+    "coatings",
+    "ceramics",
+    "electronic components"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM E18 (로크웰)",
+      "ASTM E92 (비커스·누프)",
+      "ASTM E10 (브리넬)",
+      "ISO 6508",
+      "ISO 6507",
+      "ISO 6506",
+      "ISO 4545"
+    ]
+  },
+  "limits": {
+    "test_load_kgf": {
+      "note": "방식·모델별 — 브로슈어에 통합 사양표 없음",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "Wilson VH3100",
+      "specs": {
+        "methods": [
+          "Vickers",
+          "Knoop"
+        ],
+        "note": "현행 비커스/누프 시험기"
+      },
+      "uncertain": true
+    },
+    {
+      "model": "Wilson Rockwell 시리즈",
+      "specs": {
+        "methods": [
+          "Rockwell"
+        ],
+        "control": "폐루프(closed loop) 제어"
+      },
+      "uncertain": true
+    },
+    {
+      "model": "Wilson Wolpert 계열",
+      "specs": {
+        "methods": [
+          "Brinell",
+          "Vickers",
+          "Rockwell",
+          "Knoop"
+        ]
+      },
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "로크웰 폐루프 하중 제어",
+    "브리넬·비커스·로크웰·누프 전 방식 대응",
+    "Reicherter/Wolpert/Wilson 통합 라인업"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "hardness_rockwell"
+    },
+    {
+      "type": "performs",
+      "target": "hardness_vickers"
+    },
+    {
+      "type": "same_family_as",
+      "target": "struers-duramin"
+    }
+  ],
+  "sources": [
+    {
+      "file": "buehler/wilson-legacy-hardness-brochure.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "확보 문서가 브랜드 연혁 중심 브로슈어라 모델별 하중 범위·시험력 사양이 없다. 제품별 데이터시트 확보 필요."
+}

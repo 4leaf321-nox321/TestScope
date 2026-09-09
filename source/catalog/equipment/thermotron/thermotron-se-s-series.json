@@ -1,0 +1,98 @@
+{
+  "id": "thermotron-se-s-series",
+  "kind": "equipment_series",
+  "name": "Thermotron SE-Series and S/SM-Series Environmental Test Chambers",
+  "name_ko": "써모트론 SE 시리즈 · S/SM 시리즈 환경 시험 챔버",
+  "manufacturer": "thermotron",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "북미 표준급 항온항습 챔버. SE 시리즈는 온도 전용/온습도 구성이 모두 가능하며 8800 컨트롤러가 기본. 표준 습도 범위 10~98 %RH(±2.5 %RH), 7~87 °C 구간. S/SM 시리즈는 보급형 라인.",
+  "test_items": [
+    "damp_heat",
+    "temperature_cycling"
+  ],
+  "measurands": [
+    "failure_time",
+    "functional_degradation"
+  ],
+  "materials": [
+    "electronics",
+    "automotive components",
+    "aerospace",
+    "medical devices",
+    "consumer products"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60068-2-1",
+      "IEC 60068-2-2",
+      "IEC 60068-2-14",
+      "IEC 60068-2-30",
+      "IEC 60068-2-78",
+      "MIL-STD-810"
+    ]
+  },
+  "limits": {
+    "humidity_pct": {
+      "min": 10,
+      "max": 98,
+      "note": "7~87 °C 구간에서 ±2.5 %RH"
+    },
+    "temperature_degC": {
+      "note": "모델별 — 카탈로그 표에서 열 대응이 흐트러져 미기재",
+      "uncertain": true
+    },
+    "chamber": {
+      "values": [
+        "yes"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "SE-Series (온도/온습도)",
+      "specs": {
+        "humidity_pct": {
+          "min": 10,
+          "max": 98
+        },
+        "humidity_accuracy_pct": 2.5,
+        "controller": "8800"
+      },
+      "uncertain": true
+    },
+    {
+      "model": "S-Series / SM-Series",
+      "specs": {
+        "note": "보급형"
+      },
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "8800 컨트롤러 기본",
+    "온도 전용/온습도 구성 선택"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-damp-heat"
+    }
+  ],
+  "sources": [
+    {
+      "file": "thermotron/se-series-environmental-chamber.pdf"
+    },
+    {
+      "file": "thermotron/s-sm-series-environmental-chamber-2022.pdf"
+    },
+    {
+      "file": "thermotron/se-series-cloudfront.pdf",
+      "note": "SE 시리즈 미러본"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "모델별 온도 범위·작업공간 표는 브로슈어 사양 페이지를 원본으로 확인해야 한다."
+}

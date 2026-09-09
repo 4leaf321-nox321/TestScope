@@ -1,0 +1,32 @@
+{
+  "id": "emco-test-duravision-g5",
+  "kind": "equipment_series",
+  "name": "EMCO-TEST DuraVision G5 universal hardness testing machines (20/30 handwheel, 200/300 motorised)",
+  "name_ko": "EMCO-TEST DuraVision G5 만능 경도계",
+  "manufacturer": "emco-test",
+  "category": "universal_hardness",
+  "form_factor": "floor",
+  "description": "전자 제어 하중 0.3–250 kgf(DuraVision 20/200) 또는 3–3000 kgf(30/300). 브리넬·비커스·로크웰·누프·플라스틱·카본 시험. 10 MP 카메라, 자동 2× 스타 터렛(7× 옵션), ecos Workflow CIS 소프트웨어. 200/300 은 모터 헤드 위치 결정과 클램프(200–2000 kgf).",
+  "test_items": ["hardness_brinell", "hardness_vickers", "hardness_rockwell", "hardness_knoop"],
+  "measurands": ["hardness_HB", "hardness_HV", "hardness_HR", "hardness_HK"],
+  "materials": ["steel", "castings", "forgings", "plastics", "carbon"],
+  "standards": {"compliance": [], "test_methods": ["ISO 6506", "ASTM E10", "ISO 6507", "ASTM E384", "ASTM E92", "ISO 6508", "ASTM E18", "ISO 4545", "EN ISO 2039", "DIN 51917"]},
+  "limits": {
+    "test_load_kgf": {"min": 0.3, "max": 3000},
+    "hardness_scales": {"values": ["HBW 1/1 – 10/3000", "HV 0.3 – HV 150", "HK 0.3 – HK 2", "HRA–HRV", "HR15/30/45 N/T/W/X/Y", "plastics 49–961 N", "carbon DIN 51917"]},
+    "specimen_height_mm": {"max": 500, "note": "20/30: 400 mm, 200/300: 500 mm"},
+    "specimen_weight_kg": {"max": 500, "note": "20/30: 200 kg, 200/300: 500 kg"}
+  },
+  "models": [
+    {"model": "DuraVision 20 G5", "specs": {"test_load_kgf": {"min": 0.3, "max": 250}, "specimen_height_mm": 400, "specimen_weight_kg": 200, "weight_kg": 420, "power_W": 120, "footprint_mm": {"W": 380, "H": 1400, "D": 830}}},
+    {"model": "DuraVision 30 G5", "specs": {"test_load_kgf": {"min": 3, "max": 3000}, "specimen_height_mm": 400, "specimen_weight_kg": 200, "weight_kg": 420, "power_W": 120}},
+    {"model": "DuraVision 200 G5", "specs": {"test_load_kgf": {"min": 0.3, "max": 250}, "specimen_height_mm": 500, "specimen_weight_kg": 500, "z_resolution_um": 0.18, "z_speed_mm_s": 25, "weight_kg": 450, "power_W": 600}},
+    {"model": "DuraVision 300 G5", "specs": {"test_load_kgf": {"min": 3, "max": 3000}, "specimen_height_mm": 500, "specimen_weight_kg": 500, "z_resolution_um": 0.18, "z_speed_mm_s": 25, "weight_kg": 450, "power_W": 600}}
+  ],
+  "accuracy": {"force_application_resolution_nm": 0.45, "length_probe_resolution_um": 0.05},
+  "environment": {"operating_temp_degC": [5, 40], "humidity_pct_max": 70, "power": "230 V / 110 V 1Ph, IP20"},
+  "features": ["ecos Workflow CIS Touch", "autofocus & image evaluation", "QR code", "xCHANGE XML interface", "test anvil Ø90 mm (+447×370 mm on 200/300)"],
+  "relations": [{"type": "same_family_as", "target": "emco-test-durajet-g5"}, {"type": "same_family_as", "target": "zwickroell-durascan-g5"}],
+  "sources": [{"file": "emco-test/duravision-g5.pdf", "pages": [2, 18, 19]}],
+  "confidence": "catalog"
+}

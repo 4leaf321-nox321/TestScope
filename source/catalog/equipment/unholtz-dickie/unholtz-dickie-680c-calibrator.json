@@ -1,0 +1,87 @@
+{
+  "id": "unholtz-dickie-680c-calibrator",
+  "kind": "equipment_series",
+  "name": "Unholtz-Dickie Model 680C Transducer Calibration System",
+  "name_ko": "언홀츠-디키 680C 변환기 교정 시스템",
+  "manufacturer": "unholtz-dickie",
+  "brand": "UD",
+  "category": "accessory",
+  "subcategory": "transducer_calibration",
+  "drive": "electrodynamic",
+  "form_factor": "benchtop",
+  "description": "가속도계와 속도 변환기를 정현 비교법(back-to-back)으로 교정하는 시스템. NIST 소급 기준 가속도계와 등에 맞대어 붙이고 스윕 또는 스텝 정현으로 주파수 2~10,000 Hz 구간의 감도 편차를 잰다. 최대 가속도 75 g, 최대 속도 50 in/s(1.3 m/s). S032-C 가진기와 APEX SL 컨트롤러 강화판을 쓰고, 시험이 끝나면 교정 성적서를 자동으로 만든다. ISO 9000 시험 소급성 확보에 쓰인다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "frequency_response",
+    "peak_acceleration",
+    "velocity_change"
+  ],
+  "materials": [
+    "accelerometers",
+    "velocity transducers"
+  ],
+  "standards": {
+    "compliance": [
+      "MIL-STD-45662A (성적서 양식)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 2,
+      "max": 10000
+    },
+    "acceleration_g": {
+      "max": 75
+    },
+    "velocity_m_s": {
+      "max": 1.3,
+      "note": "50 in/s"
+    }
+  },
+  "models": [
+    {
+      "model": "Model 680C",
+      "specs": {
+        "frequency_Hz": {"min": 2, "max": 10000},
+        "acceleration_g_max": 75,
+        "velocity_m_s_max": 1.3,
+        "shaker": "S032-C",
+        "controller": "APEX SL 강화판",
+        "method": "정현 비교법(back-to-back), NIST 소급 기준 가속도계",
+        "sweep_modes": ["스윕 정현", "스텝 정현"],
+        "output": "교정 성적서 자동 생성",
+        "option": "오실로스코프"
+      }
+    }
+  ],
+  "features": [
+    "PC 제어 고속 교정",
+    "NIST 소급 기준 가속도계와 back-to-back 비교",
+    "정밀 정현 비교 기법",
+    "교정 성적서 자동 발행"
+  ],
+  "options": [
+    "오실로스코프"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "unholtz-dickie-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "file": "unholtz-dickie/product-catalog.pdf",
+      "pages": [8, 12]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "장비 분류를 `accessory` 로 잡았다 — 온톨로지에 변환기 교정 시스템 분류가 없고, 이것은 시편을 시험하는 장비가 아니라 센서를 교정하는 장비다. 12쪽 예시 성적서에 적힌 불확도(2 Hz 3.66 %, 10 Hz~2 kHz ±1.2 %, 2~4 kHz ±2.1 %, 4 kHz ±2.4 %, 10 kHz ±3.3 %)는 UDVWIN 구형 시스템 예시라 사양으로 옮기지 않았다."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "netzsch-dil-402-expedis",
+  "kind": "equipment_series",
+  "name": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
+  "name_ko": "네취 DIL 402 Expedis 열팽창계 (Classic·Select·Supreme·Supreme HT)",
+  "manufacturer": "netzsch",
+  "category": "dilatometer",
+  "form_factor": "benchtop",
+  "description": "푸시로드 열팽창계(단일/이중). Classic: 석영 RT~1150, SiC RT~1600 °C, ±5000 µm, 2 nm, 힘 0.01–3 N. Select: -180~1600 °C, ±10000 µm, 1 nm. Supreme: -180~2000 °C(흑연 퍼니스), ±25000 µm, 0.1 nm, 변조 힘. Supreme HT: RT~2800 °C. NanoEye 변위계, 승온 0.001–50(흑연 100) K/min, 시편 최대 52 mm, Ø12(19) mm. RCS 속도제어 소결, 연화점, 밀도, c-DTA, EGA 커플링.",
+  "test_items": ["dilatometry", "tma"],
+  "measurands": ["cte", "sintering_shrinkage", "phase_transition", "softening_point", "density"],
+  "materials": ["ceramics", "glass", "refractories", "metals", "building materials", "polymers", "SiC", "graphite"],
+  "standards": {"compliance": [], "test_methods": ["DIN 51045", "ASTM E228", "ASTM D696", "DIN EN 821"]},
+  "limits": {
+    "temperature_degC": {"min": -180, "max": 2800},
+    "heating_rate_K_min": {"min": 0.001, "max": 100},
+    "displacement_um": {"max": 25000},
+    "force_N": {"min": 0.01, "max": 3},
+    "sample_length_mm": {"max": 52},
+    "specimen_diameter_mm": {"max": 19}
+  },
+  "models": [
+    {"model": "DIL 402 Expedis Classic", "specs": {"temperature_degC": {"min": 20, "max": 1600}, "furnaces": ["fused silica RT~1150", "SiC RT~1600"], "heating_rate_K_min": {"min": 0.001, "max": 50}, "displacement_um": 5000, "resolution_nm": 2, "force_N": {"min": 0.01, "max": 3}, "repeatability": "0.002 % abs", "accuracy": "0.003 % abs"}},
+    {"model": "DIL 402 Expedis Select", "specs": {"temperature_degC": {"min": -180, "max": 1600}, "displacement_um": 10000, "resolution_nm": 1, "force_N": {"min": 0.01, "max": 3}, "repeatability": "0.001 % abs", "accuracy": "0.002 % abs"}},
+    {"model": "DIL 402 Expedis Supreme", "specs": {"temperature_degC": {"min": -180, "max": 2000}, "displacement_um": 25000, "resolution_nm": 0.1, "force_N": {"min": 0.01, "max": 3}, "force_modulation": true, "furnaces": ["steel", "copper", "SiO2", "SiC", "Rh", "graphite"]}},
+    {"model": "DIL 402 Expedis Supreme HT", "specs": {"temperature_degC": {"min": 20, "max": 2800}, "displacement_um": 25000, "resolution_nm": 0.1, "sample_length_mm": 25}}
+  ],
+  "accuracy": {"temperature": "1 K accuracy / 0.1 K precision / 0.001 K resolution; isothermal ±0.02 K", "force_resolution_mN": 0.001},
+  "options": ["LN2 device", "vortex", "AutoVac", "MFC 1/3-way", "Oxygen Trap System", "c-DTA", "QMS/FT-IR coupling", "tension sample holder", "dual/differential sample holder"],
+  "relations": [{"type": "same_family_as", "target": "netzsch-tma-402-hyperion"}],
+  "sources": [{"file": "netzsch/dil-402-expedis-classic.pdf", "pages": [10, 12, 14]}, {"file": "netzsch/dil-402-expedis-select-supreme.pdf", "pages": [17, 25, 26]}],
+  "confidence": "catalog"
+}

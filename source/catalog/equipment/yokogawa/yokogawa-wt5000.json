@@ -1,0 +1,46 @@
+{
+  "id": "yokogawa-wt5000",
+  "kind": "equipment_model",
+  "name": "Yokogawa WT5000 Precision Power Analyzer",
+  "name_ko": "요코가와 WT5000 정밀 전력 분석기",
+  "manufacturer": "yokogawa",
+  "brand": "WT",
+  "category": "power_analyzer",
+  "form_factor": "benchtop",
+  "description": "기본 확도 ±0.03 %, 측정 대역 DC 및 0.1 Hz~5 MHz 의 정밀 전력 분석기. 사용자가 교체 가능한 입력 엘리먼트를 최대 7개까지 장착하는 모듈형 구조로, 인버터·모터·전원장치의 입출력 효율을 한 대에서 측정한다. 이전 모델 WT3000E 대비 샘플링 레이트 50배, 분해능 4배. 30 A 고확도 엘리먼트(760901)와 5 A 고확도 엘리먼트(760902), 전류센서 엘리먼트를 조합할 수 있다.",
+  "test_items": ["power_consumption"],
+  "measurands": ["active_power", "apparent_power", "reactive_power", "power_factor", "efficiency", "harmonic_distortion", "voltage_rms", "current_rms"],
+  "materials": ["inverters", "motors", "power supplies", "home appliances", "EV powertrains", "PV inverters", "chargers"],
+  "standards": {"compliance": [], "test_methods": ["IEC 61000-3-2", "IEC 62301", "EN 50564", "ENERGY STAR", "IEC 60034-2-1"]},
+  "limits": {
+    "frequency_Hz": {"min": 0.1, "max": 5000000, "note": "DC 신호 포함. 0.1 Hz~5 MHz 측정 대역"},
+    "current_A": {"min": 0.005, "max": 30, "note": "30 A 엘리먼트(760901) 0.5~30 A; 5 A 엘리먼트(760902) 5 mA~5 A"},
+    "voltage_V": {"min": 1.5, "note": "1.5 V / 3 V / 6 V / 10 V 저전압 레인지 추가 지원"},
+    "input_elements": {"max": 7, "note": "슬롯 7개, 사용자 교체 가능"},
+    "harmonic_order": {"max": 500, "note": "500차까지 고조파 해석·비교"}
+  },
+  "accuracy": {
+    "basic": "±0.03 % (기본 확도)",
+    "ac_power": "0.01 % of reading + 0.02 % of range",
+    "dc_power": "0.02 % of reading + 0.05 % of range",
+    "commercial_frequency": "30 A(760901)·5 A(760902) 고확도 엘리먼트는 50/60 Hz 에서 ±(0.01 % of reading + 0.02 % of range)",
+    "traceability": "100 V, 5 A, 60 Hz, 역률 1 조건에서 국가표준 대비 45 ppm"
+  },
+  "models": [
+    {"model": "WT5000 본체", "specs": {"slots": 7, "bandwidth": "DC, 0.1 Hz ~ 5 MHz", "basic_accuracy_pct": 0.03}},
+    {"model": "760901 (30 A 고확도 입력 엘리먼트)", "specs": {"current_A": {"min": 0.5, "max": 30}, "shunt": "5 mΩ 동축 션트 저항"}},
+    {"model": "760902 (5 A 고확도 입력 엘리먼트)", "specs": {"current_A": {"min": 0.005, "max": 5}}},
+    {"model": "전류센서 엘리먼트", "specs": {"note": "DC 전원 내장, 외부 전류센서 직결"}}
+  ],
+  "features": ["모듈형 입력 엘리먼트 7슬롯", "입출력 효율 동시 측정", "500차 고조파 해석 및 입출력 고조파 비교", "엘리먼트별 개별 라인 필터", "고분해능 ADC(구형 16 bit 대비 상향)", "안티에일리어싱 필터"],
+  "options": ["/DA20 D/A 출력 채널", "모터 평가 옵션", "고조파 해석 옵션"],
+  "relations": [
+    {"type": "performs", "target": "power_consumption"},
+    {"type": "compatible_accessory", "target": "chroma-61500-ac-source", "note": "AC 소스로 입력 조건을 만들고 WT5000 으로 계측"}
+  ],
+  "sources": [
+    {"file": "yokogawa/wt5000-precision-power-analyzer.pdf", "pages": [1, 2, 3, 6]},
+    {"file": "yokogawa/wt5000-datasheet-hq.pdf", "pages": [2, 5, 6, 9]}
+  ],
+  "confidence": "catalog"
+}

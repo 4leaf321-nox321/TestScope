@@ -1,0 +1,49 @@
+{
+  "id": "shimadzu-ags-x",
+  "kind": "equipment_series",
+  "name": "AUTOGRAPH AGS-X Series Precision Universal Tester",
+  "name_ko": "시마즈 오토그래프 AGS-X 시리즈 정밀 만능시험기",
+  "manufacturer": "shimadzu",
+  "brand": "AUTOGRAPH",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "테이블형 10/20/50/100 kN, 플로어형 300 kN 의 표준형 UTM. 1 kHz 샘플링, 힘 정확도 ±0.5 % (1/500–1/1). TRAPEZIUM X 소프트웨어. 후속 AGS-V(1 N–10 kN) 로 하위 라인이 갱신됨.",
+  "test_items": ["tensile", "compression", "flexure", "shear", "peel", "tear"],
+  "measurands": ["tensile_strength", "yield_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "flexural_modulus"],
+  "materials": ["plastics", "metals", "rubber", "textiles", "lumber", "paper", "cement", "cloth"],
+  "standards": {
+    "compliance": ["EN 10002-2 Grade 0.5", "ISO 7500-1 Class 0.5", "BS 1610 Class 0.5", "ASTM E4", "JIS B7721 Class 0.5"],
+    "test_methods": ["ISO 178", "JIS K7171", "ASTM D790", "JIS K6911", "JIS K6902", "JIS C6481"]
+  },
+  "limits": {
+    "force_kN": {"min": 0.001, "max": 300, "values": [0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.5, 1, 5, 10, 20, 50, 100, 300]},
+    "crosshead_speed_mm_min": {"min": 0.001, "max": 1600},
+    "vertical_test_space_mm": {"min": 1200, "max": 1475, "note": "크로스헤드-테이블 거리; 괄호는 MWG 그립 장착 시 인장 스트로크"},
+    "horizontal_test_space_mm": {"min": 425, "max": 600},
+    "data_rate_Hz": {"max": 1000},
+    "temperature_degC": {"min": -70, "max": 1100, "note": "TCE 컴팩트 챔버 -70~+280; TCL/TCH 가스제트 챔버 -70~+280; 고온 인장장치 +300~+900/+1100 (100/300 kN 플로어형); 항온항습 챔버 +20~+60 (습도 없이 -40~+250)"},
+    "humidity_pct": {"min": 40, "max": 95, "note": "항온항습 챔버 장착 시"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "AGS-10kNX", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "crosshead_speed_mm_min": {"min": 0.001, "max": 1000}, "return_speed_mm_min": 1500, "vertical_test_space_mm": 1250, "tensile_stroke_mm": 765, "horizontal_test_space_mm": 425, "footprint_mm": {"W": 653, "D": 520, "H": 1603}, "weight_kg": 85, "power": "1PH 100/120/220/240 V 1.2 kVA"}},
+    {"model": "AGS-20kNX", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 20, "crosshead_speed_mm_min": {"min": 0.001, "max": 1600}, "return_speed_mm_min": 2200, "vertical_test_space_mm": 1200, "tensile_stroke_mm": 760, "horizontal_test_space_mm": 425, "footprint_mm": {"W": 718, "D": 641, "H": 1633}, "weight_kg": 235, "power": "1PH 200–230 V 4.0 kVA"}},
+    {"model": "AGS-50kNX", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_speed_mm_min": {"min": 0.001, "max": 800}, "return_speed_mm_min": 1100, "vertical_test_space_mm": 1210, "tensile_stroke_mm": 745, "horizontal_test_space_mm": 600, "footprint_mm": {"W": 718, "D": 641, "H": 1633}, "weight_kg": 260, "power": "1PH 200–230 V 4.0 kVA"}},
+    {"model": "AGS-100kNX", "form_factor": "floor", "specs": {"force_kN": 100, "crosshead_speed_mm_min": {"min": 0.001, "max": 500}, "return_speed_mm_min": 550, "vertical_test_space_mm": 1255, "tensile_stroke_mm": 745, "horizontal_test_space_mm": 600, "footprint_mm": {"W": 945, "D": 725, "H": 2164}, "weight_kg": 525, "power": "3PH 380–440 V 4.5 kVA / 200–230 V 6.5 kVA"}},
+    {"model": "AGS-300kNX", "form_factor": "floor", "specs": {"force_kN": 300, "crosshead_speed_mm_min": {"min": 0.001, "max": 500, "note": "200–300 kN 구간은 400 mm/min"}, "return_speed_mm_min": 550, "vertical_test_space_mm": 1475, "tensile_stroke_mm": 635, "horizontal_test_space_mm": 600, "footprint_mm": {"W": 945, "D": 725, "H": 2414}, "weight_kg": 675, "power": "3PH 380–440 V 5.5 kVA / 200–230 V 7.5 kVA"}}
+  ],
+  "accuracy": {
+    "force": "±0.5% (1/500–1/1) high precision; ±1% (1/500–1/1) standard; 300 kN: ±0.5% (1/250–1/1)",
+    "speed": "±0.1%",
+    "position": "±0.1% of indicated or ±0.01 mm; display resolution 0.001 mm"
+  },
+  "environment": {"operating_temp_degC": [5, 40], "humidity_pct": [20, 80], "floor_vibration": "≤10 Hz, ≤5 µm"},
+  "options": ["screw-type flat grips 50 N/1 kN/5 kN", "parallel tightening grips 100/300 kN", "fixed & spherical seat compression plates up to 250 kN", "3-point bending jigs (ISO 178/ASTM D790)", "TCE compact thermostatic chamber", "TCL/TCH gas-jet chamber", "high-temperature tensile device 900/1100 °C", "temperature & humidity chamber", "SIE/SES extensometers", "TRViewX video extensometer"],
+  "relations": [
+    {"type": "same_family_as", "target": "shimadzu-agx-v2"},
+    {"type": "same_family_as", "target": "shimadzu-ags-v"}
+  ],
+  "sources": [{"file": "shimadzu/ags-x-series-c224-e057c.pdf", "pages": [13, 15, 18, 19]}],
+  "confidence": "catalog"
+}

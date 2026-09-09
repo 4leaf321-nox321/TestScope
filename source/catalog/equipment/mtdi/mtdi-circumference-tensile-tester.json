@@ -1,0 +1,106 @@
+{
+  "id": "mtdi-circumference-tensile-tester",
+  "kind": "equipment_series",
+  "name": "MTDI Circumference Tensile Tester (hydraulic burst / hoop stress)",
+  "name_ko": "엠티디아이 원주인장 시험기 (수압 파열·원주응력)",
+  "manufacturer": "mtdi",
+  "category": "burst_pressure_tester",
+  "drive": "hydraulic",
+  "form_factor": "floor",
+  "description": "시편 안쪽에 물을 밀어 넣어 원주 방향(hoop) 인장을 걸고 파열까지 보는 시험기. 유압 유닛·수압 유닛·물탱크·컨트롤 유닛이 따로 선 다부 구성이다. 수압은 부스터 펌프 두 단으로 만드는데 저압단이 0~100 bar, 고압단이 0~1,000 bar 이고 둘 다 입력 공기 10 bar 기준이다. 유압 유닛은 AC440V 3상 60 Hz 에 23.8 kW(펌프 모터 22 kW, 냉각 모터 1.75 kW), 수압 유닛은 AC380V 3상 1.6 kW(펌프 모터 1.5 kW), 컨트롤 유닛은 AC220V 단상 0.15 kW. 제어는 PLC + PC 다. 본체 3,710 x 2,354 x 2,735 mm 에 수압 유닛·유압 유닛·물탱크·컨트롤 유닛이 각각 별도 치수를 갖는다.",
+  "test_items": [
+    "burst_pressure",
+    "tensile"
+  ],
+  "measurands": [
+    "burst_pressure",
+    "hoop_stress",
+    "volumetric_expansion",
+    "failure_mode",
+    "pressure_rise"
+  ],
+  "materials": [
+    "pipes and tubes",
+    "pressure vessels",
+    "sheet metal (원주 시편)"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "pressure_bar": {
+      "max": 1000,
+      "note": "부스터 펌프 고압단 0~1,000 bar, 저압단 0~100 bar. 둘 다 입력 공기 10 bar 기준"
+    },
+    "power_kW": {
+      "min": 0.15,
+      "max": 23.8,
+      "note": "유압 유닛 23.8 kW, 수압 유닛 1.6 kW, 컨트롤 유닛 0.15 kW"
+    },
+    "footprint_mm": {
+      "note": "본체 3710 x 2354 x 2735 (WxDxH). 수압 유닛 1400 x 920 x 1510, 유압 유닛 1830 x 1280 x 1180, 물탱크 1200 x 1000 x 1300, 컨트롤 유닛 600 x 750 x 1500"
+    }
+  },
+  "models": [
+    {
+      "model": "Circumference Tensile Tester",
+      "specs": {
+        "principle": "시편 내부 수압으로 원주 방향 인장 인가",
+        "booster_pump_low_bar": {
+          "min": 0,
+          "max": 100,
+          "note": "입력 공기 10 bar 기준"
+        },
+        "booster_pump_high_bar": {
+          "min": 0,
+          "max": 1000,
+          "note": "입력 공기 10 bar 기준"
+        },
+        "hydraulic_unit": "AC440V / 3상 / 60 Hz, 23.8 kW (펌프 22 kW + 냉각 1.75 kW, 둘 다 AC440V 3상)",
+        "water_pressure_unit": "AC380V / 3상 / 60 Hz, 1.6 kW (펌프 모터 1.5 kW AC380V 3상)",
+        "control_unit": "AC220V / 단상 / 60 Hz, 0.15 kW",
+        "control": "PLC + PC",
+        "dimensions_mm": {
+          "본체": "3710 W x 2354 D x 2735 H",
+          "수압유닛": "1400 x 920 x 1510",
+          "유압유닛": "1830 x 1280 x 1180",
+          "물탱크": "1200 x 1000 x 1300",
+          "컨트롤유닛": "600 x 750 x 1500"
+        }
+      }
+    }
+  ],
+  "features": [
+    "부스터 펌프 2 단(저압 100 bar / 고압 1,000 bar)",
+    "유압·수압·물탱크·제어를 분리한 다부 구성",
+    "PLC + PC 제어"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "burst_pressure"
+    },
+    {
+      "type": "requires",
+      "target": "utility-compressed-air",
+      "note": "부스터 펌프 입력 공기 10 bar"
+    },
+    {
+      "type": "requires",
+      "target": "utility-cooling-water"
+    }
+  ],
+  "sources": [
+    {
+      "file": "mtdi/circumference-tensile-tester-catalog.pdf",
+      "pages": [
+        5,
+        7
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "**텍스트층이 없는 이미지 전용 스캔**이라 5·7쪽을 렌더링해 눈으로 읽었다(`catalog/pages/mtdi-circ-p5.png`, `mtdi-rest-c.png`). 카탈로그가 **전원·치수 위주라 정작 시험 능력이 없다** — 시편 지름·길이 범위, 최대 원주 하중, 승압 속도, 측정 정확도가 어디에도 없다. 부스터 펌프 압력(1,000 bar)이 곧 시험 압력 상한인지도 문서로 확정되지 않는다. 그래서 `confidence: limited` 로 두었다. 온톨로지에 내압 파열 분류(`burst_pressure_tester`)와 시험 항목(`burst_pressure`)을 새로 만들어 제대로 걸었다."
+}

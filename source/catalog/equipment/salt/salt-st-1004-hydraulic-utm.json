@@ -1,0 +1,224 @@
+{
+  "id": "salt-st-1004-hydraulic-utm",
+  "kind": "equipment_series",
+  "name": "Light-SALT ST-1004 / ST-1004C / ST-1004LT Hydraulic Servo Universal, Compression and High-Elongation Testing Machines",
+  "name_ko": "라이트솔트 ST-1004·ST-1004C·ST-1004LT 유압 서보식 만능·압축·고신율 시험기",
+  "manufacturer": "salt",
+  "brand": "ST",
+  "category": "hydraulic_utm",
+  "drive": "servohydraulic",
+  "form_factor": "floor",
+  "description": "유압 서보로 대하중을 거는 시험기 세 갈래. **ST-1004** 는 6 컬럼(듀얼존 4 포스트) 구조의 만능시험기로 정격 300·500·1,000·2,000 kN 과 연선(stranded wire)용 1,000 kN 구성이 있다. 하중 정확도 ≤±0.5 %, 교정 Class 1 또는 0.5, 디지털 표시 분해능 1/300,000, 스트로크 분해능 0.001 mm, 램 스트로크 200~250 mm, 시험 속도 0.1~80 mm/min(확장 가능). 인장 시험 공간은 415×680 mm(300 kN)부터 680×1,250 mm(2,000 kN)까지이고 환봉 그립 인서트는 Ø4~70 mm, 평판은 0~70 mm 를 덮는다. **ST-1004C** 는 압축·횡하중·굽힘용으로 300~3,000 kN(30~300 tonf), 압축 스트로크 0~600 mm, 가압판 Ø120~200 mm, 굽힘 지간 450 mm, 펀치 팁 반경 16~25 mm 를 갖고 하중 레인지를 4 단으로 나눈다. **ST-1004LT** 는 고신율 인장 전용으로 1,000·2,000 kN 에 최대 인장 거리 750·930 mm, 램 스트로크 700·750 mm, 피스톤 상승 최대 200 mm/min 이다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "compressive_strength",
+    "flexural_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "metals and rebar",
+    "stranded wire and cable",
+    "concrete and masonry",
+    "structural components"
+  ],
+  "standards": {
+    "compliance": [
+      "Class 1 / Class 0.5 (교정 등급)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 300,
+      "max": 3000,
+      "note": "ST-1004 300~2,000 kN, ST-1004C 300~3,000 kN, ST-1004LT 1,000·2,000 kN"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.1,
+      "max": 400,
+      "note": "ST-1004 시험 속도 0.1~80 mm/min(확장 가능), ST-1004C 크로스헤드 400 mm/min, ST-1004LT 피스톤 상승 최대 200 mm/min"
+    },
+    "stroke_mm": {
+      "min": 200,
+      "max": 750,
+      "note": "램 스트로크 — ST-1004 200~250, ST-1004C 200, ST-1004LT 700·750"
+    },
+    "vertical_test_space_mm": {
+      "min": 680,
+      "max": 1350,
+      "note": "인장 시험 공간 높이. ST-1004 680~1,350, ST-1004LT 700·750"
+    },
+    "specimen_diameter_mm": {
+      "min": 4,
+      "max": 70,
+      "note": "환봉 그립 인서트 범위(정격별로 다르다)"
+    },
+    "specimen_thickness_mm": {
+      "min": 0,
+      "max": 70,
+      "note": "평판 그립 인서트 범위(옵션 포함)"
+    }
+  },
+  "models": [
+    {
+      "model": "ST-1004 (4 Post Guide) 300 kN",
+      "specs": {
+        "frame_capacity_kN": 300,
+        "tensile_test_room_mm": "415 x 680",
+        "tensile_grip_mm": "90 x 90",
+        "compression_test_room_mm": "415 x 550",
+        "column_to_column_mm": 485,
+        "max_ram_stroke_mm": 200,
+        "max_tensile_distance_mm": 680,
+        "grip_round_mm": "Ø4~10(옵션), Ø10~26, Ø26~45",
+        "grip_flat_mm": "0~30, 30~40(옵션)",
+        "tensile_grip_width_mm": 90
+      }
+    },
+    {
+      "model": "ST-1004 (4 Post Guide) 500 kN",
+      "specs": {
+        "frame_capacity_kN": 500,
+        "tensile_test_room_mm": "430 x 700",
+        "tensile_grip_mm": "90 x 90",
+        "compression_test_room_mm": "430 x 600",
+        "column_to_column_mm": 500,
+        "max_ram_stroke_mm": 200,
+        "max_tensile_distance_mm": 780,
+        "grip_round_mm": "Ø4~10(옵션), Ø10~26, Ø26~45",
+        "grip_flat_mm": "0~30, 30~40(옵션)"
+      }
+    },
+    {
+      "model": "ST-1004 (4 Post Guide) 1000 kN",
+      "specs": {
+        "frame_capacity_kN": 1000,
+        "tensile_test_room_mm": "480 x 820",
+        "tensile_grip_mm": "90 x 90",
+        "compression_test_room_mm": "480 x 690",
+        "column_to_column_mm": 560,
+        "max_ram_stroke_mm": 200,
+        "max_tensile_distance_mm": 820,
+        "grip_round_mm": "Ø10~26, Ø26~45, Ø45~55",
+        "grip_flat_mm": "0~30, 30~40(옵션)"
+      }
+    },
+    {
+      "model": "ST-1004 1000 kN (Stranded Wire)",
+      "specs": {
+        "frame_capacity_kN": 1000,
+        "tensile_test_room_mm": "495 x 1350",
+        "tensile_grip_mm": "150 x 100, 120 x 100",
+        "compression_test_room_mm": "495 x 1000",
+        "column_to_column_mm": 580,
+        "max_ram_stroke_mm": 250,
+        "max_tensile_distance_mm": 1350,
+        "grip_round_mm": "Ø13~26, Ø26~45",
+        "grip_flat_mm": "0~20(옵션), 20~40(옵션)",
+        "tensile_grip_width_mm": 100
+      },
+      "note": "연선(stranded wire)용 구성 — 시험 공간이 세로로 길고 그립이 넓다"
+    },
+    {
+      "model": "ST-1004 (4 Post Guide) 2000 kN",
+      "specs": {
+        "frame_capacity_kN": 2000,
+        "tensile_test_room_mm": "680 x 1250",
+        "tensile_grip_mm": "150 x 120",
+        "compression_test_room_mm": "680 x 850",
+        "column_to_column_mm": 800,
+        "max_ram_stroke_mm": 250,
+        "max_tensile_distance_mm": 1250,
+        "grip_round_mm": "Ø15~30, Ø30~55, Ø55~70",
+        "grip_flat_mm": "10~40, 40~70(옵션)",
+        "tensile_grip_width_mm": 100
+      }
+    },
+    {
+      "model": "ST-1004C 압축시험기 (300~3,000 kN)",
+      "specs": {
+        "capacity_kN_tonf": {"300": 30, "500": 50, "1000": 100, "2000": 200, "3000": 300},
+        "range_4_steps_kN": {"300": "30·100 / 200·300", "500": "50·100 / 200·500", "1000": "100·200 / 500·1000", "2000": "200·500 / 1000·2000", "3000": "300·1000 / 2000·3000"},
+        "compression_stroke_mm": {"min": 0, "max": 600},
+        "platen_diameter_mm": {"300": 120, "500": 160, "1000": 160, "2000": 200, "3000": 200},
+        "bending_distance_mm": 450,
+        "punch_tip_radius_mm": {"300": 16, "500": 25, "1000": 25, "2000": 25, "3000": 25},
+        "punch_width_mm": {"300": 150, "500": 150, "1000": 160, "2000": 160, "3000": 160},
+        "roller_diameter_mm": {"300": 30, "500": 50, "1000": 50, "2000": 70, "3000": 70},
+        "table_size_mm": {"300": "750 x 500", "500": "850 x 560", "1000": "880 x 560", "2000": "1000 x 660", "3000": "1200 x 800"},
+        "column_to_column_mm": {"300": 560, "500": 560, "1000": 610, "2000": 740, "3000": 740},
+        "max_ram_stroke_mm": 200,
+        "crosshead_speed_mm_min": 400
+      },
+      "note": "압축과 함께 횡하중·굽힘 시험을 한다(굽힘 지간 450 mm 고정)"
+    },
+    {
+      "model": "ST-1004-LT 고신율 인장시험기 1000 kN",
+      "specs": {
+        "capacity_kN": 1000,
+        "capacity_tonf": 100,
+        "load_range": "2 단, 정격의 1~100 %",
+        "max_tensile_distance_mm": 750,
+        "grip_round_mm": "Ø13~26, Ø26~45",
+        "grip_flat_mm": "0~20",
+        "test_zone_mm": "780 x 700",
+        "column_to_column_mm": 780,
+        "max_ram_stroke_mm": 700,
+        "max_piston_rise_speed_mm_min": 200,
+        "control": "유압 서보 — 전원부, 하중 앰프, 변위 앰프, 서보 앰프"
+      }
+    },
+    {
+      "model": "ST-1004-LT 고신율 인장시험기 2000 kN",
+      "specs": {
+        "capacity_kN": 2000,
+        "capacity_tonf": 200,
+        "load_range": "2 단, 정격의 1~100 %",
+        "max_tensile_distance_mm": 930,
+        "grip_round_mm": "Ø15~30, Ø30~55, Ø55~70",
+        "grip_flat_mm": "10~40",
+        "test_zone_mm": "900 x 750",
+        "column_to_column_mm": 900,
+        "max_ram_stroke_mm": 750,
+        "max_piston_rise_speed_mm_min": 200
+      }
+    }
+  ],
+  "accuracy": {
+    "load": "≤±0.5 %, 교정 등급 Class 1 또는 Class 0.5",
+    "display_resolution": "1/300,000",
+    "stroke_resolution": "0.001 mm"
+  },
+  "features": [
+    "6 컬럼(듀얼존 4 포스트) 프레임 — 인장과 압축 공간을 따로 둔다",
+    "정격별로 환봉·평판 그립 인서트 조합이 정해져 있다",
+    "ST-1004C 는 하중 레인지 4 단 분할",
+    "연선(stranded wire) 전용 구성"
+  ],
+  "options": [
+    "시험 속도 확장",
+    "환봉 그립 Ø4~10(소구경)",
+    "평판 그립 확장 범위",
+    "고신율 구성(ST-1004LT)"
+  ],
+  "relations": [
+    {"type": "performs", "target": "tensile"},
+    {"type": "performs", "target": "compression"},
+    {"type": "performs", "target": "flexure"},
+    {"type": "same_family_as", "target": "salt-st-1000-series-electromechanical-utm"}
+  ],
+  "sources": [
+    {"url": "https://www.light-salt.kr/product/product.php?ptype=view&prdcode=1403140025&catcode=10101000", "retrieved": "2026-09-10", "note": "ST-1004 사양표 및 그립 정보(HTML)"},
+    {"url": "https://www.light-salt.kr/product/product.php?ptype=view&prdcode=2208230002&catcode=10101000", "retrieved": "2026-09-10", "note": "ST-1004C 압축시험기 사양표(HTML)"},
+    {"url": "https://www.light-salt.kr/product/product.php?ptype=view&prdcode=2510130001&catcode=10101000", "retrieved": "2026-09-10", "note": "ST-1004LT 고신율 인장시험기 사양표(HTML)"}
+  ],
+  "confidence": "limited",
+  "notes": "PDF 카탈로그가 없어 제조사 제품 페이지의 HTML 사양표에서 옮겼다(`sources[].url`). 실린더 용량·유압 유닛 사양·전원·장비 중량이 페이지에 없다 — 대하중 유압기인데 설치 계획에 필요한 값이 빠져 있다. ST-1004C 의 '크로스헤드 속도 400 mm/min' 은 시험 속도가 아니라 크로스헤드 이송 속도로 읽힌다(문서가 구분하지 않는다). 피로시험기 계열(ST-1005-HL/HU/TT/E)은 제품 페이지에 사양표가 없어 담지 못했다."
+}

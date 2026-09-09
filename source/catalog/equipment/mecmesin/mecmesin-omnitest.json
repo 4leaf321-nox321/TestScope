@@ -1,0 +1,38 @@
+{
+  "id": "mecmesin-omnitest",
+  "kind": "equipment_series",
+  "name": "OmniTest Universal Testing Machines",
+  "name_ko": "멕메신 OmniTest 만능시험기",
+  "manufacturer": "mecmesin",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "0.5/1/2.5 kN 단일컬럼, 5/7.5 kN 단일컬럼(굵은 프레임), 10/25/50 kN 트윈컬럼. ELS 로드셀(2 N–50 kN, ±0.5 % of reading 2–100 %, ISO 7500-1 Class 0.5), VectorPro 소프트웨어, 1 kHz 데이터. Touch 모델은 PC 없이 터치스크린 운용.",
+  "test_items": ["tensile", "compression", "flexure", "shear", "peel", "tear", "friction_coefficient"],
+  "measurands": ["tensile_strength", "elongation", "compressive_strength", "flexural_strength", "peel_strength"],
+  "materials": ["plastics", "rubber", "film", "packaging", "medical devices", "components", "adhesives", "textiles"],
+  "standards": {"compliance": ["ISO 7500-1 Class 0.5 (down to 2% of range)"], "test_methods": []},
+  "limits": {
+    "force_kN": {"min": 0.002, "max": 50, "values": [0.5, 1, 2.5, 5, 7.5, 10, 25, 50]},
+    "crosshead_speed_mm_min": {"min": 0.01, "max": 500},
+    "crosshead_travel_mm": {"min": 507, "max": 1230},
+    "horizontal_test_space_mm": {"values": [420, 425], "note": "트윈컬럼 모델만"},
+    "data_rate_Hz": {"max": 1000}
+  },
+  "models": [
+    {"model": "OmniTest 0.5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 0.5, "crosshead_travel_mm": 1186, "vertical_daylight_mm": 1267, "throat_depth_mm": 70.5, "footprint_mm": {"H": 1616, "W": 290, "D": 414}, "weight_kg": 31}},
+    {"model": "OmniTest 1", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1, "crosshead_travel_mm": 986, "vertical_daylight_mm": 1067, "throat_depth_mm": 70.5, "footprint_mm": {"H": 1416, "W": 290, "D": 414}, "weight_kg": 27.5}},
+    {"model": "OmniTest 2.5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 2.5, "crosshead_travel_mm": 507, "vertical_daylight_mm": 588, "throat_depth_mm": 70.5, "footprint_mm": {"H": 941, "W": 290, "D": 414}, "weight_kg": 24}},
+    {"model": "OmniTest 5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 5, "crosshead_travel_mm": 650, "vertical_daylight_mm": 750, "throat_depth_mm": 125, "footprint_mm": {"H": 1089, "W": 330, "D": 570}, "weight_kg": 70}},
+    {"model": "OmniTest 7.5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 7.5, "crosshead_travel_mm": 650, "vertical_daylight_mm": 750, "throat_depth_mm": 67, "footprint_mm": {"H": 1089, "W": 330, "D": 570}, "weight_kg": 70}},
+    {"model": "OmniTest 10", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "crosshead_travel_mm": 950, "vertical_daylight_mm": 1050, "horizontal_test_space_mm": 420, "footprint_mm": {"H": 1576, "W": 851, "D": 603}, "weight_kg": 315}},
+    {"model": "OmniTest 25", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 25, "crosshead_travel_mm": 950, "vertical_daylight_mm": 1050, "horizontal_test_space_mm": 420, "footprint_mm": {"H": 1576, "W": 851, "D": 603}, "weight_kg": 315}},
+    {"model": "OmniTest 50", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_travel_mm": 1230, "vertical_daylight_mm": 1330, "horizontal_test_space_mm": 425, "footprint_mm": {"H": 1938, "W": 986, "D": 649}, "weight_kg": 442}}
+  ],
+  "accuracy": {"force": "ELS ±0.5% of reading 2–100% of range, resolution 1:50,000", "position": "±0.13 mm per 300 mm travel; ±0.1% of indicated or ±0.01 mm"},
+  "environment": {"operating_temp_degC": [10, 40], "humidity_pct": [30, 80], "power": "230 V 50 Hz / 110 V 60 Hz"},
+  "options": ["ELS (2 N–500 N)", "ELS-S (100 N–5 kN)", "ELS-T (100 N–25 kN)", "ELS-P (20–50 kN)", "extensometer input", "Touch console"],
+  "relations": [{"type": "same_family_as", "target": "mecmesin-multitest"}],
+  "sources": [{"file": "mecmesin/omnitest-brochure-2023.pdf", "pages": [5, 8, 14]}],
+  "confidence": "catalog"
+}

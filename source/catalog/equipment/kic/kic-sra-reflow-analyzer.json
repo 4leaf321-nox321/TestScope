@@ -1,0 +1,30 @@
+{
+  "id": "kic-sra-reflow-analyzer",
+  "kind": "equipment_model",
+  "name": "KIC SRA Smart Reflow Analyzer",
+  "name_ko": "KIC SRA 스마트 리플로우 분석기",
+  "manufacturer": "kic",
+  "brand": "SRA",
+  "category": "thermal_profiler",
+  "form_factor": "fixture",
+  "description": "리플로우 오븐의 열 프로파일을 측정·검증하는 일체형 스마트 지그. 프로파일러가 지그에 통합되어 별도 장비 없이 데이터를 수집하고, 컨베이어 속도도 내장 기능으로 측정한다(외부 장치 불필요). 오븐 좌우(side-to-side)·런 간(run-to-run) 편차를 비교해 오븐 안정성을 즉시 파악하고, 솔더 페이스트 사양 라이브러리와 대조해 공정 적합성을 판정한다. 한 화면에 오븐 설정과 주요 장비 정보를 함께 표시하며, 다운로드 없이 최대 30개 프로파일을 누적 저장한다. 열 보호 구조로 런 사이 냉각이 빠르다.",
+  "test_items": ["thermal_profiling", "solderability"],
+  "measurands": ["reflow_profile", "peak_temperature", "time_above_liquidus", "ramp_rate", "conveyor_speed", "delta_t"],
+  "materials": ["PCB assemblies", "solder paste", "SMT components"],
+  "standards": {"compliance": [], "test_methods": ["J-STD-020 (리플로우 프로파일)", "IPC-7530", "J-STD-001"]},
+  "limits": {
+    "profile_storage": {"max": 30, "note": "다운로드 없이 누적 저장 가능한 프로파일 수"},
+    "temperature_degC": {"note": "열전대 채널 수·측정 범위는 사양표 확인 요", "uncertain": true}
+  },
+  "models": [
+    {"model": "SRA (Smart Reflow Analyzer)", "specs": {"integrated_profiler": true, "conveyor_speed_measurement": "내장", "profile_stacking": 30, "pallet": "전용 팔레트 설계로 측정 정확도 향상"}}
+  ],
+  "features": ["프로파일러 일체형 지그", "컨베이어 속도 내장 측정", "좌우·런 간 비교 분석", "오븐 설정 통합 표시", "솔더 페이스트 사양 라이브러리", "프로파일 스태킹(30개)", "열 보호 및 신속 냉각", "장비 검증(validation) 도구 겸용"],
+  "relations": [
+    {"type": "performs", "target": "solderability"},
+    {"type": "compatible_accessory", "target": "nordson-dage-quadra-xray", "note": "리플로우 프로파일 검증 후 접합부 보이드 검사로 연계"}
+  ],
+  "sources": [{"file": "kic/sra-smart-reflow-analyzer.pdf", "pages": [1, 2]}],
+  "confidence": "limited",
+  "notes": "열전대 채널 수·측정 온도 범위·확도 등 정량 사양이 브로슈어에 없다."
+}

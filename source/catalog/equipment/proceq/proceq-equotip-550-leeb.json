@@ -1,0 +1,31 @@
+{
+  "id": "proceq-equotip-550-leeb",
+  "kind": "equipment_model",
+  "name": "Proceq Equotip 550 Leeb portable hardness tester",
+  "name_ko": "프로세크 Equotip 550 Leeb 휴대형 경도계",
+  "manufacturer": "proceq",
+  "category": "portable_hardness",
+  "form_factor": "handheld",
+  "description": "리브 반발 경도계. 충격체 D/DC(11 Nmm, WC 3 mm), DL(슬림), S(세라믹 볼, 고경도), E(PCD, 고경도), G(90 Nmm, 대형 주조·단조), C(3 Nmm, 표면경화·얇은 부품). 강 기준 HV 81–955, HB 81–654, HRC 20–68, Rm 275–2194 N/mm² 환산.",
+  "test_items": ["hardness_leeb"],
+  "measurands": ["hardness_HL", "hardness_HV_converted", "hardness_HB_converted", "hardness_HRC_converted", "tensile_strength_converted"],
+  "materials": ["steel", "cast steel", "cold work tool steel", "stainless steel", "cast iron GG/GGG", "cast aluminium", "brass", "bronze", "copper alloys"],
+  "standards": {"compliance": [], "test_methods": ["ASTM A956", "ISO 16859", "DIN 50156"]},
+  "limits": {
+    "hardness_scales": {"values": ["HLD", "HLDC", "HLDL", "HLS", "HLE", "HLG", "HLC"]},
+    "impact_energy_Nmm": {"values": [3, 11, 90]},
+    "sample_mass_kg": {"min": 0.02, "note": "compact ≥5 kg(D) / ≥15 kg(G) / ≥1.5 kg(C); coupled on plate ≥0.05 kg"}
+  },
+  "models": [
+    {"model": "Equotip 550 + impact device D/DC", "specs": {"impact_energy_Nmm": 11, "indenter": "WC 3 mm", "range_steel": {"HV": [81, 955], "HB": [81, 654], "HRC": [20, 68], "HRB": [38, 100], "Rm_MPa": [275, 2194]}}},
+    {"model": "impact device DL", "specs": {"impact_energy_Nmm": 11, "indenter": "WC 2.8 mm", "range_steel": {"HV": [80, 950], "HRC": [21, 68]}}},
+    {"model": "impact device S", "specs": {"impact_energy_Nmm": 11, "indenter": "ceramic 3 mm", "range_steel": {"HV": [101, 964], "HRC": [22, 70]}}},
+    {"model": "impact device E", "specs": {"impact_energy_Nmm": 11, "indenter": "PCD 3 mm", "range_steel": {"HV": [84, 1211], "HRC": [20, 72]}}},
+    {"model": "impact device G", "specs": {"impact_energy_Nmm": 90, "indenter": "WC 5 mm", "range_steel": {"HB": [90, 646], "HRB": [48, 100]}}},
+    {"model": "impact device C", "specs": {"impact_energy_Nmm": 3, "indenter": "WC 3 mm", "range_steel": {"HV": [81, 1012], "HRC": [20, 70]}}}
+  ],
+  "accuracy": {"surface": "Ra 2 µm (D), 7 µm (G), 0.4 µm (C)"},
+  "relations": [],
+  "sources": [{"file": "proceq/equotip-550-leeb.pdf", "pages": [2]}],
+  "confidence": "catalog"
+}

@@ -1,0 +1,162 @@
+{
+  "id": "ametek-lloyd-ls-series",
+  "kind": "equipment_series",
+  "name": "Lloyd Instruments LS1 / LS2.5 / LS5 Single Column Universal Test Machines",
+  "name_ko": "로이드 LS1/LS2.5/LS5 단일컬럼 만능시험기",
+  "manufacturer": "ametek-lloyd",
+  "brand": "Lloyd Instruments",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "1/2.5/5 kN 단일컬럼 벤치 시험기. 로드셀 5 N–5 kN (YLC 시리즈, 0.5 %), 내부 8 kHz 샘플링, NEXYGENPlus 전송 1 kHz. 표준/확장 스트로크 모델.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "tear",
+    "friction_coefficient",
+    "seal_strength"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "elongation",
+    "compressive_strength",
+    "peel_strength"
+  ],
+  "materials": [
+    "plastics",
+    "film",
+    "packaging",
+    "textiles",
+    "food",
+    "medical"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM F88-15",
+      "NF EN 868-5"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "min": 0.005,
+      "max": 5,
+      "values": [
+        1,
+        2.5,
+        5
+      ]
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.01,
+      "max": 2032
+    },
+    "crosshead_travel_mm": {
+      "min": 500,
+      "max": 1400
+    },
+    "data_rate_Hz": {
+      "max": 1000,
+      "note": "내부 8000 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "LS1 (standard travel)",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 1,
+        "crosshead_travel_mm": 500,
+        "throat_depth_mm": 180,
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 2032
+        },
+        "frame_deflection_mm_at_max": 1.4,
+        "weight_kg": 52
+      }
+    },
+    {
+      "model": "LS1 (extended travel)",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 1,
+        "crosshead_travel_mm": 800,
+        "throat_depth_mm": 180,
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 2032
+        },
+        "weight_kg": 62
+      }
+    },
+    {
+      "model": "LS2.5 (extended travel)",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 2.5,
+        "crosshead_travel_mm": 1400,
+        "throat_depth_mm": 150,
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 2032
+        },
+        "weight_kg": 75
+      }
+    },
+    {
+      "model": "LS5 (standard travel)",
+      "form_factor": "single_column_tabletop",
+      "specs": {
+        "force_kN": 5,
+        "crosshead_travel_mm": 800,
+        "throat_depth_mm": 150,
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 1016
+        },
+        "frame_deflection_mm_at_max": 1.7,
+        "weight_kg": 65
+      }
+    }
+  ],
+  "accuracy": {
+    "force": "±0.5% of reading, 1–100% of max force",
+    "speed": "±0.2% of selected speed (2–100% of max speed, unloaded)",
+    "displacement_resolution_mm": 0.01
+  },
+  "environment": {
+    "operating_temp_degC": [
+      5,
+      35
+    ],
+    "humidity_pct": [
+      20,
+      85
+    ],
+    "power": "115/230 VAC 50–60 Hz"
+  },
+  "options": [
+    "YLC load cells 5 N … 5 kN",
+    "NEXYGENPlus software"
+  ],
+  "relations": [],
+  "sources": [
+    {
+      "file": "ametek-lloyd/ls-series-user-manual.pdf",
+      "pages": [
+        11,
+        51,
+        52
+      ],
+      "note": "사용자 매뉴얼 — 기술사양 장"
+    },
+    {
+      "file": "ametek-lloyd/astm-f88-seal-strength-case.pdf",
+      "note": "의료 포장 실링 강도(ASTM F88-15) 적용 사례 — 시편 폭 15/25/25.4 mm, T-Peel 지그, 초기·말기 10 % 구간 제외 평균 박리력"
+    }
+  ],
+  "confidence": "catalog"
+}

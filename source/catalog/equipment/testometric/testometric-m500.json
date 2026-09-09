@@ -1,0 +1,34 @@
+{
+  "id": "testometric-m500",
+  "kind": "equipment_series",
+  "name": "Testometric M500 CT/AT Universal Testing Machines",
+  "name_ko": "테스토메트릭 M500 CT/AT 만능시험기",
+  "manufacturer": "testometric",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "테이블형 듀얼컬럼 25/50/100 kN (CT: 표준, AT: 상위 전자장치). 12 kHz 샘플링(200 Hz 데이터 프레임), ±0.5 % of reading to 1/1000 of load cell, 로드셀 5 N–100 kN 최대 4개 동시 장착, 800 % 과부하 보호. winTest 소프트웨어(인장·압축·박리·전단·인열·사이클·크리프).",
+  "test_items": ["tensile", "compression", "flexure", "shear", "peel", "tear", "creep", "fatigue"],
+  "measurands": ["tensile_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "peel_strength", "tear_strength"],
+  "materials": ["plastics", "metals", "rubber", "textiles", "paper", "packaging", "composites"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "force_kN": {"min": 0.005, "max": 100, "values": [25, 50, 100]},
+    "crosshead_speed_mm_min": {"min": 0.001, "max": 1000},
+    "vertical_test_space_mm": {"min": 1180, "max": 1300},
+    "horizontal_test_space_mm": {"values": [420]},
+    "data_rate_Hz": {"max": 12000, "note": "데이터 프레임 200 Hz"}
+  },
+  "models": [
+    {"model": "M500-25 CT", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 25, "crosshead_speed_mm_min": {"min": 0.001, "max": 1000}, "crosshead_travel_mm": 1050, "vertical_test_space_mm": 1240, "horizontal_test_space_mm": 420, "frame_stiffness_kN_mm": 100, "max_force_at_full_speed_kN": 25, "max_speed_at_full_force_mm_min": 1000, "footprint_mm": {"W": 762, "D": 505, "H": 1585}, "weight_kg": 186, "power_kW": 1}},
+    {"model": "M500-50 CT / AT", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_speed_mm_min": {"min": 0.001, "max": 1000}, "crosshead_travel_mm": 980, "vertical_test_space_mm": 1180, "horizontal_test_space_mm": 420, "frame_stiffness_kN_mm": 200, "max_force_at_full_speed_kN": 50, "max_speed_at_full_force_mm_min": 600, "footprint_mm": {"W": 762, "D": 505, "H": 1585}, "weight_kg": [235, 245], "power_kW": 1}},
+    {"model": "M500-100 CT / AT", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 100, "crosshead_speed_mm_min": {"min": 0.001, "max": 500}, "crosshead_travel_mm": 1059, "vertical_test_space_mm": 1300, "horizontal_test_space_mm": 420, "frame_stiffness_kN_mm": 400, "max_force_at_full_speed_kN": 100, "max_speed_at_full_force_mm_min": 500, "footprint_mm": {"W": 762, "D": 505, "H": 1585}, "weight_kg": [376, 368], "power_kW": 1.2}}
+  ],
+  "accuracy": {"force": "±0.5% of reading down to 1/1000 of load cell capacity", "speed": "±0.1% under stable conditions", "position_resolution_mm": 0.001},
+  "environment": {"operating_temp_degC": [-10, 40], "humidity_pct": [10, 90], "power": "universal input (de-rate max speed at 115 V)"},
+  "features": ["auto-ranging load cells, 800% overload", "4 synchronous channels", "6 I/O channels", "T-slot columns", "telescopic ballscrew covers"],
+  "options": ["load cells 5 N … 100 kN", "contacting/laser/video extensometers", "base cabinet"],
+  "relations": [],
+  "sources": [{"file": "testometric/m500-25-ct.pdf", "pages": [1]}, {"file": "testometric/m500-50-ct.pdf", "pages": [1, 3]}, {"file": "testometric/m500-100-ct.pdf", "pages": [1, 3]}],
+  "confidence": "catalog"
+}

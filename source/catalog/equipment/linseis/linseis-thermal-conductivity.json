@@ -1,0 +1,32 @@
+{
+  "id": "linseis-thermal-conductivity",
+  "kind": "equipment_series",
+  "name": "LINSEIS thermal conductivity instruments (LFA 500 / LFA 1000 laser flash, TIM-Tester, THB, HFM, TFA)",
+  "name_ko": "린자이스 열전도율 측정기군 (LFA 500/1000, TIM-Tester, THB, HFM, TFA)",
+  "manufacturer": "linseis",
+  "category": "thermal_conductivity",
+  "form_factor": "benchtop",
+  "description": "LFA 500(광플래시 15 J, -100~500 / RT~1250 °C, 부스트 1450), LFA 1000(Nd:YAG 28 J, -125~500 / RT~2800 °C), 열확산율 0.01–1000 mm²/s, 열전도율 0.1–2000 W/(m·K), 정확도 ±2.4 %, 로봇 3/6/18 시편. TIM-Tester(ASTM D5470 열계면재, -30~300 °C, 0.1–50 W/mK, 0–16 MPa). THB(과도 핫브리지 -150~700), HFM(단열재 -40~90), TFA(박막 -170~300).",
+  "test_items": ["thermal_conductivity"],
+  "measurands": ["thermal_diffusivity", "thermal_conductivity", "specific_heat", "thermal_resistance"],
+  "materials": ["solids", "liquids", "powders", "pastes", "pads (TIM)", "thin films", "insulation"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E1461", "ISO 22007-4", "ASTM D5470", "ISO 22007-2", "ASTM C518", "ISO 8301"]},
+  "limits": {
+    "temperature_degC": {"min": -170, "max": 2800},
+    "thermal_diffusivity_mm2_s": {"min": 0.01, "max": 1000},
+    "thermal_conductivity_W_mK": {"min": 0.1, "max": 2000},
+    "heating_rate_K_min": {"max": 300}
+  },
+  "models": [
+    {"model": "LFA 500", "specs": {"temperature_degC": {"min": -100, "max": 1250}, "boost_degC": 1450, "flash": "light flash up to 15 J/pulse, 0.05–2 ms", "heating_rate_K_min": {"min": 0.01, "max": 300}, "detectors": ["InSb RT~1450", "MCT -100~500"], "vacuum_mbar": 0.00001, "data_rate_MHz": 10, "sample_robot": [3, 6, 18]}},
+    {"model": "LFA 1000", "specs": {"temperature_degC": {"min": -125, "max": 2800}, "flash": "Nd:YAG laser 28 J/pulse, 0.05–5 ms", "heating_rate_K_min": {"min": 0.01, "max": 50}, "detectors": ["InSb RT~2800", "MCT -125~500"], "sample_robot": [3, 6, 18]}},
+    {"model": "TIM-Tester", "specs": {"temperature_degC": {"min": -30, "max": 300}, "thermal_conductivity_W_mK": {"min": 0.1, "max": 50}, "thermal_resistance_K_W": {"min": 0.01, "max": 8}, "contact_pressure_MPa": {"max": 16}, "force_N": [1000, 2000, 5000], "sample_mm": "Ø20/25/40 or 20×20/25×25/40×40, thickness 0.01–8 (20)"}},
+    {"model": "THB", "specs": {"temperature_degC": {"min": -150, "max": 700}}},
+    {"model": "HFM", "specs": {"temperature_degC": {"min": -40, "max": 90}}},
+    {"model": "TFA", "specs": {"temperature_degC": {"min": -170, "max": 300}, "note": "thin films on LINSEIS chip"}}
+  ],
+  "accuracy": {"lfa_diffusivity": "±2.4 % (repeatability ±1.9 %)", "lfa_specific_heat": "±5 % (repeatability ±3 %)"},
+  "relations": [],
+  "sources": [{"file": "linseis/thermal-conductivity-brochure.pdf", "pages": [5, 10, 14]}],
+  "confidence": "catalog"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "mtdi-electrolytic-etching-machine",
+  "kind": "equipment_series",
+  "name": "MTDI Electrolytic Etching Machine (metallographic specimen preparation)",
+  "name_ko": "엠티디아이 전해 에칭기 (금속조직 시편 전처리)",
+  "manufacturer": "mtdi",
+  "category": "electrolytic_etcher",
+  "drive": "manual",
+  "form_factor": "benchtop",
+  "description": "금속조직 관찰용 시편을 전해 부식(electrolytic etching)으로 다듬는 탁상형 장치. 전압·전류를 0~30 VDC 범위에서 걸고 전압 제어 또는 전류 제어 중에서 고른다. 5 인치 터치스크린으로 전압-전류, 전해 시간 등을 설정하고 8 W BLDC 교반을 쓴다. 전해조는 탈부착식이라 세척이 쉽고, 크기가 다른 여러 전해조를 쓴다. 비상정지와 원격제어 기능이 있다. 치수 396 mm 폭, 무게 27 kg, 전원 AC220V.",
+  "test_items": [
+    "surface_topography"
+  ],
+  "measurands": [
+    "dimensional_metrology"
+  ],
+  "materials": [
+    "metals and alloys",
+    "metallographic specimens"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "voltage_V": {
+      "min": 0,
+      "max": 30,
+      "note": "0~30 VDC. 전류 상한은 스캔에서 잘려 읽지 못했다"
+    },
+    "weight_kg": {
+      "values": [
+        27
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Electrolytic Etching Machine",
+      "specs": {
+        "voltage_current": "0~30 VDC (전류값은 스캔에서 잘림)",
+        "power": "AC220V",
+        "stirring": "8 W BLDC",
+        "display": "5 인치 터치스크린",
+        "width_mm": 396,
+        "weight_kg": 27,
+        "functions": [
+          "전압-전류 설정",
+          "전해 시간 설정",
+          "여러 크기의 전해조 사용",
+          "전압 제어 또는 전류 제어 선택"
+        ],
+        "safety": "비상정지",
+        "remote": "원격제어 기능"
+      },
+      "note": "깊이·높이 치수와 전류 상한이 스캔 오른쪽에서 잘려 읽히지 않았다",
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "전압 제어와 전류 제어 선택",
+    "탈부착 전해조로 세척 용이",
+    "5 인치 터치스크린 조작",
+    "비상정지·원격제어"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "surface_topography"
+    }
+  ],
+  "sources": [
+    {
+      "file": "mtdi/metallography-electrolytic-etching-machine-catalog.pdf",
+      "pages": [
+        4,
+        5
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "**텍스트층이 없는 이미지 전용 스캔**이라 4쪽을 렌더링해 눈으로 읽었다(`catalog/pages/mtdi-rest-b.png`). 표의 오른쪽이 페이지 경계에서 잘려 **전류 상한과 깊이·높이 치수를 읽지 못했다** — 해당 모델 항목에 `uncertain: true` 를 달았다. 시편을 시험하는 장비가 아니라 관찰용 시편을 만드는 전처리 장치다. 온톨로지에 `specimen_preparation` 상위 분류와 `electrolytic_etcher` 를 새로 만들어 제대로 걸었다."
+}

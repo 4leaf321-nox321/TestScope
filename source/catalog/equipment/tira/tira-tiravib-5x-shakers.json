@@ -1,0 +1,165 @@
+{
+  "id": "tira-tiravib-5x-shakers",
+  "kind": "equipment_series",
+  "name": "TIRA TIRAvib 51075 / 52110 / 52120 Modal & Vibration Exciters",
+  "name_ko": "티라 TIRAvib 51075·52110·52120 소형 가진기",
+  "manufacturer": "tira",
+  "brand": "TIRAvib",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "benchtop",
+  "description": "모달 해석과 소형 부품 진동 시험을 겸하는 전기동력식 가진기. 정격 피크 힘은 정현 기준 75 N(51075) / 100 N(52110) / 200 N(52120), 랜덤은 그 절반 수준. 주파수 2~8000 Hz(51075) 또는 2~7000 Hz(52110·52120)를 커버하며 최대 스트로크 10 mm(51075) / 15 mm(52110·52120, 옵션 25 mm). 최대 속도 1.5 m/s, 최대 가속도 정현 51~102 g. 주 공진 주파수 7200 Hz 초과. 유효 가동 질량은 150~200 g 으로 작아 소형 시편의 모달 가진에 적합하다.",
+  "test_items": [
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "modal_parameters",
+    "frequency_response_function"
+  ],
+  "materials": [
+    "electronic components",
+    "PCB",
+    "small assemblies",
+    "structural specimens",
+    "sensors"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60068-2-6",
+      "IEC 60068-2-64",
+      "ISO 7626 (모달 가진)"
+    ]
+  },
+  "limits": {
+    "force_N": {
+      "min": 40,
+      "max": 200,
+      "note": "정현 75/100/200 N, 랜덤 40/50/100 N"
+    },
+    "frequency_Hz": {
+      "min": 2,
+      "max": 8000,
+      "note": "51075 는 2~8000 Hz, 52110·52120 은 2~7000 Hz"
+    },
+    "displacement_mm": {
+      "max": 25,
+      "note": "51075 10 mm; 52110·52120 15 mm(옵션 25 mm)"
+    },
+    "velocity_m_s": {
+      "max": 1.5
+    },
+    "acceleration_g": {
+      "max": 102,
+      "note": "정현 51/51/102 g, 랜덤 27/25/51 g"
+    },
+    "current_A": {
+      "max": 11.2
+    }
+  },
+  "models": [
+    {
+      "model": "TIRAvib 51075",
+      "specs": {
+        "peak_force_N_sine": 75,
+        "peak_force_kgf_sine": 7.6,
+        "peak_force_N_random": 40,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 8000
+        },
+        "max_travel_mm": 10,
+        "max_velocity_m_s": 1.5,
+        "max_acceleration_g_sine": 51,
+        "max_acceleration_g_random": 27,
+        "rated_current_A": 5.5,
+        "nominal_impedance_ohm": 4,
+        "suspension_stiffness_N_mm": 6.5,
+        "effective_moving_mass_g": 150,
+        "main_resonance_Hz": 7200,
+        "mass_kg": 8
+      }
+    },
+    {
+      "model": "TIRAvib 52110",
+      "specs": {
+        "peak_force_N_sine": 100,
+        "peak_force_kgf_sine": 10.2,
+        "peak_force_N_random": 50,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 7000
+        },
+        "max_travel_mm": 15,
+        "max_travel_mm_option": 25,
+        "max_velocity_m_s": 1.5,
+        "max_acceleration_g_sine": 51,
+        "max_acceleration_g_random": 25,
+        "rated_current_A": 5.5,
+        "nominal_impedance_ohm": 4,
+        "suspension_stiffness_N_mm": 5,
+        "effective_moving_mass_g": 200,
+        "main_resonance_Hz": 7200,
+        "mass_kg": 25
+      }
+    },
+    {
+      "model": "TIRAvib 52120",
+      "specs": {
+        "peak_force_N_sine": 200,
+        "peak_force_kgf_sine": 20.4,
+        "peak_force_N_random": 100,
+        "frequency_Hz": {
+          "min": 2,
+          "max": 7000
+        },
+        "max_travel_mm": 15,
+        "max_travel_mm_option": 25,
+        "max_velocity_m_s": 1.5,
+        "max_acceleration_g_sine": 102,
+        "max_acceleration_g_random": 51,
+        "rated_current_A": 11.2,
+        "nominal_impedance_ohm": 4,
+        "suspension_stiffness_N_mm": 5,
+        "effective_moving_mass_g": 200,
+        "main_resonance_Hz": 7200
+      }
+    }
+  ],
+  "features": [
+    "모달 가진기 겸 진동 시험기",
+    "주 공진 7200 Hz 초과",
+    "작은 유효 가동 질량(150~200 g)",
+    "483×90×450 mm 랙 마운트 앰프",
+    "25 mm 확장 스트로크 옵션"
+  ],
+  "options": [
+    "25 mm 확장 스트로크(52110·52120)",
+    "전용 마운팅 테이블",
+    "전용 파워 앰프"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "same_family_as",
+      "target": "imv-i-series-shaker"
+    }
+  ],
+  "sources": [
+    {
+      "file": "bruel-kjaer/tiravib-51075-52110-52120.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "52120 의 랜덤 정격을 카탈로그가 '100 (100.2) kgf' 로 인쇄했는데 이는 오식으로 보인다(정현 200 N=20.4 kgf 대비 랜덤 100 N=10.2 kgf 가 타당). 여기서는 100 N 으로 기록했다. PDF 는 Brüel & Kjær 유통 경로로 배포된 TIRA 제품 자료다. PDF 는 Brüel & Kjær 유통 경로로 배포된 자료라 `source/pdf/bruel-kjaer/` 에 있지만 제품 제조사는 TIRA GmbH 다."
+}

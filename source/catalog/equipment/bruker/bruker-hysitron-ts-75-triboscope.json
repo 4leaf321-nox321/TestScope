@@ -1,0 +1,95 @@
+{
+  "id": "bruker-hysitron-ts-75-triboscope",
+  "kind": "accessory",
+  "name": "Bruker Hysitron TS 75 TriboScope Nanoindentation Attachment for AFM",
+  "name_ko": "브루커 하이시트론 TS 75 트라이보스코프 — AFM 부착형 나노압입 장치",
+  "manufacturer": "bruker",
+  "brand": "Hysitron",
+  "category": "nanoindenter",
+  "subcategory": "afm_attachment",
+  "form_factor": "portable",
+  "description": "기존 원자간력현미경(AFM)에 붙여 나노압입 시험을 하게 만드는 부착 장치. AFM 의 검출부 조립체를 대신 들어가 표면 형상을 얻고, 그 형상으로 원하는 시험 위치를 10 nm 안쪽으로 잡은 뒤 그 자리에 압입한다 — 시험 전후를 같은 팁으로 보는 것이 이 구성의 값이다. 하중 분해능 <1 nN, 표준 변환기 힘 잡음 바닥 <30 nN, 변위 분해능 0.0004 nm, 변위 잡음 바닥 0.2 nm, 드리프트 <0.05 nm/s. 폐루프 하중 제어와 변위 제어를 모두 하고, 법선력·횡력과 변위를 동시에 잰다. 시판 AFM 대부분에 붙는다.",
+  "test_items": [
+    "instrumented_indentation",
+    "surface_topography",
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "indentation_hardness",
+    "indentation_modulus",
+    "surface_roughness",
+    "friction_coefficient",
+    "scratch_hardness"
+  ],
+  "materials": [
+    "thin films and coatings",
+    "semiconductors",
+    "polymers",
+    "biological materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "position_resolution_nm": {
+      "max": 0.0004,
+      "note": "변위 분해능 0.0004 nm, 잡음 바닥 0.2 nm, 드리프트 <0.05 nm/s"
+    },
+    "indentation_force_mN": {
+      "note": "정격 최대 하중이 데이터시트에 없다. 하중 분해능 <1 nN, 잡음 바닥 <30 nN 만 적힌다"
+    }
+  },
+  "models": [
+    {
+      "model": "TS 75 TriboScope",
+      "specs": {
+        "document_no": "SAM-0070-A",
+        "load_resolution_nN": 1,
+        "load_noise_floor_nN": 30,
+        "displacement_resolution_nm": 0.0004,
+        "displacement_noise_floor_nm": 0.2,
+        "displacement_drift_nm_s": 0.05,
+        "positioning_accuracy_nm": 10,
+        "control": "폐루프 하중 제어 / 변위 제어",
+        "measurement": "법선력·횡력과 변위 동시 측정",
+        "controller": "TriboScope 컨트롤러 — 디지털 피드백이 이전 세대보다 약 80배 빠르다",
+        "interface": "AFM 검출부 조립체를 대체. 시판 AFM 대부분에 연결"
+      }
+    }
+  ],
+  "accuracy": {
+    "load": "분해능 <1 nN, 잡음 바닥 <30 nN(표준 변환기)",
+    "displacement": "분해능 0.0004 nm, 잡음 바닥 0.2 nm, 드리프트 <0.05 nm/s",
+    "positioning": "형상 이미지 기준 10 nm 이내"
+  },
+  "features": [
+    "AFM 형상 이미지로 시험 위치를 10 nm 이내로 지정",
+    "sub-30 nN 힘 잡음 바닥",
+    "폐루프 하중·변위 제어",
+    "법선력·횡력 동시 측정",
+    "이전 세대 대비 약 80배 빠른 디지털 피드백"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "instrumented_indentation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruker-hysitron-ti-950-triboindenter"
+    }
+  ],
+  "sources": [
+    {
+      "file": "bruker/hysitron-ts-75-triboscope-datasheet.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "hysitron.com 의 archive.org 스냅샷(2015-07-03)에서 받았다. TI 950 과 마찬가지로 **정격 최대 하중이 문서에 없다** — 잡음·분해능만 강조하는 데이터시트라 '몇 mN 까지 되나' 에 답하지 못한다. 어느 AFM 기종에 붙는지 구체적 목록도 없이 '시판 AFM 대부분' 이라고만 적는다. 장비 자체가 아니라 AFM 에 붙는 부착물이라 `kind: accessory` 로 두되, 분류는 수행하는 시험을 따라 `instrumented_indentation` 으로 했다."
+}

@@ -1,0 +1,46 @@
+{
+  "id": "shimadzu-uh-x-fx",
+  "kind": "equipment_series",
+  "name": "UH-X / UH-FX Series Hydraulic Universal Testing Machines",
+  "name_ko": "시마즈 UH-X/FX 시리즈 유압식 만능시험기",
+  "manufacturer": "shimadzu",
+  "category": "hydraulic_utm",
+  "subcategory": "hydraulic",
+  "drive": "hydraulic",
+  "description": "200 kN – 4000 kN 유압식 UTM. UH-X 는 서보밸브, UH-Xh 는 하이브리드 구동, UH-FX 는 플로어형(대형). 실린더 내압을 고정밀 압력셀로 측정, 레인지리스. 인장·압축·굽힘(옵션) 및 콘크리트 시험 제어. 대형 봉·판 시편(최대 ø120 / 두께 120 mm).",
+  "test_items": ["tensile", "compression", "flexure"],
+  "measurands": ["tensile_strength", "yield_strength", "elongation", "compressive_strength", "flexural_strength"],
+  "materials": ["steel", "rebar", "metals", "concrete", "large components", "fasteners"],
+  "standards": {
+    "compliance": ["JIS B7721 Class 1", "ISO 7500-1 Class 1", "ASTM E4", "JIS B7721 Class 0.5 (option)", "ISO 7500-1 Class 0.5 (option)"],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {"min": 200, "max": 4000, "values": [200, 300, 500, 600, 1000, 2000, 3000, 4000]},
+    "crosshead_speed_mm_min": {"min": 0.1, "max": 100, "note": "램 부하속도(무부하, 유온 20 °C 이상): 200/300 kN 80/100, 500 kN 65/80, 1000 kN 50/70, 2000 kN 40/50 (50/60 Hz)"},
+    "stroke_mm": {"min": 200, "max": 350, "note": "램 스트로크"},
+    "grip_span_mm": {"min": 720, "max": 1150, "note": "최대 인장 그립 간격"},
+    "specimen_diameter_mm": {"min": 8, "max": 120, "note": "환봉 그립면"},
+    "specimen_thickness_mm": {"min": 0, "max": 120, "note": "평판 그립면(옵션)"}
+  },
+  "models": [
+    {"model": "UH-200kNX / UH-200kNXh", "form_factor": "floor", "specs": {"force_kN": 200, "force_ranges_kN": [200, 100, 40, 20, 10, 4], "grip_span_mm": 720, "compression_plate_mm": 100, "flexure_support_span_mm": 500, "specimen_diameter_mm": [8, 40], "specimen_thickness_mm": [0, 35], "stroke_mm": 200, "footprint_mm": {"W": 780, "D": 500, "H": 2000}, "weight_kg": 900, "power_kVA": [4, 6.5]}},
+    {"model": "UH-300kNX / UH-F300kNX", "form_factor": "floor", "specs": {"force_kN": 300, "force_ranges_kN": [300, 150, 60, 30, 15, 6], "grip_span_mm": 720, "specimen_diameter_mm": [8, 40], "stroke_mm": [200, 250], "weight_kg": [900, 1500], "power_kVA": [4, 6.5, 5.5, 8]}},
+    {"model": "UH-500kNX / UH-F500kNX", "form_factor": "floor", "specs": {"force_kN": 500, "force_ranges_kN": [500, 250, 100, 50, 25, 10], "grip_span_mm": 800, "compression_plate_mm": 120, "flexure_support_span_mm": 600, "specimen_diameter_mm": [12, 50], "specimen_thickness_mm": [0, 50], "stroke_mm": 250, "weight_kg": [1700, 2600], "power_kVA": [4.5, 7, 5.5, 8]}},
+    {"model": "UH-600kNX", "form_factor": "floor", "specs": {"force_kN": 600, "force_ranges_kN": [600, 300, 120, 60, 30, 12], "grip_span_mm": 800, "specimen_diameter_mm": [12, 50], "weight_kg": 1700}},
+    {"model": "UH-1000kNX / UH-F1000kNX", "form_factor": "floor", "specs": {"force_kN": 1000, "force_ranges_kN": [1000, 500, 200, 100, 50, 20], "grip_span_mm": 900, "compression_plate_mm": 160, "flexure_support_span_mm": 800, "specimen_diameter_mm": [12, 70], "specimen_thickness_mm": [0, 70], "stroke_mm": 250, "weight_kg": [3500, 6000], "power_kVA": [6.5, 12, 7, 12]}},
+    {"model": "UH-2000kNX / UH-F2000kNX", "form_factor": "floor", "specs": {"force_kN": 2000, "force_ranges_kN": [2000, 1000, 400, 200, 100, 40], "grip_span_mm": 950, "compression_plate_mm": 220, "flexure_support_span_mm": 900, "specimen_diameter_mm": [20, 90], "specimen_thickness_mm": [0, 90], "stroke_mm": 300, "power_kVA": [12, 15]}},
+    {"model": "UH-3000kNX / UH-F3000kNX", "form_factor": "floor", "specs": {"force_kN": 3000, "force_ranges_kN": [3000, 1500, 600, 300, 150, 60], "grip_span_mm": 1000, "compression_plate_mm": 280, "flexure_support_span_mm": 1000, "specimen_diameter_mm": [20, 110], "specimen_thickness_mm": [0, 110], "stroke_mm": 300, "power_kVA": [11, 15]}},
+    {"model": "UH-4000kNX / UH-F4000kNX", "form_factor": "floor", "specs": {"force_kN": 4000, "force_ranges_kN": [4000, 2000, 800, 400, 200, 80], "grip_span_mm": 1150, "compression_plate_mm": 300, "flexure_support_span_mm": 1000, "specimen_diameter_mm": [30, 120], "specimen_thickness_mm": [0, 120], "stroke_mm": 350, "power_kVA": [16, 18]}}
+  ],
+  "accuracy": {
+    "force": "±1.0% of indicated (1/1–1/250 of rated) standard, JIS B7721 Class 1 / ISO 7500-1 Class 1; ±0.5% option (Class 0.5)",
+    "stroke": "optical encoder, resolution 0.01 mm",
+    "force_display_resolution": "1/200,000 (300/3000 kN: 1/240,000)"
+  },
+  "environment": {"operating_temp_degC": [5, 40], "floor_vibration": "≤5 µm", "power": "3PH 200 V", "cooling_water": "optional hydraulic oil cooler"},
+  "features": ["rangeless force measurement", "closed-loop load/stress/strain control", "concrete test control (compression, bending, cleavage)", "overload auto stop at 102%", "extension series (S/M/L extended columns)"],
+  "relations": [{"type": "same_family_as", "target": "shimadzu-agx-v2", "note": "전기기계식은 AGX-V2, 대용량 유압식은 UH-X"}],
+  "sources": [{"file": "shimadzu/uh-x-fx-hydraulic-utm-c221-e010b.pdf", "pages": [17, 18, 19, 20]}],
+  "confidence": "catalog"
+}

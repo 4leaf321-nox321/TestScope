@@ -1,0 +1,74 @@
+{
+  "id": "hegewald-peschke-multi-impact-tester",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Multi Impact Tester (41-036-2x0)",
+  "name_ko": "헤게발트 운트 페슈케 다중 충격(투사체) 시험기",
+  "manufacturer": "hegewald-peschke",
+  "category": "impact",
+  "drive": "pneumatic",
+  "form_factor": "floor",
+  "description": "지름 4~5 mm 의 거의 구형인 투사체를 최대 140 km/h 로 쏘아 시편 표면을 반복 타격하는 시험기. 자동차 차체·유리·코팅처럼 자갈 튐(stone chipping) 같은 반복 충격을 받는 부품의 내충격성을 본다. 시편은 최대 1000 x 900 x 300 mm 까지 받고, 총구는 0° 고정이며 시편 위치로 시험편-총구 거리를 150~600 mm 이상까지 조절한다. 시편은 치수에 따라 1 축 또는 2 축으로 임의 각도로 기울일 수 있다.",
+  "test_items": [
+    "drop_weight_impact",
+    "abrasion"
+  ],
+  "measurands": [
+    "impact_energy",
+    "coating_adhesion",
+    "scratch_resistance",
+    "failure_mode",
+    "damage_boundary"
+  ],
+  "materials": [
+    "automotive body panels and coatings",
+    "glass",
+    "plastics",
+    "paint systems"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "impact_velocity_m_s": {
+      "max": 38.9,
+      "note": "최대 140 km/h"
+    },
+    "specimen_size_mm": {
+      "note": "최대 1000 x 900 x 300 (그 밖은 협의)"
+    },
+    "measurement_distance_mm": {
+      "min": 150,
+      "max": 600,
+      "note": "시편-총구 거리. 시편 위치로 조절하며 600 mm 이상도 가능"
+    }
+  },
+  "models": [
+    {
+      "model": "Multi impact tester (41-036-2x0)",
+      "specs": {
+        "max_specimen_dimensions_mm": "1000 x 900 x 300 (그 밖은 협의)",
+        "bullet_velocity_km_h_max": 140,
+        "projectiles": "거의 구형, Ø4~5 mm",
+        "distance_specimen_to_muzzle_mm": "150 ~ 600 이상 (시편 위치로 조절)",
+        "muzzle_inclination": "0° 고정",
+        "specimen_inclination": "시편 치수에 따라 1 축 또는 2 축 임의 각도",
+        "footprint_mm": "약 1400 x 1400 x 2490 (WxDxH)"
+      }
+    }
+  ],
+  "features": [
+    "Ø4~5 mm 투사체를 140 km/h 까지 발사",
+    "시편 위치로 타격 거리 조절",
+    "1~2 축 시편 경사"
+  ],
+  "options": [],
+  "relations": [
+    {"type": "performs", "target": "drop_weight_impact"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/41-036-2x0-multi-impact-tester-en.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "limited",
+  "notes": "투사체 재질·중량, 발사 압력, 분당 발사 수, 장비 중량·전원이 데이터시트에 없다 — 정량 사양이 속도·치수뿐이라 `confidence: limited` 로 두었다. 시험 항목은 온톨로지에 자갈 튐(stone chipping) 전용 항목이 없어 `drop_weight_impact` 와 `abrasion` 으로 걸었다. 같은 제조사의 `41-060-010 stone impact tester for car radiators` 는 별도 문서이며 아직 객체로 만들지 않았다."
+}

@@ -1,0 +1,89 @@
+{
+  "id": "goettfert-rheograph-25e",
+  "kind": "equipment_series",
+  "name": "GÖTTFERT RHEOGRAPH 25E Clean Room Capillary Rheometer / RAM Extruder",
+  "name_ko": "괴트페르트 RHEOGRAPH 25E 클린룸 모세관 레오미터·램 압출기",
+  "manufacturer": "goettfert",
+  "brand": "RHEOGRAPH",
+  "category": "capillary_rheometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "전체 스테인리스 구조로 클래스 A 클린룸에서 쓰는 25 kN 고압 모세관 레오미터. 열가소성 수지·고무의 유동 거동과 점도를 재는 것에 더해, 스크류 압출 대신 램(RAM) 압출로 의약품 임플란트를 만드는 데 쓴다. 원료(주성분 + 부형제) 혼합물을 원통형 배럴에 채우고 피스톤으로 압축·가열·용융시켜 일정 피스톤 속도로 연속 압출하므로 기포 없는 균질한 스트랜드가 나온다. 온도 +30~+250 °C, 배럴 지름 20 mm, 25 kN 전 구간에서 피스톤 속도 0.00004~40 mm/s.",
+  "test_items": [
+    "rheology_capillary"
+  ],
+  "measurands": [
+    "viscosity"
+  ],
+  "materials": [
+    "thermoplastics",
+    "elastomers/rubber",
+    "pharmaceutical implant compounds"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 11443",
+      "ASTM D3835"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "max": 25
+    },
+    "temperature_degC": {
+      "min": 30,
+      "max": 250
+    },
+    "piston_speed_mm_min": {
+      "min": 0.0024,
+      "max": 2400,
+      "note": "0.00004~40 mm/s, 25 kN 힘 측정 전 구간에서"
+    },
+    "bore_diameter_mm": {
+      "values": [20]
+    }
+  },
+  "models": [
+    {
+      "model": "RHEOGRAPH 25E",
+      "specs": {
+        "test_force_kN": 25,
+        "barrel_1_diameter_mm": [20],
+        "temperature_degC": {"min": 30, "max": 250},
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "construction": "전체 스테인리스, 클린룸 클래스 A 운전",
+        "measuring_modes": ["정속(constant speed)", "정력(constant force)"]
+      }
+    }
+  ],
+  "features": [
+    "클래스 A 클린룸용 전체 스테인리스 구조",
+    "스크류 압출이 아닌 램(RAM) 압출 방식",
+    "피스톤 속도·겉보기 전단응력·참 전단응력 산출",
+    "LabRheo 로 파라미터 설정·제어·측정, WinRheo II 로 해석",
+    "자유 정의 가능한 측정·생산 시퀀스 SCRIPT 제어"
+  ],
+  "options": [
+    "Die Swell Measurement",
+    "Melt Cutting Unit"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "rheology_capillary"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [18, 19]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "다른 RHEOGRAPH 기종과 달리 최고 온도가 250 °C 로 낮다(의약품 임플란트 가공 온도대). 치수·중량·전원은 브로슈어에 없다."
+}

@@ -1,0 +1,102 @@
+{
+  "id": "mtdi-uc-furnace-chambers",
+  "kind": "accessory",
+  "name": "MTDI UC-980 High Temperature Furnace / UC-350 / UC-170 Temperature Chambers",
+  "name_ko": "엠티디아이 UC-980 고온로·UC-350 고온 챔버·UC-170 저온 챔버",
+  "manufacturer": "mtdi",
+  "category": "furnace",
+  "subcategory": "furnace_and_chamber_for_utm",
+  "description": "재료시험기의 시험 공간에 물려 온도 조건 아래에서 시험하게 만드는 노와 챔버. UC-980 고온로는 500~1,050 °C(최대 1,100 °C, 그 위는 별도 문의)를 내고 내용적 Ø100 x 300H mm, 열선은 KANTHAL-A1, 열전대 K형이다. 챔버는 두 기종으로 갈린다 — UC-350 고온 챔버가 실온~350 °C(K형 열전대), UC-170 저온 챔버가 -170~350 °C(T형 열전대)이고 내용적은 둘 다 300W x 300D x 400H mm(변경 가능). 가열은 카트리지 히터, 저온 챔버의 냉각은 액체질소(LN2)다. 세 기종 모두 ON/OFF·P/PI/PD/PID 제어에 RS485 통신, 전원 AC220V 60 Hz 단상.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "creep"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "youngs_modulus",
+    "yield_strength",
+    "creep",
+    "compressive_strength"
+  ],
+  "materials": [
+    "metals and alloys",
+    "ceramics",
+    "polymers",
+    "cryogenic materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -170,
+      "max": 1100,
+      "note": "UC-980 노가 500~1,050 °C(최대 1,100 °C), UC-350 챔버가 실온~350 °C, UC-170 챔버가 -170~350 °C"
+    },
+    "chamber_volume_L": {
+      "note": "부피 표기는 없다. 노 내용적 Ø100 x 300H mm, 챔버 내용적 300 x 300 x 400 mm(변경 가능)"
+    }
+  },
+  "models": [
+    {
+      "model": "UC-980 (High Temperature Furnace)",
+      "specs": {
+        "type": "High Temperature Furnace",
+        "temperature_degC": {"min": 500, "max": 1050, "note": "최대 1,100 °C. 그 위 온도는 별도 문의"},
+        "inner_dimensions_mm": "Ø100 x 300H",
+        "thermocouple": "K type",
+        "heating_element": "KANTHAL-A1",
+        "control": "ON/OFF, P/PI/PD/PID",
+        "communication": "RS 485",
+        "power": "AC220V 60 Hz 단상"
+      }
+    },
+    {
+      "model": "UC-350 (High Temperature Chamber)",
+      "specs": {
+        "type": "High Temperature Chamber",
+        "temperature_degC": {"min": "RT", "max": 350},
+        "inner_dimensions_mm": "300W x 300D x 400H (변경 가능)",
+        "thermocouple": "K type",
+        "heating": "카트리지 히터",
+        "control": "ON/OFF, P/PI/PD/PID",
+        "communication": "RS 485",
+        "power": "AC220V 60 Hz 단상"
+      }
+    },
+    {
+      "model": "UC-170 (Low Temperature Chamber)",
+      "specs": {
+        "type": "Low Temperature Chamber",
+        "temperature_degC": {"min": -170, "max": 350},
+        "inner_dimensions_mm": "300W x 300D x 400H (변경 가능)",
+        "thermocouple": "T type",
+        "heating": "카트리지 히터",
+        "cooling": "액체질소(LN2)",
+        "control": "ON/OFF, P/PI/PD/PID",
+        "communication": "RS 485",
+        "power": "AC220V 60 Hz 단상"
+      },
+      "note": "저온 챔버인데 상한이 350 °C 로 고온 챔버와 같다 — 냉각 수단(LN2)이 더해진 구성으로 읽힌다"
+    }
+  ],
+  "features": [
+    "노와 챔버를 같은 제어 방식(ON/OFF·PID, RS485)으로 통일",
+    "챔버 내용적을 요구에 맞춰 변경 가능",
+    "저온 챔버는 LN2 직접 냉각으로 -170 °C 까지"
+  ],
+  "options": [
+    "UC-980 상위 온도(1,100 °C 초과) 별도 문의"
+  ],
+  "relations": [
+    {"type": "extends_temperature", "target": "mtdi-fld-300s"},
+    {"type": "requires", "target": "utility-liquid-nitrogen", "note": "UC-170 저온 챔버의 냉각"}
+  ],
+  "sources": [
+    {"file": "mtdi/materials-testing-machines-catalog.pdf", "pages": [3, 4, 5]}
+  ],
+  "confidence": "catalog",
+  "notes": "이 PDF 는 **텍스트층이 없는 이미지 전용 스캔**이라 쪽을 렌더링해 눈으로 읽었다(`catalog/pages/mtdi-p4-furnace.png`, `mtdi-p5-chamber.png`). 파일명이 'materials-testing-machines-catalog' 인데 실제 내용은 노와 챔버다 — 파일명은 MTDI 게시판의 분류를 따른 것이라 내용과 어긋난다. 온도 정밀도·승온 속도·무게·외형 치수가 카탈로그에 없다. 표의 항목 이름 일부가 스캔에서 한자로 깨져 나오는데(예: '廮'='종류', '庭'='온도'), 값 자체는 또렷해 값만 옮겼다. 3쪽의 취급 장비 일람표에 MTDI 제품군 전체(4K 온도 환경 분석기, SSRT, 크리프, 마모, Jominy, Deep Drawing, Planetary Ball Mill 등)가 나오지만 사양은 없다."
+}

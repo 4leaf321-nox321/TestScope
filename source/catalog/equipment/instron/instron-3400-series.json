@@ -1,0 +1,57 @@
+{
+  "id": "instron-3400-series",
+  "kind": "equipment_series",
+  "name": "3400 Series Universal Testing Systems",
+  "name_ko": "인스트론 3400 시리즈 만능재료시험기",
+  "manufacturer": "instron",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "6800 과 같은 프레임 라인업(34SC/34TM/34FM, 0.5–300 kN)의 보급형. 데이터 1 kHz, 최저 속도 0.05 mm/min(SC/TM), 위치 분해능 125 nm 로 6800 보다 낮다.",
+  "test_items": ["tensile", "compression", "flexure", "peel", "puncture", "friction_coefficient", "shear", "tear"],
+  "measurands": ["tensile_strength", "yield_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "peel_strength"],
+  "materials": ["metals", "plastics", "composites", "elastomers", "packaging", "textiles"],
+  "standards": {
+    "compliance": ["ASTM E4", "BS 1610", "DIN 51221", "ISO 7500-1", "EN 10002-2", "JIS B7721", "JIS B7733", "AFNOR A03-501", "ASTM E83", "BS 3846", "ISO 9513", "EN 10002-4"],
+    "test_methods": ["ASTM D638", "ISO 527", "ASTM D790", "ISO 178", "ASTM E8/E8M", "ISO 6892-1"]
+  },
+  "limits": {
+    "force_kN": {"min": 0.5, "max": 300, "values": [0.5, 1, 2, 5, 10, 30, 50, 100, 300]},
+    "crosshead_speed_mm_min": {"min": 0.00005, "max": 1016, "note": "SC/TM 최저 0.05, FM 최저 0.00005"},
+    "vertical_test_space_mm": {"min": 651, "max": 1744},
+    "horizontal_test_space_mm": {"min": 100, "max": 575},
+    "data_rate_Hz": {"max": 1000},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "34SC-05", "form_factor": "single_column_tabletop", "specs": {"force_kN": 0.5, "crosshead_travel_mm": 482, "vertical_test_space_mm": 651, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.05, "max": 1016}, "return_speed_mm_min": 1500, "position_resolution_nm": 125, "frame_stiffness_kN_mm": 2, "footprint_mm": [950, 460, 610], "weight_kg": 50, "power_VA": 256}},
+    {"model": "34SC-1", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1, "crosshead_travel_mm": 867, "vertical_test_space_mm": 1050, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.05, "max": 1016}, "return_speed_mm_min": 1500, "position_resolution_nm": 125, "frame_stiffness_kN_mm": 2, "footprint_mm": [1370, 460, 610], "weight_kg": 54, "power_VA": 256}},
+    {"model": "34SC-2", "form_factor": "single_column_tabletop", "specs": {"force_kN": 2, "crosshead_travel_mm": 867, "vertical_test_space_mm": 1050, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.05, "max": 1016}, "return_speed_mm_min": 1500, "position_resolution_nm": 125, "frame_stiffness_kN_mm": 2, "footprint_mm": [1370, 460, 610], "weight_kg": 54, "power_VA": 256}},
+    {"model": "34SC-5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 5, "crosshead_travel_mm": 868, "crosshead_travel_mm_E2": 1112, "vertical_test_space_mm": 1118, "vertical_test_space_mm_E2": 1375, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.05, "max": 1016}, "return_speed_mm_min": 1500, "position_resolution_nm": 125, "frame_stiffness_kN_mm": 8.5, "footprint_mm": [1420, 460, 610], "weight_kg": 63, "power_VA": 366}},
+    {"model": "34TM-5", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 5, "crosshead_travel_mm": 1172, "crosshead_travel_mm_E2": 1651, "vertical_test_space_mm": 1242, "vertical_test_space_mm_E2": 1744, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.05, "max": 1016}, "return_speed_mm_min": 1500, "position_resolution_nm": 129, "frame_stiffness_kN_mm": 38, "max_force_at_full_speed_kN": 5, "max_speed_at_full_force_mm_min": 1016, "footprint_mm": [1610, 760, 710], "weight_kg": 122, "power_VA": 700}},
+    {"model": "34TM-10", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "crosshead_travel_mm": 1172, "vertical_test_space_mm": 1242, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.05, "max": 508}, "return_speed_mm_min": 610, "position_resolution_nm": 64.7, "frame_stiffness_kN_mm": 38, "max_force_at_full_speed_kN": 10, "max_speed_at_full_force_mm_min": 508, "footprint_mm": [1610, 760, 710], "weight_kg": 122, "power_VA": 700}},
+    {"model": "34TM-30", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 30, "crosshead_travel_mm": 1128, "vertical_test_space_mm": 1198, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.05, "max": 508}, "return_speed_mm_min": 610, "position_resolution_nm": 33.8, "frame_stiffness_kN_mm": 72, "max_force_at_full_speed_kN": 30, "max_speed_at_full_force_mm_min": 508, "footprint_mm": [1610, 760, 710], "weight_kg": 140, "power_VA": 800}},
+    {"model": "34TM-50", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_travel_mm": 1128, "vertical_test_space_mm": 1198, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.05, "max": 508}, "return_speed_mm_min": 508, "position_resolution_nm": 24.1, "frame_stiffness_kN_mm": 74, "max_force_at_full_speed_kN": 25, "max_speed_at_full_force_mm_min": 250, "footprint_mm": [1610, 760, 710], "weight_kg": 152, "power_VA": 1100}},
+    {"model": "34TM-100", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 100, "crosshead_travel_mm": 1097, "vertical_test_space_mm": 1168, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.05, "max": 508}, "return_speed_mm_min": 508, "position_resolution_nm": 16.78, "frame_stiffness_kN_mm": 180, "max_force_at_full_speed_kN": 50, "max_speed_at_full_force_mm_min": 250, "footprint_mm": [1640, 760, 710], "weight_kg": 266, "power_VA": 1200}},
+    {"model": "34FM-100", "form_factor": "floor", "specs": {"force_kN": 100, "crosshead_travel_mm": 1407, "vertical_test_space_mm": 1494, "horizontal_test_space_mm": 575, "crosshead_speed_mm_min": {"min": 0.00005, "max": 508}, "return_speed_mm_min": 600, "position_resolution_nm": 2.2, "frame_stiffness_kN_mm": 300, "max_force_at_full_speed_kN": 50, "max_speed_at_full_force_mm_min": 254, "footprint_mm": [2287, 1140, 786], "weight_kg": 786, "power_VA": 2400}},
+    {"model": "34FM-300", "form_factor": "floor", "specs": {"force_kN": 300, "crosshead_travel_mm": 1359, "vertical_test_space_mm": 1446, "horizontal_test_space_mm": 575, "crosshead_speed_mm_min": {"min": 0.00005, "max": 508}, "return_speed_mm_min": 508, "position_resolution_nm": 1.14, "frame_stiffness_kN_mm": 350, "max_force_at_full_speed_kN": 125, "max_speed_at_full_force_mm_min": 153, "footprint_mm": [2287, 1140, 786], "weight_kg": 858, "power_VA": 3000}}
+  ],
+  "accuracy": {
+    "force": "±0.5% of reading down to 1/250 of load cell capacity; ±1.0% down to 1/500",
+    "displacement": "±0.02 mm or 0.15% of displacement",
+    "speed": "±0.2% of set speed"
+  },
+  "environment": {"operating_temp_degC": [5, 40], "humidity_pct": [10, 90]},
+  "features": ["Bluehill Universal", "Extra height (E2) option", "Short/tall base (B1/B2) for floor models"],
+  "relations": [
+    {"type": "compatible_accessory", "target": "instron-3119-600-environmental-chambers"},
+    {"type": "extends_temperature", "target": "instron-3119-600-environmental-chambers"},
+    {"type": "compatible_accessory", "target": "instron-ave-video-extensometer"},
+    {"type": "same_family_as", "target": "instron-6800-series"}
+  ],
+  "sources": [
+    {"file": "instron/3400-series-utm.pdf", "pages": [16, 17, 18, 19]},
+    {"file": "instron/3400-series-utm-romania.pdf", "note": "구판 미러"}
+  ],
+  "confidence": "catalog"
+}

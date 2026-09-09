@@ -1,0 +1,170 @@
+{
+  "id": "ta-instruments-discovery-hybrid-rheometer",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery Hybrid Rheometer (HR 10 / HR 20 / HR 30)",
+  "name_ko": "TA 인스트루먼츠 Discovery 하이브리드 레오미터 HR 10·20·30",
+  "manufacturer": "ta-instruments",
+  "brand": "Discovery",
+  "category": "rotational_rheometer",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "자기 베어링(스러스트)과 다공성 카본 베어링(레이디얼) 위에 드래그컵 모터를 얹은 회전형 레오미터 세 기종. 응력 제어와 변형률 제어를 한 장비에서 하는 하이브리드 구조다. 최대 토크는 세 기종 모두 200 mN·m 이고, 최소 토크가 등급을 가른다 — 진동 모드에서 HR 30 이 0.3 nN·m, HR 20 이 1 nN·m, HR 10 이 5 nN·m. 주파수 10⁻⁷~100 Hz, 각속도 0~300 rad/s. 변위는 광학 엔코더로 재고 분해능이 HR 30·20 은 2 nrad, HR 10 은 10 nrad(듀얼 리더는 HR 30·20 만 표준). 법선력은 FRT(힘 재평형 변환기)로 최대 50 N 까지 잰다.",
+  "test_items": [
+    "rheology_rotational"
+  ],
+  "measurands": [
+    "viscosity",
+    "storage_modulus",
+    "loss_modulus",
+    "tan_delta",
+    "yield_stress",
+    "thixotropy",
+    "gel_point",
+    "normal_force",
+    "viscoelastic_properties"
+  ],
+  "materials": [
+    "polymer melts and solutions",
+    "suspensions and emulsions",
+    "coatings and inks",
+    "foods",
+    "asphalt/bitumen",
+    "pharmaceutical formulations"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "torque_mNm": {
+      "max": 200,
+      "note": "세 기종 공통. 최소 토크는 기종별로 다르다(진동 0.3/1/5 nN·m)"
+    },
+    "frequency_Hz": {
+      "min": 1e-07,
+      "max": 100
+    },
+    "angular_velocity_rad_s": {
+      "min": 0,
+      "max": 300,
+      "note": "응력 제어 모드에서 0. 속도 제어 모드는 측정 점의 시간과 샘플링에 따른다"
+    },
+    "force_N": {
+      "max": 50,
+      "note": "최대 법선/축력. FRT 변환기"
+    }
+  },
+  "models": [
+    {
+      "model": "Discovery HR 30",
+      "specs": {
+        "bearing_thrust": "자기",
+        "bearing_radial": "다공성 카본",
+        "motor": "드래그컵",
+        "min_torque_oscillation_nNm": 0.3,
+        "min_torque_steady_shear_nNm": 1,
+        "max_torque_mNm": 200,
+        "torque_resolution_nNm": 0.05,
+        "frequency_Hz": {
+          "min": 1e-07,
+          "max": 100
+        },
+        "angular_velocity_rad_s": {
+          "min": 0,
+          "max": 300
+        },
+        "displacement_transducer": "광학 엔코더 (듀얼 리더 표준)",
+        "displacement_resolution_nrad": 2,
+        "step_time_strain_ms": 15,
+        "step_time_rate_ms": 5,
+        "normal_force_transducer": "FRT",
+        "max_normal_force_N": 50,
+        "normal_force_sensitivity_N": 0.005,
+        "normal_force_resolution_mN": 0.5
+      }
+    },
+    {
+      "model": "Discovery HR 20",
+      "specs": {
+        "bearing_thrust": "자기",
+        "bearing_radial": "다공성 카본",
+        "motor": "드래그컵",
+        "min_torque_oscillation_nNm": 1,
+        "min_torque_steady_shear_nNm": 3,
+        "max_torque_mNm": 200,
+        "torque_resolution_nNm": 0.1,
+        "frequency_Hz": {
+          "min": 1e-07,
+          "max": 100
+        },
+        "angular_velocity_rad_s": {
+          "min": 0,
+          "max": 300
+        },
+        "displacement_transducer": "광학 엔코더 (듀얼 리더 표준)",
+        "displacement_resolution_nrad": 2,
+        "step_time_strain_ms": 15,
+        "step_time_rate_ms": 5,
+        "normal_force_transducer": "FRT",
+        "max_normal_force_N": 50,
+        "normal_force_sensitivity_N": 0.005,
+        "normal_force_resolution_mN": 0.5
+      }
+    },
+    {
+      "model": "Discovery HR 10",
+      "specs": {
+        "bearing_thrust": "자기",
+        "bearing_radial": "다공성 카본",
+        "motor": "드래그컵",
+        "min_torque_oscillation_nNm": 5,
+        "min_torque_steady_shear_nNm": 5,
+        "max_torque_mNm": 200,
+        "torque_resolution_nNm": 0.1,
+        "frequency_Hz": {
+          "min": 1e-07,
+          "max": 100
+        },
+        "angular_velocity_rad_s": {
+          "min": 0,
+          "max": 300
+        },
+        "displacement_transducer": "광학 엔코더 (듀얼 리더 없음)",
+        "displacement_resolution_nrad": 10,
+        "step_time_strain_ms": 15,
+        "step_time_rate_ms": 5,
+        "normal_force_transducer": "FRT",
+        "max_normal_force_N": 50,
+        "normal_force_sensitivity_N": 0.01,
+        "normal_force_resolution_mN": 1
+      }
+    }
+  ],
+  "features": [
+    "자기 스러스트 베어링 + 다공성 카본 레이디얼 베어링",
+    "드래그컵 모터 — 응력 제어와 변형률 제어를 한 장비에서",
+    "광학 엔코더 듀얼 리더(HR 30·20)",
+    "FRT 법선력 변환기"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "rheology_rotational"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-rsa-g2"
+    }
+  ],
+  "sources": [
+    {
+      "file": "ta-instruments/dhr-rheometer-brochure.pdf",
+      "pages": [
+        21
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 막혀 archive.org 스냅샷(2022-03-09)에서 받았다. 온도 제어 부속(펠티어 플레이트, 환경 시험 챔버 등)의 온도 범위는 이 사양표에 없다 — 레오미터의 온도 능력은 붙이는 부속이 정하는데 그 값을 확보하지 못했다."
+}

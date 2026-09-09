@@ -1,0 +1,32 @@
+{
+  "id": "netzsch-lfa-467-hyperflash",
+  "kind": "equipment_series",
+  "name": "NETZSCH LFA 467 HyperFlash / LFA 467 HT HyperFlash Light Flash Apparatus",
+  "name_ko": "네취 LFA 467 HyperFlash 광플래시 열확산율·열전도율 측정기",
+  "manufacturer": "netzsch",
+  "category": "thermal_conductivity",
+  "form_factor": "benchtop",
+  "description": "제논 플래시(최대 10 J/pulse, 10–1500 µs). LFA 467: -100~500 °C(MCT) / RT~500 °C(InSb), LFA 467 HT: RT~1250 °C(퍼니스 1500). 열확산율 0.01–2000 mm²/s, 열전도율 0.1–4000 W/(m·K). 정확도 열확산율 ±3 %, 비열 ±5 %. 4 시편 자동 스테이지(각 홀더 최대 4 개, Ø12.7, 큰 시편 Ø25.4), 두께 0.01–6 mm. 액체·페이스트·분말·적층·이방성·가압 홀더. 2 MHz 데이터, ZoomOptics, 펄스 매핑.",
+  "test_items": ["thermal_conductivity"],
+  "measurands": ["thermal_diffusivity", "thermal_conductivity", "specific_heat"],
+  "materials": ["metals", "ceramics", "polymers", "composites", "liquids", "pastes", "powders", "laminates", "thin films", "refractories"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E1461", "ISO 22007-4", "DIN EN 821-2", "ASTM C714"]},
+  "limits": {
+    "temperature_degC": {"min": -100, "max": 1250},
+    "heating_rate_K_min": {"max": 50},
+    "thermal_diffusivity_mm2_s": {"min": 0.01, "max": 2000},
+    "thermal_conductivity_W_mK": {"min": 0.1, "max": 4000},
+    "specimen_diameter_mm": {"max": 25.4},
+    "specimen_thickness_mm": {"min": 0.01, "max": 6},
+    "stations": {"values": [4, 16], "note": "4 홀더 × 최대 4 시편"}
+  },
+  "models": [
+    {"model": "LFA 467 HyperFlash", "specs": {"temperature_degC": {"min": -100, "max": 500}, "detectors": ["InSb RT~500", "MCT -100~500"], "vacuum_mbar": 150, "cooling": ["external chiller", "LN2 (-100~500)", "pressurized air (0~500)"]}},
+    {"model": "LFA 467 HT HyperFlash", "specs": {"temperature_degC": {"min": 20, "max": 1250}, "furnace_max_degC": 1500, "detectors": ["InSb RT~1250"], "vacuum_mbar": 0.0001, "sample_mm": "Ø12.7 round / 10 square"}}
+  ],
+  "accuracy": {"thermal_diffusivity": "±3 % (repeatability ±2 %)", "specific_heat": "±5 % (repeatability ±3 %)"},
+  "options": ["MCT detector", "detector LN2 refill", "ZoomOptics", "MFC", "in-plane / liquid / lamellar / pressure sample holders", "turbo pump (HT)"],
+  "relations": [],
+  "sources": [{"file": "netzsch/lfa-467-hyperflash.pdf", "pages": [12, 20, 21]}],
+  "confidence": "catalog"
+}

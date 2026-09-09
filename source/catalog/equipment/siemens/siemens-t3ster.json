@@ -1,0 +1,44 @@
+{
+  "id": "siemens-t3ster",
+  "kind": "equipment_model",
+  "name": "Siemens (MicReD) T3Ster Thermal Transient Tester",
+  "name_ko": "지멘스 MicReD T3Ster 열 과도 응답 시험기",
+  "manufacturer": "siemens",
+  "brand": "T3Ster",
+  "category": "thermal_transient_tester",
+  "form_factor": "benchtop",
+  "description": "반도체 패키지의 열 저항을 과도 응답(thermal transient)으로 측정하는 장비. JEDEC JESD51-1 정적 시험법에 따라 소자에 가열 전력을 인가한 뒤 온도 민감 파라미터의 냉각 곡선을 1 µs 시간 분해능으로 실시간 수집한다. 측정된 열 과도 응답에서 구조 함수(structure function)를 자동으로 도출해 다이-다이어태치-리드프레임-히트싱크로 이어지는 열 경로의 각 구간 저항과 용량을 분리해 낸다. 열 계면(TIM)의 저항 평가와 기존 패키지의 열 모델 추출에 쓰이며, FloTHERM 열해석과 연동해 검증된 컴팩트 모델을 만든다. 멀티채널 구조로 대부분의 패키지 형태에 대응하고 측정 채널은 최대 8개.",
+  "test_items": ["thermal_resistance"],
+  "measurands": ["junction_to_case_resistance", "junction_to_ambient_resistance", "structure_function", "thermal_capacitance", "tim_resistance", "junction_temperature"],
+  "materials": ["LEDs", "power semiconductors", "IGBT modules", "MOSFETs", "IC packages", "thermal interface materials", "heat sinks"],
+  "standards": {
+    "compliance": ["JEDEC JESD51-1 (정적 시험법)"],
+    "test_methods": ["JESD51-1", "JESD51-14 (Rth-JC 과도법)", "JESD51-51", "JESD51-52"]
+  },
+  "limits": {
+    "time_resolution_us": {"min": 1, "note": "1 µs 시간 분해능"},
+    "measurement_channels": {"max": 8, "note": "본체에 최대 8개 측정 채널"}
+  },
+  "models": [
+    {"model": "T3Ster 본체 (Main System Unit)", "specs": {"interface": "USB", "sensor_current_sources": "내장", "measurement_channels": {"max": 8}, "time_resolution_us": 1, "conformance": "JEDEC JESD51-1"}}
+  ],
+  "derived_outputs": [
+    "열 과도 응답 곡선",
+    "구조 함수(structure function) — 누적형·미분형",
+    "구간별 열 저항·열 용량 분리",
+    "열 계면 저항",
+    "컴팩트 열 모델(FloTHERM 연동)"
+  ],
+  "features": ["1 µs 시간 분해능 실시간 측정", "JESD51-1 준거", "구조 함수 자동 도출", "멀티채널 아키텍처(최대 8채널)", "USB 연결", "T3Ster 표준 소프트웨어 포함", "FloTHERM 열해석 연동"],
+  "applications": ["열 경로 결함 위치 식별", "다이어태치 보이드 검출", "TIM 성능 비교", "패키지 열 모델 추출", "신뢰성 시험 전후 열 저항 변화 추적"],
+  "relations": [
+    {"type": "performs", "target": "thermal_resistance"},
+    {"type": "compatible_accessory", "target": "espec-platinous-chambers", "note": "온도 조건별 열 저항 측정 시 챔버와 조합"}
+  ],
+  "sources": [
+    {"file": "siemens/t3ster-technical-information.pdf", "pages": [1, 2, 3, 4]},
+    {"file": "siemens/t3ster-overview-brochure.pdf"}
+  ],
+  "confidence": "catalog",
+  "notes": "가열 전류 범위·전압 범위 등 전기적 정격은 이 기술 자료에서 확정하지 못했다."
+}

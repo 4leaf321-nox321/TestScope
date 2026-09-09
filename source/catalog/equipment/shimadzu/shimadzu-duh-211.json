@@ -1,0 +1,30 @@
+{
+  "id": "shimadzu-duh-211",
+  "kind": "equipment_series",
+  "name": "Shimadzu DUH-211 / DUH-211S / DUH-210 / DUH-210S Dynamic Ultra Micro Hardness Tester",
+  "name_ko": "시마즈 DUH-211/210 시리즈 동적 초미소 경도계",
+  "manufacturer": "shimadzu",
+  "category": "instrumented_indentation",
+  "form_factor": "benchtop",
+  "description": "전자기 코일 부하 0.1–1961 mN, 변위 0–10 µm(211) / 0–100 µm(210, 0.001 µm). 삼각뿔 115° 압입자(비커스·누프 옵션). 부하-유지·부하-제하·사이클·깊이 설정·계단 부하 시험. 관련 제품: HMV-G31 마이크로 비커스(98.07 mN–19.61 N), MCT 미소 압축(1 µm 입자).",
+  "test_items": ["instrumented_indentation", "hardness_vickers", "hardness_knoop"],
+  "measurands": ["indentation_hardness", "indentation_modulus", "dynamic_hardness", "creep"],
+  "materials": ["thin films", "coatings", "plating", "ceramics", "polymers", "light-absorbing materials"],
+  "standards": {"compliance": [], "test_methods": ["ISO 14577", "ISO 6507-2 (Vickers kit)", "ISO 4545-2 (Knoop kit)"]},
+  "limits": {
+    "indentation_force_mN": {"min": 0.1, "max": 1961},
+    "displacement_um": {"min": 0, "max": 100, "note": "211: 0–10 µm (0.0001 µm), 210: 0–100 µm (0.001 µm)"},
+    "specimen_height_mm": {"max": 60},
+    "stage_travel_mm": {"values": ["25×25"]}
+  },
+  "models": [
+    {"model": "DUH-211 / DUH-211S", "specs": {"indentation_force_mN": {"min": 0.1, "max": 1961}, "displacement_um": {"max": 10, "resolution": 0.0001}, "footprint_mm": {"W": 355, "D": 405, "H": 530}, "weight_kg": 60}},
+    {"model": "DUH-210 / DUH-210S", "specs": {"indentation_force_mN": {"min": 0.1, "max": 1961}, "displacement_um": {"max": 100, "resolution": 0.001}}}
+  ],
+  "accuracy": {"force": "±19.6 µN or ±1% of displayed, whichever greater; min increment 0.196 µN (≤1.96 mN)", "displacement_linearity": "±2% FS"},
+  "environment": {"operating_temp_degC": [10, 35], "recommended_temp_degC": 23, "humidity_pct": [20, 60], "vibration": "≤0.017 Gal horizontal (≥10 Hz)", "power": "100–115 / 230 V, ~100 W"},
+  "options": ["length measurement kit", "objectives 10x/20x/40x/100x", "windbreak", "vibration-absorbing bench", "electric XY stage ±25 mm", "100° triangular indenter", "Vickers/Knoop kits"],
+  "relations": [{"type": "same_family_as", "target": "shimadzu-hmv-g", "note": "브로슈어 관련 제품"}],
+  "sources": [{"file": "shimadzu/duh-211-210-c227-e024e.pdf", "pages": [10, 11, 12]}],
+  "confidence": "catalog"
+}

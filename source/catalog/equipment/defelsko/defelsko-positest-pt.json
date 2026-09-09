@@ -1,0 +1,32 @@
+{
+  "id": "defelsko-positest-pt",
+  "kind": "equipment_model",
+  "name": "DeFelsko PosiTest PT Pencil Hardness Test Kit",
+  "name_ko": "디펠스코 PosiTest PT 연필 경도 시험 키트",
+  "manufacturer": "defelsko",
+  "brand": "PosiTest",
+  "category": "scratch_hardness_tester",
+  "form_factor": "handheld",
+  "description": "경도가 다른 연필을 도막 표면에 밀어 긁으면서 도막이 손상되거나 벗겨지는 연필 등급으로 경도를 판정하는 시험 키트. Wolff-Wilborn 시험 또는 연필 스크래치 시험으로도 불린다. 비교 결과의 정확성을 위해 같은 제조사·같은 배치의 연필을 사용해야 한다고 매뉴얼이 명시한다.",
+  "test_items": ["scratch_pencil_hardness"],
+  "measurands": ["pencil_hardness_grade"],
+  "materials": ["paints", "varnishes", "coatings", "coil coatings", "automotive finishes"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["ISO 15184", "ASTM D3363", "BS 3900-19", "JIS K 5600-5-4", "EN 13523-4"]
+  },
+  "limits": {
+    "pencil_hardness_grade": {"note": "연필 세트 구성에 따름(통상 6B~6H 또는 8B~10H)", "uncertain": true}
+  },
+  "models": [
+    {"model": "PosiTest PT", "specs": {"principle": "연필 스크래치(Wolff-Wilborn)", "standards": ["ISO 15184", "ASTM D3363", "BS 3900-19", "JIS K 5600-5-4", "EN 13523-4"]}}
+  ],
+  "features": ["휴대형 연필 경도 시험", "다국가 규격 대응"],
+  "relations": [
+    {"type": "performs", "target": "scratch_pencil_hardness"},
+    {"type": "same_family_as", "target": "tqc-sheen-coating-test-kits"}
+  ],
+  "sources": [{"file": "defelsko/positest-pt-pencil-hardness-manual.pdf", "pages": [1, 2]}],
+  "confidence": "limited",
+  "notes": "확보 문서가 사용 설명서라 하중·연필 세트 구성 등 사양이 명시되어 있지 않다."
+}

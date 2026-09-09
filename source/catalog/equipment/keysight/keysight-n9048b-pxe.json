@@ -1,0 +1,38 @@
+{
+  "id": "keysight-n9048b-pxe",
+  "kind": "equipment_series",
+  "name": "Keysight N9048B PXE EMI Receiver",
+  "name_ko": "키사이트 N9048B PXE EMI 수신기",
+  "manufacturer": "keysight",
+  "brand": "PXE",
+  "category": "emi_receiver",
+  "form_factor": "rack",
+  "description": "1 Hz~44 GHz 를 주파수 옵션으로 커버하는 CISPR 준거 EMI 수신기. 옵션 503(3.6 GHz) / 508(8.4 GHz) / 526(26.5 GHz) / 544(44 GHz) 로 대역을 선택하며 10 MHz 이상은 프리셀렉션 경로를 사용한다. CISPR 준거 분해대역폭 200 Hz·9 kHz·120 kHz·1 MHz 와 일반 대역폭 10 Hz~1 MHz 를 제공. X-Series 플랫폼 기반으로 스펙트럼 분석 기능과 규격 인증 측정을 한 장비에서 수행한다.",
+  "test_items": ["emi_emission"],
+  "measurands": ["radiated_emission", "conducted_emission", "quasi_peak_level", "average_level"],
+  "materials": ["consumer electronics", "IT equipment", "automotive electronics", "medical devices", "network equipment", "wireless devices"],
+  "standards": {
+    "compliance": ["CISPR 16-1-1"],
+    "test_methods": ["CISPR 11", "CISPR 22 / EN 55032", "CISPR 25", "CISPR 32", "MIL-STD-461", "FCC Part 15", "DO-160"]
+  },
+  "limits": {
+    "frequency_Hz": {"min": 1, "max": 44000000000, "note": "옵션 503 1 Hz~3.6 GHz / 508 1 Hz~8.4 GHz / 526 1 Hz~26.5 GHz / 544 1 Hz~44 GHz. 프리셀렉션 경로는 10 MHz 부터"},
+    "resolution_bandwidth_Hz": {"min": 10, "max": 1000000, "note": "CISPR 준거 200 Hz·9 kHz·120 kHz·1 MHz; 일반 10 Hz·100 Hz·1 kHz·10 kHz·100 kHz·1 MHz"}
+  },
+  "models": [
+    {"model": "N9048B Option 503", "specs": {"frequency_range": "1 Hz ~ 3.6 GHz", "preselected_path": "10 MHz ~ 3.6 GHz"}},
+    {"model": "N9048B Option 508", "specs": {"frequency_range": "1 Hz ~ 8.4 GHz", "preselected_path": "10 MHz ~ 8.4 GHz"}},
+    {"model": "N9048B Option 526", "specs": {"frequency_range": "1 Hz ~ 26.5 GHz", "preselected_path": "10 MHz ~ 26.5 GHz"}},
+    {"model": "N9048B Option 544", "specs": {"frequency_range": "1 Hz ~ 44 GHz", "preselected_path": "10 MHz ~ 44 GHz", "band_breaks_GHz": [[0.000000001, 3.6], [3.5, 8.4], [8.3, 13.6], [13.5, 17.1], [17.0, 26.5], [26.4, 34.5], [34.4, 44]]}}
+  ],
+  "features": ["CISPR 준거 검파기", "1 GHz 이하 저대역 경로", "DC 커플링(10 MHz 미만 신호)", "X-Series 스펙트럼 분석 기능 통합", "PFR(정밀 주파수 기준) 옵션"],
+  "options": ["Option PFR 정밀 주파수 기준", "주파수 대역 옵션 503/508/526/544", "프리앰프 옵션"],
+  "relations": [
+    {"type": "performs", "target": "emi_emission"},
+    {"type": "same_family_as", "target": "rs-esw-emi-receiver"},
+    {"type": "requires", "target": "utility-emc-chamber"}
+  ],
+  "sources": [{"file": "keysight/n9048b-pxe-emi-receiver-unitest.pdf", "pages": [1, 5, 6, 9]}],
+  "confidence": "catalog",
+  "notes": "PDF 는 유통사(unitest) 미러본이다. 원본 Keysight 사이트는 curl 접근이 차단되었다."
+}

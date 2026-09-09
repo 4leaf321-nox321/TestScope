@@ -1,0 +1,32 @@
+{
+  "id": "shinyei-drop-shock-testers",
+  "kind": "equipment_series",
+  "name": "Shinyei (Yoshida Seiki) Drop & Shock Testing Systems (IST impact / DT-202 / DTS package / ASQ shock)",
+  "name_ko": "신에이(요시다세이키) 낙하·충격 시험 시스템",
+  "manufacturer": "shinyei",
+  "category": "drop_tester",
+  "drive": "free_fall_pneumatic",
+  "description": "휴대전화·태블릿 등 소형 전자기기의 낙하 충격 평가에 널리 쓰이는 일본계 시험기군. IST 시리즈: 자유낙하 임팩터 방식 충격 시험기. DT-202: 스마트폰·휴대전화 취약성(fragility) 낙하 시험, DT-202TB 는 태블릿까지 시편 범위 확대. DTS: 포장용 낙하 시험기(에어 실린더+인장 스프링으로 자유낙하보다 빠르게 시편을 방출). ASQ: 충격 시험기.",
+  "test_items": ["free_fall_drop", "mechanical_shock"],
+  "measurands": ["drop_survival_height", "impact_acceleration", "fragility"],
+  "materials": ["smartphones", "tablets", "mobile devices", "packaged products", "electronic components"],
+  "standards": {"compliance": [], "test_methods": ["IEC 60068-2-31", "IEC 60068-2-32", "IEC 60068-2-27", "JIS C 60068-2-31", "ASTM D5276"]},
+  "limits": {
+    "payload_kg": {"note": "DT-205 5 kg 급 — 모델별 상세 미확보", "uncertain": true},
+    "drop_height_mm": {"note": "모델별 — 카탈로그 사양표 확인 요", "uncertain": true}
+  },
+  "models": [
+    {"model": "IST 시리즈 (Drop Impact Tester)", "specs": {"principle": "자유낙하 임팩터"}, "uncertain": true},
+    {"model": "DT-202 / DT-202TB", "specs": {"targets": ["smartphone", "mobile phone", "tablet"], "note": "TB 는 태블릿 대응 확장형"}, "uncertain": true},
+    {"model": "DT-205", "specs": {"payload_kg": 5}, "uncertain": true},
+    {"model": "DTS 시리즈 (포장 낙하)", "specs": {"principle": "에어 실린더 + 인장 스프링 가속 방출"}, "uncertain": true},
+    {"model": "ASQ 시리즈 (충격 시험기)", "specs": {}, "uncertain": true}
+  ],
+  "relations": [],
+  "sources": [
+    {"file": "shinyei/ist-drop-impact-tester.pdf"},
+    {"file": "shinyei/total-brochure-testers-rev2.pdf", "note": "종합 카탈로그"}
+  ],
+  "confidence": "limited",
+  "notes": "종합 카탈로그는 확보했으나 모델별 낙하 높이·페이로드 수치표를 텍스트에서 확정하지 못했다. 원본 확인 필요."
+}

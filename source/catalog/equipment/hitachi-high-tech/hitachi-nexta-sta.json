@@ -1,0 +1,29 @@
+{
+  "id": "hitachi-nexta-sta",
+  "kind": "equipment_series",
+  "name": "Hitachi High-Tech NEXTA STA200 / STA200RV / STA300 Simultaneous Thermogravimetric Analyzers",
+  "name_ko": "히타치 하이테크 NEXTA STA 시리즈 동시열분석기",
+  "manufacturer": "hitachi-high-tech",
+  "brand": "NEXTA",
+  "category": "sta",
+  "form_factor": "benchtop",
+  "description": "수평 차동 저울 TG-DSC. STA200 RT~1100 °C, STA200RV RT~1000 °C(RealView 카메라 내장), STA300 RT~1500 °C. TG 베이스라인 드리프트·안정성 <10 µg, 온도 정밀도 ±0.07 °C, 정확도 ±0.2 °C, MFC 2(옵션 4), 변조 DSC, 비열 측정 표준 포함.",
+  "test_items": ["tga", "dsc"],
+  "measurands": ["mass_loss", "decomposition_temperature", "specific_heat", "melting_point", "reaction_kinetics"],
+  "materials": ["polymers", "pharmaceuticals", "ceramics", "metals", "minerals"],
+  "standards": {"compliance": [], "test_methods": ["JIS K 7120", "ISO 11358", "ASTM E1131", "ISO 11357"]},
+  "limits": {
+    "temperature_degC": {"min": 20, "max": 1500},
+    "balance_resolution_ug": {"note": "baseline drift <10 µg"}
+  },
+  "models": [
+    {"model": "STA200", "specs": {"temperature_degC": {"min": 20, "max": 1100}, "realview": "optional"}},
+    {"model": "STA200RV", "specs": {"temperature_degC": {"min": 20, "max": 1000}, "realview": "ready"}},
+    {"model": "STA300", "specs": {"temperature_degC": {"min": 20, "max": 1500}, "realview": "optional"}}
+  ],
+  "accuracy": {"temperature": "±0.2 °C accuracy, ±0.07 °C precision", "tg_baseline": "<10 µg drift & stability"},
+  "options": ["RealView camera", "auto-sampler", "4 MFC", "helium MFC", "reaction kinetics analysis", "heating-rate conversion"],
+  "relations": [],
+  "sources": [{"file": "hitachi-high-tech/nexta-sta-brochure.pdf", "pages": [3, 4, 6]}],
+  "confidence": "catalog"
+}

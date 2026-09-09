@@ -1,0 +1,32 @@
+{
+  "id": "instron-mt-microtorsion",
+  "kind": "equipment_series",
+  "name": "Instron MT1 / MT2 MicroTorsion Testing Systems",
+  "name_ko": "인스트론 MT1/MT2 마이크로 비틀림 시험기",
+  "manufacturer": "instron",
+  "category": "torsion_tester",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "MT1 최대 22.5 N·m(설계 18 N·m), MT2 225 N·m(설계 180 N·m). 토크셀 0.225/2.25/22.5/225 N·m 교환. 속도 0.01–120 rpm(MT1)/0.01–60 rpm(MT2), 최대 15,000 회전, 각도 정확도 ±0.4° 또는 0.1 %. 시험 개구 E1 470/420 mm, E3(+305 mm) 775/720 mm.",
+  "test_items": ["torsion"],
+  "measurands": ["torque_angle", "torsional_strength", "torsional_stiffness"],
+  "materials": ["small components", "fasteners", "medical devices", "wire", "springs"],
+  "standards": {"compliance": ["CE"], "test_methods": []},
+  "limits": {
+    "torque_Nm": {"min": 0.225, "max": 225, "values": [0.225, 2.25, 22.5, 225]},
+    "rotation_rpm": {"min": 0.01, "max": 120},
+    "rotation_deg": {"max": 5400000, "note": "15,000 revolutions"},
+    "specimen_diameter_mm": {"max": 203},
+    "test_opening_mm": {"min": 381, "max": 775}
+  },
+  "models": [
+    {"model": "MT1", "specs": {"torque_Nm": 22.5, "design_torque_Nm": 18, "rotation_rpm": {"min": 0.01, "max": 120}, "test_opening_mm": {"E1": 470, "E3": 775}, "specimen_diameter_mm": 127, "angle_resolution_arcmin": 0.171, "backlash_arcmin": 6, "footprint_mm": {"W": 820, "D": 650, "H": 653}, "weight_kg": 90}},
+    {"model": "MT2", "specs": {"torque_Nm": 225, "design_torque_Nm": 180, "rotation_rpm": {"min": 0.01, "max": 60}, "test_opening_mm": {"E1": 420, "E3": 720}, "specimen_diameter_mm": 203, "angle_resolution_arcmin": 0.168, "backlash_arcmin": 10, "footprint_mm": {"W": 1130, "D": 764, "H": 711}, "weight_kg": 180}}
+  ],
+  "accuracy": {"angle": "±0.4° over ±360° or 0.1% of reading", "repeatability": "±0.1°"},
+  "environment": {"power": "MT1 100–240 VAC 1Ph; MT2 200/230 VAC 3Ph or 380–460 VAC 3Ph", "note": "정적 최대부하 시험은 30 분 이내(모터 온도 제한)"},
+  "options": ["torque cells W-5510-T1…T4", "axial alignment fixture (MT1)", "axial preload assembly", "chucks / collets / socket drives"],
+  "relations": [],
+  "sources": [{"file": "instron/mt1-mt2-microtorsion-operating.pdf", "pages": [13, 22, 23], "note": "운용 매뉴얼 사양 장"}],
+  "confidence": "catalog"
+}

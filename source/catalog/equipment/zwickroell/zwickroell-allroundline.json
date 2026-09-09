@@ -1,0 +1,56 @@
+{
+  "id": "zwickroell-allroundline",
+  "kind": "equipment_series",
+  "name": "AllroundLine materials testing machines (Z005 – Z250)",
+  "name_ko": "즈윅로엘 AllroundLine 만능재료시험기 (Z005–Z250)",
+  "manufacturer": "zwickroell",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "ZwickRoell 의 상위 전기기계식 UTM. 테이블형 Z005–Z050(TN/TH/TE 높이, W=와이드), 플로어형 Z100/Z150(SN/SW/SH), Z250(SNS, 측면 시험공간 50 kN 추가). testControl II 전자장치(400 kHz 내부 샘플링, 24 bit, PC 전송 500/2000 Hz), testXpert III 소프트웨어. 힘 측정은 Class 0.5/1 (ISO 7500-1, ASTM E4), 측정 범위 Fmax 의 165 %.",
+  "test_items": ["tensile", "compression", "flexure", "shear", "peel", "tear", "creep", "relaxation"],
+  "measurands": ["tensile_strength", "yield_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "poisson_ratio"],
+  "materials": ["metals", "plastics", "composites", "elastomers", "textiles", "paper", "medical"],
+  "standards": {
+    "compliance": ["DIN EN ISO 7500-1", "ASTM E4", "Machinery Directive 2006/42/EC"],
+    "test_methods": ["ISO 527-1", "ASTM D638", "ISO 6892-1", "ISO 37", "ISO 23529"]
+  },
+  "limits": {
+    "force_kN": {"min": 5, "max": 250, "values": [5, 10, 20, 30, 50, 100, 150, 250]},
+    "crosshead_speed_mm_min": {"min": 0.00005, "max": 3000, "note": "Z005 0.0005–3000, Z010 0.0005–2000, Z050 0.0005–600, Z100 0.00005–1000, Z150 0.00005–900, Z250 0.00005–600. 안전문 열림 시 600 으로 제한"},
+    "vertical_test_space_mm": {"min": 1000, "max": 2260},
+    "horizontal_test_space_mm": {"min": 440, "max": 1040},
+    "data_rate_Hz": {"max": 2000, "note": "PC 전송 500 Hz 표준, 2000 Hz 옵션; 내부 400 kHz"},
+    "temperature_degC": {"min": -80, "max": 250, "note": "전용 온도 챔버 장착 시 (RT+10~+250, LN2 옵션 -80)"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "Z005 TN / TH / TE", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 5, "vertical_test_space_mm": [1030, 1430, 1785], "horizontal_test_space_mm": 440, "crosshead_speed_mm_min": {"min": 0.0005, "max": 3000}, "return_speed_mm_min": 3000, "position_resolution_nm": 0.96, "weight_kg": [161, 183, 205], "power_kVA": 2, "footprint_mm": {"height": [1314, 1714, 2084], "width": 680, "depth": 573}}},
+    {"model": "Z005 TNW / THW", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 5, "vertical_test_space_mm": [1000, 1400], "horizontal_test_space_mm": 640, "crosshead_speed_mm_min": {"min": 0.0005, "max": 3000}, "weight_kg": [208, 230], "footprint_mm": {"width": 880}}},
+    {"model": "Z010 TN / TH / TE", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "vertical_test_space_mm": [1030, 1430, 1785], "horizontal_test_space_mm": 440, "crosshead_speed_mm_min": {"min": 0.0005, "max": 2000}, "return_speed_mm_min": 3000, "position_resolution_nm": 0.64, "weight_kg": [163, 185, 207], "power_kVA": 2}},
+    {"model": "Z020 / Z030", "form_factor": "dual_column_tabletop", "specs": {"force_kN": [20, 30]}, "note": "PI 에 있으나 덤프에 표가 안 잡힘 — 원본 p10–13 확인", "uncertain": true},
+    {"model": "Z050 TH / TE / THW / TEW", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "vertical_test_space_mm": [1355, 1755, 1325, 1725], "horizontal_test_space_mm": [440, 440, 640, 640], "crosshead_speed_mm_min": {"min": 0.0005, "max": 600}, "return_speed_mm_min": 1000, "position_resolution_nm": 0.32, "weight_kg": [240, 260, 300, 340], "power_kVA": 2.3, "footprint_mm": {"height": [1714, 2114], "width": [760, 960], "depth": 618}}},
+    {"model": "Z100 SN / SW / SH", "form_factor": "floor", "specs": {"force_kN": 100, "vertical_test_space_mm": {"P1_upper": [1730, 1695], "P3_lower": [1765, 1685, 2260]}, "horizontal_test_space_mm": [640, 1040, 640], "crosshead_speed_mm_min": {"min": 0.00005, "max": 1000}, "return_speed_mm_min": 1500, "position_resolution_nm": 0.32, "weight_kg": [1100, 1600, 1455], "power_kVA": 6, "footprint_mm": {"height": 2350, "width": [1200, 1600, 1200], "depth": 1032}}, "note": "하부 시험공간(P2) 에서는 Fmax 20 kN 으로 제한"},
+    {"model": "Z150 SN / SW", "form_factor": "floor", "specs": {"force_kN": 150, "vertical_test_space_mm": {"P1_upper": [1675, 1615], "P3_lower": [1655, 1595]}, "horizontal_test_space_mm": [640, 1040], "crosshead_speed_mm_min": {"min": 0.00005, "max": 900}, "return_speed_mm_min": 1500, "position_resolution_nm": 0.29, "weight_kg": [1500, 2100], "power_kVA": 6}, "note": "하부 시험공간 Fmax 50 kN"},
+    {"model": "Z250 SNS", "form_factor": "floor", "specs": {"force_kN": 250, "lateral_test_area_force_kN": 50, "vertical_test_space_mm": 1588, "horizontal_test_space_mm": 630, "crosshead_speed_mm_min": {"min": 0.00005, "max": 600}, "return_speed_mm_min": 1000, "position_resolution_nm": 0.19, "weight_kg": 1870, "power_kVA": 6, "footprint_mm": {"height": 2304, "width": 1531, "depth": 924}}}
+  ],
+  "accuracy": {
+    "force": "Class 0.5/1 depending on load cell, DIN EN ISO 7500-1 / ASTM E4; measurement range up to 165% of Fmax; effective resolution 19–20 bit",
+    "speed": "deviation from set speed max 0.05% of v_actual",
+    "positioning": "repeatability ±2.0 µm"
+  },
+  "environment": {"operating_temp_degC": [10, 35], "humidity_pct": [20, 90], "power": "230 V 1Ph (tabletop) / 400 V 3Ph (floor)"},
+  "features": ["testControl II (EtherCAT, 1000 Hz control loop, eco mode)", "testXpert III", "machine compliance correction", "modular slots for extensometer & transverse strain", "upper/lower test area (floor models)", "safety door with reduced speed"],
+  "options": ["temperature chamber up to 250 °C (LN2 to -80 °C)", "videoXtens optical extensometer", "makroXtens/multiXtens contact extensometer", "testControl II plus (6 slots)", "2000 Hz data transmission", "display remote control"],
+  "relations": [
+    {"type": "compatible_accessory", "target": "zwickroell-temperature-chambers-allroundline"},
+    {"type": "extends_temperature", "target": "zwickroell-temperature-chambers-allroundline", "note": "-80 ~ +250 °C"},
+    {"type": "same_family_as", "target": "zwickroell-proline"}
+  ],
+  "sources": [
+    {"file": "zwickroell/allroundline-z005-z100-pi-en.pdf", "pages": [7, 8, 9, 14]},
+    {"file": "zwickroell/allroundline-z100-z150-pi-en.pdf", "pages": [3, 4, 5, 6]},
+    {"file": "zwickroell/allroundline-z250-lateral-pi-en.pdf", "pages": [2, 3]}
+  ],
+  "confidence": "catalog"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "uson-qualitek-mr",
+  "kind": "equipment_series",
+  "name": "Uson Qualitek mR Multi-Range Leak and Flow Tester",
+  "name_ko": "유손 Qualitek mR 다중범위 누설·유량 시험기",
+  "manufacturer": "uson",
+  "brand": "Qualitek",
+  "category": "leak_tester",
+  "subcategory": "multi_range",
+  "drive": "pneumatic",
+  "form_factor": "benchtop",
+  "description": "한 채널에서 여러 압력·유량 범위를 다루는 다중범위(mR) 누설·유량 시험기. 시험 종류는 차압식 또는 게이지식 압력 강하, 압력 상승, 배압(back-pressure) 시험이다. 압력 범위는 차압식 최대 225 psig(15 bar), 게이지식 최대 500 psig(35 bar)이고 유량은 최대 20 L/min. 누설량은 계산 유량 또는 차압으로 표시하며 압력·유량 단위 15 종 중에서 고른다. 조절 가능한 받침 위의 컬러 그래픽 터치스크린으로 압력 프로파일을 보고, 시험 종류와 변환기를 폭넓게 조합해 구성한다. 의료기기 누설 검출 분야에 설치 실적이 많다고 적는다.",
+  "test_items": [
+    "leak_rate",
+    "seal_strength"
+  ],
+  "measurands": [
+    "leak_rate",
+    "pressure_decay_slope",
+    "pressure_rise",
+    "pressure_drop",
+    "flow_rate_ratio"
+  ],
+  "materials": [
+    "medical devices",
+    "packaging",
+    "automotive components",
+    "sealed assemblies"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "pressure_psi": {
+      "max": 500,
+      "note": "게이지식 최대 500 psig(35 bar). 차압식은 최대 225 psig(15 bar)"
+    },
+    "flow_rate_ratio": {
+      "note": "유량 최대 20 L/min"
+    },
+    "channels": {
+      "values": [1]
+    }
+  },
+  "models": [
+    {
+      "model": "Qualitek mR",
+      "specs": {
+        "test_channels": 1,
+        "pressure_range_differential": "최대 225 psig / 15 bar",
+        "pressure_range_gauge": "최대 500 psig / 35 bar",
+        "flow_range_L_min": 20,
+        "test_types": ["압력 강하(차압식)", "압력 강하(게이지식)", "압력 상승", "배압(back-pressure)"],
+        "leak_measurement": "계산 유량 또는 차압",
+        "units": "압력·유량 단위 15 종 사용자 선택",
+        "display": "조절 가능한 받침 위 컬러 그래픽 터치스크린, 압력 프로파일 표시",
+        "configurability": "시험 종류와 변환기를 폭넓게 조합"
+      }
+    }
+  ],
+  "features": [
+    "한 채널에서 여러 압력·유량 범위(multi-range)",
+    "차압식·게이지식 압력 강하와 압력 상승·배압을 모두 지원",
+    "압력 프로파일을 그리는 컬러 터치스크린",
+    "압력·유량 단위 15 종 선택"
+  ],
+  "options": [],
+  "relations": [
+    {"type": "performs", "target": "leak_rate"},
+    {"type": "same_family_as", "target": "uson-sprint-leak-testers"},
+    {"type": "requires", "target": "utility-compressed-air"}
+  ],
+  "sources": [
+    {"file": "uson/qualitek-mr-brochure.pdf", "pages": [1, 2, 3, 4, 5, 6]},
+    {"file": "uson/leak-master.pdf", "pages": [1], "note": "누설률 환산용 리크 마스터(교정 기준기)"},
+    {"file": "uson/vft-brochure.pdf", "pages": [1, 2, 3, 4], "note": "Vector 누설·유량 시험기 및 기능 시험기 — 토크·각도·압력·유량 센서를 채널당 최대 6 개까지 받는 상위 제품군"},
+    {"file": "uson/insite-specs.pdf", "pages": [1], "note": "InSite 계열 사양"}
+  ],
+  "confidence": "catalog",
+  "notes": "archive.org 스냅샷(2021-05-11)에서 받았다 — uson.com 은 UA 헤더로 열리지만 데이터시트가 등록 폼 뒤에 있다. 정확도·분해능·반복도가 브로슈어에 없다: 압력·유량 **범위**만 적혀 있어 '얼마나 작은 누설을 잡나' 에 답하지 못한다. 압력을 psig 로 적는 문서라 원 단위를 유지했다 — TestAtlas 반입 시 SI 환산이 필요하다(1 psi = 6.895 kPa). Vector/VFT 는 별개 제품군이지만 4쪽짜리 브로슈어에 정량 사양이 거의 없어 별도 객체로 만들지 않고 출처로만 달았다."
+}

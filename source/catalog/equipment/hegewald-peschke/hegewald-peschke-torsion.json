@@ -1,0 +1,259 @@
+{
+  "id": "hegewald-peschke-torsion",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Torsion Testing Machines (inspekt T-200H / T-500H / T3500 / T-5000H / TW-500H)",
+  "name_ko": "헤게발트 운트 페슈케 비틀림 시험기 (inspekt T-200H·T-500H·T3500·T-5000H·TW-500H)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "torsion_tester",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "시편에 비틀림 하중을 걸어 토크-회전각을 재는 시험기군. 200 N·m 탁상형부터 5000 N·m 바닥형까지 다섯 등급이 있다. 탁상형 inspekt T 계열은 스테인리스 중공축으로 이은 고정 베어링 4~6 개의 베이스 프레임 위에 무유격 유성기어를 단 AC 서보를 얹어 비틀림 강성과 각도 분해능을 확보한다. 회전 수 제한이 없고, 토크는 정격의 1~100 % 구간에서 24 bit 로 재며 토크 센서는 제조사가 DIN 51309 로 교정한다. 대형기 T3500 은 3500 N·m·시험공간 지름 500 mm·시편 설치 높이 700 mm 로 시험 속도 0.005~2 rpm, 각도 분해능 <0.01°. T-5000H 는 5000 N·m 에 물림 범위 Ø350 mm, 플랜지 사이 시험 공간 1000 mm. TW-500H 는 지름 0.5~10 mm 선재 전용으로 500 N·m 를 낸다.",
+  "test_items": [
+    "torsion",
+    "fatigue"
+  ],
+  "measurands": [
+    "torque_angle",
+    "torsional_stiffness",
+    "torsional_strength",
+    "shear_modulus",
+    "failure_mode"
+  ],
+  "materials": [
+    "plastics",
+    "composites",
+    "screws and drive shafts",
+    "wire",
+    "metals"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN 51309 (토크 센서 교정)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "torque_Nm": {
+      "min": 200,
+      "max": 5000,
+      "note": "기종별 정격 — T-200H 200, T-500H 500, TW-500H 500, T3500 3500, T-5000H 5000 N·m"
+    },
+    "rotation_rpm": {
+      "min": 0.005,
+      "max": 60,
+      "note": "T-200H(41-031-501)만 0.05~60 rpm 으로 빠르고, 나머지 탁상형은 0.05~25 rpm, T3500 은 0.005~2 rpm, T-5000H 는 0.05~2 rpm"
+    },
+    "rotation_deg": {
+      "note": "회전 수 제한 없음(무한 회전). T3500 은 360° 범위의 회전을 수행할 수 있다고 적는다"
+    },
+    "specimen_diameter_mm": {
+      "min": 0.5,
+      "max": 350,
+      "note": "TW-500H 선재 0.5~10 mm, T-5000H 물림 범위 약 Ø350 mm"
+    },
+    "weight_kg": {
+      "min": 105,
+      "max": 750
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt T-200H (41-031-510)",
+      "specs": {
+        "test_load_Nm": 200,
+        "footprint_mm": "1200 x 340 x 390 (WxDxH)",
+        "weight_kg": 105,
+        "testing_speed": "0.05~25 rpm 또는 200 N·m 까지 힘 제어",
+        "test_chamber_between_flanges_mm": 670,
+        "test_chamber_between_chucks_mm": 470,
+        "electrical": "115/230 VAC, 0.7 kVA, 50/60 Hz",
+        "bearings": "고정 베어링 4"
+      }
+    },
+    {
+      "model": "inspekt T-200H (41-031-501)",
+      "specs": {
+        "test_load_Nm": 200,
+        "footprint_mm": "1200 x 340 x 390 (WxDxH)",
+        "weight_kg": 110,
+        "testing_speed": "0.05~60 rpm 또는 200 N·m 까지 힘 제어",
+        "test_chamber_between_flanges_mm": 670,
+        "test_chamber_between_chucks_mm": 470,
+        "electrical": "230 VAC, 1.5 kVA, 50/60 Hz",
+        "bearings": "고정 베어링 4"
+      },
+      "note": "같은 T-200H 이름에 자료번호가 다른 두 구성이 있고, 최고 회전 속도(25 vs 60 rpm)와 전원이 다르다"
+    },
+    {
+      "model": "inspekt T-200H-XL (41-031-506)",
+      "specs": {
+        "test_load_Nm": 200,
+        "footprint_mm": "1430 x 450 x 550 (WxDxH)",
+        "weight_kg": 305,
+        "testing_speed": "0.05~25 rpm 또는 200 N·m 까지 힘 제어",
+        "test_chamber_between_flanges_mm": 760,
+        "test_chamber_between_chucks_mm": 560,
+        "electrical": "230 VAC, 1.5 kVA, 50/60 Hz",
+        "bearings": "고정 베어링 4"
+      }
+    },
+    {
+      "model": "inspekt T-500H (41-031-513)",
+      "specs": {
+        "test_load_Nm": 500,
+        "footprint_mm": "1430 x 450 x 550 (WxDxH)",
+        "weight_kg": 280,
+        "testing_speed": "0.05~25 rpm 또는 500 N·m 까지 힘 제어",
+        "test_chamber_between_flanges_mm": 720,
+        "test_chamber_between_chucks_mm": 470,
+        "electrical": "230 VAC, 1.5 kVA, 50/60 Hz",
+        "bearings": "고정 베어링 6"
+      }
+    },
+    {
+      "model": "Torsionsprüfstand T3500 (41-030-350)",
+      "specs": {
+        "test_load_Nm": 3500,
+        "testing_speed_rpm": {
+          "min": 0.005,
+          "max": 2
+        },
+        "test_room_diameter_mm": 500,
+        "max_specimen_installation_height_mm": 700,
+        "working_level_height_mm": 650,
+        "angle_resolution_deg": 0.01,
+        "torque_measurement": "±100,000 digits @ 20 ms 적분 시간",
+        "counter_bearing": "공압 실린더가 토크 센서 달린 대향 베어링을 5 kN 으로 시편에 누른다. 높이 조절 가능",
+        "connecting_flange": "상·하 교체식, 시편 수용용 50 mm 사각단",
+        "control": "토크·각도 또는 외부 신호",
+        "functions": [
+          "과부하 보호",
+          "자동 토크 교정",
+          "시편 파단 검출",
+          "리턴 기능"
+        ],
+        "footprint_mm": "약 900 x 750 x 2600 (WxDxH)",
+        "weight_kg": 480
+      }
+    },
+    {
+      "model": "Torsion testing device T-5000H (41-031-654)",
+      "specs": {
+        "test_load_Nm": 5000,
+        "testing_speed_rpm": {
+          "min": 0.05,
+          "max": 2
+        },
+        "torque_resolution": "0.1°",
+        "clamping_range_mm": 350,
+        "max_test_space_between_flanges_mm": 1000,
+        "footprint_mm": "본체 1350 x 2350 x 850 (HxWxD), 제어함 750 x 600 x 900 (HxWxD)",
+        "weight_kg": 750,
+        "control_cabinet_weight_kg": 90,
+        "electrical": "제어함, 전전류 감응형 누전차단, 5~40 °C",
+        "torque_sensor": "42-030-521",
+        "options": [
+          "시편 장착용 클램핑 지그 또는 플랜지"
+        ]
+      },
+      "note": "데이터시트가 'Torque resolution 0.1°' 로 적는데 단위가 토크가 아니라 각도다 — 항목 이름과 단위가 어긋난 인쇄로 보이지만 그대로 옮겼다. 750 kg 은 베이스 포함 값이다"
+    },
+    {
+      "model": "Torsion testing device TW-500H (41-031-630)",
+      "specs": {
+        "test_load_Nm": 500,
+        "specimen_diameter_mm": {
+          "min": 0.5,
+          "max": 10
+        },
+        "angle_of_rotation_deg": 0.2,
+        "footprint_mm": "1500 x 700 x 1300 (WxDxH)",
+        "weight_kg": 250,
+        "operating_environment": "+10~+30 °C, 20~80 % 습도",
+        "clamping": "선재 전용 최적화 시편 홀더",
+        "safety": "문이 열린 상태에서는 안전 속도 감시"
+      },
+      "note": "선재(wire) 전용 기종. 시편 두께는 캘리퍼로 재어 입력한다(품번 41-031-801)"
+    }
+  ],
+  "accuracy": {
+    "torque": "정격의 1~100 % 구간에서 측정, 비틀림 분해능 24 bit. 토크 센서는 제조사가 DIN 51309 로 교정",
+    "angle": "T3500 각도 분해능 <0.01°"
+  },
+  "features": [
+    "높은 비틀림 강성과 각도 분해능",
+    "회전 수 제한 없음",
+    "전기식 과부하 보호",
+    "이동 캐리지 잠금",
+    "가변 시험 속도",
+    "무보수 AC 서보 + 무유격 유성기어",
+    "LabMaster 소프트웨어로 운전",
+    "전자기 잠금 안전문 — 시험 중 잠기고, 교정·서비스 때만 해제"
+  ],
+  "options": [
+    "토크 센서(42-030-020 / 42-030-021)",
+    "클램핑 공구(3 조 척, 콜릿 등)",
+    "PC/TFT",
+    "작업대",
+    "만능재료시험기용 비틀림 모듈(41-031-xxx) — inspekt 프레임에 비틀림 축을 얹는 구성"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "torsion"
+    },
+    {
+      "type": "performs",
+      "target": "fatigue"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/41-031-5xx-torsion-testing-devices.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/41-030-350-torsionspruefstand-t3500-en-01.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/41-031-654-torsion-testing-device-t-5000h.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/41-031-630-torsion-testing-device-tw-500h.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/41-031-xxx-torsion-modules.pdf",
+      "pages": [
+        1
+      ],
+      "note": "만능재료시험기에 다는 비틀림 모듈"
+    },
+    {
+      "file": "hegewald-peschke/clamping-tools-for-torsion-testing-devices.pdf",
+      "pages": [
+        1
+      ],
+      "note": "비틀림 시험용 클램핑 공구"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "41-031-5xx 문서의 4 기종 표는 텍스트 추출이 열을 흩뜨려 정격·치수·무게가 뒤섞여 나왔다. 3쪽을 렌더링해 눈으로 대조한 뒤 기록했다(`catalog/pages/hp-torsion-5xx-table.png`) — 그 결과 T-200H 이름을 쓰는 구성이 자료번호 두 개(41-031-510 / 501)로 나뉘고 회전 속도와 전원이 서로 다르다는 것이 드러났다. 정적 시험과 동적(주기 하중) 시험을 모두 한다고 적혀 있어 `test_items` 에 `fatigue` 를 함께 넣었다. TW-500H 의 'Angle of rotation ±0.2°' 는 각도 정확도로 보이나 문서가 항목 이름을 그렇게만 적는다."
+}

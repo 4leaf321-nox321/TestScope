@@ -1,0 +1,169 @@
+{
+  "id": "goettfert-rheograph-add-ons",
+  "kind": "accessory",
+  "name": "GÖTTFERT RHEOGRAPH Add-On Modules (PVT, Thermal Conductivity, Counter Pressure, RHEOTENS, HAUL-OFF, Die Swell, Shark Skin, CONTIFEED, Normal Stress Die)",
+  "name_ko": "괴트페르트 RHEOGRAPH 애드온 모듈 묶음",
+  "manufacturer": "goettfert",
+  "brand": "RHEOGRAPH",
+  "category": "accessory",
+  "form_factor": "benchtop",
+  "description": "RHEOGRAPH 본체에 붙여 측정 항목 자체를 늘리는 모듈들. 하나의 객체로 묶어 둔 이유는 브로슈어가 이들을 개별 장비가 아니라 플랫폼의 애드온 목록(10~11쪽)으로만 다루기 때문이다. PVT 는 ISO 17744 로 등온·등압 비체적을, 열전도도 모듈은 ASTM D5930 으로 450 °C·1000 bar 까지 열전도도를, 역압챔버는 1200 bar·400 °C 에서 점도의 압력 의존성과 임계 벽전단응력을 준다. RHEOTENS·HAUL-OFF 는 용융 스트랜드를 끌어 신장 점도를 재고(0~600 m/min, 옵션 0~2000 m/min, 측정 범위 1 N, 분해능 0.05 mN), 다이 스웰 모듈은 0.1 µm 또는 7 µm 레이저 측정헤드로 동적·정적 스웰을 본다. 샤크스킨 셀은 슬릿 다이에 20 kHz 고주파 센서 3 개를 달아 유동 불안정(Shark Skin, Slip-Stick)의 주파수 스펙트럼을 낸다. CONTIFEED 는 기포 없는 충전과 벌크 시료 자동 투입으로 시험 시간을 최대 50 % 줄인다. 노멀 스트레스 다이는 가공 전단속도에 가까운 영역에서 법선응력차를 잰다.",
+  "test_items": [
+    "rheology_capillary",
+    "thermal_conductivity",
+    "dilatometry"
+  ],
+  "measurands": [
+    "thermal_conductivity",
+    "density",
+    "extensional_viscosity",
+    "viscosity",
+    "normal_force",
+    "dimensional_change"
+  ],
+  "materials": [
+    "thermoplastics",
+    "elastomers/rubber",
+    "PVC dry blend"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 17744",
+      "ASTM D5930",
+      "ISO 22007"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 450,
+      "note": "열전도도 모듈 기준. 역압챔버는 400 °C"
+    },
+    "pressure_bar": {
+      "max": 1200,
+      "note": "역압챔버 최대 압력 Pm. 열전도도 모듈은 1000 bar"
+    },
+    "velocity_m_s": {
+      "max": 33.3,
+      "note": "HAUL-OFF 인취 속도 0~600 m/min(옵션 0~2000 m/min = 33.3 m/s). 기본 옵션은 10 m/s"
+    },
+    "force_N": {
+      "max": 1,
+      "note": "HAUL-OFF 인취력 측정 범위 1 N, 분해능 0.05 mN"
+    }
+  },
+  "models": [
+    {
+      "model": "PVT (Isothermal / Isobaric)",
+      "specs": {
+        "method": "ISO 17744",
+        "modes": ["등압(isobar)", "등온(isotherm)"],
+        "outputs": ["PVT 선도", "유동·수축 공정 최적화"],
+        "automation": "자동 공정 제어 옵션"
+      }
+    },
+    {
+      "model": "Thermal Conductivity (TCM)",
+      "specs": {
+        "method": "ASTM D5930",
+        "temperature_max_degC": 450,
+        "pressure_max_bar": 1000,
+        "sensor": "가열부 내장 + 온도 추적 가능한 시험 센서",
+        "note": "기계적 재조립 없이 사출 사이클 타임 최적화에 쓴다"
+      }
+    },
+    {
+      "model": "Counter Pressure Chamber",
+      "specs": {
+        "pressure_max_bar": 1200,
+        "temperature_max_degC": 400,
+        "outputs": ["압력계수", "임계 벽전단응력(벽면 미끄러짐)"]
+      }
+    },
+    {
+      "model": "RHEOTENS",
+      "specs": {
+        "speed": "무단 가변",
+        "acceleration": "선형 또는 지수 선택",
+        "software": "RHEOTENS 97 (Windows)",
+        "wheels": "용도별 인취휠, 탠덤 인취휠",
+        "note": "기존 RHEOTENS 장비도 새 전자 박스 + RHEOTENS 97 로 업그레이드 가능"
+      }
+    },
+    {
+      "model": "HAUL-OFF",
+      "specs": {
+        "speed_m_min": {"min": 0, "max": 600},
+        "speed_m_min_option": {"min": 0, "max": 2000},
+        "force_range_N": 1,
+        "force_resolution_mN": 0.05,
+        "acceleration": "선형 또는 지수 선택",
+        "wheel": "비점착 표면 인취휠"
+      }
+    },
+    {
+      "model": "Die Swell Measurement",
+      "specs": {
+        "laser_head_resolution_um": [0.1, 7],
+        "outputs": ["동적 다이 스웰", "정적 다이 스웰", "임계값 프로파일(BASELL 법)"],
+        "mount": "무단 높이 조절 스위블",
+        "option": "자동 용융 절단 장치"
+      }
+    },
+    {
+      "model": "Flow Instabilities (Shark Skin / Slip-Stick)",
+      "specs": {
+        "die": "슬릿 다이",
+        "sensors": "고주파 압력 센서 3 개, 샘플링 최대 20 kHz",
+        "outputs": ["주파수 스펙트럼", "압력 신호 통계 분석"],
+        "application": "압출·필름·코팅 공정 최적화"
+      }
+    },
+    {
+      "model": "CONTIFEED",
+      "specs": {
+        "benefit": "기포 없는 시험 채널 충전, 벌크 시료 자동 투입",
+        "time_saving_pct": 50,
+        "note": "예비 가소화로 PVC 드라이 배치 같은 분체도 측정 가능"
+      }
+    },
+    {
+      "model": "Normal Stress Die",
+      "specs": {
+        "outputs": ["법선응력차", "점도", "신장 점도"],
+        "note": "종래 기법으로는 불가능하던 가공 전단속도 영역의 법선응력 측정"
+      }
+    }
+  ],
+  "features": [
+    "본체 교체 없이 모듈만 붙여 측정 항목을 늘리는 플랫폼 구조",
+    "PVT·열전도도는 자동 공정 제어 옵션 지원"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "fits_on",
+      "target": "goettfert-rheograph"
+    },
+    {
+      "type": "performs",
+      "target": "thermal_conductivity"
+    },
+    {
+      "type": "performs",
+      "target": "dilatometry"
+    },
+    {
+      "type": "performs",
+      "target": "rheology_capillary"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [10, 11]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "브로슈어가 애드온을 개별 제품이 아니라 목록으로만 다뤄 하나의 accessory 객체로 묶었다. 각 모듈의 치수·중량·전원은 없다. RHEOTENS 는 속도·측정범위 수치가 HAUL-OFF 쪽에만 적혀 있어 RHEOTENS 항목에는 넣지 않았다 — 두 모듈이 같은 값을 쓰는지는 문서로 확인되지 않는다."
+}

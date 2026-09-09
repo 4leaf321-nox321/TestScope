@@ -1,0 +1,89 @@
+{
+  "id": "goettfert-counter-pressure-viscosimeter",
+  "kind": "equipment_series",
+  "name": "GÖTTFERT Counter Pressure Viscosimeter",
+  "name_ko": "괴트페르트 역압(counter pressure) 점도계",
+  "manufacturer": "goettfert",
+  "brand": "RHEOGRAPH",
+  "category": "capillary_rheometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "모세관 레오미터 두 대를 채널로 이어 하나의 용융 시료에 동시에 작용시키는 변형 구성. 레오미터 2 가 역압을 걸고 레오미터 1 이 유동곡선을 재므로, 정확히 정의된 역압의 함수로 점도를 얻는다. 한 유동곡선을 얻은 뒤 재료를 레오미터 2 에서 1 로 밀어 넣어 다른 역압에서 곡선을 다시 잰다 — 전 과정이 자동이다. 점도의 압력 의존성(압력계수)과 벽면 미끄러짐이 시작되는 임계 벽전단응력을 정하는 데 쓴다. 두 레오미터는 각각 독립으로도 쓸 수 있다. 피스톤 속도 0.00004~40 mm/s(1:1,000,000), 위치 분해능 0.0000016 mm.",
+  "test_items": [
+    "rheology_capillary"
+  ],
+  "measurands": [
+    "viscosity",
+    "shear_strength"
+  ],
+  "materials": [
+    "thermoplastics",
+    "elastomers/rubber",
+    "flowable compounds"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "DIN 54811",
+      "ASTM D3835",
+      "ASTM D5099",
+      "ASTM D5930",
+      "ISO 11443",
+      "ISO 17744"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 400,
+      "note": "역압 챔버 기준"
+    },
+    "pressure_bar": {
+      "max": 1200,
+      "note": "역압챔버 최대 압력 Pm 1200 bar"
+    },
+    "piston_speed_mm_min": {
+      "min": 0.0024,
+      "max": 2400,
+      "note": "0.00004~40 mm/s, 1:1,000,000"
+    }
+  },
+  "models": [
+    {
+      "model": "Counter Pressure Viscosimeter",
+      "specs": {
+        "configuration": "모세관 레오미터 2 대를 역압 채널로 연결",
+        "counter_pressure_max_bar": 1200,
+        "temperature_max_degC": 400,
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "position_resolution_mm": 0.0000016,
+        "pressure_transducer_recognition": "Plug & Test 자동 인식"
+      }
+    }
+  ],
+  "features": [
+    "전 속도 구간에서 일정한 고피스톤 힘",
+    "0~40 mm/s 를 0.6 s 에 내는 고동특성 피스톤 가속",
+    "역압을 바꿔 가며 점도 함수를 완전 자동 측정",
+    "압력계수와 임계 벽전단응력 결정",
+    "두 레오미터를 독립 장비로도 사용"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "rheology_capillary"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [16, 17]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "브로슈어는 이 구성을 16~17쪽에서 'Counter Pressure Viscosimeter' 로, 10쪽 애드온 목록에서는 'Counter Pressure Chamber' 로 부른다. 1200 bar·400 °C 는 10쪽 역압챔버 항목의 값이다. 시험력·치수·중량은 적혀 있지 않다."
+}

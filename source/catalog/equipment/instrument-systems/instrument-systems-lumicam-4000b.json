@@ -1,0 +1,32 @@
+{
+  "id": "instrument-systems-lumicam-4000b",
+  "kind": "equipment_series",
+  "name": "Instrument Systems LumiCam 4000B / 2400B Imaging Colorimeter",
+  "name_ko": "인스트루먼트시스템즈 LumiCam 4000B / 2400B 이미징 콜로리미터",
+  "manufacturer": "instrument-systems",
+  "brand": "LumiCam",
+  "category": "imaging_colorimeter",
+  "form_factor": "camera",
+  "description": "면 단위로 휘도·색도 분포를 한 번에 측정하는 이미징 콜로리미터. LumiCam 4000B 는 4096×3000 화소(12 MP CMOS), 2400B 는 2428×2028 화소(5 MP). 휘도 측정 범위는 4000B 가 0.3 mcd/m²~4.3 Mcd/m²(동적범위 4.3×10¹⁰), 2400B 가 0.3 mcd/m²~2.5 Mcd/m²(2.5×10¹⁰). CIE 등색함수에 정합된 필터 휠로 XYZ 를 획득해 휘도(cd/m²), 광도(cd), 명암비를 산출한다. 디스플레이·계기판·키패드·조명의 균일도 검사에 사용.",
+  "test_items": ["photometry_colorimetry"],
+  "measurands": ["luminance", "luminous_intensity", "chromaticity", "contrast", "uniformity", "mura"],
+  "materials": ["LCD", "OLED", "automotive instrument clusters", "keypads", "backlights", "headlamps", "signage"],
+  "standards": {"compliance": [], "test_methods": ["CIE 15", "VESA FPDM", "IEC 62341"]},
+  "limits": {
+    "luminance_cd_m2": {"min": 0.0003, "max": 4300000, "note": "4000B: 0.3 mcd/m²~4.3 Mcd/m²; 2400B: 0.3 mcd/m²~2.5 Mcd/m²"},
+    "resolution_pixels": {"max": 12288000, "note": "4000B 4096×3000(12 MP), 2400B 2428×2028(5 MP)"},
+    "dynamic_range": {"max": 43000000000, "note": "4000B 4.3×10¹⁰, 2400B 2.5×10¹⁰"}
+  },
+  "models": [
+    {"model": "LumiCam 4000B", "specs": {"pixels": [4096, 3000], "megapixels": 12, "sensor": "CMOS", "luminance_cd_m2": {"min": 0.0003, "max": 4300000}, "dynamic_range": 43000000000}},
+    {"model": "LumiCam 2400B", "specs": {"pixels": [2428, 2028], "megapixels": 5, "sensor": "CMOS", "luminance_cd_m2": {"min": 0.0003, "max": 2500000}, "dynamic_range": 25000000000}}
+  ],
+  "features": ["CIE 등색함수 정합 필터 휠(filter match)", "면 단위 휘도 분포 측정", "고해상도 CMOS 센서", "명암비·균일도 자동 산출", "LumiSuite 평가 소프트웨어"],
+  "relations": [
+    {"type": "performs", "target": "photometry_colorimetry"},
+    {"type": "same_family_as", "target": "konica-minolta-ca-410"}
+  ],
+  "sources": [{"file": "instrument-systems/lumicam-4000b-2400b-datasheet.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog",
+  "notes": "10 cd/m² / 100 cd/m² 조건의 측정 시간 표는 추출 텍스트에서 값이 누락되어 기록하지 못했다."
+}

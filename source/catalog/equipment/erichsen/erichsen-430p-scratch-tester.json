@@ -1,0 +1,34 @@
+{
+  "id": "erichsen-430p-scratch-tester",
+  "kind": "equipment_model",
+  "name": "Erichsen Model 430 P Scratch Hardness Tester",
+  "name_ko": "에릭센 430 P 스크래치 경도 시험기",
+  "manufacturer": "erichsen",
+  "brand": "430 P",
+  "category": "scratch_hardness_tester",
+  "form_factor": "benchtop",
+  "description": "모터 구동식 프로그래머블 스크래치 경도 시험기. 도막의 긁힘·절단 저항을 평가하며 단일 절단(single cut), 크로스 컷(cross hatch cut), 스크래치 저항 시험을 한 장비에서 수행한다. DIN EN ISO 2409 및 ASTM D3359 크로스 컷 규격에 대응.",
+  "test_items": ["scratch_pencil_hardness", "coating_adhesion"],
+  "measurands": ["scratch_hardness", "scratch_resistance", "cross_cut_classification"],
+  "materials": ["paints", "varnishes", "coatings", "plastic panels", "coil coatings", "automotive finishes"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["DIN EN ISO 2409", "ASTM D3359", "ISO 1518 (스크래치 저항)", "ISO 12137"]
+  },
+  "limits": {
+    "load_N": {"note": "모델별 하중 범위 — 브로슈어 사양표 확인 요", "uncertain": true},
+    "scratch_speed": {"note": "모터 구동, 프로그래머블", "uncertain": true}
+  },
+  "models": [
+    {"model": "430 P", "specs": {"drive": "모터 구동", "programmable": true, "test_modes": ["단일 절단(single cut)", "크로스 컷(cross hatch cut)", "스크래치 저항"]}}
+  ],
+  "features": ["모터 구동 정속 이송", "프로그래머블 시험 조건", "단일 절단·크로스 컷·스크래치 저항 통합"],
+  "relations": [
+    {"type": "performs", "target": "scratch_pencil_hardness"},
+    {"type": "performs", "target": "coating_adhesion"},
+    {"type": "same_family_as", "target": "tqc-sheen-coating-test-kits"}
+  ],
+  "sources": [{"file": "erichsen/430p-scratch-hardness-tester.pdf", "pages": [1, 2]}],
+  "confidence": "limited",
+  "notes": "브로슈어에서 하중 범위·이송 속도 등 정량 사양을 확정하지 못했다."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "netzsch-tma-402-hyperion",
+  "kind": "equipment_series",
+  "name": "NETZSCH TMA 402 F1 / F3 Hyperion (incl. F3 Polymer Edition)",
+  "name_ko": "네취 TMA 402 F1/F3 Hyperion 열기계분석기",
+  "manufacturer": "netzsch",
+  "category": "tma",
+  "form_factor": "benchtop",
+  "description": "교환식 수직 퍼니스(강 -150~1000 °C, SiC RT~1550 °C, IC -70~450 °C, 구리 -150~500 °C(습도 발생기 연동), 수증기 RT~1250 °C). 승온 0.001–50 K/min. 팽창·침투·3점굽힘·인장 모드, 힘 0.001–3 N(F3)/4 N(F1), 분해능 <0.01 mN, 변위 ±250/±2500 µm(0.125/1.25 nm). 변조 힘 0.0003–1 Hz. Polymer Edition 은 IC 퍼니스 전용(-70~450 °C, 0.001–30 K/min).",
+  "test_items": ["tma", "dma", "creep", "relaxation"],
+  "measurands": ["cte", "softening_point", "glass_transition", "sintering_shrinkage", "storage_modulus", "tan_delta", "shrinkage_force"],
+  "materials": ["polymers", "elastomers", "composites", "ceramics", "glass", "metals", "refractories", "films", "fibers", "foams", "pastes", "powders"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E831", "ISO 11359", "ASTM E1545", "ASTM E228", "DIN 51045"]},
+  "limits": {
+    "temperature_degC": {"min": -150, "max": 1550},
+    "heating_rate_K_min": {"min": 0.001, "max": 50},
+    "force_N": {"min": 0.001, "max": 4},
+    "displacement_um": {"max": 2500, "note": "±250 µm (0.125 nm) / ±2500 µm (1.25 nm)"},
+    "frequency_Hz": {"min": 0.0003, "max": 1},
+    "sample_length_mm": {"max": 30}
+  },
+  "models": [
+    {"model": "TMA 402 F1 Hyperion", "specs": {"force_N": {"min": 0.001, "max": 4}, "temperature_degC": {"min": -150, "max": 1550}, "furnaces": ["steel -150~1000", "SiC RT~1550", "IC -70~450", "copper -150~500", "water-vapor RT~1250"], "sample_holders": ["fused silica ≤1100 °C", "alumina ≤1550 °C"]}},
+    {"model": "TMA 402 F3 Hyperion", "specs": {"force_N": {"min": 0.001, "max": 3}, "temperature_degC": {"min": -150, "max": 1550}}},
+    {"model": "TMA 402 F3 Hyperion Polymer Edition", "specs": {"force_N": {"min": 0.001, "max": 3}, "temperature_degC": {"min": -70, "max": 450}, "heating_rate_K_min": {"min": 0.001, "max": 30}, "sample_mm": {"expansion": "L≤30, holder Ø8", "tension": "L≤30 × W6 × T1", "3pt_bending": "L≤10 × W5"}, "atmosphere": "inert/oxidizing/reducing, vacuum 1e-4 mbar, MFC 0–250 ml/min"}}
+  ],
+  "accuracy": {"force_resolution_mN": 0.01, "displacement_resolution_nm": 0.125},
+  "options": ["LN2 cooling (60 L Dewar)", "vortex tube", "intracooler", "humidity generator", "water-vapor generator", "TMA-MS Aëolos / FT-IR coupling", "RCS rate-controlled sintering", "Identify database", "PeakSeparation"],
+  "relations": [{"type": "same_family_as", "target": "netzsch-dil-402-expedis"}],
+  "sources": [{"file": "netzsch/tma-402-f1-f3-hyperion.pdf", "pages": [12, 13, 15]}, {"file": "netzsch/tma-402-f3-hyperion-polymer-edition.pdf", "pages": [3, 11, 13]}],
+  "confidence": "catalog"
+}

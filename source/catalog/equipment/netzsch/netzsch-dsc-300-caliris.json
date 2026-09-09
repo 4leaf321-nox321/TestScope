@@ -1,0 +1,29 @@
+{
+  "id": "netzsch-dsc-300-caliris",
+  "kind": "equipment_series",
+  "name": "NETZSCH DSC 300 Caliris Classic / Select / Supreme Differential Scanning Calorimeters",
+  "name_ko": "네취 DSC 300 Caliris 시리즈 시차주사열량계",
+  "manufacturer": "netzsch",
+  "category": "dsc",
+  "form_factor": "benchtop",
+  "description": "모듈(퍼니스+센서) 교환형 DSC. H-모듈(고성능): Supreme -180~750 °C, Select -170~650 °C. P-모듈(고분자, 최대 500 K/min): -170~600 °C. S-모듈(표준): -170~600 °C. 냉각: LN2/GN2(-180), 인트라쿨러(-90/-70/-40). Classic 은 루틴 QC 용 -170~600 °C. 자동 시료교환기(ASC), 온도변조 DSC, photo-DSC, OIT, cp(ISO 11357-4).",
+  "test_items": ["dsc"],
+  "measurands": ["glass_transition", "melting_point", "crystallinity", "specific_heat", "oit", "cure", "polymorphism"],
+  "materials": ["polymers", "elastomers", "pharmaceuticals", "food", "cosmetics", "adhesives", "UV inks"],
+  "standards": {"compliance": [], "test_methods": ["ISO 11357-1..7", "ASTM D3418", "ASTM E1356", "ASTM E793", "ASTM D3895", "DIN EN ISO 11357-4"]},
+  "limits": {
+    "temperature_degC": {"min": -180, "max": 750},
+    "heating_rate_K_min": {"max": 500, "note": "P-module"},
+    "sample_mass_mg": {"note": "typically 1–15 mg"}
+  },
+  "models": [
+    {"model": "DSC 300 Caliris Classic", "specs": {"temperature_degC": {"min": -170, "max": 600}, "note": "routine QC; multiple cooling devices simultaneously"}},
+    {"model": "DSC 300 Caliris Select", "specs": {"temperature_degC": {"min": -170, "max": 650}, "modules": {"H": [-170, 650], "P": [-170, 600], "S": [-170, 600]}, "intracooler_degC": {"H": [-90, 600], "P": [-70, 600], "S": [-70, 600]}}},
+    {"model": "DSC 300 Caliris Supreme", "specs": {"temperature_degC": {"min": -180, "max": 750}, "modules": {"H": [-180, 750], "P": [-170, 600], "S": [-170, 600]}, "intracooler_degC": {"H": [-90, 600], "P": [-70, 600], "S": [-70, 600]}, "note": "modules user-exchangeable in minutes"}}
+  ],
+  "options": ["LN2/GN2 cooling (60 L Dewar, auto refill)", "intracooler", "automatic sample changer", "photo-DSC", "TM-DSC", "Proteus software, Identify, AutoEvaluation", "LabV connectivity"],
+  "relations": [],
+  "sources": [{"file": "netzsch/dsc-300-caliris-supreme-select.pdf", "pages": [5, 6, 7, 13, 21, 25]}, {"file": "netzsch/dsc-300-caliris-series.pdf", "pages": [20, 24, 25]}],
+  "confidence": "catalog",
+  "notes": "감도·베이스라인·시간상수 수치 표는 텍스트 추출에 안 잡힘 — 원본 확인."
+}

@@ -1,0 +1,641 @@
+{
+ "_comment": "장비 분류 트리. parent 가 없으면 최상위. TestAtlas 축 equipment_category 의 값 후보.",
+ "categories": [
+  {
+   "id": "abrasion_tester",
+   "parent": "tribology",
+   "label_ko": "마모 시험기",
+   "label": "Abrasion tester"
+  },
+  {
+   "id": "ac_power_source",
+   "label_ko": "프로그래머블 AC 전원",
+   "label": "Programmable AC power source",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "accelerating_rate_calorimeter",
+   "label_ko": "단열 가속 열량계 (ARC)",
+   "label": "Accelerating rate calorimeter",
+   "parent": "battery_test"
+  },
+  {
+   "id": "accessory",
+   "label_ko": "부속 장치",
+   "label": "Accessory"
+  },
+  {
+   "id": "acoustic_measurement",
+   "label_ko": "음향 측정장비",
+   "label": "Acoustic measurement"
+  },
+  {
+   "id": "acoustic_microscope",
+   "label_ko": "주사 초음파 현미경 (SAM)",
+   "label": "Scanning acoustic microscope",
+   "parent": "electronics_inspection"
+  },
+  {
+   "id": "adhesion_tester",
+   "label_ko": "부착력(크로스컷) 시험기",
+   "label": "Cross-cut adhesion tester",
+   "parent": "coating_surface_test"
+  },
+  {
+   "id": "altitude_chamber",
+   "label_ko": "저기압·고도 챔버",
+   "label": "Altitude / low-pressure chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "audio_analyzer",
+   "label_ko": "오디오 분석기",
+   "label": "Audio analyzer",
+   "parent": "acoustic_measurement"
+  },
+  {
+   "id": "battery_abuse_tester",
+   "label_ko": "배터리 안전(압괴·관통) 시험기",
+   "label": "Battery abuse (crush/nail) tester",
+   "parent": "battery_test"
+  },
+  {
+   "id": "battery_cycler",
+   "label_ko": "충방전 사이클러",
+   "label": "Battery charge/discharge cycler",
+   "parent": "battery_test"
+  },
+  {
+   "id": "battery_test",
+   "label_ko": "배터리 시험장비",
+   "label": "Battery testing"
+  },
+  {
+   "id": "bond_tester",
+   "label_ko": "본드 테스터(와이어 풀·다이 전단)",
+   "label": "Bond tester (wire pull / die shear)",
+   "parent": "electronics_inspection"
+  },
+  {
+   "id": "brinell_hardness",
+   "parent": "hardness",
+   "label_ko": "브리넬 경도계",
+   "label": "Brinell hardness tester"
+  },
+  {
+   "id": "burst_pressure_tester",
+   "parent": "mechanical_static",
+   "label_ko": "내압 파열 시험기",
+   "label": "Burst / hoop pressure tester",
+   "note": "관·용기 안쪽에 압력을 걸어 원주(hoop) 방향 응력으로 파열까지 보는 시험기"
+  },
+  {
+   "id": "capillary_rheometer",
+   "parent": "rheology",
+   "label_ko": "모세관 레오미터",
+   "label": "Capillary rheometer"
+  },
+  {
+   "id": "climatic_chamber",
+   "label_ko": "항온항습 챔버",
+   "label": "Temperature & humidity chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "coating_surface_test",
+   "label_ko": "도막·표면 시험기",
+   "label": "Coating & surface testing"
+  },
+  {
+   "id": "component_life_tester",
+   "label_ko": "부품 수명 시험기(키·커넥터·케이블)",
+   "label": "Component life tester",
+   "parent": "mechanical_dynamics"
+  },
+  {
+   "id": "corrosion_chamber",
+   "label_ko": "염수분무·복합부식 챔버",
+   "label": "Salt spray / cyclic corrosion chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "creep_tester",
+   "parent": "mechanical_static",
+   "label_ko": "크리프 시험기",
+   "label": "Creep / stress-rupture tester"
+  },
+  {
+   "id": "crimp_pull_tester",
+   "label_ko": "압착단자 인장 시험기",
+   "label": "Wire crimp pull tester",
+   "parent": "mechanical_static"
+  },
+  {
+   "id": "cutting_mounting_polishing",
+   "parent": "specimen_preparation",
+   "label_ko": "절단·마운팅·연마",
+   "label": "Cutting, mounting and polishing"
+  },
+  {
+   "id": "dilatometer",
+   "parent": "thermal_analysis",
+   "label_ko": "열팽창계 (DIL)",
+   "label": "Dilatometer"
+  },
+  {
+   "id": "display_color_analyzer",
+   "label_ko": "디스플레이 색채휘도계",
+   "label": "Display color analyzer",
+   "parent": "optical_measurement"
+  },
+  {
+   "id": "dma",
+   "parent": "thermal_analysis",
+   "label_ko": "동적기계분석기 (DMA)",
+   "label": "Dynamic mechanical analyzer"
+  },
+  {
+   "id": "drop_tester",
+   "label_ko": "낙하 시험기",
+   "label": "Drop tester",
+   "parent": "mechanical_dynamics"
+  },
+  {
+   "id": "drop_tower_impact",
+   "parent": "impact",
+   "label_ko": "낙추 충격시험기",
+   "label": "Drop tower / drop weight impact"
+  },
+  {
+   "id": "dsc",
+   "parent": "thermal_analysis",
+   "label_ko": "시차주사열량계 (DSC)",
+   "label": "Differential scanning calorimeter"
+  },
+  {
+   "id": "dust_chamber",
+   "label_ko": "분진(IP5X/6X) 챔버",
+   "label": "Dust / sand chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "electrical_safety",
+   "label_ko": "전기안전·EMC 시험장비",
+   "label": "Electrical safety & EMC"
+  },
+  {
+   "id": "electrodynamic_fatigue",
+   "parent": "mechanical_dynamic",
+   "label_ko": "전기동력식 피로시험기",
+   "label": "Electrodynamic / linear-motor test instrument"
+  },
+  {
+   "id": "electrolytic_etcher",
+   "parent": "specimen_preparation",
+   "label_ko": "전해 에칭기",
+   "label": "Electrolytic etching machine"
+  },
+  {
+   "id": "electronic_load",
+   "label_ko": "전자부하",
+   "label": "Electronic load",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "electronics_inspection",
+   "label_ko": "전자부품 검사·본딩 시험장비",
+   "label": "Electronics inspection & bonding test"
+  },
+  {
+   "id": "emi_receiver",
+   "label_ko": "EMI 측정 수신기",
+   "label": "EMI test receiver",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "environmental_chamber",
+   "parent": "accessory",
+   "label_ko": "환경(온도) 챔버",
+   "label": "Environmental / temperature chamber"
+  },
+  {
+   "id": "environmental_simulation",
+   "label_ko": "환경 시뮬레이션 시험장비",
+   "label": "Environmental simulation"
+  },
+  {
+   "id": "esd_simulator",
+   "label_ko": "ESD 시뮬레이터",
+   "label": "ESD simulator",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "extensometer",
+   "parent": "accessory",
+   "label_ko": "신율계",
+   "label": "Extensometer"
+  },
+  {
+   "id": "force_tester",
+   "parent": "mechanical_static",
+   "label_ko": "소형 힘 시험기(모터 스탠드)",
+   "label": "Motorised force test stand"
+  },
+  {
+   "id": "formability_tester",
+   "parent": "mechanical_static",
+   "label_ko": "성형성 시험기",
+   "label": "Formability / forming limit tester",
+   "note": "판재의 성형한계(FLD)·딥드로잉 등 성형 거동을 보는 시험기"
+  },
+  {
+   "id": "furnace",
+   "parent": "accessory",
+   "label_ko": "고온 퍼니스",
+   "label": "High-temperature furnace"
+  },
+  {
+   "id": "grip_fixture",
+   "parent": "accessory",
+   "label_ko": "그립·지그",
+   "label": "Grips & fixtures"
+  },
+  {
+   "id": "halt_hass_chamber",
+   "label_ko": "HALT/HASS 챔버",
+   "label": "HALT / HASS chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "hardness",
+   "label_ko": "경도계",
+   "label": "Hardness testing"
+  },
+  {
+   "id": "hast_chamber",
+   "label_ko": "HAST(불포화 가압 습열) 챔버",
+   "label": "HAST / pressure cooker chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "hdt_vicat",
+   "parent": "thermomechanical_polymer",
+   "label_ko": "HDT·비캣 연화점 시험기",
+   "label": "HDT / Vicat tester"
+  },
+  {
+   "id": "head_torso_simulator",
+   "label_ko": "인체 머리·몸통 모사기 (HATS)",
+   "label": "Head and torso simulator",
+   "parent": "acoustic_measurement"
+  },
+  {
+   "id": "helium_leak_detector",
+   "label_ko": "헬륨 누설 검출기",
+   "label": "Helium leak detector",
+   "parent": "leak_tester"
+  },
+  {
+   "id": "high_speed_tensile",
+   "parent": "mechanical_dynamic",
+   "label_ko": "고속 인장시험기",
+   "label": "High-speed tensile tester"
+  },
+  {
+   "id": "hipot_safety_analyzer",
+   "label_ko": "내전압·안전 분석기",
+   "label": "Hipot / electrical safety analyzer",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "hydraulic_utm",
+   "parent": "universal_testing_machine",
+   "label_ko": "유압식 만능재료시험기",
+   "label": "Hydraulic UTM"
+  },
+  {
+   "id": "imaging_colorimeter",
+   "label_ko": "2D 이미징 컬러리미터",
+   "label": "Imaging colorimeter / photometer",
+   "parent": "optical_measurement"
+  },
+  {
+   "id": "impact",
+   "label_ko": "충격 시험기",
+   "label": "Impact testing"
+  },
+  {
+   "id": "instrumented_indentation",
+   "parent": "hardness",
+   "label_ko": "계장화 압입(나노인덴터·동적초미소경도)",
+   "label": "Instrumented indentation / nanoindenter"
+  },
+  {
+   "id": "insulation_tester",
+   "label_ko": "절연저항계",
+   "label": "Insulation resistance tester",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "leak_tester",
+   "label_ko": "누설 시험기",
+   "label": "Leak tester"
+  },
+  {
+   "id": "load_cell",
+   "parent": "accessory",
+   "label_ko": "로드셀",
+   "label": "Load cell"
+  },
+  {
+   "id": "mechanical_dynamic",
+   "label_ko": "동적·피로 시험기",
+   "label": "Dynamic & fatigue testing"
+  },
+  {
+   "id": "mechanical_dynamics",
+   "label_ko": "진동·충격 시험장비",
+   "label": "Vibration & shock testing"
+  },
+  {
+   "id": "mechanical_static",
+   "label_ko": "정적 기계 시험기",
+   "label": "Static mechanical testing"
+  },
+  {
+   "id": "melt_flow_indexer",
+   "parent": "rheology",
+   "label_ko": "용융지수 측정기 (MFI/MFR/MVR)",
+   "label": "Melt flow indexer / extrusion plastometer"
+  },
+  {
+   "id": "nanoindenter",
+   "parent": "hardness",
+   "label_ko": "나노압입기",
+   "label": "Nanoindenter",
+   "note": "nN~mN 대 하중으로 압입해 경도·탄성률을 재는 계장 압입 장비"
+  },
+  {
+   "id": "optical_measurement",
+   "label_ko": "광학·디스플레이 측정장비",
+   "label": "Optical & display measurement"
+  },
+  {
+   "id": "optical_profilometer",
+   "label_ko": "3D 표면 형상 측정기",
+   "label": "Optical / stylus profilometer",
+   "parent": "optical_measurement"
+  },
+  {
+   "id": "pendulum_impact",
+   "parent": "impact",
+   "label_ko": "펜듈럼 충격시험기",
+   "label": "Pendulum impact tester (Charpy/Izod)"
+  },
+  {
+   "id": "portable_hardness",
+   "parent": "hardness",
+   "label_ko": "휴대형 경도계(Leeb·UCI)",
+   "label": "Portable hardness tester"
+  },
+  {
+   "id": "power_analyzer",
+   "label_ko": "전력 분석기",
+   "label": "Power analyzer",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "pressure_decay_leak_tester",
+   "label_ko": "압력강하식 누설시험기",
+   "label": "Pressure/vacuum decay leak tester",
+   "parent": "leak_tester"
+  },
+  {
+   "id": "resonance_fatigue",
+   "parent": "mechanical_dynamic",
+   "label_ko": "공진식 피로시험기",
+   "label": "Resonance (high-frequency pulsator)"
+  },
+  {
+   "id": "reverberation_chamber",
+   "parent": "environmental_simulation",
+   "label_ko": "잔향실",
+   "label": "Reverberation chamber",
+   "note": "내부 반사로 균질·등방 전자기 환경을 만드는 EMC 시험실"
+  },
+  {
+   "id": "rheology",
+   "label_ko": "유변·유동 시험기",
+   "label": "Rheology & flow"
+  },
+  {
+   "id": "rockwell_hardness",
+   "parent": "hardness",
+   "label_ko": "로크웰 경도계",
+   "label": "Rockwell hardness tester"
+  },
+  {
+   "id": "rotating_bending_fatigue",
+   "parent": "mechanical_dynamic",
+   "label_ko": "회전굽힘 피로시험기",
+   "label": "Rotating bending fatigue machine"
+  },
+  {
+   "id": "rotational_rheometer",
+   "parent": "rheology",
+   "label_ko": "회전형 레오미터",
+   "label": "Rotational rheometer"
+  },
+  {
+   "id": "scratch_hardness_tester",
+   "label_ko": "스크래치 경도·연필경도 시험기",
+   "label": "Scratch / pencil hardness tester",
+   "parent": "coating_surface_test"
+  },
+  {
+   "id": "servohydraulic_fatigue",
+   "parent": "mechanical_dynamic",
+   "label_ko": "서보유압 피로시험기",
+   "label": "Servohydraulic fatigue system"
+  },
+  {
+   "id": "shielded_enclosure",
+   "parent": "environmental_simulation",
+   "label_ko": "차폐실·차폐 설비",
+   "label": "Shielded enclosure / EMI shielding",
+   "note": "전자기 간섭을 막는 설비. 시편을 시험하는 장비가 아니라 시험 환경을 만든다"
+  },
+  {
+   "id": "shock_test_machine",
+   "label_ko": "충격 시험기",
+   "label": "Shock test machine",
+   "parent": "mechanical_dynamics"
+  },
+  {
+   "id": "shore_irhd_hardness",
+   "parent": "hardness",
+   "label_ko": "쇼어·IRHD 경도계(고무)",
+   "label": "Shore / IRHD durometer"
+  },
+  {
+   "id": "solderability_tester",
+   "label_ko": "솔더링성(웨팅밸런스) 시험기",
+   "label": "Solderability / wetting balance tester",
+   "parent": "electronics_inspection"
+  },
+  {
+   "id": "specimen_preparation",
+   "label_ko": "시편 전처리",
+   "label": "Specimen preparation",
+   "note": "시편을 시험할 수 있는 상태로 만드는 장비. 절단·마운팅·연마·전해에칭 등. 시험을 수행하지는 않지만 시험 결과를 좌우한다"
+  },
+  {
+   "id": "spectroradiometer",
+   "label_ko": "분광방사계",
+   "label": "Spectroradiometer",
+   "parent": "optical_measurement"
+  },
+  {
+   "id": "sta",
+   "parent": "thermal_analysis",
+   "label_ko": "동시열분석기 (STA, TG-DSC/DTA)",
+   "label": "Simultaneous thermal analyzer"
+  },
+  {
+   "id": "texture_analyser",
+   "parent": "mechanical_static",
+   "label_ko": "텍스처 분석기",
+   "label": "Texture analyser"
+  },
+  {
+   "id": "tga",
+   "parent": "thermal_analysis",
+   "label_ko": "열중량분석기 (TGA)",
+   "label": "Thermogravimetric analyzer"
+  },
+  {
+   "id": "thermal_analysis",
+   "label_ko": "열분석기",
+   "label": "Thermal analysis"
+  },
+  {
+   "id": "thermal_conductivity",
+   "parent": "thermal_analysis",
+   "label_ko": "열전도율·열확산율 측정기",
+   "label": "Thermal conductivity / diffusivity (LFA, TPS)"
+  },
+  {
+   "id": "thermal_imager",
+   "label_ko": "열화상 카메라",
+   "label": "Thermal imaging camera",
+   "parent": "optical_measurement"
+  },
+  {
+   "id": "thermal_profiler",
+   "label_ko": "리플로 열프로파일러",
+   "label": "Reflow thermal profiler",
+   "parent": "electronics_inspection"
+  },
+  {
+   "id": "thermal_shock_chamber",
+   "label_ko": "열충격 챔버",
+   "label": "Thermal shock chamber",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "thermal_transient_tester",
+   "label_ko": "열저항 과도응답 측정기",
+   "label": "Thermal transient tester",
+   "parent": "electronics_inspection"
+  },
+  {
+   "id": "thermomechanical_polymer",
+   "label_ko": "고분자 열변형 시험기",
+   "label": "Polymer thermo-mechanical"
+  },
+  {
+   "id": "tma",
+   "parent": "thermal_analysis",
+   "label_ko": "열기계분석기 (TMA)",
+   "label": "Thermomechanical analyzer"
+  },
+  {
+   "id": "torsion_tester",
+   "parent": "mechanical_static",
+   "label_ko": "비틀림 시험기",
+   "label": "Torsion tester"
+  },
+  {
+   "id": "transient_generator",
+   "label_ko": "서지·EFT 발생기",
+   "label": "Surge / EFT transient generator",
+   "parent": "electrical_safety"
+  },
+  {
+   "id": "tribology",
+   "label_ko": "마찰·마모 시험기",
+   "label": "Tribology"
+  },
+  {
+   "id": "tribometer",
+   "parent": "tribology",
+   "label_ko": "트라이보미터",
+   "label": "Tribometer (pin-on-disk etc.)"
+  },
+  {
+   "id": "universal_hardness",
+   "parent": "hardness",
+   "label_ko": "만능 경도계",
+   "label": "Universal hardness tester"
+  },
+  {
+   "id": "universal_testing_machine",
+   "parent": "mechanical_static",
+   "label_ko": "만능재료시험기",
+   "label": "Universal testing machine (UTM)"
+  },
+  {
+   "id": "vapor_sorption_analyzer",
+   "parent": "thermal_analysis",
+   "label_ko": "증기 흡착 분석기",
+   "label": "Vapor sorption analyzer",
+   "note": "온도·상대습도를 제어하며 수분·유기용매 흡탈착량을 중량으로 재는 장비"
+  },
+  {
+   "id": "vibration_shaker",
+   "label_ko": "전기동력식 가진기",
+   "label": "Electrodynamic shaker system",
+   "parent": "mechanical_dynamics"
+  },
+  {
+   "id": "vickers_knoop_hardness",
+   "parent": "hardness",
+   "label_ko": "비커스·누프 (마이크로) 경도계",
+   "label": "Vickers/Knoop (micro) hardness tester"
+  },
+  {
+   "id": "water_ingress_tester",
+   "label_ko": "방수(IPX) 시험 설비",
+   "label": "Water ingress (IPX) test equipment",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "weathering_tester",
+   "label_ko": "촉진 내후성 시험기(제논·UV)",
+   "label": "Accelerated weathering tester",
+   "parent": "environmental_simulation"
+  },
+  {
+   "id": "xray_inspection",
+   "label_ko": "X-ray 검사·CT",
+   "label": "X-ray inspection / CT",
+   "parent": "electronics_inspection"
+  },
+  {
+   "id": "xrf_thickness",
+   "label_ko": "XRF 도금두께 측정기",
+   "label": "XRF coating thickness gauge",
+   "parent": "electronics_inspection"
+  }
+ ]
+}

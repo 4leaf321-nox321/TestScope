@@ -1,0 +1,26 @@
+{
+  "id": "zwickroell-aflow-extrusion-plastometer",
+  "kind": "equipment_model",
+  "name": "ZwickRoell Aflow extrusion plastometer",
+  "name_ko": "즈윅로엘 Aflow 압출 플라스토미터 (용융지수)",
+  "manufacturer": "zwickroell",
+  "category": "melt_flow_indexer",
+  "form_factor": "benchtop",
+  "description": "무추(stepless) 시험 하중 0.325–50 kg, 시험 온도 50–450 °C(다이 위 0–75 mm 구간 <0.3 K), 공압 사전압축·세척·잔여물 배출(80 kg), APC 자동 파라미터, 방법 A/B/C/D, PC 없이 터치 운용. 압출 배럴·피스톤은 불소/PVC 용 내산형 선택.",
+  "test_items": ["melt_flow"],
+  "measurands": ["mfr", "mvr", "melt_density", "flow_rate_ratio"],
+  "materials": ["thermoplastics", "fluoropolymers (acid-resistant barrel)", "PVC", "filled plastics"],
+  "standards": {"compliance": ["ISO 1133-2"], "test_methods": ["ISO 1133-1", "ISO 1133-2", "ASTM D1238", "ASTM D3364", "JIS K 7210"]},
+  "limits": {
+    "melt_temperature_degC": {"min": 50, "max": 450},
+    "melt_load_kg": {"min": 0.325, "max": 50},
+    "piston_speed_mm_min": {"max": 2000, "note": "힘 제어 시 75 % 까지"}
+  },
+  "models": [{"model": "Aflow (230 V / 110 V)", "specs": {"melt_load_kg": {"min": 0.325, "max": 50}, "melt_temperature_degC": {"min": 50, "max": 450}, "compressed_air_bar": [5, 10], "footprint_mm": {"H": 1021, "W": 580, "D": 625}, "weight_kg": 114, "power_kVA": 0.6}}],
+  "accuracy": {"temperature": "<0.3 K over 0–75 mm above die (50–450 °C)", "time": "±0.02 s (A, automated cutter) / ±0.01 s (B)", "travel": "±0.02 mm (ISO 1133) / ±0.4 % of 6.25 mm (ASTM D1238), resolution <0.0005 mm"},
+  "environment": {"power": "220–240 V or 100–127 V 1Ph, 50/60 Hz", "compressed_air": "dry oiled, 5–10 bar"},
+  "options": ["extrusion barrels (wear-resistant / acid-resistant)", "pistons (ISO 1133, ISO 1133-1997 sharp-edged, ASTM D1238)", "automatic extrudate cutter", "analytical balance link", "Clean and Pre-compact option"],
+  "relations": [{"type": "requires", "target": "utility-compressed-air"}, {"type": "same_family_as", "target": "zwickroell-mflow-cflow", "note": "Mflow/Cflow 는 PDF 미확보"}],
+  "sources": [{"file": "zwickroell/aflow-extrusion-plastometer-pi-en.pdf", "pages": [1, 3, 4]}],
+  "confidence": "catalog"
+}

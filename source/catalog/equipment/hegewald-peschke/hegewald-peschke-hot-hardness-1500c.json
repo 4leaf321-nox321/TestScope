@@ -1,0 +1,134 @@
+{
+  "id": "hegewald-peschke-hot-hardness-1500c",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke SHP1-HV01-30-1500°C Hot Hardness Testing System",
+  "name_ko": "헤게발트 운트 페슈케 SHP1-HV01-30-1500°C 고온 경도 시험 시스템",
+  "manufacturer": "hegewald-peschke",
+  "category": "vickers_knoop_hardness",
+  "subcategory": "hot_hardness_vacuum",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "세라믹·소결금속처럼 고온에 견디는 재료를 진공 또는 질소 분위기에서 가열한 채로 비커스 경도를 재는 연구용 시스템. 경도 시험 프로브와 평가 유닛 두 부분으로 나뉘어, 노에서 시험이 도는 동안 평가 유닛에서 준비와 해석·성적서 작성을 동시에 한다. 상부 프로브에는 하중 인가부·측정 센서·X-Y 위치 결정이, 하부 노 챔버에는 가열·진공·매체 제어·시편 핸들링이 들어간다. 하중은 서보 스핀들 구동 폐루프로 최대 300 N 이고 DIN EN ISO 6507-1 의 HV0.1~HV30 단계가 기본 저장돼 있다. 로드셀이 진공 쪽에 있어 관통부·벨로우즈에서 생기는 션트 힘이 시험에 끼어들지 않고, 그래서 작은 시험하중도 걸 수 있다. 측정 시리즈를 시작할 때마다 기준 분동으로 하중 센서를 자동 점검해 진공·고온에 의한 드리프트가 모르는 새 값을 왜곡하지 않게 한다. 노는 텅스텐(포트형 몰리브덴) 저항 가열로 300~1500 °C, ±5 K. 분위기에 따라 상한이 달라진다 — 진공 10⁻⁵ mbar 미만에서 1500 °C, 질소 0.5 L/min 에서 900 °C, 공기 중에서는 80 °C 다.",
+  "test_items": [
+    "hardness_vickers"
+  ],
+  "measurands": [
+    "hardness_hv",
+    "hardness_HVT",
+    "indent_diagonal"
+  ],
+  "materials": [
+    "ceramics",
+    "sintered metals",
+    "high temperature resistant alloys"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 6507-1",
+      "DIN EN ISO 6507-2 (하중 공차)",
+      "DIN EN 60584-2 (열전대 공차)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 300,
+      "max": 1500,
+      "note": "±5 K. 진공(<10⁻⁵ mbar)에서만 1500 °C. 질소 0.5 L/min 에서 900 °C, 공기 중 80 °C. 실온부터 시작하는 시험도 가능"
+    },
+    "load_N": {
+      "max": 300,
+      "note": "서보 스핀들 폐루프 구동. HV0.1~HV30 단계 기본 저장"
+    },
+    "hardness_scales": {
+      "values": ["HV0.1", "HV0.5", "HV1", "HV5", "HV10", "HV30"],
+      "note": "DIN EN ISO 6507-1 의 HV0.1~HV30 구간이 기본 저장돼 있다. 중간 단계 전부가 저장돼 있는지는 문서가 열거하지 않는다"
+    },
+    "stage_travel_mm": {
+      "max": 25,
+      "note": "X-Y 크로스 테이블 25 x 25 mm. 위치 결정 구동 범위는 ±12 mm 로 적힌 곳도 있다"
+    },
+    "specimen_size_mm": {
+      "note": "온도 편차 ±5 K 가 보장되는 시편 크기는 30 x 30 mm, 두께 3~8 mm"
+    },
+    "power_kW": {
+      "max": 4.5,
+      "note": "시스템 전체 최대 소비. 히터 출력은 2.50 kW"
+    },
+    "weight_kg": {
+      "max": 350
+    }
+  },
+  "models": [
+    {
+      "model": "SHP1-HV01-30-1500°C",
+      "specs": {
+        "item_no": "20-007-000",
+        "load_max_N": 300,
+        "load_steps": "HV0.1 ~ HV30 (DIN EN ISO 6507-1)",
+        "hold_time_s": {"min": 5, "max": 60},
+        "max_speed_mm_min": 300,
+        "drive": "DC 모터 160 W, 3000 rpm, 엔코더 2500 스텝",
+        "load_resolution": "±60,000 digits",
+        "internal_data_processing_ms": 2,
+        "data_interface": "RS232",
+        "indenter": "비커스 (고객 제공)",
+        "indenter_extension_material": "Al2O3 99.9 %",
+        "shielding_plates": "몰리브덴 3 장 + 스테인리스 5 장",
+        "load_sensor_shutoff_degC": 80,
+        "xy_stage_mm": "25 x 25 (경사 위치 0.05 mm)",
+        "furnace_temperature_degC": {"min": 300, "max": 1500},
+        "furnace_tolerance_K": 5,
+        "heater": "포트형 몰리브덴 저항 가열",
+        "heater_output_kW": 2.5,
+        "vacuum_chamber": "일체형 원통 스테인리스, 200 mm DN, 글라스비드 블라스팅",
+        "pumping": "부스터 펌프 + 터보분자 펌프",
+        "thermocouples": "type S (Pt10Rh/Pt, -50~1767 °C) 3 개 — TC1 제어, TC2 독립 차단(>1550 °C), TC3 비교용(표시만)",
+        "overflow_valve_mbar": 20,
+        "sample_carrier": "Al2O3 기본 (시편에 맞춰 재질 변경 가능)",
+        "standby_temperature_degC": 600,
+        "power_supply": "400 V / 50 Hz / 16 A, 최대 4.5 kW",
+        "cover_gas": "N2, 0.5~5 bar, 1 L/min, 6 mm 가스 입구",
+        "cooling_water": "공급 온도 15~25 °C, 배관 압력 3~4 bar, 최대 100 L/min",
+        "footprint_mm": "2040 x 850 x 2500",
+        "weight_kg": 350,
+        "operation": "PC, 19인치 서랍형 터치패드 일체 키보드, 17인치 TFT 모니터"
+      }
+    }
+  ],
+  "accuracy": {
+    "temperature": "±5 K, 30 x 30 mm·두께 3~8 mm 시편을 따라",
+    "load": "DIN EN ISO 6507-2 의 비커스 하중 공차. 측정 시리즈마다 기준 분동으로 하중 센서 자동 점검"
+  },
+  "environment": {
+    "power": "400 V / 50 Hz / 16 A, 최대 4.5 kW",
+    "cooling_water": "15~25 °C, 3~4 bar, 최대 100 L/min",
+    "gas": "N2 0.5~5 bar, 1 L/min"
+  },
+  "features": [
+    "진공 쪽에 로드셀을 두어 관통부·벨로우즈의 션트 힘을 배제 — 작은 시험하중도 가능",
+    "측정 시리즈마다 기준 분동으로 하중 센서 자동 검증(드리프트 조기 발견)",
+    "반자동 — 가열·유지·시험 위치 이동·압입은 자동, 시편 취급과 진공·가스 개시는 수동",
+    "한 데이터셋에 여러 측정 시리즈를 넣어 한 번의 시험에서 여러 온도 단계 수행",
+    "로드락 핸들링 — 노를 식히고 배기하지 않고 시편 교체(대기 온도 600 °C, 락 챔버에서 질소로 냉각)",
+    "프로브 자동 개폐 케이싱, 정비 위치에서 압자 교체",
+    "TC2 독립 차단(>1550 °C), 압력·냉각수 감시 인터록",
+    "ISO63 플랜지로 진공 측 확장 가능, 연결 플랜지 수냉 가능"
+  ],
+  "options": [
+    "로드락 핸들링 시스템",
+    "측정 현미경 연결(평가 PC)",
+    "질소 도입",
+    "연결 플랜지 수냉"
+  ],
+  "relations": [
+    {"type": "performs", "target": "hardness_vickers"},
+    {"type": "requires", "target": "utility-cooling-water", "note": "15~25 °C, 3~4 bar, 최대 100 L/min"},
+    {"type": "same_family_as", "target": "hegewald-peschke-at130-hardness"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/hardness-tester-high-temperature.pdf", "pages": [2, 4, 5, 6, 7]}
+  ],
+  "confidence": "catalog",
+  "notes": "온도 상한이 분위기에 걸려 있다는 점이 이 장비의 핵심이다 — 1500 °C 는 진공(<10⁻⁵ mbar)에서만 나오고, 질소에서는 900 °C, 공기 중에서는 80 °C 로 뚝 떨어진다. `limits.temperature_degC.max` 를 1500 으로 두었으므로 검색이 이 단서를 놓치지 않게 note 에 조건을 붙였다. X-Y 위치 결정 범위가 문서 안에서 두 값으로 나온다 — 3쪽 그림 설명은 '±12 mm', 6쪽 사양표는 '25 x 25 mm' 다. 같은 것을 반지름과 전폭으로 각각 적은 것으로 보이지만 문서가 명시하지 않는다. 압자(비커스)는 고객이 준비한다."
+}

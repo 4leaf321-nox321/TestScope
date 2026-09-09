@@ -1,0 +1,53 @@
+{
+  "id": "espec-platinous-chambers",
+  "kind": "equipment_series",
+  "name": "ESPEC Platinous Series Temperature & Humidity Chambers (J series JP / H series NA)",
+  "name_ko": "에스펙 플래티너스 항온항습 챔버 (J 시리즈·H 시리즈)",
+  "manufacturer": "espec",
+  "brand": "Platinous",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "전자제품 신뢰성 시험의 기본 챔버. 일본판 J 시리즈: PR(항온항습 -20~+100), PL(-40~+100), PSL(-70~+100), PU/PG(온도 전용), PDR/PDL(저습형), PHP(고온고습), PCR(클린 Class5). 옵션으로 상한 +150/+180/+200 °C. 북미판 H 시리즈: EPZ/EPX(-70~+180 °C), EPU/EPL(-35~+180 °C), 작업공간 225/408/900 L. 습도 10~98 %rh, 온도 변동 ±0.5 °C.",
+  "test_items": ["damp_heat", "temperature_cycling"],
+  "measurands": ["failure_time", "insulation_degradation", "corrosion", "dimensional_change"],
+  "materials": ["electronic components", "PCB assemblies", "consumer electronics", "automotive parts", "medical devices", "batteries", "polymers"],
+  "standards": {
+    "compliance": ["ISO 12100", "IEC 60204-1", "IEC 61000-6-2", "EN 55011", "RoHS", "UL 508A (H series panel)"],
+    "test_methods": ["IEC 60068-2-1", "IEC 60068-2-2", "IEC 60068-2-14", "IEC 60068-2-30", "IEC 60068-2-78", "JESD22-A101", "MIL-STD-810 Method 501/502/507", "IEC 60068-3-5", "IEC 60068-3-6"]
+  },
+  "limits": {
+    "temperature_degC": {"min": -70, "max": 200, "note": "모델별: PR -20~+100, PL/PDL -40~+100, PSL/PG -70~+100; 옵션 상한 +150/+180, 일부 +200. H 시리즈 EPZ/EPX -70~+180"},
+    "humidity_pct": {"min": 5, "max": 98, "note": "표준 10~98 %rh; 저습형(PDR/PDL) 5 %rh 부터. +40 °C 이하 연속 습도 운전은 착상으로 제한"},
+    "heating_rate_K_min": {"min": 3, "max": 6, "note": "J 시리즈 3.0 °C/min; H 시리즈 5~6 °C/min"},
+    "cooling_rate_K_min": {"min": 1, "max": 5, "note": "용량이 클수록 느림 (900 L 는 1.2~1.4 °C/min)"},
+    "chamber_volume_L": {"min": 225, "max": 900, "note": "H 시리즈 225/408/900 L; J 시리즈 Type 1~4"},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [
+    {"model": "PR-1J … PR-4J (온도·습도)", "specs": {"temperature_degC": {"min": -20, "max": 100}, "temperature_degC_option": {"max": 180}, "humidity_pct": {"min": 10, "max": 98}}},
+    {"model": "PL-1J … PL-4J (저온·습도)", "specs": {"temperature_degC": {"min": -40, "max": 100}, "temperature_degC_option": {"max": 180}, "humidity_pct": {"min": 10, "max": 98}}},
+    {"model": "PSL-2J / PSL-4J (초저온·습도)", "specs": {"temperature_degC": {"min": -70, "max": 100}, "temperature_degC_option": {"max": 180}}},
+    {"model": "PDR-3J / PDR-4J (저습형)", "specs": {"temperature_degC": {"min": -20, "max": 100}, "humidity_pct": {"min": 5, "max": 98}, "temperature_fluctuation_degC": 0.3, "humidity_fluctuation_pct": 2.5, "temperature_uniformity_degC": 1.5, "heating_rate_K_min": 3.0, "cooling_rate_K_min": 2.0, "allowable_heat_load_W": [1100, 1250]}},
+    {"model": "PDL-3J / PDL-4J (저온·저습형)", "specs": {"temperature_degC": {"min": -40, "max": 100}, "humidity_pct": {"min": 5, "max": 98}, "cooling_rate_K_min": 1.0, "allowable_heat_load_W": [1500, 2850]}},
+    {"model": "PHP-2J … PHP-4J (고온고습)", "specs": {"temperature_degC": {"min": 30, "max": 100, "note": "주위온도 +10 °C 이상"}}},
+    {"model": "PU/PG-J (온도 전용)", "specs": {"temperature_degC": {"min": -70, "max": 100}, "temperature_degC_option": {"max": 200}}},
+    {"model": "EPZ-2H / EPZ-3H / EPZ-4H (온도 전용, NA)", "specs": {"temperature_degC": {"min": -70, "max": 180}, "chamber_volume_L": [225, 408, 900], "temperature_fluctuation_degC": 0.5, "temperature_uniformity_degC": [0.7, 1.0], "heating_rate_K_min": [6, 5, 6], "cooling_rate_K_min": [4, 2.5, 1.2], "workspace_mm": [[500, 600, 750], [600, 800, 850], [1000, 900, 1000]], "power": "208/230 V 3Ø 60 Hz"}},
+    {"model": "EPX-2H / EPX-3H / EPX-4H (온습도, NA)", "specs": {"temperature_degC": {"min": -70, "max": 180}, "humidity_pct": {"min": 10, "max": 98}, "humidity_fluctuation_pct": [2.5, 3], "humidity_uniformity_pct": [3, 5], "chamber_volume_L": [225, 408, 900]}},
+    {"model": "EPU-xH / EPL-xH (저온형, NA)", "specs": {"temperature_degC": {"min": -35, "max": 180, "note": "R-449A 사용 시 -30"}, "humidity_pct": {"min": 10, "max": 98}, "heating_rate_K_min": [5.5, 3.25, 5], "cooling_rate_K_min": [5, 3, 1.4]}}
+  ],
+  "accuracy": {"temperature_fluctuation": "±0.3 ~ ±0.5 °C", "humidity_fluctuation": "±2.5 ~ ±3 %rh", "temperature_uniformity": "±0.7 ~ 1.5 °C"},
+  "environment": {"allowable_ambient_degC": [0, 40], "refrigerant": "R-404A (R-449A on request, GWP 1397)", "power": "3-phase"},
+  "features": ["P-300 controller (USB, optional Ethernet)", "스테인리스 내외장", "전자팽창밸브 냉동 시스템", "히든 케이블 포트 100 mm", "습도 배스(수조) 방식 가습"],
+  "options": ["LN2 부스트 냉각", "드라이에어 퍼지", "저습·초저습 제어", "웹 컨트롤러(Ethernet)", "챔버 카메라", "관찰창·내부 유리문", "수냉식", "460/480 V 전원", "중하중 선반 30/50/80/100 kg"],
+  "relations": [
+    {"type": "simulates_environment", "target": "environment-damp-heat"},
+    {"type": "requires", "target": "utility-cooling-water", "note": "수냉 옵션 시"},
+    {"type": "same_family_as", "target": "espec-walk-in-chambers"}
+  ],
+  "sources": [
+    {"file": "espec/platinous-j-temp-humidity-chamber.pdf", "pages": [4, 22, 33]},
+    {"file": "espec/platinous-h-series.pdf", "pages": [3, 6, 7]}
+  ],
+  "confidence": "catalog"
+}

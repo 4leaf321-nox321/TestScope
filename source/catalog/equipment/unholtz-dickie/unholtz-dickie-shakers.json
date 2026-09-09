@@ -1,0 +1,429 @@
+{
+  "id": "unholtz-dickie-shakers",
+  "kind": "equipment_series",
+  "name": "Unholtz-Dickie Electrodynamic Shaker Systems (S / H / R / K / T2000 / T4000 / T5000 / T5500)",
+  "name_ko": "언홀츠-디키 전기동력식 가진기 시스템 (S·H·R·K·T 계열)",
+  "manufacturer": "unholtz-dickie",
+  "brand": "UD",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "100 % 공랭 전기동력식 가진기 아홉 계열, 87 가지 이상 구성으로 100~55,000 lbf(0.45~245 kN)를 덮는다. S 계열은 소형(S032/S062/S092, 0.45~4.4 kN)·중형(S202, 4.5~9.8 kN)·대형(S452/S452-16, 20~26.7 kN)으로 나뉘고, H 계열 26.7~35.6 kN, R 계열 44.5~60 kN, K 계열 75.6 kN 으로 올라간다. T 계열은 UD 고유의 Induct-A-Ring 아마추어를 쓴다 — 전기 권선도 수냉 배관도 없는 단조 알루미늄 단일턴 링을 상부 테이블 주물에 볼트로 죄어, 가동부 전체가 항상 접지 전위이고 무게가 45 kg 으로 가볍다. 그 덕에 T2000 은 정현 200 g·충격 600 g 를 견디고 SRS 2000 g @ 5000 Hz 같은 파이로 충격 시험을 반복해도 버틴다. 사인·랜덤·충격 펄스·사인온랜덤·랜덤온랜덤과 실측 시간이력 재현을 APEX SL 컨트롤러가 제어한다.",
+  "test_items": [
+    "vibration_sine_random",
+    "mechanical_shock"
+  ],
+  "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "peak_acceleration",
+    "shock_response_spectrum",
+    "frequency_response_function",
+    "failure_mode"
+  ],
+  "materials": [
+    "electronic assemblies",
+    "PCB",
+    "automotive components",
+    "avionics",
+    "satellites and launch hardware",
+    "telecom racks",
+    "large lithium-ion batteries",
+    "displays/TV"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "MIL-STD-167",
+      "MIL-STD-202",
+      "MIL-STD-331",
+      "MIL-STD-726",
+      "MIL-STD-750",
+      "MIL-STD-781",
+      "MIL-STD-810",
+      "MIL-STD-883",
+      "ASTM D4728",
+      "ASTM D3580",
+      "IEC 60068",
+      "RTCA/DO-160",
+      "GR-63-CORE",
+      "GR-468",
+      "GR-1221",
+      "IEEE 344",
+      "ESS (Environmental Stress Screening)"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "min": 0.45,
+      "max": 245,
+      "note": "100~55,000 lbf. 계열별 정격은 models 참조. K-170 만 정현/랜덤/충격이 따로 확정된다(75.6 / 71.2 / 151.2 kN) — 나머지 계열은 종합 카탈로그의 계열 범위뿐이다"
+    },
+    "frequency_Hz": {
+      "max": 5000,
+      "note": "H560BAC/2 가 5000 Hz 까지. T2000 은 정격 정현력 3000 Hz, T4000/5000/5500 은 정현·랜덤 정격력 2000 Hz"
+    },
+    "stroke_mm": {
+      "max": 76,
+      "note": "2 인치(51 mm) 표준, 계열에 따라 2.5 인치(63 mm)·3 인치(76 mm) 옵션 또는 표준"
+    },
+    "acceleration_g": {
+      "max": 200,
+      "note": "T2000 정현 200 g. H 계열 정현 160 g, R/K 계열은 별도 기재 없음"
+    },
+    "payload_kg": {
+      "max": 1818,
+      "note": "자동 하중 지지·중심 유지 기준. T4000/5000/5500 4000 lbs"
+    },
+    "velocity_m_s": {
+      "max": 3.5,
+      "note": "K-170 기준 정현 2.0 m/s, 충격 3.5 m/s. 다른 계열의 속도 정격은 확보한 문서에 없다"
+    }
+  },
+  "models": [
+    {
+      "model": "S-Series Small (S032 / S062 / S092)",
+      "specs": {
+        "force_lbf": {
+          "min": 100,
+          "max": 1000
+        },
+        "force_kN": {
+          "min": 0.45,
+          "max": 4.4
+        },
+        "armature_diameter_mm": [
+          105,
+          178
+        ],
+        "stroke_mm": 51,
+        "cooling": "100 % 공랭",
+        "shock_acceleration_g_pk": 1500,
+        "base_options": [
+          "Pedestal"
+        ]
+      },
+      "note": "1500 g pk 충격 출력은 S092 값이다. 소형 회로카드·전자 모듈·휴대폰·디스크 드라이브, 자동차 스위치·엔진 센서가 대상"
+    },
+    {
+      "model": "S-Series Medium (S202)",
+      "specs": {
+        "force_lbf": {
+          "min": 1000,
+          "max": 2200
+        },
+        "force_kN": {
+          "min": 4.5,
+          "max": 9.8
+        },
+        "armature_diameter_mm": 340,
+        "stroke_mm": 51,
+        "cooling": "100 % 공랭",
+        "auto_load_support_kg": 272,
+        "base_options": [
+          "Low Profile",
+          "Pedestal",
+          "Slip Table"
+        ],
+        "combined_environment": "진동/온도 복합 인터페이스 가능"
+      }
+    },
+    {
+      "model": "S-Series Large (S452 / S452-16)",
+      "specs": {
+        "force_lbf": {
+          "min": 4500,
+          "max": 6000
+        },
+        "force_kN": {
+          "min": 20,
+          "max": 26.7
+        },
+        "armature_diameter_mm": [
+          337,
+          445
+        ],
+        "stroke_mm": 51,
+        "cooling": "100 % 공랭",
+        "auto_load_support_kg": 364,
+        "base_options": [
+          "Low Profile",
+          "Pedestal",
+          "Slip Table"
+        ],
+        "combined_environment": "진동/온도 복합 인터페이스 가능"
+      }
+    },
+    {
+      "model": "H-Series (H560B-12 / H560B-16 / H560B-24 / H560BAC/2)",
+      "specs": {
+        "force_lbf": {
+          "min": 6000,
+          "max": 8000
+        },
+        "force_kN": {
+          "min": 26.7,
+          "max": 35.6
+        },
+        "armature_diameter_mm": [
+          338,
+          445,
+          647
+        ],
+        "stroke_mm": 51,
+        "stroke_mm_option": 76,
+        "cooling": "100 % 공랭",
+        "auto_load_support_kg": {
+          "H560B-12": 363,
+          "H560B-16": 618,
+          "H560B-24": 680
+        },
+        "sine_acceleration_g": 160,
+        "shock_acceleration_g": 400,
+        "frequency_Hz_max": 5000,
+        "base_options": [
+          "Low Profile",
+          "Pedestal",
+          "Slip Table"
+        ]
+      },
+      "note": "3 인치 스트로크 옵션은 H560B-16·-24 에만. 5000 Hz 확장 주파수는 H560BAC/2 사양이다"
+    },
+    {
+      "model": "R-Series (R16A / R16C / R16CA / R24A / R24C)",
+      "specs": {
+        "force_lbf": {
+          "min": 10000,
+          "max": 13500
+        },
+        "force_kN": {
+          "min": 44.5,
+          "max": 60
+        },
+        "armature_diameter_mm": [
+          445,
+          654
+        ],
+        "stroke_mm": 51,
+        "stroke_mm_option": [
+          63,
+          76
+        ],
+        "cooling": "100 % 공랭",
+        "auto_load_support_kg": 680,
+        "base_options": [
+          "Low Profile",
+          "Pedestal",
+          "Slip Table"
+        ]
+      },
+      "note": "2.5 인치(63 mm)·3 인치(76 mm) 스트로크 옵션은 R16C·R16CA 에만"
+    },
+    {
+      "model": "K-Series K-170 (K170-16CA-3 / K170-24C-3)",
+      "specs": {
+        "force_lbf_sine": 17000,
+        "force_kN_sine": 75.6,
+        "force_lbf_random": 16000,
+        "force_kN_random": 71.2,
+        "force_lbf_shock": 34000,
+        "force_kN_shock": 151.2,
+        "armature_diameter_mm": [
+          445,
+          654
+        ],
+        "stroke_mm": 76,
+        "cooling": "100 % 공랭",
+        "auto_load_support_kg": 1136,
+        "velocity_m_s_sine": 2.0,
+        "velocity_m_s_shock": 3.5,
+        "armature_material": "고강도 알루미늄 또는 마그네슘 합금 주조, 다중 리브 설계",
+        "guide_bearings": "이중 인라인 아마추어 가이드 베어링",
+        "amplifier": "SAI 계열 Class D / IGBT, 효율 90 % 초과, 직결(정합 변압기 없음), 고전압 모드 선택 시 충격 출력 확장",
+        "field_supply": "별도 캐비닛, Max Force / Energy Save 모드 스위치 선택",
+        "base_options": {
+          "Low Profile (LP)": {
+            "length_mm": 1750,
+            "width_mm": 1158,
+            "height_mm": 1034,
+            "weight_kg": 4000
+          },
+          "Pedestal Base (PB)": {
+            "length_mm": 1168,
+            "width_mm": 1638,
+            "height_mm": 1209,
+            "weight_kg": 4636
+          },
+          "Slip Table (ST)": {
+            "length_mm": 2636,
+            "width_mm": 1570,
+            "height_mm": 1486,
+            "weight_kg": 7272
+          }
+        },
+        "amplifier_cabinet": {
+          "model": "SAI90",
+          "width_mm": 975,
+          "depth_mm": 787,
+          "height_mm": 2057,
+          "weight_kg": 500
+        },
+        "field_supply_cabinet": {
+          "width_mm": 975,
+          "depth_mm": 787,
+          "height_mm": 1778,
+          "weight_kg": 500
+        },
+        "cooling_fan_50Hz": {
+          "length_mm": 1080,
+          "width_mm": 991,
+          "height_mm": 1359,
+          "weight_kg": 336,
+          "airflow_m3_h": 4464
+        },
+        "cooling_fan_60Hz": {
+          "length_mm": 1080,
+          "width_mm": 846,
+          "height_mm": 1331,
+          "weight_kg": 295,
+          "airflow_m3_h": 4464
+        },
+        "bolt_circles_mm": "중심 1 홀, 102·203·406 mm 원 (전 기종), 305 mm 원 (-16 아마추어), 610 mm 원 (-24 아마추어)"
+      },
+      "note": "공랭으로 낼 수 있는 최고 출력 계열. 3 인치 연속 변위는 MIL-STD-810 F/G 수송 시험과 장시간 충격 펄스가 요구하는 값이다. EV 대형 리튬이온 배터리·연료전지 스택 같은 하중이 대상"
+    },
+    {
+      "model": "T2000 Series (Induct-A-Ring)",
+      "specs": {
+        "force_lbf": {
+          "min": 15000,
+          "max": 25000
+        },
+        "force_kN": {
+          "min": 67,
+          "max": 111
+        },
+        "armature_diameter_mm": 445,
+        "armature_mass_kg": 45.4,
+        "stroke_mm": 51,
+        "stroke_mm_option": 76,
+        "auto_load_support_kg": 862,
+        "sine_force_frequency_Hz_max": 3000,
+        "sine_acceleration_g": 200,
+        "shock_acceleration_g": 600,
+        "srs_shock": "2000 g SRS @ 5000 Hz",
+        "launch_vibration": "18 lbs(8.2 kg) 하중에서 176 g rms"
+      }
+    },
+    {
+      "model": "T4000 / T5000 / T5500 Series (Induct-A-Ring)",
+      "specs": {
+        "force_lbf": {
+          "min": 28000,
+          "max": 55000
+        },
+        "force_kN": {
+          "min": 125,
+          "max": 245
+        },
+        "armature_diameter_mm": 648,
+        "stroke_mm": [
+          51,
+          76
+        ],
+        "auto_load_support_kg": 1818,
+        "rated_force_frequency_Hz_max": 2000,
+        "armature_resonance": {
+          "T4000-2in": "2000 Hz, 250 lbs (113 kg)",
+          "T4000-3in": "2000 Hz, 285 lbs (129 kg)",
+          "T5000-3in": "1800 Hz, 385 lbs (175 kg)",
+          "T5500-3in": "1800 Hz, 385 lbs (175 kg)"
+        },
+        "base_options": [
+          "Pedestal",
+          "Concrete Slip Table Assembly (CSTA)"
+        ]
+      },
+      "note": "미사일·발사체 하드웨어, 위성, 레이더, 배터리 어셈블리, 변속기, 대형 항전장비가 대상"
+    }
+  ],
+  "features": [
+    "Induct-A-Ring 아마추어(T 계열): 전기 권선·전류 리드·수냉 배관 없음, 전 부위 접지 전위",
+    "100 % 공랭 — 수냉 계통과 그에 딸린 고장 모드가 없다",
+    "자동 하중 지지 및 아마추어 중심 유지",
+    "APEX SL 컨트롤러: Core i5 워크스테이션 + SlimLine 섀시, USB 2.0, DSP 3 개, 채널당 24 bit A/D, 입력 4/8/12/16 채널",
+    "사인·랜덤·충격·공진 드웰·사인온랜덤·건파이어·랜덤온랜덤·SRS·시간이력 재현·버스트/처프",
+    "APEX SL 에서 앰프까지 제어하는 Command/Status 패널, 시험 종료 후 자동 전원 차단(Power Save)",
+    "SALL/SAI 계열 IGBT 공랭 앰프 25~100 KVA(단일 베이), 120~720 KVA 확장, 효율 90 % 이상, 정합 변압기 없이 직결"
+  ],
+  "options": [
+    "ST 계열 슬립 테이블 — S202~T2000 용, 슬립 플레이트 20~48 인치 사각(508~1219 mm), 수직/수평 10 분 전환, IGIS 몸체 가이드·트러니언 절연, 횡방향 구속 베어링(LRB)",
+    "CSTA 계열 콘크리트 슬립 테이블 — R·K·T2000 대안이자 T4000/5000/5500 표준, 콘크리트 충전 반력 질량",
+    "헤드 플레이트·헤드 익스팬더 — 마그네슘/알루미늄 합금, 사용 주파수 2000 Hz, 열챔버용 G-10 인터페이스",
+    "가이드 헤드 익스팬더 및 외부 지지 구조형(하중 지지 12,000 lbs/5455 kg, 최대 72x72 인치)",
+    "복합 환경(온도/진동) 인터페이스",
+    "CVA-4·CVA-8·D33 신호 조절기, 8B6·10B10-X·10B10T-X 가속도계, RCA-2TR 원격 전하 증폭기"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vibration_sine_random"
+    },
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "unholtz-dickie-ls-thrusters"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "unholtz-dickie-680c-calibrator",
+      "note": "680C 교정 시스템은 S032-C 가진기를 쓴다"
+    },
+    {
+      "type": "same_family_as",
+      "target": "imv-i-series-shaker"
+    }
+  ],
+  "sources": [
+    {
+      "file": "unholtz-dickie/product-catalog.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "file": "unholtz-dickie/k170-series-datasheet.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "unholtz-dickie/apex-sl-bulletin.pdf",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "file": "unholtz-dickie/10b10x-accelerometer.pdf",
+      "pages": [
+        1
+      ],
+      "note": "10B10-X 전하형 가속도계 — 시스템 계측 부속"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "종합 카탈로그(BULLETIN GPGR12, 2014)라 계열별 힘·아마추어 지름·스트로크·하중 지지는 나오지만 기종별 정현/랜덤/충격 정격력 표와 주파수 범위 표는 없다. 그 값은 계열 데이터시트를 따로 구해야 한다. `sine_acceleration_g`·`shock_acceleration_g` 는 계열 소개문에 적힌 상한이지 각 기종 값이 아니다. S 계열 소형의 아마추어 지름 4.1 인치는 카탈로그가 105 mm 로 적었다(4.1 인치는 104 mm 이다). K-170 은 기종 데이터시트(Rev.1)를 archive.org 에서 확보해 정현/랜덤/충격 정격력, 속도, 베이스 구성별 치수·중량, 앰프·필드공급·냉각팬 제원까지 확정했다. 1쪽을 렌더링해 대조한 결과 추출 텍스트에 섞여 있던 '70 in/s (1.8 m/s)'·'75 in/s (1.9 m/s)' 는 지면에 없는 값이었다 — 실제 속도 정격은 정현 80 in/s(2.0 m/s), 충격 138 in/s(3.5 m/s) 뿐이다."
+}

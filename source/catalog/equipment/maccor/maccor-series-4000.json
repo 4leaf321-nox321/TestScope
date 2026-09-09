@@ -1,0 +1,42 @@
+{
+  "id": "maccor-series-4000",
+  "kind": "equipment_series",
+  "name": "Maccor Series 4000 Automated Battery Test System",
+  "name_ko": "맥코 시리즈 4000 자동 배터리 시험 시스템",
+  "manufacturer": "maccor",
+  "brand": "Series 4000",
+  "category": "battery_cycler",
+  "form_factor": "floor",
+  "description": "고객 사양에 맞춰 제작되는 다기능 자동 배터리 시험 시스템. 임베디드 컨트롤러 1장이 1~8 채널을 담당하고, 시험 캐비닛에는 개별 제어되는 프로그래머블 부하와 전원이 들어간다. 채널마다 독립 동작하므로 서로 다른 시험을 동시에 수행할 수 있고, 시작 후에는 자동으로 진행된다. 정전류·정전력·정전압·정저항 모드를 지원하며, Maccor FRA(주파수 응답 분석기)를 연결하면 1 mHz~20 kHz 급 임피던스 측정을 채널마다 할 수 있다.",
+  "test_items": ["battery_cycle_life"],
+  "measurands": ["capacity", "coulombic_efficiency", "internal_resistance", "impedance_spectrum", "voltage_profile"],
+  "materials": ["battery materials", "lithium-ion cells", "portable device batteries", "thermal batteries", "supercapacitors"],
+  "standards": {"compliance": [], "test_methods": ["IEC 61960", "IEC 62660-1", "UL 1642", "USABC"]},
+  "limits": {
+    "voltage_V": {"min": -2, "max": 8, "note": "실제 구성 사례(96채널 96ch 시스템) 기준. 사양 구성에 따라 변경"},
+    "current_A": {"min": 0.00015, "max": 20, "note": "구성 사례: 150 µA~5 A 또는 최대 20 A. 주문 사양에 따라 다름"},
+    "channels": {"note": "임베디드 컨트롤러당 1~8 채널, 시스템 총 채널 수는 구성에 따름"},
+    "fra_frequency_Hz": {"min": 0.001, "note": "Maccor FRA 1 mHz 부터"},
+    "fra_current_A": {"max": 3.0, "note": "FRA 최대 3000 mA"},
+    "fra_voltage_V": {"max": 55, "note": "FRA 최대 55 V"}
+  },
+  "models": [
+    {"model": "Series 4000 (32ch 구성 + Maccor FRA)", "specs": {"channels": 32, "voltage_V": {"min": -2, "max": 8}, "current_A": 20, "multiplexer": "8채널(외장)", "auxiliary_io": "전압 16 / 온도 32 / DIO 8"}},
+    {"model": "Series 4000 (48ch 구성 + Solartron FRA)", "specs": {"channels": 48, "voltage_V": {"min": -2, "max": 8}, "current_A": {"min": 0.00015, "max": 5}, "multiplexer": "24채널(내장)", "auxiliary_io": "전압 16 / 온도 32 / DIO 16"}}
+  ],
+  "accuracy": {"fra": "0.1 % of reading 또는 0.00005 % of full scale 중 큰 값"},
+  "operating_modes": ["정전류(CC)", "정전력(CP)", "정전압(CV)", "정저항(CR)"],
+  "features": ["채널당 독립 시험 실행", "임베디드 컨트롤러(채널 1~8)", "주문 사양 제작(전압·전류 레인지 자유 구성)", "보조 입력(전압·온도·DIO)", "FRA 연동 임피던스 측정", "지속적 기능 추가(펌웨어 갱신)"],
+  "applications": ["소재 연구", "휴대기기 배터리", "제조 품질관리", "열전지 시험", "인증(Qualification) 시험"],
+  "relations": [
+    {"type": "performs", "target": "battery_cycle_life"},
+    {"type": "same_family_as", "target": "arbin-lbt-cell-tester"}
+  ],
+  "sources": [
+    {"file": "maccor/series-4000-96ch.pdf", "pages": [1, 2]},
+    {"file": "maccor/series-4000-automated-test-system.pdf", "pages": [2, 3]},
+    {"file": "maccor/bidirectional-battery-testers-techspecs.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "catalog",
+  "notes": "Series 4000 은 주문 제작이므로 카탈로그에 고정 사양표가 없다. 여기 기록한 전압·전류 범위는 문서에 실린 실제 구성 사례이며 장비의 절대 한계가 아니다."
+}

@@ -1,0 +1,103 @@
+"""배포 스크립트가 지켜야 하는 것.
+
+지침 문서에만 적힌 규칙은 반드시 어긋난다 — 급할 때 사람은 문서를 안 읽는다.
+여기서 검사하는 것만이 실제로 지켜지는 규칙이다.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[3]
+SCRIPTS = REPO / "scripts"
+
+BOM = b"\xef\xbb\xbf"
+
+#: 훑지 않을 곳. 남의 패키지가 들고 온 .ps1 까지 우리 규칙으로 재지 않는다.
+_SKIP = {"node_modules", ".venv", ".git", "deploy"}
+
+
+def _repo_scripts() -> list[Path]:
+    """**저장소 전체**의 .ps1.
+
+    `scripts/` 만 보면 루트의 activate.ps1 이 빠진다 — 실제로 그렇게 빠져 있었다.
+    """
+    return [
+        path for path in REPO.rglob("*.ps1") if not _SKIP & set(path.relative_to(REPO).parts)
+    ]
+
+
+def test_ps1_은_utf8_bom_으로_저장한다() -> None:
+    """**Windows PowerShell 5.1 이 BOM 없는 스크립트를 CP949 로 읽는다.**
+
+    그러면 주석과 오류 메시지의 한글이 깨지고, 운이 나쁘면 구문 오류가 난다 —
+    배포하려는 순간에 배포 스크립트가 안 도는 것이 가장 나쁘다.
+
+    편집 도구가 BOM 을 떼는 일이 흔하므로 시험이 지킨다.
+    """
+    missing = [
+        str(path.relative_to(REPO))
+        for path in _repo_scripts()
+        if not path.read_bytes().startswith(BOM)
+    ]
+    assert not missing, "UTF-8 BOM 이 없습니다: " + ", ".join(missing)
+
+
+def test_네이티브_명령은_종료_코드로_판정한다() -> None:
+    """5.1 은 네이티브 명령이 stderr 에 한 줄만 써도 종료성 오류로 바꾼다.
+
+    **alembic 은 INFO 로그를 stderr 로 낸다** — 감싸지 않으면 정상 배포가 실패로
+    뒤집힌다. alembic·pg_dump·robocopy 를 부르는 스크립트는 감싸는 함수를 갖는다.
+    """
+    for name in ("deploy.ps1", "install.ps1", "backup.ps1", "restore.ps1"):
+        text = (SCRIPTS / "deploy" / name).read_text(encoding="utf-8-sig")
+        assert "function Invoke-Native" in text, f"{name} 에 Invoke-Native 가 없습니다"
+
+
+def test_대시_두_개를_막는다() -> None:
+    """`--AppPath '<경로>'` 로 쓰면 PowerShell 은 오류를 내지 않는다.
+
+    그 글자 자체가 첫 위치 매개변수에 들어가고 **진짜 값은 다음 매개변수로 밀려
+    들어간다** — deploy.ps1 에서는 그것이 -Repo 라서 저장소 이름 자리에 경로가
+    가고, 사람은 "gh 가 안 된다" 를 보게 된다.
+    """
+    for name in ("deploy.ps1", "install.ps1", "rollback.ps1", "backup.ps1"):
+        text = (SCRIPTS / "deploy" / name).read_text(encoding="utf-8-sig")
+        assert "Assert-NotFlag" in text, f"{name} 에 Assert-NotFlag 가 없습니다"
+
+
+def test_패키지에_배포_스크립트가_다_들어간다() -> None:
+    """서버가 릴리스만 받는 환경이어도 zip 하나로 그다음 배포가 돌아야 한다.
+
+    빠뜨리면 첫 배포에 저장소를 클론하는 수밖에 없고, 폐쇄망에서는 그 길이 없다.
+    """
+    packaged = (SCRIPTS / "ci" / "package_deploy.ps1").read_text(encoding="utf-8-sig")
+    for path in (SCRIPTS / "deploy").glob("*.ps1"):
+        assert path.name in packaged, f"package_deploy.ps1 이 {path.name} 을 안 담습니다"
+
+
+def test_설치가_부르는_시드_스크립트가_있다() -> None:
+    """스크립트 이름을 고치면 배포가 조용히 그 단계를 잃는다 — 그때 화면은 빈
+    목록을 보여 주고, 사람은 그것을 "값이 없다" 로 읽는다."""
+    backend_scripts = REPO / "backend" / "scripts"
+    for name, caller in (
+        ("seed_install.py", "install.ps1"),
+        ("seed_reference.py", "deploy.ps1"),
+    ):
+        assert (backend_scripts / name).exists(), f"{name} 이 없습니다"
+        text = (SCRIPTS / "deploy" / caller).read_text(encoding="utf-8-sig")
+        assert name in text, f"{caller} 이 {name} 을 안 부릅니다"
+
+
+def test_콘솔이_아닌_출력에서_죽지_않게_한다() -> None:
+    """**다 끝난 작업이 traceback 으로 끝나면 사람은 그것을 실패로 읽는다.**
+
+    한글은 CP949 로 나가지만 줄표 같은 글자는 못 나간다. 콘솔에 직접 찍을 때는
+    콘솔 API 를 타서 멀쩡한데, deploy.ps1 이 출력을 받아 가는 순간 locale 로
+    떨어져 그때만 터진다 — 사람이 손으로 돌릴 때는 안 보이는 자리다.
+    """
+    for path in (REPO / "backend" / "scripts").glob("*.py"):
+        if path.name.startswith("_"):
+            continue
+        text = path.read_text(encoding="utf-8")
+        assert "survive_cp949()" in text, f"{path.name} 이 survive_cp949 를 안 부릅니다"

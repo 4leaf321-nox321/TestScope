@@ -1,0 +1,26 @@
+{
+  "id": "mettler-dma-sdta861e",
+  "kind": "equipment_model",
+  "name": "METTLER TOLEDO DMA/SDTA861e Dynamic Mechanical Analyzer",
+  "name_ko": "메틀러 토레도 DMA/SDTA861e 동적기계분석기",
+  "manufacturer": "mettler-toledo",
+  "category": "dma",
+  "form_factor": "benchtop",
+  "description": "힘·변위 동시 측정 DMA. -150~500 °C, 힘 0.001–40 N(18/40 N 모델), 변위 ±1.6 mm(0.6 nm), 주파수 0.001–1000 Hz(전단 1000, 굽힘·인장·압축 300), tan δ 0.0001–5000, 강성 10–10^8 N/m. 3점굽힘·단/이중 캔틸레버·전단·인장·압축 클램프. 후속 DMA 1 은 브로슈어 다운로드 실패.",
+  "test_items": ["dma"],
+  "measurands": ["storage_modulus", "loss_modulus", "tan_delta", "glass_transition", "gel_point"],
+  "materials": ["polymers", "elastomers", "composites", "adhesives", "liquids (shear)", "films", "fibers"],
+  "standards": {"compliance": ["IEC/EN 61010-1", "EN 61326-1"], "test_methods": ["ASTM D4065", "ASTM D5279", "ISO 6721", "ASTM E1640"]},
+  "limits": {
+    "temperature_degC": {"min": -150, "max": 500},
+    "force_N": {"min": 0.001, "max": 40},
+    "frequency_Hz": {"min": 0.001, "max": 1000},
+    "displacement_um": {"max": 1600},
+    "sample_length_mm": {"max": 100}
+  },
+  "models": [{"model": "DMA/SDTA861e (18 N / 40 N)", "specs": {"temperature_degC": {"min": -150, "max": 500}, "force_N": {"min": 0.001, "max": 40}, "frequency_Hz": {"min": 0.001, "max": 1000}, "displacement_um": 1600, "displacement_resolution_nm": 0.6, "tan_delta": {"min": 0.0001, "max": 5000}, "stiffness_N_m": {"min": 10, "max": 100000000}, "clamps": {"3pt_bending": "free length 30–90 mm", "single_cantilever": "10–40 mm", "dual_cantilever": "20–80 mm", "tension": "5.5/9/10.5/19.5 mm, W≤7, T≤3", "shear": "Ø≤15, T≤6.5", "compression": "Ø≤20, T≤9"}}}],
+  "accuracy": {"temperature": "0.5 K, resolution 0.003 K", "force_resolution": "0.15 mN (0–5 N), 1.5 mN (0–50 N)", "stiffness_precision": "0.2 %"},
+  "relations": [],
+  "sources": [{"file": "mettler-toledo/dma-sdta861e-brochure.pdf", "pages": [8, 11, 14], "note": "2014 판 브로슈어(대학 미러)"}],
+  "confidence": "catalog"
+}

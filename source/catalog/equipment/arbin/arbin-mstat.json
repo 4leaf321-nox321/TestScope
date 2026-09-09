@@ -1,0 +1,31 @@
+{
+  "id": "arbin-mstat",
+  "kind": "equipment_series",
+  "name": "Arbin MSTAT High Precision Multichannel Potentiostat / Galvanostat",
+  "name_ko": "아빈 MSTAT 다채널 정밀 포텐시오스탯·갈바노스탯",
+  "manufacturer": "arbin",
+  "brand": "MSTAT",
+  "category": "battery_cycler",
+  "form_factor": "rack",
+  "description": "배터리 소재 전기화학 연구와 셀 시험용 다채널 시스템. 각 채널이 독립적인 포텐시오스탯/갈바노스탯으로 동작하며 채널마다 기준전극 단자를 별도 제공한다. 전압 -5~5 V, 전류 레인지 5 A / 500 mA / 20 mA / 1 mA, 채널 4~64개. 디지털·아날로그 전압 제어를 모두 지원하고, EIS 모듈을 4~32 채널이 공유해 비용을 낮춘다.",
+  "test_items": ["battery_cycle_life"],
+  "measurands": ["capacity", "coulombic_efficiency", "impedance_spectrum", "voltage_profile", "current_response"],
+  "materials": ["battery materials", "lithium-ion cells", "electrodes", "electrolytes", "supercapacitors", "fuel cells"],
+  "standards": {"compliance": [], "test_methods": ["IEC 61960", "ASTM E1876 (해당 없음)"]},
+  "limits": {
+    "voltage_V": {"min": -5, "max": 5},
+    "current_A": {"min": 0.001, "max": 5, "note": "레인지 5 A / 500 mA / 20 mA / 1 mA"},
+    "channels": {"min": 4, "max": 64}
+  },
+  "models": [
+    {"model": "MSTAT", "specs": {"voltage_V": {"min": -5, "max": 5}, "current_ranges": ["5 A", "500 mA", "20 mA", "1 mA"], "channels": {"min": 4, "max": 64}, "reference_electrode": "채널마다 내장"}}
+  ],
+  "techniques": ["Chrono-amperometry / potentiometry", "Cyclic voltammetry", "다전극(Multi-Electrode) 실험", "배터리 수명 사이클 시험", "EIS(공유 모듈)"],
+  "features": ["채널별 독립 포텐시오스탯/갈바노스탯", "채널당 4개 전류 레인지, 24 bit 분해능", "디지털+아날로그 전압 제어", "채널별 기준전극 내장", "EIS 모듈 4~32 채널 공유", "완전 병렬 연결 가능"],
+  "relations": [
+    {"type": "performs", "target": "battery_cycle_life"},
+    {"type": "same_family_as", "target": "arbin-lbt-cell-tester"}
+  ],
+  "sources": [{"file": "arbin/mstat-rev12.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

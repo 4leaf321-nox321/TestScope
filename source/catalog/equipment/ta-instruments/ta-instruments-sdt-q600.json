@@ -1,0 +1,127 @@
+{
+  "id": "ta-instruments-sdt-q600",
+  "kind": "equipment_series",
+  "name": "TA Instruments SDT Q600 Simultaneous DSC-TGA",
+  "name_ko": "TA 인스트루먼츠 SDT Q600 동시 열분석(DSC-TGA)",
+  "manufacturer": "ta-instruments",
+  "brand": "SDT",
+  "category": "sta",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "한 시료에서 중량 변화(TGA)와 열유속(DSC)을 동시에 재는 수평 이중 저울식 동시 열분석기. 이중 빔 구조라 빔 성장과 부력이 신호에 끼는 몫이 사실상 사라지고, 두 시료의 TGA 를 동시에 독립 측정할 수도 있다. 세라믹 빔 안의 백금/백금-로듐(R형) 열전대 쌍이 시료·기준·차동 온도를 직접 재 실온부터 1500 °C 를 덮는다. 승온 속도는 1000 °C 까지 0.1~100 °C/min, 1500 °C 까지는 0.1~25 °C/min. 강제 공랭으로 1500 °C 에서 50 °C 까지 30 분 미만. DTA 감도 0.001 °C, 열량 정확도·정밀도 ±2 %(금속 표준 기준). 진공 7 Pa(0.05 torr)까지, 반응성 가스는 별도 가스관으로 넣는다.",
+  "test_items": [
+    "tga",
+    "dsc"
+  ],
+  "measurands": [
+    "mass_loss",
+    "decomposition_temperature",
+    "melting_point",
+    "enthalpy_change",
+    "phase_transition",
+    "onset_temperature",
+    "ash",
+    "reaction_kinetics"
+  ],
+  "materials": [
+    "ceramics",
+    "metals and alloys",
+    "minerals",
+    "polymers",
+    "catalysts and carbon materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1500,
+      "note": "실온부터. 백금 팬은 1000 °C 까지 권장, 세라믹 컵은 1500 °C 까지"
+    },
+    "heating_rate_K_min": {
+      "min": 0.1,
+      "max": 100,
+      "note": "1000 °C 까지 0.1~100 °C/min, 1500 °C 까지는 0.1~25 °C/min"
+    },
+    "sample_volume_uL": {
+      "values": [
+        40,
+        90,
+        110
+      ],
+      "note": "백금 40·110 µL, 알루미나(세라믹) 40·90 µL"
+    }
+  },
+  "models": [
+    {
+      "model": "SDT Q600",
+      "specs": {
+        "temperature_range_degC": {
+          "min": "ambient",
+          "max": 1500
+        },
+        "heating_rate_to_1000C_degC_min": {
+          "min": 0.1,
+          "max": 100
+        },
+        "heating_rate_to_1500C_degC_min": {
+          "min": 0.1,
+          "max": 25
+        },
+        "furnace_cooling": "강제 공랭 — 1500 -> 50 °C 30 분 미만, 1000 -> 50 °C 20 분 미만",
+        "thermocouples": "백금/백금-로듐 (R형)",
+        "temperature_calibration": "퀴리점 또는 순금속 표준, 1~5 점",
+        "dta_sensitivity_degC": 0.001,
+        "calorimetric_accuracy_pct": 2,
+        "vacuum_Pa": 7,
+        "balance": "수평 이중 저울(dual beam)",
+        "dual_sample_tga": true,
+        "auto_stepwise_tga": true,
+        "sample_pans": "백금 40·110 µL, 알루미나 40·90 µL",
+        "mass_flow_controller": "자동 가스 전환 포함",
+        "reactive_gas": "별도 가스관 포함"
+      }
+    }
+  ],
+  "accuracy": {
+    "calorimetric": "±2 % (금속 표준 기준)",
+    "dta_sensitivity": "0.001 °C"
+  },
+  "features": [
+    "수평 이중 저울 — 빔 성장·부력 기여 제거",
+    "두 시료의 TGA 동시 독립 측정",
+    "세라믹 빔 내장 R형 열전대 쌍으로 시료·기준·차동 온도 직접 측정",
+    "사파이어 표준으로 DSC 신호 교정",
+    "StepWise Isothermal(SWI) 자동화 — 근접한 중량 감소 분리",
+    "천공 스테인리스 외피의 수평 노"
+  ],
+  "options": [
+    "퀴리점 기준물질(150~1120 °C 교정)",
+    "질량 손실 기준물질"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "tga"
+    },
+    {
+      "type": "performs",
+      "target": "dsc"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-discovery-tga"
+    }
+  ],
+  "sources": [
+    {
+      "file": "ta-instruments/sdt-brochure.pdf",
+      "pages": [
+        4
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 막혀 archive.org 스냅샷(2024-06-16)에서 받았다. Q600 은 구형 Q 시리즈 기종이다 — 현행 Discovery SDT 650 의 사양은 이 문서에 없다. 백금 팬 1000 °C·세라믹 컵 1500 °C 라는 상한은 팬의 제약이지 노의 제약이 아니다."
+}

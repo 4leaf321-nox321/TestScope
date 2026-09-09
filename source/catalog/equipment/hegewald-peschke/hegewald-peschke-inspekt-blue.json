@@ -1,0 +1,313 @@
+{
+  "id": "hegewald-peschke-inspekt-blue",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt blue Universal Testing Machines (5 kN – 50 kN)",
+  "name_ko": "헤게발트 운트 페슈케 inspekt blue 만능재료시험기 (5~50 kN)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "subcategory": "dual_column",
+  "drive": "electromechanical",
+  "form_factor": "dual_column_tabletop",
+  "description": "지름이 큰 정밀 볼스크류로 강성을 확보한 탁상형 2 컬럼 만능재료시험기. 브러시리스 구동이고 하중 프레임의 높이·폭이 가변이다. 시험 공간 조명을 시험 시퀀스에 넣을 수 있고 알루미늄 프로파일 외장을 쓴다. 5·10·20·30·50 kN 다섯 기종이 프레임 치수(1420×790×520 mm)를 공유하고 정격만 다르다 — 정격이 커질수록 최고 시험 속도가 낮아지고(2000 → 240 mm/min) 크로스헤드 이동 분해능은 좋아진다(0.02 → 0.0025 µm). 힘 측정은 DIN EN ISO 7500-1 / ASTM E4 Class 1(옵션 0.5), 분해능 24 bit. 전원 230 VAC 0.5 kVA.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "shear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength",
+    "peel_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "plastics",
+    "elastomers",
+    "textiles",
+    "foils",
+    "metals (박판·세선)",
+    "components"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1 (옵션 Class 0.5)",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 5,
+      "max": 50,
+      "note": "5·10·20·30·50 kN 다섯 기종 데이터시트를 모두 확보했다"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.00016,
+      "max": 2000,
+      "note": "정격이 클수록 최고 속도가 낮다 — 5 kN 2000, 10 kN 1200, 20 kN 600, 30 kN 400, 50 kN 240 mm/min"
+    },
+    "vertical_test_space_mm": {
+      "min": 1070,
+      "max": 1080
+    },
+    "horizontal_test_space_mm": {
+      "values": [
+        420
+      ]
+    },
+    "frame_stiffness_kN_mm": {
+      "min": 15,
+      "max": 52
+    },
+    "weight_kg": {
+      "min": 120,
+      "max": 170
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt blue 5 kN",
+      "specs": {
+        "item_no": "10-039-0x1",
+        "nominal_load_kN": 5,
+        "frame_stiffness_kN_mm": 15,
+        "crosshead_speed_mm_min": {
+          "min": 0.0016,
+          "max": 2000
+        },
+        "travel_resolution_um": 0.02,
+        "test_room_height_mm": 1080,
+        "max_stroke_mm": 1025,
+        "weight_kg": 120,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "mechanical": "무백래시 볼스크류 2 개, 덮개형 스핀들, 브러시리스 구동",
+        "height_mm": 1420,
+        "width_mm": 790,
+        "test_room_width_mm": 420,
+        "depth_mm": 520,
+        "table_height_mm": 685,
+        "base_frame": "옵션"
+      }
+    },
+    {
+      "model": "inspekt blue 10 kN",
+      "specs": {
+        "item_no": "10-039-1x1",
+        "nominal_load_kN": 10,
+        "frame_stiffness_kN_mm": 18,
+        "crosshead_speed_mm_min": {
+          "min": 0.0008,
+          "max": 1200
+        },
+        "travel_resolution_um": 0.012,
+        "test_room_height_mm": 1080,
+        "max_stroke_mm": 1025,
+        "weight_kg": 120,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "mechanical": "무백래시 볼스크류 2 개, 덮개형 스핀들, 브러시리스 구동",
+        "height_mm": 1420,
+        "width_mm": 790,
+        "test_room_width_mm": 420,
+        "depth_mm": 520,
+        "table_height_mm": 685,
+        "base_frame": "옵션"
+      }
+    },
+    {
+      "model": "inspekt blue 20 kN",
+      "specs": {
+        "item_no": "10-039-2x1",
+        "nominal_load_kN": 20,
+        "frame_stiffness_kN_mm": 40,
+        "crosshead_speed_mm_min": {
+          "min": 0.0004,
+          "max": 600
+        },
+        "travel_resolution_um": 0.006,
+        "test_room_height_mm": 1080,
+        "max_stroke_mm": 1005,
+        "weight_kg": 140,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "mechanical": "무백래시 볼스크류 2 개, 덮개형 스핀들, 브러시리스 구동",
+        "height_mm": 1420,
+        "width_mm": 790,
+        "test_room_width_mm": 420,
+        "depth_mm": 520,
+        "table_height_mm": 685,
+        "base_frame": "옵션"
+      }
+    },
+    {
+      "model": "inspekt blue 30 kN",
+      "specs": {
+        "item_no": "10-039-301",
+        "nominal_load_kN": 30,
+        "frame_stiffness_kN_mm": 25,
+        "crosshead_speed_mm_min": {
+          "min": 0.00025,
+          "max": 400
+        },
+        "travel_resolution_um": 0.004,
+        "test_room_height_mm": 1080,
+        "max_stroke_mm": 1005,
+        "weight_kg": 140,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "mechanical": "무백래시 볼스크류 2 개, 덮개형 스핀들, 브러시리스 구동",
+        "height_mm": 1420,
+        "width_mm": 790,
+        "test_room_width_mm": 420,
+        "depth_mm": 520,
+        "table_height_mm": 685,
+        "base_frame": "옵션"
+      },
+      "note": "강성이 20 kN 기종(40 kN/mm)보다 낮은 25 kN/mm 로 적혀 있다 — 데이터시트 그대로다"
+    },
+    {
+      "model": "inspekt blue 50 kN",
+      "specs": {
+        "item_no": "10-039-501",
+        "nominal_load_kN": 50,
+        "frame_stiffness_kN_mm": 52,
+        "crosshead_speed_mm_min": {
+          "min": 0.00016,
+          "max": 240
+        },
+        "travel_resolution_um": 0.0025,
+        "test_room_height_mm": 1070,
+        "max_stroke_mm": 995,
+        "weight_kg": 170,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "mechanical": "무백래시 볼스크류 2 개, 덮개형 스핀들, 브러시리스 구동",
+        "height_mm": 1420,
+        "width_mm": 790,
+        "test_room_width_mm": 420,
+        "depth_mm": 520,
+        "table_height_mm": 685,
+        "base_frame": "옵션"
+      }
+    }
+  ],
+  "accuracy": {
+    "force": "DIN EN ISO 7500-1 / ASTM E4 Class 1, 정격의 0.1~100 %(옵션 Class 0.5)"
+  },
+  "environment": {
+    "operating_temperature_degC": {
+      "min": 10,
+      "max": 30
+    },
+    "operating_humidity_pct": {
+      "min": 20,
+      "max": 80
+    },
+    "note": "다른 inspekt 계열(5~40 °C)보다 운전 온도 범위가 좁다"
+  },
+  "features": [
+    "높이·폭 가변 하중 프레임",
+    "지름이 큰 정밀 볼스크류로 높은 강성",
+    "시험 공간 조명 — 시험 시퀀스에 통합 가능",
+    "알루미늄 프로파일 외장",
+    "확장 카드 슬롯 3 — 아날로그/디지털 입출력, 스트레인게이지, ±10 V 외부 입력, 안전문 연결",
+    "힘 분해능 24 bit"
+  ],
+  "options": [
+    "base frame",
+    "온도·기후 챔버",
+    "신장계",
+    "핸드 패널",
+    "로드셀·클램핑 공구·어댑터 세트"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "tensile"
+    },
+    {
+      "type": "performs",
+      "target": "compression"
+    },
+    {
+      "type": "performs",
+      "target": "flexure"
+    },
+    {
+      "type": "performs",
+      "target": "peel"
+    },
+    {
+      "type": "performs",
+      "target": "shear"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt-solo"
+    },
+    {
+      "type": "extends_temperature",
+      "target": "hegewald-peschke-temperature-chambers"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-grips"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-extensometers"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/inspekt-static-utm-overview.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-039-0x1-universal-testing-machine-inspekt-blue-5kn.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-039-1x1-universal-testing-machine-inspekt-blue-10kn.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-039-2x1-universal-testing-machine-inspekt-blue-20kn.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-039-301-universal-testing-machine-inspekt-blue-30kn.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-039-501-universal-testing-machine-inspekt-blue-50kn.pdf",
+      "pages": [
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "계열 5~50 kN 다섯 기종의 데이터시트를 모두 확보했다. 정격이 커질수록 최고 시험 속도가 낮아지고(2000 -> 240 mm/min) 이동 분해능은 좋아진다(0.02 -> 0.0025 µm) — 같은 스크류에 감속을 다르게 물린 구조로 보인다. 30 kN 기종의 프레임 강성이 25 kN/mm 로 20 kN 기종(40)보다 낮게 인쇄돼 있는데, 데이터시트가 그렇게 적고 있어 그대로 옮겼다. 개요 문서의 inspekt duo(5~10 kN)는 별도 객체 `hegewald-peschke-inspekt-duo` 로 두었다."
+}

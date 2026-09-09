@@ -1,0 +1,40 @@
+{
+  "id": "ta-electroforce",
+  "kind": "equipment_series",
+  "name": "TA Instruments ElectroForce Load Frame (3100 / 3200 / 3300 / 3500 / 5500) and TestBench Instruments",
+  "name_ko": "TA 인스트루먼트 ElectroForce 전기동력식 시험기·테스트벤치",
+  "manufacturer": "ta-instruments",
+  "brand": "ElectroForce",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "리니어 모터 동적 시험기: 3100(±22 N, 5 mm, 100 Hz), 5500(±200 N, 13 mm, 20 Hz), 3200(±225/450 N, 13 mm, 300 Hz, DMA 3200 = -150~600 °C 오븐), 3300(3310 ±1000 N / 3330 ±3000 N, 25 mm, 100 Hz, 토크 14/25 N·m), 3510(±7500 N 상부모터), 3520(±7500 N 하부), 3550(±15000 N), 비틀림 49/70 N·m 40회전. TestBench 200/400/3000 N 브레드보드형, 다중 스테이션.",
+  "test_items": ["fatigue", "dma", "tensile", "compression", "torsion", "flexure"],
+  "measurands": ["fatigue_life", "storage_modulus", "loss_modulus", "tan_delta", "dynamic_stiffness"],
+  "materials": ["biomaterials", "medical devices (stents, grafts)", "polymers", "elastomers", "composites", "tissue"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "force_N": {"min": 0.002, "max": 15000},
+    "stroke_mm": {"min": 5, "max": 150},
+    "frequency_Hz": {"min": 0.00001, "max": 300},
+    "torque_Nm": {"values": [5.6, 14, 25, 49, 70]},
+    "temperature_degC": {"min": -150, "max": 600, "note": "thermal chamber: 3200 -150~315 (DMA 3200 FCO oven to 600), 3300/3500 -150~350; fluid bath ambient~40"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "ElectroForce 3100", "specs": {"force_N": 22, "stroke_mm": 5, "frequency_Hz": {"min": 0.00001, "max": 100}, "velocity_m_s": 1.0}},
+    {"model": "ElectroForce 5500", "specs": {"force_N": 200, "force_N_continuous": 140, "stroke_mm": 13, "frequency_Hz": {"max": 20}}},
+    {"model": "ElectroForce 3200 / DMA 3200", "specs": {"force_N": 225, "force_N_high": 450, "force_N_continuous": 160, "stroke_mm": 13, "stroke_mm_extended": 150, "frequency_Hz": {"max": 300}, "torque_Nm": 5.6, "temperature_degC": {"min": -150, "max": 600}}},
+    {"model": "ElectroForce 3310", "specs": {"force_N": 1000, "force_N_continuous": 700, "stroke_mm": 25, "frequency_Hz": {"max": 100}, "torque_Nm": 14, "velocity_m_s": 1.5, "temperature_degC": {"min": -150, "max": 350}}},
+    {"model": "ElectroForce 3330", "specs": {"force_N": 3000, "force_N_continuous": 2100, "stroke_mm": 25, "frequency_Hz": {"max": 100}, "torque_Nm": 25, "velocity_m_s": 2.0}},
+    {"model": "ElectroForce 3510", "specs": {"force_N": 7500, "force_N_continuous": 5300, "stroke_mm": 50, "frequency_Hz": {"max": 100}, "torque_Nm": [49, 70], "footprint_mm": {"H": 2510, "W": 979, "D": 813}, "weight_kg": 1000}},
+    {"model": "ElectroForce 3520", "specs": {"force_N": 7500, "stroke_mm": 50, "frequency_Hz": {"max": 50}, "weight_kg": 644}},
+    {"model": "ElectroForce 3550", "specs": {"force_N": 15000, "force_N_continuous": 10600, "stroke_mm": 50, "frequency_Hz": {"max": 50}, "torque_Nm": [49, 70], "weight_kg": 816}},
+    {"model": "200 N TestBench", "specs": {"force_N": {"min": 0.002, "max": 200}, "stroke_mm": 13, "frequency_Hz": {"max": 100}, "torque_Nm": 5.6, "weight_kg": 64.4}},
+    {"model": "400 N TestBench", "specs": {"force_N": {"min": 0.002, "max": 400}, "stroke_mm": 13, "frequency_Hz": {"max": 100}, "weight_kg": 69.6}},
+    {"model": "3000 N TestBench", "specs": {"force_N": {"min": 0.2, "max": 3000}, "stroke_mm": 25, "frequency_Hz": {"max": 100}, "weight_kg": 212}}
+  ],
+  "options": ["torsion motors (multi-turn 40/62 rev)", "thermal chambers", "fluid/saline baths", "HADS displacement sensor", "DMA software", "multi-station TestBench"],
+  "relations": [],
+  "sources": [{"file": "ta-instruments/electroforce-loadframe-testbench.pdf", "pages": [11, 12, 17], "note": "유통사 미러 PDF"}],
+  "confidence": "catalog"
+}

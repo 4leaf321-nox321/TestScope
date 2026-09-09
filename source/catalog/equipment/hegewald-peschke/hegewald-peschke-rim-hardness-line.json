@@ -1,0 +1,78 @@
+{
+  "id": "hegewald-peschke-rim-hardness-line",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Automated Brinell Hardness Tester for Car and Truck Rims",
+  "name_ko": "헤게발트 운트 페슈케 승용·상용차 휠림용 자동 브리넬 경도 시험기",
+  "manufacturer": "hegewald-peschke",
+  "category": "brinell_hardness",
+  "subcategory": "inline_automated",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "완성된 휠림을 라인에서 그대로 받아 브리넬 경도를 자동으로 재는 전용기. DIN EN ISO 6506 의 HBT 로 판정한다. 강재 프로파일 베이스 프레임에 림 지름별 지지면을 두고, 다운홀더 면적을 넓히고 연장과 초경 브리넬 볼을 단 AT130DR 프로브를 모터 구동 z 축이 시험면으로 내린다. 필요한 클램핑력 3.5 kN 에 닿으면 프로브가 로그오프하고 측정이 자동으로 시작돼 값이 디지털로 표시된다. 값은 시험이 끝나면 RS232 로 자동 전달된다. 기본 사이클 타임 60 초, 구동을 강화하면 30 초까지 줄인다. 림이 없거나 위치가 어긋나면 시험을 시작하지 않도록 위치 무관 인식을 둔다.",
+  "test_items": [
+    "hardness_brinell"
+  ],
+  "measurands": [
+    "hardness_HBT"
+  ],
+  "materials": [
+    "aluminium and steel wheel rims"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 6506"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "values": [3.5],
+      "note": "프로브 클램핑력. 이 값에 닿아야 측정이 시작된다"
+    },
+    "test_time_s": {
+      "min": 30,
+      "max": 60,
+      "note": "기본 60 s, 구동 강화 시 30 s"
+    }
+  },
+  "models": [
+    {
+      "model": "Automated rim hardness tester (AT130DR 기반)",
+      "specs": {
+        "item_no": "20-004-007",
+        "probe": "AT130DR (다운홀더 면적 확대, 연장, 초경 브리넬 볼)",
+        "clamping_force_kN": 3.5,
+        "z_axis_drive": "3상 유도 전동기, 제어부는 전기 캐비닛에 내장",
+        "cycle_time_s": 60,
+        "cycle_time_s_boosted": 30,
+        "data_interface": "RS232 (시험 종료 후 자동 전달)",
+        "control_panel": "OP70",
+        "safety": ["셋업 모드용 양수 조작", "비상정지", "자동/셋업 모드 전환", "림 유무·위치 무관 인식"],
+        "power_supply": "230 V / 50 Hz",
+        "compressed_air_bar": 5,
+        "pneumatics": "Festo 부품",
+        "note": "모든 버튼이 보호장갑을 낀 채로 조작 가능. 수동 조작부는 로봇 영역 밖 우측에 있다"
+      }
+    }
+  ],
+  "features": [
+    "림 지름이 달라도 받는 지지면",
+    "클램핑력 도달을 검출해 측정 자동 개시",
+    "림 부재·위치 이탈 인식으로 헛시험 방지",
+    "양수 조작과 비상정지",
+    "보호장갑 착용 조작 대응"
+  ],
+  "options": [
+    "구동 강화(사이클 타임 30 s)"
+  ],
+  "relations": [
+    {"type": "performs", "target": "hardness_brinell"},
+    {"type": "variant_of", "target": "hegewald-peschke-at130-hardness", "note": "AT130DR 프로브를 자동 라인에 얹은 전용기"},
+    {"type": "requires", "target": "utility-compressed-air", "note": "5 bar"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/hardness-tester-rims-automated.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "limited",
+  "notes": "2쪽짜리 제품 소개라 정량 사양이 클램핑력·사이클 타임·전원·공압뿐이다. 시험하중(브리넬 P/D 조합), 대응 림 지름 범위, 장비 치수·중량은 적혀 있지 않다. 그래서 `confidence: limited` 로 두었다."
+}

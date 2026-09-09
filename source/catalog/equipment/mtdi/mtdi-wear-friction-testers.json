@@ -1,0 +1,171 @@
+{
+  "id": "mtdi-wear-friction-testers",
+  "kind": "equipment_series",
+  "name": "MTDI Wear & Friction Testers (Pin-on-Disc FP-100, Reciprocating FR-100, High-Temperature Spiral, High-Temperature High-Speed)",
+  "name_ko": "엠티디아이 마모·마찰 시험기 (핀온디스크 FP-100·왕복동 FR-100·고온 나선·고온 고속)",
+  "manufacturer": "mtdi",
+  "category": "tribometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "마찰계수와 마모량을 재는 시험기 네 기종. **핀온디스크(FP-100)**는 무게추와 에어실린더를 함께 쓰는 하이브리드 하중 인가 방식으로 수직하중 200 g~10 kg(추) 또는 2~15 kg(에어실린더)을 걸고, 레버비를 1:1 또는 2:1 로 바꾼다. 시험 속도 1~1,000 rpm, 마찰하중 10 kg, 온도 최대 150 °C, 리니어 스케일로 마모량을 0.5 µm 분해능으로 잰다. **왕복동(FR-100)**은 직선 왕복으로 0.1~5 Hz, 시험 거리 1~5 mm(옵션 10·20 mm), 서보 제어 거리 정밀도 0.1 mm, 온도 최대 200 °C. **고온 나선 마모 시험기**는 1~15,000 rpm 의 고속에 누름하중 최대 500 N(에어), 마찰력 센서 용량 50 N·m, 노 1,100 °C 또는 챔버 350 °C 를 쓴다. **고온 고속 마찰 마모 시험기**는 수직·수평 로드셀을 따로 두고 마찰하중 최대 100 kN, 시험 속도 0.001~3,000 mm/min, 시험 거리 수직 100 mm·수평 600 mm, 노 1,100 °C·팁 950 °C 이며 에어 웨지 액션 그립으로 시편 슬립을 막는다. 네 기종 모두 샘플링 최대 250 kS/s 이고 전용 소프트웨어로 실시간 그래프를 본다.",
+  "test_items": [
+    "friction_coefficient",
+    "friction_wear_tribo",
+    "abrasion"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_depth",
+    "wear_rate",
+    "normal_force",
+    "surface_temperature"
+  ],
+  "materials": [
+    "metals and alloys",
+    "coatings",
+    "ceramics",
+    "polymers",
+    "sliding pairs"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_N": {
+      "max": 100000,
+      "note": "고온 고속 기종의 마찰하중 최대 100 kN. 고온 나선은 누름하중 최대 500 N, 핀온디스크는 수직하중 최대 15 kg(에어실린더)"
+    },
+    "temperature_degC": {
+      "max": 1100,
+      "note": "고온 나선·고온 고속 기종의 노 최대 1,100 °C(챔버는 350 °C, 팁은 950 °C). 핀온디스크 150 °C, 왕복동 200 °C"
+    },
+    "rotation_rpm": {
+      "min": 1,
+      "max": 15000,
+      "note": "핀온디스크 1~1,000 rpm, 고온 나선 1~15,000 rpm"
+    },
+    "frequency_Hz": {
+      "min": 0.1,
+      "max": 5,
+      "note": "왕복동 기종의 시험 속도"
+    },
+    "sliding_speed_m_s": {
+      "note": "회전형은 rpm 으로, 고온 고속형은 mm/min(0.001~3,000)으로 적혀 있어 선속도로 환산되어 있지 않다"
+    },
+    "torque_Nm": {
+      "max": 50,
+      "note": "고온 나선 기종의 마찰력 센서 용량"
+    },
+    "data_rate_Hz": {
+      "max": 250000,
+      "note": "네 기종 공통 샘플링 최대 250 kS/s"
+    },
+    "power_kW": {
+      "min": 1.5,
+      "max": 13,
+      "note": "FR-100 1.5 kW, FP-100 2 kW, 고온 고속 8 kW(AC220V) 또는 10 kW(AC380V), 고온 나선 13 kW"
+    }
+  },
+  "models": [
+    {
+      "model": "Pin(Ball) on Disc Wear Tester (FP-100)",
+      "specs": {
+        "type": "Pin(Ball) on Disc",
+        "footprint_mm": "650W x 995D x 565H",
+        "power": "AC220V, 3상, 2 kW",
+        "test_speed_rpm": {"min": 1, "max": 1000},
+        "normal_load": "추 200 g~10 kg / 에어실린더 2~15 kg",
+        "friction_load_kg": 10,
+        "friction_load_note": "변경 가능",
+        "temperature_max_degC": 150,
+        "temperature_note": "변경 가능",
+        "sampling_rate": "최대 250 kS/s",
+        "utility": "Air",
+        "ball_diameter_mm": [6, 12.7],
+        "disc_diameter_mm": 30,
+        "wear_measurement": "리니어 스케일, 분해능 0.5 µm",
+        "lever_ratio": "1:1 또는 2:1",
+        "loading": "하이브리드(무게추 + 에어실린더)"
+      }
+    },
+    {
+      "model": "Reciprocating Wear Tester (FR-100)",
+      "specs": {
+        "type": "직선 왕복동",
+        "footprint_mm": "650W x 995D x 565H",
+        "power": "AC220V, 3상, 1.5 kW",
+        "test_speed_Hz": {"min": 0.1, "max": 5},
+        "normal_load": "Weight(무게추)",
+        "stroke_mm": {"min": 1, "max": 5, "option": [10, 20]},
+        "temperature_max_degC": 200,
+        "temperature_note": "변경 가능",
+        "sampling_rate": "최대 250 kS/s",
+        "stroke_accuracy_mm": 0.1,
+        "options": ["환경 분위기 장착"]
+      }
+    },
+    {
+      "model": "고온 나선 마모 시험기 (High-Temperature Spiral Wear Tester)",
+      "specs": {
+        "type": "Spiral / Pin on Disc",
+        "footprint_mm": "1750W x 1600D x 1900H",
+        "power": "AC220V, 3상, 13 kW",
+        "motor": "AC 220 V",
+        "test_speed_rpm": {"min": 1, "max": 15000},
+        "pressing_load": "에어, 최대 500 N",
+        "friction_force_sensor_Nm": 50,
+        "temperature": "노 최대 1,100 °C / 챔버 최대 350 °C",
+        "sampling_rate": "최대 250 kS/s",
+        "utility": "Air, Water",
+        "features": ["정밀 변위 센서로 마모량 측정", "노(챔버) 자동·수동 이동", "에어실린더와 정밀 전자밸브로 하중 제어"]
+      }
+    },
+    {
+      "model": "고온 고속 마찰 마모 시험기 (High-Temperature High-Speed Friction Wear Tester)",
+      "specs": {
+        "type": "고온 고속 마찰 마모",
+        "footprint_mm": "3000W x 900D x 1700H",
+        "power": "AC220V 3상 8 kW / AC380V 3상 10 kW",
+        "test_speed_mm_min": {"min": 0.001, "max": 3000},
+        "test_distance_mm": "수직 100 / 수평 600",
+        "friction_load_kN_max": 100,
+        "temperature": "노 최대 1,100 °C / 팁 최대 950 °C",
+        "sampling_rate": "최대 250 kS/s",
+        "utility": "Water, Air",
+        "horizontal_motor": "5 kW 서보",
+        "vertical_motor": "2.2 kW 서보",
+        "features": ["수직·수평 로드셀 각각으로 마찰계수 측정", "에어 웨지 액션 그립으로 시편 슬립 방지", "마찰부 히터로 노출 시편 온도 보상", "가이드 롤러로 시편 이탈 방지", "센서로 시편 장착 위치 자동 이동"]
+      }
+    }
+  ],
+  "features": [
+    "네 기종 모두 로드셀로 마찰계수를 재고 샘플링 250 kS/s",
+    "핀온디스크는 무게추와 에어실린더를 함께 쓰는 하이브리드 하중",
+    "리니어 스케일 마모량 측정(0.5 µm 분해능)",
+    "고온 기종은 노 1,100 °C 또는 챔버 350 °C 를 붙인다",
+    "전용 소프트웨어 실시간 그래프와 3D 그래픽"
+  ],
+  "options": [
+    "오일 챔버(Oil Chamber)",
+    "고온 노(High Temperature Furnace, 최대 200 °C / 1,100 °C 사양 별도)",
+    "카트리지 히터 플레이트(최대 300 °C)",
+    "챔버(-170~350 °C 사양 별도)",
+    "왕복동 기종의 환경 분위기 장착",
+    "유압 웨지 액션 그립"
+  ],
+  "relations": [
+    {"type": "performs", "target": "friction_coefficient"},
+    {"type": "performs", "target": "friction_wear_tribo"},
+    {"type": "performs", "target": "abrasion"},
+    {"type": "requires", "target": "utility-compressed-air"},
+    {"type": "requires", "target": "utility-cooling-water", "note": "고온 나선·고온 고속 기종"},
+    {"type": "compatible_accessory", "target": "mtdi-uc-furnace-chambers"}
+  ],
+  "sources": [
+    {"file": "mtdi/wear-friction-tester-catalog.pdf", "pages": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]},
+    {"file": "mtdi/wear-friction-tester-catalog-b.pdf", "pages": [1], "note": "같은 계열의 축약본(8쪽)"}
+  ],
+  "confidence": "catalog",
+  "notes": "이 PDF 는 **텍스트층이 없는 이미지 전용 스캔**이라 5·9·13·17쪽의 사양표를 렌더링해 눈으로 읽었다(`catalog/pages/mtdi-wear-a.png`, `mtdi-wear-b.png`). 옵션 부속의 온도 상한이 쪽마다 다르게 적혀 있다 — 7쪽 부속은 고온로 '최대 200 °C', 11쪽 부속은 카트리지 히터 플레이트 '최대 300 °C'·고온로 '최대 1,100 °C'·챔버 '최대 350 °C', 15쪽은 고온로 '최대 1,100 °C'·챔버 '상온~350 °C' 로 나온다. 기종마다 붙는 부속이 달라서인지 인쇄 오류인지 문서로는 구별되지 않아 옵션 목록에 범위를 함께 적었다. 무게·마찰계수 측정 정확도·마모량 측정 범위는 어느 기종에도 없다."
+}

@@ -1,0 +1,100 @@
+{
+  "id": "ets-lindgren-smart-reverberation-chamber",
+  "kind": "equipment_series",
+  "name": "ETS-Lindgren SMART Reverberation Chamber",
+  "name_ko": "ETS-린드그렌 SMART 잔향실(반사식 EMC 챔버)",
+  "manufacturer": "ets-lindgren",
+  "category": "reverberation_chamber",
+  "form_factor": "floor",
+  "description": "내부 표면으로 전파를 반사시켜 통계적으로 균질한 전자기 환경을 만드는 EMC 시험용 잔향실. 무반사실과 달리 흡수체를 쓰지 않고 반사를 이용하므로 같은 입력 전력으로 훨씬 강한 전계를 만들 수 있고, 그만큼 작은 증폭기로도 성능을 낸다. 적절히 구성하면 등방성(isotropy)과 균질성(homogeneity)을 가져 시험 체적 어디에서 재도 값이 같고, 챔버가 달라도 불확도 안에서 같은 값이 나온다. 교반기를 단계로 돌리는 방식과 연속 회전(mode stirred) 방식을 모두 쓴다. 주파수 범위 80 MHz~40 GHz.",
+  "test_items": [
+    "emi_emission",
+    "shielding_effectiveness",
+    "esd_immunity",
+    "surge_eft_immunity"
+  ],
+  "measurands": [
+    "radiated_emission",
+    "immunity_level",
+    "shielding_effectiveness"
+  ],
+  "materials": [
+    "electronic products",
+    "automotive components",
+    "wireless devices",
+    "avionics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 80000000,
+      "max": 40000000000,
+      "note": "80 MHz ~ 40 GHz"
+    },
+    "chamber_volume_L": {
+      "note": "기종별 체적·치수가 브로슈어에 없다 — '큰 작업 체적' 이라고만 적는다",
+      "uncertain": true
+    }
+  },
+  "models": [
+    {
+      "model": "SMART Reverberation Chamber",
+      "specs": {
+        "frequency_range": "80 MHz ~ 40 GHz",
+        "principle": "내부 표면 반사로 균질·등방 전자기 환경 생성",
+        "stirring": [
+          "단계 교반(tuned)",
+          "연속 회전(mode stirred)"
+        ],
+        "advantages": [
+          "같은 입력 전력으로 높은 전계 강도",
+          "작은 증폭기로도 성능 확보",
+          "시험 체적 내 위치 무관 동일 측정",
+          "챔버 간 재현성"
+        ]
+      },
+      "note": "기종 구분과 치수·체적이 브로슈어에 없다",
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "흡수체 없이 반사로 전계를 만들어 전력 효율이 높다",
+    "등방성·균질성 — 시험 체적 어디서 재도 같은 값",
+    "단계 교반과 연속 회전(mode stirred) 모두 지원",
+    "챔버 간 재현성"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "emi_emission"
+    },
+    {
+      "type": "performs",
+      "target": "shielding_effectiveness"
+    }
+  ],
+  "sources": [
+    {
+      "file": "ets-lindgren/reverberation-chamber-brochure.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file": "ets-lindgren/test-and-measurement-full-line.pdf",
+      "pages": [
+        1
+      ],
+      "note": "시험·계측 전 제품 라인 개요"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "archive.org 스냅샷(2025-06-13)에서 받았다 — 라이브 사이트의 PDF 링크는 200 과 함께 HTML 게이트를 돌려준다. 브로슈어에 확정된 수치가 주파수 범위(80 MHz~40 GHz) 하나뿐이고 기종 구분·체적·치수·전계 강도가 모두 없어 `confidence: limited` 이며 체적과 기종 항목에 `uncertain: true` 를 달았다. 온톨로지에 `reverberation_chamber` 분류를 새로 만들어 제대로 걸었다."
+}

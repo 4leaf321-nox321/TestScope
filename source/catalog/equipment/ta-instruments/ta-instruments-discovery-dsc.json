@@ -1,0 +1,105 @@
+{
+  "id": "ta-instruments-discovery-dsc",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery DSC (Differential Scanning Calorimeter)",
+  "name_ko": "TA 인스트루먼츠 Discovery DSC 시차주사열량계",
+  "manufacturer": "ta-instruments",
+  "brand": "Discovery",
+  "category": "dsc",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "Tzero 기술을 쓰는 열유속형 시차주사열량계. 시료와 기준 사이의 비대칭에서 오는 베이스라인 곡률을 Tzero 셀 구조와 보정으로 줄여, -50~400 °C 구간에서 베이스라인 직선성 ≤5 µW, 정확도 ±20 µW 를 낸다. 온도 범위는 냉각 부속에 따라 -180~725 °C, 온도 정확도 ±0.025 °C·정밀도 ±0.005 °C, 열유속 잡음 ≤0.08 µW(rms). Advanced Modulated DSC 로 가역·비가역 성분을 분리하고, Direct Cp 측정으로 비열을 한 번의 실험에서 직접 얻는다(정확도 ≤3 %). 셀을 사용자가 교체할 수 있고 50 위치 오토샘플러와 Autolid 를 붙인다.",
+  "test_items": [
+    "dsc"
+  ],
+  "measurands": [
+    "glass_transition",
+    "melting_point",
+    "enthalpy_change",
+    "specific_heat",
+    "crystallinity",
+    "cure_kinetics",
+    "oit",
+    "onset_temperature",
+    "polymorphism",
+    "reaction_kinetics"
+  ],
+  "materials": [
+    "polymers",
+    "pharmaceuticals",
+    "composites",
+    "foods",
+    "metals and alloys"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -180,
+      "max": 725,
+      "note": "하한은 장착한 냉각 부속에 따른다(RCS90·RCS40·LN2P·FACS·QCA)"
+    },
+    "accuracy_degC": {
+      "max": 0.025,
+      "note": "온도 정확도 ±0.025 °C, 정밀도 ±0.005 °C"
+    }
+  },
+  "models": [
+    {
+      "model": "Discovery DSC",
+      "specs": {
+        "temperature_range_degC": {"min": -180, "max": 725},
+        "temperature_accuracy_degC": 0.025,
+        "temperature_precision_degC": 0.005,
+        "enthalpy_precision_pct": 0.04,
+        "heat_flow_noise_uW_rms": 0.08,
+        "baseline_linearity_uW": 5,
+        "baseline_accuracy_uW": 20,
+        "baseline_repeatability_uW": 5,
+        "measurement_time_constant_s": 0.8,
+        "indium_response_ratio": 90,
+        "direct_cp_accuracy_pct": 3,
+        "direct_cp_precision_pct": 1,
+        "direct_cp_repeatability_pct": 1,
+        "baseline_spec_range_degC": {"min": -50, "max": 400},
+        "autosampler_positions": 50,
+        "technologies": ["Advanced Tzero", "Advanced Modulated DSC", "Direct Cp", "Autolid", "사용자 교체형 셀"]
+      },
+      "note": "베이스라인 사양(직선성·정확도·재현성)과 Direct Cp 사양은 모두 -50~400 °C 구간 값이다"
+    }
+  ],
+  "accuracy": {
+    "temperature": "±0.025 °C (정밀도 ±0.005 °C)",
+    "enthalpy": "±0.04 %",
+    "heat_flow_noise": "≤0.08 µW rms",
+    "direct_cp": "정확도 ≤3 %, 정밀도 ≤1 %, 재현성 ≤1 % (-50~400 °C)"
+  },
+  "features": [
+    "Advanced Tzero 셀 — 시료-기준 비대칭에서 오는 베이스라인 곡률 억제",
+    "Advanced Modulated DSC — 가역/비가역 열유속 분리",
+    "Direct Cp 측정 — 비열을 한 실험에서 직접",
+    "사용자 교체형 셀",
+    "50 위치 오토샘플러, Autolid",
+    "이중 입력 가스 공급 모듈",
+    "컬러 터치스크린",
+    "자동·예약 교정 및 검증",
+    "Tzero DSC 시료 밀봉 프레스 호환"
+  ],
+  "options": [
+    "냉각 부속 RCS90 / RCS40 / LN2P / FACS / QCA",
+    "광열량계(Photocalorimeter)",
+    "광학 부속 키트(라만, NIR)"
+  ],
+  "relations": [
+    {"type": "performs", "target": "dsc"},
+    {"type": "same_family_as", "target": "ta-instruments-discovery-tga"},
+    {"type": "requires", "target": "utility-liquid-nitrogen", "note": "LN2P 냉각 부속을 쓸 때만"}
+  ],
+  "sources": [
+    {"file": "ta-instruments/discovery-dsc-tga-brochure.pdf", "pages": [20]}
+  ],
+  "confidence": "catalog",
+  "notes": "원본 PDF 를 tainstruments.com 에서 직접 받을 수 없다(Akamai 403, WebFetch·curl·UA 헤더 모두 막힘). archive.org 스냅샷(2020-01-10)의 `BROCH-Discovery_DSC_TGA-2015-EN.pdf` 를 받았다 — `urls.json` 에 archive.org 주소를 적어 두었다. 스냅샷 시점 사양이라 현행 제품과 다를 수 있다. 기종 구분(DSC 25/250/2500 같은 등급)이 이 브로슈어에는 없고 'Discovery DSC' 한 이름으로만 나온다."
+}

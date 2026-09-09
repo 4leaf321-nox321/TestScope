@@ -1,0 +1,230 @@
+{
+  "id": "hegewald-peschke-temperature-chambers",
+  "kind": "accessory",
+  "name": "Hegewald & Peschke Temperature and Climate Chambers for Universal Testing Machines",
+  "name_ko": "헤게발트 운트 페슈케 만능재료시험기용 온도·기후 챔버",
+  "manufacturer": "hegewald-peschke",
+  "category": "environmental_chamber",
+  "description": "만능재료시험기의 시험 공간에 물려 재료·부품 시험을 온도 조건 아래에서 하게 만드는 챔버. 실온 23 °C 기준 -80 °C ~ 260 °C 를 덮는다. 가열은 봉히터, 냉각은 액체질소 직접 분사(3/8 인치 암나사, 0.9~1.5 bar)라 LN2 공급이 필요하고 상부 배기가 있어 실내 환기를 확보해야 한다. 최대 승온 10 K/min, 냉각 8 K/min(빈 시험 공간 기준), 온도 측정 분해능 0.1 °C, 시험 공간 온도 안정도 시간에 대해 ±0.5~2 °C. 열전대 3 개를 쓴다 — 공기 온도용 1, 이동식 시편 온도용 1, 과온 보호용 1 이며 제어를 공기 온도와 시편 온도 사이에서 전환할 수 있다. 안쪽 치수가 다른 표준 7 기종이 있고 inspekt·inspekt table·inspekt duo·inspekt blue 계열에 맞는다. 장착은 시험기에 고정해 드나드는 레일 가이드 방식과, 시험기와 완전히 분리된 롤러 캐리지 방식 중에 고른다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength"
+  ],
+  "materials": [
+    "metals",
+    "plastics",
+    "composites",
+    "elastomers",
+    "components"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": -80,
+      "max": 260,
+      "note": "실온 23 °C 기준"
+    },
+    "heating_rate_K_min": {
+      "max": 10,
+      "note": "빈 시험 공간 기준"
+    },
+    "cooling_rate_K_min": {
+      "max": 8,
+      "note": "빈 시험 공간 기준. LN2 직접 분사"
+    },
+    "accuracy_degC": {
+      "min": 0.5,
+      "max": 2,
+      "note": "시험 공간 온도 안정도(시간에 대해). 측정 분해능은 0.1 °C"
+    },
+    "power_VA": {
+      "min": 2500,
+      "max": 11500,
+      "note": "3NPE AC 50 Hz 400 V, CEE16 또는 CEE32 플러그, 5 m 케이블"
+    },
+    "weight_kg": {
+      "min": 80,
+      "max": 300
+    }
+  },
+  "models": [
+    {
+      "model": "16-100-00X",
+      "specs": {
+        "inner_mm": {
+          "B": 264,
+          "H": 250,
+          "T": 416
+        },
+        "outer_mm": {
+          "B": 400,
+          "H": 386,
+          "T": 1032
+        },
+        "weight_kg": 80,
+        "window": false
+      }
+    },
+    {
+      "model": "16-100-01X",
+      "specs": {
+        "inner_mm": {
+          "B": 264,
+          "H": 530,
+          "T": 416
+        },
+        "outer_mm": {
+          "B": 400,
+          "H": 708,
+          "T": 1032
+        },
+        "weight_kg": 120,
+        "window": true
+      }
+    },
+    {
+      "model": "16-100-02X",
+      "specs": {
+        "inner_mm": {
+          "B": 264,
+          "H": 680,
+          "T": 416
+        },
+        "outer_mm": {
+          "B": 400,
+          "H": 858,
+          "T": 1032
+        },
+        "weight_kg": 120,
+        "window": true
+      }
+    },
+    {
+      "model": "16-100-10X",
+      "specs": {
+        "inner_mm": {
+          "B": 324,
+          "H": 800,
+          "T": 510
+        },
+        "outer_mm": {
+          "B": 490,
+          "H": 966,
+          "T": 1150
+        },
+        "weight_kg": 160,
+        "window": true
+      }
+    },
+    {
+      "model": "16-100-11X",
+      "specs": {
+        "inner_mm": {
+          "B": 424,
+          "H": 650,
+          "T": 500
+        },
+        "outer_mm": {
+          "B": 590,
+          "H": 816,
+          "T": 1150
+        },
+        "weight_kg": 160,
+        "window": true
+      }
+    },
+    {
+      "model": "16-100-20X",
+      "specs": {
+        "inner_mm": {
+          "B": 554,
+          "H": 810,
+          "T": 750
+        },
+        "outer_mm": {
+          "B": 730,
+          "H": 986,
+          "T": 1390
+        },
+        "weight_kg": 260,
+        "window": true
+      }
+    },
+    {
+      "model": "16-100-21X",
+      "specs": {
+        "inner_mm": {
+          "B": 554,
+          "H": 975,
+          "T": 750
+        },
+        "outer_mm": {
+          "B": 730,
+          "H": 1151,
+          "T": 1390
+        },
+        "weight_kg": 300,
+        "window": true
+      }
+    }
+  ],
+  "accuracy": {
+    "temperature_resolution": "0.1 °C",
+    "temperature_stability": "시험 공간에서 시간에 대해 ±0.5 ~ 2 °C"
+  },
+  "features": [
+    "열전대 3 개 — 공기 온도, 이동식 시편 온도, 과온 보호",
+    "공기 온도 제어와 시편 온도 제어를 전환 가능, 두 측정값을 동시에 표시",
+    "Eurotherm 형 전자식 디지털 제어기, 실측값·설정값 동시 표시",
+    "문에 LED 조명 심볼로 상태 직접 표시",
+    "재킷 냉각 프레임 — 외부 표면 고온화 방지",
+    "슬라이드인 인서트와 보상 링 — 지그를 떼지 않고 챔버를 시험 공간에 넣고 뺀다(셋업 시간 단축)",
+    "힘 전달봉 관통부의 열 밀봉용 보상 링",
+    "LabMaster 에서 온도 제어 on/off, 공기/시편 제어 전환, 조명, 온도 표시, 기계·온도 시퀀스 동기화"
+  ],
+  "options": [
+    "레일 가이드 장착(시험기에 고정)",
+    "롤러 캐리지 장착(시험기와 독립)",
+    "챔버용 그립·시험 공구"
+  ],
+  "relations": [
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt"
+    },
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt-table"
+    },
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt-blue"
+    },
+    {
+      "type": "requires",
+      "target": "utility-liquid-nitrogen",
+      "note": "냉각이 LN2 직접 분사다. 3/8 인치 암나사, 0.9~1.5 bar"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/temperature-climate-chambers.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "챔버 부피(L) 표기는 문서에 없다 — 안쪽 치수가 264x250x416 mm 부터 554x975x750 mm 까지라 부피는 계산해야 한다. 2쪽의 기종 표는 열이 흩어져 나와 같은 쪽을 렌더링해 눈으로 대조했다(`catalog/pages/temperature-climate-chambers-p2.png`) — 결과는 추출 텍스트와 일치했다. 문서 제목이 '온도·기후(climate) 챔버' 인데 습도 사양이 적혀 있지 않다. 습도 제어가 되는 기종이 따로 있는지는 이 문서로 알 수 없어 `humidity_pct` 를 넣지 않았다. 챔버 문서는 호환 시험기로 inspekt·inspekt table·inspekt duo·inspekt blue 를 적는다 — inspekt solo 는 없다."
+}

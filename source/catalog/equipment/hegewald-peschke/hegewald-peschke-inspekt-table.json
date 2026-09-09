@@ -1,0 +1,311 @@
+{
+  "id": "hegewald-peschke-inspekt-table",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt table Universal Testing Machines (10 kN – 250 kN)",
+  "name_ko": "헤게발트 운트 페슈케 inspekt table 만능재료시험기 (10~250 kN)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "subcategory": "dual_column",
+  "drive": "electromechanical",
+  "form_factor": "dual_column_tabletop",
+  "description": "무백래시 볼스크류 2 개와 덮개형 스핀들, AC 서보 모터로 구성한 2 컬럼 만능재료시험기. 10~250 kN 중간 하중대를 덮고 탁상형과 독립형(base frame) 두 형태가 있다. 하중 프레임 높이·폭이 매우 가변적이라 시편 크기와 부품 크기가 제각각인 재료·부품 시험에 맞춘다. 힘 측정은 DIN EN ISO 7500-1 / ASTM E4 Class 1(옵션 0.5), 힘 분해능 24 bit. 전원은 230 VAC 1.5 kVA 로 단상이며, 노·온도 챔버와 신장계·프로브·광학 센서를 붙일 수 있다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "shear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength",
+    "peel_strength",
+    "shear_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "metals",
+    "plastics",
+    "composites",
+    "elastomers",
+    "components"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1 (옵션 Class 0.5)",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 10,
+      "max": 250,
+      "note": "데이터시트를 확보한 기종은 10 / 20 / 50 / 100 / 250 kN"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.0005,
+      "max": 2000,
+      "note": "10·20 kN 0.005~2000, 50 kN 0.001~800, 100 kN 0.0005~400, 250 kN 0.0005~175. 옵션 확장 가능"
+    },
+    "vertical_test_space_mm": {
+      "min": 1080,
+      "max": 1170
+    },
+    "horizontal_test_space_mm": {
+      "values": [
+        420,
+        510
+      ],
+      "note": "10·20 kN 은 420 mm, 50·100·250 kN 은 510 mm"
+    },
+    "frame_stiffness_kN_mm": {
+      "min": 18,
+      "max": 200
+    },
+    "weight_kg": {
+      "min": 100,
+      "max": 570
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt table 10 kN",
+      "specs": {
+        "item_no": "10-030-1x4",
+        "nominal_load_kN": 10,
+        "frame_stiffness_kN_mm": 18,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 2000
+        },
+        "max_stroke_mm": 1025,
+        "weight_kg": 100,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.7 kVA, 50/60 Hz",
+        "tool_connection": "R20/8",
+        "height_mm": 1420,
+        "test_room_height_mm": 1080,
+        "width_mm": 685,
+        "test_room_width_mm": 420,
+        "depth_mm": 550,
+        "base_frame": "옵션",
+        "travel_resolution_um": 0.01
+      }
+    },
+    {
+      "model": "inspekt table 20 kN",
+      "specs": {
+        "item_no": "10-030-2x4",
+        "nominal_load_kN": 20,
+        "frame_stiffness_kN_mm": 40,
+        "crosshead_speed_mm_min": {
+          "min": 0.005,
+          "max": 2000
+        },
+        "max_stroke_mm": 1005,
+        "weight_kg": 130,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.7 kVA, 50/60 Hz",
+        "tool_connection": "R20/8",
+        "height_mm": 1420,
+        "test_room_height_mm": 1080,
+        "width_mm": 685,
+        "test_room_width_mm": 420,
+        "depth_mm": 550,
+        "base_frame": "옵션",
+        "travel_resolution_um": 0.01
+      }
+    },
+    {
+      "model": "inspekt table 50 kN",
+      "specs": {
+        "nominal_load_kN": 50,
+        "frame_stiffness_kN_mm": 68,
+        "crosshead_speed_mm_min": {
+          "min": 0.001,
+          "max": 800
+        },
+        "travel_resolution_um": 0.005,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 1.5 kVA, 50/60 Hz",
+        "tool_connection": "R36/18",
+        "height_mm": 1585,
+        "test_room_height_mm": 1170,
+        "max_stroke_mm": 1095,
+        "width_mm": 880,
+        "test_room_width_mm": 510,
+        "depth_mm": 695,
+        "weight_kg": 320,
+        "base_frame": "옵션"
+      }
+    },
+    {
+      "model": "inspekt table 100 kN",
+      "specs": {
+        "item_no": "10-031-1x4",
+        "nominal_load_kN": 100,
+        "frame_stiffness_kN_mm": 120,
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 400
+        },
+        "travel_resolution_um": 0.0025,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 1.5 kVA, 50/60 Hz",
+        "tool_connection": "R60/30",
+        "height_mm": 1585,
+        "test_room_height_mm": 1145,
+        "max_stroke_mm": 1065,
+        "width_mm": 880,
+        "test_room_width_mm": 510,
+        "depth_mm": 695,
+        "weight_kg": 400
+      },
+      "note": "구판 데이터시트(10-031-102, news_import 경로)와 값이 다르다 — 구판은 강성 100 kN/mm, 속도 0.01~400 mm/min, 이동 분해능 <1 µm, 힘 측정 하한 정격의 0.4 % 로 적었다. 여기 실은 값은 신판(10-031-1x4)이며 계열의 다른 기종과 같은 0.1 % 하한을 쓴다"
+    },
+    {
+      "model": "inspekt table 250 kN",
+      "specs": {
+        "item_no": "10-031-254",
+        "nominal_load_kN": 250,
+        "frame_stiffness_kN_mm": 200,
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 175
+        },
+        "travel_resolution_um": 0.0002,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 1.5 kVA, 50/60 Hz",
+        "tool_connection": "R60/30",
+        "height_mm": 2250,
+        "test_room_height_mm": 1110,
+        "max_stroke_mm": 1030,
+        "width_mm": 880,
+        "test_room_width_mm": 510,
+        "depth_mm": 695,
+        "weight_kg": 570,
+        "base_frame": "기본 포함"
+      }
+    }
+  ],
+  "accuracy": {
+    "force": "DIN EN ISO 7500-1 / ASTM E4 Class 1, 정격의 0.1~100 %(옵션 Class 0.5). 다섯 기종 모두 같다"
+  },
+  "environment": {
+    "operating_temperature_degC": {
+      "min": 5,
+      "max": 40
+    },
+    "operating_humidity_pct": {
+      "min": 20,
+      "max": 80
+    }
+  },
+  "features": [
+    "높이·폭이 크게 가변인 하중 프레임",
+    "탁상형 또는 독립형 선택",
+    "힘 분해능 24 bit",
+    "확장 카드 슬롯 3(옵션 7) — 아날로그/디지털 입출력, 스트레인게이지, ±10 V 외부 입력, 안전문 연결",
+    "노·온도 챔버 등 주변 장치 연결",
+    "LabMaster 소프트웨어"
+  ],
+  "options": [
+    "온도·기후 챔버",
+    "신장계(클립온·장거리·광학)",
+    "base frame(50 kN 은 옵션, 250 kN 은 기본)",
+    "핸드 패널",
+    "슬롯 7 개로 확장",
+    "500 Hz 고속 데이터 취득"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "tensile"
+    },
+    {
+      "type": "performs",
+      "target": "compression"
+    },
+    {
+      "type": "performs",
+      "target": "flexure"
+    },
+    {
+      "type": "performs",
+      "target": "peel"
+    },
+    {
+      "type": "performs",
+      "target": "shear"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-inspekt"
+    },
+    {
+      "type": "extends_temperature",
+      "target": "hegewald-peschke-temperature-chambers"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-grips"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-extensometers"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/inspekt-static-utm-overview.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-030-1x4-universal-testing-machine-inspekt-table-10kn.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-030-2x4-universal-testing-machine-inspekt-table-20kn.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-table-50kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-table-250kn-datasheet.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/10-031-1x4-universal-testing-machine-inspekt-table-100kn-01.pdf",
+      "pages": [
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/inspekt-table-100kn-datasheet.pdf",
+      "pages": [
+        2
+      ],
+      "note": "구판(10-031-102). 값이 신판과 달라 비교용으로만 남긴다"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "계열 10~250 kN 의 다섯 기종 데이터시트를 모두 확보했다. 100 kN 은 **판본이 둘**이라 값이 갈린다 — 구판(10-031-102)은 강성 100 kN/mm·속도 0.01~400·이동 분해능 <1 µm·힘 하한 0.4 % 이고, 신판(10-031-1x4)은 강성 120·속도 0.0005~400·분해능 <0.0025 µm·힘 하한 0.1 % 다. 신판을 기록하고 구판은 출처에만 남겼다. 10·20 kN 은 프레임이 더 작고(폭 685, 시험폭 420 mm) 전원도 0.7 kVA 로 낮다."
+}

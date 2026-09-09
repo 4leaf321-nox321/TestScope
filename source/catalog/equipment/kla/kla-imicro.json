@@ -1,0 +1,25 @@
+{
+  "id": "kla-imicro",
+  "kind": "equipment_model",
+  "name": "KLA iMicro Nanoindenter",
+  "name_ko": "KLA iMicro 나노인덴터",
+  "manufacturer": "kla",
+  "category": "instrumented_indentation",
+  "form_factor": "benchtop",
+  "description": "InForce 1000 액추에이터(전자기 부하 최대 1 N, 정전용량 변위) 표준, InForce 50(50 mN, 연질·박막) 및 2축 Gemini(마찰·스크래치) 옵션. 100 kHz 데이터 수집, 20 µs 시간상수, CSM(연속강성). NanoBlitz 3D/4D 매핑, ProbeDMA, 300 °C 가열, 스크래치·마모.",
+  "test_items": ["instrumented_indentation", "friction_wear_tribo", "dma"],
+  "measurands": ["indentation_hardness", "indentation_modulus", "creep", "storage_modulus", "loss_modulus", "friction_coefficient", "scratch_resistance"],
+  "materials": ["hard coatings", "ceramics", "glasses", "metals", "composites", "paints", "pharmaceuticals", "semiconductors", "batteries", "biomaterials (kPa shear moduli)"],
+  "standards": {"compliance": ["ISO 14577"], "test_methods": ["ISO 14577"]},
+  "limits": {
+    "indentation_force_mN": {"max": 1000, "note": "InForce 1000: up to 1 N; InForce 50: 50 mN"},
+    "temperature_degC": {"max": 300, "note": "sample heating option"},
+    "data_rate_Hz": {"max": 100000}
+  },
+  "models": [{"model": "iMicro", "specs": {"actuators": ["InForce 1000 (1 N)", "InForce 50 (50 mN, option)", "Gemini 2D (option)"], "data_rate_Hz": 100000, "time_constant_us": 20}}],
+  "options": ["NanoBlitz 3D / 4D", "ProbeDMA", "Scratch & Wear", "Biomaterials pack", "DataBurst (>1 kHz displacement)", "True Test I-V", "active vibration isolation", "linear optical encoders", "tips: Berkovich, cube corner, Vickers, flat/sphere punch"],
+  "relations": [],
+  "sources": [{"file": "kla/imicro-nanoindenter.pdf", "pages": [2, 5, 6]}],
+  "confidence": "catalog",
+  "notes": "노이즈 플로어·변위 분해능 수치는 브로슈어에 없음."
+}

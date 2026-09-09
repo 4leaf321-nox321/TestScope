@@ -1,0 +1,29 @@
+{
+  "id": "zwickroell-shore-hardness-testers",
+  "kind": "equipment_series",
+  "name": "ZwickRoell 3110–3119 analog / 3130–3137 digital Shore hardness testers",
+  "name_ko": "즈윅로엘 아날로그(3110–3119)·디지털(3130–3137) 쇼어 경도계",
+  "manufacturer": "zwickroell",
+  "category": "shore_irhd_hardness",
+  "form_factor": "handheld",
+  "description": "휴대형 쇼어 듀로미터. 아날로그 3114/3115(Shore A 10–90), 3116/3117(Shore D 30–90), 3112(B), 3113(C), 3119(D0), 3110(0), 3111(00). 디지털 3130(A)·3131(D)·3132(B)·3133(C)·3134(D0)·3135(0)·3136(00) — 측정시간 설정, 300 값 저장, USB. 시험대(12.5 N Shore A / 50 N Shore D / 3.924 N Shore 00) 옵션. 시편: 평행면 Ø35 mm 이상, 두께 6 mm.",
+  "test_items": ["hardness_shore"],
+  "measurands": ["hardness_shore_A", "hardness_shore_D", "hardness_shore_B", "hardness_shore_C", "hardness_shore_D0", "hardness_shore_0", "hardness_shore_00"],
+  "materials": ["soft rubber", "elastomers", "natural rubber", "hard rubber", "rigid thermoplastics", "foam", "textile fabrics", "granular materials"],
+  "standards": {"compliance": [], "test_methods": ["ISO 48-4", "ISO 868", "ASTM D2240", "NFT 51109", "ISO 7619-1 (withdrawn)"]},
+  "limits": {
+    "hardness_scales": {"values": ["Shore A", "Shore D", "Shore B", "Shore C", "Shore D0", "Shore 0", "Shore 00", "Shore 000", "Shore A0"]},
+    "specimen_thickness_mm": {"min": 6},
+    "specimen_diameter_mm": {"min": 35}
+  },
+  "models": [
+    {"model": "3114 / 3115 (Shore A, analog, 3115 with drag pointer)", "specs": {"hardness_scales": "Shore A 10–90"}},
+    {"model": "3116 / 3117 (Shore D, analog)", "specs": {"hardness_scales": "Shore D 30–90"}},
+    {"model": "3112 (B), 3113 (C), 3119 (D0), 3110 (0), 3111 (00) analog", "specs": {"hardness_scales": "ASTM D2240 scales B/C/D0/0/00"}},
+    {"model": "3130 (A) / 3131 (D) / 3132 (B) / 3133 (C) / 3134 (D0) / 3135 (0) / 3136 (00) digital", "specs": {"memory_values": 300, "interface": "USB", "power": "rechargeable battery"}}
+  ],
+  "options": ["test device with 12.5 N (Shore A) / 50 N (Shore D) load weight", "test device for Shore 00/000 (3.924 N)", "verification device", "40/60 Shore test rings", "prisms for rubber rollers 10–40 / 40–100 mm", "testXpert III"],
+  "relations": [],
+  "sources": [{"file": "zwickroell/digital-shore-hardness-testers-pi-en.pdf", "pages": [1, 2, 3]}, {"file": "zwickroell/analog-shore-hardness-testers-pi-en.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

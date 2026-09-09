@@ -1,0 +1,98 @@
+{
+  "_comment": "relations[].type 값. 방향은 source(객체) -> target.",
+  "relations": [
+    {
+      "id": "manufactured_by",
+      "label": "제조사",
+      "target_kind": "manufacturer",
+      "note": "manufacturer 필드로 자동 생성"
+    },
+    {
+      "id": "in_category",
+      "label": "장비 분류",
+      "target_kind": "category",
+      "note": "category 필드로 자동 생성"
+    },
+    {
+      "id": "performs",
+      "label": "수행 시험 항목",
+      "target_kind": "test_item",
+      "note": "test_items[] 로 자동 생성"
+    },
+    {
+      "id": "complies_with",
+      "label": "장비 규격 적합",
+      "target_kind": "standard",
+      "note": "standards.compliance[] 로 자동 생성"
+    },
+    {
+      "id": "supports_method",
+      "label": "수행 가능 시험법",
+      "target_kind": "standard",
+      "note": "standards.test_methods[] 로 자동 생성"
+    },
+    {
+      "id": "variant_of",
+      "label": "상위 시리즈",
+      "target_kind": "equipment",
+      "note": "모델 -> 시리즈"
+    },
+    {
+      "id": "successor_of",
+      "label": "후속 기종",
+      "target_kind": "equipment"
+    },
+    {
+      "id": "compatible_accessory",
+      "label": "장착 가능 부속",
+      "target_kind": "equipment|accessory",
+      "note": "장비 -> 챔버·그립·신율계"
+    },
+    {
+      "id": "fits_on",
+      "label": "장착 대상 장비",
+      "target_kind": "equipment",
+      "note": "부속 -> 장비 (compatible_accessory 의 역방향)"
+    },
+    {
+      "id": "extends_temperature",
+      "label": "온도 범위 확장",
+      "target_kind": "equipment|accessory",
+      "note": "챔버·퍼니스가 붙으면 temperature_degC 가 그 부속의 범위로 바뀐다"
+    },
+    {
+      "id": "extends_capability",
+      "label": "시험 항목 확장",
+      "target_kind": "equipment|accessory",
+      "note": "굽힘 지그·비틀림 축 등을 붙이면 test_items 가 늘어난다"
+    },
+    {
+      "id": "requires",
+      "label": "필요 조건",
+      "target_kind": "equipment|accessory|utility",
+      "note": "유압원·LN2·압축공기"
+    },
+    {
+      "id": "controlled_by",
+      "label": "제어 소프트웨어",
+      "target_kind": "software"
+    },
+    {
+      "id": "same_family_as",
+      "label": "동일 계열",
+      "target_kind": "equipment"
+    },
+    {
+      "id": "measures_property",
+      "label": "측정 대상 물성",
+      "target_kind": "measurand",
+      "note": "장비 -> measurand (측정 물성) 노드"
+    },
+    {
+      "id": "simulates_environment",
+      "label": "모사 환경",
+      "target_kind": "environment",
+      "note": "챔버가 만드는 환경(온도·습도·염수·광)"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "arbin-evts",
+  "kind": "equipment_series",
+  "name": "Arbin EVTS Electric Vehicle Battery Pack Test System",
+  "name_ko": "아빈 EVTS 전기차 배터리 팩 시험 시스템",
+  "manufacturer": "arbin",
+  "brand": "EVTS",
+  "category": "battery_cycler",
+  "form_factor": "floor",
+  "description": "EV·HEV 용 고출력 배터리 팩·모듈 시험 스테이션. 회생(regenerative) 전력 회로로 방전 전력을 계통에 되돌려 시험 비용을 낮춘다(회생 효율 90 % 이상). 최대 450 kW 까지 표준·맞춤 구성이 가능하며, 채널마다 전용 마이크로컨트롤러가 100 ms 제어 주기를 처리한다. 다중 전류 레인지와 이중 전압 레인지로 저출력·고출력 팩을 모두 정확히 다룬다.",
+  "test_items": ["battery_cycle_life"],
+  "measurands": ["capacity", "power_capability", "internal_resistance", "efficiency", "voltage_profile"],
+  "materials": ["EV battery packs", "HEV battery packs", "battery modules", "energy storage systems"],
+  "standards": {"compliance": [], "test_methods": ["IEC 62660-1", "ISO 12405-4", "SAE J1798", "USABC", "GB/T 31467"]},
+  "limits": {
+    "power_kW": {"max": 450, "note": "표준·맞춤 구성 범위"},
+    "regenerative_efficiency_pct": {"min": 90},
+    "control_period_ms": {"min": 100, "note": "채널당 전용 마이크로컨트롤러"}
+  },
+  "models": [
+    {"model": "EVTS (표준·맞춤 구성)", "specs": {"power_kW": {"max": 450}, "regeneration": true, "voltage_ranges": "이중 전압 레인지", "current_ranges": "다중 전류 레인지", "accuracy": "0.1 % Full Scale @ 16 bit", "ups": "내장 무정전 전원(정상 기동·정지 및 정전 보호)"}}
+  ],
+  "accuracy": {"full_scale": "0.1 % F.S. (16 bit 분해능)"},
+  "features": ["계통 회생 전력 회로(효율 ≥90 %)", "채널당 전용 마이크로컨트롤러", "다중 전류 레인지 + 이중 전압 레인지", "MITS Pro 스케줄 소프트웨어(전류·전압·전력 등 제어 유형)", "내장 UPS"],
+  "relations": [
+    {"type": "performs", "target": "battery_cycle_life"},
+    {"type": "same_family_as", "target": "arbin-lbt-cell-tester"}
+  ],
+  "sources": [{"file": "arbin/evts-battery-test.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

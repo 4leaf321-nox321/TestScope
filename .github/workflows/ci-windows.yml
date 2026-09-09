@@ -1,0 +1,134 @@
+# 검증 게이트.
+#
+# **Windows 를 쓴다.** 여기가 배포 대상이고, 이 CI 가 잡는 것들(러너 콘솔이 한글을
+# 못 찍어 죽는 스크립트, BOM 없는 .ps1, PowerShell 5.1 의 stderr 처리)은 리눅스에서는
+# 원리상 안 드러난다.
+#
+# **줄을 둘로 나눴다.** 백엔드와 프론트는 서로를 안 기다린다 — 벽시계는 긴 줄 하나로
+# 줄고, 어디서 깨졌는지도 목록에서 바로 보인다.
+
+name: CI - Windows
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+env:
+  # 러너 콘솔이 cp1252 라 스크립트가 한글을 찍는 순간 UnicodeEncodeError 로 죽는다.
+  # 한국어 서버(CP949)에서는 안 나므로 여기서만 드러난다.
+  PYTHONIOENCODING: utf-8
+
+jobs:
+  backend:
+    name: 백엔드 (ruff · mypy · pytest · alembic)
+    runs-on: windows-latest
+    env:
+      # conftest 가 여기서 <이름>_test 를 파생해 만든다. **개발 DB 를 건드리지 않는**
+      # 구조가 CI 에서도 그대로 성립한다.
+      DATABASE_URL: postgresql+psycopg://postgres:root@localhost:5432/testatlas
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version-file: '.python-version'
+          # 매 실행 pip 가 휠을 다시 받지 않게. 잠금이 안 바뀌면 그대로 쓴다.
+          cache: 'pip'
+          cache-dependency-path: |
+            backend/requirements.txt
+            backend/requirements-dev.txt
+
+      # windows 러너 이미지에는 PostgreSQL 이 설치돼 있지만 꺼져 있다.
+      - name: PostgreSQL 시작
+        shell: pwsh
+        run: |
+          $service = Get-Service -Name postgresql* | Select-Object -First 1
+          Set-Service -InputObject $service -StartupType Automatic
+          Start-Service -InputObject $service
+          $env:PGPASSWORD = 'root'
+          & "$env:PGBIN\pg_isready" --timeout=30
+
+      - name: 백엔드 의존성
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: 린트 (ruff)
+        working-directory: backend
+        run: |
+          python -m ruff check .
+          python -m ruff format --check .
+
+      - name: 타입 (mypy strict)
+        working-directory: backend
+        run: python -m mypy
+
+      - name: 테스트 (pytest)
+        working-directory: backend
+        shell: pwsh
+        run: |
+          $env:PGPASSWORD = 'root'
+          & "$env:PGBIN\createdb" -U postgres -h localhost testatlas_test
+          python -m pytest
+
+      # **마이그레이션이 모델과 어긋났는지 본다.** 시험은 모델로 표를 만들기 때문에
+      # 그 어긋남을 못 잡는다 — 그리고 그것은 배포하고 나서야 500 으로 드러난다.
+      - name: 마이그레이션 정합 (alembic check)
+        working-directory: backend
+        shell: pwsh
+        run: |
+          $env:PGPASSWORD = 'root'
+          & "$env:PGBIN\createdb" -U postgres -h localhost testatlas
+          python -m alembic upgrade head
+          python -m alembic check
+
+  frontend:
+    name: 프론트 (빌드 · vitest · oxlint · 생성 타입)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version-file: '.python-version'
+
+      - name: 프론트엔드 의존성
+        working-directory: frontend
+        run: npm ci
+
+      - name: 프론트엔드 빌드 (tsc strict + vite)
+        working-directory: frontend
+        run: npm run build
+
+      - name: 프론트엔드 테스트 (vitest)
+        working-directory: frontend
+        run: npm test
+
+      - name: 프론트엔드 린트 (oxlint)
+        working-directory: frontend
+        run: npm run lint
+
+      # **생성 타입이 커밋된 것과 다르면 누군가 재생성을 빠뜨린 것이다.** 손으로
+      # 적은 타입은 반드시 서버와 어긋나고, 어긋난 날 화면은 아무 말도 안 하고
+      # undefined 를 그린다.
+      - name: 생성 타입 최신성
+        shell: pwsh
+        run: |
+          cd backend
+          python -m pip install -r requirements.txt
+          python scripts/export_openapi.py
+          cd ../frontend
+          npm run api:types
+          $diff = git diff --name-only -- src/shared/api/schema.d.ts ../backend/openapi.json
+          if ($diff) {
+            Write-Error "생성물이 최신이 아닙니다 ($diff). export_openapi.py 와 npm run api:types 를 돌리고 커밋하세요."
+            exit 1
+          }

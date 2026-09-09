@@ -1,0 +1,38 @@
+{
+  "id": "instron-electropuls-e3000",
+  "kind": "equipment_model",
+  "name": "ElectroPuls E3000 / E3000 Linear-Torsion All-Electric Dynamic Test Instrument",
+  "name_ko": "인스트론 ElectroPuls E3000 전기동력식 동적 시험기",
+  "manufacturer": "instron",
+  "brand": "ElectroPuls",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "form_factor": "dual_column_tabletop",
+  "description": "오일 프리 리니어(±3 kN 동적 / ±2.1 kN 정적, 60 mm) 및 회전(±25 N·m 동적 / ±18 N·m 정적, ±135° 또는 ±16회전) 모터. 100 Hz 초과 동적 성능, 단상 전원, 공압·유압 불요. Dynacell ±5 kN/±25 N·m. 3119-6051 환경챔버 옵션.",
+  "test_items": ["fatigue", "tensile", "compression", "flexure", "torsion", "dma"],
+  "measurands": ["fatigue_life", "dynamic_stiffness", "storage_modulus", "tensile_strength"],
+  "materials": ["biomaterials", "medical devices", "polymers", "elastomers", "small components"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "dynamic_force_kN": {"max": 3},
+    "static_force_kN": {"max": 2.1},
+    "torque_Nm": {"max": 25},
+    "stroke_mm": {"values": [60]},
+    "rotation_deg": {"max": 135, "note": "또는 ±16 회전"},
+    "frequency_Hz": {"max": 100, "note": "over 100 Hz capable"},
+    "vertical_test_space_mm": {"max": 861},
+    "horizontal_test_space_mm": {"values": [455]},
+    "temperature_degC": {"note": "3119-6051 environmental chamber option"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "E3000 (linear)", "specs": {"dynamic_force_kN": 3, "static_force_kN": 2.1, "stroke_mm": 60, "vertical_test_space_mm": 861, "weight_kg": 240, "controller_weight_kg": 42, "power": "200–240 VAC 16 A 1Ph"}},
+    {"model": "E3000 Linear-Torsion", "specs": {"dynamic_force_kN": 3, "static_force_kN": 2.1, "torque_Nm": 25, "static_torque_Nm": 18, "stroke_mm": 60, "rotation_deg": 135, "vertical_test_space_mm": 861, "weight_kg": 250, "controller_weight_kg": 70, "power": "200–240 VAC 32 A 1Ph"}}
+  ],
+  "accuracy": {"load_torque": "±0.5% of indicated or ±0.005% of load cell capacity, whichever greater"},
+  "environment": {"operating_temp_degC": [10, 30], "cooling": "temperature-controlled air"},
+  "options": ["1300-304 safety screen", "2742-205/206 linear-torsion wedge grips", "2810-500 3-point bend", "2840-030 20 kN platens", "3119-6051 environmental chamber", "2527-203 ±1 kN/±25 Nm biaxial Dynacell"],
+  "relations": [{"type": "same_family_as", "target": "instron-electropuls-e10000", "note": "E1000 / E10000 형제 기종 — 브로슈어 미확보"}],
+  "sources": [{"file": "instron/electropuls-e3000-linear-torsion.pdf", "pages": [1, 2, 4]}],
+  "confidence": "catalog"
+}

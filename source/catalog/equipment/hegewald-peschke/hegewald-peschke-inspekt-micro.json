@@ -1,0 +1,111 @@
+{
+  "id": "hegewald-peschke-inspekt-micro",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt micro S500N Miniature Load Unit",
+  "name_ko": "헤게발트 운트 페슈케 inspekt micro S500N 소형 하중 유닛",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "subcategory": "micro",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "정격 500 N 의 소형 하중 유닛. 무백래시 볼스크류 2 개를 DC 서보와 무백래시 기어로 몰고, 베이스 프레임에 다는 플랜지면이 두 곳 있어 시험 용도에 따라 수평·수직 설치를 자유로이 고른다. 최대 시험 스트로크 50 mm, 속도 0.0005~600 mm/min(10 mm/s) 또는 하중 제어로 200 N/s 까지. 경로 가속도는 최대 200 mm/s² 또는 250 N/s². 강성은 500 N 로드셀과 함께 25 N/µm(강성 보정 없이). 크로스헤드 이동은 증분식 레이저 측정계로 재고 선형 스케일이 열팽창계수 -0.7×10⁻⁶/°C 인 Neoceran 이라 온도 영향이 작다 — 분해능 0.002 µm, 측정계 정확도 ±0.5 µm 이며 하우징과 공구 연결판 사이를 직접 잰다. 힘 측정은 로드셀 정격의 1~100 % 구간에서 ISO 7500 Class 1, 분해능 24 bit. 하중 유닛 자체가 2.6 kg 으로 가볍다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "films and foils",
+    "fibers",
+    "micro components",
+    "biological/medical specimens",
+    "electronic components"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_N": {
+      "max": 500
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.0005,
+      "max": 600,
+      "note": "10 mm/s. 하중 제어로는 200 N/s 까지"
+    },
+    "crosshead_travel_mm": {
+      "max": 50
+    },
+    "position_resolution_nm": {
+      "max": 2,
+      "note": "0.002 µm. 측정계 정확도 ±0.5 µm"
+    },
+    "weight_kg": {
+      "max": 8.6,
+      "note": "하중 유닛 2.6 kg, 제어부 8.6 kg"
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt micro S500N (10-019-501)",
+      "specs": {
+        "max_force_N": 500,
+        "stiffness_N_um": 25,
+        "max_test_stroke_mm": 50,
+        "speed_mm_min": {"min": 0.0005, "max": 600},
+        "load_control_rate_N_s": 200,
+        "max_path_acceleration_mm_s2": 200,
+        "max_load_acceleration_N_s2": 250,
+        "force_measuring_range": "로드셀 정격의 1~100 %, ISO 7500 Class 1 (±1 %), ASTM E4",
+        "force_resolution": "24 bit",
+        "travel_measurement": "증분식 레이저, Neoceran 선형 스케일(-0.7×10⁻⁶/°C)",
+        "travel_resolution_um": 0.002,
+        "travel_accuracy_um": 0.5,
+        "mechanical": "무백래시 볼스크류 2, DC 서보 + 무백래시 기어",
+        "mounting": "플랜지면 2 곳 — 수평·수직 설치 자유 선택",
+        "load_unit_dimensions_mm": "W70 x D100 x L155 (+ 스트로크 50)",
+        "load_unit_weight_kg": 2.6,
+        "control_unit_dimensions_mm": "W300 x H130 x D420",
+        "control_unit_weight_kg": 8.6,
+        "functions": ["하중·변위·변형 제어(외부 측정계)", "과부하 보호", "자동 힘 교정", "시편 파단 검출", "리턴 기능", "제어부 표시창(힘·변위)으로 셋업 운전", "크로스헤드 위치 저장"]
+      },
+      "note": "강성 25 N/µm 은 500 N 로드셀을 함께 단 상태에서 강성 보정 없이 잰 값이다"
+    }
+  ],
+  "accuracy": {
+    "force": "로드셀 정격의 1~100 % 구간에서 ISO 7500 Class 1 (±1 %), ASTM E4",
+    "travel": "분해능 0.002 µm, 측정계 정확도 ±0.5 µm"
+  },
+  "features": [
+    "수평·수직 설치 자유 선택",
+    "Neoceran 선형 스케일로 온도 영향이 작은 변위 측정",
+    "하우징-공구 연결판 사이를 직접 측정해 프레임 변형을 배제",
+    "하중 유닛 2.6 kg 의 경량 구조",
+    "하중 제어 200 N/s"
+  ],
+  "options": [],
+  "relations": [
+    {"type": "performs", "target": "tensile"},
+    {"type": "performs", "target": "compression"},
+    {"type": "performs", "target": "flexure"},
+    {"type": "same_family_as", "target": "hegewald-peschke-inspekt-solo"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/10-019-501-miniature-load-unit-inspekt-micro-s500n.pdf", "pages": [1, 2]},
+    {"file": "hegewald-peschke/micro-testing-systems.pdf", "pages": [1]}
+  ],
+  "confidence": "catalog",
+  "notes": "다른 inspekt 계열과 달리 힘 측정 하한이 정격의 0.1 % 가 아니라 1 % 다. 시험 공간 치수와 운전 환경(온도·습도)이 데이터시트에 없다. `micro-testing-systems.pdf` 는 미세 시험 개요 자료(Wissenswertes)라 사양이 아니라 배경 설명이다."
+}

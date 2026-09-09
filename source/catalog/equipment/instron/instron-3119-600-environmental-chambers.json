@@ -1,0 +1,42 @@
+{
+  "id": "instron-3119-600-environmental-chambers",
+  "kind": "accessory",
+  "name": "Instron 3119-600 Series Environmental Chambers",
+  "name_ko": "인스트론 3119-600 시리즈 환경(온도) 챔버",
+  "manufacturer": "instron",
+  "category": "environmental_chamber",
+  "description": "정적·동적 시험기 겸용 강제대류 온도 챔버. 테이블형 3119-605/606/609/615(-100~+350 °C, 내부 240×230 mm, 높이 485–860), 플로어형 3119-607/610(-150~+350 °C), 3119-608(-150~+600 °C), 3119-616/617/618(-80~+350 °C, 내부 400×400, 높이 760–1000). LN2 또는 CO2 냉각, Eurotherm 3208 컨트롤러, 광학창.",
+  "test_items": ["tensile", "compression", "flexure", "fatigue"],
+  "measurands": [],
+  "materials": ["plastics", "metals", "composites", "elastomers"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "temperature_degC": {"min": -150, "max": 600, "note": "모델별: 605/606/609/615 -100~+350; 607/610 -150~+350; 608 -150~+600; 616/617/618 -80~+350. 냉각은 옵션(LN2 또는 CO2 -70)"},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [
+    {"model": "3119-605", "form_factor": "table", "specs": {"temperature_degC": {"min": -100, "max": 350}, "inner_mm": {"height": 485, "width": 240, "depth": 230}, "outer_mm": {"height": 635, "width": 350, "depth": 590}, "pull_rod_port_mm": 67, "weight_kg": 65}},
+    {"model": "3119-606", "form_factor": "table", "specs": {"temperature_degC": {"min": -100, "max": 350}, "inner_mm": {"height": 560, "width": 240, "depth": 230}, "weight_kg": 65}},
+    {"model": "3119-609", "form_factor": "table", "specs": {"temperature_degC": {"min": -100, "max": 350}, "inner_mm": {"height": 660, "width": 240, "depth": 230}, "weight_kg": 75}},
+    {"model": "3119-615", "form_factor": "table", "specs": {"temperature_degC": {"min": -100, "max": 350}, "inner_mm": {"height": 860, "width": 240, "depth": 230}, "weight_kg": 85}},
+    {"model": "3119-607", "form_factor": "floor", "specs": {"temperature_degC": {"min": -150, "max": 350}, "inner_mm": {"height": 560, "width": 400, "depth": 400}, "pull_rod_port_mm": 90, "weight_kg": 135}},
+    {"model": "3119-608", "form_factor": "floor", "specs": {"temperature_degC": {"min": -150, "max": 600}, "inner_mm": {"height": 560, "width": 400, "depth": 400}, "weight_kg": 165}},
+    {"model": "3119-610", "form_factor": "floor", "specs": {"temperature_degC": {"min": -150, "max": 350}, "inner_mm": {"height": 660, "width": 400, "depth": 400}, "weight_kg": 165}},
+    {"model": "3119-616", "form_factor": "floor", "specs": {"temperature_degC": {"min": -80, "max": 350}, "inner_mm": {"height": 900, "width": 400, "depth": 400}, "weight_kg": 165}},
+    {"model": "3119-617", "form_factor": "floor", "specs": {"temperature_degC": {"min": -80, "max": 350}, "inner_mm": {"height": 760, "width": 400, "depth": 400}, "pull_rod_port_mm": 135, "weight_kg": 150}},
+    {"model": "3119-618", "form_factor": "floor", "specs": {"temperature_degC": {"min": -80, "max": 350}, "inner_mm": {"height": 1000, "width": 400, "depth": 400}, "pull_rod_port_mm": 135, "weight_kg": 173}}
+  ],
+  "accuracy": {"temperature": "±3.5 °C at +200; ±4.5 at -40/+350; ±5.0 at -100; ±5.5 at -150/+600 (overall system, steel specimen 50 mm GL)", "heat_up": "<50 min to max (table, 240 V); <25 min (607/610); <60 min (608)", "cool_down": "<20 min to -100 (LN2); <40 min to -150"},
+  "environment": {"cooling": "LN2 self-pressurising Dewar or liquid CO2 cylinders", "controller": "Eurotherm 3208, Type N thermocouple, USB to Bluehill"},
+  "options": ["cooling valve (LN2/CO2)", "extensometer ports", "AVE 2/3 window", "custom variants"],
+  "relations": [
+    {"type": "fits_on", "target": "instron-6800-series"},
+    {"type": "fits_on", "target": "instron-3400-series"},
+    {"type": "fits_on", "target": "instron-5900-series"},
+    {"type": "fits_on", "target": "instron-8800-servohydraulic"},
+    {"type": "fits_on", "target": "instron-electropuls-e3000"},
+    {"type": "requires", "target": "utility-liquid-nitrogen", "note": "또는 CO2"}
+  ],
+  "sources": [{"file": "instron/3119-600-environmental-chambers.pdf", "pages": [6, 10, 11]}],
+  "confidence": "catalog"
+}

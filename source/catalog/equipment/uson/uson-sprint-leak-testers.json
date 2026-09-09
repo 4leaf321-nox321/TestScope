@@ -1,0 +1,125 @@
+{
+  "id": "uson-sprint-leak-testers",
+  "kind": "equipment_series",
+  "name": "Uson Sprint LC / Sprint-GT Leak and Flow Testers",
+  "name_ko": "유손 Sprint LC·Sprint-GT 누설·유량 시험기",
+  "manufacturer": "uson",
+  "brand": "Sprint",
+  "category": "leak_tester",
+  "subcategory": "pressure_decay",
+  "drive": "pneumatic",
+  "form_factor": "benchtop",
+  "description": "공기압으로 시험체를 채우고 압력 강하나 질량 유량으로 누설을 재는 탁상형 시험기. Sprint LC 는 1~4 채널 구성이고 압력 강하·진공 강하·질량 유량·파열(burst)·크래킹 압력·폐색(occlusion) 등 여러 기법을 한 장비에서 한다 — 의료기기 누설 시험의 사실상 표준으로 쓰인다. 압력 범위 90·110·150 psig(옵션 300·400·500), 진공 0~-15 psig, 유량 표준 200 sccm(옵션 1,000·5,000·20,000). 압력 분해능은 6 psig 이하에서 0.0001 psig 로 가장 곱고 60 psig 초과에서 0.01 psig 로 거칠어진다. 반복도는 풀스케일의 ±0.01 %(범위에 따라). Sprint-GT 는 단채널 압력강하 전용의 단순한 기종으로 2~60 psig(저범위) 또는 2~100 psig(고범위), 전 범위에서 디지털 분해능 0.001 psig, 1 년 정확도는 범위의 ±1 %(저범위 0.6 psi, 고범위 1.0 psi). 리크 마스터를 물리면 누설률을 cc/min 으로 환산해 표시한다.",
+  "test_items": [
+    "leak_rate",
+    "seal_strength"
+  ],
+  "measurands": [
+    "leak_rate",
+    "pressure_decay_slope",
+    "flow_rate_ratio",
+    "pressure_drop",
+    "burst_immunity_level"
+  ],
+  "materials": [
+    "medical devices",
+    "packaging",
+    "automotive components",
+    "valves and fittings",
+    "sealed assemblies"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "pressure_psi": {
+      "min": -15,
+      "max": 500,
+      "note": "Sprint LC 압력 90/110/150 psig(옵션 300/400/500), 진공 0~-15 psig. Sprint-GT 는 2~60 또는 2~100 psig"
+    },
+    "leak_rate_mbar_L_s": {
+      "note": "누설률을 mbar·L/s 가 아니라 sccm(유량) 또는 cc/min 으로 표시한다 — 단위계가 헬륨 검출기와 다르다"
+    },
+    "channels": {
+      "min": 1,
+      "max": 4,
+      "note": "Sprint LC 1~4 채널. Sprint-GT 는 1 채널(전면 1/8 인치 NPT 포트)"
+    },
+    "pressure_resolution_Pa": {
+      "note": "Sprint LC 는 6 psig 이하 0.0001 psig, 10~60 psig 0.001 psig, 60 psig 초과 0.01 psig. Sprint-GT 는 전 범위 0.001 psig"
+    }
+  },
+  "models": [
+    {
+      "model": "Sprint LC",
+      "specs": {
+        "channels": "1~4",
+        "pressure_ranges_psig": [90, 110, 150],
+        "pressure_ranges_psig_option": [300, 400, 500],
+        "pressure_resolution_psig": {"≤6 psig": 0.0001, "10~60 psig": 0.001, ">60 psig": 0.01},
+        "vacuum_range_psig": {"min": -15, "max": 0},
+        "vacuum_resolution_psig": {"기본": 0.001, "-6 psig 까지": 0.0001},
+        "flow_range_sccm": 200,
+        "flow_range_sccm_option": [1000, 5000, 20000],
+        "flow_resolution_sccm": {"0~200 sccm": 0.01, "5000~20000 sccm": 1.0},
+        "repeatability_pct_fs": 0.01,
+        "test_types": ["압력 강하", "진공 강하", "질량 유량", "파열(burst)", "크래킹 압력", "폐색(occlusion)"],
+        "built_in": ["RS232 포트", "프로그램 연결(program linking)", "원격 시작 입력"]
+      },
+      "note": "의료기기 누설 시험용으로 널리 쓰인다고 문서가 적는다"
+    },
+    {
+      "model": "Sprint-GT",
+      "specs": {
+        "test_type": "압력 강하(delta pressure) 전용",
+        "channels": 1,
+        "test_port": "전면 1/8 인치 NPT 1 개",
+        "calibration_port": "전면 1/8 인치 NPT 1 개",
+        "pressure_range_psig_low": {"min": 2, "max": 60},
+        "pressure_range_psig_high": {"min": 2, "max": 100},
+        "pressure_resolution_psig": 0.001,
+        "accuracy_1yr": "범위의 ±1 % — 저범위 0.6 psi, 고범위 1.0 psi",
+        "pressure_sensor": "게이지 압력, 온도 보상 내장",
+        "pressure_units": ["psig", "kg/cm²", "kPa", "bar"],
+        "regulator": "케이스 내부 수동 조절기(뒷면 드라이버 접근)",
+        "calibration": "외부 압력 표준으로 사용자가 변환기 선형화",
+        "leak_rate_display": "리크 마스터를 물리면 cc/min 으로 환산 표시",
+        "display": "512자 LCD, 형광 백라이트",
+        "stored_programs": "2 개 (+ 씰 시험 프로그램 1)",
+        "start_switch": "홀 효과(교체 가능)",
+        "power": "자동 전압 감지 90~260 V, 50~60 Hz",
+        "enclosure_mm": "높이 241 x 폭 216 x 깊이 350"
+      }
+    }
+  ],
+  "accuracy": {
+    "sprint_lc_repeatability": "풀스케일의 ±0.01 % (범위에 따라)",
+    "sprint_gt_accuracy": "1 년 기준 범위의 ±1 % (저범위 0.6 psi, 고범위 1.0 psi)"
+  },
+  "features": [
+    "한 장비에서 압력 강하·진공 강하·질량 유량·파열·크래킹 압력·폐색(Sprint LC)",
+    "1~4 채널 병렬 시험(Sprint LC)",
+    "리크 마스터로 누설률 cc/min 환산",
+    "psig·kg/cm²·kPa·bar 단위 선택",
+    "온도 보상 내장 게이지 압력 센서",
+    "RS232, 원격 시작 입력"
+  ],
+  "options": [
+    "고압 범위(300·400·500 psig)",
+    "대유량 범위(1,000·5,000·20,000 sccm)",
+    "아날로그 게이지 단위 선택",
+    "전면 피팅(8 mm 나사 / 1/8 인치 BSPT)"
+  ],
+  "relations": [
+    {"type": "performs", "target": "leak_rate"},
+    {"type": "requires", "target": "utility-compressed-air", "note": "가압 공기 공급이 필요하다"}
+  ],
+  "sources": [
+    {"file": "uson/sprint-lc-datasheet.pdf", "pages": [1, 2]},
+    {"file": "uson/sprint-gt-datasheet.pdf", "pages": [1, 2]},
+    {"file": "uson/uson-overview.pdf", "pages": [1, 2, 3]}
+  ],
+  "confidence": "catalog",
+  "notes": "uson.com 은 UA 헤더로 열리지만 현행 제품 데이터시트가 등록 폼 뒤에 있다 — archive.org 스냅샷에서 받았고 **자료가 오래됐다**(Sprint-GT 2003-12, Sprint LC 2006-12). 현행 제품군(Sprint iQ, Sprint mD, Optima vT)의 사양은 아직 확보하지 못했다. 압력을 psig 로 적는 문서라 SI 로 옮기지 않고 원 단위를 유지했다 — TestAtlas 규약은 SI 저장이므로 반입할 때 환산해야 한다(1 psi = 6.895 kPa). 누설률 단위도 헬륨 검출기(mbar·L/s)와 달라 sccm·cc/min 이다."
+}

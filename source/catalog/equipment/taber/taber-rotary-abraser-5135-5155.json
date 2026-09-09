@@ -1,0 +1,28 @@
+{
+  "id": "taber-rotary-abraser-5135-5155",
+  "kind": "equipment_series",
+  "name": "Taber Rotary Platform Abraser 5135 (single) / 5155 (dual)",
+  "name_ko": "테이버 회전 플랫폼 마모시험기 5135/5155",
+  "manufacturer": "taber",
+  "category": "abrasion_tester",
+  "form_factor": "benchtop",
+  "description": "두 개의 마모 휠(CS-10 Calibrase, H-18 Calibrade)이 회전 시편을 문지르는 테이버 마모 시험. 플랫폼 60/72 rpm, 보조 하중 500/1000 g, 진공 흡입. 5155 는 2 시편 동시.",
+  "test_items": ["abrasion"],
+  "measurands": ["wear_index", "mass_loss", "cycles_to_failure", "haze"],
+  "materials": ["plastics", "ceramics", "textiles", "leather", "metals", "rubber", "coatings", "laminates"],
+  "standards": {"compliance": [], "test_methods": ["ASTM D4060", "ASTM D3389", "ISO 5470-1", "ASTM D1044", "ISO 9352", "ASTM F1978"]},
+  "limits": {
+    "rotation_rpm": {"values": [60, 72]},
+    "load_g": {"values": [250, 500, 1000], "note": "arm 250 g + auxiliary 500/1000 g"},
+    "specimen_thickness_mm": {"max": 40, "note": "S-21 extension nut 6.35–12.7 mm; arm height extension kit up to 40 mm"},
+    "stations": {"values": [1, 2]}
+  },
+  "models": [
+    {"model": "5135", "specs": {"stations": 1, "rotation_rpm": [60, 72], "power": "115/230 V 60/50 Hz"}},
+    {"model": "5155", "specs": {"stations": 2, "rotation_rpm": [60, 72]}}
+  ],
+  "options": ["calibration/verification kit", "sample cutter", "wheel refacer", "quiet cabinet", "grit feeder", "scuffing head", "multi-media attachment", "haze kit", "abrading wheel sets"],
+  "relations": [],
+  "sources": [{"file": "taber/rotary-abraser-5135-5155.pdf", "pages": [2]}],
+  "confidence": "catalog"
+}

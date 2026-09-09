@@ -1,0 +1,79 @@
+{
+  "id": "nordson-dage-quadra-xray",
+  "kind": "equipment_series",
+  "name": "Nordson DAGE Quadra Series X-ray Inspection System (Quadra 5 / Quadra 7)",
+  "name_ko": "노드슨 데이지 Quadra 시리즈 X-ray 검사 장비",
+  "manufacturer": "nordson-dage",
+  "brand": "Quadra",
+  "category": "xray_inspection",
+  "form_factor": "floor",
+  "description": "SMT 실장 기판·반도체 패키지의 솔더 접합부를 비파괴로 검사하는 X-ray 시스템. QuadraNT X선 튜브(30~160 kV)와 Aspire FP 플랫패널 검출기를 조합하고, X선원·검출기가 함께 수직 이동해 높은 배율을 낸다. Quadra 5 는 필라멘트 프리 투과형 튜브(10 W, 옵션 20 W)에 3 MP 검출기로 총 배율 45,000배, Quadra 7 은 밀폐 투과형 튜브(20 W)에 6.7 MP 검출기로 총 배율 68,000배와 형상 분해능 0.1 µm 를 낸다. AXiS 능동 X선 영상 안정화로 진동을 억제하고, µCT 옵션으로 3D 단층 촬영과 모델 생성을, 가열 스테이지 옵션으로 리플로우 오븐 조건을 실시간 관찰한다.",
+  "test_items": ["xray_void_inspection"],
+  "measurands": ["void_percentage", "solder_joint_integrity", "crack_detection", "head_in_pillow", "wire_sweep", "internal_geometry"],
+  "materials": ["BGA", "QFN", "CSP", "PCB assemblies", "semiconductor packages", "lead frames", "wire bonds", "connectors"],
+  "standards": {
+    "compliance": ["ISO 9001 (LRQ 4009487 BS EN ISO 9001:2008)", "X선 누설 <1 µSv/h — 국제 안전 규격 충족"],
+    "test_methods": ["IPC-A-610 (보이드 판정)", "IPC-7095 (BGA 보이드)", "J-STD-001", "MIL-STD-883 Method 2012 (방사선 검사)"]
+  },
+  "limits": {
+    "tube_voltage_kV": {"min": 30, "max": 160},
+    "tube_power_W": {"min": 10, "max": 20, "note": "Quadra 5 는 10 W(옵션 20 W), Quadra 7 은 20 W"},
+    "feature_recognition_um": {"min": 0.1, "note": "Quadra 7 은 10 W 이하에서 0.1 µm, 20 W 까지 0.3 µm. Quadra 5 는 0.35 µm(10 W 초과 시 0.95 µm)"},
+    "magnification": {"max": 68000, "note": "총 배율. Quadra 5 45,000배 / Quadra 7 68,000배. 기하 배율은 두 모델 모두 2,500배"},
+    "inspection_area_mm": {"max": 510, "note": "최대 검사 영역 510×445 mm (20×17.5 in)"},
+    "sample_size_mm": {"max": 740, "note": "최대 시료 크기 740×580 mm (29×22.8 in)"},
+    "sample_weight_kg": {"max": 5, "note": "표준 트레이 5 kg(11 lbs). Quadra 7 의 카본파이버 트레이는 500 g"},
+    "detector_megapixels": {"min": 3, "max": 6.7, "note": "Quadra 5 는 3 MP, Quadra 7 은 6.7 MP"},
+    "operating_temperature_degC": {"min": 10, "max": 30},
+    "operating_humidity_pct": {"max": 85, "note": "비응축"}
+  },
+  "models": [
+    {
+      "model": "Quadra 5",
+      "specs": {
+        "tube": {"name": "QuadraNT", "type": "필라멘트 프리 투과형(Filament free transmissive)", "voltage_kV": [30, 160], "max_power_W": 10, "optional_power_W": 20, "feature_recognition_um": "0.35 µm (10 W 초과 시 0.95 µm)"},
+        "detector": {"name": "Aspire FP", "resolution_MP": 3, "frame_rate_fps": 25, "pixel_pitch_um": 50, "imaging_bits": 16},
+        "inspection": {"oblique_angle_view": "2 × 70° — 시료 회전 불필요", "anti_vibration": "AXiS 능동 X선 영상 안정화", "display_resolution_ppi": 94, "inspection_area_mm": [510, 445], "sample_size_mm": [740, 580], "geometric_magnification": 2500, "total_magnification": 45000, "sample_weight_kg": 5, "display": "24\" WUXGA 1920×1200 단일, 플렉시블 암 마운트"},
+        "system": {"footprint_mm": {"W": 1570, "D": 1500, "H": 1900}, "weight_kg": 1950, "power": "단상 200~230 VAC, 50/60 Hz, 16 A", "consumption_kW": 1, "air_supply_bar": [5, 8], "os": "Windows 10 64-bit"},
+        "document": "DS-Q5-150416-V2"
+      }
+    },
+    {
+      "model": "Quadra 7",
+      "specs": {
+        "tube": {"name": "QuadraNT", "type": "밀폐 투과형(Sealed-Transmissive)", "voltage_kV": [30, 160], "max_power_W": 20, "feature_recognition_um": "0.1 µm (10 W 이하) / 0.3 µm (20 W 까지)"},
+        "detector": {"name": "Aspire FP", "resolution_MP": 6.7, "frame_rate_fps": 30, "pixel_pitch_um": 50, "imaging_bits": 16},
+        "inspection": {"oblique_angle_view": "70°", "anti_vibration": "AXiS 능동 X선 영상 안정화", "display_resolution_ppi": 185, "inspection_area_in": [20, 17.5], "sample_size_in": [29, 22.8], "geometric_magnification": 2500, "total_magnification": 68000, "sample_weight_kg": 5, "carbon_fibre_tray_g": 500, "display": "24\" 4K UHD 3840×2160 듀얼, 플렉시블 암 마운트"},
+        "system": {"footprint_mm": {"W": 1570, "D": 1500, "H": 1900}, "weight_kg": 1950, "power": "단상 200~230 VAC, 16 A", "consumption_kW": 1, "air_supply_bar": [4, 6], "os": "Windows 10 64-bit"},
+        "document": "DS-QXR-310316-V1"
+      }
+    }
+  ],
+  "features": ["QuadraNT 투과형 X선 튜브(30~160 kV)", "Aspire FP 플랫패널 검출기(16 bit)", "AXiS 능동 X선 영상 안정화", "경사 관찰(Quadra 5 는 2×70°, 시료 회전 불필요)", "X선 누설 <1 µSv/h", "마우스 조작", "30종 이상 영상 필터"],
+  "options": [
+    {"name": "고출력 업그레이드", "note": "10 W → 20 W (Quadra 5)"},
+    {"name": "X-Plane", "note": "별도 CT 하드웨어 없이 시료 단면(slice) 관찰"},
+    {"name": "X-Plane 3D 시각화", "note": "X-Plane 데이터로 3D 모델 생성"},
+    {"name": "µCT", "note": "µCT 시료 스테이지로 고해상도 3D 모델 생성"},
+    {"name": "가열 스테이지(Heated Stage)", "note": "리플로우 오븐 조건 모사, 솔더 공정 실시간 관찰"},
+    {"name": "템플릿 기반 해석 / CAD 에디터", "note": "설계 데이터로 자동 검사 루틴 생성"},
+    {"name": "조이스틱", "note": "단일 또는 트윈"},
+    {"name": "바코드 리더"},
+    {"name": "세컨드 모니터"},
+    {"name": "필터링 트레이", "note": "시료 X선 선량 저감"},
+    {"name": "박형 시료 트레이", "note": "얇은 시료의 선명한 영상"}
+  ],
+  "relations": [
+    {"type": "performs", "target": "xray_void_inspection"},
+    {"type": "same_family_as", "target": "nordson-dage-4000plus-bondtester"},
+    {"type": "same_family_as", "target": "nikon-xt-h-series"},
+    {"type": "requires", "target": "utility-compressed-air"}
+  ],
+  "sources": [
+    {"file": "nordson-dage/quadra-5-xray.pdf", "pages": [1, 2], "note": "Specifications at a Glance 를 원본 쪽 이미지로 확정(2026-09-10)"},
+    {"file": "nordson-dage/quadra-7-xray.pdf", "pages": [1, 2], "note": "사양표를 원본 쪽 이미지로 확정(2026-09-10)"},
+    {"file": "nordson-dage/quadra-series-xray-brochure.pdf", "pages": [2, 3, 4, 5, 6]}
+  ],
+  "confidence": "catalog",
+  "notes": "시리즈 브로슈어가 말하는 '68,000배 배율'과 '0.1 µm 분해능', '6.7 MP 검출기'는 Quadra 7 사양이다. Quadra 5 는 45,000배·0.35 µm·3 MP 로 한 단계 아래다. 이전 판에서는 두 모델을 uncertain 으로 비워 두었다."
+}

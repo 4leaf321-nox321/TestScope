@@ -1,0 +1,217 @@
+{
+  "id": "hegewald-peschke-at130-hardness",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke (ERNST) AT130 DR / AT130 DSR Stationary Rockwell and Super-Rockwell Hardness Testers",
+  "name_ko": "헤게발트 운트 페슈케(ERNST) AT130 DR·DSR 고정형 로크웰·수퍼로크웰 경도기",
+  "manufacturer": "hegewald-peschke",
+  "brand": "ERNST",
+  "category": "rockwell_hardness",
+  "drive": "manual",
+  "form_factor": "benchtop",
+  "description": "가압축(preasuring shaft)을 쓴 압입 깊이 측정 방식의 고정형 경도기 두 기종. 가압축 방식이라 시편의 휨·미끄러짐·항복·돌출에 둔감하다. 압자는 원뿔 다이아몬드. 하중은 수동으로 건다(DSR 은 전동 옵션). AT130 DR 은 로크웰 588.4·980.7·1471 N 과 브리넬 612.9·1226·1839 N 을 걸어 HRA·HRB·HRC·HRD·HRF·HRG·HB/30 을 낸다. AT130 DSR 은 예비하중 29.4 N(3 kp)에 시험하중 98~441 N(10~45 kp)을 걸어 철계 금속용 HRN 스케일 전부를 낸다 — 시험하중과 예비하중을 레버 한 번에 건다. DSR 은 광학 스케일을 추가하면 DIN EN ISO 6506 브리넬(HBT)과 DIN EN ISO 6507 비커스(HVT)도 된다.",
+  "test_items": [
+    "hardness_rockwell",
+    "hardness_brinell",
+    "hardness_vickers"
+  ],
+  "measurands": [
+    "hardness_HR",
+    "hardness_HBT",
+    "hardness_HVT"
+  ],
+  "materials": [
+    "steel and ferrous metals",
+    "hollow parts (c형 연장 사용)"
+  ],
+  "standards": {
+    "compliance": [
+      "EN 10109-1/2/3",
+      "ASTM E18",
+      "DIN EN ISO 6508",
+      "DIN EN ISO 6506",
+      "DIN EN ISO 6507",
+      "DIN EN ISO 9001 (제조사 인증 09 100 95354)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "load_N": {
+      "min": 29.4,
+      "max": 1839,
+      "note": "DSR 예비하중 29.4 N 부터 DR 브리넬 1839 N 까지. 기종별 값은 models 참조"
+    },
+    "hardness_scales": {
+      "values": [
+        "HRA",
+        "HRB",
+        "HRC",
+        "HRD",
+        "HRF",
+        "HRG",
+        "HB/30",
+        "HRN 전 스케일",
+        "HBT",
+        "HVT"
+      ],
+      "note": "HB/30 은 187.5-2.5 조건. HBT·HVT 는 DSR 에 광학 스케일을 추가해야 한다"
+    }
+  },
+  "models": [
+    {
+      "model": "AT130 DR (Rockwell)",
+      "specs": {
+        "article_no": "TE02AT130DR",
+        "principle": "가압축을 쓴 압입 깊이 측정 (EN 10109-1/2/3, ASTM E18, 원뿔 다이아몬드 압자)",
+        "load_application": "수동",
+        "test_load_rockwell_N": [
+          588.4,
+          980.7,
+          1471
+        ],
+        "test_load_brinell_N": [
+          612.9,
+          1226,
+          1839
+        ],
+        "standard_scales": [
+          "HRA",
+          "HRB",
+          "HRC",
+          "HRD",
+          "HRF",
+          "HRG",
+          "HB/30 (187.5-2.5)"
+        ],
+        "functions": [
+          "스케일 선택",
+          "인쇄",
+          "교정"
+        ],
+        "interface": "RS232C",
+        "power": "100-230 V, 50/60 Hz",
+        "included": [
+          "다이아몬드 압자",
+          "1/16 볼 압자",
+          "2.5 mm 볼 압자",
+          "경도 기준편",
+          "평면 지지대",
+          "프리즘 지지대",
+          "플라스틱 커버",
+          "매뉴얼"
+        ]
+      }
+    },
+    {
+      "model": "AT130 DSR (Super-Rockwell)",
+      "specs": {
+        "article_no": "TE02AT130DSR",
+        "principle": "가압축을 쓴 압입 깊이 측정 (휨·미끄러짐·항복·돌출에 둔감, 원뿔 다이아몬드 압자)",
+        "load_application": "수동 (전동 옵션)",
+        "preload_N": 29.4,
+        "preload_kp": 3,
+        "test_load_N": [
+          98,
+          147,
+          153,
+          294,
+          306,
+          441
+        ],
+        "test_load_kp": [
+          10,
+          15,
+          15.6,
+          30,
+          31.2,
+          45
+        ],
+        "standard_scales": "철계 금속용 HRN 전 스케일 (그 밖은 요청 시)",
+        "functions": [
+          "시험하중과 예비하중을 레버 한 번에 인가",
+          "스케일 선택",
+          "공차 설정",
+          "교정"
+        ],
+        "accuracy_standards": {
+          "rockwell": "DIN EN ISO 6508",
+          "brinell_HBT": "DIN EN ISO 6506 (광학 스케일 추가 시)",
+          "vickers_HVT": "DIN EN ISO 6507 (광학 스케일 추가 시)"
+        },
+        "included": [
+          "표준 스케일 헤드",
+          "로크웰 다이아몬드",
+          "1.5875 mm 로크웰 볼 압자",
+          "HR30N·HR30T 경도 기준편",
+          "표준 가압축"
+        ]
+      }
+    }
+  ],
+  "environment": {
+    "operating_temperature_degC": {
+      "min": 5,
+      "max": 45
+    },
+    "operating_humidity_pct": {
+      "min": 10,
+      "max": 90
+    },
+    "note": "AT130 DR 데이터시트 기준. DSR 데이터시트에는 운전 조건이 적혀 있지 않다"
+  },
+  "features": [
+    "가압축 방식 압입 깊이 측정 — 시편 휨·미끄러짐·항복·돌출에 둔감",
+    "레버 한 번으로 예비하중과 시험하중을 함께 인가(DSR)",
+    "스케일 선택·공차 설정·교정 기능 내장"
+  ],
+  "options": [
+    "각종 스탠드",
+    "시험 플레이트",
+    "추가 압자(로크웰 볼 3.175·6.35·12.70 mm, 브리넬 볼 1·5 mm)",
+    "압자 연장(최대 100 mm)",
+    "중공 부품용 c형 연장",
+    "추가 광학 스케일(HBT·HVT용)",
+    "경도 기준편",
+    "프린터 및 프린터 케이블",
+    "데이터 전송 케이블, 통계 소프트웨어",
+    "전동 하중 인가(DSR)",
+    "Altair 측정 현미경(MI005) — 압입 자국 계측"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "hardness_rockwell"
+    },
+    {
+      "type": "performs",
+      "target": "hardness_brinell"
+    },
+    {
+      "type": "same_family_as",
+      "target": "hegewald-peschke-hot-hardness-1500c"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/at130-dr-rockwell-hardness-tester.pdf",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "file": "hegewald-peschke/at130-dsr-rockwell-hardness-tester.pdf",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "file": "hegewald-peschke/altair-microscope.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "Altair 측정 현미경(MI005) — 브리넬·비커스 자국 지름을 읽는 부속"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "두 문서 모두 'ERNST devices - accessories' 로 머리를 달고 있다 — Hegewald & Peschke 가 유통·지원하는 ERNST 제품이다. 치수·중량·최대 시편 높이·목 깊이(throat)는 두 데이터시트 어디에도 없다. DSR 의 브리넬·비커스는 광학 스케일을 추가해야만 되므로 기본 구성의 능력이 아니다 — `test_items` 에는 넣되 이 단서를 여기에 남긴다."
+}

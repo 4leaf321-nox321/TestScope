@@ -1,0 +1,159 @@
+{
+  "id": "hegewald-peschke-high-temperature-furnaces",
+  "kind": "accessory",
+  "name": "Hegewald & Peschke High Temperature Furnaces (HTO-08, STE-12/LRA-3, STE-13/LRA-3)",
+  "name_ko": "헤게발트 운트 페슈케 만능재료시험기용 고온로 (HTO-08·STE 계열)",
+  "manufacturer": "hegewald-peschke",
+  "category": "furnace",
+  "description": "만능재료시험기의 시험 공간에 물려 고온에서 인장·압축을 하게 만드는 전기저항 가열로. HTO-08 은 ISO 6892-2 규격 시험용으로 3 개 가열대를 가진 개폐식(hinged) 원형로이며 200~1100 °C 를 자유 설정하고 승온 최대 20 °C/min, 3-존 제어로 정확도 ±1~2 °C. 시편 영역에 열전대 3 개를 넣는 전용 후퇴 기구가 있어 열전대 간격(A)을 25~100 mm 로 바꿔 ISO 6892-2 의 여러 시편 형상을 받는다. 열전대는 스프링으로 눌러 시험 내내 접촉을 유지하고 6 개분 공장 교정 성적서가 딸린다. 고온 신장계를 넣는 전면 슬롯은 7×60 mm(옵션 7×100 mm). STE 계열은 300~1000 °C 와 300~1250 °C 두 사양이 있고, 고온 탄성 거동·고온 강도·고온 탄성한계를 정하는 데 쓴다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "creep"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "youngs_modulus",
+    "yield_strength",
+    "creep",
+    "creep_rupture_time"
+  ],
+  "materials": [
+    "metals and alloys",
+    "ceramics",
+    "high temperature materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 6892-2"
+    ]
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 200,
+      "max": 1250,
+      "note": "HTO-08 은 200~1100 °C, STE 는 300~1000 °C 또는 300~1250 °C"
+    },
+    "heating_rate_K_min": {
+      "max": 20,
+      "note": "HTO-08 기준"
+    },
+    "accuracy_degC": {
+      "min": 1,
+      "max": 2,
+      "note": "HTO-08 3-존 제어 정확도"
+    },
+    "power_kW": {
+      "max": 2.5,
+      "note": "HTO-08. 230 V, 50 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "HTO-08 (HTO-08/MSRA-73)",
+      "specs": {
+        "design": "개폐식 원형로, 가열대 3, 전기저항 가열",
+        "temperature_degC": {
+          "min": 200,
+          "max": 1100,
+          "note": "자유 설정"
+        },
+        "heating_rate_degC_min_max": 20,
+        "control": "3-존 제어, 정확도 ±1~2 °C, Eurotherm 6 채널 온도 제어",
+        "thermocouples_heating_zone": "3 개, 간격 100 mm, 길이 146 mm, 5 m 보상 케이블(플러그 접점으로 교체 가능)",
+        "thermocouples_specimen": "3 개, 길이 190 mm, 간격 25~100 mm 가변, 스프링 장착, 6 개분 공장 교정 성적서 포함",
+        "opening_mm": "상·하 Ø44 mm",
+        "extensometer_slot_mm": "전면 7 x 60 (옵션 7 x 100)",
+        "furnace_dimensions_mm": "바깥 W 280 x D 350 x H 405 / 안쪽 Ø100 x H 300",
+        "electrical": "230 V, 50 Hz, 2.5 kW"
+      },
+      "note": "ISO 6892-2 규격 시험용. 열전대 간격을 바꿀 수 있게 만든 것이 이 규격 대응의 핵심이다"
+    },
+    {
+      "model": "STE-12 / LRA-3 (300~1000 °C)",
+      "specs": {
+        "temperature_degC": {
+          "min": 300,
+          "max": 1000,
+          "note": "자유 설정"
+        },
+        "furnace_dimensions_mm": "바깥 Ø264 x H 360 / 안쪽 Ø100 x H 210",
+        "thermocouple_passages": "측면 온도 수감부 통로, 간격 2 x 75 mm, 수감부 이동 가능(링키지에 부착)",
+        "article_number": "STE-12/ LRA-3",
+        "design": "3 개 가열·제어 존을 가진 원형 힌지로, 블라스팅 스테인리스 케이스",
+        "front": "반경방향 스트레인게이지용 오목부",
+        "linkage_through_holes_mm": "상·하 Ø44 (또는 협의)",
+        "heating_system": "전기저항 가열 / PID Eurotherm 3208N",
+        "control_plant_dimensions_mm": "550 x 500 x 220 (WxDxH)",
+        "measuring_control_housing": "실험대형 하우징(4HE)"
+      }
+    },
+    {
+      "model": "STE-13 / LRA-3 (300~1250 °C)",
+      "specs": {
+        "temperature_degC": {
+          "min": 300,
+          "max": 1250,
+          "note": "자유 설정"
+        },
+        "furnace_dimensions_mm": "바깥 Ø290 x H 400 / 안쪽 Ø100 x H 210",
+        "thermocouple_passages": "측면 온도 수감부 통로, 간격 2 x 75 mm, 수감부 이동 가능(링키지에 부착)",
+        "article_number": "STE-13/ LRA-3",
+        "design": "3 개 가열·제어 존을 가진 원형 힌지로, 블라스팅 스테인리스 케이스",
+        "front": "반경방향 스트레인게이지용 오목부",
+        "linkage_through_holes_mm": "상·하 Ø44 (또는 협의)",
+        "heating_system": "전기저항 가열 / PID Eurotherm 3208N",
+        "control_plant_dimensions_mm": "550 x 500 x 220 (WxDxH)",
+        "measuring_control_housing": "실험대형 하우징(4HE)"
+      }
+    }
+  ],
+  "accuracy": {
+    "temperature_control": "HTO-08 ±1~2 °C (3-존 제어)"
+  },
+  "features": [
+    "개폐식 원형로 — 시험기에 물린 채로 열고 닫는다",
+    "3 존 독립 제어로 시편 길이 방향 온도 구배 억제",
+    "시편 영역 열전대 간격 25~100 mm 가변(ISO 6892-2 대응)",
+    "스프링 장착 열전대로 시험 내내 접촉 유지",
+    "고온 신장계용 전면 슬롯",
+    "플러그 접점 보상 케이블로 열전대 교체 가능"
+  ],
+  "options": [
+    "전면 슬롯 7 x 100 mm",
+    "고온 신장계(1500 °C / 1700 °C)"
+  ],
+  "relations": [
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt"
+    },
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt-table"
+    },
+    {
+      "type": "extends_temperature",
+      "target": "hegewald-peschke-inspekt"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/high-temperature-furnace-hto.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/high-temperature-furnaces-ste.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "STE 문서의 2 열 표는 렌더링해 눈으로 대조했다(`catalog/pages/hp-ste-furnace.png`) — 바깥 Ø264 가 STE-12(1000 °C), Ø290 이 STE-13(1250 °C)으로 확인됐고 두 기종의 안쪽 치수는 Ø100 x H210 로 같다. STE 의 승온 속도·전원은 문서에 없고, 무게는 표 아래가 잘려 로 약 20 kg·제어부 약 40 kg 으로 읽히나 숫자가 확실하지 않아 기록하지 않았다. HTO-08 의 냉각 방식과 냉각 시간도 없다."
+}

@@ -1,0 +1,40 @@
+{
+  "id": "chroma-17011-battery-cell-tester",
+  "kind": "equipment_series",
+  "name": "Chroma 17011 Battery Cell Charge & Discharge Test System",
+  "name_ko": "크로마 17011 배터리 셀 충방전 시험 시스템",
+  "manufacturer": "chroma",
+  "brand": "17011",
+  "category": "battery_cycler",
+  "form_factor": "rack",
+  "description": "중소형 배터리 셀·에너지 저장 부품용 충방전 시험 시스템. 리니어 회로 모델(저노이즈·고확도)과 AC/DC 양방향 회생 모델을 모두 제공한다. 출력 0~6 V, 채널 병렬 출력으로 최대 1200 A. 전류 응답 시간 100 µs 미만으로 급변하는 전류·전력 프로파일을 추종한다. CC·CP·CV·CR·Rest 시험 모드와 채널별 복합 사이클 편성을 지원하고, 펌웨어가 과전압(OVP)·과전류(OCP)·과용량(OQP)·ΔV/ΔI·루프 이상을 감시한다. 정전 시 시험 데이터는 비휘발성 메모리에 보존된다.",
+  "test_items": ["battery_cycle_life"],
+  "measurands": ["capacity", "coulombic_efficiency", "internal_resistance", "voltage_profile", "power_profile"],
+  "materials": ["lithium-ion cells", "power tool cells", "energy storage cells", "pouch cells", "cylindrical cells"],
+  "standards": {"compliance": [], "test_methods": ["IEC 61960", "IEC 62133", "UL 1642", "GB/T 31485"]},
+  "limits": {
+    "voltage_V": {"min": 0, "max": 6, "note": "0~6 V 출력 레인지. 일부 모델은 3개 내장 전압 출력 모드 간 전환 가능. 전압 측정 분해능 0.1 mV"},
+    "current_A": {"max": 1200, "note": "채널 병렬 출력 시 최대 1200 A"},
+    "current_response_time_us": {"max": 100, "note": "10 %→90 % 응답"}
+  },
+  "accuracy": {
+    "voltage_measurement": "±0.015 % of F.S.",
+    "current_measurement": "±0.02 % of F.S."
+  },
+  "models": [
+    {"model": "17011 리니어 회로 모델", "specs": {"note": "저노이즈·고확도 — 중소형 셀 시험용"}},
+    {"model": "17011 AC/DC 양방향 회생 모델", "specs": {"note": "방전 전력을 계통에 회생 — 절전·저발열·안정 동작"}}
+  ],
+  "operating_modes": ["정전류(CC)", "정전력(CP)", "정전압(CV)", "정저항(CR)", "휴지(Rest)"],
+  "protections": ["과전압 OVP", "과전류 OCP", "과용량 OQP", "전압/전류 변화율 ΔV·ΔI", "루프 이상 검출"],
+  "features": ["채널 병렬 출력(최대 1200 A)", "전류 응답 100 µs 미만", "다중 레인지 측정(자동 전환, CV 모드에서 전류 중단 없음)", "채널별 복합 사이클 편성", "정전 시 비휘발성 메모리 데이터 보존", "국제 규격 대응 시험 모드"],
+  "relations": [
+    {"type": "performs", "target": "battery_cycle_life"},
+    {"type": "same_family_as", "target": "chroma-63200-dc-load"}
+  ],
+  "sources": [
+    {"file": "chroma/17011-battery-cell-test-system.pdf", "pages": [1, 2, 3]},
+    {"file": "chroma/17011-battery-test-system-idm.pdf"}
+  ],
+  "confidence": "catalog"
+}

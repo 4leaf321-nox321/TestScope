@@ -1,0 +1,31 @@
+{
+  "id": "instron-ceast-9050-pendulum",
+  "kind": "equipment_series",
+  "name": "CEAST 9000 Series (9050 Manual / 9050 Motorized) Pendulum Impact Testers",
+  "name_ko": "인스트론 CEAST 9050 펜듈럼 충격시험기",
+  "manufacturer": "instron",
+  "brand": "CEAST",
+  "category": "pendulum_impact",
+  "drive": "pendulum",
+  "form_factor": "benchtop",
+  "description": "플라스틱·복합재(및 DIN 50115/ASTM E23 금속) 용 0.5–50 J 펜듈럼. 해머 자동 인식, 비접촉 자기 엔코더, 계장화 해머(무선). 9050 Manual(수동 해제/제동, 공압 옵션), 9050 Motorized(공압 해제·제동, 모터 복귀). 저온 컨디셔닝 챔버 옵션.",
+  "test_items": ["charpy_impact", "izod_impact", "tensile_impact"],
+  "measurands": ["impact_energy", "impact_strength", "force_time_curve (instrumented)"],
+  "materials": ["thermoplastics", "composites", "pipes", "metals (small pendulum)"],
+  "standards": {"compliance": [], "test_methods": ["ISO 179-1", "ISO 179-2", "ASTM D6110", "ISO 180", "ASTM D256", "ISO 8256", "ASTM D1822", "DIN 53453", "DIN 53753", "BS 7413", "ISO 7628", "ISO 9854", "DIN 50115", "ASTM E23 (small specimens)"]},
+  "limits": {
+    "impact_energy_J": {"min": 0.5, "max": 50},
+    "impact_velocity_m_s": {"min": 1, "max": 3.8},
+    "specimen_diameter_mm": {"max": 25, "note": "pipe sections"},
+    "temperature_degC": {"note": "optional thermal conditioning chamber for low-temperature tests (range not stated)"}
+  },
+  "models": [
+    {"model": "CEAST 9050 Manual", "specs": {"impact_energy_J": {"min": 0.5, "max": 50}, "release": "manual (pneumatic optional)", "braking": "manual", "compressed_air_bar": 5, "footprint_mm": {"W": 1035, "D": 430, "H": [880, 1190]}, "weight_kg": 220, "weight_kg_with_50J_plate": 330}},
+    {"model": "CEAST 9050 Motorized", "specs": {"impact_energy_J": {"min": 0.5, "max": 50}, "release": "pneumatic", "braking": "pneumatic", "recovery": "motorized", "compressed_air_bar": 5.5, "footprint_mm": {"W": 1035, "D": 510, "H": 1190}, "weight_kg": 270, "weight_kg_with_50J_plate": 380, "safety": "full enclosure"}}
+  ],
+  "environment": {"power": "100–240 V 50–60 Hz", "compressed_air_bar": 5.5},
+  "options": ["instrumented hammers", "thermal conditioning chamber", "Charpy/Izod/tensile impact fixtures", "pipe test fixture", "software with report export"],
+  "relations": [{"type": "requires", "target": "utility-compressed-air"}],
+  "sources": [{"file": "instron/ceast-9000-series-brochure.pdf", "pages": [4, 7, 19]}, {"file": "instron/ceast-9000-series-pendulum.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

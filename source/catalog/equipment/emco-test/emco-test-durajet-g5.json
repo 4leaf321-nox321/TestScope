@@ -1,0 +1,28 @@
+{
+  "id": "emco-test-durajet-g5",
+  "kind": "equipment_series",
+  "name": "EMCO-TEST DuraJet G5 Rockwell hardness tester",
+  "name_ko": "EMCO-TEST DuraJet G5 로크웰 경도계",
+  "manufacturer": "emco-test",
+  "category": "rockwell_hardness",
+  "form_factor": "benchtop",
+  "description": "전자 제어 하중 1–250 kgf 로 로크웰 전 척도를 한 대로. 플라스틱(ISO 2039), 카본(DIN 51917), 깊이 측정식 HVT/HBT. 7\" 터치, PLC, 모터 높이 조절, 시험 높이 260 mm, 목 깊이 175 mm.",
+  "test_items": ["hardness_rockwell", "hardness_vickers", "hardness_brinell"],
+  "measurands": ["hardness_HR", "hardness_HVT", "hardness_HBT"],
+  "materials": ["metals", "plastics", "carbon"],
+  "standards": {"compliance": [], "test_methods": ["EN ISO 6508", "ASTM E18", "EN ISO 2039", "DIN 51917"]},
+  "limits": {
+    "test_load_kgf": {"min": 1, "max": 250},
+    "hardness_scales": {"values": ["HRA–HRV", "HR15/30/45 N/T/W/X/Y", "HR 2/10, 2/20, 2/120", "HVT 5–100", "HBT 1/5 – 2.5/187.5, 5/250", "plastics 49–961 N"]},
+    "specimen_height_mm": {"max": 260},
+    "throat_depth_mm": {"values": [175]},
+    "specimen_weight_kg": {"max": 100}
+  },
+  "models": [{"model": "DuraJet G5", "specs": {"test_load_kgf": {"min": 1, "max": 250}, "specimen_height_mm": 260, "throat_depth_mm": 175, "footprint_mm": {"W": 300, "H": 740, "L": 565}, "weight_kg": 110, "power_W": 120}}],
+  "accuracy": {"load_resolution_bit": 24, "depth_resolution_um": 0.02},
+  "environment": {"operating_temp_degC": [5, 40], "humidity_pct_max": 90, "power": "110/230 V, IP20"},
+  "options": ["nose cone extension", "large test anvil 600×390 mm (test height 240 mm)", "C-adapter", "Jominy module", "hardware interface"],
+  "relations": [{"type": "same_family_as", "target": "emco-test-duravision-g5"}],
+  "sources": [{"file": "emco-test/durajet-g5-rockwell.pdf", "pages": [2, 10, 15]}],
+  "confidence": "catalog"
+}

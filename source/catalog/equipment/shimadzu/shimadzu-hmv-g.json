@@ -1,0 +1,25 @@
+{
+  "id": "shimadzu-hmv-g",
+  "kind": "equipment_series",
+  "name": "Shimadzu HMV-G31 / HMV-G31-FA Micro Vickers Hardness Tester",
+  "name_ko": "시마즈 HMV-G31 마이크로 비커스 경도계",
+  "manufacturer": "shimadzu",
+  "category": "vickers_knoop_hardness",
+  "form_factor": "benchtop",
+  "description": "시험력 98.07 mN–19.61 N(옵션 9.807 mN 부터). 내장 CCD 자동 길이 측정(약 0.3 s), 자동 렌즈 전환, G-프레임. FA 형은 전동 XYZ 스테이지(XY ±25 mm, Z 40 mm, 0.001 mm)와 오토포커스로 연속 자동 측정.",
+  "test_items": ["hardness_vickers", "hardness_knoop"],
+  "measurands": ["hardness_HV", "hardness_HK"],
+  "materials": ["paint/plating coatings", "surface-hardened layers", "metals"],
+  "standards": {"compliance": [], "test_methods": ["ISO 6507-1", "ASTM E384", "JIS Z 2244"]},
+  "limits": {
+    "test_load_gf": {"min": 1, "max": 2000, "note": "98.07 mN(10 gf)–19.61 N(2 kgf), 옵션 9.807 mN(1 gf)"},
+    "hardness_scales": {"values": ["HV", "HK"]}
+  },
+  "models": [
+    {"model": "HMV-G31 (G31T with electric turret)", "specs": {"test_load_gf": {"min": 10, "max": 2000}, "measurement_time_s": 0.3}},
+    {"model": "HMV-G31-FA", "specs": {"test_load_gf": {"min": 10, "max": 2000}, "xy_stage_mm": "±25 (0.001 mm)", "z_stage_mm": 40}}
+  ],
+  "relations": [{"type": "same_family_as", "target": "shimadzu-duh-211"}],
+  "sources": [{"file": "shimadzu/duh-211-210-c227-e024e.pdf", "pages": [12], "note": "관련 제품 소개란에서 읽음 — 전용 브로슈어 미확보"}],
+  "confidence": "limited"
+}

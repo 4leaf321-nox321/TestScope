@@ -1,0 +1,38 @@
+{
+  "id": "zwickroell-kappa-creep",
+  "kind": "equipment_series",
+  "name": "ZwickRoell Kappa creep testing machines (Kappa SS, Kappa LA Spring / LA DW, Kappa SS-CF TMF system)",
+  "name_ko": "즈윅로엘 Kappa 크리프 시험기 (SS 전기기계식, LA 레버암, SS-CF 열기계피로)",
+  "manufacturer": "zwickroell",
+  "category": "creep_tester",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "Kappa 50/100 SS: 중앙 리드스크루 전기기계식, 1 µm/h–250 mm/min, 크리프·응력파단·SSRT·완화·CCG·수소취성. Kappa 50 LA: 20:1 레버암, 스프링(Class 1, 0.5–100 %) 또는 데드웨이트(Class 1, 4–100 %), 최대 100,000 h. Kappa SS-CF TMF: 100 kN 인장/압축, 유도가열 10 kW RT–1600 °C, 승/냉각 25 K/s, ASTM E2368·ISO 12111. 계열 시험 온도 -80~+2000 °C(퍼니스 부속).",
+  "test_items": ["creep", "relaxation", "fatigue", "thermomechanical_fatigue", "fracture_toughness", "tensile", "compression", "flexure"],
+  "measurands": ["creep_strain", "creep_rupture_time", "minimum_creep_rate", "relaxation_ratio", "tmf_life"],
+  "materials": ["metals", "super alloys", "steel", "components"],
+  "standards": {"compliance": ["DIN EN ISO 7500-1 Class 0.5 / 1", "ISO 7500-2 Class 1 (LA DW)"], "test_methods": ["ISO 204", "ASTM E139", "ASTM E328", "ISO 23788", "ASTM E2368", "ISO 12111", "ISO 6892 (strain control)"]},
+  "limits": {
+    "force_kN": {"values": [50, 100]},
+    "crosshead_speed_mm_min": {"min": 0.0000167, "max": 250, "note": "SS: 1 µm/h ~ 250 mm/min; LA: max 50 mm/min; SS-CF: 0.001 mm/h ~ 250 mm/min"},
+    "crosshead_travel_mm": {"values": [150, 200]},
+    "vertical_test_space_mm": {"values": [1397, 1500]},
+    "horizontal_test_space_mm": {"values": [520, 720]},
+    "temperature_degC": {"min": -80, "max": 2000, "note": "계열 전체(퍼니스 부속에 따름); TMF 시스템 RT–1600 °C 유도가열"},
+    "heating_rate_K_min": {"max": 1500, "note": "TMF 25 K/s"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "Kappa 50 SS", "specs": {"force_kN": 50, "vertical_test_space_mm": 1397, "horizontal_test_space_mm": 720, "crosshead_travel_mm": 200, "crosshead_speed_mm_min": {"min": 0.0000167, "max": 250}, "position_resolution_nm": 0.136, "footprint_mm": {"H": 2512, "W": 860, "D": 655}, "weight_kg": 700, "power_kVA": 2.3}},
+    {"model": "Kappa 100 SS", "specs": {"force_kN": 100, "vertical_test_space_mm": 1397, "horizontal_test_space_mm": 720, "crosshead_travel_mm": 200, "crosshead_speed_mm_min": {"min": 0.0000167, "max": 250}, "weight_kg": 700}},
+    {"model": "Kappa 50 LA Spring", "specs": {"force_kN": 50, "lever_ratio": "20:1", "vertical_test_space_mm": 1500, "horizontal_test_space_mm": 520, "crosshead_travel_mm": 150, "crosshead_speed_mm_min": {"max": 50}, "footprint_mm": {"H": 2362, "W": 1050, "D": 655}, "weight_kg": 600, "power_kVA": 0.8, "accuracy": "Class 1 ISO 7500-1, 0.5–100% of nominal"}},
+    {"model": "Kappa 50 LA DW", "specs": {"force_kN": 50, "lever_ratio": "20:1", "loading": "calibrated dead weights", "accuracy": "Class 1 ISO 7500-2, 4–100% of nominal", "weight_kg": 600}},
+    {"model": "Kappa SS-CF TMF system", "specs": {"force_kN": 100, "grip_force_kN": 50, "crosshead_travel_mm": 200, "crosshead_speed_mm_min": {"min": 0.0000167, "max": 250}, "temperature_degC": {"min": 20, "max": 1600}, "heating_rate_K_s": 25, "cooling_rate_K_s": 25, "induction_power_kW": 10, "data_rate_Hz": 50000, "specimens": ["Ø6 cylindrical", "M16 Ø10 (hollow Ø8)", "M18x1 4×12 rect", "Ø15 button-head"], "extensometer": "10 mm GL, +20/-10 %, ASTM E83 B2 / ISO 9513 0.5, 1200 °C (1600 °C water-cooled)"}}
+  ],
+  "accuracy": {"speed": "±0.1% of set speed (SS/LA)", "temperature_TMF": "<10 K or <±2% of ΔT per CoP"},
+  "environment": {"power": "230 VAC (SS/LA)"},
+  "options": ["high-temperature furnaces", "cryostats", "extensometers (contact, high-temperature ceramic)", "hydraulic water-cooled grips (TMF)", "Kappa Multistation"],
+  "relations": [],
+  "sources": [{"file": "zwickroell/kappa-ss-creep-pi-en.pdf", "pages": [1, 2]}, {"file": "zwickroell/kappa-la-lever-arm-creep-pi-en.pdf", "pages": [1, 3]}, {"file": "zwickroell/kappa-ss-cf-tmf-pi-en.pdf", "pages": [3, 4, 8]}],
+  "confidence": "catalog"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sms-ta-xt-plus",
+  "kind": "equipment_model",
+  "name": "Stable Micro Systems TA.XT Plus Texture Analyser",
+  "name_ko": "스테이블 마이크로 시스템즈 TA.XT Plus 텍스처 분석기",
+  "manufacturer": "stable-micro-systems",
+  "category": "texture_analyser",
+  "form_factor": "single_column_tabletop",
+  "description": "식품·화장품·의약·젤 물성용 단일컬럼 시험기. 힘 50 kgf(500 N), 로드셀 1/30/50 kgf, 분해능 0.1 g, 속도 0.01–40 mm/s, 이동 1–295 mm. 펠티에 온도판(주변 -30~+80 °C) 옵션.",
+  "test_items": ["texture", "compression", "tensile", "puncture", "peel"],
+  "measurands": ["hardness", "adhesiveness", "cohesiveness", "gel_strength", "fracturability", "bloom_strength", "rupture_force"],
+  "materials": ["food", "gels", "cosmetics", "pharmaceuticals", "packaging", "foams"],
+  "standards": {"compliance": [], "test_methods": ["ISO 11036", "AACC 74-09", "GMIA Bloom test"]},
+  "limits": {
+    "force_kN": {"max": 0.5, "values": [0.01, 0.3, 0.5], "note": "1/30/50 kgf load cells"},
+    "crosshead_speed_mm_min": {"min": 0.6, "max": 2400, "note": "0.01–40 mm/s"},
+    "crosshead_travel_mm": {"min": 1, "max": 295},
+    "temperature_degC": {"min": -10, "max": 80, "note": "Peltier plate: 30 °C below ambient to +80 °C"}
+  },
+  "models": [{"model": "TA.XT Plus", "specs": {"force_N": 500, "force_resolution_g": 0.1, "crosshead_speed_mm_s": {"min": 0.01, "max": 40}, "crosshead_travel_mm": 295, "footprint_mm": {"W": 665, "D": 440, "H": 280}}}],
+  "options": ["automated linear indexing system", "temperature-controlled Peltier plate 110×110 mm", "probes & fixtures library"],
+  "relations": [],
+  "sources": [{"file": "stable-micro-systems/ta-xt-plus-texture-analyser.pdf", "pages": [1], "note": "TU Braunschweig 장비 소개서 — 제조사 데이터시트 아님"}],
+  "confidence": "limited"
+}

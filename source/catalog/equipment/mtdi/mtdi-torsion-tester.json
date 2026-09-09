@@ -1,0 +1,111 @@
+{
+  "id": "mtdi-torsion-tester",
+  "kind": "equipment_series",
+  "name": "MTDI Order-Made Torsion Tester (axial-torsion, high temperature)",
+  "name_ko": "엠티디아이 주문형 비틀림 시험기 (축하중 겸용·고온)",
+  "manufacturer": "mtdi",
+  "category": "torsion_tester",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "비틀림과 축하중을 함께 걸 수 있는 주문 제작형 비틀림 시험기. 토크 100 kgf·m, 축하중 10 tonf, 시험각도 360°. 회전 속도 0.1~1,500 rpm 과 축 이동 0.001~500 mm/min 을 각각 서보로 제어한다(비틀림 37 kW, 축 2.2 kW 서보 모터). 노(furnace)를 붙이면 최대 1,100 °C, 팁은 최대 950 °C 까지 가고 챔버 옵션으로 -170~350 °C 도 덮는다 — 즉 극저온부터 고온까지 한 프레임에서 비틀림 시험을 한다. 샘플링 최대 100 kS/s. 냉각수를 쓴다. 치수 2080 x 790 x 1470 mm, 전원 AC 380 V 3상 45 kW.",
+  "test_items": [
+    "torsion",
+    "tensile",
+    "fatigue"
+  ],
+  "measurands": [
+    "torque_angle",
+    "torsional_stiffness",
+    "torsional_strength",
+    "shear_modulus",
+    "tensile_strength",
+    "failure_mode"
+  ],
+  "materials": [
+    "metals and alloys",
+    "shafts and fasteners",
+    "high temperature materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "torque_Nm": {
+      "max": 981,
+      "note": "카탈로그 표기는 100 kgf·m. kN 계 환산은 1 kgf·m = 9.80665 N·m"
+    },
+    "force_kN": {
+      "max": 98,
+      "note": "축하중 10 tonf. 환산값이며 원 표기는 tonf"
+    },
+    "rotation_rpm": {
+      "min": 0.1,
+      "max": 1500
+    },
+    "rotation_deg": {
+      "max": 360,
+      "note": "시험 각도"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.001,
+      "max": 500,
+      "note": "축(axial) 이동 속도"
+    },
+    "temperature_degC": {
+      "min": -170,
+      "max": 1100,
+      "note": "노 최대 1,100 °C, 팁 최대 950 °C, 챔버 옵션 -170~350 °C"
+    },
+    "data_rate_Hz": {
+      "max": 100000
+    },
+    "power_kW": {
+      "values": [45]
+    },
+    "footprint_mm": {
+      "note": "2080 W x 790 D x 1470 H"
+    }
+  },
+  "models": [
+    {
+      "model": "Torsion Tester (주문형)",
+      "specs": {
+        "type": "비틀림 시험기",
+        "footprint_mm": "2080W x 790D x 1470H",
+        "power": "AC 380 V, 3상, 45 kW",
+        "test_angle_deg": 360,
+        "rotation_speed_rpm": {"min": 0.1, "max": 1500},
+        "axial_speed_mm_min": {"min": 0.001, "max": 500},
+        "torque_kgf_m": 100,
+        "axial_load_tonf": 10,
+        "temperature": "노 최대 1,100 °C / 팁 최대 950 °C / 챔버 -170~350 °C(옵션)",
+        "sampling_rate": "최대 100 kS/s",
+        "utility": "Water",
+        "torsion_motor": "37 kW 서보",
+        "axial_motor": "2.2 kW 서보"
+      }
+    }
+  ],
+  "features": [
+    "비틀림과 축하중 동시 인가",
+    "회전 0.1~1,500 rpm 과 축 0.001~500 mm/min 을 각각 서보 제어",
+    "노·챔버로 -170~1,100 °C 를 한 프레임에서",
+    "주문 제작(Order-Made) 구성"
+  ],
+  "options": [
+    "챔버(-170~350 °C)",
+    "노(최대 1,100 °C)"
+  ],
+  "relations": [
+    {"type": "performs", "target": "torsion"},
+    {"type": "performs", "target": "fatigue"},
+    {"type": "requires", "target": "utility-cooling-water"},
+    {"type": "compatible_accessory", "target": "mtdi-uc-furnace-chambers"}
+  ],
+  "sources": [
+    {"file": "mtdi/order-made-torsion-tester-catalog.pdf", "pages": [4, 5]}
+  ],
+  "confidence": "catalog",
+  "notes": "**텍스트층이 없는 이미지 전용 스캔**이라 4쪽 사양표를 렌더링해 눈으로 읽었다(`catalog/pages/mtdi-rest-c.png`). 토크(kgf·m)와 축하중(tonf)의 kN 계 환산은 우리가 한 것이고 카탈로그 원 표기는 kgf·m·tonf 다. 토크·각도 측정 정확도, 시편 물림 범위, 무게가 카탈로그에 없다. '주문형(Order-Made)' 계열이라 이 값들은 한 구성의 것이고 다른 주문 사양은 다를 수 있다."
+}

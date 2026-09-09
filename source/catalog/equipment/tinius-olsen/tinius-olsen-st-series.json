@@ -1,0 +1,40 @@
+{
+  "id": "tinius-olsen-st-series",
+  "kind": "equipment_series",
+  "name": "ST Series Electromechanical Universal Testing Systems",
+  "name_ko": "티니우스 올센 ST 시리즈 전기기계식 만능시험기",
+  "manufacturer": "tinius-olsen",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "벤치탑 단일컬럼 1ST/5ST(1/5 kN), 듀얼컬럼 10ST/25ST/50ST(10/25/50 kN), 플로어 100/150/300 kN. 로드셀 최소 용량의 0.2 % 부터 프레임 용량까지 교체. 정확도 0.2 % of reading (0.2–100 % of load cell), 내부 2.73 kS/s, USB 전송 1 kHz. Horizon 소프트웨어, 프레임 내장 압축공기 공급.",
+  "test_items": ["tensile", "compression", "flexure", "shear", "tear", "peel"],
+  "measurands": ["tensile_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "shear_strength"],
+  "materials": ["plastics", "composites", "geotextiles", "sheet metal", "welded specimens", "adhesives", "components", "paper", "rubber", "textiles"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "force_kN": {"min": 1, "max": 300, "values": [1, 5, 10, 25, 50, 100, 150, 300]},
+    "crosshead_speed_mm_min": {"min": 0.0001, "max": 2500},
+    "vertical_test_space_mm": {"note": "+400 mm 확장(단일컬럼 +254 mm) 옵션"},
+    "data_rate_Hz": {"max": 1000, "note": "내부 2730 S/s"},
+    "temperature_degC": {"note": "hot/cold chambers, high-temperature furnaces 장착 가능 (범위 미기재)"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "1ST", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1}},
+    {"model": "5ST", "form_factor": "single_column_tabletop", "specs": {"force_kN": 5}},
+    {"model": "10ST", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10}},
+    {"model": "25ST", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 25}},
+    {"model": "50ST", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50}},
+    {"model": "100ST", "form_factor": "floor", "specs": {"force_kN": 100}},
+    {"model": "150ST", "form_factor": "floor", "specs": {"force_kN": 150}},
+    {"model": "300ST", "form_factor": "floor", "specs": {"force_kN": 300}}
+  ],
+  "accuracy": {"force": "better than 0.2% of reading from 0.2–100% of load cell capacity"},
+  "features": ["T-slot columns", "built-in pneumatic supply", "4 accessory connections", "Horizon software", "Bluetooth handheld (1ST)"],
+  "options": ["optical/video/laser/LVDT extensometers", "hot & cold chambers", "high-temperature furnaces", "grips, jigs, platens"],
+  "relations": [],
+  "sources": [{"file": "tinius-olsen/st-series-electromechanical-utm.pdf", "pages": [3, 4, 6]}],
+  "confidence": "catalog",
+  "notes": "브로슈어에 모델별 속도·시험공간 표가 없다. 개별 데이터시트를 받으면 보강."
+}

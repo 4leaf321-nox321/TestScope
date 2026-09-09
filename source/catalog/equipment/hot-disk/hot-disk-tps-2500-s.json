@@ -1,0 +1,28 @@
+{
+  "id": "hot-disk-tps-2500-s",
+  "kind": "equipment_model",
+  "name": "Hot Disk TPS 2500 S Thermal Constants Analyser",
+  "name_ko": "핫디스크 TPS 2500 S 열상수 분석기 (과도 평면 열원법)",
+  "manufacturer": "hot-disk",
+  "category": "thermal_conductivity",
+  "form_factor": "benchtop",
+  "description": "TPS(ISO 22007-2) 열전도율·열확산율·비열 동시 측정. 벌크 0.005–500, 봉 1–1800, 슬랩 5–1500, 박막 0.01–5 W/(m·K); 열확산율 0.01–1400 mm²/s; 비열 최대 5 MJ/(m³·K). 시편 온도 -253~1000 °C(TCU: 크라이오스탯, 챔버 -60~300, 순환조 -40~200, 오븐 RT~600, 머플 RT~800, 튜브 퍼니스 RT~1000). 최소 시편 0.5 mm×2 mm, 최대 무제한. 이방성·슬랩·박막 모듈.",
+  "test_items": ["thermal_conductivity"],
+  "measurands": ["thermal_conductivity", "thermal_diffusivity", "specific_heat", "thermal_effusivity"],
+  "materials": ["bulks", "rods", "slabs", "wafers", "sheets", "foils", "films", "laminates", "composites", "minerals", "batteries", "textiles", "powders", "pastes", "gels", "liquids", "foams", "insulators"],
+  "standards": {"compliance": ["ISO 22007-2", "CE"], "test_methods": ["ISO 22007-2"]},
+  "limits": {
+    "temperature_degC": {"min": -253, "max": 1000},
+    "thermal_conductivity_W_mK": {"min": 0.005, "max": 1800},
+    "thermal_diffusivity_mm2_s": {"min": 0.01, "max": 1400},
+    "specimen_thickness_mm": {"min": 0.01, "note": "thin film 10 µm; slab 42 µm; bulk 0.5 mm"},
+    "measurement_time_s": {"min": 1, "max": 2560}
+  },
+  "models": [{"model": "TPS 2500 S", "specs": {"thermal_conductivity_W_mK": {"bulk": [0.005, 500], "rod": [1, 1800], "slab": [5, 1500], "thin_film": [0.01, 5]}, "thermal_diffusivity_mm2_s": {"bulk": [0.01, 400], "rod": [1, 1400], "slab": [5, 1000], "thin_film": [0.02, 2]}, "specific_heat_MJ_m3K_max": 5, "footprint_mm": {"H": 325, "W": 455, "D": 490}, "weight_kg": 25, "power_W": 255}}],
+  "accuracy": {"thermal_conductivity": "better than 5 % (reproducibility <2 %, repeatability ~0.055 %)", "thermal_diffusivity": "better than 10 % (reproducibility <5 %)"},
+  "environment": {"operating_temp_degC": [15, 30], "power": "100–240 VAC 50–60 Hz", "warm_up_h": 2},
+  "options": ["Anisotropic / Slab / Thin Film / Low-Density / Specific Heat modules", "Kapton / Teflon / Mica sensors", "Hot Strip & Hot Cell sensors", "cryostat", "temperature chamber -60~300", "bath circulator", "convection oven", "muffle / tubular furnace", "PT100"],
+  "relations": [],
+  "sources": [{"file": "hot-disk/tps-2500-s-qitech.pdf", "pages": [5, 6, 7]}, {"file": "hot-disk/tps-2500-s.pdf", "pages": [3]}],
+  "confidence": "catalog"
+}

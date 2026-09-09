@@ -1,0 +1,32 @@
+{
+  "id": "lansmont-pdt-drop-testers",
+  "kind": "equipment_series",
+  "name": "Lansmont PDT Precision Drop Testers (PDT-56ED / PDT-80 / PDT-80M)",
+  "name_ko": "랜스몬트 PDT 정밀 낙하 시험기",
+  "manufacturer": "lansmont",
+  "brand": "PDT",
+  "category": "drop_tester",
+  "drive": "pneumatic",
+  "form_factor": "floor",
+  "description": "포장 완제품·전자제품의 자유낙하 시험기. 정밀 가이드와 고속 공압을 조합해 평면 낙하 정확도 ±2° 이내를 보장. PDT-80: 최대 패키지 80 kg(연장 플래튼 68 kg), 낙하 높이 30.5~183 cm(슬롯 베이스플레이트 옵션 2.5 cm 부터). 핸드헬드 컨트롤러로 낙하 높이를 지정하면 플래튼이 자동 이동.",
+  "test_items": ["free_fall_drop"],
+  "measurands": ["drop_survival_height", "impact_acceleration", "damage_boundary"],
+  "materials": ["packaged products", "consumer electronics", "appliances", "shipping containers"],
+  "standards": {"compliance": [], "test_methods": ["ASTM D5276", "ISTA 1A", "ISTA 2A", "ISTA 3A", "ISO 2248", "IEC 60068-2-31", "MIL-STD-810 Method 516.8 Procedure IV"]},
+  "limits": {
+    "payload_kg": {"max": 80, "note": "PDT-80 표준 플래튼 80 kg / 연장 플래튼 68 kg; PDT-56ED 는 79 kg(175 lbs)"},
+    "drop_height_mm": {"min": 25, "max": 1830, "note": "표준 베이스플레이트 305~1830 mm; 슬롯 베이스플레이트 옵션 25~1830 mm; 연장 플래튼 457~1830 mm"},
+    "package_size_mm": {"max": 915, "note": "표준 플래튼 610 mm(앞뒤), 연장 플래튼 915 mm"}
+  },
+  "models": [
+    {"model": "PDT-80", "specs": {"payload_kg": 80, "payload_kg_extended_platen": 68, "drop_height_mm": {"min": 305, "max": 1830}, "drop_height_mm_slotted": {"min": 25, "max": 1830}, "drop_height_mm_extended": {"min": 457, "max": 1830}, "package_size_mm": 610, "package_size_mm_extended": 915, "flatness_accuracy_deg": 2}},
+    {"model": "PDT-80M", "specs": {"note": "PDT-80 의 모터 구동 변형"}, "uncertain": true},
+    {"model": "PDT-56ED", "specs": {"payload_kg": 79, "drop_height_mm": {"min": 280, "max": 1830}, "note": "구형 인기 모델 — 11~72 in"}, "uncertain": true}
+  ],
+  "accuracy": {"flatness": "출하 전 ±2° 이내 검증"},
+  "features": ["정밀 캠·베어링 설계로 평면 낙하", "핸드헬드 컨트롤러(LED 화면, 자동 높이 이동)", "고속 공압 릴리스"],
+  "options": ["슬롯 베이스플레이트(저높이 낙하)", "연장 플래튼", "연장 낙하 높이"],
+  "relations": [{"type": "same_family_as", "target": "lansmont-shock-test-systems"}, {"type": "requires", "target": "utility-compressed-air"}],
+  "sources": [{"file": "lansmont/pdt-80-precision-drop-tester.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

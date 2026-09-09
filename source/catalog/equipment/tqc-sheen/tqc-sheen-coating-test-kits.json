@@ -1,0 +1,42 @@
+{
+  "id": "tqc-sheen-coating-test-kits",
+  "kind": "equipment_series",
+  "name": "TQC Sheen Coating Test Kits (Wolff-Wilborn Pencil Hardness VF2377/2378/2379, Cross Cut Adhesion CC1000)",
+  "name_ko": "TQC Sheen 도막 시험 키트 (연필경도·크로스컷 부착력)",
+  "manufacturer": "tqc-sheen",
+  "brand": "TQC",
+  "category": "scratch_hardness_tester",
+  "form_factor": "handheld",
+  "description": "도막 평가용 수동 시험 키트 두 종. (1) Wolff-Wilborn 연필 경도 시험기: 8B~10H 등급의 연필을 45° 각도로 일정 하중을 걸어 표면에 긋고, 도막이 손상되는 연필 경도로 스크래치 경도를 판정한다. 하중은 500 g / 750 g / 1000 g 구성이 있으며 Koh-i-noor 연필 20자루와 연필깎이가 동봉된다. (2) 크로스 컷 부착력 시험 키트 CC1000: 도막을 교차 절단해 25칸 또는 100칸 격자를 만들고 확대경으로 박리 정도를 등급 판정한다. 자동 조정 나이프 홀더가 절단 압력을 균일하게 유지하고, 8개 절삭날을 가진 원형 나이프로 수명을 늘렸다.",
+  "test_items": ["scratch_pencil_hardness", "coating_adhesion"],
+  "measurands": ["pencil_hardness_grade", "cross_cut_classification", "adhesion_rating"],
+  "materials": ["paints", "varnishes", "protective coatings", "coil coatings", "LCD films", "automotive finishes"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["ISO 15184", "ASTM D3363", "JIS K-5400", "JIS K-5600", "ECCA-T4-1", "BS 3900-E19", "SNV 37113", "SIS 184187", "NEN 5350", "MIL C 27 227", "EN-ISO 2409", "ASTM D3359"]
+  },
+  "limits": {
+    "pencil_hardness_grade": {"min": "8B", "max": "10H", "note": "연필 경도 등급 범위"},
+    "pencil_load_g": {"values": [500, 750, 1000]},
+    "pencil_angle_deg": {"values": [45]},
+    "cross_cut_squares": {"values": [25, 100]}
+  },
+  "models": [
+    {"model": "VF2377 (듀얼 하중 750 g & 1000 g)", "specs": {"load_g": [750, 1000], "standards": ["ISO 15184", "ASTM D3363", "JIS K-5400", "JIS K-5600", "ECCA-T4-1", "BS 3900-E19", "SNV 37113", "SIS 184187", "NEN 5350", "MIL C 27 227"]}},
+    {"model": "VF2378 (750 g)", "specs": {"load_g": 750, "standards": ["ISO 15184", "ASTM D3363", "JIS K-5600", "ECCA-T4-1", "BS 3900-E19", "SNV 37113", "SIS 184187", "NEN 5350", "MIL C 27 227"]}},
+    {"model": "VF2379 (500 g)", "specs": {"load_g": 500, "note": "해당 국제 규격 없음 — 필름·LCD 업계 자체 기준(500 g 하중)에서 사용"}},
+    {"model": "CC1000 크로스 컷 부착력 키트", "specs": {"pattern_squares": [25, 100], "knife": "8개 절삭날 원형 나이프(교체식)", "holder": "자동 조정 나이프 홀더(균일 압력)", "accessories": ["나일론 브러시", "확대경", "점착 테이프(강판 부착력 4.3 N/cm)"], "standards": ["EN-ISO 2409", "ASTM D3359"]}}
+  ],
+  "features": ["45° 일정 각도·일정 하중 연필 시험", "8B~10H 연필 20자루 + 연필깎이 동봉", "자동 조정 나이프 홀더", "8날 원형 나이프(교체 용이)", "도막 두께·기재별 나이프 간격 선택"],
+  "relations": [
+    {"type": "performs", "target": "scratch_pencil_hardness"},
+    {"type": "performs", "target": "coating_adhesion"},
+    {"type": "same_family_as", "target": "defelsko-positest-pt"},
+    {"type": "same_family_as", "target": "erichsen-430p-scratch-tester"}
+  ],
+  "sources": [
+    {"file": "tqc-sheen/pencil-hardness-wolff-wilborn.pdf", "pages": [1]},
+    {"file": "tqc-sheen/cross-cut-adhesion-cc1000.pdf", "pages": [1]}
+  ],
+  "confidence": "catalog"
+}

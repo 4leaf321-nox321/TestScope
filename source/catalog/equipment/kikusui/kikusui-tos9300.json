@@ -1,0 +1,134 @@
+{
+  "id": "kikusui-tos9300",
+  "kind": "equipment_series",
+  "name": "Kikusui TOS9300 Series Electrical Safety Analyzer",
+  "name_ko": "기쿠스이 TOS9300 시리즈 전기안전 분석기",
+  "manufacturer": "kikusui",
+  "brand": "TOS",
+  "category": "hipot_safety_analyzer",
+  "form_factor": "benchtop",
+  "description": "내전압(Hipot)·절연저항·접지연속성(Ground Bond)·누설전류·부분방전을 기능 조합별 6개 모델로 제공하는 전기안전 분석기. AC 내전압은 전 모델 공통 5 kV/100 mA(500 VA), DC 내전압은 5 kV/20 mA 및 7.2 kV/13.9 mA(100 W). 절연저항은 0.001 MΩ~100.0 GΩ. 접지연속성은 0.001~0.600 Ω 을 3.0~42.0 A 에서 측정한다(신형 앰프 방식으로 40 A 급 AC/DC 지원). 전 모델에 LAN·USB·RS232C 와 타이머, 상승·하강 시간(Rise/Fall Time) 제어를 갖췄다.",
+  "test_items": ["dielectric_withstand", "insulation_resistance", "ground_bond"],
+  "measurands": ["withstand_voltage", "leakage_current", "insulation_resistance", "ground_bond_resistance", "partial_discharge"],
+  "materials": ["power supplies", "home appliances", "IT equipment", "medical devices", "industrial equipment", "transformers", "motors"],
+  "standards": {
+    "compliance": ["CE"],
+    "test_methods": ["IEC 60950", "IEC 62368-1", "IEC 60601-1", "UL", "CSA", "VDE", "BS", "電気用品安全法 (일본 전기용품안전법)"]
+  },
+  "limits": {
+    "ac_withstand_voltage_kV": {"max": 5.0, "note": "5 kV / 100 mA (500 VA) — 전 모델 공통"},
+    "dc_withstand_voltage_kV": {"max": 7.2, "note": "5 kV / 20 mA, 7.2 kV / 13.9 mA (100 W)"},
+    "insulation_resistance_ohm": {"min": 1000, "max": 100000000000, "note": "0.001 MΩ ~ 100.0 GΩ. 시험 전압 DC -25 V~-1000 V (TOS9300) 또는 DC -25 V~-1000 V / DC +50 V~+7200 V (TOS9301 이상)"},
+    "leakage_current_A": {"min": 0.000001, "max": 0.1, "note": "1 µA ~ 100 mA (rms) — TOS9303LC"},
+    "ground_bond_resistance_ohm": {"min": 0.001, "max": 0.600},
+    "ground_bond_current_A": {"min": 3.0, "max": 42.0, "note": "AC/DC 40 A 급"}
+  },
+  "models": [
+    {
+      "model": "TOS9300 (AC Hipot + 절연저항)",
+      "specs": {
+        "functions": ["ACW", "IR"],
+        "acw": "5 kV / 100 mA (500 VA)",
+        "ir": "0.001 MΩ ~ 100.0 GΩ (DC -25 V ~ -1000 V)",
+        "interfaces": ["LAN", "USB", "RS232C"],
+        "dimensions_mm": {"W": 430, "W_max": 440, "H": 132, "H_max": 155, "D": 370, "D_max": 410},
+        "weight_kg": 17
+      }
+    },
+    {
+      "model": "TOS9301 (AC/DC Hipot + 절연저항)",
+      "specs": {
+        "functions": ["ACW", "DCW", "IR"],
+        "acw": "5 kV / 100 mA (500 VA)",
+        "dcw": "5 kV / 20 mA, 7.2 kV / 13.9 mA (100 W)",
+        "ir": "0.001 MΩ ~ 100.0 GΩ (DC -25 V ~ -1000 V / DC +50 V ~ +7200 V)",
+        "interfaces": ["LAN", "USB", "RS232C"],
+        "dimensions_mm": {"W": 430, "W_max": 440, "H": 132, "H_max": 155, "D": 370, "D_max": 410},
+        "weight_kg": 18
+      }
+    },
+    {
+      "model": "TOS9301PD (AC/DC Hipot + 절연저항 + 부분방전)",
+      "specs": {
+        "functions": ["ACW", "DCW", "IR", "PD"],
+        "acw": "5 kV / 100 mA (500 VA)",
+        "dcw": "5 kV / 20 mA, 7.2 kV / 13.9 mA (100 W)",
+        "ir": "0.001 MΩ ~ 100.0 GΩ (DC -25 V ~ -1000 V / DC +50 V ~ +7200 V)",
+        "interfaces": ["LAN", "USB", "RS232C"],
+        "dimensions_mm": {"W": 430, "W_max": 440, "H": 132, "H_max": 155, "D": 500, "D_max": 540},
+        "weight_kg": 24,
+        "status": "카탈로그 시점 개발 중(Under development)"
+      }
+    },
+    {
+      "model": "TOS9302 (AC Hipot + 접지연속성)",
+      "specs": {
+        "functions": ["ACW", "EC"],
+        "acw": "5 kV / 100 mA (500 VA)",
+        "ec": "0.001 Ω ~ 0.600 Ω (3.0 A ~ 42.0 A)",
+        "interfaces": ["LAN", "USB", "RS232C"],
+        "dimensions_mm": {"W": 430, "W_max": 440, "H": 132, "H_max": 155, "D": 500, "D_max": 540},
+        "weight_kg": 20
+      }
+    },
+    {
+      "model": "TOS9303 (AC/DC Hipot + 절연저항 + 접지연속성)",
+      "specs": {
+        "functions": ["ACW", "DCW", "IR", "EC"],
+        "acw": "5 kV / 100 mA (500 VA)",
+        "dcw": "5 kV / 20 mA, 7.2 kV / 13.9 mA (100 W)",
+        "ir": "0.001 MΩ ~ 100.0 GΩ (DC -25 V ~ -1000 V / DC +50 V ~ +7200 V)",
+        "ec": "0.001 Ω ~ 0.600 Ω (3.0 A ~ 42.0 A)",
+        "interfaces": ["LAN", "USB", "RS232C"],
+        "dimensions_mm": {"W": 430, "W_max": 440, "H": 132, "H_max": 155, "D": 500, "D_max": 540},
+        "weight_kg": 21
+      }
+    },
+    {
+      "model": "TOS9303LC (AC/DC Hipot + 절연저항 + 접지연속성 + 누설전류)",
+      "specs": {
+        "functions": ["ACW", "DCW", "IR", "EC", "LC"],
+        "acw": "5 kV / 100 mA (500 VA)",
+        "dcw": "5 kV / 20 mA, 7.2 kV / 13.9 mA (100 W)",
+        "ir": "0.001 MΩ ~ 100.0 GΩ (DC -25 V ~ -1000 V / DC +50 V ~ +7200 V)",
+        "ec": "0.001 Ω ~ 0.600 Ω (3.0 A ~ 42.0 A)",
+        "lc": "1 µA ~ 100 mA (rms)",
+        "interfaces": ["LAN", "USB", "RS232C"],
+        "dimensions_mm": {"W": 430, "W_max": 440, "H": 132, "H_max": 155, "D": 500, "D_max": 550},
+        "weight_kg": 22
+      }
+    },
+    {
+      "model": "TOS9320 (4채널 고전압 스캐너)",
+      "specs": {
+        "channels": 4,
+        "contact_check": true,
+        "standalone": true,
+        "note": "단독 사용 가능. TOS5300 시리즈 등 기존 내전압·절연저항 시험기와도 조합할 수 있다"
+      }
+    }
+  ],
+  "function_matrix": [
+    {"model": "TOS9300", "acw": true, "dcw": false, "ir": true, "ec": false, "lc": false, "pd": false},
+    {"model": "TOS9301", "acw": true, "dcw": true, "ir": true, "ec": false, "lc": false, "pd": false},
+    {"model": "TOS9301PD", "acw": true, "dcw": true, "ir": true, "ec": false, "lc": false, "pd": true},
+    {"model": "TOS9302", "acw": true, "dcw": false, "ir": false, "ec": true, "lc": false, "pd": false},
+    {"model": "TOS9303", "acw": true, "dcw": true, "ir": true, "ec": true, "lc": false, "pd": false},
+    {"model": "TOS9303LC", "acw": true, "dcw": true, "ir": true, "ec": true, "lc": true, "pd": false}
+  ],
+  "features": ["Hipot·IR·GB·LC·부분방전 통합", "40 A 급 AC/DC 접지연속성 앰프", "상승·하강 시간(Rise/Fall Time) 제어", "타이머", "LAN·USB·RS232C 표준 탑재", "컬러 화면", "다국가 안전규격 대응", "생산라인·연구개발·시험실 공용"],
+  "accessories": [{"name": "TOS9320", "note": "4채널 고전압 스캐너(접점 확인 기능 포함)"}],
+  "relations": [
+    {"type": "performs", "target": "dielectric_withstand"},
+    {"type": "performs", "target": "insulation_resistance"},
+    {"type": "performs", "target": "ground_bond"},
+    {"type": "successor_of", "target": "placeholder-kikusui-tos5300"},
+    {"type": "same_family_as", "target": "chroma-19032-safety-analyzer"}
+  ],
+  "sources": [
+    {"file": "kikusui/tos9300-electrical-safety-analyzer-datasheet.pdf", "pages": [1, 2, 3, 4], "note": "모델 라인업·기능 매트릭스를 원본 쪽 이미지로 확정(2026-09-09)"},
+    {"file": "kikusui/tos9300-telonic.pdf"}
+  ],
+  "confidence": "catalog",
+  "notes": "이전 판에서 TOS9320 을 'TOS5300 시리즈 어댑터'로 잘못 적었다 — 실제로는 접점 확인 기능을 갖춘 4채널 고전압 스캐너이며 단독 사용도 가능하다. 모델별 기능 조합도 추정이었으나 라인업 페이지로 확정했다. PDF 는 유통사(Calright Instruments) 미러본이다."
+}

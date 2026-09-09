@@ -1,0 +1,29 @@
+{
+  "id": "tinius-olsen-mp1200-melt-flow",
+  "kind": "equipment_series",
+  "name": "Tinius Olsen MP1200 / MP1200M / MP1500 Melt Flow Indexers",
+  "name_ko": "티니우스 올센 MP1200/MP1200M/MP1500 용융지수 측정기",
+  "manufacturer": "tinius-olsen",
+  "category": "melt_flow_indexer",
+  "form_factor": "benchtop",
+  "description": "MP1200(수동)·MP1200M(모터 웨이트 리프트) 최대 400 °C(신판 450), 3구역 PID ±0.1 °C, 7.1\" 터치, PPDT 인코더 옵션(MVR·절차 B/C), FRR 절차 D. 데드웨이트 0.325–21.6 kg. MP1500: 로드셀(45 kgf) + 볼스크루 무추 하중 0.325–21.6 kg, 절차 A/B/C/D, 자동 퍼지·세척.",
+  "test_items": ["melt_flow"],
+  "measurands": ["mfr", "mvr", "melt_density", "flow_rate_ratio"],
+  "materials": ["thermoplastics", "polyethylene", "polyolefins"],
+  "standards": {"compliance": ["ISO 1133-2 (temperature)", "CE"], "test_methods": ["ASTM D1238", "ASTM D3364", "ISO 1133-1", "ISO 1133-2", "BS 2782", "DIN 53735", "JIS K7210", "GB/T 3682"]},
+  "limits": {
+    "melt_temperature_degC": {"max": 450, "note": "MP1200 400 °C(구판) / 450 °C(신판); MP1500 400 °C"},
+    "melt_load_kg": {"min": 0.325, "max": 21.6, "values": [0.325, 1.2, 2.16, 3.8, 5, 10, 21.6]}
+  },
+  "models": [
+    {"model": "MP1200", "specs": {"melt_temperature_degC": {"max": 400}, "temperature_control_degC": 0.1, "weights": "manual dead weights", "footprint_mm": {"W": 458, "D": 394, "H": 521}, "weight_kg": 21, "power_W": 500}},
+    {"model": "MP1200M", "specs": {"melt_temperature_degC": {"max": 400}, "weights": "motorised weight lifting device", "footprint_mm": {"W": 458, "D": 394, "H": 762}, "weight_kg": 32, "weight_kg_with_selectable_weights": 66}},
+    {"model": "MP1500 (load cell)", "specs": {"melt_temperature_degC": {"max": 400}, "melt_load_kg": {"min": 0.325, "max": 21.6}, "load_cell_N": 440, "footprint_mm": {"W": 511, "D": 511, "H": 1080}, "footprint_with_purge_mm": {"H": 1334}, "weight_kg": 52, "power_W": 500}}
+  ],
+  "accuracy": {"temperature": "±0.1 °C control, ±0.1 °C spatial", "ppdt": "±0.02 mm (ISO) / ±0.001 in (ASTM)", "timer": "0.001 s internal"},
+  "environment": {"power": "115 or 230 VAC 50/60 Hz, 500 W"},
+  "options": ["PPDT-1200 encoder", "manual/automatic cutter", "FRR attachment", "purge / purge-clean", "selectable weight system", "Horizon software"],
+  "relations": [],
+  "sources": [{"file": "tinius-olsen/melt-flow-indexer-mp1200.pdf", "pages": [2, 3, 6]}, {"file": "tinius-olsen/mp1200-anamet.pdf", "pages": [2, 6]}],
+  "confidence": "catalog"
+}

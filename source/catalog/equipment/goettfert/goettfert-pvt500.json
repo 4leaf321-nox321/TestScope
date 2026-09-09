@@ -1,0 +1,101 @@
+{
+  "id": "goettfert-pvt500",
+  "kind": "equipment_series",
+  "name": "GÖTTFERT PVT500 Pressure-Volume-Temperature Instrument",
+  "name_ko": "괴트페르트 PVT500 압력-부피-온도 측정기",
+  "manufacturer": "goettfert",
+  "brand": "PVT",
+  "category": "dilatometer",
+  "subcategory": "pvt",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "고분자의 비체적을 압력·온도의 함수로 재는 독립형 PVT 장비. 등온(isothermal)과 등압(isobaric) 두 방식을 모두 지원한다. 등온은 용융 온도로 채운 뒤 실온까지 천천히 식히고 실온부터 압력을 단계로 올리며 각 온도 단계에서 반복한다. 등압은 ISO 17744 에 따라 시험 피스톤으로 일정 압력을 유지한 채 온도를 바꾸며 비체적을 구해 냉각 거동을 사출성형 시뮬레이션에 쓸 수 있게 한다. 시험 배럴 지름 9.5 mm, 최대 압력 2500 bar, 위치 분해능 0.000053 mm. 공랭으로 30 K/min 까지 냉각해 외부 항온조가 필요 없다. 열전도도 측정 애드온을 붙이면 ASTM D5930·ISO 22007 로 열전도도를 함께 얻는다. 시뮬레이션용 D3 계수를 산출한다.",
+  "test_items": [
+    "dilatometry",
+    "thermal_conductivity"
+  ],
+  "measurands": [
+    "density",
+    "dimensional_change",
+    "shrinkage_force",
+    "thermal_conductivity",
+    "cte"
+  ],
+  "materials": [
+    "thermoplastics",
+    "filled compounds",
+    "elastomers/rubber"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 17744",
+      "ASTM D5930",
+      "ISO 22007"
+    ]
+  },
+  "limits": {
+    "pressure_bar": {
+      "max": 2500,
+      "note": "시험 배럴 최대 압력"
+    },
+    "cooling_rate_K_min": {
+      "max": 30,
+      "note": "공랭 시스템"
+    },
+    "bore_diameter_mm": {
+      "values": [9.5]
+    }
+  },
+  "models": [
+    {
+      "model": "PVT500",
+      "specs": {
+        "barrel_diameter_mm": 9.5,
+        "pressure_max_bar": 2500,
+        "position_resolution_mm": 0.000053,
+        "cooling_rate_K_min_max": 30,
+        "cooling": "공랭(액체 냉각 옵션)",
+        "modes": ["등온(isothermal) PVT", "등압(isobaric) PVT"],
+        "software": "LabRheo (스크립트 생성기 내장)"
+      }
+    }
+  ],
+  "features": [
+    "등온·등압 PVT 를 한 장비에서",
+    "열전도도 측정 지원",
+    "통합 온도 제어 재킷",
+    "외부 항온조 불필요(공랭)",
+    "최적화된 시험 배럴로 열 투입량 감소",
+    "사출성형 시뮬레이션용 D3 계수 산출",
+    "Tait 피팅 PVT 선도"
+  ],
+  "options": [
+    "열전도도(Thermal Conductivity) 애드온",
+    "외부 항온조를 쓰는 추가 온도 제어",
+    "Hybrid Tempering Option"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "dilatometry"
+    },
+    {
+      "type": "performs",
+      "target": "thermal_conductivity"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph",
+      "note": "RHEOGRAPH 의 PVT 애드온과 같은 측정을 독립 장비로 하는 것"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [12, 13]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "PVT 는 비체적을 압력·온도의 함수로 재는 것이라 분류를 `dilatometer` 로 잡고 `subcategory: pvt` 를 달았다 — 온톨로지에 PVT 전용 분류가 없다. 온도 범위·치수·중량·전원은 12~13쪽에 없다. 열전도도 애드온의 측정 범위(450 °C·1000 bar)는 10쪽 애드온 항목에 있으며 `goettfert-rheograph-add-ons` 에 적었다."
+}

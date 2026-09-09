@@ -1,0 +1,149 @@
+{
+  "id": "ta-instruments-dma",
+  "kind": "equipment_series",
+  "name": "TA Instruments DMA (Dynamic Mechanical Analyzer)",
+  "name_ko": "TA 인스트루먼츠 DMA 동적기계분석기",
+  "manufacturer": "ta-instruments",
+  "category": "dma",
+  "drive": "electrodynamic",
+  "form_factor": "benchtop",
+  "description": "시료에 진동 변형을 주고 응력-변형의 위상차로 저장탄성률·손실탄성률·tan δ 를 재는 동적기계분석기. 힘 0.0001~18 N(분해능 0.00001 N), 변형 분해능 1 nm, 동적 변형 범위 ±0.5~10,000 µm. 주파수 0.01~200 Hz, 온도 -150~600 °C 에서 등온 안정도 ±0.1 °C. 탄성률 측정 범위가 10³~3×10¹² Pa 로 넓어 고무부터 세라믹까지 한 장비로 덮고, tan δ 감도 0.0001 로 미세한 완화(relaxation)를 본다. 시간-온도 중첩(TTS)으로 마스터커브를 만든다.",
+  "test_items": [
+    "dma"
+  ],
+  "measurands": [
+    "storage_modulus",
+    "loss_modulus",
+    "tan_delta",
+    "glass_transition",
+    "creep_compliance",
+    "relaxation_modulus",
+    "viscoelastic_properties",
+    "cte"
+  ],
+  "materials": [
+    "polymers",
+    "elastomers/rubber",
+    "composites",
+    "films and fibers",
+    "adhesives",
+    "ceramics"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_N": {
+      "min": 0.0001,
+      "max": 18,
+      "note": "분해능 0.00001 N"
+    },
+    "frequency_Hz": {
+      "min": 0.01,
+      "max": 200
+    },
+    "temperature_degC": {
+      "min": -150,
+      "max": 600
+    },
+    "heating_rate_K_min": {
+      "min": 0.1,
+      "max": 20
+    },
+    "cooling_rate_K_min": {
+      "min": 0.1,
+      "max": 10
+    },
+    "displacement_um": {
+      "min": 0.5,
+      "max": 10000,
+      "note": "동적 시료 변형 범위 ±0.5~10,000 µm. 변형 분해능 1 nm"
+    }
+  },
+  "models": [
+    {
+      "model": "DMA",
+      "specs": {
+        "max_force_N": 18,
+        "min_force_N": 0.0001,
+        "force_resolution_N": 1e-05,
+        "strain_resolution_nm": 1,
+        "modulus_range_Pa": {
+          "min": 1000,
+          "max": 3000000000000.0
+        },
+        "modulus_precision_pct": 1,
+        "tan_delta_sensitivity": 0.0001,
+        "tan_delta_resolution": 1e-05,
+        "frequency_Hz": {
+          "min": 0.01,
+          "max": 200
+        },
+        "dynamic_deformation_um": {
+          "min": 0.5,
+          "max": 10000
+        },
+        "temperature_degC": {
+          "min": -150,
+          "max": 600
+        },
+        "heating_rate_degC_min": {
+          "min": 0.1,
+          "max": 20
+        },
+        "cooling_rate_degC_min": {
+          "min": 0.1,
+          "max": 10
+        },
+        "isothermal_stability_degC": 0.1,
+        "time_temperature_superposition": true,
+        "outputs": [
+          "저장탄성률",
+          "손실탄성률",
+          "tan δ",
+          "복소/동적 점도",
+          "크리프 컴플라이언스",
+          "완화 탄성률",
+          "저장/손실 컴플라이언스",
+          "응력/변형",
+          "시간",
+          "주파수"
+        ]
+      }
+    }
+  ],
+  "accuracy": {
+    "modulus_precision": "±1 %",
+    "isothermal_stability": "±0.1 °C"
+  },
+  "features": [
+    "탄성률 범위 10³~3×10¹² Pa",
+    "tan δ 감도 0.0001",
+    "변형 분해능 1 nm",
+    "시간-온도 중첩(TTS) 마스터커브"
+  ],
+  "options": [
+    "상대습도(RH) 제어"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "dma"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-rsa-g2"
+    }
+  ],
+  "sources": [
+    {
+      "file": "ta-instruments/dma-brochure.pdf",
+      "pages": [
+        4
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 Akamai 로 막혀 archive.org 스냅샷(2025-04-22)에서 받았다. 브로슈어가 기종명을 적지 않고 'DMA' 로만 부른다 — 그래서 객체 id 에도 기종명을 넣지 않았다. 이 사양은 Q800 계열의 것으로 알려져 있으나 문서가 그렇게 명시하지 않으므로 추정을 기록에 넣지 않는다. RH 제어는 옵션이며 그 조건에서의 온도 범위는 문서에 없다."
+}

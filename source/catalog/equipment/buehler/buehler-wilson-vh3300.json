@@ -1,0 +1,31 @@
+{
+  "id": "buehler-wilson-vh3300",
+  "kind": "equipment_series",
+  "name": "Wilson VH3100 / VH3300 Vickers-Knoop Hardness Testers",
+  "name_ko": "뷸러 윌슨 VH3100/VH3300 비커스·누프 경도계",
+  "manufacturer": "buehler",
+  "brand": "Wilson",
+  "category": "vickers_knoop_hardness",
+  "form_factor": "benchtop",
+  "description": "로드셀 폐루프 하중. VH3100: 3+1 터렛, 0.05–10 kgf. VH3300: 6 위치 모터 터렛, 최대 3 압입자, 10 gf–50 kgf(로드셀 선택). 자동 초점·측정 5 s 이내, DiaMet, 모터 스테이지 180×180 / 300×180 mm.",
+  "test_items": ["hardness_vickers", "hardness_knoop"],
+  "measurands": ["hardness_HV", "hardness_HK"],
+  "materials": ["metals", "coatings", "weld cross-sections", "case-hardened layers"],
+  "standards": {"compliance": ["ASTM E384", "ASTM E92", "ISO 6507", "ISO 9385", "ISO 4545"], "test_methods": ["ASTM E384", "ISO 6507-1", "ISO 4545-1"]},
+  "limits": {
+    "test_load_gf": {"min": 10, "max": 50000, "note": "small load cell 10 gf–1 kgf, medium 50 gf–10 kgf, large 0.5–50 kgf"},
+    "hardness_scales": {"values": ["HV", "HK"]},
+    "specimen_height_mm": {"max": 215, "note": "VH3100 125/170/215; VH3300 105/155"},
+    "stage_travel_mm": {"values": ["180×180", "300×180"]}
+  },
+  "models": [
+    {"model": "VH3100", "specs": {"test_load_gf": {"min": 50, "max": 10000}, "turret": "automatic 3 + overview", "indenter_positions": 1, "specimen_height_mm": [125, 170, 215], "weight_kg": 37.5}},
+    {"model": "VH3300", "specs": {"test_load_gf": {"min": 10, "max": 50000}, "turret": "automatic 6 incl. overview", "indenter_positions": 3, "specimen_height_mm": [105, 155], "weight_kg": 65}}
+  ],
+  "accuracy": {"load": "±1.5% < 200 g, ±1% > 200 g", "stage": "resolution 0.5 µm, repeatability < 5 µm, travel speed 24 mm/s", "magnification": "30x–2000x digital zoom"},
+  "environment": {"operating_temp_degC": [10, 38], "humidity_pct": [10, 90], "power": "100–240 VAC 50/60 Hz"},
+  "options": ["DiaMet Full-Automatic / Enterprise", "overview camera", "motorized stages", "SnapGrip"],
+  "relations": [{"type": "same_family_as", "target": "buehler-wilson-uh4000"}],
+  "sources": [{"file": "buehler/wilson-vh3100-vh3300.pdf", "pages": [20, 22, 23]}],
+  "confidence": "catalog"
+}

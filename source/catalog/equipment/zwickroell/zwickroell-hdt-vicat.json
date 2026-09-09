@@ -1,0 +1,35 @@
+{
+  "id": "zwickroell-hdt-vicat",
+  "kind": "equipment_series",
+  "name": "ZwickRoell HDT/Vicat Standard (3-300 S / 4-300 S / 6-300 S) and HDT/Vicat Allround A1 (3-300 / 6-300)",
+  "name_ko": "즈윅로엘 HDT/비캣 시험기 Standard · Allround A1",
+  "manufacturer": "zwickroell",
+  "category": "hdt_vicat",
+  "form_factor": "benchtop",
+  "description": "오일배스 +20~+300 °C, 승온 50/120 K/h 또는 자유 설정, 3/4/6 스테이션. 표시 정확도 ±0.5 °C(250 °C), 공간 구배 ±0.1(S)/±0.2(A1) °C. 변위 1–15 mm, ±0.01 mm. HDT 스팬 64/100/101.6 mm, 시편 최대 13×15×130 mm, VST 10×6.5×10 mm. 수냉 재냉각(300→30 °C 약 20 분).",
+  "test_items": ["hdt", "vicat"],
+  "measurands": ["hdt", "vst"],
+  "materials": ["thermoplastics", "thermosets", "composites"],
+  "standards": {"compliance": [], "test_methods": ["ISO 75-1", "ISO 75-2", "ASTM D648", "ISO 306", "ASTM D1525"]},
+  "limits": {
+    "temperature_degC": {"min": 20, "max": 300},
+    "heating_rate_K_h": {"values": [50, 120], "note": "자유 설정 가능"},
+    "stations": {"values": [3, 4, 6]},
+    "displacement_mm": {"min": 1, "max": 15},
+    "hdt_span_mm": {"values": [64, 100, 101.6]},
+    "specimen_max_mm": {"values": ["HDT 13×15×130", "VST 10×6.5×10"]}
+  },
+  "models": [
+    {"model": "HDT/Vicat 3-300 S", "specs": {"stations": 3, "temperature_degC": {"min": 20, "max": 300}, "oil_capacity_L": 19.9, "footprint_mm": {"H": 500, "W": 440, "D": 600}, "weight_kg": 30, "power_W": 3460}},
+    {"model": "HDT/Vicat 4-300 S", "specs": {"stations": 4, "stations_max": 6, "oil_capacity_L": 36, "footprint_mm": {"H": 500, "W": 710, "D": 600}, "weight_kg": 35}},
+    {"model": "HDT/Vicat 6-300 S", "specs": {"stations": 6, "oil_capacity_L": 36, "footprint_mm": {"H": 500, "W": 710, "D": 600}, "weight_kg": 35}},
+    {"model": "HDT/Vicat 3-300 A1", "specs": {"stations": 3, "temperature_degC": {"min": 20, "max": 300}, "footprint_mm": {"H": 460, "W": 560, "D": 700}, "power_W": 3000}},
+    {"model": "HDT/Vicat 6-300 A1", "specs": {"stations": 6, "footprint_mm": {"H": 460, "W": 780, "D": 700}, "power_W": 3000}}
+  ],
+  "accuracy": {"temperature": "±0.5 °C display at 250 °C; spatial gradient ±0.1 (S) / ±0.2 (A1) °C; resolution 0.1 °C", "displacement": "±0.01 mm, resolution 0.001 mm"},
+  "environment": {"power": "230/240 V 50/60 Hz", "water": "required, ≤10 bar"},
+  "options": ["Vicat weight set 10/50 N", "HDT weight sets ISO 75-2 flatwise/edgewise, ASTM D648 A/B", "universal weight set 1–5500 g", "external re-cooling unit 500 W", "Vicat specimen cutter"],
+  "relations": [{"type": "requires", "target": "utility-cooling-water"}],
+  "sources": [{"file": "zwickroell/hdt-vicat-standard-pi-en.pdf", "pages": [2, 3, 4]}, {"file": "zwickroell/hdt-vicat-allround-a1-pi-en.pdf", "pages": [2, 3, 4]}],
+  "confidence": "catalog"
+}

@@ -1,0 +1,122 @@
+{
+  "id": "unholtz-dickie-ls-thrusters",
+  "kind": "equipment_series",
+  "name": "Unholtz-Dickie LS-Series Long Stroke Thrusters (6XS / LS08 / LS12 / LS16 / LS20 / LS24)",
+  "name_ko": "언홀츠-디키 LS 계열 롱스트로크 스러스터",
+  "manufacturer": "unholtz-dickie",
+  "brand": "UD",
+  "category": "shock_test_machine",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "충돌·낙하·충격 같은 과도 파형을 그대로 재현하도록 스트로크를 길게 뽑은 전기동력식 스러스터. 에어백 센서, ABS, 액티브 서스펜션 부품 같은 자동차 하드웨어 시험이 주 용도다. 152 x 178 mm 안내형 수평 '슬레드' 플랫폼을 대형 파워 앰프로 몰아 극한 속도 변화(ΔV 7.6~20 m/s pk-pk, 27~72 km/h)를 낸다. 충격력 정격 11~38 kN, 스트로크는 기종에 따라 152~609 mm pk-pk. LS08 은 0.9 kg 하중에서 400 g / 8 ms 반정현까지 낸다. 베어링 안내 슬라이더와 IGIS 절연 시스템을 갖췄다. LS12 는 지진 구성(LS12H 수평·LS12V 수직)으로 Telcordia Zone 1~4 지진 파형을 재현한다.",
+  "test_items": [
+    "mechanical_shock",
+    "vibration_sine_random"
+  ],
+  "measurands": [
+    "peak_acceleration",
+    "velocity_change",
+    "shock_response_spectrum",
+    "pulse_duration",
+    "failure_mode"
+  ],
+  "materials": [
+    "airbag sensors",
+    "ABS modules",
+    "active suspension components",
+    "automotive hardware",
+    "telecom equipment racks"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "Telcordia GR-63-CORE (Zone 1~4 지진 파형)"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "min": 11,
+      "max": 38,
+      "note": "충격력 정격 2,500~8,500 lbf pk"
+    },
+    "stroke_mm": {
+      "min": 152,
+      "max": 609,
+      "note": "pk-pk. 6·8·12·16·20·24 인치"
+    },
+    "velocity_change_m_s": {
+      "min": 7.6,
+      "max": 20,
+      "note": "pk-pk. 300~800 in/s, 27~72 km/h(17~45 mph)"
+    },
+    "acceleration_g": {
+      "max": 400,
+      "note": "LS08 에서 0.9 kg 하중, 8 ms 반정현 기준"
+    },
+    "table_size_mm": {
+      "max": 1219,
+      "note": "슬레드 플랫폼 152 x 178 mm. 지진 구성은 1219 x 1219 mm 슬립 플레이트"
+    }
+  },
+  "models": [
+    {
+      "model": "6XS",
+      "specs": {"stroke_mm_pk_pk": 152}
+    },
+    {
+      "model": "LS08",
+      "specs": {
+        "stroke_mm_pk_pk": 203,
+        "halfsine_capability": "0.9 kg(2 lb) 하중에서 400 g / 8 ms 반정현"
+      }
+    },
+    {
+      "model": "LS12",
+      "specs": {
+        "stroke_mm_pk_pk": 305,
+        "seismic_configuration": "LS12H(수평)·LS12V(수직), 1219 x 1219 mm 슬립 플레이트로 Telcordia Zone 4 지진 시험"
+      }
+    },
+    {
+      "model": "LS16",
+      "specs": {"stroke_mm_pk_pk": 406}
+    },
+    {
+      "model": "LS20",
+      "specs": {"stroke_mm_pk_pk": 508}
+    },
+    {
+      "model": "LS24",
+      "specs": {"stroke_mm_pk_pk": 609}
+    }
+  ],
+  "features": [
+    "충돌·낙하·충격 과도 파형 재현에 맞춘 긴 스트로크",
+    "베어링 안내 슬레드(152 x 178 mm)",
+    "IGIS 몸체 가이드·트러니언 절연",
+    "Telcordia Zone 1~4 지진 파형 구성",
+    "투명 안전 실드"
+  ],
+  "options": [
+    "지진 시험용 대형 테이블 및 1219 x 1219 mm 슬립 플레이트",
+    "APEX SL 컨트롤러"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "mechanical_shock"
+    },
+    {
+      "type": "same_family_as",
+      "target": "unholtz-dickie-shakers"
+    }
+  ],
+  "sources": [
+    {
+      "file": "unholtz-dickie/product-catalog.pdf",
+      "pages": [11]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "11쪽 한 면에 계열 전체가 요약돼 있어 기종별 값은 스트로크만 확정된다. 충격력 11~38 kN, ΔV 7.6~20 m/s 는 계열 범위이고 어느 기종이 어느 값인지는 카탈로그가 적지 않는다 — 400 g / 8 ms 만 LS08 값으로 명시돼 있다. 스트로크 인치를 mm 로 옮긴 값은 카탈로그가 적은 그대로다(24 인치를 609 mm 로 적었다; 정확히는 610 mm)."
+}

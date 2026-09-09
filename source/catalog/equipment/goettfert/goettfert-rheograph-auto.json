@@ -1,0 +1,110 @@
+{
+  "id": "goettfert-rheograph-auto",
+  "kind": "equipment_series",
+  "name": "GÖTTFERT RHEOGRAPH auto Semi-automated Capillary Rheometer",
+  "name_ko": "괴트페르트 RHEOGRAPH auto 반자동 모세관 레오미터",
+  "manufacturer": "goettfert",
+  "brand": "RHEOGRAPH",
+  "category": "capillary_rheometer",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "배럴 청소·다이 폐쇄·다이 예비 청소를 자동화 모듈로 처리하는 반자동 모세관 레오미터. 반복 점도 측정에서 사람이 붙어 있어야 하는 구간을 줄이는 것이 목적이다. 시험력은 25 kN 또는 50 kN 을 고르고 단일 배럴 12 mm 또는 15 mm 구성이다. 피스톤 속도 0.00004~40 mm/s(1:1,000,000), 온도 400 °C(옵션 500 °C), 압력 신호 분해능은 정격의 0.005 %. 외부 모듈로 피스톤 청소도 붙는다.",
+  "test_items": [
+    "rheology_capillary"
+  ],
+  "measurands": [
+    "viscosity",
+    "extensional_viscosity"
+  ],
+  "materials": [
+    "thermoplastics",
+    "elastomers/rubber"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 11443",
+      "ASTM D3835",
+      "ASTM D5099",
+      "ISO 17744",
+      "ASTM D5930"
+    ]
+  },
+  "limits": {
+    "force_kN": {
+      "min": 25,
+      "max": 50,
+      "note": "25 kN 또는 50 kN 선택"
+    },
+    "temperature_degC": {
+      "max": 400,
+      "note": "옵션 500 °C"
+    },
+    "piston_speed_mm_min": {
+      "min": 0.0024,
+      "max": 2400,
+      "note": "0.00004~40 mm/s"
+    },
+    "bore_diameter_mm": {
+      "values": [12, 15],
+      "note": "단일 배럴만"
+    }
+  },
+  "models": [
+    {
+      "model": "RHEOGRAPH auto 25",
+      "specs": {
+        "test_force_kN": 25,
+        "barrel_1_diameter_mm": [12, 15],
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "temperature_max_degC": 400,
+        "pressure_signal_resolution_pct": 0.005
+      }
+    },
+    {
+      "model": "RHEOGRAPH auto 50",
+      "specs": {
+        "test_force_kN": 50,
+        "barrel_1_diameter_mm": [12, 15],
+        "piston_speed_mm_s": {"min": 0.00004, "max": 40},
+        "temperature_max_degC": 400,
+        "pressure_signal_resolution_pct": 0.005
+      }
+    }
+  ],
+  "features": [
+    "배럴 청소 자동화 모듈",
+    "다이 폐쇄 자동화",
+    "다이 예비 청소",
+    "고분해능 엔코더 위치 측정",
+    "내식성 또는 내마모성 강화 시험 챔버 사양 선택"
+  ],
+  "options": [
+    "외부 피스톤 청소 모듈",
+    "Die Swell Measurement 애드온",
+    "500 °C 고온 옵션"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "rheology_capillary"
+    },
+    {
+      "type": "same_family_as",
+      "target": "goettfert-rheograph"
+    },
+    {
+      "type": "extends_capability",
+      "target": "goettfert-rheograph-add-ons",
+      "note": "브로슈어는 auto 에 Die Swell Measurement 만 애드온으로 적는다"
+    }
+  ],
+  "sources": [
+    {
+      "file": "goettfert/rheograph-capillary-rheometer-brochure.pdf",
+      "pages": [8, 9]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "8~9쪽은 하이라이트 목록만 있고 별도 사양표가 없다. 치수·중량·전원은 브로슈어에 없어 비워 뒀다 — RHEOGRAPH 본 시리즈의 25/50 kN 값과 같은지는 문서로 확인되지 않는다."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "zwickroell-zhu250",
+  "kind": "equipment_model",
+  "name": "ZwickRoell ZHU250 universal hardness tester up to 250 kg",
+  "name_ko": "즈윅로엘 ZHU250 만능 경도계 (250 kg)",
+  "manufacturer": "zwickroell",
+  "category": "universal_hardness",
+  "form_factor": "floor",
+  "description": "폐루프 하중 1–250 kg. 비커스 HV1–HV100/HVT, 누프 HK1, 브리넬 HBW 1/1–10/250/HBT, 로크웰 A–K·15/30/45 N/T, 플라스틱 볼 압입. 시험 공간 250×300 mm, 모터식 렌즈/압입자 전환, 150 mm 포커싱 스크린, 렌즈 15×–520×.",
+  "test_items": ["hardness_vickers", "hardness_knoop", "hardness_brinell", "hardness_rockwell"],
+  "measurands": ["hardness_HV", "hardness_HK", "hardness_HB", "hardness_HR"],
+  "materials": ["metals", "plastics"],
+  "standards": {"compliance": [], "test_methods": ["EN ISO 6507", "ASTM E92", "ISO 4545", "ISO 4546", "EN ISO 6506", "ASTM E10", "EN ISO 6508", "ASTM E18", "VDI/VDE 2616-1", "ISO 2039-1", "DIN 18265 (conversion)"]},
+  "limits": {
+    "test_load_kgf": {"min": 1, "max": 250},
+    "hardness_scales": {"values": ["HV1–HV100", "HVT", "HK1", "HBW 1/1 – 10/250", "HBT", "HRA/B/C/D/E/F/G/H/K", "HR15/30/45 N/T", "ball indentation 49–961 N"]},
+    "specimen_height_mm": {"max": 250},
+    "throat_depth_mm": {"values": [300]}
+  },
+  "models": [{"model": "ZHU250 (024484)", "specs": {"test_load_kgf": {"min": 1, "max": 250}, "test_area_mm": [250, 300], "footprint_mm": {"H": 1200, "W": 270, "D": 870}, "weight_kg": 300, "power": "100–250 V"}}],
+  "options": ["lenses 15x/45x/90x/185x/360x/520x", "Rockwell ball 1/16–1/2\" & diamond indenters", "Brinell 1/2.5/5/10 mm", "Vickers/Knoop diamonds", "support tables", "V tables 15–55 / 22–220 mm", "testXpert III"],
+  "relations": [{"type": "same_family_as", "target": "zwickroell-zhr-rockwell"}],
+  "sources": [{"file": "zwickroell/zhu250-universal-hardness-pi-en.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog"
+}

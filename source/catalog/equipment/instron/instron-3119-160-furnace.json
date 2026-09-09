@@ -1,0 +1,28 @@
+{
+  "id": "instron-3119-160-furnace",
+  "kind": "accessory",
+  "name": "Instron 3119-160 1200 °C Three-Zone Split Tube Furnace",
+  "name_ko": "인스트론 3119-160 1200 °C 3구역 분할 튜브 퍼니스",
+  "manufacturer": "instron",
+  "category": "furnace",
+  "description": "와이어 권선 3구역 분할 퍼니스. 최대 소자 온도 1200 °C, 시편 온도 200–1050 °C(3119-960 컨트롤러 조합), 가열길이 300 mm(구역 100 mm×3), 내경 75 mm, 측면 신율계 슬롯 12.7×76.2 mm. 각 구역 613 W. ASTM E21, ISO 6892-2, EN 10002-5, EN 2002-2 고온 인장.",
+  "test_items": ["tensile", "creep", "fatigue"],
+  "measurands": [],
+  "materials": ["metals", "super alloys", "ceramics"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E21", "ISO 6892-2", "EN 10002-5", "EN 2002-2"]},
+  "limits": {
+    "temperature_degC": {"min": 200, "max": 1050, "note": "소자 최대 1200 °C"},
+    "heated_length_mm": {"values": [300]},
+    "bore_diameter_mm": {"values": [75]},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [{"model": "3119-160", "specs": {"temperature_degC": {"min": 200, "max": 1050}, "element_max_degC": 1200, "zones": 3, "heated_length_mm": 300, "bore_diameter_mm": 75, "exterior_mm": {"length": 350, "diameter": 254}, "power_W": 1839, "thermocouples": "3 × type K"}}],
+  "relations": [
+    {"type": "fits_on", "target": "instron-6800-series"},
+    {"type": "fits_on", "target": "instron-5900-series"},
+    {"type": "fits_on", "target": "instron-8800-servohydraulic"},
+    {"type": "requires", "target": "instron-3119-960-furnace-controller"}
+  ],
+  "sources": [{"file": "instron/3119-160-furnace-pod.pdf", "pages": [1, 2]}, {"file": "instron/guide-high-temperature-tensile.pdf", "note": "고온 인장 가이드(배경 자료)"}],
+  "confidence": "catalog"
+}

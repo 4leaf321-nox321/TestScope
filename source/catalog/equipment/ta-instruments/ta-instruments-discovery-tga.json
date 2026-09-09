@@ -1,0 +1,115 @@
+{
+  "id": "ta-instruments-discovery-tga",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery TGA (Thermogravimetric Analyzer)",
+  "name_ko": "TA 인스트루먼츠 Discovery TGA 열중량분석기",
+  "manufacturer": "ta-instruments",
+  "brand": "Discovery",
+  "category": "tga",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "적외선(IR) 노를 쓰는 열중량분석기. 실온부터 1200 °C 를 덮고 승온 속도는 선형 0.1~500 °C/min, 탄도(ballistic) 모드에서 1600 °C/min 이상까지 낸다. 노 냉각이 빨라 1200 °C 에서 35 °C 까지 10 분 미만이다. 시료 용량 750 mg, 동적 칭량 범위 ±100 mg, 감도 <0.1 µg, 신호 분해능 0.001 µg, 단기 잡음 <0.03 µg(rms). 베이스라인 직선성 <1 µg(50~1000 °C), 드리프트 <10 µg(50~1000 °C, 20 °C/min, N2 퍼지, 베이스라인 차감 없이) — 즉 베이스라인 차감 없이 쓰도록 설계됐다. Hi-Res TGA·Modulated TGA·Auto-Stepwise TGA 로 근접한 중량 감소를 분리한다. 진공(>10⁻² torr) 운전과 TGA/MS·TGA/FTIR 연계가 된다.",
+  "test_items": [
+    "tga"
+  ],
+  "measurands": [
+    "mass_loss",
+    "decomposition_temperature",
+    "ash",
+    "filler_content",
+    "glass_fiber_content",
+    "moisture",
+    "reaction_kinetics",
+    "onset_temperature"
+  ],
+  "materials": [
+    "polymers",
+    "composites",
+    "pharmaceuticals",
+    "minerals and ceramics",
+    "coal and carbon materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1200,
+      "note": "실온부터. IR 노"
+    },
+    "heating_rate_K_min": {
+      "min": 0.1,
+      "max": 500,
+      "note": "선형. 탄도(ballistic) 모드는 1600 °C/min 초과"
+    },
+    "cooling_rate_K_min": {
+      "note": "강제 공랭/N2 로 1200 °C -> 35 °C 를 10 분 미만"
+    },
+    "sample_mass_mg": {
+      "max": 750
+    },
+    "balance_resolution_ug": {
+      "max": 0.001,
+      "note": "신호 분해능. 감도는 <0.1 µg"
+    }
+  },
+  "models": [
+    {
+      "model": "Discovery TGA",
+      "specs": {
+        "temperature_range_degC": {"min": "ambient", "max": 1200},
+        "temperature_accuracy_degC": 1,
+        "dynamic_temperature_precision_degC": 1,
+        "isothermal_temperature_precision_degC": 0.1,
+        "heating_rate_degC_min": {"min": 0.1, "max": 500},
+        "heating_rate_ballistic_degC_min": 1600,
+        "furnace_cooling": "강제 공랭/N2, 1200 °C -> 35 °C 를 10 분 미만",
+        "sample_weight_capacity_mg": 750,
+        "dynamic_weighing_range_mg": 100,
+        "weighing_accuracy_pct": 0.1,
+        "weighing_precision_pct": 0.01,
+        "sensitivity_ug": 0.1,
+        "short_term_noise_ug_rms": 0.03,
+        "baseline_linearity_ug": 1,
+        "baseline_drift_ug": 10,
+        "signal_resolution_ug": 0.001,
+        "autosampler_positions": 25,
+        "vacuum_torr": 0.01,
+        "technologies": ["Hi-Res TGA", "Modulated TGA", "Auto-Stepwise TGA", "내장 전자석"]
+      },
+      "note": "베이스라인 직선성·드리프트는 50~1000 °C 구간 값이고, 드리프트는 20 °C/min·N2 퍼지·베이스라인 차감 없음 조건이다"
+    }
+  ],
+  "accuracy": {
+    "temperature": "±1 °C (등온 정밀도 ±0.1 °C)",
+    "weighing": "정확도 ±0.1 %, 정밀도 ±0.01 %",
+    "sensitivity": "<0.1 µg, 단기 잡음 <0.03 µg rms"
+  },
+  "features": [
+    "IR 노 — 넓은 범위의 선형 승온과 빠른 냉각",
+    "Hi-Res TGA / Modulated TGA / Auto-Stepwise TGA",
+    "25 위치 오토샘플러",
+    "내장 전자석(퀴리점 온도 교정)",
+    "컬러 터치스크린, 자동·예약 교정 및 검증",
+    "베이스라인 차감 없이 쓰도록 설계된 저드리프트"
+  ],
+  "options": [
+    "가열식 EGA 노 어댑터",
+    "2 가스 입력 모듈",
+    "4 가스 입력 + 블렌딩 모듈",
+    "진공 운전(>10⁻² torr)",
+    "TGA/MS 연계",
+    "TGA/FTIR 연계"
+  ],
+  "relations": [
+    {"type": "performs", "target": "tga"},
+    {"type": "same_family_as", "target": "ta-instruments-discovery-dsc"},
+    {"type": "same_family_as", "target": "ta-instruments-sdt-q600"}
+  ],
+  "sources": [
+    {"file": "ta-instruments/discovery-dsc-tga-brochure.pdf", "pages": [34]}
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 Akamai 로 막혀 archive.org 스냅샷(2020-01-10)에서 받았다. 스냅샷 시점 사양이라 현행 제품과 다를 수 있다. 브로슈어가 기종을 'Discovery TGA' 한 이름으로만 부르고 TGA 55/550/5500 같은 등급 구분을 하지 않는다."
+}

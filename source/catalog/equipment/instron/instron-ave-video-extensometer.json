@@ -1,0 +1,39 @@
+{
+  "id": "instron-ave-video-extensometer",
+  "kind": "sensor",
+  "name": "Instron AVE 2 / AVE3 Advanced (Non-Contacting) Video Extensometers",
+  "name_ko": "인스트론 AVE 2 / AVE3 비접촉 비디오 신율계",
+  "manufacturer": "instron",
+  "category": "extensometer",
+  "description": "렌즈 35/16/9/6 mm 교환. AVE 2: 490 Hz, 분해능 0.5–3 µm, FOV 100–620 mm(테이블)/130–840 mm(플로어), 최소 GL 5–15 mm, 추종 2500 mm/min, ISO 9513 Class 0.5–2, ASTM E83 B-1/C. AVE3: 500 Hz, 분해능 0.25–3 µm, FOV 85–522/112–685 mm, 최소 GL 2.5–7 mm, CDAT 공기터널, 키네마틱 마운트. 챔버·수조 안 시편 측정, DIC 옵션, AverEdge32(r-value).",
+  "test_items": ["tensile", "compression", "flexure"],
+  "measurands": ["axial_strain", "transverse_strain", "r_value", "youngs_modulus", "poisson_ratio"],
+  "materials": ["plastics", "metals", "composites", "textiles", "films", "elastomers", "paper", "biomaterials"],
+  "standards": {"compliance": ["ISO 9513:2012 Class 0.5 / 1 / 2", "ASTM E83 Class B-1 / C"], "test_methods": ["ISO 527", "ASTM D638", "ASTM D3039", "ISO 6892", "ASTM E8", "ISO 10113", "ASTM E517", "ISO 178", "ISO 37", "ASTM D412", "ASTM D882"]},
+  "limits": {
+    "field_of_view_mm": {"min": 85, "max": 840},
+    "gauge_length_mm": {"min": 2.5},
+    "data_rate_Hz": {"max": 500},
+    "following_speed_mm_min": {"max": 2500},
+    "temperature_degC": {"note": "챔버 창 너머 측정 시 온도당 분해능·정확도 가산 항 존재 (0.5 µm/25 °C 등)"}
+  },
+  "models": [
+    {"model": "AVE 2 (35 mm lens)", "specs": {"fov_mm": [100, 130], "resolution_um": 0.5, "accuracy": "±1 µm or 0.5%", "min_gauge_length_mm": 5, "data_rate_Hz": 490, "class": "ISO 9513 0.5 / ASTM E83 B-1"}},
+    {"model": "AVE 2 (16 mm lens)", "specs": {"fov_mm": [240, 310], "resolution_um": 0.5, "min_gauge_length_mm": 6, "class": "ISO 9513 0.5 / B-1"}},
+    {"model": "AVE 2 (9 mm lens)", "specs": {"fov_mm": [425, 560], "resolution_um": 1.5, "accuracy": "±3 µm or 1%", "min_gauge_length_mm": 12, "class": "ISO 9513 1 / C"}},
+    {"model": "AVE 2 (6 mm lens)", "specs": {"fov_mm": [620, 840], "resolution_um": 3, "accuracy": "±9 µm or 1%", "min_gauge_length_mm": 15, "class": "ISO 9513 2 / C"}},
+    {"model": "AVE3 (35 mm lens)", "specs": {"fov_mm": [85, 112], "resolution_um": 0.25, "accuracy": "±1 µm or 0.5%", "min_gauge_length_mm": 2.5, "data_rate_Hz": 500, "class": "ISO 9513 0.5 (GL≥5) / B-1"}},
+    {"model": "AVE3 (16 mm lens)", "specs": {"fov_mm": [202, 261], "resolution_um": 0.5, "min_gauge_length_mm": 4, "class": "ISO 9513 0.5 (GL≥10) / B-1"}},
+    {"model": "AVE3 (9 mm lens)", "specs": {"fov_mm": [367, 477], "resolution_um": 1.5, "min_gauge_length_mm": 6, "class": "ISO 9513 1 / C"}},
+    {"model": "AVE3 (6 mm lens)", "specs": {"fov_mm": [522, 685], "resolution_um": 3, "min_gauge_length_mm": 7, "class": "ISO 9513 2 / C"}}
+  ],
+  "options": ["transverse measurement", "AverEdge32", "DIC Replay software", "dynamic strain control (AVE 2: 500 mm/s, 20 Hz)"],
+  "relations": [
+    {"type": "fits_on", "target": "instron-6800-series"},
+    {"type": "fits_on", "target": "instron-3400-series"},
+    {"type": "fits_on", "target": "instron-5900-series"},
+    {"type": "fits_on", "target": "instron-3119-600-environmental-chambers"}
+  ],
+  "sources": [{"file": "instron/ave2-video-extensometer-datasheet.pdf", "pages": [2, 3]}, {"file": "instron/ave3-video-extensometer-datasheet.pdf", "pages": [2, 3, 4]}],
+  "confidence": "catalog"
+}

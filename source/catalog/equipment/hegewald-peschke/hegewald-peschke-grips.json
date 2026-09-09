@@ -1,0 +1,509 @@
+{
+  "id": "hegewald-peschke-grips",
+  "kind": "accessory",
+  "name": "Hegewald & Peschke Grips, Specimen Holders and Test Tools (screw wedge / wedge / hydraulic / high-temperature)",
+  "name_ko": "헤게발트 운트 페슈케 그립·시편 홀더·시험 공구 (나사식 웨지·웨지·유압·고온용)",
+  "manufacturer": "hegewald-peschke",
+  "category": "grip_fixture",
+  "form_factor": "benchtop",
+  "description": "만능재료시험기에 다는 클램핑 공구군. 나사식 웨지 그립(10~250 kN)은 T 핸들로 조를 열고 닫으면서 예압을 주고, 인장 하중이 커지면 웨지 효과로 물림력이 함께 커진다. 웨지 그립(14-096 계열, 20~250 kN)은 레버와 굽힘 스프링으로 예압을 주는 자기물림식이다. Body-over-Wedge 형(150·250 kN)은 그립 몸체가 움직여 조가 평행하게 닫히므로 물릴 때 압축력이 생기지 않는다. 유압 그립은 100·250·400·600·1200 kN 이 있고 최대 물림 압력 500 bar 로 정격을 넘는 물림력을 낸다(600 kN 그립이 1000 kN, 1200 kN 그립이 1740 kN). 고온용 그립은 재질로 상한이 갈린다 — NIMONIC 80A 가 50 kN·950 °C, NICROFER 6025 H 가 250 kN·1100 °C. 온도 챔버용 사양(-40~+200 °C)과 직물용 전단 프레임(5 kN)도 있다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "tear",
+    "shear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "compressive_strength",
+    "flexural_strength",
+    "peel_strength",
+    "tear_strength",
+    "shear_strength"
+  ],
+  "materials": [
+    "metals",
+    "plastics (thermoplastic, duroplast)",
+    "elastomers",
+    "textiles and technical fabrics",
+    "foils and paper",
+    "CFRP/GFRP",
+    "wires and sheets"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 5,
+      "max": 1200,
+      "note": "그립 정격. 유압 그립의 물림력은 정격보다 크다(500 bar 에서 400 kN 그립 615 kN, 600 kN 그립 1000 kN, 1200 kN 그립 1740 kN)"
+    },
+    "temperature_degC": {
+      "min": -40,
+      "max": 1100,
+      "note": "나사식 웨지 10 kN 이 -40~+200 °C. 유압 그립은 실온만. 고온용은 재질로 갈린다 — NIMONIC 80A 950 °C, NICROFER 6025 H 1100 °C"
+    },
+    "specimen_thickness_mm": {
+      "min": 0,
+      "max": 120,
+      "note": "평판 시편. 1200 kN 유압 그립 기준"
+    },
+    "specimen_diameter_mm": {
+      "min": 4,
+      "max": 60,
+      "note": "환봉 시편. 유압 그립은 8~60 mm, Body-over-Wedge 는 Ø4~32 mm"
+    },
+    "pressure_bar": {
+      "max": 500,
+      "note": "유압 그립 최대 물림 압력. 유압 유닛은 350·500·700 bar 사양이 있다"
+    }
+  },
+  "models": [
+    {
+      "model": "나사식 웨지 그립 10 kN (14-105-101)",
+      "specs": {
+        "capacity_kN": 10,
+        "load_direction": "인장",
+        "temperature_degC": {
+          "min": -40,
+          "max": 200
+        },
+        "flat_specimen_max_mm": 16,
+        "round_specimen_max_mm": 14,
+        "min_clamping_length_mm": 20,
+        "actuation": "T 핸들로 수동 개폐, 동시에 예압 인가. 조는 수동 동기화",
+        "asynchronous": "시편 간극 6 mm 까지 비동기 물림 가능(그 이상은 협의)"
+      }
+    },
+    {
+      "model": "나사식 웨지 그립 20 kN / 50 kN (14-103-920 / 14-103-050)",
+      "specs": {
+        "capacity_kN": [
+          20,
+          50
+        ],
+        "features": [
+          "재현 가능한 예압(옵션 토크 렌치 어태치먼트로 조절)",
+          "취성 재료도 안전 물림",
+          "낮은 최소 물림 길이",
+          "공구 없이 조 교체",
+          "평면 조에 시편 스토퍼",
+          "기계 프레임 내 낮은 전체 높이",
+          "커플링 미끄럼 방지 클램핑 링(동기/비동기)"
+        ],
+        "note_50kN": "취급 편의를 위해 눈금이 위가 아니라 앞면에 있다"
+      },
+      "note": "치수·온도 범위는 이 데이터시트에 수치로 적혀 있지 않다"
+    },
+    {
+      "model": "나사식 웨지 그립 100 kN / 250 kN (14-103-xxx)",
+      "specs": {
+        "capacity_kN": [
+          100,
+          250
+        ],
+        "features": [
+          "낮은 최소 물림 길이",
+          "공구 없이 조 교체",
+          "평면 조에 시편 스토퍼",
+          "낮은 전체 높이",
+          "커플링 미끄럼 방지 클램핑 링"
+        ],
+        "synchronized_version": "대칭 물림용 동기형 14-103-96x"
+      },
+      "note": "치수·온도 범위는 이 데이터시트에 수치로 적혀 있지 않다"
+    },
+    {
+      "model": "나사식 웨지 그립 Body-over-Wedge 150 kN / 250 kN (14-109-150 / 14-109-250)",
+      "specs": {
+        "capacity_kN": {
+          "14-109-150": 150,
+          "14-109-250": 250
+        },
+        "flat_specimen_mm": {
+          "14-109-150": "두께 0~21, 폭 40 까지",
+          "14-109-250": "두께 0~32, 폭 40 까지"
+        },
+        "round_specimen_mm": {
+          "14-109-150": "Ø4~24",
+          "14-109-250": "Ø4~32"
+        },
+        "dimensions_mm": {
+          "14-109-150": "330 x 360 x 95 (HxWxD)",
+          "14-109-250": "347 x 385 x 110"
+        },
+        "weight_kg_per_clamp": {
+          "14-109-150": 18,
+          "14-109-250": 27
+        },
+        "max_clamping_length_mm": 55,
+        "specimen_material": "금속·비금속, 플라스틱"
+      },
+      "note": "몸체가 움직여 조가 평행하게 닫히므로 물릴 때 압축력이 생기지 않는다"
+    },
+    {
+      "model": "웨지 그립 14-096 계열 (20 / 50 / 100 / 250 kN)",
+      "specs": {
+        "item_no": [
+          "14-096-020",
+          "14-096-050",
+          "14-096-051",
+          "14-096-100",
+          "14-096-250"
+        ],
+        "capacity_kN": [
+          20,
+          50,
+          100,
+          250
+        ],
+        "principle": "웨지 효과 자기물림 — 물림력이 인장력에 비례",
+        "clamping": "대칭 물림 설계. 굽힘 스프링으로 예압을 준 레버로 개폐",
+        "features": [
+          "하부 클램프 잠금으로 인장 시편 물림 간소화",
+          "중심 물림용 시편 깊이 조절",
+          "재료·시편 형상별 교체 조",
+          "커플링 슬라이드로 추가 공구·로드셀·특수 클램프 연결"
+        ]
+      },
+      "note": "품번이 5 개인데 정격은 4 종이다(14-096-050 과 -051 이 같은 50 kN 급으로 보인다). 표가 열이 흩어져 나와 기종별 치수는 옮기지 않았다"
+    },
+    {
+      "model": "유압 그립 100 kN / 250 kN (100.2x / 250.2x)",
+      "specs": {
+        "capacity_kN": [
+          100,
+          250
+        ],
+        "clamping_pressure_bar_max": 500,
+        "temperature": "실온",
+        "connection": "LK135-12xM12-IG / inspekt table 100~250, inspekt 100~250 계열",
+        "versions": {
+          "100.20 / 250.20": "수동 조절 대향 클램프를 쓰는 단면 폐쇄식",
+          "100.21 / 250.21": "대칭 물림식"
+        },
+        "specimen_shapes": [
+          "스트립",
+          "숄더",
+          "환봉"
+        ],
+        "delivery": "조 세트 없는 유압 그립 1 쌍",
+        "required": [
+          "시편 형상별 클램핑 조(100.xx / 250.xx)",
+          "유압 유닛 14-038-2x1",
+          "반자동 유압 유닛용 컴퓨터 제어 14-036-xxx",
+          "연결 어댑터"
+        ]
+      },
+      "note": "비대칭 시편(전단 시편, 약간 휜 시편)은 비대칭으로 닫히는 유압 클램프에서만 물린다"
+    },
+    {
+      "model": "유압 그립 400 kN (400.2x)",
+      "specs": {
+        "capacity_kN": 400,
+        "clamping_pressure_bar": 500,
+        "clamping_force_kN": 615,
+        "temperature": "실온",
+        "flat_specimen_mm": "두께 0~80, 폭 87 까지",
+        "round_specimen_mm": "8~60",
+        "min_clamping_length_mm": 85,
+        "versions": {
+          "400.21": "대칭 물림",
+          "400.20": "수동 조절 대향 베어링"
+        },
+        "system": "조 홀더 + 클램핑 조의 모듈식"
+      },
+      "note": "최소 물림 길이 85 mm 는 물림 면적 60 % 기준이다"
+    },
+    {
+      "model": "유압 그립 600 kN (600.2x)",
+      "specs": {
+        "capacity_kN": 600,
+        "clamping_pressure_bar_max": 500,
+        "clamping_force_kN": 1000,
+        "temperature": "실온",
+        "flat_specimen_mm": "두께 0~100, 폭 110 까지",
+        "round_specimen_mm": "8~60",
+        "min_clamping_length_mm": {
+          "600.20 / 600.21": 115,
+          "600.20/10 / 600.21/10": 100
+        },
+        "connection": "LK184-8xM16-IG / inspekt 600 계열",
+        "dimensions_mm": "높이 270, 폭 656, 깊이 300",
+        "finish": "니켈 도금"
+      }
+    },
+    {
+      "model": "유압 그립 1200 kN (1200.2x)",
+      "specs": {
+        "capacity_kN": 1200,
+        "clamping_pressure_bar": 500,
+        "clamping_force_kN": 1740,
+        "temperature": "실온",
+        "flat_specimen_mm": "두께 0~120, 폭 140 까지",
+        "round_specimen_mm": "8~60",
+        "min_clamping_length_mm": {
+          "1200.20 / 1200.21": 155,
+          "1200.20/10 / 1200.21/10": 129
+        },
+        "versions": {
+          "1200.21": "대칭 물림",
+          "1200.20": "수동 조절 대향 베어링"
+        }
+      }
+    },
+    {
+      "model": "고온 시험용 시편 그립",
+      "specs": {
+        "NIMONIC_80A": {
+          "force_kN_max": 50,
+          "temperature_degC_max": 950
+        },
+        "NICROFER_6025_H": {
+          "force_kN_max": 250,
+          "temperature_degC_max": 1100
+        },
+        "specimen_types": [
+          "나사 시편",
+          "숄더부 관통홀 평판 시편",
+          "형상 맞춤 시편"
+        ],
+        "note": "재질 선택은 해당 온도 구간에서 시편과 로드 재질의 물성·화학 조성 관계를 보고 정한다"
+      },
+      "note": "상온 시험과 고온 시험 사이를 쉽게 바꿀 수 있게 만들어져 있다"
+    },
+    {
+      "model": "직물 반제품용 전단 프레임 5 kN (14-101-016)",
+      "specs": {
+        "capacity_kN": 5,
+        "shear_frame_dimensions_mm": "315 x 87 x 410",
+        "clamping_jaw_surface_mm": "148 x 15 (WxH)",
+        "specimen_dimensions_mm": "238 x 238 (WxH)",
+        "stroke_mm": 100,
+        "delivery": "시편 조립용 장착 보조구 1"
+      },
+      "note": "정사각 시편을 전단 프레임에 물려 전 스트로크의 힘 곡선을 얻고, 전단력으로 한계각을 정한다"
+    },
+    {
+      "model": "유압 유닛 (14-038-2xx)",
+      "specs": {
+        "pressure_bar": [
+          350,
+          500,
+          700
+        ],
+        "pre_pressure_bar": {
+          "min": 35,
+          "max": 65
+        },
+        "matched_grip_capacity_kN": [
+          20,
+          50,
+          100,
+          250,
+          400,
+          600,
+          1200,
+          2500
+        ]
+      },
+      "note": "그립 정격과 압력 사양의 대응은 표가 열이 흩어져 나와 확정하지 못했다. 원본을 렌더링해 확인해야 한다",
+      "uncertain": true
+    }
+  ],
+  "accuracy": {},
+  "features": [
+    "웨지 효과로 인장 하중에 따라 물림력이 커진다",
+    "물릴 때 조가 수평으로 닫혀 시편 압착 손상을 막는다(나사식 웨지)",
+    "Body-over-Wedge 는 물릴 때 압축력이 생기지 않는다",
+    "미끄럼면 고내압 폴리머 코팅 — 스틱슬립 최소화",
+    "공구 없이 조 인서트 교체, 평면 조에 시편 스토퍼",
+    "온도 챔버 사양과 고온로용 사양이 따로 있다",
+    "커플링 슬라이드로 추가 공구·로드셀 연결"
+  ],
+  "options": [
+    "개폐 전동 구동",
+    "온도 챔버용 사양",
+    "직물용 핸들링 장치",
+    "특수 시편 치수용 조 홀더",
+    "예압 조절용 토크 렌치 어태치먼트",
+    "대칭 물림용 동기형(14-103-96x)",
+    "시편 홀더 연장 없이 압축판·소형 로드셀·시험 장치를 다는 마운팅 플레이트"
+  ],
+  "relations": [
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt"
+    },
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt-table"
+    },
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt-blue"
+    },
+    {
+      "type": "fits_on",
+      "target": "hegewald-peschke-inspekt-solo"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-high-temperature-furnaces",
+      "note": "고온용 그립은 고온로 안에서 쓴다"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "hegewald-peschke-temperature-chambers"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/grips-specimen-holders.pdf",
+      "pages": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "note": "종류 선택 개요(Wissenswertes)"
+    },
+    {
+      "file": "hegewald-peschke/14-105-101-screw-type-wedge-action-grip-10kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-103-920-14-103-050-screw-type-wedge-action-grips-20kn-50kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-103-xxx-screw-type-wedge-action-grips-100kn-250kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-109-x50-screw-type-wedge-action-grips-body-over-wedge.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-096-xxx-wedge-type-grips.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/100-2x-250-2x-hydraulic-grips-100kn-250kn.pdf",
+      "pages": [
+        2,
+        3
+      ]
+    },
+    {
+      "file": "hegewald-peschke/400-2x-hydraulic-grips-400-kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/600-2x-hydraulic-grips-600-kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/1200-2x-hydraulic-grips-1200-kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/specimen-grips-for-high-temperature-tests.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-101-016-shear-frame-testing-system-for-textile-semi-finished-products-5kn.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-038-2xx-summary-hydraulic-aggregates.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/14-103-5xx-clamping-jaws-for-100-250kn.pdf",
+      "pages": [
+        1
+      ],
+      "note": "100·250 kN 용 클램핑 조"
+    },
+    {
+      "file": "hegewald-peschke/14-120-0xx-specimen-holders-600-kn-01.pdf",
+      "pages": [
+        1
+      ],
+      "note": "600 kN 시편 홀더"
+    },
+    {
+      "file": "hegewald-peschke/14-121-0xx-specimen-holder-1200-kn-01.pdf",
+      "pages": [
+        1
+      ],
+      "note": "1200 kN 시편 홀더"
+    },
+    {
+      "file": "hegewald-peschke/specimen-holders.pdf",
+      "pages": [
+        1
+      ],
+      "note": "시편 홀더 개요"
+    },
+    {
+      "file": "hegewald-peschke/14-12x-0x0-hydraulic-grips-100kn-250kn.pdf",
+      "pages": [
+        1
+      ],
+      "note": "유압 그립 100/250 kN 조 홀더 구성"
+    },
+    {
+      "file": "hegewald-peschke/bending-devices-and-folding-devices.pdf",
+      "pages": [
+        1
+      ],
+      "note": "굽힘·접힘 지그"
+    },
+    {
+      "file": "hegewald-peschke/t-groove-plates.pdf",
+      "pages": [
+        1
+      ],
+      "note": "T 홈 플레이트"
+    },
+    {
+      "file": "hegewald-peschke/pneumatic-control-units.pdf",
+      "pages": [
+        1
+      ],
+      "note": "공압 제어 유닛"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "5차에는 선택 안내용 교육 자료(Wissenswertes)만 있어 `confidence: limited` 였는데, 6차에 기종별 데이터시트 12 건을 확보해 `catalog` 로 올렸다. 남은 불확실: (1) 나사식 웨지 20/50 kN·100/250 kN 데이터시트에 시편 치수와 온도 범위가 수치로 없다. (2) 웨지 그립 14-096 계열과 유압 유닛 14-038-2xx 의 표는 열이 흩어져 나와 정격-사양 대응을 확정하지 못해 유압 유닛 항목에 `uncertain: true` 를 달았다 — 원본을 렌더링해 확인해야 한다. 유압 그립의 '물림력'이 정격보다 큰 것은 오기가 아니라 500 bar 물림 압력에서 발생하는 힘이다(그립 정격과 다른 값). 조·시편 홀더·굽힘 지그·T 홈 플레이트·공압 제어 유닛의 개별 문서도 출처에 넣었으나, 그 안의 치수표는 아직 값으로 옮기지 않았다 — 조 형상이 수십 종이라 이 객체의 층위(그립 종류별 정격·시편 치수)를 넘는다."
+}

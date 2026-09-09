@@ -1,0 +1,37 @@
+{
+  "id": "qmesys-qm100",
+  "kind": "equipment_series",
+  "name": "QMESYS QM100 Series Universal Testing Machines (QM100SS / S / SE / TS / TM / T)",
+  "name_ko": "큐머시스 QM100 시리즈 만능재료시험기",
+  "manufacturer": "limotem",
+  "brand": "QMESYS",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "국내 제조사 큐머시스(의왕)의 UTM 라인. 단일컬럼 QM100SS(5–10 kgf, 미세하중), QM100S(5–200 kgf), QM100SE(20–200 kgf, 점착력), 듀얼컬럼 QM100TS(100–500 kgf 압축), QM100TM(100–1000 kgf), QM100T(1–30 tf). 속도 0.1–600 mm/min, LCD 그래픽 표시, RS232C 출력.",
+  "test_items": ["tensile", "compression", "flexure", "peel", "tear", "friction_coefficient", "shear"],
+  "measurands": ["tensile_strength", "elongation", "compressive_strength", "peel_strength", "seal_strength", "tear_strength"],
+  "materials": ["plastics", "composites", "carbon", "aluminum", "steel", "rubber", "film", "adhesive", "tape", "textile", "paper", "food", "medical", "battery", "hydrogel"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "force_kN": {"min": 0.049, "max": 294, "note": "5 kgf(0.049 kN) ~ 30 tf(294 kN); kgf 표기를 kN 으로 환산"},
+    "crosshead_speed_mm_min": {"min": 0.1, "max": 600},
+    "crosshead_travel_mm": {"min": 450, "max": 1100, "note": "그립 없이"},
+    "horizontal_test_space_mm": {"min": 350, "max": 660},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "QM100SS", "form_factor": "single_column_tabletop", "specs": {"force_kgf": [5, 10], "crosshead_travel_mm": 450, "operating_travel_mm": 350, "load_resolution": "<0.002%", "raw_data_rate": "150–240 p/s", "footprint_mm": {"W": 450, "D": 350, "H": 870}}},
+    {"model": "QM100S", "form_factor": "single_column_tabletop", "specs": {"force_kgf": [5, 10, 20, 50, 100, 200], "crosshead_travel_mm": 850, "operating_travel_mm": 650, "load_resolution": "<0.01%", "footprint_mm": {"W": 490, "D": 500, "H": 1290}}},
+    {"model": "QM100SE", "form_factor": "single_column_tabletop", "specs": {"force_kgf": [20, 50, 100, 200], "crosshead_travel_mm": 850, "operating_travel_mm": 650, "load_resolution": "<0.02%", "footprint_mm": {"W": 490, "D": 500, "H": 1290}}},
+    {"model": "QM100TS", "form_factor": "dual_column_tabletop", "specs": {"force_kgf": [100, 200, 500], "crosshead_travel_mm": 600, "operating_travel_mm": 520, "horizontal_test_space_mm": 350, "load_resolution": "<0.05%", "footprint_mm": {"W": 580, "D": 480, "H": 1080}}},
+    {"model": "QM100TM", "form_factor": "dual_column_tabletop", "specs": {"force_kgf": [100, 200, 500, 1000], "crosshead_travel_mm": 950, "operating_travel_mm": 750, "horizontal_test_space_mm": 450, "load_resolution": "<0.02%", "footprint_mm": {"W": 750, "D": 450, "H": 1550}}},
+    {"model": "QM100T", "form_factor": "floor", "specs": {"force_tf": [1, 2, 5, 10, 20, 30], "force_kN": {"min": 9.8, "max": 294}, "crosshead_travel_mm": 1100, "operating_travel_mm": 650, "horizontal_test_space_mm": 460, "load_resolution": "<0.02%", "footprint_mm": {"W": 800, "D": 600, "H": 1880}, "footprint_mm_over_10t": {"W": 980, "D": 750, "H": 2060}}}
+  ],
+  "accuracy": {"load_resolution": "<0.002% (SS) … <0.05% (TS)"},
+  "features": ["emergency switch, stroke & load limits", "auto/return set memory", "RS232C output", "touch screen (S/T)"],
+  "options": ["pneumatic auto grips G_ACL/ACS/ASL/ASM/ASS (0.02–1 kN)", "wedge grips G_W2H–W20H (20–200 kN)", "shear grips", "extensometer", "strain gauge", "environmental chamber", "safety box"],
+  "relations": [],
+  "sources": [{"file": "limotem/materials-test-system-catalog.pdf", "pages": [4, 5, 7]}],
+  "confidence": "catalog"
+}

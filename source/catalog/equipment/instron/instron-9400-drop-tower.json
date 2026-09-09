@@ -1,0 +1,268 @@
+{
+  "id": "instron-9400-drop-tower",
+  "kind": "equipment_series",
+  "name": "Instron 9400 Series (9440 / 9450) and CEAST 9300 Series (9310 / 9340 / 9350) Drop Tower Impact Systems",
+  "name_ko": "인스트론 9400 시리즈 (구 CEAST 9300) 낙추 충격시험기",
+  "manufacturer": "instron",
+  "brand": "CEAST / Dynatup",
+  "category": "drop_tower_impact",
+  "drive": "drop_weight",
+  "form_factor": "floor",
+  "description": "9310(0.15–20.4 J, 벤치), 9340/9440(0.3–405 J), 9350/9450(0.59–757 J; 고에너지 옵션 1800 J, 24 m/s). 계장화 스트라이커(힘 트랜스듀서 0.45–222 kN), 온도 챔버 옵션. 천공·인장충격·아이조드·샤르피·복합재 CAI 전처리 충격.",
+  "test_items": [
+    "drop_weight_impact",
+    "puncture",
+    "tensile_impact"
+  ],
+  "measurands": [
+    "impact_energy",
+    "puncture_energy",
+    "force_deflection",
+    "peak_force"
+  ],
+  "materials": [
+    "plastics",
+    "composites",
+    "films",
+    "finished products",
+    "automotive parts",
+    "metals (DWTT)"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM D3763",
+      "ISO 6603-2",
+      "ISO 7765-2",
+      "ASTM D7136",
+      "ASTM D5628",
+      "ISO 8256",
+      "ASTM E436"
+    ]
+  },
+  "limits": {
+    "impact_energy_J": {
+      "min": 0.15,
+      "max": 1800
+    },
+    "impact_velocity_m_s": {
+      "min": 0.77,
+      "max": 24
+    },
+    "drop_height_m": {
+      "min": 0.03,
+      "max": 29.4,
+      "note": "고에너지 시스템은 스프링 가속 등가 높이"
+    },
+    "drop_mass_kg": {
+      "min": 0.5,
+      "max": 70
+    },
+    "force_kN": {
+      "min": 0.45,
+      "max": 222,
+      "note": "instrumented striker transducers"
+    },
+    "temperature_degC": {
+      "note": "thermostatic chamber option (range not stated in these brochures)"
+    },
+    "chamber": {
+      "values": [
+        "optional"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "CEAST 9310",
+      "form_factor": "benchtop",
+      "specs": {
+        "impact_energy_J": {
+          "min": 0.15,
+          "max": 20.4
+        },
+        "impact_velocity_m_s": {
+          "min": 0.77,
+          "max": 3.71
+        },
+        "drop_height_m": {
+          "min": 0.03,
+          "max": 0.7
+        },
+        "drop_mass_kg": {
+          "min": 0.5,
+          "max": 3
+        },
+        "test_area_mm": [
+          250,
+          150,
+          145
+        ],
+        "footprint_mm": {
+          "W": 425,
+          "D": 340,
+          "H": 1315
+        },
+        "weight_kg": 38
+      }
+    },
+    {
+      "model": "CEAST 9340 / Instron 9440",
+      "form_factor": "floor",
+      "specs": {
+        "impact_energy_J": {
+          "min": 0.3,
+          "max": 405
+        },
+        "impact_velocity_m_s": {
+          "min": 0.77,
+          "max": 4.65
+        },
+        "drop_height_m": {
+          "min": 0.03,
+          "max": 1.1
+        },
+        "drop_mass_kg": {
+          "min": 1,
+          "max": 37.5
+        },
+        "force_kN": {
+          "min": 0.45,
+          "max": 90
+        },
+        "test_area_mm": [
+          490,
+          450,
+          565
+        ],
+        "test_area_with_chamber_mm": [
+          370,
+          300,
+          495
+        ],
+        "footprint_mm": {
+          "W": 985,
+          "D": 610,
+          "H": 2620
+        },
+        "weight_kg": 340
+      }
+    },
+    {
+      "model": "CEAST 9350 / Instron 9450",
+      "form_factor": "floor",
+      "specs": {
+        "impact_energy_J": {
+          "min": 0.59,
+          "max": 757
+        },
+        "impact_velocity_m_s": {
+          "min": 0.77,
+          "max": 4.65
+        },
+        "drop_height_m": {
+          "min": 0.03,
+          "max": 1.1
+        },
+        "drop_mass_kg": {
+          "min": 2,
+          "max": 70
+        },
+        "force_kN": {
+          "min": 0.45,
+          "max": 222
+        },
+        "test_area_mm": [
+          700,
+          720,
+          570
+        ],
+        "test_area_with_chamber_mm": [
+          550,
+          540,
+          500
+        ],
+        "footprint_mm": {
+          "W": 1015,
+          "D": 866,
+          "H": 2720
+        },
+        "weight_kg": 550
+      }
+    },
+    {
+      "model": "Instron 9450 High-Energy System",
+      "form_factor": "floor",
+      "specs": {
+        "impact_energy_J": {
+          "min": 0.59,
+          "max": 1800
+        },
+        "impact_velocity_m_s": {
+          "min": 0.77,
+          "max": 24
+        },
+        "drop_height_m": {
+          "min": 0.03,
+          "max": 29.4
+        },
+        "drop_mass_kg": {
+          "min": 2,
+          "max": 70
+        },
+        "footprint_mm": {
+          "W": 1015,
+          "D": 866,
+          "H": 3180
+        },
+        "weight_kg": 775
+      }
+    }
+  ],
+  "environment": {
+    "power": "220–240 / 100–120 V 50/60 Hz",
+    "compressed_air_bar": "6–10",
+    "floor_load_kg_m2": "1000–2020 static"
+  },
+  "options": [
+    "thermostatic chamber",
+    "automatic specimen feeder",
+    "instrumented tups",
+    "anti-rebound system"
+  ],
+  "relations": [
+    {
+      "type": "requires",
+      "target": "utility-compressed-air"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "utility-impact-tup-set",
+      "note": "CEAST 임팩트 액세서리(타업·클램프·지그) 카탈로그 참조"
+    }
+  ],
+  "sources": [
+    {
+      "file": "instron/9400-series-drop-tower.pdf",
+      "pages": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "file": "instron/ceast-9300-droptower-series.pdf",
+      "pages": [
+        6,
+        7,
+        15
+      ]
+    },
+    {
+      "file": "instron/ceast-impact-accessories.pdf",
+      "note": "타업·시편 클램프·지그 등 충격시험 액세서리"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "9440/9450 은 구 CEAST 9340/9350 의 리브랜드이며 본 객체가 9300 시리즈를 함께 다룬다."
+}

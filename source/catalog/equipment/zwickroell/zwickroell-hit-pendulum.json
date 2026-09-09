@@ -1,0 +1,30 @@
+{
+  "id": "zwickroell-hit-pendulum",
+  "kind": "equipment_series",
+  "name": "HIT Pendulum Impact Testers 5 – 50 J (HIT5P / HIT5.5P / HIT25P / HIT50P)",
+  "name_ko": "즈윅로엘 HIT 펜듈럼 충격시험기 (5–50 J)",
+  "manufacturer": "zwickroell",
+  "category": "pendulum_impact",
+  "drive": "pendulum",
+  "form_factor": "benchtop",
+  "description": "플라스틱용 5–50 J 펜듈럼. 자동 펜듈럼 인식, 공구 없는 교체, 이중 카본 로드 저진동 설계. ISO 179 펜듈럼 0.5/1/2/4/5 J(2.9 m/s), 7.5/15/25/50 J(3.8 m/s); ASTM D6110 0.5–21.6 J(3.46 m/s); 계장화 펜듈럼. 아이조드·샤르피·인장충격(ISO 8256 A/B, ASTM D1822, 요크 15–120 g) 지그. testXpert III, 매거진·로봇 자동화.",
+  "test_items": ["charpy_impact", "izod_impact", "tensile_impact"],
+  "measurands": ["impact_energy", "impact_strength", "force_deflection (instrumented)"],
+  "materials": ["plastics", "composites", "metals (small)"],
+  "standards": {"compliance": [], "test_methods": ["ISO 179-1", "ISO 179-2", "ISO 180", "ASTM D256", "ASTM D4812", "ASTM D6110", "ISO 8256", "ASTM D1822"]},
+  "limits": {
+    "impact_energy_J": {"min": 0.5, "max": 50, "values": [0.5, 1, 2, 2.7, 2.75, 4, 5, 5.4, 5.5, 7.5, 10.8, 15, 21.6, 25, 50]},
+    "impact_velocity_m_s": {"values": [2.9, 3.46, 3.8]}
+  },
+  "models": [
+    {"model": "HIT5P", "specs": {"impact_energy_J": {"max": 5}}},
+    {"model": "HIT5.5P", "specs": {"impact_energy_J": {"max": 5.5}, "izod_pendulums_J": [1, 2.75, 5.5], "impact_velocity_m_s": 3.46}},
+    {"model": "HIT25P", "specs": {"impact_energy_J": {"max": 25}}},
+    {"model": "HIT50P", "specs": {"impact_energy_J": {"max": 50}, "charpy_pendulums_J": [0.5, 1, 2, 4, 5, 7.5, 15, 25, 50], "tensile_impact_pendulums_J": [2, 4, 7.5, 15, 25, 50]}}
+  ],
+  "options": ["instrumented pendulums (piezo)", "instrumented tensile-impact supports 2.5/10 kN", "Izod fixture manual / pneumatic", "specimen magazine", "industrial robot automation", "notch alignment unit"],
+  "relations": [],
+  "sources": [{"file": "zwickroell/hit-pendulum-5-50j-brochure-en.pdf", "pages": [21, 23, 26]}],
+  "confidence": "catalog",
+  "notes": "장비 본체 치수·무게 표는 덤프에 안 잡힘 — 원본 p27–28 확인."
+}

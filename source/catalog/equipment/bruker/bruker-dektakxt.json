@@ -1,0 +1,34 @@
+{
+  "id": "bruker-dektakxt",
+  "kind": "equipment_model",
+  "name": "Bruker DektakXT Stylus Profilometer",
+  "name_ko": "브루커 DektakXT 접촉식 표면형상 측정기",
+  "manufacturer": "bruker",
+  "brand": "Dektak",
+  "category": "optical_profilometer",
+  "form_factor": "benchtop",
+  "description": "다이아몬드 촉침(stylus)을 시료 표면에 접촉시켜 이동시키면서 높이 변화를 기록하는 표면 계측 장비. 2 µm 반경·원추각 60° 촉침을 사용하며 스캔 길이 최대 55 mm, 수직 측정 범위 최대 1 mm, 촉침 하중 0.03~15 mg, 시료 두께 최대 50 mm. 박막 단차(step height)와 거칠기 측정의 표준 도구.",
+  "test_items": ["surface_topography", "coating_thickness"],
+  "measurands": ["surface_roughness", "step_height", "film_thickness", "waviness", "stress_bow"],
+  "materials": ["thin films", "semiconductor wafers", "photoresist", "coatings", "MEMS", "displays"],
+  "standards": {"compliance": [], "test_methods": ["ISO 4287", "ISO 25178", "ASME B46.1"]},
+  "limits": {
+    "scan_length_mm": {"max": 55},
+    "vertical_range_mm": {"max": 1},
+    "stylus_force_mg": {"min": 0.03, "max": 15},
+    "sample_thickness_mm": {"max": 50},
+    "stylus_radius_um": {"values": [2], "note": "원추각 60°"}
+  },
+  "models": [
+    {"model": "DektakXT", "specs": {"scan_length_mm": 55, "vertical_range_mm": 1, "stylus_force_mg": {"min": 0.03, "max": 15}, "max_sample_thickness_mm": 50, "stylus": "2 µm 반경, 원추각 60°"}}
+  ],
+  "features": ["접촉식 촉침 주사", "가변 촉침 하중(0.03~15 mg)", "2D 프로파일 및 3D 맵 생성", "박막 단차 측정"],
+  "options": ["다양한 촉침 반경", "3D 맵핑 소프트웨어", "응력(stress) 측정 옵션"],
+  "relations": [
+    {"type": "performs", "target": "surface_topography"},
+    {"type": "same_family_as", "target": "bruker-contourx-200"}
+  ],
+  "sources": [{"file": "bruker/dektakxt-stylus-profilometer.pdf", "pages": [1]}],
+  "confidence": "limited",
+  "notes": "확보한 문서가 사용기관 요약본이라 수직 분해능·반복성 등 제조사 공식 사양이 없다. Bruker 공식 데이터시트 확보 필요."
+}

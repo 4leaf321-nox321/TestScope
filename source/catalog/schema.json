@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "testatlas/source/catalog/equipment",
+  "title": "Equipment catalog object",
+  "description": "제조사 카탈로그에서 뽑은 장비 시리즈/모델 하나. 관계(relations)로 다른 객체·온톨로지 노드를 가리킨다.",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "name",
+    "manufacturer",
+    "category",
+    "test_items",
+    "sources"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "전역 유일 슬러그. <manufacturer>-<series>"
+    },
+    "kind": {
+      "enum": [
+        "equipment_series",
+        "equipment_model",
+        "accessory",
+        "sensor",
+        "software"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "name_ko": {
+      "type": "string"
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "ontology/manufacturers.json 의 id"
+    },
+    "brand": {
+      "type": "string",
+      "description": "제조사 안의 브랜드(예: Instron 의 CEAST, Buehler 의 Wilson)"
+    },
+    "category": {
+      "type": "string",
+      "description": "ontology/categories.json 의 id"
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "drive": {
+      "type": "string",
+      "description": "electromechanical | servohydraulic | electrodynamic | resonance | pendulum | drop_weight | hydraulic | pneumatic | thermal | manual …"
+    },
+    "form_factor": {
+      "type": "string",
+      "description": "single_column_tabletop | dual_column_tabletop | floor | benchtop | portable | handheld | multistation"
+    },
+    "description": {
+      "type": "string"
+    },
+    "test_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "ontology/test_items.json 의 id. 이 장비로 하는 시험 항목"
+    },
+    "measurands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "얻는 물성값 (tensile_strength, modulus, hardness_HRC, glass_transition …)"
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "카탈로그가 말하는 대상 재료"
+    },
+    "standards": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "compliance": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "장비 자체가 만족하는 규격(정확도 등급 등). ISO 7500-1 Class 0.5"
+        },
+        "test_methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "수행 가능하다고 적힌 시험법. ASTM E8, ISO 527 …"
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "description": "시리즈 전체가 커버하는 조건 범위. 키는 ontology/condition_keys.json. 값은 {min,max,values[],note,uncertain}",
+      "additionalProperties": {
+        "$ref": "#/$defs/range"
+      }
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "model"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string"
+          },
+          "form_factor": {
+            "type": "string"
+          },
+          "specs": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "모델별 사양. 키는 condition_keys 또는 spec_keys"
+          },
+          "note": {
+            "type": "string"
+          },
+          "uncertain": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "accuracy": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "힘·변위·속도·온도 정확도 문장 그대로"
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "설치 환경 요구(운전 온도·습도·전원)"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "카탈로그에 적힌 옵션·부속(자유 문자열)"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "target"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "ontology/relations.json 의 id"
+          },
+          "target": {
+            "type": "string",
+            "description": "다른 객체 id, 또는 온톨로지 노드 id"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "pdf/ 아래 상대경로. 원본 PDF 가 존재하지 않는 출처(웹 전용)면 생략하고 url 을 쓴다"
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "url": {
+            "type": "string",
+            "description": "원본 주소. file 이 없을 때 필수 — 제조사가 PDF 를 내지 않고 웹페이지로만 사양을 공개하는 경우"
+          },
+          "note": {
+            "type": "string"
+          },
+          "retrieved": {
+            "type": "string",
+            "description": "웹 전용 출처를 조회한 날짜(YYYY-MM-DD)"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "file"
+            ]
+          },
+          {
+            "required": [
+              "url"
+            ]
+          }
+        ]
+      }
+    },
+    "confidence": {
+      "enum": [
+        "catalog",
+        "verified",
+        "limited"
+      ],
+      "default": "catalog"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "web_references": {
+      "type": "array",
+      "description": "PDF 로 확보하지 못하고 웹에서만 확인한 값의 출처",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "description": "이산 값 목록(하중 셀 용량 등)"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "uncertain": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "buehler-wilson-uh4000",
+  "kind": "equipment_series",
+  "name": "Wilson UH4000 Series Universal Hardness Tester (UH4250 / UH4750)",
+  "name_ko": "뷸러 윌슨 UH4000 시리즈 만능 경도계",
+  "manufacturer": "buehler",
+  "brand": "Wilson",
+  "category": "universal_hardness",
+  "form_factor": "benchtop",
+  "description": "폐루프 하중 0.5–250 kgf(UH4250) / 3–750 kgf(UH4750). 8 위치 터렛(압입자·대물·레이저), 5 MP USB3 카메라, DiaMet 소프트웨어. 브리넬·비커스·로크웰·누프·플라스틱 볼 압입.",
+  "test_items": ["hardness_brinell", "hardness_vickers", "hardness_rockwell", "hardness_knoop"],
+  "measurands": ["hardness_HB", "hardness_HV", "hardness_HR", "hardness_HK"],
+  "materials": ["metals", "castings", "forgings", "plastics"],
+  "standards": {"compliance": [], "test_methods": ["ISO 6506-1", "ASTM E10", "ISO 6507-1", "ASTM E92", "ISO 6508-1", "ASTM E18", "ISO 4545-1", "ASTM E384", "ISO 2039-1", "ISO 2039-2"]},
+  "limits": {
+    "test_load_kgf": {"min": 0.5, "max": 750, "values": [0.5, 1, 2, 3, 5, 6.25, 15.625, 20, 25, 30, 45, 50, 60, 62.5, 100, 125, 150, 187.5, 250, 500, 750]},
+    "hardness_scales": {"values": ["HV 0.5 – HV 100", "HBW 1/1 – HBW 10/3000 (UH4750: HBW 10/750 max)", "HRA–HRV", "HR15/30/45 N/T", "HK", "ball indentation (plastics)"]},
+    "specimen_height_mm": {"max": 300},
+    "specimen_weight_kg": {"max": 70}
+  },
+  "models": [
+    {"model": "UH4250", "specs": {"test_load_kgf": {"min": 0.5, "max": 250}, "scales": "HV 0.5 – HB 10/250", "specimen_height_mm": 300, "footprint_mm": {"L": 704, "W": 534, "H": 995}, "weight_kg": 300}},
+    {"model": "UH4750", "specs": {"test_load_kgf": {"min": 3, "max": 750}, "scales": "HV 3 – HBW 10/750", "specimen_height_mm": 300, "weight_kg": 300}},
+    {"model": "UH4250 Auto (XY)", "specs": {"test_load_kgf": {"min": 0.5, "max": 250}, "motorized_stage_mm": [180, 180]}}
+  ],
+  "accuracy": {"load": "closed loop"},
+  "environment": {"power": "100–240 VAC 50–60 Hz"},
+  "options": ["objectives 0.5x/2.5x/5x/10x/20x/40x/50x", "Brinell balls 1/2.5/5/10 mm", "Rockwell diamond & ball indenters", "ring light", "auto clamping device (35 mm)", "anvils flat 80/190 mm, V 45/85 mm, Planoflex"],
+  "relations": [{"type": "same_family_as", "target": "buehler-wilson-vh3300"}],
+  "sources": [{"file": "buehler/wilson-uh4000-brochure.pdf", "pages": [3, 12, 13]}, {"file": "buehler/wilson-uh4000-sales-sheet.pdf"}],
+  "confidence": "catalog"
+}

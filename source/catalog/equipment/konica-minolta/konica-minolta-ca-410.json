@@ -1,0 +1,36 @@
+{
+  "id": "konica-minolta-ca-410",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CA-410 Display Color Analyzer",
+  "name_ko": "코니카미놀타 CA-410 디스플레이 컬러 아날라이저",
+  "manufacturer": "konica-minolta",
+  "brand": "CA",
+  "category": "display_color_analyzer",
+  "form_factor": "probe",
+  "description": "디스플레이 생산·조정 라인용 고속 고정밀 컬러 아날라이저. XYZ 필터의 분광 감도를 CIE 1931 등색함수에 근접시켜 분광복사휘도계에 준하는 정확도를 낸다. 전동 제로 교정 셔터를 내장해 자동화 시스템에 통합하기 쉽고, 드라이버 설치 없이 연결된다. 통신 명령이 이전 모델 CA-210/310 과 호환되며 CA-SDK2 로 모든 프로브를 동일하게 제어한다. 용도별 프로브(초소형 스폿, 장작동거리)를 교체해 마이크로 OLED 감마 조정부터 차량용 곡면 디스플레이 다각도 측정까지 대응한다.",
+  "test_items": ["photometry_colorimetry"],
+  "measurands": ["luminance", "chromaticity", "correlated_color_temperature", "gamma", "flicker", "white_balance"],
+  "materials": ["LCD", "OLED", "micro OLED", "micro LED", "automotive displays", "curved displays", "TV panels"],
+  "standards": {"compliance": [], "test_methods": ["VESA FPDM", "IEC 62341", "CIE 15"]},
+  "limits": {
+    "luminance_cd_m2": {"min": 0.002, "max": 12000, "note": "프로브별. 휘도 측정 기준. 색도 측정 하한은 휘도 하한의 10배"},
+    "acceptance_angle_deg": {"min": 4, "max": 10, "note": "프로브별 ±4° ~ ±10°"},
+    "measurement_distance_mm": {"min": 28, "max": 200, "note": "프로브별 확도 보증 거리"}
+  },
+  "probes": [
+    {"model": "CA-VP410T (Ø10 mm 장작동거리 프로브)", "specs": {"measuring_area_mm": 10, "acceptance_angle_deg": 4, "guaranteed_distance_mm": {"value": 200, "tolerance": 2}, "luminance_cd_m2": {"min": 0.004, "max": 12000}, "chromaticity_cd_m2": {"min": 0.04, "max": 12000}}, "note": "차량용 디스플레이 다각도 측정, 곡면 디스플레이, 시료와 거리를 둬야 하는 용도"},
+    {"model": "CA-VP402 (Ø2 mm 소형 스폿 프로브)", "specs": {"measuring_area_mm": 2, "acceptance_angle_deg": 10, "guaranteed_distance_mm": {"value": 28, "tolerance": 2}, "luminance_cd_m2": {"min": 0.002, "max": 6000}, "chromaticity_cd_m2": {"min": 0.02, "max": 6000}}, "note": "마이크로 OLED 감마 조정 등 초저휘도. 제로 교정·저휘도 적분 시간이 표준 프로브보다 길다"},
+    {"model": "CA-VP404 (Ø4 mm 소형 스폿 프로브)", "specs": {"measuring_area_mm": 4, "acceptance_angle_deg": 8.5, "guaranteed_distance_mm": {"value": 30, "tolerance": 2}, "luminance_cd_m2": {"min": 0.004, "max": 12000}, "chromaticity_cd_m2": {"min": 0.04, "max": 12000}}, "note": "소형 영역 고속·고정밀 측정"}
+  ],
+  "features": ["CIE 1931 등색함수 근접 XYZ 필터", "전동 제로 교정 셔터", "드라이버 없이 연결", "CA-210/310 통신 명령 호환", "CA-SDK2 (COM 등록 도구 포함)", "고속 측정으로 택트 타임 단축", "프로브 교체 방식"],
+  "relations": [
+    {"type": "performs", "target": "photometry_colorimetry"},
+    {"type": "same_family_as", "target": "konica-minolta-cs-2000"},
+    {"type": "successor_of", "target": "placeholder-konica-minolta-ca-310"}
+  ],
+  "sources": [
+    {"file": "konica-minolta/ca-410-display-color-analyzer-catalog.pdf", "pages": [1, 2, 3]},
+    {"file": "konica-minolta/ca-410-probes-catalog.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "catalog"
+}

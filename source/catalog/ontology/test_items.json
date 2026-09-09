@@ -1,0 +1,1250 @@
+{
+ "_comment": "시험 항목(무엇을 재는가). TestAtlas 축 test_item(closed)의 값 후보. measurands 는 얻는 물성, typical_standards 는 대표 규격.",
+ "test_items": [
+  {
+   "id": "abrasion",
+   "label_ko": "마모",
+   "label": "Abrasion / wear",
+   "measurands": [
+    "wear_index",
+    "volume_loss",
+    "cycles_to_failure"
+   ],
+   "typical_standards": [
+    "ASTM D4060",
+    "ISO 4649",
+    "ASTM D3389",
+    "ISO 5470-1"
+   ]
+  },
+  {
+   "id": "accelerated_weathering",
+   "label_ko": "촉진 내후성(광·열·수분)",
+   "label": "Accelerated weathering",
+   "measurands": [
+    "color_change",
+    "gloss_loss",
+    "chalking",
+    "yellowing"
+   ],
+   "typical_standards": [
+    "ISO 4892-2",
+    "ASTM G155",
+    "ASTM G154",
+    "SAE J2527",
+    "ISO 16474-2"
+   ]
+  },
+  {
+   "id": "acoustic_delamination",
+   "label_ko": "초음파 박리·보이드 검사",
+   "label": "Acoustic delamination inspection",
+   "measurands": [
+    "delamination_area"
+   ],
+   "typical_standards": [
+    "J-STD-020",
+    "IPC/JEDEC J-STD-035",
+    "MIL-STD-883 Method 2030"
+   ]
+  },
+  {
+   "id": "altitude_low_pressure",
+   "label_ko": "저기압·고도",
+   "label": "Altitude / low pressure",
+   "measurands": [
+    "operating_altitude"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-13",
+    "RTCA DO-160",
+    "MIL-STD-810 Method 500"
+   ]
+  },
+  {
+   "id": "audio_performance",
+   "label_ko": "오디오 성능(THD·SNR·주파수응답)",
+   "label": "Audio performance",
+   "measurands": [
+    "thd_n",
+    "snr",
+    "frequency_response",
+    "crosstalk"
+   ],
+   "typical_standards": [
+    "IEC 60268",
+    "AES17",
+    "ITU-T P.57"
+   ]
+  },
+  {
+   "id": "battery_abuse",
+   "label_ko": "배터리 기계적 학대(압괴·관통)",
+   "label": "Battery abuse (crush / nail penetration)",
+   "measurands": [
+    "thermal_runaway",
+    "venting",
+    "fire"
+   ],
+   "typical_standards": [
+    "UN 38.3",
+    "IEC 62133",
+    "UL 2054",
+    "SAE J2464",
+    "GB 38031"
+   ]
+  },
+  {
+   "id": "battery_cycle_life",
+   "label_ko": "배터리 충방전·사이클 수명",
+   "label": "Battery charge/discharge cycling",
+   "measurands": [
+    "capacity",
+    "cycle_life",
+    "internal_resistance",
+    "coulombic_efficiency"
+   ],
+   "typical_standards": [
+    "IEC 62660-1",
+    "IEC 61960",
+    "UL 1642",
+    "GB/T 31485"
+   ]
+  },
+  {
+   "id": "burst_pressure",
+   "label_ko": "내압 파열",
+   "label": "Burst / hoop pressure",
+   "measurands": [
+    "burst_pressure",
+    "hoop_stress",
+    "volumetric_expansion",
+    "failure_mode"
+   ],
+   "typical_standards": [
+    "ISO 1167",
+    "ASTM D1599"
+   ]
+  },
+  {
+   "id": "charpy_impact",
+   "label_ko": "샤르피 충격",
+   "label": "Charpy impact",
+   "measurands": [
+    "impact_energy",
+    "impact_strength"
+   ],
+   "typical_standards": [
+    "ASTM E23",
+    "ISO 148-1",
+    "ISO 179-1",
+    "ISO 179-2",
+    "ASTM D6110"
+   ]
+  },
+  {
+   "id": "coating_adhesion",
+   "label_ko": "도막 부착력(크로스컷)",
+   "label": "Coating adhesion (cross-cut)",
+   "measurands": [
+    "adhesion_class"
+   ],
+   "typical_standards": [
+    "ISO 2409",
+    "ASTM D3359",
+    "JIS K 5600-5-6"
+   ]
+  },
+  {
+   "id": "coating_thickness",
+   "label_ko": "도금·코팅 두께",
+   "label": "Coating thickness",
+   "measurands": [
+    "thickness",
+    "composition"
+   ],
+   "typical_standards": [
+    "ISO 3497",
+    "ASTM B568",
+    "DIN EN ISO 3497"
+   ]
+  },
+  {
+   "id": "compression",
+   "label_ko": "압축",
+   "label": "Compression",
+   "measurands": [
+    "compressive_strength",
+    "compressive_modulus"
+   ],
+   "typical_standards": [
+    "ASTM E9",
+    "ASTM D695",
+    "ISO 604",
+    "ASTM D6641"
+   ]
+  },
+  {
+   "id": "creep",
+   "label_ko": "크리프·응력파단",
+   "label": "Creep / stress rupture",
+   "measurands": [
+    "creep_strain",
+    "creep_rupture_time",
+    "minimum_creep_rate"
+   ],
+   "typical_standards": [
+    "ASTM E139",
+    "ISO 204",
+    "ASTM D2990",
+    "ISO 899"
+   ]
+  },
+  {
+   "id": "crimp_pull_strength",
+   "label_ko": "압착 단자 인장강도",
+   "label": "Crimp pull strength",
+   "measurands": [
+    "pull_force"
+   ],
+   "typical_standards": [
+    "UL 486A",
+    "IEC 60352-2",
+    "SAE/USCAR-21",
+    "MIL-DTL-22520"
+   ]
+  },
+  {
+   "id": "damp_heat",
+   "label_ko": "항온항습(습열)",
+   "label": "Damp heat / temperature-humidity",
+   "measurands": [
+    "insulation_degradation",
+    "corrosion",
+    "failure_time"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-78",
+    "IEC 60068-2-30",
+    "JESD22-A101",
+    "MIL-STD-810 Method 507"
+   ]
+  },
+  {
+   "id": "dielectric_withstand",
+   "label_ko": "내전압(절연내력)",
+   "label": "Dielectric withstand (hipot)",
+   "measurands": [
+    "breakdown_voltage",
+    "leakage_current"
+   ],
+   "typical_standards": [
+    "IEC 61010-1",
+    "IEC 62368-1",
+    "IEC 60601-1",
+    "UL 60950"
+   ]
+  },
+  {
+   "id": "dilatometry",
+   "label_ko": "열팽창(DIL)",
+   "label": "Dilatometry",
+   "measurands": [
+    "cte",
+    "sintering_shrinkage",
+    "phase_transition"
+   ],
+   "typical_standards": [
+    "ASTM E228",
+    "DIN 51045"
+   ]
+  },
+  {
+   "id": "dma",
+   "label_ko": "DMA (동적기계)",
+   "label": "Dynamic mechanical analysis",
+   "measurands": [
+    "storage_modulus",
+    "loss_modulus",
+    "tan_delta",
+    "glass_transition"
+   ],
+   "typical_standards": [
+    "ASTM D4065",
+    "ASTM D5279",
+    "ISO 6721",
+    "ASTM E1640"
+   ]
+  },
+  {
+   "id": "drop_weight_impact",
+   "label_ko": "낙추 충격·천공",
+   "label": "Drop weight / puncture impact",
+   "measurands": [
+    "impact_energy",
+    "puncture_energy",
+    "force_deflection"
+   ],
+   "typical_standards": [
+    "ASTM D3763",
+    "ISO 6603-2",
+    "ASTM D7136",
+    "ISO 7765",
+    "ASTM E436"
+   ]
+  },
+  {
+   "id": "dsc",
+   "label_ko": "DSC (열량)",
+   "label": "Differential scanning calorimetry",
+   "measurands": [
+    "glass_transition",
+    "melting_point",
+    "crystallinity",
+    "specific_heat",
+    "oit",
+    "cure"
+   ],
+   "typical_standards": [
+    "ASTM D3418",
+    "ISO 11357",
+    "ASTM E1356",
+    "ASTM E793",
+    "ASTM D3895"
+   ]
+  },
+  {
+   "id": "dust_ingress",
+   "label_ko": "분진 침투(IP5X/IP6X)",
+   "label": "Dust ingress",
+   "measurands": [
+    "ip_rating"
+   ],
+   "typical_standards": [
+    "IEC 60529",
+    "IEC 60068-2-68",
+    "ISO 20653",
+    "MIL-STD-810 Method 510"
+   ]
+  },
+  {
+   "id": "emi_emission",
+   "label_ko": "전자파 방사·전도 잡음",
+   "label": "EMI emission",
+   "measurands": [
+    "radiated_emission",
+    "conducted_emission"
+   ],
+   "typical_standards": [
+    "CISPR 32",
+    "CISPR 16-1-1",
+    "EN 55032",
+    "FCC Part 15",
+    "MIL-STD-461"
+   ]
+  },
+  {
+   "id": "esd_immunity",
+   "label_ko": "정전기 방전 내성",
+   "label": "ESD immunity",
+   "measurands": [
+    "esd_withstand_voltage"
+   ],
+   "typical_standards": [
+    "IEC 61000-4-2",
+    "ISO 10605",
+    "ANSI/ESDA/JEDEC JS-001"
+   ]
+  },
+  {
+   "id": "fatigue",
+   "label_ko": "피로",
+   "label": "Fatigue (HCF/LCF)",
+   "measurands": [
+    "fatigue_life",
+    "sn_curve",
+    "fatigue_limit"
+   ],
+   "typical_standards": [
+    "ASTM E466",
+    "ASTM E606",
+    "ISO 1099",
+    "ISO 12106"
+   ]
+  },
+  {
+   "id": "flexure",
+   "label_ko": "굽힘",
+   "label": "Flexure / bend",
+   "measurands": [
+    "flexural_strength",
+    "flexural_modulus"
+   ],
+   "typical_standards": [
+    "ASTM D790",
+    "ISO 178",
+    "ASTM E290",
+    "ISO 7438"
+   ]
+  },
+  {
+   "id": "formability",
+   "label_ko": "성형성",
+   "label": "Formability / forming limit",
+   "measurands": [
+    "forming_limit_curve",
+    "major_strain",
+    "minor_strain",
+    "r_value",
+    "dome_height"
+   ],
+   "typical_standards": [
+    "ISO 12004-2",
+    "ASTM E2218"
+   ]
+  },
+  {
+   "id": "fracture_toughness",
+   "label_ko": "파괴인성·균열성장",
+   "label": "Fracture toughness / crack growth",
+   "measurands": [
+    "K_IC",
+    "J_IC",
+    "da_dN"
+   ],
+   "typical_standards": [
+    "ASTM E399",
+    "ASTM E1820",
+    "ASTM E647",
+    "ISO 12135"
+   ]
+  },
+  {
+   "id": "free_fall_drop",
+   "label_ko": "낙하·텀블",
+   "label": "Free-fall drop / tumble",
+   "measurands": [
+    "drop_survival_height"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-31",
+    "IEC 60068-2-32",
+    "ISTA 2A",
+    "ASTM D5276",
+    "MIL-STD-810 Method 516.8 IV"
+   ]
+  },
+  {
+   "id": "friction_coefficient",
+   "label_ko": "마찰계수",
+   "label": "Coefficient of friction",
+   "measurands": [
+    "static_cof",
+    "kinetic_cof"
+   ],
+   "typical_standards": [
+    "ASTM D1894",
+    "ISO 8295"
+   ]
+  },
+  {
+   "id": "friction_wear_tribo",
+   "label_ko": "마찰·마모 (트라이보)",
+   "label": "Friction & wear (tribometry)",
+   "measurands": [
+    "friction_coefficient",
+    "wear_rate"
+   ],
+   "typical_standards": [
+    "ASTM G99",
+    "ASTM G133",
+    "ISO 18535"
+   ]
+  },
+  {
+   "id": "ground_bond",
+   "label_ko": "접지연속성(본딩)",
+   "label": "Ground bond / earth continuity",
+   "measurands": [
+    "ground_resistance"
+   ],
+   "typical_standards": [
+    "IEC 62368-1",
+    "IEC 60601-1",
+    "UL 60950"
+   ]
+  },
+  {
+   "id": "halt_hass",
+   "label_ko": "HALT/HASS 가속 수명·스크리닝",
+   "label": "HALT / HASS",
+   "measurands": [
+    "operating_limit",
+    "destruct_limit"
+   ],
+   "typical_standards": [
+    "IEC 62506"
+   ]
+  },
+  {
+   "id": "hardness_brinell",
+   "label_ko": "브리넬 경도",
+   "label": "Brinell hardness",
+   "measurands": [
+    "hardness_HB"
+   ],
+   "typical_standards": [
+    "ASTM E10",
+    "ISO 6506-1"
+   ]
+  },
+  {
+   "id": "hardness_irhd",
+   "label_ko": "IRHD 경도",
+   "label": "IRHD hardness",
+   "measurands": [
+    "hardness_IRHD"
+   ],
+   "typical_standards": [
+    "ISO 48-2",
+    "ASTM D1415"
+   ]
+  },
+  {
+   "id": "hardness_knoop",
+   "label_ko": "누프 경도",
+   "label": "Knoop hardness",
+   "measurands": [
+    "hardness_HK"
+   ],
+   "typical_standards": [
+    "ASTM E384",
+    "ISO 4545-1"
+   ]
+  },
+  {
+   "id": "hardness_leeb",
+   "label_ko": "리브(반발) 경도",
+   "label": "Leeb rebound hardness",
+   "measurands": [
+    "hardness_HL"
+   ],
+   "typical_standards": [
+    "ASTM A956",
+    "ISO 16859"
+   ]
+  },
+  {
+   "id": "hardness_rockwell",
+   "label_ko": "로크웰 경도",
+   "label": "Rockwell hardness",
+   "measurands": [
+    "hardness_HR"
+   ],
+   "typical_standards": [
+    "ASTM E18",
+    "ISO 6508-1",
+    "ASTM D785"
+   ]
+  },
+  {
+   "id": "hardness_shore",
+   "label_ko": "쇼어 경도",
+   "label": "Shore durometer hardness",
+   "measurands": [
+    "hardness_shore_A",
+    "hardness_shore_D"
+   ],
+   "typical_standards": [
+    "ASTM D2240",
+    "ISO 48-4",
+    "ISO 868"
+   ]
+  },
+  {
+   "id": "hardness_vickers",
+   "label_ko": "비커스 경도",
+   "label": "Vickers hardness",
+   "measurands": [
+    "hardness_HV"
+   ],
+   "typical_standards": [
+    "ASTM E92",
+    "ASTM E384",
+    "ISO 6507-1"
+   ]
+  },
+  {
+   "id": "hast",
+   "label_ko": "고가속 습열(HAST)",
+   "label": "Highly accelerated stress test",
+   "measurands": [
+    "failure_time",
+    "insulation_resistance"
+   ],
+   "typical_standards": [
+    "JESD22-A110",
+    "IEC 60068-2-66",
+    "EIAJ ED-4701/100-102",
+    "JIS C 0096"
+   ]
+  },
+  {
+   "id": "hdt",
+   "label_ko": "열변형온도 (HDT)",
+   "label": "Heat deflection temperature",
+   "measurands": [
+    "hdt"
+   ],
+   "typical_standards": [
+    "ISO 75-1",
+    "ISO 75-2",
+    "ASTM D648"
+   ]
+  },
+  {
+   "id": "high_speed_tensile",
+   "label_ko": "고속 인장",
+   "label": "High strain-rate tensile",
+   "measurands": [
+    "dynamic_stress_strain"
+   ],
+   "typical_standards": [
+    "ISO 26203-2",
+    "ISO 18872"
+   ]
+  },
+  {
+   "id": "instrumented_indentation",
+   "label_ko": "계장화 압입(나노인덴테이션)",
+   "label": "Instrumented indentation",
+   "measurands": [
+    "indentation_hardness",
+    "indentation_modulus",
+    "creep",
+    "fracture_toughness"
+   ],
+   "typical_standards": [
+    "ISO 14577",
+    "ASTM E2546"
+   ]
+  },
+  {
+   "id": "insulation_resistance",
+   "label_ko": "절연저항",
+   "label": "Insulation resistance",
+   "measurands": [
+    "insulation_resistance"
+   ],
+   "typical_standards": [
+    "IEC 61010-1",
+    "IEC 62368-1",
+    "IEC 60598"
+   ]
+  },
+  {
+   "id": "izod_impact",
+   "label_ko": "아이조드 충격",
+   "label": "Izod impact",
+   "measurands": [
+    "impact_strength"
+   ],
+   "typical_standards": [
+    "ASTM D256",
+    "ISO 180"
+   ]
+  },
+  {
+   "id": "leak_rate",
+   "label_ko": "누설률",
+   "label": "Leak rate",
+   "measurands": [
+    "leak_rate",
+    "pressure_decay"
+   ],
+   "typical_standards": [
+    "ASTM F2096",
+    "ASTM F2338",
+    "MIL-STD-883 Method 1014",
+    "IEC 60068-2-17"
+   ]
+  },
+  {
+   "id": "mechanical_endurance",
+   "label_ko": "부품 반복 동작 수명(키·힌지·커넥터)",
+   "label": "Mechanical endurance / cycling life",
+   "measurands": [
+    "cycles_to_failure",
+    "insertion_force",
+    "withdrawal_force"
+   ],
+   "typical_standards": [
+    "EIA-364-09",
+    "IEC 60512-9",
+    "IEC 60227-2",
+    "USB Type-C spec"
+   ]
+  },
+  {
+   "id": "mechanical_shock",
+   "label_ko": "기계적 충격",
+   "label": "Mechanical shock",
+   "measurands": [
+    "shock_response_spectrum",
+    "peak_acceleration"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-27",
+    "MIL-STD-810 Method 516",
+    "JESD22-B104",
+    "ASTM D6055"
+   ]
+  },
+  {
+   "id": "melt_flow",
+   "label_ko": "용융지수 (MFR/MVR)",
+   "label": "Melt flow rate",
+   "measurands": [
+    "mfr",
+    "mvr",
+    "melt_density"
+   ],
+   "typical_standards": [
+    "ISO 1133-1",
+    "ISO 1133-2",
+    "ASTM D1238"
+   ]
+  },
+  {
+   "id": "peel",
+   "label_ko": "박리",
+   "label": "Peel",
+   "measurands": [
+    "peel_strength"
+   ],
+   "typical_standards": [
+    "ASTM D903",
+    "ASTM D1876",
+    "ISO 8510"
+   ]
+  },
+  {
+   "id": "photometry_colorimetry",
+   "label_ko": "휘도·색도(광학) 측정",
+   "label": "Photometry / colorimetry",
+   "measurands": [
+    "luminance",
+    "chromaticity",
+    "color_temperature",
+    "contrast_ratio",
+    "flicker"
+   ],
+   "typical_standards": [
+    "CIE S025",
+    "IEC 62341-6-1",
+    "VESA FPDM",
+    "JEITA"
+   ]
+  },
+  {
+   "id": "power_consumption",
+   "label_ko": "전력·효율·대기전력",
+   "label": "Power consumption & efficiency",
+   "measurands": [
+    "active_power",
+    "power_factor",
+    "efficiency",
+    "standby_power",
+    "thd"
+   ],
+   "typical_standards": [
+    "IEC 62301",
+    "EN 50564",
+    "IEC 61000-3-2",
+    "IEC 61000-3-3",
+    "ENERGY STAR"
+   ]
+  },
+  {
+   "id": "puncture",
+   "label_ko": "천공",
+   "label": "Puncture",
+   "measurands": [
+    "puncture_resistance"
+   ],
+   "typical_standards": [
+    "ASTM F1306",
+    "ASTM D5748"
+   ]
+  },
+  {
+   "id": "relaxation",
+   "label_ko": "응력완화",
+   "label": "Stress relaxation",
+   "measurands": [
+    "relaxation_ratio"
+   ],
+   "typical_standards": [
+    "ASTM E328",
+    "ISO 3384"
+   ]
+  },
+  {
+   "id": "rheology_capillary",
+   "label_ko": "모세관 유변(고전단 점도)",
+   "label": "Capillary rheometry",
+   "measurands": [
+    "shear_viscosity",
+    "extensional_viscosity",
+    "die_swell"
+   ],
+   "typical_standards": [
+    "ISO 11443",
+    "ASTM D3835"
+   ]
+  },
+  {
+   "id": "rheology_rotational",
+   "label_ko": "회전 유변(점도·점탄성)",
+   "label": "Rotational rheometry",
+   "measurands": [
+    "viscosity",
+    "storage_modulus",
+    "loss_modulus",
+    "yield_stress",
+    "thixotropy"
+   ],
+   "typical_standards": [
+    "ISO 3219",
+    "ASTM D4440",
+    "ISO 6721-10"
+   ]
+  },
+  {
+   "id": "salt_spray_corrosion",
+   "label_ko": "염수분무·복합부식",
+   "label": "Salt spray / cyclic corrosion",
+   "measurands": [
+    "corrosion_rate",
+    "mass_loss",
+    "blistering"
+   ],
+   "typical_standards": [
+    "ASTM B117",
+    "ISO 9227",
+    "GMW 14872",
+    "SAE J2334",
+    "VDA 233-102"
+   ]
+  },
+  {
+   "id": "scratch_pencil_hardness",
+   "label_ko": "스크래치·연필 경도",
+   "label": "Scratch / pencil hardness",
+   "measurands": [
+    "pencil_hardness",
+    "scratch_load"
+   ],
+   "typical_standards": [
+    "ISO 15184",
+    "ASTM D3363",
+    "ISO 1518",
+    "JIS K 5600-5-4"
+   ]
+  },
+  {
+   "id": "seal_strength",
+   "label_ko": "실링 강도(포장)",
+   "label": "Seal strength",
+   "measurands": [
+    "seal_strength",
+    "peel_force"
+   ],
+   "typical_standards": [
+    "ASTM F88",
+    "ASTM F1140",
+    "ISO 11607"
+   ]
+  },
+  {
+   "id": "shear",
+   "label_ko": "전단",
+   "label": "Shear",
+   "measurands": [
+    "shear_strength",
+    "shear_modulus"
+   ],
+   "typical_standards": [
+    "ASTM D5379",
+    "ASTM D3518",
+    "ASTM D1002"
+   ]
+  },
+  {
+   "id": "shielding_effectiveness",
+   "label_ko": "차폐 효과",
+   "label": "Shielding effectiveness",
+   "measurands": [
+    "shielding_effectiveness",
+    "insertion_loss",
+    "attenuation"
+   ],
+   "typical_standards": [
+    "IEEE 299",
+    "MIL-STD-188-125"
+   ]
+  },
+  {
+   "id": "solderability",
+   "label_ko": "솔더링성(웨팅밸런스)",
+   "label": "Solderability (wetting balance)",
+   "measurands": [
+    "wetting_time",
+    "wetting_force",
+    "zero_cross_time"
+   ],
+   "typical_standards": [
+    "J-STD-002",
+    "J-STD-003",
+    "IEC 60068-2-69",
+    "MIL-STD-883 Method 2003"
+   ]
+  },
+  {
+   "id": "surface_topography",
+   "label_ko": "표면 형상·거칠기",
+   "label": "Surface topography / roughness",
+   "measurands": [
+    "Ra",
+    "Rz",
+    "step_height",
+    "film_thickness"
+   ],
+   "typical_standards": [
+    "ISO 25178",
+    "ISO 4287",
+    "ASME B46.1"
+   ]
+  },
+  {
+   "id": "surge_eft_immunity",
+   "label_ko": "서지·EFT 내성",
+   "label": "Surge / EFT immunity",
+   "measurands": [
+    "surge_withstand_voltage"
+   ],
+   "typical_standards": [
+    "IEC 61000-4-4",
+    "IEC 61000-4-5",
+    "IEC 61000-4-11",
+    "ANSI C62.41"
+   ]
+  },
+  {
+   "id": "tear",
+   "label_ko": "인열",
+   "label": "Tear",
+   "measurands": [
+    "tear_strength"
+   ],
+   "typical_standards": [
+    "ASTM D624",
+    "ISO 34-1",
+    "ASTM D1922"
+   ]
+  },
+  {
+   "id": "temperature_cycling",
+   "label_ko": "온도 사이클",
+   "label": "Temperature cycling",
+   "measurands": [
+    "failure_cycles",
+    "crack_growth"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-14",
+    "JESD22-A104",
+    "MIL-STD-883 Method 1010",
+    "MIL-STD-810 Method 503"
+   ]
+  },
+  {
+   "id": "tensile",
+   "label_ko": "인장",
+   "label": "Tensile",
+   "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "poisson_ratio"
+   ],
+   "typical_standards": [
+    "ASTM E8/E8M",
+    "ISO 6892-1",
+    "ASTM D638",
+    "ISO 527",
+    "ASTM D412",
+    "ISO 37",
+    "ASTM D3039"
+   ]
+  },
+  {
+   "id": "tensile_impact",
+   "label_ko": "인장 충격",
+   "label": "Tensile impact",
+   "measurands": [
+    "tensile_impact_strength"
+   ],
+   "typical_standards": [
+    "ISO 8256",
+    "ASTM D1822"
+   ]
+  },
+  {
+   "id": "texture",
+   "label_ko": "텍스처(식품·화장품 물성)",
+   "label": "Texture analysis",
+   "measurands": [
+    "hardness",
+    "adhesiveness",
+    "gel_strength",
+    "fracturability"
+   ],
+   "typical_standards": [
+    "AACC 74-09",
+    "ISO 11036"
+   ]
+  },
+  {
+   "id": "tga",
+   "label_ko": "TGA (열중량)",
+   "label": "Thermogravimetric analysis",
+   "measurands": [
+    "decomposition_temperature",
+    "mass_loss",
+    "filler_content",
+    "moisture"
+   ],
+   "typical_standards": [
+    "ASTM E1131",
+    "ISO 11358",
+    "ASTM E1868"
+   ]
+  },
+  {
+   "id": "thermal_conductivity",
+   "label_ko": "열전도율·열확산율",
+   "label": "Thermal conductivity / diffusivity",
+   "measurands": [
+    "thermal_conductivity",
+    "thermal_diffusivity",
+    "specific_heat"
+   ],
+   "typical_standards": [
+    "ASTM E1461",
+    "ISO 22007-2",
+    "ISO 22007-4",
+    "ASTM D7984"
+   ]
+  },
+  {
+   "id": "thermal_profiling",
+   "label_ko": "리플로우 열 프로파일 측정",
+   "label": "Reflow thermal profiling",
+   "measurands": [
+    "reflow_profile",
+    "peak_temperature",
+    "time_above_liquidus",
+    "ramp_rate",
+    "delta_t"
+   ],
+   "typical_standards": [
+    "J-STD-020",
+    "IPC-7530",
+    "J-STD-001"
+   ]
+  },
+  {
+   "id": "thermal_resistance",
+   "label_ko": "열저항(접합부-주위)",
+   "label": "Thermal resistance (junction-to-ambient)",
+   "measurands": [
+    "Rth_ja",
+    "Rth_jc",
+    "structure_function"
+   ],
+   "typical_standards": [
+    "JESD51-1",
+    "JESD51-14",
+    "MIL-STD-750 Method 3161"
+   ]
+  },
+  {
+   "id": "thermal_runaway_calorimetry",
+   "label_ko": "열폭주 단열 열량 측정",
+   "label": "Thermal runaway calorimetry (ARC)",
+   "measurands": [
+    "onset_temperature",
+    "self_heat_rate",
+    "pressure_rise"
+   ],
+   "typical_standards": [
+    "ASTM E1981"
+   ]
+  },
+  {
+   "id": "thermal_shock",
+   "label_ko": "열충격",
+   "label": "Thermal shock",
+   "measurands": [
+    "failure_cycles",
+    "delamination"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-14 Na",
+    "JESD22-A106",
+    "MIL-STD-883 Method 1011",
+    "JASO D 014-4"
+   ]
+  },
+  {
+   "id": "thermography",
+   "label_ko": "열화상 온도 분포",
+   "label": "Thermography",
+   "measurands": [
+    "surface_temperature",
+    "hot_spot"
+   ],
+   "typical_standards": [
+    "ASTM E1934",
+    "IEC 62446-3"
+   ]
+  },
+  {
+   "id": "thermomechanical_fatigue",
+   "label_ko": "열기계 피로",
+   "label": "Thermo-mechanical fatigue",
+   "measurands": [
+    "tmf_life"
+   ],
+   "typical_standards": [
+    "ASTM E2368",
+    "ISO 12111"
+   ]
+  },
+  {
+   "id": "tma",
+   "label_ko": "TMA (열기계)",
+   "label": "Thermomechanical analysis",
+   "measurands": [
+    "cte",
+    "softening_point",
+    "glass_transition"
+   ],
+   "typical_standards": [
+    "ASTM E831",
+    "ISO 11359",
+    "ASTM E1545"
+   ]
+  },
+  {
+   "id": "torsion",
+   "label_ko": "비틀림",
+   "label": "Torsion",
+   "measurands": [
+    "torsional_strength",
+    "shear_modulus",
+    "torque_angle"
+   ],
+   "typical_standards": [
+    "ASTM E143",
+    "ASTM A938",
+    "ISO 7800"
+   ]
+  },
+  {
+   "id": "vapor_sorption",
+   "label_ko": "증기 흡착",
+   "label": "Vapor sorption (DVS)",
+   "measurands": [
+    "moisture",
+    "mass_loss",
+    "crystallinity",
+    "polymorphism"
+   ],
+   "typical_standards": []
+  },
+  {
+   "id": "vibration_sine_random",
+   "label_ko": "정현·랜덤 진동",
+   "label": "Sine / random vibration",
+   "measurands": [
+    "resonance_frequency",
+    "transmissibility",
+    "fatigue_life"
+   ],
+   "typical_standards": [
+    "IEC 60068-2-6",
+    "IEC 60068-2-64",
+    "MIL-STD-810 Method 514",
+    "ISTA 3A",
+    "JESD22-B103"
+   ]
+  },
+  {
+   "id": "vicat",
+   "label_ko": "비캣 연화온도",
+   "label": "Vicat softening temperature",
+   "measurands": [
+    "vst"
+   ],
+   "typical_standards": [
+    "ISO 306",
+    "ASTM D1525"
+   ]
+  },
+  {
+   "id": "water_ingress",
+   "label_ko": "방수(IPX1–IPX9K)",
+   "label": "Water ingress",
+   "measurands": [
+    "ip_rating"
+   ],
+   "typical_standards": [
+    "IEC 60529",
+    "ISO 20653",
+    "IEC 60068-2-18"
+   ]
+  },
+  {
+   "id": "wire_bond_strength",
+   "label_ko": "와이어 본드 강도·다이 전단",
+   "label": "Wire bond pull / die shear",
+   "measurands": [
+    "pull_force",
+    "shear_force"
+   ],
+   "typical_standards": [
+    "MIL-STD-883 Method 2011",
+    "MIL-STD-883 Method 2019",
+    "JESD22-B116",
+    "IPC-9708"
+   ]
+  },
+  {
+   "id": "xray_void_inspection",
+   "label_ko": "X-ray 보이드·내부 결함 검사",
+   "label": "X-ray void / internal defect inspection",
+   "measurands": [
+    "void_percentage",
+    "defect_size"
+   ],
+   "typical_standards": [
+    "IPC-A-610",
+    "IPC-7095",
+    "ASTM E2698"
+   ]
+  }
+ ]
+}

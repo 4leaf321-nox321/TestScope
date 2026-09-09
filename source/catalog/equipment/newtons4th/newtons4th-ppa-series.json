@@ -1,0 +1,35 @@
+{
+  "id": "newtons4th-ppa-series",
+  "kind": "equipment_series",
+  "name": "Newtons4th PPA Series Precision Power Analyzer (PPA5500 etc.)",
+  "name_ko": "뉴턴스4th PPA 시리즈 정밀 전력 분석기",
+  "manufacturer": "newtons4th",
+  "brand": "PPA",
+  "category": "power_analyzer",
+  "form_factor": "benchtop",
+  "description": "대기전력(standby power) 측정에 특화된 정밀 전력 분석기 계열. IEC 62301 이 요구하는 조건 — 에너지 분해능 0.1 mWh 이하, 적산 시간 표시 1초 이하 — 을 만족한다. 넓은 동적 범위 덕분에 외부 션트 없이 저전류를 직접 측정하는 것이 이 계열의 요점으로, PPA5500 은 300 A peak / 30 A rms 직접 입력을 가지면서도 24 mA peak 수준의 저듀티 대기전력 파형을 그대로 잡아낸다. 저듀티(예: 5 사이클 중 1 사이클) 비대칭 대기 모드 파형 측정 사례가 자료에 실려 있다.",
+  "test_items": ["power_consumption"],
+  "measurands": ["standby_power", "active_power", "energy", "current_rms", "power_factor", "harmonic_distortion"],
+  "materials": ["home appliances", "TVs", "set-top boxes", "chargers", "IT equipment", "network equipment"],
+  "standards": {
+    "compliance": ["IEC 62301 (대기전력 측정 요구사항 충족)"],
+    "test_methods": ["IEC 62301", "EN 50564", "ENERGY STAR", "IEC 61000-3-2"]
+  },
+  "limits": {
+    "current_A": {"max": 300, "note": "PPA5500 직접 입력 300 A peak / 30 A rms. 외부 션트 불요"},
+    "energy_resolution_mWh": {"max": 0.1, "note": "IEC 62301 요구 — 0.1 mWh 이하"},
+    "integration_time_resolution_s": {"max": 1, "note": "IEC 62301 요구 — 1초 이하"}
+  },
+  "models": [
+    {"model": "PPA5500", "specs": {"direct_input_A_peak": 300, "direct_input_A_rms": 30, "min_measured_current_mA_peak": 24, "external_shunt_required": false, "note": "저듀티 대기전력 파형 직접 측정"}},
+    {"model": "PPA 시리즈 기타 모델", "specs": {"note": "PPA1500/PPA3500 등 — 개별 데이터시트 필요"}, "uncertain": true}
+  ],
+  "features": ["외부 션트 없이 저전류 직접 측정", "넓은 동적 범위", "IEC 62301 준거 에너지 적산(0.1 mWh)", "저듀티·비대칭 대기 파형 대응"],
+  "relations": [
+    {"type": "performs", "target": "power_consumption"},
+    {"type": "same_family_as", "target": "yokogawa-wt5000"}
+  ],
+  "sources": [{"file": "newtons4th/standby-power-measurement-iec62301.pdf", "pages": [2, 3, 4, 5, 6]}],
+  "confidence": "limited",
+  "notes": "확보 문서가 IEC 62301 대기전력 측정 기술 백서라 모델별 확도·레인지 사양표가 없다. PPA 시리즈 데이터시트 추가 확보 필요."
+}

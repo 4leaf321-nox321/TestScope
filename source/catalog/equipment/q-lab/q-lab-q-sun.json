@@ -1,0 +1,205 @@
+{
+  "id": "q-lab-q-sun",
+  "kind": "equipment_series",
+  "name": "Q-Lab Q-SUN Xenon Arc Test Chambers (Xe-1 / Xe-2 / Xe-3, Xe-8)",
+  "name_ko": "Q-Lab Q-SUN 제논 아크 촉진 내후성 시험기 (Xe-1·Xe-2·Xe-3)",
+  "manufacturer": "q-lab",
+  "brand": "Q-SUN",
+  "category": "weathering_tester",
+  "form_factor": "benchtop",
+  "description": "공랭식 제논 아크 램프로 전 스펙트럼 태양광(자외선·가시광·적외선)을 모사하는 촉진 내후성 시험기. Xe-1(램프 1개, 평면 배열, 시편 17개), Xe-2(램프 1개, 회전 랙, 시편 31개 45×132 mm), Xe-3(램프 3개, 평면 배열, 시편 55개). SOLAR EYE 조사강도 제어(340 nm / 420 nm / TUV 300-400 nm), 블랙패널 온도 제어, 물 분무. 램프 수명 3000 h(표준 조사강도) / 1000 h(고조사강도).",
+  "test_items": [
+    "accelerated_weathering"
+  ],
+  "measurands": [
+    "color_change",
+    "gloss_loss",
+    "chalking",
+    "yellowing",
+    "embrittlement",
+    "lightfastness"
+  ],
+  "materials": [
+    "plastics",
+    "paints",
+    "coatings",
+    "textiles",
+    "automotive interior",
+    "display films",
+    "packaging",
+    "inks"
+  ],
+  "standards": {
+    "compliance": [
+      "ISO 17025 교정(A2LA·UKAS)"
+    ],
+    "test_methods": [
+      "ISO 4892-2",
+      "ASTM G155",
+      "SAE J2527",
+      "SAE J2412",
+      "ISO 16474-2",
+      "ETAG 002",
+      "AATCC TM16"
+    ]
+  },
+  "limits": {
+    "irradiance_control_nm": {
+      "values": [
+        340,
+        420,
+        "300-400 (TUV)"
+      ]
+    },
+    "temperature_degC": {
+      "note": "블랙패널·챔버 공기 온도 제어(Xe-2/Xe-3); 칠러 옵션으로 저온 가능 — 구체 수치는 사양표 확인 요",
+      "uncertain": true
+    },
+    "humidity_pct": {
+      "note": "상대습도 제어는 Xe-2·Xe-3 표준, Xe-1 미제공. 제어 범위 수치는 사양표 확인 요",
+      "uncertain": true
+    },
+    "stations": {
+      "values": [
+        17,
+        31,
+        55
+      ],
+      "note": "시편 수용량. Xe-1 17 / Xe-2 31 / Xe-3 55"
+    },
+    "chamber": {
+      "values": [
+        "yes"
+      ]
+    }
+  },
+  "models": [
+    {
+      "model": "Q-SUN Xe-1",
+      "specs": {
+        "lamps": 1,
+        "chamber_type": "Flat Array",
+        "specimen_capacity": 17,
+        "specimen_orientation_deg": 10,
+        "3d_capable": true,
+        "rh_control": false,
+        "chamber_air_temp_control": "옵션",
+        "black_panel_temp_control": true,
+        "programmable_water_spray": "옵션",
+        "chiller": "옵션",
+        "water_immersion": "옵션(Xe-1-WE)",
+        "dual_spray": false,
+        "back_spray": false
+      }
+    },
+    {
+      "model": "Q-SUN Xe-2",
+      "specs": {
+        "lamps": 1,
+        "chamber_type": "Rotating Rack",
+        "specimen_capacity": 31,
+        "specimen_size_mm": [
+          45,
+          132
+        ],
+        "specimen_orientation_deg": 90,
+        "3d_capable": false,
+        "rh_control": true,
+        "chamber_air_temp_control": true,
+        "black_panel_temp_control": true,
+        "programmable_water_spray": "옵션",
+        "chiller": false,
+        "water_immersion": false,
+        "dual_spray": false,
+        "back_spray": "옵션"
+      }
+    },
+    {
+      "model": "Q-SUN Xe-3",
+      "specs": {
+        "lamps": 3,
+        "chamber_type": "Flat Array",
+        "specimen_capacity": 55,
+        "specimen_orientation_deg": 10,
+        "3d_capable": true,
+        "rh_control": true,
+        "chamber_air_temp_control": true,
+        "black_panel_temp_control": true,
+        "programmable_water_spray": "옵션",
+        "chiller": "옵션",
+        "water_immersion": false,
+        "dual_spray": "옵션(산성비·비눗물 등 2차 용액)",
+        "back_spray": "옵션(SAE J2527 요구)"
+      }
+    },
+    {
+      "model": "Q-SUN Xe-1-WE (수중 노출)",
+      "specs": {
+        "note": "온도 제어 수조에 시편을 담근 채 노출. 자동 급배수, 정밀 온도 제어, 물 재정제·모니터링 내장",
+        "standards": [
+          "ISO 16474-2",
+          "ETAG 002"
+        ]
+      }
+    },
+    {
+      "model": "Q-SUN Xe-8",
+      "specs": {
+        "chamber_type": "Rotating Rack",
+        "back_spray": "표준",
+        "note": "대용량 — 별도 브로슈어"
+      },
+      "uncertain": true
+    }
+  ],
+  "accuracy": {
+    "calibration": "AUTOCAL + Universal Calibrator UC20 라디오미터(연 1회 교정)"
+  },
+  "features": [
+    "공랭식 제논 아크 램프",
+    "SOLAR EYE 조사강도 제어(340 nm / 420 nm / TUV)",
+    "장수명 광학 필터(Type I·Type II Daylight 옵션)",
+    "듀얼 터치스크린 17개 언어",
+    "AUTOCAL 교정(전 모델 표준)",
+    "소프트웨어 갱신·데이터 수집용 USB 포트",
+    "도장 알루미늄 구조"
+  ],
+  "options": [
+    "칠러(Xe-1·Xe-3)",
+    "듀얼 스프레이(Xe-3)",
+    "백스프레이(Xe-2·Xe-3)",
+    "프로그래머블 물 분무(전 모델)",
+    "물 재정제 시스템",
+    "UC20 교정 라디오미터",
+    "UC202 교정 블랙패널 온도계",
+    "X-1800+/X-1850+ 고조사강도 램프",
+    "시편 홀더(패널·보틀·텍스타일·3D)"
+  ],
+  "relations": [
+    {
+      "type": "simulates_environment",
+      "target": "environment-solar-radiation"
+    },
+    {
+      "type": "same_family_as",
+      "target": "q-lab-quv"
+    }
+  ],
+  "sources": [
+    {
+      "file": "q-lab/q-sun-xe-1-2-3-brochure.pdf",
+      "pages": [
+        4,
+        5,
+        7,
+        8
+      ],
+      "note": "모델 비교 Summary 표(15쪽)를 원본 쪽 이미지로 확정(2026-09-09)"
+    },
+    {
+      "file": "q-lab/q-sun-g4-brochure.pdf"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "Xe-1 은 상대습도 제어를 제공하지 않고 챔버 공기 온도 제어는 옵션이다. 물 분무는 세 모델 모두 옵션이며, 백스프레이는 SAE J2527 이 요구한다. 온도·습도 제어 범위 수치는 이 브로슈어의 Summary 표에 없어 여전히 미확정이다."
+}

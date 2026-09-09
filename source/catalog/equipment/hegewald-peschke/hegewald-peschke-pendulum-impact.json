@@ -1,0 +1,161 @@
+{
+  "id": "hegewald-peschke-pendulum-impact",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke PSd Pendulum Impact Testers (PSd 50 / PSd 450 / PSd 750)",
+  "name_ko": "헤게발트 운트 페슈케 PSd 진자 충격시험기 (PSd 50·450·750)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "PSd",
+  "category": "pendulum_impact",
+  "drive": "pendulum",
+  "form_factor": "floor",
+  "description": "진자 해머를 떨어뜨려 시편을 때리고 소비된 충격 에너지로 인성을 재는 시험기 세 등급. PSd 50 은 플라스틱용(회전축-시편 거리 380 mm, 충격각 160°, 충격속도 3.8 m/s)이고 15·25·50 J 해머를 쓴다. PSd 450 은 금속용으로 150·300·450 J 해머를 쓰며 300 J 해머를 450 J 로 개조할 수 있다. PSd 750 은 회전축-시편 거리 790 mm 의 대형기로 600 또는 750 J 해머를 쓰고, 낙하각을 8°~160° 로 무단 조절해 충격속도 0.39~5.5 m/s 를 만든다. 충격 에너지는 디지털로 표시하며 각도 또는 위치에너지 어느 쪽으로도 볼 수 있고, 마찰 보상 옵션으로 마찰 손실을 실제 이동 거리에 맞춰 빼 준다. 계장(instrumented) 시험은 2 채널 측정계로 하며 샘플링 최대 10 MHz, 증폭기 차단주파수 최대 300 kHz 라 힘-시간·힘-변형 곡선을 DIN EN ISO 14556 알고리즘으로 해석한다.",
+  "test_items": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+  ],
+  "measurands": [
+    "impact_energy",
+    "impact_strength",
+    "force_time_curve (instrumented)",
+    "force_deflection (instrumented)",
+    "failure_mode"
+  ],
+  "materials": [
+    "plastics",
+    "steel and other metals",
+    "zinc and zinc alloys",
+    "bonded joints"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN 51233 (보호 인클로저)",
+      "DIN EN ISO 13849-1 (안전 제어)"
+    ],
+    "test_methods": [
+      "DIN EN ISO 179-1",
+      "DIN EN ISO 179-2",
+      "ASTM D6110",
+      "GOST 4647",
+      "DIN EN ISO 180",
+      "ASTM D256",
+      "GOST 19109",
+      "DIN EN ISO 8256",
+      "ASTM D1822",
+      "DIN 50116",
+      "DIN 53435",
+      "DIN 51230",
+      "DIN EN ISO 9653",
+      "DIN EN 10045-1",
+      "DIN 50115",
+      "ISO 83",
+      "DIN EN ISO 148-1",
+      "DIN EN ISO 148-2",
+      "ASTM E23",
+      "BS 131",
+      "ZF 15-53",
+      "DIN EN ISO 11343",
+      "DIN EN ISO 14556"
+    ]
+  },
+  "limits": {
+    "impact_energy_J": {
+      "min": 0.75,
+      "max": 750,
+      "note": "해머에 따라. 무단 조절 하한은 PSd 450 의 150 J 해머가 0.75 J, 450 J 해머가 2.25 J, PSd 750 의 600 J 해머가 3.01 J, 750 J 해머가 3.75 J"
+    },
+    "impact_velocity_m_s": {
+      "min": 0.39,
+      "max": 5.5,
+      "note": "PSd 750 은 낙하각 8~160° 무단 조절로 0.39~5.5 m/s. PSd 50 은 충격각 160° 고정에서 3.8 m/s"
+    },
+    "data_rate_Hz": {
+      "max": 10000000,
+      "note": "계장 시험용 2 채널 측정계, 샘플링 최대 10 MHz. 증폭기 차단주파수 최대 300 kHz"
+    }
+  },
+  "models": [
+    {
+      "model": "PSd 50 (P50B)",
+      "specs": {
+        "hammer_energy_J": [15, 25, 50],
+        "distance_axis_to_specimen_mm": 380,
+        "impact_angle_deg": 160,
+        "impact_velocity_m_s": 3.8,
+        "display_range_J": "예: 50 J 해머에서 0~50 J",
+        "display_resolution_J": 0.01,
+        "hammer_type": "U형 해머(칼날 포함) — 샤르피·아이조드, 퀵체인지로 충격인장",
+        "upgrade": "25 J 해머를 50 J 로 개조하는 키트",
+        "release": "전기식 안전 해제(양수 조작)"
+      },
+      "note": "플라스틱 대상. 아연·아연합금 충격굽힘도 규격에 들어 있다"
+    },
+    {
+      "model": "PSd 450 (P450B)",
+      "specs": {
+        "hammer_energy_J": [150, 300, 450],
+        "hammer_mass_kg_450J": 29.943,
+        "energy_adjustable_J_150J_hammer": {"min": 0.75, "max": 150},
+        "energy_adjustable_J_450J_hammer": {"min": 2.25, "max": 450},
+        "display_range_J": "예: 450 J 해머에서 0.0~450.0 J",
+        "display_resolution_J": 0.1,
+        "hammer_type": "U형 해머(해머판 + 측판, 핀·볼트 고정)",
+        "pendulum_lift": "전기기계식, 진자 현수점 무단 조절",
+        "upgrade": "300 J 해머를 450 J 로 개조 가능",
+        "operation": "디지털 표시 또는 기계 프레임 내장 터치스크린 PC(해석 소프트웨어로 전체 운전)"
+      },
+      "note": "강 및 기타 금속 대상. 브루거 충격굽힘(ZF 15-53), 웨지 충격(DIN EN ISO 11343)도 규격에 들어 있다"
+    },
+    {
+      "model": "PSd 750 (P750B)",
+      "specs": {
+        "hammer_energy_J": [600, 750],
+        "hammer_mass_kg_750J": 49.909,
+        "energy_adjustable_J_600J_hammer": {"min": 3.01, "max": 600},
+        "energy_adjustable_J_750J_hammer": {"min": 3.75, "max": 750},
+        "distance_axis_to_specimen_mm": 790,
+        "drop_angle_deg": {"min": 8, "max": 160, "note": "무단 조절"},
+        "impact_velocity_m_s": {"min": 0.39, "max": 5.5},
+        "display_range_J": "예: 600 J 해머에서 0.0~600.0 J",
+        "display_resolution_J": 0.1,
+        "measurement": "증분 엔코더",
+        "weight_kg": 2180,
+        "upgrade": "600 J 해머를 750 J 로 개조 가능"
+      },
+      "note": "DIN EN ISO 148-1/-2 와 ASTM E23 의 강재 샤르피용. 2180 kg 은 750 J 구성 기준"
+    }
+  ],
+  "accuracy": {
+    "display_resolution": "PSd 50 은 0.01 J, PSd 450·750 은 0.1 J",
+    "friction_compensation": "옵션 — 마찰 손실을 실제 충격 이동 거리에 맞춰 표시값에서 뺀다"
+  },
+  "features": [
+    "충격 에너지를 각도 또는 위치에너지로 표시",
+    "마찰 보상 옵션",
+    "계장 시험용 2 채널 측정계 — 샘플링 최대 10 MHz, 차단주파수 최대 300 kHz, 자유 채널 1(±10 V)",
+    "DIN EN ISO 14556 자동 해석 알고리즘",
+    "시편에 맞춰 바꿔 다는 지지대(중앙 지지블록)",
+    "폴리카보네이트 판 보호 인클로저(DIN 51233)",
+    "DIN EN ISO 13849-1 인증 안전 제어 — 문이 열려 있으면 해머가 걸리지 않고, 즉시 제동",
+    "해머 잘못 장착 방지 구조"
+  ],
+  "options": [
+    "마찰 보상",
+    "터치스크린 PC(외부 컴퓨터 불필요)",
+    "추가 변환기 통합",
+    "저온 시편용 신속 타격 구성(PSd 750)",
+    "해머 에너지 업그레이드 키트"
+  ],
+  "relations": [
+    {"type": "performs", "target": "charpy_impact"},
+    {"type": "performs", "target": "izod_impact"},
+    {"type": "performs", "target": "tensile_impact"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/p50b-pendulum-impact-tester-psd-50.pdf", "pages": [1, 2, 3, 4, 5]},
+    {"file": "hegewald-peschke/p450b-pendulum-impact-tester-psd-450.pdf", "pages": [1, 2, 3, 4, 5, 9]},
+    {"file": "hegewald-peschke/p750b-pendulum-impact-tester-psd-750.pdf", "pages": [1, 2, 3, 4, 5, 8]}
+  ],
+  "confidence": "catalog",
+  "notes": "세 문서가 항목을 같은 순서로 적지 않아 기종마다 확정되는 값이 다르다 — PSd 450 은 충격속도와 회전축-시편 거리가 적혀 있지 않고, PSd 50 은 낙하각이 160° 고정으로만 나온다. 없는 값은 비워 뒀다. 무게는 PSd 750(750 J 구성) 것만 나온다. 각 문서의 부속 목록에 해머별 질량·에너지가 흩어져 있어 해머 등급별로 정리했다."
+}

@@ -1,0 +1,36 @@
+{
+  "id": "rs-esw-emi-receiver",
+  "kind": "equipment_series",
+  "name": "Rohde & Schwarz ESW EMI Test Receiver (ESW8 / ESW26 / ESW44)",
+  "name_ko": "로데슈바르츠 ESW EMI 시험 수신기",
+  "manufacturer": "rohde-schwarz",
+  "brand": "ESW",
+  "category": "emi_receiver",
+  "form_factor": "rack",
+  "description": "CISPR 16-1-1 준거 EMI 시험 수신기. ESW8 은 2 Hz~8 GHz, ESW26 은 2 Hz~26.5 GHz, ESW44 는 2 Hz~44 GHz 를 커버한다(10 MHz 이상은 프리셀렉션 경로). 전자파 방사·전도 방출 인증 측정용으로 프리셀렉터·프리앰프를 내장하며 시간영역 스캔(FFT 기반)으로 측정 시간을 크게 단축한다.",
+  "test_items": ["emi_emission"],
+  "measurands": ["radiated_emission", "conducted_emission", "quasi_peak_level", "average_level"],
+  "materials": ["consumer electronics", "IT equipment", "home appliances", "automotive electronics", "medical devices", "network equipment", "lighting"],
+  "standards": {
+    "compliance": ["CISPR 16-1-1"],
+    "test_methods": ["CISPR 11", "CISPR 14-1", "CISPR 22 / EN 55032", "CISPR 25", "MIL-STD-461", "FCC Part 15", "EN 55014-1", "DO-160"]
+  },
+  "limits": {
+    "frequency_Hz": {"min": 2, "max": 44000000000, "note": "모델별: ESW8 2 Hz~8 GHz, ESW26 2 Hz~26.5 GHz, ESW44 2 Hz~44 GHz. 프리셀렉션 경로는 10 MHz 부터"},
+    "resolution_bandwidth_Hz": {"max": 1000000, "note": "CISPR 대역폭 200 Hz / 9 kHz / 120 kHz / 1 MHz 포함"}
+  },
+  "models": [
+    {"model": "R&S ESW8", "specs": {"frequency_range": "2 Hz ~ 8 GHz", "preselected_path": "10 MHz ~ 8 GHz"}},
+    {"model": "R&S ESW26", "specs": {"frequency_range": "2 Hz ~ 26.5 GHz", "preselected_path": "10 MHz ~ 26.5 GHz"}},
+    {"model": "R&S ESW44", "specs": {"frequency_range": "2 Hz ~ 44 GHz", "preselected_path": "10 MHz ~ 44 GHz"}}
+  ],
+  "features": ["프리셀렉터·프리앰프 내장", "FFT 기반 시간영역 스캔", "CISPR 준거 검파기(QP/AV/RMS/CISPR-AV)", "실시간 스펙트로그램", "1 GHz 이하 저대역 경로 별도 제공"],
+  "options": ["R&S ESW-B4 OCXO 기준 발진기(위상잡음 개선)", "고정밀 주파수 기준 옵션", "추가 검파기·대역폭 옵션"],
+  "relations": [
+    {"type": "performs", "target": "emi_emission"},
+    {"type": "same_family_as", "target": "keysight-n9048b-pxe"},
+    {"type": "requires", "target": "utility-emc-chamber"}
+  ],
+  "sources": [{"file": "rohde-schwarz/esw-emi-test-receiver-datasheet.pdf", "pages": [3, 4, 6, 7]}],
+  "confidence": "catalog"
+}

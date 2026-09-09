@@ -1,0 +1,56 @@
+{
+  "id": "chroma-63200-dc-load",
+  "kind": "equipment_series",
+  "name": "Chroma 63200 Series Programmable DC Electronic Load",
+  "name_ko": "크로마 63200 시리즈 프로그래머블 DC 전자부하",
+  "manufacturer": "chroma",
+  "brand": "63200",
+  "category": "electronic_load",
+  "form_factor": "rack",
+  "description": "고전력 프로그래머블 DC 전자부하. 12개 모델(63201~63212)이 정격 260 W 부터 15600 W 까지를 덮고, 병렬 조합 시 최대 93.6 kW. 모든 모델이 저전류/고전류 두 레인지를 갖는 이중 레인지 구조이며, 정격 전력도 레인지에 따라 1/10 로 나뉜다. 전압 레인지는 80 V / 600 V / 1000 V 세 계열, 전류는 최대 1000 A. CC·CR·CV·CP 네 가지 동작 모드와 동적 부하(T1/T2 0.025 ms~30 s, 최대 20 kHz)를 지원한다. 전 파워 MOSFET 을 병렬 접속한 전류 폐루프 설계로 매우 낮은 전압에서도 큰 전류를 흘린다(63209 는 1 V 입력에서 1000 A). 63201 은 정격의 200 % 인 약 5200 W 오버드라이브와 듀티 5 % 에서 6500 W(250 %) 펄스가 가능하다(63211·63212 는 미지원).",
+  "test_items": ["power_consumption", "battery_cycle_life"],
+  "measurands": ["voltage_dc", "current_dc", "power_dc", "load_regulation", "transient_response"],
+  "materials": ["power supplies", "SMPS", "battery packs", "fuel cells", "chargers", "DC-DC converters", "PV inverters"],
+  "standards": {"compliance": ["CE"], "test_methods": []},
+  "limits": {
+    "voltage_V": {"min": 0, "max": 1000, "note": "계열별 0~80 V / 0~600 V / 10~1000 V. 정격 전압의 1.1배를 넘기면 영구 손상"},
+    "current_A": {"min": 0, "max": 1000, "note": "모델·레인지별. 최대는 63209 의 0~1000 A"},
+    "power_W": {"min": 260, "max": 15600, "note": "단일 유닛 고레인지 정격(주위 25 °C). 저레인지는 1/10. 병렬 조합 시 최대 93.6 kW"},
+    "dynamic_frequency_Hz": {"max": 20000, "note": "동적 부하. T1/T2 0.025~10 ms(분해능 1 µs) 또는 1 ms~30 s(분해능 1 ms)"},
+    "slew_rate_A_us": {"max": 41.6, "note": "최대는 63209 고레인지 166 mA~41.6 A/µs"},
+    "min_rise_time_us": {"min": 20, "max": 150, "note": "전형값. 63201~63205 는 24 µs, 63206~63209 는 20 µs, 63210 은 150 µs, 63211·63212 는 24 µs"}
+  },
+  "accuracy": {
+    "cc": "저레인지 0.1 %+0.1 %F.S. / 고레인지 0.2 %+0.1 %F.S. (모델에 따라 0.1 %+0.2 %F.S.)",
+    "cv": "0.05 %+0.1 %F.S.",
+    "cp": "0.5 %+0.5 %F.S.",
+    "voltage_readback": "0.05 %+0.05 %F.S.",
+    "current_readback": "0.1 %+0.1 %F.S.",
+    "power_readback": "0.3 %+0.3 %F.S. (Power F.S. = Vrange × Irange F.S.)",
+    "dynamic_slew": "10 % ± 20 µs"
+  },
+  "models": [
+    {"model": "63201", "specs": {"power_W": [260, 2600], "current_A": [[0, 30], [0, 300]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 15 A / 1 V @ 30 A", "0.5 V @ 150 A / 1 V @ 300 A"], "cc_resolution_mA": [7.7, 77], "cr_range_ohm": [[0.005, 20], [0.25, 1000]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[0.6, 260], [6, 2600]], "slew_rate": ["5 mA~1.25 A/µs", "50 mA~12.5 A/µs"], "short_circuit_A": [30, 300], "dimensions_mm": {"H": 177, "W": 440, "D": 589}, "weight_kg": 30, "overdrive_W": 5200, "pulse_W": 6500, "pulse_duty_pct": 5}},
+    {"model": "63202", "specs": {"power_W": [260, 2600], "current_A": [[0, 5], [0, 50]], "voltage_V": [0, 600], "min_operating_voltage": ["1.5 V @ 2.5 A / 3 V @ 5 A", "1.5 V @ 25 A / 3 V @ 50 A"], "cc_resolution_mA": [1.4, 14], "cr_range_ohm": [[0.25, 1000], [10, 40000]], "cv_range_V": [[0, 150], [0, 600]], "cp_range_W": [[0.625, 260], [6.25, 2600]], "slew_rate": ["0.8 mA~0.2 A/µs", "8 mA~2 A/µs"], "short_circuit_A": [5, 50], "dimensions_mm": {"H": 177, "W": 440, "D": 589}, "weight_kg": 30}},
+    {"model": "63203", "specs": {"power_W": [520, 5200], "current_A": [[0, 60], [0, 600]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 30 A / 1 V @ 60 A", "0.5 V @ 300 A / 1 V @ 600 A"], "cc_resolution_mA": [16, 160], "cr_range_ohm": [[0.0025, 10], [0.125, 500]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[1.2, 520], [12, 5200]], "slew_rate": ["10 mA~2.5 A/µs", "100 mA~25 A/µs"], "short_circuit_A": [60, 600], "dimensions_mm": {"H": 353, "W": 440, "D": 589}, "weight_kg": 62}},
+    {"model": "63204", "specs": {"power_W": [520, 5200], "current_A": [[0, 10], [0, 100]], "voltage_V": [0, 600], "min_operating_voltage": ["1.5 V @ 5 A / 3 V @ 10 A", "1.5 V @ 50 A / 3 V @ 100 A"], "cc_resolution_mA": [2.8, 28], "cr_range_ohm": [[0.125, 500], [5, 20000]], "cv_range_V": [[0, 150], [0, 600]], "cp_range_W": [[1.25, 520], [12.5, 5200]], "slew_rate": ["1.6 mA~0.4 A/µs", "16 mA~4 A/µs"], "short_circuit_A": [10, 100], "dimensions_mm": {"H": 353, "W": 440, "D": 589}, "weight_kg": 62}},
+    {"model": "63205", "specs": {"power_W": [650, 6500], "current_A": [[0, 18], [0, 180]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 9 A / 1 V @ 18 A", "0.5 V @ 90 A / 1 V @ 180 A"], "cc_resolution_mA": [5.2, 52], "cr_range_ohm": [[0.008, 32], [0.4, 1600]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[0.36, 650], [3.6, 6500]], "slew_rate": ["3 mA~0.75 A/µs", "30 mA~7.5 A/µs"], "short_circuit_A": [18, 180], "dimensions_mm": {"H": 310, "W": 440, "D": 589}, "weight_kg": 62}},
+    {"model": "63206", "specs": {"power_W": [1040, 10400], "current_A": [[0, 60], [0, 600]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 30 A / 1 V @ 60 A", "0.5 V @ 300 A / 1 V @ 600 A"], "cc_resolution_mA": [21, 170], "cr_range_ohm": [[0.0025, 10], [0.125, 500]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[1.2, 1040], [12, 10400]], "slew_rate": ["10 mA~3 A/µs", "100 mA~25 A/µs"], "short_circuit_A": [60, 600], "dimensions_mm": {"H": 443.7, "W": 440, "D": 589}, "weight_kg": 90}},
+    {"model": "63207", "specs": {"power_W": [1040, 10400], "current_A": [[0, 30], [0, 300]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 15 A / 1 V @ 30 A", "0.5 V @ 150 A / 1 V @ 300 A"], "cc_resolution_mA": [10.3, 82], "cr_range_ohm": [[0.005, 20], [0.25, 1000]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[0.744, 1040], [6, 10400]], "slew_rate": ["6 mA~1.5 A/µs", "50 mA~12.5 A/µs"], "short_circuit_A": [30, 300], "dimensions_mm": {"H": 443.7, "W": 440, "D": 589}, "weight_kg": 90}},
+    {"model": "63208", "specs": {"power_W": [1560, 15600], "current_A": [[0, 60], [0, 600]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 30 A / 1 V @ 60 A", "0.5 V @ 300 A / 1 V @ 600 A"], "cc_resolution_mA": [21, 163], "cr_range_ohm": [[0.0025, 10], [0.125, 500]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[1.2, 1560], [12, 15600]], "slew_rate": ["12 mA~3 A/µs", "100 mA~25 A/µs"], "short_circuit_A": [60, 600], "dimensions_mm": {"H": 762.8, "W": 546, "D": 700}, "weight_kg": 170}},
+    {"model": "63209", "specs": {"power_W": [1560, 15600], "current_A": [[0, 100], [0, 1000]], "voltage_V": [0, 80], "min_operating_voltage": ["0.5 V @ 50 A / 1 V @ 100 A", "0.5 V @ 500 A / 1 V @ 1000 A"], "cc_resolution_mA": [34.2, 274], "cr_range_ohm": [[0.0015, 6], [0.075, 300]], "cv_range_V": [[0, 16], [0, 80]], "cp_range_W": [[2.5, 1560], [20, 15600]], "slew_rate": ["20 mA~5 A/µs", "166 mA~41.6 A/µs"], "short_circuit_A": [100, 1000], "dimensions_mm": {"H": 762.8, "W": 546, "D": 700}, "weight_kg": 170, "note": "1 V 입력에서 1000 A 인출 가능. 캐비닛형"}},
+    {"model": "63210", "specs": {"power_W": [1450, 14500], "current_A": [[0, 15], [0, 150]], "voltage_V": [0, 600], "min_operating_voltage": ["1.5 V @ 7.5 A / 3 V @ 15 A", "1.5 V @ 75 A / 3 V @ 150 A"], "cc_resolution_mA": [4.9, 39], "cr_range_ohm": [[0.1, 400], [5, 20000]], "cv_range_V": [[0, 150], [0, 600]], "cp_range_W": [[5, 1450], [50, 14500]], "slew_rate": ["3 mA~0.75 A/µs", "25 mA~6 A/µs"], "min_rise_time_us": 150, "short_circuit_A": [15, 150], "dimensions_mm": {"H": 762.8, "W": 546, "D": 700}, "weight_kg": 170, "note": "캐비닛형"}},
+    {"model": "63211", "specs": {"power_W": [15600, 15600], "current_A": [[0, 30], [0, 150]], "voltage_V": [10, 1000], "min_operating_voltage": ["5 V @ 15 A / 10 V @ 30 A", "5 V @ 75 A / 10 V @ 150 A"], "cc_resolution_mA": [7.5, 37.5], "cr_range_ohm": [[0.2, 200], [8, 8000]], "cv_range_V": [[0, 250], [0, 1000]], "cp_range_W": [[2.5, 1560], [20, 15600]], "slew_rate": ["5 mA~1.25 A/µs", "25 mA~6.25 A/µs"], "short_circuit_A": [30, 150], "dimensions_mm": {"H": 762.8, "W": 546, "D": 700}, "weight_kg": 170, "note": "1000 V 계열. 오버드라이브 미지원. 캐비닛형"}},
+    {"model": "63212", "specs": {"power_W": [10000, 10000], "current_A": [[0, 30], [0, 150]], "voltage_V": [10, 1000], "min_operating_voltage": ["5 V @ 15 A / 10 V @ 30 A", "5 V @ 75 A / 10 V @ 150 A"], "cc_resolution_mA": [7.5, 37.5], "cr_range_ohm": [[0.2, 200], [8, 8000]], "cv_range_V": [[0, 250], [0, 1000]], "cp_range_W": [[2.5, 1000], [20, 10000]], "slew_rate": ["5 mA~1.25 A/µs", "25 mA~6.25 A/µs"], "short_circuit_A": [30, 150], "dimensions_mm": {"H": 762.8, "W": 546, "D": 700}, "weight_kg": 170, "note": "1000 V 계열. 오버드라이브 미지원. 캐비닛형"}}
+  ],
+  "operating_modes": ["CC (정전류)", "CR (정저항)", "CV (정전압)", "CP (정전력)"],
+  "input_rating": "1Ø 100/200 Vac ±10 % V_LN, 47~63 Hz 또는 1Ø 115/230 Vac ±10 % V_LN, 47~63 Hz",
+  "features": ["이중 전류·전력 레인지(자동 전환)", "병렬 운전 최대 93.6 kW", "동적 부하 20 kHz", "전류 폐루프 병렬 MOSFET 설계", "전용 원격 부하 센싱·제어 회로", "전압·전류·전력 동시 표시(3개 LED 표시부)", "단시간 오버드라이브·펄스 부하(63211·63212 제외)"],
+  "relations": [
+    {"type": "performs", "target": "power_consumption"},
+    {"type": "same_family_as", "target": "chroma-61500-ac-source"}
+  ],
+  "sources": [{"file": "chroma/63200-programmable-dc-electronic-load.pdf", "pages": [1, 2, 3, 8, 9, 10, 11], "note": "SPECIFICATIONS-1~4 원본 쪽을 이미지로 렌더링해 12개 모델 전체 확정(2026-09-09)"}],
+  "confidence": "catalog",
+  "notes": "정격 전력은 주위 온도 25 °C 기준이며 그 이상에서는 디레이팅이 필요하다(카탈로그 디레이팅 곡선 참조). CR 모드 정확도는 Vin 이 각 모델의 최소 동작 전압보다 커야 성립하고, Vin>7 V 조건의 별도 확도 값이 병기되어 있다. CRL 레인지에서 R<0.005 Ω 이면 설정 오차가 1 % 가 된다."
+}

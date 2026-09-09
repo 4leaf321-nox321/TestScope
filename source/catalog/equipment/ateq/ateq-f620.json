@@ -1,0 +1,40 @@
+{
+  "id": "ateq-f620",
+  "kind": "equipment_model",
+  "name": "ATEQ F620 Differential Pressure Decay Leak Tester",
+  "name_ko": "아텍 F620 차압 감쇠식 누설 시험기",
+  "manufacturer": "ateq",
+  "brand": "F620",
+  "category": "pressure_decay_leak_tester",
+  "form_factor": "benchtop",
+  "description": "기준 용기와 시험품 사이의 차압 감쇠(differential pressure decay)로 누설을 측정하는 시험기. ΔP 풀스케일을 50 Pa / 500 Pa / 5000 Pa 중 선택하며, 50 Pa 레인지는 분해능 0.1 Pa. 최대 시험 압력 3 bar(20 Pa 레인지 조건). 전면 패널에서 교정 누설(calibrated leak)로 수동 교정할 수 있고, 9개 입력·5개 로컬 출력을 갖춰 생산라인 통합이 쉽다. 결과는 ΔP(Pa, 0.1 Pa) 및 ΔP/t(Pa/s, 0.1 Pa/s) 로 출력. 유체·전기 부품, 식품·화장품 포장의 기밀 검사에 사용.",
+  "test_items": ["leak_rate"],
+  "measurands": ["leak_rate", "pressure_drop", "pressure_decay_slope"],
+  "materials": ["fluid components", "electrical components", "connectors", "housings", "food packaging", "cosmetic packaging", "medical devices"],
+  "standards": {"compliance": [], "test_methods": ["ASTM F2095 (압력 감쇠법)", "IEC 60529 (IP 등급 보조 검증)"]},
+  "limits": {
+    "differential_pressure_Pa": {"max": 5000, "note": "풀스케일 50 Pa / 500 Pa / 5000 Pa 중 선택"},
+    "pressure_resolution_Pa": {"min": 0.1, "note": "50 Pa 레인지 기준. 500 Pa 레인지는 1 Pa"},
+    "test_pressure_bar": {"max": 3, "note": "20 Pa 레인지 조건에서의 최대 시험 압력"}
+  },
+  "accuracy": {
+    "50_Pa_range": "±(1.0 % of reading + 0.5 Pa)",
+    "500_Pa_range": "±(0.5 % of reading + 0.5 Pa)",
+    "5000_Pa_range": "±(0.5 % of reading + 5 Pa)"
+  },
+  "models": [
+    {"model": "F620", "specs": {"dp_full_scale_Pa": [50, 500, 5000], "resolution_Pa": [0.1, 1], "max_test_pressure_bar": 3, "io": "입력 9 / 로컬 출력 5", "dual_pressure": true}}
+  ],
+  "features": ["차압 감쇠식 누설 측정", "ΔP 풀스케일 3단 선택", "전면 패널 수동 교정(교정 누설)", "듀얼 압력", "USB 키로 파라미터·결과 전송", "5 시리즈 호환 I/O"],
+  "outputs": ["ΔP (Pa, 0.1 Pa)", "ΔP/t (Pa/s, 0.1 Pa/s)"],
+  "relations": [
+    {"type": "performs", "target": "leak_rate"},
+    {"type": "same_family_as", "target": "inficon-leak-detectors"}
+  ],
+  "sources": [
+    {"file": "ateq/f620-leak-test-instrument.pdf", "pages": [1, 2]},
+    {"file": "ateq/f620-primus-brochure.pdf", "pages": [1, 2, 3]}
+  ],
+  "confidence": "catalog",
+  "notes": "레인지별 확도 3개 값과 레인지 3개의 대응 관계는 추출 순서로 추정했다. 원본 사양표에서 재확인 필요(uncertain 성격)."
+}

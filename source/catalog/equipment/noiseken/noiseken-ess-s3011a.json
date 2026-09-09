@@ -1,0 +1,40 @@
+{
+  "id": "noiseken-ess-s3011a",
+  "kind": "equipment_model",
+  "name": "Noiseken ESS-S3011A Electrostatic Discharge Simulator",
+  "name_ko": "노이즈켄 ESS-S3011A 정전기 방전 시뮬레이터",
+  "manufacturer": "noiseken",
+  "brand": "ESS",
+  "category": "esd_simulator",
+  "form_factor": "portable",
+  "description": "인체·물체에 대전된 정전기가 전자기기로 방전되는 현상을 재현하는 ESD 시뮬레이터. 출력 0.20~30.0 kV(최대 30.5 kV), 접촉/기중 방전 모두 지원하며 IEC 61000-4-2 Ed.2 및 ISO 10605(자동차)에 대응한다. CR 유닛(방전 저항·커패시터 일체형)을 교체해 규격별 방전 회로망을 구성하고, 본체 화면이 장착된 CR 유닛·방전 컵 조합의 규격 적합 여부를 자동 인식한다. 업계 최경량 방전건과 기중 방전 시 방전 유무를 확인하는 방전 검출 기능(부저·건 상단 LED)이 특징.",
+  "test_items": ["esd_immunity"],
+  "measurands": ["esd_withstand_voltage", "discharge_current_waveform", "immunity_level"],
+  "materials": ["consumer electronics", "mobile devices", "home appliances", "automotive electronics", "medical devices", "network equipment"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["IEC 61000-4-2 Ed.2", "EN 61000-4-2", "ISO 10605 1st Ed.", "ISO 10605 2nd Ed.", "JIS C 61000-4-2"]
+  },
+  "limits": {
+    "esd_voltage_kV": {"min": 0.2, "max": 30.0, "note": "최대 30.5 kV. 0.20~1.99 kV ±10 %, 2.00~30.0 kV ±5 %. 설정 스텝 0.20~10.0 kV 는 0.01 kV, 10.0~30.0 kV 는 0.1 kV"},
+    "discharge_mode": {"values": ["contact", "air"]},
+    "polarity": {"values": ["positive", "negative"]}
+  },
+  "models": [
+    {"model": "ESS-S3011A", "specs": {"output_voltage_kV": {"min": 0.2, "max": 30.0, "max_absolute": 30.5}, "discharge_modes": ["contact", "air"], "preset_levels_contact_kV": [2.0, 4.0, 6.0, 8.0], "preset_levels_air_kV": [2.0, 4.0, 8.0, 15.0], "arbitrary_setting_kV": {"min": 0.2, "max": 30.0}}}
+  ],
+  "consumables": [
+    {"name": "CR 유닛 150 pF / 330 Ω", "standard": "IEC 61000-4-2 Ed.2, ISO 10605 2nd Ed."},
+    {"name": "CR 유닛 330 pF / 330 Ω", "standard": "ISO 10605 2nd Ed."},
+    {"name": "CR 유닛 150 pF / 2 kΩ", "standard": "ISO 10605 1st Ed. & 2nd Ed."},
+    {"name": "방전 팁 GT-30R (구형 30 mm)"}
+  ],
+  "features": ["업계 최경량 방전건", "방전 검출 기능(기중 방전 확인)", "CR 유닛·방전 컵 자동 인식 및 규격 적합 판정", "방전 릴레이 마모 자가 점검", "리모트 컨트롤러(극성·전압·모드·트리거)", "방전 저항/커패시터 상수 화면 표시"],
+  "options": ["방전건 프로브 스탠드", "ISO 10605 대응 방전건 패키지", "수직/수평 결합판(VCP/HCP)"],
+  "relations": [
+    {"type": "performs", "target": "esd_immunity"},
+    {"type": "same_family_as", "target": "teseq-nsg-438"}
+  ],
+  "sources": [{"file": "noiseken/ess-s3011a-esd-simulator-2023.pdf", "pages": [1, 2, 3, 8]}],
+  "confidence": "catalog"
+}

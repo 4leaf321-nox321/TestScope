@@ -1,0 +1,26 @@
+{
+  "id": "mitutoyo-hardmatic-ud-410-leeb",
+  "kind": "equipment_series",
+  "name": "Mitutoyo Hardmatic UD-410 portable Leeb hardness tester (detectors UD-411/412/413/414)",
+  "name_ko": "미쓰토요 Hardmatic UD-410 휴대형 리브 경도계",
+  "manufacturer": "mitutoyo",
+  "category": "portable_hardness",
+  "form_factor": "handheld",
+  "description": "리브 반발식 휴대 경도계. 표시부 UD-410 에 검출기 D(UD-411), DC(UD-412), D+15(UD-413), DL(UD-414) 을 조합. 시험편 520–880 HLD.",
+  "test_items": ["hardness_leeb"],
+  "measurands": ["hardness_HL"],
+  "materials": ["steel", "cast iron", "large components", "cylinder inner walls", "gear teeth"],
+  "standards": {"compliance": [], "test_methods": ["ASTM A956", "ISO 16859"]},
+  "limits": {"hardness_scales": {"values": ["HLD", "HLDC", "HLD+15", "HLDL"]}},
+  "models": [
+    {"model": "UD-411 (type D)", "specs": {"probe_dimensions_mm": "Ø28 × 175", "weight_g": 120}},
+    {"model": "UD-412 (type DC)", "specs": {"probe_dimensions_mm": "Ø22 × 85", "weight_g": 50, "note": "confined spaces"}},
+    {"model": "UD-413 (type D+15)", "specs": {"probe_dimensions_mm": "Ø28 × 190", "weight_g": 130, "note": "narrow slots"}},
+    {"model": "UD-414 (type DL)", "specs": {"probe_dimensions_mm": "Ø28 × 230", "weight_g": 140, "note": "slots, welded corners"}}
+  ],
+  "options": ["stop caps for convex/concave cylindrical & spherical surfaces (R10–27.5 mm)", "test blocks 520/620/730/830/880 HLD", "DP-1VR printer"],
+  "relations": [],
+  "sources": [{"file": "mitutoyo/hardness-testing-equipment-pre1101.pdf", "pages": [32]}],
+  "confidence": "limited",
+  "notes": "본체 사양(측정 범위·환산) 페이지가 덤프에 안 잡힘 — 원본 p30–31 확인."
+}

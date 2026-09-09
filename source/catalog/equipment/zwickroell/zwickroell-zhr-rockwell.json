@@ -1,0 +1,33 @@
+{
+  "id": "zwickroell-zhr-rockwell",
+  "kind": "equipment_series",
+  "name": "ZwickRoell (Indentec) ZHR4045 / ZHR4150 / ZHR8150 / ZHR8150CLK Rockwell hardness testers",
+  "name_ko": "즈윅로엘(Indentec) ZHR 시리즈 로크웰 경도계",
+  "manufacturer": "zwickroell",
+  "brand": "Indentec",
+  "category": "rockwell_hardness",
+  "form_factor": "benchtop",
+  "description": "ZHR4150 로크웰(예압 10 kg, 60/100/150 kg), ZHR4045 슈퍼피셜(예압 3 kg, 15/30/45 kg), ZHR8150 복합(데드웨이트, 15–150 kg), ZHR8150CLK 폐루프 하중(최대 250 kg; 로크웰·플라스틱·카본·볼압입·HBT·HVT·브리넬 압흔). 코 장착 압입자로 접근성. 시험 공간 250×150 mm(확장 379).",
+  "test_items": ["hardness_rockwell", "hardness_brinell", "hardness_vickers"],
+  "measurands": ["hardness_HR", "hardness_HBT", "hardness_HVT"],
+  "materials": ["metals", "plastics", "carbonaceous materials", "gear parts", "bolts", "bearing rings"],
+  "standards": {"compliance": ["UKAS / ISO 17025 calibration"], "test_methods": ["ISO 6508", "ASTM E18", "ISO 2039-2", "ASTM D785", "ISO 2039-1", "DIN 51917", "ISO 6506", "ASTM E10"]},
+  "limits": {
+    "test_load_kgf": {"min": 6.25, "max": 250, "values": [15, 30, 45, 60, 100, 150, 250]},
+    "hardness_scales": {"values": ["HRA–HRV", "HR15/30/45 N/T/W/X/Y", "HRα plastics E/L/M/R", "HR2.5 ball", "HBT", "HVT 10–100", "ball indentation 49–961 N"]},
+    "specimen_height_mm": {"max": 379, "note": "표준 250, 확장 379"},
+    "throat_depth_mm": {"values": [150]}
+  },
+  "models": [
+    {"model": "ZHR4150", "specs": {"test_load_kgf": [60, 100, 150], "preliminary_force_kgf": 10, "loading": "dead weight", "specimen_height_mm": 250, "footprint_mm": {"H": 800, "W": 260, "D": 670}, "weight_kg": 90}},
+    {"model": "ZHR4045", "specs": {"test_load_kgf": [15, 30, 45], "preliminary_force_kgf": 3, "loading": "dead weight", "specimen_height_mm": 250, "weight_kg": 90}},
+    {"model": "ZHR8150", "specs": {"test_load_kgf": [15, 30, 45, 60, 100, 150], "preliminary_force_kgf": [3, 10], "loading": "dead weight", "specimen_height_mm": 250, "weight_kg": 90}},
+    {"model": "ZHR8150CLK", "specs": {"test_load_kgf": {"min": 6.25, "max": 250}, "loading": "closed loop", "specimen_height_mm": 250, "footprint_mm": {"H": 800, "W": 260, "D": 670}, "weight_kg": 60}}
+  ],
+  "accuracy": {"resolution": "0.1 HR", "dwell": "1–50 s"},
+  "environment": {"power": "120 or 240 V 50/60 Hz"},
+  "options": ["operating concepts AK/BK/LK/SK/TK", "specimen clamp", "motorised leadscrew", "extended height", "high-resolution Brinell microscope", "testXpert II/III data logging"],
+  "relations": [{"type": "same_family_as", "target": "zwickroell-zhu250"}],
+  "sources": [{"file": "zwickroell/zhr4045-4150-8150-rockwell-pi-en.pdf", "pages": [1, 2, 3]}, {"file": "zwickroell/zhr8150clk-rockwell-pi-en.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog"
+}

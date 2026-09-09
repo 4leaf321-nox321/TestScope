@@ -1,0 +1,30 @@
+{
+  "id": "zwickroell-durascan-g5",
+  "kind": "equipment_series",
+  "name": "DuraScan G5 semi-automatic hardness testing machine (DuraScan 10 G5 / 20 G5)",
+  "name_ko": "즈윅로엘(EMCO-TEST) DuraScan G5 반자동 마이크로 경도계",
+  "manufacturer": "zwickroell",
+  "brand": "EMCO-TEST",
+  "category": "vickers_knoop_hardness",
+  "form_factor": "benchtop",
+  "description": "폐루프 하중 10 gf–62.5 kgf(옵션 0.25 gf–62.5 kgf). TopLoader(시험부가 시편으로 내려옴), 10 MP 카메라, 4× 줌. DuraScan 20 은 자동 6 위치 터렛, 10 은 수동 3 위치. ecos Workflow 소프트웨어.",
+  "test_items": ["hardness_vickers", "hardness_knoop", "hardness_brinell"],
+  "measurands": ["hardness_HV", "hardness_HK", "hardness_HB"],
+  "materials": ["steel", "automotive", "aerospace", "ceramics", "dental materials"],
+  "standards": {"compliance": [], "test_methods": ["DIN EN ISO 6507", "ASTM E384", "ASTM E92", "DIN EN ISO 4545", "DIN EN ISO 6506", "ASTM E10"]},
+  "limits": {
+    "test_load_gf": {"min": 0.25, "max": 62500, "note": "표준 10 gf–62.5 kgf, 옵션 0.25 gf–62.5 kgf"},
+    "hardness_scales": {"values": ["HV", "HK", "HBW"]},
+    "specimen_height_mm": {"max": 260},
+    "specimen_weight_kg": {"max": 50}
+  },
+  "models": [
+    {"model": "DuraScan 10 G5", "specs": {"test_load_gf": {"min": 10, "max": 62500}, "turret": "manual 3-position (auto 6 optional)", "specimen_height_mm": 260, "test_anvil": "Ø90 mm", "footprint_mm": {"W": 550, "H": 700, "D": 450}, "weight_kg": 85, "power_W": 120}},
+    {"model": "DuraScan 20 G5", "specs": {"test_load_gf": {"min": 10, "max": 62500}, "turret": "automatic 6-position", "specimen_height_mm": 245, "test_anvil": "135×135 mm", "positioning_accuracy_mm": 0.1, "weight_kg": 85, "power_W": 120}}
+  ],
+  "accuracy": {"z_speed_mm_s": "1.2–20"},
+  "environment": {"operating_temp_degC": [18, 28], "humidity_pct_max": 70, "power": "110–230 V, IP20"},
+  "relations": [{"type": "same_family_as", "target": "emco-test-duravision-g5"}],
+  "sources": [{"file": "zwickroell/durascan-g5-semi-automatic-pi-en.pdf", "pages": [1, 2, 4]}],
+  "confidence": "catalog"
+}

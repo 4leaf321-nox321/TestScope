@@ -1,0 +1,44 @@
+{
+  "id": "espec-qualmark-halt-hass",
+  "kind": "equipment_series",
+  "name": "ESPEC Qualmark HALT/HASS Systems (T1.5 / T2.0 / T2.5 / T4.0, Typhoon 3.0V / 4.0V / 8.0V, OVS-4)",
+  "name_ko": "에스펙 퀄마크 HALT/HASS 시스템 (T 시리즈·타이푼 시리즈)",
+  "manufacturer": "espec",
+  "brand": "Qualmark",
+  "category": "halt_hass_chamber",
+  "drive": "repetitive_shock",
+  "form_factor": "floor",
+  "description": "6자유도 반복 충격(repetitive shock) 진동 테이블과 LN2 급속 열 시스템을 결합한 가속 수명(HALT)·스크리닝(HASS) 챔버. 온도 -100~+200 °C(고온 옵션 +250 °C), 열 램프 70 °C/min, 진동 5~75 gRMS. 테이블 18\"(457 mm) ~ 48\"(1219 mm), 타이푼 8.0V 는 110\" 폭. 전자제품의 설계 한계(operating/destruct limit)를 빠르게 드러내는 데 쓴다.",
+  "test_items": ["halt_hass", "vibration_sine_random", "temperature_cycling", "thermal_shock"],
+  "measurands": ["operating_limit", "destruct_limit", "failure_mode"],
+  "materials": ["electronic assemblies", "PCB", "consumer electronics", "avionics", "telecom equipment", "automotive ECU"],
+  "standards": {"compliance": ["CE (CE kit option)"], "test_methods": ["IEC 62506"]},
+  "limits": {
+    "temperature_degC": {"min": -100, "max": 250, "note": "표준 -100~+200; 고온 옵션 +250 (T2.5/T4.0)"},
+    "heating_rate_K_min": {"max": 70, "note": "-65~+85 °C 구간 평균, 빈 챔버 테이블 중심 3\" 위"},
+    "acceleration_gRMS": {"min": 5, "max": 75, "note": "베어 테이블 기준; 타이푼 시리즈는 60 gRMS 이상(특주 시 상향)"},
+    "table_size_mm": {"min": 457, "max": 2794},
+    "payload_kg": {"min": 45, "max": 907},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [
+    {"model": "Qualmark T1.5", "specs": {"table_size_mm": [457, 457], "actuators": 4, "payload_kg": 45, "acceleration_gRMS": {"min": 5, "max": 65}, "temperature_degC": {"min": -100, "max": 200}, "heating_rate_K_min": 70, "workspace_mm": [686, 686, 494], "footprint_mm": [985, 1194, 2055], "power": "208/230 V 1ph 70 A 또는 380–480 V 3ph 35 A"}},
+    {"model": "Qualmark T2.5", "specs": {"table_size_mm": [762, 762], "actuators": 8, "payload_kg": 145, "acceleration_gRMS": {"min": 5, "max": 75}, "temperature_degC": {"min": -100, "max": 200}, "temperature_degC_high_option": {"max": 250}, "heating_rate_K_min": 70, "workspace_mm_lower": [889, 889, 889], "workspace_mm_upper": [889, 889, 635], "footprint_mm": [1188, 1565, 2085], "power": "440/480 V 3ph 60 A 또는 380/400 V 3ph 80 A"}},
+    {"model": "Qualmark T4.0", "specs": {"table_size_mm": [1219, 1219], "actuators": 12, "payload_kg": 272, "acceleration_gRMS": {"min": 5, "max": 75}, "temperature_degC": {"min": -100, "max": 200}, "temperature_degC_high_option": {"max": 250}, "heating_rate_K_min": 70, "workspace_mm_lower": [1367, 1372, 1362], "workspace_mm_upper": [1367, 1372, 879], "footprint_mm": [1772, 1989, 2673], "power": "380–480 V 3ph 100 A"}},
+    {"model": "Typhoon 3.0V", "specs": {"table_size_mm": [914, 914], "actuators": 10, "payload_kg": 204, "payload_kg_max": 408, "acceleration_gRMS": {"min": 60}, "workspace_mm": [1120, 1143, 635], "footprint_mm": [1120, 1140, 889]}},
+    {"model": "Typhoon 8.0V", "specs": {"table_size_mm": [2540, 1220], "actuators": 24, "payload_kg": 454, "payload_kg_max": 907, "acceleration_gRMS": {"min": 60}, "workspace_mm": [2794, 1353, 1397], "note": "HALT/HASS 챔버 중 최대 진동 테이블"}}
+  ],
+  "environment": {"cooling": "vacuum-jacketed liquid nitrogen", "heating": "nichrome wire"},
+  "features": ["xLF2 진동 테이블 + PSD 관리", "High Rate/High Flow T-series 열 시스템", "PLC 제어", "Typhoon Manager 소프트웨어", "윤활 불필요(lubricant-free) 액추에이터"],
+  "options": ["진공 자켓 매니폴드", "스펙트럼 분석기", "교정 키트", "산소 센서", "HALT 지그 키트", "가속도계 키트", "GHI 스펙트럼·피로 분석기", "CE 키트", "Q-LINK 소프트웨어", "엘리베이션 스탠드"],
+  "relations": [
+    {"type": "requires", "target": "utility-liquid-nitrogen"},
+    {"type": "requires", "target": "utility-compressed-air"},
+    {"type": "simulates_environment", "target": "environment-thermal-shock"}
+  ],
+  "sources": [
+    {"file": "espec/qualmark-halt-hass-line.pdf", "pages": [7, 9, 11]},
+    {"file": "espec/qualmark-ovs-4-hass-datasheet.pdf", "pages": [4, 6, 16]}
+  ],
+  "confidence": "catalog"
+}

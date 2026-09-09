@@ -1,0 +1,41 @@
+{
+  "id": "netzsch-arc-244-305",
+  "kind": "equipment_series",
+  "name": "NETZSCH ARC 244 / ARC 305 Accelerating Rate Calorimeter",
+  "name_ko": "네취 ARC 244 / ARC 305 단열 가속 열량계",
+  "manufacturer": "netzsch",
+  "brand": "ARC",
+  "category": "accelerating_rate_calorimeter",
+  "form_factor": "floor",
+  "description": "단열(adiabatic) 조건에서 시료의 자기발열 반응을 추적해 열폭주(thermal runaway) 개시 온도, 발열량, 압력 상승을 정량하는 가속 속도 열량계. 시료가 스스로 낸 열이 온도를 올리고 다시 반응을 가속하는 최악 시나리오를 안전하게 재현한다. 리튬이온 전지 안전성 평가와 화학공정 안전(Process Safety) 평가의 표준 도구. ARC 244 는 비용 효율형(추적 속도 20 K/min, 시료 0.5~8.5 mL), ARC 305 는 고급형(추적 속도 200 K/min, 시료 0.5~130 mL, 에너지 물질 대응).",
+  "test_items": ["thermal_runaway_calorimetry", "battery_abuse"],
+  "measurands": ["onset_temperature", "self_heating_rate", "adiabatic_temperature_rise", "pressure_rise", "enthalpy_change", "reaction_kinetics"],
+  "materials": ["lithium-ion cells", "battery electrolytes", "cathode materials", "energetic materials", "chemical reactants", "pharmaceutical intermediates"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E1981 (해당 원리)", "UN 38.3 (보조 평가)", "GB/T 31485"]},
+  "limits": {
+    "temperature_degC": {"min": 20, "max": 500, "note": "RT ~ 500 °C (양 모델 동일). RT 는 실온"},
+    "pressure_bar": {"min": 0, "max": 150, "note": "표준 압력 범위"},
+    "sample_volume_mL": {"min": 0.5, "max": 130, "note": "ARC 244 는 0.5~8.5 mL, ARC 305 는 0.5~130 mL. 전형값이며 절대 한계는 아님"},
+    "tracking_rate_K_min": {"max": 200, "note": "ARC 244 20 K/min, ARC 305 200 K/min"},
+    "temperature_reproducibility_K": {"max": 0.1}
+  },
+  "models": [
+    {"model": "ARC 244", "specs": {"temperature_degC": {"min": 20, "max": 500}, "pressure_bar": {"min": 0, "max": 150}, "sample_volume_mL": {"min": 0.5, "max": 8.5}, "max_tracking_rate_K_min": 20, "temperature_reproducibility_K": 0.1, "lift": "전동식", "applications": ["공정 안전", "기존 데이터와의 비교"]}},
+    {"model": "ARC 305", "specs": {"temperature_degC": {"min": 20, "max": 500}, "pressure_bar": {"min": 0, "max": 150}, "sample_volume_mL": {"min": 0.5, "max": 130}, "max_tracking_rate_K_min": 200, "temperature_reproducibility_K": 0.1, "lift": "전동식", "vessels": "전통적 10 mL 구형 용기 및 130 mL 대형 용기", "applications": ["공정 안전", "에너지 물질(energetic materials)"]}}
+  ],
+  "operating_modes": ["Heat-Wait-Search", "정속 승온(Constant heating rate)", "등온(Isothermal)", "외부 화재 시나리오 모사(추가 가열)"],
+  "vessels": {
+    "spherical": {"volume_mL": {"min": 1, "max": 130}, "wall_thickness_mm": {"min": 0.4, "max": 0.9}, "materials": ["Hastelloy", "스테인리스강", "티타늄"]},
+    "tube_type": {"volume_mL": {"min": 1, "max": 8.5}, "wall_thickness_mm": {"min": 0.4, "max": 0.9}, "materials": ["스테인리스강", "티타늄"], "note": "에너지 물질, 고체·페이스트, VariPhi 모드용"},
+    "battery_holders": "상용 셀 규격별 전용 홀더 제공, 맞춤 용기 설계 가능"
+  },
+  "options": ["VariPhi 히터(낮은 Φ 인자, 시험 시간 75 % 이상 단축)", "교반(Stirring)", "주사기 주입(Injection)", "벤팅(Venting)", "열전대 추가", "반응속도(Kinetics) 소프트웨어"],
+  "features": ["단열 조건 자기발열 추적", "압력 의존 저 Φ 인자", "진정한 등온 열량계 모드(화학 시료)", "전동 리프트", "온도 재현성 0.1 K"],
+  "relations": [
+    {"type": "performs", "target": "thermal_runaway_calorimetry"},
+    {"type": "performs", "target": "battery_abuse"},
+    {"type": "same_family_as", "target": "netzsch-dsc-300-caliris"}
+  ],
+  "sources": [{"file": "netzsch/arc-accelerating-rate-calorimetry.pdf", "pages": [2, 11, 12, 13]}],
+  "confidence": "catalog"
+}

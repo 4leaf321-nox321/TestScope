@@ -1,0 +1,33 @@
+{
+  "id": "konica-minolta-cs-2000",
+  "kind": "equipment_series",
+  "name": "Konica Minolta CS-2000 / CS-2000A Spectroradiometer",
+  "name_ko": "코니카미놀타 CS-2000 / CS-2000A 분광복사휘도계",
+  "manufacturer": "konica-minolta",
+  "brand": "CS",
+  "category": "spectroradiometer",
+  "form_factor": "portable",
+  "description": "디스플레이 평가용 고정밀 분광복사휘도계. 휘도 0.0005 cd/m² 의 초저휘도부터 5000만 cd/m² 까지 측정한다. 반치폭 5 nm 이하로 전 파장 영역에서 CIE 색측정 정확도를 확보하고, 반사형 회절격자에서 발생하는 편광 오차를 1° 측정각 기준 2 % 수준으로 억제해 LCD 같은 편광 광원도 정확히 측정한다. 측정각은 1° / 0.2° / 0.1° 를 사용자가 선택.",
+  "test_items": ["photometry_colorimetry"],
+  "measurands": ["luminance", "chromaticity", "spectral_radiance", "correlated_color_temperature", "illuminance", "dominant_wavelength"],
+  "materials": ["LCD", "OLED", "micro LED", "signage", "automotive displays", "light sources", "projectors"],
+  "standards": {"compliance": ["JIS Z 8724 (반치폭 요구)"], "test_methods": ["CIE 15", "IEC 62341 (OLED 측정)", "VESA FPDM"]},
+  "limits": {
+    "luminance_cd_m2": {"min": 0.0005, "max": 50000000, "note": "CS-2000A 는 0.0005 cd/m² 부터. 색도 보증 하한은 CS-2000A 0.05 cd/m², CS-2000 0.1 cd/m²"},
+    "illuminance_lx": {"min": 1.0, "max": 7500000, "note": "측정각 0.1° 기준"},
+    "spectral_bandwidth_nm": {"max": 5, "note": "반치폭 5 nm 이하"},
+    "measuring_angle_deg": {"values": [1, 0.2, 0.1]},
+    "polarization_error_pct": {"max": 2, "note": "1° 측정각 기준"}
+  },
+  "models": [
+    {"model": "CS-2000A", "specs": {"luminance_cd_m2": {"min": 0.0005, "max": 50000000}, "chromaticity_min_cd_m2": 0.05, "spectral_bandwidth_nm": 5, "measuring_angles_deg": [1, 0.2, 0.1]}},
+    {"model": "CS-2000", "specs": {"luminance_cd_m2": {"min": 0.0005, "max": 50000000}, "chromaticity_min_cd_m2": 0.1, "spectral_bandwidth_nm": 5, "measuring_angles_deg": [1, 0.2, 0.1]}}
+  ],
+  "features": ["초저휘도 0.0005 cd/m² 측정", "반치폭 5 nm 이하", "편광 오차 2 % 이하", "측정각 1°/0.2°/0.1° 선택", "암소시(scotopic) 시감 함수 처리", "분광 그래프·분광 데이터 출력"],
+  "relations": [
+    {"type": "performs", "target": "photometry_colorimetry"},
+    {"type": "same_family_as", "target": "konica-minolta-ca-410"}
+  ],
+  "sources": [{"file": "konica-minolta/cs-2000-spectroradiometer-catalog.pdf", "pages": [2, 3, 4, 8]}],
+  "confidence": "catalog"
+}

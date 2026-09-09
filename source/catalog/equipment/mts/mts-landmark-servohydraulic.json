@@ -1,0 +1,38 @@
+{
+  "id": "mts-landmark-servohydraulic",
+  "kind": "equipment_series",
+  "name": "MTS Landmark Servohydraulic Test Systems (370.02 tabletop, 370.10 / 370.25 / 370.50 floor-standing, 100/200 Hz elastomer)",
+  "name_ko": "MTS Landmark 서보유압 시험기",
+  "manufacturer": "mts",
+  "brand": "Landmark",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "description": "5–500 kN 서보유압. 370.02 테이블형 25 kN(액추에이터 15/25 kN, 100/150 mm), 370.10 100 kN(15–100 kN), 370.25 250 kN, 370.50 500 kN. 엘라스토머 전용 100 Hz(370.02) / 200 Hz(370.10) 구성. FlexTest 컨트롤러, SilentFlo HPU. HCF/LCF/균열성장/파괴인성/TMF/부품 내구.",
+  "test_items": ["fatigue", "fracture_toughness", "thermomechanical_fatigue", "tensile", "compression", "flexure", "relaxation"],
+  "measurands": ["fatigue_life", "sn_curve", "da_dN", "K_IC", "J_IC", "dynamic_stiffness", "tan_delta"],
+  "materials": ["plastics", "elastomers", "aluminum", "composites", "steel", "super alloys"],
+  "standards": {"compliance": [], "test_methods": ["ASTM E466", "ASTM E606", "ASTM E647", "ASTM E399", "ASTM E1820", "ASTM E2368", "ISO 1099", "ISO 12106"]},
+  "limits": {
+    "dynamic_force_kN": {"min": 5, "max": 500, "values": [5, 15, 25, 50, 100, 250, 500]},
+    "stroke_mm": {"values": [100, 150, 250]},
+    "frequency_Hz": {"max": 200, "note": "200 Hz elastomer configuration; standard frames typically lower"},
+    "vertical_test_space_mm": {"min": 0, "max": 2129},
+    "horizontal_test_space_mm": {"values": [460, 533, 635, 762]},
+    "temperature_degC": {"note": "environmental chambers / furnaces (range per accessory)"},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "370.02 (tabletop)", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 25, "actuator_ratings_kN": [15, 25], "stroke_mm": [100, 150], "vertical_test_space_mm": {"min": 144, "max": 827, "max_extended": 1335}, "horizontal_test_space_mm": 460, "frame_stiffness_N_m": 345000000, "weight_kg": 248, "footprint_mm": {"base_W": 622, "base_D": 577, "H": 1989}}},
+    {"model": "370.02 Axial/Torsional (Bionix)", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 25, "torque_Nm": 250, "actuator_ratings": ["15 kN / 150 N·m", "25 kN / 250 N·m"], "rotation_deg": 270, "vertical_test_space_mm": {"min": 30, "max": 714, "max_extended": 1222}, "weight_kg": 322}},
+    {"model": "370.02 100 Hz Elastomer", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 25, "actuator_ratings_kN": [15, 25], "frequency_Hz": 100, "stroke_mm": [100, 150], "weight_kg": 286}},
+    {"model": "370.10", "form_factor": "floor", "specs": {"dynamic_force_kN": 100, "actuator_ratings_kN": [15, 25, 50, 100], "stroke_mm": [100, 150, 250], "vertical_test_space_mm": {"min": 140, "max": 1283, "max_extended": 1753}, "horizontal_test_space_mm": 533, "footprint_mm": {"base_W": 1018, "base_D": 698, "H": 2588}}},
+    {"model": "370.10 200 Hz Elastomer", "form_factor": "floor", "specs": {"dynamic_force_kN": 100, "actuator_ratings_kN": [15, 25], "frequency_Hz": 200, "stroke_mm": 100, "vertical_test_space_mm": {"min": 0, "max": 788}, "frame_stiffness_N_m": 467000000, "weight_kg": 635}},
+    {"model": "370.25", "form_factor": "floor", "specs": {"dynamic_force_kN": 250, "actuator_ratings_kN": [100, 250], "stroke_mm": [150, 250], "vertical_test_space_mm": {"min": 231, "max": 1621, "max_extended": 2129}, "horizontal_test_space_mm": 635, "footprint_mm": {"base_W": 1112, "base_D": 737, "H": 3095}}},
+    {"model": "370.50", "form_factor": "floor", "specs": {"dynamic_force_kN": 500, "actuator_ratings_kN": [250, 500], "stroke_mm": 150, "vertical_test_space_mm": {"min": 427, "max": 2085}, "horizontal_test_space_mm": 762, "footprint_mm": {"base_W": 1351, "base_D": 896, "H": 3688}}}
+  ],
+  "environment": {"hydraulic": "SilentFlo HPU, 21 MPa; service manifold 57/114 L/min"},
+  "options": ["FlexTest SE/40/60 controllers", "793.xx elastomer software", "hydraulic wedge grips", "environmental chambers", "furnaces", "extensometers", "Bionix EnviroBath"],
+  "relations": [{"type": "same_family_as", "target": "mts-bionix-tabletop"}],
+  "sources": [{"file": "mts/landmark-servohydraulic-brochure.pdf", "pages": [3, 16, 17]}, {"file": "mts/landmark-100hz-elastomer.pdf", "pages": [1, 3]}, {"file": "mts/landmark-200hz-elastomer.pdf", "pages": [1, 4]}, {"file": "mts/bionix-tabletop-brochure.pdf", "pages": [9, 10, 11]}],
+  "confidence": "catalog"
+}

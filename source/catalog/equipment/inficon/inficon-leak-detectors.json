@@ -1,0 +1,42 @@
+{
+  "id": "inficon-leak-detectors",
+  "kind": "equipment_series",
+  "name": "INFICON Helium / Hydrogen Leak Detectors (UL3000 Fab, UL6000 Fab, UL1000, XL3000flex, Protec P3000)",
+  "name_ko": "인피콘 헬륨·수소 누설 검출기",
+  "manufacturer": "inficon",
+  "brand": "UL / XL / Protec",
+  "category": "helium_leak_detector",
+  "form_factor": "mobile",
+  "description": "질량분석식 헬륨·수소 누설 검출기 제품군. 진공(vacuum) 방식 UL 시리즈는 ULTRATEST 센서로 5×10⁻¹² mbar·L/s 미만의 극미소 누설까지 검출하고, 스니퍼(sniffer) 방식 XL3000flex·Protec P3000 은 헬륨과 수소(5 % H₂ 포밍가스)를 5×10⁻⁷ mbar·L/s 감도로 잡아낸다. UL6000 Fab 은 헬륨 배기속도 36 L/s 이상으로 반도체 팹의 대형 챔버를 빠르게 검사하고, UL3000 Fab ULTRA 는 I·CAL 알고리즘으로 10⁻⁹~10⁻¹² mbar·L/s 구간을 신속 측정한다. 리튬이온 전지 기밀 검사에도 사용된다.",
+  "test_items": ["leak_rate"],
+  "measurands": ["leak_rate", "helium_concentration", "hydrogen_concentration"],
+  "materials": ["lithium-ion cells", "semiconductor process chambers", "vacuum systems", "heat exchangers", "refrigeration systems", "automotive components", "packaging"],
+  "standards": {"compliance": [], "test_methods": ["EN 1779", "ASTM E498", "ASTM E499", "MIL-STD-883 Method 1014 (미세 누설)"]},
+  "limits": {
+    "leak_rate_mbar_L_s": {"min": 5e-12, "note": "진공 모드 <5×10⁻¹² mbar·L/s (ULTRA), 스니퍼 모드 <5×10⁻⁸ mbar·L/s. 수소 스니퍼는 5×10⁻⁷ mbar·L/s (5 % H₂), 0.5 ppm H₂"},
+    "helium_pumping_speed_L_s": {"max": 36, "note": "UL6000 Fab 36 L/s 이상"}
+  },
+  "models": [
+    {"model": "UL6000 Fab", "specs": {"type": "이동형 진공 헬륨 누설 검출기", "helium_pumping_speed_L_s": 36, "power": "100~230 V 50/60 Hz", "note": "반도체 팹용 최상위 모델"}},
+    {"model": "UL3000 Fab / UL3000 Fab ULTRA", "specs": {"type": "이동형 진공 헬륨 누설 검출기", "detection_limit_vacuum_mbar_L_s": 5e-12, "detection_limit_sniffer_mbar_L_s": 5e-8, "sensor": "ULTRATEST", "feature": "I·CAL 알고리즘 — 10⁻⁹~10⁻¹² mbar·L/s 신속 측정"}},
+    {"model": "UL1000 Fab / UL1000", "specs": {"type": "이동형 진공 헬륨 누설 검출기"}, "uncertain": true},
+    {"model": "Modul1000", "specs": {"type": "모듈형 헬륨 누설 검출기(장비 내장용)"}, "uncertain": true},
+    {"model": "XL3000flex", "specs": {"type": "헬륨·수소 스니퍼", "detection_limit": "5×10⁻⁷ mbar·L/s (5 % H₂ 기준), 0.5 ppm H₂", "note": "긴 거리에서도 높은 감도. 저렴한 포밍가스 사용 가능"}},
+    {"model": "Protec P3000 / P3000XL", "specs": {"type": "헬륨 스니퍼", "note": "센서 오염에 의한 다운타임 최소화"}},
+    {"model": "Con-Check / Pac-Check", "specs": {"type": "포장 기밀 검사용"}, "uncertain": true}
+  ],
+  "units": ["mbar·L/s", "atm·cc/s", "Pa·m³/s", "ppm", "g/a", "oz/yr", "lb/yr"],
+  "accessories": [
+    {"name": "H₂/포밍가스 교정 누설", "spec": "1.0~1.1 × 10⁻⁴ mbar·L/s"},
+    {"name": "냉매 교정 누설 (R134a)", "spec": "10~14 g/a (0.36~0.49 oz/yr)"},
+    {"name": "진공 호스 홀더 (UL3000/UL6000 Fab)"}
+  ],
+  "features": ["ULTRATEST 질량분석 센서", "진공·스니퍼 모드 겸용", "I·CAL 고속 교정 알고리즘", "다중 단위 표시", "이동형 구조", "반도체 팹 대응 고배기속도"],
+  "relations": [
+    {"type": "performs", "target": "leak_rate"},
+    {"type": "same_family_as", "target": "ateq-f620"}
+  ],
+  "sources": [{"file": "inficon/leak-detectors-catalog-2022-2023.pdf", "pages": [2, 9, 24, 30, 33, 36, 48]}],
+  "confidence": "catalog",
+  "notes": "종합 카탈로그 200페이지 이상 중 주요 모델만 정리했다. UL1000·Modul1000·Con-Check 등 개별 사양은 미확정."
+}

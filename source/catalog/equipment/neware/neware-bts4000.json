@@ -1,0 +1,40 @@
+{
+  "id": "neware-bts4000",
+  "kind": "equipment_model",
+  "name": "Neware BTS4000-5V6A Battery Testing System (CT-4008T)",
+  "name_ko": "뉴웨어 BTS4000-5V6A 배터리 시험 시스템",
+  "manufacturer": "neware",
+  "brand": "BTS4000",
+  "category": "battery_cycler",
+  "form_factor": "benchtop",
+  "description": "소형 셀용 8채널 충방전 시험기. 정전압 출력 25 mV~5 V, 채널당 전류 3레인지(0.5~100 mA / 100 mA~3 A / 3~6 A), 채널당 30 W. 전압·전류 확도 및 안정도 모두 풀스케일의 ±0.05 %. AD/DA 16 bit, 전류 상승 시간 최대 1 ms(10 %FS→90 %FS), 최소 데이터 기록 간격 100 ms. 단일 스텝 최대 1년(365×24 h) 실행, 정전 시 데이터 보호.",
+  "test_items": ["battery_cycle_life"],
+  "measurands": ["capacity", "coulombic_efficiency", "voltage_profile", "internal_resistance"],
+  "materials": ["lithium-ion cells", "coin cells", "pouch cells", "18650 cells", "supercapacitors"],
+  "standards": {"compliance": [], "test_methods": ["IEC 61960", "GB/T 31485", "UL 1642"]},
+  "limits": {
+    "voltage_V": {"min": 0.025, "max": 5, "note": "CV 출력 25 mV~5 V. 최소 방전 전압 1.0 V(범용 홀더) / 1.5 V(2 m 케이블)"},
+    "current_A": {"min": 0.0005, "max": 6, "note": "레인지1 0.5~100 mA, 레인지2 100 mA~3 A, 레인지3 3~6 A"},
+    "channel_power_W": {"max": 30},
+    "channels": {"values": [8]},
+    "step_duration_h": {"max": 8760, "note": "스텝당 365×24 h 이하"},
+    "data_interval_ms": {"min": 100}
+  },
+  "models": [
+    {"model": "BTS4000-5V6A (CT-4008T-5V6A-S1/164)", "specs": {"channels": 8, "voltage_cv_V": {"min": 0.025, "max": 5}, "current_ranges": ["0.5 mA~100 mA", "100 mA~3 A", "3 A~6 A"], "channel_power_W": 30, "resolution": "AD 16 bit / DA 16 bit", "input_impedance": "≥1 MΩ", "input_ac": "AC 220 V/110 V ±10 %, 50 Hz", "input_power_W": 425, "sampling_frequency_Hz": 10}}
+  ],
+  "accuracy": {
+    "voltage": "±0.05 % of F.S. (확도·안정도)",
+    "current": "±0.05 % of F.S. (확도·안정도)",
+    "power_stability": "±0.1 % of F.S."
+  },
+  "cutoff": {"cv_cutoff_current": "레인지1 0.2 mA / 레인지2 6 mA / 레인지3 12 mA"},
+  "data_record_conditions": {"min_interval_ms": 100, "min_voltage_change_mV": 10, "min_current_change": "0.2 mA / 6 mA / 12 mA (레인지별)"},
+  "features": ["채널당 3개 전류 레인지", "전류 상승 시간 1 ms 이하", "정전 데이터 보호", "채널별 독립 제어", "밀리초 단위 스텝 시간 포맷"],
+  "relations": [
+    {"type": "performs", "target": "battery_cycle_life"},
+    {"type": "same_family_as", "target": "arbin-lbt-cell-tester"}
+  ],
+  "sources": [{"file": "neware/bts4000-5v6a-8ch-3ranges.pdf", "pages": [1, 2]}],
+  "confidence": "catalog"
+}

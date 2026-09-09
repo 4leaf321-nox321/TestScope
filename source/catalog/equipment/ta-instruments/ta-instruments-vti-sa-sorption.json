@@ -1,0 +1,141 @@
+{
+  "id": "ta-instruments-vti-sa-sorption",
+  "kind": "equipment_series",
+  "name": "TA Instruments VTI-SA+ Vapor Sorption Analyzer (Q5000 SA generation)",
+  "name_ko": "TA 인스트루먼츠 VTI-SA+ 증기 흡착 분석기 (Q5000 SA 세대)",
+  "manufacturer": "ta-instruments",
+  "category": "vapor_sorption_analyzer",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "온도와 상대습도를 제어하며 시료의 수분·유기용매 흡탈착량을 중량으로 재는 연속 증기 흐름식 흡착 분석기. 시료실과 기준실을 같은 온도·습도에 노출시키는 대칭 마이크로저울 구조라, 행다운 와이어와 시료 홀더에 붙는 수분·용매가 차동으로 상쇄된다 — 바탕 실험(background subtraction)을 따로 하지 않아도 되는 이유다. 저울실은 시료 온도와 무관하게 일정 온도로 유지해 안정도를 높인다. 시험 온도 5~150 °C(등온 안정도 ±0.1 °C), 상대습도 정확도 ±1 % RH 이고 습도 제어는 이슬점 분석기를 쓴 폐루프다. 표준형은 시료 750 mg·감도 0.1 µg, 고용량형은 5 g·감도 0.5 µg 이다.",
+  "test_items": [
+    "vapor_sorption",
+    "tga"
+  ],
+  "measurands": [
+    "moisture",
+    "mass_loss",
+    "crystallinity",
+    "polymorphism",
+    "density"
+  ],
+  "materials": [
+    "pharmaceuticals",
+    "polymers",
+    "foods",
+    "adsorbents and desiccants",
+    "battery materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "min": 5,
+      "max": 150,
+      "note": "등온 안정도 ±0.1 °C. 펠티어 소자 + 저항 히터"
+    },
+    "humidity_pct": {
+      "note": "제어 범위는 브로슈어가 표가 아니라 그림(온도-RH 포락선)으로 보여 준다 — 수치로 옮기지 않았다. 정확도는 ±1 % RH",
+      "uncertain": true
+    },
+    "sample_mass_mg": {
+      "max": 5000,
+      "note": "표준형 750 mg, 고용량형 5 g"
+    },
+    "balance_resolution_ug": {
+      "min": 0.01,
+      "note": "신호 분해능 — 표준형 0.01 µg, 고용량형 0.05 µg. 감도는 0.1 / 0.5 µg"
+    }
+  },
+  "models": [
+    {
+      "model": "VTI-SA+ 표준형",
+      "specs": {
+        "max_sample_weight_mg": 750,
+        "dynamic_range_mg": 100,
+        "weighing_accuracy_pct": 0.1,
+        "weighing_precision_pct": 0.01,
+        "sensitivity_ug": 0.1,
+        "signal_resolution_ug": 0.01,
+        "temperature_control": "펠티어 소자 + 저항 히터",
+        "temperature_degC": {
+          "min": 5,
+          "max": 150
+        },
+        "isothermal_stability_degC": 0.1,
+        "humidity_accuracy_pct_RH": 1,
+        "humidity_control": "폐루프, 이슬점 분석기",
+        "balance": "대칭 마이크로저울(시료실·기준실 동일 조건)"
+      },
+      "note": "제약 용도에 맞춘 감도 0.1 µg 사양"
+    },
+    {
+      "model": "VTI-SA+ 고용량형",
+      "specs": {
+        "max_sample_weight_g": 5,
+        "dynamic_range_mg": 500,
+        "weighing_accuracy_pct": 0.1,
+        "weighing_precision_pct": 0.01,
+        "sensitivity_ug": 0.5,
+        "signal_resolution_ug": 0.05,
+        "temperature_degC": {
+          "min": 5,
+          "max": 150
+        },
+        "isothermal_stability_degC": 0.1,
+        "humidity_accuracy_pct_RH": 1
+      }
+    }
+  ],
+  "accuracy": {
+    "weighing": "정확도 ±0.1 %, 정밀도 ±0.01 %",
+    "humidity": "±1 % RH",
+    "temperature": "등온 안정도 ±0.1 °C"
+  },
+  "features": [
+    "대칭 마이크로저울 — 바탕 실험 없이 시료만의 흡착량을 얻는다",
+    "저울실을 시료 온도와 무관하게 일정 온도로 유지",
+    "이슬점 분석기 기반 폐루프 습도 제어",
+    "연속 증기 흐름 방식"
+  ],
+  "options": [
+    "유기용매 대응",
+    "카메라 / 2.5배 현미경 부속",
+    "고용량 저울(5 g, 감도 0.5 µg)"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "vapor_sorption"
+    },
+    {
+      "type": "performs",
+      "target": "tga"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-discovery-tga"
+    }
+  ],
+  "sources": [
+    {
+      "file": "ta-instruments/q5000sa-sorption-brochure.pdf",
+      "pages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "file": "ta-instruments/thermal-analysis-overview.pdf",
+      "pages": [
+        1
+      ],
+      "note": "TA 열분석 제품군 개요"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 Akamai 로 막혀 archive.org 스냅샷(2015-08-12)에서 받았다 — 스냅샷이 오래돼 현행 제품(Discovery SA)과 다를 수 있다. 파일명은 Q5000SA 인데 본문이 설명하는 기종은 VTI-SA+ 다. 상대습도 제어 범위가 표가 아니라 온도-RH 포락선 그림으로만 나와 `humidity_pct` 에 `uncertain: true` 를 달았다 — 원본 그림을 렌더링해도 축 값을 읽어 옮기는 것은 표를 옮기는 것과 다른 종류의 추정이라 하지 않았다. 온톨로지에 `vapor_sorption_analyzer` 분류와 `vapor_sorption` 시험 항목을 새로 만들어 제대로 걸었다."
+}

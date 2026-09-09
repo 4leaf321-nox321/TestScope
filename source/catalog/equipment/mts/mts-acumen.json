@@ -1,0 +1,37 @@
+{
+  "id": "mts-acumen",
+  "kind": "equipment_series",
+  "name": "MTS Acumen Electrodynamic Test Systems (Acumen 1 / 3 / 3 A/T / 12 / 12 A/T)",
+  "name_ko": "MTS Acumen 전기동력식 시험기",
+  "manufacturer": "mts",
+  "brand": "Acumen",
+  "category": "electrodynamic_fatigue",
+  "drive": "electrodynamic",
+  "description": "리니어 모터 동적 시험기. Acumen 1(1.25 kN 동적/1 kN 정적), 3(3 kN/2 kN), 3 A/T(+±30 N·m), 12(12 kN/8.5 kN, 플로어), 12 A/T(+±120 N·m). 스트로크 70 mm, ≤100 Hz, 컬럼 간 460 mm.",
+  "test_items": ["fatigue", "tensile", "compression", "flexure", "torsion", "dma"],
+  "measurands": ["fatigue_life", "dynamic_stiffness", "storage_modulus"],
+  "materials": ["biomaterials", "medical devices", "polymers", "elastomers", "components"],
+  "standards": {"compliance": [], "test_methods": []},
+  "limits": {
+    "dynamic_force_kN": {"min": 1.25, "max": 12, "values": [1.25, 3, 12]},
+    "static_force_kN": {"min": 1, "max": 8.5},
+    "torque_Nm": {"values": [30, 120]},
+    "stroke_mm": {"values": [70]},
+    "rotation_deg": {"max": 135, "note": "또는 ±1000 회전(3 A/T) / ±500 회전(12 A/T)"},
+    "frequency_Hz": {"max": 100},
+    "vertical_test_space_mm": {"min": 0, "max": 985},
+    "horizontal_test_space_mm": {"values": [460]}
+  },
+  "models": [
+    {"model": "Acumen 1 G2", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 1.25, "static_force_kN": 1, "stroke_mm": 70, "vertical_test_space_mm": {"min": 26, "max": 819}, "horizontal_test_space_mm": 460, "weight_kg": 188, "footprint_mm": {"W": 634, "D": 501, "H": 1726}, "power": "100–120/200–240 VAC 1Ph"}},
+    {"model": "Acumen 3", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 3, "static_force_kN": 2, "stroke_mm": 70, "vertical_test_space_mm": {"min": 26, "max": 819}, "weight_kg": 188}},
+    {"model": "Acumen 3 A/T", "form_factor": "dual_column_tabletop", "specs": {"dynamic_force_kN": 3, "static_force_kN": 2, "torque_Nm": 30, "static_torque_Nm": 21, "rotation": "±135° / ±1000 rev, 0.001–350 rpm", "vertical_test_space_mm": {"min": 0, "max": 603}, "weight_kg": 230}},
+    {"model": "Acumen 12", "form_factor": "floor", "specs": {"dynamic_force_kN": 12, "static_force_kN": 8.5, "stroke_mm": 70, "vertical_test_space_mm": {"min": 55, "max": 985}, "weight_kg": 953, "footprint_mm": {"W": 651, "D": 817, "H": 2810}, "power": "200–240 VAC 38 A 1Ph", "cooling": "forced air + water"}},
+    {"model": "Acumen 12 A/T", "form_factor": "floor", "specs": {"dynamic_force_kN": 12, "static_force_kN": 8.5, "torque_Nm": 120, "static_torque_Nm": 84.8, "rotation": "±135° / ±500 rev, 0.001–100 rpm", "vertical_test_space_mm": {"min": 0, "max": 810}, "weight_kg": 1043}}
+  ],
+  "environment": {"operating_temp_degC": [5, 35], "noise_dBA": "47 typical / 69 max (tabletop)"},
+  "options": ["test area enclosure", "isolation pads", "fluid baths", "environmental chambers"],
+  "relations": [],
+  "sources": [{"file": "mts/acumen-electrodynamic-brochure.pdf", "pages": [5, 14, 15]}],
+  "confidence": "catalog"
+}

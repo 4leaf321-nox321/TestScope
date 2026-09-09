@@ -1,0 +1,47 @@
+{
+  "id": "lansmont-shock-test-systems",
+  "kind": "equipment_series",
+  "name": "Lansmont Performance Series Shock Test Systems (P23 / P30 / P40 / P55 / P65-81 / P95-115 / P122)",
+  "name_ko": "랜스몬트 퍼포먼스 시리즈 충격 시험 시스템",
+  "manufacturer": "lansmont",
+  "brand": "Performance Series",
+  "category": "shock_test_machine",
+  "drive": "free_fall_pneumatic",
+  "form_factor": "floor",
+  "description": "프로그래머블 충격 시험기 7개 모델. 테이블 23 cm(P23)부터 122 cm(P122)까지, 반정현(half sine) 펄스를 기본으로 하고 옵션 프로그래머로 사다리꼴(trapezoidal)·톱니(terminal peak sawtooth) 펄스를 만든다. 소형기(P23~P40)는 최대 가속도 5,000 g(옵션 10,000 g)에 최소 펄스폭 0.25~0.5 ms, 대형기(P65/81 이상)는 1,000 g·2 ms 급에 자유낙하와 가속(accelerated) 두 가지 구동을 제공한다. 페이로드는 P23 의 50 kg 부터 P95/115·P122 의 자유낙하 1,134 kg 까지. TouchTest Shock 2 터치스크린 컨트롤이 최대 32,000회 자동 사이클을 돌리고 충격 펄스 추정 기능으로 목표 펄스에 맞춰 장비를 설정한다.",
+  "test_items": ["mechanical_shock", "free_fall_drop"],
+  "measurands": ["shock_response_spectrum", "peak_acceleration", "velocity_change", "fragility", "pulse_duration"],
+  "materials": ["packaged products", "electronic assemblies", "consumer electronics", "components", "large appliances", "defense hardware"],
+  "standards": {"compliance": [], "test_methods": ["IEC 60068-2-27", "MIL-STD-810 Method 516", "ASTM D6055", "ISTA", "JESD22-B104", "ASTM D3332 (fragility)"]},
+  "limits": {
+    "acceleration_g": {"min": 1000, "max": 10000, "note": "P23~P40 는 5,000 g(옵션 10,000 g), P55 는 1,000 g(옵션 5,000 g), P65/81 이상은 1,000 g"},
+    "pulse_duration_ms": {"min": 0.25, "note": "최소 펄스폭(반정현). P23·P30 0.25 ms, P40·P55 0.5 ms, P65/81 이상 2 ms"},
+    "velocity_change_m_s": {"min": 6.1, "max": 18, "note": "P23~P40 6.7~16.8, P55 6.7~18, 대형기는 자유낙하 6.1~7.6 / 가속 7.6~15.2"},
+    "payload_kg": {"min": 50, "max": 1134, "note": "P23·P30 50 kg, P40 75 kg, P55 136 kg, P65/81 자유낙하 680 kg·가속 227 kg, P95/115·P122 자유낙하 1,134 kg·가속 454 kg"},
+    "table_size_mm": {"min": 230, "max": 1220, "note": "23×23 cm(P23) ~ 122×122 cm(P122)"}
+  },
+  "models": [
+    {"model": "P23", "specs": {"table_mm": [230, 230], "max_acceleration_g": 5000, "max_acceleration_g_option": 10000, "min_pulse_ms": 0.25, "velocity_change_m_s": [6.7, 16.8], "payload_kg": 50, "dimensions_mm": {"H": [2490, 3710], "W": 460, "D": 540}, "plant_air_bar": 6.2}},
+    {"model": "P30", "specs": {"table_mm": [300, 300], "max_acceleration_g": 5000, "max_acceleration_g_option": 10000, "min_pulse_ms": 0.25, "velocity_change_m_s": [6.7, 16.8], "payload_kg": 50, "dimensions_mm": {"H": [2490, 3710], "W": 530, "D": 610}, "plant_air_bar": 6.2}},
+    {"model": "P40", "specs": {"table_mm": [400, 400], "max_acceleration_g": 5000, "max_acceleration_g_option": 10000, "min_pulse_ms": 0.5, "velocity_change_m_s": [6.7, 16.8], "payload_kg": 75, "dimensions_mm": {"H": [2490, 4010], "W": 710, "D": 724}, "plant_air_bar": 6.2}},
+    {"model": "P55", "specs": {"table_mm": [550, 550], "max_acceleration_g": 1000, "max_acceleration_g_option": 5000, "min_pulse_ms": 0.5, "velocity_change_m_s": [6.7, 18], "payload_kg": 136, "dimensions_mm": {"H": [2950, 5320], "W": 1040, "D": 1220}, "plant_air_bar": 8.3}},
+    {"model": "P65/81", "specs": {"table_mm": [650, 810], "max_acceleration_g": 1000, "min_pulse_ms": 2, "velocity_change_m_s": {"free_fall": [6.1, 7.6], "accelerated": [7.6, 15.2]}, "payload_kg": {"free_fall": 680, "accelerated": 227}, "dimensions_mm": {"H": [3250, 5320], "W": 1630, "D": 1420}, "nitrogen_bar": 150}},
+    {"model": "P95/115", "specs": {"table_mm": [950, 1150], "max_acceleration_g": 1000, "min_pulse_ms": 2, "velocity_change_m_s": {"free_fall": [6.1, 7.6], "accelerated": [7.6, 15.2]}, "payload_kg": {"free_fall": 1134, "accelerated": 454}, "dimensions_mm": {"H": [3250, 5320], "W": 2010, "D": 1420}, "nitrogen_bar": 150}},
+    {"model": "P122", "specs": {"table_mm": [1220, 1220], "max_acceleration_g": 1000, "min_pulse_ms": 2, "velocity_change_m_s": {"free_fall": [6.1, 7.6], "accelerated": [7.6, 15.2]}, "payload_kg": {"free_fall": 1134, "accelerated": 454}, "dimensions_mm": {"H": [3250, 4620], "W": 2260, "D": 1420}, "nitrogen_bar": 150}}
+  ],
+  "pulse_waveforms": ["반정현(Half Sine) — 표준", "사다리꼴(Trapezoidal) — 옵션 프로그래머", "톱니(Terminal Peak Sawtooth) — 옵션 프로그래머"],
+  "power_requirements": {
+    "machine": "200~240 VAC/3Φ/50~60 Hz 4 A 이상 또는 380~480 VAC/3Φ/50~60 Hz 2 A 이상 (P65/81 은 5 A / 3 A, P95/115·P122 는 8 A / 4 A)",
+    "controller": "100~120 VAC/1Φ 또는 200~240 VAC/1Φ, 50~60 Hz, 1 A 이상 (대형기는 3 A 이상)"
+  },
+  "features": ["TouchTest Shock 2 터치스크린 컨트롤", "원버튼 조작", "자동 사이클 모드(최대 32,000 낙하)", "충격 펄스 추정(Shock Pulse Estimator)", "프로그래머블 안전 인터록", "디지털 낙하 높이·압력 제어", "TestPartner 데이터 수집 연동(SRS·FFT·2D/3D 충격 응답 애니메이션·MIL-STD 허용대 오버레이)"],
+  "options": ["10,000 g 가속 옵션(P23~P40)", "5,000 g 옵션(P55)", "사다리꼴·톱니 프로그래머", "TestPartner DAQ"],
+  "relations": [
+    {"type": "performs", "target": "mechanical_shock"},
+    {"type": "same_family_as", "target": "lansmont-pdt-drop-testers"},
+    {"type": "requires", "target": "utility-compressed-air"}
+  ],
+  "sources": [{"file": "lansmont/performance-shock-test-systems.pdf", "pages": [1, 2, 3, 6, 7, 8, 9, 10, 11, 12], "note": "모델별 사양 쪽을 원본에서 확정(2026-09-10)"}],
+  "confidence": "catalog",
+  "notes": "P23~P55 는 공장 압축공기 6.2~8.3 bar 로 구동하고, P65/81 이상은 질소 150 bar 를 쓴다. 이전 판에서는 Model 23·15 등 구형 명칭으로 적고 Performance 시리즈 모델 사양을 비워 두었다."
+}

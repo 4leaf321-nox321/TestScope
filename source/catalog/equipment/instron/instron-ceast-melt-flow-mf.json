@@ -1,0 +1,29 @@
+{
+  "id": "instron-ceast-melt-flow-mf",
+  "kind": "equipment_series",
+  "name": "Instron CEAST MF Series Melt Flow Testers (MF10 / MF20 / MF30 / MF50)",
+  "name_ko": "인스트론 CEAST MF 시리즈 용융지수 측정기",
+  "manufacturer": "instron",
+  "brand": "CEAST",
+  "category": "melt_flow_indexer",
+  "form_factor": "benchtop",
+  "description": "MF20: 단일 하중 MFR(인코더 옵션으로 MVR), 30–400 °C, ISO 1133-2 온도 정확도, 수동 질량 선택기 옵션(0.325–21.6 kg). MF30: MVR 인코더·N/C 제어 웨이트 리프터·로드셀(압축·퍼지 제어) 포함. 절차 A/B/C/D. 질화강 실린더(니켈합금 옵션). VisualMelt 소프트웨어.",
+  "test_items": ["melt_flow"],
+  "measurands": ["mfr", "mvr", "melt_density", "flow_rate_ratio"],
+  "materials": ["thermoplastics", "masterbatches", "filled polymers", "hygroscopic polymers"],
+  "standards": {"compliance": ["ISO 1133-2 (temperature accuracy/stability)"], "test_methods": ["ISO 1133-1", "ISO 1133-2", "ASTM D1238 A/B/C/D"]},
+  "limits": {
+    "melt_temperature_degC": {"min": 30, "max": 400},
+    "melt_load_kg": {"min": 0.325, "max": 21.6, "values": [0.325, 1.2, 2.16, 3.8, 5, 10, 15, 21.6]}
+  },
+  "models": [
+    {"model": "CEAST MF20", "specs": {"melt_temperature_degC": {"min": 30, "max": 400}, "test_types": "single weight MFR (MVR with optional encoder)", "encoder": "optional", "weight_lifter": "optional", "load_cell": false, "footprint_mm": {"W": 540, "D": 370, "H": 475}, "footprint_with_mass_selector_mm": {"W": 585, "D": 500, "H": 1005}, "weight_kg": 50, "weight_kg_with_selector": 100, "power_W": 1000}},
+    {"model": "CEAST MF30", "specs": {"melt_temperature_degC": {"min": 30, "max": 400}, "test_types": "single weight MFR and MVR", "encoder": "included", "weight_lifter": "included (N/C)", "load_cell": true, "footprint_mm": {"W": 540, "D": 370, "H": 795}, "weight_kg": 60, "weight_kg_with_selector": 110, "power_W": 1000}},
+    {"model": "CEAST MF10 / MF50", "specs": {}, "note": "시리즈 브로슈어에 언급만 — 사양 미확보", "uncertain": true}
+  ],
+  "environment": {"power": "115 or 230 V 50/60 Hz"},
+  "options": ["manual mass selector", "high-precision encoder (40 points/test)", "die plugging device", "go/no-go die gauges", "nitrogen blanket", "acid-resistant barrel/piston/die", "manual/motorized cutter", "automatic barrel cleaning", "VisualMelt software"],
+  "relations": [],
+  "sources": [{"file": "instron/ceast-melt-flow-mf20-mf30.pdf", "pages": [3, 4]}, {"file": "instron/ceast-mf-series-brochure.pdf", "pages": [4, 6, 8]}, {"file": "instron/ceast-melt-flow-series-brochure.pdf"}, {"file": "instron/ceast-mf20-pod.pdf"}, {"file": "instron/ceast-mf30-pod.pdf"}],
+  "confidence": "catalog"
+}

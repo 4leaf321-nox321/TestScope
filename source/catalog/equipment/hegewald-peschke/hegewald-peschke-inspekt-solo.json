@@ -1,0 +1,161 @@
+{
+  "id": "hegewald-peschke-inspekt-solo",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt solo Single-Column Universal Testing Machine (up to 2.5 kN)",
+  "name_ko": "헤게발트 운트 페슈케 inspekt solo 단일 컬럼 만능재료시험기 (2.5 kN 이하)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "subcategory": "single_column",
+  "drive": "electromechanical",
+  "form_factor": "single_column_tabletop",
+  "description": "C 프레임에 무백래시 볼스크류 1 개와 레일 1 개, 기어 없는 브러시리스 구동을 넣은 소하중 만능재료시험기. 정격 2.5 kN. 시험 공간 높이가 다른 S·M·L 세 형태가 있어 굽힘·압축(S), 금속·플라스틱 인장(M), 실리콘·엘라스토머처럼 신율이 큰 재료의 인장(L)에 나눠 쓴다. 크로스헤드 속도 1.5 µm/min~1200 mm/min, 이동 분해능 <0.025 µm, 힘 분해능 24 bit. 낮은 하부 크로스헤드와 측면 전자부 배치로 앉아서도 서서도 작업할 수 있고, 큰 베이스 플레이트에 부속·공구·시편을 올려 둔다. 모터 회전수가 낮아 소음이 적고 청소가 쉬워 청정 실험실에도 맞는다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "tear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength",
+    "peel_strength",
+    "tear_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "plastics",
+    "elastomers",
+    "silicones",
+    "foils",
+    "textiles",
+    "springs",
+    "lightweight materials and components"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1 (옵션 Class 0.5)",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "max": 2.5
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.0015,
+      "max": 1200,
+      "note": "1.5 µm/min ~ 1200 mm/min"
+    },
+    "vertical_test_space_mm": {
+      "min": 475,
+      "max": 1375,
+      "note": "S 475 / M 1075 / L 1375"
+    },
+    "frame_stiffness_kN_mm": {
+      "min": 2.5,
+      "max": 2.7,
+      "note": "S 2.7 / M 2.6 / L 2.5"
+    },
+    "weight_kg": {
+      "min": 48,
+      "max": 60
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt solo S",
+      "specs": {
+        "item_no": "10-008-201",
+        "nominal_load_kN": 2.5,
+        "frame_stiffness_kN_mm": 2.7,
+        "height_mm": 700,
+        "test_room_height_mm": 475,
+        "max_stroke_mm": 350,
+        "width_with_control_mm": 640,
+        "test_room_depth_mm": 105,
+        "depth_mm": 640,
+        "weight_kg": 48
+      },
+      "note": "굽힘·압축 시험용"
+    },
+    {
+      "model": "inspekt solo M",
+      "specs": {
+        "item_no": "10-008-211",
+        "nominal_load_kN": 2.5,
+        "frame_stiffness_kN_mm": 2.6,
+        "height_mm": 1300,
+        "test_room_height_mm": 1075,
+        "max_stroke_mm": 950,
+        "width_with_control_mm": 640,
+        "test_room_depth_mm": 105,
+        "depth_mm": 640,
+        "weight_kg": 55
+      },
+      "note": "플라스틱·금속 인장(중간 신율)용"
+    },
+    {
+      "model": "inspekt solo L",
+      "specs": {
+        "item_no": "10-008-221",
+        "nominal_load_kN": 2.5,
+        "frame_stiffness_kN_mm": 2.5,
+        "height_mm": 1600,
+        "test_room_height_mm": 1375,
+        "max_stroke_mm": 1250,
+        "width_with_control_mm": 640,
+        "test_room_depth_mm": 105,
+        "depth_mm": 640,
+        "weight_kg": 60
+      },
+      "note": "플라스틱·실리콘·엘라스토머처럼 신율이 매우 큰 재료의 인장용"
+    }
+  ],
+  "accuracy": {
+    "force": "DIN EN ISO 7500-1 / ASTM E4 Class 1, 정격의 0.1~100 %(옵션 Class 0.5). H&P 공장 교정 성적서 Class 1 포함, DAkkS 교정 옵션",
+    "force_resolution": "24 bit (±8,388,608 digits)",
+    "travel_resolution": "<0.025 µm"
+  },
+  "environment": {
+    "operating_temperature_degC": {"min": 10, "max": 30},
+    "operating_humidity_pct": {"min": 20, "max": 80},
+    "electrical": "230 VAC, 0.5 kVA, 50 Hz"
+  },
+  "features": [
+    "기어 없는 브러시리스 구동 — 낮은 모터 회전수로 소음이 적다",
+    "크로스헤드 이동·속도·하중 제어",
+    "스트레인게이지 로드셀 고정밀 힘 측정",
+    "낮은 하부 크로스헤드와 측면 전자부 — 착석·기립 작업 모두 가능",
+    "부속·공구·시편을 올려 두는 큰 베이스 플레이트",
+    "청소가 쉬운 구조",
+    "확장 카드 슬롯 3 — 아날로그/디지털 입출력, 스트레인게이지, ±10 V 외부 입력, 안전문 연결"
+  ],
+  "options": [
+    "Class 0.5 힘 측정",
+    "DAkkS 교정",
+    "S형·R형 로드셀(R형은 100 %까지 횡하중 안정)",
+    "핸드 패널",
+    "LabMaster 소프트웨어"
+  ],
+  "relations": [
+    {"type": "performs", "target": "tensile"},
+    {"type": "performs", "target": "compression"},
+    {"type": "performs", "target": "flexure"},
+    {"type": "same_family_as", "target": "hegewald-peschke-inspekt"},
+    {"type": "same_family_as", "target": "hegewald-peschke-inspekt-blue"},
+    {"type": "compatible_accessory", "target": "hegewald-peschke-grips"},
+    {"type": "compatible_accessory", "target": "hegewald-peschke-extensometers"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/inspekt-static-utm-overview.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/inspekt-solo-2-5kn-datasheet.pdf", "pages": [2, 3, 4]}
+  ],
+  "confidence": "catalog",
+  "notes": "온도 챔버 호환 목록(챔버 문서)에 inspekt·inspekt table·inspekt duo·inspekt blue 는 있으나 solo 는 없다. 그래서 `extends_temperature` 관계를 걸지 않았다 — 문서가 말하지 않는 것을 관계로 만들면 검색이 헛걸음을 만든다."
+}

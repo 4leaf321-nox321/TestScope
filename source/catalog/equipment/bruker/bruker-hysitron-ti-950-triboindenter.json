@@ -1,0 +1,149 @@
+{
+  "id": "bruker-hysitron-ti-950-triboindenter",
+  "kind": "equipment_series",
+  "name": "Bruker Hysitron TI 950 TriboIndenter Nanomechanical Test System",
+  "name_ko": "브루커 하이시트론 TI 950 트라이보인덴터 나노기계 시험 시스템",
+  "manufacturer": "bruker",
+  "brand": "Hysitron",
+  "category": "nanoindenter",
+  "subcategory": "nanoindentation",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "정전용량형 변환기로 하중과 변위를 동시에 재는 나노압입 시험 시스템. 하중 분해능 <1 nN, 하중 잡음 바닥 <30 nN, 변위 분해능 <0.02 nm, 변위 잡음 바닥 <0.2 nm, 드리프트 <0.05 nm/s 로 낮은 하중대의 잡음 성능이 이 장비의 핵심이다. 하중 제어와 변위 제어를 모두 하고 데이터 취득 속도가 30 kHz 까지 올라가 빠른 하중/변위 함수도 따라간다. 3D OmniProbe 또는 MultiRange Nanoprobe 같은 고하중 헤드를 함께 달면 저하중 정전용량 변환기의 감도를 유지한 채 힘 범위를 넓힌다. X-Y 스테이지 이동 250 x 150 mm, 엔코더 분해능 500 nm 이고 팁 위치를 ±10 nm 로 잡는다. 광학은 20배 대물에 디지털 줌 0.5~11배로 실효 10~220배, 시야 최대 625 x 550 µm·최소 28 x 22 µm. 음향 잡음·기류·실험실 온도 변화를 막는 다층 환경 차폐함을 두고 내부 온습도를 기록한다. TriboScan v.9 소프트웨어로 자동 측정한다.",
+  "test_items": [
+    "instrumented_indentation",
+    "friction_wear_tribo",
+    "surface_topography"
+  ],
+  "measurands": [
+    "indentation_hardness",
+    "indentation_modulus",
+    "dynamic_hardness",
+    "storage_modulus",
+    "loss_modulus",
+    "friction_coefficient",
+    "scratch_hardness",
+    "wear_depth",
+    "surface_roughness",
+    "step_height"
+  ],
+  "materials": [
+    "thin films and coatings",
+    "semiconductors",
+    "polymers",
+    "metals",
+    "ceramics",
+    "biological materials"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "indentation_force_mN": {
+      "note": "표준 정전용량 변환기의 정격 최대 하중은 이 데이터시트에 없다. 3D OmniProbe·MultiRange Nanoprobe 를 더하면 넓어진다고만 적는다"
+    },
+    "position_resolution_nm": {
+      "max": 0.02,
+      "note": "변위 분해능 <0.02 nm, 잡음 바닥 <0.2 nm, 드리프트 <0.05 nm/s"
+    },
+    "stage_travel_mm": {
+      "max": 250,
+      "note": "X 250 mm x Y 150 mm. 엔코더 분해능 500 nm"
+    },
+    "data_rate_Hz": {
+      "max": 30000
+    },
+    "field_of_view_mm": {
+      "min": 0.028,
+      "max": 0.625,
+      "note": "시야 최대 625 x 550 µm, 최소 28 x 22 µm"
+    },
+    "magnification": {
+      "min": 10,
+      "max": 220,
+      "note": "실효 배율. 광학 20배 + 디지털 줌 0.5~11배"
+    }
+  },
+  "models": [
+    {
+      "model": "TI 950 TriboIndenter",
+      "specs": {
+        "document_no": "SAM-0065-A",
+        "load_resolution_nN": 1,
+        "load_noise_floor_nN": 30,
+        "imaging_contact_force_nN": 70,
+        "displacement_resolution_nm": 0.02,
+        "displacement_noise_floor_nm": 0.2,
+        "displacement_drift_nm_s": 0.05,
+        "data_acquisition_kHz": 30,
+        "control_modes": [
+          "하중 제어",
+          "변위 제어"
+        ],
+        "stage_travel_mm": "250 x 150 (X x Y)",
+        "stage_encoder_resolution_nm": 500,
+        "tip_positioning_nm": 10,
+        "optics_field_of_view_um": "최대 625 x 550, 최소 28 x 22",
+        "optical_magnification": "20배 대물, 디지털 줌 0.5~11배, 실효 10~220배",
+        "transducer": "정전용량형 — 법선·횡방향 힘과 변위를 동시 측정",
+        "software": "TriboScan v.9",
+        "environment": "다층 환경 차폐함, 온습도 센서 내장"
+      },
+      "note": "하중 정격(최대 하중)이 데이터시트에 없다 — 잡음·분해능만 강조하는 문서다"
+    }
+  ],
+  "accuracy": {
+    "load": "분해능 <1 nN, 잡음 바닥 <30 nN",
+    "displacement": "분해능 <0.02 nm, 잡음 바닥 <0.2 nm, 드리프트 <0.05 nm/s"
+  },
+  "features": [
+    "sub-30 nN 하중 잡음 바닥",
+    "하중 제어와 변위 제어 동시 지원, 취득 30 kHz",
+    "법선·횡방향 힘과 변위 동시 측정",
+    "in-situ SPM 이미징(압입 전후 같은 팁으로 표면을 훑는다)",
+    "다층 환경 차폐 — 음향 잡음·기류·실온 변화 차단, 온습도 기록",
+    "TriboScan v.9 자동 측정 루틴으로 통계적 표본 추출"
+  ],
+  "options": [
+    "3D OmniProbe (마이크로/나노 트라이보기계 시험)",
+    "MultiRange Nanoprobe (고하중 헤드)",
+    "nanoDMA (점탄성 재료 나노 동적기계분석)",
+    "Modulus Mapping",
+    "nanoECR (전기·기계 동시 측정)",
+    "TriboAE (음향방출 감시)",
+    "200 °C 가열/냉각 스테이지",
+    "진공 스테이지"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "instrumented_indentation"
+    },
+    {
+      "type": "performs",
+      "target": "friction_wear_tribo"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruker-hysitron-pi-95-picoindenter"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruker-hysitron-ts-75-triboscope"
+    }
+  ],
+  "sources": [
+    {
+      "file": "bruker/hysitron-ti-950-triboindenter-datasheet.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "bruker.com 은 UA 헤더로 열리지만 Hysitron 브로슈어가 등록 폼(`bns-form-pages`) 뒤에 있어 받을 수 없다. **옛 독립 도메인 `hysitron.com` 의 archive.org 스냅샷(2015-07-03)**에서 받았다 — Bruker 인수 전 자료라 현행 TI 990 과 다르다. 하중 정격(최대 하중)이 문서에 없다는 점이 이 객체의 가장 큰 빈 곳이다: 잡음·분해능만 적혀 있어 '이 장비로 몇 mN 까지 되나' 에 답하지 못한다. 옵션 헤드(3D OmniProbe·MultiRange Nanoprobe)의 힘 범위도 별도 문서에 있고 아직 확보하지 않았다. `pdf/bruker/` 에는 이전 세션에 받은 프로파일로미터(ContourX-200·DektakXT)가 이미 있어, Bruker 는 통째로 비어 있던 제조사가 아니라 나노압입 계열만 없던 것이었다."
+}

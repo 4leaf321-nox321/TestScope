@@ -1,0 +1,58 @@
+# 파이썬
+__pycache__/
+*.py[cod]
+# 만드는 것은 .venv 하나지만, 습관대로 만든 venv 가 커밋되지 않게 둘 다 적는다.
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# 백엔드 런타임 산출물
+backend/.env
+backend/logs/
+backend/filestore/
+
+# openapi.json 은 **커밋한다.** 프론트 타입의 입력이자 "API 가 바뀌었나" 를 보는
+# 기준 파일이라, 무시하면 CI 의 생성물 최신성 검사가 조용히 아무것도 안 하게 된다.
+# 버전 도장은 지우고 저장한다(app/version.py 의 as_baseline).
+
+# 프론트
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# 편집기·OS
+.DS_Store
+Thumbs.db
+.idea/
+
+# .vscode 는 **커밋한다** — 통합 터미널의 venv 자동 활성화가 여기 있다. 개인
+# 취향(launch·task)은 빼고, 팀이 같아야 하는 둘만 남긴다.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# 배포 패키징 산출물 — 릴리스가 만든다
+deploy/
+
+# MCP 개발용 개인 토큰. **평문이라 절대 커밋하지 않는다** — probe.py 가 읽는다.
+mcp_server/.pat
+mcp_server/.venv/
+
+# 제조사 원본 자료 — **저장소에 안 넣는다.**
+#
+# PDF 665MB 는 일반 git 저장소에 안 들어가고(파일당 100MB 한도·전체 1GB 권고),
+# 애초에 제조사 저작물이라 재배포할 것이 아니다. 추출 텍스트와 렌더 이미지도
+# 그 PDF 에서 나온 파생물이라 같이 뺀다.
+#
+# **손으로 만든 것은 올린다** — `catalog/equipment` 의 JSON 192개와 `ontology` 는
+# 사람이 읽고 정리한 결과이고, 반입 스크립트가 읽는 것도 그것뿐이다.
+# 폴더 이름이 하나가 아니다(`pdf` · `pdf_직접` …). **확장자로 막는다** — 이름을
+# 하나씩 적으면 다음에 새 폴더가 생길 때 조용히 새어 나간다(실제로 그랬다).
+source/**/*.pdf
+source/pdf/
+source/pdf_직접/
+source/extracted/
+source/catalog/pages/
+"NVIDIA Corporation"/

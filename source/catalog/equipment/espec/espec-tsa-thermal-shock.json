@@ -1,0 +1,207 @@
+{
+  "id": "espec-tsa-thermal-shock",
+  "kind": "equipment_series",
+  "name": "ESPEC TSA Series Thermal Shock Chambers (EL / ES / EH type)",
+  "name_ko": "에스펙 TSA 시리즈 열충격 시험 챔버 (EL·ES·EH 타입)",
+  "manufacturer": "espec",
+  "brand": "TSA",
+  "category": "thermal_shock_chamber",
+  "form_factor": "floor",
+  "description": "댐퍼 전환식 열충격 챔버. 고온조·저온조(+ES/EH 는 상온조)를 댐퍼로 전환해 시편을 옮기지 않고 급격한 온도 변화를 가한다. EL 타입은 2조식(2-zone), ES·EH 타입은 2조 또는 3조식. 시험 영역 고온 노출은 EL 이 상온+50~+200 °C, ES·EH 가 +60~+200 °C, 저온 노출은 EL 이 -65~0 °C, ES·EH 가 -70~0 °C. 온도 변동 ±0.5 °C(IEC 60068-3-5:2001 준거). 특허 병렬 냉동기 제어(특허 5487167)로 소형 냉동기 2대를 2차측에 병렬 연결해 최적 냉동 능력으로 운전하고, 냉매 누설 위험을 줄인다.",
+  "test_items": ["thermal_shock", "temperature_cycling"],
+  "measurands": ["thermal_cycle_endurance", "crack_initiation", "solder_joint_fatigue", "delamination"],
+  "materials": ["semiconductor packages", "PCB assemblies", "electronic components", "automotive electronics", "connectors", "displays"],
+  "standards": {
+    "compliance": ["IEC 60068-3-5:2001 (성능)", "IEC 60068-2-1 / IEC 60068-2-2 (온도 복귀 시간 허용차)", "ISO 1996-1:2003 (소음 측정)", "CE 마킹 (400/415 V AC 모델)"],
+    "test_methods": ["MIL-STD-883H Method 1010.8", "MIL-STD-202G Method 107G", "IEC 60068-2-14 (JIS C 60068-2-14)", "JASO D 014-4", "EIAJ ED-2531B Na"]
+  },
+  "limits": {
+    "temperature_degC": {"min": -70, "max": 200, "note": "시험 영역 기준. EL: 고온 상온+50~+200, 저온 -65~0. ES·EH: 고온 +60~+200, 저온 -70~0"},
+    "preheat_limit_degC": {"max": 205, "note": "예열조 상한(전 타입 +205 °C)"},
+    "precool_limit_degC": {"min": -77, "note": "예냉조 하한. EL·ES 는 -75 °C, EH 는 -77 °C"},
+    "temperature_fluctuation_degC": {"max": 0.5, "note": "±0.5 °C"},
+    "chamber_volume_L": {"min": 40.8, "max": 299.2, "note": "시험 영역 내부 치수로 환산. 240×460×370 mm(약 41 L) ~ 970×460×670 mm(약 299 L)"},
+    "load_kg": {"min": 30, "max": 50, "note": "시험 영역 하중(균등 분포). 43EL·73EL·73EH 는 30 kg, 그 외 50 kg"},
+    "ambient_degC": {"min": 0, "max": 40, "note": "허용 주위 조건"},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [
+    {
+      "model": "TSA-43EL-A",
+      "specs": {
+        "type": "EL (2조식)", "cooling": "공랭식",
+        "high_temp_degC": [50, 200], "low_temp_degC": [-65, 0],
+        "heat_up": "상온→+200 °C 10분 이내", "pull_down": "상온→-70 °C 70분 이내",
+        "recovery_time_min": 15, "recovery_specimen_kg": 3.5,
+        "inside_mm": {"W": 240, "H": 460, "D": 370}, "outside_mm": {"W": 1140, "H": 1900, "D": 1270},
+        "load_kg": 30, "weight_kg": 730,
+        "power_A": {"200V_3ph": 49, "220V_3ph": 47, "380_400_415V_3ph": 27},
+        "refrigerant": {"high": "R404A", "low": "R508A"}, "compressor": "밀폐형 로터리",
+        "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-73EL-A",
+      "specs": {
+        "type": "EL (2조식)", "cooling": "공랭식",
+        "high_temp_degC": [50, 200], "low_temp_degC": [-65, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-70 °C 40분 이내",
+        "recovery_time_min": 5, "recovery_specimen_kg": 6.5,
+        "inside_mm": {"W": 410, "H": 460, "D": 370}, "outside_mm": {"W": 1310, "H": 1900, "D": 1470},
+        "load_kg": 50, "weight_kg": 900,
+        "power_A": {"200V_3ph": 70, "220V_3ph": 70, "380_400_415V_3ph": 45},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "compressor": "밀폐형 스크롤",
+        "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-103EL-A",
+      "specs": {
+        "type": "EL (2조식)", "cooling": "공랭식",
+        "high_temp_degC": [50, 200], "low_temp_degC": [-65, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-70 °C 60분 이내",
+        "recovery_time_min": 5, "recovery_specimen_kg": 7.5,
+        "inside_mm": {"W": 650, "H": 460, "D": 370}, "outside_mm": {"W": 1550, "H": 1900, "D": 1470},
+        "load_kg": 50, "weight_kg": 1050,
+        "power_A": {"200V_3ph": 70, "220V_3ph": 70, "380_400_415V_3ph": 45},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-203EL-W",
+      "specs": {
+        "type": "EL (2조식)", "cooling": "수랭식",
+        "high_temp_degC": [50, 200], "low_temp_degC": [-65, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-70 °C 70분 이내",
+        "recovery_time_min": 5, "recovery_specimen_kg": 16,
+        "inside_mm": {"W": 650, "H": 460, "D": 670}, "outside_mm": {"W": 1550, "H": 1900, "D": 1770},
+        "load_kg": 50, "weight_kg": 1200,
+        "power_A": {"200V_3ph": 110, "220V_3ph": 110, "380_400_415V_3ph": 65},
+        "cooling_water": {"pressure_MPa": [0.2, 0.5], "rate_m3_h": 4.6, "temp_degC": [5, 38]},
+        "condensation_load_kJ_h": {"50Hz": 95700, "60Hz": 96100},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 62
+      }
+    },
+    {
+      "model": "TSA-303EL-W",
+      "specs": {
+        "type": "EL (2조식)", "cooling": "수랭식",
+        "high_temp_degC": [50, 200], "low_temp_degC": [-65, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-70 °C 40분 이내",
+        "recovery_time_min": 10, "recovery_specimen_kg": 17,
+        "inside_mm": {"W": 970, "H": 460, "D": 670}, "outside_mm": {"W": 1870, "H": 1900, "D": 1770},
+        "load_kg": 50, "weight_kg": 1420,
+        "power_A": {"200V_3ph": 120, "220V_3ph": 120, "380_400_415V_3ph": 70},
+        "cooling_water": {"pressure_MPa": [0.2, 0.5], "rate_m3_h": 4.6, "temp_degC": [5, 38]},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-73ES-A / TSA-73ES-W",
+      "specs": {
+        "type": "ES (2조 또는 3조식)", "cooling": "공랭식 또는 수랭식",
+        "high_temp_degC": [60, 200], "low_temp_degC": [-70, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-75 °C 40분 이내",
+        "recovery_time_min": 5, "recovery_specimen_kg": 6.5,
+        "inside_mm": {"W": 410, "H": 460, "D": 370}, "outside_mm": {"W": 1310, "H": 1900, "D": 1470},
+        "load_kg": 30, "weight_kg": 1050,
+        "power_A": {"200V_3ph": 78, "220V_3ph": 75, "380_400_415V_3ph": 50},
+        "cooling_water": {"pressure_MPa": [0.2, 0.5], "rate_m3_h": 3.1, "temp_degC": [5, 38], "note": "수랭 사양에 한함"},
+        "condensation_load_kJ_h": {"50Hz": 59700, "60Hz": 64800},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-103ES-W",
+      "specs": {
+        "type": "ES (2조 또는 3조식)", "cooling": "수랭식",
+        "high_temp_degC": [60, 200], "low_temp_degC": [-70, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-75 °C 50분 이내",
+        "recovery_time_min": 5, "recovery_specimen_kg": 7.5,
+        "inside_mm": {"W": 650, "H": 460, "D": 370}, "outside_mm": {"W": 1550, "H": 1900, "D": 1470},
+        "load_kg": 50, "weight_kg": 1150,
+        "power_A": {"200V_3ph": 78, "220V_3ph": 75, "380_400_415V_3ph": 50},
+        "cooling_water": {"pressure_MPa": [0.2, 0.5], "rate_m3_h": 3.1, "temp_degC": [5, 38]},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-203ES-W",
+      "specs": {
+        "type": "ES (3조식)", "cooling": "수랭식",
+        "high_temp_degC": [60, 200], "low_temp_degC": [-70, 0],
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-75 °C 45분 이내",
+        "recovery_time_min": 10, "recovery_specimen_kg": 26,
+        "inside_mm": {"W": 650, "H": 460, "D": 670}, "outside_mm": {"W": 1550, "H": 1900, "D": 1770},
+        "load_kg": 50, "weight_kg": 1400,
+        "power_A": {"200V_3ph": 120, "220V_3ph": 120, "380_400_415V_3ph": 70},
+        "cooling_water": {"pressure_MPa": [0.2, 0.5], "rate_m3_h": 4.6, "temp_degC": [5, 38]},
+        "condensation_load_kJ_h": {"50Hz": 95700, "60Hz": 104600},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 65
+      }
+    },
+    {
+      "model": "TSA-73EH-W",
+      "specs": {
+        "type": "EH (2조 또는 3조식)", "cooling": "수랭식",
+        "high_temp_degC": [60, 200], "low_temp_degC": [-70, 0],
+        "preheat_limit_degC": 205, "precool_limit_degC": -77,
+        "heat_up": "상온→+200 °C 15분 이내", "pull_down": "상온→-75 °C 50분 이내",
+        "recovery_time_min": 5, "recovery_specimen_kg": 5,
+        "recovery_conditions": "2조식 고온 +150 °C 15분 / 저온 -65 °C 15분, 센서 위치 하류(downstream)",
+        "inside_mm": {"W": 410, "H": 460, "D": 370}, "outside_mm": {"W": 1310, "H": 1900, "D": 1770},
+        "load_kg": 30, "weight_kg": 1250,
+        "power_A": {"200V_3ph": 112, "220V_3ph": 108, "380_400_415V_3ph": 60},
+        "cooling_water": {"pressure_MPa": [0.2, 0.5], "rate_m3_h": 4.6, "temp_degC": [5, 38]},
+        "condensation_load_kJ_h": {"50Hz": 95700, "60Hz": 96100},
+        "refrigerant": {"high": "R404A", "low": "R23"}, "noise_dB": 65,
+        "note": "가장 고성능 모델. MIL-STD-883H A~C·F 조건과 MIL-STD-202G A~C·F 조건까지 대응"
+      }
+    }
+  ],
+  "standard_model_matrix": [
+    {"standard": "MIL-STD-883H Method 1010.8 조건 A (+85 °C / -55 °C)", "el": false, "es": true, "eh": true},
+    {"standard": "MIL-STD-883H 조건 B (+125 °C / -55 °C)", "el": false, "es": true, "eh": true},
+    {"standard": "MIL-STD-883H 조건 C (+150 °C / -65 °C)", "el": false, "es": false, "eh": true},
+    {"standard": "MIL-STD-883H 조건 D (+200 °C / -65 °C)", "el": false, "es": false, "eh": false},
+    {"standard": "MIL-STD-883H 조건 E (+300 °C / -65 °C)", "el": false, "es": false, "eh": false},
+    {"standard": "MIL-STD-883H 조건 F (+175 °C / -65 °C)", "el": false, "es": false, "eh": true},
+    {"standard": "MIL-STD-202G Method 107G 조건 A (+85 °C / -55 °C / +25 °C)", "el": "옵션(상온 노출) 필요", "es": "조건부", "eh": true},
+    {"standard": "MIL-STD-202G 조건 B (+125 °C / -65 °C)", "el": false, "es": "조건부", "eh": true},
+    {"standard": "MIL-STD-202G 조건 C (+200 °C / -65 °C)", "el": false, "es": false, "eh": true},
+    {"standard": "MIL-STD-202G 조건 D (+350 °C) / E (+500 °C)", "el": false, "es": false, "eh": false},
+    {"standard": "MIL-STD-202G 조건 F (+150 °C / -65 °C)", "el": false, "es": "조건부", "eh": true},
+    {"standard": "IEC 60068-2-14 (JIS C 60068-2-14), +70~+200 °C / -5~-65 °C", "el": "조건부", "es": "조건부", "eh": true},
+    {"standard": "JASO D 014-4, +65~+160 °C / -20~-40 °C", "el": "조건부", "es": "조건부", "eh": true},
+    {"standard": "EIAJ ED-2531B Na, +60~+100 °C / 0~-50 °C", "el": "옵션(상온 노출) 필요", "es": true, "eh": true}
+  ],
+  "construction": {
+    "exterior": "냉연 방청 강판(멜라민 수지 도장)",
+    "interior": "스테인리스 강판",
+    "insulation": "글라스울 + 경질 폴리우레탄 폼",
+    "door": "수동 슬라이딩 도어(언락 버튼) — 수직 슬라이딩 구조",
+    "heater": "스트립 와이어 히터",
+    "refrigeration": "기계식 캐스케이드 냉동 시스템",
+    "expansion": "전자 팽창 밸브",
+    "cooler": "플레이트 핀 쿨러 + 축냉재(cold accumulator)",
+    "air_circulator": "시로코 팬",
+    "damper_drive": "에어 실린더"
+  },
+  "utilities": {
+    "air_supply_MPa": [0.4, 0.7],
+    "piping_connection": "32A",
+    "cooling_water_temp_degC": [5, 38]
+  },
+  "features": ["댐퍼 전환식 2조/3조 시험", "특허 병렬 냉동기 제어(특허 5487167)", "예열·예냉 상한/하한 설정", "제품 온도 제어(옵션)", "수직 슬라이딩 도어", "케이블 관통구(단자 부착 케이블 대응, 플랫 케이블 옵션)", "컬러 LCD 터치 패널", "다국어 표시(영·중 간체/번체·한국어)", "USB 메모리로 시험 프로그램 복사", "Pattern Manager Lite 프로그램 편집", "온라인 진단 서비스", "Web Integrated Network 최대 100대 연결(별매)"],
+  "options": ["상온 노출(ambient-temperature exposure)", "제품 온도 제어", "플랫 케이블 관통구", "Web Integrated Network"],
+  "relations": [
+    {"type": "performs", "target": "thermal_shock"},
+    {"type": "simulates_environment", "target": "environment-thermal-shock"},
+    {"type": "same_family_as", "target": "espec-platinous-chambers"},
+    {"type": "requires", "target": "utility-compressed-air"},
+    {"type": "requires", "target": "utility-cooling-water"}
+  ],
+  "sources": [{"file": "espec/tsa-thermal-shock-test-navi.pdf", "pages": [11, 12, 13, 14, 15, 16], "note": "EL/ES/EH 타입 사양표와 규격 대응표, 유틸리티 표를 원본 쪽 이미지로 확정(2026-09-09)"}],
+  "confidence": "catalog",
+  "notes": "성능값은 공랭식은 주위 +23 °C, 수랭식은 주위 +10~+30 °C·냉각수 +25 °C 기준이다. 승온·강온 시간은 단독 조 운전 시에만 적용된다. EL 타입 고온 노출 하한을 +60 °C 로 낮추려면 '상온 노출' 옵션이 필요하다. 소음은 무향실에서 바닥 1.2 m·전면 1 m 에서 측정한 값이며 실제 설치 환경에서는 더 커질 수 있다. 이전 판에서는 모델별 온도·용량 값을 텍스트 추출 실패로 비워 두었다."
+}

@@ -1,0 +1,43 @@
+{
+  "id": "imv-i-series-shaker",
+  "kind": "equipment_series",
+  "name": "IMV i-Series Electrodynamic Vibration Test Systems (i220 / i260)",
+  "name_ko": "IMV i 시리즈 전기동력식 진동 시험 시스템 (i220·i260)",
+  "manufacturer": "imv",
+  "brand": "i-series",
+  "category": "vibration_shaker",
+  "drive": "electrodynamic",
+  "form_factor": "floor",
+  "description": "공랭식 전기동력 가진기. i220/EM1AM: 정현·랜덤 8 kN, 충격 16 kN, 주파수 0–3300 Hz, 최대 변위 51 mm p-p, 최대 속도 2.2 m/s. i260/SA7M·EM2601: 정현·랜덤 54 kN, 주파수 0–2600 Hz, 최대 변위 100 mm p-p, 최대 속도 2.4 m/s(충격 4.6 m/s). 특허 PS 가이드(평행 슬로프) 상부 지지, ISM 소비전력 저감, 모든 모델이 온도 챔버와 직결 가능.",
+  "test_items": ["vibration_sine_random", "mechanical_shock"],
+  "measurands": ["resonance_frequency", "transmissibility", "fatigue_life", "shock_response_spectrum"],
+  "materials": ["electronic assemblies", "PCB", "automotive components", "consumer electronics", "batteries", "displays"],
+  "standards": {
+    "compliance": ["ISO 5344 (랜덤 정격 조건)"],
+    "test_methods": ["IEC 60068-2-6", "IEC 60068-2-64", "IEC 60068-2-27", "MIL-STD-810 Method 514/516", "JESD22-B103", "ISTA 3A", "ISO 16750-3"]
+  },
+  "limits": {
+    "force_kN": {"min": 8, "max": 65, "note": "정현/랜덤 정격. 공랭으로 최대 65 kN 구현(i-series 최상위)"},
+    "frequency_Hz": {"min": 0, "max": 3300, "note": "i220 0–3300, i260 0–2600 (2000 Hz 이상 -12 dB/oct 롤오프)"},
+    "displacement_mm": {"max": 100, "note": "i220 51 mm p-p, i260 100 mm p-p"},
+    "velocity_m_s": {"max": 4.6, "note": "정현 2.2~2.4 m/s, 충격 최대 4.6 m/s (i260)"},
+    "payload_kg": {"note": "armature 질량 i220 85 kg, i260 250 kg — 허용 페이로드는 별도"},
+    "temperature_degC": {"note": "온도 챔버 직결 가능 — 범위는 결합 챔버에 따름"}
+  },
+  "models": [
+    {"model": "i220/EM1AM (i220/SA1AM)", "specs": {"force_sine_kN": 8, "force_random_kN_rms": 8, "force_shock_kN": 16, "frequency_Hz": {"min": 0, "max": 3300}, "displacement_mm_pp": 51, "velocity_m_s": 2.2, "armature_mass_kg": 85, "power_kVA": 16.4, "blower": "VAPE/N 560/2R"}},
+    {"model": "i260/SA7M · EM2601", "specs": {"force_sine_kN": 54, "force_random_kN_rms": 54, "frequency_Hz": {"min": 0, "max": 2600}, "displacement_mm_pp": 100, "velocity_m_s_sine": 2.4, "velocity_m_s_shock": 4.6, "armature_mass_kg": 250, "blower": "VAPE 710/N2", "power": "3상 200/220/240/380/400/415/440 V 50/60 Hz"}}
+  ],
+  "features": ["PS 가이드(Parallel Slope Guide) 상부 지지 — 특허", "저소음 흡기 설계", "ISM(Intelligence Shaker Management) 소비전력·CO2 저감", "K2 진동 컨트롤러 호환", "온도 챔버 직결"],
+  "options": ["수평 슬립테이블", "온·습도 챔버 결합", "K2 컨트롤러"],
+  "relations": [
+    {"type": "compatible_accessory", "target": "espec-platinous-chambers", "note": "복합환경(온도+진동) 시험용 직결"},
+    {"type": "requires", "target": "utility-cooling-air"}
+  ],
+  "sources": [
+    {"file": "imv/i220-em1am-datasheet.pdf", "pages": [1, 2]},
+    {"file": "imv/i260-sa7m-em2601-spec.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "catalog",
+  "notes": "장기 시험 시 최대 70 %까지 디레이팅이 필요하다고 카탈로그가 명시한다."
+}

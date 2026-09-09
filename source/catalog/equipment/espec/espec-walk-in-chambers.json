@@ -1,0 +1,36 @@
+{
+  "id": "espec-walk-in-chambers",
+  "kind": "equipment_series",
+  "name": "ESPEC Walk-In Temperature (& Humidity) Chambers — E Series / High-Power Series",
+  "name_ko": "에스펙 워크인 항온항습실 E 시리즈 / 하이파워 시리즈",
+  "manufacturer": "espec",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "walk_in",
+  "description": "사람이 걸어 들어가는 대형 환경실. E 시리즈(단단 냉동): EBE/EBL/EBR 온습도, EBF/EBU/EBUU 온도 전용, -40~+80 °C, 10~95 %rh. 하이파워 시리즈(수냉 캐스케이드): -70~+150 °C, 승온 4 °C/min·강온 3 °C/min. 바닥 하중 6 kPa(600 kgf/m²), 단문 W850×H1800 mm. TV·냉장고·세탁기 등 완제품 가전과 대형 어셈블리용.",
+  "test_items": ["damp_heat", "temperature_cycling"],
+  "measurands": ["failure_time", "functional_degradation", "condensation"],
+  "materials": ["home appliances", "large assemblies", "automotive components", "server racks", "displays"],
+  "standards": {"compliance": [], "test_methods": ["IEC 60068-3-5", "IEC 60068-3-6", "IEC 60068-2-1", "IEC 60068-2-2", "IEC 60068-2-30", "IEC 60068-2-78"]},
+  "limits": {
+    "temperature_degC": {"min": -70, "max": 150, "note": "E 시리즈 -40~+80 (EBL -30, EBR -10); 하이파워 -70~+150"},
+    "humidity_pct": {"min": 10, "max": 95, "note": "EBE/EBL 10~95 %rh (+10~+80 °C); 하이파워 20~95 %rh (+20~+80 °C)"},
+    "heating_rate_K_min": {"min": 1, "max": 4, "note": "E 시리즈 1 °C/min; 하이파워 4 °C/min"},
+    "cooling_rate_K_min": {"min": 0.4, "max": 3, "note": "E 시리즈 0.4 °C/min; 하이파워 3 °C/min"},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [
+    {"model": "EBE (온습도, 캐스케이드 가능)", "specs": {"temperature_degC": {"min": -40, "max": 80}, "humidity_pct": {"min": 10, "max": 95}, "system": "BTHC (Balanced Temperature and Humidity Control)"}},
+    {"model": "EBL (온습도)", "specs": {"temperature_degC": {"min": -30, "max": 80}, "humidity_pct": {"min": 10, "max": 95}}},
+    {"model": "EBR (온습도)", "specs": {"temperature_degC": {"min": -10, "max": 80}, "humidity_pct": {"min": 20, "max": 95}}},
+    {"model": "EBF / EBU / EBUU (온도 전용)", "specs": {"temperature_degC": {"min": -40, "max": 80, "note": "EBU -30, EBUU -10"}, "system": "BTC"}},
+    {"model": "EBE / EBF 하이파워 (수냉 캐스케이드)", "specs": {"temperature_degC": {"min": -70, "max": 150}, "humidity_pct": {"min": 20, "max": 95}, "heating_rate_K_min": 4, "cooling_rate_K_min": 3, "temperature_uniformity_degC": {"-40~+80": 2.5, "-70~-41 & +81~+150": 5.5}, "refrigerant": "7.5 kW cascade R-449A + R-23; 15 kW cascade R-449A + R-508A"}}
+  ],
+  "accuracy": {"temperature_fluctuation": "±0.5 °C", "humidity_fluctuation": "±4 %rh", "temperature_uniformity": "2.5 °C (E series)"},
+  "environment": {"allowable_ambient": "5~40 °C / 75 %rh", "floor_load": "6 kPa (600 kgf/m²)", "door": "W850 × H1800 mm", "power": "200/220/380/400 V AC 3φ 50/60 Hz"},
+  "features": ["관찰창 W180×H289 mm", "케이블 포트 Ø50 mm", "LED 실내등", "Ethernet(LAN)·USB 메모리 포트", "외부 출력 단자", "우레탄 폼 단열", "스테인리스 내장"],
+  "options": ["RS-485 / RS-232C / GPIB", "케이블 포트 25/50/100/150/200 mm", "원격 제어(LAN)", "확대 관찰창 W295×H425", "핸즈인 포트 Ø150 mm ×2", "저GWP 냉매 R-449A", "페이퍼리스 기록계", "시간 신호 릴레이 8점"],
+  "relations": [{"type": "same_family_as", "target": "espec-platinous-chambers"}, {"type": "simulates_environment", "target": "environment-damp-heat"}],
+  "sources": [{"file": "espec/walk-in-chamber-e-series.pdf", "pages": [5, 9, 13]}],
+  "confidence": "catalog"
+}

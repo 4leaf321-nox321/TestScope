@@ -1,0 +1,22 @@
+{
+  "id": "bareiss-digi-test-ii",
+  "kind": "equipment_model",
+  "name": "Bareiss digi test II fully automatic Shore / IRHD / VLRH hardness tester",
+  "name_ko": "바라이스 digi test II 전자동 쇼어·IRHD·VLRH 경도계",
+  "manufacturer": "bareiss",
+  "category": "shore_irhd_hardness",
+  "form_factor": "benchtop",
+  "description": "고무·엘라스토머·폼 전자동 경도계. 교환식 측정 헤드로 Shore A/Micro A/A0/B/0/C/D/Micro D/D0/00/000/000S/E/AM/M, IRHD Micro/Normal/Hard/Low, VLRH. Micro Shore A 는 0.5 mm 두께 시편에서 Shore A 상당값. 곡면 자동 검출.",
+  "test_items": ["hardness_shore", "hardness_irhd"],
+  "measurands": ["hardness_shore_A", "hardness_shore_D", "hardness_IRHD", "hardness_VLRH"],
+  "materials": ["rubber", "elastomers", "foam", "thin sheets", "O-rings"],
+  "standards": {"compliance": [], "test_methods": ["ASTM D2240", "DIN EN ISO 868", "DIN ISO 7619", "DIN ISO 48-2", "ISO 48-3", "ISO 48-4", "ASTM D1415", "NFT 51-174", "NFT 46-003", "BS903 Part A26", "DIN ISO 27588 (VLRH)"]},
+  "limits": {
+    "hardness_scales": {"values": ["Shore A", "Micro Shore A", "Shore A0", "Shore B", "Shore 0", "Shore C", "Shore D", "Micro Shore D", "Shore D0", "Shore 00", "Shore 000", "Shore 000S", "Shore E", "Shore AM", "Shore M", "IRHD Micro", "IRHD Normal", "IRHD Hard", "IRHD Low", "VLRH"]},
+    "specimen_thickness_mm": {"min": 0.5, "max": 6, "note": "Micro 0.5–0.6 mm, AM/M 1.5 mm, VLRH 2 mm, 표준 4–6 mm"}
+  },
+  "models": [{"model": "digi test II", "specs": {"measuring_heads": "interchangeable, auto-detected"}}],
+  "relations": [],
+  "sources": [{"file": "bareiss/digi-test-ii.pdf", "pages": [8, 18, 19]}],
+  "confidence": "catalog"
+}

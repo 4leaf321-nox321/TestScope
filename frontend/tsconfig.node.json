@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "module": "nodenext",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+
+  /* **vitest.config.ts 는 일부러 뺐다.**
+
+     vitest 는 자기 vite 를 따로 들고 있어서(node_modules/vitest/node_modules/vite)
+     `vitest/config` 의 플러그인 타입이 hoist 된 vite 8 의 플러그인 타입과 다른
+     선언으로 잡힌다. 그래서 `plugins: [react()]` 한 줄이 tsc 에서 300줄짜리
+     불일치로 터지는데, 그것은 우리 코드의 문제가 아니고 **빌드에도 영향이 없다**
+     — vitest 는 자기 설정을 런타임에 읽는다.
+
+     설정 파일 하나를 타입 검사에서 빼는 대가로 얻는 것: `npm run build` 가 앱
+     코드의 진짜 오류만 말한다. */
+  "include": ["vite.config.ts"]
+}

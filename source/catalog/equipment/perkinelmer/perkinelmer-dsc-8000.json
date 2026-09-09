@@ -1,0 +1,29 @@
+{
+  "id": "perkinelmer-dsc-8000",
+  "kind": "equipment_series",
+  "name": "PerkinElmer DSC 4000 / 6000 / 8000 / 8500 Differential Scanning Calorimeters",
+  "name_ko": "퍼킨엘머 DSC 4000/6000/8000/8500 시차주사열량계",
+  "manufacturer": "perkinelmer",
+  "category": "dsc",
+  "form_factor": "benchtop",
+  "description": "DSC 4000/6000: 단일 퍼니스 열류식(6000 은 MT-DSC, 광열량계·45 자동샘플러). DSC 8000/8500: 이중 퍼니스 전력보상식(퍼니스 <1 g), 승온 0.01–300 °C/min(8500 HyperDSC 750 °C/min, 탄도 냉각 2100 °C/min), 고압셀 600 psi, UV 광열량계, 96 자동샘플러. 온도 범위 수치는 이 데이터시트(유통사 재판)에 없음.",
+  "test_items": ["dsc"],
+  "measurands": ["glass_transition", "melting_point", "crystallinity", "specific_heat", "oit", "cure_kinetics", "isothermal_kinetics"],
+  "materials": ["polymers", "pharmaceuticals", "UV-cured resins", "food"],
+  "standards": {"compliance": [], "test_methods": ["ASTM D3418", "ISO 11357", "ASTM E1356", "ASTM D3895"]},
+  "limits": {
+    "heating_rate_K_min": {"min": 0.01, "max": 750, "note": "8000: 300; 8500: 750 (cooling 2100)"},
+    "temperature_degC": {"note": "미기재 — 제조사 공식 사양(-180~750 °C, LN2) 확인 요", "uncertain": true},
+    "pressure_psi": {"max": 600, "note": "high-pressure cell option"}
+  },
+  "models": [
+    {"model": "DSC 4000", "specs": {"type": "single-furnace heat flux"}},
+    {"model": "DSC 6000", "specs": {"type": "single-furnace heat flux, MT-DSC", "autosampler": 45}},
+    {"model": "DSC 8000", "specs": {"type": "double-furnace power compensation", "heating_rate_K_min": {"min": 0.01, "max": 300}, "autosampler": 96, "high_pressure_cell_psi": 600}},
+    {"model": "DSC 8500", "specs": {"type": "double-furnace HyperDSC", "heating_rate_K_min": {"max": 750}, "cooling_rate_K_min": {"max": 2100}}}
+  ],
+  "options": ["liquid nitrogen cooling", "intracooler", "portable cooling device", "UV photocalorimeter", "remote sampling head", "autosampler"],
+  "relations": [],
+  "sources": [{"file": "perkinelmer/dsc-8000-datasheet.pdf", "pages": [2, 3, 4], "note": "IET(중고장비상) 재판 데이터시트"}],
+  "confidence": "limited"
+}

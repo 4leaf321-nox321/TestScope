@@ -1,0 +1,33 @@
+{
+  "id": "zwickroell-vibrophore",
+  "kind": "equipment_series",
+  "name": "ZwickRoell Vibrophore high-frequency resonance pulsators (Vibrophore 250 / 1000; family 15 – 1000 kN)",
+  "name_ko": "즈윅로엘 Vibrophore 공진식 고주파 피로시험기",
+  "manufacturer": "zwickroell",
+  "category": "resonance_fatigue",
+  "drive": "resonance",
+  "form_factor": "floor",
+  "description": "전자기 공진 구동 + 정적 시험기('two in one'). 시험 주파수 30–285 Hz(추 조합 8단), 에너지 소비는 서보유압의 약 2 %. Vibrophore 250: Fmax 250 kN, 진폭 ±125 kN, 진동변위 ±3 mm. Vibrophore 1000: ±1000 kN, 진폭 ±500 kN, ±2 mm. 정적 크로스헤드 0.0001–600(250)/250(1000) mm/min. testControl II 10 kHz. S-N(DIN 50100), 부품 피로, CT/SEB 파괴역학.",
+  "test_items": ["fatigue", "fracture_toughness", "tensile", "compression", "flexure", "torsion"],
+  "measurands": ["fatigue_limit", "sn_curve", "fatigue_life", "da_dN"],
+  "materials": ["metals", "connecting rods", "crankshafts", "chains", "threaded fasteners", "CT/SEB specimens"],
+  "standards": {"compliance": [], "test_methods": ["DIN 50100", "ASTM E466", "ISO 1099", "ASTM E647"]},
+  "limits": {
+    "dynamic_force_kN": {"min": 15, "max": 1000, "values": [15, 25, 50, 100, 250, 500, 1000], "note": "제품군 전체; PI 확보는 250·1000"},
+    "frequency_Hz": {"min": 30, "max": 285},
+    "crosshead_speed_mm_min": {"min": 0.0001, "max": 600},
+    "vertical_test_space_mm": {"max": 2310},
+    "horizontal_test_space_mm": {"values": [626, 982]},
+    "temperature_degC": {"note": "환경 장치(온도·부식 매체) 추가 가능"}
+  },
+  "models": [
+    {"model": "Vibrophore 250", "specs": {"dynamic_force_kN": 250, "force_amplitude_kN": 125, "oscillation_displacement_mm": 3, "frequency_Hz": {"min": 30, "max": 285}, "frame_stiffness_kN_mm": 380, "crosshead_speed_mm_min": {"min": 0.0001, "max": 600}, "return_speed_mm_min": 1000, "vertical_test_space_mm": 1200, "horizontal_test_space_mm": 626, "test_area_depth_mm": 550, "footprint_mm": {"H": 2565, "W": 1094, "D": 770}, "weight_kg": 3200, "power": "400 V 3Ph 16 A", "noise_dBA": "80–110"}},
+    {"model": "Vibrophore 1000", "specs": {"dynamic_force_kN": 1000, "force_amplitude_kN": 500, "oscillation_displacement_mm": 2, "frequency_Hz": {"min": 30, "max": 285}, "frame_stiffness_kN_mm": 880, "crosshead_speed_mm_min": {"min": 0.0001, "max": 250}, "return_speed_mm_min": 1000, "vertical_test_space_mm": 2310, "horizontal_test_space_mm": 982, "test_area_depth_mm": 1995, "footprint_mm": {"H": 4538, "W": 1620, "D": 1445}, "weight_kg": 17500}}
+  ],
+  "accuracy": {"positioning": "±2 µm repeat", "electronics": "testControl II 10 kHz control, 24 bit"},
+  "environment": {"operating_temp_degC": [10, 35], "humidity_pct": [20, 90], "power": "400 V 3Ph/N/PE 50/60 Hz"},
+  "options": ["two-in-one static test option", "oscillation displacement measurement", "Xforce Dynamic load cells", "specimen grips for threaded fasteners", "temperature/corrosion environment devices"],
+  "relations": [],
+  "sources": [{"file": "zwickroell/vibrophore-250-pi-en.pdf", "pages": [1, 2, 3]}, {"file": "zwickroell/vibrophore-1000-pi-en.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog"
+}

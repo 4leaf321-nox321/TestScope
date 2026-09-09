@@ -1,0 +1,63 @@
+{
+  "id": "instron-6800-series",
+  "kind": "equipment_series",
+  "name": "6800 Series Universal Testing Systems",
+  "name_ko": "인스트론 6800 시리즈 만능재료시험기",
+  "manufacturer": "instron",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "Instron 의 현행 전기기계식 UTM. 단일 컬럼(68SC) 0.5–5 kN, 테이블형 듀얼 컬럼(68TM) 5–50 kN, 플로어형(68FM) 100–300 kN. Bluehill Universal 소프트웨어, 5 kHz 동시 데이터 수집, 브러시리스 AC 서보모터로 최대 10일 연속 사이클·크리프·완화 시험 가능.",
+  "test_items": ["tensile", "compression", "flexure", "peel", "puncture", "friction_coefficient", "shear", "tear", "creep", "relaxation"],
+  "measurands": ["tensile_strength", "yield_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "flexural_modulus", "peel_strength", "shear_strength"],
+  "materials": ["metals", "plastics", "composites", "elastomers", "biomedical", "automotive", "consumer_electronics", "raw_materials"],
+  "standards": {
+    "compliance": ["ASTM E4", "ISO 7500-1", "ASTM E83", "BS 3846", "ISO 9513", "EN 10002-4"],
+    "test_methods": ["ASTM D638", "ISO 527", "ASTM D790", "ISO 178", "ASTM E8/E8M", "ISO 6892-1", "ASTM D3039", "ASTM D695"]
+  },
+  "limits": {
+    "force_kN": {"min": 0.5, "max": 300, "values": [0.5, 1, 2, 5, 10, 30, 50, 100, 300]},
+    "crosshead_speed_mm_min": {"min": 0.00005, "max": 3048, "note": "SC/TM 최저 0.001, FM 최저 0.00005; 최고는 68TM-5 의 3048"},
+    "vertical_test_space_mm": {"min": 738, "max": 1993},
+    "horizontal_test_space_mm": {"min": 100, "max": 947},
+    "data_rate_Hz": {"max": 5000},
+    "temperature_degC": {"min": -150, "max": 1200, "note": "3119-600 챔버(-150~+600) 또는 3119-160 퍼니스(1200 °C) 장착 시. 본체 자체는 상온(운전 +5~+40 °C)", "uncertain": true},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "68SC-05", "form_factor": "single_column_tabletop", "specs": {"force_kN": 0.5, "crosshead_travel_mm": 505, "vertical_test_space_mm": 738, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.001, "max": 2540}, "return_speed_mm_min": 2540, "position_resolution_nm": 9.5, "frame_stiffness_kN_mm": 8.5, "max_force_at_full_speed_kN": 0.5, "max_speed_at_full_force_mm_min": 2540, "footprint_mm": [1020, 460, 615], "weight_kg": 55, "power_VA": 700}},
+    {"model": "68SC-1", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1, "crosshead_travel_mm": 868, "vertical_test_space_mm": 1118, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.001, "max": 2540}, "return_speed_mm_min": 2540, "position_resolution_nm": 9.5, "frame_stiffness_kN_mm": 8.5, "max_force_at_full_speed_kN": 1, "max_speed_at_full_force_mm_min": 2540, "footprint_mm": [1410, 460, 615], "weight_kg": 62, "power_VA": 700}},
+    {"model": "68SC-2", "form_factor": "single_column_tabletop", "specs": {"force_kN": 2, "crosshead_travel_mm": 868, "vertical_test_space_mm": 1118, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.001, "max": 2540}, "return_speed_mm_min": 2540, "position_resolution_nm": 9.5, "frame_stiffness_kN_mm": 8.5, "max_force_at_full_speed_kN": 2, "max_speed_at_full_force_mm_min": 2540, "footprint_mm": [1410, 460, 615], "weight_kg": 62, "power_VA": 700}},
+    {"model": "68SC-5", "form_factor": "single_column_tabletop", "specs": {"force_kN": 5, "crosshead_travel_mm": 868, "crosshead_travel_mm_E2": 1112, "vertical_test_space_mm": 1118, "vertical_test_space_mm_E2": 1375, "horizontal_test_space_mm": 100, "crosshead_speed_mm_min": {"min": 0.001, "max": 2540}, "return_speed_mm_min": 2540, "position_resolution_nm": 9.5, "frame_stiffness_kN_mm": 8.5, "max_force_at_full_speed_kN": 2.5, "max_speed_at_full_force_mm_min": 1270, "footprint_mm": [1410, 460, 615], "weight_kg": 62, "power_VA": 700}},
+    {"model": "68TM-5", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 5, "crosshead_travel_mm": 1163, "crosshead_travel_mm_E2": 1648, "vertical_test_space_mm": 1234, "vertical_test_space_mm_E2": 1739, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.001, "max": 3048}, "return_speed_mm_min": 3500, "position_resolution_nm": 9.9, "frame_stiffness_kN_mm": 45, "max_force_at_full_speed_kN": 2.5, "max_speed_at_full_force_mm_min": 1524, "footprint_mm": [1640, 760, 715], "weight_kg": 139, "power_VA": 1400}},
+    {"model": "68TM-10", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "crosshead_travel_mm": 1163, "crosshead_travel_mm_E2": 1648, "vertical_test_space_mm": 1234, "vertical_test_space_mm_E2": 1739, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.001, "max": 2032}, "return_speed_mm_min": 2100, "position_resolution_nm": 4.9, "frame_stiffness_kN_mm": 50, "max_force_at_full_speed_kN": 5, "max_speed_at_full_force_mm_min": 1016, "footprint_mm": [1640, 760, 715], "weight_kg": 139, "power_VA": 1400}},
+    {"model": "68TM-30", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 30, "crosshead_travel_mm": 1119, "crosshead_travel_mm_E2": 1605, "vertical_test_space_mm": 1190, "vertical_test_space_mm_E2": 1695, "horizontal_test_space_mm": 420, "horizontal_test_space_mm_F2": 947, "crosshead_speed_mm_min": {"min": 0.001, "max": 1016}, "return_speed_mm_min": 1100, "position_resolution_nm": 2.6, "frame_stiffness_kN_mm": 140, "max_force_at_full_speed_kN": 15, "max_speed_at_full_force_mm_min": 508, "footprint_mm": [1640, 756, 715], "weight_kg": 196, "power_VA": 1400}},
+    {"model": "68TM-50", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_travel_mm": 1119, "crosshead_travel_mm_E2": 1605, "vertical_test_space_mm": 1190, "vertical_test_space_mm_E2": 1695, "horizontal_test_space_mm": 420, "crosshead_speed_mm_min": {"min": 0.001, "max": 762}, "return_speed_mm_min": 800, "position_resolution_nm": 1.8, "frame_stiffness_kN_mm": 180, "max_force_at_full_speed_kN": 25, "max_speed_at_full_force_mm_min": 381, "footprint_mm": [1640, 760, 715], "weight_kg": 255, "power_VA": 1400}},
+    {"model": "68FM-100", "form_factor": "floor", "specs": {"force_kN": 100, "crosshead_travel_mm": 1407, "crosshead_travel_mm_E2": 1906, "vertical_test_space_mm": 1494, "vertical_test_space_mm_E2": 1993, "horizontal_test_space_mm": 575, "crosshead_speed_mm_min": {"min": 0.00005, "max": 1080, "note": "1PH 1016 / 3PH 1080"}, "return_speed_mm_min": 1160, "position_resolution_nm": 2.2, "frame_stiffness_kN_mm": 300, "max_force_at_full_speed_kN": 75, "max_speed_at_full_force_mm_min": 762, "footprint_mm": [2287, 1140, 786], "weight_kg": 799, "power_VA": 4200}},
+    {"model": "68FM-300", "form_factor": "floor", "specs": {"force_kN": 300, "crosshead_travel_mm": 1359, "crosshead_travel_mm_E2": 1858, "vertical_test_space_mm": 1446, "vertical_test_space_mm_E2": 1945, "horizontal_test_space_mm": 575, "horizontal_test_space_mm_F2": 934, "crosshead_speed_mm_min": {"min": 0.00005, "max": 560, "note": "1PH 508 / 3PH 560"}, "return_speed_mm_min": 640, "position_resolution_nm": 1.14, "frame_stiffness_kN_mm": 350, "max_force_at_full_speed_kN": 150, "max_speed_at_full_force_mm_min": 280, "footprint_mm": [2287, 1140, 786], "weight_kg": 872, "power_VA": 4200}}
+  ],
+  "accuracy": {
+    "force": "±0.5% of reading down to 1/1000 of load cell capacity (2580 Series, Advanced Performance Option); ±0.5% to 1/500 (2580); ±0.5% to 1/250 (2525/2530)",
+    "displacement": "±0.01 mm or 0.05% of displacement (whichever is greater)",
+    "speed": "±0.1% of set speed (zero or constant load)",
+    "strain": "Meets ASTM E83, BS 3846, ISO 9513, EN 10002-4"
+  },
+  "environment": {"operating_temp_degC": [5, 40], "humidity_pct": [10, 90], "power": "1PH 100/120/220/240 VAC; 3PH 208/240/400 VAC (68FM)", "ip_rating": "IP 2X"},
+  "features": ["Bluehill Universal software", "Operator Protect safety architecture", "Auto Positioning", "Collision Mitigation", "10-year mechanical warranty", "Extra height (E2) / extra width (F2) / tall base (B2) options"],
+  "options": ["2580 Series load cells", "AVE 2 / AVE 3 video extensometer", "3119-600 environmental chamber", "3119-160 furnace", "pneumatic/hydraulic grips"],
+  "relations": [
+    {"type": "compatible_accessory", "target": "instron-3119-600-environmental-chambers"},
+    {"type": "extends_temperature", "target": "instron-3119-600-environmental-chambers", "note": "-150 ~ +600 °C"},
+    {"type": "compatible_accessory", "target": "instron-3119-160-furnace"},
+    {"type": "extends_temperature", "target": "instron-3119-160-furnace", "note": "up to 1200 °C"},
+    {"type": "compatible_accessory", "target": "instron-ave-video-extensometer"},
+    {"type": "successor_of", "target": "instron-5900-series"},
+    {"type": "same_family_as", "target": "instron-3400-series", "note": "3400 은 보급형, 6800 은 고성능"}
+  ],
+  "sources": [
+    {"file": "instron/6800-series-utm-brochure.pdf", "pages": [24, 25, 26, 27]},
+    {"file": "instron/6800-series-floor-model-utm.pdf", "pages": [1, 2]},
+    {"file": "instron/6800-series-utm-sep.pdf", "note": "동일 브로슈어 미러"}
+  ],
+  "confidence": "catalog"
+}

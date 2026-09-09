@@ -1,0 +1,31 @@
+{
+  "id": "thermo-haake-mars",
+  "kind": "equipment_series",
+  "name": "Thermo Scientific HAAKE MARS 40 / 60 and HAAKE MARS iQ Rheometers",
+  "name_ko": "써모 사이언티픽 HAAKE MARS 40/60 · MARS iQ 레오미터",
+  "manufacturer": "thermo-fisher",
+  "brand": "HAAKE",
+  "category": "rotational_rheometer",
+  "form_factor": "benchtop",
+  "description": "MARS 40: 최소 토크 20 nNm(회전)/10 nNm(진동), MARS 60: 10/2 nNm, 최대 200 mNm, 분해능 0.1 nNm, 각분해능 12 nrad, 회전 10^-8–4500 rpm, 진동 10^-6–100 Hz, 수직력 0.01–50 N, 리프트 240 mm. 온도 모듈 -150~600 °C(CTC 챔버), 펠티에 -60~200, 전기 -40~400. MARS iQ: QC/R&D 용, 온도 챔버 -150~450 °C, DMTA 클램프, 트라이볼로지, SER 신장 유변. RheoScope 현미경, Rheonaut FTIR 커플링.",
+  "test_items": ["rheology_rotational", "dma", "friction_wear_tribo"],
+  "measurands": ["viscosity", "storage_modulus", "loss_modulus", "tan_delta", "yield_stress", "normal_force", "extensional_viscosity"],
+  "materials": ["polymer melts", "food", "cosmetics", "pharma", "paints", "adhesives", "asphalt", "solids (DMTA bars)"],
+  "standards": {"compliance": [], "test_methods": ["ISO 3219", "ISO 6721-10", "ASTM D4440", "DIN 53019"]},
+  "limits": {
+    "torque_mNm": {"min": 0.000002, "max": 200},
+    "rotation_rpm": {"min": 0.00000001, "max": 4500},
+    "frequency_Hz": {"min": 0.000001, "max": 100},
+    "force_N": {"min": 0.01, "max": 50},
+    "temperature_degC": {"min": -150, "max": 600}
+  },
+  "models": [
+    {"model": "HAAKE MARS 40", "specs": {"min_torque_nNm": {"rotation": 20, "oscillation": 10}, "torque_mNm": {"max": 200}, "torque_resolution_nNm": 0.1, "angular_resolution_nrad": 12, "rotation_rpm": {"min": 0.00000001, "max": 1500, "option": 4500}, "frequency_Hz": {"min": 0.000001, "max": 100}, "normal_force_N": {"min": 0.01, "max": 50}, "lift_mm": 240, "gap_resolution_um": 0.5, "temperature_degC": {"min": -150, "max": 600}, "footprint_mm": {"W": 600, "D": 600, "H": 890}, "weight_kg": 59}},
+    {"model": "HAAKE MARS 60", "specs": {"min_torque_nNm": {"rotation": 10, "oscillation": 2}, "torque_mNm": {"max": 200}, "rotation_rpm": {"max": 4500}, "frequency_Hz": {"max": 100}, "normal_force_N": {"min": 0.01, "max": 50}, "temperature_degC": {"min": -150, "max": 600}, "weight_kg": 59}},
+    {"model": "HAAKE MARS iQ", "specs": {"temperature_degC": {"min": -150, "max": 450, "note": "chamber; compressed air RT, cold gas chiller -60, LN2 -150"}}, "note": "토크·주파수 사양 표는 덤프에 안 잡힘 — 원본 p10 확인", "uncertain": true}
+  ],
+  "options": ["Peltier plate -60~200 (liquid-cooled) / -5~200 (air)", "electrical hood/plate -40~400", "Peltier cylinder -40~200", "electrical cylinder -20~300", "Controlled Test Chamber -150~600", "RheoScope microscope module (-5~300 °C)", "Rheonaut FTIR module", "solids clamping fixtures (DMTA)", "tribology cell", "SER extensional tool", "camera"],
+  "relations": [],
+  "sources": [{"file": "thermo-fisher/haake-mars-40-60-brochure.pdf", "pages": [11, 21, 23]}, {"file": "thermo-fisher/haake-mars-iq-brochure.pdf", "pages": [9]}],
+  "confidence": "catalog"
+}

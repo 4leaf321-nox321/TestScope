@@ -1,0 +1,38 @@
+{
+  "id": "q-lab-q-fog",
+  "kind": "equipment_series",
+  "name": "Q-Lab Q-FOG Cyclic Corrosion Test Chambers (SSP / CCT / CRH)",
+  "name_ko": "Q-Lab Q-FOG 복합부식 시험 챔버 (SSP·CCT·CRH)",
+  "manufacturer": "q-lab",
+  "brand": "Q-FOG",
+  "category": "corrosion_chamber",
+  "form_factor": "floor",
+  "description": "염수분무·복합부식 챔버. 600 L / 1100 L 두 크기, 내부 염수 저장조 120 L. SSP: 연속 염수분무 + 건조(Prohesion). CCT: 95~100 %RH 습윤(Humid) 기능 추가. CRH: 가변 습도 제어 + 샤워(스프레이) 기능 — 자동차 규격(GMW 14872 등) 대응. 유리섬유 보강 무부식 구조, 17개 언어 UI, Ethernet/USB 데이터 로깅.",
+  "test_items": ["salt_spray_corrosion", "damp_heat"],
+  "measurands": ["corrosion_rate", "mass_loss", "blistering", "creepage_from_scribe"],
+  "materials": ["plated finishes", "painted coatings", "aerospace components", "military components", "electrical and electronic systems", "automotive parts"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["ASTM B117", "ISO 9227", "GMW 14872", "GM9540P", "SAE J2334", "SAE J2721", "VDA 233-102", "Renault ECC1", "ASTM G85"]
+  },
+  "limits": {
+    "chamber_volume_L": {"values": [600, 1100]},
+    "humidity_pct": {"min": 20, "max": 100, "note": "CCT 는 95~100 %RH 습윤 기능; CRH 는 가변 습도 제어"},
+    "temperature_degC": {"note": "내부 히터로 급속 온도 사이클 — 구체 범위는 사양표 확인 요", "uncertain": true},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [
+    {"model": "Q-FOG SSP600 / SSP1100", "specs": {"chamber_volume_L": [600, 1100], "functions": ["Fog", "Dry-Off", "Dwell"], "solution_reservoir_L": 120}},
+    {"model": "Q-FOG CCT600 / CCT1100", "specs": {"chamber_volume_L": [600, 1100], "functions": ["Fog", "Dry-Off", "Dwell", "Humid (95–100 %RH)"], "solution_reservoir_L": 120}},
+    {"model": "Q-FOG CRH600 / CRH1100", "specs": {"chamber_volume_L": [600, 1100], "functions": ["Fog", "Dry-Off", "RH (가변 습도)", "Shower"], "shower": "고정식 모듈(-S) 또는 상부 스윙 샤워바(-T)", "solution_reservoir_L": 120, "note": "프로그래머블 램프 타임, 자동차 급속 온도 램프 대응"}}
+  ],
+  "features": ["가변속 연동펌프 염수 분무", "유리섬유 보강 챔버·리드", "관찰창·내부 조명", "자체진단·오류 메시지·안전 셧다운", "VSC 자동 데이터 로깅(Ethernet/USB)"],
+  "options": ["Q-PANEL 부식 쿠폰", "100 mm 액세스 포트(통전 시험용)", "염 키트(NaCl 530 g)", "외부 포그 수집 실린더", "시편 랙(600 L 최대 160매 / 1100 L 최대 240매, 6° 또는 15°)", "행잉 로드(45 kg)", "마운팅 그레이트", "월 워시 키트(Renault ECC1)"],
+  "relations": [
+    {"type": "simulates_environment", "target": "environment-salt-fog"},
+    {"type": "same_family_as", "target": "q-lab-q-sun", "note": "QUV·Q-FOG 교대 노출 부식 시험"},
+    {"type": "requires", "target": "utility-compressed-air"}
+  ],
+  "sources": [{"file": "q-lab/q-fog-cyclic-corrosion-brochure.pdf", "pages": [6, 8]}],
+  "confidence": "catalog"
+}

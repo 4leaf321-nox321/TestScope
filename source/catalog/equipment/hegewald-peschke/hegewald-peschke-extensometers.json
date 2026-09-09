@@ -1,0 +1,374 @@
+{
+  "id": "hegewald-peschke-extensometers",
+  "kind": "sensor",
+  "name": "Hegewald & Peschke Extensometers (MFA / MFQ / MFE / MFX / L700-L1100 / DeltaL / ONE1 / ROD / P-50-P-100 / SWS-300 / MFHT)",
+  "name_ko": "헤게발트 운트 페슈케 신장계 (접촉식 MFA·MFQ·MFE·MFX·L 계열, 비접촉식 DeltaL·ONE1·ROD·레이저, 고온용 MFHT)",
+  "manufacturer": "hegewald-peschke",
+  "category": "extensometer",
+  "form_factor": "portable",
+  "description": "시편에 직접 붙거나 비접촉으로 길이 변화를 재는 센서군. 크로스헤드 이동으로 변형을 재면 프레임 강성과 웨지 그립의 물림 여유가 값을 왜곡하는데 신장계는 그것을 피한다 — ISO 6892-1(금속 인장)과 DIN EN ISO 527-1(플라스틱 인장)이 탄성계수를 구할 때 신장계를 요구하는 이유다. 접촉식은 스트레인게이지 풀브리지를 쓰는 클립온(MFA 2·Mini MFA 2·MFA 20·MFA 25)과 횡방향용(MFQ-H/R/B2), 광학 증분식 장거리(MFE 900 mm·MFX·L700·L1100)로 나뉘고, 비접촉식은 비디오(DeltaL·ONE1·ROD 2 카메라 DIC), 레이저(P-50·P-100·SWS-300), 레이저 스페클이 있다. 고온용 MFHT 는 유도 차동식으로 1500 °C, 스트레인게이지식으로 1700 °C 까지 간다. 정확도는 DIN EN ISO 9513 Class 1 이 표준이고 대부분 Class 0.5 옵션이 있다. 온도 챔버용(-70~+280 °C)과 고온로용 사양이 따로 있다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "elongation",
+    "youngs_modulus",
+    "yield_strength",
+    "poisson_ratio",
+    "r_value",
+    "axial_strain",
+    "transverse_strain"
+  ],
+  "materials": [
+    "metals",
+    "thermoplastics",
+    "elastomers/rubber",
+    "foils",
+    "composites (CFRP)",
+    "rebar and rolled wire/rods"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 9513 Class 1 (대부분 옵션 Class 0.5)",
+      "ASTM E83 Class B-2 (옵션 B-1)"
+    ],
+    "test_methods": [
+      "ISO 6892-1",
+      "DIN EN ISO 527-1",
+      "DIN 488"
+    ]
+  },
+  "limits": {
+    "gauge_length_mm": {
+      "min": 6,
+      "max": 100,
+      "note": "표준 초기 표점거리 L0. MFHT 1500 °C 가 6~50 mm 로 가장 짧고, MFE·MFX·L 계열이 10~100 mm"
+    },
+    "scan_range_mm": {
+      "min": 2,
+      "max": 1100,
+      "note": "측정 범위. 클립온은 2~25 mm, 장거리는 300~1100 mm(초기 표점거리를 뺀 값)"
+    },
+    "displacement_um": {
+      "min": 0.1,
+      "note": "분해능. MFHT 1500 °C 가 <0.1 µm, MFQ-B2 가 0.1 µm, 레이저가 1 µm, L700/L1100 이 10 µm"
+    },
+    "temperature_degC": {
+      "min": -70,
+      "max": 1700,
+      "note": "표준 접촉식은 1~60 °C. 챔버 사양이 -70~+280 °C, 고온용 MFHT 가 1500 °C·1700 °C"
+    },
+    "data_rate_Hz": {
+      "max": 1600,
+      "note": "P-50/P-100 레이저가 200~1600 Hz, SWS-300 이 100 Hz, 비디오 ONE1 이 >50 Hz"
+    }
+  },
+  "models": [
+    {
+      "model": "MFA 2 (클립온, 종방향)",
+      "specs": {
+        "item_no": ["15-019-000", "15-019-001 (챔버 사양)", "15-019-003 (확장 측정범위)", "15-019-010 (양면형)", "15-019-011 (양면형 챔버 사양)"],
+        "accuracy_class": "DIN EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "스트레인게이지 풀브리지",
+        "measuring_range_mm": 2,
+        "measuring_range_mm_option": 3,
+        "indication_error": "0.2 % 또는 0.6 µm (큰 쪽 허용)",
+        "linearity_error_pct": 0.05,
+        "actuating_force_cN": {"min": 10, "max": 60},
+        "temperature_degC": {"min": 1, "max": 60, "note": "챔버 사양은 200 °C 까지"},
+        "weight_g": 190,
+        "weight_g_double_sided": 260,
+        "gauge_length_mm": [25, 30, 50],
+        "specimen_dimension_mm": {"min": 0, "max": 30},
+        "blades": "HSS 칼날, 환형 Ø9.5 mm",
+        "note": "측정 칼날은 소모품이다"
+      }
+    },
+    {
+      "model": "Mini MFA 2 (클립온, 소형·저하중)",
+      "specs": {
+        "item_no": ["15-019-100", "15-019-101 (-50~+260 °C)", "15-019-102 (-70~+280 °C)", "15-019-110 (양면형)", "15-019-111 (양면형 개별값 기록)"],
+        "accuracy_class": "DIN EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "스트레인게이지 풀브리지",
+        "measuring_range_tensile_mm": 2,
+        "measuring_range_tensile_mm_option": 3,
+        "measuring_range_compression_mm": 1,
+        "linearity_error_incl_hysteresis_pct": 0.05,
+        "indication_error_pct": 0.2,
+        "actuating_force_cN": {"min": 10, "max": 60},
+        "temperature_degC": {"min": 1, "max": 60, "note": "챔버 사양 -50~+260 °C 또는 -70~+280 °C"},
+        "weight_g": 45,
+        "weight_g_double_sided": 70,
+        "gauge_length_mm": [10, 50],
+        "specimen_dimension_mm": {"min": 0, "max": 25}
+      },
+      "note": "무게 45 g 과 낮은 작동력 덕에 노치에 민감한 얇은 시편에 쓴다. 압축 측정 범위 1 mm 는 3 mm 옵션과 함께 쓸 수 없다"
+    },
+    {
+      "model": "MFA 20 (클립온, 대변위)",
+      "specs": {
+        "item_no": "15-019-210",
+        "accuracy_class": "EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "스트레인게이지 풀브리지",
+        "maximum_movement_mm": 20,
+        "linearity_error_incl_hysteresis_pct": 0.2,
+        "indication_error_pct_of_reading": 0.5,
+        "repeatability_pct": 0.1,
+        "indication_error_um": 1.5,
+        "actuating_force_cN": {"min": 3, "max": 10},
+        "gauge_length_mm": {"min": 50, "max": 100, "note": "10(5) mm 단위"},
+        "weight_g": 480,
+        "specimen_round_mm": {"min": 4, "max": 30},
+        "specimen_thickness_rect_mm": 30
+      }
+    },
+    {
+      "model": "MFA 25 (클립온)",
+      "specs": {
+        "item_no": ["15-019-230", "15-019-231 (-55~260 °C 챔버 사양)"],
+        "accuracy_class": "DIN EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "스트레인게이지 풀브리지",
+        "measuring_range_mm": 25,
+        "indication_error_pct": 0.5,
+        "repeatability_pct": 0.1,
+        "linearity_error_incl_hysteresis_pct": 0.25,
+        "actuating_force_cN": {"min": 3, "max": 10},
+        "temperature_degC": {"min": 1, "max": 60, "note": "챔버 사양 200 °C 또는 -55~+260 °C"},
+        "gauge_length_mm": [25, 50],
+        "weight_g": 95,
+        "dimensions_mm": "L0 25: 27 x 50 x 140 / L0 50: 52 x 50 x 140 (HxWxL)",
+        "double_sided": "이중 클램프로 MFA 25 두 대를 동시에 물려 평균을 낸다"
+      },
+      "note": "초기 표점거리 20 mm 이상 시편용. 물림력 조절 가능"
+    },
+    {
+      "model": "MFQ-H / MFQ-H2 / MFQ-R / MFQ-R2 (횡방향)",
+      "specs": {
+        "item_no": {"MFQ-H": "15-019-300", "MFQ-H2": "15-019-302", "MFQ-R": "15-019-301", "MFQ-R2": "15-019-304"},
+        "measuring_points": {"MFQ-H": 1, "MFQ-H2": 2, "MFQ-R": 1, "MFQ-R2": 2},
+        "measuring_range_mm": {"MFQ-H/H2": 4, "MFQ-R/R2": "4 (옵션 6)"},
+        "specimen_diameter_or_width_mm": {"MFQ-H/H2": "20 (옵션 10 mm, 1/2\", 1\")", "MFQ-R/R2": "4~25 무단(옵션 4~50 무단)"},
+        "specimen_thickness_flat_mm": {"min": 0.4, "max": 30},
+        "weight_g": {"1점형": 100, "2점형": 180},
+        "specimen_shape": "평판·환봉"
+      },
+      "note": "횡변형을 재 푸아송비와 수직 이방성 r 값을 얻는다"
+    },
+    {
+      "model": "MFQ-B2 (횡방향, 광학 증분식)",
+      "specs": {
+        "item_no": "15-019-318",
+        "accuracy_class": "EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "광학-증분식, 30 mm 간격 2 측정점",
+        "measuring_path": "시편 폭 - 5 mm",
+        "resolution_um": 0.1,
+        "display_error": "0.5 % 또는 1.5 µm (큰 쪽 허용)",
+        "measuring_pin_force_N": 3,
+        "pneumatic_pressure_bar": 6,
+        "specimen_width_mm": {"min": 6, "max": 35},
+        "specimen_thickness_mm": {"min": 0.5, "max": 15},
+        "weight_kg": 2.5,
+        "requirements": "시험 공간 폭 최소 610 mm, 압축공기 5~6 bar. 하부 시험 공간에서는 측정 방향이 위쪽"
+      },
+      "note": "공압 슬라이드로 자동 탈부착된다"
+    },
+    {
+      "model": "MFE 900 / MFE910-1 (장거리)",
+      "specs": {
+        "item_no": ["15-100-025", "15-100-170 (MFE900)", "15-100-180 (MFE910-1)"],
+        "measuring_range_mm": "900 - L0",
+        "gauge_length_mm": {"min": 10, "max": 100, "note": "5 mm 단위 수동 조절, 더 큰 값 옵션"},
+        "actuating_force_cN": 10,
+        "clamping_force_cN": 150,
+        "specimen_diameter_thickness_mm": {"min": 0, "max": 30},
+        "specimen_width_mm": {"min": 0, "max": 100},
+        "measuring_arm_range_mm": 180,
+        "temperature": "실온 (옵션 -50~+350 °C 확장)",
+        "principle": "MFE900 광학 증분 1 계통 / MFE910-1 2 계통",
+        "blades": "환형 초경 4 + 환형 VA 4(플라스틱용 거칠기·라운딩 가공)"
+      }
+    },
+    {
+      "model": "MFX (장거리, 대형 시편)",
+      "specs": {
+        "item_no": "15-100-1xx",
+        "accuracy_class": "EN ISO 9513 Class 1 (옵션 0.5)",
+        "indication_error": "0.5 % 또는 1.5 µm (큰 쪽 허용)",
+        "principle": "광학-증분식",
+        "actuating_force_cN": 10,
+        "temperature_degC": {"min": 0, "max": 50},
+        "gauge_length_error_pct": 0.5,
+        "specimen_diameter_mm": {"min": 0, "max": 65},
+        "specimen_thickness_mm": {"min": 0, "max": 65},
+        "specimen_width_mm": {"min": 0, "max": 360},
+        "measuring_arm_range_mm": 259,
+        "control": "초기 위치·측정암 개폐·L0 시작을 LabMaster 로 조작"
+      },
+      "note": "낮은 물림력과 높은 정확도를 함께 가져 노치 민감 소형 시편에도 쓴다"
+    },
+    {
+      "model": "L700 / L1100 (장거리, 증분식)",
+      "specs": {
+        "item_no": {"L700": "15-024-031", "L1100": "15-024-030"},
+        "measurement_travel_mm": {"L700": "700 - L0", "L1100": "1100 - L0"},
+        "weight_kg": {"L700": 9, "L1100": 12},
+        "accuracy_class": "10 mm 스트로크 이후 DIN EN ISO 9513 Class 1",
+        "principle": "증분식",
+        "resolution_um": 10,
+        "gauge_length_mm": [10, 20, 25, 50, 75, 80, 100],
+        "measuring_arms": "기계식 개폐, B형(90° 정렬) 측정암",
+        "temperature_degC": {"min": 10, "max": 50},
+        "specimen_diameter_thickness_mm": {"min": 0, "max": 9}
+      },
+      "note": "정확도 등급이 '10 mm 스트로크 이후' 로 한정된다 — 그 아래 구간은 등급 밖이다"
+    },
+    {
+      "model": "DeltaL 70 / DeltaL 200 / DeltaLW 80 (광학 비접촉)",
+      "specs": {
+        "item_no": {"DeltaL 70": "15-012-700", "DeltaL 200": "15-012-710", "DeltaLW 80": "15-012-720"},
+        "application": {"DeltaL 70": "종변형", "DeltaL 200": "종변형", "DeltaLW 80": "종변형 + 횡변형"},
+        "field_of_view_mm": {"DeltaL 70": "70 x 25 x 40", "DeltaL 200": "200 x 40 x 100", "DeltaLW 80": "80 x 30 x 30"},
+        "accuracy_class": "EN ISO 9513 Class 1, ASTM E83 Class B-2 (측정 길이 ≥10 mm 에서 옵션 Class 0.5 / B-1)"
+      }
+    },
+    {
+      "model": "ONE1 (비디오 신장계)",
+      "specs": {
+        "item_no": "15-012-600 (ONE1-M1)",
+        "accuracy_class": "ISO 9513 Class 1, ASTM E83 Class B-2",
+        "resolution_um": 1,
+        "acquisition_rate_Hz": 50,
+        "digital_output": "Ethernet 또는 RS232",
+        "lens": "작동 거리에 맞춰 초점거리 선택. 미세조직·소형 시편용 (반)텔레센트릭 렌즈 옵션",
+        "lighting": "카메라 하우징 내장 청색 LED 바",
+        "distortion": "시스템 교정으로 렌즈 왜곡 보정"
+      },
+      "note": "시야 폭을 줄이면 샘플링 속도가 올라간다. 변형·변위 맵을 내는 면 측정이 가능해 CFRP 후처리 해석에 쓴다"
+    },
+    {
+      "model": "ROD (2 카메라 DIC 비디오)",
+      "specs": {
+        "item_no": "15-012-651",
+        "principle": "2 카메라 + DIC(디지털 이미지 상관) 실시간 처리",
+        "outputs": ["응력-변형 곡선", "최대력 전연신 AGt", "파단신율 A10 / A5 / A11.2"],
+        "delivery": ["400 mm LED 조명 내장 2 카메라 일체 하우징", "TFT 2 대 포함 평가 유닛", "ITT 알고리즘 포함 Alpha 평가 소프트웨어(종변형 라이선스, 하드웨어 동글)", "교정판"]
+      }
+    },
+    {
+      "model": "P-50 / P-100 (레이저 신장계)",
+      "specs": {
+        "measuring_range_mm": {"P-50": "50 (≤55)", "P-100": "100 (≤106)"},
+        "min_measuring_length_mm": {"P-50": 0.5, "P-100": 1},
+        "working_distance_mm": {"min": 100, "max": 300},
+        "measuring_rate_Hz": {"min": 200, "max": 1600},
+        "scan_time_ms": 5,
+        "weight_kg": {"P-50": 13, "P-100": 15},
+        "scanner_size_mm": {"P-50": "280 x 160 x 175", "P-100": "460 x 160 x 200"},
+        "receiver_size_mm": "200 x 140 x 120"
+      }
+    },
+    {
+      "model": "SWS-300 (레이저 신장계)",
+      "specs": {
+        "measuring_range_mm": "300 (요청 시 가변) / 220",
+        "accuracy_class": "25 Hz 측정 속도에서 DIN EN ISO 9513 Class 1, 100 Hz 에서 Class 0.5",
+        "resolution_um": 1,
+        "min_measuring_length_mm": 2,
+        "dimensions_weight": "310 x 240 x 250 mm / 8 kg",
+        "working_distance_mm": 300,
+        "measuring_rate_Hz": 100,
+        "stripes": "2 (옵션 공간 분해)"
+      },
+      "note": "정확도 등급이 측정 속도에 걸린다 — 문서가 25 Hz Class 1, 100 Hz Class 0.5 로 적는데 통상과 반대 방향이라 원본 표기를 그대로 옮겼다"
+    },
+    {
+      "model": "MFHT (고온용 1500 °C)",
+      "specs": {
+        "item_no": "15-020-006",
+        "accuracy_class": "EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "유도 차동식",
+        "measuring_range_mm": "±10 (옵션 단방향 0~40)",
+        "resolution_um": 0.1,
+        "gauge_length_mm": {"min": 6, "max": 50, "note": "수동 조절"},
+        "temperature_degC_max": 1500,
+        "specimen_shape": "평판·환봉",
+        "delivery": ["신장계", "쐐기형 날 + 원뿔 칼날 세라믹 프로브 팁 1 쌍 L200 mm", "센서 플러그", "4 m 케이블"],
+        "required_accessories": ["4ETF 데이터 취득 카드", "시험기 홀더"]
+      }
+    },
+    {
+      "model": "MFHT 5 (고온용 1700 °C)",
+      "specs": {
+        "item_no": "15-020-020",
+        "accuracy_class": "EN ISO 9513 Class 1 (옵션 0.5)",
+        "principle": "저항 스트레인게이지 풀브리지",
+        "measuring_range_mm": 5,
+        "indication_error_um": 1.5,
+        "gauge_length_mm": {"min": 10, "max": 60, "note": "5 mm 단위"},
+        "temperature_degC_max": 1700,
+        "delivery": ["신장계 MFHT 5", "쐐기형 날 세라믹 프로브 팁 1 쌍 L=220 mm", "원형로용 클램핑/스윙 장치", "센서 플러그와 4 m 케이블"],
+        "required_accessories": ["4ETF 데이터 취득 카드"]
+      }
+    },
+    {
+      "model": "레이저 스페클 신장계",
+      "specs": {
+        "item_no": "15-032-001",
+        "principle": "시편의 자연 패턴(스페클)을 쓰므로 표시가 필요 없다",
+        "note": "이 데이터시트에는 정량 사양표가 없다"
+      },
+      "uncertain": true
+    }
+  ],
+  "accuracy": {
+    "classes": "DIN EN ISO 9513 Class 1 이 표준이고 대부분 Class 0.5 옵션이 있다. 비접촉식은 ASTM E83 Class B-2(옵션 B-1)도 함께 적는다",
+    "note": "L700/L1100 은 '10 mm 스트로크 이후' Class 1 이고, SWS-300 은 측정 속도에 따라 등급이 갈린다"
+  },
+  "features": [
+    "크로스헤드 이동 대신 시편에서 직접 변형을 잰다 — 프레임 강성·웨지 물림 여유의 영향을 받지 않는다",
+    "종방향과 횡방향을 함께 재면 푸아송비와 r 값을 얻는다",
+    "온도 챔버 사양(-70~+280 °C)과 고온로 사양(1500·1700 °C)이 따로 있다",
+    "양면형으로 두 대를 물려 평균을 내는 구성(MFA 2·MFA 25·Mini MFA 2)",
+    "MFQ-B2 는 공압 슬라이드로 자동 탈부착",
+    "MFX 는 측정암 개폐와 L0 설정을 LabMaster 에서 조작"
+  ],
+  "options": [
+    "Class 0.5 정확도",
+    "온도 챔버 사양",
+    "양면형(평균값)",
+    "4ETF 데이터 취득 카드(고온용에 필수)",
+    "시험기 홀더"
+  ],
+  "relations": [
+    {"type": "fits_on", "target": "hegewald-peschke-inspekt"},
+    {"type": "fits_on", "target": "hegewald-peschke-inspekt-table"},
+    {"type": "fits_on", "target": "hegewald-peschke-inspekt-blue"},
+    {"type": "fits_on", "target": "hegewald-peschke-inspekt-solo"},
+    {"type": "compatible_accessory", "target": "hegewald-peschke-high-temperature-furnaces", "note": "MFHT 1500/1700 °C 는 고온로 안에서 쓴다"},
+    {"type": "compatible_accessory", "target": "hegewald-peschke-temperature-chambers", "note": "챔버 사양 클립온은 -70~+280 °C"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/extensometers.pdf", "pages": [9, 10, 11], "note": "종류 선택 개요(Wissenswertes)"},
+    {"file": "hegewald-peschke/15-019-000-clip-on-extensometer-mfa-2-01.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-019-1xx-clip-on-extensometer-mini-mfa-2.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-019-210-clip-on-extensometer-mfa-20.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-019-2xx-clip-on-extensometer-mfa-25.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-019-30x-lateral-extensometer-mfq-h-mfq-r-01.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-019-318-lateral-extensometer-mfq-b2.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-100-025-long-distance-extensometer-mfe.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-100-1xx-long-distance-extensometer-mfx.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-024-03x-long-distance-extensometers-l700-and-l1100.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-012-7xx-optical-extensometer-deltal.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-012-6x0-video-extensometer-one1.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-012-651-video-extensometer-rod.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/p-50-p-100-laser-extensometer-en-01.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/sws-300-laser-extensometer-en.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-032-001-laser-speckle-extensometer-en.pdf", "pages": [1]},
+    {"file": "hegewald-peschke/15-020-006-high-temperature-extensometer-1500-c.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/15-020-020-high-temperature-extensometer-1700-c-01.pdf", "pages": [2]}
+  ],
+  "confidence": "catalog",
+  "notes": "5차에는 선택 안내용 교육 자료(Wissenswertes)만 있어 `confidence: limited` 였는데, 6차에 기종별 데이터시트 17 건을 확보해 `catalog` 로 올렸다. 레이저 스페클(15-032-001)만 정량 사양표가 없어 그 기종에 `uncertain: true` 를 남겼다. DeltaL·ROD·ONE1 은 무게·치수가 데이터시트에 없다. SWS-300 의 정확도 등급이 측정 속도와 반대로 걸린 듯 보이지만(25 Hz Class 1, 100 Hz Class 0.5) 문서 표기 그대로 옮겼다."
+}

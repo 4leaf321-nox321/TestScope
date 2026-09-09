@@ -1,0 +1,34 @@
+{
+  "id": "mitutoyo-hr-series-rockwell",
+  "kind": "equipment_series",
+  "name": "Mitutoyo HR-320MS / HR-430MR / HR-430MS / HR-530 Rockwell Hardness Testing Machines",
+  "name_ko": "미쓰토요 HR 시리즈 로크웰 경도계",
+  "manufacturer": "mitutoyo",
+  "category": "rockwell_hardness",
+  "drive": "dead_weight",
+  "form_factor": "benchtop",
+  "description": "HR-320MS/430MS: 로크웰 + 슈퍼피셜(데드웨이트, 자동 부하), HR-430MR: 로크웰 전용. HR-530/530L: 로크웰·슈퍼피셜·경하중 브리넬·플라스틱 경도(터치패널, 시편 높이 250/395 mm). 환산 HV·HB·HK·HS·인장강도.",
+  "test_items": ["hardness_rockwell", "hardness_brinell"],
+  "measurands": ["hardness_HR", "hardness_HB"],
+  "materials": ["metals", "steel", "plastics"],
+  "standards": {"compliance": ["JIS B 7726", "ISO 6508-2", "ASTM E18"], "test_methods": ["ISO 6508-1", "ASTM E18", "JIS Z 2245", "ASTM E10 (light force Brinell, HR-530)"]},
+  "limits": {
+    "test_load_kgf": {"min": 6.25, "max": 187.5, "values": [15, 30, 45, 60, 100, 150], "note": "HR-530 경하중 브리넬 6.25–187.5 kgf"},
+    "hardness_scales": {"values": ["HRA", "HRB", "HRC", "HRD", "HRE", "HRF", "HRG", "HRH", "HRK", "HRL", "HRM", "HRP", "HRR", "HRS", "HRV", "HR15N", "HR30N", "HR45N", "HR15T", "HR30T", "HR45T", "HBW (light force)"]},
+    "specimen_height_mm": {"max": 395, "note": "HR-320/430 180 mm, HR-530 250 mm, HR-530L 395 mm"},
+    "specimen_depth_mm": {"max": 165, "note": "HR-320/430 165 mm, HR-530 150 mm"}
+  },
+  "models": [
+    {"model": "HR-320MS", "specs": {"scales": "Rockwell + Superficial", "preliminary_force_kgf": [10, 3], "test_load_kgf": [15, 30, 45, 60, 100, 150], "loading": "dead weight, automatic", "specimen_height_mm": 180, "specimen_depth_mm": 165, "footprint_mm": {"D": 523, "W": 235, "H": 780}, "weight_kg": 46.3}},
+    {"model": "HR-430MR", "specs": {"scales": "Rockwell", "preliminary_force_kgf": 10, "test_load_kgf": [60, 100, 150], "specimen_height_mm": 180, "weight_kg": 49.3}},
+    {"model": "HR-430MS", "specs": {"scales": "Rockwell + Superficial", "preliminary_force_kgf": [10, 3], "test_load_kgf": [15, 30, 45, 60, 100, 150], "specimen_height_mm": 180, "weight_kg": 49.9}},
+    {"model": "HR-530", "specs": {"scales": "Rockwell + Superficial + light-force Brinell + plastics", "preliminary_force_kgf": [3, 10], "test_load_kgf": [6.25, 10, 15, 15.625, 25, 30, 31.25, 45, 60, 62.5, 100, 125, 150, 187.5], "specimen_height_mm": 250, "specimen_depth_mm": 150, "max_table_load_kg": 20, "footprint_mm": {"W": 250, "D": 667, "H": 621}, "weight_kg": 60}},
+    {"model": "HR-530L", "specs": {"specimen_height_mm": 395, "specimen_depth_mm": 150, "footprint_mm": {"W": 300, "D": 667, "H": 766}, "weight_kg": 69}}
+  ],
+  "accuracy": {"resolution": "0.1 HR", "dwell": "1–99 s (HR-320/430), 1–120 s (HR-530)"},
+  "environment": {"power": "120 V AC 60 Hz"},
+  "features": ["cylindrical/spherical correction", "go/no-go", "X-R chart (HR-530)", "RS-232C / Digimatic / USB"],
+  "relations": [],
+  "sources": [{"file": "mitutoyo/rockwell-hr-series-bulletin-2025.pdf", "pages": [3, 5]}, {"file": "mitutoyo/rockwell-hr-300-400-bulletin-2324.pdf", "note": "구판(HR-300/400)"}],
+  "confidence": "catalog"
+}

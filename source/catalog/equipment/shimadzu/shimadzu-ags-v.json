@@ -1,0 +1,47 @@
+{
+  "id": "shimadzu-ags-v",
+  "kind": "equipment_series",
+  "name": "AUTOGRAPH AGS-V Series Tabletop Precision Universal Testing Machines",
+  "name_ko": "시마즈 오토그래프 AGS-V 시리즈 테이블형 정밀 만능시험기",
+  "manufacturer": "shimadzu",
+  "brand": "AUTOGRAPH",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "AGS-X 하위 라인의 후속. 로드셀 1 N ~ 10 kN 테이블형(AGS-1NVD … AGS-10kNVD). 0.2 ms 샘플링(5 kHz), 속도 0.0005–1500 mm/min, 복귀 1650 mm/min, 힘 정확도 보증 범위 1/1000(광범위형). +250/+500 mm 확장.",
+  "test_items": ["tensile", "compression", "flexure", "peel", "tear", "friction_coefficient"],
+  "measurands": ["tensile_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength", "peel_strength"],
+  "materials": ["plastics", "rubber", "films", "textiles", "paper", "food", "medical"],
+  "standards": {
+    "compliance": ["JIS B7721 Class 0.5", "EN 10002-2 Grade 0.5", "ISO 7500-1 Class 0.5", "BS 1610 Class 0.5", "ASTM E4"],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {"min": 0.001, "max": 10, "values": [0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.5, 1, 5, 10]},
+    "crosshead_speed_mm_min": {"min": 0.0005, "max": 1500},
+    "return_speed_mm_min": {"max": 1650},
+    "vertical_test_space_mm": {"max": 1180, "note": "SCG 그립 장착 시 스트로크 910–945, MWG 740–760"},
+    "horizontal_test_space_mm": {"values": [425]},
+    "data_rate_Hz": {"max": 5000},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "AGS-1NVD / 2NVD / 5NVD", "form_factor": "dual_column_tabletop", "specs": {"force_N": [1, 2, 5], "vertical_test_space_mm": 1180, "horizontal_test_space_mm": 425}},
+    {"model": "AGS-10NVD / 20NVD / 50NVD", "form_factor": "dual_column_tabletop", "specs": {"force_N": [10, 20, 50], "vertical_test_space_mm": 1180}},
+    {"model": "AGS-100NVD", "form_factor": "dual_column_tabletop", "specs": {"force_N": 100}},
+    {"model": "AGS-500NVD", "form_factor": "dual_column_tabletop", "specs": {"force_N": 500}},
+    {"model": "AGS-1kNVD", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 1}},
+    {"model": "AGS-5kNVD", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 5}},
+    {"model": "AGS-10kNVD", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "footprint_mm": {"W": 657, "D": 525, "H": 1562}, "weight_kg": 80}}
+  ],
+  "accuracy": {
+    "force": "±0.5% (1/1–1/500) high precision; ±1% (1/1–1/1000) wide range; ±1% (1/1–1/500) standard",
+    "speed": "±0.1%",
+    "position": "±0.1% or ±0.01 mm, resolution 0.001 mm"
+  },
+  "features": ["0.2 ms sampling", "protection cover with interlock", "touch load detection", "load-resistant yoke option", "column height extension +250/+500 mm"],
+  "options": ["pneumatic flat grip", "DSES-1000 long-travel extensometer", "TRViewX video extensometer", "SIE-560A/560SA automatic extensometer", "SG strain-gauge extensometer", "atmosphere test devices (hot/cold)"],
+  "relations": [{"type": "successor_of", "target": "shimadzu-ags-x", "note": "≤10 kN 구간"}, {"type": "same_family_as", "target": "shimadzu-agx-v2"}],
+  "sources": [{"file": "shimadzu/ags-v-series-c224-e128.pdf", "pages": [8, 12, 13, 14]}],
+  "confidence": "catalog"
+}

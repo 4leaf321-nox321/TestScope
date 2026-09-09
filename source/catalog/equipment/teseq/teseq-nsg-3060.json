@@ -1,0 +1,45 @@
+{
+  "id": "teseq-nsg-3060",
+  "kind": "equipment_series",
+  "name": "Teseq NSG 3060 Modular EMC Immunity Test System (Surge / EFT / Dips)",
+  "name_ko": "테세크 NSG 3060 모듈형 EMC 내성 시험 시스템 (서지·EFT·전압강하)",
+  "manufacturer": "teseq",
+  "brand": "NSG",
+  "category": "transient_generator",
+  "form_factor": "rack",
+  "description": "6 kV 급 모듈형 EMC 내성 시험 시스템. 플러그인 모듈로 서지(1.2/50 µs, 링웨이브), EFT/버스트, 전압 강하·순간정전, 자기장 시험을 하나의 본체에서 수행한다. 서지 ±200 V~6.6 kV(1 V 스텝), EFT ±200 V~4.8 kV(개방회로) / ±100 V~2.4 kV(50 Ω 정합). 단상 270 V/16 A 부터 3상 480 V/100 A 까지 자동 결합·감결합 회로망(CDN)을 선택할 수 있다.",
+  "test_items": ["surge_eft_immunity"],
+  "measurands": ["surge_withstand_voltage", "burst_immunity_level", "dip_interrupt_immunity"],
+  "materials": ["power supplies", "home appliances", "IT equipment", "medical devices", "industrial equipment", "telecom equipment"],
+  "standards": {
+    "compliance": [],
+    "test_methods": ["IEC/EN 61000-4-5", "IEC/EN 61000-4-4", "IEC/EN 61000-4-11", "IEC/EN 61000-4-12", "IEC/EN 61000-4-29", "IEC/EN 61000-4-8", "IEC/EN 61000-4-9", "ANSI/IEEE C62.41"]
+  },
+  "limits": {
+    "surge_voltage_kV": {"min": 0.2, "max": 6.6, "note": "±200 V~6.6 kV, 1 V 스텝. 반복 주기: 200~4400 V 는 10 s, 4401~6600 V 는 20 s"},
+    "eft_voltage_kV": {"min": 0.2, "max": 4.8, "note": "개방회로 ±200 V~4.8 kV(1 V 스텝); 50 Ω 정합 시 ±100 V~2.4 kV"},
+    "polarity": {"values": ["positive", "negative"]},
+    "cdn_voltage_V": {"max": 480, "note": "단상 270 V/16 A, 3상 480 V/32 A·63 A·100 A"},
+    "cdn_current_A": {"max": 100}
+  },
+  "models": [
+    {"model": "NSG 3060 본체 + 서지 모듈", "specs": {"surge_V": {"min": 200, "max": 6600}, "waveform": "1.2/50 µs 개방전압 / 8/20 µs 단락전류", "standard": "IEC/EN 61000-4-5, ANSI(IEEE) C62.41"}},
+    {"model": "NSG 3060 + 링웨이브 모듈", "specs": {"voltage_V": {"min": 200, "max": 6600}, "standard": "IEC/EN 61000-4-12, ANSI(IEEE) C62.41"}},
+    {"model": "NSG 3060 + EFT/버스트 모듈", "specs": {"voltage_V_open": {"min": 200, "max": 4800}, "voltage_V_50ohm": {"min": 100, "max": 2400}, "standard": "IEC/EN 61000-4-4"}},
+    {"model": "NSG 3060 + 전압강하 모듈(VAR 3005 등)", "specs": {"standard": "IEC/EN 61000-4-11, IEC/EN 61000-4-29", "note": "VAR 3005 조합 시 유효 최소 딥 전압 약 8 V"}},
+    {"model": "NSG 3060 + 자기장 모듈", "specs": {"standard": "IEC/EN 61000-4-8 (전원 주파수), IEC/EN 61000-4-9 (펄스)"}}
+  ],
+  "accessories": [
+    {"name": "CDN 단상 270 V / 16 A", "note": "자동 결합·감결합"},
+    {"name": "CDN 3상 480 V / 32 A"},
+    {"name": "CDN 3상 480 V / 63 A", "note": "6.6 kV 서지까지"},
+    {"name": "CDN 3상 480 V / 100 A", "note": "6.6 kV 서지까지"}
+  ],
+  "features": ["모듈형 플러그인 구조", "1 V 스텝 전압 설정", "자동 CDN 연동", "다중 규격 통합 시험"],
+  "relations": [
+    {"type": "performs", "target": "surge_eft_immunity"},
+    {"type": "same_family_as", "target": "teseq-nsg-438"}
+  ],
+  "sources": [{"file": "teseq/nsg-3060-surge-eft-datasheet.pdf", "pages": [2, 3, 4, 5, 6, 8]}],
+  "confidence": "catalog"
+}

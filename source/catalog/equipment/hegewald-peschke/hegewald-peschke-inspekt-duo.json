@@ -1,0 +1,139 @@
+{
+  "id": "hegewald-peschke-inspekt-duo",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke inspekt duo Universal Testing Machines (5 kN / 10 kN)",
+  "name_ko": "헤게발트 운트 페슈케 inspekt duo 만능재료시험기 (5·10 kN)",
+  "manufacturer": "hegewald-peschke",
+  "brand": "inspekt",
+  "category": "universal_testing_machine",
+  "subcategory": "dual_column",
+  "drive": "electromechanical",
+  "form_factor": "dual_column_tabletop",
+  "description": "무백래시 볼스크류 2 개와 브러시리스 구동을 쓴 소하중 탁상형 만능재료시험기. 정격 5 kN 과 10 kN 두 기종이고 시험 공간 높이가 다른 M·L 두 형태가 있다. 힘 센서를 이동 크로스헤드에 넣어 센서를 더 잘 보호하면서 시험 스트로크를 늘린 것이 이 계열의 특징이다. 시험 속도는 5 kN 이 0.8 µm/min~1200 mm/min, 10 kN 이 0.8 µm/min~600 mm/min. 프레임 강성 10 kN/mm, 힘 분해능 24 bit, 힘 측정 등급은 정격의 0.1~100 % 구간에서 Class 1(옵션 0.5).",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "tear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength",
+    "peel_strength",
+    "tear_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "plastics",
+    "elastomers",
+    "textiles",
+    "foils",
+    "components"
+  ],
+  "standards": {
+    "compliance": [
+      "DIN EN ISO 7500-1 Class 1 (옵션 Class 0.5)",
+      "ASTM E4"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 5,
+      "max": 10
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.0008,
+      "max": 1200,
+      "note": "5 kN 0.8 µm/min~1200 mm/min, 10 kN 0.8 µm/min~600 mm/min"
+    },
+    "vertical_test_space_mm": {
+      "min": 1025,
+      "max": 1325,
+      "note": "duo M 1025, duo L 1325"
+    },
+    "frame_stiffness_kN_mm": {
+      "values": [10]
+    },
+    "weight_kg": {
+      "min": 83,
+      "max": 88
+    }
+  },
+  "models": [
+    {
+      "model": "inspekt duo M (5 kN)",
+      "specs": {
+        "item_no": "10-008-x11",
+        "nominal_load_kN": 5,
+        "crosshead_speed_mm_min": {"min": 0.0008, "max": 1200},
+        "travel_resolution_um": 0.025,
+        "frame_stiffness_kN_mm": 10,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "height_mm": 1305,
+        "test_room_height_mm": 1025,
+        "max_stroke_mm": 970,
+        "width_mm": 631,
+        "width_with_control_mm": 804,
+        "weight_kg": 83
+      },
+      "note": "속도·분해능은 5 kN 정격의 값이고, 무게는 M 형태의 값이다. 데이터시트가 정격(5/10 kN)과 형태(M/L)를 별개 축으로 적어 조합별 값이 다 나오지는 않는다"
+    },
+    {
+      "model": "inspekt duo L (10 kN)",
+      "specs": {
+        "item_no": "10-008-x21",
+        "nominal_load_kN": 10,
+        "crosshead_speed_mm_min": {"min": 0.0008, "max": 600},
+        "travel_resolution_um": 0.012,
+        "frame_stiffness_kN_mm": 10,
+        "force_resolution": "24 bit (±8,388,608 digits)",
+        "electrical": "230 VAC, 0.5 kVA, 50 Hz",
+        "height_mm": 1605,
+        "test_room_height_mm": 1325,
+        "max_stroke_mm": 1270,
+        "width_mm": 631,
+        "width_with_control_mm": 804,
+        "weight_kg": 88
+      },
+      "note": "속도·분해능은 10 kN 정격의 값이고, 치수·무게는 L 형태의 값이다"
+    }
+  ],
+  "accuracy": {
+    "force": "DIN EN ISO 7500-1 / ASTM E4 Class 1, 정격의 0.1~100 %(옵션 Class 0.5)",
+    "force_resolution": "24 bit (±8,388,608 digits)"
+  },
+  "environment": {
+    "operating_temperature_degC": {"min": 10, "max": 30},
+    "operating_humidity_pct": {"min": 20, "max": 80},
+    "electrical": "230 VAC, 0.5 kVA, 50 Hz"
+  },
+  "features": [
+    "힘 센서를 이동 크로스헤드에 내장 — 센서 보호와 시험 스트로크 확대",
+    "시험 공간 높이 2 종(M·L)",
+    "시험 공간 조명 — 시험 시퀀스에 통합 가능",
+    "확장 카드 슬롯 3 — 아날로그/디지털 입출력, 스트레인게이지, ±10 V 외부 입력, 안전문 연결",
+    "힘 분해능 24 bit"
+  ],
+  "options": [],
+  "relations": [
+    {"type": "performs", "target": "tensile"},
+    {"type": "performs", "target": "compression"},
+    {"type": "performs", "target": "flexure"},
+    {"type": "same_family_as", "target": "hegewald-peschke-inspekt-blue"},
+    {"type": "same_family_as", "target": "hegewald-peschke-inspekt-solo"},
+    {"type": "compatible_accessory", "target": "hegewald-peschke-grips"},
+    {"type": "compatible_accessory", "target": "hegewald-peschke-extensometers"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/inspekt-static-utm-overview.pdf", "pages": [2]},
+    {"file": "hegewald-peschke/10-008-xx1-universal-testing-machine-inspekt-duo-5-10kn.pdf", "pages": [2, 3]}
+  ],
+  "confidence": "catalog",
+  "notes": "**온도 챔버와 함께 쓸 수 없다.** 데이터시트가 명시적으로 적는다 — \"이 시험기 계열은 온도 챔버 같은 외부 전기 장치를 기계의 비상정지 회로에 연결하도록 설계되지 않았다.\" 그런데 온도·기후 챔버 문서는 호환 시험기 목록에 inspekt duo 를 넣고 있다. **두 문서가 서로 어긋난다.** 여기서는 시험기 쪽 데이터시트를 따라 `extends_temperature` 관계를 걸지 않았다 — 챔버를 붙일 수 있다고 잘못 답하면 사람이 헛걸음을 하고, 그 대가가 반대 방향의 실수보다 크다. 실제 구성은 제조사에 확인해야 한다."
+}

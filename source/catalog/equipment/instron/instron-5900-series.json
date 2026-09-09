@@ -1,0 +1,59 @@
+{
+  "id": "instron-5900-series",
+  "kind": "equipment_series",
+  "name": "5900 Series (5940 / 5960 / 5980) Universal Testing Systems",
+  "name_ko": "인스트론 5900 시리즈 (5940 단일컬럼·5960 듀얼컬럼 테이블·5980 플로어) 만능재료시험기",
+  "manufacturer": "instron",
+  "category": "universal_testing_machine",
+  "subcategory": "electromechanical",
+  "drive": "electromechanical",
+  "description": "6800 의 전 세대이자, 400/600 kN 플로어형(5988/5989)은 아직 현행. 단일컬럼 0.5–2 kN, 듀얼 테이블 5–50 kN, 플로어 100–600 kN. 5980 시리즈 데이터시트(2024)는 5988/5989 를 다룬다.",
+  "test_items": ["tensile", "compression", "flexure", "shear", "peel", "tear", "fatigue", "creep"],
+  "measurands": ["tensile_strength", "yield_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength"],
+  "materials": ["metals", "alloys", "composites", "aerospace_structures", "bolts_fasteners", "plate_steel", "plastics", "elastomers", "medical_devices", "textiles", "wire", "paper", "film"],
+  "standards": {
+    "compliance": ["ASTM E4", "ISO 7500-1", "BS 1610", "DIN 51221", "EN 10002-2", "JIS B7721", "JIS B7733", "AFNOR A03-501", "ASTM E83", "ISO 9513", "EN 10002-4"],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {"min": 0.5, "max": 600, "values": [0.5, 1, 2, 5, 10, 30, 50, 100, 150, 250, 400, 600]},
+    "crosshead_speed_mm_min": {"min": 0.0001, "max": 3000},
+    "vertical_test_space_mm": {"min": 726, "max": 2050},
+    "horizontal_test_space_mm": {"min": 100, "max": 763},
+    "data_rate_Hz": {"max": 2500},
+    "chamber": {"values": ["optional"]}
+  },
+  "models": [
+    {"model": "5942", "form_factor": "single_column_tabletop", "specs": {"force_kN": 0.5, "crosshead_speed_mm_min": {"max": 2500}, "return_speed_mm_min": 1875, "crosshead_travel_mm": 488, "vertical_test_space_mm": 726, "horizontal_test_space_mm": 100, "footprint_mm": [986, 459, 614], "weight_kg": 43}},
+    {"model": "5943", "form_factor": "single_column_tabletop", "specs": {"force_kN": 1, "crosshead_speed_mm_min": {"max": 2500}, "return_speed_mm_min": 2500, "crosshead_travel_mm": 885, "vertical_test_space_mm": 1123, "horizontal_test_space_mm": 100, "footprint_mm": [1383, 459, 614], "weight_kg": 54.4}},
+    {"model": "5944", "form_factor": "single_column_tabletop", "specs": {"force_kN": 2, "crosshead_speed_mm_min": {"max": 2500}, "return_speed_mm_min": 2500, "crosshead_travel_mm": 885, "vertical_test_space_mm": 1123, "horizontal_test_space_mm": 100, "footprint_mm": [1383, 459, 614], "weight_kg": 54.4}},
+    {"model": "5965", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 5, "crosshead_speed_mm_min": {"max": 3000}, "return_speed_mm_min": 3200, "crosshead_travel_mm": 1140, "vertical_test_space_mm": 1256, "vertical_test_space_mm_E2": 1756, "horizontal_test_space_mm": 420, "footprint_mm": [1630, 779, 725], "weight_kg": 146}},
+    {"model": "5966", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 10, "crosshead_speed_mm_min": {"max": 1500}, "return_speed_mm_min": 2000, "crosshead_travel_mm": 1140, "vertical_test_space_mm": 1256, "vertical_test_space_mm_E2": 1756, "horizontal_test_space_mm": 420, "footprint_mm": [1630, 779, 725], "weight_kg": 146}},
+    {"model": "5967", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 30, "crosshead_speed_mm_min": {"max": 1000}, "return_speed_mm_min": 1000, "crosshead_travel_mm": 1140, "vertical_test_space_mm": 1212, "vertical_test_space_mm_E2": 1712, "horizontal_test_space_mm": 420, "footprint_mm": [1630, 779, 725], "weight_kg": 192}},
+    {"model": "5969", "form_factor": "dual_column_tabletop", "specs": {"force_kN": 50, "crosshead_speed_mm_min": {"max": 600}, "return_speed_mm_min": 600, "crosshead_travel_mm": 1140, "vertical_test_space_mm": 1212, "vertical_test_space_mm_E2": 1712, "horizontal_test_space_mm": 420, "footprint_mm": [1630, 779, 725], "weight_kg": 250}},
+    {"model": "5982", "form_factor": "floor", "specs": {"force_kN": 100, "crosshead_speed_mm_min": {"max": 1016}, "return_speed_mm_min": 1016, "crosshead_travel_mm": 1330, "vertical_test_space_mm": 1430, "vertical_test_space_mm_E2": 1930, "horizontal_test_space_mm": 575, "footprint_mm": [2586, 1130, 812], "weight_kg": 784}},
+    {"model": "5984", "form_factor": "floor", "specs": {"force_kN": 150, "crosshead_speed_mm_min": {"max": 762}, "return_speed_mm_min": 800, "crosshead_travel_mm": 1330, "vertical_test_space_mm": 1430, "horizontal_test_space_mm": 575, "footprint_mm": [2586, 1130, 812], "weight_kg": 882}},
+    {"model": "5985", "form_factor": "floor", "specs": {"force_kN": 250, "crosshead_speed_mm_min": {"max": 508}, "return_speed_mm_min": 600, "crosshead_travel_mm": 1330, "vertical_test_space_mm": 1430, "horizontal_test_space_mm": 575, "footprint_mm": [2586, 1130, 812], "weight_kg": 882}},
+    {"model": "5988", "form_factor": "floor", "specs": {"force_kN": 400, "crosshead_speed_mm_min": {"min": 0.0001, "max": 508}, "return_speed_mm_min": 508, "crosshead_travel_mm": 1850, "vertical_test_space_mm": 2050, "horizontal_test_space_mm": 763, "position_resolution_nm": 4, "frame_stiffness_kN_mm": 480, "max_force_at_full_speed_kN": 300, "max_speed_at_full_force_mm_min": 305, "footprint_mm": [3130, 1590, 960], "weight_kg": 2255, "power_VA": 4800}},
+    {"model": "5989", "form_factor": "floor", "specs": {"force_kN": 600, "crosshead_speed_mm_min": {"min": 0.0001, "max": 508}, "return_speed_mm_min": 508, "crosshead_travel_mm": 1850, "vertical_test_space_mm": 2000, "horizontal_test_space_mm": 763, "position_resolution_nm": 4, "frame_stiffness_kN_mm": 650, "max_force_at_full_speed_kN": 400, "max_speed_at_full_force_mm_min": 305, "footprint_mm": [3130, 1590, 960], "weight_kg": 2516, "power_VA": 4800}}
+  ],
+  "accuracy": {
+    "force": "±0.4% of reading down to 1/100 of load cell capacity (2525/2530/2580); ±0.5% down to 1/1000 (2580, 5980 datasheet) / 1/500 (5900 brochure); ±0.5% to 1/250 (2525/2530)",
+    "displacement": "±0.01 mm or 0.05% (5980) / ±0.02 mm or 0.05% (5900 brochure)",
+    "speed": "±0.1% of set speed",
+    "strain": "±0.5% of reading to 1/100 of full scale with ASTM E83 class B / ISO 9513 class 0.5 extensometer"
+  },
+  "environment": {"operating_temp_degC": [10, 38], "humidity_pct": [10, 90], "power": "3PH 208/240/400/480 VAC (5988/5989 wye with neutral)"},
+  "relations": [
+    {"type": "compatible_accessory", "target": "instron-3119-600-environmental-chambers"},
+    {"type": "extends_temperature", "target": "instron-3119-600-environmental-chambers"},
+    {"type": "compatible_accessory", "target": "instron-3119-160-furnace"},
+    {"type": "compatible_accessory", "target": "instron-ave-video-extensometer"}
+  ],
+  "sources": [
+    {"file": "instron/5900-series-brochure-labsys.pdf", "pages": [4, 15]},
+    {"file": "instron/5980-series-floor-model-100-600kn.pdf", "pages": [2]},
+    {"file": "instron/5969-dual-column-ilab.pdf", "pages": [3, 4]}
+  ],
+  "confidence": "catalog"
+}

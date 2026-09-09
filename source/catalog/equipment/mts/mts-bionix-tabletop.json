@@ -1,0 +1,33 @@
+{
+  "id": "mts-bionix-tabletop",
+  "kind": "equipment_series",
+  "name": "MTS Bionix Tabletop Test Systems (370.02 axial / axial-torsional)",
+  "name_ko": "MTS Bionix 테이블형 생체재료 서보유압 시험기",
+  "manufacturer": "mts",
+  "brand": "Bionix",
+  "category": "servohydraulic_fatigue",
+  "drive": "servohydraulic",
+  "form_factor": "dual_column_tabletop",
+  "description": "생체재료·의료기기용 컴팩트 서보유압. 370.02 축(15/25 kN, 100/150 mm) 및 축-비틀림(15 kN/150 N·m, 25 kN/250 N·m, 270°). 회전 액추에이터 ±135°, 최대 150–210 deg/s. EnviroBath 옵션.",
+  "test_items": ["fatigue", "tensile", "compression", "torsion", "flexure"],
+  "measurands": ["fatigue_life", "dynamic_stiffness", "torsional_stiffness"],
+  "materials": ["biomaterials", "orthopaedic implants", "spinal devices", "polymers", "tissue"],
+  "standards": {"compliance": [], "test_methods": ["ASTM F1717", "ASTM F2077", "ISO 7206", "ASTM F1798"]},
+  "limits": {
+    "dynamic_force_kN": {"values": [15, 25]},
+    "torque_Nm": {"values": [150, 250]},
+    "stroke_mm": {"values": [100, 150]},
+    "rotation_deg": {"max": 135},
+    "vertical_test_space_mm": {"min": 30, "max": 1335},
+    "horizontal_test_space_mm": {"values": [460]}
+  },
+  "models": [
+    {"model": "370.02 Axial", "specs": {"dynamic_force_kN": 25, "actuator_ratings_kN": [15, 25], "stroke_mm": [100, 150], "vertical_test_space_mm": {"min": 144, "max": 827, "max_extended": 1335}, "frame_stiffness_N_m": 345000000, "weight_kg": 248}},
+    {"model": "370.02 Axial / Torsional", "specs": {"dynamic_force_kN": 25, "torque_Nm": 250, "stroke_mm": [100, 150], "rotation_deg": 270, "vertical_test_space_mm": {"min": 30, "max": 714, "max_extended": 1222}, "weight_kg": 322}}
+  ],
+  "environment": {"hydraulic": "14–21 MPa HPU, 15 L/min"},
+  "options": ["EnviroBath", "Bionix accessories (grips, spine kinematics, orthopaedic subsystems)"],
+  "relations": [{"type": "variant_of", "target": "mts-landmark-servohydraulic"}],
+  "sources": [{"file": "mts/bionix-tabletop-brochure.pdf", "pages": [9, 10, 11]}],
+  "confidence": "catalog"
+}

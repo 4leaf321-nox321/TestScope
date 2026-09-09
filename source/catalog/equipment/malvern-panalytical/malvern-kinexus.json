@@ -1,0 +1,33 @@
+{
+  "id": "malvern-kinexus",
+  "kind": "equipment_series",
+  "name": "Malvern Kinexus rotational rheometers (lab+ / pro+ / ultra+)",
+  "name_ko": "말번 파날리티컬 Kinexus 회전형 레오미터 (lab+·pro+·ultra+)",
+  "manufacturer": "malvern-panalytical",
+  "brand": "Kinexus",
+  "category": "rotational_rheometer",
+  "form_factor": "benchtop",
+  "description": "공기베어링 회전/진동 레오미터. ultra+: 토크 0.5 nNm–250 mNm(진동), 5 nNm–250 mNm(점도), 분해능 0.05 nNm, 각속도 10 nrad/s–500 rad/s, 1 µHz–150 Hz. pro+: 2/10 nNm–200 mNm. lab+: 10/20 nNm–200 mNm, 100 Hz. 수직력 0.001–20 N(50 N 옵션), 갭 분해능 0.1 µm, 리프트 230 mm. 펠티에 플레이트/후드 -40~200 °C, 실린더 -30~200 °C. rSpace SOP 소프트웨어. (2013 판 브로슈어)",
+  "test_items": ["rheology_rotational"],
+  "measurands": ["viscosity", "storage_modulus", "loss_modulus", "yield_stress", "thixotropy", "normal_force"],
+  "materials": ["complex fluids", "soft solids", "creams", "pastes", "gels", "polymer melts", "dispersions"],
+  "standards": {"compliance": ["21 CFR Part 11 (option)"], "test_methods": ["ISO 3219", "ASTM D4440", "ISO 6721-10"]},
+  "limits": {
+    "torque_mNm": {"min": 0.0000005, "max": 250},
+    "angular_velocity_rad_s": {"min": 0.00000001, "max": 500},
+    "frequency_Hz": {"min": 0.000001, "max": 150},
+    "force_N": {"min": 0.001, "max": 50, "note": "normal force; 20 N standard, 50 N optional"},
+    "temperature_degC": {"min": -40, "max": 200, "note": "Peltier cartridges; 다른 온도 장치는 브로슈어 범위 밖"}
+  },
+  "models": [
+    {"model": "Kinexus ultra+", "specs": {"torque_mNm": {"viscometry": [0.000005, 250], "oscillation": [0.0000005, 250]}, "torque_resolution_nNm": 0.05, "angular_velocity_rad_s": {"min": 0.00000001, "max": 500}, "frequency_Hz": {"min": 0.000001, "max": 150}}},
+    {"model": "Kinexus pro+", "specs": {"torque_mNm": {"viscometry": [0.00001, 200], "oscillation": [0.000002, 200]}, "torque_resolution_nNm": 0.1, "frequency_Hz": {"max": 150}}},
+    {"model": "Kinexus lab+", "specs": {"torque_mNm": {"viscometry": [0.00002, 200], "oscillation": [0.00001, 200]}, "angular_velocity_rad_s": {"max": 325}, "frequency_Hz": {"max": 100}}}
+  ],
+  "accuracy": {"position_resolution_nrad": 10, "normal_force_resolution_mN": 0.5, "gap_resolution_um": 0.1, "data_rate_Hz": 5000},
+  "environment": {"footprint_mm": {"D": 485, "W": 490, "H": 680}, "weight_kg": 47},
+  "options": ["Peltier plate cartridge -40~200", "active hood cartridge -40~200", "Peltier cylinder cartridge -30~200", "50 N normal force", "rSpace 21 CFR 11"],
+  "relations": [],
+  "sources": [{"file": "malvern-panalytical/kinexus-series-brochure.pdf", "pages": [9, 10], "note": "2013 판(대학 미러) — 현행 Kinexus DSR+/Prime 확인 요"}],
+  "confidence": "catalog"
+}

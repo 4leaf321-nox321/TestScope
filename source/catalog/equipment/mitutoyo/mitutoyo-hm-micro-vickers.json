@@ -1,0 +1,34 @@
+{
+  "id": "mitutoyo-hm-micro-vickers",
+  "kind": "equipment_series",
+  "name": "Mitutoyo HM-100 / HM-200 Series Micro Vickers Hardness Testing Machines",
+  "name_ko": "미쓰토요 HM-100/HM-200 시리즈 마이크로 비커스 경도계",
+  "manufacturer": "mitutoyo",
+  "category": "vickers_knoop_hardness",
+  "form_factor": "benchtop",
+  "description": "HM-101/102/112/114: 10 gf–2 kgf(모델별) 자동 부하, 대물 10×/50×(/100×). HM-211/221: 전자기 부하 0.05 gf–2 kgf, 터치 컬러 LCD, 시편 높이 133 mm. 유럽판 카탈로그(PRE1101) 기준 — 현행 HM-200 시리즈와 번호가 다를 수 있음.",
+  "test_items": ["hardness_vickers", "hardness_knoop"],
+  "measurands": ["hardness_HV", "hardness_HK"],
+  "materials": ["metals", "coatings", "case-hardened layers", "ceramics"],
+  "standards": {"compliance": [], "test_methods": ["ISO 6507-1", "ASTM E384", "ISO 4545-1"]},
+  "limits": {
+    "test_load_gf": {"min": 0.05, "max": 2000, "note": "HM-101 10–1000 gf; HM-102/112/114 1–2000 gf; HM-211 10–1000 gf(가변); HM-221 0.05–2000 gf"},
+    "hardness_scales": {"values": ["HV", "HK"]},
+    "specimen_height_mm": {"max": 133, "note": "HM-10x 95 mm, HM-2xx 133 mm"},
+    "specimen_depth_mm": {"max": 160}
+  },
+  "models": [
+    {"model": "HM-101", "specs": {"test_load_gf": [10, 25, 50, 100, 200, 300, 500, 1000], "objectives": ["10x", "50x"], "specimen_height_mm": 95, "specimen_depth_mm": 150}},
+    {"model": "HM-102", "specs": {"test_load_gf": [1, 2, 3, 5, 10, 25, 50, 100, 200, 300, 500, 1000, 2000], "objectives": ["10x", "50x"], "specimen_height_mm": 95}},
+    {"model": "HM-112", "specs": {"test_load_gf": [1, 2, 3, 5, 10, 25, 50, 100, 200, 300, 500, 1000, 2000], "objectives": ["10x", "50x"], "readout_resolution_um": 0.1, "specimen_height_mm": 95}},
+    {"model": "HM-114", "specs": {"test_load_gf": [1, 2, 3, 5, 10, 25, 50, 100, 200, 300, 500, 1000, 2000], "objectives": ["10x", "50x", "100x"], "readout_resolution_um": 0.01, "specimen_height_mm": 95, "weight_kg": 42}},
+    {"model": "HM-211", "specs": {"test_load_gf": {"min": 10, "max": 1000, "values": [10, 20, 30, 50, 100, 200, 300, 500, 1000]}, "loading": "electromagnetic, 0–999 s", "objectives": ["10x", "50x"], "specimen_height_mm": 133, "specimen_depth_mm": 160}},
+    {"model": "HM-221", "specs": {"test_load_gf": {"min": 0.05, "max": 2000}, "loading": "electromagnetic, 0–999 s", "objectives": ["10x", "50x", "100x"], "specimen_height_mm": 133, "specimen_depth_mm": 160}}
+  ],
+  "accuracy": {"diagonal_resolution_um": "0.01 (≥50x)", "xy_stage": "100×100 mm, travel 25×25 mm, 1 µm"},
+  "environment": {"power": "230 V, ≤60 VA"},
+  "options": ["CCD camera", "motorised XY stage", "SPC/RS-232C output"],
+  "relations": [],
+  "sources": [{"file": "mitutoyo/hardness-testing-equipment-pre1101.pdf", "pages": [22, 24]}],
+  "confidence": "catalog"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "bruel-kjaer-hats-5128",
+  "kind": "equipment_series",
+  "name": "Bruel & Kjaer Type 5128 High-Frequency Head and Torso Simulator (HF HATS)",
+  "name_ko": "브루엘앤드케어 Type 5128 고주파 인공 두상·흉부 시뮬레이터",
+  "manufacturer": "bruel-kjaer",
+  "brand": "HATS",
+  "category": "head_torso_simulator",
+  "form_factor": "fixture",
+  "description": "평균적인 인체 귓바퀴(pinna)와 귀 시뮬레이터를 갖춘 고주파 인공 두상·흉부 시뮬레이터. 가청 전 대역 20 Hz~20 kHz 를 커버해 기존 HATS 의 상한 8 kHz 를 두 배 이상 확장했다. 헤드폰·이어폰·스마트폰·스마트 스피커의 음향 성능을 사람이 실제로 듣는 조건에 가깝게, 재현성 있게 측정한다. 귀 시뮬레이터는 1개 또는 2개 구성이 기본이며 요청 시 다른 구성도 가능. 두상 높이 조절 가능.",
+  "test_items": ["audio_performance"],
+  "measurands": ["frequency_response", "sound_pressure_level", "insertion_gain", "speech_intelligibility", "active_noise_cancellation"],
+  "materials": ["headphones", "earphones", "hearing aids", "smartphones", "smart speakers", "headsets", "conference devices"],
+  "standards": {
+    "compliance": ["ITU-T Rec. P.58 (두상 형상, Type 5128-B)", "IEC 60318-7 (고주파 귀 시뮬레이터)"],
+    "test_methods": ["ITU-T P.57", "ITU-T P.58", "IEC 60268-7", "3GPP TS 26.132"]
+  },
+  "limits": {
+    "frequency_Hz": {"min": 20, "max": 20000, "note": "가청 전 대역. 기존 HATS 상한 8 kHz 대비 2배 이상 확장"},
+    "ear_simulators": {"values": [1, 2], "note": "요청 시 다른 구성 가능"}
+  },
+  "models": [
+    {"model": "Type 5128-B (탁상형 HATS)", "specs": {"configuration": "두상 + 지지 발(support foot)", "head_geometry": "ITU-T Rec. P.58 준거", "frequency_Hz": {"min": 20, "max": 20000}}, "note": "헤드폰 시험에 적합"},
+    {"model": "Type 5128-C", "specs": {"configuration": "두상 + 흉부", "frequency_Hz": {"min": 20, "max": 20000}, "height_adjustable": true}, "note": "가청 전 대역 커버, 오디오 시험 현실성 극대화"},
+    {"model": "Type 5128-D (Type 4606 포함)", "specs": {"configuration": "두상 + 흉부 + 핸드셋 포지셔너 Type 4606", "frequency_Hz": {"min": 20, "max": 20000}}, "note": "휴대전화 핸드셋 위치 재현용 포지셔너 동봉"}
+  ],
+  "accessories": [
+    {"name": "Type 4606 핸드셋 포지셔너", "note": "Type 5128-D 에 포함, 5128-C 에는 별도"},
+    {"name": "고주파 귀 시뮬레이터", "note": "평균 인체 귓바퀴 포함"}
+  ],
+  "features": ["20 Hz~20 kHz 전 가청 대역", "평균 인체 귓바퀴 형상", "ITU-T P.58 준거 두상 형상", "높이 조절 가능", "귀 시뮬레이터 1~2개 구성"],
+  "relations": [
+    {"type": "performs", "target": "audio_performance"},
+    {"type": "compatible_accessory", "target": "audio-precision-apx555"}
+  ],
+  "sources": [{"file": "bruel-kjaer/hf-hats-type-5128-product-data.pdf", "pages": [1, 2, 3]}],
+  "confidence": "catalog"
+}

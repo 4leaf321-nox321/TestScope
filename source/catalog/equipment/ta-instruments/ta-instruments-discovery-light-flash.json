@@ -1,0 +1,119 @@
+{
+  "id": "ta-instruments-discovery-light-flash",
+  "kind": "equipment_series",
+  "name": "TA Instruments Discovery Light Flash DLF 1200 / DLF 1600 (Laser Flash Thermal Diffusivity)",
+  "name_ko": "TA 인스트루먼츠 Discovery Light Flash DLF 1200·1600 레이저 플래시 열확산율 측정기",
+  "manufacturer": "ta-instruments",
+  "brand": "Discovery",
+  "category": "thermal_conductivity",
+  "drive": "thermal",
+  "form_factor": "benchtop",
+  "description": "시료 앞면에 짧은 레이저 펄스를 주고 뒷면 온도 상승 곡선에서 열확산율을 구하는 레이저 플래시 장비. Class 1 Nd:Glass 레이저를 쓰고 펄스 에너지는 DLF 1600 이 최대 35 J, DLF 1200 이 최대 25 J, 펄스 폭 300~400 µs. 광 전달은 DLF 1600 이 광섬유 완드, DLF 1200 이 광 빔 가이드다. 노 온도는 DLF 1600 이 실온~1600 °C, DLF 1200 이 실온~1200 °C 이고 분위기는 공기·불활성·진공(50 mtorr)을 쓴다. 열확산율 0.01~1000 mm²/s, 열전도도 0.1~2000 W/(m·K) 를 덮는다. 정확도는 열확산율 ±2.3 %, 열전도도 ±4 %(재현성 각각 ±2.0 %, ±3.5 %). 시료는 원형과 정사각형을 쓰고 최대 두께 10 mm.",
+  "test_items": [
+    "thermal_conductivity"
+  ],
+  "measurands": [
+    "thermal_diffusivity",
+    "thermal_conductivity",
+    "specific_heat"
+  ],
+  "materials": [
+    "metals and alloys",
+    "ceramics",
+    "composites",
+    "polymers",
+    "thermal interface materials",
+    "coatings"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "temperature_degC": {
+      "max": 1600,
+      "note": "실온부터. DLF 1200 은 1200 °C"
+    },
+    "thermal_diffusivity_mm2_s": {
+      "min": 0.01,
+      "max": 1000
+    },
+    "thermal_conductivity_W_mK": {
+      "min": 0.1,
+      "max": 2000
+    },
+    "specimen_thickness_mm": {
+      "max": 10
+    },
+    "specimen_diameter_mm": {
+      "values": [8, 10, 12.7, 15.9, 25.4],
+      "note": "DLF 1600 은 8·10·12.7·15.9 mm, DLF 1200 은 8·10·12.7·25.4 mm. 정사각형은 두 기종 모두 8·10 mm"
+    }
+  },
+  "models": [
+    {
+      "model": "DLF 1600",
+      "specs": {
+        "laser": "Class 1 Nd:Glass, 바닥 설치형",
+        "pulse_energy_J_max": 35,
+        "pulse_width_us": {"min": 300, "max": 400},
+        "transfer_optics": "광섬유 완드(Fiber Optic Wand)",
+        "temperature_degC": {"min": "RT", "max": 1600},
+        "atmosphere": "공기, 불활성, 진공(50 mtorr)",
+        "thermal_diffusivity_mm2_s": {"min": 0.01, "max": 1000},
+        "thermal_conductivity_W_mK": {"min": 0.1, "max": 2000},
+        "data_acquisition_bit": 16,
+        "accuracy_diffusivity_pct": 2.3,
+        "accuracy_conductivity_pct": 4,
+        "repeatability_diffusivity_pct": 2.0,
+        "repeatability_conductivity_pct": 3.5,
+        "sample_round_mm": [8, 10, 12.7, 15.9],
+        "sample_square_mm": [8, 10],
+        "sample_max_thickness_mm": 10,
+        "autosampler": "5 위치 캐러셀"
+      }
+    },
+    {
+      "model": "DLF 1200",
+      "specs": {
+        "laser": "Class 1 Nd:Glass, 탁상형",
+        "pulse_energy_J_max": 25,
+        "pulse_width_us": {"min": 300, "max": 400},
+        "transfer_optics": "광 빔 가이드(Optic Beam Guide)",
+        "temperature_degC": {"min": "RT", "max": 1200},
+        "atmosphere": "공기, 불활성, 진공(50 mtorr)",
+        "thermal_diffusivity_mm2_s": {"min": 0.01, "max": 1000},
+        "thermal_conductivity_W_mK": {"min": 0.1, "max": 2000},
+        "data_acquisition_bit": 16,
+        "accuracy_diffusivity_pct": 2.3,
+        "accuracy_conductivity_pct": 4,
+        "repeatability_diffusivity_pct": 2.0,
+        "repeatability_conductivity_pct": 3.5,
+        "sample_round_mm": [8, 10, 12.7, 25.4],
+        "sample_square_mm": [8, 10],
+        "sample_max_thickness_mm": 10,
+        "autosampler": "4 위치 선형 트레이"
+      }
+    }
+  ],
+  "accuracy": {
+    "thermal_diffusivity": "±2.3 % (재현성 ±2.0 %)",
+    "thermal_conductivity": "±4 % (재현성 ±3.5 %)"
+  },
+  "features": [
+    "Class 1 레이저 — 별도 차폐 없이 운전",
+    "진공(50 mtorr)·불활성·공기 분위기",
+    "오토샘플러 내장",
+    "16 bit 데이터 취득"
+  ],
+  "options": [],
+  "relations": [
+    {"type": "performs", "target": "thermal_conductivity"},
+    {"type": "same_family_as", "target": "ta-instruments-discovery-dsc"}
+  ],
+  "sources": [
+    {"file": "ta-instruments/light-flash-lfa-brochure.pdf", "pages": [33]}
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 막혀 archive.org 스냅샷(2022-03-08)에서 받았다. 같은 브로슈어 34쪽에 크세논 플래시 계열 DXF 200/500/900 사양표가 따로 있으나 이 객체에는 넣지 않았다 — 광원이 다른 별개 제품군이다. 시료 지름 목록이 두 기종에서 다르다(1600 은 15.9 mm, 1200 은 25.4 mm)."
+}

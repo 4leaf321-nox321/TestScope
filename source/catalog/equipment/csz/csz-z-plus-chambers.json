@@ -1,0 +1,29 @@
+{
+  "id": "csz-z-plus-chambers",
+  "kind": "equipment_series",
+  "name": "CSZ Z-Plus Temperature / Humidity Chambers",
+  "name_ko": "CSZ(신시내티 서브제로) Z-Plus 항온항습 챔버",
+  "manufacturer": "csz",
+  "brand": "Z-Plus",
+  "category": "climatic_chamber",
+  "drive": "thermal",
+  "form_factor": "floor",
+  "description": "150개 이상 모델 구성의 표준 항온항습 챔버. 용량 8 cu.ft.(227 L) ~ 96 cu.ft.(2718 L). 기본 열 사이클링부터 가속 스트레스 시험까지. EZT-570 터치스크린 컨트롤러(7\" 또는 10\")로 프로그래밍·트렌드 차트·데이터 로깅·다운로드.",
+  "test_items": ["damp_heat", "temperature_cycling"],
+  "measurands": ["failure_time", "functional_degradation"],
+  "materials": ["electronics", "medical devices", "automotive", "packaging"],
+  "standards": {"compliance": [], "test_methods": ["IEC 60068-2-1", "IEC 60068-2-2", "IEC 60068-2-30", "IEC 60068-2-78", "ASTM F1980"]},
+  "limits": {
+    "chamber_volume_L": {"min": 227, "max": 2718},
+    "temperature_degC": {"note": "모델별 — 카탈로그 사양표 확인 요", "uncertain": true},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [{"model": "Z-Plus (150+ 모델)", "specs": {"chamber_volume_L": {"min": 227, "max": 2718}, "controller": "EZT-570 (7\" / 10\" 터치스크린)"}, "uncertain": true}],
+  "features": ["EZT-570 터치스크린 컨트롤러", "트렌드 차트·데이터 로깅"],
+  "relations": [{"type": "simulates_environment", "target": "environment-damp-heat"}],
+  "sources": [
+    {"file": "csz/z-plus-temperature-humidity-chambers.pdf"},
+    {"file": "csz/general-product-catalog.pdf", "note": "CSZ 종합 카탈로그 — 열충격·고도 챔버 등 포함"}
+  ],
+  "confidence": "limited"
+}

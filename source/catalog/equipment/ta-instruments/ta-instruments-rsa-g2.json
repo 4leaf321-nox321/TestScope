@@ -1,0 +1,112 @@
+{
+  "id": "ta-instruments-rsa-g2",
+  "kind": "equipment_series",
+  "name": "TA Instruments RSA-G2 Solids Analyzer",
+  "name_ko": "TA 인스트루먼츠 RSA-G2 고체 분석기(DMA)",
+  "manufacturer": "ta-instruments",
+  "category": "dma",
+  "drive": "electromechanical",
+  "form_factor": "benchtop",
+  "description": "고체 시료의 동적기계 거동을 재는 분리 구동/측정(separate motor and transducer) 구조의 고체 분석기. 힘 0.0005~35 N(분해능 0.00001 N), 동적 변위 ±0.00005~1.5 mm, 변위 분해능 1 nm. 주파수 2×10⁻⁵~100 Hz, 탄성률 범위 10³~3×10¹² Pa 에 정밀도 ±1 %, tan δ 감도 0.0001. 온도는 강제대류 오븐으로 -150~600 °C 를 덮되 표준 클램프는 500 °C 까지이고 600 °C 는 옵션 클램프가 필요하다. 승온·냉각 모두 0.1~60 °C/min 으로 빠르고 등온 안정도 ±0.1 °C. 유전 분석(DETA) 옵션으로 유전율·유전손실을 함께 본다. 액체질소 대신 쓰는 공랭식 칠러 ACS-2(-55 °C)·ACS-3(-100 °C)가 있다.",
+  "test_items": [
+    "dma"
+  ],
+  "measurands": [
+    "storage_modulus",
+    "loss_modulus",
+    "tan_delta",
+    "glass_transition",
+    "creep_compliance",
+    "relaxation_modulus",
+    "viscoelastic_properties"
+  ],
+  "materials": [
+    "polymers",
+    "elastomers/rubber",
+    "composites",
+    "films and fibers",
+    "adhesives"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_N": {
+      "min": 0.0005,
+      "max": 35,
+      "note": "분해능 0.00001 N"
+    },
+    "frequency_Hz": {
+      "min": 0.00002,
+      "max": 100
+    },
+    "temperature_degC": {
+      "min": -150,
+      "max": 600,
+      "note": "표준 시료 클램프는 500 °C 까지. 600 °C 는 옵션 클램프 필요"
+    },
+    "heating_rate_K_min": {
+      "min": 0.1,
+      "max": 60
+    },
+    "cooling_rate_K_min": {
+      "min": 0.1,
+      "max": 60
+    },
+    "displacement_mm": {
+      "min": 0.00005,
+      "max": 1.5,
+      "note": "동적 변위 범위 ±. 분해능 1 nm"
+    }
+  },
+  "models": [
+    {
+      "model": "RSA-G2",
+      "specs": {
+        "min_force_N": 0.0005,
+        "max_force_N": 35,
+        "force_resolution_N": 0.00001,
+        "dynamic_displacement_mm": {"min": 0.00005, "max": 1.5},
+        "displacement_resolution_nm": 1,
+        "modulus_range_Pa": {"min": 1000, "max": 3e12},
+        "modulus_precision_pct": 1,
+        "tan_delta_sensitivity": 0.0001,
+        "tan_delta_resolution": 0.00001,
+        "frequency_Hz": {"min": 0.00002, "max": 100},
+        "temperature_control": "강제대류 오븐(FCO)",
+        "temperature_degC": {"min": -150, "max": 600},
+        "heating_rate_degC_min": {"min": 0.1, "max": 60},
+        "cooling_rate_degC_min": {"min": 0.1, "max": 60},
+        "isothermal_stability_degC": 0.1
+      },
+      "note": "표준 클램프 500 °C, 600 °C 는 옵션 클램프"
+    }
+  ],
+  "accuracy": {
+    "modulus_precision": "±1 %",
+    "isothermal_stability": "±0.1 °C"
+  },
+  "features": [
+    "분리 구동/측정 구조 — 변형 인가와 응력 측정을 따로",
+    "탄성률 범위 10³~3×10¹² Pa",
+    "승온·냉각 모두 최대 60 °C/min",
+    "유전 분석(DETA) 옵션"
+  ],
+  "options": [
+    "DETA 유전 분석",
+    "600 °C 대응 시료 클램프",
+    "공랭식 칠러 ACS-2 (FCO 를 -55 °C 까지)",
+    "공랭식 칠러 ACS-3 (FCO 를 -100 °C 까지)"
+  ],
+  "relations": [
+    {"type": "performs", "target": "dma"},
+    {"type": "same_family_as", "target": "ta-instruments-dma"},
+    {"type": "same_family_as", "target": "ta-instruments-discovery-hybrid-rheometer"}
+  ],
+  "sources": [
+    {"file": "ta-instruments/rsa-g2-brochure.pdf", "pages": [15]}
+  ],
+  "confidence": "catalog",
+  "notes": "tainstruments.com 이 막혀 archive.org 스냅샷(2025-06-20)에서 받았다. -150 °C 하한은 액체질소를 쓸 때의 값이고, ACS 공랭 칠러를 쓰면 -55 °C(ACS-2) 또는 -100 °C(ACS-3)가 하한이 된다 — 검색이 이 차이를 놓치지 않도록 옵션에 적어 두었다. DETA 유전 사양표(9쪽)는 별도이며 여기 옮기지 않았다."
+}

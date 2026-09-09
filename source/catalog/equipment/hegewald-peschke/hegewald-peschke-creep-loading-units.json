@@ -1,0 +1,115 @@
+{
+  "id": "hegewald-peschke-creep-loading-units",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Creep / Stress Rupture Loading Units (41-027-000, 41-027-109)",
+  "name_ko": "헤게발트 운트 페슈케 크리프·응력파단 하중 유닛 (직물용·가죽 수축용)",
+  "manufacturer": "hegewald-peschke",
+  "category": "creep_tester",
+  "drive": "manual",
+  "form_factor": "multistation",
+  "description": "추(weight)로 일정 하중을 걸어 두고 장시간 거동을 보는 크리프 시험 장치. 41-027-000 은 하중 유닛 5 개를 담는 프레임으로 유닛당 유효 하중 50~200 N, 하중 정확도는 최종 하중의 ±1 % 이고, 유닛끼리 기계적으로 분리돼 있어 한 시편이 끊어질 때 생기는 진동이 옆 유닛을 건드리지 않는다(직물 시편 홀더 5 개). 41-027-109 는 시험 위치 10 곳을 두 몫으로 나눠 5 곳은 하부 클램프의 자중 50 N 으로 길이 변화를, 5 곳은 시편을 일정 길이로 물려 수축력을 기록한다 — 기후 챔버 안에서 쓰며 센서와 계측 취득은 납품 범위에 들어 있지 않다.",
+  "test_items": [
+    "creep",
+    "relaxation"
+  ],
+  "measurands": [
+    "creep",
+    "creep_rupture_time",
+    "creep_strain",
+    "minimum_creep_rate",
+    "shrinkage_force",
+    "dimensional_change"
+  ],
+  "materials": [
+    "textiles",
+    "technical fabrics",
+    "leather",
+    "cardboard (문서 제목 기준)"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "load_N": {
+      "min": 50,
+      "max": 200,
+      "note": "41-027-000 은 유닛당 50~200 N(정확도 최종 하중의 ±1 %), 41-027-109 는 자중 50 N 고정"
+    },
+    "stations": {
+      "values": [
+        5,
+        10
+      ],
+      "note": "41-027-000 은 5, 41-027-109 는 10(하중 5 + 정길이 5)"
+    }
+  },
+  "models": [
+    {
+      "model": "Loading unit for creep stress rupture test (41-027-000)",
+      "specs": {
+        "frame": "하중 유닛 5 개를 담는 프레임",
+        "load_application": "추(weight)",
+        "effective_load_N": {
+          "min": 50,
+          "max": 200
+        },
+        "load_accuracy": "최종 하중의 ±1 % (50~200 N)",
+        "decoupling": "하중 유닛이 기계적으로 분리 — 시편 파단 시 진동 전파 차단",
+        "specimen_holders": "직물 시편용 5 개"
+      }
+    },
+    {
+      "model": "Creep bending test device (41-027-109)",
+      "specs": {
+        "test_positions": 10,
+        "positions_load_mode": "5 곳 — 하부 클램프의 일정 자중으로 50 N 을 걸고 길이 변화를 기록",
+        "positions_fixed_length_mode": "5 곳 — 시편을 일정 길이로 물리고 수축력을 기록",
+        "load_N": 50,
+        "base_design": "기납품 장치 41-027-100 을 10 스테이션으로 확장한 설계",
+        "sensors": "로드셀·변위센서와 계측 취득은 납품 범위에 **포함되지 않는다**(발주 시 협의, 센서 데이터시트·치수도면 필요)",
+        "climate_chamber": "기후 챔버 안에서 쓴다. 챔버에 고정하는 가이드가 납품 범위에 포함",
+        "carriage": "챔버 가이드에 센터링으로 맞물리는 대차 — 장치를 밖으로 빼내 시편 교체나 챔버 전용(轉用)이 쉽다"
+      },
+      "note": "시편이 가죽(leather)이고 재는 것은 장기 수축 거동이다. 다만 문서 제목은 '기후 챔버에서 자중 하중을 받는 판지(cardboard)용 크리프 굽힘 시험 장치' 로 적혀 있어 제목과 본문의 대상 재료가 어긋난다 — 둘 다 적어 둔다"
+    }
+  ],
+  "accuracy": {
+    "load": "최종 하중의 ±1 % (50~200 N 구간)"
+  },
+  "features": [
+    "추 방식 정하중 — 전원 없이 장시간 유지",
+    "유닛 간 기계적 분리로 파단 진동 격리",
+    "5 또는 10 스테이션 병렬 시험",
+    "기후 챔버 내 설치용 가이드와 반출 대차(41-027-109)",
+    "길이 변화 측정과 수축력 측정을 한 장치에서(41-027-109)"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "creep"
+    },
+    {
+      "type": "performs",
+      "target": "relaxation"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/41-027-000-pruefstand-fuer-zeitstandsversuch-en.pdf",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/41-027-109-creep-bending-test-device.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    }
+  ],
+  "confidence": "limited",
+  "notes": "두 문서 모두 2쪽짜리 제품 소개라 정량 사양이 하중·스테이션 수·정확도뿐이다. 온도 조건, 변형 측정 방법, 시편 치수, 장비 치수·중량이 없다. 41-027-109 는 **센서(로드셀·변위센서)와 계측 취득이 납품 범위 밖**이라 그 자체로는 값을 내지 못한다 — 장비 능력을 물을 때 이 단서가 빠지면 답이 어긋난다. 같은 제조사의 `creep testing device 863309` 는 DirectIndustry 목록에만 있고 제조사 사이트에서 PDF 를 찾지 못했다."
+}

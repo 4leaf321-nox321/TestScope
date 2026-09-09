@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd backend && ./.venv/Scripts/python.exe *)",
+      "Bash(./.venv/Scripts/python.exe -m ruff *)",
+      "Bash(./.venv/Scripts/python.exe -m mypy)",
+      "Bash(./.venv/Scripts/python.exe -m pytest *)",
+      "Bash(./.venv/Scripts/python.exe -m alembic check)",
+      "Bash(./.venv/Scripts/python.exe -m alembic upgrade *)",
+      "Bash(./.venv/Scripts/python.exe -m alembic revision *)",
+      "Bash(./.venv/Scripts/python.exe -m alembic history *)",
+      "Bash(./.venv/Scripts/python.exe -m alembic current)",
+      "Bash(./.venv/Scripts/python.exe scripts/*)",
+      "Bash(./.venv/Scripts/python.exe run.py)",
+      "Bash(./.venv/Scripts/ruff.exe check *)",
+      "Bash(./.venv/Scripts/ruff.exe format *)",
+      "Bash(./.venv/Scripts/mypy.exe)",
+      "Bash(./.venv/Scripts/alembic.exe *)",
+      "Bash(./.venv/Scripts/pip.exe list *)",
+      "Bash(npm run build)",
+      "Bash(npm run lint)",
+      "Bash(npm run api:types)",
+      "Bash(npm test *)",
+      "Bash(npx vitest *)",
+      "Bash(curl -s http://127.0.0.1:8020/api/*)",
+      "Bash(curl -s http://127.0.0.1:8021/api/*)"
+    ]
+  }
+}

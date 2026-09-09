@@ -1,0 +1,188 @@
+{
+ "note": "장비 카탈로그가 아니라 시험 방법·규격·업계 문서, 그리고 시험 소프트웨어·서비스·배경 자료. 장비 객체에 붙이지 않고 여기서 따로 관리한다. build_graph.py 의 검증 대상이 아니다.",
+ "documents": [
+  {
+   "id": "ipc-tm-650-2-3-25-rose",
+   "file": "ipc/tm-650-2-3-25-rose-ionic-contamination.pdf",
+   "title": "IPC-TM-650 Test Method 2.3.25 — Detection and Measurement of Ionizable Surface Contaminants by Resistivity of Solvent Extract (ROSE)",
+   "title_ko": "IPC-TM-650 2.3.25 — 용매 추출 저항률(ROSE)에 의한 이온성 표면 오염 측정",
+   "standard_body": "IPC",
+   "related_test_items": [
+    "solderability"
+   ],
+   "why": "PCB 세정도(이온성 잔류물) 판정의 표준 시험법. ROSE 테스터의 측정 원리와 합격 기준의 근거."
+  },
+  {
+   "id": "usb-if-type-c-r2-0",
+   "file": "usb-if/usb-type-c-cable-connector-spec-r2-0.pdf",
+   "title": "USB Type-C Cable and Connector Specification Revision 2.0",
+   "title_ko": "USB Type-C 케이블·커넥터 규격 2.0",
+   "standard_body": "USB-IF",
+   "related_test_items": [
+    "mechanical_endurance",
+    "crimp_pull_strength",
+    "dielectric_withstand",
+    "insulation_resistance"
+   ],
+   "why": "커넥터 삽발 내구(10,000회), 케이블 굽힘, 접촉 저항, 절연 요구 등 커넥터 시험 조건의 원 규격."
+  },
+  {
+   "id": "ipx9-ipx9k-whitepaper",
+   "file": "misc/ipx9-ipx9k-testing-whitepaper.pdf",
+   "title": "IPX9 / IPX9K High-Pressure High-Temperature Water Jet Testing (whitepaper)",
+   "title_ko": "IPX9·IPX9K 고압 고온 분사수 시험 백서",
+   "standard_body": "IEC / ISO",
+   "related_test_items": [
+    "water_ingress"
+   ],
+   "why": "IEC 60529 IPX9 와 ISO 20653 IPX9K 의 차이(분사 각도·회전·수온 80 °C·압력 8~10 MPa)를 정리한 문서. 방수 시험 장비 사양 해석의 근거."
+  },
+  {
+   "id": "mil-std-810-510-7",
+   "file": "mil-std/method-510-7-sand-and-dust.pdf",
+   "title": "MIL-STD-810 Method 510.7 — Sand and Dust",
+   "title_ko": "MIL-STD-810 방법 510.7 — 모래·먼지",
+   "standard_body": "US DoD",
+   "related_test_items": [
+    "dust_ingress"
+   ],
+   "why": "분진 챔버의 농도·풍속·입도 조건 근거.",
+   "note": "분진 챔버 장비 객체(weiss-dust-chamber-st 등)에서도 출처로 인용된다."
+  },
+  {
+   "id": "hp-labmaster",
+   "file": "hegewald-peschke/labmaster-testing-software.pdf",
+   "title": "Hegewald & Peschke LabMaster Material Testing Software",
+   "title_ko": "LabMaster 재료시험 소프트웨어",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "LabMaster 는 inspekt 전 계열의 제어·해석을 맡는다. 인장·압축·굽힘·박리 모듈이 추가비용 없이 포함된다는 점이 장비 견적에 영향을 준다."
+  },
+  {
+   "id": "hp-labmaster-formula-editor",
+   "file": "hegewald-peschke/18-014-010-labmaster-module-formula-editor.pdf",
+   "title": "LabMaster module: Formula editor",
+   "title_ko": "LabMaster 수식 편집기 모듈",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "시험 결과에서 사용자 정의 지표를 계산한다."
+  },
+  {
+   "id": "hp-labmaster-video",
+   "file": "hegewald-peschke/18-014-012-labmaster-module-video-recording.pdf",
+   "title": "LabMaster module: Video recording",
+   "title_ko": "LabMaster 영상 기록 모듈",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "시험 곡선과 영상을 시각 동기해 파단 순간을 되짚는다."
+  },
+  {
+   "id": "hp-labmaster-import-export",
+   "file": "hegewald-peschke/18-014-018-labmaster-module-combined-data-import-and-export-bundle.pdf",
+   "title": "LabMaster module: Combined data import and export (bundle)",
+   "title_ko": "LabMaster 데이터 반입·반출 번들",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "시험 데이터를 외부 시스템(LIMS 등)과 주고받는 경로. TestAtlas 연계 시 참고."
+  },
+  {
+   "id": "hp-labmaster-fracture-mechanics",
+   "file": "hegewald-peschke/18-014-022-labmaster-module-fracture-mechanics.pdf",
+   "title": "LabMaster module: Fracture mechanics",
+   "title_ko": "LabMaster 파괴역학 모듈",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "K_IC·J_IC 같은 파괴인성 산출을 소프트웨어가 맡는다 — 같은 시험기라도 이 모듈 유무로 얻는 값이 달라진다."
+  },
+  {
+   "id": "hp-labmaster-multi-workplace",
+   "file": "hegewald-peschke/18-014-026-labmaster-module-multiple-work-place-system.pdf",
+   "title": "LabMaster module: Multiple work place system",
+   "title_ko": "LabMaster 다중 작업장 시스템 모듈",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "한 라이선스로 여러 시험기·작업자를 묶는 구성."
+  },
+  {
+   "id": "hp-labmaster-calibration",
+   "file": "hegewald-peschke/18-014-035-labmaster-add-on-for-calibration.pdf",
+   "title": "LabMaster add-on for calibration",
+   "title_ko": "LabMaster 교정 애드온",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "힘·변위 교정을 소프트웨어에서 수행·기록한다."
+  },
+  {
+   "id": "hp-hardwin-xl",
+   "file": "hegewald-peschke/hardwin-xl-en.pdf",
+   "title": "Hegewald & Peschke HardWin XL Hardness Testing Software",
+   "title_ko": "HardWin XL 경도 시험 소프트웨어",
+   "standard_body": "software",
+   "related_test_items": [],
+   "why": "브리넬·비커스·로크웰·누프 경도 시험의 측정과 통계를 맡는 PC 소프트웨어."
+  },
+  {
+   "id": "hp-safety-doors",
+   "file": "hegewald-peschke/safety-doors.pdf",
+   "title": "Hegewald & Peschke Safety Doors",
+   "title_ko": "안전문",
+   "standard_body": "accessory-overview",
+   "related_test_items": [],
+   "why": "CE 적합 보호 구성. 시험기 옵션이지만 정량 사양이 없어 장비 객체로 만들지 않았다."
+  },
+  {
+   "id": "hp-automated-testing-systems",
+   "file": "hegewald-peschke/automated-testing-systems.pdf",
+   "title": "Hegewald & Peschke Automated Testing Systems",
+   "title_ko": "자동 시험 시스템(로봇 연계)",
+   "standard_body": "system-overview",
+   "related_test_items": [],
+   "why": "시험기에 로봇을 붙여 시편 투입·측정·배출을 자동화하는 구성 소개. 기종별 사양표가 없다."
+  },
+  {
+   "id": "hp-modernisation",
+   "file": "hegewald-peschke/modernisation-of-universal-testing-machines-new.pdf",
+   "title": "Modernisation of Universal Testing Machines",
+   "title_ko": "만능재료시험기 현대화(리트로핏)",
+   "standard_body": "service",
+   "related_test_items": [],
+   "why": "Instron·Shimadzu·Zwick 등 타사 구형 시험기의 계측·제어를 교체하는 서비스. 보유 장비의 성능이 원 제조사 사양과 달라질 수 있다는 점에서 카탈로그 값 해석에 주의가 필요하다."
+  },
+  {
+   "id": "hp-testing-of-wires",
+   "file": "hegewald-peschke/testing-of-wires.pdf",
+   "title": "Hegewald & Peschke: Testing of Wires",
+   "title_ko": "선재 시험 안내",
+   "standard_body": "application-note",
+   "related_test_items": [],
+   "why": "선재 인장·비틀림·반복굽힘을 어느 장비로 어떻게 하는지 묶어 설명한 자료."
+  },
+  {
+   "id": "hp-micro-testing",
+   "file": "hegewald-peschke/micro-testing-systems.pdf",
+   "title": "Hegewald & Peschke: Micro Testing Systems",
+   "title_ko": "미세 시험 시스템 안내",
+   "standard_body": "application-note",
+   "related_test_items": [],
+   "why": "소하중·미세 시편 시험의 배경 설명(Wissenswertes). inspekt micro 객체의 배경 자료."
+  },
+  {
+   "id": "mtdi-electro-spinning",
+   "file": "mtdi/electro-spinning-system-catalog.pdf",
+   "title": "MTDI ESS-100 Electro Spinning System",
+   "title_ko": "엠티디아이 ESS-100 전기방사 시스템",
+   "standard_body": "equipment-out-of-scope",
+   "related_test_items": [],
+   "why": "나노섬유를 **만드는** 생산 장비이지 시험 장비가 아니라 장비 객체로 담지 않았다. 사양(렌더링으로 확인): 치수 1200x840x1800 mm, AC220V 단상 50A, X-stage 이송 200 mm·Y-stage 300 mm(각 최대 30 mm/s), 드럼 0~300 rpm·Ø100x200 mm, 전압 10~20 kV(최대 30 kV), 온도 10~35 °C, 상대습도 40 %까지 제어. 시편을 만들어 다른 장비로 시험하는 경로의 앞단이라 기록만 남긴다."
+  },
+  {
+   "id": "ets-acoustic-full-line",
+   "file": "ets-lindgren/acoustic-full-line-brochure.pdf",
+   "title": "ETS-Lindgren Acoustic Full Line Brochure",
+   "title_ko": "ETS-린드그렌 음향 전 제품 라인 브로슈어",
+   "standard_body": "product-overview",
+   "related_test_items": [],
+   "why": "무향실·청력검사 부스 등 음향 시험 설비 개요. 기종별 사양표가 없어 장비 객체로 담지 못했다."
+  }
+ ]
+}

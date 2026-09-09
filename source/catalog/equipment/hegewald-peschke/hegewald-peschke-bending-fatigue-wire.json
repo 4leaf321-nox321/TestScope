@@ -1,0 +1,91 @@
+{
+  "id": "hegewald-peschke-bending-fatigue-wire",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Bending Fatigue Testing Machine 180° for Wire (41-028-202)",
+  "name_ko": "헤게발트 운트 페슈케 선재용 180° 반복굽힘 피로시험기",
+  "manufacturer": "hegewald-peschke",
+  "category": "mechanical_dynamic",
+  "subcategory": "reverse_bending",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "선재를 좌우로 90°씩 꺾어(합쳐 180°) 파단까지 반복하며 횟수를 세는 반복굽힘 피로시험기. DIN EN ISO 15630 과 ISO 7801 에 따른 시험용이다. 지름 0.3~10.0 mm 의 곧게 편 원형 선재를 대상으로 하고, 굽힘 각도의 편차는 최대 ±3°. 시편 파단은 전기적으로 검출한다. 지름에 따라 동시 시험 개수가 달라 0.3~2 mm 는 3 개, 2~5 mm 는 2 개, 5~12 mm 는 1 개다(동시 시험할 때는 모두 같은 지름이어야 한다). 굽힘 속도는 초당 최대 180°(더 긴 간격도 설정 가능)이고 서보모터로 구동한다. 입력은 반복 횟수와 굽힘 속도, 출력은 디지털 표시의 사이클 카운터와 시편 파단 시 반복 횟수다.",
+  "test_items": [
+    "fatigue",
+    "flexure"
+  ],
+  "measurands": [
+    "cycles_to_failure",
+    "failure_cycles",
+    "fatigue_life",
+    "failure_mode"
+  ],
+  "materials": [
+    "reinforcing steel wire",
+    "drawn wire",
+    "rod"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "DIN EN ISO 15630",
+      "ISO 7801"
+    ]
+  },
+  "limits": {
+    "wire_diameter_mm": {
+      "min": 0.3,
+      "max": 10,
+      "note": "곧게 편 원형 선재. 동시 시험 개수는 지름에 따라 3(0.3~2 mm) / 2(2~5 mm) / 1(5~12 mm)"
+    },
+    "rotation_deg": {
+      "max": 180,
+      "note": "굽힘 각도 — 시편 지름에 맞춘 축을 기준으로 좌우 90°씩. 각도 편차 최대 ±3°"
+    },
+    "stations": {
+      "max": 3,
+      "note": "지름 0.3~2 mm 일 때. 동시 시험하는 시편은 모두 같은 지름이어야 한다"
+    },
+    "power_kW": {
+      "max": 4.0
+    },
+    "weight_kg": {
+      "values": [300]
+    }
+  },
+  "models": [
+    {
+      "model": "Bending Fatigue Testing Machine 180° (41-028-202)",
+      "specs": {
+        "wire_diameter_mm": {"min": 0.3, "max": 10.0},
+        "simultaneous_specimens": {"0.3~2 mm": 3, "2~5 mm": 2, "5~12 mm": 1},
+        "bending_angle": "시편 지름에 맞춘 축 기준 좌우 90° (합 180°), 편차 최대 ±3°",
+        "bending_speed": "초당 최대 180° (더 긴 간격 설정 가능)",
+        "drive": "서보모터",
+        "break_detection": "전기적 검출",
+        "inputs": ["반복 횟수", "굽힘 속도"],
+        "outputs": ["사이클 카운터", "시편 파단 시 반복 횟수"],
+        "footprint_mm": "1030 x 800 x 1385 (WxDxH)",
+        "weight_kg": 300,
+        "electrical": "3P/PE 400 V 50 Hz (TN), 4.0 kW, 5~40 °C, 20~80 % 습도"
+      }
+    }
+  ],
+  "features": [
+    "지름에 따라 최대 3 개 시편 동시 시험",
+    "전기적 파단 검출",
+    "서보 구동으로 굽힘 속도 가변",
+    "디지털 사이클 카운터"
+  ],
+  "options": [
+    "자기보상형 시편 클램핑 장치(41-028-202-BG03) — 지름이 조금씩 다르거나 단면이 비대칭인 선재 고정용"
+  ],
+  "relations": [
+    {"type": "performs", "target": "fatigue"},
+    {"type": "performs", "target": "flexure"}
+  ],
+  "sources": [
+    {"file": "hegewald-peschke/41-028-202-bending-fatigue-testing-machine-180.pdf", "pages": [1, 2]}
+  ],
+  "confidence": "catalog",
+  "notes": "시편 지름 범위가 문서 안에서 어긋난다 — 본문은 '0.3 mm 부터 10.0 mm' 라고 하는데 동시 시험 개수 표의 마지막 칸은 '5 mm ≤ 12 mm' 로 12 mm 까지 적는다. limits 에는 본문의 10 mm 를 상한으로 두고 표의 12 mm 는 note 로 남겼다."
+}

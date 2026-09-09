@@ -1,0 +1,24 @@
+{
+  "id": "q-lab-quv",
+  "kind": "equipment_model",
+  "name": "Q-Lab QUV Accelerated Weathering Tester (Series 95)",
+  "name_ko": "Q-Lab QUV 촉진 내후성 시험기 (형광 UV)",
+  "manufacturer": "q-lab",
+  "brand": "QUV",
+  "category": "weathering_tester",
+  "form_factor": "benchtop",
+  "description": "형광 UV 램프(UVA-340 등)로 단파장 자외선을 모사하고 응축(condensation)·물 분무로 습기 공격을 재현하는 촉진 내후성 시험기. UVA-340 램프는 태양광의 단파장 UV 영역(플라스틱·도료에 가장 파괴적)을 현실적으로 모사한다. Q-FOG 와 교대 노출하면 도료의 부식 저항 평가에 효과적.",
+  "test_items": ["accelerated_weathering"],
+  "measurands": ["color_change", "gloss_loss", "chalking", "yellowing", "embrittlement"],
+  "materials": ["plastics", "paints", "coatings", "roofing", "sealants", "wood"],
+  "standards": {"compliance": [], "test_methods": ["ASTM G154", "ISO 4892-3", "ASTM D4587", "SAE J2020", "ISO 11507", "ASTM D4329"]},
+  "limits": {
+    "temperature_degC": {"note": "블랙패널 온도 제어 — 정확한 범위는 기술 매뉴얼 사양 장 확인 요", "uncertain": true},
+    "chamber": {"values": ["yes"]}
+  },
+  "models": [{"model": "QUV (Series 95)", "specs": {"lamps": "형광 UV (UVA-340, UVA-351, UVB-313 등)", "functions": ["UV 노출", "응축(condensation)", "물 분무(옵션)"]}}],
+  "features": ["SOLAR EYE 조사강도 제어", "응축 시스템", "AUTOCAL 교정"],
+  "relations": [{"type": "same_family_as", "target": "q-lab-q-sun"}, {"type": "simulates_environment", "target": "environment-solar-radiation"}],
+  "sources": [{"file": "q-lab/quv-technical-manual-series-95.pdf", "note": "기술 매뉴얼 — 브로슈어 아님"}],
+  "confidence": "limited"
+}

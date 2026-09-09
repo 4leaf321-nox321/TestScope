@@ -1,0 +1,31 @@
+{
+  "id": "mettler-tga-dsc-1",
+  "kind": "equipment_series",
+  "name": "METTLER TOLEDO TGA/DSC 1 Simultaneous Thermal Analyzer (SF 1100 / LF 1100 / HT 1600)",
+  "name_ko": "메틀러 토레도 TGA/DSC 1 동시열분석기",
+  "manufacturer": "mettler-toledo",
+  "category": "sta",
+  "form_factor": "benchtop",
+  "description": "TGA + SDTA/DTA/DSC 동시 측정. 소형 퍼니스 SF RT~1100 °C(≤100 µL, 250 K/min), 대형 LF RT~1100(≤900 µL, 150 K/min), 고온 HT RT~1600(≤900 µL, 100 K/min). 저울 MX1/MX5(1 µg), UMX1/UMX5(0.1 µg), 최대 5 g. 현행 후속 TGA/DSC 3+ 는 브로슈어 미확보.",
+  "test_items": ["tga", "dsc"],
+  "measurands": ["mass_loss", "decomposition_temperature", "filler_content", "moisture", "melting_point", "specific_heat"],
+  "materials": ["polymers", "rubber", "cement", "gypsum", "pharmaceuticals", "minerals"],
+  "standards": {"compliance": ["IEC/EN 61010-1", "EN 61326-1"], "test_methods": ["ASTM E1131", "ISO 11358", "ASTM E1868", "ISO 11357"]},
+  "limits": {
+    "temperature_degC": {"min": 20, "max": 1600},
+    "heating_rate_K_min": {"max": 250},
+    "sample_mass_mg": {"max": 5000},
+    "balance_resolution_ug": {"min": 0.1, "values": [0.1, 1.0]},
+    "sample_volume_uL": {"max": 900}
+  },
+  "models": [
+    {"model": "TGA/DSC 1 SF 1100", "specs": {"temperature_degC": {"min": 20, "max": 1100}, "heating_rate_K_min": 250, "sample_volume_uL": 100, "temperature_accuracy_K": 0.25, "sensors": ["SDTA", "DSC"]}},
+    {"model": "TGA/DSC 1 LF 1100", "specs": {"temperature_degC": {"min": 20, "max": 1100}, "heating_rate_K_min": 150, "sample_volume_uL": 900, "temperature_accuracy_K": 0.3, "sensors": ["SDTA", "DTA"]}},
+    {"model": "TGA/DSC 1 HT 1600", "specs": {"temperature_degC": {"min": 20, "max": 1600}, "heating_rate_K_min": 100, "sample_volume_uL": 900, "temperature_accuracy_K": 0.5, "sensors": ["SDTA", "DTA"]}}
+  ],
+  "accuracy": {"balance": "MX 1.0 µg / UMX 0.1 µg, blank curve ±10 µg", "dsc_sensitivity_mW": "0.1 (DSC) / 0.2 (DTA) / 0.5 (SDTA)", "sampling_Hz": 10},
+  "options": ["GC 10/20/100/200 gas controllers", "cryostat cooling", "sample robot", "TGA-MS / TGA-FTIR", "sorption", "MaxRes"],
+  "relations": [],
+  "sources": [{"file": "mettler-toledo/tga-dsc-1-brochure.pdf", "pages": [8, 11, 14], "note": "2007 판 브로슈어(대학 미러) — 후속 TGA/DSC 3+ 사양 확인 요"}],
+  "confidence": "catalog"
+}

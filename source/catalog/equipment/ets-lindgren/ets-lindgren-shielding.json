@@ -1,0 +1,114 @@
+{
+  "id": "ets-lindgren-shielding",
+  "kind": "equipment_series",
+  "name": "ETS-Lindgren EMI Shielding Solutions (Series 83 RF Shielding, Active Shielding MACS)",
+  "name_ko": "ETS-린드그렌 EMI 차폐 솔루션 (Series 83 RF 차폐·능동 차폐 MACS)",
+  "manufacturer": "ets-lindgren",
+  "category": "shielded_enclosure",
+  "form_factor": "floor",
+  "description": "전자기 간섭을 막는 차폐 설비. 수동(passive)과 능동(active) 두 갈래다. 수동 쪽의 Series 83 RF 차폐는 14 kHz~1 GHz 구간에서 삽입손실 100 dB, 50/60 Hz 상용주파 자계에 대해 25 dB 를 낸다. 능동 차폐(MACS)는 기존 시설에 나중에 넣어 간섭을 줄이는 방식으로, 전자현미경 컬럼 위치에서 평균 70 dB 의 감쇠를 낸다 — 경쟁 시스템의 평균 40 dB 와 비교해 제시한 값이다. MACS/D 는 전통적 음(-)의 되먹임 루프를 쓴다. 극저주파(ELF) 자기 차폐와 전자현미경용 환경 차폐도 같은 계열에 있다.",
+  "test_items": [
+    "shielding_effectiveness",
+    "emi_emission"
+  ],
+  "measurands": [
+    "shielding_effectiveness",
+    "insertion_loss",
+    "attenuation",
+    "radiated_emission"
+  ],
+  "materials": [
+    "test facilities",
+    "electron microscope rooms",
+    "EMC laboratories"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "frequency_Hz": {
+      "min": 14000,
+      "max": 1000000000,
+      "note": "Series 83 RF 차폐의 삽입손실 규정 구간 14 kHz~1 GHz"
+    },
+    "insertion_gain": {
+      "note": "Series 83 삽입손실 100 dB(14 kHz~1 GHz), 50/60 Hz 자계 25 dB. 능동 차폐 MACS 는 현미경 컬럼에서 평균 70 dB"
+    }
+  },
+  "models": [
+    {
+      "model": "Series 83 RF Shielding (수동)",
+      "specs": {
+        "insertion_loss_dB": 100,
+        "insertion_loss_range": "14 kHz ~ 1 GHz",
+        "low_frequency_ac_attenuation_dB": 25,
+        "low_frequency_ac": "50/60 Hz",
+        "application": "신축·개보수 시설"
+      }
+    },
+    {
+      "model": "Active Shielding (MACS / MACS-D)",
+      "specs": {
+        "attenuation_dB_average": 70,
+        "reference": "경쟁 시스템 평균 40 dB 와 비교해 제시",
+        "measurement_point": "전자현미경 컬럼 위치",
+        "principle": "MACS/D 는 음(-)의 되먹임 루프 + 추가 기능",
+        "application": "기존 시설에 나중에 설치"
+      },
+      "note": "감쇠 값이 '평균' 이고 어느 주파수 구간에 대한 것인지 브로슈어가 적지 않는다",
+      "uncertain": true
+    },
+    {
+      "model": "ELF 자기 차폐 / 전자현미경 환경 차폐",
+      "specs": {
+        "note": "브로슈어가 항목만 열거하고 수치를 적지 않는다"
+      },
+      "uncertain": true
+    }
+  ],
+  "features": [
+    "수동 차폐(신축·개보수)와 능동 차폐(기존 시설) 두 갈래",
+    "Series 83 은 14 kHz~1 GHz 에서 100 dB 삽입손실",
+    "상용주파(50/60 Hz) 자계 25 dB 감쇠",
+    "전자현미경 환경 차폐 전용 구성"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "shielding_effectiveness"
+    },
+    {
+      "type": "performs",
+      "target": "emi_emission"
+    }
+  ],
+  "sources": [
+    {
+      "file": "ets-lindgren/emi-brochure.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "file": "ets-lindgren/commercial-emc-brochure.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "ets-lindgren/test-and-measurement-full-line.pdf",
+      "pages": [
+        1
+      ],
+      "note": "시험·계측 전 제품 라인 개요"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "ets-lindgren.com 은 UA 헤더로 열리지만 `/downloads/ProductBrochures/...` 의 PDF 요청이 200 과 함께 **HTML 게이트 페이지**를 돌려준다(Content-Type: text/html) — 실제 PDF 가 아니다. archive.org 스냅샷(2024~2025)에서 받았다. 브로슈어가 마케팅 층위라 기종별 사양표가 없고 삽입손실 몇 개만 수치로 나온다. 그래서 `confidence: limited` 이고 능동 차폐·ELF 항목에 `uncertain: true` 를 달았다. 차폐실은 시편을 시험하는 장비가 아니라 시험 환경을 만드는 설비다. 온톨로지에 `shielded_enclosure` 분류와 `shielding_effectiveness` 시험 항목을 새로 만들어 제대로 걸었다."
+}

@@ -1,0 +1,237 @@
+{
+  "id": "salt-st-1000-series-electromechanical-utm",
+  "kind": "equipment_series",
+  "name": "Light-SALT ST-1000 / ST-1001 / ST-1002 Servo Motor Electromechanical Universal Testing Machines",
+  "name_ko": "라이트솔트 ST-1000·ST-1001·ST-1002 서보모터식 만능재료시험기",
+  "manufacturer": "salt",
+  "brand": "ST",
+  "category": "universal_testing_machine",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "볼스크류와 가이드바를 서보모터로 몰아 인장·압축·굽힘을 하는 전기기계식 만능재료시험기 세 계열. 정격은 ST-1000 이 3 kN(단일 컬럼), ST-1001 이 20 kN(2 컬럼), ST-1002 가 30/50·100·300 kN(2 컬럼)이다. 하중 정확도 ±0.5 %, 교정 등급 Class 1 또는 Class 0.5, 힘 분해능 1/300,000, 스트로크 분해능 ±0.001 mm 로 세 계열이 같다. 힘 레인지는 4 단까지 나눠 쓴다. 크로스헤드 속도는 정격이 커질수록 낮아진다 — ST-1000·1001 이 0.01~500 mm/min(옵션 2,000), ST-1002 는 30/50 kN 이 0.03~500, 100·300 kN 이 0.03~300 mm/min(옵션 0.01~1,000). 속도 정확도 ±0.01 mm. 상·하한, 하중·스트로크 한계, 비상정지의 안전 장치를 갖추고 자체 소프트웨어(Light-Salt UTM Software 12.6.0, Windows)로 운전한다. 옵션으로 환경 챔버(-100~+150 °C)와 고온로(실온~1,200 °C)를 붙인다.",
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "peel",
+    "tear"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength",
+    "peel_strength",
+    "tear_strength",
+    "force_deflection"
+  ],
+  "materials": [
+    "rubber and plastics",
+    "films",
+    "textiles and leather",
+    "paints and coatings",
+    "metals"
+  ],
+  "standards": {
+    "compliance": [
+      "Class 1 / Class 0.5 (교정 등급)"
+    ],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 3,
+      "max": 300,
+      "note": "ST-1000 3 kN, ST-1001 20 kN, ST-1002 30/50·100·300 kN"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 0.01,
+      "max": 2000,
+      "note": "기본 0.01~500(ST-1000·1001) 또는 0.03~500/300(ST-1002). 옵션으로 2,000 또는 1,000 mm/min 까지"
+    },
+    "vertical_test_space_mm": {
+      "min": 600,
+      "max": 1290,
+      "note": "어댑터-어댑터 기준. ST-1000 600(고신율형 1,100), ST-1001 890, ST-1002 987/1200/1290"
+    },
+    "horizontal_test_space_mm": {
+      "min": 170,
+      "max": 620,
+      "note": "ST-1000 170, ST-1001 460, ST-1002 470/450/620"
+    },
+    "temperature_degC": {
+      "min": -100,
+      "max": 1200,
+      "note": "**옵션 부속의 범위다.** 환경 챔버 -100~+150 °C, 고온로 실온~1,200 °C. 시험기 본체의 값이 아니다"
+    },
+    "weight_kg": {
+      "min": 70,
+      "max": 1450
+    }
+  },
+  "models": [
+    {
+      "model": "ST-1000 (3 kN, 단일 컬럼)",
+      "specs": {
+        "frame_capacity_kN": 3,
+        "loading_method": "서보모터 전기기계식",
+        "load_accuracy_pct": 0.5,
+        "calibration": "Class 1 / Class 0.5",
+        "force_resolution": "1/300,000",
+        "stroke_resolution_mm": 0.001,
+        "test_room_mm": "170 x 600 (어댑터-어댑터)",
+        "weight_kg": 70,
+        "force_range_steps": 4,
+        "column": "Single",
+        "transfer_screw": "볼스크류 / 가이드바",
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 500,
+          "option_max": 2000
+        },
+        "speed_accuracy_mm": 0.01,
+        "power": "AC 220V / 50, 60 Hz",
+        "dimensions_mm": "670 x 570 x 1280 (WxDxH)",
+        "software": "Light-Salt UTM Software 12.6.0 (Windows)"
+      }
+    },
+    {
+      "model": "ST-1000 High Elongation (3 kN, 고신율형)",
+      "specs": {
+        "frame_capacity_kN": 3,
+        "test_room_mm": "170 x 1100 (어댑터-어댑터)",
+        "weight_kg": 80,
+        "column": "Single",
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 500,
+          "option_max": 2000
+        },
+        "note": "시험 공간 높이를 600 -> 1,100 mm 로 키운 구성"
+      }
+    },
+    {
+      "model": "ST-1001 (20 kN, 2 컬럼)",
+      "specs": {
+        "frame_capacity_kN": 20,
+        "loading_method": "220V 서보모터 전기기계식",
+        "load_accuracy_pct": 0.5,
+        "calibration": "Class 1 / Class 0.5",
+        "force_resolution": "1/300,000",
+        "test_room_mm": "460 x 890 (어댑터-어댑터)",
+        "weight_kg": 210,
+        "column": "Dual",
+        "crosshead_speed_mm_min": {
+          "min": 0.01,
+          "max": 500,
+          "option": "0.03~2000"
+        },
+        "speed_accuracy_mm": 0.01,
+        "power": "AC 220V / 50, 60 Hz",
+        "dimensions_mm": "850 x 600 x 1502 (WxDxH)"
+      }
+    },
+    {
+      "model": "ST-1002 30/50 kN",
+      "specs": {
+        "frame_capacity_kN": "30 / 50",
+        "test_room_mm": "470 x 987",
+        "weight_kg": 400,
+        "crosshead_speed_mm_min": {
+          "min": 0.03,
+          "max": 500,
+          "option": "0.01~1000"
+        },
+        "power": "AC 220V 1상 / 50, 60 Hz",
+        "dimensions_mm": "950 x 700 x 1915"
+      }
+    },
+    {
+      "model": "ST-1002 100 kN",
+      "specs": {
+        "frame_capacity_kN": 100,
+        "test_room_mm": "450 x 1200",
+        "weight_kg": 615,
+        "crosshead_speed_mm_min": {
+          "min": 0.03,
+          "max": 300,
+          "option": "0.01~1000"
+        },
+        "power": "AC 220V 3상 / 50, 60 Hz",
+        "dimensions_mm": "1200 x 780 x 2350"
+      }
+    },
+    {
+      "model": "ST-1002 300 kN",
+      "specs": {
+        "frame_capacity_kN": 300,
+        "test_room_mm": "620 x 1290",
+        "weight_kg": 1450,
+        "crosshead_speed_mm_min": {
+          "min": 0.03,
+          "max": 300,
+          "option": "0.01~1000"
+        },
+        "power": "AC 220V 3상 / 50, 60 Hz",
+        "dimensions_mm": "1250 x 850 x 2615"
+      }
+    }
+  ],
+  "accuracy": {
+    "load": "±0.5 %, 교정 등급 Class 1 또는 Class 0.5",
+    "force_resolution": "1/300,000",
+    "stroke_resolution": "±0.001 mm",
+    "speed": "±0.01 mm"
+  },
+  "features": [
+    "세 계열이 하중 정확도·교정 등급·분해능을 공유하고 정격과 프레임만 다르다",
+    "힘 레인지 4 단 분할",
+    "상·하한, 하중·스트로크 한계, 비상정지",
+    "자체 소프트웨어(Light-Salt UTM 12.6.0)"
+  ],
+  "options": [
+    "크로스헤드 속도 확장(최대 1,000~2,000 mm/min)",
+    "신장계 — 엔코더식 / 스트레인게이지식 / 위치계식",
+    "환경 챔버 -100~+150 °C",
+    "고온로 실온~1,200 °C"
+  ],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "tensile"
+    },
+    {
+      "type": "performs",
+      "target": "compression"
+    },
+    {
+      "type": "performs",
+      "target": "flexure"
+    },
+    {
+      "type": "same_family_as",
+      "target": "salt-st-1004-hydraulic-utm"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.light-salt.kr/product/product.php?ptype=view&prdcode=2512170001&catcode=10101000",
+      "retrieved": "2026-09-10",
+      "note": "ST-1000 / ST-1000 High Elongation 사양표(HTML)"
+    },
+    {
+      "url": "https://www.light-salt.kr/product/product.php?ptype=view&prdcode=1403140002&catcode=10101000",
+      "retrieved": "2026-09-10",
+      "note": "ST-1001 사양표(HTML)"
+    },
+    {
+      "url": "https://www.light-salt.kr/product/product.php?ptype=view&prdcode=1403180009&catcode=10101000",
+      "retrieved": "2026-09-10",
+      "note": "ST-1002 30/50·100·300 kN 사양표(HTML)"
+    }
+  ],
+  "confidence": "limited",
+  "notes": "**PDF 카탈로그가 존재하지 않는 제조사다.** light-salt.kr 의 제품 페이지에 사양이 HTML `<table>` 로 들어 있어 그것을 옮겼다 — 처음에는 이미지인 줄 알았으나 키워드 나열 블록에 가려져 있었을 뿐이다. 이 경우를 담으려고 `sources[]` 가 `file` 대신 `url` 을 받도록 스키마와 `build_graph.py` 를 넓혔다(둘 다 없으면 여전히 막힌다). 웹에서만 확인한 값이므로 `confidence: limited` 를 유지한다. 온도 범위는 **시험기 본체가 아니라 옵션 챔버·노의 값**이라는 점을 limits note 에 적었다 — 이 단서가 빠지면 '이 시험기가 1,200 °C 까지 된다' 는 잘못된 답이 나온다. 하중 정확도 ±0.5 % 와 교정 등급(Class 1 / 0.5)은 세 계열이 같게 적혀 있는데, 어느 규격의 등급인지(ISO 7500-1 인지) 페이지가 밝히지 않는다."
+}

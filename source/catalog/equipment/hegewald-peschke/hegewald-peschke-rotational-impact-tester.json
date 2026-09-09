@@ -1,0 +1,124 @@
+{
+  "id": "hegewald-peschke-rotational-impact-tester",
+  "kind": "equipment_series",
+  "name": "Hegewald & Peschke Rotational Impact Tester (41-060-010)",
+  "name_ko": "헤게발트 운트 페슈케 회전식 충격 인장시험기",
+  "manufacturer": "hegewald-peschke",
+  "category": "high_speed_tensile",
+  "drive": "electromechanical",
+  "form_factor": "floor",
+  "description": "회전하는 질량체가 시편을 때려 고속 인장을 거는 시험기. 회전 질량 300 kg 이 14 m/s 에서 16,300 J 의 회전 에너지를 갖고, 시험 속도 1~14 m/s(4~50 km/h)에 변형률 속도 350 s⁻¹ 까지 낸다. 힘 측정은 인장 하중용(100~80,000 N, 분해능 2.5 N)과 예압용(1~5,000 N, 분해능 1 N)이 따로 있고 측정 주파수 400 kHz. 변위는 ±3.6 mm 를 2.55 µs 주사 주기에서 0.1 µm 분해능으로 잰다. 충돌·성형해석용 고변형률 물성을 얻는 데 쓴다.",
+  "test_items": [
+    "high_speed_tensile",
+    "tensile_impact"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "elongation",
+    "impact_energy",
+    "force_time_curve (instrumented)",
+    "yield_strength"
+  ],
+  "materials": [
+    "metals and sheet metal",
+    "plastics",
+    "composites"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": []
+  },
+  "limits": {
+    "force_kN": {
+      "min": 0.1,
+      "max": 80,
+      "note": "인장 하중 측정 범위 100~80,000 N. 예압은 별도 계통으로 1~5,000 N"
+    },
+    "impact_velocity_m_s": {
+      "min": 1,
+      "max": 14,
+      "note": "4~50 km/h"
+    },
+    "impact_energy_J": {
+      "max": 16300,
+      "note": "회전 질량 300 kg, 14 m/s 기준"
+    },
+    "displacement_mm": {
+      "max": 3.6,
+      "note": "±3.6 mm, 2.55 µs 주사 주기에서. 분해능 0.1 µm"
+    },
+    "data_rate_Hz": {
+      "max": 400000,
+      "note": "힘 측정 주파수 400 kHz"
+    }
+  },
+  "models": [
+    {
+      "model": "Rotational impact tester (41-060-010)",
+      "specs": {
+        "tensile_load_kN_max": 80,
+        "tensile_measuring_range_N": {
+          "min": 100,
+          "max": 80000
+        },
+        "tensile_resolution_N": 2.5,
+        "preload_force_kN": 5,
+        "preload_measuring_range_N": {
+          "min": 1,
+          "max": 5000
+        },
+        "preload_resolution_N": 1,
+        "measuring_frequency_kHz": 400,
+        "displacement_range_mm": 3.6,
+        "displacement_resolution_um": 0.1,
+        "displacement_scanning_cycle_us": 2.55,
+        "testing_speed_m_s": {
+          "min": 1,
+          "max": 14
+        },
+        "testing_speed_km_h": {
+          "min": 4,
+          "max": 50
+        },
+        "rotating_mass_kg": 300,
+        "rotation_energy_J": 16300,
+        "strain_rate_s": 350
+      }
+    }
+  ],
+  "features": [
+    "회전 질량으로 일정 속도의 충격 인장",
+    "인장 하중과 예압을 별도 계통으로 측정",
+    "400 kHz 힘 측정으로 고속 파형 포착",
+    "0.1 µm 변위 분해능"
+  ],
+  "options": [],
+  "relations": [
+    {
+      "type": "performs",
+      "target": "high_speed_tensile"
+    },
+    {
+      "type": "performs",
+      "target": "tensile_impact"
+    }
+  ],
+  "sources": [
+    {
+      "file": "hegewald-peschke/41-060-010-rotational-impact-tester.pdf",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "file": "hegewald-peschke/41-060-010-rotational-impact-tester-01.pdf",
+      "pages": [
+        1
+      ],
+      "note": "같은 품번의 다른 판"
+    }
+  ],
+  "confidence": "catalog",
+  "notes": "치수·중량·전원이 데이터시트에 없다. 회전 에너지 16,300 J 은 최고 속도 14 m/s 기준값이고 속도를 낮추면 그만큼 줄어든다 — `impact_energy_J.max` 를 이 값으로 두었으므로 note 에 조건을 붙였다. `41-060-010-rotational-impact-tester-01.pdf` 는 같은 품번의 다른 판이며 내용 비교를 하지 않았다."
+}
