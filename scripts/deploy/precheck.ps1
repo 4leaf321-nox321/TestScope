@@ -1,0 +1,165 @@
+﻿<#
+설치·배포 전 환경 점검.
+
+문제를 찾으면 목록으로 보여 주고 0이 아닌 코드로 끝난다. **설치 도중에 절반만
+적용된 상태로 멈추는 것보다, 시작 전에 막는 편이 원인 추적이 쉽다.**
+
+사용:
+  .\precheck.ps1 -AppPath 'C:\Server\TestAtlas' -DatabaseUrl 'postgresql+psycopg://...'
+#>
+
+param(
+    [Parameter(Mandatory = $true)][string]$AppPath,
+    [string]$DatabaseUrl,
+    [string]$PythonVersion = '3.13',
+    [int]$Port = 8020,
+    [int]$RequiredFreeGb = 3
+)
+
+$ErrorActionPreference = 'Stop'
+$problems = @()
+$notes = @()
+
+function Add-Problem([string]$m) { $script:problems += $m }
+function Add-Note([string]$m) { $script:notes += $m }
+
+# --- Python — wheel 번들의 ABI 태그가 마이너 버전에 묶여 있다 ------------------
+$pythonExe = $null
+try {
+    $resolved = & py "-$PythonVersion" -c "import sys; print(sys.executable)" 2>$null
+    if ($LASTEXITCODE -eq 0 -and $resolved) { $pythonExe = $resolved.Trim() }
+} catch { }
+if ($pythonExe) {
+    Add-Note "Python $PythonVersion : $pythonExe"
+} else {
+    Add-Problem "Python $PythonVersion 을 찾지 못했습니다. 설치하거나 -PythonExe 로 지정하세요 (py -0p 로 목록 확인)."
+}
+
+# --- 디스크 여유 --------------------------------------------------------------
+$drive = (Split-Path -Qualifier $AppPath)
+if ($drive) {
+    $free = (Get-PSDrive -Name $drive.TrimEnd(':') -ErrorAction SilentlyContinue).Free
+    if ($null -ne $free) {
+        $freeGb = [math]::Round($free / 1GB, 1)
+        if ($freeGb -lt $RequiredFreeGb) {
+            Add-Problem "$drive 여유 공간 ${freeGb}GB — 앱 2벌과 가상환경에 최소 ${RequiredFreeGb}GB 가 필요합니다."
+        } else {
+            Add-Note "$drive 여유 공간 : ${freeGb}GB"
+        }
+    }
+}
+
+# --- 쓰기 권한 ----------------------------------------------------------------
+$parent = Split-Path -Parent $AppPath
+if (-not (Test-Path $parent)) {
+    try { New-Item -ItemType Directory -Force -Path $parent | Out-Null } catch { }
+}
+if (Test-Path $parent) {
+    $probe = Join-Path $parent ('.tas_probe_' + [guid]::NewGuid().ToString('N'))
+    try {
+        New-Item -ItemType File -Path $probe -Force | Out-Null
+        Remove-Item -Force $probe
+        Add-Note "쓰기 권한 : $parent"
+    } catch {
+        Add-Problem "$parent 에 쓸 수 없습니다. 관리자 권한으로 실행하거나 다른 경로를 쓰세요."
+    }
+} else {
+    Add-Problem "$parent 를 만들 수 없습니다."
+}
+
+# --- 포트 --------------------------------------------------------------------
+# **연결 테이블을 읽지 않고 실제로 바인딩해 본다.**
+#
+# Get-NetTCPConnection 은 이미 종료된 프로세스를 소유자로 가리키는 유령 항목을
+# 그대로 보여 준다. 그걸 믿으면 멀쩡한 포트에 설치가 막힌다. 반대로 바인딩이 되면
+# 그 포트는 실제로 쓸 수 있는 것이므로, **하려는 일을 그대로 시험하는 편**이
+# 정확하다.
+$bindable = $false
+try {
+    $probe = New-Object System.Net.Sockets.TcpListener ([System.Net.IPAddress]::Any, $Port)
+    $probe.Start()
+    $probe.Stop()
+    $bindable = $true
+} catch {
+    $bindable = $false
+}
+
+if ($bindable) {
+    Add-Note "포트 $Port : 비어 있음"
+} else {
+    $listener = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+    $owner = if ($listener) {
+        (Get-Process -Id $listener[0].OwningProcess -ErrorAction SilentlyContinue).ProcessName
+    } else { $null }
+    $who = if ($owner) { " (프로세스: $owner)" } else { '' }
+    Add-Problem "포트 $Port 에 바인딩할 수 없습니다$who. 쓰고 있는 프로세스를 중지하거나 다른 포트를 지정하세요."
+}
+
+# --- PostgreSQL ---------------------------------------------------------------
+# 도달 가능성부터 확인한다. 폐쇄망에서 가장 흔한 실패가 "설치는 다 됐는데 DB 에
+# 닿지 않는" 것이고, 그건 자격 증명 문제가 아니라 네트워크 문제다.
+if ($DatabaseUrl) {
+    if ($DatabaseUrl -match '@([^:/@]+):(\d+)/') {
+        $dbHost = $Matches[1]
+        $dbPort = [int]$Matches[2]
+        $tcp = New-Object System.Net.Sockets.TcpClient
+        try {
+            if ($tcp.ConnectAsync($dbHost, $dbPort).Wait(3000)) {
+                Add-Note "PostgreSQL 도달 : ${dbHost}:${dbPort}"
+            } else {
+                Add-Problem "PostgreSQL 에 닿지 않습니다 (${dbHost}:${dbPort}). 서비스 기동·방화벽·주소를 확인하세요."
+            }
+        } catch {
+            Add-Problem "PostgreSQL 에 닿지 않습니다 (${dbHost}:${dbPort}) — $($_.Exception.Message)"
+        } finally {
+            $tcp.Close()
+        }
+    } else {
+        Add-Note 'PostgreSQL : DATABASE_URL 에서 호스트·포트를 읽지 못해 도달 확인을 건너뜀'
+    }
+
+    # 자격 증명까지 보려면 psycopg 이 필요하다. 시스템 파이썬에는 없는 것이
+    # 정상이며, 그때는 설치 과정의 DB 생성 단계에서 걸러진다.
+    if ($pythonExe) {
+        $probeScript = @'
+import sys
+from urllib.parse import urlsplit
+url = urlsplit(sys.argv[1].replace("postgresql+psycopg://", "postgresql://"))
+try:
+    import psycopg
+except ImportError:
+    print("SKIP psycopg 미설치 - 설치 후 다시 확인됩니다")
+    sys.exit(0)
+try:
+    with psycopg.connect(host=url.hostname, port=url.port or 5432,
+                         user=url.username, password=url.password,
+                         dbname="postgres", connect_timeout=5) as conn:
+        version = conn.execute("SHOW server_version").fetchone()[0]
+    print(f"OK PostgreSQL {version}")
+except Exception as exc:
+    print(f"FAIL {type(exc).__name__}: {exc}")
+    sys.exit(1)
+'@
+        # **임시 파일을 쓰지 않는다.** 스크립트를 표준입력으로 넘긴다 — 도메인
+        # 프로필 서버에서 TEMP 가 8.3 줄임 경로로 잡혀 그 이름이 해석되지 않는
+        # 일이 있다. 설치 전 점검이 서버 환경 때문에 막히는 것이 가장 나쁘다.
+        $result = $probeScript | & $pythonExe - $DatabaseUrl 2>&1
+        if ($result -match '^OK') { Add-Note ($result -replace '^OK ', 'PostgreSQL 인증 : ') }
+        elseif ($result -match '^SKIP') { Add-Note ($result -replace '^SKIP ', 'PostgreSQL 인증 : ') }
+        else { Add-Problem "PostgreSQL 인증에 실패했습니다 — $result" }
+    }
+} else {
+    Add-Note 'PostgreSQL : -DatabaseUrl 을 주지 않아 건너뜀'
+}
+
+# --- 결과 --------------------------------------------------------------------
+Write-Host ''
+foreach ($n in $notes) { Write-Host "  [ok]   $n" }
+foreach ($p in $problems) { Write-Host "  [문제] $p" -ForegroundColor Yellow }
+Write-Host ''
+
+if ($problems.Count -gt 0) {
+    Write-Host "$($problems.Count) 건을 해결한 뒤 다시 실행하세요." -ForegroundColor Yellow
+    exit 1
+}
+Write-Host '환경 점검 통과.'

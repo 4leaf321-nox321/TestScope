@@ -33,8 +33,12 @@ Thumbs.db
 !.vscode/settings.json
 !.vscode/extensions.json
 
-# 배포 패키징 산출물 — 릴리스가 만든다
-deploy/
+# 배포 패키징 산출물 — 릴리스가 만든다.
+#
+# **앞에 / 를 붙인다.** 안 붙이면 이름이 `deploy` 인 폴더를 **어디서든** 먹는다 —
+# `scripts/deploy/` 의 설치·배포 스크립트 일곱 개가 그렇게 저장소에서 통째로
+# 빠져 있었다. 빠졌다는 사실은 다른 기계에서 클론해 보기 전까지 안 보인다.
+/deploy/
 
 # MCP 개발용 개인 토큰. **평문이라 절대 커밋하지 않는다** — probe.py 가 읽는다.
 mcp_server/.pat

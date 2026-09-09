@@ -1,0 +1,225 @@
+﻿<#
+Day 0 — 신규 서버 설치.
+
+폴더 배치 — 운영 데이터는 앱 폴더 **바깥**에 둔다.
+
+    <AppPath>              코드. 배포마다 통째로 교체된다
+    <AppPath>_prev         직전 버전 (롤백용)
+    <AppPath>_venvs\       가상환경
+    <AppPath>_data\        filestore · logs   <- 배포와 무관하게 살아남는다
+
+각 단계는 멱등하다. 중간에 끊겨 다시 실행해도 같은 결과가 나오고, 특히 **이미 있는
+관리자 계정의 비밀번호를 되돌리지 않는다.**
+
+스크립트는 `C:\Server\tools\TestAtlas\` 처럼 **프로젝트별 하위 폴더**에 둔다.
+`C:\Server\tools` 바로 아래에 두면 같은 서버의 다른 앱과 파일명이 겹쳐 서로를
+덮어쓴다.
+
+사용:
+  .\install.ps1 -AppPath 'C:\Server\TestAtlas' -DbPassword '...'
+  .\install.ps1 -AppPath 'C:\Server\TestAtlas' -ZipPath 'C:\tmp\deploy_package.zip' `
+                -DbHost localhost -DbUser postgres -DbPassword '...'
+#>
+
+param(
+    [Parameter(Mandatory = $true)][string]$AppPath,
+    [string]$ZipPath,
+    [string]$Repo = '4leaf321-nox321/TestAtlas',
+    [string]$Tag,
+    [string]$DbHost = 'localhost',
+    [int]$DbPort = 5432,
+    [string]$DbName = 'testatlas',
+    [string]$DbUser = 'postgres',
+    [Parameter(Mandatory = $true)][string]$DbPassword,
+    [int]$Port = 8020,
+    [string]$PythonExe,
+    [string]$AdminEmail = 'admin',
+    [switch]$SkipPrecheck
+)
+
+$ErrorActionPreference = 'Stop'
+
+<#
+매개변수를 값으로 받아 버리는 것을 막는다 — **대시는 하나다.** deploy.ps1 의
+같은 함수와 같은 이유다.
+#>
+function Assert-NotFlag([string]$value, [string]$name) {
+    if ($value -and $value.StartsWith('-')) {
+        throw @"
+-$name 값이 '$value' 입니다 — 대시를 두 번 쓰신 것 같습니다.
+
+PowerShell 매개변수는 대시가 하나입니다:  -$name '<값>'
+'--$name' 처럼 쓰면 그 글자 자체가 값이 되고, 뒤에 적은 진짜 값은 다른
+매개변수로 밀려 들어갑니다. 아무것도 실행하지 않았습니다.
+"@
+    }
+}
+
+Assert-NotFlag $AppPath 'AppPath'
+Assert-NotFlag $ZipPath 'ZipPath'
+Assert-NotFlag $Tag 'Tag'
+Assert-NotFlag $DbPassword 'DbPassword'
+Assert-NotFlag $PythonExe 'PythonExe'
+
+if ($Repo -and $Repo -notmatch '^[^/\:]+/[^/\:]+$') {
+    throw "-Repo 는 'owner/name' 형식입니다. 지금 값: '$Repo' — -AppPath 에 쓰려던 경로가 여기로 밀려 들어오지 않았는지 확인하세요."
+}
+function Write-Log([string]$m) { Write-Host "[$(Get-Date -Format 'HH:mm:ss')] $m" }
+
+<#
+네이티브 명령 실행 — stderr 를 오류로 착각하지 않는다. alembic 은 INFO 로그를
+stderr 로 내보내므로, 그대로 두면 정상 설치가 실패로 뒤집힌다.
+#>
+function Invoke-Native {
+    param(
+        [Parameter(Mandatory = $true)][string]$FailureMessage,
+        [Parameter(Mandatory = $true)][scriptblock]$Command
+    )
+    $previous = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        & $Command
+        $code = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previous
+    }
+    if ($code -ne 0) { throw "$FailureMessage (exit $code)" }
+}
+
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$dataPath = $AppPath + '_data'
+$dsn = "postgresql+psycopg://${DbUser}:${DbPassword}@${DbHost}:${DbPort}/${DbName}"
+
+# --- 1. 환경 점검 -------------------------------------------------------------
+if (-not $SkipPrecheck) {
+    Write-Log '환경 점검'
+    & (Join-Path $scriptDir 'precheck.ps1') -AppPath $AppPath -DatabaseUrl $dsn -Port $Port
+    if ($LASTEXITCODE -ne 0) { throw '환경 점검에서 문제가 발견됐습니다. 위 목록을 해결하고 다시 실행하세요.' }
+}
+
+# --- 2. 코드 배치 — deploy.ps1 을 그대로 쓴다 ----------------------------------
+# **첫 설치와 갱신이 같은 경로를 타야** "설치는 되는데 갱신이 안 되는" 상태가 생기지
+# 않는다. 마이그레이션은 .env 를 만든 뒤에 돌려야 하므로 여기서는 건너뛴다.
+Write-Log '코드 배치'
+$deployArgs = @{ AppPath = $AppPath; SkipMigrations = $true }
+if ($ZipPath) { $deployArgs.ZipPath = $ZipPath }
+if ($Repo) { $deployArgs.Repo = $Repo }
+if ($Tag) { $deployArgs.Tag = $Tag }
+if ($PythonExe) { $deployArgs.PythonExe = $PythonExe }
+& (Join-Path $scriptDir 'deploy.ps1') @deployArgs
+if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) { throw "코드 배치 실패 (exit $LASTEXITCODE)" }
+
+# --- 3. 운영 데이터 폴더 -------------------------------------------------------
+foreach ($sub in @('filestore', 'logs')) {
+    $dir = Join-Path $dataPath $sub
+    if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
+}
+Write-Log "운영 데이터 폴더: $dataPath"
+
+# --- 4. .env 생성 (있으면 건드리지 않는다) --------------------------------------
+$envFile = Join-Path $AppPath 'backend\.env'
+if (Test-Path $envFile) {
+    Write-Log '.env 가 이미 있습니다 — 그대로 둡니다.'
+} else {
+    # JWT 비밀키는 난수로 만든다. 기본값이 운영에 새면 누구나 토큰을 위조할 수
+    # 있어 앱이 기동을 거부한다(app/main.py).
+    $bytes = New-Object byte[] 48
+    [System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+    $secret = [Convert]::ToBase64String($bytes)
+
+    $lines = @(
+        'APP_ENV=production',
+        "DATABASE_URL=$dsn",
+        "JWT_SECRET=$secret",
+        'HOST=0.0.0.0',
+        "PORT=$Port",
+        "LOG_DIR=$dataPath\logs",
+        "FILESTORE_DIR=$dataPath\filestore",
+        '# https 로 서비스하면 true 로 올린다',
+        'REFRESH_COOKIE_SECURE=false'
+    )
+    # **BOM 없이 쓴다.** PowerShell 5.1 의 `Set-Content -Encoding utf8` 은 BOM 을
+    # 붙이는데, 그러면 첫 줄 키가 조용히 무시된다(app/config.py 주석 참조). 읽는
+    # 쪽도 utf-8-sig 로 흡수하지만, 만드는 쪽에서 깨끗하게 두는 편이 낫다.
+    [System.IO.File]::WriteAllLines($envFile, $lines, (New-Object System.Text.UTF8Encoding $false))
+    Write-Log ".env 생성: $envFile"
+}
+
+$backendPython = Join-Path ($AppPath + '_venvs') 'backend\Scripts\python.exe'
+if (-not (Test-Path $backendPython)) { throw "가상환경을 찾을 수 없습니다: $backendPython" }
+
+# --- 5. 데이터베이스 ----------------------------------------------------------
+Write-Log "데이터베이스 확인/생성: $DbName"
+$createDb = @'
+import sys
+import psycopg
+host, port, user, password, name = sys.argv[1:6]
+with psycopg.connect(host=host, port=int(port), user=user, password=password,
+                     dbname="postgres", autocommit=True) as conn:
+    if conn.execute("SELECT 1 FROM pg_database WHERE datname = %s", (name,)).fetchone():
+        print(f"already exists: {name}")
+    else:
+        conn.execute(f'CREATE DATABASE "{name}" ENCODING \'UTF8\'')
+        print(f"created: {name}")
+'@
+# **임시 파일을 쓰지 않는다.** 스크립트를 표준입력으로 넘긴다 — 쓰고 지우는 자리가
+# 없으면 그 경로 때문에 막힐 일도 없다.
+Invoke-Native '데이터베이스 생성 실패' {
+    $createDb | & $backendPython - $DbHost $DbPort $DbUser $DbPassword $DbName
+}
+
+# --- 6. 마이그레이션 ----------------------------------------------------------
+Write-Log '마이그레이션 적용'
+Push-Location (Join-Path $AppPath 'backend')
+try {
+    Invoke-Native '마이그레이션 실패' { & $backendPython -m alembic upgrade head }
+} finally {
+    Pop-Location
+}
+
+# --- 7. 설치 시드 (데모 데이터 아님) --------------------------------------------
+# 기준정보 축 · 조건 정의 · 뿌리 부서 · 관리자 계정. **이것 없이는 아무도 로그인할
+# 수 없다** — 가입은 승인이 필요한데 승인할 사람이 없기 때문이다.
+Write-Log '설치 시드'
+Push-Location (Join-Path $AppPath 'backend')
+try {
+    Invoke-Native '시드 실패' { & $backendPython scripts\seed_install.py --email $AdminEmail }
+} finally {
+    Pop-Location
+}
+
+# --- 8. 방화벽 ----------------------------------------------------------------
+$ruleName = "TestAtlas $Port"
+$existing = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
+if ($existing) {
+    Write-Log "방화벽 규칙이 이미 있습니다: $ruleName"
+} else {
+    # -ErrorAction Stop 이 필요하다. CIM 계열 cmdlet 은 5.1 에서
+    # $ErrorActionPreference='Stop' 을 따르지 않고 비종료 오류를 내는 경우가 있어,
+    # 그대로 두면 실패했는데도 아래 성공 로그가 찍힌다.
+    try {
+        New-NetFirewallRule -DisplayName $ruleName -Direction Inbound -Action Allow `
+            -Protocol TCP -LocalPort $Port -ErrorAction Stop | Out-Null
+        Write-Log "방화벽 열기: TCP $Port"
+    } catch {
+        Write-Warning "방화벽 규칙을 만들지 못했습니다(관리자 권한 필요)."
+        Write-Warning "관리자 PowerShell 에서 다음을 실행하세요:"
+        Write-Warning "  New-NetFirewallRule -DisplayName '$ruleName' -Direction Inbound -Action Allow -Protocol TCP -LocalPort $Port"
+    }
+}
+
+Write-Host ''
+# **무엇이 깔렸는지 남긴다.** 패키지가 자기 버전을 들고 오므로 여기서 읽어 적기만
+# 하면 된다.
+$installed = Get-Content (Join-Path $AppPath 'BUILD_INFO.txt') -ErrorAction SilentlyContinue |
+    Where-Object { $_ -match '^version=' }
+if ($installed) { Write-Log ("배포한 버전: " + ($installed -replace '^version=', '')) }
+
+Write-Host '설치 완료.'
+Write-Host ''
+Write-Host "  시작        : cd '$AppPath' ; .\run_server.ps1"
+Write-Host "  접속        : http://<서버주소>:$Port/"
+Write-Host "  운영 데이터 : $dataPath  (백업 대상 — DB와 함께 받아야 복구가 성립한다)"
+Write-Host ''
+Write-Host '  위에 출력된 관리자 비밀번호는 다시 표시되지 않습니다. 첫 로그인 시 변경이 강제됩니다.'
+Write-Host ''
