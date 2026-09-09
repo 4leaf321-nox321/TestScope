@@ -103,6 +103,31 @@ SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     "channels": ("channel_count", 1.0),
     "principle": ("measuring_principle", 1.0),
     "cooling": ("cooling_method", 1.0),
+    # --- 3차: 같은 것을 다르게 부르는 이름들 --------------------------------
+    #
+    # 원본이 커지면서 제조사마다 제 이름으로 적은 것이 드러났다. **온톨로지는
+    # `limits` 만 통제하고 `models[].specs` 는 자유 형식**이라(build_graph 가 거기까지는
+    # 안 본다), 이 층의 동의어는 여기서 이어 줄 수밖에 없다.
+    "nominal_load_kN": ("force_capacity", 1.0),
+    "capacity_kN": ("force_capacity", 1.0),
+    "max_load_kN": ("force_capacity", 1.0),
+    "max_stroke_mm": ("actuator_stroke", 1.0),
+    "electrical": ("power_supply", 1.0),
+    "power_supply": ("power_supply", 1.0),
+    "accuracy_class": ("accuracy_class", 1.0),
+    "class": ("accuracy_class", 1.0),
+    # 분해능은 nm 로 모은다 — µm 로 적힌 것은 1000을 곱한다.
+    "travel_resolution_um": ("position_resolution", 1000.0),
+    "resolution_um": ("position_resolution", 1000.0),
+    "displacement_resolution_um": ("position_resolution", 1000.0),
+    # 치수를 배열이 아니라 낱개로 적는 카탈로그가 많다.
+    "width_mm": ("dimension_width", 1.0),
+    "depth_mm": ("dimension_depth", 1.0),
+    "height_mm": ("dimension_height", 1.0),
+    # 시험실(챔버) 안쪽 치수. **바깥과 다른 물음에 답한다.**
+    "test_room_width_mm": ("inner_width", 1.0),
+    "test_room_depth_mm": ("inner_depth", 1.0),
+    "test_room_height_mm": ("inner_height", 1.0),
     "refrigerant": ("cooling_method", 1.0),
     "functions": ("test_functions", 1.0),
 }
@@ -587,3 +612,84 @@ CATALOG_SPEC_DEFINITIONS: list[
         "ACW·DCW·IR 처럼 한 대가 겸하는 시험들. 카탈로그가 낱개로 늘어놓는다.",
     ),
 ]
+
+# --- 온톨로지에서 승격하기 ----------------------------------------------------
+#
+# `source/catalog/ontology/condition_keys.json` 이 **사양 키의 정본**이 됐다.
+# 2026-09-10 감사에서 207종에 한글 이름·차원·단위를 달았고, `build_graph.py` 가
+# 거기 없는 키를 쓰면 거절한다 — 즉 **사람이 검토한 어휘**다.
+#
+# 그래서 정의를 손으로 적는 대신 그 목록에서 승격한다. 「오타가 새 사양이 되는 길이
+# 없다」(ADR 0005)는 그대로다: 검토를 우리가 하느냐 온톨로지가 하느냐만 다르고,
+# **아무 키나 받는 것이 아니다.** 온톨로지에 없는 키는 여전히 보류된다.
+#
+# 아래 표는 그 승격에 필요한 두 가지 판단만 담는다 — 어느 그룹에 넣을지, 어느
+# 방향으로 읽을지.
+
+#: 차원 -> 사양 그룹. 온톨로지의 `dimension` 을 그대로 받는다.
+#:
+#: 모르는 차원은 「용량」 이 아니라 **「구성」** 으로 보낸다. 성능처럼 보이게 두면
+#: 사람이 그 칸을 성능으로 읽고, 그러면 안 재 본 것이 재 본 것처럼 보인다.
+DIMENSION_GROUPS: dict[str, str] = {
+    "force": "capacity",
+    "torque": "capacity",
+    "energy": "capacity",
+    "power": "installation",
+    "mass": "space",
+    "length": "space",
+    "area": "space",
+    "volume": "space",
+    "angle": "range",
+    "speed": "range",
+    "angular_velocity": "range",
+    "acceleration": "range",
+    "frequency": "range",
+    "temperature": "range",
+    "temperature_rate": "range",
+    "rate": "range",
+    "humidity": "range",
+    "pressure": "range",
+    "flow": "range",
+    "voltage": "range",
+    "current": "range",
+    "resistance": "range",
+    "viscosity": "range",
+    "thermal_conductivity": "range",
+    "luminance": "range",
+    "illuminance": "range",
+    "wavelength": "range",
+    "leak_rate": "range",
+    "time": "accuracy",
+    "ratio": "accuracy",
+    "level": "accuracy",
+    "count": "configuration",
+    "mode": "configuration",
+    "grade": "configuration",
+}
+
+#: 그 밖의 차원이 갈 곳. **모르면 성능이 아니다.**
+FALLBACK_GROUP = "configuration"
+
+#: 몇 개 객체에 나와야 승격하나. **1이다 — 온톨로지가 이미 걸렀다.**
+#:
+#: 처음에는 3으로 뒀는데 그러면 승격이 13건에 그쳤다. 온톨로지 키 207종 중 대부분이
+#: 한두 객체에만 나오기 때문이다 — 그런데 그것은 **드물다는 뜻이지 검토를 안 거쳤다는
+#: 뜻이 아니다.** ADR 0005 가 막으려던 것은 「만나는 키마다 정의를 만드는 것」 이고,
+#: 그 검토를 지금은 온톨로지가 한다.
+#:
+#: 대신 분류를 붙인다(아래 CATEGORY_SPREAD) — 안 붙이면 UTM 화면에 배터리 사이클러
+#: 사양이 뜨고, 그때 목록은 못 쓰게 된다.
+PROMOTE_MIN_OBJECTS = 1
+
+#: 이 수보다 많은 분류에서 쓰이면 **공통**으로 둔다.
+#:
+#: 무게·전원처럼 분류를 가리지 않는 것이 실재한다. 그런 것에 분류를 열 개 붙이면
+#: 목록만 길어지고 거르는 값은 없다 — 「거의 어디나」 는 「어디나」 로 적는 편이 낫다.
+CATEGORY_SPREAD = 6
+
+#: 작을수록 좋은 값들. 이 조각이 이름에 있으면 **바닥**으로 읽는다.
+#:
+#: 분해능 0.1 µm 은 「0.1까지 잰다」 이지 「0.1까지만」 이 아니다. 하나로 정해 두면
+#: 절반이 거꾸로 반영되고, 거꾸로 반영된 값은 검색이 조용히 틀린 답을 내는
+#: 방식으로만 드러난다.
+MIN_HINTS = ("resolution", "minimum", "min_", "accuracy", "uniformity", "fluctuation")

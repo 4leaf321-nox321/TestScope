@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "testatlas/source/catalog/equipment",
   "title": "Equipment catalog object",
-  "description": "제조사 카탈로그에서 뽑은 장비 시리즈/모델 하나. 관계(relations)로 다른 객체·온톨로지 노드를 가리킨다.",
+  "description": "제조사 카탈로그에서 뽑은 장비 시리즈/모델 하나. 관계(relations)로 다른 객체·온톨로지 노드를 가리킨다. 도메인 상세 필드는 자유 형식이지만 이름은 여기에 선언된 것만 쓴다. additionalProperties:false 를 유지하는 이유는 오타 필드를 잡기 위해서다.",
   "type": "object",
   "required": [
     "id",
@@ -160,9 +160,29 @@
     "options": {
       "type": "array",
       "items": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "description": "옵션에 설명이 필요할 때. 문자열 하나로는 '무엇이 어떻게 달라지나' 를 잃는다"
+          }
+        ]
       },
-      "description": "카탈로그에 적힌 옵션·부속(자유 문자열)"
+      "description": "카탈로그에 적힌 옵션·부속. 문자열이거나 {name, note} 객체"
     },
     "relations": {
       "type": "array",
@@ -249,6 +269,81 @@
         "type": "object",
         "additionalProperties": true
       }
+    },
+    "operating_modes": {
+      "description": "운전 모드 목록(정전류·정전압·정전력 등). 모드가 곧 능력인 장비에 쓴다 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "accessories": {
+      "description": "장비에 딸리는 부속 목록. 별도 객체로 세울 만큼 크지 않을 때 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "consumables": {
+      "description": "소모품(팬·컵·전극·필터 등) (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "applications": {
+      "description": "적용 분야 서술 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "vessels": {
+      "description": "시험 용기 사양(ARC 등) (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "standard_model_matrix": {
+      "description": "표준 기종 조합표 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "construction": {
+      "description": "구조·재질 서술 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "utilities": {
+      "description": "설비 요구사항(전원·냉각수·가스 등) 서술 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "compliance_marks": {
+      "description": "인증 마크(CE·UL 등) (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "performance": {
+      "description": "성능 서술(정형 limits 로 담기 어려운 것) (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "pulse_waveforms": {
+      "description": "충격 펄스 파형 종류 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "power_requirements": {
+      "description": "전원 요구사항 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "function_matrix": {
+      "description": "기능-기종 대응표 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "protections": {
+      "description": "보호 기능 목록(OVP·OCP·OTP 등) (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "input_rating": {
+      "description": "입력 정격 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "range_table": {
+      "description": "측정 레인지 표 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "techniques": {
+      "description": "지원 측정 기법 목록 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "cutoff": {
+      "description": "종료 조건(전압·전류·시간 등) (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "data_record_conditions": {
+      "description": "데이터 기록 조건 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "probes": {
+      "description": "프로브·탐침 사양 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "test_modes": {
+      "description": "시험 모드 목록 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "detectors": {
+      "description": "검출기 사양 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "derived_outputs": {
+      "description": "산출 지표 목록 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "outputs": {
+      "description": "출력 항목 목록 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "units": {
+      "description": "지원 단위 목록 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
     }
   },
   "$defs": {
@@ -280,6 +375,10 @@
         },
         "uncertain": {
           "type": "boolean"
+        },
+        "requires_accessory": {
+          "type": "boolean",
+          "description": "이 한계가 본체가 아니라 별도로 주문하는 부속(챔버·노·클램프)이 있어야 나오는 값이면 true. 빠뜨리면 '그 장비로 이 조건이 된다' 고 잘못 답하게 된다"
         }
       }
     }

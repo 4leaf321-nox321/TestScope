@@ -38,13 +38,14 @@
       "note": "분해능 0.00001 N"
     },
     "frequency_Hz": {
-      "min": 0.00002,
+      "min": 2e-05,
       "max": 100
     },
     "temperature_degC": {
       "min": -150,
       "max": 600,
-      "note": "표준 시료 클램프는 500 °C 까지. 600 °C 는 옵션 클램프 필요"
+      "note": "표준 시료 클램프는 500 °C 까지. 600 °C 는 옵션 클램프 필요 / 부속 필요: 600 °C 는 옵션 클램프가 있어야 한다(표준 클램프는 500 °C)",
+      "requires_accessory": true
     },
     "heating_rate_K_min": {
       "min": 0.1,
@@ -55,7 +56,7 @@
       "max": 60
     },
     "displacement_mm": {
-      "min": 0.00005,
+      "min": 5e-05,
       "max": 1.5,
       "note": "동적 변위 범위 ±. 분해능 1 nm"
     }
@@ -66,18 +67,36 @@
       "specs": {
         "min_force_N": 0.0005,
         "max_force_N": 35,
-        "force_resolution_N": 0.00001,
-        "dynamic_displacement_mm": {"min": 0.00005, "max": 1.5},
+        "force_resolution_N": 1e-05,
+        "dynamic_displacement_mm": {
+          "min": 5e-05,
+          "max": 1.5
+        },
         "displacement_resolution_nm": 1,
-        "modulus_range_Pa": {"min": 1000, "max": 3e12},
+        "modulus_range_Pa": {
+          "min": 1000,
+          "max": 3000000000000.0
+        },
         "modulus_precision_pct": 1,
         "tan_delta_sensitivity": 0.0001,
-        "tan_delta_resolution": 0.00001,
-        "frequency_Hz": {"min": 0.00002, "max": 100},
+        "tan_delta_resolution": 1e-05,
+        "frequency_Hz": {
+          "min": 2e-05,
+          "max": 100
+        },
         "temperature_control": "강제대류 오븐(FCO)",
-        "temperature_degC": {"min": -150, "max": 600},
-        "heating_rate_degC_min": {"min": 0.1, "max": 60},
-        "cooling_rate_degC_min": {"min": 0.1, "max": 60},
+        "temperature_degC": {
+          "min": -150,
+          "max": 600
+        },
+        "heating_rate_degC_min": {
+          "min": 0.1,
+          "max": 60
+        },
+        "cooling_rate_degC_min": {
+          "min": 0.1,
+          "max": 60
+        },
         "isothermal_stability_degC": 0.1
       },
       "note": "표준 클램프 500 °C, 600 °C 는 옵션 클램프"
@@ -100,12 +119,26 @@
     "공랭식 칠러 ACS-3 (FCO 를 -100 °C 까지)"
   ],
   "relations": [
-    {"type": "performs", "target": "dma"},
-    {"type": "same_family_as", "target": "ta-instruments-dma"},
-    {"type": "same_family_as", "target": "ta-instruments-discovery-hybrid-rheometer"}
+    {
+      "type": "performs",
+      "target": "dma"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-dma"
+    },
+    {
+      "type": "same_family_as",
+      "target": "ta-instruments-discovery-hybrid-rheometer"
+    }
   ],
   "sources": [
-    {"file": "ta-instruments/rsa-g2-brochure.pdf", "pages": [15]}
+    {
+      "file": "ta-instruments/rsa-g2-brochure.pdf",
+      "pages": [
+        15
+      ]
+    }
   ],
   "confidence": "catalog",
   "notes": "tainstruments.com 이 막혀 archive.org 스냅샷(2025-06-20)에서 받았다. -150 °C 하한은 액체질소를 쓸 때의 값이고, ACS 공랭 칠러를 쓰면 -55 °C(ACS-2) 또는 -100 °C(ACS-3)가 하한이 된다 — 검색이 이 차이를 놓치지 않도록 옵션에 적어 두었다. DETA 유전 사양표(9쪽)는 별도이며 여기 옮기지 않았다."

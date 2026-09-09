@@ -8,26 +8,97 @@
   "category": "optical_profilometer",
   "form_factor": "benchtop",
   "description": "백색광 간섭계 기반 비접촉 3D 표면형상 측정기. 배율과 무관하게 최고 Z 분해능을 유지하는 것이 특징으로, 수직 분해능 0.01 nm 미만(서브 나노미터), 최대 스캔 범위 10 mm, 반복성 1σ 0.1 % 미만. 시료 두께 최대 100 mm(4 in), 스테이지 150 mm(6 in). MEMS·트라이볼로지 등 용도별 사전 프로그램 라이브러리를 제공하고 AcuityXR 로 횡방향 분해능을 향상시킨다.",
-  "test_items": ["surface_topography"],
-  "measurands": ["surface_roughness", "step_height", "flatness", "waviness", "film_thickness", "texture_parameters"],
-  "materials": ["semiconductor wafers", "MEMS", "optical components", "machined surfaces", "coatings", "medical devices", "displays"],
-  "standards": {"compliance": [], "test_methods": ["ISO 25178", "ISO 4287", "ASME B46.1"]},
+  "test_items": [
+    "surface_topography"
+  ],
+  "measurands": [
+    "surface_roughness",
+    "step_height",
+    "flatness",
+    "waviness",
+    "film_thickness",
+    "texture_parameters"
+  ],
+  "materials": [
+    "semiconductor wafers",
+    "MEMS",
+    "optical components",
+    "machined surfaces",
+    "coatings",
+    "medical devices",
+    "displays"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 25178",
+      "ISO 4287",
+      "ASME B46.1"
+    ]
+  },
   "limits": {
-    "scan_range_mm": {"max": 10, "note": "최대 스캔 범위"},
-    "vertical_resolution_nm": {"max": 0.01, "note": "0.01 nm 미만 — 배율과 무관"},
-    "sample_thickness_mm": {"max": 100, "note": "4 in"},
-    "stage_size_mm": {"max": 150, "note": "6 in"},
-    "repeatability_pct": {"max": 0.1, "note": "1 sigma"}
+    "scan_range_mm": {
+      "max": 10,
+      "note": "최대 스캔 범위"
+    },
+    "vertical_resolution_nm": {
+      "max": 0.01,
+      "note": "0.01 nm 미만 — 배율과 무관"
+    },
+    "sample_thickness_mm": {
+      "max": 100,
+      "note": "4 in"
+    },
+    "stage_size_mm": {
+      "max": 150,
+      "note": "6 in"
+    },
+    "repeatability_pct": {
+      "max": 0.1,
+      "note": "1 sigma"
+    }
   },
   "models": [
-    {"model": "ContourX-200", "specs": {"max_scan_range_mm": 10, "vertical_resolution_nm": 0.01, "repeatability": "<0.1 % 1σ", "max_sample_thickness_mm": 100, "stage_mm": 150, "principle": "백색광 간섭계(비접촉)"}}
+    {
+      "model": "ContourX-200",
+      "specs": {
+        "max_scan_range_mm": 10,
+        "vertical_resolution_nm": 0.01,
+        "repeatability": "<0.1 % 1σ",
+        "max_sample_thickness_mm": 100,
+        "stage_mm": 150,
+        "principle": "백색광 간섭계(비접촉)"
+      }
+    }
   ],
-  "features": ["배율과 무관한 최고 Z 분해능", "서브 나노미터 수직 분해능", "AcuityXR 횡방향 분해능 향상", "VisionMAP 광역 측정", "사전 프로그램 레시피 라이브러리(MEMS·트라이볼로지)", "넓은 반사율 대응"],
+  "features": [
+    "배율과 무관한 최고 Z 분해능",
+    "서브 나노미터 수직 분해능",
+    "AcuityXR 횡방향 분해능 향상",
+    "VisionMAP 광역 측정",
+    "사전 프로그램 레시피 라이브러리(MEMS·트라이볼로지)",
+    "넓은 반사율 대응"
+  ],
   "relations": [
-    {"type": "performs", "target": "surface_topography"},
-    {"type": "same_family_as", "target": "bruker-dektakxt"}
+    {
+      "type": "performs",
+      "target": "surface_topography"
+    },
+    {
+      "type": "same_family_as",
+      "target": "bruker-dektakxt"
+    }
   ],
-  "sources": [{"file": "bruker/contourx-200-optical-profilometer-datasheet.pdf", "pages": [1, 2, 3]}],
+  "sources": [
+    {
+      "file": "bruker/contourx-200-optical-profilometer-datasheet.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "감사(2026-09-10)에서 존재하지 않는 쪽 [3] 인용을 제거했다(문서는 2쪽)"
+    }
+  ],
   "confidence": "catalog",
   "notes": "횡방향 분해능(Lateral Resolution)·반사율 범위 수치는 추출 텍스트에서 값이 누락되었다."
 }

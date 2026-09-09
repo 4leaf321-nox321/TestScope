@@ -4193,7 +4193,8 @@
     "temperature_degC": {
      "min": -170,
      "max": 1730,
-     "note": "MCR 부속 -170~+1000; FRS 300–1730"
+     "note": "MCR 부속 -170~+1000; FRS 300–1730 / 부속 필요: MCR 온도 부속·FRS 를 달아야 나온다",
+     "requires_accessory": true
     },
     "humidity_pct": {
      "min": 5,
@@ -9017,8 +9018,9 @@
     "temperature_degC": {
      "min": -150,
      "max": 1200,
-     "note": "3119-600 챔버(-150~+600) 또는 3119-160 퍼니스(1200 °C) 장착 시. 본체 자체는 상온(운전 +5~+40 °C)",
-     "uncertain": true
+     "note": "3119-600 챔버(-150~+600) 또는 3119-160 퍼니스(1200 °C) 장착 시. 본체 자체는 상온(운전 +5~+40 °C) / 부속 필요: 3119-160 퍼니스(1200 °C) 또는 3119-600 챔버를 따로 달아야 나온다. 본체는 상온기다",
+     "uncertain": true,
+     "requires_accessory": true
     },
     "chamber": {
      "values": [
@@ -12657,7 +12659,8 @@
     "temperature_degC": {
      "min": -100,
      "max": 1200,
-     "note": "**옵션 부속의 범위다.** 환경 챔버 -100~+150 °C, 고온로 실온~1,200 °C. 시험기 본체의 값이 아니다"
+     "note": "**옵션 부속의 범위다.** 환경 챔버 -100~+150 °C, 고온로 실온~1,200 °C. 시험기 본체의 값이 아니다 / 부속 필요: 옵션 고온로(실온~1,200 °C)·환경 챔버(-100~+150 °C)가 있어야 나온다",
+     "requires_accessory": true
     },
     "weight_kg": {
      "min": 70,
@@ -12913,7 +12916,8 @@
     "temperature_degC": {
      "min": -70,
      "max": 1100,
-     "note": "TCE 컴팩트 챔버 -70~+280; TCL/TCH 가스제트 챔버 -70~+280; 고온 인장장치 +300~+900/+1100 (100/300 kN 플로어형); 항온항습 챔버 +20~+60 (습도 없이 -40~+250)"
+     "note": "TCE 컴팩트 챔버 -70~+280; TCL/TCH 가스제트 챔버 -70~+280; 고온 인장장치 +300~+900/+1100 (100/300 kN 플로어형); 항온항습 챔버 +20~+60 (습도 없이 -40~+250) / 부속 필요: 고온 인장장치·항온조를 따로 달아야 나온다",
+     "requires_accessory": true
     },
     "humidity_pct": {
      "min": 40,
@@ -13017,8 +13021,9 @@
     "temperature_degC": {
      "min": -70,
      "max": 1100,
-     "note": "TCE/TCL/TCH 항온조 -70~+280, 고온 인장장치 +300~+1100(플로어형) — 부속품 사양이며 본 카탈로그 사양표 외 정보",
-     "uncertain": true
+     "note": "TCE/TCL/TCH 항온조 -70~+280, 고온 인장장치 +300~+1100(플로어형) — 부속품 사양이며 본 카탈로그 사양표 외 정보 / 부속 필요: 고온 인장장치·항온조를 따로 달아야 나온다",
+     "uncertain": true,
+     "requires_accessory": true
     },
     "chamber": {
      "values": [
@@ -13723,7 +13728,8 @@
     "temperature_degC": {
      "min": -150,
      "max": 600,
-     "note": "표준 시료 클램프는 500 °C 까지. 600 °C 는 옵션 클램프 필요"
+     "note": "표준 시료 클램프는 500 °C 까지. 600 °C 는 옵션 클램프 필요 / 부속 필요: 600 °C 는 옵션 클램프가 있어야 한다(표준 클램프는 500 °C)",
+     "requires_accessory": true
     },
     "heating_rate_K_min": {
      "min": 0.1,
@@ -14462,9 +14468,29 @@
    "manufacturer": "tqc-sheen",
    "limits": {
     "pencil_hardness_grade": {
-     "min": "8B",
-     "max": "10H",
-     "note": "연필 경도 등급 범위"
+     "values": [
+      "8B",
+      "7B",
+      "6B",
+      "5B",
+      "4B",
+      "3B",
+      "2B",
+      "B",
+      "HB",
+      "F",
+      "H",
+      "2H",
+      "3H",
+      "4H",
+      "5H",
+      "6H",
+      "7H",
+      "8H",
+      "9H",
+      "10H"
+     ],
+     "note": "연필 경도는 숫자가 아니라 순서척도라 min/max 로 담으면 스키마가 받지 못하고 비교도 틀린다. 8B(가장 무름)에서 10H(가장 단단) 순으로 나열한다"
     },
     "pencil_load_g": {
      "values": [
@@ -15154,7 +15180,8 @@
     "temperature_degC": {
      "min": -80,
      "max": 250,
-     "note": "전용 온도 챔버 장착 시 (RT+10~+250, LN2 옵션 -80)"
+     "note": "전용 온도 챔버 장착 시 (RT+10~+250, LN2 옵션 -80) / 부속 필요: 전용 온도 챔버를 달아야 나온다",
+     "requires_accessory": true
     },
     "chamber": {
      "values": [
@@ -15247,7 +15274,8 @@
     "temperature_degC": {
      "min": 200,
      "max": 850,
-     "note": "AHTF 850-A 퍼니스 장착 시"
+     "note": "AHTF 850-A 퍼니스 장착 시 / 부속 필요: AHTF 850-A 퍼니스를 달아야 나온다",
+     "requires_accessory": true
     }
    },
    "models": [
@@ -15494,7 +15522,8 @@
     "temperature_degC": {
      "min": -80,
      "max": 2000,
-     "note": "계열 전체(퍼니스 부속에 따름); TMF 시스템 RT–1600 °C 유도가열"
+     "note": "계열 전체(퍼니스 부속에 따름); TMF 시스템 RT–1600 °C 유도가열 / 부속 필요: 퍼니스 부속에 따라 달라진다",
+     "requires_accessory": true
     },
     "heating_rate_K_min": {
      "max": 1500,
@@ -18221,8 +18250,7 @@
    "target": "doc:ateq/f620-primus-brochure.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {
@@ -18277,8 +18305,7 @@
    "target": "doc:audio-precision/apx555-b-datasheet-admess.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {
@@ -18287,8 +18314,7 @@
    "target": "doc:audio-precision/apx555-datasheet-testequipmenthq.pdf",
    "pages": [
     2,
-    3,
-    4
+    3
    ]
   },
   {
@@ -18487,8 +18513,7 @@
    "target": "doc:bruker/contourx-200-optical-profilometer-datasheet.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {
@@ -19097,9 +19122,7 @@
    "pages": [
     1,
     2,
-    4,
-    12,
-    13
+    4
    ]
   },
   {
@@ -20329,8 +20352,7 @@
    "target": "doc:flir/t800-series-datasheet.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {
@@ -22855,8 +22877,7 @@
    "type": "documented_in",
    "target": "doc:hegewald-peschke/41-030-350-torsionspruefstand-t3500-en-01.pdf",
    "pages": [
-    2,
-    3
+    2
    ]
   },
   {
@@ -24779,8 +24800,7 @@
    "target": "doc:instrument-systems/lumicam-4000b-2400b-datasheet.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {
@@ -25191,8 +25211,7 @@
    "pages": [
     2,
     3,
-    4,
-    8
+    4
    ]
   },
   {
@@ -27403,8 +27422,7 @@
    "pages": [
     4,
     5,
-    7,
-    8
+    7
    ]
   },
   {
@@ -29441,9 +29459,7 @@
     2,
     3,
     4,
-    5,
-    6,
-    8
+    5
    ]
   },
   {
@@ -29502,8 +29518,7 @@
    "target": "doc:teseq/nsg-438-esd-simulator-datasheet.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {
@@ -29939,8 +29954,7 @@
    "target": "doc:bruel-kjaer/tiravib-51075-52110-52120.pdf",
    "pages": [
     1,
-    2,
-    3
+    2
    ]
   },
   {

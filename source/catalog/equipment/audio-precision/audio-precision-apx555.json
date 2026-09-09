@@ -8,30 +8,123 @@
   "category": "audio_analyzer",
   "form_factor": "rack",
   "description": "2채널 모듈형 오디오 분석기의 최상위 모델. 잔류 THD+N 이 전형값 -120 dB 로 24 bit·1 MHz 이상 대역폭에서 동작하며, 아날로그 성능에서 SYS-2722 대비 5 dB 개선을 달성했다. B 시리즈는 50 kHz 이상 정현파 주파수에서 아날로그 잔류 왜곡을 추가로 낮췄다. 디지털 입출력은 최대 432 kHz 샘플레이트, 아날로그 출력은 204 kHz·26 Vrms 까지. APx500 측정 소프트웨어와 전 APx 모듈 라인업을 지원한다.",
-  "test_items": ["audio_performance"],
-  "measurands": ["thd_n", "frequency_response", "snr", "crosstalk", "phase", "jitter", "level"],
-  "materials": ["smartphones", "TVs", "soundbars", "headphones", "amplifiers", "DACs", "ADCs", "automotive audio", "smart speakers"],
-  "standards": {"compliance": [], "test_methods": ["AES17", "IEC 61606", "CTA-2010", "Bluetooth SIG audio"]},
+  "test_items": [
+    "audio_performance"
+  ],
+  "measurands": [
+    "thd_n",
+    "frequency_response",
+    "snr",
+    "crosstalk",
+    "phase",
+    "jitter",
+    "level"
+  ],
+  "materials": [
+    "smartphones",
+    "TVs",
+    "soundbars",
+    "headphones",
+    "amplifiers",
+    "DACs",
+    "ADCs",
+    "automotive audio",
+    "smart speakers"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "AES17",
+      "IEC 61606",
+      "CTA-2010",
+      "Bluetooth SIG audio"
+    ]
+  },
   "limits": {
-    "bandwidth_Hz": {"max": 1000000, "note": "1 MHz 초과 대역폭 @ 24 bit"},
-    "residual_thd_n_dB": {"max": -120, "note": "전형값. 낮을수록 우수"},
-    "analog_output_voltage_Vrms": {"max": 26, "note": "204 kHz 까지"},
-    "digital_sample_rate_Hz": {"max": 432000},
-    "channels": {"values": [2]}
+    "bandwidth_Hz": {
+      "max": 1000000,
+      "note": "1 MHz 초과 대역폭 @ 24 bit"
+    },
+    "residual_thd_n_dB": {
+      "max": -120,
+      "note": "전형값. 낮을수록 우수"
+    },
+    "analog_output_voltage_Vrms": {
+      "max": 26,
+      "note": "204 kHz 까지"
+    },
+    "digital_sample_rate_Hz": {
+      "max": 432000
+    },
+    "channels": {
+      "values": [
+        2
+      ]
+    }
   },
   "models": [
-    {"model": "APx555", "specs": {"channels": 2, "residual_thd_n_dB": -120, "bandwidth": "1 MHz 초과 @ 24 bit", "analog_output": "204 kHz, 26 Vrms", "digital_sample_rate_Hz": 432000, "advanced_master_clock": "표준 장착"}},
-    {"model": "APx555 B Series", "specs": {"channels": 2, "residual_thd_n_dB": -120, "note": "50 kHz 이상 정현파 주파수에서 아날로그 잔류 왜곡 추가 개선", "independent_output_channel_control": true}}
+    {
+      "model": "APx555",
+      "specs": {
+        "channels": 2,
+        "residual_thd_n_dB": -120,
+        "bandwidth": "1 MHz 초과 @ 24 bit",
+        "analog_output": "204 kHz, 26 Vrms",
+        "digital_sample_rate_Hz": 432000,
+        "advanced_master_clock": "표준 장착"
+      }
+    },
+    {
+      "model": "APx555 B Series",
+      "specs": {
+        "channels": 2,
+        "residual_thd_n_dB": -120,
+        "note": "50 kHz 이상 정현파 주파수에서 아날로그 잔류 왜곡 추가 개선",
+        "independent_output_channel_control": true
+      }
+    }
   ],
-  "features": ["잔류 THD+N -120 dB", "1 MHz 초과 대역폭", "Advanced Master Clock 표준", "APx500 측정 소프트웨어", "전 APx 모듈(디지털·Bluetooth·PDM 등) 지원", "출력 채널 독립 제어"],
-  "options": ["Bluetooth 모듈", "디지털 시리얼(PDM/I2S) 모듈", "HDMI/디지털 인터페이스 모듈"],
+  "features": [
+    "잔류 THD+N -120 dB",
+    "1 MHz 초과 대역폭",
+    "Advanced Master Clock 표준",
+    "APx500 측정 소프트웨어",
+    "전 APx 모듈(디지털·Bluetooth·PDM 등) 지원",
+    "출력 채널 독립 제어"
+  ],
+  "options": [
+    "Bluetooth 모듈",
+    "디지털 시리얼(PDM/I2S) 모듈",
+    "HDMI/디지털 인터페이스 모듈"
+  ],
   "relations": [
-    {"type": "performs", "target": "audio_performance"},
-    {"type": "compatible_accessory", "target": "bruel-kjaer-hats-5128", "note": "헤드셋·스마트폰 음향 시험 시 인공 두상과 조합"}
+    {
+      "type": "performs",
+      "target": "audio_performance"
+    },
+    {
+      "type": "compatible_accessory",
+      "target": "bruel-kjaer-hats-5128",
+      "note": "헤드셋·스마트폰 음향 시험 시 인공 두상과 조합"
+    }
   ],
   "sources": [
-    {"file": "audio-precision/apx555-b-datasheet-admess.pdf", "pages": [1, 2, 3]},
-    {"file": "audio-precision/apx555-datasheet-testequipmenthq.pdf", "pages": [2, 3, 4]}
+    {
+      "file": "audio-precision/apx555-b-datasheet-admess.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "감사(2026-09-10)에서 존재하지 않는 쪽 [3] 인용을 제거했다(문서는 2쪽)"
+    },
+    {
+      "file": "audio-precision/apx555-datasheet-testequipmenthq.pdf",
+      "pages": [
+        2,
+        3
+      ],
+      "note": "감사(2026-09-10)에서 존재하지 않는 쪽 [4] 인용을 제거했다(문서는 3쪽)"
+    }
   ],
   "confidence": "catalog",
   "notes": "두 PDF 모두 유통사 미러본이다. 원본 ap.com 은 curl 접근이 차단되었다."

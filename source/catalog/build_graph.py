@@ -40,6 +40,15 @@ def main() -> int:
     relations = {r["id"]: r for r in load(ONT / "relations.json")["relations"]}
     urls = load(CAT / "urls.json")
     pdf_root = ROOT / "pdf"
+    # 추출 메타의 쪽수 — 출처가 없는 쪽을 가리키는 것을 잡기 위해 읽는다.
+    pdf_pages: dict[str, int] = {}
+    for meta_path in (ROOT / "extracted" / "text").rglob("*.meta.json"):
+        try:
+            meta = load(meta_path)
+        except json.JSONDecodeError:
+            continue
+        if meta.get("file") and meta.get("pages"):
+            pdf_pages[meta["file"]] = meta["pages"]
 
     errors: list[str] = []
     equipment: dict[str, dict] = {}
@@ -72,6 +81,16 @@ def main() -> int:
             if "file" in s:
                 if not (pdf_root / s["file"]).exists():
                     errors.append(f"{rel}: PDF 없음 {s['file']}")
+                else:
+                    # 없는 쪽을 가리키는 인용은 근거가 없는 것과 같다. 조용히 두면
+                    # "어디서 왔나" 를 되짚을 수 없다.
+                    total = pdf_pages.get(s["file"])
+                    if total:
+                        over = [p for p in s.get("pages", [])
+                                if isinstance(p, int) and p > total]
+                        if over:
+                            errors.append(
+                                f"{rel}: {s['file']} 는 {total}쪽인데 {over} 쪽을 인용")
             elif not s.get("url"):
                 # 제조사가 PDF 를 내지 않는 경우가 있다(웹페이지로만 사양 공개).
                 # 그때는 url 을 쓰되, 둘 다 없으면 근거가 없는 것이므로 막는다.
@@ -154,6 +173,19 @@ def main() -> int:
                 node(sid, "document", label=s["url"], url=s["url"], web_only=True)
             edges.append({"source": e["id"], "type": "documented_in", "target": sid, **({"pages": s["pages"]} if s.get("pages") else {})})
 
+    # --- 경고: limits 키가 온톨로지에 없는 것 (실패시키지는 않는다) ---
+    known_keys = {k["key"] for k in load(ONT / "condition_keys.json")["keys"]}
+    unregistered: dict[str, int] = {}
+    for e in equipment.values():
+        for k in (e.get("limits") or {}):
+            if k not in known_keys:
+                unregistered[k] = unregistered.get(k, 0) + 1
+    if unregistered:
+        print(f"경고: condition_keys.json 에 없는 limits 키 {len(unregistered)} 종 "
+              f"(총 {sum(unregistered.values())}회). 축 이름이 흩어지면 검색이 갈라진다. "
+              f"자주 쓰이는 것부터 등록할 것: "
+              + ", ".join(k for k, _ in sorted(unregistered.items(), key=lambda x: -x[1])[:8]))
+
     graph = {"nodes": list(nodes.values()), "edges": edges,
              "counts": {"nodes": len(nodes), "edges": len(edges), "equipment": len(equipment)}}
     (CAT / "graph.json").write_text(json.dumps(graph, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -190,14 +222,23 @@ def main() -> int:
              "`limits` 는 시리즈 전체 범위. 단위는 키 이름에 있다(kN, mm/min, degC …). 빈 칸은 미기재.", ""]
     for mid in sorted(by_maker):
         m = manufacturers[mid]
-        lines += [f"## {m['name']} (`{mid}`)", "", "| id | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |", "|---|---|---|---|---|---|---|"]
+        lines += [f"## {m['name']} (`{mid}`)", "",
+                  "| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |",
+                  "|---|---|---|---|---|---|---|---|"]
         for e in sorted(by_maker[mid], key=lambda x: x["id"]):
             lim = e.get("limits", {})
             other = "; ".join(f"{k}={rng(v)}" for k, v in lim.items()
                               if k not in ("force_kN", "temperature_degC", "chamber") and not k.startswith("footprint"))
+            # 부속·센서가 시험 장비처럼 읽히면 "이 장비로 됩니까" 에 그립이 답하게 된다.
+            kind_mark = {"equipment_series": "계열", "equipment_model": "기종",
+                         "accessory": "**부속**", "sensor": "**센서**"}.get(e["kind"], e["kind"])
+            temp = lim.get("temperature_degC", "–")
+            temp_txt = rng(temp)
+            if isinstance(temp, dict) and temp.get("requires_accessory"):
+                temp_txt += " (부속)"
             lines.append(
-                f"| [{e['id']}]({e['_file']}) | {e['category']} | {', '.join(e['test_items'])} | "
-                f"{rng(lim.get('force_kN', '–'))} | {rng(lim.get('temperature_degC', '–'))} | {other[:160]} | {e.get('confidence', 'catalog')} |"
+                f"| [{e['id']}]({e['_file']}) | {kind_mark} | {e['category']} | {', '.join(e['test_items'])} | "
+                f"{rng(lim.get('force_kN', '–'))} | {temp_txt} | {other[:160]} | {e.get('confidence', 'catalog')} |"
             )
         lines.append("")
     (CAT / "index.md").write_text("\n".join(lines), encoding="utf-8")

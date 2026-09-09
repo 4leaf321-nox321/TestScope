@@ -8,27 +8,103 @@
   "category": "xray_inspection",
   "form_factor": "floor",
   "description": "교체 가능한 X선 타깃을 갖춘 마이크로포커스 X-ray CT 시스템. 모든 선원이 개방형 튜브(open-tube)여서 유지비가 낮고, 180 kV 저출력부터 225 kV 중출력까지 마이크론 수준 분해능을 낸다. 180 kV 액랭 투과형(transmission) 타깃은 서브 마이크론 형상 인식이 가능해 소형 시료의 고해상도 CT 에 적합하고, 225 kV 액랭 반사형(reflection) 타깃은 스폿 크기 3 µm 까지 내려가 두꺼운 시료를 고해상도로 촬영한다. 타깃을 바꿔 해상도와 투과력을 용도에 맞춘다.",
-  "test_items": ["xray_void_inspection"],
-  "measurands": ["void_percentage", "internal_geometry", "crack_detection", "porosity", "dimensional_metrology", "assembly_verification"],
-  "materials": ["semiconductor packages", "PCB assemblies", "battery cells", "castings", "additive manufactured parts", "composites", "connectors", "medical devices"],
-  "standards": {"compliance": [], "test_methods": ["VDI/VDE 2630 (CT 측정)", "ASTM E1441", "ASTM E1695", "IPC-7095"]},
+  "test_items": [
+    "xray_void_inspection"
+  ],
+  "measurands": [
+    "void_percentage",
+    "internal_geometry",
+    "crack_detection",
+    "porosity",
+    "dimensional_metrology",
+    "assembly_verification"
+  ],
+  "materials": [
+    "semiconductor packages",
+    "PCB assemblies",
+    "battery cells",
+    "castings",
+    "additive manufactured parts",
+    "composites",
+    "connectors",
+    "medical devices"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "VDI/VDE 2630 (CT 측정)",
+      "ASTM E1441",
+      "ASTM E1695",
+      "IPC-7095"
+    ]
+  },
   "limits": {
-    "tube_voltage_kV": {"min": 180, "max": 225, "note": "180 kV(투과형) / 225 kV(반사형). 모두 개방형 튜브"},
-    "spot_size_um": {"min": 3, "note": "225 kV 반사형 타깃 기준. 180 kV 투과형은 서브 마이크론 형상 인식"}
+    "tube_voltage_kV": {
+      "min": 180,
+      "max": 225,
+      "note": "180 kV(투과형) / 225 kV(반사형). 모두 개방형 튜브"
+    },
+    "spot_size_um": {
+      "min": 3,
+      "note": "225 kV 반사형 타깃 기준. 180 kV 투과형은 서브 마이크론 형상 인식"
+    }
   },
   "models": [
-    {"model": "180 kV 투과형 타깃 (Transmission Target)", "specs": {"tube_voltage_kV": 180, "cooling": "액랭", "feature_recognition": "서브 마이크론", "application": "소형 시료 고해상도 CT"}},
-    {"model": "225 kV 반사형 타깃 (Reflection Target)", "specs": {"tube_voltage_kV": 225, "cooling": "액랭", "spot_size_um": 3, "application": "두꺼운 시료 고해상도 촬영"}}
+    {
+      "model": "180 kV 투과형 타깃 (Transmission Target)",
+      "specs": {
+        "tube_voltage_kV": 180,
+        "cooling": "액랭",
+        "feature_recognition": "서브 마이크론",
+        "application": "소형 시료 고해상도 CT"
+      }
+    },
+    {
+      "model": "225 kV 반사형 타깃 (Reflection Target)",
+      "specs": {
+        "tube_voltage_kV": 225,
+        "cooling": "액랭",
+        "spot_size_um": 3,
+        "application": "두꺼운 시료 고해상도 촬영"
+      }
+    }
   ],
-  "features": ["교체식 X선 타깃(해상도·투과력 조정)", "개방형 튜브(저 유지비)", "액랭 타깃", "고해상도 플랫패널 검출기", "며칠 교육으로 운용 가능한 조작성"],
-  "options": ["대면적 플랫패널 검출기", "커브드 리니어 디텍터", "CT 측정(metrology) 소프트웨어"],
+  "features": [
+    "교체식 X선 타깃(해상도·투과력 조정)",
+    "개방형 튜브(저 유지비)",
+    "액랭 타깃",
+    "고해상도 플랫패널 검출기",
+    "며칠 교육으로 운용 가능한 조작성"
+  ],
+  "options": [
+    "대면적 플랫패널 검출기",
+    "커브드 리니어 디텍터",
+    "CT 측정(metrology) 소프트웨어"
+  ],
   "relations": [
-    {"type": "performs", "target": "xray_void_inspection"},
-    {"type": "same_family_as", "target": "nordson-dage-quadra-xray"}
+    {
+      "type": "performs",
+      "target": "xray_void_inspection"
+    },
+    {
+      "type": "same_family_as",
+      "target": "nordson-dage-quadra-xray"
+    }
   ],
   "sources": [
-    {"file": "nikon/xt-h-series-xray-ct-2024.pdf", "pages": [4, 5, 7, 8]},
-    {"file": "nikon/xt-h-series-insidix.pdf", "note": "유통사 미러본"}
+    {
+      "file": "nikon/xt-h-series-xray-ct-2024.pdf",
+      "pages": [
+        4,
+        5,
+        7
+      ],
+      "note": "감사(2026-09-10)에서 존재하지 않는 쪽 [8] 인용을 제거했다(문서는 7쪽)"
+    },
+    {
+      "file": "nikon/xt-h-series-insidix.pdf",
+      "note": "유통사 미러본"
+    }
   ],
   "confidence": "catalog",
   "notes": "XT H 225 / XT H 320 등 개별 모델의 스테이지·검출기 사양표는 이 브로슈어에 실려 있지 않다. 여기 기록한 값은 선원(타깃) 사양이다."

@@ -8,29 +8,195 @@
   "category": "rotational_rheometer",
   "form_factor": "benchtop",
   "description": "공기베어링 EC 모터 레오미터. MCR 303/503: 최소 토크 0.2 nNm(진동), 200 Hz 고속 데이터, 온도 부속 -170~+1000 °C, 습도 5–95 % RH, 200+ 부속. MCR 703 MultiDrive: 상·하 2 구동, 토크 0.2 nNm–230 mNm, 6000 rpm, 비틀림·인장·굽힘·압축 DMA. FRS 1600/1800: 용융 유리·슬래그 300–1730 °C. SmartMelt(고분자 용융, ASTM D4440/ISO 6721), SmartPave(아스팔트). MCR 72/92 보급형. 점도 1 mPa·s–10^8 Pa·s.",
-  "test_items": ["rheology_rotational", "dma", "friction_wear_tribo", "tensile", "compression", "flexure"],
-  "measurands": ["viscosity", "storage_modulus", "loss_modulus", "tan_delta", "yield_stress", "thixotropy", "normal_force", "friction_coefficient"],
-  "materials": ["polymer melts", "asphalt", "glass melts", "slags", "food", "cosmetics", "pharma", "coatings", "solids (DMA bars)", "powders"],
-  "standards": {"compliance": ["FDA 21 CFR Part 11 (software)", "CE"], "test_methods": ["ISO 3219", "ISO 6721-10", "ASTM D4440", "AASHTO T315", "ASTM D7175", "DIN EN 14770"]},
+  "test_items": [
+    "rheology_rotational",
+    "dma",
+    "friction_wear_tribo",
+    "tensile",
+    "compression",
+    "flexure"
+  ],
+  "measurands": [
+    "viscosity",
+    "storage_modulus",
+    "loss_modulus",
+    "tan_delta",
+    "yield_stress",
+    "thixotropy",
+    "normal_force",
+    "friction_coefficient"
+  ],
+  "materials": [
+    "polymer melts",
+    "asphalt",
+    "glass melts",
+    "slags",
+    "food",
+    "cosmetics",
+    "pharma",
+    "coatings",
+    "solids (DMA bars)",
+    "powders"
+  ],
+  "standards": {
+    "compliance": [
+      "FDA 21 CFR Part 11 (software)",
+      "CE"
+    ],
+    "test_methods": [
+      "ISO 3219",
+      "ISO 6721-10",
+      "ASTM D4440",
+      "AASHTO T315",
+      "ASTM D7175",
+      "DIN EN 14770"
+    ]
+  },
   "limits": {
-    "torque_mNm": {"min": 0.0000002, "max": 300, "note": "0.2 nNm – 230 mNm (703); 503 Power 300 mNm"},
-    "rotation_rpm": {"max": 6000},
-    "frequency_Hz": {"note": "고속 데이터 200 Hz; 진동 주파수 상한은 카탈로그에 미기재"},
-    "temperature_degC": {"min": -170, "max": 1730, "note": "MCR 부속 -170~+1000; FRS 300–1730"},
-    "humidity_pct": {"min": 5, "max": 95},
-    "viscosity_Pa_s": {"min": 0.001, "max": 100000000}
+    "torque_mNm": {
+      "min": 2e-07,
+      "max": 300,
+      "note": "0.2 nNm – 230 mNm (703); 503 Power 300 mNm"
+    },
+    "rotation_rpm": {
+      "max": 6000
+    },
+    "frequency_Hz": {
+      "note": "고속 데이터 200 Hz; 진동 주파수 상한은 카탈로그에 미기재"
+    },
+    "temperature_degC": {
+      "min": -170,
+      "max": 1730,
+      "note": "MCR 부속 -170~+1000; FRS 300–1730 / 부속 필요: MCR 온도 부속·FRS 를 달아야 나온다",
+      "requires_accessory": true
+    },
+    "humidity_pct": {
+      "min": 5,
+      "max": 95
+    },
+    "viscosity_Pa_s": {
+      "min": 0.001,
+      "max": 100000000
+    }
   },
   "models": [
-    {"model": "MCR 72 / MCR 92", "specs": {"note": "entry level; EDU edition"}},
-    {"model": "MCR 303 / MCR 503 / MCR 503 Power", "specs": {"min_torque_nNm": 0.2, "torque_mNm": {"max": 300}, "data_rate_Hz": 200, "temperature_degC": {"min": -170, "max": 1000}, "humidity_pct": [5, 95], "peltier_rate_K_min": {"heating": 8, "cooling": 4}}},
-    {"model": "MCR 703 MultiDrive / 703 Space MultiDrive", "specs": {"torque_mNm": {"min": 0.0000002, "max": 230}, "rotation_rpm": {"max": 6000}, "drives": 2, "dma_modes": ["torsion", "tension", "bending", "compression"], "temperature_degC": {"min": -170, "max": 1000}}},
-    {"model": "FRS 1600 / FRS 1800 furnace rheometer", "specs": {"temperature_degC": {"min": 300, "max": 1730}, "head": "DSR 502"}},
-    {"model": "SmartMelt 92 / 303", "specs": {"note": "polymer melt rheology, ASTM D4440 / ISO 6721"}},
-    {"model": "SmartPave 92 / 303", "specs": {"note": "asphalt binder DSR"}},
-    {"model": "RheolabQC", "specs": {"viscosity_Pa_s": {"min": 0.001, "max": 100000000}, "rotation_rpm": {"max": 300}}}
+    {
+      "model": "MCR 72 / MCR 92",
+      "specs": {
+        "note": "entry level; EDU edition"
+      }
+    },
+    {
+      "model": "MCR 303 / MCR 503 / MCR 503 Power",
+      "specs": {
+        "min_torque_nNm": 0.2,
+        "torque_mNm": {
+          "max": 300
+        },
+        "data_rate_Hz": 200,
+        "temperature_degC": {
+          "min": -170,
+          "max": 1000
+        },
+        "humidity_pct": [
+          5,
+          95
+        ],
+        "peltier_rate_K_min": {
+          "heating": 8,
+          "cooling": 4
+        }
+      }
+    },
+    {
+      "model": "MCR 703 MultiDrive / 703 Space MultiDrive",
+      "specs": {
+        "torque_mNm": {
+          "min": 2e-07,
+          "max": 230
+        },
+        "rotation_rpm": {
+          "max": 6000
+        },
+        "drives": 2,
+        "dma_modes": [
+          "torsion",
+          "tension",
+          "bending",
+          "compression"
+        ],
+        "temperature_degC": {
+          "min": -170,
+          "max": 1000
+        }
+      }
+    },
+    {
+      "model": "FRS 1600 / FRS 1800 furnace rheometer",
+      "specs": {
+        "temperature_degC": {
+          "min": 300,
+          "max": 1730
+        },
+        "head": "DSR 502"
+      }
+    },
+    {
+      "model": "SmartMelt 92 / 303",
+      "specs": {
+        "note": "polymer melt rheology, ASTM D4440 / ISO 6721"
+      }
+    },
+    {
+      "model": "SmartPave 92 / 303",
+      "specs": {
+        "note": "asphalt binder DSR"
+      }
+    },
+    {
+      "model": "RheolabQC",
+      "specs": {
+        "viscosity_Pa_s": {
+          "min": 0.001,
+          "max": 100000000
+        },
+        "rotation_rpm": {
+          "max": 300
+        }
+      }
+    }
   ],
-  "options": ["Peltier / electrical / convection (CTD) temperature devices", "humidity cell", "UV curing", "pressure cell", "magneto-/electro-rheology", "RheoOptics, RheoMicroscopy", "tribology cells (T-PTD200, T-PID/44, T-BTP)", "powder cell", "SER extensional", "Toolmaster automatic geometry recognition", "HTR 7000 automation"],
-  "relations": [{"type": "compatible_accessory", "target": "anton-paar-tribometers", "note": "MCR 트라이보미터 셀"}],
-  "sources": [{"file": "anton-paar/document-17877.pdf", "pages": [10, 15, 16, 17], "note": "Anton Paar 종합 제품 카탈로그(2025/26) — 개별 데이터시트 아님; 상세 토크/주파수 표 미포함"}],
+  "options": [
+    "Peltier / electrical / convection (CTD) temperature devices",
+    "humidity cell",
+    "UV curing",
+    "pressure cell",
+    "magneto-/electro-rheology",
+    "RheoOptics, RheoMicroscopy",
+    "tribology cells (T-PTD200, T-PID/44, T-BTP)",
+    "powder cell",
+    "SER extensional",
+    "Toolmaster automatic geometry recognition",
+    "HTR 7000 automation"
+  ],
+  "relations": [
+    {
+      "type": "compatible_accessory",
+      "target": "anton-paar-tribometers",
+      "note": "MCR 트라이보미터 셀"
+    }
+  ],
+  "sources": [
+    {
+      "file": "anton-paar/document-17877.pdf",
+      "pages": [
+        10,
+        15,
+        16,
+        17
+      ],
+      "note": "Anton Paar 종합 제품 카탈로그(2025/26) — 개별 데이터시트 아님; 상세 토크/주파수 표 미포함"
+    }
+  ],
   "confidence": "limited"
 }

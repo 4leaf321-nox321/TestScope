@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import re
 import sys
 import uuid
 from pathlib import Path
@@ -49,13 +50,22 @@ from app.modules.equipment.models import (
 from app.modules.methods.models import TestMethod
 from app.modules.vocabulary.catalog_specs import (
     CATALOG_SPEC_DEFINITIONS,
+    CATEGORY_SPREAD,
+    DIMENSION_GROUPS,
     DIMENSION_SOURCES,
+    FALLBACK_GROUP,
+    MIN_HINTS,
+    PROMOTE_MIN_OBJECTS,
     SOURCE_SPEC_MAP,
     TEMPERATURE_PAIR,
     VARIANT_SUFFIXES,
 )
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
-from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
+from app.modules.vocabulary.specs import (
+    SpecDefinition,
+    SpecDefinitionCategory,
+    SpecGroup,
+)
 from app.shared.text import clean, compare_key
 
 survive_cp949()
@@ -229,7 +239,121 @@ def step_methods(
     return methods
 
 
-def step_definitions(db: Session, cat: Catalog) -> tuple[int, list[tuple[int, str]]]:
+def _key_shape(cat: Catalog, key: str) -> str:
+    """그 키의 값이 실제로 어떤 모양인가 — 정의의 `kind` 를 여기서 정한다.
+
+    **데이터를 보고 정한다.** 이름만 보고 「수치겠지」 하면 절반이 틀리고, 틀린 칸에
+    담긴 값은 저장은 되지만 화면이 못 그린다. 여러 모양이 섞이면 구간이 이긴다 —
+    구간은 수치 하나도 담을 수 있지만 그 반대는 안 된다.
+    """
+    shapes: set[str] = set()
+    for obj in cat.objects:
+        for pool in [obj.get("limits") or {}] + [
+            (model.get("specs") or {}) for model in (obj.get("models") or [])
+        ]:
+            raw = pool.get(key)
+            if raw is None:
+                continue
+            if isinstance(raw, bool):
+                shapes.add("boolean")
+            elif isinstance(raw, int | float):
+                shapes.add("number")
+            elif isinstance(raw, dict):
+                inner = set(raw) - {"note", "uncertain"}
+                shapes.add("range" if inner & {"min", "max", "values"} else "text")
+            else:
+                shapes.add("text")
+    if "range" in shapes:
+        return "range"
+    if shapes == {"number"}:
+        return "number"
+    if shapes == {"boolean"}:
+        return "boolean"
+    return "text"
+
+
+def _promotable(cat: Catalog) -> list[dict[str, Any]]:
+    """온톨로지에서 승격할 키들. **흔한 것부터, 이미 있는 것은 빼고.**"""
+    onto = {
+        row["key"]: row
+        for row in json.loads(
+            (cat.root / "ontology" / "condition_keys.json").read_text(encoding="utf-8")
+        )["keys"]
+    }
+    per_object: collections.Counter[str] = collections.Counter()
+    for obj in cat.objects:
+        seen = set(obj.get("limits") or {})
+        for model in obj.get("models") or []:
+            seen |= set(model.get("specs") or {})
+        per_object.update(seen)
+
+    # 그 키를 실제로 쓰는 장비 분류들. **온톨로지는 분류를 말하지 않는다** —
+    # 데이터가 말한다.
+    categories_of: dict[str, set[str]] = {}
+    for obj in cat.objects:
+        seen = set(obj.get("limits") or {})
+        for model in obj.get("models") or []:
+            seen |= set(model.get("specs") or {})
+        for one in seen:
+            categories_of.setdefault(one, set()).add(obj["category"])
+
+    out: list[dict[str, Any]] = []
+    for key, count in per_object.most_common():
+        if count < PROMOTE_MIN_OBJECTS or key not in onto:
+            continue
+        # 이미 손으로 이어 둔 키는 건드리지 않는다 — 그 매핑에는 단위 환산 같은
+        # 판단이 들어 있다(force_N 은 0.001 을 곱해 kN 이 된다).
+        if key in SOURCE_SPEC_MAP or key in DIMENSION_SOURCES:
+            continue
+        if key in (TEMPERATURE_PAIR[0], TEMPERATURE_PAIR[1]):
+            continue
+        row = onto[key]
+        dimension = row.get("dimension") or ""
+        out.append(
+            {
+                "source_key": key,
+                # 정의 key 는 단위 꼬리를 뗀다 — `force_kN` 이 아니라 `force`.
+                # 단위는 옆 칸이 갖는다(ADR 0005).
+                "key": _definition_key(key, row.get("unit") or ""),
+                "label": row.get("label") or key,
+                "group": DIMENSION_GROUPS.get(dimension, FALLBACK_GROUP),
+                "kind": _key_shape(cat, key),
+                "dimension": dimension,
+                "unit": row.get("unit") or "",
+                "reflect_as": ("min" if any(hint in key for hint in MIN_HINTS) else "max"),
+                # 여러 분류에 걸치면 공통으로 둔다 — 「거의 어디나」 는 「어디나」 로
+                # 적는 편이 낫다(ADR 0005: 비어 있으면 공통).
+                "categories": (
+                    sorted(categories_of.get(key, set()))
+                    if len(categories_of.get(key, set())) <= CATEGORY_SPREAD
+                    else []
+                ),
+                "count": count,
+            }
+        )
+    return out
+
+
+def _definition_key(source_key: str, unit: str) -> str:
+    """원본 키에서 사양 정의의 이름을 만든다.
+
+    단위 꼬리를 뗀다(`force_kN` -> `force`). 단위는 정의의 옆 칸이 갖고, 이름에
+    박아 두면 나중에 단위를 바꿀 때 **키까지 바꿔야 한다** — 키는 코드와 반입이
+    걸고 있어서 못 바꾼다.
+    """
+    tail = re.sub(r"[^a-z0-9]+", "_", unit.lower()).strip("_")
+    name = source_key
+    for candidate in (tail, tail.replace("_", ""), source_key.rsplit("_", 1)[-1].lower()):
+        if candidate and name.lower().endswith("_" + candidate):
+            name = name[: -(len(candidate) + 1)]
+            break
+    name = re.sub(r"[^a-zA-Z0-9]+", "_", name).strip("_").lower()
+    return (name or source_key.lower())[:60]
+
+
+def step_definitions(
+    db: Session, cat: Catalog, categories: dict[str, VocabularyTerm]
+) -> tuple[int, list[tuple[int, str]]]:
     """2. 승격한 사양 정의를 심고, 보류 목록을 만든다.
 
     보류는 **값을 안 들이는 것**이지 버리는 것이 아니다. 원본이 `source/` 에 그대로
@@ -277,6 +401,46 @@ def step_definitions(db: Session, cat: Catalog) -> tuple[int, list[tuple[int, st
         )
         added += 1
     db.flush()
+    known |= {row[0] for row in CATALOG_SPEC_DEFINITIONS}
+
+    # --- 온톨로지에서 승격 ---------------------------------------------------
+    #
+    # 손으로 적은 목록만으로는 못 따라간다 — 원본이 커질 때마다 사람이 따라 적어야
+    # 하고, 안 적으면 그만큼 조용히 버려진다(실측: 객체가 148 -> 194 로 늘자 커버율이
+    # 63% -> 51% 로 떨어졌다).
+    #
+    # 온톨로지는 사람이 검토한 어휘다. 거기서 올라온 것은 **이름과 단위가 이미
+    # 정해진** 키다.
+    promoted = 0
+    for row in _promotable(cat):
+        if row["key"] in known:
+            continue
+        made = SpecDefinition(
+            key=row["key"],
+            label=row["label"],
+            group_id=groups[row["group"]].id,
+            kind=row["kind"],
+            dimension=row["dimension"],
+            si_unit=row["unit"],
+            display_unit=row["unit"],
+            reflect_as=row["reflect_as"],
+            # 승격분은 뒤에 세운다 — 손으로 적은 것이 위에 오는 편이,
+            # 화면에서 먼저 보이는 것이 흔한 사양이라 낫다.
+            sort_order=900,
+            help=f"제조사 카탈로그 {row['count']}건에서 쓰인 사양(`{row['source_key']}`).",
+        )
+        db.add(made)
+        db.flush()
+        # **분류를 붙인다.** 안 붙이면 UTM 화면에 배터리 사이클러 사양이 뜨고,
+        # 그때 「사양 추가」 목록은 못 쓰게 된다(ADR 0005: 비어 있으면 공통).
+        for slug in row["categories"]:
+            term = categories.get(slug)
+            if term is not None:
+                db.add(SpecDefinitionCategory(definition_id=made.id, category_term_id=term.id))
+        known.add(row["key"])
+        promoted += 1
+    added += promoted
+    db.flush()
 
     per_object: collections.Counter[str] = collections.Counter()
     for obj in cat.objects:
@@ -284,12 +448,15 @@ def step_definitions(db: Session, cat: Catalog) -> tuple[int, list[tuple[int, st
         for model in obj.get("models") or []:
             keys |= set(model.get("specs") or {})
         per_object.update(keys)
+    promoted_keys = {row["source_key"] for row in _promotable(cat)}
     pending = sorted(
         (
             (count, key)
             for key, count in per_object.items()
             if key not in SOURCE_SPEC_MAP
-            and key not in ("note", "footprint_mm", "dimensions_mm", "uncertain")
+            and key not in DIMENSION_SOURCES
+            and key not in promoted_keys
+            and key not in ("note", "uncertain")
             and not _variant_of(key)
         ),
         reverse=True,
@@ -362,11 +529,21 @@ def _spec_note(obj: dict[str, Any]) -> str | None:
 
     **버리지 않는다.** 지금 담을 칸이 없다는 것과 값이 쓸모없다는 것은 다르다.
     """
+
+    def _one(value: Any) -> str:
+        # 원본이 옵션을 `{name, note}` 로도 적는다 — 문자열로 뭉개면 「무엇이 어떻게
+        # 달라지나」 가 사라진다(2026-09-10 스키마 개정).
+        if isinstance(value, dict):
+            head = str(value.get("name") or "")
+            tail = str(value.get("note") or "")
+            return f"{head} ({tail})" if head and tail else head or tail
+        return str(value)
+
     parts: list[str] = []
     for label, key in (("옵션", "options"), ("특징", "features"), ("비고", "notes")):
         values = obj.get(key)
         if isinstance(values, list) and values:
-            parts.append(f"[{label}] " + " · ".join(str(one) for one in values))
+            parts.append(f"[{label}] " + " · ".join(_one(one) for one in values))
         elif isinstance(values, str) and values:
             parts.append(f"[{label}] {values}")
     return "\n".join(parts) or None
@@ -610,6 +787,7 @@ def _import_specs(
     raw_specs: dict[str, Any],
     definitions: dict[str, SpecDefinition],
     source: SpecSource | None,
+    promoted: dict[str, tuple[str, float]],
 ) -> int:
     taken = set(
         db.scalars(
@@ -633,7 +811,9 @@ def _import_specs(
         if target is not None:
             made += _import_dimensions(db, model, raw, definitions, source, taken, target)
             continue
-        mapped = SOURCE_SPEC_MAP.get(key)
+        # 손으로 이어 둔 것이 먼저다 — 거기에는 단위 환산 같은 판단이 들어 있다.
+        # 없으면 온톨로지에서 승격한 이름으로 찾는다.
+        mapped = SOURCE_SPEC_MAP.get(key) or promoted.get(key)
         if mapped is None:
             continue
         definition = definitions.get(mapped[0])
@@ -733,6 +913,8 @@ def step_models(
     """
     definitions = {row.key: row for row in db.scalars(select(SpecDefinition))}
     sources = {row.path: row for row in db.scalars(select(SpecSource))}
+    # 온톨로지에서 승격한 키 -> (정의 key, 배율 1). 원본이 이미 그 단위로 적는다.
+    promoted = {row["source_key"]: (row["key"], 1.0) for row in _promotable(cat)}
     marker = "원본 확인 필요"
     models = values = flagged = 0
 
@@ -772,11 +954,13 @@ def step_models(
                 )
                 flagged += 1
             made_here.append(found)
-            values += _import_specs(db, found, row.get("specs") or {}, definitions, source)
+            values += _import_specs(
+                db, found, row.get("specs") or {}, definitions, source, promoted
+            )
 
         limits = obj.get("limits") or {}
         if limits and len(made_here) == 1:
-            values += _import_specs(db, made_here[0], limits, definitions, source)
+            values += _import_specs(db, made_here[0], limits, definitions, source, promoted)
         elif limits:
             envelope = " · ".join(
                 f"{key} {_as_text(raw)}" for key, raw in sorted(limits.items())
@@ -842,7 +1026,7 @@ def main() -> int:
 
         makers, categories, items = step_ontology(db, cat, actor)
         methods = step_methods(db, cat, items, actor)
-        definitions, pending = step_definitions(db, cat)
+        definitions, pending = step_definitions(db, cat, categories)
         series, capabilities = step_series(db, cat, makers, categories, items, methods, actor)
         models, values, flagged = step_models(db, cat, series, actor)
         relations = step_relations(db, cat, series)

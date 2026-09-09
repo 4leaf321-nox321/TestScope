@@ -8,36 +8,161 @@
   "category": "hipot_safety_analyzer",
   "form_factor": "benchtop",
   "description": "교류/직류 내전압(ACWV·DCWV), 절연저항(IR), 접지연속성(GB), 누설전류(LC, AC/DC/동적)를 한 대에 통합한 전기안전 분석기. SMPS·충전기·가전·IT 기기·의료기기 생산라인용. TWINPORT 로 Hipot 과 접지연속성을 동시 시험, 개방/단락 검출(OSC) 로 미접속 상태에서 불량품이 양품으로 판정되는 것을 방지, 플래시오버 검출로 절연 탄화 손상을 잡아낸다. 19032-P 는 500 VA 출력·GFI 인체보호·플로팅 출력을 추가한 상위 모델.",
-  "test_items": ["dielectric_withstand", "insulation_resistance", "ground_bond"],
-  "measurands": ["withstand_voltage", "leakage_current", "insulation_resistance", "ground_bond_resistance", "flashover"],
-  "materials": ["SMPS", "chargers", "home appliances", "IT equipment", "medical devices", "cables", "connectors"],
+  "test_items": [
+    "dielectric_withstand",
+    "insulation_resistance",
+    "ground_bond"
+  ],
+  "measurands": [
+    "withstand_voltage",
+    "leakage_current",
+    "insulation_resistance",
+    "ground_bond_resistance",
+    "flashover"
+  ],
+  "materials": [
+    "SMPS",
+    "chargers",
+    "home appliances",
+    "IT equipment",
+    "medical devices",
+    "cables",
+    "connectors"
+  ],
   "standards": {
     "compliance": [],
-    "test_methods": ["IEC 62368-1", "IEC 60601-1", "IEC 60335", "UL", "CSA", "EN 60950"]
+    "test_methods": [
+      "IEC 62368-1",
+      "IEC 60601-1",
+      "IEC 60335",
+      "UL",
+      "CSA",
+      "EN 60950"
+    ]
   },
   "limits": {
-    "ac_withstand_voltage_kV": {"min": 0.05, "max": 5.0},
-    "dc_withstand_voltage_kV": {"min": 0.05, "max": 6.0},
-    "cutoff_current_A": {"max": 0.1, "note": "19032: DC 12 mA / AC 40 mA; 19032-P: DC 25 mA / AC 100 mA"},
-    "insulation_test_voltage_kV": {"min": 0.05, "max": 3.0, "note": "19032 은 0.05~1 kV, 19032-P 는 0.05~3 kV"},
-    "insulation_resistance_ohm": {"min": 100000, "max": 50000000000, "note": "0.1 MΩ ~ 50 GΩ, 분해능 0.1 MΩ, 정확도 5 % typical"},
-    "ground_bond_current_A": {"min": 1, "max": 40, "note": "19032: AC 1~30 A; 19032-P: AC 3~40 A. CT 옵션으로 40 A/60 A 확장(19032 한정)"},
-    "ground_bond_resistance_ohm": {"min": 0.01, "max": 0.51, "note": "10 mΩ~510 mΩ, 분해능 0.1 mΩ"},
-    "output_frequency_Hz": {"values": [50, 60]},
-    "test_time_s": {"min": 0.3, "max": 999, "note": "연속(continue) 모드 지원. 램프 타임·폴 타임 각 0.1~999 s"}
+    "ac_withstand_voltage_kV": {
+      "min": 0.05,
+      "max": 5.0
+    },
+    "dc_withstand_voltage_kV": {
+      "min": 0.05,
+      "max": 6.0
+    },
+    "cutoff_current_A": {
+      "max": 0.1,
+      "note": "19032: DC 12 mA / AC 40 mA; 19032-P: DC 25 mA / AC 100 mA"
+    },
+    "insulation_test_voltage_kV": {
+      "min": 0.05,
+      "max": 3.0,
+      "note": "19032 은 0.05~1 kV, 19032-P 는 0.05~3 kV"
+    },
+    "insulation_resistance_ohm": {
+      "min": 100000,
+      "max": 50000000000,
+      "note": "0.1 MΩ ~ 50 GΩ, 분해능 0.1 MΩ, 정확도 5 % typical"
+    },
+    "ground_bond_current_A": {
+      "min": 1,
+      "max": 40,
+      "note": "19032: AC 1~30 A; 19032-P: AC 3~40 A. CT 옵션으로 40 A/60 A 확장(19032 한정)"
+    },
+    "ground_bond_resistance_ohm": {
+      "min": 0.01,
+      "max": 0.51,
+      "note": "10 mΩ~510 mΩ, 분해능 0.1 mΩ"
+    },
+    "output_frequency_Hz": {
+      "values": [
+        50,
+        60
+      ]
+    },
+    "test_time_s": {
+      "min": 0.3,
+      "max": 999,
+      "note": "연속(continue) 모드 지원. 램프 타임·폴 타임 각 0.1~999 s"
+    }
   },
   "models": [
-    {"model": "19032", "specs": {"withstand_voltage": "DC 0.05~6 kV / AC 0.05~5 kV", "cutoff_current": "DC 12 mA / AC 40 mA", "ir_voltage": "DC 0.05~1 kV", "ground_bond_current_A": {"min": 1, "max": 30}, "voltage_accuracy": "±(1 % of reading + 0.1 % of full scale)"}},
-    {"model": "19032-P (500 VA)", "specs": {"withstand_voltage": "DC 0.05~6 kV / AC 0.05~5 kV", "cutoff_current": "DC 25 mA / AC 100 mA", "ir_voltage": "DC 0.05~3 kV", "ground_bond_current_A": {"min": 3, "max": 40}, "power_VA": 500, "gfi": true, "floating_output": true, "usb": true}}
+    {
+      "model": "19032",
+      "specs": {
+        "withstand_voltage": "DC 0.05~6 kV / AC 0.05~5 kV",
+        "cutoff_current": "DC 12 mA / AC 40 mA",
+        "ir_voltage": "DC 0.05~1 kV",
+        "ground_bond_current_A": {
+          "min": 1,
+          "max": 30
+        },
+        "voltage_accuracy": "±(1 % of reading + 0.1 % of full scale)"
+      }
+    },
+    {
+      "model": "19032-P (500 VA)",
+      "specs": {
+        "withstand_voltage": "DC 0.05~6 kV / AC 0.05~5 kV",
+        "cutoff_current": "DC 25 mA / AC 100 mA",
+        "ir_voltage": "DC 0.05~3 kV",
+        "ground_bond_current_A": {
+          "min": 3,
+          "max": 40
+        },
+        "power_VA": 500,
+        "gfi": true,
+        "floating_output": true,
+        "usb": true
+      }
+    }
   ],
-  "features": ["TWINPORT Hipot + 접지연속성 동시 시험", "개방/단락 검출(OSC)", "플래시오버 검출", "GFI 인체보호 회로(19032-P)", "플로팅 출력(19032-P)", "Chroma AC 소스(6400/6500/61500/61600) 원격 제어", "EST 통합 시험 소프트웨어", "단일 고장(Single Fault) 스위치 — 누설전류 시험"],
-  "options": ["A190336 8HV/8GB 스캐닝 박스", "6000-08 누설전류 스캐너", "전류변성기(접지연속성 40 A/60 A 확장)", "바코드 스캐너 직결", "19인치 랙 마운트 키트(19032-P)", "GPIB 인터페이스(19032-P)"],
+  "features": [
+    "TWINPORT Hipot + 접지연속성 동시 시험",
+    "개방/단락 검출(OSC)",
+    "플래시오버 검출",
+    "GFI 인체보호 회로(19032-P)",
+    "플로팅 출력(19032-P)",
+    "Chroma AC 소스(6400/6500/61500/61600) 원격 제어",
+    "EST 통합 시험 소프트웨어",
+    "단일 고장(Single Fault) 스위치 — 누설전류 시험"
+  ],
+  "options": [
+    "A190336 8HV/8GB 스캐닝 박스",
+    "6000-08 누설전류 스캐너",
+    "전류변성기(접지연속성 40 A/60 A 확장)",
+    "바코드 스캐너 직결",
+    "19인치 랙 마운트 키트(19032-P)",
+    "GPIB 인터페이스(19032-P)"
+  ],
   "relations": [
-    {"type": "performs", "target": "dielectric_withstand"},
-    {"type": "performs", "target": "insulation_resistance"},
-    {"type": "performs", "target": "ground_bond"},
-    {"type": "controlled_by", "target": "chroma-61500-ac-source", "note": "EST 소프트웨어로 AC 소스를 함께 제어"}
+    {
+      "type": "performs",
+      "target": "dielectric_withstand"
+    },
+    {
+      "type": "performs",
+      "target": "insulation_resistance"
+    },
+    {
+      "type": "performs",
+      "target": "ground_bond"
+    },
+    {
+      "type": "controlled_by",
+      "target": "chroma-61500-ac-source",
+      "note": "EST 소프트웨어로 AC 소스를 함께 제어"
+    }
   ],
-  "sources": [{"file": "chroma/19032-electrical-safety-analyzer-2024.pdf", "pages": [1, 2, 4, 12, 13]}],
+  "sources": [
+    {
+      "file": "chroma/19032-electrical-safety-analyzer-2024.pdf",
+      "pages": [
+        1,
+        2,
+        4
+      ],
+      "note": "감사(2026-09-10)에서 존재하지 않는 쪽 [12, 13] 인용을 제거했다(문서는 8쪽)"
+    }
+  ],
   "confidence": "catalog"
 }

@@ -8,37 +8,156 @@
   "category": "esd_simulator",
   "form_factor": "portable",
   "description": "배터리 구동 휴대형 ESD 시뮬레이터. 기중·접촉 방전 모두 200 V~30 kV(±5 %), 반복률 0.5~20 Hz(1 Hz 스텝, 기중 방전 한정 25 Hz), 극성 +/-/교대. 컬러 터치스크린, 광섬유-USB 원격 인터페이스, 30 kV 에서 30,000회 방전 가능한 NiMH 배터리(2080 mAh). 438A 는 내장 블리드오프(bleed-off) 회로를 갖는다.",
-  "test_items": ["esd_immunity"],
-  "measurands": ["esd_withstand_voltage", "discharge_current_waveform", "immunity_level"],
-  "materials": ["consumer electronics", "IT equipment", "automotive electronics", "medical devices", "industrial controls"],
-  "standards": {"compliance": [], "test_methods": ["IEC 61000-4-2", "EN 61000-4-2", "ISO 10605", "MIL-STD-883 Method 3015"]},
+  "test_items": [
+    "esd_immunity"
+  ],
+  "measurands": [
+    "esd_withstand_voltage",
+    "discharge_current_waveform",
+    "immunity_level"
+  ],
+  "materials": [
+    "consumer electronics",
+    "IT equipment",
+    "automotive electronics",
+    "medical devices",
+    "industrial controls"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 61000-4-2",
+      "EN 61000-4-2",
+      "ISO 10605",
+      "MIL-STD-883 Method 3015"
+    ]
+  },
   "limits": {
-    "esd_voltage_kV": {"min": 0.2, "max": 30.0, "note": "기중·접촉 모두 200 V~30,000 V ±5 %"},
-    "frequency_Hz": {"min": 0.5, "max": 25, "note": "0.5, 1~20 Hz(1 Hz 스텝); 25 Hz 는 기중 방전 전용. Free/period 0.04~300 s(0.01 s 스텝)"},
-    "discharge_mode": {"values": ["contact", "air"]},
-    "polarity": {"values": ["positive", "negative", "alternating"]}
+    "esd_voltage_kV": {
+      "min": 0.2,
+      "max": 30.0,
+      "note": "기중·접촉 모두 200 V~30,000 V ±5 %"
+    },
+    "frequency_Hz": {
+      "min": 0.5,
+      "max": 25,
+      "note": "0.5, 1~20 Hz(1 Hz 스텝); 25 Hz 는 기중 방전 전용. Free/period 0.04~300 s(0.01 s 스텝)"
+    },
+    "discharge_mode": {
+      "values": [
+        "contact",
+        "air"
+      ]
+    },
+    "polarity": {
+      "values": [
+        "positive",
+        "negative",
+        "alternating"
+      ]
+    }
   },
   "models": [
-    {"model": "NSG 438A", "specs": {"air_discharge_V": {"min": 200, "max": 30000}, "contact_discharge_V": {"min": 200, "max": 30000}, "built_in_bleed_off": true, "counter": {"min": 0, "max": 9999}, "holding_time_s": 5, "gun_dimensions_mm": [85, 270, 260]}},
-    {"model": "NSG 438", "specs": {"air_discharge_V": {"min": 200, "max": 30000}, "contact_discharge_V": {"min": 200, "max": 30000}, "built_in_bleed_off": false}}
+    {
+      "model": "NSG 438A",
+      "specs": {
+        "air_discharge_V": {
+          "min": 200,
+          "max": 30000
+        },
+        "contact_discharge_V": {
+          "min": 200,
+          "max": 30000
+        },
+        "built_in_bleed_off": true,
+        "counter": {
+          "min": 0,
+          "max": 9999
+        },
+        "holding_time_s": 5,
+        "gun_dimensions_mm": [
+          85,
+          270,
+          260
+        ]
+      }
+    },
+    {
+      "model": "NSG 438",
+      "specs": {
+        "air_discharge_V": {
+          "min": 200,
+          "max": 30000
+        },
+        "contact_discharge_V": {
+          "min": 200,
+          "max": 30000
+        },
+        "built_in_bleed_off": false
+      }
+    }
   ],
   "consumables": [
-    {"name": "방전 회로망 150 pF / 330 Ω", "note": "기본 (IEC 61000-4-2)"},
-    {"name": "방전 회로망 150 pF / 2000 Ω", "note": "옵션 (ISO 10605)"},
-    {"name": "방전 회로망 330 pF / 330 Ω", "note": "옵션 (ISO 10605)"},
-    {"name": "방전 회로망 330 pF / 2000 Ω", "note": "옵션 (ISO 10605)"},
-    {"name": "AD / CD 팁, 방전 구 25 mm", "note": "ISO 10605 규격"}
+    {
+      "name": "방전 회로망 150 pF / 330 Ω",
+      "note": "기본 (IEC 61000-4-2)"
+    },
+    {
+      "name": "방전 회로망 150 pF / 2000 Ω",
+      "note": "옵션 (ISO 10605)"
+    },
+    {
+      "name": "방전 회로망 330 pF / 330 Ω",
+      "note": "옵션 (ISO 10605)"
+    },
+    {
+      "name": "방전 회로망 330 pF / 2000 Ω",
+      "note": "옵션 (ISO 10605)"
+    },
+    {
+      "name": "AD / CD 팁, 방전 구 25 mm",
+      "note": "ISO 10605 규격"
+    }
   ],
-  "features": ["컬러 터치스크린", "배터리 구동(NiMH 2080 mAh, 30 kV 에서 30,000 방전)", "방전 검출·임계 검출", "광섬유-USB 원격 인터페이스", "esd.control 원격 제어 소프트웨어", "인터록"],
-  "options": ["INA 4430 외부 블리드오프", "차지 리무버 30 kV 베이스 스테이션", "추가 방전 회로망"],
+  "features": [
+    "컬러 터치스크린",
+    "배터리 구동(NiMH 2080 mAh, 30 kV 에서 30,000 방전)",
+    "방전 검출·임계 검출",
+    "광섬유-USB 원격 인터페이스",
+    "esd.control 원격 제어 소프트웨어",
+    "인터록"
+  ],
+  "options": [
+    "INA 4430 외부 블리드오프",
+    "차지 리무버 30 kV 베이스 스테이션",
+    "추가 방전 회로망"
+  ],
   "relations": [
-    {"type": "performs", "target": "esd_immunity"},
-    {"type": "same_family_as", "target": "teseq-nsg-3060"},
-    {"type": "same_family_as", "target": "noiseken-ess-s3011a"}
+    {
+      "type": "performs",
+      "target": "esd_immunity"
+    },
+    {
+      "type": "same_family_as",
+      "target": "teseq-nsg-3060"
+    },
+    {
+      "type": "same_family_as",
+      "target": "noiseken-ess-s3011a"
+    }
   ],
   "sources": [
-    {"file": "teseq/nsg-438-esd-simulator-datasheet.pdf", "pages": [1, 2, 3]},
-    {"file": "teseq/nsg-438-testworld.pdf"}
+    {
+      "file": "teseq/nsg-438-esd-simulator-datasheet.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "note": "감사(2026-09-10)에서 존재하지 않는 쪽 [3] 인용을 제거했다(문서는 2쪽)"
+    },
+    {
+      "file": "teseq/nsg-438-testworld.pdf"
+    }
   ],
   "confidence": "catalog"
 }

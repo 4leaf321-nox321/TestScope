@@ -9,22 +9,104 @@
   "subcategory": "electromechanical",
   "drive": "electromechanical",
   "description": "시마즈 최상위 전기기계식 UTM. 테이블형 10 kN(AGX-10kNV2D), 20/50 kN(AGX-20/50kNV2D·V2), 플로어형 100/300/600 kN. AC 서보모터 구동, 데이터 수집 10 kHz, 배터리리스 다회전 절대 엔코더로 위치를 검출한다. 힘 정확도는 고정밀형 ±0.5 %(1/1000~1/100), ±0.3 %(1/100~1/1). 음성 조작(XV-Talk), 원터치 로드셀 교체, +250/+500/+750 mm 높이 확장.",
-  "test_items": ["tensile", "compression", "flexure", "shear", "peel", "tear", "creep", "relaxation"],
-  "measurands": ["tensile_strength", "yield_strength", "elongation", "youngs_modulus", "compressive_strength", "flexural_strength"],
-  "materials": ["metals", "plastics", "composites", "rubber", "films", "ceramics"],
+  "test_items": [
+    "tensile",
+    "compression",
+    "flexure",
+    "shear",
+    "peel",
+    "tear",
+    "creep",
+    "relaxation"
+  ],
+  "measurands": [
+    "tensile_strength",
+    "yield_strength",
+    "elongation",
+    "youngs_modulus",
+    "compressive_strength",
+    "flexural_strength"
+  ],
+  "materials": [
+    "metals",
+    "plastics",
+    "composites",
+    "rubber",
+    "films",
+    "ceramics"
+  ],
   "standards": {
-    "compliance": ["JIS B7721 Class 0.5", "EN 10002-2 Grade 0.5", "ISO 7500-1 Class 0.5", "BS 1610 Class 0.5", "DIN 51221 Class 0.5", "ASTM E4", "JIS B7742 Class 0.5", "ASTM E2658 Class A", "JIS B7741 Class 0.5", "ISO 9513 Class 0.5", "ASTM E2309 Class A"],
+    "compliance": [
+      "JIS B7721 Class 0.5",
+      "EN 10002-2 Grade 0.5",
+      "ISO 7500-1 Class 0.5",
+      "BS 1610 Class 0.5",
+      "DIN 51221 Class 0.5",
+      "ASTM E4",
+      "JIS B7742 Class 0.5",
+      "ASTM E2658 Class A",
+      "JIS B7741 Class 0.5",
+      "ISO 9513 Class 0.5",
+      "ASTM E2309 Class A"
+    ],
     "test_methods": []
   },
   "limits": {
-    "force_kN": {"min": 0.01, "max": 600, "values": [0.01, 0.02, 0.05, 0.1, 0.5, 1, 5, 10, 20, 50, 100, 300, 600], "note": "로드셀 10 N ~ 600 kN. 10 N·20 N 은 표준정밀형 전용"},
-    "crosshead_speed_mm_min": {"min": 0.00005, "max": 3000, "note": "모델별 상한: 10kNV2D 3000 / 20·50kNV2D 1500 / 20·50kNV2 1500 / 100kNV2 1500 / 300kNV2 720 / 600kNV2 540. 하한은 10kNV2D·20·50kNV2D 가 0.0005, 나머지는 0.00005"},
-    "vertical_test_space_mm": {"min": 180, "max": 2325, "note": "크로스헤드-테이블 간격. 최소 180(10kNV2D)~200(20·50kNV2D)~215(그 외), 최대는 +750 확장 시 600kNV2 의 2325"},
-    "horizontal_test_space_mm": {"min": 420, "max": 790, "note": "유효 시험 폭: 10kNV2D 420, 20·50kNV2D 500, 20·50kNV2 600, 100kNV2 600, 300kNV2 600, 600kNV2 790"},
-    "frame_stiffness_kN_mm": {"min": 60, "max": 700, "note": "인장 방향 기준. 600kNV2 는 인장 700 / 압축 600 으로 다르다"},
-    "data_rate_Hz": {"max": 10000},
-    "temperature_degC": {"min": -70, "max": 1100, "note": "TCE/TCL/TCH 항온조 -70~+280, 고온 인장장치 +300~+1100(플로어형) — 부속품 사양이며 본 카탈로그 사양표 외 정보", "uncertain": true},
-    "chamber": {"values": ["optional"]}
+    "force_kN": {
+      "min": 0.01,
+      "max": 600,
+      "values": [
+        0.01,
+        0.02,
+        0.05,
+        0.1,
+        0.5,
+        1,
+        5,
+        10,
+        20,
+        50,
+        100,
+        300,
+        600
+      ],
+      "note": "로드셀 10 N ~ 600 kN. 10 N·20 N 은 표준정밀형 전용"
+    },
+    "crosshead_speed_mm_min": {
+      "min": 5e-05,
+      "max": 3000,
+      "note": "모델별 상한: 10kNV2D 3000 / 20·50kNV2D 1500 / 20·50kNV2 1500 / 100kNV2 1500 / 300kNV2 720 / 600kNV2 540. 하한은 10kNV2D·20·50kNV2D 가 0.0005, 나머지는 0.00005"
+    },
+    "vertical_test_space_mm": {
+      "min": 180,
+      "max": 2325,
+      "note": "크로스헤드-테이블 간격. 최소 180(10kNV2D)~200(20·50kNV2D)~215(그 외), 최대는 +750 확장 시 600kNV2 의 2325"
+    },
+    "horizontal_test_space_mm": {
+      "min": 420,
+      "max": 790,
+      "note": "유효 시험 폭: 10kNV2D 420, 20·50kNV2D 500, 20·50kNV2 600, 100kNV2 600, 300kNV2 600, 600kNV2 790"
+    },
+    "frame_stiffness_kN_mm": {
+      "min": 60,
+      "max": 700,
+      "note": "인장 방향 기준. 600kNV2 는 인장 700 / 압축 600 으로 다르다"
+    },
+    "data_rate_Hz": {
+      "max": 10000
+    },
+    "temperature_degC": {
+      "min": -70,
+      "max": 1100,
+      "note": "TCE/TCL/TCH 항온조 -70~+280, 고온 인장장치 +300~+1100(플로어형) — 부속품 사양이며 본 카탈로그 사양표 외 정보 / 부속 필요: 고온 인장장치·항온조를 따로 달아야 나온다",
+      "uncertain": true,
+      "requires_accessory": true
+    },
+    "chamber": {
+      "values": [
+        "optional"
+      ]
+    }
   },
   "models": [
     {
@@ -32,53 +114,323 @@
       "form_factor": "dual_column_tabletop",
       "specs": {
         "force_kN": 10,
-        "crosshead_speed_mm_min": {"min": 0.0005, "max": 3000},
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 3000
+        },
         "return_speed_mm_min": 3000,
         "position_resolution_nm": 12.5,
-        "frame_stiffness_kN_mm": {"tension": 60, "compression": 60},
+        "frame_stiffness_kN_mm": {
+          "tension": 60,
+          "compression": 60
+        },
         "horizontal_test_space_mm": 420,
-        "clearance_mm": {"standard": [180, 1150], "ext250": [180, 1375], "ext500": [180, 1600], "ext750": null},
-        "tensile_stroke_mm": {"standard": [0, 550], "ext250": [0, 775], "ext500": [0, 1000]},
-        "footprint_mm": {"standard": {"W": 798, "D": 515, "H": 1582}, "ext250": {"W": 798, "D": 515, "H": 1832}, "ext500": {"W": 798, "D": 515, "H": 2082}},
-        "weight_kg": {"standard": {"100V": 210, "200V": 210}, "ext250": {"100V": 230, "200V": 220}, "ext500": {"100V": 240, "200V": 230}},
-        "power": {"100V_1ph": "1.5 kVA / 15 A", "200V_1ph": "2.0 kVA / 10 A"},
-        "load_cell_lineup": ["10 N", "20 N", "50 N", "100 N", "500 N", "1 kN", "5 kN", "10 kN"]
+        "clearance_mm": {
+          "standard": [
+            180,
+            1150
+          ],
+          "ext250": [
+            180,
+            1375
+          ],
+          "ext500": [
+            180,
+            1600
+          ],
+          "ext750": null
+        },
+        "tensile_stroke_mm": {
+          "standard": [
+            0,
+            550
+          ],
+          "ext250": [
+            0,
+            775
+          ],
+          "ext500": [
+            0,
+            1000
+          ]
+        },
+        "footprint_mm": {
+          "standard": {
+            "W": 798,
+            "D": 515,
+            "H": 1582
+          },
+          "ext250": {
+            "W": 798,
+            "D": 515,
+            "H": 1832
+          },
+          "ext500": {
+            "W": 798,
+            "D": 515,
+            "H": 2082
+          }
+        },
+        "weight_kg": {
+          "standard": {
+            "100V": 210,
+            "200V": 210
+          },
+          "ext250": {
+            "100V": 230,
+            "200V": 220
+          },
+          "ext500": {
+            "100V": 240,
+            "200V": 230
+          }
+        },
+        "power": {
+          "100V_1ph": "1.5 kVA / 15 A",
+          "200V_1ph": "2.0 kVA / 10 A"
+        },
+        "load_cell_lineup": [
+          "10 N",
+          "20 N",
+          "50 N",
+          "100 N",
+          "500 N",
+          "1 kN",
+          "5 kN",
+          "10 kN"
+        ]
       }
     },
     {
       "model": "AGX-20kNV2D / AGX-50kNV2D",
       "form_factor": "dual_column_tabletop",
       "specs": {
-        "force_kN": [20, 50],
-        "crosshead_speed_mm_min": {"min": 0.0005, "max": 1500},
+        "force_kN": [
+          20,
+          50
+        ],
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 1500
+        },
         "return_speed_mm_min": 2000,
         "position_resolution_nm": 8.33,
-        "frame_stiffness_kN_mm": {"tension": 180, "compression": 180},
+        "frame_stiffness_kN_mm": {
+          "tension": 180,
+          "compression": 180
+        },
         "horizontal_test_space_mm": 500,
-        "clearance_mm": {"standard": [200, 1150], "ext250": [200, 1375], "ext500": [200, 1600], "ext750": null},
-        "tensile_stroke_mm": {"standard": {"20kN": [0, 750], "50kN": [0, 690]}, "ext250": {"20kN": [0, 975], "50kN": [0, 915]}, "ext500": {"20kN": [0, 1200], "50kN": [0, 1140]}},
-        "footprint_mm": {"standard": {"W": 975, "D": 579, "H": 1708}, "ext250": {"W": 975, "D": 579, "H": 1958}, "ext500": {"W": 975, "D": 579, "H": 2208}},
-        "weight_kg": {"standard": {"200V": 410}, "ext250": {"200V": 420}, "ext500": {"200V": 440}},
-        "power": {"200V_1ph": "5.5 kVA / 30 A"},
-        "load_cell_lineup": ["20 kN", "50 kN"]
+        "clearance_mm": {
+          "standard": [
+            200,
+            1150
+          ],
+          "ext250": [
+            200,
+            1375
+          ],
+          "ext500": [
+            200,
+            1600
+          ],
+          "ext750": null
+        },
+        "tensile_stroke_mm": {
+          "standard": {
+            "20kN": [
+              0,
+              750
+            ],
+            "50kN": [
+              0,
+              690
+            ]
+          },
+          "ext250": {
+            "20kN": [
+              0,
+              975
+            ],
+            "50kN": [
+              0,
+              915
+            ]
+          },
+          "ext500": {
+            "20kN": [
+              0,
+              1200
+            ],
+            "50kN": [
+              0,
+              1140
+            ]
+          }
+        },
+        "footprint_mm": {
+          "standard": {
+            "W": 975,
+            "D": 579,
+            "H": 1708
+          },
+          "ext250": {
+            "W": 975,
+            "D": 579,
+            "H": 1958
+          },
+          "ext500": {
+            "W": 975,
+            "D": 579,
+            "H": 2208
+          }
+        },
+        "weight_kg": {
+          "standard": {
+            "200V": 410
+          },
+          "ext250": {
+            "200V": 420
+          },
+          "ext500": {
+            "200V": 440
+          }
+        },
+        "power": {
+          "200V_1ph": "5.5 kVA / 30 A"
+        },
+        "load_cell_lineup": [
+          "20 kN",
+          "50 kN"
+        ]
       }
     },
     {
       "model": "AGX-20kNV2 / AGX-50kNV2",
       "form_factor": "dual_column_tabletop",
       "specs": {
-        "force_kN": [20, 50],
-        "crosshead_speed_mm_min": {"min": 0.00005, "max": 1500},
+        "force_kN": [
+          20,
+          50
+        ],
+        "crosshead_speed_mm_min": {
+          "min": 5e-05,
+          "max": 1500
+        },
         "return_speed_mm_min": 2000,
         "position_resolution_nm": 8.33,
-        "frame_stiffness_kN_mm": {"tension": 180, "compression": 180},
+        "frame_stiffness_kN_mm": {
+          "tension": 180,
+          "compression": 180
+        },
         "horizontal_test_space_mm": 600,
-        "clearance_mm": {"standard": [215, 1265], "ext250": [215, 1490], "ext500": [215, 1715], "ext750": [215, 1940]},
-        "tensile_stroke_mm": {"standard": {"20kN": [0, 860], "50kN": [0, 800]}, "ext250": {"20kN": [0, 1085], "50kN": [0, 1025]}, "ext500": {"20kN": [0, 1310], "50kN": [0, 1250]}, "ext750": {"20kN": [0, 1535], "50kN": [0, 1475]}},
-        "footprint_mm": {"standard": {"W": 1206, "D": 765, "H": 2170}, "ext250": {"W": 1206, "D": 765, "H": 2420}, "ext500": {"W": 1206, "D": 765, "H": 2670}, "ext750": {"W": 1206, "D": 765, "H": 2920}},
-        "weight_kg": {"standard": {"200V": 660, "400V": 670}, "ext250": {"200V": 670, "400V": 680}, "ext500": {"200V": 690, "400V": 700}, "ext750": {"200V": 700, "400V": 710}},
-        "power": {"200V_3ph": "4.5 kVA / 15 A", "400V_3ph": "4.0 kVA / 10 A"},
-        "load_cell_lineup": ["20 kN", "50 kN"]
+        "clearance_mm": {
+          "standard": [
+            215,
+            1265
+          ],
+          "ext250": [
+            215,
+            1490
+          ],
+          "ext500": [
+            215,
+            1715
+          ],
+          "ext750": [
+            215,
+            1940
+          ]
+        },
+        "tensile_stroke_mm": {
+          "standard": {
+            "20kN": [
+              0,
+              860
+            ],
+            "50kN": [
+              0,
+              800
+            ]
+          },
+          "ext250": {
+            "20kN": [
+              0,
+              1085
+            ],
+            "50kN": [
+              0,
+              1025
+            ]
+          },
+          "ext500": {
+            "20kN": [
+              0,
+              1310
+            ],
+            "50kN": [
+              0,
+              1250
+            ]
+          },
+          "ext750": {
+            "20kN": [
+              0,
+              1535
+            ],
+            "50kN": [
+              0,
+              1475
+            ]
+          }
+        },
+        "footprint_mm": {
+          "standard": {
+            "W": 1206,
+            "D": 765,
+            "H": 2170
+          },
+          "ext250": {
+            "W": 1206,
+            "D": 765,
+            "H": 2420
+          },
+          "ext500": {
+            "W": 1206,
+            "D": 765,
+            "H": 2670
+          },
+          "ext750": {
+            "W": 1206,
+            "D": 765,
+            "H": 2920
+          }
+        },
+        "weight_kg": {
+          "standard": {
+            "200V": 660,
+            "400V": 670
+          },
+          "ext250": {
+            "200V": 670,
+            "400V": 680
+          },
+          "ext500": {
+            "200V": 690,
+            "400V": 700
+          },
+          "ext750": {
+            "200V": 700,
+            "400V": 710
+          }
+        },
+        "power": {
+          "200V_3ph": "4.5 kVA / 15 A",
+          "400V_3ph": "4.0 kVA / 10 A"
+        },
+        "load_cell_lineup": [
+          "20 kN",
+          "50 kN"
+        ]
       }
     },
     {
@@ -86,13 +438,53 @@
       "form_factor": "floor",
       "specs": {
         "force_kN": 100,
-        "crosshead_speed_mm_min": {"min": 0.00005, "max": 1500},
+        "crosshead_speed_mm_min": {
+          "min": 5e-05,
+          "max": 1500
+        },
         "return_speed_mm_min": 1800,
         "position_resolution_nm": 8.33,
-        "frame_stiffness_kN_mm": {"tension": 300, "compression": 300},
+        "frame_stiffness_kN_mm": {
+          "tension": 300,
+          "compression": 300
+        },
         "horizontal_test_space_mm": 600,
-        "clearance_mm": {"standard": [215, 1250], "ext250": [215, 1475], "ext500": [215, 1700], "ext750": [215, 1925]},
-        "tensile_stroke_mm": {"standard": [0, 760], "ext250": [0, 985], "ext500": [0, 1210], "ext750": [0, 1435]}
+        "clearance_mm": {
+          "standard": [
+            215,
+            1250
+          ],
+          "ext250": [
+            215,
+            1475
+          ],
+          "ext500": [
+            215,
+            1700
+          ],
+          "ext750": [
+            215,
+            1925
+          ]
+        },
+        "tensile_stroke_mm": {
+          "standard": [
+            0,
+            760
+          ],
+          "ext250": [
+            0,
+            985
+          ],
+          "ext500": [
+            0,
+            1210
+          ],
+          "ext750": [
+            0,
+            1435
+          ]
+        }
       }
     },
     {
@@ -100,13 +492,53 @@
       "form_factor": "floor",
       "specs": {
         "force_kN": 300,
-        "crosshead_speed_mm_min": {"min": 0.00005, "max": 720},
+        "crosshead_speed_mm_min": {
+          "min": 5e-05,
+          "max": 720
+        },
         "return_speed_mm_min": 720,
         "position_resolution_nm": 3.33,
-        "frame_stiffness_kN_mm": {"tension": 400, "compression": 400},
+        "frame_stiffness_kN_mm": {
+          "tension": 400,
+          "compression": 400
+        },
         "horizontal_test_space_mm": 600,
-        "clearance_mm": {"standard": [215, 1440], "ext250": [215, 1665], "ext500": [215, 1890], "ext750": [215, 2115]},
-        "tensile_stroke_mm": {"standard": [0, 630], "ext250": [0, 855], "ext500": [0, 1080], "ext750": [0, 1305]}
+        "clearance_mm": {
+          "standard": [
+            215,
+            1440
+          ],
+          "ext250": [
+            215,
+            1665
+          ],
+          "ext500": [
+            215,
+            1890
+          ],
+          "ext750": [
+            215,
+            2115
+          ]
+        },
+        "tensile_stroke_mm": {
+          "standard": [
+            0,
+            630
+          ],
+          "ext250": [
+            0,
+            855
+          ],
+          "ext500": [
+            0,
+            1080
+          ],
+          "ext750": [
+            0,
+            1305
+          ]
+        }
       }
     },
     {
@@ -114,13 +546,53 @@
       "form_factor": "floor",
       "specs": {
         "force_kN": 600,
-        "crosshead_speed_mm_min": {"min": 0.00005, "max": 540},
+        "crosshead_speed_mm_min": {
+          "min": 5e-05,
+          "max": 540
+        },
         "return_speed_mm_min": 540,
-        "position_resolution_nm": 2.50,
-        "frame_stiffness_kN_mm": {"tension": 700, "compression": 600},
+        "position_resolution_nm": 2.5,
+        "frame_stiffness_kN_mm": {
+          "tension": 700,
+          "compression": 600
+        },
         "horizontal_test_space_mm": 790,
-        "clearance_mm": {"standard": [215, 1650], "ext250": [215, 1875], "ext500": [215, 2100], "ext750": [215, 2325]},
-        "tensile_stroke_mm": {"standard": [0, 850], "ext250": [0, 1075], "ext500": [0, 1300], "ext750": [0, 1525]},
+        "clearance_mm": {
+          "standard": [
+            215,
+            1650
+          ],
+          "ext250": [
+            215,
+            1875
+          ],
+          "ext500": [
+            215,
+            2100
+          ],
+          "ext750": [
+            215,
+            2325
+          ]
+        },
+        "tensile_stroke_mm": {
+          "standard": [
+            0,
+            850
+          ],
+          "ext250": [
+            0,
+            1075
+          ],
+          "ext500": [
+            0,
+            1300
+          ],
+          "ext750": [
+            0,
+            1525
+          ]
+        },
         "note": "600 kN 은 광범위형(Wide Ranging Type) 정확도 등급이 없다"
       }
     }
@@ -132,15 +604,58 @@
     "speed": "±0.1 % (JIS B7742 Class 0.5, ASTM E2658 Class A). 0.5~500 mm/min 조건에서 일정 시간 동안의 크로스헤드 이동량으로 산출",
     "position": "±0.05 % of indicated value, 단 표시값 20 mm 미만에서는 ±0.01 mm (배터리리스 다회전 절대 엔코더)"
   },
-  "environment": {"maintenance_clearance_mm": 600, "power": "100 V / 200 V / 400 V 모델"},
-  "features": ["10 kHz 데이터 수집", "XV-Talk 음성 조작(배경 소음 55 dB(A) 이하)", "원터치 로드셀 교체", "터치 하중 검출", "안전 커버 인터록", "로드셀 특성값 자동 로딩", "시험 조건 내부 메모리 25 파일", "USB 메모리 연결(화면 캡처·실시간 샘플링)", "3-로드셀 인장 시스템(옵션)"],
-  "options": ["전용 테이블(높이 650/400 mm)", "전도 방지 어태치먼트", "센서/아날로그/스트레인 앰프", "카운터 유닛·PIO 유닛·절연 PIO 유닛", "아날로그 레코더 유닛", "X-TP / X-TYP 레코더", "USB 카메라 스탠드", "MultiJoint 어댑터 20/50/100/300 kN", "TCE/TCL/TCH 항온조", "고온 인장장치 900/1100 °C"],
-  "relations": [
-    {"type": "successor_of", "target": "shimadzu-agx-v"},
-    {"type": "same_family_as", "target": "shimadzu-ags-x"},
-    {"type": "same_family_as", "target": "shimadzu-ags-v"}
+  "environment": {
+    "maintenance_clearance_mm": 600,
+    "power": "100 V / 200 V / 400 V 모델"
+  },
+  "features": [
+    "10 kHz 데이터 수집",
+    "XV-Talk 음성 조작(배경 소음 55 dB(A) 이하)",
+    "원터치 로드셀 교체",
+    "터치 하중 검출",
+    "안전 커버 인터록",
+    "로드셀 특성값 자동 로딩",
+    "시험 조건 내부 메모리 25 파일",
+    "USB 메모리 연결(화면 캡처·실시간 샘플링)",
+    "3-로드셀 인장 시스템(옵션)"
   ],
-  "sources": [{"file": "shimadzu/agx-v2-series-c224-e122.pdf", "pages": [24, 25, 26], "note": "사양표 원본 쪽을 이미지로 렌더링해 열 대응을 확정함(2026-09-09)"}],
+  "options": [
+    "전용 테이블(높이 650/400 mm)",
+    "전도 방지 어태치먼트",
+    "센서/아날로그/스트레인 앰프",
+    "카운터 유닛·PIO 유닛·절연 PIO 유닛",
+    "아날로그 레코더 유닛",
+    "X-TP / X-TYP 레코더",
+    "USB 카메라 스탠드",
+    "MultiJoint 어댑터 20/50/100/300 kN",
+    "TCE/TCL/TCH 항온조",
+    "고온 인장장치 900/1100 °C"
+  ],
+  "relations": [
+    {
+      "type": "successor_of",
+      "target": "shimadzu-agx-v"
+    },
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-ags-x"
+    },
+    {
+      "type": "same_family_as",
+      "target": "shimadzu-ags-v"
+    }
+  ],
+  "sources": [
+    {
+      "file": "shimadzu/agx-v2-series-c224-e122.pdf",
+      "pages": [
+        24,
+        25,
+        26
+      ],
+      "note": "사양표 원본 쪽을 이미지로 렌더링해 열 대응을 확정함(2026-09-09)"
+    }
+  ],
   "confidence": "catalog",
   "notes": "인장 스트로크는 수동 논시프트 웨지 그립(MWG) 장착 기준이다. 설치 시 좌우·후면 각 600 mm 유지보수 공간이 필요하다. 이전 판에서 위치 분해능(10kN↔20/50kN)과 300/600 kN 크로스헤드 속도가 서로 뒤바뀌어 있었고, AGX-100kNV2 의 치수·중량을 20/50kNV2 값으로 잘못 적어 두었다 — 모두 원본 사양표로 정정했다."
 }
