@@ -26,6 +26,7 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select'
 import { useResource } from '@/shared/hooks/useResource'
+import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { SpecDefinition } from '@/modules/vocabulary/api'
 import { specApi } from '@/modules/equipment/api'
@@ -303,24 +304,31 @@ export function ModelSpecPanel({
       {canEdit && (
         <div className="space-y-2 border-t pt-3">
           <div className="flex flex-wrap items-center gap-2">
-            <Select
+            {/* **드롭다운으로는 못 찾는다.** 사양 정의가 209종이고, 이 기종의 분류에
+                걸리는 것만 해도 여든 가까이 된다. 「상세」 는 무엇이 있는지 모를 때
+                여는 자리다 — 치는 것만 두면 무엇을 칠지 모르는 사람이 막힌다. */}
+            <SearchablePicker
+              className="w-80"
+              options={available.map((one) => ({
+                id: one.id,
+                label: one.label,
+                detail: [one.group_label, one.display_unit || one.si_unit]
+                  .filter(Boolean)
+                  .join(' · '),
+                // 검색축에 이어진 사양은 값이 곧 역량 조건이 된다 — 고르기 전에
+                // 그 사실이 보여야 한다.
+                badge: one.condition_key_id ? '검색축' : null,
+              }))}
               value={pick}
-              onValueChange={(value) => {
+              onChange={(value) => {
                 setPick(value)
                 setDraft({})
               }}
-            >
-              <SelectTrigger className="w-72">
-                <SelectValue placeholder="사양 추가" />
-              </SelectTrigger>
-              <SelectContent>
-                {available.map((one) => (
-                  <SelectItem key={one.id} value={one.id}>
-                    {one.group_label} · {one.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              placeholder="사양 추가"
+              searchPlaceholder="하중 · 온도 · 무게 …"
+              detailTitle="적을 수 있는 사양"
+              detailHint="이 기종의 분류에 붙는 사양과 공통 사양입니다. 「검색축」 이 붙은 것은 값이 이 기종으로 등록하는 장비의 역량 조건이 됩니다."
+            />
             {chosen && <ValueFields definition={chosen} draft={draft} setDraft={setDraft} />}
             {chosen && <Button onClick={save}>저장</Button>}
           </div>

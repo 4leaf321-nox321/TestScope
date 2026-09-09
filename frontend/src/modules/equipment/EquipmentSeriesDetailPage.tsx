@@ -34,6 +34,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { ConditionKey } from '@/modules/vocabulary/api'
+import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
 import type { EquipmentSeries } from '@/modules/equipment/api'
 import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDialog'
@@ -295,6 +296,16 @@ function SeriesCapabilities({
   setNewItem: (value: string) => void
   act: (run: () => Promise<unknown>) => void
 }) {
+  // **이미 적은 것은 고르기 전에 보여 준다.** 눌러 보고 409 를 받는 것은 답이지만,
+  // 답을 받으려고 누르게 하는 것은 화면의 일이 아니다.
+  const taken = new Set(series.capabilities.map((one) => one.test_item))
+  const options = items.map((item) => ({
+    id: item.id,
+    label: item.value,
+    badge: taken.has(item.value) ? '이미 있음' : null,
+    disabled: taken.has(item.value),
+  }))
+
   return (
     <section className="space-y-3">
       <div>
@@ -386,18 +397,19 @@ function SeriesCapabilities({
 
       {series.can_edit && (
         <div className="flex flex-wrap items-center gap-2 border-t pt-3">
-          <Select value={newItem} onValueChange={setNewItem}>
-            <SelectTrigger className="w-56">
-              <SelectValue placeholder="시험 항목" />
-            </SelectTrigger>
-            <SelectContent>
-              {items.map((item) => (
-                <SelectItem key={item.id} value={item.id}>
-                  {item.value}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          {/* **드롭다운으로는 못 찾는다.** 시험 항목이 87종이고, 스물이 넘으면 눈으로
+              찾는 일은 실패한다 — 못 찾은 사람은 없다고 결론 내리고 새로 만들고,
+              그러면 같은 항목이 둘로 갈린다. 시험 항목은 닫힌 축이라 특히 나쁘다. */}
+          <SearchablePicker
+            className="w-72"
+            options={options}
+            value={newItem}
+            onChange={setNewItem}
+            placeholder="시험 항목"
+            searchPlaceholder="인장 · 경도 · 충격 …"
+            detailTitle="시험 항목"
+            detailHint="이 계열이 무슨 시험을 하는지 고릅니다. 이미 적은 항목은 흐리게 보입니다."
+          />
           <Button
             onClick={() =>
               act(async () => {
