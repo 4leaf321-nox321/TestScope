@@ -200,7 +200,9 @@ export default function SpecDefinitionsPage() {
             <TableRow key={one.id} className={one.is_active ? undefined : 'opacity-60'}>
               <TableCell>
                 {one.label}
-                {one.help && <p className="text-muted-foreground mt-0.5 text-xs">{one.help}</p>}
+                {one.help && (
+                  <p className="text-muted-foreground mt-0.5 text-xs">{one.help}</p>
+                )}
               </TableCell>
               <TableCell className="font-mono text-xs">{one.key}</TableCell>
               <TableCell>{one.group_label}</TableCell>
@@ -214,7 +216,7 @@ export default function SpecDefinitionsPage() {
                   one.categories.join(', ')
                 )}
               </TableCell>
-              {/* 이어져 있으면 이 사양의 값이 모델 역량으로 따라 들어간다. */}
+              {/* 이어져 있으면 이 사양의 값이 기종의 시험 항목으로 따라 들어간다. */}
               <TableCell>
                 {one.condition_label ?? <span className="text-muted-foreground">—</span>}
               </TableCell>

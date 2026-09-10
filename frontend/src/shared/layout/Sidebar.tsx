@@ -48,7 +48,7 @@ function SidebarBody({ workspaceSlug, onNavigate }: Omit<SidebarProps, 'collapse
       <div className="flex h-14 shrink-0 flex-col justify-center border-b px-4">
         <span className="text-base leading-tight font-semibold tracking-tight">TestScope</span>
         <span className="text-muted-foreground text-xs leading-tight">
-          시험 역량 지도
+          시험 장비 지도
           {/* **못 찾았으면 안 적는다.** unknown 을 그대로 띄우면 버전 자리가
               고장난 것처럼 보이는데, 실제로는 개발 경로에서 돈다는 뜻이다. */}
           {release && release !== UNKNOWN_VERSION && (

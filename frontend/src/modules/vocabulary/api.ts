@@ -25,7 +25,9 @@ export const vocabularyApi = {
     api.post<Term>(`/vocabularies/terms/${termId}/merge`, { target_term_id: targetTermId }),
 
   conditions: (includeInactive = false) =>
-    api.get<ConditionKey[]>(`/condition-keys${includeInactive ? '?include_inactive=true' : ''}`),
+    api.get<ConditionKey[]>(
+      `/condition-keys${includeInactive ? '?include_inactive=true' : ''}`,
+    ),
   createCondition: (body: Record<string, unknown>) =>
     api.post<ConditionKey>('/condition-keys', body),
   updateCondition: (id: string, body: Record<string, unknown>) =>
@@ -60,6 +62,8 @@ export const AXIS = {
   testItem: 'test_item',
   equipmentCategory: 'equipment_category',
   manufacturer: 'manufacturer',
+  formFactor: 'form_factor',
   site: 'site',
+  calibrationProvider: 'calibration_provider',
   standardBody: 'standard_body',
 } as const

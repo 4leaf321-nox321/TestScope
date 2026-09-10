@@ -81,28 +81,31 @@ export const NAV_GROUPS: NavGroup[] = [
     // 「다음에 어디로」 를 안 묻는다.
     // **동선이 곧 순서다.** 검색으로 답을 얻고(찾기), 그 답이 어디서 오는지
     // 확인한다(보유 장비). 없으면 채운다.
-    title: '시험 역량',
+    title: '시험 항목',
     items: [
-      {
-        // **이 시스템의 첫 화면이다.** 나머지는 이 한 물음에 답하기 위해 있다:
-        // 「그 시험이 가능한 장비가 우리 조직에 있나」.
-        label: '역량 검색',
-        icon: Search,
-        to: '/search',
-      },
       {
         // **실물이다.** 카탈로그의 모델을 가리켜 만든 개체 — 자산번호·자리·상태·
         // 교정이 여기 붙는다(ADR 0004).
+        //
+        // 찾기보다 **앞에 둔다**: 날마다 여는 것은 대장이고, 찾기는 물음이 생겼을 때
+        // 연다. 자주 여는 것이 위에 있어야 손이 짧다.
         label: '보유 장비',
         icon: Wrench,
         to: '/equipment',
       },
       {
-        // 역량 자체를 훑는 자리. 장비 상세에서 하나씩 보면 「우리가 무엇을 못
+        // **이 시스템이 답하려는 물음이다**: 「그 시험이 가능한 장비가 우리 조직에
+        // 있나」. 나머지 화면은 이 한 물음에 답하기 위해 있다.
+        label: '장비 찾기',
+        icon: Search,
+        to: '/search',
+      },
+      {
+        // 시험 항목 자체를 훑는 자리. 장비 상세에서 하나씩 보면 「우리가 무엇을 못
         // 하나」 를 영영 알 수 없다 — 그것이 이 목록의 존재 이유다.
-        label: '역량 현황',
+        label: '시험 항목 현황',
         icon: Gauge,
-        to: '/capabilities',
+        to: '/test-items',
         pending: true,
         phase: '2단계',
         summary: '시험 항목 x 부서 표. 빈 칸이 곧 우리가 못 하는 시험이다.',
@@ -110,7 +113,7 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    // **정의가 사는 자리.** 위의 '시험 역량' 은 우리가 가진 것이고, 여기는 세상에
+    // **정의가 사는 자리.** 위의 '시험 항목' 은 우리가 가진 것이고, 여기는 세상에
     // 있는 것이다 — 제조사가 파는 모델과 기관이 낸 규격.
     //
     // 보유 장비 한 대는 이 둘을 엮은 인스턴스다: 어떤 모델이며 어떤 시험법을
@@ -187,7 +190,12 @@ export const NAV_GROUPS: NavGroup[] = [
     title: '내 부서',
     audience: 'manager',
     items: [
-      { label: '부서 멤버', icon: Users, resolve: (s) => `/w/${s}/members`, audience: 'manager' },
+      {
+        label: '부서 멤버',
+        icon: Users,
+        resolve: (s) => `/w/${s}/members`,
+        audience: 'manager',
+      },
       {
         // **기록만 쌓이고 볼 자리가 없으면 자산이 아니다.** 여기에는 만들기·
         // 고치기·지우기가 없다 — 고칠 수 있으면 감사가 아니다.
@@ -202,10 +210,20 @@ export const NAV_GROUPS: NavGroup[] = [
     title: '관리',
     audience: 'system_admin',
     items: [
-      { label: '계정', icon: UserCog, to: '/admin/accounts', audience: 'system_admin' },
+      {
+        label: '계정',
+        icon: UserCog,
+        to: '/admin/accounts',
+        audience: 'system_admin',
+      },
       // **전사 부서 목록이다.** 위 '내 부서' 와 헷갈리지 않게 이름을 가른다 —
       // 이쪽은 부서를 만들고 고치는 자리고, 저쪽은 내 부서의 일이다.
-      { label: '부서 정보', icon: Building2, to: '/admin/workspaces', audience: 'system_admin' },
+      {
+        label: '부서 정보',
+        icon: Building2,
+        to: '/admin/workspaces',
+        audience: 'system_admin',
+      },
       {
         // 보는 화면이 '공통' 에 따로 있는데 둘 다 「기준정보」 면 관리자는 어느
         // 쪽이 진짜인지 모른다. 이름에 「편집」 을 붙여 가른다.
@@ -214,7 +232,12 @@ export const NAV_GROUPS: NavGroup[] = [
         to: '/admin/vocabulary',
         audience: 'system_admin',
       },
-      { label: '서버', icon: Server, to: '/admin/server', audience: 'system_admin' },
+      {
+        label: '서버',
+        icon: Server,
+        to: '/admin/server',
+        audience: 'system_admin',
+      },
     ],
   },
 ]

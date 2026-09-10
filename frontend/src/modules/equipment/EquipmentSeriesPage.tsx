@@ -46,7 +46,7 @@ export default function EquipmentSeriesPage() {
   const owned = params.get('owned') === '1' || params.get('owned') === 'true'
   const issue = params.get('issue') ?? undefined
   const [query, setQuery] = useState('')
-  // 「남은 일」 에서 왔으면 종류로 좁히지 않는다 — 부속 계열도 역량이 빌 수 있다.
+  // 「남은 일」 에서 왔으면 종류로 좁히지 않는다 — 부속 계열도 시험 항목이 빌 수 있다.
   const [kind, setKind] = useState(issue ? '' : 'main')
   const [creating, setCreating] = useState(false)
   const page = useResource(
@@ -83,8 +83,8 @@ export default function EquipmentSeriesPage() {
           <p className="text-sm">
             {owned && <strong>보유한 계열만</strong>}
             {owned && issue && ' · '}
-            {issue === 'capabilities' &&
-              '시험 항목이 하나도 안 적힌 계열입니다. 비워 두면 이 계열의 기종으로 장비를 등록해도 복사될 역량이 없어, 그 장비는 검색에 안 걸립니다.'}
+            {issue === 'test_items' &&
+              '시험 항목이 하나도 안 적힌 계열입니다. 비워 두면 이 계열의 기종으로 장비를 등록해도 복사될 시험 항목이 없어, 그 장비는 검색에 안 걸립니다.'}
           </p>
           <Button size="sm" variant="outline" onClick={() => setParams({})}>
             필터 풀기
@@ -148,10 +148,7 @@ export default function EquipmentSeriesPage() {
                 className={one.status === 'discontinued' ? 'opacity-60' : undefined}
               >
                 <TableCell className="font-medium">
-                  <Link
-                    to={`/catalog/equipment-series/${one.id}`}
-                    className="hover:underline"
-                  >
+                  <Link to={`/catalog/equipment-series/${one.id}`} className="hover:underline">
                     {one.name_ko || one.name}
                   </Link>
                   {one.kind !== 'main' && (
@@ -177,10 +174,10 @@ export default function EquipmentSeriesPage() {
                   )}
                 </TableCell>
                 <TableCell className="text-right">
-                  {one.capabilities.length === 0 ? (
+                  {one.test_items.length === 0 ? (
                     <span className="text-amber-600">미등록</span>
                   ) : (
-                    one.capabilities.length
+                    one.test_items.length
                   )}
                 </TableCell>
                 <TableCell className="text-right">

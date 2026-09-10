@@ -3,6 +3,10 @@
  *
  * **본문만 스크롤한다.** 헤더·사이드바가 함께 스크롤되면 긴 화면에서 지금 어디
  * 있는지를 잃는다.
+ *
+ * 스크롤 통은 이 `main` 하나다. **위쪽 여백을 여기 두지 않는다** — 화면 머리글이
+ * 이 통의 꼭대기에 붙어 있어야 하고(`PageHeader`), 통에 padding-top 이 있으면 그
+ * 머리글이 처음에 그만큼 내려와 붙는다. 좌우·아래 여백만 안쪽 상자가 갖는다.
  */
 
 import { Suspense, useState } from 'react'
@@ -57,11 +61,11 @@ export function AppShell() {
           }}
           workspaceSlug={workspaceSlug}
         />
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto">
           {/* **본문은 폭을 다 쓴다.** 상한을 두면 넓은 표가 접히고, 그때마다
               「이 화면도 예외로」 가 반복돼 목록이 곧 전부가 된다. 좁아야 하는
               화면은 자기 안에서 다시 좁힌다. */}
-          <div className="w-full">
+          <div className="w-full px-6 pb-6">
             <Suspense fallback={<PageSkeleton />}>
               <Outlet />
             </Suspense>

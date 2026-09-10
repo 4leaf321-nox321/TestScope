@@ -2,7 +2,7 @@
  * 부서 홈 — **남은 일이 먼저 온다.**
  *
  * 관리 화면에 들어가야만 보이는 목록은 아무도 안 본다. 승인 대기가 며칠씩
- * 방치되고, 역량이 안 적힌 장비는 영영 안 적힌다.
+ * 방치되고, 시험 항목이 안 적힌 장비는 영영 안 적힌다.
  */
 
 import { Link, useParams } from 'react-router-dom'
@@ -44,10 +44,10 @@ export default function WorkspaceHomePage() {
     <div className="space-y-8">
       <PageHeader
         title={workspace?.name ?? 'TestScope'}
-        description="어떤 시험이 가능한지 찾고, 우리 장비의 역량을 채워 넣는 곳입니다."
+        description="어떤 시험이 가능한지 찾고, 우리 장비의 시험 항목을 채워 넣는 곳입니다."
         actions={
           <Button asChild>
-            <Link to="/search">역량 검색</Link>
+            <Link to="/search">장비 찾기</Link>
           </Button>
         }
       />

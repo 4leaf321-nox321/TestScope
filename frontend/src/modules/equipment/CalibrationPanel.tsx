@@ -1,7 +1,7 @@
 /**
  * 교정 이력.
  *
- * **역량과 별개의 칸이다.** 장비가 20 kN 을 낼 수 있다는 것과 그 값이 지금 믿을
+ * **시험 항목과 별개의 칸이다.** 장비가 20 kN 을 낼 수 있다는 것과 그 값이 지금 믿을
  * 만하다는 것은 다른 이야기다. 기한이 지난 장비도 목록에는 남되, 화면이 그 사실을
  * 말해 줘야 한다 — 말 안 하면 사람은 만료된 장비로 시험을 잡는다.
  */
@@ -24,6 +24,8 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { SearchablePicker } from '@/shared/components/SearchablePicker'
+import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { shownDate } from '@/shared/lib/datetime'
 import { equipmentApi } from '@/modules/equipment/api'
 
@@ -43,6 +45,10 @@ export function CalibrationPanel({
   const [calibratedOn, setCalibratedOn] = useState('')
   const [nextDueOn, setNextDueOn] = useState('')
   const [certificate, setCertificate] = useState('')
+  // **교정 기관은 축의 값이다.** 자유 문자열로 두면 같은 기관이 「한국계량측정협회」 와
+  // 「(주)한국계량측정협회」 로 갈리고, 그 둘은 서로 다른 기관이 된다.
+  const [provider, setProvider] = useState('')
+  const providers = useResource(() => vocabularyApi.terms(AXIS.calibrationProvider), [])
   const [error, setError] = useState<ApiError | Error | null>(null)
 
   async function submit(event: FormEvent) {
@@ -53,10 +59,12 @@ export function CalibrationPanel({
         calibrated_on: calibratedOn,
         next_due_on: nextDueOn || null,
         certificate_no: certificate || null,
+        provider_term_id: provider || null,
       })
       setCalibratedOn('')
       setNextDueOn('')
       setCertificate('')
+      setProvider('')
       list.reload()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
@@ -92,6 +100,23 @@ export function CalibrationPanel({
               id="certificate"
               value={certificate}
               onChange={(event) => setCertificate(event.target.value)}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="provider">교정 기관</Label>
+            <SearchablePicker
+              id="provider"
+              value={provider}
+              onChange={setProvider}
+              options={(providers.data ?? []).map((one) => ({
+                id: one.id,
+                label: one.value,
+                badge: one.usage_count ? `${one.usage_count}건` : null,
+              }))}
+              placeholder="기관 고르기"
+              detailTitle="교정 기관"
+              detailHint="없는 기관은 기준정보 화면에서 더합니다."
+              className="w-56"
             />
           </div>
           <Button type="submit">기록 추가</Button>

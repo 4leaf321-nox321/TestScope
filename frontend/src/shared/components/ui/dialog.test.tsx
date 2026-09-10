@@ -66,6 +66,31 @@ function drag(target: HTMLElement, from: [number, number], to: [number, number])
   })
 }
 
+describe('모달 안이 다 보인다', () => {
+  it('폼으로 감싸도 본문만 굴러간다', () => {
+    // **감싼 폼이 그냥 블록이면** 안쪽의 `flex-1 min-h-0` 이 받을 높이가 없다.
+    // 폼이 85vh 를 넘어 자라고, 넘친 바닥글은 잘려서 저장 단추를 못 누르게 된다 —
+    // 감싸지 않은 모달에서는 안 나는 일이라 더 나쁘다.
+    open(true)
+    const form = document.querySelector('[data-slot="dialog-content"] form') as HTMLElement
+    expect(form).not.toBeNull()
+    for (const one of ['flex', 'min-h-0', 'flex-1', 'flex-col']) {
+      expect(form.className).toContain(one)
+    }
+  })
+
+  it('굴러가는 것은 가운데뿐이다 — 머리글과 바닥글은 붙박이다', () => {
+    open(true)
+    const scroller = document.querySelector(
+      '[data-slot="dialog-content"] .overflow-y-auto',
+    ) as HTMLElement
+    expect(scroller).not.toBeNull()
+    // 바닥글이 굴러가면 긴 모달에서 확인·취소가 내용과 함께 위로 사라진다.
+    expect(scroller.querySelector('[data-slot="dialog-footer"]')).toBeNull()
+    expect(scroller.querySelector('[data-slot="dialog-header"]')).toBeNull()
+  })
+})
+
 describe('모달 옮기기', () => {
   it('머리글을 끌면 그만큼 옮겨진다', () => {
     const { content, header } = open()

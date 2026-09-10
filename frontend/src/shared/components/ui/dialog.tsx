@@ -205,6 +205,16 @@ function DialogContent({
  * 그리고 안 걸린다는 사실은 내용이 길어지기 전까지 안 보인다(실측: 등록 모달 셋이
  * 전부 그랬다). 감싼 것을 다시 만들어 주므로 `onSubmit` 은 그대로 산다.
  *
+ * ## 감싼 것도 세로 flex 로 만든다
+ *
+ * 굴리는 영역은 `flex-1 min-h-0` 으로 남는 높이를 받는다. 그런데 그것을 감싼 `<form>`
+ * 이 그냥 블록이면 **받을 높이가 없다** — 폼이 85vh 를 넘어 자라고, 넘친 만큼은
+ * `overflow-hidden` 에 잘려 나간다. 잘리는 것은 대개 바닥글이라 **저장 단추를 누를
+ * 방법이 사라진다.**
+ *
+ * 감싸지 않은 모달에서는 안 나던 일이라 더 나쁘다: 같은 코드가 어떤 모달에서만
+ * 조용히 깨지고, 그 차이는 내용이 길어지기 전까지 안 보인다.
+ *
  * ## 바닥글이 없으면 아무 일도 안 한다
  *
  * `DialogFooter` 를 안 쓰는 모달이 있다. 그런 모달은 내용 전체가 굴러가고, 그것은
@@ -273,7 +283,17 @@ function usePinnedLayout(
     const inner = split(flatten(wrapper.props.children))
     if (inner.head.length || inner.foot.length) {
       // 감싼 것을 그대로 다시 만든다 — `<form>` 이 사라지면 엔터로 저장이 안 된다.
-      return React.cloneElement(wrapper, undefined, build(inner))
+      //
+      // **세로 flex 로 만들어 준다.** 안 그러면 안쪽의 `flex-1 min-h-0` 이 받을 높이가
+      // 없어서 폼이 85vh 를 넘어 자라고, 넘친 바닥글이 잘려 저장을 못 누른다.
+      // 폼이 갖고 있던 `space-y-*` 는 그대로 두고 gap 을 얹지 않는다 — 둘 다 걸면
+      // 사이가 두 번 벌어진다.
+      const wrapped = wrapper as React.ReactElement<{ className?: string }>
+      return React.cloneElement(
+        wrapped,
+        { className: cn(wrapped.props.className, "flex min-h-0 flex-1 flex-col") },
+        build(inner)
+      )
     }
   }
   return build(direct)

@@ -78,7 +78,7 @@ export default function MethodsPage() {
       {page.data && page.data.items.length === 0 ? (
         <EmptyState
           title="시험법이 없습니다"
-          hint="규격을 등록해 두면 장비 역량에 그 규격을 걸 수 있고, 검색이 규격의 요구 조건을 자동으로 채웁니다."
+          hint="규격을 등록해 두면 장비 시험 항목에 그 규격을 걸 수 있고, 검색이 규격의 요구 조건을 자동으로 채웁니다."
         />
       ) : (
         <Table>
@@ -94,7 +94,10 @@ export default function MethodsPage() {
           </TableHeader>
           <TableBody>
             {(page.data?.items ?? []).map((one) => (
-              <TableRow key={one.id} className={one.status === 'superseded' ? 'opacity-60' : undefined}>
+              <TableRow
+                key={one.id}
+                className={one.status === 'superseded' ? 'opacity-60' : undefined}
+              >
                 <TableCell className="font-medium">
                   <Link to={`/methods/${one.id}`} className="hover:underline">
                     {one.code}

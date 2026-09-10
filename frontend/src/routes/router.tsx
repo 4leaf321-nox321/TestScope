@@ -29,16 +29,12 @@ import { DEFAULT_WORKSPACE, pendingItems } from '@/shared/layout/navigation'
 const AccountsAdminPage = lazy(() => import('@/modules/accounts/AccountsAdminPage'))
 const AuditPage = lazy(() => import('@/modules/audit/AuditPage'))
 const ConditionsPage = lazy(() => import('@/modules/vocabulary/ConditionsPage'))
-const SpecDefinitionsPage = lazy(
-  () => import('@/modules/vocabulary/SpecDefinitionsPage'),
-)
+const SpecDefinitionsPage = lazy(() => import('@/modules/vocabulary/SpecDefinitionsPage'))
 const EquipmentDetailPage = lazy(() => import('@/modules/equipment/EquipmentDetailPage'))
 const EquipmentModelDetailPage = lazy(
   () => import('@/modules/equipment/EquipmentModelDetailPage'),
 )
-const EquipmentSeriesPage = lazy(
-  () => import('@/modules/equipment/EquipmentSeriesPage'),
-)
+const EquipmentSeriesPage = lazy(() => import('@/modules/equipment/EquipmentSeriesPage'))
 const EquipmentSeriesDetailPage = lazy(
   () => import('@/modules/equipment/EquipmentSeriesDetailPage'),
 )
@@ -94,18 +90,18 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <HomeRedirect /> },
 
-          // 시험 역량 — 우리가 가진 것.
+          // 시험 항목 — 우리가 가진 것.
           { path: 'search', element: <SearchPage /> },
           { path: 'equipment', element: <EquipmentPage /> },
           { path: 'equipment/:id', element: <EquipmentDetailPage /> },
 
           // 카탈로그 — 세상에 있는 것. 보유 장비가 이 둘을 엮은 인스턴스다(ADR 0004).
-                    { path: 'catalog/equipment-series', element: <EquipmentSeriesPage /> },
+          { path: 'catalog/equipment-series', element: <EquipmentSeriesPage /> },
           {
             path: 'catalog/equipment-series/:id',
             element: <EquipmentSeriesDetailPage />,
           },
-{ path: 'catalog/equipment-models', element: <EquipmentModelsPage /> },
+          { path: 'catalog/equipment-models', element: <EquipmentModelsPage /> },
           { path: 'catalog/equipment-models/:id', element: <EquipmentModelDetailPage /> },
           // 시험법 주소는 그대로 둔다 — 이미 나간 링크가 있고, 옮겨서 얻는 것이 없다.
           { path: 'methods', element: <MethodsPage /> },

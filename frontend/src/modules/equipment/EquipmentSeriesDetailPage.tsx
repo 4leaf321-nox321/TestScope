@@ -2,7 +2,7 @@
  * 장비 계열 상세 — 무슨 시험이 되나, 어느 부속이 붙나, 어떤 기종이 있나.
  *
  * **수치는 여기 없다.** 하중·공간·무게는 기종마다 갈리므로 기종 상세가 갖는다.
- * 여기 적은 역량은 이 계열의 기종으로 **보유 장비를 등록할 때 복사된다** — 상속이
+ * 여기 적은 시험 항목은 이 계열의 기종으로 **보유 장비를 등록할 때 복사된다** — 상속이
  * 아니라 복사라, 이 값을 나중에 고쳐도 이미 만든 장비는 안 바뀐다(ADR 0004·0006).
  */
 
@@ -14,6 +14,7 @@ import { ApiError } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
+import { Badge } from '@/shared/components/ui/badge'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import {
@@ -59,7 +60,7 @@ const RELATION_LABEL: Record<string, string> = {
   variant_of: '상위 계열',
 }
 
-/** 조건 한 칸을 넣는 줄. 개체 쪽(CapabilityPanel)과 **같은 규칙**이다. */
+/** 조건 한 칸을 넣는 줄. 개체 쪽(TestItemPanel)과 **같은 규칙**이다. */
 function LimitForm({
   conditions,
   onSubmit,
@@ -207,7 +208,7 @@ export default function EquipmentSeriesDetailPage() {
 
       <ErrorNotice error={error} />
 
-      <SeriesCapabilities
+      <SeriesTestItems
         series={one}
         items={items.data ?? []}
         conditions={conditions.data ?? []}
@@ -220,8 +221,8 @@ export default function EquipmentSeriesDetailPage() {
         <div>
           <h2 className="text-base font-semibold">기종</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            <strong>보유 장비는 계열이 아니라 기종을 가리킵니다.</strong> 한 계열 안에서
-            하중이 수백 배 갈리기 때문입니다 — 수치 사양은 각 기종에 적습니다.
+            <strong>보유 장비는 계열이 아니라 기종을 가리킵니다.</strong> 한 계열 안에서 하중이
+            수백 배 갈리기 때문입니다 — 수치 사양은 각 기종에 적습니다.
           </p>
         </div>
         {(models.data?.items ?? []).length === 0 ? (
@@ -280,8 +281,8 @@ export default function EquipmentSeriesDetailPage() {
   )
 }
 
-/** 사양서 역량 절. 본문에서 떼어 낸 이유는 한 화면 함수가 너무 길어지기 때문이다. */
-function SeriesCapabilities({
+/** 시험 가능한 사양 절. 본문에서 떼어 낸 이유는 한 화면 함수가 너무 길어지기 때문이다. */
+function SeriesTestItems({
   series,
   items,
   conditions,
@@ -298,7 +299,7 @@ function SeriesCapabilities({
 }) {
   // **이미 적은 것은 고르기 전에 보여 준다.** 눌러 보고 409 를 받는 것은 답이지만,
   // 답을 받으려고 누르게 하는 것은 화면의 일이 아니다.
-  const taken = new Set(series.capabilities.map((one) => one.test_item))
+  const taken = new Set(series.test_items.map((one) => one.test_item))
   const options = items.map((item) => ({
     id: item.id,
     label: item.value,
@@ -309,30 +310,29 @@ function SeriesCapabilities({
   return (
     <section className="space-y-3">
       <div>
-        <h2 className="text-base font-semibold">사양서 역량</h2>
+        <h2 className="text-base font-semibold">시험 가능한 사양</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          여기 적은 값은 이 계열의 기종으로{' '}
-          <strong>보유 장비를 등록할 때 복사됩니다.</strong> 조건은{' '}
-          <strong>계열 전체가 만족하는 것만</strong> 적습니다 — 기종마다 갈리는 수치는
+          여기 적은 값은 이 계열의 기종으로 <strong>보유 장비를 등록할 때 복사됩니다.</strong>{' '}
+          조건은 <strong>계열 전체가 만족하는 것만</strong> 적습니다 — 기종마다 갈리는 수치는
           그 기종의 사양에 적으면 등록할 때 합쳐집니다.
         </p>
       </div>
 
-      {series.capabilities.length === 0 ? (
+      {series.test_items.length === 0 ? (
         <EmptyState
-          title="사양서 역량이 없습니다"
+          title="시험 가능한 사양이 없습니다"
           hint="비워 두면 이 계열의 기종으로 장비를 등록해도 복사될 것이 없어, 매번 손으로 적게 됩니다."
         />
       ) : (
         <ul className="space-y-3">
-          {series.capabilities.map((capability) => (
-            <li key={capability.id} className="rounded-md border p-4">
+          {series.test_items.map((test_item) => (
+            <li key={test_item.id} className="rounded-md border p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-medium">{capability.test_item}</span>
-                  {capability.method_code && (
+                  <span className="font-medium">{test_item.test_item}</span>
+                  {test_item.method_code && (
                     <span className="text-muted-foreground text-sm">
-                      {capability.method_code}
+                      {test_item.method_code}
                     </span>
                   )}
                 </div>
@@ -341,7 +341,7 @@ function SeriesCapabilities({
                     variant="ghost"
                     size="sm"
                     onClick={() =>
-                      act(() => seriesApi.removeCapability(series.id, capability.id))
+                      act(() => seriesApi.removeTestItem(series.id, test_item.id))
                     }
                   >
                     <Trash2 className="size-4" />
@@ -349,10 +349,35 @@ function SeriesCapabilities({
                 )}
               </div>
 
-              {capability.note && <p className="mt-2 text-sm">{capability.note}</p>}
+              {test_item.note && <p className="mt-2 text-sm">{test_item.note}</p>}
+
+              {/* **카탈로그가 인용한 규격.** 전에는 비고에 글자로만 있어서 시험법
+                  453건이 아무것도 가리키지 않는 목록이었다 — 이제 눌러서 그 규격으로
+                  간다. 요구 조건이 없는 규격은 **검색이 조건으로 좁히지 못하므로**
+                  그 사실을 함께 적는다. */}
+              {test_item.methods.length > 0 && (
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                  <span className="text-muted-foreground text-xs">인용 규격</span>
+                  {test_item.methods.map((method) => (
+                    <Link
+                      key={method.id}
+                      to={`/methods/${method.id}`}
+                      title={method.title}
+                      className="hover:underline"
+                    >
+                      <Badge variant={method.has_requirements ? 'secondary' : 'outline'}>
+                        {[method.code, method.edition].filter(Boolean).join(' ')}
+                        {!method.has_requirements && (
+                          <span className="text-muted-foreground"> 조건 없음</span>
+                        )}
+                      </Badge>
+                    </Link>
+                  ))}
+                </div>
+              )}
 
               <ul className="mt-3 space-y-1 text-sm">
-                {capability.limits.map((limit) => (
+                {test_item.limits.map((limit) => (
                   <li key={limit.id} className="flex items-center gap-2">
                     <span className="text-muted-foreground w-32 shrink-0">
                       {limit.condition_label}
@@ -370,9 +395,7 @@ function SeriesCapabilities({
                         variant="ghost"
                         size="sm"
                         onClick={() =>
-                          act(() =>
-                            seriesApi.removeLimit(series.id, capability.id, limit.id),
-                          )
+                          act(() => seriesApi.removeLimit(series.id, test_item.id, limit.id))
                         }
                       >
                         빼기
@@ -386,7 +409,7 @@ function SeriesCapabilities({
                 <LimitForm
                   conditions={conditions}
                   onSubmit={(body) =>
-                    act(() => seriesApi.putLimit(series.id, capability.id, body))
+                    act(() => seriesApi.putLimit(series.id, test_item.id, body))
                   }
                 />
               )}
@@ -413,13 +436,13 @@ function SeriesCapabilities({
           <Button
             onClick={() =>
               act(async () => {
-                await seriesApi.addCapability(series.id, { test_item_term_id: newItem })
+                await seriesApi.addTestItem(series.id, { test_item_term_id: newItem })
                 setNewItem('')
               })
             }
             disabled={!newItem}
           >
-            역량 추가
+            시험 항목 추가
           </Button>
         </div>
       )}

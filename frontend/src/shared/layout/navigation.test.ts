@@ -15,8 +15,10 @@ const ADMIN = { isSystemAdmin: true, isAnyManager: true }
 
 describe('권한별 메뉴', () => {
   it('멤버에게는 관리 메뉴가 안 보인다', () => {
-    const labels = visibleGroups(MEMBER).flatMap((group) => group.items.map((one) => one.label))
-    expect(labels).toContain('역량 검색')
+    const labels = visibleGroups(MEMBER).flatMap((group) =>
+      group.items.map((one) => one.label),
+    )
+    expect(labels).toContain('장비 찾기')
     expect(labels).toContain('보유 장비')
     // **눌러야 403 을 아는 메뉴는 "할 수 있는 일" 을 알려 주지 못한다.**
     expect(labels).not.toContain('계정')
@@ -24,7 +26,9 @@ describe('권한별 메뉴', () => {
   })
 
   it('부서 관리자는 내 부서 메뉴까지 본다', () => {
-    const labels = visibleGroups(MANAGER).flatMap((group) => group.items.map((one) => one.label))
+    const labels = visibleGroups(MANAGER).flatMap((group) =>
+      group.items.map((one) => one.label),
+    )
     expect(labels).toContain('부서 멤버')
     expect(labels).toContain('변경 이력')
     expect(labels).not.toContain('계정')

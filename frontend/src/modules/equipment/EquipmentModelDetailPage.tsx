@@ -2,7 +2,7 @@
  * 장비 기종 상세 — **수치가 갈리는 자리.**
  *
  * 무슨 시험이 되나는 계열이 정하고 여기서는 읽기만 한다. 여기서 적는 것은 사양이고,
- * 검색축에 이어진 사양은 이 기종으로 **보유 장비를 등록할 때 역량 조건이 된다**
+ * 검색축에 이어진 사양은 이 기종으로 **보유 장비를 등록할 때 시험 조건이 된다**
  * (ADR 0006). 이미 등록된 장비는 안 바뀐다 — 상속이 아니라 복사다(ADR 0004).
  */
 
@@ -129,7 +129,7 @@ export default function EquipmentModelDetailPage() {
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-base font-semibold">계열의 사양서 역량</h2>
+          <h2 className="text-base font-semibold">계열의 시험 가능한 사양</h2>
           <p className="text-muted-foreground mt-1 text-sm">
             <strong>무슨 시험이 되는지는 계열이 정합니다.</strong> 고치려면{' '}
             <Link
@@ -141,24 +141,24 @@ export default function EquipmentModelDetailPage() {
             에서 하세요. 위 사양의 값이 조건을 좁힙니다.
           </p>
         </div>
-        {one.capabilities.length === 0 ? (
+        {one.test_items.length === 0 ? (
           <EmptyState
-            title="계열에 역량이 없습니다"
+            title="계열에 시험 항목이 없습니다"
             hint="비워 두면 이 기종으로 장비를 등록해도 복사될 것이 없어, 매번 손으로 적게 됩니다."
           />
         ) : (
           <ul className="space-y-2 text-sm">
-            {one.capabilities.map((capability) => (
-              <li key={capability.id} className="rounded-md border p-3">
+            {one.test_items.map((test_item) => (
+              <li key={test_item.id} className="rounded-md border p-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-medium">{capability.test_item}</span>
-                  {capability.method_code && (
-                    <span className="text-muted-foreground">{capability.method_code}</span>
+                  <span className="font-medium">{test_item.test_item}</span>
+                  {test_item.method_code && (
+                    <span className="text-muted-foreground">{test_item.method_code}</span>
                   )}
                 </div>
-                {capability.limits.length > 0 && (
+                {test_item.limits.length > 0 && (
                   <ul className="text-muted-foreground mt-2 space-y-1 text-xs">
-                    {capability.limits.map((limit) => (
+                    {test_item.limits.map((limit) => (
                       <li key={limit.id}>
                         {limit.condition_label}{' '}
                         {limit.text_value ??

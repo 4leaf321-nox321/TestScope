@@ -1,7 +1,7 @@
 /**
  * 상태 배지 — **말과 색을 한 곳에서 정한다.**
  *
- * 장비 상태·역량 신뢰도·계정 상태가 화면마다 제 색을 고르면, 같은 "점검 중" 이
+ * 장비 상태·시험 항목 신뢰도·계정 상태가 화면마다 제 색을 고르면, 같은 "점검 중" 이
  * 목록에서는 회색이고 상세에서는 노랑이 된다. 그러면 색이 아무 뜻도 못 갖는다.
  */
 
@@ -16,15 +16,20 @@ const TONE_CLASS: Record<Tone, string> = {
   bad: 'bg-destructive/10 text-destructive',
 }
 
-/** 장비 상태. **폐기는 나쁨이 아니라 중립이다** — 사고가 아니라 생애의 끝이다. */
+/** 장비 상태. **폐기는 나쁨이 아니라 중립이다** — 사고가 아니라 생애의 끝이다.
+ *
+ *  **유휴도 좋음이다.** 안 쓰고 있다는 것은 못 쓴다는 뜻이 아니고, 빌리려는 사람에게는
+ *  오히려 가장 반가운 줄이다 — 경고색을 칠하면 그 사실이 가려진다. */
 const EQUIPMENT: Record<string, { label: string; tone: Tone }> = {
+  incoming: { label: '입고', tone: 'neutral' },
   operational: { label: '가동', tone: 'good' },
+  idle: { label: '유휴', tone: 'good' },
   maintenance: { label: '점검·교정', tone: 'warn' },
   repair: { label: '고장', tone: 'bad' },
   retired: { label: '폐기', tone: 'neutral' },
 }
 
-/** 역량을 어디까지 믿을 수 있나. */
+/** 시험 항목을 어디까지 믿을 수 있나. */
 const CONFIDENCE: Record<string, { label: string; tone: Tone }> = {
   verified: { label: '검증됨', tone: 'good' },
   catalog: { label: '사양서', tone: 'neutral' },

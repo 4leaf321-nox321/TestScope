@@ -1,8 +1,8 @@
 /**
- * 장비 상세 — 제원 · 시험 역량 · 교정 이력.
+ * 장비 상세 — 제원 · 시험 항목 · 교정 이력.
  *
- * **역량이 이 화면의 본문이다.** 제원은 대장이고, 이 시스템이 답하려는 물음에
- * 답하는 것은 역량 쪽이다.
+ * **시험 항목이 이 화면의 본문이다.** 제원은 대장이고, 이 시스템이 답하려는 물음에
+ * 답하는 것은 시험 항목 쪽이다.
  */
 
 import { Link, useParams } from 'react-router-dom'
@@ -14,8 +14,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
 import { equipmentApi } from '@/modules/equipment/api'
-import { CapabilityPanel } from '@/modules/equipment/CapabilityPanel'
+import { TestItemPanel } from '@/modules/equipment/TestItemPanel'
 import { CalibrationPanel } from '@/modules/equipment/CalibrationPanel'
+import { EquipmentSpecPanel } from '@/modules/equipment/EquipmentSpecPanel'
 
 function Field({ label, value }: { label: string; value: string | null | undefined }) {
   return (
@@ -71,28 +72,65 @@ export default function EquipmentDetailPage() {
       />
 
       <dl className="grid grid-cols-2 gap-4 rounded-md border p-4 sm:grid-cols-4">
-        <Field label="분류" value={one.category} />
-        <Field label="보유 부서" value={one.workspace_name ?? '전사'} />
+        {/* **장비군은 저장된 값이 아니다** — 유형에서 따라 나온다. */}
         <Field
-          label="위치"
-          value={[one.site, one.location].filter(Boolean).join(' · ')}
+          label="분류"
+          value={[one.category_group, one.category]
+            .filter(Boolean)
+            .filter((value, index, all) => all.indexOf(value) === index)
+            .join(' · ')}
         />
+        <Field
+          label="보유 부서"
+          value={one.shared_use ? `${one.workspace_name ?? '—'} · 공용` : one.workspace_name}
+        />
+        <Field label="위치" value={[one.site, one.location].filter(Boolean).join(' · ')} />
         <Field label="담당자" value={one.contact_name} />
         <Field label="제조사" value={one.manufacturer} />
-        <Field label="시리얼" value={one.serial_no} />
-        <Field label="도입일" value={shownDate(one.acquired_on)} />
-        <Field label="교정 예정" value={shownDate(one.calibration_due_on)} />
+        <Field label="제조번호" value={one.serial_no} />
+        <Field label="부서관리번호" value={one.dept_asset_no} />
+        <Field
+          label="도입일"
+          value={[
+            shownDate(one.acquired_on),
+            one.manufactured_year ? `${one.manufactured_year}년 제조` : null,
+          ]
+            .filter(Boolean)
+            .join(' · ')}
+        />
+        {/* **교정은 세 가지를 구별해 말한다** — 대상이 아님 · 대상인데 이력 없음 ·
+            다음 예정일(성적서인지 계산인지). 하나로 뭉치면 빠뜨린 장비가 안 보인다. */}
+        <Field
+          label="교정"
+          value={
+            one.calibration_required
+              ? one.calibration_missing
+                ? '대상 · 이력 없음'
+                : `${shownDate(one.calibration_due_on)}${one.calibration_due_estimated ? ' (주기로 계산)' : ''}`
+              : '대상 아님'
+          }
+        />
+        {one.status === 'retired' && (
+          <Field label="폐기일" value={shownDate(one.retired_on)} />
+        )}
       </dl>
 
       {one.note && <p className="text-sm">{one.note}</p>}
 
-      <Tabs defaultValue="capabilities">
+      <Tabs defaultValue="test_items">
         <TabsList>
-          <TabsTrigger value="capabilities">시험 역량</TabsTrigger>
+          <TabsTrigger value="test_items">시험 항목</TabsTrigger>
+          <TabsTrigger value="specs">
+            사양
+            {one.spec_override_count > 0 && ` · 실측 ${one.spec_override_count}`}
+          </TabsTrigger>
           <TabsTrigger value="calibration">교정 이력</TabsTrigger>
         </TabsList>
-        <TabsContent value="capabilities" className="pt-4">
-          <CapabilityPanel equipmentId={one.id} canEdit={one.can_edit} />
+        <TabsContent value="test_items" className="pt-4">
+          <TestItemPanel equipmentId={one.id} canEdit={one.can_edit} />
+        </TabsContent>
+        <TabsContent value="specs" className="pt-4">
+          <EquipmentSpecPanel equipmentId={one.id} canEdit={one.can_edit} />
         </TabsContent>
         <TabsContent value="calibration" className="pt-4">
           <CalibrationPanel equipmentId={one.id} canEdit={one.can_edit} />

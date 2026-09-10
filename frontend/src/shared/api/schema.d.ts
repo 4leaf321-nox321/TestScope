@@ -738,11 +738,49 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Equipment */
+        /**
+         * List Equipment
+         * @description 보유 장비 목록. **거르기는 서버가 한다.**
+         *
+         *     화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때
+         *     목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.
+         *
+         *     `calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·
+         *     `missing` 대상인데 이력 없음 · `overdue` 기한 지남.
+         *
+         *     `q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —
+         *     화면은 열마다 거르므로 뒤엣것을 쓴다.
+         */
         get: operations["list_equipment_api_equipment_get"];
         put?: never;
         /** Create Equipment */
         post: operations["create_equipment_api_equipment_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment/filter-options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Equipment Filter Options
+         * @description 목록의 열마다 **고를 수 있는 값**과 그 수.
+         *
+         *     기준정보 전체가 아니라 **지금 목록에 있는 값만** 준다 — 골라도 0 건인 선택지가
+         *     섞이면 사람은 거르기를 안 믿게 된다.
+         *
+         *     `/{equipment_id}` 보다 **먼저 선언한다.** 뒤에 두면 `filter-options` 가 장비 id 로
+         *     읽혀 422 가 난다.
+         */
+        get: operations["equipment_filter_options_api_equipment_filter_options_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -781,6 +819,62 @@ export interface paths {
         /** Add Calibration */
         post: operations["add_calibration_api_equipment__equipment_id__calibrations_post"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment/{equipment_id}/specs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Read Equipment Specs
+         * @description 이 장비의 사양 — 한 줄에 **카탈로그 값과 실측이 함께** 온다.
+         *
+         *     화면은 둘을 겹쳐 그린다: 「실측 300 kN (사양서 250 kN)」. 하나만 보여 주면 사람은
+         *     그 수치가 잰 값인지 사양서 값인지 알 수 없고, 그 둘은 믿는 정도가 다르다.
+         */
+        get: operations["read_equipment_specs_api_equipment__equipment_id__specs_get"];
+        /**
+         * Upsert Equipment Spec
+         * @description 실측 한 칸을 넣거나 덮어쓴다. **이 장비의 값이지 기종의 값이 아니다.**
+         *
+         *     기종 사양과 같은 규칙으로 검증한다 — 정의의 종류에 맞는 칸만 채운다.
+         *
+         *     응답의 `condition_label` 이 채워져 있으면 그 값은 검색이 묻는 축이고, `reflected`
+         *     가 참이면 이 장비의 시험 조건이 실제로 갱신됐다는 뜻이다. **손으로 고쳐 둔 조건은
+         *     안 덮는다** — 그때는 거짓으로 온다.
+         */
+        put: operations["upsert_equipment_spec_api_equipment__equipment_id__specs_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment/{equipment_id}/specs/{definition_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Equipment Spec
+         * @description 실측을 지운다 — 그 칸은 다시 카탈로그 값으로 보인다.
+         *
+         *     **따라 들어간 시험 조건은 안 지운다.** 이미 이 장비의 것이고, 그 사이에 사람이
+         *     고쳐 뒀을 수 있다.
+         */
+        delete: operations["delete_equipment_spec_api_equipment__equipment_id__specs__definition_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -835,7 +929,7 @@ export interface paths {
         patch: operations["update_series_api_equipment_series__series_id__patch"];
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/capabilities": {
+    "/api/equipment-series/{series_id}/test_items": {
         parameters: {
             query?: never;
             header?: never;
@@ -845,7 +939,7 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Add Series Capability
+         * Add Series Test Item
          * @description 이 계열이 무슨 시험을 하나.
          *
          *     **조건 수치는 여기 적지 않는다.** 여기 적는 조건은 계열 전체가 만족하는 것만이고,
@@ -855,14 +949,14 @@ export interface paths {
          *     시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
          *     장비는 영영 검색에 안 걸린다. `test_item`(이름)으로 주면 별칭까지 본다.
          */
-        post: operations["add_series_capability_api_equipment_series__series_id__capabilities_post"];
+        post: operations["add_series_test_item_api_equipment_series__series_id__test_items_post"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/capabilities/{capability_id}": {
+    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -872,14 +966,14 @@ export interface paths {
         get?: never;
         put?: never;
         post?: never;
-        /** Delete Series Capability */
-        delete: operations["delete_series_capability_api_equipment_series__series_id__capabilities__capability_id__delete"];
+        /** Delete Series Test Item */
+        delete: operations["delete_series_test_item_api_equipment_series__series_id__test_items__equipment_test_item_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/capabilities/{capability_id}/limits": {
+    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits": {
         parameters: {
             query?: never;
             header?: never;
@@ -888,7 +982,7 @@ export interface paths {
         };
         get?: never;
         /** Upsert Series Limit */
-        put: operations["upsert_series_limit_api_equipment_series__series_id__capabilities__capability_id__limits_put"];
+        put: operations["upsert_series_limit_api_equipment_series__series_id__test_items__equipment_test_item_id__limits_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -896,7 +990,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/capabilities/{capability_id}/limits/{limit_id}": {
+    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits/{limit_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -907,7 +1001,7 @@ export interface paths {
         put?: never;
         post?: never;
         /** Delete Series Limit */
-        delete: operations["delete_series_limit_api_equipment_series__series_id__capabilities__capability_id__limits__limit_id__delete"];
+        delete: operations["delete_series_limit_api_equipment_series__series_id__test_items__equipment_test_item_id__limits__limit_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1014,7 +1108,7 @@ export interface paths {
          *     **없는 사양은 만들지 말고 보류하라** — 정의를 늘리는 것은 사람의 판단이다.
          *
          *     응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의
-         *     역량 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고, 그들에게는
+         *     시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고, 그들에게는
          *     반영되지 않는다.
          */
         put: operations["upsert_model_spec_api_equipment_models__model_id__specs_put"];
@@ -1136,25 +1230,25 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/capabilities": {
+    "/api/equipment-test-items": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /** List Capabilities */
-        get: operations["list_capabilities_api_capabilities_get"];
+        /** List Test Items */
+        get: operations["list_test_items_api_equipment_test_items_get"];
         put?: never;
-        /** Create Capability */
-        post: operations["create_capability_api_capabilities_post"];
+        /** Create Test Item */
+        post: operations["create_test_item_api_equipment_test_items_post"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/capabilities/{capability_id}": {
+    "/api/equipment-test-items/{equipment_test_item_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1164,15 +1258,15 @@ export interface paths {
         get?: never;
         put?: never;
         post?: never;
-        /** Delete Capability */
-        delete: operations["delete_capability_api_capabilities__capability_id__delete"];
+        /** Delete Test Item */
+        delete: operations["delete_test_item_api_equipment_test_items__equipment_test_item_id__delete"];
         options?: never;
         head?: never;
-        /** Update Capability */
-        patch: operations["update_capability_api_capabilities__capability_id__patch"];
+        /** Update Test Item */
+        patch: operations["update_test_item_api_equipment_test_items__equipment_test_item_id__patch"];
         trace?: never;
     };
-    "/api/capabilities/{capability_id}/limits": {
+    "/api/equipment-test-items/{equipment_test_item_id}/limits": {
         parameters: {
             query?: never;
             header?: never;
@@ -1181,7 +1275,7 @@ export interface paths {
         };
         get?: never;
         /** Upsert Limit */
-        put: operations["upsert_limit_api_capabilities__capability_id__limits_put"];
+        put: operations["upsert_limit_api_equipment_test_items__equipment_test_item_id__limits_put"];
         post?: never;
         delete?: never;
         options?: never;
@@ -1189,7 +1283,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/capabilities/{capability_id}/limits/{limit_id}": {
+    "/api/equipment-test-items/{equipment_test_item_id}/limits/{limit_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1200,13 +1294,13 @@ export interface paths {
         put?: never;
         post?: never;
         /** Delete Limit */
-        delete: operations["delete_limit_api_capabilities__capability_id__limits__limit_id__delete"];
+        delete: operations["delete_limit_api_equipment_test_items__equipment_test_item_id__limits__limit_id__delete"];
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/api/search/capabilities": {
+    "/api/search/test_items": {
         parameters: {
             query?: never;
             header?: never;
@@ -1215,8 +1309,8 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Search Capabilities */
-        post: operations["search_capabilities_api_search_capabilities_post"];
+        /** Search Test Items */
+        post: operations["search_test_items_api_search_test_items_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1466,7 +1560,7 @@ export interface paths {
          * @description 남은 일. **홈이 이것을 보여 준다.**
          *
          *     관리 화면에 들어가야만 보이는 목록은 아무도 안 본다 — 승인 대기가 며칠씩
-         *     방치되고, 역량이 안 적힌 장비는 영영 안 적힌다.
+         *     방치되고, 시험 항목이 안 적힌 장비는 영영 안 적힌다.
          *
          *     **0 건인 항목은 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은 그 자리를
          *     아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다.
@@ -1641,8 +1735,8 @@ export interface components {
             next_due_on?: string | null;
             /** Certificate No */
             certificate_no?: string | null;
-            /** Provider */
-            provider?: string | null;
+            /** Provider Term Id */
+            provider_term_id?: string | null;
             /** Note */
             note?: string | null;
         };
@@ -1680,86 +1774,10 @@ export interface components {
             certificate_no: string | null;
             /** Provider */
             provider: string | null;
+            /** Provider Term Id */
+            provider_term_id: string | null;
             /** Note */
             note: string | null;
-        };
-        /** CapabilityCreateRequest */
-        CapabilityCreateRequest: {
-            /**
-             * Equipment Id
-             * Format: uuid
-             */
-            equipment_id: string;
-            /**
-             * Test Item Term Id
-             * Format: uuid
-             */
-            test_item_term_id: string;
-            /** Method Id */
-            method_id?: string | null;
-            /**
-             * Confidence
-             * @default catalog
-             */
-            confidence: string;
-            /** Verified On */
-            verified_on?: string | null;
-            /** Note */
-            note?: string | null;
-        };
-        /** CapabilityOut */
-        CapabilityOut: {
-            /**
-             * Id
-             * Format: uuid
-             */
-            id: string;
-            /**
-             * Equipment Id
-             * Format: uuid
-             */
-            equipment_id: string;
-            /** Equipment Asset No */
-            equipment_asset_no: string;
-            /** Equipment Name */
-            equipment_name: string;
-            /**
-             * Test Item Term Id
-             * Format: uuid
-             */
-            test_item_term_id: string;
-            /** Test Item */
-            test_item: string;
-            /** Method Id */
-            method_id: string | null;
-            /** Method Code */
-            method_code: string | null;
-            /** Confidence */
-            confidence: string;
-            /** Verified On */
-            verified_on: string | null;
-            /** Note */
-            note: string | null;
-            /** Limits */
-            limits: components["schemas"]["LimitOut"][];
-            /**
-             * Created At
-             * Format: date-time
-             */
-            created_at: string;
-            /** Can Edit */
-            can_edit: boolean;
-        };
-        /** CapabilityUpdateRequest */
-        CapabilityUpdateRequest: {
-            /** Method Id */
-            method_id?: string | null;
-            /** Confidence */
-            confidence?: string | null;
-            /** Verified On */
-            verified_on?: string | null;
-            /** Note */
-            note?: string | null;
         };
         /** ChangePasswordRequest */
         ChangePasswordRequest: {
@@ -1767,6 +1785,25 @@ export interface components {
             current_password: string;
             /** New Password */
             new_password: string;
+        };
+        /**
+         * CitedMethodOut
+         * @description 이 시험 항목이 인용하는 규격 하나. **표로 이어져 있다** — 비고의 글자가 아니다.
+         */
+        CitedMethodOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Code */
+            code: string;
+            /** Edition */
+            edition: string | null;
+            /** Title */
+            title: string;
+            /** Has Requirements */
+            has_requirements: boolean;
         };
         /** ConditionKeyCreateRequest */
         ConditionKeyCreateRequest: {
@@ -1868,8 +1905,8 @@ export interface components {
             verdict: string;
             /** Asked */
             asked: string;
-            /** Capability Range */
-            capability_range: string | null;
+            /** Condition Range */
+            condition_range: string | null;
         };
         /**
          * ConditionQuery
@@ -1926,22 +1963,48 @@ export interface components {
             /** Used Percent */
             used_percent: number;
         };
-        /** EquipmentCreateRequest */
+        /**
+         * EquipmentCreateRequest
+         * @description 보유 장비를 등록한다.
+         *
+         *     **필수는 여덟이다** — 자산번호·장비명·보유 부서·거점·상세위치·공용여부·상태,
+         *     그리고 장비유형(기종을 고르면 따라오므로 그때는 안 적는다).
+         *
+         *     비울 수 없게 한 것들은 전부 「없으면 그 장비를 못 찾는」 칸이다. 나머지는 권장이나
+         *     선택으로 둔다 — 다 적어야 저장되게 하면 사람은 등록을 미루고, 미룬 장비는 결국
+         *     시스템 밖에 남는다.
+         */
         EquipmentCreateRequest: {
             /** Asset No */
             asset_no: string;
             /** Name */
             name: string;
+            /** Dept Asset No */
+            dept_asset_no?: string | null;
             /** Workspace Slug */
-            workspace_slug?: string | null;
+            workspace_slug: string;
+            /**
+             * Shared Use
+             * @default false
+             */
+            shared_use: boolean;
             /** Model Id */
             model_id?: string | null;
             /** Serial No */
             serial_no?: string | null;
-            /** Site Term Id */
-            site_term_id?: string | null;
+            /** Category Term Id */
+            category_term_id?: string | null;
+            /** Maker Text */
+            maker_text?: string | null;
+            /** Model Text */
+            model_text?: string | null;
+            /**
+             * Site Term Id
+             * Format: uuid
+             */
+            site_term_id: string;
             /** Location */
-            location?: string | null;
+            location: string;
             /**
              * Status
              * @default operational
@@ -1949,10 +2012,40 @@ export interface components {
             status: string;
             /** Acquired On */
             acquired_on?: string | null;
+            /** Manufactured Year */
+            manufactured_year?: number | null;
+            /** Retired On */
+            retired_on?: string | null;
+            /**
+             * Calibration Required
+             * @default false
+             */
+            calibration_required: boolean;
+            /** Calibration Interval Months */
+            calibration_interval_months?: number | null;
             /** Contact User Id */
             contact_user_id?: string | null;
             /** Note */
             note?: string | null;
+        };
+        /**
+         * EquipmentFilterOptionsOut
+         * @description 보유 장비 목록의 열마다 고를 수 있는 값들.
+         *
+         *     **보이는 장비만 센다**(`visible_equipment`) — 안 보이는 부서의 값을 골라 봐야
+         *     결과가 비고, 그 빈 결과는 권한 때문인지 데이터 때문인지 구별되지 않는다.
+         */
+        EquipmentFilterOptionsOut: {
+            /** Categories */
+            categories: components["schemas"]["FilterOption"][];
+            /** Workspaces */
+            workspaces: components["schemas"]["FilterOption"][];
+            /** Sites */
+            sites: components["schemas"]["FilterOption"][];
+            /** Statuses */
+            statuses: components["schemas"]["FilterOption"][];
+            /** Test Items */
+            test_items: components["schemas"]["FilterOption"][];
         };
         /**
          * EquipmentModelCreateRequest
@@ -1972,11 +2065,8 @@ export interface components {
             name: string;
             /** Name Ko */
             name_ko?: string | null;
-            /**
-             * Form Factor
-             * @default
-             */
-            form_factor: string;
+            /** Form Factor Term Id */
+            form_factor_term_id?: string | null;
             /** Summary */
             summary?: string | null;
             /** Spec Note */
@@ -2009,7 +2099,9 @@ export interface components {
             /** Category Term Id */
             category_term_id: string | null;
             /** Form Factor */
-            form_factor: string;
+            form_factor: string | null;
+            /** Form Factor Term Id */
+            form_factor_term_id: string | null;
             /** Status */
             status: string;
             /** Summary */
@@ -2024,8 +2116,12 @@ export interface components {
             unit_count: number;
             /** Operational Count */
             operational_count: number;
-            /** Capabilities */
-            capabilities: components["schemas"]["ModelCapabilityOut"][];
+            /** Test Items */
+            test_items: components["schemas"]["SeriesTestItemOut"][];
+            /** Headline Specs */
+            headline_specs: components["schemas"]["ModelHeadlineSpecOut"][];
+            /** Spec Count */
+            spec_count: number;
             /**
              * Created At
              * Format: date-time
@@ -2045,8 +2141,8 @@ export interface components {
             name_ko?: string | null;
             /** Series Id */
             series_id?: string | null;
-            /** Form Factor */
-            form_factor?: string | null;
+            /** Form Factor Term Id */
+            form_factor_term_id?: string | null;
             /** Status */
             status?: string | null;
             /** Summary */
@@ -2065,6 +2161,8 @@ export interface components {
             asset_no: string;
             /** Name */
             name: string;
+            /** Dept Asset No */
+            dept_asset_no: string | null;
             /** Model Id */
             model_id: string | null;
             /** Model Name */
@@ -2075,14 +2173,20 @@ export interface components {
             series_name: string | null;
             /** Category */
             category: string | null;
+            /** Category Group */
+            category_group: string | null;
             /** Manufacturer */
             manufacturer: string | null;
+            /** Catalog Linked */
+            catalog_linked: boolean;
             /** Serial No */
             serial_no: string | null;
             /** Workspace Slug */
             workspace_slug: string | null;
             /** Workspace Name */
             workspace_name: string | null;
+            /** Shared Use */
+            shared_use: boolean;
             /** Site */
             site: string | null;
             /** Location */
@@ -2091,16 +2195,30 @@ export interface components {
             status: string;
             /** Acquired On */
             acquired_on: string | null;
+            /** Manufactured Year */
+            manufactured_year: number | null;
+            /** Retired On */
+            retired_on: string | null;
             /** Contact Name */
             contact_name: string | null;
             /** Note */
             note: string | null;
-            /** Capability Count */
-            capability_count: number;
+            /** Test Item Count */
+            test_item_count: number;
             /** Test Items */
             test_items: string[];
+            /** Calibration Required */
+            calibration_required: boolean;
+            /** Calibration Interval Months */
+            calibration_interval_months: number | null;
             /** Calibration Due On */
             calibration_due_on: string | null;
+            /** Calibration Due Estimated */
+            calibration_due_estimated: boolean;
+            /** Calibration Missing */
+            calibration_missing: boolean;
+            /** Spec Override Count */
+            spec_override_count: number;
             /**
              * Created At
              * Format: date-time
@@ -2141,16 +2259,10 @@ export interface components {
              * @default main
              */
             kind: string;
-            /**
-             * Drive
-             * @default
-             */
-            drive: string;
-            /**
-             * Form Factor
-             * @default
-             */
-            form_factor: string;
+            /** Drive Term Id */
+            drive_term_id?: string | null;
+            /** Form Factor Term Id */
+            form_factor_term_id?: string | null;
             /** Summary */
             summary?: string | null;
             /** Spec Note */
@@ -2182,9 +2294,13 @@ export interface components {
             /** Kind */
             kind: string;
             /** Drive */
-            drive: string;
+            drive: string | null;
+            /** Drive Term Id */
+            drive_term_id: string | null;
             /** Form Factor */
-            form_factor: string;
+            form_factor: string | null;
+            /** Form Factor Term Id */
+            form_factor_term_id: string | null;
             /** Status */
             status: string;
             /** Summary */
@@ -2205,8 +2321,8 @@ export interface components {
             unit_count: number;
             /** Operational Count */
             operational_count: number;
-            /** Capabilities */
-            capabilities: components["schemas"]["ModelCapabilityOut"][];
+            /** Test Items */
+            test_items: components["schemas"]["SeriesTestItemOut"][];
             /** Relations */
             relations: components["schemas"]["SeriesRelationOut"][];
             /**
@@ -2234,10 +2350,10 @@ export interface components {
             category_term_id?: string | null;
             /** Kind */
             kind?: string | null;
-            /** Drive */
-            drive?: string | null;
-            /** Form Factor */
-            form_factor?: string | null;
+            /** Drive Term Id */
+            drive_term_id?: string | null;
+            /** Form Factor Term Id */
+            form_factor_term_id?: string | null;
             /** Status */
             status?: string | null;
             /** Summary */
@@ -2246,6 +2362,228 @@ export interface components {
             spec_note?: string | null;
             /** Source Id */
             source_id?: string | null;
+        };
+        /** EquipmentSpecGroupOut */
+        EquipmentSpecGroupOut: {
+            /**
+             * Group Id
+             * Format: uuid
+             */
+            group_id: string;
+            /** Slug */
+            slug: string;
+            /** Label */
+            label: string;
+            /** Description */
+            description: string | null;
+            /** Items */
+            items: components["schemas"]["EquipmentSpecItemOut"][];
+        };
+        /**
+         * EquipmentSpecItemOut
+         * @description 사양 한 칸 — **카탈로그 값과 실측을 함께 준다.**
+         *
+         *     화면이 둘을 겹쳐 그린다: 「실측 300 kN (사양서 250 kN)」. 하나만 주면 사람은 그
+         *     수치가 잰 값인지 사양서에서 온 값인지 알 수 없고, 그 둘은 믿는 정도가 다르다.
+         */
+        EquipmentSpecItemOut: {
+            /**
+             * Definition Id
+             * Format: uuid
+             */
+            definition_id: string;
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Kind */
+            kind: string;
+            /** Si Unit */
+            si_unit: string;
+            /** Display Unit */
+            display_unit: string;
+            /** Choices */
+            choices: string[];
+            /** Sort Order */
+            sort_order: number;
+            /** Condition Key Id */
+            condition_key_id: string | null;
+            catalog: components["schemas"]["ModelSpecValueOut"] | null;
+            measured: components["schemas"]["EquipmentSpecValueOut"] | null;
+        };
+        /**
+         * EquipmentSpecSaveRequest
+         * @description 실측 한 칸을 넣거나 덮어쓴다. **종류에 맞는 칸만 채운다.**
+         */
+        EquipmentSpecSaveRequest: {
+            /**
+             * Definition Id
+             * Format: uuid
+             */
+            definition_id: string;
+            /** Num Value */
+            num_value?: number | null;
+            /** Num Min */
+            num_min?: number | null;
+            /** Num Max */
+            num_max?: number | null;
+            /** Text Value */
+            text_value?: string | null;
+            /** Bool Value */
+            bool_value?: boolean | null;
+            /** Measured On */
+            measured_on?: string | null;
+            /** Note */
+            note?: string | null;
+            /** Source Id */
+            source_id?: string | null;
+            /** Source Page */
+            source_page?: number | null;
+        };
+        /** EquipmentSpecSaveResult */
+        EquipmentSpecSaveResult: {
+            value: components["schemas"]["EquipmentSpecValueOut"];
+            /** Condition Label */
+            condition_label: string | null;
+            /** Reflected */
+            reflected: boolean;
+        };
+        /**
+         * EquipmentSpecSheetOut
+         * @description 이 장비의 사양 — 기종 사양 위에 실측을 덮은 것.
+         *
+         *     **복사가 아니라 겹쳐 보기다.** 개체는 다른 값만 갖고, 나머지는 기종 사양이 그대로
+         *     보인다 — 전부 복사하면 카탈로그가 개정돼도 안 따라오고, 어느 값이 실측인지 구별이
+         *     사라진다.
+         */
+        EquipmentSpecSheetOut: {
+            /**
+             * Equipment Id
+             * Format: uuid
+             */
+            equipment_id: string;
+            /** Model Id */
+            model_id: string | null;
+            /** Model Name */
+            model_name: string | null;
+            /** Groups */
+            groups: components["schemas"]["EquipmentSpecGroupOut"][];
+            /** Override Count */
+            override_count: number;
+        };
+        /**
+         * EquipmentSpecValueOut
+         * @description 개체가 덮어 둔 실측값 한 칸. 사양표의 값(`ModelSpecValueOut`)과 값 칸을 맞춘다.
+         */
+        EquipmentSpecValueOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Num Value */
+            num_value: number | null;
+            /** Num Min */
+            num_min: number | null;
+            /** Num Max */
+            num_max: number | null;
+            /** Text Value */
+            text_value: string | null;
+            /** Bool Value */
+            bool_value: boolean | null;
+            /** Measured On */
+            measured_on: string | null;
+            /** Note */
+            note: string | null;
+            /** Source Id */
+            source_id: string | null;
+            /** Source Path */
+            source_path: string | null;
+            /** Source Page */
+            source_page: number | null;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+        };
+        /** EquipmentTestItemCreateRequest */
+        EquipmentTestItemCreateRequest: {
+            /**
+             * Equipment Id
+             * Format: uuid
+             */
+            equipment_id: string;
+            /**
+             * Test Item Term Id
+             * Format: uuid
+             */
+            test_item_term_id: string;
+            /** Method Id */
+            method_id?: string | null;
+            /**
+             * Confidence
+             * @default catalog
+             */
+            confidence: string;
+            /** Verified On */
+            verified_on?: string | null;
+            /** Note */
+            note?: string | null;
+        };
+        /** EquipmentTestItemOut */
+        EquipmentTestItemOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Equipment Id
+             * Format: uuid
+             */
+            equipment_id: string;
+            /** Equipment Asset No */
+            equipment_asset_no: string;
+            /** Equipment Name */
+            equipment_name: string;
+            /**
+             * Test Item Term Id
+             * Format: uuid
+             */
+            test_item_term_id: string;
+            /** Test Item */
+            test_item: string;
+            /** Method Id */
+            method_id: string | null;
+            /** Method Code */
+            method_code: string | null;
+            /** Confidence */
+            confidence: string;
+            /** Verified On */
+            verified_on: string | null;
+            /** Note */
+            note: string | null;
+            /** Limits */
+            limits: components["schemas"]["LimitOut"][];
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /** Can Edit */
+            can_edit: boolean;
+        };
+        /** EquipmentTestItemUpdateRequest */
+        EquipmentTestItemUpdateRequest: {
+            /** Method Id */
+            method_id?: string | null;
+            /** Confidence */
+            confidence?: string | null;
+            /** Verified On */
+            verified_on?: string | null;
+            /** Note */
+            note?: string | null;
         };
         /**
          * EquipmentUpdateRequest
@@ -2258,24 +2596,57 @@ export interface components {
         EquipmentUpdateRequest: {
             /** Name */
             name?: string | null;
+            /** Dept Asset No */
+            dept_asset_no?: string | null;
             /** Model Id */
             model_id?: string | null;
             /** Serial No */
             serial_no?: string | null;
+            /** Category Term Id */
+            category_term_id?: string | null;
+            /** Maker Text */
+            maker_text?: string | null;
+            /** Model Text */
+            model_text?: string | null;
             /** Site Term Id */
             site_term_id?: string | null;
             /** Location */
             location?: string | null;
+            /** Shared Use */
+            shared_use?: boolean | null;
             /** Status */
             status?: string | null;
             /** Acquired On */
             acquired_on?: string | null;
+            /** Manufactured Year */
+            manufactured_year?: number | null;
+            /** Retired On */
+            retired_on?: string | null;
+            /** Calibration Required */
+            calibration_required?: boolean | null;
+            /** Calibration Interval Months */
+            calibration_interval_months?: number | null;
             /** Contact User Id */
             contact_user_id?: string | null;
             /** Note */
             note?: string | null;
             /** Workspace Slug */
             workspace_slug?: string | null;
+        };
+        /**
+         * FilterOption
+         * @description 거르기 한 칸이 고를 수 있는 값 하나. **수를 함께 준다.**
+         *
+         *     「나노압입기」 를 고를 수 있는데 결과가 0 이면 사람은 거르기를 안 믿게 된다. 그래서
+         *     **목록에 실제로 있는 값만** 내려보내고, 몇 대인지 함께 적는다.
+         */
+        FilterOption: {
+            /** Value */
+            value: string;
+            /** Label */
+            label: string;
+            /** Count */
+            count: number;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -2488,50 +2859,43 @@ export interface components {
             superseded_by_id?: string | null;
         };
         /**
-         * ModelCapabilityCreateRequest
-         * @description 이 계열이 무슨 시험을 하나.
+         * ModelHeadlineSpecOut
+         * @description 목록 한 줄이 그리는 **대표 사양** 한 칸.
          *
-         *     시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
-         *     장비는 영영 검색에 안 걸린다.
+         *     사양표(`ModelSpecValueOut`)와 값 칸의 이름을 맞춘다 — 화면이 값을 글자로 만드는
+         *     함수를 하나만 두게 하려는 것이다. 모양을 달리 주면 목록과 상세가 같은 값을
+         *     다르게 적는 날이 오고, 그때 어느 쪽이 맞는지는 아무도 모른다.
          */
-        ModelCapabilityCreateRequest: {
-            /** Test Item Term Id */
-            test_item_term_id?: string | null;
-            /** Test Item */
-            test_item?: string | null;
-            /** Method Id */
-            method_id?: string | null;
-            /** Method Code */
-            method_code?: string | null;
-            /** Note */
-            note?: string | null;
-        };
-        /** ModelCapabilityOut */
-        ModelCapabilityOut: {
+        ModelHeadlineSpecOut: {
             /**
-             * Id
+             * Definition Id
              * Format: uuid
              */
-            id: string;
-            /**
-             * Test Item Term Id
-             * Format: uuid
-             */
-            test_item_term_id: string;
-            /** Test Item */
-            test_item: string;
-            /** Method Id */
-            method_id: string | null;
-            /** Method Code */
-            method_code: string | null;
-            /** Note */
-            note: string | null;
-            /** Limits */
-            limits: components["schemas"]["ModelLimitOut"][];
+            definition_id: string;
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Kind */
+            kind: string;
+            /** Si Unit */
+            si_unit: string;
+            /** Display Unit */
+            display_unit: string;
+            /** Num Value */
+            num_value: number | null;
+            /** Num Min */
+            num_min: number | null;
+            /** Num Max */
+            num_max: number | null;
+            /** Text Value */
+            text_value: string | null;
+            /** Bool Value */
+            bool_value: boolean | null;
         };
         /**
          * ModelLimitOut
-         * @description 계열 역량의 조건 한 칸. 개체 쪽(LimitOut)과 같은 모양이다.
+         * @description 계열의 시험 항목의 조건 한 칸. 개체 쪽(LimitOut)과 같은 모양이다.
          */
         ModelLimitOut: {
             /**
@@ -3048,10 +3412,10 @@ export interface components {
         /** SearchHit */
         SearchHit: {
             /**
-             * Capability Id
+             * Equipment Test Item Id
              * Format: uuid
              */
-            capability_id: string;
+            equipment_test_item_id: string;
             /**
              * Equipment Id
              * Format: uuid
@@ -3154,6 +3518,50 @@ export interface components {
             note: string | null;
             /** Inbound */
             inbound: boolean;
+        };
+        /**
+         * SeriesTestItemCreateRequest
+         * @description 이 계열이 무슨 시험을 하나.
+         *
+         *     시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
+         *     장비는 영영 검색에 안 걸린다.
+         */
+        SeriesTestItemCreateRequest: {
+            /** Test Item Term Id */
+            test_item_term_id?: string | null;
+            /** Test Item */
+            test_item?: string | null;
+            /** Method Id */
+            method_id?: string | null;
+            /** Method Code */
+            method_code?: string | null;
+            /** Note */
+            note?: string | null;
+        };
+        /** SeriesTestItemOut */
+        SeriesTestItemOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Test Item Term Id
+             * Format: uuid
+             */
+            test_item_term_id: string;
+            /** Test Item */
+            test_item: string;
+            /** Method Id */
+            method_id: string | null;
+            /** Method Code */
+            method_code: string | null;
+            /** Methods */
+            methods: components["schemas"]["CitedMethodOut"][];
+            /** Note */
+            note: string | null;
+            /** Limits */
+            limits: components["schemas"]["ModelLimitOut"][];
         };
         /** ServerStatusOut */
         ServerStatusOut: {
@@ -3540,6 +3948,10 @@ export interface components {
             slug: string;
             /** Label */
             label: string;
+            /** Domain */
+            domain: string;
+            /** Domain Label */
+            domain_label: string;
             /** Description */
             description: string | null;
             /** Entry Policy */
@@ -5275,9 +5687,16 @@ export interface operations {
         parameters: {
             query?: {
                 q?: string | null;
+                asset_no?: string | null;
+                name?: string | null;
                 status?: string | null;
                 workspace?: string | null;
                 model_id?: string | null;
+                category_term_id?: string | null;
+                site_term_id?: string | null;
+                test_item_term_id?: string | null;
+                calibration?: string | null;
+                shared_use?: boolean | null;
                 limit?: number;
                 offset?: number;
             };
@@ -5336,6 +5755,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    equipment_filter_options_api_equipment_filter_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentFilterOptionsOut"];
                 };
             };
         };
@@ -5489,6 +5928,102 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["CalibrationOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    read_equipment_specs_api_equipment__equipment_id__specs_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                equipment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentSpecSheetOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    upsert_equipment_spec_api_equipment__equipment_id__specs_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                equipment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["EquipmentSpecSaveRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EquipmentSpecSaveResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_equipment_spec_api_equipment__equipment_id__specs__definition_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                equipment_id: string;
+                definition_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
@@ -5666,7 +6201,7 @@ export interface operations {
             };
         };
     };
-    add_series_capability_api_equipment_series__series_id__capabilities_post: {
+    add_series_test_item_api_equipment_series__series_id__test_items_post: {
         parameters: {
             query?: never;
             header?: never;
@@ -5677,7 +6212,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["ModelCapabilityCreateRequest"];
+                "application/json": components["schemas"]["SeriesTestItemCreateRequest"];
             };
         };
         responses: {
@@ -5687,7 +6222,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ModelCapabilityOut"];
+                    "application/json": components["schemas"]["SeriesTestItemOut"];
                 };
             };
             /** @description Validation Error */
@@ -5701,13 +6236,13 @@ export interface operations {
             };
         };
     };
-    delete_series_capability_api_equipment_series__series_id__capabilities__capability_id__delete: {
+    delete_series_test_item_api_equipment_series__series_id__test_items__equipment_test_item_id__delete: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 series_id: string;
-                capability_id: string;
+                equipment_test_item_id: string;
             };
             cookie?: never;
         };
@@ -5731,13 +6266,13 @@ export interface operations {
             };
         };
     };
-    upsert_series_limit_api_equipment_series__series_id__capabilities__capability_id__limits_put: {
+    upsert_series_limit_api_equipment_series__series_id__test_items__equipment_test_item_id__limits_put: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 series_id: string;
-                capability_id: string;
+                equipment_test_item_id: string;
             };
             cookie?: never;
         };
@@ -5767,13 +6302,13 @@ export interface operations {
             };
         };
     };
-    delete_series_limit_api_equipment_series__series_id__capabilities__capability_id__limits__limit_id__delete: {
+    delete_series_limit_api_equipment_series__series_id__test_items__equipment_test_item_id__limits__limit_id__delete: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 series_id: string;
-                capability_id: string;
+                equipment_test_item_id: string;
                 limit_id: string;
             };
             cookie?: never;
@@ -6384,7 +6919,7 @@ export interface operations {
             };
         };
     };
-    list_capabilities_api_capabilities_get: {
+    list_test_items_api_equipment_test_items_get: {
         parameters: {
             query: {
                 equipment_id: string;
@@ -6401,7 +6936,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CapabilityOut"][];
+                    "application/json": components["schemas"]["EquipmentTestItemOut"][];
                 };
             };
             /** @description Validation Error */
@@ -6415,7 +6950,7 @@ export interface operations {
             };
         };
     };
-    create_capability_api_capabilities_post: {
+    create_test_item_api_equipment_test_items_post: {
         parameters: {
             query?: never;
             header?: never;
@@ -6424,7 +6959,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["CapabilityCreateRequest"];
+                "application/json": components["schemas"]["EquipmentTestItemCreateRequest"];
             };
         };
         responses: {
@@ -6434,7 +6969,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CapabilityOut"];
+                    "application/json": components["schemas"]["EquipmentTestItemOut"];
                 };
             };
             /** @description Validation Error */
@@ -6448,12 +6983,12 @@ export interface operations {
             };
         };
     };
-    delete_capability_api_capabilities__capability_id__delete: {
+    delete_test_item_api_equipment_test_items__equipment_test_item_id__delete: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                capability_id: string;
+                equipment_test_item_id: string;
             };
             cookie?: never;
         };
@@ -6477,18 +7012,18 @@ export interface operations {
             };
         };
     };
-    update_capability_api_capabilities__capability_id__patch: {
+    update_test_item_api_equipment_test_items__equipment_test_item_id__patch: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                capability_id: string;
+                equipment_test_item_id: string;
             };
             cookie?: never;
         };
         requestBody: {
             content: {
-                "application/json": components["schemas"]["CapabilityUpdateRequest"];
+                "application/json": components["schemas"]["EquipmentTestItemUpdateRequest"];
             };
         };
         responses: {
@@ -6498,7 +7033,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CapabilityOut"];
+                    "application/json": components["schemas"]["EquipmentTestItemOut"];
                 };
             };
             /** @description Validation Error */
@@ -6512,12 +7047,12 @@ export interface operations {
             };
         };
     };
-    upsert_limit_api_capabilities__capability_id__limits_put: {
+    upsert_limit_api_equipment_test_items__equipment_test_item_id__limits_put: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                capability_id: string;
+                equipment_test_item_id: string;
             };
             cookie?: never;
         };
@@ -6547,12 +7082,12 @@ export interface operations {
             };
         };
     };
-    delete_limit_api_capabilities__capability_id__limits__limit_id__delete: {
+    delete_limit_api_equipment_test_items__equipment_test_item_id__limits__limit_id__delete: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                capability_id: string;
+                equipment_test_item_id: string;
                 limit_id: string;
             };
             cookie?: never;
@@ -6577,7 +7112,7 @@ export interface operations {
             };
         };
     };
-    search_capabilities_api_search_capabilities_post: {
+    search_test_items_api_search_test_items_post: {
         parameters: {
             query?: never;
             header?: never;

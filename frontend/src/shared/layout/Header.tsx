@@ -107,7 +107,7 @@ export function Header({ onToggleSidebar, workspaceSlug }: HeaderProps) {
 
       <div className="flex-1" />
 
-      {/* **한 칸으로 무엇이든 찾는다.** Enter 로 역량 검색 화면에 넘긴다 —
+      {/* **한 칸으로 무엇이든 찾는다.** Enter 로 장비 찾기 화면에 넘긴다 —
           결과를 좁은 드롭다운에 미리 떨구면 무엇을 찾았는지 안 보인다. */}
       <form onSubmit={submitSearch} className="relative mr-1 hidden sm:block">
         <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2" />
@@ -144,8 +144,7 @@ export function Header({ onToggleSidebar, workspaceSlug }: HeaderProps) {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => navigate('/me')}>
-            <UserCog className="size-4" />
-            내 정보
+            <UserCog className="size-4" />내 정보
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setChangingPassword(true)}>
             <KeyRound className="size-4" />

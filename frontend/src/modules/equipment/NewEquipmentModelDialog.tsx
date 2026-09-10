@@ -24,6 +24,7 @@ import {
 } from '@/shared/components/ui/dialog'
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
+import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import {
   Select,
   SelectContent,
@@ -33,6 +34,7 @@ import {
 } from '@/shared/components/ui/select'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
+import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
 
 export function NewEquipmentModelDialog({
@@ -48,6 +50,8 @@ export function NewEquipmentModelDialog({
   onCreated: () => void
 }) {
   const list = useResource(() => seriesApi.list({ limit: 200 }), [])
+  // 형태는 축의 값이다 — 열여섯 남짓이라 피커 하나로 다 보인다.
+  const formFactors = useResource(() => vocabularyApi.terms(AXIS.formFactor), [])
 
   const [series, setSeries] = useState(seriesId ?? '')
   const [name, setName] = useState('')
@@ -70,7 +74,7 @@ export function NewEquipmentModelDialog({
         series_id: series,
         name,
         name_ko: nameKo || null,
-        form_factor: formFactor,
+        form_factor_term_id: formFactor || null,
         summary: summary || null,
       })
       setName('')
@@ -92,8 +96,8 @@ export function NewEquipmentModelDialog({
           <DialogHeader>
             <DialogTitle>장비 기종 등록</DialogTitle>
             <DialogDescription>
-              수치 사양은 등록한 뒤 상세 화면에서 적습니다. 검색축에 이어진 사양은 이
-              기종으로 등록하는 보유 장비의 역량 조건이 됩니다.
+              수치 사양은 등록한 뒤 상세 화면에서 적습니다. 검색축에 이어진 사양은 이 기종으로
+              등록하는 보유 장비의 시험 조건이 됩니다.
             </DialogDescription>
           </DialogHeader>
 
@@ -142,12 +146,21 @@ export function NewEquipmentModelDialog({
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="model-form">생김새</Label>
-              <Input
+              <Label htmlFor="model-form">기종 형태</Label>
+              {/* **자유 문자열이 아니라 축이다.** 전에는 `dual_column_tabletop` 을
+                  손으로 적게 두어서, 화면에 영어가 그대로 뜨고 「탁상형만」 으로
+                  거를 수도 없었다. */}
+              <SearchablePicker
                 id="model-form"
                 value={formFactor}
-                onChange={(event) => setFormFactor(event.target.value)}
-                placeholder="floor · dual_column_tabletop"
+                onChange={setFormFactor}
+                options={(formFactors.data ?? []).map((one) => ({
+                  id: one.id,
+                  label: one.value,
+                  detail: one.code,
+                }))}
+                placeholder="형태 고르기"
+                detailTitle="기종 형태"
               />
             </div>
           </div>

@@ -1,41 +1,77 @@
-/** 장비·역량 API. */
+/** 장비·시험 항목 API. */
 
 import { api } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'
 
 export type Equipment = components['schemas']['EquipmentOut']
 export type Calibration = components['schemas']['CalibrationOut']
-export type Capability = components['schemas']['CapabilityOut']
-export type CapabilityLimit = components['schemas']['LimitOut']
+export type EquipmentFilterOptions = components['schemas']['EquipmentFilterOptionsOut']
+export type EquipmentSpecSheet = components['schemas']['EquipmentSpecSheetOut']
+export type EquipmentSpecItem = components['schemas']['EquipmentSpecItemOut']
+type EquipmentSpecSaveResult = components['schemas']['EquipmentSpecSaveResult']
+export type EquipmentTestItem = components['schemas']['EquipmentTestItemOut']
+export type EquipmentTestCondition = components['schemas']['LimitOut']
 type EquipmentPage = components['schemas']['Page_EquipmentOut_']
 
 export type EquipmentSeries = components['schemas']['EquipmentSeriesOut']
 export type SeriesRelation = components['schemas']['SeriesRelationOut']
 type SeriesPage = components['schemas']['Page_EquipmentSeriesOut_']
 export type EquipmentModel = components['schemas']['EquipmentModelOut']
-export type ModelCapability = components['schemas']['ModelCapabilityOut']
+export type SeriesTestItem = components['schemas']['SeriesTestItemOut']
 export type ModelLimit = components['schemas']['ModelLimitOut']
+export type ModelHeadlineSpec = components['schemas']['ModelHeadlineSpecOut']
 type ModelPage = components['schemas']['Page_EquipmentModelOut_']
 
 export const equipmentApi = {
+  /**
+   * 목록. **거르기는 전부 서버가 한다.**
+   *
+   * 화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때
+   * 목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.
+   */
   list: (params: {
     q?: string
+    /** 열마다 따로 거를 때. `q` 는 자산번호와 이름을 함께 보고, 이 둘은 **그 열만** 본다. */
+    assetNo?: string
+    name?: string
     status?: string
     workspace?: string
-    /** 이 기종의 장비만. **서버가 거른다** — 화면이 전체를 받아 거르면 상한을
-     *  넘는 순간 나머지가 조용히 안 보인다. */
+    /** 이 기종의 장비만. */
     modelId?: string
+    categoryTermId?: string
+    siteTermId?: string
+    testItemTermId?: string
+    /** `required` 대상 전부 · `exempt` 대상 아님 · `missing` 이력 없음 · `overdue` 기한 지남. */
+    calibration?: string
+    sharedUse?: boolean
     limit?: number
+    offset?: number
   }) => {
     const search = new URLSearchParams()
     if (params.q) search.set('q', params.q)
+    if (params.assetNo) search.set('asset_no', params.assetNo)
+    if (params.name) search.set('name', params.name)
     if (params.status) search.set('status', params.status)
     if (params.workspace) search.set('workspace', params.workspace)
     if (params.modelId) search.set('model_id', params.modelId)
+    if (params.categoryTermId) search.set('category_term_id', params.categoryTermId)
+    if (params.siteTermId) search.set('site_term_id', params.siteTermId)
+    if (params.testItemTermId) search.set('test_item_term_id', params.testItemTermId)
+    if (params.calibration) search.set('calibration', params.calibration)
+    if (params.sharedUse !== undefined) search.set('shared_use', String(params.sharedUse))
     if (params.limit) search.set('limit', String(params.limit))
+    if (params.offset) search.set('offset', String(params.offset))
     const query = search.toString()
     return api.get<EquipmentPage>(`/equipment${query ? `?${query}` : ''}`)
   },
+  /**
+   * 열마다 고를 수 있는 값과 그 수.
+   *
+   * **기준정보 전체를 안 쓴다.** 분류 108종 중 100종이 골라도 0 건인 선택지가 되면
+   * 사람은 거르기를 안 믿는다. 부서도 여기서 받는다 — `/workspaces` 는 내 소속만
+   * 주는데, 목록에는 열린 부서의 장비가 함께 보인다.
+   */
+  filterOptions: () => api.get<EquipmentFilterOptions>('/equipment/filter-options'),
   read: (id: string) => api.get<Equipment>(`/equipment/${id}`),
   create: (body: Record<string, unknown>) => api.post<Equipment>('/equipment', body),
   update: (id: string, body: Record<string, unknown>) =>
@@ -47,24 +83,44 @@ export const equipmentApi = {
     api.post<Calibration>(`/equipment/${id}/calibrations`, body),
 }
 
-export const capabilityApi = {
+/**
+ * 개체 사양 — **카탈로그 값 위에 덮는 실측.**
+ *
+ * 기종 사양(`specApi`)과 헷갈리면 한 대의 실측이 그 기종 열 대의 기준이 된다.
+ * 저기는 「제조사가 그렇게 적었다」 이고, 여기는 「우리가 이 대를 재 보니 그렇더라」 다.
+ *
+ * `sheet` 는 둘을 한 줄에 함께 준다 — 화면이 맞추게 두면 화면마다 이기는 쪽이 달라진다.
+ */
+export const equipmentSpecApi = {
+  sheet: (equipmentId: string) =>
+    api.get<EquipmentSpecSheet>(`/equipment/${equipmentId}/specs`),
+  /** 한 칸을 넣거나 덮어쓴다. 응답의 `reflected` 는 시험 조건이 갱신됐는지다. */
+  put: (equipmentId: string, body: Record<string, unknown>) =>
+    api.put<EquipmentSpecSaveResult>(`/equipment/${equipmentId}/specs`, body),
+  /** 실측을 지운다 — 그 칸은 다시 카탈로그 값으로 보인다. */
+  remove: (equipmentId: string, definitionId: string) =>
+    api.delete<void>(`/equipment/${equipmentId}/specs/${definitionId}`),
+}
+
+export const testItemApi = {
   forEquipment: (equipmentId: string) =>
-    api.get<Capability[]>(`/capabilities?equipment_id=${equipmentId}`),
-  create: (body: Record<string, unknown>) => api.post<Capability>('/capabilities', body),
+    api.get<EquipmentTestItem[]>(`/equipment-test-items?equipment_id=${equipmentId}`),
+  create: (body: Record<string, unknown>) =>
+    api.post<EquipmentTestItem>('/equipment-test-items', body),
   update: (id: string, body: Record<string, unknown>) =>
-    api.patch<Capability>(`/capabilities/${id}`, body),
-  remove: (id: string) => api.delete<void>(`/capabilities/${id}`),
+    api.patch<EquipmentTestItem>(`/equipment-test-items/${id}`, body),
+  remove: (id: string) => api.delete<void>(`/equipment-test-items/${id}`),
   /** 조건 한 칸은 **덮어쓰기다** — 같은 조건이 둘이면 어느 쪽이 맞는지 알 수 없다. */
-  putLimit: (capabilityId: string, body: Record<string, unknown>) =>
-    api.put<CapabilityLimit>(`/capabilities/${capabilityId}/limits`, body),
-  removeLimit: (capabilityId: string, limitId: string) =>
-    api.delete<void>(`/capabilities/${capabilityId}/limits/${limitId}`),
+  putLimit: (testItemId: string, body: Record<string, unknown>) =>
+    api.put<EquipmentTestCondition>(`/equipment-test-items/${testItemId}/limits`, body),
+  removeLimit: (testItemId: string, limitId: string) =>
+    api.delete<void>(`/equipment-test-items/${testItemId}/limits/${limitId}`),
 }
 
 /**
  * 장비 계열 — **제조사가 파는 계열.**
  *
- * 무슨 시험이 되나(역량), 어느 부속이 붙나(관계), 누가 만들었나가 여기 붙는다.
+ * 무슨 시험이 되나(시험 항목), 어느 부속이 붙나(관계), 누가 만들었나가 여기 붙는다.
  * 수치는 기종이 갖는다 — 한 계열 안에서 하중이 중앙값 60배 갈리기 때문이다
  * (ADR 0006).
  */
@@ -93,19 +149,16 @@ export const seriesApi = {
     api.patch<EquipmentSeries>(`/equipment-series/${id}`, body),
   remove: (id: string) => api.delete<void>(`/equipment-series/${id}`),
 
-  addCapability: (seriesId: string, body: Record<string, unknown>) =>
-    api.post<ModelCapability>(`/equipment-series/${seriesId}/capabilities`, body),
-  removeCapability: (seriesId: string, capabilityId: string) =>
-    api.delete<void>(`/equipment-series/${seriesId}/capabilities/${capabilityId}`),
+  addTestItem: (seriesId: string, body: Record<string, unknown>) =>
+    api.post<SeriesTestItem>(`/equipment-series/${seriesId}/test_items`, body),
+  removeTestItem: (seriesId: string, testItemId: string) =>
+    api.delete<void>(`/equipment-series/${seriesId}/test_items/${testItemId}`),
   /** 조건 한 칸은 **덮어쓰기다** — 같은 조건이 둘이면 어느 쪽이 맞는지 알 수 없다. */
-  putLimit: (seriesId: string, capabilityId: string, body: Record<string, unknown>) =>
-    api.put<ModelLimit>(
-      `/equipment-series/${seriesId}/capabilities/${capabilityId}/limits`,
-      body,
-    ),
-  removeLimit: (seriesId: string, capabilityId: string, limitId: string) =>
+  putLimit: (seriesId: string, testItemId: string, body: Record<string, unknown>) =>
+    api.put<ModelLimit>(`/equipment-series/${seriesId}/test_items/${testItemId}/limits`, body),
+  removeLimit: (seriesId: string, testItemId: string, limitId: string) =>
     api.delete<void>(
-      `/equipment-series/${seriesId}/capabilities/${capabilityId}/limits/${limitId}`,
+      `/equipment-series/${seriesId}/test_items/${testItemId}/limits/${limitId}`,
     ),
 
   addRelation: (seriesId: string, body: Record<string, unknown>) =>
@@ -121,7 +174,7 @@ export const seriesApi = {
  * 「0.5~300 kN 입니다」 라고밖에 못 하고, 그 대답은 우리가 가진 그 한 대에 대해
  * 아무것도 말하지 않는다(ADR 0006).
  *
- * 장비를 등록할 때 기종을 고르면 **계열의 역량이 그 개체로 복사되고, 조건은 이
+ * 장비를 등록할 때 기종을 고르면 **계열의 시험 항목이 그 개체로 복사되고, 조건은 이
  * 기종의 사양에서 온다** — 상속이 아니라 복사라, 그 뒤로는 개체가 진실이다.
  */
 export const catalogApi = {
@@ -133,6 +186,9 @@ export const catalogApi = {
     /** `specs` 사양이 빈 것 · `uncertain` 원본 확인이 필요한 것. */
     issue?: string
     limit?: number
+    /** 몇 째부터. **714기종이라 한 쪽에 안 담긴다** — 안 넘기면 나머지가 조용히
+     *  안 보이고, 못 찾은 사람은 없다고 결론 내리고 새로 만든다. */
+    offset?: number
   }) => {
     const search = new URLSearchParams()
     if (params.q) search.set('q', params.q)
@@ -140,6 +196,7 @@ export const catalogApi = {
     if (params.owned) search.set('owned', 'true')
     if (params.issue) search.set('issue', params.issue)
     if (params.limit) search.set('limit', String(params.limit))
+    if (params.offset) search.set('offset', String(params.offset))
     const query = search.toString()
     return api.get<ModelPage>(`/equipment-models${query ? `?${query}` : ''}`)
   },
@@ -168,7 +225,7 @@ type SpecSourcePage = components['schemas']['Page_SpecSourceOut_']
  */
 export const specApi = {
   sheet: (modelId: string) => api.get<ModelSpecSheet>(`/equipment-models/${modelId}/specs`),
-  /** 한 칸을 넣거나 덮어쓴다. 응답의 `reflected` 는 역량에 반영된 수다. */
+  /** 한 칸을 넣거나 덮어쓴다. 응답의 `reflected` 는 시험 항목에 반영된 수다. */
   put: (modelId: string, body: Record<string, unknown>) =>
     api.put<SpecSaveResult>(`/equipment-models/${modelId}/specs`, body),
   remove: (modelId: string, definitionId: string) =>

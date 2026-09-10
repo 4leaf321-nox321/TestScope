@@ -4,11 +4,22 @@
  * 계열 아래의 한 기종이다(ADR 0006). 계열별로 보려면 계열 상세로 가고, 여기는
  * **기종을 이름으로 찾는 자리**다 — 라벨의 `68FM-300` 만 아는 채로 오는 일이 흔하다.
  *
- * 보유 대수를 함께 보여 주는 이유: **카탈로그가 답해야 하는 첫 물음이 그것**이고,
- * 전에는 기종이 행이 아니라 문자열이라 셀 수가 없었다.
+ * ## 이름만으로는 못 고른다
+ *
+ * 한 계열에 기종이 열일곱까지 있고, 그 열일곱을 가르는 것은 **수치**다. 제조사·계열은
+ * 형제 기종끼리 같고, 시험 항목은 계열이 갖는 값이라 역시 같다(ADR 0006) — 그러니
+ * 그 세 열은 「어느 것을 고를까」 에 아무 답도 못 한다.
+ *
+ * 그래서 **대표 사양**을 한 줄에 박는다. 무엇이 대표인지는 분류가 정한다(온톨로지
+ * `categories.json` 의 `headline_specs`): 만능시험기는 하중이고 챔버는 온도다.
+ *
+ * ## 보유 대수를 함께 보여 주는 이유
+ *
+ * **카탈로그가 답해야 하는 첫 물음이 그것**이고, 전에는 기종이 행이 아니라 문자열이라
+ * 셀 수가 없었다.
  */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Plus } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 
@@ -17,7 +28,9 @@ import { isSystemAdmin } from '@/shared/auth/roles'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
+import { Pager } from '@/shared/components/Pager'
 import { Button } from '@/shared/components/ui/button'
+import { Badge } from '@/shared/components/ui/badge'
 import { Input } from '@/shared/components/ui/input'
 import {
   Table,
@@ -29,14 +42,51 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi } from '@/modules/equipment/api'
+import type { EquipmentModel } from '@/modules/equipment/api'
+import { shownSpecValue } from '@/modules/equipment/specValue'
 import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDialog'
 
 /** 홈의 「남은 일」 이 거는 필터. 그 줄을 눌러 온 사람에게 **왜 이 목록인지**를
  *  말해 준다 — 안 말하면 목록이 짧은 것을 오류로 읽는다. */
 const ISSUE_NOTE: Record<string, string> = {
-  specs: '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답합니다.',
+  specs:
+    '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답합니다.',
   uncertain:
     '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우세요.',
+}
+
+/** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다 — 상한까지 받아 놓고 안 그리면
+ *  나머지가 조용히 사라지고, 그 사실은 화면 어디에도 안 남는다. */
+const PAGE_SIZE = 50
+
+/** 목록 한 줄에 시험 항목 이름을 몇 개까지. 나머지는 수로 접는다. */
+const ITEMS_SHOWN = 2
+
+/**
+ * 그 기종을 가르는 수치 두어 칸.
+ *
+ * **값이 없으면 라벨도 안 그린다.** 「하중 용량 —」 은 0 으로도 모름으로도 읽히는데,
+ * 그 둘은 장비를 고르는 사람에게 정반대다. 대신 사양이 몇 칸 적혔는지를 말한다.
+ */
+function HeadlineSpecs({ model }: { model: EquipmentModel }) {
+  if (model.headline_specs.length === 0) {
+    return model.spec_count === 0 ? (
+      // 사양이 아예 없는 기종. 홈의 「남은 일」 이 거는 필터와 같은 말이다.
+      <span className="text-amber-600">사양 없음</span>
+    ) : (
+      <span className="text-muted-foreground">사양 {model.spec_count}칸</span>
+    )
+  }
+  return (
+    <div className="flex flex-col gap-0.5">
+      {model.headline_specs.map((spec) => (
+        <span key={spec.definition_id} className="text-sm">
+          <span className="text-muted-foreground">{spec.label} </span>
+          <span className="font-medium">{shownSpecValue(spec)}</span>
+        </span>
+      ))}
+    </div>
+  )
 }
 
 export default function EquipmentModelsPage() {
@@ -44,11 +94,33 @@ export default function EquipmentModelsPage() {
   const [params, setParams] = useSearchParams()
   const owned = params.get('owned') === '1' || params.get('owned') === 'true'
   const issue = params.get('issue') ?? undefined
+  const [typed, setTyped] = useState('')
   const [query, setQuery] = useState('')
+  const [offset, setOffset] = useState(0)
   const [creating, setCreating] = useState(false)
+
+  // 글자마다 조회하지 않는다 — 타이핑 중에 결과가 요동치면 읽는 눈이 미끄러진다.
+  useEffect(() => {
+    const timer = setTimeout(() => setQuery(typed.trim()), 250)
+    return () => clearTimeout(timer)
+  }, [typed])
+
+  // **거르기가 바뀌면 첫 쪽으로 돌아간다.** 안 그러면 세 번째 쪽을 보던 사람이
+  // 검색어를 치는 순간 빈 화면을 보고, 그것을 「결과 없음」 으로 읽는다.
+  useEffect(() => {
+    setOffset(0)
+  }, [query, owned, issue])
+
   const page = useResource(
-    () => catalogApi.list({ q: query || undefined, owned, issue, limit: 200 }),
-    [query, owned, issue],
+    () =>
+      catalogApi.list({
+        q: query || undefined,
+        owned,
+        issue,
+        limit: PAGE_SIZE,
+        offset,
+      }),
+    [query, owned, issue, offset],
   )
 
   return (
@@ -82,8 +154,8 @@ export default function EquipmentModelsPage() {
       )}
 
       <Input
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
+        value={typed}
+        onChange={(event) => setTyped(event.target.value)}
         placeholder="기종명·계열명 또는 제조사"
         className="max-w-sm"
       />
@@ -100,61 +172,104 @@ export default function EquipmentModelsPage() {
           }
         />
       ) : (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>기종</TableHead>
-              <TableHead>계열</TableHead>
-              <TableHead>제조사</TableHead>
-              <TableHead className="text-right">시험 항목</TableHead>
-              <TableHead className="text-right">보유</TableHead>
-              <TableHead>상태</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {(page.data?.items ?? []).map((one) => (
-              <TableRow
-                key={one.id}
-                className={one.status === 'discontinued' ? 'opacity-60' : undefined}
-              >
-                <TableCell className="font-medium">
-                  <Link
-                    to={`/catalog/equipment-models/${one.id}`}
-                    className="hover:underline"
-                  >
-                    {one.name}
-                  </Link>
-                </TableCell>
-                <TableCell>
-                  <Link
-                    to={`/catalog/equipment-series/${one.series_id}`}
-                    className="text-muted-foreground hover:underline"
-                  >
-                    {one.series_name}
-                  </Link>
-                </TableCell>
-                <TableCell>{one.maker ?? '—'}</TableCell>
-                <TableCell className="text-right">
-                  {/* 0 이면 이 기종으로 장비를 등록해도 복사될 것이 없다.
-                      역량은 계열이 갖는다(ADR 0006). */}
-                  {one.capabilities.length === 0 ? (
-                    <span className="text-amber-600">미등록</span>
-                  ) : (
-                    one.capabilities.length
-                  )}
-                </TableCell>
-                <TableCell className="text-right">
-                  {/* **대수만 보면 여유 있어 보인다.** 다섯 대 중 한 대만 가동인
-                      경우가 있어서 가동 수를 함께 적는다. */}
-                  {one.unit_count === 0
-                    ? '—'
-                    : `${one.unit_count}대 (가동 ${one.operational_count})`}
-                </TableCell>
-                <TableCell>{one.status === 'active' ? '현행' : '단종'}</TableCell>
+        <div className="space-y-3">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>기종</TableHead>
+                <TableHead>분류</TableHead>
+                <TableHead>제조사</TableHead>
+                {/* **이 열이 기종을 가른다.** 분류가 정한 대표 사양이다. */}
+                <TableHead>대표 사양</TableHead>
+                <TableHead>시험 항목</TableHead>
+                <TableHead className="text-right">보유</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {(page.data?.items ?? []).map((one) => (
+                <TableRow
+                  key={one.id}
+                  className={one.status === 'discontinued' ? 'opacity-60' : undefined}
+                >
+                  <TableCell>
+                    <div className="flex flex-col gap-0.5">
+                      <span className="flex items-center gap-2">
+                        <Link
+                          to={`/catalog/equipment-models/${one.id}`}
+                          className="font-medium hover:underline"
+                        >
+                          {one.name}
+                        </Link>
+                        {/* **단종일 때만 말한다.** 거의 모두가 현행이라, 열을 따로
+                            두면 같은 글자가 700줄 반복되고 그 열은 아무 말도 안 하게
+                            된다. */}
+                        {one.status === 'discontinued' && (
+                          <Badge variant="secondary">단종</Badge>
+                        )}
+                      </span>
+                      {/* 계열은 이름 아래에 둔다 — 형제 기종끼리 같은 값이라 열
+                          하나를 차지할 만큼 가르는 힘이 없다. */}
+                      <Link
+                        to={`/catalog/equipment-series/${one.series_id}`}
+                        className="text-muted-foreground text-xs hover:underline"
+                      >
+                        {one.series_name}
+                      </Link>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-muted-foreground text-sm">
+                    {/* **행만 보고 이게 무슨 장비인지 알 수 있어야 한다.** 계열에서
+                        끌어온 값이다(ADR 0006). */}
+                    {one.category ?? '—'}
+                  </TableCell>
+                  <TableCell className="text-sm">{one.maker ?? '—'}</TableCell>
+                  <TableCell>
+                    <HeadlineSpecs model={one} />
+                  </TableCell>
+                  <TableCell className="text-sm">
+                    {/* **계열의 시험 항목이다.** 수가 아니라 이름을 적는다 — 「2」 는
+                        무슨 시험이 되는지에 아무 답도 못 한다. */}
+                    {one.test_items.length === 0 ? (
+                      <span className="text-amber-600">미등록</span>
+                    ) : (
+                      <span>
+                        {one.test_items
+                          .slice(0, ITEMS_SHOWN)
+                          .map((test_item) => test_item.test_item)
+                          .join(' · ')}
+                        {one.test_items.length > ITEMS_SHOWN && (
+                          <span className="text-muted-foreground">
+                            {' '}
+                            +{one.test_items.length - ITEMS_SHOWN}
+                          </span>
+                        )}
+                      </span>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-right text-sm">
+                    {/* **대수만 보면 여유 있어 보인다.** 다섯 대 중 한 대만 가동인
+                        경우가 있어서 가동 수를 함께 적는다. */}
+                    {one.unit_count === 0 ? (
+                      <span className="text-muted-foreground">—</span>
+                    ) : (
+                      `${one.unit_count}대 (가동 ${one.operational_count})`
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+
+          {page.data && (
+            <Pager
+              total={page.data.total}
+              limit={page.data.limit}
+              offset={page.data.offset}
+              onOffset={setOffset}
+              unit="기종"
+            />
+          )}
+        </div>
       )}
 
       <NewEquipmentModelDialog
