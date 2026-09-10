@@ -41,7 +41,8 @@ interface AuditEntry {
 
 function shownChanges(changes: AuditEntry['changes']): string {
   const parts = Object.entries(changes).map(
-    ([key, value]) => `${key}: ${String(value.before ?? '—')} -> ${String(value.after ?? '—')}`,
+    ([key, value]) =>
+      `${key}: ${String(value.before ?? '—')} -> ${String(value.after ?? '—')}`,
   )
   return parts.join(', ') || '—'
 }

@@ -53,7 +53,10 @@ describe('오류 응답', () => {
   it('봉투가 아니어도 서버가 한 말을 살린다', async () => {
     // FastAPI 가 detail 로 내는 경우. 그 말을 버리면 무엇이 잘못됐는지가 통째로
     // 사라진다.
-    vi.stubGlobal('fetch', vi.fn(async () => reply(405, { detail: 'Method Not Allowed' })))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => reply(405, { detail: 'Method Not Allowed' })),
+    )
 
     const error = (await api.get('/equipment').catch((one: unknown) => one)) as ApiError
     expect(error).toBeInstanceOf(ApiError)

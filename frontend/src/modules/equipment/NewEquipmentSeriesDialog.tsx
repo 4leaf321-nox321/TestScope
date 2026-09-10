@@ -88,8 +88,8 @@ export function NewEquipmentSeriesDialog({
           <DialogHeader>
             <DialogTitle>장비 계열 등록</DialogTitle>
             <DialogDescription>
-              무슨 시험이 되는지는 등록한 뒤 상세 화면에서 적습니다. 수치 사양은 그
-              안의 기종이 갖습니다 — 한 계열 안에서 하중이 수백 배 갈리기 때문입니다.
+              무슨 시험이 되는지는 등록한 뒤 상세 화면에서 적습니다. 수치 사양은 그 안의 기종이
+              갖습니다 — 한 계열 안에서 하중이 수백 배 갈리기 때문입니다.
             </DialogDescription>
           </DialogHeader>
 

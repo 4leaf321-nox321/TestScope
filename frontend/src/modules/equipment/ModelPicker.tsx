@@ -46,7 +46,7 @@ export function ModelPicker({
    * **두 길을 다 열어 둔다.** 라벨의 기종명을 아는 사람은 그것을 치면 되고,
    * 「인스트론 6800 시리즈」 까지만 아는 사람은 계열부터 고른다. 실무에서는
    * 뒤쪽이 더 흔하다 — 기종명은 장비 앞에 가야 읽을 수 있다. */
-  const [mode, setMode] = useState<"model" | "series">("model")
+  const [mode, setMode] = useState<'model' | 'series'>('model')
 
   // 글자마다 조회하지 않는다 — 타이핑 중에 결과가 요동치면 고르는 손이 미끄러진다.
   useEffect(() => {
@@ -65,8 +65,8 @@ export function ModelPicker({
   )
   const seriesPage = useResource(
     () =>
-      mode === "series"
-        ? seriesApi.list({ q: query || undefined, kind: "main", limit: 50 })
+      mode === 'series'
+        ? seriesApi.list({ q: query || undefined, kind: 'main', limit: 50 })
         : Promise.resolve(null),
     [query, mode],
   )
@@ -76,11 +76,11 @@ export function ModelPicker({
 
   function narrow(id: string, name: string) {
     setSeries({ id, name })
-    setMode("model")
+    setMode('model')
     // **검색어를 비운다.** 「6800」 으로 찾아 들어왔는데 그 글자가 기종명에 없다고
     // 목록이 비면, 사람은 계열을 잘못 골랐다고 읽는다.
-    setTyped("")
-    setQuery("")
+    setTyped('')
+    setQuery('')
   }
 
   useEffect(() => {
@@ -133,8 +133,8 @@ export function ModelPicker({
           <div className="flex h-11 items-center gap-1 border-b p-1">
             {(
               [
-                ["model", "기종으로 찾기"],
-                ["series", "계열부터 고르기"],
+                ['model', '기종으로 찾기'],
+                ['series', '계열부터 고르기'],
               ] as const
             ).map(([value, label]) => (
               <Button

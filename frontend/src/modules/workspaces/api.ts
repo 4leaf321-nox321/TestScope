@@ -29,7 +29,8 @@ export const workspaceApi = {
   reorder: (slug: string, direction: 'up' | 'down') =>
     api.post<Workspace>(`/workspaces/${slug}/reorder`, { direction }),
   /** **누르기 전에 무엇이 딸려 있는지 보여 준다.** */
-  references: (slug: string) => api.get<WorkspaceReference[]>(`/workspaces/${slug}/references`),
+  references: (slug: string) =>
+    api.get<WorkspaceReference[]>(`/workspaces/${slug}/references`),
   remove: (slug: string) => api.delete<void>(`/workspaces/${slug}`),
 
   members: (slug: string) => api.get<Member[]>(`/workspaces/${slug}/members`),

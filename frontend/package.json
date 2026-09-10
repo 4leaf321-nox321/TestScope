@@ -2,12 +2,14 @@
   "name": "testscope-frontend",
   "private": true,
   "//": "이 version 이 곧 릴리스 번호다. 백엔드가 /api/health 로 이 값을 돌려준다.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
     "preview": "vite preview",
     "api:types": "openapi-typescript ../backend/openapi.json -o src/shared/api/schema.d.ts",
     "test": "vitest run",
@@ -40,6 +42,7 @@
     "happy-dom": "^20.11.12",
     "openapi-typescript": "^7.13.0",
     "oxlint": "^1.75.0",
+    "prettier": "^3.9.6",
     "typescript": "~6.0.2",
     "vite": "^8.2.0",
     "vitest": "^3.2.7"

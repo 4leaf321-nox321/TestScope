@@ -71,9 +71,7 @@ function Row({
       <span className="min-w-0 flex-1">
         <span className="block truncate font-medium">{option.label}</span>
         {option.detail && (
-          <span className="text-muted-foreground block truncate text-xs">
-            {option.detail}
-          </span>
+          <span className="text-muted-foreground block truncate text-xs">{option.detail}</span>
         )}
       </span>
       {option.badge && (
@@ -111,10 +109,7 @@ export function SearchablePicker({
   const [detailQuery, setDetailQuery] = useState('')
 
   const picked = options.find((one) => one.id === value) ?? null
-  const shown = useMemo(
-    () => options.filter((one) => matches(one, query)),
-    [options, query],
-  )
+  const shown = useMemo(() => options.filter((one) => matches(one, query)), [options, query])
   const inDetail = useMemo(
     () => options.filter((one) => matches(one, detailQuery)),
     [options, detailQuery],
@@ -224,11 +219,7 @@ export function SearchablePicker({
               )}
               {inDetail.map((one) => (
                 <li key={one.id} className="border-b last:border-b-0">
-                  <Row
-                    option={one}
-                    picked={one.id === value}
-                    onPick={() => choose(one.id)}
-                  />
+                  <Row option={one} picked={one.id === value} onPick={() => choose(one.id)} />
                 </li>
               ))}
             </ul>

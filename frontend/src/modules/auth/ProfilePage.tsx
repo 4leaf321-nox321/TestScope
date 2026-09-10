@@ -93,9 +93,7 @@ export default function ProfilePage() {
           />
           {/* **아이디는 여기서 못 바꾼다.** 로그인 식별자라 본인이 바꾸면 감사
               기록이 가리키는 대상이 흔들린다 — 그것은 관리자의 일이다. */}
-          <p className="text-muted-foreground text-xs">
-            아이디는 관리자만 바꿀 수 있습니다.
-          </p>
+          <p className="text-muted-foreground text-xs">아이디는 관리자만 바꿀 수 있습니다.</p>
         </div>
         <Button type="submit" disabled={busy}>
           {busy ? '저장 중…' : '저장'}
@@ -108,8 +106,8 @@ export default function ProfilePage() {
         <div>
           <h2 className="text-base font-semibold">액세스 토큰</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            장비 PC 나 스크립트가 이 시스템의 API 를 부를 때 쓰는 자격입니다. 사람
-            세션과 달리 만료가 길고, 안 쓰면 지웁니다.
+            장비 PC 나 스크립트가 이 시스템의 API 를 부를 때 쓰는 자격입니다. 사람 세션과 달리
+            만료가 길고, 안 쓰면 지웁니다.
           </p>
         </div>
 

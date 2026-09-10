@@ -1,0 +1,7 @@
+# shadcn 프리미티브는 **위에서 받은 코드**다. 우리 스타일로 다시 적으면 다음에
+# 받아 올 때마다 통째로 충돌한다 — 손대는 자리만 우리 것이 된다.
+src/shared/components/ui/
+
+# 생성물. 손으로 고치지 않는다.
+src/shared/api/schema.d.ts
+dist/

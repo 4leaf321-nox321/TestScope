@@ -55,8 +55,8 @@ export default function AccountsAdminPage() {
           콘솔뿐이고, 그때는 화면에서 할 수 있는 것이 하나도 없다. */}
       {summary.data && onlyOneAdmin && (
         <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
-          활성 시스템 관리자가 1명입니다. 그 계정이 잠기면 서버 콘솔로만 복구할 수
-          있습니다 — 한 명 더 지정해 두세요.
+          활성 시스템 관리자가 1명입니다. 그 계정이 잠기면 서버 콘솔로만 복구할 수 있습니다 —
+          한 명 더 지정해 두세요.
         </div>
       )}
 

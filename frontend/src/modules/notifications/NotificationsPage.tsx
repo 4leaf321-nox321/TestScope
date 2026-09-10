@@ -56,12 +56,16 @@ export default function NotificationsPage() {
           {(list.data ?? []).map((one) => (
             <li
               key={one.id}
-              className={one.read_at ? 'rounded-md border p-3 opacity-60' : 'rounded-md border p-3'}
+              className={
+                one.read_at ? 'rounded-md border p-3 opacity-60' : 'rounded-md border p-3'
+              }
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-sm font-medium">{one.title}</p>
-                  {one.body && <p className="text-muted-foreground mt-1 text-sm">{one.body}</p>}
+                  {one.body && (
+                    <p className="text-muted-foreground mt-1 text-sm">{one.body}</p>
+                  )}
                   {one.link && (
                     <Link to={one.link} className="mt-1 inline-block text-xs underline">
                       보러 가기
