@@ -24,7 +24,7 @@ import { Input } from '@/shared/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/components/ui/popover'
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
-import type { EquipmentModel } from '@/modules/equipment/api'
+import type { EquipmentModelRow } from '@/modules/equipment/api'
 
 export function ModelPicker({
   value,
@@ -32,13 +32,13 @@ export function ModelPicker({
   id,
 }: {
   value: string
-  onChange: (modelId: string, model: EquipmentModel | null) => void
+  onChange: (modelId: string, model: EquipmentModelRow | null) => void
   id?: string
 }) {
   const [open, setOpen] = useState(false)
   const [typed, setTyped] = useState('')
   const [query, setQuery] = useState('')
-  const [picked, setPicked] = useState<EquipmentModel | null>(null)
+  const [picked, setPicked] = useState<EquipmentModelRow | null>(null)
   /** 좁혀 둔 계열. 정해지면 **그 계열의 기종이 전부** 뜬다. */
   const [series, setSeries] = useState<{ id: string; name: string } | null>(null)
   /** 무엇을 훑고 있나 — 기종이냐 계열이냐.

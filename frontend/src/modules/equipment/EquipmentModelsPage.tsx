@@ -42,7 +42,7 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi } from '@/modules/equipment/api'
-import type { EquipmentModel } from '@/modules/equipment/api'
+import type { EquipmentModelRow } from '@/modules/equipment/api'
 import { shownSpecValue } from '@/modules/equipment/specValue'
 import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDialog'
 
@@ -68,7 +68,7 @@ const ITEMS_SHOWN = 2
  * **값이 없으면 라벨도 안 그린다.** 「하중 용량 —」 은 0 으로도 모름으로도 읽히는데,
  * 그 둘은 장비를 고르는 사람에게 정반대다. 대신 사양이 몇 칸 적혔는지를 말한다.
  */
-function HeadlineSpecs({ model }: { model: EquipmentModel }) {
+function HeadlineSpecs({ model }: { model: EquipmentModelRow }) {
   if (model.headline_specs.length === 0) {
     return model.spec_count === 0 ? (
       // 사양이 아예 없는 기종. 홈의 「남은 일」 이 거는 필터와 같은 말이다.
@@ -233,10 +233,9 @@ export default function EquipmentModelsPage() {
                       <span className="text-amber-600">미등록</span>
                     ) : (
                       <span>
-                        {one.test_items
-                          .slice(0, ITEMS_SHOWN)
-                          .map((test_item) => test_item.test_item)
-                          .join(' · ')}
+                        {/* 목록 줄은 **이름만** 받는다 — 조건 수치는 계열이 갖는
+                          값이라 형제 기종끼리 전부 같고, 이 화면은 안 그린다. */}
+                        {one.test_items.slice(0, ITEMS_SHOWN).join(' · ')}
                         {one.test_items.length > ITEMS_SHOWN && (
                           <span className="text-muted-foreground">
                             {' '}

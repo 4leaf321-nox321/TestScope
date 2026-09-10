@@ -932,7 +932,7 @@ export interface paths {
         patch: operations["update_series_api_equipment_series__series_id__patch"];
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/test_items": {
+    "/api/equipment-series/{series_id}/test-items": {
         parameters: {
             query?: never;
             header?: never;
@@ -959,7 +959,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}": {
+    "/api/equipment-series/{series_id}/test-items/{equipment_test_item_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -976,7 +976,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits": {
+    "/api/equipment-series/{series_id}/test-items/{equipment_test_item_id}/limits": {
         parameters: {
             query?: never;
             header?: never;
@@ -993,7 +993,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits/{limit_id}": {
+    "/api/equipment-series/{series_id}/test-items/{equipment_test_item_id}/limits/{limit_id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1303,7 +1303,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/search/test_items": {
+    "/api/search/test-items": {
         parameters: {
             query?: never;
             header?: never;
@@ -2134,6 +2134,52 @@ export interface components {
             can_edit: boolean;
         };
         /**
+         * EquipmentModelRow
+         * @description 기종 **목록** 한 줄. 상세(`EquipmentModelOut`)와 일부러 다르다.
+         *
+         *     시험 항목은 **이름만** 싣는다. 조건 수치와 인용 규격은 계열이 갖는 값이라
+         *     형제 기종끼리 전부 같고, 목록은 그것을 그리지 않는다 — 50줄에 52 KB 였다.
+         *
+         *     사양 원문(`raw_specs`)도 안 싣는다. 목록이 그리는 것은 분류가 정한 대표
+         *     사양(`headline_specs`) 두어 칸이다.
+         */
+        EquipmentModelRow: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Series Id
+             * Format: uuid
+             */
+            series_id: string;
+            /** Series Name */
+            series_name: string;
+            /** Name */
+            name: string;
+            /** Name Ko */
+            name_ko: string | null;
+            /** Maker */
+            maker: string | null;
+            /** Category */
+            category: string | null;
+            /** Form Factor */
+            form_factor: string | null;
+            /** Status */
+            status: string;
+            /** Unit Count */
+            unit_count: number;
+            /** Operational Count */
+            operational_count: number;
+            /** Test Items */
+            test_items: string[];
+            /** Headline Specs */
+            headline_specs: components["schemas"]["ModelHeadlineSpecOut"][];
+            /** Spec Count */
+            spec_count: number;
+        };
+        /**
          * EquipmentModelUpdateRequest
          * @description **안 보낸 것과 비운 것을 구별한다.** None 은 "안 바꿈" 이다.
          */
@@ -2335,6 +2381,51 @@ export interface components {
             created_at: string;
             /** Can Edit */
             can_edit: boolean;
+        };
+        /**
+         * EquipmentSeriesRow
+         * @description 계열 **목록** 한 줄. 상세(`EquipmentSeriesOut`)와 일부러 다르다.
+         *
+         *     ## 목록이 그리는 것만 싣는다
+         *
+         *     상세를 목록에 실었더니 50줄짜리 한 쪽이 질의를 1,058회 했다. 그중 대부분은
+         *     시험 항목마다 인용 규격과 조건 수치를 만드느라 든 것인데, **목록 화면이 그
+         *     시험 항목으로 하는 일은 개수를 세는 것뿐**이었다. 46 KB 를 만들어 보내고
+         *     `length` 를 읽은 셈이다.
+         *
+         *     부속 관계(`relations`)와 사양 원문(`raw_limits`)은 목록이 아예 안 그린다.
+         *
+         *     그래서 목록은 요약만 준다. 상세가 필요하면 상세를 부른다 — 목록에서 한 줄을
+         *     누르면 어차피 그리로 간다.
+         */
+        EquipmentSeriesRow: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Name Ko */
+            name_ko: string | null;
+            /** Maker */
+            maker: string | null;
+            /** Brand */
+            brand: string | null;
+            /** Category */
+            category: string | null;
+            /** Kind */
+            kind: string;
+            /** Status */
+            status: string;
+            /** Model Count */
+            model_count: number;
+            /** Unit Count */
+            unit_count: number;
+            /** Operational Count */
+            operational_count: number;
+            /** Test Item Count */
+            test_item_count: number;
         };
         /**
          * EquipmentSeriesUpdateRequest
@@ -3184,10 +3275,10 @@ export interface components {
             /** Offset */
             offset: number;
         };
-        /** Page[EquipmentModelOut] */
-        Page_EquipmentModelOut_: {
+        /** Page[EquipmentModelRow] */
+        Page_EquipmentModelRow_: {
             /** Items */
-            items: components["schemas"]["EquipmentModelOut"][];
+            items: components["schemas"]["EquipmentModelRow"][];
             /** Total */
             total: number;
             /** Limit */
@@ -3206,10 +3297,10 @@ export interface components {
             /** Offset */
             offset: number;
         };
-        /** Page[EquipmentSeriesOut] */
-        Page_EquipmentSeriesOut_: {
+        /** Page[EquipmentSeriesRow] */
+        Page_EquipmentSeriesRow_: {
             /** Items */
-            items: components["schemas"]["EquipmentSeriesOut"][];
+            items: components["schemas"]["EquipmentSeriesRow"][];
             /** Total */
             total: number;
             /** Limit */
@@ -6063,7 +6154,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Page_EquipmentSeriesOut_"];
+                    "application/json": components["schemas"]["Page_EquipmentSeriesRow_"];
                 };
             };
             /** @description Validation Error */
@@ -6424,7 +6515,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["Page_EquipmentModelOut_"];
+                    "application/json": components["schemas"]["Page_EquipmentModelRow_"];
                 };
             };
             /** @description Validation Error */
@@ -6700,6 +6791,7 @@ export interface operations {
             query?: {
                 q?: string | null;
                 test_item?: string | null;
+                requirement?: string | null;
                 include_superseded?: boolean;
                 limit?: number;
                 offset?: number;

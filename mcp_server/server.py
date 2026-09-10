@@ -272,6 +272,14 @@ async def search_series(
     """계열을 찾아 훑는다. `kind` 는 `main`(본체) · `accessory`(부속) · 빈 문자열(전체).
 
     **하나로 정하려면 `resolve` 를 쓴다.** 이 도구는 「무엇이 있나」 를 볼 때다.
+
+    ## 여기 오는 것은 요약이다
+
+    시험 항목은 **개수**(`test_item_count`)로만 온다. 무슨 시험이 되는지와 조건 수치는
+    `get_series` 가 준다 — 목록에 다 실으면 한 쪽이 191 KB 다.
+
+    그러니 **`test_item_count` 가 0 이 아닌 것을 「조건을 모른다」 고 답하지 마라.**
+    아직 안 물어본 것이다.
     """
     return await _get(
         ctx,
@@ -401,6 +409,15 @@ async def search_models(
     `series_id` 로 다시 부른다.
 
     `q` 만 주면 기종명·계열명·제조사를 다 뒤진다. 하나로 정하려면 `resolve` 를 쓴다.
+
+    ## 여기 오는 것은 요약이다
+
+    시험 항목은 **이름만** 오고(`test_items`), 사양은 그 기종을 가르는 대표 두어 칸
+    (`headline_specs`)만 온다. 조건 수치와 사양 전부는 `get_model` ·
+    `get_model_specs` 가 준다.
+
+    **안 온 것을 「없다」 고 답하지 마라.** `spec_count` 가 실제로 몇 칸 적혔는지를
+    말해 주므로, 그 수가 0 이 아니면 값은 있고 아직 안 물어본 것이다.
     """
     if series_id is None and series:
         answer = await _send(

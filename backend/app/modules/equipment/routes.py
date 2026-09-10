@@ -17,10 +17,12 @@ from app.modules.equipment.schemas import (
     EquipmentFilterOptionsOut,
     EquipmentModelCreateRequest,
     EquipmentModelOut,
+    EquipmentModelRow,
     EquipmentModelUpdateRequest,
     EquipmentOut,
     EquipmentSeriesCreateRequest,
     EquipmentSeriesOut,
+    EquipmentSeriesRow,
     EquipmentSeriesUpdateRequest,
     EquipmentSpecSaveRequest,
     EquipmentSpecSaveResult,
@@ -246,7 +248,7 @@ def delete_equipment_spec(
 series_router = APIRouter(prefix="/equipment-series", tags=["catalog"])
 
 
-@series_router.get("", response_model=Page[EquipmentSeriesOut])
+@series_router.get("", response_model=Page[EquipmentSeriesRow])
 def list_series(
     q: str | None = Query(default=None, max_length=200),
     kind: str | None = Query(default=None),
@@ -257,7 +259,7 @@ def list_series(
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
-) -> Page[EquipmentSeriesOut]:
+) -> Page[EquipmentSeriesRow]:
     # owned·issue 는 홈의 「남은 일」 이 거는 손잡이다 — 전부를 채우라고 하면
     # 아무도 안 채운다.
     return catalog.list_series(
@@ -410,7 +412,7 @@ def delete_series_relation(
 catalog_router = APIRouter(prefix="/equipment-models", tags=["catalog"])
 
 
-@catalog_router.get("", response_model=Page[EquipmentModelOut])
+@catalog_router.get("", response_model=Page[EquipmentModelRow])
 def list_models(
     q: str | None = Query(default=None, max_length=200),
     series_id: uuid.UUID | None = Query(default=None),
@@ -420,7 +422,7 @@ def list_models(
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
-) -> Page[EquipmentModelOut]:
+) -> Page[EquipmentModelRow]:
     return catalog.list_models(
         db,
         user,

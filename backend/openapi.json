@@ -3068,7 +3068,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_EquipmentSeriesOut_"
+                  "$ref": "#/components/schemas/Page_EquipmentSeriesRow_"
                 }
               }
             }
@@ -3671,7 +3671,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Page_EquipmentModelOut_"
+                  "$ref": "#/components/schemas/Page_EquipmentModelRow_"
                 }
               }
             }
@@ -6911,6 +6911,121 @@
         ],
         "title": "EquipmentModelOut"
       },
+      "EquipmentModelRow": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "series_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Series Id"
+          },
+          "series_name": {
+            "type": "string",
+            "title": "Series Name"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "name_ko": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name Ko"
+          },
+          "maker": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "form_factor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Form Factor"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "unit_count": {
+            "type": "integer",
+            "title": "Unit Count"
+          },
+          "operational_count": {
+            "type": "integer",
+            "title": "Operational Count"
+          },
+          "test_items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Test Items"
+          },
+          "headline_specs": {
+            "items": {
+              "$ref": "#/components/schemas/ModelHeadlineSpecOut"
+            },
+            "type": "array",
+            "title": "Headline Specs"
+          },
+          "spec_count": {
+            "type": "integer",
+            "title": "Spec Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "series_id",
+          "series_name",
+          "name",
+          "name_ko",
+          "maker",
+          "category",
+          "form_factor",
+          "status",
+          "unit_count",
+          "operational_count",
+          "test_items",
+          "headline_specs",
+          "spec_count"
+        ],
+        "title": "EquipmentModelRow",
+        "description": "기종 **목록** 한 줄. 상세(`EquipmentModelOut`)와 일부러 다르다.\n\n시험 항목은 **이름만** 싣는다. 조건 수치와 인용 규격은 계열이 갖는 값이라\n형제 기종끼리 전부 같고, 목록은 그것을 그리지 않는다 — 50줄에 52 KB 였다.\n\n사양 원문(`raw_specs`)도 안 싣는다. 목록이 그리는 것은 분류가 정한 대표\n사양(`headline_specs`) 두어 칸이다."
+      },
       "EquipmentModelUpdateRequest": {
         "properties": {
           "name": {
@@ -7730,6 +7845,104 @@
           "can_edit"
         ],
         "title": "EquipmentSeriesOut"
+      },
+      "EquipmentSeriesRow": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "name_ko": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name Ko"
+          },
+          "maker": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker"
+          },
+          "brand": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Brand"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "model_count": {
+            "type": "integer",
+            "title": "Model Count"
+          },
+          "unit_count": {
+            "type": "integer",
+            "title": "Unit Count"
+          },
+          "operational_count": {
+            "type": "integer",
+            "title": "Operational Count"
+          },
+          "test_item_count": {
+            "type": "integer",
+            "title": "Test Item Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "name_ko",
+          "maker",
+          "brand",
+          "category",
+          "kind",
+          "status",
+          "model_count",
+          "unit_count",
+          "operational_count",
+          "test_item_count"
+        ],
+        "title": "EquipmentSeriesRow",
+        "description": "계열 **목록** 한 줄. 상세(`EquipmentSeriesOut`)와 일부러 다르다.\n\n## 목록이 그리는 것만 싣는다\n\n상세를 목록에 실었더니 50줄짜리 한 쪽이 질의를 1,058회 했다. 그중 대부분은\n시험 항목마다 인용 규격과 조건 수치를 만드느라 든 것인데, **목록 화면이 그\n시험 항목으로 하는 일은 개수를 세는 것뿐**이었다. 46 KB 를 만들어 보내고\n`length` 를 읽은 셈이다.\n\n부속 관계(`relations`)와 사양 원문(`raw_limits`)은 목록이 아예 안 그린다.\n\n그래서 목록은 요약만 준다. 상세가 필요하면 상세를 부른다 — 목록에서 한 줄을\n누르면 어차피 그리로 간다."
       },
       "EquipmentSeriesUpdateRequest": {
         "properties": {
@@ -10386,11 +10599,11 @@
         ],
         "title": "Page[AuditEntryOut]"
       },
-      "Page_EquipmentModelOut_": {
+      "Page_EquipmentModelRow_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/EquipmentModelOut"
+              "$ref": "#/components/schemas/EquipmentModelRow"
             },
             "type": "array",
             "title": "Items"
@@ -10415,7 +10628,7 @@
           "limit",
           "offset"
         ],
-        "title": "Page[EquipmentModelOut]"
+        "title": "Page[EquipmentModelRow]"
       },
       "Page_EquipmentOut_": {
         "properties": {
@@ -10448,11 +10661,11 @@
         ],
         "title": "Page[EquipmentOut]"
       },
-      "Page_EquipmentSeriesOut_": {
+      "Page_EquipmentSeriesRow_": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/EquipmentSeriesOut"
+              "$ref": "#/components/schemas/EquipmentSeriesRow"
             },
             "type": "array",
             "title": "Items"
@@ -10477,7 +10690,7 @@
           "limit",
           "offset"
         ],
-        "title": "Page[EquipmentSeriesOut]"
+        "title": "Page[EquipmentSeriesRow]"
       },
       "Page_MethodOut_": {
         "properties": {

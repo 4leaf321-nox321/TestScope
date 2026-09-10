@@ -174,10 +174,10 @@ export default function EquipmentSeriesPage() {
                   )}
                 </TableCell>
                 <TableCell className="text-right">
-                  {one.test_items.length === 0 ? (
+                  {one.test_item_count === 0 ? (
                     <span className="text-amber-600">미등록</span>
                   ) : (
-                    one.test_items.length
+                    one.test_item_count
                   )}
                 </TableCell>
                 <TableCell className="text-right">

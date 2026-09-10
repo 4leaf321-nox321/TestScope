@@ -127,14 +127,16 @@ describe('기종 목록의 대표 사양', () => {
     expect(screen.getByText('제한 없음 ~ 300 ℃')).toBeTruthy()
   })
 
-  it('시험 항목은 수가 아니라 이름으로 적는다', async () => {
+  it('시험 항목은 수가 아니라 이름으로 적는다 — 목록은 이름만 받는다', async () => {
     items = [
       model({
-        test_items: [{ test_item: '인장' }, { test_item: '압축' }, { test_item: '굽힘' }],
+        test_items: ['인장', '압축', '굽힘'],
       }),
     ]
     await open()
-    // 「3」 은 무슨 시험이 되는지에 아무 답도 못 한다.
+    // 「3」 은 무슨 시험이 되는지에 아무 답도 못 한다. 다만 **이름만** 온다 —
+    // 조건 수치와 인용 규격은 계열이 갖는 값이라 형제 기종끼리 전부 같고,
+    // 목록에 실으면 50줄에 52 KB 를 만들어 놓고 안 그린다.
     expect(screen.getByText(/인장 · 압축/)).toBeTruthy()
     expect(screen.getByText(/\+1/)).toBeTruthy()
   })

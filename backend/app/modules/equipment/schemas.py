@@ -489,6 +489,80 @@ class EquipmentModelOut(BaseModel):
     can_edit: bool
 
 
+class EquipmentSeriesRow(BaseModel):
+    """계열 **목록** 한 줄. 상세(`EquipmentSeriesOut`)와 일부러 다르다.
+
+    ## 목록이 그리는 것만 싣는다
+
+    상세를 목록에 실었더니 50줄짜리 한 쪽이 질의를 1,058회 했다. 그중 대부분은
+    시험 항목마다 인용 규격과 조건 수치를 만드느라 든 것인데, **목록 화면이 그
+    시험 항목으로 하는 일은 개수를 세는 것뿐**이었다. 46 KB 를 만들어 보내고
+    `length` 를 읽은 셈이다.
+
+    부속 관계(`relations`)와 사양 원문(`raw_limits`)은 목록이 아예 안 그린다.
+
+    그래서 목록은 요약만 준다. 상세가 필요하면 상세를 부른다 — 목록에서 한 줄을
+    누르면 어차피 그리로 간다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    name: str
+    name_ko: str | None
+    maker: str | None
+    brand: str | None
+    category: str | None
+    kind: str
+    """본체(main)인가 부속(accessory·sensor·software)인가."""
+    status: str
+
+    model_count: int
+    """이 계열에 든 기종 수. **0 이면 아무도 이 계열을 가리킬 수 없다** — 보유
+    장비는 기종을 가리키기 때문이다."""
+    unit_count: int
+    operational_count: int
+    test_item_count: int
+    """무슨 시험이 되는지는 상세에서 본다. **0 이면 그 계열의 장비는 검색에 절대
+    안 걸린다** — 목록이 그 사실만 말해 주면 된다."""
+
+
+class EquipmentModelRow(BaseModel):
+    """기종 **목록** 한 줄. 상세(`EquipmentModelOut`)와 일부러 다르다.
+
+    시험 항목은 **이름만** 싣는다. 조건 수치와 인용 규격은 계열이 갖는 값이라
+    형제 기종끼리 전부 같고, 목록은 그것을 그리지 않는다 — 50줄에 52 KB 였다.
+
+    사양 원문(`raw_specs`)도 안 싣는다. 목록이 그리는 것은 분류가 정한 대표
+    사양(`headline_specs`) 두어 칸이다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    series_id: uuid.UUID
+    series_name: str
+    name: str
+    name_ko: str | None
+    maker: str | None
+    category: str | None
+    form_factor: str | None
+    status: str
+
+    unit_count: int
+    operational_count: int
+
+    test_items: list[str]
+    """**계열의 시험 항목 이름들.** 수가 아니라 이름을 준다 — 「2」 는 무슨 시험이
+    되는지에 아무 답도 못 한다."""
+
+    headline_specs: list[ModelHeadlineSpecOut]
+    """이 기종을 목록 한 줄에서 **가르는** 사양 두어 칸."""
+    spec_count: int
+    """사양이 몇 칸 적혔나. **0 과 「대표만 없음」 은 다르다** — 앞엣것은 채워야 할
+    구멍이고, 뒤엣것은 이 분류에 대표를 안 정해 둔 것뿐이다."""
+
+
 class EquipmentModelCreateRequest(BaseModel):
     """기종을 만든다. **계열이 먼저 있어야 한다.**
 

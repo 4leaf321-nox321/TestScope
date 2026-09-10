@@ -15,12 +15,24 @@ type EquipmentPage = components['schemas']['Page_EquipmentOut_']
 
 export type EquipmentSeries = components['schemas']['EquipmentSeriesOut']
 export type SeriesRelation = components['schemas']['SeriesRelationOut']
-type SeriesPage = components['schemas']['Page_EquipmentSeriesOut_']
 export type EquipmentModel = components['schemas']['EquipmentModelOut']
 export type SeriesTestItem = components['schemas']['SeriesTestItemOut']
 export type ModelLimit = components['schemas']['ModelLimitOut']
 export type ModelHeadlineSpec = components['schemas']['ModelHeadlineSpecOut']
-type ModelPage = components['schemas']['Page_EquipmentModelOut_']
+
+/**
+ * **목록 줄은 상세 줄과 다르다.**
+ *
+ * 상세를 목록에 실었더니 50줄짜리 한 쪽이 서버에서 질의를 1,058회 하고 191 KB 로
+ * 나갔다 — 그중 46 KB 가 시험 항목에 딸린 조건 수치였는데, 이 화면이 그것으로 하는
+ * 일은 개수를 세는 것뿐이었다.
+ *
+ * 그래서 목록은 요약만 받는다. 상세가 필요하면 그 줄을 눌러 상세로 간다.
+ */
+export type EquipmentSeriesRow = components['schemas']['EquipmentSeriesRow']
+export type EquipmentModelRow = components['schemas']['EquipmentModelRow']
+type SeriesPage = components['schemas']['Page_EquipmentSeriesRow_']
+type ModelPage = components['schemas']['Page_EquipmentModelRow_']
 
 export const equipmentApi = {
   /**

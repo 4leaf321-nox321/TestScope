@@ -37,7 +37,9 @@ from app.modules.equipment.models import (
 from app.modules.equipment.schemas import (
     CitedMethodOut,
     EquipmentModelOut,
+    EquipmentModelRow,
     EquipmentSeriesOut,
+    EquipmentSeriesRow,
     ModelHeadlineSpecOut,
     ModelLimitOut,
     SeriesRelationOut,
@@ -209,6 +211,79 @@ def _relations(db: Session, series_id: uuid.UUID) -> list[SeriesRelationOut]:
     return sorted(out, key=lambda one: (one.relation, one.other_name))
 
 
+# --- 목록을 쪽 단위로 묶는 자리 -----------------------------------------------
+#
+# **줄마다 묻지 않는다.** 한 줄씩 채우면 50줄짜리 한 쪽이 질의를 1,058회 한다 —
+# 재 보면 용어 425회, 시험 항목에 딸린 규격·조건이 379회, 보유 대수 50회다.
+# 한 쪽에 드는 질의를 줄 수와 무관하게 만드는 것이 여기 있는 함수들의 일이다.
+#
+# 목록이 커져서 느린 것이 아니라 **한 줄이 비싼 것**이라, 쪽 넘김으로는 안 고쳐진다.
+
+
+def _term_values(db: Session, term_ids: set[uuid.UUID | None]) -> dict[uuid.UUID, str]:
+    """용어 여럿을 한 번에. 제조사·분류·형태를 줄마다 꺼내면 그게 곧 425회다."""
+    wanted = {one for one in term_ids if one is not None}
+    if not wanted:
+        return {}
+    rows = db.execute(
+        select(VocabularyTerm.id, VocabularyTerm.value).where(VocabularyTerm.id.in_(wanted))
+    ).all()
+    return {term_id: value for term_id, value in rows}
+
+
+def _model_counts(db: Session, series_ids: list[uuid.UUID]) -> dict[uuid.UUID, int]:
+    """계열마다 기종이 몇 개인가."""
+    if not series_ids:
+        return {}
+    rows = db.execute(
+        select(EquipmentModel.series_id, func.count())
+        .where(EquipmentModel.series_id.in_(series_ids), EquipmentModel.deleted_at.is_(None))
+        .group_by(EquipmentModel.series_id)
+    ).all()
+    return {series_id: count for series_id, count in rows}
+
+
+def _unit_counts(
+    db: Session, column: Any, keys: list[uuid.UUID], joined: Any = None
+) -> dict[uuid.UUID, tuple[int, int]]:
+    """보유 대수와 가동 대수를 **세어서** 가져온다.
+
+    전에는 장비 행을 통째로 읽어 파이썬에서 셌다. 대장이 커지면 그 방식은 한 계열의
+    장비 수만큼 메모리를 쓰는데, 화면에 나가는 것은 숫자 둘이다.
+    """
+    if not keys:
+        return {}
+    stmt = select(
+        column,
+        func.count(),
+        func.count().filter(Equipment.status.in_(AVAILABLE_STATUSES)),
+    ).where(Equipment.deleted_at.is_(None))
+    if joined is not None:
+        stmt = stmt.join(joined, joined.id == Equipment.model_id)
+    rows = db.execute(stmt.where(column.in_(keys)).group_by(column)).all()
+    return {key: (total, working) for key, total, working in rows}
+
+
+def _test_item_names(db: Session, series_ids: list[uuid.UUID]) -> dict[uuid.UUID, list[str]]:
+    """계열마다 시험 항목 **이름들**. 조건 수치와 인용 규격은 안 들고 온다.
+
+    목록이 그것으로 하는 일은 이름 두엇을 적거나 개수를 세는 것뿐인데, 상세를 만드느라
+    50줄에 질의 379회와 46 KB 를 썼다.
+    """
+    if not series_ids:
+        return {}
+    rows = db.execute(
+        select(SeriesTestItem.series_id, VocabularyTerm.value)
+        .join(VocabularyTerm, VocabularyTerm.id == SeriesTestItem.test_item_term_id)
+        .where(SeriesTestItem.series_id.in_(series_ids))
+        .order_by(SeriesTestItem.created_at)
+    ).all()
+    out: dict[uuid.UUID, list[str]] = {}
+    for series_id, value in rows:
+        out.setdefault(series_id, []).append(value)
+    return out
+
+
 # --- 계열 --------------------------------------------------------------------
 
 
@@ -274,7 +349,7 @@ def list_series(
     issue: str | None = None,
     limit: int,
     offset: int,
-) -> Page[EquipmentSeriesOut]:
+) -> Page[EquipmentSeriesRow]:
     stmt = select(EquipmentSeries).where(EquipmentSeries.deleted_at.is_(None))
     if owned:
         # 보유 장비가 가리키는 기종이 속한 계열만. 「우리 것」 의 정의가 여기다 —
@@ -309,9 +384,34 @@ def list_series(
             | EquipmentSeries.maker_term_id.in_(makers)
         )
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
-    rows = db.scalars(stmt.order_by(EquipmentSeries.name).limit(limit).offset(offset))
+    rows = list(db.scalars(stmt.order_by(EquipmentSeries.name).limit(limit).offset(offset)))
+
+    # **여기서부터는 줄 수와 무관하게 질의 넷이다.** 줄마다 채우면 50줄에 1,058회다.
+    ids = [row.id for row in rows]
+    terms = _term_values(
+        db, {row.maker_term_id for row in rows} | {row.category_term_id for row in rows}
+    )
+    models = _model_counts(db, ids)
+    units = _unit_counts(db, EquipmentModel.series_id, ids, joined=EquipmentModel)
+    items = _test_item_names(db, ids)
     return Page(
-        items=[series_out(db, row, viewer) for row in rows],
+        items=[
+            EquipmentSeriesRow(
+                id=row.id,
+                name=row.name,
+                name_ko=row.name_ko,
+                maker=terms.get(row.maker_term_id) if row.maker_term_id else None,
+                brand=row.brand,
+                category=(terms.get(row.category_term_id) if row.category_term_id else None),
+                kind=row.kind,
+                status=row.status,
+                model_count=models.get(row.id, 0),
+                unit_count=units.get(row.id, (0, 0))[0],
+                operational_count=units.get(row.id, (0, 0))[1],
+                test_item_count=len(items.get(row.id, [])),
+            )
+            for row in rows
+        ],
         total=total,
         limit=limit,
         offset=offset,
@@ -684,7 +784,7 @@ def list_models(
     issue: str | None = None,
     limit: int,
     offset: int,
-) -> Page[EquipmentModelOut]:
+) -> Page[EquipmentModelRow]:
     """기종 목록.
 
     ## owned · issue 는 「채울 자리」 를 위한 것이다
@@ -727,20 +827,57 @@ def list_models(
         )
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
     rows = list(db.scalars(stmt.order_by(EquipmentModel.name).limit(limit).offset(offset)))
-    # **한 번에 구한다.** 줄마다 구하면 200줄짜리 목록이 조회를 수백 번 한다.
+
+    # **한 번에 구한다.** 줄마다 구하면 50줄짜리 목록이 조회를 948회 한다.
     headlines = _headline_specs(db, rows)
     counts = _spec_counts(db, [row.id for row in rows])
+    series_ids = [row.series_id for row in rows]
+    series_of = {
+        one.id: one
+        for one in db.scalars(
+            select(EquipmentSeries).where(EquipmentSeries.id.in_(series_ids))
+        )
+    }
+    terms = _term_values(
+        db,
+        {row.form_factor_term_id for row in rows}
+        | {one.maker_term_id for one in series_of.values()}
+        | {one.category_term_id for one in series_of.values()},
+    )
+    units = _unit_counts(db, Equipment.model_id, [row.id for row in rows])
+    items = _test_item_names(db, series_ids)
+
+    def one_row(row: EquipmentModel) -> EquipmentModelRow:
+        series = series_of.get(row.series_id)
+        return EquipmentModelRow(
+            id=row.id,
+            series_id=row.series_id,
+            series_name=series.name if series else "",
+            name=row.name,
+            name_ko=row.name_ko,
+            # **제조사·분류는 계열이 갖는다**(ADR 0006) — 기종에 열 번 적히면 열 번
+            # 다 같을 이유가 없다.
+            maker=(
+                terms.get(series.maker_term_id) if series and series.maker_term_id else None
+            ),
+            category=(
+                terms.get(series.category_term_id)
+                if series and series.category_term_id
+                else None
+            ),
+            form_factor=(
+                terms.get(row.form_factor_term_id) if row.form_factor_term_id else None
+            ),
+            status=row.status,
+            unit_count=units.get(row.id, (0, 0))[0],
+            operational_count=units.get(row.id, (0, 0))[1],
+            test_items=items.get(row.series_id, []),
+            headline_specs=headlines.get(row.id, []),
+            spec_count=counts.get(row.id, 0),
+        )
+
     return Page(
-        items=[
-            model_out(
-                db,
-                row,
-                viewer,
-                headline=headlines.get(row.id, []),
-                spec_count=counts.get(row.id, 0),
-            )
-            for row in rows
-        ],
+        items=[one_row(row) for row in rows],
         total=total,
         limit=limit,
         offset=offset,
