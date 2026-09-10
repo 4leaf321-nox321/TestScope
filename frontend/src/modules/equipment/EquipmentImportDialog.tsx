@@ -23,10 +23,20 @@
  * 문제가 하나라도 있으면 넣는 단추를 안 준다. 되는 것만 넣으면 사람은 고쳐 다시
  * 붙여넣다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만나고, 그때 무엇을
  * 지워야 할지 모른다.
+ *
+ * ## 진행률(N/M) 대신 「무엇을 하는 중인지」 를 보인다
+ *
+ * 「지금 1500대째」 를 보여 주려면 서버가 넣는 중에 중간 보고를 해야 하는데, 그러려면
+ * 쪽을 나눠 커밋해야 한다 — 그리고 그것이 바로 **반쯤 들어간 대장**이다. 한 트랜잭션을
+ * 지키는 한 그 숫자는 확정된 것이 아니고, 전부 되돌아가는 순간 **거짓말이 된다.**
+ *
+ * 그래서 보이는 것은 셋이다: 지금 무엇을 하는 중인가 · 몇 대를 넣는 중인가 ·
+ * 얼마나 걸릴 것인가. 「읽는 중」 과 「넣는 중」 을 한 문구로 두면 안 된다 — 실제로
+ * 그랬고, 넣는 10초 동안 화면은 계속 「읽는 중」 이라고 말하고 있었다.
  */
 
 import { useEffect, useState } from 'react'
-import { Download, Upload } from 'lucide-react'
+import { Download, Loader2, Upload } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -46,6 +56,19 @@ import type { EquipmentImportResult } from '@/modules/equipment/api'
  *  전부 그리면 사람이 첫 줄도 못 읽는다. */
 const SHOWN = 30
 
+/** 한 대를 넣는 데 드는 시간(ms). **실측이다** — 500대에 2.5초였다.
+ *
+ *  기종을 이은 줄은 계열의 시험 항목과 조건까지 복사하므로 더 든다. 넉넉히 잡는다:
+ *  덜 걸리는 것은 반갑지만, 더 걸리면 사람은 멈춘 줄 안다. */
+const MS_PER_UNIT = 6
+
+/** 몇 초쯤 걸리는지. **짧으면 아예 말하지 않는다** — 「1초쯤 걸립니다」 는 아무
+ *  도움이 안 되면서 읽을 것만 늘린다. */
+function spent(count: number): string {
+  const seconds = Math.round((count * MS_PER_UNIT) / 1000)
+  return seconds >= 3 ? ` (${seconds}초쯤 걸립니다)` : ''
+}
+
 export function EquipmentImportDialog({
   open,
   onClose,
@@ -57,7 +80,10 @@ export function EquipmentImportDialog({
 }) {
   const [text, setText] = useState('')
   const [preview, setPreview] = useState<EquipmentImportResult | null>(null)
-  const [busy, setBusy] = useState(false)
+  /** 지금 무엇을 하는 중인가. **「읽는 중」 과 「넣는 중」 은 다른 말이다** —
+   *  한 낱말로 뭉치면 넣는 10초 동안 화면이 「읽는 중」 이라고 거짓말한다. */
+  const [phase, setPhase] = useState<'idle' | 'looking' | 'putting'>('idle')
+  const busy = phase !== 'idle'
   const [error, setError] = useState<ApiError | null>(null)
   const [done, setDone] = useState<number | null>(null)
 
@@ -69,9 +95,10 @@ export function EquipmentImportDialog({
     if (!body) {
       setPreview(null)
       setError(null)
+      setPhase('idle')
       return
     }
-    setBusy(true)
+    setPhase('looking')
     const timer = setTimeout(() => {
       equipmentApi
         .importPaste(text, true)
@@ -83,13 +110,13 @@ export function EquipmentImportDialog({
           setPreview(null)
           setError(thrown)
         })
-        .finally(() => setBusy(false))
+        .finally(() => setPhase('idle'))
     }, 400)
     return () => clearTimeout(timer)
   }, [text])
 
   async function commit() {
-    setBusy(true)
+    setPhase('putting')
     setError(null)
     try {
       // **같은 글자를 다시 보낸다.** 서버가 미리보기 결과를 들고 있지 않아서,
@@ -106,7 +133,7 @@ export function EquipmentImportDialog({
     } catch (thrown) {
       setError(thrown as ApiError)
     } finally {
-      setBusy(false)
+      setPhase('idle')
     }
   }
 
@@ -180,7 +207,21 @@ export function EquipmentImportDialog({
             </div>
           )}
 
-          {busy && <p className="text-muted-foreground text-sm">읽는 중…</p>}
+          {phase === 'looking' && <p className="text-muted-foreground text-sm">읽는 중…</p>}
+
+          {phase === 'putting' && (
+            // **몇 대를 넣는 중인지 말한다.** 「지금 1500대째」 는 못 말한다 —
+            // 한 트랜잭션이라 그 수는 아직 확정된 것이 아니고, 전부 되돌아가는
+            // 순간 거짓말이 된다.
+            <div className="flex items-center gap-2 rounded-md border p-3 text-sm">
+              <Loader2 className="size-4 animate-spin" />
+              <span>
+                <strong>{preview?.ready ?? 0}대</strong>를 넣는 중입니다
+                {spent(preview?.ready ?? 0)}. <strong>창을 닫지 마세요</strong> — 도중에 끊기면
+                아무것도 안 들어갑니다.
+              </span>
+            </div>
+          )}
 
           {preview && (
             <div className="space-y-3">
@@ -231,7 +272,8 @@ export function EquipmentImportDialog({
               ) : (
                 <div className="bg-muted/50 space-y-1 rounded-md border p-3 text-sm">
                   <p>
-                    <strong>{preview.ready}대</strong>를 넣을 수 있습니다.
+                    <strong>{preview.ready}대</strong>를 넣을 수 있습니다
+                    {spent(preview.ready)}.
                   </p>
                   {unlinked > 0 && (
                     // 막지 않는다 — 자작 장비나 카탈로그에 없는 것이 실제로 있다.
@@ -249,15 +291,25 @@ export function EquipmentImportDialog({
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={onClose}>
+          {/* **넣는 중에는 못 닫는다.** 닫아도 요청은 계속 가는데 화면은 결과를
+              못 보고, 그러면 사람은 들어갔는지 아닌지를 모르는 채 남는다. */}
+          <Button variant="outline" onClick={onClose} disabled={phase === 'putting'}>
             닫기
           </Button>
           <Button
             onClick={() => void commit()}
             disabled={busy || !preview || preview.problems > 0 || preview.ready === 0}
           >
-            <Upload className="size-4" />
-            {preview && preview.problems === 0 ? `${preview.ready}대 넣기` : '넣기'}
+            {phase === 'putting' ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              <Upload className="size-4" />
+            )}
+            {phase === 'putting'
+              ? '넣는 중…'
+              : preview && preview.problems === 0
+                ? `${preview.ready}대 넣기`
+                : '넣기'}
           </Button>
         </DialogFooter>
       </DialogContent>

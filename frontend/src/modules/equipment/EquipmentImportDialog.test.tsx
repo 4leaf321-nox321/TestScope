@@ -160,3 +160,51 @@ describe('일괄 반입', () => {
     expect(calls).toHaveLength(0)
   })
 })
+
+describe('넣는 동안', () => {
+  it('「읽는 중」 이 아니라 「넣는 중」 이라고 말한다', async () => {
+    // **한 낱말로 뭉치면 넣는 10초 동안 화면이 거짓말한다.** 실제로 그랬다.
+    answer = { total: 3, ready: 3, problems: 0, created: 0, rows: [] }
+    await open()
+    await paste()
+
+    // 답을 붙잡아 둔 채로 「넣기」 를 누른다 — 그 사이가 사람이 보는 화면이다.
+    let release: (value: unknown) => void = () => {}
+    const held = new Promise((resolve) => {
+      release = resolve
+    })
+    const client = await import('@/shared/api/client')
+    vi.mocked(client.api.post).mockImplementationOnce(async () => held)
+
+    await act(async () => {
+      commitButton().click()
+    })
+    expect(screen.getByText(/넣는 중입니다/)).toBeTruthy()
+    expect(screen.queryByText('읽는 중…')).toBeNull()
+    // 도중에 닫으면 요청은 계속 가는데 결과를 못 본다.
+    const close = screen.getAllByRole('button').find((one) => one.textContent === '닫기')
+    expect((close as HTMLButtonElement).disabled).toBe(true)
+
+    await act(async () => {
+      release({ total: 3, ready: 3, problems: 0, created: 3, rows: [] })
+      await held
+    })
+    expect(screen.getByText(/등록했습니다/)).toBeTruthy()
+  })
+
+  it('오래 걸릴 것 같으면 넣기 전에 말한다', async () => {
+    answer = { total: 900, ready: 900, problems: 0, created: 0, rows: [] }
+    await open()
+    await paste()
+    // 900대면 5초쯤. 말 안 하면 사람은 멈춘 줄 알고 창을 닫는다.
+    expect(screen.getByText(/초쯤 걸립니다/)).toBeTruthy()
+  })
+
+  it('짧으면 시간을 말하지 않는다', async () => {
+    answer = { total: 3, ready: 3, problems: 0, created: 0, rows: [] }
+    await open()
+    await paste()
+    // 「1초쯤 걸립니다」 는 아무 도움이 안 되면서 읽을 것만 늘린다.
+    expect(screen.queryByText(/초쯤 걸립니다/)).toBeNull()
+  })
+})
