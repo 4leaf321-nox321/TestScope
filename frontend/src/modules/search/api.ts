@@ -16,7 +16,7 @@ export type SearchHit = components['schemas']['SearchHit']
 export type SearchResponse = components['schemas']['SearchResponse']
 
 export const searchApi = {
-  test_items: (body: SearchRequest) => api.post<SearchResponse>('/search/test_items', body),
+  test_items: (body: SearchRequest) => api.post<SearchResponse>('/search/test-items', body),
   /** 규격 하나가 요구하는 조건을 검색 물음으로 바꿔 받는다. */
   methodConditions: (methodId: string) =>
     api.get<ConditionQuery[]>(`/search/method-conditions/${methodId}`),

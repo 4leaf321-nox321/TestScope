@@ -242,7 +242,7 @@ async def search_test_items(
     return await _send(
         ctx,
         "POST",
-        "/search/test_items",
+        "/search/test-items",
         {
             "test_item_term_id": test_item_term_id,
             "method_id": method_id,
@@ -348,7 +348,7 @@ async def add_test_item(
     return await _send(
         ctx,
         "POST",
-        f"/equipment-series/{series_id}/test_items",
+        f"/equipment-series/{series_id}/test-items",
         {
             "test_item": test_item,
             "test_item_term_id": test_item_term_id,
@@ -642,6 +642,12 @@ async def register_equipment(
     자산번호가 이미 있으면 409 다. **덮어쓰지 않는다** — 같은 번호의 다른 장비일
     수도 있고, 그때 덮으면 있던 이력이 사라진다.
 
+    ## 등록으로 끝이 아니다
+
+    기종을 골랐으면 계열의 시험 항목이 복사된다. **비웠으면 시험 항목이 0 건이고,
+    0 건이면 검색에 절대 안 걸린다** — 이어서 `add_equipment_test_item` 으로 채워라.
+    안 채우면 그 장비는 대장에만 있고 아무도 못 찾는다.
+
     ## 비울 수 없는 것
 
     보유 부서·거점(`site_term_id`)·상세위치(`location`), 그리고 **무슨 종류인가.**
@@ -753,6 +759,174 @@ async def set_equipment_spec(
         },
     )
 
+
+@mcp.tool()
+async def add_equipment_test_item(
+    ctx: Context,
+    equipment_id: str,
+    test_item_term_id: str,
+    method_id: str | None = None,
+    confidence: str = "catalog",
+    note: str | None = None,
+) -> dict[str, Any]:
+    """이 **장비**가 하는 시험 항목 하나를 더한다.
+
+    ## 언제 쓰나 — 안 쓰면 그 장비는 영영 안 걸린다
+
+    기종을 골라 등록하면 계열의 시험 항목이 복사되므로 대개 이것을 부를 일이 없다.
+    그런데 **카탈로그에 없어서 `model_id` 를 비운 채 등록한 장비는 시험 항목이 0 건**
+    이고, 0 건이면 검색에 절대 안 걸린다. 그런 장비를 만들었으면 여기서 채워라.
+
+    `confidence` 는 그 값을 어디까지 믿을 수 있나다:
+
+        catalog   사양서에서 온 값. **해 본 것이 아니다**(기본)
+        verified  실제로 돌려 봤다
+        limited   되기는 하는데 조건이 붙는다 — 그 조건을 note 에 적어라
+
+    **`verified` 를 함부로 쓰지 마라.** 사양서를 옮긴 것이라면 그것은 `catalog` 다.
+
+    시험 항목은 **닫힌 축**이라 없는 값은 만들어지지 않는다(거절된다). `resolve` 로
+    먼저 찾아라 — 그것이 맞다: 오타가 값이 되면 그 장비는 영영 검색에 안 걸린다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/equipment-test-items",
+        {
+            "equipment_id": equipment_id,
+            "test_item_term_id": test_item_term_id,
+            "method_id": method_id,
+            "confidence": confidence,
+            "note": note,
+        },
+    )
+
+
+@mcp.tool()
+async def set_test_condition(
+    ctx: Context,
+    equipment_test_item_id: str,
+    condition_key_id: str,
+    min_value: float | None = None,
+    max_value: float | None = None,
+    text_value: str | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """그 시험 항목이 **어디까지 되나**를 적는다. 조건 한 칸은 덮어쓰기다.
+
+    조건 축은 `list_conditions` 가 준다.
+
+    ## 값은 **저장 단위(SI)** 로 준다 — 서버가 안 바꾼다
+
+    `list_conditions` 의 `si_unit` 이 그 단위다(N·K·m·s·Hz). `display_unit` 은 사람에게
+    보여 줄 때 쓰는 실무 단위(kN·degC·mm)라, 그것으로 보내면 **자릿수가 셋 틀린다** —
+    20 kN 을 20 으로 보내면 20 N 으로 저장되고, 그 장비는 검색에서 조용히 빠진다.
+
+    환산은 부르는 쪽이 한다: 20 kN 이면 `max_value=20000`, 80 degC 면 `353.15`.
+
+    ## 비운 쪽은 「제한 없음」 이다
+
+    0 으로 채우지 마라. 하한이 0 인 장비와 구별되지 않고, 검색이 그 차이로 갈린다.
+    「20 kN 까지」 는 `max_value=20` 이고 `min_value` 는 비운다.
+
+    ## 모르면 적지 마라
+
+    안 적힌 조건은 검색이 `unknown` 으로 답한다 — 그것이 맞는 답이다. 지어낸 숫자는
+    「가능합니다」 가 되어, 그 답을 믿고 일정을 짠 사람이 막힌다.
+    """
+    return await _send(
+        ctx,
+        "PUT",
+        f"/equipment-test-items/{equipment_test_item_id}/limits",
+        {
+            "condition_key_id": condition_key_id,
+            "min_value": min_value,
+            "max_value": max_value,
+            "text_value": text_value,
+            "note": note,
+        },
+    )
+
+
+@mcp.tool()
+async def update_equipment(
+    ctx: Context,
+    equipment_id: str,
+    status: str | None = None,
+    location: str | None = None,
+    site_term_id: str | None = None,
+    contact_user_id: str | None = None,
+    shared_use: bool | None = None,
+    calibration_required: bool | None = None,
+    calibration_interval_months: int | None = None,
+    retired_on: str | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """보유 장비 한 대를 고친다. **안 보낸 칸은 안 바뀐다.**
+
+    상태는 여섯이다: `incoming` 입고 · `operational` 가동 · `idle` 유휴 ·
+    `maintenance` 점검·교정 · `repair` 고장 · `retired` 폐기.
+
+    **폐기일은 상태가 `retired` 일 때만** 받는다. 되돌리면 서버가 비운다.
+
+    보유 부서·거점·상세위치는 **비울 수 없다** — 어디 있는지 모르는 장비는 찾아도
+    소용이 없다. 부서 이관은 양쪽 다 관리자여야 해서 이 도구로는 안 한다.
+    """
+    body = {
+        "status": status,
+        "location": location,
+        "site_term_id": site_term_id,
+        "contact_user_id": contact_user_id,
+        "shared_use": shared_use,
+        "calibration_required": calibration_required,
+        "calibration_interval_months": calibration_interval_months,
+        "retired_on": retired_on,
+        "note": note,
+    }
+    # **안 보낸 것과 비운 것을 구별한다.** 전부 실어 보내면 상태 하나 바꾸려다
+    # 담당자와 위치가 지워지고, 그 손실은 부른 사람 눈에 안 보인다.
+    return await _send(
+        ctx, "PATCH", f"/equipment/{equipment_id}",
+        {key: value for key, value in body.items() if value is not None},
+    )
+
+
+@mcp.tool()
+async def add_calibration(
+    ctx: Context,
+    equipment_id: str,
+    calibrated_on: str,
+    next_due_on: str | None = None,
+    certificate_no: str | None = None,
+    provider_term_id: str | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """교정 이력 한 줄을 더한다. 날짜는 `YYYY-MM-DD`.
+
+    **성적서에 적힌 차기일(`next_due_on`)이 있으면 반드시 넣어라.** 기관이 정한 날이
+    진실이고, 없으면 시스템이 교정 주기로 계산해 보여 준다 — 계산값은 그렇다고 표시되지만
+    성적서가 있는데 안 넣으면 그 표시가 거짓이 된다.
+
+    교정 기관은 **축의 값**이다(`resolve(axis="calibration_provider", …)`). 자유 문자열로
+    두면 같은 기관이 「한국계량측정협회」 와 「(주)한국계량측정협회」 로 갈리고, 그 둘은
+    서로 다른 기관이 된다.
+
+    이력을 넣어도 그 장비가 **교정 대상으로 표시돼 있지 않으면** 「곧 만료」 목록에는
+    안 뜬다 — `update_equipment(calibration_required=True, calibration_interval_months=…)`
+    를 함께 불러라.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        f"/equipment/{equipment_id}/calibrations",
+        {
+            "calibrated_on": calibrated_on,
+            "next_due_on": next_due_on,
+            "certificate_no": certificate_no,
+            "provider_term_id": provider_term_id,
+            "note": note,
+        },
+    )
 
 @mcp.tool()
 async def list_pending_work(ctx: Context) -> dict[str, Any]:

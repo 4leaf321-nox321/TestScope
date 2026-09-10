@@ -60,7 +60,7 @@ def test_토큰은_준_범위_안에서만_쓴다(client: TestClient, admin: Sig
     # POST 일 뿐이다 — 이걸 막으면 읽기 전용 토큰이 이 시스템을 못 쓴다.
     for path, body in (
         ("/api/resolve", {"kind": "series", "text": "무엇이든"}),
-        ("/api/search/test_items", {"conditions": []}),
+        ("/api/search/test-items", {"conditions": []}),
     ):
         reading = client.post(path, json=body, headers=read_only)
         assert reading.status_code == 200, f"{path}: {reading.text}"

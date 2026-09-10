@@ -114,6 +114,7 @@ def list_methods(
     user: User,
     *,
     query: str | None,
+    requirement: str | None = None,
     test_item_term_id: uuid.UUID | None,
     include_superseded: bool,
     limit: int,
@@ -125,6 +126,11 @@ def list_methods(
         stmt = stmt.where(TestMethod.code.ilike(text) | TestMethod.title.ilike(text))
     if test_item_term_id:
         stmt = stmt.where(TestMethod.test_item_term_id == test_item_term_id)
+    if requirement == "none":
+        # **우리가 인용한 규격 중 조건이 안 적힌 것.** 홈의 「남은 일」 이 이 조건으로
+        # 링크한다 — 세는 조건과 거르는 조건이 다르면 그 줄을 눌러 온 사람이 다른
+        # 목록을 보고, 그때 둘 다 안 믿게 된다.
+        stmt = stmt.where(TestMethod.id.not_in(select(MethodRequirement.method_id).distinct()))
     if not include_superseded:
         # **기본은 현행만.** 대체된 판이 섞여 있으면 사람이 옛 규격을 고르고,
         # 그 사실은 시험이 끝난 뒤에야 드러난다.

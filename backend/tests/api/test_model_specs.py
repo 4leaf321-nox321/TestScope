@@ -157,7 +157,7 @@ def test_검색축에_이은_사양은_장비_등록에서_시험_항목_조건�
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
 
     test_item = client.post(
-        f"/api/equipment-series/{model['series_id']}/test_items",
+        f"/api/equipment-series/{model['series_id']}/test-items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     )
@@ -218,12 +218,12 @@ def test_기종_사양이_계열_봉투를_이긴다(
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
 
     test_item = client.post(
-        f"/api/equipment-series/{model['series_id']}/test_items",
+        f"/api/equipment-series/{model['series_id']}/test-items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     ).json()
     client.put(
-        f"/api/equipment-series/{model['series_id']}/test_items/{test_item['id']}/limits",
+        f"/api/equipment-series/{model['series_id']}/test-items/{test_item['id']}/limits",
         json={"condition_key_id": condition_ids["force"], "min_value": 0, "max_value": 300},
         headers=admin.headers,
     )
@@ -266,12 +266,12 @@ def test_사양에_없는_계열_조건은_그대로_따라온다(
     item = term_factory("test_item", f"충격-{uuid.uuid4().hex[:6]}")
 
     test_item = client.post(
-        f"/api/equipment-series/{model['series_id']}/test_items",
+        f"/api/equipment-series/{model['series_id']}/test-items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     ).json()
     client.put(
-        f"/api/equipment-series/{model['series_id']}/test_items/{test_item['id']}/limits",
+        f"/api/equipment-series/{model['series_id']}/test-items/{test_item['id']}/limits",
         json={
             "condition_key_id": condition_ids["temperature"],
             "min_value": 10,

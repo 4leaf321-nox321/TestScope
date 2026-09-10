@@ -158,6 +158,40 @@ def test_거른_결과의_수가_total_이다(client: TestClient, admin: Signed)
     assert body["total"] == len(body["items"]) == 1
 
 
+def test_시험_항목이_없는_장비만_따로_거른다(client: TestClient, admin: Signed) -> None:
+    """**홈의 「남은 일」 이 이 조건으로 링크한다.** 세는 조건과 거르는 조건이 다르면
+    그 줄을 눌러 온 사람이 다른 목록을 보고, 그때 둘 다 안 믿게 된다.
+
+    시험 항목이 0 인 장비는 검색에 절대 안 걸린다 — 그것이 이 목록의 존재 이유다.
+    """
+    item = client.post(
+        "/api/vocabularies/test_item/terms",
+        json={"value": f"인장-{uuid.uuid4().hex[:6]}"},
+        headers=admin.headers,
+    )
+    empty = _equipment(client, admin)
+    filled = _equipment(client, admin)
+    made = client.post(
+        "/api/equipment-test-items",
+        json={"equipment_id": filled["id"], "test_item_term_id": item.json()["id"]},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+
+    found = _listed(client, admin, "test_item=none")
+    assert empty["id"] in found
+    assert filled["id"] not in found
+
+    # 홈이 세는 수와 같은 조건이어야 한다.
+    items = client.get("/api/server/maintenance", headers=admin.headers)
+    assert items.status_code == 200, items.text
+    row = next(
+        (one for one in items.json() if one["key"] == "equipment_without_test_item"), None
+    )
+    assert row is not None, items.json()
+    assert row["link"] == "/equipment?test_item=none"
+
+
 def test_고를_수_있는_값은_목록에_있는_것뿐이다(client: TestClient, admin: Signed) -> None:
     """기준정보 전체를 내려보내면 골라도 0 건인 선택지가 섞이고, 한 번 겪으면 사람은
     거르기를 안 믿는다.

@@ -55,6 +55,7 @@ def list_equipment(
     category_term_id: uuid.UUID | None = Query(default=None),
     site_term_id: uuid.UUID | None = Query(default=None),
     test_item_term_id: uuid.UUID | None = Query(default=None),
+    test_item: str | None = Query(default=None, pattern="^none$"),
     calibration: str | None = Query(
         default=None, pattern="^(required|exempt|missing|overdue)$"
     ),
@@ -74,6 +75,9 @@ def list_equipment(
 
     `q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —
     화면은 열마다 거르므로 뒤엣것을 쓴다.
+
+    `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
+    링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
     """
     return services.list_equipment(
         db,
@@ -87,6 +91,7 @@ def list_equipment(
         category_term_id=category_term_id,
         site_term_id=site_term_id,
         test_item_term_id=test_item_term_id,
+        test_item=test_item,
         calibration=calibration,
         shared_use=shared_use,
         limit=clamp_limit(limit),
@@ -319,7 +324,7 @@ def delete_series(
 
 
 @series_router.post(
-    "/{series_id}/test_items", response_model=SeriesTestItemOut, status_code=201
+    "/{series_id}/test-items", response_model=SeriesTestItemOut, status_code=201
 )
 def add_series_test_item(
     series_id: uuid.UUID,
@@ -339,7 +344,7 @@ def add_series_test_item(
     return catalog.add_test_item(db, series_id, payload.model_dump())
 
 
-@series_router.delete("/{series_id}/test_items/{equipment_test_item_id}", status_code=204)
+@series_router.delete("/{series_id}/test-items/{equipment_test_item_id}", status_code=204)
 def delete_series_test_item(
     series_id: uuid.UUID,
     equipment_test_item_id: uuid.UUID,
@@ -350,7 +355,7 @@ def delete_series_test_item(
 
 
 @series_router.put(
-    "/{series_id}/test_items/{equipment_test_item_id}/limits", response_model=ModelLimitOut
+    "/{series_id}/test-items/{equipment_test_item_id}/limits", response_model=ModelLimitOut
 )
 def upsert_series_limit(
     series_id: uuid.UUID,
@@ -363,7 +368,7 @@ def upsert_series_limit(
 
 
 @series_router.delete(
-    "/{series_id}/test_items/{equipment_test_item_id}/limits/{limit_id}", status_code=204
+    "/{series_id}/test-items/{equipment_test_item_id}/limits/{limit_id}", status_code=204
 )
 def delete_series_limit(
     series_id: uuid.UUID,

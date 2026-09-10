@@ -256,6 +256,7 @@ def list_equipment(
     category_term_id: uuid.UUID | None = None,
     site_term_id: uuid.UUID | None = None,
     test_item_term_id: uuid.UUID | None = None,
+    test_item: str | None = None,
     calibration: str | None = None,
     shared_use: bool | None = None,
     limit: int,
@@ -313,6 +314,12 @@ def list_equipment(
                     EquipmentTestItem.test_item_term_id == test_item_term_id
                 )
             )
+        )
+    if test_item == "none":
+        # **검색에 절대 안 걸리는 장비들.** 홈의 「남은 일」 이 세는 것과 같은 조건이라야
+        # 그 줄을 눌러 온 사람이 같은 목록을 본다 — 수와 목록이 어긋나면 둘 다 안 믿는다.
+        stmt = stmt.where(
+            Equipment.id.not_in(select(EquipmentTestItem.equipment_id).distinct())
         )
     if calibration:
         stmt = _by_calibration(stmt, calibration)

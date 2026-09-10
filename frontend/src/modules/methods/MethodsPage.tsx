@@ -10,7 +10,7 @@
 
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isAnyManager } from '@/shared/auth/roles'
@@ -33,12 +33,16 @@ import { NewMethodDialog } from '@/modules/methods/NewMethodDialog'
 
 export default function MethodsPage() {
   const { user } = useAuth()
+  // **홈의 「남은 일」 이 `?requirement=none` 으로 온다.** 안 읽으면 눌러도 전체
+  // 목록이 떠서, 사람은 「왜 안 걸러졌지」 를 겪고 그 목록을 안 믿게 된다.
+  const [params, setParams] = useSearchParams()
+  const requirement = params.get('requirement') ?? undefined
   const [query, setQuery] = useState('')
   const [includeSuperseded, setIncludeSuperseded] = useState(false)
   const [creating, setCreating] = useState(false)
   const page = useResource(
-    () => methodApi.list({ q: query || undefined, includeSuperseded }),
-    [query, includeSuperseded],
+    () => methodApi.list({ q: query || undefined, requirement, includeSuperseded }),
+    [query, requirement, includeSuperseded],
   )
 
   return (
@@ -72,6 +76,18 @@ export default function MethodsPage() {
           대체된 판도 보기
         </label>
       </div>
+
+      {requirement === 'none' && (
+        <div className="bg-muted/50 flex flex-wrap items-center gap-3 rounded-md border p-3">
+          <p className="text-sm">
+            <strong>요구 조건이 안 적힌 규격만</strong> 보고 있습니다. 조건이 없으면 검색이 그
+            규격으로 장비를 좁히지 못하고, 사람이 매번 직접 입력해야 합니다.
+          </p>
+          <Button size="sm" variant="outline" onClick={() => setParams({})}>
+            거르기 풀기
+          </Button>
+        </div>
+      )}
 
       <ErrorNotice error={page.error} />
 

@@ -47,7 +47,7 @@ def _catalog_unit(client: TestClient, admin: Signed) -> tuple[str, str, dict[str
     )
     assert item.status_code == 201, item.text
     test_item = client.post(
-        f"/api/equipment-series/{series_id}/test_items",
+        f"/api/equipment-series/{series_id}/test-items",
         json={"test_item_term_id": item.json()["id"]},
         headers=admin.headers,
     )

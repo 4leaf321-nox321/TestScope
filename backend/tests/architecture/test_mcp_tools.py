@@ -62,3 +62,33 @@ def test_만능_토큰을_두지_않는다() -> None:
     text = SERVER.read_text(encoding="utf-8")
     for banned in ("TESTSCOPE_TOKEN", "TESTSCOPE_PAT", "SERVICE_TOKEN"):
         assert banned not in text, f"{banned} — 서버가 자기 토큰을 들면 안 됩니다"
+
+
+def test_도구가_부르는_경로가_실재한다() -> None:
+    """**오타 하나면 그 도구가 통째로 죽는다.**
+
+    MCP 는 얇은 프록시라 경로를 글자로 들고 있다. 서버에서 경로가 바뀌면(실제로
+    `/capabilities` 가 `/equipment-test-items` 가 됐다) 이쪽은 아무 말 없이 404 를
+    받고, 그 사실은 그 도구를 실제로 부른 사람에게만 드러난다.
+    """
+    import json
+    import re
+
+    spec = json.loads(
+        (SERVER.parents[1] / "backend" / "openapi.json").read_text(encoding="utf-8")
+    )
+
+    #: `{model_id}` 같은 자리를 하나로 맞춰 비교한다 — 이름은 달라도 같은 자리다.
+    def shape(path: str) -> str:
+        return re.sub(r"\{[^}]+\}", "{}", path)
+
+    known = {shape(one.removeprefix("/api")) for one in spec["paths"]}
+    source = SERVER.read_text(encoding="utf-8")
+    #: `_get(ctx, "/…")` · `_send(ctx, "POST", f"/…")` 가 부르는 자리들.
+    called = {
+        shape(one)
+        for one in re.findall(r'f?"(/[a-z][^"]*)"', source)
+        if not one.startswith("/api")
+    }
+    missing = sorted(one for one in called if one not in known)
+    assert not missing, f"서버에 없는 경로를 부른다: {missing}"

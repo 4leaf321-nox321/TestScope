@@ -30,6 +30,7 @@
  */
 
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
+import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import {
   Select,
@@ -51,6 +52,8 @@ export interface EquipmentFilterState {
   siteTermId: string
   status: string
   testItemTermId: string
+  /** `none` 이면 **시험 항목이 하나도 없는 장비**만. 홈의 「남은 일」 이 이걸로 온다. */
+  testItem: string
   calibration: string
 }
 
@@ -62,6 +65,7 @@ export const EMPTY_FILTERS: EquipmentFilterState = {
   siteTermId: '',
   status: '',
   testItemTermId: '',
+  testItem: '',
   calibration: '',
 }
 
@@ -210,19 +214,32 @@ export function EquipmentFilters({
       </td>
       <td className="p-1">
         {/* 87종. 여기도 치면서 찾는다. */}
-        <SearchablePicker
-          value={value.testItemTermId}
-          onChange={(next) => set({ testItemTermId: next })}
-          options={(options.data?.test_items ?? []).map((one) => ({
-            id: one.value,
-            label: one.label,
-            badge: `${one.count}대`,
-          }))}
-          placeholder="시험 항목 전체"
-          detailTitle="시험 항목"
-          detailHint="우리 장비에 적혀 있는 항목만 나옵니다."
-          className="w-full"
-        />
+        {/* 시험 항목이 **없는** 장비만 보는 중이면 그 사실을 먼저 말한다 — 피커에는
+            고를 값이 없어서, 안 적어 두면 빈 목록의 이유가 화면에 없다. */}
+        {value.testItem === 'none' ? (
+          <Button
+            size="sm"
+            variant="secondary"
+            className="h-8 w-full text-xs"
+            onClick={() => set({ testItem: '' })}
+          >
+            시험 항목 없음만 ✕
+          </Button>
+        ) : (
+          <SearchablePicker
+            value={value.testItemTermId}
+            onChange={(next) => set({ testItemTermId: next })}
+            options={(options.data?.test_items ?? []).map((one) => ({
+              id: one.value,
+              label: one.label,
+              badge: `${one.count}대`,
+            }))}
+            placeholder="시험 항목 전체"
+            detailTitle="시험 항목"
+            detailHint="우리 장비에 적혀 있는 항목만 나옵니다."
+            className="w-full"
+          />
+        )}
       </td>
       <td className="p-1">
         <Pick

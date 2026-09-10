@@ -20,12 +20,21 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components/ui/table'
+import { useSearchParams } from 'react-router-dom'
+
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
 import { accountApi } from '@/modules/accounts/api'
 
 export default function AccountsAdminPage() {
-  const list = useResource(() => accountApi.list(), [])
+  // **홈의 「남은 일」 이 `?status=pending` 으로 온다.** 승인 대기가 며칠씩 방치되는
+  // 것을 막으려고 만든 링크인데, 안 읽으면 그 줄은 아무 일도 안 한다.
+  const [params] = useSearchParams()
+  const status = params.get('status') ?? undefined
+  const list = useResource(() => accountApi.list(status), [status])
+
+  /** 걸러져 있으면 그 사실을 적는다. 안 적으면 「계정이 이것뿐인가」 로 읽힌다. */
+  const filtered = status === 'pending'
   const summary = useResource(() => accountApi.summary(), [])
   const [error, setError] = useState<ApiError | Error | null>(null)
   // 임시 비밀번호는 **한 번만** 나온다. 화면이 붙들고 있어야 관리자가 옮겨 적는다.
@@ -48,7 +57,11 @@ export default function AccountsAdminPage() {
     <div className="space-y-6">
       <PageHeader
         title="계정"
-        description="가입 승인과 권한을 다룹니다. 부서 멤버 관리는 부서 화면에서 합니다."
+        description={
+          filtered
+            ? '승인 대기 중인 계정만 보고 있습니다. 홈의 「남은 일」 에서 왔습니다.'
+            : '가입 승인과 권한을 다룹니다. 부서 멤버 관리는 부서 화면에서 합니다.'
+        }
       />
 
       {/* **관리자가 하나뿐이면 말한다.** 그 사람이 잠기는 순간 복구 경로가 서버

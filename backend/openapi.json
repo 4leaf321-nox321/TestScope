@@ -2271,7 +2271,7 @@
           "equipment"
         ],
         "summary": "List Equipment",
-        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.",
+        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.",
         "operationId": "list_equipment_api_equipment_get",
         "parameters": [
           {
@@ -2423,6 +2423,23 @@
                 }
               ],
               "title": "Test Item Term Id"
+            }
+          },
+          {
+            "name": "test_item",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^none$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Test Item"
             }
           },
           {
@@ -3237,7 +3254,7 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/test_items": {
+    "/api/equipment-series/{series_id}/test-items": {
       "post": {
         "tags": [
           "catalog"
@@ -3291,7 +3308,7 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}": {
+    "/api/equipment-series/{series_id}/test-items/{equipment_test_item_id}": {
       "delete": {
         "tags": [
           "catalog"
@@ -3337,7 +3354,7 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits": {
+    "/api/equipment-series/{series_id}/test-items/{equipment_test_item_id}/limits": {
       "put": {
         "tags": [
           "catalog"
@@ -3400,7 +3417,7 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits/{limit_id}": {
+    "/api/equipment-series/{series_id}/test-items/{equipment_test_item_id}/limits/{limit_id}": {
       "delete": {
         "tags": [
           "catalog"
@@ -4097,6 +4114,23 @@
             }
           },
           {
+            "name": "requirement",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^none$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Requirement"
+            }
+          },
+          {
             "name": "include_superseded",
             "in": "query",
             "required": false,
@@ -4693,7 +4727,7 @@
         }
       }
     },
-    "/api/search/test_items": {
+    "/api/search/test-items": {
       "post": {
         "tags": [
           "search"

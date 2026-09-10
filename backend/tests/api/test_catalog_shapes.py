@@ -143,7 +143,7 @@ def test_확정값이_구성_구간을_이긴다(client: TestClient, admin: Sign
         headers=admin.headers,
     )
     added = client.post(
-        f"/api/equipment-series/{series.json()['id']}/test_items",
+        f"/api/equipment-series/{series.json()['id']}/test-items",
         json={"test_item_term_id": item.json()["id"]},
         headers=admin.headers,
     )

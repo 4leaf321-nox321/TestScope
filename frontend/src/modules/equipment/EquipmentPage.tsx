@@ -16,7 +16,7 @@
 
 import { useEffect, useState } from 'react'
 import { Plus } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isAnyManager } from '@/shared/auth/roles'
@@ -51,8 +51,20 @@ const PAGE_SIZE = 50
 
 export default function EquipmentPage() {
   const { user } = useAuth()
-  const [typed, setTyped] = useState<EquipmentFilterState>(EMPTY_FILTERS)
-  const [filters, setFilters] = useState<EquipmentFilterState>(EMPTY_FILTERS)
+  // **홈의 「남은 일」 이 이 주소로 온다.** 안 읽으면 눌러도 전체 목록이 떠서,
+  // 사람은 「왜 안 걸러졌지」 를 겪고 그 목록을 안 믿게 된다.
+  const [params, setParams] = useSearchParams()
+  const fromUrl = (): EquipmentFilterState => ({
+    ...EMPTY_FILTERS,
+    calibration: params.get('calibration') ?? '',
+    testItem: params.get('test_item') ?? '',
+    status: params.get('status') ?? '',
+  })
+  const [typed, setTyped] = useState<EquipmentFilterState>(fromUrl)
+  // **거르기를 물어보는 쪽도 같은 값으로 시작한다.** 여기를 비워 두면 첫 조회가
+  // 거르기 없이 나가서, 눌러 들어온 사람이 한순간 전체 목록을 본다 — 그리고 그
+  // 한순간이 「안 걸러졌다」 로 읽힌다.
+  const [filters, setFilters] = useState<EquipmentFilterState>(fromUrl)
   const [offset, setOffset] = useState(0)
   const [creating, setCreating] = useState(false)
 
@@ -82,6 +94,7 @@ export default function EquipmentPage() {
         categoryTermId: filters.categoryTermId || undefined,
         siteTermId: filters.siteTermId || undefined,
         testItemTermId: filters.testItemTermId || undefined,
+        testItem: filters.testItem || undefined,
         calibration: filters.calibration || undefined,
         limit: PAGE_SIZE,
         offset,
@@ -113,7 +126,15 @@ export default function EquipmentPage() {
       {activeCount(filters) > 0 && (
         <div className="text-muted-foreground flex items-center gap-2 text-sm">
           <span>{activeCount(filters)}개 조건으로 걸렀습니다</span>
-          <Button size="sm" variant="outline" onClick={() => setTyped(EMPTY_FILTERS)}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              setTyped(EMPTY_FILTERS)
+              // 주소에 남은 거르기도 함께 푼다 — 안 그러면 새로고침에 되살아난다.
+              setParams({})
+            }}
+          >
             거르기 풀기
           </Button>
         </div>
@@ -121,14 +142,13 @@ export default function EquipmentPage() {
 
       <ErrorNotice error={page.error} />
 
-      {page.data && page.data.items.length === 0 ? (
+      {/* **비어도 표를 지우지 않는다.** 거르다 0 건이 되었을 때 머리글째 사라지면
+          방금 건 조건이 화면에서 없어져서, 무엇을 풀어야 할지가 안 보인다.
+          정말 한 대도 없을 때만(거르기 없음) 안내로 갈음한다. */}
+      {page.data && page.data.items.length === 0 && activeCount(filters) === 0 ? (
         <EmptyState
           title="장비가 없습니다"
-          hint={
-            activeCount(filters) > 0
-              ? '거르기에 맞는 장비가 없습니다. 머리글 아래의 조건을 풀어 보세요.'
-              : '아직 등록된 장비가 없습니다. 부서 관리자가 등록할 수 있습니다.'
-          }
+          hint="아직 등록된 장비가 없습니다. 부서 관리자가 등록할 수 있습니다."
         />
       ) : (
         <div className="space-y-3">
@@ -150,6 +170,13 @@ export default function EquipmentPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
+              {page.data?.items.length === 0 && (
+                <TableRow className="hover:bg-transparent">
+                  <TableCell colSpan={8} className="text-muted-foreground py-8 text-center">
+                    거르기에 맞는 장비가 없습니다. 위의 조건을 풀어 보세요.
+                  </TableCell>
+                </TableRow>
+              )}
               {(page.data?.items ?? []).map((one) => (
                 <TableRow key={one.id}>
                   <TableCell className="font-mono text-xs">

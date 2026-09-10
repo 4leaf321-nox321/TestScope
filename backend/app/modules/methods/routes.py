@@ -27,6 +27,7 @@ router = APIRouter(prefix="/methods", tags=["methods"])
 def list_methods(
     q: str | None = Query(default=None, max_length=200),
     test_item: uuid.UUID | None = Query(default=None),
+    requirement: str | None = Query(default=None, pattern="^none$"),
     include_superseded: bool = Query(default=False),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
@@ -37,6 +38,7 @@ def list_methods(
         db,
         user,
         query=q,
+        requirement=requirement,
         test_item_term_id=test_item,
         include_superseded=include_superseded,
         limit=clamp_limit(limit),

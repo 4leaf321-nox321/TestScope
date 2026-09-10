@@ -57,7 +57,7 @@ def test_시험_항목이_인용_규격을_함께_준다(client: TestClient, adm
     assert series.status_code == 201, series.text
     series_id = series.json()["id"]
     test_item = client.post(
-        f"/api/equipment-series/{series_id}/test_items",
+        f"/api/equipment-series/{series_id}/test-items",
         json={"test_item_term_id": item_id, "method_code": method["code"]},
         headers=admin.headers,
     )
@@ -89,7 +89,7 @@ def test_요구_조건이_없는_규격은_그렇다고_말한다(client: TestCl
         headers=admin.headers,
     ).json()
     made = client.post(
-        f"/api/equipment-series/{series['id']}/test_items",
+        f"/api/equipment-series/{series['id']}/test-items",
         json={"test_item_term_id": item["id"]},
         headers=admin.headers,
     )
@@ -117,6 +117,33 @@ def test_요구_조건이_없는_규격은_그렇다고_말한다(client: TestCl
     assert cited[0].has_requirements is False
 
 
+def test_요구_조건이_없는_규격만_따로_거른다(client: TestClient, admin: Signed) -> None:
+    """홈의 「남은 일」 이 `?requirement=none` 으로 링크한다 — 세는 조건과 거르는
+    조건이 같아야 그 줄을 눌러 온 사람이 같은 목록을 본다."""
+    item = client.post(
+        "/api/vocabularies/test_item/terms",
+        json={"value": f"압축-{uuid.uuid4().hex[:6]}"},
+        headers=admin.headers,
+    ).json()
+    without = _method(client, admin, item["id"])
+    with_req = _method(client, admin, item["id"])
+
+    conditions = client.get("/api/condition-keys", headers=admin.headers).json()
+    force = next(row["id"] for row in conditions if row["key"] == "force")
+    added = client.put(
+        f"/api/methods/{with_req['id']}/requirements",
+        json={"condition_key_id": force, "min_value": 10},
+        headers=admin.headers,
+    )
+    assert added.status_code in (200, 201), added.text
+
+    response = client.get("/api/methods?requirement=none&limit=200", headers=admin.headers)
+    assert response.status_code == 200, response.text
+    found = [row["id"] for row in response.json()["items"]]
+    assert without["id"] in found
+    assert with_req["id"] not in found
+
+
 def test_규격을_쪼개서_시험_항목을_늘리지_않는다(client: TestClient, admin: Signed) -> None:
     """카탈로그는 인장 하나에 규격 셋을 함께 건다. 시험 항목 셋으로 만들면 **검색이 같은
     장비를 여덟 줄로 답한다** — 실제로 그렇게 나왔다."""
@@ -136,7 +163,7 @@ def test_규격을_쪼개서_시험_항목을_늘리지_않는다(client: TestCl
         headers=admin.headers,
     ).json()
     made = client.post(
-        f"/api/equipment-series/{series['id']}/test_items",
+        f"/api/equipment-series/{series['id']}/test-items",
         json={"test_item_term_id": item["id"]},
         headers=admin.headers,
     )

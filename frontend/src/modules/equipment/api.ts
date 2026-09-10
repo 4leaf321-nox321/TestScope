@@ -41,6 +41,8 @@ export const equipmentApi = {
     categoryTermId?: string
     siteTermId?: string
     testItemTermId?: string
+    /** `none` 이면 시험 항목이 하나도 없는 장비만. */
+    testItem?: string
     /** `required` 대상 전부 · `exempt` 대상 아님 · `missing` 이력 없음 · `overdue` 기한 지남. */
     calibration?: string
     sharedUse?: boolean
@@ -57,6 +59,7 @@ export const equipmentApi = {
     if (params.categoryTermId) search.set('category_term_id', params.categoryTermId)
     if (params.siteTermId) search.set('site_term_id', params.siteTermId)
     if (params.testItemTermId) search.set('test_item_term_id', params.testItemTermId)
+    if (params.testItem) search.set('test_item', params.testItem)
     if (params.calibration) search.set('calibration', params.calibration)
     if (params.sharedUse !== undefined) search.set('shared_use', String(params.sharedUse))
     if (params.limit) search.set('limit', String(params.limit))
@@ -150,15 +153,15 @@ export const seriesApi = {
   remove: (id: string) => api.delete<void>(`/equipment-series/${id}`),
 
   addTestItem: (seriesId: string, body: Record<string, unknown>) =>
-    api.post<SeriesTestItem>(`/equipment-series/${seriesId}/test_items`, body),
+    api.post<SeriesTestItem>(`/equipment-series/${seriesId}/test-items`, body),
   removeTestItem: (seriesId: string, testItemId: string) =>
-    api.delete<void>(`/equipment-series/${seriesId}/test_items/${testItemId}`),
+    api.delete<void>(`/equipment-series/${seriesId}/test-items/${testItemId}`),
   /** 조건 한 칸은 **덮어쓰기다** — 같은 조건이 둘이면 어느 쪽이 맞는지 알 수 없다. */
   putLimit: (seriesId: string, testItemId: string, body: Record<string, unknown>) =>
-    api.put<ModelLimit>(`/equipment-series/${seriesId}/test_items/${testItemId}/limits`, body),
+    api.put<ModelLimit>(`/equipment-series/${seriesId}/test-items/${testItemId}/limits`, body),
   removeLimit: (seriesId: string, testItemId: string, limitId: string) =>
     api.delete<void>(
-      `/equipment-series/${seriesId}/test_items/${testItemId}/limits/${limitId}`,
+      `/equipment-series/${seriesId}/test-items/${testItemId}/limits/${limitId}`,
     ),
 
   addRelation: (seriesId: string, body: Record<string, unknown>) =>

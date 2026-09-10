@@ -235,12 +235,12 @@ def test_카탈로그_시험_항목은_장비로_복사된다(
     model = _model_in(client, admin, series["id"])
 
     test_item = client.post(
-        f"/api/equipment-series/{series['id']}/test_items",
+        f"/api/equipment-series/{series['id']}/test-items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     ).json()
     client.put(
-        f"/api/equipment-series/{series['id']}/test_items/{test_item['id']}/limits",
+        f"/api/equipment-series/{series['id']}/test-items/{test_item['id']}/limits",
         json={"condition_key_id": force, "min_value": 0, "max_value": 250},
         headers=admin.headers,
     )
@@ -299,7 +299,7 @@ def test_기종마다_조건이_갈린다(
 
     series = _series(client, admin)
     client.post(
-        f"/api/equipment-series/{series['id']}/test_items",
+        f"/api/equipment-series/{series['id']}/test-items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     )
@@ -477,7 +477,7 @@ def test_채울_자리는_보유한_것만_센다(
     # 시험 항목을 적으면 그 줄이 사라진다.
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
     client.post(
-        f"/api/equipment-series/{owned['id']}/test_items",
+        f"/api/equipment-series/{owned['id']}/test-items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     )

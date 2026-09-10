@@ -73,7 +73,7 @@ def test_조건을_갖춘_장비를_찾아_위치까지_알려준다(
     _limit(client, admin, test_item, condition_ids["force"], 0, 300)
 
     found = client.post(
-        "/api/search/test_items",
+        "/api/search/test-items",
         json={
             "test_item_term_id": item,
             "conditions": [
@@ -109,7 +109,7 @@ def test_범위를_벗어나면_결과에서_빠지고_그_수를_말해_준다(
     _limit(client, admin, test_item, condition_ids["force"], 0, 10)
 
     found = client.post(
-        "/api/search/test_items",
+        "/api/search/test-items",
         json={
             "test_item_term_id": item,
             "conditions": [{"condition_key_id": condition_ids["force"], "at_least": 20}],
@@ -137,7 +137,7 @@ def test_안_적힌_조건은_된다고_답하지_않는다(
     # 온도는 일부러 안 적는다.
 
     found = client.post(
-        "/api/search/test_items",
+        "/api/search/test-items",
         json={
             "test_item_term_id": item,
             "conditions": [
@@ -172,7 +172,7 @@ def test_점검_중인_장비는_기본_결과에서_빠진다(
 
     def search(include_unavailable: bool) -> dict[str, Any]:
         response = client.post(
-            "/api/search/test_items",
+            "/api/search/test-items",
             json={
                 "test_item_term_id": item,
                 "conditions": [],

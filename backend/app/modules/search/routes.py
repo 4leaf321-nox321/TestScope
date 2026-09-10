@@ -20,7 +20,7 @@ from app.shared.auth import current_user
 router = APIRouter(prefix="/search", tags=["search"])
 
 
-@router.post("/test_items", response_model=SearchResponse)
+@router.post("/test-items", response_model=SearchResponse)
 def search_test_items(
     payload: SearchRequest,
     user: User = Depends(current_user),

@@ -750,6 +750,9 @@ export interface paths {
          *
          *     `q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —
          *     화면은 열마다 거르므로 뒤엣것을 쓴다.
+         *
+         *     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
+         *     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
          */
         get: operations["list_equipment_api_equipment_get"];
         put?: never;
@@ -5695,6 +5698,7 @@ export interface operations {
                 category_term_id?: string | null;
                 site_term_id?: string | null;
                 test_item_term_id?: string | null;
+                test_item?: string | null;
                 calibration?: string | null;
                 shared_use?: boolean | null;
                 limit?: number;

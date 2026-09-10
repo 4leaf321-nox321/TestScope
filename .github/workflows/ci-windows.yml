@@ -116,6 +116,12 @@ jobs:
         working-directory: frontend
         run: npm run lint
 
+      # **서식도 검사한다.** 백엔드는 `ruff format --check` 로 보고 있었는데 프론트만
+      # 안 봤다 — 그 사이에 세미콜론과 쌍따옴표가 섞여 들어왔다.
+      - name: 프론트엔드 서식 (prettier)
+        working-directory: frontend
+        run: npm run format:check
+
       # **생성 타입이 커밋된 것과 다르면 누군가 재생성을 빠뜨린 것이다.** 손으로
       # 적은 타입은 반드시 서버와 어긋나고, 어긋난 날 화면은 아무 말도 안 하고
       # undefined 를 그린다.
