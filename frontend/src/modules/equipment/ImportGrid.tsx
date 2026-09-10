@@ -8,8 +8,12 @@
  * ## 붙여넣기는 칸 안에서 가로챈다
  *
  * 엑셀에서 복사한 것은 한 칸이 아니라 **범위**다. 그대로 두면 한 칸 안에 탭이 든
- * 글자가 통째로 박힌다. 그래서 탭이나 줄바꿈이 든 것은 가로채 표 전체를 갈아 끼우고,
- * 한 칸짜리 값은 그냥 그 칸에 붙게 둔다.
+ * 글자가 통째로 박힌다. 그래서 탭이나 줄바꿈이 든 것은 가로채고, 한 칸짜리 값은
+ * 그냥 그 칸에 붙게 둔다.
+ *
+ * 가로챈 것을 **어디에 넣을지는 창이 정한다** — 머리글이 붙어 왔으면 표 전체를
+ * 갈아 끼우고, 값만 왔으면 **지금 커서가 있는 칸부터** 채운다. 그래서 어느 줄
+ * 어느 열에서 붙였는지를 함께 넘긴다.
  *
  * ## 틀린 칸은 붉게
  *
@@ -49,8 +53,9 @@ export function ImportGrid({
   columns: ImportColumn[]
   rows: GridRow[]
   onEdit: (id: number, field: string, value: string) => void
-  /** 엑셀에서 복사한 **범위**를 붙여넣었다. 표 전체를 갈아 끼운다. */
-  onPasteRange: (text: string) => void
+  /** 엑셀에서 복사한 **범위**를 붙여넣었다. 어디에 넣을지는 창이 정한다 — 머리글이
+   *  있으면 표 전체를, 없으면 이 칸부터. */
+  onPasteRange: (text: string, atRow: number, atColumn: string) => void
   disabled: boolean
 }) {
   return (
@@ -99,7 +104,7 @@ export function ImportGrid({
                           // 그 칸 안에 표 전체가 글자로 박힌다.
                           if (/[\t\n\r]/.test(text)) {
                             event.preventDefault()
-                            onPasteRange(text)
+                            onPasteRange(text, row.id, one.key)
                           }
                         }}
                         disabled={disabled}

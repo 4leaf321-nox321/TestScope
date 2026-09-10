@@ -3026,6 +3026,8 @@ export interface components {
             label: string;
             /** Required */
             required: boolean;
+            /** Aliases */
+            aliases: string[];
         };
         /**
          * ImportProblem

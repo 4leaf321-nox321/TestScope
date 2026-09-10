@@ -164,7 +164,7 @@ def columns() -> list[ImportColumn]:
     버려진다.
     """
     return [
-        ImportColumn(key=key, label=names[0], required=key in REQUIRED)
+        ImportColumn(key=key, label=names[0], required=key in REQUIRED, aliases=list(names))
         for key, names in COLUMNS.items()
     ]
 

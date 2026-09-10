@@ -9530,13 +9530,21 @@
           "required": {
             "type": "boolean",
             "title": "Required"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
           }
         },
         "type": "object",
         "required": [
           "key",
           "label",
-          "required"
+          "required",
+          "aliases"
         ],
         "title": "ImportColumn",
         "description": "반입 표의 열 하나.\n\n**화면이 자기 목록을 따로 들지 않게** 서버가 준다. 두 벌로 두면 열을 하나 더한\n날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히 버려진다."

@@ -17,6 +17,16 @@
  * 를 한 번 더 묻게 된다. 엑셀에서 오는 사람에게 표는 설명이 필요 없는 모양이고,
  * 몇 대만 손으로 치고 싶은 사람도 그냥 칠 수 있다.
  *
+ * ## 머리글을 안 붙여 오는 사람이 있다
+ *
+ * 엑셀에서 **값만** 긁어 오는 것이 실은 더 흔하다. 그때 표 전체를 갈아 끼우면 첫 줄이
+ * 머리글로 읽혀 한 대가 통째로 사라진다. 그래서 붙여넣은 첫 줄이 머리글인지 보고,
+ * 아니면 **커서가 있는 칸부터** 채운다 — 엑셀에서 붙여넣는 것과 같은 동작이다.
+ *
+ * 머리글인지는 **서버가 준 별칭 목록**으로 판정한다(`ImportColumn.aliases`). 화면이
+ * 자기 목록으로 하면 서버가 받아 주는 이름과 어긋나서, 「보유 부서」 라고 적은 머리글이
+ * 값으로 읽힌다.
+ *
  * ## 줄의 주인은 화면이다
  *
  * 서버는 **빈 줄을 건너뛴다.** 그래서 서버가 매긴 줄 번호를 그대로 쓰면, 가운데
@@ -75,6 +85,32 @@ const MS_PER_UNIT = 6
 function spent(count: number): string {
   const seconds = Math.round((count * MS_PER_UNIT) / 1000)
   return seconds >= 3 ? ` (${seconds}초쯤 걸립니다)` : ''
+}
+
+/** 붙여넣은 글자를 격자로 나눈다.
+ *
+ *  **구분자 고르는 규칙은 서버와 같다** — 첫 줄에 탭이 있으면 탭, 없으면 쉼표. 값
+ *  안의 쉼표(「3동, 201호」)는 탭 쪽에서만 안 밀린다.
+ *
+ *  이것은 반입 파싱이 아니라 **표에 어느 칸을 채울지**를 정하는 일이다. 채운 표는
+ *  다시 서버로 보내 판정을 받으므로, 판정이 두 벌이 되지는 않는다. */
+function split(text: string): string[][] {
+  const body = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n').replace(/\n+$/, '')
+  const cut = body.split('\n')[0].includes('\t') ? '\t' : ','
+  return body.split('\n').map((line) => line.split(cut))
+}
+
+/** 붙여넣은 첫 줄이 머리글인가.
+ *
+ *  **절반 넘게 아는 이름이면** 머리글로 본다. 하나만 맞아도 머리글이라 하면 「비고」
+ *  라는 값 하나에 표가 통째로 갈리고, 전부 맞아야 한다고 하면 열 하나를 빼고 복사한
+ *  사람이 값으로 읽힌다. */
+function looksLikeHeader(cells: string[], columns: ImportColumn[]): boolean {
+  const known = new Set(
+    columns.flatMap((one) => one.aliases).map((one) => one.replace(/\s/g, '').toLowerCase()),
+  )
+  const hit = cells.filter((one) => known.has(one.replace(/\s/g, '').toLowerCase())).length
+  return cells.length > 0 && hit * 2 > cells.length
 }
 
 let nextId = 1
@@ -171,9 +207,44 @@ export function EquipmentImportDialog({
     return () => clearTimeout(timer)
   }, [asText, sending.length, columns.data])
 
-  /** 엑셀에서 복사한 **범위**를 받는다. 표를 통째로 갈아 끼운다. */
-  async function pasteRange(text: string) {
+  /** 엑셀에서 복사한 **범위**를 받는다.
+   *
+   *  머리글이 붙어 왔으면 표를 통째로 갈아 끼우고, 값만 왔으면 **커서 자리부터**
+   *  채운다 — 값만 긁어 오는 것이 실은 더 흔하고, 그때 전체를 갈아 끼우면 첫 줄이
+   *  머리글로 읽혀 한 대가 통째로 사라진다. */
+  function pasteRange(text: string, atRow: number, atColumn: string) {
     if (!text.trim()) return
+    const grid = split(text)
+    if (looksLikeHeader(grid[0] ?? [], columns.data ?? [])) {
+      void replaceAll(text)
+      return
+    }
+    setDone(null)
+    setRows((before) => {
+      const keys = (columns.data ?? []).map((one) => one.key)
+      const startRow = Math.max(
+        0,
+        before.findIndex((one) => one.id === atRow),
+      )
+      const startCol = Math.max(0, keys.indexOf(atColumn))
+      // 붙여넣을 것이 남은 줄보다 많으면 줄을 늘린다 — 모자라서 잘리면 사람은
+      // 그 사실을 모른 채 넣는다.
+      const next = [...before, ...blank(Math.max(0, startRow + grid.length - before.length))]
+      grid.forEach((cells, down) => {
+        const row = next[startRow + down]
+        const patch = { ...row.cells }
+        cells.forEach((value, right) => {
+          const key = keys[startCol + right]
+          if (key) patch[key] = value.trim()
+        })
+        next[startRow + down] = { ...row, cells: patch }
+      })
+      return next
+    })
+  }
+
+  /** 머리글이 붙어 온 것. 표를 통째로 갈아 끼운다. */
+  async function replaceAll(text: string) {
     setError(null)
     setDone(null)
     setPhase('looking')
@@ -256,9 +327,13 @@ export function EquipmentImportDialog({
         }
       }}
     >
-      {/* **표가 들어가는 창이라 넓어야 한다.** 기본이 `sm:max-w-lg` 라, 브레이크포인트
-          없는 `max-w-*` 를 주면 화면이 넓어지는 순간 기본값이 이긴다 — 실제로 그랬다. */}
-      <DialogContent className="max-h-[90vh] sm:max-w-[94vw]">
+      {/* **표가 들어가는 창이라 크게 잡는다** — 가로세로 화면의 80%.
+          `max-w`·`max-h` 는 상한일 뿐이라 내용이 적으면 창이 쪼그라든다. 표는 남는
+          높이를 채우는 것이므로 **높이를 정해 줘야** 처음부터 넓게 열린다.
+
+          기본이 `sm:max-w-lg` 라, 브레이크포인트 없는 `max-w-*` 로는 화면이 넓어지는
+          순간 기본값이 이긴다 — 실제로 그랬다. */}
+      <DialogContent className="h-[80vh] max-h-[80vh] sm:w-[80vw] sm:max-w-[80vw]">
         <DialogHeader>
           <DialogTitle>장비 일괄 반입</DialogTitle>
           <DialogDescription>
@@ -312,7 +387,7 @@ export function EquipmentImportDialog({
               columns={columns.data}
               rows={shown}
               onEdit={edit}
-              onPasteRange={(text) => void pasteRange(text)}
+              onPasteRange={pasteRange}
               disabled={phase === 'putting'}
             />
           )}

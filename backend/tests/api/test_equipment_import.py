@@ -459,6 +459,13 @@ def test_열_목록을_서버가_준다(client: TestClient, admin: Signed) -> No
     assert all(one["required"] for one in rows[:5]), "필수 다섯이 필수로 안 온다"
     assert not any(one["required"] for one in rows[5:]), "안 필수인 것이 필수로 온다"
 
+    # **별칭도 함께 온다.** 화면이 「머리글이 붙었나」 를 이것으로 판정한다 —
+    # 자기 목록으로 하면 서버가 받아 주는 이름과 어긋나서, 「보유 부서」 라고 적은
+    # 머리글이 값으로 읽힌다.
+    by_key = {one["key"]: one for one in rows}
+    assert "보유 부서" in by_key["workspace"]["aliases"]
+    assert by_key["workspace"]["label"] in by_key["workspace"]["aliases"]
+
     # 서식의 머리글과 **같은 말**이어야 한다 — 서식을 보고 채운 사람이 표에서
     # 다른 이름을 보면 잘못 채운 줄 안다.
     template = client.get("/api/equipment/import/template", headers=admin.headers)

@@ -17,10 +17,10 @@ const calls: { path: string; body: unknown }[] = []
 let answer: Record<string, unknown> = {}
 
 const COLUMNS = [
-  { key: 'asset_no', label: '자산번호', required: true },
-  { key: 'name', label: '장비명', required: true },
-  { key: 'site', label: '거점', required: true },
-  { key: 'note', label: '비고', required: false },
+  { key: 'asset_no', label: '자산번호', required: true, aliases: ['자산번호', 'asset_no'] },
+  { key: 'name', label: '장비명', required: true, aliases: ['장비명', '이름'] },
+  { key: 'site', label: '거점', required: true, aliases: ['거점', '보유 거점'] },
+  { key: 'note', label: '비고', required: false, aliases: ['비고', 'note'] },
 ]
 
 vi.mock('@/shared/api/client', () => ({
@@ -148,6 +148,53 @@ describe('붙여넣기', () => {
     })
     // 탭도 줄바꿈도 없으면 범위가 아니다 — 가로채면 한 낱말 붙여넣기가 표를 지운다.
     expect(calls).toHaveLength(0)
+  })
+})
+
+describe('머리글 없이 붙여넣기', () => {
+  it('값만 붙이면 커서가 있는 칸부터 채운다', async () => {
+    answer = { total: 2, ready: 0, problems: 2, created: 0, rows: [row(), row()] }
+    await open()
+    // **값만 긁어 오는 것이 실은 더 흔하다.** 표 전체를 갈아 끼우면 첫 줄이
+    // 머리글로 읽혀 한 대가 통째로 사라진다.
+    await act(async () => {
+      fireEvent.paste(cell('장비명', 1), {
+        clipboardData: { getData: () => ['만능기\t본사', '충격기\t공장'].join('\n') },
+      })
+    })
+    // 둘째 줄 「장비명」 부터 오른쪽·아래로.
+    expect(cell('장비명', 1).value).toBe('만능기')
+    expect(cell('거점', 1).value).toBe('본사')
+    expect(cell('장비명', 2).value).toBe('충격기')
+    expect(cell('거점', 2).value).toBe('공장')
+    // 첫 줄은 그대로 비어 있다.
+    expect(cell('장비명', 0).value).toBe('')
+  })
+
+  it('머리글이 붙어 오면 표를 통째로 갈아 끼운다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+    await open()
+    await act(async () => {
+      fireEvent.paste(cell('장비명', 2), {
+        clipboardData: { getData: () => ['자산번호\t장비명', 'A-1\t만능기'].join('\n') },
+      })
+    })
+    // 커서가 어디 있든 머리글이 있으면 그것이 표 전체다.
+    expect(calls[0].path).toContain('dry_run=true')
+    expect(cell('자산번호', 0).value).toBe('A-1')
+  })
+
+  it('붙일 것이 남은 줄보다 많으면 줄을 늘린다', async () => {
+    await open()
+    const before = document.querySelectorAll('tbody tr').length
+    const many = Array.from({ length: 12 }, (_, i) => `장비${i}`).join('\n')
+    await act(async () => {
+      fireEvent.paste(cell('장비명', 0), { clipboardData: { getData: () => many } })
+    })
+    // 모자라서 잘리면 사람은 그 사실을 모른 채 넣는다.
+    expect(document.querySelectorAll('tbody tr').length).toBeGreaterThanOrEqual(12)
+    expect(before).toBeLessThan(12)
+    expect(cell('장비명', 11).value).toBe('장비11')
   })
 })
 
