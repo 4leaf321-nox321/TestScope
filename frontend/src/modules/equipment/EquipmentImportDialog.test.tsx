@@ -1,5 +1,5 @@
 /**
- * 일괄 반입 창 — **붙여넣고, 표에서 고치고, 문제가 있으면 안 넣는다.**
+ * 일괄 반입 창 — **표에 붙여넣고, 표에서 고치고, 문제가 있으면 안 넣는다.**
  *
  * 파일이 아니라 붙여넣기인 이유는 DRM 이다 — 문서 보안이 걸린 환경에서는 서식을
  * 내려받는 것은 되는데 그 파일을 다시 고르는 것이 막힌다.
@@ -59,30 +59,24 @@ async function open() {
   })
 }
 
-/** 엑셀에서 복사한 범위를 붙여넣은 것처럼. */
+/** 그 열의 칸 하나. */
+function cell(label: string, line = 0): HTMLInputElement {
+  const index = COLUMNS.findIndex((one) => one.label === label)
+  const rows = document.querySelectorAll('tbody tr')
+  return rows[line].querySelectorAll('input')[index] as HTMLInputElement
+}
+
+/** 표의 첫 칸에서 붙여넣는다. 엑셀에서 온 것은 **범위**라 표 전체를 갈아 끼운다. */
 async function paste(text = '자산번호\t장비명\nA-1\t만능기') {
-  const box = screen.getByRole('textbox')
   await act(async () => {
-    fireEvent.paste(box, { clipboardData: { getData: () => text } })
+    fireEvent.paste(cell('자산번호'), { clipboardData: { getData: () => text } })
   })
 }
 
-function cell(label: string, value: string): HTMLInputElement {
-  const index = COLUMNS.findIndex((one) => one.label === label)
-  const inputs = screen.getAllByDisplayValue(value)
-  return (inputs.find((one) => one.closest('td')?.cellIndex === index + 1) ??
-    inputs[0]) as HTMLInputElement
-}
-
 function commitButton(): HTMLButtonElement {
-  // 「다시 붙여넣기」 도 「넣기」 를 품는다 — 그것을 잡으면 시험이 표를 지우고
-  // 나서 「단추가 안 눌린다」 를 확인하게 된다.
   return screen
     .getAllByRole('button')
-    .find(
-      (one) =>
-        !one.textContent?.startsWith('다시') && /넣기|넣는 중/.test(one.textContent ?? ''),
-    ) as HTMLButtonElement
+    .find((one) => /넣기|넣는 중/.test(one.textContent ?? '')) as HTMLButtonElement
 }
 
 beforeEach(() => {
@@ -90,8 +84,46 @@ beforeEach(() => {
   vi.useFakeTimers({ shouldAdvanceTime: true })
 })
 
+describe('빈 표', () => {
+  it('창을 열면 곧바로 표가 있다', async () => {
+    await open()
+    // 글상자에 붙이고 그 다음에 표가 나타나면 「어디에 붙이나」 를 한 번 더 묻게 된다.
+    expect(document.querySelectorAll('tbody tr').length).toBeGreaterThan(0)
+    expect(screen.getByText('자산번호')).toBeTruthy()
+    // 비우면 그 줄을 못 넣는 칸은 표시가 있어야 한다 — 없으면 다 채워야 하는 줄 안다.
+    expect(screen.getAllByText('*').length).toBe(3)
+  })
+
+  it('비어 있으면 서버를 안 부른다', async () => {
+    await open()
+    await act(async () => {
+      vi.advanceTimersByTime(1000)
+    })
+    // 빈 표를 보내면 서버가 400 을 돌려주고, 아직 아무것도 안 한 사람에게 빨간
+    // 오류가 뜬다.
+    expect(calls).toHaveLength(0)
+    expect(commitButton().disabled).toBe(true)
+  })
+
+  it('한 칸만 쳐도 서버가 읽는다', async () => {
+    answer = { total: 1, ready: 0, problems: 1, created: 0, rows: [row()] }
+    await open()
+    await act(async () => {
+      fireEvent.change(cell('자산번호'), { target: { value: 'A-1' } })
+    })
+    await act(async () => {
+      vi.advanceTimersByTime(600)
+    })
+    expect(calls).toHaveLength(1)
+    // **내용이 있는 줄만 보낸다** — 빈 줄까지 보내면 서버가 건너뛰고, 그러면
+    // 응답의 순서와 표의 줄이 어긋난다.
+    const sent = (calls[0].body as { text: string }).text
+    expect(sent.split('\n')).toHaveLength(2)
+  })
+})
+
 describe('붙여넣기', () => {
-  it('붙여넣으면 서버가 먼저 읽는다', async () => {
+  it('표에 붙여넣으면 서버가 먼저 읽는다', async () => {
     answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
     await open()
     await paste()
@@ -107,8 +139,15 @@ describe('붙여넣기', () => {
     // 다른 표를 본다.
     expect(screen.getByDisplayValue('만능기')).toBeTruthy()
     expect(screen.getByDisplayValue('본사')).toBeTruthy()
-    // 열 이름도 서버가 준 것을 쓴다.
-    expect(screen.getByText('자산번호')).toBeTruthy()
+  })
+
+  it('한 칸짜리 값은 그 칸에 그냥 붙는다', async () => {
+    await open()
+    await act(async () => {
+      fireEvent.paste(cell('장비명'), { clipboardData: { getData: () => '만능기' } })
+    })
+    // 탭도 줄바꿈도 없으면 범위가 아니다 — 가로채면 한 낱말 붙여넣기가 표를 지운다.
+    expect(calls).toHaveLength(0)
   })
 })
 
@@ -129,12 +168,12 @@ describe('틀린 칸', () => {
     await open()
     await paste()
 
-    const bad = cell('거점', '없는거점')
+    const bad = cell('거점')
     // 줄 단위로만 말하면 열여덟 칸 중 어디를 고칠지 사람이 되짚어야 한다.
     expect(bad.className).toMatch(/red/)
     expect(bad.title).toMatch(/기준정보에 없습니다/)
     // 멀쩡한 칸은 안 칠한다 — 다 붉으면 아무것도 안 가리킨 것과 같다.
-    expect(cell('장비명', '만능기').className).not.toMatch(/red/)
+    expect(cell('장비명').className).not.toMatch(/red/)
   })
 
   it('한 칸에 못 붙이는 문제는 줄 끝에 적는다', async () => {
@@ -143,11 +182,7 @@ describe('틀린 칸', () => {
       ready: 0,
       problems: 1,
       created: 0,
-      rows: [
-        row({
-          problems: [{ field: null, message: '자산번호가 2번째 줄과 겹칩니다' }],
-        }),
-      ],
+      rows: [row({ problems: [{ field: null, message: '자산번호가 2번째 줄과 겹칩니다' }] })],
     }
     await open()
     await paste()
@@ -189,7 +224,7 @@ describe('표에서 고치기', () => {
 
     answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
     await act(async () => {
-      fireEvent.change(cell('거점', '없는거점'), { target: { value: '본사' } })
+      fireEvent.change(cell('거점'), { target: { value: '본사' } })
     })
     await act(async () => {
       vi.advanceTimersByTime(600)
@@ -205,12 +240,26 @@ describe('표에서 고치기', () => {
     expect(commitButton().disabled).toBe(false)
   })
 
+  it('고친 값을 서버가 읽은 값으로 덮지 않는다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+    await open()
+    await paste()
+    // 서버 응답의 `cells` 로 표를 덮으면 사람이 치던 칸이 되돌아가고 커서가 튄다.
+    await act(async () => {
+      fireEvent.change(cell('장비명'), { target: { value: '충격기' } })
+    })
+    await act(async () => {
+      vi.advanceTimersByTime(600)
+    })
+    expect(cell('장비명').value).toBe('충격기')
+  })
+
   it('같은 표를 두 번 보내지 않는다', async () => {
     answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
     await open()
     await paste()
     calls.length = 0
-    // 응답이 rows 를 갈아 끼우면 표 글자가 다시 계산된다. 그것이 또 조회를
+    // 응답이 판정을 갈아 끼우면 표 글자가 다시 계산된다. 그것이 또 조회를
     // 부르면 끝이 없다.
     await act(async () => {
       vi.advanceTimersByTime(2000)
@@ -253,6 +302,6 @@ describe('넣는 동안', () => {
     await open()
     await paste()
     // 900대면 5초쯤. 말 안 하면 사람은 멈춘 줄 알고 창을 닫는다.
-    expect(screen.getByText(/초쯤 걸립니다/)).toBeTruthy()
+    expect(commitButton().textContent).toMatch(/초쯤 걸립니다/)
   })
 })
