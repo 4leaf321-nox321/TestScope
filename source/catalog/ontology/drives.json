@@ -1,0 +1,91 @@
+{
+ "_comment": "계열의 구동 방식(drive). 원본 카탈로그가 쓰는 슬러그가 id 이고, TestScope 는 이것을 기준정보 축 drive 의 값으로 심는다(값의 code 가 이 id 다). **무엇으로 힘을 내나**는 그 장비가 무엇을 할 수 있나와 곧장 이어진다 — 유압은 큰 하중을, 전기동력은 정밀한 제어를, 진자는 충격을 낸다. 여기 없는 슬러그를 만나면 반입이 슬러그 그대로 값을 만들고 경고한다.",
+ "drives": [
+  {
+   "id": "electromechanical",
+   "label_ko": "전기기계식",
+   "label": "Electromechanical",
+   "note": "볼스크류를 모터가 돌린다. 정밀하고 조용하지만 큰 하중은 유압에 못 미친다."
+  },
+  {
+   "id": "hydraulic",
+   "label_ko": "유압식",
+   "label": "Hydraulic",
+   "note": "큰 하중을 낸다."
+  },
+  {
+   "id": "servohydraulic",
+   "label_ko": "서보유압식",
+   "label": "Servohydraulic",
+   "note": "유압에 서보 제어를 얹은 것. 피로시험이 이것을 쓴다."
+  },
+  {
+   "id": "pneumatic",
+   "label_ko": "공압식",
+   "label": "Pneumatic"
+  },
+  {
+   "id": "electrodynamic",
+   "label_ko": "전기동력식",
+   "label": "Electrodynamic",
+   "note": "가진기·전기동력 피로시험기. 주파수가 높다."
+  },
+  {
+   "id": "thermal",
+   "label_ko": "열식",
+   "label": "Thermal"
+  },
+  {
+   "id": "manual",
+   "label_ko": "수동식",
+   "label": "Manual"
+  },
+  {
+   "id": "pendulum",
+   "label_ko": "진자식",
+   "label": "Pendulum",
+   "note": "샤르피·아이조드 충격시험기."
+  },
+  {
+   "id": "drop_weight",
+   "label_ko": "낙추식",
+   "label": "Drop weight"
+  },
+  {
+   "id": "free_fall_pneumatic",
+   "label_ko": "자유낙하·공압식",
+   "label": "Free-fall pneumatic"
+  },
+  {
+   "id": "dead_weight",
+   "label_ko": "분동식",
+   "label": "Dead weight",
+   "note": "추를 얹어 하중을 만든다. 기준기가 이 방식이다."
+  },
+  {
+   "id": "resonance",
+   "label_ko": "공진식",
+   "label": "Resonance"
+  },
+  {
+   "id": "rotating_bending",
+   "label_ko": "회전굽힘식",
+   "label": "Rotating bending"
+  },
+  {
+   "id": "repetitive_shock",
+   "label_ko": "반복충격식",
+   "label": "Repetitive shock"
+  },
+  {
+   "id": "servo_motor",
+   "label_ko": "서보모터식",
+   "label": "Servo motor"
+  },
+  {
+   "id": "screw",
+   "label_ko": "스크류식",
+   "label": "Screw"
+  }
+ ]
+}

@@ -9,16 +9,16 @@ from __future__ import annotations
 
 import uuid
 
-from app.modules.capabilities.models import CapabilityLimit
 from app.modules.search.schemas import ConditionQuery
 from app.modules.search.services import _verdict
+from app.modules.test_items.models import EquipmentTestCondition
 
 #: 어느 조건이냐는 판정에 안 쓰인다 — 값만 본다.
 KEY = uuid.uuid4()
 
 
-def limit(minimum: float | None, maximum: float | None) -> CapabilityLimit:
-    return CapabilityLimit(min_value=minimum, max_value=maximum)
+def limit(minimum: float | None, maximum: float | None) -> EquipmentTestCondition:
+    return EquipmentTestCondition(min_value=minimum, max_value=maximum)
 
 
 def test_없는_조건은_모름이다() -> None:

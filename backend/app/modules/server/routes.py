@@ -18,7 +18,6 @@ from app import schema_version, version
 from app.config import get_settings
 from app.database import engine, get_db
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import Capability, ModelCapability
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
@@ -26,13 +25,18 @@ from app.modules.equipment.models import (
     EquipmentSeries,
     ModelSpecValue,
 )
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.server.schemas import (
     CalibrationDueOut,
     DiskOut,
     MaintenanceItemOut,
     ServerStatusOut,
     TableCountOut,
+)
+from app.modules.test_items.models import (
+    EquipmentTestItem,
+    SeriesTestItem,
+    SeriesTestItemMethod,
 )
 from app.modules.vocabulary.models import VocabularyTerm
 from app.shared.auth import current_user, require_system_admin
@@ -98,7 +102,7 @@ def status(
             TableCountOut(
                 label="장비", count=_count(db, Equipment, Equipment.deleted_at.is_(None))
             ),
-            TableCountOut(label="역량", count=_count(db, Capability)),
+            TableCountOut(label="시험 항목", count=_count(db, EquipmentTestItem)),
             TableCountOut(
                 label="시험법", count=_count(db, TestMethod, TestMethod.deleted_at.is_(None))
             ),
@@ -116,7 +120,7 @@ def maintenance(
     """남은 일. **홈이 이것을 보여 준다.**
 
     관리 화면에 들어가야만 보이는 목록은 아무도 안 본다 — 승인 대기가 며칠씩
-    방치되고, 역량이 안 적힌 장비는 영영 안 적힌다.
+    방치되고, 시험 항목이 안 적힌 장비는 영영 안 적힌다.
 
     **0 건인 항목은 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은 그 자리를
     아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다.
@@ -124,7 +128,7 @@ def maintenance(
     today = date.today()
     items: list[MaintenanceItemOut] = []
 
-    registered = select(Capability.equipment_id).distinct()
+    registered = select(EquipmentTestItem.equipment_id).distinct()
     unregistered = _count(
         db,
         Equipment,
@@ -134,13 +138,58 @@ def maintenance(
     if unregistered:
         items.append(
             MaintenanceItemOut(
-                key="equipment_without_capability",
-                label="역량이 안 적힌 장비",
+                key="equipment_without_test_item",
+                label="시험 항목이 안 적힌 장비",
                 count=unregistered,
-                link="/equipment?capability=none",
+                link="/equipment?test_item=none",
                 # **경고다.** 이 장비들은 검색에 절대 안 걸린다 — 시스템이 있는데도
                 # 사람들은 여전히 전화를 돌리게 된다.
                 severity="warning",
+            )
+        )
+
+    # **대상인데 한 번도 안 받은 장비.** 이력이 없다는 사실만으로는 대상이 아닌
+    # 장비와 구별되지 않아서, 여기 안 세우면 빠뜨린 장비가 영영 안 보인다.
+    calibrated = select(EquipmentCalibration.equipment_id).distinct()
+    never = _count(
+        db,
+        Equipment,
+        Equipment.deleted_at.is_(None),
+        Equipment.calibration_required.is_(True),
+        Equipment.id.not_in(calibrated),
+    )
+    if never:
+        items.append(
+            MaintenanceItemOut(
+                key="calibration_never",
+                label="교정 대상인데 이력이 없는 장비",
+                count=never,
+                link="/equipment?calibration=missing",
+                severity="warning",
+            )
+        )
+
+    # **우리가 인용한 규격 중 조건이 안 적힌 것.** 카탈로그가 인용한 453건 전부를
+    # 세지 않는다 — 우리 계열이 실제로 가리키는 것만 세야 목록에 끝이 있다.
+    cited = select(SeriesTestItemMethod.method_id).distinct()
+    without = _count(
+        db,
+        TestMethod,
+        TestMethod.deleted_at.is_(None),
+        TestMethod.id.in_(cited),
+        TestMethod.id.not_in(select(MethodRequirement.method_id).distinct()),
+    )
+    if without:
+        items.append(
+            MaintenanceItemOut(
+                key="method_without_requirement",
+                label="요구 조건이 안 적힌 인용 규격",
+                count=without,
+                link="/methods?requirement=none",
+                # **경고가 아니다.** 규격의 조건은 원문을 봐야 아는 것이라 하루에
+                # 되는 일이 아니다 — 다만 이것이 비어 있으면 검색은 조건으로
+                # 좁히지 못하고, 사람이 매번 직접 입력해야 한다.
+                severity="info",
             )
         )
 
@@ -189,23 +238,23 @@ def maintenance(
             )
         )
 
-    no_capabilities = _count(
+    no_test_items = _count(
         db,
         EquipmentSeries,
         EquipmentSeries.deleted_at.is_(None),
         EquipmentSeries.id.in_(
             select(EquipmentModel.series_id).where(EquipmentModel.id.in_(owned_models))
         ),
-        EquipmentSeries.id.not_in(select(ModelCapability.series_id).distinct()),
+        EquipmentSeries.id.not_in(select(SeriesTestItem.series_id).distinct()),
     )
-    if no_capabilities:
+    if no_test_items:
         items.append(
             MaintenanceItemOut(
-                key="series_without_capability",
+                key="series_without_test_item",
                 label="시험 항목이 안 적힌 보유 계열",
-                count=no_capabilities,
-                link="/catalog/equipment-series?owned=1&issue=capabilities",
-                # **경고다.** 이 계열의 기종으로 장비를 등록해도 복사될 역량이 없다.
+                count=no_test_items,
+                link="/catalog/equipment-series?owned=1&issue=test_items",
+                # **경고다.** 이 계열의 기종으로 장비를 등록해도 복사될 시험 항목이 없다.
                 severity="warning",
             )
         )

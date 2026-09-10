@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from app.modules.accounts.models import User
 from app.modules.auth import security
 from app.modules.workspaces.models import Workspace, WorkspaceMember
-from tests.api.conftest import Signed
+from tests.api.conftest import Signed, category_id, site_id
 
 
 def test_부분_수정은_안_보낸_칸을_지우지_않는다(client: TestClient, admin: Signed) -> None:
@@ -22,6 +22,8 @@ def test_부분_수정은_안_보낸_칸을_지우지_않는다(client: TestClie
         "/api/equipment",
         json={
             "asset_no": f"UTM-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "category_term_id": category_id(client, admin),
             "name": "인장시험기",
             "workspace_slug": admin.workspace,
             "location": "3동 201호",
@@ -37,10 +39,16 @@ def test_부분_수정은_안_보낸_칸을_지우지_않는다(client: TestClie
     assert updated.json()["location"] == "3동 201호"
     assert updated.json()["serial_no"] == "SN-5982"
 
-    # 빈 문자열은 **비운다** 는 뜻이다 — 안 보낸 것과 구별된다.
-    cleared = client.patch(url, json={"location": None}, headers=admin.headers).json()
-    assert cleared["location"] is None
-    assert cleared["serial_no"] == "SN-5982"
+    # 비우는 것은 **안 보낸 것과 구별된다** — 선택 항목은 null 로 비워진다.
+    cleared = client.patch(url, json={"serial_no": None}, headers=admin.headers).json()
+    assert cleared["serial_no"] is None
+    assert cleared["location"] == "3동 201호"
+
+    # 필수 항목은 못 비운다. **조용히 성공시키면 안 된다** — DB 가 거절하면 500 이
+    # 나가고, 그때 사람은 서버가 고장 났다고 읽는다.
+    refused = client.patch(url, json={"location": None}, headers=admin.headers)
+    assert refused.status_code == 400, refused.text
+    assert refused.json()["error"]["code"] == "TSC-EQUIPMENT-0009"
 
 
 def test_남의_부서_장비는_고칠_수_없다(
@@ -51,6 +59,9 @@ def test_남의_부서_장비는_고칠_수_없다(
         "/api/equipment",
         json={
             "asset_no": f"UTM-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "category_term_id": category_id(client, admin),
+            "location": "3동 201호",
             "name": "충격시험기",
             "workspace_slug": admin.workspace,
         },
@@ -166,6 +177,9 @@ def test_장비_폐기는_변경_이력에_남는다(client: TestClient, admin: 
         "/api/equipment",
         json={
             "asset_no": f"UTM-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "category_term_id": category_id(client, admin),
+            "location": "3동 201호",
             "name": "폐기할 장비",
             "workspace_slug": admin.workspace,
         },
@@ -206,13 +220,13 @@ def _model_in(
     return body
 
 
-def test_카탈로그_역량은_장비로_복사된다(
+def test_카탈로그_시험_항목은_장비로_복사된다(
     client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
 ) -> None:
     """**상속이 아니라 복사다.** 등록한 뒤로는 그 장비가 진실이고, 챔버를 뗀 대는
     거기서 고친다 — 갈라지는 것이 정상이다(ADR 0004).
 
-    역량은 계열에 붙고 기종이 그것을 물려받는다(ADR 0006)."""
+    시험 항목은 계열에 붙고 기종이 그것을 물려받는다(ADR 0006)."""
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
     conditions = client.get("/api/condition-keys", headers=admin.headers).json()
     force = next(one["id"] for one in conditions if one["key"] == "force")
@@ -220,13 +234,13 @@ def test_카탈로그_역량은_장비로_복사된다(
     series = _series(client, admin)
     model = _model_in(client, admin, series["id"])
 
-    capability = client.post(
-        f"/api/equipment-series/{series['id']}/capabilities",
+    test_item = client.post(
+        f"/api/equipment-series/{series['id']}/test_items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     ).json()
     client.put(
-        f"/api/equipment-series/{series['id']}/capabilities/{capability['id']}/limits",
+        f"/api/equipment-series/{series['id']}/test_items/{test_item['id']}/limits",
         json={"condition_key_id": force, "min_value": 0, "max_value": 250},
         headers=admin.headers,
     )
@@ -235,6 +249,8 @@ def test_카탈로그_역량은_장비로_복사된다(
         "/api/equipment",
         json={
             "asset_no": f"CAT-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "카탈로그에서 만든 장비",
             "workspace_slug": admin.workspace,
             "model_id": model["id"],
@@ -247,26 +263,26 @@ def test_카탈로그_역량은_장비로_복사된다(
     assert made.json()["series_name"] == series["name"]
 
     copied = client.get(
-        f"/api/capabilities?equipment_id={made.json()['id']}", headers=admin.headers
+        f"/api/equipment-test-items?equipment_id={made.json()['id']}", headers=admin.headers
     ).json()
     assert len(copied) == 1
     # 사양서에서 온 값이라는 뜻이 그 칸에 이미 있다.
     assert copied[0]["confidence"] == "catalog"
     assert copied[0]["limits"][0]["max_value"] == 250
 
-    # 시험 항목이 장비 목록 한 줄에서 바로 보인다 — 역량을 열어 봐야 아는 화면은
+    # 시험 항목이 장비 목록 한 줄에서 바로 보인다 — 시험 항목을 열어 봐야 아는 화면은
     # 「우리가 무슨 시험을 할 수 있나」 에 답하지 못한다.
     listed = client.get(f"/api/equipment/{made.json()['id']}", headers=admin.headers).json()
     assert listed["test_items"] == [copied[0]["test_item"]]
 
     # 개체를 좁혀도 카탈로그는 그대로다 — 그래야 다음 대가 사양서대로 복사된다.
     client.put(
-        f"/api/capabilities/{copied[0]['id']}/limits",
+        f"/api/equipment-test-items/{copied[0]['id']}/limits",
         json={"condition_key_id": force, "min_value": 0, "max_value": 50},
         headers=admin.headers,
     )
     catalog = client.get(f"/api/equipment-series/{series['id']}", headers=admin.headers).json()
-    assert catalog["capabilities"][0]["limits"][0]["max_value"] == 250
+    assert catalog["test_items"][0]["limits"][0]["max_value"] == 250
     assert catalog["unit_count"] == 1
 
 
@@ -283,7 +299,7 @@ def test_기종마다_조건이_갈린다(
 
     series = _series(client, admin)
     client.post(
-        f"/api/equipment-series/{series['id']}/capabilities",
+        f"/api/equipment-series/{series['id']}/test_items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     )
@@ -306,6 +322,8 @@ def test_기종마다_조건이_갈린다(
             "/api/equipment",
             json={
                 "asset_no": f"SPL-{uuid.uuid4().hex[:6]}",
+                "site_term_id": site_id(client, admin),
+                "location": "3동 201호",
                 "name": f"{label} 장비",
                 "workspace_slug": admin.workspace,
                 "model_id": model["id"],
@@ -317,7 +335,7 @@ def test_기종마다_조건이_갈린다(
 
     def _force(equipment_id: str) -> float:
         rows = client.get(
-            f"/api/capabilities?equipment_id={equipment_id}", headers=admin.headers
+            f"/api/equipment-test-items?equipment_id={equipment_id}", headers=admin.headers
         ).json()
         limit = next(one for one in rows[0]["limits"] if one["condition_key"] == "force")
         value: float = limit["max_value"]
@@ -335,6 +353,8 @@ def test_가리키는_장비가_있는_기종은_못_지운다(client: TestClien
         "/api/equipment",
         json={
             "asset_no": f"CAT-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "지우기 막는 장비",
             "workspace_slug": admin.workspace,
             "model_id": model["id"],
@@ -424,8 +444,8 @@ def test_채울_자리는_보유한_것만_센다(
     # 아무도 안 가진 계열·기종은 안 센다.
     idle = _series(client, admin)
     _model_in(client, admin, idle["id"])
-    assert counts().get("series_without_capability", 0) == before.get(
-        "series_without_capability", 0
+    assert counts().get("series_without_test_item", 0) == before.get(
+        "series_without_test_item", 0
     )
 
     # 보유하면 그때 센다.
@@ -435,6 +455,8 @@ def test_채울_자리는_보유한_것만_센다(
         "/api/equipment",
         json={
             "asset_no": f"GAP-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "빈 카탈로그를 가리키는 장비",
             "workspace_slug": admin.workspace,
             "model_id": model["id"],
@@ -442,7 +464,7 @@ def test_채울_자리는_보유한_것만_센다(
         headers=admin.headers,
     )
     after = counts()
-    assert after["series_without_capability"] == before.get("series_without_capability", 0) + 1
+    assert after["series_without_test_item"] == before.get("series_without_test_item", 0) + 1
     assert after["model_without_specs"] == before.get("model_without_specs", 0) + 1
 
     # 목록이 그 줄과 같은 것을 돌려준다 — 링크를 눌렀는데 다른 것이 나오면
@@ -455,12 +477,12 @@ def test_채울_자리는_보유한_것만_센다(
     # 시험 항목을 적으면 그 줄이 사라진다.
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
     client.post(
-        f"/api/equipment-series/{owned['id']}/capabilities",
+        f"/api/equipment-series/{owned['id']}/test_items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     )
-    assert counts().get("series_without_capability", 0) == before.get(
-        "series_without_capability", 0
+    assert counts().get("series_without_test_item", 0) == before.get(
+        "series_without_test_item", 0
     )
 
 
@@ -483,6 +505,8 @@ def test_기종_피커는_서버가_거른다(client: TestClient, admin: Signed)
         "/api/equipment",
         json={
             "asset_no": f"PCK-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "피커 시험 장비",
             "workspace_slug": admin.workspace,
             "model_id": made["id"],

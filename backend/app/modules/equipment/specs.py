@@ -1,4 +1,4 @@
-"""모델의 사양 **값** — 넣고, 읽고, 역량으로 반영한다.
+"""모델의 사양 **값** — 넣고, 읽고, 시험 항목으로 반영한다.
 
 정의는 `vocabulary/specs.py` 에 있다. 여기는 그 정의에 실제 숫자를 채우는 자리다.
 
@@ -143,8 +143,8 @@ def sheet(db: Session, model: EquipmentModel) -> ModelSpecSheetOut:
     return ModelSpecSheetOut(model_id=model.id, groups=groups)
 
 
-def _check(definition: SpecDefinition, payload: dict[str, Any]) -> None:
-    """종류에 맞는 칸이 채워졌나 본다.
+def check_value(definition: SpecDefinition, payload: dict[str, Any]) -> None:
+    """종류에 맞는 칸이 채워졌나 본다. **개체 실측도 같은 검증을 쓴다.**
 
     **틀린 칸에 담긴 값은 조용히 사라진다.** 구간 사양에 num_value 만 보내면 저장은
     되지만 화면은 아무것도 못 그리고, 그때 사람은 "저장이 안 됐다" 고 말한다.
@@ -188,8 +188,8 @@ def conditions_from_specs(
 
     ## 왜 저장할 때가 아니라 여기서 계산하나
 
-    역량은 계열에 붙고 사양은 기종에 붙는다(ADR 0006). 사양을 저장하는 순간 계열
-    역량에 써 넣으면, 0.5 kN 짜리 기종의 값이 그 계열 전체의 조건이 된다 — 같은
+    시험 항목은 계열에 붙고 사양은 기종에 붙는다(ADR 0006). 사양을 저장하는 순간 계열
+    시험 항목에 써 넣으면, 0.5 kN 짜리 기종의 값이 그 계열 전체의 조건이 된다 — 같은
     계열의 300 kN 짜리가 검색에서 0.5 kN 으로 답한다.
 
     그래서 **보유 장비를 만들 때** 그 장비가 가리키는 기종의 사양으로 계산한다.
@@ -203,8 +203,19 @@ def conditions_from_specs(
 
     고른 값·문장·참거짓은 뺀다. 범위 비교가 성립하지 않아서, 검색이 그것을
     숫자처럼 다루면 아무것도 안 맞거나 전부 맞는다.
+
+    ## 같은 축에 둘이 오면 확정값이 이긴다
+
+    한 기종이 「하중 용량 300 kN」(확정)과 「하중 용량(구성별) 15~25 kN」(카탈로그가
+    적어 온 선택지)을 함께 갖는 일이 있다 — 실측 15기종 중 8기종이 그렇다.
+
+    **확정값이 이긴다.** 구성별 값은 「이 기종은 이 범위로 나온다」 이지 「이 대가
+    그렇다」 가 아니다. 순서에 맡기면 같은 기종이 반입할 때마다 다른 조건을 갖고,
+    그 차이는 검색 결과가 갈린 날에야 드러난다.
     """
     out: dict[uuid.UUID, tuple[float | None, float | None, str]] = {}
+    #: 그 축을 확정값(number)이 채웠나. 구간은 확정값을 못 덮는다.
+    settled: set[uuid.UUID] = set()
     rows = db.execute(
         select(ModelSpecValue, SpecDefinition)
         .join(SpecDefinition, SpecDefinition.id == ModelSpecValue.definition_id)
@@ -212,6 +223,10 @@ def conditions_from_specs(
             ModelSpecValue.model_id == model_id,
             SpecDefinition.condition_key_id.is_not(None),
         )
+        # 확정값을 먼저 본다. 확정값이 이기는 것은 아래 `settled` 가 순서와 무관하게
+        # 보장하고, 이 정렬은 **구간이 둘일 때** 어느 것이 남는지를 정해 둔다 —
+        # 안 정하면 같은 기종이 반입할 때마다 다른 조건을 갖는다.
+        .order_by(SpecDefinition.kind, SpecDefinition.sort_order)
     ).all()
     for value, definition in rows:
         if definition.kind == "range":
@@ -224,7 +239,12 @@ def conditions_from_specs(
         if low is None and high is None:
             continue
         assert definition.condition_key_id is not None  # 위 where 절이 보장한다
-        out[definition.condition_key_id] = (low, high, definition.label)
+        key_id = definition.condition_key_id
+        if key_id in settled and definition.kind != "number":
+            continue
+        if definition.kind == "number":
+            settled.add(key_id)
+        out[key_id] = (low, high, definition.label)
     return out
 
 
@@ -237,7 +257,7 @@ def upsert(
 
     화면이 "저장했습니다" 만 말하면 두 가지를 사람이 알 수 없다.
 
-    **이 숫자가 검색에 쓰이나** — 검색축에 이어진 사양만 역량 조건이 된다. 이어져
+    **이 숫자가 검색에 쓰이나** — 검색축에 이어진 사양만 시험 조건이 된다. 이어져
     있으면 그 축 이름을 말해 준다.
 
     **이미 등록된 장비는 어떻게 되나** — 안 바뀐다(ADR 0004 의 복사 규칙). 대수를
@@ -251,7 +271,7 @@ def upsert(
             f"{definition.label}은(는) 더 쓰지 않는 사양입니다.",
             status=400,
         )
-    _check(definition, payload)
+    check_value(definition, payload)
 
     if (
         payload.get("source_id") is not None
@@ -302,8 +322,8 @@ def upsert(
 def delete(db: Session, model: EquipmentModel, definition_id: uuid.UUID) -> None:
     """사양 값을 지운다.
 
-    **따라 들어간 역량 조건은 안 지운다.** 그 조건은 이미 이 모델의 것이고, 그
-    사이에 사람이 고쳐 뒀을 수 있다 — 사양표를 정리했다고 역량이 조용히 줄면
+    **따라 들어간 시험 조건은 안 지운다.** 그 조건은 이미 이 모델의 것이고, 그
+    사이에 사람이 고쳐 뒀을 수 있다 — 사양표를 정리했다고 시험 항목이 조용히 줄면
     검색 결과가 이유 없이 바뀐다.
     """
     row = db.scalar(

@@ -3,7 +3,7 @@
 여기서 지키는 것 셋:
 
 1. 종류에 안 맞는 칸으로 저장되지 않는다 — 조용히 사라지는 값이 없어야 한다.
-2. 검색축에 이은 사양은 **역량 조건으로 따라 들어간다** — 같은 숫자를 두 번 안 적는다.
+2. 검색축에 이은 사양은 **시험 조건으로 따라 들어간다** — 같은 숫자를 두 번 안 적는다.
 3. 손으로 고쳐 둔 조건은 안 덮는다 — 사양서가 실측을 지우면 안 된다.
 """
 
@@ -15,7 +15,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 
-from tests.api.conftest import Signed
+from tests.api.conftest import Signed, site_id
 
 
 def _definitions(client: TestClient, admin: Signed) -> dict[str, dict[str, Any]]:
@@ -144,24 +144,24 @@ def test_사양표는_그룹_순서로_오고_값이_있는_것만_준다(
     assert item["applies"] is True
 
 
-def test_검색축에_이은_사양은_장비_등록에서_역량_조건이_된다(
+def test_검색축에_이은_사양은_장비_등록에서_시험_항목_조건이_된다(
     client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
 ) -> None:
     """**저장할 때가 아니라 복사할 때 반영된다.**
 
-    역량은 계열에 붙고 사양은 기종에 붙는다. 저장하는 순간 계열 역량에 써 넣으면
+    시험 항목은 계열에 붙고 사양은 기종에 붙는다. 저장하는 순간 계열의 시험 항목에 써 넣으면
     같은 계열의 다른 기종까지 그 값이 된다(ADR 0006).
     """
     model = _model(client, admin)
     definitions = _definitions(client, admin)
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
 
-    capability = client.post(
-        f"/api/equipment-series/{model['series_id']}/capabilities",
+    test_item = client.post(
+        f"/api/equipment-series/{model['series_id']}/test_items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     )
-    assert capability.status_code == 201, capability.text
+    assert test_item.status_code == 201, test_item.text
 
     saved = _put_spec(
         client,
@@ -175,16 +175,18 @@ def test_검색축에_이은_사양은_장비_등록에서_역량_조건이_된�
     assert saved.json()["search_axis"] == "하중 용량"
     assert saved.json()["existing_units"] == 0
 
-    # 계열 역량에는 안 써 넣는다. 그것이 이 설계의 요점이다.
+    # 계열의 시험 항목에는 안 써 넣는다. 그것이 이 설계의 요점이다.
     series = client.get(
         f"/api/equipment-series/{model['series_id']}", headers=admin.headers
     ).json()
-    assert series["capabilities"][0]["limits"] == []
+    assert series["test_items"][0]["limits"] == []
 
     made = client.post(
         "/api/equipment",
         json={
             "asset_no": f"SPC-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "사양에서 조건을 받은 장비",
             "workspace_slug": admin.workspace,
             "model_id": model["id"],
@@ -193,7 +195,7 @@ def test_검색축에_이은_사양은_장비_등록에서_역량_조건이_된�
     )
     assert made.status_code == 201, made.text
     copied = client.get(
-        f"/api/capabilities?equipment_id={made.json()['id']}", headers=admin.headers
+        f"/api/equipment-test-items?equipment_id={made.json()['id']}", headers=admin.headers
     ).json()
     force = next(one for one in copied[0]["limits"] if one["condition_key"] == "force")
     assert (force["min_value"], force["max_value"]) == (None, 300)
@@ -215,13 +217,13 @@ def test_기종_사양이_계열_봉투를_이긴다(
     definitions = _definitions(client, admin)
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
 
-    capability = client.post(
-        f"/api/equipment-series/{model['series_id']}/capabilities",
+    test_item = client.post(
+        f"/api/equipment-series/{model['series_id']}/test_items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     ).json()
     client.put(
-        f"/api/equipment-series/{model['series_id']}/capabilities/{capability['id']}/limits",
+        f"/api/equipment-series/{model['series_id']}/test_items/{test_item['id']}/limits",
         json={"condition_key_id": condition_ids["force"], "min_value": 0, "max_value": 300},
         headers=admin.headers,
     )
@@ -237,6 +239,8 @@ def test_기종_사양이_계열_봉투를_이긴다(
         "/api/equipment",
         json={
             "asset_no": f"ENV-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "작은 기종",
             "workspace_slug": admin.workspace,
             "model_id": model["id"],
@@ -244,7 +248,7 @@ def test_기종_사양이_계열_봉투를_이긴다(
         headers=admin.headers,
     )
     copied = client.get(
-        f"/api/capabilities?equipment_id={made.json()['id']}", headers=admin.headers
+        f"/api/equipment-test-items?equipment_id={made.json()['id']}", headers=admin.headers
     ).json()
     force = next(one for one in copied[0]["limits"] if one["condition_key"] == "force")
     assert force["max_value"] == 0.5
@@ -257,17 +261,17 @@ def test_사양에_없는_계열_조건은_그대로_따라온다(
     condition_ids: dict[str, str],
 ) -> None:
     """**사양 칸으로 안 잡히는 조건이 실재한다.** 계열에 적어 둔 것이 사라지면
-    그 역량은 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답한다(ADR 0003)."""
+    그 시험 항목은 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답한다(ADR 0003)."""
     model = _model(client, admin)
     item = term_factory("test_item", f"충격-{uuid.uuid4().hex[:6]}")
 
-    capability = client.post(
-        f"/api/equipment-series/{model['series_id']}/capabilities",
+    test_item = client.post(
+        f"/api/equipment-series/{model['series_id']}/test_items",
         json={"test_item_term_id": item},
         headers=admin.headers,
     ).json()
     client.put(
-        f"/api/equipment-series/{model['series_id']}/capabilities/{capability['id']}/limits",
+        f"/api/equipment-series/{model['series_id']}/test_items/{test_item['id']}/limits",
         json={
             "condition_key_id": condition_ids["temperature"],
             "min_value": 10,
@@ -280,6 +284,8 @@ def test_사양에_없는_계열_조건은_그대로_따라온다(
         "/api/equipment",
         json={
             "asset_no": f"KEP-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
             "name": "계열 조건만 있는 장비",
             "workspace_slug": admin.workspace,
             "model_id": model["id"],
@@ -287,7 +293,7 @@ def test_사양에_없는_계열_조건은_그대로_따라온다(
         headers=admin.headers,
     )
     copied = client.get(
-        f"/api/capabilities?equipment_id={made.json()['id']}", headers=admin.headers
+        f"/api/equipment-test-items?equipment_id={made.json()['id']}", headers=admin.headers
     ).json()
     temperature = next(
         one for one in copied[0]["limits"] if one["condition_key"] == "temperature"

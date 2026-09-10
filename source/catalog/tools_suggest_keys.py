@@ -13,6 +13,16 @@
 있었지만 그 다섯 배는 못 한다. 그래서 이름·값에서 뽑아낼 수 있는 것은 뽑아 두고,
 사람은 `label` 과 판정만 채운다.
 
+## 무엇을 「등재됨」 으로 세나
+
+**반입이 다루는 키는 세지 않는다.** 온톨로지에 등재된 것만 빼고 세면 이 도구가
+「948종 남았다」 고 하는데 반입은 「917종」 이라고 한다 — 계기판이 둘이면 사람은 둘 다
+안 믿는다. 실제로 그랬다.
+
+무엇을 다루는지 아는 것은 반입이므로 그쪽 표를 읽어 온다(`app.modules.vocabulary
+.catalog_specs`). 못 읽으면 **그 사실을 말하고** 온톨로지 기준으로만 센다 — 조용히
+다른 수를 내놓지 않는다.
+
 ## 무엇을 추측하고 무엇을 안 하나
 
     단위      이름의 꼬리에서 뽑는다 (`travel_resolution_um` -> um). 41% 가 갖고 있다
@@ -102,12 +112,52 @@ def shape_of(values: list[object]) -> str:
     return "text"
 
 
+
+def handled_by_import() -> tuple[set[str], tuple[str, ...], bool]:
+    """반입이 이미 다루는 원본 키들. (키 집합, 옵션 접미사, 읽었나).
+
+    **정본은 반입 쪽이다.** 무엇이 값으로 들어가는지는 거기서 정해지고, 여기서 한 벌
+    더 적으면 둘은 반드시 갈린다 — 이 도구가 그렇게 갈려 있었다.
+
+    못 읽어도 도는 이유: `source/` 만 따로 열어 보는 일이 있다. 그때는 온톨로지
+    기준으로만 세고 **그 사실을 화면에 적는다.**
+    """
+    root = CAT.parents[1] / "backend"
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+    try:
+        from app.modules.vocabulary.catalog_specs import (  # noqa: PLC0415
+            DIMENSION_SOURCES,
+            MAX_ONLY_SOURCES,
+            OPTION_RANGE_SOURCES,
+            RANGE_PAIR_SOURCES,
+            SOURCE_SPEC_MAP,
+            TEMPERATURE_PAIR,
+            VARIANT_SUFFIXES,
+        )
+    except Exception:
+        return set(), (), False
+    keys = (
+        set(SOURCE_SPEC_MAP)
+        | set(DIMENSION_SOURCES)
+        | set(RANGE_PAIR_SOURCES)
+        | set(OPTION_RANGE_SOURCES)
+        | set(MAX_ONLY_SOURCES)
+        | set(TEMPERATURE_PAIR)
+    )
+    return keys, tuple(VARIANT_SUFFIXES), True
+
+
 def main() -> int:
     rows = json.loads((ONT / "condition_keys.json").read_text(encoding="utf-8"))["keys"]
     known = {row["key"] for row in rows}
     for row in rows:
         known |= set(row.get("aliases") or [])
         known |= set(row.get("unit_variants") or {})
+
+    # 반입이 이미 다루는 키도 「남은 일」 이 아니다. 계기판을 둘로 두지 않는다.
+    mapped, suffixes, linked = handled_by_import()
+    known |= mapped
 
     # 등재 키를 줄기로 묶어 둔다 — 별칭 후보를 가리키는 데 쓴다.
     by_stem: dict[str, list[dict]] = defaultdict(list)
@@ -124,6 +174,13 @@ def main() -> int:
         for pool in pools:
             for key, value in pool.items():
                 if key in ("note", "uncertain") or key in known:
+                    continue
+                # `vertical_test_space_mm_E2` 같은 옵션 구성. 반입이 기본 구성으로
+                # 들이고 옵션은 비고에 남긴다 — 빠진 값이 아니다.
+                if any(
+                    key.endswith(suffix) and key[: -len(suffix)] in known
+                    for suffix in suffixes
+                ):
                     continue
                 used_values[key].append(value)
                 used_objects[key].add(obj["id"])
@@ -159,7 +216,13 @@ def main() -> int:
         )
 
     tally = Counter(one["role"] for one in out)
-    print(f"등재 안 된 키 {len(out)}종 · 값 {sum(one['count'] for one in out)}건")
+    if linked:
+        print(f"안 다뤄지는 키 {len(out)}종 · 값 {sum(one['count'] for one in out)}건")
+    else:
+        # **다르게 셌다는 사실을 말한다.** 조용히 다른 수를 내놓으면 그 수를 반입의
+        # 보류 수와 비교하는 사람이 생긴다.
+        print(f"온톨로지 미등재 키 {len(out)}종 · 값 {sum(one['count'] for one in out)}건")
+        print("  (반입 표를 못 읽었습니다 — 반입이 이미 다루는 키가 여기 섞여 있습니다)")
     print(f"  measure {tally['measure']} · descriptive {tally['descriptive']} · "
           f"not_spec {tally['not_spec']}")
     print(f"  단위를 뽑아낸 것 {sum(1 for one in out if one['unit'])}종")

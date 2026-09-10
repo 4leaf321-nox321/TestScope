@@ -1,4 +1,4 @@
-"""TestScope MCP 서버 — **AI 가 시험 역량을 직접 묻고, 카탈로그를 채운다.**
+"""TestScope MCP 서버 — **AI 가 시험 항목을 직접 묻고, 카탈로그를 채운다.**
 
 MatNexus 의 MCP 서버를 본떴다. 그쪽에서 실측으로 얻은 것 넷을 그대로 가져온다:
 
@@ -43,7 +43,7 @@ GUIDE_PATH = Path(__file__).parent / "guide" / "GUIDE.md"
 mcp = MCPServer(
     name="testscope",
     instructions=(
-        "TestScope 시험 역량 지도. 「이 시험이 가능한 장비가 우리 조직에 있나」 에"
+        "TestScope 시험 장비 지도. 「이 시험이 가능한 장비가 우리 조직에 있나」 에"
         " 답한다. 카탈로그는 계열(무슨 시험이 되나)과 기종(어디까지 되나) 두 층이고,"
         " 보유 장비는 기종을 가리킨다. 먼저 get_guide() 를 읽어라 — 특히 「만들기"
         " 전에 resolve 로 찾는다」 와 「모르면 비운다」 는 규약이 있다."
@@ -214,7 +214,7 @@ async def resolve(
 
 
 @mcp.tool()
-async def search_capabilities(
+async def search_test_items(
     ctx: Context,
     test_item_term_id: str | None = None,
     method_id: str | None = None,
@@ -242,7 +242,7 @@ async def search_capabilities(
     return await _send(
         ctx,
         "POST",
-        "/search/capabilities",
+        "/search/test_items",
         {
             "test_item_term_id": test_item_term_id,
             "method_id": method_id,
@@ -282,7 +282,7 @@ async def search_series(
 
 @mcp.tool()
 async def get_series(ctx: Context, series_id: str) -> dict[str, Any]:
-    """계열 하나 — 무슨 시험이 되나(capabilities) · 어느 부속이 붙나(relations) ·
+    """계열 하나 — 무슨 시험이 되나(test_items) · 어느 부속이 붙나(relations) ·
     기종이 몇 개인가 · 우리가 몇 대 가졌나.
 
     사양을 채우려면 여기서 `category_term_id` 를 얻어 `list_spec_definitions` 에
@@ -328,7 +328,7 @@ async def create_series(
 
 
 @mcp.tool()
-async def add_capability(
+async def add_test_item(
     ctx: Context,
     series_id: str,
     test_item: str | None = None,
@@ -348,7 +348,7 @@ async def add_capability(
     return await _send(
         ctx,
         "POST",
-        f"/equipment-series/{series_id}/capabilities",
+        f"/equipment-series/{series_id}/test_items",
         {
             "test_item": test_item,
             "test_item_term_id": test_item_term_id,
@@ -465,7 +465,7 @@ async def list_spec_definitions(
 
     `kind` 가 값의 모양을 정한다: `number`(수치 하나) · `range`(구간) · `choice` ·
     `boolean` · `text`. `condition_key_id` 가 채워진 사양은 **검색축**이라, 그 값이
-    보유 장비의 역량 조건이 된다.
+    보유 장비의 시험 조건이 된다.
 
     **없는 사양은 만들지 말고 보류하라.** 정의를 늘리는 것은 사람의 판단이다 —
     원본에 사양 키가 562종 있는데 76%가 단 한 곳에만 나온다.
@@ -531,7 +531,7 @@ async def set_spec(
     남는다. 카탈로그가 조건을 달아 적은 것을 버리면 값만 남고 뜻이 사라진다.
 
     응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의
-    역량 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고 그들에게는
+    시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고 그들에게는
     반영되지 않는다 — 개체의 값은 개체가 갖는다.
     """
     return await _send(
@@ -572,7 +572,7 @@ async def search_equipment(
 ) -> dict[str, Any]:
     """우리가 가진 장비. 각 줄에 **시험 항목**과 계열·기종이 함께 온다.
 
-    `test_items` 가 비어 있으면 그 장비는 **검색에 절대 안 걸린다** — 역량이 안
+    `test_items` 가 비어 있으면 그 장비는 **검색에 절대 안 걸린다** — 시험 항목이 안
     적혀 있다는 뜻이다.
     """
     return await _get(
@@ -603,16 +603,25 @@ async def register_equipment(
     asset_no: str,
     name: str,
     workspace_slug: str,
+    site_term_id: str,
+    location: str,
     model_id: str | None = None,
+    category_term_id: str | None = None,
     serial_no: str | None = None,
-    site_term_id: str | None = None,
-    location: str | None = None,
+    dept_asset_no: str | None = None,
+    shared_use: bool = False,
     status: str = "operational",
+    acquired_on: str | None = None,
+    manufactured_year: int | None = None,
+    calibration_required: bool = False,
+    calibration_interval_months: int | None = None,
+    maker_text: str | None = None,
+    model_text: str | None = None,
     note: str | None = None,
 ) -> dict[str, Any]:
     """보유 장비 한 대를 등록한다.
 
-    **기종을 고르면 그 계열의 역량이 이 장비로 복사되고, 조건은 그 기종의 사양에서
+    **기종을 고르면 그 계열의 시험 항목이 이 장비로 복사되고, 조건은 그 기종의 사양에서
     온다.** 상속이 아니라 복사라, 그 뒤로는 이 장비가 진실이다 — 챔버를 뗀 대는
     여기서 고친다.
 
@@ -632,6 +641,31 @@ async def register_equipment(
 
     자산번호가 이미 있으면 409 다. **덮어쓰지 않는다** — 같은 번호의 다른 장비일
     수도 있고, 그때 덮으면 있던 이력이 사라진다.
+
+    ## 비울 수 없는 것
+
+    보유 부서·거점(`site_term_id`)·상세위치(`location`), 그리고 **무슨 종류인가.**
+    어디 있고 무슨 종류인지 모르는 장비는 찾아도 소용이 없다.
+
+    종류는 기종을 고르면 따라온다(계열이 갖는다). 기종을 못 찾아 비웠다면
+    `category_term_id` 를 직접 골라라 — `resolve(axis="equipment_category", …)` 로
+    찾는다. 둘 다 없으면 400 이다.
+
+    미연결 장비의 제조사·모델명은 `maker_text`·`model_text` 에 적는다. **표시용이라
+    검색이 안 본다** — 그래서 기종을 찾는 편이 언제나 낫다. 나중에 기종에 연결하면
+    서버가 이 두 칸을 비운다.
+
+    ## 상태
+
+    `incoming` 입고 · `operational` 가동 · `idle` 유휴 · `maintenance` 점검·교정 ·
+    `repair` 고장 · `retired` 폐기. **모르면 지어내지 마라** — 기본값 `operational`
+    보다 사람에게 묻는 편이 낫다. 검색이 「쓸 수 있다」 로 세는 것은 가동과 유휴다.
+
+    ## 교정
+
+    `calibration_required` 가 참이면 `calibration_interval_months` 를 함께 줘야 한다.
+    주기가 없으면 차기일을 계산할 수 없고, 그러면 「곧 만료」 목록이 이 장비를 영원히
+    안 부른다. **모르면 대상 여부를 비워 두고 사람에게 물어라.**
     """
     return await _send(
         ctx,
@@ -641,12 +675,81 @@ async def register_equipment(
             "asset_no": asset_no,
             "name": name,
             "workspace_slug": workspace_slug,
-            "model_id": model_id,
-            "serial_no": serial_no,
             "site_term_id": site_term_id,
             "location": location,
+            "model_id": model_id,
+            "category_term_id": category_term_id,
+            "serial_no": serial_no,
+            "dept_asset_no": dept_asset_no,
+            "shared_use": shared_use,
             "status": status,
+            "acquired_on": acquired_on,
+            "manufactured_year": manufactured_year,
+            "calibration_required": calibration_required,
+            "calibration_interval_months": calibration_interval_months,
+            "maker_text": maker_text,
+            "model_text": model_text,
             "note": note,
+        },
+    )
+
+
+@mcp.tool()
+async def get_equipment_specs(ctx: Context, equipment_id: str) -> dict[str, Any]:
+    """이 **장비 한 대**의 사양 — 카탈로그 값과 실측이 한 줄에 함께 온다.
+
+    기종 사양(`get_specs`)은 「제조사가 그렇게 적었다」 이고, 여기 `measured` 는
+    「우리가 이 대를 재 보니 그렇더라」 다. **둘 다 보고 답하라** — 실측이 있으면
+    그쪽이 이 장비의 진실이고, 없으면 카탈로그 값은 이 대를 재 본 값이 아니다.
+    """
+    return await _get(ctx, f"/equipment/{equipment_id}/specs")
+
+
+@mcp.tool()
+async def set_equipment_spec(
+    ctx: Context,
+    equipment_id: str,
+    definition_id: str,
+    num_value: float | None = None,
+    num_min: float | None = None,
+    num_max: float | None = None,
+    text_value: str | None = None,
+    bool_value: bool | None = None,
+    measured_on: str | None = None,
+    note: str | None = None,
+    source_id: str | None = None,
+    source_page: int | None = None,
+) -> dict[str, Any]:
+    """이 장비의 **실측** 사양 한 칸을 적는다 — 카탈로그 값 위에 덮는다.
+
+    **기종 사양과 헷갈리지 마라.** `set_spec` 은 그 기종을 쓰는 모든 장비의 기준이
+    되고, 이것은 이 한 대의 값이다. 우리가 잰 값·성적서에 적힌 이 대의 값은 여기다.
+
+    정의의 종류에 맞는 칸만 채운다 — 수치는 `num_value`, 구간은 `num_min`/`num_max`,
+    고른 값과 문장은 `text_value`, 참거짓은 `bool_value`.
+
+    **언제 잰 값인지 적어라**(`measured_on`). 3년 전 실측은 사양서보다 나을 것이
+    없고, 날짜가 없으면 사람이 그것을 판단할 수 없다.
+
+    응답의 `reflected` 가 참이면 이 장비의 시험 조건이 함께 갱신됐다는 뜻이다.
+    거짓이면 그 조건은 **사람이 손으로 적어 둔 것**이라 안 덮었다 — 덮고 싶으면
+    사람에게 물어라.
+    """
+    return await _send(
+        ctx,
+        "PUT",
+        f"/equipment/{equipment_id}/specs",
+        {
+            "definition_id": definition_id,
+            "num_value": num_value,
+            "num_min": num_min,
+            "num_max": num_max,
+            "text_value": text_value,
+            "bool_value": bool_value,
+            "measured_on": measured_on,
+            "note": note,
+            "source_id": source_id,
+            "source_page": source_page,
         },
     )
 
@@ -655,7 +758,7 @@ async def register_equipment(
 async def list_pending_work(ctx: Context) -> dict[str, Any]:
     """**채울 자리.** 우리가 가진 것 중 비어 있는 것만 센다.
 
-    역량이 안 적힌 장비 · 사양이 안 적힌 보유 기종 · 시험 항목이 안 적힌 보유 계열 ·
+    시험 항목이 안 적힌 장비 · 사양이 안 적힌 보유 기종 · 시험 항목이 안 적힌 보유 계열 ·
     원본 확인이 필요한 기종 · 교정 기한이 지난 장비.
 
     **여기부터 채워라.** 카탈로그 전체를 채우려 들면 끝이 없어 보여서 아무도

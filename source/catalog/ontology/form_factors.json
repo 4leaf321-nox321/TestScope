@@ -1,0 +1,87 @@
+{
+ "_comment": "기종·계열의 형태(form_factor). 원본 카탈로그가 쓰는 슬러그가 id 이고, TestScope 는 이것을 기준정보 축 form_factor 의 값으로 심는다(값의 code 가 이 id 다). 여기 없는 슬러그를 만나면 반입이 슬러그 그대로 값을 만들고 경고한다 — 조용히 버리면 그 기종의 형태가 사라지고, 조용히 번역하면 원본과 갈린다.",
+ "form_factors": [
+  {
+   "id": "benchtop",
+   "label_ko": "탁상형",
+   "label": "Benchtop"
+  },
+  {
+   "id": "floor",
+   "label_ko": "바닥형",
+   "label": "Floor standing"
+  },
+  {
+   "id": "single_column_tabletop",
+   "label_ko": "탁상형 단주",
+   "label": "Single column tabletop",
+   "note": "기둥 하나. 하중이 작은 쪽이다."
+  },
+  {
+   "id": "dual_column_tabletop",
+   "label_ko": "탁상형 쌍주",
+   "label": "Dual column tabletop"
+  },
+  {
+   "id": "rack",
+   "label_ko": "랙 마운트",
+   "label": "Rack mount"
+  },
+  {
+   "id": "portable",
+   "label_ko": "이동형",
+   "label": "Portable"
+  },
+  {
+   "id": "handheld",
+   "label_ko": "휴대형",
+   "label": "Handheld",
+   "note": "손에 드는 것. 이동형과 다르다 — 이동형은 굴려서 옮긴다."
+  },
+  {
+   "id": "mobile",
+   "label_ko": "대차형",
+   "label": "Mobile cart"
+  },
+  {
+   "id": "walk_in",
+   "label_ko": "워크인",
+   "label": "Walk-in"
+  },
+  {
+   "id": "fixture",
+   "label_ko": "지그·고정구",
+   "label": "Fixture"
+  },
+  {
+   "id": "table",
+   "label_ko": "테이블형",
+   "label": "Table"
+  },
+  {
+   "id": "multistation",
+   "label_ko": "다중 스테이션",
+   "label": "Multistation"
+  },
+  {
+   "id": "camera",
+   "label_ko": "카메라형",
+   "label": "Camera"
+  },
+  {
+   "id": "probe",
+   "label_ko": "프로브형",
+   "label": "Probe"
+  },
+  {
+   "id": "modular",
+   "label_ko": "모듈형",
+   "label": "Modular"
+  },
+  {
+   "id": "inline",
+   "label_ko": "인라인",
+   "label": "Inline"
+  }
+ ]
+}

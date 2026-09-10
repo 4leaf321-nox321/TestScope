@@ -2,6 +2,7 @@
 
     1. 온톨로지     제조사 · 분류(트리) · 시험 항목 · 시험법
     2. 사양 정의    빈도로 승격한 것(catalog_specs.py). 나머지는 보류로 보고만
+    2-b. 대표 사양  분류가 목록에서 무엇으로 갈리나(categories.json)
     3. 계열         무슨 시험이 되나 · 누가 만들었나
     4. 기종         수치 사양. 보유 장비가 가리키는 것
     5. 관계         부속 호환 · 계보
@@ -39,7 +40,6 @@ import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시
 from _console import survive_cp949
 from app.database import SessionLocal
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import ModelCapability
 from app.modules.equipment.models import (
     EquipmentModel,
     EquipmentSeries,
@@ -48,14 +48,18 @@ from app.modules.equipment.models import (
     SpecSource,
 )
 from app.modules.methods.models import TestMethod
+from app.modules.test_items.models import SeriesTestItem, SeriesTestItemMethod
 from app.modules.vocabulary.catalog_specs import (
     CATALOG_SPEC_DEFINITIONS,
     CATEGORY_SPREAD,
     DIMENSION_GROUPS,
     DIMENSION_SOURCES,
     FALLBACK_GROUP,
+    MAX_ONLY_SOURCES,
     MIN_HINTS,
+    OPTION_RANGE_SOURCES,
     PROMOTE_MIN_OBJECTS,
+    RANGE_PAIR_SOURCES,
     SOURCE_SPEC_MAP,
     TEMPERATURE_PAIR,
     VARIANT_SUFFIXES,
@@ -86,6 +90,8 @@ class Catalog:
             for p in sorted((root / "equipment").rglob("*.json"))
         ]
         self.categories = self._load("ontology/categories.json", "categories")
+        self.form_factors = self._load("ontology/form_factors.json", "form_factors")
+        self.drives = self._load("ontology/drives.json", "drives")
         self.manufacturers = self._load("ontology/manufacturers.json", "manufacturers")
         self.test_items = self._load("ontology/test_items.json", "test_items")
 
@@ -179,6 +185,50 @@ def step_ontology(
 
     db.flush()
     return makers, categories, items
+
+
+def _slug_axis(
+    db: Session,
+    axis_slug: str,
+    rows: list[dict[str, Any]],
+    actor: User | None,
+) -> dict[str, uuid.UUID]:
+    """원본 슬러그로 도는 축을 심는다. {원본 슬러그: 값 id}.
+
+    **원본 슬러그를 값의 `code` 에 남긴다.** 사람이 이름을 「탁상형」 에서 「벤치탑」 으로
+    바꿔도 반입은 code 로 찾으므로 안 깨진다 — 이름으로 찾으면 그날 같은 것이 두 값으로
+    갈린다.
+    """
+    axis = _axis(db, axis_slug)
+    out: dict[str, uuid.UUID] = {}
+    for row in rows:
+        slug = row["id"]
+        label = row.get("label_ko") or row.get("label") or slug
+        found = db.scalar(
+            select(VocabularyTerm).where(
+                VocabularyTerm.vocabulary_id == axis.id, VocabularyTerm.code == slug
+            )
+        )
+        if found is None:
+            found = _term(db, axis, label, actor)
+            found.code = slug
+        out[slug] = found.id
+    db.flush()
+    return out
+
+
+def step_slug_axes(
+    db: Session, cat: Catalog, actor: User | None
+) -> tuple[dict[str, uuid.UUID], dict[str, uuid.UUID]]:
+    """1-c. 원본 슬러그로 도는 축들 — 기종 형태와 구동 방식.
+
+    둘 다 원본이 `benchtop`·`servohydraulic` 처럼 영어 슬러그로 적어 오던 것이다.
+    자유 문자열로 두면 화면에 영어가 그대로 뜨고 「유압식만」 으로 거를 수도 없다.
+    """
+    return (
+        _slug_axis(db, "form_factor", cat.form_factors, actor),
+        _slug_axis(db, "drive", cat.drives, actor),
+    )
 
 
 def step_methods(
@@ -390,6 +440,51 @@ def _promotable(cat: Catalog) -> list[dict[str, Any]]:
     return out
 
 
+def _categories_by_key(cat: Catalog) -> dict[str, set[str]]:
+    """원본 키를 실제로 쓰는 장비 분류들.
+
+    **온톨로지는 분류를 말하지 않는다** — 데이터가 말한다.
+    """
+    out: dict[str, set[str]] = {}
+    for obj in cat.objects:
+        seen = set(obj.get("limits") or {})
+        for model in obj.get("models") or []:
+            seen |= set(model.get("specs") or {})
+        for key in seen:
+            out.setdefault(key, set()).add(obj["category"])
+    return out
+
+
+def _hand_definition_categories(cat: Catalog) -> dict[str, set[str]]:
+    """손으로 적은 정의 -> 그 값이 실제로 나오는 분류들.
+
+    ## 왜 손 정의에도 붙이나
+
+    전에는 승격분에만 붙였다. 그래서 손으로 적은 정의 97종이 전부 **공통**이 되어,
+    UTM 의 사양 화면에 「정전압 범위(저)」 와 「MFI 하중」 이 함께 떴다 — 그러면
+    「사양 추가」 목록은 못 쓰게 된다. 승격분에 분류를 붙인 이유와 똑같은 이유다.
+
+    **여러 분류에 걸치면 공통으로 둔다**(CATEGORY_SPREAD). 무게·전원처럼 어디에나
+    있는 것이 실재하고, 그런 것에 분류를 열 개 붙이면 목록만 길어지고 거르는 값은 없다.
+    """
+    by_key = _categories_by_key(cat)
+    out: dict[str, set[str]] = {}
+    #: 원본 키 -> 정의 이름. 값이 들어가는 길 전부를 본다.
+    routes: dict[str, list[str]] = {}
+    for source_key, (target, _factor) in SOURCE_SPEC_MAP.items():
+        routes.setdefault(source_key, []).append(target)
+    for source_key, target in OPTION_RANGE_SOURCES.items():
+        routes.setdefault(source_key, []).append(target)
+    for source_key, target in MAX_ONLY_SOURCES.items():
+        routes.setdefault(source_key, []).append(target)
+    for source_key, pair in RANGE_PAIR_SOURCES.items():
+        routes.setdefault(source_key, []).extend(pair)
+    for source_key, targets in routes.items():
+        for target in targets:
+            out.setdefault(target, set()).update(by_key.get(source_key, set()))
+    return out
+
+
 def _definition_key(source_key: str, unit: str) -> str:
     """원본 키에서 사양 정의의 이름을 만든다.
 
@@ -459,6 +554,32 @@ def step_definitions(
     db.flush()
     known |= {row[0] for row in CATALOG_SPEC_DEFINITIONS}
 
+    # **손 정의에도 분류를 붙인다.** 안 붙이면 그 정의는 공통이 되어 모든 장비의
+    # 사양 화면에 뜬다 — UTM 에 「정전압 범위」 가 뜨는 목록은 아무도 안 쓴다.
+    hand = _hand_definition_categories(cat)
+    rows = {row.key: row for row in db.scalars(select(SpecDefinition))}
+    for key, names in hand.items():
+        definition = rows.get(key)
+        if definition is None or not names or len(names) > CATEGORY_SPREAD:
+            continue
+        terms = [categories[one].id for one in sorted(names) if one in categories]
+        if not terms:
+            continue
+        attached = set(
+            db.scalars(
+                select(SpecDefinitionCategory.category_term_id).where(
+                    SpecDefinitionCategory.definition_id == definition.id
+                )
+            )
+        )
+        for term_id in terms:
+            if term_id in attached:
+                continue
+            db.add(
+                SpecDefinitionCategory(definition_id=definition.id, category_term_id=term_id)
+            )
+    db.flush()
+
     # --- 온톨로지에서 승격 ---------------------------------------------------
     #
     # 손으로 적은 목록만으로는 못 따라간다 — 원본이 커질 때마다 사람이 따라 적어야
@@ -517,6 +638,12 @@ def step_definitions(
             for key, count in per_object.items()
             if key not in SOURCE_SPEC_MAP
             and key not in DIMENSION_SOURCES
+            and key not in RANGE_PAIR_SOURCES
+            and key not in OPTION_RANGE_SOURCES
+            and key not in MAX_ONLY_SOURCES
+            # 고온조·저온조는 「시험 온도」 하나로 합쳐 들인다(_merge_temperature).
+            # 들이면서 보류로 세면 그 목록은 영영 안 줄어드는 두 줄을 달고 있게 된다.
+            and key not in TEMPERATURE_PAIR
             and key not in promoted_keys
             and key not in ("note", "uncertain")
             and not _variant_of(key)
@@ -524,6 +651,39 @@ def step_definitions(
         reverse=True,
     )
     return added, pending
+
+
+def step_headlines(
+    db: Session, cat: Catalog, categories: dict[str, VocabularyTerm]
+) -> tuple[int, list[tuple[str, str]]]:
+    """2-b. 분류의 **대표 사양**을 그 분류 값에 적는다.
+
+    목록 한 줄이 기종을 가르려면 어느 사양을 보여 줄지 알아야 하고, 그 답은 분류마다
+    다르다 — 만능시험기는 하중이고 챔버는 온도다. 화면이 정하면 화면마다 갈리고,
+    「많이 채워진 것」 으로 자동으로 고르면 데이터가 늘 때 대표가 조용히 바뀐다.
+    **정본은 온톨로지의 `headline_specs`** 다.
+
+    정의가 없는 키는 **안 적고 보고한다.** 적어 두면 목록이 빈 칸을 그리는데, 그
+    빈 칸은 「값이 아직 없다」 와 구별되지 않는다.
+    """
+    known = set(db.scalars(select(SpecDefinition.key)))
+    unknown: list[tuple[str, str]] = []
+    written = 0
+    for row in cat.categories:
+        term = categories.get(row["id"])
+        wanted = list(row.get("headline_specs") or [])
+        if term is None or not wanted:
+            continue
+        unknown.extend((row["id"], key) for key in wanted if key not in known)
+        keys = [key for key in wanted if key in known]
+        if not keys or term.attributes.get("headline_specs") == keys:
+            continue
+        # **새 dict 를 넣는다.** JSONB 를 제자리에서 고치면 SQLAlchemy 가 바뀐 줄을
+        # 못 보고, 그러면 커밋이 조용히 아무것도 안 쓴다.
+        term.attributes = {**term.attributes, "headline_specs": keys}
+        written += 1
+    db.flush()
+    return written, unknown
 
 
 def _variant_of(key: str) -> tuple[str, str] | None:
@@ -543,6 +703,8 @@ def _variant_of(key: str) -> tuple[str, str] | None:
 def _series_of(
     db: Session,
     obj: dict[str, Any],
+    form_factors: dict[str, uuid.UUID],
+    drives: dict[str, uuid.UUID],
     makers: dict[str, VocabularyTerm],
     categories: dict[str, VocabularyTerm],
     sources: dict[str, SpecSource],
@@ -574,8 +736,8 @@ def _series_of(
             categories[obj["category"]].id if obj["category"] in categories else None
         ),
         kind="main" if obj["kind"].startswith("equipment") else obj["kind"],
-        drive=obj.get("drive") or "",
-        form_factor=obj.get("form_factor") or "",
+        drive_term_id=drives.get(obj.get("drive") or ""),
+        form_factor_term_id=form_factors.get(obj.get("form_factor") or ""),
         summary=obj.get("description"),
         spec_note=_spec_note(obj),
         source_id=sources[first_source].id if first_source in sources else None,
@@ -618,21 +780,23 @@ def step_series(
     categories: dict[str, VocabularyTerm],
     items: dict[str, VocabularyTerm],
     methods: dict[str, TestMethod],
+    form_factors: dict[str, uuid.UUID],
+    drives: dict[str, uuid.UUID],
     actor: User | None,
 ) -> tuple[dict[str, EquipmentSeries], int]:
-    """3. 계열과 그 역량. **무슨 시험이 되나는 계열의 성질**이다(ADR 0006)."""
+    """3. 계열과 그 시험 항목. **무슨 시험이 되나는 계열의 성질**이다(ADR 0006)."""
     sources = {row.path: row for row in db.scalars(select(SpecSource))}
     made: dict[str, EquipmentSeries] = {}
-    capabilities = 0
+    test_items = 0
 
     for obj in cat.objects:
-        series = _series_of(db, obj, makers, categories, sources, actor)
+        series = _series_of(db, obj, form_factors, drives, makers, categories, sources, actor)
         made[obj["id"]] = series
 
-        # **시험 항목 하나에 역량 하나.** 규격을 걸어 역량을 쪼개지 않는다.
+        # **시험 항목 하나에 시험 항목 하나.** 규격을 걸어 시험 항목을 쪼개지 않는다.
         #
         # 카탈로그의 `test_methods` 는 계열에 붙은 평평한 목록이라, 인장 하나에
-        # ASTM D638·ISO 527·ASTM E8 이 함께 걸린다. 그것을 역량 셋으로 만들면
+        # ASTM D638·ISO 527·ASTM E8 이 함께 걸린다. 그것을 시험 항목 셋으로 만들면
         # **검색이 같은 장비를 여덟 줄로 답한다** — 실제로 그렇게 나왔다.
         #
         # 규격별로 조건이 갈리는 일은 실재하지만, 그것은 사양서가 아니라 그 대를
@@ -648,9 +812,9 @@ def step_series(
             if term is None:
                 continue
             exists = db.scalar(
-                select(ModelCapability).where(
-                    ModelCapability.series_id == series.id,
-                    ModelCapability.test_item_term_id == term.id,
+                select(SeriesTestItem).where(
+                    SeriesTestItem.series_id == series.id,
+                    SeriesTestItem.test_item_term_id == term.id,
                 )
             )
             if exists is not None:
@@ -660,16 +824,21 @@ def step_series(
                 for one in codes
                 if methods.get(one) is not None and methods[one].test_item_term_id == term.id
             ]
-            db.add(
-                ModelCapability(
-                    series_id=series.id,
-                    test_item_term_id=term.id,
-                    note=("카탈로그 인용 규격: " + " · ".join(mine)) if mine else None,
+            test_item = SeriesTestItem(series_id=series.id, test_item_term_id=term.id)
+            db.add(test_item)
+            db.flush()
+            # **비고 문자열이 아니라 표로 잇는다.** 글자로 두면 시험법 453건이
+            # 아무것도 가리키지 않는 목록으로 남고, 「ASTM D638 되는 장비」 를 물으면
+            # 문자열을 훑는 수밖에 없다.
+            for code in mine:
+                db.add(
+                    SeriesTestItemMethod(
+                        series_test_item_id=test_item.id, method_id=methods[code].id
+                    )
                 )
-            )
-            capabilities += 1
+            test_items += 1
         db.flush()
-    return made, capabilities
+    return made, test_items
 
 
 def _numbers(raw: Any, factor: float) -> tuple[float | None, float | None, str | None]:
@@ -843,6 +1012,137 @@ def _merge_temperature(
     )
 
 
+def _numbers_of(raw: Any) -> list[float]:
+    """배열·중첩 배열에서 수치만 훑어 낸다. 구성 배열과 이중 레인지가 둘 다 온다."""
+    out: list[float] = []
+    if isinstance(raw, int | float) and not isinstance(raw, bool):
+        return [float(raw)]
+    if isinstance(raw, list):
+        for one in raw:
+            out.extend(_numbers_of(one))
+    return out
+
+
+def _import_option_range(
+    db: Session,
+    model: EquipmentModel,
+    raw: Any,
+    definition: SpecDefinition | None,
+    source: SpecSource | None,
+    taken: set[uuid.UUID],
+) -> bool:
+    """카탈로그가 여러 값으로 적어 온 것을 **구간 하나**로 담는다.
+
+    두 경우가 같은 모양으로 온다:
+
+        actuator_ratings_kN [15, 25]        고를 수 있는 정격 — 그 대는 둘 중 하나다
+        force_ranges_kN [4000, …, 80]       다중 레인지 로드셀 — 한 대가 전부 갖는다
+
+    **둘 다 구간이 맞는 답이다.** 앞은 「이 기종은 15~25 로 나온다」 이고 뒤는 「80
+    에서 4000 까지 잰다」 다. 최대값만 담으면 앞의 경우 15 짜리를 가진 부서가
+    「25 kN 됩니까」 에 된다고 답하고, 뒤의 경우 저레인지 측정이 사라진다.
+
+    **원문 전부를 비고에 남긴다.** 양끝만 남기면 중간 값들이 사라져 「400 kN 레인지도
+    있나」 에 답할 수 없다.
+    """
+    if definition is None:
+        return False
+    values = _numbers_of(raw)
+    if not values:
+        return False
+    note = None
+    if len(values) > 2:
+        note = "카탈로그가 적어 온 값들: " + ", ".join(
+            f"{one:g}" for one in sorted(set(values), reverse=True)
+        )
+    return _put_spec(
+        db,
+        model,
+        definition,
+        {"min": min(values), "max": max(values)},
+        1.0,
+        taken=taken,
+        extra_note=note,
+        source=source,
+        page=None,
+    )
+
+
+def _import_range_pair(
+    db: Session,
+    model: EquipmentModel,
+    raw: Any,
+    definitions: dict[str, SpecDefinition],
+    targets: tuple[str, str],
+    source: SpecSource | None,
+    taken: set[uuid.UUID],
+) -> int:
+    """저·고 두 레인지를 **정의 둘로** 나눠 담는다.
+
+    합쳐서 0.6~2600 으로 담으면 「100 W 부하 되나」 에는 맞게 답하지만, 레인지마다
+    분해능이 다르다는 사실이 사라진다 — 전자부하를 고르는 사람이 보는 것이 그것이다.
+    """
+    if not isinstance(raw, list) or len(raw) != 2:
+        return 0
+    made = 0
+    for one, key in zip(raw, targets, strict=True):
+        definition = definitions.get(key)
+        if definition is None:
+            continue
+        values = _numbers_of(one)
+        if not values:
+            continue
+        payload: Any = (
+            {"min": min(values), "max": max(values)}
+            if definition.kind == "range"
+            else values[0]
+        )
+        if _put_spec(
+            db,
+            model,
+            definition,
+            payload,
+            1.0,
+            taken=taken,
+            extra_note=None,
+            source=source,
+            page=None,
+        ):
+            made += 1
+    return made
+
+
+def _import_max_only(
+    db: Session,
+    model: EquipmentModel,
+    raw: Any,
+    definition: SpecDefinition | None,
+    source: SpecSource | None,
+    taken: set[uuid.UUID],
+) -> bool:
+    """상한만 적힌 값을 구간의 **최대값으로만** 담는다.
+
+    수치 하나를 구간에 그냥 넣으면 400~400 이 된다 — 「400도까지」 가 아니라 「400도
+    에서만」 이 되고, 그러면 검색이 100도를 물을 때 그 장비가 조용히 빠진다.
+    """
+    if definition is None:
+        return False
+    values = _numbers_of(raw)
+    if not values:
+        return False
+    return _put_spec(
+        db,
+        model,
+        definition,
+        {"max": max(values)},
+        1.0,
+        taken=taken,
+        extra_note=None,
+        source=source,
+        page=None,
+    )
+
+
 def _import_specs(
     db: Session,
     model: EquipmentModel,
@@ -873,6 +1173,24 @@ def _import_specs(
             target = DIMENSION_SOURCES["footprint_mm"]
         if target is not None:
             made += _import_dimensions(db, model, raw, definitions, source, taken, target)
+            continue
+        # 원본이 한 칸에 두 벌·여러 구성·상한만 적어 오는 자리들. 그냥 담으면 각각
+        # 다른 방식으로 틀린 값이 된다(catalog_specs 의 세 표에 이유를 적어 뒀다).
+        pair = RANGE_PAIR_SOURCES.get(key)
+        if pair is not None:
+            made += _import_range_pair(db, model, raw, definitions, pair, source, taken)
+            continue
+        if key in OPTION_RANGE_SOURCES:
+            if _import_option_range(
+                db, model, raw, definitions.get(OPTION_RANGE_SOURCES[key]), source, taken
+            ):
+                made += 1
+            continue
+        if key in MAX_ONLY_SOURCES:
+            if _import_max_only(
+                db, model, raw, definitions.get(MAX_ONLY_SOURCES[key]), source, taken
+            ):
+                made += 1
             continue
         # 손으로 이어 둔 것이 먼저다 — 거기에는 단위 환산 같은 판단이 들어 있다.
         # 없으면 온톨로지에서 승격한 이름으로 찾는다.
@@ -963,7 +1281,11 @@ def _model_note(row: dict[str, Any]) -> str | None:
 
 
 def step_models(
-    db: Session, cat: Catalog, series: dict[str, EquipmentSeries], actor: User | None
+    db: Session,
+    cat: Catalog,
+    series: dict[str, EquipmentSeries],
+    form_factors: dict[str, uuid.UUID],
+    actor: User | None,
 ) -> tuple[int, int, int, int]:
     """4. 기종과 그 사양값. **수치가 갈리는 자리**(ADR 0006).
 
@@ -1004,7 +1326,9 @@ def step_models(
                     series_id=parent.id,
                     name=name,
                     normalized=key,
-                    form_factor=row.get("form_factor") or obj.get("form_factor") or "",
+                    form_factor_term_id=form_factors.get(
+                        row.get("form_factor") or obj.get("form_factor") or ""
+                    ),
                     spec_note=_model_note(row),
                     created_by_id=actor.id if actor else None,
                 )
@@ -1061,7 +1385,7 @@ def step_relations(db: Session, cat: Catalog, series: dict[str, EquipmentSeries]
             part = series.get(str(row.get("target")))
             if part is None or part.id == host.id:
                 # 온톨로지 노드(시험 항목·규격)를 가리키는 관계는 여기 대상이
-                # 아니다 — 그것은 역량으로 이미 들어갔다.
+                # 아니다 — 그것은 시험 항목으로 이미 들어갔다.
                 continue
             exists = db.scalar(
                 select(SeriesRelation).where(
@@ -1105,8 +1429,12 @@ def main() -> int:
         makers, categories, items = step_ontology(db, cat, actor)
         methods = step_methods(db, cat, items, actor)
         definitions, pending = step_definitions(db, cat, categories)
-        series, capabilities = step_series(db, cat, makers, categories, items, methods, actor)
-        models, values, flagged, kept = step_models(db, cat, series, actor)
+        headlines, unknown_headlines = step_headlines(db, cat, categories)
+        form_factors, drives = step_slug_axes(db, cat, actor)
+        series, test_items = step_series(
+            db, cat, makers, categories, items, methods, form_factors, drives, actor
+        )
+        models, values, flagged, kept = step_models(db, cat, series, form_factors, actor)
         relations = step_relations(db, cat, series)
 
         if args.dry_run:
@@ -1119,13 +1447,23 @@ def main() -> int:
         print(f"  제조사 {len(makers)} · 분류 {len(categories)} · 시험 항목 {len(items)}")
         print(f"  시험법 {len(methods)}")
         print(f"  사양 정의 새로 {definitions}")
-        print(f"  계열 {len(series)} · 계열 역량 새로 {capabilities}")
+        print(
+            f"  분류 대표 사양 {headlines} · 기종 형태 {len(form_factors)}"
+            f" · 구동 방식 {len(drives)}"
+        )
+        print(f"  계열 {len(series)} · 계열의 시험 항목 새로 {test_items}")
         print(f"  기종 새로 {models} · 사양값 새로 {values}")
         if kept:
             print(f"  원문 보존 {kept}건 (정의가 없는 값도 통째로 남는다)")
         if flagged:
             print(f"  원본 확인 필요로 표시한 기종 {flagged}")
         print(f"  계열 관계 새로 {relations}")
+        if unknown_headlines:
+            # **정의가 없는 대표 사양.** 온톨로지가 가리키는 칸이 이 시스템에 없다는
+            # 뜻이라, 그 분류의 목록은 대표 없이 그려진다 — 조용히 두면 아무도 모른다.
+            print(f"\n대표 사양인데 정의가 없는 키 {len(unknown_headlines)}건:")
+            for category_id, key in unknown_headlines[:20]:
+                print(f"    {category_id} -> {key}")
         if pending:
             # **값을 버리는 것이 아니다.** 원본이 그대로 있으니, 정의를 만든 뒤
             # 다시 돌리면 들어온다. 자동으로 만들면 오타가 새 사양이 된다.

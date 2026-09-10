@@ -10,9 +10,9 @@ from sqlalchemy import Select, func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import Capability
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.methods.schemas import MethodOut, RequirementOut
+from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared import audit
@@ -84,8 +84,8 @@ def method_out(db: Session, row: TestMethod, viewer: User) -> MethodOut:
     successor = db.get(TestMethod, row.superseded_by_id) if row.superseded_by_id else None
     equipment_count = (
         db.scalar(
-            select(func.count(func.distinct(Capability.equipment_id))).where(
-                Capability.method_id == row.id
+            select(func.count(func.distinct(EquipmentTestItem.equipment_id))).where(
+                EquipmentTestItem.method_id == row.id
             )
         )
         or 0
@@ -190,7 +190,7 @@ def update(
             setattr(row, field, changes[field])
 
     if changes.get("status") == "superseded" and row.status != "superseded":
-        # **대체는 되돌릴 수 없는 부류다.** 이 규격을 걸고 있던 역량 전부의 뜻이
+        # **대체는 되돌릴 수 없는 부류다.** 이 규격을 걸고 있던 시험 항목 전부의 뜻이
         # 바뀌고, 그 사실을 반년 뒤에 물을 자리가 감사 기록밖에 없다.
         successor = (
             db.get(TestMethod, changes["superseded_by_id"])
@@ -232,14 +232,16 @@ def delete(db: Session, user: User, method_id: uuid.UUID) -> None:
     require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
     using = (
         db.scalar(
-            select(func.count()).select_from(Capability).where(Capability.method_id == row.id)
+            select(func.count())
+            .select_from(EquipmentTestItem)
+            .where(EquipmentTestItem.method_id == row.id)
         )
         or 0
     )
     if using:
         raise Conflict(
             "TSC-METHODS-0004",
-            f"이 시험법을 거는 역량이 {using}건 있습니다. "
+            f"이 시험법을 거는 시험 항목이 {using}건 있습니다. "
             f"지우는 대신 상태를 대체됨으로 바꾸세요.",
         )
     row.deleted_at = datetime.now(UTC)

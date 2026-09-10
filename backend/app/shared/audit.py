@@ -44,7 +44,7 @@ WORKSPACE_DELETED = "workspace.deleted"
 VOCABULARY_RENAMED = "vocabulary.renamed"
 VOCABULARY_MERGED = "vocabulary.merged"
 CONDITION_KEY_CHANGED = "condition_key.changed"
-"""조건 정의가 바뀌면 **이미 적힌 역량의 뜻이 바뀐다** — 단위를 kN 에서 N 으로
+"""조건 정의가 바뀌면 **이미 적힌 시험 항목의 뜻이 바뀐다** — 단위를 kN 에서 N 으로
 고치는 순간 저장된 숫자 전부가 다른 값이 된다. 되돌릴 수 없는 부류다."""
 SPEC_DEFINITION_CHANGED = "spec_definition.changed"
 """사양 정의가 바뀌면 **이미 적힌 값의 뜻이 바뀐다.** 조건 정의와 같은 이유다.

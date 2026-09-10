@@ -20,8 +20,8 @@ from app.shared.auth import current_user
 router = APIRouter(prefix="/search", tags=["search"])
 
 
-@router.post("/capabilities", response_model=SearchResponse)
-def search_capabilities(
+@router.post("/test_items", response_model=SearchResponse)
+def search_test_items(
     payload: SearchRequest,
     user: User = Depends(current_user),
     db: Session = Depends(get_db),

@@ -1,5 +1,5 @@
 {
- "_comment": "장비 분류 트리. parent 가 없으면 최상위. TestScope 축 equipment_category 의 값 후보.",
+ "_comment": "장비 분류 트리. parent 가 없으면 최상위. TestScope 축 equipment_category 의 값 후보. headline_specs 는 이 분류의 기종을 목록 한 줄에서 가를 대표 사양이다 — 값이 아니라 **무엇으로 판단하나**를 적는다(TestScope 사양 정의 key, 앞이 더 결정적). 안 적으면 반입이 검색축에 이어진 사양으로 대신한다.",
  "categories": [
   {
    "id": "abrasion_tester",
@@ -11,7 +11,11 @@
    "id": "ac_power_source",
    "label_ko": "프로그래머블 AC 전원",
    "label": "Programmable AC power source",
-   "parent": "electrical_safety"
+   "parent": "electrical_safety",
+   "headline_specs": [
+    "voltage_range",
+    "current_range"
+   ]
   },
   {
    "id": "accelerating_rate_calorimeter",
@@ -63,7 +67,11 @@
    "id": "battery_cycler",
    "label_ko": "충방전 사이클러",
    "label": "Battery charge/discharge cycler",
-   "parent": "battery_test"
+   "parent": "battery_test",
+   "headline_specs": [
+    "voltage_range",
+    "current_range"
+   ]
   },
   {
    "id": "battery_test",
@@ -80,7 +88,11 @@
    "id": "brinell_hardness",
    "parent": "hardness",
    "label_ko": "브리넬 경도계",
-   "label": "Brinell hardness tester"
+   "label": "Brinell hardness tester",
+   "headline_specs": [
+    "test_load_series",
+    "hardness_scales"
+   ]
   },
   {
    "id": "burst_pressure_tester",
@@ -93,13 +105,21 @@
    "id": "capillary_rheometer",
    "parent": "rheology",
    "label_ko": "모세관 레오미터",
-   "label": "Capillary rheometer"
+   "label": "Capillary rheometer",
+   "headline_specs": [
+    "force_capacity",
+    "piston_speed"
+   ]
   },
   {
    "id": "climatic_chamber",
    "label_ko": "항온항습 챔버",
    "label": "Temperature & humidity chamber",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "test_temperature",
+    "humidity_range"
+   ]
   },
   {
    "id": "coating_surface_test",
@@ -116,13 +136,21 @@
    "id": "corrosion_chamber",
    "label_ko": "염수분무·복합부식 챔버",
    "label": "Salt spray / cyclic corrosion chamber",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "test_functions",
+    "inner_height"
+   ]
   },
   {
    "id": "creep_tester",
    "parent": "mechanical_static",
    "label_ko": "크리프 시험기",
-   "label": "Creep / stress-rupture tester"
+   "label": "Creep / stress-rupture tester",
+   "headline_specs": [
+    "force_capacity",
+    "crosshead_travel"
+   ]
   },
   {
    "id": "crimp_pull_tester",
@@ -134,13 +162,20 @@
    "id": "cutting_mounting_polishing",
    "parent": "specimen_preparation",
    "label_ko": "절단·마운팅·연마",
-   "label": "Cutting, mounting and polishing"
+   "label": "Cutting, mounting and polishing",
+   "headline_specs": [
+    "rotation_speed"
+   ]
   },
   {
    "id": "dilatometer",
    "parent": "thermal_analysis",
    "label_ko": "열팽창계 (DIL)",
-   "label": "Dilatometer"
+   "label": "Dilatometer",
+   "headline_specs": [
+    "test_temperature",
+    "displacement_range"
+   ]
   },
   {
    "id": "display_color_analyzer",
@@ -152,25 +187,41 @@
    "id": "dma",
    "parent": "thermal_analysis",
    "label_ko": "동적기계분석기 (DMA)",
-   "label": "Dynamic mechanical analyzer"
+   "label": "Dynamic mechanical analyzer",
+   "headline_specs": [
+    "frequency_range",
+    "test_temperature"
+   ]
   },
   {
    "id": "drop_tester",
    "label_ko": "낙하 시험기",
    "label": "Drop tester",
-   "parent": "mechanical_dynamics"
+   "parent": "mechanical_dynamics",
+   "headline_specs": [
+    "drop_height",
+    "payload"
+   ]
   },
   {
    "id": "drop_tower_impact",
    "parent": "impact",
    "label_ko": "낙추 충격시험기",
-   "label": "Drop tower / drop weight impact"
+   "label": "Drop tower / drop weight impact",
+   "headline_specs": [
+    "impact_energy",
+    "drop_height"
+   ]
   },
   {
    "id": "dsc",
    "parent": "thermal_analysis",
    "label_ko": "시차주사열량계 (DSC)",
-   "label": "Differential scanning calorimeter"
+   "label": "Differential scanning calorimeter",
+   "headline_specs": [
+    "test_temperature",
+    "heating_rate"
+   ]
   },
   {
    "id": "dust_chamber",
@@ -187,7 +238,11 @@
    "id": "electrodynamic_fatigue",
    "parent": "mechanical_dynamic",
    "label_ko": "전기동력식 피로시험기",
-   "label": "Electrodynamic / linear-motor test instrument"
+   "label": "Electrodynamic / linear-motor test instrument",
+   "headline_specs": [
+    "force_capacity",
+    "frequency_range"
+   ]
   },
   {
    "id": "electrolytic_etcher",
@@ -199,7 +254,11 @@
    "id": "electronic_load",
    "label_ko": "전자부하",
    "label": "Electronic load",
-   "parent": "electrical_safety"
+   "parent": "electrical_safety",
+   "headline_specs": [
+    "cv_range_high",
+    "cp_range_high"
+   ]
   },
   {
    "id": "electronics_inspection",
@@ -216,7 +275,11 @@
    "id": "environmental_chamber",
    "parent": "accessory",
    "label_ko": "환경(온도) 챔버",
-   "label": "Environmental / temperature chamber"
+   "label": "Environmental / temperature chamber",
+   "headline_specs": [
+    "test_temperature",
+    "inner_height"
+   ]
   },
   {
    "id": "environmental_simulation",
@@ -227,19 +290,30 @@
    "id": "esd_simulator",
    "label_ko": "ESD 시뮬레이터",
    "label": "ESD simulator",
-   "parent": "electrical_safety"
+   "parent": "electrical_safety",
+   "headline_specs": [
+    "esd_voltage"
+   ]
   },
   {
    "id": "extensometer",
    "parent": "accessory",
    "label_ko": "신율계",
-   "label": "Extensometer"
+   "label": "Extensometer",
+   "headline_specs": [
+    "accuracy_class",
+    "min_gauge_length"
+   ]
   },
   {
    "id": "force_tester",
    "parent": "mechanical_static",
    "label_ko": "소형 힘 시험기(모터 스탠드)",
-   "label": "Motorised force test stand"
+   "label": "Motorised force test stand",
+   "headline_specs": [
+    "force_capacity",
+    "crosshead_travel"
+   ]
   },
   {
    "id": "formability_tester",
@@ -252,19 +326,31 @@
    "id": "furnace",
    "parent": "accessory",
    "label_ko": "고온 퍼니스",
-   "label": "High-temperature furnace"
+   "label": "High-temperature furnace",
+   "headline_specs": [
+    "test_temperature",
+    "heated_length"
+   ]
   },
   {
    "id": "grip_fixture",
    "parent": "accessory",
    "label_ko": "그립·지그",
-   "label": "Grips & fixtures"
+   "label": "Grips & fixtures",
+   "headline_specs": [
+    "force_capacity",
+    "test_temperature"
+   ]
   },
   {
    "id": "halt_hass_chamber",
    "label_ko": "HALT/HASS 챔버",
    "label": "HALT / HASS chamber",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "acceleration",
+    "payload"
+   ]
   },
   {
    "id": "hardness",
@@ -281,19 +367,29 @@
    "id": "hdt_vicat",
    "parent": "thermomechanical_polymer",
    "label_ko": "HDT·비캣 연화점 시험기",
-   "label": "HDT / Vicat tester"
+   "label": "HDT / Vicat tester",
+   "headline_specs": [
+    "test_temperature",
+    "test_stations"
+   ]
   },
   {
    "id": "head_torso_simulator",
    "label_ko": "인체 머리·몸통 모사기 (HATS)",
    "label": "Head and torso simulator",
-   "parent": "acoustic_measurement"
+   "parent": "acoustic_measurement",
+   "headline_specs": [
+    "frequency_range"
+   ]
   },
   {
    "id": "helium_leak_detector",
    "label_ko": "헬륨 누설 검출기",
    "label": "Helium leak detector",
-   "parent": "leak_tester"
+   "parent": "leak_tester",
+   "headline_specs": [
+    "helium_pumping_speed"
+   ]
   },
   {
    "id": "high_speed_tensile",
@@ -305,13 +401,22 @@
    "id": "hipot_safety_analyzer",
    "label_ko": "내전압·안전 분석기",
    "label": "Hipot / electrical safety analyzer",
-   "parent": "electrical_safety"
+   "parent": "electrical_safety",
+   "headline_specs": [
+    "test_functions",
+    "voltage_range"
+   ]
   },
   {
    "id": "hydraulic_utm",
    "parent": "universal_testing_machine",
    "label_ko": "유압식 만능재료시험기",
-   "label": "Hydraulic UTM"
+   "label": "Hydraulic UTM",
+   "headline_specs": [
+    "force_capacity",
+    "force_capacity_range",
+    "grip_span"
+   ]
   },
   {
    "id": "imaging_colorimeter",
@@ -328,7 +433,11 @@
    "id": "instrumented_indentation",
    "parent": "hardness",
    "label_ko": "계장화 압입(나노인덴터·동적초미소경도)",
-   "label": "Instrumented indentation / nanoindenter"
+   "label": "Instrumented indentation / nanoindenter",
+   "headline_specs": [
+    "indentation_force",
+    "displacement_range"
+   ]
   },
   {
    "id": "insulation_tester",
@@ -339,7 +448,11 @@
   {
    "id": "leak_tester",
    "label_ko": "누설 시험기",
-   "label": "Leak tester"
+   "label": "Leak tester",
+   "headline_specs": [
+    "pressure",
+    "channel_count"
+   ]
   },
   {
    "id": "load_cell",
@@ -366,14 +479,22 @@
    "id": "melt_flow_indexer",
    "parent": "rheology",
    "label_ko": "용융지수 측정기 (MFI/MFR/MVR)",
-   "label": "Melt flow indexer / extrusion plastometer"
+   "label": "Melt flow indexer / extrusion plastometer",
+   "headline_specs": [
+    "melt_temperature",
+    "melt_load"
+   ]
   },
   {
    "id": "nanoindenter",
    "parent": "hardness",
    "label_ko": "나노압입기",
    "label": "Nanoindenter",
-   "note": "nN~mN 대 하중으로 압입해 경도·탄성률을 재는 계장 압입 장비"
+   "note": "nN~mN 대 하중으로 압입해 경도·탄성률을 재는 계장 압입 장비",
+   "headline_specs": [
+    "indentation_force",
+    "stage_travel"
+   ]
   },
   {
    "id": "optical_measurement",
@@ -390,19 +511,31 @@
    "id": "pendulum_impact",
    "parent": "impact",
    "label_ko": "펜듈럼 충격시험기",
-   "label": "Pendulum impact tester (Charpy/Izod)"
+   "label": "Pendulum impact tester (Charpy/Izod)",
+   "headline_specs": [
+    "impact_energy",
+    "impact_velocity"
+   ]
   },
   {
    "id": "portable_hardness",
    "parent": "hardness",
    "label_ko": "휴대형 경도계(Leeb·UCI)",
-   "label": "Portable hardness tester"
+   "label": "Portable hardness tester",
+   "headline_specs": [
+    "impact_energy",
+    "hardness_scales"
+   ]
   },
   {
    "id": "power_analyzer",
    "label_ko": "전력 분석기",
    "label": "Power analyzer",
-   "parent": "electrical_safety"
+   "parent": "electrical_safety",
+   "headline_specs": [
+    "current_range",
+    "voltage_range"
+   ]
   },
   {
    "id": "pressure_decay_leak_tester",
@@ -432,7 +565,11 @@
    "id": "rockwell_hardness",
    "parent": "hardness",
    "label_ko": "로크웰 경도계",
-   "label": "Rockwell hardness tester"
+   "label": "Rockwell hardness tester",
+   "headline_specs": [
+    "test_load_series",
+    "specimen_height"
+   ]
   },
   {
    "id": "rotating_bending_fatigue",
@@ -444,19 +581,31 @@
    "id": "rotational_rheometer",
    "parent": "rheology",
    "label_ko": "회전형 레오미터",
-   "label": "Rotational rheometer"
+   "label": "Rotational rheometer",
+   "headline_specs": [
+    "torque_capacity",
+    "frequency_range"
+   ]
   },
   {
    "id": "scratch_hardness_tester",
    "label_ko": "스크래치 경도·연필경도 시험기",
    "label": "Scratch / pencil hardness tester",
-   "parent": "coating_surface_test"
+   "parent": "coating_surface_test",
+   "headline_specs": [
+    "load",
+    "scratch"
+   ]
   },
   {
    "id": "servohydraulic_fatigue",
    "parent": "mechanical_dynamic",
    "label_ko": "서보유압 피로시험기",
-   "label": "Servohydraulic fatigue system"
+   "label": "Servohydraulic fatigue system",
+   "headline_specs": [
+    "dynamic_force",
+    "actuator_stroke"
+   ]
   },
   {
    "id": "shielded_enclosure",
@@ -469,13 +618,21 @@
    "id": "shock_test_machine",
    "label_ko": "충격 시험기",
    "label": "Shock test machine",
-   "parent": "mechanical_dynamics"
+   "parent": "mechanical_dynamics",
+   "headline_specs": [
+    "payload",
+    "impact_velocity"
+   ]
   },
   {
    "id": "shore_irhd_hardness",
    "parent": "hardness",
    "label_ko": "쇼어·IRHD 경도계(고무)",
-   "label": "Shore / IRHD durometer"
+   "label": "Shore / IRHD durometer",
+   "headline_specs": [
+    "hardness_scales",
+    "specimen_thickness"
+   ]
   },
   {
    "id": "solderability_tester",
@@ -499,7 +656,11 @@
    "id": "sta",
    "parent": "thermal_analysis",
    "label_ko": "동시열분석기 (STA, TG-DSC/DTA)",
-   "label": "Simultaneous thermal analyzer"
+   "label": "Simultaneous thermal analyzer",
+   "headline_specs": [
+    "test_temperature",
+    "heating_rate"
+   ]
   },
   {
    "id": "texture_analyser",
@@ -522,13 +683,21 @@
    "id": "thermal_conductivity",
    "parent": "thermal_analysis",
    "label_ko": "열전도율·열확산율 측정기",
-   "label": "Thermal conductivity / diffusivity (LFA, TPS)"
+   "label": "Thermal conductivity / diffusivity (LFA, TPS)",
+   "headline_specs": [
+    "test_temperature",
+    "thermal_conductivity"
+   ]
   },
   {
    "id": "thermal_imager",
    "label_ko": "열화상 카메라",
    "label": "Thermal imaging camera",
-   "parent": "optical_measurement"
+   "parent": "optical_measurement",
+   "headline_specs": [
+    "ir_resolution",
+    "thermal_sensitivity"
+   ]
   },
   {
    "id": "thermal_profiler",
@@ -540,7 +709,11 @@
    "id": "thermal_shock_chamber",
    "label_ko": "열충격 챔버",
    "label": "Thermal shock chamber",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "test_temperature",
+    "recovery_time"
+   ]
   },
   {
    "id": "thermal_transient_tester",
@@ -557,19 +730,30 @@
    "id": "tma",
    "parent": "thermal_analysis",
    "label_ko": "열기계분석기 (TMA)",
-   "label": "Thermomechanical analyzer"
+   "label": "Thermomechanical analyzer",
+   "headline_specs": [
+    "test_temperature",
+    "force_capacity"
+   ]
   },
   {
    "id": "torsion_tester",
    "parent": "mechanical_static",
    "label_ko": "비틀림 시험기",
-   "label": "Torsion tester"
+   "label": "Torsion tester",
+   "headline_specs": [
+    "torque_capacity",
+    "specimen_diameter"
+   ]
   },
   {
    "id": "transient_generator",
    "label_ko": "서지·EFT 발생기",
    "label": "Surge / EFT transient generator",
-   "parent": "electrical_safety"
+   "parent": "electrical_safety",
+   "headline_specs": [
+    "voltage_range"
+   ]
   },
   {
    "id": "tribology",
@@ -580,19 +764,31 @@
    "id": "tribometer",
    "parent": "tribology",
    "label_ko": "트라이보미터",
-   "label": "Tribometer (pin-on-disk etc.)"
+   "label": "Tribometer (pin-on-disk etc.)",
+   "headline_specs": [
+    "test_temperature",
+    "sliding_speed"
+   ]
   },
   {
    "id": "universal_hardness",
    "parent": "hardness",
    "label_ko": "만능 경도계",
-   "label": "Universal hardness tester"
+   "label": "Universal hardness tester",
+   "headline_specs": [
+    "test_load_series",
+    "specimen_height"
+   ]
   },
   {
    "id": "universal_testing_machine",
    "parent": "mechanical_static",
    "label_ko": "만능재료시험기",
-   "label": "Universal testing machine (UTM)"
+   "label": "Universal testing machine (UTM)",
+   "headline_specs": [
+    "force_capacity",
+    "crosshead_speed"
+   ]
   },
   {
    "id": "vapor_sorption_analyzer",
@@ -605,13 +801,21 @@
    "id": "vibration_shaker",
    "label_ko": "전기동력식 가진기",
    "label": "Electrodynamic shaker system",
-   "parent": "mechanical_dynamics"
+   "parent": "mechanical_dynamics",
+   "headline_specs": [
+    "force_capacity",
+    "frequency_range"
+   ]
   },
   {
    "id": "vickers_knoop_hardness",
    "parent": "hardness",
    "label_ko": "비커스·누프 (마이크로) 경도계",
-   "label": "Vickers/Knoop (micro) hardness tester"
+   "label": "Vickers/Knoop (micro) hardness tester",
+   "headline_specs": [
+    "test_load_micro",
+    "specimen_height"
+   ]
   },
   {
    "id": "water_ingress_tester",
@@ -623,13 +827,21 @@
    "id": "weathering_tester",
    "label_ko": "촉진 내후성 시험기(제논·UV)",
    "label": "Accelerated weathering tester",
-   "parent": "environmental_simulation"
+   "parent": "environmental_simulation",
+   "headline_specs": [
+    "test_functions",
+    "specimen_size"
+   ]
   },
   {
    "id": "xray_inspection",
    "label_ko": "X-ray 검사·CT",
    "label": "X-ray inspection / CT",
-   "parent": "electronics_inspection"
+   "parent": "electronics_inspection",
+   "headline_specs": [
+    "tube_voltage",
+    "spot_size"
+   ]
   },
   {
    "id": "xrf_thickness",

@@ -52,15 +52,30 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.database import Base
 
 #: 장비 상태.
+#:   incoming     입고 — 들어왔지만 아직 자리에 안 앉았다
 #:   operational  가동 — 지금 시험할 수 있다
+#:   idle         유휴 — 쓸 수 있는데 안 쓰고 있다
 #:   maintenance  점검·교정 중 — 곧 돌아온다
 #:   repair       고장 — 언제 돌아올지 모른다
 #:   retired      폐기 — 목록에서 빠지되 기록은 남는다
-EQUIPMENT_STATUSES = ("operational", "maintenance", "repair", "retired")
+#:
+#: **유휴를 고장과 한 칸에 두지 않는다.** 「안 쓰고 있다」 와 「못 쓴다」 는 빌리려는
+#: 사람에게 정반대다 — 유휴는 오히려 빌리기 가장 쉬운 장비다.
+EQUIPMENT_STATUSES = (
+    "incoming",
+    "operational",
+    "idle",
+    "maintenance",
+    "repair",
+    "retired",
+)
 
-#: 검색이 기본으로 "쓸 수 있다" 로 세는 상태. 점검 중은 뺀다 — 오늘 시험을 잡을
-#: 수 없는 장비를 가능하다고 답하면, 그 답을 믿고 일정을 짠 사람이 막힌다.
-AVAILABLE_STATUSES = ("operational",)
+#: 검색이 "쓸 수 있다" 로 세는 상태.
+#:
+#: **유휴가 들어간다** — 안 쓰고 있다는 것은 못 쓴다는 뜻이 아니다. 입고는 뺀다:
+#: 아직 자리에 안 앉은 장비를 가능하다고 답하면, 그 답을 믿고 일정을 짠 사람이
+#: 막힌다. 점검·수리·폐기도 같은 이유로 뺀다.
+AVAILABLE_STATUSES = ("operational", "idle")
 
 #: 카탈로그 항목의 상태.
 #:   active        파는 것 / 쓰는 것
@@ -95,7 +110,7 @@ class EquipmentSeries(Base):
 
     ## 무엇이 여기 붙나
 
-    무슨 시험이 되나(`ModelCapability`), 어느 부속이 붙나(`SeriesRelation`),
+    무슨 시험이 되나(`SeriesTestItem`), 어느 부속이 붙나(`SeriesRelation`),
     누가 만들었나, 어느 분류인가. **수치는 안 붙는다** — 그것은 모델에서 갈린다.
 
     ## 모든 모델은 시리즈에 속한다
@@ -152,9 +167,31 @@ class EquipmentSeries(Base):
     """본체인가 부속인가. 목록은 기본으로 본체만 보여 준다 — 챔버와 시험기가 한
     줄씩 섞여 서면 「우리가 무슨 장비를 가졌나」 가 안 보인다."""
 
-    drive: Mapped[str] = mapped_column(String(30), default="", server_default="")
+    drive_term_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        nullable=True,
+        index=True,
+    )
+    """구동 방식(기준정보 축 `drive`) — 전기기계식·유압식·진자식.
+
+    **무엇으로 힘을 내나는 무엇을 할 수 있나와 곧장 이어진다.** 유압은 큰 하중을,
+    전기동력은 높은 주파수를, 진자는 충격을 낸다 — 고르는 사람이 실제로 묻는 축이라
+    자유 문자열로 두면 안 된다."""
     """구동 방식. 같은 하중이라도 구동이 다르면 할 수 있는 시험이 다르다."""
-    form_factor: Mapped[str] = mapped_column(String(40), default="", server_default="")
+    form_factor_term_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        nullable=True,
+        index=True,
+    )
+    """형태(기준정보 축 `form_factor`) — 탁상형·바닥형·휴대형.
+
+    **자유 문자열이 아니라 축이다.** 원본이 `benchtop` 으로 적어 오는 것을 그대로 두면
+    화면에 영어가 뜨고, 「탁상형만」 으로 거를 수도 없다. 값의 `code` 에 원본 슬러그가
+    남아 있어 반입이 그것으로 찾는다.
+
+    RESTRICT — 쓰는 기종이 있는 형태는 못 지운다."""
 
     status: Mapped[str] = mapped_column(
         String(20), default="active", server_default="active", index=True
@@ -272,7 +309,19 @@ class EquipmentModel(Base):
     """비교키(shared.text.compare_key). 유일성이 이걸로 돈다 — `5982` 와 `5982 ` 는
     눈에 같아 보이는데 DB 는 다르게 본다."""
 
-    form_factor: Mapped[str] = mapped_column(String(40), default="", server_default="")
+    form_factor_term_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        nullable=True,
+        index=True,
+    )
+    """형태(기준정보 축 `form_factor`) — 탁상형·바닥형·휴대형.
+
+    **자유 문자열이 아니라 축이다.** 원본이 `benchtop` 으로 적어 오는 것을 그대로 두면
+    화면에 영어가 뜨고, 「탁상형만」 으로 거를 수도 없다. 값의 `code` 에 원본 슬러그가
+    남아 있어 반입이 그것으로 찾는다.
+
+    RESTRICT — 쓰는 기종이 있는 형태는 못 지운다."""
     """탁상형·플로어형처럼 생김새. 같은 계열 안에서 갈리므로 계열이 아니라 여기 있다."""
 
     status: Mapped[str] = mapped_column(
@@ -318,6 +367,13 @@ class EquipmentModel(Base):
 
 class Equipment(Base):
     __tablename__ = "equipment"
+    __table_args__ = (
+        # **부서관리번호는 부서 안에서만 유일하다.** 전사로 걸면 부서마다 다른
+        # 체계를 쓰는 번호가 서로 충돌하고, 그때 막히는 것은 등록하는 사람이다.
+        UniqueConstraint(
+            "owner_workspace_id", "dept_asset_no", name="uq_equipment_dept_asset_no"
+        ),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(
         PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
@@ -326,6 +382,12 @@ class Equipment(Base):
     """자산번호. **사람이 현장에서 부르는 이름이자 유일 키다** — 라벨에 붙어 있고,
     다른 시스템과 대조할 때도 이것으로 맞춘다."""
     name: Mapped[str] = mapped_column(String(200))
+    """현장 호칭. **카탈로그의 기종명과 다른 칸이다** — 「3동 만능기」 로 불리는 것이
+    실재하고, 사람이 찾을 때 치는 말은 그쪽이다."""
+
+    dept_asset_no: Mapped[str | None] = mapped_column(String(50), nullable=True, index=True)
+    """부서관리번호. **유일성은 부서 안에서만 건다**(아래 UniqueConstraint) — 부서마다
+    자기 체계라 전사로 걸면 서로 다른 장비가 충돌하고, 그때 등록이 막힌다."""
 
     model_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
@@ -343,26 +405,68 @@ class Equipment(Base):
     알 수 없게 된다 — 단종은 지우는 것이 아니라 status 로 적는다."""
 
     serial_no: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    """제조번호. **유일성을 안 건다** — 제조사가 같은 번호를 다른 계열에 다시 쓰고,
+    라벨이 지워져 못 읽는 대도 있다. 못 적는다고 등록을 막을 값이 아니다."""
 
-    owner_workspace_id: Mapped[uuid.UUID | None] = mapped_column(
-        PgUUID(as_uuid=True),
-        ForeignKey("workspaces.id", ondelete="RESTRICT"),
-        nullable=True,
-        index=True,
-    )
-    """보유 부서. NULL 이면 전사 공용 장비 — 시스템 관리자만 만들고 고친다.
-
-    RESTRICT 인 이유: 부서를 지우면서 장비가 함께 사라지면, 그 장비로 잰 데이터가
-    가리킬 곳을 잃는다. 부서는 지우는 것이 아니라 보관하거나 합친다."""
-
-    site_term_id: Mapped[uuid.UUID | None] = mapped_column(
+    category_term_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("vocabulary_terms.id", ondelete="SET NULL"),
         nullable=True,
         index=True,
     )
-    """거점(기준정보 축 site). 공장·연구소처럼 **가려면 이동해야 하는 단위**."""
-    location: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    """**카탈로그에 연결되지 않은 장비의 장비유형.**
+
+    기종이 있으면 분류는 그 기종의 계열이 갖는다(ADR 0006) — 그때 이 칸은 비운다.
+    두 곳에 남겨 두면 계열의 분류를 고친 날 이 장비만 옛 분류를 가리킨 채 남고,
+    그 어긋남은 아무 화면에도 안 보인다.
+
+    자작 장비·미등록 장비가 실재하는데 그것도 「무슨 종류의 장비냐」 에는 답해야
+    한다 — 답 못 하면 검색과 목록에서 통째로 빠진다."""
+
+    maker_text: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    model_text: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    """카탈로그 미연결일 때만 쓰는 **표시용** 제조사·모델명.
+
+    **검색은 이 둘을 안 본다.** 기준정보의 제조사 값과 이어져 있지 않아서, 여기 적힌
+    「인스트론」 과 축의 「Instron」 은 서로 다른 글자다. 카탈로그에 연결하는 순간
+    서버가 이 칸들을 비운다 — 같은 사실이 두 곳에 남으면 어느 쪽이 맞는지 알 수 없다.
+
+    그래도 두는 이유: 이 칸이 없으면 자작 장비의 제조사를 적을 자리가 아예 없고,
+    사람은 그것을 비고에 적는다. 비고에 적힌 것은 아무도 못 찾는다."""
+
+    owner_workspace_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("workspaces.id", ondelete="RESTRICT"),
+        nullable=False,
+        index=True,
+    )
+    """보유 부서. **비울 수 없다** — 장비에는 반드시 관리하는 부서가 있다.
+
+    전에는 NULL 이 「전사 공용」 을 겸했는데, 그러면 공용으로 표시하는 순간 관리
+    부서를 잃었다. 「누가 관리하나」 와 「다른 부서도 쓸 수 있나」 는 다른 물음이라
+    칸을 나눈다(`shared_use`).
+
+    RESTRICT 인 이유: 부서를 지우면서 장비가 함께 사라지면, 그 장비로 잰 데이터가
+    가리킬 곳을 잃는다. 부서는 지우는 것이 아니라 보관하거나 합친다."""
+
+    shared_use: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false", nullable=False, index=True
+    )
+    """다른 부서도 쓸 수 있는 장비인가. **가시성이 아니라 사실이다** — 누가 볼 수
+    있느냐는 부서의 공개 설정이 정하고(`visible_equipment`), 이 칸은 찾은 사람에게
+    「빌릴 수 있나」 를 말해 준다. 그 답이 없으면 검색은 절반만 한 것이다."""
+
+    site_term_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        nullable=False,
+        index=True,
+    )
+    """거점(기준정보 축 site). 공장·연구소처럼 **가려면 이동해야 하는 단위**.
+
+    **비울 수 없다** — 장비는 어딘가에 놓여 있고, 어디 있는지 모르는 장비는 찾아도
+    소용이 없다. RESTRICT: 쓰는 장비가 있는 거점은 못 지운다."""
+    location: Mapped[str] = mapped_column(String(200))
     """거점 안의 자리. 3동 201호. 자유 문자열로 둔다 — 이것까지 축으로 만들면
     호실 하나 바뀔 때마다 기준정보를 고쳐야 한다."""
 
@@ -370,6 +474,22 @@ class Equipment(Base):
         String(20), default="operational", server_default="operational", index=True
     )
     acquired_on: Mapped[date | None] = mapped_column(Date, nullable=True)
+    """도입일. 우리 것이 된 날이다 — 만들어진 날(`manufactured_year`)과 다르다."""
+    manufactured_year: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    """제조연도. **연도까지만 적는다** — 명판에도 카탈로그에도 월일은 대개 없고,
+    없는 것을 1월 1일로 지어내면 그 날짜로 수명을 세는 사람이 생긴다."""
+    retired_on: Mapped[date | None] = mapped_column(Date, nullable=True)
+    """폐기일. **상태가 `retired` 일 때만 값이 있다** — 되돌리면 서버가 비운다.
+    남겨 두면 가동 중인 장비에 폐기일이 붙어 있고, 목록은 그것을 그대로 그린다."""
+
+    calibration_required: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false", nullable=False, index=True
+    )
+    """교정 대상인가. **이력만으로는 못 가른다** — 이력이 없는 장비가 「대상이 아님」
+    인지 「빠뜨린 것」 인지 구별되지 않고, 그 둘은 할 일이 정반대다."""
+    calibration_interval_months: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    """교정 주기(개월). 대상이면 적는다 — 마지막 교정일에 더해 **차기일을 계산**한다.
+    성적서에 적힌 차기일이 있으면 그쪽이 언제나 이긴다(기관이 정한 날이 진실이다)."""
 
     contact_user_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
@@ -395,7 +515,7 @@ class Equipment(Base):
 class EquipmentCalibration(Base):
     """교정 이력.
 
-    **역량과 별개의 칸이다.** 장비가 20 kN 을 낼 수 있다는 것과 그 값이 지금 믿을
+    **시험 항목과 별개의 칸이다.** 장비가 20 kN 을 낼 수 있다는 것과 그 값이 지금 믿을
     만하다는 것은 다른 이야기다. 교정이 만료된 장비도 목록에는 남되, 검색 결과가
     그 사실을 말해 줘야 한다 — 말 안 하면 사람은 만료된 장비로 시험을 잡는다.
     """
@@ -412,7 +532,17 @@ class EquipmentCalibration(Base):
     next_due_on: Mapped[date | None] = mapped_column(Date, nullable=True, index=True)
     """다음 교정 예정일. 홈 화면의 "곧 만료" 목록이 이것을 본다."""
     certificate_no: Mapped[str | None] = mapped_column(String(100), nullable=True)
-    provider: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    provider_term_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        nullable=True,
+        index=True,
+    )
+    """교정 기관(기준정보 축 `calibration_provider`).
+
+    **자유 문자열로 두면 갈린다.** 같은 기관이 「한국계량측정협회」 와 「(주)한국계량
+    측정협회」 로 적히면 그 둘은 서로 다른 기관이 되고, 「이 기관이 교정한 장비」 를
+    묻는 순간 절반만 답한다."""
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(
@@ -508,6 +638,75 @@ class ModelSpecValue(Base):
     )
     source_page: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+
+class EquipmentSpecValue(Base):
+    """이 **개체**가 실제로 갖는 사양값 하나 — 카탈로그 위에 덮는 실측.
+
+    ## 복사가 아니라 겹쳐 보기다
+
+    등록할 때 기종 사양을 통째로 복사해 두지 않는다. 개체는 **카탈로그와 다른 값만**
+    갖고, 나머지는 기종 사양이 그대로 보인다. 전부 복사하면 두 가지를 잃는다 —
+    카탈로그가 개정돼도 안 따라오고, 무엇보다 **어느 값이 실측인지 구별이 사라진다.**
+
+    시험 항목을 복사로 둔 것(ADR 0004)과 다른 판단인 이유: 시험 항목은 「그때 그렇게 판단했다」
+    는 스냅샷이라 굳는 것이 맞고, 사양 수치는 「카탈로그가 말하는 것」 과 「우리가 잰
+    것」 이 **둘 다 남아야** 한다. 화면은 둘을 함께 보여 준다.
+
+    ## 검색축에 이어진 사양은 시험 조건이 된다
+
+    기종 사양이 그랬듯이(`conditions_from_specs`), 여기 적은 실측도 이 장비의 시험 항목
+    조건을 갱신한다. 다만 **손으로 고쳐 둔 조건은 안 덮는다** — 사람이 재서 적은
+    값을 사양표가 덮으면 그 손실은 검색 결과가 어긋난 날에야 드러난다.
+    """
+
+    __tablename__ = "equipment_spec_values"
+    __table_args__ = (
+        UniqueConstraint("equipment_id", "definition_id", name="uq_equipment_spec_values_key"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    equipment_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("equipment.id", ondelete="CASCADE"), index=True
+    )
+    definition_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("spec_definitions.id", ondelete="RESTRICT"),
+        index=True,
+    )
+    """RESTRICT — 쓰는 값이 있는 정의는 못 지운다. 기종 사양과 같은 규칙이다."""
+
+    num_value: Mapped[float | None] = mapped_column(Float, nullable=True)
+    num_min: Mapped[float | None] = mapped_column(Float, nullable=True)
+    num_max: Mapped[float | None] = mapped_column(Float, nullable=True)
+    text_value: Mapped[str | None] = mapped_column(Text, nullable=True)
+    bool_value: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+
+    measured_on: Mapped[date | None] = mapped_column(Date, nullable=True)
+    """언제 잰 값인가. **3년 전 실측은 사양서보다 나을 것이 없다** — 지그도 챔버도
+    그동안 바뀐다. 화면이 날짜를 함께 보여 줘야 사람이 그것을 판단할 수 있다."""
+
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("spec_sources.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+    """성적서·시험 보고서 같은 근거 문서. 기종 사양의 출처와 같은 표를 쓴다."""
+    source_page: Mapped[int | None] = mapped_column(Integer, nullable=True)
+
+    created_by_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )

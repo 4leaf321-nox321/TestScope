@@ -25,37 +25,83 @@ from sqlalchemy.orm import Session
 from app.modules.vocabulary.models import ConditionKey, Vocabulary
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 
-#: (slug, label, 입력 정책, 부모 축, 순서, 설명)
+#: (slug, label, 어디의 축, 입력 정책, 부모 축, 순서, 설명)
 #:
 #: `test_item` 만 closed 다 — **검색의 첫 축**이라 오타가 값이 되면 그 장비는 영영
 #: 검색에 안 걸린다. 나머지는 open: 막았을 때 사람이 어디로 가는지가 문제다.
-AXES: list[tuple[str, str, str, str | None, int, str]] = [
+#:
+#: **어디의 축인지를 함께 적는다.** 한 목록에 일곱이 나란히 서면 「이게 어디 쓰이는
+#: 값이지」 를 알 수 없고, 그때 제정기관 축에 회사 이름이 들어간다.
+AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
     (
         "test_item",
         "시험 항목",
+        "common",
         "closed",
         None,
         10,
-        "인장·압축·충격처럼 무엇을 재는가. 검색의 첫 축이라 오타가 값이 되면 안 걸린다.",
+        "인장·압축·충격처럼 무엇을 재는가. 검색의 첫 축이라 오타가 값이 되면 안 걸린다. "
+        "장비의 시험 항목·계열의 시험 항목·시험법이 모두 이 축을 가리킨다.",
     ),
     (
         "equipment_category",
         "장비 분류",
+        "catalog",
         "open",
         None,
         20,
-        "만능재료시험기·충격시험기·경도계처럼 장비의 종류.",
+        "만능재료시험기·충격시험기·경도계처럼 장비의 종류. 계열이 갖고, 보유 장비는 "
+        "그 계열에서 물려받는다 — 카탈로그에 없는 장비만 직접 가리킨다.",
     ),
-    ("manufacturer", "제조사", "open", None, 30, "장비를 만든 회사."),
+    ("manufacturer", "제조사", "catalog", "open", None, 30, "장비를 만든 회사."),
+    (
+        "form_factor",
+        "기종 형태",
+        "catalog",
+        "open",
+        None,
+        35,
+        "탁상형·바닥형·휴대형처럼 그 기종이 어떤 몸을 가졌나. 자리가 나는지, 들고 갈 "
+        "수 있는지가 여기서 갈린다.",
+    ),
+    (
+        "drive",
+        "구동 방식",
+        "catalog",
+        "open",
+        None,
+        36,
+        "전기기계식·유압식·진자식처럼 무엇으로 힘을 내나. 유압은 큰 하중을, 전기동력은 "
+        "높은 주파수를, 진자는 충격을 낸다 — 할 수 있는 시험이 여기서 갈린다.",
+    ),
     (
         "site",
         "보유 거점",
+        "equipment",
         "open",
         None,
         40,
         "공장·연구소처럼 가려면 이동해야 하는 단위. 실무에서 가장 먼저 묻는 것.",
     ),
-    ("standard_body", "규격 제정기관", "open", None, 50, "ASTM · ISO · KS · 사내."),
+    (
+        "calibration_provider",
+        "교정 기관",
+        "equipment",
+        "open",
+        None,
+        45,
+        "교정 성적서를 낸 곳. 자유 문자열로 두면 같은 기관이 「한국계량측정협회」 와 "
+        "「(주)한국계량측정협회」 로 갈리고, 그 둘은 서로 다른 기관이 된다.",
+    ),
+    (
+        "standard_body",
+        "규격 제정기관",
+        "method",
+        "open",
+        None,
+        50,
+        "ASTM · ISO · KS · 사내.",
+    ),
 ]
 
 #: (key, label, kind, 차원, 저장 단위, 표시 단위, 순서, 도움말)
@@ -157,7 +203,7 @@ SPEC_DEFINITIONS: list[
         "force",
         "max",
         10,
-        "사양서의 최대 하중. 이 값은 역량 조건으로 따라 들어가 검색에 쓰인다.",
+        "사양서의 최대 하중. 이 값은 시험 조건으로 따라 들어가 검색에 쓰인다.",
     ),
     ("dynamic_force", "동적 하중", "capacity", "number", "force", "kN", None, "max", 20, None),
     ("static_force", "정적 하중", "capacity", "number", "force", "kN", None, "max", 30, None),
@@ -282,7 +328,7 @@ SPEC_DEFINITIONS: list[
         "max",
         70,
         "검색축(항온조)과 잇지 않는다. 참거짓은 범위 비교가 성립하지 않아 "
-        "역량으로 옮길 수 없고, 옮긴 척하면 검색이 조용히 틀린다.",
+        "시험 항목으로 옮길 수 없고, 옮긴 척하면 검색이 조용히 틀린다.",
     ),
     # --- 시험 공간·시편 -------------------------------------------------------
     (
@@ -601,13 +647,14 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
     """없는 축·조건·사양 정의만 만든다."""
     known_axes = set(db.scalars(select(Vocabulary.slug)))
     added_axes = 0
-    for slug, label, policy, parent, order, description in AXES:
+    for slug, label, domain, policy, parent, order, description in AXES:
         if slug in known_axes:
             continue
         db.add(
             Vocabulary(
                 slug=slug,
                 label=label,
+                domain=domain,
                 entry_policy=policy,
                 parent_slug=parent,
                 sort_order=order,

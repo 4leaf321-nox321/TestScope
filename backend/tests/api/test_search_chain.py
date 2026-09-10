@@ -13,7 +13,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 
-from tests.api.conftest import Signed
+from tests.api.conftest import Signed, category_id, site_id
 
 
 def _equipment(client: TestClient, admin: Signed, **extra: object) -> dict[str, Any]:
@@ -21,7 +21,11 @@ def _equipment(client: TestClient, admin: Signed, **extra: object) -> dict[str, 
         "asset_no": f"UTM-{uuid.uuid4().hex[:6]}",
         "name": "만능재료시험기",
         "workspace_slug": admin.workspace,
+        # 거점·상세위치·장비유형은 비울 수 없다(0008) — 어디 있고 무슨 종류인지
+        # 모르는 장비는 찾아도 소용이 없다.
+        "site_term_id": site_id(client, admin),
         "location": "3동 201호",
+        "category_term_id": category_id(client, admin),
         **extra,
     }
     response = client.post("/api/equipment", json=payload, headers=admin.headers)
@@ -30,9 +34,9 @@ def _equipment(client: TestClient, admin: Signed, **extra: object) -> dict[str, 
     return body
 
 
-def _capability(client: TestClient, admin: Signed, equipment_id: str, item_id: str) -> str:
+def _test_item(client: TestClient, admin: Signed, equipment_id: str, item_id: str) -> str:
     response = client.post(
-        "/api/capabilities",
+        "/api/equipment-test-items",
         json={"equipment_id": equipment_id, "test_item_term_id": item_id},
         headers=admin.headers,
     )
@@ -43,13 +47,13 @@ def _capability(client: TestClient, admin: Signed, equipment_id: str, item_id: s
 def _limit(
     client: TestClient,
     admin: Signed,
-    capability_id: str,
+    equipment_test_item_id: str,
     condition_id: str,
     low: float | None,
     high: float | None,
 ) -> None:
     response = client.put(
-        f"/api/capabilities/{capability_id}/limits",
+        f"/api/equipment-test-items/{equipment_test_item_id}/limits",
         json={"condition_key_id": condition_id, "min_value": low, "max_value": high},
         headers=admin.headers,
     )
@@ -64,12 +68,12 @@ def test_조건을_갖춘_장비를_찾아_위치까지_알려준다(
 ) -> None:
     item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
     equipment = _equipment(client, admin, name="UTM 300kN")
-    capability = _capability(client, admin, equipment["id"], item)
-    _limit(client, admin, capability, condition_ids["temperature"], -70, 300)
-    _limit(client, admin, capability, condition_ids["force"], 0, 300)
+    test_item = _test_item(client, admin, equipment["id"], item)
+    _limit(client, admin, test_item, condition_ids["temperature"], -70, 300)
+    _limit(client, admin, test_item, condition_ids["force"], 0, 300)
 
     found = client.post(
-        "/api/search/capabilities",
+        "/api/search/test_items",
         json={
             "test_item_term_id": item,
             "conditions": [
@@ -101,11 +105,11 @@ def test_범위를_벗어나면_결과에서_빠지고_그_수를_말해_준다(
     가른다."""
     item = term_factory("test_item", f"압축-{uuid.uuid4().hex[:6]}")
     equipment = _equipment(client, admin)
-    capability = _capability(client, admin, equipment["id"], item)
-    _limit(client, admin, capability, condition_ids["force"], 0, 10)
+    test_item = _test_item(client, admin, equipment["id"], item)
+    _limit(client, admin, test_item, condition_ids["force"], 0, 10)
 
     found = client.post(
-        "/api/search/capabilities",
+        "/api/search/test_items",
         json={
             "test_item_term_id": item,
             "conditions": [{"condition_key_id": condition_ids["force"], "at_least": 20}],
@@ -128,12 +132,12 @@ def test_안_적힌_조건은_된다고_답하지_않는다(
     만족하는 것으로 나오고, 사람은 그것을 믿고 가서 헛걸음을 한다."""
     item = term_factory("test_item", f"충격-{uuid.uuid4().hex[:6]}")
     equipment = _equipment(client, admin)
-    capability = _capability(client, admin, equipment["id"], item)
-    _limit(client, admin, capability, condition_ids["force"], 0, 300)
+    test_item = _test_item(client, admin, equipment["id"], item)
+    _limit(client, admin, test_item, condition_ids["force"], 0, 300)
     # 온도는 일부러 안 적는다.
 
     found = client.post(
-        "/api/search/capabilities",
+        "/api/search/test_items",
         json={
             "test_item_term_id": item,
             "conditions": [
@@ -163,12 +167,12 @@ def test_점검_중인_장비는_기본_결과에서_빠진다(
     손잡이는 남긴다."""
     item = term_factory("test_item", f"피로-{uuid.uuid4().hex[:6]}")
     equipment = _equipment(client, admin, status="maintenance")
-    capability = _capability(client, admin, equipment["id"], item)
-    _limit(client, admin, capability, condition_ids["force"], 0, 300)
+    test_item = _test_item(client, admin, equipment["id"], item)
+    _limit(client, admin, test_item, condition_ids["force"], 0, 300)
 
     def search(include_unavailable: bool) -> dict[str, Any]:
         response = client.post(
-            "/api/search/capabilities",
+            "/api/search/test_items",
             json={
                 "test_item_term_id": item,
                 "conditions": [],
@@ -193,10 +197,10 @@ def test_거꾸로_넣은_범위는_거절한다(
     장비가 안 나오지" 를 묻게 된다 — 원인은 어디에도 안 보인다."""
     item = term_factory("test_item", f"굽힘-{uuid.uuid4().hex[:6]}")
     equipment = _equipment(client, admin)
-    capability = _capability(client, admin, equipment["id"], item)
+    test_item = _test_item(client, admin, equipment["id"], item)
 
     response = client.put(
-        f"/api/capabilities/{capability}/limits",
+        f"/api/equipment-test-items/{test_item}/limits",
         json={"condition_key_id": condition_ids["force"], "min_value": 300, "max_value": 20},
         headers=admin.headers,
     )

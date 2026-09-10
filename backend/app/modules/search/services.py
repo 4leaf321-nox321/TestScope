@@ -1,4 +1,4 @@
-"""역량 검색.
+"""장비 찾기.
 
     시험 항목  ->  요구 조건  ->  시험법  ->  가능한 장비  ->  보유 위치
 
@@ -21,7 +21,6 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import Capability, CapabilityLimit
 from app.modules.equipment.models import AVAILABLE_STATUSES, Equipment, EquipmentCalibration
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.search.schemas import (
@@ -31,6 +30,7 @@ from app.modules.search.schemas import (
     SearchRequest,
     SearchResponse,
 )
+from app.modules.test_items.models import EquipmentTestCondition, EquipmentTestItem
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared.permissions import visible_equipment_ids
@@ -61,7 +61,7 @@ def _asked(query: ConditionQuery, key: ConditionKey) -> str:
     return "지정 없음"
 
 
-def _range_text(limit: CapabilityLimit | None, key: ConditionKey) -> str | None:
+def _range_text(limit: EquipmentTestCondition | None, key: ConditionKey) -> str | None:
     if limit is None:
         return None
     if limit.text_value:
@@ -70,7 +70,7 @@ def _range_text(limit: CapabilityLimit | None, key: ConditionKey) -> str | None:
     return f"{_fmt(limit.min_value, unit)} ~ {_fmt(limit.max_value, unit)}"
 
 
-def _verdict(query: ConditionQuery, limit: CapabilityLimit | None) -> str:
+def _verdict(query: ConditionQuery, limit: EquipmentTestCondition | None) -> str:
     """조건 하나의 판정. met · unmet · unknown.
 
     **비어 있는 한쪽은 "제한 없음" 이다.** 0 으로 취급하면 상한을 안 적은 장비가
@@ -110,20 +110,21 @@ def _verdict(query: ConditionQuery, limit: CapabilityLimit | None) -> str:
     return "unknown"
 
 
-def _candidates(db: Session, user: User, request: SearchRequest) -> list[Capability]:
+def _candidates(db: Session, user: User, request: SearchRequest) -> list[EquipmentTestItem]:
     """SQL 로 좁힐 수 있는 것만 좁힌다 — 항목·규격·부서·거점·상태."""
     stmt = (
-        select(Capability)
-        .join(Equipment, Equipment.id == Capability.equipment_id)
-        .where(Capability.equipment_id.in_(visible_equipment_ids(db, user)))
+        select(EquipmentTestItem)
+        .join(Equipment, Equipment.id == EquipmentTestItem.equipment_id)
+        .where(EquipmentTestItem.equipment_id.in_(visible_equipment_ids(db, user)))
     )
     if request.test_item_term_id:
-        stmt = stmt.where(Capability.test_item_term_id == request.test_item_term_id)
+        stmt = stmt.where(EquipmentTestItem.test_item_term_id == request.test_item_term_id)
     if request.method_id:
-        # **규격 미지정 역량도 남긴다.** "인장은 된다" 만 적힌 장비를 빼면, 아직
+        # **규격 미지정 시험 항목도 남긴다.** "인장은 된다" 만 적힌 장비를 빼면, 아직
         # 규격까지 안 채운 부서의 장비가 통째로 안 보인다.
         stmt = stmt.where(
-            (Capability.method_id == request.method_id) | (Capability.method_id.is_(None))
+            (EquipmentTestItem.method_id == request.method_id)
+            | (EquipmentTestItem.method_id.is_(None))
         )
     if not request.include_unavailable:
         stmt = stmt.where(Equipment.status.in_(AVAILABLE_STATUSES))
@@ -140,18 +141,25 @@ def _candidates(db: Session, user: User, request: SearchRequest) -> list[Capabil
     return list(db.scalars(stmt.limit(MAX_HITS * 5)))
 
 
-def _limits_by_key(db: Session, capability_ids: list[uuid.UUID]) -> dict[Any, CapabilityLimit]:
-    """(역량 id, 조건 id) -> 범위. **한 번에 읽는다** — 역량마다 조회하면 N+1 이다."""
-    if not capability_ids:
+def _limits_by_key(
+    db: Session, test_item_ids: list[uuid.UUID]
+) -> dict[Any, EquipmentTestCondition]:
+    """(시험 항목 id, 조건 id) -> 범위.
+
+    **한 번에 읽는다** — 시험 항목마다 조회하면 N+1 이다.
+    """
+    if not test_item_ids:
         return {}
     rows = db.scalars(
-        select(CapabilityLimit).where(CapabilityLimit.capability_id.in_(capability_ids))
+        select(EquipmentTestCondition).where(
+            EquipmentTestCondition.equipment_test_item_id.in_(test_item_ids)
+        )
     )
-    return {(row.capability_id, row.condition_key_id): row for row in rows}
+    return {(row.equipment_test_item_id, row.condition_key_id): row for row in rows}
 
 
 def _hit_verdict(matches: list[ConditionMatch]) -> str | None:
-    """역량 하나의 종합 판정. None 이면 결과에서 뺀다.
+    """시험 항목 하나의 종합 판정. None 이면 결과에서 뺀다.
 
     **하나라도 안 되면 뺀다.** 안 되는 장비를 목록에 남기는 것은 답이 아니라
     소음이고, 사람은 목록이 길면 위에서부터 읽다가 틀린 것을 고른다.
@@ -187,13 +195,13 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
 
     hits: list[SearchHit] = []
     unmet = 0
-    for capability in candidates:
+    for test_item in candidates:
         matches: list[ConditionMatch] = []
         for query in request.conditions:
             key = keys.get(query.condition_key_id)
             if key is None:
                 continue
-            limit = limits.get((capability.id, key.id))
+            limit = limits.get((test_item.id, key.id))
             matches.append(
                 ConditionMatch(
                     condition_key_id=key.id,
@@ -201,7 +209,7 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
                     display_unit=key.display_unit or key.si_unit,
                     verdict=_verdict(query, limit),
                     asked=_asked(query, key),
-                    capability_range=_range_text(limit, key),
+                    condition_range=_range_text(limit, key),
                 )
             )
 
@@ -210,12 +218,12 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
             unmet += 1
             continue
 
-        equipment = db.get(Equipment, capability.equipment_id)
+        equipment = db.get(Equipment, test_item.equipment_id)
         if equipment is None:  # pragma: no cover - FK 가 막는다
             continue
-        hits.append(_hit(db, capability, equipment, verdict, matches))
+        hits.append(_hit(db, test_item, equipment, verdict, matches))
 
-    # 확실한 것이 위로, 그다음은 검증된 역량, 그다음은 자산번호. **늘 결정적이다** —
+    # 확실한 것이 위로, 그다음은 검증된 시험 항목, 그다음은 자산번호. **늘 결정적이다** —
     # 같은 검색을 두 번 했을 때 순서가 다르면 사람은 결과를 못 믿는다.
     hits.sort(
         key=lambda hit: (
@@ -235,13 +243,13 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
 
 def _hit(
     db: Session,
-    capability: Capability,
+    test_item: EquipmentTestItem,
     equipment: Equipment,
     verdict: str,
     matches: list[ConditionMatch],
 ) -> SearchHit:
-    item = db.get(VocabularyTerm, capability.test_item_term_id)
-    method = db.get(TestMethod, capability.method_id) if capability.method_id else None
+    item = db.get(VocabularyTerm, test_item.test_item_term_id)
+    method = db.get(TestMethod, test_item.method_id) if test_item.method_id else None
     workspace = (
         db.get(Workspace, equipment.owner_workspace_id)
         if equipment.owner_workspace_id
@@ -256,7 +264,7 @@ def _hit(
         .limit(1)
     )
     return SearchHit(
-        capability_id=capability.id,
+        equipment_test_item_id=test_item.id,
         equipment_id=equipment.id,
         asset_no=equipment.asset_no,
         equipment_name=equipment.name,
@@ -267,8 +275,8 @@ def _hit(
         contact_name=contact.display_name if contact else None,
         test_item=item.value if item else "",
         method_code=f"{method.code} {method.edition or ''}".strip() if method else None,
-        confidence=capability.confidence,
-        note=capability.note,
+        confidence=test_item.confidence,
+        note=test_item.note,
         verdict=verdict,
         conditions=matches,
         calibration_due_on=due.isoformat() if due else None,
@@ -276,12 +284,12 @@ def _hit(
 
 
 def _unregistered_count(db: Session, user: User) -> int:
-    """역량이 하나도 안 적힌 장비 수.
+    """시험 항목이 하나도 안 적힌 장비 수.
 
     **검색에 절대 안 걸리는 것들이다.** 결과가 빈약할 때 이 숫자가 "그런 장비가
     없다" 인지 "아직 안 적었다" 인지를 가른다.
     """
-    registered = select(Capability.equipment_id).distinct()
+    registered = select(EquipmentTestItem.equipment_id).distinct()
     return (
         db.scalar(
             select(func.count())

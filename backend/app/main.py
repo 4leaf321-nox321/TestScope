@@ -20,7 +20,6 @@ from app.logging_setup import setup_logging
 from app.modules.accounts import routes as accounts_routes
 from app.modules.audit import routes as audit_routes
 from app.modules.auth import routes as auth_routes
-from app.modules.capabilities import routes as capabilities_routes
 from app.modules.equipment import routes as equipment_routes
 from app.modules.methods import routes as methods_routes
 from app.modules.notices import routes as notices_routes
@@ -28,6 +27,7 @@ from app.modules.notifications import routes as notifications_routes
 from app.modules.resolve import routes as resolve_routes
 from app.modules.search import routes as search_routes
 from app.modules.server import routes as server_routes
+from app.modules.test_items import routes as capabilities_routes
 from app.modules.vocabulary import routes as vocabulary_routes
 from app.modules.workspaces import routes as workspaces_routes
 from app.schema_version import warn_if_behind

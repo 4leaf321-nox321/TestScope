@@ -14,17 +14,12 @@ from app.database import Base
 from app.modules.accounts.models import User
 from app.modules.audit.models import AccessLog, AuditEntry
 from app.modules.auth.models import PersonalAccessToken, RefreshToken
-from app.modules.capabilities.models import (
-    Capability,
-    CapabilityLimit,
-    ModelCapability,
-    ModelCapabilityLimit,
-)
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
     EquipmentModel,
     EquipmentSeries,
+    EquipmentSpecValue,
     ModelSpecValue,
     SeriesRelation,
     SpecSource,
@@ -32,6 +27,13 @@ from app.modules.equipment.models import (
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
+from app.modules.test_items.models import (
+    EquipmentTestCondition,
+    EquipmentTestItem,
+    SeriesTestCondition,
+    SeriesTestItem,
+    SeriesTestItemMethod,
+)
 from app.modules.vocabulary.models import (
     ConditionKey,
     Vocabulary,
@@ -49,16 +51,15 @@ __all__ = [
     "AccessLog",
     "AuditEntry",
     "Base",
-    "Capability",
-    "CapabilityLimit",
     "ConditionKey",
     "Equipment",
     "EquipmentCalibration",
     "EquipmentModel",
     "EquipmentSeries",
+    "EquipmentSpecValue",
+    "EquipmentTestCondition",
+    "EquipmentTestItem",
     "MethodRequirement",
-    "ModelCapability",
-    "ModelCapabilityLimit",
     "ModelSpecValue",
     "Notice",
     "NoticeRead",
@@ -66,6 +67,9 @@ __all__ = [
     "PersonalAccessToken",
     "RefreshToken",
     "SeriesRelation",
+    "SeriesTestCondition",
+    "SeriesTestItem",
+    "SeriesTestItemMethod",
     "SpecDefinition",
     "SpecDefinitionCategory",
     "SpecGroup",

@@ -1,4 +1,4 @@
-"""장비 카탈로그 — 계열과 기종, 그리고 사양서상 역량.
+"""장비 카탈로그 — 계열과 기종, 그리고 사양서상 시험 항목.
 
 보유 장비(`services.py`)와 나눈 이유는 ADR 0004 에 있다. 여기는 **제조사가 파는 것**
 이고, 저기는 **우리가 가진 것**이다.
@@ -24,12 +24,6 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import (
-    Capability,
-    CapabilityLimit,
-    ModelCapability,
-    ModelCapabilityLimit,
-)
 from app.modules.equipment import specs
 from app.modules.equipment.models import (
     AVAILABLE_STATUSES,
@@ -41,16 +35,26 @@ from app.modules.equipment.models import (
     SpecSource,
 )
 from app.modules.equipment.schemas import (
+    CitedMethodOut,
     EquipmentModelOut,
     EquipmentSeriesOut,
-    ModelCapabilityOut,
+    ModelHeadlineSpecOut,
     ModelLimitOut,
     SeriesRelationOut,
+    SeriesTestItemOut,
     SpecSourceOut,
 )
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.resolve.services import resolve, resolve_term_id
+from app.modules.test_items.models import (
+    EquipmentTestCondition,
+    EquipmentTestItem,
+    SeriesTestCondition,
+    SeriesTestItem,
+    SeriesTestItemMethod,
+)
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
+from app.modules.vocabulary.specs import SpecDefinition
 from app.shared import audit
 from app.shared.errors import AppError, Conflict, NotFound
 from app.shared.pagination import Page
@@ -78,14 +82,14 @@ def get_model(db: Session, model_id: uuid.UUID) -> EquipmentModel:
     return found
 
 
-# --- 계열 역량 ---------------------------------------------------------------
+# --- 계열의 시험 항목 ---------------------------------------------------------------
 
 
-def _limits(db: Session, capability_id: uuid.UUID) -> list[ModelLimitOut]:
+def _limits(db: Session, equipment_test_item_id: uuid.UUID) -> list[ModelLimitOut]:
     rows = db.execute(
-        select(ModelCapabilityLimit, ConditionKey)
-        .join(ConditionKey, ConditionKey.id == ModelCapabilityLimit.condition_key_id)
-        .where(ModelCapabilityLimit.model_capability_id == capability_id)
+        select(SeriesTestCondition, ConditionKey)
+        .join(ConditionKey, ConditionKey.id == SeriesTestCondition.condition_key_id)
+        .where(SeriesTestCondition.series_test_item_id == equipment_test_item_id)
         .order_by(ConditionKey.sort_order, ConditionKey.label)
     ).all()
     return [
@@ -105,18 +109,55 @@ def _limits(db: Session, capability_id: uuid.UUID) -> list[ModelLimitOut]:
     ]
 
 
-def _capabilities(db: Session, series_id: uuid.UUID) -> list[ModelCapabilityOut]:
+def _cited_methods(db: Session, equipment_test_item_id: uuid.UUID) -> list[CitedMethodOut]:
+    """이 시험 항목이 인용하는 규격들.
+
+    **요구 조건이 있는지 함께 말한다.** 조건이 없는 규격은 검색이 조건으로 좁히지
+    못하는데, 화면이 그 사실을 말해 주지 않으면 아무도 채우지 않는다.
+    """
+    rows = db.execute(
+        select(TestMethod)
+        .join(SeriesTestItemMethod, SeriesTestItemMethod.method_id == TestMethod.id)
+        .where(
+            SeriesTestItemMethod.series_test_item_id == equipment_test_item_id,
+            TestMethod.deleted_at.is_(None),
+        )
+        .order_by(TestMethod.code)
+    ).scalars()
+    out: list[CitedMethodOut] = []
+    for row in rows:
+        needs = (
+            db.scalar(
+                select(func.count())
+                .select_from(MethodRequirement)
+                .where(MethodRequirement.method_id == row.id)
+            )
+            or 0
+        )
+        out.append(
+            CitedMethodOut(
+                id=row.id,
+                code=row.code,
+                edition=row.edition,
+                title=row.title,
+                has_requirements=needs > 0,
+            )
+        )
+    return out
+
+
+def _test_items(db: Session, series_id: uuid.UUID) -> list[SeriesTestItemOut]:
     rows = db.scalars(
-        select(ModelCapability)
-        .where(ModelCapability.series_id == series_id)
-        .order_by(ModelCapability.created_at)
+        select(SeriesTestItem)
+        .where(SeriesTestItem.series_id == series_id)
+        .order_by(SeriesTestItem.created_at)
     )
-    out: list[ModelCapabilityOut] = []
+    out: list[SeriesTestItemOut] = []
     for row in rows:
         item = db.get(VocabularyTerm, row.test_item_term_id)
         method = db.get(TestMethod, row.method_id) if row.method_id else None
         out.append(
-            ModelCapabilityOut(
+            SeriesTestItemOut(
                 id=row.id,
                 test_item_term_id=row.test_item_term_id,
                 test_item=item.value if item else "",
@@ -124,6 +165,7 @@ def _capabilities(db: Session, series_id: uuid.UUID) -> list[ModelCapabilityOut]
                 method_code=(
                     f"{method.code} {method.edition or ''}".strip() if method else None
                 ),
+                methods=_cited_methods(db, row.id),
                 note=row.note,
                 limits=_limits(db, row.id),
             )
@@ -201,8 +243,10 @@ def series_out(db: Session, row: EquipmentSeries, viewer: User) -> EquipmentSeri
         category=_term_value(db, row.category_term_id),
         category_term_id=row.category_term_id,
         kind=row.kind,
-        drive=row.drive,
-        form_factor=row.form_factor,
+        drive=_term_value(db, row.drive_term_id),
+        drive_term_id=row.drive_term_id,
+        form_factor=_term_value(db, row.form_factor_term_id),
+        form_factor_term_id=row.form_factor_term_id,
         status=row.status,
         summary=row.summary,
         spec_note=row.spec_note,
@@ -212,7 +256,7 @@ def series_out(db: Session, row: EquipmentSeries, viewer: User) -> EquipmentSeri
         model_count=models,
         unit_count=len(units),
         operational_count=sum(1 for one in units if one.status in AVAILABLE_STATUSES),
-        capabilities=_capabilities(db, row.id),
+        test_items=_test_items(db, row.id),
         relations=_relations(db, row.id),
         created_at=row.created_at,
         can_edit=viewer.is_system_admin,
@@ -246,9 +290,9 @@ def list_series(
                 )
             )
         )
-    if issue == "capabilities":
+    if issue == "test_items":
         stmt = stmt.where(
-            EquipmentSeries.id.not_in(select(ModelCapability.series_id).distinct())
+            EquipmentSeries.id.not_in(select(SeriesTestItem.series_id).distinct())
         )
     if kind:
         stmt = stmt.where(EquipmentSeries.kind == kind)
@@ -331,8 +375,8 @@ def create_series(db: Session, actor: User, payload: dict[str, Any]) -> Equipmen
         brand=payload.get("brand"),
         category_term_id=payload.get("category_term_id"),
         kind=payload.get("kind") or "main",
-        drive=payload.get("drive") or "",
-        form_factor=payload.get("form_factor") or "",
+        drive_term_id=payload.get("drive_term_id"),
+        form_factor_term_id=payload.get("form_factor_term_id"),
         summary=payload.get("summary"),
         spec_note=payload.get("spec_note"),
         source_id=payload.get("source_id"),
@@ -369,8 +413,8 @@ def update_series(
         "brand",
         "category_term_id",
         "kind",
-        "drive",
-        "form_factor",
+        "drive_term_id",
+        "form_factor_term_id",
         "status",
         "summary",
         "spec_note",
@@ -451,11 +495,155 @@ def delete_relation(db: Session, series_id: uuid.UUID, relation_id: uuid.UUID) -
     db.commit()
 
 
+# --- 대표 사양 ---------------------------------------------------------------
+
+#: 목록 한 줄에 몇 칸까지 그리나.
+#:
+#: **셋을 넘기면 이름이 밀린다.** 좁은 화면에서 먼저 접히는 것이 기종명이면 그 줄은
+#: 아무 쓸모가 없다 — 사람이 라벨과 대조하는 것이 그 이름이다.
+HEADLINE_MAX = 3
+
+#: 분류가 대표를 안 정했을 때 대신 그릴 칸 수. 대표보다 적게 둔다 — 고른 것이 아니라
+#: **대신하는 것**이라, 같은 자리를 같은 무게로 채우면 그 차이가 안 보인다.
+HEADLINE_FALLBACK = 2
+
+
+def _headline_specs(
+    db: Session, models: list[EquipmentModel]
+) -> dict[uuid.UUID, list[ModelHeadlineSpecOut]]:
+    """기종마다 목록에 그릴 사양 두어 칸. **여러 기종을 한 번에 본다.**
+
+    ## 고르는 순서
+
+        1. 분류가 정한 것      온톨로지 `categories.json` 의 headline_specs
+        2. 검색축에 이어진 것  이 시스템이 「판단에 쓴다」 고 이미 표시해 둔 사양
+
+    2 가 있는 이유: 대표를 안 적어 둔 분류에서 이 칸이 통째로 비면 그 화면은 「사양이
+    없다」 로 읽힌다 — 실제로는 **적을 자리를 안 정한 것**이고, 그 둘은 할 일이 다르다.
+
+    ## 값이 없는 칸은 안 보낸다
+
+    분류가 「하중 용량」 을 대표로 정했어도 이 기종에 그 값이 없으면 안 싣는다. 라벨만
+    그려진 빈 칸은 「0 이다」 로도 「모른다」 로도 읽히는데, 그 둘은 장비를 고르는
+    사람에게 정반대다. 대신 화면이 `spec_count` 로 「사양 없음」 을 말한다.
+
+    ## 한 번에 보는 이유
+
+    한 줄씩 조회하면 200줄짜리 목록이 조회를 수백 번 한다. 카탈로그가 커질수록
+    나빠지고, 그때는 목록이 먼저 죽는다.
+    """
+    if not models:
+        return {}
+
+    series_of: dict[uuid.UUID, uuid.UUID | None] = {}
+    for series in db.scalars(
+        select(EquipmentSeries).where(
+            EquipmentSeries.id.in_({one.series_id for one in models})
+        )
+    ):
+        series_of[series.id] = series.category_term_id
+
+    wanted: dict[uuid.UUID, list[str]] = {}
+    term_ids = {one for one in series_of.values() if one is not None}
+    if term_ids:
+        for term in db.scalars(select(VocabularyTerm).where(VocabularyTerm.id.in_(term_ids))):
+            keys = term.attributes.get("headline_specs")
+            if isinstance(keys, list):
+                wanted[term.id] = [str(key) for key in keys][:HEADLINE_MAX]
+
+    fallback = list(
+        db.scalars(
+            select(SpecDefinition)
+            .where(SpecDefinition.condition_key_id.is_not(None))
+            .order_by(SpecDefinition.sort_order, SpecDefinition.label)
+        )
+    )
+    definitions: dict[str, SpecDefinition] = {row.key: row for row in fallback}
+    named = {key for keys in wanted.values() for key in keys} - set(definitions)
+    if named:
+        for row in db.scalars(select(SpecDefinition).where(SpecDefinition.key.in_(named))):
+            definitions[row.key] = row
+    if not definitions:
+        return {}
+
+    held: dict[uuid.UUID, dict[uuid.UUID, ModelSpecValue]] = {}
+    for value in db.scalars(
+        select(ModelSpecValue).where(
+            ModelSpecValue.model_id.in_([one.id for one in models]),
+            ModelSpecValue.definition_id.in_({row.id for row in definitions.values()}),
+        )
+    ):
+        held.setdefault(value.model_id, {})[value.definition_id] = value
+
+    out: dict[uuid.UUID, list[ModelHeadlineSpecOut]] = {}
+    for model in models:
+        mine = held.get(model.id)
+        if not mine:
+            continue
+        term_id = series_of.get(model.series_id)
+        picked = [
+            definitions[key]
+            for key in (wanted.get(term_id) if term_id else None) or []
+            if key in definitions and definitions[key].id in mine
+        ]
+        if not picked:
+            picked = [row for row in fallback if row.id in mine][:HEADLINE_FALLBACK]
+        out[model.id] = [
+            ModelHeadlineSpecOut(
+                definition_id=definition.id,
+                key=definition.key,
+                label=definition.label,
+                kind=definition.kind,
+                si_unit=definition.si_unit,
+                display_unit=definition.display_unit,
+                num_value=mine[definition.id].num_value,
+                num_min=mine[definition.id].num_min,
+                num_max=mine[definition.id].num_max,
+                text_value=mine[definition.id].text_value,
+                bool_value=mine[definition.id].bool_value,
+            )
+            for definition in picked
+        ]
+    return out
+
+
+def _spec_counts(db: Session, model_ids: list[uuid.UUID]) -> dict[uuid.UUID, int]:
+    """기종마다 사양이 몇 칸 적혔나.
+
+    **0 인 기종은 목록이 말해 줘야 한다** — 그 기종으로 등록하는 장비는 조건 없이
+    복사되고, 검색은 그것을 「모름」 으로 답한다.
+    """
+    if not model_ids:
+        return {}
+    rows = db.execute(
+        select(ModelSpecValue.model_id, func.count())
+        .where(ModelSpecValue.model_id.in_(model_ids))
+        .group_by(ModelSpecValue.model_id)
+    ).all()
+    return {model_id: count for model_id, count in rows}
+
+
 # --- 기종 --------------------------------------------------------------------
 
 
-def model_out(db: Session, row: EquipmentModel, viewer: User) -> EquipmentModelOut:
+def model_out(
+    db: Session,
+    row: EquipmentModel,
+    viewer: User,
+    *,
+    headline: list[ModelHeadlineSpecOut] | None = None,
+    spec_count: int | None = None,
+) -> EquipmentModelOut:
+    """기종 한 줄.
+
+    대표 사양과 사양 칸 수는 **목록이 한 번에 구해 넘긴다**(`list_models`). 안 넘기면
+    여기서 혼자 구한다 — 상세 한 건이 목록의 사정을 알 필요는 없다.
+    """
     series = db.get(EquipmentSeries, row.series_id)
+    if headline is None:
+        headline = _headline_specs(db, [row]).get(row.id, [])
+    if spec_count is None:
+        spec_count = _spec_counts(db, [row.id]).get(row.id, 0)
     units = db.scalars(
         select(Equipment).where(Equipment.model_id == row.id, Equipment.deleted_at.is_(None))
     ).all()
@@ -469,7 +657,8 @@ def model_out(db: Session, row: EquipmentModel, viewer: User) -> EquipmentModelO
         maker_term_id=series.maker_term_id if series else None,
         category=_term_value(db, series.category_term_id) if series else None,
         category_term_id=series.category_term_id if series else None,
-        form_factor=row.form_factor,
+        form_factor=_term_value(db, row.form_factor_term_id),
+        form_factor_term_id=row.form_factor_term_id,
         status=row.status,
         summary=row.summary,
         spec_note=row.spec_note,
@@ -477,7 +666,9 @@ def model_out(db: Session, row: EquipmentModel, viewer: User) -> EquipmentModelO
         unit_count=len(units),
         # **대수만 보면 여유 있어 보인다.** 다섯 대 중 한 대만 가동인 경우가 있다.
         operational_count=sum(1 for one in units if one.status in AVAILABLE_STATUSES),
-        capabilities=_capabilities(db, row.series_id),
+        test_items=_test_items(db, row.series_id),
+        headline_specs=headline,
+        spec_count=spec_count,
         created_at=row.created_at,
         can_edit=viewer.is_system_admin,
     )
@@ -535,9 +726,21 @@ def list_models(
             | EquipmentModel.series_id.in_(series)
         )
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
-    rows = db.scalars(stmt.order_by(EquipmentModel.name).limit(limit).offset(offset))
+    rows = list(db.scalars(stmt.order_by(EquipmentModel.name).limit(limit).offset(offset)))
+    # **한 번에 구한다.** 줄마다 구하면 200줄짜리 목록이 조회를 수백 번 한다.
+    headlines = _headline_specs(db, rows)
+    counts = _spec_counts(db, [row.id for row in rows])
     return Page(
-        items=[model_out(db, row, viewer) for row in rows],
+        items=[
+            model_out(
+                db,
+                row,
+                viewer,
+                headline=headlines.get(row.id, []),
+                spec_count=counts.get(row.id, 0),
+            )
+            for row in rows
+        ],
         total=total,
         limit=limit,
         offset=offset,
@@ -600,7 +803,7 @@ def create_model(db: Session, actor: User, payload: dict[str, Any]) -> Equipment
         name=name,
         name_ko=payload.get("name_ko"),
         normalized=normalized,
-        form_factor=payload.get("form_factor") or "",
+        form_factor_term_id=payload.get("form_factor_term_id"),
         summary=payload.get("summary"),
         spec_note=payload.get("spec_note"),
         created_by_id=actor.id,
@@ -629,7 +832,7 @@ def update_model(db: Session, model_id: uuid.UUID, changes: dict[str, Any]) -> E
     if "name" in changes and changes["name"] is not None:
         row.name = clean(changes["name"])
         row.normalized = compare_key(row.name)
-    for field in ("name_ko", "form_factor", "status", "summary", "spec_note"):
+    for field in ("name_ko", "form_factor_term_id", "status", "summary", "spec_note"):
         if field in changes:
             setattr(row, field, changes[field])
 
@@ -663,7 +866,7 @@ def delete_model(db: Session, model_id: uuid.UUID) -> None:
     db.commit()
 
 
-# --- 계열 역량 편집 -----------------------------------------------------------
+# --- 계열의 시험 항목 편집 -----------------------------------------------------------
 
 
 def _method_id(db: Session, code: str | None) -> uuid.UUID | None:
@@ -685,9 +888,9 @@ def _method_id(db: Session, code: str | None) -> uuid.UUID | None:
     )
 
 
-def add_capability(
+def add_test_item(
     db: Session, series_id: uuid.UUID, payload: dict[str, Any]
-) -> ModelCapabilityOut:
+) -> SeriesTestItemOut:
     series = get_series(db, series_id)
     payload = _resolved(db, payload)
     method_id = payload.get("method_id") or _method_id(db, payload.get("method_code"))
@@ -698,22 +901,22 @@ def add_capability(
             status=400,
         )
     clash = db.scalar(
-        select(ModelCapability).where(
-            ModelCapability.series_id == series.id,
-            ModelCapability.test_item_term_id == payload["test_item_term_id"],
-            ModelCapability.method_id.is_(None)
+        select(SeriesTestItem).where(
+            SeriesTestItem.series_id == series.id,
+            SeriesTestItem.test_item_term_id == payload["test_item_term_id"],
+            SeriesTestItem.method_id.is_(None)
             if method_id is None
-            else ModelCapability.method_id == method_id,
+            else SeriesTestItem.method_id == method_id,
         )
     )
     if clash is not None:
         raise Conflict(
             "TSC-CATALOG-0004",
-            "같은 시험 항목·시험법의 역량이 이미 있습니다. 그것을 고치세요.",
-            details={"capability_id": str(clash.id)},
+            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치세요.",
+            details={"equipment_test_item_id": str(clash.id)},
         )
 
-    row = ModelCapability(
+    row = SeriesTestItem(
         series_id=series.id,
         test_item_term_id=payload["test_item_term_id"],
         method_id=method_id,
@@ -722,20 +925,25 @@ def add_capability(
     db.add(row)
     db.commit()
     db.refresh(row)
-    return next(one for one in _capabilities(db, series.id) if one.id == row.id)
+    return next(one for one in _test_items(db, series.id) if one.id == row.id)
 
 
-def delete_capability(db: Session, series_id: uuid.UUID, capability_id: uuid.UUID) -> None:
+def delete_test_item(
+    db: Session, series_id: uuid.UUID, equipment_test_item_id: uuid.UUID
+) -> None:
     series = get_series(db, series_id)
-    row = db.get(ModelCapability, capability_id)
+    row = db.get(SeriesTestItem, equipment_test_item_id)
     if row is None or row.series_id != series.id:
-        raise NotFound("TSC-CATALOG-0005", "역량을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없습니다.")
     db.delete(row)
     db.commit()
 
 
 def upsert_limit(
-    db: Session, series_id: uuid.UUID, capability_id: uuid.UUID, payload: dict[str, Any]
+    db: Session,
+    series_id: uuid.UUID,
+    equipment_test_item_id: uuid.UUID,
+    payload: dict[str, Any],
 ) -> ModelLimitOut:
     """조건 한 칸을 넣거나 덮어쓴다.
 
@@ -744,9 +952,9 @@ def upsert_limit(
     300 kN 이 붙는다(ADR 0006).
     """
     series = get_series(db, series_id)
-    capability = db.get(ModelCapability, capability_id)
-    if capability is None or capability.series_id != series.id:
-        raise NotFound("TSC-CATALOG-0005", "역량을 찾을 수 없습니다.")
+    test_item = db.get(SeriesTestItem, equipment_test_item_id)
+    if test_item is None or test_item.series_id != series.id:
+        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없습니다.")
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
@@ -761,13 +969,13 @@ def upsert_limit(
         )
 
     existing = db.scalar(
-        select(ModelCapabilityLimit).where(
-            ModelCapabilityLimit.model_capability_id == capability.id,
-            ModelCapabilityLimit.condition_key_id == key.id,
+        select(SeriesTestCondition).where(
+            SeriesTestCondition.series_test_item_id == test_item.id,
+            SeriesTestCondition.condition_key_id == key.id,
         )
     )
-    target = existing or ModelCapabilityLimit(
-        model_capability_id=capability.id, condition_key_id=key.id
+    target = existing or SeriesTestCondition(
+        series_test_item_id=test_item.id, condition_key_id=key.id
     )
     target.min_value = low
     target.max_value = high
@@ -777,18 +985,18 @@ def upsert_limit(
         db.add(target)
     db.commit()
 
-    return next(one for one in _limits(db, capability.id) if one.condition_key_id == key.id)
+    return next(one for one in _limits(db, test_item.id) if one.condition_key_id == key.id)
 
 
 def delete_limit(
-    db: Session, series_id: uuid.UUID, capability_id: uuid.UUID, limit_id: uuid.UUID
+    db: Session, series_id: uuid.UUID, equipment_test_item_id: uuid.UUID, limit_id: uuid.UUID
 ) -> None:
     series = get_series(db, series_id)
-    capability = db.get(ModelCapability, capability_id)
-    if capability is None or capability.series_id != series.id:
-        raise NotFound("TSC-CATALOG-0005", "역량을 찾을 수 없습니다.")
-    target = db.get(ModelCapabilityLimit, limit_id)
-    if target is None or target.model_capability_id != capability.id:
+    test_item = db.get(SeriesTestItem, equipment_test_item_id)
+    if test_item is None or test_item.series_id != series.id:
+        raise NotFound("TSC-CATALOG-0005", "시험 항목을 찾을 수 없습니다.")
+    target = db.get(SeriesTestCondition, limit_id)
+    if target is None or target.series_test_item_id != test_item.id:
         raise NotFound("TSC-CATALOG-0008", "조건을 찾을 수 없습니다.")
     db.delete(target)
     db.commit()
@@ -797,12 +1005,12 @@ def delete_limit(
 # --- 복사 --------------------------------------------------------------------
 
 
-def copy_capabilities_to(db: Session, equipment: Equipment, actor: User) -> int:
-    """카탈로그의 역량을 이 장비로 **복사한다.** 새로 만든 역량 수를 돌려준다.
+def copy_test_items_to(db: Session, equipment: Equipment, actor: User) -> int:
+    """카탈로그의 시험 항목을 이 장비로 **복사한다.** 새로 만든 시험 항목 수를 돌려준다.
 
     ## 두 곳에서 끌어온다
 
-    **무엇이 되나**는 그 기종이 속한 계열의 역량에서, **어디까지 되나**는 그
+    **무엇이 되나**는 그 기종이 속한 계열의 시험 항목에서, **어디까지 되나**는 그
     기종의 사양에서 온다. 계열 조건은 봉투이고 기종 사양은 그 기종의 것이라,
     같은 조건이 양쪽에 있으면 **기종 사양이 이긴다** — 0.5 kN 짜리에 계열 봉투인
     300 kN 이 붙으면 검색이 없는 능력을 있다고 답한다(ADR 0006).
@@ -822,7 +1030,7 @@ def copy_capabilities_to(db: Session, equipment: Equipment, actor: User) -> int:
     ## 이미 있는 것은 안 덮는다
 
     덮으면 손으로 고쳐 둔 실측이 조용히 사라진다. **커밋은 부르는 쪽이 한다** —
-    장비 생성과 같은 트랜잭션에 있어야 "장비는 생겼는데 역량만 없는" 상태가 안 된다.
+    장비 생성과 같은 트랜잭션에 있어야 "장비는 생겼는데 시험 항목만 없는" 상태가 안 된다.
     """
     if equipment.model_id is None:
         return 0
@@ -834,21 +1042,21 @@ def copy_capabilities_to(db: Session, equipment: Equipment, actor: User) -> int:
 
     made = 0
     for source in db.scalars(
-        select(ModelCapability).where(ModelCapability.series_id == model.series_id)
+        select(SeriesTestItem).where(SeriesTestItem.series_id == model.series_id)
     ):
         exists = db.scalar(
-            select(Capability).where(
-                Capability.equipment_id == equipment.id,
-                Capability.test_item_term_id == source.test_item_term_id,
-                Capability.method_id.is_(None)
+            select(EquipmentTestItem).where(
+                EquipmentTestItem.equipment_id == equipment.id,
+                EquipmentTestItem.test_item_term_id == source.test_item_term_id,
+                EquipmentTestItem.method_id.is_(None)
                 if source.method_id is None
-                else Capability.method_id == source.method_id,
+                else EquipmentTestItem.method_id == source.method_id,
             )
         )
         if exists is not None:
             continue
 
-        copied = Capability(
+        copied = EquipmentTestItem(
             equipment_id=equipment.id,
             test_item_term_id=source.test_item_term_id,
             method_id=source.method_id,
@@ -861,8 +1069,8 @@ def copy_capabilities_to(db: Session, equipment: Equipment, actor: User) -> int:
 
         limits: dict[uuid.UUID, dict[str, Any]] = {}
         for limit in db.scalars(
-            select(ModelCapabilityLimit).where(
-                ModelCapabilityLimit.model_capability_id == source.id
+            select(SeriesTestCondition).where(
+                SeriesTestCondition.series_test_item_id == source.id
             )
         ):
             limits[limit.condition_key_id] = {
@@ -882,7 +1090,11 @@ def copy_capabilities_to(db: Session, equipment: Equipment, actor: User) -> int:
             }
 
         for key_id, values in limits.items():
-            db.add(CapabilityLimit(capability_id=copied.id, condition_key_id=key_id, **values))
+            db.add(
+                EquipmentTestCondition(
+                    equipment_test_item_id=copied.id, condition_key_id=key_id, **values
+                )
+            )
         made += 1
     return made
 

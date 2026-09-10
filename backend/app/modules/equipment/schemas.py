@@ -17,6 +17,8 @@ class CalibrationOut(BaseModel):
     next_due_on: date | None
     certificate_no: str | None
     provider: str | None
+    """교정 기관 이름. 축의 값에서 온다."""
+    provider_term_id: uuid.UUID | None
     note: str | None
 
 
@@ -26,6 +28,9 @@ class EquipmentOut(BaseModel):
     id: uuid.UUID
     asset_no: str
     name: str
+    """현장 호칭. 카탈로그의 기종명(`model_name`)과 다른 칸이다."""
+    dept_asset_no: str | None
+    """부서관리번호. 부서 안에서만 유일하다."""
 
     model_id: uuid.UUID | None
     model_name: str | None
@@ -36,44 +41,122 @@ class EquipmentOut(BaseModel):
     """그 기종이 속한 계열. 사람이 아는 이름은 대개 이쪽이다 — 「6800 시리즈」 는
     알아도 「68FM-300」 은 라벨을 봐야 안다(ADR 0006)."""
     category: str | None
+    """장비유형. **기종이 있으면 그 계열의 분류**이고, 카탈로그 미연결이면 이 개체가
+    직접 가리키는 분류다. 어느 쪽에서 왔든 화면이 같은 칸을 그린다."""
+    category_group: str | None
+    """장비군 — 그 유형의 최상위 조상(분류 축은 21군 / 87유형의 트리다).
+
+    **칸으로 저장하지 않는다.** 저장하면 유형만 고친 날 군이 어긋나고, 그 어긋남은
+    아무 화면에도 안 보인다."""
     manufacturer: str | None
     """**모델에서 끌어온다.** 개체는 이 둘을 갖지 않는다 — 같은 모델 열 대에 열 번
     적히면 열 번 다 같을 이유가 없다.
 
+    카탈로그 미연결일 때만 개체의 표시용 칸(`maker_text`·`model_text`)에서 온다.
+    그 값은 기준정보와 안 이어져 있어 **검색이 안 본다** — 화면이 그 사실을 말한다.
+
     이름으로 주는 이유: id 만 주면 목록 한 줄을 그리려고 화면이 카탈로그를 또
     조회해야 하고, 그 조회가 빠진 화면은 빈 칸을 보여 준다."""
+    catalog_linked: bool
+    """카탈로그의 기종에 이어져 있나. 아니면 제조사·모델명·분류가 **개체가 적은
+    글자**라, 검색과 사양이 그것을 못 쓴다 — 목록이 그 사실을 표시한다."""
 
     serial_no: str | None
     workspace_slug: str | None
     workspace_name: str | None
+    shared_use: bool
+    """다른 부서도 쓸 수 있나. **가시성이 아니다** — 찾은 사람에게 「빌릴 수 있나」 를
+    말해 준다."""
     site: str | None
     location: str | None
     status: str
     acquired_on: date | None
+    manufactured_year: int | None
+    retired_on: date | None
+    """폐기일. 상태가 `retired` 일 때만 값이 있다."""
     contact_name: str | None
     note: str | None
-    capability_count: int
-    """이 장비에 등록된 역량 수. 0 이면 **검색에 절대 안 걸린다** — 목록에서
+    test_item_count: int
+    """이 장비에 등록된 시험 항목 수. 0 이면 **검색에 절대 안 걸린다** — 목록에서
     그것이 보여야 채워 넣을 마음이 생긴다."""
     test_items: list[str]
-    """이 장비가 하는 시험 항목. **목록 한 줄에서 바로 보인다** — 역량을 열어 봐야
+    """이 장비가 하는 시험 항목. **목록 한 줄에서 바로 보인다** — 시험 항목을 열어 봐야
     아는 화면은 「우리가 무슨 시험을 할 수 있나」 에 답하지 못한다."""
+    calibration_required: bool
+    calibration_interval_months: int | None
     calibration_due_on: date | None
-    """가장 최근 교정의 다음 예정일. 지났으면 화면이 표를 단다."""
+    """다음 교정 예정일. 지났으면 화면이 표를 단다.
+
+    **성적서에 적힌 날이 언제나 이긴다** — 기관이 정한 날이 진실이다. 없으면 마지막
+    교정일에 주기를 더해 계산하고, 그때는 `calibration_due_estimated` 가 참이다."""
+    calibration_due_estimated: bool
+    """위 날짜가 계산값인가. **계산값임을 말 안 하면 사람은 그것을 성적서로 읽는다.**"""
+    calibration_missing: bool
+    """교정 대상인데 이력이 한 건도 없나. **이력이 없다는 사실만으로는 못 가른다** —
+    대상이 아닌 장비와 빠뜨린 장비가 같아 보이고, 그 둘은 할 일이 정반대다."""
+    spec_override_count: int
+    """카탈로그 위에 덮어 둔 실측 사양이 몇 칸인가. 0 이면 이 장비의 수치는 전부
+    사양서에서 온 값이다."""
     created_at: datetime
     can_edit: bool
     """요청한 사람이 고칠 수 있는가. **서버가 판정한다** — 화면이 스스로 계산하면
     화면마다 답이 달라진다."""
 
 
+class FilterOption(BaseModel):
+    """거르기 한 칸이 고를 수 있는 값 하나. **수를 함께 준다.**
+
+    「나노압입기」 를 고를 수 있는데 결과가 0 이면 사람은 거르기를 안 믿게 된다. 그래서
+    **목록에 실제로 있는 값만** 내려보내고, 몇 대인지 함께 적는다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    value: str
+    label: str
+    count: int
+
+
+class EquipmentFilterOptionsOut(BaseModel):
+    """보유 장비 목록의 열마다 고를 수 있는 값들.
+
+    **보이는 장비만 센다**(`visible_equipment`) — 안 보이는 부서의 값을 골라 봐야
+    결과가 비고, 그 빈 결과는 권한 때문인지 데이터 때문인지 구별되지 않는다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    categories: list[FilterOption]
+    workspaces: list[FilterOption]
+    sites: list[FilterOption]
+    statuses: list[FilterOption]
+    test_items: list[FilterOption]
+
+
 class EquipmentCreateRequest(BaseModel):
+    """보유 장비를 등록한다.
+
+    **필수는 여덟이다** — 자산번호·장비명·보유 부서·거점·상세위치·공용여부·상태,
+    그리고 장비유형(기종을 고르면 따라오므로 그때는 안 적는다).
+
+    비울 수 없게 한 것들은 전부 「없으면 그 장비를 못 찾는」 칸이다. 나머지는 권장이나
+    선택으로 둔다 — 다 적어야 저장되게 하면 사람은 등록을 미루고, 미룬 장비는 결국
+    시스템 밖에 남는다.
+    """
+
     asset_no: str = Field(min_length=1, max_length=50)
     name: str = Field(min_length=1, max_length=200)
-    workspace_slug: str | None = None
-    """비우면 전사 공용 — 시스템 관리자만 만들 수 있다."""
+    """현장 호칭. 「3동 만능기」 처럼 부르는 이름을 적는다 — 사람이 찾을 때 치는 말이다."""
+    dept_asset_no: str | None = Field(default=None, max_length=50)
+    """부서관리번호. 부서 안에서만 유일하면 된다."""
+    workspace_slug: str
+    """보유 부서. **비울 수 없다** — 장비에는 관리하는 부서가 반드시 있다.
+    공용 장비도 마찬가지고, 공용인지는 `shared_use` 가 따로 말한다."""
+    shared_use: bool = False
+    """다른 부서도 쓸 수 있나."""
 
     model_id: uuid.UUID | None = None
-    """카탈로그의 모델. **고르면 그 모델의 역량이 이 장비로 복사된다** — 상속이
+    """카탈로그의 모델. **고르면 그 모델의 시험 항목이 이 장비로 복사된다** — 상속이
     아니라 복사다(ADR 0004). 그 뒤로는 이 장비가 진실이고, 챔버를 뗐다면 여기서
     고친다.
 
@@ -81,10 +164,29 @@ class EquipmentCreateRequest(BaseModel):
     막으면 사람은 시스템 밖에서 일한다."""
 
     serial_no: str | None = Field(default=None, max_length=100)
-    site_term_id: uuid.UUID | None = None
-    location: str | None = Field(default=None, max_length=200)
+
+    category_term_id: uuid.UUID | None = None
+    """장비유형. **기종을 고르면 안 적는다** — 분류는 그 기종의 계열이 갖는다
+    (ADR 0006). 기종이 없으면 필수다: 무슨 종류인지 모르는 장비는 검색에서 통째로 빠진다."""
+    maker_text: str | None = Field(default=None, max_length=200)
+    model_text: str | None = Field(default=None, max_length=200)
+    """카탈로그 미연결 장비의 제조사·모델명. **표시용이고 검색은 안 본다.**
+    기종을 고르면 서버가 이 둘을 비운다 — 같은 사실이 두 곳에 남으면 안 된다."""
+
+    site_term_id: uuid.UUID
+    location: str = Field(min_length=1, max_length=200)
+    """거점과 그 안의 자리. 둘 다 필수다 — 어디 있는지 모르는 장비는 찾아도 소용없다."""
     status: str = Field(default="operational")
     acquired_on: date | None = None
+    manufactured_year: int | None = Field(default=None, ge=1900, le=2200)
+    retired_on: date | None = None
+    """폐기일. **상태가 `retired` 일 때만 받는다.**"""
+
+    calibration_required: bool = False
+    calibration_interval_months: int | None = Field(default=None, ge=1, le=600)
+    """교정 대상이면 주기를 함께 적는다 — 없으면 차기일을 계산할 수 없고, 그러면
+    「곧 만료」 목록이 이 장비를 영원히 안 부른다."""
+
     contact_user_id: uuid.UUID | None = None
     note: str | None = None
 
@@ -98,14 +200,25 @@ class EquipmentUpdateRequest(BaseModel):
     """
 
     name: str | None = Field(default=None, min_length=1, max_length=200)
+    dept_asset_no: str | None = None
     model_id: uuid.UUID | None = None
-    """카탈로그 연결을 바꾼다. **역량은 다시 복사되지 않는다** — 이미 이 장비의
-    것이 된 값을 사양서로 덮으면, 손으로 고쳐 둔 실측이 조용히 사라진다."""
+    """카탈로그 연결을 바꾼다. **시험 항목은 다시 복사되지 않는다** — 이미 이 장비의
+    것이 된 값을 사양서로 덮으면, 손으로 고쳐 둔 실측이 조용히 사라진다.
+
+    연결하면 개체가 적어 둔 분류·제조사·모델명은 서버가 비운다."""
     serial_no: str | None = None
+    category_term_id: uuid.UUID | None = None
+    maker_text: str | None = None
+    model_text: str | None = None
     site_term_id: uuid.UUID | None = None
     location: str | None = None
+    shared_use: bool | None = None
     status: str | None = None
     acquired_on: date | None = None
+    manufactured_year: int | None = Field(default=None, ge=1900, le=2200)
+    retired_on: date | None = None
+    calibration_required: bool | None = None
+    calibration_interval_months: int | None = Field(default=None, ge=1, le=600)
     contact_user_id: uuid.UUID | None = None
     note: str | None = None
     workspace_slug: str | None = None
@@ -116,7 +229,9 @@ class CalibrationCreateRequest(BaseModel):
     calibrated_on: date
     next_due_on: date | None = None
     certificate_no: str | None = Field(default=None, max_length=100)
-    provider: str | None = Field(default=None, max_length=200)
+    provider_term_id: uuid.UUID | None = None
+    """교정 기관을 **축의 값 id 로** 준다. 같은 기관이 두 이름으로 갈리면
+    「이 기관이 교정한 장비」 를 묻는 순간 절반만 답한다."""
     note: str | None = None
 
 
@@ -124,7 +239,7 @@ class CalibrationCreateRequest(BaseModel):
 
 
 class ModelLimitOut(BaseModel):
-    """계열 역량의 조건 한 칸. 개체 쪽(LimitOut)과 같은 모양이다."""
+    """계열의 시험 항목의 조건 한 칸. 개체 쪽(LimitOut)과 같은 모양이다."""
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -140,7 +255,21 @@ class ModelLimitOut(BaseModel):
     note: str | None
 
 
-class ModelCapabilityOut(BaseModel):
+class CitedMethodOut(BaseModel):
+    """이 시험 항목이 인용하는 규격 하나. **표로 이어져 있다** — 비고의 글자가 아니다."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    code: str
+    edition: str | None
+    title: str
+    has_requirements: bool
+    """그 규격의 요구 조건이 적혀 있나. **없으면 검색이 조건으로 좁히지 못한다** —
+    화면이 그 사실을 말해야 채울 마음이 생긴다."""
+
+
+class SeriesTestItemOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: uuid.UUID
@@ -148,6 +277,9 @@ class ModelCapabilityOut(BaseModel):
     test_item: str
     method_id: uuid.UUID | None
     method_code: str | None
+    methods: list[CitedMethodOut]
+    """카탈로그가 이 시험 항목에 인용한 규격들. **시험 항목을 규격마다 쪼개지 않는다** — 쪼개면
+    검색이 같은 장비를 여덟 줄로 답한다."""
     note: str | None
     limits: list[ModelLimitOut]
     """**계열 전체가 만족하는 조건만** 여기 온다. 기종마다 갈리는 수치는 그 기종의
@@ -184,8 +316,13 @@ class EquipmentSeriesOut(BaseModel):
     category_term_id: uuid.UUID | None
     kind: str
     """본체(main)인가 부속(accessory·sensor·software)인가."""
-    drive: str
-    form_factor: str
+    drive: str | None
+    """구동 방식(기준정보 축). 이름으로 준다."""
+    drive_term_id: uuid.UUID | None
+    form_factor: str | None
+    """기종 형태(기준정보 축). 이름으로 준다 — id 만 주면 목록 한 줄을 그리려고
+    화면이 기준정보를 또 조회해야 한다."""
+    form_factor_term_id: uuid.UUID | None
     status: str
     summary: str | None
     spec_note: str | None
@@ -202,7 +339,7 @@ class EquipmentSeriesOut(BaseModel):
     operational_count: int
     """계열 전체의 보유 대수와 가동 대수. 기종별 수는 기종 목록이 갖는다."""
 
-    capabilities: list[ModelCapabilityOut]
+    test_items: list[SeriesTestItemOut]
     relations: list[SeriesRelationOut]
     created_at: datetime
     can_edit: bool
@@ -236,8 +373,10 @@ class EquipmentSeriesCreateRequest(BaseModel):
     category: str | None = Field(default=None, max_length=200)
     """장비 분류를 **이름으로** 줄 때."""
     kind: str = Field(default="main", pattern="^(main|accessory|sensor|software)$")
-    drive: str = Field(default="", max_length=30)
-    form_factor: str = Field(default="", max_length=40)
+    drive_term_id: uuid.UUID | None = None
+    form_factor_term_id: uuid.UUID | None = None
+    """기종 형태를 **축의 값 id 로** 준다. 자유 문자열이 아니다 — 원본 슬러그
+    (`benchtop`)로 적어 오던 것을 그대로 두면 화면에 영어가 뜨고 거를 수도 없다."""
     summary: str | None = None
     spec_note: str | None = None
     source_id: uuid.UUID | None = None
@@ -252,8 +391,8 @@ class EquipmentSeriesUpdateRequest(BaseModel):
     brand: str | None = Field(default=None, max_length=100)
     category_term_id: uuid.UUID | None = None
     kind: str | None = Field(default=None, pattern="^(main|accessory|sensor|software)$")
-    drive: str | None = Field(default=None, max_length=30)
-    form_factor: str | None = Field(default=None, max_length=40)
+    drive_term_id: uuid.UUID | None = None
+    form_factor_term_id: uuid.UUID | None = None
     status: str | None = Field(default=None, pattern="^(active|discontinued)$")
     summary: str | None = None
     spec_note: str | None = None
@@ -265,6 +404,29 @@ class SeriesRelationCreateRequest(BaseModel):
     relation: str = Field(max_length=30)
     note: str | None = None
     """`-150 ~ +600 °C` 처럼 **무엇이 어떻게 바뀌는지**를 적는다."""
+
+
+class ModelHeadlineSpecOut(BaseModel):
+    """목록 한 줄이 그리는 **대표 사양** 한 칸.
+
+    사양표(`ModelSpecValueOut`)와 값 칸의 이름을 맞춘다 — 화면이 값을 글자로 만드는
+    함수를 하나만 두게 하려는 것이다. 모양을 달리 주면 목록과 상세가 같은 값을
+    다르게 적는 날이 오고, 그때 어느 쪽이 맞는지는 아무도 모른다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    definition_id: uuid.UUID
+    key: str
+    label: str
+    kind: str
+    si_unit: str
+    display_unit: str
+    num_value: float | None
+    num_min: float | None
+    num_max: float | None
+    text_value: str | None
+    bool_value: bool | None
 
 
 class EquipmentModelOut(BaseModel):
@@ -284,7 +446,10 @@ class EquipmentModelOut(BaseModel):
 
     이름과 id 를 함께 주는 이유: 이름만으로는 사양 정의를 분류로 거를 수 없고,
     id 만으로는 목록 한 줄을 그리려고 화면이 기준정보를 또 조회해야 한다."""
-    form_factor: str
+    form_factor: str | None
+    """기종 형태(기준정보 축). 이름으로 준다 — id 만 주면 목록 한 줄을 그리려고
+    화면이 기준정보를 또 조회해야 한다."""
+    form_factor_term_id: uuid.UUID | None
     status: str
     summary: str | None
     spec_note: str | None
@@ -303,9 +468,23 @@ class EquipmentModelOut(BaseModel):
     """그중 지금 쓸 수 있는 것. 다섯 대 중 한 대만 가동이면 그 사실이 목록에
     보여야 한다 — 대수만 보면 여유 있어 보인다."""
 
-    capabilities: list[ModelCapabilityOut]
-    """**계열의 역량이다.** 이 기종만의 것이 아니라 계열이 하는 시험 목록이고,
+    test_items: list[SeriesTestItemOut]
+    """**계열의 시험 항목이다.** 이 기종만의 것이 아니라 계열이 하는 시험 목록이고,
     조건은 이 기종의 사양이 좁힌다(ADR 0006)."""
+
+    headline_specs: list[ModelHeadlineSpecOut]
+    """이 기종을 목록 한 줄에서 **가르는** 사양 두어 칸.
+
+    무엇이 대표인지는 **분류가 정한다**(온톨로지 `categories.json` 의
+    `headline_specs`) — 만능시험기는 하중이고 챔버는 온도다. 안 정한 분류는 검색축에
+    이어진 사양으로 대신한다: 이 시스템이 「판단에 쓰는 축」 이라고 이미 표시해 둔
+    것들이라, 대표를 새로 정하는 것보다 정본이 하나 적다.
+
+    **이름·계열·제조사만으로는 못 고른다.** 한 계열에 기종이 열일곱까지 있고, 그
+    열일곱을 가르는 것은 이 수치다."""
+    spec_count: int
+    """적힌 사양이 몇 칸인가. 0 이면 이 기종으로 등록하는 장비가 **조건 없이**
+    복사되고, 검색은 그것을 「모름」 으로 답한다."""
     created_at: datetime
     can_edit: bool
 
@@ -327,7 +506,9 @@ class EquipmentModelCreateRequest(BaseModel):
     """`series` 로 찾을 때 제조사까지 주면 후보가 줄어든다."""
     name: str = Field(min_length=1, max_length=150)
     name_ko: str | None = Field(default=None, max_length=150)
-    form_factor: str = Field(default="", max_length=40)
+    form_factor_term_id: uuid.UUID | None = None
+    """기종 형태를 **축의 값 id 로** 준다. 자유 문자열이 아니다 — 원본 슬러그
+    (`benchtop`)로 적어 오던 것을 그대로 두면 화면에 영어가 뜨고 거를 수도 없다."""
     summary: str | None = None
     spec_note: str | None = None
 
@@ -338,15 +519,15 @@ class EquipmentModelUpdateRequest(BaseModel):
     name: str | None = Field(default=None, min_length=1, max_length=150)
     name_ko: str | None = Field(default=None, max_length=150)
     series_id: uuid.UUID | None = None
-    """계열을 옮긴다. **역량은 다시 복사되지 않는다** — 이미 등록된 장비의 값은
+    """계열을 옮긴다. **시험 항목은 다시 복사되지 않는다** — 이미 등록된 장비의 값은
     그 장비가 갖는다."""
-    form_factor: str | None = Field(default=None, max_length=40)
+    form_factor_term_id: uuid.UUID | None = None
     status: str | None = Field(default=None, pattern="^(active|discontinued)$")
     summary: str | None = None
     spec_note: str | None = None
 
 
-class ModelCapabilityCreateRequest(BaseModel):
+class SeriesTestItemCreateRequest(BaseModel):
     """이 계열이 무슨 시험을 하나.
 
     시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
@@ -398,7 +579,7 @@ class ModelSpecValueOut(BaseModel):
     is_active: bool
     """정의가 꺼졌어도 이미 적힌 값은 보여 준다 — 안 보이면 지워진 줄 안다."""
     condition_key_id: uuid.UUID | None
-    """채워져 있으면 이 값이 역량 조건으로 따라 들어간 사양이다."""
+    """채워져 있으면 이 값이 시험 조건으로 따라 들어간 사양이다."""
     applies: bool
     """이 모델의 분류에 붙는 사양인가. **false 라도 값은 준다** — 분류를 나중에
     고쳤다고 이미 적은 사양이 사라지면 안 된다(ADR 0005)."""
@@ -463,7 +644,7 @@ class ModelSpecSaveResult(BaseModel):
     value: ModelSpecValueOut
     search_axis: str | None
     """이어진 검색축의 이름. 채워져 있으면 **이 기종으로 앞으로 등록할 장비**의
-    역량 조건이 된다. 비어 있으면 사양표에만 남는다 — 대부분이 그렇고 그래도 된다."""
+    시험 조건이 된다. 비어 있으면 사양표에만 남는다 — 대부분이 그렇고 그래도 된다."""
     existing_units: int
     """이 기종으로 **이미 등록된** 보유 장비 수. 그들에게는 반영되지 않는다 —
     개체의 값은 개체가 갖는다(ADR 0004)."""
@@ -478,3 +659,98 @@ class SpecSourceOut(BaseModel):
     maker: str | None
     pages: int | None
     published_on: date | None
+
+
+class EquipmentSpecValueOut(BaseModel):
+    """개체가 덮어 둔 실측값 한 칸. 사양표의 값(`ModelSpecValueOut`)과 값 칸을 맞춘다."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    num_value: float | None
+    num_min: float | None
+    num_max: float | None
+    text_value: str | None
+    bool_value: bool | None
+    measured_on: date | None
+    note: str | None
+    source_id: uuid.UUID | None
+    source_path: str | None
+    source_page: int | None
+    updated_at: datetime
+
+
+class EquipmentSpecItemOut(BaseModel):
+    """사양 한 칸 — **카탈로그 값과 실측을 함께 준다.**
+
+    화면이 둘을 겹쳐 그린다: 「실측 300 kN (사양서 250 kN)」. 하나만 주면 사람은 그
+    수치가 잰 값인지 사양서에서 온 값인지 알 수 없고, 그 둘은 믿는 정도가 다르다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    definition_id: uuid.UUID
+    key: str
+    label: str
+    kind: str
+    si_unit: str
+    display_unit: str
+    choices: list[str]
+    sort_order: int
+    condition_key_id: uuid.UUID | None
+    """채워져 있으면 이 칸을 덮을 때 **이 장비의 시험 조건도 함께 갱신된다.**"""
+
+    catalog: ModelSpecValueOut | None
+    """기종이 말하는 값. 카탈로그 미연결이거나 그 기종에 안 적힌 칸이면 비어 있다."""
+    measured: EquipmentSpecValueOut | None
+    """우리가 잰 값. **있으면 이쪽이 이긴다.**"""
+
+
+class EquipmentSpecGroupOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    group_id: uuid.UUID
+    slug: str
+    label: str
+    description: str | None
+    items: list[EquipmentSpecItemOut]
+
+
+class EquipmentSpecSheetOut(BaseModel):
+    """이 장비의 사양 — 기종 사양 위에 실측을 덮은 것.
+
+    **복사가 아니라 겹쳐 보기다.** 개체는 다른 값만 갖고, 나머지는 기종 사양이 그대로
+    보인다 — 전부 복사하면 카탈로그가 개정돼도 안 따라오고, 어느 값이 실측인지 구별이
+    사라진다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    equipment_id: uuid.UUID
+    model_id: uuid.UUID | None
+    model_name: str | None
+    groups: list[EquipmentSpecGroupOut]
+    override_count: int
+
+
+class EquipmentSpecSaveRequest(BaseModel):
+    """실측 한 칸을 넣거나 덮어쓴다. **종류에 맞는 칸만 채운다.**"""
+
+    definition_id: uuid.UUID
+    num_value: float | None = None
+    num_min: float | None = None
+    num_max: float | None = None
+    text_value: str | None = None
+    bool_value: bool | None = None
+    measured_on: date | None = None
+    note: str | None = None
+    source_id: uuid.UUID | None = None
+    source_page: int | None = None
+
+
+class EquipmentSpecSaveResult(BaseModel):
+    value: EquipmentSpecValueOut
+    condition_label: str | None
+    """검색축에 이어진 사양이면 그 축 이름. **이 숫자가 검색에 쓰인다**는 뜻이다."""
+    reflected: bool
+    """이 장비의 시험 조건이 실제로 갱신됐나. 손으로 고쳐 둔 조건은 안 덮는다."""

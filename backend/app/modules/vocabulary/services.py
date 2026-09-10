@@ -15,10 +15,22 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import CapabilityLimit
-from app.modules.equipment.models import ModelSpecValue
-from app.modules.methods.models import MethodRequirement
+from app.modules.equipment.models import (
+    Equipment,
+    EquipmentCalibration,
+    EquipmentModel,
+    EquipmentSeries,
+    ModelSpecValue,
+    SpecSource,
+)
+from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.test_items.models import (
+    EquipmentTestCondition,
+    EquipmentTestItem,
+    SeriesTestItem,
+)
 from app.modules.vocabulary.models import (
+    VOCABULARY_DOMAIN_LABELS,
     ConditionKey,
     Vocabulary,
     VocabularyAlias,
@@ -60,12 +72,20 @@ def _term_count(db: Session, vocabulary_id: uuid.UUID) -> int:
 
 
 def list_vocabularies(db: Session) -> list[VocabularyOut]:
+    """축 목록. **어디의 축인지를 함께 준다.**
+
+    화면이 그것으로 묶는다 — 한 목록에 일곱이 나란히 서면 「이게 어디 쓰이는 값이지」 를
+    알 수 없고, 그때 규격 제정기관 축에 회사 이름이 들어간다.
+    """
     rows = db.scalars(select(Vocabulary).order_by(Vocabulary.sort_order, Vocabulary.label))
     return [
         VocabularyOut(
             id=row.id,
             slug=row.slug,
             label=row.label,
+            domain=row.domain,
+            # 이름까지 서버가 준다 — 화면마다 사전을 두면 한 곳만 안 고쳐진다.
+            domain_label=VOCABULARY_DOMAIN_LABELS.get(row.domain, row.domain),
             description=row.description,
             entry_policy=row.entry_policy,
             parent_slug=row.parent_slug,
@@ -86,11 +106,77 @@ def _aliases_of(db: Session, term_id: uuid.UUID) -> list[str]:
     )
 
 
+#: 축마다 **무엇이 그 값을 가리키나.** (모델, 칸) 목록이다.
+#:
+#: 이 표가 없으면 쓰임 수를 셀 수 없고, 쓰임 수가 없으면 기준정보 화면은 지워도 되는
+#: 값과 안 되는 값을 구별하지 못한다 — 「이 제조사 지워도 되나」 에 답하는 자리가 여기다.
+#:
+#: 여기 없는 축은 0 이 아니라 **모른다**가 맞지만, 축을 만들면서 이 표에 한 줄 더하는
+#: 것을 잊는 편이 훨씬 흔하다. `tests/api/test_vocabulary_usage.py` 가 그것을 잡는다.
+_REFERENCES: dict[str, list[tuple[Any, Any]]] = {
+    "test_item": [
+        (EquipmentTestItem, EquipmentTestItem.test_item_term_id),
+        (SeriesTestItem, SeriesTestItem.test_item_term_id),
+        (TestMethod, TestMethod.test_item_term_id),
+    ],
+    "equipment_category": [
+        (EquipmentSeries, EquipmentSeries.category_term_id),
+        (Equipment, Equipment.category_term_id),
+        (SpecDefinitionCategory, SpecDefinitionCategory.category_term_id),
+    ],
+    "manufacturer": [
+        (EquipmentSeries, EquipmentSeries.maker_term_id),
+        (SpecSource, SpecSource.maker_term_id),
+    ],
+    "form_factor": [
+        (EquipmentSeries, EquipmentSeries.form_factor_term_id),
+        (EquipmentModel, EquipmentModel.form_factor_term_id),
+    ],
+    "drive": [(EquipmentSeries, EquipmentSeries.drive_term_id)],
+    "site": [(Equipment, Equipment.site_term_id)],
+    "calibration_provider": [(EquipmentCalibration, EquipmentCalibration.provider_term_id)],
+    "standard_body": [(TestMethod, TestMethod.body_term_id)],
+}
+
+
+def _usage_of(db: Session, vocabulary: Vocabulary) -> dict[uuid.UUID, int]:
+    """그 축의 값마다 몇 군데서 쓰이나. **셀 때 센다.**
+
+    전에는 `vocabulary_terms.usage_count` 칸에 적어 두게 되어 있었는데, **아무도 안
+    갱신했다** — 장비 700대와 계열 200개를 들이고도 모든 값이 0 이었다. 0 인 화면은
+    거짓말을 하고, 그 거짓말로는 값을 지울지 말지 정할 수 없다.
+
+    칸당 GROUP BY 한 번이다(축 하나에 두세 번). 가리키는 칸에 인덱스가 있어서 값이
+    백 개든 천 개든 같은 비용이다 — 틀린 수를 싸게 얻느니 맞는 수를 이 값에 치른다.
+    """
+    out: dict[uuid.UUID, int] = {}
+    for model, column in _REFERENCES.get(vocabulary.slug, []):
+        stmt = select(column, func.count()).where(column.is_not(None)).group_by(column)
+        deleted = getattr(model, "deleted_at", None)
+        if deleted is not None:
+            # 지운 장비가 값을 붙잡고 있으면 「쓰는 데가 있다」 가 거짓이 된다.
+            stmt = stmt.where(deleted.is_(None))
+        for term_id, count in db.execute(stmt).all():
+            out[term_id] = out.get(term_id, 0) + count
+    return out
+
+
 def term_out(
-    db: Session, term: VocabularyTerm, *, vocabulary: Vocabulary | None = None
+    db: Session,
+    term: VocabularyTerm,
+    *,
+    vocabulary: Vocabulary | None = None,
+    usage: dict[uuid.UUID, int] | None = None,
 ) -> TermOut:
+    """값 한 줄.
+
+    쓰임 수는 **목록이 한 번에 세어 넘긴다**(`list_terms`). 안 넘기면 여기서 그 축을
+    한 번 센다 — 한 줄을 그리려고 축 전체를 세는 셈이지만, 한 줄짜리 호출은 드물다.
+    """
     vocab = vocabulary or db.get(Vocabulary, term.vocabulary_id)
     parent = db.get(VocabularyTerm, term.parent_term_id) if term.parent_term_id else None
+    if usage is None:
+        usage = _usage_of(db, vocab) if vocab else {}
     return TermOut(
         id=term.id,
         vocabulary_slug=vocab.slug if vocab else "",
@@ -99,7 +185,7 @@ def term_out(
         parent_term_id=term.parent_term_id,
         parent_value=parent.value if parent else None,
         status=term.status,
-        usage_count=term.usage_count,
+        usage_count=usage.get(term.id, 0),
         aliases=_aliases_of(db, term.id),
         attributes=term.attributes,
         created_at=term.created_at,
@@ -117,7 +203,9 @@ def list_terms(
     if query:
         stmt = stmt.where(VocabularyTerm.normalized.contains(compare_key(query)))
     rows = db.scalars(stmt.order_by(VocabularyTerm.value))
-    return [term_out(db, row, vocabulary=vocabulary) for row in rows]
+    # **한 번에 센다.** 줄마다 세면 값 108개짜리 축에서 조회가 수백 번 돈다.
+    usage = _usage_of(db, vocabulary)
+    return [term_out(db, row, vocabulary=vocabulary, usage=usage) for row in rows]
 
 
 def _find_by_key(db: Session, vocabulary_id: uuid.UUID, key: str) -> VocabularyTerm | None:
@@ -323,8 +411,8 @@ def _condition_usage(db: Session, condition_key_id: uuid.UUID) -> int:
     limits = (
         db.scalar(
             select(func.count())
-            .select_from(CapabilityLimit)
-            .where(CapabilityLimit.condition_key_id == condition_key_id)
+            .select_from(EquipmentTestCondition)
+            .where(EquipmentTestCondition.condition_key_id == condition_key_id)
         )
         or 0
     )

@@ -13,12 +13,12 @@ BACKEND = Path(__file__).resolve().parents[2]
 MODULES = BACKEND / "app" / "modules"
 
 #: 모듈 이름이 프론트와 같아야 한다는 규칙의 예외. **사유와 함께** 적는다.
-#:   capabilities — 프론트에서는 장비 상세의 한 패널이라 equipment 안에 산다.
+#:   test_items — 프론트에서는 장비 상세의 한 패널이라 equipment 안에 산다.
 #:   resolve      — 화면이 아니라 **도구가 쓰는 모듈**이다. AI·MCP 가 「이게 이미
 #:                  있나」 를 묻는 자리고, 사람은 그 물음을 피커 안에서 한다
 #:                  (equipment/ModelPicker). 짝을 만들면 빈 폴더가 하나 는다.
 #:   search       — 프론트 모듈 이름이 같다(예외 아님, 여기 적지 않는다).
-FRONTEND_MERGED = {"capabilities", "resolve"}
+FRONTEND_MERGED = {"test_items", "resolve"}
 
 
 def _imports(path: Path) -> set[str]:

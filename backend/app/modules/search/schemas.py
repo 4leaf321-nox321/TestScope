@@ -1,4 +1,4 @@
-"""역량 검색의 요청·응답 형태.
+"""장비 찾기의 요청·응답 형태.
 
     "80도 환경에서 20 kN 이상의 인장시험 가능한 장비 있어?"
 
@@ -40,7 +40,7 @@ class ConditionQuery(BaseModel):
 class SearchRequest(BaseModel):
     test_item_term_id: uuid.UUID | None = None
     method_id: uuid.UUID | None = None
-    """규격까지 지정하면 그 규격을 걸어 둔 역량만 완전 일치로 본다."""
+    """규격까지 지정하면 그 규격을 걸어 둔 시험 항목만 완전 일치로 본다."""
     conditions: list[ConditionQuery] = Field(default_factory=list, max_length=20)
 
     include_unavailable: bool = False
@@ -67,12 +67,12 @@ class ConditionMatch(BaseModel):
     """
     asked: str
     """사람이 읽을 물음. 80 degC 에서 · 20 kN 이상."""
-    capability_range: str | None
+    condition_range: str | None
     """장비가 적어 둔 범위. -70 ~ 300 degC. 없으면 None."""
 
 
 class SearchHit(BaseModel):
-    capability_id: uuid.UUID
+    equipment_test_item_id: uuid.UUID
     equipment_id: uuid.UUID
     asset_no: str
     equipment_name: str
@@ -107,8 +107,8 @@ class SearchResponse(BaseModel):
     hits: list[SearchHit]
     total: int
     unmet_count: int
-    """조건에 걸려 빠진 역량 수. **0 건일 때 이 숫자가 답을 준다** — 아무것도 안
+    """조건에 걸려 빠진 시험 항목 수. **0 건일 때 이 숫자가 답을 준다** — 아무것도 안
     나온 것이 "그런 장비가 없어서" 인지 "조건이 너무 좁아서" 인지 가른다."""
     unregistered_equipment: int
-    """역량이 하나도 안 적힌 장비 수. 검색에 절대 안 걸리는 것들이라, 결과가
+    """시험 항목이 하나도 안 적힌 장비 수. 검색에 절대 안 걸리는 것들이라, 결과가
     빈약할 때 **어디를 채워야 하는지**를 말해 준다."""

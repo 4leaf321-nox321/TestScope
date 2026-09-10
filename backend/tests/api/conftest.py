@@ -100,7 +100,47 @@ def term_factory(client: TestClient, admin: Signed) -> Iterator[object]:
 
 @pytest.fixture
 def condition_ids(client: TestClient, admin: Signed) -> dict[str, str]:
-    """조건 키 -> id. 검색과 역량 시험이 온도·하중을 이름으로 집는다."""
+    """조건 키 -> id. 검색과 시험 항목 시험이 온도·하중을 이름으로 집는다."""
     response = client.get("/api/condition-keys", headers=admin.headers)
     assert response.status_code == 200, response.text
     return {row["key"]: row["id"] for row in response.json()}
+
+
+def site_id(client: TestClient, admin: Signed) -> str:
+    """거점 값 하나. **장비는 거점 없이 못 만든다** — 어디 있는지 모르는 장비는
+    찾아도 소용이 없어서 비울 수 없게 했다(0008 마이그레이션).
+
+    값은 없으면 만들고 있으면 그대로 쓴다 — 축이 열려 있어 같은 이름은 한 줄이다.
+    """
+    response = client.post(
+        "/api/vocabularies/site/terms", json={"value": "본사"}, headers=admin.headers
+    )
+    if response.status_code == 201:
+        return str(response.json()["id"])
+    listed = client.get("/api/vocabularies/site/terms", headers=admin.headers)
+    assert listed.status_code == 200, listed.text
+    for row in listed.json():
+        if row["value"] == "본사":
+            return str(row["id"])
+    raise AssertionError(f"거점 값을 만들 수 없습니다: {response.text}")
+
+
+def category_id(client: TestClient, admin: Signed) -> str:
+    """장비유형 값 하나.
+
+    **기종을 안 고른 장비는 이것을 직접 가리켜야 한다** — 무슨 종류인지 모르는 장비는
+    분류로 좁히는 모든 화면에서 통째로 빠지고, 빠진 줄은 아무도 못 찾는다.
+    """
+    response = client.post(
+        "/api/vocabularies/equipment_category/terms",
+        json={"value": "만능재료시험기"},
+        headers=admin.headers,
+    )
+    if response.status_code == 201:
+        return str(response.json()["id"])
+    listed = client.get("/api/vocabularies/equipment_category/terms", headers=admin.headers)
+    assert listed.status_code == 200, listed.text
+    for row in listed.json():
+        if row["value"] == "만능재료시험기":
+            return str(row["id"])
+    raise AssertionError(f"분류 값을 만들 수 없습니다: {response.text}")

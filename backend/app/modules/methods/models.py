@@ -115,7 +115,7 @@ class MethodRequirement(Base):
 
     ## 값은 SI 로 담는다
 
-    사람이 kN 으로 적어도 저장은 N 이다(ConditionKey.si_unit). 검색이 장비 역량과
+    사람이 kN 으로 적어도 저장은 N 이다(ConditionKey.si_unit). 검색이 장비의 시험 조건과
     직접 비교하려면 둘이 같은 단위여야 하는데, 화면 단위로 담으면 그 비교가 조용히
     틀린다 — 20 이 20 N 인지 20 kN 인지 값만 봐서는 알 수 없다.
 

@@ -1,6 +1,6 @@
 """데모 데이터 — **설치는 이것을 부르지 않는다.**
 
-빈 화면으로는 이 시스템이 무엇을 하는지 보이지 않는다. 장비 몇 대와 그 역량을
+빈 화면으로는 이 시스템이 무엇을 하는지 보이지 않는다. 장비 몇 대와 그 시험 항목을
 넣어 두면 검색 화면이 실제로 무엇에 답하는지 한 번에 드러난다.
 
     python scripts/seed_demo.py            # 없는 것만 넣는다
@@ -27,12 +27,7 @@ import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시
 from _console import survive_cp949
 from app.database import SessionLocal
 from app.modules.accounts.models import User
-from app.modules.capabilities.models import (
-    Capability,
-    ModelCapability,
-    ModelCapabilityLimit,
-)
-from app.modules.equipment.catalog import copy_capabilities_to
+from app.modules.equipment.catalog import copy_test_items_to
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
@@ -40,6 +35,11 @@ from app.modules.equipment.models import (
     EquipmentSeries,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.test_items.models import (
+    EquipmentTestItem,
+    SeriesTestCondition,
+    SeriesTestItem,
+)
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared.text import clean, compare_key
@@ -118,7 +118,7 @@ CAPABILITIES: list[
         None,
         {"temperature": (10, 35), "force": (0, 50), "crosshead_speed": (0.005, 1000)},
     ),
-    # **온도를 일부러 안 적은 역량.** 검색이 "모른다" 를 어떻게 보여 주는지 드러난다.
+    # **온도를 일부러 안 적은 시험 항목.** 검색이 "모른다" 를 어떻게 보여 주는지 드러난다.
     (
         f"{PREFIX}IMP-001",
         "충격",
@@ -239,7 +239,7 @@ def purge(db: Session) -> int:
     운영에서 이미 쓰고 있을 수 있고, 그것을 지우면 가리키던 것이 끊긴다."""
     rows = list(db.scalars(select(Equipment).where(Equipment.asset_no.startswith(PREFIX))))
     for row in rows:
-        db.delete(row)  # 역량·교정은 CASCADE 로 함께 간다
+        db.delete(row)  # 시험 항목·교정은 CASCADE 로 함께 간다
     for method in db.scalars(select(TestMethod).where(TestMethod.summary == "데모 데이터")):
         db.delete(method)
     # 장비를 먼저 지운 뒤라야 모델을 지울 수 있다(RESTRICT).
@@ -319,6 +319,10 @@ def main() -> int:
                 status=status,
                 owner_workspace_id=workspace.id,
                 contact_user_id=actor.id,
+                # 데모도 **교정 대상**으로 둔다. 대상이 아니면 「곧 만료」 목록이
+                # 비어서, 그 화면이 도는지 아무도 확인하지 못한다.
+                calibration_required=True,
+                calibration_interval_months=12,
                 created_by_id=actor.id,
             )
             db.add(equipment)
@@ -331,21 +335,24 @@ def main() -> int:
                     calibrated_on=date.today() - timedelta(days=400 if overdue else 60),
                     next_due_on=date.today() + timedelta(days=-35 if overdue else 305),
                     certificate_no=f"CAL-{asset_no[-3:]}",
-                    provider="한국계량측정협회",
+                    # 교정 기관도 축의 값이다 — 자유 문자열로 두면 같은 기관이 갈린다.
+                    provider_term_id=_term(
+                        db, "calibration_provider", "한국계량측정협회", actor
+                    ).id,
                 )
             )
             made += 1
 
         db.flush()
 
-        # --- 역량 ----------------------------------------------------------
+        # --- 시험 항목 ----------------------------------------------------------
         by_asset = {
             row.asset_no: row
             for row in db.scalars(
                 select(Equipment).where(Equipment.asset_no.startswith(PREFIX))
             )
         }
-        capabilities = 0
+        test_items = 0
         for asset_no, item, confidence, note, limits in CAPABILITIES:
             unit = by_asset.get(asset_no)
             if unit is None or unit.model_id is None:
@@ -362,13 +369,13 @@ def main() -> int:
             # 보여 줘야 사람이 어디에 무엇을 적는지 안다.
             series_id = db.get(EquipmentModel, unit.model_id).series_id  # type: ignore[union-attr]
             spec = db.scalar(
-                select(ModelCapability).where(
-                    ModelCapability.series_id == series_id,
-                    ModelCapability.test_item_term_id == term.id,
+                select(SeriesTestItem).where(
+                    SeriesTestItem.series_id == series_id,
+                    SeriesTestItem.test_item_term_id == term.id,
                 )
             )
             if spec is None:
-                spec = ModelCapability(
+                spec = SeriesTestItem(
                     series_id=series_id,
                     test_item_term_id=term.id,
                     method_id=method.id if method else None,
@@ -378,8 +385,8 @@ def main() -> int:
                 db.flush()
                 for key, (low, high) in limits.items():
                     db.add(
-                        ModelCapabilityLimit(
-                            model_capability_id=spec.id,
+                        SeriesTestCondition(
+                            series_test_item_id=spec.id,
                             condition_key_id=conditions[key].id,
                             min_value=low,
                             max_value=high,
@@ -387,31 +394,31 @@ def main() -> int:
                     )
 
             exists = db.scalar(
-                select(Capability).where(
-                    Capability.equipment_id == unit.id,
-                    Capability.test_item_term_id == term.id,
+                select(EquipmentTestItem).where(
+                    EquipmentTestItem.equipment_id == unit.id,
+                    EquipmentTestItem.test_item_term_id == term.id,
                 )
             )
             if exists is not None:
                 continue
 
             # 사양서를 이 개체로 복사한다 — 앱이 장비를 등록할 때 하는 것과 같은 일이다.
-            copy_capabilities_to(db, unit, actor)
+            copy_test_items_to(db, unit, actor)
             db.flush()
 
             # **한 대만 실제로 해 봤다고 적는다.** 그래야 검색 결과에서 catalog 와
             # verified 가 어떻게 다르게 보이는지 드러난다.
             if confidence != "catalog":
                 copied = db.scalar(
-                    select(Capability).where(
-                        Capability.equipment_id == unit.id,
-                        Capability.test_item_term_id == term.id,
+                    select(EquipmentTestItem).where(
+                        EquipmentTestItem.equipment_id == unit.id,
+                        EquipmentTestItem.test_item_term_id == term.id,
                     )
                 )
                 if copied is not None:
                     copied.confidence = confidence
                     copied.verified_on = date.today() - timedelta(days=30)
-            capabilities += 1
+            test_items += 1
 
         db.commit()
 
@@ -429,22 +436,22 @@ def main() -> int:
         specs = (
             db.scalar(
                 select(func.count())
-                .select_from(ModelCapability)
-                .where(ModelCapability.series_id.in_(demo_series))
+                .select_from(SeriesTestItem)
+                .where(SeriesTestItem.series_id.in_(demo_series))
             )
             or 0
         )
         copied_count = (
             db.scalar(
                 select(func.count())
-                .select_from(Capability)
-                .where(Capability.equipment_id.in_(demo_units))
+                .select_from(EquipmentTestItem)
+                .where(EquipmentTestItem.equipment_id.in_(demo_units))
             )
             or 0
         )
         print(
-            f"데모: 장비 {made}대, 카탈로그 사양 역량 {specs}건 "
-            f"-> 복사된 개체 역량 {copied_count}건, 시험법 {len(methods)}건"
+            f"데모: 장비 {made}대, 카탈로그 사양 시험 항목 {specs}건 "
+            f"-> 복사된 장비의 시험 항목 {copied_count}건, 시험법 {len(methods)}건"
         )
         return 0
     finally:

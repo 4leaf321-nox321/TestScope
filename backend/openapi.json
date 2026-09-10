@@ -2271,6 +2271,7 @@
           "equipment"
         ],
         "summary": "List Equipment",
+        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.",
         "operationId": "list_equipment_api_equipment_get",
         "parameters": [
           {
@@ -2288,6 +2289,40 @@
                 }
               ],
               "title": "Q"
+            }
+          },
+          {
+            "name": "asset_no",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Asset No"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
             }
           },
           {
@@ -2337,6 +2372,90 @@
                 }
               ],
               "title": "Model Id"
+            }
+          },
+          {
+            "name": "category_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category Term Id"
+            }
+          },
+          {
+            "name": "site_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Site Term Id"
+            }
+          },
+          {
+            "name": "test_item_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Test Item Term Id"
+            }
+          },
+          {
+            "name": "calibration",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(required|exempt|missing|overdue)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Calibration"
+            }
+          },
+          {
+            "name": "shared_use",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Shared Use"
             }
           },
           {
@@ -2419,6 +2538,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment/filter-options": {
+      "get": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Equipment Filter Options",
+        "description": "목록의 열마다 **고를 수 있는 값**과 그 수.\n\n기준정보 전체가 아니라 **지금 목록에 있는 값만** 준다 — 골라도 0 건인 선택지가\n섞이면 사람은 거르기를 안 믿게 된다.\n\n`/{equipment_id}` 보다 **먼저 선언한다.** 뒤에 두면 `filter-options` 가 장비 id 로\n읽혀 422 가 난다.",
+        "operationId": "equipment_filter_options_api_equipment_filter_options_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentFilterOptionsOut"
                 }
               }
             }
@@ -2652,6 +2793,149 @@
         }
       }
     },
+    "/api/equipment/{equipment_id}/specs": {
+      "get": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Read Equipment Specs",
+        "description": "이 장비의 사양 — 한 줄에 **카탈로그 값과 실측이 함께** 온다.\n\n화면은 둘을 겹쳐 그린다: 「실측 300 kN (사양서 250 kN)」. 하나만 보여 주면 사람은\n그 수치가 잰 값인지 사양서 값인지 알 수 없고, 그 둘은 믿는 정도가 다르다.",
+        "operationId": "read_equipment_specs_api_equipment__equipment_id__specs_get",
+        "parameters": [
+          {
+            "name": "equipment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Equipment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentSpecSheetOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Upsert Equipment Spec",
+        "description": "실측 한 칸을 넣거나 덮어쓴다. **이 장비의 값이지 기종의 값이 아니다.**\n\n기종 사양과 같은 규칙으로 검증한다 — 정의의 종류에 맞는 칸만 채운다.\n\n응답의 `condition_label` 이 채워져 있으면 그 값은 검색이 묻는 축이고, `reflected`\n가 참이면 이 장비의 시험 조건이 실제로 갱신됐다는 뜻이다. **손으로 고쳐 둔 조건은\n안 덮는다** — 그때는 거짓으로 온다.",
+        "operationId": "upsert_equipment_spec_api_equipment__equipment_id__specs_put",
+        "parameters": [
+          {
+            "name": "equipment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Equipment Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentSpecSaveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EquipmentSpecSaveResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment/{equipment_id}/specs/{definition_id}": {
+      "delete": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Delete Equipment Spec",
+        "description": "실측을 지운다 — 그 칸은 다시 카탈로그 값으로 보인다.\n\n**따라 들어간 시험 조건은 안 지운다.** 이미 이 장비의 것이고, 그 사이에 사람이\n고쳐 뒀을 수 있다.",
+        "operationId": "delete_equipment_spec_api_equipment__equipment_id__specs__definition_id__delete",
+        "parameters": [
+          {
+            "name": "equipment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Equipment Id"
+            }
+          },
+          {
+            "name": "definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Definition Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/equipment-series": {
       "get": {
         "tags": [
@@ -2728,7 +3012,7 @@
               "anyOf": [
                 {
                   "type": "string",
-                  "pattern": "^(capabilities)$"
+                  "pattern": "^(test_items)$"
                 },
                 {
                   "type": "null"
@@ -2953,14 +3237,14 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/capabilities": {
+    "/api/equipment-series/{series_id}/test_items": {
       "post": {
         "tags": [
           "catalog"
         ],
-        "summary": "Add Series Capability",
+        "summary": "Add Series Test Item",
         "description": "이 계열이 무슨 시험을 하나.\n\n**조건 수치는 여기 적지 않는다.** 여기 적는 조건은 계열 전체가 만족하는 것만이고,\n기종마다 갈리는 값은 그 기종의 사양(`PUT /equipment-models/{id}/specs`)에 적으면\n보유 장비를 만들 때 합쳐진다.\n\n시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의\n장비는 영영 검색에 안 걸린다. `test_item`(이름)으로 주면 별칭까지 본다.",
-        "operationId": "add_series_capability_api_equipment_series__series_id__capabilities_post",
+        "operationId": "add_series_test_item_api_equipment_series__series_id__test_items_post",
         "parameters": [
           {
             "name": "series_id",
@@ -2978,7 +3262,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ModelCapabilityCreateRequest"
+                "$ref": "#/components/schemas/SeriesTestItemCreateRequest"
               }
             }
           }
@@ -2989,7 +3273,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ModelCapabilityOut"
+                  "$ref": "#/components/schemas/SeriesTestItemOut"
                 }
               }
             }
@@ -3007,13 +3291,13 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/capabilities/{capability_id}": {
+    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}": {
       "delete": {
         "tags": [
           "catalog"
         ],
-        "summary": "Delete Series Capability",
-        "operationId": "delete_series_capability_api_equipment_series__series_id__capabilities__capability_id__delete",
+        "summary": "Delete Series Test Item",
+        "operationId": "delete_series_test_item_api_equipment_series__series_id__test_items__equipment_test_item_id__delete",
         "parameters": [
           {
             "name": "series_id",
@@ -3026,13 +3310,13 @@
             }
           },
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           }
         ],
@@ -3053,13 +3337,13 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/capabilities/{capability_id}/limits": {
+    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits": {
       "put": {
         "tags": [
           "catalog"
         ],
         "summary": "Upsert Series Limit",
-        "operationId": "upsert_series_limit_api_equipment_series__series_id__capabilities__capability_id__limits_put",
+        "operationId": "upsert_series_limit_api_equipment_series__series_id__test_items__equipment_test_item_id__limits_put",
         "parameters": [
           {
             "name": "series_id",
@@ -3072,13 +3356,13 @@
             }
           },
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           }
         ],
@@ -3116,13 +3400,13 @@
         }
       }
     },
-    "/api/equipment-series/{series_id}/capabilities/{capability_id}/limits/{limit_id}": {
+    "/api/equipment-series/{series_id}/test_items/{equipment_test_item_id}/limits/{limit_id}": {
       "delete": {
         "tags": [
           "catalog"
         ],
         "summary": "Delete Series Limit",
-        "operationId": "delete_series_limit_api_equipment_series__series_id__capabilities__capability_id__limits__limit_id__delete",
+        "operationId": "delete_series_limit_api_equipment_series__series_id__test_items__equipment_test_item_id__limits__limit_id__delete",
         "parameters": [
           {
             "name": "series_id",
@@ -3135,13 +3419,13 @@
             }
           },
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           },
           {
@@ -3603,7 +3887,7 @@
           "catalog"
         ],
         "summary": "Upsert Model Spec",
-        "description": "사양 한 칸을 넣거나 덮어쓴다.\n\n**정의의 종류에 맞는 칸만 채운다** — 수치는 `num_value`, 구간은 `num_min`/\n`num_max`, 고른 값과 문장은 `text_value`, 참거짓은 `bool_value`. 틀린 칸에 담긴\n값은 저장은 되지만 화면이 못 그리고, 그때 사람은 「저장이 안 됐다」 고 말한다.\n\n쓸 수 있는 칸은 `GET /api/spec-definitions?category_term_id=…` 가 준다.\n**없는 사양은 만들지 말고 보류하라** — 정의를 늘리는 것은 사람의 판단이다.\n\n응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의\n역량 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고, 그들에게는\n반영되지 않는다.",
+        "description": "사양 한 칸을 넣거나 덮어쓴다.\n\n**정의의 종류에 맞는 칸만 채운다** — 수치는 `num_value`, 구간은 `num_min`/\n`num_max`, 고른 값과 문장은 `text_value`, 참거짓은 `bool_value`. 틀린 칸에 담긴\n값은 저장은 되지만 화면이 못 그리고, 그때 사람은 「저장이 안 됐다」 고 말한다.\n\n쓸 수 있는 칸은 `GET /api/spec-definitions?category_term_id=…` 가 준다.\n**없는 사양은 만들지 말고 보류하라** — 정의를 늘리는 것은 사람의 판단이다.\n\n응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의\n시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고, 그들에게는\n반영되지 않는다.",
         "operationId": "upsert_model_spec_api_equipment_models__model_id__specs_put",
         "parameters": [
           {
@@ -4137,13 +4421,13 @@
         }
       }
     },
-    "/api/capabilities": {
+    "/api/equipment-test-items": {
       "get": {
         "tags": [
-          "capabilities"
+          "test-items"
         ],
-        "summary": "List Capabilities",
-        "operationId": "list_capabilities_api_capabilities_get",
+        "summary": "List Test Items",
+        "operationId": "list_test_items_api_equipment_test_items_get",
         "parameters": [
           {
             "name": "equipment_id",
@@ -4164,9 +4448,9 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CapabilityOut"
+                    "$ref": "#/components/schemas/EquipmentTestItemOut"
                   },
-                  "title": "Response List Capabilities Api Capabilities Get"
+                  "title": "Response List Test Items Api Equipment Test Items Get"
                 }
               }
             }
@@ -4185,16 +4469,16 @@
       },
       "post": {
         "tags": [
-          "capabilities"
+          "test-items"
         ],
-        "summary": "Create Capability",
-        "operationId": "create_capability_api_capabilities_post",
+        "summary": "Create Test Item",
+        "operationId": "create_test_item_api_equipment_test_items_post",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CapabilityCreateRequest"
+                "$ref": "#/components/schemas/EquipmentTestItemCreateRequest"
               }
             }
           }
@@ -4205,7 +4489,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CapabilityOut"
+                  "$ref": "#/components/schemas/EquipmentTestItemOut"
                 }
               }
             }
@@ -4223,22 +4507,22 @@
         }
       }
     },
-    "/api/capabilities/{capability_id}": {
+    "/api/equipment-test-items/{equipment_test_item_id}": {
       "patch": {
         "tags": [
-          "capabilities"
+          "test-items"
         ],
-        "summary": "Update Capability",
-        "operationId": "update_capability_api_capabilities__capability_id__patch",
+        "summary": "Update Test Item",
+        "operationId": "update_test_item_api_equipment_test_items__equipment_test_item_id__patch",
         "parameters": [
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           }
         ],
@@ -4247,7 +4531,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CapabilityUpdateRequest"
+                "$ref": "#/components/schemas/EquipmentTestItemUpdateRequest"
               }
             }
           }
@@ -4258,7 +4542,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CapabilityOut"
+                  "$ref": "#/components/schemas/EquipmentTestItemOut"
                 }
               }
             }
@@ -4277,19 +4561,19 @@
       },
       "delete": {
         "tags": [
-          "capabilities"
+          "test-items"
         ],
-        "summary": "Delete Capability",
-        "operationId": "delete_capability_api_capabilities__capability_id__delete",
+        "summary": "Delete Test Item",
+        "operationId": "delete_test_item_api_equipment_test_items__equipment_test_item_id__delete",
         "parameters": [
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           }
         ],
@@ -4310,22 +4594,22 @@
         }
       }
     },
-    "/api/capabilities/{capability_id}/limits": {
+    "/api/equipment-test-items/{equipment_test_item_id}/limits": {
       "put": {
         "tags": [
-          "capabilities"
+          "test-items"
         ],
         "summary": "Upsert Limit",
-        "operationId": "upsert_limit_api_capabilities__capability_id__limits_put",
+        "operationId": "upsert_limit_api_equipment_test_items__equipment_test_item_id__limits_put",
         "parameters": [
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           }
         ],
@@ -4363,22 +4647,22 @@
         }
       }
     },
-    "/api/capabilities/{capability_id}/limits/{limit_id}": {
+    "/api/equipment-test-items/{equipment_test_item_id}/limits/{limit_id}": {
       "delete": {
         "tags": [
-          "capabilities"
+          "test-items"
         ],
         "summary": "Delete Limit",
-        "operationId": "delete_limit_api_capabilities__capability_id__limits__limit_id__delete",
+        "operationId": "delete_limit_api_equipment_test_items__equipment_test_item_id__limits__limit_id__delete",
         "parameters": [
           {
-            "name": "capability_id",
+            "name": "equipment_test_item_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "format": "uuid",
-              "title": "Capability Id"
+              "title": "Equipment Test Item Id"
             }
           },
           {
@@ -4409,13 +4693,13 @@
         }
       }
     },
-    "/api/search/capabilities": {
+    "/api/search/test_items": {
       "post": {
         "tags": [
           "search"
         ],
-        "summary": "Search Capabilities",
-        "operationId": "search_capabilities_api_search_capabilities_post",
+        "summary": "Search Test Items",
+        "operationId": "search_test_items_api_search_test_items_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4997,7 +5281,7 @@
           "server"
         ],
         "summary": "Maintenance",
-        "description": "남은 일. **홈이 이것을 보여 준다.**\n\n관리 화면에 들어가야만 보이는 목록은 아무도 안 본다 — 승인 대기가 며칠씩\n방치되고, 역량이 안 적힌 장비는 영영 안 적힌다.\n\n**0 건인 항목은 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은 그 자리를\n아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다.",
+        "description": "남은 일. **홈이 이것을 보여 준다.**\n\n관리 화면에 들어가야만 보이는 목록은 아무도 안 본다 — 승인 대기가 며칠씩\n방치되고, 시험 항목이 안 적힌 장비는 영영 안 적힌다.\n\n**0 건인 항목은 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은 그 자리를\n아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다.",
         "operationId": "maintenance_api_server_maintenance_get",
         "responses": {
           "200": {
@@ -5418,17 +5702,17 @@
             ],
             "title": "Certificate No"
           },
-          "provider": {
+          "provider_term_id": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 200
+                "format": "uuid"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Provider"
+            "title": "Provider Term Id"
           },
           "note": {
             "anyOf": [
@@ -5528,6 +5812,18 @@
             ],
             "title": "Provider"
           },
+          "provider_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider Term Id"
+          },
           "note": {
             "anyOf": [
               {
@@ -5547,238 +5843,10 @@
           "next_due_on",
           "certificate_no",
           "provider",
+          "provider_term_id",
           "note"
         ],
         "title": "CalibrationOut"
-      },
-      "CapabilityCreateRequest": {
-        "properties": {
-          "equipment_id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Equipment Id"
-          },
-          "test_item_term_id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Test Item Term Id"
-          },
-          "method_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Method Id"
-          },
-          "confidence": {
-            "type": "string",
-            "pattern": "^(catalog|verified|limited)$",
-            "title": "Confidence",
-            "default": "catalog"
-          },
-          "verified_on": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Verified On"
-          },
-          "note": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Note"
-          }
-        },
-        "type": "object",
-        "required": [
-          "equipment_id",
-          "test_item_term_id"
-        ],
-        "title": "CapabilityCreateRequest"
-      },
-      "CapabilityOut": {
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Id"
-          },
-          "equipment_id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Equipment Id"
-          },
-          "equipment_asset_no": {
-            "type": "string",
-            "title": "Equipment Asset No"
-          },
-          "equipment_name": {
-            "type": "string",
-            "title": "Equipment Name"
-          },
-          "test_item_term_id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Test Item Term Id"
-          },
-          "test_item": {
-            "type": "string",
-            "title": "Test Item"
-          },
-          "method_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Method Id"
-          },
-          "method_code": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Method Code"
-          },
-          "confidence": {
-            "type": "string",
-            "title": "Confidence"
-          },
-          "verified_on": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Verified On"
-          },
-          "note": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Note"
-          },
-          "limits": {
-            "items": {
-              "$ref": "#/components/schemas/LimitOut"
-            },
-            "type": "array",
-            "title": "Limits"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Created At"
-          },
-          "can_edit": {
-            "type": "boolean",
-            "title": "Can Edit"
-          }
-        },
-        "type": "object",
-        "required": [
-          "id",
-          "equipment_id",
-          "equipment_asset_no",
-          "equipment_name",
-          "test_item_term_id",
-          "test_item",
-          "method_id",
-          "method_code",
-          "confidence",
-          "verified_on",
-          "note",
-          "limits",
-          "created_at",
-          "can_edit"
-        ],
-        "title": "CapabilityOut"
-      },
-      "CapabilityUpdateRequest": {
-        "properties": {
-          "method_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Method Id"
-          },
-          "confidence": {
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "^(catalog|verified|limited)$"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Confidence"
-          },
-          "verified_on": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "date"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Verified On"
-          },
-          "note": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Note"
-          }
-        },
-        "type": "object",
-        "title": "CapabilityUpdateRequest"
       },
       "ChangePasswordRequest": {
         "properties": {
@@ -5801,6 +5869,48 @@
           "new_password"
         ],
         "title": "ChangePasswordRequest"
+      },
+      "CitedMethodOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "edition": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edition"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "has_requirements": {
+            "type": "boolean",
+            "title": "Has Requirements"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "code",
+          "edition",
+          "title",
+          "has_requirements"
+        ],
+        "title": "CitedMethodOut",
+        "description": "이 시험 항목이 인용하는 규격 하나. **표로 이어져 있다** — 비고의 글자가 아니다."
       },
       "ConditionKeyCreateRequest": {
         "properties": {
@@ -6074,7 +6184,7 @@
             "type": "string",
             "title": "Asked"
           },
-          "capability_range": {
+          "condition_range": {
             "anyOf": [
               {
                 "type": "string"
@@ -6083,7 +6193,7 @@
                 "type": "null"
               }
             ],
-            "title": "Capability Range"
+            "title": "Condition Range"
           }
         },
         "type": "object",
@@ -6093,7 +6203,7 @@
           "display_unit",
           "verdict",
           "asked",
-          "capability_range"
+          "condition_range"
         ],
         "title": "ConditionMatch"
       },
@@ -6239,16 +6349,26 @@
             "minLength": 1,
             "title": "Name"
           },
-          "workspace_slug": {
+          "dept_asset_no": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "maxLength": 50
               },
               {
                 "type": "null"
               }
             ],
+            "title": "Dept Asset No"
+          },
+          "workspace_slug": {
+            "type": "string",
             "title": "Workspace Slug"
+          },
+          "shared_use": {
+            "type": "boolean",
+            "title": "Shared Use",
+            "default": false
           },
           "model_id": {
             "anyOf": [
@@ -6274,7 +6394,7 @@
             ],
             "title": "Serial No"
           },
-          "site_term_id": {
+          "category_term_id": {
             "anyOf": [
               {
                 "type": "string",
@@ -6284,9 +6404,9 @@
                 "type": "null"
               }
             ],
-            "title": "Site Term Id"
+            "title": "Category Term Id"
           },
-          "location": {
+          "maker_text": {
             "anyOf": [
               {
                 "type": "string",
@@ -6296,6 +6416,29 @@
                 "type": "null"
               }
             ],
+            "title": "Maker Text"
+          },
+          "model_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Text"
+          },
+          "site_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Site Term Id"
+          },
+          "location": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
             "title": "Location"
           },
           "status": {
@@ -6314,6 +6457,49 @@
               }
             ],
             "title": "Acquired On"
+          },
+          "manufactured_year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 2200.0,
+                "minimum": 1900.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Manufactured Year"
+          },
+          "retired_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retired On"
+          },
+          "calibration_required": {
+            "type": "boolean",
+            "title": "Calibration Required",
+            "default": false
+          },
+          "calibration_interval_months": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 600.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Calibration Interval Months"
           },
           "contact_user_id": {
             "anyOf": [
@@ -6342,9 +6528,62 @@
         "type": "object",
         "required": [
           "asset_no",
-          "name"
+          "name",
+          "workspace_slug",
+          "site_term_id",
+          "location"
         ],
-        "title": "EquipmentCreateRequest"
+        "title": "EquipmentCreateRequest",
+        "description": "보유 장비를 등록한다.\n\n**필수는 여덟이다** — 자산번호·장비명·보유 부서·거점·상세위치·공용여부·상태,\n그리고 장비유형(기종을 고르면 따라오므로 그때는 안 적는다).\n\n비울 수 없게 한 것들은 전부 「없으면 그 장비를 못 찾는」 칸이다. 나머지는 권장이나\n선택으로 둔다 — 다 적어야 저장되게 하면 사람은 등록을 미루고, 미룬 장비는 결국\n시스템 밖에 남는다."
+      },
+      "EquipmentFilterOptionsOut": {
+        "properties": {
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Categories"
+          },
+          "workspaces": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Workspaces"
+          },
+          "sites": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Sites"
+          },
+          "statuses": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Statuses"
+          },
+          "test_items": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Test Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "categories",
+          "workspaces",
+          "sites",
+          "statuses",
+          "test_items"
+        ],
+        "title": "EquipmentFilterOptionsOut",
+        "description": "보유 장비 목록의 열마다 고를 수 있는 값들.\n\n**보이는 장비만 센다**(`visible_equipment`) — 안 보이는 부서의 값을 골라 봐야\n결과가 비고, 그 빈 결과는 권한 때문인지 데이터 때문인지 구별되지 않는다."
       },
       "EquipmentModelCreateRequest": {
         "properties": {
@@ -6402,11 +6641,17 @@
             ],
             "title": "Name Ko"
           },
-          "form_factor": {
-            "type": "string",
-            "maxLength": 40,
-            "title": "Form Factor",
-            "default": ""
+          "form_factor_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Form Factor Term Id"
           },
           "summary": {
             "anyOf": [
@@ -6516,8 +6761,27 @@
             "title": "Category Term Id"
           },
           "form_factor": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Form Factor"
+          },
+          "form_factor_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Form Factor Term Id"
           },
           "status": {
             "type": "string",
@@ -6558,12 +6822,23 @@
             "type": "integer",
             "title": "Operational Count"
           },
-          "capabilities": {
+          "test_items": {
             "items": {
-              "$ref": "#/components/schemas/ModelCapabilityOut"
+              "$ref": "#/components/schemas/SeriesTestItemOut"
             },
             "type": "array",
-            "title": "Capabilities"
+            "title": "Test Items"
+          },
+          "headline_specs": {
+            "items": {
+              "$ref": "#/components/schemas/ModelHeadlineSpecOut"
+            },
+            "type": "array",
+            "title": "Headline Specs"
+          },
+          "spec_count": {
+            "type": "integer",
+            "title": "Spec Count"
           },
           "created_at": {
             "type": "string",
@@ -6587,13 +6862,16 @@
           "category",
           "category_term_id",
           "form_factor",
+          "form_factor_term_id",
           "status",
           "summary",
           "spec_note",
           "raw_specs",
           "unit_count",
           "operational_count",
-          "capabilities",
+          "test_items",
+          "headline_specs",
+          "spec_count",
           "created_at",
           "can_edit"
         ],
@@ -6638,17 +6916,17 @@
             ],
             "title": "Series Id"
           },
-          "form_factor": {
+          "form_factor_term_id": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 40
+                "format": "uuid"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Form Factor"
+            "title": "Form Factor Term Id"
           },
           "status": {
             "anyOf": [
@@ -6703,6 +6981,17 @@
           "name": {
             "type": "string",
             "title": "Name"
+          },
+          "dept_asset_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dept Asset No"
           },
           "model_id": {
             "anyOf": [
@@ -6761,6 +7050,17 @@
             ],
             "title": "Category"
           },
+          "category_group": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Group"
+          },
           "manufacturer": {
             "anyOf": [
               {
@@ -6771,6 +7071,10 @@
               }
             ],
             "title": "Manufacturer"
+          },
+          "catalog_linked": {
+            "type": "boolean",
+            "title": "Catalog Linked"
           },
           "serial_no": {
             "anyOf": [
@@ -6804,6 +7108,10 @@
               }
             ],
             "title": "Workspace Name"
+          },
+          "shared_use": {
+            "type": "boolean",
+            "title": "Shared Use"
           },
           "site": {
             "anyOf": [
@@ -6843,6 +7151,29 @@
             ],
             "title": "Acquired On"
           },
+          "manufactured_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Manufactured Year"
+          },
+          "retired_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retired On"
+          },
           "contact_name": {
             "anyOf": [
               {
@@ -6865,9 +7196,9 @@
             ],
             "title": "Note"
           },
-          "capability_count": {
+          "test_item_count": {
             "type": "integer",
-            "title": "Capability Count"
+            "title": "Test Item Count"
           },
           "test_items": {
             "items": {
@@ -6875,6 +7206,21 @@
             },
             "type": "array",
             "title": "Test Items"
+          },
+          "calibration_required": {
+            "type": "boolean",
+            "title": "Calibration Required"
+          },
+          "calibration_interval_months": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Calibration Interval Months"
           },
           "calibration_due_on": {
             "anyOf": [
@@ -6887,6 +7233,18 @@
               }
             ],
             "title": "Calibration Due On"
+          },
+          "calibration_due_estimated": {
+            "type": "boolean",
+            "title": "Calibration Due Estimated"
+          },
+          "calibration_missing": {
+            "type": "boolean",
+            "title": "Calibration Missing"
+          },
+          "spec_override_count": {
+            "type": "integer",
+            "title": "Spec Override Count"
           },
           "created_at": {
             "type": "string",
@@ -6903,24 +7261,35 @@
           "id",
           "asset_no",
           "name",
+          "dept_asset_no",
           "model_id",
           "model_name",
           "series_id",
           "series_name",
           "category",
+          "category_group",
           "manufacturer",
+          "catalog_linked",
           "serial_no",
           "workspace_slug",
           "workspace_name",
+          "shared_use",
           "site",
           "location",
           "status",
           "acquired_on",
+          "manufactured_year",
+          "retired_on",
           "contact_name",
           "note",
-          "capability_count",
+          "test_item_count",
           "test_items",
+          "calibration_required",
+          "calibration_interval_months",
           "calibration_due_on",
+          "calibration_due_estimated",
+          "calibration_missing",
+          "spec_override_count",
           "created_at",
           "can_edit"
         ],
@@ -7012,17 +7381,29 @@
             "title": "Kind",
             "default": "main"
           },
-          "drive": {
-            "type": "string",
-            "maxLength": 30,
-            "title": "Drive",
-            "default": ""
+          "drive_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Drive Term Id"
           },
-          "form_factor": {
-            "type": "string",
-            "maxLength": 40,
-            "title": "Form Factor",
-            "default": ""
+          "form_factor_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Form Factor Term Id"
           },
           "summary": {
             "anyOf": [
@@ -7150,12 +7531,50 @@
             "title": "Kind"
           },
           "drive": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Drive"
           },
+          "drive_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Drive Term Id"
+          },
           "form_factor": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Form Factor"
+          },
+          "form_factor_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Form Factor Term Id"
           },
           "status": {
             "type": "string",
@@ -7223,12 +7642,12 @@
             "type": "integer",
             "title": "Operational Count"
           },
-          "capabilities": {
+          "test_items": {
             "items": {
-              "$ref": "#/components/schemas/ModelCapabilityOut"
+              "$ref": "#/components/schemas/SeriesTestItemOut"
             },
             "type": "array",
-            "title": "Capabilities"
+            "title": "Test Items"
           },
           "relations": {
             "items": {
@@ -7259,7 +7678,9 @@
           "category_term_id",
           "kind",
           "drive",
+          "drive_term_id",
           "form_factor",
+          "form_factor_term_id",
           "status",
           "summary",
           "spec_note",
@@ -7269,7 +7690,7 @@
           "model_count",
           "unit_count",
           "operational_count",
-          "capabilities",
+          "test_items",
           "relations",
           "created_at",
           "can_edit"
@@ -7351,29 +7772,29 @@
             ],
             "title": "Kind"
           },
-          "drive": {
+          "drive_term_id": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 30
+                "format": "uuid"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Drive"
+            "title": "Drive Term Id"
           },
-          "form_factor": {
+          "form_factor_term_id": {
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 40
+                "format": "uuid"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Form Factor"
+            "title": "Form Factor Term Id"
           },
           "status": {
             "anyOf": [
@@ -7426,6 +7847,708 @@
         "title": "EquipmentSeriesUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.** None 은 \"안 바꿈\" 이다."
       },
+      "EquipmentSpecGroupOut": {
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/EquipmentSpecItemOut"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "group_id",
+          "slug",
+          "label",
+          "description",
+          "items"
+        ],
+        "title": "EquipmentSpecGroupOut"
+      },
+      "EquipmentSpecItemOut": {
+        "properties": {
+          "definition_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Definition Id"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "si_unit": {
+            "type": "string",
+            "title": "Si Unit"
+          },
+          "display_unit": {
+            "type": "string",
+            "title": "Display Unit"
+          },
+          "choices": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Choices"
+          },
+          "sort_order": {
+            "type": "integer",
+            "title": "Sort Order"
+          },
+          "condition_key_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Key Id"
+          },
+          "catalog": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ModelSpecValueOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "measured": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EquipmentSpecValueOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "definition_id",
+          "key",
+          "label",
+          "kind",
+          "si_unit",
+          "display_unit",
+          "choices",
+          "sort_order",
+          "condition_key_id",
+          "catalog",
+          "measured"
+        ],
+        "title": "EquipmentSpecItemOut",
+        "description": "사양 한 칸 — **카탈로그 값과 실측을 함께 준다.**\n\n화면이 둘을 겹쳐 그린다: 「실측 300 kN (사양서 250 kN)」. 하나만 주면 사람은 그\n수치가 잰 값인지 사양서에서 온 값인지 알 수 없고, 그 둘은 믿는 정도가 다르다."
+      },
+      "EquipmentSpecSaveRequest": {
+        "properties": {
+          "definition_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Definition Id"
+          },
+          "num_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Value"
+          },
+          "num_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Min"
+          },
+          "num_max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Max"
+          },
+          "text_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Value"
+          },
+          "bool_value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bool Value"
+          },
+          "measured_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Measured On"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id"
+          },
+          "source_page": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "definition_id"
+        ],
+        "title": "EquipmentSpecSaveRequest",
+        "description": "실측 한 칸을 넣거나 덮어쓴다. **종류에 맞는 칸만 채운다.**"
+      },
+      "EquipmentSpecSaveResult": {
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/EquipmentSpecValueOut"
+          },
+          "condition_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Label"
+          },
+          "reflected": {
+            "type": "boolean",
+            "title": "Reflected"
+          }
+        },
+        "type": "object",
+        "required": [
+          "value",
+          "condition_label",
+          "reflected"
+        ],
+        "title": "EquipmentSpecSaveResult"
+      },
+      "EquipmentSpecSheetOut": {
+        "properties": {
+          "equipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Equipment Id"
+          },
+          "model_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Id"
+          },
+          "model_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Name"
+          },
+          "groups": {
+            "items": {
+              "$ref": "#/components/schemas/EquipmentSpecGroupOut"
+            },
+            "type": "array",
+            "title": "Groups"
+          },
+          "override_count": {
+            "type": "integer",
+            "title": "Override Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "equipment_id",
+          "model_id",
+          "model_name",
+          "groups",
+          "override_count"
+        ],
+        "title": "EquipmentSpecSheetOut",
+        "description": "이 장비의 사양 — 기종 사양 위에 실측을 덮은 것.\n\n**복사가 아니라 겹쳐 보기다.** 개체는 다른 값만 갖고, 나머지는 기종 사양이 그대로\n보인다 — 전부 복사하면 카탈로그가 개정돼도 안 따라오고, 어느 값이 실측인지 구별이\n사라진다."
+      },
+      "EquipmentSpecValueOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "num_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Value"
+          },
+          "num_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Min"
+          },
+          "num_max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Max"
+          },
+          "text_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Value"
+          },
+          "bool_value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bool Value"
+          },
+          "measured_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Measured On"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id"
+          },
+          "source_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Path"
+          },
+          "source_page": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Page"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "num_value",
+          "num_min",
+          "num_max",
+          "text_value",
+          "bool_value",
+          "measured_on",
+          "note",
+          "source_id",
+          "source_path",
+          "source_page",
+          "updated_at"
+        ],
+        "title": "EquipmentSpecValueOut",
+        "description": "개체가 덮어 둔 실측값 한 칸. 사양표의 값(`ModelSpecValueOut`)과 값 칸을 맞춘다."
+      },
+      "EquipmentTestItemCreateRequest": {
+        "properties": {
+          "equipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Equipment Id"
+          },
+          "test_item_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Item Term Id"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "confidence": {
+            "type": "string",
+            "pattern": "^(catalog|verified|limited)$",
+            "title": "Confidence",
+            "default": "catalog"
+          },
+          "verified_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified On"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "equipment_id",
+          "test_item_term_id"
+        ],
+        "title": "EquipmentTestItemCreateRequest"
+      },
+      "EquipmentTestItemOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "equipment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Equipment Id"
+          },
+          "equipment_asset_no": {
+            "type": "string",
+            "title": "Equipment Asset No"
+          },
+          "equipment_name": {
+            "type": "string",
+            "title": "Equipment Name"
+          },
+          "test_item_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Item Term Id"
+          },
+          "test_item": {
+            "type": "string",
+            "title": "Test Item"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "method_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Code"
+          },
+          "confidence": {
+            "type": "string",
+            "title": "Confidence"
+          },
+          "verified_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified On"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "limits": {
+            "items": {
+              "$ref": "#/components/schemas/LimitOut"
+            },
+            "type": "array",
+            "title": "Limits"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "can_edit": {
+            "type": "boolean",
+            "title": "Can Edit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "equipment_id",
+          "equipment_asset_no",
+          "equipment_name",
+          "test_item_term_id",
+          "test_item",
+          "method_id",
+          "method_code",
+          "confidence",
+          "verified_on",
+          "note",
+          "limits",
+          "created_at",
+          "can_edit"
+        ],
+        "title": "EquipmentTestItemOut"
+      },
+      "EquipmentTestItemUpdateRequest": {
+        "properties": {
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(catalog|verified|limited)$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "verified_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified On"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "title": "EquipmentTestItemUpdateRequest"
+      },
       "EquipmentUpdateRequest": {
         "properties": {
           "name": {
@@ -7440,6 +8563,17 @@
               }
             ],
             "title": "Name"
+          },
+          "dept_asset_no": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dept Asset No"
           },
           "model_id": {
             "anyOf": [
@@ -7464,6 +8598,40 @@
             ],
             "title": "Serial No"
           },
+          "category_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Term Id"
+          },
+          "maker_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker Text"
+          },
+          "model_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Text"
+          },
           "site_term_id": {
             "anyOf": [
               {
@@ -7487,6 +8655,17 @@
             ],
             "title": "Location"
           },
+          "shared_use": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shared Use"
+          },
           "status": {
             "anyOf": [
               {
@@ -7509,6 +8688,55 @@
               }
             ],
             "title": "Acquired On"
+          },
+          "manufactured_year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 2200.0,
+                "minimum": 1900.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Manufactured Year"
+          },
+          "retired_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retired On"
+          },
+          "calibration_required": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Calibration Required"
+          },
+          "calibration_interval_months": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 600.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Calibration Interval Months"
           },
           "contact_user_id": {
             "anyOf": [
@@ -7548,6 +8776,30 @@
         "type": "object",
         "title": "EquipmentUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.**\n\n부분 수정이라 None 은 \"안 바꿈\" 이다. 구별하지 않으면 상태 하나 바꿀 때마다\n담당자와 설치 위치가 지워지고, 그 손실은 저장한 사람 눈에 안 보인다.\n빈 문자열을 보내면 그것은 \"비운다\" 이다."
+      },
+      "FilterOption": {
+        "properties": {
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "value",
+          "label",
+          "count"
+        ],
+        "title": "FilterOption",
+        "description": "거르기 한 칸이 고를 수 있는 값 하나. **수를 함께 준다.**\n\n「나노압입기」 를 고를 수 있는데 결과가 0 이면 사람은 거르기를 안 믿게 된다. 그래서\n**목록에 실제로 있는 값만** 내려보내고, 몇 대인지 함께 적는다."
       },
       "HTTPValidationError": {
         "properties": {
@@ -8191,101 +9443,67 @@
         "type": "object",
         "title": "MethodUpdateRequest"
       },
-      "ModelCapabilityCreateRequest": {
+      "ModelHeadlineSpecOut": {
         "properties": {
-          "test_item_term_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Test Item Term Id"
-          },
-          "test_item": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 200
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Test Item"
-          },
-          "method_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Method Id"
-          },
-          "method_code": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 100
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Method Code"
-          },
-          "note": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Note"
-          }
-        },
-        "type": "object",
-        "title": "ModelCapabilityCreateRequest",
-        "description": "이 계열이 무슨 시험을 하나.\n\n시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의\n장비는 영영 검색에 안 걸린다."
-      },
-      "ModelCapabilityOut": {
-        "properties": {
-          "id": {
+          "definition_id": {
             "type": "string",
             "format": "uuid",
-            "title": "Id"
+            "title": "Definition Id"
           },
-          "test_item_term_id": {
+          "key": {
             "type": "string",
-            "format": "uuid",
-            "title": "Test Item Term Id"
+            "title": "Key"
           },
-          "test_item": {
+          "label": {
             "type": "string",
-            "title": "Test Item"
+            "title": "Label"
           },
-          "method_id": {
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "si_unit": {
+            "type": "string",
+            "title": "Si Unit"
+          },
+          "display_unit": {
+            "type": "string",
+            "title": "Display Unit"
+          },
+          "num_value": {
             "anyOf": [
               {
-                "type": "string",
-                "format": "uuid"
+                "type": "number"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Method Id"
+            "title": "Num Value"
           },
-          "method_code": {
+          "num_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Min"
+          },
+          "num_max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Max"
+          },
+          "text_value": {
             "anyOf": [
               {
                 "type": "string"
@@ -8294,38 +9512,36 @@
                 "type": "null"
               }
             ],
-            "title": "Method Code"
+            "title": "Text Value"
           },
-          "note": {
+          "bool_value": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "boolean"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Note"
-          },
-          "limits": {
-            "items": {
-              "$ref": "#/components/schemas/ModelLimitOut"
-            },
-            "type": "array",
-            "title": "Limits"
+            "title": "Bool Value"
           }
         },
         "type": "object",
         "required": [
-          "id",
-          "test_item_term_id",
-          "test_item",
-          "method_id",
-          "method_code",
-          "note",
-          "limits"
+          "definition_id",
+          "key",
+          "label",
+          "kind",
+          "si_unit",
+          "display_unit",
+          "num_value",
+          "num_min",
+          "num_max",
+          "text_value",
+          "bool_value"
         ],
-        "title": "ModelCapabilityOut"
+        "title": "ModelHeadlineSpecOut",
+        "description": "목록 한 줄이 그리는 **대표 사양** 한 칸.\n\n사양표(`ModelSpecValueOut`)와 값 칸의 이름을 맞춘다 — 화면이 값을 글자로 만드는\n함수를 하나만 두게 하려는 것이다. 모양을 달리 주면 목록과 상세가 같은 값을\n다르게 적는 날이 오고, 그때 어느 쪽이 맞는지는 아무도 모른다."
       },
       "ModelLimitOut": {
         "properties": {
@@ -8414,7 +9630,7 @@
           "note"
         ],
         "title": "ModelLimitOut",
-        "description": "계열 역량의 조건 한 칸. 개체 쪽(LimitOut)과 같은 모양이다."
+        "description": "계열의 시험 항목의 조건 한 칸. 개체 쪽(LimitOut)과 같은 모양이다."
       },
       "ModelLimitUpsertRequest": {
         "properties": {
@@ -9750,10 +10966,10 @@
       },
       "SearchHit": {
         "properties": {
-          "capability_id": {
+          "equipment_test_item_id": {
             "type": "string",
             "format": "uuid",
-            "title": "Capability Id"
+            "title": "Equipment Test Item Id"
           },
           "equipment_id": {
             "type": "string",
@@ -9871,7 +11087,7 @@
         },
         "type": "object",
         "required": [
-          "capability_id",
+          "equipment_test_item_id",
           "equipment_id",
           "asset_no",
           "equipment_name",
@@ -10082,6 +11298,150 @@
         ],
         "title": "SeriesRelationOut",
         "description": "계열에 붙은 관계 한 줄."
+      },
+      "SeriesTestItemCreateRequest": {
+        "properties": {
+          "test_item_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Test Item Term Id"
+          },
+          "test_item": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Test Item"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "method_code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Code"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "title": "SeriesTestItemCreateRequest",
+        "description": "이 계열이 무슨 시험을 하나.\n\n시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의\n장비는 영영 검색에 안 걸린다."
+      },
+      "SeriesTestItemOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "test_item_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Item Term Id"
+          },
+          "test_item": {
+            "type": "string",
+            "title": "Test Item"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "method_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Code"
+          },
+          "methods": {
+            "items": {
+              "$ref": "#/components/schemas/CitedMethodOut"
+            },
+            "type": "array",
+            "title": "Methods"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "limits": {
+            "items": {
+              "$ref": "#/components/schemas/ModelLimitOut"
+            },
+            "type": "array",
+            "title": "Limits"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "test_item_term_id",
+          "test_item",
+          "method_id",
+          "method_code",
+          "methods",
+          "note",
+          "limits"
+        ],
+        "title": "SeriesTestItemOut"
       },
       "ServerStatusOut": {
         "properties": {
@@ -11179,6 +12539,14 @@
             "type": "string",
             "title": "Label"
           },
+          "domain": {
+            "type": "string",
+            "title": "Domain"
+          },
+          "domain_label": {
+            "type": "string",
+            "title": "Domain Label"
+          },
           "description": {
             "anyOf": [
               {
@@ -11219,6 +12587,8 @@
           "id",
           "slug",
           "label",
+          "domain",
+          "domain_label",
           "description",
           "entry_policy",
           "parent_slug",

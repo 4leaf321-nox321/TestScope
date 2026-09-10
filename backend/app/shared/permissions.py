@@ -160,7 +160,7 @@ def visible_equipment(db: Session, user: User) -> Select[tuple[Equipment]]:
 
 
 def visible_equipment_ids(db: Session, user: User) -> Select[tuple[uuid.UUID]]:
-    """하위 쿼리(역량·검색)에 끼워 넣을 서브쿼리. visible_equipment 와 **같은 조건**이다.
+    """하위 쿼리(시험 항목·검색)에 끼워 넣을 서브쿼리. visible_equipment 와 **같은 조건**이다.
 
     같은 규칙을 두 번 적으면 언젠가 한쪽만 고쳐지고, 그때 검색 결과와 목록이 서로
     다른 장비를 보여 준다.

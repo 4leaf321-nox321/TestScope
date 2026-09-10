@@ -53,7 +53,7 @@ class RefreshToken(Base):
 #: 토큰이 가질 수 있는 범위.
 #:
 #:   read            모든 읽기
-#:   equipment:write 보유 장비·역량·교정
+#:   equipment:write 보유 장비·시험 항목·교정
 #:   catalog:write   계열·기종·사양·기준정보
 #:
 #: **왜 나누나.** 카탈로그 쓰기는 시스템 관리자 몫인데, MCP 용 토큰에 그 계정을

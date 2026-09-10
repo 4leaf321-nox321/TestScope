@@ -21,16 +21,29 @@ from __future__ import annotations
 
 #: 원본 키 -> (사양 정의 key, 배율)
 #:
-#: 배율은 **원본 값에 곱해서** 정의의 단위로 만드는 수다. `force_N` 은 0.001 을
-#: 곱해 kN 이 된다.
+#: 배율은 **원본 값에 곱해서** 정의의 단위로 만드는 수다.
+#:
+#: ## 단위 변형은 여기 안 적는다
+#:
+#: `force_N` 이 `force_kN` 의 다른 단위라는 것은 **카탈로그 도메인 지식**이고, 그
+#: 정본은 온톨로지의 `unit_variants` 다(AGENTS.md). 여기 또 적으면 같은 계수가 두
+#: 곳에 살고, 갈라진 뒤에는 어느 쪽이 맞는지 알 방법이 없다 — 실제로 `test_load_gf`
+#: 가 한쪽에서는 kgf 의 단위 변형, 다른 쪽에서는 미소 하중으로 갈려 있었다.
+#:
+#: 여기가 맡는 것은 **다리 하나뿐**이다: 원본이 부르는 이름 -> 우리 정의의 이름.
+#: 반입이 둘을 합친다(`_alias_targets`).
 SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     # 용량
     "force_kN": ("force_capacity", 1.0),
-    "force_N": ("force_capacity", 0.001),
+    # 프레임이 견디는 용량과 레오미터의 시험력. 둘 다 그 기종의 최대 하중이다.
+    "frame_capacity_kN": ("force_capacity", 1.0),
+    "test_force_kN": ("force_capacity", 1.0),
+    # **이중 시험공간의 위쪽 방 하중은 다른 사양이다.** 3 kN 인데 그 장비 전체
+    # 용량은 300 kN 일 수 있다 — 하중 용량으로 담으면 검색이 거짓말을 한다.
+    "upper_test_room_load_kN": ("upper_test_space_force", 1.0),
     "dynamic_force_kN": ("dynamic_force", 1.0),
     "static_force_kN": ("static_force", 1.0),
     "torque_Nm": ("torque_capacity", 1.0),
-    "torque_mNm": ("torque_capacity", 0.001),
     "impact_energy_J": ("impact_energy", 1.0),
     "load_kg": ("chamber_load", 1.0),
     "oil_capacity_L": ("oil_capacity", 1.0),
@@ -47,6 +60,7 @@ SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     "heating_rate_K_min": ("heating_rate", 1.0),
     "cooling_rate_K_min": ("cooling_rate", 1.0),
     "crosshead_speed_mm_min": ("crosshead_speed", 1.0),
+    "piston_speed_mm_s": ("piston_speed", 1.0),
     "return_speed_mm_min": ("return_speed", 1.0),
     "max_speed_at_full_force_mm_min": ("speed_at_full_force", 1.0),
     "rotation_rpm": ("rotation_speed", 1.0),
@@ -62,6 +76,12 @@ SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     "thermal_conductivity_W_mK": ("thermal_conductivity", 1.0),
     "thermal_diffusivity_mm2_s": ("thermal_diffusivity", 1.0),
     # 시험 공간·시편
+    "min_gauge_length_mm": ("min_gauge_length", 1.0),
+    "measuring_range_mm": ("measuring_range", 1.0),
+    "recovery_time_min": ("recovery_time", 1.0),
+    "recovery_specimen_kg": ("recovery_specimen_mass", 1.0),
+    "noise_dB": ("noise_level", 1.0),
+    "pressure_transducer_range_bar": ("pressure_transducer_range", 1.0),
     "vertical_test_space_mm": ("vertical_test_space", 1.0),
     # daylight opening 은 그립 사이에 남는 높이 — 수직 시험 공간과 같은 말이다.
     "vertical_daylight_mm": ("vertical_test_space", 1.0),
@@ -94,9 +114,7 @@ SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     # 설치 조건
     "power": ("power_supply", 1.0),
     "power_W": ("power_consumption", 1.0),
-    "power_kW": ("power_consumption", 1000.0),
     "power_VA": ("apparent_power", 1.0),
-    "power_kVA": ("apparent_power", 1000.0),
     "weight_kg": ("weight", 1.0),
     # 구성
     "stations": ("test_stations", 1.0),
@@ -117,9 +135,6 @@ SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     "accuracy_class": ("accuracy_class", 1.0),
     "class": ("accuracy_class", 1.0),
     # 분해능은 nm 로 모은다 — µm 로 적힌 것은 1000을 곱한다.
-    "travel_resolution_um": ("position_resolution", 1000.0),
-    "resolution_um": ("position_resolution", 1000.0),
-    "displacement_resolution_um": ("position_resolution", 1000.0),
     # 치수를 배열이 아니라 낱개로 적는 카탈로그가 많다.
     "width_mm": ("dimension_width", 1.0),
     "depth_mm": ("dimension_depth", 1.0),
@@ -130,6 +145,40 @@ SOURCE_SPEC_MAP: dict[str, tuple[str, float]] = {
     "test_room_height_mm": ("inner_height", 1.0),
     "refrigerant": ("cooling_method", 1.0),
     "functions": ("test_functions", 1.0),
+}
+
+
+#: 원본이 **저·고 두 레인지를 한 키에** 적는 것. `[[0.6, 260], [6, 2600]]`.
+#:
+#: 정의를 둘로 나눈다. 하나로 합쳐 0.6~2600 으로 담으면 「100 W 부하 되나」 에는
+#: 맞게 답하지만, **레인지마다 분해능이 다르다는 사실이 사라진다** — 전자부하를
+#: 고르는 사람이 실제로 보는 것이 그것이다.
+RANGE_PAIR_SOURCES: dict[str, tuple[str, str]] = {
+    "cv_range_V": ("cv_range_low", "cv_range_high"),
+    "cp_range_W": ("cp_range_low", "cp_range_high"),
+    "cr_range_ohm": ("cr_range_low", "cr_range_high"),
+    "short_circuit_A": ("short_circuit_low", "short_circuit_high"),
+}
+
+#: 원본이 **고를 수 있는 구성**을 배열로 적는 것 -> 그것을 구간으로 담을 정의.
+#:
+#: `actuator_ratings_kN: [15, 25]` 는 「이 기종은 15 나 25 로 나온다」 이지 「25 다」 가
+#: 아니다. 최대값만 담으면 15 짜리를 가진 부서가 「25 kN 됩니까」 에 된다고 답한다.
+#: 구간으로 담으면 카탈로그가 아는 만큼만 말하고, **우리 장비가 실제로 얼마인지는
+#: 등록할 때 실측이 좁힌다.**
+OPTION_RANGE_SOURCES: dict[str, str] = {
+    "force_ranges_kN": "force_capacity_range",
+    "actuator_ratings_kN": "force_capacity_range",
+    "fov_mm": "field_of_view",
+    "barrel_1_diameter_mm": "barrel_diameter",
+}
+
+#: 원본이 **상한만** 적은 키 -> 그 구간 정의의 최대값으로만 담는다.
+#:
+#: `temperature_max_degC: 400` 을 그냥 구간에 넣으면 400~400 이 된다 — 「400도까지」 가
+#: 아니라 「400도에서만」 이 되고, 검색이 100도를 물으면 그 장비가 빠진다.
+MAX_ONLY_SOURCES: dict[str, str] = {
+    "temperature_max_degC": "test_temperature",
 }
 
 #: 원본이 옵션 사양을 키 뒤에 붙여 구별한다 — `vertical_test_space_mm_E2`.
@@ -174,6 +223,243 @@ TEMPERATURE_PAIR = ("low_temp_degC", "high_temp_degC", "test_temperature")
 CATALOG_SPEC_DEFINITIONS: list[
     tuple[str, str, str, str, str, str, str | None, str, int, str | None]
 ] = [
+    # --- 보류 목록에서 올린 것 (2026-09-10) ---------------------------------
+    #
+    # **한 분류를 통째로 채우는 사양들**이다. 없으면 그 분류의 기종은 목록에서
+    # 이름만 보인다 — 신율계 27기종이 그랬다.
+    (
+        "force_capacity_range",
+        "하중 용량(구성별)",
+        "capacity",
+        "range",
+        "force",
+        "kN",
+        "force",
+        "max",
+        15,
+        "카탈로그가 고를 수 있는 정격을 여럿 적어 온 것. **확정값이 아니다** — "
+        "그 기종을 산 부서는 그중 하나만 갖는다. 실측을 적으면 그쪽이 이긴다.",
+    ),
+    (
+        "upper_test_space_force",
+        "위쪽 시험공간 하중",
+        "capacity",
+        "number",
+        "force",
+        "kN",
+        None,
+        "max",
+        16,
+        "이중 시험공간 장비의 위쪽 방 하중. **하중 용량과 다르다** — 저하중 시험을 "
+        "위에서 하는 구성이라, 이 값이 3 kN 이어도 아래쪽은 300 kN 일 수 있다.",
+    ),
+    (
+        "cv_range_low",
+        "정전압 범위(저)",
+        "range",
+        "range",
+        "voltage",
+        "V",
+        None,
+        "max",
+        400,
+        None,
+    ),
+    (
+        "cv_range_high",
+        "정전압 범위(고)",
+        "range",
+        "range",
+        "voltage",
+        "V",
+        None,
+        "max",
+        401,
+        "전자부하는 레인지를 두 벌로 갖는다. 합쳐 적으면 레인지마다 분해능이 다르다는 "
+        "사실이 사라진다.",
+    ),
+    (
+        "cp_range_low",
+        "정전력 범위(저)",
+        "range",
+        "range",
+        "power",
+        "W",
+        None,
+        "max",
+        402,
+        None,
+    ),
+    (
+        "cp_range_high",
+        "정전력 범위(고)",
+        "range",
+        "range",
+        "power",
+        "W",
+        None,
+        "max",
+        403,
+        None,
+    ),
+    (
+        "cr_range_low",
+        "정저항 범위(저)",
+        "range",
+        "range",
+        "resistance",
+        "ohm",
+        None,
+        "max",
+        404,
+        None,
+    ),
+    (
+        "cr_range_high",
+        "정저항 범위(고)",
+        "range",
+        "range",
+        "resistance",
+        "ohm",
+        None,
+        "max",
+        405,
+        None,
+    ),
+    (
+        "short_circuit_low",
+        "단락 전류(저 레인지)",
+        "capacity",
+        "number",
+        "current",
+        "A",
+        None,
+        "max",
+        406,
+        None,
+    ),
+    (
+        "short_circuit_high",
+        "단락 전류(고 레인지)",
+        "capacity",
+        "number",
+        "current",
+        "A",
+        None,
+        "max",
+        407,
+        None,
+    ),
+    (
+        "field_of_view",
+        "시야(FOV)",
+        "space",
+        "range",
+        "length",
+        "mm",
+        None,
+        "max",
+        410,
+        "비접촉 신율계가 한 번에 보는 길이. **표점 거리와 다르다** — 시야 안에서 "
+        "표점을 잡는다.",
+    ),
+    (
+        "min_gauge_length",
+        "최소 표점 거리",
+        "space",
+        "number",
+        "length",
+        "mm",
+        None,
+        "min",
+        411,
+        "이보다 짧은 표점은 못 잡는다. **바닥이다** — 작을수록 좋다.",
+    ),
+    (
+        "measuring_range",
+        "측정 범위",
+        "range",
+        "number",
+        "length",
+        "mm",
+        None,
+        "max",
+        412,
+        "신율계가 따라갈 수 있는 변위.",
+    ),
+    (
+        "recovery_time",
+        "온도 회복 시간",
+        "range",
+        "number",
+        "time",
+        "min",
+        None,
+        "max",
+        420,
+        "시편을 넣은 뒤 설정 온도로 돌아오는 데 걸리는 시간. 열충격 챔버를 고를 때 "
+        "실제로 묻는 값이다.",
+    ),
+    (
+        "recovery_specimen_mass",
+        "회복 기준 시편 무게",
+        "space",
+        "number",
+        "mass",
+        "kg",
+        None,
+        "max",
+        421,
+        "회복 시간을 잰 조건. 이것 없이 회복 시간만 보면 비교가 안 된다.",
+    ),
+    (
+        "noise_level",
+        "소음",
+        "installation",
+        "number",
+        "level",
+        "dB",
+        None,
+        "max",
+        422,
+        "설치 자리를 정할 때 걸린다 — 사무실 옆에 못 두는 장비가 있다.",
+    ),
+    (
+        "piston_speed",
+        "피스톤 속도",
+        "range",
+        "range",
+        "speed",
+        "mm/s",
+        None,
+        "max",
+        430,
+        None,
+    ),
+    (
+        "barrel_diameter",
+        "배럴 지름",
+        "space",
+        "range",
+        "length",
+        "mm",
+        None,
+        "max",
+        431,
+        "고를 수 있는 배럴 구성. 시편이 들어가는지가 여기서 갈린다.",
+    ),
+    (
+        "pressure_transducer_range",
+        "압력 센서 범위",
+        "range",
+        "range",
+        "pressure",
+        "bar",
+        None,
+        "max",
+        432,
+        None,
+    ),
     # --- 용량 ----------------------------------------------------------------
     (
         "test_load_micro",

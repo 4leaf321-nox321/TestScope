@@ -251,7 +251,11 @@
    "key": "data_rate_Hz",
    "label": "데이터 수집 속도",
    "dimension": "frequency",
-   "unit": "Hz"
+   "unit": "Hz",
+   "unit_variants": {
+    "data_rate_MHz": 1000000.0
+   },
+   "registered": "2026-09-10 단위 변형 등록"
   },
   {
    "key": "dc_withstand_voltage_kV",
@@ -867,7 +871,10 @@
    "label": "출력 전압",
    "dimension": "voltage",
    "unit": "V",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록 · 2026-09-10 단위 변형 등록",
+   "unit_variants": {
+    "output_voltage_kV": 1000.0
+   }
   },
   {
    "key": "package_size_mm",
@@ -958,10 +965,21 @@
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
+   "key": "power_A",
+   "label": "전압별 소비 전류",
+   "role": "descriptive",
+   "note": "이름은 전력인데 값은 전압 구성마다의 전류표다 — {\"200V_3ph\": 49, \"380V_3ph\": 26} 처럼 온다. 수치 하나로 못 담고, 담으면 어느 전압에서의 값인지가 사라진다.",
+   "registered": "2026-09-10 보류 목록 정리에서 등록"
+  },
+  {
    "key": "power_VA",
    "label": "소비 전력",
    "dimension": "",
-   "unit": "VA"
+   "unit": "VA",
+   "unit_variants": {
+    "power_kVA": 1000.0
+   },
+   "registered": "2026-09-10 단위 변형 등록"
   },
   {
    "key": "power_W",
@@ -1429,9 +1447,9 @@
    "unit": "kgf",
    "testscope_key": "force",
    "unit_variants": {
-    "test_load_gf": 0.001,
     "test_load_N": 0.101972
-   }
+   },
+   "note": "gf 로 적힌 하중(`test_load_gf`)은 **단위만 다른 것이 아니다** — 마이크로 비커스가 고르는 미소 시험 하중이라 다른 사양(`test_load_micro`)으로 간다. 단위 변형으로 이어 두면 로크웰의 kgf 하중 계열과 한 칸에 섞인다."
   },
   {
    "key": "test_opening_mm",

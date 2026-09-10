@@ -62,6 +62,23 @@ ENTRY_POLICIES = ("open", "closed")
 TERM_STATUSES = ("active", "deprecated")
 
 
+#: 축이 어느 층의 것인가.
+#:
+#:   equipment  보유 장비 — 우리가 가진 그 한 대에 붙는다
+#:   catalog    카탈로그 — 제조사가 파는 계열·기종에 붙는다
+#:   method     시험법 — 규격에 붙는다
+#:   common     여러 층이 함께 쓴다. **얼버무리는 자리가 아니다**
+VOCABULARY_DOMAINS = ("equipment", "catalog", "method", "common")
+
+#: 화면이 쓰는 이름. 코드가 slug 를 걸고 사람은 이 말을 읽는다.
+VOCABULARY_DOMAIN_LABELS = {
+    "equipment": "보유 장비",
+    "catalog": "카탈로그",
+    "method": "시험법",
+    "common": "공통",
+}
+
+
 class Vocabulary(Base):
     """축 하나.
 
@@ -76,6 +93,17 @@ class Vocabulary(Base):
     )
     slug: Mapped[str] = mapped_column(String(50), unique=True, index=True)
     """코드가 거는 이름. manufacturer 처럼 안 바뀌는 것."""
+    domain: Mapped[str] = mapped_column(
+        String(20), default="common", server_default="common", index=True
+    )
+    """**어디의 축인가.** 기준정보 화면이 이것으로 묶어 보여 준다.
+
+    축이 일곱을 넘어가면 한 목록으로는 「이게 어디 쓰이는 값이지」 를 알 수 없다 —
+    제조사와 규격 제정기관이 나란히 서 있으면, 장비를 등록하러 온 사람이 제정기관에
+    회사 이름을 넣는다. 실제로 그렇게 갈린다.
+
+    `common` 은 얼버무리는 자리가 아니라 **정말 여러 층이 쓰는 축**이다. 시험 항목이
+    그렇다 — 장비의 시험 항목·계열의 시험 항목·시험법이 전부 그것을 가리킨다."""
     label: Mapped[str] = mapped_column(String(100))
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     """이 축이 무엇인지 한 줄. 화면이 그대로 보여 준다 — 고르는 사람이 축의 뜻을
@@ -138,9 +166,6 @@ class VocabularyTerm(Base):
     """이 값이 갖는 부속 정보. 시험 항목이면 대표 조건 키 목록 같은 것."""
 
     status: Mapped[str] = mapped_column(String(20), default="active", index=True)
-    usage_count: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
-    """이 값을 가리키는 행 수. **목록이 장비 수와 무관해지는 지점이다** — 없으면
-    화면을 열 때마다 장비 전체를 GROUP BY 한다."""
 
     created_by_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True), ForeignKey("users.id"), nullable=True
@@ -234,7 +259,7 @@ class ConditionKey(Base):
     sort_order: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
     """끄면 새 입력에서 안 뜬다. **지우지는 않는다** — 이미 그 조건으로 적힌
-    장비 역량이 무엇이었는지 알 수 없게 된다."""
+    장비 시험 항목이 무엇이었는지 알 수 없게 된다."""
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()

@@ -9,11 +9,12 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
-from app.modules.equipment import catalog, services, specs
+from app.modules.equipment import catalog, equipment_specs, services, specs
 from app.modules.equipment.schemas import (
     CalibrationCreateRequest,
     CalibrationOut,
     EquipmentCreateRequest,
+    EquipmentFilterOptionsOut,
     EquipmentModelCreateRequest,
     EquipmentModelOut,
     EquipmentModelUpdateRequest,
@@ -21,9 +22,10 @@ from app.modules.equipment.schemas import (
     EquipmentSeriesCreateRequest,
     EquipmentSeriesOut,
     EquipmentSeriesUpdateRequest,
+    EquipmentSpecSaveRequest,
+    EquipmentSpecSaveResult,
+    EquipmentSpecSheetOut,
     EquipmentUpdateRequest,
-    ModelCapabilityCreateRequest,
-    ModelCapabilityOut,
     ModelLimitOut,
     ModelLimitUpsertRequest,
     ModelSpecSaveResult,
@@ -31,11 +33,13 @@ from app.modules.equipment.schemas import (
     ModelSpecValueUpsertRequest,
     SeriesRelationCreateRequest,
     SeriesRelationOut,
+    SeriesTestItemCreateRequest,
+    SeriesTestItemOut,
     SpecSourceOut,
 )
 from app.shared.auth import current_user, require_system_admin
 from app.shared.pagination import MAX_LIMIT, Page, clamp_limit
-from app.shared.permissions import get_equipment
+from app.shared.permissions import get_equipment, require_owner_edit
 
 router = APIRouter(prefix="/equipment", tags=["equipment"])
 
@@ -43,24 +47,66 @@ router = APIRouter(prefix="/equipment", tags=["equipment"])
 @router.get("", response_model=Page[EquipmentOut])
 def list_equipment(
     q: str | None = Query(default=None, max_length=200),
+    asset_no: str | None = Query(default=None, max_length=50),
+    name: str | None = Query(default=None, max_length=200),
     status: str | None = Query(default=None),
     workspace: str | None = Query(default=None),
     model_id: uuid.UUID | None = Query(default=None),
+    category_term_id: uuid.UUID | None = Query(default=None),
+    site_term_id: uuid.UUID | None = Query(default=None),
+    test_item_term_id: uuid.UUID | None = Query(default=None),
+    calibration: str | None = Query(
+        default=None, pattern="^(required|exempt|missing|overdue)$"
+    ),
+    shared_use: bool | None = Query(default=None),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> Page[EquipmentOut]:
+    """보유 장비 목록. **거르기는 서버가 한다.**
+
+    화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때
+    목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.
+
+    `calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·
+    `missing` 대상인데 이력 없음 · `overdue` 기한 지남.
+
+    `q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —
+    화면은 열마다 거르므로 뒤엣것을 쓴다.
+    """
     return services.list_equipment(
         db,
         user,
         query=q,
+        asset_no=asset_no,
+        name=name,
         status=status,
         workspace_slug=workspace,
         model_id=model_id,
+        category_term_id=category_term_id,
+        site_term_id=site_term_id,
+        test_item_term_id=test_item_term_id,
+        calibration=calibration,
+        shared_use=shared_use,
         limit=clamp_limit(limit),
         offset=offset,
     )
+
+
+@router.get("/filter-options", response_model=EquipmentFilterOptionsOut)
+def equipment_filter_options(
+    user: User = Depends(current_user), db: Session = Depends(get_db)
+) -> EquipmentFilterOptionsOut:
+    """목록의 열마다 **고를 수 있는 값**과 그 수.
+
+    기준정보 전체가 아니라 **지금 목록에 있는 값만** 준다 — 골라도 0 건인 선택지가
+    섞이면 사람은 거르기를 안 믿게 된다.
+
+    `/{equipment_id}` 보다 **먼저 선언한다.** 뒤에 두면 `filter-options` 가 장비 id 로
+    읽혀 422 가 난다.
+    """
+    return services.filter_options(db, user)
 
 
 @router.post("", response_model=EquipmentOut, status_code=201)
@@ -123,6 +169,69 @@ def add_calibration(
     return services.add_calibration(db, user, equipment_id, payload.model_dump())
 
 
+# --- 개체 사양 (카탈로그 위에 덮는 실측) --------------------------------------
+#
+# **기종 사양과 겹쳐서 준다.** 개체는 다른 값만 갖고, 나머지는 기종 것이 그대로
+# 보인다 — 복사해 두면 카탈로그가 개정돼도 안 따라오고, 어느 값이 실측인지 구별이
+# 사라진다.
+
+
+@router.get("/{equipment_id}/specs", response_model=EquipmentSpecSheetOut)
+def read_equipment_specs(
+    equipment_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> EquipmentSpecSheetOut:
+    """이 장비의 사양 — 한 줄에 **카탈로그 값과 실측이 함께** 온다.
+
+    화면은 둘을 겹쳐 그린다: 「실측 300 kN (사양서 250 kN)」. 하나만 보여 주면 사람은
+    그 수치가 잰 값인지 사양서 값인지 알 수 없고, 그 둘은 믿는 정도가 다르다.
+    """
+    return equipment_specs.sheet(db, get_equipment(db, user, equipment_id))
+
+
+@router.put("/{equipment_id}/specs", response_model=EquipmentSpecSaveResult)
+def upsert_equipment_spec(
+    equipment_id: uuid.UUID,
+    payload: EquipmentSpecSaveRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> EquipmentSpecSaveResult:
+    """실측 한 칸을 넣거나 덮어쓴다. **이 장비의 값이지 기종의 값이 아니다.**
+
+    기종 사양과 같은 규칙으로 검증한다 — 정의의 종류에 맞는 칸만 채운다.
+
+    응답의 `condition_label` 이 채워져 있으면 그 값은 검색이 묻는 축이고, `reflected`
+    가 참이면 이 장비의 시험 조건이 실제로 갱신됐다는 뜻이다. **손으로 고쳐 둔 조건은
+    안 덮는다** — 그때는 거짓으로 온다.
+    """
+    row = get_equipment(db, user, equipment_id)
+    require_owner_edit(
+        db, user, row.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002"
+    )
+    value, label, reflected = equipment_specs.upsert(db, row, payload.model_dump(), user)
+    return EquipmentSpecSaveResult(value=value, condition_label=label, reflected=reflected)
+
+
+@router.delete("/{equipment_id}/specs/{definition_id}", status_code=204)
+def delete_equipment_spec(
+    equipment_id: uuid.UUID,
+    definition_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> None:
+    """실측을 지운다 — 그 칸은 다시 카탈로그 값으로 보인다.
+
+    **따라 들어간 시험 조건은 안 지운다.** 이미 이 장비의 것이고, 그 사이에 사람이
+    고쳐 뒀을 수 있다.
+    """
+    row = get_equipment(db, user, equipment_id)
+    require_owner_edit(
+        db, user, row.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002"
+    )
+    equipment_specs.delete(db, row, definition_id)
+
+
 # --- 카탈로그: 계열 -----------------------------------------------------------
 #
 # **읽기는 누구나 한다.** 장비를 등록하는 사람이 기종을 골라야 하고, 아직 없는
@@ -138,7 +247,7 @@ def list_series(
     kind: str | None = Query(default=None),
     category_term_id: uuid.UUID | None = Query(default=None),
     owned: bool = Query(default=False),
-    issue: str | None = Query(default=None, pattern="^(capabilities)$"),
+    issue: str | None = Query(default=None, pattern="^(test_items)$"),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -210,14 +319,14 @@ def delete_series(
 
 
 @series_router.post(
-    "/{series_id}/capabilities", response_model=ModelCapabilityOut, status_code=201
+    "/{series_id}/test_items", response_model=SeriesTestItemOut, status_code=201
 )
-def add_series_capability(
+def add_series_test_item(
     series_id: uuid.UUID,
-    payload: ModelCapabilityCreateRequest,
+    payload: SeriesTestItemCreateRequest,
     _: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
-) -> ModelCapabilityOut:
+) -> SeriesTestItemOut:
     """이 계열이 무슨 시험을 하나.
 
     **조건 수치는 여기 적지 않는다.** 여기 적는 조건은 계열 전체가 만족하는 것만이고,
@@ -227,43 +336,43 @@ def add_series_capability(
     시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
     장비는 영영 검색에 안 걸린다. `test_item`(이름)으로 주면 별칭까지 본다.
     """
-    return catalog.add_capability(db, series_id, payload.model_dump())
+    return catalog.add_test_item(db, series_id, payload.model_dump())
 
 
-@series_router.delete("/{series_id}/capabilities/{capability_id}", status_code=204)
-def delete_series_capability(
+@series_router.delete("/{series_id}/test_items/{equipment_test_item_id}", status_code=204)
+def delete_series_test_item(
     series_id: uuid.UUID,
-    capability_id: uuid.UUID,
+    equipment_test_item_id: uuid.UUID,
     _: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
 ) -> None:
-    catalog.delete_capability(db, series_id, capability_id)
+    catalog.delete_test_item(db, series_id, equipment_test_item_id)
 
 
 @series_router.put(
-    "/{series_id}/capabilities/{capability_id}/limits", response_model=ModelLimitOut
+    "/{series_id}/test_items/{equipment_test_item_id}/limits", response_model=ModelLimitOut
 )
 def upsert_series_limit(
     series_id: uuid.UUID,
-    capability_id: uuid.UUID,
+    equipment_test_item_id: uuid.UUID,
     payload: ModelLimitUpsertRequest,
     _: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
 ) -> ModelLimitOut:
-    return catalog.upsert_limit(db, series_id, capability_id, payload.model_dump())
+    return catalog.upsert_limit(db, series_id, equipment_test_item_id, payload.model_dump())
 
 
 @series_router.delete(
-    "/{series_id}/capabilities/{capability_id}/limits/{limit_id}", status_code=204
+    "/{series_id}/test_items/{equipment_test_item_id}/limits/{limit_id}", status_code=204
 )
 def delete_series_limit(
     series_id: uuid.UUID,
-    capability_id: uuid.UUID,
+    equipment_test_item_id: uuid.UUID,
     limit_id: uuid.UUID,
     _: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
 ) -> None:
-    catalog.delete_limit(db, series_id, capability_id, limit_id)
+    catalog.delete_limit(db, series_id, equipment_test_item_id, limit_id)
 
 
 @series_router.post(
@@ -290,7 +399,7 @@ def delete_series_relation(
 
 # --- 카탈로그: 기종 -----------------------------------------------------------
 #
-# 보유 장비가 가리키는 것은 기종이다. 역량은 계열이 갖고, **조건은 이 기종의
+# 보유 장비가 가리키는 것은 기종이다. 시험 항목은 계열이 갖고, **조건은 이 기종의
 # 사양이 좁힌다**(ADR 0006).
 
 catalog_router = APIRouter(prefix="/equipment-models", tags=["catalog"])
@@ -398,7 +507,7 @@ def upsert_model_spec(
     **없는 사양은 만들지 말고 보류하라** — 정의를 늘리는 것은 사람의 판단이다.
 
     응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의
-    역량 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고, 그들에게는
+    시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고, 그들에게는
     반영되지 않는다.
     """
     value, axis, units = specs.upsert(

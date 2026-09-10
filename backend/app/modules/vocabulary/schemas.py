@@ -15,6 +15,12 @@ class VocabularyOut(BaseModel):
     id: uuid.UUID
     slug: str
     label: str
+    domain: str
+    """어디의 축인가 — `equipment` · `catalog` · `method` · `common`.
+
+    화면이 이것으로 묶는다. 한 목록에 일곱이 나란히 서면 「이게 어디 쓰이는 값이지」 를
+    알 수 없고, 그때 제정기관 축에 회사 이름이 들어간다."""
+    domain_label: str
     description: str | None
     entry_policy: str
     parent_slug: str | None
@@ -91,7 +97,7 @@ class ConditionKeyOut(BaseModel):
     sort_order: int
     is_active: bool
     usage_count: int
-    """이 조건을 쓰는 역량·요구 수. **끄거나 고치기 전에 보여 준다** — 단위를
+    """이 조건을 쓰는 시험 항목·요구 수. **끄거나 고치기 전에 보여 준다** — 단위를
     고치면 이미 저장된 그 숫자들의 뜻이 통째로 바뀐다."""
 
 
