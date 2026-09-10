@@ -55,6 +55,10 @@ mcp_server/.venv/
 # 폴더 이름이 하나가 아니다(`pdf` · `pdf_직접` …). **확장자로 막는다** — 이름을
 # 하나씩 적으면 다음에 새 폴더가 생길 때 조용히 새어 나간다(실제로 그랬다).
 source/**/*.pdf
+# 원본 묶음. **크기가 GitHub 상한을 넘는다** — `git add source` 한 번에 딸려 들어가
+# 푸시가 통째로 거절된다(실측: 587MB).
+source/*.zip*
+source/**/*.zip
 source/pdf/
 source/pdf_직접/
 source/extracted/
