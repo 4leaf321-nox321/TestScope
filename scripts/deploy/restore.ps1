@@ -5,8 +5,8 @@
 있는가" 를 본다 — 받아만 두고 복구를 해 본 적이 없는 백업은 백업이 아니다.
 운영 DB 를 덮어쓰려면 `-Force` 를 의식적으로 준다.
 
-    .\restore.ps1 -BackupRoot 'D:\TestAtlas-backup' -DbName testatlas_restore_check
-    .\restore.ps1 -BackupRoot 'D:\TestAtlas-backup' -DbName testatlas -AppPath 'C:\Server\TestAtlas' -Force
+    .\restore.ps1 -BackupRoot 'D:\TestScope-backup' -DbName testscope_restore_check
+    .\restore.ps1 -BackupRoot 'D:\TestScope-backup' -DbName testscope -AppPath 'C:\Server\TestScope' -Force
 
 **파일스토어는 -AppPath 를 줄 때만 되돌린다.** DB 만 확인하는 경우에 운영 파일을
 건드리면 그 자체가 사고다.

@@ -10,7 +10,7 @@
 롤백 전에 앱을 중지한다 — 윈도우는 실행 중인 파일을 잠근다.
 
 사용:
-  .\rollback.ps1 -AppPath 'C:\Server\TestAtlas'
+  .\rollback.ps1 -AppPath 'C:\Server\TestScope'
 #>
 
 param(
@@ -22,7 +22,7 @@ $ErrorActionPreference = 'Stop'
 <#
 매개변수를 값으로 받아 버리는 것을 막는다 — **대시는 하나다.**
 
-`--AppPath 'C:\Server\TestAtlas'` 로 쓰면 PowerShell 은 오류를 내지 않는다.
+`--AppPath 'C:\Server\TestScope'` 로 쓰면 PowerShell 은 오류를 내지 않는다.
 '--AppPath' 라는 문자열이 첫 위치 매개변수에 들어가고, 뒤따르는 진짜 경로는 그
 다음 위치 매개변수로 **밀려 들어간다.** 값이 잘못 들어갔다는 신호가 어디에도 없다.
 #>

@@ -12,15 +12,15 @@
 배포 전에 앱을 중지한다 — 윈도우는 실행 중인 파일을 잠근다.
 
 사용:
-  .\deploy.ps1 -AppPath 'C:\Server\TestAtlas'
-  .\deploy.ps1 -AppPath 'C:\Server\TestAtlas' -Tag v0.2.0
-  .\deploy.ps1 -AppPath 'C:\Server\TestAtlas' -ZipPath 'C:\tmp\deploy_package.zip'
-  .\deploy.ps1 -AppPath 'C:\Server\TestAtlas' -SkipMigrations
+  .\deploy.ps1 -AppPath 'C:\Server\TestScope'
+  .\deploy.ps1 -AppPath 'C:\Server\TestScope' -Tag v0.2.0
+  .\deploy.ps1 -AppPath 'C:\Server\TestScope' -ZipPath 'C:\tmp\deploy_package.zip'
+  .\deploy.ps1 -AppPath 'C:\Server\TestScope' -SkipMigrations
 #>
 
 param(
     [Parameter(Mandatory = $true)][string]$AppPath,
-    [string]$Repo = '4leaf321-nox321/TestAtlas',
+    [string]$Repo = '4leaf321-nox321/TestScope',
     [string]$Tag,
     [string]$ZipPath,
     [string]$PythonExe,
@@ -32,10 +32,10 @@ $ErrorActionPreference = 'Stop'
 <#
 매개변수를 값으로 받아 버리는 것을 막는다 — **대시는 하나다.**
 
-`--AppPath 'C:\Server\TestAtlas'` 로 쓰면 PowerShell 은 오류를 내지 않는다.
+`--AppPath 'C:\Server\TestScope'` 로 쓰면 PowerShell 은 오류를 내지 않는다.
 '--AppPath' 라는 문자열이 첫 위치 매개변수에 들어가고, 뒤따르는 진짜 경로는 그
 다음 위치 매개변수(-Repo)로 **밀려 들어간다** — 그러면
-`gh release download --repo C:\Server\TestAtlas` 가 실행되고, 사람은 "gh 가 안
+`gh release download --repo C:\Server\TestScope` 가 실행되고, 사람은 "gh 가 안
 된다" 를 보게 된다. 값이 잘못 들어갔다는 신호가 어디에도 없다.
 #>
 function Assert-NotFlag([string]$value, [string]$name) {
@@ -93,13 +93,13 @@ Add-Type -MemberDefinition @'
 public static extern uint GetLongPathName(string lpszShortPath,
                                           System.Text.StringBuilder lpszLongPath,
                                           uint cchBuffer);
-'@ -Name NativePath -Namespace TasDeploy -ErrorAction SilentlyContinue
+'@ -Name NativePath -Namespace TscDeploy -ErrorAction SilentlyContinue
 
 function Resolve-LongPath([string]$path) {
     if (-not $path) { return $path }
     try {
         $buffer = New-Object System.Text.StringBuilder 32768
-        $length = [TasDeploy.NativePath]::GetLongPathName($path, $buffer, $buffer.Capacity)
+        $length = [TscDeploy.NativePath]::GetLongPathName($path, $buffer, $buffer.Capacity)
         if ($length -gt 0 -and $length -lt $buffer.Capacity) { return $buffer.ToString() }
     } catch { }
     return $path

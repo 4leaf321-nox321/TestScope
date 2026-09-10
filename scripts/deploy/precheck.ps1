@@ -5,7 +5,7 @@
 적용된 상태로 멈추는 것보다, 시작 전에 막는 편이 원인 추적이 쉽다.**
 
 사용:
-  .\precheck.ps1 -AppPath 'C:\Server\TestAtlas' -DatabaseUrl 'postgresql+psycopg://...'
+  .\precheck.ps1 -AppPath 'C:\Server\TestScope' -DatabaseUrl 'postgresql+psycopg://...'
 #>
 
 param(
@@ -55,7 +55,7 @@ if (-not (Test-Path $parent)) {
     try { New-Item -ItemType Directory -Force -Path $parent | Out-Null } catch { }
 }
 if (Test-Path $parent) {
-    $probe = Join-Path $parent ('.tas_probe_' + [guid]::NewGuid().ToString('N'))
+    $probe = Join-Path $parent ('.tsc_probe_' + [guid]::NewGuid().ToString('N'))
     try {
         New-Item -ItemType File -Path $probe -Force | Out-Null
         Remove-Item -Force $probe

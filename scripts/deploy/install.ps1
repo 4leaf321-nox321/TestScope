@@ -11,24 +11,24 @@ Day 0 — 신규 서버 설치.
 각 단계는 멱등하다. 중간에 끊겨 다시 실행해도 같은 결과가 나오고, 특히 **이미 있는
 관리자 계정의 비밀번호를 되돌리지 않는다.**
 
-스크립트는 `C:\Server\tools\TestAtlas\` 처럼 **프로젝트별 하위 폴더**에 둔다.
+스크립트는 `C:\Server\tools\TestScope\` 처럼 **프로젝트별 하위 폴더**에 둔다.
 `C:\Server\tools` 바로 아래에 두면 같은 서버의 다른 앱과 파일명이 겹쳐 서로를
 덮어쓴다.
 
 사용:
-  .\install.ps1 -AppPath 'C:\Server\TestAtlas' -DbPassword '...'
-  .\install.ps1 -AppPath 'C:\Server\TestAtlas' -ZipPath 'C:\tmp\deploy_package.zip' `
+  .\install.ps1 -AppPath 'C:\Server\TestScope' -DbPassword '...'
+  .\install.ps1 -AppPath 'C:\Server\TestScope' -ZipPath 'C:\tmp\deploy_package.zip' `
                 -DbHost localhost -DbUser postgres -DbPassword '...'
 #>
 
 param(
     [Parameter(Mandatory = $true)][string]$AppPath,
     [string]$ZipPath,
-    [string]$Repo = '4leaf321-nox321/TestAtlas',
+    [string]$Repo = '4leaf321-nox321/TestScope',
     [string]$Tag,
     [string]$DbHost = 'localhost',
     [int]$DbPort = 5432,
-    [string]$DbName = 'testatlas',
+    [string]$DbName = 'testscope',
     [string]$DbUser = 'postgres',
     [Parameter(Mandatory = $true)][string]$DbPassword,
     [int]$Port = 8020,
@@ -189,7 +189,7 @@ try {
 }
 
 # --- 8. 방화벽 ----------------------------------------------------------------
-$ruleName = "TestAtlas $Port"
+$ruleName = "TestScope $Port"
 $existing = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
 if ($existing) {
     Write-Log "방화벽 규칙이 이미 있습니다: $ruleName"

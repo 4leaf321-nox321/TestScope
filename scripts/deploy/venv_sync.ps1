@@ -14,8 +14,8 @@ venv 는 앱 폴더 **바깥**에 둔다.
 pip 이 불안정해도 배포가 멈추지 않는다.
 
 사용:
-  .\venv_sync.ps1 -AppPath 'C:\Server\TestAtlas' -PythonExe 'C:\Python313\python.exe'
-  .\venv_sync.ps1 -AppPath 'C:\Server\TestAtlas' -Force
+  .\venv_sync.ps1 -AppPath 'C:\Server\TestScope' -PythonExe 'C:\Python313\python.exe'
+  .\venv_sync.ps1 -AppPath 'C:\Server\TestScope' -Force
 #>
 
 param(

@@ -20,13 +20,13 @@
 앱 프로세스에 넣지 않는다 — 앱이 죽은 날 백업도 조용히 죽는다.
 
     $action  = New-ScheduledTaskAction -Execute 'powershell.exe' `
-      -Argument '-NoProfile -ExecutionPolicy Bypass -File C:\Server\tools\TestAtlas\backup.ps1 -AppPath C:\Server\TestAtlas -BackupRoot D:\TestAtlas-backup'
+      -Argument '-NoProfile -ExecutionPolicy Bypass -File C:\Server\tools\TestScope\backup.ps1 -AppPath C:\Server\TestScope -BackupRoot D:\TestScope-backup'
     $trigger = New-ScheduledTaskTrigger -Daily -At 03:00
-    Register-ScheduledTask -TaskName 'TestAtlas Backup' -Action $action -Trigger $trigger -RunLevel Highest -User 'SYSTEM'
+    Register-ScheduledTask -TaskName 'TestScope Backup' -Action $action -Trigger $trigger -RunLevel Highest -User 'SYSTEM'
 
 사용:
-  .\backup.ps1 -AppPath 'C:\Server\TestAtlas' -BackupRoot 'D:\TestAtlas-backup'
-  .\backup.ps1 -AppPath 'C:\Server\TestAtlas' -BackupRoot 'D:\TestAtlas-backup' -KeepDaily 14 -KeepWeekly 8
+  .\backup.ps1 -AppPath 'C:\Server\TestScope' -BackupRoot 'D:\TestScope-backup'
+  .\backup.ps1 -AppPath 'C:\Server\TestScope' -BackupRoot 'D:\TestScope-backup' -KeepDaily 14 -KeepWeekly 8
 #>
 
 param(
@@ -162,7 +162,7 @@ $dumpMb = [math]::Round((Get-Item $dumpPath).Length / 1MB, 1)
     "보관        : 일 ${KeepDaily}벌 + 일요일분 ${KeepWeekly}벌 (덤프 $($keep.Count)개 남음)",
     '',
     '복구 방법:',
-    "  .\restore.ps1 -BackupRoot '$BackupRoot' -DbName testatlas_restore_check          # 확인만",
+    "  .\restore.ps1 -BackupRoot '$BackupRoot' -DbName testscope_restore_check          # 확인만",
     "  .\restore.ps1 -BackupRoot '$BackupRoot' -DbName $dbName -AppPath '$AppPath' -Force  # 실제 복구",
     '',
     '주의: DB 와 파일스토어는 같은 시점의 것이어야 한다. 파일스토어는 미러 한 벌이라',
