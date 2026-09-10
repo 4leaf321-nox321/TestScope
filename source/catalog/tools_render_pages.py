@@ -8,8 +8,10 @@ import sys
 
 import fitz
 
-PDFDIR = r"F:\data\0_Program\68_TestScope\source\pdf"
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pages")
+HERE = os.path.dirname(os.path.abspath(__file__))
+# 절대경로를 적지 않는다 — 저장소 폴더 이름을 바꾸는 날 조용히 깨진다.
+PDFDIR = os.path.join(HERE, os.pardir, "pdf")
+OUT = os.path.join(HERE, "pages")
 
 rel = sys.argv[1]
 pages = [int(x) for x in sys.argv[2].split(",")]
