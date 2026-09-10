@@ -29,17 +29,17 @@ def test_틀린_비밀번호는_같은_말로_거절한다(client: TestClient, a
     """계정이 있는지 없는지가 응답으로 새면 안 된다 — 둘 다 같은 코드·같은 문구다."""
     wrong = client.post("/api/auth/login", json={"email": admin.email, "password": "nope"})
     missing = client.post(
-        "/api/auth/login", json={"email": "nobody@testatlas.local", "password": "nope"}
+        "/api/auth/login", json={"email": "nobody@testscope.local", "password": "nope"}
     )
     assert wrong.status_code == missing.status_code == 401
-    assert wrong.json()["error"]["code"] == missing.json()["error"]["code"] == "TAS-AUTH-0001"
+    assert wrong.json()["error"]["code"] == missing.json()["error"]["code"] == "TSC-AUTH-0001"
     assert wrong.json()["error"]["message"] == missing.json()["error"]["message"]
 
 
 def test_승인_전에는_로그인할_수_없고_사유를_말한다(client: TestClient, admin: Signed) -> None:
     """**왜 안 되는지** 를 구분해 준다. '비활성 계정' 이라고만 하면 관리자에게
     무엇을 요청해야 할지 알 수 없다."""
-    email = f"new-{uuid.uuid4().hex[:8]}@testatlas.local"
+    email = f"new-{uuid.uuid4().hex[:8]}@testscope.local"
     created = client.post(
         "/api/accounts/signup",
         json={
@@ -55,7 +55,7 @@ def test_승인_전에는_로그인할_수_없고_사유를_말한다(client: Te
     login = {"email": email, "password": "member-password"}
     blocked = client.post("/api/auth/login", json=login)
     assert blocked.status_code == 403
-    assert blocked.json()["error"]["code"] == "TAS-AUTH-0008"
+    assert blocked.json()["error"]["code"] == "TSC-AUTH-0008"
 
     approved = client.post(
         f"/api/accounts/{created.json()['id']}/approve", json={}, headers=admin.headers
@@ -77,7 +77,7 @@ def test_마지막_시스템_관리자는_정지할_수_없다(client: TestClien
     me = client.get("/api/auth/me", headers=admin.headers).json()
     blocked = client.post(f"/api/accounts/{me['id']}/suspend", headers=admin.headers)
     assert blocked.status_code == 409
-    assert blocked.json()["error"]["code"] == "TAS-ACCOUNTS-0005"
+    assert blocked.json()["error"]["code"] == "TSC-ACCOUNTS-0005"
 
 
 def test_없는_엔드포인트도_같은_봉투로_답한다(client: TestClient) -> None:
@@ -86,7 +86,7 @@ def test_없는_엔드포인트도_같은_봉투로_답한다(client: TestClient
     response = client.get("/api/nope")
     assert response.status_code == 404
     error = response.json()["error"]
-    assert error["code"] == "TAS-COMMON-0404"
+    assert error["code"] == "TSC-COMMON-0404"
     # 요청 id 가 응답·로그·감사 기록을 잇는 끈이다.
     assert error["request_id"] and error["request_id"] != "-"
 
@@ -94,7 +94,7 @@ def test_없는_엔드포인트도_같은_봉투로_답한다(client: TestClient
 def test_인증_없이는_거절한다(client: TestClient) -> None:
     response = client.get("/api/equipment")
     assert response.status_code == 401
-    assert response.json()["error"]["code"] == "TAS-AUTH-0100"
+    assert response.json()["error"]["code"] == "TSC-AUTH-0100"
 
 
 def test_비밀번호를_바꾸면_기존_세션이_끊긴다(client: TestClient, admin: Signed) -> None:

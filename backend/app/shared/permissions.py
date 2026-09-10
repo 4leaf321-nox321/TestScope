@@ -24,7 +24,7 @@ from app.shared.errors import Forbidden, NotFound
 def workspace_by_slug(db: Session, slug: str) -> Workspace:
     workspace = db.scalar(select(Workspace).where(Workspace.slug == slug))
     if workspace is None:
-        raise NotFound("TAS-WORKSPACES-0001", f"부서를 찾을 수 없습니다: {slug}")
+        raise NotFound("TSC-WORKSPACES-0001", f"부서를 찾을 수 없습니다: {slug}")
     return workspace
 
 
@@ -44,7 +44,7 @@ def require_member(db: Session, *, workspace: Workspace, user: User) -> None:
     if user.is_system_admin:
         return
     if membership_of(db, workspace_id=workspace.id, user_id=user.id) is None:
-        raise Forbidden("TAS-WORKSPACES-0002", "이 부서에 접근할 권한이 없습니다.")
+        raise Forbidden("TSC-WORKSPACES-0002", "이 부서에 접근할 권한이 없습니다.")
 
 
 def require_manager(db: Session, *, workspace: Workspace, user: User) -> None:
@@ -53,7 +53,7 @@ def require_manager(db: Session, *, workspace: Workspace, user: User) -> None:
         return
     membership = membership_of(db, workspace_id=workspace.id, user_id=user.id)
     if membership is None or membership.role != "manager":
-        raise Forbidden("TAS-WORKSPACES-0003", "부서 관리자만 할 수 있습니다.")
+        raise Forbidden("TSC-WORKSPACES-0003", "부서 관리자만 할 수 있습니다.")
 
 
 def my_workspace_ids(db: Session, user: User) -> list[uuid.UUID]:
@@ -171,5 +171,5 @@ def visible_equipment_ids(db: Session, user: User) -> Select[tuple[uuid.UUID]]:
 def get_equipment(db: Session, user: User, equipment_id: uuid.UUID) -> Equipment:
     found = db.scalar(visible_equipment(db, user).where(Equipment.id == equipment_id))
     if found is None:
-        raise NotFound("TAS-EQUIPMENT-0001", "장비를 찾을 수 없습니다.")
+        raise NotFound("TSC-EQUIPMENT-0001", "장비를 찾을 수 없습니다.")
     return found

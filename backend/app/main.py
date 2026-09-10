@@ -95,7 +95,7 @@ def _mount_spa(app: FastAPI, settings: Settings) -> None:
         # 오류 핸들러에 맡긴다 — 그래야 request_id 와 로그가 함께 남는다.
         if full_path.startswith("api/"):
             raise NotFound(
-                "TAS-COMMON-0404",
+                "TSC-COMMON-0404",
                 "존재하지 않는 엔드포인트입니다.",
                 details={"path": f"/{full_path}"},
             )
@@ -126,7 +126,7 @@ def create_app() -> FastAPI:
     _guard_production_secrets(settings)
 
     app = FastAPI(
-        title="TestAtlas API",
+        title="TestScope API",
         version=version.current(),
         docs_url=f"{API_PREFIX}/docs",
         openapi_url=f"{API_PREFIX}/openapi.json",
@@ -160,7 +160,7 @@ def create_app() -> FastAPI:
     # 으로 먼저 만나는데, 거기엔 원인이 안 적힌다.
     warn_if_behind(engine)
 
-    logger.info("TestAtlas 기동 (env=%s)", settings.app_env)
+    logger.info("TestScope 기동 (env=%s)", settings.app_env)
     return app
 
 

@@ -1,5 +1,5 @@
 {
- "_comment": "limits{} 와 models[].specs{} 의 키. TestAtlas ConditionKey 와 겹치는 것은 testatlas_key 로 표시. 단위는 키 이름에 박는다. aliases 는 같은 것을 다르게 부르는 이름, unit_variants 는 같은 사양의 다른 단위(계수). role 은 measure(기본) · descriptive(서술이라 비교가 안 된다) · not_spec(사양이 아니다). 이 파일에 없는 키를 쓰면 build_graph 가 경고한다.",
+ "_comment": "limits{} 와 models[].specs{} 의 키. TestScope ConditionKey 와 겹치는 것은 testscope_key 로 표시. 단위는 키 이름에 박는다. aliases 는 같은 것을 다르게 부르는 이름, unit_variants 는 같은 사양의 다른 단위(계수). role 은 measure(기본) · descriptive(서술이라 비교가 안 된다) · not_spec(사양이 아니다). 이 파일에 없는 키를 쓰면 build_graph 가 경고한다.",
  "keys": [
   {
    "key": "ac_withstand_voltage_kV",
@@ -128,7 +128,7 @@
    "label": "항온조 장착 가능",
    "dimension": "",
    "unit": "",
-   "testatlas_key": "chamber"
+   "testscope_key": "chamber"
   },
   {
    "key": "chamber_volume_L",
@@ -204,7 +204,7 @@
    "label": "크로스헤드 속도",
    "dimension": "speed",
    "unit": "mm/min",
-   "testatlas_key": "crosshead_speed"
+   "testscope_key": "crosshead_speed"
   },
   {
    "key": "crosshead_travel_mm",
@@ -333,7 +333,7 @@
    "label": "동적 하중",
    "dimension": "force",
    "unit": "kN",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "dynamic_frequency_Hz",
@@ -426,14 +426,14 @@
    "dimension": "force",
    "unit": "N",
    "note": "동적 시험기·DMA 등 N 단위가 자연스러운 곳. 검색 시 kN 으로 환산",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "force_kN",
    "label": "하중 용량",
    "dimension": "force",
    "unit": "kN",
-   "testatlas_key": "force",
+   "testscope_key": "force",
    "unit_variants": {
     "force_N": 0.001,
     "force_kgf": 0.00980665,
@@ -487,7 +487,7 @@
    "label": "가진 주파수",
    "dimension": "frequency",
    "unit": "Hz",
-   "testatlas_key": "frequency"
+   "testscope_key": "frequency"
   },
   {
    "key": "functions",
@@ -590,7 +590,7 @@
    "label": "상대 습도",
    "dimension": "ratio",
    "unit": "%",
-   "testatlas_key": "humidity"
+   "testscope_key": "humidity"
   },
   {
    "key": "illuminance_lx",
@@ -726,7 +726,7 @@
    "dimension": "force",
    "unit": "N",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "load_g",
@@ -734,7 +734,7 @@
    "dimension": "force",
    "unit": "g",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "load_kg",
@@ -742,7 +742,7 @@
    "dimension": "force",
    "unit": "kg",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "loading",
@@ -1047,7 +1047,7 @@
    "dimension": "force",
    "unit": "N",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "pull_force_kgf",
@@ -1055,7 +1055,7 @@
    "dimension": "force",
    "unit": "kgf",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "pulse_duration_ms",
@@ -1070,7 +1070,7 @@
    "dimension": "force",
    "unit": "kgf",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "refrigerant",
@@ -1232,7 +1232,7 @@
    "dimension": "force",
    "unit": "kgf",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "shear_rate_1_s",
@@ -1300,7 +1300,7 @@
    "label": "시편 두께",
    "dimension": "length",
    "unit": "mm",
-   "testatlas_key": "specimen_thickness"
+   "testscope_key": "specimen_thickness"
   },
   {
    "key": "specimen_weight_kg",
@@ -1342,7 +1342,7 @@
    "label": "정적 하중",
    "dimension": "force",
    "unit": "kN",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "stations",
@@ -1396,7 +1396,7 @@
    "label": "시험 온도",
    "dimension": "temperature",
    "unit": "degC",
-   "testatlas_key": "temperature",
+   "testscope_key": "temperature",
    "unit_variants": {
     "temperature": 1.0
    }
@@ -1420,14 +1420,14 @@
    "label": "경도 시험 하중(미소)",
    "dimension": "force",
    "unit": "gf",
-   "testatlas_key": "force"
+   "testscope_key": "force"
   },
   {
    "key": "test_load_kgf",
    "label": "경도 시험 하중",
    "dimension": "force",
    "unit": "kgf",
-   "testatlas_key": "force",
+   "testscope_key": "force",
    "unit_variants": {
     "test_load_gf": 0.001,
     "test_load_N": 0.101972

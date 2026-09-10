@@ -63,7 +63,7 @@ def workspace(db: Session) -> Workspace:
 @pytest.fixture
 def admin(client: TestClient, db: Session, workspace: Workspace) -> Signed:
     """시스템 관리자 한 명. 첫 관리자는 설치 시드처럼 직접 만든다."""
-    email = f"admin-{uuid.uuid4().hex[:8]}@testatlas.local"
+    email = f"admin-{uuid.uuid4().hex[:8]}@testscope.local"
     user = User(
         email=email,
         password_hash=security.hash_password(ADMIN_PASSWORD),

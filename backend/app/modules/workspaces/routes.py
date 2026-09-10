@@ -50,7 +50,7 @@ def list_workspaces(
 ) -> list[WorkspaceOut]:
     if all_workspaces and not user.is_system_admin:
         raise Forbidden(
-            "TAS-WORKSPACES-0013", "전체 부서 목록은 시스템 관리자만 볼 수 있습니다."
+            "TSC-WORKSPACES-0013", "전체 부서 목록은 시스템 관리자만 볼 수 있습니다."
         )
     return services.list_for(db, user, all_workspaces=all_workspaces)
 

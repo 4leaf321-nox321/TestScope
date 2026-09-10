@@ -77,7 +77,7 @@ def test_종류에_안_맞는_칸은_거절한다(client: TestClient, admin: Sig
     # 수치 사양에 값이 없다.
     response = _put_spec(client, admin, model["id"], definition_id=definitions["weight"]["id"])
     assert response.status_code == 400, response.text
-    assert response.json()["error"]["code"] == "TAS-SPEC-0008"
+    assert response.json()["error"]["code"] == "TSC-SPEC-0008"
 
     # 구간 사양에 거꾸로 넣은 범위.
     response = _put_spec(
@@ -89,7 +89,7 @@ def test_종류에_안_맞는_칸은_거절한다(client: TestClient, admin: Sig
         num_max=-70,
     )
     assert response.status_code == 400, response.text
-    assert response.json()["error"]["code"] == "TAS-SPEC-0010"
+    assert response.json()["error"]["code"] == "TSC-SPEC-0010"
 
     # 고를 수 있는 값이 아닌 것.
     response = _put_spec(
@@ -100,7 +100,7 @@ def test_종류에_안_맞는_칸은_거절한다(client: TestClient, admin: Sig
         text_value="증기기관식",
     )
     assert response.status_code == 400, response.text
-    assert response.json()["error"]["code"] == "TAS-SPEC-0011"
+    assert response.json()["error"]["code"] == "TSC-SPEC-0011"
 
 
 def test_사양표는_그룹_순서로_오고_값이_있는_것만_준다(
@@ -306,7 +306,7 @@ def test_값이_적힌_정의는_못_지운다(client: TestClient, admin: Signed
         f"/api/spec-definitions/{definitions['weight']['id']}", headers=admin.headers
     )
     assert response.status_code == 409, response.text
-    assert response.json()["error"]["code"] == "TAS-SPEC-0007"
+    assert response.json()["error"]["code"] == "TSC-SPEC-0007"
 
     # 값을 지우면 정의도 지울 수 있다 — 다만 실무에서는 끄는 쪽이 맞다.
     dropped = client.delete(

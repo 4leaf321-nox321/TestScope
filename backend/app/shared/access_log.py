@@ -70,7 +70,7 @@ class AccessLogMiddleware:
             try:
                 db.add(
                     AccessLog(
-                        user_id=scope.get("tas_user_id"),
+                        user_id=scope.get("tsc_user_id"),
                         action=_action(path),
                         path=path[:300],
                         method=method,

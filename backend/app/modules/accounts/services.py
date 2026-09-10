@@ -83,7 +83,7 @@ def pending_count(db: Session) -> int:
 def get_account(db: Session, user_id: uuid.UUID) -> User:
     user = db.get(User, user_id)
     if user is None:
-        raise NotFound("TAS-ACCOUNTS-0001", "계정을 찾을 수 없습니다.")
+        raise NotFound("TSC-ACCOUNTS-0001", "계정을 찾을 수 없습니다.")
     return user
 
 
@@ -108,7 +108,7 @@ def signup(
     """가입 신청. 승인 전까지는 로그인할 수 없다(status=pending)."""
     normalized = email.strip().lower()
     if db.scalar(select(User).where(User.email == normalized)) is not None:
-        raise Conflict("TAS-ACCOUNTS-0002", "이미 있는 아이디입니다.")
+        raise Conflict("TSC-ACCOUNTS-0002", "이미 있는 아이디입니다.")
 
     workspace = workspace_by_slug(db, workspace_slug)
     user = User(
@@ -137,7 +137,7 @@ def create_account(
     """관리자가 계정을 만든다. 임시 비밀번호를 함께 돌려준다."""
     normalized = email.strip().lower()
     if db.scalar(select(User).where(User.email == normalized)) is not None:
-        raise Conflict("TAS-ACCOUNTS-0002", "이미 있는 아이디입니다.")
+        raise Conflict("TSC-ACCOUNTS-0002", "이미 있는 아이디입니다.")
 
     workspace = workspace_by_slug(db, workspace_slug)
     temporary = secrets.token_urlsafe(9)
@@ -172,7 +172,7 @@ def approve(
 ) -> User:
     user = get_account(db, user_id)
     if user.status != "pending":
-        raise Conflict("TAS-ACCOUNTS-0003", "승인 대기 중인 계정이 아닙니다.")
+        raise Conflict("TSC-ACCOUNTS-0003", "승인 대기 중인 계정이 아닙니다.")
 
     slug = workspace_slug
     if slug is None:
@@ -183,7 +183,7 @@ def approve(
         )
         if requested is None:
             raise AppError(
-                "TAS-ACCOUNTS-0004",
+                "TSC-ACCOUNTS-0004",
                 "신청한 부서가 없어졌습니다. 배정할 부서를 골라 주세요.",
                 status=400,
             )
@@ -226,7 +226,7 @@ def approve(
 def reject(db: Session, *, user_id: uuid.UUID, decided_by: User, note: str) -> User:
     user = get_account(db, user_id)
     if user.status != "pending":
-        raise Conflict("TAS-ACCOUNTS-0003", "승인 대기 중인 계정이 아닙니다.")
+        raise Conflict("TSC-ACCOUNTS-0003", "승인 대기 중인 계정이 아닙니다.")
     user.status = "suspended"
     user.decided_at = _now()
     user.decided_by_id = decided_by.id
@@ -256,14 +256,14 @@ def _guard_last_admin(db: Session, user: User, *, what: str) -> None:
     """
     if user.is_system_admin and user.status == "active" and active_system_admin_count(db) <= 1:
         raise Conflict(
-            "TAS-ACCOUNTS-0005",
+            "TSC-ACCOUNTS-0005",
             f"마지막 활성 시스템 관리자입니다. 다른 사람을 지정한 뒤에 {what}세요.",
         )
 
 
 def set_status(db: Session, *, user_id: uuid.UUID, status: str, actor: User) -> User:
     if status not in USER_STATUSES:
-        raise AppError("TAS-ACCOUNTS-0006", f"모르는 상태입니다: {status}", status=400)
+        raise AppError("TSC-ACCOUNTS-0006", f"모르는 상태입니다: {status}", status=400)
     user = get_account(db, user_id)
     if status != "active":
         _guard_last_admin(db, user, what="정지하")
@@ -366,7 +366,7 @@ def delete_account(db: Session, *, user_id: uuid.UUID, actor: User) -> User:
     """
     user = get_account(db, user_id)
     if user.id == actor.id:
-        raise Conflict("TAS-ACCOUNTS-0007", "자기 계정은 지울 수 없습니다.")
+        raise Conflict("TSC-ACCOUNTS-0007", "자기 계정은 지울 수 없습니다.")
     _guard_last_admin(db, user, what="지우")
 
     user.deleted_at = _now()

@@ -50,7 +50,7 @@ def mark_read(
 ) -> NotificationOut:
     row = db.get(Notification, notification_id)
     if row is None or row.user_id != user.id:
-        raise NotFound("TAS-NOTIFICATIONS-0001", "알림을 찾을 수 없습니다.")
+        raise NotFound("TSC-NOTIFICATIONS-0001", "알림을 찾을 수 없습니다.")
     if row.read_at is None:
         row.read_at = datetime.now(UTC)
         db.commit()

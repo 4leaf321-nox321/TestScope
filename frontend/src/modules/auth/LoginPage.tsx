@@ -51,7 +51,7 @@ export default function LoginPage() {
     <div className="flex min-h-svh items-center justify-center p-6">
       <form onSubmit={submit} className="w-full max-w-sm space-y-5">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">TestAtlas</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">TestScope</h1>
           <p className="text-muted-foreground mt-1 text-sm">조직이 보유한 시험 역량의 지도</p>
         </div>
 

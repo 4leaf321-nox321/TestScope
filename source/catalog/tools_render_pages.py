@@ -8,7 +8,7 @@ import sys
 
 import fitz
 
-PDFDIR = r"F:\data\0_Program\68_TestAtlas\source\pdf"
+PDFDIR = r"F:\data\0_Program\68_TestScope\source\pdf"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pages")
 
 rel = sys.argv[1]

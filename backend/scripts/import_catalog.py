@@ -252,7 +252,7 @@ def _ontology_map(cat: Catalog) -> dict[str, tuple[str, float]]:
     ## 왜 온톨로지에 두나
 
     `nominal_load_kN` 이 `force_kN` 의 다른 이름이라는 것은 **카탈로그 도메인
-    지식**이지 TestAtlas 내부 사정이 아니다. 여기 손 매핑표에 적어 두면 같은 지식이
+    지식**이지 TestScope 내부 사정이 아니다. 여기 손 매핑표에 적어 두면 같은 지식이
     두 저장소에 갈라지고, 갈라진 뒤에는 어느 쪽이 맞는지 알 방법이 없다.
 
     단위 변형은 계수까지 온톨로지가 갖는다 — `force_N` 은 0.001 을 곱해 kN 이 된다.

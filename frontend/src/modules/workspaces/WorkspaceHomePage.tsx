@@ -43,7 +43,7 @@ export default function WorkspaceHomePage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title={workspace?.name ?? 'TestAtlas'}
+        title={workspace?.name ?? 'TestScope'}
         description="어떤 시험이 가능한지 찾고, 우리 장비의 역량을 채워 넣는 곳입니다."
         actions={
           <Button asChild>

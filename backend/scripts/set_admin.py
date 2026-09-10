@@ -11,7 +11,7 @@ CLI 로 둔다 — 아이디 변경에 API 를 두지 않는 이유는 그것이
 
     # 기존 계정의 아이디까지 바꾸기
     python scripts/set_admin.py --email admin --password '...' \
-        --rename-from admin@testatlas.local
+        --rename-from admin@testscope.local
 
     # 임시 비밀번호를 넘겨줄 때 (첫 로그인에 변경을 강제한다)
     python scripts/set_admin.py --email admin --password '...' --force-change

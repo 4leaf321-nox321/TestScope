@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     """development | production. 기동 방식과 로그 수준을 가른다."""
 
-    database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/testatlas"
+    database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/testscope"
 
     host: str = "0.0.0.0"
     port: int = 8020
@@ -55,7 +55,7 @@ class Settings(BaseSettings):
 
     access_token_minutes: int = 720  # 12시간
     refresh_token_days: int = 30
-    refresh_cookie_name: str = "tas_refresh"
+    refresh_cookie_name: str = "tsc_refresh"
     refresh_cookie_secure: bool = False
     """사내망 http 배포가 기본이라 False. https 로 서비스하면 True 로 올린다.
     (True 인데 http 로 접속하면 브라우저가 쿠키를 버려 로그인이 유지되지 않는다)"""

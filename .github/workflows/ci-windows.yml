@@ -26,7 +26,7 @@ jobs:
     env:
       # conftest 가 여기서 <이름>_test 를 파생해 만든다. **개발 DB 를 건드리지 않는**
       # 구조가 CI 에서도 그대로 성립한다.
-      DATABASE_URL: postgresql+psycopg://postgres:root@localhost:5432/testatlas
+      DATABASE_URL: postgresql+psycopg://postgres:root@localhost:5432/testscope
     steps:
       - uses: actions/checkout@v5
 
@@ -70,7 +70,7 @@ jobs:
         shell: pwsh
         run: |
           $env:PGPASSWORD = 'root'
-          & "$env:PGBIN\createdb" -U postgres -h localhost testatlas_test
+          & "$env:PGBIN\createdb" -U postgres -h localhost testscope_test
           python -m pytest
 
       # **마이그레이션이 모델과 어긋났는지 본다.** 시험은 모델로 표를 만들기 때문에
@@ -80,7 +80,7 @@ jobs:
         shell: pwsh
         run: |
           $env:PGPASSWORD = 'root'
-          & "$env:PGBIN\createdb" -U postgres -h localhost testatlas
+          & "$env:PGBIN\createdb" -U postgres -h localhost testscope
           python -m alembic upgrade head
           python -m alembic check
 

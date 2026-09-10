@@ -252,7 +252,7 @@ def purge(db: Session) -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="TestAtlas 데모 데이터")
+    parser = argparse.ArgumentParser(description="TestScope 데모 데이터")
     parser.add_argument("--purge", action="store_true", help="데모가 만든 것을 지운다")
     args = parser.parse_args()
 

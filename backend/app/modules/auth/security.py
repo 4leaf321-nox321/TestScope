@@ -21,7 +21,16 @@ import jwt
 from app.config import get_settings
 
 #: PAT 평문 앞에 붙는 표식. 로그와 소스에서 유출을 눈으로 찾을 수 있게 한다.
-PAT_PREFIX = "tas_pat_"
+PAT_PREFIX = "tsc_pat_"
+
+#: TestAtlas 시절에 발급된 표식. **발급은 안 하고 알아보기만 한다** — 이름을
+#: 바꾸었다고 이미 나간 토큰을 죽이면, 그 토큰을 붙여 둔 MCP 설정은 사람이
+#: 손으로 찾아가 고쳐야 하고, 그것은 "이름만 바꾸는 일" 의 대가로 너무 크다.
+#: 남은 구 토큰을 모두 재발급한 뒤 지우면 된다.
+LEGACY_PAT_PREFIXES = ("tas_pat_",)
+
+#: 받을 때 쓰는 목록. 발급은 항상 PAT_PREFIX 하나로만 한다.
+ACCEPTED_PAT_PREFIXES = (PAT_PREFIX, *LEGACY_PAT_PREFIXES)
 
 
 def _prepared(password: str) -> bytes:
@@ -34,7 +43,7 @@ def _prepared(password: str) -> bytes:
 #: 테스트당 0.4초를 여기서 쓰는데, 그 시간은 인증 로직이 아니라 **bcrypt 의 설계
 #: 목적**을 재는 데 쓰인다. 낮춰도 검사하는 것은 그대로다: 같은 알고리즘, 같은
 #: 전처리, 같은 경로. 환경변수로 두는 이유는 코드가 시험을 알면 안 되기 때문이다.
-BCRYPT_ROUNDS = int(os.environ.get("TAS_BCRYPT_ROUNDS", "12"))
+BCRYPT_ROUNDS = int(os.environ.get("TSC_BCRYPT_ROUNDS", "12"))
 
 
 def hash_password(password: str) -> str:

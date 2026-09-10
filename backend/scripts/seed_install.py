@@ -36,7 +36,7 @@ survive_cp949()
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="TestAtlas 첫 설치 시드")
+    parser = argparse.ArgumentParser(description="TestScope 첫 설치 시드")
     parser.add_argument("--email", default="admin")
     parser.add_argument("--name", default="시스템 관리자")
     parser.add_argument("--password", default=None)

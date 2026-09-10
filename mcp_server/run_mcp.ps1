@@ -7,7 +7,8 @@
 개발 중 MCP 서버 기동.
 
     cd mcp_server
-    .un_mcp.ps1
+    .
+un_mcp.ps1
 
 **백엔드 포트를 외우지 않는다.** `backend\.env` 의 PORT 를 읽어 API 주소를 스스로
 맞춘다(개발은 그 값 +1, 운영 설치는 그 값) — 다르면 도구가 전부 「백엔드에 닿지
@@ -16,9 +17,12 @@
 가상환경이 없으면 만들고 의존성까지 넣는다. **backend\.venv 와 섞지 않는다** —
 MCP SDK 가 언제든 프레임워크 판을 올릴 수 있고, 그때 앱이 인질이 되면 안 된다.
 
-    .un_mcp.ps1 -Port 8031        다른 포트로
-    .un_mcp.ps1 -ApiBase '...'    백엔드 주소를 직접
-    .un_mcp.ps1 -Stdio            개인 연결(stdio) — HTTP 대신
+    .
+un_mcp.ps1 -Port 8031        다른 포트로
+    .
+un_mcp.ps1 -ApiBase '...'    백엔드 주소를 직접
+    .
+un_mcp.ps1 -Stdio            개인 연결(stdio) — HTTP 대신
 #>
 
 $ErrorActionPreference = 'Stop'
@@ -51,7 +55,7 @@ if (-not $ApiBase) {
     if ($isDev) { $backendPort = $backendPort + 1 }
     $ApiBase = "http://127.0.0.1:$backendPort/api"
 }
-$env:TESTATLAS_API_BASE = $ApiBase
+$env:TESTSCOPE_API_BASE = $ApiBase
 Write-Host "백엔드: $ApiBase"
 
 if ($Stdio) {

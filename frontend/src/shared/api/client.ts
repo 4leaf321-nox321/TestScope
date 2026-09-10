@@ -88,7 +88,7 @@ async function parseError(response: Response): Promise<ApiError> {
   if (isEnvelope(parsed)) return new ApiError(response.status, parsed)
   return new ApiError(response.status, {
     error: {
-      code: 'TAS-CLIENT-0001',
+      code: 'TSC-CLIENT-0001',
       message: `서버가 예상하지 못한 응답을 보냈습니다 (HTTP ${response.status})${said(parsed)}`,
     },
   })
@@ -165,7 +165,7 @@ export async function refreshSession<T>(): Promise<T> {
     if (isEnvelope(outcome.body)) throw new ApiError(outcome.status, outcome.body)
     throw new ApiError(outcome.status, {
       error: {
-        code: 'TAS-CLIENT-0001',
+        code: 'TSC-CLIENT-0001',
         message: `세션을 되살리지 못했습니다 (HTTP ${outcome.status})${said(outcome.body)}`,
       },
     })

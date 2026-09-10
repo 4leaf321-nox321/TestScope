@@ -44,7 +44,7 @@ from app.shared.text import clean, compare_key
 def get_vocabulary(db: Session, slug: str) -> Vocabulary:
     found = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if found is None:
-        raise NotFound("TAS-VOCAB-0001", f"기준정보 축을 찾을 수 없습니다: {slug}")
+        raise NotFound("TSC-VOCAB-0001", f"기준정보 축을 찾을 수 없습니다: {slug}")
     return found
 
 
@@ -158,7 +158,7 @@ def create_term(
     # 되면 그 장비는 영영 검색에 안 걸린다.
     if vocabulary.entry_policy == "closed" and not is_admin:
         raise AppError(
-            "TAS-VOCAB-0002",
+            "TSC-VOCAB-0002",
             f"{vocabulary.label}은 관리자만 값을 추가할 수 있습니다.",
             status=403,
         )
@@ -168,7 +168,7 @@ def create_term(
     existing = _find_by_key(db, vocabulary.id, key)
     if existing is not None:
         raise Conflict(
-            "TAS-VOCAB-0003",
+            "TSC-VOCAB-0003",
             f"이미 있는 값입니다: {existing.value}",
             details={"term_id": str(existing.id), "value": existing.value},
         )
@@ -191,7 +191,7 @@ def create_term(
 def get_term(db: Session, term_id: uuid.UUID) -> VocabularyTerm:
     term = db.get(VocabularyTerm, term_id)
     if term is None:
-        raise NotFound("TAS-VOCAB-0004", "값을 찾을 수 없습니다.")
+        raise NotFound("TSC-VOCAB-0004", "값을 찾을 수 없습니다.")
     return term
 
 
@@ -214,7 +214,7 @@ def update_term(
         if key != term.normalized:
             clash = _find_by_key(db, term.vocabulary_id, key)
             if clash is not None and clash.id != term.id:
-                raise Conflict("TAS-VOCAB-0003", f"이미 있는 값입니다: {clash.value}")
+                raise Conflict("TSC-VOCAB-0003", f"이미 있는 값입니다: {clash.value}")
             # **이름 변경은 감사에 남긴다.** 이 값을 가리키는 장비 수십 대의 표시가
             # 한꺼번에 바뀌는 일이고, 나중에 "왜 이름이 달라졌지" 를 물을 자리가
             # 여기밖에 없다.
@@ -252,7 +252,7 @@ def add_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTerm:
     existing = _find_by_key(db, term.vocabulary_id, key)
     if existing is not None:
         raise Conflict(
-            "TAS-VOCAB-0005",
+            "TSC-VOCAB-0005",
             f"그 표기는 이미 {existing.value}을(를) 가리킵니다.",
         )
 
@@ -277,9 +277,9 @@ def merge_terms(
     source = get_term(db, source_id)
     target = get_term(db, target_id)
     if source.id == target.id:
-        raise AppError("TAS-VOCAB-0006", "같은 값끼리는 합칠 수 없습니다.", status=400)
+        raise AppError("TSC-VOCAB-0006", "같은 값끼리는 합칠 수 없습니다.", status=400)
     if source.vocabulary_id != target.vocabulary_id:
-        raise AppError("TAS-VOCAB-0007", "다른 축의 값끼리는 합칠 수 없습니다.", status=400)
+        raise AppError("TSC-VOCAB-0007", "다른 축의 값끼리는 합칠 수 없습니다.", status=400)
 
     # 원본을 가리키던 하위 값을 대상으로 옮긴다. 안 옮기면 부모 잃은 값이 남는다.
     for child in db.scalars(
@@ -367,13 +367,13 @@ def list_conditions(db: Session, *, include_inactive: bool) -> list[ConditionKey
 def get_condition(db: Session, condition_id: uuid.UUID) -> ConditionKey:
     found = db.get(ConditionKey, condition_id)
     if found is None:
-        raise NotFound("TAS-VOCAB-0008", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-VOCAB-0008", "조건 정의를 찾을 수 없습니다.")
     return found
 
 
 def create_condition(db: Session, *, payload: dict[str, Any]) -> ConditionKey:
     if db.scalar(select(ConditionKey).where(ConditionKey.key == payload["key"])) is not None:
-        raise Conflict("TAS-VOCAB-0009", f"이미 있는 조건 키입니다: {payload['key']}")
+        raise Conflict("TSC-VOCAB-0009", f"이미 있는 조건 키입니다: {payload['key']}")
     row = ConditionKey(**payload)
     db.add(row)
     db.commit()
@@ -460,13 +460,13 @@ def list_spec_groups(db: Session) -> list[SpecGroupOut]:
 def get_spec_group(db: Session, group_id: uuid.UUID) -> SpecGroup:
     found = db.get(SpecGroup, group_id)
     if found is None:
-        raise NotFound("TAS-SPEC-0001", "사양 그룹을 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0001", "사양 그룹을 찾을 수 없습니다.")
     return found
 
 
 def create_spec_group(db: Session, *, payload: dict[str, Any]) -> SpecGroup:
     if db.scalar(select(SpecGroup).where(SpecGroup.slug == payload["slug"])) is not None:
-        raise Conflict("TAS-SPEC-0002", f"이미 있는 그룹 키입니다: {payload['slug']}")
+        raise Conflict("TSC-SPEC-0002", f"이미 있는 그룹 키입니다: {payload['slug']}")
     row = SpecGroup(**payload)
     db.add(row)
     db.commit()
@@ -494,7 +494,7 @@ def delete_spec_group(db: Session, group_id: uuid.UUID) -> None:
     using = _definition_count(db, row.id)
     if using:
         raise Conflict(
-            "TAS-SPEC-0003",
+            "TSC-SPEC-0003",
             f"이 그룹에 사양이 {using}개 있습니다. 먼저 다른 그룹으로 옮기세요.",
         )
     db.delete(row)
@@ -584,7 +584,7 @@ def list_spec_definitions(
 def get_spec_definition(db: Session, definition_id: uuid.UUID) -> SpecDefinition:
     found = db.get(SpecDefinition, definition_id)
     if found is None:
-        raise NotFound("TAS-SPEC-0004", "사양 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-SPEC-0004", "사양 정의를 찾을 수 없습니다.")
     return found
 
 
@@ -601,7 +601,7 @@ def _set_definition_categories(
         term = db.get(VocabularyTerm, term_id)
         if term is None or term.vocabulary_id != axis.id:
             raise AppError(
-                "TAS-SPEC-0005", "장비 분류 축의 값만 고를 수 있습니다.", status=400
+                "TSC-SPEC-0005", "장비 분류 축의 값만 고를 수 있습니다.", status=400
             )
 
     for old in db.scalars(
@@ -620,7 +620,7 @@ def create_spec_definition(db: Session, *, payload: dict[str, Any]) -> SpecDefin
         db.scalar(select(SpecDefinition).where(SpecDefinition.key == payload["key"]))
         is not None
     ):
-        raise Conflict("TAS-SPEC-0006", f"이미 있는 사양 키입니다: {payload['key']}")
+        raise Conflict("TSC-SPEC-0006", f"이미 있는 사양 키입니다: {payload['key']}")
     get_spec_group(db, payload["group_id"])
 
     term_ids: list[uuid.UUID] = payload.pop("category_term_ids", [])
@@ -698,7 +698,7 @@ def delete_spec_definition(db: Session, definition_id: uuid.UUID) -> None:
     using = _definition_usage(db, row.id)
     if using:
         raise Conflict(
-            "TAS-SPEC-0007",
+            "TSC-SPEC-0007",
             f"이 사양으로 적힌 값이 {using}개 있습니다. 지우는 대신 끄세요.",
         )
     db.delete(row)

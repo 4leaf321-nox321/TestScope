@@ -45,10 +45,10 @@ function Read-EnvValue([string]$name) {
     return $line.Matches[0].Groups[1].Value.Trim().Trim('"').Trim("'")
 }
 
-if (-not $env:TESTATLAS_API_BASE) {
+if (-not $env:TESTSCOPE_API_BASE) {
     $backendPort = Read-EnvValue 'PORT'
     if (-not $backendPort) { $backendPort = '8020' }
-    $env:TESTATLAS_API_BASE = "http://127.0.0.1:$backendPort/api"
+    $env:TESTSCOPE_API_BASE = "http://127.0.0.1:$backendPort/api"
 }
 $mcpPort = Read-EnvValue 'MCP_PORT'
 if (-not $mcpPort) { $mcpPort = '8030' }
@@ -58,10 +58,10 @@ if (-not $mcpHost) { $mcpHost = '127.0.0.1' }
 # 백엔드가 살아 있는지 먼저 본다. 안 떠 있으면 도구가 전부 실패하는데, 그 사실은
 # 도구를 불러야 드러나므로 여기서 말해 준다.
 try {
-    $health = Invoke-RestMethod -Uri ($env:TESTATLAS_API_BASE + '/health') -TimeoutSec 3
-    Write-Host "백엔드 $($env:TESTATLAS_API_BASE) — $($health.status) $($health.version)"
+    $health = Invoke-RestMethod -Uri ($env:TESTSCOPE_API_BASE + '/health') -TimeoutSec 3
+    Write-Host "백엔드 $($env:TESTSCOPE_API_BASE) — $($health.status) $($health.version)"
 } catch {
-    Write-Warning "백엔드에 닿지 못했습니다($($env:TESTATLAS_API_BASE)). run_server.ps1 을 먼저 띄우세요."
+    Write-Warning "백엔드에 닿지 못했습니다($($env:TESTSCOPE_API_BASE)). run_server.ps1 을 먼저 띄우세요."
 }
 
 # 포트를 이미 쓰고 있으면 **거절한다.** 안 그러면 옛 프로세스가 낡은 코드로 응답하는

@@ -104,7 +104,7 @@ def mark_read(
 ) -> NoticeOut:
     notice = db.get(Notice, notice_id)
     if notice is None:
-        raise NotFound("TAS-NOTICES-0001", "공지를 찾을 수 없습니다.")
+        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없습니다.")
     existing = db.scalar(
         select(NoticeRead).where(
             NoticeRead.notice_id == notice.id, NoticeRead.user_id == user.id
@@ -124,6 +124,6 @@ def delete_notice(
 ) -> None:
     notice = db.get(Notice, notice_id)
     if notice is None:
-        raise NotFound("TAS-NOTICES-0001", "공지를 찾을 수 없습니다.")
+        raise NotFound("TSC-NOTICES-0001", "공지를 찾을 수 없습니다.")
     db.delete(notice)
     db.commit()

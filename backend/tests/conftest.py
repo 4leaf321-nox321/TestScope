@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import os
 
-os.environ.setdefault("TAS_BCRYPT_ROUNDS", "4")
+os.environ.setdefault("TSC_BCRYPT_ROUNDS", "4")
 
 
 def _test_database_url() -> str:
@@ -26,7 +26,7 @@ def _test_database_url() -> str:
     `DATABASE_URL` 을 직접 주면 그것을 그대로 쓴다(CI 가 그렇게 한다). 안 주면
     .env 의 값에서 **데이터베이스 이름만** 바꾼다.
     """
-    explicit = os.environ.get("TAS_TEST_DATABASE_URL")
+    explicit = os.environ.get("TSC_TEST_DATABASE_URL")
     if explicit:
         return explicit
 

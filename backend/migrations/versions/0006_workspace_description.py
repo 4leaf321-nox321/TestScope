@@ -24,15 +24,11 @@ def upgrade() -> None:
         "workspaces",
         sa.Column("description", sa.String(255), server_default="", nullable=False),
     )
-    op.alter_column(
-        "workspaces", "slug", type_=sa.String(64), existing_type=sa.String(50)
-    )
+    op.alter_column("workspaces", "slug", type_=sa.String(64), existing_type=sa.String(50))
 
 
 def downgrade() -> None:
     # **넓힌 것을 좁히면 잘린다.** 64자짜리가 이미 들어와 있으면 그 부서의 주소가
     # 바뀌고, 그것을 가리키던 링크는 전부 죽는다 — 되돌리기 전에 길이를 확인한다.
-    op.alter_column(
-        "workspaces", "slug", type_=sa.String(50), existing_type=sa.String(64)
-    )
+    op.alter_column("workspaces", "slug", type_=sa.String(50), existing_type=sa.String(64))
     op.drop_column("workspaces", "description")

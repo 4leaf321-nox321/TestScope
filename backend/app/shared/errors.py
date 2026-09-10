@@ -4,7 +4,7 @@
 만들 방법을 두지 않는다 — except Exception 이 불투명한 4xx 로 치환되면 원인이
 로그에 안 남고, 그때 남는 것은 "안 된다" 뿐이다.
 
-코드 형식: TAS-<MODULE>-<NNNN>  예) TAS-EQUIPMENT-0001
+코드 형식: TSC-<MODULE>-<NNNN>  예) TSC-EQUIPMENT-0001
 """
 
 from __future__ import annotations
@@ -192,7 +192,7 @@ def register_error_handlers(app: FastAPI) -> None:
         logger.warning("%s %s -> 422 validation: %s", request.method, request.url.path, errors)
         return JSONResponse(
             status_code=422,
-            content=_body("TAS-COMMON-0422", describe_validation(errors), {"errors": errors}),
+            content=_body("TSC-COMMON-0422", describe_validation(errors), {"errors": errors}),
         )
 
     @app.exception_handler(StarletteHTTPException)
@@ -216,7 +216,7 @@ def register_error_handlers(app: FastAPI) -> None:
         log("%s %s -> %s http: %s", request.method, request.url.path, exc.status_code, message)
         return JSONResponse(
             status_code=exc.status_code,
-            content=_body(f"TAS-COMMON-{exc.status_code:04d}", message),
+            content=_body(f"TSC-COMMON-{exc.status_code:04d}", message),
             headers=exc.headers,
         )
 
@@ -228,7 +228,7 @@ def register_error_handlers(app: FastAPI) -> None:
         return JSONResponse(
             status_code=500,
             content=_body(
-                "TAS-COMMON-0500",
+                "TSC-COMMON-0500",
                 "서버 오류가 발생했습니다. 요청 ID를 관리자에게 알려주세요.",
             ),
         )

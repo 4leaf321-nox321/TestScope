@@ -37,7 +37,7 @@ def list_entries(
     관리자가 아니라 그 부서다.
     """
     if not is_any_manager(db, user):
-        raise Forbidden("TAS-AUDIT-0001", "부서 관리자만 볼 수 있습니다.")
+        raise Forbidden("TSC-AUDIT-0001", "부서 관리자만 볼 수 있습니다.")
 
     stmt = select(AuditEntry)
     if action:

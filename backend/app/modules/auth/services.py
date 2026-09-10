@@ -37,14 +37,14 @@ def ensure_can_sign_in(user: User) -> None:
     계정" 이라고만 하면 관리자에게 무엇을 요청해야 할지 알 수 없다.
     """
     if user.deleted_at is not None:
-        raise Forbidden("TAS-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
     if user.status == "pending":
         raise Forbidden(
-            "TAS-AUTH-0008",
+            "TSC-AUTH-0008",
             "가입 승인 대기 중입니다. 관리자가 승인하면 로그인할 수 있습니다.",
         )
     if user.status != "active":
-        raise Forbidden("TAS-AUTH-0002", "정지된 계정입니다. 관리자에게 문의하세요.")
+        raise Forbidden("TSC-AUTH-0002", "정지된 계정입니다. 관리자에게 문의하세요.")
 
 
 # --- 로그인 -----------------------------------------------------------------
@@ -102,14 +102,14 @@ def authenticate(db: Session, email: str, password: str) -> User:
     # 새지 않게** 한다.
     if user is None:
         security.verify_password(password, security.hash_password("dummy"))
-        raise AppError("TAS-AUTH-0001", _INVALID_LOGIN, status=401)
+        raise AppError("TSC-AUTH-0001", _INVALID_LOGIN, status=401)
 
     if not security.verify_password(password, user.password_hash):
         # **늦추고 나서 거절한다.** 거절부터 하면 다음 시도가 바로 온다.
         delay = _note_failure(db, user)
         if delay > 0:
             _sleep(delay)
-        raise AppError("TAS-AUTH-0001", _INVALID_LOGIN, status=401)
+        raise AppError("TSC-AUTH-0001", _INVALID_LOGIN, status=401)
 
     ensure_can_sign_in(user)
     if user.failed_logins:
@@ -154,7 +154,7 @@ def rotate_refresh(
     )
     if token is None:
         raise AppError(
-            "TAS-AUTH-0003", "세션이 만료되었습니다. 다시 로그인해 주세요.", status=401
+            "TSC-AUTH-0003", "세션이 만료되었습니다. 다시 로그인해 주세요.", status=401
         )
 
     if token.revoked_at is not None:
@@ -177,7 +177,7 @@ def rotate_refresh(
         else:
             revoke_all_for_user(db, token.user_id)
             raise AppError(
-                "TAS-AUTH-0005",
+                "TSC-AUTH-0005",
                 "세션이 무효화되었습니다. 다시 로그인해 주세요.",
                 status=401,
                 details={"reason": "reuse_of_revoked_token"},
@@ -185,12 +185,12 @@ def rotate_refresh(
 
     if token.expires_at <= _now():
         raise AppError(
-            "TAS-AUTH-0003", "세션이 만료되었습니다. 다시 로그인해 주세요.", status=401
+            "TSC-AUTH-0003", "세션이 만료되었습니다. 다시 로그인해 주세요.", status=401
         )
 
     user = db.get(User, token.user_id)
     if user is None:
-        raise Forbidden("TAS-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
     ensure_can_sign_in(user)
 
     settings = get_settings()
@@ -234,9 +234,9 @@ def revoke_all_for_user(db: Session, user_id: uuid.UUID) -> None:
 
 def change_password(db: Session, user: User, current: str, new: str) -> None:
     if not security.verify_password(current, user.password_hash):
-        raise AppError("TAS-AUTH-0004", "현재 비밀번호가 올바르지 않습니다.", status=400)
+        raise AppError("TSC-AUTH-0004", "현재 비밀번호가 올바르지 않습니다.", status=400)
     if current == new:
-        raise AppError("TAS-AUTH-0006", "이전과 다른 비밀번호를 사용하세요.", status=400)
+        raise AppError("TSC-AUTH-0006", "이전과 다른 비밀번호를 사용하세요.", status=400)
 
     user.password_hash = security.hash_password(new)
     user.must_change_password = False
@@ -308,7 +308,7 @@ def create_pat(
     unknown = [one for one in granted if one not in PAT_SCOPES]
     if unknown:
         raise AppError(
-            "TAS-AUTH-0107",
+            "TSC-AUTH-0107",
             f"모르는 범위입니다: {', '.join(unknown)}",
             status=400,
             details={"known": list(PAT_SCOPES)},
@@ -341,7 +341,7 @@ def list_pats(db: Session, user: User) -> list[PatOut]:
 def revoke_pat(db: Session, user: User, pat_id: uuid.UUID) -> None:
     pat = db.get(PersonalAccessToken, pat_id)
     if pat is None or pat.user_id != user.id:
-        raise NotFound("TAS-AUTH-0007", "토큰을 찾을 수 없습니다.")
+        raise NotFound("TSC-AUTH-0007", "토큰을 찾을 수 없습니다.")
     if pat.revoked_at is None:
         pat.revoked_at = _now()
         db.commit()

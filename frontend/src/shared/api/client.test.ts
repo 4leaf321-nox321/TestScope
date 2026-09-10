@@ -32,7 +32,7 @@ describe('오류 응답', () => {
       vi.fn(async () =>
         reply(409, {
           error: {
-            code: 'TAS-EQUIPMENT-0003',
+            code: 'TSC-EQUIPMENT-0003',
             message: '이미 등록된 자산번호입니다: UTM-001',
             request_id: 'abc123',
             details: { asset_no: 'UTM-001' },
@@ -44,7 +44,7 @@ describe('오류 응답', () => {
     const caught = await api.get('/equipment').catch((error: unknown) => error)
     expect(caught).toBeInstanceOf(ApiError)
     const error = caught as ApiError
-    expect(error.code).toBe('TAS-EQUIPMENT-0003')
+    expect(error.code).toBe('TSC-EQUIPMENT-0003')
     expect(error.requestId).toBe('abc123')
     expect(error.message).toContain('UTM-001')
     expect(error.details.asset_no).toBe('UTM-001')
@@ -57,7 +57,7 @@ describe('오류 응답', () => {
 
     const error = (await api.get('/equipment').catch((one: unknown) => one)) as ApiError
     expect(error).toBeInstanceOf(ApiError)
-    expect(error.code).toBe('TAS-CLIENT-0001')
+    expect(error.code).toBe('TSC-CLIENT-0001')
     expect(error.message).toContain('Method Not Allowed')
     expect(error.message).toContain('405')
   })

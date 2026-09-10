@@ -15,7 +15,12 @@ from collections.abc import Callable
 from typing import Any
 
 from fastapi.testclient import TestClient
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
+from app.modules.accounts.models import User
+from app.modules.auth import security
+from app.modules.auth.models import PersonalAccessToken
 from tests.api.conftest import Signed
 
 
@@ -40,7 +45,7 @@ def test_토큰은_준_범위_안에서만_쓴다(client: TestClient, admin: Sig
         "/api/equipment-series", json={"name": "막혀야 한다"}, headers=read_only
     )
     assert blocked.status_code == 403
-    assert blocked.json()["error"]["code"] == "TAS-AUTH-0106"
+    assert blocked.json()["error"]["code"] == "TSC-AUTH-0106"
 
     # 범위를 주면 된다.
     writer = _token(client, admin, ["read", "catalog:write"])
@@ -68,7 +73,7 @@ def test_토큰은_준_범위_안에서만_쓴다(client: TestClient, admin: Sig
         headers=writer,
     )
     assert elsewhere.status_code == 403
-    assert elsewhere.json()["error"]["code"] == "TAS-AUTH-0105"
+    assert elsewhere.json()["error"]["code"] == "TSC-AUTH-0105"
 
 
 def _resolve(client: TestClient, headers: dict[str, str], **body: object) -> dict[str, Any]:
@@ -117,7 +122,7 @@ def test_해석은_셋으로_답한다(
         "/api/resolve", json={"kind": "term", "text": "인장"}, headers=admin.headers
     )
     assert missing.status_code == 400
-    assert missing.json()["error"]["code"] == "TAS-RESOLVE-0001"
+    assert missing.json()["error"]["code"] == "TSC-RESOLVE-0001"
 
 
 def test_이름으로_써도_되지만_모호하면_거절한다(
@@ -143,7 +148,7 @@ def test_이름으로_써도_되지만_모호하면_거절한다(
         headers=admin.headers,
     )
     assert refused.status_code == 400
-    assert refused.json()["error"]["code"] == "TAS-RESOLVE-0003"
+    assert refused.json()["error"]["code"] == "TSC-RESOLVE-0003"
 
     # 기종은 계열 이름으로 만들 수 있다.
     model = client.post(
@@ -161,7 +166,7 @@ def test_이름으로_써도_되지만_모호하면_거절한다(
         headers=admin.headers,
     )
     assert orphan.status_code == 400
-    assert orphan.json()["error"]["code"] == "TAS-CATALOG-0015"
+    assert orphan.json()["error"]["code"] == "TSC-CATALOG-0015"
 
 
 def test_감사에_통로와_토큰이_남는다(client: TestClient, admin: Signed) -> None:
@@ -209,3 +214,38 @@ def test_감사에_통로와_토큰이_남는다(client: TestClient, admin: Sign
     mine = [one for one in catalog if one["target_id"] == made.json()["id"]]
     assert mine, "계열 생성이 감사에 안 남았습니다"
     assert mine[0]["actor_client"] == "mcp"
+
+
+def test_이름을_바꿔도_이미_나간_토큰은_계속_쓴다(
+    client: TestClient, admin: Signed, db: Session
+) -> None:
+    """TestAtlas → TestScope 로 PAT 표식이 `tas_pat_` 에서 `tsc_pat_` 로 바뀌었다.
+
+    **이미 나간 토큰을 죽이면 안 된다.** 그 토큰은 사람의 MCP 설정 안에
+    붙어 있고, 이름을 바꾸는 쪽이 거기까지 손을 뻗을 수 없다. 발급은 새 표식으로만
+    하되, 받을 때는 구 표식도 알아본다.
+    """
+    assert security.PAT_PREFIX == "tsc_pat_"
+    assert "tas_pat_" in security.LEGACY_PAT_PREFIXES
+
+    user = db.scalar(select(User).where(User.email == admin.email))
+    assert user is not None
+
+    raw = "tas_pat_" + uuid.uuid4().hex
+    db.add(
+        PersonalAccessToken(
+            user_id=user.id,
+            name=f"구-토큰-{uuid.uuid4().hex[:6]}",
+            prefix=raw[:14],
+            token_hash=security.hash_token(raw),
+            scopes=["read"],
+        )
+    )
+    db.commit()
+
+    old = {"Authorization": f"Bearer {raw}"}
+    assert client.get("/api/equipment-series", headers=old).status_code == 200
+
+    # 구 표식이라고 범위가 넓어지지는 않는다.
+    blocked = client.post("/api/equipment-series", json={"name": "막혀야 한다"}, headers=old)
+    assert blocked.status_code == 403

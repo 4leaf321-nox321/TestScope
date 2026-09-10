@@ -26,7 +26,7 @@ from app.shared.permissions import (
 from app.shared.text import clean
 
 _WHAT = "시험법"
-_CODE = "TAS-METHODS-0002"
+_CODE = "TSC-METHODS-0002"
 
 
 def visible(db: Session, user: User) -> Select[tuple[TestMethod]]:
@@ -40,7 +40,7 @@ def visible(db: Session, user: User) -> Select[tuple[TestMethod]]:
 def get_method(db: Session, user: User, method_id: uuid.UUID) -> TestMethod:
     found = db.scalar(visible(db, user).where(TestMethod.id == method_id))
     if found is None:
-        raise NotFound("TAS-METHODS-0001", "시험법을 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0001", "시험법을 찾을 수 없습니다.")
     return found
 
 
@@ -155,7 +155,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> TestMethod:
         )
     )
     if clash is not None:
-        raise Conflict("TAS-METHODS-0003", f"이미 등록된 규격입니다: {code} {edition or ''}")
+        raise Conflict("TSC-METHODS-0003", f"이미 등록된 규격입니다: {code} {edition or ''}")
 
     owner = resolve_owner_workspace(
         db, user, payload.get("workspace_slug"), what=_WHAT, code=_CODE
@@ -238,7 +238,7 @@ def delete(db: Session, user: User, method_id: uuid.UUID) -> None:
     )
     if using:
         raise Conflict(
-            "TAS-METHODS-0004",
+            "TSC-METHODS-0004",
             f"이 시험법을 거는 역량이 {using}건 있습니다. "
             f"지우는 대신 상태를 대체됨으로 바꾸세요.",
         )
@@ -258,7 +258,7 @@ def upsert_requirement(
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
-        raise NotFound("TAS-METHODS-0005", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0005", "조건 정의를 찾을 수 없습니다.")
 
     existing = db.scalar(
         select(MethodRequirement).where(
@@ -286,6 +286,6 @@ def delete_requirement(
     require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
     target = db.get(MethodRequirement, requirement_id)
     if target is None or target.method_id != row.id:
-        raise NotFound("TAS-METHODS-0006", "요구 조건을 찾을 수 없습니다.")
+        raise NotFound("TSC-METHODS-0006", "요구 조건을 찾을 수 없습니다.")
     db.delete(target)
     db.commit()

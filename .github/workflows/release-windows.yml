@@ -78,9 +78,9 @@ jobs:
           body: |
             Windows 배포 패키지.
 
-            설치(신규):  .\install.ps1 -AppPath 'C:\Server\TestAtlas' -ZipPath .\deploy_package.zip -DbPassword '...'
-            갱신:        .\deploy.ps1  -AppPath 'C:\Server\TestAtlas' -ZipPath .\deploy_package.zip
-            롤백:        .\rollback.ps1 -AppPath 'C:\Server\TestAtlas'
+            설치(신규):  .\install.ps1 -AppPath 'C:\Server\TestScope' -ZipPath .\deploy_package.zip -DbPassword '...'
+            갱신:        .\deploy.ps1  -AppPath 'C:\Server\TestScope' -ZipPath .\deploy_package.zip
+            롤백:        .\rollback.ps1 -AppPath 'C:\Server\TestScope'
           draft: false
           prerelease: false
           files: ./deploy/deploy_package.zip

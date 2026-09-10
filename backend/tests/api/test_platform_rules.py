@@ -60,7 +60,7 @@ def test_남의_부서_장비는_고칠_수_없다(
     other = Workspace(slug=f"other-{uuid.uuid4().hex[:8]}", name="다른팀")
     db.add(other)
     db.flush()
-    email = f"member-{uuid.uuid4().hex[:8]}@testatlas.local"
+    email = f"member-{uuid.uuid4().hex[:8]}@testscope.local"
     member = User(
         email=email,
         password_hash=security.hash_password("member-password"),
@@ -127,7 +127,7 @@ def test_닫힌_축은_관리자만_값을_더한다(
     client: TestClient, db: Session, admin: Signed, workspace: Workspace
 ) -> None:
     """시험 항목은 **검색의 첫 축**이다. 오타가 값이 되면 그 장비는 영영 안 걸린다."""
-    email = f"plain-{uuid.uuid4().hex[:8]}@testatlas.local"
+    email = f"plain-{uuid.uuid4().hex[:8]}@testscope.local"
     user = User(
         email=email,
         password_hash=security.hash_password("member-password"),
@@ -149,7 +149,7 @@ def test_닫힌_축은_관리자만_값을_더한다(
         "/api/vocabularies/test_item/terms", json={"value": "마음대로"}, headers=headers
     )
     assert closed.status_code == 403
-    assert closed.json()["error"]["code"] == "TAS-VOCAB-0002"
+    assert closed.json()["error"]["code"] == "TSC-VOCAB-0002"
 
     # 열린 축은 누구나 더한다 — 기다리게 하면 피커가 멈추고, 사람은 시스템 밖에서 일한다.
     opened = client.post(
@@ -344,12 +344,12 @@ def test_가리키는_장비가_있는_기종은_못_지운다(client: TestClien
 
     blocked = client.delete(f"/api/equipment-models/{model['id']}", headers=admin.headers)
     assert blocked.status_code == 409
-    assert blocked.json()["error"]["code"] == "TAS-CATALOG-0003"
+    assert blocked.json()["error"]["code"] == "TSC-CATALOG-0003"
 
     # 기종이 매달린 계열도 못 지운다.
     held = client.delete(f"/api/equipment-series/{series['id']}", headers=admin.headers)
     assert held.status_code == 409
-    assert held.json()["error"]["code"] == "TAS-CATALOG-0011"
+    assert held.json()["error"]["code"] == "TSC-CATALOG-0011"
 
     # 단종으로는 바꿀 수 있다.
     retired = client.patch(

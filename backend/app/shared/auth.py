@@ -86,20 +86,20 @@ def _enforce_token_scope(request: Request, token_scopes: list[str], path: str) -
         if "read" in token_scopes:
             return
         raise Forbidden(
-            "TAS-AUTH-0104",
+            "TSC-AUTH-0104",
             "이 토큰에는 읽기 범위(read)가 없습니다.",
         )
 
     needed = _needed_scope(path)
     if needed is None:
         raise Forbidden(
-            "TAS-AUTH-0105",
+            "TSC-AUTH-0105",
             "개인 토큰으로는 이 경로를 고칠 수 없습니다. 화면에서 하세요.",
             details={"path": path},
         )
     if needed not in token_scopes:
         raise Forbidden(
-            "TAS-AUTH-0106",
+            "TSC-AUTH-0106",
             f"이 토큰에는 {needed} 범위가 없습니다.",
             details={"needed": needed, "granted": token_scopes},
         )
@@ -108,13 +108,13 @@ def _enforce_token_scope(request: Request, token_scopes: list[str], path: str) -
 def current_user(request: Request, db: Session = Depends(get_db)) -> User:
     token = _bearer(request)
     if token is None:
-        raise AppError("TAS-AUTH-0100", _UNAUTHENTICATED, status=401)
+        raise AppError("TSC-AUTH-0100", _UNAUTHENTICATED, status=401)
 
-    if token.startswith(security.PAT_PREFIX):
+    if token.startswith(security.ACCEPTED_PAT_PREFIXES):
         found = services.resolve_pat(db, token)
         if found is None:
             logger.warning("PAT 인증 실패 (prefix=%s)", token[: len(security.PAT_PREFIX) + 6])
-            raise AppError("TAS-AUTH-0101", "토큰이 유효하지 않습니다.", status=401)
+            raise AppError("TSC-AUTH-0101", "토큰이 유효하지 않습니다.", status=401)
         user, pat = found
         _enforce_token_scope(request, list(pat.scopes or []), request.url.path)
         # **감사에 토큰 이름을 남긴다.** 소유자만 남기면 사람이 넣은 것과 기계가
@@ -122,23 +122,23 @@ def current_user(request: Request, db: Session = Depends(get_db)) -> User:
         set_actor_token(pat.name)
         # 접근 로그 미들웨어가 "누가" 를 알 수 있게 scope 에 남긴다. 미들웨어는
         # 인증보다 바깥에 있어서 스스로는 사용자를 알 수 없다.
-        request.scope["tas_user_id"] = user.id
+        request.scope["tsc_user_id"] = user.id
         return user
 
     payload = security.decode_access_token(token)
     if payload is None:
         # 사유(만료·서명 불일치)는 응답에 싣지 않는다 — 공격자에게 힌트가 된다.
-        raise AppError("TAS-AUTH-0102", "세션이 만료되었습니다.", status=401)
+        raise AppError("TSC-AUTH-0102", "세션이 만료되었습니다.", status=401)
 
     signed_in = db.get(User, payload["sub"])
     if signed_in is None:
-        raise Forbidden("TAS-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
     services.ensure_can_sign_in(signed_in)
-    request.scope["tas_user_id"] = signed_in.id
+    request.scope["tsc_user_id"] = signed_in.id
     return signed_in
 
 
 def require_system_admin(user: User = Depends(current_user)) -> User:
     if not user.is_system_admin:
-        raise Forbidden("TAS-AUTH-0103", "권한이 없습니다.")
+        raise Forbidden("TSC-AUTH-0103", "권한이 없습니다.")
     return user

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "testatlas/source/catalog/equipment",
+  "$id": "testscope/source/catalog/equipment",
   "title": "Equipment catalog object",
   "description": "제조사 카탈로그에서 뽑은 장비 시리즈/모델 하나. 관계(relations)로 다른 객체·온톨로지 노드를 가리킨다. 도메인 상세 필드는 자유 형식이지만 이름은 여기에 선언된 것만 쓴다. additionalProperties:false 를 유지하는 이유는 오타 필드를 잡기 위해서다.",
   "type": "object",

@@ -60,5 +60,5 @@ def test_도구마다_설명이_있다() -> None:
 def test_만능_토큰을_두지_않는다() -> None:
     """서버가 자기 자격으로 부르면 **그 순간 모든 사용자가 같은 권한을 갖는다.**"""
     text = SERVER.read_text(encoding="utf-8")
-    for banned in ("TESTATLAS_TOKEN", "TESTATLAS_PAT", "SERVICE_TOKEN"):
+    for banned in ("TESTSCOPE_TOKEN", "TESTSCOPE_PAT", "SERVICE_TOKEN"):
         assert banned not in text, f"{banned} — 서버가 자기 토큰을 들면 안 됩니다"

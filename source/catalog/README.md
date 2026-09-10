@@ -1,7 +1,7 @@
 # 물성 시험 장비 카탈로그 원천 데이터 (`source/`)
 
 웹에서 받은 제조사 카탈로그·데이터시트(PDF)와, 거기서 뽑아 낸 장비 객체(JSON), 그리고
-객체를 잇는 온톨로지 정의를 둔다. **TestAtlas 의 사슬을 채우기 위한 원료**다.
+객체를 잇는 온톨로지 정의를 둔다. **TestScope 의 사슬을 채우기 위한 원료**다.
 
     시험 항목  ->  요구 조건  ->  시험법  ->  가능한 장비  ->  보유 위치
     test_item      limits         standards    equipment      (조직이 채운다)
@@ -33,7 +33,7 @@
 
 ## 단위 규약
 
-TestAtlas `ConditionKey` 와 같은 단위를 쓴다: 힘 **kN**, 속도 **mm/min**, 온도 **degC**,
+TestScope `ConditionKey` 와 같은 단위를 쓴다: 힘 **kN**, 속도 **mm/min**, 온도 **degC**,
 주파수 **Hz**, 길이 **mm**, 습도 **%**. 그 밖의 축은 `ontology/condition_keys.json` 에
 키 이름 자체에 단위를 박아 둔다(`impact_energy_J`, `torque_Nm`, `test_load_kgf`).
 **범위의 빈 칸은 "제한 없음/미기재"** 다. 0 으로 채우지 않는다.
@@ -205,7 +205,7 @@ MTDI 객체 5 개(UC-980 노·UC-350/UC-170 챔버, 마모마찰 4 기종, 비�
 **질의하는 쪽은 `kind` 로 걸러야 한다.**
 
 힘 축이 이름 7 개로 갈라져 있던 것(`force_kN`·`dynamic_force_kN`·`test_load_kgf` …)도
-`testatlas_key: "force"` 로 묶었다 — 안 그러면 서보유압 피로기가 "20 kN" 질의에서 통째로 빠진다.
+`testscope_key: "force"` 로 묶었다 — 안 그러면 서보유압 피로기가 "20 kN" 질의에서 통째로 빠진다.
 
 ## 표 값 검증 (3단계)
 
@@ -271,6 +271,6 @@ MTDI 객체 5 개(UC-980 노·UC-350/UC-170 챔버, 마모마찰 4 기종, 비�
 
 ## 다음 단계
 
-- `build_graph.py` -> `graph.json` 을 TestAtlas 의 `vocabulary`(축·값), `methods`,
+- `build_graph.py` -> `graph.json` 을 TestScope 의 `vocabulary`(축·값), `methods`,
   `equipment` 시드로 바꾸는 변환기를 쓴다. 조직이 보유한 장비는 이 카탈로그 객체를
   `variant_of` 로 가리키고, 자산번호·위치·담당자만 덧붙이면 된다.

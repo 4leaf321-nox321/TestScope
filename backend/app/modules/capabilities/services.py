@@ -23,7 +23,7 @@ from app.shared.errors import AppError, Conflict, NotFound
 from app.shared.permissions import get_equipment, require_owner_edit
 
 _WHAT = "장비"
-_CODE = "TAS-CAPABILITIES-0002"
+_CODE = "TSC-CAPABILITIES-0002"
 
 
 def _limits(db: Session, capability_id: uuid.UUID) -> list[LimitOut]:
@@ -97,7 +97,7 @@ def list_for_equipment(
 def get_capability(db: Session, user: User, capability_id: uuid.UUID) -> Capability:
     row = db.get(Capability, capability_id)
     if row is None:
-        raise NotFound("TAS-CAPABILITIES-0001", "역량을 찾을 수 없습니다.")
+        raise NotFound("TSC-CAPABILITIES-0001", "역량을 찾을 수 없습니다.")
     get_equipment(db, user, row.equipment_id)
     return row
 
@@ -118,7 +118,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> Capability:
     )
     if clash is not None:
         raise Conflict(
-            "TAS-CAPABILITIES-0003",
+            "TSC-CAPABILITIES-0003",
             "같은 시험 항목·시험법의 역량이 이미 있습니다. 그것을 고치세요.",
             details={"capability_id": str(clash.id)},
         )
@@ -177,14 +177,14 @@ def upsert_limit(
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
-        raise NotFound("TAS-CAPABILITIES-0004", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-CAPABILITIES-0004", "조건 정의를 찾을 수 없습니다.")
 
     low, high = payload.get("min_value"), payload.get("max_value")
     if low is not None and high is not None and low > high:
         # **거꾸로 넣은 범위는 검색에서 아무것도 안 맞는다.** 조용히 통과시키면
         # 사람은 "왜 우리 장비가 안 나오지" 를 묻게 되고, 그 원인은 안 보인다.
         raise AppError(
-            "TAS-CAPABILITIES-0005",
+            "TSC-CAPABILITIES-0005",
             f"{key.label}의 최소가 최대보다 큽니다.",
             status=400,
         )
@@ -217,6 +217,6 @@ def delete_limit(
     )
     target = db.get(CapabilityLimit, limit_id)
     if target is None or target.capability_id != row.id:
-        raise NotFound("TAS-CAPABILITIES-0006", "조건을 찾을 수 없습니다.")
+        raise NotFound("TSC-CAPABILITIES-0006", "조건을 찾을 수 없습니다.")
     db.delete(target)
     db.commit()

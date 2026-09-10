@@ -1,4 +1,4 @@
-# TestAtlas
+# TestScope
 
 **조직이 보유한 시험 역량의 지도.**
 
@@ -82,7 +82,7 @@ cd backend
 py -3.13 -m venv .venv                # PATH 의 python 은 3.12 일 수 있다
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-dev.txt
 copy .env.example .env                # DATABASE_URL 수정. **BOM 없이 저장한다**
-createdb testatlas ; createdb testatlas_test
+createdb testscope ; createdb testscope_test
 .\.venv\Scripts\alembic.exe upgrade head
 .\.venv\Scripts\python.exe scripts\seed_install.py   # 관리자 — 비밀번호가 1회 출력된다
 
@@ -126,7 +126,7 @@ npm run dev
 
 # 아이디까지 바꾸기
 .\.venv\Scripts\python.exe scripts\set_admin.py --email admin --password '...' `
-    --rename-from admin@testatlas.local
+    --rename-from admin@testscope.local
 ```
 
 `seed_install.py` 는 **이미 있는 계정의 비밀번호를 되돌리지 않는다** — 설치
@@ -302,7 +302,7 @@ un_mcp.ps1 -Stdio     # 개인 연결
 **새로 만든 API 가 404 로 오는데 코드에는 있다면 좀비 서버를 의심한다.**
 Windows 는 두 프로세스가 같은 포트를 LISTEN 하는 것을 막지 않는다. reload 로 띄운
 개발 서버는 부모와 자식 워커 둘인데, 부모만 죽으면 **자식이 소켓을 물고 남는다** —
-그다음에 띄운 새 서버와 옛 워커가 번갈아 답하고, 그러면 `TAS-COMMON-0404` 가
+그다음에 띄운 새 서버와 옛 워커가 번갈아 답하고, 그러면 `TSC-COMMON-0404` 가
 띄엄띄엄 온다. `run.py` 가 이제 그 자리에서 기동을 거부하지만, 이미 쌓인 것은
 직접 내려야 한다.
 

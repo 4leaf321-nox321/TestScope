@@ -40,7 +40,7 @@ from app.shared.text import clean
 logger = logging.getLogger(__name__)
 
 _WHAT = "장비"
-_CODE = "TAS-EQUIPMENT-0002"
+_CODE = "TSC-EQUIPMENT-0002"
 
 
 def _term_value(db: Session, term_id: uuid.UUID | None) -> str | None:
@@ -175,11 +175,11 @@ def list_equipment(
 def create(db: Session, user: User, payload: dict[str, Any]) -> Equipment:
     asset_no = clean(payload["asset_no"])
     if db.scalar(select(Equipment).where(Equipment.asset_no == asset_no)) is not None:
-        raise Conflict("TAS-EQUIPMENT-0003", f"이미 등록된 자산번호입니다: {asset_no}")
+        raise Conflict("TSC-EQUIPMENT-0003", f"이미 등록된 자산번호입니다: {asset_no}")
 
     status = payload.get("status") or "operational"
     if status not in EQUIPMENT_STATUSES:
-        raise AppError("TAS-EQUIPMENT-0004", f"모르는 상태입니다: {status}", status=400)
+        raise AppError("TSC-EQUIPMENT-0004", f"모르는 상태입니다: {status}", status=400)
 
     owner = resolve_owner_workspace(
         db, user, payload.get("workspace_slug"), what=_WHAT, code=_CODE
@@ -243,7 +243,7 @@ def update(
     if "status" in changes and changes["status"] is not None:
         status = changes["status"]
         if status not in EQUIPMENT_STATUSES:
-            raise AppError("TAS-EQUIPMENT-0004", f"모르는 상태입니다: {status}", status=400)
+            raise AppError("TSC-EQUIPMENT-0004", f"모르는 상태입니다: {status}", status=400)
         if status != row.status:
             # **폐기만 감사에 남긴다.** 점검·수리는 오가는 상태라 다 남기면 그
             # 안에서 정작 찾을 것을 못 찾는다. 폐기는 목록에서 사라지는 일이다.

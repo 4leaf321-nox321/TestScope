@@ -201,4 +201,4 @@ def test_거꾸로_넣은_범위는_거절한다(
         headers=admin.headers,
     )
     assert response.status_code == 400
-    assert response.json()["error"]["code"] == "TAS-CAPABILITIES-0005"
+    assert response.json()["error"]["code"] == "TSC-CAPABILITIES-0005"

@@ -1,4 +1,4 @@
-"""TestAtlas MCP 서버 — **AI 가 시험 역량을 직접 묻고, 카탈로그를 채운다.**
+"""TestScope MCP 서버 — **AI 가 시험 역량을 직접 묻고, 카탈로그를 채운다.**
 
 MatNexus 의 MCP 서버를 본떴다. 그쪽에서 실측으로 얻은 것 넷을 그대로 가져온다:
 
@@ -13,7 +13,7 @@ MatNexus 의 MCP 서버를 본떴다. 그쪽에서 실측으로 얻은 것 넷�
 권한을 갖는다. 부서 가시성·범위(scopes)·편집 권한은 지금 있는 코드가 판정한다 —
 규칙이 두 벌이 되면 갈라지고, 갈라진 쪽이 MCP 면 그것은 권한 우회다.
 
-호출자는 TestAtlas 화면의 「내 정보 → 토큰」 에서 발급한 개인 토큰을 쓴다. 카탈로그를
+호출자는 TestScope 화면의 「내 정보 → 토큰」 에서 발급한 개인 토큰을 쓴다. 카탈로그를
 채울 토큰이라면 범위는 `read` 와 `catalog:write` 둘이면 된다.
 
 ## 만들기 전에 찾는다
@@ -32,7 +32,7 @@ import httpx
 from mcp.server.mcpserver import Context, MCPServer
 
 #: 백엔드 API. 같은 기계에서 도는 것이 기본이다(개발 8021 · 운영 8020).
-API_BASE = os.environ.get("TESTATLAS_API_BASE", "http://127.0.0.1:8021/api").rstrip("/")
+API_BASE = os.environ.get("TESTSCOPE_API_BASE", "http://127.0.0.1:8021/api").rstrip("/")
 
 #: 한 번에 돌려주는 목록의 상한. **도구가 스스로 막는다** — 상한이 없으면 한 번의
 #: 호출이 수만 자가 되어 대화가 끊긴다.
@@ -41,9 +41,9 @@ MAX_LIMIT = 50
 GUIDE_PATH = Path(__file__).parent / "guide" / "GUIDE.md"
 
 mcp = MCPServer(
-    name="testatlas",
+    name="testscope",
     instructions=(
-        "TestAtlas 시험 역량 지도. 「이 시험이 가능한 장비가 우리 조직에 있나」 에"
+        "TestScope 시험 역량 지도. 「이 시험이 가능한 장비가 우리 조직에 있나」 에"
         " 답한다. 카탈로그는 계열(무슨 시험이 되나)과 기종(어디까지 되나) 두 층이고,"
         " 보유 장비는 기종을 가리킨다. 먼저 get_guide() 를 읽어라 — 특히 「만들기"
         " 전에 resolve 로 찾는다」 와 「모르면 비운다」 는 규약이 있다."
@@ -89,7 +89,7 @@ def _auth_error(status: int) -> dict[str, Any] | None:
     if status == 401:
         return {
             "error": (
-                "인증에 실패했습니다. TestAtlas 화면의 「내 정보 → 토큰」 에서 발급한"
+                "인증에 실패했습니다. TestScope 화면의 「내 정보 → 토큰」 에서 발급한"
                 " 개인 토큰을 Authorization 헤더로 등록했는지 확인하세요."
             )
         }

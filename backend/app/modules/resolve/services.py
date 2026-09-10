@@ -185,14 +185,14 @@ def _resolve_term(db: Session, text: str, axis: str | None, limit: int) -> Resol
     """
     if not axis:
         raise AppError(
-            "TAS-RESOLVE-0001",
+            "TSC-RESOLVE-0001",
             "기준정보 값을 찾으려면 축(axis)이 필요합니다.",
             status=400,
             details={"axis": "manufacturer · equipment_category · test_item · site"},
         )
     vocabulary = db.scalar(select(Vocabulary).where(Vocabulary.slug == axis))
     if vocabulary is None:
-        raise AppError("TAS-RESOLVE-0002", f"없는 축입니다: {axis}", status=400)
+        raise AppError("TSC-RESOLVE-0002", f"없는 축입니다: {axis}", status=400)
 
     key = compare_key(text)
     exact = db.scalar(
@@ -309,7 +309,7 @@ def resolve_term_id(
     if answer.match == "exact" and answer.id is not None:
         return answer.id
     raise AppError(
-        "TAS-RESOLVE-0003",
+        "TSC-RESOLVE-0003",
         f"{field}: 「{text}」 을(를) 하나로 정할 수 없습니다. id 로 주거나 "
         f"기준정보에서 먼저 만드세요.",
         status=400,

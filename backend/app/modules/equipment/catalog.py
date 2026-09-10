@@ -67,14 +67,14 @@ def _term_value(db: Session, term_id: uuid.UUID | None) -> str | None:
 def get_series(db: Session, series_id: uuid.UUID) -> EquipmentSeries:
     found = db.get(EquipmentSeries, series_id)
     if found is None or found.deleted_at is not None:
-        raise NotFound("TAS-CATALOG-0009", "장비 계열을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0009", "장비 계열을 찾을 수 없습니다.")
     return found
 
 
 def get_model(db: Session, model_id: uuid.UUID) -> EquipmentModel:
     found = db.get(EquipmentModel, model_id)
     if found is None or found.deleted_at is not None:
-        raise NotFound("TAS-CATALOG-0001", "장비 기종을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0001", "장비 기종을 찾을 수 없습니다.")
     return found
 
 
@@ -318,7 +318,7 @@ def create_series(db: Session, actor: User, payload: dict[str, Any]) -> Equipmen
     )
     if clash is not None:
         raise Conflict(
-            "TAS-CATALOG-0010",
+            "TSC-CATALOG-0010",
             f"이미 있는 계열입니다: {clash.name}",
             details={"series_id": str(clash.id), "name": clash.name},
         )
@@ -401,7 +401,7 @@ def delete_series(db: Session, series_id: uuid.UUID) -> None:
     )
     if using:
         raise Conflict(
-            "TAS-CATALOG-0011",
+            "TSC-CATALOG-0011",
             f"이 계열에 기종이 {using}개 있습니다. 먼저 기종을 정리하거나, "
             f"지우는 대신 상태를 단종으로 바꾸세요.",
         )
@@ -419,7 +419,7 @@ def add_relation(
     part = get_series(db, payload["part_series_id"])
     if host.id == part.id:
         raise AppError(
-            "TAS-CATALOG-0012", "자기 자신과는 관계를 맺을 수 없습니다.", status=400
+            "TSC-CATALOG-0012", "자기 자신과는 관계를 맺을 수 없습니다.", status=400
         )
 
     clash = db.scalar(
@@ -430,7 +430,7 @@ def add_relation(
         )
     )
     if clash is not None:
-        raise Conflict("TAS-CATALOG-0013", "같은 관계가 이미 있습니다.")
+        raise Conflict("TSC-CATALOG-0013", "같은 관계가 이미 있습니다.")
 
     row = SeriesRelation(
         host_series_id=host.id,
@@ -446,7 +446,7 @@ def add_relation(
 def delete_relation(db: Session, series_id: uuid.UUID, relation_id: uuid.UUID) -> None:
     row = db.get(SeriesRelation, relation_id)
     if row is None or series_id not in (row.host_series_id, row.part_series_id):
-        raise NotFound("TAS-CATALOG-0014", "관계를 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0014", "관계를 찾을 수 없습니다.")
     db.delete(row)
     db.commit()
 
@@ -561,7 +561,7 @@ def _series_of(db: Session, payload: dict[str, Any]) -> EquipmentSeries:
         if answer.match == "exact" and answer.id is not None:
             return get_series(db, answer.id)
         raise AppError(
-            "TAS-CATALOG-0015",
+            "TSC-CATALOG-0015",
             f"계열 「{payload['series']}」 을(를) 하나로 정할 수 없습니다. "
             f"series_id 로 주거나 계열을 먼저 만드세요.",
             status=400,
@@ -572,7 +572,7 @@ def _series_of(db: Session, payload: dict[str, Any]) -> EquipmentSeries:
             },
         )
     raise AppError(
-        "TAS-CATALOG-0016",
+        "TSC-CATALOG-0016",
         "계열이 필요합니다. 단품이면 기종 하나짜리 계열을 먼저 만드세요.",
         status=400,
     )
@@ -590,7 +590,7 @@ def create_model(db: Session, actor: User, payload: dict[str, Any]) -> Equipment
     )
     if clash is not None:
         raise Conflict(
-            "TAS-CATALOG-0002",
+            "TSC-CATALOG-0002",
             f"이 계열에 이미 있는 기종입니다: {clash.name}",
             details={"model_id": str(clash.id), "name": clash.name},
         )
@@ -655,7 +655,7 @@ def delete_model(db: Session, model_id: uuid.UUID) -> None:
     )
     if using:
         raise Conflict(
-            "TAS-CATALOG-0003",
+            "TSC-CATALOG-0003",
             f"이 기종을 가리키는 보유 장비가 {using}대 있습니다. "
             f"지우는 대신 상태를 단종으로 바꾸세요.",
         )
@@ -674,7 +674,7 @@ def _method_id(db: Session, code: str | None) -> uuid.UUID | None:
     if answer.match == "exact" and answer.id is not None:
         return answer.id
     raise AppError(
-        "TAS-CATALOG-0018",
+        "TSC-CATALOG-0018",
         f"시험법 「{code}」 을(를) 하나로 정할 수 없습니다.",
         status=400,
         details={
@@ -693,7 +693,7 @@ def add_capability(
     method_id = payload.get("method_id") or _method_id(db, payload.get("method_code"))
     if payload.get("test_item_term_id") is None:
         raise AppError(
-            "TAS-CATALOG-0017",
+            "TSC-CATALOG-0017",
             "시험 항목이 필요합니다. test_item_term_id 나 test_item(이름)을 주세요.",
             status=400,
         )
@@ -708,7 +708,7 @@ def add_capability(
     )
     if clash is not None:
         raise Conflict(
-            "TAS-CATALOG-0004",
+            "TSC-CATALOG-0004",
             "같은 시험 항목·시험법의 역량이 이미 있습니다. 그것을 고치세요.",
             details={"capability_id": str(clash.id)},
         )
@@ -729,7 +729,7 @@ def delete_capability(db: Session, series_id: uuid.UUID, capability_id: uuid.UUI
     series = get_series(db, series_id)
     row = db.get(ModelCapability, capability_id)
     if row is None or row.series_id != series.id:
-        raise NotFound("TAS-CATALOG-0005", "역량을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "역량을 찾을 수 없습니다.")
     db.delete(row)
     db.commit()
 
@@ -746,18 +746,18 @@ def upsert_limit(
     series = get_series(db, series_id)
     capability = db.get(ModelCapability, capability_id)
     if capability is None or capability.series_id != series.id:
-        raise NotFound("TAS-CATALOG-0005", "역량을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "역량을 찾을 수 없습니다.")
 
     key = db.get(ConditionKey, payload["condition_key_id"])
     if key is None:
-        raise NotFound("TAS-CATALOG-0006", "조건 정의를 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0006", "조건 정의를 찾을 수 없습니다.")
 
     low, high = payload.get("min_value"), payload.get("max_value")
     if low is not None and high is not None and low > high:
         # **거꾸로 넣은 범위는 복사된 뒤 검색에서 아무것도 안 맞는다.** 조용히
         # 통과시키면 그 원인은 카탈로그가 아니라 장비 쪽에서 찾게 된다.
         raise AppError(
-            "TAS-CATALOG-0007", f"{key.label}의 최소가 최대보다 큽니다.", status=400
+            "TSC-CATALOG-0007", f"{key.label}의 최소가 최대보다 큽니다.", status=400
         )
 
     existing = db.scalar(
@@ -786,10 +786,10 @@ def delete_limit(
     series = get_series(db, series_id)
     capability = db.get(ModelCapability, capability_id)
     if capability is None or capability.series_id != series.id:
-        raise NotFound("TAS-CATALOG-0005", "역량을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0005", "역량을 찾을 수 없습니다.")
     target = db.get(ModelCapabilityLimit, limit_id)
     if target is None or target.model_capability_id != capability.id:
-        raise NotFound("TAS-CATALOG-0008", "조건을 찾을 수 없습니다.")
+        raise NotFound("TSC-CATALOG-0008", "조건을 찾을 수 없습니다.")
     db.delete(target)
     db.commit()
 
