@@ -31,6 +31,7 @@ export type ModelHeadlineSpec = components['schemas']['ModelHeadlineSpecOut']
  */
 export type EquipmentSeriesRow = components['schemas']['EquipmentSeriesRow']
 export type EquipmentModelRow = components['schemas']['EquipmentModelRow']
+export type CatalogFilterOptions = components['schemas']['CatalogFilterOptionsOut']
 type SeriesPage = components['schemas']['Page_EquipmentSeriesRow_']
 type ModelPage = components['schemas']['Page_EquipmentModelRow_']
 
@@ -141,22 +142,40 @@ export const testItemApi = {
  */
 export const seriesApi = {
   list: (params: {
+    /** 계열명·한글명·제조사를 함께 본다. 열마다 거를 때는 `name` 을 쓴다. */
     q?: string
+    /** **그 열만** 본다 — 이름 칸에 친 글자가 제조사에 걸린 줄을 데려오면 안 된다. */
+    name?: string
     kind?: string
+    categoryTermId?: string
+    makerTermId?: string
+    status?: string
+    /** `none` 이면 **기종이 없는 계열만** — 아무도 그 계열을 가리킬 수 없다. */
+    models?: string
+    /** `none` 이면 **시험 항목이 하나도 없는 계열만.** */
+    testItem?: string
     /** 보유 장비가 가리키는 계열만. 홈의 「남은 일」 이 이걸로 링크한다. */
     owned?: boolean
-    issue?: string
     limit?: number
+    offset?: number
   }) => {
     const search = new URLSearchParams()
     if (params.q) search.set('q', params.q)
+    if (params.name) search.set('name', params.name)
     if (params.kind) search.set('kind', params.kind)
+    if (params.categoryTermId) search.set('category_term_id', params.categoryTermId)
+    if (params.makerTermId) search.set('maker_term_id', params.makerTermId)
+    if (params.status) search.set('status', params.status)
+    if (params.models) search.set('models', params.models)
+    if (params.testItem) search.set('test_item', params.testItem)
     if (params.owned) search.set('owned', 'true')
-    if (params.issue) search.set('issue', params.issue)
     if (params.limit) search.set('limit', String(params.limit))
+    if (params.offset) search.set('offset', String(params.offset))
     const query = search.toString()
     return api.get<SeriesPage>(`/equipment-series${query ? `?${query}` : ''}`)
   },
+  /** 열마다 **고를 수 있는 값**과 그 수. 카탈로그에 실제로 쓰인 값만 온다. */
+  filterOptions: () => api.get<CatalogFilterOptions>('/equipment-series/filter-options'),
   read: (id: string) => api.get<EquipmentSeries>(`/equipment-series/${id}`),
   create: (body: Record<string, unknown>) =>
     api.post<EquipmentSeries>('/equipment-series', body),
@@ -194,12 +213,19 @@ export const seriesApi = {
  */
 export const catalogApi = {
   list: (params: {
+    /** 기종명·계열명·제조사를 함께 본다. 열마다 거를 때는 `name` 을 쓴다. */
     q?: string
+    /** **그 열만** 본다. */
+    name?: string
     seriesId?: string
+    makerTermId?: string
+    categoryTermId?: string
+    /** `none` 사양이 빈 것 · `uncertain` 원본 확인이 필요한 것. */
+    spec?: string
+    /** `none` 이면 **계열에 시험 항목이 하나도 없는 기종만.** */
+    testItem?: string
     /** 보유 장비가 가리키는 기종만. */
     owned?: boolean
-    /** `specs` 사양이 빈 것 · `uncertain` 원본 확인이 필요한 것. */
-    issue?: string
     limit?: number
     /** 몇 째부터. **714기종이라 한 쪽에 안 담긴다** — 안 넘기면 나머지가 조용히
      *  안 보이고, 못 찾은 사람은 없다고 결론 내리고 새로 만든다. */
@@ -207,14 +233,20 @@ export const catalogApi = {
   }) => {
     const search = new URLSearchParams()
     if (params.q) search.set('q', params.q)
+    if (params.name) search.set('name', params.name)
     if (params.seriesId) search.set('series_id', params.seriesId)
+    if (params.makerTermId) search.set('maker_term_id', params.makerTermId)
+    if (params.categoryTermId) search.set('category_term_id', params.categoryTermId)
+    if (params.spec) search.set('spec', params.spec)
+    if (params.testItem) search.set('test_item', params.testItem)
     if (params.owned) search.set('owned', 'true')
-    if (params.issue) search.set('issue', params.issue)
     if (params.limit) search.set('limit', String(params.limit))
     if (params.offset) search.set('offset', String(params.offset))
     const query = search.toString()
     return api.get<ModelPage>(`/equipment-models${query ? `?${query}` : ''}`)
   },
+  /** 열마다 **고를 수 있는 값**과 그 수. */
+  filterOptions: () => api.get<CatalogFilterOptions>('/equipment-models/filter-options'),
   read: (id: string) => api.get<EquipmentModel>(`/equipment-models/${id}`),
   create: (body: Record<string, unknown>) =>
     api.post<EquipmentModel>('/equipment-models', body),

@@ -231,7 +231,7 @@ def maintenance(
                 key="model_without_specs",
                 label="사양이 안 적힌 보유 기종",
                 count=no_specs,
-                link="/catalog/equipment-models?owned=1&issue=specs",
+                link="/catalog/equipment-models?owned=1&spec=none",
                 # 사양이 없으면 다음에 그 기종으로 등록하는 장비가 조건 없이
                 # 복사된다 — 검색은 그것을 「모름」 으로 답한다(ADR 0003).
                 severity="info",
@@ -253,7 +253,7 @@ def maintenance(
                 key="series_without_test_item",
                 label="시험 항목이 안 적힌 보유 계열",
                 count=no_test_items,
-                link="/catalog/equipment-series?owned=1&issue=test_items",
+                link="/catalog/equipment-series?owned=1&test_item=none",
                 # **경고다.** 이 계열의 기종으로 장비를 등록해도 복사될 시험 항목이 없다.
                 severity="warning",
             )
@@ -272,7 +272,7 @@ def maintenance(
                 key="model_spec_unverified",
                 label="원본 확인이 필요한 보유 기종",
                 count=unverified,
-                link="/catalog/equipment-models?owned=1&issue=uncertain",
+                link="/catalog/equipment-models?owned=1&spec=uncertain",
                 # 반입이 표를 잘못 읽었을 수 있다고 표시한 것. 확인하지 않으면
                 # 의심스러운 숫자가 확인된 숫자와 똑같이 앉아 있는다.
                 severity="warning",

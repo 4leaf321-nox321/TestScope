@@ -13,6 +13,7 @@ from app.modules.equipment import catalog, equipment_specs, services, specs
 from app.modules.equipment.schemas import (
     CalibrationCreateRequest,
     CalibrationOut,
+    CatalogFilterOptionsOut,
     EquipmentCreateRequest,
     EquipmentFilterOptionsOut,
     EquipmentModelCreateRequest,
@@ -251,28 +252,60 @@ series_router = APIRouter(prefix="/equipment-series", tags=["catalog"])
 @series_router.get("", response_model=Page[EquipmentSeriesRow])
 def list_series(
     q: str | None = Query(default=None, max_length=200),
+    name: str | None = Query(default=None, max_length=200),
     kind: str | None = Query(default=None),
     category_term_id: uuid.UUID | None = Query(default=None),
+    maker_term_id: uuid.UUID | None = Query(default=None),
+    status: str | None = Query(default=None),
+    models: str | None = Query(default=None, pattern="^none$"),
+    test_item: str | None = Query(default=None, pattern="^none$"),
     owned: bool = Query(default=False),
-    issue: str | None = Query(default=None, pattern="^(test_items)$"),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> Page[EquipmentSeriesRow]:
-    # owned·issue 는 홈의 「남은 일」 이 거는 손잡이다 — 전부를 채우라고 하면
-    # 아무도 안 채운다.
+    """계열 목록. **거르는 것은 서버다.**
+
+    화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때
+    목록은 「그 조건에 맞는 계열이 이것뿐」 이라고 거짓말한다.
+
+    `q` 는 계열명·한글명·제조사를 함께 보고, `name` 은 **그 열만** 본다 — 화면은
+    열마다 거르므로 뒤엣것을 쓴다.
+
+    `test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이
+    없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기
+    거르는 조건이 같아야 한다.
+    """
     return catalog.list_series(
         db,
         user,
         query=q,
+        name=name,
         kind=kind,
         category_term_id=category_term_id,
+        maker_term_id=maker_term_id,
+        status=status,
+        models=models,
+        test_item=test_item,
         owned=owned,
-        issue=issue,
         limit=clamp_limit(limit),
         offset=offset,
     )
+
+
+@series_router.get("/filter-options", response_model=CatalogFilterOptionsOut)
+def series_filter_options(
+    _: User = Depends(current_user), db: Session = Depends(get_db)
+) -> CatalogFilterOptionsOut:
+    """계열 목록의 열마다 **고를 수 있는 값**과 그 수.
+
+    기준정보 전체가 아니라 **카탈로그에 실제로 쓰인 값만** 준다.
+
+    `/{series_id}` 보다 **먼저 선언한다.** 뒤에 두면 `filter-options` 가 계열 id 로
+    읽혀 422 가 난다.
+    """
+    return catalog.series_filter_options(db)
 
 
 @series_router.post("", response_model=EquipmentSeriesOut, status_code=201)
@@ -415,24 +448,52 @@ catalog_router = APIRouter(prefix="/equipment-models", tags=["catalog"])
 @catalog_router.get("", response_model=Page[EquipmentModelRow])
 def list_models(
     q: str | None = Query(default=None, max_length=200),
+    name: str | None = Query(default=None, max_length=200),
     series_id: uuid.UUID | None = Query(default=None),
+    maker_term_id: uuid.UUID | None = Query(default=None),
+    category_term_id: uuid.UUID | None = Query(default=None),
+    spec: str | None = Query(default=None, pattern="^(none|uncertain)$"),
+    test_item: str | None = Query(default=None, pattern="^none$"),
     owned: bool = Query(default=False),
-    issue: str | None = Query(default=None, pattern="^(specs|uncertain)$"),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> Page[EquipmentModelRow]:
+    """기종 목록. **거르는 것은 서버다.**
+
+    `q` 는 기종명·계열명·제조사를 함께 보고, `name` 은 **그 열만** 본다.
+
+    제조사·분류는 계열이 갖는 값이라(ADR 0006) 계열을 거쳐 거른다.
+
+    `spec=none` 은 사양이 하나도 안 적힌 기종, `spec=uncertain` 은 반입이 원본을
+    잘못 읽었을 수 있다고 표시한 기종이다 — 홈의 「남은 일」 이 그 둘로 링크한다.
+    """
     return catalog.list_models(
         db,
         user,
         query=q,
+        name=name,
         series_id=series_id,
+        maker_term_id=maker_term_id,
+        category_term_id=category_term_id,
+        spec=spec,
+        test_item=test_item,
         owned=owned,
-        issue=issue,
         limit=clamp_limit(limit),
         offset=offset,
     )
+
+
+@catalog_router.get("/filter-options", response_model=CatalogFilterOptionsOut)
+def model_filter_options(
+    _: User = Depends(current_user), db: Session = Depends(get_db)
+) -> CatalogFilterOptionsOut:
+    """기종 목록의 열마다 **고를 수 있는 값**과 그 수.
+
+    `/{model_id}` 보다 **먼저 선언한다.**
+    """
+    return catalog.model_filter_options(db)
 
 
 @catalog_router.post("", response_model=EquipmentModelOut, status_code=201)

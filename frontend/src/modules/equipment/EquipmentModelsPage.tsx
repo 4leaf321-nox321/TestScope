@@ -31,7 +31,6 @@ import { PageHeader } from '@/shared/components/PageHeader'
 import { Pager } from '@/shared/components/Pager'
 import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
-import { Input } from '@/shared/components/ui/input'
 import {
   Table,
   TableBody,
@@ -43,14 +42,19 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi } from '@/modules/equipment/api'
 import type { EquipmentModelRow } from '@/modules/equipment/api'
+import {
+  EMPTY_MODEL_FILTERS,
+  ModelFilters,
+  activeCount,
+} from '@/modules/equipment/CatalogFilters'
+import type { ModelFilterState } from '@/modules/equipment/CatalogFilters'
 import { shownSpecValue } from '@/modules/equipment/specValue'
 import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDialog'
 
 /** 홈의 「남은 일」 이 거는 필터. 그 줄을 눌러 온 사람에게 **왜 이 목록인지**를
  *  말해 준다 — 안 말하면 목록이 짧은 것을 오류로 읽는다. */
 const ISSUE_NOTE: Record<string, string> = {
-  specs:
-    '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답합니다.',
+  none: '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답합니다.',
   uncertain:
     '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우세요.',
 }
@@ -91,17 +95,25 @@ function HeadlineSpecs({ model }: { model: EquipmentModelRow }) {
 
 export default function EquipmentModelsPage() {
   const { user } = useAuth()
+  // **홈의 「남은 일」 이 이 주소로 온다.** 안 읽으면 눌러도 전체 목록이 떠서,
+  // 사람은 「왜 안 걸러졌지」 를 겪고 그 목록을 안 믿게 된다.
   const [params, setParams] = useSearchParams()
-  const owned = params.get('owned') === '1' || params.get('owned') === 'true'
-  const issue = params.get('issue') ?? undefined
-  const [typed, setTyped] = useState('')
-  const [query, setQuery] = useState('')
+  const fromUrl = (): ModelFilterState => ({
+    ...EMPTY_MODEL_FILTERS,
+    spec: params.get('spec') ?? '',
+    testItem: params.get('test_item') ?? '',
+    owned: params.get('owned') ? 'owned' : '',
+  })
+  const [typed, setTyped] = useState<ModelFilterState>(fromUrl)
+  // **물어보는 쪽도 같은 값으로 시작한다.** 여기를 비우면 첫 조회가 거르기 없이
+  // 나가고, 그 한순간이 「안 걸러졌다」 로 읽힌다.
+  const [filters, setFilters] = useState<ModelFilterState>(fromUrl)
   const [offset, setOffset] = useState(0)
   const [creating, setCreating] = useState(false)
 
   // 글자마다 조회하지 않는다 — 타이핑 중에 결과가 요동치면 읽는 눈이 미끄러진다.
   useEffect(() => {
-    const timer = setTimeout(() => setQuery(typed.trim()), 250)
+    const timer = setTimeout(() => setFilters({ ...typed, name: typed.name.trim() }), 250)
     return () => clearTimeout(timer)
   }, [typed])
 
@@ -109,18 +121,25 @@ export default function EquipmentModelsPage() {
   // 검색어를 치는 순간 빈 화면을 보고, 그것을 「결과 없음」 으로 읽는다.
   useEffect(() => {
     setOffset(0)
-  }, [query, owned, issue])
+  }, [filters])
+
+  // **한 번만 받는다.** 거를 때마다 다시 받으면 고르는 사이에 선택지가 흔들린다.
+  const options = useResource(() => catalogApi.filterOptions(), [])
 
   const page = useResource(
     () =>
       catalogApi.list({
-        q: query || undefined,
-        owned,
-        issue,
+        name: filters.name || undefined,
+        seriesId: filters.seriesId || undefined,
+        makerTermId: filters.makerTermId || undefined,
+        categoryTermId: filters.categoryTermId || undefined,
+        spec: filters.spec || undefined,
+        testItem: filters.testItem || undefined,
+        owned: filters.owned === 'owned',
         limit: PAGE_SIZE,
         offset,
       }),
-    [query, owned, issue, offset],
+    [filters, offset],
   )
 
   return (
@@ -140,36 +159,41 @@ export default function EquipmentModelsPage() {
         }
       />
 
-      {(owned || issue) && (
-        <div className="bg-muted/50 flex flex-wrap items-center gap-3 rounded-md border p-3">
-          <p className="text-sm">
-            {owned && <strong>보유한 기종만</strong>}
-            {owned && issue && ' · '}
-            {issue && (ISSUE_NOTE[issue] ?? '걸러진 목록입니다.')}
-          </p>
-          <Button size="sm" variant="outline" onClick={() => setParams({})}>
-            필터 풀기
+      {/* 홈의 「남은 일」 에서 왔으면 **왜 이 목록인지**를 말해 준다 — 안 말하면
+          목록이 짧은 것을 오류로 읽는다. 푸는 자리는 그 열 밑에도 있다. */}
+      {filters.spec && (
+        <div className="bg-muted/50 rounded-md border p-3">
+          <p className="text-sm">{ISSUE_NOTE[filters.spec] ?? '걸러진 목록입니다.'}</p>
+        </div>
+      )}
+
+      {/* 찾는 칸은 **열마다** 있다(머리글 아래) — 여기 또 두면 같은 일을 하는 칸이
+          둘이 되고, 둘은 반드시 어긋난다. */}
+      {activeCount(filters) > 0 && (
+        <div className="text-muted-foreground flex items-center gap-2 text-sm">
+          <span>{activeCount(filters)}개 조건으로 걸렀습니다</span>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              setTyped(EMPTY_MODEL_FILTERS)
+              // 주소에 남은 거르기도 함께 푼다 — 안 그러면 새로고침에 되살아난다.
+              setParams({})
+            }}
+          >
+            거르기 풀기
           </Button>
         </div>
       )}
 
-      <Input
-        value={typed}
-        onChange={(event) => setTyped(event.target.value)}
-        placeholder="기종명·계열명 또는 제조사"
-        className="max-w-sm"
-      />
-
       <ErrorNotice error={page.error} />
 
-      {page.data && page.data.items.length === 0 ? (
+      {/* **비어도 표를 지우지 않는다.** 거르다 0 건이 되었을 때 머리글째 사라지면
+          방금 건 조건이 화면에서 없어져서, 무엇을 풀어야 할지가 안 보인다. */}
+      {page.data && page.data.items.length === 0 && activeCount(filters) === 0 ? (
         <EmptyState
           title="기종이 없습니다"
-          hint={
-            query
-              ? '찾는 말과 맞는 기종이 없습니다.'
-              : '기종을 등록해 두면 같은 장비를 여러 대 들일 때 사양을 한 번만 적으면 됩니다.'
-          }
+          hint="기종을 등록해 두면 같은 장비를 여러 대 들일 때 사양을 한 번만 적으면 됩니다."
         />
       ) : (
         <div className="space-y-3">
@@ -184,8 +208,23 @@ export default function EquipmentModelsPage() {
                 <TableHead>시험 항목</TableHead>
                 <TableHead className="text-right">보유</TableHead>
               </TableRow>
+              {/* **머리글 바로 아래.** 어느 열을 거르고 있는지가 그 열 밑에 보인다. */}
+              <TableRow className="hover:bg-transparent">
+                <ModelFilters
+                  value={typed}
+                  onChange={setTyped}
+                  options={options.data ?? null}
+                />
+              </TableRow>
             </TableHeader>
             <TableBody>
+              {page.data?.items.length === 0 && (
+                <TableRow className="hover:bg-transparent">
+                  <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
+                    거르기에 맞는 기종이 없습니다. 위의 조건을 풀어 보세요.
+                  </TableCell>
+                </TableRow>
+              )}
               {(page.data?.items ?? []).map((one) => (
                 <TableRow
                   key={one.id}

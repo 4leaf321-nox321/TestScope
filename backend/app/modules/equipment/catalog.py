@@ -35,11 +35,13 @@ from app.modules.equipment.models import (
     SpecSource,
 )
 from app.modules.equipment.schemas import (
+    CatalogFilterOptionsOut,
     CitedMethodOut,
     EquipmentModelOut,
     EquipmentModelRow,
     EquipmentSeriesOut,
     EquipmentSeriesRow,
+    FilterOption,
     ModelHeadlineSpecOut,
     ModelLimitOut,
     SeriesRelationOut,
@@ -284,6 +286,113 @@ def _test_item_names(db: Session, series_ids: list[uuid.UUID]) -> dict[uuid.UUID
     return out
 
 
+#: 계열 종류를 사람 말로. **본체와 부속이 한 줄씩 섞이면** 「우리가 무슨 장비를
+#: 가졌나」 가 안 보인다.
+KIND_LABEL = {
+    "main": "본체",
+    "accessory": "부속",
+    "sensor": "센서",
+    "software": "소프트웨어",
+}
+
+#: 카탈로그 상태를 사람 말로.
+CATALOG_STATUS_LABEL = {"active": "현행", "discontinued": "단종"}
+
+
+def _options(db: Session, counts: list[tuple[uuid.UUID, int]]) -> list[FilterOption]:
+    """용어 id 와 수를 **이름 붙은 선택지**로. 이름은 한 번에 꺼낸다."""
+    names = _term_values(db, {term_id for term_id, _ in counts})
+    out = [
+        FilterOption(value=str(term_id), label=names.get(term_id, "—"), count=count)
+        for term_id, count in counts
+    ]
+    return sorted(out, key=lambda one: (-one.count, one.label))
+
+
+def _counted(db: Session, column: Any, where: Any) -> list[tuple[Any, int]]:
+    rows = db.execute(
+        select(column, func.count()).where(where, column.is_not(None)).group_by(column)
+    ).all()
+    return [(row[0], row[1]) for row in rows]
+
+
+def series_filter_options(db: Session) -> CatalogFilterOptionsOut:
+    """계열 목록의 열마다 고를 수 있는 값과 그 수.
+
+    **카탈로그에 실제로 쓰인 값만 준다.** 제조사 축에는 수백 종이 있지만 계열이
+    가리키는 것은 79종이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면
+    사람은 거르기를 안 믿는다.
+    """
+    alive = EquipmentSeries.deleted_at.is_(None)
+    return CatalogFilterOptionsOut(
+        makers=_options(db, _counted(db, EquipmentSeries.maker_term_id, alive)),
+        categories=_options(db, _counted(db, EquipmentSeries.category_term_id, alive)),
+        kinds=[
+            FilterOption(value=kind, label=KIND_LABEL.get(kind, kind), count=count)
+            for kind, count in sorted(
+                _counted(db, EquipmentSeries.kind, alive), key=lambda one: -one[1]
+            )
+        ],
+        statuses=[
+            FilterOption(
+                value=status, label=CATALOG_STATUS_LABEL.get(status, status), count=count
+            )
+            for status, count in sorted(
+                _counted(db, EquipmentSeries.status, alive), key=lambda one: -one[1]
+            )
+        ],
+        series=[],
+    )
+
+
+def model_filter_options(db: Session) -> CatalogFilterOptionsOut:
+    """기종 목록의 열마다 고를 수 있는 값과 그 수.
+
+    제조사·분류는 **계열이 갖는 값**이라(ADR 0006) 계열을 거쳐 센다. 수는 그 값에
+    해당하는 **기종 수**다 — 계열 수를 적으면 고른 뒤 나오는 줄 수와 안 맞고,
+    그 어긋남은 거르기를 안 믿게 만든다.
+    """
+    alive = EquipmentModel.deleted_at.is_(None)
+
+    def by_series(column: Any) -> list[tuple[uuid.UUID, int]]:
+        rows = db.execute(
+            select(column, func.count())
+            .select_from(EquipmentModel)
+            .join(EquipmentSeries, EquipmentSeries.id == EquipmentModel.series_id)
+            .where(alive, column.is_not(None))
+            .group_by(column)
+        ).all()
+        return [(row[0], row[1]) for row in rows]
+
+    series_rows = db.execute(
+        select(EquipmentSeries.id, EquipmentSeries.name, func.count())
+        .select_from(EquipmentModel)
+        .join(EquipmentSeries, EquipmentSeries.id == EquipmentModel.series_id)
+        .where(alive)
+        .group_by(EquipmentSeries.id, EquipmentSeries.name)
+    ).all()
+    return CatalogFilterOptionsOut(
+        makers=_options(db, by_series(EquipmentSeries.maker_term_id)),
+        categories=_options(db, by_series(EquipmentSeries.category_term_id)),
+        kinds=[],
+        statuses=[
+            FilterOption(
+                value=status, label=CATALOG_STATUS_LABEL.get(status, status), count=count
+            )
+            for status, count in sorted(
+                _counted(db, EquipmentModel.status, alive), key=lambda one: -one[1]
+            )
+        ],
+        series=sorted(
+            [
+                FilterOption(value=str(row[0]), label=row[1], count=row[2])
+                for row in series_rows
+            ],
+            key=lambda one: (-one.count, one.label),
+        ),
+    )
+
+
 # --- 계열 --------------------------------------------------------------------
 
 
@@ -345,8 +454,12 @@ def list_series(
     query: str | None,
     kind: str | None,
     category_term_id: uuid.UUID | None,
+    name: str | None = None,
+    maker_term_id: uuid.UUID | None = None,
+    status: str | None = None,
+    models: str | None = None,
+    test_item: str | None = None,
     owned: bool = False,
-    issue: str | None = None,
     limit: int,
     offset: int,
 ) -> Page[EquipmentSeriesRow]:
@@ -365,9 +478,30 @@ def list_series(
                 )
             )
         )
-    if issue == "test_items":
+    if test_item == "none":
+        # **이 계열의 기종으로 장비를 등록해도 복사될 시험 항목이 없다** — 그 장비는
+        # 검색에 안 걸린다. 홈의 「남은 일」 이 세는 것과 같은 조건이라야 한다.
         stmt = stmt.where(
             EquipmentSeries.id.not_in(select(SeriesTestItem.series_id).distinct())
+        )
+    if models == "none":
+        # 기종이 0 이면 **아무도 이 계열을 가리킬 수 없다** — 보유 장비가 가리키는
+        # 것은 계열이 아니라 기종이다.
+        stmt = stmt.where(
+            EquipmentSeries.id.not_in(
+                select(EquipmentModel.series_id).where(EquipmentModel.deleted_at.is_(None))
+            )
+        )
+    if status:
+        stmt = stmt.where(EquipmentSeries.status == status)
+    if maker_term_id is not None:
+        stmt = stmt.where(EquipmentSeries.maker_term_id == maker_term_id)
+    if name:
+        # **이 열만 본다.** `q` 는 제조사까지 보므로, 이름 칸에 친 글자가 제조사에
+        # 걸린 줄을 함께 데려오면 그 줄들이 찾는 것을 가린다.
+        text_only = f"%{clean(name)}%"
+        stmt = stmt.where(
+            EquipmentSeries.name.ilike(text_only) | EquipmentSeries.name_ko.ilike(text_only)
         )
     if kind:
         stmt = stmt.where(EquipmentSeries.kind == kind)
@@ -391,7 +525,7 @@ def list_series(
     terms = _term_values(
         db, {row.maker_term_id for row in rows} | {row.category_term_id for row in rows}
     )
-    models = _model_counts(db, ids)
+    model_counts = _model_counts(db, ids)
     units = _unit_counts(db, EquipmentModel.series_id, ids, joined=EquipmentModel)
     items = _test_item_names(db, ids)
     return Page(
@@ -405,7 +539,7 @@ def list_series(
                 category=(terms.get(row.category_term_id) if row.category_term_id else None),
                 kind=row.kind,
                 status=row.status,
-                model_count=models.get(row.id, 0),
+                model_count=model_counts.get(row.id, 0),
                 unit_count=units.get(row.id, (0, 0))[0],
                 operational_count=units.get(row.id, (0, 0))[1],
                 test_item_count=len(items.get(row.id, [])),
@@ -780,8 +914,12 @@ def list_models(
     *,
     query: str | None,
     series_id: uuid.UUID | None,
+    name: str | None = None,
+    maker_term_id: uuid.UUID | None = None,
+    category_term_id: uuid.UUID | None = None,
+    spec: str | None = None,
+    test_item: str | None = None,
     owned: bool = False,
-    issue: str | None = None,
     limit: int,
     offset: int,
 ) -> Page[EquipmentModelRow]:
@@ -804,12 +942,41 @@ def list_models(
                 )
             )
         )
-    if issue == "specs":
+    if spec == "none":
         stmt = stmt.where(EquipmentModel.id.not_in(select(ModelSpecValue.model_id).distinct()))
-    elif issue == "uncertain":
+    elif spec == "uncertain":
         # 반입이 「원본을 잘못 읽었을 수 있다」 고 표시한 것. 사람이 원본을 열어
         # 확인해야 하는 자리다.
         stmt = stmt.where(EquipmentModel.spec_note.ilike("%원본 확인 필요%"))
+    # 제조사·분류·시험 항목은 **계열이 갖는 값**이다(ADR 0006) — 기종을 거르려면
+    # 계열을 거쳐야 한다. 기종에 복사해 두면 한 계열 열 기종에 열 번 적히고,
+    # 그 열 번이 언젠가 서로 달라진다.
+    if maker_term_id is not None:
+        stmt = stmt.where(
+            EquipmentModel.series_id.in_(
+                select(EquipmentSeries.id).where(
+                    EquipmentSeries.maker_term_id == maker_term_id
+                )
+            )
+        )
+    if category_term_id is not None:
+        stmt = stmt.where(
+            EquipmentModel.series_id.in_(
+                select(EquipmentSeries.id).where(
+                    EquipmentSeries.category_term_id == category_term_id
+                )
+            )
+        )
+    if test_item == "none":
+        stmt = stmt.where(
+            EquipmentModel.series_id.not_in(select(SeriesTestItem.series_id).distinct())
+        )
+    if name:
+        # **이 열만 본다.** `q` 는 계열명·제조사까지 보므로 따로 둔다.
+        text_only = f"%{clean(name)}%"
+        stmt = stmt.where(
+            EquipmentModel.name.ilike(text_only) | EquipmentModel.name_ko.ilike(text_only)
+        )
     if query:
         # 기종명·한글명·계열명·제조사를 다 본다. 사람이 아는 조각이 어느 것일지
         # 우리가 정할 수 없다.

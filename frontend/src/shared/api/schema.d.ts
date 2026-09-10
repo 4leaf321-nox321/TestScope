@@ -890,7 +890,20 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Series */
+        /**
+         * List Series
+         * @description 계열 목록. **거르는 것은 서버다.**
+         *
+         *     화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때
+         *     목록은 「그 조건에 맞는 계열이 이것뿐」 이라고 거짓말한다.
+         *
+         *     `q` 는 계열명·한글명·제조사를 함께 보고, `name` 은 **그 열만** 본다 — 화면은
+         *     열마다 거르므로 뒤엣것을 쓴다.
+         *
+         *     `test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이
+         *     없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기
+         *     거르는 조건이 같아야 한다.
+         */
         get: operations["list_series_api_equipment_series_get"];
         put?: never;
         /**
@@ -907,6 +920,31 @@ export interface paths {
          *     않으면 400 과 후보 목록이 온다 — **고르지 말고 사람에게 물어라.**
          */
         post: operations["create_series_api_equipment_series_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-series/filter-options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Series Filter Options
+         * @description 계열 목록의 열마다 **고를 수 있는 값**과 그 수.
+         *
+         *     기준정보 전체가 아니라 **카탈로그에 실제로 쓰인 값만** 준다.
+         *
+         *     `/{series_id}` 보다 **먼저 선언한다.** 뒤에 두면 `filter-options` 가 계열 id 로
+         *     읽혀 422 가 난다.
+         */
+        get: operations["series_filter_options_api_equipment_series_filter_options_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1051,7 +1089,17 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Models */
+        /**
+         * List Models
+         * @description 기종 목록. **거르는 것은 서버다.**
+         *
+         *     `q` 는 기종명·계열명·제조사를 함께 보고, `name` 은 **그 열만** 본다.
+         *
+         *     제조사·분류는 계열이 갖는 값이라(ADR 0006) 계열을 거쳐 거른다.
+         *
+         *     `spec=none` 은 사양이 하나도 안 적힌 기종, `spec=uncertain` 은 반입이 원본을
+         *     잘못 읽었을 수 있다고 표시한 기종이다 — 홈의 「남은 일」 이 그 둘로 링크한다.
+         */
         get: operations["list_models_api_equipment_models_get"];
         put?: never;
         /**
@@ -1065,6 +1113,28 @@ export interface paths {
          *     없으면 계열을 먼저 만든다. **비슷한 계열에 끼워 넣지 마라.**
          */
         post: operations["create_model_api_equipment_models_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/filter-options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Model Filter Options
+         * @description 기종 목록의 열마다 **고를 수 있는 값**과 그 수.
+         *
+         *     `/{model_id}` 보다 **먼저 선언한다.**
+         */
+        get: operations["model_filter_options_api_equipment_models_filter_options_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1781,6 +1851,29 @@ export interface components {
             provider_term_id: string | null;
             /** Note */
             note: string | null;
+        };
+        /**
+         * CatalogFilterOptionsOut
+         * @description 카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.
+         *
+         *     **목록에 실제로 있는 값만 준다.** 기준정보 전체를 펼치면 제조사 축 수백 종 중
+         *     79종만 카탈로그에 쓰이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면
+         *     사람은 거르기를 안 믿는다.
+         *
+         *     계열과 기종이 한 모양을 쓴다. 두 목록이 거르는 축(제조사·분류)이 같은 것이라,
+         *     모양을 갈라 두면 한쪽만 고쳐지는 날이 온다.
+         */
+        CatalogFilterOptionsOut: {
+            /** Makers */
+            makers: components["schemas"]["FilterOption"][];
+            /** Categories */
+            categories: components["schemas"]["FilterOption"][];
+            /** Kinds */
+            kinds: components["schemas"]["FilterOption"][];
+            /** Statuses */
+            statuses: components["schemas"]["FilterOption"][];
+            /** Series */
+            series: components["schemas"]["FilterOption"][];
         };
         /** ChangePasswordRequest */
         ChangePasswordRequest: {
@@ -6135,10 +6228,14 @@ export interface operations {
         parameters: {
             query?: {
                 q?: string | null;
+                name?: string | null;
                 kind?: string | null;
                 category_term_id?: string | null;
+                maker_term_id?: string | null;
+                status?: string | null;
+                models?: string | null;
+                test_item?: string | null;
                 owned?: boolean;
-                issue?: string | null;
                 limit?: number;
                 offset?: number;
             };
@@ -6197,6 +6294,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    series_filter_options_api_equipment_series_filter_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogFilterOptionsOut"];
                 };
             };
         };
@@ -6497,9 +6614,13 @@ export interface operations {
         parameters: {
             query?: {
                 q?: string | null;
+                name?: string | null;
                 series_id?: string | null;
+                maker_term_id?: string | null;
+                category_term_id?: string | null;
+                spec?: string | null;
+                test_item?: string | null;
                 owned?: boolean;
-                issue?: string | null;
                 limit?: number;
                 offset?: number;
             };
@@ -6558,6 +6679,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    model_filter_options_api_equipment_models_filter_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogFilterOptionsOut"];
                 };
             };
         };

@@ -469,7 +469,7 @@ def test_채울_자리는_보유한_것만_센다(
 
     # 목록이 그 줄과 같은 것을 돌려준다 — 링크를 눌렀는데 다른 것이 나오면
     # 사람은 숫자를 안 믿게 된다.
-    listed = client.get("/api/equipment-models?owned=true&issue=specs", headers=admin.headers)
+    listed = client.get("/api/equipment-models?owned=true&spec=none", headers=admin.headers)
     assert listed.status_code == 200, listed.text
     assert listed.json()["total"] == after["model_without_specs"]
     assert any(row["id"] == model["id"] for row in listed.json()["items"])

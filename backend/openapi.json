@@ -2959,6 +2959,7 @@
           "catalog"
         ],
         "summary": "List Series",
+        "description": "계열 목록. **거르는 것은 서버다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 계열이 이것뿐」 이라고 거짓말한다.\n\n`q` 는 계열명·한글명·제조사를 함께 보고, `name` 은 **그 열만** 본다 — 화면은\n열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이\n없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기\n거르는 조건이 같아야 한다.",
         "operationId": "list_series_api_equipment_series_get",
         "parameters": [
           {
@@ -2976,6 +2977,23 @@
                 }
               ],
               "title": "Q"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
             }
           },
           {
@@ -3012,6 +3030,73 @@
             }
           },
           {
+            "name": "maker_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maker Term Id"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "models",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^none$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Models"
+            }
+          },
+          {
+            "name": "test_item",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^none$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Test Item"
+            }
+          },
+          {
             "name": "owned",
             "in": "query",
             "required": false,
@@ -3019,23 +3104,6 @@
               "type": "boolean",
               "default": false,
               "title": "Owned"
-            }
-          },
-          {
-            "name": "issue",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "pattern": "^(test_items)$"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Issue"
             }
           },
           {
@@ -3119,6 +3187,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-series/filter-options": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Series Filter Options",
+        "description": "계열 목록의 열마다 **고를 수 있는 값**과 그 수.\n\n기준정보 전체가 아니라 **카탈로그에 실제로 쓰인 값만** 준다.\n\n`/{series_id}` 보다 **먼저 선언한다.** 뒤에 두면 `filter-options` 가 계열 id 로\n읽혀 422 가 난다.",
+        "operationId": "series_filter_options_api_equipment_series_filter_options_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogFilterOptionsOut"
                 }
               }
             }
@@ -3578,6 +3668,7 @@
           "catalog"
         ],
         "summary": "List Models",
+        "description": "기종 목록. **거르는 것은 서버다.**\n\n`q` 는 기종명·계열명·제조사를 함께 보고, `name` 은 **그 열만** 본다.\n\n제조사·분류는 계열이 갖는 값이라(ADR 0006) 계열을 거쳐 거른다.\n\n`spec=none` 은 사양이 하나도 안 적힌 기종, `spec=uncertain` 은 반입이 원본을\n잘못 읽었을 수 있다고 표시한 기종이다 — 홈의 「남은 일」 이 그 둘로 링크한다.",
         "operationId": "list_models_api_equipment_models_get",
         "parameters": [
           {
@@ -3598,6 +3689,23 @@
             }
           },
           {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            }
+          },
+          {
             "name": "series_id",
             "in": "query",
             "required": false,
@@ -3615,6 +3723,74 @@
             }
           },
           {
+            "name": "maker_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maker Term Id"
+            }
+          },
+          {
+            "name": "category_term_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category Term Id"
+            }
+          },
+          {
+            "name": "spec",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(none|uncertain)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Spec"
+            }
+          },
+          {
+            "name": "test_item",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^none$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Test Item"
+            }
+          },
+          {
             "name": "owned",
             "in": "query",
             "required": false,
@@ -3622,23 +3798,6 @@
               "type": "boolean",
               "default": false,
               "title": "Owned"
-            }
-          },
-          {
-            "name": "issue",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "pattern": "^(specs|uncertain)$"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Issue"
             }
           },
           {
@@ -3722,6 +3881,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/filter-options": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Model Filter Options",
+        "description": "기종 목록의 열마다 **고를 수 있는 값**과 그 수.\n\n`/{model_id}` 보다 **먼저 선언한다.**",
+        "operationId": "model_filter_options_api_equipment_models_filter_options_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogFilterOptionsOut"
                 }
               }
             }
@@ -5881,6 +6062,55 @@
           "note"
         ],
         "title": "CalibrationOut"
+      },
+      "CatalogFilterOptionsOut": {
+        "properties": {
+          "makers": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Makers"
+          },
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Categories"
+          },
+          "kinds": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Kinds"
+          },
+          "statuses": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Statuses"
+          },
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/FilterOption"
+            },
+            "type": "array",
+            "title": "Series"
+          }
+        },
+        "type": "object",
+        "required": [
+          "makers",
+          "categories",
+          "kinds",
+          "statuses",
+          "series"
+        ],
+        "title": "CatalogFilterOptionsOut",
+        "description": "카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.\n\n**목록에 실제로 있는 값만 준다.** 기준정보 전체를 펼치면 제조사 축 수백 종 중\n79종만 카탈로그에 쓰이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면\n사람은 거르기를 안 믿는다.\n\n계열과 기종이 한 모양을 쓴다. 두 목록이 거르는 축(제조사·분류)이 같은 것이라,\n모양을 갈라 두면 한쪽만 고쳐지는 날이 온다."
       },
       "ChangePasswordRequest": {
         "properties": {

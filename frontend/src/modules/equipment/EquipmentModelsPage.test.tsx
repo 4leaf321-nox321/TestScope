@@ -51,9 +51,27 @@ function spec(over: Record<string, unknown>) {
 
 let items: ReturnType<typeof model>[] = []
 
+/** 나간 주소. **거르기가 서버로 갔는지**는 이것으로만 안다. */
+const calls: string[] = []
+
+function lastList(): string {
+  const rows = calls.filter((one) => one.startsWith('/equipment-models?'))
+  return rows[rows.length - 1] ?? ''
+}
+
 vi.mock('@/shared/api/client', () => ({
   api: {
     get: vi.fn(async (url: string) => {
+      calls.push(url)
+      if (url.startsWith('/equipment-models/filter-options')) {
+        return {
+          makers: [{ value: 'm1', label: '한국시험기', count: 3 }],
+          categories: [{ value: 'c1', label: '만능재료시험기', count: 3 }],
+          kinds: [],
+          statuses: [{ value: 'active', label: '현행', count: 3 }],
+          series: [{ value: 's1', label: '68FM', count: 3 }],
+        }
+      }
       if (url.startsWith('/equipment-models')) {
         return { items, total: items.length, limit: 50, offset: 0 }
       }
@@ -82,6 +100,7 @@ async function open(url = '/catalog/equipment-models') {
 
 beforeEach(() => {
   items = []
+  calls.length = 0
 })
 
 describe('기종 목록의 대표 사양', () => {
@@ -143,9 +162,38 @@ describe('기종 목록의 대표 사양', () => {
 
   it('걸러 온 목록이면 왜 짧은지를 말한다', async () => {
     items = [model({})]
-    await open('/catalog/equipment-models?issue=specs')
+    await open('/catalog/equipment-models?spec=none')
     // 안 말하면 목록이 짧은 것을 오류로 읽는다.
     expect(screen.getByText(/사양이 하나도 안 적힌 기종/)).toBeTruthy()
-    expect(screen.getByRole('button', { name: '필터 풀기' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '거르기 풀기' })).toBeTruthy()
+    // **그 거르기가 서버로 갔나.** 화면이 받아 놓고 스스로 거르면 상한을 넘는
+    // 순간 나머지가 조용히 빠진다.
+    expect(lastList()).toContain('spec=none')
+  })
+
+  it('열마다 거르는 칸이 머리글 아래에 있다', async () => {
+    items = [model({})]
+    await open()
+    // 위에 모아 두면 「이 목록이 왜 짧지」 를 사람이 되짚어야 하고, 되짚기는 대개
+    // 실패한다. 이름은 **그 열만** 보는 칸이라 `q` 와 따로 있다.
+    expect(screen.getByPlaceholderText('기종명')).toBeTruthy()
+    expect(screen.getByText('분류 전체')).toBeTruthy()
+    expect(screen.getByText('제조사 전체')).toBeTruthy()
+    expect(screen.getByText('계열 전체')).toBeTruthy()
+  })
+
+  it('고를 수 있는 값을 서버에서 받아 온다', async () => {
+    items = [model({})]
+    await open()
+    // 기준정보 전체가 아니라 **카탈로그에 있는 값만** — 골라도 0 건인 선택지가
+    // 섞이면 사람은 거르기를 안 믿는다.
+    expect(calls.some((one) => one.startsWith('/equipment-models/filter-options'))).toBe(true)
+  })
+
+  it('걸러서 0 건이 되어도 거르는 줄은 남는다', async () => {
+    items = []
+    await open('/catalog/equipment-models?spec=none')
+    expect(screen.getByPlaceholderText('기종명')).toBeTruthy()
+    expect(screen.getByText(/거르기에 맞는 기종이 없습니다/)).toBeTruthy()
   })
 })

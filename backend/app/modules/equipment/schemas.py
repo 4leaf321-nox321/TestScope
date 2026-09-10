@@ -133,6 +133,29 @@ class EquipmentFilterOptionsOut(BaseModel):
     test_items: list[FilterOption]
 
 
+class CatalogFilterOptionsOut(BaseModel):
+    """카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.
+
+    **목록에 실제로 있는 값만 준다.** 기준정보 전체를 펼치면 제조사 축 수백 종 중
+    79종만 카탈로그에 쓰이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면
+    사람은 거르기를 안 믿는다.
+
+    계열과 기종이 한 모양을 쓴다. 두 목록이 거르는 축(제조사·분류)이 같은 것이라,
+    모양을 갈라 두면 한쪽만 고쳐지는 날이 온다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    makers: list[FilterOption]
+    categories: list[FilterOption]
+    kinds: list[FilterOption]
+    """계열의 종류(본체·부속·센서·소프트웨어). 기종 목록에서는 빈 목록이다 —
+    기종은 종류를 갖지 않는다."""
+    statuses: list[FilterOption]
+    series: list[FilterOption]
+    """기종 목록에서 계열로 좁힐 때. 계열 목록에서는 빈 목록이다."""
+
+
 class EquipmentCreateRequest(BaseModel):
     """보유 장비를 등록한다.
 
