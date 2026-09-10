@@ -28,6 +28,7 @@ from app.modules.accounts.models import User
 from app.modules.auth import security
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 from tests.api.conftest import Signed
+from tests.api.test_catalog_list_cost import counted
 
 HEADER = "자산번호,장비명,보유부서,거점,설치위치,장비유형,기종,상태,공용여부"
 
@@ -390,3 +391,35 @@ def test_미리보기는_권한도_본다(client: TestClient, admin: Signed, db:
     result = response.json()
     assert result["ready"] == 0, "미리보기가 남의 부서를 통과시켰다"
     assert any("보유부서" in one for one in result["rows"][0]["problems"]), result
+
+
+def test_미리보기_질의가_줄_수를_따라_늘지_않는다(client: TestClient, admin: Signed) -> None:
+    """**여기가 상한을 정하던 자리였다.**
+
+    전에는 줄마다 부서·거점·분류·기종·자산번호를 다시 물어서, 2000줄짜리 대장 하나가
+    질의를 16,000회 하고 7초를 썼다(실측). 그래서 상한을 낮게 잡아야 했다.
+
+    지금은 이름을 쪽 단위로 한 번에 찾는다(`Lookup`). 이 시험은 그 성질이 되돌아오지
+    않게 막는다 — 줄마다 `db.get` 하나를 넣는 사람은 그것이 대장에서 2000번이라는
+    것을 모른다.
+    """
+    workspace, site, category = _fixture(client, admin)
+    tag = uuid.uuid4().hex[:6]
+
+    def paste(count: int) -> str:
+        rows = [
+            f"COST{tag}-{i},장비{i},{workspace},{site},3동 {i}호,{category},,가동,아니오"
+            for i in range(count)
+        ]
+        return HEADER + "\n" + "\n".join(rows) + "\n"
+
+    def cost(count: int) -> int:
+        with counted() as seen:
+            result = _upload(client, admin, paste(count))
+        assert result["total"] == count, result
+        return len(seen)
+
+    few, many = cost(3), cost(30)
+    # 열 배로 늘려도 그대로여야 한다. 고정비가 조금 붙는 것은 봐 준다.
+    assert many <= few + 2, f"3줄에 {few}회 · 30줄에 {many}회 — 줄마다 묻고 있다"
+    assert many <= 20, f"30줄에 질의 {many}회"
