@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends, File, Query, Response, UploadFile
+from fastapi import APIRouter, Depends, Query, Response
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -22,6 +22,7 @@ from app.modules.equipment.schemas import (
     CatalogFilterOptionsOut,
     EquipmentCreateRequest,
     EquipmentFilterOptionsOut,
+    EquipmentImportRequest,
     EquipmentImportResult,
     EquipmentModelCreateRequest,
     EquipmentModelOut,
@@ -141,13 +142,21 @@ def equipment_import_template(_: User = Depends(current_user)) -> Response:
 
 
 @router.post("/import", response_model=EquipmentImportResult)
-async def import_equipment(
-    file: UploadFile = File(...),
+def import_equipment(
+    payload: EquipmentImportRequest,
     dry_run: bool = Query(default=True),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> EquipmentImportResult:
-    """부서 대장(CSV)을 통째로 받는다.
+    """부서 대장을 통째로 받는다. **엑셀에서 복사해 붙여넣은 글자다.**
+
+    ## 왜 파일이 아닌가
+
+    문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다. 서식을 내려받는 것은 되는데
+    그 파일을 다시 고르는 것이 막힌다 — 실제로 그랬다. 붙여넣기는 DRM 이 막지 못한다.
+
+    엑셀이 클립보드에 넣는 것은 **탭으로 나뉜 글자**이고 서식 파일은 쉼표다. 둘 다
+    받는다 — 첫 줄에 탭이 있으면 탭으로 본다.
 
     ## 두 걸음이다
 
@@ -155,7 +164,7 @@ async def import_equipment(
     300줄 중 틀린 12줄을 넣기 전에 알아야 하고, 그 12줄이 파일의 몇 번째 줄인지
     말해 줘야 사람이 엑셀에서 찾는다.
 
-    화면은 같은 파일을 두 번 보낸다: 먼저 미리보기, 사람이 확인하면 `dry_run=false`.
+    화면은 같은 글자를 두 번 보낸다: 먼저 미리보기, 사람이 확인하면 `dry_run=false`.
 
     ## 전부 되거나 전부 안 되거나
 
@@ -172,8 +181,7 @@ async def import_equipment(
     기준정보에 없는 거점·분류는 **여기서 만들지 않는다.** 반입이 값을 만들면 오타가
     그대로 축이 되고, 「본사」 와 「본사 」 가 서로 다른 거점이 된다.
     """
-    raw = await file.read()
-    return imports.run(db, user, raw, dry_run=dry_run)
+    return imports.run(db, user, payload.text, dry_run=dry_run)
 
 
 @router.post("", response_model=EquipmentOut, status_code=201)

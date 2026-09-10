@@ -92,19 +92,19 @@ export const equipmentApi = {
   filterOptions: () => api.get<EquipmentFilterOptions>('/equipment/filter-options'),
 
   /**
-   * 부서 대장(CSV)을 통째로 올린다. **두 걸음이다.**
+   * 엑셀에서 복사해 붙여넣은 대장을 보낸다. **파일이 아니다.**
    *
-   * `dryRun` 이면 아무것도 저장하지 않고 줄마다 판정만 온다. 300줄 중 틀린 12줄을
-   * 넣기 전에 알아야 하고, 그 12줄이 파일의 몇 번째 줄인지 알아야 엑셀에서 찾는다.
+   * 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다 — 서식을 내려받는 것은
+   * 되는데 그 파일을 다시 고르는 것이 막힌다. 붙여넣기는 DRM 이 막지 못한다.
    *
-   * 사람이 확인하면 **같은 파일**을 `dryRun: false` 로 다시 보낸다 — 서버가 상태를
-   * 들고 있지 않으므로, 그 사이에 남이 같은 자산번호를 넣었어도 다시 걸린다.
+   * `dryRun` 이면 아무것도 저장하지 않고 줄마다 판정만 온다. 사람이 확인하면
+   * **같은 글자**를 `dryRun: false` 로 다시 보낸다 — 서버가 상태를 들고 있지
+   * 않으므로, 그 사이에 남이 같은 자산번호를 넣었어도 다시 걸린다.
    */
-  importFile: (file: File, dryRun: boolean) =>
-    api.upload<EquipmentImportResult>(
-      `/equipment/import?dry_run=${dryRun ? 'true' : 'false'}`,
-      file,
-    ),
+  importPaste: (text: string, dryRun: boolean) =>
+    api.post<EquipmentImportResult>(`/equipment/import?dry_run=${dryRun ? 'true' : 'false'}`, {
+      text,
+    }),
 
   /** 대장 서식을 내려받는다. 평범한 링크로는 안 된다(토큰이 안 실린다). */
   importTemplate: () => downloadFile('/equipment/import/template', 'testscope-장비대장.csv'),

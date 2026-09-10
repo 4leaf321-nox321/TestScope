@@ -1,29 +1,31 @@
 /**
- * 보유 장비 **일괄 반입** — 부서 대장을 그대로 올린다.
+ * 보유 장비 **일괄 반입** — 엑셀에서 복사해 붙여넣는다.
  *
  * 카탈로그는 198계열·714기종까지 찼는데 대장은 4대였다. 장비를 넣는 길이 한 대씩
  * 뿐이라 수백 대를 가진 부서는 시작조차 못 했고, 대장이 비어 있으면 이 시스템은
  * **어떤 질문에도 못 답한다.**
  *
+ * ## 왜 파일이 아니라 붙여넣기인가
+ *
+ * 문서 보안(DRM)이 걸린 환경에서는 **파일을 올릴 수 없다.** 서식을 내려받는 것은
+ * 되는데 그 파일을 다시 고르는 것이 막힌다 — 실제로 그랬다. 붙여넣기는 DRM 이 막지
+ * 못한다.
+ *
+ * 서식 내려받기는 남긴다. 어느 열에 무엇을 적는지는 그것으로 안다.
+ *
  * ## 넣기 전에 보여 준다
  *
- * 파일을 고르면 먼저 미리보기를 부른다(`dry_run`). 300줄 중 틀린 12줄을 **넣기 전에**
+ * 붙여넣으면 먼저 미리보기를 부른다(`dry_run`). 300줄 중 틀린 12줄을 **넣기 전에**
  * 알아야 하고, 몇 번째 줄인지 말해 줘야 사람이 엑셀에서 그 줄을 찾는다.
  *
  * ## 전부 되거나 전부 안 되거나
  *
- * 문제가 하나라도 있으면 넣는 단추를 안 준다. 되는 것만 넣으면 사람은 파일을 고쳐
- * 다시 올리다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만나고, 그때 무엇을
+ * 문제가 하나라도 있으면 넣는 단추를 안 준다. 되는 것만 넣으면 사람은 고쳐 다시
+ * 붙여넣다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만나고, 그때 무엇을
  * 지워야 할지 모른다.
- *
- * ## 기종에 안 이어진 줄을 세어 말한다
- *
- * 넣을 수는 있지만 **시험 항목이 0 건**이 되고, 0 건이면 그 장비는 검색에 절대 안
- * 걸린다 — 대장에만 있고 아무도 못 찾는다. 막지는 않는다(자작 장비가 실제로 있다).
- * 다만 몇 대가 그런지는 넣기 전에 보여 준다.
  */
 
-import { useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Download, Upload } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
@@ -53,46 +55,49 @@ export function EquipmentImportDialog({
   onClose: () => void
   onDone: () => void
 }) {
-  const input = useRef<HTMLInputElement>(null)
-  const [file, setFile] = useState<File | null>(null)
+  const [text, setText] = useState('')
   const [preview, setPreview] = useState<EquipmentImportResult | null>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<ApiError | null>(null)
   const [done, setDone] = useState<number | null>(null)
 
-  function reset() {
-    setFile(null)
-    setPreview(null)
-    setError(null)
-    setDone(null)
-    if (input.current) input.current.value = ''
-  }
-
-  async function look(picked: File) {
-    setFile(picked)
-    setPreview(null)
-    setError(null)
-    setDone(null)
-    setBusy(true)
-    try {
-      setPreview(await equipmentApi.importFile(picked, true))
-    } catch (thrown) {
-      setError(thrown as ApiError)
-    } finally {
-      setBusy(false)
+  // **붙여넣으면 알아서 확인한다.** 「확인」 단추를 따로 두면 그것을 안 누른 채
+  // 「넣기」 를 찾는 사람이 생기고, 그때 화면은 아무 말도 안 하는 것처럼 보인다.
+  // 글자마다 부르지 않는다 — 300줄을 붙여넣는 동안 조회가 줄줄이 나간다.
+  useEffect(() => {
+    const body = text.trim()
+    if (!body) {
+      setPreview(null)
+      setError(null)
+      return
     }
-  }
+    setBusy(true)
+    const timer = setTimeout(() => {
+      equipmentApi
+        .importPaste(text, true)
+        .then((result) => {
+          setPreview(result)
+          setError(null)
+        })
+        .catch((thrown: ApiError) => {
+          setPreview(null)
+          setError(thrown)
+        })
+        .finally(() => setBusy(false))
+    }, 400)
+    return () => clearTimeout(timer)
+  }, [text])
 
   async function commit() {
-    if (!file) return
     setBusy(true)
     setError(null)
     try {
-      // **같은 파일을 다시 보낸다.** 서버가 미리보기 결과를 들고 있지 않아서,
+      // **같은 글자를 다시 보낸다.** 서버가 미리보기 결과를 들고 있지 않아서,
       // 그 사이 남이 같은 자산번호를 넣었어도 여기서 다시 걸린다.
-      const result = await equipmentApi.importFile(file, false)
+      const result = await equipmentApi.importPaste(text, false)
       if (result.created > 0) {
         setDone(result.created)
+        setText('')
         setPreview(null)
         onDone()
       } else {
@@ -115,7 +120,10 @@ export function EquipmentImportDialog({
       open={open}
       onOpenChange={(next) => {
         if (!next) {
-          reset()
+          setText('')
+          setPreview(null)
+          setError(null)
+          setDone(null)
           onClose()
         }
       }}
@@ -124,7 +132,8 @@ export function EquipmentImportDialog({
         <DialogHeader>
           <DialogTitle>장비 일괄 반입</DialogTitle>
           <DialogDescription>
-            부서 대장(CSV)을 통째로 올립니다. 넣기 전에 줄마다 확인합니다.
+            엑셀에서 <strong>머리글 줄까지 함께</strong> 복사해 아래에 붙여넣으세요. 넣기 전에
+            줄마다 확인합니다.
           </DialogDescription>
         </DialogHeader>
 
@@ -138,22 +147,29 @@ export function EquipmentImportDialog({
               <Download className="size-4" />
               서식 내려받기
             </Button>
-            <input
-              ref={input}
-              type="file"
-              accept=".csv,text/csv"
-              className="text-sm"
-              onChange={(event) => {
-                const picked = event.target.files?.[0]
-                if (picked) void look(picked)
-              }}
-            />
+            <span className="text-muted-foreground text-xs">
+              어느 열에 무엇을 적는지는 서식으로 봅니다. 채운 뒤 그 범위를 복사하세요.
+            </span>
           </div>
 
+          <textarea
+            value={text}
+            onChange={(event) => {
+              setText(event.target.value)
+              setDone(null)
+            }}
+            rows={8}
+            spellCheck={false}
+            placeholder={
+              '자산번호\t장비명\t보유부서\t거점\t설치위치\t…\n' +
+              'UTM-001\t3동 만능기\t재료시험팀\t본사\t3동 201호\t…'
+            }
+            className="border-input bg-background w-full rounded-md border p-2 font-mono text-xs"
+          />
+
           <p className="text-muted-foreground text-xs">
-            엑셀에서 「CSV UTF-8」 로 저장하세요. 부서·거점·장비유형·기종은{' '}
-            <strong>이름으로</strong> 적습니다. 기준정보에 없는 거점·분류는 여기서 만들어지지
-            않습니다 — 먼저 기준정보에 등록하세요.
+            부서·거점·장비유형·기종은 <strong>이름으로</strong> 적습니다. 기준정보에 없는
+            거점·분류는 여기서 만들어지지 않습니다 — 먼저 기준정보에 등록하세요.
           </p>
 
           <ErrorNotice error={error} />
@@ -187,8 +203,9 @@ export function EquipmentImportDialog({
                   {/* **전부 되거나 전부 안 되거나.** 그 사실을 단추가 없는 이유로
                       먼저 말해 준다 — 안 말하면 사람은 단추를 찾는다. */}
                   <p className="text-sm">
-                    문제가 있는 줄이 있어 <strong>아무것도 넣지 않았습니다.</strong> 파일에서
-                    아래 줄을 고쳐 다시 올리세요. 줄 번호는 엑셀에서 보이는 번호와 같습니다.
+                    문제가 있는 줄이 있어 <strong>아무것도 넣지 않았습니다.</strong> 엑셀에서
+                    아래 줄을 고쳐 다시 붙여넣으세요. 줄 번호는 엑셀에서 보이는 번호와
+                    같습니다.
                   </p>
                   <ul className="space-y-2">
                     {bad.slice(0, SHOWN).map((row) => (

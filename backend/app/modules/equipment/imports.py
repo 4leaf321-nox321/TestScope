@@ -6,6 +6,15 @@
 한 대씩뿐이라, 수백 대를 가진 부서는 시작조차 못 한다 — 그리고 대장이 비어 있으면
 이 시스템은 **어떤 질문에도 못 답한다.** 카탈로그를 아무리 잘 만들어도 그렇다.
 
+## 파일이 아니라 **붙여넣기**로 받는다
+
+문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다. 실제로 그렇다 — 서식을
+내려받는 것은 되는데 그 파일을 다시 고르는 것이 막힌다. 그래서 엑셀에서 **범위를
+복사해 붙여넣는** 길을 쓴다. 붙여넣기는 DRM 이 막지 못한다.
+
+엑셀이 클립보드에 넣는 것은 **탭으로 나뉜 글자**(TSV)이고, 우리가 내려주는 서식
+파일은 쉼표(CSV)다. 둘 다 받는다 — 사람이 어느 쪽을 들고 올지 우리가 정할 수 없다.
+
 ## 두 걸음이다: 미리 보고, 그 다음에 넣는다
 
 `dry_run` 이면 아무것도 저장하지 않고 줄마다 판정만 돌려준다. 300줄짜리 대장에서
@@ -55,9 +64,9 @@ from app.shared.text import clean
 #: 다른 사람의 등록이 막힌다. 부서 하나의 대장은 이 수를 거의 안 넘는다.
 MAX_ROWS = 2000
 
-#: 파일 크기 상한. 줄 수 상한과 따로 둔다 — 줄을 세려면 먼저 다 읽어야 하고,
-#: 읽는 동안 메모리를 쓰는 것은 파일 크기 쪽이다.
-MAX_BYTES = 4 * 1024 * 1024
+#: 붙여넣기 글자 수 상한. 줄 수 상한과 따로 둔다 — 줄을 세려면 먼저 다 읽어야 하고,
+#: 읽는 동안 메모리를 쓰는 것은 글자 쪽이다. 2000줄이면 넉넉히 들어간다.
+MAX_CHARS = 2_000_000
 
 #: 열 이름과 그 별칭. **엑셀에서 사람이 손으로 적은 머리글**을 받는다 — 띄어쓰기와
 #: 영문 이름을 함께 받아 두지 않으면, 한 글자 다른 머리글 하나로 파일 전체가 거절된다.
@@ -146,26 +155,20 @@ def template_csv() -> str:
     return "﻿" + buffer.getvalue()
 
 
-def _decoded(raw: bytes) -> str:
-    """엑셀이 뱉는 인코딩을 순서대로 시도한다.
+def _delimiter(first: str) -> str:
+    """탭이냐 쉼표냐. **첫 줄로 정한다.**
 
-    「CSV(쉼표 분리)」 로 저장하면 한국어 윈도우 엑셀은 **cp949** 로 쓴다. UTF-8 만
-    받으면 그 파일은 통째로 거절되고, 사람은 무엇이 문제인지 알 수 없다.
+    엑셀에서 범위를 복사하면 탭이고, 우리가 내려준 서식 파일의 내용을 그대로
+    붙여넣으면 쉼표다. 사람이 어느 쪽을 들고 올지 우리가 정할 수 없다.
+
+    탭이 하나라도 있으면 탭으로 본다 — 엑셀이 복사한 글자에는 쉼표가 값 안에
+    들어 있을 수 있어도(「3동, 201호」) 탭은 칸 사이에만 있다.
     """
-    for encoding in ("utf-8-sig", "utf-8", "cp949"):
-        try:
-            return raw.decode(encoding)
-        except UnicodeDecodeError:
-            continue
-    raise AppError(
-        "TSC-IMPORT-0001",
-        "파일의 글자를 읽을 수 없습니다. 엑셀에서 「CSV UTF-8」 로 저장해 보세요.",
-        status=400,
-    )
+    return "\t" if "\t" in first else ","
 
 
 def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
-    """파일의 머리글을 우리 칸 이름에 맞춘다. 띄어쓰기와 대소문자는 무시한다."""
+    """붙여넣은 머리글을 우리 칸 이름에 맞춘다. 띄어쓰기와 대소문자는 무시한다."""
     if not fields:
         raise AppError("TSC-IMPORT-0002", "머리글 줄이 없습니다.", status=400)
     known: dict[str, str] = {}
@@ -182,7 +185,7 @@ def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
         raise AppError(
             "TSC-IMPORT-0003",
             f"머리글에 다음 열이 없습니다: {' · '.join(missing)}. "
-            f"서식을 내려받아 그 머리글을 쓰세요.",
+            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보세요.",
             status=400,
             details={"missing": missing},
         )
@@ -356,22 +359,30 @@ def _row_payload(
     }
 
 
-def run(db: Session, user: User, raw: bytes, *, dry_run: bool) -> EquipmentImportResult:
-    """대장 파일 하나를 읽어 판정하고, `dry_run` 이 아니면 넣는다."""
-    if len(raw) > MAX_BYTES:
+def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImportResult:
+    """붙여넣은 대장을 읽어 판정하고, `dry_run` 이 아니면 넣는다."""
+    if len(text) > MAX_CHARS:
         raise AppError(
             "TSC-IMPORT-0004",
-            f"파일이 너무 큽니다 ({len(raw) // 1024} KB). "
-            f"{MAX_BYTES // 1024 // 1024} MB 아래로 나눠 올리세요.",
+            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리세요.",
+            status=400,
+        )
+    body = text.replace("\r\n", "\n").replace("\r", "\n").strip("\n")
+    # BOM 은 서식 파일을 텍스트 편집기로 열어 복사했을 때 딸려 온다.
+    body = body.lstrip("\ufeff")
+    if not body.strip():
+        raise AppError(
+            "TSC-IMPORT-0006",
+            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하세요.",
             status=400,
         )
 
-    reader = csv.DictReader(io.StringIO(_decoded(raw)))
+    reader = csv.DictReader(io.StringIO(body), delimiter=_delimiter(body.split("\n", 1)[0]))
     header = _header_map(reader.fieldnames)
 
     rows: list[EquipmentImportRow] = []
     payloads: list[dict[str, Any]] = []
-    # **파일 안의 중복도 잡는다.** DB 에 없더라도 같은 자산번호가 두 줄에 있으면
+    # **붙여넣은 것 안의 중복도 잡는다.** DB 에 없더라도 같은 자산번호가 두 줄에 있으면
     # 둘째 줄에서 막히는데, 그때는 이미 첫 줄이 들어간 뒤다.
     seen: dict[str, int] = {}
 
@@ -379,7 +390,7 @@ def run(db: Session, user: User, raw: bytes, *, dry_run: bool) -> EquipmentImpor
         if len(rows) >= MAX_ROWS:
             raise AppError(
                 "TSC-IMPORT-0005",
-                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 올리세요.",
+                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으세요.",
                 status=400,
             )
         picked = {field: (values.get(column) or "") for field, column in header.items()}

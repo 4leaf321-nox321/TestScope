@@ -826,7 +826,15 @@ export interface paths {
         put?: never;
         /**
          * Import Equipment
-         * @description 부서 대장(CSV)을 통째로 받는다.
+         * @description 부서 대장을 통째로 받는다. **엑셀에서 복사해 붙여넣은 글자다.**
+         *
+         *     ## 왜 파일이 아닌가
+         *
+         *     문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다. 서식을 내려받는 것은 되는데
+         *     그 파일을 다시 고르는 것이 막힌다 — 실제로 그랬다. 붙여넣기는 DRM 이 막지 못한다.
+         *
+         *     엑셀이 클립보드에 넣는 것은 **탭으로 나뉜 글자**이고 서식 파일은 쉼표다. 둘 다
+         *     받는다 — 첫 줄에 탭이 있으면 탭으로 본다.
          *
          *     ## 두 걸음이다
          *
@@ -834,7 +842,7 @@ export interface paths {
          *     300줄 중 틀린 12줄을 넣기 전에 알아야 하고, 그 12줄이 파일의 몇 번째 줄인지
          *     말해 줘야 사람이 엑셀에서 찾는다.
          *
-         *     화면은 같은 파일을 두 번 보낸다: 먼저 미리보기, 사람이 확인하면 `dry_run=false`.
+         *     화면은 같은 글자를 두 번 보낸다: 먼저 미리보기, 사람이 확인하면 `dry_run=false`.
          *
          *     ## 전부 되거나 전부 안 되거나
          *
@@ -1865,11 +1873,6 @@ export interface components {
              */
             created_at: string;
         };
-        /** Body_import_equipment_api_equipment_import_post */
-        Body_import_equipment_api_equipment_import_post: {
-            /** File */
-            file: string;
-        };
         /** CalibrationCreateRequest */
         CalibrationCreateRequest: {
             /**
@@ -2215,6 +2218,23 @@ export interface components {
             statuses: components["schemas"]["FilterOption"][];
             /** Test Items */
             test_items: components["schemas"]["FilterOption"][];
+        };
+        /**
+         * EquipmentImportRequest
+         * @description 엑셀에서 복사해 붙여넣은 대장.
+         *
+         *     **파일이 아니다.** 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다 — 서식을
+         *     내려받는 것은 되는데 그 파일을 다시 고르는 것이 막힌다. 붙여넣기는 DRM 이 막지
+         *     못한다.
+         *
+         *     엑셀이 클립보드에 넣는 것은 **탭으로 나뉜 글자**이고 우리 서식 파일은 쉼표다.
+         *     서버가 첫 줄을 보고 정한다 — 사람이 어느 쪽을 들고 올지 우리가 정할 수 없다.
+         *
+         *     **머리글 줄까지 함께** 붙여넣어야 한다. 없으면 어느 칸이 무엇인지 알 방법이 없다.
+         */
+        EquipmentImportRequest: {
+            /** Text */
+            text: string;
         };
         /**
          * EquipmentImportResult
@@ -6109,7 +6129,7 @@ export interface operations {
         };
         requestBody: {
             content: {
-                "multipart/form-data": components["schemas"]["Body_import_equipment_api_equipment_import_post"];
+                "application/json": components["schemas"]["EquipmentImportRequest"];
             };
         };
         responses: {

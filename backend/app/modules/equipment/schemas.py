@@ -156,6 +156,24 @@ class CatalogFilterOptionsOut(BaseModel):
     """기종 목록에서 계열로 좁힐 때. 계열 목록에서는 빈 목록이다."""
 
 
+class EquipmentImportRequest(BaseModel):
+    """엑셀에서 복사해 붙여넣은 대장.
+
+    **파일이 아니다.** 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다 — 서식을
+    내려받는 것은 되는데 그 파일을 다시 고르는 것이 막힌다. 붙여넣기는 DRM 이 막지
+    못한다.
+
+    엑셀이 클립보드에 넣는 것은 **탭으로 나뉜 글자**이고 우리 서식 파일은 쉼표다.
+    서버가 첫 줄을 보고 정한다 — 사람이 어느 쪽을 들고 올지 우리가 정할 수 없다.
+
+    **머리글 줄까지 함께** 붙여넣어야 한다. 없으면 어느 칸이 무엇인지 알 방법이 없다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    text: str
+
+
 class EquipmentImportRow(BaseModel):
     """반입 파일의 한 줄이 어떻게 읽혔나.
 

@@ -1,4 +1,4 @@
-"""보유 장비 **일괄 반입** — 부서 대장을 통째로 받는다.
+"""보유 장비 **일괄 반입** — 엑셀에서 복사해 붙여넣은 대장을 받는다.
 
 ## 왜 이 시험이 촘촘한가
 
@@ -13,6 +13,7 @@
 3. **못 정하는 이름은 거절한다** — 비슷한 기종에 끼워 넣지 않는다(ADR 0003).
 4. **줄 번호로 말한다** — 사람이 엑셀에서 그 줄을 찾을 수 있어야 한다.
 5. **기준정보를 만들지 않는다** — 오타가 그대로 축이 되면 합칠 방법이 없다.
+6. **엑셀이 주는 그대로 읽는다** — 탭 구분·`\\r\\n`·끝의 빈 줄.
 """
 
 from __future__ import annotations
@@ -51,9 +52,11 @@ def _workspace_name(client: TestClient, admin: Signed) -> str:
 def _upload(
     client: TestClient, admin: Signed, body: str, *, dry_run: bool = True
 ) -> dict[str, Any]:
+    """**엑셀에서 복사해 붙여넣은 것처럼** 보낸다. 파일이 아니다 — DRM 이 걸린
+    환경에서는 파일을 올릴 수 없다."""
     response = client.post(
         f"/api/equipment/import?dry_run={'true' if dry_run else 'false'}",
-        files={"file": ("대장.csv", body.encode("utf-8"), "text/csv")},
+        json={"text": body},
         headers=admin.headers,
     )
     assert response.status_code == 200, response.text
@@ -259,27 +262,85 @@ def test_기종을_이으면_시험_항목이_복사된다(client: TestClient, a
     assert row["test_items"] == [f"항목{tag}"], row
 
 
-def test_엑셀이_저장한_cp949_도_읽는다(client: TestClient, admin: Signed) -> None:
-    """한국어 윈도우 엑셀에서 「CSV(쉼표 분리)」 로 저장하면 cp949 로 쓴다. UTF-8 만
-    받으면 그 파일은 통째로 거절되고, 사람은 무엇이 문제인지 알 수 없다."""
+def test_엑셀에서_복사한_탭_구분도_읽는다(client: TestClient, admin: Signed) -> None:
+    """**엑셀이 클립보드에 넣는 것은 탭이다.** 쉼표만 받으면 붙여넣기가 통째로
+    거절되고, 그때 사람은 무엇이 문제인지 알 수 없다."""
     workspace, site, category = _fixture(client, admin)
-    text = (
-        f"{HEADER}\n"
-        f"CP-{uuid.uuid4().hex[:6]},만능기,{workspace},{site},3동 201호,{category},,가동,예\n"
+    body = (
+        HEADER.replace(",", "\t")
+        + "\n"
+        + "\t".join(
+            [
+                f"TAB-{uuid.uuid4().hex[:6]}",
+                "만능기",
+                workspace,
+                site,
+                "3동 201호",
+                category,
+                "",
+                "가동",
+                "예",
+            ]
+        )
+        + "\n"
     )
+    assert _upload(client, admin, body)["ready"] == 1
+
+
+def test_값_안의_쉼표를_탭이_지켜_준다(client: TestClient, admin: Signed) -> None:
+    """「3동, 201호」 처럼 값에 쉼표가 들어가면 쉼표로는 칸이 밀린다. 엑셀에서 복사한
+    탭 구분에서는 안 밀린다 — 탭은 칸 사이에만 있다."""
+    workspace, site, category = _fixture(client, admin)
+    asset_no = f"COMMA-{uuid.uuid4().hex[:6]}"
+    body = (
+        HEADER.replace(",", "\t")
+        + "\n"
+        + "\t".join(
+            [asset_no, "만능기", workspace, site, "3동, 201호", category, "", "가동", "예"]
+        )
+        + "\n"
+    )
+    assert _upload(client, admin, body, dry_run=False)["created"] == 1
+    listed = client.get(f"/api/equipment?asset_no={asset_no}", headers=admin.headers)
+    assert listed.json()["items"][0]["location"] == "3동, 201호"
+
+
+def test_엑셀이_붙인_줄바꿈과_빈_줄을_견딘다(client: TestClient, admin: Signed) -> None:
+    """엑셀 클립보드는 `\r\n` 을 쓰고 끝에 빈 줄을 남긴다."""
+    workspace, site, category = _fixture(client, admin)
+    body = (
+        HEADER.replace(",", "\t")
+        + "\r\n"
+        + "\t".join(
+            [
+                f"CRLF-{uuid.uuid4().hex[:6]}",
+                "만능기",
+                workspace,
+                site,
+                "3동",
+                category,
+                "",
+                "가동",
+                "예",
+            ]
+        )
+        + "\r\n\r\n"
+    )
+    assert _upload(client, admin, body)["ready"] == 1
+
+
+def test_아무것도_안_붙여넣으면_그렇게_말한다(client: TestClient, admin: Signed) -> None:
     response = client.post(
-        "/api/equipment/import?dry_run=true",
-        files={"file": ("대장.csv", text.encode("cp949"), "text/csv")},
-        headers=admin.headers,
+        "/api/equipment/import", json={"text": "   \n\n"}, headers=admin.headers
     )
-    assert response.status_code == 200, response.text
-    assert response.json()["ready"] == 1, response.json()
+    assert response.status_code == 400, response.text
+    assert "머리글" in response.text
 
 
 def test_머리글이_모자라면_무엇이_없는지_말한다(client: TestClient, admin: Signed) -> None:
     response = client.post(
         "/api/equipment/import",
-        files={"file": ("대장.csv", "자산번호,장비명\nA-1,만능기\n".encode(), "text/csv")},
+        json={"text": "자산번호,장비명\nA-1,만능기\n"},
         headers=admin.headers,
     )
     assert response.status_code == 400, response.text
@@ -322,7 +383,7 @@ def test_미리보기는_권한도_본다(client: TestClient, admin: Signed, db:
     )
     response = client.post(
         "/api/equipment/import?dry_run=true",
-        files={"file": ("대장.csv", body.encode("utf-8"), "text/csv")},
+        json={"text": body},
         headers={"Authorization": f"Bearer {token}"},
     )
     assert response.status_code == 200, response.text

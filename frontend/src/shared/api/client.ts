@@ -225,18 +225,6 @@ export const api = {
     request<T>(path, { method: 'PUT', body: JSON.stringify(body ?? {}) }),
   patch: <T>(path: string, body?: unknown) =>
     request<T>(path, { method: 'PATCH', body: JSON.stringify(body ?? {}) }),
-  /**
-   * 파일 하나를 올린다(multipart).
-   *
-   * **Content-Type 을 직접 넣지 않는다** — multipart 는 본문에 boundary 문자열이
-   * 필요하고 그것을 아는 것은 브라우저다. `send` 가 FormData 를 알아보고 헤더를
-   * 비워 둔다.
-   */
-  upload: <T>(path: string, file: File, field = 'file') => {
-    const form = new FormData()
-    form.append(field, file)
-    return request<T>(path, { method: 'POST', body: form })
-  },
   delete: <T>(path: string, body?: unknown) =>
     request<T>(path, {
       method: 'DELETE',
