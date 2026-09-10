@@ -52,6 +52,8 @@ from app.modules.equipment.models import EQUIPMENT_STATUSES, Equipment
 from app.modules.equipment.schemas import (
     EquipmentImportResult,
     EquipmentImportRow,
+    ImportColumn,
+    ImportProblem,
 )
 from app.modules.resolve.services import resolve
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
@@ -155,6 +157,18 @@ TEMPLATE_SAMPLE = [
 ]
 
 
+def columns() -> list[ImportColumn]:
+    """표의 열. **화면이 자기 목록을 따로 들지 않게** 서버가 준다.
+
+    두 벌로 두면 열을 하나 더한 날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히
+    버려진다.
+    """
+    return [
+        ImportColumn(key=key, label=names[0], required=key in REQUIRED)
+        for key, names in COLUMNS.items()
+    ]
+
+
 def template_csv() -> str:
     """내려받을 서식. **BOM 을 붙인다** — 안 붙이면 엑셀이 UTF-8 을 못 알아보고
     한글이 깨져서, 사람은 서식이 잘못된 줄 안다."""
@@ -202,6 +216,29 @@ def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
     return found
 
 
+class Problems:
+    """한 줄에서 걸린 것들. **어느 칸인지 함께 담는다.**
+
+    화면이 그 칸을 붉게 칠하려면 열 키가 필요하다. 글자에서 되짚어 찾게 하면
+    (「거점:」 으로 시작하나 보고) 말을 조금만 다듬어도 색이 사라진다.
+
+    사람이 읽는 말은 열 라벨을 앞에 붙여 만든다 — API 를 직접 쓰는 쪽은 `field` 를
+    안 보고 글자만 읽을 수도 있어서, 각자 완결적이어야 한다.
+    """
+
+    def __init__(self) -> None:
+        self.items: list[ImportProblem] = []
+
+    def add(self, field: str | None, said: str) -> None:
+        label = COLUMNS[field][0] if field in COLUMNS else None
+        self.items.append(
+            ImportProblem(field=field, message=f"{label}: {said}" if label else said)
+        )
+
+    def __bool__(self) -> bool:
+        return bool(self.items)
+
+
 class Lookup:
     """이름 -> id 를 **쪽 단위로 한 번에** 찾아 둔다.
 
@@ -244,7 +281,7 @@ class Lookup:
                 self.workspaces[row.name] = row.slug
                 self.workspaces[row.slug] = row.slug
 
-    def workspace(self, text: str, problems: list[str]) -> str | None:
+    def workspace(self, text: str, problems: Problems) -> str | None:
         """부서를 찾고 **권한까지 본다.**
 
         미리보기가 권한을 안 보면 「300줄 다 됩니다」 라고 해 놓고 저장에서 403 이
@@ -255,24 +292,24 @@ class Lookup:
         body = clean(text)
         slug = self.workspaces.get(body)
         if slug is None:
-            problems.append(f"보유부서: 「{text}」 를 찾을 수 없습니다")
+            problems.add("workspace", f"「{text}」 를 찾을 수 없습니다")
             return None
         if slug in self.workspace_problem:
             said = self.workspace_problem[slug]
             if said:
-                problems.append(f"보유부서: {said}")
+                problems.add("workspace", said)
                 return None
             return slug
         try:
             services.owner_workspace(self.db, self.user, slug)
         except AppError as error:
             self.workspace_problem[slug] = error.message
-            problems.append(f"보유부서: {error.message}")
+            problems.add("workspace", error.message)
             return None
         self.workspace_problem[slug] = ""
         return slug
 
-    def term(self, axis: str, text: str, field: str, problems: list[str]) -> Any:
+    def term(self, axis: str, text: str, field: str, problems: Problems) -> Any:
         """축의 값 하나를 이름으로 찾는다. **없으면 만들지 않는다.**
 
         반입이 값을 만들면 오타가 그대로 기준정보가 되고, 「본사」 와 「본사 」 가 서로
@@ -285,14 +322,14 @@ class Lookup:
         if len(found) == 1:
             return found[0]
         if not found:
-            problems.append(
-                f"{field}: 「{text}」 가 기준정보에 없습니다. 기준정보에서 먼저 만드세요"
+            problems.add(
+                field, f"「{text}」 가 기준정보에 없습니다. 기준정보에서 먼저 만드세요"
             )
         else:
-            problems.append(f"{field}: 「{text}」 가 여럿입니다 ({len(found)}개)")
+            problems.add(field, f"「{text}」 가 여럿입니다 ({len(found)}개)")
         return None
 
-    def model(self, text: str, problems: list[str]) -> Any:
+    def model(self, text: str, problems: Problems) -> Any:
         """기종을 이름으로 잇는다. **못 정하면 잇지 않는다.**
 
         비슷한 기종에 끼워 넣으면 그 장비의 하중·온도가 남의 것이 되고, 검색은 그
@@ -317,16 +354,16 @@ class Lookup:
                 )
                 self.models[body] = (
                     None,
-                    f"기종: 「{text}」 을(를) 하나로 정할 수 없습니다"
+                    f"「{text}」 을(를) 하나로 정할 수 없습니다"
                     + (f" (비슷한 것: {names})" if names else " (카탈로그에 없습니다)"),
                 )
         found, said = self.models[body]
         if said:
-            problems.append(said)
+            problems.add("model", said)
         return found
 
 
-def _flag(text: str, field: str, problems: list[str]) -> bool | None:
+def _flag(text: str, field: str, problems: Problems) -> bool | None:
     if not text:
         return None
     word = text.strip().lower()
@@ -334,11 +371,11 @@ def _flag(text: str, field: str, problems: list[str]) -> bool | None:
         return True
     if word in NO:
         return False
-    problems.append(f"{field}: 「{text}」 는 예/아니오로 읽을 수 없습니다")
+    problems.add(field, f"「{text}」 는 예/아니오로 읽을 수 없습니다")
     return None
 
 
-def _date(text: str, field: str, problems: list[str]) -> date | None:
+def _date(text: str, field: str, problems: Problems) -> date | None:
     if not text:
         return None
     body = text.strip().replace("/", "-").replace(".", "-")
@@ -347,56 +384,60 @@ def _date(text: str, field: str, problems: list[str]) -> date | None:
     try:
         return date.fromisoformat(body)
     except ValueError:
-        problems.append(f"{field}: 「{text}」 는 날짜가 아닙니다 (2024-03-15 처럼)")
+        problems.add(field, f"「{text}」 는 날짜가 아닙니다 (2024-03-15 처럼)")
         return None
 
 
-def _int(text: str, field: str, problems: list[str]) -> int | None:
+def _int(text: str, field: str, problems: Problems) -> int | None:
     if not text:
         return None
     try:
         return int(float(text.strip()))
     except ValueError:
-        problems.append(f"{field}: 「{text}」 는 숫자가 아닙니다")
+        problems.add(field, f"「{text}」 는 숫자가 아닙니다")
         return None
 
 
-def _row_payload(look: Lookup, values: dict[str, str], problems: list[str]) -> dict[str, Any]:
+def _row_payload(look: Lookup, values: dict[str, str], problems: Problems) -> dict[str, Any]:
     """한 줄을 등록 요청의 모양으로. 문제는 모아서 돌려준다 — 첫 오류에서 멈추면
     사람이 파일을 고치고 올리기를 오류 수만큼 되풀이한다."""
     for field in REQUIRED:
         if not clean(values.get(field, "")):
-            problems.append(f"{COLUMNS[field][0]}: 비어 있습니다")
+            problems.add(field, "비어 있습니다")
 
     model_id = look.model(values.get("model", ""), problems)
     category_term_id = look.term(
-        "equipment_category", values.get("category", ""), "장비유형", problems
+        "equipment_category", values.get("category", ""), "category", problems
     )
     if model_id is None and category_term_id is None and not values.get("model"):
         # 기종을 안 골랐으면 분류가 필수다 — 무슨 종류인지 모르는 장비는 검색에서
         # 통째로 빠진다.
-        problems.append("장비유형: 기종을 안 적었으면 장비유형은 필수입니다")
+        problems.add("category", "기종을 안 적었으면 장비유형은 필수입니다")
 
     status_text = clean(values.get("status", ""))
     status = STATUS_WORDS.get(status_text, status_text) or "operational"
     if status not in EQUIPMENT_STATUSES:
-        problems.append(f"상태: 「{status_text}」 는 모르는 상태입니다")
+        problems.add("status", f"「{status_text}」 는 모르는 상태입니다")
         status = "operational"
 
-    shared = _flag(values.get("shared_use", ""), "공용여부", problems)
-    calibrated = _flag(values.get("calibration_required", ""), "교정대상", problems)
-    months = _int(values.get("calibration_interval_months", ""), "교정주기", problems)
+    shared = _flag(values.get("shared_use", ""), "shared_use", problems)
+    calibrated = _flag(
+        values.get("calibration_required", ""), "calibration_required", problems
+    )
+    months = _int(
+        values.get("calibration_interval_months", ""), "calibration_interval_months", problems
+    )
     if calibrated and months is None:
         # 주기가 없으면 차기일을 계산할 수 없고, 그러면 「곧 만료」 목록이 이 장비를
         # 영원히 안 부른다.
-        problems.append("교정주기: 교정 대상이면 주기(개월)를 적어야 합니다")
+        problems.add("calibration_interval_months", "교정 대상이면 주기(개월)를 적어야 합니다")
 
     return {
         "asset_no": clean(values.get("asset_no", "")),
         "name": clean(values.get("name", "")),
         "dept_asset_no": clean(values.get("dept_asset_no", "")) or None,
         "workspace_slug": look.workspace(values.get("workspace", ""), problems),
-        "site_term_id": look.term("site", values.get("site", ""), "거점", problems),
+        "site_term_id": look.term("site", values.get("site", ""), "site", problems),
         "location": clean(values.get("location", "")),
         "model_id": model_id,
         "category_term_id": category_term_id,
@@ -405,8 +446,10 @@ def _row_payload(look: Lookup, values: dict[str, str], problems: list[str]) -> d
         "serial_no": clean(values.get("serial_no", "")) or None,
         "shared_use": bool(shared),
         "status": status,
-        "acquired_on": _date(values.get("acquired_on", ""), "도입일", problems),
-        "manufactured_year": _int(values.get("manufactured_year", ""), "제조연도", problems),
+        "acquired_on": _date(values.get("acquired_on", ""), "acquired_on", problems),
+        "manufactured_year": _int(
+            values.get("manufactured_year", ""), "manufactured_year", problems
+        ),
         "calibration_required": bool(calibrated),
         "calibration_interval_months": months,
         "note": clean(values.get("note", "")) or None,
@@ -466,25 +509,29 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
     seen: dict[str, int] = {}
 
     for index, picked in picked_rows:
-        problems: list[str] = []
+        problems = Problems()
         payload = _row_payload(look, picked, problems)
 
         asset_no = payload["asset_no"]
         if asset_no:
             if asset_no in seen:
-                problems.append(f"자산번호: {seen[asset_no]}번째 줄과 겹칩니다")
+                # 한 칸에 못 붙이는 문제다 — 어느 줄이 원본인지가 요점이다.
+                problems.add(None, f"자산번호가 {seen[asset_no]}번째 줄과 겹칩니다")
             elif asset_no in taken:
-                problems.append("자산번호: 이미 등록된 장비입니다")
+                problems.add("asset_no", "이미 등록된 장비입니다")
             else:
                 seen[asset_no] = index
 
         rows.append(
             EquipmentImportRow(
                 line=index,
+                # **서버가 읽은 그대로** 돌려준다 — 화면이 다시 파싱하면 규칙이
+                # 두 벌이 되고, 그때 사람은 자기가 붙여넣은 것과 다른 표를 본다.
+                cells={field: (picked.get(field) or "").strip() for field in COLUMNS},
                 asset_no=asset_no or None,
                 name=payload["name"] or None,
                 model_linked=payload["model_id"] is not None,
-                problems=problems,
+                problems=problems.items,
             )
         )
         payloads.append(payload)
@@ -508,7 +555,7 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
             services.create(db, user, payload, commit=False)
         except AppError as error:
             db.rollback()
-            row.problems.append(error.message)
+            row.problems.append(ImportProblem(field=None, message=error.message))
             result.problems = 1
             result.ready = len(rows) - 1
             result.created = 0

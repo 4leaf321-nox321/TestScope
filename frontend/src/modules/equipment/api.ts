@@ -34,6 +34,8 @@ export type EquipmentModelRow = components['schemas']['EquipmentModelRow']
 export type CatalogFilterOptions = components['schemas']['CatalogFilterOptionsOut']
 export type EquipmentImportResult = components['schemas']['EquipmentImportResult']
 export type EquipmentImportRow = components['schemas']['EquipmentImportRow']
+export type ImportColumn = components['schemas']['ImportColumn']
+export type ImportProblem = components['schemas']['ImportProblem']
 type SeriesPage = components['schemas']['Page_EquipmentSeriesRow_']
 type ModelPage = components['schemas']['Page_EquipmentModelRow_']
 
@@ -105,6 +107,10 @@ export const equipmentApi = {
     api.post<EquipmentImportResult>(`/equipment/import?dry_run=${dryRun ? 'true' : 'false'}`, {
       text,
     }),
+
+  /** 표의 열. **화면이 자기 목록을 따로 들지 않는다** — 두 벌로 두면 열을 하나
+   *  더한 날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히 버려진다. */
+  importColumns: () => api.get<ImportColumn[]>('/equipment/import/columns'),
 
   /** 대장 서식을 내려받는다. 평범한 링크로는 안 된다(토큰이 안 실린다). */
   importTemplate: () => downloadFile('/equipment/import/template', 'testscope-장비대장.csv'),

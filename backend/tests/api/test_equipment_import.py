@@ -65,6 +65,16 @@ def _upload(
     return out
 
 
+def _said(row: dict[str, Any]) -> list[str]:
+    """그 줄의 문제를 **사람이 읽는 말**로. 칸 키는 `_fields` 가 본다."""
+    return [one["message"] for one in row["problems"]]
+
+
+def _fields(row: dict[str, Any]) -> set[str | None]:
+    """그 줄에서 **어느 칸이** 걸렸나. 화면이 그 칸을 붉게 칠하는 근거다."""
+    return {one["field"] for one in row["problems"]}
+
+
 def _fixture(client: TestClient, admin: Signed) -> tuple[str, str, str]:
     """반입이 이름으로 찾을 수 있는 부서·거점·분류 하나씩."""
     tag = uuid.uuid4().hex[:6]
@@ -154,7 +164,9 @@ def test_문제를_줄_번호로_말한다(client: TestClient, admin: Signed) ->
     assert len(bad) == 1
     # 머리글 다음이 2 다 — 엑셀이 보여 주는 번호와 같아야 한다.
     assert bad[0]["line"] == 3, bad
-    assert any("자산번호" in one for one in bad[0]["problems"])
+    assert any("자산번호" in one for one in _said(bad[0]))
+    # **어느 칸인지도 온다** — 화면이 그 칸을 붉게 칠한다.
+    assert "asset_no" in _fields(bad[0])
 
 
 def test_문제를_모아서_준다(client: TestClient, admin: Signed) -> None:
@@ -165,10 +177,12 @@ def test_문제를_모아서_준다(client: TestClient, admin: Signed) -> None:
         f"MULTI-{uuid.uuid4().hex[:6]},만능기,없는부서,없는거점,3동,없는분류,,모르는상태,글쎄\n"
     )
     result = _upload(client, admin, body)
-    problems = result["rows"][0]["problems"]
+    problems = _said(result["rows"][0])
     assert len(problems) >= 4, problems
     assert workspace not in " ".join(problems)
     assert site not in " ".join(problems)
+    # 걸린 칸이 넷 다 다르다 — 한 칸에 몰아 놓으면 화면이 어디를 칠할지 모른다.
+    assert {"workspace", "site", "category", "status"} <= _fields(result["rows"][0])
 
 
 def test_기준정보에_없는_값을_만들지_않는다(client: TestClient, admin: Signed) -> None:
@@ -182,7 +196,8 @@ def test_기준정보에_없는_값을_만들지_않는다(client: TestClient, a
     )
     result = _upload(client, admin, body, dry_run=False)
     assert result["created"] == 0
-    assert any("거점" in one for one in result["rows"][0]["problems"])
+    assert any("거점" in one for one in _said(result["rows"][0]))
+    assert "site" in _fields(result["rows"][0])
 
     terms = client.get("/api/vocabularies/site/terms", headers=admin.headers)
     assert ghost not in {one["value"] for one in terms.json()}, "반입이 축의 값을 만들었다"
@@ -200,7 +215,9 @@ def test_파일_안의_자산번호_중복을_잡는다(client: TestClient, admi
     )
     result = _upload(client, admin, body, dry_run=False)
     assert result["created"] == 0
-    assert any("겹칩니다" in one for one in result["rows"][1]["problems"])
+    assert any("겹칩니다" in one for one in _said(result["rows"][1]))
+    # 한 칸에 못 붙이는 문제다 — 어느 줄이 원본인지가 요점이다.
+    assert None in _fields(result["rows"][1])
 
 
 def test_이미_있는_자산번호는_덮어쓰지_않는다(client: TestClient, admin: Signed) -> None:
@@ -212,7 +229,8 @@ def test_이미_있는_자산번호는_덮어쓰지_않는다(client: TestClient
 
     again = _upload(client, admin, body)
     assert again["ready"] == 0
-    assert any("이미 등록" in one for one in again["rows"][0]["problems"])
+    assert any("이미 등록" in one for one in _said(again["rows"][0]))
+    assert "asset_no" in _fields(again["rows"][0])
 
 
 def test_기종을_하나로_못_정하면_거절한다(client: TestClient, admin: Signed) -> None:
@@ -226,7 +244,8 @@ def test_기종을_하나로_못_정하면_거절한다(client: TestClient, admi
     )
     result = _upload(client, admin, body)
     assert result["ready"] == 0
-    assert any("기종" in one for one in result["rows"][0]["problems"])
+    assert any("기종" in one for one in _said(result["rows"][0]))
+    assert "model" in _fields(result["rows"][0])
 
 
 def test_기종을_이으면_시험_항목이_복사된다(client: TestClient, admin: Signed) -> None:
@@ -390,7 +409,8 @@ def test_미리보기는_권한도_본다(client: TestClient, admin: Signed, db:
     assert response.status_code == 200, response.text
     result = response.json()
     assert result["ready"] == 0, "미리보기가 남의 부서를 통과시켰다"
-    assert any("보유부서" in one for one in result["rows"][0]["problems"]), result
+    assert any("보유부서" in one for one in _said(result["rows"][0])), result
+    assert "workspace" in _fields(result["rows"][0])
 
 
 def test_미리보기_질의가_줄_수를_따라_늘지_않는다(client: TestClient, admin: Signed) -> None:
@@ -423,3 +443,52 @@ def test_미리보기_질의가_줄_수를_따라_늘지_않는다(client: TestC
     # 열 배로 늘려도 그대로여야 한다. 고정비가 조금 붙는 것은 봐 준다.
     assert many <= few + 2, f"3줄에 {few}회 · 30줄에 {many}회 — 줄마다 묻고 있다"
     assert many <= 20, f"30줄에 질의 {many}회"
+
+
+def test_열_목록을_서버가_준다(client: TestClient, admin: Signed) -> None:
+    """**화면이 자기 목록을 따로 들지 않게** 서버가 준다.
+
+    두 벌로 두면 열을 하나 더한 날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히
+    버려진다 — 그 손실은 넣은 사람 눈에 안 보인다.
+    """
+    response = client.get("/api/equipment/import/columns", headers=admin.headers)
+    assert response.status_code == 200, response.text
+    rows = response.json()
+    keys = [one["key"] for one in rows]
+    assert keys[:5] == ["asset_no", "name", "workspace", "site", "location"]
+    assert all(one["required"] for one in rows[:5]), "필수 다섯이 필수로 안 온다"
+    assert not any(one["required"] for one in rows[5:]), "안 필수인 것이 필수로 온다"
+
+    # 서식의 머리글과 **같은 말**이어야 한다 — 서식을 보고 채운 사람이 표에서
+    # 다른 이름을 보면 잘못 채운 줄 안다.
+    template = client.get("/api/equipment/import/template", headers=admin.headers)
+    head = template.content.decode("utf-8").splitlines()[0]
+    for one in rows:
+        assert one["label"] in head, f"서식에 없는 열 이름: {one['label']}"
+
+
+def test_서버가_읽은_칸_값을_그대로_돌려준다(client: TestClient, admin: Signed) -> None:
+    """화면이 다시 파싱하면 구분자 고르기·빈 줄 건너뛰기·머리글 별칭이 두 벌이 되고,
+    두 벌은 반드시 어긋난다 — 그때 사람은 자기가 붙여넣은 것과 다른 표를 본다."""
+    workspace, site, category = _fixture(client, admin)
+    asset_no = f"CELL-{uuid.uuid4().hex[:6]}"
+    body = (
+        HEADER.replace(",", "\t")
+        + "\n"
+        + "\t".join(
+            [asset_no, "만능기", workspace, site, "3동, 201호", category, "", "가동", "예"]
+        )
+        + "\n"
+    )
+    row = _upload(client, admin, body)["rows"][0]
+    cells = row["cells"]
+    # 값 안의 쉼표가 그대로 살아 있어야 한다.
+    assert cells["location"] == "3동, 201호"
+    assert cells["asset_no"] == asset_no
+    assert cells["site"] == site
+    # 안 적은 칸도 **키는 온다** — 표가 빈 칸을 그리려면 열이 다 있어야 한다.
+    assert cells["note"] == ""
+    assert set(cells) == {
+        one["key"]
+        for one in client.get("/api/equipment/import/columns", headers=admin.headers).json()
+    }

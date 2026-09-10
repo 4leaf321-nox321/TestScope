@@ -790,6 +790,31 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/equipment/import/columns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Equipment Import Columns
+         * @description 반입 표의 열. **화면이 자기 목록을 따로 들지 않게** 서버가 준다.
+         *
+         *     두 벌로 두면 열을 하나 더한 날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히
+         *     버려진다 — 그리고 그 손실은 넣은 사람 눈에 안 보인다.
+         *
+         *     `/{equipment_id}` 보다 **먼저 선언한다.**
+         */
+        get: operations["equipment_import_columns_api_equipment_import_columns_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/equipment/import/template": {
         parameters: {
             query?: never;
@@ -2257,7 +2282,7 @@ export interface components {
         };
         /**
          * EquipmentImportRow
-         * @description 반입 파일의 한 줄이 어떻게 읽혔나.
+         * @description 붙여넣은 한 줄이 어떻게 읽혔나.
          *
          *     **줄 번호를 준다.** 「12번째 줄」 이라고 말해 줘야 사람이 엑셀에서 그 줄을 찾는다 —
          *     자산번호만 주면 아직 자산번호가 안 적힌 줄은 가리킬 방법이 없다.
@@ -2265,6 +2290,10 @@ export interface components {
         EquipmentImportRow: {
             /** Line */
             line: number;
+            /** Cells */
+            cells: {
+                [key: string]: string;
+            };
             /** Asset No */
             asset_no: string | null;
             /** Name */
@@ -2272,7 +2301,7 @@ export interface components {
             /** Model Linked */
             model_linked: boolean;
             /** Problems */
-            problems: string[];
+            problems: components["schemas"]["ImportProblem"][];
         };
         /**
          * EquipmentModelCreateRequest
@@ -2982,6 +3011,34 @@ export interface components {
         HomeWorkspaceRequest: {
             /** Workspace Slug */
             workspace_slug: string;
+        };
+        /**
+         * ImportColumn
+         * @description 반입 표의 열 하나.
+         *
+         *     **화면이 자기 목록을 따로 들지 않게** 서버가 준다. 두 벌로 두면 열을 하나 더한
+         *     날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히 버려진다.
+         */
+        ImportColumn: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Required */
+            required: boolean;
+        };
+        /**
+         * ImportProblem
+         * @description 한 줄에서 걸린 것 하나. **어느 칸인지 함께 준다.**
+         *
+         *     화면이 그 칸을 붉게 칠하려면 열을 알아야 한다. 글자에서 되짚어 찾게 하면
+         *     (「거점:」 으로 시작하나 보고) 말을 조금만 다듬어도 색이 사라진다.
+         */
+        ImportProblem: {
+            /** Field */
+            field: string | null;
+            /** Message */
+            message: string;
         };
         /** LimitOut */
         LimitOut: {
@@ -6094,6 +6151,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["EquipmentFilterOptionsOut"];
+                };
+            };
+        };
+    };
+    equipment_import_columns_api_equipment_import_columns_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ImportColumn"][];
                 };
             };
         };

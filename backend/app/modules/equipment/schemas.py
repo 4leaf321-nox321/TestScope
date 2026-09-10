@@ -174,8 +174,38 @@ class EquipmentImportRequest(BaseModel):
     text: str
 
 
+class ImportColumn(BaseModel):
+    """반입 표의 열 하나.
+
+    **화면이 자기 목록을 따로 들지 않게** 서버가 준다. 두 벌로 두면 열을 하나 더한
+    날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히 버려진다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    key: str
+    label: str
+    required: bool
+    """비우면 그 줄을 못 넣는 칸인가. 전부 「없으면 그 장비를 못 찾는」 것들이다."""
+
+
+class ImportProblem(BaseModel):
+    """한 줄에서 걸린 것 하나. **어느 칸인지 함께 준다.**
+
+    화면이 그 칸을 붉게 칠하려면 열을 알아야 한다. 글자에서 되짚어 찾게 하면
+    (「거점:」 으로 시작하나 보고) 말을 조금만 다듬어도 색이 사라진다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    field: str | None
+    """열 키. **`None` 이면 줄 전체의 문제**다 — 자산번호가 다른 줄과 겹치는 것처럼
+    한 칸에 못 붙이는 것이 있다."""
+    message: str
+
+
 class EquipmentImportRow(BaseModel):
-    """반입 파일의 한 줄이 어떻게 읽혔나.
+    """붙여넣은 한 줄이 어떻게 읽혔나.
 
     **줄 번호를 준다.** 「12번째 줄」 이라고 말해 줘야 사람이 엑셀에서 그 줄을 찾는다 —
     자산번호만 주면 아직 자산번호가 안 적힌 줄은 가리킬 방법이 없다.
@@ -184,13 +214,19 @@ class EquipmentImportRow(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     line: int
-    """파일에서 몇 번째 줄인가. 머리글 다음이 2 다 — 엑셀이 보여 주는 번호와 같다."""
+    """붙여넣은 것에서 몇 번째 줄인가. 머리글 다음이 2 다 — 엑셀이 보여 주는 번호와 같다."""
+    cells: dict[str, str]
+    """**서버가 읽은 그대로**의 칸 값(열 키 -> 글자).
+
+    화면이 이것을 표로 그린다. 화면이 다시 파싱하게 두면 구분자 고르기·빈 줄
+    건너뛰기·머리글 별칭이 두 벌이 되고, 두 벌은 반드시 어긋난다 — 그때 사람은
+    자기가 붙여넣은 것과 다른 표를 본다."""
     asset_no: str | None
     name: str | None
     model_linked: bool
     """카탈로그의 기종에 이어졌나. **안 이어지면 시험 항목이 0 건**이고, 0 건이면
     그 장비는 검색에 절대 안 걸린다 — 넣기 전에 보여 줘야 하는 사실이다."""
-    problems: list[str]
+    problems: list[ImportProblem]
     """빈 목록이면 넣을 수 있다. 첫 문제에서 멈추지 않고 **모아서** 준다 — 하나씩
     알려 주면 사람이 고치고 올리기를 문제 수만큼 되풀이한다."""
 

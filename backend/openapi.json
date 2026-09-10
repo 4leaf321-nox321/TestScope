@@ -2584,6 +2584,32 @@
         }
       }
     },
+    "/api/equipment/import/columns": {
+      "get": {
+        "tags": [
+          "equipment"
+        ],
+        "summary": "Equipment Import Columns",
+        "description": "반입 표의 열. **화면이 자기 목록을 따로 들지 않게** 서버가 준다.\n\n두 벌로 두면 열을 하나 더한 날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히\n버려진다 — 그리고 그 손실은 넣은 사람 눈에 안 보인다.\n\n`/{equipment_id}` 보다 **먼저 선언한다.**",
+        "operationId": "equipment_import_columns_api_equipment_import_columns_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImportColumn"
+                  },
+                  "type": "array",
+                  "title": "Response Equipment Import Columns Api Equipment Import Columns Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/equipment/import/template": {
       "get": {
         "tags": [
@@ -6980,6 +7006,13 @@
             "type": "integer",
             "title": "Line"
           },
+          "cells": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Cells"
+          },
           "asset_no": {
             "anyOf": [
               {
@@ -7008,7 +7041,7 @@
           },
           "problems": {
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/ImportProblem"
             },
             "type": "array",
             "title": "Problems"
@@ -7017,13 +7050,14 @@
         "type": "object",
         "required": [
           "line",
+          "cells",
           "asset_no",
           "name",
           "model_linked",
           "problems"
         ],
         "title": "EquipmentImportRow",
-        "description": "반입 파일의 한 줄이 어떻게 읽혔나.\n\n**줄 번호를 준다.** 「12번째 줄」 이라고 말해 줘야 사람이 엑셀에서 그 줄을 찾는다 —\n자산번호만 주면 아직 자산번호가 안 적힌 줄은 가리킬 방법이 없다."
+        "description": "붙여넣은 한 줄이 어떻게 읽혔나.\n\n**줄 번호를 준다.** 「12번째 줄」 이라고 말해 줘야 사람이 엑셀에서 그 줄을 찾는다 —\n자산번호만 주면 아직 자산번호가 안 적힌 줄은 가리킬 방법이 없다."
       },
       "EquipmentModelCreateRequest": {
         "properties": {
@@ -9482,6 +9516,56 @@
         ],
         "title": "HomeWorkspaceRequest",
         "description": "대표 소속을 정한다.\n\n**비우는 길은 두지 않는다.** 대표 소속이 없으면 로그인이 소속 중 첫 부서로\n떨어지는데 그것은 사람이 정한 값이 아니다. 지우고 싶은 상황은 실제로는\n\"다른 부서로 옮긴다\" 이므로 그때도 새 값을 준다."
+      },
+      "ImportColumn": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "required": {
+            "type": "boolean",
+            "title": "Required"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "required"
+        ],
+        "title": "ImportColumn",
+        "description": "반입 표의 열 하나.\n\n**화면이 자기 목록을 따로 들지 않게** 서버가 준다. 두 벌로 두면 열을 하나 더한\n날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히 버려진다."
+      },
+      "ImportProblem": {
+        "properties": {
+          "field": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Field"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "field",
+          "message"
+        ],
+        "title": "ImportProblem",
+        "description": "한 줄에서 걸린 것 하나. **어느 칸인지 함께 준다.**\n\n화면이 그 칸을 붉게 칠하려면 열을 알아야 한다. 글자에서 되짚어 찾게 하면\n(「거점:」 으로 시작하나 보고) 말을 조금만 다듬어도 색이 사라진다."
       },
       "LimitOut": {
         "properties": {

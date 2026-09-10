@@ -37,6 +37,7 @@ from app.modules.equipment.schemas import (
     EquipmentSpecSaveResult,
     EquipmentSpecSheetOut,
     EquipmentUpdateRequest,
+    ImportColumn,
     ModelLimitOut,
     ModelLimitUpsertRequest,
     ModelSpecSaveResult,
@@ -123,6 +124,18 @@ def equipment_filter_options(
     읽혀 422 가 난다.
     """
     return services.filter_options(db, user)
+
+
+@router.get("/import/columns", response_model=list[ImportColumn])
+def equipment_import_columns(_: User = Depends(current_user)) -> list[ImportColumn]:
+    """반입 표의 열. **화면이 자기 목록을 따로 들지 않게** 서버가 준다.
+
+    두 벌로 두면 열을 하나 더한 날 한쪽만 고쳐지고, 그때 사람이 채운 칸이 조용히
+    버려진다 — 그리고 그 손실은 넣은 사람 눈에 안 보인다.
+
+    `/{equipment_id}` 보다 **먼저 선언한다.**
+    """
+    return imports.columns()
 
 
 @router.get("/import/template")
