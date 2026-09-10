@@ -341,7 +341,7 @@ def list_equipment(
     )
 
 
-def _owner_of(db: Session, user: User, slug: Any) -> uuid.UUID:
+def owner_workspace(db: Session, user: User, slug: Any) -> uuid.UUID:
     """보유 부서를 정한다. **비울 수 없다.**
 
     전에는 비우면 「전사 공용」 이었는데, 그러면 공용으로 표시하는 순간 관리 부서를
@@ -496,7 +496,16 @@ def filter_options(db: Session, user: User) -> EquipmentFilterOptionsOut:
     )
 
 
-def create(db: Session, user: User, payload: dict[str, Any]) -> Equipment:
+def create(
+    db: Session, user: User, payload: dict[str, Any], *, commit: bool = True
+) -> Equipment:
+    """장비 한 대를 만든다.
+
+    `commit=False` 는 **일괄 반입**을 위한 것이다. 300줄을 넣다 12줄째에서 막혔을 때
+    앞의 11줄이 이미 커밋돼 있으면, 사람은 파일을 고쳐 다시 올리다가 그 11줄에서
+    「이미 등록된 자산번호」 를 만나고 무엇을 지워야 할지 모른다 — 전부 되거나
+    전부 안 되거나여야 한다(`imports.py`).
+    """
     asset_no = clean(payload["asset_no"])
     if db.scalar(select(Equipment).where(Equipment.asset_no == asset_no)) is not None:
         raise Conflict("TSC-EQUIPMENT-0003", f"이미 등록된 자산번호입니다: {asset_no}")
@@ -510,7 +519,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> Equipment:
     )
     _check_identity(db, payload.get("category_term_id"), payload.get("model_id"))
 
-    owner = _owner_of(db, user, payload.get("workspace_slug"))
+    owner = owner_workspace(db, user, payload.get("workspace_slug"))
     linked = payload.get("model_id") is not None
     row = Equipment(
         asset_no=asset_no,
@@ -544,6 +553,10 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> Equipment:
     # "장비는 생겼는데 시험 항목만 없는" 상태가 안 생긴다(ADR 0004).
     copied = catalog.copy_test_items_to(db, row, user)
 
+    if not commit:
+        # 부른 쪽이 트랜잭션을 들고 있다. 여기서 커밋하면 그 쪽의 「전부 아니면
+        # 전무」 가 깨진다.
+        return row
     db.commit()
     db.refresh(row)
     if copied:
@@ -581,7 +594,7 @@ def update(
     if "workspace_slug" in changes:
         # 이관은 **양쪽 다 관리자**여야 한다. 받는 쪽 권한을 안 보면 남의 부서에
         # 장비를 밀어 넣을 수 있고, 그 부서는 자기가 안 만든 장비를 떠안는다.
-        row.owner_workspace_id = _owner_of(db, user, changes["workspace_slug"])
+        row.owner_workspace_id = owner_workspace(db, user, changes["workspace_slug"])
 
     if "status" in changes and changes["status"] is not None:
         status = changes["status"]

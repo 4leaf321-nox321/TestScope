@@ -4,18 +4,25 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, File, Query, Response, UploadFile
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
-from app.modules.equipment import catalog, equipment_specs, services, specs
+from app.modules.equipment import (
+    catalog,
+    equipment_specs,
+    imports,
+    services,
+    specs,
+)
 from app.modules.equipment.schemas import (
     CalibrationCreateRequest,
     CalibrationOut,
     CatalogFilterOptionsOut,
     EquipmentCreateRequest,
     EquipmentFilterOptionsOut,
+    EquipmentImportResult,
     EquipmentModelCreateRequest,
     EquipmentModelOut,
     EquipmentModelRow,
@@ -115,6 +122,58 @@ def equipment_filter_options(
     읽혀 422 가 난다.
     """
     return services.filter_options(db, user)
+
+
+@router.get("/import/template")
+def equipment_import_template(_: User = Depends(current_user)) -> Response:
+    """대장 서식(CSV)을 내려받는다.
+
+    **빈 서식만 주지 않는다** — 보기 한 줄을 함께 넣는다. 「공용여부에 뭘 적나」 를
+    사람이 물어야 하면 그 서식은 절반만 쓸모가 있다.
+
+    `/{equipment_id}` 보다 **먼저 선언한다.**
+    """
+    return Response(
+        content=imports.template_csv().encode("utf-8"),
+        media_type="text/csv; charset=utf-8",
+        headers={"Content-Disposition": 'attachment; filename="testscope-equipment.csv"'},
+    )
+
+
+@router.post("/import", response_model=EquipmentImportResult)
+async def import_equipment(
+    file: UploadFile = File(...),
+    dry_run: bool = Query(default=True),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> EquipmentImportResult:
+    """부서 대장(CSV)을 통째로 받는다.
+
+    ## 두 걸음이다
+
+    `dry_run=true`(기본)이면 **아무것도 저장하지 않고** 줄마다 판정만 돌려준다.
+    300줄 중 틀린 12줄을 넣기 전에 알아야 하고, 그 12줄이 파일의 몇 번째 줄인지
+    말해 줘야 사람이 엑셀에서 찾는다.
+
+    화면은 같은 파일을 두 번 보낸다: 먼저 미리보기, 사람이 확인하면 `dry_run=false`.
+
+    ## 전부 되거나 전부 안 되거나
+
+    한 줄이라도 문제가 있으면 아무것도 안 넣는다. 되는 것만 넣으면 사람은 파일을
+    고쳐 다시 올리다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만나고, 그때
+    무엇을 지워야 할지 모른다.
+
+    ## 이름으로 적는다
+
+    부서·거점·장비유형·기종을 **이름으로** 적는다. 후보가 여럿이면 고르지 않고
+    거절한다(ADR 0003) — 비슷한 기종에 끼워 넣으면 그 장비의 하중·온도가 남의 것이
+    되고, 검색은 그 남의 수치로 「됩니다」 라고 답한다.
+
+    기준정보에 없는 거점·분류는 **여기서 만들지 않는다.** 반입이 값을 만들면 오타가
+    그대로 축이 되고, 「본사」 와 「본사 」 가 서로 다른 거점이 된다.
+    """
+    raw = await file.read()
+    return imports.run(db, user, raw, dry_run=dry_run)
 
 
 @router.post("", response_model=EquipmentOut, status_code=201)

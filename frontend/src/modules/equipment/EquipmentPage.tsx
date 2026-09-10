@@ -15,7 +15,7 @@
  */
 
 import { useEffect, useState } from 'react'
-import { Plus } from 'lucide-react'
+import { Plus, Upload } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
@@ -44,6 +44,7 @@ import {
   activeCount,
 } from '@/modules/equipment/EquipmentFilters'
 import type { EquipmentFilterState } from '@/modules/equipment/EquipmentFilters'
+import { EquipmentImportDialog } from '@/modules/equipment/EquipmentImportDialog'
 import { NewEquipmentDialog } from '@/modules/equipment/NewEquipmentDialog'
 
 /** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다. */
@@ -67,6 +68,7 @@ export default function EquipmentPage() {
   const [filters, setFilters] = useState<EquipmentFilterState>(fromUrl)
   const [offset, setOffset] = useState(0)
   const [creating, setCreating] = useState(false)
+  const [importing, setImporting] = useState(false)
 
   // 글자마다 조회하지 않는다 — 타이핑 중에 결과가 요동치면 읽는 눈이 미끄러진다.
   // 고르는 칸(피커·드롭다운)은 기다릴 것이 없지만, 한 자리에서 다루는 편이 낫다.
@@ -113,10 +115,18 @@ export default function EquipmentPage() {
           // **볼 수 있는 것만 보여 준다.** 눌러야 403 을 아는 단추는 할 수 있는
           // 일을 알려 주지 못한다. 판정은 서버가 다시 한다.
           canCreate ? (
-            <Button onClick={() => setCreating(true)}>
-              <Plus className="size-4" />
-              장비 등록
-            </Button>
+            <div className="flex gap-2">
+              {/* **대장은 대개 엑셀로 온다.** 한 대씩 넣게 두면 수백 대를 가진
+                  부서는 시작조차 못 하고, 대장이 비면 검색은 아무 답도 못 한다. */}
+              <Button variant="outline" onClick={() => setImporting(true)}>
+                <Upload className="size-4" />
+                일괄 반입
+              </Button>
+              <Button onClick={() => setCreating(true)}>
+                <Plus className="size-4" />
+                장비 등록
+              </Button>
+            </div>
           ) : undefined
         }
       />
@@ -273,6 +283,12 @@ export default function EquipmentPage() {
           )}
         </div>
       )}
+
+      <EquipmentImportDialog
+        open={importing}
+        onClose={() => setImporting(false)}
+        onDone={() => page.reload()}
+      />
 
       <NewEquipmentDialog
         open={creating}

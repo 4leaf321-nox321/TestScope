@@ -1,0 +1,147 @@
+/**
+ * 일괄 반입 창 — **넣기 전에 보여 주고, 문제가 있으면 안 넣는다.**
+ *
+ * 이 창이 잘못 동작하면 한 번에 수백 대가 잘못 들어간다. 그리고 잘못 들어간 장비는
+ * 지우기 전까지 검색이 계속 그것으로 답한다.
+ */
+
+import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { act, render, screen } from '@testing-library/react'
+
+const calls: { path: string }[] = []
+let answer: Record<string, unknown> = {}
+
+vi.mock('@/shared/api/client', () => ({
+  api: {
+    get: vi.fn(async () => []),
+    upload: vi.fn(async (path: string) => {
+      calls.push({ path })
+      return answer
+    }),
+  },
+  downloadFile: vi.fn(async () => undefined),
+  ApiError: class extends Error {},
+}))
+
+import { EquipmentImportDialog } from '@/modules/equipment/EquipmentImportDialog'
+
+function csv(): File {
+  return new File(['자산번호\nA-1\n'], '대장.csv', { type: 'text/csv' })
+}
+
+async function open() {
+  await act(async () => {
+    render(<EquipmentImportDialog open onClose={() => {}} onDone={() => {}} />)
+  })
+}
+
+/** 파일을 고른 것처럼 만든다. */
+async function pick() {
+  const input = document.querySelector('input[type="file"]') as HTMLInputElement
+  Object.defineProperty(input, 'files', { value: [csv()], configurable: true })
+  await act(async () => {
+    input.dispatchEvent(new Event('change', { bubbles: true }))
+  })
+}
+
+function commitButton(): HTMLButtonElement {
+  const found = screen
+    .getAllByRole('button')
+    .find((one) => one.textContent?.includes('넣기')) as HTMLButtonElement
+  return found
+}
+
+beforeEach(() => {
+  calls.length = 0
+})
+
+describe('일괄 반입', () => {
+  it('파일을 고르면 먼저 미리보기를 부른다', async () => {
+    answer = { total: 2, ready: 2, problems: 0, created: 0, rows: [] }
+    await open()
+    await pick()
+    // **넣기 전에 본다.** 300줄 중 틀린 12줄을 넣고 나서 알면 늦다.
+    expect(calls[0].path).toContain('dry_run=true')
+  })
+
+  it('문제가 있으면 넣는 단추가 안 눌린다', async () => {
+    answer = {
+      total: 2,
+      ready: 1,
+      problems: 1,
+      created: 0,
+      rows: [
+        { line: 2, asset_no: 'A-1', name: '만능기', model_linked: true, problems: [] },
+        {
+          line: 3,
+          asset_no: null,
+          name: null,
+          model_linked: false,
+          problems: ['자산번호: 비어 있습니다'],
+        },
+      ],
+    }
+    await open()
+    await pick()
+    // **전부 되거나 전부 안 되거나.** 되는 것만 넣으면 사람은 파일을 고쳐 다시
+    // 올리다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만난다.
+    expect(commitButton().disabled).toBe(true)
+    expect(screen.getByText(/아무것도 넣지 않았습니다/)).toBeTruthy()
+  })
+
+  it('문제를 줄 번호로 보여 준다', async () => {
+    answer = {
+      total: 1,
+      ready: 0,
+      problems: 1,
+      created: 0,
+      rows: [
+        {
+          line: 12,
+          asset_no: 'A-9',
+          name: null,
+          model_linked: false,
+          problems: ['거점: 「본사」 가 기준정보에 없습니다'],
+        },
+      ],
+    }
+    await open()
+    await pick()
+    // 「12번째 줄」 이라고 말해 줘야 사람이 엑셀에서 찾는다.
+    expect(screen.getByText('12번째 줄')).toBeTruthy()
+    expect(screen.getByText(/기준정보에 없습니다/)).toBeTruthy()
+  })
+
+  it('기종에 안 이어진 줄이 몇인지 넣기 전에 말한다', async () => {
+    answer = {
+      total: 2,
+      ready: 2,
+      problems: 0,
+      created: 0,
+      rows: [
+        { line: 2, asset_no: 'A-1', name: '가', model_linked: true, problems: [] },
+        { line: 3, asset_no: 'A-2', name: '나', model_linked: false, problems: [] },
+      ],
+    }
+    await open()
+    await pick()
+    // 막지는 않는다(자작 장비가 실제로 있다). 다만 **검색에 안 걸린다**는 사실은
+    // 넣기 전에 알아야 한다 — 나중에 알면 대장에만 있고 아무도 못 찾는 장비가 된다.
+    expect(screen.getByText(/검색에 걸리지 않습니다/)).toBeTruthy()
+    expect(commitButton().disabled).toBe(false)
+  })
+
+  it('확인하면 같은 파일을 dry_run 없이 다시 보낸다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [] }
+    await open()
+    await pick()
+    answer = { total: 1, ready: 1, problems: 0, created: 1, rows: [] }
+    await act(async () => {
+      commitButton().click()
+    })
+    // 서버가 미리보기 결과를 들고 있지 않다 — 그 사이 남이 같은 자산번호를 넣었어도
+    // 여기서 다시 걸린다.
+    expect(calls[1].path).toContain('dry_run=false')
+    expect(screen.getByText(/등록했습니다/)).toBeTruthy()
+  })
+})

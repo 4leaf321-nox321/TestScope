@@ -1,6 +1,6 @@
 /** 장비·시험 항목 API. */
 
-import { api } from '@/shared/api/client'
+import { api, downloadFile } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'
 
 export type Equipment = components['schemas']['EquipmentOut']
@@ -32,6 +32,8 @@ export type ModelHeadlineSpec = components['schemas']['ModelHeadlineSpecOut']
 export type EquipmentSeriesRow = components['schemas']['EquipmentSeriesRow']
 export type EquipmentModelRow = components['schemas']['EquipmentModelRow']
 export type CatalogFilterOptions = components['schemas']['CatalogFilterOptionsOut']
+export type EquipmentImportResult = components['schemas']['EquipmentImportResult']
+export type EquipmentImportRow = components['schemas']['EquipmentImportRow']
 type SeriesPage = components['schemas']['Page_EquipmentSeriesRow_']
 type ModelPage = components['schemas']['Page_EquipmentModelRow_']
 
@@ -88,6 +90,24 @@ export const equipmentApi = {
    * 주는데, 목록에는 열린 부서의 장비가 함께 보인다.
    */
   filterOptions: () => api.get<EquipmentFilterOptions>('/equipment/filter-options'),
+
+  /**
+   * 부서 대장(CSV)을 통째로 올린다. **두 걸음이다.**
+   *
+   * `dryRun` 이면 아무것도 저장하지 않고 줄마다 판정만 온다. 300줄 중 틀린 12줄을
+   * 넣기 전에 알아야 하고, 그 12줄이 파일의 몇 번째 줄인지 알아야 엑셀에서 찾는다.
+   *
+   * 사람이 확인하면 **같은 파일**을 `dryRun: false` 로 다시 보낸다 — 서버가 상태를
+   * 들고 있지 않으므로, 그 사이에 남이 같은 자산번호를 넣었어도 다시 걸린다.
+   */
+  importFile: (file: File, dryRun: boolean) =>
+    api.upload<EquipmentImportResult>(
+      `/equipment/import?dry_run=${dryRun ? 'true' : 'false'}`,
+      file,
+    ),
+
+  /** 대장 서식을 내려받는다. 평범한 링크로는 안 된다(토큰이 안 실린다). */
+  importTemplate: () => downloadFile('/equipment/import/template', 'testscope-장비대장.csv'),
   read: (id: string) => api.get<Equipment>(`/equipment/${id}`),
   create: (body: Record<string, unknown>) => api.post<Equipment>('/equipment', body),
   update: (id: string, body: Record<string, unknown>) =>
