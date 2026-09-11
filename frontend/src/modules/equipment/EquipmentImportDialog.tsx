@@ -37,6 +37,17 @@
  * 다만 붙여넣기 직후만은 서버가 읽은 값을 그대로 받는다 — 그게 파싱 결과이고,
  * 화면이 다시 파싱하면 규칙이 두 벌이 되어 반드시 어긋난다.
  *
+ * ## 없는 거점·분류는 여기서 만든다
+ *
+ * 대장에 새 거점이 섞여 있는 것은 흔하다. 「기준정보에서 먼저 만드세요」 하고 멈추면
+ * 사람은 창을 닫고 나갔다 와야 하고, **그 사이 표에서 고치던 것을 잃는다.** 거점과
+ * 장비 분류는 원래 누구나 더하는 열린 축이라(`entry_policy=open`) 막을 이유가 없다.
+ *
+ * 다만 **반입이 스스로 만들지는 않는다.** 오타가 그대로 축이 되면 「본사」 와 「본사 」
+ * 가 서로 다른 거점이 되고, 그 둘은 나중에 합칠 방법이 없다. 사람이 눌러서 만든다.
+ *
+ * 같은 값이 300줄에 50번 나와도 **단추는 하나**다.
+ *
  * ## 전부 되거나 전부 안 되거나
  *
  * 문제가 하나라도 있으면 넣는 단추를 안 준다. 되는 것만 넣으면 사람은 고쳐 다시
@@ -66,6 +77,7 @@ import {
 } from '@/shared/components/ui/dialog'
 import { useResource } from '@/shared/hooks/useResource'
 import { equipmentApi } from '@/modules/equipment/api'
+import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { EquipmentImportResult, ImportColumn } from '@/modules/equipment/api'
 import { GRID_MAX, ImportGrid, filled } from '@/modules/equipment/ImportGrid'
 import type { GridRow } from '@/modules/equipment/ImportGrid'
@@ -308,6 +320,44 @@ export function EquipmentImportDialog({
     sent.current = ''
   }
 
+  /** 만들 수 있는 것들. **고유한 (축, 값) 으로 묶는다** — 같은 거점이 50줄에 나와도
+   *  단추는 하나여야 한다. */
+  const makeable = useMemo(() => {
+    const found = new Map<string, { axis: string; value: string; label: string }>()
+    for (const row of rows) {
+      for (const one of row.problems) {
+        if (!one.make_axis || !one.make_value) continue
+        const key = `${one.make_axis}:${one.make_value}`
+        if (found.has(key)) continue
+        const column = (columns.data ?? []).find((col) => col.key === one.field)
+        found.set(key, {
+          axis: one.make_axis,
+          value: one.make_value,
+          label: column?.label ?? one.make_axis,
+        })
+      }
+    }
+    return [...found.values()]
+  }, [rows, columns.data])
+
+  /** 축에 값 하나를 더하고 다시 판정받는다. */
+  async function make(axis: string, value: string) {
+    setPhase('looking')
+    setError(null)
+    try {
+      await vocabularyApi.createTerm(axis, { value })
+      // 방금 만든 것이 반영되게 **강제로 다시 묻는다** — 표 글자는 안 바뀌었으므로
+      // 그냥 두면 「같은 것은 두 번 안 보낸다」 에 걸려 판정이 그대로 남는다.
+      sent.current = ''
+      const result = await equipmentApi.importPaste(asText, true)
+      apply(result)
+    } catch (thrown) {
+      setError(thrown as ApiError)
+    } finally {
+      setPhase('idle')
+    }
+  }
+
   const bad = rows.filter((one) => one.problems.length > 0)
   const unlinked = sending.filter(
     (one) => one.problems.length === 0 && !one.modelLinked,
@@ -375,6 +425,25 @@ export function EquipmentImportDialog({
           </div>
 
           <ErrorNotice error={error} />
+
+          {makeable.length > 0 && (
+            // **창을 안 떠나고 만든다.** 나갔다 오면 표에서 고치던 것을 잃는다.
+            <div className="flex flex-wrap items-center gap-2 rounded-md border border-amber-300 bg-amber-50 p-2 text-sm">
+              <span>기준정보에 없는 값 {makeable.length}개 —</span>
+              {makeable.map((one) => (
+                <Button
+                  key={`${one.axis}:${one.value}`}
+                  size="sm"
+                  variant="outline"
+                  disabled={phase !== 'idle'}
+                  onClick={() => void make(one.axis, one.value)}
+                >
+                  <Plus className="size-4" />
+                  {one.label} 「{one.value}」 만들기
+                </Button>
+              ))}
+            </div>
+          )}
 
           {done !== null && (
             <div className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm">

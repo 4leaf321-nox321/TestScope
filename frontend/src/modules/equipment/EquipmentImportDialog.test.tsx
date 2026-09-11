@@ -23,6 +23,17 @@ const COLUMNS = [
   { key: 'note', label: '비고', required: false, aliases: ['비고', 'note'] },
 ]
 
+const made: { slug: string; value: string }[] = []
+
+vi.mock('@/modules/vocabulary/api', () => ({
+  vocabularyApi: {
+    createTerm: vi.fn(async (slug: string, body: { value: string }) => {
+      made.push({ slug, value: body.value })
+      return { id: 'new' }
+    }),
+  },
+}))
+
 vi.mock('@/shared/api/client', () => ({
   api: {
     get: vi.fn(async (path: string) => {
@@ -81,6 +92,7 @@ function commitButton(): HTMLButtonElement {
 
 beforeEach(() => {
   calls.length = 0
+  made.length = 0
   vi.useFakeTimers({ shouldAdvanceTime: true })
 })
 
@@ -312,6 +324,90 @@ describe('표에서 고치기', () => {
       vi.advanceTimersByTime(2000)
     })
     expect(calls).toHaveLength(0)
+  })
+})
+
+describe('없는 거점·분류 만들기', () => {
+  const missing = (value: string) => ({
+    total: 1,
+    ready: 0,
+    problems: 1,
+    created: 0,
+    rows: [
+      row({
+        cells: { asset_no: 'A-1', name: '만능기', site: value, note: '' },
+        problems: [
+          {
+            field: 'site',
+            message: `거점: 「${value}」 가 기준정보에 없습니다`,
+            make_axis: 'site',
+            make_value: value,
+          },
+        ],
+      }),
+    ],
+  })
+
+  it('그 자리에서 만들 수 있다고 말한다', async () => {
+    answer = missing('3공장')
+    await open()
+    await paste()
+    // 「기준정보에서 먼저 만드세요」 하고 멈추면 창을 닫고 나갔다 와야 하고,
+    // 그 사이 표에서 고치던 것을 잃는다.
+    expect(screen.getByRole('button', { name: /거점 「3공장」 만들기/ })).toBeTruthy()
+  })
+
+  it('누르면 축에 값을 만들고 다시 판정받는다', async () => {
+    answer = missing('3공장')
+    await open()
+    await paste()
+    calls.length = 0
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+
+    await act(async () => {
+      screen.getByRole('button', { name: /만들기/ }).click()
+    })
+    // **반입이 스스로 만들지는 않는다** — 사람이 눌러서 만든다.
+    expect(made).toEqual([{ slug: 'site', value: '3공장' }])
+    // 표 글자는 안 바뀌었으므로 강제로 다시 물어야 판정이 갱신된다.
+    expect(calls).toHaveLength(1)
+    expect(commitButton().disabled).toBe(false)
+  })
+
+  it('같은 값이 여러 줄에 있어도 단추는 하나다', async () => {
+    const one = missing('3공장').rows[0]
+    answer = {
+      total: 3,
+      ready: 0,
+      problems: 3,
+      created: 0,
+      rows: [one, { ...one }, { ...one }],
+    }
+    await open()
+    await paste()
+    // 300줄에 같은 거점이 50번 나와도 단추가 50개면 그 줄은 못 읽는다.
+    expect(screen.getAllByRole('button', { name: /만들기/ })).toHaveLength(1)
+    expect(screen.getByText(/기준정보에 없는 값 1개/)).toBeTruthy()
+  })
+
+  it('만들 수 없는 문제에는 단추를 안 준다', async () => {
+    answer = {
+      total: 1,
+      ready: 0,
+      problems: 1,
+      created: 0,
+      rows: [
+        row({
+          problems: [
+            { field: 'model', message: '기종: 하나로 정할 수 없습니다', make_axis: null },
+          ],
+        }),
+      ],
+    }
+    await open()
+    await paste()
+    // 카탈로그의 기종은 여기서 만들 수 있는 것이 아니다 — 계열도 사양도 없다.
+    expect(screen.queryAllByRole('button', { name: /만들기/ })).toHaveLength(0)
   })
 })
 

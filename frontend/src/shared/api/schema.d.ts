@@ -3041,6 +3041,10 @@ export interface components {
             field: string | null;
             /** Message */
             message: string;
+            /** Make Axis */
+            make_axis?: string | null;
+            /** Make Value */
+            make_value?: string | null;
         };
         /** LimitOut */
         LimitOut: {

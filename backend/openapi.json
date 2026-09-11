@@ -9565,6 +9565,28 @@
           "message": {
             "type": "string",
             "title": "Message"
+          },
+          "make_axis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Make Axis"
+          },
+          "make_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Make Value"
           }
         },
         "type": "object",

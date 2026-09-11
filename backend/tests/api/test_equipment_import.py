@@ -499,3 +499,51 @@ def test_서버가_읽은_칸_값을_그대로_돌려준다(client: TestClient, 
         one["key"]
         for one in client.get("/api/equipment/import/columns", headers=admin.headers).json()
     }
+
+
+def test_축에_없는_값은_그_자리에서_만들_수_있다고_알려_준다(
+    client: TestClient, admin: Signed
+) -> None:
+    """거점 「3공장」 이 아직 없다고 반입을 멈추면, 사람은 창을 닫고 기준정보로 가서
+    만들고 돌아와 다시 붙여넣어야 한다 — 그 사이 표에서 고치던 것을 잃는다.
+
+    **열린 축은 원래 누구나 더한다**(`entry_policy=open`). 여기서 막을 이유가 없다.
+    다만 **반입이 스스로 만들지는 않는다** — 오타가 그대로 축이 되면 「본사」 와
+    「본사 」 가 서로 다른 거점이 되고, 그 둘은 나중에 합칠 방법이 없다.
+    """
+    workspace, _site, category = _fixture(client, admin)
+    fresh = f"3공장{uuid.uuid4().hex[:6]}"
+    body = (
+        f"{HEADER}\n"
+        f"MAKE-{uuid.uuid4().hex[:6]},만능기,{workspace},{fresh},3동,{category},,가동,예\n"
+    )
+    row = _upload(client, admin, body)["rows"][0]
+    said = next(one for one in row["problems"] if one["field"] == "site")
+    assert said["make_axis"] == "site"
+    assert said["make_value"] == fresh
+    # 「먼저 만드세요」 라고 시키지 않는다 — 여기서 만들 수 있으니까.
+    assert "먼저 만드세요" not in said["message"]
+
+    # **반입이 만들지는 않았다.**
+    terms = client.get("/api/vocabularies/site/terms", headers=admin.headers)
+    assert fresh not in {one["value"] for one in terms.json()}
+
+    # 사람이 만들면 그 다음 판정이 통과한다.
+    made = client.post(
+        "/api/vocabularies/site/terms", json={"value": fresh}, headers=admin.headers
+    )
+    assert made.status_code == 201, made.text
+    assert _upload(client, admin, body)["ready"] == 1
+
+
+def test_같은_이름이_여럿이면_만들라고_하지_않는다(client: TestClient, admin: Signed) -> None:
+    """이미 있는데 하나로 못 정하는 것이다. 또 만들면 셋이 된다."""
+    workspace, _site, category = _fixture(client, admin)
+    body = (
+        f"{HEADER}\n"
+        f"DUPV-{uuid.uuid4().hex[:6]},만능기,{workspace},{category},3동,{category},,가동,예\n"
+    )
+    # 거점 자리에 분류 이름을 적었다 — 거점 축에는 없으므로 「만들 수 있다」 가 온다.
+    row = _upload(client, admin, body)["rows"][0]
+    said = next(one for one in row["problems"] if one["field"] == "site")
+    assert said["make_axis"] == "site"

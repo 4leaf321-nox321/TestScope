@@ -229,10 +229,22 @@ class Problems:
     def __init__(self) -> None:
         self.items: list[ImportProblem] = []
 
-    def add(self, field: str | None, said: str) -> None:
+    def add(
+        self,
+        field: str | None,
+        said: str,
+        *,
+        make_axis: str | None = None,
+        make_value: str | None = None,
+    ) -> None:
         label = COLUMNS[field][0] if field in COLUMNS else None
         self.items.append(
-            ImportProblem(field=field, message=f"{label}: {said}" if label else said)
+            ImportProblem(
+                field=field,
+                message=f"{label}: {said}" if label else said,
+                make_axis=make_axis,
+                make_value=make_value,
+            )
         )
 
     def __bool__(self) -> bool:
@@ -257,12 +269,17 @@ class Lookup:
         self.workspace_problem: dict[str, str] = {}
         self.models: dict[str, tuple[uuid.UUID | None, str]] = {}
         self.terms: dict[str, dict[str, list[uuid.UUID]]] = {}
+        #: 그 축이 **누구나 값을 더할 수 있는 축인가**. 열린 축이면 없는 값을
+        #: 그 자리에서 만들 수 있다고 알려 준다.
+        self.open_axis: set[str] = set()
 
         for axis in ("site", "equipment_category"):
             self.terms[axis] = {}
             vocabulary = db.scalar(select(Vocabulary).where(Vocabulary.slug == axis))
             if vocabulary is None:
                 continue
+            if vocabulary.entry_policy == "open":
+                self.open_axis.add(axis)
             for term in db.scalars(
                 select(VocabularyTerm).where(VocabularyTerm.vocabulary_id == vocabulary.id)
             ):
@@ -322,8 +339,15 @@ class Lookup:
         if len(found) == 1:
             return found[0]
         if not found:
+            # **열린 축이면 그 자리에서 만들 수 있다.** 창을 닫고 기준정보로 갔다
+            # 오게 하면 표에서 고치던 것을 잃는다.
+            can = axis in self.open_axis
             problems.add(
-                field, f"「{text}」 가 기준정보에 없습니다. 기준정보에서 먼저 만드세요"
+                field,
+                f"「{text}」 가 기준정보에 없습니다"
+                + ("" if can else ". 기준정보에서 먼저 만드세요"),
+                make_axis=axis if can else None,
+                make_value=body if can else None,
             )
         else:
             problems.add(field, f"「{text}」 가 여럿입니다 ({len(found)}개)")
