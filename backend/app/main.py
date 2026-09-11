@@ -24,6 +24,7 @@ from app.modules.equipment import routes as equipment_routes
 from app.modules.methods import routes as methods_routes
 from app.modules.notices import routes as notices_routes
 from app.modules.notifications import routes as notifications_routes
+from app.modules.properties import routes as properties_routes
 from app.modules.resolve import routes as resolve_routes
 from app.modules.search import routes as search_routes
 from app.modules.server import routes as server_routes
@@ -66,6 +67,8 @@ def _api_router() -> APIRouter:
     router.include_router(methods_routes.router)
     router.include_router(capabilities_routes.router)
     router.include_router(search_routes.router)
+    router.include_router(properties_routes.router)
+    router.include_router(properties_routes.links_router)
     router.include_router(notices_routes.router)
     router.include_router(notifications_routes.router)
     router.include_router(audit_routes.router)

@@ -23,6 +23,7 @@ from sqlalchemy.orm import Session
 from app.modules.accounts.models import User
 from app.modules.equipment.models import AVAILABLE_STATUSES, Equipment, EquipmentCalibration
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.properties.services import test_item_ids_for_property
 from app.modules.search.schemas import (
     ConditionMatch,
     ConditionQuery,
@@ -119,6 +120,14 @@ def _candidates(db: Session, user: User, request: SearchRequest) -> list[Equipme
     )
     if request.test_item_term_id:
         stmt = stmt.where(EquipmentTestItem.test_item_term_id == request.test_item_term_id)
+    elif request.property_term_id:
+        # 물성 -> 그것을 내는 시험 항목 전부. **연결이 없으면 빈 목록**이지 전체가
+        # 아니다 — 전체로 풀면 「인장강도」 를 물은 사람이 염수분무 챔버를 받는다.
+        stmt = stmt.where(
+            EquipmentTestItem.test_item_term_id.in_(
+                test_item_ids_for_property(db, request.property_term_id)
+            )
+        )
     if request.method_id:
         # **규격 미지정 시험 항목도 남긴다.** "인장은 된다" 만 적힌 장비를 빼면, 아직
         # 규격까지 안 채운 부서의 장비가 통째로 안 보인다.
@@ -233,11 +242,19 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
         )
     )
 
+    expanded: list[str] = []
+    if request.property_term_id and not request.test_item_term_id:
+        ids = test_item_ids_for_property(db, request.property_term_id)
+        expanded = sorted(
+            db.scalars(select(VocabularyTerm.value).where(VocabularyTerm.id.in_(ids)))
+        )
+
     return SearchResponse(
         hits=hits[:MAX_HITS],
         total=len(hits),
         unmet_count=unmet,
         unregistered_equipment=_unregistered_count(db, user),
+        expanded_test_items=expanded,
     )
 
 

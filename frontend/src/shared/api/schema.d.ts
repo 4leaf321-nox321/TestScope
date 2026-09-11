@@ -1526,6 +1526,69 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/properties": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Properties
+         * @description 물성 전부와 각각을 내는 시험 항목.
+         *
+         *     `include_unlinked=false` 면 **시험 항목이 하나라도 이어진 물성만** — 검색 화면이
+         *     고를 것을 보일 때 쓴다. 이어진 것이 없는 물성을 고르게 두면 결과가 늘 비고, 사람은
+         *     그것을 「우리 장비가 없다」 로 읽는다.
+         */
+        get: operations["list_properties_api_properties_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/test-item-properties": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Links */
+        get: operations["list_links_api_test_item_properties_get"];
+        put?: never;
+        /** Create Link */
+        post: operations["create_link_api_test_item_properties_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/test-item-properties/{link_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Link */
+        delete: operations["delete_link_api_test_item_properties__link_id__delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Link
+         * @description 제안을 확인으로 올리거나 단서를 고친다. `status='confirmed'` 가 확인이다.
+         */
+        patch: operations["update_link_api_test_item_properties__link_id__patch"];
+        trace?: never;
+    };
     "/api/notices": {
         parameters: {
             query?: never;
@@ -3732,6 +3795,31 @@ export interface components {
             /** Display Name */
             display_name: string;
         };
+        /**
+         * PropertyOut
+         * @description 물성 하나와 그것을 내는 시험 항목들. 목록 화면이 그리는 줄.
+         */
+        PropertyOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Value */
+            value: string;
+            /** Code */
+            code: string | null;
+            /** Domain */
+            domain: string | null;
+            /** Symbol */
+            symbol: string | null;
+            /** Si Unit */
+            si_unit: string | null;
+            /** Aliases */
+            aliases: string[];
+            /** Links */
+            links: components["schemas"]["TestItemPropertyOut"][];
+        };
         /** RejectRequest */
         RejectRequest: {
             /** Note */
@@ -3899,6 +3987,8 @@ export interface components {
         SearchRequest: {
             /** Test Item Term Id */
             test_item_term_id?: string | null;
+            /** Property Term Id */
+            property_term_id?: string | null;
             /** Method Id */
             method_id?: string | null;
             /** Conditions */
@@ -3923,6 +4013,11 @@ export interface components {
             unmet_count: number;
             /** Unregistered Equipment */
             unregistered_equipment: number;
+            /**
+             * Expanded Test Items
+             * @default []
+             */
+            expanded_test_items: string[];
         };
         /** SeriesRelationCreateRequest */
         SeriesRelationCreateRequest: {
@@ -4341,6 +4436,65 @@ export interface components {
             attributes?: {
                 [key: string]: unknown;
             } | null;
+        };
+        /** TestItemPropertyCreateRequest */
+        TestItemPropertyCreateRequest: {
+            /**
+             * Test Item Term Id
+             * Format: uuid
+             */
+            test_item_term_id: string;
+            /**
+             * Property Term Id
+             * Format: uuid
+             */
+            property_term_id: string;
+            /** Note */
+            note?: string | null;
+        };
+        /** TestItemPropertyOut */
+        TestItemPropertyOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Test Item Term Id
+             * Format: uuid
+             */
+            test_item_term_id: string;
+            /** Test Item */
+            test_item: string;
+            /**
+             * Property Term Id
+             * Format: uuid
+             */
+            property_term_id: string;
+            /** Property */
+            property: string;
+            /** Property Code */
+            property_code: string | null;
+            /** Status */
+            status: string;
+            /** Source */
+            source: string;
+            /** Note */
+            note: string | null;
+            /** Confirmed At */
+            confirmed_at: string | null;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /** TestItemPropertyUpdateRequest */
+        TestItemPropertyUpdateRequest: {
+            /** Status */
+            status?: string | null;
+            /** Note */
+            note?: string | null;
         };
         /** UnreadCountOut */
         UnreadCountOut: {
@@ -7734,6 +7888,169 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ConditionQuery"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_properties_api_properties_get: {
+        parameters: {
+            query?: {
+                q?: string | null;
+                domain?: string | null;
+                include_unlinked?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PropertyOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_links_api_test_item_properties_get: {
+        parameters: {
+            query?: {
+                test_item?: string | null;
+                property?: string | null;
+                status?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemPropertyOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_link_api_test_item_properties_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TestItemPropertyCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemPropertyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_link_api_test_item_properties__link_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_link_api_test_item_properties__link_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                link_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TestItemPropertyUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemPropertyOut"];
                 };
             };
             /** @description Validation Error */

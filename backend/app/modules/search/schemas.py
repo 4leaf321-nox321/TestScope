@@ -39,6 +39,9 @@ class ConditionQuery(BaseModel):
 
 class SearchRequest(BaseModel):
     test_item_term_id: uuid.UUID | None = None
+    property_term_id: uuid.UUID | None = None
+    """물성으로 묻는다 — 「인장강도 재는 장비」. 그 물성을 내는 시험 항목 **전부**로
+    펼쳐서 찾는다(N:M). 시험 항목까지 함께 주면 그 안에서 그 항목만 본다."""
     method_id: uuid.UUID | None = None
     """규격까지 지정하면 그 규격을 걸어 둔 시험 항목만 완전 일치로 본다."""
     conditions: list[ConditionQuery] = Field(default_factory=list, max_length=20)
@@ -112,3 +115,7 @@ class SearchResponse(BaseModel):
     unregistered_equipment: int
     """시험 항목이 하나도 안 적힌 장비 수. 검색에 절대 안 걸리는 것들이라, 결과가
     빈약할 때 **어디를 채워야 하는지**를 말해 준다."""
+    expanded_test_items: list[str] = []
+    """물성으로 물었을 때 어느 시험 항목들로 펼쳤나. **비어 있으면 그 물성을 내는 시험이
+    아직 안 이어진 것**이다 — 결과 0 건이 「장비가 없다」 가 아니라 「연결이 없다」 라는
+    말을 화면이 할 수 있어야 한다."""

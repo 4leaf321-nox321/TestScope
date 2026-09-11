@@ -19,14 +19,54 @@ const ITEMS = [
   { id: 't3', value: '마모', usage_count: 0 },
 ]
 
+const PROPERTIES = [
+  {
+    id: 'p1',
+    value: '인장강도(UTS)',
+    code: 'mechanical.tensile_strength',
+    domain: 'mechanical',
+    symbol: 'Rm',
+    si_unit: 'Pa',
+    aliases: [],
+    links: [
+      {
+        id: 'l1',
+        test_item_term_id: 't1',
+        test_item: '인장',
+        property_term_id: 'p1',
+        property: '인장강도(UTS)',
+        property_code: 'mechanical.tensile_strength',
+        status: 'suggested',
+        source: 'ontology',
+        note: null,
+        confirmed_at: null,
+        created_at: '2026-09-12T00:00:00Z',
+      },
+    ],
+  },
+]
+
+/** 나간 검색 요청. **물성이 서버로 갔는지**는 이것으로만 안다. */
+const posted: unknown[] = []
+
 vi.mock('@/shared/api/client', () => ({
   api: {
     get: vi.fn(async (url: string) => {
       if (url.includes('/condition-keys')) return []
       if (url.includes('/terms')) return ITEMS
+      if (url.startsWith('/properties')) return PROPERTIES
       return []
     }),
-    post: vi.fn(),
+    post: vi.fn(async (_url: string, body: unknown) => {
+      posted.push(body)
+      return {
+        hits: [],
+        total: 0,
+        unmet_count: 0,
+        unregistered_equipment: 0,
+        expanded_test_items: ['인장'],
+      }
+    }),
   },
   ApiError: class extends Error {},
 }))
@@ -76,5 +116,27 @@ describe('시험 항목 고르기', () => {
       .map((one) => one.textContent ?? '')
       .filter((one) => ITEMS.some((item) => item.value === one))
     expect(labels).toEqual(['인장', '압축', '마모'])
+  })
+})
+
+describe('물성으로 묻기', () => {
+  it('이어진 것만 고르게 하고, 고른 물성이 서버로 간다', async () => {
+    await open()
+    // 검색 화면은 **이어진 물성만** 받는다 — 연결 없는 것을 골라 봐야 결과가 늘 빈다.
+    const trigger = screen.getByLabelText(/물성으로 묻기/)
+    expect(trigger.textContent).toContain('물성 (선택)')
+
+    await act(async () => {
+      trigger.click()
+    })
+    await act(async () => {
+      screen.getByText('인장강도(UTS)').click()
+    })
+    await act(async () => {
+      chip('찾기').click()
+    })
+    expect(posted[0]).toMatchObject({ property_term_id: 'p1', test_item_term_id: null })
+    // 무엇으로 펼쳤는지 화면이 말한다 — 0 건일 때 「연결이 없다」 와 「장비가 없다」 를 가른다.
+    expect(screen.getByText(/으로 펼쳐/)).toBeTruthy()
   })
 })

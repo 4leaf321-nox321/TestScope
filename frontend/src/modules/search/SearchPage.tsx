@@ -18,6 +18,13 @@
  *
  * 대신 **쓰이는 것을 앞에 둔다.** 카탈로그에서 아무도 안 하는 항목을 골라 봐야
  * 빈 결과만 나오고, 사람은 그것을 시스템 탓으로 읽는다.
+ *
+ * ## 물성으로도 묻는다
+ *
+ * 「인장강도 재는 장비」 가 사람의 말이다. 물성을 고르면 서버가 그것을 내는 시험 항목
+ * 전부로 펼쳐 찾고(N:M — Tg 는 DSC·DMA·TMA 셋), 응답이 **무엇으로 펼쳤는지** 를 돌려준다.
+ * 펼친 것이 없으면 「장비가 없다」 가 아니라 「연결이 없다」 라고 말해야 한다 — 그 둘은
+ * 할 일이 다르다.
  */
 
 import { useMemo, useState } from 'react'
@@ -28,6 +35,7 @@ import { ApiError } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
+import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
@@ -42,6 +50,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { ConditionKey } from '@/modules/vocabulary/api'
+import { propertyApi } from '@/modules/properties/api'
 import { searchApi } from '@/modules/search/api'
 import type { ConditionQuery, SearchResponse } from '@/modules/search/api'
 
@@ -76,8 +85,12 @@ function toQuery(row: ConditionRow): ConditionQuery | null {
 export default function SearchPage() {
   const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
   const conditions = useResource(() => vocabularyApi.conditions(), [])
+  // **이어진 것만** 고르게 한다 — 연결 없는 물성을 골라 봐야 결과가 늘 비고, 사람은
+  // 그것을 「우리 장비가 없다」 로 읽는다.
+  const properties = useResource(() => propertyApi.list({ linkedOnly: true }), [])
 
   const [testItem, setTestItem] = useState<string>('')
+  const [property, setProperty] = useState<string>('')
   /** 항목이 87종이라 **치는 길도 함께** 낸다. 눈으로 훑는 길만 두면 아는 이름을
    *  가진 사람이 매번 전체를 훑어야 한다. */
   const [itemFilter, setItemFilter] = useState('')
@@ -117,6 +130,7 @@ export default function SearchPage() {
       setResult(
         await searchApi.test_items({
           test_item_term_id: testItem || null,
+          property_term_id: property || null,
           conditions: rows.map(toQuery).filter((one): one is ConditionQuery => one !== null),
           include_unavailable: includeUnavailable,
         }),
@@ -136,6 +150,36 @@ export default function SearchPage() {
       />
 
       <div className="space-y-4 rounded-md border p-4">
+        <div className="flex flex-wrap items-end gap-3">
+          <div className="space-y-1">
+            <Label htmlFor="property">
+              물성으로 묻기
+              <span className="text-muted-foreground ml-2 font-normal">
+                「인장강도」 처럼 — 그것을 내는 시험 항목 전부로 찾습니다
+              </span>
+            </Label>
+            <SearchablePicker
+              id="property"
+              options={(properties.data ?? []).map((one) => ({
+                id: one.id,
+                label: one.value,
+                detail: one.links.map((link) => link.test_item).join(' · '),
+              }))}
+              value={property}
+              onChange={setProperty}
+              placeholder="물성 (선택)"
+              detailTitle="물성 항목"
+              detailHint="시험 항목이 이어진 물성만 — 나머지는 「물성 항목」 화면에서 잇습니다"
+              className="w-72"
+            />
+          </div>
+          {property && (
+            <Button variant="ghost" size="sm" onClick={() => setProperty('')}>
+              물성 풀기
+            </Button>
+          )}
+        </div>
+
         <div className="space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <Label htmlFor="item-filter">
@@ -277,7 +321,7 @@ export default function SearchPage() {
         </div>
       </div>
 
-      <ErrorNotice error={error ?? items.error ?? conditions.error} />
+      <ErrorNotice error={error ?? items.error ?? conditions.error ?? properties.error} />
 
       {result && <SearchResult result={result} />}
     </div>
@@ -285,12 +329,21 @@ export default function SearchPage() {
 }
 
 function SearchResult({ result }: { result: SearchResponse }) {
+  const expanded =
+    result.expanded_test_items.length > 0 ? (
+      <p className="text-muted-foreground text-sm">
+        물성을 시험 항목 <strong>{result.expanded_test_items.join(' · ')}</strong> 으로 펼쳐
+        찾았습니다.
+      </p>
+    ) : null
+
   if (result.hits.length === 0) {
     return (
       <EmptyState
         title="조건에 맞는 장비가 없습니다"
         hint={
           <>
+            {expanded}
             {/* **왜 비었는지 말한다.** 조건에 걸려 빠진 것과 애초에 안 적힌 것은
                 할 일이 다르다 — 앞은 조건을 넓히는 일이고, 뒤는 채우는 일이다. */}
             조건에 걸려 빠진 시험 항목이 {result.unmet_count}건 있습니다.
@@ -314,6 +367,7 @@ function SearchResult({ result }: { result: SearchResponse }) {
 
   return (
     <div className="space-y-3">
+      {expanded}
       <p className="text-muted-foreground text-sm">
         {result.total}건. 조건에 걸려 빠진 시험 항목 {result.unmet_count}건.
         {result.unregistered_equipment > 0 && (

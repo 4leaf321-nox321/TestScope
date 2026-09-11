@@ -6,6 +6,7 @@
  */
 
 import {
+  Atom,
   Bell,
   Boxes,
   Building2,
@@ -99,6 +100,13 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '장비 찾기',
         icon: Search,
         to: '/search',
+      },
+      {
+        // **사슬의 맨 앞.** 사람은 「인장」 이 아니라 「인장강도」 로 묻는다 — 어떤 시험으로
+        // 어떤 물성을 얻는지가 여기 적혀야 그 물음이 시험 항목으로 바뀐다(N:M).
+        label: '물성 항목',
+        icon: Atom,
+        to: '/properties',
       },
       {
         // 시험 항목 자체를 훑는 자리. 장비 상세에서 하나씩 보면 「우리가 무엇을 못

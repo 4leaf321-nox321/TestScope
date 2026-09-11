@@ -49,7 +49,7 @@ class TermOut(BaseModel):
 
 class TermCreateRequest(BaseModel):
     value: str = Field(min_length=1, max_length=200)
-    code: str | None = Field(default=None, max_length=50)
+    code: str | None = Field(default=None, max_length=120)
     parent_term_id: uuid.UUID | None = None
     attributes: dict[str, Any] = Field(default_factory=dict)
 
@@ -62,7 +62,7 @@ class TermUpdateRequest(BaseModel):
     """
 
     value: str | None = Field(default=None, min_length=1, max_length=200)
-    code: str | None = Field(default=None, max_length=50)
+    code: str | None = Field(default=None, max_length=120)
     parent_term_id: uuid.UUID | None = None
     status: str | None = Field(default=None, pattern="^(active|deprecated)$")
     attributes: dict[str, Any] | None = None

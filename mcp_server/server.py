@@ -200,7 +200,8 @@ async def resolve(
     """이름으로 계열·기종·기준정보 값·시험법을 찾는다. **만들기 전에 반드시 부른다.**
 
     `kind` 는 `series` · `model` · `term` · `method` 중 하나. `term` 이면 `axis` 를
-    함께 준다(manufacturer · equipment_category · test_item · site · standard_body).
+    함께 준다(manufacturer · equipment_category · test_item · property · site ·
+    standard_body). `property` 는 별칭까지 찾는다 — 「항복강도」·「Rp0.2」 로 쳐도 된다.
 
     응답의 `match` 가 셋이다.
 
@@ -225,6 +226,7 @@ async def resolve(
 async def search_test_items(
     ctx: Context,
     test_item_term_id: str | None = None,
+    property_term_id: str | None = None,
     method_id: str | None = None,
     conditions: list[dict[str, Any]] | None = None,
     site_term_id: str | None = None,
@@ -237,6 +239,10 @@ async def search_test_items(
     `{"…", "at_least": 20}` (그 이상) · `{"…", "at_most": …}`.
 
     조건 키 id 는 `list_conditions()` 가 준다. 시험 항목 id 는 `resolve` 로 찾는다.
+    **물성으로 물으면** `property_term_id` 를 준다(`search_properties` 가 id 를 준다) —
+    서버가 그 물성을 내는 시험 항목 전부로 펼쳐 찾고, 응답의 `expanded_test_items` 에
+    무엇으로 펼쳤는지 적어 준다. 그것이 비어 있으면 결과 0 건은 「장비가 없다」 가 아니라
+    「그 물성에 이어진 시험 항목이 없다」 다.
 
     ## 판정을 셋으로 읽어라
 
@@ -253,11 +259,39 @@ async def search_test_items(
         "/search/test-items",
         {
             "test_item_term_id": test_item_term_id,
+            "property_term_id": property_term_id,
             "method_id": method_id,
             "conditions": conditions or [],
             "site_term_id": site_term_id,
             "include_unavailable": include_unavailable,
         },
+    )
+
+
+@mcp.tool()
+async def search_properties(
+    ctx: Context, q: str | None = None, linked_only: bool = True
+) -> dict[str, Any]:
+    """물성으로 묻기 전에 — **「인장강도」 가 어느 시험 항목으로 나오나.**
+
+    사람은 「인장 되는 장비」 가 아니라 「인장강도 재는 장비」 라고 묻는다. 이 도구가 그
+    물성(기준정보 축 `property`, code 가 `mechanical.tensile_strength` 같은 MaterialTwin
+    키)과 그것을 내는 시험 항목들(`links`)을 준다 — **N:M** 이다. 유리전이온도는
+    DSC·DMA·TMA 셋에서 나오고, 인장은 강도·항복·영률·연신율을 낸다.
+
+    받은 물성의 `id` 를 `search_test_items(property_term_id=…)` 에 넣으면 서버가 그 시험
+    항목 전부로 펼쳐 찾는다. 시험 항목 하나로 좁히려면 `links[].test_item_term_id` 를
+    `test_item_term_id` 로 함께 준다.
+
+    `linked_only=True`(기본)면 시험 항목이 이어진 물성만 온다. 이어진 것이 없는 물성은
+    검색해도 늘 비므로, 그것을 「장비가 없다」 로 옮기지 마라 — 「아직 연결이 없다」 다.
+
+    `links[].status` 가 `suggested` 면 기계가 제안한 연결이고 사람이 아직 확인하지
+    않았다. 그대로 써도 되지만, 답할 때 그렇다고 말하라.
+    """
+    return _listed(
+        await _get(ctx, "/properties", {"q": q, "include_unlinked": not linked_only}),
+        "properties",
     )
 
 

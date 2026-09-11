@@ -27,6 +27,7 @@ from app.modules.equipment.models import (
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
+from app.modules.properties.models import TestItemProperty
 from app.modules.test_items.models import (
     EquipmentTestCondition,
     EquipmentTestItem,
@@ -74,6 +75,7 @@ __all__ = [
     "SpecDefinitionCategory",
     "SpecGroup",
     "SpecSource",
+    "TestItemProperty",
     "TestMethod",
     "User",
     "Vocabulary",

@@ -144,7 +144,7 @@ class VocabularyTerm(Base):
     """보여 주는 값. 사람이 적은 표기를 정리만 해서 그대로 담는다(shared.text.clean)."""
     normalized: Mapped[str] = mapped_column(String(200), index=True)
     """비교키(shared.text.compare_key). 유일성과 조회가 이걸로 돈다."""
-    code: Mapped[str | None] = mapped_column(String(50), nullable=True, index=True)
+    code: Mapped[str | None] = mapped_column(String(120), nullable=True, index=True)
     """코드가 이 값을 이름이 아니라 **키로** 걸어야 할 때. 검색 화면이 시험 항목을
     tensile 로 거는 자리다 — 이름이 바뀌어도 검색이 안 깨진다."""
 

@@ -47,6 +47,7 @@ _WRITE_SCOPES: tuple[tuple[str, str], ...] = (
     ("/api/condition-keys", "catalog:write"),
     ("/api/vocabularies", "catalog:write"),
     ("/api/methods", "catalog:write"),
+    ("/api/test-item-properties", "catalog:write"),
     ("/api/equipment", "equipment:write"),
     ("/api/equipment-test-items", "equipment:write"),
 )

@@ -24,6 +24,7 @@ from app.modules.equipment.models import (
     SpecSource,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.properties.models import TestItemProperty
 from app.modules.test_items.models import (
     EquipmentTestCondition,
     EquipmentTestItem,
@@ -118,7 +119,9 @@ _REFERENCES: dict[str, list[tuple[Any, Any]]] = {
         (EquipmentTestItem, EquipmentTestItem.test_item_term_id),
         (SeriesTestItem, SeriesTestItem.test_item_term_id),
         (TestMethod, TestMethod.test_item_term_id),
+        (TestItemProperty, TestItemProperty.test_item_term_id),
     ],
+    "property": [(TestItemProperty, TestItemProperty.property_term_id)],
     "equipment_category": [
         (EquipmentSeries, EquipmentSeries.category_term_id),
         (Equipment, Equipment.category_term_id),

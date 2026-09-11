@@ -5114,6 +5114,303 @@
         }
       }
     },
+    "/api/properties": {
+      "get": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "List Properties",
+        "description": "물성 전부와 각각을 내는 시험 항목.\n\n`include_unlinked=false` 면 **시험 항목이 하나라도 이어진 물성만** — 검색 화면이\n고를 것을 보일 때 쓴다. 이어진 것이 없는 물성을 고르게 두면 결과가 늘 비고, 사람은\n그것을 「우리 장비가 없다」 로 읽는다.",
+        "operationId": "list_properties_api_properties_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 30
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Domain"
+            }
+          },
+          {
+            "name": "include_unlinked",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Include Unlinked"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PropertyOut"
+                  },
+                  "title": "Response List Properties Api Properties Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/test-item-properties": {
+      "get": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "List Links",
+        "operationId": "list_links_api_test_item_properties_get",
+        "parameters": [
+          {
+            "name": "test_item",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Test Item"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Property"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(suggested|confirmed)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TestItemPropertyOut"
+                  },
+                  "title": "Response List Links Api Test Item Properties Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Create Link",
+        "operationId": "create_link_api_test_item_properties_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestItemPropertyCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestItemPropertyOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/test-item-properties/{link_id}": {
+      "patch": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Update Link",
+        "description": "제안을 확인으로 올리거나 단서를 고친다. `status='confirmed'` 가 확인이다.",
+        "operationId": "update_link_api_test_item_properties__link_id__patch",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Link Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestItemPropertyUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestItemPropertyOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Delete Link",
+        "operationId": "delete_link_api_test_item_properties__link_id__delete",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Link Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/notices": {
       "get": {
         "tags": [
@@ -11507,6 +11804,90 @@
         "title": "ProfileUpdateRequest",
         "description": "자기 정보 수정.\n\n**표시 이름만 바꾼다.** 아이디(email)는 로그인 식별자라 본인이 바꾸면 감사\n로그·알림이 가리키는 대상이 흔들린다 — 그것은 관리자의 일로 남긴다."
       },
+      "PropertyOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "domain": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Domain"
+          },
+          "symbol": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Symbol"
+          },
+          "si_unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Si Unit"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemPropertyOut"
+            },
+            "type": "array",
+            "title": "Links"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "value",
+          "code",
+          "domain",
+          "symbol",
+          "si_unit",
+          "aliases",
+          "links"
+        ],
+        "title": "PropertyOut",
+        "description": "물성 하나와 그것을 내는 시험 항목들. 목록 화면이 그리는 줄."
+      },
       "RejectRequest": {
         "properties": {
           "note": {
@@ -11975,6 +12356,18 @@
             ],
             "title": "Test Item Term Id"
           },
+          "property_term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Property Term Id"
+          },
           "method_id": {
             "anyOf": [
               {
@@ -12047,6 +12440,14 @@
           "unregistered_equipment": {
             "type": "integer",
             "title": "Unregistered Equipment"
+          },
+          "expanded_test_items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Expanded Test Items",
+            "default": []
           }
         },
         "type": "object",
@@ -13061,7 +13462,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 50
+                "maxLength": 120
               },
               {
                 "type": "null"
@@ -13218,7 +13619,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 50
+                "maxLength": 120
               },
               {
                 "type": "null"
@@ -13266,6 +13667,157 @@
         "type": "object",
         "title": "TermUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.**\n\nNone 은 \"안 바꿈\" 이다. 구별하지 않으면 이름 하나 고칠 때마다 코드와 상위 값이\n조용히 지워진다 — 그 손실은 저장 버튼을 누른 사람 눈에 안 보인다."
+      },
+      "TestItemPropertyCreateRequest": {
+        "properties": {
+          "test_item_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Item Term Id"
+          },
+          "property_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Property Term Id"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "test_item_term_id",
+          "property_term_id"
+        ],
+        "title": "TestItemPropertyCreateRequest"
+      },
+      "TestItemPropertyOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "test_item_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Item Term Id"
+          },
+          "test_item": {
+            "type": "string",
+            "title": "Test Item"
+          },
+          "property_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Property Term Id"
+          },
+          "property": {
+            "type": "string",
+            "title": "Property"
+          },
+          "property_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Property Code"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "confirmed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmed At"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "test_item_term_id",
+          "test_item",
+          "property_term_id",
+          "property",
+          "property_code",
+          "status",
+          "source",
+          "note",
+          "confirmed_at",
+          "created_at"
+        ],
+        "title": "TestItemPropertyOut"
+      },
+      "TestItemPropertyUpdateRequest": {
+        "properties": {
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(suggested|confirmed)$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "title": "TestItemPropertyUpdateRequest"
       },
       "UnreadCountOut": {
         "properties": {

@@ -46,6 +46,7 @@ const MethodsPage = lazy(() => import('@/modules/methods/MethodsPage'))
 const NoticesPage = lazy(() => import('@/modules/notices/NoticesPage'))
 const NotificationsPage = lazy(() => import('@/modules/notifications/NotificationsPage'))
 const ProfilePage = lazy(() => import('@/modules/auth/ProfilePage'))
+const PropertiesPage = lazy(() => import('@/modules/properties/PropertiesPage'))
 const ServerPage = lazy(() => import('@/modules/server/ServerPage'))
 const SignupPage = lazy(() => import('@/modules/auth/SignupPage'))
 const VocabularyAdminPage = lazy(() => import('@/modules/vocabulary/VocabularyAdminPage'))
@@ -92,6 +93,7 @@ export const router = createBrowserRouter([
 
           // 시험 항목 — 우리가 가진 것.
           { path: 'search', element: <SearchPage /> },
+          { path: 'properties', element: <PropertiesPage /> },
           { path: 'equipment', element: <EquipmentPage /> },
           { path: 'equipment/:id', element: <EquipmentDetailPage /> },
 

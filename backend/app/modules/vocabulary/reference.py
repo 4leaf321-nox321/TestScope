@@ -27,8 +27,8 @@ from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 
 #: (slug, label, 어디의 축, 입력 정책, 부모 축, 순서, 설명)
 #:
-#: `test_item` 만 closed 다 — **검색의 첫 축**이라 오타가 값이 되면 그 장비는 영영
-#: 검색에 안 걸린다. 나머지는 open: 막았을 때 사람이 어디로 가는지가 문제다.
+#: `test_item` 과 `property` 만 closed 다 — **검색의 첫 축**이라 오타가 값이 되면 그
+#: 장비는 영영 검색에 안 걸린다. 나머지는 open: 막았을 때 사람이 어디로 가는지가 문제다.
 #:
 #: **어디의 축인지를 함께 적는다.** 한 목록에 일곱이 나란히 서면 「이게 어디 쓰이는
 #: 값이지」 를 알 수 없고, 그때 제정기관 축에 회사 이름이 들어간다.
@@ -42,6 +42,17 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         10,
         "인장·압축·충격처럼 무엇을 재는가. 검색의 첫 축이라 오타가 값이 되면 안 걸린다. "
         "장비의 시험 항목·계열의 시험 항목·시험법이 모두 이 축을 가리킨다.",
+    ),
+    (
+        "property",
+        "물성 항목",
+        "common",
+        "closed",
+        None,
+        15,
+        "인장강도·영률·유리전이온도처럼 시험으로 얻는 값. 검색이 「이 물성을 재려면」 으로 "
+        "시작할 때의 첫 축이고, 값의 code 가 MaterialTwin 키(mechanical.yield_strength)라 "
+        "재료 물성 쪽(MatNexus)과 같은 말을 쓴다. 시험 항목과 N:M 으로 이어진다.",
     ),
     (
         "equipment_category",
