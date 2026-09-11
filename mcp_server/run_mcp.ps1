@@ -63,7 +63,10 @@ if ($Stdio) {
     exit $LASTEXITCODE
 }
 
-if ($Port -eq 0) { $Port = 8030 }
+# **8022 다, 8030 이 아니다.** 8030 은 CrossAXTF 의 운영 포트라 같은 PC 에서 겹쳤다
+# (2026-09-12 실측 — 이 PC 에서 이 MCP 가 127.0.0.1:8030 을 잡고 있었다). 「플랫폼마다
+# 10씩」 규칙대로 TestScope 대역(802x) 안에서 백엔드 +2 다.
+if ($Port -eq 0) { $Port = 8022 }
 Write-Host "MCP: http://127.0.0.1:$Port/mcp"
 # 공식 mcp SDK(2.x)다 — 전송 이름은 'streamable-http' 이고 포트는 인자로 받는다.
 # 'http' 와 FASTMCP_PORT 환경변수는 다른 패키지(fastmcp)의 것이라 여기서는 통하지 않는다.

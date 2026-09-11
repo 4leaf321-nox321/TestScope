@@ -260,7 +260,7 @@ CI 가 생성물이 최신인지 검사한다.
 ```powershell
 cd mcp_server
 .
-un_mcp.ps1            # HTTP — http://127.0.0.1:8030/mcp
+un_mcp.ps1            # HTTP — http://127.0.0.1:8022/mcp
 .
 un_mcp.ps1 -Stdio     # 개인 연결
 ```

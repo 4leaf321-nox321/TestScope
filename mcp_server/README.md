@@ -4,7 +4,7 @@ AI 가 TestScope 에 **직접 묻고, 카탈로그를 채운다.**
 
 ```powershell
 cd mcp_server
-.\run_mcp.ps1            # HTTP — http://127.0.0.1:8030/mcp
+.\run_mcp.ps1            # HTTP — http://127.0.0.1:8022/mcp
 .\run_mcp.ps1 -Stdio     # 개인 연결
 ```
 

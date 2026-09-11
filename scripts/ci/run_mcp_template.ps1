@@ -13,7 +13,7 @@
 모르는 키를 무시하므로 같은 파일에 둬도 안전하다.
 
     PORT=8020            ← 백엔드 포트. MCP 가 이 값으로 API 주소를 맞춘다
-    MCP_PORT=8030        ← 이 서버가 들을 포트 (기본 8030)
+    MCP_PORT=8022        ← 이 서버가 들을 포트 (기본 8022 — 백엔드 +2)
     MCP_HOST=127.0.0.1   ← 밖에 열려면 0.0.0.0
 
 **백엔드와 다른 가상환경을 쓴다.** MCP SDK 가 언제든 프레임워크 판을 올릴 수 있고,
@@ -51,7 +51,7 @@ if (-not $env:TESTSCOPE_API_BASE) {
     $env:TESTSCOPE_API_BASE = "http://127.0.0.1:$backendPort/api"
 }
 $mcpPort = Read-EnvValue 'MCP_PORT'
-if (-not $mcpPort) { $mcpPort = '8030' }
+if (-not $mcpPort) { $mcpPort = '8022' }
 $mcpHost = Read-EnvValue 'MCP_HOST'
 if (-not $mcpHost) { $mcpHost = '127.0.0.1' }
 
