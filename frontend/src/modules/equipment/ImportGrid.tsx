@@ -29,11 +29,15 @@
  * 칠해 보인다 — 「30대를 갱신합니다」 만 말하면 사람은 누르고, 그 안에 잘못 붙은 열이
  * 있었다는 것을 나중에 안다. 마우스를 얹으면 전후가 나온다.
  *
- * ## 틀린 칸은 붉게
+ * ## 틀린 칸은 붉게, 그리고 **이유는 맨 앞에**
  *
  * 줄 단위로만 말하면 열여덟 칸 중 어디를 고쳐야 할지 사람이 되짚어야 한다. 서버가
- * 문제마다 열 키를 함께 주므로(`ImportProblem.field`) 그 칸을 칠한다. 한 칸에 못
- * 붙이는 문제(자산번호가 다른 줄과 겹침)는 줄 끝에 적는다.
+ * 문제마다 열 키를 함께 주므로(`ImportProblem.field`) 그 칸을 칠한다.
+ *
+ * 그런데 붉은 칸만으로는 모자랐다. 파일럿에서 300줄을 붙이고 「문제만 보기」 를 눌렀더니
+ * **여덟 줄 중 셋은 붉은 칸이 화면에 없었다** — 문제가 열여덟 열 중 오른쪽 끝(상태·
+ * 교정주기)에 있었고, 줄 끝의 비고 열도 화면 밖이었다. 문제 줄만 보는 화면에서 왜
+ * 문제인지가 안 보이는 것이다. 그래서 이유 열을 **줄 번호 바로 옆**에 둔다.
  */
 
 import { cn } from '@/shared/lib/utils'
@@ -101,6 +105,8 @@ export function ImportGrid({
             <th className="text-muted-foreground border-b border-r px-2 py-1 font-normal">
               #
             </th>
+            {/* **이유가 맨 앞이다.** 오른쪽 열에서 걸린 문제는 붉은 칸이 화면 밖이다. */}
+            <th className="border-b border-r px-2 py-1 text-left font-medium">확인</th>
             {columns.map((one) => (
               <th
                 key={one.key}
@@ -112,7 +118,6 @@ export function ImportGrid({
                 {one.required && <span className="text-amber-600"> *</span>}
               </th>
             ))}
-            <th className="border-b px-2 py-1 text-left font-medium">비고</th>
           </tr>
         </thead>
         <tbody>
@@ -152,6 +157,26 @@ export function ImportGrid({
                 <td className="text-muted-foreground border-b border-r px-2 py-1 text-right font-mono">
                   {index + 1}
                 </td>
+                <td
+                  className="max-w-64 border-b border-r px-2 py-1 whitespace-normal"
+                  title={row.problems.map((one) => one.message).join('\n')}
+                >
+                  {row.problems.length > 0 ? (
+                    // 첫 둘만 펼치고 나머지는 수로 접는다 — 한 줄에 다섯 문제가 붙으면
+                    // 표가 그 줄 하나로 세로로 늘어난다. 마우스를 얹으면 전부 나온다.
+                    <span className="text-amber-700">
+                      {row.problems
+                        .slice(0, 2)
+                        .map((one) => one.message)
+                        .join(' · ')}
+                      {row.problems.length > 2 && ` 외 ${row.problems.length - 2}`}
+                    </span>
+                  ) : row.exists && row.changes.length > 0 ? (
+                    <span className="text-sky-800">갱신 {row.changes.length}칸</span>
+                  ) : same ? (
+                    <span className="text-muted-foreground">변경 없음</span>
+                  ) : null}
+                </td>
                 {columns.map((one) => {
                   const said = bad.get(one.key)
                   const diff = willChange.get(one.key)
@@ -183,15 +208,6 @@ export function ImportGrid({
                     </td>
                   )
                 })}
-                <td className="border-b px-2 py-1 whitespace-nowrap">
-                  {notes.length > 0 && (
-                    <span className="text-amber-700">{notes.join(' · ')}</span>
-                  )}
-                  {notes.length === 0 && row.exists && row.changes.length > 0 && (
-                    <span className="text-sky-800">갱신 {row.changes.length}칸</span>
-                  )}
-                  {same && <span className="text-muted-foreground">변경 없음</span>}
-                </td>
               </tr>
             )
           })}

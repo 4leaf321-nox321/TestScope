@@ -140,6 +140,14 @@ REQUIRED = ("asset_no", "name", "workspace", "site", "location")
 STATUS_WORDS: dict[str, str] = {
     "입고": "incoming",
     "가동": "operational",
+    # 파일럿 대장에 실제로 적혀 있던 말들. 「폐기예정」 은 안 받는다 — 아직 폐기가 아니고,
+    # 가동인지 유휴인지 그 말로는 모른다.
+    "가동중": "operational",
+    "정상": "operational",
+    "사용": "operational",
+    "사용중": "operational",
+    "운영": "operational",
+    "운영중": "operational",
     "유휴": "idle",
     "점검": "maintenance",
     "점검·교정": "maintenance",

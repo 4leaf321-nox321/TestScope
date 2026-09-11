@@ -504,8 +504,10 @@ export function EquipmentImportDialog({
   }
 
   const bad = rows.filter((one) => one.problems.length > 0)
+  // **새로 넣는 줄만** 센다. 갱신 줄은 이미 있는 장비라 여기서 기종이 붙는 것이 아니다 —
+  // 파일럿에서 갱신 미리보기에 「기종 미연결 12」 가 떠서 사람을 헷갈리게 했다.
   const unlinked = sending.filter(
-    (one) => one.problems.length === 0 && !one.modelLinked,
+    (one) => one.included && !one.exists && one.problems.length === 0 && !one.modelLinked,
   ).length
   // 다 그리면 DOM 이 먼저 죽는다(2000줄에 열 18이면 칸 36,000개). 넘으면 문제 줄만.
   const tooMany = rows.length > GRID_MAX
