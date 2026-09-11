@@ -69,11 +69,14 @@
  * 그러면 되가져가는 뜻이 없다. 되돌아올 때 그 열은 서버가 모르는 이름이라 그냥
  * 무시되므로, 고쳐서 다시 붙여넣는 왕복이 된다.
  *
- * ## 전부 되거나 전부 안 되거나
+ * ## 넣을 수 있는 줄은 넣고, 그 줄은 표에서 사라진다
  *
- * 문제가 하나라도 있으면 넣는 단추를 안 준다. 되는 것만 넣으면 사람은 고쳐 다시
- * 붙여넣다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만나고, 그때 무엇을
- * 지워야 할지 모른다.
+ * 문제가 있는 줄 때문에 멀쩡한 줄까지 막으면, 300줄 중 12줄이 틀렸을 때 288줄을 다시
+ * 붙여넣어야 한다. 넣고 나면 **들어간 줄을 표에서 지운다** — 남는 것은 고쳐야 할
+ * 12줄뿐이고, 고쳐서 다시 누르면 된다.
+ *
+ * 지우는 것이 핵심이다. 안 지우면 다시 누를 때 이미 들어간 288줄이 「이미 등록된
+ * 자산번호」 로 되돌아오고, 그때 사람은 무엇을 지워야 할지 모른다.
  *
  * ## 진행률(N/M) 대신 「무엇을 하는 중인지」 를 보인다
  *
@@ -323,6 +326,26 @@ export function EquipmentImportDialog({
     }
   }
 
+  /** 못 들어간 줄만 남긴다. 빈 줄은 그대로 둔다 — 사람이 더 칠 자리다. */
+  function keepFailed(result: EquipmentImportResult): GridRow[] {
+    let index = 0
+    const left: GridRow[] = []
+    for (const row of rows) {
+      if (!filled(row)) {
+        left.push(row)
+        continue
+      }
+      const said = result.rows[index++]
+      if (said?.imported) continue
+      left.push({
+        ...row,
+        problems: said?.problems ?? [],
+        modelLinked: said?.model_linked ?? false,
+      })
+    }
+    return left
+  }
+
   function edit(id: number, field: string, value: string) {
     setRows((before) =>
       before.map((row) =>
@@ -340,12 +363,20 @@ export function EquipmentImportDialog({
       const result = await equipmentApi.importPaste(asText, false)
       if (result.created > 0) {
         setDone(result.created)
+        onDone()
+      }
+      // **들어간 줄을 지운다.** 안 지우면 다시 누를 때 그 줄들이 「이미 등록된
+      // 자산번호」 로 되돌아오고, 그때 사람은 무엇을 지워야 할지 모른다.
+      const left = keepFailed(result)
+      if (left.length === 0) {
         setRows(blank(BLANK_ROWS))
         setSummary(null)
         sent.current = ''
-        onDone()
       } else {
-        apply(result)
+        setRows(left)
+        setSummary(result)
+        // 남은 줄만으로 다시 물어야 판정이 맞는다 — 줄이 줄었으니 글자도 달라진다.
+        sent.current = ''
       }
     } catch (thrown) {
       setError(thrown as ApiError)
@@ -431,7 +462,9 @@ export function EquipmentImportDialog({
   // 다 그리면 DOM 이 먼저 죽는다(2000줄에 열 18이면 칸 36,000개). 넘으면 문제 줄만.
   const tooMany = rows.length > GRID_MAX
   const shown = onlyBad || tooMany ? bad : rows
-  const ready = summary && summary.problems === 0 ? summary.ready : 0
+  // **문제가 있어도 넣을 수 있는 줄이 있으면 누를 수 있다.** 전에는 하나라도 틀리면
+  // 통째로 막았는데, 그러면 300줄 중 12줄 때문에 288줄을 다시 붙여넣어야 한다.
+  const ready = summary?.ready ?? 0
 
   return (
     <Dialog
@@ -523,6 +556,14 @@ export function EquipmentImportDialog({
           {done !== null && (
             <div className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm">
               <strong>{done}대</strong>를 등록했습니다.
+              {sending.length > 0 && (
+                // **남은 줄이 표에 그대로 있다.** 안 말하면 사람은 다 들어간 줄 안다.
+                <>
+                  {' '}
+                  못 넣은 <strong>{sending.length}줄</strong>이 표에 남아 있습니다 — 고쳐서
+                  다시 누르세요.
+                </>
+              )}
             </div>
           )}
 

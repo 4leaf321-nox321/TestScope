@@ -872,11 +872,14 @@ export interface paths {
          *
          *     화면은 같은 글자를 두 번 보낸다: 먼저 미리보기, 사람이 확인하면 `dry_run=false`.
          *
-         *     ## 전부 되거나 전부 안 되거나
+         *     ## 넣을 수 있는 줄은 넣는다
          *
-         *     한 줄이라도 문제가 있으면 아무것도 안 넣는다. 되는 것만 넣으면 사람은 파일을
-         *     고쳐 다시 올리다가 이미 들어간 줄에서 「이미 등록된 자산번호」 를 만나고, 그때
-         *     무엇을 지워야 할지 모른다.
+         *     문제가 있는 줄 때문에 멀쩡한 줄까지 막으면, 300줄 중 12줄이 틀렸을 때 288줄을
+         *     다시 보내야 한다. 줄마다 `imported` 가 실제로 들어갔는지를 말해 주므로, 부르는
+         *     쪽은 **못 들어간 줄만 고쳐서 다시 보내면 된다.**
+         *
+         *     **넣기로 한 것은 전부 되거나 전부 안 되거나다.** 문제 없는 줄들을 한 트랜잭션에
+         *     담고, 그중 하나라도 막히면 통째로 되돌린다(그때 `created` 는 0 이다).
          *
          *     ## 이름으로 적는다
          *
@@ -2268,8 +2271,15 @@ export interface components {
          * EquipmentImportResult
          * @description 반입 한 번의 결과.
          *
-         *     `dry_run` 이면 `created` 는 0 이고 판정만 들어 있다. **전부 되거나 전부 안 되거나**라,
-         *     `problems` 가 하나라도 있으면 아무것도 안 들어간다.
+         *     `dry_run` 이면 `created` 는 0 이고 판정만 들어 있다.
+         *
+         *     **넣을 수 있는 줄은 넣는다.** 문제가 있는 줄 때문에 멀쩡한 줄까지 막으면, 300줄
+         *     중 12줄이 틀렸을 때 288줄을 다시 붙여넣어야 한다. 대신 화면이 들어간 줄을 표에서
+         *     지워서(`EquipmentImportRow.imported`), 남은 것만 고쳐 다시 넣게 한다.
+         *
+         *     **넣기로 한 것은 전부 되거나 전부 안 되거나다.** 문제 없는 줄들을 한 트랜잭션에
+         *     담고, 그중 하나라도 막히면(그 사이 남이 같은 자산번호를 넣는 일이 있다) 통째로
+         *     되돌린다 — 반쯤 들어간 채로 끝나지는 않는다.
          */
         EquipmentImportResult: {
             /** Total */
@@ -2305,6 +2315,11 @@ export interface components {
             model_linked: boolean;
             /** Problems */
             problems: components["schemas"]["ImportProblem"][];
+            /**
+             * Imported
+             * @default false
+             */
+            imported: boolean;
         };
         /**
          * EquipmentModelCreateRequest

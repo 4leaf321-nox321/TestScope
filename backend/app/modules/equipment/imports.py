@@ -21,11 +21,17 @@
 틀린 12줄을 **넣기 전에** 알아야 하고, 그 12줄이 어느 줄인지 파일의 줄 번호로
 말해 줘야 사람이 엑셀에서 찾을 수 있다.
 
-## 전부 되거나 전부 안 되거나
+## 넣을 수 있는 줄은 넣는다
 
-한 줄이라도 틀리면 아무것도 안 넣는다. 되는 것만 넣으면 사람은 파일을 고쳐 다시
-올리다가 이미 들어간 288줄에서 「이미 등록된 자산번호」 를 만나고, 그때 무엇을
-지워야 할지 모른다. 반쯤 들어간 대장은 안 들어간 대장보다 나쁘다.
+문제가 있는 줄 때문에 멀쩡한 줄까지 막으면, 300줄 중 12줄이 틀렸을 때 288줄을 다시
+붙여넣어야 한다.
+
+전에는 통째로 막았다. 「되는 것만 넣으면 사람은 고쳐 다시 올리다가 이미 들어간
+288줄에서 「이미 등록된 자산번호」 를 만난다」 는 이유였는데, **화면이 들어간 줄을
+표에서 지우면**(`imported`) 그 일이 애초에 안 생긴다 — 다시 붙여넣을 것이 없으니까.
+
+**넣기로 한 것은 전부 되거나 전부 안 되거나다.** 문제 없는 줄들을 한 트랜잭션에 담고,
+그중 하나라도 막히면(그 사이 남이 같은 자산번호를 넣는 일이 있다) 통째로 되돌린다.
 
 ## 이름으로 받고, 못 정하면 거절한다
 
@@ -568,23 +574,32 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
         created=0,
         rows=rows,
     )
-    if dry_run or result.problems or not rows:
+    if dry_run or not ready:
         return result
 
-    # **전부 되거나 전부 안 되거나.** 한 트랜잭션 안에서 넣고, 하나라도 막히면
-    # 통째로 되돌린다.
-    created = 0
-    for row, payload in zip(rows, payloads, strict=True):
+    # **넣을 수 있는 줄만.** 문제가 있는 줄 때문에 멀쩡한 줄까지 막으면 300줄 중
+    # 12줄이 틀렸을 때 288줄을 다시 붙여넣어야 한다.
+    #
+    # 그 288줄은 **한 트랜잭션**이다. 넣다가 하나가 막히면(그 사이 남이 같은
+    # 자산번호를 넣는 일이 있다) 통째로 되돌린다 — 반쯤 들어간 채로 끝나지 않는다.
+    going = [
+        (row, payload) for row, payload in zip(rows, payloads, strict=True) if not row.problems
+    ]
+    for row, payload in going:
         try:
             services.create(db, user, payload, commit=False)
         except AppError as error:
             db.rollback()
             row.problems.append(ImportProblem(field=None, message=error.message))
-            result.problems = 1
-            result.ready = len(rows) - 1
+            # 되돌렸으니 **아무 줄도 안 들어갔다.** 판정을 다시 센다.
+            for one, _ in going:
+                one.imported = False
+            result.ready = sum(1 for one in rows if not one.problems)
+            result.problems = len(rows) - result.ready
             result.created = 0
             return result
-        created += 1
+        row.imported = True
+
     db.commit()
-    result.created = created
+    result.created = len(going)
     return result

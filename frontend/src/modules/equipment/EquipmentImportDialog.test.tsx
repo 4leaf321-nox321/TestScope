@@ -66,6 +66,7 @@ function row(over: Record<string, unknown> = {}) {
     asset_no: 'A-1',
     name: '만능기',
     model_linked: true,
+    imported: false,
     problems: [],
     ...over,
   }
@@ -485,6 +486,97 @@ describe('엑셀로 되가져가기', () => {
     })
     // 말해 주지 않으면 눌렀는지도 모른다.
     expect(copyButton().textContent).toMatch(/1줄 복사했습니다/)
+  })
+})
+
+describe('넣은 뒤', () => {
+  /** 두 줄 — 첫 줄은 넣을 수 있고 둘째 줄은 거점이 없다.
+   *
+   *  **미리보기에서도 「넣을 수 있음」 은 1 이다.** 문제가 있다고 통째로 막지 않는다. */
+  const two = (firstImported: boolean) => ({
+    total: 2,
+    ready: 1,
+    problems: 1,
+    created: firstImported ? 1 : 0,
+    rows: [
+      row({
+        cells: { asset_no: 'A-1', name: '만능기', site: '본사', note: '' },
+        imported: firstImported,
+      }),
+      row({
+        cells: { asset_no: 'A-2', name: '충격기', site: '없는거점', note: '' },
+        imported: false,
+        problems: [{ field: 'site', message: '거점: 없습니다' }],
+      }),
+    ],
+  })
+
+  /** 넣은 뒤 뜨는 알림 상자의 글자 전체. `<strong>` 이 섞여 쪼개지기 때문이다. */
+  function banner(): string {
+    return screen.getByText(/등록했습니다/).closest('div')?.textContent ?? ''
+  }
+
+  async function pasteTwo() {
+    answer = two(false)
+    await open()
+    await act(async () => {
+      fireEvent.paste(cell('자산번호'), {
+        clipboardData: {
+          getData: () =>
+            [
+              ['자산번호', '장비명', '거점'].join('\t'),
+              ['A-1', '만능기', '본사'].join('\t'),
+              ['A-2', '충격기', '없는거점'].join('\t'),
+            ].join('\n'),
+        },
+      })
+    })
+  }
+
+  it('들어간 줄은 표에서 사라지고 못 넣은 줄만 남는다', async () => {
+    await pasteTwo()
+    expect(document.querySelectorAll('tbody tr')).toHaveLength(2)
+
+    answer = two(true)
+    await act(async () => {
+      commitButton().click()
+    })
+
+    // **지우는 것이 핵심이다.** 안 지우면 다시 누를 때 그 줄이 「이미 등록된
+    // 자산번호」 로 되돌아오고, 그때 사람은 무엇을 지워야 할지 모른다.
+    expect(document.querySelectorAll('tbody tr')).toHaveLength(1)
+    expect(cell('자산번호').value).toBe('A-2')
+    // `<strong>` 때문에 글자가 쪼개지므로 알림 상자 전체로 본다.
+    expect(banner()).toMatch(/1대.*등록했습니다/)
+  })
+
+  it('남은 줄이 있다는 것을 말해 준다', async () => {
+    await pasteTwo()
+    answer = two(true)
+    await act(async () => {
+      commitButton().click()
+    })
+    // 안 말하면 사람은 다 들어간 줄 안다.
+    expect(banner()).toMatch(/1줄.*표에 남아 있습니다/)
+  })
+
+  it('다 들어가면 표를 비운다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+    await open()
+    await paste()
+    answer = {
+      total: 1,
+      ready: 1,
+      problems: 0,
+      created: 1,
+      rows: [row({ imported: true })],
+    }
+    await act(async () => {
+      commitButton().click()
+    })
+    // 남은 것이 없으면 빈 표로 돌아간다 — 다음 대장을 붙일 자리다.
+    expect(screen.getByText(/등록했습니다/)).toBeTruthy()
+    expect(cell('자산번호').value).toBe('')
   })
 })
 

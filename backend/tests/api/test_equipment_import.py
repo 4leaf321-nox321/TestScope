@@ -8,7 +8,9 @@
 
 ## 여기서 지키는 것
 
-1. **전부 되거나 전부 안 되거나.** 반쯤 들어간 대장은 안 들어간 대장보다 나쁘다.
+1. **넣을 수 있는 줄은 넣고, 못 넣은 줄은 그렇게 말한다**(`imported`) — 화면이 들어간
+   줄을 지워야 사람이 남은 것만 고쳐 다시 넣는다. 넣기로 한 것들은 한 트랜잭션이라,
+   그중 하나가 막히면 통째로 되돌아간다.
 2. **미리보기는 아무것도 저장하지 않는다.**
 3. **못 정하는 이름은 거절한다** — 비슷한 기종에 끼워 넣지 않는다(ADR 0003).
 4. **줄 번호로 말한다** — 사람이 엑셀에서 그 줄을 찾을 수 있어야 한다.
@@ -130,11 +132,13 @@ def test_확인하면_들어간다(client: TestClient, admin: Signed) -> None:
     assert rows[f"IMP-{tag}-2"]["status"] == "idle"
 
 
-def test_한_줄이라도_틀리면_아무것도_안_들어간다(client: TestClient, admin: Signed) -> None:
-    """**반쯤 들어간 대장은 안 들어간 대장보다 나쁘다.**
+def test_틀린_줄이_있어도_멀쩡한_줄은_들어간다(client: TestClient, admin: Signed) -> None:
+    """문제가 있는 줄 때문에 멀쩡한 줄까지 막으면, 300줄 중 12줄이 틀렸을 때 288줄을
+    다시 붙여넣어야 한다.
 
-    되는 것만 넣으면 사람은 파일을 고쳐 다시 올리다가 이미 들어간 줄에서 「이미
-    등록된 자산번호」 를 만나고, 그때 무엇을 지워야 할지 모른다.
+    전에는 통째로 막았다. 「되는 것만 넣으면 고쳐 다시 올리다가 이미 들어간 줄에서
+    「이미 등록된 자산번호」 를 만난다」 는 이유였는데, **줄마다 들어갔는지를
+    말해 주면**(`imported`) 화면이 그 줄을 지울 수 있고 다시 붙여넣을 것이 없어진다.
     """
     workspace, site, category = _fixture(client, admin)
     tag = uuid.uuid4().hex[:6]
@@ -144,11 +148,24 @@ def test_한_줄이라도_틀리면_아무것도_안_들어간다(client: TestCl
         f"BAD-{tag}-2,충격기,없는부서,{site},3동 202호,{category},,가동,예\n"
     )
     result = _upload(client, admin, body, dry_run=False)
-    assert result["created"] == 0, "틀린 줄이 있는데 넣었다"
+    assert result["created"] == 1, result
     assert result["problems"] == 1
 
+    # **줄마다 들어갔는지를 말한다** — 화면이 들어간 줄을 지우는 근거다.
+    assert [one["imported"] for one in result["rows"]] == [True, False]
+
     listed = client.get(f"/api/equipment?q=BAD-{tag}", headers=admin.headers)
-    assert listed.json()["total"] == 0, "멀쩡한 줄이 들어가 버렸다"
+    assert {one["asset_no"] for one in listed.json()["items"]} == {f"BAD-{tag}-1"}
+
+
+def test_미리보기는_아무_줄도_들어갔다고_안_한다(client: TestClient, admin: Signed) -> None:
+    workspace, site, category = _fixture(client, admin)
+    body = (
+        f"{HEADER}\n"
+        f"PRE-{uuid.uuid4().hex[:6]},만능기,{workspace},{site},3동,{category},,가동,예\n"
+    )
+    result = _upload(client, admin, body)
+    assert result["rows"][0]["imported"] is False, "미리보기가 들어갔다고 말했다"
 
 
 def test_문제를_줄_번호로_말한다(client: TestClient, admin: Signed) -> None:
@@ -214,7 +231,10 @@ def test_파일_안의_자산번호_중복을_잡는다(client: TestClient, admi
         f"{same},충격기,{workspace},{site},3동 202호,{category},,가동,예\n"
     )
     result = _upload(client, admin, body, dry_run=False)
-    assert result["created"] == 0
+    # 첫 줄은 멀쩡하므로 들어간다. 둘째 줄만 남는다.
+    assert result["created"] == 1
+    assert result["rows"][0]["imported"] is True
+    assert result["rows"][1]["imported"] is False
     assert any("겹칩니다" in one for one in _said(result["rows"][1]))
     # 한 칸에 못 붙이는 문제다 — 어느 줄이 원본인지가 요점이다.
     assert None in _fields(result["rows"][1])
