@@ -76,6 +76,20 @@ def test_패키지에_배포_스크립트가_다_들어간다() -> None:
         assert path.name in packaged, f"package_deploy.ps1 이 {path.name} 을 안 담습니다"
 
 
+def test_패키지에_카탈로그_원천이_든다() -> None:
+    """계열·기종·물성은 데이터라 마이그레이션으로 안 간다. 서버의 import_catalog.py 가
+    <AppPath>\\source\\catalog 를 읽는데, 패키지에 없으면 폐쇄망에서는 들일 길이 없다 —
+    실제로 그래서 운영 카탈로그가 비어 있었다."""
+    packaged = (SCRIPTS / "ci" / "package_deploy.ps1").read_text(encoding="utf-8-sig")
+    for part in ("equipment", "ontology", "schema.json", "sources.json"):
+        assert f"'{part}'" in packaged, (
+            f"package_deploy.ps1 이 source\\catalog\\{part} 를 안 담습니다"
+        )
+    assert "materialtwin" in packaged, (
+        "package_deploy.ps1 이 source\\materialtwin 을 안 담습니다"
+    )
+
+
 def test_설치가_부르는_시드_스크립트가_있다() -> None:
     """스크립트 이름을 고치면 배포가 조용히 그 단계를 잃는다 — 그때 화면은 빈
     목록을 보여 주고, 사람은 그것을 "값이 없다" 로 읽는다."""

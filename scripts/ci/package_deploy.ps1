@@ -99,6 +99,19 @@ Write-Host '프론트엔드 API 주소 검사 통과'
 New-Item -ItemType Directory -Force -Path .\deploy\frontend | Out-Null
 Copy-Item -Recurse -Force .\frontend\dist .\deploy\frontend\dist
 
+# --- 카탈로그 원천 -------------------------------------------------------------
+# 계열·기종·물성·시험법은 코드가 아니라 **데이터**라 마이그레이션으로 안 간다. 서버에서
+# `scripts\import_catalog.py` 를 돌려야 들어가고, 그 스크립트는 <AppPath>\source\catalog 를
+# 읽는다 — 패키지에 없으면 폐쇄망에서는 들일 길이 없다. 쪽 이미지(pages)와 PDF 는
+# 반입이 안 읽으므로 뺀다(수백 MB). 배포는 이것을 자동으로 돌리지 않는다: 반입은 멱등이고
+# 있는 값을 안 덮지만, 언제 들일지는 사람이 정한다.
+Write-Host '카탈로그 원천 복사 (source\catalog · source\materialtwin)'
+New-Item -ItemType Directory -Force -Path .\deploy\source\catalog | Out-Null
+foreach ($part in @('equipment', 'ontology', 'schema.json', 'sources.json', 'urls.json', 'reference_docs.json', 'graph.json', 'index.md', 'README.md', 'build_graph.py')) {
+    Copy-Item -Recurse -Force (Join-Path .\source\catalog $part) (Join-Path .\deploy\source\catalog $part)
+}
+Copy-Item -Recurse -Force .\source\materialtwin .\deploy\source\materialtwin
+
 # --- wheel 번들 ---------------------------------------------------------------
 # 패키지에 설치하는 대신 wheel 을 모아 담는다. 서버가 `pip install --no-index
 # --find-links=packages` 로 진짜 가상환경을 만들므로 **배포가 네트워크를 쓰지 않는다.**
