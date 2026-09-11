@@ -36,6 +36,7 @@ export type EquipmentImportResult = components['schemas']['EquipmentImportResult
 export type EquipmentImportRow = components['schemas']['EquipmentImportRow']
 export type ImportColumn = components['schemas']['ImportColumn']
 export type ImportProblem = components['schemas']['ImportProblem']
+export type ImportChange = components['schemas']['ImportChange']
 type SeriesPage = components['schemas']['Page_EquipmentSeriesRow_']
 type ModelPage = components['schemas']['Page_EquipmentModelRow_']
 
@@ -107,9 +108,10 @@ export const equipmentApi = {
    * **같은 글자**를 `dryRun: false` 로 다시 보낸다 — 서버가 상태를 들고 있지
    * 않으므로, 그 사이에 남이 같은 자산번호를 넣었어도 다시 걸린다.
    */
-  importPaste: (text: string, dryRun: boolean) =>
+  importPaste: (text: string, dryRun: boolean, updateExisting = false) =>
     api.post<EquipmentImportResult>(`/equipment/import?dry_run=${dryRun ? 'true' : 'false'}`, {
       text,
+      update_existing: updateExisting,
     }),
 
   /** 표의 열. **화면이 자기 목록을 따로 들지 않는다** — 두 벌로 두면 열을 하나

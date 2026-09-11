@@ -201,8 +201,16 @@ def import_equipment(
 
     기준정보에 없는 거점·분류는 **여기서 만들지 않는다.** 반입이 값을 만들면 오타가
     그대로 축이 되고, 「본사」 와 「본사 」 가 서로 다른 거점이 된다.
+
+    ## 이미 등록된 자산번호
+
+    기본은 거절이다. `update_existing=true` 면 **적힌 칸만** 갱신한다 — 빈 칸은 안
+    건드리고, 부서와 기종은 안 바꾼다. 미리보기가 줄마다 `changes` 로 무엇이 어떻게
+    바뀌는지 돌려주므로 **누르기 전에 본다.**
     """
-    return imports.run(db, user, payload.text, dry_run=dry_run)
+    return imports.run(
+        db, user, payload.text, dry_run=dry_run, update_existing=payload.update_existing
+    )
 
 
 @router.post("", response_model=EquipmentOut, status_code=201)

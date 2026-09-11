@@ -172,6 +172,37 @@ class EquipmentImportRequest(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     text: str
+    update_existing: bool = False
+    """**이미 등록된 자산번호를 만나면 갱신한다.** 기본은 거절이다.
+
+    부서는 엑셀 대장을 계속 굴린다. 300대 중 30대의 위치·상태가 바뀌었을 때 상세
+    화면에서 30번 고치라는 것은 무리라, 같은 대장을 다시 붙여넣어 맞출 수 있어야 한다.
+
+    ## 갱신이 건드리는 것과 안 건드리는 것
+
+    **빈 칸은 「비운다」 가 아니라 「안 건드린다」 다.** 엑셀에 비고를 안 적었다고 기존
+    비고가 지워지면 그것은 갱신이 아니라 사고다. 비우려면 상세 화면에서 한다.
+
+    **부서와 기종은 안 바꾼다.** 이관은 양쪽 부서 관리자가 다 필요하고(반입한 사람은
+    한쪽이다), 기종을 바꾸면 시험 항목이 다시 복사되지 않아 조건이 옛 기종의 것으로
+    남는다. 둘 다 대장 갱신으로 조용히 일어나면 안 되는 일이라, 다르게 적혀 있으면
+    그 줄을 막고 상세에서 하라고 말한다.
+
+    시험 항목·교정 이력·실측 사양은 다른 표라 아예 안 닿는다."""
+
+
+class ImportChange(BaseModel):
+    """갱신에서 **바뀔 칸 하나.** 넣기 전에 무엇이 어떻게 바뀌는지 보여 주는 근거다.
+
+    「30대를 갱신합니다」 만 말하면 사람은 누르고, 그 안에 잘못 붙은 열이 있었다는
+    것을 나중에 안다. 칸마다 전후를 보이면 그 열은 누르기 전에 눈에 띈다.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    field: str
+    before: str | None
+    after: str | None
 
 
 class ImportColumn(BaseModel):
@@ -248,11 +279,15 @@ class EquipmentImportRow(BaseModel):
     """빈 목록이면 넣을 수 있다. 첫 문제에서 멈추지 않고 **모아서** 준다 — 하나씩
     알려 주면 사람이 고치고 올리기를 문제 수만큼 되풀이한다."""
     imported: bool = False
-    """**이 줄이 실제로 들어갔나.** 미리보기면 언제나 `False`.
+    """**이 줄이 실제로 처리됐나** — 새로 들어갔거나 갱신됐거나. 미리보기면 언제나 `False`.
 
-    화면이 들어간 줄을 표에서 지우는 근거다. 지우지 않으면 사람이 남은 것을 고쳐
-    다시 넣을 때 이미 들어간 줄이 「이미 등록된 자산번호」 로 되돌아오고, 그때
-    무엇을 지워야 할지 모른다."""
+    화면이 그 줄을 표에서 지우는 근거다. 지우지 않으면 사람이 남은 것을 고쳐
+    다시 넣을 때 이미 처리된 줄이 되돌아오고, 그때 무엇을 지워야 할지 모른다."""
+    exists: bool = False
+    """이 자산번호가 이미 등록돼 있나. `update_existing` 이면 새로 넣는 대신 갱신한다."""
+    changes: list[ImportChange] = []
+    """갱신이면 **바뀔 칸들.** 비어 있으면 대장과 시스템이 같다는 뜻이고, 그 줄은
+    처리된 것으로 쳐서 표에서 사라진다."""
 
 
 class EquipmentImportResult(BaseModel):
@@ -275,7 +310,11 @@ class EquipmentImportResult(BaseModel):
     ready: int
     problems: int
     created: int
-    """실제로 만들어진 장비 수. 미리보기면 0."""
+    """실제로 새로 만들어진 장비 수. 미리보기면 0."""
+    updated: int = 0
+    """실제로 갱신된 장비 수. 미리보기면 0."""
+    unchanged: int = 0
+    """이미 있고 대장과 같은 줄 수. 손댈 것이 없어 처리된 것으로 친다."""
     rows: list[EquipmentImportRow]
 
 

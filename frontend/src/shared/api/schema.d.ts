@@ -889,6 +889,12 @@ export interface paths {
          *
          *     기준정보에 없는 거점·분류는 **여기서 만들지 않는다.** 반입이 값을 만들면 오타가
          *     그대로 축이 되고, 「본사」 와 「본사 」 가 서로 다른 거점이 된다.
+         *
+         *     ## 이미 등록된 자산번호
+         *
+         *     기본은 거절이다. `update_existing=true` 면 **적힌 칸만** 갱신한다 — 빈 칸은 안
+         *     건드리고, 부서와 기종은 안 바꾼다. 미리보기가 줄마다 `changes` 로 무엇이 어떻게
+         *     바뀌는지 돌려주므로 **누르기 전에 본다.**
          */
         post: operations["import_equipment_api_equipment_import_post"];
         delete?: never;
@@ -2266,6 +2272,11 @@ export interface components {
         EquipmentImportRequest: {
             /** Text */
             text: string;
+            /**
+             * Update Existing
+             * @default false
+             */
+            update_existing: boolean;
         };
         /**
          * EquipmentImportResult
@@ -2290,6 +2301,16 @@ export interface components {
             problems: number;
             /** Created */
             created: number;
+            /**
+             * Updated
+             * @default 0
+             */
+            updated: number;
+            /**
+             * Unchanged
+             * @default 0
+             */
+            unchanged: number;
             /** Rows */
             rows: components["schemas"]["EquipmentImportRow"][];
         };
@@ -2320,6 +2341,16 @@ export interface components {
              * @default false
              */
             imported: boolean;
+            /**
+             * Exists
+             * @default false
+             */
+            exists: boolean;
+            /**
+             * Changes
+             * @default []
+             */
+            changes: components["schemas"]["ImportChange"][];
         };
         /**
          * EquipmentModelCreateRequest
@@ -3029,6 +3060,21 @@ export interface components {
         HomeWorkspaceRequest: {
             /** Workspace Slug */
             workspace_slug: string;
+        };
+        /**
+         * ImportChange
+         * @description 갱신에서 **바뀔 칸 하나.** 넣기 전에 무엇이 어떻게 바뀌는지 보여 주는 근거다.
+         *
+         *     「30대를 갱신합니다」 만 말하면 사람은 누르고, 그 안에 잘못 붙은 열이 있었다는
+         *     것을 나중에 안다. 칸마다 전후를 보이면 그 열은 누르기 전에 눈에 띈다.
+         */
+        ImportChange: {
+            /** Field */
+            field: string;
+            /** Before */
+            before: string | null;
+            /** After */
+            after: string | null;
         };
         /**
          * ImportColumn

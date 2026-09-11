@@ -67,6 +67,8 @@ function row(over: Record<string, unknown> = {}) {
     name: '만능기',
     model_linked: true,
     imported: false,
+    exists: false,
+    changes: [],
     problems: [],
     ...over,
   }
@@ -513,7 +515,7 @@ describe('넣은 뒤', () => {
 
   /** 넣은 뒤 뜨는 알림 상자의 글자 전체. `<strong>` 이 섞여 쪼개지기 때문이다. */
   function banner(): string {
-    return screen.getByText(/등록했습니다/).closest('div')?.textContent ?? ''
+    return screen.getByText(/처리했습니다/).closest('div')?.textContent ?? ''
   }
 
   async function pasteTwo() {
@@ -547,7 +549,7 @@ describe('넣은 뒤', () => {
     expect(document.querySelectorAll('tbody tr')).toHaveLength(1)
     expect(cell('자산번호').value).toBe('A-2')
     // `<strong>` 때문에 글자가 쪼개지므로 알림 상자 전체로 본다.
-    expect(banner()).toMatch(/1대.*등록했습니다/)
+    expect(banner()).toMatch(/1건.*처리했습니다/)
   })
 
   it('남은 줄이 있다는 것을 말해 준다', async () => {
@@ -575,8 +577,89 @@ describe('넣은 뒤', () => {
       commitButton().click()
     })
     // 남은 것이 없으면 빈 표로 돌아간다 — 다음 대장을 붙일 자리다.
-    expect(screen.getByText(/등록했습니다/)).toBeTruthy()
+    expect(screen.getByText(/처리했습니다/)).toBeTruthy()
     expect(cell('자산번호').value).toBe('')
+  })
+})
+
+describe('이미 등록된 장비 갱신', () => {
+  function toggle(): HTMLInputElement {
+    return screen.getByLabelText(/이미 등록된 장비는 갱신/) as HTMLInputElement
+  }
+
+  it('기본은 꺼져 있고, 켜면 서버에 그렇게 보낸다', async () => {
+    answer = { total: 1, ready: 0, problems: 1, created: 0, rows: [row({ exists: true })] }
+    await open()
+    await paste()
+    // **기본은 거절이다.** 기본이 갱신이면 다른 부서의 옛 대장을 실수로 붙인 사람이
+    // 남의 장비 위치를 바꾼다.
+    expect(toggle().checked).toBe(false)
+    expect((calls[0].body as { update_existing: boolean }).update_existing).toBe(false)
+
+    calls.length = 0
+    answer = {
+      total: 1,
+      ready: 1,
+      problems: 0,
+      created: 0,
+      unchanged: 1,
+      rows: [row({ exists: true })],
+    }
+    await act(async () => {
+      fireEvent.click(toggle())
+    })
+    await act(async () => {
+      vi.advanceTimersByTime(600)
+    })
+    // 켜고 끄면 같은 표라도 판정이 달라진다 — 다시 묻는다.
+    expect(calls).toHaveLength(1)
+    expect((calls[0].body as { update_existing: boolean }).update_existing).toBe(true)
+  })
+
+  it('바뀔 칸을 파랗게 칠하고 전후를 보인다', async () => {
+    answer = {
+      total: 1,
+      ready: 1,
+      problems: 0,
+      created: 0,
+      rows: [
+        row({
+          exists: true,
+          cells: { asset_no: 'A-1', name: '만능기', site: '공장', note: '' },
+          changes: [{ field: 'site', before: '본사', after: '공장' }],
+        }),
+      ],
+    }
+    await open()
+    await act(async () => {
+      fireEvent.click(toggle())
+    })
+    await paste()
+    // 「30대를 갱신합니다」 만 말하면 사람은 누르고, 그 안에 잘못 붙은 열이 있었다는
+    // 것을 나중에 안다. 칸마다 전후를 보이면 그 열은 누르기 전에 눈에 띈다.
+    const changed = cell('거점')
+    expect(changed.className).toMatch(/sky/)
+    expect(changed.title).toBe('본사 → 공장')
+    expect(cell('장비명').className).not.toMatch(/sky/)
+    expect(screen.getByText('갱신 1칸')).toBeTruthy()
+  })
+
+  it('대장과 같은 줄은 「변경 없음」 이라고 말한다', async () => {
+    answer = {
+      total: 1,
+      ready: 1,
+      problems: 0,
+      created: 0,
+      unchanged: 1,
+      rows: [row({ exists: true })],
+    }
+    await open()
+    await act(async () => {
+      fireEvent.click(toggle())
+    })
+    await paste()
+    // 요약 줄에도 「변경 없음 N」 이 있으니 **표 안**을 본다 — 줄마다 말해 주는 것이 요점이다.
+    expect(document.querySelector('tbody')?.textContent).toContain('변경 없음')
   })
 })
 
@@ -606,7 +689,7 @@ describe('넣는 동안', () => {
       release({ total: 3, ready: 3, problems: 0, created: 3, rows: [] })
       await held
     })
-    expect(screen.getByText(/등록했습니다/)).toBeTruthy()
+    expect(screen.getByText(/처리했습니다/)).toBeTruthy()
   })
 
   it('오래 걸릴 것 같으면 넣기 전에 말한다', async () => {

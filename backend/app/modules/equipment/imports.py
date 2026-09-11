@@ -33,6 +33,21 @@
 **넣기로 한 것은 전부 되거나 전부 안 되거나다.** 문제 없는 줄들을 한 트랜잭션에 담고,
 그중 하나라도 막히면(그 사이 남이 같은 자산번호를 넣는 일이 있다) 통째로 되돌린다.
 
+## 이미 등록된 자산번호는 갱신할 수 있다
+
+부서는 엑셀 대장을 계속 굴린다. 300대 중 30대의 위치·상태가 바뀌었을 때 상세 화면에서
+30번 고치라는 것은 무리라, 같은 대장을 다시 붙여넣어 맞출 수 있어야 한다
+(`update_existing`). 기본은 거절이다 — 덮어쓰기는 명시적으로 켜야 한다.
+
+**빈 칸은 「비운다」 가 아니라 「안 건드린다」 다.** 엑셀에 비고를 안 적었다고 기존 비고가
+지워지면 그것은 갱신이 아니라 사고다.
+
+**부서와 기종은 안 바꾼다.** 이관은 양쪽 관리자가 다 필요하고, 기종을 바꾸면 시험 항목이
+다시 복사되지 않아 조건이 옛 기종의 것으로 남는다. 다르게 적혀 있으면 그 줄을 막는다.
+
+**무엇이 바뀌는지 칸마다 보여 준다.** 「30대를 갱신합니다」 만 말하면 사람은 누르고,
+그 안에 잘못 붙은 열이 있었다는 것을 나중에 안다.
+
 ## 이름으로 받고, 못 정하면 거절한다
 
 사람은 UUID 를 모른다. 부서·거점·분류·기종을 이름으로 받되, 후보가 여럿이면
@@ -58,6 +73,7 @@ from app.modules.equipment.models import EQUIPMENT_STATUSES, Equipment
 from app.modules.equipment.schemas import (
     EquipmentImportResult,
     EquipmentImportRow,
+    ImportChange,
     ImportColumn,
     ImportProblem,
 )
@@ -65,6 +81,7 @@ from app.modules.resolve.services import resolve
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared.errors import AppError
+from app.shared.permissions import require_owner_edit
 from app.shared.text import clean
 
 #: 한 번에 받는 줄 수. 넘으면 나눠 붙여넣으라고 말한다.
@@ -197,8 +214,15 @@ def _delimiter(first: str) -> str:
     return "\t" if "\t" in first else ","
 
 
-def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
-    """붙여넣은 머리글을 우리 칸 이름에 맞춘다. 띄어쓰기와 대소문자는 무시한다."""
+def _header_map(
+    fields: Sequence[str] | None, *, update_existing: bool = False
+) -> dict[str, str]:
+    """붙여넣은 머리글을 우리 칸 이름에 맞춘다. 띄어쓰기와 대소문자는 무시한다.
+
+    갱신이면 **자산번호 열만 있으면 된다.** 「자산번호·설치위치·상태」 세 열만 긁어
+    오는 것이 갱신의 자연스러운 모양이고, 나머지 필수 열을 요구하면 그 길이 막힌다.
+    새 줄이 섞여 있으면 그 줄은 줄마다 빈 칸 검사로 걸린다.
+    """
     if not fields:
         raise AppError("TSC-IMPORT-0002", "머리글 줄이 없습니다.", status=400)
     known: dict[str, str] = {}
@@ -210,7 +234,8 @@ def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
         key = (raw or "").replace(" ", "").replace("﻿", "").lower()
         if key in known:
             found[known[key]] = raw
-    missing = [COLUMNS[one][0] for one in REQUIRED if one not in found]
+    needed = ("asset_no",) if update_existing else REQUIRED
+    missing = [COLUMNS[one][0] for one in needed if one not in found]
     if missing:
         raise AppError(
             "TSC-IMPORT-0003",
@@ -313,6 +338,10 @@ class Lookup:
         판정은 부서마다 한 번만 한다. 대장 한 장에 부서는 대개 한둘이다.
         """
         body = clean(text)
+        if not body:
+            # 비어 있음은 필수 칸 검사가 이미 말했다(새 줄) — 갱신이면 안 건드리는 칸이다.
+            # 여기서 또 「「」 를 찾을 수 없습니다」 라고 하면 한 칸에 문제가 둘 붙는다.
+            return None
         slug = self.workspaces.get(body)
         if slug is None:
             problems.add("workspace", f"「{text}」 를 찾을 수 없습니다")
@@ -428,18 +457,30 @@ def _int(text: str, field: str, problems: Problems) -> int | None:
         return None
 
 
-def _row_payload(look: Lookup, values: dict[str, str], problems: Problems) -> dict[str, Any]:
+def _row_payload(
+    look: Lookup, values: dict[str, str], problems: Problems, *, updating: bool = False
+) -> dict[str, Any]:
     """한 줄을 등록 요청의 모양으로. 문제는 모아서 돌려준다 — 첫 오류에서 멈추면
-    사람이 파일을 고치고 올리기를 오류 수만큼 되풀이한다."""
-    for field in REQUIRED:
-        if not clean(values.get(field, "")):
-            problems.add(field, "비어 있습니다")
+    사람이 파일을 고치고 올리기를 오류 수만큼 되풀이한다.
+
+    `updating` 이면 **필수 칸이 비어 있어도 문제가 아니다** — 갱신은 적힌 칸만 건드리고,
+    안 적힌 칸은 이미 있는 값이 그대로다.
+    """
+    if not updating:
+        for field in REQUIRED:
+            if not clean(values.get(field, "")):
+                problems.add(field, "비어 있습니다")
 
     model_id = look.model(values.get("model", ""), problems)
     category_term_id = look.term(
         "equipment_category", values.get("category", ""), "category", problems
     )
-    if model_id is None and category_term_id is None and not values.get("model"):
+    if (
+        not updating
+        and model_id is None
+        and category_term_id is None
+        and not values.get("model")
+    ):
         # 기종을 안 골랐으면 분류가 필수다 — 무슨 종류인지 모르는 장비는 검색에서
         # 통째로 빠진다.
         problems.add("category", "기종을 안 적었으면 장비유형은 필수입니다")
@@ -486,7 +527,124 @@ def _row_payload(look: Lookup, values: dict[str, str], problems: Problems) -> di
     }
 
 
-def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImportResult:
+#: 갱신이 건드리는 칸. **부서와 기종은 없다** — 이관은 양쪽 관리자가 다 필요하고,
+#: 기종을 바꾸면 시험 항목이 다시 복사되지 않는다. 둘 다 대장 갱신으로 조용히 일어나면
+#: 안 되는 일이다.
+UPDATABLE = (
+    "name",
+    "dept_asset_no",
+    "site_term_id",
+    "location",
+    "serial_no",
+    "shared_use",
+    "status",
+    "acquired_on",
+    "manufactured_year",
+    "calibration_required",
+    "calibration_interval_months",
+    "note",
+    "category_term_id",
+    "maker_text",
+    "model_text",
+)
+
+#: 페이로드 키 -> 대장의 열 키. 바뀌는 칸을 화면이 칠하려면 열 키로 말해야 한다.
+FIELD_OF = {
+    "site_term_id": "site",
+    "category_term_id": "category",
+    **{key: key for key in UPDATABLE if not key.endswith("_term_id")},
+}
+
+
+#: 상태 코드 -> 사람 말. `STATUS_WORDS` 의 역이되, 코드마다 **첫 번째로 적힌 말**을 쓴다.
+STATUS_LABEL: dict[str, str] = {}
+for _word, _code in STATUS_WORDS.items():
+    STATUS_LABEL.setdefault(_code, _word)
+
+
+def _shown(db: Session, field: str, value: Any) -> str | None:
+    """전후를 사람 말로. 용어 id 는 이름으로, 참·거짓은 예·아니오로, 상태는 라벨로.
+
+    「operational → idle」 은 이 시스템을 만든 사람에게만 읽힌다. 대장을 붙이는 사람은
+    「가동 → 유휴」 를 본다."""
+    if value is None:
+        return None
+    if field.endswith("_term_id"):
+        term = db.get(VocabularyTerm, value)
+        return term.value if term else str(value)
+    if isinstance(value, bool):
+        return "예" if value else "아니오"
+    if field == "status":
+        return STATUS_LABEL.get(str(value), str(value))
+    return str(value)
+
+
+def _update_plan(
+    db: Session,
+    user: User,
+    existing: Equipment,
+    picked: dict[str, str],
+    payload: dict[str, Any],
+    problems: Problems,
+) -> tuple[dict[str, Any], list[ImportChange]]:
+    """이미 있는 장비에 **무엇을 바꿀지.** 보낼 것과 사람에게 보일 전후를 함께 만든다.
+
+    **적힌 칸만 본다.** 빈 칸은 「안 건드린다」 다 — `payload` 는 빈 칸을 기본값으로
+    채워 놓으므로(상태 「가동」, 공용 「아니오」) 그것을 그대로 보내면 안 적은 칸이
+    기본값으로 덮인다.
+    """
+    try:
+        require_owner_edit(
+            db, user, existing.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002"
+        )
+    except AppError as error:
+        problems.add(None, error.message)
+        return {}, []
+
+    # **부서·기종은 다르게 적혀 있으면 막는다.** 조용히 무시하면 사람은 바뀐 줄 안다.
+    if clean(picked.get("workspace", "")) and payload.get("workspace_slug"):
+        owner = db.get(Workspace, existing.owner_workspace_id)
+        if owner is not None and owner.slug != payload["workspace_slug"]:
+            problems.add(
+                "workspace",
+                "반입으로는 부서를 옮길 수 없습니다. 상세 화면에서 이관하세요",
+            )
+    if clean(picked.get("model", "")) and payload.get("model_id") != existing.model_id:
+        problems.add(
+            "model",
+            "반입으로는 기종을 바꿀 수 없습니다. 상세 화면에서 바꾸세요",
+        )
+
+    changes: dict[str, Any] = {}
+    shown: list[ImportChange] = []
+    for key in UPDATABLE:
+        column = FIELD_OF[key]
+        if not clean(picked.get(column, "")):
+            continue  # 안 적은 칸은 안 건드린다
+        if existing.model_id is not None and key in (
+            "category_term_id",
+            "maker_text",
+            "model_text",
+        ):
+            continue  # 카탈로그에 이어진 장비의 그 셋은 카탈로그가 갖는다
+        after = payload.get(key)
+        if after is None:
+            continue  # 못 읽은 값(문제로 이미 적혔다)
+        before = getattr(existing, key)
+        if before == after:
+            continue
+        changes[key] = after
+        shown.append(
+            ImportChange(
+                field=column, before=_shown(db, key, before), after=_shown(db, key, after)
+            )
+        )
+    return changes, shown
+
+
+def run(
+    db: Session, user: User, text: str, *, dry_run: bool, update_existing: bool = False
+) -> EquipmentImportResult:
     """붙여넣은 대장을 읽어 판정하고, `dry_run` 이 아니면 넣는다."""
     if len(text) > MAX_CHARS:
         raise AppError(
@@ -505,7 +663,7 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
         )
 
     reader = csv.DictReader(io.StringIO(body), delimiter=_delimiter(body.split("\n", 1)[0]))
-    header = _header_map(reader.fieldnames)
+    header = _header_map(reader.fieldnames, update_existing=update_existing)
 
     # **먼저 전부 읽는다.** 그래야 이름들을 한 번에 찾을 수 있다 — 줄마다 물으면
     # 2000줄이 질의를 16,000회 한다.
@@ -526,11 +684,16 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
     # 이미 등록된 자산번호도 **한 번에** 본다.
     wanted = {clean(one.get("asset_no", "")) for _, one in picked_rows}
     wanted.discard("")
-    taken: set[str] = set()
+    taken: dict[str, Equipment] = {}
     if wanted:
-        taken = set(
-            db.scalars(select(Equipment.asset_no).where(Equipment.asset_no.in_(wanted))).all()
-        )
+        taken = {
+            one.asset_no: one
+            for one in db.scalars(
+                select(Equipment).where(
+                    Equipment.asset_no.in_(wanted), Equipment.deleted_at.is_(None)
+                )
+            )
+        }
 
     rows: list[EquipmentImportRow] = []
     payloads: list[dict[str, Any]] = []
@@ -538,17 +701,27 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
     # 둘째 줄에서 막히는데, 그때는 이미 첫 줄이 들어간 뒤다.
     seen: dict[str, int] = {}
 
+    plans: list[dict[str, Any] | None] = []
+
     for index, picked in picked_rows:
         problems = Problems()
-        payload = _row_payload(look, picked, problems)
+        asset_no = clean(picked.get("asset_no", ""))
+        existing = taken.get(asset_no) if asset_no else None
+        updating = existing is not None and update_existing
 
-        asset_no = payload["asset_no"]
+        payload = _row_payload(look, picked, problems, updating=updating)
+        plan: dict[str, Any] | None = None
+        shown: list[ImportChange] = []
+
         if asset_no:
             if asset_no in seen:
                 # 한 칸에 못 붙이는 문제다 — 어느 줄이 원본인지가 요점이다.
                 problems.add(None, f"자산번호가 {seen[asset_no]}번째 줄과 겹칩니다")
-            elif asset_no in taken:
+            elif existing is not None and not update_existing:
                 problems.add("asset_no", "이미 등록된 장비입니다")
+            elif existing is not None:
+                plan, shown = _update_plan(db, user, existing, picked, payload, problems)
+                seen[asset_no] = index
             else:
                 seen[asset_no] = index
 
@@ -560,18 +733,27 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
                 cells={field: (picked.get(field) or "").strip() for field in COLUMNS},
                 asset_no=asset_no or None,
                 name=payload["name"] or None,
-                model_linked=payload["model_id"] is not None,
+                model_linked=(
+                    existing.model_id is not None
+                    if existing is not None
+                    else payload["model_id"] is not None
+                ),
                 problems=problems.items,
+                exists=existing is not None,
+                changes=shown,
             )
         )
         payloads.append(payload)
+        plans.append(plan if updating else None)
 
     ready = sum(1 for one in rows if not one.problems)
+    unchanged = sum(1 for one in rows if not one.problems and one.exists and not one.changes)
     result = EquipmentImportResult(
         total=len(rows),
         ready=ready,
         problems=len(rows) - ready,
         created=0,
+        unchanged=unchanged,
         rows=rows,
     )
     if dry_run or not ready:
@@ -583,23 +765,36 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> EquipmentImport
     # 그 288줄은 **한 트랜잭션**이다. 넣다가 하나가 막히면(그 사이 남이 같은
     # 자산번호를 넣는 일이 있다) 통째로 되돌린다 — 반쯤 들어간 채로 끝나지 않는다.
     going = [
-        (row, payload) for row, payload in zip(rows, payloads, strict=True) if not row.problems
+        (row, payload, plan)
+        for row, payload, plan in zip(rows, payloads, plans, strict=True)
+        if not row.problems
     ]
-    for row, payload in going:
+    created = updated = 0
+    for row, payload, plan in going:
         try:
-            services.create(db, user, payload, commit=False)
+            if row.exists:
+                # 대장과 같은 줄은 손댈 것이 없다 — 처리된 것으로 쳐서 표에서 사라진다.
+                if plan:
+                    existing = taken[payload["asset_no"]]
+                    services.update(db, user, existing.id, plan, commit=False)
+                    updated += 1
+            else:
+                services.create(db, user, payload, commit=False)
+                created += 1
         except AppError as error:
             db.rollback()
             row.problems.append(ImportProblem(field=None, message=error.message))
             # 되돌렸으니 **아무 줄도 안 들어갔다.** 판정을 다시 센다.
-            for one, _ in going:
+            for one, _, _ in going:
                 one.imported = False
             result.ready = sum(1 for one in rows if not one.problems)
             result.problems = len(rows) - result.ready
             result.created = 0
+            result.updated = 0
             return result
         row.imported = True
 
     db.commit()
-    result.created = len(going)
+    result.created = created
+    result.updated = updated
     return result

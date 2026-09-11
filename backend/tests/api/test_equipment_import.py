@@ -598,3 +598,110 @@ def test_카탈로그에_안_이어진_장비를_되찾을_수_있다(client: Te
     said = rows["equipment_without_model"]
     assert said["link"] == "/equipment?catalog=unlinked"
     assert said["count"] == listed.json()["total"]
+
+
+def _upsert(
+    client: TestClient, admin: Signed, body: str, *, dry_run: bool = True
+) -> dict[str, Any]:
+    response = client.post(
+        f"/api/equipment/import?dry_run={'true' if dry_run else 'false'}",
+        json={"text": body, "update_existing": True},
+        headers=admin.headers,
+    )
+    assert response.status_code == 200, response.text
+    out: dict[str, Any] = response.json()
+    return out
+
+
+def test_갱신을_켜면_적힌_칸만_바꾼다(client: TestClient, admin: Signed) -> None:
+    """부서는 엑셀 대장을 계속 굴린다. 300대 중 30대의 위치·상태가 바뀌었을 때 상세
+    화면에서 30번 고치라는 것은 무리다.
+
+    **빈 칸은 「비운다」 가 아니라 「안 건드린다」 다.** 엑셀에 비고를 안 적었다고 기존
+    비고가 지워지면 그것은 갱신이 아니라 사고다.
+    """
+    workspace, site, category = _fixture(client, admin)
+    asset_no = f"UPD-{uuid.uuid4().hex[:6]}"
+    head = "자산번호,장비명,보유부서,거점,설치위치,장비유형,상태,비고"
+    first = (
+        f"{head}\n{asset_no},만능기,{workspace},{site},3동 201호,{category},가동,처음 비고\n"
+    )
+    assert _upload(client, admin, first, dry_run=False)["created"] == 1
+
+    # 위치와 상태만 적고 나머지는 비웠다.
+    later = f"자산번호,설치위치,상태\n{asset_no},4동 105호,유휴\n"
+    preview = _upsert(client, admin, later)
+    row = preview["rows"][0]
+    assert row["exists"] is True
+    assert row["problems"] == [], row
+    # **무엇이 바뀌는지 칸마다 보인다** — 누르기 전에 잘못 붙은 열이 눈에 띈다.
+    changed = {one["field"]: (one["before"], one["after"]) for one in row["changes"]}
+    assert changed == {
+        "location": ("3동 201호", "4동 105호"),
+        "status": ("가동", "유휴"),
+    }
+
+    done = _upsert(client, admin, later, dry_run=False)
+    assert done["updated"] == 1 and done["created"] == 0
+    assert done["rows"][0]["imported"] is True
+
+    got = client.get(f"/api/equipment?asset_no={asset_no}", headers=admin.headers).json()
+    one = got["items"][0]
+    assert one["location"] == "4동 105호"
+    assert one["status"] == "idle"
+    # 안 적은 칸은 그대로다.
+    assert one["name"] == "만능기"
+    assert one["note"] == "처음 비고"
+
+
+def test_대장과_같으면_변경_없음으로_처리된다(client: TestClient, admin: Signed) -> None:
+    """손댈 것이 없는 줄은 처리된 것으로 쳐서 표에서 사라진다 — 안 그러면 300줄 대장을
+    다시 붙일 때마다 270줄이 「이미 등록」 으로 남아 무엇을 봐야 할지 가린다."""
+    workspace, site, category = _fixture(client, admin)
+    asset_no = f"SAME-{uuid.uuid4().hex[:6]}"
+    body = f"{HEADER}\n{asset_no},만능기,{workspace},{site},3동,{category},,가동,예\n"
+    assert _upload(client, admin, body, dry_run=False)["created"] == 1
+
+    again = _upsert(client, admin, body, dry_run=False)
+    assert again["unchanged"] == 1
+    assert again["updated"] == 0
+    assert again["rows"][0]["changes"] == []
+    assert again["rows"][0]["imported"] is True
+
+
+def test_갱신으로는_기종을_못_바꾼다(client: TestClient, admin: Signed) -> None:
+    """기종을 바꾸면 시험 항목이 다시 복사되지 않아 조건이 옛 기종의 것으로 남는다.
+    대장 갱신으로 **조용히** 일어나면 안 되는 일이라, 다르게 적혀 있으면 막고
+    상세에서 하라고 말한다."""
+    workspace, site, category = _fixture(client, admin)
+    asset_no = f"LOCK-{uuid.uuid4().hex[:6]}"
+    body = f"{HEADER}\n{asset_no},만능기,{workspace},{site},3동,{category},,가동,예\n"
+    assert _upload(client, admin, body, dry_run=False)["created"] == 1
+
+    tag = uuid.uuid4().hex[:8]
+    series = client.post(
+        "/api/equipment-series", json={"name": f"계열{tag}"}, headers=admin.headers
+    )
+    made = client.post(
+        "/api/equipment-models",
+        json={"series_id": series.json()["id"], "name": f"기종{tag}"},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+
+    relinked = f"자산번호,기종\n{asset_no},기종{tag}\n"
+    row = _upsert(client, admin, relinked)["rows"][0]
+    assert "model" in _fields(row), row
+    assert any("상세" in one for one in _said(row))
+
+
+def test_갱신을_안_켜면_여전히_거절한다(client: TestClient, admin: Signed) -> None:
+    """덮어쓰기는 **명시적으로 켜야** 한다. 기본이 갱신이면 다른 부서의 옛 대장을 실수로
+    붙인 사람이 남의 장비 위치를 바꾼다."""
+    workspace, site, category = _fixture(client, admin)
+    asset_no = f"NOUP-{uuid.uuid4().hex[:6]}"
+    body = f"{HEADER}\n{asset_no},만능기,{workspace},{site},3동,{category},,가동,예\n"
+    assert _upload(client, admin, body, dry_run=False)["created"] == 1
+    again = _upload(client, admin, body)
+    assert again["rows"][0]["exists"] is True
+    assert any("이미 등록" in one for one in _said(again["rows"][0]))

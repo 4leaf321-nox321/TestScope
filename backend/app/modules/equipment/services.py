@@ -593,9 +593,19 @@ _PLAIN_FIELDS = (
 
 
 def update(
-    db: Session, user: User, equipment_id: uuid.UUID, changes: dict[str, Any]
+    db: Session,
+    user: User,
+    equipment_id: uuid.UUID,
+    changes: dict[str, Any],
+    *,
+    commit: bool = True,
 ) -> Equipment:
-    """**보낸 것만 바꾼다.** changes 는 exclude_unset 으로 만들어진 dict 다."""
+    """**보낸 것만 바꾼다.** changes 는 exclude_unset 으로 만들어진 dict 다.
+
+    `commit=False` 는 일괄 반입의 갱신을 위한 것이다(`create` 와 같은 이유) — 30대를
+    갱신하다 12대째에서 막혔을 때 앞의 11대가 이미 커밋돼 있으면 반쯤 갱신된 대장이
+    된다.
+    """
     row = get_equipment(db, user, equipment_id)
     require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
     _check_not_emptied(changes)
@@ -657,6 +667,8 @@ def update(
         row.retired_on = None
     _check_identity(db, row.category_term_id, row.model_id)
 
+    if not commit:
+        return row
     db.commit()
     db.refresh(row)
     return row

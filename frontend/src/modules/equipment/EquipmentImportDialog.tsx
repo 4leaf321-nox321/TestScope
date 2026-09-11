@@ -78,6 +78,16 @@
  * 지우는 것이 핵심이다. 안 지우면 다시 누를 때 이미 들어간 288줄이 「이미 등록된
  * 자산번호」 로 되돌아오고, 그때 사람은 무엇을 지워야 할지 모른다.
  *
+ * ## 이미 등록된 자산번호는 갱신할 수 있다
+ *
+ * 부서는 엑셀 대장을 계속 굴린다. 300대 중 30대의 위치·상태가 바뀌었을 때 상세 화면에서
+ * 30번 고치라는 것은 무리라, 같은 대장을 다시 붙여넣어 맞출 수 있어야 한다. 기본은
+ * 거절이고 **켜야 갱신한다** — 기본이 갱신이면 다른 부서의 옛 대장을 실수로 붙인 사람이
+ * 남의 장비 위치를 바꾼다.
+ *
+ * 빈 칸은 「비운다」 가 아니라 「안 건드린다」 다. 부서와 기종은 안 바꾼다. 바뀔 칸은
+ * 파랗게 칠하고 전후를 보인다 — 누르기 전에 잘못 붙은 열이 눈에 띄어야 한다.
+ *
  * ## 진행률(N/M) 대신 「무엇을 하는 중인지」 를 보인다
  *
  * 「지금 1500대째」 를 보여 주려면 서버가 넣는 중에 중간 보고를 해야 하는데, 그러려면
@@ -162,6 +172,8 @@ function blank(count: number): GridRow[] {
     cells: {},
     problems: [],
     modelLinked: false,
+    exists: false,
+    changes: [],
   }))
 }
 
@@ -215,6 +227,8 @@ export function EquipmentImportDialog({
   const [onlyBad, setOnlyBad] = useState(false)
   /** 방금 몇 줄을 복사했나. **말해 주지 않으면 눌렀는지도 모른다.** */
   const [copied, setCopied] = useState<number | null>(null)
+  /** 이미 등록된 자산번호를 만나면 갱신할 것인가. **기본은 거절이다.** */
+  const [updateExisting, setUpdateExisting] = useState(false)
 
   /** 서버에 보낼 줄 — **내용이 있는 것만.** 서버가 빈 줄을 건너뛰므로, 이렇게 하면
    *  응답의 순서와 여기 순서가 1:1 로 맞는다. */
@@ -237,6 +251,8 @@ export function EquipmentImportDialog({
           ...row,
           problems: said?.problems ?? [],
           modelLinked: said?.model_linked ?? false,
+          exists: said?.exists ?? false,
+          changes: said?.changes ?? [],
         }
       })
     })
@@ -249,12 +265,13 @@ export function EquipmentImportDialog({
       setSummary(null)
       return
     }
-    if (asText === sent.current) return
+    const key = `${updateExisting ? 'u' : 'c'}:${asText}`
+    if (key === sent.current) return
     setPhase('looking')
     const timer = setTimeout(() => {
-      sent.current = asText
+      sent.current = key
       equipmentApi
-        .importPaste(asText, true)
+        .importPaste(asText, true, updateExisting)
         .then((result) => {
           apply(result)
           setError(null)
@@ -263,7 +280,8 @@ export function EquipmentImportDialog({
         .finally(() => setPhase('idle'))
     }, 500)
     return () => clearTimeout(timer)
-  }, [asText, sending.length, columns.data])
+    // 갱신을 켜고 끄면 같은 표라도 판정이 달라진다 — 다시 묻는다.
+  }, [asText, sending.length, columns.data, updateExisting])
 
   /** 엑셀에서 복사한 **범위**를 받는다.
    *
@@ -307,16 +325,18 @@ export function EquipmentImportDialog({
     setDone(null)
     setPhase('looking')
     try {
-      const result = await equipmentApi.importPaste(text, true)
+      const result = await equipmentApi.importPaste(text, true, updateExisting)
       // **여기서만 서버가 읽은 값을 그대로 받는다** — 그게 파싱 결과다. 화면이
       // 다시 파싱하면 구분자·빈 줄·머리글 별칭이 두 벌이 되어 반드시 어긋난다.
       const made: GridRow[] = result.rows.map((one) => ({
         id: nextId++,
         cells: { ...one.cells },
-        problems: one.problems,
+        problems: one.problems ?? [],
         modelLinked: one.model_linked,
+        exists: one.exists ?? false,
+        changes: one.changes ?? [],
       }))
-      sent.current = serialize(columns.data ?? [], made)
+      sent.current = `${updateExisting ? 'u' : 'c'}:${serialize(columns.data ?? [], made)}`
       setRows(made.length > 0 ? made : blank(BLANK_ROWS))
       setSummary(result)
     } catch (thrown) {
@@ -341,6 +361,8 @@ export function EquipmentImportDialog({
         ...row,
         problems: said?.problems ?? [],
         modelLinked: said?.model_linked ?? false,
+        exists: said?.exists ?? false,
+        changes: said?.changes ?? [],
       })
     }
     return left
@@ -360,9 +382,10 @@ export function EquipmentImportDialog({
     try {
       // **같은 글자를 다시 보낸다.** 서버가 미리보기 결과를 들고 있지 않아서,
       // 그 사이 남이 같은 자산번호를 넣었어도 여기서 다시 걸린다.
-      const result = await equipmentApi.importPaste(asText, false)
-      if (result.created > 0) {
-        setDone(result.created)
+      const result = await equipmentApi.importPaste(asText, false, updateExisting)
+      const handled = result.created + (result.updated ?? 0) + (result.unchanged ?? 0)
+      if (handled > 0) {
+        setDone(handled)
         onDone()
       }
       // **들어간 줄을 지운다.** 안 지우면 다시 누를 때 그 줄들이 「이미 등록된
@@ -423,7 +446,7 @@ export function EquipmentImportDialog({
       // 방금 만든 것이 반영되게 **강제로 다시 묻는다** — 표 글자는 안 바뀌었으므로
       // 그냥 두면 「같은 것은 두 번 안 보낸다」 에 걸려 판정이 그대로 남는다.
       sent.current = ''
-      const result = await equipmentApi.importPaste(asText, true)
+      const result = await equipmentApi.importPaste(asText, true, updateExisting)
       apply(result)
     } catch (thrown) {
       setError(thrown as ApiError)
@@ -521,6 +544,17 @@ export function EquipmentImportDialog({
             <Button variant="outline" size="sm" onClick={reset} disabled={phase !== 'idle'}>
               비우기
             </Button>
+            {/* **기본은 거절이다.** 기본이 갱신이면 다른 부서의 옛 대장을 실수로 붙인
+                사람이 남의 장비 위치를 바꾼다. */}
+            <label className="flex cursor-pointer items-center gap-1.5 text-sm">
+              <input
+                type="checkbox"
+                checked={updateExisting}
+                onChange={(event) => setUpdateExisting(event.target.checked)}
+                disabled={phase === 'putting'}
+              />
+              이미 등록된 장비는 갱신
+            </label>
             {bad.length > 0 && !tooMany && (
               <Button variant="outline" size="sm" onClick={() => setOnlyBad(!onlyBad)}>
                 {onlyBad ? '전체 보기' : `문제 ${bad.length}줄만 보기`}
@@ -555,7 +589,7 @@ export function EquipmentImportDialog({
 
           {done !== null && (
             <div className="rounded-md border border-emerald-300 bg-emerald-50 p-3 text-sm">
-              <strong>{done}대</strong>를 등록했습니다.
+              <strong>{done}</strong>건을 처리했습니다.
               {sending.length > 0 && (
                 // **남은 줄이 표에 그대로 있다.** 안 말하면 사람은 다 들어간 줄 안다.
                 <>
@@ -605,8 +639,31 @@ export function EquipmentImportDialog({
                   적은 줄 <strong>{summary.total}</strong>
                 </span>
                 <span className="text-emerald-700">
-                  넣을 수 있음 <strong>{summary.ready}</strong>
+                  새로{' '}
+                  <strong>
+                    {sending.filter((one) => !one.exists && one.problems.length === 0).length}
+                  </strong>
                 </span>
+                {updateExisting && (
+                  <>
+                    <span className="text-sky-800">
+                      갱신{' '}
+                      <strong>
+                        {
+                          sending.filter(
+                            (one) =>
+                              one.exists &&
+                              one.changes.length > 0 &&
+                              one.problems.length === 0,
+                          ).length
+                        }
+                      </strong>
+                    </span>
+                    <span className="text-muted-foreground">
+                      변경 없음 <strong>{summary.unchanged}</strong>
+                    </span>
+                  </>
+                )}
                 {summary.problems > 0 && (
                   <span className="text-amber-700">
                     문제 <strong>{summary.problems}</strong>
@@ -639,7 +696,7 @@ export function EquipmentImportDialog({
             ) : (
               <Upload className="size-4" />
             )}
-            {phase === 'putting' ? '넣는 중…' : ready > 0 ? `${ready}대 넣기` : '넣기'}
+            {phase === 'putting' ? '넣는 중…' : ready > 0 ? `${ready}건 넣기` : '넣기'}
             {ready > 0 && phase === 'idle' && spent(ready)}
           </Button>
         </DialogFooter>

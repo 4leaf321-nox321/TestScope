@@ -15,6 +15,12 @@
  * 갈아 끼우고, 값만 왔으면 **지금 커서가 있는 칸부터** 채운다. 그래서 어느 줄
  * 어느 열에서 붙였는지를 함께 넘긴다.
  *
+ * ## 바뀔 칸은 파랗게
+ *
+ * 갱신을 켜면 이미 있는 장비의 줄은 새로 넣는 대신 고쳐진다. **어느 칸이 어떻게 바뀌는지**를
+ * 칠해 보인다 — 「30대를 갱신합니다」 만 말하면 사람은 누르고, 그 안에 잘못 붙은 열이
+ * 있었다는 것을 나중에 안다. 마우스를 얹으면 전후가 나온다.
+ *
  * ## 틀린 칸은 붉게
  *
  * 줄 단위로만 말하면 열여덟 칸 중 어디를 고쳐야 할지 사람이 되짚어야 한다. 서버가
@@ -23,7 +29,7 @@
  */
 
 import { cn } from '@/shared/lib/utils'
-import type { ImportColumn, ImportProblem } from '@/modules/equipment/api'
+import type { ImportChange, ImportColumn, ImportProblem } from '@/modules/equipment/api'
 
 /** 표 한 줄. **줄의 주인은 화면이다** — 서버는 빈 줄을 건너뛰므로, 서버의 줄 번호를
  *  그대로 쓰면 가운데를 지우는 순간 아래 줄들이 밀린다. */
@@ -32,6 +38,10 @@ export interface GridRow {
   cells: Record<string, string>
   problems: ImportProblem[]
   modelLinked: boolean
+  /** 이 자산번호가 이미 등록돼 있나. 갱신을 켜면 이 줄은 새로 넣는 대신 고쳐진다. */
+  exists: boolean
+  /** 갱신이면 **바뀔 칸들**. 넣기 전에 무엇이 어떻게 바뀌는지 보이는 근거다. */
+  changes: ImportChange[]
 }
 
 /** 한 번에 그리는 줄 수. **DOM 이 먼저 죽는다** — 2000줄에 열 열여덟이면 칸이
@@ -86,6 +96,14 @@ export function ImportGrid({
               row.problems.filter((one) => one.field).map((one) => [one.field, one.message]),
             )
             const notes = row.problems.filter((one) => !one.field).map((one) => one.message)
+            const willChange = new Map(
+              row.changes.map((one) => [
+                one.field,
+                `${one.before ?? '(없음)'} → ${one.after ?? '(없음)'}`,
+              ]),
+            )
+            // 이미 있는데 바뀔 것도 문제도 없는 줄 — 손댈 것이 없다는 사실을 말해 준다.
+            const same = row.exists && row.problems.length === 0 && row.changes.length === 0
             return (
               <tr key={row.id} className={notes.length > 0 ? 'bg-amber-50' : undefined}>
                 <td className="text-muted-foreground border-b border-r px-2 py-1 text-right font-mono">
@@ -93,6 +111,7 @@ export function ImportGrid({
                 </td>
                 {columns.map((one) => {
                   const said = bad.get(one.key)
+                  const diff = willChange.get(one.key)
                   return (
                     <td key={one.key} className="border-b border-r p-0">
                       <input
@@ -110,18 +129,25 @@ export function ImportGrid({
                         disabled={disabled}
                         // **틀린 칸을 칠한다.** 무엇이 틀렸는지는 마우스를 얹으면
                         // 나오고, 아래 목록에도 그대로 있다.
-                        title={said ?? ''}
+                        title={said ?? diff ?? ''}
                         className={cn(
                           'w-32 bg-transparent px-2 py-1 outline-none',
                           'focus:bg-background focus:ring-ring focus:ring-1',
+                          diff && 'bg-sky-50 text-sky-800 ring-1 ring-sky-300',
                           said && 'bg-red-50 text-red-700 ring-1 ring-red-300',
                         )}
                       />
                     </td>
                   )
                 })}
-                <td className="text-amber-700 border-b px-2 py-1 whitespace-nowrap">
-                  {notes.join(' · ')}
+                <td className="border-b px-2 py-1 whitespace-nowrap">
+                  {notes.length > 0 && (
+                    <span className="text-amber-700">{notes.join(' · ')}</span>
+                  )}
+                  {notes.length === 0 && row.exists && row.changes.length > 0 && (
+                    <span className="text-sky-800">갱신 {row.changes.length}칸</span>
+                  )}
+                  {same && <span className="text-muted-foreground">변경 없음</span>}
                 </td>
               </tr>
             )
