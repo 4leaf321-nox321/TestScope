@@ -1,0 +1,10 @@
+# 줄 끝은 어디서 받아도 LF 다.
+#
+# 이게 없으면 Windows 의 git(autocrlf=true)이 체크아웃할 때 CRLF 로 바꾸고, prettier 는
+# LF 를 요구해서 **CI 에서 모든 파일이 서식 오류**가 난다 — 로컬은 LF 로 쓰고 있어서
+# 멀쩡히 통과하므로, 그 실패는 CI 로그를 열어 보기 전까지 안 보인다. 실제로 두 커밋이
+# 그렇게 빨갛게 지나갔다.
+#
+# PowerShell 은 LF 스크립트를 문제없이 돌린다. .bat/.cmd 는 CRLF 가 필요한데 지금 없다 —
+# 생기면 아래에 `*.bat text eol=crlf` 를 더한다.
+* text=auto eol=lf
