@@ -1,0 +1,176 @@
+{
+ "id": "netzsch-lfa-400",
+ "kind": "equipment_series",
+ "name": "NETZSCH LFA 427 / LFA 457 MicroFlash Laser Flash Analyzers",
+ "manufacturer": "netzsch",
+ "category": "thermal_conductivity",
+ "test_items": [
+  "thermal_conductivity"
+ ],
+ "measurands": [
+  "thermal.diffusivity",
+  "thermal.specific_heat",
+  "thermal.conductivity"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/46",
+   "note": "NETZSCH LFA 457 MicroFlash — Thermal Diffusivity and Thermal Conductivity · metrology_catalogs/thermal/NETZSCH_LFA457.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/47",
+   "note": "NETZSCH LFA 427 · metrology_catalogs/thermal/NETZSCH_LFA427.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "네취 LFA 400 계열 레이저 플래시 열확산율 측정기",
+ "description": "레이저 플래시법",
+ "measurands_by_item": {
+  "thermal_conductivity": [
+   "thermal.diffusivity",
+   "thermal.specific_heat",
+   "thermal.conductivity"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E1461"
+  ],
+  "test_methods_by_item": {
+   "thermal_conductivity": [
+    "ASTM E1461"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "LFA 457 MicroFlash",
+   "specs": {
+    "temperature_degC": {
+     "min": -125.0,
+     "max": 1100.0
+    }
+   },
+   "note": "레이저 플래시(LFA) 열확산율·비열 측정기 — 교환식 저온/고온 노 2기로 -125~1100 °C 를 덮는다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 46,
+    "category": "thermal",
+    "technique": "레이저 플래시법",
+    "description": "레이저 플래시(LFA) 열확산율·비열 측정기 — 교환식 저온/고온 노 2기로 -125~1100 °C 를 덮는다",
+    "notes": "카탈로그가 인쇄한 규격은 ASTM E1461, DIN EN 821-2, DIN 30905, ISO 22007-4, ISO 18755 다섯이다. 모두 같은 플래시 기법·같은 물성이라 능력행을 다섯으로 쪼개면 (instrument, property_key, technique) 유일제약에 걸려 서로 덮어쓴다 — 대표규격 ASTM E1461 만 standard 에 넣고 나머지는 여기 적는다.",
+    "doc_path": "metrology_catalogs/thermal/NETZSCH_LFA457.pdf",
+    "source_title": "NETZSCH LFA 457 MicroFlash — Thermal Diffusivity and Thermal Conductivity",
+    "capabilities": [
+     {
+      "property_key": "thermal.diffusivity",
+      "technique": "레이저 플래시법",
+      "standard": "ASTM E1461",
+      "range_min": 0.01,
+      "range_max": 1000.0,
+      "range_unit": "mm^2/s",
+      "accuracy": "±3% (for most materials)",
+      "temperature_min_k": 148.15,
+      "temperature_max_k": 1373.15,
+      "specimen": "원판 Ø 6/8/10/12.7/25.4 mm 또는 사각 6x6~10x10 mm, 두께 0.1~6 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.8 Technical Specifications — Measuring range / Accuracy",
+      "notes": "재현성 ±2%. 노 2기 합산 온도범위 -125~1100 °C 를 켈빈 환산. **검산** — -125+273.15=148.15, 1100+273.15=1373.15. 저온노 -125~500 °C(MCT 검출기), 고온노 RT~1100 °C(InSb). 플래시법은 열확산율에 대해 절대측정이라 교정이 필요 없다고 인쇄돼 있다."
+     },
+     {
+      "property_key": "thermal.specific_heat",
+      "technique": "레이저 플래시법 — 표준시편 비교법",
+      "accuracy": "±5% (for most materials)",
+      "temperature_min_k": 148.15,
+      "temperature_max_k": 1373.15,
+      "specimen": "원판 Ø 6~25.4 mm, 두께 0.1~6 mm (레퍼런스 시편 동반)",
+      "mapping_confidence": "high",
+      "source_detail": "p.8 Accuracy / Repeatability, p.2 측정원리",
+      "notes": "측정범위는 인쇄돼 있지 않아 비웠다(정확도 ±5%, 재현성 ±3% 만 인쇄). 원문 — 'if a reference specimen is used, specific heat are both determined' 이라 비교법이다."
+     },
+     {
+      "property_key": "thermal.conductivity",
+      "technique": "레이저 플래시법 — 열확산율·비열·밀도로부터 계산",
+      "standard": "ASTM E1461",
+      "range_min": 0.1,
+      "range_max": 2000.0,
+      "range_unit": "W/(m·K)",
+      "temperature_min_k": 148.15,
+      "temperature_max_k": 1373.15,
+      "specimen": "원판 Ø 6~25.4 mm, 두께 0.1~6 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.8 Measuring range 'Thermal conductivity: 0.1 W/(m·K) to 2000 W/(m·K)'",
+      "notes": "**LFA 는 열전도율을 직접 재지 않는다** — 카탈로그가 λ(T)=a(T)·cp(T)·ρ(T) 로 계산한다고 인쇄했고(p.2), 이 0.1~2000 W/(m·K) 는 그 계산 결과가 걸치는 범위다. 우리가 역산한 게 아니라 장비가 내는 값이라 넣되 신뢰도를 medium 으로 낮췄다. 정확도는 계산값이라 별도 인쇄 없음."
+     }
+    ]
+   }
+  },
+  {
+   "model": "LFA 427",
+   "specs": {
+    "temperature_degC": {
+     "min": -120.0,
+     "max": 2800.0
+    }
+   },
+   "note": "고온형 레이저 플래시 열확산율 측정기 — 교환식 노 5종으로 -120~2800 °C 를 덮는다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 47,
+    "category": "thermal",
+    "technique": "레이저 플래시법",
+    "description": "고온형 레이저 플래시 열확산율 측정기 — 교환식 노 5종으로 -120~2800 °C 를 덮는다",
+    "notes": "이 브로슈어에는 규격번호가 한 건도 인쇄돼 있지 않다(LFA 457 브로슈어와 다른 점) — standard 를 비웠다. 노 구성: -120~400 °C 금속노, 25~1300 °C Kanthal, 25~1575 °C SiC, 25~2000/2800 °C 흑연노.",
+    "doc_path": "metrology_catalogs/thermal/NETZSCH_LFA427.pdf",
+    "source_title": "NETZSCH LFA 427",
+    "capabilities": [
+     {
+      "property_key": "thermal.diffusivity",
+      "technique": "레이저 플래시법",
+      "range_min": 0.01,
+      "range_max": 1000.0,
+      "range_unit": "mm^2/s",
+      "accuracy": "±3% (over entire temp. range)",
+      "temperature_min_k": 153.15,
+      "temperature_max_k": 3073.15,
+      "specimen": "원판 Ø 6/8/10/12.7/20 mm 또는 사각 8x8·10x10 mm, 두께 0.1~6 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.22 사양표 — Measuring range / Accuracy",
+      "notes": "노 5기 합산 온도범위 -120~2800 °C 를 켈빈 환산. **검산** — -120+273.15=153.15, 2800+273.15=3073.15. 시편홀더 재질이 상한을 더 제한한다(Al2O3 최대 1700 °C, 흑연 최대 2800 °C)."
+     },
+     {
+      "property_key": "thermal.specific_heat",
+      "technique": "레이저 플래시법 — 표준시편 비교법",
+      "accuracy": "±5% (for most materials)",
+      "temperature_min_k": 153.15,
+      "temperature_max_k": 3073.15,
+      "specimen": "원판 Ø 6~20 mm, 두께 0.1~6 mm (레퍼런스 시편 동반)",
+      "mapping_confidence": "high",
+      "source_detail": "p.22 사양표 Accuracy — 'Specific heat capacity: ± 5%'",
+      "notes": "측정범위 인쇄 없음 — 비웠다. p.14 에 비교법(comparative method)으로 비열을 구한다고 적혀 있다."
+     },
+     {
+      "property_key": "thermal.conductivity",
+      "technique": "레이저 플래시법 — 열확산율·비열·밀도로부터 계산",
+      "range_min": 0.1,
+      "range_max": 2000.0,
+      "range_unit": "W/(m·K)",
+      "temperature_min_k": 153.15,
+      "temperature_max_k": 3073.15,
+      "specimen": "원판 Ø 6~20 mm, 두께 0.1~6 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.22 Measuring range 'Thermal conductivity: 0.1 W/(m·K) to 2000 W/(m·K)'",
+      "notes": "**계산 결과의 범위다** — 카탈로그가 λ = a·cp·ρ 로 계산한다고 명시(p.2). 장비가 계산하는 값이라 넣되 신뢰도 medium."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -125.0,
+   "max": 2800.0
+  }
+ }
+}

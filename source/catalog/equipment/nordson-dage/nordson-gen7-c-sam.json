@@ -1,0 +1,53 @@
+{
+ "id": "nordson-gen7-c-sam",
+ "kind": "equipment_model",
+ "name": "Nordson Gen7 C-SAM Scanning Acoustic Microscope",
+ "manufacturer": "nordson-dage",
+ "category": "acoustic_microscope",
+ "test_items": [
+  "acoustic_delamination"
+ ],
+ "measurands": [
+  "structure.layer_thickness"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/183",
+   "note": "Nordson Gen7 C-SAM Inspection System (DS-GEN7-271022) · metrology_catalogs/ndt/Nordson_Gen7_CSAM.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "노드슨 Gen7 C-SAM 주사음향현미경",
+ "description": "주사음향현미경(C-SAM, Acoustic Micro Imaging)",
+ "measurands_by_item": {
+  "acoustic_delamination": [
+   "structure.layer_thickness"
+  ]
+ },
+ "models": [
+  {
+   "model": "Gen7 C-SAM",
+   "note": "초음파 반사·투과로 패키지 내부 박리·보이드·크랙을 비파괴로 영상화하는 주사음향현미경. A/B/C-Scan, Thru-Scan, Bulk/Surface Scan 모드",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 183,
+    "category": "ndt",
+    "technique": "주사음향현미경(C-SAM, Acoustic Micro Imaging)",
+    "description": "초음파 반사·투과로 패키지 내부 박리·보이드·크랙을 비파괴로 영상화하는 주사음향현미경. A/B/C-Scan, Thru-Scan, Bulk/Surface Scan 모드",
+    "notes": "**이 장비는 결함·계면을 보는 영상장비이지 물성 측정기가 아니다.** 트랜스듀서 5~400 MHz, 펄서/리시버 대역폭 500 MHz, 게인 95 dB(0.5 dB 단계), 디지털 게이팅 1~10,000 ns, TOF 선택 10 ns 단계, X·Y·Z 위치정밀도 ±0.5 µm, 스캔 영역 350×350 mm(Z 높이 170 mm), 웨이퍼 지그는 1인치~300 mm. **우리 키에 잇지 않은 항목** — 박리/보이드/크랙 검출(결함), ASF(Acoustic Surface Flatness, 표면 곡률·휨 측정), AIPD(음향임피던스 '극성' 검출 — 임피던스 값이 아니라 부호만 준다), Q-BAM 단면 정량분석. 이 중 표면 휨(warpage)과 음향임피던스는 taxonomy 공백 후보다.",
+    "doc_path": "metrology_catalogs/ndt/Nordson_Gen7_CSAM.pdf",
+    "source_title": "Nordson Gen7 C-SAM Inspection System (DS-GEN7-271022)",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "초음파 비행시간차(TOF) 계면간 거리 측정",
+      "specimen": "다층 패키지·웨이퍼(수침 또는 WaterFall/WaterPlume 비침수). 최대 350×350 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.2 'Accurate waveform analysis modes — Time Difference evaluates distance or thickness between two interfaces' / 'Precise selectable TOF in 10ns steps'",
+      "notes": "카탈로그가 '두 계면 사이의 거리 또는 두께를 평가한다'고 명시해 층 두께 키에 이었지만, **실제로 재는 것은 시간차(TOF)** 이고 두께로 환산하려면 재료의 음속을 알아야 해서 medium 이다. 두께 측정범위·정확도는 인쇄돼 있지 않다(TOF 선택 단위 10 ns, 디지털 게이팅 1~10,000 ns 만 인쇄). 이 장비의 나머지 기능은 결함 영상화라 능력행이 이 한 줄뿐이다."
+     }
+    ]
+   }
+  }
+ ]
+}

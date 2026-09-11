@@ -1,0 +1,92 @@
+{
+ "id": "mitutoyo-avk",
+ "kind": "equipment_series",
+ "name": "Mitutoyo AVK-C0 / AVK-HF Vickers Hardness Testers",
+ "manufacturer": "mitutoyo",
+ "category": "vickers_knoop_hardness",
+ "test_items": [
+  "hardness_vickers"
+ ],
+ "measurands": [
+  "mechanical.hardness_vickers"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/73",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/74",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 AVK 비커스 경도시험기",
+ "description": "비커스 경도시험",
+ "measurands_by_item": {
+  "hardness_vickers": [
+   "mechanical.hardness_vickers"
+  ]
+ },
+ "models": [
+  {
+   "model": "AVK-C0",
+   "note": "수동식 보급형 비커스 경도시험기",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 73,
+    "category": "mechanical",
+    "technique": "비커스 경도시험",
+    "description": "수동식 보급형 비커스 경도시험기",
+    "notes": "시험력 9.807~490.3 N(1~50 kgf), 유지시간 5/10/15/20/30 s 전환, 대물 10X, 측정분해능 1 µm. 계산장치 없음.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "시편 최대높이 205 mm, 깊이 165 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.26 Specifications — AVK-C0",
+      "notes": "시험력 9.807~490.3 N. 측정분해능 1 µm 는 압흔 길이 분해능이다. 경도범위 인쇄 없음."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AVK-HF",
+   "specs": {
+    "temperature_degC": {
+     "max": 1200.0
+    }
+   },
+   "note": "고온 비커스 경도시험 시스템 — 상온~1200 °C 진공/불활성 분위기에서 경도를 잰다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 74,
+    "category": "mechanical",
+    "technique": "고온 비커스 경도시험",
+    "description": "고온 비커스 경도시험 시스템 — 상온~1200 °C 진공/불활성 분위기에서 경도를 잰다",
+    "notes": "**이 갈래에서 유일하게 온도범위가 붙는 경도계다** — 고온로 사용온도 상온~1200 °C, 진공 배기 후 불활성가스 분위기에서 가열·측정한다. 고온로를 떼면 롱타입 비커스 시험기로 쓴다. 시험력 9.807~490.3 N(1~50 kgf), 유지 5~30 s, 현미경 배율 100X.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "temperature_max_k": 1473.15,
+      "specimen": "고온로 내 시편, 불활성가스 또는 진공 분위기",
+      "mapping_confidence": "high",
+      "source_detail": "p.27 Specifications — AVK-HF / High-temperature furnace",
+      "notes": "'Room temperature to 1200 °C' 라 하한이 확정되지 않는다 — 상한만 1200+273.15=1473.15 K 로 넣었다."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "max": 1200.0
+  }
+ }
+}

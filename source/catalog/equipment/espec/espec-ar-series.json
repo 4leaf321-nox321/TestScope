@@ -1,0 +1,95 @@
+{
+ "id": "espec-ar-series",
+ "kind": "equipment_series",
+ "name": "ESPEC AR Series Temperature (& Humidity) Chambers (ARS / ARG / ARL / ARU)",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "damp_heat",
+  "temperature_cycling"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/188",
+   "note": "ESPEC AR series Temperature & Humidity Chamber · metrology_catalogs/reliability/ESPEC_AR_series.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/189",
+   "note": "ESPEC AR series Temperature & Humidity Chamber · metrology_catalogs/reliability/ESPEC_AR_series.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/190",
+   "note": "ESPEC AR series Temperature & Humidity Chamber · metrology_catalogs/reliability/ESPEC_AR_series.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/191",
+   "note": "ESPEC AR series Temperature & Humidity Chamber · metrology_catalogs/reliability/ESPEC_AR_series.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 AR 계열 항온(항습) 시험조",
+ "description": "항온항습 시험(균형식 온습도 제어, BTHC)",
+ "models": [
+  {
+   "model": "AR series ARS (ARS-0220/0390/0680/1100)",
+   "note": "**시편에 온·습도 조건을 거는 장비이지 물성을 재는 장비가 아니다.** 온도 -75~+180 °C, 습도 10~98 %rh 를 거는 온습도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 188,
+    "category": "reliability",
+    "technique": "항온항습 시험(균형식 온습도 제어, BTHC)",
+    "description": "**시편에 온·습도 조건을 거는 장비이지 물성을 재는 장비가 아니다.** 온도 -75~+180 °C, 습도 10~98 %rh 를 거는 온습도 시험조",
+    "notes": "**조건 부여 장비라 capabilities 를 비웠다.** ▷ **온도범위 -75~+180 °C**(=198.15~453.15 K), **습도범위 10~98 %rh**, 단 온습도 동시제어 구간은 +10~+95 °C / 10~98 %rh. 온도편차 ±0.3 K, 공간분포 3.0 K, 습도편차 ±2.5 %rh. 승온율 4.7~6.0 K/min·강온율 4.0~5.2 K/min(용량별: 0220 6.0/5.2, 0390 5.0/4.0, 0680 6.0/4.2, 1100 4.7/4.1). 허용 열부하 3000 W(0220·0390·0680)~4500 W(1100), 온습도 시험 시 300~500 W. 도달시간 +20→+180 °C 30~45분, +20→-75 °C 40~50분. **적용 규격** — IEC 60068-2-1(저온), IEC 60068-2-2(고온), IEC 60068-2-78(항온항습 정상상태); 성능은 IEC 60068-3-5:2001·IEC 60068-3-6:2001 준거. 설치환경 0~+40 °C/75 %rh 이하, 급수 전도도 0.1~10 µS/cm. 용량 220/390/680/1100 L 네 크기가 있고 **온·습도 범위는 네 크기 모두 같아 한 레코드로 묶고 크기별 차이는 여기 적었다.** ARSF 는 습도 포함 동형.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
+    "source_title": "ESPEC AR series Temperature & Humidity Chamber",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "AR series ARG (ARG-0220/0390/0680/1100)",
+   "note": "**조건 부여 장비.** 온도 -75~+180 °C 를 거는 온도 전용 시험조(습도제어 없음)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 189,
+    "category": "reliability",
+    "technique": "항온 시험(온도 전용)",
+    "description": "**조건 부여 장비.** 온도 -75~+180 °C 를 거는 온도 전용 시험조(습도제어 없음)",
+    "notes": "**capabilities 비움 — 조건 부여 장비다.** ▷ **온도범위 -75~+180 °C**(=198.15~453.15 K), **습도제어 없음.** 승온/강온율과 용량은 ARS 와 같다(0220 6.0/5.2 K/min, 0390 5.0/4.0, 0680 6.0/4.2, 1100 4.7/4.1 K/min; 220/390/680/1100 L). 성능은 IEC 60068-3-5:2001 준거, 적용 규격 IEC 60068-2-1(저온)·IEC 60068-2-2(고온). 설치환경 0~+40 °C/75 %rh 이하. ARGF 동형.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
+    "source_title": "ESPEC AR series Temperature & Humidity Chamber",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "AR series ARL (ARL-0680/1100)",
+   "note": "**조건 부여 장비.** 온도 -45~+180 °C, 습도 10~98 %rh 를 거는 온습도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 190,
+    "category": "reliability",
+    "technique": "항온항습 시험(균형식 온습도 제어, BTHC)",
+    "description": "**조건 부여 장비.** 온도 -45~+180 °C, 습도 10~98 %rh 를 거는 온습도 시험조",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -45~+180 °C**(=228.15~453.15 K), **습도범위 10~98 %rh**(온습도 동시제어 +10~+95 °C). 습도편차 ±2.5 %rh(+85 °C/85 %rh 조건). 용량 680 L(6.3 K/min 승온, 4.8 K/min 강온)·1100 L(4.7/4.4 K/min). 최저온도만 ARS 와 다르다(-45 °C vs -75 °C). 성능 IEC 60068-3-5:2001·60068-3-6:2001 준거. **+40 °C 이하 연속운전은 냉각기·제습기 착상 때문에 제한**된다고 명시.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
+    "source_title": "ESPEC AR series Temperature & Humidity Chamber",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "AR series ARU (ARU-0680/1100)",
+   "note": "**조건 부여 장비.** 온도 -45~+180 °C 를 거는 온도 전용 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 191,
+    "category": "reliability",
+    "technique": "항온 시험(온도 전용)",
+    "description": "**조건 부여 장비.** 온도 -45~+180 °C 를 거는 온도 전용 시험조",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -45~+180 °C**(=228.15~453.15 K), 습도제어 없음. 용량 680 L(6.3/4.8 K/min)·1100 L(4.7/4.4 K/min). 성능 IEC 60068-3-5:2001 준거. 시편에 온도센서를 붙여 시편온도 제어도 가능하다고 명시. 옵션 표에 -100~+200 °C / 0~100 %rh 기록계 항목이 보이나 이는 **기록계 사양**이지 시험조 능력이 아니다.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
+    "source_title": "ESPEC AR series Temperature & Humidity Chamber",
+    "capabilities": []
+   }
+  }
+ ]
+}

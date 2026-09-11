@@ -1,0 +1,145 @@
+{
+ "id": "mitutoyo-ar-atk-rockwell",
+ "kind": "equipment_series",
+ "name": "Mitutoyo AR-10 / AR-20 / ARK-600 / ATK-600 Rockwell Hardness Testers",
+ "manufacturer": "mitutoyo",
+ "category": "rockwell_hardness",
+ "test_items": [
+  "hardness_rockwell"
+ ],
+ "measurands": [
+  "mechanical.hardness_rockwell"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/76",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/77",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/78",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/79",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 AR·ARK·ATK 로크웰 경도시험기",
+ "description": "로크웰 경도시험",
+ "measurands_by_item": {
+  "hardness_rockwell": [
+   "mechanical.hardness_rockwell"
+  ]
+ },
+ "models": [
+  {
+   "model": "ARK-600",
+   "note": "로크웰 경도시험기 — 로크웰 전용. 최소표시 0.1 HR, OK/NG 판정·하중 내비게이터",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 76,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험",
+    "description": "로크웰 경도시험기 — 로크웰 전용. 최소표시 0.1 HR, OK/NG 판정·하중 내비게이터",
+    "notes": "예비하중 98.07 N, 총하중 588.4/980.7/1471 N. **매핑 포기** — 수퍼피셜(15N~45Y)·브리넬 척도는 우리 키가 없다(HRC 만 있다). 이 카탈로그의 로크웰 사양표에는 규격번호 행도, 척도별 경도범위표도 없다 — 둘 다 비웠다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험 — 원뿔 다이아몬드 압자, 총하중 1471 N(150 kgf)",
+      "range_unit": "HRC",
+      "resolution": 0.1,
+      "specimen": "시편 높이 0~140 mm(평면 앤빌) 등 기종별, 깊이 최대 120~150 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.29~32 Specifications — ARK-600",
+      "notes": "최소표시 0.1 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "ATK-600",
+   "note": "로크웰 경도시험기 — 로크웰/수퍼피셜 트윈형. 최소표시 로크웰 0.1 HR·수퍼피셜 0.2 HR",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 77,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험",
+    "description": "로크웰 경도시험기 — 로크웰/수퍼피셜 트윈형. 최소표시 로크웰 0.1 HR·수퍼피셜 0.2 HR",
+    "notes": "예비하중 29.42/98.07 N, 총하중 147.1/294.2/441.3/588.4/980.7/1471 N. **매핑 포기** — 수퍼피셜(15N~45Y)·브리넬 척도는 우리 키가 없다(HRC 만 있다). 이 카탈로그의 로크웰 사양표에는 규격번호 행도, 척도별 경도범위표도 없다 — 둘 다 비웠다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험 — 원뿔 다이아몬드 압자, 총하중 1471 N(150 kgf)",
+      "range_unit": "HRC",
+      "resolution": 0.1,
+      "specimen": "시편 높이 0~140 mm(평면 앤빌) 등 기종별, 깊이 최대 120~150 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.29~32 Specifications — ATK-600",
+      "notes": "최소표시 0.1 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AR-10",
+   "note": "로크웰 경도시험기 — 지침식 표시, 최소표시 0.5 HR. 자동 세팅 게이지",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 78,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험",
+    "description": "로크웰 경도시험기 — 지침식 표시, 최소표시 0.5 HR. 자동 세팅 게이지",
+    "notes": "예비하중 98.07 N, 총하중 588.4/980.7/1471 N. **매핑 포기** — 수퍼피셜(15N~45Y)·브리넬 척도는 우리 키가 없다(HRC 만 있다). 이 카탈로그의 로크웰 사양표에는 규격번호 행도, 척도별 경도범위표도 없다 — 둘 다 비웠다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험 — 원뿔 다이아몬드 압자, 총하중 1471 N(150 kgf)",
+      "range_unit": "HRC",
+      "resolution": 0.5,
+      "specimen": "시편 높이 0~140 mm(평면 앤빌) 등 기종별, 깊이 최대 120~150 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.29~32 Specifications — AR-10",
+      "notes": "최소표시 0.5 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AR-20",
+   "note": "로크웰 경도시험기 — 지침식 표시, 최소표시 0.5 HR",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 79,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험",
+    "description": "로크웰 경도시험기 — 지침식 표시, 최소표시 0.5 HR",
+    "notes": "예비하중 98.07 N, 총하중 588.4/980.7/1471 N. **매핑 포기** — 수퍼피셜(15N~45Y)·브리넬 척도는 우리 키가 없다(HRC 만 있다). 이 카탈로그의 로크웰 사양표에는 규격번호 행도, 척도별 경도범위표도 없다 — 둘 다 비웠다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험 — 원뿔 다이아몬드 압자, 총하중 1471 N(150 kgf)",
+      "range_unit": "HRC",
+      "resolution": 0.5,
+      "specimen": "시편 높이 0~140 mm(평면 앤빌) 등 기종별, 깊이 최대 120~150 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.29~32 Specifications — AR-20",
+      "notes": "최소표시 0.5 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
+     }
+    ]
+   }
+  }
+ ]
+}

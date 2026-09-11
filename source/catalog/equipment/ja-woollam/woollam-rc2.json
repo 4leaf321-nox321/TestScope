@@ -1,0 +1,140 @@
+{
+ "id": "woollam-rc2",
+ "kind": "equipment_model",
+ "name": "J.A. Woollam RC2 Spectroscopic Ellipsometer",
+ "manufacturer": "ja-woollam",
+ "category": "film_thickness_analyzer",
+ "test_items": [
+  "coating_thickness"
+ ],
+ "measurands": [
+  "optical.refractive_index",
+  "optical.extinction_coefficient",
+  "structure.layer_thickness",
+  "optical.birefringence",
+  "optical.transmittance",
+  "optical.reflectance"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/174",
+   "note": "J.A. Woollam RC2 Specification Sheet (2015) + RC2 브로슈어(2014) · metrology_catalogs/optical/Woollam_RC2_spec.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "울람 RC2 분광 엘립소미터",
+ "description": "이중 회전보상자 분광 엘립소메트리(D-RCE, Mueller matrix SE)",
+ "measurands_by_item": {
+  "coating_thickness": [
+   "optical.refractive_index",
+   "optical.extinction_coefficient",
+   "structure.layer_thickness",
+   "optical.birefringence",
+   "optical.transmittance",
+   "optical.reflectance"
+  ]
+ },
+ "models": [
+  {
+   "model": "RC2",
+   "specs": {
+    "temperature_degC": {
+     "max": 300.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "보상자 두 개를 시료 앞뒤에서 동기회전시켜 Ψ/Δ·뮬러행렬 전체를 재는 분광 엘립소미터. CCD 로 1000개 이상 파장을 동시 수집",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 174,
+    "category": "optical",
+    "technique": "이중 회전보상자 분광 엘립소메트리(D-RCE, Mueller matrix SE)",
+    "description": "보상자 두 개를 시료 앞뒤에서 동기회전시켜 Ψ/Δ·뮬러행렬 전체를 재는 분광 엘립소미터. CCD 로 1000개 이상 파장을 동시 수집",
+    "notes": "`Woollam_RC2.pdf`(브로슈어)와 `Woollam_RC2_spec.pdf`(사양서)는 **같은 모델 RC2** 라 한 레코드로 합쳤고 doc_path 는 수치사양이 더 자세한 spec 시트로 잡았다. 파장범위는 광원/검출기 구성별로 U 245~1000 nm(750파장), X 210~1000 nm(790파장), D 193~1000 nm(800파장), NIR 확장 1005~1690 nm(275파장)로 갈리며, 브로슈어는 이를 합쳐 **193~1690 nm(1000파장 이상)** 로 인쇄한다 — 능력행에는 이 최광폭을 썼다. 파장간격 1 nm/밴드폭 3 nm(U·X·D), NIR 확장은 2.5 nm/5 nm. 전체 스펙트럼 획득 0.3초. 입사각은 고정각 60°/65°, 수평 자동각 45~90°, 수직 자동각 20~90°. 빔 직경 3~4 mm(집속옵션 300 µm, X 모델 25×60 µm). 시료 히터 옵션은 실온~300 °C. **뮬러행렬 15성분·편광해소(depolarization)·일반화 엘립소메트리 Jones 행렬비는 우리 물성 키에 대응이 없다.**",
+    "doc_path": "metrology_catalogs/optical/Woollam_RC2_spec.pdf",
+    "source_title": "J.A. Woollam RC2 Specification Sheet (2015) + RC2 브로슈어(2014)",
+    "capabilities": [
+     {
+      "property_key": "optical.refractive_index",
+      "technique": "분광 엘립소메트리(Ψ/Δ 측정 후 광학모델 회귀)",
+      "range_min": 193.0,
+      "range_max": 1690.0,
+      "range_unit": "nm",
+      "accuracy": "Straight-through 정확도 Ψ 45°±0.02°, Δ 0°±0.05°(빈 빔 10초 측정, 전 파장의 95 % 충족)",
+      "temperature_max_k": 573.15,
+      "specimen": "박막·기판. 최대 시료 300 mm 직경·두께 18 mm(베이스별로 150~300 mm), 액체셀·가열스테이지 옵션",
+      "mapping_confidence": "high",
+      "source_detail": "spec p.3 System Specifications(Spectral Range) / 브로슈어 p.12 Specifications 'Wavelength Range 193-1690 nm' / 브로슈어 p.7 'Compare optical constants…'",
+      "notes": "**range_* 에 파장범위를 넣었다** — 굴절률은 파장의 함수이고 카탈로그가 주는 범위가 파장범위뿐이다(굴절률 값 범위는 인쇄돼 있지 않다). 시료 온도는 가열스테이지 옵션 '실온~300 °C' 라 **상한만 확정**(300+273.15=573.15 K), 하한 '실온' 은 숫자가 아니라 비웠다. 가열스테이지 시료는 50 mm 직경·7.6 mm 두께까지."
+     },
+     {
+      "property_key": "optical.extinction_coefficient",
+      "technique": "분광 엘립소메트리(Ψ/Δ 측정 후 광학모델 회귀)",
+      "range_min": 193.0,
+      "range_max": 1690.0,
+      "range_unit": "nm",
+      "accuracy": "Ψ 45°±0.02°, Δ 0°±0.05°(straight-through)",
+      "temperature_max_k": 573.15,
+      "specimen": "박막·기판(유전체·유기물·반도체·금속)",
+      "mapping_confidence": "high",
+      "source_detail": "spec p.3 Measurement Quantities / 브로슈어 p.7 'Compare optical constants measured from a series of silicon-rich nitrides'",
+      "notes": "굴절률 n 과 소광계수 k 를 한 회귀에서 같이 얻는다(광학상수). **range_* 는 파장범위**이며 k 값 범위는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "분광 엘립소메트리 막두께 회귀",
+      "resolution": 0.005,
+      "accuracy": "두께 정밀도: 25 nm SiO2/Si 를 10초씩 30회 연속 정적측정할 때 표준편차 < 0.005 nm",
+      "temperature_max_k": 573.15,
+      "specimen": "단층·다층 박막(예시: ITO 19.6 nm, 폴리이미드 127 nm, TN 액정 4.8 µm)",
+      "mapping_confidence": "high",
+      "source_detail": "spec p.3 'Thickness Precision — Standard deviation in thickness < 0.005nm'",
+      "notes": "**두께 측정범위는 인쇄돼 있지 않아 비웠다** — 파장범위를 두께 range 에 넣으면 축이 섞이므로 넣지 않았다(193~1690 nm 는 파장). 브로슈어의 19.6 nm·127 nm·4.8 µm 는 예시 시료 결과값이지 장비 범위가 아니다. 정밀도 0.005 nm 는 표준편차 상한이라 resolution 에 넣고 accuracy 에 조건을 적었다. Off-sample 데이터 적합 MSE < 0.002."
+     },
+     {
+      "property_key": "optical.birefringence",
+      "technique": "일반화 엘립소메트리(g-SE) / 뮬러행렬 엘립소메트리",
+      "range_min": 193.0,
+      "range_max": 1690.0,
+      "range_unit": "nm",
+      "temperature_max_k": 573.15,
+      "specimen": "이방성 필름(PET 등)·액정층. 투과 엘립소메트리는 수직 베이스가 유리",
+      "mapping_confidence": "high",
+      "source_detail": "브로슈어 p.6 'Anisotropic PET — provide high sensitivity to the birefringence in anisotropic PET films', 'biaxial indices (nx ≠ ny ≠ nz)'",
+      "notes": "복굴절을 명시적으로 인쇄한 응용이다. 이축 굴절률(nx≠ny≠nz)까지 분리한다. **range_* 는 파장범위**이고 복굴절 값 범위는 인쇄돼 있지 않다. 액정 층에서는 광축 트위스트·프리틸트까지 뮬러행렬로 특성화한다고 인쇄."
+     },
+     {
+      "property_key": "optical.transmittance",
+      "technique": "엘립소미터 강도 투과 측정(% Transmission)",
+      "range_min": 193.0,
+      "range_max": 1690.0,
+      "range_unit": "nm",
+      "temperature_max_k": 573.15,
+      "specimen": "투명 박막·기판(투과 측정은 수직 베이스 권장)",
+      "mapping_confidence": "high",
+      "source_detail": "spec p.3 Measurement Quantities 'Intensity: % Transmission and % Reflection' / 브로슈어 p.12 'Intensity Reflectance and Transmittance'",
+      "notes": "**range_* 는 파장범위.** pp/ss/ps/sp 편광별 투과율도 얻는다고 인쇄. 투과율 정확도는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "optical.reflectance",
+      "technique": "엘립소미터 강도 반사 측정(% Reflection)",
+      "range_min": 193.0,
+      "range_max": 1690.0,
+      "range_unit": "nm",
+      "temperature_max_k": 573.15,
+      "specimen": "박막·기판. 입사각 고정 60°/65°, 자동각 45~90°(수평)·20~90°(수직)",
+      "mapping_confidence": "high",
+      "source_detail": "spec p.3 Measurement Quantities / 브로슈어 p.12 'Intensity Reflectance and Transmittance'",
+      "notes": "**range_* 는 파장범위.** 입사각 정확도 ±0.02°(자동각 베이스), 반복도 <0.005°. 반사율 자체의 정확도는 인쇄돼 있지 않다."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "max": 300.0
+  }
+ }
+}

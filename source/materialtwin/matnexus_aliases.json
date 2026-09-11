@@ -1,0 +1,228 @@
+{
+ "_comment": "MatNexus property_aliases 스냅샷(2026-09-12, 43건). 물성 키를 부르는 다른 이름 — 「항복강도」·「Rp0.2」·「0.2% proof stress」. tools_from_materialtwin.py 가 properties.json 의 aliases 로 합친다. source 는 standard(규격 표기)·seed·manual.",
+ "aliases": [
+  {
+   "key": "mechanical.elongation_at_break",
+   "alias": "연신율",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.elongation_at_break",
+   "alias": "elongation at break",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.elongation_at_break",
+   "alias": "elongation",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.elongation_at_break",
+   "alias": "A",
+   "source": "standard",
+   "note": "ISO 6892-1"
+  },
+  {
+   "key": "mechanical.elongation_at_break",
+   "alias": "파단연신율",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.poisson_ratio",
+   "alias": "푸아송비",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.poisson_ratio",
+   "alias": "Poisson's ratio",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.poisson_ratio",
+   "alias": "포아송비",
+   "source": "seed",
+   "note": "표기 흔들림"
+  },
+  {
+   "key": "mechanical.shear_modulus",
+   "alias": "전단탄성계수",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.shear_modulus",
+   "alias": "G",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.shear_modulus",
+   "alias": "shear modulus",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "alias": "ultimate tensile strength",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "alias": "인장강도",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "alias": "Rm",
+   "source": "standard",
+   "note": "ISO 6892-1"
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "alias": "UTS",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "alias": "최대인장강도",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "alias": "tensile strength",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "0.2% proof stress",
+   "source": "standard",
+   "note": "ISO 6892-1 Rp0.2"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "항복점",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "yield strength",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "yield stress",
+   "source": "seed",
+   "note": "금속 문맥. 유변학 항복응력과 다르다"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "proof stress",
+   "source": "standard",
+   "note": "ISO 6892 표기"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "항복응력",
+   "source": "seed",
+   "note": "금속 문맥에서 사람이 흔히 이렇게 부른다"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "Rp0.2",
+   "source": "standard",
+   "note": "ISO 6892-1"
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "alias": "YS",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.youngs_modulus",
+   "alias": "E",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.youngs_modulus",
+   "alias": "elastic modulus",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.youngs_modulus",
+   "alias": "Young's modulus",
+   "source": "standard"
+  },
+  {
+   "key": "mechanical.youngs_modulus",
+   "alias": "종탄성계수",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.youngs_modulus",
+   "alias": "영률",
+   "source": "seed"
+  },
+  {
+   "key": "mechanical.youngs_modulus",
+   "alias": "탄성계수",
+   "source": "seed"
+  },
+  {
+   "key": "physical.density",
+   "alias": "밀도",
+   "source": "seed"
+  },
+  {
+   "key": "physical.density",
+   "alias": "density",
+   "source": "standard"
+  },
+  {
+   "key": "physical.density",
+   "alias": "rho",
+   "source": "seed"
+  },
+  {
+   "key": "thermal.conductivity",
+   "alias": "열전도율",
+   "source": "seed"
+  },
+  {
+   "key": "thermal.conductivity",
+   "alias": "열전도도",
+   "source": "seed"
+  },
+  {
+   "key": "thermal.conductivity",
+   "alias": "thermal conductivity",
+   "source": "standard"
+  },
+  {
+   "key": "thermal.expansion_linear",
+   "alias": "선팽창계수",
+   "source": "seed"
+  },
+  {
+   "key": "thermal.expansion_linear",
+   "alias": "열팽창계수",
+   "source": "seed"
+  },
+  {
+   "key": "thermal.expansion_linear",
+   "alias": "CTE",
+   "source": "standard"
+  },
+  {
+   "key": "thermal.specific_heat",
+   "alias": "비열",
+   "source": "seed"
+  },
+  {
+   "key": "thermal.specific_heat",
+   "alias": "specific heat",
+   "source": "standard"
+  },
+  {
+   "key": "thermal.specific_heat",
+   "alias": "Cp",
+   "source": "standard"
+  }
+ ]
+}

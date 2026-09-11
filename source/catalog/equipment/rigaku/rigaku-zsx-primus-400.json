@@ -1,0 +1,63 @@
+{
+ "id": "rigaku-zsx-primus-400",
+ "kind": "equipment_model",
+ "name": "Rigaku ZSX Primus 400 Wavelength-Dispersive XRF",
+ "manufacturer": "rigaku",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition",
+  "structure.layer_thickness"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/31",
+   "note": "Rigaku ZSX Primus 400 · metrology_catalogs/chemical/Rigaku_ZSX_Primus400_XRF.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "리가쿠 ZSX Primus 400 파장분산 형광X선 분석기",
+ "description": "파장분산형 형광X선분광(WDXRF, 순차형)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition",
+   "structure.layer_thickness"
+  ]
+ },
+ "models": [
+  {
+   "model": "ZSX Primus 400",
+   "note": "대형 시료용 순차형 파장분산 XRF. 원소범위 4Be~92U, Rh 엔드윈도 X선관 3 또는 4 kW(최대 60 kV-150 mA), 분석결정 최대 10매, 분석면적 조리개 ø0.5~30 mm, 500 µm 미소부 분석과 100 µm 맵핑 분해능. SQX 표준시료 없는 반정량과 Quant FP 정량.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 31,
+    "category": "chemical",
+    "technique": "파장분산형 형광X선분광(WDXRF, 순차형)",
+    "description": "대형 시료용 순차형 파장분산 XRF. 원소범위 4Be~92U, Rh 엔드윈도 X선관 3 또는 4 kW(최대 60 kV-150 mA), 분석결정 최대 10매, 분석면적 조리개 ø0.5~30 mm, 500 µm 미소부 분석과 100 µm 맵핑 분해능. SQX 표준시료 없는 반정량과 Quant FP 정량.",
+    "notes": "최대 시료 400 mm 직경 x 50 mm 높이 x 30 kg 이하. 원소범위 Be~U 는 '어떤 원소를 볼 수 있나' 이지 농도범위가 아니라 range 에 넣지 않았다.",
+    "doc_path": "metrology_catalogs/chemical/Rigaku_ZSX_Primus400_XRF.pdf",
+    "source_title": "Rigaku ZSX Primus 400",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "파장분산형 형광X선분광(WDXRF, FP/SQX 정량)",
+      "specimen": "최대 400 mm 직경 x 50 mm 높이, 30 kg 이하. 부정형 시료용 어댑터 옵션",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Elemental range 4Be – 92U / Quant FP·SQX 정량 소프트웨어 절",
+      "notes": "농도 측정범위·검출한계 수치는 인쇄되어 있지 않다. 예시 표(석탄재 SQX Scattering FP)는 mass% 단위지만 시연 결과라 범위로 쓰지 않았다."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "형광X선 박막 FP 해석(XRF thin-film FP)",
+      "specimen": "코팅·다층 박막",
+      "mapping_confidence": "medium",
+      "source_detail": "Quant fundamental parameters — 'Coatings and multi-layer thin films' 절",
+      "notes": "'thin film composition and thickness' 용도가 명시되고 FP 소프트웨어가 박막을 지원한다고 적혀 있으나, 측정 가능한 두께 범위·정확도 수치가 하나도 없고 문장 구조가 산업 수요 설명에 가까워 medium 으로 뒀다."
+     }
+    ]
+   }
+  }
+ ]
+}

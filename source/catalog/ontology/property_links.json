@@ -1,0 +1,960 @@
+{
+ "_comment": "물성 ↔ 시험 항목 연결의 정본. 물성 키는 properties.json(MaterialTwin 271키)이다. measurands 는 카탈로그 객체와 test_items.json 이 쓰는 measurand id → 물성 키(없으면 null — 판정·곡선·설비값이라 물성이 아니거나 MaterialTwin 에 키가 없다). overrides 는 「시험항목:measurand」 로 measurand 하나가 시험마다 다른 물성이 될 때(impact_strength 는 샤르피와 아이조드가 다른 키). extras 는 measurand 로는 안 나오지만 그 시험이 내는 물성. techniques 는 MaterialTwin 능력행의 기법 문자열을 시험 항목으로 읽는 규칙 — 앞에서부터 처음 맞는 것. 반입(import_catalog.py step_properties)이 읽는다. 2026-09-12: 제품 시험(EMC·전기안전·배터리·광학·음향·환경) 의 measurand 는 판정·곡선이라 전부 null — 재료 물성이 아니다. 새로 나타나는 measurand 만 반입 보고에 남는다.",
+ "measurands": {
+  "tensile_strength": "mechanical.tensile_strength",
+  "tensile_strength_converted": "mechanical.tensile_strength",
+  "yield_strength": "mechanical.yield_strength",
+  "elongation": "mechanical.elongation_at_break",
+  "youngs_modulus": "mechanical.youngs_modulus",
+  "poisson_ratio": "mechanical.poisson_ratio",
+  "compressive_strength": "mechanical.compressive_strength",
+  "compressive_modulus": "mechanical.compressive_modulus",
+  "flexural_strength": "mechanical.flexural_strength",
+  "flexural_modulus": "mechanical.flexural_modulus",
+  "shear_strength": "mechanical.shear_strength",
+  "shear_modulus": "mechanical.shear_modulus",
+  "hardness_HV": "mechanical.hardness_vickers",
+  "hardness_hv": "mechanical.hardness_vickers",
+  "hardness_HVT": "mechanical.hardness_vickers",
+  "hardness_HV_converted": "mechanical.hardness_vickers",
+  "hardness_HK": "mechanical.hardness_knoop",
+  "hardness_hk": "mechanical.hardness_knoop",
+  "hardness_HR": "mechanical.hardness_rockwell",
+  "hardness_hrc": "mechanical.hardness_rockwell",
+  "hardness_HRC_converted": "mechanical.hardness_rockwell",
+  "hardness_HB": "mechanical.hardness_brinell",
+  "hardness_hbw": "mechanical.hardness_brinell",
+  "hardness_HBT": "mechanical.hardness_brinell",
+  "hardness_HB_converted": "mechanical.hardness_brinell",
+  "hardness_shore_A": "mechanical.hardness_shore_a",
+  "hardness_shore_D": "mechanical.hardness_shore_d",
+  "hardness_shore_00": "mechanical.hardness_shore_oo",
+  "hardness_shore_B": null,
+  "hardness_shore_C": null,
+  "hardness_shore_D0": null,
+  "hardness_shore_0": null,
+  "hardness_IRHD": null,
+  "hardness_VLRH": null,
+  "hardness_HL": null,
+  "dynamic_hardness": null,
+  "indentation_hardness": "mechanical.hardness_indentation",
+  "indentation_modulus": "mechanical.youngs_modulus",
+  "indent_diagonal": null,
+  "fracture_toughness": "mechanical.fracture_toughness",
+  "K_IC": "mechanical.fracture_toughness",
+  "J_IC": null,
+  "da_dN": "mechanical.crack_growth_rate",
+  "creep": "mechanical.creep_rate",
+  "creep_strain": null,
+  "creep_rupture_time": null,
+  "minimum_creep_rate": "mechanical.creep_rate",
+  "creep_compliance": "mechanical.creep_compliance",
+  "relaxation_modulus": "mechanical.prony_relative_modulus",
+  "relaxation_ratio": null,
+  "storage_modulus": "mechanical.storage_modulus",
+  "loss_modulus": "mechanical.loss_modulus",
+  "tan_delta": "mechanical.loss_tangent",
+  "viscoelastic_properties": null,
+  "dynamic_stiffness": null,
+  "glass_transition": "thermal.glass_transition",
+  "melting_point": "thermal.melting_point",
+  "crystallinity": "structure.crystallinity",
+  "specific_heat": "thermal.specific_heat",
+  "enthalpy_change": "thermal.latent_heat_fusion",
+  "oit": null,
+  "cure": null,
+  "cure_kinetics": "chemical.cure_model_constant",
+  "isothermal_kinetics": null,
+  "reaction_kinetics": "chemical.activation_energy",
+  "polymorphism": null,
+  "gel_point": "rheological.gel_time",
+  "cte": "thermal.expansion_linear",
+  "sintering_shrinkage": null,
+  "phase_transition": null,
+  "softening_point": "thermal.dilatometric_softening_point",
+  "dimensional_change": null,
+  "shrinkage_force": null,
+  "decomposition_temperature": "thermal.decomposition_temp",
+  "onset_temperature": null,
+  "mass_loss": null,
+  "ash": "thermal.char_residue",
+  "filler_content": "structure.filler_content",
+  "glass_fiber_content": "structure.filler_content",
+  "moisture": "chemical.water_content",
+  "thermal_conductivity": "thermal.conductivity",
+  "thermal_diffusivity": "thermal.diffusivity",
+  "thermal_effusivity": null,
+  "thermal_resistance": "thermal.thermal_resistance",
+  "hdt": "thermal.heat_deflection_temp",
+  "vst": "thermal.vicat_softening",
+  "mfr": "rheological.melt_flow_index",
+  "mvr": null,
+  "melt_density": null,
+  "viscosity": "rheological.viscosity",
+  "shear_viscosity": "rheological.viscosity",
+  "extensional_viscosity": null,
+  "yield_stress": "rheological.yield_stress",
+  "thixotropy": null,
+  "die_swell": null,
+  "normal_force": null,
+  "flow_rate_ratio": null,
+  "impact_energy": null,
+  "impact_strength": null,
+  "tensile_impact_strength": null,
+  "puncture_energy": null,
+  "puncture_resistance": "mechanical.puncture_strength",
+  "force_deflection": null,
+  "force_deflection (instrumented)": null,
+  "force_time_curve (instrumented)": null,
+  "peak_force": null,
+  "failure_mode": null,
+  "peel_strength": "interface.peel_strength",
+  "peel_force": "interface.peel_force",
+  "seal_strength": null,
+  "tear_strength": null,
+  "static_cof": "mechanical.friction_coefficient",
+  "kinetic_cof": "mechanical.friction_coefficient",
+  "friction_coefficient": "mechanical.friction_coefficient",
+  "wear_rate": "mechanical.specific_wear_rate",
+  "wear_index": null,
+  "wear_depth": null,
+  "volume_loss": null,
+  "stribeck_curve": null,
+  "electrical_contact_resistance": null,
+  "scratch_resistance": null,
+  "scratch_hardness": null,
+  "scratch_load": null,
+  "pencil_hardness": null,
+  "pencil_hardness_grade": null,
+  "Ra": "surface.roughness_ra",
+  "Rz": "surface.roughness_rz",
+  "surface_roughness": "surface.roughness_ra",
+  "waviness": null,
+  "flatness": null,
+  "texture_parameters": null,
+  "stress_bow": "mechanical.residual_stress",
+  "step_height": "structure.layer_thickness",
+  "film_thickness": "structure.layer_thickness",
+  "thickness": "structure.layer_thickness",
+  "coating_thickness": "structure.layer_thickness",
+  "multilayer_thickness": "structure.layer_thickness",
+  "composition": "chemical.composition",
+  "layer_composition": "chemical.composition",
+  "element_concentration": "chemical.composition",
+  "fatigue_life": null,
+  "sn_curve": null,
+  "fatigue_limit": "mechanical.fatigue_strength",
+  "tmf_life": null,
+  "cycles_to_failure": null,
+  "torsional_strength": null,
+  "torsional_stiffness": null,
+  "torque_angle": null,
+  "axial_strain": null,
+  "transverse_strain": null,
+  "r_value": "mechanical.lankford_r_value",
+  "forming_limit_curve": null,
+  "major_strain": null,
+  "minor_strain": null,
+  "dome_height": null,
+  "pull_force": null,
+  "shear_force": null,
+  "crimp_tensile_strength": null,
+  "density": "physical.density",
+  "porosity": "physical.porosity",
+  "haze": "optical.haze",
+  "corrosion_rate": "chemical.corrosion_rate",
+  "shielding_effectiveness": "electrical.shielding_effectiveness",
+  "insertion_loss": null,
+  "attenuation": null,
+  "breakdown_voltage": "electrical.dielectric_strength",
+  "withstand_voltage": null,
+  "leakage_current": null,
+  "insulation_resistance": null,
+  "hardness": null,
+  "adhesiveness": null,
+  "cohesiveness": null,
+  "gel_strength": null,
+  "fracturability": null,
+  "bloom_strength": null,
+  "rupture_force": null,
+  "burst_pressure": null,
+  "hoop_stress": null,
+  "volumetric_expansion": null,
+  "adhesion_class": null,
+  "adhesion_rating": null,
+  "coating_adhesion": null,
+  "cross_cut_classification": null,
+  "color_change": null,
+  "gloss_loss": null,
+  "chalking": null,
+  "yellowing": null,
+  "lightfastness": null,
+  "embrittlement": null,
+  "contact_angle": "physical.contact_angle_water",
+  "surface_energy": "physical.surface_energy",
+  "particle_diameter": "structure.particle_diameter",
+  "zeta_potential": "physical.zeta_potential",
+  "molecular_weight": "structure.molecular_weight",
+  "specific_surface_area": "physical.specific_surface_area",
+  "pore_diameter": "structure.pore_diameter",
+  "transmittance": "optical.transmittance",
+  "reflectance": "optical.reflectance",
+  "refractive_index": "optical.refractive_index",
+  "band_gap": "electrical.band_gap",
+  "emission_peak_wavelength": "optical.emission_peak_wavelength",
+  "resistivity_volume": "electrical.resistivity_volume",
+  "sheet_resistance": "electrical.surface_resistivity",
+  "carrier_mobility": "electrical.carrier_mobility",
+  "carrier_concentration": "electrical.carrier_concentration",
+  "water_content": "chemical.water_content",
+  "crystal_structure": "structure.crystal_structure",
+  "crystallite_size": "structure.crystallite_size",
+  "lattice_parameter": "structure.lattice_parameter",
+  "phase_fraction": "structure.phase_fraction",
+  "residual_stress": "mechanical.residual_stress",
+  "grain_size": "structure.grain_size",
+  "layer_thickness": "structure.layer_thickness",
+  "defect_size": null,
+  "Rth_ja": null,
+  "Rth_jc": null,
+  "active_noise_cancellation": null,
+  "active_power": null,
+  "apparent_power": null,
+  "assembly_verification": null,
+  "average_level": null,
+  "blistering": null,
+  "burst_immunity_level": null,
+  "caloric_effects (c-DTA)": null,
+  "capacity": null,
+  "chromaticity": null,
+  "color_temperature": null,
+  "conducted_emission": null,
+  "contrast": null,
+  "contrast_ratio": null,
+  "correlated_color_temperature": null,
+  "corrosion": null,
+  "coulombic_efficiency": null,
+  "crack_detection": null,
+  "crack_growth": null,
+  "crosstalk": null,
+  "current_response": null,
+  "current_rms": null,
+  "cycle_life": null,
+  "damage_boundary": null,
+  "delamination": null,
+  "delamination_area": null,
+  "delta_t": null,
+  "destruct_limit": null,
+  "die_attach_coverage": null,
+  "dimensional_metrology": null,
+  "dip_interrupt_immunity": null,
+  "discharge_current_waveform": null,
+  "dominant_wavelength": null,
+  "drop_survival_height": null,
+  "dust_penetration": null,
+  "efficiency": null,
+  "energy": null,
+  "energy_efficiency": null,
+  "esd_withstand_voltage": null,
+  "failure_cycles": null,
+  "failure_time": null,
+  "fire": null,
+  "flicker": null,
+  "frequency_response": null,
+  "frequency_response_function": null,
+  "gamma": null,
+  "ground_resistance": null,
+  "harmonic_distortion": null,
+  "head_in_pillow": null,
+  "helium_concentration": null,
+  "hot_spot": null,
+  "hotspot_location": null,
+  "hydrogen_concentration": null,
+  "illuminance": null,
+  "immunity_level": null,
+  "impact_acceleration": null,
+  "impedance_spectrum": null,
+  "insertion_force": null,
+  "insertion_gain": null,
+  "insulation_degradation": null,
+  "interface_integrity": null,
+  "internal_geometry": null,
+  "internal_resistance": null,
+  "ip_rating": null,
+  "jitter": null,
+  "junction_temperature": null,
+  "junction_to_ambient_resistance": null,
+  "junction_to_case_resistance": null,
+  "leak_rate": null,
+  "level": null,
+  "luminance": null,
+  "luminous_intensity": null,
+  "modal_parameters": null,
+  "mura": null,
+  "operating_altitude": null,
+  "operating_limit": null,
+  "peak_acceleration": null,
+  "peak_temperature": null,
+  "phase": null,
+  "power_capability": null,
+  "power_factor": null,
+  "power_profile": null,
+  "pressure_decay": null,
+  "pressure_decay_slope": null,
+  "pressure_drop": null,
+  "pressure_rise": null,
+  "quasi_peak_level": null,
+  "radiated_emission": null,
+  "ramp_rate": null,
+  "reactive_power": null,
+  "reflow_profile": null,
+  "resonance_frequency": null,
+  "self_heat_rate": null,
+  "shock_response_spectrum": null,
+  "snr": null,
+  "solder_joint_integrity": null,
+  "sound_pressure_level": null,
+  "spectral_radiance": null,
+  "speech_intelligibility": null,
+  "standby_power": null,
+  "structure_function": null,
+  "surface_temperature": null,
+  "surge_withstand_voltage": null,
+  "temperature_distribution": null,
+  "thd": null,
+  "thd_n": null,
+  "thermal_capacitance": null,
+  "thermal_gradient": null,
+  "thermal_runaway": null,
+  "tim_resistance": null,
+  "time_above_liquidus": null,
+  "transmissibility": null,
+  "uniformity": null,
+  "velocity_change": null,
+  "venting": null,
+  "void_percentage": null,
+  "voltage_profile": null,
+  "voltage_rms": null,
+  "wetting_force": null,
+  "wetting_time": null,
+  "white_balance": null,
+  "wire_sweep": null,
+  "withdrawal_force": null,
+  "zero_cross_time": null
+ },
+ "overrides": {
+  "charpy_impact:impact_energy": "mechanical.impact_energy_charpy",
+  "charpy_impact:impact_strength": "mechanical.impact_strength_charpy",
+  "izod_impact:impact_strength": [
+   "mechanical.impact_strength_izod",
+   "mechanical.impact_strength_izod_area"
+  ],
+  "high_speed_tensile:dynamic_stress_strain": [
+   "mechanical.tensile_strength_at_rate",
+   "mechanical.yield_strength_at_rate",
+   "mechanical.youngs_modulus_at_rate"
+  ],
+  "wire_bond_strength:pull_force": "interface.wire_pull_strength",
+  "wire_bond_strength:shear_force": "interface.die_shear_strength",
+  "vapor_sorption:moisture": "chemical.moisture_absorption_equilibrium",
+  "coating_thickness:thickness": "structure.layer_thickness",
+  "instrumented_indentation:creep": null,
+  "texture:hardness": null
+ },
+ "extras": {
+  "tensile": [
+   "mechanical.reduction_of_area",
+   "mechanical.elongation_at_yield",
+   {
+    "key": "mechanical.tensile_stress_at_strain",
+    "note": "고무·엘라스토머(ASTM D412)"
+   },
+   "mechanical.monotonic_strain_hardening_exponent",
+   "mechanical.plastic_strain_at_break",
+   {
+    "key": "mechanical.youngs_modulus",
+    "note": "신율계 필요 — 크로스헤드 변위로는 정확하지 않다"
+   },
+   {
+    "key": "mechanical.poisson_ratio",
+    "note": "2축 신율계 또는 DIC 필요"
+   },
+   {
+    "key": "interface.lap_shear_strength",
+    "note": "겹침 전단 시편을 인장기로 당긴다(ASTM D1002)"
+   },
+   {
+    "key": "interface.tensile_adhesion_strength",
+    "note": "풀오프 지그(ASTM D4541)"
+   }
+  ],
+  "compression": [
+   "mechanical.compressive_yield_strength",
+   {
+    "key": "mechanical.compression_set",
+    "note": "압축 지그 + 오븐(ASTM D395)"
+   }
+  ],
+  "shear": [
+   {
+    "key": "mechanical.interlaminar_shear_strength",
+    "note": "쇼트빔 전단(ASTM D2344)"
+   },
+   {
+    "key": "interface.lap_shear_strength",
+    "note": "겹침 전단(ASTM D1002)"
+   }
+  ],
+  "flexure": [],
+  "fatigue": [
+   "mechanical.fatigue_strength",
+   "mechanical.fatigue_strength_coefficient",
+   "mechanical.fatigue_strength_exponent",
+   "mechanical.fatigue_ductility_coefficient",
+   "mechanical.fatigue_ductility_exponent",
+   "mechanical.cyclic_strength_coefficient",
+   "mechanical.cyclic_strain_hardening_exponent",
+   "mechanical.crack_initiation_cycles",
+   "mechanical.fatigue_stromeyer_coefficient",
+   "mechanical.fatigue_stromeyer_exponent",
+   "mechanical.fatigue_stromeyer_asymptote"
+  ],
+  "fracture_toughness": [
+   {
+    "key": "mechanical.fracture_energy_gic",
+    "note": "DCB 시편(ASTM D5528)"
+   },
+   {
+    "key": "interface.cohesive_energy_mode1",
+    "note": "DCB(ASTM D5528)"
+   },
+   {
+    "key": "interface.cohesive_energy_mode2",
+    "note": "ENF(ASTM D7905)"
+   }
+  ],
+  "creep": [
+   "mechanical.norton_coefficient",
+   "mechanical.norton_exponent",
+   "mechanical.garofalo_constant",
+   "mechanical.primary_creep_constant"
+  ],
+  "relaxation": [
+   "mechanical.prony_relaxation_time",
+   "mechanical.prony_shear_modulus",
+   "mechanical.prony_tensile_modulus",
+   "mechanical.prony_relative_modulus",
+   "mechanical.prony_long_term_modulus"
+  ],
+  "dma": [
+   "mechanical.wlf_c1",
+   "mechanical.wlf_c2",
+   "mechanical.prony_relaxation_time",
+   "mechanical.prony_relative_modulus",
+   "rheological.crossover_temperature",
+   "rheological.crossover_frequency"
+  ],
+  "high_speed_tensile": [
+   "mechanical.cowper_symonds_c",
+   "mechanical.cowper_symonds_p",
+   "mechanical.dynamic_increase_factor",
+   "mechanical.johnson_cook_a",
+   "mechanical.johnson_cook_b",
+   "mechanical.johnson_cook_n",
+   "mechanical.johnson_cook_c"
+  ],
+  "instrumented_indentation": [
+   "mechanical.hardness_martens"
+  ],
+  "hardness_brinell": [
+   {
+    "key": "mechanical.hardness_ball_indentation",
+    "note": "플라스틱 볼압입(ISO 2039-1) — 브리넬 압자·하중대"
+   }
+  ],
+  "hardness_shore": [
+   "mechanical.hardness_shore_oo"
+  ],
+  "dsc": [
+   "thermal.latent_heat_fusion"
+  ],
+  "tga": [
+   "thermal.char_residue",
+   "chemical.activation_energy"
+  ],
+  "tma": [
+   {
+    "key": "thermal.expansion_total",
+    "note": "IPC-TM-650 2.4.24 구간 총 팽창"
+   },
+   {
+    "key": "thermal.time_to_delamination",
+    "note": "T260/T288(IPC-TM-650 2.4.24.1)"
+   },
+   "thermal.glass_transition"
+  ],
+  "dilatometry": [
+   "thermal.dilatometric_softening_point"
+  ],
+  "thermal_conductivity": [
+   {
+    "key": "thermal.thermal_resistance",
+    "note": "가드 열류계(ASTM D5470)"
+   }
+  ],
+  "rheology_rotational": [
+   "rheological.crossover_temperature",
+   "rheological.crossover_frequency",
+   "rheological.pot_life"
+  ],
+  "rheology_capillary": [
+   "rheological.viscosity_model_constant"
+  ],
+  "melt_flow": [],
+  "surface_topography": [
+   "surface.roughness_rq",
+   "surface.roughness_sq"
+  ],
+  "abrasion": [
+   {
+    "key": "mechanical.abrasion_factor",
+    "note": "유리 연마도(JOGIS 10)"
+   }
+  ],
+  "friction_wear_tribo": [],
+  "peel": [
+   {
+    "key": "interface.loop_tack",
+    "note": "루프 택 지그(ASTM D6195)"
+   },
+   {
+    "key": "interface.tack",
+    "note": "프로브 택(ASTM D2979)"
+   },
+   {
+    "key": "interface.tack_stress",
+    "note": "프로브 택"
+   },
+   {
+    "key": "interface.tack_energy",
+    "note": "프로브 택"
+   }
+  ],
+  "coating_adhesion": [
+   {
+    "key": "interface.tensile_adhesion_strength",
+    "note": "풀오프(ASTM D4541)"
+   }
+  ],
+  "salt_spray_corrosion": [
+   "chemical.corrosion_rate"
+  ],
+  "accelerated_weathering": [
+   "optical.uv_resistance",
+   "mechanical.property_retention",
+   "chemical.radiant_exposure_to_failure",
+   "chemical.photodegradation_rate_constant"
+  ],
+  "damp_heat": [
+   "chemical.hydrolytic_stability",
+   "mechanical.property_retention"
+  ],
+  "vapor_sorption": [
+   "physical.moisture_saturation",
+   "physical.moisture_diffusion_constant",
+   "physical.hygroscopic_expansion"
+  ],
+  "formability": [
+   "mechanical.lankford_r_value"
+  ],
+  "composition_analysis": [
+   "chemical.composition",
+   "structure.molecular_weight"
+  ],
+  "crystal_structure_analysis": [
+   "structure.crystal_structure",
+   "structure.crystallinity",
+   "structure.crystallite_size",
+   "structure.lattice_parameter",
+   "structure.phase_fraction",
+   "structure.grain_size",
+   "mechanical.residual_stress"
+  ],
+  "microscopy": [
+   "structure.grain_size",
+   "structure.particle_diameter",
+   "structure.layer_thickness",
+   "structure.pore_diameter"
+  ],
+  "contact_angle": [
+   "physical.contact_angle_water",
+   "physical.surface_energy",
+   "physical.surface_energy_dispersive",
+   "physical.surface_energy_polar",
+   "physical.surface_energy_acid",
+   "physical.surface_energy_base"
+  ],
+  "particle_size": [
+   "structure.particle_diameter",
+   "physical.zeta_potential",
+   "structure.molecular_weight"
+  ],
+  "density_porosity": [
+   "physical.density",
+   "physical.porosity",
+   "physical.specific_surface_area",
+   "structure.pore_diameter",
+   "structure.pore_volume"
+  ],
+  "optical_spectroscopy": [
+   "optical.transmittance",
+   "optical.reflectance",
+   "optical.refractive_index",
+   "optical.extinction_coefficient",
+   "optical.birefringence",
+   "electrical.band_gap",
+   "optical.emission_peak_wavelength",
+   "optical.photoluminescence_quantum_yield",
+   "optical.excited_state_lifetime",
+   "optical.molar_absorptivity",
+   "structure.layer_thickness"
+  ],
+  "electrical_transport": [
+   "electrical.resistivity_volume",
+   "electrical.surface_resistivity",
+   "electrical.conductivity",
+   "electrical.carrier_mobility",
+   "electrical.carrier_concentration",
+   "electrical.hall_coefficient",
+   "electrical.dielectric_strength",
+   "magnetic.coercivity"
+  ],
+  "water_content": [
+   "chemical.water_content"
+  ]
+ },
+ "techniques": [
+  {
+   "match": [
+    "굽힘"
+   ],
+   "test_item": "flexure"
+  },
+  {
+   "match": [
+    "압축시험",
+    "압축"
+   ],
+   "test_item": "compression"
+  },
+  {
+   "match": [
+    "박리"
+   ],
+   "test_item": "peel"
+  },
+  {
+   "match": [
+    "전단"
+   ],
+   "test_item": "shear"
+  },
+  {
+   "match": [
+    "피로",
+    "균열",
+    "파괴인성"
+   ],
+   "test_item": "fatigue"
+  },
+  {
+   "match": [
+    "크리프"
+   ],
+   "test_item": "creep"
+  },
+  {
+   "match": [
+    "인장"
+   ],
+   "test_item": "tensile"
+  },
+  {
+   "match": [
+    "로크웰"
+   ],
+   "test_item": "hardness_rockwell"
+  },
+  {
+   "match": [
+    "브리넬"
+   ],
+   "test_item": "hardness_brinell"
+  },
+  {
+   "match": [
+    "누프"
+   ],
+   "test_item": "hardness_knoop"
+  },
+  {
+   "match": [
+    "비커스"
+   ],
+   "test_item": "hardness_vickers"
+  },
+  {
+   "match": [
+    "쇼어",
+    "듀로미터"
+   ],
+   "test_item": "hardness_shore"
+  },
+  {
+   "match": [
+    "계장화",
+    "나노압입",
+    "압입"
+   ],
+   "test_item": "instrumented_indentation"
+  },
+  {
+   "match": [
+    "낙하",
+    "드롭타워",
+    "낙추"
+   ],
+   "test_item": "drop_weight_impact"
+  },
+  {
+   "match": [
+    "샤르피"
+   ],
+   "test_item": "charpy_impact"
+  },
+  {
+   "match": [
+    "아이조드"
+   ],
+   "test_item": "izod_impact"
+  },
+  {
+   "match": [
+    "트라이볼로지",
+    "핀온디스크",
+    "마찰"
+   ],
+   "test_item": "friction_wear_tribo"
+  },
+  {
+   "match": [
+    "동적기계",
+    "DMA"
+   ],
+   "test_item": "dma"
+  },
+  {
+   "match": [
+    "열중량",
+    "TGA"
+   ],
+   "test_item": "tga"
+  },
+  {
+   "match": [
+    "시차주사",
+    "DSC"
+   ],
+   "test_item": "dsc"
+  },
+  {
+   "match": [
+    "동시열분석",
+    "STA"
+   ],
+   "test_item": "dsc"
+  },
+  {
+   "match": [
+    "딜라토",
+    "열팽창"
+   ],
+   "test_item": "dilatometry"
+  },
+  {
+   "match": [
+    "레이저 플래시",
+    "과도평면열원",
+    "Hot Disk",
+    "열전도"
+   ],
+   "test_item": "thermal_conductivity"
+  },
+  {
+   "match": [
+    "레오미터",
+    "점도계",
+    "회전점도",
+    "유변"
+   ],
+   "test_item": "rheology_rotational"
+  },
+  {
+   "match": [
+    "표면조도",
+    "프로파일",
+    "간섭계",
+    "원자간력",
+    "AFM",
+    "단차"
+   ],
+   "test_item": "surface_topography"
+  },
+  {
+   "match": [
+    "박막두께",
+    "반사율법",
+    "엘립소"
+   ],
+   "test_item": "coating_thickness"
+  },
+  {
+   "match": [
+    "액적",
+    "접촉각"
+   ],
+   "test_item": "contact_angle"
+  },
+  {
+   "match": [
+    "광산란",
+    "입도",
+    "레이저 회절",
+    "제타"
+   ],
+   "test_item": "particle_size"
+  },
+  {
+   "match": [
+    "피크노",
+    "포로시",
+    "BET",
+    "비표면적"
+   ],
+   "test_item": "density_porosity"
+  },
+  {
+   "match": [
+    "분광광도",
+    "형광분광",
+    "UV-Vis",
+    "자외-가시"
+   ],
+   "test_item": "optical_spectroscopy"
+  },
+  {
+   "match": [
+    "4점 탐침",
+    "홀효과",
+    "반도체 파라미터",
+    "저항률"
+   ],
+   "test_item": "electrical_transport"
+  },
+  {
+   "match": [
+    "칼피셔",
+    "수분"
+   ],
+   "test_item": "water_content"
+  },
+  {
+   "match": [
+    "회절",
+    "EBSD",
+    "XRD",
+    "결정"
+   ],
+   "test_item": "crystal_structure_analysis"
+  },
+  {
+   "match": [
+    "전자현미경",
+    "SEM",
+    "TEM",
+    "현미경"
+   ],
+   "test_item": "microscopy"
+  },
+  {
+   "match": [
+    "분광",
+    "XPS",
+    "EPMA",
+    "오제",
+    "형광X선",
+    "XRF",
+    "라만",
+    "적외",
+    "질량분석",
+    "NMR",
+    "글로우방전",
+    "조성"
+   ],
+   "test_item": "composition_analysis"
+  },
+  {
+   "match": [
+    "초음파",
+    "음향현미경",
+    "C-SAM"
+   ],
+   "test_item": "acoustic_delamination"
+  },
+  {
+   "match": [
+    "X선 현미경",
+    "CT",
+    "단층"
+   ],
+   "test_item": "xray_void_inspection"
+  },
+  {
+   "match": [
+    "항온항습",
+    "항온",
+    "온습도",
+    "오븐",
+    "고온 항온"
+   ],
+   "test_item": "damp_heat"
+  },
+  {
+   "match": [
+    "열충격"
+   ],
+   "test_item": "thermal_shock"
+  },
+  {
+   "match": [
+    "HAST",
+    "고도가속"
+   ],
+   "test_item": "hast"
+  },
+  {
+   "match": [
+    "급속 온도변화",
+    "온도변화"
+   ],
+   "test_item": "temperature_cycling"
+  },
+  {
+   "match": [
+    "염수분무",
+    "부식"
+   ],
+   "test_item": "salt_spray_corrosion"
+  }
+ ]
+}

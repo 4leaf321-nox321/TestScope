@@ -1,0 +1,64 @@
+{
+ "id": "espec-walk-in-chambers-materialtwin",
+ "kind": "equipment_series",
+ "name": "ESPEC Walk-In Temperature (& Humidity) Chambers — E Series / High-Power Series",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "damp_heat",
+  "temperature_cycling"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/206",
+   "note": "ESPEC Walk-in Chamber TBE (E Series / High-Power Series) · metrology_catalogs/reliability/ESPEC_walkin_TBE.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/207",
+   "note": "ESPEC Walk-in Chamber TBE (E Series / High-Power Series) · metrology_catalogs/reliability/ESPEC_walkin_TBE.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/208",
+   "note": "ESPEC Walk-in Chamber TBE (E Series / High-Power Series) · metrology_catalogs/reliability/ESPEC_walkin_TBE.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "supplements": "espec-walk-in-chambers",
+ "notes": "[MaterialTwin] Walk-in TBE E Series 온습도형 (EBE/EBL/EBR): **시편에 온·습도 조건을 거는 워크인 챔버이지 물성 측정기가 아니다.** -40~+80 °C · 10~95 %rh, 최대 52.7 m³ / Walk-in TBE E Series 온도형 (EBF/EBU/EBUU): **조건 부여 장비.** -40~+80 °C 를 거는 온도 전용 워크인 챔버 / Walk-in TBE High-Power Series (EBE/EBF): **조건 부여 장비.** -70~+150 °C · 20~95 %rh 를 거는 대용량 고성능 워크인 챔버(최대 170 m³)",
+ "materialtwin_series": [
+  {
+   "snapshot": "materialtwin-20260905",
+   "instrument_id": 206,
+   "category": "reliability",
+   "technique": "워크인 항온항습 시험(균형식 온습도 제어, BTHC + 증기압 분할제어)",
+   "description": "**시편에 온·습도 조건을 거는 워크인 챔버이지 물성 측정기가 아니다.** -40~+80 °C · 10~95 %rh, 최대 52.7 m³",
+   "notes": "**capabilities 비움 — 조건 부여 장비.** ▷ **온도범위** EBE **-40~+80 °C**(=233.15~353.15 K), EBL **-30~+80 °C**(=243.15~353.15 K), EBR **-10~+80 °C**(=263.15~353.15 K). **습도범위** EBE·EBL 10~95 %rh(+10~+80 °C 구간), EBR 20~95 %rh(+20~+80 °C 구간). 온·습도 편차 ±0.5 °C / ±4 %rh, 공간분포 2.5 °C, 온도변화율 0.4 °C/min(E 시리즈). 용적 4.2~52.7 m³, 설치환경 5~40 °C/75 %rh. **적용 규격** — 온도: IEC 60068-2-14 Nb, LV 124 K-01/K-02/K-04, ISO 16750-4 5.2·5.3, LV 124 L-03; 온습도: IEC 60068-2-30, IEC 60068-2-38, IEC 60068-2-78, ISO 16750-4 5.6.1/5.6.2/5.6.3·5.7, LV 124 K-08/K-09/K-14, PV 1200, PV 2005, PR 308.2, TP 303.5 a~d. 성능은 IEC 60068-3-5:2001 준거(변화율은 챔버 중앙 공기의 10~90 % 구간 기울기). 패널 조립식 현장 설치. 저GWP 냉매 R-449A 선택 가능.",
+   "doc_path": "metrology_catalogs/reliability/ESPEC_walkin_TBE.pdf",
+   "source_title": "ESPEC Walk-in Chamber TBE (E Series / High-Power Series)",
+   "capabilities": []
+  },
+  {
+   "snapshot": "materialtwin-20260905",
+   "instrument_id": 207,
+   "category": "reliability",
+   "technique": "워크인 항온 시험(균형식 온도제어, BTC)",
+   "description": "**조건 부여 장비.** -40~+80 °C 를 거는 온도 전용 워크인 챔버",
+   "notes": "**capabilities 비움.** ▷ **온도범위** EBF **-40~+80 °C**(=233.15~353.15 K), EBU **-30~+80 °C**(=243.15~353.15 K), EBUU **-10~+80 °C**(=263.15~353.15 K). **습도제어 없음**(저온에서 상대습도 0 % 수준). 온도편차 ±0.5 °C, 공간분포 2.5 °C, 변화율 0.4 °C/min. 용적 4.2~52.7 m³. 적용 규격은 온습도형과 같은 온도 갈래(IEC 60068-2-14 Nb, LV 124 K-01/02/04, ISO 16750-4 5.2·5.3), 성능은 IEC 60068-3-5:2001 준거. **허용 발열부하 -40 °C 에서 13 kW** 라 자동차 모터 같은 발열체를 저온에서 돌리며 시험할 수 있다고 명시.",
+   "doc_path": "metrology_catalogs/reliability/ESPEC_walkin_TBE.pdf",
+   "source_title": "ESPEC Walk-in Chamber TBE (E Series / High-Power Series)",
+   "capabilities": []
+  },
+  {
+   "snapshot": "materialtwin-20260905",
+   "instrument_id": 208,
+   "category": "reliability",
+   "technique": "워크인 항온항습 시험(수랭 캐스케이드 냉동)",
+   "description": "**조건 부여 장비.** -70~+150 °C · 20~95 %rh 를 거는 대용량 고성능 워크인 챔버(최대 170 m³)",
+   "notes": "**capabilities 비움 — 조건 부여 장비.** ▷ **온도범위 -70~+150 °C**(=203.15~423.15 K), **습도범위 20~95 %rh**(+20~+80 °C 구간, EBE 온습도형). EBF 는 온도 전용. 온·습도 편차 ±0.5 °C / ±4 %rh, 공간분포는 -70~-41 °C 및 +81~+150 °C 구간에서 5.5 °C. 온도변화율 3 °C/min(E 시리즈는 0.4 °C/min). 용적 최대 170 m³ — 다만 **170 m³ 구성에서는 온도제어 범위가 -30~+80 °C 로 좁아진다**고 각주에 명시. 설치환경 5~40 °C/75 %rh. 적용 규격은 E 시리즈와 같은 IEC 60068·ISO 16750-4·LV 124 계열. 한여름 차량 실내·보닛 환경 모사를 겨냥한 계열이다.",
+   "doc_path": "metrology_catalogs/reliability/ESPEC_walkin_TBE.pdf",
+   "source_title": "ESPEC Walk-in Chamber TBE (E Series / High-Power Series)",
+   "capabilities": []
+  }
+ ]
+}

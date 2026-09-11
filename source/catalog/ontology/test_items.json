@@ -170,6 +170,22 @@
    ]
   },
   {
+   "id": "composition_analysis",
+   "label_ko": "화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)",
+   "label": "Chemical composition analysis",
+   "measurands": [
+    "composition",
+    "element_concentration",
+    "layer_composition"
+   ],
+   "typical_standards": [
+    "ASTM E1508",
+    "ISO 15472",
+    "ASTM E1621"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입 — 재료 분석 장비를 담을 시험 항목"
+  },
+  {
    "id": "compression",
    "label_ko": "압축",
    "label": "Compression",
@@ -183,6 +199,20 @@
     "ISO 604",
     "ASTM D6641"
    ]
+  },
+  {
+   "id": "contact_angle",
+   "label_ko": "접촉각·표면에너지",
+   "label": "Contact angle / surface energy",
+   "measurands": [
+    "contact_angle",
+    "surface_energy"
+   ],
+   "typical_standards": [
+    "ASTM D7334",
+    "ISO 19403-2"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "creep",
@@ -215,6 +245,25 @@
    ]
   },
   {
+   "id": "crystal_structure_analysis",
+   "label_ko": "결정 구조 분석(XRD·EBSD)",
+   "label": "Crystal structure analysis",
+   "measurands": [
+    "crystal_structure",
+    "crystallinity",
+    "crystallite_size",
+    "lattice_parameter",
+    "phase_fraction",
+    "residual_stress"
+   ],
+   "typical_standards": [
+    "ASTM E975",
+    "ASTM E2860",
+    "ISO 13067"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "damp_heat",
    "label_ko": "항온항습(습열)",
    "label": "Damp heat / temperature-humidity",
@@ -229,6 +278,24 @@
     "JESD22-A101",
     "MIL-STD-810 Method 507"
    ]
+  },
+  {
+   "id": "density_porosity",
+   "label_ko": "밀도·기공률·비표면적",
+   "label": "Density / porosity / surface area",
+   "measurands": [
+    "density",
+    "porosity",
+    "specific_surface_area",
+    "pore_diameter"
+   ],
+   "typical_standards": [
+    "ASTM D792",
+    "ISO 12154",
+    "ASTM D4404",
+    "ISO 9277"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "dielectric_withstand",
@@ -326,6 +393,23 @@
     "ISO 20653",
     "MIL-STD-810 Method 510"
    ]
+  },
+  {
+   "id": "electrical_transport",
+   "label_ko": "전기 저항률·홀 효과·반도체 특성",
+   "label": "Electrical transport (4-point probe / Hall / I-V)",
+   "measurands": [
+    "resistivity_volume",
+    "sheet_resistance",
+    "carrier_mobility",
+    "carrier_concentration"
+   ],
+   "typical_standards": [
+    "ASTM F76",
+    "ASTM D257",
+    "ASTM F84"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "emi_emission",
@@ -714,6 +798,56 @@
     "ISO 1133-2",
     "ASTM D1238"
    ]
+  },
+  {
+   "id": "microscopy",
+   "label_ko": "전자·원자간력 현미경 관찰",
+   "label": "Electron / atomic force microscopy",
+   "measurands": [
+    "grain_size",
+    "particle_diameter",
+    "layer_thickness",
+    "defect_size"
+   ],
+   "typical_standards": [
+    "ASTM E112",
+    "ISO 16700"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "optical_spectroscopy",
+   "label_ko": "투과·반사·형광 분광",
+   "label": "Optical spectroscopy (UV-Vis / fluorescence / ellipsometry)",
+   "measurands": [
+    "transmittance",
+    "reflectance",
+    "refractive_index",
+    "band_gap",
+    "emission_peak_wavelength"
+   ],
+   "typical_standards": [
+    "ASTM D1003",
+    "ASTM E903",
+    "ISO 13468"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "particle_size",
+   "label_ko": "입도·제타전위",
+   "label": "Particle size / zeta potential",
+   "measurands": [
+    "particle_diameter",
+    "zeta_potential",
+    "molecular_weight"
+   ],
+   "typical_standards": [
+    "ISO 13320",
+    "ISO 22412",
+    "ISO 13099"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "peel",
@@ -1203,6 +1337,19 @@
     "ISO 306",
     "ASTM D1525"
    ]
+  },
+  {
+   "id": "water_content",
+   "label_ko": "수분 함량(칼피셔)",
+   "label": "Water content (Karl Fischer)",
+   "measurands": [
+    "water_content"
+   ],
+   "typical_standards": [
+    "ISO 15512",
+    "ASTM E1064"
+   ],
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "water_ingress",

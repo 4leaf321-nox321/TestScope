@@ -52,6 +52,13 @@
    "parent": "environmental_simulation"
   },
   {
+   "id": "atomic_force_microscope",
+   "parent": "materials_analysis",
+   "label_ko": "원자간력현미경 (AFM)",
+   "label": "Atomic force microscope",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "audio_analyzer",
    "label_ko": "오디오 분석기",
    "label": "Audio analyzer",
@@ -112,6 +119,13 @@
    ]
   },
   {
+   "id": "chromatograph_mass_spectrometer",
+   "parent": "materials_analysis",
+   "label_ko": "크로마토그래프·질량분석기",
+   "label": "Chromatograph / mass spectrometer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "climatic_chamber",
    "label_ko": "항온항습 챔버",
    "label": "Temperature & humidity chamber",
@@ -131,6 +145,20 @@
    "label_ko": "부품 수명 시험기(키·커넥터·케이블)",
    "label": "Component life tester",
    "parent": "mechanical_dynamics"
+  },
+  {
+   "id": "composition_spectrometer",
+   "parent": "materials_analysis",
+   "label_ko": "조성 분광 분석기 (XPS·FT-IR·라만·XRF·GD-OES)",
+   "label": "Composition spectrometer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "contact_angle_analyzer",
+   "parent": "materials_analysis",
+   "label_ko": "접촉각·표면장력 측정기",
+   "label": "Contact angle analyzer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "corrosion_chamber",
@@ -230,6 +258,13 @@
    "parent": "environmental_simulation"
   },
   {
+   "id": "electrical_property_tester",
+   "parent": "materials_analysis",
+   "label_ko": "전기 물성 측정기 (4점 탐침·홀·I-V)",
+   "label": "Electrical property tester",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "electrical_safety",
    "label_ko": "전기안전·EMC 시험장비",
    "label": "Electrical safety & EMC"
@@ -249,6 +284,13 @@
    "parent": "specimen_preparation",
    "label_ko": "전해 에칭기",
    "label": "Electrolytic etching machine"
+  },
+  {
+   "id": "electron_microscope",
+   "parent": "materials_analysis",
+   "label_ko": "전자현미경 (SEM·TEM·EPMA)",
+   "label": "Electron microscope",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "electronic_load",
@@ -304,6 +346,13 @@
     "accuracy_class",
     "min_gauge_length"
    ]
+  },
+  {
+   "id": "film_thickness_analyzer",
+   "parent": "materials_analysis",
+   "label_ko": "박막 두께 측정기 (반사율·엘립소미터)",
+   "label": "Thin-film thickness analyzer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "force_tester",
@@ -430,6 +479,13 @@
    "label": "Impact testing"
   },
   {
+   "id": "industrial_oven",
+   "parent": "environmental_simulation",
+   "label_ko": "산업용 오븐",
+   "label": "Industrial oven",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "instrumented_indentation",
    "parent": "hardness",
    "label_ko": "계장화 압입(나노인덴터·동적초미소경도)",
@@ -446,6 +502,13 @@
    "parent": "electrical_safety"
   },
   {
+   "id": "karl_fischer_titrator",
+   "parent": "materials_analysis",
+   "label_ko": "칼피셔 수분 측정기",
+   "label": "Karl Fischer titrator",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "leak_tester",
    "label_ko": "누설 시험기",
    "label": "Leak tester",
@@ -459,6 +522,12 @@
    "parent": "accessory",
    "label_ko": "로드셀",
    "label": "Load cell"
+  },
+  {
+   "id": "materials_analysis",
+   "label_ko": "재료 분석 장비",
+   "label": "Materials analysis",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "mechanical_dynamic",
@@ -497,6 +566,13 @@
    ]
   },
   {
+   "id": "nmr_spectrometer",
+   "parent": "materials_analysis",
+   "label_ko": "핵자기공명 분광기 (NMR)",
+   "label": "NMR spectrometer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "optical_measurement",
    "label_ko": "광학·디스플레이 측정장비",
    "label": "Optical & display measurement"
@@ -506,6 +582,20 @@
    "label_ko": "3D 표면 형상 측정기",
    "label": "Optical / stylus profilometer",
    "parent": "optical_measurement"
+  },
+  {
+   "id": "optical_spectrometer",
+   "parent": "materials_analysis",
+   "label_ko": "분광광도계·형광분광기 (UV-Vis·PL)",
+   "label": "Optical spectrometer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
+   "id": "particle_size_analyzer",
+   "parent": "materials_analysis",
+   "label_ko": "입도·제타전위 분석기",
+   "label": "Particle size analyzer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "pendulum_impact",
@@ -542,6 +632,13 @@
    "label_ko": "압력강하식 누설시험기",
    "label": "Pressure/vacuum decay leak tester",
    "parent": "leak_tester"
+  },
+  {
+   "id": "pycnometer_porosimeter",
+   "parent": "materials_analysis",
+   "label_ko": "밀도·기공 분석기 (피크노미터·포로시미터)",
+   "label": "Pycnometer / porosimeter",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "resonance_fatigue",
@@ -661,6 +758,13 @@
     "test_temperature",
     "heating_rate"
    ]
+  },
+  {
+   "id": "surface_roughness_tester",
+   "parent": "materials_analysis",
+   "label_ko": "촉침식 표면조도 측정기",
+   "label": "Stylus surface roughness tester",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "texture_analyser",
@@ -818,6 +922,13 @@
    ]
   },
   {
+   "id": "viscometer",
+   "parent": "rheology",
+   "label_ko": "회전점도계",
+   "label": "Rotational viscometer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
+  },
+  {
    "id": "water_ingress_tester",
    "label_ko": "방수(IPX) 시험 설비",
    "label": "Water ingress (IPX) test equipment",
@@ -832,6 +943,13 @@
     "test_functions",
     "specimen_size"
    ]
+  },
+  {
+   "id": "xray_diffractometer",
+   "parent": "materials_analysis",
+   "label_ko": "X선 회절계 (XRD)",
+   "label": "X-ray diffractometer",
+   "registered": "2026-09-12 MaterialTwin 계측기 반입"
   },
   {
    "id": "xray_inspection",

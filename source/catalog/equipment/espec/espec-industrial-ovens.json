@@ -1,0 +1,37 @@
+{
+ "id": "espec-industrial-ovens",
+ "kind": "equipment_model",
+ "name": "ESPEC PH / PV / STPH / SSPH Industrial Ovens",
+ "manufacturer": "espec",
+ "category": "industrial_oven",
+ "test_items": [
+  "damp_heat"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/205",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 PH·PV·STPH·SSPH 산업용 오븐",
+ "description": "고온 항온 노출(산업용 오븐)",
+ "models": [
+  {
+   "model": "PH/PV/STPH/SSPH 산업용 오븐",
+   "note": "**조건 부여 장비.** 45~200 °C(옵션 300 °C), 45~500 °C, 45~700 °C 를 거는 정밀 산업용 오븐",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 205,
+    "category": "reliability",
+    "technique": "고온 항온 노출(산업용 오븐)",
+    "description": "**조건 부여 장비.** 45~200 °C(옵션 300 °C), 45~500 °C, 45~700 °C 를 거는 정밀 산업용 오븐",
+    "notes": "**capabilities 비움 — 열처리·건조·고온노출용 조건 부여 장비.** ▷ PH-101/201/301/401·PV-211/221/231/331 **45~200 °C**(=318.15~473.15 K, 옵션 **300 °C**=573.15 K 까지), STPH-101/201 **45~500 °C**(=318.15~773.15 K), SSPH-101/201 **45~700 °C**(=318.15~973.15 K). 제어 항상성 ±0.1 °C, 균일도 0.5 °C 급. 내부용적 91~1000 L. 수평기류로 시편 노출을 균일화한다고 명시.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

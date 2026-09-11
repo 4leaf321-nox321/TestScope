@@ -1,0 +1,149 @@
+{
+ "id": "rigaku-smartlab",
+ "kind": "equipment_model",
+ "name": "Rigaku SmartLab X-ray Diffractometer",
+ "manufacturer": "rigaku",
+ "category": "xray_diffractometer",
+ "test_items": [
+  "crystal_structure_analysis",
+  "dsc",
+  "coating_thickness"
+ ],
+ "measurands": [
+  "structure.crystal_structure",
+  "structure.crystallinity",
+  "structure.layer_thickness",
+  "physical.density",
+  "structure.phase_fraction",
+  "structure.crystallite_size",
+  "structure.lattice_parameter",
+  "mechanical.residual_stress",
+  "surface.roughness_rq",
+  "structure.particle_diameter"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/30",
+   "note": "Rigaku SmartLab · metrology_catalogs/chemical/Rigaku_SmartLab.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "리가쿠 SmartLab X선 회절계",
+ "description": "X선 회절(XRD, 자동 다목적 고분해능)",
+ "measurands_by_item": {
+  "crystal_structure_analysis": [
+   "structure.crystal_structure",
+   "structure.phase_fraction",
+   "structure.crystallite_size",
+   "structure.lattice_parameter",
+   "mechanical.residual_stress",
+   "structure.particle_diameter"
+  ],
+  "dsc": [
+   "structure.crystallinity"
+  ],
+  "coating_thickness": [
+   "structure.layer_thickness",
+   "physical.density",
+   "surface.roughness_rq"
+  ]
+ },
+ "models": [
+  {
+   "model": "SmartLab",
+   "note": "PhotonMax 회전대음극과 Cross Beam Optics, HyPix-3000 2D 검출기를 갖춘 자동 다목적 XRD. 분말회절, 잔류응력(sin²ψ/2D/multi-HKL), 박막(XRR·GIXRD·면내회절·역격자맵), 텍스처, SAXS/USAXS/GI-SAXS, PDF 를 SmartLab Studio II 로 수행한다. 미소부 빔 크기 50 µm~1 mm.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 30,
+    "category": "chemical",
+    "technique": "X선 회절(XRD, 자동 다목적 고분해능)",
+    "description": "PhotonMax 회전대음극과 Cross Beam Optics, HyPix-3000 2D 검출기를 갖춘 자동 다목적 XRD. 분말회절, 잔류응력(sin²ψ/2D/multi-HKL), 박막(XRR·GIXRD·면내회절·역격자맵), 텍스처, SAXS/USAXS/GI-SAXS, PDF 를 SmartLab Studio II 로 수행한다. 미소부 빔 크기 50 µm~1 mm.",
+    "notes": "SmartLab 시리즈의 상위 모델 카탈로그다. 광학계 구성별 사양은 그림으로만 나오고 물성별 측정범위 수치는 거의 인쇄되어 있지 않다.",
+    "doc_path": "metrology_catalogs/chemical/Rigaku_SmartLab.pdf",
+    "source_title": "Rigaku SmartLab",
+    "capabilities": [
+     {
+      "property_key": "structure.crystal_structure",
+      "technique": "X선 회절 상분석·구조해석(XRD, Rietveld)",
+      "specimen": "분말·벌크·박막·섬유(투과/반사 자동전환)",
+      "mapping_confidence": "high",
+      "source_detail": "Typical applications — Powder (Phase identification, Indexing, Structural determination, Precise crystalline structure determination), Rietveld refinement",
+      "notes": "미지 결정구조 해석 패키지 포함. 수치 사양 없음."
+     },
+     {
+      "property_key": "structure.crystallinity",
+      "technique": "X선 회절 결정화도 분석(XRD, percent crystallinity)",
+      "specimen": "분말·벌크·박막",
+      "mapping_confidence": "high",
+      "source_detail": "Typical applications — Powder: 'Percent crystallinity'",
+      "notes": "결정화도(%)가 직접 인쇄. 범위·정확도 인쇄 없음."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "X선 반사율법(XRR)",
+      "specimen": "박막(단결정·에피택셜 포함), χ·φ 축 goniometer",
+      "mapping_confidence": "high",
+      "source_detail": "Thin Film 적용 목록 — 'Film thickness' / 'IGZO film thickness and density analysis using XRR' 예시",
+      "notes": "측정범위 수치는 인쇄되어 있지 않다. 예시 그림에 4.6 nm 표기가 있으나 시연 데이터라 값으로 쓰지 않았다. HRRC 로 InGaN/GaN MQW 박막 두께 해석 예시도 있다."
+     },
+     {
+      "property_key": "physical.density",
+      "technique": "X선 반사율법(XRR) 밀도 해석",
+      "specimen": "박막",
+      "mapping_confidence": "medium",
+      "source_detail": "Thin Film 적용 목록 — 'Density'",
+      "notes": "XRR 은 전자밀도를 거쳐 질량밀도를 준다. 항목명이 'Density' 뿐이라 medium."
+     },
+     {
+      "property_key": "structure.phase_fraction",
+      "technique": "X선 회절 정량상분석(XRD QPA, Rietveld)",
+      "specimen": "분말·벌크·박막·섬유(투과/반사 자동전환)",
+      "mapping_confidence": "high",
+      "source_detail": "Typical applications — Powder: 'Quantification' / SmartLab Studio II Rietveld refinement",
+      "notes": "정성(Phase identification)과 정량(Quantification)이 분리해 인쇄되어 있다. **method_detail** — Rietveld 정밀화(SmartLab Studio II). **phase** — 대상 상은 시료에 달렸고 카탈로그가 지정하지 않는다. 상분율의 범위·정확도 수치는 인쇄 없음."
+     },
+     {
+      "property_key": "structure.crystallite_size",
+      "technique": "X선 회절 선폭해석 결정자 크기(XRD line broadening, FP)",
+      "specimen": "분말·다결정 시료",
+      "mapping_confidence": "high",
+      "source_detail": "Typical applications — Powder: 'Crystallite size and distortion' / SmartLab Studio II: 'Crystallite size distribution analysis using FP (Fundamental Parameter)'",
+      "notes": "**chunk_17 의 grain_size 행을 옮긴 것이 아니라 새 근거로 만든 행이다** — 그쪽은 SAXS 절(입경)이고 이 행은 분말회절 절이다. 'Crystallite size' 가 그대로 인쇄되어 high. **method_detail** — FP(Fundamental Parameter)법 선폭해석, 크기분포까지 산출. 크기 범위 수치는 인쇄 없음."
+     },
+     {
+      "property_key": "structure.lattice_parameter",
+      "technique": "X선 회절 격자상수 정밀측정(XRD, 역격자맵/HRRC 포함)",
+      "specimen": "분말·벌크·단결정 박막(에피택셜 포함)",
+      "mapping_confidence": "high",
+      "source_detail": "Typical applications — Powder: 'Precise lattice parameter determination' / 박막절 역격자맵·HRRC 측정",
+      "notes": "'정밀 격자상수 결정' 이 직접 인쇄되어 있다. **axis** — 면외(out-of-plane)와 면내(in-plane) 회절을 모두 갖춰 축을 나눠 볼 수 있다고 적혀 있으나 a/b/c 표기는 없다. **temperature_k** — 온도제어 스테이지 그림이 있으나 온도범위 수치가 인쇄되어 있지 않아 비웠다. 격자상수 값의 범위·불확도 수치도 없다."
+     },
+     {
+      "property_key": "mechanical.residual_stress",
+      "technique": "X선 회절 잔류응력 측정(sin²ψ / 2D 삼축 / multiple-HKL)",
+      "specimen": "금속·세라믹 벌크 및 박막. 미소부 광학계로 미소영역 응력 맵핑 가능",
+      "mapping_confidence": "high",
+      "source_detail": "Typical applications — Stress: 'Sin2ψ method', '2D method', 'Multiple-HKL method' / Residual stress analysis 절",
+      "notes": "재종에 따라 Cr·Co·Cu·Mo 파장을 고르고, 박막이나 전단응력을 가진 재료도 해석할 수 있으며 2D 법은 삼축응력을 준다고 적혀 있다. **응력 범위와 부호 규약(압축 음수)이 카탈로그에 인쇄되어 있지 않다.** 예시 그림(Ni 판, 쇼트피닝 강, Ni 박막)은 시연 데이터라 값으로 쓰지 않았다. **depth_um** — X선 침투깊이 표층 평균이나 깊이 수치 없음. **direction** — sin²ψ 는 특정 방향, 2D 는 삼축이라 방법마다 다르며 규약 인쇄 없음."
+     },
+     {
+      "property_key": "surface.roughness_rq",
+      "technique": "X선 반사율법 계면 거칠기 해석(XRR interface roughness)",
+      "specimen": "박막",
+      "mapping_confidence": "medium",
+      "source_detail": "Thin Film 적용 목록 — 'Roughness' (Film thickness, Density 와 나란히)",
+      "notes": "XRR 로 두께·밀도와 함께 나오는 거칠기라 관례상 RMS(σ)로 보고 Rq 에 이었으나 카탈로그는 'Roughness' 라고만 인쇄해 medium 이다. Ra 값을 옮긴 것이 아니다 — SmartLab 에는 Ra 행이 없다. **cutoff_mm·evaluation_length_mm** — 촉침식 필터 규약이 적용되지 않는 방법이라 조건이 존재하지 않는다. 범위 수치 인쇄 없음."
+     },
+     {
+      "property_key": "structure.particle_diameter",
+      "technique": "소각 X선 산란 입자크기 분석(SAXS/USAXS)",
+      "specimen": "나노입자·분말·박막(Au 나노입자 예시)",
+      "mapping_confidence": "medium",
+      "source_detail": "Typical applications — SAXS: 'Grain size distribution' / 2D SAXS 절 및 'Au nanoparticle grain size and distribution analysis' 예시",
+      "notes": "chunk_17 의 structure.grain_size(medium) 행을 옮긴 것이다. 카탈로그가 'grain size' 라고 쓰지만 SAXS 가 보는 것은 산란 도메인 크기이고 예시가 Au 나노입자라 입경 키가 맞다(D8 의 SAXS 행도 particle_diameter 다). 결정자 크기는 분말회절 근거로 별도 행을 만들었다. **범위를 넣지 않은 이유는 그대로다** — 'minimum 100 nm', USAXS 'minimum grain size of 1000 nm' 이 하한인지 상한인지 원문에서 판별되지 않는다."
+     }
+    ]
+   }
+  }
+ ]
+}

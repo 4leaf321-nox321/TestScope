@@ -1,0 +1,79 @@
+{
+ "id": "ossila-four-point-probe",
+ "kind": "equipment_model",
+ "name": "Ossila Four-Point Probe (T2001A / T2001B)",
+ "manufacturer": "ossila",
+ "category": "electrical_property_tester",
+ "test_items": [
+  "electrical_transport"
+ ],
+ "measurands": [
+  "electrical.surface_resistivity",
+  "electrical.resistivity_volume",
+  "electrical.conductivity"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/175",
+   "note": "Ossila Four-Point Probe User Manual (T2001A, 2025) · metrology_catalogs/electrical/Ossila_4pointprobe.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "오실라 4점 탐침 면저항 측정기",
+ "form_factor": "benchtop",
+ "description": "4점 탐침법(4-point collinear probe)",
+ "measurands_by_item": {
+  "electrical_transport": [
+   "electrical.surface_resistivity",
+   "electrical.resistivity_volume",
+   "electrical.conductivity"
+  ]
+ },
+ "models": [
+  {
+   "model": "Four-Point Probe (T2001A/T2001B)",
+   "form_factor": "benchtop",
+   "note": "탐침 4개로 전류를 흘리고 전압을 재어 면저항을 구하는 탁상형 4점탐침기. 두께를 입력하면 체적저항률·전도율까지 산출",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 175,
+    "category": "electrical",
+    "technique": "4점 탐침법(4-point collinear probe)",
+    "description": "탐침 4개로 전류를 흘리고 전압을 재어 면저항을 구하는 탁상형 4점탐침기. 두께를 입력하면 체적저항률·전도율까지 산출",
+    "notes": "같은 매뉴얼이 Four-Point Probe(T2001A4/T2001B4)와 Four-Point Probe Plus(T2001A5/T2001B5, 본체 조작부 내장) 두 변종을 함께 다루고 **측정 사양표는 두 변종 공통**이라 한 레코드로 만들었다. 전압범위 ±100 µV~±10 V, 전류범위 ±20 µA~±200 mA(5단), 탐침간격 소프트팁 1.27 mm·샤프팁 1.6 mm. 시료는 사각 장변 최소 6 mm·단변 최대 152.4 mm, 원형 6~152.4 mm 직경, 두께는 소프트팁 8 mm·샤프팁 5 mm 까지. **시편 두께가 탐침간격의 40 % 를 넘으면 두께보정계수가 들어간다**고 명시.",
+    "doc_path": "metrology_catalogs/electrical/Ossila_4pointprobe.pdf",
+    "source_title": "Ossila Four-Point Probe User Manual (T2001A, 2025)",
+    "capabilities": [
+     {
+      "property_key": "electrical.surface_resistivity",
+      "technique": "4점 탐침 면저항 측정",
+      "range_min": 0.1,
+      "range_max": 10000000.0,
+      "range_unit": "Ω/square",
+      "accuracy": "저항구간별 SMU 정확도 ±1 %(10 Ω~10 kΩ/sq)~±30 %(10 MΩ/sq). 탐침헤드가 최대 4 % 추가 오차",
+      "specimen": "박막·투명전극(FTO 유리 등). 사각 6~152.4 mm, 원형 6~152.4 mm 직경",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 Table 5.1 'Sheet resistance range 100 mΩ/square to 10 MΩ/square' / Table 5.2 정확도·정밀도",
+      "notes": "원문 100 mΩ/sq~10 MΩ/sq 를 Ω/square 로 통일 — **검산** 100 mΩ=0.1 Ω, 10 MΩ=10,000,000 Ω. 구간별 정확도/정밀도 인쇄값: 100 mΩ/sq ±8 %/±3 %(200 mA), 1 Ω/sq ±2 %/±0.5 %, 10 Ω/sq ±1 %/±0.5 %, 100 Ω/sq ±1 %/±0.05 %(20 mA), 1 kΩ/sq ±1 %/±0.03 %, 10 kΩ/sq ±1 %/±0.02 %(2 mA), 100 kΩ/sq ±2 %/±0.05 %(200 µA), 1 MΩ/sq ±8 %/±0.5 %(20 µA), 10 MΩ/sq ±30 %/±5 %."
+     },
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "4점 탐침 면저항 × 두께",
+      "specimen": "두께를 아는 박막·전도층",
+      "mapping_confidence": "high",
+      "source_detail": "p.11 §7.1 'If a thickness has been provided, the resistivity and conductivity will also be displayed.'",
+      "notes": "**사용자가 전도층 두께를 입력해야** 면저항에서 체적저항률이 계산된다. 체적저항률 자체의 측정범위는 인쇄돼 있지 않다(면저항 범위 0.1~10⁷ Ω/sq 와 두께의 곱으로 정해진다)."
+     },
+     {
+      "property_key": "electrical.conductivity",
+      "technique": "4점 탐침 면저항 → 전도율 환산",
+      "specimen": "두께를 아는 박막·전도층",
+      "mapping_confidence": "high",
+      "source_detail": "p.11 §7.1 'the resistivity and conductivity will also be displayed' / p.16 소프트웨어 두께 입력 항목",
+      "notes": "체적저항률의 역수로 표시된다. 측정범위 인쇄 없음."
+     }
+    ]
+   }
+  }
+ ]
+}

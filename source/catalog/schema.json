@@ -99,6 +99,16 @@
             "type": "string"
           },
           "description": "수행 가능하다고 적힌 시험법. ASTM E8, ISO 527 …"
+        },
+        "test_methods_by_item": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": "시험 항목별 수행 가능 시험법. test_methods 는 평평한 목록이라 어느 항목의 규격인지 말하지 못한다 — 있으면 반입이 이것을 먼저 본다."
         }
       }
     },
@@ -137,6 +147,10 @@
           },
           "uncertain": {
             "type": "boolean"
+          },
+          "materialtwin": {
+            "type": "object",
+            "description": "MaterialTwin 계측기 원문 통째 — 설명·주석·능력행. 반입이 raw_specs.materialtwin 으로 보존한다."
           }
         }
       }
@@ -235,6 +249,10 @@
           "retrieved": {
             "type": "string",
             "description": "웹 전용 출처를 조회한 날짜(YYYY-MM-DD)"
+          },
+          "origin": {
+            "type": "string",
+            "description": "PDF 도 URL 도 아닌 근거 — 다른 시스템의 행. 「materialtwin-20260905/instrument/12」. file·url 이 없으면 이것이 있어야 한다."
           }
         },
         "anyOf": [
@@ -246,6 +264,11 @@
           {
             "required": [
               "url"
+            ]
+          },
+          {
+            "required": [
+              "origin"
             ]
           }
         ]
@@ -344,6 +367,27 @@
     },
     "units": {
       "description": "지원 단위 목록 (도메인 상세 필드 - 2026-09-10 감사에서 사용 중인 것을 선언)"
+    },
+    "supplements": {
+      "type": "string",
+      "description": "이미 있는 객체(id)에 기종·시험 항목을 보태는 객체. 이름·제조사·분류는 그 객체와 같아야 반입이 같은 계열로 합친다. MaterialTwin 처럼 다른 출처가 같은 계열을 말할 때 원본 객체를 고쳐 쓰지 않으려고 둔다."
+    },
+    "measurands_by_item": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "시험 항목별로 얻는 물성(ontology/properties.json 의 key). 객체 수준 measurands 는 시험이 여럿이면 어느 시험의 것인지 말하지 못한다 — 반입은 이것으로 물성↔시험 항목을 잇는다."
+    },
+    "materialtwin_series": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "MaterialTwin 에서 온 계열 수준 원문(기종이 아닌 「TSA series …」 같은 행). 반입이 계열의 raw_limits.materialtwin 에 보존한다."
     }
   },
   "$defs": {

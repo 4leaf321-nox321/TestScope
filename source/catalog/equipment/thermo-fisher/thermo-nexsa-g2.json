@@ -1,0 +1,53 @@
+{
+ "id": "thermo-nexsa-g2",
+ "kind": "equipment_model",
+ "name": "Thermo Scientific Nexsa G2 XPS",
+ "manufacturer": "thermo-fisher",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/32",
+   "note": "Thermo Scientific Nexsa G2 Surface Analysis System · metrology_catalogs/chemical/Thermo_Nexsa_G2_XPS.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "써모 Nexsa G2 X선 광전자분광기",
+ "description": "X선 광전자분광(XPS)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "Nexsa G2",
+   "note": "단색화 Al Kα 마이크로포커스 XPS 표면분석기. X선 스폿 10~400 µm(5 µm 단위 가변), EX06 단원자 이온원(200 eV~4 keV) 표준, 이중빔 플러드건 대전보정, 로드락. UPS·REELS·ISS·Raman(iXR) 통합, MAGCIS 이중모드 이온원, ARXPS 틸트 모듈, NX 히터 옵션.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 32,
+    "category": "chemical",
+    "technique": "X선 광전자분광(XPS)",
+    "description": "단색화 Al Kα 마이크로포커스 XPS 표면분석기. X선 스폿 10~400 µm(5 µm 단위 가변), EX06 단원자 이온원(200 eV~4 keV) 표준, 이중빔 플러드건 대전보정, 로드락. UPS·REELS·ISS·Raman(iXR) 통합, MAGCIS 이중모드 이온원, ARXPS 틸트 모듈, NX 히터 옵션.",
+    "notes": "브로슈어에 결합에너지 범위·에너지 분해능·검출한계 같은 정량 사양이 인쇄되어 있지 않다. 인쇄된 수치는 X선 스폿 크기, 이온 에너지, 이미지 픽셀 크기뿐이다. 깊이 프로파일링(이온 스퍼터)은 명시되어 있으나 층두께 측정 사양은 없어 층두께 능력행은 만들지 않았다.",
+    "doc_path": "metrology_catalogs/chemical/Thermo_Nexsa_G2_XPS.pdf",
+    "source_title": "Thermo Scientific Nexsa G2 Surface Analysis System",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "X선 광전자분광(XPS) 정량분석",
+      "specimen": "도체·절연체 모두 가능(이중빔 플러드건 대전보정). 대기민감 시료는 진공이송 모듈, 시료가열은 NX Heater 옵션",
+      "mapping_confidence": "high",
+      "source_detail": "Multi-technique 그림 — XPS 'quantified chemical state', ISS 'elemental composition' / XPS SnapMap 'quantified chemical state images'",
+      "notes": "정량 조성이 명시. 농도범위·검출한계 수치는 인쇄되어 있지 않다. XPS 의 1차 출력은 결합에너지 스펙트럼이고 조성은 정량 처리 결과다."
+     }
+    ]
+   }
+  }
+ ]
+}

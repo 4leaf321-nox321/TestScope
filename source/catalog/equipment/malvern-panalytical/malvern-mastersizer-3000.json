@@ -1,0 +1,65 @@
+{
+ "id": "malvern-mastersizer-3000",
+ "kind": "equipment_model",
+ "name": "Malvern Panalytical Mastersizer 3000 Laser Diffraction Particle Size Analyzer",
+ "manufacturer": "malvern-panalytical",
+ "category": "particle_size_analyzer",
+ "test_items": [
+  "particle_size"
+ ],
+ "measurands": [
+  "structure.particle_diameter"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/162",
+   "note": "Mastersizer 3000 Customer Training Course — Part 1: Basic Principles and Data Quality · metrology_catalogs/particle/Malvern_Mastersizer3000.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "말번 Mastersizer 3000 레이저 회절 입도분석기",
+ "description": "레이저 회절 입도분석(Mie 이론)",
+ "measurands_by_item": {
+  "particle_size": [
+   "structure.particle_diameter"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 13320"
+  ],
+  "test_methods_by_item": {
+   "particle_size": [
+    "ISO 13320"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "Mastersizer 3000",
+   "note": "적색 633 nm + 청색 470 nm 이중광원 레이저 회절 입도분석기. 전방·측방·후방산란 검출기로 입도분포 산출",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 162,
+    "category": "particle",
+    "technique": "레이저 회절 입도분석(Mie 이론)",
+    "description": "적색 633 nm + 청색 470 nm 이중광원 레이저 회절 입도분석기. 전방·측방·후방산란 검출기로 입도분포 산출",
+    "notes": "**이 PDF 는 사양서가 아니라 고객 교육자료다.** 원리·데이터 품질 설명이 대부분이고 장비 측정범위 표가 없어, 인쇄된 규격(ISO 13320)·광원 파장·모드별 상한만 남겼다. 그림 축의 0.01~10000 µm 는 분포 플롯의 축이지 사양이 아니라 범위로 쓰지 않았다.",
+    "doc_path": "metrology_catalogs/particle/Malvern_Mastersizer3000.pdf",
+    "source_title": "Mastersizer 3000 Customer Training Course — Part 1: Basic Principles and Data Quality",
+    "capabilities": [
+     {
+      "property_key": "structure.particle_diameter",
+      "technique": "레이저 회절(Mie 이론 / Fraunhofer 근사)",
+      "standard": "ISO 13320:2009",
+      "specimen": "습식 분산(Hydro) 또는 건식 분산(Aero) 분체·에멀전·기포",
+      "mapping_confidence": "high",
+      "source_detail": "p.5 '레이저 회절은 나노미터~밀리미터 범위 입자를 측정' / ISO 13320:2009 인용(Mie 이론·Fraunhofer 근사)",
+      "notes": "**측정범위 숫자가 이 교육자료에 인쇄돼 있지 않아 비웠다** — 본문은 'nanometres to millimetres' 라는 서술뿐이고 숫자 사양표가 없다. 인쇄된 조건: 적색 레이저 633 nm, 청색 광원 470 nm, 소광검출기 51·63번. 건식 미분말 모드(fine powder mode)를 쓰면 검출기 1~9번을 제외해 **동적범위 상한이 600 µm 로 제한**된다고 인쇄돼 있다. 광학모델은 Mie(굴절률·흡수계수 입력 필요)이며 Fraunhofer 근사는 상대굴절률 1.73 초과·불투명 입자 가정."
+     }
+    ]
+   }
+  }
+ ]
+}

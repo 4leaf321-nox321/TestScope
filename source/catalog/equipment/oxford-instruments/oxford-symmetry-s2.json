@@ -1,0 +1,61 @@
+{
+ "id": "oxford-symmetry-s2",
+ "kind": "equipment_model",
+ "name": "Oxford Instruments Symmetry S2 EBSD Detector",
+ "manufacturer": "oxford-instruments",
+ "category": "electron_microscope",
+ "test_items": [
+  "crystal_structure_analysis"
+ ],
+ "measurands": [
+  "structure.grain_size",
+  "structure.crystal_structure"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/24",
+   "note": "Oxford Instruments Symmetry S2 — 2nd Generation CMOS EBSD Detector · metrology_catalogs/surface/Oxford_EBSD_Symmetry.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "옥스퍼드 Symmetry S2 EBSD 검출기",
+ "description": "전자후방산란회절(EBSD, CMOS 검출기)",
+ "measurands_by_item": {
+  "crystal_structure_analysis": [
+   "structure.grain_size",
+   "structure.crystal_structure"
+  ]
+ },
+ "models": [
+  {
+   "model": "Symmetry S2",
+   "note": "2세대 CMOS EBSD 검출기. 분석속도 4,500 pps 초과, 감도 800 pps/nA 초과, 최대 패턴 해상도 1244 x 1024 픽셀(최대해상도에서 240 pps 초과), 소프트웨어 제어 틸트, FSD 최대 5개. AZtecHKL 수집 + AZtecCrystal 처리.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 24,
+    "category": "surface",
+    "technique": "전자후방산란회절(EBSD, CMOS 검출기)",
+    "description": "2세대 CMOS EBSD 검출기. 분석속도 4,500 pps 초과, 감도 800 pps/nA 초과, 최대 패턴 해상도 1244 x 1024 픽셀(최대해상도에서 240 pps 초과), 소프트웨어 제어 틸트, FSD 최대 5개. AZtecHKL 수집 + AZtecCrystal 처리.",
+    "notes": "SEM 에 붙는 검출기라 단독 장비가 아니다. 인쇄된 수치(pps, 픽셀, pps/nA)는 전부 수집 처리량·감도이지 물성 측정범위가 아니라 능력행의 range 는 비웠다.",
+    "doc_path": "metrology_catalogs/surface/Oxford_EBSD_Symmetry.pdf",
+    "source_title": "Oxford Instruments Symmetry S2 — 2nd Generation CMOS EBSD Detector",
+    "capabilities": [
+     {
+      "property_key": "structure.grain_size",
+      "technique": "전자후방산란회절(EBSD) 결정립 검출·크기 해석",
+      "mapping_confidence": "high",
+      "source_detail": "소프트웨어 기능표 — AZtec Data Analysis 'Data Clean, Grain Detection & Size Analysis', AZtecCrystal Standard 'grain analysis'",
+      "notes": "결정립 검출·크기 해석이 소프트웨어 기능으로 명시. 측정 가능한 결정립 크기 범위는 스텝사이즈에 달려 있고 카탈로그에 인쇄되어 있지 않다. 예시 이미지 스케일바는 100~250 µm."
+     },
+     {
+      "property_key": "structure.crystal_structure",
+      "technique": "전자후방산란회절(EBSD) 상·방위 해석",
+      "mapping_confidence": "high",
+      "source_detail": "소프트웨어 기능표 — AZtec TruPhase 'Real-time differentiation of similar crystal structures', AZtec PhaseID, CIF Import, 상 맵/극점도",
+      "notes": "상 식별(EDS 병용 PhaseID)과 결정구조 구별이 명시. 정량 범위는 없는 항목이다."
+     }
+    ]
+   }
+  }
+ ]
+}

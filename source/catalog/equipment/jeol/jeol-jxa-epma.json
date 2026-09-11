@@ -1,0 +1,79 @@
+{
+ "id": "jeol-jxa-epma",
+ "kind": "equipment_series",
+ "name": "JEOL JXA-iHP200F / iSP100 Electron Probe Microanalyzers",
+ "manufacturer": "jeol",
+ "category": "electron_microscope",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/12",
+   "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/13",
+   "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "지올 JXA 전자프로브 미세분석기",
+ "description": "전자프로브 미세분석(EPMA, 쇼트키 FE 전자원)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "JXA-iHP200F",
+   "note": "쇼트키 전계방출 전자원 EPMA. 분광기·분광결정 구성을 조합해 미소영역 정량 원소분석을 한다. 하이퍼스펙트럴 CL, 연X선 방출분광(SXES)에 의한 화학결합상태·초경원소 검출 지원.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 12,
+    "category": "chemical",
+    "technique": "전자프로브 미세분석(EPMA, 쇼트키 FE 전자원)",
+    "description": "쇼트키 전계방출 전자원 EPMA. 분광기·분광결정 구성을 조합해 미소영역 정량 원소분석을 한다. 하이퍼스펙트럴 CL, 연X선 방출분광(SXES)에 의한 화학결합상태·초경원소 검출 지원.",
+    "notes": "종합 카탈로그의 'Instruments for Microarea and Surface Analysis' 항목. 제품 소개문뿐이라 검출 원소·농도범위·정확도 수치가 하나도 인쇄되어 있지 않다. 카탈로그 분류는 surface 디렉터리지만 장비 성격이 조성분석이라 category 는 chemical 로 뒀다.",
+    "doc_path": "metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf",
+    "source_title": "JEOL Products Guide 2026",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "전자프로브 미세분석(EPMA/WDS)",
+      "mapping_confidence": "high",
+      "source_detail": "p.9 Instruments for Microarea and Surface Analysis",
+      "notes": "'fully quantitative' 정량분석 장비로 명시. 수치 사양이 없어 범위·정확도는 전부 비웠다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "JXA-iSP100",
+   "note": "텅스텐 또는 LaB6 전자원을 선택하는 범용 EPMA. 분광기·분광결정 구성 조합, 하이퍼스펙트럴 CL, SXES 옵션.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 13,
+    "category": "chemical",
+    "technique": "전자프로브 미세분석(EPMA, W/LaB6 전자원)",
+    "description": "텅스텐 또는 LaB6 전자원을 선택하는 범용 EPMA. 분광기·분광결정 구성 조합, 하이퍼스펙트럴 CL, SXES 옵션.",
+    "notes": "종합 카탈로그 소개문만 있고 수치 사양 없음.",
+    "doc_path": "metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf",
+    "source_title": "JEOL Products Guide 2026",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "전자프로브 미세분석(EPMA/WDS)",
+      "mapping_confidence": "high",
+      "source_detail": "p.9 Instruments for Microarea and Surface Analysis",
+      "notes": "수치 사양 인쇄 없음."
+     }
+    ]
+   }
+  }
+ ]
+}

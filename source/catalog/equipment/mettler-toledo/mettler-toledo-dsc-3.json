@@ -1,0 +1,107 @@
+{
+ "id": "mettler-toledo-dsc-3",
+ "kind": "equipment_series",
+ "name": "METTLER TOLEDO DSC 3 / DSC 3+ Differential Scanning Calorimeters",
+ "manufacturer": "mettler-toledo",
+ "category": "dsc",
+ "test_items": [
+  "dsc"
+ ],
+ "measurands": [
+  "thermal.glass_transition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/53",
+   "note": "METTLER TOLEDO DSC 3+, DSC 3 User Manual · metrology_catalogs/thermal/Mettler_DSC3_manual.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/54",
+   "note": "METTLER TOLEDO DSC 3+, DSC 3 User Manual · metrology_catalogs/thermal/Mettler_DSC3_manual.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "메틀러토레도 DSC 3 시차주사열량계",
+ "description": "시차주사열량분석(DSC)",
+ "measurands_by_item": {
+  "dsc": [
+   "thermal.glass_transition"
+  ]
+ },
+ "models": [
+  {
+   "model": "DSC 3",
+   "specs": {
+    "temperature_degC": {
+     "min": -150.0,
+     "max": 700.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "시차주사열량계 — FRS 5+ / HSS 8+ 센서 장착 모델",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 53,
+    "category": "thermal",
+    "technique": "시차주사열량분석(DSC)",
+    "description": "시차주사열량계 — FRS 5+ / HSS 8+ 센서 장착 모델",
+    "notes": "**이 PDF 는 사양서가 아니라 조작 매뉴얼이다** — 8장 'Technical Data' 가 'Reference Manual 을 내려받아 보라'는 한 줄뿐이라 측정범위·감도·정확도가 한 건도 인쇄돼 있지 않다. 숫자로 인쇄된 것은 (1) 냉각옵션 하한(크라이오스탯 -50 °C, 액체질소 -150 °C, 인트라쿨러 -100 °C), (2) 400 W 파워앰프 옵션의 'temperature range RT to 700 °C, 최대 승온 300 K/min' 뿐이다. 나머지는 지어내지 않고 비웠다.",
+    "doc_path": "metrology_catalogs/thermal/Mettler_DSC3_manual.pdf",
+    "source_title": "METTLER TOLEDO DSC 3+, DSC 3 User Manual",
+    "capabilities": [
+     {
+      "property_key": "thermal.glass_transition",
+      "technique": "시차주사열량분석(DSC)",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 973.15,
+      "specimen": "표준 DSC 도가니(시료측 S / 기준측 R), 센터링 핀 도가니 권장",
+      "mapping_confidence": "medium",
+      "source_detail": "p.39 5.2 'Typical application, for example measurement of the glass transition of a substance'",
+      "notes": "매뉴얼이 물성을 나열하지 않아 명시적으로 인쇄된 유일한 측정 예시(유리전이)만 능력행으로 넣었다 — 그래서 medium. 온도는 사양표가 아니라 옵션표 둘을 합친 값이다: 액체질소 냉각 하한 -150 °C(=123.15 K), 400 W 파워앰프 상한 700 °C(=973.15 K). **검산** — -150+273.15=123.15, 700+273.15=973.15. 기본 구성의 온도범위는 이 PDF 에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DSC 3+",
+   "specs": {
+    "temperature_degC": {
+     "min": -150.0,
+     "max": 700.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "시차주사열량계 — FRS 6+ / HSS 9+ 센서 장착 모델(회전방지 귀 달린 센서)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 54,
+    "category": "thermal",
+    "technique": "시차주사열량분석(DSC)",
+    "description": "시차주사열량계 — FRS 6+ / HSS 9+ 센서 장착 모델(회전방지 귀 달린 센서)",
+    "notes": "같은 매뉴얼이 DSC 3 와 DSC 3+ 두 모델을 함께 다룬다. 인쇄된 차이는 센서 호환표뿐이다 — DSC 3+ 는 FRS 6+·HSS 9+, DSC 3 는 FRS 5+·HSS 8+. 냉각옵션·400 W 앰프 사양은 두 모델 공통으로 적혀 있다. 이 PDF 에는 Technical Data 가 없다(Reference Manual 참조 지시).",
+    "doc_path": "metrology_catalogs/thermal/Mettler_DSC3_manual.pdf",
+    "source_title": "METTLER TOLEDO DSC 3+, DSC 3 User Manual",
+    "capabilities": [
+     {
+      "property_key": "thermal.glass_transition",
+      "technique": "시차주사열량분석(DSC)",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 973.15,
+      "specimen": "표준 DSC 도가니(시료측 S / 기준측 R)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.39 5.2 유리전이 측정 예시 + p.33 냉각옵션표 + p.32 400 W 앰프",
+      "notes": "DSC 3 와 같은 근거·같은 온도범위. 옵션표에서 합성한 값이라 사양표 수치가 아니다."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -150.0,
+   "max": 700.0
+  }
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "id": "bruker-dektakxt-materialtwin",
+ "kind": "equipment_series",
+ "name": "Bruker DektakXT Stylus Profilometer",
+ "manufacturer": "bruker",
+ "category": "optical_profilometer",
+ "test_items": [
+  "surface_topography",
+  "coating_thickness"
+ ],
+ "measurands": [
+  "structure.layer_thickness",
+  "surface.roughness_ra"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/1",
+   "note": "Bruker DektakXT Specifications · metrology_catalogs/surface/Bruker_DektakXT_spec.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "supplements": "bruker-dektakxt",
+ "measurands_by_item": {
+  "surface_topography": [
+   "structure.layer_thickness",
+   "surface.roughness_ra"
+  ]
+ }
+}

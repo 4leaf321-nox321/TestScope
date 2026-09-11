@@ -1,0 +1,375 @@
+{
+ "id": "instron-5900-series-materialtwin",
+ "kind": "equipment_series",
+ "name": "5900 Series (5940 / 5960 / 5980) Universal Testing Systems",
+ "manufacturer": "instron",
+ "category": "universal_testing_machine",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "shear",
+  "peel",
+  "tear",
+  "fatigue",
+  "creep"
+ ],
+ "measurands": [
+  "mechanical.tensile_strength",
+  "mechanical.youngs_modulus"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/104",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/105",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/106",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/107",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/108",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/109",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/110",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/111",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/112",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/113",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/114",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/115",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/116",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/117",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/118",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/119",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/120",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/121",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/122",
+   "note": "Instron 5900 Series Universal Testing Systems · metrology_catalogs/mechanical/Instron_5900_labsys.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "supplements": "instron-5900-series",
+ "measurands_by_item": {
+  "tensile": [
+   "mechanical.tensile_strength",
+   "mechanical.youngs_modulus"
+  ]
+ },
+ "models": [
+  {
+   "model": "5965-E2",
+   "specs": {
+    "force_kN": 5.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 5 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 108,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 5 kN",
+    "notes": "하중용량 5 kN, 행정 1640 mm, 시험공간 1756 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 5 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "5966-E2",
+   "specs": {
+    "force_kN": 10.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 10 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 110,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 10 kN",
+    "notes": "하중용량 10 kN, 행정 1640 mm, 시험공간 1756 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 10 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "5967-E2",
+   "specs": {
+    "force_kN": 30.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 30 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 112,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 30 kN",
+    "notes": "하중용량 30 kN, 행정 1640 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 30 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "5969-E2",
+   "specs": {
+    "force_kN": 50.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 50 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 114,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 탁상형(연장 프레임) 만능재료시험기 — 하중용량 50 kN",
+    "notes": "하중용량 50 kN, 행정 1640 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 50 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "5982-E2",
+   "specs": {
+    "force_kN": 100.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 플로어형(연장) 만능재료시험기 — 하중용량 100 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 116,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 플로어형(연장) 만능재료시험기 — 하중용량 100 kN",
+    "notes": "하중용량 100 kN, 행정 1830 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 100 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "5984-E2",
+   "specs": {
+    "force_kN": 150.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 플로어형(연장) 만능재료시험기 — 하중용량 150 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 118,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 플로어형(연장) 만능재료시험기 — 하중용량 150 kN",
+    "notes": "하중용량 150 kN, 행정 1830 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 150 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "5985-E2",
+   "specs": {
+    "force_kN": 250.0
+   },
+   "form_factor": "dual_column_tabletop",
+   "note": "이중컬럼 플로어형(연장) 만능재료시험기 — 하중용량 250 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 120,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(전동 스크류 구동)",
+    "description": "이중컬럼 플로어형(연장) 만능재료시험기 — 하중용량 250 kN",
+    "notes": "하중용량 250 kN, 행정 1830 mm. **이 브로슈어는 프레임 사양서다** — 시험규격도, 물성 측정범위도 인쇄돼 있지 않다. 인쇄된 숫자는 하중용량·속도·행정·시험공간뿐이고, 공통사양으로 하중정확도 ±0.4~0.5% of reading, 변형률 정확도 ±0.5% of reading(ASTM E83 class B / ISO 9513 class 0.5 신율계), 위치정확도 ±0.02 mm 또는 0.05% 다. **하중용량 kN 은 물성 측정범위가 아니라 range_* 에 넣지 않았다** — 같은 kN 이라도 시편 단면적이 바뀌면 도달 응력이 달라진다. 능력행은 카탈로그가 실제로 인쇄한 'uniaxial test', 'tensile stress', 'modulus and strain values' 문구까지만 잇고, 굽힘·압축·박리 등은 이 브로슈어에 언급이 없어 만들지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Instron_5900_labsys.pdf",
+    "source_title": "Instron 5900 Series Universal Testing Systems",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "단축 인장시험",
+      "accuracy": "시험력 ±0.4% of reading (2525/2530/2580 로드셀)",
+      "specimen": "시험공간과 컬럼간격이 허용하는 시편. 그립·지그는 별도 카탈로그",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 5900 Series Specifications + p.10 'uniaxial test' / p.7 'tensile stress' 표시채널",
+      "notes": "규격이 인쇄돼 있지 않아 standard 를 비웠다. 하중용량 250 kN 은 range_* 가 아니라 notes 에 남겼다. 정확도는 하중측정 정확도이지 인장강도 자체의 정확도가 아니다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "단축 인장시험 — 신율계 변형률",
+      "accuracy": "변형률 ±0.5% of reading (ASTM E83 class B / ISO 9513 class 0.5)",
+      "specimen": "ASTM E83 class B 또는 ISO 9513 class 0.5 신율계 부착 시편",
+      "mapping_confidence": "medium",
+      "source_detail": "p.14 Common Specifications — Strain Accuracy / p.5 'more accurate modulus and strain values'",
+      "notes": "카탈로그 문구는 '더 정확한 modulus 와 strain 값을 낸다'까지다 — 시험규격·범위가 없어 medium. accuracy 는 변형률 측정 정확도다."
+     }
+    ]
+   }
+  }
+ ]
+}

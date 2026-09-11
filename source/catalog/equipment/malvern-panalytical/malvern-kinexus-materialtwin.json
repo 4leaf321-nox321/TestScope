@@ -1,0 +1,41 @@
+{
+ "id": "malvern-kinexus-materialtwin",
+ "kind": "equipment_series",
+ "name": "Malvern Kinexus rotational rheometers (lab+ / pro+ / ultra+)",
+ "manufacturer": "malvern-panalytical",
+ "category": "rotational_rheometer",
+ "test_items": [
+  "rheology_rotational",
+  "shear"
+ ],
+ "measurands": [
+  "rheological.viscosity",
+  "mechanical.storage_modulus",
+  "mechanical.loss_modulus",
+  "interface.tack"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/159",
+   "note": "Malvern Kinexus Series — Redefining Rheometer Capabilities · metrology_catalogs/particle/Malvern_Kinexus_rheometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/160",
+   "note": "Malvern Kinexus Series — Redefining Rheometer Capabilities · metrology_catalogs/particle/Malvern_Kinexus_rheometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/161",
+   "note": "Malvern Kinexus Series — Redefining Rheometer Capabilities · metrology_catalogs/particle/Malvern_Kinexus_rheometer.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "malvern-kinexus",
+ "measurands_by_item": {
+  "shear": [
+   "rheological.viscosity",
+   "mechanical.storage_modulus",
+   "mechanical.loss_modulus",
+   "interface.tack"
+  ]
+ }
+}

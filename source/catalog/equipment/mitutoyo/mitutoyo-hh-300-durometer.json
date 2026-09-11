@@ -1,0 +1,302 @@
+{
+ "id": "mitutoyo-hh-300-durometer",
+ "kind": "equipment_series",
+ "name": "Mitutoyo HH-300 Series Durometers",
+ "manufacturer": "mitutoyo",
+ "category": "shore_irhd_hardness",
+ "test_items": [
+  "hardness_shore"
+ ],
+ "measurands": [
+  "mechanical.hardness_shore_a",
+  "mechanical.hardness_shore_d"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/84",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/85",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/86",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/87",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/88",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/89",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/90",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/91",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 HH-300 듀로미터",
+ "description": "듀로미터 경도시험(쇼어 A)",
+ "measurands_by_item": {
+  "hardness_shore": [
+   "mechanical.hardness_shore_a",
+   "mechanical.hardness_shore_d"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D2240"
+  ],
+  "test_methods_by_item": {
+   "hardness_shore": [
+    "ASTM D2240"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "HH-331",
+   "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 일반고무·연질플라스틱",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 84,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 A)",
+    "description": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 일반고무·연질플라스틱",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_a",
+      "technique": "듀로미터 A 타입 — 원뿔대 압침(선단 Ø0.79 mm, 35°), 스프링력 WA = 550 + 75HA mN",
+      "standard": "ASTM D 2240",
+      "range_min": 10.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreA",
+      "resolution": 1.0,
+      "specimen": "일반고무·연질플라스틱. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-331 (스프링력 식과 최소눈금)",
+      "notes": "범위 10~90 ShoreA 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HA: 10 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 1.0 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-332",
+   "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 일반고무·연질플라스틱",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 85,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 A)",
+    "description": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 일반고무·연질플라스틱",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_a",
+      "technique": "듀로미터 A 타입 — 원뿔대 압침(선단 Ø0.79 mm, 35°), 스프링력 WA = 550 + 75HA mN",
+      "standard": "ASTM D 2240",
+      "range_min": 10.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreA",
+      "resolution": 0.5,
+      "specimen": "일반고무·연질플라스틱. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-332 (스프링력 식과 최소눈금)",
+      "notes": "범위 10~90 ShoreA 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HA: 10 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 0.5 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-335",
+   "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 일반고무·연질플라스틱",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 86,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 A)",
+    "description": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 일반고무·연질플라스틱",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_a",
+      "technique": "듀로미터 A 타입 — 원뿔대 압침(선단 Ø0.79 mm, 35°), 스프링력 WA = 550 + 75HA mN",
+      "standard": "ASTM D 2240",
+      "range_min": 10.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreA",
+      "resolution": 1.0,
+      "specimen": "일반고무·연질플라스틱. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-335 (스프링력 식과 최소눈금)",
+      "notes": "범위 10~90 ShoreA 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HA: 10 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 1.0 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-336",
+   "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 일반고무·연질플라스틱",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 87,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 A)",
+    "description": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 일반고무·연질플라스틱",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_a",
+      "technique": "듀로미터 A 타입 — 원뿔대 압침(선단 Ø0.79 mm, 35°), 스프링력 WA = 550 + 75HA mN",
+      "standard": "ASTM D 2240",
+      "range_min": 10.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreA",
+      "resolution": 0.5,
+      "specimen": "일반고무·연질플라스틱. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-336 (스프링력 식과 최소눈금)",
+      "notes": "범위 10~90 ShoreA 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HA: 10 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 0.5 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-333",
+   "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 88,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 D)",
+    "description": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_d",
+      "technique": "듀로미터 D 타입 — 원뿔 압침(선단 곡률 0.1 mm), 스프링력 WD = 444.5HD mN",
+      "standard": "ASTM D 2240",
+      "range_min": 20.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreD",
+      "resolution": 1.0,
+      "specimen": "경질고무·경질플라스틱·에보나이트. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-333 (스프링력 식과 최소눈금)",
+      "notes": "범위 20~90 ShoreD 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HD: 20 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 1.0 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-334",
+   "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 89,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 D)",
+    "description": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_d",
+      "technique": "듀로미터 D 타입 — 원뿔 압침(선단 곡률 0.1 mm), 스프링력 WD = 444.5HD mN",
+      "standard": "ASTM D 2240",
+      "range_min": 20.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreD",
+      "resolution": 0.5,
+      "specimen": "경질고무·경질플라스틱·에보나이트. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-334 (스프링력 식과 최소눈금)",
+      "notes": "범위 20~90 ShoreD 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HD: 20 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 0.5 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-337",
+   "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 90,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 D)",
+    "description": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_d",
+      "technique": "듀로미터 D 타입 — 원뿔 압침(선단 곡률 0.1 mm), 스프링력 WD = 444.5HD mN",
+      "standard": "ASTM D 2240",
+      "range_min": 20.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreD",
+      "resolution": 1.0,
+      "specimen": "경질고무·경질플라스틱·에보나이트. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-337 (스프링력 식과 최소눈금)",
+      "notes": "범위 20~90 ShoreD 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HD: 20 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 1.0 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HH-338",
+   "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 91,
+    "category": "mechanical",
+    "technique": "듀로미터 경도시험(쇼어 D)",
+    "description": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
+    "notes": "사양표에 적합규격이 JIS K 6253 · JIS K 7215 · ASTM D 2240 · ISO 868 · ISO 7619 · DIN 53 505 로 여섯 개 인쇄돼 있다 — 같은 물성·같은 기법이라 능력행을 쪼개면 유일제약에 걸려서 ASTM D 2240 만 넣고 나머지는 여기 적는다. **매핑 포기** — 같은 시리즈의 E 타입(HH-329/330, 스펀지·연질폼용)은 쇼어 E 척도라 우리 키가 없다. ASTM D2240 의 B/C/DO/O/OO 타입은 '문의 요망' 이라 사양이 아니다. 표에서 콤팩트/롱 타입 귀속이 열 정렬로만 표시돼 모델별 형상은 확정하지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_shore_d",
+      "technique": "듀로미터 D 타입 — 원뿔 압침(선단 곡률 0.1 mm), 스프링력 WD = 444.5HD mN",
+      "standard": "ASTM D 2240",
+      "range_min": 20.0,
+      "range_max": 90.0,
+      "range_unit": "ShoreD",
+      "resolution": 0.5,
+      "specimen": "경질고무·경질플라스틱·에보나이트. 가압면 Ø18 mm 또는 44 x 18 mm, 압침 돌출 2.5 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.42~43 Specifications — HH-338 (스프링력 식과 최소눈금)",
+      "notes": "범위 20~90 ShoreD 는 스프링력 식에 괄호로 명시된 유효 경도구간이다(HD: 20 to 90) — 척도 자체의 0~100 전체가 아니라 스프링력이 정의된 구간이다. 최소눈금 0.5 도를 분해능으로 넣었다. 쇼어 A·D·OO 는 서로 환산 불가능한 다른 척도다."
+     }
+    ]
+   }
+  }
+ ]
+}

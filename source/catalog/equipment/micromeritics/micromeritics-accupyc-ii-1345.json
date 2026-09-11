@@ -1,0 +1,95 @@
+{
+ "id": "micromeritics-accupyc-ii-1345",
+ "kind": "equipment_model",
+ "name": "Micromeritics AccuPyc II 1345 Gas Pycnometer",
+ "manufacturer": "micromeritics",
+ "category": "pycnometer_porosimeter",
+ "test_items": [
+  "density_porosity"
+ ],
+ "measurands": [
+  "physical.density",
+  "physical.porosity"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/164",
+   "note": "Micromeritics AccuPyc II 1345 Pycnometer — Specification Sheet · metrology_catalogs/particle/Micromeritics_AccuPyc_spec.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "마이크로메리틱스 AccuPyc II 1345 기체치환 피크노미터",
+ "description": "기체치환 피크노메트리(헬륨 정용팽창법)",
+ "measurands_by_item": {
+  "density_porosity": [
+   "physical.density",
+   "physical.porosity"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D6226",
+   "ISO 12154"
+  ],
+  "test_methods_by_item": {
+   "density_porosity": [
+    "ISO 12154",
+    "ASTM D6226"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "AccuPyc II 1345",
+   "specs": {
+    "temperature_degC": {
+     "min": 15.0,
+     "max": 50.0
+    }
+   },
+   "note": "헬륨 치환으로 시료 부피를 재고 질량과 나눠 **진밀도(true/skeletal density)** 를 산출하는 자동 기체 피크노미터",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 164,
+    "category": "particle",
+    "technique": "기체치환 피크노메트리(헬륨 정용팽창법)",
+    "description": "헬륨 치환으로 시료 부피를 재고 질량과 나눠 **진밀도(true/skeletal density)** 를 산출하는 자동 기체 피크노미터",
+    "notes": "`AccuPyc_spec.pdf`(모델번호 II 1345 명시, 정확도·온도·챔버 사양)와 `AccuPyc.pdf`(모델번호 없는 ACCUPYC 제품 브로슈어, 규격목록·FoamPyc)를 **한 레코드로 합쳤다.** doc_path 는 사양이 인쇄된 spec 시트로 잡았다. 다만 두 문서의 숫자가 서로 다르다 — spec 시트는 챔버 1/10/100/350/2000 cm³ · 정확도 '읽음값의 0.03 % + 시료용량의 0.03 %', 브로슈어는 챔버 10/100 cm³ · 부피정확도 0.02 % · 재현성 0.01 % · ATC 4~60 °C 로 **세대가 다른 사양**이다. 모델번호가 붙은 spec 시트 값을 채택하고 브로슈어 값은 이 note 에만 남긴다. 기체는 연구급 헬륨 권장(이슬점 -67 °C 이하), CO2·아르곤·건조공기·질소도 사용 가능.",
+    "doc_path": "metrology_catalogs/particle/Micromeritics_AccuPyc_spec.pdf",
+    "source_title": "Micromeritics AccuPyc II 1345 Pycnometer — Specification Sheet",
+    "capabilities": [
+     {
+      "property_key": "physical.density",
+      "technique": "기체치환 피크노메트리(헬륨 정용팽창법)",
+      "standard": "ISO 12154",
+      "accuracy": "읽음값의 0.03 % + 시료용량의 0.03 %(부피 재현성 ±0.01 %, 보증 ±0.02 %)",
+      "temperature_min_k": 288.15,
+      "temperature_max_k": 323.15,
+      "specimen": "분체·고체·슬러리. 챔버 1/10/100/350/2000 cm³ (컵 1.14 cm ID ~ 9.52 cm ID)",
+      "mapping_confidence": "high",
+      "source_detail": "AccuPyc_spec.pdf p.2 Analysis(Precision·Accuracy)·Environment / AccuPyc.pdf p.10 SELECTED INTERNATIONAL TEST STANDARDS",
+      "notes": "**이 장비가 재는 것은 벌크밀도가 아니라 진밀도(True/Absolute density)** 다 — 기체가 기공과 입자간 공극을 채우므로 그 부피가 제외되고, 닫힌기공이 있으면 골격(skeletal, apparent) 밀도로 보고된다고 브로슈어가 명시한다. 벌크·엔벨로프 밀도는 별도 장비(GeoPyc) 몫이다. 밀도 자체의 측정범위는 인쇄돼 있지 않다(부피 정확도만 규정). 온도는 온도제어형 AccuPyc 의 권장 순환조 범위 15~50 °C — **검산** 15+273.15=288.15, 50+273.15=323.15. 일반형의 15~35 °C 는 시편온도가 아니라 **설치 환경온도**라 쓰지 않았다. 인쇄된 규격이 여럿이라 대표로 ISO 12154(피크노메트리)를 넣고 나머지는 여기 적는다 — DIN 66137, ISO 18753(세라믹), ASTM B923(금속분말), C110(시멘트), C604(내화물), C799(핵연료), D2638(카본), D4892(석유), D5550(토양), D5965·D6093(코팅), D6761(촉매), D70(아스팔트), D8171(섬유), USP <699>."
+     },
+     {
+      "property_key": "physical.porosity",
+      "technique": "FoamPyc 개·폐기공 측정(기체치환)",
+      "standard": "ASTM D6226",
+      "temperature_min_k": 288.15,
+      "temperature_max_k": 323.15,
+      "specimen": "PVC·폴리스티렌·폴리우레탄 등 화학/기계 발포 셀룰러 폴리머",
+      "mapping_confidence": "medium",
+      "source_detail": "AccuPyc.pdf p.9 FOAMPYC / p.10 규격표(ASTM D6226, D2856, ISO 4590)",
+      "notes": "FoamPyc 법이 재는 것은 **개포·폐포 함량(open/closed cell content)** 이라 기공률과 완전히 같은 양은 아니어서 medium 으로 뒀다. 관련 규격 ASTM D2856(폼), ISO 4590(폼)도 같은 표에 인쇄. 압축률·셀 파괴도 같이 본다고 돼 있으나 우리 키에 잇지 않았다. 총기공률을 얻으려면 이 장비의 진밀도와 GeoPyc 엔벨로프 밀도를 함께 써야 한다고 브로슈어가 명시한다."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": 15.0,
+   "max": 50.0
+  }
+ }
+}

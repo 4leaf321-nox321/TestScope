@@ -1,0 +1,117 @@
+{
+ "id": "anton-paar-tribometers-materialtwin",
+ "kind": "equipment_series",
+ "name": "Anton Paar Tribometers (TRB3 pin-on-disk, THT 800/1000 °C, NTR3 nano, TRB RH, MCR Tribometer T-PTD200 / T-PID/44 / T-BTP)",
+ "manufacturer": "anton-paar",
+ "category": "tribometer",
+ "test_items": [
+  "friction_wear_tribo"
+ ],
+ "measurands": [
+  "mechanical.friction_coefficient"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/147",
+   "note": "Anton Paar Tribometers — Friction, Wear, Lubrication · metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/148",
+   "note": "Anton Paar Tribometers — Friction, Wear, Lubrication · metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/149",
+   "note": "Anton Paar Tribometers — Friction, Wear, Lubrication · metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/150",
+   "note": "Anton Paar Tribometers — Friction, Wear, Lubrication · metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/151",
+   "note": "Anton Paar Tribometers — Friction, Wear, Lubrication · metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "anton-paar-tribometers",
+ "measurands_by_item": {
+  "friction_wear_tribo": [
+   "mechanical.friction_coefficient"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM G99"
+  ],
+  "test_methods_by_item": {
+   "friction_wear_tribo": [
+    "ASTM G99"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "THT 800 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 800.0
+    }
+   },
+   "note": "고온 트라이보미터(800 °C)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 149,
+    "category": "mechanical",
+    "technique": "트라이볼로지 시험(핀온디스크/왕복동)",
+    "description": "고온 트라이보미터(800 °C)",
+    "notes": "수직하중 최대 60 N, 마찰력 최대 10 N(20 N 옵션), 마찰력 분해능 0.03 mN. 회전 0.3~600 rpm(1500 rpm 옵션), 반경 0.5~35 mm, 최대토크 450 mN·m. 온라인 마모깊이 최대 1.2 mm, 진공 10^-7 mbar, 상대습도 15~95 %. **매핑 포기** — 이 카탈로그의 핵심 출력 중 마모(wear)에 해당하는 키가 우리 카탈로그에 없다(온라인 마모깊이 µm, 마모율, 마모트랙 부피 어느 것도 키가 없다). 전기접촉저항(최대 1000 Ohm)도 electrical.surface_resistivity(면저항)와 다른 양이라 잇지 않았다. 윤활거동·트라이보부식도 키가 없다. 진공형(TRB V/THT V, 10^-7 mbar)과 습도형(TRB RH, 상대습도 챔버)은 본문에 파생 구성으로만 소개되고 별도 사양열이 없어 레코드를 나누지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf",
+    "source_title": "Anton Paar Tribometers — Friction, Wear, Lubrication",
+    "capabilities": [
+     {
+      "property_key": "mechanical.friction_coefficient",
+      "technique": "트라이볼로지 시험 — 마찰력/수직하중 비",
+      "standard": "ASTM G99",
+      "temperature_max_k": 1073.15,
+      "specimen": "구/핀/평면 정지파트너 + 회전 또는 왕복 시편. 건식·윤활 양쪽",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 Specifications — THT 800 °C 열 / p.5 규격 표기",
+      "notes": "**마찰계수 자체의 측정범위는 인쇄돼 있지 않다** — 사양표의 N·mN 값은 수직하중과 마찰력의 범위이지 무차원 마찰계수의 범위가 아니라 range_* 를 비웠다. 'ASTM G99, ASTM G133, DIN 50324 준수' 가 THT 항목에 인쇄돼 있다 — ASTM G99 만 standard 에 넣었다. 시편온도 최대 800 °C — **검산** 800+273.15=1073.15. 진공형(THT V) 파생이 따로 있다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "THT 1000 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000.0
+    }
+   },
+   "note": "고온 트라이보미터(1000 °C, 이중 발열체)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 150,
+    "category": "mechanical",
+    "technique": "트라이볼로지 시험(핀온디스크/왕복동)",
+    "description": "고온 트라이보미터(1000 °C, 이중 발열체)",
+    "notes": "사양표는 THT 열 하나로 인쇄된다 — 수직하중 최대 60 N, 마찰력 최대 10 N(20 N 옵션), 분해능 0.03 mN, 회전 0.3~600 rpm, 반경 0.5~35 mm. 가열능력 사양이 'up to 1000 °C' 로 표기된 상위 구성이다. **매핑 포기** — 이 카탈로그의 핵심 출력 중 마모(wear)에 해당하는 키가 우리 카탈로그에 없다(온라인 마모깊이 µm, 마모율, 마모트랙 부피 어느 것도 키가 없다). 전기접촉저항(최대 1000 Ohm)도 electrical.surface_resistivity(면저항)와 다른 양이라 잇지 않았다. 윤활거동·트라이보부식도 키가 없다. 진공형(TRB V/THT V, 10^-7 mbar)과 습도형(TRB RH, 상대습도 챔버)은 본문에 파생 구성으로만 소개되고 별도 사양열이 없어 레코드를 나누지 않았다.",
+    "doc_path": "metrology_catalogs/mechanical/AntonPaar_Tribometer.pdf",
+    "source_title": "Anton Paar Tribometers — Friction, Wear, Lubrication",
+    "capabilities": [
+     {
+      "property_key": "mechanical.friction_coefficient",
+      "technique": "트라이볼로지 시험 — 마찰력/수직하중 비",
+      "standard": "ASTM G99",
+      "temperature_max_k": 1273.15,
+      "specimen": "구/핀/평면 정지파트너 + 회전 또는 왕복 시편. 건식·윤활 양쪽",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 Specifications — THT 1000 °C 열 / p.5 규격 표기",
+      "notes": "**마찰계수 자체의 측정범위는 인쇄돼 있지 않다** — 사양표의 N·mN 값은 수직하중과 마찰력의 범위이지 무차원 마찰계수의 범위가 아니라 range_* 를 비웠다. 이중 발열체 배치로 1000 °C 까지 균일가열하고 차동 마찰력 측정으로 고온 드리프트를 없앤다고 인쇄돼 있다. **검산** 1000+273.15=1273.15. 800 °C 모델과 본문에서 별개 제품으로 소개돼 레코드를 나눴다."
+     }
+    ]
+   }
+  }
+ ]
+}

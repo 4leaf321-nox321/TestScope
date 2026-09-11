@@ -1,0 +1,227 @@
+{
+ "id": "shimadzu-uv-2600-2700",
+ "kind": "equipment_series",
+ "name": "Shimadzu UV-2600 / UV-2700 (i Plus) UV-Vis Spectrophotometers",
+ "manufacturer": "shimadzu",
+ "category": "optical_spectrometer",
+ "test_items": [
+  "optical_spectroscopy"
+ ],
+ "measurands": [
+  "optical.transmittance",
+  "optical.reflectance",
+  "electrical.band_gap",
+  "structure.layer_thickness"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/170",
+   "note": "Shimadzu UV-VIS Spectrophotometers UV-2600/2700 (C101-E121B) · metrology_catalogs/optical/Shimadzu_UV2600.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/171",
+   "note": "Shimadzu UV-VIS Spectrophotometers UV-2600/2700 (C101-E121B) · metrology_catalogs/optical/Shimadzu_UV2600.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/172",
+   "note": "Shimadzu UV-2600i Plus / UV-2700i Plus (C101-E184, 2025) · metrology_catalogs/optical/Shimadzu_UV2600i_bro.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/173",
+   "note": "Shimadzu UV-2600i Plus / UV-2700i Plus (C101-E184, 2025) · metrology_catalogs/optical/Shimadzu_UV2600i_bro.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "시마즈 UV-2600·UV-2700 자외-가시 분광광도계",
+ "description": "자외-가시-근적외 분광광도법(이중빔, 단일 단색화장치)",
+ "measurands_by_item": {
+  "optical_spectroscopy": [
+   "optical.transmittance",
+   "optical.reflectance",
+   "electrical.band_gap",
+   "structure.layer_thickness"
+  ]
+ },
+ "models": [
+  {
+   "model": "UV-2600",
+   "note": "Czerny-Turner 단일 단색화장치 + Lo-Ray-Ligh 홀로그래픽 격자의 이중빔 UV-Vis 분광광도계. 적분구 부속으로 1400 nm 까지 확장",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 170,
+    "category": "optical",
+    "technique": "자외-가시-근적외 분광광도법(이중빔, 단일 단색화장치)",
+    "description": "Czerny-Turner 단일 단색화장치 + Lo-Ray-Ligh 홀로그래픽 격자의 이중빔 UV-Vis 분광광도계. 적분구 부속으로 1400 nm 까지 확장",
+    "notes": "한 브로슈어에 UV-2600(단일 단색화장치)과 UV-2700(이중 단색화장치)의 사양표가 나란히 실려 모델마다 레코드를 나눴다. 광원 50 W 할로겐 + 중수소 램프(전환파장 290~370 nm 선택), 검출기 R-928 광전자증배관, 설정파장 185~1400 nm, 파장정확도 ±0.1 nm(656.1 nm D2)·±0.3 nm(전역), 반복도 ±0.05 nm, 분해능 0.1 nm, 스펙트럼 밴드폭 0.1/0.2/0.5/1/2/5 nm. **동작환경 15~35 °C 는 설치 환경온도이지 시편온도가 아니라 temperature_* 에 넣지 않았다.** 색좌표(XYZ·xy·Hunter·CIELAB·황변도·백색도) 소프트웨어가 있으나 우리 물성 키에 대응이 없다.",
+    "doc_path": "metrology_catalogs/optical/Shimadzu_UV2600.pdf",
+    "source_title": "Shimadzu UV-VIS Spectrophotometers UV-2600/2700 (C101-E121B)",
+    "capabilities": [
+     {
+      "property_key": "optical.transmittance",
+      "technique": "이중빔 UV-Vis 투과 측정",
+      "range_min": 185.0,
+      "range_max": 900.0,
+      "range_unit": "nm",
+      "resolution": 0.1,
+      "accuracy": "±0.3 %T / ±0.002 Abs(0.5 Abs)·±0.003 Abs(1 Abs)·±0.006 Abs(2 Abs), NIST930D/NIST1930 필터 기준",
+      "specimen": "액체(셀 광로장 최대 100 mm)·필름·유리·웨이퍼. 시료실 내부 W150×D260×H140 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.26 Hardware Specifications — Measurement wavelength range / Photometric range / Photometric accuracy",
+      "notes": "**range_* 는 측정 파장범위다**(185~900 nm). 옵션 ISR-2600Plus 적분구를 붙이면 220~1400 nm 로 확장된다. 광도측정 범위는 흡광도 -5~5 Abs, 투과율·반사율 0~100000 %(표시범위)이며 이는 파장축과 다른 축이라 여기 넣지 않았다. 미광 최대 0.005 %(220 nm NaI / 340·370 nm NaNO2), 노이즈 0.00003 Abs RMS(500 nm), 파장분해능 0.1 nm."
+     },
+     {
+      "property_key": "optical.reflectance",
+      "technique": "적분구 확산반사/절대반사 측정",
+      "range_min": 220.0,
+      "range_max": 1400.0,
+      "range_unit": "nm",
+      "resolution": 0.1,
+      "accuracy": "±0.3 %T 상당(광도정확도 ±0.006 Abs @2 Abs)",
+      "specimen": "고체·분말·박막. ISR-2600Plus 적분구(60 mm 직경, 두 검출기), 시료 크기는 부속별로 20~150 mm 각",
+      "mapping_confidence": "high",
+      "source_detail": "p.26 사양표 Photometric modes '반사율(%)' / p.24 ISR-2600Plus specifications 'Measurement wavelength range: 220 to 1400 nm'",
+      "notes": "**range_* 는 적분구 부속 사용 시의 측정 파장범위**(220~1400 nm)다. 적분구 없이 본체만 쓰면 185~900 nm. 다른 반사 부속의 파장범위는 ISR-2600 220~850 nm, MPC-2600 240~800 nm, ASR-3105/3112/3130/3145 정반사 300~800 nm(UV-2600 계열에서 300~1200 nm), 가변각 유닛 250~1400 nm 로 각각 인쇄돼 있다."
+     },
+     {
+      "property_key": "electrical.band_gap",
+      "technique": "확산반사 스펙트럼 + Tauc 플롯",
+      "specimen": "반도체 분말·박막(태양전지 재료 예: CuIn0.5Ga0.5Se2, CuInSe2)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.5 'Band Gap Measurements for Semiconductors' — ISR-2600Plus 적분구 확산반사에서 흡수단을 읽고 Tauc 법으로 밴드갭 산출",
+      "notes": "직접 측정이 아니라 **확산반사 스펙트럼의 흡수단에서 Tauc 법으로 환산**하는 간접 측정이라 medium. 카탈로그의 1.27 eV·0.99 eV 는 예시 시료의 결과값이지 장비 측정범위가 아니라 range_* 에 넣지 않았다."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "투과 간섭무늬(fringe) 해석 — 옵션 막두께 계산 소프트웨어",
+      "specimen": "투명 필름(염화비닐리덴·나일론·폴리프로필렌 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.6 'Thickness Measurements of Cling Films' — 간섭파형에서 막두께 10.4 µm 산출(옵션 막두께 측정 소프트웨어)",
+      "notes": "간섭무늬 주기에서 두께를 **계산**하는 방식이고 시료의 굴절률을 입력해야 한다고 주의문이 붙어 있어 medium. 측정 가능한 두께 범위는 인쇄돼 있지 않다(예시값 10.4 µm 는 시료 결과)."
+     }
+    ]
+   }
+  },
+  {
+   "model": "UV-2700",
+   "note": "이중 단색화장치로 미광을 극도로 낮춰 8 Abs 까지 재는 UV-Vis 분광광도계. 편광필름 등 저투과 시료용",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 171,
+    "category": "optical",
+    "technique": "자외-가시 분광광도법(이중빔, 이중 단색화장치)",
+    "description": "이중 단색화장치로 미광을 극도로 낮춰 8 Abs 까지 재는 UV-Vis 분광광도계. 편광필름 등 저투과 시료용",
+    "notes": "UV-2600 과 같은 브로슈어의 상위 모델. **ISR-2600Plus 적분구를 붙일 수 없어** 측정 파장범위가 185~900 nm 로 고정이다. 미광 최대 0.00005 %(220 nm NaI)·0.00002 %(340·370 nm NaNO2), 노이즈 0.00005 Abs RMS(500 nm). 동작환경 15~35 °C 는 환경온도라 temperature_* 에 넣지 않았다.",
+    "doc_path": "metrology_catalogs/optical/Shimadzu_UV2600.pdf",
+    "source_title": "Shimadzu UV-VIS Spectrophotometers UV-2600/2700 (C101-E121B)",
+    "capabilities": [
+     {
+      "property_key": "optical.transmittance",
+      "technique": "이중 단색화장치 UV-Vis 투과 측정(초저미광)",
+      "range_min": 185.0,
+      "range_max": 900.0,
+      "range_unit": "nm",
+      "resolution": 0.1,
+      "accuracy": "±0.3 %T / ±0.006 Abs(2 Abs), NIST930D/NIST1930 필터 기준",
+      "specimen": "편광필름·저투과 광학필름·액체(셀 광로장 최대 100 mm)",
+      "mapping_confidence": "high",
+      "source_detail": "p.26 Hardware Specifications (UV-2700 열)",
+      "notes": "**range_* 는 측정 파장범위**(185~900 nm). 광도범위는 흡광도 **-8.5~8.5 Abs**(투과율 0~100000 % 표시)로 UV-2600(±5 Abs)보다 넓고, 이것이 이 모델의 핵심 사양이지만 파장축과 다른 축이라 range_* 대신 여기 적는다. 8 Abs 는 투과율 10⁻⁸(=0.000001 %) 수준이다."
+     },
+     {
+      "property_key": "optical.reflectance",
+      "technique": "정반사 측정 부속(ASR/MPC)",
+      "range_min": 185.0,
+      "range_max": 900.0,
+      "range_unit": "nm",
+      "resolution": 0.1,
+      "specimen": "고체 시료. 정반사 부속 ASR-3105(5°) 등, 시료 20~150 mm 각",
+      "mapping_confidence": "medium",
+      "source_detail": "p.26 사양표 Photometric modes 'reflectance (%)' / 'The ISR-2600Plus Integrating Sphere Attachment cannot be used.'",
+      "notes": "반사율 모드는 사양표에 있으나 **이 모델은 ISR-2600Plus 적분구를 붙일 수 없다**고 명시돼 있어 확산반사(적분구) 측정은 불가하고 정반사 부속만 쓸 수 있다. 그래서 medium 이고 파장범위는 본체 범위 185~900 nm 를 썼다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "UV-2600i Plus",
+   "note": "LO-RAY-LIGH 격자 단일 단색화장치 UV-Vis 분광광도계. ISR-2600Plus 적분구로 1400 nm 까지 확장",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 172,
+    "category": "optical",
+    "technique": "자외-가시-근적외 분광광도법(이중빔, 단일 단색화장치)",
+    "description": "LO-RAY-LIGH 격자 단일 단색화장치 UV-Vis 분광광도계. ISR-2600Plus 적분구로 1400 nm 까지 확장",
+    "notes": "**`Shimadzu_UV2600.pdf`(UV-2600/2700)와 같은 모델이 아니다** — 이쪽은 2025년판 후속세대 'i Plus' 다. 모델명이 다르므로 합치지 않고 따로 레코드를 만들었다. 다만 이 2025 브로슈어에는 **하드웨어 사양표가 실려 있지 않아**(응용사례 중심) 파장범위·8 Abs 외의 수치는 인쇄된 것이 없다. 구세대 UV-2600 의 사양표 숫자를 이 모델에 옮겨 적지 않았다.",
+    "doc_path": "metrology_catalogs/optical/Shimadzu_UV2600i_bro.pdf",
+    "source_title": "Shimadzu UV-2600i Plus / UV-2700i Plus (C101-E184, 2025)",
+    "capabilities": [
+     {
+      "property_key": "optical.transmittance",
+      "technique": "이중빔 UV-Vis 투과 측정",
+      "range_min": 185.0,
+      "range_max": 900.0,
+      "range_unit": "nm",
+      "specimen": "필름·유리·다결정 실리콘 웨이퍼·액체(1 mm 셀 등)",
+      "mapping_confidence": "high",
+      "source_detail": "p.6 'Wider Measurement Wavelength Range' 도표 — UV-2600i Plus 185~900 nm, +ISR-2600Plus 220~1400 nm",
+      "notes": "**range_* 는 측정 파장범위**. 옵션 ISR-2600Plus 두 검출기 적분구(60 mm)를 붙이면 220~1400 nm 로 확장돼 밴드갭 부근(1000 nm 근처) 투과특성까지 본다. 이 브로슈어에는 광도정확도·미광 수치가 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "optical.reflectance",
+      "technique": "적분구 확산반사/절대반사 측정",
+      "range_min": 220.0,
+      "range_max": 1400.0,
+      "range_unit": "nm",
+      "specimen": "고체·분말·박막·다층 유전체 필름. 가변각 유닛(MPC-2600A)은 입사각 5~70° 설정 가능",
+      "mapping_confidence": "high",
+      "source_detail": "p.6 ISR-2600Plus 220~1400 nm / p.7 'Transmittance/Reflectance Measurements of Multilayer Dielectric Film While Varying Angle of Incidence'",
+      "notes": "**range_* 는 적분구 사용 시 파장범위**. 가변각 측정유닛의 파장범위는 250~1400 nm(800 nm 이상은 UV-2600 계열 필요), 정반사 5° 부속은 시료 7 mm 직경~160×100 mm·두께 15 mm 까지로 인쇄돼 있다."
+     },
+     {
+      "property_key": "electrical.band_gap",
+      "technique": "확산반사 스펙트럼 + Tauc 플롯",
+      "specimen": "반도체 태양전지 재료(CuIn0.5Ga0.5Se2, CuInSe2 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.4 'Band Gap Measurements for Semiconductors' — 1.27 eV / 0.99 eV 를 Tauc 법으로 산출",
+      "notes": "확산반사의 흡수단에서 Tauc 법으로 환산하는 간접 측정이라 medium. 예시 결과값(1.27·0.99 eV)은 장비 범위가 아니라 시료값이라 range_* 에 넣지 않았다."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "투과 간섭무늬(fringe) 해석 — 옵션 막두께 계산 소프트웨어",
+      "specimen": "투명 필름(염화비닐리덴 10.0 µm, 나일론 17.0 µm, 폴리프로필렌 21.4 µm 예시)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.4 'Thickness Measurements of Cling Films'",
+      "notes": "굴절률 입력이 필요한 계산값이라 medium. 두께 측정범위는 인쇄돼 있지 않다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "UV-2700i Plus",
+   "note": "초저미광 이중 단색화장치로 8 Abs 까지 재는 UV-Vis 분광광도계. 편광필름·저투과 시료용",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 173,
+    "category": "optical",
+    "technique": "자외-가시 분광광도법(이중빔, 이중 단색화장치)",
+    "description": "초저미광 이중 단색화장치로 8 Abs 까지 재는 UV-Vis 분광광도계. 편광필름·저투과 시료용",
+    "notes": "같은 2025 브로슈어의 이중 단색화장치 모델. 일반 이중 단색화장치가 5~6 Abs 인 데 비해 8 Abs 까지 커버한다고 인쇄. 400~650 nm 구간에서 8 Abs 측정 가능 예시(과망간산칼륨 수용액)를 싣고 있다. 하드웨어 사양표는 이 브로슈어에 없다.",
+    "doc_path": "metrology_catalogs/optical/Shimadzu_UV2600i_bro.pdf",
+    "source_title": "Shimadzu UV-2600i Plus / UV-2700i Plus (C101-E184, 2025)",
+    "capabilities": [
+     {
+      "property_key": "optical.transmittance",
+      "technique": "이중 단색화장치 UV-Vis 투과 측정(초저미광)",
+      "range_min": 185.0,
+      "range_max": 900.0,
+      "range_unit": "nm",
+      "specimen": "LCD 편광필름 등 저투과 광학필름·액체",
+      "mapping_confidence": "high",
+      "source_detail": "p.6 파장범위 도표(185~900 nm) / p.9 'capable of 8 Abs measurements'",
+      "notes": "**range_* 는 측정 파장범위**. 광도범위 8 Abs(투과율 10⁻⁸ 수준)는 파장축과 다른 축이라 여기 적는다 — 400~650 nm 구간에서 8 Abs 까지 직선성이 유지된다고 인쇄. 이 브로슈어에 미광·정확도 수치는 없다."
+     }
+    ]
+   }
+  }
+ ]
+}

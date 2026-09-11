@@ -1,0 +1,76 @@
+{
+ "id": "mitutoyo-mzt-500",
+ "kind": "equipment_model",
+ "name": "Mitutoyo MZT-500 Series Micro Material Testers",
+ "manufacturer": "mitutoyo",
+ "category": "instrumented_indentation",
+ "test_items": [
+  "instrumented_indentation"
+ ],
+ "measurands": [
+  "mechanical.youngs_modulus",
+  "mechanical.hardness_martens"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/75",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 MZT-500 미소부 재료특성 평가 시스템",
+ "description": "계장화 압입시험(ISO 14577)",
+ "measurands_by_item": {
+  "instrumented_indentation": [
+   "mechanical.youngs_modulus",
+   "mechanical.hardness_martens"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 14577"
+  ],
+  "test_methods_by_item": {
+   "instrumented_indentation": [
+    "ISO 14577"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "MZT-500 Series",
+   "note": "미소부 재료특성 평가 시스템 — 버코비치 압자로 압입깊이-하중 곡선을 얻어 마르텐스 경도와 영률을 낸다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 75,
+    "category": "mechanical",
+    "technique": "계장화 압입시험(ISO 14577)",
+    "description": "미소부 재료특성 평가 시스템 — 버코비치 압자로 압입깊이-하중 곡선을 얻어 마르텐스 경도와 영률을 낸다",
+    "notes": "사양표 자체가 'All models of MZT-500 Series' 한 열로 인쇄돼 모델별 사양이 갈리지 않는다 — 지시문 8번의 예외대로 시리즈명 하나로 만들었다. 비커스·누프 시험은 MZT-512·522 한정이라 시리즈 레코드에 비커스 능력행을 붙이지 않았다. **매핑 포기** — 마르텐스 경도(ISO 14577, HM = F/접촉표면적)는 우리 키에 없다. mechanical.hardness_meyer 는 투영면적 기준이라 정의가 달라 잇지 않았다. 'universal hardness', 소성/크리프/탄성 변형량 분해도 키가 없다. 시험력 0.098~980.7 mN(정밀도 ±9.8 µN 또는 1%), 압입깊이 0~20 µm(최소단위 0.1 nm), 하중속도 0.1~100 mN/s.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "계장화 압입시험(ISO 14577) — 제하곡선 기울기",
+      "standard": "ISO 14577",
+      "specimen": "시편 최대 90 mm(높이)·90 mm(깊이), 스테이지 100 x 100 mm. 고무·엘라스토머·유리·세라믹·섬유·박막·미분말",
+      "mapping_confidence": "medium",
+      "source_detail": "p.19 '●Test data — Martens hardness test (ISO14577) and Young's modulus'",
+      "notes": "압입 영률(E_IT)은 제하곡선 강성에서 나오는 값이라 인장시험 영률과 정의·구속조건이 다르다 — 같은 키에 담되 medium. 측정범위·정확도는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "mechanical.hardness_martens",
+      "technique": "계장화 압입시험(ISO 14577) — 마르텐스 경도 HM",
+      "standard": "ISO 14577",
+      "specimen": "고무·엘라스토머·유리·세라믹·섬유·박막·미분말. 시편 최대 90 mm(높이)·90 mm(깊이)",
+      "mapping_confidence": "high",
+      "source_detail": "p.19 '●Test data — Martens hardness test (ISO14577) and Young's modulus' + p.20 사양표",
+      "notes": "**HM 은 접촉 표면적 기준, H_IT 는 투영면적 기준이라 서로 다른 양이다** — 카탈로그가 'Martens hardness test (ISO14577)' 이라고 못박아서 마르텐스 키에 넣는다. 필수 조건인 시험력은 0.098~980.7 mN(제어분해능 0.916 µN, 정밀도 ±9.8 µN 또는 1%), 압입깊이 0~20 µm(최소단위 0.1 nm), 하중속도 0.1~100 mN/s, 압자는 버코비치 삼각뿔(선단 곡률 0.1 µm 이하). 경도 측정범위·정확도는 인쇄 없음. 데이터 분석 항목의 'universal hardness value(만능경도 HU)' 는 마르텐스 경도의 옛 명칭이라 같은 행으로 본다. **MZT-512·522 한정으로 비커스·누프 시험도 지원한다고 적혀 있으나, 이 시리즈는 사양표가 'All models of MZT-500 Series' 한 열이고 K 섹션 카탈로그는 같은 시리즈를 MZT-500L/500P 로 부른다 — 모델명이 두 카탈로그에서 어긋나 512/522 개별 레코드는 만들지 않았다.**"
+     }
+    ]
+   }
+  }
+ ]
+}

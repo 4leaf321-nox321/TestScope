@@ -1,0 +1,52 @@
+{
+ "id": "jeol-jps-9030",
+ "kind": "equipment_model",
+ "name": "JEOL JPS-9030 X-ray Photoelectron Spectrometer",
+ "manufacturer": "jeol",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/15",
+   "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "지올 JPS-9030 X선 광전자분광기",
+ "description": "X선 광전자분광(XPS)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "JPS-9030",
+   "note": "범용 XPS. Mg/Al 트윈 애노드 표준, 시편교환실에 카우프만형 에칭 이온원, 적외가열·Ar 가스클러스터 이온원 옵션.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 15,
+    "category": "chemical",
+    "technique": "X선 광전자분광(XPS)",
+    "description": "범용 XPS. Mg/Al 트윈 애노드 표준, 시편교환실에 카우프만형 에칭 이온원, 적외가열·Ar 가스클러스터 이온원 옵션.",
+    "notes": "종합 카탈로그 소개문만 있고 수치 사양 없음. 소개문에 'composition' 이라는 말이 직접 나오지는 않아 confidence 를 낮췄다.",
+    "doc_path": "metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf",
+    "source_title": "JEOL Products Guide 2026",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "X선 광전자분광(XPS)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.9 Instruments for Microarea and Surface Analysis",
+      "notes": "XPS 의 직접 출력은 결합에너지 스펙트럼이고 조성은 거기서 나오는 2차 결과다. 소개문에 정량·조성 문구가 없어 medium."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "id": "hot-disk-tps-2200",
+ "kind": "equipment_model",
+ "name": "Hot Disk TPS 2200 Thermal Constants Analyser",
+ "manufacturer": "hot-disk",
+ "category": "thermal_conductivity",
+ "test_items": [
+  "thermal_conductivity"
+ ],
+ "measurands": [
+  "thermal.conductivity",
+  "thermal.diffusivity",
+  "thermal.specific_heat"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/44",
+   "note": "Hot Disk TPS 2200 Thermal Constants Analyser · metrology_catalogs/thermal/HotDisk_TPS2200.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "핫디스크 TPS 2200 열물성 측정기",
+ "description": "과도평면열원법(TPS, Hot Disk)",
+ "measurands_by_item": {
+  "thermal_conductivity": [
+   "thermal.conductivity",
+   "thermal.diffusivity",
+   "thermal.specific_heat"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 22007-2"
+  ],
+  "test_methods_by_item": {
+   "thermal_conductivity": [
+    "ISO 22007-2"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "TPS 2200",
+   "specs": {
+    "temperature_degC": {
+     "min": -50.0,
+     "max": 750.0
+    }
+   },
+   "note": "과도평면열원(TPS) 방식 열물성 측정기 — 열전도율·열확산율·비열을 한 번의 측정으로 구한다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 44,
+    "category": "thermal",
+    "technique": "과도평면열원법(TPS, Hot Disk)",
+    "description": "과도평면열원(TPS) 방식 열물성 측정기 — 열전도율·열확산율·비열을 한 번의 측정으로 구한다",
+    "notes": "온도범위 표기가 카탈로그 안에서 어긋난다 — 표제는 '-50 °C to 750 °C' 인데 세부는 '코어=상온, 노=상온~750 °C, 순환기=-35~200 °C' 다. 능력행에는 표제값을 넣고 세부를 notes 에 남긴다.",
+    "doc_path": "metrology_catalogs/thermal/HotDisk_TPS2200.pdf",
+    "source_title": "Hot Disk TPS 2200 Thermal Constants Analyser",
+    "capabilities": [
+     {
+      "property_key": "thermal.conductivity",
+      "technique": "과도평면열원법(TPS, Hot Disk)",
+      "standard": "ISO 22007-2",
+      "range_min": 0.01,
+      "range_max": 500.0,
+      "range_unit": "W/m/K",
+      "accuracy": "Better than 5 %",
+      "temperature_min_k": 223.15,
+      "temperature_max_k": 1023.15,
+      "specimen": "벌크 최소 2 mm 두께 x 8 mm 직경(원형/사각), 슬랩 0.1 mm x 15 mm, 박막 0.02 mm x 22 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 Hot Disk TPS 2200 사양표",
+      "notes": "재현성 typically better than 1%. 온도 -50~750 °C 를 켈빈 환산. **검산** — -50+273.15=223.15, 750+273.15=1023.15. 부속장치별 세부 온도범위는 장비 notes 참조."
+     },
+     {
+      "property_key": "thermal.diffusivity",
+      "technique": "과도평면열원법(TPS, Hot Disk)",
+      "standard": "ISO 22007-2",
+      "range_min": 0.01,
+      "range_max": 300.0,
+      "range_unit": "mm^2/s",
+      "temperature_min_k": 223.15,
+      "temperature_max_k": 1023.15,
+      "specimen": "벌크 최소 2 mm 두께 x 8 mm 직경(원형/사각)",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 Hot Disk TPS 2200 사양표",
+      "notes": "카탈로그의 'Accuracy Better than 5 %' 는 항목 구분 없이 인쇄되어 열확산율에 확정 귀속시키지 않고 비웠다. 온도 -50~750 °C 켈빈 환산."
+     },
+     {
+      "property_key": "thermal.specific_heat",
+      "technique": "과도평면열원법(TPS, Hot Disk) — Cp 모듈",
+      "standard": "ISO 22007-2",
+      "range_max": 5.0,
+      "range_unit": "MJ/m^3K",
+      "temperature_min_k": 223.15,
+      "temperature_max_k": 1023.15,
+      "specimen": "벌크 시편(Cp 모듈)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.3 'Specific Heat Capacity Up to 5 MJ/m³K'",
+      "notes": "**단위 주의** — 카탈로그는 'Specific Heat Capacity' 라 적었지만 인쇄된 단위 MJ/m³K 는 체적열용량(rho*Cp)이다. 우리 키 thermal.specific_heat 의 SI 단위 J/(kg*K) 로는 밀도 없이 환산되지 않는다. 원문 단위를 그대로 남기고 신뢰도를 medium 으로 낮췄다. 'Up to' 라서 상한만 확정."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -50.0,
+   "max": 750.0
+  }
+ }
+}

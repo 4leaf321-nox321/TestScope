@@ -1,0 +1,117 @@
+{
+ "id": "mitutoyo-hm-micro-vickers-materialtwin",
+ "kind": "equipment_series",
+ "name": "Mitutoyo HM-100 / HM-200 Series Micro Vickers Hardness Testing Machines",
+ "manufacturer": "mitutoyo",
+ "category": "vickers_knoop_hardness",
+ "test_items": [
+  "hardness_vickers",
+  "hardness_knoop"
+ ],
+ "measurands": [
+  "mechanical.hardness_vickers",
+  "mechanical.hardness_knoop"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/65",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/66",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/67",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/68",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/69",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/70",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "mitutoyo-hm-micro-vickers",
+ "measurands_by_item": {
+  "hardness_vickers": [
+   "mechanical.hardness_vickers"
+  ],
+  "hardness_knoop": [
+   "mechanical.hardness_knoop"
+  ]
+ },
+ "models": [
+  {
+   "model": "HM-122",
+   "note": "마이크로 경도시험기 HM-100 시리즈 — 시험력 98.07 mN ~ 9.807 N (10~1000 gf)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 68,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-100 시리즈 — 시험력 98.07 mN ~ 9.807 N (10~1000 gf)",
+    "notes": "**매핑 포기** — 이 기기가 함께 지원하는 누프 경도(HK)는 우리 카탈로그에 키가 없다. 환산표시 기능(conversion scale)도 측정이 아니라 환산이다. 시험력 98.07 mN ~ 9.807 N (10~1000 gf), 유지시간 5~99 s. 대물 10X·50X, 데이터처리 LED 표시. 규격번호는 기종별 사양표에 인쇄돼 있지 않다(카탈로그 p.47 '관련 경도규격' 은 일반 참고표라 기기 적합성 선언이 아니다 — standard 를 비웠다).",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "시편 높이 95 mm, 깊이 150 mm. 미세조정 테이블 100 x 100 mm(이동 25 x 25 mm)",
+      "mapping_confidence": "high",
+      "source_detail": "p.8 Specifications — HM-100 시리즈 사양표",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10~1000 gf). 경도 측정범위·정확도는 카탈로그에 인쇄돼 있지 않아 비웠다. 최소표시는 압흔 대각선 길이 분해능이지 경도 분해능이 아니라 resolution 에 넣지 않았다."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "시편 높이 95 mm, 깊이 150 mm. 미세조정 테이블 100 x 100 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 특별부속품 — 누프 압자 19BAA061 적용기종 목록 / p.8 데이터처리 'indenter (HV/HK) display'",
+      "notes": "**옵션 압자 장착 시의 능력이다** — 기본 구성은 비커스 압자이고 누프 압자(19BAA061)가 별매 부속품으로 이 기종에 적용된다고 인쇄돼 있다. 시험력 98.07 mN ~ 9.807 N (10~1000 gf)(누프 하중조건은 따로 인쇄돼 있지 않아 비커스와 같은 하중단을 쓰는 것으로 읽었다). 경도 측정범위·정확도·규격번호는 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-124",
+   "note": "마이크로 경도시험기 HM-100 시리즈 — 시험력 4.904 mN ~ 19.61 N (0.5~2000 gf)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 70,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-100 시리즈 — 시험력 4.904 mN ~ 19.61 N (0.5~2000 gf)",
+    "notes": "**매핑 포기** — 이 기기가 함께 지원하는 누프 경도(HK)는 우리 카탈로그에 키가 없다. 환산표시 기능(conversion scale)도 측정이 아니라 환산이다. 시험력 4.904 mN ~ 19.61 N (0.5~2000 gf), 유지시간 5~99 s. 대물 10X·50X·100X, 최소하중 4.904 mN(0.5 gf)로 시리즈 중 가장 작다. 규격번호는 기종별 사양표에 인쇄돼 있지 않다(카탈로그 p.47 '관련 경도규격' 은 일반 참고표라 기기 적합성 선언이 아니다 — standard 를 비웠다).",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "시편 높이 95 mm, 깊이 150 mm. 미세조정 테이블 100 x 100 mm(이동 25 x 25 mm)",
+      "mapping_confidence": "high",
+      "source_detail": "p.8 Specifications — HM-100 시리즈 사양표",
+      "notes": "시험력 4.904 mN ~ 19.61 N (0.5~2000 gf). 경도 측정범위·정확도는 카탈로그에 인쇄돼 있지 않아 비웠다. 최소표시는 압흔 대각선 길이 분해능이지 경도 분해능이 아니라 resolution 에 넣지 않았다."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "시편 높이 95 mm, 깊이 150 mm. 미세조정 테이블 100 x 100 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 특별부속품 — 누프 압자 19BAA062 적용기종 목록 / p.8 데이터처리 'indenter (HV/HK) display'",
+      "notes": "**옵션 압자 장착 시의 능력이다** — 기본 구성은 비커스 압자이고 누프 압자(19BAA062)가 별매 부속품으로 이 기종에 적용된다고 인쇄돼 있다. 시험력 4.904 mN ~ 19.61 N (0.5~2000 gf)(누프 하중조건은 따로 인쇄돼 있지 않아 비커스와 같은 하중단을 쓰는 것으로 읽었다). 경도 측정범위·정확도·규격번호는 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  }
+ ]
+}

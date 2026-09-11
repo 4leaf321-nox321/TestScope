@@ -6,9 +6,12 @@
 
 이 물음에 답한다.
 
-    시험 항목  ->  요구 조건  ->  시험법  ->  가능한 장비  ->  보유 위치
-      인장          80도            ASTM E8       UTM-003        3동 201호
-                    20 kN 이상                    (재료시험팀)   담당 홍길동
+    물성      ⇄   시험 항목  ->  요구 조건  ->  시험법  ->  가능한 장비  ->  보유 위치
+    인장강도  N:M   인장          80도            ASTM E8       UTM-003        3동 201호
+                              20 kN 이상                    (재료시험팀)   담당 홍길동
+
+사람은 「인장」 이 아니라 「인장강도」 로 묻는 일이 많다. 어떤 시험으로 어떤 물성을 얻는지
+(물성 ⇄ 시험 항목, N:M)가 맨 앞에 있어서 그 말도 받는다(ADR 0007).
 
 지금까지 이 물음의 답은 사람 머릿속과 전화에 있었다. 그래서 옆 사업부에 있는
 장비를 모른 채 외주를 주고, 만료된 교정으로 시험을 잡고, 새 장비를 살 때 이미
@@ -222,6 +225,32 @@ cd backend
 원본에 사양 키가 562종 있는데 76%가 단 한 곳에만 나와서, 만나는 대로 정의를 만들면
 관리 화면이 못 쓰게 됩니다(ADR 0006). 필요한 것은 「장비 사양 정의」 에서 만들고 다시
 돌리면 들어옵니다.
+
+같은 반입이 **물성 항목**(`ontology/properties.json`, MaterialTwin 271키)과 **물성 ↔ 시험
+항목 연결**(`ontology/property_links.json` + 객체의 measurands)도 심습니다. 연결은
+「제안」 으로 들어오고, 「물성 항목」 화면에서 시스템 관리자가 확인합니다. 물성 키로 못 이은
+measurand 가 있으면 끝에 보고합니다 — `property_links.json` 에 적어야 사라집니다.
+
+#### MaterialTwin 계측기 들이기
+
+`66_MatNexus/materialtwin-20260905/materialtwin.db`(계측기 218종·능력행 532건·물성 271종)를
+카탈로그 객체로 바꾼 뒤 위 반입을 돌립니다. **DB 를 직접 들이지 않습니다** — 카탈로그의
+정본은 `source/catalog` 하나이고, 반입 경로도 하나여야 같은 장비가 두 길로 안 들어옵니다.
+
+```powershell
+cd source\catalog
+python tools_from_materialtwin.py --check      # 무엇이 생기는지만 본다
+python tools_from_materialtwin.py              # equipment/*.json · ontology/properties.json 을 쓴다
+python build_graph.py                          # 검증 + index.md
+cd ..\..\backend
+.\.venv\Scripts\python.exe scripts\import_catalog.py
+```
+
+MaterialTwin 은 기종 한 층뿐이라 **계열 묶음은 `source/materialtwin/groups.json` 이
+정합니다**(사람이 확인한 표). 거기 없는 계측기는 변환기가 오류로 세웁니다. 이미 카탈로그에
+있는 35종(Instron 5900 · AGS-X · HR-530 …)은 `supplements` 객체로 **없는 기종만 보태고**
+(5965-E2 · HM-122 · TGA 5500), 기종마다 MaterialTwin 원문(설명·주석·능력행)은 `raw_specs`
+에 통째로 남습니다.
 
 ### 사양 출처 들이기 (선택)
 

@@ -1,0 +1,76 @@
+{
+ "id": "kla-tencor-p-7",
+ "kind": "equipment_model",
+ "name": "KLA-Tencor P-7 Stylus Profiler",
+ "manufacturer": "kla",
+ "category": "optical_profilometer",
+ "test_items": [
+  "surface_topography"
+ ],
+ "measurands": [
+  "structure.layer_thickness",
+  "surface.roughness_ra",
+  "mechanical.residual_stress"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/18",
+   "note": "KLA-Tencor P-7 Stylus Profiler (Production Series) · metrology_catalogs/surface/KLA_Tencor_P7_profiler.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "KLA-Tencor P-7 촉침식 프로파일러",
+ "description": "촉침식 표면형상 측정(stylus profilometry)",
+ "measurands_by_item": {
+  "surface_topography": [
+   "structure.layer_thickness",
+   "surface.roughness_ra",
+   "mechanical.residual_stress"
+  ]
+ },
+ "models": [
+  {
+   "model": "P-7",
+   "note": "중급 생산용 스타일러스 프로파일러. UltraLite 센서, 스캔길이 150 mm(스티칭 불필요), Z 범위 1 mm. 박막/후막 단차, 식각 트렌치 깊이, 표면조도·웨이비니스, 곡률·평탄도, 박막 2D 응력(Stoney) 측정.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 18,
+    "category": "surface",
+    "technique": "촉침식 표면형상 측정(stylus profilometry)",
+    "description": "중급 생산용 스타일러스 프로파일러. UltraLite 센서, 스캔길이 150 mm(스티칭 불필요), Z 범위 1 mm. 박막/후막 단차, 식각 트렌치 깊이, 표면조도·웨이비니스, 곡률·평탄도, 박막 2D 응력(Stoney) 측정.",
+    "notes": "Apex 소프트웨어가 40종 이상의 표면 파라미터(깊이, 단차, 조도, 웨이비니스, 기울기, 평탄도, 곡률반경, 응력, 베어링비 등)를 낸다고만 적고 파라미터별 측정범위는 인쇄하지 않았다.",
+    "doc_path": "metrology_catalogs/surface/KLA_Tencor_P7_profiler.pdf",
+    "source_title": "KLA-Tencor P-7 Stylus Profiler (Production Series)",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "촉침식 단차 측정(stylus step height)",
+      "range_max": 1.0,
+      "range_unit": "mm",
+      "accuracy": "Step height repeatability 4 Å (1σ) or better on samples up to 1 µm tall",
+      "specimen": "150 mm 스테이지 전면, 스캔길이 최대 150 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "Product Features — Stylus Profiling ('150 mm scan length and 1 mm Z range'), Step Height Repeatability",
+      "notes": "Z 범위 1 mm 는 상한만 확정하고 하한은 인쇄가 없어 비웠다. Applications 에 'Thin film step heights / Thick film step heights' 가 명시되지만 '막두께' 라는 말은 없어 medium."
+     },
+     {
+      "property_key": "surface.roughness_ra",
+      "technique": "촉침식 표면조도 측정(stylus profilometry)",
+      "specimen": "150 mm 스테이지 전면, 스캔길이 최대 150 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Applications — 'Materials characterization for surface roughness and waviness' / Apex Software 파라미터 목록",
+      "notes": "조도 측정이 용도로 명시되어 있으나 Ra 의 측정범위·분해능 수치는 인쇄가 없어 비웠다. 참고로 검출기 Z 범위는 1 mm, 단차 반복도는 4 Å 이지만 이는 프로파일 높이 축이지 Ra 범위가 아니다. 도표 캡션에 0.509 µm / 0.625 µm (Gaussian filter 0.08 mm) 예시가 있으나 시연 데이터라 값으로 쓰지 않았다."
+     },
+     {
+      "property_key": "mechanical.residual_stress",
+      "technique": "기판 곡률법 박막응력 측정(Stoney 식, 2D stress)",
+      "specimen": "박막 증착 등 공정 전후의 기판(최대 150 mm 스테이지, 스캔길이 150 mm)",
+      "mapping_confidence": "high",
+      "source_detail": "Product Features — 2D Stress Analysis ('Stress is measured in 2D using Stoney's equation to calculate the stress of a processing step, such as thin film deposition, by measuring the change in curvature of the substrate') / Applications '2D stress of thin films' / Apex 파라미터 목록의 stress",
+      "notes": "측정 원리(기판 곡률 변화 → Stoney 식)까지 명시되어 high. **응력 범위가 인쇄되어 있지 않고 부호 규약(압축 음수)도 밝혀져 있지 않다.** **depth_um** — 이 방법은 깊이 분해가 없는 막 전체 평균응력이라 depth 축이 성립하지 않는다. **direction** — 카탈로그 표현은 '2D stress' 이고 축 규약은 없다. 곡률·곡률반경 자체는 Apex 파라미터에 있으나 별도 키가 없어 이 행에만 남긴다."
+     }
+    ]
+   }
+  }
+ ]
+}

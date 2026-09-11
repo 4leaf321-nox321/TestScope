@@ -91,10 +91,19 @@ def main() -> int:
                         if over:
                             errors.append(
                                 f"{rel}: {s['file']} 는 {total}쪽인데 {over} 쪽을 인용")
-            elif not s.get("url"):
+            elif not s.get("url") and not s.get("origin"):
                 # 제조사가 PDF 를 내지 않는 경우가 있다(웹페이지로만 사양 공개).
-                # 그때는 url 을 쓰되, 둘 다 없으면 근거가 없는 것이므로 막는다.
-                errors.append(f"{rel}: sources 항목에 file 도 url 도 없음")
+                # 그때는 url 을 쓰되, 셋 다 없으면 근거가 없는 것이므로 막는다.
+                # origin 은 다른 시스템의 행(MaterialTwin 계측기)이다.
+                errors.append(f"{rel}: sources 항목에 file 도 url 도 origin 도 없음")
+        for item_id in obj.get("measurands_by_item") or {}:
+            if item_id not in test_items:
+                errors.append(f"{rel}: measurands_by_item 의 모르는 test_item {item_id}")
+        for item_id in (obj.get("standards") or {}).get("test_methods_by_item") or {}:
+            if item_id not in test_items:
+                errors.append(f"{rel}: test_methods_by_item 의 모르는 test_item {item_id}")
+        if obj.get("supplements") and obj["supplements"] == eid:
+            errors.append(f"{rel}: supplements 가 자기 자신을 가리킴")
         obj["_file"] = rel
         equipment[eid] = obj
 
@@ -168,9 +177,12 @@ def main() -> int:
             if "file" in s:
                 sid = "doc:" + s["file"]
                 node(sid, "document", label=s["file"], url=urls.get(s["file"]))
-            else:
+            elif "url" in s:
                 sid = "web:" + s["url"]
                 node(sid, "document", label=s["url"], url=s["url"], web_only=True)
+            else:
+                sid = "origin:" + s["origin"]
+                node(sid, "document", label=s["origin"], origin=True)
             edges.append({"source": e["id"], "type": "documented_in", "target": sid, **({"pages": s["pages"]} if s.get("pages") else {})})
 
     # --- 사양 키 검사: limits 는 막고, specs 는 기준선으로 조인다 -------------
@@ -277,6 +289,9 @@ def main() -> int:
             # 부속·센서가 시험 장비처럼 읽히면 "이 장비로 됩니까" 에 그립이 답하게 된다.
             kind_mark = {"equipment_series": "계열", "equipment_model": "기종",
                          "accessory": "**부속**", "sensor": "**센서**"}.get(e["kind"], e["kind"])
+            if e.get("supplements"):
+                # 다른 출처가 같은 계열에 보탠 것 — 목록에 같은 이름이 두 줄 서는 이유다.
+                kind_mark += f" (보탬→{e['supplements']})"
             temp = lim.get("temperature_degC", "–")
             temp_txt = rng(temp)
             if isinstance(temp, dict) and temp.get("requires_accessory"):

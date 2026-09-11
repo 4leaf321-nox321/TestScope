@@ -1,0 +1,127 @@
+{
+ "id": "perkinelmer-dma-8000",
+ "kind": "equipment_model",
+ "name": "PerkinElmer DMA 8000 Dynamic Mechanical Analyzer",
+ "manufacturer": "perkinelmer",
+ "category": "dma",
+ "test_items": [
+  "dma",
+  "compression"
+ ],
+ "measurands": [
+  "mechanical.loss_tangent",
+  "thermal.glass_transition",
+  "thermal.expansion_linear",
+  "mechanical.storage_modulus",
+  "mechanical.loss_modulus"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/56",
+   "note": "PerkinElmer DMA 8000 Dynamic Mechanical Analyzer — Specifications · metrology_catalogs/mechanical/PerkinElmer_DMA8000_spec.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "퍼킨엘머 DMA 8000 동적기계분석기",
+ "description": "동적기계분석(DMA)",
+ "measurands_by_item": {
+  "dma": [
+   "mechanical.loss_tangent",
+   "thermal.glass_transition",
+   "mechanical.storage_modulus",
+   "mechanical.loss_modulus"
+  ],
+  "compression": [
+   "thermal.expansion_linear"
+  ]
+ },
+ "models": [
+  {
+   "model": "DMA 8000",
+   "specs": {
+    "temperature_degC": {
+     "min": -190.0,
+     "max": 600.0
+    }
+   },
+   "note": "회전 분석헤드형 동적기계분석기 — 온도·주파수 스윕으로 모듈러스와 tanδ 를 얻고 유리전이를 잡는다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 56,
+    "category": "mechanical",
+    "technique": "동적기계분석(DMA)",
+    "description": "회전 분석헤드형 동적기계분석기 — 온도·주파수 스윕으로 모듈러스와 tanδ 를 얻고 유리전이를 잡는다",
+    "notes": "브로슈어(PerkinElmer_DMA8000.pdf)와 사양서(_spec.pdf)가 같은 DMA 8000 모델이라 한 레코드로 합쳤고, 사양은 더 자세한 사양서 쪽을 썼다 — doc_path 도 사양서다. **두 PDF 가 어긋나는 항목** — 주파수 상한이 브로슈어 300 Hz, 사양서 600 Hz 다(사양서 채택). 하중도 브로슈어 ±10 N, 사양서 -10~+10 N(폭 20 N)로 표기가 다르다. **매핑 포기** — 사양서의 'Modulus: Range ~10^3 to 10^16 Pa, Resolution 0.0001 Pa' 와 'Stiffness Range 2x10^2 to 1x10^8 N/m(분해능 2 N/m)' 는 저장탄성률(E')/손실탄성률(E'') 축인데 우리 카탈로그에 storage/loss modulus 키가 없어 능력행으로 잇지 않고 여기 적어 둔다. 기타 사양: 주파수 0~600 Hz(분해능 0.001 Hz, 실험당 최대 100점), 동적변위 0~±1000 µm(분해능 1 nm), 최소하중 0.002 N.",
+    "doc_path": "metrology_catalogs/mechanical/PerkinElmer_DMA8000_spec.pdf",
+    "source_title": "PerkinElmer DMA 8000 Dynamic Mechanical Analyzer — Specifications",
+    "capabilities": [
+     {
+      "property_key": "mechanical.loss_tangent",
+      "technique": "동적기계분석(DMA)",
+      "resolution": 1e-05,
+      "temperature_min_k": 83.15,
+      "temperature_max_k": 873.15,
+      "specimen": "최대 52.5 x 12.8 x 8.0 mm. 단일/이중 캔틸레버, 3점굽힘, 인장, 압축, 전단(Ø10 mm 판), 분말용 포켓",
+      "mapping_confidence": "high",
+      "source_detail": "사양서 'Tan Delta: Resolution 0.00001'",
+      "notes": "tanδ 는 무차원이라 분해능 0.00001 을 그대로 넣었다(range_unit 없이도 뜻이 확정된다). 측정범위는 인쇄돼 있지 않다. 온도는 고온노 기준 -190~600 °C 켈빈 환산 — **검산** -190+273.15=83.15, 600+273.15=873.15. 표준노는 -190~400 °C, 침지조는 -196~150 °C."
+     },
+     {
+      "property_key": "thermal.glass_transition",
+      "technique": "동적기계분석(DMA) — tanδ 피크",
+      "temperature_min_k": 83.15,
+      "temperature_max_k": 873.15,
+      "specimen": "최대 52.5 x 12.8 x 8.0 mm, 굽힘·인장·압축·전단 지그",
+      "mapping_confidence": "high",
+      "source_detail": "브로슈어 p.8 'the glass transition, shown as a peak in the tan d data' / Figure 5: Glass transition",
+      "notes": "DMA 로 잡는 Tg 는 tanδ 피크(또는 모듈러스 급감) 기준이라 DSC 의 비열 단차 Tg 와 값이 다르게 나온다 — 같은 키에 담기지만 조건 기록이 필수다. 다주파수 측정으로 완화(주파수 의존)와 융해·분해(주파수 무관)를 가른다고 인쇄돼 있다."
+     },
+     {
+      "property_key": "thermal.expansion_linear",
+      "technique": "열기계분석(TMA) 모드 — 인장/압축 치수변화",
+      "temperature_min_k": 83.15,
+      "temperature_max_k": 873.15,
+      "specimen": "TMA 모드 인장·압축, 시편 최대 10 mm, 하중 0.002 N ~ ±10 N",
+      "mapping_confidence": "medium",
+      "source_detail": "사양서 'TMA Mode — Measurement range ±1000 µm, Sensitivity 10 nm'",
+      "notes": "카탈로그는 'TMA Mode' 와 '팽창 정보가 필요하면 정하중을 걸지 않는다'까지만 적고 'coefficient of thermal expansion' 이라는 말은 쓰지 않았다 — 선팽창계수로 잇되 medium 으로 낮췄다. ±1000 µm 는 변위 행정거리이지 물성범위가 아니라 range_* 에 넣지 않았다. 사양서 표기 'Sensitivity 10 nM' 은 단위 오타로 보이며 10 nm 로 읽었다."
+     },
+     {
+      "property_key": "mechanical.storage_modulus",
+      "technique": "동적기계분석(DMA) — 저장탄성률 E'",
+      "range_min": 1000.0,
+      "range_max": 1e+16,
+      "range_unit": "Pa",
+      "resolution": 0.0001,
+      "temperature_min_k": 83.15,
+      "temperature_max_k": 873.15,
+      "specimen": "최대 52.5 x 12.8 x 8.0 mm. 단일/이중 캔틸레버, 3점굽힘, 인장, 압축, 전단(Ø10 mm 판), 분말 포켓",
+      "mapping_confidence": "high",
+      "source_detail": "사양서 'Modulus: Resolution 0.0001 Pa, Range ~10^3 to 10^16 Pa'",
+      "notes": "**이 범위는 장비가 커버하는 범위이고 값의 조건은 시험마다 다르다** — 저장탄성률은 주파수·온도·변형모드가 정해져야 값이 되는데 사양표는 조건 없이 모듈러스 범위 하나만 인쇄한다. 장비가 거는 조건: 주파수 0~600 Hz(분해능 0.001 Hz, 실험당 최대 100점), 온도 -190~600 °C(고온노 기준, 표준노는 -190~400 °C, 침지조 -196~150 °C), 변형모드 7종(단일/이중 캔틸레버·3점굽힘·인장·압축·전단·분말포켓). 원문이 '~10^3' 로 물결표를 달아 하한은 근사값이다. 강성 범위 2x10^2~1x10^8 N/m(분해능 2 N/m)는 모듈러스가 아니라 시스템 강성이라 넣지 않았다. **규격 미인쇄** — 이 카탈로그에는 ISO 6721 을 비롯한 어떤 DMA 시험규격도 적혀 있지 않아 standard 를 비웠다."
+     },
+     {
+      "property_key": "mechanical.loss_modulus",
+      "technique": "동적기계분석(DMA) — 손실탄성률 E''",
+      "range_min": 1000.0,
+      "range_max": 1e+16,
+      "range_unit": "Pa",
+      "resolution": 0.0001,
+      "temperature_min_k": 83.15,
+      "temperature_max_k": 873.15,
+      "specimen": "최대 52.5 x 12.8 x 8.0 mm, 굽힘·인장·압축·전단 지그",
+      "mapping_confidence": "medium",
+      "source_detail": "사양서 'Modulus: Resolution 0.0001 Pa, Range ~10^3 to 10^16 Pa'",
+      "notes": "**사양표는 'Modulus' 한 줄뿐이고 E' 와 E'' 를 구분하지 않는다** — 같은 범위를 두 행에 넣되 손실탄성률 쪽은 medium 으로 낮췄다. E'' 는 실제로는 E' 보다 작은 구간에서 나오므로 이 범위 전체가 E'' 에 유효하다고 읽으면 안 된다. **이 범위는 장비가 커버하는 범위이고 값의 조건(주파수·온도·모드)은 시험마다 다르다.** 주파수 0~600 Hz, 온도 -190~600 °C. 규격 미인쇄."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -190.0,
+   "max": 600.0
+  }
+ }
+}

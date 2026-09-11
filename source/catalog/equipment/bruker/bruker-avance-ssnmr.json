@@ -1,0 +1,37 @@
+{
+ "id": "bruker-avance-ssnmr",
+ "kind": "equipment_model",
+ "name": "Bruker AVANCE Solid-State NMR",
+ "manufacturer": "bruker",
+ "category": "nmr_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/40",
+   "note": "Bruker BioSpin AVANCE Systems — Solid State NMR Acceptance Test Procedures (Version 010) · metrology_catalogs/chemical/Bruker_AVANCE_NMR.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "브루커 AVANCE 고체 핵자기공명 분광기",
+ "description": "고체 핵자기공명분광(solid-state NMR, CPMAS)",
+ "models": [
+  {
+   "model": "AVANCE (Solid State NMR)",
+   "note": "AVANCE 계열 고체 NMR 분광계. CPMAS·HFX·와이드라인 프로브를 쓰는 마법각회전 고체 NMR 측정 시스템.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 40,
+    "category": "chemical",
+    "technique": "고체 핵자기공명분광(solid-state NMR, CPMAS)",
+    "description": "AVANCE 계열 고체 NMR 분광계. CPMAS·HFX·와이드라인 프로브를 쓰는 마법각회전 고체 NMR 측정 시스템.",
+    "notes": "**판매 카탈로그가 아니라 인수시험 절차서(Acceptance Test Procedures, 2009)다.** 자기장 세기·주파수·모델 라인업 같은 장비 사양표가 없고, 내용은 13C 분해능·감도 확인, 매직앵글 조정, CP 조건 설정 같은 시험 절차다. 인쇄된 수치(스핀속도 5 kHz, 펄스폭 4 µs, 출력 50~100 W 등)는 시험 조건이지 물성 측정범위가 아니다. NMR 이 보는 것은 분자구조·화학적 환경이고 우리 204종 물성 키에 대응하는 항목이 없어 capabilities 를 비웠다. 모델 구분이 안 돼 시리즈명으로 레코드를 만들었다(Avance III 계열용 파라미터셋이라고만 적혀 있다).",
+    "doc_path": "metrology_catalogs/chemical/Bruker_AVANCE_NMR.pdf",
+    "source_title": "Bruker BioSpin AVANCE Systems — Solid State NMR Acceptance Test Procedures (Version 010)",
+    "capabilities": []
+   }
+  }
+ ]
+}

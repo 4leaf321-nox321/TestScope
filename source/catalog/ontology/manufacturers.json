@@ -12,6 +12,17 @@
    "note": "PDF 미확보 — 다운로드 실패, 빈 폴더 정리함"
   },
   {
+   "id": "agilent",
+   "name": "Agilent Technologies",
+   "name_ko": "애질런트",
+   "country": "US",
+   "website": "https://www.agilent.com",
+   "domains": [
+    "chromatograph_mass_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "ametek-lloyd",
    "name": "AMETEK / Lloyd Instruments",
    "country": "GB",
@@ -73,6 +84,18 @@
    "domains": [
     "shore_irhd_hardness"
    ]
+  },
+  {
+   "id": "brookfield-ametek",
+   "name": "Brookfield AMETEK",
+   "name_ko": "브룩필드",
+   "country": "US",
+   "parent": "AMETEK",
+   "website": "https://www.brookfieldengineering.com",
+   "domains": [
+    "viscometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "bruel-kjaer",
@@ -243,6 +266,18 @@
    "note": "라이브 사이트의 PDF 링크가 200 과 함께 HTML 게이트를 준다. archive.org 스냅샷(2023~2025)에서 확보 — 브로슈어가 마케팅 층위라 기종별 사양표가 없다"
   },
   {
+   "id": "filmetrics",
+   "name": "Filmetrics (KLA)",
+   "name_ko": "필메트릭스",
+   "country": "US",
+   "parent": "KLA",
+   "website": "https://www.filmetrics.com",
+   "domains": [
+    "film_thickness_analyzer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "flir",
    "name": "Teledyne FLIR",
    "country": "US",
@@ -316,6 +351,18 @@
     "tma",
     "dma"
    ]
+  },
+  {
+   "id": "horiba",
+   "name": "HORIBA Scientific",
+   "name_ko": "호리바",
+   "country": "JP",
+   "website": "https://www.horiba.com",
+   "domains": [
+    "composition_spectrometer",
+    "optical_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "hot-disk",
@@ -400,6 +447,41 @@
    "note": "장비 제조사가 아님 — 시험법 문서 출처"
   },
   {
+   "id": "ja-woollam",
+   "name": "J.A. Woollam",
+   "name_ko": "울람",
+   "country": "US",
+   "website": "https://www.jawoollam.com",
+   "domains": [
+    "film_thickness_analyzer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "jeol",
+   "name": "JEOL",
+   "name_ko": "지올",
+   "country": "JP",
+   "website": "https://www.jeol.com",
+   "domains": [
+    "electron_microscope",
+    "composition_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "keithley",
+   "name": "Keithley (Tektronix)",
+   "name_ko": "키슬리",
+   "country": "US",
+   "parent": "Tektronix",
+   "website": "https://www.tek.com/keithley",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "keysight",
    "name": "Keysight Technologies",
    "name_ko": "키사이트",
@@ -451,6 +533,28 @@
     "display_color_analyzer",
     "imaging_colorimeter"
    ]
+  },
+  {
+   "id": "kruss",
+   "name": "KRÜSS",
+   "name_ko": "크루스",
+   "country": "DE",
+   "website": "https://www.kruss-scientific.com",
+   "domains": [
+    "contact_angle_analyzer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "lake-shore",
+   "name": "Lake Shore Cryotronics",
+   "name_ko": "레이크쇼어",
+   "country": "US",
+   "website": "https://www.lakeshore.com",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "lansmont",
@@ -521,6 +625,17 @@
    ]
   },
   {
+   "id": "metrohm",
+   "name": "Metrohm",
+   "name_ko": "메트롬",
+   "country": "CH",
+   "website": "https://www.metrohm.com",
+   "domains": [
+    "karl_fischer_titrator"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "mettler-toledo",
    "name": "METTLER TOLEDO",
    "name_ko": "메틀러 토레도",
@@ -533,6 +648,17 @@
     "dma",
     "tma"
    ]
+  },
+  {
+   "id": "micromeritics",
+   "name": "Micromeritics",
+   "name_ko": "마이크로메리틱스",
+   "country": "US",
+   "website": "https://www.micromeritics.com",
+   "domains": [
+    "pycnometer_porosimeter"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "mil-std",
@@ -670,6 +796,39 @@
    ]
   },
   {
+   "id": "ossila",
+   "name": "Ossila",
+   "name_ko": "오실라",
+   "country": "GB",
+   "website": "https://www.ossila.com",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "oxford-instruments",
+   "name": "Oxford Instruments",
+   "name_ko": "옥스퍼드 인스트루먼츠",
+   "country": "GB",
+   "website": "https://www.oxinst.com",
+   "domains": [
+    "electron_microscope"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "park-systems",
+   "name": "Park Systems",
+   "name_ko": "파크시스템스",
+   "country": "KR",
+   "website": "https://www.parksystems.com",
+   "domains": [
+    "atomic_force_microscope"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "perkinelmer",
    "name": "PerkinElmer",
    "country": "US",
@@ -698,6 +857,29 @@
     "weathering_tester",
     "corrosion_chamber"
    ]
+  },
+  {
+   "id": "renishaw",
+   "name": "Renishaw",
+   "name_ko": "레니쇼",
+   "country": "GB",
+   "website": "https://www.renishaw.com",
+   "domains": [
+    "composition_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "rigaku",
+   "name": "Rigaku",
+   "name_ko": "리가쿠",
+   "country": "JP",
+   "website": "https://www.rigaku.com",
+   "domains": [
+    "xray_diffractometer",
+    "composition_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "rohde-schwarz",
@@ -941,6 +1123,18 @@
    ]
   },
   {
+   "id": "zeiss",
+   "name": "ZEISS",
+   "name_ko": "자이스",
+   "country": "DE",
+   "website": "https://www.zeiss.com",
+   "domains": [
+    "electron_microscope",
+    "xray_inspection"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "zwickroell",
    "name": "ZwickRoell",
    "name_ko": "즈윅로엘",
@@ -964,6 +1158,18 @@
     "hdt_vicat",
     "environmental_chamber"
    ]
+  },
+  {
+   "id": "zygo",
+   "name": "Zygo (AMETEK)",
+   "name_ko": "자이고",
+   "country": "US",
+   "parent": "AMETEK",
+   "website": "https://www.zygo.com",
+   "domains": [
+    "optical_profilometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   }
  ]
 }

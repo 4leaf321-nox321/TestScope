@@ -1,0 +1,37 @@
+{
+ "id": "espec-ehs-tpc-hast",
+ "kind": "equipment_model",
+ "name": "ESPEC EHS / TPC HAST Chambers",
+ "manufacturer": "espec",
+ "category": "hast_chamber",
+ "test_items": [
+  "hast"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/199",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 EHS·TPC HAST 챔버",
+ "description": "고도가속 수명시험(HAST, 가압 고온고습)",
+ "models": [
+  {
+   "model": "EHS/TPC HAST 챔버",
+   "note": "**조건 부여 장비.** 100 °C 초과 고온 + 고습 + 가압으로 습도시험을 최대 50배 가속하는 챔버(오토클레이브/압력솥 시험)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 199,
+    "category": "reliability",
+    "technique": "고도가속 수명시험(HAST, 가압 고온고습)",
+    "description": "**조건 부여 장비.** 100 °C 초과 고온 + 고습 + 가압으로 습도시험을 최대 50배 가속하는 챔버(오토클레이브/압력솥 시험)",
+    "notes": "**capabilities 비움.** ▷ **온도범위 105~162 °C**(=378.15~435.15 K, EHS-211/221 계열) 또는 **105~143 °C**(=378.15~416.15 K, EHS-411·TPC-432ZM), **습도범위 75~100 %RH**, **압력 0.2~2.0 kg/cm²G(0.19~1.94 atm)**, TPC-432ZM 은 0.2~4.0 kg/cm²G(0.19~3.87 atm). 내부용적 18 L(211/411)·46 L(221)·130 L(TPC-432ZM), 2베이 모델(D)도 있다. 포화/불포화 습도 두 모드로 운전하며 습식구 센서 옵션으로 결로 위험을 없앤다. 85 °C/85 %RH 통상시험 대비 50배 가속을 표방한다.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

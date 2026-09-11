@@ -1,0 +1,241 @@
+{
+ "id": "netzsch-sta-449",
+ "kind": "equipment_series",
+ "name": "NETZSCH STA 449 F1 / F3 Jupiter Simultaneous Thermal Analyzers",
+ "manufacturer": "netzsch",
+ "category": "sta",
+ "test_items": [
+  "tga",
+  "dsc"
+ ],
+ "measurands": [
+  "thermal.decomposition_temp",
+  "thermal.melting_point",
+  "thermal.latent_heat_fusion",
+  "thermal.specific_heat",
+  "thermal.glass_transition",
+  "structure.crystallinity"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/48",
+   "note": "NETZSCH STA 449 F1 Jupiter — Simultaneous Thermal Analyzer · metrology_catalogs/thermal/NETZSCH_STA449_F1.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/49",
+   "note": "NETZSCH STA 449 F3 Jupiter — Simultaneous Thermal Analyzer · metrology_catalogs/thermal/NETZSCH_STA449_F3.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "네취 STA 449 Jupiter 동시열분석기",
+ "description": "동시열분석(STA) — TGA + DSC",
+ "measurands_by_item": {
+  "tga": [
+   "thermal.decomposition_temp"
+  ],
+  "dsc": [
+   "thermal.melting_point",
+   "thermal.latent_heat_fusion",
+   "thermal.specific_heat",
+   "thermal.glass_transition",
+   "structure.crystallinity"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E793",
+   "DIN 51004",
+   "ISO 11358"
+  ],
+  "test_methods_by_item": {
+   "tga": [
+    "ISO 11358"
+   ],
+   "dsc": [
+    "DIN 51004",
+    "ASTM E793"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "STA 449 F1 Jupiter",
+   "specs": {
+    "temperature_degC": {
+     "min": -150.0,
+     "max": 2000.0
+    }
+   },
+   "note": "열중량분석(TGA)과 열유속형 DSC 를 같은 시편에 동시에 거는 동시열분석기. 나노그램 분해능 천칭(0.025 µg)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 48,
+    "category": "thermal",
+    "technique": "동시열분석(STA) — TGA + DSC",
+    "description": "열중량분석(TGA)과 열유속형 DSC 를 같은 시편에 동시에 거는 동시열분석기. 나노그램 분해능 천칭(0.025 µg)",
+    "notes": "STA 는 TGA 와 DSC 를 동시에 거는 장비라 질량손실 갈래와 열량 갈래가 서로 다른 능력행이다. 온도범위는 노 9종(은 -120~675, 구리 -150~500, 강 -150~1000, 백금 RT~1500, SiC RT~1600, 로듐 RT~1650, 흑연 RT~2000, 수증기 RT~1250, 고속 RT~1250 °C) 합산인 -150~2000 °C 를 쓴다. 비열은 DSC(cp) 전용 센서와 노 조합에서만 나온다.",
+    "doc_path": "metrology_catalogs/thermal/NETZSCH_STA449_F1.pdf",
+    "source_title": "NETZSCH STA 449 F1 Jupiter — Simultaneous Thermal Analyzer",
+    "capabilities": [
+     {
+      "property_key": "thermal.decomposition_temp",
+      "technique": "열중량분석(TGA)",
+      "standard": "ISO 11358",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2273.15,
+      "specimen": "도가니 시편, 최대 시료하중 5000 mg(=칭량범위), TGA 시료부피 최대 5 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'TGA Possibilities — Decomposition' / p.18 Technical Specifications",
+      "notes": "분해온도는 온도 자체가 물성이라 range_* 를 비우고 노 온도범위만 넣었다. -150~2000 °C 켈빈 환산 — **검산** -150+273.15=123.15, 2000+273.15=2273.15. 천칭 분해능 0.025 µg, 드리프트 < 2 µg/hour."
+     },
+     {
+      "property_key": "thermal.melting_point",
+      "technique": "시차주사열량분석(DSC) — 동시열분석",
+      "standard": "DIN 51004",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2273.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'DSC Possibilities — Melting/crystallization behavior' + 규격표 DIN 51004",
+      "notes": "DIN 51004 는 결정성 물질의 융점 결정 규격이라 이 행에 붙였다. 온도분해능 0.001 K."
+     },
+     {
+      "property_key": "thermal.latent_heat_fusion",
+      "technique": "시차주사열량분석(DSC) — 융해엔탈피",
+      "standard": "ASTM E793",
+      "accuracy": "±2% (DSC enthalpy, most materials)",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2273.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.18 'DSC enthalpy accuracy ± 2%' + 규격표 ASTM E793",
+      "notes": "ASTM E793 이 DSC 융해·결정화 엔탈피 규격이라 확정 매핑. 엔탈피 측정범위 자체는 인쇄돼 있지 않아 비웠다."
+     },
+     {
+      "property_key": "thermal.specific_heat",
+      "technique": "시차주사열량분석(DSC) — cp 센서",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2273.15,
+      "specimen": "TGA-DSC (cp) 센서 + 전용 노(은/백금/로듐 등), DSC 도가니 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'Specific heat capacity', p.7 'TGA-DSC (cp) 센서', p.6 노별 cp 설명",
+      "notes": "정확도는 'with high accuracy' 라는 벤더 문구뿐이라 버렸다(숫자 없음). 노에 따라 cp 가능 구간이 갈린다 — 구리노는 500 °C 까지, 은노는 저온, 백금·로듐노는 고온용이라고 인쇄돼 있다."
+     },
+     {
+      "property_key": "thermal.glass_transition",
+      "technique": "시차주사열량분석(DSC) — 유리전이",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2273.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'DSC Possibilities — Glass transitions'",
+      "notes": "유리전이온도 전용 규격은 이 브로슈어에 없다 — standard 를 비웠다."
+     },
+     {
+      "property_key": "structure.crystallinity",
+      "technique": "시차주사열량분석(DSC) — 결정화도",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2273.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "medium",
+      "source_detail": "p.2 'DSC Possibilities — Degree of crystallinity'",
+      "notes": "카탈로그 항목명 'Degree of crystallinity' 가 우리 키 structure.crystallinity(결정화도)와 이름은 같지만, DSC 결정화도는 융해엔탈피를 100% 결정 기준엔탈피로 나눈 파생값이라 직접측정이 아니다 — medium 으로 낮췄다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "STA 449 F3 Jupiter",
+   "specs": {
+    "temperature_degC": {
+     "min": -150.0,
+     "max": 2400.0
+    }
+   },
+   "note": "TGA + DSC 동시열분석기. 텅스텐노까지 붙여 2400 °C 를 덮고 시료하중 35 g 까지 실린다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 49,
+    "category": "thermal",
+    "technique": "동시열분석(STA) — TGA + DSC",
+    "description": "TGA + DSC 동시열분석기. 텅스텐노까지 붙여 2400 °C 를 덮고 시료하중 35 g 까지 실린다",
+    "notes": "F1 과 같은 Jupiter 계열이지만 별개 모델이라 레코드를 나눴다 — 천칭 분해능(0.1 µg vs F1 0.025 µg)·최대 시료하중(35000 mg vs 5000 mg)·상한온도(2400 °C vs 2000 °C)가 다르다. 노 12종(은 -120~675 … 텅스텐 RT~2400, 흑연-SKIMMER RT~1950 °C) 합산 -150~2400 °C.",
+    "doc_path": "metrology_catalogs/thermal/NETZSCH_STA449_F3.pdf",
+    "source_title": "NETZSCH STA 449 F3 Jupiter — Simultaneous Thermal Analyzer",
+    "capabilities": [
+     {
+      "property_key": "thermal.decomposition_temp",
+      "technique": "열중량분석(TGA)",
+      "standard": "ISO 11358",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2673.15,
+      "specimen": "도가니 시편, 최대 시료하중 35000 mg(도가니 포함, =TGA 측정범위), TGA 시료부피 최대 10 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'TGA Possibilities — Decomposition' / p.17 Technical Specifications",
+      "notes": "온도 -150~2400 °C 켈빈 환산 — **검산** -150+273.15=123.15, 2400+273.15=2673.15. 천칭 분해능 0.1 µg(전 칭량범위), 드리프트 < 5 µg/hour."
+     },
+     {
+      "property_key": "thermal.melting_point",
+      "technique": "시차주사열량분석(DSC) — 동시열분석",
+      "standard": "DIN 51004",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2673.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'Melting/crystallization behavior' + 규격표 DIN 51004",
+      "notes": "온도분해능 0.001 K. 승온속도 0.001~50 K/min(고속노 최대 1000 K/min)."
+     },
+     {
+      "property_key": "thermal.latent_heat_fusion",
+      "technique": "시차주사열량분석(DSC) — 융해엔탈피",
+      "standard": "ASTM E793",
+      "accuracy": "1% (for indium)",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2673.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.17 'DSC enthalpy accuracy 1% (for indium)'",
+      "notes": "정확도 기준물질이 인듐으로 못박혀 있어 그대로 옮겼다(F1 은 '±2% 대부분 물질' 로 기준이 다르다 — 두 수치를 비교하면 안 된다)."
+     },
+     {
+      "property_key": "thermal.specific_heat",
+      "technique": "시차주사열량분석(DSC) — cp 센서",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2673.15,
+      "specimen": "TGA-DSCcp 센서 + 전용 노, DSC 도가니 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'Specific heat capacity', p.7 센서표(TGA-DSCcp)",
+      "notes": "정확도 숫자 인쇄 없음. 은노는 저온 cp, 백금·로듐노는 고온 cp 용이라고 적혀 있다."
+     },
+     {
+      "property_key": "thermal.glass_transition",
+      "technique": "시차주사열량분석(DSC) — 유리전이",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2673.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 'DSC Possibilities — Glass transitions'",
+      "notes": "규격 인쇄 없음."
+     },
+     {
+      "property_key": "structure.crystallinity",
+      "technique": "시차주사열량분석(DSC) — 결정화도",
+      "temperature_min_k": 123.15,
+      "temperature_max_k": 2673.15,
+      "specimen": "DSC 도가니, 시료부피 최대 0.19 ml",
+      "mapping_confidence": "medium",
+      "source_detail": "p.2 'DSC Possibilities — Degree of crystallinity'",
+      "notes": "융해엔탈피 기반 파생값이라 medium."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -150.0,
+   "max": 2400.0
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "id": "park-nx10",
+ "kind": "equipment_model",
+ "name": "Park Systems NX10 Atomic Force Microscope",
+ "manufacturer": "park-systems",
+ "category": "atomic_force_microscope",
+ "test_items": [
+  "surface_topography"
+ ],
+ "measurands": [
+  "surface.roughness_ra"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/25",
+   "note": "Park NX10 — The Most Accurate Atomic Force Microscope · metrology_catalogs/surface/Park_NX10_AFM.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "파크시스템스 NX10 원자간력현미경",
+ "description": "원자간력현미경(AFM, True Non-Contact 모드)",
+ "measurands_by_item": {
+  "surface_topography": [
+   "surface.roughness_ra"
+  ]
+ },
+ "models": [
+  {
+   "model": "NX10",
+   "note": "XY·Z 스캐너 분리형 AFM. XY 스캔범위 50 x 50 µm(옵션 10 x 10 또는 100 x 100 µm), Z 스캔범위 15 µm(옵션 30 µm), Z 분해능 0.015 nm, 토포그래피 노이즈 <0.03 nm. 시편 최대 50 x 50 mm, 두께 20 mm.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 25,
+    "category": "surface",
+    "technique": "원자간력현미경(AFM, True Non-Contact 모드)",
+    "description": "XY·Z 스캐너 분리형 AFM. XY 스캔범위 50 x 50 µm(옵션 10 x 10 또는 100 x 100 µm), Z 스캔범위 15 µm(옵션 30 µm), Z 분해능 0.015 nm, 토포그래피 노이즈 <0.03 nm. 시편 최대 50 x 50 mm, 두께 20 mm.",
+    "notes": "카탈로그가 파는 것은 형상(topography) 이미징이고 물성 수치는 인쇄되어 있지 않다. 나열된 모드(나노인덴테이션, FMM, PFM, C-AFM, SSRM, SThM, MFM, KPFM, TERS)는 이름만 있고 어떤 물성을 어느 범위로 재는지가 없어 능력행을 만들지 않았다 — 'Mechanical Properties' 같은 두루뭉술한 묶음 항목이다.",
+    "doc_path": "metrology_catalogs/surface/Park_NX10_AFM.pdf",
+    "source_title": "Park NX10 — The Most Accurate Atomic Force Microscope",
+    "capabilities": [
+     {
+      "property_key": "surface.roughness_ra",
+      "technique": "원자간력현미경 형상측정(AFM topography)",
+      "specimen": "최대 50 x 50 mm, 두께 20 mm 이하",
+      "mapping_confidence": "medium",
+      "source_detail": "Specification — Scanner (Z scan range 15 µm, Resolution 0.015 nm, Topography noise <0.03 nm)",
+      "notes": "카탈로그에 'roughness' 나 Ra 라는 말은 없고 topography(형상) 측정만 인쇄되어 있어 medium. Ra 의 측정범위·분해능이 아니라 Z 스캐너 사양이라 range·resolution 은 비웠다 — Z 스캔범위 15 µm(옵션 30 µm), Z 분해능 0.015 nm, 위치검출기 노이즈 0.03 nm(1 kHz)."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "id": "espec-criterion",
+ "kind": "equipment_series",
+ "name": "ESPEC Criterion Benchtop Chambers (BTZ / BTU / BTL / BTX / ECT)",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "damp_heat",
+  "temperature_cycling"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/192",
+   "note": "ESPEC Criterion Series Temperature and Humidity Chambers · metrology_catalogs/reliability/ESPEC_criterion.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/193",
+   "note": "ESPEC Criterion Series Temperature and Humidity Chambers · metrology_catalogs/reliability/ESPEC_criterion.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/194",
+   "note": "ESPEC Criterion Series Temperature and Humidity Chambers · metrology_catalogs/reliability/ESPEC_criterion.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/195",
+   "note": "ESPEC Criterion Series Temperature and Humidity Chambers · metrology_catalogs/reliability/ESPEC_criterion.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/203",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 Criterion 벤치탑 시험조",
+ "description": "항온 시험(캐스케이드 냉동, 온도 전용)",
+ "models": [
+  {
+   "model": "Criterion BTZ (BTZ-133/175/175E/475)",
+   "form_factor": "benchtop",
+   "note": "**시편에 온도조건을 거는 장비이지 물성 측정기가 아니다.** -70~180 °C 를 거는 벤치탑/저상형 온도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 192,
+    "category": "reliability",
+    "technique": "항온 시험(캐스케이드 냉동, 온도 전용)",
+    "description": "**시편에 온도조건을 거는 장비이지 물성 측정기가 아니다.** -70~180 °C 를 거는 벤치탑/저상형 온도 시험조",
+    "notes": "**capabilities 비움 — 조건 부여 장비.** ▷ **온도범위 -70~180 °C**(=203.15~453.15 K), 습도제어 없음. 변화율(IEC 60068-3-5 기준): BTZ-133 승온 3.5 °C/min·강온 3 °C/min, BTZ-175/175E 5/5 °C/min, BTZ-475 2.75/2.5 °C/min. 온도편차 ±0.5 °C(IEC 60068-3-5), 공간분포 ±1.5 °C(100 °C 까지, IEC 60068-3-6). 내부용적 1.5 cu.ft(42 L, 133·175·175E) / 4 cu.ft(110 L, 475). 라이브로드 160~300 W. **액체질소 없이 5 °C/min 을 낸다**고 명시. 실내온도 18~27 °C 에서 성능 보증. 옵션으로 LN2 주입 부스트. 같은 온도범위를 갖는 모델을 한 레코드로 묶고 크기·변화율 차이는 여기 적었다.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
+    "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "Criterion BTU (BTU-133/433)",
+   "note": "**조건 부여 장비.** -20~180 °C 를 거는 보급형 온도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 193,
+    "category": "reliability",
+    "technique": "항온 시험(단단 냉동, 온도 전용)",
+    "description": "**조건 부여 장비.** -20~180 °C 를 거는 보급형 온도 시험조",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -20~180 °C**(=253.15~453.15 K), 습도제어 없음. 변화율 BTU-133 승온 2 °C/min·강온 1.6 °C/min, BTU-433 1.5/1.2 °C/min(IEC 60068-3-5). 온도편차 ±0.5 °C, 공간분포 ±1.5 °C(IEC 60068-3-6). 용적 42 L(133)·110 L(433). 라이브로드 160~200 W(0 °C 기준). 단단 압축 냉동(1/3 hp).",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
+    "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "Criterion BTL-433",
+   "note": "**조건 부여 장비.** -20~180 °C · 10~95 %RH 를 거는 온습도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 194,
+    "category": "reliability",
+    "technique": "항온항습 시험(단단 냉동)",
+    "description": "**조건 부여 장비.** -20~180 °C · 10~95 %RH 를 거는 온습도 시험조",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -20~180 °C**(=253.15~453.15 K), **습도범위 10~95 %RH**(습도 유효구간 도표는 20~85 °C 중심, 옵션 저습장치로 5 °C/15 %RH 까지 확장). 습도편차 ±5 %RH(IEC 60068-3-5, 급기 기준). 변화율 1.5/1.2 °C/min. 용적 4 cu.ft(110 L). 가습용수 순도 0.2~10 µS/cm, 사용량 하루 0.5갤런.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
+    "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "Criterion BTX-475",
+   "note": "**조건 부여 장비.** -70~180 °C · 10~95 %RH 를 거는 온습도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 195,
+    "category": "reliability",
+    "technique": "항온항습 시험(캐스케이드 냉동)",
+    "description": "**조건 부여 장비.** -70~180 °C · 10~95 %RH 를 거는 온습도 시험조",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -70~180 °C**(=203.15~453.15 K), **습도범위 10~95 %RH**(옵션 저습 5 °C/15 %RH). 변화율 승온 2.75 °C/min·강온 2.5 °C/min, 온도편차 ±0.5 °C, 공간분포 ±1.5 °C(100 °C 까지). 용적 4 cu.ft(110 L), 라이브로드 300 W(-40 °C 까지). 습식구(wet-bulb) 습도센서 표준, 고체식 센서 옵션.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
+    "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "Criterion ECT-3 벤치탑",
+   "form_factor": "benchtop",
+   "note": "**조건 부여 장비.** -68~180 °C 를 거는 1.2 cu.ft 벤치탑 온도 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 203,
+    "category": "reliability",
+    "technique": "항온 시험 — 벤치탑",
+    "description": "**조건 부여 장비.** -68~180 °C 를 거는 1.2 cu.ft 벤치탑 온도 시험조",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -68~180 °C**(=205.15~453.15 K), 습도제어 없음. 내부용적 34 L(40×28×30 cm), 115 V 직결. 별도 파일 `ESPEC_criterion.pdf` 의 Criterion(BTZ/BTU/BTL/BTX)과는 **다른 모델**이다 — 그쪽은 1.5/4 cu.ft 급이고 이것은 1.2 cu.ft 벤치탑이다. 256스텝 프로그래머, 3중 과열보호.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "id": "renishaw-invia",
+ "kind": "equipment_series",
+ "name": "Renishaw inVia Confocal Raman Microscopes (Basis / Reflex / Qontor)",
+ "manufacturer": "renishaw",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/41",
+   "note": "Renishaw inVia confocal Raman microscope · metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/42",
+   "note": "Renishaw inVia confocal Raman microscope · metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/43",
+   "note": "Renishaw inVia confocal Raman microscope · metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "레니쇼 inVia 공초점 라만 현미분광기",
+ "description": "공초점 라만 현미분광(confocal Raman microscopy)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "inVia Basis",
+   "note": "inVia 시리즈의 보급형 공초점 라만 현미경. 시리즈 공통 사양 — 파장범위 200~2200 nm, 지원 레이저 229~1064 nm, 분광분해능 0.3 cm⁻¹(FWHM), 저파수 컷오프 5 cm⁻¹, 고파수 컷오프 30,000 cm⁻¹, 측방 공간분해능 0.25 µm(표준 1 µm), 축방향 <1 µm(표준 <2 µm), 안정도 ±0.01 cm⁻¹ 이내.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 41,
+    "category": "chemical",
+    "technique": "공초점 라만 현미분광(confocal Raman microscopy)",
+    "description": "inVia 시리즈의 보급형 공초점 라만 현미경. 시리즈 공통 사양 — 파장범위 200~2200 nm, 지원 레이저 229~1064 nm, 분광분해능 0.3 cm⁻¹(FWHM), 저파수 컷오프 5 cm⁻¹, 고파수 컷오프 30,000 cm⁻¹, 측방 공간분해능 0.25 µm(표준 1 µm), 축방향 <1 µm(표준 <2 µm), 안정도 ±0.01 cm⁻¹ 이내.",
+    "notes": "카탈로그가 inVia Basis / Reflex / Qontor 세 모델을 명시해 레코드를 나눴다. **측정 사양표(Technical highlights)는 세 모델 공통**이고 차이는 자동화 기능(시료관찰, LiveTrack 초점추적, 내장 교정광원, 성능 헬스체크)뿐이다. Basis 는 자동 백색광/라만 전환·내부 교정광원·성능 헬스체크가 없다.",
+    "doc_path": "metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf",
+    "source_title": "Renishaw inVia confocal Raman microscope",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "라만 분광(Raman spectroscopy)",
+      "specimen": "박막·단분자층까지 측정 가능. 다양한 환경·샘플링 액세서리 지원",
+      "mapping_confidence": "medium",
+      "source_detail": "Technical highlights 표 / 본문 'reveal chemical and physical (e.g. stress) information'",
+      "notes": "라만이 직접 재는 것은 산란 스펙트럼이고 조성·물질식별은 해석 결과다. 정성·정량 성능 수치가 인쇄되어 있지 않아 medium. 표의 0.25 µm·<1 µm 는 공간분해능(이미징 축)이고 0.3 cm⁻¹ 는 분광분해능이라 물성 range·resolution 에 넣지 않았다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "inVia Reflex",
+   "note": "inVia 시리즈의 중급 모델. 소프트웨어 현미경 제어, 자동 백색광/라만 전환, 내장 네온 파장교정 광원과 내부 표준시료 자동교정, 성능 헬스체크 포함. 측정 사양은 시리즈 공통.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 42,
+    "category": "chemical",
+    "technique": "공초점 라만 현미분광(confocal Raman microscopy)",
+    "description": "inVia 시리즈의 중급 모델. 소프트웨어 현미경 제어, 자동 백색광/라만 전환, 내장 네온 파장교정 광원과 내부 표준시료 자동교정, 성능 헬스체크 포함. 측정 사양은 시리즈 공통.",
+    "notes": "LiveTrack 초점추적은 Qontor 전용이라 Reflex 에는 없다.",
+    "doc_path": "metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf",
+    "source_title": "Renishaw inVia confocal Raman microscope",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "라만 분광(Raman spectroscopy)",
+      "specimen": "박막·단분자층까지 측정 가능",
+      "mapping_confidence": "medium",
+      "source_detail": "Technical highlights 표(시리즈 공통) / 모델별 기능표",
+      "notes": "정성·정량 성능 수치 인쇄 없음. 분광·공간 분해능은 장비 축이라 range 에 넣지 않았다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "inVia Qontor",
+   "note": "inVia 시리즈 최상위 모델. LiveTrack 자동 초점추적으로 요철·곡면 시료에서도 서브마이크로미터 초점을 유지한다. 측정 사양은 시리즈 공통.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 43,
+    "category": "chemical",
+    "technique": "공초점 라만 현미분광(confocal Raman microscopy)",
+    "description": "inVia 시리즈 최상위 모델. LiveTrack 자동 초점추적으로 요철·곡면 시료에서도 서브마이크로미터 초점을 유지한다. 측정 사양은 시리즈 공통.",
+    "notes": null,
+    "doc_path": "metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf",
+    "source_title": "Renishaw inVia confocal Raman microscope",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "라만 분광(Raman spectroscopy)",
+      "specimen": "요철·거친·곡면 시료 포함. 공초점 깊이 이미징으로 표면하 정보 취득",
+      "mapping_confidence": "medium",
+      "source_detail": "Technical highlights 표(시리즈 공통)",
+      "notes": "정성·정량 성능 수치 인쇄 없음."
+     }
+    ]
+   }
+  }
+ ]
+}

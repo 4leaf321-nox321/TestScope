@@ -1,0 +1,68 @@
+{
+ "id": "horiba-gd-profiler-2",
+ "kind": "equipment_model",
+ "name": "HORIBA GD-Profiler 2 Glow Discharge OES",
+ "manufacturer": "horiba",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis",
+  "surface_topography"
+ ],
+ "measurands": [
+  "chemical.composition",
+  "structure.layer_thickness"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/33",
+   "note": "HORIBA Scientific GD-Profiler 2 — GDOES Multilayer elemental depth profile · metrology_catalogs/chemical/HORIBA_GD-Profiler2_GDOES.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "호리바 GD-Profiler 2 글로우방전 발광분광기",
+ "description": "펄스 RF 글로우방전 발광분광(pulsed RF GD-OES)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ],
+  "surface_topography": [
+   "structure.layer_thickness"
+  ]
+ },
+ "models": [
+  {
+   "model": "GD-Profiler 2",
+   "note": "펄스 RF 글로우방전 발광분광 깊이방향 원소분석기. 도체·부도체 모두 스퍼터하며 침식속도 µm/min(2~10 nm/s), 깊이분해능 나노미터 이하. 폴리크로메이터+모노크로메이터로 VUV 120 nm(H·D)부터 IR 766 nm(K)까지 전 원소 동시측정. UFS 모드(고분자 무손상 초고속 스퍼터), DiP 내장 간섭계로 실시간 깊이 측정.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 33,
+    "category": "chemical",
+    "technique": "펄스 RF 글로우방전 발광분광(pulsed RF GD-OES)",
+    "description": "펄스 RF 글로우방전 발광분광 깊이방향 원소분석기. 도체·부도체 모두 스퍼터하며 침식속도 µm/min(2~10 nm/s), 깊이분해능 나노미터 이하. 폴리크로메이터+모노크로메이터로 VUV 120 nm(H·D)부터 IR 766 nm(K)까지 전 원소 동시측정. UFS 모드(고분자 무손상 초고속 스퍼터), DiP 내장 간섭계로 실시간 깊이 측정.",
+    "notes": "애노드 2 mm/4 mm 선택, 소구경 애노드·Elephant 애노드 옵션. 브로슈어 그림에 적용 깊이대(자연산화막 1~100 nm, 복합코팅 10~1000 nm, 중간층 100 nm~100 µm, 기재 1 mm)가 나오지만 이는 시료 유형별 예시이지 장비의 측정범위 사양이 아니라 range 로 쓰지 않았다.",
+    "doc_path": "metrology_catalogs/chemical/HORIBA_GD-Profiler2_GDOES.pdf",
+    "source_title": "HORIBA Scientific GD-Profiler 2 — GDOES Multilayer elemental depth profile",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "펄스 RF 글로우방전 발광분광 깊이분석(GD-OES)",
+      "range_max": 100.0,
+      "range_unit": "%",
+      "specimen": "도체·부도체 벌크 및 코팅층, 고분자층 포함. 비평면 시료용 애노드 전략 제공",
+      "mapping_confidence": "high",
+      "source_detail": "Optimum spectral coverage — 'measurement of all elements of interest in the depth profiles from ppm levels to 100%'",
+      "notes": "'from ppm levels to 100%' 에서 상한 100%만 확정했다. 하한 'ppm levels' 는 숫자가 아니라 비웠다(지시문 3·4번). 결과 표현 단위는 M%, At% 로 인쇄되어 있다. 매트릭스 효과가 거의 없다는 것이 SIMS 대비 강점으로 적혀 있다."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "GD-OES 깊이 프로파일 + 간섭계 깊이측정(DiP)",
+      "specimen": "다층 코팅(자동차 강판, LED, 태양전지 박막, 경질코팅 등)",
+      "mapping_confidence": "high",
+      "source_detail": "소프트웨어 기능 — 'Expression of results in M%, At%, depths, coating weights, layers thickness' / DiP (patented) 내장 간섭계",
+      "notes": "'layers thickness' 가 출력 항목으로 직접 인쇄되어 있다. 측정 가능한 두께 범위 수치는 없다. 깊이분해능은 'nanometer scale or below', 'Sub nm depth resolution' 으로만 적혀 있어(상한 표현) resolution 숫자로 넣지 않았다 — 예시로 0.3 nm 두께 B4C 60층(전체 420 nm)을 분해한 그림이 있다. XPS·SIMS 가 1 µm 이상 층을 못 재는 것과 달리 수십 µm 를 빠르게 스퍼터한다고 적혀 있다."
+     }
+    ]
+   }
+  }
+ ]
+}

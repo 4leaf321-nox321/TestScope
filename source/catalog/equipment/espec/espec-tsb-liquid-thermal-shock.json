@@ -1,0 +1,37 @@
+{
+ "id": "espec-tsb-liquid-thermal-shock",
+ "kind": "equipment_model",
+ "name": "ESPEC TSB-2 / TSB-5 / TSB-20 Liquid-to-Liquid Thermal Shock Chambers",
+ "manufacturer": "espec",
+ "category": "thermal_shock_chamber",
+ "test_items": [
+  "thermal_shock"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/196",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 TSB 액상 열충격조",
+ "description": "액상-액상 열충격(로봇 이송)",
+ "models": [
+  {
+   "model": "TSB-2 / TSB-5 / TSB-20 액상 열충격조",
+   "note": "**시편에 열충격 조건을 거는 장비.** 고온조 70~200 °C 와 저온조 -65~0 °C 사이를 로봇으로 이송해 액침 열충격을 가한다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 196,
+    "category": "reliability",
+    "technique": "액상-액상 열충격(로봇 이송)",
+    "description": "**시편에 열충격 조건을 거는 장비.** 고온조 70~200 °C 와 저온조 -65~0 °C 사이를 로봇으로 이송해 액침 열충격을 가한다",
+    "notes": "**capabilities 비움 — 조건 부여 장비다.** ▷ **고온욕 70~200 °C**(=343.15~473.15 K), **저온욕 -65~0 °C**(=208.15~273.15 K), 시편 노출 온도범위 **-65~+85 °C**(성능 예시). **적용 규격 Mil-Std 883 method 1011.9(액상 열충격).** 시험부하 TSB-2 0.75 kg·TSB-5 1.5 kg·TSB-20 7.2 kg(IC 칩 기준), 내부용적 2 L / 5 L / 20 L. 액침이라 공랭식보다 열전달이 빨라 가장 가혹한 열충격이다. 이 PDF 는 파일명(TSB5A)과 달리 **ESPEC 전체 제품 다이제스트**라 100종 이상 모델이 실려 있어, 온·습도 범위가 명시된 대표 계열만 레코드로 만들었다.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

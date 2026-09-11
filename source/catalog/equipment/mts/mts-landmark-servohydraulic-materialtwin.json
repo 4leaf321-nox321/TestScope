@@ -1,0 +1,92 @@
+{
+ "id": "mts-landmark-servohydraulic-materialtwin",
+ "kind": "equipment_series",
+ "name": "MTS Landmark Servohydraulic Test Systems (370.02 tabletop, 370.10 / 370.25 / 370.50 floor-standing, 100/200 Hz elastomer)",
+ "manufacturer": "mts",
+ "category": "servohydraulic_fatigue",
+ "test_items": [
+  "fatigue",
+  "fracture_toughness",
+  "thermomechanical_fatigue",
+  "tensile",
+  "compression",
+  "flexure",
+  "relaxation",
+  "creep"
+ ],
+ "measurands": [
+  "mechanical.tensile_strength",
+  "mechanical.yield_strength",
+  "mechanical.compressive_strength",
+  "mechanical.fracture_toughness",
+  "mechanical.crack_growth_rate",
+  "mechanical.fatigue_strength",
+  "mechanical.creep_rate"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/139",
+   "note": "MTS Landmark Servohydraulic Test Systems · metrology_catalogs/mechanical/MTS_Landmark_fatigue.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/140",
+   "note": "MTS Landmark Servohydraulic Test Systems · metrology_catalogs/mechanical/MTS_Landmark_fatigue.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/141",
+   "note": "MTS Landmark Servohydraulic Test Systems · metrology_catalogs/mechanical/MTS_Landmark_fatigue.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/142",
+   "note": "MTS Landmark Servohydraulic Test Systems · metrology_catalogs/mechanical/MTS_Landmark_fatigue.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/143",
+   "note": "MTS Landmark 200 Hz Elastomer Test System · metrology_catalogs/mechanical/MTS_Landmark200_elastomer.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "mts-landmark-servohydraulic",
+ "measurands_by_item": {
+  "tensile": [
+   "mechanical.tensile_strength",
+   "mechanical.yield_strength"
+  ],
+  "compression": [
+   "mechanical.compressive_strength"
+  ],
+  "fatigue": [
+   "mechanical.fracture_toughness",
+   "mechanical.crack_growth_rate",
+   "mechanical.fatigue_strength"
+  ],
+  "creep": [
+   "mechanical.creep_rate"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E1820",
+   "ASTM E21",
+   "ASTM E399",
+   "ASTM E647",
+   "ASTM E9",
+   "ISO 6892"
+  ],
+  "test_methods_by_item": {
+   "tensile": [
+    "ISO 6892",
+    "ASTM E21"
+   ],
+   "compression": [
+    "ASTM E9"
+   ],
+   "fatigue": [
+    "ASTM E399",
+    "ASTM E1820",
+    "ASTM E647"
+   ]
+  }
+ }
+}

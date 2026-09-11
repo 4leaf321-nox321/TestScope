@@ -1,0 +1,42 @@
+{
+ "id": "netzsch-dil-402-expedis-materialtwin",
+ "kind": "equipment_series",
+ "name": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
+ "manufacturer": "netzsch",
+ "category": "dilatometer",
+ "test_items": [
+  "dilatometry",
+  "tma"
+ ],
+ "measurands": [
+  "thermal.expansion_linear",
+  "thermal.glass_transition",
+  "thermal.decomposition_temp"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/55",
+   "note": "NETZSCH DIL 402 Expedis Classic — Dilatometer Series · metrology_catalogs/thermal/NETZSCH_DIL402_dilatometer.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "netzsch-dil-402-expedis",
+ "measurands_by_item": {
+  "dilatometry": [
+   "thermal.expansion_linear",
+   "thermal.glass_transition",
+   "thermal.decomposition_temp"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E228"
+  ],
+  "test_methods_by_item": {
+   "dilatometry": [
+    "ASTM E228"
+   ]
+  }
+ }
+}

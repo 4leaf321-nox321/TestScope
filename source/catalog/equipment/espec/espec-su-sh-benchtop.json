@@ -1,0 +1,39 @@
+{
+ "id": "espec-su-sh-benchtop",
+ "kind": "equipment_model",
+ "name": "ESPEC SU / SH Series Benchtop Chambers",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "damp_heat"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/201",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 SU·SH 벤치탑 시험조",
+ "form_factor": "benchtop",
+ "description": "항온(항습) 시험 — 벤치탑",
+ "models": [
+  {
+   "model": "SU/SH series 벤치탑 시험조",
+   "form_factor": "benchtop",
+   "note": "**조건 부여 장비.** -20/-40/-60 °C 부터 +150 °C 를 거는 소형 벤치탑 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 201,
+    "category": "reliability",
+    "technique": "항온(항습) 시험 — 벤치탑",
+    "description": "**조건 부여 장비.** -20/-40/-60 °C 부터 +150 °C 를 거는 소형 벤치탑 시험조",
+    "notes": "**capabilities 비움.** ▷ SU-221 **-20~150 °C**(=253.15~423.15 K), SU-241 **-40~150 °C**(=233.15~423.15 K), SU-261 **-60~150 °C**(=213.15~423.15 K), SU-641 -40~150 °C, SU-661 -60~150 °C — SU 계열은 **습도제어 없음**. SH 계열(SH-221/241…)은 같은 온도범위에 습도제어를 더한 형식이다. 내부용적 22.5 L(30×25×30 cm)·64 L(40×40×40 cm). 구형 대비 소비전력 최대 55 % 절감.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

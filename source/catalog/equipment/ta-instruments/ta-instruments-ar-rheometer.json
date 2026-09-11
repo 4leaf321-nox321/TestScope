@@ -1,0 +1,307 @@
+{
+ "id": "ta-instruments-ar-rheometer",
+ "kind": "equipment_series",
+ "name": "TA Instruments AR-G2 / AR 2000ex / AR 1500ex Rheometers",
+ "manufacturer": "ta-instruments",
+ "category": "rotational_rheometer",
+ "test_items": [
+  "shear",
+  "creep",
+  "dma"
+ ],
+ "measurands": [
+  "rheological.viscosity",
+  "mechanical.storage_modulus",
+  "mechanical.loss_modulus",
+  "mechanical.loss_tangent",
+  "mechanical.creep_compliance",
+  "structure.molecular_weight",
+  "thermal.glass_transition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/166",
+   "note": "TA Instruments Rheometers (2009 브로슈어) — AR-G2 Technical Specifications · metrology_catalogs/particle/TA_ARES-G2_rheometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/167",
+   "note": "TA Instruments Rheometers (2009 브로슈어) — AR-G2 Technical Specifications · metrology_catalogs/particle/TA_ARES-G2_rheometer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/168",
+   "note": "TA Instruments Rheometers (2009 브로슈어) — AR-G2 Technical Specifications · metrology_catalogs/particle/TA_ARES-G2_rheometer.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "TA 인스트루먼츠 AR 계열 회전형 레오미터",
+ "description": "회전형 레오미터(응력제어·직접변형제어·전단속도제어)",
+ "measurands_by_item": {
+  "shear": [
+   "rheological.viscosity",
+   "mechanical.storage_modulus",
+   "mechanical.loss_modulus",
+   "mechanical.loss_tangent",
+   "structure.molecular_weight"
+  ],
+  "creep": [
+   "mechanical.creep_compliance"
+  ],
+  "dma": [
+   "thermal.glass_transition"
+  ]
+ },
+ "models": [
+  {
+   "model": "AR-G2",
+   "specs": {
+    "temperature_degC": {
+     "min": -160.0,
+     "max": 600.0
+    }
+   },
+   "note": "자기 스러스트 베어링 + 드래그컵 모터로 나노토크 제어를 구현한 회전 레오미터. 유동곡선·점탄성·크리프·비틀림 DMA",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 166,
+    "category": "particle",
+    "technique": "회전형 레오미터(응력제어·직접변형제어·전단속도제어)",
+    "description": "자기 스러스트 베어링 + 드래그컵 모터로 나노토크 제어를 구현한 회전 레오미터. 유동곡선·점탄성·크리프·비틀림 DMA",
+    "notes": "**파일명은 `TA_ARES-G2_rheometer.pdf` 인데 이 PDF 에 ARES-G2 사양표가 없다.** 목차(p.3)에는 ARES-G2 가 브로슈어 1~14쪽으로 실려 있지만 파일에 담긴 것은 20~50쪽(AR 시리즈) 뿐이다. 그래서 사양이 인쇄된 AR-G2 · AR 2000ex · AR 1500ex 세 모델만 레코드로 만들었다. ARES-G2 는 본문 응용예(EVF 신장점도, 저점도 유체 진동측정)에 언급만 되고 사양이 없어 만들지 않았다. 온도는 부속 환경시스템별로 Peltier 플레이트 -40~200 °C, 동심원통 -20~150 °C, 상부가열판 -30~150 °C, 전기가열판(EHP) -70~400 °C, 환경챔버(ETC) -160~600 °C.",
+    "doc_path": "metrology_catalogs/particle/TA_ARES-G2_rheometer.pdf",
+    "source_title": "TA Instruments Rheometers (2009 브로슈어) — AR-G2 Technical Specifications",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전형 레오미터(응력/전단속도 램프, 정상상태 유동곡선)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "분산계·고분자 용융체·저점도 유체. 평행판/콘앤플레이트/동심원통",
+      "mapping_confidence": "high",
+      "source_detail": "p.16 TECHNICAL SPECIFICATIONS / p.42 'FLOW CURVE FOR DISPERSIONS'",
+      "notes": "**점도 측정범위는 인쇄돼 있지 않다** — 토크 0.003 µN·m(진동)~200 mN·m, 정상전단 최소토크 0.01 µN·m, 토크분해능 0.1 nN·m, 각속도 CS 0~300 rad/s / CR 1.4e-9~300 rad/s 만 인쇄. 온도는 최광폭인 ETC -160~600 °C 로 잡았다 — **검산** -160+273.15=113.15, 600+273.15=873.15. 부속별 하한은 외부 순환조 유체가 필요하다는 각주가 붙어 있다."
+     },
+     {
+      "property_key": "mechanical.storage_modulus",
+      "technique": "진동전단(오실레이션) — 저장탄성률 G'",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체·연질고체·비틀림 고체시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'VISCOELASTIC PROPERTIES' / p.44 'DYNAMIC MECHANICAL PROPERTIES OF SOLIDS IN TORSION'",
+      "notes": "저장탄성률 G' 는 카탈로그가 측정 파라미터로 인쇄한 양 그대로다(우리 키에 저장탄성률이 새로 열려 전단탄성계수 대신 이 키로 이었다). 측정범위는 인쇄돼 있지 않다. 주파수 7.5e-7~628 rad/s."
+     },
+     {
+      "property_key": "mechanical.loss_modulus",
+      "technique": "진동전단(오실레이션) — 손실탄성률 G\"",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체·연질고체·비틀림 고체시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'VISCOELASTIC PROPERTIES' / p.44 'DYNAMIC MECHANICAL PROPERTIES OF SOLIDS IN TORSION'",
+      "notes": "손실탄성률 G\" 역시 카탈로그에 인쇄된 측정 파라미터다. 측정범위 인쇄 없음. G' 와 같은 진동전단 시험에서 동시에 나온다."
+     },
+     {
+      "property_key": "mechanical.loss_tangent",
+      "technique": "진동전단(오실레이션) — 감쇠(tan δ)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체·연질고체·비틀림 고체시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'Key viscoelastic parameters (G', G\", η*, tanδ, etc.) can be measured' / p.44 'damping (tan delta)'",
+      "notes": "tan δ 가 측정 파라미터로 명시돼 있어 손실탄젠트 키에 그대로 이었다. 응력·변형·주파수·온도·시간의 함수로 측정 가능하다고 인쇄. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.creep_compliance",
+      "technique": "크리프-회복 시험(정하중 응력 인가 후 변형 추적)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체",
+      "mapping_confidence": "medium",
+      "source_detail": "p.44 'TRANSIENT TESTS (CREEP AND STRESS RELAXATION)' — 'equilibrium recoverable compliance (Je0) can be determined'",
+      "notes": "카탈로그가 인쇄한 양은 **평형 회복 컴플라이언스 Je0** 로, 우리 크리프 컴플라이언스 키와 같은 계열이지만 정확히 같은 정의는 아니어서 medium. 잔류토크가 매우 낮고 크리프 브레이킹 루틴이 있어 AR-G2 가 유리하다고 명시. 응력완화(G(t))도 직접변형제어로 가능."
+     },
+     {
+      "property_key": "structure.molecular_weight",
+      "technique": "제로전단점도(η₀)로부터의 분자량 산출",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체",
+      "mapping_confidence": "medium",
+      "source_detail": "p.42 'FLOW CURVE FOR POLYMERS' — 'TA rheometers can determine molecular weight based on the measured zero shear viscosity', η₀ = K × MW^3.4",
+      "notes": "직접 측정이 아니라 제로전단점도-분자량 멱함수(η₀=K·MW^3.4)로 **환산**하는 간접 측정이라 medium. 상수 K 는 재료마다 따로 필요하다. Cox-Merz 와 시간-온도 중첩(TTS)으로 전단속도 범위를 확장한다고 인쇄."
+     },
+     {
+      "property_key": "thermal.glass_transition",
+      "technique": "비틀림 동적기계분석(온도램프 중 G'·G\"·tan δ 전이)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고체 시편(비틀림 지그), 예시는 폴리카보네이트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.44 그림 'Temperature Ramp at 3°C/min, Frequency = 1Hz, Strain = 0.025%, Glass transition Tg = 154.1°C'",
+      "notes": "유리전이온도 측정이 전용 사양으로 인쇄된 것이 아니라 **응용 그림에서 PC 의 Tg=154.1 °C 를 읽어낸 사례**로 나와 medium. 조건(3 °C/min, 1 Hz, 변형 0.025 %)이 그림에 인쇄돼 있다. 온도범위는 환경시스템 범위(ETC -160~600 °C)를 썼다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AR 2000ex",
+   "specs": {
+    "temperature_degC": {
+     "min": -160.0,
+     "max": 600.0
+    }
+   },
+   "note": "다공성 카본 공기베어링 회전 레오미터. 유동곡선·점탄성·크리프·비틀림 DMA",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 167,
+    "category": "particle",
+    "technique": "회전형 레오미터(응력제어·직접변형제어·전단속도제어)",
+    "description": "다공성 카본 공기베어링 회전 레오미터. 유동곡선·점탄성·크리프·비틀림 DMA",
+    "notes": "같은 브로슈어의 중급 모델. AR-G2 와 부속·환경시스템은 같고 토크 하한(진동 CR 0.03 µN·m / CS 0.1 µN·m)과 분해능(1 nN·m, 40 nrad)이 낮다. 환경시스템 온도범위는 AR-G2 와 동일.",
+    "doc_path": "metrology_catalogs/particle/TA_ARES-G2_rheometer.pdf",
+    "source_title": "TA Instruments Rheometers (2009 브로슈어) — AR-G2 Technical Specifications",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전형 레오미터(응력/전단속도 램프, 정상상태 유동곡선)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "분산계·고분자 용융체·유체. 평행판/콘앤플레이트/동심원통",
+      "mapping_confidence": "high",
+      "source_detail": "p.18 TECHNICAL SPECIFICATIONS / p.42 'FLOW CURVE FOR DISPERSIONS'",
+      "notes": "점도 측정범위 인쇄 없음. 토크 0.03 µN·m(진동 CR)~200 mN·m, 정상전단 최소토크 0.05 µN·m(CR)/0.1 µN·m(CS), 각속도 CR 1e-8~300 rad/s. 온도는 ETC -160~600 °C — **검산** -160+273.15=113.15, 600+273.15=873.15."
+     },
+     {
+      "property_key": "mechanical.storage_modulus",
+      "technique": "진동전단(오실레이션) — 저장탄성률 G'",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체·연질고체·비틀림 고체시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'VISCOELASTIC PROPERTIES' / p.18 주파수 7.5e-7~628 rad/s",
+      "notes": "저장탄성률 G' 는 카탈로그가 측정 파라미터로 인쇄한 양 그대로다(우리 키에 저장탄성률이 새로 열려 전단탄성계수 대신 이 키로 이었다). 측정범위는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "mechanical.loss_modulus",
+      "technique": "진동전단(오실레이션) — 손실탄성률 G\"",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체·연질고체·비틀림 고체시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'VISCOELASTIC PROPERTIES' / p.18 주파수 7.5e-7~628 rad/s",
+      "notes": "손실탄성률 G\" 역시 카탈로그에 인쇄된 측정 파라미터다. 측정범위 인쇄 없음. G' 와 같은 진동전단 시험에서 동시에 나온다."
+     },
+     {
+      "property_key": "mechanical.loss_tangent",
+      "technique": "진동전단(오실레이션) — 감쇠(tan δ)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체·연질고체",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'Key viscoelastic parameters (G', G\", η*, tanδ, etc.)'",
+      "notes": "tan δ 명시. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.creep_compliance",
+      "technique": "크리프-회복 시험(정하중 응력 인가 후 변형 추적)",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체",
+      "mapping_confidence": "medium",
+      "source_detail": "p.44 'equilibrium recoverable compliance (Je0) can be determined'",
+      "notes": "평형 회복 컴플라이언스 Je0 를 우리 크리프 컴플라이언스 키에 medium 으로 이었다. 응력완화도 직접변형제어로 가능하다고 명시(AR 2000ex 포함)."
+     },
+     {
+      "property_key": "structure.molecular_weight",
+      "technique": "제로전단점도(η₀)로부터의 분자량 산출",
+      "temperature_min_k": 113.15,
+      "temperature_max_k": 873.15,
+      "specimen": "고분자 용융체",
+      "mapping_confidence": "medium",
+      "source_detail": "p.42 'TA rheometers can determine molecular weight based on the measured zero shear viscosity'",
+      "notes": "η₀=K·MW^3.4 환산이라 간접측정. medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AR 1500ex",
+   "specs": {
+    "temperature_degC": {
+     "min": -70.0,
+     "max": 400.0
+    }
+   },
+   "note": "유체·연질고체용 범용 회전 레오미터. 다공성 카본 공기베어링, 최대토크 150 mN·m",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 168,
+    "category": "particle",
+    "technique": "회전형 레오미터(응력제어·전단속도제어)",
+    "description": "유체·연질고체용 범용 회전 레오미터. 다공성 카본 공기베어링, 최대토크 150 mN·m",
+    "notes": "같은 브로슈어의 보급 모델. **사양표에 직접변형제어(Direct Strain Control)와 법선력 범위, 환경챔버(ETC)가 없다** — 온도부속은 Peltier 플레이트 -40~200 °C, Peltier 동심원통 -20~150 °C, 상부가열판 -30~150 °C, 전기가열판 -70~400 °C 뿐이라 온도폭이 다른 두 모델보다 좁다. 응력완화 시험은 직접변형제어가 필요해 이 모델에는 없다고 본문이 명시한다.",
+    "doc_path": "metrology_catalogs/particle/TA_ARES-G2_rheometer.pdf",
+    "source_title": "TA Instruments Rheometers (2009 브로슈어) — AR-G2 Technical Specifications",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전형 레오미터(응력/전단속도 램프, 정상상태 유동곡선)",
+      "temperature_min_k": 203.15,
+      "temperature_max_k": 673.15,
+      "specimen": "유체·연질고체. 평행판/콘앤플레이트/동심원통",
+      "mapping_confidence": "high",
+      "source_detail": "p.20 TECHNICAL SPECIFICATIONS",
+      "notes": "점도 측정범위 인쇄 없음. 최소토크 0.1 µN·m, 최대토크 150 mN·m, 토크분해능 1 nN·m, 각속도 CS 0~300 rad/s / CR 1e-7~300 rad/s, 주파수 7.5e-7~628 rad/s. 온도는 최광폭인 전기가열판 -70~400 °C — **검산** -70+273.15=203.15, 400+273.15=673.15."
+     },
+     {
+      "property_key": "mechanical.storage_modulus",
+      "technique": "진동전단(오실레이션) — 저장탄성률 G'",
+      "temperature_min_k": 203.15,
+      "temperature_max_k": 673.15,
+      "specimen": "연질고체·겔·고분자 용액",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'VISCOELASTIC PROPERTIES' / p.20 주파수 7.5e-7~628 rad/s",
+      "notes": "저장탄성률 G' 는 카탈로그가 측정 파라미터로 인쇄한 양 그대로다(우리 키에 저장탄성률이 새로 열려 전단탄성계수 대신 이 키로 이었다). 측정범위는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "mechanical.loss_modulus",
+      "technique": "진동전단(오실레이션) — 손실탄성률 G\"",
+      "temperature_min_k": 203.15,
+      "temperature_max_k": 673.15,
+      "specimen": "연질고체·겔·고분자 용액",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'VISCOELASTIC PROPERTIES' / p.20 주파수 7.5e-7~628 rad/s",
+      "notes": "손실탄성률 G\" 역시 카탈로그에 인쇄된 측정 파라미터다. 측정범위 인쇄 없음. G' 와 같은 진동전단 시험에서 동시에 나온다."
+     },
+     {
+      "property_key": "mechanical.loss_tangent",
+      "technique": "진동전단(오실레이션) — 감쇠(tan δ)",
+      "temperature_min_k": 203.15,
+      "temperature_max_k": 673.15,
+      "specimen": "연질고체·겔·고분자 용액",
+      "mapping_confidence": "high",
+      "source_detail": "p.43 'Key viscoelastic parameters (G', G\", η*, tanδ, etc.)'",
+      "notes": "tan δ 명시. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.creep_compliance",
+      "technique": "크리프-회복 시험(정하중 응력 인가 후 변형 추적)",
+      "temperature_min_k": 203.15,
+      "temperature_max_k": 673.15,
+      "specimen": "고분자 용융체·유체",
+      "mapping_confidence": "medium",
+      "source_detail": "p.44 'TRANSIENT TESTS (CREEP AND STRESS RELAXATION)'",
+      "notes": "크리프는 응력제어 시험이라 이 모델에서도 가능(평형 회복 컴플라이언스 Je0). **응력완화는 직접변형제어가 필요해 이 모델에는 없다.**"
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -160.0,
+   "max": 600.0
+  }
+ }
+}

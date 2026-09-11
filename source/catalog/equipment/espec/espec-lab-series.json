@@ -1,0 +1,37 @@
+{
+ "id": "espec-lab-series",
+ "kind": "equipment_model",
+ "name": "ESPEC Lab Series LU / LH / LHL / LHU-113 Compact Chambers",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "damp_heat"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/202",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 Lab 계열 소형 항온항습조",
+ "description": "항온항습 시험 — 소형 실험실용",
+ "models": [
+  {
+   "model": "Lab Series LU/LH/LHL/LHU-113",
+   "note": "**조건 부여 장비.** 105 L 소형 온습도 시험조(115 V 직결, 내장 물탱크)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 202,
+    "category": "reliability",
+    "technique": "항온항습 시험 — 소형 실험실용",
+    "description": "**조건 부여 장비.** 105 L 소형 온습도 시험조(115 V 직결, 내장 물탱크)",
+    "notes": "**capabilities 비움.** ▷ LU-113 **-20~85 °C**(=253.15~358.15 K, 습도 없음), LH-113 **45~85 °C**(=318.15~358.15 K) / **45~95 %RH**, LHL-113 **5~85 °C**(=278.15~358.15 K) / **40~95 %RH**, LHU-113 **-20~85 °C** / 40~95 %RH. 내부용적 105 L(50×39×60 cm). 제약·자동차·재료·전자 분야 온습도 시험용이라고 명시.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

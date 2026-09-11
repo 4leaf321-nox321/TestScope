@@ -1,0 +1,53 @@
+{
+ "id": "jeol-xtalab-synergy-ed",
+ "kind": "equipment_model",
+ "name": "JEOL XtaLAB Synergy-ED Electron Diffractometer",
+ "manufacturer": "jeol",
+ "category": "xray_diffractometer",
+ "test_items": [
+  "crystal_structure_analysis"
+ ],
+ "measurands": [
+  "structure.crystal_structure"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/17",
+   "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "지올 XtaLAB Synergy-ED 전자회절 구조해석기",
+ "description": "전자회절 단결정 구조해석(3D ED/MicroED)",
+ "measurands_by_item": {
+  "crystal_structure_analysis": [
+   "structure.crystal_structure"
+  ]
+ },
+ "models": [
+  {
+   "model": "XtaLAB Synergy-ED",
+   "note": "전자빔을 쓰는 단결정 전자회절계. 나노결정 선택부터 데이터 수집·구조해석까지 이어지는 3차원 분자구조 결정용. Rigaku HyPix-ED 검출기와 CrysAlisPro for ED 조합.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 17,
+    "category": "chemical",
+    "technique": "전자회절 단결정 구조해석(3D ED/MicroED)",
+    "description": "전자빔을 쓰는 단결정 전자회절계. 나노결정 선택부터 데이터 수집·구조해석까지 이어지는 3차원 분자구조 결정용. Rigaku HyPix-ED 검출기와 CrysAlisPro for ED 조합.",
+    "notes": "JEOL·Rigaku 공동 제품. 종합 카탈로그 소개문만 있고 수치 사양 없음.",
+    "doc_path": "metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf",
+    "source_title": "JEOL Products Guide 2026",
+    "capabilities": [
+     {
+      "property_key": "structure.crystal_structure",
+      "technique": "전자회절 단결정 구조해석(3D ED)",
+      "specimen": "나노결정",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 Electron Diffractometer",
+      "notes": "'structure determination of three-dimensional molecular structures' / 'Analyze crystal structure' 로 결정구조 결정이 명시."
+     }
+    ]
+   }
+  }
+ ]
+}

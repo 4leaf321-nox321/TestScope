@@ -1,0 +1,57 @@
+{
+ "id": "hitachi-su3800-3900-sem",
+ "kind": "equipment_series",
+ "name": "Hitachi SU3800 / SU3900 Scanning Electron Microscopes",
+ "manufacturer": "hitachi-high-tech",
+ "category": "electron_microscope",
+ "test_items": [
+  "microscopy",
+  "composition_analysis"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/7",
+   "note": "Hitachi Scanning Electron Microscope SU3800 / SU3900 · metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/8",
+   "note": "Hitachi Scanning Electron Microscope SU3800 / SU3900 · metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "히타치 SU3800·SU3900 주사전자현미경",
+ "description": "주사전자현미경(SEM, 텅스텐 필라멘트)",
+ "models": [
+  {
+   "model": "SU3800",
+   "note": "저진공 겸용 텅스텐 필라멘트 SEM. 2차전자 분해능 3.0 nm(30 kV), 배율 x5~x300,000, 가속전압 0.3~30 kV, 저진공 6~650 Pa, 최대 시편 ø200 mm.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 7,
+    "category": "surface",
+    "technique": "주사전자현미경(SEM, 텅스텐 필라멘트)",
+    "description": "저진공 겸용 텅스텐 필라멘트 SEM. 2차전자 분해능 3.0 nm(30 kV), 배율 x5~x300,000, 가속전압 0.3~30 kV, 저진공 6~650 Pa, 최대 시편 ø200 mm.",
+    "notes": "형상 관찰 장비라 우리 물성 키에 잇지 않았다. 인쇄된 수치는 전부 결상 분해능·배율·가속전압이고 물성 측정범위가 아니다. PDF 24쪽이 전부 이미지라 21~24쪽을 tesseract 로 OCR 해서 사양표를 읽었다. EDX 분석용 WD(10 mm, T.O.A=35°)만 적혀 있고 EDS 검출기 사양은 인쇄되어 있지 않아 조성 능력행을 만들지 않았다.",
+    "doc_path": "metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf",
+    "source_title": "Hitachi Scanning Electron Microscope SU3800 / SU3900",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "SU3900",
+   "note": "SU3800 의 대형 챔버 모델. 최대 시편 ø300 mm, 스테이지 X/Y 0~150 mm, 최대 이동높이 130 mm.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 8,
+    "category": "surface",
+    "technique": "주사전자현미경(SEM, 텅스텐 필라멘트)",
+    "description": "SU3800 의 대형 챔버 모델. 최대 시편 ø300 mm, 스테이지 X/Y 0~150 mm, 최대 이동높이 130 mm.",
+    "notes": "같은 브로슈어의 두 모델 중 대형 챔버 쪽. 전자광학 사양은 SU3800 과 공통이고 스테이지·시편 크기만 다르다. 물성 매핑 없음.",
+    "doc_path": "metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf",
+    "source_title": "Hitachi Scanning Electron Microscope SU3800 / SU3900",
+    "capabilities": []
+   }
+  }
+ ]
+}

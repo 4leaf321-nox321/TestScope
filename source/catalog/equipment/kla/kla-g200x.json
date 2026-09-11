@@ -1,0 +1,136 @@
+{
+ "id": "kla-g200x",
+ "kind": "equipment_model",
+ "name": "KLA Nano Indenter G200X",
+ "manufacturer": "kla",
+ "category": "nanoindenter",
+ "test_items": [
+  "instrumented_indentation",
+  "fatigue"
+ ],
+ "measurands": [
+  "mechanical.youngs_modulus",
+  "mechanical.loss_tangent",
+  "mechanical.fracture_toughness",
+  "mechanical.hardness_indentation",
+  "mechanical.storage_modulus",
+  "mechanical.loss_modulus"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/102",
+   "note": "KLA Nano Indenter G200X Nanomechanical Tester · metrology_catalogs/mechanical/KLA_G200X_nanoindenter.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "KLA G200X 나노압입 시험기",
+ "description": "계장화 나노압입시험(ISO 14577)",
+ "measurands_by_item": {
+  "instrumented_indentation": [
+   "mechanical.youngs_modulus",
+   "mechanical.loss_tangent",
+   "mechanical.hardness_indentation",
+   "mechanical.storage_modulus",
+   "mechanical.loss_modulus"
+  ],
+  "fatigue": [
+   "mechanical.fracture_toughness"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 14577"
+  ],
+  "test_methods_by_item": {
+   "instrumented_indentation": [
+    "ISO 14577"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "Nano Indenter G200X",
+   "specs": {
+    "temperature_degC": {
+     "max": 300.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "나노압입 시험기 — 전자기 트랜스듀서로 1 µN~1 N 하중을 걸어 영률과 경도를 깊이의 함수로 잰다",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 102,
+    "category": "mechanical",
+    "technique": "계장화 나노압입시험(ISO 14577)",
+    "description": "나노압입 시험기 — 전자기 트랜스듀서로 1 µN~1 N 하중을 걸어 영률과 경도를 깊이의 함수로 잰다",
+    "notes": "숫자로 인쇄된 사양은 하중범위 1 µN~1 N, ISO 14577 적합, 300 °C 시편가열 옵션, 서베이 스캔 최대 500 x 500 µm, DataBurst > 1 kHz 정도다 — 분해능·노이즈 플로어 수치는 이 브로슈어에 없다. 압자 교환식(Berkovich, cube corner, Vickers, 평면·구형 펀치). **비커스 압자를 달 수 있지만 이건 계장화 압입이라 광학 대각선 측정 비커스 경도(HV)와 다르다 — hardness_vickers 로 잇지 않았다.** **매핑 포기** — 스크래치/마모 시험, 밀착력, 박막 기판보정(AccuFilm), 크리프(변형률속도 민감도 m), 복소탄성률(storage/loss modulus)은 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/KLA_G200X_nanoindenter.pdf",
+    "source_title": "KLA Nano Indenter G200X Nanomechanical Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "계장화 나노압입시험(ISO 14577) — 제하곡선 강성",
+      "standard": "ISO 14577",
+      "temperature_max_k": 573.15,
+      "specimen": "박막·코팅·벌크. CSM 옵션으로 깊이/하중/시간/주파수 함수 측정, AccuFilm 으로 기판영향 보정",
+      "mapping_confidence": "medium",
+      "source_detail": "p.1 'The G200X measures Young's modulus and hardness' / p.2 'conforms to ISO 14577'",
+      "notes": "카탈로그가 'Young's modulus' 라고 쓰지만 압입 탄성계수 E_IT 는 제하강성·포아송비 가정에서 나오는 값이라 인장 영률과 조건이 다르다 — medium. 온도는 300 °C 시편가열 **옵션** 기준 상한만(300+273.15=573.15 K), 기본 구성은 상온이다. 측정범위·정확도 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.loss_tangent",
+      "technique": "국소 동적기계분석(ProbeDMA) — CSM 진동 압입",
+      "temperature_max_k": 573.15,
+      "specimen": "연질 고분자 등 표준 DMA 시편을 못 만드는 미소부. 평면펀치 압자",
+      "mapping_confidence": "medium",
+      "source_detail": "p.3 'measurement of storage modulus, loss modulus, and loss factor as a function of frequency'",
+      "notes": "카탈로그 용어는 'loss factor' 다 — mechanical.loss_tangent(손실탄젠트)와 acoustic.loss_factor(제진 손실계수) 두 키가 다 후보라 medium 으로 두고 역학 쪽에 넣었다. 함께 나오는 저장탄성률·손실탄성률은 우리 키가 없어 버렸다."
+     },
+     {
+      "property_key": "mechanical.fracture_toughness",
+      "technique": "나노압입 잔류압흔 관찰 — 균열 정량화",
+      "specimen": "취성 박막·세라믹. NanoVision 스테이지 또는 서베이 스캔(최대 500 x 500 µm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.5 'examine residual impressions to quantify ... pile-up, deformed volume and fracture toughness' / 'valuable for determination of sample fracture toughness'",
+      "notes": "잔류압흔 이미지에서 얻는 압입 파괴인성이라 SENB/CT 시험값과 다르다 — medium. 규격·범위 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_indentation",
+      "technique": "계장화 나노압입시험(ISO 14577) — 압입경도 H_IT",
+      "standard": "ISO 14577",
+      "temperature_max_k": 573.15,
+      "specimen": "박막·경질코팅·벌크. 압자 교환식(Berkovich, cube corner, Vickers, 평면·구형 펀치)",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 'The G200X measures Young's modulus and hardness' / p.2 'conforms to ISO 14577' / p.4 Hardness (GPa) 그림축",
+      "notes": "chunk_16 에서 mechanical.hardness_meyer 에 low 로 걸어 두었던 행을 전용 키로 옮긴 것이다(그 임시행은 _move 로 지워라). 조건축: 하중 1 µN~1 N(=0.001~1000 mN), 압입깊이는 '나노미터에서 밀리미터까지 6자리' 라고만 적히고 수치범위가 없다. 경도 측정범위·정확도는 인쇄돼 있지 않다. 온도는 300 °C 시편가열 **옵션** 기준 상한(300+273.15=573.15 K). **비커스 압자를 달 수 있어도 H_IT 는 광학 대각선 측정 HV 와 다른 양이다.**"
+     },
+     {
+      "property_key": "mechanical.storage_modulus",
+      "technique": "국소 동적기계분석(ProbeDMA) — CSM 진동 압입",
+      "temperature_max_k": 573.15,
+      "specimen": "연질 고분자 등 표준 DMA 시편을 못 만드는 미소부. 평면펀치 압자",
+      "mapping_confidence": "medium",
+      "source_detail": "p.3 ProbeDMA — 'measurement of storage modulus, loss modulus, and loss factor as a function of frequency'",
+      "notes": "측정범위·주파수 범위 숫자가 한 건도 인쇄돼 있지 않아 range_* 를 비웠다 — 항목명만 있는 능력이라 medium. 압입식 국소 DMA 라 시편 전체를 거는 표준 DMA(ISO 6721) 값과 직접 비교하면 안 된다(카탈로그는 '전통적 DMA 시험과 일치하는 정량 결과' 라고 주장하지만 그건 벤더 문구라 사양으로 옮기지 않았다). 규격 미인쇄. 온도는 300 °C 가열옵션 기준."
+     },
+     {
+      "property_key": "mechanical.loss_modulus",
+      "technique": "국소 동적기계분석(ProbeDMA) — CSM 진동 압입",
+      "temperature_max_k": 573.15,
+      "specimen": "연질 고분자·바이오재료. 평면펀치 압자",
+      "mapping_confidence": "medium",
+      "source_detail": "p.3 ProbeDMA — 'storage modulus, loss modulus, and loss factor'",
+      "notes": "범위·조건 숫자 없음. 같은 옵션(ProbeDMA)에서 tanδ(이미 mechanical.loss_tangent 로 적재)와 함께 나온다."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "max": 300.0
+  }
+ }
+}

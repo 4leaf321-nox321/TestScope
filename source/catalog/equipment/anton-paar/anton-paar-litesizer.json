@@ -1,0 +1,194 @@
+{
+ "id": "anton-paar-litesizer",
+ "kind": "equipment_series",
+ "name": "Anton Paar Litesizer 100 / 500 Particle Analyzers",
+ "manufacturer": "anton-paar",
+ "category": "particle_size_analyzer",
+ "test_items": [
+  "particle_size"
+ ],
+ "measurands": [
+  "structure.particle_diameter",
+  "structure.molecular_weight",
+  "optical.refractive_index",
+  "optical.transmittance",
+  "physical.zeta_potential"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/152",
+   "note": "Anton Paar Litesizer series — Particle Analysis at the Touch of a Button · metrology_catalogs/particle/AntonPaar_Litesizer500.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/153",
+   "note": "Anton Paar Litesizer series — Particle Analysis at the Touch of a Button · metrology_catalogs/particle/AntonPaar_Litesizer500.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "안톤파 Litesizer 광산란 입자분석기",
+ "description": "동적광산란(DLS)·정적광산란(SLS)·전기영동광산란(ELS)",
+ "measurands_by_item": {
+  "particle_size": [
+   "structure.particle_diameter",
+   "structure.molecular_weight",
+   "optical.refractive_index",
+   "optical.transmittance",
+   "physical.zeta_potential"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 22412"
+  ],
+  "test_methods_by_item": {
+   "particle_size": [
+    "ISO 22412"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "Litesizer 500",
+   "specs": {
+    "temperature_degC": {
+     "min": 0.0,
+     "max": 90.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "입도(DLS)·제타전위(ELS)·분자량(SLS)·투과율·용매 굴절률을 한 장비에서 재는 광산란 입자분석기. 산란각 15°/90°/175° 선택",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 152,
+    "category": "particle",
+    "technique": "동적광산란(DLS)·정적광산란(SLS)·전기영동광산란(ELS)",
+    "description": "입도(DLS)·제타전위(ELS)·분자량(SLS)·투과율·용매 굴절률을 한 장비에서 재는 광산란 입자분석기. 산란각 15°/90°/175° 선택",
+    "notes": "한 브로슈어에 Litesizer 500 과 Litesizer 100 이 같이 실려 모델마다 레코드를 나눴다. 광원은 반도체 레이저 40 mW / 658 nm, 온도제어 0~90 °C. **제타전위(> ±1000 mV, pH 2~12, 최대 시료전도도 200 mS/cm)는 우리 물성 키에 대응이 없어 능력행을 만들지 않았다** — taxonomy 공백 후보.",
+    "doc_path": "metrology_catalogs/particle/AntonPaar_Litesizer500.pdf",
+    "source_title": "Anton Paar Litesizer series — Particle Analysis at the Touch of a Button",
+    "capabilities": [
+     {
+      "property_key": "structure.particle_diameter",
+      "technique": "동적광산란(DLS)",
+      "standard": "ISO 22412:2017",
+      "range_min": 0.3,
+      "range_max": 10000.0,
+      "range_unit": "nm",
+      "accuracy": "NIST 소급 표준물질에서 ±2 % 이내",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "액중 분산 입자, 최소 시료량 12 µL, 최대 농도 50 % w/v(시료 의존)",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 'Particle size specifications' (Litesizer 500, Litesizer 100)",
+      "notes": "측정범위 원문은 '0.3 nm to 10 µm*'(* 실험실 조건). 상한 10 µm 를 nm 로 환산해 10000 nm — **검산** 10×1000=10000. 온도 0~90 °C 를 켈빈으로 — **검산** 0+273.15=273.15, 90+273.15=363.15. 반복도도 NIST 표준물질에서 ±2 % 이내. 감도 0.1 mg/mL(라이소자임). 규격 ISO 22412:2017 은 브로슈어에서 'DLS 에 요구되는 굴절률 정확도를 정의하는 규격'으로 인쇄돼 있다 — DLS 입도 규격 자체이기도 하나 인쇄 문맥은 굴절률 정확도다."
+     },
+     {
+      "property_key": "structure.molecular_weight",
+      "technique": "정적광산란(SLS) — Debye plot",
+      "range_min": 980.0,
+      "range_max": 20000000.0,
+      "range_unit": "Da",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "용액 시료, 여러 농도에서 산란강도 측정(Debye plot), 산란각 90°",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 'Molecular mass specifications' (Litesizer 500)",
+      "notes": "원문 '980 Da to 20 MDa' — 20 MDa 를 Da 로 환산해 20000000 Da(**검산** 20×10^6). 반복도 ±5 %. 제2 비리얼계수도 같이 나온다고 인쇄돼 있으나 우리 키에 없다."
+     },
+     {
+      "property_key": "optical.refractive_index",
+      "technique": "광산란 초점위치 기반 용매 굴절률 측정",
+      "standard": "ISO 22412:2017",
+      "range_min": 1.28,
+      "range_max": 1.5,
+      "range_unit": "1",
+      "accuracy": "±0.5 %",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "용매(액체), 최소 시료량 1 mL",
+      "mapping_confidence": "high",
+      "source_detail": "p.5 'Refractive index specifications' (Litesizer 500)",
+      "notes": "**파장 조건 인쇄됨 — 658 nm.** 온도범위 0~90 °C 도 같은 표에 인쇄. 정확도 ±0.5 % 는 ISO 22412:2017 이 DLS 에 요구하는 굴절률 정확도 기준이라고 브로슈어가 명시한다. 재는 것은 시료 입자가 아니라 **용매**의 굴절률이다."
+     },
+     {
+      "property_key": "optical.transmittance",
+      "technique": "투과광 검출(연속 투과율 측정)",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "액중 분산 시료, 최소 시료량 15 µL",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 'Transmittance specifications' (Litesizer 500, Litesizer 100)",
+      "notes": "투과율 자체의 측정범위·정확도는 인쇄돼 있지 않다(측정시간 10 s, 최소 시료량 15 µL 만 인쇄). 658 nm 단파장 투과율이며 초점위치·측정각 자동선택용 보조지표로 쓰인다."
+     },
+     {
+      "property_key": "physical.zeta_potential",
+      "technique": "전기영동광산란(ELS) — cmPALS 방식",
+      "range_max": 1.0,
+      "range_unit": "V",
+      "accuracy": "반복도 ±3 %",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "액중 분산 입자(3.8 nm~100 µm), 최소 시료량 50 µL, 최대 농도 70 % w/v, 오메가(Ω)형 큐벳 또는 Univette",
+      "mapping_confidence": "high",
+      "source_detail": "p.4 'Zeta potential specifications' — Measuring range > ±1000 mV, Size range 3.8 nm to 100 µm, pH range 2 to 12, Max. sample conductivity 200 mS/cm",
+      "notes": "원문 **> ±1000 mV** 는 **절대값 상한**이라 `range_max` 에만 1.0 V 를 넣고 `range_min` 은 비웠다 — **검산** 1000 mV × 10⁻³ = **1.0 V**. **부호는 시료에 따라 양·음 모두 나오고 등전점에서 뒤집힌다**(±1000 mV 로 인쇄). **필수 조건** — `ph` 는 측정 가능 범위 **2~12**(옵션 Dosing System 으로 큐벳 안에서 pH 를 자동 적정해 등전점을 직접 잡는다), `medium` 은 수계/유기용매 모두 가능하나 **오메가 큐벳은 수용액 전용**이고 유기용매는 Univette 를 써야 한다, `ionic_strength_mm` 은 카탈로그에 이온세기 대신 **최대 시료전도도 200 mS/cm** 로 인쇄돼 있어 값 수집 시 별도로 기록해야 한다. 온도 0~90 °C — **검산** 0+273.15=273.15, 90+273.15=363.15. 측정각 15°, 감도 0.1 mg/mL(라이소자임). ISO 13099 은 인쇄돼 있지 않다(이 브로슈어가 인용하는 규격은 DLS 굴절률 정확도 문맥의 ISO 22412:2017 뿐)이라 `standard` 를 비웠다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "Litesizer 100",
+   "specs": {
+    "temperature_degC": {
+     "min": 0.0,
+     "max": 90.0
+    }
+   },
+   "note": "입도와 투과율만 재는 보급형 광산란 입자분석기. 산란각 175° 고정",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 153,
+    "category": "particle",
+    "technique": "동적광산란(DLS)",
+    "description": "입도와 투과율만 재는 보급형 광산란 입자분석기. 산란각 175° 고정",
+    "notes": "같은 브로슈어의 하위 모델. 제타전위·분자량·굴절률은 Litesizer 500 전용이라 이 모델에는 붙이지 않았다.",
+    "doc_path": "metrology_catalogs/particle/AntonPaar_Litesizer500.pdf",
+    "source_title": "Anton Paar Litesizer series — Particle Analysis at the Touch of a Button",
+    "capabilities": [
+     {
+      "property_key": "structure.particle_diameter",
+      "technique": "동적광산란(DLS)",
+      "range_min": 0.3,
+      "range_max": 10000.0,
+      "range_unit": "nm",
+      "accuracy": "NIST 소급 표준물질에서 ±2 % 이내",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "액중 분산 입자, 최소 시료량 12 µL, 최대 농도 50 % w/v(시료 의존)",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 'Particle size specifications' (Litesizer 500, Litesizer 100)",
+      "notes": "입도 사양표가 두 모델 공통이다. 0.3 nm~10 µm → 10 µm=10000 nm. 온도 0~90 °C — **검산** 0+273.15=273.15, 90+273.15=363.15. 측정각은 175° 하나뿐(Litesizer 500 은 15/90/175°)."
+     },
+     {
+      "property_key": "optical.transmittance",
+      "technique": "투과광 검출(연속 투과율 측정)",
+      "temperature_min_k": 273.15,
+      "temperature_max_k": 363.15,
+      "specimen": "액중 분산 시료, 최소 시료량 15 µL",
+      "mapping_confidence": "high",
+      "source_detail": "p.3 'Transmittance specifications' (Litesizer 500, Litesizer 100)",
+      "notes": "투과율 측정범위는 인쇄되지 않았다. 광원 658 nm."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": 0.0,
+   "max": 90.0
+  }
+ }
+}

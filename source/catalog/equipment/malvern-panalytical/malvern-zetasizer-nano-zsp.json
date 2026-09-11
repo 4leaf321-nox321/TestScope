@@ -1,0 +1,76 @@
+{
+ "id": "malvern-zetasizer-nano-zsp",
+ "kind": "equipment_model",
+ "name": "Malvern Zetasizer Nano ZSP",
+ "manufacturer": "malvern-panalytical",
+ "category": "particle_size_analyzer",
+ "test_items": [
+  "particle_size"
+ ],
+ "measurands": [
+  "structure.particle_diameter",
+  "structure.molecular_weight",
+  "physical.zeta_potential"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/163",
+   "note": "Malvern Zetasizer Nano ZSP Dynamic Light Scattering (DLS) · metrology_catalogs/particle/Malvern_Zetasizer.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "말번 Zetasizer Nano ZSP 입도·제타전위 분석기",
+ "description": "동적광산란(DLS)",
+ "measurands_by_item": {
+  "particle_size": [
+   "structure.particle_diameter",
+   "structure.molecular_weight",
+   "physical.zeta_potential"
+  ]
+ },
+ "models": [
+  {
+   "model": "Zetasizer Nano ZSP",
+   "note": "브라운운동 산란광 요동으로 입도·제타전위·분자량을 재는 동적광산란 분석기",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 163,
+    "category": "particle",
+    "technique": "동적광산란(DLS)",
+    "description": "브라운운동 산란광 요동으로 입도·제타전위·분자량을 재는 동적광산란 분석기",
+    "notes": "**한 쪽짜리 시설 안내문 수준의 문서**라 사양이 크기범위 하나뿐이다. 정확도·반복도·온도범위·시료량 어느 것도 인쇄돼 있지 않다. 제타전위는 이 장비의 주 기능인데 우리 물성 키에 대응이 없어 능력행을 만들지 않았다 — taxonomy 공백 후보. 소모품 튜브는 사용자 부담이라고 명시.",
+    "doc_path": "metrology_catalogs/particle/Malvern_Zetasizer.pdf",
+    "source_title": "Malvern Zetasizer Nano ZSP Dynamic Light Scattering (DLS)",
+    "capabilities": [
+     {
+      "property_key": "structure.particle_diameter",
+      "technique": "동적광산란(DLS)",
+      "range_min": 0.3,
+      "range_max": 10000.0,
+      "range_unit": "nm",
+      "specimen": "액체에 분산·용해된 입자·에멀전·콜로이드·분자",
+      "mapping_confidence": "high",
+      "source_detail": "본문 'measuring the size, Zeta potential and molecular weight typically in the range of 0.3nm (using highest technology) - 10µm'",
+      "notes": "원문 범위 0.3 nm~10 µm 를 nm 로 통일 — 10 µm=10000 nm(**검산** 10×1000). 원문은 이 범위를 크기·제타전위·분자량 세 항목에 걸쳐 서술하지만 단위가 길이라 **크기 범위로만** 썼다. 하한 0.3 nm 은 'using highest technology' 단서가 붙어 있다."
+     },
+     {
+      "property_key": "structure.molecular_weight",
+      "technique": "광산란(DLS/SLS)",
+      "specimen": "액체에 용해된 고분자·단백질",
+      "mapping_confidence": "medium",
+      "source_detail": "본문 'measuring the size, Zeta potential and molecular weight'",
+      "notes": "분자량을 잰다는 서술만 있고 **범위·정확도가 전혀 인쇄돼 있지 않다.** 본문의 0.3 nm~10 µm 는 길이 단위라 분자량 범위로 쓸 수 없어 비웠다."
+     },
+     {
+      "property_key": "physical.zeta_potential",
+      "technique": "전기영동광산란(ELS)",
+      "specimen": "액체에 분산·용해된 입자·에멀전·콜로이드. 제타전위 측정용 튜브는 사용자 구매 소모품",
+      "mapping_confidence": "high",
+      "source_detail": "본문 'measuring the size, Zeta potential and molecular weight' / 'consumable/re-usable tubes used for size/Zeta potential measurements'",
+      "notes": "**제타전위의 측정범위·정확도·pH 범위가 전혀 인쇄돼 있지 않아 전부 비웠다.** 본문의 0.3 nm~10 µm 는 길이 단위라 제타전위 범위로 쓸 수 없다. **필수 조건** — `ph`·`ionic_strength_mm`·`medium` 모두 이 문서에는 없으므로 값 수집 때 실험 조건에서 따로 확보해야 한다. 부호는 시료·pH 에 따라 뒤집히므로 값의 마이너스를 반드시 살릴 것."
+     }
+    ]
+   }
+  }
+ ]
+}

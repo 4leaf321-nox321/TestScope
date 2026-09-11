@@ -1,0 +1,183 @@
+{
+ "id": "ta-instruments-discovery-tga-materialtwin",
+ "kind": "equipment_series",
+ "name": "TA Instruments Discovery TGA (Thermogravimetric Analyzer)",
+ "manufacturer": "ta-instruments",
+ "category": "tga",
+ "test_items": [
+  "tga"
+ ],
+ "measurands": [
+  "thermal.decomposition_temp",
+  "thermal.char_residue",
+  "chemical.activation_energy"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/50",
+   "note": "TA Instruments Discovery TGA (TGA 55 / TGA 550 / TGA 5500) · metrology_catalogs/thermal/TA_TGA550.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/51",
+   "note": "TA Instruments Discovery TGA (TGA 55 / TGA 550 / TGA 5500) · metrology_catalogs/thermal/TA_TGA550.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/52",
+   "note": "TA Instruments Discovery TGA (TGA 55 / TGA 550 / TGA 5500) · metrology_catalogs/thermal/TA_TGA550.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "ta-instruments-discovery-tga",
+ "measurands_by_item": {
+  "tga": [
+   "thermal.decomposition_temp",
+   "thermal.char_residue",
+   "chemical.activation_energy"
+  ]
+ },
+ "models": [
+  {
+   "model": "Discovery TGA 55",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000.0
+    }
+   },
+   "note": "Tru-Mass 천칭 기반 열중량분석기 보급형 — 상온~1000 °C, 시료 1000 mg",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 50,
+    "category": "thermal",
+    "technique": "열중량분석(TGA)",
+    "description": "Tru-Mass 천칭 기반 열중량분석기 보급형 — 상온~1000 °C, 시료 1000 mg",
+    "notes": "한 브로슈어에 TGA 55·550·5500 세 모델의 사양표가 나란히 인쇄돼 있어 모델마다 레코드를 나눴다(지시문 8번). TGA 55 는 기능표에서 Hi-Res TGA·Modulated TGA·DTA 신호가 '—'(Not Available) 라 활성화에너지 능력행이 없다.",
+    "doc_path": "metrology_catalogs/thermal/TA_TGA550.pdf",
+    "source_title": "TA Instruments Discovery TGA (TGA 55 / TGA 550 / TGA 5500)",
+    "capabilities": [
+     {
+      "property_key": "thermal.decomposition_temp",
+      "technique": "열중량분석(TGA)",
+      "accuracy": "±1 °C (temperature accuracy)",
+      "temperature_max_k": 1273.15,
+      "specimen": "백금 팬 50/100 µL 또는 세라믹·알루미늄 팬, 시료 최대 1000 mg",
+      "mapping_confidence": "high",
+      "source_detail": "p.29 Instrument Specifications — TGA 55 열",
+      "notes": "온도범위가 'Ambient to 1000 °C' 라 하한이 확정되지 않는다 — 지시문 4번대로 상한만 채웠다(1000+273.15=1273.15). 온도 정밀도 ±0.1 °C, 천칭 분해능 0.1 µg, 칭량 정밀도 ±0.01 %, 베이스라인 드리프트 < 25 µg."
+     },
+     {
+      "property_key": "thermal.char_residue",
+      "technique": "열중량분석(TGA) — 잔류질량",
+      "temperature_max_k": 1273.15,
+      "specimen": "백금/세라믹 팬, 시료 최대 1000 mg",
+      "mapping_confidence": "medium",
+      "source_detail": "p.13 TRIOS 분석항목 'Residue content'",
+      "notes": "카탈로그 항목은 'Residue content'(잔류질량 %)로, 고분자면 잔탄율이지만 무기충전제면 structure.filler_content 쪽이다 — 어느 물성인지는 시편이 정한다. 그래서 medium. 칭량 정밀도 ±0.01 %."
+     }
+    ]
+   }
+  },
+  {
+   "model": "Discovery TGA 550",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000.0
+    }
+   },
+   "note": "Pt/Rh 권선노 열중량분석기 — 상온~1000 °C, Hi-Res TGA·Modulated TGA·DTA 신호 지원",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 51,
+    "category": "thermal",
+    "technique": "열중량분석(TGA)",
+    "description": "Pt/Rh 권선노 열중량분석기 — 상온~1000 °C, Hi-Res TGA·Modulated TGA·DTA 신호 지원",
+    "notes": "사양표상 TGA 55 와 온도·천칭 사양이 같고 기능(Hi-Res·MTGA·DTA·25위치 오토샘플러)이 다르다.",
+    "doc_path": "metrology_catalogs/thermal/TA_TGA550.pdf",
+    "source_title": "TA Instruments Discovery TGA (TGA 55 / TGA 550 / TGA 5500)",
+    "capabilities": [
+     {
+      "property_key": "thermal.decomposition_temp",
+      "technique": "열중량분석(TGA)",
+      "accuracy": "±1 °C (temperature accuracy)",
+      "temperature_max_k": 1273.15,
+      "specimen": "백금 팬 50/100 µL, 세라믹 100/250 µL, 알루미늄 80 µL. 시료 최대 1000 mg",
+      "mapping_confidence": "high",
+      "source_detail": "p.29 Instrument Specifications — TGA 550 열",
+      "notes": "'Ambient to 1000 °C' — 하한 미확정, 상한만 1273.15 K. 승온속도 0.1~100 °C/min(탄도승온 >600 °C/min), 천칭 분해능 0.1 µg, 드리프트 < 25 µg."
+     },
+     {
+      "property_key": "thermal.char_residue",
+      "technique": "열중량분석(TGA) — 잔류질량",
+      "temperature_max_k": 1273.15,
+      "specimen": "백금/세라믹/알루미늄 팬, 시료 최대 1000 mg",
+      "mapping_confidence": "medium",
+      "source_detail": "p.13 TRIOS 분석항목 'Residue content'",
+      "notes": "잔탄율/충전제 함량 어느 쪽인지 시편이 정한다 — medium."
+     },
+     {
+      "property_key": "chemical.activation_energy",
+      "technique": "변조 열중량분석(Modulated TGA, MTGA)",
+      "temperature_max_k": 1273.15,
+      "specimen": "백금/세라믹 팬, 시료 최대 1000 mg",
+      "mapping_confidence": "medium",
+      "source_detail": "p.13 'Activation energy determination with Modulated TGA', p.16 MTGA 설명",
+      "notes": "MTGA 는 모델프리 운동학으로 분해반응 활성화에너지를 온도·전환율의 함수로 낸다(그림 축이 kJ/mol). 우리 키는 일반 Arrhenius 활성화에너지라 물리량은 같지만 '분해반응' 한정이 아니라서 medium. 측정범위·정확도 인쇄 없음."
+     }
+    ]
+   }
+  },
+  {
+   "model": "Discovery TGA 5500",
+   "specs": {
+    "temperature_degC": {
+     "max": 1200.0
+    }
+   },
+   "note": "적외선 저열용량 노 열중량분석기 최상위 모델 — 상온~1200 °C, 승온 최대 500 °C/min",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 52,
+    "category": "thermal",
+    "technique": "열중량분석(TGA)",
+    "description": "적외선 저열용량 노 열중량분석기 최상위 모델 — 상온~1200 °C, 승온 최대 500 °C/min",
+    "notes": "IR 가열노 채용 모델이라 상한이 1200 °C 로 다르고 드리프트가 < 10 µg 로 낮다.",
+    "doc_path": "metrology_catalogs/thermal/TA_TGA550.pdf",
+    "source_title": "TA Instruments Discovery TGA (TGA 55 / TGA 550 / TGA 5500)",
+    "capabilities": [
+     {
+      "property_key": "thermal.decomposition_temp",
+      "technique": "열중량분석(TGA)",
+      "accuracy": "±1 °C (temperature accuracy)",
+      "temperature_max_k": 1473.15,
+      "specimen": "세라믹 팬 100/250 µL(1200 °C 대응), 백금 팬 50/100 µL. 시료 최대 1000 mg",
+      "mapping_confidence": "high",
+      "source_detail": "p.29 Instrument Specifications — TGA 5500 열",
+      "notes": "'Ambient to 1200 °C' — 상한만 확정(1200+273.15=1473.15). 승온 0.1~500 °C/min(탄도 >1600 °C/min), 천칭 분해능 < 0.1 µg, 드리프트 < 10 µg. 백금 팬은 1000 °C 까지라 1200 °C 는 세라믹 팬 조건이다."
+     },
+     {
+      "property_key": "thermal.char_residue",
+      "technique": "열중량분석(TGA) — 잔류질량",
+      "temperature_max_k": 1473.15,
+      "specimen": "세라믹/백금 팬, 시료 최대 1000 mg",
+      "mapping_confidence": "medium",
+      "source_detail": "p.13 TRIOS 분석항목 'Residue content'",
+      "notes": "잔탄율/충전제 함량 구분이 시편 의존이라 medium."
+     },
+     {
+      "property_key": "chemical.activation_energy",
+      "technique": "변조 열중량분석(Modulated TGA, MTGA)",
+      "temperature_max_k": 1473.15,
+      "specimen": "세라믹/백금 팬, 시료 최대 1000 mg",
+      "mapping_confidence": "medium",
+      "source_detail": "p.13 'Activation energy determination with Modulated TGA'",
+      "notes": "분해 운동학 활성화에너지. 범위·정확도 인쇄 없음."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "max": 1200.0
+  }
+ }
+}

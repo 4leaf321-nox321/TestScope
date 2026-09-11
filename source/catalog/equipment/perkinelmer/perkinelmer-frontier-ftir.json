@@ -1,0 +1,54 @@
+{
+ "id": "perkinelmer-frontier-ftir",
+ "kind": "equipment_model",
+ "name": "PerkinElmer Frontier FT-IR / FT-NIR / FT-FIR Spectrometer",
+ "manufacturer": "perkinelmer",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/38",
+   "note": "PerkinElmer Frontier FT-IR, NIR and FIR Spectroscopy · metrology_catalogs/chemical/PerkinElmer_Frontier_FTIR.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "퍼킨엘머 Frontier 푸리에변환 적외분광기",
+ "drive": "electromechanical",
+ "description": "푸리에변환 적외분광(FT-IR / FT-NIR / FT-FIR)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "Frontier",
+   "note": "근·중·원적외를 한 광학벤치에서 다루는 FT-IR 분광기. Dynascan 고정거울쌍 간섭계, 소프트웨어 제어 자동 영역전환(광원·조리개·광학필터·빔스플리터 전동), UATR·HATR·확산반사·광섬유 프로브 등 샘플링 액세서리. IR/FIR 구성은 약 700~30 cm⁻¹ 영역, Optica 구성은 5000~400 cm⁻¹ 에서 높은 종축 정확도.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 38,
+    "category": "chemical",
+    "technique": "푸리에변환 적외분광(FT-IR / FT-NIR / FT-FIR)",
+    "description": "근·중·원적외를 한 광학벤치에서 다루는 FT-IR 분광기. Dynascan 고정거울쌍 간섭계, 소프트웨어 제어 자동 영역전환(광원·조리개·광학필터·빔스플리터 전동), UATR·HATR·확산반사·광섬유 프로브 등 샘플링 액세서리. IR/FIR 구성은 약 700~30 cm⁻¹ 영역, Optica 구성은 5000~400 cm⁻¹ 에서 높은 종축 정확도.",
+    "notes": "브로슈어가 Frontier IR / NIR / Optica / MIR-NIR / MIR-FIR 다섯 구성을 나열하지만 구성별 파수범위·분해능·S/N 사양표가 인쇄되어 있지 않아 모델을 나누지 못하고 시리즈명 하나로 만들었다(지시문 8번의 예외 처리). 본문 수치는 FIR 700~30 cm⁻¹, Optica 5000~400 cm⁻¹(스톱밴드 6000 cm⁻¹까지) 뿐이며 이는 분광기 파수범위이지 물성 범위가 아니다.",
+    "doc_path": "metrology_catalogs/chemical/PerkinElmer_Frontier_FTIR.pdf",
+    "source_title": "PerkinElmer Frontier FT-IR, NIR and FIR Spectroscopy",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "푸리에변환 적외분광(FT-IR/NIR, COMPARE·AssureID 물질식별)",
+      "specimen": "고체·액체·분말·페이스트. UATR/HATR, 확산반사, 투과, 광섬유 프로브 등 액세서리로 대응",
+      "mapping_confidence": "medium",
+      "source_detail": "본문 — 'unique COMPARE algorithms with sensitive PASS/FAIL threshold setting, allows materials to be identified quickly and easily in the near and mid-IR'",
+      "notes": "물질 식별(identification)은 인쇄되어 있으나 정량 조성 성능(검출한계·정확도)은 없다. FT-IR 의 직접 출력은 스펙트럼이라 medium."
+     }
+    ]
+   }
+  }
+ ]
+}

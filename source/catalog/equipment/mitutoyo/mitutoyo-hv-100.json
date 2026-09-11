@@ -1,0 +1,263 @@
+{
+ "id": "mitutoyo-hv-100",
+ "kind": "equipment_series",
+ "name": "Mitutoyo HV-100 Series Vickers Hardness Testers",
+ "manufacturer": "mitutoyo",
+ "category": "vickers_knoop_hardness",
+ "test_items": [
+  "hardness_vickers",
+  "fatigue",
+  "hardness_knoop",
+  "hardness_brinell"
+ ],
+ "measurands": [
+  "mechanical.hardness_vickers",
+  "mechanical.fracture_toughness",
+  "mechanical.hardness_knoop",
+  "mechanical.hardness_brinell"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/71",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/72",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/98",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/99",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 HV-100 비커스 경도시험기",
+ "description": "비커스 경도시험",
+ "measurands_by_item": {
+  "hardness_vickers": [
+   "mechanical.hardness_vickers"
+  ],
+  "fatigue": [
+   "mechanical.fracture_toughness"
+  ],
+  "hardness_knoop": [
+   "mechanical.hardness_knoop"
+  ],
+  "hardness_brinell": [
+   "mechanical.hardness_brinell"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "JIS R1607"
+  ],
+  "test_methods_by_item": {
+   "fatigue": [
+    "JIS R1607"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "HV-112",
+   "note": "비커스 경도시험기 HV-100 시리즈 — 시험력 1.961 N ~ 196.1 N (0.2~20 kgf)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 71,
+    "category": "mechanical",
+    "technique": "비커스 경도시험",
+    "description": "비커스 경도시험기 HV-100 시리즈 — 시험력 1.961 N ~ 196.1 N (0.2~20 kgf)",
+    "notes": "카탈로그가 HV-113 를 '사양은 HV-112 를 참조' 라고만 적어(CCD 카메라/모니터 유무 차이) 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)·브리넬(HB) 경도와 환산경도는 키가 없거나 환산값이다. 시험력 1.961 N ~ 196.1 N (0.2~20 kgf), 유지 5~99 s, 하중속도 20/50/100/150 µm/s, 대물 10X·20X.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "시편 최대높이 210 mm(평면 앤빌), 최대깊이 170 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.25 Specifications — HV-100 시리즈 사양표",
+      "notes": "시험력 1.961 N ~ 196.1 N (0.2~20 kgf). 최소표시 0.1 µm(압흔 길이). 경도범위·정확도 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.fracture_toughness",
+      "technique": "압입균열법(IF) — 비커스 압흔 균열길이",
+      "standard": "JIS R 1607",
+      "specimen": "파인세라믹 등 취성재료, 시편 최대높이 210 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.25 Data processing functions — 'fracture toughness values in compliance with the IF method of the JIS standard (JIS R 1607)'",
+      "notes": "압입균열법(IF)은 비커스 압흔에서 뻗은 균열길이로 K_Ic 를 추정하는 간접법이라 SENB/CT 로 재는 파괴인성과 값이 다르게 나온다 — 같은 키에 담되 medium 으로 낮췄다. 장비가 직접 재는 게 아니라 소프트웨어 계산기능이다."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "시편 최대높이 210 mm(평면 앤빌), 최대깊이 170 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.25 Data processing functions 'Vickers/Knoop, Brinell, hardness calculation function' / p.28 특별부속품 '누프용 다이아몬드 압자 19BAA063'",
+      "notes": "누프용 압자가 별매 부속품으로 있고 데이터처리에 누프 경도 계산이 들어 있다. 시험력 1.961 N ~ 196.1 N (0.2~20 kgf), 대물 10X·20X, 최소표시 0.1 µm. 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     },
+     {
+      "property_key": "mechanical.hardness_brinell",
+      "technique": "저하중 브리넬 경도시험 — 초경 구압자, 압흔 직경 광학측정",
+      "specimen": "시편 최대높이 210 mm, 최대깊이 170 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.25 'Vickers/Knoop, Brinell, hardness calculation function' / p.28 부속품 '브리넬용 초경 구압자 1.0 / 2.5 / 5.0 mm', '브리넬 경도기준편 200HBw'",
+      "notes": "압자 직경 1.0·2.5·5.0 mm 초경 구압자가 부속품으로 있고 브리넬 기준편(200 HBW)까지 딸려 있어 환산이 아니라 실제 측정으로 읽었다. 다만 사양표 본문이 'Brinell hardness calculation function' 이라는 소프트웨어 항목으로만 적어 medium 으로 낮췄다. 하중은 비커스와 공용인 1.961 N ~ 196.1 N (0.2~20 kgf) 범위이고 브리넬 전용 하중표는 이 기종에 인쇄돼 있지 않다 — 하중/압자경 조합(HBW 표기의 필수 조건)이 확정되지 않는다. 규격번호 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HV-114",
+   "note": "비커스 경도시험기 HV-100 시리즈 — 시험력 9.807 N ~ 490.3 N (1~50 kgf)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 72,
+    "category": "mechanical",
+    "technique": "비커스 경도시험",
+    "description": "비커스 경도시험기 HV-100 시리즈 — 시험력 9.807 N ~ 490.3 N (1~50 kgf)",
+    "notes": "카탈로그가 HV-115 를 '사양은 HV-114 를 참조' 라고만 적어(CCD 카메라/모니터 유무 차이) 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)·브리넬(HB) 경도와 환산경도는 키가 없거나 환산값이다. 시험력 9.807 N ~ 490.3 N (1~50 kgf), 유지 5~99 s, 하중속도 20/50/100/150 µm/s, 대물 10X·20X.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "시편 최대높이 210 mm(평면 앤빌), 최대깊이 170 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.25 Specifications — HV-100 시리즈 사양표",
+      "notes": "시험력 9.807 N ~ 490.3 N (1~50 kgf). 최소표시 0.1 µm(압흔 길이). 경도범위·정확도 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.fracture_toughness",
+      "technique": "압입균열법(IF) — 비커스 압흔 균열길이",
+      "standard": "JIS R 1607",
+      "specimen": "파인세라믹 등 취성재료, 시편 최대높이 210 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.25 Data processing functions — 'fracture toughness values in compliance with the IF method of the JIS standard (JIS R 1607)'",
+      "notes": "압입균열법(IF)은 비커스 압흔에서 뻗은 균열길이로 K_Ic 를 추정하는 간접법이라 SENB/CT 로 재는 파괴인성과 값이 다르게 나온다 — 같은 키에 담되 medium 으로 낮췄다. 장비가 직접 재는 게 아니라 소프트웨어 계산기능이다."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "시편 최대높이 210 mm(평면 앤빌), 최대깊이 170 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.25 Data processing functions 'Vickers/Knoop, Brinell, hardness calculation function' / p.28 특별부속품 '누프용 다이아몬드 압자 19BAA063'",
+      "notes": "누프용 압자가 별매 부속품으로 있고 데이터처리에 누프 경도 계산이 들어 있다. 시험력 9.807 N ~ 490.3 N (1~50 kgf), 대물 10X·20X, 최소표시 0.1 µm. 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     },
+     {
+      "property_key": "mechanical.hardness_brinell",
+      "technique": "저하중 브리넬 경도시험 — 초경 구압자, 압흔 직경 광학측정",
+      "specimen": "시편 최대높이 210 mm, 최대깊이 170 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.25 'Vickers/Knoop, Brinell, hardness calculation function' / p.28 부속품 '브리넬용 초경 구압자 1.0 / 2.5 / 5.0 mm', '브리넬 경도기준편 200HBw'",
+      "notes": "압자 직경 1.0·2.5·5.0 mm 초경 구압자가 부속품으로 있고 브리넬 기준편(200 HBW)까지 딸려 있어 환산이 아니라 실제 측정으로 읽었다. 다만 사양표 본문이 'Brinell hardness calculation function' 이라는 소프트웨어 항목으로만 적어 medium 으로 낮췄다. 하중은 비커스와 공용인 9.807 N ~ 490.3 N (1~50 kgf) 범위이고 브리넬 전용 하중표는 이 기종에 인쇄돼 있지 않다 — 하중/압자경 조합(HBW 표기의 필수 조건)이 확정되지 않는다. 규격번호 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HV110",
+   "note": "비커스 경도시험기 — 시험력 9.807 N ~ 490.3 N (1~50 kgf), 전동 하중선택",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 98,
+    "category": "mechanical",
+    "technique": "비커스 경도시험",
+    "description": "비커스 경도시험기 — 시험력 9.807 N ~ 490.3 N (1~50 kgf), 전동 하중선택",
+    "notes": "시험력 9.807 N ~ 490.3 N (1~50 kgf), 하중정확도 ±1%, 유지 5~999 s, 총배율 20~1000X, 최소읽음 0.1 µm(50x 미만)/0.01 µm(50x 이상). 지원 시험법이 'HV, HK, HB (Light Force), Kc' 로 인쇄돼 있다. **매핑 포기** — 누프(HK)·브리넬(HB)은 키가 없다. 환산표시 8종(ASTM/ISO/JIS/SAE/BS)은 환산이지 측정이 아니다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "accuracy": "하중정확도 ±1%",
+      "specimen": "시편 최대높이 172 mm(Type B) / 132 mm(Type D). 곡률보정 0.01~200.00 mm",
+      "mapping_confidence": "high",
+      "source_detail": "K-6/K-7 SPECIFICATIONS — HV110",
+      "notes": "시험력 9.807 N ~ 490.3 N (1~50 kgf). accuracy 에 넣은 ±1% 는 '하중 정확도(loading accuracy)' 이지 경도값 정확도가 아니다 — 그대로 표기했다."
+     },
+     {
+      "property_key": "mechanical.fracture_toughness",
+      "technique": "압입균열법(IF) — 비커스 압흔 균열길이",
+      "specimen": "취성재료(세라믹 등), 시편 최대높이 172 mm(Type B) / 132 mm(Type D)",
+      "mapping_confidence": "medium",
+      "source_detail": "K-6/K-7 'Supported test method: HV, HK, HB (Light Force), Kc' — HV110",
+      "notes": "사양표가 'Kc' 라고만 적고 규격번호를 붙이지 않아 standard 를 비웠다(같은 Mitutoyo 의 E4104 카탈로그는 HV-100 시리즈에 JIS R 1607 IF 법을 명시한다). 압입균열법은 간접추정이라 medium."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "시편 최대높이 172 mm(Type B) / 132 mm(Type D). 곡률보정 0.01~200.00 mm",
+      "mapping_confidence": "high",
+      "source_detail": "K-6/K-7 SPECIFICATIONS — HV110 'Supported test method: HV, HK, HB (Light Force), Kc'",
+      "notes": "지원 시험법에 HK 가 명시돼 있고 부속품에 누프 다이아몬드 압자(19BAA063)가 있다. 시험력 9.807 N ~ 490.3 N (1~50 kgf), 하중정확도 ±1%, 최소읽음 0.1 µm(50x 미만)/0.01 µm(50x 이상). 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     },
+     {
+      "property_key": "mechanical.hardness_brinell",
+      "technique": "저하중 브리넬 경도시험 — 초경 구압자, 압흔 직경 광학측정",
+      "specimen": "시편 최대높이 172 mm(Type B) / 132 mm(Type D)",
+      "mapping_confidence": "high",
+      "source_detail": "K-6/K-7 'Supported test method: HV, HK, HB (Light Force**)' + 부속품 'CARBIDE-ALLOY BALL 1MM/2.5MM DIA.', 'Additional Test Force 0.5/1.25/5.625/12.5 kg Brinell Weight'",
+      "notes": "사양표가 지원 시험법으로 'HB (Light Force)' 를 명시하고 초경 구압자(1 mm·2.5 mm)와 브리넬 전용 분동(0.5·1.25·5.625·12.5 kg)이 부속품으로 있어 실제 측정 능력으로 읽었다. 필수 조건 중 압자경은 1.0·2.5 mm, 하중은 본체 9.807 N ~ 490.3 N (1~50 kgf) 에 브리넬 분동을 더한 조합이라 카탈로그가 조합표를 인쇄하지 않아 하중-압자경 짝은 확정되지 않는다. 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HV120",
+   "note": "비커스 경도시험기 — 시험력 2.942 N ~ 294.2 N (0.3~30 kgf), 전동 하중선택",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 99,
+    "category": "mechanical",
+    "technique": "비커스 경도시험",
+    "description": "비커스 경도시험기 — 시험력 2.942 N ~ 294.2 N (0.3~30 kgf), 전동 하중선택",
+    "notes": "시험력 2.942 N ~ 294.2 N (0.3~30 kgf), 하중정확도 ±1%, 유지 5~999 s, 총배율 20~1000X, 최소읽음 0.1 µm(50x 미만)/0.01 µm(50x 이상). 지원 시험법이 'HV, HK, HB (Light Force), Kc' 로 인쇄돼 있다. **매핑 포기** — 누프(HK)·브리넬(HB)은 키가 없다. 환산표시 8종(ASTM/ISO/JIS/SAE/BS)은 환산이지 측정이 아니다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "accuracy": "하중정확도 ±1%",
+      "specimen": "시편 최대높이 172 mm(Type B) / 132 mm(Type D). 곡률보정 0.01~200.00 mm",
+      "mapping_confidence": "high",
+      "source_detail": "K-6/K-7 SPECIFICATIONS — HV120",
+      "notes": "시험력 2.942 N ~ 294.2 N (0.3~30 kgf). accuracy 에 넣은 ±1% 는 '하중 정확도(loading accuracy)' 이지 경도값 정확도가 아니다 — 그대로 표기했다."
+     },
+     {
+      "property_key": "mechanical.fracture_toughness",
+      "technique": "압입균열법(IF) — 비커스 압흔 균열길이",
+      "specimen": "취성재료(세라믹 등), 시편 최대높이 172 mm(Type B) / 132 mm(Type D)",
+      "mapping_confidence": "medium",
+      "source_detail": "K-6/K-7 'Supported test method: HV, HK, HB (Light Force), Kc' — HV120",
+      "notes": "사양표가 'Kc' 라고만 적고 규격번호를 붙이지 않아 standard 를 비웠다(같은 Mitutoyo 의 E4104 카탈로그는 HV-100 시리즈에 JIS R 1607 IF 법을 명시한다). 압입균열법은 간접추정이라 medium."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "시편 최대높이 172 mm(Type B) / 132 mm(Type D). 곡률보정 0.01~200.00 mm",
+      "mapping_confidence": "high",
+      "source_detail": "K-6/K-7 SPECIFICATIONS — HV120 'Supported test method: HV, HK, HB (Light Force), Kc'",
+      "notes": "지원 시험법에 HK 가 명시돼 있고 부속품에 누프 다이아몬드 압자(19BAA063)가 있다. 시험력 2.942 N ~ 294.2 N (0.3~30 kgf), 하중정확도 ±1%, 최소읽음 0.1 µm(50x 미만)/0.01 µm(50x 이상). 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     },
+     {
+      "property_key": "mechanical.hardness_brinell",
+      "technique": "저하중 브리넬 경도시험 — 초경 구압자, 압흔 직경 광학측정",
+      "specimen": "시편 최대높이 172 mm(Type B) / 132 mm(Type D)",
+      "mapping_confidence": "high",
+      "source_detail": "K-6/K-7 'Supported test method: HV, HK, HB (Light Force**)' + 부속품 'CARBIDE-ALLOY BALL 1MM/2.5MM DIA.', 'Additional Test Force 0.5/1.25/5.625/12.5 kg Brinell Weight'",
+      "notes": "사양표가 지원 시험법으로 'HB (Light Force)' 를 명시하고 초경 구압자(1 mm·2.5 mm)와 브리넬 전용 분동(0.5·1.25·5.625·12.5 kg)이 부속품으로 있어 실제 측정 능력으로 읽었다. 필수 조건 중 압자경은 1.0·2.5 mm, 하중은 본체 2.942 N ~ 294.2 N (0.3~30 kgf) 에 브리넬 분동을 더한 조합이라 카탈로그가 조합표를 인쇄하지 않아 하중-압자경 짝은 확정되지 않는다. 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  }
+ ]
+}

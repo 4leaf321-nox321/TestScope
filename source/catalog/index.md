@@ -1,8 +1,14 @@
 # 장비 카탈로그 색인
 
-장비 객체 194 개 · 제조사 78 · 노드 1474 · 엣지 2867
+장비 객체 278 개 · 제조사 96 · 노드 1848 · 엣지 3468
 
 `limits` 는 시리즈 전체 범위. 단위는 키 이름에 있다(kN, mm/min, degC …). 빈 칸은 미기재.
+
+## Agilent Technologies (`agilent`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [agilent-5977c-gcms](equipment/agilent/agilent-5977c-gcms.json) | 기종 | chromatograph_mass_spectrometer | composition_analysis | – | – |  | limited |
 
 ## AMETEK / Lloyd Instruments (`ametek-lloyd`)
 
@@ -14,9 +20,11 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [anton-paar-litesizer](equipment/anton-paar/anton-paar-litesizer.json) | 계열 | particle_size_analyzer | particle_size | – | 0.0–90.0 |  | catalog |
 | [anton-paar-mcr-rheometer](equipment/anton-paar/anton-paar-mcr-rheometer.json) | 계열 | rotational_rheometer | rheology_rotational, dma, friction_wear_tribo, tensile, compression, flexure | – | -170–1730 (부속) | torque_mNm=2e-07–300; rotation_rpm=≤6000; frequency_Hz=–; humidity_pct=5–95; viscosity_Pa_s=0.001–100000000 | limited |
 | [anton-paar-nanoindentation](equipment/anton-paar/anton-paar-nanoindentation.json) | 계열 | instrumented_indentation | instrumented_indentation, friction_wear_tribo | – | ≤800 | indentation_force_mN=0.1–500 | limited |
 | [anton-paar-tribometers](equipment/anton-paar/anton-paar-tribometers.json) | 계열 | tribometer | friction_wear_tribo | – | -160–1000 | force_N=5e-06–70; humidity_pct=5–95; rotation_rpm=1e-06–3000; sliding_speed_m_s=1e-08–3.3; frequency_Hz=0.01–10; torque_mNm=≤450 | catalog |
+| [anton-paar-tribometers-materialtwin](equipment/anton-paar/anton-paar-tribometers-materialtwin.json) | 계열 (보탬→anton-paar-tribometers) | tribometer | friction_wear_tribo | – | – |  | catalog |
 
 ## Arbin Instruments (`arbin`)
 
@@ -44,6 +52,12 @@
 |---|---|---|---|---|---|---|---|
 | [bareiss-digi-test-ii](equipment/bareiss/bareiss-digi-test-ii.json) | 기종 | shore_irhd_hardness | hardness_shore, hardness_irhd | – | – | hardness_scales=Shore A, Micro Shore A, Shore A0, Shore B, Shore 0, Shore C, Shore D, Micro Shore D; specimen_thickness_mm=0.5–6 | catalog |
 
+## Brookfield AMETEK (`brookfield-ametek`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [brookfield-dv3t](equipment/brookfield-ametek/brookfield-dv3t.json) | 계열 | viscometer | rheology_rotational | – | – |  | catalog |
+
 ## Brüel & Kjær (HBK) (`bruel-kjaer`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
@@ -54,11 +68,15 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [bruker-avance-ssnmr](equipment/bruker/bruker-avance-ssnmr.json) | 기종 | nmr_spectrometer | composition_analysis | – | – |  | limited |
 | [bruker-contourx-200](equipment/bruker/bruker-contourx-200.json) | 기종 | optical_profilometer | surface_topography | – | – | scan_range_mm=≤10; vertical_resolution_nm=≤0.01; sample_thickness_mm=≤100; stage_size_mm=≤150; repeatability_pct=≤0.1 | catalog |
+| [bruker-d8-advance](equipment/bruker/bruker-d8-advance.json) | 기종 | xray_diffractometer | crystal_structure_analysis, dsc, coating_thickness | – | -193.0–2300.0 |  | catalog |
 | [bruker-dektakxt](equipment/bruker/bruker-dektakxt.json) | 기종 | optical_profilometer | surface_topography, coating_thickness | – | – | scan_length_mm=≤55; vertical_range_mm=≤1; stylus_force_mg=0.03–15; sample_thickness_mm=≤50; stylus_radius_um=2 | limited |
+| [bruker-dektakxt-materialtwin](equipment/bruker/bruker-dektakxt-materialtwin.json) | 계열 (보탬→bruker-dektakxt) | optical_profilometer | surface_topography, coating_thickness | – | – |  | limited |
 | [bruker-hysitron-pi-95-picoindenter](equipment/bruker/bruker-hysitron-pi-95-picoindenter.json) | 계열 | nanoindenter | instrumented_indentation, compression | – | – | force_N=≤0.0015; displacement_um=≤5; frequency_Hz=110–1800 | catalog |
 | [bruker-hysitron-ti-950-triboindenter](equipment/bruker/bruker-hysitron-ti-950-triboindenter.json) | 계열 | nanoindenter | instrumented_indentation, friction_wear_tribo, surface_topography | – | – | indentation_force_mN=–; position_resolution_nm=≤0.02; stage_travel_mm=≤250; data_rate_Hz=≤30000; field_of_view_mm=0.028–0.625; magnification=10–220 | catalog |
 | [bruker-hysitron-ts-75-triboscope](equipment/bruker/bruker-hysitron-ts-75-triboscope.json) | **부속** | nanoindenter | instrumented_indentation, surface_topography, friction_wear_tribo | – | – | position_resolution_nm=≤0.0004; indentation_force_mN=– | catalog |
+| [bruker-vertex-ftir](equipment/bruker/bruker-vertex-ftir.json) | 계열 | composition_spectrometer | composition_analysis | – | ≤-263.15 |  | limited |
 
 ## Buehler (Wilson) (`buehler`)
 
@@ -67,6 +85,7 @@
 | [buehler-wilson-hardness](equipment/buehler/buehler-wilson-hardness.json) | 계열 | hardness | hardness_rockwell, hardness_vickers, hardness_brinell, hardness_knoop | – | – | test_load_kgf=– | limited |
 | [buehler-wilson-uh4000](equipment/buehler/buehler-wilson-uh4000.json) | 계열 | universal_hardness | hardness_brinell, hardness_vickers, hardness_rockwell, hardness_knoop | – | – | test_load_kgf=0.5–750; hardness_scales=HV 0.5 – HV 100, HBW 1/1 – HBW 10/3000 (UH4750: HBW 10/750 max), HRA–HRV, HR15/30/45 N/T, HK, ball indentation (plastics) | catalog |
 | [buehler-wilson-vh3300](equipment/buehler/buehler-wilson-vh3300.json) | 계열 | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – | test_load_gf=10–50000; hardness_scales=HV, HK; specimen_height_mm=≤215; stage_travel_mm=180×180, 300×180 | catalog |
+| [buehler-wilson-vh3300-materialtwin](equipment/buehler/buehler-wilson-vh3300-materialtwin.json) | 계열 (보탬→buehler-wilson-vh3300) | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – |  | catalog |
 
 ## Chroma ATE (`chroma`)
 
@@ -124,10 +143,22 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [espec-agree-et](equipment/espec/espec-agree-et.json) | 기종 | climatic_chamber | temperature_cycling, damp_heat | – | – |  | limited |
+| [espec-ar-series](equipment/espec/espec-ar-series.json) | 계열 | climatic_chamber | damp_heat, temperature_cycling | – | – |  | limited |
+| [espec-criterion](equipment/espec/espec-criterion.json) | 계열 | climatic_chamber | damp_heat, temperature_cycling | – | – |  | limited |
+| [espec-ehs-tpc-hast](equipment/espec/espec-ehs-tpc-hast.json) | 기종 | hast_chamber | hast | – | – |  | limited |
+| [espec-industrial-ovens](equipment/espec/espec-industrial-ovens.json) | 기종 | industrial_oven | damp_heat | – | – |  | limited |
+| [espec-lab-series](equipment/espec/espec-lab-series.json) | 기종 | climatic_chamber | damp_heat | – | – |  | limited |
 | [espec-platinous-chambers](equipment/espec/espec-platinous-chambers.json) | 계열 | climatic_chamber | damp_heat, temperature_cycling | – | -70–200 | humidity_pct=5–98; heating_rate_K_min=3–6; cooling_rate_K_min=1–5; chamber_volume_L=225–900 | catalog |
+| [espec-platinous-chambers-materialtwin](equipment/espec/espec-platinous-chambers-materialtwin.json) | 계열 (보탬→espec-platinous-chambers) | climatic_chamber | damp_heat, temperature_cycling | – | – |  | limited |
 | [espec-qualmark-halt-hass](equipment/espec/espec-qualmark-halt-hass.json) | 계열 | halt_hass_chamber | halt_hass, vibration_sine_random, temperature_cycling, thermal_shock | – | -100–250 | heating_rate_K_min=≤70; acceleration_gRMS=5–75; table_size_mm=457–2794; payload_kg=45–907 | catalog |
+| [espec-su-sh-benchtop](equipment/espec/espec-su-sh-benchtop.json) | 기종 | climatic_chamber | damp_heat | – | – |  | limited |
 | [espec-tsa-thermal-shock](equipment/espec/espec-tsa-thermal-shock.json) | 계열 | thermal_shock_chamber | thermal_shock, temperature_cycling | – | -70–200 | preheat_limit_degC=≤205; precool_limit_degC=≥-77; temperature_fluctuation_degC=≤0.5; chamber_volume_L=40.8–299.2; load_kg=30–50; ambient_degC=0–40 | catalog |
+| [espec-tsa-thermal-shock-materialtwin](equipment/espec/espec-tsa-thermal-shock-materialtwin.json) | 계열 (보탬→espec-tsa-thermal-shock) | thermal_shock_chamber | thermal_shock, temperature_cycling | – | – |  | limited |
+| [espec-tsb-liquid-thermal-shock](equipment/espec/espec-tsb-liquid-thermal-shock.json) | 기종 | thermal_shock_chamber | thermal_shock | – | – |  | limited |
+| [espec-tse-11-a](equipment/espec/espec-tse-11-a.json) | 기종 | thermal_shock_chamber | thermal_shock | – | – |  | limited |
 | [espec-walk-in-chambers](equipment/espec/espec-walk-in-chambers.json) | 계열 | climatic_chamber | damp_heat, temperature_cycling | – | -70–150 | humidity_pct=10–95; heating_rate_K_min=1–4; cooling_rate_K_min=0.4–3 | catalog |
+| [espec-walk-in-chambers-materialtwin](equipment/espec/espec-walk-in-chambers-materialtwin.json) | 계열 (보탬→espec-walk-in-chambers) | climatic_chamber | damp_heat, temperature_cycling | – | – |  | limited |
 
 ## ETS-Lindgren (`ets-lindgren`)
 
@@ -135,6 +166,12 @@
 |---|---|---|---|---|---|---|---|
 | [ets-lindgren-shielding](equipment/ets-lindgren/ets-lindgren-shielding.json) | 계열 | shielded_enclosure | shielding_effectiveness, emi_emission | – | – | frequency_Hz=14000–1000000000; insertion_gain=– | limited |
 | [ets-lindgren-smart-reverberation-chamber](equipment/ets-lindgren/ets-lindgren-smart-reverberation-chamber.json) | 계열 | reverberation_chamber | emi_emission, shielding_effectiveness, esd_immunity, surge_eft_immunity | – | – | frequency_Hz=80000000–40000000000; chamber_volume_L=– | limited |
+
+## Filmetrics (KLA) (`filmetrics`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [filmetrics-f54](equipment/filmetrics/filmetrics-f54.json) | 계열 | film_thickness_analyzer | coating_thickness | – | – |  | catalog |
 
 ## Teledyne FLIR (`flir`)
 
@@ -204,12 +241,22 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [hitachi-nexta-sta](equipment/hitachi-high-tech/hitachi-nexta-sta.json) | 계열 | sta | tga, dsc | – | 20–1500 | balance_resolution_ug=– | catalog |
+| [hitachi-su3800-3900-sem](equipment/hitachi-high-tech/hitachi-su3800-3900-sem.json) | 계열 | electron_microscope | microscopy, composition_analysis | – | – |  | limited |
+
+## HORIBA Scientific (`horiba`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [horiba-fluoromax-plus](equipment/horiba/horiba-fluoromax-plus.json) | 기종 | optical_spectrometer | optical_spectroscopy, xray_void_inspection | – | -40.0–150.0 |  | catalog |
+| [horiba-gd-profiler-2](equipment/horiba/horiba-gd-profiler-2.json) | 기종 | composition_spectrometer | composition_analysis, surface_topography | – | – |  | catalog |
 
 ## Hot Disk AB (`hot-disk`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [hot-disk-tps-2200](equipment/hot-disk/hot-disk-tps-2200.json) | 기종 | thermal_conductivity | thermal_conductivity | – | -50.0–750.0 |  | catalog |
 | [hot-disk-tps-2500-s](equipment/hot-disk/hot-disk-tps-2500-s.json) | 기종 | thermal_conductivity | thermal_conductivity | – | -253–1000 | thermal_conductivity_W_mK=0.005–1800; thermal_diffusivity_mm2_s=0.01–1400; specimen_thickness_mm=≥0.01; measurement_time_s=1–2560 | catalog |
+| [hot-disk-tps-2500-s-materialtwin](equipment/hot-disk/hot-disk-tps-2500-s-materialtwin.json) | 계열 (보탬→hot-disk-tps-2500-s) | thermal_conductivity | thermal_conductivity | – | – |  | catalog |
 
 ## IMV Corporation (`imv`)
 
@@ -237,9 +284,11 @@
 | [instron-3119-600-environmental-chambers](equipment/instron/instron-3119-600-environmental-chambers.json) | **부속** | environmental_chamber | tensile, compression, flexure, fatigue | – | -150–600 |  | catalog |
 | [instron-3400-series](equipment/instron/instron-3400-series.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, puncture, friction_coefficient, shear, tear | 0.5–300 | – | crosshead_speed_mm_min=5e-05–1016; vertical_test_space_mm=651–1744; horizontal_test_space_mm=100–575; data_rate_Hz=≤1000 | catalog |
 | [instron-5900-series](equipment/instron/instron-5900-series.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, fatigue, creep | 0.5–600 | – | crosshead_speed_mm_min=0.0001–3000; vertical_test_space_mm=726–2050; horizontal_test_space_mm=100–763; data_rate_Hz=≤2500 | catalog |
+| [instron-5900-series-materialtwin](equipment/instron/instron-5900-series-materialtwin.json) | 계열 (보탬→instron-5900-series) | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, fatigue, creep | – | – |  | limited |
 | [instron-6800-series](equipment/instron/instron-6800-series.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, puncture, friction_coefficient, shear, tear, creep, relaxation | 0.5–300 | -150–1200 (부속) | crosshead_speed_mm_min=5e-05–3048; vertical_test_space_mm=738–1993; horizontal_test_space_mm=100–947; data_rate_Hz=≤5000 | catalog |
 | [instron-8800-servohydraulic](equipment/instron/instron-8800-servohydraulic.json) | 계열 | servohydraulic_fatigue | fatigue, fracture_toughness, tensile, compression, flexure, torsion, high_speed_tensile | – | – | dynamic_force_kN=25–250; torque_Nm=100; stroke_mm=100; frequency_Hz=–; vertical_test_space_mm=≤1067 | catalog |
 | [instron-9400-drop-tower](equipment/instron/instron-9400-drop-tower.json) | 계열 | drop_tower_impact | drop_weight_impact, puncture, tensile_impact | 0.45–222 | – | impact_energy_J=0.15–1800; impact_velocity_m_s=0.77–24; drop_height_m=0.03–29.4; drop_mass_kg=0.5–70 | catalog |
+| [instron-9400-drop-tower-materialtwin](equipment/instron/instron-9400-drop-tower-materialtwin.json) | 계열 (보탬→instron-9400-drop-tower) | drop_tower_impact | drop_weight_impact, puncture, tensile_impact | – | – |  | limited |
 | [instron-ave-video-extensometer](equipment/instron/instron-ave-video-extensometer.json) | **센서** | extensometer | tensile, compression, flexure | – | – | field_of_view_mm=85–840; gauge_length_mm=≥2.5; data_rate_Hz=≤500; following_speed_mm_min=≤2500 | catalog |
 | [instron-ceast-9050-pendulum](equipment/instron/instron-ceast-9050-pendulum.json) | 계열 | pendulum_impact | charpy_impact, izod_impact, tensile_impact | – | – | impact_energy_J=0.5–50; impact_velocity_m_s=1–3.8; specimen_diameter_mm=≤25 | catalog |
 | [instron-ceast-melt-flow-mf](equipment/instron/instron-ceast-melt-flow-mf.json) | 계열 | melt_flow_indexer | melt_flow | – | – | melt_temperature_degC=30–400; melt_load_kg=0.325–21.6 | catalog |
@@ -252,6 +301,30 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [instrument-systems-lumicam-4000b](equipment/instrument-systems/instrument-systems-lumicam-4000b.json) | 계열 | imaging_colorimeter | photometry_colorimetry | – | – | luminance_cd_m2=0.0003–4300000; resolution_pixels=≤12288000; dynamic_range=≤43000000000 | catalog |
+
+## J.A. Woollam (`ja-woollam`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [woollam-rc2](equipment/ja-woollam/woollam-rc2.json) | 기종 | film_thickness_analyzer | coating_thickness | – | ≤300.0 |  | catalog |
+
+## JEOL (`jeol`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [jeol-jamp-9510f](equipment/jeol/jeol-jamp-9510f.json) | 기종 | composition_spectrometer | composition_analysis | – | – |  | catalog |
+| [jeol-jem-f200](equipment/jeol/jeol-jem-f200.json) | 기종 | electron_microscope | microscopy, crystal_structure_analysis | – | – |  | limited |
+| [jeol-jps-9030](equipment/jeol/jeol-jps-9030.json) | 기종 | composition_spectrometer | composition_analysis | – | – |  | limited |
+| [jeol-jsm-it-fesem](equipment/jeol/jeol-jsm-it-fesem.json) | 계열 | electron_microscope | composition_analysis, crystal_structure_analysis | – | – |  | catalog |
+| [jeol-jsx-1000s](equipment/jeol/jeol-jsx-1000s.json) | 기종 | composition_spectrometer | composition_analysis | – | – |  | catalog |
+| [jeol-jxa-epma](equipment/jeol/jeol-jxa-epma.json) | 계열 | electron_microscope | composition_analysis | – | – |  | catalog |
+| [jeol-xtalab-synergy-ed](equipment/jeol/jeol-xtalab-synergy-ed.json) | 기종 | xray_diffractometer | crystal_structure_analysis | – | – |  | catalog |
+
+## Keithley (Tektronix) (`keithley`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [keithley-4200-scs](equipment/keithley/keithley-4200-scs.json) | 계열 | electrical_property_tester | electrical_transport | – | – |  | catalog |
 
 ## Keysight Technologies (`keysight`)
 
@@ -275,7 +348,10 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [kla-g200x](equipment/kla/kla-g200x.json) | 기종 | nanoindenter | instrumented_indentation, fatigue | – | ≤300.0 |  | catalog |
 | [kla-imicro](equipment/kla/kla-imicro.json) | 기종 | instrumented_indentation | instrumented_indentation, friction_wear_tribo, dma | – | ≤300 | indentation_force_mN=≤1000; data_rate_Hz=≤100000 | catalog |
+| [kla-imicro-materialtwin](equipment/kla/kla-imicro-materialtwin.json) | 계열 (보탬→kla-imicro) | instrumented_indentation | instrumented_indentation, friction_wear_tribo, dma | – | – |  | catalog |
+| [kla-tencor-p-7](equipment/kla/kla-tencor-p-7.json) | 기종 | optical_profilometer | surface_topography | – | – |  | catalog |
 
 ## Konica Minolta Sensing (`konica-minolta`)
 
@@ -283,6 +359,18 @@
 |---|---|---|---|---|---|---|---|
 | [konica-minolta-ca-410](equipment/konica-minolta/konica-minolta-ca-410.json) | 계열 | display_color_analyzer | photometry_colorimetry | – | – | luminance_cd_m2=0.002–12000; acceptance_angle_deg=4–10; measurement_distance_mm=28–200 | catalog |
 | [konica-minolta-cs-2000](equipment/konica-minolta/konica-minolta-cs-2000.json) | 계열 | spectroradiometer | photometry_colorimetry | – | – | luminance_cd_m2=0.0005–50000000; illuminance_lx=1.0–7500000; spectral_bandwidth_nm=≤5; measuring_angle_deg=1, 0.2, 0.1; polarization_error_pct=≤2 | catalog |
+
+## KRÜSS (`kruss`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [kruss-dsa100hp](equipment/kruss/kruss-dsa100hp.json) | 계열 | contact_angle_analyzer | contact_angle | – | 20.0–250.0 |  | catalog |
+
+## Lake Shore Cryotronics (`lake-shore`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [lake-shore-hms](equipment/lake-shore/lake-shore-hms.json) | 계열 | electrical_property_tester | electrical_transport | – | -271.15–526.85 |  | catalog |
 
 ## Lansmont Corporation (`lansmont`)
 
@@ -315,6 +403,9 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [malvern-kinexus](equipment/malvern-panalytical/malvern-kinexus.json) | 계열 | rotational_rheometer | rheology_rotational | – | -40–200 | torque_mNm=5e-07–250; angular_velocity_rad_s=1e-08–500; frequency_Hz=1e-06–150; force_N=0.001–50 | catalog |
+| [malvern-kinexus-materialtwin](equipment/malvern-panalytical/malvern-kinexus-materialtwin.json) | 계열 (보탬→malvern-kinexus) | rotational_rheometer | rheology_rotational, shear | – | – |  | catalog |
+| [malvern-mastersizer-3000](equipment/malvern-panalytical/malvern-mastersizer-3000.json) | 기종 | particle_size_analyzer | particle_size | – | – |  | catalog |
+| [malvern-zetasizer-nano-zsp](equipment/malvern-panalytical/malvern-zetasizer-nano-zsp.json) | 기종 | particle_size_analyzer | particle_size | – | – |  | catalog |
 
 ## Mecmesin (`mecmesin`)
 
@@ -323,20 +414,46 @@
 | [mecmesin-multitest](equipment/mecmesin/mecmesin-multitest.json) | 계열 | force_tester | tensile, compression, peel, flexure, friction_coefficient | 0.002–50 | – | crosshead_speed_mm_min=0.1–1200; crosshead_travel_mm=500–1200 | catalog |
 | [mecmesin-omnitest](equipment/mecmesin/mecmesin-omnitest.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, friction_coefficient | 0.002–50 | – | crosshead_speed_mm_min=0.01–500; crosshead_travel_mm=507–1230; horizontal_test_space_mm=420, 425; data_rate_Hz=≤1000 | catalog |
 
+## Metrohm (`metrohm`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [metrohm-851-titrando](equipment/metrohm/metrohm-851-titrando.json) | 기종 | karl_fischer_titrator | water_content | – | – |  | catalog |
+
 ## METTLER TOLEDO (`mettler-toledo`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [mettler-dma-sdta861e](equipment/mettler-toledo/mettler-dma-sdta861e.json) | 기종 | dma | dma | – | -150–500 | force_N=0.001–40; frequency_Hz=0.001–1000; displacement_um=≤1600; sample_length_mm=≤100 | catalog |
 | [mettler-tga-dsc-1](equipment/mettler-toledo/mettler-tga-dsc-1.json) | 계열 | sta | tga, dsc | – | 20–1600 | heating_rate_K_min=≤250; sample_mass_mg=≤5000; balance_resolution_ug=≥0.1; sample_volume_uL=≤900 | catalog |
+| [mettler-toledo-dsc-3](equipment/mettler-toledo/mettler-toledo-dsc-3.json) | 계열 | dsc | dsc | – | -150.0–700.0 |  | limited |
+
+## Micromeritics (`micromeritics`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [micromeritics-accupyc-ii-1345](equipment/micromeritics/micromeritics-accupyc-ii-1345.json) | 기종 | pycnometer_porosimeter | density_porosity | – | 15.0–50.0 |  | catalog |
+| [micromeritics-autopore-v](equipment/micromeritics/micromeritics-autopore-v.json) | 기종 | pycnometer_porosimeter | instrumented_indentation | – | – |  | catalog |
 
 ## Mitutoyo (`mitutoyo`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [mitutoyo-abk-1](equipment/mitutoyo/mitutoyo-abk-1.json) | 기종 | brinell_hardness | hardness_brinell | – | – |  | catalog |
+| [mitutoyo-ar-atk-rockwell](equipment/mitutoyo/mitutoyo-ar-atk-rockwell.json) | 계열 | rockwell_hardness | hardness_rockwell | – | – |  | catalog |
+| [mitutoyo-avk](equipment/mitutoyo/mitutoyo-avk.json) | 계열 | vickers_knoop_hardness | hardness_vickers | – | ≤1200.0 |  | catalog |
 | [mitutoyo-hardmatic-ud-410-leeb](equipment/mitutoyo/mitutoyo-hardmatic-ud-410-leeb.json) | 계열 | portable_hardness | hardness_leeb | – | – | hardness_scales=HLD, HLDC, HLD+15, HLDL | limited |
+| [mitutoyo-hh-300-durometer](equipment/mitutoyo/mitutoyo-hh-300-durometer.json) | 계열 | shore_irhd_hardness | hardness_shore | – | – |  | catalog |
+| [mitutoyo-hm-200](equipment/mitutoyo/mitutoyo-hm-200.json) | 계열 | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – |  | catalog |
 | [mitutoyo-hm-micro-vickers](equipment/mitutoyo/mitutoyo-hm-micro-vickers.json) | 계열 | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – | test_load_gf=0.05–2000; hardness_scales=HV, HK; specimen_height_mm=≤133; specimen_depth_mm=≤160 | catalog |
+| [mitutoyo-hm-micro-vickers-materialtwin](equipment/mitutoyo/mitutoyo-hm-micro-vickers-materialtwin.json) | 계열 (보탬→mitutoyo-hm-micro-vickers) | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – |  | catalog |
+| [mitutoyo-hr-500](equipment/mitutoyo/mitutoyo-hr-500.json) | 계열 | rockwell_hardness | hardness_rockwell | – | – |  | catalog |
+| [mitutoyo-hr-600](equipment/mitutoyo/mitutoyo-hr-600.json) | 계열 | rockwell_hardness | hardness_rockwell | – | – |  | catalog |
 | [mitutoyo-hr-series-rockwell](equipment/mitutoyo/mitutoyo-hr-series-rockwell.json) | 계열 | rockwell_hardness | hardness_rockwell, hardness_brinell | – | – | test_load_kgf=6.25–187.5; hardness_scales=HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH; specimen_height_mm=≤395; specimen_depth_mm=≤165 | catalog |
+| [mitutoyo-hr-series-rockwell-materialtwin](equipment/mitutoyo/mitutoyo-hr-series-rockwell-materialtwin.json) | 계열 (보탬→mitutoyo-hr-series-rockwell) | rockwell_hardness | hardness_rockwell, hardness_brinell | – | – |  | catalog |
+| [mitutoyo-hv-100](equipment/mitutoyo/mitutoyo-hv-100.json) | 계열 | vickers_knoop_hardness | hardness_vickers, fatigue, hardness_knoop, hardness_brinell | – | – |  | catalog |
+| [mitutoyo-mzt-500](equipment/mitutoyo/mitutoyo-mzt-500.json) | 기종 | instrumented_indentation | instrumented_indentation | – | – |  | catalog |
+| [mitutoyo-surftest-sj-410](equipment/mitutoyo/mitutoyo-surftest-sj-410.json) | 계열 | surface_roughness_tester | surface_topography | – | – |  | catalog |
 
 ## Molex (`molex`)
 
@@ -365,6 +482,7 @@
 | [mts-criterion-series-40](equipment/mts/mts-criterion-series-40.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear | 0.001–1200 | – | crosshead_speed_mm_min=0.005–3000; vertical_test_space_mm=820–2000; horizontal_test_space_mm=100–1000; data_rate_Hz=≤5000 | catalog |
 | [mts-exceed-series-40](equipment/mts/mts-exceed-series-40.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel | 0.005–600 | – | crosshead_speed_mm_min=0.001–508; vertical_test_space_mm=700–1450; horizontal_test_space_mm=100–750; data_rate_Hz=≤2500 | catalog |
 | [mts-landmark-servohydraulic](equipment/mts/mts-landmark-servohydraulic.json) | 계열 | servohydraulic_fatigue | fatigue, fracture_toughness, thermomechanical_fatigue, tensile, compression, flexure, relaxation | – | – | dynamic_force_kN=5–500; stroke_mm=100, 150, 250; frequency_Hz=≤200; vertical_test_space_mm=0–2129; horizontal_test_space_mm=460, 533, 635, 762 | catalog |
+| [mts-landmark-servohydraulic-materialtwin](equipment/mts/mts-landmark-servohydraulic-materialtwin.json) | 계열 (보탬→mts-landmark-servohydraulic) | servohydraulic_fatigue | fatigue, fracture_toughness, thermomechanical_fatigue, tensile, compression, flexure, relaxation, creep | – | – |  | catalog |
 
 ## NETZSCH Analyzing & Testing (`netzsch`)
 
@@ -372,8 +490,11 @@
 |---|---|---|---|---|---|---|---|
 | [netzsch-arc-244-305](equipment/netzsch/netzsch-arc-244-305.json) | 계열 | accelerating_rate_calorimeter | thermal_runaway_calorimetry, battery_abuse | – | 20–500 | pressure_bar=0–150; sample_volume_mL=0.5–130; tracking_rate_K_min=≤200; temperature_reproducibility_K=≤0.1 | catalog |
 | [netzsch-dil-402-expedis](equipment/netzsch/netzsch-dil-402-expedis.json) | 계열 | dilatometer | dilatometry, tma | – | -180–2800 | heating_rate_K_min=0.001–100; displacement_um=≤25000; force_N=0.01–3; sample_length_mm=≤52; specimen_diameter_mm=≤19 | catalog |
+| [netzsch-dil-402-expedis-materialtwin](equipment/netzsch/netzsch-dil-402-expedis-materialtwin.json) | 계열 (보탬→netzsch-dil-402-expedis) | dilatometer | dilatometry, tma | – | – |  | catalog |
 | [netzsch-dsc-300-caliris](equipment/netzsch/netzsch-dsc-300-caliris.json) | 계열 | dsc | dsc | – | -180–750 | heating_rate_K_min=≤500; sample_mass_mg=– | catalog |
+| [netzsch-lfa-400](equipment/netzsch/netzsch-lfa-400.json) | 계열 | thermal_conductivity | thermal_conductivity | – | -125.0–2800.0 |  | catalog |
 | [netzsch-lfa-467-hyperflash](equipment/netzsch/netzsch-lfa-467-hyperflash.json) | 계열 | thermal_conductivity | thermal_conductivity | – | -100–1250 | heating_rate_K_min=≤50; thermal_diffusivity_mm2_s=0.01–2000; thermal_conductivity_W_mK=0.1–4000; specimen_diameter_mm=≤25.4; specimen_thickness_mm=0.01–6; stati | catalog |
+| [netzsch-sta-449](equipment/netzsch/netzsch-sta-449.json) | 계열 | sta | tga, dsc | – | -150.0–2400.0 |  | catalog |
 | [netzsch-tg-209-f3-tarsus](equipment/netzsch/netzsch-tg-209-f3-tarsus.json) | 기종 | tga | tga | – | 20–1000 | heating_rate_K_min=0.001–200; sample_mass_mg=≤2000; balance_resolution_ug=0.1 | catalog |
 | [netzsch-tma-402-hyperion](equipment/netzsch/netzsch-tma-402-hyperion.json) | 계열 | tma | tma, dma, creep, relaxation | – | -150–1550 | heating_rate_K_min=0.001–50; force_N=0.001–4; displacement_um=≤2500; frequency_Hz=0.0003–1; sample_length_mm=≤30 | catalog |
 
@@ -408,12 +529,33 @@
 | [nordson-dage-4000plus-bondtester](equipment/nordson-dage/nordson-dage-4000plus-bondtester.json) | 기종 | bond_tester | wire_bond_strength | – | – | push_force_kgf=≤50; pull_force_kgf=≤100; shear_force_kgf=≤200; stage_travel_mm=≤300 | catalog |
 | [nordson-dage-quadra-xray](equipment/nordson-dage/nordson-dage-quadra-xray.json) | 계열 | xray_inspection | xray_void_inspection | – | – | tube_voltage_kV=30–160; tube_power_W=10–20; feature_recognition_um=≥0.1; magnification=≤68000; inspection_area_mm=≤510; sample_size_mm=≤740; sample_weight_kg=≤5 | catalog |
 | [nordson-dage-sonoscan-gen6](equipment/nordson-dage/nordson-dage-sonoscan-gen6.json) | 기종 | acoustic_microscope | acoustic_delamination | – | – | wafer_size_mm=≤300; transducer_frequency_MHz=– | limited |
+| [nordson-gen7-c-sam](equipment/nordson-dage/nordson-gen7-c-sam.json) | 기종 | acoustic_microscope | acoustic_delamination | – | – |  | limited |
+
+## Ossila (`ossila`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [ossila-four-point-probe](equipment/ossila/ossila-four-point-probe.json) | 기종 | electrical_property_tester | electrical_transport | – | – |  | catalog |
+
+## Oxford Instruments (`oxford-instruments`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [oxford-symmetry-s2](equipment/oxford-instruments/oxford-symmetry-s2.json) | 기종 | electron_microscope | crystal_structure_analysis | – | – |  | catalog |
+
+## Park Systems (`park-systems`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [park-nx10](equipment/park-systems/park-nx10.json) | 기종 | atomic_force_microscope | surface_topography | – | – |  | limited |
 
 ## PerkinElmer (`perkinelmer`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [perkinelmer-dma-8000](equipment/perkinelmer/perkinelmer-dma-8000.json) | 기종 | dma | dma, compression | – | -190.0–600.0 |  | catalog |
 | [perkinelmer-dsc-8000](equipment/perkinelmer/perkinelmer-dsc-8000.json) | 계열 | dsc | dsc | – | – | heating_rate_K_min=0.01–750; pressure_psi=≤600 | limited |
+| [perkinelmer-frontier-ftir](equipment/perkinelmer/perkinelmer-frontier-ftir.json) | 기종 | composition_spectrometer | composition_analysis | – | – |  | limited |
 
 ## Proceq (Screening Eagle) (`proceq`)
 
@@ -428,6 +570,19 @@
 | [q-lab-q-fog](equipment/q-lab/q-lab-q-fog.json) | 계열 | corrosion_chamber | salt_spray_corrosion, damp_heat | – | – | chamber_volume_L=600, 1100; humidity_pct=20–100 | catalog |
 | [q-lab-q-sun](equipment/q-lab/q-lab-q-sun.json) | 계열 | weathering_tester | accelerated_weathering | – | – | irradiance_control_nm=340, 420, 300-400 (TUV); humidity_pct=–; stations=17, 31, 55 | catalog |
 | [q-lab-quv](equipment/q-lab/q-lab-quv.json) | 기종 | weathering_tester | accelerated_weathering | – | – |  | limited |
+
+## Renishaw (`renishaw`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [renishaw-invia](equipment/renishaw/renishaw-invia.json) | 계열 | composition_spectrometer | composition_analysis | – | – |  | limited |
+
+## Rigaku (`rigaku`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [rigaku-smartlab](equipment/rigaku/rigaku-smartlab.json) | 기종 | xray_diffractometer | crystal_structure_analysis, dsc, coating_thickness | – | – |  | catalog |
+| [rigaku-zsx-primus-400](equipment/rigaku/rigaku-zsx-primus-400.json) | 기종 | composition_spectrometer | composition_analysis | – | – |  | catalog |
 
 ## Rohde & Schwarz (`rohde-schwarz`)
 
@@ -446,12 +601,15 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [shimadzu-ag-xplus](equipment/shimadzu/shimadzu-ag-xplus.json) | 계열 | universal_testing_machine | tensile, flexure, compression, peel | – | -180.0–320.0 |  | catalog |
 | [shimadzu-ags-v](equipment/shimadzu/shimadzu-ags-v.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, tear, friction_coefficient | 0.001–10 | – | crosshead_speed_mm_min=0.0005–1500; return_speed_mm_min=≤1650; vertical_test_space_mm=≤1180; horizontal_test_space_mm=425; data_rate_Hz=≤5000 | catalog |
 | [shimadzu-ags-x](equipment/shimadzu/shimadzu-ags-x.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear | 0.001–300 | -70–1100 (부속) | crosshead_speed_mm_min=0.001–1600; vertical_test_space_mm=1200–1475; horizontal_test_space_mm=425–600; data_rate_Hz=≤1000; humidity_pct=40–95 | catalog |
+| [shimadzu-ags-x-materialtwin](equipment/shimadzu/shimadzu-ags-x-materialtwin.json) | 계열 (보탬→shimadzu-ags-x) | universal_testing_machine | tensile, compression, flexure, shear, peel, tear | – | – |  | catalog |
 | [shimadzu-agx-v2](equipment/shimadzu/shimadzu-agx-v2.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, creep, relaxation | 0.01–600 | -70–1100 (부속) | crosshead_speed_mm_min=5e-05–3000; vertical_test_space_mm=180–2325; horizontal_test_space_mm=420–790; frame_stiffness_kN_mm=60–700; data_rate_Hz=≤10000 | catalog |
 | [shimadzu-duh-211](equipment/shimadzu/shimadzu-duh-211.json) | 계열 | instrumented_indentation | instrumented_indentation, hardness_vickers, hardness_knoop | – | – | indentation_force_mN=0.1–1961; displacement_um=0–100; specimen_height_mm=≤60; stage_travel_mm=25×25 | catalog |
 | [shimadzu-hmv-g](equipment/shimadzu/shimadzu-hmv-g.json) | 계열 | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – | test_load_gf=1–2000; hardness_scales=HV, HK | limited |
 | [shimadzu-uh-x-fx](equipment/shimadzu/shimadzu-uh-x-fx.json) | 계열 | hydraulic_utm | tensile, compression, flexure | 200–4000 | – | crosshead_speed_mm_min=0.1–100; stroke_mm=200–350; grip_span_mm=720–1150; specimen_diameter_mm=8–120; specimen_thickness_mm=0–120 | catalog |
+| [shimadzu-uv-2600-2700](equipment/shimadzu/shimadzu-uv-2600-2700.json) | 계열 | optical_spectrometer | optical_spectroscopy | – | – |  | catalog |
 
 ## Shinyei Testing Machinery (`shinyei`)
 
@@ -482,10 +640,12 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [ta-electroforce](equipment/ta-instruments/ta-electroforce.json) | 계열 | electrodynamic_fatigue | fatigue, dma, tensile, compression, torsion, flexure | – | -150–600 | force_N=0.002–15000; stroke_mm=5–150; frequency_Hz=1e-05–300; torque_Nm=5.6, 14, 25, 49, 70 | catalog |
+| [ta-instruments-ar-rheometer](equipment/ta-instruments/ta-instruments-ar-rheometer.json) | 계열 | rotational_rheometer | shear, creep, dma | – | -160.0–600.0 |  | catalog |
 | [ta-instruments-discovery-dsc](equipment/ta-instruments/ta-instruments-discovery-dsc.json) | 계열 | dsc | dsc | – | -180–725 | accuracy_degC=≤0.025 | catalog |
 | [ta-instruments-discovery-hybrid-rheometer](equipment/ta-instruments/ta-instruments-discovery-hybrid-rheometer.json) | 계열 | rotational_rheometer | rheology_rotational | – | – | torque_mNm=≤200; frequency_Hz=1e-07–100; angular_velocity_rad_s=0–300; force_N=≤50 | catalog |
 | [ta-instruments-discovery-light-flash](equipment/ta-instruments/ta-instruments-discovery-light-flash.json) | 계열 | thermal_conductivity | thermal_conductivity | – | ≤1600 | thermal_diffusivity_mm2_s=0.01–1000; thermal_conductivity_W_mK=0.1–2000; specimen_thickness_mm=≤10; specimen_diameter_mm=8, 10, 12.7, 15.9, 25.4 | catalog |
 | [ta-instruments-discovery-tga](equipment/ta-instruments/ta-instruments-discovery-tga.json) | 계열 | tga | tga | – | ≤1200 | heating_rate_K_min=0.1–500; cooling_rate_K_min=–; sample_mass_mg=≤750; balance_resolution_ug=≤0.001 | catalog |
+| [ta-instruments-discovery-tga-materialtwin](equipment/ta-instruments/ta-instruments-discovery-tga-materialtwin.json) | 계열 (보탬→ta-instruments-discovery-tga) | tga | tga | – | ≤1200.0 |  | catalog |
 | [ta-instruments-dma](equipment/ta-instruments/ta-instruments-dma.json) | 계열 | dma | dma | – | -150–600 | force_N=0.0001–18; frequency_Hz=0.01–200; heating_rate_K_min=0.1–20; cooling_rate_K_min=0.1–10; displacement_um=0.5–10000 | catalog |
 | [ta-instruments-rsa-g2](equipment/ta-instruments/ta-instruments-rsa-g2.json) | 계열 | dma | dma | – | -150–600 (부속) | force_N=0.0005–35; frequency_Hz=2e-05–100; heating_rate_K_min=0.1–60; cooling_rate_K_min=0.1–60; displacement_mm=5e-05–1.5 | catalog |
 | [ta-instruments-sdt-q600](equipment/ta-instruments/ta-instruments-sdt-q600.json) | 계열 | sta | tga, dsc | – | ≤1500 | heating_rate_K_min=0.1–100; sample_volume_uL=40, 90, 110 | catalog |
@@ -515,6 +675,7 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [thermo-haake-mars](equipment/thermo-fisher/thermo-haake-mars.json) | 계열 | rotational_rheometer | rheology_rotational, dma, friction_wear_tribo | – | -150–600 | torque_mNm=2e-06–200; rotation_rpm=1e-08–4500; frequency_Hz=1e-06–100; force_N=0.01–50 | catalog |
+| [thermo-nexsa-g2](equipment/thermo-fisher/thermo-nexsa-g2.json) | 기종 | composition_spectrometer | composition_analysis | – | – |  | catalog |
 
 ## Thermotron Industries (`thermotron`)
 
@@ -570,6 +731,13 @@
 |---|---|---|---|---|---|---|---|
 | [yokogawa-wt5000](equipment/yokogawa/yokogawa-wt5000.json) | 기종 | power_analyzer | power_consumption | – | – | frequency_Hz=0.1–5000000; current_A=0.005–30; voltage_V=≥1.5; input_elements=≤7; harmonic_order=≤500 | catalog |
 
+## ZEISS (`zeiss`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [zeiss-gemini-fesem](equipment/zeiss/zeiss-gemini-fesem.json) | 기종 | electron_microscope | microscopy, composition_analysis | – | – |  | limited |
+| [zeiss-xradia-versa](equipment/zeiss/zeiss-xradia-versa.json) | 계열 | xray_inspection | xray_void_inspection, crystal_structure_analysis | – | – |  | catalog |
+
 ## ZwickRoell (`zwickroell`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
@@ -587,3 +755,9 @@
 | [zwickroell-vibrophore](equipment/zwickroell/zwickroell-vibrophore.json) | 계열 | resonance_fatigue | fatigue, fracture_toughness, tensile, compression, flexure, torsion | – | – | dynamic_force_kN=15–1000; frequency_Hz=30–285; crosshead_speed_mm_min=0.0001–600; vertical_test_space_mm=≤2310; horizontal_test_space_mm=626, 982 | catalog |
 | [zwickroell-zhr-rockwell](equipment/zwickroell/zwickroell-zhr-rockwell.json) | 계열 | rockwell_hardness | hardness_rockwell, hardness_brinell, hardness_vickers | – | – | test_load_kgf=6.25–250; hardness_scales=HRA–HRV, HR15/30/45 N/T/W/X/Y, HRα plastics E/L/M/R, HR2.5 ball, HBT, HVT 10–100, ball indentation 49–961 N; specimen_he | catalog |
 | [zwickroell-zhu250](equipment/zwickroell/zwickroell-zhu250.json) | 기종 | universal_hardness | hardness_vickers, hardness_knoop, hardness_brinell, hardness_rockwell | – | – | test_load_kgf=1–250; hardness_scales=HV1–HV100, HVT, HK1, HBW 1/1 – 10/250, HBT, HRA/B/C/D/E/F/G/H/K, HR15/30/45 N/T, ball indentation 49–961 N; specimen_height | catalog |
+
+## Zygo (AMETEK) (`zygo`)
+
+| id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
+|---|---|---|---|---|---|---|---|
+| [zygo-newview-nx2](equipment/zygo/zygo-newview-nx2.json) | 기종 | optical_profilometer | surface_topography | – | – |  | catalog |

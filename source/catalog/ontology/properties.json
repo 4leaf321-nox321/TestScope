@@ -1,0 +1,4323 @@
+{
+ "_comment": "물성 항목 — 기준정보 축 property 의 값. MaterialTwin property_definition (materialtwin-20260905, 271종)을 tools_from_materialtwin.py 가 옮긴 것이고 key 가 값의 code 다. aliases 는 MatNexus property_aliases 스냅샷. 손으로 고치지 말고 MaterialTwin 쪽을 고친 뒤 다시 돌린다 — 두 곳에서 고치면 갈린다.",
+ "source": "materialtwin-20260905",
+ "properties": [
+  {
+   "key": "mechanical.youngs_modulus",
+   "domain": "mechanical",
+   "name_ko": "영률",
+   "symbol": "E",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E111",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "E",
+     "source": "standard"
+    },
+    {
+     "alias": "elastic modulus",
+     "source": "seed"
+    },
+    {
+     "alias": "Young's modulus",
+     "source": "standard"
+    },
+    {
+     "alias": "종탄성계수",
+     "source": "seed"
+    },
+    {
+     "alias": "영률",
+     "source": "seed"
+    },
+    {
+     "alias": "탄성계수",
+     "source": "seed"
+    }
+   ]
+  },
+  {
+   "key": "mechanical.yield_strength",
+   "domain": "mechanical",
+   "name_ko": "항복강도",
+   "symbol": "Rp0.2",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6892",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "0.2% proof stress",
+     "source": "standard",
+     "note": "ISO 6892-1 Rp0.2"
+    },
+    {
+     "alias": "항복점",
+     "source": "seed"
+    },
+    {
+     "alias": "yield strength",
+     "source": "standard"
+    },
+    {
+     "alias": "yield stress",
+     "source": "seed",
+     "note": "금속 문맥. 유변학 항복응력과 다르다"
+    },
+    {
+     "alias": "proof stress",
+     "source": "standard",
+     "note": "ISO 6892 표기"
+    },
+    {
+     "alias": "항복응력",
+     "source": "seed",
+     "note": "금속 문맥에서 사람이 흔히 이렇게 부른다"
+    },
+    {
+     "alias": "Rp0.2",
+     "source": "standard",
+     "note": "ISO 6892-1"
+    },
+    {
+     "alias": "YS",
+     "source": "seed"
+    }
+   ]
+  },
+  {
+   "key": "mechanical.tensile_strength",
+   "domain": "mechanical",
+   "name_ko": "인장강도(UTS)",
+   "symbol": "Rm",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6892",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "ultimate tensile strength",
+     "source": "standard"
+    },
+    {
+     "alias": "인장강도",
+     "source": "seed"
+    },
+    {
+     "alias": "Rm",
+     "source": "standard",
+     "note": "ISO 6892-1"
+    },
+    {
+     "alias": "UTS",
+     "source": "seed"
+    },
+    {
+     "alias": "최대인장강도",
+     "source": "seed"
+    },
+    {
+     "alias": "tensile strength",
+     "source": "standard"
+    }
+   ]
+  },
+  {
+   "key": "mechanical.elongation_at_break",
+   "domain": "mechanical",
+   "name_ko": "파단연신율",
+   "symbol": "A",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6892",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "연신율",
+     "source": "seed"
+    },
+    {
+     "alias": "elongation at break",
+     "source": "standard"
+    },
+    {
+     "alias": "elongation",
+     "source": "seed"
+    },
+    {
+     "alias": "A",
+     "source": "standard",
+     "note": "ISO 6892-1"
+    },
+    {
+     "alias": "파단연신율",
+     "source": "seed"
+    }
+   ]
+  },
+  {
+   "key": "mechanical.poisson_ratio",
+   "domain": "mechanical",
+   "name_ko": "포아송비",
+   "symbol": "nu",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E132",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "푸아송비",
+     "source": "seed"
+    },
+    {
+     "alias": "Poisson's ratio",
+     "source": "standard"
+    },
+    {
+     "alias": "포아송비",
+     "source": "seed",
+     "note": "표기 흔들림"
+    }
+   ]
+  },
+  {
+   "key": "mechanical.shear_modulus",
+   "domain": "mechanical",
+   "name_ko": "전단탄성계수",
+   "symbol": "G",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "전단탄성계수",
+     "source": "seed"
+    },
+    {
+     "alias": "G",
+     "source": "standard"
+    },
+    {
+     "alias": "shear modulus",
+     "source": "standard"
+    }
+   ]
+  },
+  {
+   "key": "mechanical.bulk_modulus",
+   "domain": "mechanical",
+   "name_ko": "체적탄성계수",
+   "symbol": "K",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_vickers",
+   "domain": "mechanical",
+   "name_ko": "비커스 경도",
+   "symbol": "HV",
+   "si_unit": "HV",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6507",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_shore_a",
+   "domain": "mechanical",
+   "name_ko": "쇼어 A 경도",
+   "symbol": "ShoreA",
+   "si_unit": "ShoreA",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D2240",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fracture_toughness",
+   "domain": "mechanical",
+   "name_ko": "파괴인성",
+   "symbol": "K_IC",
+   "si_unit": "Pa*m^0.5",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E399",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_strength",
+   "domain": "mechanical",
+   "name_ko": "피로한도",
+   "symbol": "sigma_f",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "cycles",
+    "loading_mode",
+    "stress_ratio_R",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.compressive_strength",
+   "domain": "mechanical",
+   "name_ko": "압축강도",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.flexural_modulus",
+   "domain": "mechanical",
+   "name_ko": "굽힘탄성계수",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 178",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "mechanical.flexural_strength",
+   "domain": "mechanical",
+   "name_ko": "굽힘강도",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 178",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "mechanical.impact_strength_izod",
+   "domain": "mechanical",
+   "name_ko": "아이조드 충격강도",
+   "symbol": null,
+   "si_unit": "J/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D256",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.creep_rate",
+   "domain": "mechanical",
+   "name_ko": "정상상태 크리프율",
+   "symbol": null,
+   "si_unit": "1/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "stress_pa",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.conductivity",
+   "domain": "thermal",
+   "name_ko": "열전도율",
+   "symbol": "k",
+   "si_unit": "W/(m*K)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1461",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "열전도율",
+     "source": "seed"
+    },
+    {
+     "alias": "열전도도",
+     "source": "seed"
+    },
+    {
+     "alias": "thermal conductivity",
+     "source": "standard"
+    }
+   ]
+  },
+  {
+   "key": "thermal.specific_heat",
+   "domain": "thermal",
+   "name_ko": "비열",
+   "symbol": "cp",
+   "si_unit": "J/(kg*K)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1269",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "비열",
+     "source": "seed"
+    },
+    {
+     "alias": "specific heat",
+     "source": "standard"
+    },
+    {
+     "alias": "Cp",
+     "source": "standard"
+    }
+   ]
+  },
+  {
+   "key": "thermal.diffusivity",
+   "domain": "thermal",
+   "name_ko": "열확산율",
+   "symbol": "alpha",
+   "si_unit": "m^2/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1461",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.expansion_linear",
+   "domain": "thermal",
+   "name_ko": "선팽창계수(CTE)",
+   "symbol": "CTE",
+   "si_unit": "1/K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E228",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "선팽창계수",
+     "source": "seed"
+    },
+    {
+     "alias": "열팽창계수",
+     "source": "seed"
+    },
+    {
+     "alias": "CTE",
+     "source": "standard"
+    }
+   ]
+  },
+  {
+   "key": "thermal.melting_point",
+   "domain": "thermal",
+   "name_ko": "융점",
+   "symbol": "Tm",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.glass_transition",
+   "domain": "thermal",
+   "name_ko": "유리전이온도",
+   "symbol": "Tg",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1356",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.heat_deflection_temp",
+   "domain": "thermal",
+   "name_ko": "열변형온도(HDT)",
+   "symbol": "HDT",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 75",
+   "condition_axes": [
+    "load_pa"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.vicat_softening",
+   "domain": "thermal",
+   "name_ko": "비카트 연화온도",
+   "symbol": null,
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 306",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.max_service_temp",
+   "domain": "thermal",
+   "name_ko": "최대 사용온도",
+   "symbol": null,
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.min_service_temp",
+   "domain": "thermal",
+   "name_ko": "최소 사용온도",
+   "symbol": null,
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.decomposition_temp",
+   "domain": "thermal",
+   "name_ko": "분해온도",
+   "symbol": "Td",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1131",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.flammability_loi",
+   "domain": "thermal",
+   "name_ko": "산소지수(LOI)",
+   "symbol": "LOI",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 4589",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "thermal.flammability_ul94",
+   "domain": "thermal",
+   "name_ko": "난연등급(UL94)",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": "UL 94",
+   "condition_axes": [
+    "thickness_m"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.latent_heat_fusion",
+   "domain": "thermal",
+   "name_ko": "융해잠열",
+   "symbol": null,
+   "si_unit": "J/kg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "electrical.resistivity_volume",
+   "domain": "electrical",
+   "name_ko": "체적저항률",
+   "symbol": "rho",
+   "si_unit": "ohm*m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D257",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.conductivity",
+   "domain": "electrical",
+   "name_ko": "전기전도율",
+   "symbol": "sigma",
+   "si_unit": "S/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.surface_resistivity",
+   "domain": "electrical",
+   "name_ko": "표면저항률",
+   "symbol": null,
+   "si_unit": "ohm",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D257",
+   "condition_axes": [
+    "humidity_rh"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.dielectric_constant",
+   "domain": "electrical",
+   "name_ko": "유전율",
+   "symbol": "eps_r",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D150",
+   "condition_axes": [
+    "frequency_hz"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.dielectric_strength",
+   "domain": "electrical",
+   "name_ko": "유전강도",
+   "symbol": null,
+   "si_unit": "V/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D149",
+   "condition_axes": [
+    "thickness_m"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.dissipation_factor",
+   "domain": "electrical",
+   "name_ko": "손실계수",
+   "symbol": "tan_d",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D150",
+   "condition_axes": [
+    "frequency_hz"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.comparative_tracking_index",
+   "domain": "electrical",
+   "name_ko": "비교트래킹지수(CTI)",
+   "symbol": "CTI",
+   "si_unit": "V",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IEC 60112",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "electrical.band_gap",
+   "domain": "electrical",
+   "name_ko": "밴드갭",
+   "symbol": "Eg",
+   "si_unit": "eV",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.piezoelectric_charge_coefficient",
+   "domain": "electrical",
+   "name_ko": "압전전하상수 d",
+   "symbol": "d",
+   "si_unit": "C/N",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IEEE 176",
+   "condition_axes": [
+    "component",
+    "temperature_k",
+    "poling",
+    "frequency_hz"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.refractive_index",
+   "domain": "optical",
+   "name_ko": "굴절률",
+   "symbol": "n",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.extinction_coefficient",
+   "domain": "optical",
+   "name_ko": "소광계수",
+   "symbol": "k",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.transmittance",
+   "domain": "optical",
+   "name_ko": "투과율",
+   "symbol": "T",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.reflectance",
+   "domain": "optical",
+   "name_ko": "반사율",
+   "symbol": "R",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.absorptance_solar",
+   "domain": "optical",
+   "name_ko": "태양흡수율",
+   "symbol": "alpha_s",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E903",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "optical.emissivity_total",
+   "domain": "optical",
+   "name_ko": "전방사율",
+   "symbol": "eps",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E408",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.emissivity_spectral",
+   "domain": "optical",
+   "name_ko": "분광방사율",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.haze",
+   "domain": "optical",
+   "name_ko": "헤이즈",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D1003",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "optical.gloss_60deg",
+   "domain": "optical",
+   "name_ko": "광택(60도)",
+   "symbol": null,
+   "si_unit": "GU",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D523",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "optical.uv_resistance",
+   "domain": "optical",
+   "name_ko": "내자외선성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.composition",
+   "domain": "chemical",
+   "name_ko": "화학조성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.corrosion_rate",
+   "domain": "chemical",
+   "name_ko": "부식률",
+   "symbol": null,
+   "si_unit": "m/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM G31",
+   "condition_axes": [
+    "environment",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.oxidation_resistance",
+   "domain": "chemical",
+   "name_ko": "내산화성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.chemical_resistance",
+   "domain": "chemical",
+   "name_ko": "내약품성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": "ISO 175",
+   "condition_axes": [
+    "reagent"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.water_absorption_24h",
+   "domain": "chemical",
+   "name_ko": "수분흡수율(24h)",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D570",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.water_absorption_saturation",
+   "domain": "chemical",
+   "name_ko": "포화수분흡수율",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D570",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.moisture_absorption_equilibrium",
+   "domain": "chemical",
+   "name_ko": "평형흡습율",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "humidity_rh",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.hydrolytic_stability",
+   "domain": "chemical",
+   "name_ko": "내가수분해성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_pct",
+    "duration_h",
+    "criterion"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.uv_ozone_resistance",
+   "domain": "chemical",
+   "name_ko": "내UV/오존성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "standard",
+    "radiant_exposure_mj_m2",
+    "duration_h",
+    "criterion"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.outgassing_tml",
+   "domain": "chemical",
+   "name_ko": "아웃가싱 TML",
+   "symbol": "TML",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E595",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.outgassing_cvcm",
+   "domain": "chemical",
+   "name_ko": "아웃가싱 CVCM",
+   "symbol": "CVCM",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E595",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.ph_stability",
+   "domain": "chemical",
+   "name_ko": "pH 안정성",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "chemical.galvanic_potential",
+   "domain": "chemical",
+   "name_ko": "갈바닉 전위",
+   "symbol": null,
+   "si_unit": "V",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "environment"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.density",
+   "domain": "physical",
+   "name_ko": "밀도",
+   "symbol": "rho",
+   "si_unit": "kg/m^3",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D792",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": [
+    {
+     "alias": "밀도",
+     "source": "seed"
+    },
+    {
+     "alias": "density",
+     "source": "standard"
+    },
+    {
+     "alias": "rho",
+     "source": "seed"
+    }
+   ]
+  },
+  {
+   "key": "physical.porosity",
+   "domain": "physical",
+   "name_ko": "기공률",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "physical.specific_surface_area",
+   "domain": "physical",
+   "name_ko": "비표면적",
+   "symbol": null,
+   "si_unit": "m^2/kg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "BET",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "physical.water_vapor_transmission",
+   "domain": "physical",
+   "name_ko": "수증기투과율(WVTR)",
+   "symbol": "WVTR",
+   "si_unit": "kg/(m^2*s)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E96",
+   "condition_axes": [
+    "temperature_k",
+    "humidity_rh"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_permeability_o2",
+   "domain": "physical",
+   "name_ko": "산소투과도",
+   "symbol": null,
+   "si_unit": "mol/(m*s*Pa)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D3985",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_permeability_co2",
+   "domain": "physical",
+   "name_ko": "이산화탄소투과도",
+   "symbol": null,
+   "si_unit": "mol/(m*s*Pa)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_permeability_h2o",
+   "domain": "physical",
+   "name_ko": "수분투과도",
+   "symbol": null,
+   "si_unit": "mol/(m*s*Pa)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.contact_angle_water",
+   "domain": "physical",
+   "name_ko": "물 접촉각",
+   "symbol": null,
+   "si_unit": "deg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "physical.surface_energy",
+   "domain": "physical",
+   "name_ko": "표면에너지",
+   "symbol": null,
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "physical.diffusion_coefficient",
+   "domain": "physical",
+   "name_ko": "확산계수",
+   "symbol": "D",
+   "si_unit": "m^2/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "species",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "acoustic.speed_of_sound",
+   "domain": "acoustic",
+   "name_ko": "음속",
+   "symbol": "c",
+   "si_unit": "m/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "acoustic.impedance",
+   "domain": "acoustic",
+   "name_ko": "음향임피던스",
+   "symbol": "Z",
+   "si_unit": "Pa*s/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "acoustic.loss_factor",
+   "domain": "acoustic",
+   "name_ko": "제진 손실계수",
+   "symbol": "eta",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E756",
+   "condition_axes": [
+    "frequency_hz",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "acoustic.absorption_coefficient",
+   "domain": "acoustic",
+   "name_ko": "흡음계수",
+   "symbol": "alpha_a",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 354",
+   "condition_axes": [
+    "frequency_hz"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "magnetic.relative_permeability",
+   "domain": "magnetic",
+   "name_ko": "비투자율",
+   "symbol": "mu_r",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "magnetic.saturation_magnetization",
+   "domain": "magnetic",
+   "name_ko": "포화자화",
+   "symbol": "Ms",
+   "si_unit": "T",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "magnetic.coercivity",
+   "domain": "magnetic",
+   "name_ko": "보자력",
+   "symbol": "Hc",
+   "si_unit": "A/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "magnetic.remanence",
+   "domain": "magnetic",
+   "name_ko": "잔류자속밀도",
+   "symbol": "Br",
+   "si_unit": "T",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "magnetic.curie_temp",
+   "domain": "magnetic",
+   "name_ko": "큐리온도",
+   "symbol": "Tc",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "rheological.melt_flow_index",
+   "domain": "rheological",
+   "name_ko": "용융흐름지수(MFI)",
+   "symbol": "MFI",
+   "si_unit": "g/600s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 1133",
+   "condition_axes": [
+    "temperature_k",
+    "load_kg"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.viscosity",
+   "domain": "rheological",
+   "name_ko": "점도",
+   "symbol": "eta",
+   "si_unit": "Pa*s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "shear_rate_1/s"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.mold_shrinkage",
+   "domain": "rheological",
+   "name_ko": "성형수축률",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 294-4",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "rheological.gel_time",
+   "domain": "rheological",
+   "name_ko": "겔타임",
+   "symbol": null,
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.crystal_structure",
+   "domain": "structure",
+   "name_ko": "결정구조",
+   "symbol": null,
+   "si_unit": null,
+   "value_type": "categorical",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "structure.grain_size",
+   "domain": "structure",
+   "name_ko": "결정립 크기",
+   "symbol": null,
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E112",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "structure.molecular_weight",
+   "domain": "structure",
+   "name_ko": "분자량(Mw)",
+   "symbol": "Mw",
+   "si_unit": "kg/mol",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "structure.crystallinity",
+   "domain": "structure",
+   "name_ko": "결정화도",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "structure.filler_content",
+   "domain": "structure",
+   "name_ko": "충전제 함량",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "interface.peel_strength",
+   "domain": "interface",
+   "name_ko": "박리강도",
+   "symbol": null,
+   "si_unit": "N/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IPC-TM-650 2.4.9",
+   "condition_axes": [
+    "temperature_k",
+    "substrate",
+    "angle_deg",
+    "rate_mm/min"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.lap_shear_strength",
+   "domain": "interface",
+   "name_ko": "중첩전단강도",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D1002",
+   "condition_axes": [
+    "temperature_k",
+    "substrate"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.die_shear_strength",
+   "domain": "interface",
+   "name_ko": "다이쉬어 강도",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "MIL-STD-883 2019",
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.shielding_effectiveness",
+   "domain": "electrical",
+   "name_ko": "전자파 차폐효과",
+   "symbol": "SE",
+   "si_unit": "dB",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D4935",
+   "condition_axes": [
+    "frequency_hz",
+    "thickness_m"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.temperature_coefficient_resistance",
+   "domain": "electrical",
+   "name_ko": "저항온도계수(TCR)",
+   "symbol": "TCR",
+   "si_unit": "1/K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "MIL-STD-202 Method 304",
+   "condition_axes": [
+    "temperature_range_C"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.thermal_resistance",
+   "domain": "thermal",
+   "name_ko": "열저항",
+   "symbol": "Rth",
+   "si_unit": "K*m^2/W",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D5470",
+   "condition_axes": [
+    "pressure_kPa",
+    "thickness_m"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.abbe_number",
+   "domain": "optical",
+   "name_ko": "아베수",
+   "symbol": "nu_d",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "optical.birefringence",
+   "domain": "optical",
+   "name_ko": "복굴절",
+   "symbol": "dn",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.surface_compressive_stress",
+   "domain": "mechanical",
+   "name_ko": "표면압축응력(CS)",
+   "symbol": "CS",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM C1422",
+   "condition_axes": [
+    "depth_um"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.depth_of_layer",
+   "domain": "mechanical",
+   "name_ko": "이온교환 깊이(DOL)",
+   "symbol": "DOL",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM C1422",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "structure.particle_diameter",
+   "domain": "structure",
+   "name_ko": "입자 직경",
+   "symbol": "d_p",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "particle_type"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.layer_thickness",
+   "domain": "structure",
+   "name_ko": "층 두께",
+   "symbol": "t_layer",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "layer",
+    "process"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.tack",
+   "domain": "interface",
+   "name_ko": "택(초기점착력)",
+   "symbol": null,
+   "si_unit": "N",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D6195 (loop) / D2979 (probe)",
+   "condition_axes": [
+    "substrate",
+    "rate_mm/min",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.static_shear_holding",
+   "domain": "interface",
+   "name_ko": "정적전단 유지시간",
+   "symbol": null,
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D3654",
+   "condition_axes": [
+    "load_kg",
+    "area_mm2",
+    "substrate",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.wire_pull_strength",
+   "domain": "interface",
+   "name_ko": "와이어 풀 강도",
+   "symbol": null,
+   "si_unit": "N",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "MIL-STD-883 2011",
+   "condition_axes": [
+    "wire_diameter_um",
+    "loop_height_um"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.cure_shrinkage",
+   "domain": "mechanical",
+   "name_ko": "경화수축률",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D2566",
+   "condition_axes": [
+    "cure_schedule"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.pot_life",
+   "domain": "rheological",
+   "name_ko": "가사시간(pot life)",
+   "symbol": null,
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "mix_ratio"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.cowper_symonds_c",
+   "domain": "mechanical",
+   "name_ko": "Cowper-Symonds C",
+   "symbol": "C",
+   "si_unit": "1/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.cowper_symonds_p",
+   "domain": "mechanical",
+   "name_ko": "Cowper-Symonds p",
+   "symbol": "p",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.dynamic_increase_factor",
+   "domain": "mechanical",
+   "name_ko": "동적증가계수(DIF)",
+   "symbol": "DIF",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "strain_rate_1/s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hyperelastic_coefficient",
+   "domain": "mechanical",
+   "name_ko": "초탄성 계수",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "term",
+    "strain_rate_1/s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hyperelastic_exponent",
+   "domain": "mechanical",
+   "name_ko": "초탄성 지수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.incompressibility_d",
+   "domain": "mechanical",
+   "name_ko": "비압축 파라미터 D",
+   "symbol": "D",
+   "si_unit": "1/Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "term"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_shear_modulus",
+   "domain": "mechanical",
+   "name_ko": "Prony 전단탄성률 항",
+   "symbol": "g_i",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_relaxation_time",
+   "domain": "mechanical",
+   "name_ko": "Prony 완화시간",
+   "symbol": "tau_i",
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_tensile_modulus",
+   "domain": "mechanical",
+   "name_ko": "Prony 인장완화 항",
+   "symbol": "E_i",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_relative_modulus",
+   "domain": "mechanical",
+   "name_ko": "Prony 상대완화계수",
+   "symbol": "g_i",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.johnson_cook_a",
+   "domain": "mechanical",
+   "name_ko": "Johnson-Cook A (초기항복)",
+   "symbol": "A",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.johnson_cook_b",
+   "domain": "mechanical",
+   "name_ko": "Johnson-Cook B (경화계수)",
+   "symbol": "B",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.johnson_cook_n",
+   "domain": "mechanical",
+   "name_ko": "Johnson-Cook n (경화지수)",
+   "symbol": "n",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.johnson_cook_c",
+   "domain": "mechanical",
+   "name_ko": "Johnson-Cook C (율속감도)",
+   "symbol": "C",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "reference_strain_rate_s"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.johnson_cook_m",
+   "domain": "mechanical",
+   "name_ko": "Johnson-Cook m (온도연화지수)",
+   "symbol": "m",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "reference_temperature_k",
+    "melting_temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.anand_constant",
+   "domain": "mechanical",
+   "name_ko": "Anand 점소성 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.norton_coefficient",
+   "domain": "mechanical",
+   "name_ko": "Norton 크리프 계수 A",
+   "symbol": "A",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "stress_unit",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.norton_exponent",
+   "domain": "mechanical",
+   "name_ko": "Norton 크리프 지수 n",
+   "symbol": "n",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.yield_strength_at_rate",
+   "domain": "mechanical",
+   "name_ko": "변형률속도별 항복강도",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "strain_rate_s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_strength_coefficient",
+   "domain": "mechanical",
+   "name_ko": "피로강도계수 σf'",
+   "symbol": "sigma_f",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E466",
+   "condition_axes": [
+    "model",
+    "stress_ratio_R",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_strength_exponent",
+   "domain": "mechanical",
+   "name_ko": "피로강도지수 b",
+   "symbol": "b",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E466",
+   "condition_axes": [
+    "model",
+    "stress_ratio_R"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_ductility_coefficient",
+   "domain": "mechanical",
+   "name_ko": "피로연성계수 εf'",
+   "symbol": "eps_f",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E606",
+   "condition_axes": [
+    "model",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_ductility_exponent",
+   "domain": "mechanical",
+   "name_ko": "피로연성지수 c",
+   "symbol": "c",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E606",
+   "condition_axes": [
+    "model",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.darveaux_constant",
+   "domain": "mechanical",
+   "name_ko": "Darveaux 균열 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "term",
+    "unit_of_term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.johnson_cook_damage",
+   "domain": "mechanical",
+   "name_ko": "Johnson-Cook 파괴상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "term",
+    "reference_strain_rate_s"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.cohesive_energy_mode1",
+   "domain": "interface",
+   "name_ko": "응집영역 파괴에너지 GIC",
+   "symbol": "G_IC",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D5528",
+   "condition_axes": [
+    "model",
+    "temperature_k",
+    "rate_mm_min"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.cohesive_energy_mode2",
+   "domain": "interface",
+   "name_ko": "응집영역 파괴에너지 GIIC",
+   "symbol": "G_IIC",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D7905",
+   "condition_axes": [
+    "model",
+    "temperature_k",
+    "rate_mm_min"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.cohesive_strength",
+   "domain": "interface",
+   "name_ko": "응집영역 최대 트랙션",
+   "symbol": "T_max",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "mode",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.hygroscopic_expansion",
+   "domain": "physical",
+   "name_ko": "흡습팽창계수 CHE",
+   "symbol": "beta",
+   "si_unit": "m^3/kg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_pct"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.moisture_saturation",
+   "domain": "physical",
+   "name_ko": "포화 수분농도 Csat",
+   "symbol": "C_sat",
+   "si_unit": "mol/m^3",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_pct"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.property_retention",
+   "domain": "mechanical",
+   "name_ko": "노화 후 물성 유지율",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "property",
+    "aging_hours",
+    "temperature_k",
+    "humidity_pct",
+    "radiant_exposure_mj_m2",
+    "standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.activation_energy",
+   "domain": "chemical",
+   "name_ko": "Arrhenius 활성화에너지",
+   "symbol": "Ea",
+   "si_unit": "J/mol",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "mechanism",
+    "temperature_range_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.friction_coefficient",
+   "domain": "mechanical",
+   "name_ko": "마찰계수",
+   "symbol": "mu",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D1894",
+   "condition_axes": [
+    "mode",
+    "counterface",
+    "load_n",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.compression_set",
+   "domain": "mechanical",
+   "name_ko": "압축영구변형",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D395",
+   "condition_axes": [
+    "temperature_k",
+    "duration_h",
+    "compression_pct"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.morrow_energy_coefficient",
+   "domain": "mechanical",
+   "name_ko": "Morrow 에너지 계수",
+   "symbol": "C",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "model_form",
+    "unit_of_term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.morrow_energy_exponent",
+   "domain": "mechanical",
+   "name_ko": "Morrow 에너지 지수",
+   "symbol": "m",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "model_form",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.swelling_strain",
+   "domain": "mechanical",
+   "name_ko": "충방전 팽창변형률",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "soc",
+    "cycle",
+    "reversibility",
+    "measure",
+    "scale",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.partial_molar_volume",
+   "domain": "chemical",
+   "name_ko": "부분몰부피",
+   "symbol": "Omega",
+   "si_unit": "m^3/mol",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "species",
+    "soc",
+    "form"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_bulk_modulus",
+   "domain": "mechanical",
+   "name_ko": "Prony 체적탄성률 항",
+   "symbol": "K_i",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_long_term_modulus",
+   "domain": "mechanical",
+   "name_ko": "Prony 장기 평형계수",
+   "symbol": "E_inf",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.prony_relative_bulk_modulus",
+   "domain": "mechanical",
+   "name_ko": "Prony 상대 체적계수",
+   "symbol": "k_i",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_solubility",
+   "domain": "physical",
+   "name_ko": "기체 용해도(헨리)",
+   "symbol": "S",
+   "si_unit": "mol/(m^3*Pa)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "species",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.excited_state_lifetime",
+   "domain": "optical",
+   "name_ko": "여기상태 수명",
+   "symbol": "tau_0",
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "matrix",
+    "atmosphere"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.stern_volmer_constant",
+   "domain": "optical",
+   "name_ko": "Stern-Volmer 소광상수",
+   "symbol": "K_SV",
+   "si_unit": "1/Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "quencher",
+    "temperature_k",
+    "matrix"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.bimolecular_quenching_rate",
+   "domain": "optical",
+   "name_ko": "이분자 소광 속도상수",
+   "symbol": "k_q",
+   "si_unit": "m^3/(mol*s)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "quencher",
+    "temperature_k",
+    "matrix"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.photoluminescence_quantum_yield",
+   "domain": "optical",
+   "name_ko": "광발광 양자수율",
+   "symbol": "PLQY",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "matrix",
+    "atmosphere",
+    "wavelength_nm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.singlet_oxygen_quantum_yield",
+   "domain": "optical",
+   "name_ko": "일중항 산소 양자수율",
+   "symbol": "Phi_Delta",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "matrix",
+    "wavelength_nm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.molar_absorptivity",
+   "domain": "optical",
+   "name_ko": "몰흡광계수",
+   "symbol": "epsilon",
+   "si_unit": "m^2/mol",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm",
+    "solvent"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.tensile_strength_at_rate",
+   "domain": "mechanical",
+   "name_ko": "변형률속도별 인장강도",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "strain_rate_s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_stromeyer_coefficient",
+   "domain": "mechanical",
+   "name_ko": "Stromeyer 계수 C",
+   "symbol": "C_st",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "stress_ratio_R",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_stromeyer_exponent",
+   "domain": "mechanical",
+   "name_ko": "Stromeyer 지수 m",
+   "symbol": "m_st",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "stress_ratio_R",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_stromeyer_asymptote",
+   "domain": "mechanical",
+   "name_ko": "Stromeyer 점근응력 σ∞",
+   "symbol": "sigma_inf",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "stress_ratio_R",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.uv_cutoff_wavelength",
+   "domain": "optical",
+   "name_ko": "UV 차단파장",
+   "symbol": "lambda_cut",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "transmittance_pct",
+    "thickness_um"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.photodegradation_rate_constant",
+   "domain": "chemical",
+   "name_ko": "광열화 속도상수",
+   "symbol": "k_photo",
+   "si_unit": "1/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_nm",
+    "irradiance_w_m2",
+    "temperature_k",
+    "humidity_pct",
+    "property"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.hydrolysis_rate_constant",
+   "domain": "chemical",
+   "name_ko": "가수분해 속도상수",
+   "symbol": "k_hyd",
+   "si_unit": "1/s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_pct",
+    "ph",
+    "medium",
+    "property"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.radiant_exposure_to_failure",
+   "domain": "chemical",
+   "name_ko": "판정도달 조사량",
+   "symbol": "H_fail",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "standard",
+    "criterion",
+    "wavelength_band_nm",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.weibull_modulus",
+   "domain": "mechanical",
+   "name_ko": "와이블 계수 m",
+   "symbol": "m",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM C1239",
+   "condition_axes": [
+    "strength_property",
+    "test_geometry",
+    "n_specimens",
+    "stress_rate",
+    "specimen_thickness_mm",
+    "estimator",
+    "surface_state"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_meyer",
+   "domain": "mechanical",
+   "name_ko": "마이어 경도 H",
+   "symbol": "H",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "load_n",
+    "dwell_s",
+    "environment",
+    "temperature_c"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.wlf_c1",
+   "domain": "mechanical",
+   "name_ko": "WLF 상수 C1",
+   "symbol": "C1",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "reference_temperature_k",
+    "log_base",
+    "sign_convention",
+    "fit_r2"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.wlf_c2",
+   "domain": "mechanical",
+   "name_ko": "WLF 상수 C2",
+   "symbol": "C2",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "reference_temperature_k",
+    "log_base",
+    "sign_convention",
+    "fit_r2"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_shore_oo",
+   "domain": "mechanical",
+   "name_ko": "쇼어 OO 경도",
+   "symbol": null,
+   "si_unit": "ShoreOO",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D2240",
+   "condition_axes": [
+    "standard",
+    "dwell_s",
+    "temperature_c",
+    "specimen_thickness_mm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.garofalo_constant",
+   "domain": "mechanical",
+   "name_ko": "Garofalo sinh 크리프 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "component",
+    "temperature_range_k",
+    "stress_range_pa",
+    "strain_rate_range_s",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.primary_creep_constant",
+   "domain": "mechanical",
+   "name_ko": "1차 크리프 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "temperature_range_k",
+    "stress_range_pa",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.ramberg_osgood_constant",
+   "domain": "mechanical",
+   "name_ko": "Ramberg-Osgood 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "temperature_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.strain_partition_component",
+   "domain": "mechanical",
+   "name_ko": "변형률 분해 성분",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "test_method",
+    "strain_rate_s",
+    "temperature_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.crack_initiation_cycles",
+   "domain": "mechanical",
+   "name_ko": "균열개시 사이클 수",
+   "symbol": "No",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "thermal_cycle_profile",
+    "statistic",
+    "solder_alloy",
+    "negative_regression_intercept"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.crack_growth_rate",
+   "domain": "mechanical",
+   "name_ko": "균열성장률 da/dN",
+   "symbol": "da/dN",
+   "si_unit": "m/cycle",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "thermal_cycle_profile",
+    "statistic",
+    "solder_alloy"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.cure_model_constant",
+   "domain": "chemical",
+   "name_ko": "경화 모델 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "temperature_range_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.moisture_diffusion_constant",
+   "domain": "physical",
+   "name_ko": "흡습확산 모델 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "temperature_range_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.expansion_polynomial_coefficient",
+   "domain": "thermal",
+   "name_ko": "CTE 다항식 계수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "reference_temperature_k",
+    "temperature_range_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.energy_partitioning_constant",
+   "domain": "mechanical",
+   "name_ko": "에너지분할 상수",
+   "symbol": "C/n",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "model_form",
+    "term",
+    "unit_of_term",
+    "component",
+    "temperature_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.arrhenius_prefactor",
+   "domain": "chemical",
+   "name_ko": "Arrhenius 전지수인자",
+   "symbol": "A",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "mechanism",
+    "method_detail",
+    "temperature_range_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.true_fracture_ductility",
+   "domain": "mechanical",
+   "name_ko": "진파괴연성 D",
+   "symbol": "D",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model_form",
+    "temperature_k",
+    "specimen_basis",
+    "strain_rate_s"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.cyclic_strength_coefficient",
+   "domain": "mechanical",
+   "name_ko": "순환강도계수 A",
+   "symbol": "A",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model_form",
+    "unit_of_term",
+    "temperature_k",
+    "frequency_hz",
+    "specimen_basis"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.cyclic_strain_hardening_exponent",
+   "domain": "mechanical",
+   "name_ko": "순환변형경화지수",
+   "symbol": "beta",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model_form",
+    "temperature_k",
+    "frequency_hz",
+    "specimen_basis"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.peel_force",
+   "domain": "interface",
+   "name_ko": "박리력",
+   "symbol": "F_peel",
+   "si_unit": "N",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "specimen_width_mm",
+    "specimen_width_status",
+    "quantity",
+    "peel_angle_deg",
+    "peel_rate_mm_min",
+    "substrate",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.shear_force",
+   "domain": "interface",
+   "name_ko": "전단력",
+   "symbol": "F_shear",
+   "si_unit": "N",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "bonded_area_mm2",
+    "bonded_area_status",
+    "substrate",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.loss_tangent",
+   "domain": "mechanical",
+   "name_ko": "손실탄젠트",
+   "symbol": "tan_delta",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "frequency_hz",
+    "strain_pct",
+    "phase_angle_deg",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.creep_compliance",
+   "domain": "mechanical",
+   "name_ko": "크리프 컴플라이언스",
+   "symbol": "J(t)",
+   "si_unit": "1/Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "stress_pa",
+    "time_s",
+    "component",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.crossover_temperature",
+   "domain": "rheological",
+   "name_ko": "G'-G\" 교차온도",
+   "symbol": "T_x",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "frequency_hz",
+    "heating_rate_k_min",
+    "strain_pct",
+    "sweep_type",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.crossover_frequency",
+   "domain": "rheological",
+   "name_ko": "G'-G\" 교차주파수",
+   "symbol": "f_x",
+   "si_unit": "Hz",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "strain_pct",
+    "sweep_type",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.tack_stress",
+   "domain": "interface",
+   "name_ko": "프로브 택 응력",
+   "symbol": "sigma_tack",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "probe_diameter_mm",
+    "dwell_time_s",
+    "debonding_rate_mm_s",
+    "temperature_k",
+    "substrate"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.char_residue",
+   "domain": "thermal",
+   "name_ko": "잔탄율",
+   "symbol": "residue",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "atmosphere",
+    "final_temperature_k",
+    "heating_rate_k_min",
+    "flow_rate_ml_min"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.loop_tack",
+   "domain": "interface",
+   "name_ko": "루프택",
+   "symbol": "F_loop",
+   "si_unit": "N/m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "substrate",
+    "separation_rate_mm_min",
+    "temperature_k",
+    "dwell_time_s",
+    "loop_length_mm",
+    "standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.tack_energy",
+   "domain": "interface",
+   "name_ko": "택 에너지",
+   "symbol": "W_tack",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "substrate",
+    "contact_time_s",
+    "temperature_k",
+    "contact_pressure_pa",
+    "separation_rate_mm_min",
+    "failure_mode"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.gel_fraction",
+   "domain": "chemical",
+   "name_ko": "겔분율",
+   "symbol": "gel",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "solvent",
+    "extraction_time_h",
+    "extraction_temperature_k",
+    "drying"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "surface.roughness_ra",
+   "domain": "surface",
+   "name_ko": "표면조도 Ra",
+   "symbol": "Ra",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "measurement_method",
+    "surface_state",
+    "scan_length_mm",
+    "parameter_definition"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.impact_strength_charpy",
+   "domain": "mechanical",
+   "name_ko": "샤르피 충격강도(면적)",
+   "symbol": null,
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 179",
+   "condition_axes": [
+    "notch",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.impact_strength_izod_area",
+   "domain": "mechanical",
+   "name_ko": "아이조드 충격강도(면적)",
+   "symbol": null,
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 180",
+   "condition_axes": [
+    "notch",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.homo_level",
+   "domain": "electrical",
+   "name_ko": "HOMO 준위",
+   "symbol": "E_HOMO",
+   "si_unit": "eV",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "electrical.lumo_level",
+   "domain": "electrical",
+   "name_ko": "LUMO 준위",
+   "symbol": "E_LUMO",
+   "si_unit": "eV",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "optical.emission_peak_wavelength",
+   "domain": "optical",
+   "name_ko": "발광 피크파장",
+   "symbol": "lambda_em",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "medium"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_shore_d",
+   "domain": "mechanical",
+   "name_ko": "쇼어 D 경도",
+   "symbol": "ShoreD",
+   "si_unit": "ShoreD",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D2240",
+   "condition_axes": null,
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fracture_energy_gic",
+   "domain": "mechanical",
+   "name_ko": "파괴에너지 G_Ic",
+   "symbol": "G_IC",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D5528",
+   "condition_axes": [
+    "mode",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.interlaminar_shear_strength",
+   "domain": "mechanical",
+   "name_ko": "층간전단강도(ILSS)",
+   "symbol": "ILSS",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D2344",
+   "condition_axes": [
+    "span_to_depth",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.storage_modulus",
+   "domain": "mechanical",
+   "name_ko": "저장탄성률",
+   "symbol": "E'",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6721",
+   "condition_axes": [
+    "frequency_hz",
+    "temperature_k",
+    "mode"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.loss_modulus",
+   "domain": "mechanical",
+   "name_ko": "손실탄성률",
+   "symbol": "E''",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6721",
+   "condition_axes": [
+    "frequency_hz",
+    "temperature_k",
+    "mode"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_indentation",
+   "domain": "mechanical",
+   "name_ko": "계장화 압입경도 H_IT",
+   "symbol": "H_IT",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 14577",
+   "condition_axes": [
+    "indentation_depth_nm|load_mn",
+    "indenter",
+    "analysis_method",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_martens",
+   "domain": "mechanical",
+   "name_ko": "마르텐스 경도 HM",
+   "symbol": "HM",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 14577",
+   "condition_axes": [
+    "load_mn",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_knoop",
+   "domain": "mechanical",
+   "name_ko": "누프 경도",
+   "symbol": "HK",
+   "si_unit": "HK",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 4545",
+   "condition_axes": [
+    "load_kgf"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_brinell",
+   "domain": "mechanical",
+   "name_ko": "브리넬 경도",
+   "symbol": "HBW",
+   "si_unit": "HBW",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6506",
+   "condition_axes": [
+    "load_kgf",
+    "indenter_mm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.specific_wear_rate",
+   "domain": "mechanical",
+   "name_ko": "비마모율",
+   "symbol": "k",
+   "si_unit": "m^3/(N*m)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM G99",
+   "condition_axes": [
+    "load_n",
+    "sliding_distance_m",
+    "counterface",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.residual_stress",
+   "domain": "mechanical",
+   "name_ko": "잔류응력",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "depth_um",
+    "direction"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "surface.roughness_rq",
+   "domain": "surface",
+   "name_ko": "표면조도 Rq(RMS)",
+   "symbol": "Rq",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 4287",
+   "condition_axes": [
+    "method",
+    "cutoff_mm",
+    "evaluation_length_mm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "surface.roughness_rz",
+   "domain": "surface",
+   "name_ko": "표면조도 Rz(최대높이)",
+   "symbol": "Rz",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 4287",
+   "condition_axes": [
+    "method",
+    "cutoff_mm",
+    "evaluation_length_mm"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.water_content",
+   "domain": "chemical",
+   "name_ko": "수분함량",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 15512",
+   "condition_axes": [
+    "method_detail",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.crystallite_size",
+   "domain": "structure",
+   "name_ko": "결정자 크기",
+   "symbol": null,
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.lattice_parameter",
+   "domain": "structure",
+   "name_ko": "격자상수",
+   "symbol": "a",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "axis",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.phase_fraction",
+   "domain": "structure",
+   "name_ko": "상분율",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "phase",
+    "method_detail"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.carrier_mobility",
+   "domain": "electrical",
+   "name_ko": "캐리어 이동도",
+   "symbol": "mu",
+   "si_unit": "m^2/(V*s)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM F76",
+   "condition_axes": [
+    "carrier_type",
+    "temperature_k",
+    "magnetic_field_t"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.carrier_concentration",
+   "domain": "electrical",
+   "name_ko": "캐리어 농도",
+   "symbol": "n",
+   "si_unit": "1/m^3",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM F76",
+   "condition_axes": [
+    "carrier_type",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.hall_coefficient",
+   "domain": "electrical",
+   "name_ko": "홀계수",
+   "symbol": "R_H",
+   "si_unit": "m^3/C",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM F76",
+   "condition_axes": [
+    "temperature_k",
+    "magnetic_field_t"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.zeta_potential",
+   "domain": "physical",
+   "name_ko": "제타전위",
+   "symbol": "zeta",
+   "si_unit": "V",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 13099",
+   "condition_axes": [
+    "ph",
+    "ionic_strength_mm",
+    "medium",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.yield_stress",
+   "domain": "rheological",
+   "name_ko": "항복응력",
+   "symbol": "tau_0",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.pore_diameter",
+   "domain": "structure",
+   "name_ko": "기공 직경",
+   "symbol": null,
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "distribution_stat"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "surface.roughness_sq",
+   "domain": "surface",
+   "name_ko": "면적조도 Sq(면적 RMS)",
+   "symbol": "Sq",
+   "si_unit": "m",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 25178",
+   "condition_axes": [
+    "method",
+    "evaluation_area_mm2"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "structure.pore_volume",
+   "domain": "structure",
+   "name_ko": "기공부피(비체적)",
+   "symbol": null,
+   "si_unit": "m^3/kg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "pore_size_range"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_transmission_rate_o2",
+   "domain": "physical",
+   "name_ko": "산소투과도(OTR)",
+   "symbol": "OTR",
+   "si_unit": "m^3/(m^2*s)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D3985",
+   "condition_axes": [
+    "temperature_k",
+    "humidity_rh",
+    "thickness_um",
+    "partial_pressure_pa"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.surface_energy_dispersive",
+   "domain": "physical",
+   "name_ko": "표면에너지 분산성분",
+   "symbol": "gamma_d",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.surface_energy_polar",
+   "domain": "physical",
+   "name_ko": "표면에너지 극성성분",
+   "symbol": "gamma_p",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.surface_energy_acid",
+   "domain": "physical",
+   "name_ko": "표면에너지 산성분(γ+)",
+   "symbol": "gamma_plus",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.surface_energy_base",
+   "domain": "physical",
+   "name_ko": "표면에너지 염기성분(γ−)",
+   "symbol": "gamma_minus",
+   "si_unit": "J/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_permeance_o2",
+   "domain": "physical",
+   "name_ko": "산소 투과계수(permeance)",
+   "symbol": null,
+   "si_unit": "mol/(m^2*s*Pa)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_rh",
+    "thickness_um"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.water_vapor_permeability_mass",
+   "domain": "physical",
+   "name_ko": "수증기 투과율(질량기준)",
+   "symbol": null,
+   "si_unit": "kg/(m*s)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_rh"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.gas_permeance_o2_volumetric",
+   "domain": "physical",
+   "name_ko": "산소 투과계수(부피기준)",
+   "symbol": null,
+   "si_unit": "m^3/(m^2*s*Pa)",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "humidity_rh",
+    "thickness_um"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.fatigue_strength_coefficient_normalized",
+   "domain": "mechanical",
+   "name_ko": "정규화 피로강도계수 σ'f/E",
+   "symbol": "sigma_f_over_E",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model",
+    "model_form",
+    "set_id",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.singlet_energy_s1",
+   "domain": "optical",
+   "name_ko": "단일항 에너지 S1",
+   "symbol": "E_S1",
+   "si_unit": "eV",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "matrix",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.triplet_energy_t1",
+   "domain": "optical",
+   "name_ko": "삼중항 에너지 T1",
+   "symbol": "E_T1",
+   "si_unit": "eV",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "method_detail",
+    "matrix",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.shear_strength",
+   "domain": "mechanical",
+   "name_ko": "전단강도",
+   "symbol": "tau_u",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "test_standard",
+    "shear_plane",
+    "specimen_thickness_m",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.compressive_yield_strength",
+   "domain": "mechanical",
+   "name_ko": "압축항복강도",
+   "symbol": "Rpc",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "offset",
+    "test_standard",
+    "strain_rate_s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.time_to_delamination",
+   "domain": "thermal",
+   "name_ko": "내열시간(층간박리 도달시간)",
+   "symbol": null,
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IPC-TM-650 2.4.24.1",
+   "condition_axes": [
+    "temperature_c",
+    "specimen",
+    "conditioning",
+    "bound"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "rheological.viscosity_model_constant",
+   "domain": "rheological",
+   "name_ko": "점도 모델 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "temperature_range_k",
+    "shear_rate_range_s",
+    "pressure_pa",
+    "reference_temperature_k",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.expansion_total",
+   "domain": "thermal",
+   "name_ko": "구간 총 열팽창률",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IPC-TM-650 2.4.24",
+   "condition_axes": [
+    "temperature_range_c",
+    "axis",
+    "conditioning",
+    "specimen"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.reduction_of_area",
+   "domain": "mechanical",
+   "name_ko": "단면감소율",
+   "symbol": "Z",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 6892",
+   "condition_axes": [
+    "temperature_k",
+    "test_standard",
+    "specimen",
+    "weld_process"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.elongation_at_yield",
+   "domain": "mechanical",
+   "name_ko": "항복연신율",
+   "symbol": "e_y",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D638",
+   "condition_axes": [
+    "temperature_k",
+    "test_standard",
+    "specimen"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_rockwell",
+   "domain": "mechanical",
+   "name_ko": "로크웰 경도",
+   "symbol": "HR",
+   "si_unit": "HR",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E18",
+   "condition_axes": [
+    "scale",
+    "test_standard",
+    "temperature_k",
+    "condition"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.impact_energy_charpy",
+   "domain": "mechanical",
+   "name_ko": "샤르피 흡수에너지",
+   "symbol": "KV",
+   "si_unit": "J",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 148-1",
+   "condition_axes": [
+    "notch",
+    "temperature_k",
+    "hardness",
+    "direction",
+    "tempering_temperature_c",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.electromechanical_coupling_factor",
+   "domain": "electrical",
+   "name_ko": "전기기계결합계수 k",
+   "symbol": "k",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IEEE 176",
+   "condition_axes": [
+    "mode",
+    "temperature_k",
+    "frequency_hz"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.mechanical_quality_factor",
+   "domain": "electrical",
+   "name_ko": "기계품질계수 Qm",
+   "symbol": "Qm",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IEEE 176",
+   "condition_axes": [
+    "mode",
+    "temperature_k",
+    "drive_level"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "magnetic.energy_product_max",
+   "domain": "magnetic",
+   "name_ko": "최대자기에너지적 (BH)max",
+   "symbol": "(BH)max",
+   "si_unit": "J/m^3",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IEC 60404-5",
+   "condition_axes": [
+    "temperature_k",
+    "value_type",
+    "grade"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.puncture_strength",
+   "domain": "mechanical",
+   "name_ko": "관통강도",
+   "symbol": null,
+   "si_unit": "N",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "thickness_um",
+    "probe",
+    "test_speed_mm_min",
+    "value_type",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.heat_shrinkage",
+   "domain": "thermal",
+   "name_ko": "열수축률",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "time_s",
+    "direction",
+    "value_type"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.air_permeability_gurley",
+   "domain": "physical",
+   "name_ko": "걸리 투기도",
+   "symbol": null,
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "JIS P8117",
+   "condition_axes": [
+    "air_volume_cm3",
+    "pressure_pa",
+    "test_area_mm2",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "optical.stress_optical_coefficient",
+   "domain": "optical",
+   "name_ko": "광탄성계수(응력광학계수)",
+   "symbol": "C",
+   "si_unit": "1/Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "wavelength_m",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "interface.tensile_adhesion_strength",
+   "domain": "interface",
+   "name_ko": "직각인장 접착강도(풀오프)",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D4541",
+   "condition_axes": [
+    "adherend",
+    "substrate",
+    "test_method",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.lankford_r_value",
+   "domain": "mechanical",
+   "name_ko": "Lankford r값(소성변형비)",
+   "symbol": "r",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 10113",
+   "condition_axes": [
+    "direction",
+    "strain_level",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.dilatometric_softening_point",
+   "domain": "thermal",
+   "name_ko": "팽창계 연화점(새그온도 Ts)",
+   "symbol": "Ts",
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 7884-8",
+   "condition_axes": [
+    "heating_rate_k_min",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.abrasion_factor",
+   "domain": "mechanical",
+   "name_ko": "연마도 FA(BSC7=100 기준)",
+   "symbol": "FA",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "JOGIS 10",
+   "condition_axes": [
+    "reference_specimen",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.hardness_ball_indentation",
+   "domain": "mechanical",
+   "name_ko": "볼압입경도 H",
+   "symbol": "H",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ISO 2039-1",
+   "condition_axes": [
+    "load_n",
+    "dwell_s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.viscosity_reference_temperature",
+   "domain": "thermal",
+   "name_ko": "점도 기준온도",
+   "symbol": null,
+   "si_unit": "K",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM C338",
+   "condition_axes": [
+    "viscosity_log10_poise",
+    "test_standard",
+    "determination"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.durability_mass_loss_fraction",
+   "domain": "chemical",
+   "name_ko": "화학 내구성 중량감소율",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "medium",
+    "duration_h",
+    "temperature_c",
+    "specimen_form",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "chemical.durability_mass_loss_per_area",
+   "domain": "chemical",
+   "name_ko": "화학 내구성 단위면적당 감소량",
+   "symbol": null,
+   "si_unit": "kg/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "medium",
+    "duration_h",
+    "temperature_c",
+    "specimen_form",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.youngs_modulus_at_rate",
+   "domain": "mechanical",
+   "name_ko": "변형률속도별 영률",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "strain_rate_s",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.monotonic_strain_hardening_exponent",
+   "domain": "mechanical",
+   "name_ko": "단조 변형경화지수",
+   "symbol": "n",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "model_form",
+    "temperature_k",
+    "strain_rate_s",
+    "specimen_basis",
+    "test_standard"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.plastic_strain_at_break",
+   "domain": "mechanical",
+   "name_ko": "소성 파단변형률",
+   "symbol": "eps_pl",
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "temperature_k",
+    "test_standard",
+    "specimen"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.compressive_modulus",
+   "domain": "mechanical",
+   "name_ko": "압축탄성계수",
+   "symbol": "Ec",
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D695",
+   "condition_axes": [
+    "test_standard",
+    "temperature_k",
+    "strain_rate_s",
+    "direction"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.tensile_stress_at_strain",
+   "domain": "mechanical",
+   "name_ko": "지정 변형률에서의 인장응력",
+   "symbol": null,
+   "si_unit": "Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D412",
+   "condition_axes": [
+    "strain_pct",
+    "test_standard",
+    "specimen",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "mechanical.elastic_compliance",
+   "domain": "mechanical",
+   "name_ko": "탄성 컴플라이언스",
+   "symbol": "s",
+   "si_unit": "1/Pa",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "IEEE 176",
+   "condition_axes": [
+    "component",
+    "crystal_orientation",
+    "poling",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "physical.density_model_constant",
+   "domain": "physical",
+   "name_ko": "밀도 모델 상수",
+   "symbol": null,
+   "si_unit": "1",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": null,
+   "condition_axes": [
+    "term",
+    "unit_of_term",
+    "model",
+    "solvent_blend",
+    "temperature_range_k",
+    "concentration_range_mol_l",
+    "fit_r2",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "electrical.arc_resistance",
+   "domain": "electrical",
+   "name_ko": "내아크성",
+   "symbol": null,
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM D495",
+   "condition_axes": [
+    "test_standard",
+    "thickness_m",
+    "electrode",
+    "temperature_k"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.time_to_ignition",
+   "domain": "thermal",
+   "name_ko": "착화시간(콘칼로리미터)",
+   "symbol": "t_ig",
+   "si_unit": "s",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1354",
+   "condition_axes": [
+    "test_standard",
+    "heat_flux_kw_m2",
+    "specimen_thickness_m",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.heat_release_rate",
+   "domain": "thermal",
+   "name_ko": "열방출률(콘칼로리미터)",
+   "symbol": "HRR",
+   "si_unit": "W/m^2",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1354",
+   "condition_axes": [
+    "statistic",
+    "time_s",
+    "test_standard",
+    "heat_flux_kw_m2",
+    "specimen_thickness_m",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.heat_of_combustion",
+   "domain": "thermal",
+   "name_ko": "유효연소열(콘칼로리미터)",
+   "symbol": "EHC",
+   "si_unit": "J/kg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1354",
+   "condition_axes": [
+    "test_standard",
+    "heat_flux_kw_m2",
+    "specimen_thickness_m",
+    "set_id"
+   ],
+   "aliases": []
+  },
+  {
+   "key": "thermal.smoke_extinction_area",
+   "domain": "thermal",
+   "name_ko": "평균 연기소멸면적(콘칼로리미터)",
+   "symbol": "SEA",
+   "si_unit": "m^2/kg",
+   "value_type": "numeric",
+   "description": null,
+   "test_standard": "ASTM E1354",
+   "condition_axes": [
+    "statistic",
+    "test_standard",
+    "heat_flux_kw_m2",
+    "specimen_thickness_m",
+    "set_id"
+   ],
+   "aliases": []
+  }
+ ]
+}

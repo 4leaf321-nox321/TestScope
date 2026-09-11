@@ -1,0 +1,52 @@
+{
+ "id": "jeol-jamp-9510f",
+ "kind": "equipment_model",
+ "name": "JEOL JAMP-9510F Field-Emission Auger Microprobe",
+ "manufacturer": "jeol",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/14",
+   "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "지올 JAMP-9510F 오제전자 분광 미세분석기",
+ "description": "전계방출 오제전자분광 미세분석(FE-AES)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "JAMP-9510F",
+   "note": "반구형 정전 에너지분석기(HSA)를 쓰는 전계방출 오제 마이크로프로브. 도전체·절연체 모두 대상으로 표면 화학조성과 화학결합상태를 준다.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 14,
+    "category": "chemical",
+    "technique": "전계방출 오제전자분광 미세분석(FE-AES)",
+    "description": "반구형 정전 에너지분석기(HSA)를 쓰는 전계방출 오제 마이크로프로브. 도전체·절연체 모두 대상으로 표면 화학조성과 화학결합상태를 준다.",
+    "notes": "종합 카탈로그 소개문만 있고 수치 사양 없음.",
+    "doc_path": "metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf",
+    "source_title": "JEOL Products Guide 2026",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "오제전자분광(AES)",
+      "mapping_confidence": "high",
+      "source_detail": "p.9 — 'capability to provide detailed chemical composition and chemical-state information'",
+      "notes": "카탈로그가 'chemical composition' 을 직접 인쇄했다. 수치 사양은 없다."
+     }
+    ]
+   }
+  }
+ ]
+}

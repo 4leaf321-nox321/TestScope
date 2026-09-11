@@ -12,6 +12,18 @@
    "note": "PDF 미확보 — 다운로드 실패, 빈 폴더 정리함"
   },
   {
+   "id": "agilent",
+   "kind": "manufacturer",
+   "label": "Agilent Technologies",
+   "name_ko": "애질런트",
+   "country": "US",
+   "website": "https://www.agilent.com",
+   "domains": [
+    "chromatograph_mass_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "ametek-lloyd",
    "kind": "manufacturer",
    "label": "AMETEK / Lloyd Instruments",
@@ -79,6 +91,19 @@
    "domains": [
     "shore_irhd_hardness"
    ]
+  },
+  {
+   "id": "brookfield-ametek",
+   "kind": "manufacturer",
+   "label": "Brookfield AMETEK",
+   "name_ko": "브룩필드",
+   "country": "US",
+   "parent": "AMETEK",
+   "website": "https://www.brookfieldengineering.com",
+   "domains": [
+    "viscometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "bruel-kjaer",
@@ -262,6 +287,19 @@
    "note": "라이브 사이트의 PDF 링크가 200 과 함께 HTML 게이트를 준다. archive.org 스냅샷(2023~2025)에서 확보 — 브로슈어가 마케팅 층위라 기종별 사양표가 없다"
   },
   {
+   "id": "filmetrics",
+   "kind": "manufacturer",
+   "label": "Filmetrics (KLA)",
+   "name_ko": "필메트릭스",
+   "country": "US",
+   "parent": "KLA",
+   "website": "https://www.filmetrics.com",
+   "domains": [
+    "film_thickness_analyzer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "flir",
    "kind": "manufacturer",
    "label": "Teledyne FLIR",
@@ -342,6 +380,19 @@
     "tma",
     "dma"
    ]
+  },
+  {
+   "id": "horiba",
+   "kind": "manufacturer",
+   "label": "HORIBA Scientific",
+   "name_ko": "호리바",
+   "country": "JP",
+   "website": "https://www.horiba.com",
+   "domains": [
+    "composition_spectrometer",
+    "optical_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "hot-disk",
@@ -433,6 +484,44 @@
    "note": "장비 제조사가 아님 — 시험법 문서 출처"
   },
   {
+   "id": "ja-woollam",
+   "kind": "manufacturer",
+   "label": "J.A. Woollam",
+   "name_ko": "울람",
+   "country": "US",
+   "website": "https://www.jawoollam.com",
+   "domains": [
+    "film_thickness_analyzer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "jeol",
+   "kind": "manufacturer",
+   "label": "JEOL",
+   "name_ko": "지올",
+   "country": "JP",
+   "website": "https://www.jeol.com",
+   "domains": [
+    "electron_microscope",
+    "composition_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "keithley",
+   "kind": "manufacturer",
+   "label": "Keithley (Tektronix)",
+   "name_ko": "키슬리",
+   "country": "US",
+   "parent": "Tektronix",
+   "website": "https://www.tek.com/keithley",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "keysight",
    "kind": "manufacturer",
    "label": "Keysight Technologies",
@@ -489,6 +578,30 @@
     "display_color_analyzer",
     "imaging_colorimeter"
    ]
+  },
+  {
+   "id": "kruss",
+   "kind": "manufacturer",
+   "label": "KRÜSS",
+   "name_ko": "크루스",
+   "country": "DE",
+   "website": "https://www.kruss-scientific.com",
+   "domains": [
+    "contact_angle_analyzer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "lake-shore",
+   "kind": "manufacturer",
+   "label": "Lake Shore Cryotronics",
+   "name_ko": "레이크쇼어",
+   "country": "US",
+   "website": "https://www.lakeshore.com",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "lansmont",
@@ -565,6 +678,18 @@
    ]
   },
   {
+   "id": "metrohm",
+   "kind": "manufacturer",
+   "label": "Metrohm",
+   "name_ko": "메트롬",
+   "country": "CH",
+   "website": "https://www.metrohm.com",
+   "domains": [
+    "karl_fischer_titrator"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "mettler-toledo",
    "kind": "manufacturer",
    "label": "METTLER TOLEDO",
@@ -578,6 +703,18 @@
     "dma",
     "tma"
    ]
+  },
+  {
+   "id": "micromeritics",
+   "kind": "manufacturer",
+   "label": "Micromeritics",
+   "name_ko": "마이크로메리틱스",
+   "country": "US",
+   "website": "https://www.micromeritics.com",
+   "domains": [
+    "pycnometer_porosimeter"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "mil-std",
@@ -727,6 +864,42 @@
    ]
   },
   {
+   "id": "ossila",
+   "kind": "manufacturer",
+   "label": "Ossila",
+   "name_ko": "오실라",
+   "country": "GB",
+   "website": "https://www.ossila.com",
+   "domains": [
+    "electrical_property_tester"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "oxford-instruments",
+   "kind": "manufacturer",
+   "label": "Oxford Instruments",
+   "name_ko": "옥스퍼드 인스트루먼츠",
+   "country": "GB",
+   "website": "https://www.oxinst.com",
+   "domains": [
+    "electron_microscope"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "park-systems",
+   "kind": "manufacturer",
+   "label": "Park Systems",
+   "name_ko": "파크시스템스",
+   "country": "KR",
+   "website": "https://www.parksystems.com",
+   "domains": [
+    "atomic_force_microscope"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "perkinelmer",
    "kind": "manufacturer",
    "label": "PerkinElmer",
@@ -758,6 +931,31 @@
     "weathering_tester",
     "corrosion_chamber"
    ]
+  },
+  {
+   "id": "renishaw",
+   "kind": "manufacturer",
+   "label": "Renishaw",
+   "name_ko": "레니쇼",
+   "country": "GB",
+   "website": "https://www.renishaw.com",
+   "domains": [
+    "composition_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
+   "id": "rigaku",
+   "kind": "manufacturer",
+   "label": "Rigaku",
+   "name_ko": "리가쿠",
+   "country": "JP",
+   "website": "https://www.rigaku.com",
+   "domains": [
+    "xray_diffractometer",
+    "composition_spectrometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "rohde-schwarz",
@@ -1022,6 +1220,19 @@
    ]
   },
   {
+   "id": "zeiss",
+   "kind": "manufacturer",
+   "label": "ZEISS",
+   "name_ko": "자이스",
+   "country": "DE",
+   "website": "https://www.zeiss.com",
+   "domains": [
+    "electron_microscope",
+    "xray_inspection"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
+  },
+  {
    "id": "zwickroell",
    "kind": "manufacturer",
    "label": "ZwickRoell",
@@ -1046,6 +1257,19 @@
     "hdt_vicat",
     "environmental_chamber"
    ]
+  },
+  {
+   "id": "zygo",
+   "kind": "manufacturer",
+   "label": "Zygo (AMETEK)",
+   "name_ko": "자이고",
+   "country": "US",
+   "parent": "AMETEK",
+   "website": "https://www.zygo.com",
+   "domains": [
+    "optical_profilometer"
+   ],
+   "registered": "2026-09-12 materialtwin-20260905 계측기 반입"
   },
   {
    "id": "category:abrasion_tester",
@@ -1104,6 +1328,13 @@
    "key": "altitude_chamber"
   },
   {
+   "id": "category:atomic_force_microscope",
+   "kind": "category",
+   "label": "Atomic force microscope",
+   "label_ko": "원자간력현미경 (AFM)",
+   "key": "atomic_force_microscope"
+  },
+  {
    "id": "category:audio_analyzer",
    "kind": "category",
    "label": "Audio analyzer",
@@ -1160,6 +1391,13 @@
    "key": "capillary_rheometer"
   },
   {
+   "id": "category:chromatograph_mass_spectrometer",
+   "kind": "category",
+   "label": "Chromatograph / mass spectrometer",
+   "label_ko": "크로마토그래프·질량분석기",
+   "key": "chromatograph_mass_spectrometer"
+  },
+  {
    "id": "category:climatic_chamber",
    "kind": "category",
    "label": "Temperature & humidity chamber",
@@ -1179,6 +1417,20 @@
    "label": "Component life tester",
    "label_ko": "부품 수명 시험기(키·커넥터·케이블)",
    "key": "component_life_tester"
+  },
+  {
+   "id": "category:composition_spectrometer",
+   "kind": "category",
+   "label": "Composition spectrometer",
+   "label_ko": "조성 분광 분석기 (XPS·FT-IR·라만·XRF·GD-OES)",
+   "key": "composition_spectrometer"
+  },
+  {
+   "id": "category:contact_angle_analyzer",
+   "kind": "category",
+   "label": "Contact angle analyzer",
+   "label_ko": "접촉각·표면장력 측정기",
+   "key": "contact_angle_analyzer"
   },
   {
    "id": "category:corrosion_chamber",
@@ -1258,6 +1510,13 @@
    "key": "dust_chamber"
   },
   {
+   "id": "category:electrical_property_tester",
+   "kind": "category",
+   "label": "Electrical property tester",
+   "label_ko": "전기 물성 측정기 (4점 탐침·홀·I-V)",
+   "key": "electrical_property_tester"
+  },
+  {
    "id": "category:electrical_safety",
    "kind": "category",
    "label": "Electrical safety & EMC",
@@ -1277,6 +1536,13 @@
    "label": "Electrolytic etching machine",
    "label_ko": "전해 에칭기",
    "key": "electrolytic_etcher"
+  },
+  {
+   "id": "category:electron_microscope",
+   "kind": "category",
+   "label": "Electron microscope",
+   "label_ko": "전자현미경 (SEM·TEM·EPMA)",
+   "key": "electron_microscope"
   },
   {
    "id": "category:electronic_load",
@@ -1326,6 +1592,13 @@
    "label": "Extensometer",
    "label_ko": "신율계",
    "key": "extensometer"
+  },
+  {
+   "id": "category:film_thickness_analyzer",
+   "kind": "category",
+   "label": "Thin-film thickness analyzer",
+   "label_ko": "박막 두께 측정기 (반사율·엘립소미터)",
+   "key": "film_thickness_analyzer"
   },
   {
    "id": "category:force_tester",
@@ -1433,6 +1706,13 @@
    "key": "impact"
   },
   {
+   "id": "category:industrial_oven",
+   "kind": "category",
+   "label": "Industrial oven",
+   "label_ko": "산업용 오븐",
+   "key": "industrial_oven"
+  },
+  {
    "id": "category:instrumented_indentation",
    "kind": "category",
    "label": "Instrumented indentation / nanoindenter",
@@ -1447,6 +1727,13 @@
    "key": "insulation_tester"
   },
   {
+   "id": "category:karl_fischer_titrator",
+   "kind": "category",
+   "label": "Karl Fischer titrator",
+   "label_ko": "칼피셔 수분 측정기",
+   "key": "karl_fischer_titrator"
+  },
+  {
    "id": "category:leak_tester",
    "kind": "category",
    "label": "Leak tester",
@@ -1459,6 +1746,13 @@
    "label": "Load cell",
    "label_ko": "로드셀",
    "key": "load_cell"
+  },
+  {
+   "id": "category:materials_analysis",
+   "kind": "category",
+   "label": "Materials analysis",
+   "label_ko": "재료 분석 장비",
+   "key": "materials_analysis"
   },
   {
    "id": "category:mechanical_dynamic",
@@ -1496,6 +1790,13 @@
    "key": "nanoindenter"
   },
   {
+   "id": "category:nmr_spectrometer",
+   "kind": "category",
+   "label": "NMR spectrometer",
+   "label_ko": "핵자기공명 분광기 (NMR)",
+   "key": "nmr_spectrometer"
+  },
+  {
    "id": "category:optical_measurement",
    "kind": "category",
    "label": "Optical & display measurement",
@@ -1508,6 +1809,20 @@
    "label": "Optical / stylus profilometer",
    "label_ko": "3D 표면 형상 측정기",
    "key": "optical_profilometer"
+  },
+  {
+   "id": "category:optical_spectrometer",
+   "kind": "category",
+   "label": "Optical spectrometer",
+   "label_ko": "분광광도계·형광분광기 (UV-Vis·PL)",
+   "key": "optical_spectrometer"
+  },
+  {
+   "id": "category:particle_size_analyzer",
+   "kind": "category",
+   "label": "Particle size analyzer",
+   "label_ko": "입도·제타전위 분석기",
+   "key": "particle_size_analyzer"
   },
   {
    "id": "category:pendulum_impact",
@@ -1536,6 +1851,13 @@
    "label": "Pressure/vacuum decay leak tester",
    "label_ko": "압력강하식 누설시험기",
    "key": "pressure_decay_leak_tester"
+  },
+  {
+   "id": "category:pycnometer_porosimeter",
+   "kind": "category",
+   "label": "Pycnometer / porosimeter",
+   "label_ko": "밀도·기공 분석기 (피크노미터·포로시미터)",
+   "key": "pycnometer_porosimeter"
   },
   {
    "id": "category:resonance_fatigue",
@@ -1641,6 +1963,13 @@
    "label": "Simultaneous thermal analyzer",
    "label_ko": "동시열분석기 (STA, TG-DSC/DTA)",
    "key": "sta"
+  },
+  {
+   "id": "category:surface_roughness_tester",
+   "kind": "category",
+   "label": "Stylus surface roughness tester",
+   "label_ko": "촉침식 표면조도 측정기",
+   "key": "surface_roughness_tester"
   },
   {
    "id": "category:texture_analyser",
@@ -1776,6 +2105,13 @@
    "key": "vickers_knoop_hardness"
   },
   {
+   "id": "category:viscometer",
+   "kind": "category",
+   "label": "Rotational viscometer",
+   "label_ko": "회전점도계",
+   "key": "viscometer"
+  },
+  {
    "id": "category:water_ingress_tester",
    "kind": "category",
    "label": "Water ingress (IPX) test equipment",
@@ -1788,6 +2124,13 @@
    "label": "Accelerated weathering tester",
    "label_ko": "촉진 내후성 시험기(제논·UV)",
    "key": "weathering_tester"
+  },
+  {
+   "id": "category:xray_diffractometer",
+   "kind": "category",
+   "label": "X-ray diffractometer",
+   "label_ko": "X선 회절계 (XRD)",
+   "key": "xray_diffractometer"
   },
   {
    "id": "category:xray_inspection",
@@ -2132,6 +2475,33 @@
    "label": "DIN EN ISO 3497"
   },
   {
+   "id": "test_item:composition_analysis",
+   "kind": "test_item",
+   "label": "Chemical composition analysis",
+   "label_ko": "화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)",
+   "measurands": [
+    "composition",
+    "element_concentration",
+    "layer_composition"
+   ],
+   "key": "composition_analysis"
+  },
+  {
+   "id": "ASTM E1508",
+   "kind": "standard",
+   "label": "ASTM E1508"
+  },
+  {
+   "id": "ISO 15472",
+   "kind": "standard",
+   "label": "ISO 15472"
+  },
+  {
+   "id": "ASTM E1621",
+   "kind": "standard",
+   "label": "ASTM E1621"
+  },
+  {
    "id": "test_item:compression",
    "kind": "test_item",
    "label": "Compression",
@@ -2161,6 +2531,27 @@
    "id": "ASTM D6641",
    "kind": "standard",
    "label": "ASTM D6641"
+  },
+  {
+   "id": "test_item:contact_angle",
+   "kind": "test_item",
+   "label": "Contact angle / surface energy",
+   "label_ko": "접촉각·표면에너지",
+   "measurands": [
+    "contact_angle",
+    "surface_energy"
+   ],
+   "key": "contact_angle"
+  },
+  {
+   "id": "ASTM D7334",
+   "kind": "standard",
+   "label": "ASTM D7334"
+  },
+  {
+   "id": "ISO 19403-2",
+   "kind": "standard",
+   "label": "ISO 19403-2"
   },
   {
    "id": "test_item:creep",
@@ -2225,6 +2616,36 @@
    "label": "MIL-DTL-22520"
   },
   {
+   "id": "test_item:crystal_structure_analysis",
+   "kind": "test_item",
+   "label": "Crystal structure analysis",
+   "label_ko": "결정 구조 분석(XRD·EBSD)",
+   "measurands": [
+    "crystal_structure",
+    "crystallinity",
+    "crystallite_size",
+    "lattice_parameter",
+    "phase_fraction",
+    "residual_stress"
+   ],
+   "key": "crystal_structure_analysis"
+  },
+  {
+   "id": "ASTM E975",
+   "kind": "standard",
+   "label": "ASTM E975"
+  },
+  {
+   "id": "ASTM E2860",
+   "kind": "standard",
+   "label": "ASTM E2860"
+  },
+  {
+   "id": "ISO 13067",
+   "kind": "standard",
+   "label": "ISO 13067"
+  },
+  {
    "id": "test_item:damp_heat",
    "kind": "test_item",
    "label": "Damp heat / temperature-humidity",
@@ -2255,6 +2676,39 @@
    "id": "MIL-STD-810 Method 507",
    "kind": "standard",
    "label": "MIL-STD-810 Method 507"
+  },
+  {
+   "id": "test_item:density_porosity",
+   "kind": "test_item",
+   "label": "Density / porosity / surface area",
+   "label_ko": "밀도·기공률·비표면적",
+   "measurands": [
+    "density",
+    "porosity",
+    "specific_surface_area",
+    "pore_diameter"
+   ],
+   "key": "density_porosity"
+  },
+  {
+   "id": "ASTM D792",
+   "kind": "standard",
+   "label": "ASTM D792"
+  },
+  {
+   "id": "ISO 12154",
+   "kind": "standard",
+   "label": "ISO 12154"
+  },
+  {
+   "id": "ASTM D4404",
+   "kind": "standard",
+   "label": "ASTM D4404"
+  },
+  {
+   "id": "ISO 9277",
+   "kind": "standard",
+   "label": "ISO 9277"
   },
   {
    "id": "test_item:dielectric_withstand",
@@ -2448,6 +2902,34 @@
    "id": "MIL-STD-810 Method 510",
    "kind": "standard",
    "label": "MIL-STD-810 Method 510"
+  },
+  {
+   "id": "test_item:electrical_transport",
+   "kind": "test_item",
+   "label": "Electrical transport (4-point probe / Hall / I-V)",
+   "label_ko": "전기 저항률·홀 효과·반도체 특성",
+   "measurands": [
+    "resistivity_volume",
+    "sheet_resistance",
+    "carrier_mobility",
+    "carrier_concentration"
+   ],
+   "key": "electrical_transport"
+  },
+  {
+   "id": "ASTM F76",
+   "kind": "standard",
+   "label": "ASTM F76"
+  },
+  {
+   "id": "ASTM D257",
+   "kind": "standard",
+   "label": "ASTM D257"
+  },
+  {
+   "id": "ASTM F84",
+   "kind": "standard",
+   "label": "ASTM F84"
   },
   {
    "id": "test_item:emi_emission",
@@ -3142,6 +3624,85 @@
    "id": "ASTM D1238",
    "kind": "standard",
    "label": "ASTM D1238"
+  },
+  {
+   "id": "test_item:microscopy",
+   "kind": "test_item",
+   "label": "Electron / atomic force microscopy",
+   "label_ko": "전자·원자간력 현미경 관찰",
+   "measurands": [
+    "grain_size",
+    "particle_diameter",
+    "layer_thickness",
+    "defect_size"
+   ],
+   "key": "microscopy"
+  },
+  {
+   "id": "ASTM E112",
+   "kind": "standard",
+   "label": "ASTM E112"
+  },
+  {
+   "id": "ISO 16700",
+   "kind": "standard",
+   "label": "ISO 16700"
+  },
+  {
+   "id": "test_item:optical_spectroscopy",
+   "kind": "test_item",
+   "label": "Optical spectroscopy (UV-Vis / fluorescence / ellipsometry)",
+   "label_ko": "투과·반사·형광 분광",
+   "measurands": [
+    "transmittance",
+    "reflectance",
+    "refractive_index",
+    "band_gap",
+    "emission_peak_wavelength"
+   ],
+   "key": "optical_spectroscopy"
+  },
+  {
+   "id": "ASTM D1003",
+   "kind": "standard",
+   "label": "ASTM D1003"
+  },
+  {
+   "id": "ASTM E903",
+   "kind": "standard",
+   "label": "ASTM E903"
+  },
+  {
+   "id": "ISO 13468",
+   "kind": "standard",
+   "label": "ISO 13468"
+  },
+  {
+   "id": "test_item:particle_size",
+   "kind": "test_item",
+   "label": "Particle size / zeta potential",
+   "label_ko": "입도·제타전위",
+   "measurands": [
+    "particle_diameter",
+    "zeta_potential",
+    "molecular_weight"
+   ],
+   "key": "particle_size"
+  },
+  {
+   "id": "ISO 13320",
+   "kind": "standard",
+   "label": "ISO 13320"
+  },
+  {
+   "id": "ISO 22412",
+   "kind": "standard",
+   "label": "ISO 22412"
+  },
+  {
+   "id": "ISO 13099",
+   "kind": "standard",
+   "label": "ISO 13099"
   },
   {
    "id": "test_item:peel",
@@ -4037,6 +4598,26 @@
    "label": "ASTM D1525"
   },
   {
+   "id": "test_item:water_content",
+   "kind": "test_item",
+   "label": "Water content (Karl Fischer)",
+   "label_ko": "수분 함량(칼피셔)",
+   "measurands": [
+    "water_content"
+   ],
+   "key": "water_content"
+  },
+  {
+   "id": "ISO 15512",
+   "kind": "standard",
+   "label": "ISO 15512"
+  },
+  {
+   "id": "ASTM E1064",
+   "kind": "standard",
+   "label": "ASTM E1064"
+  },
+  {
    "id": "test_item:water_ingress",
    "kind": "test_item",
    "label": "Water ingress",
@@ -4109,6 +4690,27 @@
    "label": "ASTM E2698"
   },
   {
+   "id": "agilent-5977c-gcms",
+   "kind": "equipment",
+   "label": "Agilent 5977C GC/MSD",
+   "label_ko": "애질런트 5977C 가스크로마토그래프-질량분석기",
+   "equipment_kind": "equipment_model",
+   "category": "chromatograph_mass_spectrometer",
+   "manufacturer": "agilent",
+   "limits": {},
+   "models": [
+    "5977C GC/MSD"
+   ],
+   "confidence": "limited",
+   "file": "equipment/agilent/agilent-5977c-gcms.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/39",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/39",
+   "origin": true
+  },
+  {
    "id": "ametek-lloyd-ls-series",
    "kind": "equipment",
    "label": "Lloyd Instruments LS1 / LS2.5 / LS5 Single Column Universal Test Machines",
@@ -4169,6 +4771,39 @@
    "kind": "document",
    "label": "ametek-lloyd/astm-f88-seal-strength-case.pdf",
    "url": "https://www.ametektest.com/-/media/ametektest/download_links_from_2021/f88_case.pdf"
+  },
+  {
+   "id": "anton-paar-litesizer",
+   "kind": "equipment",
+   "label": "Anton Paar Litesizer 100 / 500 Particle Analyzers",
+   "label_ko": "안톤파 Litesizer 광산란 입자분석기",
+   "equipment_kind": "equipment_series",
+   "category": "particle_size_analyzer",
+   "manufacturer": "anton-paar",
+   "limits": {
+    "temperature_degC": {
+     "min": 0.0,
+     "max": 90.0
+    }
+   },
+   "models": [
+    "Litesizer 500",
+    "Litesizer 100"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/anton-paar/anton-paar-litesizer.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/152",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/152",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/153",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/153",
+   "origin": true
   },
   {
    "id": "anton-paar-mcr-rheometer",
@@ -4278,6 +4913,52 @@
    ],
    "confidence": "limited",
    "file": "equipment/anton-paar/anton-paar-nanoindentation.json"
+  },
+  {
+   "id": "anton-paar-tribometers-materialtwin",
+   "kind": "equipment",
+   "label": "Anton Paar Tribometers (TRB3 pin-on-disk, THT 800/1000 °C, NTR3 nano, TRB RH, MCR Tribometer T-PTD200 / T-PID/44 / T-BTP)",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "tribometer",
+   "manufacturer": "anton-paar",
+   "limits": {},
+   "models": [
+    "THT 800 °C",
+    "THT 1000 °C"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/anton-paar/anton-paar-tribometers-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/147",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/147",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/148",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/148",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/149",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/149",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/150",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/150",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/151",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/151",
+   "origin": true
   },
   {
    "id": "anton-paar-tribometers",
@@ -4677,6 +5358,55 @@
    "url": "https://www.bareiss-testing.com/wp-content/uploads/2019/10/digi-test-II.pdf"
   },
   {
+   "id": "brookfield-dv3t",
+   "kind": "equipment",
+   "label": "Brookfield DV3T Rotational Viscometers (LV / RV / HA / HB / 5xHB)",
+   "label_ko": "브룩필드 DV3T 회전점도계",
+   "equipment_kind": "equipment_series",
+   "category": "viscometer",
+   "manufacturer": "brookfield-ametek",
+   "limits": {},
+   "models": [
+    "DV3T LV",
+    "DV3T RV",
+    "DV3T HA",
+    "DV3T HB",
+    "DV3T 5xHB"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/brookfield-ametek/brookfield-dv3t.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/154",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/154",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/155",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/155",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/156",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/156",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/157",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/157",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/158",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/158",
+   "origin": true
+  },
+  {
    "id": "bruel-kjaer-hats-5128",
    "kind": "equipment",
    "label": "Bruel & Kjaer Type 5128 High-Frequency Head and Torso Simulator (HF HATS)",
@@ -4738,6 +5468,27 @@
    "url": "https://assets.hbkworld.com/adobe/assets/deliver/urn:aaid:aem:3a270856-a7eb-4db1-b0e3-29c6390956f5/High-frequency-Head-and-Torso-Simulator-Type-5128-Family.pdf"
   },
   {
+   "id": "bruker-avance-ssnmr",
+   "kind": "equipment",
+   "label": "Bruker AVANCE Solid-State NMR",
+   "label_ko": "브루커 AVANCE 고체 핵자기공명 분광기",
+   "equipment_kind": "equipment_model",
+   "category": "nmr_spectrometer",
+   "manufacturer": "bruker",
+   "limits": {},
+   "models": [
+    "AVANCE (Solid State NMR)"
+   ],
+   "confidence": "limited",
+   "file": "equipment/bruker/bruker-avance-ssnmr.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/40",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/40",
+   "origin": true
+  },
+  {
    "id": "bruker-contourx-200",
    "kind": "equipment",
    "label": "Bruker ContourX-200 3D Optical Profilometer",
@@ -4778,6 +5529,51 @@
    "kind": "document",
    "label": "bruker/contourx-200-optical-profilometer-datasheet.pdf",
    "url": "https://www.epfl.ch/research/facilities/cmi/wp-content/uploads/2021/02/ContourX-200-3D-Optical-Profilometer-Datasheet-BRUKER.pdf"
+  },
+  {
+   "id": "bruker-d8-advance",
+   "kind": "equipment",
+   "label": "Bruker D8 ADVANCE X-ray Diffractometer",
+   "label_ko": "브루커 D8 ADVANCE X선 회절계",
+   "equipment_kind": "equipment_model",
+   "category": "xray_diffractometer",
+   "manufacturer": "bruker",
+   "limits": {
+    "temperature_degC": {
+     "min": -193.0,
+     "max": 2300.0
+    }
+   },
+   "models": [
+    "D8 ADVANCE"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/bruker/bruker-d8-advance.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/29",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/29",
+   "origin": true
+  },
+  {
+   "id": "bruker-dektakxt-materialtwin",
+   "kind": "equipment",
+   "label": "Bruker DektakXT Stylus Profilometer",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "optical_profilometer",
+   "manufacturer": "bruker",
+   "limits": {},
+   "models": [],
+   "confidence": "limited",
+   "file": "equipment/bruker/bruker-dektakxt-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/1",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/1",
+   "origin": true
   },
   {
    "id": "bruker-dektakxt",
@@ -4932,6 +5728,52 @@
    "url": "https://web.archive.org/web/20150703092322id_/http://www.hysitron.com:80/Portals/0/Updated%20Address/TS75SS_SAM-0070-A.pdf"
   },
   {
+   "id": "bruker-vertex-ftir",
+   "kind": "equipment",
+   "label": "Bruker VERTEX 70 / 70v / 80 / 80v FT-IR Spectrometers",
+   "label_ko": "브루커 VERTEX 푸리에변환 적외분광기",
+   "equipment_kind": "equipment_series",
+   "category": "composition_spectrometer",
+   "manufacturer": "bruker",
+   "limits": {
+    "temperature_degC": {
+     "max": -263.15
+    }
+   },
+   "models": [
+    "VERTEX 70",
+    "VERTEX 70v",
+    "VERTEX 80",
+    "VERTEX 80v"
+   ],
+   "confidence": "limited",
+   "file": "equipment/bruker/bruker-vertex-ftir.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/34",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/34",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/35",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/35",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/36",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/36",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/37",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/37",
+   "origin": true
+  },
+  {
    "id": "buehler-wilson-hardness",
    "kind": "equipment",
    "label": "Buehler Wilson Hardness Testers (Rockwell / Vickers / Knoop / Brinell, VH3100 etc.)",
@@ -5081,6 +5923,31 @@
    "kind": "document",
    "label": "buehler/wilson-uh4000-sales-sheet.pdf",
    "url": "https://www.buehler.com/assets/Brochures/English/Hardness/UH4000_Sales_Sheet.pdf"
+  },
+  {
+   "id": "buehler-wilson-vh3300-materialtwin",
+   "kind": "equipment",
+   "label": "Wilson VH3100 / VH3300 Vickers-Knoop Hardness Testers",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "vickers_knoop_hardness",
+   "manufacturer": "buehler",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/buehler/buehler-wilson-vh3300-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/100",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/100",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/101",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/101",
+   "origin": true
   },
   {
    "id": "buehler-wilson-vh3300",
@@ -5805,6 +6672,200 @@
    "url": "https://irp-cdn.multiscreensite.com/729c96d0/files/uploaded/Erichsen_430P_Scratch_Hardness_Tester.pdf"
   },
   {
+   "id": "espec-agree-et",
+   "kind": "equipment",
+   "label": "ESPEC Agree ET Series Rapid Temperature Change Chambers",
+   "label_ko": "에스펙 Agree ET 급속 온도변화 시험조",
+   "equipment_kind": "equipment_model",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "Agree ET series"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-agree-et.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/204",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/204",
+   "origin": true
+  },
+  {
+   "id": "espec-ar-series",
+   "kind": "equipment",
+   "label": "ESPEC AR Series Temperature (& Humidity) Chambers (ARS / ARG / ARL / ARU)",
+   "label_ko": "에스펙 AR 계열 항온(항습) 시험조",
+   "equipment_kind": "equipment_series",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "AR series ARS (ARS-0220/0390/0680/1100)",
+    "AR series ARG (ARG-0220/0390/0680/1100)",
+    "AR series ARL (ARL-0680/1100)",
+    "AR series ARU (ARU-0680/1100)"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-ar-series.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/188",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/188",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/189",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/189",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/190",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/190",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/191",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/191",
+   "origin": true
+  },
+  {
+   "id": "espec-criterion",
+   "kind": "equipment",
+   "label": "ESPEC Criterion Benchtop Chambers (BTZ / BTU / BTL / BTX / ECT)",
+   "label_ko": "에스펙 Criterion 벤치탑 시험조",
+   "equipment_kind": "equipment_series",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "Criterion BTZ (BTZ-133/175/175E/475)",
+    "Criterion BTU (BTU-133/433)",
+    "Criterion BTL-433",
+    "Criterion BTX-475",
+    "Criterion ECT-3 벤치탑"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-criterion.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/192",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/192",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/193",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/193",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/194",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/194",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/195",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/195",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/203",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/203",
+   "origin": true
+  },
+  {
+   "id": "espec-ehs-tpc-hast",
+   "kind": "equipment",
+   "label": "ESPEC EHS / TPC HAST Chambers",
+   "label_ko": "에스펙 EHS·TPC HAST 챔버",
+   "equipment_kind": "equipment_model",
+   "category": "hast_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "EHS/TPC HAST 챔버"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-ehs-tpc-hast.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/199",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/199",
+   "origin": true
+  },
+  {
+   "id": "espec-industrial-ovens",
+   "kind": "equipment",
+   "label": "ESPEC PH / PV / STPH / SSPH Industrial Ovens",
+   "label_ko": "에스펙 PH·PV·STPH·SSPH 산업용 오븐",
+   "equipment_kind": "equipment_model",
+   "category": "industrial_oven",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "PH/PV/STPH/SSPH 산업용 오븐"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-industrial-ovens.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/205",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/205",
+   "origin": true
+  },
+  {
+   "id": "espec-lab-series",
+   "kind": "equipment",
+   "label": "ESPEC Lab Series LU / LH / LHL / LHU-113 Compact Chambers",
+   "label_ko": "에스펙 Lab 계열 소형 항온항습조",
+   "equipment_kind": "equipment_model",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "Lab Series LU/LH/LHL/LHU-113"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-lab-series.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/202",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/202",
+   "origin": true
+  },
+  {
+   "id": "espec-platinous-chambers-materialtwin",
+   "kind": "equipment",
+   "label": "ESPEC Platinous Series Temperature & Humidity Chambers (J series JP / H series NA)",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-platinous-chambers-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/200",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/200",
+   "origin": true
+  },
+  {
    "id": "espec-platinous-chambers",
    "kind": "equipment",
    "label": "ESPEC Platinous Series Temperature & Humidity Chambers (J series JP / H series NA)",
@@ -6001,6 +7062,48 @@
    "url": "https://docs.alltest.net/manual/Alltest-Qualmark-OVS4-0-OVS-4-HASS-HALT-Datasheet.pdf"
   },
   {
+   "id": "espec-su-sh-benchtop",
+   "kind": "equipment",
+   "label": "ESPEC SU / SH Series Benchtop Chambers",
+   "label_ko": "에스펙 SU·SH 벤치탑 시험조",
+   "equipment_kind": "equipment_model",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "SU/SH series 벤치탑 시험조"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-su-sh-benchtop.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/201",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/201",
+   "origin": true
+  },
+  {
+   "id": "espec-tsa-thermal-shock-materialtwin",
+   "kind": "equipment",
+   "label": "ESPEC TSA Series Thermal Shock Chambers (EL / ES / EH type)",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "thermal_shock_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "TSA series 2·3존 열충격조"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-tsa-thermal-shock-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/198",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/198",
+   "origin": true
+  },
+  {
    "id": "espec-tsa-thermal-shock",
    "kind": "equipment",
    "label": "ESPEC TSA Series Thermal Shock Chambers (EL / ES / EH type)",
@@ -6106,6 +7209,79 @@
    "kind": "document",
    "label": "espec/tsa-thermal-shock-test-navi.pdf",
    "url": "https://www.test-navi.com/eng/news/pdf/141118_espec_tsa_eng.pdf"
+  },
+  {
+   "id": "espec-tsb-liquid-thermal-shock",
+   "kind": "equipment",
+   "label": "ESPEC TSB-2 / TSB-5 / TSB-20 Liquid-to-Liquid Thermal Shock Chambers",
+   "label_ko": "에스펙 TSB 액상 열충격조",
+   "equipment_kind": "equipment_model",
+   "category": "thermal_shock_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "TSB-2 / TSB-5 / TSB-20 액상 열충격조"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-tsb-liquid-thermal-shock.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/196",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/196",
+   "origin": true
+  },
+  {
+   "id": "espec-tse-11-a",
+   "kind": "equipment",
+   "label": "ESPEC TSE-11-A Two-Zone Thermal Shock Chamber",
+   "label_ko": "에스펙 TSE-11-A 2조식 열충격조",
+   "equipment_kind": "equipment_model",
+   "category": "thermal_shock_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [
+    "TSE-11-A 열충격조"
+   ],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-tse-11-a.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/197",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/197",
+   "origin": true
+  },
+  {
+   "id": "espec-walk-in-chambers-materialtwin",
+   "kind": "equipment",
+   "label": "ESPEC Walk-In Temperature (& Humidity) Chambers — E Series / High-Power Series",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "climatic_chamber",
+   "manufacturer": "espec",
+   "limits": {},
+   "models": [],
+   "confidence": "limited",
+   "file": "equipment/espec/espec-walk-in-chambers-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/206",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/206",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/207",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/207",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/208",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/208",
+   "origin": true
   },
   {
    "id": "espec-walk-in-chambers",
@@ -6232,6 +7408,55 @@
    "kind": "document",
    "label": "ets-lindgren/reverberation-chamber-brochure.pdf",
    "url": "https://web.archive.org/web/20250613140656id_/https://www.ets-lindgren.com/downloads/ProductBrochures/General%20Brochures/Reverb%20Brochure.pdf"
+  },
+  {
+   "id": "filmetrics-f54",
+   "kind": "equipment",
+   "label": "Filmetrics F54 Thin-Film Mapping Analyzer",
+   "label_ko": "필메트릭스 F54 박막 두께 매핑 분석기",
+   "equipment_kind": "equipment_series",
+   "category": "film_thickness_analyzer",
+   "manufacturer": "filmetrics",
+   "limits": {},
+   "models": [
+    "F54-UV",
+    "F54-UVX",
+    "F54",
+    "F54-EXR",
+    "F54-NIR"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/filmetrics/filmetrics-f54.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/2",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/2",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/3",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/3",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/4",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/4",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/5",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/5",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/6",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/6",
+   "origin": true
   },
   {
    "id": "flir-t660",
@@ -8422,6 +9647,126 @@
    "url": "https://www.activelab.gr/wp-content/uploads/2025/04/NEXTA-STA_thermal-analysis_brochure.pdf"
   },
   {
+   "id": "hitachi-su3800-3900-sem",
+   "kind": "equipment",
+   "label": "Hitachi SU3800 / SU3900 Scanning Electron Microscopes",
+   "label_ko": "히타치 SU3800·SU3900 주사전자현미경",
+   "equipment_kind": "equipment_series",
+   "category": "electron_microscope",
+   "manufacturer": "hitachi-high-tech",
+   "limits": {},
+   "models": [
+    "SU3800",
+    "SU3900"
+   ],
+   "confidence": "limited",
+   "file": "equipment/hitachi-high-tech/hitachi-su3800-3900-sem.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/7",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/7",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/8",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/8",
+   "origin": true
+  },
+  {
+   "id": "horiba-fluoromax-plus",
+   "kind": "equipment",
+   "label": "HORIBA FluoroMax Plus Spectrofluorometer",
+   "label_ko": "호리바 FluoroMax Plus 형광분광기",
+   "equipment_kind": "equipment_model",
+   "category": "optical_spectrometer",
+   "manufacturer": "horiba",
+   "limits": {
+    "temperature_degC": {
+     "min": -40.0,
+     "max": 150.0
+    }
+   },
+   "models": [
+    "FluoroMax Plus"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/horiba/horiba-fluoromax-plus.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/169",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/169",
+   "origin": true
+  },
+  {
+   "id": "horiba-gd-profiler-2",
+   "kind": "equipment",
+   "label": "HORIBA GD-Profiler 2 Glow Discharge OES",
+   "label_ko": "호리바 GD-Profiler 2 글로우방전 발광분광기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "horiba",
+   "limits": {},
+   "models": [
+    "GD-Profiler 2"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/horiba/horiba-gd-profiler-2.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/33",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/33",
+   "origin": true
+  },
+  {
+   "id": "hot-disk-tps-2200",
+   "kind": "equipment",
+   "label": "Hot Disk TPS 2200 Thermal Constants Analyser",
+   "label_ko": "핫디스크 TPS 2200 열물성 측정기",
+   "equipment_kind": "equipment_model",
+   "category": "thermal_conductivity",
+   "manufacturer": "hot-disk",
+   "limits": {
+    "temperature_degC": {
+     "min": -50.0,
+     "max": 750.0
+    }
+   },
+   "models": [
+    "TPS 2200"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/hot-disk/hot-disk-tps-2200.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/44",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/44",
+   "origin": true
+  },
+  {
+   "id": "hot-disk-tps-2500-s-materialtwin",
+   "kind": "equipment",
+   "label": "Hot Disk TPS 2500 S Thermal Constants Analyser",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "thermal_conductivity",
+   "manufacturer": "hot-disk",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/hot-disk/hot-disk-tps-2500-s-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/45",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/45",
+   "origin": true
+  },
+  {
    "id": "hot-disk-tps-2500-s",
    "kind": "equipment",
    "label": "Hot Disk TPS 2500 S Thermal Constants Analyser",
@@ -8893,6 +10238,141 @@
    "url": "https://instron-romania.com/wp-content/uploads/2020/02/3400-Series-Universal-Testing-Systems.pdf"
   },
   {
+   "id": "instron-5900-series-materialtwin",
+   "kind": "equipment",
+   "label": "5900 Series (5940 / 5960 / 5980) Universal Testing Systems",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "universal_testing_machine",
+   "manufacturer": "instron",
+   "limits": {},
+   "models": [
+    "5965-E2",
+    "5966-E2",
+    "5967-E2",
+    "5969-E2",
+    "5982-E2",
+    "5984-E2",
+    "5985-E2"
+   ],
+   "confidence": "limited",
+   "file": "equipment/instron/instron-5900-series-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/104",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/104",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/105",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/105",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/106",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/106",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/107",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/107",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/108",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/108",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/109",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/109",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/110",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/110",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/111",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/111",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/112",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/112",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/113",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/113",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/114",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/114",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/115",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/115",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/116",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/116",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/117",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/117",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/118",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/118",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/119",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/119",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/120",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/120",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/121",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/121",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/122",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/122",
+   "origin": true
+  },
+  {
    "id": "instron-5900-series",
    "kind": "equipment",
    "label": "5900 Series (5940 / 5960 / 5980) Universal Testing Systems",
@@ -9130,6 +10610,37 @@
    "kind": "document",
    "label": "instron/8874-biaxial-servohydraulic.pdf",
    "url": "https://www.instron.com/wp-content/uploads/2024/07/8874-servohydraulic-fatigue-testing-system-1.pdf"
+  },
+  {
+   "id": "instron-9400-drop-tower-materialtwin",
+   "kind": "equipment",
+   "label": "Instron 9400 Series (9440 / 9450) and CEAST 9300 Series (9310 / 9340 / 9350) Drop Tower Impact Systems",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "drop_tower_impact",
+   "manufacturer": "instron",
+   "limits": {},
+   "models": [],
+   "confidence": "limited",
+   "file": "equipment/instron/instron-9400-drop-tower-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/144",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/144",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/145",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/145",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/146",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/146",
+   "origin": true
   },
   {
    "id": "instron-9400-drop-tower",
@@ -9665,6 +11176,225 @@
    "url": "https://www.instrumentsystems.com/fileadmin/Downloads/Brochures_Datasheets/LumiCam4000B-2400B_Series_EN_web.pdf"
   },
   {
+   "id": "woollam-rc2",
+   "kind": "equipment",
+   "label": "J.A. Woollam RC2 Spectroscopic Ellipsometer",
+   "label_ko": "울람 RC2 분광 엘립소미터",
+   "equipment_kind": "equipment_model",
+   "category": "film_thickness_analyzer",
+   "manufacturer": "ja-woollam",
+   "limits": {
+    "temperature_degC": {
+     "max": 300.0
+    }
+   },
+   "models": [
+    "RC2"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/ja-woollam/woollam-rc2.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/174",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/174",
+   "origin": true
+  },
+  {
+   "id": "jeol-jamp-9510f",
+   "kind": "equipment",
+   "label": "JEOL JAMP-9510F Field-Emission Auger Microprobe",
+   "label_ko": "지올 JAMP-9510F 오제전자 분광 미세분석기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "JAMP-9510F"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/jeol/jeol-jamp-9510f.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/14",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/14",
+   "origin": true
+  },
+  {
+   "id": "jeol-jem-f200",
+   "kind": "equipment",
+   "label": "JEOL JEM-F200 TEM/STEM",
+   "label_ko": "지올 JEM-F200 투과전자현미경",
+   "equipment_kind": "equipment_model",
+   "category": "electron_microscope",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "JEM-F200"
+   ],
+   "confidence": "limited",
+   "file": "equipment/jeol/jeol-jem-f200.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/10",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/10",
+   "origin": true
+  },
+  {
+   "id": "jeol-jps-9030",
+   "kind": "equipment",
+   "label": "JEOL JPS-9030 X-ray Photoelectron Spectrometer",
+   "label_ko": "지올 JPS-9030 X선 광전자분광기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "JPS-9030"
+   ],
+   "confidence": "limited",
+   "file": "equipment/jeol/jeol-jps-9030.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/15",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/15",
+   "origin": true
+  },
+  {
+   "id": "jeol-jsm-it-fesem",
+   "kind": "equipment",
+   "label": "JEOL JSM-IT500HR / IT700HR Field-Emission SEM",
+   "label_ko": "지올 JSM-IT 전계방출 주사전자현미경",
+   "equipment_kind": "equipment_series",
+   "category": "electron_microscope",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "JSM-IT500HR",
+    "JSM-IT700HR"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/jeol/jeol-jsm-it-fesem.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/9",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/9",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/11",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/11",
+   "origin": true
+  },
+  {
+   "id": "jeol-jsx-1000s",
+   "kind": "equipment",
+   "label": "JEOL JSX-1000S Energy-Dispersive XRF",
+   "label_ko": "지올 JSX-1000S 에너지분산 형광X선 분석기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "JSX-1000S"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/jeol/jeol-jsx-1000s.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/16",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/16",
+   "origin": true
+  },
+  {
+   "id": "jeol-jxa-epma",
+   "kind": "equipment",
+   "label": "JEOL JXA-iHP200F / iSP100 Electron Probe Microanalyzers",
+   "label_ko": "지올 JXA 전자프로브 미세분석기",
+   "equipment_kind": "equipment_series",
+   "category": "electron_microscope",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "JXA-iHP200F",
+    "JXA-iSP100"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/jeol/jeol-jxa-epma.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/12",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/12",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/13",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/13",
+   "origin": true
+  },
+  {
+   "id": "jeol-xtalab-synergy-ed",
+   "kind": "equipment",
+   "label": "JEOL XtaLAB Synergy-ED Electron Diffractometer",
+   "label_ko": "지올 XtaLAB Synergy-ED 전자회절 구조해석기",
+   "equipment_kind": "equipment_model",
+   "category": "xray_diffractometer",
+   "manufacturer": "jeol",
+   "limits": {},
+   "models": [
+    "XtaLAB Synergy-ED"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/jeol/jeol-xtalab-synergy-ed.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/17",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/17",
+   "origin": true
+  },
+  {
+   "id": "keithley-4200-scs",
+   "kind": "equipment",
+   "label": "Keithley 4200-SCS / 4200A-SCS Parameter Analyzers",
+   "label_ko": "키슬리 4200 반도체 파라미터 분석기",
+   "equipment_kind": "equipment_series",
+   "category": "electrical_property_tester",
+   "manufacturer": "keithley",
+   "limits": {},
+   "models": [
+    "4200A-SCS",
+    "4200-SCS"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/keithley/keithley-4200-scs.json"
+  },
+  {
+   "id": "JEDEC Standard 35-A",
+   "kind": "standard",
+   "label": "JEDEC Standard 35-A"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/176",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/176",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/177",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/177",
+   "origin": true
+  },
+  {
    "id": "keysight-n9048b-pxe",
    "kind": "equipment",
    "label": "Keysight N9048B PXE EMI Receiver",
@@ -9841,6 +11571,50 @@
    "url": "https://telonic.co.uk/jg/wp-content/uploads/2021/09/KIkusui-TOS9300-ElectricalSafetyTester-Datasheet.pdf"
   },
   {
+   "id": "kla-g200x",
+   "kind": "equipment",
+   "label": "KLA Nano Indenter G200X",
+   "label_ko": "KLA G200X 나노압입 시험기",
+   "equipment_kind": "equipment_model",
+   "category": "nanoindenter",
+   "manufacturer": "kla",
+   "limits": {
+    "temperature_degC": {
+     "max": 300.0
+    }
+   },
+   "models": [
+    "Nano Indenter G200X"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/kla/kla-g200x.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/102",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/102",
+   "origin": true
+  },
+  {
+   "id": "kla-imicro-materialtwin",
+   "kind": "equipment",
+   "label": "KLA iMicro Nanoindenter",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "instrumented_indentation",
+   "manufacturer": "kla",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/kla/kla-imicro-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/103",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/103",
+   "origin": true
+  },
+  {
    "id": "kla-imicro",
    "kind": "equipment",
    "label": "KLA iMicro Nanoindenter",
@@ -9872,6 +11646,27 @@
    "kind": "document",
    "label": "kla/imicro-nanoindenter.pdf",
    "url": "https://www.kla.com/wp-content/uploads/iMicro.pdf"
+  },
+  {
+   "id": "kla-tencor-p-7",
+   "kind": "equipment",
+   "label": "KLA-Tencor P-7 Stylus Profiler",
+   "label_ko": "KLA-Tencor P-7 촉침식 프로파일러",
+   "equipment_kind": "equipment_model",
+   "category": "optical_profilometer",
+   "manufacturer": "kla",
+   "limits": {},
+   "models": [
+    "P-7"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/kla/kla-tencor-p-7.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/18",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/18",
+   "origin": true
   },
   {
    "id": "konica-minolta-ca-410",
@@ -9976,6 +11771,100 @@
    "kind": "document",
    "label": "konica-minolta/cs-2000-spectroradiometer-catalog.pdf",
    "url": "https://www.konicaminolta.com/instruments/download/catalog/display/pdf/cs2000_catalog_eng.pdf"
+  },
+  {
+   "id": "kruss-dsa100hp",
+   "kind": "equipment",
+   "label": "KRÜSS DSA100HP High-Pressure Drop Shape Analyzer",
+   "label_ko": "크루스 DSA100HP 고압 액적형상 분석기",
+   "equipment_kind": "equipment_series",
+   "category": "contact_angle_analyzer",
+   "manufacturer": "kruss",
+   "limits": {
+    "temperature_degC": {
+     "min": 20.0,
+     "max": 250.0
+    }
+   },
+   "models": [
+    "DSA100HP40",
+    "DSA100HP690",
+    "DSA100HP1750"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/kruss/kruss-dsa100hp.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/19",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/19",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/20",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/20",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/21",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/21",
+   "origin": true
+  },
+  {
+   "id": "lake-shore-hms",
+   "kind": "equipment",
+   "label": "Lake Shore 7600 / 7700A / 9700A Series Hall Measurement Systems",
+   "label_ko": "레이크쇼어 홀효과 측정 시스템",
+   "equipment_kind": "equipment_series",
+   "category": "electrical_property_tester",
+   "manufacturer": "lake-shore",
+   "limits": {
+    "temperature_degC": {
+     "min": -271.15,
+     "max": 526.85
+    }
+   },
+   "models": [
+    "7604 HMS",
+    "7607 HMS",
+    "7704A HMS",
+    "7707A HMS",
+    "9709A HMS"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/lake-shore/lake-shore-hms.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/178",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/178",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/179",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/179",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/180",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/180",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/181",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/181",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/182",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/182",
+   "origin": true
   },
   {
    "id": "lansmont-pdt-drop-testers",
@@ -10306,6 +12195,37 @@
    "url": "https://joint-research-centre.ec.europa.eu/system/files/2018-10/summary_techspecs_maccor_battery_tester.pdf"
   },
   {
+   "id": "malvern-kinexus-materialtwin",
+   "kind": "equipment",
+   "label": "Malvern Kinexus rotational rheometers (lab+ / pro+ / ultra+)",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "rotational_rheometer",
+   "manufacturer": "malvern-panalytical",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/malvern-panalytical/malvern-kinexus-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/159",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/159",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/160",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/160",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/161",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/161",
+   "origin": true
+  },
+  {
    "id": "malvern-kinexus",
    "kind": "equipment",
    "label": "Malvern Kinexus rotational rheometers (lab+ / pro+ / ultra+)",
@@ -10355,6 +12275,48 @@
    "kind": "document",
    "label": "malvern-panalytical/kinexus-series-brochure.pdf",
    "url": "https://sharedlab.bme.wisc.edu/labs/1002/equipment/malvern/Kinexus_Series_Brochure.pdf"
+  },
+  {
+   "id": "malvern-mastersizer-3000",
+   "kind": "equipment",
+   "label": "Malvern Panalytical Mastersizer 3000 Laser Diffraction Particle Size Analyzer",
+   "label_ko": "말번 Mastersizer 3000 레이저 회절 입도분석기",
+   "equipment_kind": "equipment_model",
+   "category": "particle_size_analyzer",
+   "manufacturer": "malvern-panalytical",
+   "limits": {},
+   "models": [
+    "Mastersizer 3000"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/malvern-panalytical/malvern-mastersizer-3000.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/162",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/162",
+   "origin": true
+  },
+  {
+   "id": "malvern-zetasizer-nano-zsp",
+   "kind": "equipment",
+   "label": "Malvern Zetasizer Nano ZSP",
+   "label_ko": "말번 Zetasizer Nano ZSP 입도·제타전위 분석기",
+   "equipment_kind": "equipment_model",
+   "category": "particle_size_analyzer",
+   "manufacturer": "malvern-panalytical",
+   "limits": {},
+   "models": [
+    "Zetasizer Nano ZSP"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/malvern-panalytical/malvern-zetasizer-nano-zsp.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/163",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/163",
+   "origin": true
   },
   {
    "id": "mecmesin-multitest",
@@ -10482,6 +12444,27 @@
    "url": "https://www.mecmesin.com/sites/default/files/brochures/2023/431-476-09-OmniTest_Brochure-20230712-LC.pdf"
   },
   {
+   "id": "metrohm-851-titrando",
+   "kind": "equipment",
+   "label": "Metrohm 851 Titrando Coulometric Karl Fischer Titrator",
+   "label_ko": "메트롬 851 Titrando 칼피셔 수분 측정기",
+   "equipment_kind": "equipment_model",
+   "category": "karl_fischer_titrator",
+   "manufacturer": "metrohm",
+   "limits": {},
+   "models": [
+    "851 Titrando"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/metrohm/metrohm-851-titrando.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/28",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/28",
+   "origin": true
+  },
+  {
    "id": "mettler-dma-sdta861e",
    "kind": "equipment",
    "label": "METTLER TOLEDO DMA/SDTA861e Dynamic Mechanical Analyzer",
@@ -10576,6 +12559,186 @@
    "url": "https://anff-qld.org.au/wp-content/uploads/2016/07/Thermal-analysis-characterisation-suite-METTLER-TOLEDO-TGA-DSC-1-brochure.pdf"
   },
   {
+   "id": "mettler-toledo-dsc-3",
+   "kind": "equipment",
+   "label": "METTLER TOLEDO DSC 3 / DSC 3+ Differential Scanning Calorimeters",
+   "label_ko": "메틀러토레도 DSC 3 시차주사열량계",
+   "equipment_kind": "equipment_series",
+   "category": "dsc",
+   "manufacturer": "mettler-toledo",
+   "limits": {
+    "temperature_degC": {
+     "min": -150.0,
+     "max": 700.0
+    }
+   },
+   "models": [
+    "DSC 3",
+    "DSC 3+"
+   ],
+   "confidence": "limited",
+   "file": "equipment/mettler-toledo/mettler-toledo-dsc-3.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/53",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/53",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/54",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/54",
+   "origin": true
+  },
+  {
+   "id": "micromeritics-accupyc-ii-1345",
+   "kind": "equipment",
+   "label": "Micromeritics AccuPyc II 1345 Gas Pycnometer",
+   "label_ko": "마이크로메리틱스 AccuPyc II 1345 기체치환 피크노미터",
+   "equipment_kind": "equipment_model",
+   "category": "pycnometer_porosimeter",
+   "manufacturer": "micromeritics",
+   "limits": {
+    "temperature_degC": {
+     "min": 15.0,
+     "max": 50.0
+    }
+   },
+   "models": [
+    "AccuPyc II 1345"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/micromeritics/micromeritics-accupyc-ii-1345.json"
+  },
+  {
+   "id": "ASTM D6226",
+   "kind": "standard",
+   "label": "ASTM D6226"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/164",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/164",
+   "origin": true
+  },
+  {
+   "id": "micromeritics-autopore-v",
+   "kind": "equipment",
+   "label": "Micromeritics AutoPore V Mercury Porosimeter",
+   "label_ko": "마이크로메리틱스 AutoPore V 수은압입 포로시미터",
+   "equipment_kind": "equipment_model",
+   "category": "pycnometer_porosimeter",
+   "manufacturer": "micromeritics",
+   "limits": {},
+   "models": [
+    "AutoPore V"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/micromeritics/micromeritics-autopore-v.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/165",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/165",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-abk-1",
+   "kind": "equipment",
+   "label": "Mitutoyo ABK-1 Brinell Hardness Tester",
+   "label_ko": "미쓰토요 ABK-1 브리넬 경도시험기",
+   "equipment_kind": "equipment_model",
+   "category": "brinell_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "ABK-1"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-abk-1.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/212",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/212",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-ar-atk-rockwell",
+   "kind": "equipment",
+   "label": "Mitutoyo AR-10 / AR-20 / ARK-600 / ATK-600 Rockwell Hardness Testers",
+   "label_ko": "미쓰토요 AR·ARK·ATK 로크웰 경도시험기",
+   "equipment_kind": "equipment_series",
+   "category": "rockwell_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "ARK-600",
+    "ATK-600",
+    "AR-10",
+    "AR-20"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-ar-atk-rockwell.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/76",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/76",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/77",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/77",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/78",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/78",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/79",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/79",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-avk",
+   "kind": "equipment",
+   "label": "Mitutoyo AVK-C0 / AVK-HF Vickers Hardness Testers",
+   "label_ko": "미쓰토요 AVK 비커스 경도시험기",
+   "equipment_kind": "equipment_series",
+   "category": "vickers_knoop_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {
+    "temperature_degC": {
+     "max": 1200.0
+    }
+   },
+   "models": [
+    "AVK-C0",
+    "AVK-HF"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-avk.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/73",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/73",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/74",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/74",
+   "origin": true
+  },
+  {
    "id": "mitutoyo-hardmatic-ud-410-leeb",
    "kind": "equipment",
    "label": "Mitutoyo Hardmatic UD-410 portable Leeb hardness tester (detectors UD-411/412/413/414)",
@@ -10607,6 +12770,226 @@
    "kind": "document",
    "label": "mitutoyo/hardness-testing-equipment-pre1101.pdf",
    "url": "https://www.cdiweb.com/datasheets/mitutoyo/mitutoyo-hardness-tester-pre1101.pdf"
+  },
+  {
+   "id": "mitutoyo-hh-300-durometer",
+   "kind": "equipment",
+   "label": "Mitutoyo HH-300 Series Durometers",
+   "label_ko": "미쓰토요 HH-300 듀로미터",
+   "equipment_kind": "equipment_series",
+   "category": "shore_irhd_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "HH-331",
+    "HH-332",
+    "HH-335",
+    "HH-336",
+    "HH-333",
+    "HH-334",
+    "HH-337",
+    "HH-338"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hh-300-durometer.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/84",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/84",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/85",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/85",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/86",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/86",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/87",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/87",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/88",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/88",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/89",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/89",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/90",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/90",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/91",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/91",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-hm-200",
+   "kind": "equipment",
+   "label": "Mitutoyo HM-210 / HM-220 Micro Vickers Hardness Testers",
+   "label_ko": "미쓰토요 HM-200 마이크로 비커스 경도시험기",
+   "equipment_kind": "equipment_series",
+   "category": "vickers_knoop_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "HM-210 Type A",
+    "HM-210 Type B",
+    "HM-210 Type D",
+    "HM-220 Type A",
+    "HM-220 Type B",
+    "HM-220 Type D",
+    "HM-210 Type A V/K",
+    "HM-210 Type B V/K",
+    "HM-210 Type D V/K",
+    "HM-220 Type A V/K",
+    "HM-220 Type B V/K",
+    "HM-220 Type D V/K"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hm-200.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/92",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/92",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/93",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/93",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/94",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/94",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/95",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/95",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/96",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/96",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/97",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/97",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/213",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/213",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/214",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/214",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/215",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/215",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/216",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/216",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/217",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/217",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/218",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/218",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-hm-micro-vickers-materialtwin",
+   "kind": "equipment",
+   "label": "Mitutoyo HM-100 / HM-200 Series Micro Vickers Hardness Testing Machines",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "vickers_knoop_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "HM-122",
+    "HM-124"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hm-micro-vickers-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/65",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/65",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/66",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/66",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/67",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/67",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/68",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/68",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/69",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/69",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/70",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/70",
+   "origin": true
   },
   {
    "id": "mitutoyo-hm-micro-vickers",
@@ -10646,6 +13029,131 @@
    ],
    "confidence": "catalog",
    "file": "equipment/mitutoyo/mitutoyo-hm-micro-vickers.json"
+  },
+  {
+   "id": "mitutoyo-hr-500",
+   "kind": "equipment",
+   "label": "Mitutoyo HR-500 Series Rockwell Hardness Testers",
+   "label_ko": "미쓰토요 HR-500 로크웰 경도시험기",
+   "equipment_kind": "equipment_series",
+   "category": "rockwell_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "HR-511",
+    "HR-521",
+    "HR-522",
+    "HR-523"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hr-500.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/80",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/80",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/81",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/81",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/82",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/82",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/83",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/83",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-hr-600",
+   "kind": "equipment",
+   "label": "Mitutoyo HR-600 Series CNC Rockwell Hardness Testers",
+   "label_ko": "미쓰토요 HR-600 CNC 로크웰 경도시험기",
+   "equipment_kind": "equipment_series",
+   "category": "rockwell_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "HR-610A",
+    "HR-620A",
+    "HR-620B"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hr-600.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/57",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/57",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/58",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/58",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/59",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/59",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-hr-series-rockwell-materialtwin",
+   "kind": "equipment",
+   "label": "Mitutoyo HR-320MS / HR-430MR / HR-430MS / HR-530 Rockwell Hardness Testing Machines",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "rockwell_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hr-series-rockwell-materialtwin.json"
+  },
+  {
+   "id": "ISO 6508-2",
+   "kind": "standard",
+   "label": "ISO 6508-2"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/60",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/60",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/61",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/61",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/62",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/62",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/63",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/63",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/64",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/64",
+   "origin": true
   },
   {
    "id": "mitutoyo-hr-series-rockwell",
@@ -10720,11 +13228,6 @@
    "label": "JIS B 7726"
   },
   {
-   "id": "ISO 6508-2",
-   "kind": "standard",
-   "label": "ISO 6508-2"
-  },
-  {
    "id": "JIS Z 2245",
    "kind": "standard",
    "label": "JIS Z 2245"
@@ -10745,6 +13248,107 @@
    "kind": "document",
    "label": "mitutoyo/rockwell-hr-300-400-bulletin-2324.pdf",
    "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/Rockwell_HR-300_400.pdf"
+  },
+  {
+   "id": "mitutoyo-hv-100",
+   "kind": "equipment",
+   "label": "Mitutoyo HV-100 Series Vickers Hardness Testers",
+   "label_ko": "미쓰토요 HV-100 비커스 경도시험기",
+   "equipment_kind": "equipment_series",
+   "category": "vickers_knoop_hardness",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "HV-112",
+    "HV-114",
+    "HV110",
+    "HV120"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-hv-100.json"
+  },
+  {
+   "id": "JIS R1607",
+   "kind": "standard",
+   "label": "JIS R1607"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/71",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/71",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/72",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/72",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/98",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/98",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/99",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/99",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-mzt-500",
+   "kind": "equipment",
+   "label": "Mitutoyo MZT-500 Series Micro Material Testers",
+   "label_ko": "미쓰토요 MZT-500 미소부 재료특성 평가 시스템",
+   "equipment_kind": "equipment_model",
+   "category": "instrumented_indentation",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "MZT-500 Series"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-mzt-500.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/75",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/75",
+   "origin": true
+  },
+  {
+   "id": "mitutoyo-surftest-sj-410",
+   "kind": "equipment",
+   "label": "Mitutoyo Surftest SJ-410 Series Surface Roughness Testers",
+   "label_ko": "미쓰토요 서프테스트 SJ-410 표면조도 측정기",
+   "equipment_kind": "equipment_series",
+   "category": "surface_roughness_tester",
+   "manufacturer": "mitutoyo",
+   "limits": {},
+   "models": [
+    "Surftest SJ-411",
+    "Surftest SJ-412"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/mitutoyo/mitutoyo-surftest-sj-410.json"
+  },
+  {
+   "id": "JIS B0601",
+   "kind": "standard",
+   "label": "JIS B0601"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/22",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/22",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/23",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/23",
+   "origin": true
   },
   {
    "id": "molex-crimp-pull-tester",
@@ -11469,6 +14073,49 @@
    "url": "https://www.mts.com/-/media/materials/pdfs/brochures/mts-exceed-test-system-brochure.pdf"
   },
   {
+   "id": "mts-landmark-servohydraulic-materialtwin",
+   "kind": "equipment",
+   "label": "MTS Landmark Servohydraulic Test Systems (370.02 tabletop, 370.10 / 370.25 / 370.50 floor-standing, 100/200 Hz elastomer)",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "servohydraulic_fatigue",
+   "manufacturer": "mts",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/mts/mts-landmark-servohydraulic-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/139",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/139",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/140",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/140",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/141",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/141",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/142",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/142",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/143",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/143",
+   "origin": true
+  },
+  {
    "id": "mts-landmark-servohydraulic",
    "kind": "equipment",
    "label": "MTS Landmark Servohydraulic Test Systems (370.02 tabletop, 370.10 / 370.25 / 370.50 floor-standing, 100/200 Hz elastomer)",
@@ -11608,6 +14255,25 @@
    "url": "https://analyzing-testing.netzsch.com/_Resources/Persistent/9/e/4/1/9e41d39f3911833f82d926085d673debb037b07c/ARC_en_web.pdf"
   },
   {
+   "id": "netzsch-dil-402-expedis-materialtwin",
+   "kind": "equipment",
+   "label": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "dilatometer",
+   "manufacturer": "netzsch",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/netzsch/netzsch-dil-402-expedis-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/55",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/55",
+   "origin": true
+  },
+  {
    "id": "netzsch-dil-402-expedis",
    "kind": "equipment",
    "label": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
@@ -11721,6 +14387,39 @@
    "url": "https://analyzing-testing.netzsch.com/_Resources/Persistent/1/3/d/e/13de3d838c22cec9649002905f7be903b314c09f/DSC_300_Caliris_Series_en_web.pdf"
   },
   {
+   "id": "netzsch-lfa-400",
+   "kind": "equipment",
+   "label": "NETZSCH LFA 427 / LFA 457 MicroFlash Laser Flash Analyzers",
+   "label_ko": "네취 LFA 400 계열 레이저 플래시 열확산율 측정기",
+   "equipment_kind": "equipment_series",
+   "category": "thermal_conductivity",
+   "manufacturer": "netzsch",
+   "limits": {
+    "temperature_degC": {
+     "min": -125.0,
+     "max": 2800.0
+    }
+   },
+   "models": [
+    "LFA 457 MicroFlash",
+    "LFA 427"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/netzsch/netzsch-lfa-400.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/46",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/46",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/47",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/47",
+   "origin": true
+  },
+  {
    "id": "netzsch-lfa-467-hyperflash",
    "kind": "equipment",
    "label": "NETZSCH LFA 467 HyperFlash / LFA 467 HT HyperFlash Light Flash Apparatus",
@@ -11781,6 +14480,44 @@
    "kind": "document",
    "label": "netzsch/lfa-467-hyperflash.pdf",
    "url": "https://analyzing-testing.netzsch.com/_Resources/Persistent/3/6/7/f/367f54b9bc7fc3a5b36f6b41191f5dbaf802ecb7/LFA_467_HyperFlash_en_web.pdf"
+  },
+  {
+   "id": "netzsch-sta-449",
+   "kind": "equipment",
+   "label": "NETZSCH STA 449 F1 / F3 Jupiter Simultaneous Thermal Analyzers",
+   "label_ko": "네취 STA 449 Jupiter 동시열분석기",
+   "equipment_kind": "equipment_series",
+   "category": "sta",
+   "manufacturer": "netzsch",
+   "limits": {
+    "temperature_degC": {
+     "min": -150.0,
+     "max": 2400.0
+    }
+   },
+   "models": [
+    "STA 449 F1 Jupiter",
+    "STA 449 F3 Jupiter"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/netzsch/netzsch-sta-449.json"
+  },
+  {
+   "id": "DIN 51004",
+   "kind": "standard",
+   "label": "DIN 51004"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/48",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/48",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/49",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/49",
+   "origin": true
   },
   {
    "id": "netzsch-tg-209-f3-tarsus",
@@ -12283,6 +15020,116 @@
    "url": "https://ncf.uic.edu/wp-content/uploads/sites/819/2022/04/Scanning-Acoustic-Microscope-Manual.pdf"
   },
   {
+   "id": "nordson-gen7-c-sam",
+   "kind": "equipment",
+   "label": "Nordson Gen7 C-SAM Scanning Acoustic Microscope",
+   "label_ko": "노드슨 Gen7 C-SAM 주사음향현미경",
+   "equipment_kind": "equipment_model",
+   "category": "acoustic_microscope",
+   "manufacturer": "nordson-dage",
+   "limits": {},
+   "models": [
+    "Gen7 C-SAM"
+   ],
+   "confidence": "limited",
+   "file": "equipment/nordson-dage/nordson-gen7-c-sam.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/183",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/183",
+   "origin": true
+  },
+  {
+   "id": "ossila-four-point-probe",
+   "kind": "equipment",
+   "label": "Ossila Four-Point Probe (T2001A / T2001B)",
+   "label_ko": "오실라 4점 탐침 면저항 측정기",
+   "equipment_kind": "equipment_model",
+   "category": "electrical_property_tester",
+   "manufacturer": "ossila",
+   "limits": {},
+   "models": [
+    "Four-Point Probe (T2001A/T2001B)"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/ossila/ossila-four-point-probe.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/175",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/175",
+   "origin": true
+  },
+  {
+   "id": "oxford-symmetry-s2",
+   "kind": "equipment",
+   "label": "Oxford Instruments Symmetry S2 EBSD Detector",
+   "label_ko": "옥스퍼드 Symmetry S2 EBSD 검출기",
+   "equipment_kind": "equipment_model",
+   "category": "electron_microscope",
+   "manufacturer": "oxford-instruments",
+   "limits": {},
+   "models": [
+    "Symmetry S2"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/oxford-instruments/oxford-symmetry-s2.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/24",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/24",
+   "origin": true
+  },
+  {
+   "id": "park-nx10",
+   "kind": "equipment",
+   "label": "Park Systems NX10 Atomic Force Microscope",
+   "label_ko": "파크시스템스 NX10 원자간력현미경",
+   "equipment_kind": "equipment_model",
+   "category": "atomic_force_microscope",
+   "manufacturer": "park-systems",
+   "limits": {},
+   "models": [
+    "NX10"
+   ],
+   "confidence": "limited",
+   "file": "equipment/park-systems/park-nx10.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/25",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/25",
+   "origin": true
+  },
+  {
+   "id": "perkinelmer-dma-8000",
+   "kind": "equipment",
+   "label": "PerkinElmer DMA 8000 Dynamic Mechanical Analyzer",
+   "label_ko": "퍼킨엘머 DMA 8000 동적기계분석기",
+   "equipment_kind": "equipment_model",
+   "category": "dma",
+   "manufacturer": "perkinelmer",
+   "limits": {
+    "temperature_degC": {
+     "min": -190.0,
+     "max": 600.0
+    }
+   },
+   "models": [
+    "DMA 8000"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/perkinelmer/perkinelmer-dma-8000.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/56",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/56",
+   "origin": true
+  },
+  {
    "id": "perkinelmer-dsc-8000",
    "kind": "equipment",
    "label": "PerkinElmer DSC 4000 / 6000 / 8000 / 8500 Differential Scanning Calorimeters",
@@ -12319,6 +15166,27 @@
    "kind": "document",
    "label": "perkinelmer/dsc-8000-datasheet.pdf",
    "url": "http://www.ietltd.com/pdf_datasheets/DSC-8000%20data%20sheet.pdf"
+  },
+  {
+   "id": "perkinelmer-frontier-ftir",
+   "kind": "equipment",
+   "label": "PerkinElmer Frontier FT-IR / FT-NIR / FT-FIR Spectrometer",
+   "label_ko": "퍼킨엘머 Frontier 푸리에변환 적외분광기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "perkinelmer",
+   "limits": {},
+   "models": [
+    "Frontier"
+   ],
+   "confidence": "limited",
+   "file": "equipment/perkinelmer/perkinelmer-frontier-ftir.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/38",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/38",
+   "origin": true
   },
   {
    "id": "proceq-equotip-550-leeb",
@@ -12585,6 +15453,83 @@
    "url": "https://acl.design.upenn.edu/wp-content/uploads/2024/01/LU-8047-TM-QUV-Technical-Manual-Series-95.pdf"
   },
   {
+   "id": "renishaw-invia",
+   "kind": "equipment",
+   "label": "Renishaw inVia Confocal Raman Microscopes (Basis / Reflex / Qontor)",
+   "label_ko": "레니쇼 inVia 공초점 라만 현미분광기",
+   "equipment_kind": "equipment_series",
+   "category": "composition_spectrometer",
+   "manufacturer": "renishaw",
+   "limits": {},
+   "models": [
+    "inVia Basis",
+    "inVia Reflex",
+    "inVia Qontor"
+   ],
+   "confidence": "limited",
+   "file": "equipment/renishaw/renishaw-invia.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/41",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/41",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/42",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/42",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/43",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/43",
+   "origin": true
+  },
+  {
+   "id": "rigaku-smartlab",
+   "kind": "equipment",
+   "label": "Rigaku SmartLab X-ray Diffractometer",
+   "label_ko": "리가쿠 SmartLab X선 회절계",
+   "equipment_kind": "equipment_model",
+   "category": "xray_diffractometer",
+   "manufacturer": "rigaku",
+   "limits": {},
+   "models": [
+    "SmartLab"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/rigaku/rigaku-smartlab.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/30",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/30",
+   "origin": true
+  },
+  {
+   "id": "rigaku-zsx-primus-400",
+   "kind": "equipment",
+   "label": "Rigaku ZSX Primus 400 Wavelength-Dispersive XRF",
+   "label_ko": "리가쿠 ZSX Primus 400 파장분산 형광X선 분석기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "rigaku",
+   "limits": {},
+   "models": [
+    "ZSX Primus 400"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/rigaku/rigaku-zsx-primus-400.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/31",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/31",
+   "origin": true
+  },
+  {
    "id": "rs-esw-emi-receiver",
    "kind": "equipment",
    "label": "Rohde & Schwarz ESW EMI Test Receiver (ESW8 / ESW26 / ESW44)",
@@ -12779,6 +15724,107 @@
    "web_only": true
   },
   {
+   "id": "shimadzu-ag-xplus",
+   "kind": "equipment",
+   "label": "AUTOGRAPH AG-Xplus Series Precision Universal Testers",
+   "label_ko": "시마즈 오토그래프 AG-Xplus 정밀 만능시험기",
+   "equipment_kind": "equipment_series",
+   "category": "universal_testing_machine",
+   "manufacturer": "shimadzu",
+   "limits": {
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0
+    }
+   },
+   "models": [
+    "AG-Xplus",
+    "AG-Xplus HS",
+    "AG-Xplus SC",
+    "AG-XDplus",
+    "AG-20kN/50kNXplus",
+    "AG-100kNXplus",
+    "AG-250kN/300kNXplus",
+    "AG-500/600kN",
+    "AG-1000kN",
+    "AG-1500kN",
+    "AG-2000kN"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/shimadzu/shimadzu-ag-xplus.json"
+  },
+  {
+   "id": "JIS K7161",
+   "kind": "standard",
+   "label": "JIS K7161"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/128",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/128",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/129",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/129",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/130",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/130",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/131",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/131",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/132",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/132",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/133",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/133",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/134",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/134",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/135",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/135",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/136",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/136",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/137",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/137",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/138",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/138",
+   "origin": true
+  },
+  {
    "id": "shimadzu-ags-v",
    "kind": "equipment",
    "label": "AUTOGRAPH AGS-V Series Tabletop Precision Universal Testing Machines",
@@ -12866,6 +15912,49 @@
    "kind": "document",
    "label": "shimadzu/ags-v-series-c224-e128.pdf",
    "url": "https://www.shimadzu.com/an/sites/shimadzu.com.an/files/pim/pim_document_file/brochures/25364/c224-e128.pdf"
+  },
+  {
+   "id": "shimadzu-ags-x-materialtwin",
+   "kind": "equipment",
+   "label": "AUTOGRAPH AGS-X Series Precision Universal Tester",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "universal_testing_machine",
+   "manufacturer": "shimadzu",
+   "limits": {},
+   "models": [],
+   "confidence": "catalog",
+   "file": "equipment/shimadzu/shimadzu-ags-x-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/123",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/123",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/124",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/124",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/125",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/125",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/126",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/126",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/127",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/127",
+   "origin": true
   },
   {
    "id": "shimadzu-ags-x",
@@ -13255,6 +16344,48 @@
    "url": "https://www.shimadzu.com/an/sites/shimadzu.com.an/files/pim/pim_document_file/brochures/24254/c221-e010.pdf"
   },
   {
+   "id": "shimadzu-uv-2600-2700",
+   "kind": "equipment",
+   "label": "Shimadzu UV-2600 / UV-2700 (i Plus) UV-Vis Spectrophotometers",
+   "label_ko": "시마즈 UV-2600·UV-2700 자외-가시 분광광도계",
+   "equipment_kind": "equipment_series",
+   "category": "optical_spectrometer",
+   "manufacturer": "shimadzu",
+   "limits": {},
+   "models": [
+    "UV-2600",
+    "UV-2700",
+    "UV-2600i Plus",
+    "UV-2700i Plus"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/shimadzu/shimadzu-uv-2600-2700.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/170",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/170",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/171",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/171",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/172",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/172",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/173",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/173",
+   "origin": true
+  },
+  {
    "id": "shinyei-drop-shock-testers",
    "kind": "equipment",
    "label": "Shinyei (Yoshida Seiki) Drop & Shock Testing Systems (IST impact / DT-202 / DTS package / ASQ shock)",
@@ -13505,6 +16636,46 @@
    "url": "https://5.imimg.com/data5/VV/ZP/JI/SELLER-3912519/dma-3200-dynamic-mechanical-analyzer.pdf"
   },
   {
+   "id": "ta-instruments-ar-rheometer",
+   "kind": "equipment",
+   "label": "TA Instruments AR-G2 / AR 2000ex / AR 1500ex Rheometers",
+   "label_ko": "TA 인스트루먼츠 AR 계열 회전형 레오미터",
+   "equipment_kind": "equipment_series",
+   "category": "rotational_rheometer",
+   "manufacturer": "ta-instruments",
+   "limits": {
+    "temperature_degC": {
+     "min": -160.0,
+     "max": 600.0
+    }
+   },
+   "models": [
+    "AR-G2",
+    "AR 2000ex",
+    "AR 1500ex"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/ta-instruments/ta-instruments-ar-rheometer.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/166",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/166",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/167",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/167",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/168",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/168",
+   "origin": true
+  },
+  {
    "id": "ta-instruments-discovery-dsc",
    "kind": "equipment",
    "label": "TA Instruments Discovery DSC (Differential Scanning Calorimeter)",
@@ -13623,6 +16794,45 @@
    "kind": "document",
    "label": "ta-instruments/light-flash-lfa-brochure.pdf",
    "url": "https://web.archive.org/web/20220308201646id_/http://www.tainstruments.com/wp-content/uploads/Light-Flash-brochure-072717.pdf"
+  },
+  {
+   "id": "ta-instruments-discovery-tga-materialtwin",
+   "kind": "equipment",
+   "label": "TA Instruments Discovery TGA (Thermogravimetric Analyzer)",
+   "label_ko": null,
+   "equipment_kind": "equipment_series",
+   "category": "tga",
+   "manufacturer": "ta-instruments",
+   "limits": {
+    "temperature_degC": {
+     "max": 1200.0
+    }
+   },
+   "models": [
+    "Discovery TGA 55",
+    "Discovery TGA 550",
+    "Discovery TGA 5500"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/ta-instruments/ta-instruments-discovery-tga-materialtwin.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/50",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/50",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/51",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/51",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/52",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/52",
+   "origin": true
   },
   {
    "id": "ta-instruments-discovery-tga",
@@ -14166,6 +17376,27 @@
    "kind": "document",
    "label": "thermo-fisher/haake-mars-iq-brochure.pdf",
    "url": "https://documents.thermofisher.com/TFS-Assets/MSD/brochures/BR6232163-HAAKE-MARS-iQ-Rheometer-Brochure.pdf"
+  },
+  {
+   "id": "thermo-nexsa-g2",
+   "kind": "equipment",
+   "label": "Thermo Scientific Nexsa G2 XPS",
+   "label_ko": "써모 Nexsa G2 X선 광전자분광기",
+   "equipment_kind": "equipment_model",
+   "category": "composition_spectrometer",
+   "manufacturer": "thermo-fisher",
+   "limits": {},
+   "models": [
+    "Nexsa G2"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/thermo-fisher/thermo-nexsa-g2.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/32",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/32",
+   "origin": true
   },
   {
    "id": "thermotron-se-s-series",
@@ -15094,6 +18325,69 @@
    "url": "https://www.testequipmenthq.com/datasheets/YOKOGAWA-WT5000-Datasheet.pdf"
   },
   {
+   "id": "zeiss-gemini-fesem",
+   "kind": "equipment",
+   "label": "ZEISS GEMINI Column FE-SEM (SUPRA / ULTRA)",
+   "label_ko": "자이스 GEMINI 컬럼 전계방출 주사전자현미경",
+   "equipment_kind": "equipment_model",
+   "category": "electron_microscope",
+   "manufacturer": "zeiss",
+   "limits": {},
+   "models": [
+    "GEMINI column FESEM (SUPRA / ULTRA series)"
+   ],
+   "confidence": "limited",
+   "file": "equipment/zeiss/zeiss-gemini-fesem.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/26",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/26",
+   "origin": true
+  },
+  {
+   "id": "zeiss-xradia-versa",
+   "kind": "equipment",
+   "label": "ZEISS Xradia 410 / 520 / 610 / 620 Versa 3D X-ray Microscopes",
+   "label_ko": "자이스 Xradia Versa 3D X선 현미경",
+   "equipment_kind": "equipment_series",
+   "category": "xray_inspection",
+   "manufacturer": "zeiss",
+   "limits": {},
+   "models": [
+    "Xradia 410 Versa",
+    "Xradia 520 Versa",
+    "Xradia 610 Versa",
+    "Xradia 620 Versa"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/zeiss/zeiss-xradia-versa.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/184",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/184",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/185",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/185",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/186",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/186",
+   "origin": true
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/187",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/187",
+   "origin": true
+  },
+  {
    "id": "zwickroell-aflow-extrusion-plastometer",
    "kind": "equipment",
    "label": "ZwickRoell Aflow extrusion plastometer",
@@ -15954,6 +19248,27 @@
    "kind": "document",
    "label": "zwickroell/zhu250-universal-hardness-pi-en.pdf",
    "url": "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/15_489_ZHU250_Universal_Hardness_Tester_up_to_250_kg_PI_EN.pdf"
+  },
+  {
+   "id": "zygo-newview-nx2",
+   "kind": "equipment",
+   "label": "Zygo NewView NX2 3D Optical Profiler",
+   "label_ko": "자이고 NewView NX2 백색광 간섭 3D 프로파일러",
+   "equipment_kind": "equipment_model",
+   "category": "optical_profilometer",
+   "manufacturer": "zygo",
+   "limits": {},
+   "models": [
+    "NewView NX2"
+   ],
+   "confidence": "catalog",
+   "file": "equipment/zygo/zygo-newview-nx2.json"
+  },
+  {
+   "id": "origin:materialtwin-20260905/instrument/27",
+   "kind": "document",
+   "label": "materialtwin-20260905/instrument/27",
+   "origin": true
   }
  ],
  "edges": [
@@ -15986,6 +19301,11 @@
    "source": "category:altitude_chamber",
    "type": "subcategory_of",
    "target": "category:environmental_simulation"
+  },
+  {
+   "source": "category:atomic_force_microscope",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:audio_analyzer",
@@ -16023,6 +19343,11 @@
    "target": "category:rheology"
   },
   {
+   "source": "category:chromatograph_mass_spectrometer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
+  },
+  {
    "source": "category:climatic_chamber",
    "type": "subcategory_of",
    "target": "category:environmental_simulation"
@@ -16031,6 +19356,16 @@
    "source": "category:component_life_tester",
    "type": "subcategory_of",
    "target": "category:mechanical_dynamics"
+  },
+  {
+   "source": "category:composition_spectrometer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
+  },
+  {
+   "source": "category:contact_angle_analyzer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:corrosion_chamber",
@@ -16088,6 +19423,11 @@
    "target": "category:environmental_simulation"
   },
   {
+   "source": "category:electrical_property_tester",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
+  },
+  {
    "source": "category:electrodynamic_fatigue",
    "type": "subcategory_of",
    "target": "category:mechanical_dynamic"
@@ -16096,6 +19436,11 @@
    "source": "category:electrolytic_etcher",
    "type": "subcategory_of",
    "target": "category:specimen_preparation"
+  },
+  {
+   "source": "category:electron_microscope",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:electronic_load",
@@ -16121,6 +19466,11 @@
    "source": "category:extensometer",
    "type": "subcategory_of",
    "target": "category:accessory"
+  },
+  {
+   "source": "category:film_thickness_analyzer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:force_tester",
@@ -16188,6 +19538,11 @@
    "target": "category:optical_measurement"
   },
   {
+   "source": "category:industrial_oven",
+   "type": "subcategory_of",
+   "target": "category:environmental_simulation"
+  },
+  {
    "source": "category:instrumented_indentation",
    "type": "subcategory_of",
    "target": "category:hardness"
@@ -16196,6 +19551,11 @@
    "source": "category:insulation_tester",
    "type": "subcategory_of",
    "target": "category:electrical_safety"
+  },
+  {
+   "source": "category:karl_fischer_titrator",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:load_cell",
@@ -16213,9 +19573,24 @@
    "target": "category:hardness"
   },
   {
+   "source": "category:nmr_spectrometer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
+  },
+  {
    "source": "category:optical_profilometer",
    "type": "subcategory_of",
    "target": "category:optical_measurement"
+  },
+  {
+   "source": "category:optical_spectrometer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
+  },
+  {
+   "source": "category:particle_size_analyzer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:pendulum_impact",
@@ -16236,6 +19611,11 @@
    "source": "category:pressure_decay_leak_tester",
    "type": "subcategory_of",
    "target": "category:leak_tester"
+  },
+  {
+   "source": "category:pycnometer_porosimeter",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:resonance_fatigue",
@@ -16301,6 +19681,11 @@
    "source": "category:sta",
    "type": "subcategory_of",
    "target": "category:thermal_analysis"
+  },
+  {
+   "source": "category:surface_roughness_tester",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:texture_analyser",
@@ -16383,6 +19768,11 @@
    "target": "category:hardness"
   },
   {
+   "source": "category:viscometer",
+   "type": "subcategory_of",
+   "target": "category:rheology"
+  },
+  {
    "source": "category:water_ingress_tester",
    "type": "subcategory_of",
    "target": "category:environmental_simulation"
@@ -16391,6 +19781,11 @@
    "source": "category:weathering_tester",
    "type": "subcategory_of",
    "target": "category:environmental_simulation"
+  },
+  {
+   "source": "category:xray_diffractometer",
+   "type": "subcategory_of",
+   "target": "category:materials_analysis"
   },
   {
    "source": "category:xray_inspection",
@@ -16603,6 +19998,21 @@
    "target": "DIN EN ISO 3497"
   },
   {
+   "source": "test_item:composition_analysis",
+   "type": "typical_standard",
+   "target": "ASTM E1508"
+  },
+  {
+   "source": "test_item:composition_analysis",
+   "type": "typical_standard",
+   "target": "ISO 15472"
+  },
+  {
+   "source": "test_item:composition_analysis",
+   "type": "typical_standard",
+   "target": "ASTM E1621"
+  },
+  {
    "source": "test_item:compression",
    "type": "typical_standard",
    "target": "ASTM E9"
@@ -16621,6 +20031,16 @@
    "source": "test_item:compression",
    "type": "typical_standard",
    "target": "ASTM D6641"
+  },
+  {
+   "source": "test_item:contact_angle",
+   "type": "typical_standard",
+   "target": "ASTM D7334"
+  },
+  {
+   "source": "test_item:contact_angle",
+   "type": "typical_standard",
+   "target": "ISO 19403-2"
   },
   {
    "source": "test_item:creep",
@@ -16663,6 +20083,21 @@
    "target": "MIL-DTL-22520"
   },
   {
+   "source": "test_item:crystal_structure_analysis",
+   "type": "typical_standard",
+   "target": "ASTM E975"
+  },
+  {
+   "source": "test_item:crystal_structure_analysis",
+   "type": "typical_standard",
+   "target": "ASTM E2860"
+  },
+  {
+   "source": "test_item:crystal_structure_analysis",
+   "type": "typical_standard",
+   "target": "ISO 13067"
+  },
+  {
    "source": "test_item:damp_heat",
    "type": "typical_standard",
    "target": "IEC 60068-2-78"
@@ -16681,6 +20116,26 @@
    "source": "test_item:damp_heat",
    "type": "typical_standard",
    "target": "MIL-STD-810 Method 507"
+  },
+  {
+   "source": "test_item:density_porosity",
+   "type": "typical_standard",
+   "target": "ASTM D792"
+  },
+  {
+   "source": "test_item:density_porosity",
+   "type": "typical_standard",
+   "target": "ISO 12154"
+  },
+  {
+   "source": "test_item:density_porosity",
+   "type": "typical_standard",
+   "target": "ASTM D4404"
+  },
+  {
+   "source": "test_item:density_porosity",
+   "type": "typical_standard",
+   "target": "ISO 9277"
   },
   {
    "source": "test_item:dielectric_withstand",
@@ -16801,6 +20256,21 @@
    "source": "test_item:dust_ingress",
    "type": "typical_standard",
    "target": "MIL-STD-810 Method 510"
+  },
+  {
+   "source": "test_item:electrical_transport",
+   "type": "typical_standard",
+   "target": "ASTM F76"
+  },
+  {
+   "source": "test_item:electrical_transport",
+   "type": "typical_standard",
+   "target": "ASTM D257"
+  },
+  {
+   "source": "test_item:electrical_transport",
+   "type": "typical_standard",
+   "target": "ASTM F84"
   },
   {
    "source": "test_item:emi_emission",
@@ -17221,6 +20691,46 @@
    "source": "test_item:melt_flow",
    "type": "typical_standard",
    "target": "ASTM D1238"
+  },
+  {
+   "source": "test_item:microscopy",
+   "type": "typical_standard",
+   "target": "ASTM E112"
+  },
+  {
+   "source": "test_item:microscopy",
+   "type": "typical_standard",
+   "target": "ISO 16700"
+  },
+  {
+   "source": "test_item:optical_spectroscopy",
+   "type": "typical_standard",
+   "target": "ASTM D1003"
+  },
+  {
+   "source": "test_item:optical_spectroscopy",
+   "type": "typical_standard",
+   "target": "ASTM E903"
+  },
+  {
+   "source": "test_item:optical_spectroscopy",
+   "type": "typical_standard",
+   "target": "ISO 13468"
+  },
+  {
+   "source": "test_item:particle_size",
+   "type": "typical_standard",
+   "target": "ISO 13320"
+  },
+  {
+   "source": "test_item:particle_size",
+   "type": "typical_standard",
+   "target": "ISO 22412"
+  },
+  {
+   "source": "test_item:particle_size",
+   "type": "typical_standard",
+   "target": "ISO 13099"
   },
   {
    "source": "test_item:peel",
@@ -17733,6 +21243,16 @@
    "target": "ASTM D1525"
   },
   {
+   "source": "test_item:water_content",
+   "type": "typical_standard",
+   "target": "ISO 15512"
+  },
+  {
+   "source": "test_item:water_content",
+   "type": "typical_standard",
+   "target": "ASTM E1064"
+  },
+  {
    "source": "test_item:water_ingress",
    "type": "typical_standard",
    "target": "IEC 60529"
@@ -17781,6 +21301,26 @@
    "source": "test_item:xray_void_inspection",
    "type": "typical_standard",
    "target": "ASTM E2698"
+  },
+  {
+   "source": "agilent-5977c-gcms",
+   "type": "manufactured_by",
+   "target": "agilent"
+  },
+  {
+   "source": "agilent-5977c-gcms",
+   "type": "in_category",
+   "target": "category:chromatograph_mass_spectrometer"
+  },
+  {
+   "source": "agilent-5977c-gcms",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "agilent-5977c-gcms",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/39"
   },
   {
    "source": "ametek-lloyd-ls-series",
@@ -17851,6 +21391,36 @@
    "source": "ametek-lloyd-ls-series",
    "type": "documented_in",
    "target": "doc:ametek-lloyd/astm-f88-seal-strength-case.pdf"
+  },
+  {
+   "source": "anton-paar-litesizer",
+   "type": "manufactured_by",
+   "target": "anton-paar"
+  },
+  {
+   "source": "anton-paar-litesizer",
+   "type": "in_category",
+   "target": "category:particle_size_analyzer"
+  },
+  {
+   "source": "anton-paar-litesizer",
+   "type": "performs",
+   "target": "test_item:particle_size"
+  },
+  {
+   "source": "anton-paar-litesizer",
+   "type": "supports_method",
+   "target": "ISO 22412"
+  },
+  {
+   "source": "anton-paar-litesizer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/152"
+  },
+  {
+   "source": "anton-paar-litesizer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/153"
   },
   {
    "source": "anton-paar-mcr-rheometer",
@@ -17986,6 +21556,51 @@
    "pages": [
     8
    ]
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "manufactured_by",
+   "target": "anton-paar"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "in_category",
+   "target": "category:tribometer"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "performs",
+   "target": "test_item:friction_wear_tribo"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM G99"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/147"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/148"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/149"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/150"
+  },
+  {
+   "source": "anton-paar-tribometers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/151"
   },
   {
    "source": "anton-paar-tribometers",
@@ -18403,6 +22018,46 @@
    ]
   },
   {
+   "source": "brookfield-dv3t",
+   "type": "manufactured_by",
+   "target": "brookfield-ametek"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "in_category",
+   "target": "category:viscometer"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "performs",
+   "target": "test_item:rheology_rotational"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/154"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/155"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/156"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/157"
+  },
+  {
+   "source": "brookfield-dv3t",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/158"
+  },
+  {
    "source": "bruel-kjaer-hats-5128",
    "type": "manufactured_by",
    "target": "bruel-kjaer"
@@ -18468,6 +22123,26 @@
    ]
   },
   {
+   "source": "bruker-avance-ssnmr",
+   "type": "manufactured_by",
+   "target": "bruker"
+  },
+  {
+   "source": "bruker-avance-ssnmr",
+   "type": "in_category",
+   "target": "category:nmr_spectrometer"
+  },
+  {
+   "source": "bruker-avance-ssnmr",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "bruker-avance-ssnmr",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/40"
+  },
+  {
    "source": "bruker-contourx-200",
    "type": "manufactured_by",
    "target": "bruker"
@@ -18515,6 +22190,61 @@
     1,
     2
    ]
+  },
+  {
+   "source": "bruker-d8-advance",
+   "type": "manufactured_by",
+   "target": "bruker"
+  },
+  {
+   "source": "bruker-d8-advance",
+   "type": "in_category",
+   "target": "category:xray_diffractometer"
+  },
+  {
+   "source": "bruker-d8-advance",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "bruker-d8-advance",
+   "type": "performs",
+   "target": "test_item:dsc"
+  },
+  {
+   "source": "bruker-d8-advance",
+   "type": "performs",
+   "target": "test_item:coating_thickness"
+  },
+  {
+   "source": "bruker-d8-advance",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/29"
+  },
+  {
+   "source": "bruker-dektakxt-materialtwin",
+   "type": "manufactured_by",
+   "target": "bruker"
+  },
+  {
+   "source": "bruker-dektakxt-materialtwin",
+   "type": "in_category",
+   "target": "category:optical_profilometer"
+  },
+  {
+   "source": "bruker-dektakxt-materialtwin",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "bruker-dektakxt-materialtwin",
+   "type": "performs",
+   "target": "test_item:coating_thickness"
+  },
+  {
+   "source": "bruker-dektakxt-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/1"
   },
   {
    "source": "bruker-dektakxt",
@@ -18714,6 +22444,41 @@
    ]
   },
   {
+   "source": "bruker-vertex-ftir",
+   "type": "manufactured_by",
+   "target": "bruker"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/34"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/35"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/36"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/37"
+  },
+  {
    "source": "buehler-wilson-hardness",
    "type": "manufactured_by",
    "target": "buehler"
@@ -18903,6 +22668,46 @@
    "source": "buehler-wilson-uh4000",
    "type": "documented_in",
    "target": "doc:buehler/wilson-uh4000-sales-sheet.pdf"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "manufactured_by",
+   "target": "buehler"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "in_category",
+   "target": "category:vickers_knoop_hardness"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "performs",
+   "target": "test_item:hardness_vickers"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "performs",
+   "target": "test_item:hardness_knoop"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 4545"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 6507"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/100"
+  },
+  {
+   "source": "buehler-wilson-vh3300-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/101"
   },
   {
    "source": "buehler-wilson-vh3300",
@@ -19765,6 +23570,201 @@
    ]
   },
   {
+   "source": "espec-agree-et",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-agree-et",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-agree-et",
+   "type": "performs",
+   "target": "test_item:temperature_cycling"
+  },
+  {
+   "source": "espec-agree-et",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-agree-et",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/204"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "performs",
+   "target": "test_item:temperature_cycling"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/188"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/189"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/190"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/191"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "performs",
+   "target": "test_item:temperature_cycling"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/192"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/193"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/194"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/195"
+  },
+  {
+   "source": "espec-criterion",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/203"
+  },
+  {
+   "source": "espec-ehs-tpc-hast",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-ehs-tpc-hast",
+   "type": "in_category",
+   "target": "category:hast_chamber"
+  },
+  {
+   "source": "espec-ehs-tpc-hast",
+   "type": "performs",
+   "target": "test_item:hast"
+  },
+  {
+   "source": "espec-ehs-tpc-hast",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/199"
+  },
+  {
+   "source": "espec-industrial-ovens",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-industrial-ovens",
+   "type": "in_category",
+   "target": "category:industrial_oven"
+  },
+  {
+   "source": "espec-industrial-ovens",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-industrial-ovens",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/205"
+  },
+  {
+   "source": "espec-lab-series",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-lab-series",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-lab-series",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-lab-series",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/202"
+  },
+  {
+   "source": "espec-platinous-chambers-materialtwin",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-platinous-chambers-materialtwin",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-platinous-chambers-materialtwin",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-platinous-chambers-materialtwin",
+   "type": "performs",
+   "target": "test_item:temperature_cycling"
+  },
+  {
+   "source": "espec-platinous-chambers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/200"
+  },
+  {
    "source": "espec-platinous-chambers",
    "type": "manufactured_by",
    "target": "espec"
@@ -19971,6 +23971,51 @@
    ]
   },
   {
+   "source": "espec-su-sh-benchtop",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-su-sh-benchtop",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-su-sh-benchtop",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-su-sh-benchtop",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/201"
+  },
+  {
+   "source": "espec-tsa-thermal-shock-materialtwin",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-tsa-thermal-shock-materialtwin",
+   "type": "in_category",
+   "target": "category:thermal_shock_chamber"
+  },
+  {
+   "source": "espec-tsa-thermal-shock-materialtwin",
+   "type": "performs",
+   "target": "test_item:thermal_shock"
+  },
+  {
+   "source": "espec-tsa-thermal-shock-materialtwin",
+   "type": "performs",
+   "target": "test_item:temperature_cycling"
+  },
+  {
+   "source": "espec-tsa-thermal-shock-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/198"
+  },
+  {
    "source": "espec-tsa-thermal-shock",
    "type": "manufactured_by",
    "target": "espec"
@@ -20072,6 +24117,81 @@
     15,
     16
    ]
+  },
+  {
+   "source": "espec-tsb-liquid-thermal-shock",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-tsb-liquid-thermal-shock",
+   "type": "in_category",
+   "target": "category:thermal_shock_chamber"
+  },
+  {
+   "source": "espec-tsb-liquid-thermal-shock",
+   "type": "performs",
+   "target": "test_item:thermal_shock"
+  },
+  {
+   "source": "espec-tsb-liquid-thermal-shock",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/196"
+  },
+  {
+   "source": "espec-tse-11-a",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-tse-11-a",
+   "type": "in_category",
+   "target": "category:thermal_shock_chamber"
+  },
+  {
+   "source": "espec-tse-11-a",
+   "type": "performs",
+   "target": "test_item:thermal_shock"
+  },
+  {
+   "source": "espec-tse-11-a",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/197"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "manufactured_by",
+   "target": "espec"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "in_category",
+   "target": "category:climatic_chamber"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "performs",
+   "target": "test_item:damp_heat"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "performs",
+   "target": "test_item:temperature_cycling"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/206"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/207"
+  },
+  {
+   "source": "espec-walk-in-chambers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/208"
   },
   {
    "source": "espec-walk-in-chambers",
@@ -20259,6 +24379,46 @@
    "pages": [
     1
    ]
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "manufactured_by",
+   "target": "filmetrics"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "in_category",
+   "target": "category:film_thickness_analyzer"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "performs",
+   "target": "test_item:coating_thickness"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/2"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/3"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/4"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/5"
+  },
+  {
+   "source": "filmetrics-f54",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/6"
   },
   {
    "source": "flir-t660",
@@ -23152,6 +27312,136 @@
    ]
   },
   {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "manufactured_by",
+   "target": "hitachi-high-tech"
+  },
+  {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "in_category",
+   "target": "category:electron_microscope"
+  },
+  {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "performs",
+   "target": "test_item:microscopy"
+  },
+  {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/7"
+  },
+  {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/8"
+  },
+  {
+   "source": "horiba-fluoromax-plus",
+   "type": "manufactured_by",
+   "target": "horiba"
+  },
+  {
+   "source": "horiba-fluoromax-plus",
+   "type": "in_category",
+   "target": "category:optical_spectrometer"
+  },
+  {
+   "source": "horiba-fluoromax-plus",
+   "type": "performs",
+   "target": "test_item:optical_spectroscopy"
+  },
+  {
+   "source": "horiba-fluoromax-plus",
+   "type": "performs",
+   "target": "test_item:xray_void_inspection"
+  },
+  {
+   "source": "horiba-fluoromax-plus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/169"
+  },
+  {
+   "source": "horiba-gd-profiler-2",
+   "type": "manufactured_by",
+   "target": "horiba"
+  },
+  {
+   "source": "horiba-gd-profiler-2",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "horiba-gd-profiler-2",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "horiba-gd-profiler-2",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "horiba-gd-profiler-2",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/33"
+  },
+  {
+   "source": "hot-disk-tps-2200",
+   "type": "manufactured_by",
+   "target": "hot-disk"
+  },
+  {
+   "source": "hot-disk-tps-2200",
+   "type": "in_category",
+   "target": "category:thermal_conductivity"
+  },
+  {
+   "source": "hot-disk-tps-2200",
+   "type": "performs",
+   "target": "test_item:thermal_conductivity"
+  },
+  {
+   "source": "hot-disk-tps-2200",
+   "type": "supports_method",
+   "target": "ISO 22007-2"
+  },
+  {
+   "source": "hot-disk-tps-2200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/44"
+  },
+  {
+   "source": "hot-disk-tps-2500-s-materialtwin",
+   "type": "manufactured_by",
+   "target": "hot-disk"
+  },
+  {
+   "source": "hot-disk-tps-2500-s-materialtwin",
+   "type": "in_category",
+   "target": "category:thermal_conductivity"
+  },
+  {
+   "source": "hot-disk-tps-2500-s-materialtwin",
+   "type": "performs",
+   "target": "test_item:thermal_conductivity"
+  },
+  {
+   "source": "hot-disk-tps-2500-s-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 22007-2"
+  },
+  {
+   "source": "hot-disk-tps-2500-s-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/45"
+  },
+  {
    "source": "hot-disk-tps-2500-s",
    "type": "manufactured_by",
    "target": "hot-disk"
@@ -23722,6 +28012,151 @@
    "target": "doc:instron/3400-series-utm-romania.pdf"
   },
   {
+   "source": "instron-5900-series-materialtwin",
+   "type": "manufactured_by",
+   "target": "instron"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "in_category",
+   "target": "category:universal_testing_machine"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:tensile"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:compression"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:flexure"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:shear"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:peel"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:tear"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:fatigue"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "performs",
+   "target": "test_item:creep"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/104"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/105"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/106"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/107"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/108"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/109"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/110"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/111"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/112"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/113"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/114"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/115"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/116"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/117"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/118"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/119"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/120"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/121"
+  },
+  {
+   "source": "instron-5900-series-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/122"
+  },
+  {
    "source": "instron-5900-series",
    "type": "manufactured_by",
    "target": "instron"
@@ -24183,6 +28618,46 @@
     1,
     2
    ]
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "manufactured_by",
+   "target": "instron"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "in_category",
+   "target": "category:drop_tower_impact"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "performs",
+   "target": "test_item:drop_weight_impact"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "performs",
+   "target": "test_item:puncture"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "performs",
+   "target": "test_item:tensile_impact"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/144"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/145"
+  },
+  {
+   "source": "instron-9400-drop-tower-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/146"
   },
   {
    "source": "instron-9400-drop-tower",
@@ -24804,6 +29279,216 @@
    ]
   },
   {
+   "source": "woollam-rc2",
+   "type": "manufactured_by",
+   "target": "ja-woollam"
+  },
+  {
+   "source": "woollam-rc2",
+   "type": "in_category",
+   "target": "category:film_thickness_analyzer"
+  },
+  {
+   "source": "woollam-rc2",
+   "type": "performs",
+   "target": "test_item:coating_thickness"
+  },
+  {
+   "source": "woollam-rc2",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/174"
+  },
+  {
+   "source": "jeol-jamp-9510f",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-jamp-9510f",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "jeol-jamp-9510f",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "jeol-jamp-9510f",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/14"
+  },
+  {
+   "source": "jeol-jem-f200",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-jem-f200",
+   "type": "in_category",
+   "target": "category:electron_microscope"
+  },
+  {
+   "source": "jeol-jem-f200",
+   "type": "performs",
+   "target": "test_item:microscopy"
+  },
+  {
+   "source": "jeol-jem-f200",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "jeol-jem-f200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/10"
+  },
+  {
+   "source": "jeol-jps-9030",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-jps-9030",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "jeol-jps-9030",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "jeol-jps-9030",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/15"
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "in_category",
+   "target": "category:electron_microscope"
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/9"
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/11"
+  },
+  {
+   "source": "jeol-jsx-1000s",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-jsx-1000s",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "jeol-jsx-1000s",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "jeol-jsx-1000s",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/16"
+  },
+  {
+   "source": "jeol-jxa-epma",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-jxa-epma",
+   "type": "in_category",
+   "target": "category:electron_microscope"
+  },
+  {
+   "source": "jeol-jxa-epma",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "jeol-jxa-epma",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/12"
+  },
+  {
+   "source": "jeol-jxa-epma",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/13"
+  },
+  {
+   "source": "jeol-xtalab-synergy-ed",
+   "type": "manufactured_by",
+   "target": "jeol"
+  },
+  {
+   "source": "jeol-xtalab-synergy-ed",
+   "type": "in_category",
+   "target": "category:xray_diffractometer"
+  },
+  {
+   "source": "jeol-xtalab-synergy-ed",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "jeol-xtalab-synergy-ed",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/17"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "manufactured_by",
+   "target": "keithley"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "in_category",
+   "target": "category:electrical_property_tester"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "performs",
+   "target": "test_item:electrical_transport"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "supports_method",
+   "target": "JEDEC Standard 35-A"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/176"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/177"
+  },
+  {
    "source": "keysight-n9048b-pxe",
    "type": "manufactured_by",
    "target": "keysight"
@@ -25051,6 +29736,71 @@
    "target": "doc:kikusui/tos9300-telonic.pdf"
   },
   {
+   "source": "kla-g200x",
+   "type": "manufactured_by",
+   "target": "kla"
+  },
+  {
+   "source": "kla-g200x",
+   "type": "in_category",
+   "target": "category:nanoindenter"
+  },
+  {
+   "source": "kla-g200x",
+   "type": "performs",
+   "target": "test_item:instrumented_indentation"
+  },
+  {
+   "source": "kla-g200x",
+   "type": "performs",
+   "target": "test_item:fatigue"
+  },
+  {
+   "source": "kla-g200x",
+   "type": "supports_method",
+   "target": "ISO 14577"
+  },
+  {
+   "source": "kla-g200x",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/102"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "manufactured_by",
+   "target": "kla"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "in_category",
+   "target": "category:instrumented_indentation"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "performs",
+   "target": "test_item:instrumented_indentation"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "performs",
+   "target": "test_item:friction_wear_tribo"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "performs",
+   "target": "test_item:dma"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 14577"
+  },
+  {
+   "source": "kla-imicro-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/103"
+  },
+  {
    "source": "kla-imicro",
    "type": "manufactured_by",
    "target": "kla"
@@ -25094,6 +29844,26 @@
     5,
     6
    ]
+  },
+  {
+   "source": "kla-tencor-p-7",
+   "type": "manufactured_by",
+   "target": "kla"
+  },
+  {
+   "source": "kla-tencor-p-7",
+   "type": "in_category",
+   "target": "category:optical_profilometer"
+  },
+  {
+   "source": "kla-tencor-p-7",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "kla-tencor-p-7",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/18"
   },
   {
    "source": "konica-minolta-ca-410",
@@ -25213,6 +29983,76 @@
     3,
     4
    ]
+  },
+  {
+   "source": "kruss-dsa100hp",
+   "type": "manufactured_by",
+   "target": "kruss"
+  },
+  {
+   "source": "kruss-dsa100hp",
+   "type": "in_category",
+   "target": "category:contact_angle_analyzer"
+  },
+  {
+   "source": "kruss-dsa100hp",
+   "type": "performs",
+   "target": "test_item:contact_angle"
+  },
+  {
+   "source": "kruss-dsa100hp",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/19"
+  },
+  {
+   "source": "kruss-dsa100hp",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/20"
+  },
+  {
+   "source": "kruss-dsa100hp",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/21"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "manufactured_by",
+   "target": "lake-shore"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "in_category",
+   "target": "category:electrical_property_tester"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "performs",
+   "target": "test_item:electrical_transport"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/178"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/179"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/180"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/181"
+  },
+  {
+   "source": "lake-shore-hms",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/182"
   },
   {
    "source": "lansmont-pdt-drop-testers",
@@ -25608,6 +30448,41 @@
    ]
   },
   {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "manufactured_by",
+   "target": "malvern-panalytical"
+  },
+  {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "in_category",
+   "target": "category:rotational_rheometer"
+  },
+  {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "performs",
+   "target": "test_item:rheology_rotational"
+  },
+  {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "performs",
+   "target": "test_item:shear"
+  },
+  {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/159"
+  },
+  {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/160"
+  },
+  {
+   "source": "malvern-kinexus-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/161"
+  },
+  {
    "source": "malvern-kinexus",
    "type": "manufactured_by",
    "target": "malvern-panalytical"
@@ -25650,6 +30525,51 @@
     9,
     10
    ]
+  },
+  {
+   "source": "malvern-mastersizer-3000",
+   "type": "manufactured_by",
+   "target": "malvern-panalytical"
+  },
+  {
+   "source": "malvern-mastersizer-3000",
+   "type": "in_category",
+   "target": "category:particle_size_analyzer"
+  },
+  {
+   "source": "malvern-mastersizer-3000",
+   "type": "performs",
+   "target": "test_item:particle_size"
+  },
+  {
+   "source": "malvern-mastersizer-3000",
+   "type": "supports_method",
+   "target": "ISO 13320"
+  },
+  {
+   "source": "malvern-mastersizer-3000",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/162"
+  },
+  {
+   "source": "malvern-zetasizer-nano-zsp",
+   "type": "manufactured_by",
+   "target": "malvern-panalytical"
+  },
+  {
+   "source": "malvern-zetasizer-nano-zsp",
+   "type": "in_category",
+   "target": "category:particle_size_analyzer"
+  },
+  {
+   "source": "malvern-zetasizer-nano-zsp",
+   "type": "performs",
+   "target": "test_item:particle_size"
+  },
+  {
+   "source": "malvern-zetasizer-nano-zsp",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/163"
   },
   {
    "source": "mecmesin-multitest",
@@ -25777,6 +30697,26 @@
    ]
   },
   {
+   "source": "metrohm-851-titrando",
+   "type": "manufactured_by",
+   "target": "metrohm"
+  },
+  {
+   "source": "metrohm-851-titrando",
+   "type": "in_category",
+   "target": "category:karl_fischer_titrator"
+  },
+  {
+   "source": "metrohm-851-titrando",
+   "type": "performs",
+   "target": "test_item:water_content"
+  },
+  {
+   "source": "metrohm-851-titrando",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/28"
+  },
+  {
    "source": "mettler-dma-sdta861e",
    "type": "manufactured_by",
    "target": "mettler-toledo"
@@ -25892,6 +30832,161 @@
    ]
   },
   {
+   "source": "mettler-toledo-dsc-3",
+   "type": "manufactured_by",
+   "target": "mettler-toledo"
+  },
+  {
+   "source": "mettler-toledo-dsc-3",
+   "type": "in_category",
+   "target": "category:dsc"
+  },
+  {
+   "source": "mettler-toledo-dsc-3",
+   "type": "performs",
+   "target": "test_item:dsc"
+  },
+  {
+   "source": "mettler-toledo-dsc-3",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/53"
+  },
+  {
+   "source": "mettler-toledo-dsc-3",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/54"
+  },
+  {
+   "source": "micromeritics-accupyc-ii-1345",
+   "type": "manufactured_by",
+   "target": "micromeritics"
+  },
+  {
+   "source": "micromeritics-accupyc-ii-1345",
+   "type": "in_category",
+   "target": "category:pycnometer_porosimeter"
+  },
+  {
+   "source": "micromeritics-accupyc-ii-1345",
+   "type": "performs",
+   "target": "test_item:density_porosity"
+  },
+  {
+   "source": "micromeritics-accupyc-ii-1345",
+   "type": "supports_method",
+   "target": "ASTM D6226"
+  },
+  {
+   "source": "micromeritics-accupyc-ii-1345",
+   "type": "supports_method",
+   "target": "ISO 12154"
+  },
+  {
+   "source": "micromeritics-accupyc-ii-1345",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/164"
+  },
+  {
+   "source": "micromeritics-autopore-v",
+   "type": "manufactured_by",
+   "target": "micromeritics"
+  },
+  {
+   "source": "micromeritics-autopore-v",
+   "type": "in_category",
+   "target": "category:pycnometer_porosimeter"
+  },
+  {
+   "source": "micromeritics-autopore-v",
+   "type": "performs",
+   "target": "test_item:instrumented_indentation"
+  },
+  {
+   "source": "micromeritics-autopore-v",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/165"
+  },
+  {
+   "source": "mitutoyo-abk-1",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-abk-1",
+   "type": "in_category",
+   "target": "category:brinell_hardness"
+  },
+  {
+   "source": "mitutoyo-abk-1",
+   "type": "performs",
+   "target": "test_item:hardness_brinell"
+  },
+  {
+   "source": "mitutoyo-abk-1",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/212"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "in_category",
+   "target": "category:rockwell_hardness"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "performs",
+   "target": "test_item:hardness_rockwell"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/76"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/77"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/78"
+  },
+  {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/79"
+  },
+  {
+   "source": "mitutoyo-avk",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-avk",
+   "type": "in_category",
+   "target": "category:vickers_knoop_hardness"
+  },
+  {
+   "source": "mitutoyo-avk",
+   "type": "performs",
+   "target": "test_item:hardness_vickers"
+  },
+  {
+   "source": "mitutoyo-avk",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/73"
+  },
+  {
+   "source": "mitutoyo-avk",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/74"
+  },
+  {
    "source": "mitutoyo-hardmatic-ud-410-leeb",
    "type": "manufactured_by",
    "target": "mitutoyo"
@@ -25923,6 +31018,196 @@
    "pages": [
     32
    ]
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "in_category",
+   "target": "category:shore_irhd_hardness"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "performs",
+   "target": "test_item:hardness_shore"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "supports_method",
+   "target": "ASTM D2240"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/84"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/85"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/86"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/87"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/88"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/89"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/90"
+  },
+  {
+   "source": "mitutoyo-hh-300-durometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/91"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "in_category",
+   "target": "category:vickers_knoop_hardness"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "performs",
+   "target": "test_item:hardness_vickers"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "performs",
+   "target": "test_item:hardness_knoop"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/92"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/93"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/94"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/95"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/96"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/97"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/213"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/214"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/215"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/216"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/217"
+  },
+  {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/218"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "in_category",
+   "target": "category:vickers_knoop_hardness"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "performs",
+   "target": "test_item:hardness_vickers"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "performs",
+   "target": "test_item:hardness_knoop"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/65"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/66"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/67"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/68"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/69"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/70"
   },
   {
    "source": "mitutoyo-hm-micro-vickers",
@@ -25967,6 +31252,121 @@
     22,
     24
    ]
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "in_category",
+   "target": "category:rockwell_hardness"
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "performs",
+   "target": "test_item:hardness_rockwell"
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/80"
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/81"
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/82"
+  },
+  {
+   "source": "mitutoyo-hr-500",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/83"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "in_category",
+   "target": "category:rockwell_hardness"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "performs",
+   "target": "test_item:hardness_rockwell"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/57"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/58"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/59"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "in_category",
+   "target": "category:rockwell_hardness"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "performs",
+   "target": "test_item:hardness_rockwell"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "performs",
+   "target": "test_item:hardness_brinell"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 6508-2"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/60"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/61"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/62"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/63"
+  },
+  {
+   "source": "mitutoyo-hr-series-rockwell-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/64"
   },
   {
    "source": "mitutoyo-hr-series-rockwell",
@@ -26036,6 +31436,121 @@
    "source": "mitutoyo-hr-series-rockwell",
    "type": "documented_in",
    "target": "doc:mitutoyo/rockwell-hr-300-400-bulletin-2324.pdf"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "in_category",
+   "target": "category:vickers_knoop_hardness"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "performs",
+   "target": "test_item:hardness_vickers"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "performs",
+   "target": "test_item:fatigue"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "performs",
+   "target": "test_item:hardness_knoop"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "performs",
+   "target": "test_item:hardness_brinell"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "supports_method",
+   "target": "JIS R1607"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/71"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/72"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/98"
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/99"
+  },
+  {
+   "source": "mitutoyo-mzt-500",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-mzt-500",
+   "type": "in_category",
+   "target": "category:instrumented_indentation"
+  },
+  {
+   "source": "mitutoyo-mzt-500",
+   "type": "performs",
+   "target": "test_item:instrumented_indentation"
+  },
+  {
+   "source": "mitutoyo-mzt-500",
+   "type": "supports_method",
+   "target": "ISO 14577"
+  },
+  {
+   "source": "mitutoyo-mzt-500",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/75"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "manufactured_by",
+   "target": "mitutoyo"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "in_category",
+   "target": "category:surface_roughness_tester"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "supports_method",
+   "target": "ISO 4287"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "supports_method",
+   "target": "JIS B0601"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/22"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/23"
   },
   {
    "source": "molex-crimp-pull-tester",
@@ -26767,6 +32282,111 @@
    "target": "doc:mts/criterion-exceed-accessories-catalog.pdf"
   },
   {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "manufactured_by",
+   "target": "mts"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "in_category",
+   "target": "category:servohydraulic_fatigue"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:fatigue"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:fracture_toughness"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:thermomechanical_fatigue"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:tensile"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:compression"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:flexure"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:relaxation"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "performs",
+   "target": "test_item:creep"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM E1820"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM E21"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM E399"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM E647"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM E9"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 6892"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/139"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/140"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/141"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/142"
+  },
+  {
+   "source": "mts-landmark-servohydraulic-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/143"
+  },
+  {
    "source": "mts-landmark-servohydraulic",
    "type": "manufactured_by",
    "target": "mts"
@@ -26956,6 +32576,36 @@
    ]
   },
   {
+   "source": "netzsch-dil-402-expedis-materialtwin",
+   "type": "manufactured_by",
+   "target": "netzsch"
+  },
+  {
+   "source": "netzsch-dil-402-expedis-materialtwin",
+   "type": "in_category",
+   "target": "category:dilatometer"
+  },
+  {
+   "source": "netzsch-dil-402-expedis-materialtwin",
+   "type": "performs",
+   "target": "test_item:dilatometry"
+  },
+  {
+   "source": "netzsch-dil-402-expedis-materialtwin",
+   "type": "performs",
+   "target": "test_item:tma"
+  },
+  {
+   "source": "netzsch-dil-402-expedis-materialtwin",
+   "type": "supports_method",
+   "target": "ASTM E228"
+  },
+  {
+   "source": "netzsch-dil-402-expedis-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/55"
+  },
+  {
    "source": "netzsch-dil-402-expedis",
    "type": "manufactured_by",
    "target": "netzsch"
@@ -27089,6 +32739,36 @@
    ]
   },
   {
+   "source": "netzsch-lfa-400",
+   "type": "manufactured_by",
+   "target": "netzsch"
+  },
+  {
+   "source": "netzsch-lfa-400",
+   "type": "in_category",
+   "target": "category:thermal_conductivity"
+  },
+  {
+   "source": "netzsch-lfa-400",
+   "type": "performs",
+   "target": "test_item:thermal_conductivity"
+  },
+  {
+   "source": "netzsch-lfa-400",
+   "type": "supports_method",
+   "target": "ASTM E1461"
+  },
+  {
+   "source": "netzsch-lfa-400",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/46"
+  },
+  {
+   "source": "netzsch-lfa-400",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/47"
+  },
+  {
    "source": "netzsch-lfa-467-hyperflash",
    "type": "manufactured_by",
    "target": "netzsch"
@@ -27132,6 +32812,51 @@
     20,
     21
    ]
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "manufactured_by",
+   "target": "netzsch"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "in_category",
+   "target": "category:sta"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "performs",
+   "target": "test_item:tga"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "performs",
+   "target": "test_item:dsc"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "supports_method",
+   "target": "ASTM E793"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "supports_method",
+   "target": "DIN 51004"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "supports_method",
+   "target": "ISO 11358"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/48"
+  },
+  {
+   "source": "netzsch-sta-449",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/49"
   },
   {
    "source": "netzsch-tg-209-f3-tarsus",
@@ -27697,6 +33422,111 @@
    ]
   },
   {
+   "source": "nordson-gen7-c-sam",
+   "type": "manufactured_by",
+   "target": "nordson-dage"
+  },
+  {
+   "source": "nordson-gen7-c-sam",
+   "type": "in_category",
+   "target": "category:acoustic_microscope"
+  },
+  {
+   "source": "nordson-gen7-c-sam",
+   "type": "performs",
+   "target": "test_item:acoustic_delamination"
+  },
+  {
+   "source": "nordson-gen7-c-sam",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/183"
+  },
+  {
+   "source": "ossila-four-point-probe",
+   "type": "manufactured_by",
+   "target": "ossila"
+  },
+  {
+   "source": "ossila-four-point-probe",
+   "type": "in_category",
+   "target": "category:electrical_property_tester"
+  },
+  {
+   "source": "ossila-four-point-probe",
+   "type": "performs",
+   "target": "test_item:electrical_transport"
+  },
+  {
+   "source": "ossila-four-point-probe",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/175"
+  },
+  {
+   "source": "oxford-symmetry-s2",
+   "type": "manufactured_by",
+   "target": "oxford-instruments"
+  },
+  {
+   "source": "oxford-symmetry-s2",
+   "type": "in_category",
+   "target": "category:electron_microscope"
+  },
+  {
+   "source": "oxford-symmetry-s2",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "oxford-symmetry-s2",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/24"
+  },
+  {
+   "source": "park-nx10",
+   "type": "manufactured_by",
+   "target": "park-systems"
+  },
+  {
+   "source": "park-nx10",
+   "type": "in_category",
+   "target": "category:atomic_force_microscope"
+  },
+  {
+   "source": "park-nx10",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "park-nx10",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/25"
+  },
+  {
+   "source": "perkinelmer-dma-8000",
+   "type": "manufactured_by",
+   "target": "perkinelmer"
+  },
+  {
+   "source": "perkinelmer-dma-8000",
+   "type": "in_category",
+   "target": "category:dma"
+  },
+  {
+   "source": "perkinelmer-dma-8000",
+   "type": "performs",
+   "target": "test_item:dma"
+  },
+  {
+   "source": "perkinelmer-dma-8000",
+   "type": "performs",
+   "target": "test_item:compression"
+  },
+  {
+   "source": "perkinelmer-dma-8000",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/56"
+  },
+  {
    "source": "perkinelmer-dsc-8000",
    "type": "manufactured_by",
    "target": "perkinelmer"
@@ -27740,6 +33570,26 @@
     3,
     4
    ]
+  },
+  {
+   "source": "perkinelmer-frontier-ftir",
+   "type": "manufactured_by",
+   "target": "perkinelmer"
+  },
+  {
+   "source": "perkinelmer-frontier-ftir",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "perkinelmer-frontier-ftir",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "perkinelmer-frontier-ftir",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/38"
   },
   {
    "source": "proceq-equotip-550-leeb",
@@ -28011,6 +33861,86 @@
    "target": "doc:q-lab/quv-technical-manual-series-95.pdf"
   },
   {
+   "source": "renishaw-invia",
+   "type": "manufactured_by",
+   "target": "renishaw"
+  },
+  {
+   "source": "renishaw-invia",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "renishaw-invia",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "renishaw-invia",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/41"
+  },
+  {
+   "source": "renishaw-invia",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/42"
+  },
+  {
+   "source": "renishaw-invia",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/43"
+  },
+  {
+   "source": "rigaku-smartlab",
+   "type": "manufactured_by",
+   "target": "rigaku"
+  },
+  {
+   "source": "rigaku-smartlab",
+   "type": "in_category",
+   "target": "category:xray_diffractometer"
+  },
+  {
+   "source": "rigaku-smartlab",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "rigaku-smartlab",
+   "type": "performs",
+   "target": "test_item:dsc"
+  },
+  {
+   "source": "rigaku-smartlab",
+   "type": "performs",
+   "target": "test_item:coating_thickness"
+  },
+  {
+   "source": "rigaku-smartlab",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/30"
+  },
+  {
+   "source": "rigaku-zsx-primus-400",
+   "type": "manufactured_by",
+   "target": "rigaku"
+  },
+  {
+   "source": "rigaku-zsx-primus-400",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "rigaku-zsx-primus-400",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "rigaku-zsx-primus-400",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/31"
+  },
+  {
    "source": "rs-esw-emi-receiver",
    "type": "manufactured_by",
    "target": "rohde-schwarz"
@@ -28237,6 +34167,106 @@
    "target": "web:https://www.light-salt.kr/product/product.php?ptype=view&prdcode=2510130001&catcode=10101000"
   },
   {
+   "source": "shimadzu-ag-xplus",
+   "type": "manufactured_by",
+   "target": "shimadzu"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "in_category",
+   "target": "category:universal_testing_machine"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "performs",
+   "target": "test_item:tensile"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "performs",
+   "target": "test_item:flexure"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "performs",
+   "target": "test_item:compression"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "performs",
+   "target": "test_item:peel"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "supports_method",
+   "target": "ISO 178"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "supports_method",
+   "target": "ISO 6892"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "supports_method",
+   "target": "JIS K7161"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/128"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/129"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/130"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/131"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/132"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/133"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/134"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/135"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/136"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/137"
+  },
+  {
+   "source": "shimadzu-ag-xplus",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/138"
+  },
+  {
    "source": "shimadzu-ags-v",
    "type": "manufactured_by",
    "target": "shimadzu"
@@ -28322,6 +34352,86 @@
     13,
     14
    ]
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "manufactured_by",
+   "target": "shimadzu"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "in_category",
+   "target": "category:universal_testing_machine"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "performs",
+   "target": "test_item:tensile"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "performs",
+   "target": "test_item:compression"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "performs",
+   "target": "test_item:flexure"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "performs",
+   "target": "test_item:shear"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "performs",
+   "target": "test_item:peel"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "performs",
+   "target": "test_item:tear"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 178"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 527"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "supports_method",
+   "target": "ISO 6892"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/123"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/124"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/125"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/126"
+  },
+  {
+   "source": "shimadzu-ags-x-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/127"
   },
   {
    "source": "shimadzu-ags-x",
@@ -28741,6 +34851,41 @@
    ]
   },
   {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "manufactured_by",
+   "target": "shimadzu"
+  },
+  {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "in_category",
+   "target": "category:optical_spectrometer"
+  },
+  {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "performs",
+   "target": "test_item:optical_spectroscopy"
+  },
+  {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/170"
+  },
+  {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/171"
+  },
+  {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/172"
+  },
+  {
+   "source": "shimadzu-uv-2600-2700",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/173"
+  },
+  {
    "source": "shinyei-drop-shock-testers",
    "type": "manufactured_by",
    "target": "shinyei"
@@ -29024,6 +35169,46 @@
    ]
   },
   {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "manufactured_by",
+   "target": "ta-instruments"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "in_category",
+   "target": "category:rotational_rheometer"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "performs",
+   "target": "test_item:shear"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "performs",
+   "target": "test_item:creep"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "performs",
+   "target": "test_item:dma"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/166"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/167"
+  },
+  {
+   "source": "ta-instruments-ar-rheometer",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/168"
+  },
+  {
    "source": "ta-instruments-discovery-dsc",
    "type": "manufactured_by",
    "target": "ta-instruments"
@@ -29127,6 +35312,36 @@
    "pages": [
     33
    ]
+  },
+  {
+   "source": "ta-instruments-discovery-tga-materialtwin",
+   "type": "manufactured_by",
+   "target": "ta-instruments"
+  },
+  {
+   "source": "ta-instruments-discovery-tga-materialtwin",
+   "type": "in_category",
+   "target": "category:tga"
+  },
+  {
+   "source": "ta-instruments-discovery-tga-materialtwin",
+   "type": "performs",
+   "target": "test_item:tga"
+  },
+  {
+   "source": "ta-instruments-discovery-tga-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/50"
+  },
+  {
+   "source": "ta-instruments-discovery-tga-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/51"
+  },
+  {
+   "source": "ta-instruments-discovery-tga-materialtwin",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/52"
   },
   {
    "source": "ta-instruments-discovery-tga",
@@ -29664,6 +35879,26 @@
    "pages": [
     9
    ]
+  },
+  {
+   "source": "thermo-nexsa-g2",
+   "type": "manufactured_by",
+   "target": "thermo-fisher"
+  },
+  {
+   "source": "thermo-nexsa-g2",
+   "type": "in_category",
+   "target": "category:composition_spectrometer"
+  },
+  {
+   "source": "thermo-nexsa-g2",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "thermo-nexsa-g2",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/32"
   },
   {
    "source": "thermotron-se-s-series",
@@ -30679,6 +36914,71 @@
     6,
     9
    ]
+  },
+  {
+   "source": "zeiss-gemini-fesem",
+   "type": "manufactured_by",
+   "target": "zeiss"
+  },
+  {
+   "source": "zeiss-gemini-fesem",
+   "type": "in_category",
+   "target": "category:electron_microscope"
+  },
+  {
+   "source": "zeiss-gemini-fesem",
+   "type": "performs",
+   "target": "test_item:microscopy"
+  },
+  {
+   "source": "zeiss-gemini-fesem",
+   "type": "performs",
+   "target": "test_item:composition_analysis"
+  },
+  {
+   "source": "zeiss-gemini-fesem",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/26"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "manufactured_by",
+   "target": "zeiss"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "in_category",
+   "target": "category:xray_inspection"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "performs",
+   "target": "test_item:xray_void_inspection"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "performs",
+   "target": "test_item:crystal_structure_analysis"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/184"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/185"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/186"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/187"
   },
   {
    "source": "zwickroell-aflow-extrusion-plastometer",
@@ -31737,11 +38037,31 @@
     2,
     3
    ]
+  },
+  {
+   "source": "zygo-newview-nx2",
+   "type": "manufactured_by",
+   "target": "zygo"
+  },
+  {
+   "source": "zygo-newview-nx2",
+   "type": "in_category",
+   "target": "category:optical_profilometer"
+  },
+  {
+   "source": "zygo-newview-nx2",
+   "type": "performs",
+   "target": "test_item:surface_topography"
+  },
+  {
+   "source": "zygo-newview-nx2",
+   "type": "documented_in",
+   "target": "origin:materialtwin-20260905/instrument/27"
   }
  ],
  "counts": {
-  "nodes": 1474,
-  "edges": 2867,
-  "equipment": 194
+  "nodes": 1848,
+  "edges": 3468,
+  "equipment": 278
  }
 }

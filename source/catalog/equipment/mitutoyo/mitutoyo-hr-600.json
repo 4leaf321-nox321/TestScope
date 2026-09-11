@@ -1,0 +1,109 @@
+{
+ "id": "mitutoyo-hr-600",
+ "kind": "equipment_series",
+ "name": "Mitutoyo HR-600 Series CNC Rockwell Hardness Testers",
+ "manufacturer": "mitutoyo",
+ "category": "rockwell_hardness",
+ "test_items": [
+  "hardness_rockwell"
+ ],
+ "measurands": [
+  "mechanical.hardness_rockwell"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/57",
+   "note": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine · metrology_catalogs/mechanical/Mitutoyo_HR600.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/58",
+   "note": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine · metrology_catalogs/mechanical/Mitutoyo_HR600.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/59",
+   "note": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine · metrology_catalogs/mechanical/Mitutoyo_HR600.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 HR-600 CNC 로크웰 경도시험기",
+ "description": "로크웰 경도시험",
+ "measurands_by_item": {
+  "hardness_rockwell": [
+   "mechanical.hardness_rockwell"
+  ]
+ },
+ "models": [
+  {
+   "model": "HR-610A",
+   "note": "이동헤드형 CNC 로크웰 경도시험기 표준 모델",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 57,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험",
+    "description": "이동헤드형 CNC 로크웰 경도시험기 표준 모델",
+    "notes": "이 브로슈어에는 규격번호도, 척도별 경도범위표도 인쇄돼 있지 않다 — 둘 다 비웠다. 시험하중 29.42~1839 N(3~187.5 kgf)은 하중이지 경도 측정범위가 아니라 range_* 에 넣지 않았다. 최대 테이블 하중 100 kg, 시편 최대높이 250 mm, 깊이(압자 중심에서) 220 mm.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_HR600.pdf",
+    "source_title": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험",
+      "specimen": "최대높이 250 mm, 테이블 하중 100 kg 까지. 곡면(환봉·요철) 보정 기능",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 LINE-UP — HR-610A 'Standard Rockwell hardness testing machine'",
+      "notes": "로크웰 시험기지만 우리 키는 C 척도(HRC)만 있어 그 한 행만 만들었다. 브로슈어에 척도별 경도범위가 없어 범위는 비웠다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HR-620A",
+   "note": "로크웰에 더해 마이크로 브리넬과 플라스틱 경도까지 재는 CNC 경도시험기",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 58,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험 / 저하중 브리넬 경도시험",
+    "description": "로크웰에 더해 마이크로 브리넬과 플라스틱 경도까지 재는 CNC 경도시험기",
+    "notes": "시험하중 9.807~2452 N(1~250 kgf) — 하중이지 경도범위가 아니다. **매핑 포기** — 이 모델이 지원하는 마이크로 브리넬(HBW/HBT)과 플라스틱 경도는 우리 카탈로그에 키가 없다. 규격번호 인쇄 없음.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_HR600.pdf",
+    "source_title": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험",
+      "specimen": "최대높이 250 mm, 테이블 하중 100 kg 까지",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 LINE-UP — HR-620A",
+      "notes": "브리넬·플라스틱 경도는 별개 척도라 같은 행에 섞지 않았다(척도가 곧 물성이다)."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HR-620B",
+   "note": "Y축 스테이지로 다점 자동측정까지 하는 CNC 로크웰/마이크로 브리넬 경도시험기",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 59,
+    "category": "mechanical",
+    "technique": "로크웰 경도시험 / 저하중 브리넬 경도시험",
+    "description": "Y축 스테이지로 다점 자동측정까지 하는 CNC 로크웰/마이크로 브리넬 경도시험기",
+    "notes": "PC TYPE 파생형이 따로 있으나 '나머지 사양은 HR-620B 와 같다'고 인쇄돼 있어 레코드를 나누지 않았다. 시험하중 9.807~2452 N. X축 스테이지 장착 시 시편 최대높이가 250 → 165 mm 로 줄어든다. 규격번호 인쇄 없음.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_HR600.pdf",
+    "source_title": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_rockwell",
+      "technique": "로크웰 경도시험",
+      "specimen": "최대높이 250 mm(X축 스테이지 장착 시 165 mm), 테이블 하중 100 kg 까지",
+      "mapping_confidence": "high",
+      "source_detail": "p.2 LINE-UP — HR-620B / p.4 PC TYPE",
+      "notes": "다점 자동측정 기능은 측정범위와 무관해 별도 행으로 두지 않았다."
+     }
+    ]
+   }
+  }
+ ]
+}

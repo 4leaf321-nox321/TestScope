@@ -1,0 +1,198 @@
+{
+ "id": "kruss-dsa100hp",
+ "kind": "equipment_series",
+ "name": "KRÜSS DSA100HP High-Pressure Drop Shape Analyzer",
+ "manufacturer": "kruss",
+ "category": "contact_angle_analyzer",
+ "test_items": [
+  "contact_angle"
+ ],
+ "measurands": [
+  "physical.contact_angle_water",
+  "physical.surface_energy"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/19",
+   "note": "KRÜSS Drop Shape Analyzer DSA100HP Specifications · metrology_catalogs/surface/KRUSS_DSA100_contactangle.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/20",
+   "note": "KRÜSS Drop Shape Analyzer DSA100HP Specifications · metrology_catalogs/surface/KRUSS_DSA100_contactangle.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/21",
+   "note": "KRÜSS Drop Shape Analyzer DSA100HP Specifications · metrology_catalogs/surface/KRUSS_DSA100_contactangle.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "크루스 DSA100HP 고압 액적형상 분석기",
+ "description": "액적형상 해석(drop shape analysis)",
+ "measurands_by_item": {
+  "contact_angle": [
+   "physical.contact_angle_water",
+   "physical.surface_energy"
+  ]
+ },
+ "models": [
+  {
+   "model": "DSA100HP40",
+   "specs": {
+    "temperature_degC": {
+     "min": 20.0,
+     "max": 200.0
+    }
+   },
+   "note": "고압 액적형상 분석기. 정치액적/포획기포로 접촉각을, 펜던트드롭/라이징드롭으로 액체의 표면·계면장력을 측정한다. 최대 압력 40 bar, 시편공간 40 cm³, 액체 순환식 온도제어.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 19,
+    "category": "surface",
+    "technique": "액적형상 해석(drop shape analysis)",
+    "description": "고압 액적형상 분석기. 정치액적/포획기포로 접촉각을, 펜던트드롭/라이징드롭으로 액체의 표면·계면장력을 측정한다. 최대 압력 40 bar, 시편공간 40 cm³, 액체 순환식 온도제어.",
+    "notes": "파일명은 DSA100 이지만 내용은 고압형 DSA100HP 사양서다. 한 사양서에 DSA100HP40 / HP690 / HP1750 세 구성이 열로 나뉘어 있고 최대압력·시편공간·온도상한이 달라 모델마다 레코드를 나눴다. 측정 사양(접촉각·표면장력)은 세 구성이 동일하다.",
+    "doc_path": "metrology_catalogs/surface/KRUSS_DSA100_contactangle.pdf",
+    "source_title": "KRÜSS Drop Shape Analyzer DSA100HP Specifications",
+    "capabilities": [
+     {
+      "property_key": "physical.contact_angle_water",
+      "technique": "정치액적법 접촉각(sessile drop / captive bubble)",
+      "range_min": 0.0,
+      "range_max": 180.0,
+      "range_unit": "°",
+      "resolution": 0.01,
+      "accuracy": "0.1° (instrument-based)",
+      "temperature_min_k": 293.15,
+      "temperature_max_k": 473.15,
+      "specimen": "최대 시편공간 40 cm³, 최대 측정길이 10 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement specifications — Sessile drop/captive bubble (Range 0 to 180°, Resolution 0.01°, Accuracy 0.1°)",
+      "notes": "온도범위는 시편 스테이지 온도제어 20~200 °C 를 환산했다. **검산** — 20+273.15=293.15, 200+273.15=473.15. 별도로 인쇄된 '온도측정 범위 -50~400 °C' 는 온도계의 측정범위이지 시편을 놓을 수 있는 온도가 아니라 쓰지 않았다. 카탈로그는 액체를 물로 한정하지 않는다(전진/후퇴/정적/동적 접촉각, Young-Laplace 등 5개 피팅 모델)."
+     },
+     {
+      "property_key": "physical.surface_energy",
+      "technique": "펜던트드롭법 표면·계면장력(pendant/rising drop)",
+      "range_min": 0.01,
+      "range_max": 2000.0,
+      "range_unit": "mN/m",
+      "resolution": 0.01,
+      "temperature_min_k": 293.15,
+      "temperature_max_k": 473.15,
+      "specimen": "최대 시편공간 40 cm³",
+      "mapping_confidence": "medium",
+      "source_detail": "Measurement specifications — Pendant drop/rising drop (Range 0.01 to 2000 mN/m, Resolution 0.01 mN/m)",
+      "notes": "이 사양서가 재는 것은 **액체의** 표면·계면장력이다(소프트웨어 항목도 'interfacial and surface tension of liquids'). 우리 키 physical.surface_energy 는 J/m² 로 차원은 같지만(mN/m = mJ/m²) 통상 고체 표면자유에너지를 가리켜 medium 으로 표시했다. 고체 SFE 산출 모델은 이 HP 사양서에 인쇄되어 있지 않다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DSA100HP690",
+   "specs": {
+    "temperature_degC": {
+     "min": 20.0,
+     "max": 200.0
+    }
+   },
+   "note": "고압 액적형상 분석기. 최대 압력 690 bar(10,000 psi), 시편공간 25 cm³, 전기식 온도제어.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 20,
+    "category": "surface",
+    "technique": "액적형상 해석(drop shape analysis)",
+    "description": "고압 액적형상 분석기. 최대 압력 690 bar(10,000 psi), 시편공간 25 cm³, 전기식 온도제어.",
+    "notes": "표지 사진의 기준 구성(DSA100HP690).",
+    "doc_path": "metrology_catalogs/surface/KRUSS_DSA100_contactangle.pdf",
+    "source_title": "KRÜSS Drop Shape Analyzer DSA100HP Specifications",
+    "capabilities": [
+     {
+      "property_key": "physical.contact_angle_water",
+      "technique": "정치액적법 접촉각(sessile drop / captive bubble)",
+      "range_min": 0.0,
+      "range_max": 180.0,
+      "range_unit": "°",
+      "resolution": 0.01,
+      "accuracy": "0.1° (instrument-based)",
+      "temperature_min_k": 293.15,
+      "temperature_max_k": 473.15,
+      "specimen": "최대 시편공간 25 cm³, 최대 측정길이 10 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement specifications — Sessile drop/captive bubble",
+      "notes": "온도제어 20~200 °C 환산. **검산** — 20+273.15=293.15, 200+273.15=473.15."
+     },
+     {
+      "property_key": "physical.surface_energy",
+      "technique": "펜던트드롭법 표면·계면장력(pendant/rising drop)",
+      "range_min": 0.01,
+      "range_max": 2000.0,
+      "range_unit": "mN/m",
+      "resolution": 0.01,
+      "temperature_min_k": 293.15,
+      "temperature_max_k": 473.15,
+      "specimen": "최대 시편공간 25 cm³",
+      "mapping_confidence": "medium",
+      "source_detail": "Measurement specifications — Pendant drop/rising drop",
+      "notes": "액체의 표면·계면장력이다. 고체 표면자유에너지와 구분해서 medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DSA100HP1750",
+   "specs": {
+    "temperature_degC": {
+     "min": 20.0,
+     "max": 250.0
+    }
+   },
+   "note": "고압 액적형상 분석기. 최대 압력 1750 bar(25,000 psi), 시편공간 25 cm³, 피스톤 용량 11 mL, 전기식 온도제어(최대 250 °C).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 21,
+    "category": "surface",
+    "technique": "액적형상 해석(drop shape analysis)",
+    "description": "고압 액적형상 분석기. 최대 압력 1750 bar(25,000 psi), 시편공간 25 cm³, 피스톤 용량 11 mL, 전기식 온도제어(최대 250 °C).",
+    "notes": "세 구성 중 온도상한이 250 °C 로 유일하게 다르다.",
+    "doc_path": "metrology_catalogs/surface/KRUSS_DSA100_contactangle.pdf",
+    "source_title": "KRÜSS Drop Shape Analyzer DSA100HP Specifications",
+    "capabilities": [
+     {
+      "property_key": "physical.contact_angle_water",
+      "technique": "정치액적법 접촉각(sessile drop / captive bubble)",
+      "range_min": 0.0,
+      "range_max": 180.0,
+      "range_unit": "°",
+      "resolution": 0.01,
+      "accuracy": "0.1° (instrument-based)",
+      "temperature_min_k": 293.15,
+      "temperature_max_k": 523.15,
+      "specimen": "최대 시편공간 25 cm³, 최대 측정길이 10 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement specifications — Sessile drop/captive bubble, Temperature control 20 to 250 °C",
+      "notes": "온도제어 20~250 °C 환산. **검산** — 20+273.15=293.15, 250+273.15=523.15."
+     },
+     {
+      "property_key": "physical.surface_energy",
+      "technique": "펜던트드롭법 표면·계면장력(pendant/rising drop)",
+      "range_min": 0.01,
+      "range_max": 2000.0,
+      "range_unit": "mN/m",
+      "resolution": 0.01,
+      "temperature_min_k": 293.15,
+      "temperature_max_k": 523.15,
+      "specimen": "최대 시편공간 25 cm³",
+      "mapping_confidence": "medium",
+      "source_detail": "Measurement specifications — Pendant drop/rising drop",
+      "notes": "액체의 표면·계면장력이다. 고체 표면자유에너지와 구분해서 medium."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": 20.0,
+   "max": 250.0
+  }
+ }
+}

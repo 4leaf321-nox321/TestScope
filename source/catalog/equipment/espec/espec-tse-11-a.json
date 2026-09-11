@@ -1,0 +1,37 @@
+{
+ "id": "espec-tse-11-a",
+ "kind": "equipment_model",
+ "name": "ESPEC TSE-11-A Two-Zone Thermal Shock Chamber",
+ "manufacturer": "espec",
+ "category": "thermal_shock_chamber",
+ "test_items": [
+  "thermal_shock"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/197",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 TSE-11-A 2조식 열충격조",
+ "description": "2조식 기상 열충격(고온존/저온존 이송)",
+ "models": [
+  {
+   "model": "TSE-11-A 열충격조",
+   "note": "**조건 부여 장비.** 고온존 60~200 °C, 저온존 -65~0 °C 사이로 시편을 이송하는 소형 열충격조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 197,
+    "category": "reliability",
+    "technique": "2조식 기상 열충격(고온존/저온존 이송)",
+    "description": "**조건 부여 장비.** 고온존 60~200 °C, 저온존 -65~0 °C 사이로 시편을 이송하는 소형 열충격조",
+    "notes": "**capabilities 비움.** ▷ **고온존 60~200 °C**(=333.15~473.15 K), **저온존 -65~0 °C**(=208.15~273.15 K), 시편 노출 -65~150 °C. **적용 규격 Mil-Std 883E method 1010.7 Method C(온도 사이클).** 온도복귀시간 급기 5분 / 최악 제품 15분(1010.7 기준), 시험부하 4 kg(플라스틱 IC), 내부용적 11 L(32×23×15 cm). 액체질소·냉각수 없이 냉동기만으로 저온존을 만든다고 명시.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

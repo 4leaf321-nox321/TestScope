@@ -1,0 +1,125 @@
+{
+ "id": "horiba-fluoromax-plus",
+ "kind": "equipment_model",
+ "name": "HORIBA FluoroMax Plus Spectrofluorometer",
+ "manufacturer": "horiba",
+ "category": "optical_spectrometer",
+ "test_items": [
+  "optical_spectroscopy",
+  "xray_void_inspection"
+ ],
+ "measurands": [
+  "optical.emission_peak_wavelength",
+  "optical.photoluminescence_quantum_yield",
+  "optical.excited_state_lifetime",
+  "optical.transmittance"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/169",
+   "note": "HORIBA FluoroMax Plus — Sensitive, Flexible, Trusted Spectrofluorometer · metrology_catalogs/optical/HORIBA_Fluoromax_Plus.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "호리바 FluoroMax Plus 형광분광기",
+ "description": "광자계수 형광분광(스펙트로플루오로미터)",
+ "measurands_by_item": {
+  "optical_spectroscopy": [
+   "optical.emission_peak_wavelength",
+   "optical.photoluminescence_quantum_yield",
+   "optical.excited_state_lifetime",
+   "optical.transmittance"
+  ],
+  "xray_void_inspection": [
+   "optical.excited_state_lifetime"
+  ]
+ },
+ "models": [
+  {
+   "model": "FluoroMax Plus",
+   "specs": {
+    "temperature_degC": {
+     "min": -40.0,
+     "max": 150.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "150 W CW 제논 램프 + Czerny-Turner 이중 단색화장치의 광자계수 형광분광기. 여기/발광 스펙트럼, 절대 양자수율(적분구), TCSPC 수명 측정",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 169,
+    "category": "optical",
+    "technique": "광자계수 형광분광(스펙트로플루오로미터)",
+    "description": "150 W CW 제논 램프 + Czerny-Turner 이중 단색화장치의 광자계수 형광분광기. 여기/발광 스펙트럼, 절대 양자수율(적분구), TCSPC 수명 측정",
+    "notes": "5세대 FluoroMax 시리즈 브로슈어. 기본 검출기 R928P PMT 185~900 nm, 옵션으로 185~980 nm · 200~1050 nm · 950~1700 nm · InGaAs 800~1700 nm 까지 확장. 파장정확도 ±0.5 nm, 밴드패스 0~29 nm 연속가변, 적산시간 1 ms~160 s, 물 라만 S/N 10,000:1(FSD 법). 시료온도는 Peltier 큐벳홀더 -25~105 °C(옵션 -40~150 °C), 항온조 -25~100 °C, 크라이오스탯은 4 K 까지. **CIE 1931/1976 색좌표, 이방성(anisotropy), EEM/A-TEEM 은 우리 물성 키에 대응이 없어 능력행을 만들지 않았다.**",
+    "doc_path": "metrology_catalogs/optical/HORIBA_Fluoromax_Plus.pdf",
+    "source_title": "HORIBA FluoroMax Plus — Sensitive, Flexible, Trusted Spectrofluorometer",
+    "capabilities": [
+     {
+      "property_key": "optical.emission_peak_wavelength",
+      "technique": "형광 발광 스펙트럼 측정(제논 램프 여기 + 광자계수 PMT)",
+      "range_min": 185.0,
+      "range_max": 900.0,
+      "range_unit": "nm",
+      "accuracy": "파장정확도 ±0.5 nm",
+      "temperature_min_k": 233.15,
+      "temperature_max_k": 423.15,
+      "specimen": "용액(큐벳)·분말·고체·박막. 96/384 웰 플레이트, 현미경 결합 시 1 µm 크기 시료까지",
+      "mapping_confidence": "high",
+      "source_detail": "p.18 FluoroMax Plus specifications — Base Detector 'Photomultiplier R928P, 185 to 900 nm'",
+      "notes": "**조건 medium** — 큐벳 용액, 고체/분말 트레이, 웰플레이트 모두 지원한다고 인쇄돼 있어 매질이 고정돼 있지 않다. 발광파장 범위는 기본 PMT 검출범위 185~900 nm 를 썼고, 옵션 검출기로 1700 nm 까지 늘어난다(확장 NIR PMT 185~980, 냉각 NIR PMT 200~1050, 냉각 확장 NIR 950~1700, LN2 냉각 InGaAs 800~1700 nm). 발광 회절격자는 1200 groove/mm blazed 500 nm, 옵션 NIR 격자 600 groove/mm blazed 1 µm. 온도는 Peltier 큐벳홀더 옵션 범위 -40~150 °C — **검산** -40+273.15=233.15, 150+273.15=423.15. 크라이오스탯 사용 시 4 K 까지 내려간다."
+     },
+     {
+      "property_key": "optical.photoluminescence_quantum_yield",
+      "technique": "적분구 절대 광발광 양자수율(PLQY)",
+      "specimen": "고체·분말(바닥장착 컵)·용액(큐벳). QuantaPhi-2 내부 121 mm Spectralon 적분구",
+      "mapping_confidence": "high",
+      "source_detail": "p.6 'Absolute Quantum Yield Measurements' / p.18 'Optional Integrating Spheres for PLQY — 내부 80 mm 또는 외부 150 mm 구'",
+      "notes": "시료와 무형광 블랭크를 각각 측정해 **절대 양자수율**을 직접 구한다. 양자수율은 0~1 무차원이고 카탈로그에 측정범위·불확도가 인쇄돼 있지 않아 비웠다. QuantaPhi-2 적분구 Spectralon 반사율 유효구간 250~2500 nm."
+     },
+     {
+      "property_key": "optical.excited_state_lifetime",
+      "technique": "시간상관 단일광자계수(TCSPC)",
+      "range_min": 1.5e-10,
+      "range_max": 1.0,
+      "range_unit": "s",
+      "temperature_min_k": 233.15,
+      "temperature_max_k": 423.15,
+      "specimen": "형광 용액·고체. DeltaDiode 레이저(반복률 10 kHz~100 MHz) 여기",
+      "mapping_confidence": "high",
+      "source_detail": "p.18 'Lifetime Range with Standard PMT Detector: <150 ps to 1 s'",
+      "notes": "원문은 '<150 ps to 1 s' — **하한이 부등호라 150 ps 를 보수적으로 하한으로 잡았다**(실제로는 그보다 짧은 수명도 잡힌다는 뜻). ps 를 초로 환산 — **검산** 150 ps = 150×10⁻¹² = 1.5e-10 s. 옵션 PPD 검출기는 <25 ps~1 s, HPPD 는 <5 ps 까지. IRF 는 PPD <200 ps, HPPD ~50 ps, TTS <180 ps(405 nm). TCSPC 전자부 데드타임 10 ns, 수명 kinetics 는 초당 1,000 감쇠곡선."
+     },
+     {
+      "property_key": "optical.excited_state_lifetime",
+      "technique": "인광 수명 측정(SpectraLED/펄스 제논 광원)",
+      "range_min": 1e-05,
+      "range_max": 10.0,
+      "range_unit": "s",
+      "temperature_min_k": 233.15,
+      "temperature_max_k": 423.15,
+      "specimen": "인광 시료(고체·용액)",
+      "mapping_confidence": "high",
+      "source_detail": "p.18 'Phosphorescence Lifetime Range with SpectraLED Phosphorescence Source: <10 µs tp 10 s'",
+      "notes": "원문 '<10 µs to 10 s'(오타 'tp' 그대로 인쇄돼 있다). µs 를 초로 — **검산** 10 µs = 10×10⁻⁶ = 1e-5 s. 하한이 부등호라 10 µs 를 보수적 하한으로 잡았다. 형광 TCSPC 와 **기법이 달라 능력행을 나눴다**(같은 물성키라도 기법이 다르면 별개 행). 옵션 펄스 제논 램프 10 W, 0.03~25 Hz."
+     },
+     {
+      "property_key": "optical.transmittance",
+      "technique": "흡광/투과 부속(UV 강화 실리콘 포토다이오드 투과검출기)",
+      "specimen": "용액 시료(큐벳)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.7 'Absorbance/Transmittance Accessory' / p.18 'Optional Transmission Detector: UV-enhanced silicon photodiode'",
+      "notes": "옵션 부속이며 **투과율 자체의 측정범위·정확도가 인쇄돼 있지 않다.** 주 목적은 형광의 내부필터효과(IFE) 보정용 흡광도 수집이라 medium 으로 뒀다."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -40.0,
+   "max": 150.0
+  }
+ }
+}

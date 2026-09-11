@@ -1,0 +1,50 @@
+{
+ "id": "buehler-wilson-vh3300-materialtwin",
+ "kind": "equipment_series",
+ "name": "Wilson VH3100 / VH3300 Vickers-Knoop Hardness Testers",
+ "manufacturer": "buehler",
+ "category": "vickers_knoop_hardness",
+ "test_items": [
+  "hardness_vickers",
+  "hardness_knoop"
+ ],
+ "measurands": [
+  "mechanical.hardness_vickers",
+  "mechanical.hardness_knoop"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/100",
+   "note": "Buehler Wilson VH3100 / VH3300 Automatic Vickers/Knoop Hardness Testers · metrology_catalogs/mechanical/Buehler_Wilson_VH3300.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/101",
+   "note": "Buehler Wilson VH3100 / VH3300 Automatic Vickers/Knoop Hardness Testers · metrology_catalogs/mechanical/Buehler_Wilson_VH3300.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "buehler-wilson-vh3300",
+ "measurands_by_item": {
+  "hardness_vickers": [
+   "mechanical.hardness_vickers"
+  ],
+  "hardness_knoop": [
+   "mechanical.hardness_knoop"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 4545",
+   "ISO 6507"
+  ],
+  "test_methods_by_item": {
+   "hardness_vickers": [
+    "ISO 6507"
+   ],
+   "hardness_knoop": [
+    "ISO 4545"
+   ]
+  }
+ }
+}

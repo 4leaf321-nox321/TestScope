@@ -1,0 +1,38 @@
+{
+ "id": "zeiss-gemini-fesem",
+ "kind": "equipment_model",
+ "name": "ZEISS GEMINI Column FE-SEM (SUPRA / ULTRA)",
+ "manufacturer": "zeiss",
+ "category": "electron_microscope",
+ "test_items": [
+  "microscopy",
+  "composition_analysis"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/26",
+   "note": "Carl Zeiss SMT — Detection Principles based on GEMINI Technology · metrology_catalogs/surface/Zeiss_GeminiSEM.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "자이스 GEMINI 컬럼 전계방출 주사전자현미경",
+ "description": "전계방출 주사전자현미경(FE-SEM, GEMINI 컬럼)",
+ "models": [
+  {
+   "model": "GEMINI column FESEM (SUPRA / ULTRA series)",
+   "note": "쇼트키 전계방출원과 빔부스터·정전복합 대물렌즈를 쓰는 GEMINI 컬럼 FESEM. 인렌즈 SE 검출, 각도선택 BSE 검출, 저진공(VP) 모드 등 검출 원리를 설명한 제품자료.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 26,
+    "category": "surface",
+    "technique": "전계방출 주사전자현미경(FE-SEM, GEMINI 컬럼)",
+    "description": "쇼트키 전계방출원과 빔부스터·정전복합 대물렌즈를 쓰는 GEMINI 컬럼 FESEM. 인렌즈 SE 검출, 각도선택 BSE 검출, 저진공(VP) 모드 등 검출 원리를 설명한 제품자료.",
+    "notes": "모델 사양서가 아니라 GEMINI 컬럼 검출원리를 설명하는 기술자료(Product Information)다. 본문이 SUPRA/ULTRA 시리즈를 언급할 뿐 모델별 사양표가 없어 시리즈명 하나로 레코드를 만들었다. 인쇄된 표는 전자원 비교(쇼트키 FE vs 냉음극 FE — 방출전류밀도, 휘도, 에너지폭 등)와 0.1~30 kV 구간 분해능 곡선뿐이고 우리 물성 키에 이어지는 항목이 없다.",
+    "doc_path": "metrology_catalogs/surface/Zeiss_GeminiSEM.pdf",
+    "source_title": "Carl Zeiss SMT — Detection Principles based on GEMINI Technology",
+    "capabilities": []
+   }
+  }
+ ]
+}

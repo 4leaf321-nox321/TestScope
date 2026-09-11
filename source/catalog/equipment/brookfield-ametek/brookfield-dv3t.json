@@ -1,0 +1,244 @@
+{
+ "id": "brookfield-dv3t",
+ "kind": "equipment_series",
+ "name": "Brookfield DV3T Rotational Viscometers (LV / RV / HA / HB / 5xHB)",
+ "manufacturer": "brookfield-ametek",
+ "category": "viscometer",
+ "test_items": [
+  "rheology_rotational"
+ ],
+ "measurands": [
+  "rheological.viscosity",
+  "rheological.yield_stress"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/154",
+   "note": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress · metrology_catalogs/particle/Brookfield_DV3T_visco.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/155",
+   "note": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress · metrology_catalogs/particle/Brookfield_DV3T_visco.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/156",
+   "note": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress · metrology_catalogs/particle/Brookfield_DV3T_visco.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/157",
+   "note": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress · metrology_catalogs/particle/Brookfield_DV3T_visco.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/158",
+   "note": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress · metrology_catalogs/particle/Brookfield_DV3T_visco.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "브룩필드 DV3T 회전점도계",
+ "description": "회전점도계(스핀들 회전토크)",
+ "measurands_by_item": {
+  "rheology_rotational": [
+   "rheological.viscosity",
+   "rheological.yield_stress"
+  ]
+ },
+ "models": [
+  {
+   "model": "DV3T LV",
+   "note": "LV 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 154,
+    "category": "particle",
+    "technique": "회전점도계(스핀들 회전토크)",
+    "description": "LV 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+    "notes": "DV3T 는 토크스프링(LV/RV/HA/HB/5xHB)에 따라 **점도범위가 다른 별개 모델번호**로 인쇄돼 모델마다 레코드를 나눴다. 능력행 유일키가 (장비, 물성키, 기법)이라 한 레코드에 점도행을 5개 넣을 수 없다는 사정도 있다. 콘/플레이트형 DV3TCP 도 있으나 별도 사양이 인쇄돼 있지 않다.",
+    "doc_path": "metrology_catalogs/particle/Brookfield_DV3T_visco.pdf",
+    "source_title": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전점도계(스핀들 회전토크)",
+      "range_min": 1.0,
+      "range_max": 6000000.0,
+      "range_unit": "cP",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "액체·페이스트. LV 스핀들 6종(RV/HA/HB) 또는 4종(LV)",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 VISCOSITY RANGE 표 (DV3TLV 1†~6M cP)",
+      "notes": "원문 '1† ~ 6M cP(mPa·s)' — 6M=6,000,000 cP. † 하한 1 cP 는 UL 어댑터 부속을 써야 나오고, 표준 스핀들로는 15 cP 다. **전단속도가 아니라 점도 범위다** — 회전속도는 0.01~250 RPM(2600 단계)이며 전단속도는 스핀들·시료계에 따라 달라져 인쇄돼 있지 않다. 온도범위는 본체에 인쇄돼 있지 않다(외부 항온조·Thermosel 부속 사용)."
+     },
+     {
+      "property_key": "rheological.yield_stress",
+      "technique": "베인 스핀들 항복응력 시험(회전점도계 내장 yield test)",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "저속 유동 물질·페이스트. 옵션 베인 스핀들(하부구조를 깨지 않고 시료에 담근다)",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 'the all-in-one tool for measuring viscosity and yield stress' / 'DV3T Rheometers have a built-in yield stress measurement capability that determines the stress required to initiate flow' / TORQUE·SHEAR STRESS RANGE 표(LV 행: 'Contact Brookfield')",
+      "notes": "**LV 스프링의 전단응력 범위는 숫자가 아니라 'Contact Brookfield' 로 인쇄돼 있어 range 를 비웠다.** **필수 조건 `model`** — 본체 내장 수학모델은 **Casson·Bingham·Power Law·Thix Index**, 옵션 RheocalcT 소프트웨어에서 **Herschel-Bulkley** 가 추가된다. 항복응력 값은 모델마다 다르므로 값 수집 시 어느 모델로 뽑았는지 반드시 기록할 것. `temperature_k` 는 본체에 온도범위가 인쇄돼 있지 않다(외부 항온조·Thermosel 부속으로 건다). 측정 원리는 **유동을 시작시키는 데 필요한 응력**이며 베인 스핀들로 QC/연구용 항복시험 프로토콜을 짤 수 있다고 명시."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DV3T RV",
+   "note": "RV 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 155,
+    "category": "particle",
+    "technique": "회전점도계(스핀들 회전토크)",
+    "description": "RV 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+    "notes": "DV3T 토크스프링 변종 중 RV. 전단응력 범위 0.5~100 Pa(5~1K dyne/cm²)가 별도 인쇄돼 있다.",
+    "doc_path": "metrology_catalogs/particle/Brookfield_DV3T_visco.pdf",
+    "source_title": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전점도계(스핀들 회전토크)",
+      "range_min": 100.0,
+      "range_max": 40000000.0,
+      "range_unit": "cP",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "액체·페이스트, RV 스핀들 6종",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 VISCOSITY RANGE 표 (DV3TRV 100††~40M cP)",
+      "notes": "40M=40,000,000 cP. †† 하한 100 cP 는 옵션 RV-1 스핀들을 써야 나온다. 전단응력 범위 0.5~100 Pa 는 점도와 다른 축이라 여기 넣지 않았다. 회전속도 0.01~250 RPM."
+     },
+     {
+      "property_key": "rheological.yield_stress",
+      "technique": "베인 스핀들 항복응력 시험(회전점도계 내장 yield test)",
+      "range_min": 0.5,
+      "range_max": 100.0,
+      "range_unit": "Pa",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "페이스트·서스펜션. 옵션 베인 스핀들",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 SHEAR STRESS RANGE 표 — RV: 0.5~100 Pa (5~1K dyne/cm²) / 'Yield tests can be performed with the use of optional vane spindles.'",
+      "notes": "**표 머리글은 'SHEAR STRESS RANGE' 다** — 특정 모델로 뽑은 항복응력의 범위가 아니라 **이 토크스프링이 잴 수 있는 응력 범위**이고, 베인 항복시험의 측정 가능 구간이 여기에 갇힌다. 그래서 범위는 살리되 이 사실을 여기 남긴다. 단위는 원문이 이미 Pa 라 환산이 없다(병기된 5~1K dyne/cm² 는 같은 값 — **검산** 0.5 Pa = 5 dyne/cm², 100 Pa = 1000 dyne/cm²). **필수 조건 `model`** — Casson·Bingham·Power Law·Thix Index(내장), Herschel-Bulkley(RheocalcT). `temperature_k` 는 인쇄 없음."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DV3T HA",
+   "note": "HA 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 156,
+    "category": "particle",
+    "technique": "회전점도계(스핀들 회전토크)",
+    "description": "HA 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+    "notes": "DV3T 토크스프링 변종 중 HA. 전단응력 범위 1~200 Pa(10~2K dyne/cm²).",
+    "doc_path": "metrology_catalogs/particle/Brookfield_DV3T_visco.pdf",
+    "source_title": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전점도계(스핀들 회전토크)",
+      "range_min": 200.0,
+      "range_max": 80000000.0,
+      "range_unit": "cP",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "액체·페이스트, HA 스핀들 6종",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 VISCOSITY RANGE 표 (DV3THA 200††~80M cP)",
+      "notes": "80M=80,000,000 cP. †† 하한 200 cP 는 옵션 HA-1 스핀들 사용 시. 회전속도 0.01~250 RPM."
+     },
+     {
+      "property_key": "rheological.yield_stress",
+      "technique": "베인 스핀들 항복응력 시험(회전점도계 내장 yield test)",
+      "range_min": 1.0,
+      "range_max": 200.0,
+      "range_unit": "Pa",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "고점도 페이스트. 옵션 베인 스핀들",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 SHEAR STRESS RANGE 표 — HA: 1~200 Pa (10~2K dyne/cm²)",
+      "notes": "표 머리글이 'SHEAR STRESS RANGE' 이므로 **토크스프링의 응력 측정범위**이고 베인 항복시험이 그 안에서 이뤄진다. 원문 단위가 Pa 라 환산 없음(병기 10~2K dyne/cm² — **검산** 1 Pa=10 dyne/cm², 200 Pa=2000 dyne/cm²). **필수 조건 `model`** — Casson·Bingham·Power Law·Thix Index, RheocalcT 에서 Herschel-Bulkley."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DV3T HB",
+   "note": "HB 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 157,
+    "category": "particle",
+    "technique": "회전점도계(스핀들 회전토크)",
+    "description": "HB 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
+    "notes": "DV3T 토크스프링 변종 중 HB. 전단응력 범위 4~800 Pa(40~8K dyne/cm²).",
+    "doc_path": "metrology_catalogs/particle/Brookfield_DV3T_visco.pdf",
+    "source_title": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전점도계(스핀들 회전토크)",
+      "range_min": 800.0,
+      "range_max": 320000000.0,
+      "range_unit": "cP",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "액체·페이스트, HB 스핀들 6종",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 VISCOSITY RANGE 표 (DV3THB 800††~320M cP)",
+      "notes": "320M=320,000,000 cP. †† 하한 800 cP 는 옵션 HB-1 스핀들 사용 시. 회전속도 0.01~250 RPM."
+     },
+     {
+      "property_key": "rheological.yield_stress",
+      "technique": "베인 스핀들 항복응력 시험(회전점도계 내장 yield test)",
+      "range_min": 4.0,
+      "range_max": 800.0,
+      "range_unit": "Pa",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "고점도 페이스트·컴파운드. 옵션 베인 스핀들",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 SHEAR STRESS RANGE 표 — HB: 4~800 Pa (40~8K dyne/cm²)",
+      "notes": "표 머리글 'SHEAR STRESS RANGE' — 응력 측정범위이며 베인 항복시험이 이 안에서 이뤄진다. 원문 Pa(병기 40~8K dyne/cm² — **검산** 4 Pa=40, 800 Pa=8000 dyne/cm²). **필수 조건 `model`** — Casson·Bingham·Power Law·Thix Index, RheocalcT 에서 Herschel-Bulkley."
+     }
+    ]
+   }
+  },
+  {
+   "model": "DV3T 5xHB",
+   "note": "5xHB 토크스프링 회전점도계(최고 점도범위). 점도·항복응력 측정",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 158,
+    "category": "particle",
+    "technique": "회전점도계(스핀들 회전토크)",
+    "description": "5xHB 토크스프링 회전점도계(최고 점도범위). 점도·항복응력 측정",
+    "notes": "DV3T 토크스프링 변종 중 5xHB. 전단응력 범위 20~4K Pa(200~40K dyne/cm²).",
+    "doc_path": "metrology_catalogs/particle/Brookfield_DV3T_visco.pdf",
+    "source_title": "Brookfield DV3T Viscometer — the all-in-one tool for measuring viscosity and yield stress",
+    "capabilities": [
+     {
+      "property_key": "rheological.viscosity",
+      "technique": "회전점도계(스핀들 회전토크)",
+      "range_min": 4000.0,
+      "range_max": 1600000000.0,
+      "range_unit": "cP",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "고점도 페이스트·컴파운드",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 VISCOSITY RANGE 표 (DV3T5xHB 4K~1.6B cP)",
+      "notes": "4K=4,000 cP, 1.6B=1,600,000,000 cP(B=billion 이라고 표 각주에 인쇄). 회전속도 0.01~250 RPM."
+     },
+     {
+      "property_key": "rheological.yield_stress",
+      "technique": "베인 스핀들 항복응력 시험(회전점도계 내장 yield test)",
+      "range_min": 20.0,
+      "range_max": 4000.0,
+      "range_unit": "Pa",
+      "accuracy": "±1.0 % of range (반복도 ±0.2 %)",
+      "specimen": "초고점도 페이스트·컴파운드. 옵션 베인 스핀들",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 SHEAR STRESS RANGE 표 — 5xHB: 20~4K Pa (200~40K dyne/cm²)",
+      "notes": "원문 '20-4K Pa' 의 4K = **4,000 Pa**(표 각주에 K=thousand 로 인쇄). 병기된 200~40K dyne/cm² 와 일치 — **검산** 20 Pa=200 dyne/cm², 4000 Pa=40,000 dyne/cm². 표 머리글은 'SHEAR STRESS RANGE' 이므로 **응력 측정범위**이고 베인 항복시험이 그 안에서 이뤄진다. **필수 조건 `model`** — Casson·Bingham·Power Law·Thix Index, RheocalcT 에서 Herschel-Bulkley."
+     }
+    ]
+   }
+  }
+ ]
+}

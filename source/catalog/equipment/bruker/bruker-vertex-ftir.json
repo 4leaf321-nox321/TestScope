@@ -1,0 +1,156 @@
+{
+ "id": "bruker-vertex-ftir",
+ "kind": "equipment_series",
+ "name": "Bruker VERTEX 70 / 70v / 80 / 80v FT-IR Spectrometers",
+ "manufacturer": "bruker",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/34",
+   "note": "Bruker VERTEX 70 FT-IR spectrometer · metrology_catalogs/chemical/Bruker_VERTEX70_flyer.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/35",
+   "note": "Bruker VERTEX Series (70v / 80 / 80v) · metrology_catalogs/chemical/Bruker_VERTEXseries.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/36",
+   "note": "Bruker VERTEX Series (70v / 80 / 80v) · metrology_catalogs/chemical/Bruker_VERTEXseries.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/37",
+   "note": "Bruker VERTEX Series (70v / 80 / 80v) · metrology_catalogs/chemical/Bruker_VERTEXseries.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "브루커 VERTEX 푸리에변환 적외분광기",
+ "description": "푸리에변환 적외분광(FT-IR)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "VERTEX 70",
+   "note": "완전 디지털 FT-IR 분광기. RockSolid 영구정렬 간섭계, 24-bit DigiTect 검출 전자계. 광학부품 옵션으로 원적외 30 cm⁻¹부터 가시 25,000 cm⁻¹ 까지 커버, 표준 분광분해능 0.5 cm⁻¹ 이하(옵션 boxcar 0.16 cm⁻¹). 밀폐·건조 광학벤치라 퍼지가스·냉각수 불필요.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 34,
+    "category": "chemical",
+    "technique": "푸리에변환 적외분광(FT-IR)",
+    "description": "완전 디지털 FT-IR 분광기. RockSolid 영구정렬 간섭계, 24-bit DigiTect 검출 전자계. 광학부품 옵션으로 원적외 30 cm⁻¹부터 가시 25,000 cm⁻¹ 까지 커버, 표준 분광분해능 0.5 cm⁻¹ 이하(옵션 boxcar 0.16 cm⁻¹). 밀폐·건조 광학벤치라 퍼지가스·냉각수 불필요.",
+    "notes": "**VERTEX70_flyer 와 VERTEXseries 는 같은 모델이 아니다** — flyer 는 비진공 VERTEX 70, series 브로슈어는 VERTEX 70v/80/80v(진공형 및 상위기) 사양표다. 사양이 서로 달라 합치지 않고 모델별로 나눴다. 인쇄된 30~25,000 cm⁻¹ 와 0.5/0.16 cm⁻¹ 은 분광기의 파수범위·분광분해능이지 물성 측정범위가 아니다.",
+    "doc_path": "metrology_catalogs/chemical/Bruker_VERTEX70_flyer.pdf",
+    "source_title": "Bruker VERTEX 70 FT-IR spectrometer",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "푸리에변환 적외분광(FT-IR)",
+      "specimen": "대형 시료실, HYPERION 2000 FT-IR 현미경 연결 가능",
+      "mapping_confidence": "medium",
+      "source_detail": "flyer 본문 — Wide Spectral Range / Spectral Resolution",
+      "notes": "FT-IR 이 직접 재는 것은 적외 흡수 스펙트럼이고 조성은 거기서 나오는 해석 결과다. 이 flyer 에는 정성·정량 분석 성능(검출한계, 정량 정확도)이 하나도 인쇄되어 있지 않아 medium 으로 두고 범위는 전부 비웠다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "VERTEX 70v",
+   "note": "진공 광학벤치 FT-IR. 파수범위 10~28,000 cm⁻¹(360 nm), 분광분해능 0.4 cm⁻¹ 이하(apodized, 옵션 0.16 cm⁻¹), RockSolid 간섭계, 입력포트 2·출력포트 5, Rapid Scan >70 spectra/s(16 cm⁻¹).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 35,
+    "category": "chemical",
+    "technique": "푸리에변환 적외분광(FT-IR, 진공 광학벤치)",
+    "description": "진공 광학벤치 FT-IR. 파수범위 10~28,000 cm⁻¹(360 nm), 분광분해능 0.4 cm⁻¹ 이하(apodized, 옵션 0.16 cm⁻¹), RockSolid 간섭계, 입력포트 2·출력포트 5, Rapid Scan >70 spectra/s(16 cm⁻¹).",
+    "notes": "시리즈 브로슈어의 Technical Specifications 표 기준. 파수범위·분해능은 분광기 사양이지 물성 범위가 아니다.",
+    "doc_path": "metrology_catalogs/chemical/Bruker_VERTEXseries.pdf",
+    "source_title": "Bruker VERTEX Series (70v / 80 / 80v)",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "푸리에변환 적외분광(FT-IR)",
+      "specimen": "진공 또는 퍼지 가능 시료실. 검출기는 상온·액체질소·액체헬륨 냉각 선택",
+      "mapping_confidence": "medium",
+      "source_detail": "Technical Specifications 표 (VERTEX 70v 열)",
+      "notes": "조성은 스펙트럼 해석 결과다. 정량 사양 인쇄 없음."
+     }
+    ]
+   }
+  },
+  {
+   "model": "VERTEX 80",
+   "specs": {
+    "temperature_degC": {
+     "max": -263.15
+    }
+   },
+   "note": "UltraScan 간섭계 FT-IR. 파수범위 10~50,000 cm⁻¹(200 nm), 분광분해능 0.2 cm⁻¹ 이하(apodized, 옵션 0.06 cm⁻¹ 이하), 밀폐·퍼지형 광학벤치, Rapid Scan >110 spectra/s(16 cm⁻¹), Step Scan 시간분해능 6 µs/2.5 ns.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 36,
+    "category": "chemical",
+    "technique": "푸리에변환 적외분광(FT-IR, UltraScan 간섭계)",
+    "description": "UltraScan 간섭계 FT-IR. 파수범위 10~50,000 cm⁻¹(200 nm), 분광분해능 0.2 cm⁻¹ 이하(apodized, 옵션 0.06 cm⁻¹ 이하), 밀폐·퍼지형 광학벤치, Rapid Scan >110 spectra/s(16 cm⁻¹), Step Scan 시간분해능 6 µs/2.5 ns.",
+    "notes": null,
+    "doc_path": "metrology_catalogs/chemical/Bruker_VERTEXseries.pdf",
+    "source_title": "Bruker VERTEX Series (70v / 80 / 80v)",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "푸리에변환 적외분광(FT-IR, 투과법 저온측정)",
+      "accuracy": "저ppta(~10^11 atoms/cm³) 수준 감도",
+      "temperature_max_k": 10.0,
+      "specimen": "실리콘 웨이퍼(붕소·인 등 얕은 불순물), 퍼지형 시료실",
+      "mapping_confidence": "medium",
+      "source_detail": "Semiconductor Impurity Determination 절 — 'Shallow impurity concentrations in silicon such as boron (B) and phosphorous (P) can be determined below 10K in the transmittance mode'",
+      "notes": "온도상한 10 K 는 시편이 놓이는 조건(극저온 투과측정)이라 temperature_max_k 에 넣고 하한은 인쇄가 없어 비웠다. **저ppta 감도는 검출한계라 range_min 이 아니라 accuracy 로 갔다** — 우리 물성 범위와 다른 축이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "VERTEX 80v",
+   "specs": {
+    "temperature_degC": {
+     "max": -263.15
+    }
+   },
+   "note": "진공 광학벤치 + UltraScan 간섭계 FT-IR. 파수범위 5~50,000 cm⁻¹(200 nm), 분광분해능 0.2 cm⁻¹ 이하(옵션 0.06 cm⁻¹ 이하), 진공/퍼지 시료실, verTera THz 확장 옵션.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 37,
+    "category": "chemical",
+    "technique": "푸리에변환 적외분광(FT-IR, 진공 UltraScan)",
+    "description": "진공 광학벤치 + UltraScan 간섭계 FT-IR. 파수범위 5~50,000 cm⁻¹(200 nm), 분광분해능 0.2 cm⁻¹ 이하(옵션 0.06 cm⁻¹ 이하), 진공/퍼지 시료실, verTera THz 확장 옵션.",
+    "notes": "시리즈 중 파수 하한이 5 cm⁻¹ 로 가장 낮다(THz 영역).",
+    "doc_path": "metrology_catalogs/chemical/Bruker_VERTEXseries.pdf",
+    "source_title": "Bruker VERTEX Series (70v / 80 / 80v)",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "푸리에변환 적외분광(FT-IR, 투과법 저온측정)",
+      "accuracy": "저ppta(~10^11 atoms/cm³) 수준 감도",
+      "temperature_max_k": 10.0,
+      "specimen": "실리콘 웨이퍼(얕은 불순물), 진공 또는 퍼지 시료실",
+      "mapping_confidence": "medium",
+      "source_detail": "Semiconductor Impurity Determination 절",
+      "notes": "10 K 이하 투과측정 조건. 검출감도는 accuracy 로."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "max": -263.15
+  }
+ }
+}

@@ -1,0 +1,414 @@
+{
+ "id": "mitutoyo-hm-200",
+ "kind": "equipment_series",
+ "name": "Mitutoyo HM-210 / HM-220 Micro Vickers Hardness Testers",
+ "manufacturer": "mitutoyo",
+ "category": "vickers_knoop_hardness",
+ "test_items": [
+  "hardness_vickers",
+  "hardness_knoop"
+ ],
+ "measurands": [
+  "mechanical.hardness_vickers",
+  "mechanical.hardness_knoop"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/92",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/93",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/94",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/95",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/96",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/97",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/213",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/214",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/215",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/216",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/217",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/218",
+   "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 HM-200 마이크로 비커스 경도시험기",
+ "description": "비커스 경도시험(마이크로)",
+ "measurands_by_item": {
+  "hardness_vickers": [
+   "mechanical.hardness_vickers"
+  ],
+  "hardness_knoop": [
+   "mechanical.hardness_knoop"
+  ]
+ },
+ "models": [
+  {
+   "model": "HM-210 Type A",
+   "note": "마이크로 비커스 경도시험기 HM-200 시리즈 — 10x·50x 대물, 컬러 LCD 터치스크린 단독형, 필라 접안 0.01 µm",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 92,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 비커스 경도시험기 HM-200 시리즈 — 10x·50x 대물, 컬러 LCD 터치스크린 단독형, 필라 접안 0.01 µm",
+    "notes": "고정 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf), 임의하중 설정 가능(100 gf 이하 1 gf 단위). 전자력 하중발생, 유지시간 0~999 s. 'V/K' 파생형은 누프 압자를 함께 다는 구성일 뿐 사양표의 나머지 열이 같아 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)는 우리 키가 없다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type A",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf). 경도 측정범위·정확도는 인쇄돼 있지 않다. 규격번호도 사양표에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-210 Type B",
+   "note": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동형, 300만화소 CCTV, AV Pak 소프트웨어",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 93,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동형, 300만화소 CCTV, AV Pak 소프트웨어",
+    "notes": "고정 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf), 임의하중 설정 가능(100 gf 이하 1 gf 단위). 전자력 하중발생, 유지시간 0~999 s. 'V/K' 파생형은 누프 압자를 함께 다는 구성일 뿐 사양표의 나머지 열이 같아 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)는 우리 키가 없다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type B",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf). 경도 측정범위·정확도는 인쇄돼 있지 않다. 규격번호도 사양표에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-210 Type D",
+   "note": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동 + 전동 XY 스테이지(최대 50 x 50 mm)·오토포커스",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 94,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동 + 전동 XY 스테이지(최대 50 x 50 mm)·오토포커스",
+    "notes": "고정 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf), 임의하중 설정 가능(100 gf 이하 1 gf 단위). 전자력 하중발생, 유지시간 0~999 s. 'V/K' 파생형은 누프 압자를 함께 다는 구성일 뿐 사양표의 나머지 열이 같아 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)는 우리 키가 없다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type D",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf). 경도 측정범위·정확도는 인쇄돼 있지 않다. 규격번호도 사양표에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-220 Type A",
+   "note": "마이크로 비커스 경도시험기 HM-200 시리즈 — 10x·50x·100x 대물, 하중속도 2~60 µm/s 가변(30 gf 이하)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 95,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 비커스 경도시험기 HM-200 시리즈 — 10x·50x·100x 대물, 하중속도 2~60 µm/s 가변(30 gf 이하)",
+    "notes": "고정 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf), 임의하중 설정 가능(100 gf 이하 1 gf 단위). 전자력 하중발생, 유지시간 0~999 s. 'V/K' 파생형은 누프 압자를 함께 다는 구성일 뿐 사양표의 나머지 열이 같아 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)는 우리 키가 없다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type A",
+      "notes": "시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf). 경도 측정범위·정확도는 인쇄돼 있지 않다. 규격번호도 사양표에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-220 Type B",
+   "note": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동형, 300만화소 CCTV, AV Pak",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 96,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동형, 300만화소 CCTV, AV Pak",
+    "notes": "고정 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf), 임의하중 설정 가능(100 gf 이하 1 gf 단위). 전자력 하중발생, 유지시간 0~999 s. 'V/K' 파생형은 누프 압자를 함께 다는 구성일 뿐 사양표의 나머지 열이 같아 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)는 우리 키가 없다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type B",
+      "notes": "시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf). 경도 측정범위·정확도는 인쇄돼 있지 않다. 규격번호도 사양표에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-220 Type D",
+   "note": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동 + 전동 XY 스테이지·오토포커스",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 97,
+    "category": "mechanical",
+    "technique": "비커스 경도시험(마이크로)",
+    "description": "마이크로 비커스 경도시험기 HM-200 시리즈 — PC 구동 + 전동 XY 스테이지·오토포커스",
+    "notes": "고정 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf), 임의하중 설정 가능(100 gf 이하 1 gf 단위). 전자력 하중발생, 유지시간 0~999 s. 'V/K' 파생형은 누프 압자를 함께 다는 구성일 뿐 사양표의 나머지 열이 같아 별도 레코드를 만들지 않았다. **매핑 포기** — 누프(HK)는 우리 키가 없다. **중복 주의** — 이 K 섹션에는 HR-530/530L(Mitutoyo_Rockwell_HR.pdf), HR-523/523L·MZT-500·HH-331~338 듀로미터(Mitutoyo_Hardness_E4104.pdf)가 다시 실려 있다. 장비 식별자가 vendor+model 이라 레코드를 또 만들면 먼저 넣은 능력행을 덮어쓴다 — 더 자세한 쪽 카탈로그에 남기고 여기서는 만들지 않았다. HH-411(리바운드 휴대형)은 리브 경도(HL)라 우리 키가 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type D",
+      "notes": "시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf). 경도 측정범위·정확도는 인쇄돼 있지 않다. 규격번호도 사양표에 없다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-210 Type A V/K",
+   "note": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — 10x·20x·50x 대물, 컬러 LCD 터치스크린 단독형",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 213,
+    "category": "mechanical",
+    "technique": "비커스/누프 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — 10x·20x·50x 대물, 컬러 LCD 터치스크린 단독형",
+    "notes": "chunk_14 에서는 누프 키가 없어 'HM-210 Type A 의 V/K 파생형은 압자만 다르다' 며 레코드를 만들지 않았다. 누프 키가 열려 별도 모델로 세운다 — 사양표에 자체 부품번호가 있고 'Indenter' 행이 'HM-210 Type A=Vickers / HM-210 Type A V/K=Vickers and Knoop' 로 갈린다(HM-210 V/K 는 대물렌즈도 10x·20x·50x 로 다르다). 고정 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf), 전자력 하중발생, 유지 0~999 s. 규격번호는 사양표에 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type A V/K 열(Indenter: Vickers and Knoop)",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf). 경도 측정범위·정확도·규격 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type A V/K 열 'Indenter: Vickers and Knoop'",
+      "notes": "V/K 사양은 누프 압자를 함께 달아 터렛에서 전환한다. 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf) 는 비커스와 공용으로 인쇄돼 있고 누프 전용 하중표는 없다. 경도범위·정확도·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-210 Type B V/K",
+   "note": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동형, 300만화소 CCTV, AV Pak",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 214,
+    "category": "mechanical",
+    "technique": "비커스/누프 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동형, 300만화소 CCTV, AV Pak",
+    "notes": "chunk_14 에서는 누프 키가 없어 'HM-210 Type B 의 V/K 파생형은 압자만 다르다' 며 레코드를 만들지 않았다. 누프 키가 열려 별도 모델로 세운다 — 사양표에 자체 부품번호가 있고 'Indenter' 행이 'HM-210 Type B=Vickers / HM-210 Type B V/K=Vickers and Knoop' 로 갈린다(HM-210 V/K 는 대물렌즈도 10x·20x·50x 로 다르다). 고정 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf), 전자력 하중발생, 유지 0~999 s. 규격번호는 사양표에 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type B V/K 열(Indenter: Vickers and Knoop)",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf). 경도 측정범위·정확도·규격 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type B V/K 열 'Indenter: Vickers and Knoop'",
+      "notes": "V/K 사양은 누프 압자를 함께 달아 터렛에서 전환한다. 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf) 는 비커스와 공용으로 인쇄돼 있고 누프 전용 하중표는 없다. 경도범위·정확도·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-210 Type D V/K",
+   "note": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동 + 전동 XY 스테이지·오토포커스",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 215,
+    "category": "mechanical",
+    "technique": "비커스/누프 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동 + 전동 XY 스테이지·오토포커스",
+    "notes": "chunk_14 에서는 누프 키가 없어 'HM-210 Type D 의 V/K 파생형은 압자만 다르다' 며 레코드를 만들지 않았다. 누프 키가 열려 별도 모델로 세운다 — 사양표에 자체 부품번호가 있고 'Indenter' 행이 'HM-210 Type D=Vickers / HM-210 Type D V/K=Vickers and Knoop' 로 갈린다(HM-210 V/K 는 대물렌즈도 10x·20x·50x 로 다르다). 고정 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf), 전자력 하중발생, 유지 0~999 s. 규격번호는 사양표에 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type D V/K 열(Indenter: Vickers and Knoop)",
+      "notes": "시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf). 경도 측정범위·정확도·규격 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-210 Type D V/K 열 'Indenter: Vickers and Knoop'",
+      "notes": "V/K 사양은 누프 압자를 함께 달아 터렛에서 전환한다. 시험력 98.07 mN ~ 9.807 N (10 gf~1000 gf) 는 비커스와 공용으로 인쇄돼 있고 누프 전용 하중표는 없다. 경도범위·정확도·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-220 Type A V/K",
+   "note": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — 10x·50x·100x 대물, 하중속도 2~60 µm/s 가변",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 216,
+    "category": "mechanical",
+    "technique": "비커스/누프 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — 10x·50x·100x 대물, 하중속도 2~60 µm/s 가변",
+    "notes": "chunk_14 에서는 누프 키가 없어 'HM-220 Type A 의 V/K 파생형은 압자만 다르다' 며 레코드를 만들지 않았다. 누프 키가 열려 별도 모델로 세운다 — 사양표에 자체 부품번호가 있고 'Indenter' 행이 'HM-220 Type A=Vickers / HM-220 Type A V/K=Vickers and Knoop' 로 갈린다(HM-210 V/K 는 대물렌즈도 10x·20x·50x 로 다르다). 고정 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf), 전자력 하중발생, 유지 0~999 s. 규격번호는 사양표에 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type A V/K 열(Indenter: Vickers and Knoop)",
+      "notes": "시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf). 경도 측정범위·정확도·규격 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type A V/K 열 'Indenter: Vickers and Knoop'",
+      "notes": "V/K 사양은 누프 압자를 함께 달아 터렛에서 전환한다. 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf) 는 비커스와 공용으로 인쇄돼 있고 누프 전용 하중표는 없다. 경도범위·정확도·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-220 Type B V/K",
+   "note": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동형, 300만화소 CCTV, AV Pak",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 217,
+    "category": "mechanical",
+    "technique": "비커스/누프 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동형, 300만화소 CCTV, AV Pak",
+    "notes": "chunk_14 에서는 누프 키가 없어 'HM-220 Type B 의 V/K 파생형은 압자만 다르다' 며 레코드를 만들지 않았다. 누프 키가 열려 별도 모델로 세운다 — 사양표에 자체 부품번호가 있고 'Indenter' 행이 'HM-220 Type B=Vickers / HM-220 Type B V/K=Vickers and Knoop' 로 갈린다(HM-210 V/K 는 대물렌즈도 10x·20x·50x 로 다르다). 고정 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf), 전자력 하중발생, 유지 0~999 s. 규격번호는 사양표에 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type B V/K 열(Indenter: Vickers and Knoop)",
+      "notes": "시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf). 경도 측정범위·정확도·규격 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type B V/K 열 'Indenter: Vickers and Knoop'",
+      "notes": "V/K 사양은 누프 압자를 함께 달아 터렛에서 전환한다. 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf) 는 비커스와 공용으로 인쇄돼 있고 누프 전용 하중표는 없다. 경도범위·정확도·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "HM-220 Type D V/K",
+   "note": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동 + 전동 XY 스테이지·오토포커스",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 218,
+    "category": "mechanical",
+    "technique": "비커스/누프 경도시험(마이크로)",
+    "description": "마이크로 경도시험기 HM-200 시리즈 V/K 사양(비커스+누프 압자) — PC 구동 + 전동 XY 스테이지·오토포커스",
+    "notes": "chunk_14 에서는 누프 키가 없어 'HM-220 Type D 의 V/K 파생형은 압자만 다르다' 며 레코드를 만들지 않았다. 누프 키가 열려 별도 모델로 세운다 — 사양표에 자체 부품번호가 있고 'Indenter' 행이 'HM-220 Type D=Vickers / HM-220 Type D V/K=Vickers and Knoop' 로 갈린다(HM-210 V/K 는 대물렌즈도 10x·20x·50x 로 다르다). 고정 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf), 전자력 하중발생, 유지 0~999 s. 규격번호는 사양표에 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_K_section.pdf",
+    "source_title": "Mitutoyo Test Equipment Section K — Hardness Testing Machines",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_vickers",
+      "technique": "비커스 경도시험 — 사각뿔 다이아몬드 압자, 압흔 대각선 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type D V/K 열(Indenter: Vickers and Knoop)",
+      "notes": "시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf). 경도 측정범위·정확도·규격 인쇄 없음."
+     },
+     {
+      "property_key": "mechanical.hardness_knoop",
+      "technique": "누프 경도시험 — 능형 다이아몬드 압자, 장축 광학측정",
+      "specimen": "연마 단면 시편, 수지 마운트 스테이지 Ø25.4~40 mm 대응",
+      "mapping_confidence": "high",
+      "source_detail": "K-3/K-4 SPECIFICATIONS — HM-220 Type D V/K 열 'Indenter: Vickers and Knoop'",
+      "notes": "V/K 사양은 누프 압자를 함께 달아 터렛에서 전환한다. 시험력 0.4903 mN ~ 19.61 N (0.05 gf~2 kgf) 는 비커스와 공용으로 인쇄돼 있고 누프 전용 하중표는 없다. 경도범위·정확도·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
+     }
+    ]
+   }
+  }
+ ]
+}

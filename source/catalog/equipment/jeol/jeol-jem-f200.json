@@ -1,0 +1,38 @@
+{
+ "id": "jeol-jem-f200",
+ "kind": "equipment_model",
+ "name": "JEOL JEM-F200 TEM/STEM",
+ "manufacturer": "jeol",
+ "category": "electron_microscope",
+ "test_items": [
+  "microscopy",
+  "crystal_structure_analysis"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/10",
+   "note": "JEOL JEM-F200 (F2) Multi-purpose Electron Microscope · metrology_catalogs/surface/JEOL_JEM-F200_TEM.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "지올 JEM-F200 투과전자현미경",
+ "description": "투과전자현미경/주사투과전자현미경(TEM/STEM)",
+ "models": [
+  {
+   "model": "JEM-F200",
+   "note": "다목적 TEM/STEM. 점분해능 0.19 nm, TEM 격자상 0.10 nm, STEM-HAADF 0.14 nm, 가속전압 20~200 kV(표준 80/200 kV).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 10,
+    "category": "surface",
+    "technique": "투과전자현미경/주사투과전자현미경(TEM/STEM)",
+    "description": "다목적 TEM/STEM. 점분해능 0.19 nm, TEM 격자상 0.10 nm, STEM-HAADF 0.14 nm, 가속전압 20~200 kV(표준 80/200 kV).",
+    "notes": "형상·격자 관찰 장비라 우리 물성 키에 잇지 않았다. 인쇄된 0.19/0.10/0.14 nm 는 전부 결상 분해능(resolution)이지 측정범위가 아니다. EDS(SDD 2기)·EELS·3D-EDS 토모그래피는 optional accessories 로만 나열되고 검출 원소·정량 사양이 없어 조성 능력행을 만들지 않았다.",
+    "doc_path": "metrology_catalogs/surface/JEOL_JEM-F200_TEM.pdf",
+    "source_title": "JEOL JEM-F200 (F2) Multi-purpose Electron Microscope",
+    "capabilities": []
+   }
+  }
+ ]
+}

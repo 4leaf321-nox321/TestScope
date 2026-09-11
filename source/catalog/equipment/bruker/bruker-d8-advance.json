@@ -1,0 +1,181 @@
+{
+ "id": "bruker-d8-advance",
+ "kind": "equipment_model",
+ "name": "Bruker D8 ADVANCE X-ray Diffractometer",
+ "manufacturer": "bruker",
+ "category": "xray_diffractometer",
+ "test_items": [
+  "crystal_structure_analysis",
+  "dsc",
+  "coating_thickness"
+ ],
+ "measurands": [
+  "structure.crystal_structure",
+  "structure.crystallinity",
+  "structure.layer_thickness",
+  "physical.density",
+  "structure.particle_diameter",
+  "structure.phase_fraction",
+  "structure.crystallite_size",
+  "structure.lattice_parameter",
+  "mechanical.residual_stress",
+  "surface.roughness_rq"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/29",
+   "note": "Bruker D8 ADVANCE · metrology_catalogs/chemical/Bruker_D8_Advance_XRD.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "브루커 D8 ADVANCE X선 회절계",
+ "description": "X선 회절(XRD, Bragg-Brentano/평행빔/GI/XRR/SAXS)",
+ "measurands_by_item": {
+  "crystal_structure_analysis": [
+   "structure.crystal_structure",
+   "structure.particle_diameter",
+   "structure.phase_fraction",
+   "structure.crystallite_size",
+   "structure.lattice_parameter",
+   "mechanical.residual_stress"
+  ],
+  "dsc": [
+   "structure.crystallinity"
+  ],
+  "coating_thickness": [
+   "structure.layer_thickness",
+   "physical.density",
+   "surface.roughness_rq"
+  ]
+ },
+ "models": [
+  {
+   "model": "D8 ADVANCE",
+   "specs": {
+    "temperature_degC": {
+     "min": -193.0,
+     "max": 2300.0,
+     "note": "능력행마다 온도 범위가 달라 가장 넓은 것을 적었다 · 옵션 항온조·노 기준 (MaterialTwin 주석)",
+     "requires_accessory": true
+    }
+   },
+   "note": "모듈형 다목적 X선 회절계. DAVINCI 설계로 광학계를 무정렬 교체해 분말회절, 박막 GIXRD, 반사율(XRR), 고분해능 XRD, 텍스처·잔류응력, SAXS 까지 한 대에서 수행한다. 최대 사용 각도범위 -110° < 2Theta ≤ 168°, 최소 이동 증분 0.0001°, 정렬 정확도 ±0.01° 2Theta 이내(NIST SRM1976 기준).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 29,
+    "category": "chemical",
+    "technique": "X선 회절(XRD, Bragg-Brentano/평행빔/GI/XRR/SAXS)",
+    "description": "모듈형 다목적 X선 회절계. DAVINCI 설계로 광학계를 무정렬 교체해 분말회절, 박막 GIXRD, 반사율(XRR), 고분해능 XRD, 텍스처·잔류응력, SAXS 까지 한 대에서 수행한다. 최대 사용 각도범위 -110° < 2Theta ≤ 168°, 최소 이동 증분 0.0001°, 정렬 정확도 ±0.01° 2Theta 이내(NIST SRM1976 기준).",
+    "notes": "온도 -193~2300 °C 비상온 챔버, 최대 100 bar 고압, 10~80 °C 습도 실험, -180~800 °C 전용 비상온 반사율 측정은 모두 옵션 챔버 사양이다. 각도(2Theta)·증분은 회절계 구동 사양이지 물성 측정범위가 아니라 능력행 range 에 넣지 않았다.",
+    "doc_path": "metrology_catalogs/chemical/Bruker_D8_Advance_XRD.pdf",
+    "source_title": "Bruker D8 ADVANCE",
+    "capabilities": [
+     {
+      "property_key": "structure.crystal_structure",
+      "technique": "X선 회절 상분석·구조해석(XRD)",
+      "accuracy": "instrument alignment ±0.01° 2Theta or better",
+      "temperature_min_k": 80.15,
+      "temperature_max_k": 2573.15,
+      "specimen": "분말·벌크·박막·모세관 시료, 성형/가공 시료",
+      "mapping_confidence": "high",
+      "source_detail": "Information 표 (Phase composition, Crystal structure, Lattice parameters, Symmetry) / Non-ambient 챔버 사양",
+      "notes": "온도범위는 옵션 비상온 챔버의 -193~2300 °C 를 환산했다. **검산** — -193+273.15=80.15, 2300+273.15=2573.15. 표준 상온 구성에는 해당하지 않는다."
+     },
+     {
+      "property_key": "structure.crystallinity",
+      "technique": "X선 회절 결정화도 분석(XRD, percent crystallinity)",
+      "temperature_min_k": 80.15,
+      "temperature_max_k": 2573.15,
+      "specimen": "분말·벌크·박막",
+      "mapping_confidence": "high",
+      "source_detail": "Information 표 — 'Percent crystallinity', 'Amorphous content'",
+      "notes": "결정화도(%)와 비정질 함량이 직접 인쇄되어 있다. 측정 가능한 결정화도 범위·정확도는 인쇄 없음."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "X선 반사율법(XRR)",
+      "range_min": 0.1,
+      "range_max": 250.0,
+      "range_unit": "nm",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 1073.15,
+      "specimen": "층상 박막 시료",
+      "mapping_confidence": "high",
+      "source_detail": "TRIO/TWIN 반사율 구성 — 'XRR to determine film thickness from 0.1 nm up to 250 nm' (TWIN/TWIN 구성은 0.1~150 nm)",
+      "notes": "구성에 따라 상한이 다르다 — TWIN/TWIN(모터라이즈드 슬릿) 150 nm, TRIO/TWIN(2-bounce 모노크로메이터) 250 nm. 넓은 쪽을 썼고 좁은 쪽은 여기 남긴다. 온도범위는 전용 비상온 반사율 -180~800 °C 를 환산했다. **검산** — -180+273.15=93.15, 800+273.15=1073.15."
+     },
+     {
+      "property_key": "physical.density",
+      "technique": "X선 반사율법(XRR) 밀도 해석",
+      "specimen": "층상 박막 시료",
+      "mapping_confidence": "medium",
+      "source_detail": "Application 표 — Layered structures / Reflectometry analysis: 'Layer thickness, Roughness at surfaces and interfaces, Density'",
+      "notes": "XRR 이 직접 주는 것은 전자밀도이고 거기서 질량밀도를 얻는다. 항목명이 'Density' 뿐이라 벌크 밀도와 같은 축인지 단정할 수 없어 medium."
+     },
+     {
+      "property_key": "structure.particle_diameter",
+      "technique": "소각 X선 산란(SAXS)",
+      "specimen": "나노입자",
+      "mapping_confidence": "high",
+      "source_detail": "Application 표 — Nanoparticles / Small angle X-ray scattering analysis: 'Size & size distribution, Shape, Particle distances'",
+      "notes": "나노입자의 크기·크기분포가 직접 인쇄되어 있다. 측정 가능한 입경 범위 수치는 인쇄 없음."
+     },
+     {
+      "property_key": "structure.phase_fraction",
+      "technique": "X선 회절 정량상분석(XRD QPA, Rietveld)",
+      "accuracy": "instrument alignment ±0.01° 2Theta or better",
+      "temperature_min_k": 80.15,
+      "temperature_max_k": 2573.15,
+      "specimen": "분말·벌크·박막·모세관 시료",
+      "mapping_confidence": "high",
+      "source_detail": "Application 표 — 'Qualitative & quantitative phase analysis' / Information 표 — 'Phase composition', 'Amorphous content' / 각 구성 캡션의 'Phase quantification'",
+      "notes": "정량상분석이 카탈로그 전면에 반복해서 인쇄된다. **phase** — 어떤 상을 정량할지는 시료에 달렸고 카탈로그가 특정 상을 지정하지 않는다. **method_detail** — Rietveld(DIFFRAC.SUITE/TOPAS 계열) 및 비정질 함량 산출. 상분율 자체의 측정범위·정확도 수치는 인쇄 없음. 온도범위는 옵션 비상온 챔버 -193~2300 °C 환산이다. **검산** — -193+273.15=80.15, 2300+273.15=2573.15."
+     },
+     {
+      "property_key": "structure.crystallite_size",
+      "technique": "X선 회절 선폭해석 결정자 크기(XRD line broadening)",
+      "specimen": "분말·다결정 시료",
+      "mapping_confidence": "high",
+      "source_detail": "Information 표 — 'Crystallite size' (Microstructure 항목)",
+      "notes": "chunk_16 의 structure.grain_size(medium) 행을 옮긴 것이다. 카탈로그가 'Crystallite size' 를 그대로 인쇄하고 전용 키가 생겨 high 로 올렸다 — 결정립(grain)이 아니라 간섭성 회절영역 크기다. **method_detail** — 회절 선폭 해석. 측정 가능한 크기 범위 수치는 인쇄 없음."
+     },
+     {
+      "property_key": "structure.lattice_parameter",
+      "technique": "X선 회절 격자상수 정밀측정(XRD / HR-XRD)",
+      "accuracy": "instrument alignment ±0.01° 2Theta or better",
+      "temperature_min_k": 80.15,
+      "temperature_max_k": 2573.15,
+      "specimen": "분말·벌크·에피택셜 박막(거의 완전배향 결정)",
+      "mapping_confidence": "high",
+      "source_detail": "Information 표 — 'Lattice parameters' / Obtained sample characteristics — 'Lattice parameters & mismatches' / Application 표 High-resolution X-ray diffraction analysis — 'Lattice parameter'",
+      "notes": "**axis** — 카탈로그가 a/b/c 축을 구분해 적지 않는다. 에피택셜 시료에서는 면내/면외 격자정합(mismatch)을 본다고만 적혀 있다. **temperature_k** — 비상온 챔버 -193~2300 °C 를 넣었다(격자상수의 온도의존은 이 챔버로 본다). 격자상수 값의 범위·불확도 수치는 인쇄 없고 각도 정렬 정확도만 있다."
+     },
+     {
+      "property_key": "mechanical.residual_stress",
+      "technique": "X선 회절 잔류응력 측정(XRD residual stress)",
+      "specimen": "성형·기계가공 시료(Shaped or machined samples)",
+      "mapping_confidence": "high",
+      "source_detail": "Application 표 — Shaped or machined samples / 'Residual stress analysis': Strain, Deformation, Compressibility, Stress tensor",
+      "notes": "**응력 범위가 인쇄되어 있지 않고 부호 규약(압축 음수)도 카탈로그에 밝혀져 있지 않다** — range 를 비웠으니 값을 채울 때 부호 규약을 따로 확인해야 한다. **depth_um** — X선 침투깊이에 해당하는 표층 평균이지만 깊이 수치가 인쇄되어 있지 않다. **direction** — 응력텐서(stress tensor) 산출이 항목에 있으나 측정 방향 규약은 없다."
+     },
+     {
+      "property_key": "surface.roughness_rq",
+      "technique": "X선 반사율법 계면 거칠기 해석(XRR interface roughness)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 1073.15,
+      "specimen": "층상 박막 시료",
+      "mapping_confidence": "medium",
+      "source_detail": "Application 표 — Layered structures / Reflectometry analysis: 'Roughness at surfaces and interfaces'",
+      "notes": "카탈로그는 'Roughness' 라고만 인쇄한다. XRR 모델링에서 표면·계면 거칠기는 관례상 RMS(σ)라 Rq 로 이었고, 그 관례가 인쇄된 것은 아니어서 medium 이다. **Ra 행에서 옮겨온 값이 아니다** — D8 에는 Ra 행 자체가 없다. **cutoff_mm·evaluation_length_mm** — XRR 은 촉침식 필터 규약이 없어 해당 조건이 존재하지 않는다(ISO 4287 컷오프 개념이 적용되지 않는다). 범위·분해능 수치는 인쇄 없음. 온도는 전용 비상온 반사율 -180~800 °C. **검산** — -180+273.15=93.15, 800+273.15=1073.15."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -193.0,
+   "max": 2300.0
+  }
+ }
+}

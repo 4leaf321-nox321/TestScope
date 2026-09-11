@@ -1,0 +1,38 @@
+{
+ "id": "espec-agree-et",
+ "kind": "equipment_model",
+ "name": "ESPEC Agree ET Series Rapid Temperature Change Chambers",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "temperature_cycling",
+  "damp_heat"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/204",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "에스펙 Agree ET 급속 온도변화 시험조",
+ "description": "급속 온도변화 시험(진동시험기 연동 가능)",
+ "models": [
+  {
+   "model": "Agree ET series",
+   "note": "**조건 부여 장비.** -73~177 °C 를 최대 40 °C/min 으로 변화시키는 Agree 형 시험조(바닥 분리형, 가진기 통합)",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 204,
+    "category": "reliability",
+    "technique": "급속 온도변화 시험(진동시험기 연동 가능)",
+    "description": "**조건 부여 장비.** -73~177 °C 를 최대 40 °C/min 으로 변화시키는 Agree 형 시험조(바닥 분리형, 가진기 통합)",
+    "notes": "**capabilities 비움.** ▷ **온도범위 -73~177 °C**(=200.15~450.15 K), **습도 옵션 20~95 %RH**. 온도변화율 5~40 °C/min(성능 예시는 -54~71 °C 구간에서 5·10·15~40 °C/min). 내부용적 425~3200 L(ET15/34/46/64/84/114). 군용 시험규격 대응으로 출발한 계열이며 바닥을 떼어내 진동시험기와 결합할 수 있다. **규격번호는 인쇄돼 있지 않다**(군용 규격 대응이라는 서술만 있다).",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

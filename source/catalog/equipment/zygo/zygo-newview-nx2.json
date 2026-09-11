@@ -1,0 +1,75 @@
+{
+ "id": "zygo-newview-nx2",
+ "kind": "equipment_model",
+ "name": "Zygo NewView NX2 3D Optical Profiler",
+ "manufacturer": "zygo",
+ "category": "optical_profilometer",
+ "test_items": [
+  "surface_topography"
+ ],
+ "measurands": [
+  "surface.roughness_ra",
+  "structure.layer_thickness",
+  "surface.roughness_rq"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/27",
+   "note": "Zygo NewView NX2 coherence scanning interferometer (Instrument Data Sheet) · metrology_catalogs/surface/Zygo_NewView_NX2.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "자이고 NewView NX2 백색광 간섭 3D 프로파일러",
+ "description": "간섭주사 백색광간섭계(coherence scanning interferometry, CSI)",
+ "measurands_by_item": {
+  "surface_topography": [
+   "surface.roughness_ra",
+   "structure.layer_thickness",
+   "surface.roughness_rq"
+  ]
+ },
+ "models": [
+  {
+   "model": "NewView NX2",
+   "note": "비접촉 광학 3D 표면 프로파일러. 표면조도·단차·임계치수 등 형상 파라미터를 정량화한다. 수직주사범위 150 µm(정밀 피에조), 확장주사 20 mm. 대물 1.4x~50x(광학분해능 7.13~0.52 µm).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 27,
+    "category": "surface",
+    "technique": "간섭주사 백색광간섭계(coherence scanning interferometry, CSI)",
+    "description": "비접촉 광학 3D 표면 프로파일러. 표면조도·단차·임계치수 등 형상 파라미터를 정량화한다. 수직주사범위 150 µm(정밀 피에조), 확장주사 20 mm. 대물 1.4x~50x(광학분해능 7.13~0.52 µm).",
+    "notes": "벤더 브로슈어가 아니라 University of Nottingham Manufacturing Metrology Team 이 만든 장비 데이터시트다. 사양 수치는 Zygo 사양을 옮긴 것으로 보이나 출처가 벤더 원본이 아님을 밝혀둔다.",
+    "doc_path": "metrology_catalogs/surface/Zygo_NewView_NX2.pdf",
+    "source_title": "Zygo NewView NX2 coherence scanning interferometer (Instrument Data Sheet)",
+    "capabilities": [
+     {
+      "property_key": "surface.roughness_ra",
+      "technique": "백색광 간섭계 표면형상 측정(CSI)",
+      "specimen": "매끈면·거친면·경사면·단차면 모두 가능(경사·거친 표면에서는 불확도 증가)",
+      "mapping_confidence": "high",
+      "source_detail": "Working principle ('quantify surface roughness, step heights, critical dimensions') / Performance (Surface Topography Repeatability 0.12 nm, Repeatability of RMS 0.01 nm)",
+      "notes": "조도 정량화가 용도로 명시. Ra 의 측정범위는 인쇄가 없어 비웠다. 반복도 지표는 표면형상 반복도 0.12 nm, RMS 반복도 0.01 nm 이며 이는 분해능이 아니라 반복도라 resolution 에 넣지 않았다."
+     },
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "백색광 간섭계 단차 측정(CSI step height)",
+      "range_max": 20000.0,
+      "range_unit": "µm",
+      "accuracy": "Step Height Accuracy 0.3 %, Step Height Repeatability 0.1 %",
+      "mapping_confidence": "medium",
+      "source_detail": "Advantages ('Profile heights can range from less than 1 nm up to 20000 µm') / Performance (Vertical Scan Range 20 mm with extended scan)",
+      "notes": "'up to 20000 µm' 라 상한만 확정했다. 하한 문구는 'less than 1 nm' 이라 그 자체가 상한 표현이어서 range_min 을 비웠다(지시문 4번). 수직주사범위 20 mm = 20000 µm 로 상한이 일치한다. 카탈로그는 '단차(step height)' 라고만 쓰고 '막두께' 라고 쓰지 않아 medium. 높이응답 선형성 ≤30 nm."
+     },
+     {
+      "property_key": "surface.roughness_rq",
+      "technique": "백색광 간섭계 RMS 거칠기 측정(CSI)",
+      "specimen": "매끈면·거친면·경사면·단차면 모두 가능(경사·거친 표면에서는 불확도 증가)",
+      "mapping_confidence": "medium",
+      "source_detail": "Performance — 'Repeatability of RMS 0.01 nm', 'Surface Topography Repeatability 0.12 nm' / Working principle 'quantify surface roughness'",
+      "notes": "**RMS 를 근거로 Rq 에 이었지만 medium 이다** — 이 데이터시트는 'RMS' 라고만 적고 프로파일 Rq 인지 면적 Sq 인지 밝히지 않았다. NX2 는 3D 면적 프로파일러라 실제로는 Sq 일 가능성이 있고 우리에겐 Sq 키가 없다. **Ra 행의 값을 옮긴 것이 아니다.** range 는 Ra 행과 같은 판단으로 비웠다 — 수직주사범위 150 µm(확장 20 mm)는 프로파일 높이 축이지 Rq 의 상한이 아니다. **0.01 nm 는 반복도이지 분해능도 측정범위도 아니라** resolution 에 넣지 않았다. **cutoff_mm·evaluation_length_mm** — 광학 CSI 라 촉침식 컷오프 규약이 인쇄되어 있지 않다."
+     }
+    ]
+   }
+  }
+ ]
+}

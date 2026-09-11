@@ -1,0 +1,111 @@
+{
+ "id": "keithley-4200-scs",
+ "kind": "equipment_series",
+ "name": "Keithley 4200-SCS / 4200A-SCS Parameter Analyzers",
+ "manufacturer": "keithley",
+ "category": "electrical_property_tester",
+ "test_items": [
+  "electrical_transport"
+ ],
+ "measurands": [
+  "electrical.resistivity_volume",
+  "electrical.dielectric_strength"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/176",
+   "note": "Keithley 4200A-SCS Parameter Analyzer Datasheet · metrology_catalogs/electrical/Keithley_4200A_tek.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/177",
+   "note": "Keithley Model 4200-SCS Semiconductor Characterization System — Technical Data (4200-SPEC Rev. M) · metrology_catalogs/electrical/Keithley_4200_utah.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "키슬리 4200 반도체 파라미터 분석기",
+ "description": "반도체 파라미터 분석(I-V · C-V · 펄스 I-V)",
+ "measurands_by_item": {
+  "electrical_transport": [
+   "electrical.resistivity_volume",
+   "electrical.dielectric_strength"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "JEDEC Standard 35-A"
+  ],
+  "test_methods_by_item": {
+   "electrical_transport": [
+    "JEDEC Standard 35-A"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "4200A-SCS",
+   "note": "SMU·CVU·PMU 를 한 섀시에 묶은 파라미터 분석기. 재료 특성화 항목으로 van der Pauw·4점 공선 저항률·홀효과 측정을 제공",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 176,
+    "category": "electrical",
+    "technique": "반도체 파라미터 분석(I-V · C-V · 펄스 I-V)",
+    "description": "SMU·CVU·PMU 를 한 섀시에 묶은 파라미터 분석기. 재료 특성화 항목으로 van der Pauw·4점 공선 저항률·홀효과 측정을 제공",
+    "notes": "**`Keithley_4200_utah.pdf`(4200-SCS)와 같은 모델이 아니다** — 이쪽은 후속 세대 4200A-SCS 다. 모델명이 달라 합치지 않았다. 핵심 사양: SMU ±210 V/100 mA 또는 ±210 V/1 A, 측정분해능 100 fA(옵션 프리앰프로 10 aA), CVU 1 kHz~10 MHz AC 임피던스·내장 DC 바이어스 ±30 V(옵션 ±210 V), PMU ±40 V/±800 mA·200 MS/s. **이 장비는 소자 전기특성 분석기라 대부분의 출력(Vth·Id-Vg·계면트랩밀도·1/f 노이즈·전하펌핑)이 우리 물성 키에 없다.** 홀효과 측정을 지원하지만 **이동도·캐리어농도·홀계수에 해당하는 우리 키가 없어** 능력행을 만들지 못했다 — taxonomy 공백 후보.",
+    "doc_path": "metrology_catalogs/electrical/Keithley_4200A_tek.pdf",
+    "source_title": "Keithley 4200A-SCS Parameter Analyzer Datasheet",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / 4점 공선 탐침법",
+      "specimen": "반도체 재료·박막(프로버 연동, 웨이퍼 다점 측정 가능)",
+      "mapping_confidence": "high",
+      "source_detail": "p.4 'Example List of Extracted or Measured Parameters — Materials: Van der Pauw, 4-point collinear resistivity, Hall Effect' / p.5 'Typical Applications — Resistivity & Hall Effect Measurements'",
+      "notes": "**저항률의 측정범위는 인쇄돼 있지 않다** — 인쇄된 것은 소스미터 사양(전압 ±210 V, 전류 1 A~100 mA 모듈, 측정분해능 100 fA, 프리앰프 사용 시 10 aA)이며 이는 저항률 축이 아니라 전압·전류 축이라 range_* 에 넣지 않았다."
+     },
+     {
+      "property_key": "electrical.dielectric_strength",
+      "technique": "게이트 절연막 V-Ramp / J-Ramp 파괴시험(전하파괴 Qbd)",
+      "specimen": "게이트 절연막(MOS 캐패시터)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.4 'Reliability: NBTI/PBTI, charge pumping, hot carrier injection, V-Ramp, J-Ramp, TDDB'",
+      "notes": "V-Ramp/J-Ramp 는 절연막에 전압/전류를 램프해 **파괴에 이르게 하는** 시험이라 파괴전압을 얻지만, 우리 키(유전강도, V/m)는 두께로 나눈 값이어서 medium 으로 뒀다. 이 데이터시트에는 규격번호가 인쇄돼 있지 않다(구세대 4200-SCS 기술자료에는 JEDEC Standard 35-A 가 명시돼 있다)."
+     }
+    ]
+   }
+  },
+  {
+   "model": "4200-SCS",
+   "note": "SMU·CVU·PMU 기반 반도체 특성화 시스템(구세대). KITE 프로젝트로 van der Pauw 저항률·4점탐침 측정 제공",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 177,
+    "category": "electrical",
+    "technique": "반도체 파라미터 분석(I-V · C-V · 펄스 I-V)",
+    "description": "SMU·CVU·PMU 기반 반도체 특성화 시스템(구세대). KITE 프로젝트로 van der Pauw 저항률·4점탐침 측정 제공",
+    "notes": "4200A-SCS 의 이전 세대. DC SMU 사양은 4210-SMU 기준 1 A/21 V, 100 mA/210 V 이고 측정 정확도 ±(0.045 % rdg + 3 µA) 등이 구간별로 인쇄돼 있다(23±5 °C, 교정 후 1년 이내, RH 5~60 % 조건). 소자 파라미터(Vth·Gm·QBD·전하펌핑)는 대부분 우리 물성 키에 없다.",
+    "doc_path": "metrology_catalogs/electrical/Keithley_4200_utah.pdf",
+    "source_title": "Keithley Model 4200-SCS Semiconductor Characterization System — Technical Data (4200-SPEC Rev. M)",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / 4점 공선 탐침법",
+      "specimen": "반도체 재료·웨이퍼(수동/반자동 프로버 연동)",
+      "mapping_confidence": "high",
+      "source_detail": "p.19 프로젝트 목록 — 'vdp_resistivity: Van der Pauw measurements on semiconductor materials', 'FourPtProbe: four-point collinear probe measurements on semiconductor materials'",
+      "notes": "**저항률 측정범위는 인쇄돼 있지 않다.** SMU 전류·전압 사양(1 A/21 V, 100 mA/210 V 등)은 저항률 축이 아니라 넣지 않았다. 태양전지·결정/비정질/박막 재료의 'I-V, C-V, and resistivity' 프로젝트도 별도로 실려 있다."
+     },
+     {
+      "property_key": "electrical.dielectric_strength",
+      "technique": "게이트 절연막 V-Ramp / J-Ramp 전하파괴(QBD) 시험",
+      "standard": "JEDEC Standard 35-A",
+      "specimen": "게이트 절연막(MOS 캐패시터)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.19 'Qbd: This charge-to-breakdown project consists of two QBD tests on gate dielectrics (V-Ramp and J-Ramp). Those two tests follow JEDEC Standard 35-A.'",
+      "notes": "**규격번호가 인쇄돼 기법이 확정된다** — JEDEC 35-A 의 V-Ramp·J-Ramp 법. 다만 이 시험의 1차 출력은 전하파괴량 Qbd 이고 우리 키(유전강도 V/m)는 파괴전압을 두께로 나눈 값이라 물리량이 완전히 같지 않아 medium. 모듈명 qbd_rmpv(V-Ramp)·qbd_rmpj(J-Ramp)."
+     }
+    ]
+   }
+  }
+ ]
+}

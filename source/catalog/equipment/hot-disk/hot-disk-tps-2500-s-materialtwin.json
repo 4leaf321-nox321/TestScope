@@ -1,0 +1,41 @@
+{
+ "id": "hot-disk-tps-2500-s-materialtwin",
+ "kind": "equipment_series",
+ "name": "Hot Disk TPS 2500 S Thermal Constants Analyser",
+ "manufacturer": "hot-disk",
+ "category": "thermal_conductivity",
+ "test_items": [
+  "thermal_conductivity"
+ ],
+ "measurands": [
+  "thermal.conductivity",
+  "thermal.diffusivity",
+  "thermal.specific_heat"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/45",
+   "note": "Hot Disk TPS 2500 S Thermal Constants Analyser · metrology_catalogs/thermal/HotDisk_TPS2500S.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "hot-disk-tps-2500-s",
+ "measurands_by_item": {
+  "thermal_conductivity": [
+   "thermal.conductivity",
+   "thermal.diffusivity",
+   "thermal.specific_heat"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 22007-2"
+  ],
+  "test_methods_by_item": {
+   "thermal_conductivity": [
+    "ISO 22007-2"
+   ]
+  }
+ }
+}

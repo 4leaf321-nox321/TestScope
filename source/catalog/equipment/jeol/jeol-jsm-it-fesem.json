@@ -1,0 +1,94 @@
+{
+ "id": "jeol-jsm-it-fesem",
+ "kind": "equipment_series",
+ "name": "JEOL JSM-IT500HR / IT700HR Field-Emission SEM",
+ "manufacturer": "jeol",
+ "category": "electron_microscope",
+ "test_items": [
+  "composition_analysis",
+  "crystal_structure_analysis"
+ ],
+ "measurands": [
+  "chemical.composition",
+  "structure.crystal_structure"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/9",
+   "note": "JEOL JSM-IT500HR Field Emission Scanning Electron Microscope · metrology_catalogs/surface/JEOL_IT500HR_FESEM.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/11",
+   "note": "JEOL JSM-IT700HR Scanning Electron Microscope · metrology_catalogs/surface/JEOL_JSM-IT700HR.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "지올 JSM-IT 전계방출 주사전자현미경",
+ "description": "전계방출 주사전자현미경(FE-SEM)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ],
+  "crystal_structure_analysis": [
+   "structure.crystal_structure"
+  ]
+ },
+ "models": [
+  {
+   "model": "JSM-IT500HR",
+   "note": "가변압력 FE-SEM. 가속전압 0.5~30 kV, 분해능 1.5 nm(30 kV)/4 nm(1 kV), 배율 최대 600,000배, 저진공 10~150 Pa. SED·BED·EDS·EBSD 장착.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 9,
+    "category": "surface",
+    "technique": "전계방출 주사전자현미경(FE-SEM)",
+    "description": "가변압력 FE-SEM. 가속전압 0.5~30 kV, 분해능 1.5 nm(30 kV)/4 nm(1 kV), 배율 최대 600,000배, 저진공 10~150 Pa. SED·BED·EDS·EBSD 장착.",
+    "notes": "대학 장비 소개용 1쪽 사양서다. 인쇄된 수치는 결상 분해능·배율·스테이지뿐이고 분석 사양(EDS 검출 원소, 정량 정확도 등)은 없다. 분해능 1.5 nm 는 결상 분해능이지 측정범위가 아니라 range 에 넣지 않았다.",
+    "doc_path": "metrology_catalogs/surface/JEOL_IT500HR_FESEM.pdf",
+    "source_title": "JEOL JSM-IT500HR Field Emission Scanning Electron Microscope",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "에너지분산형 X선 분광법(EDS)",
+      "specimen": "최대 시편 크기 200 mm 직경 x 75 mm 높이",
+      "mapping_confidence": "medium",
+      "source_detail": "Technical Specifications — 'Equipped with SED, BED, EDS and EBSD'",
+      "notes": "EDS 장착 사실만 인쇄되어 있고 검출 원소 범위·에너지 분해능·정량 정확도는 인쇄되어 있지 않아 전부 비웠다."
+     },
+     {
+      "property_key": "structure.crystal_structure",
+      "technique": "전자후방산란회절(EBSD)",
+      "specimen": "최대 시편 크기 200 mm 직경 x 75 mm 높이",
+      "mapping_confidence": "medium",
+      "source_detail": "Technical Specifications — 'Equipped with SED, BED, EDS and EBSD'",
+      "notes": "EBSD 장착 사실만 인쇄. 상(phase)·방위 식별이 EBSD 의 직접 출력이라 결정구조로 이었으나 사양 수치가 하나도 없어 medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "JSM-IT700HR",
+   "note": "인렌즈 쇼트키 FE-SEM. 고진공 분해능 1.0 nm(20 kV)/3.0 nm(1.0 kV), 분석용 3.0 nm(15 kV, 프로브전류 3 nA), 저진공 1.8 nm(15 kV BED), 가속전압 0.5~30 kV, 프로브전류 수 pA~300 nA.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 11,
+    "category": "surface",
+    "technique": "인렌즈 쇼트키 전계방출 주사전자현미경(FE-SEM)",
+    "description": "인렌즈 쇼트키 FE-SEM. 고진공 분해능 1.0 nm(20 kV)/3.0 nm(1.0 kV), 분석용 3.0 nm(15 kV, 프로브전류 3 nA), 저진공 1.8 nm(15 kV BED), 가속전압 0.5~30 kV, 프로브전류 수 pA~300 nA.",
+    "notes": "LV(저진공) / LA(저진공+분석) 두 구성이 있으나 전자광학 사양이 같아 한 레코드로 뒀다. EDS 는 LA 구성에 해당하고 별도 사양표가 인쇄되어 있다. WDS·EBSD·저진공 2차전자검출기는 Main Options 로만 나열되고 사양이 없어 능력행을 만들지 않았다.",
+    "doc_path": "metrology_catalogs/surface/JEOL_JSM-IT700HR.pdf",
+    "source_title": "JEOL JSM-IT700HR Scanning Electron Microscope",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "에너지분산형 X선 분광법(EDS, DrySD 검출기)",
+      "specimen": "스테이지 X 125 mm, Y 100 mm, Z 80 mm",
+      "mapping_confidence": "high",
+      "source_detail": "EDS specifications / Specifications for DrySD detectors (센서 30 mm², 에너지분해능 129.0 eV 이하, 검출원소 Be~U)",
+      "notes": "정성분석·표준시료 없는 정량(ZAF)·표준시료 정량(ZAF)·선분석·원소맵이 인쇄되어 있다. 검출 원소 Be~U 와 에너지분해능 129.0 eV 이하는 조성 자체의 농도범위가 아니라 range 에 넣지 않았다(농도범위·검출한계는 인쇄 없음)."
+     }
+    ]
+   }
+  }
+ ]
+}

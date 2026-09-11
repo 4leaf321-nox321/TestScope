@@ -1,0 +1,38 @@
+{
+ "id": "instron-9400-drop-tower-materialtwin",
+ "kind": "equipment_series",
+ "name": "Instron 9400 Series (9440 / 9450) and CEAST 9300 Series (9310 / 9340 / 9350) Drop Tower Impact Systems",
+ "manufacturer": "instron",
+ "category": "drop_tower_impact",
+ "test_items": [
+  "drop_weight_impact",
+  "puncture",
+  "tensile_impact"
+ ],
+ "measurands": [
+  "mechanical.impact_strength_charpy",
+  "mechanical.impact_strength_izod"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/144",
+   "note": "Instron CEAST 9300 Series Droptower Impact Systems · metrology_catalogs/mechanical/Instron_CEAST9300_impact.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/145",
+   "note": "Instron CEAST 9300 Series Droptower Impact Systems · metrology_catalogs/mechanical/Instron_CEAST9300_impact.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/146",
+   "note": "Instron CEAST 9300 Series Droptower Impact Systems · metrology_catalogs/mechanical/Instron_CEAST9300_impact.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "supplements": "instron-9400-drop-tower",
+ "measurands_by_item": {
+  "drop_weight_impact": [
+   "mechanical.impact_strength_charpy",
+   "mechanical.impact_strength_izod"
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "espec-tsa-thermal-shock-materialtwin",
+ "kind": "equipment_series",
+ "name": "ESPEC TSA Series Thermal Shock Chambers (EL / ES / EH type)",
+ "manufacturer": "espec",
+ "category": "thermal_shock_chamber",
+ "test_items": [
+  "thermal_shock",
+  "temperature_cycling"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/198",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "supplements": "espec-tsa-thermal-shock",
+ "models": [
+  {
+   "model": "TSA series 2·3존 열충격조",
+   "note": "**조건 부여 장비.** 시편을 옮기지 않고 냉/온/상온 공기를 전환해 열충격을 가하는 시험조",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 198,
+    "category": "reliability",
+    "technique": "1챔버 다존 열충격(공기 순환 전환)",
+    "description": "**조건 부여 장비.** 시편을 옮기지 않고 냉/온/상온 공기를 전환해 열충격을 가하는 시험조",
+    "notes": "**capabilities 비움.** ▷ **고온 노출 60~200 °C**(=333.15~473.15 K), **저온 노출 -75~0 °C**(=198.15~273.15 K, L 형은 -65~0 °C), 시편 노출 온도범위는 **2존 -65~150 °C**·**3존 -65~상온~150 °C**(L 형 3존은 -55~상온~150 °C). **적용 규격 Mil-Std 883 1010.7 C.** 온도복귀 5~15분, 시험부하 2.5~24 kg, 내부용적 40~300 L(TSA-41L-A 40 L, 71 계열 70 L, 101 계열 110 L, 201S 200 L, 301L 300 L). 설정치를 넘겨 예냉·예열해 복귀를 앞당긴다고 명시.",
+    "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+    "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+    "capabilities": []
+   }
+  }
+ ]
+}

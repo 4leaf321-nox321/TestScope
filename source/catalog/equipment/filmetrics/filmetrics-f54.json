@@ -1,0 +1,185 @@
+{
+ "id": "filmetrics-f54",
+ "kind": "equipment_series",
+ "name": "Filmetrics F54 Thin-Film Mapping Analyzer",
+ "manufacturer": "filmetrics",
+ "category": "film_thickness_analyzer",
+ "test_items": [
+  "coating_thickness"
+ ],
+ "measurands": [
+  "structure.layer_thickness"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/2",
+   "note": "Filmetrics F54 Thin-Film Mapping Analyzer · metrology_catalogs/surface/Filmetrics_F54_thickness.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/3",
+   "note": "Filmetrics F54 Thin-Film Mapping Analyzer · metrology_catalogs/surface/Filmetrics_F54_thickness.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/4",
+   "note": "Filmetrics F54 Thin-Film Mapping Analyzer · metrology_catalogs/surface/Filmetrics_F54_thickness.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/5",
+   "note": "Filmetrics F54 Thin-Film Mapping Analyzer · metrology_catalogs/surface/Filmetrics_F54_thickness.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/6",
+   "note": "Filmetrics F54 Thin-Film Mapping Analyzer · metrology_catalogs/surface/Filmetrics_F54_thickness.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "필메트릭스 F54 박막 두께 매핑 분석기",
+ "description": "분광 반사율법 박막두께 측정(spectral reflectance)",
+ "measurands_by_item": {
+  "coating_thickness": [
+   "structure.layer_thickness"
+  ]
+ },
+ "models": [
+  {
+   "model": "F54-UV",
+   "note": "자동 박막두께 매핑 시스템. UV 구성(분광기 190-1100 nm).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 2,
+    "category": "surface",
+    "technique": "분광 반사율법 박막두께 측정(spectral reflectance)",
+    "description": "자동 박막두께 매핑 시스템. UV 구성(분광기 190-1100 nm).",
+    "notes": "한 브로슈어에 F54-UV / F54-UVX / F54 / F54-EXR / F54-NIR 다섯 구성이 별도 사양 열로 인쇄되어 모델마다 레코드를 나눴다.",
+    "doc_path": "metrology_catalogs/surface/Filmetrics_F54_thickness.pdf",
+    "source_title": "Filmetrics F54 Thin-Film Mapping Analyzer",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "분광 반사율법(spectral reflectance)",
+      "range_min": 4.0,
+      "range_max": 35000.0,
+      "range_unit": "nm",
+      "accuracy": "The greater of 1 nm or 0.2%",
+      "specimen": "매끈한 비금속 박막, 시편 직경 200 mm 척 기준 ≤200 mm(300 mm 척 옵션 시 ≤300 mm)",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement Specifications 표 (F54-UV 열)",
+      "notes": "대물렌즈별로 10X: 4 nm-35 µm, 15X: 4 nm-30 µm 이라 전체 포락이 4~35000 nm 다. Precision 0.02 nm, Stability 0.05 nm 은 반복성 지표라 resolution 에 넣지 않았다. n·k 측정 최소두께는 50 nm."
+     }
+    ]
+   }
+  },
+  {
+   "model": "F54-UVX",
+   "note": "자동 박막두께 매핑 시스템. UV 확장 구성(분광기 190-1700 nm).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 3,
+    "category": "surface",
+    "technique": "분광 반사율법 박막두께 측정(spectral reflectance)",
+    "description": "자동 박막두께 매핑 시스템. UV 확장 구성(분광기 190-1700 nm).",
+    "notes": null,
+    "doc_path": "metrology_catalogs/surface/Filmetrics_F54_thickness.pdf",
+    "source_title": "Filmetrics F54 Thin-Film Mapping Analyzer",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "분광 반사율법(spectral reflectance)",
+      "range_min": 4.0,
+      "range_max": 115000.0,
+      "range_unit": "nm",
+      "accuracy": "The greater of 1 nm or 0.2%",
+      "specimen": "매끈한 비금속 박막",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement Specifications 표 (F54-UVX 열)",
+      "notes": "10X: 4 nm-115 µm, 15X: 4 nm-100 µm. n·k 측정 최소두께 50 nm, Precision 0.02 nm, Stability 0.05 nm."
+     }
+    ]
+   }
+  },
+  {
+   "model": "F54",
+   "note": "자동 박막두께 매핑 시스템. 표준 구성(분광기 380-1050 nm, 내장 할로겐 광원).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 4,
+    "category": "surface",
+    "technique": "분광 반사율법 박막두께 측정(spectral reflectance)",
+    "description": "자동 박막두께 매핑 시스템. 표준 구성(분광기 380-1050 nm, 내장 할로겐 광원).",
+    "notes": null,
+    "doc_path": "metrology_catalogs/surface/Filmetrics_F54_thickness.pdf",
+    "source_title": "Filmetrics F54 Thin-Film Mapping Analyzer",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "분광 반사율법(spectral reflectance)",
+      "range_min": 20.0,
+      "range_max": 45000.0,
+      "range_unit": "nm",
+      "accuracy": "The greater of 2 nm or 0.2%",
+      "specimen": "매끈한 비금속 박막(SiO2, SiNx, DLC, 폴리실리콘, 포토레지스트, 폴리머, 폴리이미드 등)",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement Specifications 표 (F54 열)",
+      "notes": "대물렌즈별 5X: 20 nm-40 µm, 10X: 20 nm-45 µm, 15X: 20 nm-40 µm, 50X: 20 nm-2 µm. 최대는 10X 의 45 µm. n·k 측정 최소두께 100 nm, Precision 0.2 nm."
+     }
+    ]
+   }
+  },
+  {
+   "model": "F54-EXR",
+   "note": "자동 박막두께 매핑 시스템. 확장 적외 구성(분광기 380-1700 nm).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 5,
+    "category": "surface",
+    "technique": "분광 반사율법 박막두께 측정(spectral reflectance)",
+    "description": "자동 박막두께 매핑 시스템. 확장 적외 구성(분광기 380-1700 nm).",
+    "notes": null,
+    "doc_path": "metrology_catalogs/surface/Filmetrics_F54_thickness.pdf",
+    "source_title": "Filmetrics F54 Thin-Film Mapping Analyzer",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "분광 반사율법(spectral reflectance)",
+      "range_min": 20.0,
+      "range_max": 120000.0,
+      "range_unit": "nm",
+      "accuracy": "The greater of 2 nm or 0.2%",
+      "specimen": "매끈한 비금속 박막",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement Specifications 표 (F54-EXR 열)",
+      "notes": "5X: 20 nm-120 µm, 10X/15X: 20 nm-115/100 µm, 50X: 20 nm-4 µm. n·k 측정 최소두께 100 nm, Precision 0.02 nm."
+     }
+    ]
+   }
+  },
+  {
+   "model": "F54-NIR",
+   "note": "자동 박막두께 매핑 시스템. 근적외 구성(분광기 950-1700 nm).",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 6,
+    "category": "surface",
+    "technique": "분광 반사율법 박막두께 측정(spectral reflectance)",
+    "description": "자동 박막두께 매핑 시스템. 근적외 구성(분광기 950-1700 nm).",
+    "notes": null,
+    "doc_path": "metrology_catalogs/surface/Filmetrics_F54_thickness.pdf",
+    "source_title": "Filmetrics F54 Thin-Film Mapping Analyzer",
+    "capabilities": [
+     {
+      "property_key": "structure.layer_thickness",
+      "technique": "분광 반사율법(spectral reflectance)",
+      "range_min": 100.0,
+      "range_max": 120000.0,
+      "range_unit": "nm",
+      "accuracy": "The greater of 3 nm or 0.4%",
+      "specimen": "매끈한 비금속 박막",
+      "mapping_confidence": "high",
+      "source_detail": "Measurement Specifications 표 (F54-NIR 열)",
+      "notes": "5X: 100 nm-120 µm, 50X: 100 nm-4 µm. n·k 측정 최소두께 500 nm, Precision 0.1 nm, Stability 0.12 nm."
+     }
+    ]
+   }
+  }
+ ]
+}

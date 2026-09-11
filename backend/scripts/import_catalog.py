@@ -1,11 +1,12 @@
 """제조사 카탈로그(`source/catalog`)를 장비 카탈로그로 들인다.
 
-    1. 온톨로지     제조사 · 분류(트리) · 시험 항목 · 시험법
+    1. 온톨로지     제조사 · 분류(트리) · 시험 항목 · 물성(properties.json) · 시험법
     2. 사양 정의    빈도로 승격한 것(catalog_specs.py). 나머지는 보류로 보고만
     2-b. 대표 사양  분류가 목록에서 무엇으로 갈리나(categories.json)
     3. 계열         무슨 시험이 되나 · 누가 만들었나
     4. 기종         수치 사양. 보유 장비가 가리키는 것
     5. 관계         부속 호환 · 계보
+    6. 물성↔시험 항목  어떤 시험으로 어떤 물성을 얻나(property_links.json + 객체의 measurands)
 
 **순서를 지키는 이유는 하나뿐이다** — 앞 단계가 없으면 뒷 단계가 빈 값으로 들어가고,
 빈 값은 나중에 안 채워진다.
@@ -48,6 +49,7 @@ from app.modules.equipment.models import (
     SpecSource,
 )
 from app.modules.methods.models import TestMethod
+from app.modules.properties.models import TestItemProperty
 from app.modules.test_items.models import SeriesTestItem, SeriesTestItemMethod
 from app.modules.vocabulary.catalog_specs import (
     CATALOG_SPEC_DEFINITIONS,
@@ -64,7 +66,12 @@ from app.modules.vocabulary.catalog_specs import (
     TEMPERATURE_PAIR,
     VARIANT_SUFFIXES,
 )
-from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
+from app.modules.vocabulary.models import (
+    ConditionKey,
+    Vocabulary,
+    VocabularyAlias,
+    VocabularyTerm,
+)
 from app.modules.vocabulary.specs import (
     SpecDefinition,
     SpecDefinitionCategory,
@@ -94,6 +101,16 @@ class Catalog:
         self.drives = self._load("ontology/drives.json", "drives")
         self.manufacturers = self._load("ontology/manufacturers.json", "manufacturers")
         self.test_items = self._load("ontology/test_items.json", "test_items")
+        # 물성과 그 연결 규칙. 둘 다 없어도 반입은 돈다 — 옛 카탈로그 스냅샷에는 없다.
+        self.properties = (
+            self._load("ontology/properties.json", "properties")
+            if (root / "ontology/properties.json").exists()
+            else []
+        )
+        links_path = root / "ontology/property_links.json"
+        self.property_links: dict[str, Any] = (
+            json.loads(links_path.read_text(encoding="utf-8")) if links_path.exists() else {}
+        )
 
     def _load(self, name: str, key: str) -> list[dict[str, Any]]:
         data = json.loads((self.root / name).read_text(encoding="utf-8"))
@@ -231,6 +248,13 @@ def step_slug_axes(
     )
 
 
+def method_key(code: str) -> str:
+    """규격 번호의 비교키. **공백을 지운다** — 「JIS B 0601」 과 「JIS B0601」 은 같은 규격인데
+    출처마다 표기가 갈린다(MaterialTwin 은 붙여 쓰고 카탈로그는 띄어 쓴다). 두 행이 되면
+    「이 규격 되는 장비」 가 절반만 답한다."""
+    return re.sub(r"\s+", "", compare_key(code))
+
+
 def step_methods(
     db: Session, cat: Catalog, items: dict[str, VocabularyTerm], actor: User | None
 ) -> dict[str, TestMethod]:
@@ -246,28 +270,58 @@ def step_methods(
     시험 항목) ASTM D638 이 「마찰계수」 가 되는 일이 생긴다.
 
     대신 `ontology/test_items.json` 의 `typical_standards` 를 쓴다 — 사람이 항목마다
-    적어 둔 것이라 근거가 있다. 거기 없는 규격은 **항목을 비워 둔다.** 모르는 것을
-    비워 두는 편이, 그럴듯한 오답을 적어 두는 것보다 낫다(ADR 0003).
+    적어 둔 것이라 근거가 있다. 객체가 `standards.test_methods_by_item` 으로 항목까지
+    말하면 그것이 먼저다(MaterialTwin 능력행은 규격을 시험마다 달고 온다). 어디에도
+    없는 규격은 **항목을 비워 둔다.** 모르는 것을 비워 두는 편이, 그럴듯한 오답을
+    적어 두는 것보다 낫다(ADR 0003).
+
+    ## 표기가 달라도 같은 규격이다
+
+    이미 있는 규격은 `method_key` 로 찾는다 — 「JIS B 0601」 이 있는데 「JIS B0601」 을
+    또 만들면 시험법 목록에 같은 규격이 두 줄 서고, 그때부터 어느 쪽에 조건을 적을지
+    아무도 모른다.
     """
     body_axis = _axis(db, "standard_body")
     methods: dict[str, TestMethod] = {}
 
     by_standard: dict[str, str] = {}
+    for obj in cat.objects:
+        by_item = (obj.get("standards") or {}).get("test_methods_by_item") or {}
+        for item_id, codes in by_item.items():
+            for code in codes:
+                by_standard.setdefault(method_key(str(code)), item_id)
     for row in cat.test_items:
         for code in row.get("typical_standards") or []:
-            by_standard.setdefault(str(code).strip(), row["id"])
+            by_standard.setdefault(method_key(str(code)), row["id"])
+    # 시험이 **하나뿐인** 객체가 인용한 규격은 그 시험의 것이다 — 추측이 아니라 소거다.
+    # 시험이 여럿인 객체에서는 하지 않는다: 그때가 ASTM D638 이 「마찰계수」 가 되는 자리다.
+    for obj in cat.objects:
+        if len(obj.get("test_items") or []) != 1:
+            continue
+        for code in (obj.get("standards") or {}).get("test_methods") or []:
+            by_standard.setdefault(method_key(str(code)), obj["test_items"][0])
 
     seen: dict[str, str | None] = {}
     for obj in cat.objects:
         for code in (obj.get("standards") or {}).get("test_methods") or []:
             key = str(code).strip()
-            seen.setdefault(key, by_standard.get(key))
+            seen.setdefault(key, by_standard.get(method_key(key)))
 
+    known = {
+        method_key(row.code): row
+        for row in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
+    }
+    filled = 0
     for code, item_id in sorted(seen.items()):
         if not code:
             continue
-        found = db.scalar(select(TestMethod).where(TestMethod.code == code))
+        found = known.get(method_key(code))
         if found is not None:
+            # **빈 칸만 채운다.** 있는 값은 안 덮는다 — 사람이 고른 항목이 더 낫다. 하지만
+            # 비어 있던 285 건은 「이 규격이 무슨 시험인가」 를 아무도 안 채우던 자리다.
+            if found.test_item_term_id is None and item_id and item_id in items:
+                found.test_item_term_id = items[item_id].id
+                filled += 1
             methods[code] = found
             continue
         # 「ASTM D638」 의 앞 토막이 제정기관이다. 못 알아보면 비워 둔다 —
@@ -286,7 +340,191 @@ def step_methods(
         db.add(found)
         db.flush()
         methods[code] = found
+        known[method_key(code)] = found
+    if filled:
+        print(f"  시험 항목이 비어 있던 시험법 {filled}건에 항목을 채웠습니다")
     return methods
+
+
+# ── 물성 ──────────────────────────────────────────────────────────────────────
+
+
+def step_property_terms(
+    db: Session, cat: Catalog, actor: User | None
+) -> tuple[dict[str, VocabularyTerm], int]:
+    """1-d. 물성 항목을 기준정보 축 `property` 의 값으로 심는다. {key: 값}.
+
+    **key 가 `code` 다.** 한글 이름은 사람이 바꿀 수 있지만 `mechanical.yield_strength` 는
+    MatNexus 와 공유하는 이름이라 안 바뀐다 — 반입도 화면도 검색도 code 로 건다.
+    기호·단위·도메인은 `attributes` 에 들어가 화면이 그대로 보인다. 별칭(「항복강도」·
+    「Rp0.2」·「0.2% proof stress」)은 축 별칭으로 — 사람이 그 말로 쳐도 찾히게.
+    """
+    if not cat.properties:
+        return {}, 0
+    axis = _axis(db, "property")
+    out: dict[str, VocabularyTerm] = {}
+    aliases_added = 0
+    known_aliases = {
+        row.normalized
+        for row in db.scalars(
+            select(VocabularyAlias).where(VocabularyAlias.vocabulary_id == axis.id)
+        )
+    }
+    for row in cat.properties:
+        key = row["key"]
+        found = db.scalar(
+            select(VocabularyTerm).where(
+                VocabularyTerm.vocabulary_id == axis.id, VocabularyTerm.code == key
+            )
+        )
+        if found is None:
+            found = _term(db, axis, row.get("name_ko") or key, actor)
+            found.code = key
+        # 이름이 바뀌었어도 안 덮는다. 다만 속성이 비어 있으면 채운다 — 처음 심을 때다.
+        if not found.attributes:
+            found.attributes = {
+                k: v
+                for k, v in (
+                    ("domain", row.get("domain")),
+                    ("symbol", row.get("symbol")),
+                    ("si_unit", row.get("si_unit")),
+                    ("value_type", row.get("value_type")),
+                    ("description", row.get("description")),
+                    ("test_standard", row.get("test_standard")),
+                    ("condition_axes", row.get("condition_axes")),
+                )
+                if v
+            }
+        out[key] = found
+        for alias in row.get("aliases") or []:
+            text = clean(str(alias.get("alias") if isinstance(alias, dict) else alias))
+            norm = compare_key(text)
+            if not text or norm in known_aliases or norm == found.normalized:
+                continue
+            db.add(
+                VocabularyAlias(
+                    vocabulary_id=axis.id, term_id=found.id, value=text, normalized=norm
+                )
+            )
+            known_aliases.add(norm)
+            aliases_added += 1
+    db.flush()
+    return out, aliases_added
+
+
+def _link_targets(
+    links: dict[str, Any], item_id: str, measurand: str
+) -> list[tuple[str, str | None]]:
+    """measurand id -> [(물성 키, 단서)]. 이미 물성 키(점이 있다)면 그대로.
+
+    `overrides` 가 `measurands` 보다 먼저다 — `impact_strength` 는 샤르피와 아이조드가
+    다른 키다. null 로 적힌 것은 **일부러 안 잇는 것**이라 비어 있는 것과 다르다.
+    """
+    if "." in measurand:
+        return [(measurand, None)]
+    overrides = links.get("overrides") or {}
+    scoped = f"{item_id}:{measurand}"
+    if scoped in overrides:
+        target = overrides[scoped]
+    else:
+        table = links.get("measurands") or {}
+        if measurand not in table:
+            return [("?", None)]
+        target = table[measurand]
+    if target is None:
+        return []
+    if isinstance(target, list):
+        return [(str(one), None) for one in target]
+    return [(str(target), None)]
+
+
+def step_property_links(
+    db: Session,
+    cat: Catalog,
+    items: dict[str, VocabularyTerm],
+    properties: dict[str, VocabularyTerm],
+    actor: User | None,
+) -> tuple[int, list[str]]:
+    """6. 물성 ↔ 시험 항목. **제안으로 넣는다** — 사람이 화면에서 확인한다.
+
+    세 곳에서 온다.
+
+        test_items.json 의 measurands   시험 항목마다 사람이 적은 「얻는 것」      ontology
+        property_links.json 의 extras    measurand 로는 안 나오지만 그 시험이 내는 것  ontology
+        객체의 measurands_by_item        MaterialTwin 능력행 (기종·물성·기법)      materialtwin
+        객체의 measurands (시험이 하나일 때만)                                    ontology
+
+    객체 수준 `measurands` 는 시험이 여럿이면 어느 시험의 것인지 말하지 못한다 —
+    만능시험기의 「인장강도·압축강도·굽힘강도」 를 인장·압축·굽힘 셋에 다 걸면 「굽힘으로
+    인장강도」 가 된다. 그래서 시험이 하나인 객체에서만 쓴다.
+
+    이미 있는 연결은 안 건드린다 — 사람이 확인하거나 지운 것을 반입이 되살리면 안 된다.
+    """
+    if not properties:
+        return 0, []
+    links = cat.property_links
+    wanted: dict[tuple[str, str], tuple[str, str | None]] = {}
+    unmapped: collections.Counter[str] = collections.Counter()
+
+    def want(item_id: str, key: str, source: str, note: str | None) -> None:
+        if item_id not in items or key not in properties:
+            if key != "?" and key not in properties:
+                unmapped[f"물성 키 없음 {key}"] += 1
+            return
+        have = wanted.get((item_id, key))
+        # 단서가 있는 쪽이 이긴다 — 「영률: 신율계 필요」 를 이름만 있는 줄이 덮으면
+        # 그 조건은 아무 데도 안 남는다.
+        if have is None or (note and not have[1]):
+            wanted[(item_id, key)] = (source, note)
+
+    def from_measurand(item_id: str, measurand: str, source: str) -> None:
+        for key, note in _link_targets(links, item_id, measurand):
+            if key == "?":
+                unmapped[measurand] += 1
+                continue
+            want(item_id, key, source, note)
+
+    for row in cat.test_items:
+        for measurand in row.get("measurands") or []:
+            from_measurand(row["id"], str(measurand), "ontology")
+    for item_id, extras in (links.get("extras") or {}).items():
+        for one in extras:
+            if isinstance(one, dict):
+                want(item_id, str(one["key"]), "ontology", one.get("note"))
+            else:
+                want(item_id, str(one), "ontology", None)
+    for obj in cat.objects:
+        for item_id, keys in (obj.get("measurands_by_item") or {}).items():
+            for key in keys:
+                from_measurand(item_id, str(key), "materialtwin")
+        if len(obj.get("test_items") or []) == 1:
+            for measurand in obj.get("measurands") or []:
+                from_measurand(obj["test_items"][0], str(measurand), "ontology")
+
+    existing = {
+        (row.test_item_term_id, row.property_term_id)
+        for row in db.scalars(select(TestItemProperty))
+    }
+    made = 0
+    for (item_id, key), (source, note) in sorted(wanted.items()):
+        pair = (items[item_id].id, properties[key].id)
+        if pair in existing:
+            continue
+        db.add(
+            TestItemProperty(
+                test_item_term_id=pair[0],
+                property_term_id=pair[1],
+                status="suggested",
+                source=source,
+                note=note,
+                created_by_id=actor.id if actor else None,
+            )
+        )
+        existing.add(pair)
+        made += 1
+    db.flush()
+    report = [f"{count:3d} {name}" for name, count in unmapped.most_common()]
+    return made, report
 
 
 def _ontology(cat: Catalog) -> dict[str, Any]:
@@ -723,6 +961,8 @@ def _series_of(
         )
     )
     if found is not None:
+        if obj.get("supplements"):
+            _supplement_series(found, obj)
         return found
 
     first_source = (obj.get("sources") or [{}])[0].get("file")
@@ -746,6 +986,24 @@ def _series_of(
     db.add(found)
     db.flush()
     return found
+
+
+def _supplement_series(series: EquipmentSeries, obj: dict[str, Any]) -> None:
+    """다른 출처(MaterialTwin)가 같은 계열에 보탠 비고·원문. **한 번만, 덮지 않고.**
+
+    계열 자체는 안 고친다 — 손으로 다듬은 이름·분류가 더 낫다. 보태는 것은 그 출처의
+    말(비고)과 원문(raw_limits.materialtwin)뿐이고, 표식이 이미 있으면 안 한다.
+    """
+    marker = "[MaterialTwin]"
+    note = obj.get("notes")
+    if isinstance(note, str) and note and marker not in (series.spec_note or ""):
+        series.spec_note = f"{series.spec_note}\n{note}" if series.spec_note else note
+    raw = obj.get("materialtwin_series")
+    if raw:
+        limits = dict(series.raw_limits or {})
+        if "materialtwin" not in limits:
+            limits["materialtwin"] = raw
+            series.raw_limits = limits
 
 
 def _spec_note(obj: dict[str, Any]) -> str | None:
@@ -819,10 +1077,13 @@ def step_series(
             )
             if exists is not None:
                 continue
+            by_item = (obj.get("standards") or {}).get("test_methods_by_item") or {}
+            listed = set(by_item.get(item_id) or [])
             mine = [
                 one
                 for one in codes
-                if methods.get(one) is not None and methods[one].test_item_term_id == term.id
+                if methods.get(one) is not None
+                and (one in listed or methods[one].test_item_term_id == term.id)
             ]
             test_item = SeriesTestItem(series_id=series.id, test_item_term_id=term.id)
             db.add(test_item)
@@ -1349,8 +1610,13 @@ def step_models(
             )
             # **원문을 통째로 남긴다.** 정의가 없는 키가 950종 넘고, 그 값은
             # 지금까지 버려지고 있었다 — 아는 것은 사양값으로, 전부는 여기에.
-            if row.get("specs") and not found.raw_specs:
-                found.raw_specs = row["specs"]
+            raw = dict(row.get("specs") or {})
+            if row.get("materialtwin"):
+                # MaterialTwin 원문(설명·주석·능력행)도 통째로. 사양 칸에 못 담은 시편
+                # 조건·정확도·범위가 전부 여기 있다 — 「기종에 있는 데이터는 모두」.
+                raw["materialtwin"] = row["materialtwin"]
+            if raw and not found.raw_specs:
+                found.raw_specs = raw
                 kept += 1
 
         limits = obj.get("limits") or {}
@@ -1427,6 +1693,7 @@ def main() -> int:
         actor = db.scalar(select(User).where(User.is_system_admin.is_(True)))
 
         makers, categories, items = step_ontology(db, cat, actor)
+        properties, aliases = step_property_terms(db, cat, actor)
         methods = step_methods(db, cat, items, actor)
         definitions, pending = step_definitions(db, cat, categories)
         headlines, unknown_headlines = step_headlines(db, cat, categories)
@@ -1436,6 +1703,7 @@ def main() -> int:
         )
         models, values, flagged, kept = step_models(db, cat, series, form_factors, actor)
         relations = step_relations(db, cat, series)
+        links, unmapped = step_property_links(db, cat, items, properties, actor)
 
         if args.dry_run:
             db.rollback()
@@ -1445,6 +1713,10 @@ def main() -> int:
 
         print(f"객체 {len(cat.objects)}건에서:")
         print(f"  제조사 {len(makers)} · 분류 {len(categories)} · 시험 항목 {len(items)}")
+        print(
+            f"  물성 {len(properties)} (별칭 새로 {aliases})"
+            f" · 물성↔시험 항목 연결 새로 {links}"
+        )
         print(f"  시험법 {len(methods)}")
         print(f"  사양 정의 새로 {definitions}")
         print(
@@ -1458,6 +1730,16 @@ def main() -> int:
         if flagged:
             print(f"  원본 확인 필요로 표시한 기종 {flagged}")
         print(f"  계열 관계 새로 {relations}")
+        if unmapped:
+            # **물성 키를 못 정한 measurand.** 판정·곡선·설비값이라 물성이 아닌 것이
+            # 대부분이고, 물성인데 MaterialTwin 에 키가 없는 것도 있다.
+            # property_links.json 에 적어야 사라진다.
+            print(
+                f"\n물성 키로 못 이은 measurand {len(unmapped)}종"
+                " (property_links.json 에 없음):"
+            )
+            for line in unmapped[:30]:
+                print(f"    {line}")
         if unknown_headlines:
             # **정의가 없는 대표 사양.** 온톨로지가 가리키는 칸이 이 시스템에 없다는
             # 뜻이라, 그 분류의 목록은 대표 없이 그려진다 — 조용히 두면 아무도 모른다.

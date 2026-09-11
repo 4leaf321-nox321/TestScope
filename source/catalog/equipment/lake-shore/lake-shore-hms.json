@@ -1,0 +1,476 @@
+{
+ "id": "lake-shore-hms",
+ "kind": "equipment_series",
+ "name": "Lake Shore 7600 / 7700A / 9700A Series Hall Measurement Systems",
+ "manufacturer": "lake-shore",
+ "category": "electrical_property_tester",
+ "test_items": [
+  "electrical_transport"
+ ],
+ "measurands": [
+  "electrical.resistivity_volume",
+  "electrical.conductivity",
+  "electrical.carrier_mobility",
+  "electrical.carrier_concentration",
+  "electrical.hall_coefficient",
+  "magnetic.coercivity"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/178",
+   "note": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그 · metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/179",
+   "note": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그 · metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/180",
+   "note": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그 · metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/181",
+   "note": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그 · metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/182",
+   "note": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그 · metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "레이크쇼어 홀효과 측정 시스템",
+ "description": "홀효과 측정(van der Pauw / Hall bar)",
+ "measurands_by_item": {
+  "electrical_transport": [
+   "electrical.resistivity_volume",
+   "electrical.conductivity",
+   "electrical.carrier_mobility",
+   "electrical.carrier_concentration",
+   "electrical.hall_coefficient",
+   "magnetic.coercivity"
+  ]
+ },
+ "models": [
+  {
+   "model": "7604 HMS",
+   "specs": {
+    "temperature_degC": {
+     "min": -258.15,
+     "max": 526.85,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "4인치 전자석(실온 1.3 T) 기반 홀효과 측정시스템. 저항률·홀계수·캐리어농도·이동도 측정",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 178,
+    "category": "electrical",
+    "technique": "홀효과 측정(van der Pauw / Hall bar)",
+    "description": "4인치 전자석(실온 1.3 T) 기반 홀효과 측정시스템. 저항률·홀계수·캐리어농도·이동도 측정",
+    "notes": "한 카탈로그에 7600 시리즈(7604·7607·7610)와 7700A/9700A 시리즈(7704A·7707A·7710A·9709A)가 실려 모델마다 레코드를 나눴다. **7610·7710A(10인치 전자석)는 '공장 문의' 로만 적혀 사양이 없어 레코드를 만들지 않았다.** 7604 사양: 자기장 실온 ±1.3 T·가변온도 ±0.87 T, 전류 ±10 nA~±1 A, 전압 0~200 V, 캐리어농도 1×10⁶~1×10¹⁹ cm⁻³, 이동도 1~1×10⁵ cm²/Vs, 시료 최대 10×14 mm 카드(또는 60 mm 각), 시료 4개까지. **이동도·캐리어농도·홀계수는 우리 물성 키에 대응이 없어 능력행으로 만들지 못했다** — 이 카탈로그 최대의 taxonomy 공백이다. PDF 추출에서 Ω 이 W 로 깨져 나오므로(예: '200 GW' = 200 GΩ) 원문 확인 시 주의.",
+    "doc_path": "metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf",
+    "source_title": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / Hall bar 4단자 저항측정",
+      "accuracy": "저항 측정 2 % 정확도 구간에서",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막·투명산화물. 최대 10×14 mm(25×75 mm 카드) 또는 60 mm 각(82×93 mm 카드)",
+      "mapping_confidence": "high",
+      "source_detail": "p.14 '7600 Series Specifications — Resistance range (standard) 2% accuracy: VdP minimum 40 mΩ, HB minimum 10 mΩ, maximum 10 MΩ' / p.7 측정항목 목록",
+      "notes": "**range_* 를 비운 이유** — 카탈로그가 주는 것은 저항(Ω) 범위이지 저항률(Ω·m) 범위가 아니다. 두 축이 다르므로 옮겨 적지 않고 여기 남긴다: 표준 2 % 정확도에서 VdP 최소 40 mΩ·Hall bar 최소 10 mΩ·최대 10 MΩ, AC 전류 옵션에서는 최소 10 µΩ. 온도는 CCR 옵션 15~350 K 와 고온 오븐 옵션 350~800 K 를 합친 15~800 K(표준 구성은 실온 또는 77 K). 시료 온도 자체가 켈빈으로 인쇄돼 환산이 필요없다."
+     },
+     {
+      "property_key": "electrical.conductivity",
+      "technique": "홀효과/저항률 측정에서 전도율 산출(QMSA 다중캐리어 분석)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·다층 박막",
+      "mapping_confidence": "medium",
+      "source_detail": "p.9 QMSA — 'Output parameters include conductivity spectra as a function of mobility…' / p.13 'Hall Coefficient and Conductivity' 그림",
+      "notes": "전도율은 저항률에서 환산되거나 QMSA 가 이동도 스펙트럼에 대한 **전도율 스펙트럼**으로 출력한다. 우리 키는 단일 전도율이라 medium. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.carrier_mobility",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀 이동도",
+      "range_min": 0.0001,
+      "range_max": 10.0,
+      "range_unit": "m^2/(V*s)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막·투명산화물. 최대 10×14 mm 카드(또는 60 mm 각), 시료 4개까지",
+      "mapping_confidence": "high",
+      "source_detail": "p.14 '7600 Series Specifications — Mobility: 1 to 1×10⁵ cm²/Vs'",
+      "notes": "원문 **1~1×10⁵ cm²/Vs** 를 SI 로 환산 — **검산** 1 cm²/(V·s)×10⁻⁴ = 1e-4 m²/(V·s), 1×10⁵ × 10⁻⁴ = 1×10¹ = **10 m²/(V·s)**. **필수 조건** — `carrier_type` 은 QMSA 가 전자/정공을 분리하고 각 캐리어의 부호까지 출력하므로 시료마다 확정된다(홀계수 부호가 음이면 n형). `temperature_k` 는 15~800 K 범위 중 실제 측정온도(표준 구성은 실온 또는 77 K, CCR 옵션 15~350 K, 고온오븐 옵션 350~800 K). `magnetic_field_t` 는 **실온 ±1.3 T / 가변온도 ±0.87 T**(4인치 전자석 EM4-HVA, 25 mm 갭에서 1.3 T, 51 mm 갭에서 0.87 T, 균일도 ±0.1 %). 카탈로그 기능비교표는 이동도 범위를 '10~1×10⁶ cm²/Vs' 로 적어 사양표(1~1×10⁵)와 어긋나는데, **모델별 사양표 값을 채택**했다. 규격번호는 인쇄돼 있지 않다 — 소프트웨어에 'ASTM compliance check' 기능이 있다고만 적혀 있어 `standard` 를 비웠다(홀측정 표준은 ASTM F76)."
+     },
+     {
+      "property_key": "electrical.carrier_concentration",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 캐리어 농도",
+      "range_min": 1000000000000.0,
+      "range_max": 1e+25,
+      "range_unit": "1/m^3",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막. 두께 입력이 필요한 체적 캐리어농도",
+      "mapping_confidence": "high",
+      "source_detail": "p.14 '7600 Series Specifications — Carrier concentration density: 1×10⁶ to 1×10¹⁹ cm⁻³'",
+      "notes": "원문 **1×10⁶~1×10¹⁹ cm⁻³** 를 SI 로 환산 — **검산** 1×10⁶ × 10⁶ = **1×10¹² m⁻³**, 1×10¹⁹ × 10⁶ = **1×10²⁵ m⁻³**. **필수 조건** — `carrier_type`(QMSA 가 전자/정공 부호를 준다), `temperature_k`(15~800 K 중 실측 온도). 자기장 ±1.3 T(실온)/±0.87 T(가변온도). 규격번호 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.hall_coefficient",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀계수",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·금속박막",
+      "mapping_confidence": "high",
+      "source_detail": "p.7 'Materials and Measurements — Hall Coefficient' / p.9 QMSA 입력 파라미터(홀계수·저항률·자기장)",
+      "notes": "**홀계수 자체의 측정범위는 카탈로그에 인쇄돼 있지 않아 비웠다**(인쇄된 것은 저항 범위 40 mΩ~10 MΩ 로 축이 다르다). **부호가 캐리어 종류를 정한다 — 음수면 n형, 양수면 p형**이고 QMSA 는 캐리어별 부호를 출력한다고 명시하므로 값 수집 시 **마이너스 부호를 절대 떨어뜨리면 안 된다.** **필수 조건** — `temperature_k`(15~800 K 중 실측), `magnetic_field_t`(실온 ±1.3 T / 가변온도 ±0.87 T, 자기장 반전 스윕으로 재료 저항률 오차를 제거한다고 소프트웨어 항목에 인쇄). 규격번호 인쇄 없음('ASTM compliance check' 문구만)."
+     }
+    ]
+   }
+  },
+  {
+   "model": "7607 HMS",
+   "specs": {
+    "temperature_degC": {
+     "min": -258.15,
+     "max": 526.85,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "7인치 전자석(실온 2 T) 기반 홀효과 측정시스템. 최대 76 mm 직경 시료",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 179,
+    "category": "electrical",
+    "technique": "홀효과 측정(van der Pauw / Hall bar)",
+    "description": "7인치 전자석(실온 2 T) 기반 홀효과 측정시스템. 최대 76 mm 직경 시료",
+    "notes": "7600 시리즈의 7인치 자석 모델. 자기장 실온 ±2 T·가변온도 ±1.2 T(극면 152 mm 에서 1.6 T, 76.2 mm 에서 2.17 T), 시료 최대 76 mm 직경. 전류·전압·캐리어농도·이동도 사양은 7604 와 같다(±10 nA~±1 A, 0~200 V, 1×10⁶~1×10¹⁹ cm⁻³, 1~1×10⁵ cm²/Vs).",
+    "doc_path": "metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf",
+    "source_title": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / Hall bar 4단자 저항측정",
+      "accuracy": "저항 측정 2 % 정확도 구간에서",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막. 최대 76 mm(3인치) 직경",
+      "mapping_confidence": "high",
+      "source_detail": "p.14 7600 Series Specifications (7607 열)",
+      "notes": "저항 범위(저항률 아님): 표준 VdP 최소 40 mΩ·HB 최소 10 mΩ·최대 10 MΩ, AC 전류 옵션 최소 10 µΩ. 온도 15~800 K(CCR 15~350 K + 고온오븐 350~800 K)."
+     },
+     {
+      "property_key": "electrical.conductivity",
+      "technique": "홀효과/저항률 측정에서 전도율 산출(QMSA 다중캐리어 분석)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·다층 박막",
+      "mapping_confidence": "medium",
+      "source_detail": "p.9 QMSA 출력 파라미터",
+      "notes": "저항률의 역수 또는 QMSA 전도율 스펙트럼. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.carrier_mobility",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀 이동도",
+      "range_min": 0.0001,
+      "range_max": 10.0,
+      "range_unit": "m^2/(V*s)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막. 최대 76 mm(3인치) 직경",
+      "mapping_confidence": "high",
+      "source_detail": "p.14 '7600 Series Specifications' (7607 열) — Mobility 1 to 1×10⁵ cm²/Vs",
+      "notes": "**1~1×10⁵ cm²/Vs → 1e-4~10 m²/(V·s)** — **검산** 1×10⁻⁴=1e-4, 1×10⁵×10⁻⁴=10. **필수 조건** — `carrier_type`(QMSA 부호 출력), `temperature_k`(15~800 K), `magnetic_field_t` **실온 ±2 T / 가변온도 ±1.2 T**(7인치 전자석 EM7-HV — 극면 152 mm 에서 1.6 T, 76.2 mm 에서 2.17 T). 규격번호 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.carrier_concentration",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 캐리어 농도",
+      "range_min": 1000000000000.0,
+      "range_max": 1e+25,
+      "range_unit": "1/m^3",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막(두께 입력 필요)",
+      "mapping_confidence": "high",
+      "source_detail": "p.14 '7600 Series Specifications' (7607 열) — Carrier concentration density 1×10⁶ to 1×10¹⁹ cm⁻³",
+      "notes": "**1×10⁶~1×10¹⁹ cm⁻³ → 1e12~1e25 m⁻³** — **검산** ×10⁶ 배. **필수 조건** — `carrier_type`, `temperature_k`(15~800 K). 자기장 ±2 T(실온)/±1.2 T(가변온도)."
+     },
+     {
+      "property_key": "electrical.hall_coefficient",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀계수",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·금속박막",
+      "mapping_confidence": "high",
+      "source_detail": "p.7 'Materials and Measurements — Hall Coefficient'",
+      "notes": "측정범위 인쇄 없음. **부호가 캐리어 종류를 정한다 — 음수면 n형.** **필수 조건** — `temperature_k`(15~800 K), `magnetic_field_t`(실온 ±2 T / 가변온도 ±1.2 T)."
+     }
+    ]
+   }
+  },
+  {
+   "model": "7704A HMS",
+   "specs": {
+    "temperature_degC": {
+     "min": -258.15,
+     "max": 526.85,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "4인치 전자석 + 정밀 저전류 계측(6220 전류원·6485 피코암미터·2182A 나노볼트미터) 홀효과 시스템. 200 GΩ 까지 측정",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 180,
+    "category": "electrical",
+    "technique": "홀효과 측정(van der Pauw / Hall bar, 저전류 정밀형)",
+    "description": "4인치 전자석 + 정밀 저전류 계측(6220 전류원·6485 피코암미터·2182A 나노볼트미터) 홀효과 시스템. 200 GΩ 까지 측정",
+    "notes": "7700A 시리즈는 7600 시리즈보다 저항범위가 훨씬 넓다(0.04 mΩ~200 GΩ). 자기장 실온 ±1.3 T·가변온도 ±0.87 T, 전류 ±1 pA~±100 mA, 전압 0~100 V, 캐리어농도 8×10²~8×10²³ cm⁻³, 이동도 1~1×10⁶ cm²/Vs, 시료 1개. 카탈로그의 기능비교표는 이동도 범위를 '10~1×10⁶ cm²/Vs' 로 적어 사양표(1~1×10⁶)와 하한이 어긋난다 — 원문 그대로 남긴다.",
+    "doc_path": "metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf",
+    "source_title": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / Hall bar 4단자 저항측정",
+      "accuracy": "2 % 정확도 구간(VdP 0.5 mΩ~100 GΩ), 5 % 정확도 구간(VdP 0.1 mΩ~200 GΩ)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·금속박막·투명산화물. 최대 10×14 mm 카드 또는 60 mm 각",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications — Resistance range (standard) 2% accuracy: VdP minimum 0.5 mΩ, HB minimum 0.8 mΩ, Maximum 100 GΩ'",
+      "notes": "**range_* 는 저항률 범위가 아니어서 비웠다.** 인쇄된 저항 범위: 표준 2 % — VdP 0.5 mΩ / HB 0.8 mΩ ~ 100 GΩ, 5 % — VdP 0.1 mΩ / HB 0.04 mΩ ~ 200 GΩ, AC 전류 옵션 — 최소 10 µΩ, 최대 100 GΩ(2 %)·200 GΩ(5 %). 온도 15~800 K(CCR + 고온오븐 옵션). 자기장 반전 스윕으로 재료 저항률 오차를 제거한다고 소프트웨어 항목에 인쇄. ASTM 준수 점검(ASTM compliance check) 기능이 소프트웨어에 있다고만 적혀 있고 규격번호는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "electrical.conductivity",
+      "technique": "홀효과/저항률 측정에서 전도율 산출(QMSA 다중캐리어 분석)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·다층 박막·pHEMT 등 다중캐리어 구조",
+      "mapping_confidence": "medium",
+      "source_detail": "p.9 QMSA — 입력은 홀계수·저항률·자기장, 출력은 이동도에 대한 전도율 스펙트럼",
+      "notes": "다중캐리어 시료에서는 캐리어별 전도율로 분해된다. 우리 키는 단일 전도율이라 medium."
+     },
+     {
+      "property_key": "magnetic.coercivity",
+      "technique": "자기저항(MR)/이상홀효과(AHE) 히스테리시스 측정",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "자성 박막(퍼멀로이 NiFe, CrCo 기록매체 등). 시료대를 90° 회전해 면내 자기장 인가",
+      "mapping_confidence": "low",
+      "source_detail": "p.12 'Magnetoresistance of NiFe — The small coercivity (~1 G) of the sample is also resolved. (Model 7704A)' / p.13 AHE 히스테리시스 루프(CrCo)",
+      "notes": "**사양표 항목이 아니라 응용 예시**에서 나온 능력이라 low 로 뒀다. 카탈로그가 인쇄한 것은 퍼멀로이 박막에서 ~1 G 수준의 보자력이 분해된다는 서술과, AHE 가 M(H) 히스테리시스를 재는 대체법이라는 설명이다(AC 전류 옵션 병용). 보자력 자체의 측정범위·정확도는 인쇄돼 있지 않다."
+     },
+     {
+      "property_key": "electrical.carrier_mobility",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀 이동도",
+      "range_min": 0.0001,
+      "range_max": 100.0,
+      "range_unit": "m^2/(V*s)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·유기반도체·투명산화물. 최대 10×14 mm 카드 또는 60 mm 각, 시료 1개",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications — Mobility: 1 to 1×10⁶ cm²/V s'",
+      "notes": "원문 **1~1×10⁶ cm²/Vs** 를 SI 로 — **검산** 1×10⁻⁴ = 1e-4 m²/(V·s), 1×10⁶ × 10⁻⁴ = 1×10² = **100 m²/(V·s)**. **필수 조건** — `carrier_type`(QMSA 가 캐리어별 부호·밀도·이동도를 분리), `temperature_k`(15~800 K), `magnetic_field_t` **실온 ±1.3 T / 가변온도 ±0.87 T**. 전압추적(voltage tracking) 모드를 쓰면 유기반도체·분자전자·OLED·투명산화물 같은 **저이동도 재료**도 잡힌다고 명시. 기능비교표의 '10~1×10⁶ cm²/Vs' 와 사양표의 '1~1×10⁶' 가 어긋나 사양표를 채택했다. 규격번호 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.carrier_concentration",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 캐리어 농도",
+      "range_min": 800000000.0,
+      "range_max": 8e+29,
+      "range_unit": "1/m^3",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·금속박막(두께 입력 필요)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications — Carrier concentration density: 8×10² to 8×10²³ cm⁻³'",
+      "notes": "원문 **8×10²~8×10²³ cm⁻³** 를 SI 로 — **검산** 8×10² × 10⁶ = **8×10⁸ m⁻³**, 8×10²³ × 10⁶ = **8×10²⁹ m⁻³**. 22자릿수를 넘는 범위라 금속(고농도)부터 반절연 GaAs(저농도)까지 걸친다. **필수 조건** — `carrier_type`, `temperature_k`(15~800 K). 자기장 ±1.3 T(실온)/±0.87 T(가변온도)."
+     },
+     {
+      "property_key": "electrical.hall_coefficient",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀계수",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·금속박막(예시: 100 nm Mo 박막을 50 K 에서 측정, 10 µΩ 저항변화 분해)",
+      "mapping_confidence": "high",
+      "source_detail": "p.9 QMSA 입력(홀계수·저항률·자기장) / p.12 'Hall effect in metals' 예시 / p.13 'Hall Coefficient and Conductivity' 그림",
+      "notes": "**측정범위 인쇄 없음.** **부호가 캐리어 종류를 정한다 — 음수면 n형이고 QMSA 는 캐리어별 부호를 출력**하므로 값 수집에서 마이너스를 떨어뜨리면 안 된다. **필수 조건** — `temperature_k`(15~800 K 중 실측), `magnetic_field_t`(실온 ±1.3 T / 가변온도 ±0.87 T). 금속은 저항률이 낮고 캐리어밀도가 높아 AC 전류 옵션이 유리하다고 명시. 자기장 의존성(홀계수·저항률의 field dependence)에서 다중캐리어 전도를 판별한다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "7707A HMS",
+   "specs": {
+    "temperature_degC": {
+     "min": -258.15,
+     "max": 526.85,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "7인치 전자석(실온 2 T) + 정밀 저전류 계측 홀효과 시스템. 최대 76 mm 직경 시료",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 181,
+    "category": "electrical",
+    "technique": "홀효과 측정(van der Pauw / Hall bar, 저전류 정밀형)",
+    "description": "7인치 전자석(실온 2 T) + 정밀 저전류 계측 홀효과 시스템. 최대 76 mm 직경 시료",
+    "notes": "7704A 와 계측부는 같고 자석만 7인치다. 자기장 실온 ±2 T·가변온도 ±1.2 T, 시료 최대 76 mm 직경, 전류 ±1 pA~±100 mA, 전압 0~100 V, 캐리어농도 8×10²~8×10²³ cm⁻³, 이동도 1~1×10⁶ cm²/Vs.",
+    "doc_path": "metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf",
+    "source_title": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / Hall bar 4단자 저항측정",
+      "accuracy": "2 % 정확도 구간(VdP 0.5 mΩ~100 GΩ), 5 % 정확도 구간(VdP 0.1 mΩ~200 GΩ)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막. 최대 76 mm(3인치) 직경",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 7700 Series Specifications (7707A 열)",
+      "notes": "저항(저항률 아님) 범위는 7704A 와 같다: 표준 2 % VdP 0.5 mΩ~100 GΩ, 5 % 0.1 mΩ~200 GΩ, AC 옵션 10 µΩ 부터. 온도 15~800 K(옵션 CCR·고온오븐)."
+     },
+     {
+      "property_key": "electrical.conductivity",
+      "technique": "홀효과/저항률 측정에서 전도율 산출(QMSA 다중캐리어 분석)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·다층 박막",
+      "mapping_confidence": "medium",
+      "source_detail": "p.9 QMSA 출력 파라미터",
+      "notes": "저항률의 역수 또는 QMSA 전도율 스펙트럼. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.carrier_mobility",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀 이동도",
+      "range_min": 0.0001,
+      "range_max": 100.0,
+      "range_unit": "m^2/(V*s)",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막. 최대 76 mm(3인치) 직경",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications' (7707A 열) — Mobility 1 to 1×10⁶ cm²/V s",
+      "notes": "**1~1×10⁶ cm²/Vs → 1e-4~100 m²/(V·s)** — **검산** ×10⁻⁴ 배. **필수 조건** — `carrier_type`, `temperature_k`(15~800 K), `magnetic_field_t` **실온 ±2 T / 가변온도 ±1.2 T**. 규격번호 인쇄 없음."
+     },
+     {
+      "property_key": "electrical.carrier_concentration",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 캐리어 농도",
+      "range_min": 800000000.0,
+      "range_max": 8e+29,
+      "range_unit": "1/m^3",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·박막(두께 입력 필요)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications' (7707A 열) — 8×10² to 8×10²³ cm⁻³",
+      "notes": "**8×10²~8×10²³ cm⁻³ → 8e8~8e29 m⁻³** — **검산** ×10⁶ 배. **필수 조건** — `carrier_type`, `temperature_k`(15~800 K). 자기장 ±2 T(실온)/±1.2 T(가변온도)."
+     },
+     {
+      "property_key": "electrical.hall_coefficient",
+      "technique": "홀효과 측정(van der Pauw / Hall bar) — 홀계수",
+      "temperature_min_k": 15.0,
+      "temperature_max_k": 800.0,
+      "specimen": "반도체·금속박막",
+      "mapping_confidence": "high",
+      "source_detail": "p.7 'Materials and Measurements — Hall Coefficient'",
+      "notes": "측정범위 인쇄 없음. **음수면 n형** — 부호를 반드시 살릴 것. **필수 조건** — `temperature_k`(15~800 K), `magnetic_field_t`(실온 ±2 T / 가변온도 ±1.2 T)."
+     }
+    ]
+   }
+  },
+  {
+   "model": "9709A HMS",
+   "specs": {
+    "temperature_degC": {
+     "min": -271.15,
+     "max": 126.85,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "note": "9 T 초전도 자석 기반 홀효과 측정시스템. 2~400 K 표준 가변온도, 저이동도 시료용",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 182,
+    "category": "electrical",
+    "technique": "홀효과 측정(초전도 자석 9 T, van der Pauw / Hall bar)",
+    "description": "9 T 초전도 자석 기반 홀효과 측정시스템. 2~400 K 표준 가변온도, 저이동도 시료용",
+    "notes": "초전도 자석 모델. 자기장 ±9 T(실온·가변온도 모두), **온도는 2~400 K 표준**이고 CCR·고온오븐 옵션이 없다(NA). 시료 12×14 mm(25.4 mm 보어), 냉매는 액체헬륨. 캐리어농도 8×10²~8×10²³ cm⁻³, 이동도 1~1×10⁶ cm²/Vs. ZnO·GaN·양자우물처럼 이동도가 매우 낮아 고자장이 필요한 시료용이라고 명시. SdH 진동·양자홀효과 관측도 언급되나 우리 키에 없다.",
+    "doc_path": "metrology_catalogs/electrical/LakeShore_Hall_catalog.pdf",
+    "source_title": "Lake Shore Hall Effect Measurement System (HMS) 카탈로그",
+    "capabilities": [
+     {
+      "property_key": "electrical.resistivity_volume",
+      "technique": "van der Pauw 법 / Hall bar 4단자 저항측정(9 T 초전도 자석)",
+      "accuracy": "2 % 정확도 구간(VdP 0.5 mΩ~100 GΩ), 5 % 정확도 구간(VdP 0.1 mΩ~200 GΩ)",
+      "temperature_min_k": 2.0,
+      "temperature_max_k": 400.0,
+      "specimen": "반도체 단결정·박막·양자우물 구조. 12×14 mm, 25.4 mm 보어",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications' (9709A 열) — 온도 2 K to 400 K",
+      "notes": "**온도범위가 다른 모델과 다르다** — 2~400 K 표준이며 CCR/오븐 옵션이 없어 800 K 까지 못 올라간다. 저항 범위(저항률 아님)는 7700A 계열과 동일: 표준 2 % VdP 0.5 mΩ~100 GΩ, 5 % 0.1 mΩ~200 GΩ, AC 옵션 10 µΩ 부터."
+     },
+     {
+      "property_key": "electrical.conductivity",
+      "technique": "홀효과/저항률 측정에서 전도율 산출(QMSA 다중캐리어 분석)",
+      "temperature_min_k": 2.0,
+      "temperature_max_k": 400.0,
+      "specimen": "다중캐리어 반도체(HgCdTe, pHEMT 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.13 'Using QMSA, this conductivity vs. mobility for a HgCdTe sample was taken with a Model 9709A HMS'",
+      "notes": "가변자장 데이터를 QMSA 로 풀어 캐리어별 전도율을 얻는다. 단일 전도율 키에 medium."
+     },
+     {
+      "property_key": "electrical.carrier_mobility",
+      "technique": "홀효과 측정(9 T 초전도 자석, 가변자장 홀) — 홀 이동도",
+      "range_min": 0.0001,
+      "range_max": 100.0,
+      "range_unit": "m^2/(V*s)",
+      "temperature_min_k": 2.0,
+      "temperature_max_k": 400.0,
+      "specimen": "ZnO·GaN·양자우물·HgCdTe 등 저이동도/다중캐리어 시료. 12×14 mm, 25.4 mm 보어",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications' (9709A 열) — Mobility 1 to 1×10⁶ cm²/V s, 온도 2 K to 400 K",
+      "notes": "**1~1×10⁶ cm²/Vs → 1e-4~100 m²/(V·s)** — **검산** 1×10⁶ × 10⁻⁴ = 100. **필수 조건** — `carrier_type`(QMSA 로 2DEG 캐리어와 캡층 캐리어를 분리한 pHEMT 예시가 실려 있다), `temperature_k` **2~400 K**(이 모델만 다르다), `magnetic_field_t` **±9 T**(실온·가변온도 모두, 균일도 ±0.1 % over 60 mm on axis, 액체헬륨 냉각). **이동도가 극히 낮아 고자장이 필요한 시료(ZnO·GaN·양자우물)를 겨냥한 모델**이라고 명시. 10 K 이하에서는 SdH 진동·양자홀효과도 관측된다."
+     },
+     {
+      "property_key": "electrical.carrier_concentration",
+      "technique": "홀효과 측정(9 T 초전도 자석, 가변자장 홀) — 캐리어 농도",
+      "range_min": 800000000.0,
+      "range_max": 8e+29,
+      "range_unit": "1/m^3",
+      "temperature_min_k": 2.0,
+      "temperature_max_k": 400.0,
+      "specimen": "다중캐리어 반도체(pHEMT, HgCdTe 등)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 '7700 Series/9709A Specifications' (9709A 열) — 8×10² to 8×10²³ cm⁻³",
+      "notes": "**8×10²~8×10²³ cm⁻³ → 8e8~8e29 m⁻³** — **검산** 8×10²×10⁶=8e8, 8×10²³×10⁶=8e29. **필수 조건** — `carrier_type`, `temperature_k`(**2~400 K**). 자기장 ±9 T. 온도를 바꿔가며 캐리어를 여기에너지로 식별하고, pHEMT 에서 50~400 K 각 온도마다 전자 캐리어 2종을 분리한 예시가 실려 있다."
+     },
+     {
+      "property_key": "electrical.hall_coefficient",
+      "technique": "홀효과 측정(9 T 초전도 자석, 가변자장 홀) — 홀계수",
+      "temperature_min_k": 2.0,
+      "temperature_max_k": 400.0,
+      "specimen": "반도체 단결정·박막·양자우물 구조",
+      "mapping_confidence": "high",
+      "source_detail": "p.9 QMSA 입력 파라미터 / p.13 HgCdTe 전도율-이동도 스펙트럼(Model 9709A)",
+      "notes": "**측정범위 인쇄 없음.** **부호가 캐리어 종류를 정한다 — 음수면 n형**, QMSA 가 캐리어별 부호를 출력한다. **필수 조건** — `temperature_k`(**2~400 K**), `magnetic_field_t`(**±9 T**). 홀계수의 자기장 의존성이 다중캐리어 혼합전도를 드러낸다고 명시."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -271.15,
+   "max": 526.85
+  }
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "id": "jeol-jsx-1000s",
+ "kind": "equipment_model",
+ "name": "JEOL JSX-1000S Energy-Dispersive XRF",
+ "manufacturer": "jeol",
+ "category": "composition_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/16",
+   "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "지올 JSX-1000S 에너지분산 형광X선 분석기",
+ "description": "에너지분산형 형광X선분광(EDXRF)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "JSX-1000S",
+   "note": "에너지분산형 XRF 분광기. 필터 최대 9매, RoHS 등 용도별 내장 레시피, Smart FP 법에 의한 표준시료 없는 정량분석, 저진공 캡슐 옵션으로 액체 경원소 분석.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 16,
+    "category": "chemical",
+    "technique": "에너지분산형 형광X선분광(EDXRF)",
+    "description": "에너지분산형 XRF 분광기. 필터 최대 9매, RoHS 등 용도별 내장 레시피, Smart FP 법에 의한 표준시료 없는 정량분석, 저진공 캡슐 옵션으로 액체 경원소 분석.",
+    "notes": "종합 카탈로그 소개문만 있고 측정 원소·농도범위 수치가 없다.",
+    "doc_path": "metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf",
+    "source_title": "JEOL Products Guide 2026",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "에너지분산형 형광X선분광(EDXRF, FP 정량)",
+      "mapping_confidence": "high",
+      "source_detail": "p.10 X-ray Fluorescence Spectrometers",
+      "notes": "'standard-less quantitative analysis' 로 정량 조성분석이 명시. 수치 사양 없음."
+     }
+    ]
+   }
+  }
+ ]
+}

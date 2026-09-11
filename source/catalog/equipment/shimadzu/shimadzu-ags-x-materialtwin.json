@@ -1,0 +1,82 @@
+{
+ "id": "shimadzu-ags-x-materialtwin",
+ "kind": "equipment_series",
+ "name": "AUTOGRAPH AGS-X Series Precision Universal Tester",
+ "manufacturer": "shimadzu",
+ "category": "universal_testing_machine",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "shear",
+  "peel",
+  "tear"
+ ],
+ "measurands": [
+  "mechanical.tensile_strength",
+  "mechanical.youngs_modulus",
+  "mechanical.elongation_at_break",
+  "mechanical.flexural_strength",
+  "mechanical.flexural_modulus",
+  "mechanical.compressive_strength",
+  "interface.peel_strength"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/123",
+   "note": "Shimadzu Autograph AGS-X Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGS-X.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/124",
+   "note": "Shimadzu Autograph AGS-X Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGS-X.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/125",
+   "note": "Shimadzu Autograph AGS-X Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGS-X.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/126",
+   "note": "Shimadzu Autograph AGS-X Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGS-X.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/127",
+   "note": "Shimadzu Autograph AGS-X Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGS-X.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "shimadzu-ags-x",
+ "measurands_by_item": {
+  "tensile": [
+   "mechanical.tensile_strength",
+   "mechanical.youngs_modulus",
+   "mechanical.elongation_at_break"
+  ],
+  "flexure": [
+   "mechanical.flexural_strength",
+   "mechanical.flexural_modulus"
+  ],
+  "compression": [
+   "mechanical.compressive_strength"
+  ],
+  "peel": [
+   "interface.peel_strength"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 178",
+   "ISO 527",
+   "ISO 6892"
+  ],
+  "test_methods_by_item": {
+   "tensile": [
+    "ISO 6892",
+    "ISO 527"
+   ],
+   "flexure": [
+    "ISO 178"
+   ]
+  }
+ }
+}

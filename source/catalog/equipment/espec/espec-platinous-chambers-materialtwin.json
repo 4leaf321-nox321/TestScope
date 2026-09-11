@@ -1,0 +1,34 @@
+{
+ "id": "espec-platinous-chambers-materialtwin",
+ "kind": "equipment_series",
+ "name": "ESPEC Platinous Series Temperature & Humidity Chambers (J series JP / H series NA)",
+ "manufacturer": "espec",
+ "category": "climatic_chamber",
+ "test_items": [
+  "damp_heat",
+  "temperature_cycling"
+ ],
+ "measurands": [],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/200",
+   "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "supplements": "espec-platinous-chambers",
+ "notes": "[MaterialTwin] Platinous ESU/ESZ/ESL/ESX-CA: **조건 부여 장비.** -35 또는 -70 °C 부터 +150 °C, 습도 10~98 %RH 를 거는 표준 시험조",
+ "materialtwin_series": [
+  {
+   "snapshot": "materialtwin-20260905",
+   "instrument_id": 200,
+   "category": "reliability",
+   "technique": "항온(항습) 시험",
+   "description": "**조건 부여 장비.** -35 또는 -70 °C 부터 +150 °C, 습도 10~98 %RH 를 거는 표준 시험조",
+   "notes": "**capabilities 비움.** ▷ 온도 전용 ESU-2/3/4CA **-35~150 °C**(=238.15~423.15 K), ESZ-2/3/4CA **-70~150 °C**(=203.15~423.15 K); 온습도형 ESL-2/3/4CA **-35~150 °C**, ESX-2/3/4CA(습도 **10~98 %RH**). 내부용적 225 L(8 cu.ft)·408 L(14 cu.ft)·900 L(32 cu.ft). 상위 라인 Platinum(ENZ/ENX/ENU/ENL)은 **-70~150 °C**(=203.15~423.15 K)에 변화율 2.2~15 °C/min, 용적 370/800/1200/1700 L 로 같은 다이제스트에 실려 있다.",
+   "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
+   "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
+   "capabilities": []
+  }
+ ]
+}

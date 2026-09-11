@@ -1,0 +1,54 @@
+{
+ "id": "agilent-5977c-gcms",
+ "kind": "equipment_model",
+ "name": "Agilent 5977C GC/MSD",
+ "manufacturer": "agilent",
+ "category": "chromatograph_mass_spectrometer",
+ "test_items": [
+  "composition_analysis"
+ ],
+ "measurands": [
+  "chemical.composition"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/39",
+   "note": "Agilent 5977C GC/MSD System Specifications · metrology_catalogs/chemical/Agilent_5977C_GCMS.pdf"
+  }
+ ],
+ "confidence": "limited",
+ "name_ko": "애질런트 5977C 가스크로마토그래프-질량분석기",
+ "description": "가스크로마토그래프-질량분석(GC/MS, 단일 사중극자)",
+ "measurands_by_item": {
+  "composition_analysis": [
+   "chemical.composition"
+  ]
+ },
+ "models": [
+  {
+   "model": "5977C GC/MSD",
+   "note": "8890/8860/Intuvo 9000 GC 와 조합하는 사중극자 질량선택검출기. 표준 EI, 옵션 PCI/NCI. 질량범위 0.6~1,091 u, 단위질량 분해능, 질량축 안정도 0.10 u/48h 이내, 전자에너지 5~241.5 eV, 스캔속도 최대 20,000 u/s, 이온원 온도 150~350 °C, 전달라인 100~350 °C, 가열 사중극자 106~200 °C, 전자적 다이내믹레인지 10^6.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 39,
+    "category": "chemical",
+    "technique": "가스크로마토그래프-질량분석(GC/MS, 단일 사중극자)",
+    "description": "8890/8860/Intuvo 9000 GC 와 조합하는 사중극자 질량선택검출기. 표준 EI, 옵션 PCI/NCI. 질량범위 0.6~1,091 u, 단위질량 분해능, 질량축 안정도 0.10 u/48h 이내, 전자에너지 5~241.5 eV, 스캔속도 최대 20,000 u/s, 이온원 온도 150~350 °C, 전달라인 100~350 °C, 가열 사중극자 106~200 °C, 전자적 다이내믹레인지 10^6.",
+    "notes": "이온원 5종(stainless steel, inert, extractor, HydroInert, HES)이 'Five supported sources' 로 한 시스템 사양표 아래 묶여 있어 모델을 나누지 않고 한 레코드로 뒀다. 다만 IDL 표는 이들을 'Instrument' 로 부르며 값이 다르다 — 설치사양 IDL(He): HES 1.5 fg, EI/CI 10 fg, Inert Plus EI 10 fg, EI(SS) 20 fg, 8860 GC 조합 40 fg, HydroInert(H2) 50 fg. 모델을 쪼개는 편이 낫다고 판단되면 이 값으로 나누면 된다.",
+    "doc_path": "metrology_catalogs/chemical/Agilent_5977C_GCMS.pdf",
+    "source_title": "Agilent 5977C GC/MSD System Specifications",
+    "capabilities": [
+     {
+      "property_key": "chemical.composition",
+      "technique": "가스크로마토그래프-질량분석(GC/MS, EI/CI)",
+      "accuracy": "IDL 1.5~50 fg(이온원별, OFN 8회 splitless 주입 99% 신뢰수준). 질량정확도 m/z 271.987 ±0.005(Accurate Mass 옵션), 스펙트럼 정확도 99.0%",
+      "specimen": "휘발성·반휘발성 유기물. 액체 오토샘플러, 헤드스페이스, 열탈착, purge and trap, QuickProbe 직접분석 등 도입방식 선택",
+      "mapping_confidence": "medium",
+      "source_detail": "Agilent 5977C Series GC/MSD System Specifications 표 / IDL·S/N 사양표",
+      "notes": "**검출한계(IDL, fg)는 물성 범위의 하한이 아니라 accuracy 로 보냈다** — 우리 물성 범위와 다른 축이다. 질량범위 0.6~1,091 u 는 m/z 축이라 조성 능력행의 range 로 쓸 수 없어 description 에만 남겼다. GC/MS 의 직접 출력은 크로마토그램·질량스펙트럼이고 조성은 라이브러리 대조·정량의 결과라 medium."
+     }
+    ]
+   }
+  }
+ ]
+}

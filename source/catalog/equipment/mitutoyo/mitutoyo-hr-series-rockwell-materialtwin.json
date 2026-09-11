@@ -1,0 +1,54 @@
+{
+ "id": "mitutoyo-hr-series-rockwell-materialtwin",
+ "kind": "equipment_series",
+ "name": "Mitutoyo HR-320MS / HR-430MR / HR-430MS / HR-530 Rockwell Hardness Testing Machines",
+ "manufacturer": "mitutoyo",
+ "category": "rockwell_hardness",
+ "test_items": [
+  "hardness_rockwell",
+  "hardness_brinell"
+ ],
+ "measurands": [
+  "mechanical.hardness_rockwell"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/60",
+   "note": "Mitutoyo Rockwell Hardness Testing Machines HR-300/400/500 Series (Bulletin No. 2025) · metrology_catalogs/mechanical/Mitutoyo_Rockwell_HR.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/61",
+   "note": "Mitutoyo Rockwell Hardness Testing Machines HR-300/400/500 Series (Bulletin No. 2025) · metrology_catalogs/mechanical/Mitutoyo_Rockwell_HR.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/62",
+   "note": "Mitutoyo Rockwell Hardness Testing Machines HR-300/400/500 Series (Bulletin No. 2025) · metrology_catalogs/mechanical/Mitutoyo_Rockwell_HR.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/63",
+   "note": "Mitutoyo Rockwell Hardness Testing Machines HR-300/400/500 Series (Bulletin No. 2025) · metrology_catalogs/mechanical/Mitutoyo_Rockwell_HR.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/64",
+   "note": "Mitutoyo Rockwell Hardness Testing Machines HR-300/400/500 Series (Bulletin No. 2025) · metrology_catalogs/mechanical/Mitutoyo_Rockwell_HR.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "mitutoyo-hr-series-rockwell",
+ "measurands_by_item": {
+  "hardness_rockwell": [
+   "mechanical.hardness_rockwell"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 6508-2"
+  ],
+  "test_methods_by_item": {
+   "hardness_rockwell": [
+    "ISO 6508-2"
+   ]
+  }
+ }
+}

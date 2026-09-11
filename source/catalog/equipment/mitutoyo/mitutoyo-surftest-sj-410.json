@@ -1,0 +1,139 @@
+{
+ "id": "mitutoyo-surftest-sj-410",
+ "kind": "equipment_series",
+ "name": "Mitutoyo Surftest SJ-410 Series Surface Roughness Testers",
+ "manufacturer": "mitutoyo",
+ "category": "surface_roughness_tester",
+ "test_items": [
+  "surface_topography"
+ ],
+ "measurands": [
+  "surface.roughness_ra",
+  "surface.roughness_rq",
+  "surface.roughness_rz"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/22",
+   "note": "Mitutoyo Surftest SJ-410 Series · metrology_catalogs/surface/Mitutoyo_Surftest_SJ410.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/23",
+   "note": "Mitutoyo Surftest SJ-410 Series · metrology_catalogs/surface/Mitutoyo_Surftest_SJ410.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 서프테스트 SJ-410 표면조도 측정기",
+ "form_factor": "portable",
+ "description": "촉침식 표면조도 측정(stylus surface roughness)",
+ "measurands_by_item": {
+  "surface_topography": [
+   "surface.roughness_ra",
+   "surface.roughness_rq",
+   "surface.roughness_rz"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 4287",
+   "JIS B0601"
+  ],
+  "test_methods_by_item": {
+   "surface_topography": [
+    "JIS B0601",
+    "ISO 4287"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "Surftest SJ-411",
+   "form_factor": "portable",
+   "note": "휴대형 촉침식 표면조도 측정기. X축 측정범위 25 mm, 검출기 Z축 800/80/8 µm(옵션 스타일러스 시 2,400 µm), 차동인덕턴스 검출, 스키드리스/스키드 전환. Ra 포함 40여 종 조도 파라미터 산출.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 22,
+    "category": "surface",
+    "technique": "촉침식 표면조도 측정(stylus surface roughness)",
+    "description": "휴대형 촉침식 표면조도 측정기. X축 측정범위 25 mm, 검출기 Z축 800/80/8 µm(옵션 스타일러스 시 2,400 µm), 차동인덕턴스 검출, 스키드리스/스키드 전환. Ra 포함 40여 종 조도 파라미터 산출.",
+    "notes": "한 카탈로그에 SJ-411(구동부 25 mm)과 SJ-412(50 mm) 두 모델이 있어 나눴다. 검출기·파라미터·규격은 공통이고 X축 범위와 진직도만 다르다.",
+    "doc_path": "metrology_catalogs/surface/Mitutoyo_Surftest_SJ410.pdf",
+    "source_title": "Mitutoyo Surftest SJ-410 Series",
+    "capabilities": [
+     {
+      "property_key": "surface.roughness_ra",
+      "technique": "촉침식 표면조도 측정(stylus, 가우시안/2CR/PC75 필터)",
+      "standard": "JIS B0601-2001 / JIS B0601-1994 / JIS B0601-1982 / ISO 1997 / ANSI / VDA",
+      "specimen": "측정력 0.75 mN(60°/2 µm 촉침) 또는 4 mN(90°/5 µm 촉침), X축 이송 25 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Parameter (Ra, Rq, Rz …), Applicable standards, Detector",
+      "notes": "Ra 자체의 측정범위는 인쇄되어 있지 않다. 검출기 Z축 측정범위 800/80/8 µm 와 그에 대응하는 분해능 0.01/0.001/0.0001 µm 는 프로파일 높이 축이라 range·resolution 에 넣지 않고 여기 적는다(옵션 스타일러스 사용 시 Z 2,400 µm). 준용규격이 4종이라 한 행에 모아 적었다 — 능력행을 규격별로 나누면 (instrument, property_key, technique) 유니크 제약에 걸려 마지막 행만 남는다. cutoff λc 0.08~8 mm, 샘플링길이 0.08~25 mm."
+     },
+     {
+      "property_key": "surface.roughness_rq",
+      "technique": "촉침식 표면조도 Rq 측정(stylus, 가우시안/2CR/PC75 필터)",
+      "standard": "JIS B0601-2001 / JIS B0601-1994 / JIS B0601-1982 / ISO 1997 / ANSI / VDA",
+      "specimen": "측정력 0.75 mN(60°/2 µm 촉침) 또는 4 mN(90°/5 µm 촉침), X축 이송 25 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Parameter 목록에 Rq 명기, Applicable standards",
+      "notes": "**Ra 행의 값을 옮긴 것이 아니다** — Rq 는 제곱평균이라 같은 표면에서 Ra 와 값이 다르다. Ra 행과 같은 판단을 유지해 range 는 비웠다(카탈로그에 Rq 의 측정범위가 없다). 검출기 Z축 범위 800/80/8 µm 와 분해능 0.01/0.001/0.0001 µm 는 프로파일 높이 축이라 Rq 의 상한이 아니다(옵션 촉침 사용 시 Z 2,400 µm). **cutoff_mm** — λc 0.08/0.25/0.8/2.5/8 mm, λs 2.5/8/25 µm 에서 선택. **evaluation_length_mm** — 샘플링길이 0.08/0.25/0.8/2.5/8/25 mm x 구간수 1~20, 임의길이 0.1~25 mm. 규격을 한 행에 모은 이유는 (instrument, property_key, technique) 유니크 제약 때문이다."
+     },
+     {
+      "property_key": "surface.roughness_rz",
+      "technique": "촉침식 표면조도 Rz 측정(stylus, 가우시안/2CR/PC75 필터)",
+      "standard": "JIS B0601-2001 / JIS B0601-1994 / JIS B0601-1982 / ISO 1997 / ANSI / VDA",
+      "specimen": "측정력 0.75 mN 또는 4 mN, X축 이송 25 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Parameter 목록에 Rz 명기, Applicable standards",
+      "notes": "**Ra·Rq 와 환산되지 않는 별개 파라미터다**(최대높이). 카탈로그 파라미터 목록에 Rz 와 함께 **Rz1max·RzJIS·Rmax·R3z** 가 따로 있는데, RzJIS 는 구 JIS 의 10점평균이라 우리 키(최대높이 Rz)와 다른 양이라 이 행에 섞지 않았다. range 는 카탈로그에 Rz 측정범위가 없어 비웠다. **cutoff_mm** — λc 0.08~8 mm, λs 2.5/8/25 µm. **evaluation_length_mm** — 샘플링길이 0.08~25 mm x 구간수 1~20, 임의길이 0.1~25 mm."
+     }
+    ]
+   }
+  },
+  {
+   "model": "Surftest SJ-412",
+   "form_factor": "portable",
+   "note": "휴대형 촉침식 표면조도 측정기. X축 측정범위 50 mm, 진직도 0.5 µm/50 mm. 검출기 사양은 SJ-411 과 공통.",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 23,
+    "category": "surface",
+    "technique": "촉침식 표면조도 측정(stylus surface roughness)",
+    "description": "휴대형 촉침식 표면조도 측정기. X축 측정범위 50 mm, 진직도 0.5 µm/50 mm. 검출기 사양은 SJ-411 과 공통.",
+    "notes": null,
+    "doc_path": "metrology_catalogs/surface/Mitutoyo_Surftest_SJ410.pdf",
+    "source_title": "Mitutoyo Surftest SJ-410 Series",
+    "capabilities": [
+     {
+      "property_key": "surface.roughness_ra",
+      "technique": "촉침식 표면조도 측정(stylus, 가우시안/2CR/PC75 필터)",
+      "standard": "JIS B0601-2001 / JIS B0601-1994 / JIS B0601-1982 / ISO 1997 / ANSI / VDA",
+      "specimen": "측정력 0.75 mN 또는 4 mN, X축 이송 50 mm, 임의길이 0.1~50 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Parameter, Applicable standards, Detector",
+      "notes": "Ra 측정범위 인쇄 없음. 검출기 Z축 800/80/8 µm, 분해능 0.01/0.001/0.0001 µm 는 프로파일 높이 축이라 범위로 넣지 않았다. 진직도 0.5 µm/50 mm."
+     },
+     {
+      "property_key": "surface.roughness_rq",
+      "technique": "촉침식 표면조도 Rq 측정(stylus, 가우시안/2CR/PC75 필터)",
+      "standard": "JIS B0601-2001 / JIS B0601-1994 / JIS B0601-1982 / ISO 1997 / ANSI / VDA",
+      "specimen": "측정력 0.75 mN 또는 4 mN, X축 이송 50 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Parameter 목록에 Rq 명기, Applicable standards",
+      "notes": "Ra 행에서 옮긴 값이 아니다. range 는 Rq 측정범위 인쇄가 없어 비웠다. 검출기 Z축 800/80/8 µm, 분해능 0.01/0.001/0.0001 µm 는 프로파일 높이 축이다. **cutoff_mm** — λc 0.08~8 mm, λs 2.5/8/25 µm. **evaluation_length_mm** — 샘플링길이 0.08~25 mm x 구간수 1~20, 임의길이는 SJ-412 가 0.1~50 mm 로 SJ-411(0.1~25 mm)보다 넓다."
+     },
+     {
+      "property_key": "surface.roughness_rz",
+      "technique": "촉침식 표면조도 Rz 측정(stylus, 가우시안/2CR/PC75 필터)",
+      "standard": "JIS B0601-2001 / JIS B0601-1994 / JIS B0601-1982 / ISO 1997 / ANSI / VDA",
+      "specimen": "측정력 0.75 mN 또는 4 mN, X축 이송 50 mm",
+      "mapping_confidence": "high",
+      "source_detail": "Specifications — Parameter 목록에 Rz 명기, Applicable standards",
+      "notes": "최대높이 Rz 만 이었고 같은 목록의 RzJIS(구 JIS 10점평균)·Rz1max·Rmax 는 다른 양이라 섞지 않았다. range 는 인쇄 없어 비움. **cutoff_mm** — λc 0.08~8 mm. **evaluation_length_mm** — 임의길이 0.1~50 mm."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "id": "mitutoyo-abk-1",
+ "kind": "equipment_model",
+ "name": "Mitutoyo ABK-1 Brinell Hardness Tester",
+ "manufacturer": "mitutoyo",
+ "category": "brinell_hardness",
+ "test_items": [
+  "hardness_brinell"
+ ],
+ "measurands": [
+  "mechanical.hardness_brinell"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/212",
+   "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "미쓰토요 ABK-1 브리넬 경도시험기",
+ "drive": "hydraulic",
+ "description": "브리넬 경도시험",
+ "measurands_by_item": {
+  "hardness_brinell": [
+   "mechanical.hardness_brinell"
+  ]
+ },
+ "models": [
+  {
+   "model": "ABK-1",
+   "note": "유압식 브리넬 경도시험기 — 주·단조품과 거친 표면의 품질관리용",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 212,
+    "category": "mechanical",
+    "technique": "브리넬 경도시험",
+    "description": "유압식 브리넬 경도시험기 — 주·단조품과 거친 표면의 품질관리용",
+    "notes": "브리넬 키가 없던 시점에는 능력행을 하나도 못 만들어 chunk_13 에서 장비 자체를 뺐던 기종이다. 키가 열려 새로 넣는다. 시험력은 분동 조합으로 4903 N(500 kgf)부터 29420 N(3000 kgf)까지 7단(500/750/1000/1500/2000/2500/3000 kgf), 하중 인가·유지·제하 모두 수동이다. 질량 약 180 kg, 시편 최대높이 200 mm·최대깊이 155 mm.",
+    "doc_path": "metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf",
+    "source_title": "Mitutoyo Hardness Testing Machines Catalog No. E4104",
+    "capabilities": [
+     {
+      "property_key": "mechanical.hardness_brinell",
+      "technique": "브리넬 경도시험 — 초경 구압자, 압흔 직경 현미경 측정",
+      "specimen": "주조·단조품, 원소재, 특수강 등 거친 표면. 시편 최대높이 200 mm, 최대깊이 155 mm",
+      "mapping_confidence": "high",
+      "source_detail": "p.37 Hydraulic Brinell hardness testing machine ABK-1 — Specifications",
+      "notes": "**HBW 표기의 필수 조건이 둘 다 인쇄돼 있다** — 시험력 4903~29420 N(500~3000 kgf), 압자 직경 5 mm 와 10 mm 초경 구압자 두 종(표준 부속품). 경도 측정범위·정확도·규격번호는 인쇄돼 있지 않다(카탈로그 p.47 의 JIS Z 2243 은 일반 참고표라 기기 적합성 선언이 아니다). 부속 측정현미경으로 압흔 직경을 읽고 경도환산표로 계산하는 방식이다."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "id": "micromeritics-autopore-v",
+ "kind": "equipment_model",
+ "name": "Micromeritics AutoPore V Mercury Porosimeter",
+ "manufacturer": "micromeritics",
+ "category": "pycnometer_porosimeter",
+ "test_items": [
+  "instrumented_indentation"
+ ],
+ "measurands": [
+  "physical.porosity",
+  "physical.specific_surface_area",
+  "physical.density",
+  "structure.pore_diameter"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/165",
+   "note": "Micromeritics AutoPore V — Mercury Intrusion Porosimetry · metrology_catalogs/particle/Micromeritics_AutoPoreV.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "마이크로메리틱스 AutoPore V 수은압입 포로시미터",
+ "description": "수은압입 포로시메트리(MIP)",
+ "measurands_by_item": {
+  "instrumented_indentation": [
+   "physical.porosity",
+   "physical.specific_surface_area",
+   "physical.density",
+   "structure.pore_diameter"
+  ]
+ },
+ "models": [
+  {
+   "model": "AutoPore V",
+   "note": "가압 수은 압입량으로 기공크기분포·총기공부피·기공표면적·벌크/골격밀도를 산출하는 수은압입 포로시미터",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 165,
+    "category": "particle",
+    "technique": "수은압입 포로시메트리(MIP)",
+    "description": "가압 수은 압입량으로 기공크기분포·총기공부피·기공표면적·벌크/골격밀도를 산출하는 수은압입 포로시미터",
+    "notes": "네 모델(9600·9605·9610·9620)이 있으나 차이는 **포트 수와 최고압력**뿐이다 — 9600: 저압 2포트/고압 1포트 33,000 psia, 9605: 저압 4/고압 2 @33,000 psia, 9610: 저압 2/고압 1 @60,000 psia, 9620: 저압 4/고압 2 @60,000 psia. 측정범위 0.003~1100 µm 는 **시리즈 공통으로 인쇄**돼 있어(하한은 60,000 psia 기준일 것이나 33,000 psia 모델의 하한은 인쇄돼 있지 않다) 모델을 쪼개면 없는 숫자를 지어내야 한다. 그래서 시리즈명 한 레코드로 만들고 모델 차이는 이 note 에 남긴다. **기공 직경(pore diameter)에 대응하는 우리 물성 키가 없다** — taxonomy 공백 후보이며, 이 장비의 주력 출력인 기공크기분포는 능력행으로 만들지 못했다.",
+    "doc_path": "metrology_catalogs/particle/Micromeritics_AutoPoreV.pdf",
+    "source_title": "Micromeritics AutoPore V — Mercury Intrusion Porosimetry",
+    "capabilities": [
+     {
+      "property_key": "physical.porosity",
+      "technique": "수은압입 포로시메트리(MIP)",
+      "specimen": "다공성 고체·분체·암석코어·촉매·종이·막·정제. 페네트로미터 3/5/15 cc, 스템부피 0.392~4.185 cc",
+      "mapping_confidence": "high",
+      "source_detail": "p.1 '…calculate numerous sample properties such as pore size distributions, total pore volume…' / p.6 리포트 목록",
+      "notes": "총 기공부피(total pore volume)와 총 압입부피에서 기공률을 낸다. **기공률 자체의 측정범위는 인쇄돼 있지 않고**, 인쇄된 범위 '0.003~1100 µm'는 기공 **직경** 범위다(초기 충전압 0.2 psia=0.00128 MPa 기준으로 계산). 압입/압출 부피 분해능은 0.1 µL 보다 좋고(sub-microliter), 저압 증분은 0.2~50 psia 구간에서 0.05 psia 단위."
+     },
+     {
+      "property_key": "physical.specific_surface_area",
+      "technique": "수은압입 포로시메트리(MIP) — 총 기공표면적",
+      "specimen": "다공성 고체·분체·암석코어·촉매",
+      "mapping_confidence": "medium",
+      "source_detail": "p.1 'total pore surface area' / p.6 'total pore (surface) area', 'Cumulative Area vs Size' 리포트",
+      "notes": "카탈로그가 인쇄한 것은 '총 기공표면적'이고 우리 키는 단위질량당 비표면적이라 medium. 수은압입으로 얻는 표면적은 기체흡착(BET) 비표면적과 값이 다르다. 측정범위 인쇄 없음."
+     },
+     {
+      "property_key": "physical.density",
+      "technique": "수은압입 포로시메트리(MIP) — 벌크/엔벨로프 및 겉보기(골격) 밀도",
+      "specimen": "다공성 고체·분체·암석코어",
+      "mapping_confidence": "medium",
+      "source_detail": "p.1 'sample densities (bulk and skeletal)' / p.6 'bulk or envelope density, and apparent (skeletal) density'",
+      "notes": "여기서 나오는 것은 **벌크·엔벨로프 밀도와 겉보기(골격) 밀도**로, AccuPyc 의 진밀도와 다른 양이다. 밀도 측정범위·정확도는 인쇄돼 있지 않다. 수은온도 센서로 실제 수은밀도를 계산해 페네트로미터를 보정한다고 명시."
+     },
+     {
+      "property_key": "structure.pore_diameter",
+      "technique": "수은압입 포로시메트리(MIP) — Washburn 식 기공직경 환산",
+      "range_min": 3e-09,
+      "range_max": 0.0011,
+      "range_unit": "m",
+      "specimen": "다공성 고체·분체·암석코어·촉매·종이·막·정제. 페네트로미터 3/5/15 cc(스템부피 0.392~4.185 cc)",
+      "mapping_confidence": "high",
+      "source_detail": "p.5 OPERATIONAL ADVANTAGES — 'Ability to measure pore diameters from 0.003 to 1100* µm (*Calculated with an initial filling pressure of 0.2psia (0.00128MPa))'",
+      "notes": "원문 **0.003~1100 µm** 를 SI 로 환산 — **검산** 0.003 × 10⁻⁶ = **3×10⁻⁹ m**(3 nm), 1100 × 10⁻⁶ = **1.1×10⁻³ m**(1.1 mm). **`distribution_stat` = `instrument_range`** — 이 값은 특정 시료의 D50 이나 최빈값이 아니라 **장비가 측정할 수 있는 직경 범위**다(상한은 초기 충전압 0.2 psia=0.00128 MPa 기준으로 계산된 값이라고 각주에 명시). **`method_detail`** — 수은압입(Washburn 식)으로 압력에서 직경을 환산하며, 하한 0.003 µm 는 60,000 psia 급 모델 기준일 것이나 **33,000 psia 모델(9600·9605)의 하한은 카탈로그에 따로 인쇄돼 있지 않다.** 리포트로는 중앙기공직경(median pore diameter)·평균기공직경(average pore diameter)·부피/면적 대비 크기 분포를 낸다고 인쇄돼 있으므로 값 수집 시 D50 인지 평균인지 반드시 구분할 것. 저압 증분은 0.2~50 psia 구간에서 0.05 psia 단위, 압입/압출 부피 분해능은 0.1 µL 이하. 규격번호는 이 브로슈어에 인쇄돼 있지 않다."
+     }
+    ]
+   }
+  }
+ ]
+}

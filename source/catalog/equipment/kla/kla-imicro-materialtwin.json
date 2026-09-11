@@ -1,0 +1,53 @@
+{
+ "id": "kla-imicro-materialtwin",
+ "kind": "equipment_series",
+ "name": "KLA iMicro Nanoindenter",
+ "manufacturer": "kla",
+ "category": "instrumented_indentation",
+ "test_items": [
+  "instrumented_indentation",
+  "friction_wear_tribo",
+  "dma"
+ ],
+ "measurands": [
+  "mechanical.youngs_modulus",
+  "mechanical.loss_tangent",
+  "mechanical.friction_coefficient",
+  "mechanical.poisson_ratio",
+  "mechanical.hardness_indentation",
+  "mechanical.storage_modulus",
+  "mechanical.loss_modulus"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/103",
+   "note": "KLA iMicro Nanomechanical Tester · metrology_catalogs/mechanical/KLA_iMicro_nanoindenter.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "supplements": "kla-imicro",
+ "measurands_by_item": {
+  "instrumented_indentation": [
+   "mechanical.youngs_modulus",
+   "mechanical.loss_tangent",
+   "mechanical.poisson_ratio",
+   "mechanical.hardness_indentation",
+   "mechanical.storage_modulus",
+   "mechanical.loss_modulus"
+  ],
+  "friction_wear_tribo": [
+   "mechanical.friction_coefficient"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 14577"
+  ],
+  "test_methods_by_item": {
+   "instrumented_indentation": [
+    "ISO 14577"
+   ]
+  }
+ }
+}

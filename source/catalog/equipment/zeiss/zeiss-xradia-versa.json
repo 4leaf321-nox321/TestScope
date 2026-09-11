@@ -1,0 +1,120 @@
+{
+ "id": "zeiss-xradia-versa",
+ "kind": "equipment_series",
+ "name": "ZEISS Xradia 410 / 520 / 610 / 620 Versa 3D X-ray Microscopes",
+ "manufacturer": "zeiss",
+ "category": "xray_inspection",
+ "test_items": [
+  "xray_void_inspection",
+  "crystal_structure_analysis"
+ ],
+ "measurands": [
+  "structure.grain_size"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/184",
+   "note": "ZEISS Xradia Versa (410/510/610/620) 브로슈어 · metrology_catalogs/ndt/Zeiss_Xradia410_CT.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/185",
+   "note": "ZEISS Xradia 520 Versa 브로슈어 · metrology_catalogs/ndt/Zeiss_Xradia520_CT.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/186",
+   "note": "ZEISS Xradia 600-series Versa 브로슈어 · metrology_catalogs/ndt/Zeiss_Xradia610_620_CT.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/187",
+   "note": "ZEISS Xradia 600-series Versa 브로슈어 · metrology_catalogs/ndt/Zeiss_Xradia610_620_CT.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "자이스 Xradia Versa 3D X선 현미경",
+ "description": "3D X선 현미경(마이크로 CT, 이중단 확대)",
+ "measurands_by_item": {
+  "crystal_structure_analysis": [
+   "structure.grain_size"
+  ]
+ },
+ "models": [
+  {
+   "model": "Xradia 410 Versa",
+   "note": "기하확대 + 광학확대 2단 구조로 작동거리를 유지한 채 서브마이크론 분해능을 내는 3D X선 현미경",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 184,
+    "category": "ndt",
+    "technique": "3D X선 현미경(마이크로 CT, 이중단 확대)",
+    "description": "기하확대 + 광학확대 2단 구조로 작동거리를 유지한 채 서브마이크론 분해능을 내는 3D X선 현미경",
+    "notes": "**능력행이 0인 장비다 — 실패가 아니라 정상이다.** CT 가 주는 것은 공간분해능 0.9 µm(RaaD 50 mm 작동거리에서 1.5 µm), 최소 복셀 100 nm, 선원 20~90 kV/8 W(옵션 40~150 kV, 10 W/30 W), 대물 0.4×/4×/10×/20×(옵션 40×), 시료대 하중 25 kg, 시료 최대 300 mm 직경 같은 **영상 사양**이고 이것들은 우리 물성 키 어디에도 이어지지 않는다(복셀·분해능은 resolution 성격). 흡수/위상대비 모드로 내부 구조·결함을 보지만 정량 물성은 나오지 않는다. 같은 표에 실린 Xradia 510 Versa(0.7 µm, 70 nm 복셀)는 `Zeiss_Xradia520_CT.pdf` 쪽 사양과 겹쳐 따로 레코드를 만들지 않았다.",
+    "doc_path": "metrology_catalogs/ndt/Zeiss_Xradia410_CT.pdf",
+    "source_title": "ZEISS Xradia Versa (410/510/610/620) 브로슈어",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "Xradia 520 Versa",
+   "note": "흡수·위상대비 3D X선 현미경에 실험실형 회절대비 단층촬영(LabDCT)을 더해 결정립 방위까지 비파괴로 보는 모델",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 185,
+    "category": "ndt",
+    "technique": "3D X선 현미경 + 회절대비 단층촬영(LabDCT)",
+    "description": "흡수·위상대비 3D X선 현미경에 실험실형 회절대비 단층촬영(LabDCT)을 더해 결정립 방위까지 비파괴로 보는 모델",
+    "notes": "영상 사양(공간분해능 0.7 µm, 최소 복셀 70 nm, 선원 30~160 kV/10 W, FPX 광시야 옵션, 시료대 하중 25 kg, 검출기 z 이동 290 mm)은 물성 키에 이어지지 않아 능력행으로 만들지 않았다. **LabDCT 만이 재료 미세조직 물성으로 이어진다.** In situ 인장·고압셀 지그를 붙여 하중 중 4D 관찰이 가능하다고 인쇄(강 레이저용접부 인장시험 예시)되나, 하중·응력을 재는 것은 지그이지 이 장비가 아니다.",
+    "doc_path": "metrology_catalogs/ndt/Zeiss_Xradia520_CT.pdf",
+    "source_title": "ZEISS Xradia 520 Versa 브로슈어",
+    "capabilities": [
+     {
+      "property_key": "structure.grain_size",
+      "technique": "실험실형 회절대비 단층촬영(LabDCT)",
+      "specimen": "다결정 금속(Armco Fe, Al-Cu 합금, 알루미늄 합금 등). 시료 직경 mm 급",
+      "mapping_confidence": "medium",
+      "source_detail": "p.11 'LabDCT provides non-destructive 3D grain imaging for mapping orientation and microstructure' / p.21 'Complement your grain imaging with 3D grain morphology: Routinely acquire grain statistics'",
+      "notes": "이 브로슈어가 인쇄한 것은 **결정립 방위·형태·통계(grain statistics)** 이고 '결정립 크기(grain size)'라는 말은 나오지 않아 medium 으로 뒀다(600 시리즈 브로슈어에는 grain size 가 명시돼 있다). 측정 가능한 결정립 크기 범위는 인쇄돼 있지 않다. 공간분해능 0.7 µm·최소 복셀 70 nm 는 영상 분해능이지 결정립 크기 범위가 아니라 range_* 에 넣지 않았다."
+     }
+    ]
+   }
+  },
+  {
+   "model": "Xradia 610 Versa",
+   "note": "600 시리즈 3D X선 현미경. 공간분해능 500 nm, 최소 복셀 40 nm",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 186,
+    "category": "ndt",
+    "technique": "3D X선 현미경(마이크로 CT, 이중단 확대)",
+    "description": "600 시리즈 3D X선 현미경. 공간분해능 500 nm, 최소 복셀 40 nm",
+    "notes": "**능력행 0 — 정상이다.** 인쇄 사양은 공간분해능 0.5 µm(RaaD 50 mm 에서 1.0 µm), 최소 복셀 40 nm, 선원 30~160 kV/25 W(밀봉 투과형, Fast Activation), 대물 0.4×/4×/20×(옵션 40×·FPX), 시료대 하중 25 kg, 이동 50/100/50 mm 로 전부 영상 사양이다. LabDCT 는 620 Versa 전용이라 이 모델에는 결정립 능력행이 없다. 탄소·고분자·복합재·암석·전지 등 응용이 실려 있으나 정량 물성은 인쇄돼 있지 않다.",
+    "doc_path": "metrology_catalogs/ndt/Zeiss_Xradia610_620_CT.pdf",
+    "source_title": "ZEISS Xradia 600-series Versa 브로슈어",
+    "capabilities": []
+   }
+  },
+  {
+   "model": "Xradia 620 Versa",
+   "note": "600 시리즈 최상위 3D X선 현미경. LabDCT 로 결정립 크기·형태·방위를 비파괴로 얻고, MTX 로 치수 계측까지 확장",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 187,
+    "category": "ndt",
+    "technique": "3D X선 현미경 + 회절대비 단층촬영(LabDCT) + 계측확장(MTX)",
+    "description": "600 시리즈 최상위 3D X선 현미경. LabDCT 로 결정립 크기·형태·방위를 비파괴로 얻고, MTX 로 치수 계측까지 확장",
+    "notes": "610 Versa 와 영상 사양(0.5 µm, 40 nm 복셀, 30~160 kV/25 W)은 같고 **LabDCT·자동필터체인저(AFC)·고종횡비 단층촬영(HART)·DSCoVer·계측확장(MTX)이 이 모델 전용**이다. **우리 키에 못 이은 것** — MTX 의 치수 계측 정확도(형상이지 물성이 아니다), 기공·크랙·섬유배향 가시화(정량값 인쇄 없음), DeepRecon/OptiRecon 재구성 가속.",
+    "doc_path": "metrology_catalogs/ndt/Zeiss_Xradia610_620_CT.pdf",
+    "source_title": "ZEISS Xradia 600-series Versa 브로슈어",
+    "capabilities": [
+     {
+      "property_key": "structure.grain_size",
+      "technique": "실험실형 회절대비 단층촬영(LabDCT)",
+      "specimen": "다결정 금속(Armco Fe 등). 여러 LabDCT 스캔을 이어붙여 큰 시료도 가능",
+      "mapping_confidence": "high",
+      "source_detail": "p.16 'Routinely and non-destructively acquire data (including grain size, morphology, orientation)' — LabDCT option exclusively available on Xradia 620 Versa",
+      "notes": "**'grain size' 가 명시적으로 인쇄돼 있어 high 로 이었다.** 측정 가능한 결정립 크기 범위·정확도는 인쇄돼 있지 않다. 공간분해능 0.5 µm·최소 복셀 40 nm 는 영상 분해능이라 range_* 에 넣지 않았다. 결정립 방위·형태·위치까지 같이 나오며 수치 결정립 모델 개선에 쓴다고 인쇄."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -21,6 +21,7 @@
 | `catalog/tools_render_pages.py` | PDF 특정 쪽을 PNG 로 렌더링(표 열 대응 확인용) |
 | `catalog/build_graph.py` | 객체를 검증하고 `graph.json`(노드+엣지)·`index.md`·`sources.json` 을 만든다 |
 | `catalog/reference_docs.json` | 장비가 아닌 규격·시험법 문서(IPC ROSE, USB Type-C, IPX9K 백서 등) |
+| `catalog/tools_from_materialtwin.py` | MaterialTwin(materialtwin.db)의 계측기·물성을 객체와 `ontology/properties.json` 으로 바꾼다. 묶음 규칙은 `source/materialtwin/groups.json` |
 
 ## 장비 객체가 답해야 하는 것
 
@@ -206,6 +207,25 @@ MTDI 객체 5 개(UC-980 노·UC-350/UC-170 챔버, 마모마찰 4 기종, 비�
 
 힘 축이 이름 7 개로 갈라져 있던 것(`force_kN`·`dynamic_force_kN`·`test_load_kgf` …)도
 `testscope_key: "force"` 로 묶었다 — 안 그러면 서보유압 피로기가 "20 kN" 질의에서 통째로 빠진다.
+
+**13차 — MaterialTwin 계측기 218종 (2026-09-12).** `66_MatNexus/materialtwin-20260905/materialtwin.db`
+의 계측기·능력행·물성 정의를 `tools_from_materialtwin.py` 가 객체로 바꿨다. 새 객체 67(기종 150) ·
+보탬(`supplements`) 객체 17(기종 15). PDF 는 스냅샷에 없어 출처가 `origin`
+(`materialtwin-20260905/instrument/<id>`)이다 — 근거는 그 DB 행이다.
+
+- **MaterialTwin 은 기종 한 층뿐이다.** 계열 묶음은 `source/materialtwin/groups.json` 이 정한다 —
+  사람이 확인한 표이고, 거기 없는 계측기는 변환기가 오류로 세운다. Instron 5942~5989 는 이미 있는
+  `instron-5900-series` 에 보탰고(-E2 변형 7종만 새로), Shimadzu AG-Xplus 11종은 새 계열이다.
+- **하중용량은 사양이지 물성 범위가 아니다.** MaterialTwin 은 「하중용량 10 kN」 을 능력행 range 에
+  일부러 안 넣었다. 여기서는 기종 사양 `force_kN` 으로 되살린다. 능력행의 시편 온도는
+  `temperature_degC` 로 가고, 주석이 「옵션 항온조 기준」 이면 `requires_accessory` 를 단다.
+- **능력행의 규격은 시험 항목마다 달려 온다** → `standards.test_methods_by_item`. 평평한 목록만
+  있던 자리라 반입이 규격을 항목에 잇지 못했었다(시험 항목 없는 시험법 285 → 173).
+- **물성 축이 생겼다.** `ontology/properties.json`(MaterialTwin 271키 — 손으로 안 고친다, 다시 돌린다)과
+  `ontology/property_links.json`(measurand → 물성 키 · 시험별 덧붙임 · 기법 → 시험 항목). 객체의
+  `measurands_by_item` 이 「이 계열은 이 시험으로 이 물성을 낸다」 를 말한다(ADR 0007).
+- 재료 분석 장비(SEM·XRD·XPS·FT-IR·입도·접촉각·홀 …)를 담을 시험 항목 9종과 분류 17종을 더했다.
+  조건 부여 장비(ESPEC 21종·Q-FOG)는 능력행이 0 이라 `groups.json` 의 `test_items` 로 적었다.
 
 ## 표 값 검증 (3단계)
 

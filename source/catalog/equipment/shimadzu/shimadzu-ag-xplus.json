@@ -1,0 +1,1434 @@
+{
+ "id": "shimadzu-ag-xplus",
+ "kind": "equipment_series",
+ "name": "AUTOGRAPH AG-Xplus Series Precision Universal Testers",
+ "manufacturer": "shimadzu",
+ "category": "universal_testing_machine",
+ "test_items": [
+  "tensile",
+  "flexure",
+  "compression",
+  "peel"
+ ],
+ "measurands": [
+  "mechanical.tensile_strength",
+  "mechanical.youngs_modulus",
+  "mechanical.elongation_at_break",
+  "mechanical.flexural_strength",
+  "mechanical.flexural_modulus",
+  "mechanical.compressive_strength",
+  "interface.peel_strength"
+ ],
+ "sources": [
+  {
+   "origin": "materialtwin-20260905/instrument/128",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/129",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/130",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/131",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/132",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/133",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/134",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/135",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/136",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/137",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  },
+  {
+   "origin": "materialtwin-20260905/instrument/138",
+   "note": "Shimadzu Autograph AG-X plus Series Precision Universal Tester · metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf"
+  }
+ ],
+ "confidence": "catalog",
+ "name_ko": "시마즈 오토그래프 AG-Xplus 정밀 만능시험기",
+ "drive": "electromechanical",
+ "description": "단축 만능재료시험(정밀 볼스크류 구동)",
+ "measurands_by_item": {
+  "tensile": [
+   "mechanical.tensile_strength",
+   "mechanical.youngs_modulus",
+   "mechanical.elongation_at_break"
+  ],
+  "flexure": [
+   "mechanical.flexural_strength",
+   "mechanical.flexural_modulus"
+  ],
+  "compression": [
+   "mechanical.compressive_strength"
+  ],
+  "peel": [
+   "interface.peel_strength"
+  ]
+ },
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 178",
+   "ISO 6892",
+   "JIS K7161"
+  ],
+  "test_methods_by_item": {
+   "tensile": [
+    "ISO 6892",
+    "JIS K7161"
+   ],
+   "flexure": [
+    "ISO 178"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "AG-Xplus",
+   "specs": {
+    "force_kN": 10.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "benchtop",
+   "note": "탁상형 정밀 만능시험기 — 하중용량 10 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 128,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "탁상형 정밀 만능시험기 — 하중용량 10 kN",
+    "notes": "하중용량 10 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-Xplus HS",
+   "specs": {
+    "force_kN": 5.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "benchtop",
+   "note": "고속 탁상형(크로스헤드 3000 mm/min, 복귀 3300 mm/min) 정밀 만능시험기 — 하중용량 5 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 129,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "고속 탁상형(크로스헤드 3000 mm/min, 복귀 3300 mm/min) 정밀 만능시험기 — 하중용량 5 kN",
+    "notes": "하중용량 5 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-Xplus SC",
+   "specs": {
+    "force_kN": 10.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "benchtop",
+   "note": "숏컬럼 탁상형 정밀 만능시험기 — 하중용량 10 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 130,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "숏컬럼 탁상형 정밀 만능시험기 — 하중용량 10 kN",
+    "notes": "하중용량 10 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-XDplus",
+   "specs": {
+    "force_kN": 20.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "benchtop",
+   "note": "탁상형 정밀 만능시험기 — 하중용량 20 kN / 50 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 131,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "탁상형 정밀 만능시험기 — 하중용량 20 kN / 50 kN",
+    "notes": "하중용량 20 kN / 50 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-20kN/50kNXplus",
+   "specs": {
+    "force_kN": 20.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "플로어형 정밀 만능시험기 — 하중용량 20 kN / 50 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 132,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "플로어형 정밀 만능시험기 — 하중용량 20 kN / 50 kN",
+    "notes": "하중용량 20 kN / 50 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-100kNXplus",
+   "specs": {
+    "force_kN": 100.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "플로어형 정밀 만능시험기 — 하중용량 100 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 133,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "플로어형 정밀 만능시험기 — 하중용량 100 kN",
+    "notes": "하중용량 100 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-250kN/300kNXplus",
+   "specs": {
+    "force_kN": 250.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "플로어형 정밀 만능시험기 — 하중용량 250 kN / 300 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 134,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "플로어형 정밀 만능시험기 — 하중용량 250 kN / 300 kN",
+    "notes": "하중용량 250 kN / 300 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±0.5% 지시값(ISO 7500-1 Class 0.5)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-500/600kN",
+   "specs": {
+    "force_kN": 500.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "대용량 플로어형 정밀 만능시험기 — 하중용량 500 kN / 600 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 135,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "대용량 플로어형 정밀 만능시험기 — 하중용량 500 kN / 600 kN",
+    "notes": "하중용량 500 kN / 600 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-1000kN",
+   "specs": {
+    "force_kN": 1000.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "대용량 플로어형 정밀 만능시험기 — 하중용량 1000 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 136,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "대용량 플로어형 정밀 만능시험기 — 하중용량 1000 kN",
+    "notes": "하중용량 1000 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-1500kN",
+   "specs": {
+    "force_kN": 1500.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "대용량 플로어형 정밀 만능시험기 — 하중용량 1500 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 137,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "대용량 플로어형 정밀 만능시험기 — 하중용량 1500 kN",
+    "notes": "하중용량 1500 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  },
+  {
+   "model": "AG-2000kN",
+   "specs": {
+    "force_kN": 2000.0,
+    "temperature_degC": {
+     "min": -180.0,
+     "max": 320.0,
+     "requires_accessory": true,
+     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+    }
+   },
+   "form_factor": "floor",
+   "note": "대용량 플로어형 정밀 만능시험기 — 하중용량 2000 kN",
+   "materialtwin": {
+    "snapshot": "materialtwin-20260905",
+    "instrument_id": 138,
+    "category": "mechanical",
+    "technique": "단축 만능재료시험(정밀 볼스크류 구동)",
+    "description": "대용량 플로어형 정밀 만능시험기 — 하중용량 2000 kN",
+    "notes": "하중용량 2000 kN. 모델명은 카탈로그 사양표의 'Model Name' 표기를 그대로 옮겼다 — 시리즈 안에서 표기법이 일정하지 않고(예: 'AG-Xplus' 가 여러 프레임에 쓰이고 'AG-20kN/50kNXplus' 는 두 용량을 한 이름으로 묶는다) 용량으로만 구분되는 자리가 있다. 시험력 정확도는 고정밀 유닛 ±0.3~0.5%(ISO 7500-1 Class 0.5), 대용량형은 ±1%(Class 1). **하중용량 kN 은 range_* 에 넣지 않았다.** **매핑 포기** — V노치 전단시험(ASTM D5379 / D7078) 지그가 실려 있지만 우리 카탈로그에 면내 전단강도 키가 없다(interface.lap_shear_strength·mechanical.interlaminar_shear_strength 는 다른 시험이다). 인열·마찰·사이클 시험도 물성 사양이 없다.",
+    "doc_path": "metrology_catalogs/mechanical/Shimadzu_AGX-plus.pdf",
+    "source_title": "Shimadzu Autograph AG-X plus Series Precision Universal Tester",
+    "capabilities": [
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "금속 인장시험",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "금속 시편. 웨지/평판 그립(1 kN~300 kN)",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "금속 인장 규격 ISO 6892 이 카탈로그 응용면에 인쇄돼 있다. **하중용량 kN 은 물성범위가 아니라 range_* 를 비웠다.** 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.tensile_strength",
+      "technique": "플라스틱 인장시험",
+      "standard": "JIS K7161",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "플라스틱·수지 시편",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "플라스틱 인장 규격 JIS K7161. 같은 property_key 라도 technique 문자열이 달라 금속 행과 별개로 남는다((instrument, property_key, technique) 유일제약). 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.youngs_modulus",
+      "technique": "인장시험 탄성계수 — 신율계 미소변형 영역",
+      "standard": "ISO 6892",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편(고정밀 디지털 신율계 등)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그가 'ISO·JIS 가 정한 극미소 변형영역에서의 탄성계수 측정' 을 명시한다. 범위·정확도는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.elongation_at_break",
+      "technique": "인장시험 신율 — 신율계",
+      "standard": "JIS K7161",
+      "accuracy": "상대신율 ±0.2% (신율계)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "신율계 부착 시편. 연질재 신율계는 최대 이동 1000 mm",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "신율계 정밀도가 상대신율 ±0.2%, 상온 신율정확도는 ISO Class 0.5 준수라고 인쇄돼 있다 — 파단신율 자체의 범위는 없다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_strength",
+      "technique": "3점 굽힘시험",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그: 펀치선단 R5, 지점간격 20~500 mm. 두께 3 mm 이하/초과로 지그가 갈린다",
+      "mapping_confidence": "high",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "굽힘 지그표에 ISO 178 · JIS K7171 · ASTM D790(Test method 1) · JIS K6911 · JIS K6902 · JIS C6481 이 함께 인쇄돼 있다 — 유일제약 때문에 ISO 178 만 넣고 나머지는 여기 적는다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.flexural_modulus",
+      "technique": "3점 굽힘시험 — 굽힘탄성계수",
+      "standard": "ISO 178",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "굽힘 지그(펀치 R5 × 34/72/110, 지점간격 20~500 mm)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "ISO 178 · JIS K7171 이 굽힘탄성계수를 함께 규정한다. 범위 인쇄 없음. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "mechanical.compressive_strength",
+      "technique": "압축시험 — 압축판",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "압축판 Ø50 x 25 mm(고정형) 또는 Ø100 mm(구면좌형). 플라스틱·금속·고무·목재·시멘트",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "압축판 표에 규격번호가 없어 standard 를 비웠다. 압축판의 '0 to 40 °C' 는 지그 사용온도이지 시험온도가 아니다. 온도는 항온조 TCL-N(-180~320 °C) **옵션** 기준의 최대구간이다 — **검산** -180+273.15=93.15, 320+273.15=593.15. TCE 는 -70~+280 °C, TCL-C 는 -70~320 °C 로 조마다 다르다."
+     },
+     {
+      "property_key": "interface.peel_strength",
+      "technique": "박리시험(90° 등)",
+      "accuracy": "시험력 ±1% 지시값(ISO 7500-1 Class 1)",
+      "temperature_min_k": 93.15,
+      "temperature_max_k": 593.15,
+      "specimen": "점착테이프·필름. 90° 박리각을 유지하는 슬라이드식 시편대(1 kN 급)",
+      "mapping_confidence": "medium",
+      "source_detail": "p.15 Controlled atmosphere test device / p.20~ Specifications / p.12 굽힘지그표",
+      "notes": "카탈로그는 '인장·압축·굽힘·박리 시험' 이라고만 적고 박리 규격번호를 붙이지 않았다 — standard 를 비웠다. 만능시험기가 직접 재는 값은 박리력(N)이고 박리강도(N/m)는 폭으로 나눈 값이라 interface.peel_force 도 후보다 — medium."
+     }
+    ]
+   }
+  }
+ ],
+ "limits": {
+  "temperature_degC": {
+   "min": -180.0,
+   "max": 320.0
+  }
+ }
+}
