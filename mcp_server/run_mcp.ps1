@@ -64,7 +64,8 @@ if ($Stdio) {
 }
 
 if ($Port -eq 0) { $Port = 8030 }
-$env:FASTMCP_PORT = "$Port"
 Write-Host "MCP: http://127.0.0.1:$Port/mcp"
-& $venvPython -c "import server; server.mcp.run(transport='http')"
+# 공식 mcp SDK(2.x)다 — 전송 이름은 'streamable-http' 이고 포트는 인자로 받는다.
+# 'http' 와 FASTMCP_PORT 환경변수는 다른 패키지(fastmcp)의 것이라 여기서는 통하지 않는다.
+& $venvPython -c "import server; server.mcp.run(transport='streamable-http', port=$Port)"
 exit $LASTEXITCODE
