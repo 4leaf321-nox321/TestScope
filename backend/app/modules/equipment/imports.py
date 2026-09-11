@@ -80,6 +80,7 @@ from app.modules.equipment.schemas import (
 from app.modules.resolve.services import resolve
 from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
 from app.modules.workspaces.models import Workspace
+from app.shared import audit
 from app.shared.errors import AppError
 from app.shared.permissions import require_owner_edit
 from app.shared.text import clean
@@ -317,6 +318,9 @@ class Lookup:
                 # 같은 이름이 둘이면 고르지 않는다 — 그래서 목록으로 담는다.
                 self.terms[axis].setdefault(term.value.strip().lower(), []).append(term.id)
 
+        #: slug -> 부서 id. 감사 기록을 그 부서에 매달 때 쓴다.
+        self.workspaces_by_slug: dict[str, uuid.UUID] = {}
+
         names = {clean(one.get("workspace", "")) for one in values}
         names.discard("")
         if names:
@@ -328,6 +332,7 @@ class Lookup:
                 # 이름과 slug 둘 다로 찾을 수 있게 담는다 — 사람이 아는 것은 이름이다.
                 self.workspaces[row.name] = row.slug
                 self.workspaces[row.slug] = row.slug
+                self.workspaces_by_slug[row.slug] = row.id
 
     def workspace(self, text: str, problems: Problems) -> str | None:
         """부서를 찾고 **권한까지 본다.**
@@ -793,6 +798,42 @@ def run(
             result.updated = 0
             return result
         row.imported = True
+
+    if created or updated:
+        # **반입 한 번에 감사 한 줄.** 대마다 남기면 300줄이 생겨 정작 찾을 것을 가린다.
+        # 갱신은 전후를 붙인다 — 「이 위치 누가 바꿨어」 에 답하는 자리가 여기다.
+        fresh = [row.asset_no for row, _, plan in going if not row.exists and row.asset_no]
+        changed = {
+            row.asset_no: {
+                one.field: {"before": one.before, "after": one.after} for one in row.changes
+            }
+            for row, _, plan in going
+            if row.exists and plan and row.asset_no
+        }
+        owners = {
+            taken[payload["asset_no"]].owner_workspace_id
+            if row.exists
+            else look.workspaces_by_slug.get(payload.get("workspace_slug") or "")
+            for row, payload, _ in going
+        }
+        owners.discard(None)
+        audit.record(
+            db,
+            action=audit.EQUIPMENT_IMPORTED,
+            actor=user,
+            target_table="equipment",
+            target_id=None,
+            target_label=f"대장 반입: 새로 {created} · 갱신 {updated}",
+            # 한 부서의 대장이면 그 부서에 매단다 — 부서 이력 화면에서 보인다.
+            workspace_id=next(iter(owners)) if len(owners) == 1 else None,
+            changes={
+                "created": created,
+                "updated": updated,
+                "unchanged": result.unchanged,
+                "created_asset_nos": fresh,
+                "updated_rows": changed,
+            },
+        )
 
     db.commit()
     result.created = created

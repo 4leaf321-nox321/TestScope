@@ -55,6 +55,12 @@ CATALOG_CREATED = "catalog.created"
 
 특히 통로(actor_client)가 여기서 값을 갖는다 — 사람이 만든 계열과 AI 가 만든 계열은
 나중에 다르게 다뤄야 할 수 있고, 그때 구별할 방법이 이것뿐이다."""
+EQUIPMENT_IMPORTED = "equipment.imported"
+"""**대장 반입 한 번.** 한 대씩이 아니라 한 번에 한 줄이다.
+
+300대를 넣거나 30대를 갱신했는데 흔적이 없으면 「이 위치 누가 바꿨어」 에 답을 못 한다.
+그렇다고 대마다 한 줄씩 남기면 반입 한 번에 감사 300줄이 생겨 정작 찾을 것을 가린다.
+한 줄에 새로 넣은 자산번호·갱신한 자산번호와 그 전후를 담는다."""
 EQUIPMENT_RETIRED = "equipment.retired"
 EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"

@@ -705,3 +705,38 @@ def test_갱신을_안_켜면_여전히_거절한다(client: TestClient, admin: 
     again = _upload(client, admin, body)
     assert again["rows"][0]["exists"] is True
     assert any("이미 등록" in one for one in _said(again["rows"][0]))
+
+
+def test_반입_한_번이_감사에_한_줄로_남는다(client: TestClient, admin: Signed) -> None:
+    """300대를 넣거나 30대를 갱신했는데 흔적이 없으면 「이 위치 누가 바꿨어」 에 답을
+    못 한다. 대마다 남기면 감사 300줄이 생겨 정작 찾을 것을 가리므로 **한 번에 한 줄**,
+    갱신은 전후를 붙인다."""
+    workspace, site, category = _fixture(client, admin)
+    tag = uuid.uuid4().hex[:6]
+    body = (
+        f"{HEADER}\n"
+        f"AUD-{tag}-1,만능기,{workspace},{site},3동 201호,{category},,가동,예\n"
+        f"AUD-{tag}-2,충격기,{workspace},{site},3동 202호,{category},,가동,예\n"
+    )
+    assert _upload(client, admin, body, dry_run=False)["created"] == 2
+
+    later = f"자산번호,설치위치\nAUD-{tag}-1,4동 105호\n"
+    assert _upsert(client, admin, later, dry_run=False)["updated"] == 1
+
+    got = client.get(
+        "/api/audit/entries?action=equipment.imported&limit=20", headers=admin.headers
+    )
+    assert got.status_code == 200, got.text
+    entries = got.json()["items"]
+    mine = [one for one in entries if f"AUD-{tag}" in str(one.get("changes"))]
+    assert len(mine) == 2, "반입 두 번이면 감사 두 줄이다"
+
+    newest = mine[0]
+    assert newest["changes"]["updated"] == 1
+    assert newest["changes"]["updated_rows"][f"AUD-{tag}-1"]["location"] == {
+        "before": "3동 201호",
+        "after": "4동 105호",
+    }
+    oldest = mine[1]
+    assert oldest["changes"]["created"] == 2
+    assert set(oldest["changes"]["created_asset_nos"]) == {f"AUD-{tag}-1", f"AUD-{tag}-2"}

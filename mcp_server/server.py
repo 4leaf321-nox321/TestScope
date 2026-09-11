@@ -125,13 +125,21 @@ async def _get(ctx: Context, path: str, params: dict[str, Any] | None = None) ->
 
 
 async def _send(
-    ctx: Context, method: str, path: str, body: dict[str, Any] | None = None
+    ctx: Context,
+    method: str,
+    path: str,
+    body: dict[str, Any] | None = None,
+    params: dict[str, Any] | None = None,
 ) -> Any:
-    """POST·PATCH·PUT 하나. **쓰기는 이 함수만 지난다** — 오류 모양을 한 곳에 둔다."""
+    """POST·PATCH·PUT 하나. **쓰기는 이 함수만 지난다** — 오류 모양을 한 곳에 둔다.
+
+    쿼리는 `params` 로 준다. 경로에 `?` 를 붙이면 「도구가 부르는 경로가 실재하나」 를
+    보는 구조 시험이 그 경로를 못 찾는다.
+    """
     try:
         async with httpx.AsyncClient(base_url=API_BASE, timeout=60.0) as client:
             got = await client.request(
-                method, path, json=body or {}, headers=_headers(ctx)
+                method, path, json=body or {}, params=params, headers=_headers(ctx)
             )
     except httpx.RequestError as failed:
         return {"error": f"백엔드에 닿지 못했습니다({API_BASE}): {failed}"}
@@ -615,6 +623,63 @@ async def get_equipment(ctx: Context, equipment_id: str) -> dict[str, Any]:
 
 
 @mcp.tool()
+async def import_equipment(
+    ctx: Context,
+    text: str,
+    dry_run: bool = True,
+    update_existing: bool = False,
+) -> dict[str, Any]:
+    """부서 대장을 **통째로** 넣는다. 한 대씩 `register_equipment` 를 300번 부르지 마라.
+
+    `text` 는 엑셀에서 복사한 것 그대로다 — 탭이나 쉼표로 나뉜 표, **첫 줄이 머리글**.
+    머리글은 한국어다(`import_columns` 가 받아 주는 이름을 준다):
+
+        자산번호  장비명  보유부서  거점  설치위치  기종  장비유형  제조번호  상태  …
+
+    부서·거점·장비유형·기종은 **이름**으로 적는다. 하나로 정해지지 않으면 그 줄이
+    거절되고 후보가 온다 — **고르지 말고 사람에게 물어라.** 비슷한 기종에 끼워 넣으면
+    그 장비의 하중·온도가 남의 것이 되고, 검색은 그 남의 수치로 「됩니다」 라고 답한다.
+
+    ## 두 번 부른다
+
+    `dry_run=True`(기본)는 **아무것도 저장하지 않고** 줄마다 판정을 돌려준다. 줄마다
+    `problems` 가 비어 있으면 넣을 수 있고, 있으면 어느 칸(`field`)이 왜 틀렸는지가
+    적혀 있다. 그것을 사람에게 보여 주고 확인받은 뒤 `dry_run=False` 로 다시 보낸다.
+
+    **넣을 수 있는 줄은 넣고, 못 넣은 줄은 `imported=False` 로 남는다.** 못 넣은 줄만
+    고쳐서 다시 보내면 된다 — 들어간 줄을 또 보내면 「이미 등록된 장비」 로 거절된다.
+
+    ## 이미 등록된 자산번호
+
+    기본은 거절이다. `update_existing=True` 면 **적힌 칸만** 갱신한다 — 빈 칸은 안
+    건드리고, 부서와 기종은 안 바꾼다. 미리보기가 줄마다 `changes` 로 전후를 돌려주니
+    **그것을 사람에게 보여 주고 나서** 넣어라. 30대의 위치가 조용히 바뀌는 일은 없어야 한다.
+
+    ## 기종이 카탈로그에 없으면
+
+    기종을 만들지 마라(시스템 관리자만 만들고, 사양 없는 기종은 검색을 망친다). 기종
+    칸을 비우고 **모델명 칸에 적어 둔다.** 그 장비는 시험 항목이 0 건이라 검색에 안 걸리지만
+    홈의 「카탈로그에 안 이어진 장비」 에 남아 나중에 잇는다.
+
+    한 번에 2000줄까지다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/equipment/import",
+        {"text": text, "update_existing": update_existing},
+        params={"dry_run": "true" if dry_run else "false"},
+    )
+
+
+@mcp.tool()
+async def import_columns(ctx: Context) -> dict[str, Any]:
+    """`import_equipment` 가 받는 열. 머리글에 어떤 이름을 쓸 수 있는지(별칭 포함)와
+    어느 열이 필수인지를 준다 — 대장을 만들기 전에 한 번 본다."""
+    return _listed(await _get(ctx, "/equipment/import/columns"), "columns")
+
+
+@mcp.tool()
 async def register_equipment(
     ctx: Context,
     asset_no: str,
@@ -903,7 +968,9 @@ async def update_equipment(
     # **안 보낸 것과 비운 것을 구별한다.** 전부 실어 보내면 상태 하나 바꾸려다
     # 담당자와 위치가 지워지고, 그 손실은 부른 사람 눈에 안 보인다.
     return await _send(
-        ctx, "PATCH", f"/equipment/{equipment_id}",
+        ctx,
+        "PATCH",
+        f"/equipment/{equipment_id}",
         {key: value for key, value in body.items() if value is not None},
     )
 
@@ -944,6 +1011,7 @@ async def add_calibration(
             "note": note,
         },
     )
+
 
 @mcp.tool()
 async def list_pending_work(ctx: Context) -> dict[str, Any]:

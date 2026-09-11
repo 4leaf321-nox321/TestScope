@@ -48,7 +48,10 @@ async def main() -> int:
     print("안내", len(server.get_guide()), "자")
 
     checks: list[tuple[str, Any]] = [
-        ("resolve(series, 6800)", server.resolve(ctx, "series", "6800 Series Universal Testing Systems")),
+        (
+            "resolve(series, 6800)",
+            server.resolve(ctx, "series", "6800 Series Universal Testing Systems"),
+        ),
         ("resolve(term, 인장)", server.resolve(ctx, "term", "인장", axis="test_item")),
         ("list_conditions", server.list_conditions(ctx)),
         ("search_series(6800)", server.search_series(ctx, q="6800", limit=2)),
