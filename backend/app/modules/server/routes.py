@@ -148,6 +148,28 @@ def maintenance(
             )
         )
 
+    # **카탈로그에 안 이어진 장비.** 기종이 없으면 시험 항목이 복사될 자리가 없다.
+    #
+    # 「카탈로그에 그 기종이 없더라」 는 사실이 반입한 사람 머릿속에만 남으면, 그 장비는
+    # 대장에 있는 채로 영영 안 찾아진다. 여기 세워 두면 시스템 관리자가 카탈로그를
+    # 채우거나, 부서가 손으로 시험 항목을 붙인다.
+    unlinked = _count(
+        db,
+        Equipment,
+        Equipment.deleted_at.is_(None),
+        Equipment.model_id.is_(None),
+    )
+    if unlinked:
+        items.append(
+            MaintenanceItemOut(
+                key="equipment_without_model",
+                label="카탈로그에 안 이어진 장비",
+                count=unlinked,
+                link="/equipment?catalog=unlinked",
+                severity="info",
+            )
+        )
+
     # **대상인데 한 번도 안 받은 장비.** 이력이 없다는 사실만으로는 대상이 아닌
     # 장비와 구별되지 않아서, 여기 안 세우면 빠뜨린 장비가 영영 안 보인다.
     calibrated = select(EquipmentCalibration.equipment_id).distinct()

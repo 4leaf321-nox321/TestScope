@@ -257,6 +257,7 @@ def list_equipment(
     site_term_id: uuid.UUID | None = None,
     test_item_term_id: uuid.UUID | None = None,
     test_item: str | None = None,
+    catalog: str | None = None,
     calibration: str | None = None,
     shared_use: bool | None = None,
     limit: int,
@@ -321,6 +322,14 @@ def list_equipment(
         stmt = stmt.where(
             Equipment.id.not_in(select(EquipmentTestItem.equipment_id).distinct())
         )
+    if catalog == "unlinked":
+        # **카탈로그에 안 이어진 장비.** 기종이 없으면 시험 항목이 복사될 자리가
+        # 없고, 사람이 손으로 채우지 않는 한 그 장비는 검색에 안 걸린다.
+        #
+        # 그 기종이 카탈로그에 없어서 비운 경우가 실제로 있다(자작 장비도 있다).
+        # 시스템 관리자가 이 목록을 보고 카탈로그를 채울 수 있어야 한다 — 안 그러면
+        # 「카탈로그에 없더라」 는 사실이 반입한 사람 머릿속에만 남는다.
+        stmt = stmt.where(Equipment.model_id.is_(None))
     if calibration:
         stmt = _by_calibration(stmt, calibration)
     if workspace_slug:

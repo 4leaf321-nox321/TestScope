@@ -2271,7 +2271,7 @@
           "equipment"
         ],
         "summary": "List Equipment",
-        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.",
+        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.\n\n`catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운\n경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.",
         "operationId": "list_equipment_api_equipment_get",
         "parameters": [
           {
@@ -2440,6 +2440,23 @@
                 }
               ],
               "title": "Test Item"
+            }
+          },
+          {
+            "name": "catalog",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^unlinked$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Catalog"
             }
           },
           {

@@ -68,6 +68,7 @@ def list_equipment(
     site_term_id: uuid.UUID | None = Query(default=None),
     test_item_term_id: uuid.UUID | None = Query(default=None),
     test_item: str | None = Query(default=None, pattern="^none$"),
+    catalog: str | None = Query(default=None, pattern="^unlinked$"),
     calibration: str | None = Query(
         default=None, pattern="^(required|exempt|missing|overdue)$"
     ),
@@ -90,6 +91,9 @@ def list_equipment(
 
     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
+
+    `catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운
+    경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.
     """
     return services.list_equipment(
         db,
@@ -104,6 +108,7 @@ def list_equipment(
         site_term_id=site_term_id,
         test_item_term_id=test_item_term_id,
         test_item=test_item,
+        catalog=catalog,
         calibration=calibration,
         shared_use=shared_use,
         limit=clamp_limit(limit),

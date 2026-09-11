@@ -753,6 +753,9 @@ export interface paths {
          *
          *     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
          *     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
+         *
+         *     `catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운
+         *     경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.
          */
         get: operations["list_equipment_api_equipment_get"];
         put?: never;
@@ -6077,6 +6080,7 @@ export interface operations {
                 site_term_id?: string | null;
                 test_item_term_id?: string | null;
                 test_item?: string | null;
+                catalog?: string | null;
                 calibration?: string | null;
                 shared_use?: boolean | null;
                 limit?: number;

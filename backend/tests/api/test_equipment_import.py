@@ -547,3 +547,34 @@ def test_같은_이름이_여럿이면_만들라고_하지_않는다(client: Tes
     row = _upload(client, admin, body)["rows"][0]
     said = next(one for one in row["problems"] if one["field"] == "site")
     assert said["make_axis"] == "site"
+
+
+def test_카탈로그에_안_이어진_장비를_되찾을_수_있다(client: TestClient, admin: Signed) -> None:
+    """**기종을 반입 창에서 만들게 하지 않는 대신** 이 길이 있어야 한다.
+
+    기종은 전사 공용이라 시스템 관리자만 만들고, 계열이 먼저 있어야 하며, 사양 0칸
+    기종을 만들면 그 장비는 조건 없이 복사되어 검색이 「모름」 으로 답한다. 그래서
+    반입은 「비워 두세요」 라고 한다.
+
+    그런데 비워 두면 그 장비는 검색에 안 걸린다. 「카탈로그에 그 기종이 없더라」 는
+    사실이 반입한 사람 머릿속에만 남으면 그 장비는 영영 안 찾아진다 — 홈이 세고,
+    목록이 거른다.
+    """
+    workspace, site, category = _fixture(client, admin)
+    tag = uuid.uuid4().hex[:6]
+    body = f"{HEADER}\nNOCAT-{tag},자작 치구,{workspace},{site},3동,{category},,가동,아니오\n"
+    assert _upload(client, admin, body, dry_run=False)["created"] == 1
+
+    listed = client.get("/api/equipment?catalog=unlinked&limit=200", headers=admin.headers)
+    assert listed.status_code == 200, listed.text
+    found = {one["asset_no"] for one in listed.json()["items"]}
+    assert f"NOCAT-{tag}" in found
+
+    # 홈이 세는 수와 **같은 조건**이라야 그 줄을 눌러 온 사람이 같은 목록을 본다.
+    rows = {
+        one["key"]: one
+        for one in client.get("/api/server/maintenance", headers=admin.headers).json()
+    }
+    said = rows["equipment_without_model"]
+    assert said["link"] == "/equipment?catalog=unlinked"
+    assert said["count"] == listed.json()["total"]

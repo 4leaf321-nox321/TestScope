@@ -54,6 +54,8 @@ export interface EquipmentFilterState {
   testItemTermId: string
   /** `none` 이면 **시험 항목이 하나도 없는 장비**만. 홈의 「남은 일」 이 이걸로 온다. */
   testItem: string
+  /** `unlinked` 면 **기종을 안 고른 장비**만. 카탈로그를 채울 자리를 찾는 손잡이다. */
+  catalog: string
   calibration: string
 }
 
@@ -66,6 +68,7 @@ export const EMPTY_FILTERS: EquipmentFilterState = {
   status: '',
   testItemTermId: '',
   testItem: '',
+  catalog: '',
   calibration: '',
 }
 
@@ -156,21 +159,32 @@ export function EquipmentFilters({
         />
       </td>
       <td className="p-1">
-        {/* 108종. **스물을 넘으면 드롭다운을 안 쓴다** — 못 찾은 사람은 없다고 결론
-            내리고, 그러면 거르기가 오히려 목록을 감춘다. */}
-        <SearchablePicker
-          value={value.categoryTermId}
-          onChange={(next) => set({ categoryTermId: next })}
-          options={(options.data?.categories ?? []).map((one) => ({
-            id: one.value,
-            label: one.label,
-            badge: `${one.count}대`,
-          }))}
-          placeholder="분류 전체"
-          detailTitle="장비 분류"
-          detailHint="지금 목록에 있는 분류만 나옵니다."
-          className="w-full"
-        />
+        {/* **카탈로그에 안 이어진 장비만.** 「미연결」 표시가 이 열에 붙으므로 거르기도
+            여기 둔다. 기종이 없으면 시험 항목이 0 건이고, 0 건이면 검색에 안 걸린다. */}
+        {value.catalog === 'unlinked' ? (
+          <Button
+            size="sm"
+            variant="secondary"
+            className="h-8 w-full text-xs"
+            onClick={() => set({ catalog: '' })}
+          >
+            카탈로그 미연결만 ✕
+          </Button>
+        ) : (
+          <SearchablePicker
+            value={value.categoryTermId}
+            onChange={(next) => set({ categoryTermId: next })}
+            options={(options.data?.categories ?? []).map((one) => ({
+              id: one.value,
+              label: one.label,
+              badge: `${one.count}대`,
+            }))}
+            placeholder="분류 전체"
+            detailTitle="장비 분류"
+            detailHint="지금 목록에 있는 분류만 나옵니다."
+            className="w-full"
+          />
+        )}
       </td>
       <td className="p-1">
         {/* **부서도 수백이 된다.** 조직도를 통째로 들이면 드롭다운으로는 못 찾는다. */}

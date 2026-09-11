@@ -59,6 +59,7 @@ export default function EquipmentPage() {
     ...EMPTY_FILTERS,
     calibration: params.get('calibration') ?? '',
     testItem: params.get('test_item') ?? '',
+    catalog: params.get('catalog') ?? '',
     status: params.get('status') ?? '',
   })
   const [typed, setTyped] = useState<EquipmentFilterState>(fromUrl)
@@ -97,6 +98,7 @@ export default function EquipmentPage() {
         siteTermId: filters.siteTermId || undefined,
         testItemTermId: filters.testItemTermId || undefined,
         testItem: filters.testItem || undefined,
+        catalog: filters.catalog || undefined,
         calibration: filters.calibration || undefined,
         limit: PAGE_SIZE,
         offset,

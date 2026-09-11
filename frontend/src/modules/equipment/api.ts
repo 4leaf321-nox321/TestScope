@@ -60,6 +60,9 @@ export const equipmentApi = {
     testItemTermId?: string
     /** `none` 이면 시험 항목이 하나도 없는 장비만. */
     testItem?: string
+    /** `unlinked` 면 **기종을 안 고른 장비만.** 그 기종이 카탈로그에 없어서 비운
+     *  경우가 있고, 그 장비는 시험 항목이 0 건이라 검색에 안 걸린다. */
+    catalog?: string
     /** `required` 대상 전부 · `exempt` 대상 아님 · `missing` 이력 없음 · `overdue` 기한 지남. */
     calibration?: string
     sharedUse?: boolean
@@ -77,6 +80,7 @@ export const equipmentApi = {
     if (params.siteTermId) search.set('site_term_id', params.siteTermId)
     if (params.testItemTermId) search.set('test_item_term_id', params.testItemTermId)
     if (params.testItem) search.set('test_item', params.testItem)
+    if (params.catalog) search.set('catalog', params.catalog)
     if (params.calibration) search.set('calibration', params.calibration)
     if (params.sharedUse !== undefined) search.set('shared_use', String(params.sharedUse))
     if (params.limit) search.set('limit', String(params.limit))

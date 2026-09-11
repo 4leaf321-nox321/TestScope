@@ -97,6 +97,13 @@ describe('보유 장비 목록', () => {
     expect(lastList()).toContain('calibration=missing')
   })
 
+  it('카탈로그에 안 이어진 장비도 주소로 거른다', async () => {
+    // 기종은 반입 창에서 못 만든다(전사 공용·시스템 관리자). 그래서 비워 두는데,
+    // 그 장비를 되찾는 길이 없으면 대장에만 있고 아무도 못 찾는다.
+    await open('/equipment?catalog=unlinked')
+    expect(lastList()).toContain('catalog=unlinked')
+  })
+
   it('시험 항목이 없는 장비도 주소로 거른다', async () => {
     await open('/equipment?test_item=none')
     expect(lastList()).toContain('test_item=none')
