@@ -84,7 +84,8 @@ async function open() {
 function cell(label: string, line = 0): HTMLInputElement {
   const index = COLUMNS.findIndex((one) => one.label === label)
   const rows = document.querySelectorAll('tbody tr')
-  return rows[line].querySelectorAll('input')[index] as HTMLInputElement
+  // 줄 맨 앞의 포함 체크는 건너뛴다 — 칸은 글자 입력만 센다.
+  return rows[line].querySelectorAll('input:not([type=checkbox])')[index] as HTMLInputElement
 }
 
 /** 표의 첫 칸에서 붙여넣는다. 엑셀에서 온 것은 **범위**라 표 전체를 갈아 끼운다. */
@@ -663,6 +664,72 @@ describe('이미 등록된 장비 갱신', () => {
   })
 })
 
+describe('줄마다 넣을지 고르기', () => {
+  const twoRows = () => ({
+    total: 2,
+    ready: 2,
+    problems: 0,
+    created: 0,
+    rows: [
+      row({ asset_no: 'A-1', cells: { asset_no: 'A-1', name: '가', site: '본사', note: '' } }),
+      row({
+        line: 3,
+        asset_no: 'A-2',
+        cells: { asset_no: 'A-2', name: '나', site: '본사', note: '' },
+      }),
+    ],
+  })
+
+  function rowCheck(line: number): HTMLInputElement {
+    return screen.getByLabelText(`${line + 1}번째 줄 넣기`) as HTMLInputElement
+  }
+
+  it('기본은 다 켜져 있다', async () => {
+    answer = twoRows()
+    await open()
+    await paste(['자산번호\t장비명', 'A-1\t가', 'A-2\t나'].join('\n'))
+    // 30줄에 30번 확인을 누르게 하면 사람은 읽지 않고 누른다.
+    expect(rowCheck(0).checked).toBe(true)
+    expect(rowCheck(1).checked).toBe(true)
+    expect(commitButton().textContent).toMatch(/2건 넣기/)
+  })
+
+  it('끈 줄은 서버에 안 보내고 표에 남는다', async () => {
+    answer = twoRows()
+    await open()
+    await paste(['자산번호\t장비명', 'A-1\t가', 'A-2\t나'].join('\n'))
+    await act(async () => {
+      fireEvent.click(rowCheck(1))
+    })
+    expect(commitButton().textContent).toMatch(/1건 넣기/)
+
+    calls.length = 0
+    answer = { ...twoRows(), created: 1, rows: [{ ...twoRows().rows[0], imported: true }] }
+    await act(async () => {
+      commitButton().click()
+    })
+    // **켜진 줄만** 나갔다.
+    const sent = (calls[0].body as { text: string }).text
+    expect(sent).toContain('A-1')
+    expect(sent).not.toContain('A-2')
+    // 꺼 둔 줄은 그대로 남아 있다 — 다시 켜서 넣을 수 있다.
+    expect(cell('자산번호', 0).value).toBe('A-2')
+  })
+
+  it('머리글의 체크로 전부 켜고 끈다', async () => {
+    answer = twoRows()
+    await open()
+    await paste(['자산번호\t장비명', 'A-1\t가', 'A-2\t나'].join('\n'))
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('전부 넣기'))
+    })
+    // 20줄을 빼려고 20번 누르게 하지 않는다.
+    expect(rowCheck(0).checked).toBe(false)
+    expect(rowCheck(1).checked).toBe(false)
+    expect(commitButton().disabled).toBe(true)
+  })
+})
+
 describe('넣는 동안', () => {
   it('「읽는 중」 이 아니라 「넣는 중」 이라고 말한다', async () => {
     answer = { total: 3, ready: 3, problems: 0, created: 0, rows: [row()] }
@@ -693,9 +760,18 @@ describe('넣는 동안', () => {
   })
 
   it('오래 걸릴 것 같으면 넣기 전에 말한다', async () => {
-    answer = { total: 900, ready: 900, problems: 0, created: 0, rows: [row()] }
+    // 세는 것은 화면이라 **진짜 900줄**이어야 한다. 300줄이 넘으면 표는 문제 줄만
+    // 그리므로 DOM 은 가볍다.
+    const many = Array.from({ length: 900 }, (_, i) =>
+      row({
+        line: i + 2,
+        asset_no: `A-${i}`,
+        cells: { asset_no: `A-${i}`, name: '기', site: '본사', note: '' },
+      }),
+    )
+    answer = { total: 900, ready: 900, problems: 0, created: 0, rows: many }
     await open()
-    await paste()
+    await paste(['자산번호\t장비명', ...many.map((one) => `${one.asset_no}\t기`)].join('\n'))
     // 900대면 5초쯤. 말 안 하면 사람은 멈춘 줄 알고 창을 닫는다.
     expect(commitButton().textContent).toMatch(/초쯤 걸립니다/)
   })

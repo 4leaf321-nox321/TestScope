@@ -88,6 +88,12 @@
  * 빈 칸은 「비운다」 가 아니라 「안 건드린다」 다. 부서와 기종은 안 바꾼다. 바뀔 칸은
  * 파랗게 칠하고 전후를 보인다 — 누르기 전에 잘못 붙은 열이 눈에 띄어야 한다.
  *
+ * ## 줄마다 넣을지 고른다 — 기본은 다 켜짐
+ *
+ * 「하나하나 확인」 과 「전부 한 번에」 사이다. 30줄에 30번 확인을 누르게 하면 사람은
+ * 읽지 않고 누른다. 기본은 다 켜져 있고, 이상해 보이는 줄만 끄고 넣는다. 꺼진 줄은
+ * 서버에 안 보내고 표에 남는다.
+ *
  * ## 진행률(N/M) 대신 「무엇을 하는 중인지」 를 보인다
  *
  * 「지금 1500대째」 를 보여 주려면 서버가 넣는 중에 중간 보고를 해야 하는데, 그러려면
@@ -174,6 +180,7 @@ function blank(count: number): GridRow[] {
     modelLinked: false,
     exists: false,
     changes: [],
+    included: true,
   }))
 }
 
@@ -335,6 +342,7 @@ export function EquipmentImportDialog({
         modelLinked: one.model_linked,
         exists: one.exists ?? false,
         changes: one.changes ?? [],
+        included: true,
       }))
       sent.current = `${updateExisting ? 'u' : 'c'}:${serialize(columns.data ?? [], made)}`
       setRows(made.length > 0 ? made : blank(BLANK_ROWS))
@@ -346,12 +354,13 @@ export function EquipmentImportDialog({
     }
   }
 
-  /** 못 들어간 줄만 남긴다. 빈 줄은 그대로 둔다 — 사람이 더 칠 자리다. */
+  /** 못 들어간 줄만 남긴다. 빈 줄과 **꺼 둔 줄**은 그대로 둔다 — 빈 줄은 더 칠 자리고,
+   *  꺼 둔 줄은 서버에 안 보냈으니 응답에 없다. */
   function keepFailed(result: EquipmentImportResult): GridRow[] {
     let index = 0
     const left: GridRow[] = []
     for (const row of rows) {
-      if (!filled(row)) {
+      if (!filled(row) || !row.included) {
         left.push(row)
         continue
       }
@@ -368,6 +377,14 @@ export function EquipmentImportDialog({
     return left
   }
 
+  function include(id: number | null, included: boolean) {
+    setRows((before) =>
+      before.map((row) =>
+        (id === null ? filled(row) : row.id === id) ? { ...row, included } : row,
+      ),
+    )
+  }
+
   function edit(id: number, field: string, value: string) {
     setRows((before) =>
       before.map((row) =>
@@ -382,7 +399,15 @@ export function EquipmentImportDialog({
     try {
       // **같은 글자를 다시 보낸다.** 서버가 미리보기 결과를 들고 있지 않아서,
       // 그 사이 남이 같은 자산번호를 넣었어도 여기서 다시 걸린다.
-      const result = await equipmentApi.importPaste(asText, false, updateExisting)
+      // **켜진 줄만 보낸다.** 미리보기는 전부 보내 판정을 보이지만, 넣는 것은 고른 것만이다.
+      const result = await equipmentApi.importPaste(
+        serialize(
+          columns.data ?? [],
+          sending.filter((one) => one.included),
+        ),
+        false,
+        updateExisting,
+      )
       const handled = result.created + (result.updated ?? 0) + (result.unchanged ?? 0)
       if (handled > 0) {
         setDone(handled)
@@ -487,7 +512,11 @@ export function EquipmentImportDialog({
   const shown = onlyBad || tooMany ? bad : rows
   // **문제가 있어도 넣을 수 있는 줄이 있으면 누를 수 있다.** 전에는 하나라도 틀리면
   // 통째로 막았는데, 그러면 300줄 중 12줄 때문에 288줄을 다시 붙여넣어야 한다.
-  const ready = summary?.ready ?? 0
+  //
+  // 세는 것은 화면이다 — 꺼 둔 줄은 서버가 모른다.
+  const ready = summary
+    ? sending.filter((one) => one.included && one.problems.length === 0).length
+    : 0
 
   return (
     <Dialog
@@ -607,6 +636,7 @@ export function EquipmentImportDialog({
               rows={shown}
               onEdit={edit}
               onPasteRange={pasteRange}
+              onInclude={include}
               disabled={phase === 'putting'}
             />
           )}
@@ -641,7 +671,11 @@ export function EquipmentImportDialog({
                 <span className="text-emerald-700">
                   새로{' '}
                   <strong>
-                    {sending.filter((one) => !one.exists && one.problems.length === 0).length}
+                    {
+                      sending.filter(
+                        (one) => one.included && !one.exists && one.problems.length === 0,
+                      ).length
+                    }
                   </strong>
                 </span>
                 {updateExisting && (
@@ -652,6 +686,7 @@ export function EquipmentImportDialog({
                         {
                           sending.filter(
                             (one) =>
+                              one.included &&
                               one.exists &&
                               one.changes.length > 0 &&
                               one.problems.length === 0,
@@ -667,6 +702,11 @@ export function EquipmentImportDialog({
                 {summary.problems > 0 && (
                   <span className="text-amber-700">
                     문제 <strong>{summary.problems}</strong>
+                  </span>
+                )}
+                {sending.some((one) => !one.included) && (
+                  <span className="text-muted-foreground">
+                    뺌 <strong>{sending.filter((one) => !one.included).length}</strong>
                   </span>
                 )}
                 {unlinked > 0 && summary.problems === 0 && (

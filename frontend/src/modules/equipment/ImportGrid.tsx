@@ -15,6 +15,14 @@
  * 갈아 끼우고, 값만 왔으면 **지금 커서가 있는 칸부터** 채운다. 그래서 어느 줄
  * 어느 열에서 붙였는지를 함께 넘긴다.
  *
+ * ## 줄마다 넣을지 고른다
+ *
+ * 「하나하나 확인」 과 「전부 한 번에」 사이다. 30줄을 갱신하는데 30번 확인을 누르게 하면
+ * 사람은 읽지 않고 누른다 — 확인이 의례가 되면 없는 것보다 나쁘다. 그래서 **기본은 다
+ * 켜져 있고**, 이상해 보이는 줄만 끄고 넣는다. 30줄이면 클릭 0번, 한 줄이 이상하면 1번.
+ *
+ * 꺼진 줄은 서버에 보내지 않고 표에 그대로 남는다 — 나중에 다시 켜서 넣을 수 있다.
+ *
  * ## 바뀔 칸은 파랗게
  *
  * 갱신을 켜면 이미 있는 장비의 줄은 새로 넣는 대신 고쳐진다. **어느 칸이 어떻게 바뀌는지**를
@@ -42,6 +50,8 @@ export interface GridRow {
   exists: boolean
   /** 갱신이면 **바뀔 칸들**. 넣기 전에 무엇이 어떻게 바뀌는지 보이는 근거다. */
   changes: ImportChange[]
+  /** 이 줄을 넣을 것인가. **기본은 켜짐** — 이상해 보이는 줄만 끈다. */
+  included: boolean
 }
 
 /** 한 번에 그리는 줄 수. **DOM 이 먼저 죽는다** — 2000줄에 열 열여덟이면 칸이
@@ -58,6 +68,7 @@ export function ImportGrid({
   rows,
   onEdit,
   onPasteRange,
+  onInclude,
   disabled,
 }: {
   columns: ImportColumn[]
@@ -66,13 +77,27 @@ export function ImportGrid({
   /** 엑셀에서 복사한 **범위**를 붙여넣었다. 어디에 넣을지는 창이 정한다 — 머리글이
    *  있으면 표 전체를, 없으면 이 칸부터. */
   onPasteRange: (text: string, atRow: number, atColumn: string) => void
+  /** 한 줄을 넣을지 끄고 켠다. `id` 가 `null` 이면 **보이는 줄 전부**다. */
+  onInclude: (id: number | null, included: boolean) => void
   disabled: boolean
 }) {
+  const filledRows = rows.filter(filled)
+  const allOn = filledRows.length > 0 && filledRows.every((one) => one.included)
   return (
     <div className="min-h-0 flex-1 overflow-auto rounded-md border">
       <table className="w-max border-collapse text-xs">
         <thead className="bg-muted/60 sticky top-0 z-10">
           <tr>
+            <th className="border-b border-r px-2 py-1">
+              {/* 전부 켜고 끄기. 20줄을 빼려고 20번 누르게 하지 않는다. */}
+              <input
+                type="checkbox"
+                aria-label="전부 넣기"
+                checked={allOn}
+                onChange={(event) => onInclude(null, event.target.checked)}
+                disabled={disabled || filledRows.length === 0}
+              />
+            </th>
             <th className="text-muted-foreground border-b border-r px-2 py-1 font-normal">
               #
             </th>
@@ -105,7 +130,25 @@ export function ImportGrid({
             // 이미 있는데 바뀔 것도 문제도 없는 줄 — 손댈 것이 없다는 사실을 말해 준다.
             const same = row.exists && row.problems.length === 0 && row.changes.length === 0
             return (
-              <tr key={row.id} className={notes.length > 0 ? 'bg-amber-50' : undefined}>
+              <tr
+                key={row.id}
+                className={cn(
+                  notes.length > 0 && 'bg-amber-50',
+                  // 꺼진 줄은 흐리게 — 안 들어간다는 것이 한눈에 보여야 한다.
+                  !row.included && 'opacity-50',
+                )}
+              >
+                <td className="border-b border-r px-2 py-1 text-center">
+                  {filled(row) && (
+                    <input
+                      type="checkbox"
+                      aria-label={`${index + 1}번째 줄 넣기`}
+                      checked={row.included}
+                      onChange={(event) => onInclude(row.id, event.target.checked)}
+                      disabled={disabled}
+                    />
+                  )}
+                </td>
                 <td className="text-muted-foreground border-b border-r px-2 py-1 text-right font-mono">
                   {index + 1}
                 </td>
