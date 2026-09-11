@@ -24,6 +24,13 @@ const COLUMNS = [
 ]
 
 const made: { slug: string; value: string }[] = []
+const copied: string[] = []
+
+vi.mock('@/shared/lib/clipboard', () => ({
+  copyText: vi.fn(async (text: string) => {
+    copied.push(text)
+  }),
+}))
 
 vi.mock('@/modules/vocabulary/api', () => ({
   vocabularyApi: {
@@ -93,6 +100,7 @@ function commitButton(): HTMLButtonElement {
 beforeEach(() => {
   calls.length = 0
   made.length = 0
+  copied.length = 0
   vi.useFakeTimers({ shouldAdvanceTime: true })
 })
 
@@ -408,6 +416,75 @@ describe('없는 거점·분류 만들기', () => {
     await paste()
     // 카탈로그의 기종은 여기서 만들 수 있는 것이 아니다 — 계열도 사양도 없다.
     expect(screen.queryAllByRole('button', { name: /만들기/ })).toHaveLength(0)
+  })
+})
+
+describe('엑셀로 되가져가기', () => {
+  function copyButton(): HTMLButtonElement {
+    return screen
+      .getAllByRole('button')
+      .find((one) => /복사/.test(one.textContent ?? '')) as HTMLButtonElement
+  }
+
+  it('머리글과 값을 탭으로 이어 복사한다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+    await open()
+    await paste()
+    await act(async () => {
+      copyButton().click()
+    })
+    const lines = copied[0].split('\n')
+    // 엑셀에 붙이면 바로 표가 되어야 한다.
+    expect(lines[0].split('\t')).toEqual(['자산번호', '장비명', '거점', '비고', '확인 필요'])
+    expect(lines[1].split('\t').slice(0, 3)).toEqual(['A-1', '만능기', '본사'])
+  })
+
+  it('문제도 함께 나간다', async () => {
+    answer = {
+      total: 1,
+      ready: 0,
+      problems: 1,
+      created: 0,
+      rows: [
+        row({
+          problems: [{ field: 'site', message: '거점: 「없는거점」 가 기준정보에 없습니다' }],
+        }),
+      ],
+    }
+    await open()
+    await paste()
+    await act(async () => {
+      copyButton().click()
+    })
+    // 값만 돌려주면 무엇이 틀렸는지가 화면 안에만 남고, 그러면 되가져가는 뜻이 없다.
+    expect(copied[0]).toContain('기준정보에 없습니다')
+  })
+
+  it('빈 줄은 안 내보낸다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+    await open()
+    await paste()
+    await act(async () => {
+      copyButton().click()
+    })
+    // 빈 줄 다섯이 엑셀에 붙으면 지저분하고, 그 줄은 애초에 아무것도 아니다.
+    expect(copied[0].split('\n')).toHaveLength(2)
+  })
+
+  it('아무것도 안 적었으면 못 누른다', async () => {
+    await open()
+    expect(copyButton().disabled).toBe(true)
+  })
+
+  it('몇 줄을 복사했는지 말해 준다', async () => {
+    answer = { total: 1, ready: 1, problems: 0, created: 0, rows: [row()] }
+    await open()
+    await paste()
+    await act(async () => {
+      copyButton().click()
+    })
+    // 말해 주지 않으면 눌렀는지도 모른다.
+    expect(copyButton().textContent).toMatch(/1줄 복사했습니다/)
   })
 })
 

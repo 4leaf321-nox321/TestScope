@@ -59,6 +59,16 @@
  * 검색에 안 걸리지만, 홈의 「카탈로그에 안 이어진 장비」 가 세고 목록이 거른다
  * (`?catalog=unlinked`) — 시스템 관리자가 그것을 보고 카탈로그를 채운다.
  *
+ * ## 표를 엑셀로 되가져갈 수 있다
+ *
+ * 300줄 중 12줄이 걸렸을 때, 그 판정을 **엑셀에서 다시 보고 싶은 일**이 있다 — 다른
+ * 사람에게 보내거나, 원본 대장과 나란히 놓고 맞춰 보거나. 그래서 표를 탭으로 이어
+ * 클립보드에 넣는다. 붙이면 바로 표가 된다.
+ *
+ * **문제도 함께 나간다.** 값만 돌려주면 무엇이 틀렸는지가 다시 화면 안에만 남고,
+ * 그러면 되가져가는 뜻이 없다. 되돌아올 때 그 열은 서버가 모르는 이름이라 그냥
+ * 무시되므로, 고쳐서 다시 붙여넣는 왕복이 된다.
+ *
  * ## 전부 되거나 전부 안 되거나
  *
  * 문제가 하나라도 있으면 넣는 단추를 안 준다. 되는 것만 넣으면 사람은 고쳐 다시
@@ -73,7 +83,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Download, Loader2, Plus, Upload } from 'lucide-react'
+import { Copy, Download, Loader2, Plus, Upload } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -87,6 +97,7 @@ import {
   DialogTitle,
 } from '@/shared/components/ui/dialog'
 import { useResource } from '@/shared/hooks/useResource'
+import { copyText } from '@/shared/lib/clipboard'
 import { equipmentApi } from '@/modules/equipment/api'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { EquipmentImportResult, ImportColumn } from '@/modules/equipment/api'
@@ -96,6 +107,10 @@ import type { GridRow } from '@/modules/equipment/ImportGrid'
 /** 빈 표를 몇 줄로 시작하나. 붙여넣기가 주된 길이라 많을 필요는 없고, 몇 대를
  *  손으로 치려는 사람에게는 이만큼이면 시작이 된다. */
 const BLANK_ROWS = 5
+
+/** 되가져가는 표에 붙는 판정 열의 이름. **서버가 모르는 이름이라야** 다시 붙여넣을
+ *  때 값으로 안 읽힌다 — 열 이름 하나가 겹치면 그 줄의 칸이 하나씩 밀린다. */
+const PROBLEM_COLUMN = '확인 필요'
 
 /** 한 대를 넣는 데 드는 시간(ms). **실측이다** — 500대에 2.5초였다.
  *
@@ -155,6 +170,21 @@ function serialize(columns: ImportColumn[], rows: GridRow[]): string {
   return [head, ...body].join('\n')
 }
 
+/** 엑셀로 되가져갈 글자. **판정을 한 열 더 붙인다** — 값만 돌려주면 무엇이
+ *  틀렸는지가 화면 안에만 남고, 그러면 되가져가는 뜻이 없다.
+ *
+ *  이 열은 되돌아올 때 서버가 모르는 이름이라 그냥 무시된다. */
+function withProblems(columns: ImportColumn[], rows: GridRow[]): string {
+  const head = [...columns.map((one) => one.label), PROBLEM_COLUMN].join('\t')
+  const body = rows.map((row) =>
+    [
+      ...columns.map((one) => row.cells[one.key] ?? ''),
+      row.problems.map((one) => one.message).join(' · '),
+    ].join('\t'),
+  )
+  return [head, ...body].join('\n')
+}
+
 export function EquipmentImportDialog({
   open,
   onClose,
@@ -180,6 +210,8 @@ export function EquipmentImportDialog({
   const [error, setError] = useState<ApiError | null>(null)
   const [done, setDone] = useState<number | null>(null)
   const [onlyBad, setOnlyBad] = useState(false)
+  /** 방금 몇 줄을 복사했나. **말해 주지 않으면 눌렀는지도 모른다.** */
+  const [copied, setCopied] = useState<number | null>(null)
 
   /** 서버에 보낼 줄 — **내용이 있는 것만.** 서버가 빈 줄을 건너뛰므로, 이렇게 하면
    *  응답의 순서와 여기 순서가 1:1 로 맞는다. */
@@ -369,6 +401,29 @@ export function EquipmentImportDialog({
     }
   }
 
+  /** 표를 엑셀로. **보이는 것을 복사한다** — 「문제만 보기」 중이면 그것만이다.
+   *  화면과 다른 것이 나가면 사람은 무엇을 받았는지 모른다. */
+  async function copyGrid() {
+    const rowsToCopy = shown.filter(filled)
+    if (rowsToCopy.length === 0) return
+    try {
+      await copyText(withProblems(columns.data ?? [], rowsToCopy))
+      setCopied(rowsToCopy.length)
+      window.setTimeout(() => setCopied(null), 2500)
+    } catch (thrown) {
+      // 브라우저가 거절하는 일이 있다(권한·문맥). 조용히 실패하면 사람은 복사된
+      // 줄 알고 엑셀에서 옛 것을 붙인다.
+      setError(
+        new ApiError(0, {
+          error: {
+            code: 'TSC-CLIENT-0002',
+            message: `복사하지 못했습니다: ${(thrown as Error).message}`,
+          },
+        }),
+      )
+    }
+  }
+
   const bad = rows.filter((one) => one.problems.length > 0)
   const unlinked = sending.filter(
     (one) => one.problems.length === 0 && !one.modelLinked,
@@ -420,6 +475,15 @@ export function EquipmentImportDialog({
               disabled={phase === 'putting'}
             >
               <Plus className="size-4" />줄 추가
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => void copyGrid()}
+              disabled={phase === 'putting' || sending.length === 0}
+            >
+              <Copy className="size-4" />
+              {copied === null ? '표 복사' : `${copied}줄 복사했습니다`}
             </Button>
             <Button variant="outline" size="sm" onClick={reset} disabled={phase !== 'idle'}>
               비우기
