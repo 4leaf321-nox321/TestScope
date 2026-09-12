@@ -1442,6 +1442,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/methods/requirements/import/columns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Requirement Import Columns
+         * @description 요구 조건 표의 열. `/{method_id}` 보다 **먼저 선언한다.**
+         */
+        get: operations["requirement_import_columns_api_methods_requirements_import_columns_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/methods/requirements/import/template": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Requirement Import Template
+         * @description 서식(CSV). 보기 줄은 **실제 규격의 값**이다 — 지어낸 숫자는 그대로 들어온다.
+         */
+        get: operations["requirement_import_template_api_methods_requirements_import_template_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/methods/requirements/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Import Requirements
+         * @description 규격서를 보고 적은 요구 조건 표를 통째로 받는다.
+         *
+         *     장비 대장 반입과 같은 규칙이다 — 붙여넣기(파일이 아니다) · `dry_run=true` 가 기본이라
+         *     먼저 판정만 보고, 사람이 확인하면 `dry_run=false` 로 같은 글자를 다시 보낸다 · 문제
+         *     없는 줄은 넣고 문제 있는 줄은 남긴다 · 넣기로 한 것은 전부 되거나 전부 안 되거나.
+         *
+         *     규격은 표기 차이를 무시하고 찾는다(「JIS K7210」 = 「JIS K 7210」). 판이 여럿이면 현행
+         *     하나가 있을 때만 그것으로 잡고, 아니면 판 열을 요구한다 — 옛 판에 조건을 적으면 검색이
+         *     옛 규격으로 장비를 좁힌다.
+         */
+        post: operations["import_requirements_api_methods_requirements_import_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/methods/{method_id}": {
         parameters: {
             query?: never;
@@ -4117,6 +4185,67 @@ export interface components {
         RejectRequest: {
             /** Note */
             note: string;
+        };
+        /**
+         * RequirementImportRequest
+         * @description 엑셀에서 복사해 붙여넣은 요구 조건 표. **머리글 줄까지 함께.** 파일이 아닌 이유는
+         *     장비 대장 반입과 같다 — DRM 이 파일은 막고 붙여넣기는 못 막는다.
+         */
+        RequirementImportRequest: {
+            /** Text */
+            text: string;
+        };
+        /**
+         * RequirementImportResult
+         * @description `dry_run` 이면 `created`·`replaced` 는 0 이고 판정만 들어 있다. 넣기로 한 것은
+         *     전부 되거나 전부 안 되거나다.
+         */
+        RequirementImportResult: {
+            /** Dry Run */
+            dry_run: boolean;
+            summary: components["schemas"]["RequirementImportSummary"];
+            /** Rows */
+            rows: components["schemas"]["RequirementImportRow"][];
+        };
+        /**
+         * RequirementImportRow
+         * @description 붙여넣은 한 줄이 어떻게 읽혔나. 줄 번호는 머리글 다음이 2 — 엑셀과 같다.
+         */
+        RequirementImportRow: {
+            /** Line */
+            line: number;
+            /** Cells */
+            cells: {
+                [key: string]: string;
+            };
+            /** Method Id */
+            method_id: string | null;
+            /** Code */
+            code: string | null;
+            /** Condition Label */
+            condition_label: string | null;
+            /** Problems */
+            problems: string[];
+            /** Replaces */
+            replaces: boolean;
+            /**
+             * Imported
+             * @default false
+             */
+            imported: boolean;
+        };
+        /** RequirementImportSummary */
+        RequirementImportSummary: {
+            /** Total */
+            total: number;
+            /** Ready */
+            ready: number;
+            /** Problems */
+            problems: number;
+            /** Created */
+            created: number;
+            /** Replaced */
+            replaced: number;
         };
         /** RequirementOut */
         RequirementOut: {
@@ -7914,6 +8043,7 @@ export interface operations {
                 test_item?: string | null;
                 requirement?: string | null;
                 cited?: string | null;
+                used?: string | null;
                 include_superseded?: boolean;
                 limit?: number;
                 offset?: number;
@@ -7964,6 +8094,81 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["MethodOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    requirement_import_columns_api_methods_requirements_import_columns_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ImportColumn"][];
+                };
+            };
+        };
+    };
+    requirement_import_template_api_methods_requirements_import_template_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    import_requirements_api_methods_requirements_import_post: {
+        parameters: {
+            query?: {
+                dry_run?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RequirementImportRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RequirementImportResult"];
                 };
             };
             /** @description Validation Error */

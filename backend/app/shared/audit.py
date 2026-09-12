@@ -67,6 +67,7 @@ EQUIPMENT_IMPORTED = "equipment.imported"
 EQUIPMENT_RETIRED = "equipment.retired"
 EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"
+METHOD_REQUIREMENTS_IMPORTED = "method.requirements_imported"
 
 
 def diff(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:

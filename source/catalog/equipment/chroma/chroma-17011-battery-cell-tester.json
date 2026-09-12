@@ -11,7 +11,7 @@
   "test_items": ["battery_cycle_life"],
   "measurands": ["capacity", "coulombic_efficiency", "internal_resistance", "voltage_profile", "power_profile"],
   "materials": ["lithium-ion cells", "power tool cells", "energy storage cells", "pouch cells", "cylindrical cells"],
-  "standards": {"compliance": [], "test_methods": ["IEC 61960", "IEC 62133", "UL 1642", "GB/T 31485"]},
+  "standards": {"compliance": [], "test_methods": ["IEC 61960", "IEC 62133", "UL 1642", "GB/T 31485"], "test_methods_by_item": {"battery_cycle_life": ["IEC 62133"]}},
   "limits": {
     "voltage_V": {"min": 0, "max": 6, "note": "0~6 V 출력 레인지. 일부 모델은 3개 내장 전압 출력 모드 간 전환 가능. 전압 측정 분해능 0.1 mV"},
     "current_A": {"max": 1200, "note": "채널 병렬 출력 시 최대 1200 A"},

@@ -82,7 +82,7 @@ from app.modules.vocabulary.specs import (
     SpecDefinitionCategory,
     SpecGroup,
 )
-from app.shared.text import clean, compare_key
+from app.shared.text import clean, compare_key, method_key
 
 survive_cp949()
 
@@ -280,13 +280,6 @@ def step_slug_axes(
         _slug_axis(db, "form_factor", cat.form_factors, actor),
         _slug_axis(db, "drive", cat.drives, actor),
     )
-
-
-def method_key(code: str) -> str:
-    """규격 번호의 비교키. **공백을 지운다** — 「JIS B 0601」 과 「JIS B0601」 은 같은 규격인데
-    출처마다 표기가 갈린다(MaterialTwin 은 붙여 쓰고 카탈로그는 띄어 쓴다). 두 행이 되면
-    「이 규격 되는 장비」 가 절반만 답한다."""
-    return re.sub(r"\s+", "", compare_key(code))
 
 
 def step_methods(

@@ -66,9 +66,7 @@ def _pend(series_id: str, method_id: str) -> None:
     db = SessionLocal()
     try:
         db.add(
-            SeriesPendingMethod(
-                series_id=uuid.UUID(series_id), method_id=uuid.UUID(method_id)
-            )
+            SeriesPendingMethod(series_id=uuid.UUID(series_id), method_id=uuid.UUID(method_id))
         )
         db.commit()
     finally:

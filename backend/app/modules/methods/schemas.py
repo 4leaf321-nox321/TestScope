@@ -99,3 +99,43 @@ class RequirementUpsertRequest(BaseModel):
     text_value: str | None = Field(default=None, max_length=200)
     is_mandatory: bool = True
     note: str | None = None
+
+
+class RequirementImportRequest(BaseModel):
+    """엑셀에서 복사해 붙여넣은 요구 조건 표. **머리글 줄까지 함께.** 파일이 아닌 이유는
+    장비 대장 반입과 같다 — DRM 이 파일은 막고 붙여넣기는 못 막는다."""
+
+    text: str
+
+
+class RequirementImportRow(BaseModel):
+    """붙여넣은 한 줄이 어떻게 읽혔나. 줄 번호는 머리글 다음이 2 — 엑셀과 같다."""
+
+    line: int
+    cells: dict[str, str]
+    method_id: uuid.UUID | None
+    code: str | None
+    """서버가 찾은 규격의 표기 — 「JIS K7210」 이라 적어도 「JIS K 7210」 으로 잡힌다."""
+    condition_label: str | None
+    problems: list[str]
+    replaces: bool
+    """같은 규격·조건이 이미 있어 **덮어쓴다.** 미리보기가 그 사실을 말해야 한다 —
+    조용히 덮으면 누가 언제 적은 값이 사라졌는지 아무도 모른다."""
+    imported: bool = False
+
+
+class RequirementImportSummary(BaseModel):
+    total: int
+    ready: int
+    problems: int
+    created: int
+    replaced: int
+
+
+class RequirementImportResult(BaseModel):
+    """`dry_run` 이면 `created`·`replaced` 는 0 이고 판정만 들어 있다. 넣기로 한 것은
+    전부 되거나 전부 안 되거나다."""
+
+    dry_run: bool
+    summary: RequirementImportSummary
+    rows: list[RequirementImportRow]

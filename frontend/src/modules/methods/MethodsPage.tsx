@@ -14,7 +14,7 @@
  */
 
 import { useState } from 'react'
-import { Plus } from 'lucide-react'
+import { Plus, Upload } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
@@ -35,6 +35,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { methodApi } from '@/modules/methods/api'
 import { NewMethodDialog } from '@/modules/methods/NewMethodDialog'
+import { RequirementImportDialog } from '@/modules/methods/RequirementImportDialog'
 
 export default function MethodsPage() {
   const { user } = useAuth()
@@ -44,9 +45,11 @@ export default function MethodsPage() {
   const requirement = params.get('requirement') ?? undefined
   const testItem = params.get('test_item') ?? undefined
   const cited = params.get('cited') ?? undefined
+  const used = params.get('used') ?? undefined
   const [query, setQuery] = useState('')
   const [includeSuperseded, setIncludeSuperseded] = useState(false)
   const [creating, setCreating] = useState(false)
+  const [importing, setImporting] = useState(false)
   const page = useResource(
     () =>
       methodApi.list({
@@ -54,11 +57,22 @@ export default function MethodsPage() {
         requirement,
         testItem,
         cited,
+        used,
         includeSuperseded,
       }),
-    [query, requirement, testItem, cited, includeSuperseded],
+    [query, requirement, testItem, cited, used, includeSuperseded],
   )
-  const filtered = requirement === 'none' || testItem === 'none' || cited === 'none'
+  const filtered =
+    requirement === 'none' || testItem === 'none' || cited === 'none' || used === 'owned'
+
+  /** 거르기 하나를 켜고 끈다. 다른 거르기는 그대로 — 「보유 장비가 쓰는 것 중 조건 없는 것」
+   *  처럼 겹쳐 쓰는 것이 이 목록의 쓸모다. */
+  function toggle(key: string, value: string) {
+    const next = new URLSearchParams(params)
+    if (next.get(key) === value) next.delete(key)
+    else next.set(key, value)
+    setParams(next)
+  }
 
   return (
     <div className="space-y-6">
@@ -67,10 +81,16 @@ export default function MethodsPage() {
         description="규격이 요구하는 조건을 적어 두면, 검색이 그 숫자를 그대로 물어 줍니다."
         actions={
           isAnyManager(user) ? (
-            <Button onClick={() => setCreating(true)}>
-              <Plus className="size-4" />
-              시험법 등록
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button variant="outline" onClick={() => setImporting(true)}>
+                <Upload className="size-4" />
+                요구 조건 표로 넣기
+              </Button>
+              <Button onClick={() => setCreating(true)}>
+                <Plus className="size-4" />
+                시험법 등록
+              </Button>
+            </div>
           ) : undefined
         }
       />
@@ -94,15 +114,29 @@ export default function MethodsPage() {
         <div className="flex flex-wrap gap-1 text-sm">
           <Button
             size="sm"
+            variant={used === 'owned' ? 'default' : 'outline'}
+            onClick={() => toggle('used', 'owned')}
+          >
+            보유 장비가 쓰는 것
+          </Button>
+          <Button
+            size="sm"
+            variant={requirement === 'none' ? 'default' : 'outline'}
+            onClick={() => toggle('requirement', 'none')}
+          >
+            요구 조건 없는 것
+          </Button>
+          <Button
+            size="sm"
             variant={testItem === 'none' ? 'default' : 'outline'}
-            onClick={() => setParams(testItem === 'none' ? {} : { test_item: 'none' })}
+            onClick={() => toggle('test_item', 'none')}
           >
             시험 항목 안 정해진 것
           </Button>
           <Button
             size="sm"
             variant={cited === 'none' ? 'default' : 'outline'}
-            onClick={() => setParams(cited === 'none' ? {} : { cited: 'none' })}
+            onClick={() => toggle('cited', 'none')}
           >
             어느 계열에도 안 이어진 것
           </Button>
@@ -112,6 +146,13 @@ export default function MethodsPage() {
       {filtered && (
         <div className="bg-muted/50 flex flex-wrap items-center gap-3 rounded-md border p-3">
           <p className="text-sm">
+            {used === 'owned' && (
+              <>
+                <strong>보유 장비의 시험 항목이 실제로 가리키는 규격만</strong> 보고 있습니다.
+                464 는 카탈로그가 인용한 수이고, 우리가 하는 시험의 규격은 이것입니다 — 요구
+                조건은 여기부터 채웁니다.{' '}
+              </>
+            )}
             {requirement === 'none' && (
               <>
                 <strong>요구 조건이 안 적힌 규격만</strong> 보고 있습니다. 조건이 없으면 검색이
@@ -211,6 +252,11 @@ export default function MethodsPage() {
         </Table>
       )}
 
+      <RequirementImportDialog
+        open={importing}
+        onClose={() => setImporting(false)}
+        onImported={() => page.reload()}
+      />
       <NewMethodDialog
         open={creating}
         onClose={() => setCreating(false)}

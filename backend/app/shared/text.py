@@ -29,3 +29,10 @@ def compare_key(raw: str) -> str:
     목록에 둘이 나란히 서고 아무도 그 둘이 같다는 것을 모른다.
     """
     return unicodedata.normalize("NFKC", clean(raw)).casefold()
+
+
+def method_key(code: str) -> str:
+    """규격 번호의 비교키. **공백을 지운다** — 「JIS B 0601」 과 「JIS B0601」 은 같은 규격인데
+    출처마다 표기가 갈린다(MaterialTwin 은 붙여 쓰고 카탈로그는 띄어 쓴다). 두 행이 되면
+    「이 규격 되는 장비」 가 절반만 답한다. 반입(카탈로그·요구 조건 표)이 같이 쓴다."""
+    return _SPACES.sub("", compare_key(code))

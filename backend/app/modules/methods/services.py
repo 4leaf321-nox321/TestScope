@@ -234,6 +234,7 @@ def list_methods(
     test_item_term_id: uuid.UUID | None,
     test_item: str | None = None,
     cited: str | None = None,
+    used: str | None = None,
     include_superseded: bool,
     limit: int,
     offset: int,
@@ -262,6 +263,16 @@ def list_methods(
         # 링크한다 — 세는 조건과 거르는 조건이 다르면 그 줄을 눌러 온 사람이 다른
         # 목록을 보고, 그때 둘 다 안 믿게 된다.
         stmt = stmt.where(TestMethod.id.not_in(select(MethodRequirement.method_id).distinct()))
+    if used == "owned":
+        # **보유 장비의 시험 항목이 실제로 가리키는 규격만.** 464 는 카탈로그가 인용한
+        # 수이고, 우리가 하는 시험의 규격은 그중 일부다 — 요구 조건은 여기부터 채운다.
+        stmt = stmt.where(
+            TestMethod.id.in_(
+                select(EquipmentTestItem.method_id).where(
+                    EquipmentTestItem.method_id.is_not(None)
+                )
+            )
+        )
     if not include_superseded:
         # **기본은 현행만.** 대체된 판이 섞여 있으면 사람이 옛 규격을 고르고,
         # 그 사실은 시험이 끝난 뒤에야 드러난다.

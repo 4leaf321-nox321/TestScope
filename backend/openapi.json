@@ -4721,6 +4721,23 @@
             }
           },
           {
+            "name": "used",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^owned$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Used"
+            }
+          },
+          {
             "name": "include_superseded",
             "in": "query",
             "required": false,
@@ -4800,6 +4817,106 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MethodOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/requirements/import/columns": {
+      "get": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Requirement Import Columns",
+        "description": "요구 조건 표의 열. `/{method_id}` 보다 **먼저 선언한다.**",
+        "operationId": "requirement_import_columns_api_methods_requirements_import_columns_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImportColumn"
+                  },
+                  "type": "array",
+                  "title": "Response Requirement Import Columns Api Methods Requirements Import Columns Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/requirements/import/template": {
+      "get": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Requirement Import Template",
+        "description": "서식(CSV). 보기 줄은 **실제 규격의 값**이다 — 지어낸 숫자는 그대로 들어온다.",
+        "operationId": "requirement_import_template_api_methods_requirements_import_template_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/methods/requirements/import": {
+      "post": {
+        "tags": [
+          "methods"
+        ],
+        "summary": "Import Requirements",
+        "description": "규격서를 보고 적은 요구 조건 표를 통째로 받는다.\n\n장비 대장 반입과 같은 규칙이다 — 붙여넣기(파일이 아니다) · `dry_run=true` 가 기본이라\n먼저 판정만 보고, 사람이 확인하면 `dry_run=false` 로 같은 글자를 다시 보낸다 · 문제\n없는 줄은 넣고 문제 있는 줄은 남긴다 · 넣기로 한 것은 전부 되거나 전부 안 되거나.\n\n규격은 표기 차이를 무시하고 찾는다(「JIS K7210」 = 「JIS K 7210」). 판이 여럿이면 현행\n하나가 있을 때만 그것으로 잡고, 아니면 판 열을 요구한다 — 옛 판에 조건을 적으면 검색이\n옛 규격으로 장비를 좁힌다.",
+        "operationId": "import_requirements_api_methods_requirements_import_post",
+        "parameters": [
+          {
+            "name": "dry_run",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Dry Run"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequirementImportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequirementImportResult"
                 }
               }
             }
@@ -12638,6 +12755,156 @@
           "note"
         ],
         "title": "RejectRequest"
+      },
+      "RequirementImportRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "RequirementImportRequest",
+        "description": "엑셀에서 복사해 붙여넣은 요구 조건 표. **머리글 줄까지 함께.** 파일이 아닌 이유는\n장비 대장 반입과 같다 — DRM 이 파일은 막고 붙여넣기는 못 막는다."
+      },
+      "RequirementImportResult": {
+        "properties": {
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/RequirementImportSummary"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/RequirementImportRow"
+            },
+            "type": "array",
+            "title": "Rows"
+          }
+        },
+        "type": "object",
+        "required": [
+          "dry_run",
+          "summary",
+          "rows"
+        ],
+        "title": "RequirementImportResult",
+        "description": "`dry_run` 이면 `created`·`replaced` 는 0 이고 판정만 들어 있다. 넣기로 한 것은\n전부 되거나 전부 안 되거나다."
+      },
+      "RequirementImportRow": {
+        "properties": {
+          "line": {
+            "type": "integer",
+            "title": "Line"
+          },
+          "cells": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Cells"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "condition_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Label"
+          },
+          "problems": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Problems"
+          },
+          "replaces": {
+            "type": "boolean",
+            "title": "Replaces"
+          },
+          "imported": {
+            "type": "boolean",
+            "title": "Imported",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "line",
+          "cells",
+          "method_id",
+          "code",
+          "condition_label",
+          "problems",
+          "replaces"
+        ],
+        "title": "RequirementImportRow",
+        "description": "붙여넣은 한 줄이 어떻게 읽혔나. 줄 번호는 머리글 다음이 2 — 엑셀과 같다."
+      },
+      "RequirementImportSummary": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "ready": {
+            "type": "integer",
+            "title": "Ready"
+          },
+          "problems": {
+            "type": "integer",
+            "title": "Problems"
+          },
+          "created": {
+            "type": "integer",
+            "title": "Created"
+          },
+          "replaced": {
+            "type": "integer",
+            "title": "Replaced"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "ready",
+          "problems",
+          "created",
+          "replaced"
+        ],
+        "title": "RequirementImportSummary"
       },
       "RequirementOut": {
         "properties": {
