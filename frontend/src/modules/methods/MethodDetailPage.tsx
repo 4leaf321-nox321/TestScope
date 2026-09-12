@@ -4,11 +4,15 @@
  * **요구 조건이 곧 검색 물음이 된다.** 여기 적힌 숫자를 검색 화면이 그대로 물어
  * 주므로, 사람이 규격서를 펴 놓고 숫자를 옮겨 적을 필요가 없다 — 그 옮겨 적기에서
  * 자릿수가 틀린다.
+ *
+ * **시험 항목은 여기서 정한다.** 카탈로그가 인용했는데 어느 시험의 것인지 안 정해진 규격이
+ * 172 건 있다 — 정하는 순간 인용한 계열의 그 시험 항목에 붙는다. 그래서 인용한 계열 목록이
+ * 이 화면에 함께 있다: 무엇이 붙을지 보고 정한다.
  */
 
 import { useState } from 'react'
 import { Trash2 } from 'lucide-react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { ApiError } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
@@ -32,7 +36,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
-import { vocabularyApi } from '@/modules/vocabulary/api'
+import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { methodApi } from '@/modules/methods/api'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 요구와 구별되지 않는다. */
@@ -44,6 +48,8 @@ export default function MethodDetailPage() {
   const { id = '' } = useParams<{ id: string }>()
   const method = useResource(() => methodApi.read(id), [id])
   const conditions = useResource(() => vocabularyApi.conditions(), [])
+  const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
+  const [pickingItem, setPickingItem] = useState('')
 
   const [conditionKey, setConditionKey] = useState('')
   const [min, setMin] = useState('')
@@ -54,6 +60,18 @@ export default function MethodDetailPage() {
   if (!method.data) return null
 
   const one = method.data
+
+  async function decideTestItem() {
+    if (!pickingItem) return
+    setError(null)
+    try {
+      await methodApi.update(id, { test_item_term_id: pickingItem })
+      setPickingItem('')
+      method.reload()
+    } catch (caught) {
+      setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+    }
+  }
 
   async function addRequirement() {
     if (!conditionKey) return
@@ -85,7 +103,9 @@ export default function MethodDetailPage() {
       <dl className="grid grid-cols-2 gap-4 rounded-md border p-4 sm:grid-cols-4">
         <div>
           <dt className="text-muted-foreground text-xs">시험 항목</dt>
-          <dd className="text-sm">{one.test_item ?? '—'}</dd>
+          <dd className="text-sm">
+            {one.test_item ?? <span className="text-amber-600">안 정해짐</span>}
+          </dd>
         </div>
         <div>
           <dt className="text-muted-foreground text-xs">제정 기관</dt>
@@ -114,6 +134,61 @@ export default function MethodDetailPage() {
       </dl>
 
       {one.summary && <p className="text-sm">{one.summary}</p>}
+
+      {one.test_item === null && one.can_edit && (
+        <div className="space-y-2 rounded-md border border-amber-300 bg-amber-50 p-4 dark:bg-amber-950/30">
+          <p className="text-sm">
+            <strong>이 규격이 어느 시험의 것인지 정해 주세요.</strong>
+            {one.pending_series_count > 0
+              ? ` 인용한 계열 ${one.pending_series_count}개가 정하는 순간 이 규격에 붙습니다.`
+              : ' 정해 두면 계열의 시험 항목에 이 규격을 걸 수 있습니다.'}
+          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <Select value={pickingItem} onValueChange={setPickingItem}>
+              <SelectTrigger className="w-56" aria-label="시험 항목 고르기">
+                <SelectValue placeholder="시험 항목" />
+              </SelectTrigger>
+              <SelectContent>
+                {(items.data ?? []).map((term) => (
+                  <SelectItem key={term.id} value={term.id}>
+                    {term.value}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button onClick={decideTestItem} disabled={!pickingItem}>
+              이 시험의 규격으로 정하기
+            </Button>
+          </div>
+        </div>
+      )}
+
+      <section className="space-y-3">
+        <h2 className="text-base font-semibold">인용한 계열</h2>
+        {one.cited_series.length === 0 ? (
+          <p className="text-muted-foreground text-sm">
+            이 규격을 인용한 카탈로그 계열이 없습니다 — 카탈로그에 이 시험을 하는 계열이
+            없거나, 아직 반입하지 않은 것입니다.
+          </p>
+        ) : (
+          <ul className="flex flex-wrap gap-2 text-sm">
+            {one.cited_series.map((row) => (
+              <li key={row.series_id}>
+                <Link
+                  to={`/catalog/equipment-series/${row.series_id}`}
+                  className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 hover:underline ${row.pending ? 'border-dashed text-muted-foreground' : ''}`}
+                >
+                  {row.series_name}
+                  {/* 미정은 점선 — 인용은 했는데 어느 시험 항목 밑에 둘지 못 정한 것. */}
+                  <span className="text-muted-foreground text-xs">
+                    {row.pending ? '항목 미정' : row.test_item}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       <section className="space-y-3">
         <h2 className="text-base font-semibold">요구 조건</h2>

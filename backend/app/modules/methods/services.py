@@ -10,9 +10,15 @@ from sqlalchemy import Select, func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.equipment.models import EquipmentSeries
 from app.modules.methods.models import MethodRequirement, TestMethod
-from app.modules.methods.schemas import MethodOut, RequirementOut
-from app.modules.test_items.models import EquipmentTestItem
+from app.modules.methods.schemas import CitedSeriesOut, MethodOut, RequirementOut
+from app.modules.test_items.models import (
+    EquipmentTestItem,
+    SeriesPendingMethod,
+    SeriesTestItem,
+    SeriesTestItemMethod,
+)
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared import audit
@@ -69,6 +75,105 @@ def _requirements(db: Session, method_id: uuid.UUID) -> list[RequirementOut]:
     ]
 
 
+def promote_pending(db: Session, method: TestMethod) -> int:
+    """항목 미정 인용을 **그 시험 항목의 링크로 올린다.** 올린 수를 돌려준다. 커밋은 부르는 쪽.
+
+    시험 항목이 정해진 규격에 대해, 그것을 인용해 둔 계열마다 그 계열이 그 시험 항목을
+    갖고 있으면 `series_test_item_methods` 에 잇고 미정 줄을 지운다. 계열에 그 시험 항목이
+    없으면 미정으로 남는다 — 사람이 계열에 그 시험을 더하거나 규격의 항목을 다시 볼 자리다.
+    """
+    if method.test_item_term_id is None:
+        return 0
+    moved = 0
+    for pending in list(
+        db.scalars(
+            select(SeriesPendingMethod).where(SeriesPendingMethod.method_id == method.id)
+        )
+    ):
+        target = db.scalar(
+            select(SeriesTestItem).where(
+                SeriesTestItem.series_id == pending.series_id,
+                SeriesTestItem.test_item_term_id == method.test_item_term_id,
+            )
+        )
+        if target is None:
+            continue
+        linked = db.scalar(
+            select(SeriesTestItemMethod).where(
+                SeriesTestItemMethod.series_test_item_id == target.id,
+                SeriesTestItemMethod.method_id == method.id,
+            )
+        )
+        if linked is None:
+            db.add(SeriesTestItemMethod(series_test_item_id=target.id, method_id=method.id))
+        db.delete(pending)
+        moved += 1
+    db.flush()
+    return moved
+
+
+def series_counts(
+    db: Session, method_ids: list[uuid.UUID]
+) -> dict[uuid.UUID, tuple[int, int]]:
+    """규격마다 (이어진 계열 수, 항목 미정으로 인용한 계열 수). **한 번에 센다.**"""
+    linked: dict[uuid.UUID, set[uuid.UUID]] = {}
+    for method_id, series_id in db.execute(
+        select(SeriesTestItemMethod.method_id, SeriesTestItem.series_id)
+        .join(SeriesTestItem, SeriesTestItem.id == SeriesTestItemMethod.series_test_item_id)
+        .where(SeriesTestItemMethod.method_id.in_(method_ids))
+    ).all():
+        linked.setdefault(method_id, set()).add(series_id)
+    for method_id, series_id in db.execute(
+        select(SeriesTestItem.method_id, SeriesTestItem.series_id).where(
+            SeriesTestItem.method_id.in_(method_ids)
+        )
+    ).all():
+        linked.setdefault(method_id, set()).add(series_id)
+    pending: dict[uuid.UUID, int] = {
+        method_id: count
+        for method_id, count in db.execute(
+            select(SeriesPendingMethod.method_id, func.count())
+            .where(SeriesPendingMethod.method_id.in_(method_ids))
+            .group_by(SeriesPendingMethod.method_id)
+        ).all()
+    }
+    return {one: (len(linked.get(one, set())), pending.get(one, 0)) for one in method_ids}
+
+
+def cited_series(db: Session, method_id: uuid.UUID) -> list[CitedSeriesOut]:
+    """이 규격을 인용한 계열 — 이어진 것과 항목 미정인 것 함께. 상세 화면이 그린다."""
+    out: dict[uuid.UUID, CitedSeriesOut] = {}
+    rows = db.execute(
+        select(EquipmentSeries, VocabularyTerm.value)
+        .join(SeriesTestItem, SeriesTestItem.series_id == EquipmentSeries.id)
+        .join(
+            SeriesTestItemMethod, SeriesTestItemMethod.series_test_item_id == SeriesTestItem.id
+        )
+        .join(VocabularyTerm, VocabularyTerm.id == SeriesTestItem.test_item_term_id)
+        .where(
+            SeriesTestItemMethod.method_id == method_id, EquipmentSeries.deleted_at.is_(None)
+        )
+    ).all()
+    for series, item in rows:
+        out[series.id] = CitedSeriesOut(
+            series_id=series.id, series_name=series.name, test_item=item, pending=False
+        )
+    for series in db.scalars(
+        select(EquipmentSeries)
+        .join(SeriesPendingMethod, SeriesPendingMethod.series_id == EquipmentSeries.id)
+        .where(
+            SeriesPendingMethod.method_id == method_id, EquipmentSeries.deleted_at.is_(None)
+        )
+    ):
+        out.setdefault(
+            series.id,
+            CitedSeriesOut(
+                series_id=series.id, series_name=series.name, test_item=None, pending=True
+            ),
+        )
+    return sorted(out.values(), key=lambda one: (one.pending, one.series_name))
+
+
 def _can_edit(db: Session, user: User, row: TestMethod) -> bool:
     try:
         require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
@@ -77,8 +182,16 @@ def _can_edit(db: Session, user: User, row: TestMethod) -> bool:
     return True
 
 
-def method_out(db: Session, row: TestMethod, viewer: User) -> MethodOut:
+def method_out(
+    db: Session,
+    row: TestMethod,
+    viewer: User,
+    *,
+    counts: dict[uuid.UUID, tuple[int, int]] | None = None,
+    with_series: bool = False,
+) -> MethodOut:
     item = db.get(VocabularyTerm, row.test_item_term_id) if row.test_item_term_id else None
+    linked, pending = (counts or series_counts(db, [row.id]))[row.id]
     body = db.get(VocabularyTerm, row.body_term_id) if row.body_term_id else None
     workspace = db.get(Workspace, row.owner_workspace_id) if row.owner_workspace_id else None
     successor = db.get(TestMethod, row.superseded_by_id) if row.superseded_by_id else None
@@ -103,6 +216,9 @@ def method_out(db: Session, row: TestMethod, viewer: User) -> MethodOut:
         summary=row.summary,
         workspace_slug=workspace.slug if workspace else None,
         equipment_count=equipment_count,
+        series_count=linked,
+        pending_series_count=pending,
+        cited_series=cited_series(db, row.id) if with_series else [],
         requirements=_requirements(db, row.id),
         created_at=row.created_at,
         can_edit=_can_edit(db, viewer, row),
@@ -116,6 +232,8 @@ def list_methods(
     query: str | None,
     requirement: str | None = None,
     test_item_term_id: uuid.UUID | None,
+    test_item: str | None = None,
+    cited: str | None = None,
     include_superseded: bool,
     limit: int,
     offset: int,
@@ -126,6 +244,19 @@ def list_methods(
         stmt = stmt.where(TestMethod.code.ilike(text) | TestMethod.title.ilike(text))
     if test_item_term_id:
         stmt = stmt.where(TestMethod.test_item_term_id == test_item_term_id)
+    if test_item == "none":
+        # **어느 시험의 규격인지 안 정해진 것.** 인용한 계열이 있어도 못 이어진다 — 홈의
+        # 「남은 일」 이 이 조건으로 온다. 세는 조건과 거르는 조건이 같아야 한다.
+        stmt = stmt.where(TestMethod.test_item_term_id.is_(None))
+    if cited == "none":
+        # 어느 계열의 시험 항목에도 안 이어진 규격. 「못 하는 시험」 과 「끊긴 연결」 을
+        # 여기서 가른다 — 항목 미정 인용(pending)이 있으면 끊긴 것이다.
+        stmt = stmt.where(
+            TestMethod.id.not_in(select(SeriesTestItemMethod.method_id).distinct()),
+            TestMethod.id.not_in(
+                select(SeriesTestItem.method_id).where(SeriesTestItem.method_id.is_not(None))
+            ),
+        )
     if requirement == "none":
         # **우리가 인용한 규격 중 조건이 안 적힌 것.** 홈의 「남은 일」 이 이 조건으로
         # 링크한다 — 세는 조건과 거르는 조건이 다르면 그 줄을 눌러 온 사람이 다른
@@ -137,11 +268,14 @@ def list_methods(
         stmt = stmt.where(TestMethod.status != "superseded")
 
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
-    rows = db.scalars(
-        stmt.order_by(TestMethod.code, TestMethod.edition).limit(limit).offset(offset)
+    rows = list(
+        db.scalars(
+            stmt.order_by(TestMethod.code, TestMethod.edition).limit(limit).offset(offset)
+        )
     )
+    counts = series_counts(db, [row.id for row in rows])
     return Page(
-        items=[method_out(db, row, user) for row in rows],
+        items=[method_out(db, row, user, counts=counts) for row in rows],
         total=total,
         limit=limit,
         offset=offset,
@@ -194,6 +328,10 @@ def update(
     for field in _PLAIN_FIELDS:
         if field in changes:
             setattr(row, field, changes[field])
+    if changes.get("test_item_term_id"):
+        # 시험 항목이 정해지는 순간 항목 미정 인용이 그 계열의 시험 항목에 붙는다 —
+        # 사람이 계열마다 다시 이을 필요가 없다.
+        promote_pending(db, row)
 
     if changes.get("status") == "superseded" and row.status != "superseded":
         # **대체는 되돌릴 수 없는 부류다.** 이 규격을 걸고 있던 시험 항목 전부의 뜻이

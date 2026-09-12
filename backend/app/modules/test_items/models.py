@@ -261,6 +261,40 @@ class SeriesTestItemMethod(Base):
     )
 
 
+class SeriesPendingMethod(Base):
+    """계열이 인용했는데 **어느 시험 항목의 규격인지 아직 모르는** 것.
+
+    카탈로그 객체의 규격 목록은 계열에 평평하게 붙어 온다. 만능시험기가 ASTM D638 · ISO 178 ·
+    ASTM E8 을 함께 인용하면 그중 무엇이 굽힘의 것인지 반입은 모른다 — 시험이 하나뿐인
+    계열은 소거로 알지만, 여럿이면 사람이 정해야 한다.
+
+    전에는 그 사이 **누가 인용했나가 DB 어디에도 없었다.** 규격 행은 생기고 링크는 안 생겨,
+    시험법 464 중 287 이 「가능 장비 없음」 으로 서 있었다 — 못 하는 시험이 아니라 끊긴
+    연결인데 화면이 그 둘을 구별하지 못했다.
+
+    여기 남겨 두면 시험 항목이 정해지는 순간(화면에서든 반입에서든) 그 계열의 그 시험
+    항목에 자동으로 붙는다(`methods.services.promote_pending`). 붙고 나면 이 줄은 지운다.
+    """
+
+    __tablename__ = "series_pending_methods"
+    __table_args__ = (
+        UniqueConstraint("series_id", "method_id", name="uq_series_pending_methods"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    series_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("equipment_series.id", ondelete="CASCADE"), index=True
+    )
+    method_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("test_methods.id", ondelete="CASCADE"), index=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 class SeriesTestCondition(Base):
     """계열의 시험 항목의 조건 범위 — **계열 전체가 만족하는 것만.**
 

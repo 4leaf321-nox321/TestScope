@@ -51,7 +51,11 @@ from app.modules.equipment.models import (
 )
 from app.modules.methods.models import TestMethod
 from app.modules.properties.models import TestItemProperty
-from app.modules.test_items.models import SeriesTestItem, SeriesTestItemMethod
+from app.modules.test_items.models import (
+    SeriesPendingMethod,
+    SeriesTestItem,
+    SeriesTestItemMethod,
+)
 from app.modules.vocabulary.catalog_specs import (
     CATALOG_SPEC_DEFINITIONS,
     CATEGORY_SPREAD,
@@ -1103,11 +1107,15 @@ def step_series(
     form_factors: dict[str, uuid.UUID],
     drives: dict[str, uuid.UUID],
     actor: User | None,
-) -> tuple[dict[str, EquipmentSeries], int]:
-    """3. 계열과 그 시험 항목. **무슨 시험이 되나는 계열의 성질**이다(ADR 0006)."""
+) -> tuple[dict[str, EquipmentSeries], int, int]:
+    """3. 계열과 그 시험 항목. **무슨 시험이 되나는 계열의 성질**이다(ADR 0006).
+
+    돌려주는 것: (계열, 새로 만든 시험 항목 수, 항목 미정으로 남긴 인용 수).
+    """
     sources = {row.path: row for row in db.scalars(select(SpecSource))}
     made: dict[str, EquipmentSeries] = {}
     test_items = 0
+    pending = 0
 
     for obj in cat.objects:
         series = _series_of(db, obj, form_factors, drives, makers, categories, sources, actor)
@@ -1127,17 +1135,10 @@ def step_series(
             for code in (obj.get("standards") or {}).get("test_methods") or []
             if str(code).strip()
         ]
+        linked_codes: set[str] = set()
         for item_id in obj.get("test_items") or []:
             term = items.get(item_id)
             if term is None:
-                continue
-            exists = db.scalar(
-                select(SeriesTestItem).where(
-                    SeriesTestItem.series_id == series.id,
-                    SeriesTestItem.test_item_term_id == term.id,
-                )
-            )
-            if exists is not None:
                 continue
             by_item = (obj.get("standards") or {}).get("test_methods_by_item") or {}
             listed = set(by_item.get(item_id) or [])
@@ -1147,21 +1148,82 @@ def step_series(
                 if methods.get(one) is not None
                 and (one in listed or methods[one].test_item_term_id == term.id)
             ]
-            test_item = SeriesTestItem(series_id=series.id, test_item_term_id=term.id)
-            db.add(test_item)
-            db.flush()
+            test_item = db.scalar(
+                select(SeriesTestItem).where(
+                    SeriesTestItem.series_id == series.id,
+                    SeriesTestItem.test_item_term_id == term.id,
+                )
+            )
+            if test_item is None:
+                test_item = SeriesTestItem(series_id=series.id, test_item_term_id=term.id)
+                db.add(test_item)
+                db.flush()
+                test_items += 1
             # **비고 문자열이 아니라 표로 잇는다.** 글자로 두면 시험법 453건이
             # 아무것도 가리키지 않는 목록으로 남고, 「ASTM D638 되는 장비」 를 물으면
             # 문자열을 훑는 수밖에 없다.
-            for code in mine:
-                db.add(
-                    SeriesTestItemMethod(
-                        series_test_item_id=test_item.id, method_id=methods[code].id
+            #
+            # 시험 항목이 **이미 있어도** 빠진 링크는 보탠다. 전에는 있는 항목을 통째로
+            # 건너뛰어, 나중에 시험 항목이 정해진 규격 115 건이 영영 안 이어졌다 —
+            # 두 번째 반입이 첫 반입이 못 한 일을 이어받아야 한다.
+            have = {
+                one.method_id
+                for one in db.scalars(
+                    select(SeriesTestItemMethod).where(
+                        SeriesTestItemMethod.series_test_item_id == test_item.id
                     )
                 )
-            test_items += 1
+            }
+            for code in mine:
+                linked_codes.add(code)
+                if methods[code].id not in have:
+                    db.add(
+                        SeriesTestItemMethod(
+                            series_test_item_id=test_item.id, method_id=methods[code].id
+                        )
+                    )
+        # **누가 인용했나를 남긴다.** 시험이 여럿인 계열이 인용한 규격 중 어느 시험의
+        # 것인지 모르는 것은 링크를 못 만든다. 그 사실을 DB 에 안 남기면 시험법이
+        # 「가능 장비 없음」 으로 서고, 못 하는 시험과 끊긴 연결을 아무도 못 가른다.
+        # 시험 항목이 정해지는 순간 `promote_pending` 이 여기서 링크로 올린다.
+        for code in codes:
+            method = methods.get(code)
+            if method is None or code in linked_codes:
+                continue
+            if method.test_item_term_id is not None:
+                # 항목은 정해졌는데 이 계열에 그 시험이 없다 — 온톨로지와 객체가 어긋난
+                # 것이라 미정이 아니다. 미정 표에 넣으면 「정하면 붙는다」 가 거짓이 된다.
+                continue
+            exists = db.scalar(
+                select(SeriesPendingMethod).where(
+                    SeriesPendingMethod.series_id == series.id,
+                    SeriesPendingMethod.method_id == method.id,
+                )
+            )
+            if exists is None:
+                db.add(SeriesPendingMethod(series_id=series.id, method_id=method.id))
+                pending += 1
         db.flush()
-    return made, test_items
+    return made, test_items, pending
+
+
+def step_promote_pending(db: Session) -> int:
+    """3-b. 지난 반입 뒤 사람이 시험 항목을 정한 규격의 미정 인용을 링크로 올린다.
+
+    화면에서 정하면 그 자리에서 올라가지만(`methods.services.update`), MCP·SQL 로 정했거나
+    이번 반입의 `step_methods` 가 빈 항목을 채운 경우는 여기서 올린다.
+    """
+    from app.modules.methods.services import promote_pending
+
+    moved = 0
+    for method in db.scalars(
+        select(TestMethod)
+        .join(SeriesPendingMethod, SeriesPendingMethod.method_id == TestMethod.id)
+        .where(TestMethod.test_item_term_id.is_not(None))
+        .distinct()
+    ):
+        moved += promote_pending(db, method)
+    return moved
 
 
 def _numbers(raw: Any, factor: float) -> tuple[float | None, float | None, str | None]:
@@ -1776,9 +1838,10 @@ def main() -> int:
         definitions, pending = step_definitions(db, cat, categories)
         headlines, unknown_headlines = step_headlines(db, cat, categories)
         form_factors, drives = step_slug_axes(db, cat, actor)
-        series, test_items = step_series(
+        series, test_items, pending_methods = step_series(
             db, cat, makers, categories, items, methods, form_factors, drives, actor
         )
+        promoted_methods = step_promote_pending(db)
         models, values, flagged, kept = step_models(db, cat, series, form_factors, actor)
         relations = step_relations(db, cat, series)
         links, promoted, unmapped = step_property_links(db, cat, items, properties, actor)
@@ -1801,7 +1864,11 @@ def main() -> int:
             f"  분류 대표 사양 {headlines} · 기종 형태 {len(form_factors)}"
             f" · 구동 방식 {len(drives)}"
         )
-        print(f"  계열 {len(series)} · 계열의 시험 항목 새로 {test_items}")
+        print(
+            f"  계열 {len(series)} · 계열의 시험 항목 새로 {test_items}"
+            f" · 항목 미정 인용 새로 {pending_methods}"
+            f" · 미정에서 링크로 올림 {promoted_methods}"
+        )
         print(f"  기종 새로 {models} · 사양값 새로 {values}")
         if kept:
             print(f"  원문 보존 {kept}건 (정의가 없는 값도 통째로 남는다)")

@@ -495,6 +495,31 @@ function SeriesTestItems({
           </Button>
         </div>
       )}
+
+      {series.pending_methods.length > 0 && (
+        <div className="rounded-md border border-dashed p-3 text-sm">
+          {/* **인용은 했는데 어느 시험 항목 밑에 둘지 못 정한 규격.** 시험 항목 밑에 못 그리니
+              따로 보인다 — 안 보이면 카탈로그가 인용한 사실이 화면에서 사라진다. 규격 쪽에서
+              시험 항목을 정하면 위 표로 옮겨 간다. */}
+          <p className="text-muted-foreground mb-2">
+            이 계열이 인용했는데 <strong>어느 시험 항목의 규격인지 안 정해진 것</strong>{' '}
+            {series.pending_methods.length}건 — 규격에서 시험 항목을 정하면 위 표에 붙습니다.
+          </p>
+          <ul className="flex flex-wrap gap-1.5">
+            {series.pending_methods.map((one) => (
+              <li key={one.id}>
+                <Link
+                  to={`/methods/${one.id}`}
+                  className="text-muted-foreground inline-block rounded border border-dashed px-2 py-0.5 hover:underline"
+                  title={one.title}
+                >
+                  {one.code}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   )
 }

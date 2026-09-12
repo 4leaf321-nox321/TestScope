@@ -4,6 +4,11 @@
  * **가능 장비 수를 한 칸으로 보여 준다.** 0 인 규격은 지금 우리가 못 하는 시험이고,
  * 그 사실이 목록에 보여야 "이건 외주" 라는 판단이 선다.
  *
+ * **못 하는 시험과 끊긴 연결을 가른다.** 「인용 계열」 이 0 인데 「항목 미정」 이 있으면
+ * 그 규격은 카탈로그가 인용했는데 어느 시험의 것인지 안 정해져 못 이어진 것이다 — 시험
+ * 항목을 정하면 붙는다. 그 둘을 한 칸에 섞으면 464 중 287 이 「없음」 으로 서고, 사람은
+ * 카탈로그가 비었다고 읽는다.
+ *
  * 기본은 현행만 보여 준다 — 대체된 판이 섞여 있으면 사람이 옛 규격을 고르고, 그
  * 사실은 시험이 끝난 뒤에야 드러난다.
  */
@@ -37,13 +42,23 @@ export default function MethodsPage() {
   // 목록이 떠서, 사람은 「왜 안 걸러졌지」 를 겪고 그 목록을 안 믿게 된다.
   const [params, setParams] = useSearchParams()
   const requirement = params.get('requirement') ?? undefined
+  const testItem = params.get('test_item') ?? undefined
+  const cited = params.get('cited') ?? undefined
   const [query, setQuery] = useState('')
   const [includeSuperseded, setIncludeSuperseded] = useState(false)
   const [creating, setCreating] = useState(false)
   const page = useResource(
-    () => methodApi.list({ q: query || undefined, requirement, includeSuperseded }),
-    [query, requirement, includeSuperseded],
+    () =>
+      methodApi.list({
+        q: query || undefined,
+        requirement,
+        testItem,
+        cited,
+        includeSuperseded,
+      }),
+    [query, requirement, testItem, cited, includeSuperseded],
   )
+  const filtered = requirement === 'none' || testItem === 'none' || cited === 'none'
 
   return (
     <div className="space-y-6">
@@ -75,13 +90,48 @@ export default function MethodsPage() {
           />
           대체된 판도 보기
         </label>
+        {/* 거르기는 주소에 산다 — 홈의 「남은 일」 과 같은 조건이라 링크로 올 수 있다. */}
+        <div className="flex flex-wrap gap-1 text-sm">
+          <Button
+            size="sm"
+            variant={testItem === 'none' ? 'default' : 'outline'}
+            onClick={() => setParams(testItem === 'none' ? {} : { test_item: 'none' })}
+          >
+            시험 항목 안 정해진 것
+          </Button>
+          <Button
+            size="sm"
+            variant={cited === 'none' ? 'default' : 'outline'}
+            onClick={() => setParams(cited === 'none' ? {} : { cited: 'none' })}
+          >
+            어느 계열에도 안 이어진 것
+          </Button>
+        </div>
       </div>
 
-      {requirement === 'none' && (
+      {filtered && (
         <div className="bg-muted/50 flex flex-wrap items-center gap-3 rounded-md border p-3">
           <p className="text-sm">
-            <strong>요구 조건이 안 적힌 규격만</strong> 보고 있습니다. 조건이 없으면 검색이 그
-            규격으로 장비를 좁히지 못하고, 사람이 매번 직접 입력해야 합니다.
+            {requirement === 'none' && (
+              <>
+                <strong>요구 조건이 안 적힌 규격만</strong> 보고 있습니다. 조건이 없으면 검색이
+                그 규격으로 장비를 좁히지 못하고, 사람이 매번 직접 입력해야 합니다.
+              </>
+            )}
+            {testItem === 'none' && (
+              <>
+                <strong>어느 시험의 규격인지 안 정해진 것만</strong> 보고 있습니다. 카탈로그가
+                인용했는데 시험이 여럿인 계열이라 반입이 못 정한 것입니다 — 상세에서 시험
+                항목을 정하면 인용한 계열에 바로 붙습니다.
+              </>
+            )}
+            {cited === 'none' && (
+              <>
+                <strong>어느 계열의 시험 항목에도 안 이어진 규격만</strong> 보고 있습니다.
+                「항목 미정」 이 있으면 끊긴 연결이고, 없으면 카탈로그에 이 시험을 하는 계열이
+                없는 것입니다.
+              </>
+            )}
           </p>
           <Button size="sm" variant="outline" onClick={() => setParams({})}>
             거르기 풀기
@@ -105,6 +155,7 @@ export default function MethodsPage() {
               <TableHead>제목</TableHead>
               <TableHead>시험 항목</TableHead>
               <TableHead className="text-right">요구 조건</TableHead>
+              <TableHead className="text-right">인용 계열</TableHead>
               <TableHead className="text-right">가능 장비</TableHead>
             </TableRow>
           </TableHeader>
@@ -121,8 +172,31 @@ export default function MethodsPage() {
                 </TableCell>
                 <TableCell>{one.edition ?? '—'}</TableCell>
                 <TableCell className="max-w-md truncate">{one.title}</TableCell>
-                <TableCell>{one.test_item ?? '—'}</TableCell>
+                <TableCell>
+                  {one.test_item ?? (
+                    <Link
+                      to={`/methods/${one.id}`}
+                      className="text-amber-600 underline decoration-dotted underline-offset-2"
+                    >
+                      안 정해짐
+                    </Link>
+                  )}
+                </TableCell>
                 <TableCell className="text-right">{one.requirements.length}</TableCell>
+                <TableCell className="text-right">
+                  {/* 이어진 계열 수. 미정 인용이 있으면 따로 말한다 — 「0」 만 보면 카탈로그에
+                      없는 것으로 읽힌다. */}
+                  {one.series_count === 0 && one.pending_series_count === 0 ? (
+                    <span className="text-muted-foreground">—</span>
+                  ) : (
+                    one.series_count
+                  )}
+                  {one.pending_series_count > 0 && (
+                    <span className="text-muted-foreground ml-1 text-xs">
+                      (미정 {one.pending_series_count})
+                    </span>
+                  )}
+                </TableCell>
                 <TableCell className="text-right">
                   {/* **0 을 그냥 0 으로 두지 않는다.** 그것이 이 표에서 가장 중요한 칸이다. */}
                   {one.equipment_count === 0 ? (

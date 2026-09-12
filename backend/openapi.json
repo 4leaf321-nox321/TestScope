@@ -4677,8 +4677,7 @@
             "schema": {
               "anyOf": [
                 {
-                  "type": "string",
-                  "format": "uuid"
+                  "type": "string"
                 },
                 {
                   "type": "null"
@@ -4702,6 +4701,23 @@
                 }
               ],
               "title": "Requirement"
+            }
+          },
+          {
+            "name": "cited",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^none$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cited"
             }
           },
           {
@@ -7104,6 +7120,43 @@
         "title": "CitedMethodOut",
         "description": "이 시험 항목이 인용하는 규격 하나. **표로 이어져 있다** — 비고의 글자가 아니다."
       },
+      "CitedSeriesOut": {
+        "properties": {
+          "series_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Series Id"
+          },
+          "series_name": {
+            "type": "string",
+            "title": "Series Name"
+          },
+          "test_item": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Test Item"
+          },
+          "pending": {
+            "type": "boolean",
+            "title": "Pending"
+          }
+        },
+        "type": "object",
+        "required": [
+          "series_id",
+          "series_name",
+          "test_item",
+          "pending"
+        ],
+        "title": "CitedSeriesOut",
+        "description": "이 규격을 인용한 계열 하나. `pending` 이면 어느 시험 항목의 것인지 아직 안 정해졌다."
+      },
       "ConditionKeyCreateRequest": {
         "properties": {
           "key": {
@@ -9110,6 +9163,14 @@
             "type": "array",
             "title": "Test Items"
           },
+          "pending_methods": {
+            "items": {
+              "$ref": "#/components/schemas/PendingMethodOut"
+            },
+            "type": "array",
+            "title": "Pending Methods",
+            "default": []
+          },
           "relations": {
             "items": {
               "$ref": "#/components/schemas/SeriesRelationOut"
@@ -11004,6 +11065,22 @@
             "type": "integer",
             "title": "Equipment Count"
           },
+          "series_count": {
+            "type": "integer",
+            "title": "Series Count"
+          },
+          "pending_series_count": {
+            "type": "integer",
+            "title": "Pending Series Count"
+          },
+          "cited_series": {
+            "items": {
+              "$ref": "#/components/schemas/CitedSeriesOut"
+            },
+            "type": "array",
+            "title": "Cited Series",
+            "default": []
+          },
           "requirements": {
             "items": {
               "$ref": "#/components/schemas/RequirementOut"
@@ -11035,6 +11112,8 @@
           "summary",
           "workspace_slug",
           "equipment_count",
+          "series_count",
+          "pending_series_count",
           "requirements",
           "created_at",
           "can_edit"
@@ -12342,6 +12421,31 @@
           "revoked_at"
         ],
         "title": "PatOut"
+      },
+      "PendingMethodOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "code",
+          "title"
+        ],
+        "title": "PendingMethodOut",
+        "description": "계열이 인용했는데 어느 시험 항목의 것인지 **아직 안 정해진** 규격 하나. 규격에\n시험 항목을 정하는 순간 그 시험 항목의 `methods` 로 옮겨 간다."
       },
       "ProfileUpdateRequest": {
         "properties": {

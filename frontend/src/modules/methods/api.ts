@@ -10,15 +10,19 @@ type MethodPage = components['schemas']['Page_MethodOut_']
 export const methodApi = {
   list: (params: {
     q?: string
+    /** 시험 항목 값 id, 또는 `none` — 어느 시험의 규격인지 안 정해진 것만. */
     testItem?: string
     /** `none` 이면 요구 조건이 안 적힌 규격만. 홈의 「남은 일」 이 이걸로 온다. */
     requirement?: string
+    /** `none` 이면 어느 계열의 시험 항목에도 안 이어진 규격만. */
+    cited?: string
     includeSuperseded?: boolean
   }) => {
     const search = new URLSearchParams()
     if (params.q) search.set('q', params.q)
     if (params.testItem) search.set('test_item', params.testItem)
     if (params.requirement) search.set('requirement', params.requirement)
+    if (params.cited) search.set('cited', params.cited)
     if (params.includeSuperseded) search.set('include_superseded', 'true')
     const query = search.toString()
     return api.get<MethodPage>(`/methods${query ? `?${query}` : ''}`)

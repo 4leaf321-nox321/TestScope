@@ -457,6 +457,15 @@ class CitedMethodOut(BaseModel):
     화면이 그 사실을 말해야 채울 마음이 생긴다."""
 
 
+class PendingMethodOut(BaseModel):
+    """계열이 인용했는데 어느 시험 항목의 것인지 **아직 안 정해진** 규격 하나. 규격에
+    시험 항목을 정하는 순간 그 시험 항목의 `methods` 로 옮겨 간다."""
+
+    id: uuid.UUID
+    code: str
+    title: str
+
+
 class SeriesTestItemOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -528,6 +537,9 @@ class EquipmentSeriesOut(BaseModel):
     """계열 전체의 보유 대수와 가동 대수. 기종별 수는 기종 목록이 갖는다."""
 
     test_items: list[SeriesTestItemOut]
+    pending_methods: list[PendingMethodOut] = []
+    """인용은 했는데 시험 항목 밑에 못 넣은 규격. 비어 있는 것이 정상이고, 남아 있으면
+    그 규격의 시험 항목을 정하라는 뜻이다."""
     relations: list[SeriesRelationOut]
     created_at: datetime
     can_edit: bool

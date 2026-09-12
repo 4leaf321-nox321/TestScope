@@ -44,15 +44,18 @@ from app.modules.equipment.schemas import (
     FilterOption,
     ModelHeadlineSpecOut,
     ModelLimitOut,
+    PendingMethodOut,
     SeriesRelationOut,
     SeriesTestItemOut,
     SpecSourceOut,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.methods.services import promote_pending
 from app.modules.resolve.services import resolve, resolve_term_id
 from app.modules.test_items.models import (
     EquipmentTestCondition,
     EquipmentTestItem,
+    SeriesPendingMethod,
     SeriesTestCondition,
     SeriesTestItem,
     SeriesTestItemMethod,
@@ -407,6 +410,23 @@ def _series_units(db: Session, series_id: uuid.UUID) -> list[Equipment]:
     )
 
 
+def _pending_methods(db: Session, series_id: uuid.UUID) -> list[PendingMethodOut]:
+    """이 계열이 인용했는데 **어느 시험 항목의 것인지 아직 안 정해진** 규격.
+
+    시험 항목 밑에 못 그리니 따로 보인다 — 안 보이면 「이 계열은 ASTM E8 을 인용했다」 가
+    카탈로그 JSON 에만 남고, 화면을 보는 사람은 그 규격이 없는 줄 안다.
+    """
+    return [
+        PendingMethodOut(id=row.id, code=row.code, title=row.title)
+        for row in db.scalars(
+            select(TestMethod)
+            .join(SeriesPendingMethod, SeriesPendingMethod.method_id == TestMethod.id)
+            .where(SeriesPendingMethod.series_id == series_id, TestMethod.deleted_at.is_(None))
+            .order_by(TestMethod.code)
+        )
+    ]
+
+
 def series_out(db: Session, row: EquipmentSeries, viewer: User) -> EquipmentSeriesOut:
     units = _series_units(db, row.id)
     source = db.get(SpecSource, row.source_id) if row.source_id else None
@@ -442,6 +462,7 @@ def series_out(db: Session, row: EquipmentSeries, viewer: User) -> EquipmentSeri
         unit_count=len(units),
         operational_count=sum(1 for one in units if one.status in AVAILABLE_STATUSES),
         test_items=_test_items(db, row.id),
+        pending_methods=_pending_methods(db, row.id),
         relations=_relations(db, row.id),
         created_at=row.created_at,
         can_edit=viewer.is_system_admin,
@@ -1228,6 +1249,17 @@ def add_test_item(
         note=payload.get("note"),
     )
     db.add(row)
+    db.flush()
+    # 이 계열이 항목 미정으로 인용해 둔 규격 중 이 시험의 것이 있으면 지금 붙는다.
+    for method in db.scalars(
+        select(TestMethod)
+        .join(SeriesPendingMethod, SeriesPendingMethod.method_id == TestMethod.id)
+        .where(
+            SeriesPendingMethod.series_id == series.id,
+            TestMethod.test_item_term_id == row.test_item_term_id,
+        )
+    ):
+        promote_pending(db, method)
     db.commit()
     db.refresh(row)
     return next(one for one in _test_items(db, series.id) if one.id == row.id)

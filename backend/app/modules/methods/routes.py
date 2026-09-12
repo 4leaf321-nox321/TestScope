@@ -26,8 +26,9 @@ router = APIRouter(prefix="/methods", tags=["methods"])
 @router.get("", response_model=Page[MethodOut])
 def list_methods(
     q: str | None = Query(default=None, max_length=200),
-    test_item: uuid.UUID | None = Query(default=None),
+    test_item: str | None = Query(default=None),
     requirement: str | None = Query(default=None, pattern="^none$"),
+    cited: str | None = Query(default=None, pattern="^none$"),
     include_superseded: bool = Query(default=False),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
@@ -39,7 +40,12 @@ def list_methods(
         user,
         query=q,
         requirement=requirement,
-        test_item_term_id=test_item,
+        # `test_item=none` 은 「안 정해진 것」 이고, 그 밖은 값 id 다.
+        test_item_term_id=(
+            uuid.UUID(test_item) if test_item and test_item != "none" else None
+        ),
+        test_item="none" if test_item == "none" else None,
+        cited=cited,
         include_superseded=include_superseded,
         limit=clamp_limit(limit),
         offset=offset,
@@ -62,7 +68,9 @@ def read_method(
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> MethodOut:
-    return services.method_out(db, services.get_method(db, user, method_id), user)
+    return services.method_out(
+        db, services.get_method(db, user, method_id), user, with_series=True
+    )
 
 
 @router.patch("/{method_id}", response_model=MethodOut)

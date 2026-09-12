@@ -31,6 +31,7 @@ from app.modules.properties.models import TestItemProperty
 from app.modules.test_items.models import (
     EquipmentTestCondition,
     EquipmentTestItem,
+    SeriesPendingMethod,
     SeriesTestCondition,
     SeriesTestItem,
     SeriesTestItemMethod,
@@ -67,6 +68,7 @@ __all__ = [
     "Notification",
     "PersonalAccessToken",
     "RefreshToken",
+    "SeriesPendingMethod",
     "SeriesRelation",
     "SeriesTestCondition",
     "SeriesTestItem",

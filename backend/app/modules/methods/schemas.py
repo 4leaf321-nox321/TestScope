@@ -26,6 +26,15 @@ class RequirementOut(BaseModel):
     note: str | None
 
 
+class CitedSeriesOut(BaseModel):
+    """이 규격을 인용한 계열 하나. `pending` 이면 어느 시험 항목의 것인지 아직 안 정해졌다."""
+
+    series_id: uuid.UUID
+    series_name: str
+    test_item: str | None
+    pending: bool
+
+
 class MethodOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -44,6 +53,13 @@ class MethodOut(BaseModel):
     equipment_count: int
     """이 시험법을 할 수 있다고 등록된 장비 수. 0 이면 그 규격은 **지금 우리가
     못 하는 시험**이다 — 그 사실이 목록에 보여야 한다."""
+    series_count: int
+    """이 규격을 시험 항목에 이어 둔 카탈로그 계열 수 — 「사면 되는 것」 의 수."""
+    pending_series_count: int
+    """인용은 했는데 어느 시험 항목의 규격인지 안 정해져 못 이어진 계열 수. 0 이 아니면
+    「못 하는 시험」 이 아니라 **끊긴 연결**이다 — 시험 항목을 정하면 붙는다."""
+    cited_series: list[CitedSeriesOut] = []
+    """상세에서만 채운다 — 목록에서 계열까지 실으면 한 쪽이 커진다."""
     requirements: list[RequirementOut]
     created_at: datetime
     can_edit: bool

@@ -215,6 +215,23 @@ def maintenance(
             )
         )
 
+    undecided = _count(
+        db, TestMethod, TestMethod.deleted_at.is_(None), TestMethod.test_item_term_id.is_(None)
+    )
+    if undecided:
+        items.append(
+            MaintenanceItemOut(
+                key="method_without_test_item",
+                label="어느 시험의 규격인지 안 정해진 시험법",
+                count=undecided,
+                link="/methods?test_item=none",
+                # 카탈로그가 인용했는데 만능시험기처럼 시험이 여럿인 계열이라 반입이 못
+                # 정한 것. 정하는 순간 인용한 계열에 붙는다 — 그 전까지는 「가능 장비 없음」
+                # 으로 서서 못 하는 시험처럼 읽힌다.
+                severity="info",
+            )
+        )
+
     overdue = _count(
         db,
         EquipmentCalibration,

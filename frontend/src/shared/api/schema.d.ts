@@ -2266,6 +2266,23 @@ export interface components {
             /** Has Requirements */
             has_requirements: boolean;
         };
+        /**
+         * CitedSeriesOut
+         * @description 이 규격을 인용한 계열 하나. `pending` 이면 어느 시험 항목의 것인지 아직 안 정해졌다.
+         */
+        CitedSeriesOut: {
+            /**
+             * Series Id
+             * Format: uuid
+             */
+            series_id: string;
+            /** Series Name */
+            series_name: string;
+            /** Test Item */
+            test_item: string | null;
+            /** Pending */
+            pending: boolean;
+        };
         /** ConditionKeyCreateRequest */
         ConditionKeyCreateRequest: {
             /** Key */
@@ -2928,6 +2945,11 @@ export interface components {
             operational_count: number;
             /** Test Items */
             test_items: components["schemas"]["SeriesTestItemOut"][];
+            /**
+             * Pending Methods
+             * @default []
+             */
+            pending_methods: components["schemas"]["PendingMethodOut"][];
             /** Relations */
             relations: components["schemas"]["SeriesRelationOut"][];
             /**
@@ -3537,6 +3559,15 @@ export interface components {
             workspace_slug: string | null;
             /** Equipment Count */
             equipment_count: number;
+            /** Series Count */
+            series_count: number;
+            /** Pending Series Count */
+            pending_series_count: number;
+            /**
+             * Cited Series
+             * @default []
+             */
+            cited_series: components["schemas"]["CitedSeriesOut"][];
             /** Requirements */
             requirements: components["schemas"]["RequirementOut"][];
             /**
@@ -3995,6 +4026,22 @@ export interface components {
             last_used_at: string | null;
             /** Revoked At */
             revoked_at: string | null;
+        };
+        /**
+         * PendingMethodOut
+         * @description 계열이 인용했는데 어느 시험 항목의 것인지 **아직 안 정해진** 규격 하나. 규격에
+         *     시험 항목을 정하는 순간 그 시험 항목의 `methods` 로 옮겨 간다.
+         */
+        PendingMethodOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Code */
+            code: string;
+            /** Title */
+            title: string;
         };
         /**
          * ProfileUpdateRequest
@@ -7866,6 +7913,7 @@ export interface operations {
                 q?: string | null;
                 test_item?: string | null;
                 requirement?: string | null;
+                cited?: string | null;
                 include_superseded?: boolean;
                 limit?: number;
                 offset?: number;
