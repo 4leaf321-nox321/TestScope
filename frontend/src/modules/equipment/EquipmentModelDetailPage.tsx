@@ -4,6 +4,13 @@
  * 무슨 시험이 되나는 계열이 정하고 여기서는 읽기만 한다. 여기서 적는 것은 사양이고,
  * 검색축에 이어진 사양은 이 기종으로 **보유 장비를 등록할 때 시험 조건이 된다**
  * (ADR 0006). 이미 등록된 장비는 안 바뀐다 — 상속이 아니라 복사다(ADR 0004).
+ *
+ * ## 사양이 빈 기종은 이 화면에서 채운다
+ *
+ * 891 중 224 에 사양값이 하나도 없다. 검색은 그 기종을 「모름」 으로 답하고, 사람은 되는지
+ * 안 되는지를 못 본다. 그중 205 는 **원문은 들어와 있다** — 정의가 없는 키라 사양표에 못
+ * 세운 것뿐이다. 그래서 사양이 비면 원문을 **펼친 채로** 두고 그 위에 「채우세요」 라고
+ * 말한다: 옮겨 적을 것이 바로 아래 있는데 접혀 있으면 아무도 안 연다.
  */
 
 import { Link, useParams } from 'react-router-dom'
@@ -22,6 +29,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi, equipmentApi } from '@/modules/equipment/api'
 import { ModelSpecPanel } from '@/modules/equipment/ModelSpecPanel'
+import { RawSpecs } from '@/modules/equipment/RawSpecs'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 기종과 구별되지 않는다. */
 function shownRange(min: number | null, max: number | null, unit: string): string {
@@ -96,36 +104,7 @@ export default function EquipmentModelDetailPage() {
         onSaved={() => model.reload()}
       />
 
-      {Object.keys(one.raw_specs).length > 0 && (
-        <details className="rounded-md border p-4">
-          <summary className="cursor-pointer text-base font-semibold">
-            카탈로그 원문
-            <span className="text-muted-foreground ml-2 text-sm font-normal">
-              {Object.keys(one.raw_specs).length}개 항목
-            </span>
-          </summary>
-          <p className="text-muted-foreground mt-2 text-sm">
-            제조사 카탈로그에 적힌 그대로입니다. <strong>위 사양표는 정의가 있는 칸만</strong>
-            담고, 여기에는 정의가 없는 것까지 전부 있습니다 — 원본에 950종 넘는 키가 있고
-            대부분이 한 카탈로그에만 나옵니다. 정의로 세우면 목록이 못 쓰게 되고, 안 세우면
-            사라지므로 둘 다 합니다.
-          </p>
-          <dl className="mt-3 space-y-1 text-sm">
-            {Object.entries(one.raw_specs).map(([key, value]) => (
-              <div key={key} className="flex flex-wrap items-baseline gap-2">
-                <dt className="text-muted-foreground w-56 shrink-0 font-mono text-xs">
-                  {key}
-                </dt>
-                <dd className="min-w-0 break-all">
-                  {typeof value === 'object' && value !== null
-                    ? JSON.stringify(value)
-                    : String(value)}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </details>
-      )}
+      <RawSpecs raw={one.raw_specs} empty={one.spec_count === 0} />
 
       <section className="space-y-3">
         <div>
