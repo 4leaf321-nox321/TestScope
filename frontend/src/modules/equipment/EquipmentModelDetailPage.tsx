@@ -129,7 +129,7 @@ export default function EquipmentModelDetailPage() {
 
       <section className="space-y-3">
         <div>
-          <h2 className="text-base font-semibold">계열의 시험 가능한 사양</h2>
+          <h2 className="text-base font-semibold">계열의 시험 항목</h2>
           <p className="text-muted-foreground mt-1 text-sm">
             <strong>무슨 시험이 되는지는 계열이 정합니다.</strong> 고치려면{' '}
             <Link

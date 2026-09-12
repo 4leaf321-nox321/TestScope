@@ -281,7 +281,7 @@ export default function EquipmentSeriesDetailPage() {
   )
 }
 
-/** 시험 가능한 사양 절. 본문에서 떼어 낸 이유는 한 화면 함수가 너무 길어지기 때문이다. */
+/** 시험 항목 절. 본문에서 떼어 낸 이유는 한 화면 함수가 너무 길어지기 때문이다. */
 function SeriesTestItems({
   series,
   items,
@@ -310,7 +310,7 @@ function SeriesTestItems({
   return (
     <section className="space-y-3">
       <div>
-        <h2 className="text-base font-semibold">시험 가능한 사양</h2>
+        <h2 className="text-base font-semibold">시험 항목</h2>
         <p className="text-muted-foreground mt-1 text-sm">
           여기 적은 값은 이 계열의 기종으로 <strong>보유 장비를 등록할 때 복사됩니다.</strong>{' '}
           조건은 <strong>계열 전체가 만족하는 것만</strong> 적습니다 — 기종마다 갈리는 수치는
@@ -320,7 +320,7 @@ function SeriesTestItems({
 
       {series.test_items.length === 0 ? (
         <EmptyState
-          title="시험 가능한 사양이 없습니다"
+          title="시험 항목이 없습니다"
           hint="비워 두면 이 계열의 기종으로 장비를 등록해도 복사될 것이 없어, 매번 손으로 적게 됩니다."
         />
       ) : (

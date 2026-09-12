@@ -558,7 +558,7 @@ def create(
     db.add(row)
     db.flush()
 
-    # **모델을 골랐으면 시험 가능한 사양을 이 장비로 복사한다.** 같은 트랜잭션이어야
+    # **모델을 골랐으면 계열의 시험 항목을 이 장비로 복사한다.** 같은 트랜잭션이어야
     # "장비는 생겼는데 시험 항목만 없는" 상태가 안 생긴다(ADR 0004).
     copied = catalog.copy_test_items_to(db, row, user)
 
