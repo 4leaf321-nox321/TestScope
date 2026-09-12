@@ -250,6 +250,10 @@
 - **wheel 은 Python 마이너 버전에 묶인다.** 패키징은 `.python-version` 을 읽어 py
   런처로 그 버전을 집는다 — PATH 를 믿으면 서버가 거절할 패키지가 조용히 만들어지고,
   그 사실은 배포하는 자리에서야 드러난다.
+- **반입은 단계마다 한 모듈이다**(`scripts/catalog_import/`). 진입 `import_catalog.py` 는
+  순서와 요약만 갖고, 단계의 상태(`terms._CODE_CLASHES` · `values._FREE_MADE`)는 **모듈로
+  읽는다** — 이름을 가져오면 임포트 시점의 빈 값을 든다. 새 단계는 모듈 하나를 더하고 진입에
+  한 줄 잇는다. 갈라 놓은 것이 같은지는 `--dry-run` 요약을 전후로 견줘 본다.
 - **행은 마이그레이션에 넣지 않는다.** 기준정보 축·조건 정의·사양 그룹·사양 정의는
   `app/modules/vocabulary/reference.py` 가 심고, 설치(`seed_install.py`)와
   배포(`seed_reference.py`)가 그것을 부른다. 마이그레이션에 넣으면 모델로 표를
