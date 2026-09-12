@@ -128,6 +128,9 @@ export default function EquipmentSeriesDetailPage() {
   const { id = '' } = useParams<{ id: string }>()
   const series = useResource(() => seriesApi.read(id), [id])
   const models = useResource(() => catalogApi.list({ seriesId: id, limit: 200 }), [id])
+  /** 기종 200개를 넘는 계열은 현실에 없지만, 잘리면 **잘렸다고 말한다** — 조용히 빠진
+   *  줄은 「없다」 로 읽힌다. */
+  const modelsTotal = models.data?.total ?? 0
   const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
   const conditions = useResource(() => vocabularyApi.conditions(), [])
   // **얻는 물성.** 시험 항목 줄만 보면 「이 계열로 영률을 잴 수 있나」 에 답이 안 된다 —
@@ -272,6 +275,12 @@ export default function EquipmentSeriesDetailPage() {
               ))}
             </TableBody>
           </Table>
+        )}
+        {modelsTotal > (models.data?.items ?? []).length && (
+          <p className="text-muted-foreground text-xs">
+            {modelsTotal}개 중 {(models.data?.items ?? []).length}개만 보입니다 — 나머지는 기종
+            목록에서 이 계열로 거르세요.
+          </p>
         )}
       </section>
 

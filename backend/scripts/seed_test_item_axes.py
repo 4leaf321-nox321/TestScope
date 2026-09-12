@@ -5,8 +5,10 @@
 인장은 하중·속도·온도, 챔버는 온도·습도. 이것은 카탈로그가 갖고 있지 않은 지식이라
 반입이 못 채우고, 96 종을 화면에서 하나씩 정하기 전까지 검색은 축 일곱 개를 다 묻는다.
 여기 적은 것은 **논쟁의 여지가 없는 것만**이다 — 나머지는 비워 두고 시험 항목 화면이
-「검색축 없음」 으로 센다. 멱등이다: 이미 축이 하나라도 정해진 시험 항목은 건드리지 않는다
-(사람이 정한 것을 되돌리면 안 된다).
+「검색축 없음」 으로 센다. 멱등이고 **더하기만 한다**: 여기 적힌 짝이 없으면 더하고, 사람이
+화면에서 더한 축은 그대로 둔다(빼지 않는다 — 사람이 정한 것을 되돌리면 안 된다). 축이
+늘어난 릴리스(전압·전류·토크·가속도·충격 에너지, 2026-09-12)를 배포한 뒤 다시 돌리면
+샤르피에 충격 에너지가 붙는다.
 """
 
 from __future__ import annotations
@@ -41,14 +43,22 @@ AXES: dict[str, tuple[str, ...]] = {
     "thermal_shock": ("temperature",),
     "hast": ("temperature", "humidity"),
     "temperature_cycling": ("temperature",),
-    "vibration_sine_random": ("frequency",),
+    "vibration_sine_random": ("frequency", "acceleration"),
+    "mechanical_shock": ("acceleration",),
     "hardness_vickers": ("force",),
     "hardness_rockwell": ("force",),
     "hardness_brinell": ("force",),
-    "charpy_impact": ("temperature",),
-    "izod_impact": ("temperature",),
+    "charpy_impact": ("temperature", "impact_energy"),
+    "izod_impact": ("temperature", "impact_energy"),
+    "drop_weight_impact": ("impact_energy",),
+    "tensile_impact": ("impact_energy",),
     "hdt": ("force", "temperature"),
     "vicat": ("force", "temperature"),
+    "torsion": ("torque",),
+    "dielectric_withstand": ("voltage",),
+    "insulation_resistance": ("voltage",),
+    "ground_bond": ("current",),
+    "battery_cycle_life": ("voltage", "current"),
 }
 
 
@@ -67,33 +77,35 @@ def main() -> int:
             if t.code
         }
         keys = {k.key: k for k in db.scalars(select(ConditionKey))}
-        seeded = skipped = missing = 0
+        added = skipped = missing = 0
         for code, wanted in AXES.items():
             term = terms.get(code)
             if term is None:
                 missing += 1
                 print(f"  시험 항목 코드 없음: {code}")
                 continue
-            have = db.scalar(
-                select(TestItemConditionKey).where(
-                    TestItemConditionKey.test_item_term_id == term.id
+            have = set(
+                db.scalars(
+                    select(TestItemConditionKey.condition_key_id).where(
+                        TestItemConditionKey.test_item_term_id == term.id
+                    )
                 )
             )
-            if have is not None:
-                skipped += 1
-                continue
             for key in wanted:
                 if key not in keys:
                     print(f"  조건 키 없음: {key}")
+                    continue
+                if keys[key].id in have:
+                    skipped += 1
                     continue
                 db.add(
                     TestItemConditionKey(
                         test_item_term_id=term.id, condition_key_id=keys[key].id
                     )
                 )
-            seeded += 1
+                added += 1
         db.commit()
-        print(f"검색축 심음 {seeded} · 이미 정해져 건너뜀 {skipped} · 코드 없음 {missing}")
+        print(f"검색축 더함 {added} · 이미 있어 건너뜀 {skipped} · 코드 없음 {missing}")
         return 0
     finally:
         db.close()

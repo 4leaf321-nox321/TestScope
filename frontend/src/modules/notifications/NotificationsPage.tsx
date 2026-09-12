@@ -6,6 +6,7 @@
  */
 
 import { Link } from 'react-router-dom'
+import { Bell, CalendarClock, UserCheck, UserPlus, Wrench } from 'lucide-react'
 
 import { api } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
@@ -24,6 +25,16 @@ interface Notification {
   link: string | null
   read_at: string | null
   created_at: string
+}
+
+/** 종류마다 아이콘 — 제목을 읽기 전에 무슨 일인지 갈리게. 모르는 종류는 종. */
+function KindIcon({ kind }: { kind: string }) {
+  const className = 'text-muted-foreground mt-0.5 size-4 shrink-0'
+  if (kind === 'account.pending') return <UserPlus className={className} />
+  if (kind === 'account.approved') return <UserCheck className={className} />
+  if (kind === 'calibration.due') return <CalendarClock className={className} />
+  if (kind === 'equipment.status_changed') return <Wrench className={className} />
+  return <Bell className={className} />
 }
 
 export default function NotificationsPage() {
@@ -61,7 +72,8 @@ export default function NotificationsPage() {
               }
             >
               <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
+                <KindIcon kind={one.kind} />
+                <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium">{one.title}</p>
                   {one.body && (
                     <p className="text-muted-foreground mt-1 text-sm">{one.body}</p>

@@ -353,11 +353,19 @@ async def list_conditions(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def search_series(
-    ctx: Context, q: str | None = None, kind: str = "main", limit: int = 20
+    ctx: Context,
+    q: str | None = None,
+    kind: str = "main",
+    category_term_id: str | None = None,
+    limit: int = 20,
 ) -> dict[str, Any]:
     """계열을 찾아 훑는다. `kind` 는 `main`(본체) · `accessory`(부속) · 빈 문자열(전체).
 
     **하나로 정하려면 `resolve` 를 쓴다.** 이 도구는 「무엇이 있나」 를 볼 때다.
+
+    `category_term_id` 로 분류를 좁힌다(`resolve(axis="equipment_category", …)`). 분류는
+    군/유형 두 층이라 **군(「정적 기계 시험기」)을 주면 아래 유형 전부**가 걸린다 —
+    「기계 시험기 전부」 를 보려고 유형 여덟을 하나씩 부르지 않아도 된다.
 
     ## 여기 오는 것은 요약이다
 
@@ -370,7 +378,12 @@ async def search_series(
     return await _get(
         ctx,
         "/equipment-series",
-        {"q": q, "kind": kind or None, "limit": min(limit, MAX_LIMIT)},
+        {
+            "q": q,
+            "kind": kind or None,
+            "category_term_id": category_term_id,
+            "limit": min(limit, MAX_LIMIT),
+        },
     )
 
 
@@ -1102,6 +1115,18 @@ async def add_calibration(
             "note": note,
         },
     )
+
+
+@mcp.tool()
+async def get_catalog_state(ctx: Context) -> dict[str, Any]:
+    """카탈로그가 **정본보다 뒤졌나.** 「카탈로그에 없다」 고 답하기 전에 이것을 본다.
+
+    반입은 사람이 돌리고 배포는 파일만 새로 놓는다. `behind` 가 참이면 이 설치의
+    카탈로그는 정본(`objects` 객체)보다 오래된 것(`imported_objects` 객체, `imported_at`)이라
+    「없다」 는 답이 「아직 안 들어왔다」 일 수 있다 — 그렇게 말하고, 관리자에게
+    `scripts/import_catalog.py` 를 돌리라고 하라. `never` 는 한 번도 반입 안 한 설치다.
+    """
+    return await _get(ctx, "/server/catalog")
 
 
 @mcp.tool()

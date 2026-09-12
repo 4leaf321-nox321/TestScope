@@ -134,6 +134,13 @@ def status(
     )
 
 
+@router.get("/catalog", response_model=CatalogStateOut)
+def catalog(_: User = Depends(current_user), db: Session = Depends(get_db)) -> CatalogStateOut:
+    """카탈로그 신선도만. **누구나 본다** — 「카탈로그에 없다」 고 답하기 전에 반입이
+    정본보다 뒤졌는지 볼 수 있어야 한다. 관리자 화면(`/status`)은 DB 주소까지 실어 관리자만."""
+    return _catalog(db)
+
+
 @router.get("/maintenance", response_model=list[MaintenanceItemOut])
 def maintenance(
     user: User = Depends(current_user), db: Session = Depends(get_db)

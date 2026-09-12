@@ -50,6 +50,9 @@ export default function EquipmentModelDetailPage() {
   if (!model.data) return null
   const one = model.data
   const mine = units.data?.items ?? []
+  /** 200대를 넘는 기종은 현실에 없지만, 잘리면 **잘렸다고 말한다** — 조용히 빠진 줄은
+   *  「없다」 로 읽힌다. */
+  const unitsTotal = units.data?.total ?? 0
 
   return (
     <div className="space-y-6">
@@ -210,6 +213,12 @@ export default function EquipmentModelDetailPage() {
               ))}
             </TableBody>
           </Table>
+        )}
+        {unitsTotal > mine.length && (
+          <p className="text-muted-foreground text-xs">
+            {unitsTotal}대 중 {mine.length}대만 보입니다 — 나머지는 보유 장비 목록에서 이
+            기종으로 거르세요.
+          </p>
         )}
       </section>
     </div>

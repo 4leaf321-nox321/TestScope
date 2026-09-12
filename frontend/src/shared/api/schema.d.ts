@@ -2130,6 +2130,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/server/catalog": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Catalog
+         * @description 카탈로그 신선도만. **누구나 본다** — 「카탈로그에 없다」 고 답하기 전에 반입이
+         *     정본보다 뒤졌는지 볼 수 있어야 한다. 관리자 화면(`/status`)은 DB 주소까지 실어 관리자만.
+         */
+        get: operations["catalog_api_server_catalog_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/server/maintenance": {
         parameters: {
             query?: never;
@@ -9836,6 +9857,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ServerStatusOut"];
+                };
+            };
+        };
+    };
+    catalog_api_server_catalog_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogStateOut"];
                 };
             };
         };
