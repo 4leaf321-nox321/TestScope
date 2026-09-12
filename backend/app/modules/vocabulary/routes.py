@@ -31,6 +31,7 @@ from app.modules.vocabulary.schemas import (
     TermOut,
     TermUpdateRequest,
     VocabularyOut,
+    VocabularyUpdateRequest,
 )
 from app.shared.auth import current_user, require_system_admin
 
@@ -42,6 +43,25 @@ def list_vocabularies(
     _: User = Depends(current_user), db: Session = Depends(get_db)
 ) -> list[VocabularyOut]:
     return services.list_vocabularies(db)
+
+
+@router.patch("/{slug}", response_model=VocabularyOut)
+def update_vocabulary(
+    slug: str,
+    payload: VocabularyUpdateRequest,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> VocabularyOut:
+    """축의 이름·설명·정책·속성 칸. **축을 만들거나 slug 를 바꾸는 것은 여기 없다** —
+    축은 코드가 걸어야 뜻이 있어서, 화면에서 만든 축은 아무 화면도 안 쓴다."""
+    changes = payload.model_dump(exclude_unset=True)
+    if "attribute_schema" in changes and changes["attribute_schema"] is not None:
+        changes["attribute_schema"] = [
+            one.model_dump(exclude_none=True) for one in payload.attribute_schema or []
+        ]
+    return services.vocabulary_out(
+        db, services.update_vocabulary(db, slug=slug, changes=changes)
+    )
 
 
 @router.get("/{slug}/terms", response_model=list[TermOut])
@@ -108,6 +128,18 @@ def add_alias(
     db: Session = Depends(get_db),
 ) -> TermOut:
     term = services.add_alias(db, term_id=term_id, value=payload.value)
+    return services.term_out(db, term)
+
+
+@router.delete("/terms/{term_id}/aliases", response_model=TermOut)
+def remove_alias(
+    term_id: uuid.UUID,
+    value: str = Query(min_length=1, max_length=200),
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> TermOut:
+    """표기 하나를 뗀다. 값으로 고른다 — 표기에는 id 를 안 내보낸다."""
+    term = services.remove_alias(db, term_id=term_id, value=value)
     return services.term_out(db, term)
 
 

@@ -546,6 +546,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/vocabularies/{slug}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Update Vocabulary
+         * @description 축의 이름·설명·정책·속성 칸. **축을 만들거나 slug 를 바꾸는 것은 여기 없다** —
+         *     축은 코드가 걸어야 뜻이 있어서, 화면에서 만든 축은 아무 화면도 안 쓴다.
+         */
+        patch: operations["update_vocabulary_api_vocabularies__slug__patch"];
+        trace?: never;
+    };
     "/api/vocabularies/{slug}/terms": {
         parameters: {
             query?: never;
@@ -598,7 +619,11 @@ export interface paths {
         put?: never;
         /** Add Alias */
         post: operations["add_alias_api_vocabularies_terms__term_id__aliases_post"];
-        delete?: never;
+        /**
+         * Remove Alias
+         * @description 표기 하나를 뗀다. 값으로 고른다 — 표기에는 id 를 안 내보낸다.
+         */
+        delete: operations["remove_alias_api_vocabularies_terms__term_id__aliases_delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -1937,6 +1962,20 @@ export interface components {
              * @default member
              */
             role: string;
+        };
+        /** AttributeField */
+        AttributeField: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /**
+             * Kind
+             * @default text
+             */
+            kind: string;
+            /** Help */
+            help?: string | null;
         };
         /** AuditEntryOut */
         AuditEntryOut: {
@@ -4559,8 +4598,27 @@ export interface components {
             parent_slug: string | null;
             /** Sort Order */
             sort_order: number;
+            /** Attribute Schema */
+            attribute_schema: components["schemas"]["AttributeField"][];
             /** Term Count */
             term_count: number;
+        };
+        /**
+         * VocabularyUpdateRequest
+         * @description 축을 고친다. **slug 와 소속은 못 바꾼다** — 코드가 걸고 있다.
+         *
+         *     정책을 open 에서 closed 로 바꾸는 것은 된다: 값이 흩어지기 시작한 축을 잠그는 일이
+         *     실제로 있다. 반대도 된다 — 다만 그 축이 검색의 첫 축이면 오타가 값이 된다.
+         */
+        VocabularyUpdateRequest: {
+            /** Label */
+            label?: string | null;
+            /** Description */
+            description?: string | null;
+            /** Entry Policy */
+            entry_policy?: string | null;
+            /** Attribute Schema */
+            attribute_schema?: components["schemas"]["AttributeField"][] | null;
         };
         /** WorkspaceCreateRequest */
         WorkspaceCreateRequest: {
@@ -5762,6 +5820,41 @@ export interface operations {
             };
         };
     };
+    update_vocabulary_api_vocabularies__slug__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VocabularyUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VocabularyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_terms_api_vocabularies__slug__terms_get: {
         parameters: {
             query?: {
@@ -5883,6 +5976,39 @@ export interface operations {
         responses: {
             /** @description Successful Response */
             201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TermOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    remove_alias_api_vocabularies_terms__term_id__aliases_delete: {
+        parameters: {
+            query: {
+                value: string;
+            };
+            header?: never;
+            path: {
+                term_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };

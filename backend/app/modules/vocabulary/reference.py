@@ -115,6 +115,24 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
     ),
 ]
 
+#: 축의 값이 갖는 칸. **설치가 심고, 이미 적힌 축은 안 덮는다.** 물성만 갖는다 —
+#: 반입이 MaterialTwin 정의에서 기호·단위·설명을 넣고, 편집 화면이 이것을 보고 칸을 그린다.
+ATTRIBUTE_SCHEMAS: dict[str, list[dict[str, str]]] = {
+    "property": [
+        {"key": "symbol", "label": "기호", "kind": "text", "help": "Rp0.2 · E · Tg"},
+        {"key": "si_unit", "label": "SI 단위", "kind": "text", "help": "Pa · K · 1(무차원)"},
+        {"key": "domain", "label": "분야", "kind": "text", "help": "mechanical · thermal …"},
+        {"key": "description", "label": "설명", "kind": "text"},
+        {"key": "test_standard", "label": "대표 규격", "kind": "text"},
+        {
+            "key": "condition_axes",
+            "label": "조건 축",
+            "kind": "list",
+            "help": "temperature_k 처럼 값이 갈리는 축",
+        },
+    ],
+}
+
 #: (key, label, kind, 차원, 저장 단위, 표시 단위, 순서, 도움말)
 #:
 #: **저장 단위와 표시 단위를 같게 둔 것은 우연이 아니다.** 실무가 kN 과 degC 로
@@ -673,6 +691,14 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
             )
         )
         added_axes += 1
+
+    # 속성 칸: 비어 있는 축에만 심는다 — 화면에서 고친 것을 설치가 되돌리면 사고다.
+    # 세션이 autoflush 를 안 하므로 방금 더한 축을 찾으려면 먼저 내보내야 한다.
+    db.flush()
+    for slug, schema in ATTRIBUTE_SCHEMAS.items():
+        axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
+        if axis is not None and not axis.attribute_schema:
+            axis.attribute_schema = schema
 
     known_keys = set(db.scalars(select(ConditionKey.key)))
     added_keys = 0

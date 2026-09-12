@@ -1484,6 +1484,59 @@
         }
       }
     },
+    "/api/vocabularies/{slug}": {
+      "patch": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Update Vocabulary",
+        "description": "축의 이름·설명·정책·속성 칸. **축을 만들거나 slug 를 바꾸는 것은 여기 없다** —\n축은 코드가 걸어야 뜻이 있어서, 화면에서 만든 축은 아무 화면도 안 쓴다.",
+        "operationId": "update_vocabulary_api_vocabularies__slug__patch",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VocabularyUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VocabularyOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/vocabularies/{slug}/terms": {
       "get": {
         "tags": [
@@ -1692,6 +1745,59 @@
         },
         "responses": {
           "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TermOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Remove Alias",
+        "description": "표기 하나를 뗀다. 값으로 고른다 — 표기에는 id 를 안 내보낸다.",
+        "operationId": "remove_alias_api_vocabularies_terms__term_id__aliases_delete",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "title": "Value"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
@@ -6192,6 +6298,47 @@
         },
         "type": "object",
         "title": "ApproveRequest"
+      },
+      "AttributeField": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "kind": {
+            "type": "string",
+            "pattern": "^(text|number|list)$",
+            "title": "Kind",
+            "default": "text"
+          },
+          "help": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 300
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Help"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label"
+        ],
+        "title": "AttributeField"
       },
       "AuditEntryOut": {
         "properties": {
@@ -13984,6 +14131,13 @@
             "type": "integer",
             "title": "Sort Order"
           },
+          "attribute_schema": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeField"
+            },
+            "type": "array",
+            "title": "Attribute Schema"
+          },
           "term_count": {
             "type": "integer",
             "title": "Term Count"
@@ -14000,9 +14154,67 @@
           "entry_policy",
           "parent_slug",
           "sort_order",
+          "attribute_schema",
           "term_count"
         ],
         "title": "VocabularyOut"
+      },
+      "VocabularyUpdateRequest": {
+        "properties": {
+          "label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "entry_policy": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(open|closed)$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entry Policy"
+          },
+          "attribute_schema": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AttributeField"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attribute Schema"
+          }
+        },
+        "type": "object",
+        "title": "VocabularyUpdateRequest",
+        "description": "축을 고친다. **slug 와 소속은 못 바꾼다** — 코드가 걸고 있다.\n\n정책을 open 에서 closed 로 바꾸는 것은 된다: 값이 흩어지기 시작한 축을 잠그는 일이\n실제로 있다. 반대도 된다 — 다만 그 축이 검색의 첫 축이면 오타가 값이 된다."
       },
       "WorkspaceCreateRequest": {
         "properties": {

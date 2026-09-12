@@ -11,7 +11,7 @@ from __future__ import annotations
 import uuid
 from typing import Any
 
-from sqlalchemy import func, select
+from sqlalchemy import UniqueConstraint, func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
@@ -38,6 +38,7 @@ from app.modules.vocabulary.models import (
     VocabularyTerm,
 )
 from app.modules.vocabulary.schemas import (
+    AttributeField,
     ConditionKeyOut,
     SpecDefinitionOut,
     SpecGroupOut,
@@ -91,10 +92,46 @@ def list_vocabularies(db: Session) -> list[VocabularyOut]:
             entry_policy=row.entry_policy,
             parent_slug=row.parent_slug,
             sort_order=row.sort_order,
+            attribute_schema=[AttributeField(**one) for one in row.attribute_schema or []],
             term_count=_term_count(db, row.id),
         )
         for row in rows
     ]
+
+
+def vocabulary_out(db: Session, row: Vocabulary) -> VocabularyOut:
+    return VocabularyOut(
+        id=row.id,
+        slug=row.slug,
+        label=row.label,
+        domain=row.domain,
+        domain_label=VOCABULARY_DOMAIN_LABELS.get(row.domain, row.domain),
+        description=row.description,
+        entry_policy=row.entry_policy,
+        parent_slug=row.parent_slug,
+        sort_order=row.sort_order,
+        attribute_schema=[AttributeField(**one) for one in row.attribute_schema or []],
+        term_count=_term_count(db, row.id),
+    )
+
+
+def update_vocabulary(db: Session, *, slug: str, changes: dict[str, Any]) -> Vocabulary:
+    """축의 이름·설명·정책·속성 칸. **slug 와 소속은 안 받는다** — 코드가 건다."""
+    row = get_vocabulary(db, slug)
+    if "label" in changes and changes["label"] is not None:
+        row.label = clean(changes["label"])
+    if "description" in changes:
+        row.description = changes["description"]
+    if "entry_policy" in changes and changes["entry_policy"] is not None:
+        row.entry_policy = changes["entry_policy"]
+    if "attribute_schema" in changes and changes["attribute_schema"] is not None:
+        keys = [one["key"] for one in changes["attribute_schema"]]
+        if len(keys) != len(set(keys)):
+            raise AppError("TSC-VOCAB-0010", "속성 칸의 키가 겹칩니다.", status=400)
+        row.attribute_schema = changes["attribute_schema"]
+    db.commit()
+    db.refresh(row)
+    return row
 
 
 def _aliases_of(db: Session, term_id: uuid.UUID) -> list[str]:
@@ -357,6 +394,72 @@ def add_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTerm:
     return term
 
 
+def remove_alias(db: Session, *, term_id: uuid.UUID, value: str) -> VocabularyTerm:
+    """표기 하나를 뗀다. 병합이 남긴 옛 이름을 떼면 같은 오타가 또 들어올 수 있다 —
+    그래도 잘못 붙은 표기를 못 떼는 것보다는 낫다. 떼는 것은 관리자다."""
+    term = get_term(db, term_id)
+    key = compare_key(value)
+    alias = db.scalar(
+        select(VocabularyAlias).where(
+            VocabularyAlias.term_id == term.id, VocabularyAlias.normalized == key
+        )
+    )
+    if alias is None:
+        raise NotFound("TSC-VOCAB-0011", "그 표기가 없습니다.")
+    db.delete(alias)
+    db.commit()
+    db.refresh(term)
+    return term
+
+
+def _repoint_references(
+    db: Session, vocabulary: Vocabulary, source: VocabularyTerm, target: VocabularyTerm
+) -> int:
+    """원본을 가리키던 도메인 행을 대상으로 돌린다. **안 돌리면 병합이 RESTRICT 에 막힌다** —
+    쓰이는 값일수록 합칠 일이 많은데, 바로 그 값이 합쳐지지 않는 셈이었다.
+
+    같은 짝이 이미 대상 쪽에도 있으면(한 계열에 「인장」 과 「인장시험」 시험 항목이 둘 다)
+    유일 제약에 걸린다 — 그 행은 **지운다**: 합치고 나면 같은 줄이 둘인 것이라 하나면 된다.
+    """
+    moved = 0
+    for model, column in _REFERENCES.get(vocabulary.slug, []):
+        for row in list(db.scalars(select(model).where(column == source.id))):
+            if _twin_exists(db, model, column, row, target.id):
+                # 대상 쪽에 같은 줄이 이미 있다. **유일 제약을 믿지 않는다** — NULL 이 낀
+                # 짝(규격 없는 시험 항목)은 PostgreSQL 이 겹치는 것으로 안 본다.
+                db.delete(row)
+            else:
+                setattr(row, column.key, target.id)
+            db.flush()
+            moved += 1
+    return moved
+
+
+def _twin_exists(db: Session, model: Any, column: Any, row: Any, target_id: uuid.UUID) -> bool:
+    """`row` 의 유일 키에서 `column` 만 `target_id` 로 바꾼 줄이 이미 있나."""
+    table = model.__table__
+    for constraint in table.constraints:
+        if not isinstance(constraint, UniqueConstraint):
+            continue
+        names = [one.name for one in constraint.columns]
+        if column.key not in names:
+            continue
+        clauses = []
+        for name in names:
+            attr = getattr(model, name)
+            value = target_id if name == column.key else getattr(row, name)
+            clauses.append(attr.is_(None) if value is None else attr == value)
+        pk = next(iter(table.primary_key.columns))
+        twin = db.scalar(
+            select(getattr(model, pk.name)).where(
+                *clauses, getattr(model, pk.name) != getattr(row, pk.name)
+            )
+        )
+        if twin is not None:
+            return True
+    return False
+
+
 def merge_terms(
     db: Session, *, source_id: uuid.UUID, target_id: uuid.UUID, actor: User
 ) -> VocabularyTerm:
@@ -371,6 +474,9 @@ def merge_terms(
         raise AppError("TSC-VOCAB-0006", "같은 값끼리는 합칠 수 없습니다.", status=400)
     if source.vocabulary_id != target.vocabulary_id:
         raise AppError("TSC-VOCAB-0007", "다른 축의 값끼리는 합칠 수 없습니다.", status=400)
+
+    vocabulary = db.get(Vocabulary, source.vocabulary_id)
+    moved = _repoint_references(db, vocabulary, source, target) if vocabulary else 0
 
     # 원본을 가리키던 하위 값을 대상으로 옮긴다. 안 옮기면 부모 잃은 값이 남는다.
     for child in db.scalars(
@@ -399,7 +505,10 @@ def merge_terms(
         target_table="vocabulary_terms",
         target_id=target.id,
         target_label=target.value,
-        changes={"merged_from": {"before": source.value, "after": target.value}},
+        changes={
+            "merged_from": {"before": source.value, "after": target.value},
+            "repointed": {"before": 0, "after": moved},
+        },
     )
     db.delete(source)
     db.commit()

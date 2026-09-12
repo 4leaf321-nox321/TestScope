@@ -9,6 +9,13 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, Field
 
 
+class AttributeField(BaseModel):
+    key: str = Field(min_length=1, max_length=50, pattern=r"^[a-z][a-z0-9_]*$")
+    label: str = Field(min_length=1, max_length=100)
+    kind: str = Field(default="text", pattern="^(text|number|list)$")
+    help: str | None = Field(default=None, max_length=300)
+
+
 class VocabularyOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -25,9 +32,23 @@ class VocabularyOut(BaseModel):
     entry_policy: str
     parent_slug: str | None
     sort_order: int
+    attribute_schema: list[AttributeField]
+    """값이 갖는 칸의 정의. 편집 화면이 이것을 보고 칸을 그린다."""
     term_count: int
     """값이 몇 개인가. **축 목록에서 이걸 못 보면** 비어 있는 축과 채워진 축이
     같아 보이고, 어디를 채워야 하는지 알 수 없다."""
+
+
+class VocabularyUpdateRequest(BaseModel):
+    """축을 고친다. **slug 와 소속은 못 바꾼다** — 코드가 걸고 있다.
+
+    정책을 open 에서 closed 로 바꾸는 것은 된다: 값이 흩어지기 시작한 축을 잠그는 일이
+    실제로 있다. 반대도 된다 — 다만 그 축이 검색의 첫 축이면 오타가 값이 된다."""
+
+    label: str | None = Field(default=None, min_length=1, max_length=100)
+    description: str | None = None
+    entry_policy: str | None = Field(default=None, pattern="^(open|closed)$")
+    attribute_schema: list[AttributeField] | None = None
 
 
 class TermOut(BaseModel):

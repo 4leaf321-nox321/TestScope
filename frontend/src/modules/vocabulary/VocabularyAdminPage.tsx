@@ -1,20 +1,38 @@
 /**
- * 기준정보 편집.
+ * 기준정보 편집 — **화면에서 고친 것이 사실이 되는 자리.**
  *
- * **켜 두고 고칠 데가 없으면 절반만 한 것이다.** 오타가 값이 되면 그것을 고르는
- * 다음 사람이 생기고, 오염이 자기 강화된다.
+ * 전에는 이름 바꾸기·표기 추가·폐기 셋뿐이었다. 코드·상위 값·속성은 API 가 받는데
+ * 화면이 안 내밀었고, 병합은 화면에 없었다. 그래서 반입한 값을 고치려면 파일을 고쳐 다시
+ * 들이는 수밖에 없었고, 그것은 「화면은 정본이 아니다」 라는 뜻이었다.
  *
- * 합치기는 원본을 **별칭으로 남긴다** — 지우면 같은 오타가 또 들어오고, 그때는
- * 아무도 그것이 예전에 합쳐졌던 값이라는 것을 모른다.
+ * ## 둘로 나뉜다
+ *
+ *     축   이름 · 설명 · 정책(열림/닫힘) · **속성 칸** — 이 축의 값이 무엇을 갖는가
+ *     값   이름 · 코드 · 상위 값 · 속성 · 표기 · 병합 · 폐기 — 값마다 창 하나
+ *
+ * 축을 **만드는** 것은 여기 없다. 축은 코드가 걸어야 뜻이 있어서(검색·반입·화면), 화면에서
+ * 만든 축은 아무 화면도 안 쓴다. 축이 늘어나는 것은 스키마가 바뀌는 일이다.
+ *
+ * 합치기는 원본을 **별칭으로 남긴다** — 지우면 같은 오타가 또 들어오고, 그때는 아무도
+ * 그것이 예전에 합쳐졌던 값이라는 것을 모른다.
  */
 
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { Pencil, Plus, Trash2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
+import { Label } from '@/shared/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/components/ui/select'
 import {
   Table,
   TableBody,
@@ -23,20 +41,231 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components/ui/table'
+import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
 import { AxisList } from '@/modules/vocabulary/AxisList'
 import { vocabularyApi } from '@/modules/vocabulary/api'
+import type { Term, Vocabulary } from '@/modules/vocabulary/api'
+import { TermEditorDialog } from '@/modules/vocabulary/TermEditorDialog'
+
+type Field = Vocabulary['attribute_schema'][number]
+
+/** 축의 정의를 고치는 절. 값 표 위에 접혀 있고, 「축 고치기」 로 편다. */
+function AxisEditor({
+  axis,
+  onSaved,
+}: {
+  axis: Vocabulary
+  onSaved: (next: Vocabulary) => void
+}) {
+  const [open, setOpen] = useState(false)
+  const [label, setLabel] = useState(axis.label)
+  const [description, setDescription] = useState(axis.description ?? '')
+  const [policy, setPolicy] = useState(axis.entry_policy)
+  const [fields, setFields] = useState<Field[]>(axis.attribute_schema ?? [])
+  const [error, setError] = useState<ApiError | Error | null>(null)
+
+  useEffect(() => {
+    setLabel(axis.label)
+    setDescription(axis.description ?? '')
+    setPolicy(axis.entry_policy)
+    setFields(axis.attribute_schema ?? [])
+    setOpen(false)
+  }, [axis])
+
+  function setField(index: number, patch: Partial<Field>) {
+    setFields((current) => current.map((one, i) => (i === index ? { ...one, ...patch } : one)))
+  }
+
+  if (!open) {
+    return (
+      <div className="flex flex-wrap items-start justify-between gap-2 rounded-md border p-3">
+        <div className="min-w-0 space-y-1 text-sm">
+          <p>
+            <span className="font-medium">{axis.label}</span>{' '}
+            <span className="text-muted-foreground font-mono text-xs">{axis.slug}</span>{' '}
+            <span className="text-muted-foreground text-xs">
+              ·{' '}
+              {axis.entry_policy === 'closed'
+                ? '닫힘 — 관리자만 값을 더함'
+                : '열림 — 누구나 값을 더함'}
+              {axis.parent_slug && ` · 상위 축 ${axis.parent_slug}`}
+            </span>
+          </p>
+          {axis.description && <p className="text-muted-foreground">{axis.description}</p>}
+          {(axis.attribute_schema ?? []).length > 0 && (
+            <p className="text-muted-foreground text-xs">
+              값의 칸: {(axis.attribute_schema ?? []).map((one) => one.label).join(' · ')}
+            </p>
+          )}
+        </div>
+        <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+          <Pencil className="mr-1 size-3" />축 고치기
+        </Button>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-3 rounded-md border p-3">
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="space-y-1">
+          <Label htmlFor="axis-label">축 이름</Label>
+          <Input
+            id="axis-label"
+            value={label}
+            onChange={(event) => setLabel(event.target.value)}
+          />
+        </div>
+        <div className="space-y-1">
+          <Label htmlFor="axis-policy">값을 더하는 정책</Label>
+          <Select value={policy} onValueChange={setPolicy}>
+            <SelectTrigger id="axis-policy">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="open">열림 — 누구나 더한다</SelectItem>
+              <SelectItem value="closed">닫힘 — 시스템 관리자만</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+      <div className="space-y-1">
+        <Label htmlFor="axis-description">설명</Label>
+        <Textarea
+          id="axis-description"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+          rows={2}
+          placeholder="고르는 사람이 축의 뜻을 모르면 비슷한 축 둘 중 아무 데나 값을 넣습니다."
+        />
+      </div>
+
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <Label>값이 갖는 칸 (속성)</Label>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() =>
+              setFields((current) => [...current, { key: '', label: '', kind: 'text' }])
+            }
+          >
+            <Plus className="mr-1 size-3" />칸 추가
+          </Button>
+        </div>
+        {fields.length === 0 && (
+          <p className="text-muted-foreground text-xs">
+            없음. 물성처럼 값마다 기호·단위 같은 것이 붙으면 여기 칸을 정합니다 — 그러면 값
+            편집 창이 그 칸을 그립니다.
+          </p>
+        )}
+        {fields.map((field, index) => (
+          <div key={index} className="flex flex-wrap items-center gap-2">
+            <Input
+              value={field.key}
+              onChange={(event) => setField(index, { key: event.target.value })}
+              placeholder="키 (영문)"
+              className="w-40 font-mono text-xs"
+              aria-label={`속성 ${index + 1} 키`}
+            />
+            <Input
+              value={field.label}
+              onChange={(event) => setField(index, { label: event.target.value })}
+              placeholder="이름"
+              className="w-40"
+              aria-label={`속성 ${index + 1} 이름`}
+            />
+            <Select
+              value={field.kind ?? 'text'}
+              onValueChange={(kind) => setField(index, { kind })}
+            >
+              <SelectTrigger className="w-28" aria-label={`속성 ${index + 1} 형`}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="text">글자</SelectItem>
+                <SelectItem value="number">숫자</SelectItem>
+                <SelectItem value="list">목록</SelectItem>
+              </SelectContent>
+            </Select>
+            <Input
+              value={field.help ?? ''}
+              onChange={(event) => setField(index, { help: event.target.value || null })}
+              placeholder="도움말 (선택)"
+              className="w-56"
+            />
+            <Button
+              variant="ghost"
+              size="sm"
+              aria-label={`속성 ${index + 1} 빼기`}
+              onClick={() => setFields((current) => current.filter((_, i) => i !== index))}
+            >
+              <Trash2 className="size-4" />
+            </Button>
+          </div>
+        ))}
+      </div>
+
+      <ErrorNotice error={error} />
+      <div className="flex justify-end gap-2">
+        <Button variant="outline" size="sm" onClick={() => setOpen(false)}>
+          취소
+        </Button>
+        <Button
+          size="sm"
+          onClick={async () => {
+            setError(null)
+            try {
+              const next = await vocabularyApi.updateAxis(axis.slug, {
+                label,
+                description: description || null,
+                entry_policy: policy,
+                attribute_schema: fields
+                  .filter((one) => one.key.trim() && one.label.trim())
+                  .map((one) => ({
+                    key: one.key.trim(),
+                    label: one.label.trim(),
+                    kind: one.kind ?? 'text',
+                    ...(one.help ? { help: one.help } : {}),
+                  })),
+              })
+              onSaved(next)
+              setOpen(false)
+            } catch (caught) {
+              setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
+            }
+          }}
+        >
+          축 저장
+        </Button>
+      </div>
+    </div>
+  )
+}
 
 export default function VocabularyAdminPage() {
   const axes = useResource(() => vocabularyApi.list(), [])
   const [slug, setSlug] = useState('')
   const current = slug || axes.data?.[0]?.slug || ''
+  const axis = useMemo(
+    () => (axes.data ?? []).find((one) => one.slug === current) ?? null,
+    [axes.data, current],
+  )
   const terms = useResource(
     () => (current ? vocabularyApi.terms(current) : Promise.resolve([])),
     [current],
   )
+  // 상위 축이 따로 있으면 그 축의 값이 상위 값 후보다. 없으면 같은 축(트리).
+  const parentTerms = useResource(
+    () =>
+      axis?.parent_slug ? vocabularyApi.terms(axis.parent_slug) : Promise.resolve<Term[]>([]),
+    [axis?.parent_slug],
+  )
+  const [query, setQuery] = useState('')
   const [value, setValue] = useState('')
   const [code, setCode] = useState('')
+  const [editing, setEditing] = useState<Term | null>(null)
   const [error, setError] = useState<ApiError | Error | null>(null)
 
   async function act(run: () => Promise<unknown>) {
@@ -50,11 +279,22 @@ export default function VocabularyAdminPage() {
     }
   }
 
+  const needle = query.trim().toLowerCase()
+  const shownTerms = (terms.data ?? []).filter(
+    (one) =>
+      !needle ||
+      [one.value, one.code ?? '', ...one.aliases].some((text) =>
+        text.toLowerCase().includes(needle),
+      ),
+  )
+  const parentOptions = axis?.parent_slug ? (parentTerms.data ?? []) : (terms.data ?? [])
+  const byId = new Map((terms.data ?? []).map((one) => [one.id, one]))
+
   return (
     <div className="space-y-6">
       <PageHeader
         title="기준정보 편집"
-        description="값을 더하고, 이름을 고치고, 중복을 합칩니다. 이름 변경은 변경 이력에 남습니다."
+        description="축의 뜻과 값의 칸을 정하고, 값을 더하고 고치고 합칩니다. 이름 변경과 병합은 변경 이력에 남습니다."
       />
 
       <div className="flex gap-6">
@@ -64,6 +304,8 @@ export default function VocabularyAdminPage() {
         <AxisList axes={axes.data ?? []} current={current} onSelect={setSlug} />
 
         <div className="min-w-0 flex-1 space-y-4">
+          {axis && <AxisEditor axis={axis} onSaved={() => axes.reload()} />}
+
           <div className="flex flex-wrap items-end gap-2">
             <Input
               value={value}
@@ -75,7 +317,7 @@ export default function VocabularyAdminPage() {
               value={code}
               onChange={(event) => setCode(event.target.value)}
               placeholder="코드 (선택)"
-              className="w-40"
+              className="w-40 font-mono"
             />
             <Button
               onClick={() =>
@@ -89,6 +331,12 @@ export default function VocabularyAdminPage() {
             >
               추가
             </Button>
+            <Input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="찾기 — 이름 · 코드 · 표기"
+              className="ml-auto w-56"
+            />
           </div>
 
           {/* 서버가 중복을 잡으면 **어느 값과 겹치는지**까지 말해 준다. 그 메시지를
@@ -100,57 +348,52 @@ export default function VocabularyAdminPage() {
               <TableRow>
                 <TableHead>값</TableHead>
                 <TableHead>코드</TableHead>
+                <TableHead>상위 값</TableHead>
                 <TableHead>다른 표기</TableHead>
                 <TableHead>상태</TableHead>
                 <TableHead className="text-right">쓰임</TableHead>
-                <TableHead className="text-right">편집</TableHead>
+                <TableHead className="text-right"> </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {(terms.data ?? []).map((term) => (
-                <TableRow key={term.id}>
-                  <TableCell>{term.value}</TableCell>
+              {shownTerms.map((term) => (
+                <TableRow
+                  key={term.id}
+                  className={term.status !== 'active' ? 'opacity-60' : ''}
+                >
+                  <TableCell>
+                    <div>{term.value}</div>
+                    {Object.keys(term.attributes).length > 0 && (
+                      <div className="text-muted-foreground text-xs">
+                        {(axis?.attribute_schema ?? [])
+                          .filter((field) => term.attributes[field.key] !== undefined)
+                          .map(
+                            (field) => `${field.label} ${String(term.attributes[field.key])}`,
+                          )
+                          .join(' · ')}
+                      </div>
+                    )}
+                  </TableCell>
                   <TableCell className="font-mono text-xs">{term.code ?? '—'}</TableCell>
+                  <TableCell className="text-sm">
+                    {term.parent_value ??
+                      (term.parent_term_id
+                        ? (byId.get(term.parent_term_id)?.value ?? '…')
+                        : '—')}
+                  </TableCell>
                   <TableCell className="text-muted-foreground text-sm">
                     {term.aliases.join(', ') || '—'}
                   </TableCell>
                   <TableCell>{term.status === 'active' ? '사용' : '폐기'}</TableCell>
                   <TableCell className="text-right">{term.usage_count}</TableCell>
-                  <TableCell className="space-x-1 text-right">
+                  <TableCell className="text-right">
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => {
-                        const next = window.prompt('새 이름', term.value)
-                        if (next) act(() => vocabularyApi.updateTerm(term.id, { value: next }))
-                      }}
+                      aria-label={`${term.value} 편집`}
+                      onClick={() => setEditing(term)}
                     >
-                      이름
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => {
-                        const alias = window.prompt('이 값의 다른 표기')
-                        if (alias) act(() => vocabularyApi.addAlias(term.id, alias))
-                      }}
-                    >
-                      표기 추가
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() =>
-                        act(() =>
-                          vocabularyApi.updateTerm(term.id, {
-                            // **지우지 않고 폐기한다.** 지우면 그 값을 가리키던 장비가
-                            // 무엇이었는지 알 수 없게 된다.
-                            status: term.status === 'active' ? 'deprecated' : 'active',
-                          }),
-                        )
-                      }
-                    >
-                      {term.status === 'active' ? '폐기' : '되살리기'}
+                      <Pencil className="size-4" />
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -159,6 +402,26 @@ export default function VocabularyAdminPage() {
           </Table>
         </div>
       </div>
+
+      {axis && (
+        <TermEditorDialog
+          term={editing}
+          axis={axis}
+          siblings={terms.data ?? []}
+          parentOptions={parentOptions}
+          onClose={() => setEditing(null)}
+          onChanged={() => {
+            terms.reload()
+            axes.reload()
+            // 편집 중인 값을 새 것으로 바꿔 창이 최신 표기를 보이게 한다.
+            if (editing) {
+              void vocabularyApi
+                .terms(current)
+                .then((rows) => setEditing(rows.find((one) => one.id === editing.id) ?? null))
+            }
+          }}
+        />
+      )}
     </div>
   )
 }

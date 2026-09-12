@@ -15,12 +15,25 @@ export const vocabularyApi = {
     api.get<Term[]>(
       `/vocabularies/${slug}/terms${query ? `?q=${encodeURIComponent(query)}` : ''}`,
     ),
-  createTerm: (slug: string, body: { value: string; code?: string | null }) =>
-    api.post<Term>(`/vocabularies/${slug}/terms`, body),
+  updateAxis: (slug: string, body: Record<string, unknown>) =>
+    api.patch<Vocabulary>(`/vocabularies/${slug}`, body),
+  createTerm: (
+    slug: string,
+    body: {
+      value: string
+      code?: string | null
+      parent_term_id?: string | null
+      attributes?: Record<string, unknown>
+    },
+  ) => api.post<Term>(`/vocabularies/${slug}/terms`, body),
   updateTerm: (termId: string, body: Record<string, unknown>) =>
     api.patch<Term>(`/vocabularies/terms/${termId}`, body),
   addAlias: (termId: string, value: string) =>
     api.post<Term>(`/vocabularies/terms/${termId}/aliases`, { value }),
+  removeAlias: (termId: string, value: string) =>
+    api.delete<Term>(
+      `/vocabularies/terms/${termId}/aliases?value=${encodeURIComponent(value)}`,
+    ),
   mergeTerm: (termId: string, targetTermId: string) =>
     api.post<Term>(`/vocabularies/terms/${termId}/merge`, { target_term_id: targetTermId }),
 

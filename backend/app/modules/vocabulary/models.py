@@ -112,6 +112,18 @@ class Vocabulary(Base):
     entry_policy: Mapped[str] = mapped_column(
         String(10), default="open", server_default="open"
     )
+    attribute_schema: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONB, default=list, server_default="[]"
+    )
+    """**이 축의 값이 갖는 칸.** `[{"key": "symbol", "label": "기호", "kind": "text"}, …]`.
+
+    값의 `attributes` 는 자유 JSON 이라 화면이 무엇을 그릴지 모른다 — 물성은 기호·단위·
+    설명을, 시험 항목은 대표 조건을 갖는데, 축이 그것을 말하지 않으면 편집 화면은 JSON 을
+    통째로 보이는 수밖에 없고 그러면 아무도 안 고친다. **축에 한 번 적는다** — 값마다
+    물으면 같은 답을 수백 번 저장하는 셈이다(`parent_slug` 와 같은 판단).
+
+    `kind` 는 `text` · `number` · `list`(쉼표로 나눈 문자열 목록). 스키마에 없는 키가 값에
+    있어도 지우지 않는다 — 반입이 넣은 것이고, 화면은 그것을 「그 밖의 속성」 으로 보인다."""
     parent_slug: Mapped[str | None] = mapped_column(String(50), nullable=True)
     """이 축의 값이 어느 축 아래 사는가. test_method 의 부모는 test_item 이다.
 
