@@ -218,3 +218,42 @@ def test_계열_목록_링크가_홈이_세는_것과_같다(client: TestClient,
     assert listed.status_code == 200, listed.text
     assert listed.json()["total"] == rows["series_without_test_item"]["count"]
     assert bare["id"] in {row["id"] for row in listed.json()["items"]}
+
+
+def test_묶음_분류를_고르면_아래_유형이_다_걸린다(client: TestClient, admin: Signed) -> None:
+    """분류 축은 군/유형 두 층이고 계열은 유형을 가리킨다. 군을 같음으로 비교하면 언제나
+    0 건이라, 군은 선택지에 **아래 수를 합쳐** 오르고 고르면 가족 전체로 거른다."""
+    tag = uuid.uuid4().hex[:8]
+    group = _term(client, admin, "equipment_category", f"기계 시험기-{tag}")
+    made = client.post(
+        "/api/vocabularies/equipment_category/terms",
+        json={"value": f"만능시험기-{tag}", "parent_term_id": group},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    leaf = str(made.json()["id"])
+    other = _term(client, admin, "equipment_category", f"챔버-{tag}")
+    first = _series(client, admin, category_term_id=leaf)
+    second = _series(client, admin, category_term_id=leaf)
+    _series(client, admin, category_term_id=other)
+    _model(client, admin, first["id"])
+
+    # 군으로 거르면 유형의 계열이 나온다 — 기종도, 보유 장비도 같은 규칙.
+    assert _ids(client, admin, f"/api/equipment-series?category_term_id={group}") == {
+        first["id"],
+        second["id"],
+    }
+    models = client.get(
+        f"/api/equipment-models?category_term_id={group}", headers=admin.headers
+    )
+    assert models.json()["total"] == 1
+
+    options = client.get("/api/equipment-series/filter-options", headers=admin.headers)
+    assert options.status_code == 200, options.text
+    rows = {row["value"]: row for row in options.json()["categories"]}
+    assert rows[group]["count"] == 2, "군의 수가 아래 유형을 합친 것이 아니다"
+    assert rows[group]["detail"] == "묶음 · 1개 분류"
+    assert rows[leaf]["detail"] == f"기계 시험기-{tag}", "유형이 어느 군인지 안 적혀 있다"
+    # 군이 유형보다 먼저 온다 — 목록에서 묶음이 위에 있어야 「전부」 를 먼저 고른다.
+    order = [row["value"] for row in options.json()["categories"]]
+    assert order.index(group) < order.index(leaf)

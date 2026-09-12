@@ -25,6 +25,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.equipment import free_specs, specs
+from app.modules.equipment.category_tree import family, rollup
 from app.modules.equipment.models import (
     AVAILABLE_STATUSES,
     Equipment,
@@ -330,7 +331,8 @@ def series_filter_options(db: Session) -> CatalogFilterOptionsOut:
     alive = EquipmentSeries.deleted_at.is_(None)
     return CatalogFilterOptionsOut(
         makers=_options(db, _counted(db, EquipmentSeries.maker_term_id, alive)),
-        categories=_options(db, _counted(db, EquipmentSeries.category_term_id, alive)),
+        # 분류는 군을 합쳐 올린다 — 「기계 시험기 전부」 를 한 번에 고를 수 있게.
+        categories=rollup(db, dict(_counted(db, EquipmentSeries.category_term_id, alive))),
         kinds=[
             FilterOption(value=kind, label=KIND_LABEL.get(kind, kind), count=count)
             for kind, count in sorted(
@@ -377,7 +379,7 @@ def model_filter_options(db: Session) -> CatalogFilterOptionsOut:
     ).all()
     return CatalogFilterOptionsOut(
         makers=_options(db, by_series(EquipmentSeries.maker_term_id)),
-        categories=_options(db, by_series(EquipmentSeries.category_term_id)),
+        categories=rollup(db, dict(by_series(EquipmentSeries.category_term_id))),
         kinds=[],
         statuses=[
             FilterOption(
@@ -528,7 +530,8 @@ def list_series(
     if kind:
         stmt = stmt.where(EquipmentSeries.kind == kind)
     if category_term_id is not None:
-        stmt = stmt.where(EquipmentSeries.category_term_id == category_term_id)
+        # 군을 고르면 그 아래 유형이 다 걸린다(category_tree).
+        stmt = stmt.where(EquipmentSeries.category_term_id.in_(family(db, category_term_id)))
     if query:
         # 이름·한글 이름·제조사를 다 본다 — 사람은 「인스트론」 으로도 찾고
         # 「6800」 으로도 찾고 「만능재료시험기」 로도 찾는다.
@@ -986,7 +989,7 @@ def list_models(
         stmt = stmt.where(
             EquipmentModel.series_id.in_(
                 select(EquipmentSeries.id).where(
-                    EquipmentSeries.category_term_id == category_term_id
+                    EquipmentSeries.category_term_id.in_(family(db, category_term_id))
                 )
             )
         )

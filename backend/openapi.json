@@ -10919,6 +10919,17 @@
           "count": {
             "type": "integer",
             "title": "Count"
+          },
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
           }
         },
         "type": "object",

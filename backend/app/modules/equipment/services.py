@@ -16,6 +16,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.equipment import catalog
+from app.modules.equipment.category_tree import family, rollup
 from app.modules.equipment.models import (
     EQUIPMENT_STATUSES,
     Equipment,
@@ -295,17 +296,17 @@ def list_equipment(
     if category_term_id is not None:
         # **분류는 두 곳에서 온다.** 기종이 있으면 그 계열이 갖고, 없으면 개체가 직접
         # 가리킨다 — 한쪽만 보면 카탈로그 미연결 장비가 통째로 빠진다.
+        # 군을 고르면 그 아래 유형이 다 걸린다(category_tree).
+        wanted = family(db, category_term_id)
         in_catalog = select(EquipmentModel.id).where(
             EquipmentModel.series_id.in_(
-                select(EquipmentSeries.id).where(
-                    EquipmentSeries.category_term_id == category_term_id
-                )
+                select(EquipmentSeries.id).where(EquipmentSeries.category_term_id.in_(wanted))
             )
         )
         stmt = stmt.where(
             or_(
                 Equipment.model_id.in_(in_catalog),
-                Equipment.category_term_id == category_term_id,
+                Equipment.category_term_id.in_(wanted),
             )
         )
     if test_item_term_id is not None:
@@ -496,7 +497,7 @@ def filter_options(db: Session, user: User) -> EquipmentFilterOptionsOut:
     ]
 
     return EquipmentFilterOptionsOut(
-        categories=terms(categories),
+        categories=rollup(db, categories),
         workspaces=sorted(workspaces, key=lambda one: (-one.count, one.label)),
         sites=terms(dict(counted(visible.c.site_term_id))),
         # 상태는 **화면이 순서를 안다**(생애 순서). 여기서는 있는 것만 알려 준다.

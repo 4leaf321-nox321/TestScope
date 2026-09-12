@@ -115,6 +115,8 @@ class FilterOption(BaseModel):
     value: str
     label: str
     count: int
+    detail: str | None = None
+    """아래 줄에 흐리게 붙는 구별 — 분류라면 어느 군인지, 군이라면 「묶음 · N개 분류」."""
 
 
 class EquipmentFilterOptionsOut(BaseModel):

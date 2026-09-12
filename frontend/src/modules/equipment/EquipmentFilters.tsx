@@ -177,11 +177,12 @@ export function EquipmentFilters({
             options={(options.data?.categories ?? []).map((one) => ({
               id: one.value,
               label: one.label,
+              detail: one.detail ?? null,
               badge: `${one.count}대`,
             }))}
             placeholder="분류 전체"
             detailTitle="장비 분류"
-            detailHint="지금 목록에 있는 분류만 나옵니다."
+            detailHint="지금 목록에 있는 분류만 나옵니다. 묶음을 고르면 그 아래 분류가 다 걸립니다."
             className="w-full"
           />
         )}

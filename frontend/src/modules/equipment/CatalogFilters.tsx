@@ -128,6 +128,8 @@ function asOptions(rows: CatalogFilterOptions['makers'] | undefined, unit: strin
   return (rows ?? []).map((one) => ({
     id: one.value,
     label: one.label,
+    // 분류라면 어느 군인지, 군이라면 「묶음 · N개 분류」 — 군을 고르면 아래가 다 걸린다.
+    detail: one.detail ?? null,
     badge: `${one.count}${unit}`,
   }))
 }
@@ -188,7 +190,7 @@ export function SeriesFilters({
           options={asOptions(options?.categories, '계열')}
           placeholder="분류 전체"
           detailTitle="장비 분류"
-          detailHint="카탈로그에 계열이 있는 분류만 나옵니다."
+          detailHint="카탈로그에 계열이 있는 분류만 나옵니다. 묶음을 고르면 그 아래 분류가 다 걸립니다."
           className="w-full"
         />
       </td>
@@ -277,7 +279,7 @@ export function ModelFilters({
           options={asOptions(options?.categories, '기종')}
           placeholder="분류 전체"
           detailTitle="장비 분류"
-          detailHint="카탈로그에 기종이 있는 분류만 나옵니다."
+          detailHint="카탈로그에 기종이 있는 분류만 나옵니다. 묶음을 고르면 그 아래 분류가 다 걸립니다."
           className="w-full"
         />
       </td>

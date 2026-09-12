@@ -3549,6 +3549,8 @@ export interface components {
             label: string;
             /** Count */
             count: number;
+            /** Detail */
+            detail?: string | null;
         };
         /**
          * FreeSpecOut
