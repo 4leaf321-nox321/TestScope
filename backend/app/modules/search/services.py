@@ -21,17 +21,27 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
-from app.modules.equipment.models import AVAILABLE_STATUSES, Equipment, EquipmentCalibration
+from app.modules.equipment.models import (
+    AVAILABLE_STATUSES,
+    Equipment,
+    EquipmentCalibration,
+    EquipmentSeries,
+)
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.properties.services import test_item_ids_for_property
 from app.modules.search.schemas import (
     ConditionMatch,
     ConditionQuery,
+    SearchDiagnosis,
     SearchHit,
     SearchRequest,
     SearchResponse,
 )
-from app.modules.test_items.models import EquipmentTestCondition, EquipmentTestItem
+from app.modules.test_items.models import (
+    EquipmentTestCondition,
+    EquipmentTestItem,
+    SeriesTestItem,
+)
 from app.modules.vocabulary.models import ConditionKey, VocabularyTerm
 from app.modules.workspaces.models import Workspace
 from app.shared.permissions import visible_equipment_ids
@@ -90,53 +100,61 @@ def _range_text(limit: Limit | None, key: ConditionKey) -> str | None:
 
 
 def _verdict(query: ConditionQuery, limit: Limit | None) -> str:
-    """조건 하나의 판정. met · accessory · unmet · unknown.
+    """조건 하나의 판정. met · accessory · unmet · unknown. 이유는 `_judge` 가 준다."""
+    return _judge(query, limit)[0]
+
+
+def _judge(query: ConditionQuery, limit: Limit | None) -> tuple[str, str | None]:
+    """조건 하나의 판정과 **모르면 왜 모르는지.** (verdict, reason).
 
     **비어 있는 한쪽은 "제한 없음" 이다.** 0 으로 취급하면 상한을 안 적은 장비가
     전부 탈락한다 — 실제로 사람들은 아는 쪽만 적는다.
 
     범위는 맞는데 그 범위가 **옵션 부속 기준**이면 「됨」 이 아니라 `accessory` 다.
     부속을 사거나 빌려야 되는 것이고, 그 사실을 사람이 알아야 한다.
+
+    「모른다」 만 말하면 사람은 채울 자리를 못 찾는다. 조건이 아예 없는 것(`missing`)과
+    상한만 없는 것(`no_max`)은 채우는 칸이 다르다.
     """
     if limit is None:
-        return "unknown"
-    verdict = _range_verdict(query, limit)
+        return "unknown", "missing"
+    verdict, reason = _range_verdict(query, limit)
     if verdict == "met" and limit.requires_accessory:
-        return "accessory"
-    return verdict
+        return "accessory", None
+    return verdict, reason
 
 
-def _range_verdict(query: ConditionQuery, limit: Limit) -> str:
+def _range_verdict(query: ConditionQuery, limit: Limit) -> tuple[str, str | None]:
 
     if query.text is not None:
         if limit.text_value is None:
-            return "unknown"
-        return "met" if limit.text_value.strip() == query.text.strip() else "unmet"
+            return "unknown", "no_range"
+        return ("met" if limit.text_value.strip() == query.text.strip() else "unmet"), None
 
     if query.at is not None:
         if limit.min_value is not None and query.at < limit.min_value:
-            return "unmet"
+            return "unmet", None
         if limit.max_value is not None and query.at > limit.max_value:
-            return "unmet"
+            return "unmet", None
         # 양쪽 다 비어 있으면 범위를 안 적은 것이다 — 통과가 아니라 모름이다.
         if limit.min_value is None and limit.max_value is None:
-            return "unknown"
-        return "met"
+            return "unknown", "no_range"
+        return "met", None
 
     if query.at_least is not None:
         if limit.max_value is None:
             # 상한을 안 적었다. 무제한이라는 뜻일 수도, 안 적은 것일 수도 있다 —
             # **구별할 수 없으면 모른다고 답한다.** 된다고 답했다가 틀리면 그
             # 한 번으로 시스템 전체가 안 믿긴다.
-            return "unknown"
-        return "met" if limit.max_value >= query.at_least else "unmet"
+            return "unknown", "no_max"
+        return ("met" if limit.max_value >= query.at_least else "unmet"), None
 
     if query.at_most is not None:
         if limit.min_value is None:
-            return "unknown"
-        return "met" if limit.min_value <= query.at_most else "unmet"
+            return "unknown", "no_min"
+        return ("met" if limit.min_value <= query.at_most else "unmet"), None
 
-    return "unknown"
+    return "unknown", "no_range"
 
 
 def _candidates(db: Session, user: User, request: SearchRequest) -> list[EquipmentTestItem]:
@@ -242,14 +260,16 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
             if key is None:
                 continue
             limit = limits.get((test_item.id, key.id))
+            verdict_one, reason = _judge(query, limit)
             matches.append(
                 ConditionMatch(
                     condition_key_id=key.id,
                     condition_label=key.label,
                     display_unit=key.display_unit or key.si_unit,
-                    verdict=_verdict(query, limit),
+                    verdict=verdict_one,
                     asked=_asked(query, key),
                     condition_range=_range_text(limit, key),
+                    reason=reason,
                 )
             )
 
@@ -285,7 +305,59 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
         total=len(hits),
         unmet_count=unmet,
         unregistered_equipment=_unregistered_count(db, user),
+        diagnosis=_diagnosis(db, user, request),
         expanded_test_items=expanded,
+    )
+
+
+def _diagnosis(db: Session, user: User, request: SearchRequest) -> SearchDiagnosis | None:
+    """결과가 왜 이런지 가르는 수들. **시험 항목을 물었을 때만** — 전체 검색에서는 뜻이 없다.
+
+    세 수가 세 가지 다른 할 일을 가른다: 시험 항목이 적힌 장비가 0 이면 조건이 좁은 것이
+    아니라 그 시험을 하는 장비가 등록된 적이 없는 것이고, 카탈로그 계열이 있으면 사서 되는
+    것이며, 기종 미연결 장비가 있으면 그중에 답이 숨어 있을 수 있다.
+    """
+    item_ids: list[uuid.UUID] = []
+    if request.test_item_term_id:
+        item_ids = [request.test_item_term_id]
+    elif request.property_term_id:
+        item_ids = test_item_ids_for_property(db, request.property_term_id)
+    if not item_ids:
+        return None
+    visible = visible_equipment_ids(db, user)
+    with_item = (
+        db.scalar(
+            select(func.count(func.distinct(EquipmentTestItem.equipment_id))).where(
+                EquipmentTestItem.test_item_term_id.in_(item_ids),
+                EquipmentTestItem.equipment_id.in_(visible),
+            )
+        )
+        or 0
+    )
+    catalog = (
+        db.scalar(
+            select(func.count(func.distinct(SeriesTestItem.series_id)))
+            .join(EquipmentSeries, EquipmentSeries.id == SeriesTestItem.series_id)
+            .where(
+                SeriesTestItem.test_item_term_id.in_(item_ids),
+                EquipmentSeries.deleted_at.is_(None),
+                EquipmentSeries.kind == "main",
+            )
+        )
+        or 0
+    )
+    unlinked = (
+        db.scalar(
+            select(func.count())
+            .select_from(Equipment)
+            .where(Equipment.id.in_(visible), Equipment.model_id.is_(None))
+        )
+        or 0
+    )
+    return SearchDiagnosis(
+        equipment_with_item=with_item,
+        catalog_series_with_item=catalog,
+        unlinked_equipment=unlinked,
     )
 
 

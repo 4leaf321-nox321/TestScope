@@ -252,7 +252,14 @@ async def search_test_items(
         unknown    **모른다** — 그 장비에 그 조건이 안 적혀 있다
 
     **unknown 을 met 으로 옮기지 마라.** 「가능합니다」 로 옮기면 그 답을 믿고 일정을
-    짠 사람이 막힌다. 「그 장비에 그 조건이 적혀 있지 않다」 고 그대로 말하라.
+    짠 사람이 막힌다. 「그 장비에 그 조건이 적혀 있지 않다」 고 그대로 말하라 — 조건마다
+    `reason` 이 왜 모르는지를 준다(`missing` 안 적힘 · `no_max` 상한 없음 · `no_min` ·
+    `no_range`). 채우려면 `set_test_condition` 이다.
+
+    결과가 비면 `diagnosis` 를 읽어라: `equipment_with_item` 이 0 이면 조건이 좁은 것이
+    아니라 그 시험을 등록한 장비가 없는 것이고, `catalog_series_with_item` 이 0 이 아니면
+    `search_catalog` 로 「사면 되는 것」 을 찾을 수 있으며, `unlinked_equipment` 는 기종에 안
+    이어져 검색에 안 걸리는 장비 수다.
     """
     return await _send(
         ctx,

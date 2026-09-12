@@ -87,6 +87,24 @@ function chipClass(picked: boolean, unused = false): string {
   return `${base} hover:bg-muted ${unused ? 'text-muted-foreground/60' : ''}`
 }
 
+/** `unknown` 의 이유를 사람 말로. **어디를 채우면 되는지**까지 — 「모른다」 만 말하면 사람은
+ *  채울 자리를 못 찾는다. 장비 쪽은 그 장비의 조건, 카탈로그 쪽은 그 기종의 사양이다. */
+function whyUnknown(reason: string | null | undefined, scope: 'owned' | 'catalog'): string {
+  const where = scope === 'owned' ? '장비 조건에' : '기종 사양에'
+  switch (reason) {
+    case 'missing':
+      return `${where} 이 조건이 안 적혀 있습니다 — 적으면 판정됩니다`
+    case 'no_range':
+      return `${where} 범위가 비어 있습니다`
+    case 'no_max':
+      return `${where} 상한이 없어 「이상」 을 판정할 수 없습니다 — 상한을 적으세요`
+    case 'no_min':
+      return `${where} 하한이 없어 「이하」 를 판정할 수 없습니다 — 하한을 적으세요`
+    default:
+      return ''
+  }
+}
+
 function toQuery(row: ConditionRow): ConditionQuery | null {
   const value = Number(row.value)
   if (row.value.trim() === '' || Number.isNaN(value)) return null
@@ -375,6 +393,50 @@ export default function SearchPage() {
   )
 }
 
+/** 「없습니다」 를 왜로 — 세 수가 세 가지 할 일을 가른다. */
+function Diagnosis({ result }: { result: SearchResponse }) {
+  const d = result.diagnosis
+  return (
+    <ul className="mt-1 list-disc space-y-0.5 pl-5 text-left">
+      {d && d.equipment_with_item === 0 ? (
+        <li>
+          이 시험 항목이 적힌 보유 장비가 <strong>0대</strong>입니다 — 조건이 좁은 것이 아니라
+          아무도 이 시험을 등록하지 않았습니다.
+        </li>
+      ) : (
+        <li>
+          조건에 걸려 빠진 시험 항목이 <strong>{result.unmet_count}건</strong> 있습니다
+          {d && ` (이 시험을 적은 장비 ${d.equipment_with_item}대 중)`}. 조건을 넓혀 보세요.
+        </li>
+      )}
+      {d && d.catalog_series_with_item > 0 && (
+        <li>
+          카탈로그에는 이 시험을 하는 계열이 <strong>{d.catalog_series_with_item}개</strong>{' '}
+          있습니다 — 위의 「카탈로그에서」 로 찾으면 어떤 기종이 되는지 나옵니다.
+        </li>
+      )}
+      {d && d.unlinked_equipment > 0 && (
+        <li>
+          기종에 안 이어진 장비가 <strong>{d.unlinked_equipment}대</strong> 있습니다 — 그
+          장비들은 카탈로그의 시험 항목을 못 받아 검색에 안 걸립니다.{' '}
+          <Link to="/equipment?catalog=unlinked" className="underline">
+            이어 주기
+          </Link>
+        </li>
+      )}
+      {result.unregistered_equipment > 0 && (
+        <li>
+          시험 항목이 하나도 안 적힌 장비가 <strong>{result.unregistered_equipment}대</strong>{' '}
+          있습니다.{' '}
+          <Link to="/equipment?test_item=none" className="underline">
+            적으러 가기
+          </Link>
+        </li>
+      )}
+    </ul>
+  )
+}
+
 /** 카탈로그 답 — 계열 한 장에 기종이 줄줄이. **기종 단위 판정**이고 보유 대수가 붙는다. */
 function CatalogResult({ result }: { result: CatalogSearchResponse }) {
   const expanded =
@@ -454,6 +516,8 @@ function CatalogResult({ result }: { result: CatalogSearchResponse }) {
                       <span key={one.condition_key_id}>
                         {one.condition_label} {one.condition_range ?? '안 적힘'}
                         {one.verdict === 'accessory' && ' (부속)'}
+                        {one.verdict === 'unknown' &&
+                          ` — ${whyUnknown(one.reason, 'catalog')}`}
                       </span>
                     ))}
                   </span>
@@ -479,20 +543,18 @@ function SearchResult({ result }: { result: SearchResponse }) {
   if (result.hits.length === 0) {
     return (
       <EmptyState
-        title="조건에 맞는 장비가 없습니다"
+        title={
+          result.diagnosis && result.diagnosis.equipment_with_item === 0
+            ? '이 시험을 하는 장비가 등록된 적이 없습니다'
+            : '조건에 맞는 장비가 없습니다'
+        }
         hint={
           <>
             {expanded}
-            {/* **왜 비었는지 말한다.** 조건에 걸려 빠진 것과 애초에 안 적힌 것은
-                할 일이 다르다 — 앞은 조건을 넓히는 일이고, 뒤는 채우는 일이다. */}
-            조건에 걸려 빠진 시험 항목이 {result.unmet_count}건 있습니다.
-            {result.unregistered_equipment > 0 && (
-              <>
-                {' '}
-                그리고 시험 항목이 아직 안 적힌 장비가 {result.unregistered_equipment}대 있어
-                검색에 걸리지 않습니다.
-              </>
-            )}
+            {/* **왜 비었는지 말한다.** 조건에 걸려 빠진 것, 애초에 안 적힌 것, 카탈로그에만
+                있는 것은 할 일이 다르다 — 앞은 조건을 넓히는 일, 가운데는 채우는 일, 뒤는
+                사는 일이다. 수는 서버가 세고, 말은 여기서 한다. */}
+            <Diagnosis result={result} />
           </>
         }
         action={
@@ -554,10 +616,19 @@ function SearchResult({ result }: { result: SearchResponse }) {
                     <span>{one.asked}</span>
                     <span className="text-muted-foreground">
                       {/* **모른다고 말한다.** 빈 칸으로 두면 된다는 뜻으로 읽힌다. */}
-                      {one.condition_range
-                        ? `장비 ${one.condition_range}`
-                        : '장비에 이 조건이 안 적혀 있습니다'}
+                      {one.condition_range ? `장비 ${one.condition_range}` : null}
                     </span>
+                    {one.verdict === 'unknown' && (
+                      <span className="text-muted-foreground">
+                        {whyUnknown(one.reason, 'owned')}{' '}
+                        <Link
+                          to={`/equipment/${hit.equipment_id}`}
+                          className="underline decoration-dotted underline-offset-2"
+                        >
+                          채우기
+                        </Link>
+                      </span>
+                    )}
                     {one.verdict === 'accessory' && (
                       <span className="text-amber-700">
                         옵션 부속(챔버·노)이 있어야 되는 범위

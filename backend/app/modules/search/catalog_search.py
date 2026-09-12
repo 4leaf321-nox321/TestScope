@@ -43,7 +43,7 @@ from app.modules.search.schemas import (
     ConditionMatch,
     SearchRequest,
 )
-from app.modules.search.services import _asked, _hit_verdict, _range_text, _verdict
+from app.modules.search.services import _asked, _hit_verdict, _judge, _range_text
 from app.modules.test_items.models import (
     SeriesTestCondition,
     SeriesTestItem,
@@ -195,18 +195,23 @@ def search_catalog(db: Session, user: User, request: SearchRequest) -> CatalogSe
             # 기종 사양이 계열 봉투를 이긴다 — 장비를 만들 때와 같은 규칙.
             for key_id, (low, high, _label, accessory) in derived.get(model.id, {}).items():
                 limits[key_id] = Bound(low, high, None, accessory)
-            matches = [
-                ConditionMatch(
-                    condition_key_id=key.id,
-                    condition_label=key.label,
-                    display_unit=key.display_unit or key.si_unit,
-                    verdict=_verdict(query, limits.get(key.id)),
-                    asked=_asked(query, key),
-                    condition_range=_range_text(limits.get(key.id), key),
+            matches = []
+            for query in request.conditions:
+                key = keys.get(query.condition_key_id)
+                if key is None:
+                    continue
+                verdict_one, reason = _judge(query, limits.get(key.id))
+                matches.append(
+                    ConditionMatch(
+                        condition_key_id=key.id,
+                        condition_label=key.label,
+                        display_unit=key.display_unit or key.si_unit,
+                        verdict=verdict_one,
+                        asked=_asked(query, key),
+                        condition_range=_range_text(limits.get(key.id), key),
+                        reason=reason,
+                    )
                 )
-                for query in request.conditions
-                if (key := keys.get(query.condition_key_id)) is not None
-            ]
             verdict = _hit_verdict(matches)
             if verdict is None:
                 unmet += 1

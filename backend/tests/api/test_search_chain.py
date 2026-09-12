@@ -206,3 +206,69 @@ def test_거꾸로_넣은_범위는_거절한다(
     )
     assert response.status_code == 400
     assert response.json()["error"]["code"] == "TSC-CAPABILITIES-0005"
+
+
+def test_모르면_왜_모르는지와_어디를_채울지를_말한다(
+    client: TestClient,
+    admin: Signed,
+    term_factory: Callable[[str, str], str],
+    condition_ids: dict[str, str],
+) -> None:
+    """「모른다」 만 말하면 사람은 채울 자리를 못 찾는다. 조건이 아예 없는 것과 상한만 없는
+    것은 채우는 칸이 다르고, 「없습니다」 도 조건이 좁은 것·등록이 안 된 것·카탈로그에만
+    있는 것이 할 일이 다르다."""
+    tag = uuid.uuid4().hex[:6]
+    item = term_factory("test_item", f"굽힘-{tag}")
+    equipment = _equipment(client, admin, name="상한 없는 장비")
+    test_item = _test_item(client, admin, equipment["id"], item)
+    # 하중은 하한만, 온도는 아예 안 적는다.
+    _limit(client, admin, test_item, condition_ids["force"], 0, None)
+
+    found = client.post(
+        "/api/search/test-items",
+        json={
+            "test_item_term_id": item,
+            "conditions": [
+                {"condition_key_id": condition_ids["force"], "at_least": 20},
+                {"condition_key_id": condition_ids["temperature"], "at": 80},
+            ],
+        },
+        headers=admin.headers,
+    ).json()
+    hit = next(one for one in found["hits"] if one["asset_no"] == equipment["asset_no"])
+    reasons = {one["condition_label"]: one["reason"] for one in hit["conditions"]}
+    assert reasons == {"하중 용량": "no_max", "시험 온도": "missing"}
+    assert hit["verdict"] == "unknown"
+
+    # 진단 — 이 시험 항목이 적힌 장비 1, 카탈로그 계열 0.
+    assert found["diagnosis"] == {
+        "equipment_with_item": 1,
+        "catalog_series_with_item": 0,
+        # 기종 없이 만든 장비라 미연결로 센다 — 이 시험이 쓰는 헬퍼가 그렇게 만든다.
+        "unlinked_equipment": found["diagnosis"]["unlinked_equipment"],
+    }
+    assert found["diagnosis"]["unlinked_equipment"] >= 1
+
+    # 카탈로그에만 있는 시험 항목 — 보유 0, 계열 1 → 「사면 된다」 를 가르는 수.
+    only_catalog = term_factory("test_item", f"비틀림-{tag}")
+    series = client.post(
+        "/api/equipment-series", json={"name": f"T-{tag}"}, headers=admin.headers
+    ).json()
+    client.post(
+        f"/api/equipment-series/{series['id']}/test-items",
+        json={"test_item_term_id": only_catalog},
+        headers=admin.headers,
+    )
+    empty = client.post(
+        "/api/search/test-items",
+        json={"test_item_term_id": only_catalog, "conditions": []},
+        headers=admin.headers,
+    ).json()
+    assert empty["total"] == 0
+    assert empty["diagnosis"]["equipment_with_item"] == 0
+    assert empty["diagnosis"]["catalog_series_with_item"] == 1
+    # 전체 검색에는 진단이 없다 — 시험 항목이 없으면 뜻이 없다.
+    whole = client.post(
+        "/api/search/test-items", json={"conditions": []}, headers=admin.headers
+    ).json()
+    assert whole["diagnosis"] is None

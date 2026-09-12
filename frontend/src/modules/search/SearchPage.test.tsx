@@ -103,11 +103,62 @@ vi.mock('@/shared/api/client', () => ({
           expanded_test_items: [],
         }
       }
+      const asked = body as { test_item_term_id?: string | null }
+      if (asked.test_item_term_id === 't2') {
+        // 압축: 장비는 하나 있는데 상한이 없어 모른다.
+        return {
+          hits: [
+            {
+              equipment_test_item_id: 'e1',
+              equipment_id: 'q1',
+              asset_no: 'UTM-001',
+              equipment_name: '만능시험기',
+              status: 'operational',
+              workspace_name: '재료시험팀',
+              site: '본사',
+              location: '1동',
+              contact_name: null,
+              test_item: '압축',
+              method_code: null,
+              confidence: 'catalog',
+              note: null,
+              verdict: 'unknown',
+              conditions: [
+                {
+                  condition_key_id: 'k1',
+                  condition_label: '하중 용량',
+                  display_unit: 'kN',
+                  verdict: 'unknown',
+                  asked: '20 kN 이상',
+                  condition_range: '0 kN ~ 제한 없음',
+                  reason: 'no_max',
+                },
+              ],
+              calibration_due_on: null,
+            },
+          ],
+          total: 1,
+          unmet_count: 0,
+          unregistered_equipment: 0,
+          diagnosis: {
+            equipment_with_item: 1,
+            catalog_series_with_item: 0,
+            unlinked_equipment: 0,
+          },
+          expanded_test_items: [],
+        }
+      }
       return {
         hits: [],
         total: 0,
         unmet_count: 0,
-        unregistered_equipment: 0,
+        unregistered_equipment: 3,
+        // 인장을 하는 장비는 등록된 적이 없고, 카탈로그에는 계열이 12 있다.
+        diagnosis: {
+          equipment_with_item: 0,
+          catalog_series_with_item: 12,
+          unlinked_equipment: 5,
+        },
         expanded_test_items: ['인장'],
       }
     }),
@@ -206,5 +257,33 @@ describe('카탈로그에서 찾기', () => {
     expect(screen.getByText('보유 2대')).toBeTruthy()
     expect(screen.getByText('부속 있으면')).toBeTruthy()
     expect(screen.getByText(/빠진 기종 3종/)).toBeTruthy()
+  })
+})
+
+describe('왜 모르는지, 왜 없는지', () => {
+  it('빈 결과는 이유 셋을 갈라 말하고 채우러 갈 곳을 준다', async () => {
+    await open()
+    await act(async () => chip('인장').click())
+    await act(async () => chip('찾기').click())
+    expect(screen.getByText('이 시험을 하는 장비가 등록된 적이 없습니다')).toBeTruthy()
+    expect(screen.getByText(/카탈로그에는 이 시험을 하는 계열이/).textContent).toContain(
+      '12개',
+    )
+    expect(screen.getByRole('link', { name: '이어 주기' }).getAttribute('href')).toBe(
+      '/equipment?catalog=unlinked',
+    )
+    expect(screen.getByRole('link', { name: '적으러 가기' }).getAttribute('href')).toBe(
+      '/equipment?test_item=none',
+    )
+  })
+
+  it('모르는 조건은 어느 칸이 비었는지와 채우기 링크를 단다', async () => {
+    await open()
+    await act(async () => chip('압축').click())
+    await act(async () => chip('찾기').click())
+    expect(screen.getByText(/상한이 없어 「이상」 을 판정할 수 없습니다/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: '채우기' }).getAttribute('href')).toBe(
+      '/equipment/q1',
+    )
   })
 })

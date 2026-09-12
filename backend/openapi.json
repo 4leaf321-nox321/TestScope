@@ -7386,6 +7386,17 @@
               }
             ],
             "title": "Condition Range"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
           }
         },
         "type": "object",
@@ -12821,6 +12832,30 @@
         "title": "ResolveResponse",
         "description": "찾은 결과.\n\n`match` 가 세 값인 것이 요점이다.\n\n    exact       하나로 정해졌다. `id` 를 그대로 쓰면 된다\n    candidates  여럿이다. **고르지 말고 사람에게 물어라**\n    none        없다. 만들거나, 비워 두거나 — 지어내지는 마라"
       },
+      "SearchDiagnosis": {
+        "properties": {
+          "equipment_with_item": {
+            "type": "integer",
+            "title": "Equipment With Item"
+          },
+          "catalog_series_with_item": {
+            "type": "integer",
+            "title": "Catalog Series With Item"
+          },
+          "unlinked_equipment": {
+            "type": "integer",
+            "title": "Unlinked Equipment"
+          }
+        },
+        "type": "object",
+        "required": [
+          "equipment_with_item",
+          "catalog_series_with_item",
+          "unlinked_equipment"
+        ],
+        "title": "SearchDiagnosis",
+        "description": "「없습니다」 를 **왜** 로 바꾸는 수들. 조건에 걸려 빠진 것, 아예 안 적힌 것,\n카탈로그에만 있는 것은 할 일이 다르다 — 앞은 조건을 넓히는 일, 가운데는 채우는 일,\n뒤는 사는 일이다."
+      },
       "SearchHit": {
         "properties": {
           "equipment_test_item_id": {
@@ -13061,6 +13096,16 @@
           "unregistered_equipment": {
             "type": "integer",
             "title": "Unregistered Equipment"
+          },
+          "diagnosis": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SearchDiagnosis"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "expanded_test_items": {
             "items": {

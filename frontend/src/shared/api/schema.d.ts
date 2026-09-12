@@ -2368,6 +2368,8 @@ export interface components {
             asked: string;
             /** Condition Range */
             condition_range: string | null;
+            /** Reason */
+            reason?: string | null;
         };
         /**
          * ConditionQuery
@@ -4186,6 +4188,20 @@ export interface components {
             /** Hint */
             hint: string;
         };
+        /**
+         * SearchDiagnosis
+         * @description 「없습니다」 를 **왜** 로 바꾸는 수들. 조건에 걸려 빠진 것, 아예 안 적힌 것,
+         *     카탈로그에만 있는 것은 할 일이 다르다 — 앞은 조건을 넓히는 일, 가운데는 채우는 일,
+         *     뒤는 사는 일이다.
+         */
+        SearchDiagnosis: {
+            /** Equipment With Item */
+            equipment_with_item: number;
+            /** Catalog Series With Item */
+            catalog_series_with_item: number;
+            /** Unlinked Equipment */
+            unlinked_equipment: number;
+        };
         /** SearchHit */
         SearchHit: {
             /**
@@ -4257,6 +4273,7 @@ export interface components {
             unmet_count: number;
             /** Unregistered Equipment */
             unregistered_equipment: number;
+            diagnosis?: components["schemas"]["SearchDiagnosis"] | null;
             /**
              * Expanded Test Items
              * @default []

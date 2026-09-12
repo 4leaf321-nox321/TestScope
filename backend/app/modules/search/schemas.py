@@ -76,6 +76,30 @@ class ConditionMatch(BaseModel):
     """사람이 읽을 물음. 80 degC 에서 · 20 kN 이상."""
     condition_range: str | None
     """장비가 적어 둔 범위. -70 ~ 300 degC. 없으면 None."""
+    reason: str | None = None
+    """`unknown` 일 때 **왜 모르는지.** 「모른다」 만 말하면 사람은 채울 자리를 못 찾는다.
+
+        missing   그 조건이 아예 안 적혀 있다
+        no_range  적혀 있는데 양쪽 다 비어 있다(또는 글자 조건인데 글자가 없다)
+        no_max    상한이 없어 「이상」 을 판정할 수 없다
+        no_min    하한이 없어 「이하」 를 판정할 수 없다
+    """
+
+
+class SearchDiagnosis(BaseModel):
+    """「없습니다」 를 **왜** 로 바꾸는 수들. 조건에 걸려 빠진 것, 아예 안 적힌 것,
+    카탈로그에만 있는 것은 할 일이 다르다 — 앞은 조건을 넓히는 일, 가운데는 채우는 일,
+    뒤는 사는 일이다."""
+
+    equipment_with_item: int
+    """이 시험 항목이 적힌 보유 장비 수(조건을 보기 전). 0 이면 「그 시험을 하는 장비가 등록된
+    적이 없다」 — 조건이 좁은 것이 아니다."""
+    catalog_series_with_item: int
+    """이 시험 항목을 하는 카탈로그 계열 수. 보유는 0 인데 이것이 0 이 아니면 「사면
+    된다」 다."""
+    unlinked_equipment: int
+    """기종에 안 이어진 보유 장비 수(내가 보는 것). 그 장비들은 카탈로그 시험 항목을 못 받아
+    검색에 안 걸린다 — 그중에 답이 숨어 있을 수 있다."""
 
 
 class SearchHit(BaseModel):
@@ -121,6 +145,8 @@ class SearchResponse(BaseModel):
     unregistered_equipment: int
     """시험 항목이 하나도 안 적힌 장비 수. 검색에 절대 안 걸리는 것들이라, 결과가
     빈약할 때 **어디를 채워야 하는지**를 말해 준다."""
+    diagnosis: SearchDiagnosis | None = None
+    """시험 항목(또는 물성)으로 물었을 때 — 결과가 왜 이런지 가르는 수들."""
     expanded_test_items: list[str] = []
     """물성으로 물었을 때 어느 시험 항목들로 펼쳤나. **비어 있으면 그 물성을 내는 시험이
     아직 안 이어진 것**이다 — 결과 0 건이 「장비가 없다」 가 아니라 「연결이 없다」 라는
