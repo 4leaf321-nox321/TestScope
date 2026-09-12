@@ -11,6 +11,9 @@
 | `test_item_axes.json` | 이 시험은 무슨 조건을 묻나 | 시험 항목 코드 | 조건 키 — 여러 개 |
 | `property_links.json` | 이 시험으로 이 물성이 나오나 | `시험코드:물성코드` | `confirm` / `reject` |
 | `free_spec_definitions.json` | 이 사양을 정의로 올리나 | `원본키|단위` | `promote` / `keep` + `definition` |
+| `method_cleanup.json` | 이 규격을 지우나 · 합치나 | 규격 코드 | `keep` / `delete` / `merge:<규격>` (`merge_into` 에 적은 것) |
+| `test_item_properties.json` | 이 시험이 내는 물성은 | 시험 항목 코드 | 물성 코드 — 여러 개 (추천만 후보, 나머지는 직접 고르기) |
+| `condition_axes.json` | 새 검색축을 만드나 | 축 키 | `create` / `skip` + `axis`(label·dimension·unit) · `definitions` · `test_items` |
 
 줄의 모양:
 

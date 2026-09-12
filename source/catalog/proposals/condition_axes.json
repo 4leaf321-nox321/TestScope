@@ -1,0 +1,127 @@
+{
+ "queue": "condition_axes",
+ "generated": "2026-09-13",
+ "note": "축 없는 사양 정의의 차원별 값 수에서 고른 것. 만들면 그 차원의 정의(빈 것만)와 시험 항목이 이어진다.",
+ "rows": [
+  {
+   "subject": "viscosity",
+   "axis": {
+    "label": "점도",
+    "dimension": "viscosity",
+    "unit": "mPa·s"
+   },
+   "definitions": [
+    "viscosity"
+   ],
+   "test_items": [
+    "rheology_rotational",
+    "rheology_capillary"
+   ],
+   "recommended": "create",
+   "reason": "회전 점도계 기종의 점도 범위가 사양에 있는데 축이 없어 검색이 못 씀. mPa·s = cP"
+  },
+  {
+   "subject": "pressure",
+   "axis": {
+    "label": "압력",
+    "dimension": "pressure",
+    "unit": "bar"
+   },
+   "definitions": [
+    "pressure",
+    "test_pressure",
+    "pressure_transducer_range"
+   ],
+   "test_items": [
+    "burst_pressure",
+    "leak_rate",
+    "altitude_low_pressure",
+    "water_ingress"
+   ],
+   "recommended": "create",
+   "reason": "내압·방수·저기압 시험이 모두 압력을 묻는다. 진공도(vacuum_level)는 뜻이 달라 안 잇는다"
+  },
+  {
+   "subject": "rotational_speed",
+   "axis": {
+    "label": "회전 속도",
+    "dimension": "rotational_speed",
+    "unit": "rpm"
+   },
+   "definitions": [
+    "rotation_speed"
+   ],
+   "test_items": [
+    "rheology_rotational",
+    "abrasion",
+    "mechanical_endurance"
+   ],
+   "recommended": "create",
+   "reason": "회전 점도계·마모 시험기의 rpm"
+  },
+  {
+   "subject": "resistance",
+   "axis": {
+    "label": "저항",
+    "dimension": "resistance",
+    "unit": "ohm"
+   },
+   "definitions": [
+    "insulation_resistance",
+    "ground_bond_resistance"
+   ],
+   "test_items": [
+    "insulation_resistance",
+    "ground_bond"
+   ],
+   "recommended": "create",
+   "reason": "절연저항계·접지 시험기의 측정 범위"
+  },
+  {
+   "subject": "leak_rate",
+   "axis": {
+    "label": "누설률",
+    "dimension": "leak_rate",
+    "unit": "mbar*L/s"
+   },
+   "definitions": [
+    "leak_rate"
+   ],
+   "test_items": [
+    "leak_rate"
+   ],
+   "recommended": "create",
+   "reason": "누설 시험기의 최소 검출 누설률"
+  },
+  {
+   "subject": "luminance",
+   "axis": {
+    "label": "휘도",
+    "dimension": "luminance",
+    "unit": "cd/m²"
+   },
+   "definitions": [
+    "luminance_range"
+   ],
+   "test_items": [
+    "photometry_colorimetry"
+   ],
+   "recommended": "create",
+   "reason": "휘도계의 측정 범위"
+  },
+  {
+   "subject": "wavelength",
+   "axis": {
+    "label": "파장",
+    "dimension": "wavelength",
+    "unit": "nm"
+   },
+   "definitions": [],
+   "test_items": [
+    "optical_spectroscopy",
+    "photometry_colorimetry"
+   ],
+   "hint": "분광기의 파장 범위 — 지금 이을 사양 정의가 없어(파장 범위가 「이 기종만의 사양」 에 있음) 축을 세운 뒤 정의로 올려야 효과가 난다"
+  }
+ ]
+}

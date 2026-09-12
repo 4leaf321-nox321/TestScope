@@ -42,10 +42,17 @@ import type { ReviewProposal } from '@/modules/review/api'
 const PAGE = 50
 
 /** 「직접 고르기」 가 여는 어휘 — 물음마다 다르다. 예/아니오 물음에는 없다. */
-function directAxis(queue: string): 'test_item' | 'condition' | null {
+function directAxis(queue: string): 'test_item' | 'condition' | 'property' | null {
   if (queue === 'method_test_items') return 'test_item'
   if (queue === 'test_item_axes') return 'condition'
+  if (queue === 'test_item_properties') return 'property'
   return null
+}
+
+/** 여러 개를 고르는 물음에서 「아무것도 아님」 이 뜻하는 말. 물음마다 다르다. */
+function emptyLabel(queue: string): string {
+  if (queue === 'test_item_properties') return '물성 없음'
+  return '축 없음'
 }
 
 export default function ReviewQueuePage() {
@@ -70,6 +77,11 @@ export default function ReviewQueuePage() {
     () => (axis === 'condition' ? vocabularyApi.conditions() : Promise.resolve([])),
     [axis],
   )
+  // 물성은 271개 — 후보엔 추천만 두고 나머지는 여기서 고른다.
+  const properties = useResource(
+    () => (axis === 'property' ? vocabularyApi.terms('property') : Promise.resolve([])),
+    [axis],
+  )
   const directOptions = useMemo(() => {
     if (axis === 'test_item')
       return (testItems.data ?? [])
@@ -77,8 +89,12 @@ export default function ReviewQueuePage() {
         .map((one) => ({ id: one.code as string, label: one.value }))
     if (axis === 'condition')
       return (conditions.data ?? []).map((one) => ({ id: one.key, label: one.label }))
+    if (axis === 'property')
+      return (properties.data ?? [])
+        .filter((one) => one.code)
+        .map((one) => ({ id: one.code as string, label: one.value, detail: one.code }))
     return []
-  }, [axis, testItems.data, conditions.data])
+  }, [axis, testItems.data, conditions.data, properties.data])
 
   /** 이 화면에서 정한 줄 — 목록에서 빼되 다시 받지는 않는다(자리가 뛰지 않게). */
   const [gone, setGone] = useState<Set<string>>(new Set())
@@ -146,6 +162,7 @@ export default function ReviewQueuePage() {
               key={row.id}
               row={row}
               multi={meta?.multi ?? false}
+              emptyWord={emptyLabel(queue)}
               directOptions={directOptions}
               readOnly={status === 'decided' || status === 'gone'}
               isAdmin={isAdmin}
@@ -197,6 +214,7 @@ export default function ReviewQueuePage() {
 function ProposalRow({
   row,
   multi,
+  emptyWord,
   directOptions,
   readOnly,
   isAdmin,
@@ -208,7 +226,8 @@ function ProposalRow({
 }: {
   row: ReviewProposal
   multi: boolean
-  directOptions: { id: string; label: string }[]
+  emptyWord: string
+  directOptions: { id: string; label: string; detail?: string | null }[]
   readOnly: boolean
   isAdmin: boolean
   onDecide: (choice: string[], note?: string) => Promise<void>
@@ -457,7 +476,7 @@ function ProposalRow({
               {live.my_vote
                 ? '의견 바꾸기'
                 : multi && choice.length === 0
-                  ? '축 없음 의견'
+                  ? `${emptyWord} 의견`
                   : '의견 내기'}
             </Button>
             {live.my_vote && (
@@ -480,7 +499,7 @@ function ProposalRow({
             {/* 확정 — 시스템 관리자만. 그때 데이터가 바뀐다. */}
             {isAdmin && (
               <Button size="sm" disabled={busy || !canDecide} onClick={() => submit(choice)}>
-                {multi && choice.length === 0 ? '축 없음으로 확정' : '확정'}
+                {multi && choice.length === 0 ? `${emptyWord}으로 확정` : '확정'}
               </Button>
             )}
             {isAdmin && (

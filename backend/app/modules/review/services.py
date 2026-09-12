@@ -35,11 +35,12 @@ from app.modules.accounts.models import User
 from app.modules.equipment import free_specs
 from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelFreeSpec
 from app.modules.methods.models import TestMethod
-from app.modules.methods.services import promote_pending
+from app.modules.methods.services import detach_citations, merge_into, promote_pending
 from app.modules.properties.models import TestItemProperty
 from app.modules.review.models import ReviewProposal, ReviewVote
 from app.modules.review.schemas import CandidateOut, ProposalOut, QueueOut, VoteOut
 from app.modules.test_items.models import (
+    EquipmentTestItem,
     SeriesPendingMethod,
     SeriesTestItem,
     TestItemConditionKey,
@@ -94,6 +95,27 @@ QUEUES: dict[str, Queue] = {
         False,
         "/catalog/equipment-models/{id}",
     ),
+    "method_cleanup": Queue(
+        "method_cleanup",
+        "규격 목록 정리",
+        "규격군 이름만 인용된 것(「ASTM」 「IEC 60068」)은 지우고, 표기만 다른 것은 합친다.",
+        False,
+        "/methods/{id}",
+    ),
+    "test_item_properties": Queue(
+        "test_item_properties",
+        "시험이 내는 물성",
+        "물성이 하나도 안 이어진 시험 항목 — 이 시험으로 얻는 물성이 있으면 잇는다. 여러 개.",
+        True,
+        "/catalog/test-items/{id}",
+    ),
+    "condition_axes": Queue(
+        "condition_axes",
+        "새 검색축",
+        "지금 축이 없어 검색이 못 답하는 조건(점도·압력·파장 …)을 축으로 세울지.",
+        False,
+        "/conditions",
+    ),
 }
 
 #: 고정 후보 — 물음이 예/아니오 꼴인 큐.
@@ -105,6 +127,10 @@ YES_NO: dict[str, list[dict[str, Any]]] = {
     "free_spec_definitions": [
         {"code": "promote", "label": "정의로 올린다"},
         {"code": "keep", "label": "기종만의 사양으로 둔다"},
+    ],
+    "condition_axes": [
+        {"code": "create", "label": "축을 만든다"},
+        {"code": "skip", "label": "만들지 않는다"},
     ],
 }
 
@@ -263,6 +289,9 @@ def refresh(db: Session, root: Path = PROPOSALS_DIR) -> dict[str, int]:
     _refresh_test_item_axes(db, load_file("test_item_axes", root))
     _refresh_property_links(db, load_file("property_links", root))
     _refresh_free_spec_definitions(db, load_file("free_spec_definitions", root))
+    _refresh_method_cleanup(db, load_file("method_cleanup", root))
+    _refresh_test_item_properties(db, load_file("test_item_properties", root))
+    _refresh_condition_axes(db, load_file("condition_axes", root))
     db.flush()
     for key in QUEUES:
         counts[key] = (
@@ -501,6 +530,154 @@ def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
 
 
+def _refresh_method_cleanup(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+    """규격 목록 정리 — 정본이 고른 규격만. 후보: 둔다 · 지운다 · 「…」 로 합친다."""
+    methods = {
+        method_key(m.code): m
+        for m in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
+    }
+    for subject, filed_row in filed.items():
+        key = method_key(subject)
+        method = methods.get(key)
+        row = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "method_cleanup", ReviewProposal.subject_key == key
+            )
+        )
+        if method is None:
+            # 이미 지웠거나 합쳤다.
+            if row is not None and row.status in ("open", "skipped"):
+                _settle(db, row, ["delete"], "화면에서 정함")
+            continue
+        candidates: list[dict[str, Any]] = [{"code": "keep", "label": "그대로 둔다"}]
+        for other in filed_row.get("merge_into") or []:
+            target = methods.get(method_key(other))
+            if target is not None and target.id != method.id:
+                candidates.append(
+                    {"code": f"merge:{target.code}", "label": f"「{target.code}」 로 합친다"}
+                )
+        candidates.append({"code": "delete", "label": "목록에서 지운다"})
+        cited = (
+            db.scalar(
+                select(func.count())
+                .select_from(SeriesPendingMethod)
+                .where(SeriesPendingMethod.method_id == method.id)
+            )
+            or 0
+        )
+        used = (
+            db.scalar(
+                select(func.count())
+                .select_from(EquipmentTestItem)
+                .where(EquipmentTestItem.method_id == method.id)
+            )
+            or 0
+        )
+        context = f"인용한 계열 {cited} · 이 규격을 건 보유 장비 시험 항목 {used}"
+        row = _upsert(
+            db,
+            "method_cleanup",
+            key,
+            subject_id=method.id,
+            subject_label=method.code,
+            context=_context(context, filed_row),
+            candidates=_mark(
+                candidates, filed_row.get("recommended"), filed_row.get("reason")
+            ),
+        )
+        decided = filed_row.get("decided")
+        if decided and row.status == "open":
+            _apply(db, row, list(decided.get("choice") or []), actor=None)
+            _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+    _sweep_gone(db, "method_cleanup", set(methods), "규격이 지워짐")
+
+
+def _refresh_test_item_properties(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+    """물성이 없는 시험 항목 — 정본이 추천한 물성이 후보, 나머지는 직접 고르기."""
+    items = _axis_terms(db, "test_item")
+    props = _axis_terms(db, "property")
+    linked = set(db.scalars(select(TestItemProperty.test_item_term_id)))
+    for code, filed_row in filed.items():
+        term = items.get(code)
+        row = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "test_item_properties",
+                ReviewProposal.subject_key == code,
+            )
+        )
+        if term is None:
+            if row is not None:
+                _gone(row, "시험 항목이 지워짐")
+            continue
+        if term.id in linked:
+            if row is not None and row.status in ("open", "skipped"):
+                _settle(db, row, [], "화면에서 정함")
+            continue
+        wanted = filed_row.get("recommended") or []
+        candidates = [
+            {"code": prop, "label": props[prop].value} for prop in wanted if prop in props
+        ]
+        row = _upsert(
+            db,
+            "test_item_properties",
+            code,
+            subject_id=term.id,
+            subject_label=term.value,
+            context=_context(filed_row.get("context"), filed_row),
+            candidates=_mark(candidates, wanted, filed_row.get("reason")),
+        )
+        decided = filed_row.get("decided")
+        if decided and row.status == "open":
+            _apply(db, row, list(decided.get("choice") or []), actor=None)
+            _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+
+
+def _refresh_condition_axes(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+    """새 검색축 — 정본이 제안한 키. 이미 있으면 닫는다."""
+    keys = {k.key for k in db.scalars(select(ConditionKey))}
+    for key, filed_row in filed.items():
+        row = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "condition_axes", ReviewProposal.subject_key == key
+            )
+        )
+        if key in keys:
+            if row is not None and row.status in ("open", "skipped"):
+                _settle(db, row, ["create"], "화면에서 정함")
+            continue
+        axis = dict(filed_row.get("axis") or {})
+        definitions = list(filed_row.get("definitions") or [])
+        items = list(filed_row.get("test_items") or [])
+        payload = {
+            "key": key,
+            "label": axis.get("label") or key,
+            "dimension": axis.get("dimension") or "",
+            "unit": axis.get("unit") or "",
+            "definitions": definitions,
+            "test_items": items,
+        }
+        context = (
+            f"{axis.get('label')} ({axis.get('unit')}) — 이을 사양 정의 {len(definitions)}"
+            f" · 물을 시험 항목 {len(items)}"
+        )
+        row = _upsert(
+            db,
+            "condition_axes",
+            key,
+            subject_id=None,
+            subject_label=f"{axis.get('label') or key} [{axis.get('unit') or '-'}]",
+            context=_context(context, filed_row),
+            candidates=_mark(
+                YES_NO["condition_axes"], filed_row.get("recommended"), filed_row.get("reason")
+            ),
+            payload=payload,
+        )
+        decided = filed_row.get("decided")
+        if decided and row.status == "open":
+            _apply(db, row, list(decided.get("choice") or []), actor=None)
+            _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+
+
 # --- 적용 -----------------------------------------------------------------------
 
 
@@ -587,6 +764,109 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 "apply_same_key": True,
             },
         )
+    elif queue == "method_cleanup":
+        method = db.get(TestMethod, row.subject_id) if row.subject_id else None
+        if method is None or method.deleted_at is not None:
+            return
+        if choice == ["keep"]:
+            return
+        if choice == ["delete"]:
+            used = (
+                db.scalar(
+                    select(func.count())
+                    .select_from(EquipmentTestItem)
+                    .where(EquipmentTestItem.method_id == method.id)
+                )
+                or 0
+            )
+            if used:
+                raise AppError(
+                    "TSC-REVIEW-0012",
+                    f"보유 장비 시험 항목 {used}건이 이 규격을 걸고 있어 못 지웁니다"
+                    " — 합치거나 두세요.",
+                    status=409,
+                )
+            detach_citations(db, method.id)
+            method.deleted_at = datetime.now(UTC)
+            return
+        if len(choice) == 1 and choice[0].startswith("merge:"):
+            target_code = choice[0].split(":", 1)[1]
+            target = db.scalar(
+                select(TestMethod).where(
+                    TestMethod.deleted_at.is_(None), TestMethod.code == target_code
+                )
+            )
+            if target is None:
+                raise NotFound("TSC-REVIEW-0002", f"합칠 규격을 모릅니다: {target_code}")
+            merge_into(db, actor, method.id, target.id)
+            return
+        raise AppError(
+            "TSC-REVIEW-0004", "keep · delete · merge:<규격> 중 하나입니다.", status=400
+        )
+    elif queue == "test_item_properties":
+        if row.subject_id is None:
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+        props = _axis_terms(db, "property")
+        unknown = [code for code in choice if code not in props]
+        if unknown:
+            raise NotFound("TSC-REVIEW-0002", f"물성 코드를 모릅니다: {', '.join(unknown)}")
+        have = set(
+            db.scalars(
+                select(TestItemProperty.property_term_id).where(
+                    TestItemProperty.test_item_term_id == row.subject_id
+                )
+            )
+        )
+        for code in choice:
+            if props[code].id in have:
+                continue
+            db.add(
+                TestItemProperty(
+                    test_item_term_id=row.subject_id,
+                    property_term_id=props[code].id,
+                    status="confirmed",
+                    source="review",
+                    created_by_id=actor.id if actor else None,
+                    confirmed_by_id=actor.id if actor else None,
+                    confirmed_at=datetime.now(UTC),
+                )
+            )
+    elif queue == "condition_axes":
+        if choice == ["skip"]:
+            return
+        if choice != ["create"]:
+            raise AppError("TSC-REVIEW-0004", "create 또는 skip 중 하나입니다.", status=400)
+        payload = row.payload or {}
+        key = str(payload.get("key") or row.subject_key)
+        if db.scalar(select(ConditionKey.id).where(ConditionKey.key == key)) is not None:
+            return
+        last = db.scalar(select(func.max(ConditionKey.sort_order))) or 0
+        made = ConditionKey(
+            key=key,
+            label=str(payload.get("label") or key),
+            kind="range",
+            dimension=str(payload.get("dimension") or ""),
+            si_unit=str(payload.get("unit") or ""),
+            display_unit=str(payload.get("unit") or ""),
+            sort_order=last + 10,
+            help="검토함에서 세운 축.",
+        )
+        db.add(made)
+        db.flush()
+        # **빈 것만 잇는다** — 이미 다른 축에 이어진 정의는 사람이 정한 것이다.
+        for definition in db.scalars(
+            select(SpecDefinition).where(
+                SpecDefinition.key.in_(list(payload.get("definitions") or [])),
+                SpecDefinition.condition_key_id.is_(None),
+            )
+        ):
+            definition.condition_key_id = made.id
+        items = _axis_terms(db, "test_item")
+        for code in payload.get("test_items") or []:
+            term = items.get(code)
+            if term is None:
+                continue
+            db.add(TestItemConditionKey(test_item_term_id=term.id, condition_key_id=made.id))
     else:
         raise NotFound("TSC-REVIEW-0006", f"모르는 검토함입니다: {queue}")
 

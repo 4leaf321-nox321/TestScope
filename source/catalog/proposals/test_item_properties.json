@@ -1,0 +1,150 @@
+{
+ "queue": "test_item_properties",
+ "generated": "2026-09-13",
+ "note": "물성이 없는 시험 항목 35. 합격/불합격 시험은 없음이 맞고, 값이 있어야 하는데 물성 축에 없는 것은 값을 만든 뒤 잇는다.",
+ "rows": [
+  {
+   "subject": "thermal_resistance",
+   "recommended": [
+    "thermal.thermal_resistance"
+   ],
+   "reason": "접합부-주위 열저항이 곧 이 시험의 값"
+  },
+  {
+   "subject": "altitude_low_pressure",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "audio_performance",
+   "hint": "THD·SNR 은 제품 성능이지 재료 물성이 아니다 — 없음이 맞다"
+  },
+  {
+   "subject": "battery_abuse",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "battery_cycle_life",
+   "hint": "사이클 수명은 제품 성능 — 없음이 맞다"
+  },
+  {
+   "subject": "burst_pressure",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (파열 압력)"
+  },
+  {
+   "subject": "crimp_pull_strength",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (압착 인장강도)"
+  },
+  {
+   "subject": "dust_ingress",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "emi_emission",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "esd_immunity",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "free_fall_drop",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "ground_bond",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "halt_hass",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "hardness_irhd",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (IRHD 경도)"
+  },
+  {
+   "subject": "hast",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "insulation_resistance",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (절연저항은 제품 값 — 재료 물성으로는 체적저항률이 따로 있음)"
+  },
+  {
+   "subject": "leak_rate",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (누설률)"
+  },
+  {
+   "subject": "mechanical_endurance",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "mechanical_shock",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "photometry_colorimetry",
+   "hint": "휘도·색도는 제품 성능 — 없음이 맞다"
+  },
+  {
+   "subject": "power_consumption",
+   "hint": "제품 성능 — 없음이 맞다"
+  },
+  {
+   "subject": "scratch_pencil_hardness",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (연필 경도 등급)"
+  },
+  {
+   "subject": "solderability",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (웨팅 시간·힘)"
+  },
+  {
+   "subject": "surge_eft_immunity",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "tear",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (인열강도)"
+  },
+  {
+   "subject": "temperature_cycling",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "tensile_impact",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (인장 충격 강도 — 샤르피·아이조드와 다름)"
+  },
+  {
+   "subject": "texture",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (경도·점착성 등 식품 텍스처 값)"
+  },
+  {
+   "subject": "thermal_profiling",
+   "hint": "측정이지 물성이 아니다 — 없음이 맞다"
+  },
+  {
+   "subject": "thermal_runaway_calorimetry",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (열폭주 개시 온도)"
+  },
+  {
+   "subject": "thermal_shock",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "thermography",
+   "hint": "측정이지 물성이 아니다 — 없음이 맞다"
+  },
+  {
+   "subject": "thermomechanical_fatigue",
+   "hint": "물성 축에 이 시험의 값이 아직 없다 — 물성 항목에서 값을 만든 뒤 잇거나, 없음으로 닫는다 (TMF 수명)"
+  },
+  {
+   "subject": "vibration_sine_random",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  },
+  {
+   "subject": "water_ingress",
+   "hint": "합격/불합격(견디나·새나·되나) 시험이라 재는 물성이 없다 — 「물성 없음이 맞다」 로 닫으면 된다"
+  }
+ ]
+}

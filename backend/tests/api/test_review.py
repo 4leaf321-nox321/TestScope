@@ -260,12 +260,7 @@ def test_건너뛰기는_되돌릴_수_있고_큐_수에_잡힌다(client: TestC
         one["key"]: one for one in client.get("/api/review", headers=admin.headers).json()
     }
     assert queues["method_test_items"]["skipped"] >= 1
-    assert set(queues) == {
-        "method_test_items",
-        "test_item_axes",
-        "property_links",
-        "free_spec_definitions",
-    }
+    assert set(queues) == set(services.QUEUES)
 
     back = client.post(
         f"/api/review/method_test_items/{row['id']}/skip", headers=admin.headers
@@ -673,3 +668,150 @@ def test_의견은_누구나_내고_확정은_관리자가_한다(
         headers=expert.headers,
     )
     assert late.status_code == 409, "닫힌 줄에는 의견을 못 낸다"
+
+
+def test_규격_정리는_지우거나_합치고_합치면_인용이_따라간다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    a_id, _ = _item(client, admin, "인장")
+    b_id, _ = _item(client, admin, "압축")
+    junk = _cited_method(client, admin, [a_id, b_id])  # 기관 이름 같은 것
+    dup = _cited_method(client, admin, [a_id, b_id])  # 표기만 다른 것
+    keep = _method(client, admin, a_id)  # 남는 쪽
+    (tmp_path / "method_cleanup.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {"subject": junk["code"], "recommended": "delete", "reason": "기관 이름"},
+                    {
+                        "subject": dup["code"],
+                        "merge_into": [keep["code"]],
+                        "recommended": f"merge:{keep['code']}",
+                        "reason": "표기만 다름",
+                    },
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+    rows = {one["subject_id"]: one for one in _rows(client, admin, "method_cleanup")}
+    assert [one["code"] for one in rows[dup["id"]]["candidates"]] == [
+        "keep",
+        f"merge:{keep['code']}",
+        "delete",
+    ]
+    assert rows[junk["id"]]["context"].startswith("인용한 계열 1")
+
+    deleted = client.post(
+        f"/api/review/method_cleanup/{rows[junk['id']]['id']}/decide",
+        json={"choice": ["delete"]},
+        headers=admin.headers,
+    )
+    assert deleted.status_code == 200, deleted.text
+    assert client.get(f"/api/methods/{junk['id']}", headers=admin.headers).status_code == 404
+
+    merged = client.post(
+        f"/api/review/method_cleanup/{rows[dup['id']]['id']}/decide",
+        json={"choice": [f"merge:{keep['code']}"]},
+        headers=admin.headers,
+    )
+    assert merged.status_code == 200, merged.text
+    assert client.get(f"/api/methods/{dup['id']}", headers=admin.headers).status_code == 404
+    # 인용이 남는 쪽으로 갔고, 남는 쪽은 항목이 있으니 계열에 붙었다.
+    survivor = client.get(f"/api/methods/{keep['id']}", headers=admin.headers).json()
+    assert survivor["series_count"] == 1
+    assert survivor["pending_series_count"] == 0
+    entry = db.scalar(
+        select(AuditEntry).where(
+            AuditEntry.action == audit.METHOD_MERGED,
+            AuditEntry.target_id == uuid.UUID(keep["id"]),
+        )
+    )
+    assert entry is not None and entry.changes["merged_from"] == dup["code"]
+
+
+def test_시험이_내는_물성을_잇고_새_축을_세운다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    from tests.api.test_properties import _property
+
+    item_id, code = _item(client, admin, "열저항")
+    prop_code = f"thermal.rth_{uuid.uuid4().hex[:6]}"
+    prop_id = _property(client, admin, f"열저항-{prop_code[-6:]}", prop_code)
+    axis_key = f"pressure_{uuid.uuid4().hex[:6]}"
+    (tmp_path / "test_item_properties.json").write_text(
+        json.dumps(
+            {"rows": [{"subject": code, "recommended": [prop_code], "reason": "곧 이 값"}]},
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "condition_axes.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": axis_key,
+                        "axis": {"label": "압력", "dimension": "pressure", "unit": "bar"},
+                        "definitions": ["pressure"],
+                        "test_items": [code],
+                        "recommended": "create",
+                        "reason": "내압 시험이 묻는다",
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+
+    props_row = next(
+        one
+        for one in _rows(client, admin, "test_item_properties")
+        if one["subject_id"] == item_id
+    )
+    linked = client.post(
+        f"/api/review/test_item_properties/{props_row['id']}/decide",
+        json={"choice": [prop_code]},
+        headers=admin.headers,
+    )
+    assert linked.status_code == 200, linked.text
+    links = client.get(
+        "/api/test-item-properties", params={"test_item": item_id}, headers=admin.headers
+    ).json()
+    assert [(one["property_term_id"], one["status"]) for one in links] == [
+        (prop_id, "confirmed")
+    ]
+
+    axis_row = next(
+        one for one in _rows(client, admin, "condition_axes") if one["subject_key"] == axis_key
+    )
+    assert axis_row["payload"]["definitions"] == ["pressure"]
+    made = client.post(
+        f"/api/review/condition_axes/{axis_row['id']}/decide",
+        json={"choice": ["create"]},
+        headers=admin.headers,
+    )
+    assert made.status_code == 200, made.text
+    keys = {
+        one["key"]: one
+        for one in client.get("/api/condition-keys", headers=admin.headers).json()
+    }
+    assert keys[axis_key]["label"] == "압력" and keys[axis_key]["display_unit"] == "bar"
+    # 시험 항목이 그 축을 묻게 됐다.
+    shown = client.get(f"/api/test-items/{item_id}", headers=admin.headers).json()
+    assert axis_key in {one["key"] for one in shown["condition_keys"]}
+    # 이미 있으면 다시 세우기가 닫는다.
+    services.refresh(db, tmp_path)
+    db.commit()
+    again = next(
+        one
+        for one in _rows(client, admin, "condition_axes", status="all")
+        if one["subject_key"] == axis_key
+    )
+    assert again["status"] == "decided"

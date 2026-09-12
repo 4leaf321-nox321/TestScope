@@ -403,6 +403,100 @@ def delete(db: Session, user: User, method_id: uuid.UUID) -> None:
     db.commit()
 
 
+def detach_citations(db: Session, method_id: uuid.UUID) -> int:
+    """계열이 건 인용(연결·항목 미정)을 뗀다 — 규격을 지우기 전에. 뗀 수."""
+    removed = 0
+    for row in db.scalars(
+        select(SeriesTestItemMethod).where(SeriesTestItemMethod.method_id == method_id)
+    ):
+        db.delete(row)
+        removed += 1
+    for pending in db.scalars(
+        select(SeriesPendingMethod).where(SeriesPendingMethod.method_id == method_id)
+    ):
+        db.delete(pending)
+        removed += 1
+    return removed
+
+
+def merge_into(
+    db: Session, actor: User | None, source_id: uuid.UUID, target_id: uuid.UUID
+) -> TestMethod:
+    """표기만 다른 규격 둘을 하나로. **인용·요구 조건·장비 시험 항목이 남는 쪽으로 옮겨 가고**
+    원래 줄은 소프트 삭제된다.
+
+    같은 자리에 이미 이어져 있으면 옮기지 않고 버린다(유일 제약). 요구 조건은 남는 쪽에 그
+    축이 없을 때만 옮긴다 — 남는 쪽 값이 더 낫다고 본다(사람이 봤을 가능성이 높다).
+    """
+    source = db.get(TestMethod, source_id)
+    target = db.get(TestMethod, target_id)
+    if source is None or target is None or source.id == target.id:
+        raise NotFound("TSC-METHODS-0005", "합칠 규격을 찾을 수 없습니다.")
+    for link in db.scalars(
+        select(SeriesTestItemMethod).where(SeriesTestItemMethod.method_id == source.id)
+    ):
+        held = db.scalar(
+            select(SeriesTestItemMethod).where(
+                SeriesTestItemMethod.series_test_item_id == link.series_test_item_id,
+                SeriesTestItemMethod.method_id == target.id,
+            )
+        )
+        if held is None:
+            link.method_id = target.id
+        else:
+            db.delete(link)
+    for pending in db.scalars(
+        select(SeriesPendingMethod).where(SeriesPendingMethod.method_id == source.id)
+    ):
+        held_pending = db.scalar(
+            select(SeriesPendingMethod).where(
+                SeriesPendingMethod.series_id == pending.series_id,
+                SeriesPendingMethod.method_id == target.id,
+            )
+        )
+        if held_pending is None:
+            pending.method_id = target.id
+        else:
+            db.delete(pending)
+    target_keys = set(
+        db.scalars(
+            select(MethodRequirement.condition_key_id).where(
+                MethodRequirement.method_id == target.id
+            )
+        )
+    )
+    for requirement in db.scalars(
+        select(MethodRequirement).where(MethodRequirement.method_id == source.id)
+    ):
+        if requirement.condition_key_id in target_keys:
+            db.delete(requirement)
+        else:
+            requirement.method_id = target.id
+    for item in db.scalars(
+        select(EquipmentTestItem).where(EquipmentTestItem.method_id == source.id)
+    ):
+        item.method_id = target.id
+    for other in db.scalars(
+        select(TestMethod).where(TestMethod.superseded_by_id == source.id)
+    ):
+        other.superseded_by_id = target.id
+    if target.test_item_term_id is None and source.test_item_term_id is not None:
+        target.test_item_term_id = source.test_item_term_id
+    db.flush()
+    promote_pending(db, target)
+    audit.record(
+        db,
+        action=audit.METHOD_MERGED,
+        actor=actor,
+        target_table="test_methods",
+        target_id=target.id,
+        target_label=target.code,
+        changes={"merged_from": source.code, "into": target.code},
+    )
+    source.deleted_at = datetime.now(UTC)
+    return target
+
+
 def upsert_requirement(
     db: Session, user: User, method_id: uuid.UUID, payload: dict[str, Any]
 ) -> RequirementOut:

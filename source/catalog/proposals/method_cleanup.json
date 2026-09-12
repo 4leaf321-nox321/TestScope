@@ -1,0 +1,309 @@
+{
+ "queue": "method_cleanup",
+ "generated": "2026-09-13",
+ "note": "기관 이름만 인용된 것은 지우고, 표기만 다른 것은 접두어 없는 쪽으로 합친다. 실제 규격군(IEC 60068 …)은 둔다.",
+ "rows": [
+  {
+   "subject": "ISTA",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "DIN",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "EN",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "UL",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "VDE",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "BS",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "CSA",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "ISO",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "ASTM",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "USABC",
+   "recommended": "delete",
+   "reason": "규격 제정 기관 이름만 인용된 줄 — 규격이 아니다. 지운다"
+  },
+  {
+   "subject": "BS template library",
+   "recommended": "delete",
+   "reason": "장비 소프트웨어의 규격 템플릿 묶음 이름 — 규격이 아니다"
+  },
+  {
+   "subject": "IEC 60068",
+   "recommended": "keep",
+   "reason": "환경 시험 규격군 — 실제 규격이라 둔다. 시험 항목만 못 정한다"
+  },
+  {
+   "subject": "MIL-STD-810",
+   "recommended": "keep",
+   "reason": "환경 시험 규격군 — 실제 규격이라 둔다"
+  },
+  {
+   "subject": "MIL-STD-202",
+   "recommended": "keep",
+   "reason": "전자 부품 시험 방법 규격군 — 둔다"
+  },
+  {
+   "subject": "MIL-STD-883",
+   "recommended": "keep",
+   "reason": "마이크로회로 시험 방법 규격군 — 둔다"
+  },
+  {
+   "subject": "RTCA/DO-160",
+   "recommended": "keep",
+   "reason": "항공 장비 환경 시험 규격 — 둔다"
+  },
+  {
+   "subject": "ASTM E23 (small specimens)",
+   "merge_into": [
+    "ASTM E23"
+   ],
+   "recommended": "merge:ASTM E23",
+   "reason": "「ASTM E23」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "IEC 60529 (IP 등급 보조 검증)",
+   "merge_into": [
+    "IEC 60529"
+   ],
+   "recommended": "merge:IEC 60529",
+   "reason": "「IEC 60529」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ASTM E10 (브리넬)",
+   "merge_into": [
+    "ASTM E10"
+   ],
+   "recommended": "merge:ASTM E10",
+   "reason": "「ASTM E10」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ASTM E10 (light force Brinell, HR-530)",
+   "merge_into": [
+    "ASTM E10"
+   ],
+   "recommended": "merge:ASTM E10",
+   "reason": "「ASTM E10」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ISO 3497 (X선 두께 측정)",
+   "merge_into": [
+    "DIN EN ISO 3497"
+   ],
+   "recommended": "merge:DIN EN ISO 3497",
+   "reason": "「DIN EN ISO 3497」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "IEC 61000-3-2 (고조파)",
+   "merge_into": [
+    "IEC 61000-3-2"
+   ],
+   "recommended": "merge:IEC 61000-3-2",
+   "reason": "「IEC 61000-3-2」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "IPC-7095 (BGA 보이드)",
+   "merge_into": [
+    "IPC-7095"
+   ],
+   "recommended": "merge:IPC-7095",
+   "reason": "「IPC-7095」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ASTM D695 (복합재 압축 지그 직결 구성)",
+   "merge_into": [
+    "ASTM D695"
+   ],
+   "recommended": "merge:ASTM D695",
+   "reason": "「ASTM D695」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 179-1",
+   "merge_into": [
+    "ISO 179-1"
+   ],
+   "recommended": "merge:ISO 179-1",
+   "reason": "「ISO 179-1」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 179-2",
+   "merge_into": [
+    "ISO 179-2"
+   ],
+   "recommended": "merge:ISO 179-2",
+   "reason": "「ISO 179-2」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 180",
+   "merge_into": [
+    "ISO 180"
+   ],
+   "recommended": "merge:ISO 180",
+   "reason": "「ISO 180」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 527-1",
+   "merge_into": [
+    "ISO 527-1"
+   ],
+   "recommended": "merge:ISO 527-1",
+   "reason": "「ISO 527-1」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 8256",
+   "merge_into": [
+    "ISO 8256"
+   ],
+   "recommended": "merge:ISO 8256",
+   "reason": "「ISO 8256」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "IEC 62341 (OLED 측정)",
+   "merge_into": [
+    "IEC 62341"
+   ],
+   "recommended": "merge:IEC 62341",
+   "reason": "「IEC 62341」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 868",
+   "merge_into": [
+    "ISO 868"
+   ],
+   "recommended": "merge:ISO 868",
+   "reason": "「ISO 868」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ISO 6892 (strain control)",
+   "merge_into": [
+    "ISO 6892"
+   ],
+   "recommended": "merge:ISO 6892",
+   "reason": "「ISO 6892」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 4545",
+   "merge_into": [
+    "ISO 4545"
+   ],
+   "recommended": "merge:ISO 4545",
+   "reason": "「ISO 4545」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "EN ISO 6507",
+   "merge_into": [
+    "ISO 6507"
+   ],
+   "recommended": "merge:ISO 6507",
+   "reason": "「ISO 6507」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 6507",
+   "merge_into": [
+    "ISO 6507"
+   ],
+   "recommended": "merge:ISO 6507",
+   "reason": "「ISO 6507」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ASTM E18 (로크웰)",
+   "merge_into": [
+    "ASTM E18"
+   ],
+   "recommended": "merge:ASTM E18",
+   "reason": "「ASTM E18」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "EN ISO 6508",
+   "merge_into": [
+    "ISO 6508"
+   ],
+   "recommended": "merge:ISO 6508",
+   "reason": "「ISO 6508」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "ASTM E92 (비커스·누프)",
+   "merge_into": [
+    "ASTM E92"
+   ],
+   "recommended": "merge:ASTM E92",
+   "reason": "「ASTM E92」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "J-STD-020 (리플로우 프로파일)",
+   "merge_into": [
+    "J-STD-020 (MSL 평가)"
+   ],
+   "hint": "같은 규격 「j std 020」 의 다른 용도 표기(J-STD-020 (리플로우 프로파일) / J-STD-020 (MSL 평가)) — 하나로 합칠지 사람이 정한다"
+  },
+  {
+   "subject": "J-STD-020 (MSL 평가)",
+   "merge_into": [
+    "J-STD-020 (리플로우 프로파일)"
+   ],
+   "hint": "같은 규격 「j std 020」 의 다른 용도 표기(J-STD-020 (리플로우 프로파일) / J-STD-020 (MSL 평가)) — 하나로 합칠지 사람이 정한다"
+  },
+  {
+   "subject": "DIN EN ISO 2409",
+   "merge_into": [
+    "EN-ISO 2409"
+   ],
+   "recommended": "merge:EN-ISO 2409",
+   "reason": "「EN-ISO 2409」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "DIN EN ISO 6506",
+   "merge_into": [
+    "ISO 6506"
+   ],
+   "recommended": "merge:ISO 6506",
+   "reason": "「ISO 6506」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "EN ISO 6506",
+   "merge_into": [
+    "ISO 6506"
+   ],
+   "recommended": "merge:ISO 6506",
+   "reason": "「ISO 6506」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  },
+  {
+   "subject": "IEC 60068-2-14 (JIS C 60068-2-14)",
+   "merge_into": [
+    "IEC 60068-2-14"
+   ],
+   "recommended": "merge:IEC 60068-2-14",
+   "reason": "「IEC 60068-2-14」 과 표기만 다른 같은 규격(국가 접두어·괄호 설명)"
+  }
+ ]
+}
