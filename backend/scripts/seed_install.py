@@ -53,6 +53,8 @@ def main() -> int:
             print(
                 f"기준정보: 축 {counts.axes}개, 조건 정의 {counts.conditions}개, "
                 f"사양 그룹 {counts.spec_groups}개, 사양 정의 {counts.spec_definitions}개 추가"
+                f" · 검색축 이음 {counts.linked_definitions}개"
+                f", 문장→구간 {counts.converted_values}건"
             )
         else:
             print("기준정보: 이미 갖춰져 있습니다")

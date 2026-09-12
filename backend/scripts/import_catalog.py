@@ -78,6 +78,7 @@ from app.modules.vocabulary.models import (
     VocabularyAlias,
     VocabularyTerm,
 )
+from app.modules.vocabulary.reference import SPEC_DEFINITION_LINKS
 from app.modules.vocabulary.specs import (
     SpecDefinition,
     SpecDefinitionCategory,
@@ -890,6 +891,9 @@ def step_definitions(
     for row in _promotable(cat):
         if row["key"] in known:
             continue
+        # 축 연결은 한 표(`SPEC_DEFINITION_LINKS`)가 정한다 — 승격분도 거기 있으면 잇는다.
+        # 차원이 같다고 잇지는 않는다: 「공급 전압」 은 전원 사양이지 시험 능력이 아니다.
+        linked_key = SPEC_DEFINITION_LINKS.get(row["key"])
         made = SpecDefinition(
             key=row["key"],
             label=row["label"],
@@ -898,6 +902,9 @@ def step_definitions(
             dimension=row["dimension"],
             si_unit=row["unit"],
             display_unit=row["unit"],
+            condition_key_id=(
+                conditions[linked_key].id if linked_key and linked_key in conditions else None
+            ),
             reflect_as=row["reflect_as"],
             # 승격분은 뒤에 세운다 — 손으로 적은 것이 위에 오는 편이,
             # 화면에서 먼저 보이는 것이 흔한 사양이라 낫다.
@@ -1253,6 +1260,11 @@ def _numbers(raw: Any, factor: float) -> tuple[float | None, float | None, str |
     return None, None, None
 
 
+def _fmt(number: float) -> str:
+    """187.5 는 187.5 로, 1000.0 은 1000 으로 — 비고에 `.0` 이 줄줄이 붙지 않게."""
+    return str(int(number)) if float(number).is_integer() else str(number)
+
+
 def _as_text(raw: Any) -> str | None:
     if isinstance(raw, str):
         return raw.strip() or None
@@ -1282,6 +1294,16 @@ def _value_fields(
     if definition.kind == "range":
         if low is None and high is None:
             return None
+        # 낱개 목록(경도계 하중 「500 · 750 · 1000」)은 양끝만 남기면 「187.5 로 되나」
+        # 를 못 답한다 — 목록을 비고에 남긴다. 둘이면 그냥 구간이다.
+        listed = (
+            [one for one in raw.get("values") or [] if isinstance(one, int | float)]
+            if isinstance(raw, dict)
+            else []
+        )
+        if len(listed) > 2:
+            shown = " · ".join(_fmt(one * factor) for one in listed)
+            note = " · ".join(x for x in (note, f"고를 수 있는 값 {shown}") if x)
         return {"num_min": low, "num_max": high, "note": note}
     if definition.kind == "number":
         picked = low if definition.reflect_as == "min" else high

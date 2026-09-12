@@ -17,6 +17,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import NamedTuple
 
 from sqlalchemy import select
@@ -173,7 +174,92 @@ CONDITIONS: list[tuple[str, str, str, str, str, str, int, str | None]] = [
     ),
     ("humidity", "상대 습도", "range", "ratio", "%", "%", 60, None),
     ("chamber", "항온조", "boolean", "", "", "", 70, "있나 없나. 온도 범위는 따로 적는다."),
+    # 2026-09-12 — 사양이 있는데 이어 줄 축이 없어 검색이 못 쓰던 것들. 축은 사양 정의가
+    # 잇는 만큼만 만든다(아래 SPEC_DEFINITION_LINKS): 잇는 정의가 없는 축은 검색 폼에
+    # 아무도 안 쓰는 칸이 하나 늘 뿐이다.
+    ("voltage", "전압", "range", "voltage", "V", "V", 80, "내전압·전원 시험이 거는 전압."),
+    (
+        "current",
+        "전류",
+        "range",
+        "current",
+        "A",
+        "A",
+        90,
+        "접지 저항·전원 시험이 흘리는 전류.",
+    ),
+    (
+        "torque",
+        "토크",
+        "range",
+        "torque",
+        "N·m",
+        "N·m",
+        100,
+        "비틀림 시험기가 낼 수 있는 토크.",
+    ),
+    (
+        "acceleration",
+        "가속도",
+        "range",
+        "acceleration",
+        "g",
+        "g",
+        110,
+        "진동·충격 시험기가 낼 수 있는 가속도.",
+    ),
+    (
+        "impact_energy",
+        "충격 에너지",
+        "range",
+        "energy",
+        "J",
+        "J",
+        120,
+        "진자·낙하 해머가 가진 에너지. 샤르피·아이조드 시험이 이 축으로 묻는다.",
+    ),
 ]
+
+#: 사양 정의 키 -> 조건 축. **어디서 온 정의든** 이 키면 이 축이다.
+#:
+#: 정의는 세 길로 생긴다 — 이 파일의 `SPEC_DEFINITIONS`, 카탈로그 손 정의
+#: (`catalog_specs.CATALOG_SPEC_DEFINITIONS`), 온톨로지 승격(`import_catalog`). 축 연결을
+#: 각 길의 표에만 적으면 승격분은 이을 자리가 없고, 이미 만들어진 정의는 표를 고쳐도
+#: 안 따라온다. 그래서 한 표에 모으고, `ensure_reference_data` 가 **비어 있는 연결만**
+#: 채운다 — 사람이 화면에서 다른 축으로 바꿔 둔 것은 안 건드린다.
+#:
+#: 여기 없는 정의는 축이 없는 것이 맞다. 「공급 전압」 은 전원 사양이지 시험 능력이
+#: 아니고, 차원이 같다고 이으면 220 V 콘센트가 「내전압 220 V 됨」 이 된다.
+SPEC_DEFINITION_LINKS: dict[str, str] = {
+    "force_capacity": "force",
+    "force_capacity_range": "force",
+    "test_load_series": "force",
+    "test_load_micro": "force",
+    "frequency_range": "frequency",
+    "test_temperature": "temperature",
+    "humidity_range": "humidity",
+    "crosshead_speed": "crosshead_speed",
+    "specimen_thickness": "specimen_thickness",
+    "voltage_range": "voltage",
+    "test_voltage": "voltage",
+    "output_voltage": "voltage",
+    "current_range": "current",
+    "ground_bond_current": "current",
+    "torque_capacity": "torque",
+    "torque": "torque",
+    "acceleration": "acceleration",
+    "impact_energy": "impact_energy",
+}
+
+#: 종류를 바꿔야 하는 정의: 키 -> 새 종류. **문장을 구간으로** 만 있다.
+#:
+#: 경도계 하중은 「500 · 750 · 1000 kgf」 처럼 낱개로 오고, 처음엔 그것을 문장으로
+#: 적었다. 문장은 축에 못 잇는다 — 67 기종의 경도계가 하중 사양을 갖고도 검색에는
+#: 「모름」 으로 답했다. 양끝을 구간에 담고 목록은 비고에 남긴다(`_text_to_range`).
+SPEC_KIND_UPGRADES: dict[str, str] = {
+    "test_load_series": "range",
+    "test_load_micro": "range",
+}
 
 
 #: (slug, label, 순서, 설명)
@@ -243,7 +329,7 @@ SPEC_DEFINITIONS: list[
         "number",
         "torque",
         "N·m",
-        None,
+        "torque",
         "max",
         40,
         None,
@@ -255,7 +341,7 @@ SPEC_DEFINITIONS: list[
         "number",
         "energy",
         "J",
-        None,
+        "impact_energy",
         "max",
         50,
         "진자·낙하 해머가 가진 에너지.",
@@ -264,13 +350,13 @@ SPEC_DEFINITIONS: list[
         "test_load_series",
         "시험 하중 계열",
         "capacity",
-        "text",
+        "range",
         "force",
         "kgf",
-        None,
+        "force",
         "max",
         60,
-        "경도계가 고를 수 있는 하중들. 카탈로그가 낱개로 늘어놓아 문장 그대로 적는다.",
+        "경도계가 고를 수 있는 하중의 양끝. 낱개 목록은 비고에 남는다.",
     ),
     (
         "frequency_range",
@@ -670,10 +756,82 @@ class ReferenceCounts(NamedTuple):
     conditions: int
     spec_groups: int
     spec_definitions: int
+    #: 이미 있던 정의에 축을 이어 준 수 · 문장을 구간으로 바꾼 값의 수.
+    linked_definitions: int = 0
+    converted_values: int = 0
+
+
+_NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
+
+
+def _text_to_range(text: str) -> tuple[float, float, str | None] | None:
+    """「500 · 750 · 1000」 · 「min 0.5 · max 250」 -> (최소, 최대, 비고). 숫자가 없으면 None.
+
+    낱개 목록이면 **목록을 비고에 남긴다.** 양끝만 남기면 「250 kgf 까지 됨」 은 답해도
+    「187.5 kgf 로 되나」 는 못 답한다 — 경도계는 그 사이 값을 못 건다.
+    """
+    numbers = [float(one) for one in _NUMBER.findall(text)]
+    if not numbers:
+        return None
+    is_pair = text.lstrip().lower().startswith("min ") and len(numbers) == 2
+    note = None if is_pair else f"고를 수 있는 값 {text.strip()}"
+    return min(numbers), max(numbers), note
+
+
+def converge_spec_definitions(db: Session) -> tuple[int, int]:
+    """이미 있는 정의를 표(`SPEC_DEFINITION_LINKS` · `SPEC_KIND_UPGRADES`)에 맞춘다.
+
+    **비어 있는 것만 채운다.** 축이 이미 이어진 정의는 — 표와 다르더라도 — 사람이
+    화면에서 정한 것이니 그대로 둔다. 종류 바꾸기는 문장 -> 구간 한 방향뿐이고,
+    이미 구간이면 할 일이 없다. 두 번 돌려도 같다.
+    """
+    from app.modules.equipment.models import ModelSpecValue
+
+    conditions = {
+        key: cid for cid, key in db.execute(select(ConditionKey.id, ConditionKey.key))
+    }
+    definitions = {
+        row.key: row
+        for row in db.scalars(
+            select(SpecDefinition).where(
+                SpecDefinition.key.in_(set(SPEC_DEFINITION_LINKS) | set(SPEC_KIND_UPGRADES))
+            )
+        )
+    }
+    linked = converted = 0
+    for key, new_kind in SPEC_KIND_UPGRADES.items():
+        definition = definitions.get(key)
+        if definition is None or definition.kind != "text" or new_kind != "range":
+            continue
+        for value in db.scalars(
+            select(ModelSpecValue).where(ModelSpecValue.definition_id == definition.id)
+        ):
+            parsed = _text_to_range(value.text_value or "")
+            if parsed is None:
+                # 숫자가 없는 문장은 비고로 내려 둔다 — 지우면 그 값이 무엇이었는지
+                # 알 수 없게 된다.
+                value.note = " · ".join(x for x in (value.note, value.text_value) if x) or None
+                value.text_value = None
+                continue
+            low, high, note = parsed
+            value.num_min, value.num_max = low, high
+            value.note = " · ".join(x for x in (value.note, note) if x) or None
+            value.text_value = None
+            converted += 1
+        definition.kind = new_kind
+    for key, condition_key in SPEC_DEFINITION_LINKS.items():
+        definition = definitions.get(key)
+        if definition is None or definition.condition_key_id is not None:
+            continue
+        if condition_key not in conditions:
+            continue
+        definition.condition_key_id = conditions[condition_key]
+        linked += 1
+    return linked, converted
 
 
 def ensure_reference_data(db: Session) -> ReferenceCounts:
-    """없는 축·조건·사양 정의만 만든다."""
+    """없는 축·조건·사양 정의만 만들고, 있는 정의는 축 연결이 비었으면 이어 준다."""
     known_axes = set(db.scalars(select(Vocabulary.slug)))
     added_axes = 0
     for slug, label, domain, policy, parent, order, description in AXES:
@@ -772,5 +930,10 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
         )
         added_definitions += 1
 
+    db.flush()
+    linked, converted = converge_spec_definitions(db)
+
     db.commit()
-    return ReferenceCounts(added_axes, added_keys, added_groups, added_definitions)
+    return ReferenceCounts(
+        added_axes, added_keys, added_groups, added_definitions, linked, converted
+    )

@@ -119,6 +119,9 @@ function toQuery(row: ConditionRow): ConditionQuery | null {
   return { condition_key_id: row.key.id, [row.mode]: value }
 }
 
+/** 「이만큼은 나와야 한다」 로 묻는 차원. 샤르피 300 J 은 300 J 이상의 해머를 찾는 것이다. */
+const CAPACITY_DIMENSIONS = new Set(['force', 'torque', 'energy', 'acceleration'])
+
 export default function SearchPage() {
   const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
   const conditions = useResource(() => vocabularyApi.conditions(), [])
@@ -185,8 +188,10 @@ export default function SearchPage() {
   }, [conditions.data, relevantKeyIds])
 
   function rowFor(key: ConditionKey): ConditionRow {
-    // 하중처럼 "얼마까지 되나" 를 묻는 조건은 대개 이상으로, 온도는 그 값에서.
-    const mode: ConditionRow['mode'] = key.dimension === 'force' ? 'at_least' : 'at'
+    // 하중·토크·에너지·가속도처럼 "얼마까지 되나" 를 묻는 용량은 이상으로, 온도·전압은 그 값에서.
+    const mode: ConditionRow['mode'] = CAPACITY_DIMENSIONS.has(key.dimension)
+      ? 'at_least'
+      : 'at'
     return { key, mode, value: '' }
   }
 
