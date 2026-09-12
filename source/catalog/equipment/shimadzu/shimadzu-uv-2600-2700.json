@@ -45,6 +45,13 @@
  "models": [
   {
    "model": "UV-2600",
+   "specs": {
+    "wavelength_nm": {
+     "min": 185.0,
+     "max": 1400.0,
+     "note": "능력행 여럿을 합친 범위 (기법마다 갈린다)"
+    }
+   },
    "note": "Czerny-Turner 단일 단색화장치 + Lo-Ray-Ligh 홀로그래픽 격자의 이중빔 UV-Vis 분광광도계. 적분구 부속으로 1400 nm 까지 확장",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -103,6 +110,13 @@
   },
   {
    "model": "UV-2700",
+   "specs": {
+    "wavelength_nm": {
+     "min": 185.0,
+     "max": 900.0,
+     "note": "능력행 여럿을 합친 범위 (기법마다 갈린다)"
+    }
+   },
    "note": "이중 단색화장치로 미광을 극도로 낮춰 8 Abs 까지 재는 UV-Vis 분광광도계. 편광필름 등 저투과 시료용",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -144,6 +158,13 @@
   },
   {
    "model": "UV-2600i Plus",
+   "specs": {
+    "wavelength_nm": {
+     "min": 185.0,
+     "max": 1400.0,
+     "note": "능력행 여럿을 합친 범위 (기법마다 갈린다)"
+    }
+   },
    "note": "LO-RAY-LIGH 격자 단일 단색화장치 UV-Vis 분광광도계. ISR-2600Plus 적분구로 1400 nm 까지 확장",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -198,6 +219,12 @@
   },
   {
    "model": "UV-2700i Plus",
+   "specs": {
+    "wavelength_nm": {
+     "min": 185.0,
+     "max": 900.0
+    }
+   },
    "note": "초저미광 이중 단색화장치로 8 Abs 까지 재는 UV-Vis 분광광도계. 편광필름·저투과 시료용",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

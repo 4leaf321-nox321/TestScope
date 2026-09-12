@@ -43,6 +43,14 @@
   {
    "model": "TPS 2200",
    "specs": {
+    "thermal_conductivity_W_mK": {
+     "min": 0.01,
+     "max": 500.0
+    },
+    "thermal_diffusivity_mm2_s": {
+     "min": 0.01,
+     "max": 300.0
+    },
     "temperature_degC": {
      "min": -50.0,
      "max": 750.0

@@ -38,6 +38,15 @@
   {
    "model": "FluoroMax Plus",
    "specs": {
+    "wavelength_nm": {
+     "min": 185.0,
+     "max": 900.0
+    },
+    "excited_state_lifetime_s": {
+     "min": 1.5e-10,
+     "max": 10.0,
+     "note": "능력행 여럿을 합친 범위 (기법마다 갈린다)"
+    },
     "temperature_degC": {
      "min": -40.0,
      "max": 150.0,

@@ -60,6 +60,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "air_discharge_V",
+   "label": "기중 방전 전압",
+   "dimension": "voltage",
+   "unit": "V",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "ambient_degC",
    "label": "주위 온도",
    "dimension": "temperature",
@@ -110,6 +117,20 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "carrier_concentration_m3",
+   "label": "캐리어 농도 측정 범위",
+   "dimension": "",
+   "unit": "1/m³",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "carrier_mobility_m2_Vs",
+   "label": "캐리어 이동도 측정 범위",
+   "dimension": "",
+   "unit": "m²/(V·s)",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "cdn_current_A",
    "label": "CDN 전류",
    "dimension": "current",
@@ -158,6 +179,21 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "contact_angle_deg",
+   "label": "접촉각 측정 범위",
+   "dimension": "angle",
+   "unit": "deg",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "contact_discharge_V",
+   "label": "접촉 방전 전압",
+   "dimension": "voltage",
+   "unit": "V",
+   "note": "ESD 시험기. 기중 방전(air_discharge_V)과 다른 칸이다",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "control",
    "label": "제어 방식",
    "dimension": "",
@@ -185,7 +221,10 @@
    "label": "냉각 속도",
    "dimension": "rate",
    "unit": "K/min",
-   "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+   "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
+   "unit_variants": {
+    "cooling_rate_K_s": 60.0
+   }
   },
   {
    "key": "crest_factor",
@@ -204,7 +243,10 @@
    "label": "크로스헤드 속도",
    "dimension": "speed",
    "unit": "mm/min",
-   "testscope_key": "crosshead_speed"
+   "testscope_key": "crosshead_speed",
+   "unit_variants": {
+    "crosshead_speed_mm_s": 60.0
+   }
   },
   {
    "key": "crosshead_travel_mm",
@@ -306,6 +348,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "displacement_noise_floor_nm",
+   "label": "변위 잡음 바닥",
+   "dimension": "length",
+   "unit": "nm",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "displacement_um",
    "label": "변위 측정 범위",
    "dimension": "length",
@@ -386,6 +435,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "excited_state_lifetime_s",
+   "label": "여기상태 수명 측정 범위",
+   "dimension": "time",
+   "unit": "s",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "feature_recognition_um",
    "label": "형상 인식 한계",
    "dimension": "length",
@@ -449,6 +505,13 @@
     "nominal_load_kN",
     "rated_load_kN"
    ]
+  },
+  {
+   "key": "force_noise_floor_nN",
+   "label": "하중 잡음 바닥",
+   "dimension": "force",
+   "unit": "nN",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "force_resolution",
@@ -537,6 +600,20 @@
    "role": "descriptive"
   },
   {
+   "key": "hardness_shore_a",
+   "label": "경도 측정 범위 (Shore A)",
+   "dimension": "",
+   "unit": "ShoreA",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "hardness_shore_d",
+   "label": "경도 측정 범위 (Shore D)",
+   "dimension": "",
+   "unit": "ShoreD",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "harmonic_order",
    "label": "고조파 차수",
    "dimension": "count",
@@ -567,7 +644,10 @@
    "key": "heating_rate_K_min",
    "label": "승온 속도",
    "dimension": "temperature_rate",
-   "unit": "K/min"
+   "unit": "K/min",
+   "unit_variants": {
+    "heating_rate_K_s": 60.0
+   }
   },
   {
    "key": "height_mm",
@@ -711,6 +791,18 @@
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
+   "key": "layer_thickness_um",
+   "label": "두께 측정 범위",
+   "dimension": "length",
+   "unit": "um",
+   "unit_variants": {
+    "layer_thickness_nm": 0.001,
+    "layer_thickness_mm": 1000.0
+   },
+   "note": "박막·도막 두께를 재는 범위. 시편이 들어가는 두께(specimen_thickness_mm)와 다르다",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "leak_rate_mbar_L_s",
    "label": "누설률",
    "dimension": "leak_rate",
@@ -770,12 +862,26 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "max_displacement_nm",
+   "label": "최대 변위",
+   "dimension": "length",
+   "unit": "nm",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "max_force_at_full_speed_kN",
    "label": "최고 속도에서의 하중",
    "dimension": "force",
    "unit": "kN",
    "note": "최대 하중과 다르다",
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "max_force_uN",
+   "label": "최대 하중 (마이크로)",
+   "dimension": "force",
+   "unit": "uN",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "max_speed_at_full_force_mm_min",
@@ -839,6 +945,21 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "modulus_Pa",
+   "label": "탄성률 측정 범위",
+   "dimension": "stress",
+   "unit": "Pa",
+   "note": "저장·손실 탄성률을 한 칸에 둔다 — 원본이 같은 범위로 적는다",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "molecular_weight_Da",
+   "label": "분자량 측정 범위",
+   "dimension": "",
+   "unit": "Da",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "operating_humidity_pct",
    "label": "운전 습도",
    "dimension": "humidity",
@@ -882,6 +1003,13 @@
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "particle_diameter_nm",
+   "label": "입자 크기 측정 범위",
+   "dimension": "length",
+   "unit": "nm",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "payload_kg",
@@ -935,6 +1063,13 @@
    "dimension": "ratio",
    "unit": "%",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "pore_diameter_um",
+   "label": "기공 크기 측정 범위",
+   "dimension": "length",
+   "unit": "um",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "position_resolution_nm",
@@ -1091,6 +1226,13 @@
    "testscope_key": "force"
   },
   {
+   "key": "refractive_index",
+   "label": "굴절률 측정 범위",
+   "dimension": "",
+   "unit": "",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "refrigerant",
    "label": "냉매",
    "dimension": "",
@@ -1135,6 +1277,13 @@
    "dimension": "count",
    "unit": "pixels",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "resonance_frequency_Hz",
+   "label": "공진 주파수",
+   "dimension": "frequency",
+   "unit": "Hz",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "response_time_ms",
@@ -1307,6 +1456,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "specimen_orientation_deg",
+   "label": "시편 각도 조절 범위",
+   "dimension": "angle",
+   "unit": "deg",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "specimen_size_mm",
    "label": "시편 크기",
    "dimension": "length",
@@ -1382,6 +1538,14 @@
    "unit": "mm"
   },
   {
+   "key": "stroke_mm_pk_pk",
+   "label": "가진 변위 (peak-to-peak)",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "진동 시험기의 양끝 사이 변위. 한쪽 진폭이 아니다",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "stylus_force_mg",
    "label": "스타일러스 힘",
    "dimension": "force",
@@ -1394,6 +1558,27 @@
    "dimension": "length",
    "unit": "um",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "surface_energy_mN_m",
+   "label": "표면에너지 측정 범위",
+   "dimension": "",
+   "unit": "mN/m",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "surface_resistivity_ohm_sq",
+   "label": "면저항 측정 범위",
+   "dimension": "",
+   "unit": "Ω/□",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "surge_V",
+   "label": "서지 전압",
+   "dimension": "voltage",
+   "unit": "V",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "surge_voltage_kV",
@@ -1487,11 +1672,25 @@
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
+   "key": "test_space_L",
+   "label": "시험 공간 부피",
+   "dimension": "",
+   "unit": "L",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "test_time_s",
    "label": "시험 시간",
    "dimension": "time",
    "unit": "s",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "test_voltage_V",
+   "label": "시험 전압",
+   "dimension": "voltage",
+   "unit": "V",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
    "key": "test_zones",
@@ -1634,7 +1833,11 @@
    "key": "viscosity_Pa_s",
    "label": "점도",
    "dimension": "viscosity",
-   "unit": "Pa·s"
+   "unit": "Pa·s",
+   "unit_variants": {
+    "viscosity_cP": 0.001,
+    "viscosity_mPa_s": 0.001
+   }
   },
   {
    "key": "voltage_V",
@@ -1651,13 +1854,22 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "wavelength_nm",
+   "label": "측정 파장 범위",
+   "dimension": "length",
+   "unit": "nm",
+   "note": "분광기·타원계가 다루는 빛의 파장. 투과율·반사율 자체의 범위가 아니다 — 원본이 그 칸에 파장을 적어 온다",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
    "key": "wear_depth",
    "label": "마모 깊이",
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
    "unit_variants": {
-    "wear_depth_mm": 1.0
+    "wear_depth_mm": 1.0,
+    "wear_depth_um": 0.001
    }
   },
   {
@@ -1689,6 +1901,27 @@
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "working_distance_mm",
+   "label": "작동 거리",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "yield_stress_Pa",
+   "label": "항복응력 측정 범위",
+   "dimension": "stress",
+   "unit": "Pa",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "zeta_potential_V",
+   "label": "제타전위 측정 범위",
+   "dimension": "voltage",
+   "unit": "V",
+   "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   }
  ]
 }

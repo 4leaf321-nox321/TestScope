@@ -52,6 +52,10 @@
   {
    "model": "D8 ADVANCE",
    "specs": {
+    "layer_thickness_nm": {
+     "min": 0.1,
+     "max": 250.0
+    },
     "temperature_degC": {
      "min": -193.0,
      "max": 2300.0,

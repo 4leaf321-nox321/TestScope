@@ -43,6 +43,12 @@
  "models": [
   {
    "model": "F54-UV",
+   "specs": {
+    "layer_thickness_nm": {
+     "min": 4.0,
+     "max": 35000.0
+    }
+   },
    "note": "자동 박막두께 매핑 시스템. UV 구성(분광기 190-1100 nm).",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -71,6 +77,12 @@
   },
   {
    "model": "F54-UVX",
+   "specs": {
+    "layer_thickness_nm": {
+     "min": 4.0,
+     "max": 115000.0
+    }
+   },
    "note": "자동 박막두께 매핑 시스템. UV 확장 구성(분광기 190-1700 nm).",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -99,6 +111,12 @@
   },
   {
    "model": "F54",
+   "specs": {
+    "layer_thickness_nm": {
+     "min": 20.0,
+     "max": 45000.0
+    }
+   },
    "note": "자동 박막두께 매핑 시스템. 표준 구성(분광기 380-1050 nm, 내장 할로겐 광원).",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -127,6 +145,12 @@
   },
   {
    "model": "F54-EXR",
+   "specs": {
+    "layer_thickness_nm": {
+     "min": 20.0,
+     "max": 120000.0
+    }
+   },
    "note": "자동 박막두께 매핑 시스템. 확장 적외 구성(분광기 380-1700 nm).",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -155,6 +179,12 @@
   },
   {
    "model": "F54-NIR",
+   "specs": {
+    "layer_thickness_nm": {
+     "min": 100.0,
+     "max": 120000.0
+    }
+   },
    "note": "자동 박막두께 매핑 시스템. 근적외 구성(분광기 950-1700 nm).",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

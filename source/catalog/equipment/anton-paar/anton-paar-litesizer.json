@@ -51,6 +51,21 @@
   {
    "model": "Litesizer 500",
    "specs": {
+    "particle_diameter_nm": {
+     "min": 0.3,
+     "max": 10000.0
+    },
+    "molecular_weight_Da": {
+     "min": 980.0,
+     "max": 20000000.0
+    },
+    "refractive_index": {
+     "min": 1.28,
+     "max": 1.5
+    },
+    "zeta_potential_V": {
+     "max": 1.0
+    },
     "temperature_degC": {
      "min": 0.0,
      "max": 90.0
@@ -139,6 +154,10 @@
   {
    "model": "Litesizer 100",
    "specs": {
+    "particle_diameter_nm": {
+     "min": 0.3,
+     "max": 10000.0
+    },
     "temperature_degC": {
      "min": 0.0,
      "max": 90.0

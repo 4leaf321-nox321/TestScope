@@ -33,6 +33,12 @@
  "models": [
   {
    "model": "AutoPore V",
+   "specs": {
+    "pore_diameter_um": {
+     "min": 0.003,
+     "max": 1100.0
+    }
+   },
    "note": "가압 수은 압입량으로 기공크기분포·총기공부피·기공표면적·벌크/골격밀도를 산출하는 수은압입 포로시미터",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

@@ -31,6 +31,12 @@
  "models": [
   {
    "model": "Zetasizer Nano ZSP",
+   "specs": {
+    "particle_diameter_nm": {
+     "min": 0.3,
+     "max": 10000.0
+    }
+   },
    "note": "브라운운동 산란광 요동으로 입도·제타전위·분자량을 재는 동적광산란 분석기",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

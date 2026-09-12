@@ -301,9 +301,87 @@ def _temperature_is_optional(notes: str | None) -> bool:
     return False
 
 
+#: 능력행의 **측정 범위**를 기종 사양으로 옮기는 표 — (물성 키, 원본 단위) -> (사양 키, 배율).
+#:
+#: 능력행은 「이 장비가 무엇을 어디까지 재나」 를 물성마다 적어 온다. 그 수치는 그 장비를
+#: 가르는 사양인데(점도계는 점도 범위로 갈리고 분광기는 파장으로 갈린다), 전에는 스냅샷
+#: 원문에만 남고 사양표에는 아무것도 안 들어갔다 — 사양이 빈 기종 224 중 113 이 그것이다.
+#:
+#: **(물성, 단위) 쌍으로 건다.** 물성만 보면 틀린다: `optical.transmittance` 의 범위가
+#: `nm` 로 적혀 있으면 그것은 투과율이 아니라 **파장**이다(185~900 nm). 단위를 안 보고
+#: 「투과율 185~900 %」 로 적으면, 지어낸 값이 사양표에 진실로 앉는다.
+#:
+#: 표에 없는 쌍은 **안 들인다** — 원문에는 그대로 남아 사람이 화면에서 옮겨 적을 수 있다.
+CAPABILITY_SPECS: dict[tuple[str, str], tuple[str, float]] = {
+    ("rheological.viscosity", "cP"): ("viscosity_cP", 1.0),
+    ("rheological.yield_stress", "Pa"): ("yield_stress_Pa", 1.0),
+    ("mechanical.hardness_shore_a", "ShoreA"): ("hardness_shore_a", 1.0),
+    ("mechanical.hardness_shore_d", "ShoreD"): ("hardness_shore_d", 1.0),
+    ("mechanical.storage_modulus", "Pa"): ("modulus_Pa", 1.0),
+    ("mechanical.loss_modulus", "Pa"): ("modulus_Pa", 1.0),
+    # 분광·타원계의 nm 는 **파장**이다. 물성이 무엇이든 같은 칸으로 간다.
+    ("optical.transmittance", "nm"): ("wavelength_nm", 1.0),
+    ("optical.reflectance", "nm"): ("wavelength_nm", 1.0),
+    ("optical.refractive_index", "nm"): ("wavelength_nm", 1.0),
+    ("optical.extinction_coefficient", "nm"): ("wavelength_nm", 1.0),
+    ("optical.birefringence", "nm"): ("wavelength_nm", 1.0),
+    ("optical.emission_peak_wavelength", "nm"): ("wavelength_nm", 1.0),
+    ("optical.refractive_index", "1"): ("refractive_index", 1.0),
+    ("optical.excited_state_lifetime", "s"): ("excited_state_lifetime_s", 1.0),
+    ("structure.layer_thickness", "nm"): ("layer_thickness_nm", 1.0),
+    ("structure.layer_thickness", "µm"): ("layer_thickness_um", 1.0),
+    ("structure.layer_thickness", "mm"): ("layer_thickness_mm", 1.0),
+    ("structure.particle_diameter", "nm"): ("particle_diameter_nm", 1.0),
+    ("structure.molecular_weight", "Da"): ("molecular_weight_Da", 1.0),
+    ("structure.pore_diameter", "m"): ("pore_diameter_um", 1_000_000.0),
+    ("thermal.diffusivity", "mm^2/s"): ("thermal_diffusivity_mm2_s", 1.0),
+    ("thermal.conductivity", "W/(m·K)"): ("thermal_conductivity_W_mK", 1.0),
+    ("thermal.conductivity", "W/m/K"): ("thermal_conductivity_W_mK", 1.0),
+    ("physical.contact_angle_water", "°"): ("contact_angle_deg", 1.0),
+    ("physical.surface_energy", "mN/m"): ("surface_energy_mN_m", 1.0),
+    ("physical.zeta_potential", "V"): ("zeta_potential_V", 1.0),
+    ("electrical.carrier_mobility", "m^2/(V*s)"): ("carrier_mobility_m2_Vs", 1.0),
+    ("electrical.carrier_concentration", "1/m^3"): ("carrier_concentration_m3", 1.0),
+    ("electrical.surface_resistivity", "Ω/square"): ("surface_resistivity_ohm_sq", 1.0),
+}
+
+
+def capability_specs(caps: list[dict[str, Any]]) -> dict[str, Any]:
+    """능력행의 측정 범위 -> 기종 사양. 같은 칸이 여럿이면 **가장 넓은 것**으로 합친다.
+
+    한 장비가 같은 물성을 기법 둘로 재면(범위가 갈린다) 둘 다 그 장비가 할 수 있는 것이라
+    봉투가 맞다. 대신 합쳤다는 사실을 비고에 남긴다 — 안 남기면 어느 기법의 수치인지
+    되짚을 수 없고, 그 수치를 믿고 시험을 잡은 사람이 막힌다.
+    """
+    out: dict[str, dict[str, Any]] = {}
+    merged: set[str] = set()
+    for cap in caps:
+        unit = cap.get("range_unit")
+        target = CAPABILITY_SPECS.get((cap.get("property_key") or "", unit or ""))
+        if target is None:
+            continue
+        key, factor = target
+        low, high = cap.get("range_min"), cap.get("range_max")
+        if low is None and high is None:
+            continue
+        row = out.setdefault(key, {})
+        for side, value, pick in (("min", low, min), ("max", high, max)):
+            if value is None:
+                continue
+            scaled = float(value) * factor
+            if side in row:
+                merged.add(key)
+                row[side] = pick(row[side], scaled)
+            else:
+                row[side] = scaled
+    for key in merged:
+        out[key]["note"] = "능력행 여럿을 합친 범위 (기법마다 갈린다)"
+    return {key: value for key, value in out.items() if value}
+
+
 def model_specs(inst: dict[str, Any], caps: list[dict[str, Any]]) -> dict[str, Any]:
-    """기종 사양 — 설명·주석의 수치와 능력행의 온도."""
-    specs: dict[str, Any] = {}
+    """기종 사양 — 설명·주석의 수치, 능력행의 온도, 그리고 능력행의 측정 범위."""
+    specs: dict[str, Any] = dict(capability_specs(caps))
     text = " ".join(x for x in (inst.get("description"), inst.get("notes")) if x)
     if m := _FORCE.search(text):
         specs["force_kN"] = float(m.group(1))

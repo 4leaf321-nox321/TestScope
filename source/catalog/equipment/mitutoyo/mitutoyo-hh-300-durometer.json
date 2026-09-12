@@ -68,6 +68,12 @@
  "models": [
   {
    "model": "HH-331",
+   "specs": {
+    "hardness_shore_a": {
+     "min": 10.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 일반고무·연질플라스틱",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -97,6 +103,12 @@
   },
   {
    "model": "HH-332",
+   "specs": {
+    "hardness_shore_a": {
+     "min": 10.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 일반고무·연질플라스틱",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -126,6 +138,12 @@
   },
   {
    "model": "HH-335",
+   "specs": {
+    "hardness_shore_a": {
+     "min": 10.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 일반고무·연질플라스틱",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -155,6 +173,12 @@
   },
   {
    "model": "HH-336",
+   "specs": {
+    "hardness_shore_a": {
+     "min": 10.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 일반고무·연질플라스틱",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -184,6 +208,12 @@
   },
   {
    "model": "HH-333",
+   "specs": {
+    "hardness_shore_d": {
+     "min": 20.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -213,6 +243,12 @@
   },
   {
    "model": "HH-334",
+   "specs": {
+    "hardness_shore_d": {
+     "min": 20.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -242,6 +278,12 @@
   },
   {
    "model": "HH-337",
+   "specs": {
+    "hardness_shore_d": {
+     "min": 20.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 아날로그 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -271,6 +313,12 @@
   },
   {
    "model": "HH-338",
+   "specs": {
+    "hardness_shore_d": {
+     "min": 20.0,
+     "max": 90.0
+    }
+   },
    "note": "Hardmatic HH-300 시리즈 디지털 듀로미터 — 측정대상 경질고무·경질플라스틱·에보나이트",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

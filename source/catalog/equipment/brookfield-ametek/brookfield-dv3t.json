@@ -45,6 +45,12 @@
  "models": [
   {
    "model": "DV3T LV",
+   "specs": {
+    "viscosity_cP": {
+     "min": 1.0,
+     "max": 6000000.0
+    }
+   },
    "note": "LV 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -82,6 +88,16 @@
   },
   {
    "model": "DV3T RV",
+   "specs": {
+    "viscosity_cP": {
+     "min": 100.0,
+     "max": 40000000.0
+    },
+    "yield_stress_Pa": {
+     "min": 0.5,
+     "max": 100.0
+    }
+   },
    "note": "RV 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -122,6 +138,16 @@
   },
   {
    "model": "DV3T HA",
+   "specs": {
+    "viscosity_cP": {
+     "min": 200.0,
+     "max": 80000000.0
+    },
+    "yield_stress_Pa": {
+     "min": 1.0,
+     "max": 200.0
+    }
+   },
    "note": "HA 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -162,6 +188,16 @@
   },
   {
    "model": "DV3T HB",
+   "specs": {
+    "viscosity_cP": {
+     "min": 800.0,
+     "max": 320000000.0
+    },
+    "yield_stress_Pa": {
+     "min": 4.0,
+     "max": 800.0
+    }
+   },
    "note": "HB 토크스프링 회전점도계. 점도·항복응력 측정, 속도 0.01~250 RPM",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",
@@ -202,6 +238,16 @@
   },
   {
    "model": "DV3T 5xHB",
+   "specs": {
+    "viscosity_cP": {
+     "min": 4000.0,
+     "max": 1600000000.0
+    },
+    "yield_stress_Pa": {
+     "min": 20.0,
+     "max": 4000.0
+    }
+   },
    "note": "5xHB 토크스프링 회전점도계(최고 점도범위). 점도·항복응력 측정",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

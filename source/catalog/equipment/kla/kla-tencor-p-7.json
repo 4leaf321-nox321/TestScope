@@ -31,6 +31,11 @@
  "models": [
   {
    "model": "P-7",
+   "specs": {
+    "layer_thickness_mm": {
+     "max": 1.0
+    }
+   },
    "note": "중급 생산용 스타일러스 프로파일러. UltraLite 센서, 스캔길이 150 mm(스티칭 불필요), Z 범위 1 mm. 박막/후막 단차, 식각 트렌치 깊이, 표면조도·웨이비니스, 곡률·평탄도, 박막 2D 응력(Stoney) 측정.",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

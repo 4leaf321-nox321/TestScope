@@ -32,6 +32,12 @@
  "models": [
   {
    "model": "Four-Point Probe (T2001A/T2001B)",
+   "specs": {
+    "surface_resistivity_ohm_sq": {
+     "min": 0.1,
+     "max": 10000000.0
+    }
+   },
    "form_factor": "benchtop",
    "note": "탐침 4개로 전류를 흘리고 전압을 재어 면저항을 구하는 탁상형 4점탐침기. 두께를 입력하면 체적저항률·전도율까지 산출",
    "materialtwin": {

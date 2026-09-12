@@ -54,6 +54,14 @@
   {
    "model": "7604 HMS",
    "specs": {
+    "carrier_mobility_m2_Vs": {
+     "min": 0.0001,
+     "max": 10.0
+    },
+    "carrier_concentration_m3": {
+     "min": 1000000000000.0,
+     "max": 1e+25
+    },
     "temperature_degC": {
      "min": -258.15,
      "max": 526.85,
@@ -135,6 +143,14 @@
   {
    "model": "7607 HMS",
    "specs": {
+    "carrier_mobility_m2_Vs": {
+     "min": 0.0001,
+     "max": 10.0
+    },
+    "carrier_concentration_m3": {
+     "min": 1000000000000.0,
+     "max": 1e+25
+    },
     "temperature_degC": {
      "min": -258.15,
      "max": 526.85
@@ -214,6 +230,14 @@
   {
    "model": "7704A HMS",
    "specs": {
+    "carrier_mobility_m2_Vs": {
+     "min": 0.0001,
+     "max": 100.0
+    },
+    "carrier_concentration_m3": {
+     "min": 800000000.0,
+     "max": 8e+29
+    },
     "temperature_degC": {
      "min": -258.15,
      "max": 526.85,
@@ -305,6 +329,14 @@
   {
    "model": "7707A HMS",
    "specs": {
+    "carrier_mobility_m2_Vs": {
+     "min": 0.0001,
+     "max": 100.0
+    },
+    "carrier_concentration_m3": {
+     "min": 800000000.0,
+     "max": 8e+29
+    },
     "temperature_degC": {
      "min": -258.15,
      "max": 526.85,
@@ -386,6 +418,14 @@
   {
    "model": "9709A HMS",
    "specs": {
+    "carrier_mobility_m2_Vs": {
+     "min": 0.0001,
+     "max": 100.0
+    },
+    "carrier_concentration_m3": {
+     "min": 800000000.0,
+     "max": 8e+29
+    },
     "temperature_degC": {
      "min": -271.15,
      "max": 126.85

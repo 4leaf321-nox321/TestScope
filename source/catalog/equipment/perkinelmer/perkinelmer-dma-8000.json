@@ -39,6 +39,11 @@
   {
    "model": "DMA 8000",
    "specs": {
+    "modulus_Pa": {
+     "min": 1000.0,
+     "max": 1e+16,
+     "note": "능력행 여럿을 합친 범위 (기법마다 갈린다)"
+    },
     "temperature_degC": {
      "min": -190.0,
      "max": 600.0

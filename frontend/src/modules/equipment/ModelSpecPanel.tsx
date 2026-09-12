@@ -6,6 +6,12 @@
  * `sheet` 는 **적힌 값**을, `specDefinitions` 는 **적을 수 있는 칸**을 준다. 빈
  * 칸까지 사양표에 실으면 한 모델을 열 때마다 수백 줄이 오간다.
  *
+ * ## 원문 단위 그대로 친다
+ *
+ * 카탈로그는 「4,000 cP」 라고 적혀 있는데 정의는 Pa·s 다. 사람이 머리로 0.001 을 곱하던
+ * 자리가 **자릿수를 틀리는 자리**라, 값 칸이 단위째 받아 바꿔 넣고 무엇을 무엇으로 바꿨는지
+ * 적는다(`shared/units`). 모르는 단위는 거절한다 — 조용히 숫자만 취하면 천 배 틀린다.
+ *
  * ## 분류 밖 사양도 지우지 않는다
  *
  * 정의에 붙은 분류가 이 모델과 안 맞아도(`applies=false`) 값은 그대로 보여 주고
@@ -30,28 +36,91 @@ import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { SpecDefinition } from '@/modules/vocabulary/api'
 import { specApi } from '@/modules/equipment/api'
+import { convertValue, isError } from '@/shared/units'
 import { shownSpecValue } from '@/modules/equipment/specValue'
 
-/** 빈 문자열은 안 보낸 것과 같다 — 숫자 칸의 0 과 구별해야 한다. */
-function numberOrNull(raw: string | undefined): number | null {
-  return raw === undefined || raw.trim() === '' ? null : Number(raw)
+/** 빈 문자열은 안 보낸 것과 같다 — 숫자 칸의 0 과 구별해야 한다.
+ *
+ *  단위가 붙어 있으면(「4000 cP」) 그 칸의 단위로 바꾼다. 못 바꾸는 것은 저장 전에
+ *  막히므로(`problem`) 여기서는 `null` 로 둔다 — 숫자만 떼어 담으면 천 배 틀린다. */
+function numberOrNull(raw: string | undefined, unit: string): number | null {
+  const got = convertValue(raw ?? '', unit)
+  if (got === null || isError(got)) return null
+  return got.value
 }
 
 /** 종류에 맞는 칸만 채워 보낸다. 나머지는 서버가 비운다. */
 function toBody(definition: SpecDefinition, draft: Record<string, string>) {
   const isText = definition.kind === 'choice' || definition.kind === 'text'
+  const unit = definition.display_unit || definition.si_unit
   return {
     definition_id: definition.id,
-    num_value: definition.kind === 'number' ? numberOrNull(draft.num_value) : null,
-    num_min: definition.kind === 'range' ? numberOrNull(draft.num_min) : null,
-    num_max: definition.kind === 'range' ? numberOrNull(draft.num_max) : null,
+    num_value: definition.kind === 'number' ? numberOrNull(draft.num_value, unit) : null,
+    num_min: definition.kind === 'range' ? numberOrNull(draft.num_min, unit) : null,
+    num_max: definition.kind === 'range' ? numberOrNull(draft.num_max, unit) : null,
     text_value: isText ? (draft.text_value?.trim() ?? '') : null,
     bool_value: definition.kind === 'boolean' ? draft.bool_value === 'yes' : null,
     note: draft.note?.trim() ? draft.note.trim() : null,
     requires_accessory: draft.requires_accessory === 'yes',
     source_id: draft.source_id ? draft.source_id : null,
-    source_page: numberOrNull(draft.source_page),
+    source_page: numberOrNull(draft.source_page, ''),
   }
+}
+
+/** 숫자 칸 하나 — **원문 단위를 그대로 받는다.**
+ *
+ *  바꿨으면 무엇을 무엇으로 바꿨는지 적는다(사람이 검산할 수 있어야 한다). 모르는 단위면
+ *  붉게 말하고, 저장은 부르는 쪽이 막는다. */
+function NumberField({
+  value,
+  onChange,
+  unit,
+  placeholder,
+  className,
+}: {
+  value: string
+  onChange: (next: string) => void
+  unit: string
+  placeholder: string
+  className?: string
+}) {
+  const got = convertValue(value, unit)
+  return (
+    <div className={className}>
+      {/* `type="number"` 가 아니다 — 그러면 「4000 cP」 를 아예 못 친다. */}
+      <Input
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+        inputMode="decimal"
+      />
+      {got !== null && isError(got) && (
+        <p className="text-destructive mt-1 text-xs">{got.error}</p>
+      )}
+      {got !== null && !isError(got) && got.note && (
+        <p className="mt-1 text-xs text-emerald-700">{got.note}</p>
+      )}
+    </div>
+  )
+}
+
+/** 그 칸의 값이 저장할 수 있는 모양인가. 못 바꾸는 단위가 하나라도 있으면 막는다. */
+function fieldProblem(
+  definition: SpecDefinition,
+  draft: Record<string, string>,
+): string | null {
+  const unit = definition.display_unit || definition.si_unit
+  const fields =
+    definition.kind === 'range'
+      ? ['num_min', 'num_max']
+      : definition.kind === 'number'
+        ? ['num_value']
+        : []
+  for (const field of fields) {
+    const got = convertValue(draft[field] ?? '', unit)
+    if (got !== null && isError(got)) return got.error
+  }
+  return null
 }
 
 /** 고른 사양의 종류에 맞는 입력 칸만 띄운다. */
@@ -71,17 +140,17 @@ function ValueFields({
     return (
       <>
         {/* **비워 두는 것이 "제한 없음" 이다.** 0 이 아니다. */}
-        <Input
-          type="number"
+        <NumberField
           value={draft.num_min ?? ''}
-          onChange={(event) => set('num_min', event.target.value)}
+          onChange={(value) => set('num_min', value)}
+          unit={unit}
           placeholder={`최소${unit ? ` (${unit})` : ''} — 비우면 제한 없음`}
           className="w-56"
         />
-        <Input
-          type="number"
+        <NumberField
           value={draft.num_max ?? ''}
-          onChange={(event) => set('num_max', event.target.value)}
+          onChange={(value) => set('num_max', value)}
+          unit={unit}
           placeholder={`최대${unit ? ` (${unit})` : ''} — 비우면 제한 없음`}
           className="w-56"
         />
@@ -90,12 +159,12 @@ function ValueFields({
   }
   if (definition.kind === 'number') {
     return (
-      <Input
-        type="number"
+      <NumberField
         value={draft.num_value ?? ''}
-        onChange={(event) => set('num_value', event.target.value)}
-        placeholder={unit ? `값 (${unit})` : '값'}
-        className="w-44"
+        onChange={(value) => set('num_value', value)}
+        unit={unit}
+        placeholder={unit ? `값 (${unit}) — 「4000 cP」 처럼 원문 단위로 쳐도 됩니다` : '값'}
+        className="w-64"
       />
     )
   }
@@ -323,7 +392,13 @@ export function ModelSpecPanel({
               detailHint="이 기종의 분류에 붙는 사양과 공통 사양입니다. 「검색축」 이 붙은 것은 값이 이 기종으로 등록하는 장비의 시험 조건이 됩니다."
             />
             {chosen && <ValueFields definition={chosen} draft={draft} setDraft={setDraft} />}
-            {chosen && <Button onClick={save}>저장</Button>}
+            {/* 못 바꾸는 단위가 남아 있으면 저장을 막는다 — 그대로 저장하면 숫자만
+                떼어 담기고, 그 값은 천 배 틀린 채로 검색에 쓰인다. */}
+            {chosen && (
+              <Button onClick={save} disabled={fieldProblem(chosen, draft) !== null}>
+                저장
+              </Button>
+            )}
           </div>
 
           {chosen && (

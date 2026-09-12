@@ -31,6 +31,11 @@
  "models": [
   {
    "model": "NewView NX2",
+   "specs": {
+    "layer_thickness_um": {
+     "max": 20000.0
+    }
+   },
    "note": "비접촉 광학 3D 표면 프로파일러. 표면조도·단차·임계치수 등 형상 파라미터를 정량화한다. 수직주사범위 150 µm(정밀 피에조), 확장주사 20 mm. 대물 1.4x~50x(광학분해능 7.13~0.52 µm).",
    "materialtwin": {
     "snapshot": "materialtwin-20260905",

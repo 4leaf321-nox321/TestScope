@@ -38,6 +38,14 @@
   {
    "model": "DSA100HP40",
    "specs": {
+    "contact_angle_deg": {
+     "min": 0.0,
+     "max": 180.0
+    },
+    "surface_energy_mN_m": {
+     "min": 0.01,
+     "max": 2000.0
+    },
     "temperature_degC": {
      "min": 20.0,
      "max": 200.0
@@ -89,6 +97,14 @@
   {
    "model": "DSA100HP690",
    "specs": {
+    "contact_angle_deg": {
+     "min": 0.0,
+     "max": 180.0
+    },
+    "surface_energy_mN_m": {
+     "min": 0.01,
+     "max": 2000.0
+    },
     "temperature_degC": {
      "min": 20.0,
      "max": 200.0
@@ -140,6 +156,14 @@
   {
    "model": "DSA100HP1750",
    "specs": {
+    "contact_angle_deg": {
+     "min": 0.0,
+     "max": 180.0
+    },
+    "surface_energy_mN_m": {
+     "min": 0.01,
+     "max": 2000.0
+    },
     "temperature_degC": {
      "min": 20.0,
      "max": 250.0
