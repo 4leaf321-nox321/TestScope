@@ -21,6 +21,7 @@ from sqlalchemy.orm import Session
 from app.modules.audit.models import AuditEntry
 from app.modules.methods.models import TestMethod
 from app.modules.review import services
+from app.modules.review.models import ReviewProposal
 from app.shared import audit
 from tests.api.conftest import Signed
 from tests.api.test_pending_methods import _method, _pend, _series
@@ -270,3 +271,52 @@ def test_건너뛰기는_되돌릴_수_있고_큐_수에_잡힌다(client: TestC
         f"/api/review/method_test_items/{row['id']}/skip", headers=admin.headers
     )
     assert back.json()["status"] == "open"
+
+
+def test_결정은_정본으로_되돌려_쓰이고_다시_들이면_적용된다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    """개발에서 정한 것이 운영에 다시 묻지 않는 길 — 결정 → 정본 → 반입."""
+    a_id, a = _item(client, admin, "인장")
+    b_id, _ = _item(client, admin, "압축")
+    method = _cited_method(client, admin, [a_id, b_id])
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+    decided = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [a], "note": "규격서 4절"},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+
+    counts = services.export_decisions(db, tmp_path)
+    assert counts["method_test_items"][1] >= 1
+    doc = json.loads((tmp_path / "method_test_items.json").read_text(encoding="utf-8"))
+    mine = next(one for one in doc["rows"] if one["subject"] == method["code"])
+    assert mine["decided"]["choice"] == [a]
+    assert mine["decided"]["by"] == "관리자"
+    assert mine["decided"]["note"] == "규격서 4절"
+
+    # 다른 설치를 흉내 낸다: 규격의 항목을 비우고 검토 줄을 지운 뒤, 정본으로 다시 세운다.
+    target = db.get(TestMethod, uuid.UUID(method["id"]))
+    assert target is not None
+    target.test_item_term_id = None
+    db.execute(
+        select(ReviewProposal).where(ReviewProposal.id == uuid.UUID(row["id"]))
+    )  # 존재 확인
+    db.delete(db.get(ReviewProposal, uuid.UUID(row["id"])))
+    db.commit()
+    services.refresh(db, tmp_path)
+    db.commit()
+    db.refresh(target)
+    assert str(target.test_item_term_id) == a_id, "정본의 결정이 적용됐다"
+    again = next(
+        one
+        for one in _rows(client, admin, "method_test_items", status="all")
+        if one["subject_id"] == method["id"]
+    )
+    assert (again["status"], again["decided_by"]) == ("decided", "관리자")

@@ -18,6 +18,7 @@
 | `catalog/schema.json` | 장비 객체 JSON Schema |
 | `catalog/equipment/<제조사>/*.json` | **장비 객체** — 시리즈/모델 단위 하나 |
 | `catalog/ontology/*.json` | 축 정의: 제조사·장비 분류·시험 항목·조건 키·관계 종류 |
+| `catalog/proposals/<큐>.json` | **검토함의 정본** — 반입이 못 정한 것(규격의 시험 항목 · 시험 항목의 검색축 · 물성 연결 의심 · 정의로 올릴 사양)에 대한 후보·추천·근거와, 도메인 전문가가 내린 결정(`decided`). 반입이 후보를 세우고 결정은 적용한다; `backend/scripts/export_review.py` 가 화면의 결정을 여기로 되돌려 쓴다 |
 | `catalog/tools_fetch_pdf.py` | PDF 를 받아 `pdf/`·`extracted/`·`urls.json` 에 넣는다. `--restore` 가 `urls.json` 으로 없어진 PDF 를 되살리고, `--check` 가 세 목록이 맞는지 본다 |
 | `catalog/tools_render_pages.py` | PDF 특정 쪽을 PNG 로 렌더링(표 열 대응 확인용) |
 | `catalog/build_graph.py` | 객체를 검증하고 `graph.json`(노드+엣지)·`index.md`·`sources.json` 을 만든다 |

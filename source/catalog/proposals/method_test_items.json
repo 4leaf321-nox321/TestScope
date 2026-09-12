@@ -1,0 +1,1676 @@
+{
+ "queue": "method_test_items",
+ "generated": "2026-09-13",
+ "note": "규격 번호로 확실한 것만 추천(recommended+reason). 확신 없거나 규격군 이름이면 hint 만 — 화면에서 도메인 전문가가 고른다. decided 는 화면의 결정을 export_review.py 가 되돌려 쓴다.",
+ "rows": [
+  {
+   "subject": "AASHTO T315",
+   "candidates": [
+    "compression",
+    "dma",
+    "flexure",
+    "friction_wear_tribo",
+    "rheology_rotational",
+    "tensile"
+   ],
+   "recommended": "rheology_rotational",
+   "reason": "AASHTO T315 — 동적 전단 레오미터(DSR)로 아스팔트 바인더의 유변 특성 측정"
+  },
+  {
+   "subject": "ASTM",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tensile"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "ASTM D3332 (fragility)",
+   "candidates": [
+    "free_fall_drop",
+    "mechanical_shock"
+   ],
+   "recommended": "mechanical_shock",
+   "reason": "ASTM D3332 — 충격 시험기로 제품의 기계적 충격 취약성(fragility) 측정"
+  },
+  {
+   "subject": "ASTM D3580",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "recommended": "vibration_sine_random",
+   "reason": "ASTM D3580 — 제품의 수직 선형 진동 시험"
+  },
+  {
+   "subject": "ASTM D4728",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "recommended": "vibration_sine_random",
+   "reason": "ASTM D4728 — 수송 용기의 랜덤 진동 시험"
+  },
+  {
+   "subject": "ASTM D4812",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "izod_impact",
+   "reason": "ASTM D4812 — 플라스틱의 노치 없는 외팔보(cantilever) 충격 — 아이조드 방식"
+  },
+  {
+   "subject": "ASTM D5628",
+   "candidates": [
+    "drop_weight_impact",
+    "puncture",
+    "tensile_impact"
+   ],
+   "recommended": "drop_weight_impact",
+   "reason": "ASTM D5628 — 낙하 다트(falling dart/tup)에 의한 평판 플라스틱 충격 저항"
+  },
+  {
+   "subject": "ASTM D695 (복합재 압축 지그 직결 구성)",
+   "candidates": [
+    "compression",
+    "fatigue",
+    "tensile"
+   ],
+   "recommended": "compression",
+   "reason": "ASTM D695 — 강성 플라스틱의 압축 특성"
+  },
+  {
+   "subject": "ASTM D696",
+   "candidates": [
+    "dilatometry",
+    "tma"
+   ],
+   "recommended": "dilatometry",
+   "reason": "ASTM D696 — 석영 딜라토미터로 플라스틱 선팽창계수 측정"
+  },
+  {
+   "subject": "ASTM D7175",
+   "candidates": [
+    "compression",
+    "dma",
+    "flexure",
+    "friction_wear_tribo",
+    "rheology_rotational",
+    "tensile"
+   ],
+   "recommended": "rheology_rotational",
+   "reason": "ASTM D7175 — DSR 로 아스팔트 바인더의 유변 특성 측정"
+  },
+  {
+   "subject": "ASTM D882",
+   "candidates": [
+    "compression",
+    "flexure",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ASTM D882 — 얇은 플라스틱 시트의 인장 특성"
+  },
+  {
+   "subject": "ASTM E10 (light force Brinell, HR-530)",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_rockwell"
+   ],
+   "recommended": "hardness_brinell",
+   "reason": "ASTM E10 — 금속의 브리넬 경도"
+  },
+  {
+   "subject": "ASTM E10 (브리넬)",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_brinell",
+   "reason": "ASTM E10 — 금속의 브리넬 경도"
+  },
+  {
+   "subject": "ASTM E18 (로크웰)",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_rockwell",
+   "reason": "ASTM E18 — 금속의 로크웰 경도"
+  },
+  {
+   "subject": "ASTM E1981 (해당 원리)",
+   "candidates": [
+    "battery_abuse",
+    "thermal_runaway_calorimetry"
+   ],
+   "recommended": "thermal_runaway_calorimetry",
+   "reason": "ASTM E1981 — 가속 속도 열량계(ARC)로 재료의 열 안정성 평가"
+  },
+  {
+   "subject": "ASTM E23 (small specimens)",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ASTM E23 — 금속의 노치 바 충격 시험. 샤르피가 주, 아이조드도 포함 — 금속은 대개 샤르피"
+  },
+  {
+   "subject": "ASTM E517",
+   "candidates": [
+    "compression",
+    "flexure",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ASTM E517 — 판재의 소성 변형비 r 값, 인장 시험으로 측정"
+  },
+  {
+   "subject": "ASTM E8",
+   "candidates": [
+    "compression",
+    "flexure",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ASTM E8/E8M — 금속의 인장 시험"
+  },
+  {
+   "subject": "ASTM E92 (비커스·누프)",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_vickers",
+   "reason": "ASTM E92 — 금속의 비커스·누프 경도. 비커스가 주; 누프도 같은 규격"
+  },
+  {
+   "subject": "ASTM F1717",
+   "candidates": [
+    "compression",
+    "fatigue",
+    "flexure",
+    "tensile",
+    "torsion"
+   ],
+   "hint": "ASTM F1717 — 척추 임플란트 구성체의 정적(압축·비틀림)·피로 시험을 모두 담음. 하나로 못 정함"
+  },
+  {
+   "subject": "ASTM F1798",
+   "candidates": [
+    "compression",
+    "fatigue",
+    "flexure",
+    "tensile",
+    "torsion"
+   ],
+   "hint": "ASTM F1798 — 척추 임플란트 연결부의 정적·피로 시험을 모두 담음"
+  },
+  {
+   "subject": "ASTM F1980",
+   "candidates": [
+    "damp_heat",
+    "temperature_cycling"
+   ],
+   "recommended": "damp_heat",
+   "reason": "ASTM F1980 — 멸균 포장의 가속 노화: 고온·습도 챔버에서 보관"
+  },
+  {
+   "subject": "ASTM F2077",
+   "candidates": [
+    "compression",
+    "fatigue",
+    "flexure",
+    "tensile",
+    "torsion"
+   ],
+   "hint": "ASTM F2077 — 추간체 유합 장치의 정적·동적 압축·전단·비틀림을 모두 담음"
+  },
+  {
+   "subject": "ASTM F88-15",
+   "candidates": [
+    "compression",
+    "flexure",
+    "friction_coefficient",
+    "peel",
+    "seal_strength",
+    "tear",
+    "tensile"
+   ],
+   "recommended": "seal_strength",
+   "reason": "ASTM F88 — 유연 포장재의 실링 강도"
+  },
+  {
+   "subject": "ASTM G85",
+   "candidates": [
+    "damp_heat",
+    "salt_spray_corrosion"
+   ],
+   "recommended": "salt_spray_corrosion",
+   "reason": "ASTM G85 — 변형 염수분무(복합 부식) 시험"
+  },
+  {
+   "subject": "BS",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "BS 131",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "BS 131 — 금속의 노치 바 충격 시험(샤르피·아이조드). 금속 진자 충격기는 대개 샤르피"
+  },
+  {
+   "subject": "BS 3900-E19",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다"
+  },
+  {
+   "subject": "BS 7413",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "tensile_impact",
+   "reason": "BS 7413 — 플라스틱의 인장 충격 강도(BS EN ISO 8256 의 전신)"
+  },
+  {
+   "subject": "BS template library",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tensile"
+   ],
+   "hint": "장비 소프트웨어의 규격 템플릿 묶음 이름 — 특정 시험이 아니다. 건너뛸 것"
+  },
+  {
+   "subject": "BS903 Part A26",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "recommended": "hardness_irhd",
+   "reason": "BS 903-A26 — 고무 경도(IRHD)"
+  },
+  {
+   "subject": "CSA",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "DIN",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tensile"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "DIN 18265 (conversion)",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "hint": "DIN 18265 — 경도 값 환산표. 시험 방법이 아니라 하나로 못 정함"
+  },
+  {
+   "subject": "DIN 488",
+   "candidates": [
+    "compression",
+    "flexure",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "DIN 488 — 철근(reinforcing steel): 인장 시험이 대표"
+  },
+  {
+   "subject": "DIN 50100",
+   "candidates": [
+    "compression",
+    "fatigue",
+    "flexure",
+    "fracture_toughness",
+    "tensile",
+    "torsion"
+   ],
+   "recommended": "fatigue",
+   "reason": "DIN 50100 — 하중 제어 피로 시험"
+  },
+  {
+   "subject": "DIN 50115",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "DIN 50115 — 금속의 노치 바 충격 시험(샤르피)"
+  },
+  {
+   "subject": "DIN 50116",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "hint": "DIN 50116 — 노치 바 충격 시험으로 보이나 어느 방식인지 확신 없음"
+  },
+  {
+   "subject": "DIN 51230",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "DIN 51230 — 플라스틱 Dynstat 충격 굽힘(샤르피 계열 소형 시편)"
+  },
+  {
+   "subject": "DIN 51917",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "hint": "DIN 51917 — 탄소 재료의 경도로 보이나 확신 없음"
+  },
+  {
+   "subject": "DIN 53019",
+   "candidates": [
+    "dma",
+    "friction_wear_tribo",
+    "rheology_rotational"
+   ],
+   "recommended": "rheology_rotational",
+   "reason": "DIN 53019 — 회전 점도계로 점도와 유동 곡선 측정"
+  },
+  {
+   "subject": "DIN 53435",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "DIN 53435 — 플라스틱 Dynstat 굽힘·충격 시험(샤르피 계열)"
+  },
+  {
+   "subject": "DIN 53453",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "DIN 53453 — 플라스틱 충격 굽힘 시험(샤르피)"
+  },
+  {
+   "subject": "DIN 53753",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "DIN 53753 — 플라스틱 노치 충격 강도(샤르피)"
+  },
+  {
+   "subject": "DIN EN 10045-1",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "EN 10045-1 — 금속의 샤르피 충격 시험"
+  },
+  {
+   "subject": "DIN EN 14770",
+   "candidates": [
+    "compression",
+    "dma",
+    "flexure",
+    "friction_wear_tribo",
+    "rheology_rotational",
+    "tensile"
+   ],
+   "recommended": "rheology_rotational",
+   "reason": "EN 14770 — DSR 로 역청의 복소 전단 탄성률 측정"
+  },
+  {
+   "subject": "DIN EN 821",
+   "candidates": [
+    "dilatometry",
+    "tma"
+   ],
+   "recommended": "dilatometry",
+   "reason": "EN 821-1 — 세라믹의 열팽창(딜라토미터). 821-2 는 열확산율, 821-3 은 비열"
+  },
+  {
+   "subject": "DIN EN ISO 11343",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "hint": "ISO 11343 — 접착부의 충격 쐐기 박리(impact wedge-peel). 후보 셋 중 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "DIN EN ISO 14556",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 14556 — 계장화 샤르피 V 노치 충격 시험"
+  },
+  {
+   "subject": "DIN EN ISO 148-1",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 148-1 — 금속의 샤르피 충격 시험"
+  },
+  {
+   "subject": "DIN EN ISO 148-2",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 148-2 — 샤르피 충격기의 검증"
+  },
+  {
+   "subject": "DIN EN ISO 15630",
+   "candidates": [
+    "fatigue",
+    "flexure"
+   ],
+   "recommended": "fatigue",
+   "reason": "ISO 15630 — 철근 시험 방법; 인용한 장비가 굽힘 피로 시험기"
+  },
+  {
+   "subject": "DIN EN ISO 179-1",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 179-1 — 플라스틱 샤르피 충격"
+  },
+  {
+   "subject": "DIN EN ISO 179-2",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 179-2 — 플라스틱 계장화 샤르피 충격"
+  },
+  {
+   "subject": "DIN EN ISO 180",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "izod_impact",
+   "reason": "ISO 180 — 플라스틱 아이조드 충격"
+  },
+  {
+   "subject": "DIN EN ISO 2409",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "coating_adhesion",
+   "reason": "ISO 2409 — 도막 크로스컷 시험"
+  },
+  {
+   "subject": "DIN EN ISO 4545",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_knoop",
+   "reason": "ISO 4545 — 금속의 누프 경도"
+  },
+  {
+   "subject": "DIN EN ISO 527-1",
+   "candidates": [
+    "compression",
+    "flexure",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ISO 527-1 — 플라스틱 인장 특성"
+  },
+  {
+   "subject": "DIN EN ISO 6506",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_brinell",
+   "reason": "ISO 6506 — 금속의 브리넬 경도"
+  },
+  {
+   "subject": "DIN EN ISO 6507",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_vickers",
+   "reason": "ISO 6507 — 금속의 비커스 경도"
+  },
+  {
+   "subject": "DIN EN ISO 8256",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "tensile_impact",
+   "reason": "ISO 8256 — 플라스틱 인장 충격 강도"
+  },
+  {
+   "subject": "DIN EN ISO 868",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "recommended": "hardness_shore",
+   "reason": "ISO 868 — 듀로미터(쇼어) 경도"
+  },
+  {
+   "subject": "DIN EN ISO 9653",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "hint": "ISO 9653 — 접착부의 전단 충격 강도. 후보 셋 중 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "DIN ISO 27588 (VLRH)",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "recommended": "hardness_irhd",
+   "reason": "ISO 27588 — VLRH(매우 낮은 고무 경도): IRHD 계열 방법"
+  },
+  {
+   "subject": "DIN ISO 48-2",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "recommended": "hardness_irhd",
+   "reason": "ISO 48-2 — 고무 경도 10~100 IRHD"
+  },
+  {
+   "subject": "DIN ISO 7619",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "recommended": "hardness_shore",
+   "reason": "ISO 7619-1 — 고무 듀로미터(쇼어) 경도"
+  },
+  {
+   "subject": "ECCA-T4-1",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다"
+  },
+  {
+   "subject": "EIAJ ED-2531B Na",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "hint": "EIAJ ED-2531 — 어느 시험인지 확인 못 함(열충격 챔버가 인용). 규격서 확인 필요"
+  },
+  {
+   "subject": "EN",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tensile"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "EN-ISO 2409",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "coating_adhesion",
+   "reason": "ISO 2409 — 도막 크로스컷 시험"
+  },
+  {
+   "subject": "EN 10002-5",
+   "candidates": [
+    "creep",
+    "fatigue",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "EN 10002-5 — 금속의 고온 인장 시험"
+  },
+  {
+   "subject": "EN 2002-2",
+   "candidates": [
+    "creep",
+    "fatigue",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "EN 2002-2 — 항공 금속 재료의 고온 인장 시험"
+  },
+  {
+   "subject": "EN 60950",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "EN 60950 — IT 기기 안전 규격. 내전압·접지·절연 세 시험을 모두 담음"
+  },
+  {
+   "subject": "EN ISO 2039",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "hint": "ISO 2039 — 1부는 볼 압입 경도, 2부는 로크웰. 어느 부인지 없음"
+  },
+  {
+   "subject": "EN ISO 6506",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_brinell",
+   "reason": "ISO 6506 — 브리넬 경도"
+  },
+  {
+   "subject": "EN ISO 6507",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_vickers",
+   "reason": "ISO 6507 — 비커스 경도"
+  },
+  {
+   "subject": "EN ISO 6508",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_rockwell",
+   "reason": "ISO 6508 — 로크웰 경도"
+  },
+  {
+   "subject": "ESS (Environmental Stress Screening)",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "ESS — 온도·진동을 섞은 스크리닝 절차. 특정 시험 하나가 아님"
+  },
+  {
+   "subject": "ETSI EN 300019-2-4 Test Ab/Ad",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "hint": "ETSI EN 300 019-2-4 — Ab/Ad 는 IEC 60068 의 저온 시험. 후보(온도 사이클·열충격)에 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "GM9540P",
+   "candidates": [
+    "damp_heat",
+    "salt_spray_corrosion"
+   ],
+   "recommended": "salt_spray_corrosion",
+   "reason": "GM9540P — GM 가속(복합) 부식 시험"
+  },
+  {
+   "subject": "GMIA Bloom test",
+   "candidates": [
+    "compression",
+    "peel",
+    "puncture",
+    "tensile",
+    "texture"
+   ],
+   "recommended": "texture",
+   "reason": "GMIA Bloom — 젤라틴 겔 강도, 텍스처 분석기로 측정"
+  },
+  {
+   "subject": "GOST 19109",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "izod_impact",
+   "reason": "GOST 19109 — 플라스틱 아이조드 충격 강도"
+  },
+  {
+   "subject": "GOST 4647",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "GOST 4647 — 플라스틱 샤르피 충격 강도"
+  },
+  {
+   "subject": "GR-1221",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "GR-1221-CORE — 수동 광부품 신뢰성 요건. 진동·충격을 모두 담음"
+  },
+  {
+   "subject": "GR-468",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "GR-468-CORE — 광전자 부품 신뢰성 요건. 진동·충격을 모두 담음"
+  },
+  {
+   "subject": "GR-63-CORE",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "GR-63-CORE — NEBS 물리 보호 요건. 지진·진동·충격(낙하)을 모두 담음"
+  },
+  {
+   "subject": "IEC 60068",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "IEC 60068 — 환경 시험 규격군 전체. 특정 시험 아님"
+  },
+  {
+   "subject": "IEC 60068-2-1",
+   "candidates": [
+    "damp_heat",
+    "temperature_cycling"
+   ],
+   "hint": "IEC 60068-2-1 — 저온(Cold) 시험. 후보(습열·온도 사이클)에 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "IEC 60068-2-1 Test A",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "hint": "IEC 60068-2-1 — 저온 시험. 후보에 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "IEC 60068-2-14 (JIS C 60068-2-14)",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "recommended": "thermal_shock",
+   "reason": "IEC 60068-2-14 Test N — 온도 변화. 인용한 TSA 는 Na(급변) 열충격 챔버"
+  },
+  {
+   "subject": "IEC 60068-2-2",
+   "candidates": [
+    "damp_heat",
+    "temperature_cycling"
+   ],
+   "hint": "IEC 60068-2-2 — 고온(Dry heat) 시험. 후보에 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "IEC 60068-3-5",
+   "candidates": [
+    "damp_heat",
+    "temperature_cycling"
+   ],
+   "hint": "IEC 60068-3-5 — 온도 챔버 성능 확인 지침. 시험 항목이 아님"
+  },
+  {
+   "subject": "IEC 60068-3-6",
+   "candidates": [
+    "damp_heat",
+    "temperature_cycling"
+   ],
+   "hint": "IEC 60068-3-6 — 온습도 챔버 성능 확인 지침. 시험 항목이 아님"
+  },
+  {
+   "subject": "IEC 60335",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "IEC 60335 — 가전 안전 규격군. 내전압·접지·절연 세 시험을 모두 담음"
+  },
+  {
+   "subject": "IEC 60749",
+   "candidates": [
+    "damp_heat",
+    "hast"
+   ],
+   "recommended": "hast",
+   "reason": "IEC 60749 — 반도체 기계·기후 시험군. 60749-4 가 HAST 이고 인용한 장비가 HAST 챔버"
+  },
+  {
+   "subject": "IEC 61000-3-2 (고조파)",
+   "candidates": [
+    "power_consumption",
+    "surge_eft_immunity"
+   ],
+   "hint": "IEC 61000-3-2 — 고조파 전류 방출. 후보(소비 전력·서지 내성)에 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "IEC 61000-3-3 (플리커)",
+   "candidates": [
+    "power_consumption",
+    "surge_eft_immunity"
+   ],
+   "hint": "IEC 61000-3-3 — 전압 변동·플리커 방출. 후보에 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "IEC 61000-4-11 (전압 강하·순간정전)",
+   "candidates": [
+    "power_consumption",
+    "surge_eft_immunity"
+   ],
+   "recommended": "surge_eft_immunity",
+   "reason": "IEC 61000-4-11 — 전압 강하·순간정전 내성 시험(내성 시험군)"
+  },
+  {
+   "subject": "IEEE 344",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "recommended": "vibration_sine_random",
+   "reason": "IEEE 344 — 원자력 Class 1E 기기의 내진 검증(가진기 진동)"
+  },
+  {
+   "subject": "ISO",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tensile"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "ISO 10113",
+   "candidates": [
+    "compression",
+    "flexure",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ISO 10113 — 판재의 소성 변형비, 인장 시험으로 측정"
+  },
+  {
+   "subject": "ISO 12137",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "ISO 12137 — 도료의 스크래치(mar) 저항"
+  },
+  {
+   "subject": "ISO 1518 (스크래치 저항)",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "ISO 1518 — 도막 스크래치 저항"
+  },
+  {
+   "subject": "ISO 16750-3",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "recommended": "vibration_sine_random",
+   "reason": "ISO 16750-3 — 자동차 전장품 기계적 부하. 진동이 본체(충격도 포함)"
+  },
+  {
+   "subject": "ISO 2039-1",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "hint": "ISO 2039-1 — 플라스틱 볼 압입 경도. 후보(브리넬·누프·로크웰·비커스) 중 정확히 맞는 것 없음 — 브리넬에 가장 가까움"
+  },
+  {
+   "subject": "ISO 2039-2",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_rockwell",
+   "reason": "ISO 2039-2 — 플라스틱 로크웰 경도"
+  },
+  {
+   "subject": "ISO 22007",
+   "candidates": [
+    "dilatometry",
+    "rheology_capillary",
+    "thermal_conductivity"
+   ],
+   "recommended": "thermal_conductivity",
+   "reason": "ISO 22007 — 플라스틱의 열전도율·열확산율"
+  },
+  {
+   "subject": "ISO 23529",
+   "candidates": [
+    "compression",
+    "creep",
+    "flexure",
+    "peel",
+    "relaxation",
+    "shear",
+    "tear",
+    "tensile"
+   ],
+   "hint": "ISO 23529 — 고무 시험의 일반 절차(시편 준비·조건). 특정 시험 아님"
+  },
+  {
+   "subject": "ISO 23788",
+   "candidates": [
+    "compression",
+    "creep",
+    "fatigue",
+    "flexure",
+    "fracture_toughness",
+    "relaxation",
+    "tensile",
+    "thermomechanical_fatigue"
+   ],
+   "recommended": "fatigue",
+   "reason": "ISO 23788 — 피로 시험기의 정렬 검증"
+  },
+  {
+   "subject": "ISO 4545-2 (Knoop kit)",
+   "candidates": [
+    "hardness_knoop",
+    "hardness_vickers",
+    "instrumented_indentation"
+   ],
+   "recommended": "hardness_knoop",
+   "reason": "ISO 4545 — 누프 경도"
+  },
+  {
+   "subject": "ISO 4546",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "hint": "ISO 4546 — 어느 규격인지 확인 못 함"
+  },
+  {
+   "subject": "ISO 48-3",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "recommended": "hardness_irhd",
+   "reason": "ISO 48-3 — VLRH 척도 데드로드 경도: IRHD 계열"
+  },
+  {
+   "subject": "ISO 527-1",
+   "candidates": [
+    "compression",
+    "creep",
+    "flexure",
+    "peel",
+    "relaxation",
+    "shear",
+    "tear",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ISO 527-1 — 플라스틱 인장 특성"
+  },
+  {
+   "subject": "ISO 6506",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_brinell",
+   "reason": "ISO 6506 — 브리넬 경도"
+  },
+  {
+   "subject": "ISO 6507-2 (Vickers kit)",
+   "candidates": [
+    "hardness_knoop",
+    "hardness_vickers",
+    "instrumented_indentation"
+   ],
+   "recommended": "hardness_vickers",
+   "reason": "ISO 6507 — 비커스 경도"
+  },
+  {
+   "subject": "ISO 6508",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_rockwell",
+   "reason": "ISO 6508 — 로크웰 경도"
+  },
+  {
+   "subject": "ISO 6892-2",
+   "candidates": [
+    "compression",
+    "creep",
+    "fatigue",
+    "tensile"
+   ],
+   "recommended": "tensile",
+   "reason": "ISO 6892-2 — 금속의 고온 인장 시험"
+  },
+  {
+   "subject": "ISO 6892 (strain control)",
+   "candidates": [
+    "compression",
+    "creep",
+    "fatigue",
+    "flexure",
+    "fracture_toughness",
+    "relaxation",
+    "tensile",
+    "thermomechanical_fatigue"
+   ],
+   "recommended": "tensile",
+   "reason": "ISO 6892-1 — 금속의 상온 인장 시험(변형률 제어 방법 A)"
+  },
+  {
+   "subject": "ISO 7206",
+   "candidates": [
+    "compression",
+    "fatigue",
+    "flexure",
+    "tensile",
+    "torsion"
+   ],
+   "recommended": "fatigue",
+   "reason": "ISO 7206 — 고관절 임플란트: 4·6·8부가 내구(피로) 시험"
+  },
+  {
+   "subject": "ISO 7628",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "hint": "ISO 7628 — 어느 규격인지 확인 못 함(진자 충격기가 인용)"
+  },
+  {
+   "subject": "ISO 7765-2",
+   "candidates": [
+    "drop_weight_impact",
+    "puncture",
+    "tensile_impact"
+   ],
+   "recommended": "drop_weight_impact",
+   "reason": "ISO 7765-2 — 플라스틱 필름의 자유 낙하 다트 충격(계장화 천공)"
+  },
+  {
+   "subject": "ISO 7801",
+   "candidates": [
+    "fatigue",
+    "flexure"
+   ],
+   "hint": "ISO 7801 — 금속 선재의 반복 굽힘(reverse bend) 시험. 연성 시험이라 후보(피로·굽힘) 중 정확히 맞는 것 없음"
+  },
+  {
+   "subject": "ISO 83",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 83 — 강의 샤르피 충격 시험(U 노치)"
+  },
+  {
+   "subject": "ISO 9854",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "recommended": "charpy_impact",
+   "reason": "ISO 9854 — 열가소성 관의 샤르피 충격 강도"
+  },
+  {
+   "subject": "ISTA",
+   "candidates": [
+    "free_fall_drop",
+    "mechanical_shock"
+   ],
+   "hint": "ISTA — 포장 수송 시험 절차군(낙하·충격·진동). 특정 시험 아님"
+  },
+  {
+   "subject": "J-STD-020 (리플로우 프로파일)",
+   "candidates": [
+    "solderability",
+    "thermal_profiling"
+   ],
+   "recommended": "thermal_profiling",
+   "reason": "J-STD-020 — 습기·리플로우 민감도 분류. 인용한 장비가 리플로우 프로파일러"
+  },
+  {
+   "subject": "JEDEC JESD22-A110",
+   "candidates": [
+    "damp_heat",
+    "hast"
+   ],
+   "recommended": "hast",
+   "reason": "JESD22-A110 — HAST(고가속 온습도 스트레스)"
+  },
+  {
+   "subject": "JEDEC JESD22-A119",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "hint": "JESD22-A119 — 저온 보관 수명. 후보(온도 사이클·열충격)에 맞는 것 없음"
+  },
+  {
+   "subject": "JIS C 0096:2001",
+   "candidates": [
+    "damp_heat",
+    "hast"
+   ],
+   "recommended": "hast",
+   "reason": "JIS C 0096 — 불포화 가압 수증기(HAST) 시험"
+  },
+  {
+   "subject": "JIS C 60068-2-31",
+   "candidates": [
+    "free_fall_drop",
+    "mechanical_shock"
+   ],
+   "recommended": "free_fall_drop",
+   "reason": "IEC 60068-2-31 — 거친 취급 충격(낙하·전도)"
+  },
+  {
+   "subject": "JIS C6481",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tear",
+    "tensile"
+   ],
+   "recommended": "peel",
+   "reason": "JIS C 6481 — 동박 적층판 시험 방법. 박리 강도가 대표"
+  },
+  {
+   "subject": "JIS K-5400",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다 (JIS K 5400 은 도료 일반 시험법으로 크로스컷도 담음)"
+  },
+  {
+   "subject": "JIS K-5600",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다 (JIS K 5600 은 도료 일반 시험법으로 크로스컷도 담음)"
+  },
+  {
+   "subject": "JIS K 7120",
+   "candidates": [
+    "dsc",
+    "tga"
+   ],
+   "recommended": "tga",
+   "reason": "JIS K 7120 — 플라스틱의 열중량 측정(TG)"
+  },
+  {
+   "subject": "JIS K6902",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tear",
+    "tensile"
+   ],
+   "hint": "JIS K 6902 — 열경화성 수지 화장판. 여러 시험을 담음"
+  },
+  {
+   "subject": "JIS K6911",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tear",
+    "tensile"
+   ],
+   "hint": "JIS K 6911 — 열경화성 플라스틱 일반 시험법. 여러 시험을 담음"
+  },
+  {
+   "subject": "JIS K7171",
+   "candidates": [
+    "compression",
+    "flexure",
+    "peel",
+    "shear",
+    "tear",
+    "tensile"
+   ],
+   "recommended": "flexure",
+   "reason": "JIS K 7171 — 플라스틱 굽힘 특성"
+  },
+  {
+   "subject": "JIS Z 2244",
+   "candidates": [
+    "hardness_knoop",
+    "hardness_vickers"
+   ],
+   "recommended": "hardness_vickers",
+   "reason": "JIS Z 2244 — 비커스 경도"
+  },
+  {
+   "subject": "JIS Z 2245",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_rockwell"
+   ],
+   "recommended": "hardness_rockwell",
+   "reason": "JIS Z 2245 — 로크웰 경도"
+  },
+  {
+   "subject": "JPCA-ET08:2002",
+   "candidates": [
+    "damp_heat",
+    "hast"
+   ],
+   "recommended": "hast",
+   "reason": "JPCA-ET08 — 프린트 배선판 시험법; 인용한 장비가 HAST 챔버"
+  },
+  {
+   "subject": "MIL-STD-167",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "recommended": "vibration_sine_random",
+   "reason": "MIL-STD-167 — 함정 탑재 장비의 기계 진동"
+  },
+  {
+   "subject": "MIL-STD-202",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-202 — 전자 부품 시험 방법 규격군. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-202G Method 107G",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "recommended": "thermal_shock",
+   "reason": "MIL-STD-202 Method 107 — 열충격"
+  },
+  {
+   "subject": "MIL-STD-331",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-331 — 신관 환경·성능 시험군. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-726",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-726 — 포장 요건. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-750",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-750 — 반도체 시험 방법 규격군. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-781",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-781 — 신뢰성 시험 절차군. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-810",
+   "candidates": [
+    "damp_heat",
+    "mechanical_shock",
+    "temperature_cycling",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-810 — 환경 시험 규격군 전체. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-810 Method 501/502/507",
+   "candidates": [
+    "damp_heat",
+    "temperature_cycling"
+   ],
+   "hint": "Method 501 고온·502 저온·507 습도 — 셋을 묶어 인용. 습열에 가장 가깝지만 하나로 못 정함"
+  },
+  {
+   "subject": "MIL-STD-810 Method 514/516",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "Method 514 진동·516 충격 — 둘을 묶어 인용. 하나로 못 정함"
+  },
+  {
+   "subject": "MIL-STD-810H Method 502.7",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "hint": "Method 502.7 — 저온. 후보(온도 사이클·열충격)에 맞는 것 없음"
+  },
+  {
+   "subject": "MIL-STD-810H Method 503.7",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "recommended": "thermal_shock",
+   "reason": "MIL-STD-810 Method 503 — 온도 충격"
+  },
+  {
+   "subject": "MIL-STD-883",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "MIL-STD-883 — 마이크로회로 시험 방법 규격군. 특정 시험 아님"
+  },
+  {
+   "subject": "MIL-STD-883H Method 1010.8",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "recommended": "temperature_cycling",
+   "reason": "MIL-STD-883 Method 1010 — 온도 사이클"
+  },
+  {
+   "subject": "MIL-STD-883L-1 Method 1010.9",
+   "candidates": [
+    "temperature_cycling",
+    "thermal_shock"
+   ],
+   "recommended": "temperature_cycling",
+   "reason": "MIL-STD-883 Method 1010 — 온도 사이클"
+  },
+  {
+   "subject": "MIL C 27 227",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다"
+  },
+  {
+   "subject": "NEN 5350",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다"
+  },
+  {
+   "subject": "NF EN 868-5",
+   "candidates": [
+    "compression",
+    "flexure",
+    "friction_coefficient",
+    "peel",
+    "seal_strength",
+    "tear",
+    "tensile"
+   ],
+   "recommended": "seal_strength",
+   "reason": "EN 868-5 — 멸균 포장 파우치. 실링 강도 시험이 대표"
+  },
+  {
+   "subject": "NFT 46-003",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "hint": "NF T 46-003 — 고무 쇼어 경도로 보이나 확신 없음"
+  },
+  {
+   "subject": "NFT 51-174",
+   "candidates": [
+    "hardness_irhd",
+    "hardness_shore"
+   ],
+   "hint": "NF T 51-174 — 확인 못 함"
+  },
+  {
+   "subject": "Renault ECC1",
+   "candidates": [
+    "damp_heat",
+    "salt_spray_corrosion"
+   ],
+   "recommended": "salt_spray_corrosion",
+   "reason": "Renault ECC1 — 복합 부식 시험"
+  },
+  {
+   "subject": "RTCA/DO-160",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "hint": "RTCA/DO-160 — 항공 장비 환경 시험군(7절 충격·8절 진동). 특정 시험 아님"
+  },
+  {
+   "subject": "SAE J2721",
+   "candidates": [
+    "damp_heat",
+    "salt_spray_corrosion"
+   ],
+   "recommended": "salt_spray_corrosion",
+   "reason": "SAE J2721 — 체결구 부식 시험 방법(염수분무·복합 부식)"
+  },
+  {
+   "subject": "SIS 184187",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다"
+  },
+  {
+   "subject": "SNV 37113",
+   "candidates": [
+    "coating_adhesion",
+    "scratch_pencil_hardness"
+   ],
+   "recommended": "scratch_pencil_hardness",
+   "reason": "Wolff-Wilborn 연필 경도 키트(TQC)가 인용하는 연필 경도 규격 목록에 든다"
+  },
+  {
+   "subject": "Telcordia GR-63-CORE (Zone 1~4 지진 파형)",
+   "candidates": [
+    "mechanical_shock",
+    "vibration_sine_random"
+   ],
+   "recommended": "vibration_sine_random",
+   "reason": "GR-63-CORE 지진 파형 — 가진기로 하는 진동 시험"
+  },
+  {
+   "subject": "UL",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "UN 38.3 (보조 평가)",
+   "candidates": [
+    "battery_abuse",
+    "thermal_runaway_calorimetry"
+   ],
+   "hint": "UN 38.3 — 리튬 전지 수송 시험군(충격·진동·열·압괴 …). 특정 시험 아님"
+  },
+  {
+   "subject": "VDE",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "규격군·기관 이름이라 특정 시험이 아니다 — 건너뛰고, 정리할 때 규격 목록에서 지울 것"
+  },
+  {
+   "subject": "VDI/VDE 2616-1",
+   "candidates": [
+    "hardness_brinell",
+    "hardness_knoop",
+    "hardness_rockwell",
+    "hardness_vickers"
+   ],
+   "hint": "VDI/VDE 2616-1 — 금속 경도 시험 지침. 특정 방법 아님"
+  },
+  {
+   "subject": "ZF 15-53",
+   "candidates": [
+    "charpy_impact",
+    "izod_impact",
+    "tensile_impact"
+   ],
+   "hint": "ZF 사내 규격 — 확인 못 함"
+  },
+  {
+   "subject": "電気用品安全法 (일본 전기용품안전법)",
+   "candidates": [
+    "dielectric_withstand",
+    "ground_bond",
+    "insulation_resistance"
+   ],
+   "hint": "일본 전기용품안전법 — 법령. 내전압·접지·절연을 모두 담음"
+  }
+ ]
+}

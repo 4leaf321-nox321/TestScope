@@ -194,6 +194,14 @@ def _settle(db: Session, row: ReviewProposal, choice: list[str], by: str) -> Non
     row.decided_at = datetime.now(UTC)
 
 
+def _context(base: str | None, filed_row: dict[str, Any] | None) -> str | None:
+    """대상을 이해하는 한 줄 + 정본의 귀띔(`hint`). 귀띔은 추천이 없을 때의 근거다 —
+    「규격군 이름이라 특정 시험이 아니다」 처럼, 왜 추천을 안 붙였는지를 말한다."""
+    hint = (filed_row or {}).get("hint")
+    parts = [one for one in (base, hint) if one]
+    return " — ".join(parts) if parts else None
+
+
 def _followed(candidates: list[dict[str, Any]], choice: list[str]) -> bool | None:
     recommended = {one["code"] for one in candidates if one.get("recommended")}
     if not recommended:
@@ -266,7 +274,8 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
                 term = by_id.get(method.test_item_term_id)
                 _settle(db, row, [term.code] if term and term.code else [], "화면에서 정함")
             continue
-        if not codes:
+        decided = (filed_row or {}).get("decided")
+        if not codes and not decided:
             continue
         candidates = _mark(
             [{"code": code, "label": items[code].value} for code in sorted(set(codes))],
@@ -274,7 +283,9 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
             (filed_row or {}).get("reason"),
         )
         names = sorted(series_names.get(s, "") for s in cited)[:2]
-        context = ("인용: " + " · ".join(n for n in names if n)) if names else None
+        context = _context(
+            ("인용: " + " · ".join(n for n in names if n)) if names else None, filed_row
+        )
         row = _upsert(
             db,
             "method_test_items",
@@ -286,7 +297,6 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
             context=context,
             candidates=candidates,
         )
-        decided = (filed_row or {}).get("decided")
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
@@ -323,7 +333,7 @@ def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
             code,
             subject_id=term.id,
             subject_label=term.value,
-            context=filed_row.get("context"),
+            context=_context(filed_row.get("context"), filed_row),
             candidates=candidates,
         )
         decided = filed_row.get("decided")
@@ -362,7 +372,7 @@ def _refresh_property_links(db: Session, filed: dict[str, dict[str, Any]]) -> No
             subject,
             subject_id=link.id,
             subject_label=f"{item.value} → {prop.value}",
-            context=filed_row.get("context"),
+            context=_context(filed_row.get("context"), filed_row),
             candidates=_mark(
                 YES_NO["property_links"], filed_row.get("recommended"), filed_row.get("reason")
             ),
@@ -412,13 +422,14 @@ def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]
             subject,
             subject_id=sample.model_id,
             subject_label=f"{sample.label} ({source_key}{' · ' + unit if unit else ''})",
-            context=(
+            context=_context(
                 f"{payload['models']}개 기종 · 예: {sample.value_text[:60]}"
                 + (
                     f" → 정의 「{spec.get('label')}」 ({spec.get('kind')}, {payload['unit']})"
                     if spec
                     else ""
-                )
+                ),
+                filed_row,
             ),
             candidates=_mark(
                 YES_NO["free_spec_definitions"],
@@ -521,6 +532,73 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         )
     else:
         raise NotFound("TSC-REVIEW-0006", f"모르는 검토함입니다: {queue}")
+
+
+# --- 정본으로 되돌려 쓰기 ------------------------------------------------------------
+
+
+def export_decisions(
+    db: Session, root: Path = PROPOSALS_DIR, *, write: bool = True
+) -> dict[str, tuple[int, int, int]]:
+    """결정을 `proposals/<queue>.json` 의 `decided` 에 적는다.
+
+    돌려주는 것은 {큐: (결정 수, 적은 수, 새 줄 수)}.
+
+    정본에서 온 결정(`decided_by_label == "정본"`)은 이미 정본에 있으니 건너뛴다. 정본에 줄이
+    없는 결정(파생 후보)은 `subject` 와 `decided` 만 있는 새 줄로 더한다 — 다음 refresh 가
+    후보를 다시 파생한다. `recommended`·`reason`·`hint` 는 사람이 적는 것이라 안 건드린다.
+    """
+    root.mkdir(parents=True, exist_ok=True)
+    out: dict[str, tuple[int, int, int]] = {}
+    for queue in QUEUES:
+        path = root / f"{queue}.json"
+        doc: dict[str, Any] = (
+            json.loads(path.read_text(encoding="utf-8"))
+            if path.exists()
+            else {"queue": queue, "rows": []}
+        )
+        rows: list[dict[str, Any]] = doc.setdefault("rows", [])
+        by_subject = {str(row["subject"]): row for row in rows}
+        # subject_key 는 method_key(소문자·공백 정리)라 정본의 표기와 다를 수 있다.
+        by_key = {method_key(str(row["subject"])): row for row in rows}
+        decided = list(
+            db.scalars(
+                select(ReviewProposal).where(
+                    ReviewProposal.queue == queue, ReviewProposal.status == "decided"
+                )
+            )
+        )
+        written = added = 0
+        for one in decided:
+            if one.decided_by_label == "정본":
+                continue
+            subject = one.subject_label.split(" — ")[0]
+            target = (
+                by_subject.get(one.subject_key)
+                or by_key.get(one.subject_key)
+                or by_subject.get(subject)
+            )
+            if target is None:
+                target = {"subject": subject}
+                rows.append(target)
+                by_subject[subject] = target
+                added += 1
+            decision: dict[str, Any] = {
+                "choice": one.choice or [],
+                "by": one.decided_by_label,
+                "on": one.decided_at.date().isoformat() if one.decided_at else None,
+            }
+            if one.note:
+                decision["note"] = one.note
+            if target.get("decided") != decision:
+                target["decided"] = decision
+                written += 1
+        out[queue] = (len(decided), written, added)
+        if write and (written or added):
+            path.write_text(
+                json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
+            )
+    return out
 
 
 # --- 읽기·결정 -------------------------------------------------------------------
