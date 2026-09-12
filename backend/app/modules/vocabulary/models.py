@@ -34,11 +34,13 @@ from sqlalchemy import (
     Boolean,
     DateTime,
     ForeignKey,
+    Index,
     Integer,
     String,
     Text,
     UniqueConstraint,
     func,
+    text,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import UUID as PgUUID
@@ -144,6 +146,15 @@ class VocabularyTerm(Base):
         # **유일성은 비교키로 건다.** value 로 걸면 인장 과 인장(뒤 공백) 이 둘 다
         # 들어간다 — 눈에 같아 보이는데 DB 는 다르게 본다.
         UniqueConstraint("vocabulary_id", "normalized", name="uq_vocabulary_terms_norm"),
+        # **코드도 축 안에서 하나다.** 반입이 코드로 값을 찾으므로 둘이면 어느 쪽을 걸지
+        # 모른다. NULL 은 여럿이어도 된다 — 코드 없는 값이 대부분이다.
+        Index(
+            "uq_vocabulary_terms_code",
+            "vocabulary_id",
+            "code",
+            unique=True,
+            postgresql_where=text("code IS NOT NULL"),
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(

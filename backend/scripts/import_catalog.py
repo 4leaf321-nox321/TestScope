@@ -87,6 +87,9 @@ DEFAULT_ROOT = Path(__file__).resolve().parents[2] / "source" / "catalog"
 #: 몇 개 객체에 나와야 사양 정의로 승격하나. 이 밑은 보류 목록으로만 보고한다.
 PROMOTE_THRESHOLD = 3
 
+#: 온톨로지의 두 id 가 같은 이름을 써서 한 값에 코드 둘이 오려던 것. 끝에 보고한다.
+_CODE_CLASHES: list[str] = []
+
 
 class Catalog:
     """읽어 둔 원본. 온톨로지와 객체들."""
@@ -126,13 +129,31 @@ def _term(
     actor: User | None,
     *,
     parent: VocabularyTerm | None = None,
+    code: str | None = None,
 ) -> VocabularyTerm:
-    """기준정보 값을 없으면 만든다. **비교키로 찾는다** — 표기가 달라도 같은 값이다.
+    """기준정보 값을 없으면 만든다. **코드로 먼저, 그다음 비교키로 찾는다.**
+
+    코드(온톨로지 id — `tensile` · `universal_testing_machine` · `instron`)가 있으면 그것으로
+    찾는다. 이름으로만 찾으면 관리 화면에서 「인장」 을 「인장 시험」 으로 바꾼 다음 반입이
+    「인장」 을 **또 만든다** — 편집을 넓힌 순간부터 실제로 나는 사고다. 기종 형태·구동
+    방식이 원본 슬러그로 찾던 것(`_slug_axis`)을 모든 축으로 넓힌 것이다.
+
+    코드 없이 이름으로 찾힌 값에는 코드를 **채운다**(다음부터는 코드로 찾힌다). 다른
+    코드가 이미 붙어 있으면 온톨로지 쪽 두 id 가 같은 이름을 쓰는 것이다 — 덮지 않고
+    그 값을 쓰되 `_CODE_CLASHES` 에 남겨 끝에 보고한다.
 
     반입은 값을 만든다. 설치(`reference.py`)가 축만 세우고 값을 안 심는 것과 다른
     일이다 — 137개를 넣으려면 제조사와 분류가 먼저 있어야 하고, 그것을 사람에게
     손으로 시키면 아무도 안 넣는다.
     """
+    if code:
+        by_code = db.scalar(
+            select(VocabularyTerm).where(
+                VocabularyTerm.vocabulary_id == axis.id, VocabularyTerm.code == code
+            )
+        )
+        if by_code is not None:
+            return by_code
     key = compare_key(value)
     found = db.scalar(
         select(VocabularyTerm).where(
@@ -140,11 +161,18 @@ def _term(
         )
     )
     if found is not None:
+        if code and not found.code:
+            found.code = code
+        elif code and found.code != code:
+            _CODE_CLASHES.append(
+                f"{axis.slug}: 「{found.value}」 = {found.code} 인데 {code} 도 같은 이름"
+            )
         return found
     found = VocabularyTerm(
         vocabulary_id=axis.id,
         value=clean(value),
         normalized=key,
+        code=code,
         parent_term_id=parent.id if parent else None,
         created_by_id=actor.id if actor else None,
     )
@@ -173,7 +201,7 @@ def step_ontology(
     makers: dict[str, VocabularyTerm] = {}
     for row in cat.manufacturers:
         label = row.get("label") or row["id"]
-        makers[row["id"]] = _term(db, makers_axis, label, actor)
+        makers[row["id"]] = _term(db, makers_axis, label, actor, code=row["id"])
 
     # **부모를 먼저 만든다.** 트리라 상위 분류가 있어야 하위가 그것을 가리킨다.
     categories: dict[str, VocabularyTerm] = {}
@@ -191,6 +219,7 @@ def step_ontology(
                 row.get("label_ko") or row.get("label") or row["id"],
                 actor,
                 parent=categories.get(parent_id) if parent_id else None,
+                code=row["id"],
             )
         pending = rest
         if not pending:
@@ -199,7 +228,7 @@ def step_ontology(
     items: dict[str, VocabularyTerm] = {}
     for row in cat.test_items:
         label = row.get("label_ko") or row.get("label") or row["id"]
-        items[row["id"]] = _term(db, item_axis, label, actor)
+        items[row["id"]] = _term(db, item_axis, label, actor, code=row["id"])
 
     db.flush()
     return makers, categories, items
@@ -1772,6 +1801,12 @@ def main() -> int:
                 " (property_links.json 에 없음):"
             )
             for line in unmapped[:30]:
+                print(f"    {line}")
+        if _CODE_CLASHES:
+            # 온톨로지가 두 id 에 같은 이름을 줬다. 한 값에 코드 둘이 올 수 없어 앞의 것이
+            # 이겼고, 뒤의 id 로 만든 객체는 **앞의 값**을 가리킨다 — 이름을 갈라야 한다.
+            print(f"\n같은 이름을 쓰는 온톨로지 id {len(_CODE_CLASHES)}건 (이름을 가르세요):")
+            for line in _CODE_CLASHES:
                 print(f"    {line}")
         if unknown_headlines:
             # **정의가 없는 대표 사양.** 온톨로지가 가리키는 칸이 이 시스템에 없다는

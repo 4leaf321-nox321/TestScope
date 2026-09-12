@@ -260,6 +260,7 @@ def create_term(
             f"이미 있는 값입니다: {existing.value}",
             details={"term_id": str(existing.id), "value": existing.value},
         )
+    _require_free_code(db, vocabulary.id, clean(code) if code else None, exclude=None)
 
     term = VocabularyTerm(
         vocabulary_id=vocabulary.id,
@@ -274,6 +275,26 @@ def create_term(
     db.commit()
     db.refresh(term)
     return term
+
+
+def _require_free_code(
+    db: Session, vocabulary_id: uuid.UUID, code: str | None, *, exclude: uuid.UUID | None
+) -> None:
+    """한 축에 같은 코드가 둘이면 반입·검색이 어느 값을 걸지 모른다. 이름처럼 잡는다."""
+    if not code:
+        return
+    stmt = select(VocabularyTerm).where(
+        VocabularyTerm.vocabulary_id == vocabulary_id, VocabularyTerm.code == code
+    )
+    if exclude is not None:
+        stmt = stmt.where(VocabularyTerm.id != exclude)
+    clash = db.scalar(stmt)
+    if clash is not None:
+        raise Conflict(
+            "TSC-VOCAB-0016",
+            f"그 코드는 이미 「{clash.value}」 이 씁니다.",
+            details={"term_id": str(clash.id), "value": clash.value},
+        )
 
 
 def get_term(db: Session, term_id: uuid.UUID) -> VocabularyTerm:
@@ -319,7 +340,9 @@ def update_term(
         term.normalized = key
 
     if code is not None:
-        term.code = clean(code) or None
+        cleaned = clean(code) or None
+        _require_free_code(db, term.vocabulary_id, cleaned, exclude=term.id)
+        term.code = cleaned
     if parent_term_id is not None:
         term.parent_term_id = parent_term_id
     if status is not None:

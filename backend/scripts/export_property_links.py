@@ -58,7 +58,8 @@ def main() -> int:
     path = args.root / "ontology" / "property_links.json"
     links = json.loads(path.read_text(encoding="utf-8"))
 
-    # 시험 항목은 값(한글 이름)으로 심기므로 이름 -> 온톨로지 id 를 되짚는다.
+    # 시험 항목의 코드가 온톨로지 id 다. 코드가 아직 없는 옛 값은 이름으로 되짚는다.
+    item_codes = {row["id"] for row in cat.test_items}
     item_id_of = {
         compare_key(row.get("label_ko") or row.get("label") or row["id"]): row["id"]
         for row in cat.test_items
@@ -74,7 +75,13 @@ def main() -> int:
         for row in db.scalars(select(TestItemProperty)):
             item = terms.get(row.test_item_term_id)
             prop = terms.get(row.property_term_id)
-            item_id = item_id_of.get(compare_key(item.value)) if item else None
+            item_id = None
+            if item is not None:
+                item_id = (
+                    item.code
+                    if item.code in item_codes
+                    else item_id_of.get(compare_key(item.value))
+                )
             key = prop.code if prop and prop.vocabulary_id == axis.get("property") else None
             if item_id is None or key is None or key not in known_keys:
                 unknown += 1
@@ -83,9 +90,7 @@ def main() -> int:
     finally:
         db.close()
 
-    proposed, _ = proposed_links(
-        cat, known_items=set(item_id_of.values()), known_keys=known_keys
-    )
+    proposed, _ = proposed_links(cat, known_items=item_codes, known_keys=known_keys)
 
     confirmed = set(links.get("confirmed") or [])
     rejected = set(links.get("rejected") or [])

@@ -19,6 +19,7 @@ from collections.abc import Callable
 from typing import Any
 
 from fastapi.testclient import TestClient
+from sqlalchemy.orm import Session
 
 from tests.api.conftest import Signed, category_id
 
@@ -263,3 +264,90 @@ def test_쓰임의_내역을_보고_한_줄씩_떼거나_옮긴다(
     )
     assert refused.status_code == 400
     assert refused.json()["error"]["code"] == "TSC-VOCAB-0014"
+
+
+def test_코드는_축_안에서_하나다(
+    client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
+) -> None:
+    """반입이 코드로 값을 찾는다 — 둘이면 어느 쪽을 걸지 모른다."""
+    tag = uuid.uuid4().hex[:6]
+    first = client.post(
+        "/api/vocabularies/manufacturer/terms",
+        json={"value": f"인스트론-{tag}", "code": f"instron-{tag}"},
+        headers=admin.headers,
+    )
+    assert first.status_code == 201, first.text
+    second = client.post(
+        "/api/vocabularies/manufacturer/terms",
+        json={"value": f"Instron Korea-{tag}", "code": f"instron-{tag}"},
+        headers=admin.headers,
+    )
+    assert second.status_code == 409
+    assert second.json()["error"]["code"] == "TSC-VOCAB-0016"
+
+    other = term_factory("manufacturer", f"다른-{tag}")
+    renamed_code = client.patch(
+        f"/api/vocabularies/terms/{other}",
+        json={"code": f"instron-{tag}"},
+        headers=admin.headers,
+    )
+    assert renamed_code.status_code == 409
+
+
+def test_반입은_이름을_바꾼_값도_코드로_찾는다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """관리 화면에서 「인장」 을 「인장 시험」 으로 바꾼 뒤 반입이 「인장」 을 또 만들면
+    검색의 첫 축이 둘로 갈린다. 코드가 그것을 막는다."""
+    import sys
+    from pathlib import Path
+
+    from sqlalchemy import select
+
+    from app.modules.vocabulary.models import Vocabulary, VocabularyTerm
+
+    scripts = Path(__file__).resolve().parents[2] / "scripts"
+    sys.path.insert(0, str(scripts))
+    from import_catalog import _term  # type: ignore[import-not-found]
+
+    tag = uuid.uuid4().hex[:6]
+    made = client.post(
+        "/api/vocabularies/test_item/terms",
+        json={"value": f"인장-{tag}", "code": f"tensile_{tag}"},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    renamed = client.patch(
+        f"/api/vocabularies/terms/{made.json()['id']}",
+        json={"value": f"인장 시험-{tag}"},
+        headers=admin.headers,
+    )
+    assert renamed.status_code == 200, renamed.text
+
+    axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == "test_item"))
+    assert axis is not None
+    # 반입이 옛 이름으로 다시 온다 — 코드가 있으니 같은 값이어야 한다.
+    found = _term(db, axis, f"인장-{tag}", None, code=f"tensile_{tag}")
+    assert str(found.id) == made.json()["id"]
+    assert found.value == f"인장 시험-{tag}"
+    db.rollback()
+
+    # 코드가 아직 없던 값은 이름으로 찾고, 그 자리에서 코드를 채운다.
+    plain = client.post(
+        "/api/vocabularies/test_item/terms",
+        json={"value": f"압축-{tag}"},
+        headers=admin.headers,
+    ).json()
+    found = _term(db, axis, f"압축-{tag}", None, code=f"compression_{tag}")
+    assert str(found.id) == plain["id"]
+    assert found.code == f"compression_{tag}"
+    db.rollback()
+    assert (
+        db.scalar(
+            select(VocabularyTerm).where(
+                VocabularyTerm.vocabulary_id == axis.id,
+                VocabularyTerm.code == f"missing_{tag}",
+            )
+        )
+        is None
+    )

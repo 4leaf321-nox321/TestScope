@@ -713,13 +713,14 @@
   },
   {
    "id": "shock_test_machine",
-   "label_ko": "충격 시험기",
+   "label_ko": "기계적 충격 시험기(쇼크 머신)",
    "label": "Shock test machine",
    "parent": "mechanical_dynamics",
    "headline_specs": [
     "payload",
     "impact_velocity"
-   ]
+   ],
+   "note": "2026-09-12: 재료 충격 시험기(impact)와 label_ko 가 같아 반입이 한 값으로 합쳤었다 — 이름을 갈랐다."
   },
   {
    "id": "shore_irhd_hardness",
