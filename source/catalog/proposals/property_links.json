@@ -1,0 +1,235 @@
+{
+ "queue": "property_links",
+ "generated": "2026-09-13",
+ "note": "254쌍 중 「이 시험으로 이 물성이 나오나」 가 의심스러운 것만. 나머지는 물성 항목 화면에서 줄 단위로 묶음 확인한다.",
+ "rows": [
+  {
+   "subject": "dma:thermal.expansion_linear",
+   "context": "DMA (동적기계) → 선팽창계수(CTE)",
+   "recommended": "reject",
+   "reason": "CTE 는 TMA·딜라토미터가 잰다 — DMA 는 탄성률·tanδ"
+  },
+  {
+   "subject": "xray_void_inspection:optical.excited_state_lifetime",
+   "context": "X-ray 보이드·내부 결함 검사 → 여기상태 수명",
+   "recommended": "reject",
+   "reason": "여기 상태 수명은 형광 분광의 값 — X-ray 검사와 무관"
+  },
+  {
+   "subject": "crystal_structure_analysis:structure.particle_diameter",
+   "context": "결정 구조 분석(XRD·EBSD) → 입자 직경",
+   "recommended": "reject",
+   "reason": "XRD 는 결정자 크기를 주지 입자 직경은 아니다(입도 분석의 값)"
+  },
+  {
+   "subject": "instrumented_indentation:structure.pore_diameter",
+   "context": "계장화 압입(나노인덴테이션) → 기공 직경",
+   "recommended": "reject",
+   "reason": "기공 직경은 압입으로 안 나온다(밀도·기공률 분석의 값)"
+  },
+  {
+   "subject": "instrumented_indentation:physical.porosity",
+   "context": "계장화 압입(나노인덴테이션) → 기공률",
+   "recommended": "reject",
+   "reason": "기공률은 압입으로 안 나온다"
+  },
+  {
+   "subject": "instrumented_indentation:physical.density",
+   "context": "계장화 압입(나노인덴테이션) → 밀도",
+   "recommended": "reject",
+   "reason": "밀도는 압입으로 안 나온다"
+  },
+  {
+   "subject": "instrumented_indentation:physical.specific_surface_area",
+   "context": "계장화 압입(나노인덴테이션) → 비표면적",
+   "recommended": "reject",
+   "reason": "비표면적은 가스 흡착의 값"
+  },
+  {
+   "subject": "instrumented_indentation:mechanical.poisson_ratio",
+   "context": "계장화 압입(나노인덴테이션) → 포아송비",
+   "recommended": "reject",
+   "reason": "압입에서 포아송비는 입력값이지 측정값이 아니다"
+  },
+  {
+   "subject": "drop_weight_impact:mechanical.impact_strength_charpy",
+   "context": "낙추 충격·천공 → 샤르피 충격강도(면적)",
+   "recommended": "reject",
+   "reason": "샤르피는 진자 충격 시험의 값 — 낙추와 다르다"
+  },
+  {
+   "subject": "drop_weight_impact:mechanical.impact_strength_izod",
+   "context": "낙추 충격·천공 → 아이조드 충격강도",
+   "recommended": "reject",
+   "reason": "아이조드는 진자 충격 시험의 값"
+  },
+  {
+   "subject": "coating_thickness:optical.reflectance",
+   "context": "도금·코팅 두께 → 반사율",
+   "recommended": "reject",
+   "reason": "반사율은 분광 측정의 값(타원계는 n·k·두께)"
+  },
+  {
+   "subject": "coating_thickness:optical.transmittance",
+   "context": "도금·코팅 두께 → 투과율",
+   "recommended": "reject",
+   "reason": "투과율은 분광 측정의 값"
+  },
+  {
+   "subject": "coating_thickness:optical.birefringence",
+   "context": "도금·코팅 두께 → 복굴절",
+   "recommended": "reject",
+   "reason": "복굴절은 편광 측정의 값"
+  },
+  {
+   "subject": "coating_adhesion:interface.tensile_adhesion_strength",
+   "context": "도막 부착력(크로스컷) → 직각인장 접착강도(풀오프)",
+   "recommended": "reject",
+   "reason": "크로스컷은 등급, 풀오프(ISO 4624)는 MPa — 다른 시험"
+  },
+  {
+   "subject": "hardness_leeb:mechanical.hardness_rockwell",
+   "context": "리브(반발) 경도 → 로크웰 경도",
+   "recommended": "reject",
+   "reason": "리브는 HL 값 — HRC 는 환산 추정"
+  },
+  {
+   "subject": "hardness_leeb:mechanical.hardness_brinell",
+   "context": "리브(반발) 경도 → 브리넬 경도",
+   "recommended": "reject",
+   "reason": "리브는 HL 값 — HB 는 환산 추정"
+  },
+  {
+   "subject": "hardness_leeb:mechanical.hardness_vickers",
+   "context": "리브(반발) 경도 → 비커스 경도",
+   "recommended": "reject",
+   "reason": "리브는 HL 값 — HV 는 환산 추정"
+  },
+  {
+   "subject": "hardness_leeb:mechanical.tensile_strength",
+   "context": "리브(반발) 경도 → 인장강도(UTS)",
+   "recommended": "reject",
+   "reason": "경도에서 UTS 는 환산 추정"
+  },
+  {
+   "subject": "rheology_capillary:rheological.gel_time",
+   "context": "모세관 유변(고전단 점도) → 겔타임",
+   "recommended": "reject",
+   "reason": "겔타임은 회전 레오미터·DSC 의 값"
+  },
+  {
+   "subject": "rheology_capillary:chemical.cure_model_constant",
+   "context": "모세관 유변(고전단 점도) → 경화 모델 상수",
+   "recommended": "reject",
+   "reason": "경화 반응은 DSC·회전 레오미터의 값"
+  },
+  {
+   "subject": "rheology_capillary:mechanical.shear_strength",
+   "context": "모세관 유변(고전단 점도) → 전단강도",
+   "recommended": "reject",
+   "reason": "전단강도는 기계 시험의 값 — 유변계는 점도"
+  },
+  {
+   "subject": "rheology_capillary:mechanical.shear_modulus",
+   "context": "모세관 유변(고전단 점도) → 전단탄성계수",
+   "recommended": "reject",
+   "reason": "전단탄성계수는 기계 시험·회전 레오미터의 값"
+  },
+  {
+   "subject": "compression:thermal.expansion_linear",
+   "context": "압축 → 선팽창계수(CTE)",
+   "recommended": "reject",
+   "reason": "CTE 는 TMA·딜라토미터가 잰다"
+  },
+  {
+   "subject": "dilatometry:thermal.decomposition_temp",
+   "context": "열팽창(DIL) → 분해온도",
+   "recommended": "reject",
+   "reason": "분해 온도는 TGA 의 값"
+  },
+  {
+   "subject": "particle_size:optical.refractive_index",
+   "context": "입도·제타전위 → 굴절률",
+   "recommended": "reject",
+   "reason": "DLS 에서 굴절률은 입력값이지 측정값이 아니다"
+  },
+  {
+   "subject": "particle_size:optical.transmittance",
+   "context": "입도·제타전위 → 투과율",
+   "recommended": "reject",
+   "reason": "투과율은 분광 측정의 값"
+  },
+  {
+   "subject": "electrical_transport:magnetic.coercivity",
+   "context": "전기 저항률·홀 효과·반도체 특성 → 보자력",
+   "recommended": "reject",
+   "reason": "보자력은 자기 측정(VSM)의 값"
+  },
+  {
+   "subject": "electrical_transport:electrical.dielectric_strength",
+   "context": "전기 저항률·홀 효과·반도체 특성 → 유전강도",
+   "recommended": "reject",
+   "reason": "유전강도는 내전압 시험의 값"
+  },
+  {
+   "subject": "shear:structure.molecular_weight",
+   "context": "전단 → 분자량(Mw)",
+   "recommended": "reject",
+   "reason": "분자량은 GPC·광산란의 값"
+  },
+  {
+   "subject": "shear:mechanical.loss_modulus",
+   "context": "전단 → 손실탄성률",
+   "recommended": "reject",
+   "reason": "동적 탄성률은 DMA·회전 레오미터의 값 — 「전단」 은 기계적 전단 시험"
+  },
+  {
+   "subject": "shear:mechanical.loss_tangent",
+   "context": "전단 → 손실탄젠트",
+   "recommended": "reject",
+   "reason": "동적 탄성률은 DMA·회전 레오미터의 값"
+  },
+  {
+   "subject": "shear:mechanical.storage_modulus",
+   "context": "전단 → 저장탄성률",
+   "recommended": "reject",
+   "reason": "동적 탄성률은 DMA·회전 레오미터의 값"
+  },
+  {
+   "subject": "shear:rheological.viscosity",
+   "context": "전단 → 점도",
+   "recommended": "reject",
+   "reason": "점도는 유변 측정의 값"
+  },
+  {
+   "subject": "shear:interface.tack",
+   "context": "전단 → 택(초기점착력)",
+   "recommended": "reject",
+   "reason": "택은 박리·프로브 택 시험의 값"
+  },
+  {
+   "subject": "vapor_sorption:structure.crystallinity",
+   "context": "증기 흡착 → 결정화도",
+   "recommended": "reject",
+   "reason": "결정화도는 DSC·XRD 의 값"
+  },
+  {
+   "subject": "surface_topography:mechanical.residual_stress",
+   "context": "표면 형상·거칠기 → 잔류응력",
+   "recommended": "reject",
+   "reason": "잔류응력은 XRD 의 값"
+  },
+  {
+   "subject": "fatigue:mechanical.fracture_toughness",
+   "context": "피로 → 파괴인성",
+   "recommended": "reject",
+   "reason": "파괴인성은 파괴인성 시험의 값 — 피로 균열 성장률과 다르다"
+  },
+  {
+   "subject": "composition_analysis:structure.molecular_weight",
+   "context": "화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA) → 분자량(Mw)",
+   "recommended": "reject",
+   "reason": "분자량은 GPC 의 값"
+  }
+ ]
+}

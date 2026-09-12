@@ -320,3 +320,159 @@ def test_결정은_정본으로_되돌려_쓰이고_다시_들이면_적용된�
         if one["subject_id"] == method["id"]
     )
     assert (again["status"], again["decided_by"]) == ("decided", "관리자")
+
+
+def test_검색축은_여러_개를_고르고_빈_결정은_축_없음이다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    item_id, code = _item(client, admin, "누프")
+    other_id, other_code = _item(client, admin, "접촉각")
+    (tmp_path / "test_item_axes.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {"subject": code, "recommended": ["force"], "reason": "시험력을 고른다"},
+                    {"subject": other_code, "hint": "맞는 축이 없다"},
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+    rows = {one["subject_id"]: one for one in _rows(client, admin, "test_item_axes")}
+    knoop = rows[item_id]
+    assert [one["code"] for one in knoop["candidates"] if one["recommended"]] == ["force"]
+    assert rows[other_id]["context"] == "맞는 축이 없다"
+
+    decided = client.post(
+        f"/api/review/test_item_axes/{knoop['id']}/decide",
+        json={"choice": ["force", "temperature"]},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    assert decided.json()["followed"] is False, "추천(하중)에 온도를 더했으니 그대로는 아니다"
+    shown = client.get(f"/api/test-items/{item_id}", headers=admin.headers).json()
+    assert {one["key"] for one in shown["condition_keys"]} == {"force", "temperature"}
+
+    none = client.post(
+        f"/api/review/test_item_axes/{rows[other_id]['id']}/decide",
+        json={"choice": []},
+        headers=admin.headers,
+    )
+    assert none.status_code == 200, none.text
+    assert none.json()["choice"] == []
+
+
+def test_물성_연결은_확인하거나_끊고_사양은_정의로_올린다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    from tests.api.test_free_specs import _model, _seed_same_key
+    from tests.api.test_properties import _link, _property
+
+    item_id, item_code = _item(client, admin, "전단")
+    prop_code = f"mechanical.mw_{uuid.uuid4().hex[:6]}"
+    prop_id = _property(client, admin, f"분자량-{prop_code[-6:]}", prop_code)
+    # 사람이 만든 연결은 확인 상태로 생기므로, 반입이 넣은 「제안」 으로 되돌린다.
+    link = _link(client, admin, item_id, prop_id)
+    keep_code = f"mechanical.ss_{uuid.uuid4().hex[:6]}"
+    keep_id = _property(client, admin, f"전단강도-{keep_code[-6:]}", keep_code)
+    kept = _link(client, admin, item_id, keep_id)
+    back = client.patch(
+        "/api/test-item-properties/bulk",
+        json={"link_ids": [link["id"], kept["id"]], "status": "suggested"},
+        headers=admin.headers,
+    )
+    assert back.status_code == 200, back.text
+
+    model_a = _model(client, admin)
+    model_b = _model(client, admin)
+    key = f"column_gap_{uuid.uuid4().hex[:6]}"
+    _seed_same_key(model_a["id"], key, "485")
+    _seed_same_key(model_b["id"], key, "610")
+
+    (tmp_path / "property_links.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": f"{item_code}:{prop_code}",
+                        "recommended": "reject",
+                        "reason": "GPC 의 값",
+                    },
+                    {
+                        "subject": f"{item_code}:{keep_code}",
+                        "recommended": "confirm",
+                        "reason": "맞다",
+                    },
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "free_spec_definitions.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": f"{key}|mm",
+                        "recommended": "promote",
+                        "reason": "프레임 둘",
+                        "definition": {
+                            "key": key,
+                            "label": "컬럼 간격",
+                            "group": "space",
+                            "kind": "number",
+                            "unit": "mm",
+                        },
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+
+    links = {one["subject_id"]: one for one in _rows(client, admin, "property_links")}
+    rejected = client.post(
+        f"/api/review/property_links/{links[link['id']]['id']}/decide",
+        json={"choice": ["reject"]},
+        headers=admin.headers,
+    )
+    assert rejected.status_code == 200, rejected.text
+    confirmed = client.post(
+        f"/api/review/property_links/{links[kept['id']]['id']}/decide",
+        json={"choice": ["confirm"]},
+        headers=admin.headers,
+    )
+    assert confirmed.status_code == 200, confirmed.text
+    listed = client.get(
+        "/api/test-item-properties", params={"test_item": item_id}, headers=admin.headers
+    ).json()
+    assert {one["property_term_id"]: one["status"] for one in listed} == {keep_id: "confirmed"}
+
+    free = _rows(client, admin, "free_spec_definitions")
+    mine = next(one for one in free if one["subject_key"] == f"{key}|mm")
+    assert mine["payload"]["models"] == 2
+    promoted = client.post(
+        f"/api/review/free_spec_definitions/{mine['id']}/decide",
+        json={"choice": ["promote"]},
+        headers=admin.headers,
+    )
+    assert promoted.status_code == 200, promoted.text
+    definitions = {
+        one["key"]: one
+        for one in client.get("/api/spec-definitions", headers=admin.headers).json()
+    }
+    assert definitions[key]["label"] == "컬럼 간격"
+    # **같은 키의 다른 기종도 함께 올라갔다** — 기존 규칙(promote, apply_same_key).
+    for model in (model_a, model_b):
+        sheet = client.get(
+            f"/api/equipment-models/{model['id']}/specs", headers=admin.headers
+        ).json()
+        keys = {one["key"] for group in sheet["groups"] for one in group["items"]}
+        assert key in keys

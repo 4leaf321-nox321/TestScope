@@ -1,0 +1,317 @@
+{
+ "queue": "free_spec_definitions",
+ "generated": "2026-09-13",
+ "note": "3기종 이상에 같은 이름으로 쌓인 것 중 수치인 것. 이미 같은 뜻의 정의가 있으면 keep + 반입 매핑을 고칠 것.",
+ "rows": [
+  {
+   "subject": "normal_force_N|N",
+   "recommended": "promote",
+   "reason": "트라이보미터 9종의 수직 하중 범위",
+   "definition": {
+    "key": "normal_force",
+    "label": "수직 하중",
+    "group": "capacity",
+    "kind": "range",
+    "unit": "N"
+   }
+  },
+  {
+   "subject": "min_pulse_ms|ms",
+   "recommended": "promote",
+   "reason": "충격 시험기 7종",
+   "definition": {
+    "key": "min_pulse_width",
+    "label": "최소 펄스 폭",
+    "group": "range",
+    "kind": "number",
+    "unit": "ms"
+   }
+  },
+  {
+   "subject": "max_tensile_distance_mm|mm",
+   "recommended": "promote",
+   "reason": "인장 시험기 7종",
+   "definition": {
+    "key": "max_tensile_distance",
+    "label": "최대 인장 거리",
+    "group": "space",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "column_to_column_mm|mm",
+   "recommended": "promote",
+   "reason": "프레임 8종",
+   "definition": {
+    "key": "column_spacing",
+    "label": "컬럼 간격",
+    "group": "space",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "max_ram_stroke_mm|mm",
+   "recommended": "promote",
+   "reason": "유압 프레임 8종",
+   "definition": {
+    "key": "ram_stroke",
+    "label": "램 행정",
+    "group": "space",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "armature_diameter_mm|mm",
+   "recommended": "promote",
+   "reason": "가진기 8종",
+   "definition": {
+    "key": "armature_diameter",
+    "label": "아마추어 지름",
+    "group": "space",
+    "kind": "range",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "width_with_control_mm|mm",
+   "recommended": "promote",
+   "reason": "7종",
+   "definition": {
+    "key": "width_with_control",
+    "label": "제어기 포함 폭",
+    "group": "installation",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "actuating_force_cN|",
+   "recommended": "promote",
+   "reason": "키 수명 시험기 6종",
+   "definition": {
+    "key": "actuating_force",
+    "label": "작동력",
+    "group": "capacity",
+    "kind": "range",
+    "unit": "cN"
+   }
+  },
+  {
+   "subject": "operating_travel_mm|mm",
+   "recommended": "promote",
+   "reason": "6종",
+   "definition": {
+    "key": "operating_travel",
+    "label": "작동 행정",
+    "group": "space",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "torque_resolution_nNm|",
+   "recommended": "promote",
+   "reason": "레오미터 6종",
+   "definition": {
+    "key": "torque_resolution",
+    "label": "토크 분해능",
+    "group": "accuracy",
+    "kind": "number",
+    "unit": "nN·m"
+   }
+  },
+  {
+   "subject": "force_N_continuous|",
+   "recommended": "promote",
+   "reason": "6종",
+   "definition": {
+    "key": "continuous_force",
+    "label": "연속 하중",
+    "group": "capacity",
+    "kind": "number",
+    "unit": "N"
+   }
+  },
+  {
+   "subject": "pressure_transducer_accuracy_pct|pct",
+   "recommended": "promote",
+   "reason": "5종",
+   "definition": {
+    "key": "pressure_transducer_accuracy",
+    "label": "압력 센서 정확도",
+    "group": "accuracy",
+    "kind": "number",
+    "unit": "%"
+   }
+  },
+  {
+   "subject": "table_height_mm|mm",
+   "recommended": "promote",
+   "reason": "5종",
+   "definition": {
+    "key": "table_height",
+    "label": "테이블 높이",
+    "group": "installation",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "displacement_resolution_nm|nm",
+   "recommended": "promote",
+   "reason": "나노인덴터 4종",
+   "definition": {
+    "key": "displacement_resolution",
+    "label": "변위 분해능",
+    "group": "accuracy",
+    "kind": "number",
+    "unit": "nm"
+   }
+  },
+  {
+   "subject": "clamping_force_kN|kN",
+   "recommended": "promote",
+   "reason": "4종",
+   "definition": {
+    "key": "clamping_force",
+    "label": "클램핑 하중",
+    "group": "capacity",
+    "kind": "number",
+    "unit": "kN"
+   }
+  },
+  {
+   "subject": "compressed_air_bar|bar",
+   "recommended": "promote",
+   "reason": "4종. plant_air_bar 도 같은 뜻 — 올리면 그쪽은 매핑으로 합칠 것",
+   "definition": {
+    "key": "compressed_air",
+    "label": "압축 공기 압력",
+    "group": "installation",
+    "kind": "number",
+    "unit": "bar"
+   }
+  },
+  {
+   "subject": "test_chamber_between_flanges_mm|mm",
+   "recommended": "promote",
+   "reason": "4종",
+   "definition": {
+    "key": "test_space_between_flanges",
+    "label": "플랜지 간 시험 공간",
+    "group": "space",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "test_chamber_between_chucks_mm|mm",
+   "recommended": "promote",
+   "reason": "4종",
+   "definition": {
+    "key": "test_space_between_chucks",
+    "label": "척 간 시험 공간",
+    "group": "space",
+    "kind": "number",
+    "unit": "mm"
+   }
+  },
+  {
+   "subject": "isothermal_stability_degC|degC",
+   "recommended": "promote",
+   "reason": "열분석기 4종",
+   "definition": {
+    "key": "isothermal_stability",
+    "label": "등온 안정도",
+    "group": "accuracy",
+    "kind": "number",
+    "unit": "degC"
+   }
+  },
+  {
+   "subject": "cc_resolution_mA|mA",
+   "recommended": "promote",
+   "reason": "전자 부하 12종. 레인지마다 값이 달라 문장으로",
+   "definition": {
+    "key": "cc_resolution",
+    "label": "정전류 분해능",
+    "group": "accuracy",
+    "kind": "text",
+    "unit": "mA"
+   }
+  },
+  {
+   "subject": "force_lbf|",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (하중 용량 force_capacity, lbf→kN)"
+  },
+  {
+   "subject": "max_force_N|N",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (하중 용량 force_capacity)"
+  },
+  {
+   "subject": "max_acceleration_g|g",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (가속도 acceleration)"
+  },
+  {
+   "subject": "test_load_Nm|Nm",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (토크 용량 torque_capacity)"
+  },
+  {
+   "subject": "preliminary_force_kgf|kgf",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (예비 하중 preliminary_force)"
+  },
+  {
+   "subject": "friction_force_N|N",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (마찰력 friction_force)"
+  },
+  {
+   "subject": "force_accuracy_pct|pct",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (하중 정확도 force_accuracy)"
+  },
+  {
+   "subject": "load_accuracy_pct|pct",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (하중 정확도 force_accuracy)"
+  },
+  {
+   "subject": "max_channel_power_W|W",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (채널 전력 channel_power)"
+  },
+  {
+   "subject": "load_resolution|",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (하중 분해능 load_resolution)"
+  },
+  {
+   "subject": "force_resolution|",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (하중 분해능 load_resolution)"
+  },
+  {
+   "subject": "table_mm|mm",
+   "recommended": "keep",
+   "reason": "이미 같은 뜻의 정의가 있다 — 정의로 새로 올리지 말고(둘이 된다) 반입 매핑에서 그 정의로 잇게 고칠 것 (테이블 크기 table_size)"
+  },
+  {
+   "subject": "plant_air_bar|bar",
+   "recommended": "keep",
+   "reason": "compressed_air 를 올리면 그쪽으로 합칠 것"
+  },
+  {
+   "subject": "max_acceleration_g_option|",
+   "recommended": "keep",
+   "reason": "옵션 구성의 값 — 본체 사양이 아니다"
+  }
+ ]
+}

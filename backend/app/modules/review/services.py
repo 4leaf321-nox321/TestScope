@@ -143,15 +143,21 @@ def _mark(
     candidates: list[dict[str, Any]], recommended: str | list[str] | None, reason: str | None
 ) -> list[dict[str, Any]]:
     wanted = set([recommended] if isinstance(recommended, str) else (recommended or []))
-    return [
-        {
-            "code": one["code"],
-            "label": one["label"],
-            "recommended": one["code"] in wanted,
-            "reason": reason if one["code"] in wanted else one.get("reason"),
-        }
-        for one in candidates
-    ]
+    out: list[dict[str, Any]] = []
+    shown = False
+    for one in candidates:
+        picked = one["code"] in wanted
+        # 근거는 **한 번만** — 축 셋을 추천하면서 같은 문장을 세 번 붙이면 읽기만 길어진다.
+        out.append(
+            {
+                "code": one["code"],
+                "label": one["label"],
+                "recommended": picked,
+                "reason": (reason if not shown else None) if picked else one.get("reason"),
+            }
+        )
+        shown = shown or picked
+    return out
 
 
 def _upsert(
@@ -200,6 +206,15 @@ def _context(base: str | None, filed_row: dict[str, Any] | None) -> str | None:
     hint = (filed_row or {}).get("hint")
     parts = [one for one in (base, hint) if one]
     return " — ".join(parts) if parts else None
+
+
+def _free_label(label: str, source_key: str, unit: str) -> str:
+    """「작동력 (actuating_force_cN · cN)」. 라벨이 원본 키 그대로면 한 번만 —
+    「actuating_force_cN (actuating_force_cN)」 은 아니다."""
+    if label == source_key:
+        return f"{source_key} [{unit}]" if unit else source_key
+    inner = " · ".join(part for part in (source_key, unit) if part)
+    return f"{label} ({inner})"
 
 
 def _followed(candidates: list[dict[str, Any]], choice: list[str]) -> bool | None:
@@ -421,7 +436,7 @@ def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]
             "free_spec_definitions",
             subject,
             subject_id=sample.model_id,
-            subject_label=f"{sample.label} ({source_key}{' · ' + unit if unit else ''})",
+            subject_label=_free_label(sample.label, source_key, unit),
             context=_context(
                 f"{payload['models']}개 기종 · 예: {sample.value_text[:60]}"
                 + (

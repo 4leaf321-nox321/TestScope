@@ -1,0 +1,427 @@
+{
+ "queue": "test_item_axes",
+ "generated": "2026-09-13",
+ "note": "지금 있는 12개 축으로 되는 것만 추천. 새 축이 필요한 것은 hint — 「축 없음이 맞다」 로 닫거나 새 축이 생기면 다시 본다.",
+ "rows": [
+  {
+   "subject": "dma",
+   "recommended": [
+    "temperature",
+    "frequency",
+    "force"
+   ],
+   "reason": "DMA 는 온도 스캔·주파수 스캔이 본체, 하중은 클램프 용량"
+  },
+  {
+   "subject": "dsc",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도 범위가 곧 능력"
+  },
+  {
+   "subject": "halt_hass",
+   "recommended": [
+    "temperature",
+    "acceleration"
+   ],
+   "reason": "HALT 는 급속 온도 변화 + 다축 진동(가속도)"
+  },
+  {
+   "subject": "hardness_irhd",
+   "hint": "IRHD 는 정해진 하중의 압입 — 사람이 고를 조건이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "tga",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도 범위가 곧 능력"
+  },
+  {
+   "subject": "tma",
+   "recommended": [
+    "temperature",
+    "force"
+   ],
+   "reason": "온도 스캔 + 프로브 하중"
+  },
+  {
+   "subject": "xray_void_inspection",
+   "hint": "관전압(kV) 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "crystal_structure_analysis",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "instrumented_indentation",
+   "recommended": [
+    "force"
+   ],
+   "reason": "압입 하중 범위(mN~N)가 능력"
+  },
+  {
+   "subject": "high_speed_tensile",
+   "recommended": [
+    "force",
+    "crosshead_speed",
+    "temperature"
+   ],
+   "reason": "인장과 같되 속도가 m/s 급 — 속도 축은 mm/min 이라 환산됨"
+  },
+  {
+   "subject": "free_fall_drop",
+   "hint": "낙하 높이·시편 질량 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "burst_pressure",
+   "hint": "압력(bar) 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "leak_rate",
+   "hint": "압력·누설률 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "hardness_knoop",
+   "recommended": [
+    "force"
+   ],
+   "reason": "누프는 시험력(gf)을 고른다 — 비커스와 같은 축"
+  },
+  {
+   "subject": "coating_thickness",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "coating_adhesion",
+   "hint": "크로스컷은 등급 판정 — 조건 축이 없다"
+  },
+  {
+   "subject": "hardness_leeb",
+   "hint": "리브는 충격체 고정 — 조건 축이 없다"
+  },
+  {
+   "subject": "thermal_profiling",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "프로파일러의 온도 범위"
+  },
+  {
+   "subject": "abrasion",
+   "recommended": [
+    "force"
+   ],
+   "reason": "마모 하중"
+  },
+  {
+   "subject": "friction_wear_tribo",
+   "recommended": [
+    "force",
+    "temperature"
+   ],
+   "reason": "수직 하중과 시험 온도. 왕복 주파수 축은 「가진 주파수」 로 대신할 수 있음"
+  },
+  {
+   "subject": "friction_coefficient",
+   "recommended": [
+    "force",
+    "crosshead_speed"
+   ],
+   "reason": "수직 하중과 활주 속도"
+  },
+  {
+   "subject": "rheology_capillary",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도. 전단율(1/s) 축은 없다"
+  },
+  {
+   "subject": "density_porosity",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "water_ingress",
+   "hint": "IPX 등급은 축이 아니라 항목이다. 수압·유량 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "battery_abuse",
+   "recommended": [
+    "force"
+   ],
+   "reason": "압괴 하중"
+  },
+  {
+   "subject": "mechanical_endurance",
+   "recommended": [
+    "force",
+    "frequency"
+   ],
+   "reason": "작동 하중과 반복 속도"
+  },
+  {
+   "subject": "dust_ingress",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "surge_eft_immunity",
+   "recommended": [
+    "voltage"
+   ],
+   "reason": "서지·EFT 전압"
+  },
+  {
+   "subject": "formability",
+   "recommended": [
+    "force"
+   ],
+   "reason": "성형 하중"
+  },
+  {
+   "subject": "solderability",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "솔더 배스 온도"
+  },
+  {
+   "subject": "hardness_shore",
+   "hint": "듀로미터는 스프링 하중 고정 — 조건 축이 없다"
+  },
+  {
+   "subject": "water_content",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "scratch_pencil_hardness",
+   "recommended": [
+    "force"
+   ],
+   "reason": "스크래치 하중(연필 경도는 고정 하중)"
+  },
+  {
+   "subject": "seal_strength",
+   "recommended": [
+    "force",
+    "crosshead_speed"
+   ],
+   "reason": "인장 시험과 같은 축"
+  },
+  {
+   "subject": "crimp_pull_strength",
+   "recommended": [
+    "force",
+    "crosshead_speed"
+   ],
+   "reason": "인장 시험과 같은 축"
+  },
+  {
+   "subject": "thermomechanical_fatigue",
+   "recommended": [
+    "force",
+    "temperature",
+    "frequency"
+   ],
+   "reason": "피로 + 온도"
+  },
+  {
+   "subject": "thermal_resistance",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "접합부 온도 범위"
+  },
+  {
+   "subject": "thermal_conductivity",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "측정 온도 범위"
+  },
+  {
+   "subject": "dilatometry",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도 범위"
+  },
+  {
+   "subject": "thermal_runaway_calorimetry",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도 범위"
+  },
+  {
+   "subject": "thermography",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "측정 온도 범위"
+  },
+  {
+   "subject": "salt_spray_corrosion",
+   "recommended": [
+    "temperature",
+    "humidity"
+   ],
+   "reason": "챔버 온도·습도"
+  },
+  {
+   "subject": "audio_performance",
+   "recommended": [
+    "frequency"
+   ],
+   "reason": "오디오 주파수 범위 — 「가진 주파수」 축을 같이 쓴다"
+  },
+  {
+   "subject": "wire_bond_strength",
+   "recommended": [
+    "force"
+   ],
+   "reason": "풀·전단 하중"
+  },
+  {
+   "subject": "melt_flow",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도. 하중(kg)은 질량이라 하중 축과 단위가 다르다"
+  },
+  {
+   "subject": "relaxation",
+   "recommended": [
+    "force",
+    "temperature"
+   ],
+   "reason": "크리프와 같은 축"
+  },
+  {
+   "subject": "particle_size",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "altitude_low_pressure",
+   "recommended": [
+    "temperature"
+   ],
+   "reason": "온도. 기압(kPa) 축은 없다"
+  },
+  {
+   "subject": "electrical_transport",
+   "recommended": [
+    "voltage",
+    "current",
+    "temperature"
+   ],
+   "reason": "전압·전류 범위와 측정 온도"
+  },
+  {
+   "subject": "power_consumption",
+   "recommended": [
+    "voltage",
+    "current"
+   ],
+   "reason": "전압·전류 범위"
+  },
+  {
+   "subject": "microscopy",
+   "hint": "가속 전압(kV)·배율은 조건 축이 아니다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "emi_emission",
+   "recommended": [
+    "frequency"
+   ],
+   "reason": "측정 주파수 범위"
+  },
+  {
+   "subject": "contact_angle",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "esd_immunity",
+   "recommended": [
+    "voltage"
+   ],
+   "reason": "방전 전압"
+  },
+  {
+   "subject": "vapor_sorption",
+   "recommended": [
+    "temperature",
+    "humidity"
+   ],
+   "reason": "온습도 범위"
+  },
+  {
+   "subject": "shielding_effectiveness",
+   "recommended": [
+    "frequency"
+   ],
+   "reason": "측정 주파수 범위"
+  },
+  {
+   "subject": "puncture",
+   "recommended": [
+    "force",
+    "crosshead_speed"
+   ],
+   "reason": "천공 하중과 속도"
+  },
+  {
+   "subject": "acoustic_delamination",
+   "hint": "초음파 주파수(MHz)는 「가진 주파수」 와 뜻이 다르다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "accelerated_weathering",
+   "recommended": [
+    "temperature",
+    "humidity"
+   ],
+   "reason": "챔버 온습도. 조사 강도 축은 없다"
+  },
+  {
+   "subject": "texture",
+   "recommended": [
+    "force",
+    "crosshead_speed"
+   ],
+   "reason": "텍스처 분석기는 소형 인장·압축기"
+  },
+  {
+   "subject": "optical_spectroscopy",
+   "hint": "파장(nm) 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "fracture_toughness",
+   "recommended": [
+    "force",
+    "temperature"
+   ],
+   "reason": "하중과 시험 온도"
+  },
+  {
+   "subject": "surface_topography",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "composition_analysis",
+   "hint": "지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  },
+  {
+   "subject": "rheology_rotational",
+   "recommended": [
+    "temperature",
+    "torque"
+   ],
+   "reason": "온도 범위와 토크 범위. 점도(cP) 축은 없다"
+  },
+  {
+   "subject": "photometry_colorimetry",
+   "hint": "휘도(cd/m²) 축이 없다. 지금 있는 축 중에 맞는 것이 없다 — 「축 없음이 맞다」 로 닫거나, 새 축이 생기면 다시 본다"
+  }
+ ]
+}
