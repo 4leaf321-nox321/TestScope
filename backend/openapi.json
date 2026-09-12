@@ -5659,6 +5659,123 @@
         }
       }
     },
+    "/api/test-items": {
+      "get": {
+        "tags": [
+          "test-items"
+        ],
+        "summary": "List Test Item Catalog",
+        "description": "시험 항목 카탈로그 — 항목마다 **사슬 전체의 수**(물성·규격·계열·기종·보유 장비·검색축).\n\n0 이 곧 공백이다. 「물성 없는 시험 항목」 「규격 없는 시험 항목」 을 여기서 거른다.\n보유 장비는 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.",
+        "operationId": "list_test_item_catalog_api_test_items_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TestItemCatalogRow"
+                  },
+                  "type": "array",
+                  "title": "Response List Test Item Catalog Api Test Items Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/test-items/{term_id}": {
+      "get": {
+        "tags": [
+          "test-items"
+        ],
+        "summary": "Read Test Item",
+        "description": "시험 항목 하나 — 얻는 물성 · 규격 · 되는 계열 · 보유 장비 · 검색축을 한 자리에.",
+        "operationId": "read_test_item_api_test_items__term_id__get",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestItemCatalogOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/test-items/{term_id}/condition-keys": {
+      "put": {
+        "tags": [
+          "test-items"
+        ],
+        "summary": "Set Test Item Condition Keys",
+        "description": "이 시험 항목에 **뜻이 있는 조건 축**을 정한다(통째로 바꾼다).\n\n인장은 하중·속도·온도, 챔버는 온도·습도. 전에는 어디에도 없어 검색이 축 일곱 개를 다\n물었다. 전사 공용 지식이라 시스템 관리자가 정한다.",
+        "operationId": "set_test_item_condition_keys_api_test_items__term_id__condition_keys_put",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestItemConditionKeysRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/search/test-items": {
       "post": {
         "tags": [
@@ -15262,6 +15379,308 @@
         "title": "TermUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.**\n\nNone 은 \"안 바꿈\" 이다. 구별하지 않으면 이름 하나 고칠 때마다 코드와 상위 값이\n조용히 지워진다 — 그 손실은 저장 버튼을 누른 사람 눈에 안 보인다."
       },
+      "TestItemCatalogOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          },
+          "properties": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemPropertyLinkOut"
+            },
+            "type": "array",
+            "title": "Properties"
+          },
+          "methods": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemMethodOut"
+            },
+            "type": "array",
+            "title": "Methods"
+          },
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemSeriesOut"
+            },
+            "type": "array",
+            "title": "Series"
+          },
+          "equipment": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemEquipmentOut"
+            },
+            "type": "array",
+            "title": "Equipment"
+          },
+          "condition_keys": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemConditionKeyOut"
+            },
+            "type": "array",
+            "title": "Condition Keys"
+          },
+          "can_edit": {
+            "type": "boolean",
+            "title": "Can Edit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "value",
+          "code",
+          "aliases",
+          "properties",
+          "methods",
+          "series",
+          "equipment",
+          "condition_keys",
+          "can_edit"
+        ],
+        "title": "TestItemCatalogOut",
+        "description": "시험 항목 상세 — 물성·규격·계열·보유 장비·검색축을 한 자리에."
+      },
+      "TestItemCatalogRow": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Aliases"
+          },
+          "properties_total": {
+            "type": "integer",
+            "title": "Properties Total"
+          },
+          "properties_confirmed": {
+            "type": "integer",
+            "title": "Properties Confirmed"
+          },
+          "methods_total": {
+            "type": "integer",
+            "title": "Methods Total"
+          },
+          "methods_with_requirements": {
+            "type": "integer",
+            "title": "Methods With Requirements"
+          },
+          "series_count": {
+            "type": "integer",
+            "title": "Series Count"
+          },
+          "model_count": {
+            "type": "integer",
+            "title": "Model Count"
+          },
+          "equipment_count": {
+            "type": "integer",
+            "title": "Equipment Count"
+          },
+          "condition_keys": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Condition Keys"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "value",
+          "code",
+          "aliases",
+          "properties_total",
+          "properties_confirmed",
+          "methods_total",
+          "methods_with_requirements",
+          "series_count",
+          "model_count",
+          "equipment_count",
+          "condition_keys"
+        ],
+        "title": "TestItemCatalogRow",
+        "description": "시험 항목 한 줄 — **사슬 전체의 수.** 0 이 곧 공백이다.\n\n물성  ⇄  시험 항목  →  규격  →  계열/기종  →  보유 장비"
+      },
+      "TestItemConditionKeyOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "key",
+          "label",
+          "unit"
+        ],
+        "title": "TestItemConditionKeyOut"
+      },
+      "TestItemConditionKeysRequest": {
+        "properties": {
+          "condition_key_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Condition Key Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "condition_key_ids"
+        ],
+        "title": "TestItemConditionKeysRequest"
+      },
+      "TestItemEquipmentOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "asset_no": {
+            "type": "string",
+            "title": "Asset No"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "workspace": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workspace"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "asset_no",
+          "name",
+          "workspace",
+          "status"
+        ],
+        "title": "TestItemEquipmentOut"
+      },
+      "TestItemMethodOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "edition": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edition"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "has_requirements": {
+            "type": "boolean",
+            "title": "Has Requirements"
+          },
+          "series_count": {
+            "type": "integer",
+            "title": "Series Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "code",
+          "edition",
+          "title",
+          "has_requirements",
+          "series_count"
+        ],
+        "title": "TestItemMethodOut"
+      },
       "TestItemPropertyCreateRequest": {
         "properties": {
           "test_item_term_id": {
@@ -15293,6 +15712,48 @@
           "property_term_id"
         ],
         "title": "TestItemPropertyCreateRequest"
+      },
+      "TestItemPropertyLinkOut": {
+        "properties": {
+          "link_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Link Id"
+          },
+          "property_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Property Term Id"
+          },
+          "property": {
+            "type": "string",
+            "title": "Property"
+          },
+          "property_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Property Code"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "link_id",
+          "property_term_id",
+          "property",
+          "property_code",
+          "status"
+        ],
+        "title": "TestItemPropertyLinkOut"
       },
       "TestItemPropertyOut": {
         "properties": {
@@ -15412,6 +15873,62 @@
         },
         "type": "object",
         "title": "TestItemPropertyUpdateRequest"
+      },
+      "TestItemSeriesOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "maker": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "model_count": {
+            "type": "integer",
+            "title": "Model Count"
+          },
+          "method_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Method Codes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "maker",
+          "category",
+          "model_count",
+          "method_codes"
+        ],
+        "title": "TestItemSeriesOut"
       },
       "UnreadCountOut": {
         "properties": {

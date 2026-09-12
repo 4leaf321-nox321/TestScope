@@ -12,6 +12,7 @@ import {
   Building2,
   ClipboardList,
   Gauge,
+  ListChecks,
   Home,
   ListTree,
   Megaphone,
@@ -139,6 +140,15 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '장비 기종',
         icon: Package,
         to: '/catalog/equipment-models',
+      },
+      {
+        // **사슬의 가운데.** 계열·기종·규격·물성 네 화면이 전부 「→ 시험 항목」 으로 향하는데
+        // 시험 항목에서 출발하는 자리가 없었다. 「인장」 하나를 두고 얻는 물성·규격·되는
+        // 계열·보유 대수를 한 줄에 — 0 이 곧 공백이다. 사이드바 위쪽의 「시험 항목 현황」
+        // (우리가 가진 것, 시험 항목 × 부서)과 다르다: 여기는 세상에 있는 것의 정의다.
+        label: '시험 항목',
+        icon: ListChecks,
+        to: '/catalog/test-items',
       },
       {
         // 시험법이 장비 모델 다음이다 — 규격은 그것을 돌릴 장비가 있어야 뜻이

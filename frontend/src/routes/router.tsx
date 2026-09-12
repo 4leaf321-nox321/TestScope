@@ -48,6 +48,10 @@ const NotificationsPage = lazy(() => import('@/modules/notifications/Notificatio
 const ProfilePage = lazy(() => import('@/modules/auth/ProfilePage'))
 const PropertiesPage = lazy(() => import('@/modules/properties/PropertiesPage'))
 const ServerPage = lazy(() => import('@/modules/server/ServerPage'))
+const TestItemsCatalogPage = lazy(() => import('@/modules/test_items/TestItemsCatalogPage'))
+const TestItemCatalogDetailPage = lazy(
+  () => import('@/modules/test_items/TestItemCatalogDetailPage'),
+)
 const SignupPage = lazy(() => import('@/modules/auth/SignupPage'))
 const VocabularyAdminPage = lazy(() => import('@/modules/vocabulary/VocabularyAdminPage'))
 const VocabularyPage = lazy(() => import('@/modules/vocabulary/VocabularyPage'))
@@ -106,6 +110,8 @@ export const router = createBrowserRouter([
           { path: 'catalog/equipment-models', element: <EquipmentModelsPage /> },
           { path: 'catalog/equipment-models/:id', element: <EquipmentModelDetailPage /> },
           // 시험법 주소는 그대로 둔다 — 이미 나간 링크가 있고, 옮겨서 얻는 것이 없다.
+          { path: 'catalog/test-items', element: <TestItemsCatalogPage /> },
+          { path: 'catalog/test-items/:id', element: <TestItemCatalogDetailPage /> },
           { path: 'methods', element: <MethodsPage /> },
           { path: 'methods/:id', element: <MethodDetailPage /> },
           ...stubs,

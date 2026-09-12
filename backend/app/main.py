@@ -66,6 +66,7 @@ def _api_router() -> APIRouter:
     router.include_router(equipment_routes.sources_router)
     router.include_router(methods_routes.router)
     router.include_router(capabilities_routes.router)
+    router.include_router(capabilities_routes.catalog_router)
     router.include_router(search_routes.router)
     router.include_router(properties_routes.router)
     router.include_router(properties_routes.links_router)

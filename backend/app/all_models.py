@@ -36,6 +36,7 @@ from app.modules.test_items.models import (
     SeriesTestCondition,
     SeriesTestItem,
     SeriesTestItemMethod,
+    TestItemConditionKey,
 )
 from app.modules.vocabulary.models import (
     ConditionKey,
@@ -79,6 +80,7 @@ __all__ = [
     "SpecDefinitionCategory",
     "SpecGroup",
     "SpecSource",
+    "TestItemConditionKey",
     "TestItemProperty",
     "TestMethod",
     "User",

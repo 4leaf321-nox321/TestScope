@@ -26,6 +26,89 @@ class LimitOut(BaseModel):
     note: str | None
 
 
+class TestItemCatalogRow(BaseModel):
+    """시험 항목 한 줄 — **사슬 전체의 수.** 0 이 곧 공백이다.
+
+    물성  ⇄  시험 항목  →  규격  →  계열/기종  →  보유 장비
+    """
+
+    id: uuid.UUID
+    value: str
+    code: str | None
+    aliases: list[str]
+    properties_total: int
+    properties_confirmed: int
+    methods_total: int
+    """이 시험 항목의 규격으로 정해진 것."""
+    methods_with_requirements: int
+    series_count: int
+    model_count: int
+    equipment_count: int
+    """**내가 볼 수 있는** 보유 장비. 남의 부서가 가린 것은 안 센다."""
+    condition_keys: list[str]
+    """검색축 라벨. 비어 있으면 검색이 축 일곱 개를 다 묻는다."""
+
+
+class TestItemSeriesOut(BaseModel):
+    id: uuid.UUID
+    name: str
+    maker: str | None
+    category: str | None
+    model_count: int
+    method_codes: list[str]
+
+
+class TestItemEquipmentOut(BaseModel):
+    id: uuid.UUID
+    asset_no: str
+    name: str
+    workspace: str | None
+    status: str
+
+
+class TestItemMethodOut(BaseModel):
+    id: uuid.UUID
+    code: str
+    edition: str | None
+    title: str
+    has_requirements: bool
+    series_count: int
+
+
+class TestItemPropertyLinkOut(BaseModel):
+    link_id: uuid.UUID
+    property_term_id: uuid.UUID
+    property: str
+    property_code: str | None
+    status: str
+
+
+class TestItemConditionKeyOut(BaseModel):
+    id: uuid.UUID
+    key: str
+    label: str
+    unit: str
+
+
+class TestItemCatalogOut(BaseModel):
+    """시험 항목 상세 — 물성·규격·계열·보유 장비·검색축을 한 자리에."""
+
+    id: uuid.UUID
+    value: str
+    code: str | None
+    aliases: list[str]
+    properties: list[TestItemPropertyLinkOut]
+    methods: list[TestItemMethodOut]
+    series: list[TestItemSeriesOut]
+    equipment: list[TestItemEquipmentOut]
+    condition_keys: list[TestItemConditionKeyOut]
+    can_edit: bool
+
+
+class TestItemConditionKeysRequest(BaseModel):
+    condition_key_ids: list[uuid.UUID] = Field(max_length=20)
+
+
 class EquipmentTestItemOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

@@ -261,6 +261,39 @@ class SeriesTestItemMethod(Base):
     )
 
 
+class TestItemConditionKey(Base):
+    """시험 항목마다 **뜻이 있는 조건 축** — 인장은 하중·속도·온도, 챔버는 온도·습도.
+
+    전에는 어디에도 없었다. 검색은 시험 항목을 골라도 조건 칸에 축 일곱 개를 다 보여
+    줬고, 「이 분류의 기종엔 이 사양이 있어야 한다」 를 말할 근거도 없었다 — 검색축
+    사양이 있는 기종이 879 중 433 인 이유의 절반이 여기다.
+
+    사람이 정한다(시스템 관리자). 반입은 안 건드린다 — 카탈로그는 이 지식을 안 갖고 있다.
+    """
+
+    __tablename__ = "test_item_condition_keys"
+    __table_args__ = (
+        UniqueConstraint(
+            "test_item_term_id", "condition_key_id", name="uq_test_item_condition_keys"
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    test_item_term_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("vocabulary_terms.id", ondelete="CASCADE"),
+        index=True,
+    )
+    condition_key_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("condition_keys.id", ondelete="CASCADE"), index=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+
+
 class SeriesPendingMethod(Base):
     """계열이 인용했는데 **어느 시험 항목의 규격인지 아직 모르는** 것.
 

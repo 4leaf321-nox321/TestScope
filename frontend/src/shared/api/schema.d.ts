@@ -1705,6 +1705,72 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/test-items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Test Item Catalog
+         * @description 시험 항목 카탈로그 — 항목마다 **사슬 전체의 수**(물성·규격·계열·기종·보유 장비·검색축).
+         *
+         *     0 이 곧 공백이다. 「물성 없는 시험 항목」 「규격 없는 시험 항목」 을 여기서 거른다.
+         *     보유 장비는 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.
+         */
+        get: operations["list_test_item_catalog_api_test_items_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/test-items/{term_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Read Test Item
+         * @description 시험 항목 하나 — 얻는 물성 · 규격 · 되는 계열 · 보유 장비 · 검색축을 한 자리에.
+         */
+        get: operations["read_test_item_api_test_items__term_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/test-items/{term_id}/condition-keys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Test Item Condition Keys
+         * @description 이 시험 항목에 **뜻이 있는 조건 축**을 정한다(통째로 바꾼다).
+         *
+         *     인장은 하중·속도·온도, 챔버는 온도·습도. 전에는 어디에도 없어 검색이 축 일곱 개를 다
+         *     물었다. 전사 공용 지식이라 시스템 관리자가 정한다.
+         */
+        put: operations["set_test_item_condition_keys_api_test_items__term_id__condition_keys_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/search/test-items": {
         parameters: {
             query?: never;
@@ -5078,6 +5144,123 @@ export interface components {
                 [key: string]: unknown;
             } | null;
         };
+        /**
+         * TestItemCatalogOut
+         * @description 시험 항목 상세 — 물성·규격·계열·보유 장비·검색축을 한 자리에.
+         */
+        TestItemCatalogOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Value */
+            value: string;
+            /** Code */
+            code: string | null;
+            /** Aliases */
+            aliases: string[];
+            /** Properties */
+            properties: components["schemas"]["TestItemPropertyLinkOut"][];
+            /** Methods */
+            methods: components["schemas"]["TestItemMethodOut"][];
+            /** Series */
+            series: components["schemas"]["TestItemSeriesOut"][];
+            /** Equipment */
+            equipment: components["schemas"]["TestItemEquipmentOut"][];
+            /** Condition Keys */
+            condition_keys: components["schemas"]["TestItemConditionKeyOut"][];
+            /** Can Edit */
+            can_edit: boolean;
+        };
+        /**
+         * TestItemCatalogRow
+         * @description 시험 항목 한 줄 — **사슬 전체의 수.** 0 이 곧 공백이다.
+         *
+         *     물성  ⇄  시험 항목  →  규격  →  계열/기종  →  보유 장비
+         */
+        TestItemCatalogRow: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Value */
+            value: string;
+            /** Code */
+            code: string | null;
+            /** Aliases */
+            aliases: string[];
+            /** Properties Total */
+            properties_total: number;
+            /** Properties Confirmed */
+            properties_confirmed: number;
+            /** Methods Total */
+            methods_total: number;
+            /** Methods With Requirements */
+            methods_with_requirements: number;
+            /** Series Count */
+            series_count: number;
+            /** Model Count */
+            model_count: number;
+            /** Equipment Count */
+            equipment_count: number;
+            /** Condition Keys */
+            condition_keys: string[];
+        };
+        /** TestItemConditionKeyOut */
+        TestItemConditionKeyOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Unit */
+            unit: string;
+        };
+        /** TestItemConditionKeysRequest */
+        TestItemConditionKeysRequest: {
+            /** Condition Key Ids */
+            condition_key_ids: string[];
+        };
+        /** TestItemEquipmentOut */
+        TestItemEquipmentOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Asset No */
+            asset_no: string;
+            /** Name */
+            name: string;
+            /** Workspace */
+            workspace: string | null;
+            /** Status */
+            status: string;
+        };
+        /** TestItemMethodOut */
+        TestItemMethodOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Code */
+            code: string;
+            /** Edition */
+            edition: string | null;
+            /** Title */
+            title: string;
+            /** Has Requirements */
+            has_requirements: boolean;
+            /** Series Count */
+            series_count: number;
+        };
         /** TestItemPropertyCreateRequest */
         TestItemPropertyCreateRequest: {
             /**
@@ -5092,6 +5275,25 @@ export interface components {
             property_term_id: string;
             /** Note */
             note?: string | null;
+        };
+        /** TestItemPropertyLinkOut */
+        TestItemPropertyLinkOut: {
+            /**
+             * Link Id
+             * Format: uuid
+             */
+            link_id: string;
+            /**
+             * Property Term Id
+             * Format: uuid
+             */
+            property_term_id: string;
+            /** Property */
+            property: string;
+            /** Property Code */
+            property_code: string | null;
+            /** Status */
+            status: string;
         };
         /** TestItemPropertyOut */
         TestItemPropertyOut: {
@@ -5136,6 +5338,24 @@ export interface components {
             status?: string | null;
             /** Note */
             note?: string | null;
+        };
+        /** TestItemSeriesOut */
+        TestItemSeriesOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Maker */
+            maker: string | null;
+            /** Category */
+            category: string | null;
+            /** Model Count */
+            model_count: number;
+            /** Method Codes */
+            method_codes: string[];
         };
         /** UnreadCountOut */
         UnreadCountOut: {
@@ -8857,6 +9077,90 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_test_item_catalog_api_test_items_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemCatalogRow"][];
+                };
+            };
+        };
+    };
+    read_test_item_api_test_items__term_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                term_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TestItemCatalogOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_test_item_condition_keys_api_test_items__term_id__condition_keys_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                term_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TestItemConditionKeysRequest"];
+            };
+        };
         responses: {
             /** @description Successful Response */
             204: {
