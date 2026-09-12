@@ -302,6 +302,25 @@ type SpecSourcePage = components['schemas']['Page_SpecSourceOut_']
  *
  * 정의가 저쪽에 있는 이유: 조건 정의와 같은 성격이라 고치는 화면도 같다.
  */
+export type FreeSpec = components['schemas']['FreeSpecOut']
+export type FreeSpecPromoteResult = components['schemas']['FreeSpecPromoteResult']
+
+/** 이 기종만의 사양 — 정의 없이 이름·값·단위로 붙는 줄. 여럿이 되면 정의로 올린다. */
+export const freeSpecApi = {
+  add: (modelId: string, body: Record<string, unknown>) =>
+    api.post<FreeSpec>(`/equipment-models/${modelId}/free-specs`, body),
+  update: (modelId: string, freeId: string, body: Record<string, unknown>) =>
+    api.put<FreeSpec>(`/equipment-models/${modelId}/free-specs/${freeId}`, body),
+  remove: (modelId: string, freeId: string) =>
+    api.delete<void>(`/equipment-models/${modelId}/free-specs/${freeId}`),
+  /** 정의로 세운다. 이름·단위·종류는 사람이 정한다 — 기계가 지어내면 그것이 진실이 된다. */
+  promote: (modelId: string, freeId: string, body: Record<string, unknown>) =>
+    api.post<FreeSpecPromoteResult>(
+      `/equipment-models/${modelId}/free-specs/${freeId}/promote`,
+      body,
+    ),
+}
+
 export const specApi = {
   sheet: (modelId: string) => api.get<ModelSpecSheet>(`/equipment-models/${modelId}/specs`),
   /** 한 칸을 넣거나 덮어쓴다. 응답의 `reflected` 는 시험 항목에 반영된 수다. */

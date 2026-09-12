@@ -12,6 +12,7 @@ from app.modules.accounts.models import User
 from app.modules.equipment import (
     catalog,
     equipment_specs,
+    free_specs,
     imports,
     services,
     specs,
@@ -37,6 +38,10 @@ from app.modules.equipment.schemas import (
     EquipmentSpecSaveResult,
     EquipmentSpecSheetOut,
     EquipmentUpdateRequest,
+    FreeSpecOut,
+    FreeSpecPromoteRequest,
+    FreeSpecPromoteResult,
+    FreeSpecUpsertRequest,
     ImportColumn,
     ModelLimitOut,
     ModelLimitUpsertRequest,
@@ -652,6 +657,68 @@ def read_model_specs(
     db: Session = Depends(get_db),
 ) -> ModelSpecSheetOut:
     return specs.sheet(db, catalog.get_model(db, model_id))
+
+
+@catalog_router.post("/{model_id}/free-specs", response_model=FreeSpecOut, status_code=201)
+def add_free_spec(
+    model_id: uuid.UUID,
+    payload: FreeSpecUpsertRequest,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> FreeSpecOut:
+    """**이 기종만의 사양** 한 줄을 더한다 — 정의 없이 이름·값·단위로.
+
+    정의 목록에 없는 값을 적을 자리다. 한 기종에만 있는 값(카탈로그 키 950종 중 803종)을
+    정의로 세우면 「사양 추가」 목록이 못 쓰게 된다. 같은 이름이 여러 기종에 쌓이면
+    `POST …/free-specs/{id}/promote` 로 정의로 올린다.
+    """
+    model = catalog.get_model(db, model_id)
+    row = free_specs.add(db, model, payload.model_dump())
+    return next(one for one in free_specs.list_out(db, model.id) if one.id == row.id)
+
+
+@catalog_router.put("/{model_id}/free-specs/{free_id}", response_model=FreeSpecOut)
+def update_free_spec(
+    model_id: uuid.UUID,
+    free_id: uuid.UUID,
+    payload: FreeSpecUpsertRequest,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> FreeSpecOut:
+    model = catalog.get_model(db, model_id)
+    row = free_specs.update(db, model, free_id, payload.model_dump())
+    return next(one for one in free_specs.list_out(db, model.id) if one.id == row.id)
+
+
+@catalog_router.delete("/{model_id}/free-specs/{free_id}", status_code=204)
+def delete_free_spec(
+    model_id: uuid.UUID,
+    free_id: uuid.UUID,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> None:
+    free_specs.delete(db, catalog.get_model(db, model_id), free_id)
+
+
+@catalog_router.post(
+    "/{model_id}/free-specs/{free_id}/promote", response_model=FreeSpecPromoteResult
+)
+def promote_free_spec(
+    model_id: uuid.UUID,
+    free_id: uuid.UUID,
+    payload: FreeSpecPromoteRequest,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> FreeSpecPromoteResult:
+    """이 기종만의 사양을 **정의로 세운다.**
+
+    이름·단위·종류는 사람이 정한다 — 기계가 지어내면 그것이 진실이 된다. 정의는 이
+    기종의 분류에 붙고, 같은 원본 키를 가진 다른 기종의 줄도 함께 옮겨 간다. 수치로
+    못 읽는 줄(「약 300」)은 그대로 남고 `left` 로 센다.
+    """
+    return free_specs.promote(
+        db, catalog.get_model(db, model_id), free_id, payload.model_dump()
+    )
 
 
 @catalog_router.put("/{model_id}/specs", response_model=ModelSpecSaveResult)

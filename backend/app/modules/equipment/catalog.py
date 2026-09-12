@@ -24,7 +24,7 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
-from app.modules.equipment import specs
+from app.modules.equipment import free_specs, specs
 from app.modules.equipment.models import (
     AVAILABLE_STATUSES,
     Equipment,
@@ -918,6 +918,7 @@ def model_out(
         status=row.status,
         summary=row.summary,
         spec_note=row.spec_note,
+        free_specs=free_specs.list_out(db, row.id),
         raw_specs=row.raw_specs or {},
         unit_count=len(units),
         # **대수만 보면 여유 있어 보인다.** 다섯 대 중 한 대만 가동인 경우가 있다.

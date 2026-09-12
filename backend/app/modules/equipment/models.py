@@ -653,6 +653,75 @@ class ModelSpecValue(Base):
     )
 
 
+class ModelFreeSpec(Base):
+    """**이 기종만의 사양** — 정의 없이 기종에 직접 붙는 이름·값·단위.
+
+    ## 왜 정의 없이 두나
+
+    카탈로그 원본의 사양 키는 950종이 넘고 그중 803종이 **한 기종에만** 나온다(2026-09-12
+    실측). 전부 정의로 세우면 「사양 추가」 목록이 1,100줄이 되어 원하는 칸을 못 찾고,
+    못 찾은 사람은 새 칸을 또 만든다 — 같은 값이 둘로 갈리는 그 실패가 ADR 0005 를 쓰게 한
+    원인이다. 그렇다고 버리면 「이 점도계의 스핀들 종류」 처럼 그 기종을 아는 데 꼭 필요한
+    것이 원문 JSON 안에만 남는다.
+
+    그래서 세 자리로 가른다:
+
+        정의 있는 사양   여러 기종이 공유하는 수치 — 비교·대표 사양·검색이 된다
+        이 기종만의 사양 한 기종에만 있는 수치·서술 — 값은 들어가고 정의 목록은 안 부푼다
+        원문             옮겨 적기 전의 전부 — 근거
+
+    ## 값은 글자다
+
+    비교 대상이 아니라서 수치 칸을 나누지 않는다. 같은 이름이 여러 기종에 쌓여 비교할 일이
+    생기면 그때 **정의로 세운다**(`promote`) — 이름·단위·분류를 사람이 확인하고 누르는
+    순간 정식 정의가 되고, 그 값들은 `model_spec_values` 로 옮겨 간다.
+
+    ## 반입은 채우기만 한다
+
+    `source_key` 가 있는 줄은 반입이 만든 것이다. 다시 반입해도 있는 줄은 **안 덮는다** —
+    사람이 이름을 고쳐 둔 것이 돌아오면 안 된다.
+    """
+
+    __tablename__ = "model_free_specs"
+    __table_args__ = (
+        # NULL 은 서로 다르다(Postgres) — 손으로 더한 줄(source_key 없음)은 몇이든 된다.
+        UniqueConstraint("model_id", "source_key", name="uq_model_free_specs_source"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    model_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("equipment_models.id", ondelete="CASCADE"), index=True
+    )
+    label: Mapped[str] = mapped_column(String(150))
+    """사람이 읽는 이름. 반입이 온톨로지 라벨을 알면 그것, 모르면 원본 키 그대로 — 지어내지
+    않는다. 사람이 화면에서 고친다."""
+    value_text: Mapped[str] = mapped_column(Text)
+    unit: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_key: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    """원본 카탈로그의 키(`stroke_mm_pk_pk`). 재반입의 멱등 열쇠이고, 「정의로 세우기」 가
+    같은 키를 가진 다른 기종의 줄을 함께 옮길 때 쓴다."""
+    origin: Mapped[str] = mapped_column(
+        String(10), default="manual", server_default="manual", nullable=False
+    )
+    """`catalog`(반입) · `manual`(사람)."""
+    source_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("spec_sources.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+    source_page: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+
+
 class EquipmentSpecValue(Base):
     """이 **개체**가 실제로 갖는 사양값 하나 — 카탈로그 위에 덮는 실측.
 

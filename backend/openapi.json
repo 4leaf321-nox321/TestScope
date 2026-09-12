@@ -4526,6 +4526,231 @@
         }
       }
     },
+    "/api/equipment-models/{model_id}/free-specs": {
+      "post": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Add Free Spec",
+        "description": "**이 기종만의 사양** 한 줄을 더한다 — 정의 없이 이름·값·단위로.\n\n정의 목록에 없는 값을 적을 자리다. 한 기종에만 있는 값(카탈로그 키 950종 중 803종)을\n정의로 세우면 「사양 추가」 목록이 못 쓰게 된다. 같은 이름이 여러 기종에 쌓이면\n`POST …/free-specs/{id}/promote` 로 정의로 올린다.",
+        "operationId": "add_free_spec_api_equipment_models__model_id__free_specs_post",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FreeSpecUpsertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreeSpecOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/{model_id}/free-specs/{free_id}": {
+      "put": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Update Free Spec",
+        "operationId": "update_free_spec_api_equipment_models__model_id__free_specs__free_id__put",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Model Id"
+            }
+          },
+          {
+            "name": "free_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Free Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FreeSpecUpsertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreeSpecOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Delete Free Spec",
+        "operationId": "delete_free_spec_api_equipment_models__model_id__free_specs__free_id__delete",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Model Id"
+            }
+          },
+          {
+            "name": "free_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Free Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/equipment-models/{model_id}/free-specs/{free_id}/promote": {
+      "post": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Promote Free Spec",
+        "description": "이 기종만의 사양을 **정의로 세운다.**\n\n이름·단위·종류는 사람이 정한다 — 기계가 지어내면 그것이 진실이 된다. 정의는 이\n기종의 분류에 붙고, 같은 원본 키를 가진 다른 기종의 줄도 함께 옮겨 간다. 수치로\n못 읽는 줄(「약 300」)은 그대로 남고 `left` 로 센다.",
+        "operationId": "promote_free_spec_api_equipment_models__model_id__free_specs__free_id__promote_post",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Model Id"
+            }
+          },
+          {
+            "name": "free_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Free Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FreeSpecPromoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FreeSpecPromoteResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/equipment-models/{model_id}/specs/{definition_id}": {
       "delete": {
         "tags": [
@@ -8367,6 +8592,14 @@
             ],
             "title": "Spec Note"
           },
+          "free_specs": {
+            "items": {
+              "$ref": "#/components/schemas/FreeSpecOut"
+            },
+            "type": "array",
+            "title": "Free Specs",
+            "default": []
+          },
           "raw_specs": {
             "additionalProperties": true,
             "type": "object",
@@ -10579,6 +10812,241 @@
         ],
         "title": "FilterOption",
         "description": "거르기 한 칸이 고를 수 있는 값 하나. **수를 함께 준다.**\n\n「나노압입기」 를 고를 수 있는데 결과가 0 이면 사람은 거르기를 안 믿게 된다. 그래서\n**목록에 실제로 있는 값만** 내려보내고, 몇 대인지 함께 적는다."
+      },
+      "FreeSpecOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "value_text": {
+            "type": "string",
+            "title": "Value Text"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "source_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Key"
+          },
+          "origin": {
+            "type": "string",
+            "title": "Origin"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id"
+          },
+          "source_page": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Page"
+          },
+          "same_key_models": {
+            "type": "integer",
+            "title": "Same Key Models",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "value_text",
+          "unit",
+          "note",
+          "source_key",
+          "origin",
+          "source_id",
+          "source_page"
+        ],
+        "title": "FreeSpecOut",
+        "description": "이 기종만의 사양 한 줄 — 정의 없이 기종에 직접 붙는 이름·값·단위."
+      },
+      "FreeSpecPromoteRequest": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,59}$",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Group Id"
+          },
+          "kind": {
+            "type": "string",
+            "pattern": "^(number|range|text|boolean)$",
+            "title": "Kind"
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Unit",
+            "default": ""
+          },
+          "apply_same_key": {
+            "type": "boolean",
+            "title": "Apply Same Key",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "group_id",
+          "kind"
+        ],
+        "title": "FreeSpecPromoteRequest",
+        "description": "이 기종만의 사양을 **정의로 세운다.** 이름·단위·종류는 사람이 정한다 — 기계가 지어내면\n그것이 진실이 된다."
+      },
+      "FreeSpecPromoteResult": {
+        "properties": {
+          "definition_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Definition Id"
+          },
+          "moved": {
+            "type": "integer",
+            "title": "Moved"
+          },
+          "left": {
+            "type": "integer",
+            "title": "Left"
+          }
+        },
+        "type": "object",
+        "required": [
+          "definition_id",
+          "moved",
+          "left"
+        ],
+        "title": "FreeSpecPromoteResult"
+      },
+      "FreeSpecUpsertRequest": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "value_text": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Value Text"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id"
+          },
+          "source_page": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label",
+          "value_text"
+        ],
+        "title": "FreeSpecUpsertRequest"
       },
       "HTTPValidationError": {
         "properties": {

@@ -1390,6 +1390,72 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/equipment-models/{model_id}/free-specs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Add Free Spec
+         * @description **이 기종만의 사양** 한 줄을 더한다 — 정의 없이 이름·값·단위로.
+         *
+         *     정의 목록에 없는 값을 적을 자리다. 한 기종에만 있는 값(카탈로그 키 950종 중 803종)을
+         *     정의로 세우면 「사양 추가」 목록이 못 쓰게 된다. 같은 이름이 여러 기종에 쌓이면
+         *     `POST …/free-specs/{id}/promote` 로 정의로 올린다.
+         */
+        post: operations["add_free_spec_api_equipment_models__model_id__free_specs_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/{model_id}/free-specs/{free_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Update Free Spec */
+        put: operations["update_free_spec_api_equipment_models__model_id__free_specs__free_id__put"];
+        post?: never;
+        /** Delete Free Spec */
+        delete: operations["delete_free_spec_api_equipment_models__model_id__free_specs__free_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/equipment-models/{model_id}/free-specs/{free_id}/promote": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Promote Free Spec
+         * @description 이 기종만의 사양을 **정의로 세운다.**
+         *
+         *     이름·단위·종류는 사람이 정한다 — 기계가 지어내면 그것이 진실이 된다. 정의는 이
+         *     기종의 분류에 붙고, 같은 원본 키를 가진 다른 기종의 줄도 함께 옮겨 간다. 수치로
+         *     못 읽는 줄(「약 300」)은 그대로 남고 `left` 로 센다.
+         */
+        post: operations["promote_free_spec_api_equipment_models__model_id__free_specs__free_id__promote_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/equipment-models/{model_id}/specs/{definition_id}": {
         parameters: {
             query?: never;
@@ -2777,6 +2843,11 @@ export interface components {
             summary: string | null;
             /** Spec Note */
             spec_note: string | null;
+            /**
+             * Free Specs
+             * @default []
+             */
+            free_specs: components["schemas"]["FreeSpecOut"][];
             /** Raw Specs */
             raw_specs: {
                 [key: string]: unknown;
@@ -3412,6 +3483,93 @@ export interface components {
             label: string;
             /** Count */
             count: number;
+        };
+        /**
+         * FreeSpecOut
+         * @description 이 기종만의 사양 한 줄 — 정의 없이 기종에 직접 붙는 이름·값·단위.
+         */
+        FreeSpecOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Value Text */
+            value_text: string;
+            /** Unit */
+            unit: string | null;
+            /** Note */
+            note: string | null;
+            /** Source Key */
+            source_key: string | null;
+            /** Origin */
+            origin: string;
+            /** Source Id */
+            source_id: string | null;
+            /** Source Page */
+            source_page: number | null;
+            /**
+             * Same Key Models
+             * @default 0
+             */
+            same_key_models: number;
+        };
+        /**
+         * FreeSpecPromoteRequest
+         * @description 이 기종만의 사양을 **정의로 세운다.** 이름·단위·종류는 사람이 정한다 — 기계가 지어내면
+         *     그것이 진실이 된다.
+         */
+        FreeSpecPromoteRequest: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /**
+             * Group Id
+             * Format: uuid
+             */
+            group_id: string;
+            /** Kind */
+            kind: string;
+            /**
+             * Unit
+             * @default
+             */
+            unit: string;
+            /**
+             * Apply Same Key
+             * @default true
+             */
+            apply_same_key: boolean;
+        };
+        /** FreeSpecPromoteResult */
+        FreeSpecPromoteResult: {
+            /**
+             * Definition Id
+             * Format: uuid
+             */
+            definition_id: string;
+            /** Moved */
+            moved: number;
+            /** Left */
+            left: number;
+        };
+        /** FreeSpecUpsertRequest */
+        FreeSpecUpsertRequest: {
+            /** Label */
+            label: string;
+            /** Value Text */
+            value_text: string;
+            /** Unit */
+            unit?: string | null;
+            /** Note */
+            note?: string | null;
+            /** Source Id */
+            source_id?: string | null;
+            /** Source Page */
+            source_page?: number | null;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -8006,6 +8164,143 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ModelSpecSaveResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    add_free_spec_api_equipment_models__model_id__free_specs_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                model_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FreeSpecUpsertRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FreeSpecOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_free_spec_api_equipment_models__model_id__free_specs__free_id__put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                model_id: string;
+                free_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FreeSpecUpsertRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FreeSpecOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_free_spec_api_equipment_models__model_id__free_specs__free_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                model_id: string;
+                free_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    promote_free_spec_api_equipment_models__model_id__free_specs__free_id__promote_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                model_id: string;
+                free_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FreeSpecPromoteRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FreeSpecPromoteResult"];
                 };
             };
             /** @description Validation Error */

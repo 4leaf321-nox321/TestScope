@@ -45,6 +45,7 @@ from app.modules.accounts.models import User
 from app.modules.equipment.models import (
     EquipmentModel,
     EquipmentSeries,
+    ModelFreeSpec,
     ModelSpecValue,
     SeriesRelation,
     SpecSource,
@@ -1537,6 +1538,81 @@ def _import_max_only(
     )
 
 
+#: 사양이 아니라 다른 자리로 가는 키 — 여기 있는 것은 「이 기종만의 사양」 으로도 안 간다.
+_NOT_FREE_SPEC = {"note", "uncertain", "materialtwin"}
+#: 이번 반입이 만든 「이 기종만의 사양」 줄 수. 사양값과 따로 센다 — 섞으면 「사양값 1848」
+#: 이 정의 값처럼 읽힌다.
+_FREE_MADE = 0
+
+
+def _put_free_spec(
+    db: Session,
+    model: EquipmentModel,
+    key: str,
+    raw: Any,
+    source: SpecSource | None,
+    labels: dict[str, tuple[str, str | None, str]],
+) -> bool:
+    """정의 없는 키를 「이 기종만의 사양」 으로. **있는 줄은 안 덮는다** — 사람이 이름을 고쳐
+    둔 것이 재반입에 돌아오면 안 된다. 품번(`not_spec`)은 사양이 아니라 안 들인다."""
+    if key in _NOT_FREE_SPEC:
+        return False
+    label, unit, role = labels.get(key, (key, None, "measure"))
+    if role == "not_spec":
+        return False
+    text = _as_text(raw)
+    if not text:
+        return False
+    exists = db.scalar(
+        select(ModelFreeSpec).where(
+            ModelFreeSpec.model_id == model.id, ModelFreeSpec.source_key == key
+        )
+    )
+    if exists is not None:
+        return False
+    global _FREE_MADE
+    _FREE_MADE += 1
+    db.add(
+        ModelFreeSpec(
+            model_id=model.id,
+            label=label[:150],
+            value_text=text[:4000],
+            unit=unit or None,
+            note=(raw.get("note") if isinstance(raw, dict) else None),
+            source_key=key,
+            origin="catalog",
+            source_id=source.id if source else None,
+        )
+    )
+    return True
+
+
+def _free_labels(cat: Catalog) -> dict[str, tuple[str, str | None, str]]:
+    """온톨로지 키 -> (라벨, 단위, 역할). 서술 키(`control` → 「제어 방식」)가 여기서 이름을
+    얻는다 — 정의로는 안 서지만 「이 기종만의 사양」 으로는 들어간다."""
+    out: dict[str, tuple[str, str | None, str]] = {}
+    # 등록 대기열(`suggested_keys.json`)은 라벨이 비어 있지만 **키 이름에서 읽은 단위**는
+    # 있다(`min_torque_nNm` → nNm). 이름은 안 지어내되 단위는 그 파일의 것을 쓴다.
+    queued = cat.root / "ontology" / "suggested_keys.json"
+    if queued.exists():
+        for row in json.loads(queued.read_text(encoding="utf-8")).get("keys") or []:
+            out[row["key"]] = (
+                row["key"],
+                row.get("unit") or None,
+                row.get("role") or "measure",
+            )
+    for row in _ontology(cat)["keys"]:
+        entry = (
+            row.get("label") or row["key"],
+            row.get("unit") or None,
+            row.get("role") or "measure",
+        )
+        out[row["key"]] = entry
+        for alias in row.get("aliases") or []:
+            out.setdefault(alias, entry)
+    return out
+
+
 def _import_specs(
     db: Session,
     model: EquipmentModel,
@@ -1545,7 +1621,9 @@ def _import_specs(
     source: SpecSource | None,
     promoted: dict[str, tuple[str, float]],
     aliases: dict[str, tuple[str, float]],
+    free_labels: dict[str, tuple[str, str | None, str]] | None = None,
 ) -> int:
+    free_labels = free_labels or {}
     taken = set(
         db.scalars(
             select(ModelSpecValue.definition_id).where(ModelSpecValue.model_id == model.id)
@@ -1590,9 +1668,14 @@ def _import_specs(
         # 없으면 온톨로지에서 승격한 이름으로 찾는다.
         mapped = SOURCE_SPEC_MAP.get(key) or aliases.get(key) or promoted.get(key)
         if mapped is None:
+            # **정의가 없는 키는 「이 기종만의 사양」 으로 들인다.** 전에는 원문 JSON 에만
+            # 남아 화면에서 고칠 수도 정의로 올릴 수도 없었다. 이름은 온톨로지가 알면 그
+            # 라벨, 모르면 원본 키 그대로 — 지어내지 않는다.
+            _put_free_spec(db, model, key, raw, source, free_labels)
             continue
         definition = definitions.get(mapped[0])
         if definition is None:
+            _put_free_spec(db, model, key, raw, source, free_labels)
             continue
         if _put_spec(
             db,
@@ -1697,6 +1780,7 @@ def step_models(
     # 온톨로지가 선언한 별칭·단위 변형. **손 매핑표보다 뒤에 본다** — 거기에는
     # 이쪽만 아는 판단(정의 이름이 다른 것)이 들어 있다.
     aliases = _alias_targets(db, cat)
+    free_labels = _free_labels(cat)
     marker = "원본 확인 필요"
     models = values = flagged = kept = 0
 
@@ -1739,7 +1823,14 @@ def step_models(
                 flagged += 1
             made_here.append(found)
             values += _import_specs(
-                db, found, row.get("specs") or {}, definitions, source, promoted, aliases
+                db,
+                found,
+                row.get("specs") or {},
+                definitions,
+                source,
+                promoted,
+                aliases,
+                free_labels,
             )
             # **원문을 통째로 남긴다.** 정의가 없는 키가 950종 넘고, 그 값은
             # 지금까지 버려지고 있었다 — 아는 것은 사양값으로, 전부는 여기에.
@@ -1862,7 +1953,9 @@ def main() -> int:
             f" · 항목 미정 인용 새로 {pending_methods}"
             f" · 미정에서 링크로 올림 {promoted_methods}"
         )
-        print(f"  기종 새로 {models} · 사양값 새로 {values}")
+        print(
+            f"  기종 새로 {models} · 사양값 새로 {values} · 이 기종만의 사양 새로 {_FREE_MADE}"
+        )
         if kept:
             print(f"  원문 보존 {kept}건 (정의가 없는 값도 통째로 남는다)")
         if flagged:

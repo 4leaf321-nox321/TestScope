@@ -457,6 +457,58 @@ class CitedMethodOut(BaseModel):
     화면이 그 사실을 말해야 채울 마음이 생긴다."""
 
 
+class FreeSpecOut(BaseModel):
+    """이 기종만의 사양 한 줄 — 정의 없이 기종에 직접 붙는 이름·값·단위."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: uuid.UUID
+    label: str
+    value_text: str
+    unit: str | None
+    note: str | None
+    source_key: str | None
+    """원본 키. 있으면 반입이 만든 줄이고, 「정의로 세우기」 가 같은 키의 다른 기종 줄을
+    함께 옮길 수 있다."""
+    origin: str
+    source_id: uuid.UUID | None
+    source_page: int | None
+    same_key_models: int = 0
+    """같은 원본 키를 가진 **다른** 기종 수. 0 이 아니면 정의로 세울 때가 된 것이다 —
+    여러 기종이 공유하는 값은 비교할 수 있어야 한다."""
+
+
+class FreeSpecUpsertRequest(BaseModel):
+    label: str = Field(min_length=1, max_length=150)
+    value_text: str = Field(min_length=1, max_length=4000)
+    unit: str | None = Field(default=None, max_length=40)
+    note: str | None = Field(default=None, max_length=2000)
+    source_id: uuid.UUID | None = None
+    source_page: int | None = Field(default=None, ge=1)
+
+
+class FreeSpecPromoteRequest(BaseModel):
+    """이 기종만의 사양을 **정의로 세운다.** 이름·단위·종류는 사람이 정한다 — 기계가 지어내면
+    그것이 진실이 된다."""
+
+    key: str = Field(pattern=r"^[a-z][a-z0-9_]{1,59}$")
+    label: str = Field(min_length=1, max_length=150)
+    group_id: uuid.UUID
+    kind: str = Field(pattern="^(number|range|text|boolean)$")
+    unit: str = Field(default="", max_length=20)
+    apply_same_key: bool = True
+    """같은 원본 키를 가진 다른 기종의 줄도 함께 옮긴다. 한 기종만 옮기면 나머지는 「이
+    기종만의 사양」 으로 남아 같은 값이 두 자리에 산다."""
+
+
+class FreeSpecPromoteResult(BaseModel):
+    definition_id: uuid.UUID
+    moved: int
+    """정의 값으로 옮긴 줄 수."""
+    left: int
+    """수치로 못 읽어 그대로 둔 줄 수 — 「약 300」 같은 것은 사람이 봐야 한다."""
+
+
 class PendingMethodOut(BaseModel):
     """계열이 인용했는데 어느 시험 항목의 것인지 **아직 안 정해진** 규격 하나. 규격에
     시험 항목을 정하는 순간 그 시험 항목의 `methods` 로 옮겨 간다."""
@@ -653,6 +705,9 @@ class EquipmentModelOut(BaseModel):
     status: str
     summary: str | None
     spec_note: str | None
+    free_specs: list[FreeSpecOut] = []
+    """정의 없이 이 기종에만 붙은 사양. 한 기종에만 나오는 값(803종)의 자리 — 정의 목록을
+    안 부풀리면서 값은 들인다."""
     raw_specs: dict[str, Any]
     """제조사 카탈로그의 **사양 원문 그대로.**
 

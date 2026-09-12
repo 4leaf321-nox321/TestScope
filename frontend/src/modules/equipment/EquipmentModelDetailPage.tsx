@@ -29,6 +29,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi, equipmentApi } from '@/modules/equipment/api'
 import { ModelSpecPanel } from '@/modules/equipment/ModelSpecPanel'
+import { FreeSpecsPanel } from '@/modules/equipment/FreeSpecsPanel'
 import { RawSpecs } from '@/modules/equipment/RawSpecs'
 import { RecordListPanel } from '@/modules/equipment/RecordListPanel'
 
@@ -102,13 +103,27 @@ export default function EquipmentModelDetailPage() {
       {one.spec_note && <p className="text-sm whitespace-pre-wrap">{one.spec_note}</p>}
 
       <ModelSpecPanel
+        // 「정의로 세우기」 가 값을 이쪽으로 옮기면 사양표를 다시 읽어야 한다 — 수가 바뀌면
+        // 다시 그린다.
+        key={`${one.id}:${one.spec_count}`}
         modelId={one.id}
         categoryTermId={one.category_term_id}
         canEdit={one.can_edit}
         onSaved={() => model.reload()}
       />
 
-      <RawSpecs raw={one.raw_specs} empty={one.spec_count === 0} />
+      {/* 정의 있는 사양 → 이 기종만의 사양 → 원문. 위로 갈수록 정제된 것이다. */}
+      <FreeSpecsPanel
+        modelId={one.id}
+        rows={one.free_specs}
+        canEdit={one.can_edit}
+        onChanged={() => model.reload()}
+      />
+
+      <RawSpecs
+        raw={one.raw_specs}
+        empty={one.spec_count === 0 && one.free_specs.length === 0}
+      />
 
       <section className="space-y-3">
         <div>
