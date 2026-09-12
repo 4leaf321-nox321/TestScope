@@ -20,6 +20,15 @@
  * 보고 ✓ 를 누르면 확인이 된다. 둘을 같은 얼굴로 그리면 아무도 되짚지 않고, 「굽힘으로
  * 인장강도」 같은 오답이 확인된 것과 나란히 앉는다.
  *
+ * ## 확인은 줄 단위로 묶는다
+ *
+ * 제안 254건을 알 하나씩 누르게 두면 아무도 끝내지 못한다 — 실제로 확인이 0 인 채로 남아
+ * 있었다. 사람이 실제로 판단하는 단위는 줄이다: 「인장이 내는 것은 이 다섯 개, 맞다」.
+ * 그래서 줄마다 「N개 다 확인」 을 두고, 거른 목록 전체에도 같은 단추를 둔다.
+ *
+ * **되돌릴 길을 같이 둔다.** 묶음은 빠른 만큼 잘못 누르면 크게 잘못되는데, 되돌리기가 없으면
+ * 사람은 아예 안 누른다 — 그러면 한 줄씩 누르는 것과 같아진다.
+ *
  * ## 이어진 것이 없는 줄도 보인다
  *
  * 271 물성 중 시험이 이어진 것은 174 다. 나머지를 숨기면 「우리는 이 물성을 못 잰다」 와
@@ -28,7 +37,7 @@
  */
 
 import { useMemo, useState } from 'react'
-import { Check, Plus, Trash2 } from 'lucide-react'
+import { Check, CheckCheck, Plus, Trash2, Undo2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { useAuth } from '@/shared/auth/AuthContext'
@@ -122,6 +131,37 @@ function LinkChip({
   )
 }
 
+/** 줄 하나를 통째로 확인 — **사람이 실제로 판단하는 단위**다. 「인장이 내는 것은 이
+ *  다섯 개, 맞다」 를 한 번에 말하게 한다. 제안이 없으면 안 보인다. */
+function RowConfirm({
+  admin,
+  busy,
+  label,
+  ids,
+  onConfirm,
+}: {
+  admin: boolean
+  busy: boolean
+  label: string
+  ids: string[]
+  onConfirm: (ids: string[]) => void
+}) {
+  if (!admin || ids.length === 0) return null
+  return (
+    <Button
+      size="sm"
+      variant="ghost"
+      className="h-6 px-1.5 text-xs"
+      disabled={busy}
+      aria-label={`${label} 제안 ${ids.length}개 다 확인`}
+      onClick={() => onConfirm(ids)}
+    >
+      <Check className="mr-1 size-3" />
+      {ids.length}개 다 확인
+    </Button>
+  )
+}
+
 /** 시험 항목 한 줄 — 시험에서 보는 눈. */
 interface ItemRow {
   id: string
@@ -136,6 +176,9 @@ export default function PropertiesPage() {
   const [query, setQuery] = useState('')
   const [domain, setDomain] = useState('')
   const [linkedOnly, setLinkedOnly] = useState(false)
+  /** 확인 안 한 것만 — **검토하는 사람의 눈**이다. 다 확인하면 목록이 비고, 그것이 끝났다는
+   *  표시가 된다. 확인된 것까지 섞여 있으면 어디까지 봤는지 매번 다시 찾는다. */
+  const [suggestedOnly, setSuggestedOnly] = useState(false)
   /** 여럿에 이어진 것만 — 물성 쪽은 「여러 시험에서 나오는 물성」(N:1), 시험 쪽은
    *  「여러 물성을 내는 시험」(1:N). 갈림이 있는 곳이 사람이 봐야 하는 곳이다. */
   const [manyOnly, setManyOnly] = useState(false)
@@ -144,6 +187,9 @@ export default function PropertiesPage() {
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [adding, setAdding] = useState<string | null>(null)
   const [picked, setPicked] = useState('')
+  /** 방금 묶음으로 확인한 것 — 되돌릴 수 있게 id 를 들고 있는다. */
+  const [undoable, setUndoable] = useState<{ ids: string[]; count: number } | null>(null)
+  const [busy, setBusy] = useState(false)
 
   // **전부 받아 둔다** — 271 물성 · 254 연결이라 한 번이면 되고, 두 방향과 반대편
   // 수를 화면이 셀 수 있다. 서버 거르기는 안 쓴다: 반대편 수는 전체를 알아야 맞다.
@@ -178,6 +224,7 @@ export default function PropertiesPage() {
     if (focus?.view === 'property') return one.id === focus.id
     if (domain && one.domain !== domain) return false
     if (linkedOnly && one.links.length === 0) return false
+    if (suggestedOnly && !one.links.some((link) => link.status === 'suggested')) return false
     if (manyOnly && one.links.length < 2) return false
     if (!needle) return true
     return [
@@ -190,6 +237,8 @@ export default function PropertiesPage() {
   const shownItems = itemRows.filter((one) => {
     if (focus?.view === 'item') return one.id === focus.id
     if (linkedOnly && one.links.length === 0) return false
+    if (suggestedOnly && !one.links.some(({ link }) => link.status === 'suggested'))
+      return false
     if (manyOnly && one.links.length < 2) return false
     if (domain && !one.links.some((l) => l.property.domain === domain)) return false
     if (!needle) return true
@@ -217,6 +266,29 @@ export default function PropertiesPage() {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
     }
   }
+
+  /** 제안 여럿을 한 번에 확인한다. **되돌릴 수 있게** 무엇을 바꿨는지 들고 있는다. */
+  async function confirmMany(ids: string[]) {
+    if (ids.length === 0) return
+    setBusy(true)
+    await run(async () => {
+      const got = await propertyApi.bulk(ids, 'confirmed')
+      setUndoable(got.changed > 0 ? { ids, count: got.changed } : null)
+    })
+    setBusy(false)
+  }
+
+  /** 거른 목록에서 아직 확인 안 한 연결 전부. 화면에 보이는 것만 — 안 보이는 것을 함께
+   *  바꾸면 사람이 무엇을 확인한 것인지 알 수 없다. */
+  const shownSuggested = useMemo(() => {
+    if (view === 'property')
+      return shownProps.flatMap((one) =>
+        one.links.filter((link) => link.status === 'suggested').map((link) => link.id),
+      )
+    return shownItems.flatMap((row) =>
+      row.links.filter(({ link }) => link.status === 'suggested').map(({ link }) => link.id),
+    )
+  }, [view, shownProps, shownItems])
 
   function jump(to: View, id: string) {
     setFocus({ view: to, id })
@@ -369,7 +441,59 @@ export default function PropertiesPage() {
           />
           {view === 'property' ? '여러 시험에서 나오는 물성만' : '여러 물성을 내는 시험만'}
         </label>
+        <label className="text-muted-foreground flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={suggestedOnly}
+            onChange={(event) => {
+              setSuggestedOnly(event.target.checked)
+              setFocus(null)
+            }}
+          />
+          {/* 검토하는 사람의 눈 — 다 확인하면 목록이 비고, 그것이 끝났다는 표시가 된다. */}
+          확인 안 한 것만
+        </label>
       </div>
+
+      {admin && suggested > 0 && (
+        <div className="flex flex-wrap items-center gap-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm dark:bg-amber-950/30">
+          <p>
+            기계가 제안한 연결 <strong>{suggested}건</strong>을 아직 아무도 확인하지
+            않았습니다. 확인된 연결만이 「이 물성은 이 시험으로 나온다」 의 근거가 되고,
+            내보내기가 카탈로그에 싣는 값입니다.
+          </p>
+          {shownSuggested.length > 0 && (
+            <Button size="sm" disabled={busy} onClick={() => void confirmMany(shownSuggested)}>
+              <CheckCheck className="size-4" />
+              {/* **보이는 것만.** 안 보이는 것까지 바꾸면 사람이 무엇을 확인한 것인지 모른다. */}
+              지금 보이는 {shownSuggested.length}건 다 확인
+            </Button>
+          )}
+        </div>
+      )}
+
+      {undoable && (
+        <div className="flex flex-wrap items-center gap-3 rounded-md border p-3 text-sm">
+          <span>
+            <strong>{undoable.count}건</strong>을 확인으로 올렸습니다.
+          </span>
+          {/* 되돌릴 길이 없으면 사람은 묶음 단추를 아예 안 누른다. */}
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={busy}
+            onClick={() =>
+              void run(async () => {
+                await propertyApi.bulk(undoable.ids, 'suggested')
+                setUndoable(null)
+              })
+            }
+          >
+            <Undo2 className="size-4" />
+            되돌리기
+          </Button>
+        </div>
+      )}
 
       {properties.data && (
         <p className="text-muted-foreground text-sm">
@@ -456,6 +580,15 @@ export default function PropertiesPage() {
                             one.id,
                             new Set(one.links.map((l) => l.test_item_term_id)),
                           )}
+                          <RowConfirm
+                            admin={admin}
+                            busy={busy}
+                            label={one.value}
+                            ids={one.links
+                              .filter((link) => link.status === 'suggested')
+                              .map((link) => link.id)}
+                            onConfirm={confirmMany}
+                          />
                         </div>
                       </td>
                     </tr>
@@ -498,6 +631,15 @@ export default function PropertiesPage() {
                       </span>
                     )}
                     {adder('item', row.id, new Set(row.links.map((l) => l.property.id)))}
+                    <RowConfirm
+                      admin={admin}
+                      busy={busy}
+                      label={row.value}
+                      ids={row.links
+                        .filter(({ link }) => link.status === 'suggested')
+                        .map(({ link }) => link.id)}
+                      onConfirm={confirmMany}
+                    />
                   </div>
                 </td>
               </tr>

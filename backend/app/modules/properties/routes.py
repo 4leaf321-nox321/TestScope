@@ -15,6 +15,8 @@ from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.properties import services
 from app.modules.properties.schemas import (
+    LinkBulkRequest,
+    LinkBulkResult,
     PropertyOut,
     TestItemPropertyCreateRequest,
     TestItemPropertyOut,
@@ -66,6 +68,23 @@ def create_link(
 ) -> TestItemPropertyOut:
     row = services.create_link(db, user, payload.model_dump())
     return services.link_out(db, row)
+
+
+@links_router.patch("/bulk", response_model=LinkBulkResult)
+def bulk_update(
+    payload: LinkBulkRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> LinkBulkResult:
+    """제안 여럿을 **한 번에** 확인하거나 되돌린다.
+
+    254건을 한 줄씩 누르게 두면 아무도 끝내지 못한다 — 실제로 확인 0 인 채로 남아 있었다.
+    사람이 보는 단위는 줄(한 시험 항목이 내는 물성들)이라 그 단위로 받는다.
+
+    `/{link_id}` 보다 **먼저 선언한다.** 뒤에 두면 「bulk」 가 연결 id 로 읽혀 422 가 난다.
+    """
+    changed, rows = services.bulk_status(db, user, payload.link_ids, payload.status)
+    return LinkBulkResult(changed=changed, links=[services.link_out(db, one) for one in rows])
 
 
 @links_router.patch("/{link_id}", response_model=TestItemPropertyOut)

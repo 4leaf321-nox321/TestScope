@@ -50,6 +50,13 @@ vi.mock('@/shared/api/client', () => ({
     }),
     patch: vi.fn(async (url: string, body: unknown) => {
       calls.push({ method: 'PATCH', url, body })
+      if (url.endsWith('/bulk')) {
+        const ids = (body as { link_ids: string[] }).link_ids
+        return {
+          changed: ids.length,
+          links: ids.map((id) => link({ id, status: 'confirmed' })),
+        }
+      }
       return link({ status: 'confirmed' })
     }),
     delete: vi.fn(async (url: string) => {
@@ -201,5 +208,46 @@ describe('물성 항목', () => {
       fireEvent.click(screen.getByLabelText('고속 인장 연결 지우기'))
     })
     expect(calls.find((one) => one.method === 'DELETE')?.url).toBe('/test-item-properties/l2')
+  })
+})
+
+describe('묶어서 확인', () => {
+  it('줄 하나를 통째로 확인한다 — 사람이 판단하는 단위가 줄이다', async () => {
+    admin = true
+    await open()
+    // 「인장강도(UTS)」 줄에 제안이 하나 있다.
+    const button = screen.getByLabelText('인장강도(UTS) 제안 1개 다 확인')
+    await act(async () => {
+      fireEvent.click(button)
+    })
+    const sent = calls.find((one) => one.url.endsWith('/bulk'))
+    expect(sent?.body).toEqual({ link_ids: ['l1'], status: 'confirmed' })
+  })
+
+  it('보이는 것만 확인하고, 되돌릴 길을 둔다', async () => {
+    admin = true
+    await open()
+    // 254건을 한 줄씩 누르게 두면 아무도 끝내지 못한다.
+    await act(async () => {
+      fireEvent.click(screen.getByText('지금 보이는 1건 다 확인'))
+    })
+    expect(calls.filter((one) => one.url.endsWith('/bulk')).length).toBe(1)
+    // 되돌릴 길이 없으면 사람은 묶음 단추를 아예 안 누른다.
+    await act(async () => {
+      fireEvent.click(screen.getByText('되돌리기'))
+    })
+    const back = calls.filter((one) => one.url.endsWith('/bulk'))
+    expect(back[back.length - 1].body).toEqual({ link_ids: ['l1'], status: 'suggested' })
+  })
+
+  it('확인 안 한 것만 거르면 다 확인한 줄은 사라진다', async () => {
+    admin = true
+    await open()
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('확인 안 한 것만'))
+    })
+    // 「밴드갭」 은 제안이 없어 빠진다 — 남은 것이 할 일이고, 비면 끝난 것이다.
+    expect(screen.queryByText('밴드갭')).toBeNull()
+    expect(screen.getByText('인장강도(UTS)')).toBeTruthy()
   })
 })

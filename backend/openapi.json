@@ -5774,6 +5774,48 @@
         }
       }
     },
+    "/api/test-item-properties/bulk": {
+      "patch": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Bulk Update",
+        "description": "제안 여럿을 **한 번에** 확인하거나 되돌린다.\n\n254건을 한 줄씩 누르게 두면 아무도 끝내지 못한다 — 실제로 확인 0 인 채로 남아 있었다.\n사람이 보는 단위는 줄(한 시험 항목이 내는 물성들)이라 그 단위로 받는다.\n\n`/{link_id}` 보다 **먼저 선언한다.** 뒤에 두면 「bulk」 가 연결 id 로 읽혀 422 가 난다.",
+        "operationId": "bulk_update_api_test_item_properties_bulk_patch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkBulkRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LinkBulkResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/test-item-properties/{link_id}": {
       "patch": {
         "tags": [
@@ -10842,6 +10884,53 @@
         ],
         "title": "LimitUpsertRequest",
         "description": "조건 한 칸의 범위를 넣거나 덮어쓴다.\n\n**값은 화면 단위로 받고 서버가 SI 로 바꾸지 않는다** — 프론트가 조건 정의의\nsi_unit 을 보고 이미 환산해 보낸다. 환산을 두 곳에서 하면 언젠가 한쪽만\n고쳐지고, 그때 저장된 숫자가 조용히 세 자릿수 틀린다."
+      },
+      "LinkBulkRequest": {
+        "properties": {
+          "link_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Link Ids"
+          },
+          "status": {
+            "type": "string",
+            "pattern": "^(suggested|confirmed)$",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "link_ids",
+          "status"
+        ],
+        "title": "LinkBulkRequest",
+        "description": "제안 여럿을 **한 번에** 확인하거나 되돌린다.\n\n254건을 한 줄씩 누르게 두면 아무도 끝내지 못하고, 그 사이 연결은 계속 「기계가 그렇게\n말했다」 로 남는다. 사람이 보는 단위는 줄(한 시험 항목이 내는 물성들)이라 그 단위로\n받는다."
+      },
+      "LinkBulkResult": {
+        "properties": {
+          "changed": {
+            "type": "integer",
+            "title": "Changed"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/TestItemPropertyOut"
+            },
+            "type": "array",
+            "title": "Links"
+          }
+        },
+        "type": "object",
+        "required": [
+          "changed",
+          "links"
+        ],
+        "title": "LinkBulkResult"
       },
       "LoginRequest": {
         "properties": {

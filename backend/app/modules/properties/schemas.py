@@ -48,6 +48,28 @@ class TestItemPropertyCreateRequest(BaseModel):
     """덧붙는 조건 — 「신율계 필요」 처럼."""
 
 
+class LinkBulkRequest(BaseModel):
+    """제안 여럿을 **한 번에** 확인하거나 되돌린다.
+
+    254건을 한 줄씩 누르게 두면 아무도 끝내지 못하고, 그 사이 연결은 계속 「기계가 그렇게
+    말했다」 로 남는다. 사람이 보는 단위는 줄(한 시험 항목이 내는 물성들)이라 그 단위로
+    받는다.
+    """
+
+    link_ids: list[uuid.UUID] = Field(min_length=1, max_length=500)
+    """한 번에 500까지. 넘으면 거르고 나눠서 한다 — 한 번에 다 누르는 것은 확인이 아니다."""
+    status: str = Field(pattern="^(suggested|confirmed)$")
+    """`confirmed` 가 확인, `suggested` 가 되돌리기(잘못 눌렀을 때)."""
+
+
+class LinkBulkResult(BaseModel):
+    changed: int
+    """실제로 바뀐 줄 수. 이미 그 상태였던 것은 안 센다 — 「254건 확인」 이라 말해 놓고
+    그중 200이 이미 확인이었으면 사람이 자기가 무엇을 했는지 모른다."""
+    links: list[TestItemPropertyOut]
+    """바뀐 줄들. 화면이 다시 안 받아도 되게."""
+
+
 class TestItemPropertyUpdateRequest(BaseModel):
     status: str | None = Field(default=None, pattern="^(suggested|confirmed)$")
     note: str | None = Field(default=None, max_length=2000)

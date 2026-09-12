@@ -5,6 +5,7 @@ import type { components } from '@/shared/api/schema'
 
 export type Property = components['schemas']['PropertyOut']
 export type TestItemProperty = components['schemas']['TestItemPropertyOut']
+export type LinkBulkResult = components['schemas']['LinkBulkResult']
 
 export const propertyApi = {
   list: (params: { q?: string; domain?: string; linkedOnly?: boolean } = {}) => {
@@ -29,6 +30,12 @@ export const propertyApi = {
   }) => api.post<TestItemProperty>('/test-item-properties', body),
   update: (id: string, body: { status?: string; note?: string | null }) =>
     api.patch<TestItemProperty>(`/test-item-properties/${id}`, body),
+  /** 제안 여럿을 한 번에 확인하거나 되돌린다. 한 줄씩 누르게 두면 아무도 끝내지 못한다. */
+  bulk: (linkIds: string[], status: 'confirmed' | 'suggested') =>
+    api.patch<LinkBulkResult>('/test-item-properties/bulk', {
+      link_ids: linkIds,
+      status,
+    }),
   unlink: (id: string) => api.delete<void>(`/test-item-properties/${id}`),
 }
 

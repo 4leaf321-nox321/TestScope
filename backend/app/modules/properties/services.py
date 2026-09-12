@@ -17,6 +17,7 @@ from app.modules.accounts.models import User
 from app.modules.properties.models import TestItemProperty
 from app.modules.properties.schemas import PropertyOut, TestItemPropertyOut
 from app.modules.vocabulary.models import Vocabulary, VocabularyAlias, VocabularyTerm
+from app.shared import audit
 from app.shared.errors import Conflict, Forbidden, NotFound
 
 #: 물성 축의 slug. 반입·화면·검색이 이 이름으로 건다.
@@ -235,6 +236,54 @@ def update_link(
     db.commit()
     db.refresh(row)
     return row
+
+
+def bulk_status(
+    db: Session, user: User, link_ids: list[uuid.UUID], status: str
+) -> tuple[int, list[TestItemProperty]]:
+    """제안 여럿을 한 번에 확인하거나 되돌린다. (바뀐 수, 그 줄들).
+
+    **이미 그 상태인 것은 안 센다.** 「254건 확인했습니다」 라고 말해 놓고 그중 200이 이미
+    확인이었으면, 사람은 자기가 무엇을 한 것인지 모른다.
+
+    없는 id 는 조용히 건너뛴다 — 화면이 들고 있던 목록과 DB 가 어긋나는 것은 남이 그 사이
+    지웠다는 뜻이고, 그때 전체를 막으면 나머지 249건을 다시 눌러야 한다.
+    """
+    _require_admin(user)
+    rows = list(db.scalars(select(TestItemProperty).where(TestItemProperty.id.in_(link_ids))))
+    changed: list[TestItemProperty] = []
+    for row in rows:
+        if row.status == status:
+            continue
+        if status == "confirmed":
+            row.confirmed_by_id = user.id
+            row.confirmed_at = datetime.now(UTC)
+        else:
+            row.confirmed_by_id = None
+            row.confirmed_at = None
+        row.status = status
+        changed.append(row)
+    if changed:
+        audit.record(
+            db,
+            action=audit.PROPERTY_LINKS_REVIEWED,
+            actor=user,
+            target_table="test_item_properties",
+            target_id=None,
+            target_label=(
+                f"물성 연결 {len(changed)}건 {'확인' if status == 'confirmed' else '되돌림'}"
+            ),
+            changes={
+                "status": status,
+                "count": len(changed),
+                # 무엇을 확인했는지 — id 는 나중에 되짚을 수 없다.
+                "pairs": sorted(
+                    f"{one.test_item_term_id}:{one.property_term_id}" for one in changed
+                )[:200],
+            },
+        )
+    db.commit()
+    return len(changed), rows
 
 
 def delete_link(db: Session, user: User, link_id: uuid.UUID) -> None:

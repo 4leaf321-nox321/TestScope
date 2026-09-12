@@ -256,3 +256,68 @@ def test_물성_축은_닫혀_있고_쓰임_수를_센다(
         "/api/vocabularies/property/terms", params={"q": tag}, headers=admin.headers
     ).json()
     assert terms[0]["usage_count"] == 1
+
+
+def test_제안을_묶어서_확인하고_되돌린다(
+    client: TestClient,
+    admin: Signed,
+    term_factory: Callable[[str, str], str],
+) -> None:
+    """**254건을 한 줄씩 누르게 두면 아무도 끝내지 못한다** — 실제로 확인 0 인 채였다.
+
+    사람이 보는 단위는 줄(한 시험이 내는 물성들)이라 그 단위로 받고, 잘못 눌렀을 때
+    되돌아갈 길을 같이 둔다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    item = term_factory("test_item", f"인장-{tag}")
+    props = [
+        _property(client, admin, f"물성{index}-{tag}", f"mechanical.p{index}_{tag}")
+        for index in range(3)
+    ]
+    links = [_link(client, admin, item, one) for one in props]
+    # 손으로 더한 것은 확인이므로, 묶음 확인을 보려면 제안으로 돌려놓는다(반입이 넣는 모양).
+    for one in links:
+        client.patch(
+            f"/api/test-item-properties/{one['id']}",
+            json={"status": "suggested"},
+            headers=admin.headers,
+        )
+
+    got = client.patch(
+        "/api/test-item-properties/bulk",
+        json={"link_ids": [one["id"] for one in links], "status": "confirmed"},
+        headers=admin.headers,
+    )
+    assert got.status_code == 200, got.text
+    assert got.json()["changed"] == 3
+    assert all(one["status"] == "confirmed" for one in got.json()["links"])
+    assert all(one["confirmed_at"] for one in got.json()["links"])
+
+    # **이미 그 상태인 것은 안 센다.** 「3건 확인」 이라 말해 놓고 0건이 바뀌면 사람은
+    # 자기가 무엇을 한 것인지 모른다.
+    again = client.patch(
+        "/api/test-item-properties/bulk",
+        json={"link_ids": [one["id"] for one in links], "status": "confirmed"},
+        headers=admin.headers,
+    )
+    assert again.json()["changed"] == 0
+
+    back = client.patch(
+        "/api/test-item-properties/bulk",
+        json={"link_ids": [links[0]["id"]], "status": "suggested"},
+        headers=admin.headers,
+    )
+    assert back.json()["changed"] == 1
+    assert back.json()["links"][0]["confirmed_at"] is None
+
+    # 없는 id 는 조용히 건너뛴다 — 남이 그 사이 지웠다고 나머지를 막으면 다시 다 눌러야 한다.
+    mixed = client.patch(
+        "/api/test-item-properties/bulk",
+        json={"link_ids": [links[0]["id"], str(uuid.uuid4())], "status": "confirmed"},
+        headers=admin.headers,
+    )
+    assert mixed.status_code == 200, mixed.text
+    assert mixed.json()["changed"] == 1
+
+    # 「bulk」 가 연결 id 로 읽히면 안 된다 — 라우트 순서.
+    assert client.get("/api/test-item-properties", headers=admin.headers).status_code == 200

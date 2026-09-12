@@ -1744,6 +1744,31 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/test-item-properties/bulk": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Bulk Update
+         * @description 제안 여럿을 **한 번에** 확인하거나 되돌린다.
+         *
+         *     254건을 한 줄씩 누르게 두면 아무도 끝내지 못한다 — 실제로 확인 0 인 채로 남아 있었다.
+         *     사람이 보는 단위는 줄(한 시험 항목이 내는 물성들)이라 그 단위로 받는다.
+         *
+         *     `/{link_id}` 보다 **먼저 선언한다.** 뒤에 두면 「bulk」 가 연결 id 로 읽혀 422 가 난다.
+         */
+        patch: operations["bulk_update_api_test_item_properties_bulk_patch"];
+        trace?: never;
+    };
     "/api/test-item-properties/{link_id}": {
         parameters: {
             query?: never;
@@ -3512,6 +3537,27 @@ export interface components {
              * @default false
              */
             requires_accessory: boolean;
+        };
+        /**
+         * LinkBulkRequest
+         * @description 제안 여럿을 **한 번에** 확인하거나 되돌린다.
+         *
+         *     254건을 한 줄씩 누르게 두면 아무도 끝내지 못하고, 그 사이 연결은 계속 「기계가 그렇게
+         *     말했다」 로 남는다. 사람이 보는 단위는 줄(한 시험 항목이 내는 물성들)이라 그 단위로
+         *     받는다.
+         */
+        LinkBulkRequest: {
+            /** Link Ids */
+            link_ids: string[];
+            /** Status */
+            status: string;
+        };
+        /** LinkBulkResult */
+        LinkBulkResult: {
+            /** Changed */
+            changed: number;
+            /** Links */
+            links: components["schemas"]["TestItemPropertyOut"][];
         };
         /** LoginRequest */
         LoginRequest: {
@@ -8718,6 +8764,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TestItemPropertyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    bulk_update_api_test_item_properties_bulk_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LinkBulkRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LinkBulkResult"];
                 };
             };
             /** @description Validation Error */

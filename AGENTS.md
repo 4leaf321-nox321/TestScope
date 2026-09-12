@@ -80,7 +80,9 @@
 - **물성은 시험 항목과 N:M 으로 잇고, 물성의 정본은 MaterialTwin 키다**(ADR 0007).
   기준정보 축 `property` 의 값은 `code` 가 `mechanical.yield_strength` 이고 한글 이름은
   바뀔 수 있다 — 코드·반입·검색은 code 로 건다. 연결(`test_item_properties`)은 기계가
-  제안하고 사람이 확인한다; **제안을 확인처럼 그리지 않는다.** 시험 항목을 물성으로
+  제안하고 사람이 확인한다; **제안을 확인처럼 그리지 않는다.** 확인은 **줄 단위로 묶어서**
+  한다(`PATCH /test-item-properties/bulk`) — 254건을 알 하나씩 누르게 두었더니 확인이 0 인
+  채로 남았다. 묶음에는 되돌리기를 같이 둔다; 없으면 사람이 아예 안 누른다. 시험 항목을 물성으로
   쪼개지 않는다 — 「인장」 은 다섯 물성을 내고, 「DSC」 는 여섯을 낸다.
 - **MaterialTwin 은 또 하나의 카탈로그 출처다.** DB 를 직접 반입하지 않고
   `source/catalog/tools_from_materialtwin.py` 가 객체 JSON 으로 바꾼다 — 반입 경로가 둘이면

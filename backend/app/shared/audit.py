@@ -67,6 +67,12 @@ EQUIPMENT_IMPORTED = "equipment.imported"
 EQUIPMENT_RETIRED = "equipment.retired"
 EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"
+PROPERTY_LINKS_REVIEWED = "property_link.reviewed"
+"""**물성↔시험 항목 제안을 묶어서 확인(또는 되돌림).** 한 번에 수십 줄이 바뀌는 일이라
+줄마다 남기면 감사가 그것으로 덮인다 — 한 줄에 몇 건을 어느 쪽으로 옮겼는지 담는다.
+
+이 확인은 검색이 물성으로 시험 항목을 펼칠 때 쓰는 근거이고, 내보내기가 카탈로그
+정본(`property_links.json`)에 싣는 값이다. 누가 언제 무엇을 확인했는지는 남아야 한다."""
 METHOD_REQUIREMENTS_IMPORTED = "method.requirements_imported"
 
 
