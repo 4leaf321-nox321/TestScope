@@ -9,6 +9,7 @@ import { Link, useParams } from 'react-router-dom'
 
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
+import { RecordListPanel } from '@/modules/equipment/RecordListPanel'
 import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs'
 import { useResource } from '@/shared/hooks/useResource'
@@ -40,6 +41,9 @@ export default function EquipmentDetailPage() {
 
   return (
     <div className="space-y-6">
+      {/* 옆 장비로 뒤로 가지 않고 건너뛴다 — 한 부서의 장비를 훑는 일이 흔하다. */}
+      <RecordListPanel kind="equipment" currentId={one.id} />
+
       <PageHeader
         back={{ to: '/equipment', label: '보유 장비' }}
         title={

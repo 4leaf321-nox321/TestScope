@@ -30,6 +30,7 @@ import { useResource } from '@/shared/hooks/useResource'
 import { catalogApi, equipmentApi } from '@/modules/equipment/api'
 import { ModelSpecPanel } from '@/modules/equipment/ModelSpecPanel'
 import { RawSpecs } from '@/modules/equipment/RawSpecs'
+import { RecordListPanel } from '@/modules/equipment/RecordListPanel'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 기종과 구별되지 않는다. */
 function shownRange(min: number | null, max: number | null, unit: string): string {
@@ -51,6 +52,9 @@ export default function EquipmentModelDetailPage() {
 
   return (
     <div className="space-y-6">
+      {/* 옆 기종으로 뒤로 가지 않고 건너뛴다 — 같은 계열의 기종을 견주는 일이 흔하다. */}
+      <RecordListPanel kind="model" currentId={one.id} />
+
       <PageHeader
         back={{ to: `/catalog/equipment-series/${one.series_id}`, label: one.series_name }}
         title={one.name}

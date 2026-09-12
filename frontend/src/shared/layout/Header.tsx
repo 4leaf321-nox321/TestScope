@@ -8,7 +8,17 @@
 
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { KeyRound, LogOut, Moon, PanelLeft, Search, Sun, User, UserCog } from 'lucide-react'
+import {
+  KeyRound,
+  List,
+  LogOut,
+  Moon,
+  PanelLeft,
+  Search,
+  Sun,
+  User,
+  UserCog,
+} from 'lucide-react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
@@ -32,6 +42,7 @@ import {
 import { Separator } from '@/shared/components/ui/separator'
 import { ChangePasswordDialog } from '@/shared/layout/ChangePasswordDialog'
 import { NotificationBell } from '@/shared/layout/NotificationBell'
+import { useLeftPanel } from '@/shared/layout/SidePanel'
 import { useTheme } from '@/shared/theme/ThemeProvider'
 
 interface HeaderProps {
@@ -46,6 +57,9 @@ export function Header({ onToggleSidebar, workspaceSlug }: HeaderProps) {
   const navigate = useNavigate()
   const params = useParams<{ slug?: string }>()
   const [query, setQuery] = useState('')
+  // 목록 패널을 쓰는 화면에서만 단추가 뜬다 — 없는 것을 여는 단추가 남아 있으면
+  // 눌러도 아무 일이 안 일어나고, 그때 사람은 화면이 고장 난 줄 안다.
+  const panel = useLeftPanel()
 
   // **상단은 넘기기만 한다.** 결과를 여기서 그리면 화면마다 다른 자리에 뜨고,
   // 주소로 공유할 수도 없다 — /search?q= 가 곧 그 검색이다.
@@ -79,6 +93,18 @@ export function Header({ onToggleSidebar, workspaceSlug }: HeaderProps) {
       >
         <PanelLeft className="size-4" />
       </Button>
+
+      {panel.label && (
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={panel.toggle}
+          aria-label={`${panel.label} 목록 접기/펼치기`}
+          aria-pressed={panel.open}
+        >
+          <List className="size-4" />
+        </Button>
+      )}
 
       <Separator orientation="vertical" className="mx-1 h-6" />
 

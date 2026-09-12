@@ -18,6 +18,7 @@ import { Skeleton } from '@/shared/components/ui/skeleton'
 import { Header } from '@/shared/layout/Header'
 import { DEFAULT_WORKSPACE } from '@/shared/layout/navigation'
 import { NoticePopup } from '@/modules/notices/NoticePopup'
+import { LeftPanelHost, LeftPanelProvider } from '@/shared/layout/SidePanel'
 import { Sidebar, SidebarDrawer } from '@/shared/layout/Sidebar'
 
 /** 화면 조각을 받아 오는 동안. **빈 화면을 보이지 않는다.** */
@@ -44,38 +45,44 @@ export function AppShell() {
     slug ?? user?.home_workspace_slug ?? user?.memberships[0]?.slug ?? DEFAULT_WORKSPACE
 
   return (
-    <div className="flex h-svh overflow-hidden">
-      <Sidebar collapsed={collapsed} workspaceSlug={workspaceSlug} />
-      <SidebarDrawer open={drawer} onOpenChange={setDrawer} workspaceSlug={workspaceSlug} />
+    <LeftPanelProvider>
+      <div className="flex h-svh overflow-hidden">
+        <Sidebar collapsed={collapsed} workspaceSlug={workspaceSlug} />
+        <SidebarDrawer open={drawer} onOpenChange={setDrawer} workspaceSlug={workspaceSlug} />
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <Header
-          // **같은 단추가 화면 폭에 따라 다른 일을 한다.** 넓으면 붙박이
-          // 사이드바를 접고, 좁으면(md 미만, 사이드바가 아예 없다) 서랍을 연다.
-          onToggleSidebar={() => {
-            if (window.matchMedia('(min-width: 768px)').matches) {
-              setCollapsed((value) => !value)
-            } else {
-              setDrawer(true)
-            }
-          }}
-          workspaceSlug={workspaceSlug}
-        />
-        <main className="flex-1 overflow-auto">
-          {/* **본문은 폭을 다 쓴다.** 상한을 두면 넓은 표가 접히고, 그때마다
+        {/* 사이드바 **바로 옆**. 상세 화면이 목록을 여기 넣는다 — 본문 안에 두면 본문의
+          여백 안으로 들어가고 본문과 함께 스크롤된다. 아무도 안 쓰면 폭이 0 이다. */}
+        <LeftPanelHost />
+
+        <div className="flex min-w-0 flex-1 flex-col">
+          <Header
+            // **같은 단추가 화면 폭에 따라 다른 일을 한다.** 넓으면 붙박이
+            // 사이드바를 접고, 좁으면(md 미만, 사이드바가 아예 없다) 서랍을 연다.
+            onToggleSidebar={() => {
+              if (window.matchMedia('(min-width: 768px)').matches) {
+                setCollapsed((value) => !value)
+              } else {
+                setDrawer(true)
+              }
+            }}
+            workspaceSlug={workspaceSlug}
+          />
+          <main className="flex-1 overflow-auto">
+            {/* **본문은 폭을 다 쓴다.** 상한을 두면 넓은 표가 접히고, 그때마다
               「이 화면도 예외로」 가 반복돼 목록이 곧 전부가 된다. 좁아야 하는
               화면은 자기 안에서 다시 좁힌다. */}
-          <div className="w-full px-6 pb-6">
-            <Suspense fallback={<PageSkeleton />}>
-              <Outlet />
-            </Suspense>
-          </div>
-        </main>
-      </div>
+            <div className="w-full px-6 pb-6">
+              <Suspense fallback={<PageSkeleton />}>
+                <Outlet />
+              </Suspense>
+            </div>
+          </main>
+        </div>
 
-      {/* 읽지 않은 팝업 공지는 스스로 뜬다 — 공지 화면에 들어가야만 보이면
+        {/* 읽지 않은 팝업 공지는 스스로 뜬다 — 공지 화면에 들어가야만 보이면
           "배포 없이 안내를 전한다" 는 목적이 성립하지 않는다. */}
-      <NoticePopup />
-    </div>
+        <NoticePopup />
+      </div>
+    </LeftPanelProvider>
   )
 }

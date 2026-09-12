@@ -14,6 +14,7 @@ import { ApiError } from '@/shared/api/client'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
+import { RecordListPanel } from '@/modules/equipment/RecordListPanel'
 import { Badge } from '@/shared/components/ui/badge'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
@@ -153,6 +154,9 @@ export default function EquipmentSeriesDetailPage() {
 
   return (
     <div className="space-y-6">
+      {/* 옆 계열로 뒤로 가지 않고 건너뛴다 — 같은 분류의 계열을 견주는 일이 흔하다. */}
+      <RecordListPanel kind="series" currentId={one.id} />
+
       <PageHeader
         back={{ to: '/catalog/equipment-series', label: '장비 계열' }}
         title={one.name_ko || one.name}
