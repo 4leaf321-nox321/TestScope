@@ -25,17 +25,11 @@ import {
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/shared/components/ui/select'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
-import { catalogApi, seriesApi } from '@/modules/equipment/api'
+import { catalogApi } from '@/modules/equipment/api'
+import { SeriesPicker } from '@/modules/equipment/SeriesPicker'
 
 export function NewEquipmentModelDialog({
   open,
@@ -49,7 +43,6 @@ export function NewEquipmentModelDialog({
   onClose: () => void
   onCreated: () => void
 }) {
-  const list = useResource(() => seriesApi.list({ limit: 200 }), [])
   // 형태는 축의 값이다 — 열여섯 남짓이라 피커 하나로 다 보인다.
   const formFactors = useResource(() => vocabularyApi.terms(AXIS.formFactor), [])
 
@@ -104,18 +97,13 @@ export function NewEquipmentModelDialog({
           {!seriesId && (
             <div className="space-y-2">
               <Label htmlFor="model-series">계열</Label>
-              <Select value={series} onValueChange={setSeries}>
-                <SelectTrigger id="model-series">
-                  <SelectValue placeholder="계열 고르기" />
-                </SelectTrigger>
-                <SelectContent>
-                  {(list.data?.items ?? []).map((one) => (
-                    <SelectItem key={one.id} value={one.id}>
-                      {[one.maker, one.name_ko || one.name].filter(Boolean).join(' · ')}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              {/* **목록을 받아 두지 않는다.** 계열 265개를 200개씩 받으면 나머지는
+                  조용히 안 보이고, 못 찾은 사람은 같은 계열을 하나 더 만든다. */}
+              <SeriesPicker
+                id="model-series"
+                value={series}
+                onChange={(id) => setSeries(id)}
+              />
               <p className="text-muted-foreground text-xs">
                 없으면 계열을 먼저 만듭니다. 단품이라도 기종 하나짜리 계열로 둡니다.
               </p>
