@@ -26,6 +26,14 @@
   {
    "origin": "materialtwin-20260905/instrument/37",
    "note": "Bruker VERTEX Series (70v / 80 / 80v) · metrology_catalogs/chemical/Bruker_VERTEXseries.pdf"
+  },
+  {
+   "file": "bruker/vertex-series-brochure.pdf",
+   "pages": [
+    3,
+    7
+   ],
+   "note": "VERTEX 시리즈 브로슈어 사양표"
   }
  ],
  "confidence": "limited",
@@ -59,6 +67,17 @@
       "notes": "FT-IR 이 직접 재는 것은 적외 흡수 스펙트럼이고 조성은 거기서 나오는 해석 결과다. 이 flyer 에는 정성·정량 분석 성능(검출한계, 정량 정확도)이 하나도 인쇄되어 있지 않아 medium 으로 두고 범위는 전부 비웠다."
      }
     ]
+   },
+   "specs": {
+    "spectral_range_cm1": {
+     "min": 10,
+     "max": 28000,
+     "note": "옵션 광학 부품으로 원적외~자외; 표준 MIR 은 KBr 빔스플리터 7500~370 cm⁻¹"
+    },
+    "spectral_resolution_cm1": {
+     "max": 0.4,
+     "note": "옵션 0.16"
+    }
    }
   },
   {
@@ -83,6 +102,17 @@
       "notes": "조성은 스펙트럼 해석 결과다. 정량 사양 인쇄 없음."
      }
     ]
+   },
+   "specs": {
+    "spectral_range_cm1": {
+     "min": 10,
+     "max": 28000,
+     "note": "진공 광학계; 6000~50 cm⁻¹ 한 번에"
+    },
+    "spectral_resolution_cm1": {
+     "max": 0.4,
+     "note": "옵션 0.16"
+    }
    }
   },
   {

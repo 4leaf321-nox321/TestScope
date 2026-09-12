@@ -149,7 +149,18 @@
     },
     {
       "model": "PC-702R8",
-      "specs": {},
+      "specs": {
+        "temperature_degC": {
+          "min": 105,
+          "max": 133.3,
+          "note": "포화(100 %RH) 105.0~133.3 °C (PC-422R8 기준); 불포화 최대 142.9 °C 급"
+        },
+        "pressure_MPa": {
+          "min": 0.019,
+          "max": 0.208,
+          "note": "게이지압 (PC-422R8 기준)"
+        }
+      },
       "uncertain": true
     }
   ],
@@ -187,6 +198,11 @@
         13
       ],
       "note": "유통사(SIMAC) 발표자료 — 모델별 상세 사양표는 미포함"
+    },
+    {
+      "url": "https://hastest.com/product/hirayama-pc-r8-hast-chamber/",
+      "retrieved": "2026-09-12",
+      "note": "PC-R8 계열 공통 범위(웹) — 702R8 은 대용량형, 용적은 미확인"
     }
   ],
   "confidence": "limited",

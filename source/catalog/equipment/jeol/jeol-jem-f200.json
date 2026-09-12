@@ -13,6 +13,11 @@
   {
    "origin": "materialtwin-20260905/instrument/10",
    "note": "JEOL JEM-F200 (F2) Multi-purpose Electron Microscope · metrology_catalogs/surface/JEOL_JEM-F200_TEM.pdf"
+  },
+  {
+   "url": "https://www.jeol.com/products/scientific/tem/JEM-F200.php",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지 사양표(웹)"
   }
  ],
  "confidence": "limited",
@@ -32,6 +37,20 @@
     "doc_path": "metrology_catalogs/surface/JEOL_JEM-F200_TEM.pdf",
     "source_title": "JEOL JEM-F200 (F2) Multi-purpose Electron Microscope",
     "capabilities": []
+   },
+   "specs": {
+    "accelerating_voltage_kV": {
+     "min": 20,
+     "max": 200
+    },
+    "tem_resolution_nm": {
+     "min": 0.19,
+     "note": "TEM 점분해능 0.19 nm(200 kV) · 격자 0.1 nm · STEM HAADF 0.14 nm(Cold FEG)/0.16 nm(Schottky)"
+    },
+    "energy_resolution_eV": {
+     "max": 0.33,
+     "note": "Cold FEG"
+    }
    }
   }
  ]

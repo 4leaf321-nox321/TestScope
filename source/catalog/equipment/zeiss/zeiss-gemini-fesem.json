@@ -13,6 +13,11 @@
   {
    "origin": "materialtwin-20260905/instrument/26",
    "note": "Carl Zeiss SMT — Detection Principles based on GEMINI Technology · metrology_catalogs/surface/Zeiss_GeminiSEM.pdf"
+  },
+  {
+   "url": "https://wiki.smfi.unipr.it/dokuwiki/lib/exe/fetch.php?media=lmn%3Abrochure.pdf",
+   "retrieved": "2026-09-12",
+   "note": "SUPRA 시리즈 브로슈어(대학 미러) — 단종 세대"
   }
  ],
  "confidence": "limited",
@@ -32,6 +37,16 @@
     "doc_path": "metrology_catalogs/surface/Zeiss_GeminiSEM.pdf",
     "source_title": "Carl Zeiss SMT — Detection Principles based on GEMINI Technology",
     "capabilities": []
+   },
+   "specs": {
+    "accelerating_voltage_kV": {
+     "min": 0.02,
+     "max": 30
+    },
+    "sem_resolution_nm": {
+     "min": 1.0,
+     "note": "SUPRA 55VP: 1 nm @15 kV · 4 nm @0.1 kV"
+    }
    }
   }
  ]

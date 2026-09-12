@@ -19,6 +19,14 @@
   {
    "origin": "materialtwin-20260905/instrument/177",
    "note": "Keithley Model 4200-SCS Semiconductor Characterization System — Technical Data (4200-SPEC Rev. M) · metrology_catalogs/electrical/Keithley_4200_utah.pdf"
+  },
+  {
+   "file": "keithley/4200a-scs-datasheet-tek.pdf",
+   "note": "Tektronix 데이터시트 (SMU 사양)"
+  },
+  {
+   "file": "keithley/4200-scs-techdatabook-revp.pdf",
+   "note": "구세대 4200-SCS 테크 데이터북"
   }
  ],
  "confidence": "catalog",
@@ -72,6 +80,20 @@
       "notes": "V-Ramp/J-Ramp 는 절연막에 전압/전류를 램프해 **파괴에 이르게 하는** 시험이라 파괴전압을 얻지만, 우리 키(유전강도, V/m)는 두께로 나눈 값이어서 medium 으로 뒀다. 이 데이터시트에는 규격번호가 인쇄돼 있지 않다(구세대 4200-SCS 기술자료에는 JEDEC Standard 35-A 가 명시돼 있다)."
      }
     ]
+   },
+   "specs": {
+    "voltage_V": {
+     "max": 210,
+     "note": "SMU ±210 V"
+    },
+    "current_A": {
+     "max": 1,
+     "note": "중전력 SMU 100 mA · 고전력 SMU 1 A"
+    },
+    "current_resolution_A": {
+     "min": 1e-17,
+     "note": "프리앰프 시 10 aA; 없으면 100 fA(100 nA 레인지)"
+    }
    }
   },
   {
@@ -105,6 +127,19 @@
       "notes": "**규격번호가 인쇄돼 기법이 확정된다** — JEDEC 35-A 의 V-Ramp·J-Ramp 법. 다만 이 시험의 1차 출력은 전하파괴량 Qbd 이고 우리 키(유전강도 V/m)는 파괴전압을 두께로 나눈 값이라 물리량이 완전히 같지 않아 medium. 모듈명 qbd_rmpv(V-Ramp)·qbd_rmpj(J-Ramp)."
      }
     ]
+   },
+   "specs": {
+    "voltage_V": {
+     "max": 210,
+     "note": "4210-SMU 210 V/100 mA · 21 V/1 A"
+    },
+    "current_A": {
+     "max": 1
+    },
+    "current_resolution_A": {
+     "min": 1e-16,
+     "note": "4200-PA 프리앰프 시 0.1 fA"
+    }
    }
   }
  ]

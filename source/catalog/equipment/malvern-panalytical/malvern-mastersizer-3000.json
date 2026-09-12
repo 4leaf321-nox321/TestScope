@@ -14,6 +14,11 @@
   {
    "origin": "materialtwin-20260905/instrument/162",
    "note": "Mastersizer 3000 Customer Training Course — Part 1: Basic Principles and Data Quality · metrology_catalogs/particle/Malvern_Mastersizer3000.pdf"
+  },
+  {
+   "url": "https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품군 페이지(웹)"
   }
  ],
  "confidence": "catalog",
@@ -59,6 +64,13 @@
       "notes": "**측정범위 숫자가 이 교육자료에 인쇄돼 있지 않아 비웠다** — 본문은 'nanometres to millimetres' 라는 서술뿐이고 숫자 사양표가 없다. 인쇄된 조건: 적색 레이저 633 nm, 청색 광원 470 nm, 소광검출기 51·63번. 건식 미분말 모드(fine powder mode)를 쓰면 검출기 1~9번을 제외해 **동적범위 상한이 600 µm 로 제한**된다고 인쇄돼 있다. 광학모델은 Mie(굴절률·흡수계수 입력 필요)이며 Fraunhofer 근사는 상대굴절률 1.73 초과·불투명 입자 가정."
      }
     ]
+   },
+   "specs": {
+    "particle_diameter_nm": {
+     "min": 10,
+     "max": 3500000,
+     "note": "0.01~3500 µm"
+    }
    }
   }
  ]

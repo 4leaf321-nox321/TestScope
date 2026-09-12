@@ -1788,7 +1788,13 @@ def step_models(
         parent = series[obj["id"]]
         first_source = (obj.get("sources") or [{}])[0].get("file")
         source = sources.get(first_source) if first_source else None
-        rows = obj.get("models") or [{"model": obj["name"]}]
+        # 기종이 없는 객체는 계열 이름을 기종으로 하나 세운다 — 카탈로그가 기종을 안 나눈
+        # 장비가 실재한다. 다만 **보탬 객체**(supplements)는 본 객체의 계열에 시험 항목만
+        # 보태는 것이라 기종을 세우면 안 된다 — 세우면 계열 이름을 단 빈 기종이 12개 생겨
+        # 「사양 없는 기종」 으로 서 있었다.
+        rows = obj.get("models") or (
+            [] if obj.get("supplements") else [{"model": obj["name"]}]
+        )
 
         made_here: list[EquipmentModel] = []
         for row in rows:

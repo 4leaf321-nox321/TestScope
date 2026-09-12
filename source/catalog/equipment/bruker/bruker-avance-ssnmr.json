@@ -12,6 +12,11 @@
   {
    "origin": "materialtwin-20260905/instrument/40",
    "note": "Bruker BioSpin AVANCE Systems — Solid State NMR Acceptance Test Procedures (Version 010) · metrology_catalogs/chemical/Bruker_AVANCE_NMR.pdf"
+  },
+  {
+   "url": "https://www.bruker.com/en/landingpages/bbio/avance-neo-200-mhz-for-paramagnetic-materials.html",
+   "retrieved": "2026-09-12",
+   "note": "AVANCE NEO 는 자석 규격(200~1000 MHz)별 구성 — 대표값(웹)"
   }
  ],
  "confidence": "limited",
@@ -31,6 +36,18 @@
     "doc_path": "metrology_catalogs/chemical/Bruker_AVANCE_NMR.pdf",
     "source_title": "Bruker BioSpin AVANCE Systems — Solid State NMR Acceptance Test Procedures (Version 010)",
     "capabilities": []
+   },
+   "specs": {
+    "field_strength_MHz": {
+     "min": 200,
+     "max": 1000,
+     "note": "구성별; 예: 400 MHz(9.39 T) · 600 MHz(14.1 T, 89 mm 와이드보어)"
+    },
+    "mas_rotor_mm": {
+     "min": 0.7,
+     "max": 7,
+     "note": "1.3 mm CPMAS 프로브 최대 67 kHz"
+    }
    }
   }
  ]

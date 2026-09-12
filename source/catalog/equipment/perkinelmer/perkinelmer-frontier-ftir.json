@@ -14,6 +14,11 @@
   {
    "origin": "materialtwin-20260905/instrument/38",
    "note": "PerkinElmer Frontier FT-IR, NIR and FIR Spectroscopy · metrology_catalogs/chemical/PerkinElmer_Frontier_FTIR.pdf"
+  },
+  {
+   "url": "https://www.richmondscientific.com/product/perkin-elmer-frontier-ft-ir-spectrometer",
+   "retrieved": "2026-09-12",
+   "note": "제조사 사양을 옮긴 판매처 페이지(웹) — 제조사 PDF 는 폼 뒤"
   }
  ],
  "confidence": "limited",
@@ -48,6 +53,16 @@
       "notes": "물질 식별(identification)은 인쇄되어 있으나 정량 조성 성능(검출한계·정확도)은 없다. FT-IR 의 직접 출력은 스펙트럼이라 medium."
      }
     ]
+   },
+   "specs": {
+    "spectral_range_cm1": {
+     "min": 350,
+     "max": 8300,
+     "note": "MIR 8300~350; FIR 옵션 700~30; NIR 옵션"
+    },
+    "spectral_resolution_cm1": {
+     "max": 0.4
+    }
    }
   }
  ]

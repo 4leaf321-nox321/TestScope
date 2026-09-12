@@ -18,6 +18,11 @@
   {
    "origin": "materialtwin-20260905/instrument/13",
    "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  },
+  {
+   "url": "https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹) — 수치 사양표는 카탈로그 폼 뒤"
   }
  ],
  "confidence": "catalog",
@@ -50,6 +55,13 @@
       "notes": "'fully quantitative' 정량분석 장비로 명시. 수치 사양이 없어 범위·정확도는 전부 비웠다."
      }
     ]
+   },
+   "specs": {
+    "probe_current_uA": {
+     "max": 3,
+     "note": "30 kV 에서 시료 위 최대 3 µA (in-lens Schottky Plus FEG)"
+    },
+    "spectrometers": "WDS 최대 5 + EDS(SDD 30 mm²) · SXES·EBSD·CL 옵션"
    }
   },
   {
@@ -73,6 +85,10 @@
       "notes": "수치 사양 인쇄 없음."
      }
     ]
+   },
+   "specs": {
+    "electron_source": "W / LaB6 열전자원 선택",
+    "spectrometers": "WDS + EDS · SXES·CL 옵션"
    }
   }
  ]

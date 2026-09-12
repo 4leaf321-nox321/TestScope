@@ -14,6 +14,11 @@
   {
    "origin": "materialtwin-20260905/instrument/16",
    "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  },
+  {
+   "url": "https://www.jeol.com/products/scientific/xrf/JSX-1000S.php",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지 사양표(웹)"
   }
  ],
  "confidence": "catalog",
@@ -46,6 +51,29 @@
       "notes": "'standard-less quantitative analysis' 로 정량 조성분석이 명시. 수치 사양 없음."
      }
     ]
+   },
+   "specs": {
+    "element_range": "Mg~U (옵션 F~U)",
+    "tube_voltage_kV": {
+     "min": 5,
+     "max": 50
+    },
+    "tube_current_mA": {
+     "max": 1
+    },
+    "spot_diameter_mm": {
+     "values": [
+      0.9,
+      2,
+      9
+     ]
+    },
+    "specimen_diameter_mm": {
+     "max": 300
+    },
+    "specimen_height_mm": {
+     "max": 80
+    }
    }
   }
  ]

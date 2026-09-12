@@ -9,6 +9,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "accelerating_voltage_kV",
+   "label": "가속 전압",
+   "dimension": "voltage",
+   "unit": "kV",
+   "note": "SEM·TEM·EPMA",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "acceleration_g",
    "label": "가속도",
    "dimension": "acceleration",
@@ -74,11 +82,26 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "analog_output_V",
+   "label": "아날로그 출력 전압",
+   "dimension": "voltage",
+   "unit": "V",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "analog_output_voltage_Vrms",
    "label": "아날로그 출력 전압",
    "dimension": "voltage",
    "unit": "Vrms",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "analysis_depth_nm",
+   "label": "분석 깊이",
+   "dimension": "length",
+   "unit": "nm",
+   "note": "XPS",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "angular_velocity_rad_s",
@@ -266,6 +289,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "current_resolution_A",
+   "label": "전류 분해능",
+   "dimension": "current",
+   "unit": "A",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "current_response_time_us",
    "label": "전류 응답 시간",
    "dimension": "time",
@@ -314,11 +344,34 @@
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
+   "key": "depth_resolution_nm",
+   "label": "깊이 분해능",
+   "dimension": "length",
+   "unit": "nm",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "detector",
+   "label": "검출기",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "detector_megapixels",
    "label": "검출기 화소수",
    "dimension": "count",
    "unit": "MP",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "detector_pixels",
+   "label": "검출기 화소",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "differential_pressure_Pa",
@@ -415,10 +468,34 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "electron_source",
+   "label": "전자원",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "element_count",
    "label": "원소 수",
    "dimension": "count",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "element_range",
+   "label": "분석 원소 범위",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "note": "「Be~U」 처럼 원소 기호로 온다",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "energy_resolution_eV",
+   "label": "에너지 분해능",
+   "dimension": "",
+   "unit": "eV",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "energy_resolution_mWh",
@@ -454,6 +531,14 @@
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "field_strength_MHz",
+   "label": "자기장 세기 (¹H 공명)",
+   "dimension": "frequency",
+   "unit": "MHz",
+   "note": "NMR",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "flow_rate_ratio",
@@ -555,6 +640,13 @@
    "dimension": "frequency",
    "unit": "Hz",
    "testscope_key": "frequency"
+  },
+  {
+   "key": "friction_force_mN",
+   "label": "마찰력 측정 범위",
+   "dimension": "force",
+   "unit": "mN",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "functions",
@@ -703,10 +795,25 @@
    "unit": "m/s"
   },
   {
+   "key": "indentation_depth_um",
+   "label": "압입 깊이 측정 범위",
+   "dimension": "length",
+   "unit": "um",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "indentation_force_mN",
    "label": "압입 하중(나노)",
    "dimension": "force",
    "unit": "mN"
+  },
+  {
+   "key": "indexing_speed_pps",
+   "label": "패턴 인덱싱 속도",
+   "dimension": "",
+   "unit": "pps",
+   "note": "EBSD",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "inner_mm",
@@ -768,6 +875,28 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "interfaces",
+   "label": "인터페이스",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "ion_energy_eV",
+   "label": "이온 빔 에너지",
+   "dimension": "",
+   "unit": "eV",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "ion_source_temperature_degC",
+   "label": "이온원 온도",
+   "dimension": "temperature",
+   "unit": "degC",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "ir_resolution_pixels",
    "label": "적외 화소수",
    "dimension": "count",
@@ -789,6 +918,14 @@
    "role": "not_spec",
    "note": "제조사 주문 번호. 사양이 아니므로 정의로 세우지 않는다",
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "laser_wavelength_nm",
+   "label": "레이저 파장",
+   "dimension": "length",
+   "unit": "nm",
+   "note": "라만",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "layer_thickness_um",
@@ -841,12 +978,34 @@
    "testscope_key": "force"
   },
   {
+   "key": "load_resolution_uN",
+   "label": "하중 분해능 (µN)",
+   "dimension": "force",
+   "unit": "uN",
+   "note": "압입기의 수치 분해능. 서술형 force_resolution 과 다른 칸",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "loading",
    "label": "가력 방식",
    "dimension": "",
    "unit": "",
    "role": "descriptive",
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
+  },
+  {
+   "key": "loading_rate_mN_s",
+   "label": "하중 속도",
+   "dimension": "",
+   "unit": "mN/s",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "low_vacuum_Pa",
+   "label": "저진공 범위",
+   "dimension": "pressure",
+   "unit": "Pa",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "luminance_cd_m2",
@@ -860,6 +1019,21 @@
    "label": "배율",
    "dimension": "ratio",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "mas_rotor_mm",
+   "label": "MAS 로터 직경",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "mass_range_u",
+   "label": "질량 범위",
+   "dimension": "",
+   "unit": "u",
+   "note": "질량분석기 m/z",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "max_displacement_nm",
@@ -926,6 +1100,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "measuring_speed_mm_s",
+   "label": "측정 속도",
+   "dimension": "",
+   "unit": "mm/s",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "melt_load_kg",
    "label": "MFI 하중",
    "dimension": "mass",
@@ -958,6 +1139,14 @@
    "dimension": "",
    "unit": "Da",
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "objectives",
+   "label": "대물렌즈 구성",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "operating_humidity_pct",
@@ -1148,6 +1337,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "preliminary_force_kgf",
+   "label": "예비 시험력",
+   "dimension": "force",
+   "unit": "kgf",
+   "note": "로크웰의 초하중(3·10 kgf)",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "pressure_MPa",
    "label": "압력",
    "dimension": "pressure",
@@ -1189,6 +1386,20 @@
    "registered": "2026-09-10 3차: 기종 사양(models[].specs)에서 값이 많은 것부터 등록"
   },
   {
+   "key": "probe_current_nA",
+   "label": "프로브 전류 (nA)",
+   "dimension": "current",
+   "unit": "nA",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "probe_current_uA",
+   "label": "프로브 전류 (µA)",
+   "dimension": "current",
+   "unit": "uA",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "profile_storage",
    "label": "프로파일 저장 수",
    "dimension": "count",
@@ -1224,6 +1435,14 @@
    "unit": "kgf",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록",
    "testscope_key": "force"
+  },
+  {
+   "key": "ranges_Mohm",
+   "label": "저항 레인지",
+   "dimension": "",
+   "unit": "MΩ",
+   "note": "절연저항계 측정 레인지 목록",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "refractive_index",
@@ -1297,6 +1516,13 @@
    "label": "복귀 속도",
    "dimension": "speed",
    "unit": "mm/min"
+  },
+  {
+   "key": "rf_frequency_MHz",
+   "label": "RF 주파수",
+   "dimension": "frequency",
+   "unit": "MHz",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "rotation_deg",
@@ -1388,10 +1614,47 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "scan_range_um",
+   "label": "스캔 범위 (XY)",
+   "dimension": "length",
+   "unit": "um",
+   "note": "AFM",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "scan_rate_u_s",
+   "label": "스캔 속도",
+   "dimension": "",
+   "unit": "u/s",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "scratch_speed",
    "label": "스크래치 속도",
    "dimension": "speed",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "scratch_speed_mm_min",
+   "label": "스크래치 속도",
+   "dimension": "",
+   "unit": "mm/min",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "sem_resolution_nm",
+   "label": "SEM 분해능",
+   "dimension": "length",
+   "unit": "nm",
+   "note": "이차전자상 분해능 — 조건(kV)이 비고에",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "sensitivity_pps_nA",
+   "label": "검출 감도 (pps/nA)",
+   "dimension": "",
+   "unit": "pps/nA",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "shear_force_kgf",
@@ -1422,6 +1685,14 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "spatial_resolution_um",
+   "label": "공간 분해능",
+   "dimension": "length",
+   "unit": "um",
+   "note": "X선 현미경·CT",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "specimen_depth_mm",
    "label": "시편 깊이",
    "dimension": "length",
@@ -1447,6 +1718,13 @@
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "specimen_mass_kg",
+   "label": "시편 최대 질량",
+   "dimension": "mass",
+   "unit": "kg",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "specimen_max_mm",
@@ -1491,6 +1769,43 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "spectral_range_cm1",
+   "label": "분광 범위 (파수)",
+   "dimension": "",
+   "unit": "cm⁻¹",
+   "note": "FT-IR",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "spectral_resolution_cm1",
+   "label": "분광 분해능 (파수)",
+   "dimension": "",
+   "unit": "cm⁻¹",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "spectrometers",
+   "label": "분광기 구성",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "spot_diameter_mm",
+   "label": "분석 스팟 직경 (mm)",
+   "dimension": "length",
+   "unit": "mm",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "spot_diameter_um",
+   "label": "분석 스팟 직경 (µm)",
+   "dimension": "length",
+   "unit": "um",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "spot_size_um",
    "label": "스폿 크기",
    "dimension": "length",
@@ -1532,6 +1847,13 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "straightness_um",
+   "label": "진직도",
+   "dimension": "length",
+   "unit": "um",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "stroke_mm",
    "label": "액추에이터 스트로크",
    "dimension": "length",
@@ -1544,6 +1866,13 @@
    "unit": "mm",
    "note": "진동 시험기의 양끝 사이 변위. 한쪽 진폭이 아니다",
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "stylus_force_mN",
+   "label": "측정력 (촉침)",
+   "dimension": "force",
+   "unit": "mN",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "stylus_force_mg",
@@ -1588,11 +1917,25 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "table_load_kg",
+   "label": "테이블 최대 적재",
+   "dimension": "mass",
+   "unit": "kg",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "table_size_mm",
    "label": "테이블 크기",
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "tem_resolution_nm",
+   "label": "TEM 분해능",
+   "dimension": "length",
+   "unit": "nm",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "temperature_degC",
@@ -1617,6 +1960,14 @@
    "dimension": "temperature",
    "unit": "K",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "test_force_mN",
+   "label": "시험력 (계장화 압입)",
+   "dimension": "force",
+   "unit": "mN",
+   "note": "나노·마이크로 압입기의 하중 범위. 경도계의 kgf/gf 하중과 다른 칸",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "test_load_gf",
@@ -1771,6 +2122,21 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "traverse_mm",
+   "label": "측정 길이 (X축)",
+   "dimension": "length",
+   "unit": "mm",
+   "note": "표면조도계 구동부 이동량",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "tube_current_mA",
+   "label": "관전류",
+   "dimension": "current",
+   "unit": "mA",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "tube_power_W",
    "label": "관 출력",
    "dimension": "power",
@@ -1847,11 +2213,26 @@
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
   },
   {
+   "key": "voxel_size_um",
+   "label": "최소 복셀 크기",
+   "dimension": "length",
+   "unit": "um",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "wafer_size_mm",
    "label": "웨이퍼 크기",
    "dimension": "length",
    "unit": "mm",
    "registered": "2026-09-10 감사에서 사용 중인 키를 등록"
+  },
+  {
+   "key": "water_range_mg",
+   "label": "수분 측정 범위",
+   "dimension": "mass",
+   "unit": "mg",
+   "note": "칼피셔",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "wavelength_nm",
@@ -1910,11 +2291,41 @@
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
   },
   {
+   "key": "xray_source",
+   "label": "X선원",
+   "dimension": "",
+   "unit": "",
+   "role": "descriptive",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
    "key": "yield_stress_Pa",
    "label": "항복응력 측정 범위",
    "dimension": "stress",
    "unit": "Pa",
    "registered": "2026-09-12 MaterialTwin 능력행의 측정 범위를 기종 사양으로 들이며 등록"
+  },
+  {
+   "key": "z_noise_nm",
+   "label": "Z 검출기 잡음",
+   "dimension": "length",
+   "unit": "nm",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "z_range_um",
+   "label": "Z축 측정 범위",
+   "dimension": "length",
+   "unit": "um",
+   "note": "표면조도계 검출기 · AFM Z 스캐너",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
+  },
+  {
+   "key": "z_resolution_um",
+   "label": "Z축 분해능",
+   "dimension": "length",
+   "unit": "um",
+   "registered": "2026-09-12 사양 조사(공식 카탈로그 PDF·제조사 페이지)에서 쓴 키 등록"
   },
   {
    "key": "zeta_potential_V",

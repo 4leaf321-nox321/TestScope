@@ -22,6 +22,11 @@
   {
    "origin": "materialtwin-20260905/instrument/43",
    "note": "Renishaw inVia confocal Raman microscope · metrology_catalogs/chemical/Renishaw_inVia_Raman.pdf"
+  },
+  {
+   "url": "https://www.renishaw.com/en/invia-confocal-raman-microscope--6260",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹) — 레이저·격자 구성별"
   }
  ],
  "confidence": "limited",
@@ -55,6 +60,17 @@
       "notes": "라만이 직접 재는 것은 산란 스펙트럼이고 조성·물질식별은 해석 결과다. 정성·정량 성능 수치가 인쇄되어 있지 않아 medium. 표의 0.25 µm·<1 µm 는 공간분해능(이미징 축)이고 0.3 cm⁻¹ 는 분광분해능이라 물성 range·resolution 에 넣지 않았다."
      }
     ]
+   },
+   "specs": {
+    "laser_wavelength_nm": {
+     "min": 229,
+     "max": 1064,
+     "note": "구성별 선택(325 · 532 · 633 · 785 · 1064 nm 등)"
+    },
+    "spectral_resolution_cm1": {
+     "max": 1,
+     "note": "격자·레이저 조합에 따라 약 1 cm⁻¹"
+    }
    }
   },
   {
@@ -79,6 +95,16 @@
       "notes": "정성·정량 성능 수치 인쇄 없음. 분광·공간 분해능은 장비 축이라 range 에 넣지 않았다."
      }
     ]
+   },
+   "specs": {
+    "laser_wavelength_nm": {
+     "min": 229,
+     "max": 1064,
+     "note": "구성별 선택"
+    },
+    "spectral_resolution_cm1": {
+     "max": 1
+    }
    }
   },
   {
@@ -103,6 +129,16 @@
       "notes": "정성·정량 성능 수치 인쇄 없음."
      }
     ]
+   },
+   "specs": {
+    "laser_wavelength_nm": {
+     "min": 229,
+     "max": 1064,
+     "note": "구성별 선택; LiveTrack 초점 추적"
+    },
+    "spectral_resolution_cm1": {
+     "max": 1
+    }
    }
   }
  ]

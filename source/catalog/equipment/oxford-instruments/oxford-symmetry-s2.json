@@ -15,6 +15,10 @@
   {
    "origin": "materialtwin-20260905/instrument/24",
    "note": "Oxford Instruments Symmetry S2 — 2nd Generation CMOS EBSD Detector · metrology_catalogs/surface/Oxford_EBSD_Symmetry.pdf"
+  },
+  {
+   "file": "oxford-instruments/symmetry-s2-ebsd-brochure.pdf",
+   "note": "제조사 브로슈어"
   }
  ],
  "confidence": "catalog",
@@ -55,6 +59,15 @@
       "notes": "상 식별(EDS 병용 PhaseID)과 결정구조 구별이 명시. 정량 범위는 없는 항목이다."
      }
     ]
+   },
+   "specs": {
+    "indexing_speed_pps": {
+     "max": 4500
+    },
+    "sensitivity_pps_nA": {
+     "min": 800
+    },
+    "detector_pixels": "1244 × 1024"
    }
   }
  ]

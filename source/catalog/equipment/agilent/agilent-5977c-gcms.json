@@ -14,6 +14,13 @@
   {
    "origin": "materialtwin-20260905/instrument/39",
    "note": "Agilent 5977C GC/MSD System Specifications · metrology_catalogs/chemical/Agilent_5977C_GCMS.pdf"
+  },
+  {
+   "file": "agilent/5977c-gc-msd-datasheet.pdf",
+   "pages": [
+    3
+   ],
+   "note": "제조사 데이터시트"
   }
  ],
  "confidence": "limited",
@@ -48,6 +55,19 @@
       "notes": "**검출한계(IDL, fg)는 물성 범위의 하한이 아니라 accuracy 로 보냈다** — 우리 물성 범위와 다른 축이다. 질량범위 0.6~1,091 u 는 m/z 축이라 조성 능력행의 range 로 쓸 수 없어 description 에만 남겼다. GC/MS 의 직접 출력은 크로마토그램·질량스펙트럼이고 조성은 라이브러리 대조·정량의 결과라 medium."
      }
     ]
+   },
+   "specs": {
+    "mass_range_u": {
+     "min": 0.6,
+     "max": 1091
+    },
+    "scan_rate_u_s": {
+     "max": 20000
+    },
+    "ion_source_temperature_degC": {
+     "min": 100,
+     "max": 350
+    }
    }
   }
  ]

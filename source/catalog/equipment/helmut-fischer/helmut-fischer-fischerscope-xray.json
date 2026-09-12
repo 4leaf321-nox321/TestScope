@@ -8,32 +8,145 @@
   "category": "xrf_thickness",
   "form_factor": "benchtop",
   "description": "X선 형광(XRF) 원리로 도금·코팅 두께와 조성을 비파괴 측정하는 장비군. 나노미터 영역까지 두께를 측정하며 최대 24개 원소를 분석한다. 검출기는 비례계수관·PIN 다이오드·실리콘 드리프트 검출기(SDD) 3종 중 용도에 맞게 선택. XULM-PCB / XDLM-PCB 는 인쇄회로기판 전용 구성으로, 약 20 µm 크기의 접점부터 측정할 수 있다. HASL, 무전해 니켈, 리드프레임 도금층 두께·조성 관리에 사용.",
-  "test_items": ["coating_thickness"],
-  "measurands": ["coating_thickness", "layer_composition", "element_concentration", "multilayer_thickness"],
-  "materials": ["PCB surface finishes", "lead frames", "connectors", "electroplated coatings", "electroless nickel", "HASL", "decorative coatings", "jewelry"],
+  "test_items": [
+    "coating_thickness"
+  ],
+  "measurands": [
+    "coating_thickness",
+    "layer_composition",
+    "element_concentration",
+    "multilayer_thickness"
+  ],
+  "materials": [
+    "PCB surface finishes",
+    "lead frames",
+    "connectors",
+    "electroplated coatings",
+    "electroless nickel",
+    "HASL",
+    "decorative coatings",
+    "jewelry"
+  ],
   "standards": {
     "compliance": [],
-    "test_methods": ["ISO 3497 (X선 두께 측정)", "ASTM B568", "DIN EN ISO 3497", "IPC-4552 (ENIG 두께)", "IPC-4553"]
+    "test_methods": [
+      "ISO 3497 (X선 두께 측정)",
+      "ASTM B568",
+      "DIN EN ISO 3497",
+      "IPC-4552 (ENIG 두께)",
+      "IPC-4553"
+    ]
   },
   "limits": {
-    "coating_thickness_um": {"note": "나노미터 영역부터 측정. 상한은 층 조합·소재에 따름", "uncertain": true},
-    "element_count": {"max": 24, "note": "최대 24개 원소 분석"},
-    "measurement_spot_um": {"min": 20, "note": "PCB 모델 기준 약 20 µm 크기 접점부터 측정 가능"}
+    "coating_thickness_um": {
+      "note": "나노미터 영역부터 측정. 상한은 층 조합·소재에 따름",
+      "uncertain": true
+    },
+    "element_count": {
+      "max": 24,
+      "note": "최대 24개 원소 분석"
+    },
+    "measurement_spot_um": {
+      "min": 20,
+      "note": "PCB 모델 기준 약 20 µm 크기 접점부터 측정 가능"
+    }
   },
   "models": [
-    {"model": "FISCHERSCOPE X-RAY XDL", "specs": {"note": "표준 XRF 두께 측정"}},
-    {"model": "FISCHERSCOPE X-RAY XDLM", "specs": {"note": "XDL 의 마이크로스폿(M) 구성"}},
-    {"model": "FISCHERSCOPE X-RAY XUL", "specs": {"note": "초박막(ultra-thin layer) 측정 특화"}},
-    {"model": "FISCHERSCOPE X-RAY XULM", "specs": {"note": "XUL 의 마이크로스폿 구성"}},
-    {"model": "FISCHERSCOPE X-RAY XULM-PCB / XDLM-PCB", "specs": {"target": "인쇄회로기판 전용", "min_contact_size_um": 20}}
+    {
+      "model": "FISCHERSCOPE X-RAY XDL",
+      "specs": {
+        "note": "표준 XRF 두께 측정",
+        "specimen_height_mm": {
+          "max": 170,
+          "note": "XUL 계열과 같은 챔버·검출기 — 자동화(프로그래밍 스테이지) 모델"
+        },
+        "detector": "비례계수관",
+        "xray_source": "표준 X선관"
+      }
+    },
+    {
+      "model": "FISCHERSCOPE X-RAY XDLM",
+      "specs": {
+        "note": "XDL 의 마이크로스폿(M) 구성",
+        "specimen_height_mm": {
+          "max": 170,
+          "note": "XULM 과 같은 챔버·검출기 — 자동화 모델"
+        },
+        "detector": "비례계수관",
+        "xray_source": "마이크로포커스 X선관 · 4단 가변 조리개"
+      }
+    },
+    {
+      "model": "FISCHERSCOPE X-RAY XUL",
+      "specs": {
+        "note": "초박막(ultra-thin layer) 측정 특화",
+        "specimen_height_mm": {
+          "max": 170
+        },
+        "spot_diameter_mm": {
+          "min": 0.5
+        },
+        "detector": "비례계수관 (짧은 측정 시간·긴 측정 거리)",
+        "xray_source": "표준 X선관",
+        "measuring_direction": "아래에서 위(bottom-up)"
+      }
+    },
+    {
+      "model": "FISCHERSCOPE X-RAY XULM",
+      "specs": {
+        "note": "XUL 의 마이크로스폿 구성",
+        "specimen_height_mm": {
+          "max": 170
+        },
+        "detector": "비례계수관",
+        "xray_source": "마이크로포커스 X선관 · 4단 가변 조리개",
+        "measuring_direction": "아래에서 위(bottom-up)"
+      }
+    },
+    {
+      "model": "FISCHERSCOPE X-RAY XULM-PCB / XDLM-PCB",
+      "specs": {
+        "target": "인쇄회로기판 전용",
+        "min_contact_size_um": 20
+      }
+    }
   ],
-  "detectors": ["비례계수관(proportional counter)", "PIN 다이오드", "실리콘 드리프트 검출기(SDD)"],
-  "features": ["나노미터 영역 두께 측정", "최대 24개 원소 분석", "검출기 3종 선택", "전용 두께 측정 소프트웨어", "PCB 전용 구성(20 µm 접점)"],
+  "detectors": [
+    "비례계수관(proportional counter)",
+    "PIN 다이오드",
+    "실리콘 드리프트 검출기(SDD)"
+  ],
+  "features": [
+    "나노미터 영역 두께 측정",
+    "최대 24개 원소 분석",
+    "검출기 3종 선택",
+    "전용 두께 측정 소프트웨어",
+    "PCB 전용 구성(20 µm 접점)"
+  ],
   "relations": [
-    {"type": "performs", "target": "coating_thickness"},
-    {"type": "same_family_as", "target": "defelsko-positest-pt"}
+    {
+      "type": "performs",
+      "target": "coating_thickness"
+    },
+    {
+      "type": "same_family_as",
+      "target": "defelsko-positest-pt"
+    }
   ],
-  "sources": [{"file": "helmut-fischer/x-ray-xrf-overview-brochure.pdf", "pages": [2, 3, 4, 8, 9, 10]}],
+  "sources": [
+    {
+      "file": "helmut-fischer/x-ray-xrf-overview-brochure.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        8,
+        9,
+        10,
+        14
+      ]
+    }
+  ],
   "confidence": "catalog",
   "notes": "개요 브로슈어라 모델별 두께 측정 범위·반복성 수치표가 없다. 모델별 데이터시트 확보 필요."
 }

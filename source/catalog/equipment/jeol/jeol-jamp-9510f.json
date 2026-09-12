@@ -14,6 +14,11 @@
   {
    "origin": "materialtwin-20260905/instrument/14",
    "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  },
+  {
+   "url": "https://www.jeol.com/products/scientific/auger/JAMP-9510F.php",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지 사양표(웹)"
   }
  ],
  "confidence": "catalog",
@@ -46,6 +51,16 @@
       "notes": "카탈로그가 'chemical composition' 을 직접 인쇄했다. 수치 사양은 없다."
      }
     ]
+   },
+   "specs": {
+    "accelerating_voltage_kV": {
+     "min": 0.5,
+     "max": 30
+    },
+    "sem_resolution_nm": {
+     "min": 3,
+     "note": "SEI 3 nm @25 kV·10 pA · 8 nm @25 kV·1 nA"
+    }
    }
   }
  ]

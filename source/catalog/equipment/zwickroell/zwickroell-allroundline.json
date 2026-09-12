@@ -184,7 +184,17 @@
         "force_kN": [
           20,
           30
-        ]
+        ],
+        "vertical_test_space_mm": {
+          "min": 1030,
+          "max": 1755,
+          "note": "Z020 TN 1030 · TH 1430 · TE 1785(하부) / Z030 TH 1355 · TE 1755"
+        },
+        "horizontal_test_space_mm": 440,
+        "crosshead_speed_mm_min": {
+          "min": 0.0005,
+          "max": 1000
+        }
       },
       "note": "PI 에 있으나 덤프에 표가 안 잡힘 — 원본 p10–13 확인",
       "uncertain": true
@@ -388,6 +398,8 @@
         7,
         8,
         9,
+        11,
+        13,
         14
       ]
     },

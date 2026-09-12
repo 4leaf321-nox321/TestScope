@@ -16,6 +16,11 @@
   {
    "origin": "materialtwin-20260905/instrument/33",
    "note": "HORIBA Scientific GD-Profiler 2 — GDOES Multilayer elemental depth profile · metrology_catalogs/chemical/HORIBA_GD-Profiler2_GDOES.pdf"
+  },
+  {
+   "url": "https://www.horiba.com/usa/scientific/products/detail/action/show/Product/gd-profiler-2tm-1401/",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹)"
   }
  ],
  "confidence": "catalog",
@@ -62,6 +67,21 @@
       "notes": "'layers thickness' 가 출력 항목으로 직접 인쇄되어 있다. 측정 가능한 두께 범위 수치는 없다. 깊이분해능은 'nanometer scale or below', 'Sub nm depth resolution' 으로만 적혀 있어(상한 표현) resolution 숫자로 넣지 않았다 — 예시로 0.3 nm 두께 B4C 60층(전체 420 nm)을 분해한 그림이 있다. XPS·SIMS 가 1 µm 이상 층을 못 재는 것과 달리 수십 µm 를 빠르게 스퍼터한다고 적혀 있다."
      }
     ]
+   },
+   "specs": {
+    "wavelength_nm": {
+     "min": 120,
+     "max": 800
+    },
+    "spot_diameter_mm": {
+     "min": 2,
+     "max": 8,
+     "note": "표준 양극 4 mm"
+    },
+    "depth_resolution_nm": {
+     "min": 1
+    },
+    "rf_frequency_MHz": 13.56
    }
   }
  ]

@@ -4711,6 +4711,12 @@
    "origin": true
   },
   {
+   "id": "doc:agilent/5977c-gc-msd-datasheet.pdf",
+   "kind": "document",
+   "label": "agilent/5977c-gc-msd-datasheet.pdf",
+   "url": "https://chemetrix.co.za/wp-content/uploads/2022/07/datasheet-5977c-gc-msd-5994-4846en-agilent.pdf"
+  },
+  {
    "id": "ametek-lloyd-ls-series",
    "kind": "equipment",
    "label": "Lloyd Instruments LS1 / LS2.5 / LS5 Single Column Universal Test Machines",
@@ -4884,6 +4890,13 @@
    "url": "https://anton-paar.com/?L=5&document=17877&eID=documentsDownload"
   },
   {
+   "id": "web:https://www.anton-paar.com/us-en/products/details/rheometer-mcr-72-and-mcr-92/",
+   "kind": "document",
+   "label": "https://www.anton-paar.com/us-en/products/details/rheometer-mcr-72-and-mcr-92/",
+   "url": "https://www.anton-paar.com/us-en/products/details/rheometer-mcr-72-and-mcr-92/",
+   "web_only": true
+  },
+  {
    "id": "anton-paar-nanoindentation",
    "kind": "equipment",
    "label": "Anton Paar Nanoindentation Testers (UNHT3 / UNHT3 HTV / UNHT3 Bio, NHT3, Hit 300, NST3 nano scratch)",
@@ -4913,6 +4926,27 @@
    ],
    "confidence": "limited",
    "file": "equipment/anton-paar/anton-paar-nanoindentation.json"
+  },
+  {
+   "id": "web:https://www.anton-paar.com/us-en/products/details/hit-300/",
+   "kind": "document",
+   "label": "https://www.anton-paar.com/us-en/products/details/hit-300/",
+   "url": "https://www.anton-paar.com/us-en/products/details/hit-300/",
+   "web_only": true
+  },
+  {
+   "id": "web:https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+   "kind": "document",
+   "label": "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+   "url": "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+   "web_only": true
+  },
+  {
+   "id": "web:https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+   "kind": "document",
+   "label": "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+   "url": "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+   "web_only": true
   },
   {
    "id": "anton-paar-tribometers-materialtwin",
@@ -5489,6 +5523,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.bruker.com/en/landingpages/bbio/avance-neo-200-mhz-for-paramagnetic-materials.html",
+   "kind": "document",
+   "label": "https://www.bruker.com/en/landingpages/bbio/avance-neo-200-mhz-for-paramagnetic-materials.html",
+   "url": "https://www.bruker.com/en/landingpages/bbio/avance-neo-200-mhz-for-paramagnetic-materials.html",
+   "web_only": true
+  },
+  {
    "id": "bruker-contourx-200",
    "kind": "equipment",
    "label": "Bruker ContourX-200 3D Optical Profilometer",
@@ -5772,6 +5813,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/37",
    "origin": true
+  },
+  {
+   "id": "doc:bruker/vertex-series-brochure.pdf",
+   "kind": "document",
+   "label": "bruker/vertex-series-brochure.pdf",
+   "url": "http://bruker.poznan.pl/wp-content/uploads/2018/12/VERTEXseries_Brochure_EN.pdf"
   },
   {
    "id": "buehler-wilson-hardness",
@@ -6693,6 +6740,13 @@
    "origin": true
   },
   {
+   "id": "web:https://espec.com/na/products/family/agree",
+   "kind": "document",
+   "label": "https://espec.com/na/products/family/agree",
+   "url": "https://espec.com/na/products/family/agree",
+   "web_only": true
+  },
+  {
    "id": "espec-ar-series",
    "kind": "equipment",
    "label": "ESPEC AR Series Temperature (& Humidity) Chambers (ARS / ARG / ARL / ARU)",
@@ -6733,6 +6787,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/191",
    "origin": true
+  },
+  {
+   "id": "doc:espec/ar-series-standard-4k-ar02.pdf",
+   "kind": "document",
+   "label": "espec/ar-series-standard-4k-ar02.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/ar02.pdf"
   },
   {
    "id": "espec-criterion",
@@ -6784,6 +6844,12 @@
    "origin": true
   },
   {
+   "id": "doc:espec/criterion-benchtop-brochure.pdf",
+   "kind": "document",
+   "label": "espec/criterion-benchtop-brochure.pdf",
+   "url": "https://espec.com/images/uploads/files/e_criterion-all.pdf"
+  },
+  {
    "id": "espec-ehs-tpc-hast",
    "kind": "equipment",
    "label": "ESPEC EHS / TPC HAST Chambers",
@@ -6803,6 +6869,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/199",
    "origin": true
+  },
+  {
+   "id": "doc:espec/ehs-hast-chambers.pdf",
+   "kind": "document",
+   "label": "espec/ehs-hast-chambers.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/ehs.pdf"
   },
   {
    "id": "espec-industrial-ovens",
@@ -6826,6 +6898,12 @@
    "origin": true
   },
   {
+   "id": "doc:espec/pvph-ovens.pdf",
+   "kind": "document",
+   "label": "espec/pvph-ovens.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/pvph.pdf"
+  },
+  {
    "id": "espec-lab-series",
    "kind": "equipment",
    "label": "ESPEC Lab Series LU / LH / LHL / LHU-113 Compact Chambers",
@@ -6845,6 +6923,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/202",
    "origin": true
+  },
+  {
+   "id": "web:https://datasheets.globalspec.com/ds/espec-north-america-qualmark-products-and-services/lhu-113/dd2d68f1-eb62-4a3a-b16e-319aae683694",
+   "kind": "document",
+   "label": "https://datasheets.globalspec.com/ds/espec-north-america-qualmark-products-and-services/lhu-113/dd2d68f1-eb62-4a3a-b16e-319aae683694",
+   "url": "https://datasheets.globalspec.com/ds/espec-north-america-qualmark-products-and-services/lhu-113/dd2d68f1-eb62-4a3a-b16e-319aae683694",
+   "web_only": true
   },
   {
    "id": "espec-platinous-chambers-materialtwin",
@@ -7083,6 +7168,12 @@
    "origin": true
   },
   {
+   "id": "doc:espec/sh-benchtop-chambers.pdf",
+   "kind": "document",
+   "label": "espec/sh-benchtop-chambers.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/sh.pdf"
+  },
+  {
    "id": "espec-tsa-thermal-shock-materialtwin",
    "kind": "equipment",
    "label": "ESPEC TSA Series Thermal Shock Chambers (EL / ES / EH type)",
@@ -7102,6 +7193,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/198",
    "origin": true
+  },
+  {
+   "id": "doc:espec/tsa-thermal-shock-chambers.pdf",
+   "kind": "document",
+   "label": "espec/tsa-thermal-shock-chambers.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/tsa.pdf"
   },
   {
    "id": "espec-tsa-thermal-shock",
@@ -7232,6 +7329,12 @@
    "origin": true
   },
   {
+   "id": "doc:espec/tsb-liquid-thermal-shock.pdf",
+   "kind": "document",
+   "label": "espec/tsb-liquid-thermal-shock.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/tsb.pdf"
+  },
+  {
    "id": "espec-tse-11-a",
    "kind": "equipment",
    "label": "ESPEC TSE-11-A Two-Zone Thermal Shock Chamber",
@@ -7251,6 +7354,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/197",
    "origin": true
+  },
+  {
+   "id": "doc:espec/tsd-tse-thermal-shock-chambers.pdf",
+   "kind": "document",
+   "label": "espec/tsd-tse-thermal-shock-chambers.pdf",
+   "url": "https://www.espec.co.jp/english/inquiry/catalog/tsdtse.pdf"
   },
   {
    "id": "espec-walk-in-chambers-materialtwin",
@@ -9611,6 +9720,13 @@
    "url": "https://www.simac.com/uploads/media/5f33b28628977/hast-presentation-2019-20.pdf"
   },
   {
+   "id": "web:https://hastest.com/product/hirayama-pc-r8-hast-chamber/",
+   "kind": "document",
+   "label": "https://hastest.com/product/hirayama-pc-r8-hast-chamber/",
+   "url": "https://hastest.com/product/hirayama-pc-r8-hast-chamber/",
+   "web_only": true
+  },
+  {
    "id": "hitachi-nexta-sta",
    "kind": "equipment",
    "label": "Hitachi High-Tech NEXTA STA200 / STA200RV / STA300 Simultaneous Thermogravimetric Analyzers",
@@ -9675,6 +9791,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.hitachi-hightech.com/global/en/sinews/technical_explanation/130305/",
+   "kind": "document",
+   "label": "https://www.hitachi-hightech.com/global/en/sinews/technical_explanation/130305/",
+   "url": "https://www.hitachi-hightech.com/global/en/sinews/technical_explanation/130305/",
+   "web_only": true
+  },
+  {
    "id": "horiba-fluoromax-plus",
    "kind": "equipment",
    "label": "HORIBA FluoroMax Plus Spectrofluorometer",
@@ -9720,6 +9843,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/33",
    "origin": true
+  },
+  {
+   "id": "web:https://www.horiba.com/usa/scientific/products/detail/action/show/Product/gd-profiler-2tm-1401/",
+   "kind": "document",
+   "label": "https://www.horiba.com/usa/scientific/products/detail/action/show/Product/gd-profiler-2tm-1401/",
+   "url": "https://www.horiba.com/usa/scientific/products/detail/action/show/Product/gd-profiler-2tm-1401/",
+   "web_only": true
   },
   {
    "id": "hot-disk-tps-2200",
@@ -11222,6 +11352,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.jeol.com/products/scientific/auger/JAMP-9510F.php",
+   "kind": "document",
+   "label": "https://www.jeol.com/products/scientific/auger/JAMP-9510F.php",
+   "url": "https://www.jeol.com/products/scientific/auger/JAMP-9510F.php",
+   "web_only": true
+  },
+  {
    "id": "jeol-jem-f200",
    "kind": "equipment",
    "label": "JEOL JEM-F200 TEM/STEM",
@@ -11243,6 +11380,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.jeol.com/products/scientific/tem/JEM-F200.php",
+   "kind": "document",
+   "label": "https://www.jeol.com/products/scientific/tem/JEM-F200.php",
+   "url": "https://www.jeol.com/products/scientific/tem/JEM-F200.php",
+   "web_only": true
+  },
+  {
    "id": "jeol-jps-9030",
    "kind": "equipment",
    "label": "JEOL JPS-9030 X-ray Photoelectron Spectrometer",
@@ -11262,6 +11406,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/15",
    "origin": true
+  },
+  {
+   "id": "web:https://www.jeol.com/products/scientific/xps_esca/JPS-9030.php",
+   "kind": "document",
+   "label": "https://www.jeol.com/products/scientific/xps_esca/JPS-9030.php",
+   "url": "https://www.jeol.com/products/scientific/xps_esca/JPS-9030.php",
+   "web_only": true
   },
   {
    "id": "jeol-jsm-it-fesem",
@@ -11292,6 +11443,19 @@
    "origin": true
   },
   {
+   "id": "doc:jeol/jsm-it500hr-fesem-uic.pdf",
+   "kind": "document",
+   "label": "jeol/jsm-it500hr-fesem-uic.pdf",
+   "url": "https://rrc.uic.edu/wp-content/uploads/sites/112/2020/12/JEOL_IT500HR-FESEM.pdf"
+  },
+  {
+   "id": "web:https://www.jeol.com/products/scientific/sem/JSM-IT700HR.php",
+   "kind": "document",
+   "label": "https://www.jeol.com/products/scientific/sem/JSM-IT700HR.php",
+   "url": "https://www.jeol.com/products/scientific/sem/JSM-IT700HR.php",
+   "web_only": true
+  },
+  {
    "id": "jeol-jsx-1000s",
    "kind": "equipment",
    "label": "JEOL JSX-1000S Energy-Dispersive XRF",
@@ -11311,6 +11475,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/16",
    "origin": true
+  },
+  {
+   "id": "web:https://www.jeol.com/products/scientific/xrf/JSX-1000S.php",
+   "kind": "document",
+   "label": "https://www.jeol.com/products/scientific/xrf/JSX-1000S.php",
+   "url": "https://www.jeol.com/products/scientific/xrf/JSX-1000S.php",
+   "web_only": true
   },
   {
    "id": "jeol-jxa-epma",
@@ -11341,6 +11512,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php",
+   "kind": "document",
+   "label": "https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php",
+   "url": "https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php",
+   "web_only": true
+  },
+  {
    "id": "jeol-xtalab-synergy-ed",
    "kind": "equipment",
    "label": "JEOL XtaLAB Synergy-ED Electron Diffractometer",
@@ -11360,6 +11538,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/17",
    "origin": true
+  },
+  {
+   "id": "doc:rigaku/xtalab-synergy-ed-brochure.pdf",
+   "kind": "document",
+   "label": "rigaku/xtalab-synergy-ed-brochure.pdf",
+   "url": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/ROD_XtaLAB%20Synergy-ED_21121620_iBR_R21_220407.pdf"
   },
   {
    "id": "keithley-4200-scs",
@@ -11393,6 +11577,18 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/177",
    "origin": true
+  },
+  {
+   "id": "doc:keithley/4200a-scs-datasheet-tek.pdf",
+   "kind": "document",
+   "label": "keithley/4200a-scs-datasheet-tek.pdf",
+   "url": "https://www.tek.com/-/media/documents/4200a-smu-900-01a_dec_2020.pdf"
+  },
+  {
+   "id": "doc:keithley/4200-scs-techdatabook-revp.pdf",
+   "kind": "document",
+   "label": "keithley/4200-scs-techdatabook-revp.pdf",
+   "url": "https://download.tek.com/datasheet/2199_4200-SCS_TechDataBook_RevP_053017.pdf"
   },
   {
    "id": "keysight-n9048b-pxe",
@@ -12298,6 +12494,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range",
+   "kind": "document",
+   "label": "https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range",
+   "url": "https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range",
+   "web_only": true
+  },
+  {
    "id": "malvern-zetasizer-nano-zsp",
    "kind": "equipment",
    "label": "Malvern Zetasizer Nano ZSP",
@@ -12463,6 +12666,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/28",
    "origin": true
+  },
+  {
+   "id": "web:https://www.metrohm.com/en/products/karl-fischer-titration/kf-titrando/28510110",
+   "kind": "document",
+   "label": "https://www.metrohm.com/en/products/karl-fischer-titration/kf-titrando/28510110",
+   "url": "https://www.metrohm.com/en/products/karl-fischer-titration/kf-titrando/28510110",
+   "web_only": true
   },
   {
    "id": "mettler-dma-sdta861e",
@@ -12663,6 +12873,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/212",
    "origin": true
+  },
+  {
+   "id": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "kind": "document",
+   "label": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "url": "https://www2.mitutoyo.co.jp/eng/support/service/catalog/06/E4104.pdf"
   },
   {
    "id": "mitutoyo-ar-atk-rockwell",
@@ -12940,6 +13156,12 @@
    "origin": true
   },
   {
+   "id": "doc:mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "kind": "document",
+   "label": "mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/E17001.pdf"
+  },
+  {
    "id": "mitutoyo-hm-micro-vickers-materialtwin",
    "kind": "equipment",
    "label": "Mitutoyo HM-100 / HM-200 Series Micro Vickers Hardness Testing Machines",
@@ -13106,6 +13328,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/59",
    "origin": true
+  },
+  {
+   "id": "doc:mitutoyo/hr-600-series-bulletin-2295.pdf",
+   "kind": "document",
+   "label": "mitutoyo/hr-600-series-bulletin-2295.pdf",
+   "url": "https://www.mitutoyo.com/Images/HR-600_2295.pdf"
   },
   {
    "id": "mitutoyo-hr-series-rockwell-materialtwin",
@@ -13349,6 +13577,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/23",
    "origin": true
+  },
+  {
+   "id": "doc:mitutoyo/surftest-sj-410-bulletin-2110.pdf",
+   "kind": "document",
+   "label": "mitutoyo/surftest-sj-410-bulletin-2110.pdf",
+   "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/2110_SJ-410-1.pdf"
   },
   {
    "id": "molex-crimp-pull-tester",
@@ -15041,6 +15275,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.nordson.com/en/products/test-and-inspection-products/ami-gen7",
+   "kind": "document",
+   "label": "https://www.nordson.com/en/products/test-and-inspection-products/ami-gen7",
+   "url": "https://www.nordson.com/en/products/test-and-inspection-products/ami-gen7",
+   "web_only": true
+  },
+  {
    "id": "ossila-four-point-probe",
    "kind": "equipment",
    "label": "Ossila Four-Point Probe (T2001A / T2001B)",
@@ -15083,6 +15324,12 @@
    "origin": true
   },
   {
+   "id": "doc:oxford-instruments/symmetry-s2-ebsd-brochure.pdf",
+   "kind": "document",
+   "label": "oxford-instruments/symmetry-s2-ebsd-brochure.pdf",
+   "url": "https://nano.oxinst.com/assets/uploads/Symmetry_2_Final_1.pdf"
+  },
+  {
    "id": "park-nx10",
    "kind": "equipment",
    "label": "Park Systems NX10 Atomic Force Microscope",
@@ -15102,6 +15349,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/25",
    "origin": true
+  },
+  {
+   "id": "doc:park-systems/park-nx10-brochure-uottawa.pdf",
+   "kind": "document",
+   "label": "park-systems/park-nx10-brochure-uottawa.pdf",
+   "url": "https://www.uottawa.ca/research-innovation/sites/g/files/bhrskd326/files/2022-03/park_nx10_101514E16B%20Copy.pdf"
   },
   {
    "id": "perkinelmer-dma-8000",
@@ -15187,6 +15440,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/38",
    "origin": true
+  },
+  {
+   "id": "web:https://www.richmondscientific.com/product/perkin-elmer-frontier-ft-ir-spectrometer",
+   "kind": "document",
+   "label": "https://www.richmondscientific.com/product/perkin-elmer-frontier-ft-ir-spectrometer",
+   "url": "https://www.richmondscientific.com/product/perkin-elmer-frontier-ft-ir-spectrometer",
+   "web_only": true
   },
   {
    "id": "proceq-equotip-550-leeb",
@@ -15488,6 +15748,13 @@
    "origin": true
   },
   {
+   "id": "web:https://www.renishaw.com/en/invia-confocal-raman-microscope--6260",
+   "kind": "document",
+   "label": "https://www.renishaw.com/en/invia-confocal-raman-microscope--6260",
+   "url": "https://www.renishaw.com/en/invia-confocal-raman-microscope--6260",
+   "web_only": true
+  },
+  {
    "id": "rigaku-smartlab",
    "kind": "equipment",
    "label": "Rigaku SmartLab X-ray Diffractometer",
@@ -15509,6 +15776,13 @@
    "origin": true
   },
   {
+   "id": "web:https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+   "kind": "document",
+   "label": "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+   "url": "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+   "web_only": true
+  },
+  {
    "id": "rigaku-zsx-primus-400",
    "kind": "equipment",
    "label": "Rigaku ZSX Primus 400 Wavelength-Dispersive XRF",
@@ -15528,6 +15802,12 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/31",
    "origin": true
+  },
+  {
+   "id": "doc:rigaku/zsx-primus-400-brochure.pdf",
+   "kind": "document",
+   "label": "rigaku/zsx-primus-400-brochure.pdf",
+   "url": "https://rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_ZSX%20Primus%20400%20brochure_en_A4_4046062980_Ver2_low-res.pdf"
   },
   {
    "id": "rs-esw-emi-receiver",
@@ -17399,6 +17679,12 @@
    "origin": true
   },
   {
+   "id": "doc:thermo-fisher/nexsa-g2-datasheet-ds0364.pdf",
+   "kind": "document",
+   "label": "thermo-fisher/nexsa-g2-datasheet-ds0364.pdf",
+   "url": "https://documents.thermofisher.com/TFS-Assets/MSD/Datasheets/ds0364-nexsa-g2-xps.pdf"
+  },
+  {
    "id": "thermotron-se-s-series",
    "kind": "equipment",
    "label": "Thermotron SE-Series and S/SM-Series Environmental Test Chambers",
@@ -18346,6 +18632,13 @@
    "origin": true
   },
   {
+   "id": "web:https://wiki.smfi.unipr.it/dokuwiki/lib/exe/fetch.php?media=lmn%3Abrochure.pdf",
+   "kind": "document",
+   "label": "https://wiki.smfi.unipr.it/dokuwiki/lib/exe/fetch.php?media=lmn%3Abrochure.pdf",
+   "url": "https://wiki.smfi.unipr.it/dokuwiki/lib/exe/fetch.php?media=lmn%3Abrochure.pdf",
+   "web_only": true
+  },
+  {
    "id": "zeiss-xradia-versa",
    "kind": "equipment",
    "label": "ZEISS Xradia 410 / 520 / 610 / 620 Versa 3D X-ray Microscopes",
@@ -18386,6 +18679,13 @@
    "kind": "document",
    "label": "materialtwin-20260905/instrument/187",
    "origin": true
+  },
+  {
+   "id": "web:https://www.zeiss.com/microscopy/en/products/x-ray-microscopy/xradia-versa.html",
+   "kind": "document",
+   "label": "https://www.zeiss.com/microscopy/en/products/x-ray-microscopy/xradia-versa.html",
+   "url": "https://www.zeiss.com/microscopy/en/products/x-ray-microscopy/xradia-versa.html",
+   "web_only": true
   },
   {
    "id": "zwickroell-aflow-extrusion-plastometer",
@@ -21323,6 +21623,14 @@
    "target": "origin:materialtwin-20260905/instrument/39"
   },
   {
+   "source": "agilent-5977c-gcms",
+   "type": "documented_in",
+   "target": "doc:agilent/5977c-gc-msd-datasheet.pdf",
+   "pages": [
+    3
+   ]
+  },
+  {
    "source": "ametek-lloyd-ls-series",
    "type": "manufactured_by",
    "target": "ametek-lloyd"
@@ -21520,6 +21828,11 @@
    ]
   },
   {
+   "source": "anton-paar-mcr-rheometer",
+   "type": "documented_in",
+   "target": "web:https://www.anton-paar.com/us-en/products/details/rheometer-mcr-72-and-mcr-92/"
+  },
+  {
    "source": "anton-paar-nanoindentation",
    "type": "manufactured_by",
    "target": "anton-paar"
@@ -21556,6 +21869,21 @@
    "pages": [
     8
    ]
+  },
+  {
+   "source": "anton-paar-nanoindentation",
+   "type": "documented_in",
+   "target": "web:https://www.anton-paar.com/us-en/products/details/hit-300/"
+  },
+  {
+   "source": "anton-paar-nanoindentation",
+   "type": "documented_in",
+   "target": "web:https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/"
+  },
+  {
+   "source": "anton-paar-nanoindentation",
+   "type": "documented_in",
+   "target": "web:https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/"
   },
   {
    "source": "anton-paar-tribometers-materialtwin",
@@ -22143,6 +22471,11 @@
    "target": "origin:materialtwin-20260905/instrument/40"
   },
   {
+   "source": "bruker-avance-ssnmr",
+   "type": "documented_in",
+   "target": "web:https://www.bruker.com/en/landingpages/bbio/avance-neo-200-mhz-for-paramagnetic-materials.html"
+  },
+  {
    "source": "bruker-contourx-200",
    "type": "manufactured_by",
    "target": "bruker"
@@ -22477,6 +22810,15 @@
    "source": "bruker-vertex-ftir",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/37"
+  },
+  {
+   "source": "bruker-vertex-ftir",
+   "type": "documented_in",
+   "target": "doc:bruker/vertex-series-brochure.pdf",
+   "pages": [
+    3,
+    7
+   ]
   },
   {
    "source": "buehler-wilson-hardness",
@@ -22836,7 +23178,9 @@
    "pages": [
     1,
     2,
-    3
+    3,
+    11,
+    12
    ]
   },
   {
@@ -23595,6 +23939,11 @@
    "target": "origin:materialtwin-20260905/instrument/204"
   },
   {
+   "source": "espec-agree-et",
+   "type": "documented_in",
+   "target": "web:https://espec.com/na/products/family/agree"
+  },
+  {
    "source": "espec-ar-series",
    "type": "manufactured_by",
    "target": "espec"
@@ -23633,6 +23982,17 @@
    "source": "espec-ar-series",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/191"
+  },
+  {
+   "source": "espec-ar-series",
+   "type": "documented_in",
+   "target": "doc:espec/ar-series-standard-4k-ar02.pdf",
+   "pages": [
+    8,
+    9,
+    10,
+    11
+   ]
   },
   {
    "source": "espec-criterion",
@@ -23680,6 +24040,15 @@
    "target": "origin:materialtwin-20260905/instrument/203"
   },
   {
+   "source": "espec-criterion",
+   "type": "documented_in",
+   "target": "doc:espec/criterion-benchtop-brochure.pdf",
+   "pages": [
+    6,
+    7
+   ]
+  },
+  {
    "source": "espec-ehs-tpc-hast",
    "type": "manufactured_by",
    "target": "espec"
@@ -23698,6 +24067,15 @@
    "source": "espec-ehs-tpc-hast",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/199"
+  },
+  {
+   "source": "espec-ehs-tpc-hast",
+   "type": "documented_in",
+   "target": "doc:espec/ehs-hast-chambers.pdf",
+   "pages": [
+    11,
+    12
+   ]
   },
   {
    "source": "espec-industrial-ovens",
@@ -23720,6 +24098,17 @@
    "target": "origin:materialtwin-20260905/instrument/205"
   },
   {
+   "source": "espec-industrial-ovens",
+   "type": "documented_in",
+   "target": "doc:espec/pvph-ovens.pdf",
+   "pages": [
+    9,
+    11,
+    12,
+    13
+   ]
+  },
+  {
    "source": "espec-lab-series",
    "type": "manufactured_by",
    "target": "espec"
@@ -23738,6 +24127,11 @@
    "source": "espec-lab-series",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/202"
+  },
+  {
+   "source": "espec-lab-series",
+   "type": "documented_in",
+   "target": "web:https://datasheets.globalspec.com/ds/espec-north-america-qualmark-products-and-services/lhu-113/dd2d68f1-eb62-4a3a-b16e-319aae683694"
   },
   {
    "source": "espec-platinous-chambers-materialtwin",
@@ -23991,6 +24385,15 @@
    "target": "origin:materialtwin-20260905/instrument/201"
   },
   {
+   "source": "espec-su-sh-benchtop",
+   "type": "documented_in",
+   "target": "doc:espec/sh-benchtop-chambers.pdf",
+   "pages": [
+    10,
+    12
+   ]
+  },
+  {
    "source": "espec-tsa-thermal-shock-materialtwin",
    "type": "manufactured_by",
    "target": "espec"
@@ -24014,6 +24417,15 @@
    "source": "espec-tsa-thermal-shock-materialtwin",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/198"
+  },
+  {
+   "source": "espec-tsa-thermal-shock-materialtwin",
+   "type": "documented_in",
+   "target": "doc:espec/tsa-thermal-shock-chambers.pdf",
+   "pages": [
+    13,
+    14
+   ]
   },
   {
    "source": "espec-tsa-thermal-shock",
@@ -24139,6 +24551,14 @@
    "target": "origin:materialtwin-20260905/instrument/196"
   },
   {
+   "source": "espec-tsb-liquid-thermal-shock",
+   "type": "documented_in",
+   "target": "doc:espec/tsb-liquid-thermal-shock.pdf",
+   "pages": [
+    8
+   ]
+  },
+  {
    "source": "espec-tse-11-a",
    "type": "manufactured_by",
    "target": "espec"
@@ -24157,6 +24577,14 @@
    "source": "espec-tse-11-a",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/197"
+  },
+  {
+   "source": "espec-tse-11-a",
+   "type": "documented_in",
+   "target": "doc:espec/tsd-tse-thermal-shock-chambers.pdf",
+   "pages": [
+    4
+   ]
   },
   {
    "source": "espec-walk-in-chambers-materialtwin",
@@ -27262,6 +27690,11 @@
    ]
   },
   {
+   "source": "hirayama-hast-pc-r9",
+   "type": "documented_in",
+   "target": "web:https://hastest.com/product/hirayama-pc-r8-hast-chamber/"
+  },
+  {
    "source": "hitachi-nexta-sta",
    "type": "manufactured_by",
    "target": "hitachi-high-tech"
@@ -27342,6 +27775,11 @@
    "target": "origin:materialtwin-20260905/instrument/8"
   },
   {
+   "source": "hitachi-su3800-3900-sem",
+   "type": "documented_in",
+   "target": "web:https://www.hitachi-hightech.com/global/en/sinews/technical_explanation/130305/"
+  },
+  {
    "source": "horiba-fluoromax-plus",
    "type": "manufactured_by",
    "target": "horiba"
@@ -27390,6 +27828,11 @@
    "source": "horiba-gd-profiler-2",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/33"
+  },
+  {
+   "source": "horiba-gd-profiler-2",
+   "type": "documented_in",
+   "target": "web:https://www.horiba.com/usa/scientific/products/detail/action/show/Product/gd-profiler-2tm-1401/"
   },
   {
    "source": "hot-disk-tps-2200",
@@ -29319,6 +29762,11 @@
    "target": "origin:materialtwin-20260905/instrument/14"
   },
   {
+   "source": "jeol-jamp-9510f",
+   "type": "documented_in",
+   "target": "web:https://www.jeol.com/products/scientific/auger/JAMP-9510F.php"
+  },
+  {
    "source": "jeol-jem-f200",
    "type": "manufactured_by",
    "target": "jeol"
@@ -29344,6 +29792,11 @@
    "target": "origin:materialtwin-20260905/instrument/10"
   },
   {
+   "source": "jeol-jem-f200",
+   "type": "documented_in",
+   "target": "web:https://www.jeol.com/products/scientific/tem/JEM-F200.php"
+  },
+  {
    "source": "jeol-jps-9030",
    "type": "manufactured_by",
    "target": "jeol"
@@ -29362,6 +29815,11 @@
    "source": "jeol-jps-9030",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/15"
+  },
+  {
+   "source": "jeol-jps-9030",
+   "type": "documented_in",
+   "target": "web:https://www.jeol.com/products/scientific/xps_esca/JPS-9030.php"
   },
   {
    "source": "jeol-jsm-it-fesem",
@@ -29394,6 +29852,19 @@
    "target": "origin:materialtwin-20260905/instrument/11"
   },
   {
+   "source": "jeol-jsm-it-fesem",
+   "type": "documented_in",
+   "target": "doc:jeol/jsm-it500hr-fesem-uic.pdf",
+   "pages": [
+    2
+   ]
+  },
+  {
+   "source": "jeol-jsm-it-fesem",
+   "type": "documented_in",
+   "target": "web:https://www.jeol.com/products/scientific/sem/JSM-IT700HR.php"
+  },
+  {
    "source": "jeol-jsx-1000s",
    "type": "manufactured_by",
    "target": "jeol"
@@ -29412,6 +29883,11 @@
    "source": "jeol-jsx-1000s",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/16"
+  },
+  {
+   "source": "jeol-jsx-1000s",
+   "type": "documented_in",
+   "target": "web:https://www.jeol.com/products/scientific/xrf/JSX-1000S.php"
   },
   {
    "source": "jeol-jxa-epma",
@@ -29439,6 +29915,11 @@
    "target": "origin:materialtwin-20260905/instrument/13"
   },
   {
+   "source": "jeol-jxa-epma",
+   "type": "documented_in",
+   "target": "web:https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php"
+  },
+  {
    "source": "jeol-xtalab-synergy-ed",
    "type": "manufactured_by",
    "target": "jeol"
@@ -29457,6 +29938,11 @@
    "source": "jeol-xtalab-synergy-ed",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/17"
+  },
+  {
+   "source": "jeol-xtalab-synergy-ed",
+   "type": "documented_in",
+   "target": "doc:rigaku/xtalab-synergy-ed-brochure.pdf"
   },
   {
    "source": "keithley-4200-scs",
@@ -29487,6 +29973,16 @@
    "source": "keithley-4200-scs",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/177"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "documented_in",
+   "target": "doc:keithley/4200a-scs-datasheet-tek.pdf"
+  },
+  {
+   "source": "keithley-4200-scs",
+   "type": "documented_in",
+   "target": "doc:keithley/4200-scs-techdatabook-revp.pdf"
   },
   {
    "source": "keysight-n9048b-pxe",
@@ -30552,6 +31048,11 @@
    "target": "origin:materialtwin-20260905/instrument/162"
   },
   {
+   "source": "malvern-mastersizer-3000",
+   "type": "documented_in",
+   "target": "web:https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range"
+  },
+  {
    "source": "malvern-zetasizer-nano-zsp",
    "type": "manufactured_by",
    "target": "malvern-panalytical"
@@ -30715,6 +31216,11 @@
    "source": "metrohm-851-titrando",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/28"
+  },
+  {
+   "source": "metrohm-851-titrando",
+   "type": "documented_in",
+   "target": "web:https://www.metrohm.com/en/products/karl-fischer-titration/kf-titrando/28510110"
   },
   {
    "source": "mettler-dma-sdta861e",
@@ -30927,6 +31433,14 @@
    "target": "origin:materialtwin-20260905/instrument/212"
   },
   {
+   "source": "mitutoyo-abk-1",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    38
+   ]
+  },
+  {
    "source": "mitutoyo-ar-atk-rockwell",
    "type": "manufactured_by",
    "target": "mitutoyo"
@@ -30962,6 +31476,14 @@
    "target": "origin:materialtwin-20260905/instrument/79"
   },
   {
+   "source": "mitutoyo-ar-atk-rockwell",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    31
+   ]
+  },
+  {
    "source": "mitutoyo-avk",
    "type": "manufactured_by",
    "target": "mitutoyo"
@@ -30985,6 +31507,14 @@
    "source": "mitutoyo-avk",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/74"
+  },
+  {
+   "source": "mitutoyo-avk",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    27
+   ]
   },
   {
    "source": "mitutoyo-hardmatic-ud-410-leeb",
@@ -31160,6 +31690,14 @@
    "target": "origin:materialtwin-20260905/instrument/218"
   },
   {
+   "source": "mitutoyo-hm-200",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "pages": [
+    16
+   ]
+  },
+  {
    "source": "mitutoyo-hm-micro-vickers-materialtwin",
    "type": "manufactured_by",
    "target": "mitutoyo"
@@ -31208,6 +31746,14 @@
    "source": "mitutoyo-hm-micro-vickers-materialtwin",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/70"
+  },
+  {
+   "source": "mitutoyo-hm-micro-vickers-materialtwin",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    11
+   ]
   },
   {
    "source": "mitutoyo-hm-micro-vickers",
@@ -31289,6 +31835,14 @@
    "target": "origin:materialtwin-20260905/instrument/83"
   },
   {
+   "source": "mitutoyo-hr-500",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    33
+   ]
+  },
+  {
    "source": "mitutoyo-hr-600",
    "type": "manufactured_by",
    "target": "mitutoyo"
@@ -31317,6 +31871,14 @@
    "source": "mitutoyo-hr-600",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/59"
+  },
+  {
+   "source": "mitutoyo-hr-600",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hr-600-series-bulletin-2295.pdf",
+   "pages": [
+    4
+   ]
   },
   {
    "source": "mitutoyo-hr-series-rockwell-materialtwin",
@@ -31493,6 +32055,22 @@
    "target": "origin:materialtwin-20260905/instrument/99"
   },
   {
+   "source": "mitutoyo-hv-100",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    26
+   ]
+  },
+  {
+   "source": "mitutoyo-hv-100",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "pages": [
+    17
+   ]
+  },
+  {
    "source": "mitutoyo-mzt-500",
    "type": "manufactured_by",
    "target": "mitutoyo"
@@ -31516,6 +32094,14 @@
    "source": "mitutoyo-mzt-500",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/75"
+  },
+  {
+   "source": "mitutoyo-mzt-500",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "pages": [
+    25
+   ]
   },
   {
    "source": "mitutoyo-surftest-sj-410",
@@ -31551,6 +32137,14 @@
    "source": "mitutoyo-surftest-sj-410",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/23"
+  },
+  {
+   "source": "mitutoyo-surftest-sj-410",
+   "type": "documented_in",
+   "target": "doc:mitutoyo/surftest-sj-410-bulletin-2110.pdf",
+   "pages": [
+    14
+   ]
   },
   {
    "source": "molex-crimp-pull-tester",
@@ -33442,6 +34036,11 @@
    "target": "origin:materialtwin-20260905/instrument/183"
   },
   {
+   "source": "nordson-gen7-c-sam",
+   "type": "documented_in",
+   "target": "web:https://www.nordson.com/en/products/test-and-inspection-products/ami-gen7"
+  },
+  {
    "source": "ossila-four-point-probe",
    "type": "manufactured_by",
    "target": "ossila"
@@ -33482,6 +34081,11 @@
    "target": "origin:materialtwin-20260905/instrument/24"
   },
   {
+   "source": "oxford-symmetry-s2",
+   "type": "documented_in",
+   "target": "doc:oxford-instruments/symmetry-s2-ebsd-brochure.pdf"
+  },
+  {
    "source": "park-nx10",
    "type": "manufactured_by",
    "target": "park-systems"
@@ -33500,6 +34104,15 @@
    "source": "park-nx10",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/25"
+  },
+  {
+   "source": "park-nx10",
+   "type": "documented_in",
+   "target": "doc:park-systems/park-nx10-brochure-uottawa.pdf",
+   "pages": [
+    8,
+    15
+   ]
   },
   {
    "source": "perkinelmer-dma-8000",
@@ -33590,6 +34203,11 @@
    "source": "perkinelmer-frontier-ftir",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/38"
+  },
+  {
+   "source": "perkinelmer-frontier-ftir",
+   "type": "documented_in",
+   "target": "web:https://www.richmondscientific.com/product/perkin-elmer-frontier-ft-ir-spectrometer"
   },
   {
    "source": "proceq-equotip-550-leeb",
@@ -33891,6 +34509,11 @@
    "target": "origin:materialtwin-20260905/instrument/43"
   },
   {
+   "source": "renishaw-invia",
+   "type": "documented_in",
+   "target": "web:https://www.renishaw.com/en/invia-confocal-raman-microscope--6260"
+  },
+  {
    "source": "rigaku-smartlab",
    "type": "manufactured_by",
    "target": "rigaku"
@@ -33921,6 +34544,11 @@
    "target": "origin:materialtwin-20260905/instrument/30"
   },
   {
+   "source": "rigaku-smartlab",
+   "type": "documented_in",
+   "target": "web:https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab"
+  },
+  {
    "source": "rigaku-zsx-primus-400",
    "type": "manufactured_by",
    "target": "rigaku"
@@ -33939,6 +34567,14 @@
    "source": "rigaku-zsx-primus-400",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/31"
+  },
+  {
+   "source": "rigaku-zsx-primus-400",
+   "type": "documented_in",
+   "target": "doc:rigaku/zsx-primus-400-brochure.pdf",
+   "pages": [
+    11
+   ]
   },
   {
    "source": "rs-esw-emi-receiver",
@@ -35901,6 +36537,11 @@
    "target": "origin:materialtwin-20260905/instrument/32"
   },
   {
+   "source": "thermo-nexsa-g2",
+   "type": "documented_in",
+   "target": "doc:thermo-fisher/nexsa-g2-datasheet-ds0364.pdf"
+  },
+  {
    "source": "thermotron-se-s-series",
    "type": "manufactured_by",
    "target": "thermotron"
@@ -36941,6 +37582,11 @@
    "target": "origin:materialtwin-20260905/instrument/26"
   },
   {
+   "source": "zeiss-gemini-fesem",
+   "type": "documented_in",
+   "target": "web:https://wiki.smfi.unipr.it/dokuwiki/lib/exe/fetch.php?media=lmn%3Abrochure.pdf"
+  },
+  {
    "source": "zeiss-xradia-versa",
    "type": "manufactured_by",
    "target": "zeiss"
@@ -36979,6 +37625,11 @@
    "source": "zeiss-xradia-versa",
    "type": "documented_in",
    "target": "origin:materialtwin-20260905/instrument/187"
+  },
+  {
+   "source": "zeiss-xradia-versa",
+   "type": "documented_in",
+   "target": "web:https://www.zeiss.com/microscopy/en/products/x-ray-microscopy/xradia-versa.html"
   },
   {
    "source": "zwickroell-aflow-extrusion-plastometer",
@@ -38060,8 +38711,8 @@
   }
  ],
  "counts": {
-  "nodes": 1848,
-  "edges": 3468,
+  "nodes": 1894,
+  "edges": 3521,
   "equipment": 278
  }
 }

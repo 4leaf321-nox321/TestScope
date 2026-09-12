@@ -14,6 +14,14 @@
   {
    "origin": "materialtwin-20260905/instrument/25",
    "note": "Park NX10 — The Most Accurate Atomic Force Microscope · metrology_catalogs/surface/Park_NX10_AFM.pdf"
+  },
+  {
+   "file": "park-systems/park-nx10-brochure-uottawa.pdf",
+   "pages": [
+    8,
+    15
+   ],
+   "note": "제조사 브로슈어(대학 미러)"
   }
  ],
  "confidence": "limited",
@@ -47,6 +55,20 @@
       "notes": "카탈로그에 'roughness' 나 Ra 라는 말은 없고 topography(형상) 측정만 인쇄되어 있어 medium. Ra 의 측정범위·분해능이 아니라 Z 스캐너 사양이라 range·resolution 은 비웠다 — Z 스캔범위 15 µm(옵션 30 µm), Z 분해능 0.015 nm, 위치검출기 노이즈 0.03 nm(1 kHz)."
      }
     ]
+   },
+   "specs": {
+    "scan_range_um": {
+     "max": 50,
+     "note": "XY 50×50 µm 표준(옵션 100×100)"
+    },
+    "z_range_um": {
+     "max": 15,
+     "note": "옵션 30 µm"
+    },
+    "z_noise_nm": 0.02,
+    "specimen_size_mm": {
+     "note": "50×50 mm · 두께 20 mm"
+    }
    }
   }
  ]

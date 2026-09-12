@@ -14,6 +14,11 @@
   {
    "origin": "materialtwin-20260905/instrument/183",
    "note": "Nordson Gen7 C-SAM Inspection System (DS-GEN7-271022) · metrology_catalogs/ndt/Nordson_Gen7_CSAM.pdf"
+  },
+  {
+   "url": "https://www.nordson.com/en/products/test-and-inspection-products/ami-gen7",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹)"
   }
  ],
  "confidence": "limited",
@@ -47,6 +52,12 @@
       "notes": "카탈로그가 '두 계면 사이의 거리 또는 두께를 평가한다'고 명시해 층 두께 키에 이었지만, **실제로 재는 것은 시간차(TOF)** 이고 두께로 환산하려면 재료의 음속을 알아야 해서 medium 이다. 두께 측정범위·정확도는 인쇄돼 있지 않다(TOF 선택 단위 10 ns, 디지털 게이팅 1~10,000 ns 만 인쇄). 이 장비의 나머지 기능은 결함 영상화라 능력행이 이 한 줄뿐이다."
      }
     ]
+   },
+   "specs": {
+    "specimen_diameter_mm": {
+     "max": 350,
+     "note": "350 mm 웨이퍼 척까지"
+    }
    }
   }
  ]

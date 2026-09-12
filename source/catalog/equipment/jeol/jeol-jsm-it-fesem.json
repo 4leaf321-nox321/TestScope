@@ -20,6 +20,18 @@
   {
    "origin": "materialtwin-20260905/instrument/11",
    "note": "JEOL JSM-IT700HR Scanning Electron Microscope · metrology_catalogs/surface/JEOL_JSM-IT700HR.pdf"
+  },
+  {
+   "file": "jeol/jsm-it500hr-fesem-uic.pdf",
+   "pages": [
+    2
+   ],
+   "note": "JEOL 사양을 옮긴 대학 장비 안내(UIC) — 제조사 카탈로그는 다운로드 폼 뒤"
+  },
+  {
+   "url": "https://www.jeol.com/products/scientific/sem/JSM-IT700HR.php",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹) — 단종 표시"
   }
  ],
  "confidence": "catalog",
@@ -64,6 +76,32 @@
       "notes": "EBSD 장착 사실만 인쇄. 상(phase)·방위 식별이 EBSD 의 직접 출력이라 결정구조로 이었으나 사양 수치가 하나도 없어 medium."
      }
     ]
+   },
+   "specs": {
+    "accelerating_voltage_kV": {
+     "min": 0.5,
+     "max": 30
+    },
+    "sem_resolution_nm": {
+     "min": 1.5,
+     "note": "1.5 nm @30 kV · 4 nm @1 kV"
+    },
+    "magnification": {
+     "max": 600000
+    },
+    "specimen_diameter_mm": {
+     "max": 200
+    },
+    "specimen_height_mm": {
+     "max": 75
+    },
+    "low_vacuum_Pa": {
+     "min": 10,
+     "max": 150
+    },
+    "stage_travel_mm": {
+     "note": "X 125 · Y 100 · Z 80"
+    }
    }
   },
   {
@@ -88,6 +126,19 @@
       "notes": "정성분석·표준시료 없는 정량(ZAF)·표준시료 정량(ZAF)·선분석·원소맵이 인쇄되어 있다. 검출 원소 Be~U 와 에너지분해능 129.0 eV 이하는 조성 자체의 농도범위가 아니라 range 에 넣지 않았다(농도범위·검출한계는 인쇄 없음)."
      }
     ]
+   },
+   "specs": {
+    "accelerating_voltage_kV": {
+     "min": 0.5,
+     "max": 30
+    },
+    "sem_resolution_nm": {
+     "min": 1.0,
+     "note": "1 nm @20 kV · 3 nm @1 kV"
+    },
+    "probe_current_nA": {
+     "max": 300
+    }
    }
   }
  ]

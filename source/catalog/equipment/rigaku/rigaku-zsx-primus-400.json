@@ -15,6 +15,13 @@
   {
    "origin": "materialtwin-20260905/instrument/31",
    "note": "Rigaku ZSX Primus 400 · metrology_catalogs/chemical/Rigaku_ZSX_Primus400_XRF.pdf"
+  },
+  {
+   "file": "rigaku/zsx-primus-400-brochure.pdf",
+   "pages": [
+    11
+   ],
+   "note": "브로슈어 사양표"
   }
  ],
  "confidence": "catalog",
@@ -57,6 +64,25 @@
       "notes": "'thin film composition and thickness' 용도가 명시되고 FP 소프트웨어가 박막을 지원한다고 적혀 있으나, 측정 가능한 두께 범위·정확도 수치가 하나도 없고 문장 구조가 산업 수요 설명에 가까워 medium 으로 뒀다."
      }
     ]
+   },
+   "specs": {
+    "element_range": "Be(4)~U(92)",
+    "tube_power_W": {
+     "max": 4000,
+     "note": "3 kW 또는 4 kW Rh 단창 · 최대 60 kV·150 mA"
+    },
+    "specimen_diameter_mm": {
+     "max": 400
+    },
+    "specimen_height_mm": {
+     "max": 50
+    },
+    "specimen_mass_kg": {
+     "max": 30
+    },
+    "spot_diameter_mm": {
+     "min": 0.5
+    }
    }
   }
  ]

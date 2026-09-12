@@ -1,5 +1,19 @@
 [
  {
+  "file": "agilent/5977c-gc-msd-datasheet.pdf",
+  "pages": 5,
+  "bytes": 193390,
+  "sha256": "6d2423b00181fbf9a2de123428333c34346e2db4041a23af9465e9958207e2ee",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 21236,
+  "url": "https://chemetrix.co.za/wp-content/uploads/2022/07/datasheet-5977c-gc-msd-5994-4846en-agilent.pdf",
+  "used_by": [
+   "agilent-5977c-gcms"
+  ]
+ },
+ {
   "file": "ametek-lloyd/astm-f88-seal-strength-case.pdf",
   "pages": 2,
   "bytes": 663389,
@@ -267,6 +281,20 @@
   ]
  },
  {
+  "file": "bruker/vertex-series-brochure.pdf",
+  "pages": 7,
+  "bytes": 13325198,
+  "sha256": "e8f2a9465e81e96713caf7b0f3f961e8b8b530e8e4a90d6fe81c26a30bb3e584",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 55831,
+  "url": "http://bruker.poznan.pl/wp-content/uploads/2018/12/VERTEXseries_Brochure_EN.pdf",
+  "used_by": [
+   "bruker-vertex-ftir"
+  ]
+ },
+ {
   "file": "buehler/wilson-legacy-hardness-brochure.pdf",
   "pages": 4,
   "bytes": 3663491,
@@ -519,6 +547,60 @@
   ]
  },
  {
+  "file": "espec/ar-series-rapid-rate-ar01.pdf",
+  "pages": 20,
+  "bytes": 5090598,
+  "sha256": "f1cb652f04017f6b55d22d36b98fce9298e031376d2c6e13110e8afe8a60679d",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 103400,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/ar01.pdf",
+  "used_by": []
+ },
+ {
+  "file": "espec/ar-series-standard-4k-ar02.pdf",
+  "pages": 16,
+  "bytes": 3819602,
+  "sha256": "0e8c9a561a7aade8b8883fc1ca1c080c1b9700c341ee08edfca815e31da77f7e",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 69061,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/ar02.pdf",
+  "used_by": [
+   "espec-ar-series"
+  ]
+ },
+ {
+  "file": "espec/criterion-benchtop-brochure.pdf",
+  "pages": 8,
+  "bytes": 666335,
+  "sha256": "3a128217c19bfe2135671054372bdab7682d5c7256649e7f05dbb7d589ba54ea",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 18838,
+  "url": "https://espec.com/images/uploads/files/e_criterion-all.pdf",
+  "used_by": [
+   "espec-criterion"
+  ]
+ },
+ {
+  "file": "espec/ehs-hast-chambers.pdf",
+  "pages": 16,
+  "bytes": 4373710,
+  "sha256": "009be08885daad8302641412100a4b5eda59d4c25a098729bd43b02c5ec1fa63",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 74772,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/ehs.pdf",
+  "used_by": [
+   "espec-ehs-tpc-hast"
+  ]
+ },
+ {
   "file": "espec/platinous-h-series.pdf",
   "pages": 8,
   "bytes": 911329,
@@ -533,6 +615,18 @@
   ]
  },
  {
+  "file": "espec/platinous-j-series.pdf",
+  "pages": 48,
+  "bytes": 9648490,
+  "sha256": "892ba24392c7706e5563885f0efe99a741877deee482fff54370613d3ea922a7",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 227556,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/pj.pdf",
+  "used_by": []
+ },
+ {
   "file": "espec/platinous-j-temp-humidity-chamber.pdf",
   "pages": 48,
   "bytes": 9648490,
@@ -544,6 +638,20 @@
   "url": "https://www.espec.co.jp/english/products/catalog/pj.pdf",
   "used_by": [
    "espec-platinous-chambers"
+  ]
+ },
+ {
+  "file": "espec/pvph-ovens.pdf",
+  "pages": 24,
+  "bytes": 4492090,
+  "sha256": "6e675db49eab7042a53e9b252107ad36d48c30ba1d212f8599e8666f63e5ff9d",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 97601,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/pvph.pdf",
+  "used_by": [
+   "espec-industrial-ovens"
   ]
  },
  {
@@ -575,6 +683,46 @@
   ]
  },
  {
+  "file": "espec/sh-benchtop-chambers.pdf",
+  "pages": 24,
+  "bytes": 11290470,
+  "sha256": "cb394aa32e48fb218fd8123ada37170265a909801fc64224417c90cceb8eb388",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 97167,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/sh.pdf",
+  "used_by": [
+   "espec-su-sh-benchtop"
+  ]
+ },
+ {
+  "file": "espec/tbe-walk-in-e-series.pdf",
+  "pages": 20,
+  "bytes": 4118514,
+  "sha256": "76a00cbcae3ff0497711025a17df99b1e3b6c6777eb457e14ad1fafdcbbd3f9f",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 83061,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/tbe.pdf",
+  "used_by": []
+ },
+ {
+  "file": "espec/tsa-thermal-shock-chambers.pdf",
+  "pages": 24,
+  "bytes": 6721443,
+  "sha256": "64a596913ccb8506da651375aebc0c7c99830ff2d44b2ccd3d147ace53b777ad",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 108823,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/tsa.pdf",
+  "used_by": [
+   "espec-tsa-thermal-shock-materialtwin"
+  ]
+ },
+ {
   "file": "espec/tsa-thermal-shock-test-navi.pdf",
   "pages": 24,
   "bytes": 1201522,
@@ -586,6 +734,34 @@
   "url": "https://www.test-navi.com/eng/news/pdf/141118_espec_tsa_eng.pdf",
   "used_by": [
    "espec-tsa-thermal-shock"
+  ]
+ },
+ {
+  "file": "espec/tsb-liquid-thermal-shock.pdf",
+  "pages": 12,
+  "bytes": 2917635,
+  "sha256": "055bcb52df87ef4e94974b668f81acb80b2e620706042111b137d15d14dcef5a",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 39526,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/tsb.pdf",
+  "used_by": [
+   "espec-tsb-liquid-thermal-shock"
+  ]
+ },
+ {
+  "file": "espec/tsd-tse-thermal-shock-chambers.pdf",
+  "pages": 16,
+  "bytes": 4271597,
+  "sha256": "8cc4a296b303197489bd879219eb6d2ddd1c20c55a9f9c37fdf225e36fce6faf",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 62260,
+  "url": "https://www.espec.co.jp/english/inquiry/catalog/tsdtse.pdf",
+  "used_by": [
+   "espec-tse-11-a"
   ]
  },
  {
@@ -2742,6 +2918,48 @@
   "used_by": []
  },
  {
+  "file": "jeol/jsm-it500hr-fesem-uic.pdf",
+  "pages": 2,
+  "bytes": 909897,
+  "sha256": "0e6ce8d2218aab863b3589de986686074f5467aee8ce56942183b1685a6edaef",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 2861,
+  "url": "https://rrc.uic.edu/wp-content/uploads/sites/112/2020/12/JEOL_IT500HR-FESEM.pdf",
+  "used_by": [
+   "jeol-jsm-it-fesem"
+  ]
+ },
+ {
+  "file": "keithley/4200-scs-techdatabook-revp.pdf",
+  "pages": 30,
+  "bytes": 2250718,
+  "sha256": "9196aaa0f1d2288ad1f2a61f4fc4ed952b11ab25239a7ed2271cb3ae0d7344d4",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 168164,
+  "url": "https://download.tek.com/datasheet/2199_4200-SCS_TechDataBook_RevP_053017.pdf",
+  "used_by": [
+   "keithley-4200-scs"
+  ]
+ },
+ {
+  "file": "keithley/4200a-scs-datasheet-tek.pdf",
+  "pages": 130,
+  "bytes": 5497629,
+  "sha256": "0d7121e0795814e8e1980f38326a8bbdc39ac7cf0e803fe40f00df6cca7c1312",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 211305,
+  "url": "https://www.tek.com/-/media/documents/4200a-smu-900-01a_dec_2020.pdf",
+  "used_by": [
+   "keithley-4200-scs"
+  ]
+ },
+ {
   "file": "keysight/n9048b-pxe-emi-receiver-unitest.pdf",
   "pages": 37,
   "bytes": 1066522,
@@ -3076,6 +3294,18 @@
   "used_by": []
  },
  {
+  "file": "mitutoyo/catalog-k-section-hardness.pdf",
+  "pages": 18,
+  "bytes": 1799787,
+  "sha256": "efb5252da69eee289935554472b142ce66295873157dd8deaa11e4127fc7018d",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 105387,
+  "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf",
+  "used_by": []
+ },
+ {
   "file": "mitutoyo/hardness-testing-equipment-pre1101.pdf",
   "pages": 40,
   "bytes": 2245461,
@@ -3088,6 +3318,67 @@
   "used_by": [
    "mitutoyo-hardmatic-ud-410-leeb",
    "mitutoyo-hm-micro-vickers"
+  ]
+ },
+ {
+  "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+  "pages": 52,
+  "bytes": 3272459,
+  "sha256": "76950d3bda20aff077d02ff1d4b33c8d0dbf4b127ad0dadd4d37947faf71aa26",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 286470,
+  "url": "https://www2.mitutoyo.co.jp/eng/support/service/catalog/06/E4104.pdf",
+  "used_by": [
+   "mitutoyo-abk-1",
+   "mitutoyo-ar-atk-rockwell",
+   "mitutoyo-avk",
+   "mitutoyo-hm-micro-vickers-materialtwin",
+   "mitutoyo-hr-500",
+   "mitutoyo-hv-100"
+  ]
+ },
+ {
+  "file": "mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+  "pages": 52,
+  "bytes": 11802826,
+  "sha256": "427027b42a31a2681aa7a5a08db7752e2dd16b42d5f7166e8a3b5b2119a074dd",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 307457,
+  "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/E17001.pdf",
+  "used_by": [
+   "mitutoyo-hm-200",
+   "mitutoyo-hv-100",
+   "mitutoyo-mzt-500"
+  ]
+ },
+ {
+  "file": "mitutoyo/hardness-testing-machines-pre1442.pdf",
+  "pages": 60,
+  "bytes": 6899709,
+  "sha256": "1f7e5f17565be3ba0b943e28590fe8f107d4a90f7610d6428a01cbf7975e54c9",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 369514,
+  "url": "https://shop.mitutoyo.eu/media/mitutoyoData/DO/base/pre1442_hardness_testing_machines_web.pdf",
+  "used_by": []
+ },
+ {
+  "file": "mitutoyo/hr-600-series-bulletin-2295.pdf",
+  "pages": 16,
+  "bytes": 1385544,
+  "sha256": "08b6691bf69f3cc4d21f071cc94f4c3a1e6940b8dfaa816107d67a8aa966c602",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 26526,
+  "url": "https://www.mitutoyo.com/Images/HR-600_2295.pdf",
+  "used_by": [
+   "mitutoyo-hr-600"
   ]
  },
  {
@@ -3116,6 +3407,20 @@
   "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/mit_rockwell_hr_series.pdf",
   "used_by": [
    "mitutoyo-hr-series-rockwell"
+  ]
+ },
+ {
+  "file": "mitutoyo/surftest-sj-410-bulletin-2110.pdf",
+  "pages": 16,
+  "bytes": 3280964,
+  "sha256": "53fa16f3723b8fe53332474083aa6e20c89d9b04385d1f49ee87f41fab8a8cd3",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 100715,
+  "url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/2110_SJ-410-1.pdf",
+  "used_by": [
+   "mitutoyo-surftest-sj-410"
   ]
  },
  {
@@ -3679,6 +3984,34 @@
   ]
  },
  {
+  "file": "oxford-instruments/symmetry-s2-ebsd-brochure.pdf",
+  "pages": 2,
+  "bytes": 2525270,
+  "sha256": "eb7e89855a52b8a35b51f1428d8af4fb240e11a7f0ac77f75c8fe1a6acfd2f1d",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 9095,
+  "url": "https://nano.oxinst.com/assets/uploads/Symmetry_2_Final_1.pdf",
+  "used_by": [
+   "oxford-symmetry-s2"
+  ]
+ },
+ {
+  "file": "park-systems/park-nx10-brochure-uottawa.pdf",
+  "pages": 16,
+  "bytes": 1271275,
+  "sha256": "d6b026b4b20e1d05729b203a85ea2c0b7760b16c28086e0ead15dbdd3c58daca",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 32818,
+  "url": "https://www.uottawa.ca/research-innovation/sites/g/files/bhrskd326/files/2022-03/park_nx10_101514E16B%20Copy.pdf",
+  "used_by": [
+   "park-nx10"
+  ]
+ },
+ {
   "file": "perkinelmer/dsc-8000-datasheet.pdf",
   "pages": 15,
   "bytes": 3661762,
@@ -3760,6 +4093,34 @@
   "url": "https://acl.design.upenn.edu/wp-content/uploads/2024/01/LU-8047-TM-QUV-Technical-Manual-Series-95.pdf",
   "used_by": [
    "q-lab-quv"
+  ]
+ },
+ {
+  "file": "rigaku/xtalab-synergy-ed-brochure.pdf",
+  "pages": 13,
+  "bytes": 4138682,
+  "sha256": "d30e202e17074e84246543c31209cb9d4ce062fa6324435205efef7c6c257606",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 28992,
+  "url": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/ROD_XtaLAB%20Synergy-ED_21121620_iBR_R21_220407.pdf",
+  "used_by": [
+   "jeol-xtalab-synergy-ed"
+  ]
+ },
+ {
+  "file": "rigaku/zsx-primus-400-brochure.pdf",
+  "pages": 12,
+  "bytes": 2636388,
+  "sha256": "9f27c1c47e2a5592e314fcb361505219170db69595bf1990967087af79f43d13",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 28973,
+  "url": "https://rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_ZSX%20Primus%20400%20brochure_en_A4_4046062980_Ver2_low-res.pdf",
+  "used_by": [
+   "rigaku-zsx-primus-400"
   ]
  },
  {
@@ -4182,6 +4543,20 @@
   "url": "https://documents.thermofisher.com/TFS-Assets/MSD/brochures/BR6232163-HAAKE-MARS-iQ-Rheometer-Brochure.pdf",
   "used_by": [
    "thermo-haake-mars"
+  ]
+ },
+ {
+  "file": "thermo-fisher/nexsa-g2-datasheet-ds0364.pdf",
+  "pages": 4,
+  "bytes": 556016,
+  "sha256": "44aa0bc12a5ff4effd76b8f51475e17220fd8e5f031c4b22fa6efcb5e2d49eff",
+  "title": "",
+  "author": "",
+  "creation_date": "",
+  "chars": 16840,
+  "url": "https://documents.thermofisher.com/TFS-Assets/MSD/Datasheets/ds0364-nexsa-g2-xps.pdf",
+  "used_by": [
+   "thermo-nexsa-g2"
   ]
  },
  {

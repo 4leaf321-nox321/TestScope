@@ -14,6 +14,10 @@
   {
    "origin": "materialtwin-20260905/instrument/17",
    "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  },
+  {
+   "file": "rigaku/xtalab-synergy-ed-brochure.pdf",
+   "note": "Rigaku 브로슈어"
   }
  ],
  "confidence": "catalog",
@@ -47,6 +51,11 @@
       "notes": "'structure determination of three-dimensional molecular structures' / 'Analyze crystal structure' 로 결정구조 결정이 명시."
      }
     ]
+   },
+   "specs": {
+    "accelerating_voltage_kV": 200,
+    "detector": "HyPix-ED 하이브리드 픽셀 (Rigaku)",
+    "electron_source": "JEOL 전자원·광학계"
    }
   }
  ]

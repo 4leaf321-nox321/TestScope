@@ -14,6 +14,11 @@
   {
    "origin": "materialtwin-20260905/instrument/15",
    "note": "JEOL Products Guide 2026 · metrology_catalogs/surface/JEOL_ProductsGuide2026.pdf"
+  },
+  {
+   "url": "https://www.jeol.com/products/scientific/xps_esca/JPS-9030.php",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹)"
   }
  ],
  "confidence": "limited",
@@ -46,6 +51,14 @@
       "notes": "XPS 의 직접 출력은 결합에너지 스펙트럼이고 조성은 거기서 나오는 2차 결과다. 소개문에 정량·조성 문구가 없어 medium."
      }
     ]
+   },
+   "specs": {
+    "xray_source": "Mg/Al 이중 양극 (300 W 급, Mg Kα 1,000,000 cps 이상 · Ag 3d5/2 FWHM 1.0 eV); 단색화 옵션",
+    "analysis_depth_nm": {
+     "min": 1,
+     "max": 6,
+     "note": "표준 6 nm 이상, TRXPS 로 1 nm"
+    }
    }
   }
  ]

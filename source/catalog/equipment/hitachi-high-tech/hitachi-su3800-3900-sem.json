@@ -17,6 +17,11 @@
   {
    "origin": "materialtwin-20260905/instrument/8",
    "note": "Hitachi Scanning Electron Microscope SU3800 / SU3900 · metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf"
+  },
+  {
+   "url": "https://www.hitachi-hightech.com/global/en/sinews/technical_explanation/130305/",
+   "retrieved": "2026-09-12",
+   "note": "제조사 기술 해설(SI NEWS, 웹)"
   }
  ],
  "confidence": "limited",
@@ -36,6 +41,17 @@
     "doc_path": "metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf",
     "source_title": "Hitachi Scanning Electron Microscope SU3800 / SU3900",
     "capabilities": []
+   },
+   "specs": {
+    "specimen_diameter_mm": {
+     "max": 200
+    },
+    "specimen_height_mm": {
+     "max": 80
+    },
+    "specimen_mass_kg": {
+     "max": 2
+    }
    }
   },
   {
@@ -51,6 +67,17 @@
     "doc_path": "metrology_catalogs/surface/Hitachi_SU3800_SEM.pdf",
     "source_title": "Hitachi Scanning Electron Microscope SU3800 / SU3900",
     "capabilities": []
+   },
+   "specs": {
+    "specimen_diameter_mm": {
+     "max": 300
+    },
+    "specimen_height_mm": {
+     "max": 130
+    },
+    "specimen_mass_kg": {
+     "max": 5
+    }
    }
   }
  ]

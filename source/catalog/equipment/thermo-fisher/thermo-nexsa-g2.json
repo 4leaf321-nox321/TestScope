@@ -14,6 +14,10 @@
   {
    "origin": "materialtwin-20260905/instrument/32",
    "note": "Thermo Scientific Nexsa G2 Surface Analysis System · metrology_catalogs/chemical/Thermo_Nexsa_G2_XPS.pdf"
+  },
+  {
+   "file": "thermo-fisher/nexsa-g2-datasheet-ds0364.pdf",
+   "note": "제조사 데이터시트"
   }
  ],
  "confidence": "catalog",
@@ -47,6 +51,21 @@
       "notes": "정량 조성이 명시. 농도범위·검출한계 수치는 인쇄되어 있지 않다. XPS 의 1차 출력은 결합에너지 스펙트럼이고 조성은 정량 처리 결과다."
      }
     ]
+   },
+   "specs": {
+    "spot_diameter_um": {
+     "min": 10,
+     "max": 400,
+     "note": "5 µm 단계"
+    },
+    "specimen_size_mm": {
+     "note": "최대 60×60×20 mm"
+    },
+    "ion_energy_eV": {
+     "min": 200,
+     "max": 8000,
+     "note": "단원자 500~4000 eV · 클러스터 2000~8000 eV"
+    }
    }
   }
  ]

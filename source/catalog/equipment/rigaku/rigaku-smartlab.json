@@ -25,6 +25,11 @@
   {
    "origin": "materialtwin-20260905/instrument/30",
    "note": "Rigaku SmartLab · metrology_catalogs/chemical/Rigaku_SmartLab.pdf"
+  },
+  {
+   "url": "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품 페이지(웹)"
   }
  ],
  "confidence": "catalog",
@@ -143,6 +148,21 @@
       "notes": "chunk_17 의 structure.grain_size(medium) 행을 옮긴 것이다. 카탈로그가 'grain size' 라고 쓰지만 SAXS 가 보는 것은 산란 도메인 크기이고 예시가 Au 나노입자라 입경 키가 맞다(D8 의 SAXS 행도 particle_diameter 다). 결정자 크기는 분말회절 근거로 별도 행을 만들었다. **범위를 넣지 않은 이유는 그대로다** — 'minimum 100 nm', USAXS 'minimum grain size of 1000 nm' 이 하한인지 상한인지 원문에서 판별되지 않는다."
      }
     ]
+   },
+   "specs": {
+    "tube_power_W": {
+     "max": 9000,
+     "note": "PhotonMax 9 kW 회전 양극(옵션) — 봉입관 3 kW 구성도 있음"
+    },
+    "tube_voltage_kV": {
+     "min": 20,
+     "max": 45
+    },
+    "tube_current_mA": {
+     "min": 10,
+     "max": 200
+    },
+    "detector": "HyPix-3000 2D (0D/1D/2D)"
    }
   }
  ]

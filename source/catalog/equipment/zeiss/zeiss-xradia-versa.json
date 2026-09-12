@@ -27,6 +27,11 @@
   {
    "origin": "materialtwin-20260905/instrument/187",
    "note": "ZEISS Xradia 600-series Versa 브로슈어 · metrology_catalogs/ndt/Zeiss_Xradia610_620_CT.pdf"
+  },
+  {
+   "url": "https://www.zeiss.com/microscopy/en/products/x-ray-microscopy/xradia-versa.html",
+   "retrieved": "2026-09-12",
+   "note": "제조사 제품군 페이지(웹) + 대학 장비 안내"
   }
  ],
  "confidence": "catalog",
@@ -51,6 +56,21 @@
     "doc_path": "metrology_catalogs/ndt/Zeiss_Xradia410_CT.pdf",
     "source_title": "ZEISS Xradia Versa (410/510/610/620) 브로슈어",
     "capabilities": []
+   },
+   "specs": {
+    "tube_voltage_kV": {
+     "min": 30,
+     "max": 160
+    },
+    "tube_power_W": {
+     "max": 25
+    },
+    "spatial_resolution_um": {
+     "min": 0.9
+    },
+    "voxel_size_um": {
+     "min": 0.1
+    }
    }
   },
   {
@@ -75,6 +95,25 @@
       "notes": "이 브로슈어가 인쇄한 것은 **결정립 방위·형태·통계(grain statistics)** 이고 '결정립 크기(grain size)'라는 말은 나오지 않아 medium 으로 뒀다(600 시리즈 브로슈어에는 grain size 가 명시돼 있다). 측정 가능한 결정립 크기 범위는 인쇄돼 있지 않다. 공간분해능 0.7 µm·최소 복셀 70 nm 는 영상 분해능이지 결정립 크기 범위가 아니라 range_* 에 넣지 않았다."
      }
     ]
+   },
+   "specs": {
+    "tube_voltage_kV": {
+     "min": 30,
+     "max": 160
+    },
+    "tube_power_W": {
+     "max": 10
+    },
+    "spatial_resolution_um": {
+     "min": 0.7
+    },
+    "voxel_size_um": {
+     "min": 0.07
+    },
+    "specimen_diameter_mm": {
+     "max": 300,
+     "note": "1~3 mm 시료 0.3~0.7 µm/voxel · 10~50 mm 시료 3~25 µm/voxel"
+    }
    }
   },
   {
@@ -90,6 +129,21 @@
     "doc_path": "metrology_catalogs/ndt/Zeiss_Xradia610_620_CT.pdf",
     "source_title": "ZEISS Xradia 600-series Versa 브로슈어",
     "capabilities": []
+   },
+   "specs": {
+    "tube_voltage_kV": {
+     "min": 30,
+     "max": 160
+    },
+    "tube_power_W": {
+     "max": 25
+    },
+    "spatial_resolution_um": {
+     "min": 0.5
+    },
+    "voxel_size_um": {
+     "min": 0.04
+    }
    }
   },
   {
@@ -114,6 +168,21 @@
       "notes": "**'grain size' 가 명시적으로 인쇄돼 있어 high 로 이었다.** 측정 가능한 결정립 크기 범위·정확도는 인쇄돼 있지 않다. 공간분해능 0.5 µm·최소 복셀 40 nm 는 영상 분해능이라 range_* 에 넣지 않았다. 결정립 방위·형태·위치까지 같이 나오며 수치 결정립 모델 개선에 쓴다고 인쇄."
      }
     ]
+   },
+   "specs": {
+    "tube_voltage_kV": {
+     "min": 30,
+     "max": 160
+    },
+    "tube_power_W": {
+     "max": 25
+    },
+    "spatial_resolution_um": {
+     "min": 0.5
+    },
+    "voxel_size_um": {
+     "min": 0.04
+    }
    }
   }
  ]
