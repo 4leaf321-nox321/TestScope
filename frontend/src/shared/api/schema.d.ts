@@ -5207,6 +5207,8 @@ export interface components {
             equipment_count: number;
             /** Condition Keys */
             condition_keys: string[];
+            /** Condition Key Ids */
+            condition_key_ids: string[];
         };
         /** TestItemConditionKeyOut */
         TestItemConditionKeyOut: {

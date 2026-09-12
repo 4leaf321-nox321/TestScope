@@ -15527,6 +15527,14 @@
             },
             "type": "array",
             "title": "Condition Keys"
+          },
+          "condition_key_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Condition Key Ids"
           }
         },
         "type": "object",
@@ -15542,7 +15550,8 @@
           "series_count",
           "model_count",
           "equipment_count",
-          "condition_keys"
+          "condition_keys",
+          "condition_key_ids"
         ],
         "title": "TestItemCatalogRow",
         "description": "시험 항목 한 줄 — **사슬 전체의 수.** 0 이 곧 공백이다.\n\n물성  ⇄  시험 항목  →  규격  →  계열/기종  →  보유 장비"

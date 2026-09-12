@@ -46,15 +46,92 @@ const PROPERTIES = [
   },
 ]
 
+const CONDITIONS = [
+  {
+    id: 'k-force',
+    key: 'force',
+    label: '하중 용량',
+    kind: 'range',
+    dimension: 'force',
+    si_unit: 'kN',
+    display_unit: 'kN',
+    choices: [],
+    help: null,
+    sort_order: 1,
+    is_active: true,
+  },
+  {
+    id: 'k-temp',
+    key: 'temperature',
+    label: '시험 온도',
+    kind: 'range',
+    dimension: 'temperature',
+    si_unit: 'degC',
+    display_unit: 'degC',
+    choices: [],
+    help: null,
+    sort_order: 2,
+    is_active: true,
+  },
+  {
+    id: 'k-rh',
+    key: 'humidity',
+    label: '상대 습도',
+    kind: 'range',
+    dimension: 'ratio',
+    si_unit: '%',
+    display_unit: '%',
+    choices: [],
+    help: null,
+    sort_order: 3,
+    is_active: true,
+  },
+]
+
+/** 시험 항목마다의 검색축 — 인장은 하중·온도, 압축은 안 정해짐. */
+const AXES = [
+  {
+    id: 't1',
+    value: '인장',
+    code: 'tensile',
+    aliases: [],
+    properties_total: 1,
+    properties_confirmed: 0,
+    methods_total: 0,
+    methods_with_requirements: 0,
+    series_count: 1,
+    model_count: 1,
+    equipment_count: 0,
+    condition_keys: ['하중 용량', '시험 온도'],
+    condition_key_ids: ['k-force', 'k-temp'],
+  },
+  {
+    id: 't2',
+    value: '압축',
+    code: 'compression',
+    aliases: [],
+    properties_total: 0,
+    properties_confirmed: 0,
+    methods_total: 0,
+    methods_with_requirements: 0,
+    series_count: 0,
+    model_count: 0,
+    equipment_count: 0,
+    condition_keys: [],
+    condition_key_ids: [],
+  },
+]
+
 /** 나간 검색 요청. **물성이 서버로 갔는지**는 이것으로만 안다. */
 const posted: unknown[] = []
 
 vi.mock('@/shared/api/client', () => ({
   api: {
     get: vi.fn(async (url: string) => {
-      if (url.includes('/condition-keys')) return []
+      if (url.includes('/condition-keys')) return CONDITIONS
       if (url.includes('/terms')) return ITEMS
       if (url.startsWith('/properties')) return PROPERTIES
+      if (url.startsWith('/test-items')) return AXES
       return []
     }),
     post: vi.fn(async (url: string, body: unknown) => {
@@ -284,6 +361,27 @@ describe('왜 모르는지, 왜 없는지', () => {
     expect(screen.getByText(/상한이 없어 「이상」 을 판정할 수 없습니다/)).toBeTruthy()
     expect(screen.getByRole('link', { name: '채우기' }).getAttribute('href')).toBe(
       '/equipment/q1',
+    )
+  })
+})
+
+describe('조건은 시험 항목이 정한다', () => {
+  it('시험 항목을 고르면 그 축이 조건 칸에 미리 깔린다', async () => {
+    await open()
+    await act(async () => chip('인장').click())
+    // 인장에 습도를 묻는 것은 뜻이 없다 — 하중·온도만 깔리고 습도는 안 깔린다.
+    expect(screen.getByText('하중 용량')).toBeTruthy()
+    expect(screen.getByText('시험 온도')).toBeTruthy()
+    expect(screen.queryByText('상대 습도')).toBeNull()
+  })
+
+  it('축이 안 정해진 항목이면 그렇다고 말하고 정하러 갈 곳을 준다', async () => {
+    await open()
+    await act(async () => chip('압축').click())
+    // 조용히 일곱 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
+    expect(screen.getByText(/검색축이 아직 안 정해져/)).toBeTruthy()
+    expect(screen.getByText('시험 항목에서 정하기').closest('a')?.getAttribute('href')).toBe(
+      '/catalog/test-items/t2',
     )
   })
 })

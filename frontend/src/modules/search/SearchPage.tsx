@@ -26,6 +26,13 @@
  * 판정하고(계열 봉투는 0.5~600 kN 이라 답이 못 된다), 기종마다 **보유 대수**를 단다 — 사기
  * 전에 있는 것을 본다.
  *
+ * ## 조건은 시험 항목이 정한다
+ *
+ * 인장에 습도를 묻는 것은 뜻이 없다. 시험 항목마다 뜻이 있는 조건 축(검색축)이 카탈로그의
+ * 「시험 항목」 에 적혀 있고, 여기서는 고른 시험 항목의 축만 조건 칸에 낸다 — 물성으로 물으면
+ * 그 물성을 내는 시험 항목들의 축을 합친다. 축이 안 정해진 항목이면 전부를 내되 **그렇다고
+ * 말한다**: 조용히 일곱 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
+ *
  * ## 물성으로도 묻는다
  *
  * 「인장강도 재는 장비」 가 사람의 말이다. 물성을 고르면 서버가 그것을 내는 시험 항목
@@ -59,6 +66,7 @@ import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { ConditionKey } from '@/modules/vocabulary/api'
 import { propertyApi } from '@/modules/properties/api'
 import { searchApi } from '@/modules/search/api'
+import { testItemCatalogApi } from '@/modules/test_items/api'
 import type {
   CatalogSearchResponse,
   ConditionQuery,
@@ -117,6 +125,8 @@ export default function SearchPage() {
   // **이어진 것만** 고르게 한다 — 연결 없는 물성을 골라 봐야 결과가 늘 비고, 사람은
   // 그것을 「우리 장비가 없다」 로 읽는다.
   const properties = useResource(() => propertyApi.list({ linkedOnly: true }), [])
+  // 시험 항목마다의 검색축 — 96 줄이라 한 번에 받아 둔다.
+  const axes = useResource(() => testItemCatalogApi.list(), [])
 
   const [testItem, setTestItem] = useState<string>('')
   const [property, setProperty] = useState<string>('')
@@ -147,12 +157,59 @@ export default function SearchPage() {
     return sortedItems.filter((one) => one.value.toLowerCase().includes(needle))
   }, [sortedItems, itemFilter])
 
+  /** 지금 물음에 뜻이 있는 조건 축. `null` 이면 「정해진 것이 없다」 — 전부를 낸다. */
+  const relevantKeyIds = useMemo<Set<string> | null>(() => {
+    const byItem = new Map((axes.data ?? []).map((row) => [row.id, row.condition_key_ids]))
+    let itemIds: string[] = []
+    if (testItem) itemIds = [testItem]
+    else if (property) {
+      const picked = (properties.data ?? []).find((one) => one.id === property)
+      itemIds = picked ? picked.links.map((link) => link.test_item_term_id) : []
+    }
+    if (itemIds.length === 0) return null
+    const union = new Set<string>()
+    for (const id of itemIds) for (const keyId of byItem.get(id) ?? []) union.add(keyId)
+    // 고른 항목 전부에 축이 없으면 정해진 것이 없는 것이다.
+    return union.size === 0 ? null : union
+  }, [axes.data, testItem, property, properties.data])
+  /** 축이 정해진 항목을 골랐나 — 아니면 「안 정해졌다」 고 말한다. */
+  const axesUndecided = (testItem !== '' || property !== '') && relevantKeyIds === null
+  const shownConditions = useMemo(() => {
+    const all = conditions.data ?? []
+    if (!relevantKeyIds) return all
+    // 뜻이 있는 축이 먼저, 나머지는 뒤에 — 숨기지는 않는다. 「전에는 됐는데」 가 안 생기게.
+    return [
+      ...all.filter((one) => relevantKeyIds.has(one.id)),
+      ...all.filter((one) => !relevantKeyIds.has(one.id)),
+    ]
+  }, [conditions.data, relevantKeyIds])
+
+  function rowFor(key: ConditionKey): ConditionRow {
+    // 하중처럼 "얼마까지 되나" 를 묻는 조건은 대개 이상으로, 온도는 그 값에서.
+    const mode: ConditionRow['mode'] = key.dimension === 'force' ? 'at_least' : 'at'
+    return { key, mode, value: '' }
+  }
+
   function addCondition(keyId: string) {
     const key = (conditions.data ?? []).find((one) => one.id === keyId)
     if (!key || rows.some((row) => row.key.id === keyId)) return
-    // 하중처럼 "얼마까지 되나" 를 묻는 조건은 대개 이상으로, 온도는 그 값에서.
-    const mode: ConditionRow['mode'] = key.dimension === 'force' ? 'at_least' : 'at'
-    setRows((current) => [...current, { key, mode, value: '' }])
+    setRows((current) => [...current, rowFor(key)])
+  }
+
+  /** 시험 항목을 고르면 그 항목의 축을 **조건 칸에 미리 깐다** — 무엇을 채우면 되는지가
+   *  보이게. 이미 값을 적은 줄은 남기고, 다른 시험의 축이던 빈 줄은 걷는다. */
+  function pickTestItem(next: string) {
+    setTestItem(next)
+    const row = (axes.data ?? []).find((one) => one.id === next)
+    const wanted = new Set(row?.condition_key_ids ?? [])
+    setRows((current) => {
+      const kept = current.filter((one) => one.value.trim() !== '' || wanted.has(one.key.id))
+      const have = new Set(kept.map((one) => one.key.id))
+      const added = (conditions.data ?? [])
+        .filter((key) => wanted.has(key.id) && !have.has(key.id))
+        .map(rowFor)
+      return [...kept, ...added]
+    })
   }
 
   async function run() {
@@ -239,7 +296,7 @@ export default function SearchPage() {
           <div className="flex flex-wrap gap-1.5">
             <button
               type="button"
-              onClick={() => setTestItem('')}
+              onClick={() => pickTestItem('')}
               className={chipClass(testItem === '')}
             >
               전체
@@ -249,7 +306,7 @@ export default function SearchPage() {
                 key={one.id}
                 type="button"
                 // 다시 누르면 풀린다 — 고른 것을 지우려고 「전체」 를 찾아가지 않게.
-                onClick={() => setTestItem((current) => (current === one.id ? '' : one.id))}
+                onClick={() => pickTestItem(testItem === one.id ? '' : one.id)}
                 className={chipClass(testItem === one.id, one.usage_count === 0)}
                 title={
                   one.usage_count === 0
@@ -270,19 +327,45 @@ export default function SearchPage() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="add-condition">조건 추가</Label>
+            <Label htmlFor="add-condition">
+              조건 추가
+              {relevantKeyIds && (
+                <span className="text-muted-foreground ml-2 font-normal">
+                  이 시험의 축이 위에, 나머지는 아래
+                </span>
+              )}
+            </Label>
             <Select value="" onValueChange={addCondition}>
               <SelectTrigger id="add-condition">
                 <SelectValue placeholder="온도 · 하중 · 주파수 …" />
               </SelectTrigger>
               <SelectContent>
-                {(conditions.data ?? []).map((one) => (
+                {shownConditions.map((one) => (
                   <SelectItem key={one.id} value={one.id}>
                     {one.label}
+                    {relevantKeyIds && !relevantKeyIds.has(one.id)
+                      ? ' (이 시험의 축 아님)'
+                      : ''}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
+            {axesUndecided && (
+              // **말한다.** 조용히 일곱 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
+              <p className="text-muted-foreground text-xs">
+                이 시험의 검색축이 아직 안 정해져 조건을 전부 보입니다 —{' '}
+                <Link
+                  to={
+                    testItem
+                      ? `/catalog/test-items/${testItem}`
+                      : '/catalog/test-items?gap=axes'
+                  }
+                  className="underline"
+                >
+                  시험 항목에서 정하기
+                </Link>
+              </p>
+            )}
           </div>
         </div>
 

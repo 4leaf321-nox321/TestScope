@@ -170,6 +170,7 @@ def list_rows(db: Session, user: User) -> list[TestItemCatalogRow]:
             model_count=counts["model_count"].get(t.id, 0),
             equipment_count=counts["equipment_count"].get(t.id, 0),
             condition_keys=[k.label for k in axes.get(t.id, [])],
+            condition_key_ids=[k.id for k in axes.get(t.id, [])],
         )
         for t in terms
     ]

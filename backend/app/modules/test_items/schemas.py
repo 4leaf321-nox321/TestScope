@@ -47,6 +47,8 @@ class TestItemCatalogRow(BaseModel):
     """**내가 볼 수 있는** 보유 장비. 남의 부서가 가린 것은 안 센다."""
     condition_keys: list[str]
     """검색축 라벨. 비어 있으면 검색이 축 일곱 개를 다 묻는다."""
+    condition_key_ids: list[uuid.UUID]
+    """검색축 id — 검색 화면이 조건 칸을 이것으로 거른다."""
 
 
 class TestItemSeriesOut(BaseModel):
