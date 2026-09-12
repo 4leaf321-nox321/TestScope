@@ -1588,6 +1588,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/search/catalog": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Search Catalog
+         * @description 「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 — 카탈로그에서 찾는다.
+         *
+         *     같은 물음(`SearchRequest`)을 받는다. 장비 검색이 우리가 가진 것을 답할 때 이것은
+         *     세상에 있는 것을 답한다 — 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다.
+         */
+        post: operations["search_catalog_api_search_catalog_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/search/method-conditions/{method_id}": {
         parameters: {
             query?: never;
@@ -2149,6 +2172,73 @@ export interface components {
             statuses: components["schemas"]["FilterOption"][];
             /** Series */
             series: components["schemas"]["FilterOption"][];
+        };
+        /**
+         * CatalogHit
+         * @description 계열 하나 — 무슨 시험이 되나는 계열이 말하고, 어디까지 되나는 그 안의 기종이 말한다.
+         */
+        CatalogHit: {
+            /**
+             * Series Id
+             * Format: uuid
+             */
+            series_id: string;
+            /** Series Name */
+            series_name: string;
+            /** Maker */
+            maker: string | null;
+            /** Category */
+            category: string | null;
+            /** Test Item */
+            test_item: string;
+            /** Methods */
+            methods: string[];
+            /** Note */
+            note: string | null;
+            /** Models */
+            models: components["schemas"]["CatalogModelHit"][];
+        };
+        /**
+         * CatalogModelHit
+         * @description 기종 하나의 판정. **기종 단위다** — 수치가 갈리는 자리가 기종이라(ADR 0006), 계열로
+         *     답하면 0.5 kN 짜리 한 대를 가진 부서가 「300 kN 됩니까」 에 된다고 답한다.
+         */
+        CatalogModelHit: {
+            /**
+             * Model Id
+             * Format: uuid
+             */
+            model_id: string;
+            /** Model Name */
+            model_name: string;
+            /** Verdict */
+            verdict: string;
+            /** Conditions */
+            conditions: components["schemas"]["ConditionMatch"][];
+            /** Owned Units */
+            owned_units: number;
+        };
+        /**
+         * CatalogSearchResponse
+         * @description 「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 의 답.
+         *
+         *     장비 검색이 **우리가 가진 것**을 답한다면 이것은 **세상에 있는 것**을 답한다. 둘을 한
+         *     화면에 두는 이유: 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다.
+         */
+        CatalogSearchResponse: {
+            /** Hits */
+            hits: components["schemas"]["CatalogHit"][];
+            /** Total Series */
+            total_series: number;
+            /** Total Models */
+            total_models: number;
+            /** Unmet Models */
+            unmet_models: number;
+            /**
+             * Expanded Test Items
+             * @default []
+             */
+            expanded_test_items: string[];
         };
         /** ChangePasswordRequest */
         ChangePasswordRequest: {
@@ -8195,6 +8285,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SearchResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    search_catalog_api_search_catalog_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SearchRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogSearchResponse"];
                 };
             };
             /** @description Validation Error */

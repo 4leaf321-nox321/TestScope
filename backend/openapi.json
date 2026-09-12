@@ -5342,6 +5342,48 @@
         }
       }
     },
+    "/api/search/catalog": {
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search Catalog",
+        "description": "「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 — 카탈로그에서 찾는다.\n\n같은 물음(`SearchRequest`)을 받는다. 장비 검색이 우리가 가진 것을 답할 때 이것은\n세상에 있는 것을 답한다 — 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다.",
+        "operationId": "search_catalog_api_search_catalog_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogSearchResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/search/method-conditions/{method_id}": {
       "get": {
         "tags": [
@@ -6842,6 +6884,161 @@
         ],
         "title": "CatalogFilterOptionsOut",
         "description": "카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.\n\n**목록에 실제로 있는 값만 준다.** 기준정보 전체를 펼치면 제조사 축 수백 종 중\n79종만 카탈로그에 쓰이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면\n사람은 거르기를 안 믿는다.\n\n계열과 기종이 한 모양을 쓴다. 두 목록이 거르는 축(제조사·분류)이 같은 것이라,\n모양을 갈라 두면 한쪽만 고쳐지는 날이 온다."
+      },
+      "CatalogHit": {
+        "properties": {
+          "series_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Series Id"
+          },
+          "series_name": {
+            "type": "string",
+            "title": "Series Name"
+          },
+          "maker": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maker"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "test_item": {
+            "type": "string",
+            "title": "Test Item"
+          },
+          "methods": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Methods"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "models": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogModelHit"
+            },
+            "type": "array",
+            "title": "Models"
+          }
+        },
+        "type": "object",
+        "required": [
+          "series_id",
+          "series_name",
+          "maker",
+          "category",
+          "test_item",
+          "methods",
+          "note",
+          "models"
+        ],
+        "title": "CatalogHit",
+        "description": "계열 하나 — 무슨 시험이 되나는 계열이 말하고, 어디까지 되나는 그 안의 기종이 말한다."
+      },
+      "CatalogModelHit": {
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Model Id"
+          },
+          "model_name": {
+            "type": "string",
+            "title": "Model Name"
+          },
+          "verdict": {
+            "type": "string",
+            "title": "Verdict"
+          },
+          "conditions": {
+            "items": {
+              "$ref": "#/components/schemas/ConditionMatch"
+            },
+            "type": "array",
+            "title": "Conditions"
+          },
+          "owned_units": {
+            "type": "integer",
+            "title": "Owned Units"
+          }
+        },
+        "type": "object",
+        "required": [
+          "model_id",
+          "model_name",
+          "verdict",
+          "conditions",
+          "owned_units"
+        ],
+        "title": "CatalogModelHit",
+        "description": "기종 하나의 판정. **기종 단위다** — 수치가 갈리는 자리가 기종이라(ADR 0006), 계열로\n답하면 0.5 kN 짜리 한 대를 가진 부서가 「300 kN 됩니까」 에 된다고 답한다."
+      },
+      "CatalogSearchResponse": {
+        "properties": {
+          "hits": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogHit"
+            },
+            "type": "array",
+            "title": "Hits"
+          },
+          "total_series": {
+            "type": "integer",
+            "title": "Total Series"
+          },
+          "total_models": {
+            "type": "integer",
+            "title": "Total Models"
+          },
+          "unmet_models": {
+            "type": "integer",
+            "title": "Unmet Models"
+          },
+          "expanded_test_items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Expanded Test Items",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "hits",
+          "total_series",
+          "total_models",
+          "unmet_models"
+        ],
+        "title": "CatalogSearchResponse",
+        "description": "「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 의 답.\n\n장비 검색이 **우리가 가진 것**을 답한다면 이것은 **세상에 있는 것**을 답한다. 둘을 한\n화면에 두는 이유: 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다."
       },
       "ChangePasswordRequest": {
         "properties": {

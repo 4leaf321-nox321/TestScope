@@ -125,3 +125,47 @@ class SearchResponse(BaseModel):
     """물성으로 물었을 때 어느 시험 항목들로 펼쳤나. **비어 있으면 그 물성을 내는 시험이
     아직 안 이어진 것**이다 — 결과 0 건이 「장비가 없다」 가 아니라 「연결이 없다」 라는
     말을 화면이 할 수 있어야 한다."""
+
+
+class CatalogModelHit(BaseModel):
+    """기종 하나의 판정. **기종 단위다** — 수치가 갈리는 자리가 기종이라(ADR 0006), 계열로
+    답하면 0.5 kN 짜리 한 대를 가진 부서가 「300 kN 됩니까」 에 된다고 답한다."""
+
+    model_id: uuid.UUID
+    model_name: str
+    verdict: str
+    """match · accessory · partial · unknown. 장비 검색과 같은 말이다."""
+    conditions: list[ConditionMatch]
+    owned_units: int
+    """이 기종으로 등록된 보유 장비 수(내가 볼 수 있는 것). **사기 전에 보는 숫자다** —
+    이미 있는 것을 또 사는 일이 이 시스템이 막으려는 것 중 하나다."""
+
+
+class CatalogHit(BaseModel):
+    """계열 하나 — 무슨 시험이 되나는 계열이 말하고, 어디까지 되나는 그 안의 기종이 말한다."""
+
+    series_id: uuid.UUID
+    series_name: str
+    maker: str | None
+    category: str | None
+    test_item: str
+    methods: list[str]
+    """이 계열이 그 시험 항목에 인용한 규격 번호들."""
+    note: str | None
+    models: list[CatalogModelHit]
+    """조건에 걸려 빠진 기종은 없다. 하나도 안 남으면 계열도 안 온다."""
+
+
+class CatalogSearchResponse(BaseModel):
+    """「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 의 답.
+
+    장비 검색이 **우리가 가진 것**을 답한다면 이것은 **세상에 있는 것**을 답한다. 둘을 한
+    화면에 두는 이유: 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다.
+    """
+
+    hits: list[CatalogHit]
+    total_series: int
+    total_models: int
+    unmet_models: int
+    """조건에 걸려 빠진 기종 수. 0 건일 때 「없어서」 와 「조건이 좁아서」 를 가른다."""
+    expanded_test_items: list[str] = []

@@ -188,9 +188,18 @@ def conditions_from_specs(
     """이 기종의 사양에서 **검색 조건을 뽑는다.**
     {조건 id: (최소, 최대, 사양 이름, 부속 필요)}.
 
-    넷째 칸이 **옵션 부속 기준**인지다. 카탈로그가 「-180~320 °C」 를 항온조 옵션으로 적으면
-    그 표시가 사양값에 있고, 여기서 조건으로 따라간다 — 빠지면 검색이 갖고 있지도 않은 챔버를
-    전제로 「80 °C 됨」 이라고 답한다.
+    한 기종짜리 `conditions_from_specs_bulk` 다 — 규칙은 거기 적혀 있다.
+    """
+    return conditions_from_specs_bulk(db, [model_id]).get(model_id, {})
+
+
+def conditions_from_specs_bulk(
+    db: Session, model_ids: list[uuid.UUID]
+) -> dict[uuid.UUID, dict[uuid.UUID, tuple[float | None, float | None, str, bool]]]:
+    """여러 기종의 사양에서 검색 조건을 한 번에 뽑는다. {기종 id: {조건 id: (…)}}.
+
+    카탈로그 검색이 기종 891 을 한 물음에 판정하므로 기종마다 조회하면 900 번 왕복한다.
+    한 번에 받아 나눈다 — 규칙은 하나짜리와 같다.
 
     ## 왜 저장할 때가 아니라 여기서 계산하나
 
@@ -218,21 +227,27 @@ def conditions_from_specs(
     **확정값이 이긴다.** 구성별 값은 「이 기종은 이 범위로 나온다」 이지 「이 대가
     그렇다」 가 아니다. 순서에 맡기면 같은 기종이 반입할 때마다 다른 조건을 갖고,
     그 차이는 검색 결과가 갈린 날에야 드러난다.
+
+    넷째 칸은 **옵션 부속 기준**인지다. 카탈로그가 「-180~320 °C」 를 항온조 옵션으로 적으면
+    그 표시가 사양값에 있고, 여기서 조건으로 따라간다 — 빠지면 검색이 갖고 있지도 않은
+    챔버를 전제로 「80 °C 됨」 이라고 답한다.
     """
-    out: dict[uuid.UUID, tuple[float | None, float | None, str, bool]] = {}
-    #: 그 축을 확정값(number)이 채웠나. 구간은 확정값을 못 덮는다.
-    settled: set[uuid.UUID] = set()
+    out: dict[uuid.UUID, dict[uuid.UUID, tuple[float | None, float | None, str, bool]]] = {}
+    if not model_ids:
+        return out
+    #: 기종마다 그 축을 확정값(number)이 채웠나. 구간은 확정값을 못 덮는다.
+    settled: dict[uuid.UUID, set[uuid.UUID]] = {}
     rows = db.execute(
         select(ModelSpecValue, SpecDefinition)
         .join(SpecDefinition, SpecDefinition.id == ModelSpecValue.definition_id)
         .where(
-            ModelSpecValue.model_id == model_id,
+            ModelSpecValue.model_id.in_(model_ids),
             SpecDefinition.condition_key_id.is_not(None),
         )
         # 확정값을 먼저 본다. 확정값이 이기는 것은 아래 `settled` 가 순서와 무관하게
         # 보장하고, 이 정렬은 **구간이 둘일 때** 어느 것이 남는지를 정해 둔다 —
         # 안 정하면 같은 기종이 반입할 때마다 다른 조건을 갖는다.
-        .order_by(SpecDefinition.kind, SpecDefinition.sort_order)
+        .order_by(ModelSpecValue.model_id, SpecDefinition.kind, SpecDefinition.sort_order)
     ).all()
     for value, definition in rows:
         if definition.kind == "range":
@@ -246,11 +261,13 @@ def conditions_from_specs(
             continue
         assert definition.condition_key_id is not None  # 위 where 절이 보장한다
         key_id = definition.condition_key_id
-        if key_id in settled and definition.kind != "number":
+        mine = out.setdefault(value.model_id, {})
+        done = settled.setdefault(value.model_id, set())
+        if key_id in done and definition.kind != "number":
             continue
         if definition.kind == "number":
-            settled.add(key_id)
-        out[key_id] = (low, high, definition.label, value.requires_accessory)
+            done.add(key_id)
+        mine[key_id] = (low, high, definition.label, value.requires_accessory)
     return out
 
 

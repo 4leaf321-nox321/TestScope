@@ -13,8 +13,13 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
-from app.modules.search import services
-from app.modules.search.schemas import ConditionQuery, SearchRequest, SearchResponse
+from app.modules.search import catalog_search, services
+from app.modules.search.schemas import (
+    CatalogSearchResponse,
+    ConditionQuery,
+    SearchRequest,
+    SearchResponse,
+)
 from app.shared.auth import current_user
 
 router = APIRouter(prefix="/search", tags=["search"])
@@ -27,6 +32,20 @@ def search_test_items(
     db: Session = Depends(get_db),
 ) -> SearchResponse:
     return services.search(db, user, payload)
+
+
+@router.post("/catalog", response_model=CatalogSearchResponse)
+def search_catalog(
+    payload: SearchRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CatalogSearchResponse:
+    """「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 — 카탈로그에서 찾는다.
+
+    같은 물음(`SearchRequest`)을 받는다. 장비 검색이 우리가 가진 것을 답할 때 이것은
+    세상에 있는 것을 답한다 — 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다.
+    """
+    return catalog_search.search_catalog(db, user, payload)
 
 
 @router.get("/method-conditions/{method_id}", response_model=list[ConditionQuery])

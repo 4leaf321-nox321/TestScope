@@ -19,6 +19,13 @@
  * 대신 **쓰이는 것을 앞에 둔다.** 카탈로그에서 아무도 안 하는 항목을 골라 봐야
  * 빈 결과만 나오고, 사람은 그것을 시스템 탓으로 읽는다.
  *
+ * ## 어디서 찾나 — 보유 장비, 또는 카탈로그
+ *
+ * 장비 검색은 **우리가 가진 것**을 답한다. 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을
+ * 사나」 이고, 그 답은 카탈로그에 있다 — 같은 물음을 계열·기종에 던진다. 기종 단위로
+ * 판정하고(계열 봉투는 0.5~600 kN 이라 답이 못 된다), 기종마다 **보유 대수**를 단다 — 사기
+ * 전에 있는 것을 본다.
+ *
  * ## 물성으로도 묻는다
  *
  * 「인장강도 재는 장비」 가 사람의 말이다. 물성을 고르면 서버가 그것을 내는 시험 항목
@@ -52,7 +59,11 @@ import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { ConditionKey } from '@/modules/vocabulary/api'
 import { propertyApi } from '@/modules/properties/api'
 import { searchApi } from '@/modules/search/api'
-import type { ConditionQuery, SearchResponse } from '@/modules/search/api'
+import type {
+  CatalogSearchResponse,
+  ConditionQuery,
+  SearchResponse,
+} from '@/modules/search/api'
 
 /** 조건 한 줄의 입력 상태. **비어 있는 칸은 안 묻는다** — 0 과 다르다. */
 interface ConditionRow {
@@ -96,7 +107,10 @@ export default function SearchPage() {
   const [itemFilter, setItemFilter] = useState('')
   const [rows, setRows] = useState<ConditionRow[]>([])
   const [includeUnavailable, setIncludeUnavailable] = useState(false)
+  /** 어디서 찾나. `owned` 는 보유 장비, `catalog` 는 계열·기종. */
+  const [scope, setScope] = useState<'owned' | 'catalog'>('owned')
   const [result, setResult] = useState<SearchResponse | null>(null)
+  const [catalog, setCatalog] = useState<CatalogSearchResponse | null>(null)
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
 
@@ -126,15 +140,20 @@ export default function SearchPage() {
   async function run() {
     setBusy(true)
     setError(null)
+    const body = {
+      test_item_term_id: testItem || null,
+      property_term_id: property || null,
+      conditions: rows.map(toQuery).filter((one): one is ConditionQuery => one !== null),
+      include_unavailable: includeUnavailable,
+    }
     try {
-      setResult(
-        await searchApi.test_items({
-          test_item_term_id: testItem || null,
-          property_term_id: property || null,
-          conditions: rows.map(toQuery).filter((one): one is ConditionQuery => one !== null),
-          include_unavailable: includeUnavailable,
-        }),
-      )
+      if (scope === 'catalog') {
+        setResult(null)
+        setCatalog(await searchApi.catalog(body))
+      } else {
+        setCatalog(null)
+        setResult(await searchApi.test_items(body))
+      }
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
     } finally {
@@ -303,27 +322,147 @@ export default function SearchPage() {
           </div>
         ))}
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          {/* **어디서 찾나.** 가진 것과 세상에 있는 것은 다른 물음이라 갈라 둔다 — 한
+              목록에 섞으면 「우리한테 있다」 로 읽힌다. */}
+          <div
+            className="inline-flex rounded-md border"
+            role="tablist"
+            aria-label="어디서 찾나"
+          >
+            {(
+              [
+                ['owned', '보유 장비에서'],
+                ['catalog', '카탈로그에서'],
+              ] as const
+            ).map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                role="tab"
+                aria-selected={scope === key}
+                onClick={() => setScope(key)}
+                className={`px-3 py-1.5 text-sm ${scope === key ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <Button onClick={run} disabled={busy}>
             <SearchIcon className="size-4" />
             {busy ? '찾는 중…' : '찾기'}
           </Button>
-          <label className="text-muted-foreground flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={includeUnavailable}
-              onChange={(event) => setIncludeUnavailable(event.target.checked)}
-            />
-            {/* 기본은 뺀다 — 오늘 시험을 잡을 수 없는 장비를 가능하다고 답하면,
-                그 답을 믿고 일정을 짠 사람이 막힌다. */}
-            점검·고장·폐기 장비도 보기
-          </label>
+          {scope === 'owned' && (
+            <label className="text-muted-foreground flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={includeUnavailable}
+                onChange={(event) => setIncludeUnavailable(event.target.checked)}
+              />
+              {/* 기본은 뺀다 — 오늘 시험을 잡을 수 없는 장비를 가능하다고 답하면,
+                  그 답을 믿고 일정을 짠 사람이 막힌다. */}
+              점검·고장·폐기 장비도 보기
+            </label>
+          )}
         </div>
       </div>
 
       <ErrorNotice error={error ?? items.error ?? conditions.error ?? properties.error} />
 
       {result && <SearchResult result={result} />}
+      {catalog && <CatalogResult result={catalog} />}
+    </div>
+  )
+}
+
+/** 카탈로그 답 — 계열 한 장에 기종이 줄줄이. **기종 단위 판정**이고 보유 대수가 붙는다. */
+function CatalogResult({ result }: { result: CatalogSearchResponse }) {
+  const expanded =
+    result.expanded_test_items.length > 0 ? (
+      <p className="text-muted-foreground text-sm">
+        물성을 시험 항목 <strong>{result.expanded_test_items.join(' · ')}</strong> 으로 펼쳐
+        찾았습니다.
+      </p>
+    ) : null
+
+  if (result.hits.length === 0) {
+    return (
+      <EmptyState
+        title="조건에 맞는 기종이 카탈로그에 없습니다"
+        hint={
+          <>
+            {expanded}
+            조건에 걸려 빠진 기종이 {result.unmet_models}종 있습니다.
+            {result.unmet_models === 0 &&
+              ' 이 시험 항목을 하는 계열이 카탈로그에 없거나, 기종에 사양이 안 적혀 있습니다.'}
+          </>
+        }
+        action={
+          <Button asChild variant="outline">
+            <Link to="/catalog/equipment-series">계열 목록 보기</Link>
+          </Button>
+        }
+      />
+    )
+  }
+
+  return (
+    <div className="space-y-3">
+      {expanded}
+      <p className="text-muted-foreground text-sm">
+        계열 {result.total_series} · 기종 {result.total_models}. 조건에 걸려 빠진 기종{' '}
+        {result.unmet_models}종.
+      </p>
+      <ul className="space-y-3">
+        {result.hits.map((hit) => (
+          <li key={hit.series_id} className="rounded-md border p-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <Link
+                to={`/catalog/equipment-series/${hit.series_id}`}
+                className="font-medium hover:underline"
+              >
+                {hit.series_name}
+              </Link>
+              <span className="text-muted-foreground text-sm">
+                {[hit.maker, hit.category].filter(Boolean).join(' · ')}
+              </span>
+            </div>
+            <p className="text-muted-foreground mt-1 text-sm">
+              {hit.test_item}
+              {hit.methods.length > 0 && ` · ${hit.methods.join(' · ')}`}
+            </p>
+            {hit.note && <p className="mt-1 text-sm">{hit.note}</p>}
+            <ul className="mt-3 divide-y border-t text-sm">
+              {hit.models.map((model) => (
+                <li key={model.model_id} className="flex flex-wrap items-center gap-2 py-1.5">
+                  <Link
+                    to={`/catalog/equipment-models/${model.model_id}`}
+                    className="w-48 truncate hover:underline"
+                  >
+                    {model.model_name}
+                  </Link>
+                  <StatusBadge kind="verdict" value={model.verdict} />
+                  {/* **사기 전에 있는 것을 본다.** 0 이면 그냥 비운다 — 「없음」 을 붉게 칠하면
+                      살 것이 아니라 없는 것으로 읽힌다. */}
+                  {model.owned_units > 0 && (
+                    <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-xs text-emerald-700">
+                      보유 {model.owned_units}대
+                    </span>
+                  )}
+                  <span className="text-muted-foreground flex flex-wrap gap-x-3 text-xs">
+                    {model.conditions.map((one) => (
+                      <span key={one.condition_key_id}>
+                        {one.condition_label} {one.condition_range ?? '안 적힘'}
+                        {one.verdict === 'accessory' && ' (부속)'}
+                      </span>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

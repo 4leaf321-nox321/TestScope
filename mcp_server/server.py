@@ -270,6 +270,38 @@ async def search_test_items(
 
 
 @mcp.tool()
+async def search_catalog(
+    ctx: Context,
+    test_item_term_id: str | None = None,
+    property_term_id: str | None = None,
+    method_id: str | None = None,
+    conditions: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """**「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」** — 카탈로그에서 찾는다.
+
+    `search_test_items` 가 **우리가 가진 것**을 답할 때 이것은 **세상에 있는 것**을 답한다.
+    같은 물음(시험 항목 · 물성 · 규격 · 조건)을 받는다. 가진 것이 없다고 답하기 전에 이것을
+    한 번 더 물어라 — 그다음 물음은 늘 「그러면 무엇을 사나」 다.
+
+    답은 계열마다 **기종 단위**다(계열 봉투 0.5~600 kN 은 답이 못 된다). 기종마다
+    `verdict`(match · accessory · partial · unknown)와 `owned_units`(이미 등록된 보유 대수)가
+    온다. **owned_units 가 0 이 아니면 사기 전에 그 장비를 먼저 말하라.** `unmet_models` 는
+    조건에 걸려 빠진 기종 수다 — 0 건일 때 「없어서」 와 「조건이 좁아서」 를 가른다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/search/catalog",
+        {
+            "test_item_term_id": test_item_term_id,
+            "property_term_id": property_term_id,
+            "method_id": method_id,
+            "conditions": conditions or [],
+        },
+    )
+
+
+@mcp.tool()
 async def search_properties(
     ctx: Context, q: str | None = None, linked_only: bool = True
 ) -> dict[str, Any]:

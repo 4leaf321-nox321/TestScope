@@ -57,8 +57,52 @@ vi.mock('@/shared/api/client', () => ({
       if (url.startsWith('/properties')) return PROPERTIES
       return []
     }),
-    post: vi.fn(async (_url: string, body: unknown) => {
-      posted.push(body)
+    post: vi.fn(async (url: string, body: unknown) => {
+      posted.push({ url, body })
+      if (url === '/search/catalog') {
+        return {
+          hits: [
+            {
+              series_id: 's1',
+              series_name: '5900 Series',
+              maker: 'Instron',
+              category: '만능재료시험기',
+              test_item: '인장',
+              methods: ['ISO 6892'],
+              note: null,
+              models: [
+                {
+                  model_id: 'm1',
+                  model_name: '5982',
+                  verdict: 'match',
+                  owned_units: 2,
+                  conditions: [
+                    {
+                      condition_key_id: 'k1',
+                      condition_label: '하중 용량',
+                      display_unit: 'kN',
+                      verdict: 'met',
+                      asked: '20 kN 이상',
+                      condition_range: '제한 없음 ~ 100 kN',
+                    },
+                  ],
+                },
+                {
+                  model_id: 'm2',
+                  model_name: '5942',
+                  verdict: 'accessory',
+                  owned_units: 0,
+                  conditions: [],
+                },
+              ],
+            },
+          ],
+          total_series: 1,
+          total_models: 2,
+          unmet_models: 3,
+          expanded_test_items: [],
+        }
+      }
       return {
         hits: [],
         total: 0,
@@ -135,8 +179,32 @@ describe('물성으로 묻기', () => {
     await act(async () => {
       chip('찾기').click()
     })
-    expect(posted[0]).toMatchObject({ property_term_id: 'p1', test_item_term_id: null })
+    expect(posted[0]).toMatchObject({
+      url: '/search/test-items',
+      body: { property_term_id: 'p1', test_item_term_id: null },
+    })
     // 무엇으로 펼쳤는지 화면이 말한다 — 0 건일 때 「연결이 없다」 와 「장비가 없다」 를 가른다.
     expect(screen.getByText(/으로 펼쳐/)).toBeTruthy()
+  })
+})
+
+describe('카탈로그에서 찾기', () => {
+  it('같은 물음을 카탈로그에 던지고, 기종마다 판정과 보유 대수가 온다', async () => {
+    await open()
+    await act(async () => {
+      screen.getByRole('tab', { name: '카탈로그에서' }).click()
+    })
+    // 보유 장비에만 뜻이 있는 손잡이는 사라진다.
+    expect(screen.queryByLabelText('점검·고장·폐기 장비도 보기')).toBeNull()
+    await act(async () => {
+      chip('찾기').click()
+    })
+    expect(posted.at(-1)).toMatchObject({ url: '/search/catalog' })
+    expect(screen.getByText('5900 Series')).toBeTruthy()
+    expect(screen.getByText('5982')).toBeTruthy()
+    // **사기 전에 있는 것을 본다.**
+    expect(screen.getByText('보유 2대')).toBeTruthy()
+    expect(screen.getByText('부속 있으면')).toBeTruthy()
+    expect(screen.getByText(/빠진 기종 3종/)).toBeTruthy()
   })
 })

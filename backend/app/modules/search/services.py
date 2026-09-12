@@ -15,7 +15,7 @@
 from __future__ import annotations
 
 import uuid
-from typing import Any
+from typing import Any, Protocol
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -40,6 +40,24 @@ from app.shared.permissions import visible_equipment_ids
 MAX_HITS = 200
 
 
+class Limit(Protocol):
+    """조건 한 칸이 갖는 것. 장비 조건(`EquipmentTestCondition`)과 카탈로그 검색이 기종
+    사양에서 만든 칸이 같은 판정 함수를 타게 하는 계약 — 판정이 두 벌이면 「카탈로그에서는
+    되는데 등록하니 안 된다」 가 생긴다."""
+
+    @property
+    def min_value(self) -> float | None: ...
+
+    @property
+    def max_value(self) -> float | None: ...
+
+    @property
+    def text_value(self) -> str | None: ...
+
+    @property
+    def requires_accessory(self) -> bool: ...
+
+
 def _fmt(value: float | None, unit: str) -> str:
     """숫자를 사람이 읽는 꼴로. **단위를 빼지 않는다** — 20 만 적으면 N 인지
     kN 인지 알 수 없고, 그 둘은 자릿수가 셋 다르다."""
@@ -62,7 +80,7 @@ def _asked(query: ConditionQuery, key: ConditionKey) -> str:
     return "지정 없음"
 
 
-def _range_text(limit: EquipmentTestCondition | None, key: ConditionKey) -> str | None:
+def _range_text(limit: Limit | None, key: ConditionKey) -> str | None:
     if limit is None:
         return None
     if limit.text_value:
@@ -71,7 +89,7 @@ def _range_text(limit: EquipmentTestCondition | None, key: ConditionKey) -> str 
     return f"{_fmt(limit.min_value, unit)} ~ {_fmt(limit.max_value, unit)}"
 
 
-def _verdict(query: ConditionQuery, limit: EquipmentTestCondition | None) -> str:
+def _verdict(query: ConditionQuery, limit: Limit | None) -> str:
     """조건 하나의 판정. met · accessory · unmet · unknown.
 
     **비어 있는 한쪽은 "제한 없음" 이다.** 0 으로 취급하면 상한을 안 적은 장비가
@@ -88,7 +106,7 @@ def _verdict(query: ConditionQuery, limit: EquipmentTestCondition | None) -> str
     return verdict
 
 
-def _range_verdict(query: ConditionQuery, limit: EquipmentTestCondition) -> str:
+def _range_verdict(query: ConditionQuery, limit: Limit) -> str:
 
     if query.text is not None:
         if limit.text_value is None:
