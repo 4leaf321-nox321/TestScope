@@ -136,6 +136,48 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 비어 있으면 **그 값에 맞는 정의가 아직 없다**는 뜻이다 — 지어내지 말고 사람에게
 알려라(`source/catalog/ontology` 에 등록하면 다음 반입에서 들어온다).
 
+## 시험 항목이 가운데다
+
+`list_test_items` 가 96종을 한 줄에 사슬 전체의 수로 준다 — 얻는 물성 · 규격 · 되는
+계열/기종 · 보유 장비 · 검색축. **0 이 곧 공백이다.** `gap=` 으로 공백만 거른다
+(`properties` · `methods` · `series` · `equipment` · `axes`). 「이 시험 우리가 할 수 있나」 는
+`equipment_count`, 「사면 되나」 는 `series_count`.
+
+**어떤 조건을 물어야 하는지도 시험 항목이 정한다.** `get_test_item` 의 `condition_keys` 가
+그 시험에 뜻이 있는 축(인장 → 하중·속도·온도)이다. 검색에 조건을 붙이기 전에 이것을 보라 —
+인장에 습도를 물으면 `unknown` 만 늘어난다. 비어 있으면 아직 안 정해진 것이고, 정하는 것은
+사람이다(`set_test_item_axes`, AI 가 짐작으로 정하지 않는다).
+
+## 규격 — 못 하는 시험과 끊긴 연결을 가른다
+
+`list_methods` 의 `series_count` 가 0 인데 `pending_series_count` 가 0 이 아니면 못 하는
+시험이 아니라 **끊긴 연결**이다: 계열이 인용은 했는데 어느 시험 항목의 규격인지 안 정해진
+것. `set_method_test_item` 으로 정하면 인용한 계열에 자동으로 붙는다. 규격 번호가 무슨
+시험인지는 사람의 판단이다 — 모르면 `get_method` 의 `cited_series` 를 보고 물어라.
+
+요구 조건(「이 규격은 20 kN 이상·10~35 °C」)은 규격서 본문에만 있다. 사람이 표로 적은 것을
+`import_requirements` 로 옮긴다 — 먼저 `dry_run` 으로 판정을 보이고, 확인 뒤 넣는다.
+**값을 지어내지 마라.** 틀린 조건은 빈 조건보다 나쁘다.
+
+## 사양에 맞는 칸이 없을 때 — 이 기종만의 사양
+
+`list_spec_definitions` 에 칸이 없는 값은 `add_free_spec` 으로 그 기종에 이름·값·단위로
+붙인다(카탈로그 키 950종 중 803종이 한 기종에만 나온다 — 정의로 세우면 「사양 추가」 목록이
+못 쓰게 된다). `get_model` 의 `free_specs[].same_key_models` 가 0 이 아니면 여러 기종이
+공유하는 값이니 `promote_free_spec` 으로 정의로 올린다 — 이름·단위·종류는 사람이 정한다.
+
+## 물성 연결의 확인
+
+`search_properties` 의 `links[].status` 가 `suggested` 면 기계의 제안이다. 사람이 「인장이
+내는 것은 이 다섯 개, 맞다」 고 했을 때 `confirm_property_links` 로 그 줄을 묶어 올린다.
+**AI 가 알아서 확인하지 않는다** — 확인은 「사람이 봤다」 는 뜻이고 카탈로그 정본에 실린다.
+
+## 기준정보 값의 쓰임
+
+값을 지우거나 합치기 전에 `get_term_references` 로 어디에 쓰이나 본다. 쓰이는 값은 못
+지우고, `detach_term_reference` 로 쓰임을 풀거나 다른 값으로 옮긴 뒤에 지운다 — 사람이
+「이 장비의 분류를 저것으로 바꿔라」 고 했을 때만.
+
 ## 어디부터 채우나
 
 `list_pending_work` 를 먼저 부른다. **우리가 가진 것 중 비어 있는 것만** 센다.

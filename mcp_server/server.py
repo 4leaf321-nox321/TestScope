@@ -239,6 +239,10 @@ async def search_test_items(
     `{"…", "at_least": 20}` (그 이상) · `{"…", "at_most": …}`.
 
     조건 키 id 는 `list_conditions()` 가 준다. 시험 항목 id 는 `resolve` 로 찾는다.
+    **어떤 조건을 물어야 하는지는 시험 항목이 정한다** — `get_test_item` 의
+    `condition_keys` 가 그 시험에 뜻이 있는 축(인장 → 하중·속도·온도)이다. 그 축 밖의 조건
+    (인장에 습도)을 붙이면 대개 `unknown` 만 늘어난다. 축이 비어 있으면 아직 안 정해진
+    것이니, 조건을 물을 때 그렇다고 말하라.
     **물성으로 물으면** `property_term_id` 를 준다(`search_properties` 가 id 를 준다) —
     서버가 그 물성을 내는 시험 항목 전부로 펼쳐 찾고, 응답의 `expanded_test_items` 에
     무엇으로 펼쳤는지 적어 준다. 그것이 비어 있으면 결과 0 건은 「장비가 없다」 가 아니라
@@ -1111,6 +1115,292 @@ async def list_pending_work(ctx: Context) -> dict[str, Any]:
     시작하지 않는다.
     """
     return _listed(await _get(ctx, "/server/maintenance"), "items")
+
+
+# ── 시험 항목 카탈로그 — 사슬의 가운데 ──────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_test_items(ctx: Context, gap: str | None = None) -> dict[str, Any]:
+    """**시험 항목 96종, 한 줄에 사슬 전체의 수.** 0 이 곧 공백이다.
+
+        물성  ⇄  시험 항목  →  규격  →  계열/기종  →  보유 장비
+
+    줄마다 `properties_total`(그중 `properties_confirmed`) · `methods_total`(그중
+    `methods_with_requirements`) · `series_count` / `model_count` · `equipment_count`(내가
+    볼 수 있는 보유 장비) · `condition_keys`(검색축 라벨) 가 온다.
+
+    `gap` 으로 공백만 거른다: `properties`(물성 없음) · `methods`(규격 없음) · `series`(되는
+    계열 없음) · `equipment`(보유 장비 없음) · `axes`(검색축 없음). 각각 채우는 사람이
+    다르다 — 물성은 재료 쪽, 규격은 시험실, 검색축은 시스템 관리자.
+
+    「이 시험 우리가 할 수 있나」 는 `equipment_count` 가 답하고, 「사면 되나」 는
+    `series_count` 가 답한다. 둘 다 0 이면 그 장비가 카탈로그에도 없는 것이다.
+    """
+    rows = await _get(ctx, "/test-items")
+    if isinstance(rows, list) and gap:
+        gaps = {
+            "properties": lambda r: r.get("properties_total", 0) == 0,
+            "methods": lambda r: r.get("methods_total", 0) == 0,
+            "series": lambda r: r.get("series_count", 0) == 0,
+            "equipment": lambda r: r.get("equipment_count", 0) == 0,
+            "axes": lambda r: not r.get("condition_keys"),
+        }
+        if gap not in gaps:
+            return {"error": f"gap 은 {' · '.join(gaps)} 중 하나입니다"}
+        rows = [r for r in rows if gaps[gap](r)]
+    return _listed(rows, "test_items")
+
+
+@mcp.tool()
+async def get_test_item(ctx: Context, test_item_term_id: str) -> dict[str, Any]:
+    """시험 항목 하나 — **얻는 물성 · 규격 · 되는 계열 · 보유 장비 · 검색축**을 한 자리에.
+
+    `condition_keys` 가 이 시험에 뜻이 있는 조건 축이다(인장 → 하중·속도·온도). 검색에
+    조건을 붙일 때 이것을 먼저 보라 — 축 밖의 조건은 대개 `unknown` 만 늘린다. 비어
+    있으면 아직 안 정해진 것이다(`set_test_item_axes` 로 정한다, 시스템 관리자).
+
+    `properties[].status` 가 `suggested` 면 기계의 제안이다. `methods` 는 이 시험의
+    규격으로 정해진 것이고, `series[].method_codes` 는 그 계열이 이 시험에 인용한 규격이다.
+    `equipment` 는 내가 볼 수 있는 보유 장비만이다.
+    """
+    return await _get(ctx, f"/test-items/{test_item_term_id}")
+
+
+@mcp.tool()
+async def set_test_item_axes(
+    ctx: Context, test_item_term_id: str, condition_key_ids: list[str]
+) -> dict[str, Any]:
+    """시험 항목에 **뜻이 있는 조건 축**을 정한다(통째로 바꾼다). 시스템 관리자.
+
+    인장은 하중·속도·온도, 챔버는 온도·습도. 카탈로그가 갖고 있지 않은 지식이라 사람이
+    정한다 — **AI 가 짐작으로 정하지 마라.** 사람이 「인장은 하중·속도·온도」 라고 말했을
+    때만 옮겨 적어라. 조건 키 id 는 `list_conditions()` 가 준다.
+    """
+    return await _send(
+        ctx,
+        "PUT",
+        f"/test-items/{test_item_term_id}/condition-keys",
+        {"condition_key_ids": condition_key_ids},
+    )
+
+
+# ── 규격 — 항목 미정과 요구 조건 ─────────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_methods(
+    ctx: Context,
+    q: str | None = None,
+    test_item: str | None = None,
+    requirement: str | None = None,
+    cited: str | None = None,
+    used: str | None = None,
+    include_superseded: bool = False,
+    limit: int = 50,
+) -> dict[str, Any]:
+    """규격 목록 — **못 하는 시험과 끊긴 연결을 가른다.**
+
+    줄마다 `test_item`(이 규격이 무슨 시험의 것인지) · `series_count`(이어진 계열) ·
+    `pending_series_count`(인용은 했는데 시험 항목이 안 정해져 못 이어진 계열) ·
+    `equipment_count`(가능 장비) · `requirements`(요구 조건) 가 온다.
+
+    **`series_count` 가 0 인데 `pending_series_count` 가 0 이 아니면 못 하는 시험이 아니라
+    끊긴 연결이다** — `set_method_test_item` 으로 시험 항목을 정하면 붙는다.
+
+    거르기: `test_item` 은 값 id 또는 `none`(안 정해진 것만) · `requirement=none`(요구
+    조건 없는 것만) · `cited=none`(어느 계열에도 안 이어진 것만) · `used=owned`(보유 장비가
+    실제로 가리키는 것만 — 요구 조건은 여기부터 채운다).
+    """
+    return await _get(
+        ctx,
+        "/methods",
+        {
+            "q": q,
+            "test_item": test_item,
+            "requirement": requirement,
+            "cited": cited,
+            "used": used,
+            "include_superseded": include_superseded,
+            "limit": limit,
+        },
+    )
+
+
+@mcp.tool()
+async def set_method_test_item(
+    ctx: Context, method_id: str, test_item_term_id: str
+) -> dict[str, Any]:
+    """규격에 **시험 항목을 정한다.** 정하는 순간 그 규격을 항목 미정으로 인용해 둔 계열의
+    그 시험 항목에 자동으로 붙는다 — 사람이 계열마다 다시 잇지 않는다.
+
+    **지어서 정하지 마라.** ASTM D638 이 인장이라는 것은 규격 번호를 아는 사람의 판단이다.
+    모르면 `get_method` 의 `cited_series`(어느 계열이 인용했나)를 보고 사람에게 물어라.
+    """
+    return await _send(
+        ctx, "PATCH", f"/methods/{method_id}", {"test_item_term_id": test_item_term_id}
+    )
+
+
+@mcp.tool()
+async def get_method(ctx: Context, method_id: str) -> dict[str, Any]:
+    """규격 하나 — 시험 항목 · 요구 조건 · **인용한 계열**(`cited_series`, `pending` 이면 어느
+    시험 항목의 것인지 미정) · 가능 장비 수."""
+    return await _get(ctx, f"/methods/{method_id}")
+
+
+@mcp.tool()
+async def import_requirements(ctx: Context, text: str, dry_run: bool = True) -> dict[str, Any]:
+    """규격의 **요구 조건을 표로** 넣는다 — 규격서를 보고 적은 것을 통째로.
+
+    `text` 는 머리글 줄까지 있는 표(탭 또는 쉼표): 열은 규격 · 판 · 조건 · 최소 · 최대 ·
+    값 · 필수 · 비고. 값은 조건의 단위(kN · °C)로 적되 단위를 같이 적어도 된다 —
+    **다른 단위면 거절한다**(20 N 을 kN 으로 들이면 천 배 틀린다).
+
+    `dry_run=True`(기본)면 저장하지 않고 줄마다 판정만 준다. 사람이 확인한 뒤 같은 글자로
+    `dry_run=False`. 같은 규격·조건이 이미 있으면 `replaces` 로 미리 말한다.
+
+    **값을 지어내지 마라.** 이 도구는 사람이 규격서를 보고 적은 표를 옮기는 길이다. 틀린
+    조건은 빈 조건보다 나쁘다 — 검색이 자신 있게 틀린 답을 낸다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/methods/requirements/import",
+        {"text": text},
+        params={"dry_run": "true" if dry_run else "false"},
+    )
+
+
+# ── 물성 연결 — 묶음 확인 ─────────────────────────────────────────────────────
+
+
+@mcp.tool()
+async def confirm_property_links(
+    ctx: Context, link_ids: list[str], status: str = "confirmed"
+) -> dict[str, Any]:
+    """물성↔시험 항목 제안을 **묶어서 확인**하거나(`confirmed`) 되돌린다(`suggested`).
+
+    사람이 「인장이 내는 것은 이 다섯 개, 맞다」 고 했을 때 그 줄의 `link_id` 들을 한 번에
+    올린다(`search_properties` 의 `links[].id`, 또는 `get_test_item` 의
+    `properties[].link_id`). 이미 그 상태인 것은 안 세고 `changed` 로 실제 바뀐 수를 준다.
+
+    **AI 가 알아서 확인하지 마라.** 확인은 「사람이 봤다」 는 뜻이고, 내보내기가 카탈로그
+    정본에 싣는 값이다. 사람이 말한 것만 옮겨라.
+    """
+    return await _send(
+        ctx, "PATCH", "/test-item-properties/bulk", {"link_ids": link_ids, "status": status}
+    )
+
+
+# ── 이 기종만의 사양 — 정의 없이 붙는 값 ───────────────────────────────────────
+
+
+@mcp.tool()
+async def add_free_spec(
+    ctx: Context,
+    model_id: str,
+    label: str,
+    value_text: str,
+    unit: str | None = None,
+    note: str | None = None,
+    source_id: str | None = None,
+    source_page: int | None = None,
+) -> dict[str, Any]:
+    """**이 기종만의 사양** 한 줄 — 정의 없이 이름·값·단위로 붙인다.
+
+    `list_spec_definitions` 에 맞는 칸이 없을 때 여기 둔다(카탈로그 키 950종 중 803종이 한
+    기종에만 나온다 — 그것을 정의로 세우면 「사양 추가」 목록이 못 쓰게 된다). 값은 글자
+    그대로(「LV 4종」 「0 ~ 600」). 같은 이름이 여러 기종에 쌓이면 `promote_free_spec` 으로
+    정의로 올린다. `get_model` 의 `free_specs` 가 있는 줄을 준다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        f"/equipment-models/{model_id}/free-specs",
+        {
+            "label": label,
+            "value_text": value_text,
+            "unit": unit,
+            "note": note,
+            "source_id": source_id,
+            "source_page": source_page,
+        },
+    )
+
+
+@mcp.tool()
+async def promote_free_spec(
+    ctx: Context,
+    model_id: str,
+    free_id: str,
+    key: str,
+    label: str,
+    group_id: str,
+    kind: str,
+    unit: str = "",
+    apply_same_key: bool = True,
+) -> dict[str, Any]:
+    """이 기종만의 사양을 **정의로 세운다.** 시스템 관리자.
+
+    `key`(소문자·밑줄, 만든 뒤 못 바꿈) · `label` · `group_id`(`/spec-groups`) · `kind`
+    (`range` · `number` · `text` · `boolean`) · `unit` 을 사람이 정한다 — **이름을 기계가
+    지어내면 그것이 진실이 된다.** 정의는 그 기종의 분류에 붙고, `apply_same_key` 면 같은
+    원본 키를 가진 다른 기종의 줄도 함께 옮긴다. 수치로 못 읽는 줄(「약 300」)은 그대로
+    남고 `left` 로 센다.
+
+    `get_model` 의 `free_specs[].same_key_models` 가 0 이 아닐 때가 올릴 때다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        f"/equipment-models/{model_id}/free-specs/{free_id}/promote",
+        {
+            "key": key,
+            "label": label,
+            "group_id": group_id,
+            "kind": kind,
+            "unit": unit,
+            "apply_same_key": apply_same_key,
+        },
+    )
+
+
+# ── 기준정보 — 쓰임과 연결 해제 ──────────────────────────────────────────────
+
+
+@mcp.tool()
+async def get_term_references(ctx: Context, term_id: str) -> dict[str, Any]:
+    """기준정보 값 하나가 **어디에 쓰이나** — 계열·기종·장비·규격·물성 연결 등, 종류마다
+    수와 줄. 값을 지우거나 합치기 전에 본다: 쓰이는 값은 못 지우고, 쓰임을 풀거나 다른
+    값으로 옮긴 뒤에 지운다(`detach_term_reference`)."""
+    return _listed(await _get(ctx, f"/vocabularies/terms/{term_id}/references"), "groups")
+
+
+@mcp.tool()
+async def detach_term_reference(
+    ctx: Context,
+    term_id: str,
+    kind: str,
+    row_id: str,
+    reassign_to_term_id: str | None = None,
+) -> dict[str, Any]:
+    """기준정보 값의 쓰임 하나를 **풀거나 다른 값으로 옮긴다.** 시스템 관리자.
+
+    `kind` 와 `row_id` 는 `get_term_references` 가 준다. `reassign_to_term_id` 를 주면
+    그 값으로 옮기고, 안 주면 푼다(종류에 따라 비우거나 지운다 — 응답의 `detach` 가 말한다).
+    **사람이 「이 장비의 분류를 저것으로 바꿔라」 고 했을 때만** 쓴다.
+    """
+    if reassign_to_term_id:
+        return await _send(
+            ctx,
+            "POST",
+            f"/vocabularies/terms/{term_id}/references/{kind}/{row_id}/reassign",
+            {"target_term_id": reassign_to_term_id},
+        )
+    return await _send(
+        ctx, "DELETE", f"/vocabularies/terms/{term_id}/references/{kind}/{row_id}"
+    )
 
 
 if __name__ == "__main__":
