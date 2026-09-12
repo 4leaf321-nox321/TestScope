@@ -1,23 +1,30 @@
 /**
- * 물성 항목 — **어떤 시험으로 어떤 물성을 얻나.**
+ * 물성 항목 — **어떤 시험으로 어떤 물성을 얻나, 양쪽에서.**
  *
  *     물성  ⇄  시험 항목  ->  요구 조건  ->  시험법  ->  가능한 장비  ->  보유 위치
  *      N:M
  *
  * 사람이 묻는 말은 「인장 되는 장비」 보다 「**인장강도** 알고 싶은데 어디서 하나」 에 가깝다.
- * 이 화면이 그 두 말 사이의 다리다. 물성 하나에 시험 여럿(Tg ← DSC·DMA·TMA), 시험 하나에
- * 물성 여럿(인장 → 강도·항복·영률·연신율)이라 표는 물성 한 줄에 시험 항목이 여러 알로 선다.
+ * 이 화면이 그 두 말 사이의 다리다.
+ *
+ * ## 두 방향이 다 있어야 한다
+ *
+ * 물성에서 보면 「Tg 는 DSC·DMA·TMA 셋에서 나온다」(N:1)가 보이고, 시험 항목에서 보면
+ * 「인장은 강도·항복·영률·연신율을 낸다」(1:N)가 보인다. 한쪽만 두면 반대 물음은 표를 전부
+ * 훑어야 한다. 알마다 **반대편 수**를 달아 둔다 — 「DSC ×6」 은 DSC 가 여섯 물성을 낸다는
+ * 뜻이고, 그 알을 누르면 그쪽 줄로 간다.
  *
  * ## 제안과 확인을 다르게 그린다
  *
- * 첫 채움은 기계가 했다(온톨로지·MaterialTwin). 그것은 **제안**이고 흐리게 선다. 사람이
- * 보고 「맞다」 를 누르면 확인이 된다. 둘을 같은 얼굴로 그리면 아무도 되짚지 않고, 「굽힘으로
+ * 첫 채움은 기계가 했다(온톨로지·MaterialTwin). 그것은 **제안**이고 점선으로 선다. 사람이
+ * 보고 ✓ 를 누르면 확인이 된다. 둘을 같은 얼굴로 그리면 아무도 되짚지 않고, 「굽힘으로
  * 인장강도」 같은 오답이 확인된 것과 나란히 앉는다.
  *
- * ## 이어진 것이 없는 물성도 보인다
+ * ## 이어진 것이 없는 줄도 보인다
  *
- * 271 물성 중 시험이 이어진 것은 절반이다. 나머지를 숨기면 「우리는 이 물성을 못 잰다」 와
- * 「아직 아무도 안 이었다」 가 같아진다. 기본은 전부 보이고, 「이어진 것만」 으로 좁힌다.
+ * 271 물성 중 시험이 이어진 것은 174 다. 나머지를 숨기면 「우리는 이 물성을 못 잰다」 와
+ * 「아직 아무도 안 이었다」 가 같아진다. 시험 항목 쪽도 같다 — 물성을 안 내는 시험(EMC·
+ * 낙하)은 그 사실이 보여야 한다.
  */
 
 import { useMemo, useState } from 'react'
@@ -41,18 +48,33 @@ import {
 } from '@/shared/components/ui/select'
 import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
+import type { Term } from '@/modules/vocabulary/api'
 import { DOMAIN_LABEL, propertyApi } from '@/modules/properties/api'
 import type { Property, TestItemProperty } from '@/modules/properties/api'
 
-/** 한 알 — 시험 항목 하나. 제안은 흐리고, 확인은 또렷하다. */
+type View = 'property' | 'item'
+
+const SOURCE_LABEL: Record<string, string> = {
+  ontology: '온톨로지',
+  materialtwin: 'MaterialTwin',
+  manual: '손으로',
+}
+
+/** 알 하나 — 연결 한 줄. 제안은 점선, 확인은 칠. `count` 는 반대편에 몇이 이어졌나. */
 function LinkChip({
+  label,
   link,
+  count,
   admin,
+  onOpen,
   onConfirm,
   onRemove,
 }: {
+  label: string
   link: TestItemProperty
+  count: number
   admin: boolean
+  onOpen: () => void
   onConfirm: () => void
   onRemove: () => void
 }) {
@@ -64,20 +86,24 @@ function LinkChip({
       }`}
       title={[
         suggested ? '기계가 제안한 연결 — 아직 사람이 확인하지 않았습니다' : '확인된 연결',
-        `출처: ${{ ontology: '온톨로지', materialtwin: 'MaterialTwin', manual: '손으로' }[link.source] ?? link.source}`,
+        `출처: ${SOURCE_LABEL[link.source] ?? link.source}`,
         link.note ?? '',
       ]
         .filter(Boolean)
         .join('\n')}
     >
-      {link.test_item}
+      <button type="button" onClick={onOpen} className="hover:underline">
+        {label}
+      </button>
+      {/* **반대편 수.** ×3 이면 이것이 다른 둘과도 이어져 있다 — N:1 이 여기서 보인다. */}
+      {count > 1 && <span className="text-muted-foreground">×{count}</span>}
       {link.note && <span className="text-muted-foreground">· {link.note}</span>}
       {admin && suggested && (
         <button
           type="button"
           onClick={onConfirm}
           className="hover:text-foreground ml-0.5"
-          aria-label={`${link.test_item} 연결 확인`}
+          aria-label={`${label} 연결 확인`}
         >
           <Check className="size-3" />
         </button>
@@ -87,7 +113,7 @@ function LinkChip({
           type="button"
           onClick={onRemove}
           className="hover:text-destructive ml-0.5"
-          aria-label={`${link.test_item} 연결 지우기`}
+          aria-label={`${label} 연결 지우기`}
         >
           <Trash2 className="size-3" />
         </button>
@@ -96,35 +122,91 @@ function LinkChip({
   )
 }
 
+/** 시험 항목 한 줄 — 시험에서 보는 눈. */
+interface ItemRow {
+  id: string
+  value: string
+  links: { link: TestItemProperty; property: Property }[]
+}
+
 export default function PropertiesPage() {
   const { user } = useAuth()
   const admin = isSystemAdmin(user)
+  const [view, setView] = useState<View>('property')
   const [query, setQuery] = useState('')
   const [domain, setDomain] = useState('')
   const [linkedOnly, setLinkedOnly] = useState(false)
+  /** 여럿에 이어진 것만 — 물성 쪽은 「여러 시험에서 나오는 물성」(N:1), 시험 쪽은
+   *  「여러 물성을 내는 시험」(1:N). 갈림이 있는 곳이 사람이 봐야 하는 곳이다. */
+  const [manyOnly, setManyOnly] = useState(false)
+  /** 알을 눌러 건너온 줄 하나. 있으면 그 줄만 보인다. */
+  const [focus, setFocus] = useState<{ view: View; id: string } | null>(null)
   const [error, setError] = useState<ApiError | Error | null>(null)
-  /** 어느 물성에 시험을 더하는 중인가. 한 번에 하나 — 표 전체에 피커를 깔면 271개가 뜬다. */
   const [adding, setAdding] = useState<string | null>(null)
-  const [pickedItem, setPickedItem] = useState('')
+  const [picked, setPicked] = useState('')
 
-  const properties = useResource(
-    () => propertyApi.list({ q: query || undefined, domain: domain || undefined, linkedOnly }),
-    [query, domain, linkedOnly],
-  )
-  const items = useResource(
-    () => (admin ? vocabularyApi.terms(AXIS.testItem) : Promise.resolve([])),
-    [admin],
-  )
+  // **전부 받아 둔다** — 271 물성 · 254 연결이라 한 번이면 되고, 두 방향과 반대편
+  // 수를 화면이 셀 수 있다. 서버 거르기는 안 쓴다: 반대편 수는 전체를 알아야 맞다.
+  const properties = useResource(() => propertyApi.list(), [])
+  const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
+
+  const allProps = useMemo(() => properties.data ?? [], [properties.data])
+
+  /** 시험 항목마다 물성 몇 개. */
+  const perItem = useMemo(() => {
+    const out = new Map<string, number>()
+    for (const one of allProps)
+      for (const link of one.links)
+        out.set(link.test_item_term_id, (out.get(link.test_item_term_id) ?? 0) + 1)
+    return out
+  }, [allProps])
+
+  const itemRows = useMemo<ItemRow[]>(() => {
+    const byId = new Map<string, ItemRow>()
+    for (const term of (items.data ?? []) as Term[])
+      byId.set(term.id, { id: term.id, value: term.value, links: [] })
+    for (const property of allProps)
+      for (const link of property.links) {
+        const row = byId.get(link.test_item_term_id)
+        if (row) row.links.push({ link, property })
+      }
+    return [...byId.values()].sort((a, b) => a.value.localeCompare(b.value, 'ko'))
+  }, [items.data, allProps])
+
+  const needle = query.trim().toLowerCase()
+  const shownProps = allProps.filter((one) => {
+    if (focus?.view === 'property') return one.id === focus.id
+    if (domain && one.domain !== domain) return false
+    if (linkedOnly && one.links.length === 0) return false
+    if (manyOnly && one.links.length < 2) return false
+    if (!needle) return true
+    return [
+      one.value,
+      one.code ?? '',
+      ...one.aliases,
+      ...one.links.map((l) => l.test_item),
+    ].some((text) => text.toLowerCase().includes(needle))
+  })
+  const shownItems = itemRows.filter((one) => {
+    if (focus?.view === 'item') return one.id === focus.id
+    if (linkedOnly && one.links.length === 0) return false
+    if (manyOnly && one.links.length < 2) return false
+    if (domain && !one.links.some((l) => l.property.domain === domain)) return false
+    if (!needle) return true
+    return [one.value, ...one.links.map((l) => l.property.value)].some((text) =>
+      text.toLowerCase().includes(needle),
+    )
+  })
 
   /** 도메인별로 묶는다 — 271 줄을 한 표로 두면 「열」 과 「기계」 가 섞여 훑을 수 없다. */
   const grouped = useMemo(() => {
     const out = new Map<string, Property[]>()
-    for (const one of properties.data ?? []) {
+    for (const one of shownProps) {
       const key = one.domain ?? ''
       out.set(key, [...(out.get(key) ?? []), one])
     }
     return [...out.entries()]
-  }, [properties.data])
+  }, [shownProps])
 
   async function run(work: () => Promise<unknown>) {
     setError(null)
@@ -136,11 +218,79 @@ export default function PropertiesPage() {
     }
   }
 
-  const linked = (properties.data ?? []).filter((one) => one.links.length > 0).length
-  const suggested = (properties.data ?? []).reduce(
+  function jump(to: View, id: string) {
+    setFocus({ view: to, id })
+    setView(to)
+    setAdding(null)
+  }
+
+  const linkedProps = allProps.filter((one) => one.links.length > 0).length
+  const linkedItems = itemRows.filter((one) => one.links.length > 0).length
+  const suggested = allProps.reduce(
     (sum, one) => sum + one.links.filter((link) => link.status === 'suggested').length,
     0,
   )
+
+  function adder(kind: View, rowId: string, taken: Set<string>) {
+    if (!admin) return null
+    if (adding !== rowId) {
+      return (
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-6 px-1.5 text-xs"
+          onClick={() => {
+            setAdding(rowId)
+            setPicked('')
+          }}
+        >
+          <Plus className="mr-1 size-3" />
+          {kind === 'property' ? '시험 잇기' : '물성 잇기'}
+        </Button>
+      )
+    }
+    const options =
+      kind === 'property'
+        ? itemRows
+            .filter((one) => !taken.has(one.id))
+            .map((one) => ({ id: one.id, label: one.value }))
+        : allProps
+            .filter((one) => !taken.has(one.id))
+            .map((one) => ({ id: one.id, label: one.value, detail: one.code }))
+    return (
+      <div className="mt-1 flex flex-wrap items-center gap-2">
+        <SearchablePicker
+          options={options}
+          value={picked}
+          onChange={setPicked}
+          placeholder={kind === 'property' ? '시험 항목' : '물성'}
+          detailTitle={kind === 'property' ? '시험 항목' : '물성 항목'}
+          className="w-72"
+        />
+        <Button
+          size="sm"
+          disabled={!picked}
+          onClick={() =>
+            void run(async () => {
+              await propertyApi.link(
+                kind === 'property'
+                  ? { test_item_term_id: picked, property_term_id: rowId }
+                  : { test_item_term_id: rowId, property_term_id: picked },
+              )
+              setAdding(null)
+            })
+          }
+        >
+          잇기
+        </Button>
+        <Button size="sm" variant="ghost" onClick={() => setAdding(null)}>
+          취소
+        </Button>
+      </div>
+    )
+  }
+
+  const empty = view === 'property' ? shownProps.length === 0 : shownItems.length === 0
 
   return (
     <div className="space-y-6">
@@ -150,15 +300,46 @@ export default function PropertiesPage() {
       />
 
       <div className="flex flex-wrap items-center gap-3">
+        {/* **두 방향.** 한쪽만 두면 반대 물음은 표를 전부 훑어야 한다. */}
+        <div className="inline-flex rounded-md border" role="tablist" aria-label="보는 방향">
+          {(
+            [
+              ['property', '물성에서'],
+              ['item', '시험 항목에서'],
+            ] as const
+          ).map(([key, label]) => (
+            <button
+              key={key}
+              type="button"
+              role="tab"
+              aria-selected={view === key}
+              onClick={() => {
+                setView(key)
+                setFocus(null)
+              }}
+              className={`px-3 py-1.5 text-sm ${view === key ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
         <Input
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="물성 이름 · 키 · 별칭"
+          onChange={(event) => {
+            setQuery(event.target.value)
+            setFocus(null)
+          }}
+          placeholder={
+            view === 'property' ? '물성 이름 · 키 · 별칭 · 시험' : '시험 항목 · 물성'
+          }
           className="max-w-xs"
         />
         <Select
           value={domain || 'all'}
-          onValueChange={(value) => setDomain(value === 'all' ? '' : value)}
+          onValueChange={(value) => {
+            setDomain(value === 'all' ? '' : value)
+            setFocus(null)
+          }}
         >
           <SelectTrigger className="w-40">
             <SelectValue placeholder="분야 전체" />
@@ -178,33 +359,52 @@ export default function PropertiesPage() {
             checked={linkedOnly}
             onChange={(event) => setLinkedOnly(event.target.checked)}
           />
-          시험이 이어진 것만
+          이어진 것만
         </label>
-        {properties.data && (
-          <span className="text-muted-foreground text-sm">
-            {properties.data.length}종 · 이어진 것 {linked}
-            {suggested > 0 && (
-              <>
-                {' '}
-                · <span className="text-amber-700">확인 안 한 제안 {suggested}</span>
-              </>
-            )}
-          </span>
-        )}
+        <label className="text-muted-foreground flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={manyOnly}
+            onChange={(event) => setManyOnly(event.target.checked)}
+          />
+          {view === 'property' ? '여러 시험에서 나오는 물성만' : '여러 물성을 내는 시험만'}
+        </label>
       </div>
 
-      <ErrorNotice error={properties.error ?? error} />
+      {properties.data && (
+        <p className="text-muted-foreground text-sm">
+          물성 {allProps.length}종 중 이어진 것 {linkedProps} · 시험 항목 {itemRows.length}종
+          중 이어진 것 {linkedItems}
+          {suggested > 0 && (
+            <>
+              {' '}
+              · <span className="text-amber-700">확인 안 한 제안 {suggested}</span>
+            </>
+          )}
+          {focus && (
+            <>
+              {' '}
+              ·{' '}
+              <button type="button" className="underline" onClick={() => setFocus(null)}>
+                전체 보기
+              </button>
+            </>
+          )}
+        </p>
+      )}
 
-      {properties.data && properties.data.length === 0 ? (
+      <ErrorNotice error={properties.error ?? items.error ?? error} />
+
+      {properties.data && empty ? (
         <EmptyState
-          title="물성이 없습니다"
+          title={view === 'property' ? '물성이 없습니다' : '시험 항목이 없습니다'}
           hint={
-            linkedOnly
-              ? '이어진 시험이 있는 물성이 없습니다. 「시험이 이어진 것만」 을 풀어 보세요.'
-              : '카탈로그 반입(import_catalog.py)이 MaterialTwin 물성 271종을 심습니다.'
+            linkedOnly || manyOnly
+              ? '거르기를 풀어 보세요.'
+              : '카탈로그 반입(import_catalog.py)이 MaterialTwin 물성 271종과 연결을 심습니다.'
           }
         />
-      ) : (
+      ) : view === 'property' ? (
         <div className="space-y-6">
           {grouped.map(([key, rows]) => (
             <section key={key} className="space-y-2">
@@ -233,8 +433,11 @@ export default function PropertiesPage() {
                           {one.links.map((link) => (
                             <LinkChip
                               key={link.id}
+                              label={link.test_item}
                               link={link}
+                              count={perItem.get(link.test_item_term_id) ?? 0}
                               admin={admin}
+                              onOpen={() => jump('item', link.test_item_term_id)}
                               onConfirm={() =>
                                 void run(() =>
                                   propertyApi.update(link.id, { status: 'confirmed' }),
@@ -248,58 +451,12 @@ export default function PropertiesPage() {
                               이어진 시험 없음 — 이 물성으로는 아직 검색이 안 됩니다
                             </span>
                           )}
-                          {admin && adding !== one.id && (
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              className="h-6 px-1.5 text-xs"
-                              onClick={() => {
-                                setAdding(one.id)
-                                setPickedItem('')
-                              }}
-                            >
-                              <Plus className="mr-1 size-3" />
-                              시험 잇기
-                            </Button>
+                          {adder(
+                            'property',
+                            one.id,
+                            new Set(one.links.map((l) => l.test_item_term_id)),
                           )}
                         </div>
-                        {admin && adding === one.id && (
-                          <div className="mt-1 flex flex-wrap items-center gap-2">
-                            <SearchablePicker
-                              options={(items.data ?? [])
-                                .filter(
-                                  (item) =>
-                                    !one.links.some(
-                                      (link) => link.test_item_term_id === item.id,
-                                    ),
-                                )
-                                .map((item) => ({ id: item.id, label: item.value }))}
-                              value={pickedItem}
-                              onChange={setPickedItem}
-                              placeholder="시험 항목"
-                              detailTitle="시험 항목"
-                              className="w-64"
-                            />
-                            <Button
-                              size="sm"
-                              disabled={!pickedItem}
-                              onClick={() =>
-                                void run(async () => {
-                                  await propertyApi.link({
-                                    test_item_term_id: pickedItem,
-                                    property_term_id: one.id,
-                                  })
-                                  setAdding(null)
-                                })
-                              }
-                            >
-                              잇기
-                            </Button>
-                            <Button size="sm" variant="ghost" onClick={() => setAdding(null)}>
-                              취소
-                            </Button>
-                          </div>
-                        )}
                       </td>
                     </tr>
                   ))}
@@ -308,6 +465,45 @@ export default function PropertiesPage() {
             </section>
           ))}
         </div>
+      ) : (
+        <table className="w-full border-collapse text-sm">
+          <tbody>
+            {shownItems.map((row) => (
+              <tr key={row.id} className="border-b align-top">
+                <td className="w-64 py-1.5 pr-3 font-medium">{row.value}</td>
+                <td className="py-1.5">
+                  <div className="flex flex-wrap items-center gap-1">
+                    {row.links
+                      .slice()
+                      .sort((a, b) => a.property.value.localeCompare(b.property.value, 'ko'))
+                      .map(({ link, property }) => (
+                        <LinkChip
+                          key={link.id}
+                          label={property.value}
+                          link={link}
+                          count={property.links.length}
+                          admin={admin}
+                          onOpen={() => jump('property', property.id)}
+                          onConfirm={() =>
+                            void run(() =>
+                              propertyApi.update(link.id, { status: 'confirmed' }),
+                            )
+                          }
+                          onRemove={() => void run(() => propertyApi.unlink(link.id))}
+                        />
+                      ))}
+                    {row.links.length === 0 && (
+                      <span className="text-muted-foreground text-xs">
+                        내는 물성 없음 — 판정·곡선으로 끝나는 시험이거나 아직 안 이었습니다
+                      </span>
+                    )}
+                    {adder('item', row.id, new Set(row.links.map((l) => l.property.id)))}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   )

@@ -38,6 +38,8 @@ import type { ConditionKey } from '@/modules/vocabulary/api'
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
 import type { EquipmentSeries } from '@/modules/equipment/api'
+import { propertyApi } from '@/modules/properties/api'
+import type { TestItemProperty } from '@/modules/properties/api'
 import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDialog'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 계열과 구별되지 않는다. */
@@ -127,6 +129,9 @@ export default function EquipmentSeriesDetailPage() {
   const models = useResource(() => catalogApi.list({ seriesId: id, limit: 200 }), [id])
   const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
   const conditions = useResource(() => vocabularyApi.conditions(), [])
+  // **얻는 물성.** 시험 항목 줄만 보면 「이 계열로 영률을 잴 수 있나」 에 답이 안 된다 —
+  // 물성 ↔ 시험 항목 표는 전사 공통이라 한 번 받아 시험 항목마다 나눠 붙인다(ADR 0007).
+  const links = useResource(() => propertyApi.links(), [])
 
   const [newItem, setNewItem] = useState('')
   const [adding, setAdding] = useState(false)
@@ -212,6 +217,7 @@ export default function EquipmentSeriesDetailPage() {
         series={one}
         items={items.data ?? []}
         conditions={conditions.data ?? []}
+        links={links.data ?? []}
         newItem={newItem}
         setNewItem={setNewItem}
         act={act}
@@ -286,6 +292,7 @@ function SeriesTestItems({
   series,
   items,
   conditions,
+  links,
   newItem,
   setNewItem,
   act,
@@ -293,6 +300,8 @@ function SeriesTestItems({
   series: EquipmentSeries
   items: { id: string; value: string }[]
   conditions: ConditionKey[]
+  /** 물성 ↔ 시험 항목 연결 전부. 시험 항목마다 「얻는 물성」 으로 나뉘어 붙는다. */
+  links: TestItemProperty[]
   newItem: string
   setNewItem: (value: string) => void
   act: (run: () => Promise<unknown>) => void
@@ -350,6 +359,38 @@ function SeriesTestItems({
               </div>
 
               {test_item.note && <p className="mt-2 text-sm">{test_item.note}</p>}
+
+              {/* **이 시험으로 얻는 물성.** 전사 공통 표에서 온다 — 계열마다 다르게 적는
+                  자리는 아직 없다(신율계가 없어 영률은 안 되는 대는 보유 장비 쪽에서).
+                  제안(점선)은 아직 사람이 확인하지 않은 것이다. */}
+              {(() => {
+                const mine = links.filter(
+                  (link) => link.test_item_term_id === test_item.test_item_term_id,
+                )
+                if (mine.length === 0) return null
+                return (
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    <span className="text-muted-foreground text-xs">얻는 물성</span>
+                    {mine.map((link) => (
+                      <Link
+                        key={link.id}
+                        to="/properties"
+                        title={
+                          link.note ??
+                          (link.status === 'suggested' ? '기계가 제안한 연결' : '')
+                        }
+                        className={`rounded-full border px-2 py-0.5 text-xs hover:underline ${
+                          link.status === 'suggested'
+                            ? 'border-dashed text-muted-foreground'
+                            : 'bg-muted'
+                        }`}
+                      >
+                        {link.property}
+                      </Link>
+                    ))}
+                  </div>
+                )
+              })()}
 
               {/* **카탈로그가 인용한 규격.** 전에는 비고에 글자로만 있어서 시험법
                   453건이 아무것도 가리키지 않는 목록이었다 — 이제 눌러서 그 규격으로

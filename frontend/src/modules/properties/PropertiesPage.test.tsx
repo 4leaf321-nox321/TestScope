@@ -37,7 +37,11 @@ vi.mock('@/shared/api/client', () => ({
       calls.push({ method: 'GET', url })
       if (url.startsWith('/properties')) return properties
       if (url.includes('/terms'))
-        return [{ id: 't9', value: 'DMA (동적기계)', usage_count: 1 }]
+        return [
+          { id: 't1', value: '인장', usage_count: 4 },
+          { id: 't2', value: '고속 인장', usage_count: 1 },
+          { id: 't9', value: 'DMA (동적기계)', usage_count: 1 },
+        ]
       return []
     }),
     post: vi.fn(async (url: string, body: unknown) => {
@@ -126,12 +130,47 @@ describe('물성 항목', () => {
     expect(screen.getByText('전기')).toBeTruthy()
   })
 
-  it('「시험이 이어진 것만」 은 서버로 간다', async () => {
+  it('「이어진 것만」 을 켜면 이어진 것이 없는 줄이 빠진다', async () => {
     await open()
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('시험이 이어진 것만'))
+      fireEvent.click(screen.getByLabelText('이어진 것만'))
     })
-    expect(calls.some((one) => one.url.includes('include_unlinked=false'))).toBe(true)
+    expect(screen.queryByText('밴드갭')).toBeNull()
+    expect(screen.getByText('인장강도(UTS)')).toBeTruthy()
+  })
+
+  it('시험 항목에서도 본다 — 반대편 수가 붙고, 알을 누르면 건너간다', async () => {
+    await open()
+    await act(async () => {
+      fireEvent.click(screen.getByRole('tab', { name: '시험 항목에서' }))
+    })
+    // 시험 항목 줄. 인장강도 알에 「×2」 — 인장강도가 두 시험(인장·고속 인장)에서 나온다(N:1).
+    const row = screen.getByText('인장').closest('tr')
+    expect(row?.textContent).toContain('인장강도(UTS)')
+    expect(row?.textContent).toContain('×2')
+    // 물성을 안 내는 시험도 보이고 그렇다고 말한다.
+    expect(screen.getByText('DMA (동적기계)').closest('tr')?.textContent).toContain(
+      '내는 물성 없음',
+    )
+
+    // 알을 누르면 물성 쪽 그 줄 하나로 간다.
+    await act(async () => {
+      fireEvent.click(screen.getAllByRole('button', { name: '인장강도(UTS)' })[0])
+    })
+    expect(screen.getByRole('tab', { name: '물성에서' }).getAttribute('aria-selected')).toBe(
+      'true',
+    )
+    expect(screen.queryByText('밴드갭')).toBeNull()
+    expect(screen.getByText('전체 보기')).toBeTruthy()
+  })
+
+  it('「여러 시험에서 나오는 물성만」 은 N:1 만 남긴다', async () => {
+    await open()
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('여러 시험에서 나오는 물성만'))
+    })
+    expect(screen.getByText('인장강도(UTS)')).toBeTruthy()
+    expect(screen.queryByText('밴드갭')).toBeNull()
   })
 
   it('멤버에게는 확인·지우기 단추가 없다', async () => {
@@ -156,7 +195,7 @@ describe('물성 항목', () => {
       fireEvent.click(screen.getAllByText('시험 잇기')[1])
     })
     // 피커가 뜬다 — 87종을 <Select> 에 펼치지 않는다.
-    expect(screen.getByText('시험 항목')).toBeTruthy()
+    expect(screen.getByRole('button', { name: '시험 항목' })).toBeTruthy()
 
     await act(async () => {
       fireEvent.click(screen.getByLabelText('고속 인장 연결 지우기'))
