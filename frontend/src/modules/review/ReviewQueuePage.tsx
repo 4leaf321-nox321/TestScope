@@ -52,7 +52,7 @@ function directAxis(queue: string): 'test_item' | 'condition' | 'property' | nul
 /** 여러 개를 고르는 물음에서 「아무것도 아님」 이 뜻하는 말. 물음마다 다르다. */
 function emptyLabel(queue: string): string {
   if (queue === 'test_item_properties') return '물성 없음'
-  return '축 없음'
+  return '조건 없음'
 }
 
 export default function ReviewQueuePage() {

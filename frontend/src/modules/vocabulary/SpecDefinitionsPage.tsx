@@ -191,7 +191,7 @@ export default function SpecDefinitionsPage() {
             <TableHead>종류</TableHead>
             <TableHead>단위</TableHead>
             <TableHead>붙는 분류</TableHead>
-            <TableHead>검색축</TableHead>
+            <TableHead>검색 조건</TableHead>
             <TableHead className="text-right">쓰임</TableHead>
             <TableHead className="text-right">사용</TableHead>
           </TableRow>
@@ -233,7 +233,7 @@ export default function SpecDefinitionsPage() {
                       )
                     }
                   >
-                    <SelectTrigger className="h-8 w-40" aria-label={`${one.label} 검색축`}>
+                    <SelectTrigger className="h-8 w-40" aria-label={`${one.label} 검색 조건`}>
                       <SelectValue placeholder="—" />
                     </SelectTrigger>
                     <SelectContent>
@@ -293,8 +293,8 @@ export default function SpecDefinitionsPage() {
 
       {/* 조건 정의를 못 찾은 사람이 여기서 헤매지 않게 길을 적어 둔다. */}
       <p className="text-muted-foreground text-xs">
-        검색축에 잇는 것은 지금 {conditions.data?.length ?? 0}개 조건 중에서 고릅니다. 새 축이
-        필요하면 「시험 조건 정의」 에서 먼저 만드세요.
+        검색 조건에 잇는 것은 지금 {conditions.data?.length ?? 0}개 조건 중에서 고릅니다. 새
+        축이 필요하면 「시험 조건 정의」 에서 먼저 만드세요.
       </p>
     </div>
   )

@@ -258,7 +258,7 @@ export function ModelSpecPanel({
       const parts = [`${chosen.label} 저장.`]
       if (result.search_axis) {
         parts.push(
-          `「${result.search_axis}」 검색축이라, 앞으로 이 기종으로 등록하는 장비의 시험 조건이 됩니다.`,
+          `「${result.search_axis}」 검색 조건이라, 앞으로 이 기종으로 등록하는 장비의 시험 조건이 됩니다.`,
         )
       }
       if (result.existing_units > 0) {
@@ -292,9 +292,9 @@ export function ModelSpecPanel({
       <div>
         <h2 className="text-base font-semibold">사양</h2>
         <p className="text-muted-foreground mt-1 text-sm">
-          제조사 카탈로그의 값입니다. <strong>검색축에 이어진 사양</strong>(하중 용량·시험 온도
-          등)은 이 기종으로 보유 장비를 등록할 때 시험 조건이 됩니다 — 같은 숫자를 두 번 적지
-          않기 위해서입니다.
+          제조사 카탈로그의 값입니다. <strong>검색 조건에 이어진 사양</strong>(하중 용량·시험
+          온도 등)은 이 기종으로 보유 장비를 등록할 때 시험 조건이 됩니다 — 같은 숫자를 두 번
+          적지 않기 위해서입니다.
         </p>
       </div>
 
@@ -333,7 +333,7 @@ export function ModelSpecPanel({
                         // 모름이라 하지」 가 된다.
                         <span
                           className="text-destructive rounded bg-red-500/10 px-1.5 py-0.5 text-xs"
-                          title="이 사양은 검색축에 이어져 있지만 단위를 축의 단위로 못 바꿔 검색에 안 실립니다. 「장비 사양 정의」 에서 단위나 축을 고치세요."
+                          title="이 사양은 검색 조건에 이어져 있지만 단위를 조건의 단위로 못 바꿔 검색에 안 실립니다. 「장비 사양 정의」 에서 단위나 축을 고치세요."
                         >
                           단위 안 맞음 · 검색에 안 실림
                         </span>
@@ -387,9 +387,9 @@ export function ModelSpecPanel({
                 detail: [one.group_label, one.display_unit || one.si_unit]
                   .filter(Boolean)
                   .join(' · '),
-                // 검색축에 이어진 사양은 값이 곧 시험 조건이 된다 — 고르기 전에
+                // 검색 조건에 이어진 사양은 값이 곧 시험 조건이 된다 — 고르기 전에
                 // 그 사실이 보여야 한다.
-                badge: one.condition_key_id ? '검색축' : null,
+                badge: one.condition_key_id ? '검색 조건' : null,
               }))}
               value={pick}
               onChange={(value) => {
@@ -399,7 +399,7 @@ export function ModelSpecPanel({
               placeholder="사양 추가"
               searchPlaceholder="하중 · 온도 · 무게 …"
               detailTitle="적을 수 있는 사양"
-              detailHint="이 기종의 분류에 붙는 사양과 공통 사양입니다. 「검색축」 이 붙은 것은 값이 이 기종으로 등록하는 장비의 시험 조건이 됩니다."
+              detailHint="이 기종의 분류에 붙는 사양과 공통 사양입니다. 「검색 조건」 이 붙은 것은 값이 이 기종으로 등록하는 장비의 시험 조건이 됩니다."
             />
             {chosen && <ValueFields definition={chosen} draft={draft} setDraft={setDraft} />}
             {/* 못 바꾸는 단위가 남아 있으면 저장을 막는다 — 그대로 저장하면 숫자만

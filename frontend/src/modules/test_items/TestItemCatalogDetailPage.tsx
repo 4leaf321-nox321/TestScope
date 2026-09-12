@@ -31,7 +31,7 @@ import { propertyApi } from '@/modules/properties/api'
 import { testItemCatalogApi } from '@/modules/test_items/api'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 
-/** 검색축 고르기 — 축은 일곱 개라 체크상자로 충분하다. */
+/** 검색 조건 고르기 — 축은 일곱 개라 체크상자로 충분하다. */
 function AxesEditor({
   itemId,
   current,
@@ -83,7 +83,7 @@ function AxesEditor({
           }
         }}
       >
-        검색축 저장
+        검색 조건 저장
       </Button>
     </div>
   )
@@ -118,10 +118,10 @@ export default function TestItemCatalogDetailPage() {
       {message && <p className="text-sm text-emerald-700">{message}</p>}
       <ErrorNotice error={error} />
 
-      {/* 검색축 — 이 시험에 뜻이 있는 조건. 없으면 검색이 축 일곱 개를 다 묻는다. */}
+      {/* 검색 조건 — 이 시험에 뜻이 있는 조건. 없으면 검색이 축 일곱 개를 다 묻는다. */}
       <section className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
-          <h2 className="text-base font-semibold">검색축</h2>
+          <h2 className="text-base font-semibold">검색 조건</h2>
           {one.condition_keys.length === 0 ? (
             <span className="text-sm text-amber-600">
               아직 안 정해짐 — 검색이 이 시험에 어떤 조건을 물어야 하는지 모릅니다

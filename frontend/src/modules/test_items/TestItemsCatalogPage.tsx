@@ -10,7 +10,7 @@
  *
  * ## 거르기는 공백을 고른다
  *
- * 「물성 없음」「규격 없음」「보유 없음」「검색축 없음」 — 각각 다른 사람의 할 일이다. 물성은
+ * 「물성 없음」「규격 없음」「보유 없음」「검색 조건 없음」 — 각각 다른 사람의 할 일이다. 물성은
  * 재료 쪽이, 규격은 시험실이, 검색축은 시스템 관리자가 채운다.
  *
  * ## 「신뢰성 시험」 과 다르다
@@ -46,7 +46,7 @@ const GAP_LABEL: Record<Gap, string> = {
   methods: '규격 없음',
   series: '되는 계열 없음',
   equipment: '보유 장비 없음',
-  axes: '검색축 없음',
+  axes: '검색 조건 없음',
 }
 
 function hasGap(row: TestItemCatalogRow, gap: Gap): boolean {
@@ -155,7 +155,7 @@ export default function TestItemsCatalogPage() {
               <TableHead className="text-right">규격</TableHead>
               <TableHead className="text-right">되는 계열 / 기종</TableHead>
               <TableHead className="text-right">보유 장비</TableHead>
-              <TableHead>검색축</TableHead>
+              <TableHead>검색 조건</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

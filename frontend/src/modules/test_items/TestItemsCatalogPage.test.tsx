@@ -70,7 +70,7 @@ describe('시험 항목 카탈로그', () => {
     // 각각 다른 사람의 할 일이라 따로 센다.
     expect(screen.getByText('물성 없음 1')).toBeTruthy()
     expect(screen.getByText('보유 장비 없음 1')).toBeTruthy()
-    expect(screen.getByText('검색축 없음 1')).toBeTruthy()
+    expect(screen.getByText('검색 조건 없음 1')).toBeTruthy()
     await act(async () => {
       fireEvent.click(screen.getByText('물성 없음 1'))
     })

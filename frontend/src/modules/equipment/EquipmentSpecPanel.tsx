@@ -142,7 +142,7 @@ export function EquipmentSpecPanel({
     <div className="space-y-6">
       <p className="text-muted-foreground text-sm">
         사양서 값 위에 <strong>이 장비를 잰 값</strong>을 덮습니다. 덮은 칸은 둘 다 보이고,
-        검색축에 이어진 사양은 이 장비의 시험 조건이 됩니다.
+        검색 조건에 이어진 사양은 이 장비의 시험 조건이 됩니다.
         {data.override_count > 0 && ` 지금 ${data.override_count}칸이 실측입니다.`}
       </p>
 
@@ -165,7 +165,7 @@ export function EquipmentSpecPanel({
                         {item.label}
                         {item.condition_key_id && (
                           <Badge variant="outline" className="ml-2">
-                            검색축
+                            검색 조건
                           </Badge>
                         )}
                       </p>

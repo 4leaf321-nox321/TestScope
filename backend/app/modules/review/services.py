@@ -76,8 +76,8 @@ QUEUES: dict[str, Queue] = {
     ),
     "test_item_axes": Queue(
         "test_item_axes",
-        "시험 항목의 검색축",
-        "이 시험을 찾을 때 무슨 조건을 묻나. 안 정하면 축 전부를 묻는다. 여러 개를 고른다.",
+        "시험 항목의 검색 조건",
+        "이 시험을 찾을 때 무슨 조건을 묻나. 안 정하면 조건 전부를 묻는다. 여러 개를 고른다.",
         True,
         "/catalog/test-items/{id}",
     ),
@@ -111,8 +111,8 @@ QUEUES: dict[str, Queue] = {
     ),
     "condition_axes": Queue(
         "condition_axes",
-        "새 검색축",
-        "지금 축이 없어 검색이 못 답하는 조건(점도·압력·파장 …)을 축으로 세울지.",
+        "새 검색 조건",
+        "지금 검색 조건에 없어 검색이 못 답하는 것(점도·압력·파장 …)을 조건으로 세울지.",
         False,
         "/conditions",
     ),
@@ -129,7 +129,7 @@ YES_NO: dict[str, list[dict[str, Any]]] = {
         {"code": "keep", "label": "기종만의 사양으로 둔다"},
     ],
     "condition_axes": [
-        {"code": "create", "label": "축을 만든다"},
+        {"code": "create", "label": "조건을 만든다"},
         {"code": "skip", "label": "만들지 않는다"},
     ],
 }
@@ -849,7 +849,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
             si_unit=str(payload.get("unit") or ""),
             display_unit=str(payload.get("unit") or ""),
             sort_order=last + 10,
-            help="검토함에서 세운 축.",
+            help="검토함에서 세운 검색 조건.",
         )
         db.add(made)
         db.flush()

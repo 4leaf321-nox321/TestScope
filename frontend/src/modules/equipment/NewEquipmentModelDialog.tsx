@@ -89,8 +89,8 @@ export function NewEquipmentModelDialog({
           <DialogHeader>
             <DialogTitle>장비 기종 등록</DialogTitle>
             <DialogDescription>
-              수치 사양은 등록한 뒤 상세 화면에서 적습니다. 검색축에 이어진 사양은 이 기종으로
-              등록하는 보유 장비의 시험 조건이 됩니다.
+              수치 사양은 등록한 뒤 상세 화면에서 적습니다. 검색 조건에 이어진 사양은 이
+              기종으로 등록하는 보유 장비의 시험 조건이 됩니다.
             </DialogDescription>
           </DialogHeader>
 

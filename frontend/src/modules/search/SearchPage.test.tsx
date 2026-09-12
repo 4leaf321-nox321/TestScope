@@ -379,7 +379,7 @@ describe('조건은 시험 항목이 정한다', () => {
     await open()
     await act(async () => chip('압축').click())
     // 조용히 일곱 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
-    expect(screen.getByText(/검색축이 아직 안 정해져/)).toBeTruthy()
+    expect(screen.getByText(/검색 조건이 아직 안 정해져/)).toBeTruthy()
     expect(screen.getByText('시험 항목에서 정하기').closest('a')?.getAttribute('href')).toBe(
       '/catalog/test-items/t2',
     )

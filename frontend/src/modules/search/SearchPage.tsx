@@ -28,7 +28,7 @@
  *
  * ## 조건은 시험 항목이 정한다
  *
- * 인장에 습도를 묻는 것은 뜻이 없다. 시험 항목마다 뜻이 있는 조건 축(검색축)이 카탈로그의
+ * 인장에 습도를 묻는 것은 뜻이 없다. 시험 항목마다 뜻이 있는 조건 축(검색 조건)이 카탈로그의
  * 「시험 항목」 에 적혀 있고, 여기서는 고른 시험 항목의 축만 조건 칸에 낸다 — 물성으로 물으면
  * 그 물성을 내는 시험 항목들의 축을 합친다. 축이 안 정해진 항목이면 전부를 내되 **그렇다고
  * 말한다**: 조용히 열두 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
@@ -109,7 +109,7 @@ export default function SearchPage() {
   // **이어진 것만** 고르게 한다 — 연결 없는 물성을 골라 봐야 결과가 늘 비고, 사람은
   // 그것을 「우리 장비가 없다」 로 읽는다.
   const properties = useResource(() => propertyApi.list({ linkedOnly: true }), [])
-  // 시험 항목마다의 검색축 — 96 줄이라 한 번에 받아 둔다.
+  // 시험 항목마다의 검색 조건 — 96 줄이라 한 번에 받아 둔다.
   const axes = useResource(() => testItemCatalogApi.list(), [])
 
   const [testItem, setTestItem] = useState<string>('')
@@ -339,7 +339,7 @@ export default function SearchPage() {
             {axesUndecided && (
               // **말한다.** 조용히 열두 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
               <p className="text-muted-foreground text-xs">
-                이 시험의 검색축이 아직 안 정해져 조건을 전부 보입니다 —{' '}
+                이 시험의 검색 조건이 아직 안 정해져 조건을 전부 보입니다 —{' '}
                 <Link
                   to={
                     testItem
