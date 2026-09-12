@@ -8,6 +8,7 @@ export type Term = components['schemas']['TermOut']
 export type ConditionKey = components['schemas']['ConditionKeyOut']
 export type SpecGroup = components['schemas']['SpecGroupOut']
 export type SpecDefinition = components['schemas']['SpecDefinitionOut']
+export type ReferenceGroup = components['schemas']['ReferenceGroupOut']
 
 export const vocabularyApi = {
   list: () => api.get<Vocabulary[]>('/vocabularies'),
@@ -36,6 +37,15 @@ export const vocabularyApi = {
     ),
   mergeTerm: (termId: string, targetTermId: string) =>
     api.post<Term>(`/vocabularies/terms/${termId}/merge`, { target_term_id: targetTermId }),
+  /** 이 값을 가리키는 것 전부 — 쓰임 수의 내역. */
+  references: (termId: string) =>
+    api.get<ReferenceGroup[]>(`/vocabularies/terms/${termId}/references`),
+  detachReference: (termId: string, kind: string, rowId: string) =>
+    api.delete<void>(`/vocabularies/terms/${termId}/references/${kind}/${rowId}`),
+  reassignReference: (termId: string, kind: string, rowId: string, targetTermId: string) =>
+    api.post<void>(`/vocabularies/terms/${termId}/references/${kind}/${rowId}/reassign`, {
+      target_term_id: targetTermId,
+    }),
 
   conditions: (includeInactive = false) =>
     api.get<ConditionKey[]>(

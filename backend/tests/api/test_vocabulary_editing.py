@@ -20,7 +20,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 
-from tests.api.conftest import Signed
+from tests.api.conftest import Signed, category_id
 
 
 def _series(client: TestClient, admin: Signed, name: str) -> str:
@@ -172,3 +172,94 @@ def test_물성_축은_속성_칸을_갖고_값의_속성을_고칠_수_있다(
     )
     assert fixed.status_code == 200, fixed.text
     assert fixed.json()["attributes"]["domain"] == "mechanical"
+
+
+def test_쓰임의_내역을_보고_한_줄씩_떼거나_옮긴다(
+    client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
+) -> None:
+    """쓰임 수 「2」 는 지워도 되나에는 답하지만 그 둘이 무엇인가에는 답하지 않는다.
+    보고, 그 자리에서 떼고 옮길 수 있어야 계열 화면까지 안 가고 고친다."""
+    tag = uuid.uuid4().hex[:6]
+    item = term_factory("test_item", f"굽힘-{tag}")
+    other = term_factory("test_item", f"3점 굽힘-{tag}")
+    series_a = _series(client, admin, f"A-{tag}")
+    series_b = _series(client, admin, f"B-{tag}")
+    _series_item(client, admin, series_a, item)
+    _series_item(client, admin, series_b, item)
+    method = client.post(
+        "/api/methods",
+        json={"code": f"ISO 178-{tag}", "title": "굽힘", "test_item_term_id": item},
+        headers=admin.headers,
+    ).json()
+
+    groups = client.get(f"/api/vocabularies/terms/{item}/references", headers=admin.headers)
+    assert groups.status_code == 200, groups.text
+    by_key = {one["key"]: one for one in groups.json()}
+    assert {row["label"] for row in by_key["series_test_item"]["rows"]} == {
+        f"A-{tag}",
+        f"B-{tag}",
+    }
+    assert by_key["series_test_item"]["detach"] == "delete"
+    assert by_key["method_test_item"]["rows"][0]["href"] == f"/methods/{method['id']}"
+    assert by_key["method_test_item"]["detach"] == "null"
+    # 내역의 합이 쓰임 수다 — 세는 표와 보여 주는 표가 같다.
+    total = sum(len(one["rows"]) for one in groups.json())
+    assert _term(client, admin, item, "test_item")["usage_count"] == total == 3
+
+    # 계열 A 의 줄을 뗀다 → 연결 줄이 지워진다.
+    a_row = next(r for r in by_key["series_test_item"]["rows"] if r["label"] == f"A-{tag}")
+    gone = client.delete(
+        f"/api/vocabularies/terms/{item}/references/series_test_item/{a_row['id']}",
+        headers=admin.headers,
+    )
+    assert gone.status_code == 204, gone.text
+    a = client.get(f"/api/equipment-series/{series_a}", headers=admin.headers).json()
+    assert a["test_items"] == []
+
+    # 시험법의 시험 항목을 뗀다 → 칸이 비워진다(규격은 남는다).
+    m_row = by_key["method_test_item"]["rows"][0]
+    client.delete(
+        f"/api/vocabularies/terms/{item}/references/method_test_item/{m_row['id']}",
+        headers=admin.headers,
+    )
+    assert (
+        client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()["test_item"]
+        is None
+    )
+
+    # 계열 B 의 줄을 다른 값으로 옮긴다.
+    b_row = next(r for r in by_key["series_test_item"]["rows"] if r["label"] == f"B-{tag}")
+    moved = client.post(
+        f"/api/vocabularies/terms/{item}/references/series_test_item/{b_row['id']}/reassign",
+        json={"target_term_id": other},
+        headers=admin.headers,
+    )
+    assert moved.status_code == 204, moved.text
+    b = client.get(f"/api/equipment-series/{series_b}", headers=admin.headers).json()
+    assert [one["test_item_term_id"] for one in b["test_items"]] == [other]
+    assert _term(client, admin, item, "test_item")["usage_count"] == 0
+
+    # 비울 수 없는 칸(장비의 거점)은 떼지 못하고 옮기기만 된다.
+    site = term_factory("site", f"거점-{tag}")
+    equipment = client.post(
+        "/api/equipment",
+        json={
+            "asset_no": f"E-{tag}",
+            "name": "장비",
+            "workspace_slug": admin.workspace,
+            "site_term_id": site,
+            "location": "1동",
+            "category_term_id": category_id(client, admin),
+        },
+        headers=admin.headers,
+    ).json()
+    refs = client.get(
+        f"/api/vocabularies/terms/{site}/references", headers=admin.headers
+    ).json()
+    assert refs[0]["detach"] == "none"
+    refused = client.delete(
+        f"/api/vocabularies/terms/{site}/references/equipment_site/{equipment['id']}",
+        headers=admin.headers,
+    )
+    assert refused.status_code == 400
+    assert refused.json()["error"]["code"] == "TSC-VOCAB-0014"

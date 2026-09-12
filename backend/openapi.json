@@ -1820,6 +1820,176 @@
         }
       }
     },
+    "/api/vocabularies/terms/{term_id}/references": {
+      "get": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Term References",
+        "description": "이 값을 가리키는 것 전부 — 쓰임 수의 **내역**이다. 합치거나 폐기하기 전에 본다.",
+        "operationId": "term_references_api_vocabularies_terms__term_id__references_get",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReferenceGroupOut"
+                  },
+                  "title": "Response Term References Api Vocabularies Terms  Term Id  References Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/vocabularies/terms/{term_id}/references/{kind}/{row_id}": {
+      "delete": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Detach Reference",
+        "description": "줄 하나를 뗀다 — 연결 줄이면 지우고, 비워도 되는 칸이면 비운다.",
+        "operationId": "detach_reference_api_vocabularies_terms__term_id__references__kind___row_id__delete",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Kind"
+            }
+          },
+          {
+            "name": "row_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Row Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/vocabularies/terms/{term_id}/references/{kind}/{row_id}/reassign": {
+      "post": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Reassign Reference",
+        "description": "줄 하나를 같은 축의 다른 값으로 옮긴다.",
+        "operationId": "reassign_reference_api_vocabularies_terms__term_id__references__kind___row_id__reassign_post",
+        "parameters": [
+          {
+            "name": "term_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Term Id"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Kind"
+            }
+          },
+          {
+            "name": "row_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Row Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReferenceReassignRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/vocabularies/terms/{term_id}/merge": {
       "post": {
         "tags": [
@@ -12034,6 +12204,83 @@
         ],
         "title": "PropertyOut",
         "description": "물성 하나와 그것을 내는 시험 항목들. 목록 화면이 그리는 줄."
+      },
+      "ReferenceGroupOut": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "detach": {
+            "type": "string",
+            "title": "Detach"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/ReferenceRowOut"
+            },
+            "type": "array",
+            "title": "Rows"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "detach",
+          "rows"
+        ],
+        "title": "ReferenceGroupOut"
+      },
+      "ReferenceReassignRequest": {
+        "properties": {
+          "target_term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Target Term Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target_term_id"
+        ],
+        "title": "ReferenceReassignRequest"
+      },
+      "ReferenceRowOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "href": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Href"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "href"
+        ],
+        "title": "ReferenceRowOut",
+        "description": "이 값을 가리키는 줄 하나 — 계열·장비·규격·연결."
       },
       "RejectRequest": {
         "properties": {

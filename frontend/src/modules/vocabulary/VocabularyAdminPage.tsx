@@ -385,7 +385,21 @@ export default function VocabularyAdminPage() {
                     {term.aliases.join(', ') || '—'}
                   </TableCell>
                   <TableCell>{term.status === 'active' ? '사용' : '폐기'}</TableCell>
-                  <TableCell className="text-right">{term.usage_count}</TableCell>
+                  <TableCell className="text-right">
+                    {/* 수를 누르면 내역이 열린다 — 「12」 만으로는 무엇이 쓰는지 모른다. */}
+                    {term.usage_count > 0 ? (
+                      <button
+                        type="button"
+                        className="underline decoration-dotted underline-offset-2"
+                        title="무엇이 이 값을 쓰는지 본다"
+                        onClick={() => setEditing(term)}
+                      >
+                        {term.usage_count}
+                      </button>
+                    ) : (
+                      <span className="text-muted-foreground">0</span>
+                    )}
+                  </TableCell>
                   <TableCell className="text-right">
                     <Button
                       variant="ghost"

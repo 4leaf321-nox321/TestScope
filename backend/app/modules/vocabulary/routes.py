@@ -20,6 +20,8 @@ from app.modules.vocabulary.schemas import (
     ConditionKeyCreateRequest,
     ConditionKeyOut,
     ConditionKeyUpdateRequest,
+    ReferenceGroupOut,
+    ReferenceReassignRequest,
     SpecDefinitionCreateRequest,
     SpecDefinitionOut,
     SpecDefinitionUpdateRequest,
@@ -141,6 +143,48 @@ def remove_alias(
     """표기 하나를 뗀다. 값으로 고른다 — 표기에는 id 를 안 내보낸다."""
     term = services.remove_alias(db, term_id=term_id, value=value)
     return services.term_out(db, term)
+
+
+@router.get("/terms/{term_id}/references", response_model=list[ReferenceGroupOut])
+def term_references(
+    term_id: uuid.UUID,
+    _: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[ReferenceGroupOut]:
+    """이 값을 가리키는 것 전부 — 쓰임 수의 **내역**이다. 합치거나 폐기하기 전에 본다."""
+    return services.term_references(db, term_id)
+
+
+@router.delete("/terms/{term_id}/references/{kind}/{row_id}", status_code=204)
+def detach_reference(
+    term_id: uuid.UUID,
+    kind: str,
+    row_id: uuid.UUID,
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> None:
+    """줄 하나를 뗀다 — 연결 줄이면 지우고, 비워도 되는 칸이면 비운다."""
+    services.detach_reference(db, term_id=term_id, kind_key=kind, row_id=row_id, actor=admin)
+
+
+@router.post("/terms/{term_id}/references/{kind}/{row_id}/reassign", status_code=204)
+def reassign_reference(
+    term_id: uuid.UUID,
+    kind: str,
+    row_id: uuid.UUID,
+    payload: ReferenceReassignRequest,
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> None:
+    """줄 하나를 같은 축의 다른 값으로 옮긴다."""
+    services.reassign_reference(
+        db,
+        term_id=term_id,
+        kind_key=kind,
+        row_id=row_id,
+        target_term_id=payload.target_term_id,
+        actor=admin,
+    )
 
 
 @router.post("/terms/{term_id}/merge", response_model=TermOut)

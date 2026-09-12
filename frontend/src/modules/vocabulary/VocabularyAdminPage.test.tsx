@@ -63,6 +63,22 @@ const TERMS = [
   },
 ]
 
+/** 「항복강도」 를 가리키는 것들. 종류마다 떼는 법이 다르다. */
+const REFERENCES = [
+  {
+    key: 'item_property_by_property',
+    label: '시험 항목 연결',
+    detach: 'delete',
+    rows: [{ id: 'l1', label: '인장 → 항복강도', href: '/properties' }],
+  },
+  {
+    key: 'equipment_site',
+    label: '장비의 거점',
+    detach: 'none',
+    rows: [{ id: 'e1', label: 'UTM-001 만능시험기', href: '/equipment/e1' }],
+  },
+]
+
 const calls: { method: string; url: string; body?: unknown }[] = []
 
 vi.mock('@/shared/api/client', () => ({
@@ -70,6 +86,7 @@ vi.mock('@/shared/api/client', () => ({
     get: vi.fn(async (url: string) => {
       calls.push({ method: 'GET', url })
       if (url === '/vocabularies') return AXES
+      if (url.endsWith('/references')) return REFERENCES
       if (url.includes('/terms')) return TERMS
       return []
     }),
@@ -203,5 +220,50 @@ describe('기준정보 편집', () => {
         { key: 'test_standard', label: '대표 규격', kind: 'text' },
       ],
     })
+  })
+})
+
+describe('값의 쓰임', () => {
+  it('내역을 종류별로 보이고, 줄마다 떼거나 옮긴다 — 못 떼는 칸은 옮기기만', async () => {
+    await open()
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('항복강도 편집'))
+    })
+    expect(screen.getByText('시험 항목 연결')).toBeTruthy()
+    expect(screen.getByText('장비의 거점')).toBeTruthy()
+    expect(screen.getByText('2군데')).toBeTruthy()
+    // 갈 수 있는 곳은 링크다.
+    expect(screen.getByRole('link', { name: /UTM-001/ }).getAttribute('href')).toBe(
+      '/equipment/e1',
+    )
+
+    // 비울 수 없는 칸에는 「떼기」 가 없다 — 서버가 말한 대로.
+    expect(screen.queryByLabelText('UTM-001 만능시험기 떼기')).toBeNull()
+    expect(screen.getByLabelText('UTM-001 만능시험기 옮기기')).toBeTruthy()
+
+    vi.spyOn(window, 'confirm').mockReturnValue(true)
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('인장 → 항복강도 떼기'))
+    })
+    expect(calls.find((one) => one.method === 'DELETE')?.url).toBe(
+      '/vocabularies/terms/t1/references/item_property_by_property/l1',
+    )
+
+    // 옮기기 — 같은 축의 다른 값을 골라 보낸다.
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText('UTM-001 만능시험기 옮기기'))
+    })
+    await act(async () => {
+      screen.getByRole('button', { name: '옮길 값' }).click()
+    })
+    await act(async () => {
+      screen.getAllByRole('button', { name: /항복 강도 \(오타\)/ })[0].click()
+    })
+    await act(async () => {
+      fireEvent.click(screen.getAllByRole('button', { name: '옮기기' }).at(-1)!)
+    })
+    expect(
+      calls.find((one) => one.url.endsWith('/references/equipment_site/e1/reassign'))?.body,
+    ).toEqual({ target_term_id: 't2' })
   })
 })

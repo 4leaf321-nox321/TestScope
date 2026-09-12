@@ -43,6 +43,9 @@ WORKSPACE_MERGED = "workspace.merged"
 WORKSPACE_DELETED = "workspace.deleted"
 VOCABULARY_RENAMED = "vocabulary.renamed"
 VOCABULARY_MERGED = "vocabulary.merged"
+VOCABULARY_REFERENCE_CHANGED = "vocabulary.reference_changed"
+"""기준정보 화면에서 값의 쓰임 한 줄을 떼거나 옮겼다 — 계열의 시험 항목, 장비의 거점 같은
+**도메인 행**이 바뀐 것이라 그 장비·계열 화면에서는 이유가 안 보인다. 여기 남는다."""
 CONDITION_KEY_CHANGED = "condition_key.changed"
 """조건 정의가 바뀌면 **이미 적힌 시험 항목의 뜻이 바뀐다** — 단위를 kN 에서 N 으로
 고치는 순간 저장된 숫자 전부가 다른 값이 된다. 되돌릴 수 없는 부류다."""

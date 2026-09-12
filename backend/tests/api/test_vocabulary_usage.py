@@ -18,7 +18,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 
-from app.modules.vocabulary.services import _REFERENCES
+from app.modules.vocabulary.references import _REFERENCES
 from tests.api.conftest import Signed, site_id
 
 

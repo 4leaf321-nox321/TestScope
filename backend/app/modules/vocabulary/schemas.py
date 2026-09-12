@@ -103,6 +103,27 @@ class AliasCreateRequest(BaseModel):
     value: str = Field(min_length=1, max_length=200)
 
 
+class ReferenceRowOut(BaseModel):
+    """이 값을 가리키는 줄 하나 — 계열·장비·규격·연결."""
+
+    id: uuid.UUID
+    label: str
+    href: str | None
+    """화면 주소. 없으면 갈 화면이 없는 것(사양 출처)."""
+
+
+class ReferenceGroupOut(BaseModel):
+    key: str
+    label: str
+    detach: str
+    """delete(연결 줄을 지운다) · null(칸을 비운다) · none(못 뗀다 — 옮기기만)."""
+    rows: list[ReferenceRowOut]
+
+
+class ReferenceReassignRequest(BaseModel):
+    target_term_id: uuid.UUID
+
+
 class ConditionKeyOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

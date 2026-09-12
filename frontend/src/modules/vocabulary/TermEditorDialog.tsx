@@ -36,6 +36,7 @@ import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { Term, Vocabulary } from '@/modules/vocabulary/api'
+import { TermReferences } from '@/modules/vocabulary/TermReferences'
 
 type Field = Vocabulary['attribute_schema'][number]
 
@@ -309,6 +310,8 @@ export function TermEditorDialog({
               </Button>
             </div>
           </div>
+
+          {term && <TermReferences term={term} siblings={siblings} onChanged={onChanged} />}
 
           <div className="space-y-2 rounded-md border p-3">
             <p className="text-sm font-medium">다른 값으로 합치기</p>

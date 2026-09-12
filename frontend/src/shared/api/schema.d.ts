@@ -629,6 +629,66 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/vocabularies/terms/{term_id}/references": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Term References
+         * @description 이 값을 가리키는 것 전부 — 쓰임 수의 **내역**이다. 합치거나 폐기하기 전에 본다.
+         */
+        get: operations["term_references_api_vocabularies_terms__term_id__references_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/vocabularies/terms/{term_id}/references/{kind}/{row_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Detach Reference
+         * @description 줄 하나를 뗀다 — 연결 줄이면 지우고, 비워도 되는 칸이면 비운다.
+         */
+        delete: operations["detach_reference_api_vocabularies_terms__term_id__references__kind___row_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/vocabularies/terms/{term_id}/references/{kind}/{row_id}/reassign": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reassign Reference
+         * @description 줄 하나를 같은 축의 다른 값으로 옮긴다.
+         */
+        post: operations["reassign_reference_api_vocabularies_terms__term_id__references__kind___row_id__reassign_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/vocabularies/terms/{term_id}/merge": {
         parameters: {
             query?: never;
@@ -3859,6 +3919,40 @@ export interface components {
             /** Links */
             links: components["schemas"]["TestItemPropertyOut"][];
         };
+        /** ReferenceGroupOut */
+        ReferenceGroupOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Detach */
+            detach: string;
+            /** Rows */
+            rows: components["schemas"]["ReferenceRowOut"][];
+        };
+        /** ReferenceReassignRequest */
+        ReferenceReassignRequest: {
+            /**
+             * Target Term Id
+             * Format: uuid
+             */
+            target_term_id: string;
+        };
+        /**
+         * ReferenceRowOut
+         * @description 이 값을 가리키는 줄 하나 — 계열·장비·규격·연결.
+         */
+        ReferenceRowOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Href */
+            href: string | null;
+        };
         /** RejectRequest */
         RejectRequest: {
             /** Note */
@@ -6015,6 +6109,103 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["TermOut"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    term_references_api_vocabularies_terms__term_id__references_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                term_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReferenceGroupOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    detach_reference_api_vocabularies_terms__term_id__references__kind___row_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                term_id: string;
+                kind: string;
+                row_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reassign_reference_api_vocabularies_terms__term_id__references__kind___row_id__reassign_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                term_id: string;
+                kind: string;
+                row_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReferenceReassignRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {
