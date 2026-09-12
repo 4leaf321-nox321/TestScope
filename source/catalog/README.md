@@ -18,6 +18,7 @@
 | `catalog/schema.json` | 장비 객체 JSON Schema |
 | `catalog/equipment/<제조사>/*.json` | **장비 객체** — 시리즈/모델 단위 하나 |
 | `catalog/ontology/*.json` | 축 정의: 제조사·장비 분류·시험 항목·조건 키·관계 종류 |
+| `catalog/tools_fetch_pdf.py` | PDF 를 받아 `pdf/`·`extracted/`·`urls.json` 에 넣는다. `--restore` 가 `urls.json` 으로 없어진 PDF 를 되살리고, `--check` 가 세 목록이 맞는지 본다 |
 | `catalog/tools_render_pages.py` | PDF 특정 쪽을 PNG 로 렌더링(표 열 대응 확인용) |
 | `catalog/build_graph.py` | 객체를 검증하고 `graph.json`(노드+엣지)·`index.md`·`sources.json` 을 만든다 |
 | `catalog/reference_docs.json` | 장비가 아닌 규격·시험법 문서(IPC ROSE, USB Type-C, IPX9K 백서 등) |

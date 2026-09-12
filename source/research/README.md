@@ -20,7 +20,7 @@ MaterialTwin 은 `quality_tier` 1~4 (제품에 인쇄된 값 / 핸드북 / 2차 
 없으면 비워 두고 비고에 이유를 적었다(ADR 0003).
 
 `source/pdf/` 와 `source/extracted/` 는 git 에 안 들어간다(용량). `urls.json` 이 정본이라
-`fetch`(curl) → `pdftotext` 로 언제든 되살린다.
+`catalog/tools_fetch_pdf.py --restore` 로 언제든 되살린다.
 
 ## 채운 것
 
@@ -60,7 +60,8 @@ MaterialTwin 은 `quality_tier` 1~4 (제품에 인쇄된 값 / 핸드북 / 2차 
 ## 다시 돌리는 법
 
 ```
-python fetch_pdf.py <vendor> <file.pdf> <url>      # scratch 도구 — source/pdf 에 받고 urls.json 에 적음
+python source/catalog/tools_fetch_pdf.py <vendor> <file.pdf> <url>   # 받고 뽑고 urls.json 에 적음
+python source/catalog/tools_fetch_pdf.py --restore                   # 다른 PC: urls.json 으로 전부 되살림
 python source/catalog/build_graph.py
 python backend/scripts/import_catalog.py
 ```
