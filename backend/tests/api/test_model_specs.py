@@ -13,6 +13,7 @@ import uuid
 from collections.abc import Callable
 from typing import Any
 
+import pytest
 from fastapi.testclient import TestClient
 
 from tests.api.conftest import Signed, site_id
@@ -428,3 +429,95 @@ def test_옵션_부속_기준_사양은_장비까지_따라가고_검색이_됨�
         ]
         == "match"
     )
+
+
+def test_단위가_다른_사양은_환산해서_조건이_되고_못_맞추면_안_실린다(
+    client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
+) -> None:
+    """**500 gf 를 그대로 옮기면 500 kN 이 된다.** 1억 배 틀린 자신 있는 오답이라,
+    사양 정의의 단위와 축의 단위가 다르면 곱해서 옮기고, 못 곱하는 짝은 안 옮기되
+    사양표가 그렇다고 말한다."""
+    from app.database import SessionLocal
+    from app.modules.equipment.specs import conditions_from_specs
+
+    tag = uuid.uuid4().hex[:6]
+    model = _model(client, admin)
+    groups = client.get("/api/spec-groups", headers=admin.headers).json()
+    keys = {
+        row["key"]: row["id"]
+        for row in client.get("/api/condition-keys", headers=admin.headers).json()
+    }
+
+    # gf 로 적는 경도 시험력 → kN 인 하중 축.
+    gf = client.post(
+        "/api/spec-definitions",
+        json={
+            "key": f"test_load_gf_{tag}",
+            "label": "경도 시험 하중(미소)",
+            "group_id": groups[0]["id"],
+            "kind": "range",
+            "si_unit": "gf",
+            "display_unit": "gf",
+            "condition_key_id": keys["force"],
+        },
+        headers=admin.headers,
+    )
+    assert gf.status_code == 201, gf.text
+    # 쇼어 경도 → kN 축. 곱할 수 없는 짝이다.
+    shore = client.post(
+        "/api/spec-definitions",
+        json={
+            "key": f"shore_a_{tag}",
+            "label": "경도 (Shore A)",
+            "group_id": groups[0]["id"],
+            "kind": "range",
+            "si_unit": "ShoreA",
+            "display_unit": "ShoreA",
+            "condition_key_id": keys["force"],
+        },
+        headers=admin.headers,
+    )
+    assert shore.status_code == 201, shore.text
+
+    assert (
+        _put_spec(
+            client, admin, model["id"], definition_id=gf.json()["id"], num_min=10, num_max=1000
+        ).status_code
+        == 200
+    )
+    # 쇼어 값은 같은 축(하중)이라 하나만 남는다 — 먼저 넣은 gf 가 실린다(정렬은 종류·순서).
+
+    db = SessionLocal()
+    try:
+        reflected = conditions_from_specs(db, uuid.UUID(model["id"]))
+    finally:
+        db.close()
+    low, high, _label, _accessory = reflected[uuid.UUID(keys["force"])]
+    # 10~1000 gf → 0.0000981~0.00981 kN. 500 kN 이 아니다.
+    assert low == pytest.approx(10 * 0.00980665 / 1000)
+    assert high == pytest.approx(1000 * 0.00980665 / 1000)
+
+    other = _model(client, admin)
+    assert (
+        _put_spec(
+            client,
+            admin,
+            other["id"],
+            definition_id=shore.json()["id"],
+            num_min=20,
+            num_max=90,
+        ).status_code
+        == 200
+    )
+    db = SessionLocal()
+    try:
+        reflected = conditions_from_specs(db, uuid.UUID(other["id"]))
+    finally:
+        db.close()
+    # 못 맞추는 짝은 안 실린다 — 그리고 사양표가 그렇다고 말한다.
+    assert uuid.UUID(keys["force"]) not in reflected
+    sheet = client.get(
+        f"/api/equipment-models/{other['id']}/specs", headers=admin.headers
+    ).json()
+    value = next(one for group in sheet["groups"] for one in group["items"])
+    assert value["axis_unit_mismatch"] is True

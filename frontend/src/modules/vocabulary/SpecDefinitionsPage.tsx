@@ -42,6 +42,7 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { vocabularyApi } from '@/modules/vocabulary/api'
+import { convertValue, isError } from '@/shared/units'
 
 /** 화면이 쓰는 말. 코드의 kind 를 그대로 보여 주면 읽는 사람이 번역을 한다. */
 const KIND_LABEL: Record<string, string> = {
@@ -216,9 +217,54 @@ export default function SpecDefinitionsPage() {
                   one.categories.join(', ')
                 )}
               </TableCell>
-              {/* 이어져 있으면 이 사양의 값이 기종의 시험 항목으로 따라 들어간다. */}
+              {/* 이어져 있으면 이 사양의 값이 기종의 시험 항목으로 따라 들어간다.
+                  **단위가 다르면 곱해서 옮기고, 못 곱하는 짝은 안 옮긴다** — 그 사실을
+                  여기서 말한다(쇼어 경도 ↔ kN). 끊는 길은 일부러 없다: 조용히 끊기면 그
+                  사양이 왜 검색에서 사라졌는지 아무도 못 찾는다. */}
               <TableCell>
-                {one.condition_label ?? <span className="text-muted-foreground">—</span>}
+                {canEdit ? (
+                  <Select
+                    value={one.condition_key_id ?? ''}
+                    onValueChange={(value) =>
+                      act(() =>
+                        vocabularyApi.updateSpecDefinition(one.id, {
+                          condition_key_id: value,
+                        }),
+                      )
+                    }
+                  >
+                    <SelectTrigger className="h-8 w-40" aria-label={`${one.label} 검색축`}>
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {(conditions.data ?? []).map((key) => (
+                        <SelectItem key={key.id} value={key.id}>
+                          {key.label}
+                          {(key.display_unit || key.si_unit) &&
+                            ` [${key.display_unit || key.si_unit}]`}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                ) : (
+                  (one.condition_label ?? <span className="text-muted-foreground">—</span>)
+                )}
+                {(() => {
+                  const axis = (conditions.data ?? []).find(
+                    (key) => key.id === one.condition_key_id,
+                  )
+                  if (!axis) return null
+                  const mine = one.display_unit || one.si_unit
+                  const theirs = axis.display_unit || axis.si_unit
+                  const probe = convertValue(`1 ${mine || theirs}`, theirs)
+                  if (mine === theirs || (probe !== null && !isError(probe))) return null
+                  return (
+                    <p className="text-destructive mt-1 text-xs">
+                      단위 {mine || '없음'} ↔ {theirs || '없음'} 을 못 맞춥니다 — 이 사양은
+                      검색에 안 실립니다
+                    </p>
+                  )
+                })()}
               </TableCell>
               {/* **쓰임 수를 끄기 전에 보여 준다.** 단위를 고치면 이 숫자만큼의
                   값이 한꺼번에 다른 뜻이 된다. */}

@@ -328,6 +328,16 @@ export function ModelSpecPanel({
                     </dt>
                     <dd className="flex flex-wrap items-baseline gap-2">
                       <span>{shownSpecValue(item)}</span>
+                      {item.axis_unit_mismatch && (
+                        // 검색축에 이었는데 단위를 못 맞춘다 — 조용히 빠지면 「검색축인데 왜
+                        // 모름이라 하지」 가 된다.
+                        <span
+                          className="text-destructive rounded bg-red-500/10 px-1.5 py-0.5 text-xs"
+                          title="이 사양은 검색축에 이어져 있지만 단위를 축의 단위로 못 바꿔 검색에 안 실립니다. 「장비 사양 정의」 에서 단위나 축을 고치세요."
+                        >
+                          단위 안 맞음 · 검색에 안 실림
+                        </span>
+                      )}
                       {item.requires_accessory && (
                         <span
                           className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"

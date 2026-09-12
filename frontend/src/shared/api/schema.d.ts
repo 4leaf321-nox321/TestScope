@@ -4109,6 +4109,11 @@ export interface components {
             is_active: boolean;
             /** Condition Key Id */
             condition_key_id: string | null;
+            /**
+             * Axis Unit Mismatch
+             * @default false
+             */
+            axis_unit_mismatch: boolean;
             /** Applies */
             applies: boolean;
             /** Num Value */

@@ -910,6 +910,9 @@ class ModelSpecValueOut(BaseModel):
     """정의가 꺼졌어도 이미 적힌 값은 보여 준다 — 안 보이면 지워진 줄 안다."""
     condition_key_id: uuid.UUID | None
     """채워져 있으면 이 값이 시험 조건으로 따라 들어간 사양이다."""
+    axis_unit_mismatch: bool = False
+    """검색축에 이었는데 **단위를 못 맞춘다**(쇼어 경도 ↔ kN). 참이면 이 값은 검색에 안 실린다.
+    조용히 빠지면 「검색축인데 왜 모름이라 하지」 가 되므로 화면이 말한다."""
     applies: bool
     """이 모델의 분류에 붙는 사양인가. **false 라도 값은 준다** — 분류를 나중에
     고쳤다고 이미 적은 사양이 사라지면 안 된다(ADR 0005)."""

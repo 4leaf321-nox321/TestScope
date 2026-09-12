@@ -42,6 +42,7 @@ from app.modules.vocabulary.specs import (
     SpecGroup,
 )
 from app.shared.errors import AppError, NotFound
+from app.shared.units import compatible, convert
 
 #: 값이 담기는 칸들. 종류마다 채우는 것이 다르고, 나머지는 비워 둔다.
 _VALUE_FIELDS = ("num_value", "num_min", "num_max", "text_value", "bool_value")
@@ -77,6 +78,18 @@ def _applies_to(
     return category_term_id in rows
 
 
+def _axis_unit_mismatch(db: Session, definition: SpecDefinition) -> bool:
+    """검색축에 이었는데 단위를 못 맞추나. 참이면 이 값은 검색에 안 실린다 — 화면이 말한다."""
+    if definition.condition_key_id is None:
+        return False
+    key = db.get(ConditionKey, definition.condition_key_id)
+    if key is None:
+        return False
+    return not compatible(
+        definition.display_unit or definition.si_unit, key.display_unit or key.si_unit
+    )
+
+
 def value_out(
     db: Session,
     row: ModelSpecValue,
@@ -97,6 +110,7 @@ def value_out(
         sort_order=definition.sort_order,
         is_active=definition.is_active,
         condition_key_id=definition.condition_key_id,
+        axis_unit_mismatch=_axis_unit_mismatch(db, definition),
         applies=_applies_to(db, definition.id, category_term_id),
         num_value=row.num_value,
         num_min=row.num_min,
@@ -231,6 +245,13 @@ def conditions_from_specs_bulk(
     넷째 칸은 **옵션 부속 기준**인지다. 카탈로그가 「-180~320 °C」 를 항온조 옵션으로 적으면
     그 표시가 사양값에 있고, 여기서 조건으로 따라간다 — 빠지면 검색이 갖고 있지도 않은
     챔버를 전제로 「80 °C 됨」 이라고 답한다.
+
+    ## 단위가 다르면 곱해서 옮기고, 못 곱하면 안 옮긴다
+
+    사양 정의 「시험력」 은 gf 이고 축 「하중 용량」 은 kN 이다. 그대로 옮기면 500 gf 가
+    500 kN 이 된다 — 1억 배 틀린 자신 있는 오답. 정의 단위와 축 단위를 `convert` 로 맞추고,
+    맞출 수 없는 짝(쇼어 경도 ↔ kN)은 **건너뛴다**. 건너뛴 사실은 사양표가 `axis_unit_mismatch`
+    로 보여 준다 — 조용히 빠지면 「검색축인데 왜 검색이 모름이라 하지」 가 된다.
     """
     out: dict[uuid.UUID, dict[uuid.UUID, tuple[float | None, float | None, str, bool]]] = {}
     if not model_ids:
@@ -238,8 +259,9 @@ def conditions_from_specs_bulk(
     #: 기종마다 그 축을 확정값(number)이 채웠나. 구간은 확정값을 못 덮는다.
     settled: dict[uuid.UUID, set[uuid.UUID]] = {}
     rows = db.execute(
-        select(ModelSpecValue, SpecDefinition)
+        select(ModelSpecValue, SpecDefinition, ConditionKey)
         .join(SpecDefinition, SpecDefinition.id == ModelSpecValue.definition_id)
+        .join(ConditionKey, ConditionKey.id == SpecDefinition.condition_key_id)
         .where(
             ModelSpecValue.model_id.in_(model_ids),
             SpecDefinition.condition_key_id.is_not(None),
@@ -249,7 +271,7 @@ def conditions_from_specs_bulk(
         # 안 정하면 같은 기종이 반입할 때마다 다른 조건을 갖는다.
         .order_by(ModelSpecValue.model_id, SpecDefinition.kind, SpecDefinition.sort_order)
     ).all()
-    for value, definition in rows:
+    for value, definition, key in rows:
         if definition.kind == "range":
             low, high = value.num_min, value.num_max
         elif definition.kind == "number":
@@ -259,6 +281,13 @@ def conditions_from_specs_bulk(
             continue
         if low is None and high is None:
             continue
+        from_unit = definition.display_unit or definition.si_unit
+        to_unit = key.display_unit or key.si_unit
+        if not compatible(from_unit, to_unit):
+            # 단위를 못 맞추는 짝 — 옮기면 틀린 값이 검색에 쓰인다. 건너뛴다.
+            continue
+        low = convert(low, from_unit, to_unit) if low is not None else None
+        high = convert(high, from_unit, to_unit) if high is not None else None
         assert definition.condition_key_id is not None  # 위 where 절이 보장한다
         key_id = definition.condition_key_id
         mine = out.setdefault(value.model_id, {})
