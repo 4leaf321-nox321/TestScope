@@ -38,6 +38,7 @@ import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시
 from _console import survive_cp949
 from app.database import SessionLocal
 from app.modules.accounts.models import User
+from app.modules.review import services as review
 from app.modules.server import catalog_state
 from app.shared.audit import record
 from catalog_import import terms as terms_step
@@ -87,6 +88,9 @@ def main() -> int:
         models, values, flagged, kept = step_models(db, cat, series, form_factors, actor)
         relations = step_relations(db, cat, series)
         links, promoted, unmapped = step_property_links(db, cat, items, properties, actor)
+        # 7. 검토함 — 반입이 못 정한 것을 후보·추천과 함께 세운다. 정본(`proposals/`)에
+        #    이미 내린 결정은 여기서 적용된다 — 개발 DB 에서 정한 것이 운영에 다시 묻지 않게.
+        review_open = review.refresh(db, args.root / "proposals")
 
         if args.dry_run:
             db.rollback()
@@ -140,6 +144,10 @@ def main() -> int:
         if flagged:
             print(f"  원본 확인 필요로 표시한 기종 {flagged}")
         print(f"  계열 관계 새로 {relations}")
+        print(
+            "  검토함 열림: "
+            + " · ".join(f"{review.QUEUES[k].label} {n}" for k, n in review_open.items())
+        )
         if unmapped:
             # **물성 키를 못 정한 measurand.** 판정·곡선·설비값이라 물성이 아닌 것이
             # 대부분이고, 물성인데 MaterialTwin 에 키가 없는 것도 있다.

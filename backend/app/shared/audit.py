@@ -68,6 +68,9 @@ EQUIPMENT_RETIRED = "equipment.retired"
 EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"
 PROPERTY_LINKS_REVIEWED = "property_link.reviewed"
+REVIEW_DECIDED = "review.decided"
+"""검토함에서 하나를 정했다 — 어느 물음의 무엇을 무엇으로, 추천을 따랐는지. 도메인 전문가의
+판단이라 「누가 왜」 를 반년 뒤에도 물을 수 있어야 한다."""
 """**물성↔시험 항목 제안을 묶어서 확인(또는 되돌림).** 한 번에 수십 줄이 바뀌는 일이라
 줄마다 남기면 감사가 그것으로 덮인다 — 한 줄에 몇 건을 어느 쪽으로 옮겼는지 담는다.
 

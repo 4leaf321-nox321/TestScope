@@ -48,6 +48,8 @@ const NotificationsPage = lazy(() => import('@/modules/notifications/Notificatio
 const ProfilePage = lazy(() => import('@/modules/auth/ProfilePage'))
 const PropertiesPage = lazy(() => import('@/modules/properties/PropertiesPage'))
 const ServerPage = lazy(() => import('@/modules/server/ServerPage'))
+const ReviewPage = lazy(() => import('@/modules/review/ReviewPage'))
+const ReviewQueuePage = lazy(() => import('@/modules/review/ReviewQueuePage'))
 const TestItemsCatalogPage = lazy(() => import('@/modules/test_items/TestItemsCatalogPage'))
 const TestItemCatalogDetailPage = lazy(
   () => import('@/modules/test_items/TestItemCatalogDetailPage'),
@@ -132,6 +134,8 @@ export const router = createBrowserRouter([
           { path: 'admin/workspaces', element: <WorkspacesAdminPage /> },
           { path: 'admin/vocabulary', element: <VocabularyAdminPage /> },
           { path: 'admin/server', element: <ServerPage /> },
+          { path: 'admin/review', element: <ReviewPage /> },
+          { path: 'admin/review/:queue', element: <ReviewQueuePage /> },
 
           // 부서 스코프
           {

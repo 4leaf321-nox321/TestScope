@@ -529,6 +529,108 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Queues
+         * @description 물음 넷과 각각 몇 건이 열려 있나. **0 이면 그 물음은 끝난 것이다.**
+         */
+        get: operations["list_queues_api_review_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/review/{queue}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Proposals
+         * @description 한 물음의 줄들 — 대상 · 후보(추천과 근거) · 상세 링크.
+         */
+        get: operations["list_proposals_api_review__queue__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/review/{queue}/{proposal_id}/decide": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Decide
+         * @description 고른다. 기존 규칙(규격 → 인용 계열에 붙임, 사양 → 같은 키 함께 올림)이 그대로 돈다.
+         *     **누가 골랐고 추천을 따랐는지**가 감사와 이 줄에 남는다.
+         */
+        post: operations["decide_api_review__queue___proposal_id__decide_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/review/{queue}/{proposal_id}/skip": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Skip
+         * @description 건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다.
+         */
+        post: operations["skip_api_review__queue___proposal_id__skip_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/review/refresh": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Refresh
+         * @description 후보를 다시 세운다 — 반입 뒤나 정본(`proposals/`)을 고친 뒤. 화면에서 이미 정한 것은
+         *     결정으로 닫힌다.
+         */
+        post: operations["refresh_api_review_refresh_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/vocabularies": {
         parameters: {
             query?: never;
@@ -2396,6 +2498,20 @@ export interface components {
             /** Note */
             note: string | null;
         };
+        /** CandidateOut */
+        CandidateOut: {
+            /** Code */
+            code: string;
+            /** Label */
+            label: string;
+            /**
+             * Recommended
+             * @default false
+             */
+            recommended: boolean;
+            /** Reason */
+            reason?: string | null;
+        };
         /**
          * CatalogFilterOptionsOut
          * @description 카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.
@@ -2702,6 +2818,16 @@ export interface components {
              * @default false
              */
             is_system_admin: boolean;
+        };
+        /**
+         * DecideRequest
+         * @description 고른 것. 후보에 없는 코드도 된다(「직접 고르기」) — 다만 그 큐의 어휘여야 한다.
+         */
+        DecideRequest: {
+            /** Choice */
+            choice: string[];
+            /** Note */
+            note?: string | null;
         };
         /** DiskOut */
         DiskOut: {
@@ -4470,6 +4596,68 @@ export interface components {
             /** Links */
             links: components["schemas"]["TestItemPropertyOut"][];
         };
+        /** ProposalOut */
+        ProposalOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Queue */
+            queue: string;
+            /** Subject Key */
+            subject_key: string;
+            /** Subject Id */
+            subject_id: string | null;
+            /** Subject Label */
+            subject_label: string;
+            /** Context */
+            context: string | null;
+            /** Link */
+            link: string | null;
+            /** Candidates */
+            candidates: components["schemas"]["CandidateOut"][];
+            /** Payload */
+            payload: {
+                [key: string]: unknown;
+            };
+            /** Status */
+            status: string;
+            /** Choice */
+            choice: string[] | null;
+            /** Followed */
+            followed: boolean | null;
+            /** Note */
+            note: string | null;
+            /** Decided By */
+            decided_by: string | null;
+            /** Decided At */
+            decided_at: string | null;
+        };
+        /** ProposalPage */
+        ProposalPage: {
+            /** Items */
+            items: components["schemas"]["ProposalOut"][];
+            /** Total */
+            total: number;
+        };
+        /** QueueOut */
+        QueueOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Description */
+            description: string;
+            /** Multi */
+            multi: boolean;
+            /** Open */
+            open: number;
+            /** Decided */
+            decided: number;
+            /** Skipped */
+            skipped: number;
+        };
         /** ReferenceGroupOut */
         ReferenceGroupOut: {
             /** Key */
@@ -4503,6 +4691,13 @@ export interface components {
             label: string;
             /** Href */
             href: string | null;
+        };
+        /** RefreshResult */
+        RefreshResult: {
+            /** Open */
+            open: {
+                [key: string]: number;
+            };
         };
         /** RejectRequest */
         RejectRequest: {
@@ -6674,6 +6869,149 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_queues_api_review_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QueueOut"][];
+                };
+            };
+        };
+    };
+    list_proposals_api_review__queue__get: {
+        parameters: {
+            query?: {
+                status?: string;
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                queue: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProposalPage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    decide_api_review__queue___proposal_id__decide_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DecideRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    skip_api_review__queue___proposal_id__skip_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    refresh_api_review_refresh_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RefreshResult"];
                 };
             };
         };

@@ -10,6 +10,7 @@ import {
   Bell,
   Boxes,
   Building2,
+  CheckSquare,
   ClipboardList,
   Gauge,
   ListChecks,
@@ -250,6 +251,14 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '기준정보 편집',
         icon: ListTree,
         to: '/admin/vocabulary',
+        audience: 'system_admin',
+      },
+      {
+        // **후보와 근거를 보고 도메인 전문가가 고르는 자리.** 반입이 못 정한 것(어느 시험의
+        // 규격인가 · 무슨 조건을 묻나 …)이 흩어진 화면마다 「미정」 으로 서 있었다.
+        label: '검토함',
+        icon: CheckSquare,
+        to: '/admin/review',
         audience: 'system_admin',
       },
       {

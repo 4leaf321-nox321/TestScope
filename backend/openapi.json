@@ -1459,6 +1459,247 @@
         }
       }
     },
+    "/api/review": {
+      "get": {
+        "tags": [
+          "review"
+        ],
+        "summary": "List Queues",
+        "description": "물음 넷과 각각 몇 건이 열려 있나. **0 이면 그 물음은 끝난 것이다.**",
+        "operationId": "list_queues_api_review_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/QueueOut"
+                  },
+                  "type": "array",
+                  "title": "Response List Queues Api Review Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/{queue}": {
+      "get": {
+        "tags": [
+          "review"
+        ],
+        "summary": "List Proposals",
+        "description": "한 물음의 줄들 — 대상 · 후보(추천과 근거) · 상세 링크.",
+        "operationId": "list_proposals_api_review__queue__get",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(open|decided|skipped|all)$",
+              "default": "open",
+              "title": "Status"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProposalPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/{queue}/{proposal_id}/decide": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Decide",
+        "description": "고른다. 기존 규칙(규격 → 인용 계열에 붙임, 사양 → 같은 키 함께 올림)이 그대로 돈다.\n**누가 골랐고 추천을 따랐는지**가 감사와 이 줄에 남는다.",
+        "operationId": "decide_api_review__queue___proposal_id__decide_post",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecideRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/{queue}/{proposal_id}/skip": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Skip",
+        "description": "건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다.",
+        "operationId": "skip_api_review__queue___proposal_id__skip_post",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/refresh": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Refresh",
+        "description": "후보를 다시 세운다 — 반입 뒤나 정본(`proposals/`)을 고친 뒤. 화면에서 이미 정한 것은\n결정으로 닫힌다.",
+        "operationId": "refresh_api_review_refresh_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/vocabularies": {
       "get": {
         "tags": [
@@ -7375,6 +7616,40 @@
         ],
         "title": "CalibrationOut"
       },
+      "CandidateOut": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "recommended": {
+            "type": "boolean",
+            "title": "Recommended",
+            "default": false
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "label"
+        ],
+        "title": "CandidateOut"
+      },
       "CatalogFilterOptionsOut": {
         "properties": {
           "makers": {
@@ -8170,6 +8445,36 @@
         ],
         "title": "CreateAccountRequest",
         "description": "관리자가 직접 계정을 만들 때. 승인 절차 없이 바로 활성이다."
+      },
+      "DecideRequest": {
+        "properties": {
+          "choice": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Choice"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "choice"
+        ],
+        "title": "DecideRequest",
+        "description": "고른 것. 후보에 없는 코드도 된다(「직접 고르기」) — 다만 그 큐의 어휘여야 한다."
       },
       "DiskOut": {
         "properties": {
@@ -13461,6 +13766,219 @@
         "title": "PropertyOut",
         "description": "물성 하나와 그것을 내는 시험 항목들. 목록 화면이 그리는 줄."
       },
+      "ProposalOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "queue": {
+            "type": "string",
+            "title": "Queue"
+          },
+          "subject_key": {
+            "type": "string",
+            "title": "Subject Key"
+          },
+          "subject_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subject Id"
+          },
+          "subject_label": {
+            "type": "string",
+            "title": "Subject Label"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context"
+          },
+          "link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Link"
+          },
+          "candidates": {
+            "items": {
+              "$ref": "#/components/schemas/CandidateOut"
+            },
+            "type": "array",
+            "title": "Candidates"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Payload"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "choice": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Choice"
+          },
+          "followed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Followed"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "decided_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided By"
+          },
+          "decided_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decided At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "queue",
+          "subject_key",
+          "subject_id",
+          "subject_label",
+          "context",
+          "link",
+          "candidates",
+          "payload",
+          "status",
+          "choice",
+          "followed",
+          "note",
+          "decided_by",
+          "decided_at"
+        ],
+        "title": "ProposalOut"
+      },
+      "ProposalPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ProposalOut"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "ProposalPage"
+      },
+      "QueueOut": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "multi": {
+            "type": "boolean",
+            "title": "Multi"
+          },
+          "open": {
+            "type": "integer",
+            "title": "Open"
+          },
+          "decided": {
+            "type": "integer",
+            "title": "Decided"
+          },
+          "skipped": {
+            "type": "integer",
+            "title": "Skipped"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "description",
+          "multi",
+          "open",
+          "decided",
+          "skipped"
+        ],
+        "title": "QueueOut"
+      },
       "ReferenceGroupOut": {
         "properties": {
           "key": {
@@ -13537,6 +14055,22 @@
         ],
         "title": "ReferenceRowOut",
         "description": "이 값을 가리키는 줄 하나 — 계열·장비·규격·연결."
+      },
+      "RefreshResult": {
+        "properties": {
+          "open": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Open"
+          }
+        },
+        "type": "object",
+        "required": [
+          "open"
+        ],
+        "title": "RefreshResult"
       },
       "RejectRequest": {
         "properties": {
