@@ -104,6 +104,7 @@ def value_out(
         text_value=row.text_value,
         bool_value=row.bool_value,
         note=row.note,
+        requires_accessory=row.requires_accessory,
         source_id=row.source_id,
         source_path=source.path if source else None,
         source_page=row.source_page,
@@ -183,8 +184,13 @@ def check_value(definition: SpecDefinition, payload: dict[str, Any]) -> None:
 
 def conditions_from_specs(
     db: Session, model_id: uuid.UUID
-) -> dict[uuid.UUID, tuple[float | None, float | None, str]]:
-    """이 기종의 사양에서 **검색 조건을 뽑는다.** {조건 id: (최소, 최대, 사양 이름)}.
+) -> dict[uuid.UUID, tuple[float | None, float | None, str, bool]]:
+    """이 기종의 사양에서 **검색 조건을 뽑는다.**
+    {조건 id: (최소, 최대, 사양 이름, 부속 필요)}.
+
+    넷째 칸이 **옵션 부속 기준**인지다. 카탈로그가 「-180~320 °C」 를 항온조 옵션으로 적으면
+    그 표시가 사양값에 있고, 여기서 조건으로 따라간다 — 빠지면 검색이 갖고 있지도 않은 챔버를
+    전제로 「80 °C 됨」 이라고 답한다.
 
     ## 왜 저장할 때가 아니라 여기서 계산하나
 
@@ -213,7 +219,7 @@ def conditions_from_specs(
     그렇다」 가 아니다. 순서에 맡기면 같은 기종이 반입할 때마다 다른 조건을 갖고,
     그 차이는 검색 결과가 갈린 날에야 드러난다.
     """
-    out: dict[uuid.UUID, tuple[float | None, float | None, str]] = {}
+    out: dict[uuid.UUID, tuple[float | None, float | None, str, bool]] = {}
     #: 그 축을 확정값(number)이 채웠나. 구간은 확정값을 못 덮는다.
     settled: set[uuid.UUID] = set()
     rows = db.execute(
@@ -244,7 +250,7 @@ def conditions_from_specs(
             continue
         if definition.kind == "number":
             settled.add(key_id)
-        out[key_id] = (low, high, definition.label)
+        out[key_id] = (low, high, definition.label, value.requires_accessory)
     return out
 
 
@@ -294,6 +300,7 @@ def upsert(
     for field in _VALUE_FIELDS:
         setattr(row, field, payload.get(field))
     row.note = payload.get("note")
+    row.requires_accessory = bool(payload.get("requires_accessory"))
     row.source_id = payload.get("source_id")
     row.source_page = payload.get("source_page")
     db.commit()

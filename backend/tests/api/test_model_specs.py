@@ -320,3 +320,111 @@ def test_값이_적힌_정의는_못_지운다(client: TestClient, admin: Signed
         headers=admin.headers,
     )
     assert dropped.status_code == 204, dropped.text
+
+
+def test_옵션_부속_기준_사양은_장비까지_따라가고_검색이_됨이라고_안_한다(
+    client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
+) -> None:
+    """카탈로그가 「-180~320 °C」 를 항온조 옵션 기준으로 적는 일이 흔하다. 그것을 본체 값처럼
+    두면 검색이 갖고 있지도 않은 챔버를 전제로 「80 °C 됨」 이라고 답한다 — ADR 0003 이
+    막으려던 바로 그 오답. 표시가 사양 → 조건 → 판정까지 따라가야 한다."""
+    model = _model(client, admin)
+    definitions = _definitions(client, admin)
+    item = term_factory("test_item", f"인장-{uuid.uuid4().hex[:6]}")
+    client.post(
+        f"/api/equipment-series/{model['series_id']}/test-items",
+        json={"test_item_term_id": item},
+        headers=admin.headers,
+    )
+    saved = _put_spec(
+        client,
+        admin,
+        model["id"],
+        definition_id=definitions["test_temperature"]["id"],
+        num_min=-180,
+        num_max=320,
+        requires_accessory=True,
+        note="항온조 TCL-N 옵션 기준",
+    )
+    assert saved.status_code == 200, saved.text
+    assert saved.json()["value"]["requires_accessory"] is True
+
+    made = client.post(
+        "/api/equipment",
+        json={
+            "asset_no": f"ACC-{uuid.uuid4().hex[:6]}",
+            "site_term_id": site_id(client, admin),
+            "location": "3동 201호",
+            "name": "챔버는 옵션인 장비",
+            "workspace_slug": admin.workspace,
+            "model_id": model["id"],
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    copied = client.get(
+        f"/api/equipment-test-items?equipment_id={made.json()['id']}", headers=admin.headers
+    ).json()
+    temperature = next(
+        one for one in copied[0]["limits"] if one["condition_key"] == "temperature"
+    )
+    assert temperature["requires_accessory"] is True
+    assert "옵션 부속 기준" in temperature["note"]
+
+    keys = {
+        row["key"]: row["id"]
+        for row in client.get("/api/condition-keys", headers=admin.headers).json()
+    }
+    found = client.post(
+        "/api/search/test-items",
+        json={
+            "test_item_term_id": item,
+            "conditions": [{"condition_key_id": keys["temperature"], "at": 80}],
+        },
+        headers=admin.headers,
+    ).json()
+    hit = next(one for one in found["hits"] if one["asset_no"] == made.json()["asset_no"])
+    # 범위 안이지만 「됨」 이 아니다 — 부속이 있어야 된다.
+    assert hit["verdict"] == "accessory"
+    assert hit["conditions"][0]["verdict"] == "accessory"
+
+    # 범위 밖이면 부속이 있어도 안 된다.
+    missed = client.post(
+        "/api/search/test-items",
+        json={
+            "test_item_term_id": item,
+            "conditions": [{"condition_key_id": keys["temperature"], "at": 400}],
+        },
+        headers=admin.headers,
+    ).json()
+    assert all(one["asset_no"] != made.json()["asset_no"] for one in missed["hits"])
+
+    # 그 대에 챔버가 실제로 있다면 사람이 표시를 끈다 — 그때부터 「됨」 이다.
+    limit_id = temperature["id"]
+    fixed = client.put(
+        f"/api/equipment-test-items/{copied[0]['id']}/limits",
+        json={
+            "condition_key_id": keys["temperature"],
+            "min_value": -180,
+            "max_value": 320,
+            "requires_accessory": False,
+            "note": "항온조 TCL-N 보유",
+        },
+        headers=admin.headers,
+    )
+    assert fixed.status_code == 200, fixed.text
+    assert fixed.json()["id"] == limit_id
+    again = client.post(
+        "/api/search/test-items",
+        json={
+            "test_item_term_id": item,
+            "conditions": [{"condition_key_id": keys["temperature"], "at": 80}],
+        },
+        headers=admin.headers,
+    ).json()
+    assert (
+        next(one for one in again["hits"] if one["asset_no"] == made.json()["asset_no"])[
+            "verdict"
+        ]
+        == "match"
+    )

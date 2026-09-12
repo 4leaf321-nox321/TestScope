@@ -107,6 +107,7 @@ def _limits(db: Session, equipment_test_item_id: uuid.UUID) -> list[ModelLimitOu
             min_value=limit.min_value,
             max_value=limit.max_value,
             text_value=limit.text_value,
+            requires_accessory=limit.requires_accessory,
             note=limit.note,
         )
         for limit, key in rows
@@ -1284,6 +1285,7 @@ def upsert_limit(
     target.min_value = low
     target.max_value = high
     target.text_value = payload.get("text_value")
+    target.requires_accessory = bool(payload.get("requires_accessory"))
     target.note = payload.get("note")
     if existing is None:
         db.add(target)
@@ -1381,16 +1383,19 @@ def copy_test_items_to(db: Session, equipment: Equipment, actor: User) -> int:
                 "min_value": limit.min_value,
                 "max_value": limit.max_value,
                 "text_value": limit.text_value,
+                "requires_accessory": limit.requires_accessory,
                 "note": limit.note,
             }
-        for key_id, (low, high, label) in derived.items():
+        for key_id, (low, high, label, accessory) in derived.items():
             # 기종 사양이 계열 봉투를 이긴다. 어느 사양에서 왔는지 남긴다 —
-            # 반년 뒤 이 숫자를 물을 사람이 볼 자리가 여기밖에 없다.
+            # 반년 뒤 이 숫자를 물을 사람이 볼 자리가 여기밖에 없다. **부속 표시도
+            # 따라간다** — 이것이 빠지면 챔버 옵션 온도가 이 대의 능력이 된다.
             limits[key_id] = {
                 "min_value": low,
                 "max_value": high,
                 "text_value": None,
-                "note": f"사양 {label}에서 따옴",
+                "requires_accessory": accessory,
+                "note": f"사양 {label}에서 따옴" + (" · 옵션 부속 기준" if accessory else ""),
             }
 
         for key_id, values in limits.items():

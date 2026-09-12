@@ -45,6 +45,9 @@ const ACCOUNT: Record<string, { label: string; tone: Tone }> = {
 /** 검색 결과 한 줄의 판정. **모름을 됨과 섞지 않는 것이 이 화면의 핵심이다.** */
 const VERDICT: Record<string, { label: string; tone: Tone }> = {
   match: { label: '조건 충족', tone: 'good' },
+  // 범위는 맞는데 옵션 부속(챔버·노)이 있어야 나오는 값. **됨과 섞지 않는다** — 갖고
+  // 있지도 않은 챔버를 전제로 답하는 것이 이 시스템이 막으려는 오답이다.
+  accessory: { label: '부속 있으면', tone: 'warn' },
   partial: { label: '일부 미상', tone: 'warn' },
   unknown: { label: '조건 미상', tone: 'neutral' },
 }

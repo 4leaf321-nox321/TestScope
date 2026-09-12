@@ -624,6 +624,13 @@ class ModelSpecValue(Base):
     text_value: Mapped[str | None] = mapped_column(Text, nullable=True)
     bool_value: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
 
+    requires_accessory: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false", nullable=False
+    )
+    """**본체가 아니라 옵션 부속(챔버·노·클램프)이 있어야 나오는 값.** 카탈로그가
+    「-180~320 °C」 를 항온조 옵션 기준으로 적는 일이 흔한데, 그것을 본체 값처럼 두면
+    검색이 갖고 있지도 않은 챔버를 전제로 「80 °C 됨」 이라고 답한다 — ADR 0003 이
+    막으려던 바로 그 오답. 표시는 남기고 판정을 가른다."""
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
     """수치로 못 담는 단서. `1 & 3 Phase 에 따라 다름` · `챔버 장착 시` 같은 것.
 

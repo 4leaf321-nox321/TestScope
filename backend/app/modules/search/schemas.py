@@ -63,10 +63,14 @@ class ConditionMatch(BaseModel):
     condition_label: str
     display_unit: str
     verdict: str
-    """met · unmet · unknown.
+    """met · accessory · unmet · unknown.
 
     unknown 을 met 과 섞지 않는 것이 이 화면의 핵심이다. "그 조건이 안 적혀
     있다" 와 "된다" 는 다르고, 둘을 같게 답하면 사람은 헛걸음을 한다.
+
+    accessory 는 **범위는 맞는데 옵션 부속(챔버·노)이 있어야** 나오는 값이다. 카탈로그가
+    항온조 옵션 기준으로 적은 온도가 그렇다 — 「됨」 으로 답하면 갖고 있지도 않은 챔버를
+    전제로 하는 것이다. 그 대에 챔버가 실제로 있으면 사람이 그 표시를 끈다.
     """
     asked: str
     """사람이 읽을 물음. 80 degC 에서 · 20 kN 이상."""
@@ -92,7 +96,9 @@ class SearchHit(BaseModel):
     note: str | None
 
     verdict: str
-    """match · partial · unknown.
+    """match · accessory · partial · unknown.
+
+    accessory — 조건은 다 맞지만 그중 하나 이상이 옵션 부속 기준이다.
 
       match    물은 조건이 전부 충족된다
       partial  일부는 충족되고 일부는 **모른다**(장비에 그 조건이 안 적혀 있다)

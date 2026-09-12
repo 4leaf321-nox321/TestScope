@@ -68,9 +68,7 @@
    "specs": {
     "temperature_degC": {
      "min": -150.0,
-     "max": 700.0,
-     "requires_accessory": true,
-     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+     "max": 700.0
     }
    },
    "note": "시차주사열량계 — FRS 6+ / HSS 9+ 센서 장착 모델(회전방지 귀 달린 센서)",

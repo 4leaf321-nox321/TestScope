@@ -1270,17 +1270,33 @@ def _put_spec(
     같은 배치의 앞줄이 안 보여서, 유일 제약이 반입 도중에 터진다 — 실제로 그렇게 겪었다.
     """
     if definition.id in taken:
+        # 있는 값은 안 덮는다. 다만 **부속 표시만은 켠다** — 표시가 없던 시절에 들어온
+        # 값에 원본이 「옵션 부속 기준」 이라고 적혀 있으면, 그 값은 지금 검색이 갖고
+        # 있지도 않은 챔버를 전제로 답하는 자리다. 켜는 쪽은 더 조심스러워지는 방향뿐이다.
+        if isinstance(raw, dict) and raw.get("requires_accessory"):
+            held = db.scalar(
+                select(ModelSpecValue).where(
+                    ModelSpecValue.model_id == model.id,
+                    ModelSpecValue.definition_id == definition.id,
+                )
+            )
+            if held is not None and not held.requires_accessory:
+                held.requires_accessory = True
         return False
     fields = _value_fields(definition, raw, factor)
     if fields is None:
         return False
     taken.add(definition.id)
     note = " · ".join(x for x in (fields.pop("note", None), extra_note) if x) or None
+    # **부속 표시를 버리지 않는다.** 온톨로지가 「이 온도는 옵션 챔버 기준」 이라고
+    # 적은 것(`requires_accessory`)이 여기서 빠지면 검색이 그 챔버를 전제로 답한다.
+    accessory = isinstance(raw, dict) and bool(raw.get("requires_accessory"))
     db.add(
         ModelSpecValue(
             model_id=model.id,
             definition_id=definition.id,
             note=note,
+            requires_accessory=accessory,
             source_id=source.id if source else None,
             source_page=page,
             **fields,

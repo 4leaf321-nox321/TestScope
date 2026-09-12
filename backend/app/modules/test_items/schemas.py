@@ -20,6 +20,9 @@ class LimitOut(BaseModel):
     min_value: float | None
     max_value: float | None
     text_value: str | None
+    requires_accessory: bool
+    """옵션 부속(챔버·노)이 있어야 나오는 범위. 검색이 「됨」 대신 「부속 있으면」 으로
+    답한다."""
     note: str | None
 
 
@@ -72,3 +75,4 @@ class LimitUpsertRequest(BaseModel):
     max_value: float | None = None
     text_value: str | None = Field(default=None, max_length=200)
     note: str | None = None
+    requires_accessory: bool = False

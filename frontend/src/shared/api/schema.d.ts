@@ -3298,6 +3298,8 @@ export interface components {
             max_value: number | null;
             /** Text Value */
             text_value: string | null;
+            /** Requires Accessory */
+            requires_accessory: boolean;
             /** Note */
             note: string | null;
         };
@@ -3323,6 +3325,11 @@ export interface components {
             text_value?: string | null;
             /** Note */
             note?: string | null;
+            /**
+             * Requires Accessory
+             * @default false
+             */
+            requires_accessory: boolean;
         };
         /** LoginRequest */
         LoginRequest: {
@@ -3529,6 +3536,8 @@ export interface components {
             max_value: number | null;
             /** Text Value */
             text_value: string | null;
+            /** Requires Accessory */
+            requires_accessory: boolean;
             /** Note */
             note: string | null;
         };
@@ -3551,6 +3560,11 @@ export interface components {
             text_value?: string | null;
             /** Note */
             note?: string | null;
+            /**
+             * Requires Accessory
+             * @default false
+             */
+            requires_accessory: boolean;
         };
         /** ModelSpecGroupOut */
         ModelSpecGroupOut: {
@@ -3648,6 +3662,8 @@ export interface components {
             bool_value: boolean | null;
             /** Note */
             note: string | null;
+            /** Requires Accessory */
+            requires_accessory: boolean;
             /** Source Id */
             source_id: string | null;
             /** Source Path */
@@ -3685,6 +3701,11 @@ export interface components {
             bool_value?: boolean | null;
             /** Note */
             note?: string | null;
+            /**
+             * Requires Accessory
+             * @default false
+             */
+            requires_accessory: boolean;
             /** Source Id */
             source_id?: string | null;
             /** Source Page */

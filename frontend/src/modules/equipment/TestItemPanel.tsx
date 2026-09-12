@@ -120,6 +120,7 @@ function CapabilityCard({
   const [conditionKey, setConditionKey] = useState('')
   const [min, setMin] = useState('')
   const [max, setMax] = useState('')
+  const [accessory, setAccessory] = useState(false)
   const [error, setError] = useState<ApiError | Error | null>(null)
 
   async function addLimit() {
@@ -131,10 +132,12 @@ function CapabilityCard({
         // **빈 칸은 null 로 보낸다.** 0 으로 채우면 "제한 없음" 이 "0 까지" 가 된다.
         min_value: min.trim() === '' ? null : Number(min),
         max_value: max.trim() === '' ? null : Number(max),
+        requires_accessory: accessory,
       })
       setConditionKey('')
       setMin('')
       setMax('')
+      setAccessory(false)
       onChanged()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
@@ -182,6 +185,14 @@ function CapabilityCard({
                   limit.display_unit || limit.si_unit,
                 )}
             </span>
+            {limit.requires_accessory && (
+              <span
+                className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
+                title="옵션 부속(챔버·노)이 있어야 나오는 범위 — 검색이 「됨」 대신 「부속 있으면」 으로 답합니다. 이 대에 실제로 있으면 조건을 다시 저장하며 끄세요."
+              >
+                부속 필요
+              </span>
+            )}
             {test_item.can_edit && (
               <Button
                 variant="ghost"
@@ -227,6 +238,14 @@ function CapabilityCard({
             placeholder="최대 (비우면 제한 없음)"
             className="w-52"
           />
+          <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
+            <input
+              type="checkbox"
+              checked={accessory}
+              onChange={(event) => setAccessory(event.target.checked)}
+            />
+            부속 필요
+          </label>
           <Button variant="outline" onClick={addLimit} disabled={!conditionKey}>
             저장
           </Button>

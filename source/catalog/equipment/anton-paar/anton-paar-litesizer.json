@@ -53,9 +53,7 @@
    "specs": {
     "temperature_degC": {
      "min": 0.0,
-     "max": 90.0,
-     "requires_accessory": true,
-     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+     "max": 90.0
     }
    },
    "note": "입도(DLS)·제타전위(ELS)·분자량(SLS)·투과율·용매 굴절률을 한 장비에서 재는 광산란 입자분석기. 산란각 15°/90°/175° 선택",

@@ -48,6 +48,7 @@ function toBody(definition: SpecDefinition, draft: Record<string, string>) {
     text_value: isText ? (draft.text_value?.trim() ?? '') : null,
     bool_value: definition.kind === 'boolean' ? draft.bool_value === 'yes' : null,
     note: draft.note?.trim() ? draft.note.trim() : null,
+    requires_accessory: draft.requires_accessory === 'yes',
     source_id: draft.source_id ? draft.source_id : null,
     source_page: numberOrNull(draft.source_page),
   }
@@ -254,6 +255,14 @@ export function ModelSpecPanel({
                     </dt>
                     <dd className="flex flex-wrap items-baseline gap-2">
                       <span>{shownSpecValue(item)}</span>
+                      {item.requires_accessory && (
+                        <span
+                          className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
+                          title="옵션 부속(챔버·노)이 있어야 나오는 값 — 이 기종으로 등록한 장비의 조건에 그대로 따라가고, 검색이 「부속 있으면」 으로 답합니다."
+                        >
+                          부속 필요
+                        </span>
+                      )}
                       {item.note && (
                         <span className="text-muted-foreground text-xs">{item.note}</span>
                       )}
@@ -323,6 +332,21 @@ export function ModelSpecPanel({
                   placeholder="비고 — 「챔버 장착 시」 처럼 값이 언제 성립하는지"
                   className="w-96"
                 />
+                {/* 비고에 「챔버 장착 시」 라고 적어도 검색은 글자를 못 읽는다 — 표시로 둬야
+                    판정이 갈린다. */}
+                <label className="text-muted-foreground flex items-center gap-1.5 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={draft.requires_accessory === 'yes'}
+                    onChange={(event) =>
+                      setDraft({
+                        ...draft,
+                        requires_accessory: event.target.checked ? 'yes' : '',
+                      })
+                    }
+                  />
+                  옵션 부속이 있어야 나오는 값
+                </label>
                 {/* **어디서 나온 값이냐에 답하는 자리.** 반년 뒤 물을 사람은 반드시 있다. */}
                 <Select
                   value={draft.source_id ?? ''}

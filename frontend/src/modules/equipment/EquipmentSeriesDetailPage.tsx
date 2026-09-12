@@ -431,6 +431,14 @@ function SeriesTestItems({
                           limit.display_unit || limit.si_unit,
                         )}
                     </span>
+                    {limit.requires_accessory && (
+                      <span
+                        className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
+                        title="옵션 부속(챔버·노)이 있어야 나오는 범위"
+                      >
+                        부속 필요
+                      </span>
+                    )}
                     {series.can_edit && (
                       <Button
                         variant="ghost"

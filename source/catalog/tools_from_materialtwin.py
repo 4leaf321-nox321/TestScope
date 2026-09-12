@@ -288,6 +288,19 @@ def build_properties(twin: Twin) -> dict[str, Any]:
     }
 
 
+_TEMPERATURE_WORDS = ("온도", "항온", "챔버", "가열", "냉각", "°C", "스테이지", "노(", " 노 ", "히터")
+
+
+def _temperature_is_optional(notes: str | None) -> bool:
+    """주석의 **같은 문장** 안에 「옵션」 과 온도 말이 함께 있나. 문장 단위로 보는 이유:
+    Litesizer 주석은 pH 적정 옵션을, FluoroMax 는 검출기 옵션을 말하는데 온도 범위는 본체
+    것이다 — 주석 전체에서 「옵션」 만 찾으면 그 둘이 옵션 챔버로 읽힌다."""
+    for sentence in re.split(r"[.。!?]\s|\s—\s|\n", notes or ""):
+        if "옵션" in sentence and any(word in sentence for word in _TEMPERATURE_WORDS):
+            return True
+    return False
+
+
 def model_specs(inst: dict[str, Any], caps: list[dict[str, Any]]) -> dict[str, Any]:
     """기종 사양 — 설명·주석의 수치와 능력행의 온도."""
     specs: dict[str, Any] = {}
@@ -311,7 +324,8 @@ def model_specs(inst: dict[str, Any], caps: list[dict[str, Any]]) -> dict[str, A
             rng["note"] = "능력행마다 온도 범위가 달라 가장 넓은 것을 적었다"
         # MaterialTwin 주석이 「옵션 항온조 기준」 이라고 말하면 본체 값이 아니다. 빠뜨리면
         # 「80 °C 인장」 에 갖고 있지도 않은 챔버를 전제로 답한다(12차 감사의 그 함정).
-        if any("옵션" in (c.get("notes") or "") for c in caps):
+        # **「옵션」 이 온도 얘기일 때만** — 검출기 옵션·적정 옵션이 같은 주석에 흔하다.
+        if any(_temperature_is_optional(c.get("notes")) for c in caps):
             rng["requires_accessory"] = True
             rng["note"] = " · ".join(
                 x for x in (rng.get("note"), "옵션 항온조·노 기준 (MaterialTwin 주석)") if x

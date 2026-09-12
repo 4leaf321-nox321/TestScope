@@ -44,6 +44,7 @@ def _limits(db: Session, equipment_test_item_id: uuid.UUID) -> list[LimitOut]:
             min_value=limit.min_value,
             max_value=limit.max_value,
             text_value=limit.text_value,
+            requires_accessory=limit.requires_accessory,
             note=limit.note,
         )
         for limit, key in rows
@@ -203,6 +204,7 @@ def upsert_limit(
     target.min_value = low
     target.max_value = high
     target.text_value = payload.get("text_value")
+    target.requires_accessory = bool(payload.get("requires_accessory"))
     target.note = payload.get("note")
     if existing is None:
         db.add(target)

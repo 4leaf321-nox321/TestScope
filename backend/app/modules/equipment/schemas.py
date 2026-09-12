@@ -437,6 +437,9 @@ class ModelLimitOut(BaseModel):
     min_value: float | None
     max_value: float | None
     text_value: str | None
+    requires_accessory: bool
+    """옵션 부속(챔버·노)이 있어야 나오는 범위. 검색이 「됨」 대신 「부속 있으면」 으로
+    답한다."""
     note: str | None
 
 
@@ -812,6 +815,7 @@ class ModelLimitUpsertRequest(BaseModel):
     max_value: float | None = None
     text_value: str | None = Field(default=None, max_length=200)
     note: str | None = None
+    requires_accessory: bool = False
 
 
 # --- 모델 사양 ---------------------------------------------------------------
@@ -849,6 +853,7 @@ class ModelSpecValueOut(BaseModel):
     text_value: str | None
     bool_value: bool | None
     note: str | None
+    requires_accessory: bool
     source_id: uuid.UUID | None
     source_path: str | None
     source_page: int | None
@@ -888,6 +893,8 @@ class ModelSpecValueUpsertRequest(BaseModel):
     text_value: str | None = None
     bool_value: bool | None = None
     note: str | None = None
+    requires_accessory: bool = False
+    """본체가 아니라 옵션 부속(챔버·노)이 있어야 나오는 값이면 켠다."""
     """수치로 못 담는 단서. "챔버 장착 시" · "1상/3상에 따라 다름"."""
     source_id: uuid.UUID | None = None
     source_page: int | None = Field(default=None, ge=1)

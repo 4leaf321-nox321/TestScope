@@ -246,9 +246,10 @@ async def search_test_items(
 
     ## 판정을 셋으로 읽어라
 
-        met      된다
-        unmet    안 된다
-        unknown  **모른다** — 그 장비에 그 조건이 안 적혀 있다
+        met        된다
+        accessory  범위는 맞는데 **옵션 부속(챔버·노)이 있어야** 된다 — 「됨」 으로 옮기지 마라
+        unmet      안 된다
+        unknown    **모른다** — 그 장비에 그 조건이 안 적혀 있다
 
     **unknown 을 met 으로 옮기지 마라.** 「가능합니다」 로 옮기면 그 답을 믿고 일정을
     짠 사람이 막힌다. 「그 장비에 그 조건이 적혀 있지 않다」 고 그대로 말하라.
@@ -573,6 +574,7 @@ async def set_spec(
     text_value: str | None = None,
     bool_value: bool | None = None,
     note: str | None = None,
+    requires_accessory: bool = False,
     source_id: str | None = None,
     source_page: int | None = None,
 ) -> dict[str, Any]:
@@ -588,6 +590,10 @@ async def set_spec(
 
     **비고를 아끼지 마라.** 「챔버 장착 시」 처럼 값이 언제 성립하는지가 비고에만
     남는다. 카탈로그가 조건을 달아 적은 것을 버리면 값만 남고 뜻이 사라진다.
+
+    **옵션 부속 기준이면 `requires_accessory=True`.** 카탈로그가 「-180~320 °C」 를 항온조
+    옵션으로 적으면 그것은 본체 값이 아니다. 비고에만 적으면 검색은 글자를 못 읽고 「됨」
+    이라고 답한다 — 표시로 둬야 검색이 「부속 있으면」 으로 가른다.
 
     응답의 `search_axis` 가 채워져 있으면 이 값은 앞으로 이 기종으로 등록하는 장비의
     시험 조건이 된다. `existing_units` 는 **이미 등록된 대수**이고 그들에게는
@@ -605,6 +611,7 @@ async def set_spec(
             "text_value": text_value,
             "bool_value": bool_value,
             "note": note,
+            "requires_accessory": requires_accessory,
             "source_id": source_id,
             "source_page": source_page,
         },
@@ -927,6 +934,7 @@ async def set_test_condition(
     max_value: float | None = None,
     text_value: str | None = None,
     note: str | None = None,
+    requires_accessory: bool = False,
 ) -> dict[str, Any]:
     """그 시험 항목이 **어디까지 되나**를 적는다. 조건 한 칸은 덮어쓰기다.
 
@@ -949,6 +957,11 @@ async def set_test_condition(
 
     안 적힌 조건은 검색이 `unknown` 으로 답한다 — 그것이 맞는 답이다. 지어낸 숫자는
     「가능합니다」 가 되어, 그 답을 믿고 일정을 짠 사람이 막힌다.
+
+    ## 부속이 있어야 나오는 범위면 `requires_accessory=True`
+
+    챔버·노 옵션 기준 온도가 그렇다. 검색이 「됨」 대신 「부속 있으면」(`accessory`)으로
+    답한다. 그 대에 부속이 실제로 있으면 False 로 다시 저장한다.
     """
     return await _send(
         ctx,
@@ -960,6 +973,7 @@ async def set_test_condition(
             "max_value": max_value,
             "text_value": text_value,
             "note": note,
+            "requires_accessory": requires_accessory,
         },
     )
 

@@ -419,6 +419,11 @@ function SearchResult({ result }: { result: SearchResponse }) {
                         ? `장비 ${one.condition_range}`
                         : '장비에 이 조건이 안 적혀 있습니다'}
                     </span>
+                    {one.verdict === 'accessory' && (
+                      <span className="text-amber-700">
+                        옵션 부속(챔버·노)이 있어야 되는 범위
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

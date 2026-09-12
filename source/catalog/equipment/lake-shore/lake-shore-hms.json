@@ -137,9 +137,7 @@
    "specs": {
     "temperature_degC": {
      "min": -258.15,
-     "max": 526.85,
-     "requires_accessory": true,
-     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+     "max": 526.85
     }
    },
    "note": "7인치 전자석(실온 2 T) 기반 홀효과 측정시스템. 최대 76 mm 직경 시료",
@@ -390,9 +388,7 @@
    "specs": {
     "temperature_degC": {
      "min": -271.15,
-     "max": 126.85,
-     "requires_accessory": true,
-     "note": "옵션 항온조·노 기준 (MaterialTwin 주석)"
+     "max": 126.85
     }
    },
    "note": "9 T 초전도 자석 기반 홀효과 측정시스템. 2~400 K 표준 가변온도, 저이동도 시료용",

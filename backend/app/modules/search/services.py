@@ -72,13 +72,23 @@ def _range_text(limit: EquipmentTestCondition | None, key: ConditionKey) -> str 
 
 
 def _verdict(query: ConditionQuery, limit: EquipmentTestCondition | None) -> str:
-    """조건 하나의 판정. met · unmet · unknown.
+    """조건 하나의 판정. met · accessory · unmet · unknown.
 
     **비어 있는 한쪽은 "제한 없음" 이다.** 0 으로 취급하면 상한을 안 적은 장비가
     전부 탈락한다 — 실제로 사람들은 아는 쪽만 적는다.
+
+    범위는 맞는데 그 범위가 **옵션 부속 기준**이면 「됨」 이 아니라 `accessory` 다.
+    부속을 사거나 빌려야 되는 것이고, 그 사실을 사람이 알아야 한다.
     """
     if limit is None:
         return "unknown"
+    verdict = _range_verdict(query, limit)
+    if verdict == "met" and limit.requires_accessory:
+        return "accessory"
+    return verdict
+
+
+def _range_verdict(query: ConditionQuery, limit: EquipmentTestCondition) -> str:
 
     if query.text is not None:
         if limit.text_value is None:
@@ -181,11 +191,14 @@ def _hit_verdict(matches: list[ConditionMatch]) -> str | None:
         return "unknown"
     if any(one.verdict == "unknown" for one in matches):
         return "partial"
+    if any(one.verdict == "accessory" for one in matches):
+        return "accessory"
     return "match"
 
 
-#: 결과 정렬 우선순위. **확실한 것이 위로 온다.**
-_VERDICT_RANK = {"match": 0, "partial": 1, "unknown": 2}
+#: 결과 정렬 우선순위. **확실한 것이 위로 온다.** 부속이 있어야 되는 것은 확실히 되는 것
+#: 다음이고, 모르는 것보다는 앞이다 — 사면 되는 것과 모르는 것은 다르다.
+_VERDICT_RANK = {"match": 0, "accessory": 1, "partial": 2, "unknown": 3}
 _CONFIDENCE_RANK = {"verified": 0, "catalog": 1, "limited": 2}
 
 

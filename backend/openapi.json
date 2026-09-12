@@ -10360,6 +10360,10 @@
             ],
             "title": "Text Value"
           },
+          "requires_accessory": {
+            "type": "boolean",
+            "title": "Requires Accessory"
+          },
           "note": {
             "anyOf": [
               {
@@ -10383,6 +10387,7 @@
           "min_value",
           "max_value",
           "text_value",
+          "requires_accessory",
           "note"
         ],
         "title": "LimitOut"
@@ -10438,6 +10443,11 @@
               }
             ],
             "title": "Note"
+          },
+          "requires_accessory": {
+            "type": "boolean",
+            "title": "Requires Accessory",
+            "default": false
           }
         },
         "type": "object",
@@ -11073,6 +11083,10 @@
             ],
             "title": "Text Value"
           },
+          "requires_accessory": {
+            "type": "boolean",
+            "title": "Requires Accessory"
+          },
           "note": {
             "anyOf": [
               {
@@ -11096,6 +11110,7 @@
           "min_value",
           "max_value",
           "text_value",
+          "requires_accessory",
           "note"
         ],
         "title": "ModelLimitOut",
@@ -11152,6 +11167,11 @@
               }
             ],
             "title": "Note"
+          },
+          "requires_accessory": {
+            "type": "boolean",
+            "title": "Requires Accessory",
+            "default": false
           }
         },
         "type": "object",
@@ -11387,6 +11407,10 @@
             ],
             "title": "Note"
           },
+          "requires_accessory": {
+            "type": "boolean",
+            "title": "Requires Accessory"
+          },
           "source_id": {
             "anyOf": [
               {
@@ -11447,6 +11471,7 @@
           "text_value",
           "bool_value",
           "note",
+          "requires_accessory",
           "source_id",
           "source_path",
           "source_page",
@@ -11527,6 +11552,11 @@
               }
             ],
             "title": "Note"
+          },
+          "requires_accessory": {
+            "type": "boolean",
+            "title": "Requires Accessory",
+            "default": false
           },
           "source_id": {
             "anyOf": [
