@@ -12,7 +12,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, ForeignKey, String, Text, func
+from sqlalchemy import DateTime, ForeignKey, Index, String, Text, func, text
 from sqlalchemy.dialects.postgresql import UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -21,6 +21,15 @@ from app.database import Base
 
 class Notification(Base):
     __tablename__ = "notifications"
+    __table_args__ = (
+        Index(
+            "uq_notifications_user_dedupe",
+            "user_id",
+            "dedupe_key",
+            unique=True,
+            postgresql_where=text("dedupe_key IS NOT NULL"),
+        ),
+    )
 
     id: Mapped[uuid.UUID] = mapped_column(
         PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
@@ -36,6 +45,12 @@ class Notification(Base):
     link: Mapped[str | None] = mapped_column(String(300), nullable=True)
     """눌렀을 때 갈 곳. **없으면 알림은 읽고 끝나는 글이 된다** — 사람은 그것을
     보고 나서 무엇을 해야 할지 스스로 찾아야 한다."""
+
+    dedupe_key: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    """같은 일로 두 번 안 울리게 하는 키. 사람마다 유일하다(부분 유일 색인).
+
+    교정 만료처럼 **훑기가 만드는** 알림은 훑을 때마다 다시 만나므로 이것이 없으면
+    매번 하나씩 쌓인다 — 그리고 쌓이는 알림은 곧 아무도 안 읽는다."""
 
     read_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True, index=True

@@ -15,6 +15,7 @@ from sqlalchemy.orm import Session
 from app.modules.accounts.models import USER_STATUSES, User
 from app.modules.accounts.schemas import AccountOut
 from app.modules.auth import security
+from app.modules.notifications import rules
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 from app.shared import audit
 from app.shared.errors import AppError, Conflict, NotFound
@@ -119,6 +120,9 @@ def signup(
         requested_workspace_id=workspace.id,
     )
     db.add(user)
+    db.flush()
+    # 승인할 사람에게 알린다 — 홈의 「남은 일」 은 들어가야 보인다.
+    rules.signup_requested(db, user)
     db.commit()
     db.refresh(user)
     return user
@@ -218,6 +222,8 @@ def approve(
         workspace_id=workspace.id,
         changes={"status": {"before": "pending", "after": "active"}},
     )
+    # 로그인해서 처음 보는 것이 「승인됐다」 여야 한다.
+    rules.account_approved(db, user, workspace)
     db.commit()
     db.refresh(user)
     return user

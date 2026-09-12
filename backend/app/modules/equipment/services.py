@@ -31,6 +31,7 @@ from app.modules.equipment.schemas import (
     EquipmentOut,
     FilterOption,
 )
+from app.modules.notifications import rules
 from app.modules.test_items.models import EquipmentTestItem
 from app.modules.vocabulary.models import VocabularyTerm
 from app.modules.workspaces.models import Workspace
@@ -633,6 +634,10 @@ def update(
                     workspace_id=row.owner_workspace_id,
                     changes={"status": {"before": row.status, "after": status}},
                 )
+            # 부서 관리자에게 알린다 — 폐기·고장은 그 부서가 알아야 할 일이다.
+            rules.equipment_status_changed(
+                db, row, before=row.status, after=status, actor=user
+            )
             row.status = status
 
     if "model_id" in changes:
