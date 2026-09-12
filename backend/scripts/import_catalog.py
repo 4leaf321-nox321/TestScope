@@ -28,6 +28,7 @@ import json
 import re
 import sys
 import uuid
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -438,14 +439,13 @@ def _link_targets(
     return [(str(target), None)]
 
 
-def step_property_links(
-    db: Session,
-    cat: Catalog,
-    items: dict[str, VocabularyTerm],
-    properties: dict[str, VocabularyTerm],
-    actor: User | None,
-) -> tuple[int, list[str]]:
-    """6. 물성 ↔ 시험 항목. **제안으로 넣는다** — 사람이 화면에서 확인한다.
+def proposed_links(
+    cat: Catalog, *, known_items: set[str], known_keys: set[str]
+) -> tuple[dict[tuple[str, str], tuple[str, str | None]], collections.Counter[str]]:
+    """반입이 제안할 (시험 항목 id, 물성 키) -> (출처, 단서).
+
+    **되돌리기 스크립트도 이것을 쓴다** — 두 곳이 제각기 세면 「지운 것」 이 어느 쪽
+    기준인지 알 수 없다.
 
     세 곳에서 온다.
 
@@ -458,18 +458,19 @@ def step_property_links(
     만능시험기의 「인장강도·압축강도·굽힘강도」 를 인장·압축·굽힘 셋에 다 걸면 「굽힘으로
     인장강도」 가 된다. 그래서 시험이 하나인 객체에서만 쓴다.
 
-    이미 있는 연결은 안 건드린다 — 사람이 확인하거나 지운 것을 반입이 되살리면 안 된다.
+    `rejected` 에 적힌 짝은 뺀다 — 사람이 화면에서 지운 것이고, 되돌리기가 정본에 적었다.
     """
-    if not properties:
-        return 0, []
     links = cat.property_links
     wanted: dict[tuple[str, str], tuple[str, str | None]] = {}
     unmapped: collections.Counter[str] = collections.Counter()
+    rejected = set(links.get("rejected") or [])
 
     def want(item_id: str, key: str, source: str, note: str | None) -> None:
-        if item_id not in items or key not in properties:
-            if key != "?" and key not in properties:
+        if item_id not in known_items or key not in known_keys:
+            if key != "?" and key not in known_keys:
                 unmapped[f"물성 키 없음 {key}"] += 1
+            return
+        if f"{item_id}:{key}" in rejected:
             return
         have = wanted.get((item_id, key))
         # 단서가 있는 쪽이 이긴다 — 「영률: 신율계 필요」 를 이름만 있는 줄이 덮으면
@@ -500,31 +501,63 @@ def step_property_links(
         if len(obj.get("test_items") or []) == 1:
             for measurand in obj.get("measurands") or []:
                 from_measurand(obj["test_items"][0], str(measurand), "ontology")
+    return wanted, unmapped
+
+
+def step_property_links(
+    db: Session,
+    cat: Catalog,
+    items: dict[str, VocabularyTerm],
+    properties: dict[str, VocabularyTerm],
+    actor: User | None,
+) -> tuple[int, int, list[str]]:
+    """6. 물성 ↔ 시험 항목. **제안으로 넣는다** — 사람이 화면에서 확인한다.
+
+    확인은 데이터라 운영으로 안 간다. 그래서 정본(`property_links.json`)에 `confirmed`
+    목록을 둔다 — 되돌리기 스크립트(`export_property_links.py`)가 개발에서 확인한 것을 거기
+    적고, 반입은 그 짝을 **확인된 채로** 넣거나 이미 있는 제안을 확인으로 올린다.
+    사람이 확인한 것을 다른 서버에서 또 확인하게 하지 않는다.
+
+    있는 연결의 단서·출처는 안 건드린다 — 화면에서 고친 것이 더 낫다.
+    """
+    if not properties:
+        return 0, 0, []
+    wanted, unmapped = proposed_links(cat, known_items=set(items), known_keys=set(properties))
+    confirmed = set(cat.property_links.get("confirmed") or [])
 
     existing = {
-        (row.test_item_term_id, row.property_term_id)
+        (row.test_item_term_id, row.property_term_id): row
         for row in db.scalars(select(TestItemProperty))
     }
-    made = 0
+    made = promoted = 0
+    now = datetime.now(UTC)
     for (item_id, key), (source, note) in sorted(wanted.items()):
         pair = (items[item_id].id, properties[key].id)
-        if pair in existing:
+        is_confirmed = f"{item_id}:{key}" in confirmed
+        found = existing.get(pair)
+        if found is not None:
+            if is_confirmed and found.status != "confirmed":
+                found.status = "confirmed"
+                found.confirmed_at = now
+                found.confirmed_by_id = actor.id if actor else None
+                promoted += 1
             continue
         db.add(
             TestItemProperty(
                 test_item_term_id=pair[0],
                 property_term_id=pair[1],
-                status="suggested",
+                status="confirmed" if is_confirmed else "suggested",
                 source=source,
                 note=note,
                 created_by_id=actor.id if actor else None,
+                confirmed_by_id=actor.id if (actor and is_confirmed) else None,
+                confirmed_at=now if is_confirmed else None,
             )
         )
-        existing.add(pair)
         made += 1
     db.flush()
     report = [f"{count:3d} {name}" for name, count in unmapped.most_common()]
-    return made, report
+    return made, promoted, report
 
 
 def _ontology(cat: Catalog) -> dict[str, Any]:
@@ -1703,7 +1736,7 @@ def main() -> int:
         )
         models, values, flagged, kept = step_models(db, cat, series, form_factors, actor)
         relations = step_relations(db, cat, series)
-        links, unmapped = step_property_links(db, cat, items, properties, actor)
+        links, promoted, unmapped = step_property_links(db, cat, items, properties, actor)
 
         if args.dry_run:
             db.rollback()
@@ -1715,7 +1748,7 @@ def main() -> int:
         print(f"  제조사 {len(makers)} · 분류 {len(categories)} · 시험 항목 {len(items)}")
         print(
             f"  물성 {len(properties)} (별칭 새로 {aliases})"
-            f" · 물성↔시험 항목 연결 새로 {links}"
+            f" · 물성↔시험 항목 연결 새로 {links} · 확인으로 올림 {promoted}"
         )
         print(f"  시험법 {len(methods)}")
         print(f"  사양 정의 새로 {definitions}")

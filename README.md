@@ -231,6 +231,18 @@ cd backend
 「제안」 으로 들어오고, 「물성 항목」 화면에서 시스템 관리자가 확인합니다. 물성 키로 못 이은
 measurand 가 있으면 끝에 보고합니다 — `property_links.json` 에 적어야 사라집니다.
 
+화면에서 확인·지움·손으로 이은 것은 DB 행이라 다른 서버로 안 갑니다. **정본으로 되돌려
+씁니다**:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\export_property_links.py --check   # 무엇이 바뀌나
+.\.venv\Scripts\python.exe scripts\export_property_links.py
+```
+
+`property_links.json` 의 `confirmed`(확인한 짝) · `rejected`(지운 짝) · `extras`(손으로 이은 짝)에
+적히고, 그 파일을 커밋하면 패키지에 실려 운영 반입이 **확인된 채로** 넣습니다 — 같은 사람이
+같은 것을 두 번 확인하지 않습니다.
+
 #### MaterialTwin 계측기 들이기
 
 `66_MatNexus/materialtwin-20260905/materialtwin.db`(계측기 218종·능력행 532건·물성 271종)를
