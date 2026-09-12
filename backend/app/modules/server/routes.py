@@ -26,8 +26,10 @@ from app.modules.equipment.models import (
     ModelSpecValue,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.server import catalog_state
 from app.modules.server.schemas import (
     CalibrationDueOut,
+    CatalogStateOut,
     DiskOut,
     MaintenanceItemOut,
     ServerStatusOut,
@@ -59,6 +61,24 @@ def _safe_url(url: str) -> str:
         scheme_user = head.rsplit(":", 1)[0]
         return f"{scheme_user}:***@{tail}"
     return f"{head}@{tail}"
+
+
+def _catalog(db: Session) -> CatalogStateOut:
+    """정본의 지문과 마지막 반입을 견준다."""
+    source = catalog_state.fingerprint()
+    imported = catalog_state.last_import(db)
+    return CatalogStateOut(
+        available=source is not None,
+        digest=source.digest if source else None,
+        objects=source.objects if source else None,
+        imported_at=imported.imported_at if imported else None,
+        imported_digest=imported.digest if imported else None,
+        imported_objects=imported.objects if imported else None,
+        never=source is not None and imported is None,
+        behind=(
+            source is not None and imported is not None and imported.digest != source.digest
+        ),
+    )
 
 
 def _count(db: Session, model: type[Any], *conditions: ColumnElement[bool]) -> int:
@@ -110,6 +130,7 @@ def status(
             TableCountOut(label="계정", count=_count(db, User, User.deleted_at.is_(None))),
         ],
         started_at=STARTED_AT,
+        catalog=_catalog(db),
     )
 
 
@@ -319,6 +340,25 @@ def maintenance(
         )
 
     if user.is_system_admin:
+        # **카탈로그가 정본보다 뒤졌다.** 배포는 파일을 새로 놓지만 반입은 사람이 돌린다 —
+        # 안 돌린 사실을 여기 세워 두지 않으면 「카탈로그에 없던데」 가 반입을 안 한
+        # 것인지 정본에도 없는 것인지 아무도 구별 못 한다. 돌리는 사람이 관리자라 관리자에게만.
+        state = _catalog(db)
+        if state.never or state.behind:
+            items.append(
+                MaintenanceItemOut(
+                    key="catalog_behind",
+                    label=(
+                        "카탈로그가 아직 반입되지 않음"
+                        if state.never
+                        else "카탈로그 반입이 정본보다 뒤짐"
+                    ),
+                    count=1,
+                    link="/server",
+                    severity="warning",
+                )
+            )
+
         pending = _count(db, User, User.status == "pending", User.deleted_at.is_(None))
         if pending:
             items.append(

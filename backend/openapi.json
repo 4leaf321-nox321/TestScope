@@ -7557,6 +7557,91 @@
         "title": "CatalogSearchResponse",
         "description": "「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」 의 답.\n\n장비 검색이 **우리가 가진 것**을 답한다면 이것은 **세상에 있는 것**을 답한다. 둘을 한\n화면에 두는 이유: 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다."
       },
+      "CatalogStateOut": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "title": "Available"
+          },
+          "digest": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Digest"
+          },
+          "objects": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Objects"
+          },
+          "imported_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Imported At"
+          },
+          "imported_digest": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Imported Digest"
+          },
+          "imported_objects": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Imported Objects"
+          },
+          "never": {
+            "type": "boolean",
+            "title": "Never"
+          },
+          "behind": {
+            "type": "boolean",
+            "title": "Behind"
+          }
+        },
+        "type": "object",
+        "required": [
+          "available",
+          "digest",
+          "objects",
+          "imported_at",
+          "imported_digest",
+          "imported_objects",
+          "never",
+          "behind"
+        ],
+        "title": "CatalogStateOut",
+        "description": "카탈로그 신선도 — 정본(파일)과 DB 에 반입된 시점이 같은가.\n\n**뒤졌으면 여기서 말한다.** 배포는 `source/catalog` 를 새로 놓지만 반입은 사람이\n돌리는 것이라, 안 돌리면 화면은 지난 카탈로그를 새 것처럼 보여 준다."
+      },
       "ChangePasswordRequest": {
         "properties": {
           "current_password": {
@@ -14487,6 +14572,9 @@
             "type": "string",
             "format": "date-time",
             "title": "Started At"
+          },
+          "catalog": {
+            "$ref": "#/components/schemas/CatalogStateOut"
           }
         },
         "type": "object",
@@ -14499,7 +14587,8 @@
           "schema_behind",
           "disk",
           "counts",
-          "started_at"
+          "started_at",
+          "catalog"
         ],
         "title": "ServerStatusOut"
       },

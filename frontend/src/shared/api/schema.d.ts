@@ -2465,6 +2465,31 @@ export interface components {
              */
             expanded_test_items: string[];
         };
+        /**
+         * CatalogStateOut
+         * @description 카탈로그 신선도 — 정본(파일)과 DB 에 반입된 시점이 같은가.
+         *
+         *     **뒤졌으면 여기서 말한다.** 배포는 `source/catalog` 를 새로 놓지만 반입은 사람이
+         *     돌리는 것이라, 안 돌리면 화면은 지난 카탈로그를 새 것처럼 보여 준다.
+         */
+        CatalogStateOut: {
+            /** Available */
+            available: boolean;
+            /** Digest */
+            digest: string | null;
+            /** Objects */
+            objects: number | null;
+            /** Imported At */
+            imported_at: string | null;
+            /** Imported Digest */
+            imported_digest: string | null;
+            /** Imported Objects */
+            imported_objects: number | null;
+            /** Never */
+            never: boolean;
+            /** Behind */
+            behind: boolean;
+        };
         /** ChangePasswordRequest */
         ChangePasswordRequest: {
             /** Current Password */
@@ -4839,6 +4864,7 @@ export interface components {
              * Format: date-time
              */
             started_at: string;
+            catalog: components["schemas"]["CatalogStateOut"];
         };
         /** SignupRequest */
         SignupRequest: {

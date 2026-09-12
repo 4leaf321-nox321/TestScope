@@ -25,6 +25,18 @@ interface ServerStatus {
   disk: { path: string; total_bytes: number; free_bytes: number; used_percent: number } | null
   counts: { label: string; count: number }[]
   started_at: string
+  /** 카탈로그 정본(파일)과 DB 에 반입된 시점이 같은가. 배포는 파일을 새로 놓지만 반입은
+   *  사람이 돌린다 — 안 돌린 사실을 여기서 말하지 않으면 어디서도 안 보인다. */
+  catalog: {
+    available: boolean
+    digest: string | null
+    objects: number | null
+    imported_at: string | null
+    imported_digest: string | null
+    imported_objects: number | null
+    never: boolean
+    behind: boolean
+  }
 }
 
 function gib(bytes: number): string {
@@ -53,6 +65,18 @@ export default function ServerPage() {
         </div>
       )}
 
+      {/* 카탈로그도 같은 자리에서 말한다 — 반입을 안 돌린 설치는 지난 카탈로그를
+          새 것처럼 보여 주고, 그 차이는 「이 기종 카탈로그에 없던데」 로만 드러난다. */}
+      {one.catalog.available && (one.catalog.never || one.catalog.behind) && (
+        <div className="border-destructive/40 bg-destructive/5 text-destructive rounded-md border p-3 text-sm">
+          {one.catalog.never
+            ? '카탈로그가 아직 반입되지 않았습니다.'
+            : `카탈로그 반입이 정본보다 뒤져 있습니다 (반입 ${shownDateTime(one.catalog.imported_at)} · 객체 ${one.catalog.imported_objects ?? '?'} → 정본 ${one.catalog.objects}).`}{' '}
+          서버에서 <span className="font-mono">python scripts\import_catalog.py</span> 를
+          돌리세요.
+        </div>
+      )}
+
       <dl className="grid gap-4 rounded-md border p-4 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <dt className="text-muted-foreground text-xs">버전</dt>
@@ -73,6 +97,19 @@ export default function ServerPage() {
         <div>
           <dt className="text-muted-foreground text-xs">기동 시각</dt>
           <dd className="text-sm">{shownDateTime(one.started_at)}</dd>
+        </div>
+        <div className="sm:col-span-2">
+          <dt className="text-muted-foreground text-xs">카탈로그</dt>
+          <dd className="text-sm">
+            {!one.catalog.available
+              ? '정본 파일 없음 — 이 설치에서는 반입할 수 없습니다'
+              : one.catalog.never
+                ? `아직 반입 안 함 (정본 객체 ${one.catalog.objects})`
+                : `${shownDateTime(one.catalog.imported_at)} 반입 · 객체 ${one.catalog.imported_objects ?? '?'}` +
+                  (one.catalog.behind
+                    ? ` · 정본은 ${one.catalog.objects} (뒤짐)`
+                    : ' · 정본과 같음')}
+          </dd>
         </div>
         {one.disk && (
           <div className="sm:col-span-2">

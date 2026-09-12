@@ -52,6 +52,7 @@ from app.modules.equipment.models import (
 )
 from app.modules.methods.models import TestMethod
 from app.modules.properties.models import TestItemProperty
+from app.modules.server import catalog_state
 from app.modules.test_items.models import (
     SeriesPendingMethod,
     SeriesTestItem,
@@ -84,6 +85,7 @@ from app.modules.vocabulary.specs import (
     SpecDefinitionCategory,
     SpecGroup,
 )
+from app.shared.audit import record
 from app.shared.text import clean, compare_key, method_key
 
 survive_cp949()
@@ -1962,6 +1964,26 @@ def main() -> int:
             db.rollback()
             print("(dry-run — 되돌렸습니다)")
         else:
+            # **반입했다는 사실을 남긴다.** 서버 화면이 정본의 지문과 이것을 견줘
+            # 「반입이 정본보다 뒤짐」 을 말한다 — 안 남기면 반입을 안 돌린 설치와
+            # 돌린 설치가 화면에서 구별되지 않는다.
+            source = catalog_state.fingerprint(args.root)
+            record(
+                db,
+                action=catalog_state.IMPORTED_ACTION,
+                actor=actor,
+                target_table="catalog",
+                target_id=None,
+                target_label=f"카탈로그 {len(cat.objects)} 객체",
+                changes={
+                    "digest": source.digest if source else None,
+                    "objects": len(cat.objects),
+                    "series": len(series),
+                    "models_added": models,
+                    "values_added": values,
+                },
+                reason="scripts/import_catalog.py",
+            )
             db.commit()
 
         print(f"객체 {len(cat.objects)}건에서:")

@@ -19,6 +19,27 @@ class TableCountOut(BaseModel):
     count: int
 
 
+class CatalogStateOut(BaseModel):
+    """카탈로그 신선도 — 정본(파일)과 DB 에 반입된 시점이 같은가.
+
+    **뒤졌으면 여기서 말한다.** 배포는 `source/catalog` 를 새로 놓지만 반입은 사람이
+    돌리는 것이라, 안 돌리면 화면은 지난 카탈로그를 새 것처럼 보여 준다.
+    """
+
+    available: bool
+    """이 설치에 정본 파일이 있나. 없으면 반입 자체가 불가능한 설치다."""
+    digest: str | None
+    objects: int | None
+    """정본의 객체(계열 JSON) 수."""
+    imported_at: datetime | None
+    imported_digest: str | None
+    imported_objects: int | None
+    never: bool
+    """한 번도 반입하지 않았다."""
+    behind: bool
+    """정본과 반입 시점의 지문이 다르다. 며칠 뒤졌는지는 모른다 — 정본에 날짜가 없다."""
+
+
 class ServerStatusOut(BaseModel):
     version: str
     app_env: str
@@ -33,6 +54,7 @@ class ServerStatusOut(BaseModel):
     disk: DiskOut | None
     counts: list[TableCountOut]
     started_at: datetime
+    catalog: CatalogStateOut
 
 
 class MaintenanceItemOut(BaseModel):
