@@ -1491,7 +1491,7 @@
           "review"
         ],
         "summary": "List Proposals",
-        "description": "한 물음의 줄들 — 대상 · 후보(추천과 근거) · 상세 링크.",
+        "description": "한 물음의 줄들 — 대상 · 후보(추천과 근거) · 모인 의견 · 상세 링크.\n`status=voted` 는 열린 것 중 의견이 모인 줄.",
         "operationId": "list_proposals_api_review__queue__get",
         "parameters": [
           {
@@ -1509,7 +1509,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "pattern": "^(open|decided|skipped|gone|all)$",
+              "pattern": "^(open|voted|decided|skipped|gone|all)$",
               "default": "open",
               "title": "Status"
             }
@@ -1545,6 +1545,120 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProposalPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/{queue}/{proposal_id}/vote": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Vote",
+        "description": "의견을 낸다 — **로그인한 누구나.** 확정이 아니라 데이터는 안 바뀐다. 사람당 한 줄에\n하나, 다시 내면 바뀐다.",
+        "operationId": "vote_api_review__queue___proposal_id__vote_post",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Withdraw Vote",
+        "description": "내 의견을 거둔다.",
+        "operationId": "withdraw_vote_api_review__queue___proposal_id__vote_delete",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProposalOut"
                 }
               }
             }
@@ -13946,6 +14060,27 @@
               }
             ],
             "title": "Decided At"
+          },
+          "votes": {
+            "items": {
+              "$ref": "#/components/schemas/VoteOut"
+            },
+            "type": "array",
+            "title": "Votes"
+          },
+          "my_vote": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "My Vote"
           }
         },
         "type": "object",
@@ -13964,7 +14099,9 @@
           "followed",
           "note",
           "decided_by",
-          "decided_at"
+          "decided_at",
+          "votes",
+          "my_vote"
         ],
         "title": "ProposalOut"
       },
@@ -14022,6 +14159,10 @@
           "gone": {
             "type": "integer",
             "title": "Gone"
+          },
+          "voted": {
+            "type": "integer",
+            "title": "Voted"
           }
         },
         "type": "object",
@@ -14033,7 +14174,8 @@
           "open",
           "decided",
           "skipped",
-          "gone"
+          "gone",
+          "voted"
         ],
         "title": "QueueOut"
       },
@@ -16907,6 +17049,82 @@
         "type": "object",
         "title": "VocabularyUpdateRequest",
         "description": "축을 고친다. **slug 와 소속은 못 바꾼다** — 코드가 걸고 있다.\n\n정책을 open 에서 closed 로 바꾸는 것은 된다: 값이 흩어지기 시작한 축을 잠그는 일이\n실제로 있다. 반대도 된다 — 다만 그 축이 검색의 첫 축이면 오타가 값이 된다."
+      },
+      "VoteOut": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "User Id"
+          },
+          "user": {
+            "type": "string",
+            "title": "User"
+          },
+          "choice": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Choice"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "user",
+          "choice",
+          "note",
+          "at"
+        ],
+        "title": "VoteOut",
+        "description": "한 사람의 의견. 확정이 아니다 — 데이터를 안 건드린다."
+      },
+      "VoteRequest": {
+        "properties": {
+          "choice": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Choice"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "choice"
+        ],
+        "title": "VoteRequest",
+        "description": "의견 하나. 후보에 없는 코드도 된다(직접 고르기)."
       },
       "WorkspaceCreateRequest": {
         "properties": {

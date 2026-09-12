@@ -32,6 +32,16 @@ const proposal = {
   note: null,
   decided_by: null,
   decided_at: null,
+  votes: [
+    {
+      user_id: 'u2',
+      user: '이OO',
+      choice: ['mechanical_shock'],
+      note: null,
+      at: '2026-09-13T00:00:00Z',
+    },
+  ],
+  my_vote: null,
 }
 
 vi.mock('@/shared/api/client', () => ({
@@ -62,6 +72,11 @@ vi.mock('@/shared/api/client', () => ({
   ApiError: class extends Error {},
 }))
 
+// 관리자로 본다 — 확정 단추가 있어야 「자동으로 골라지지 않는다」 를 볼 수 있다.
+vi.mock('@/shared/auth/AuthContext', () => ({
+  useAuth: () => ({ user: { memberships: [], is_system_admin: true } }),
+}))
+
 import ReviewQueuePage from '@/modules/review/ReviewQueuePage'
 
 async function open() {
@@ -86,12 +101,28 @@ describe('검토함 물음 화면', () => {
     expect(screen.getByText('ASTM D3580')).toBeTruthy()
     expect(screen.getByText('추천')).toBeTruthy()
     expect(screen.getByText('규격 제목이 Vibration Testing')).toBeTruthy()
-    const radios = screen.getAllByRole('radio') as HTMLInputElement[]
-    expect(radios.every((one) => !one.checked)).toBe(true)
-    // 고르기 전에는 정할 수 없다 — 빈 결정이 「해당 없음」 으로 들어가면 안 된다.
-    expect(
-      (screen.getByRole('button', { name: '이걸로 정함' }) as HTMLButtonElement).disabled,
-    ).toBe(true)
+    // 추천(진동)은 자동으로 안 골라진다. 골라져 있는 것은 사람의 의견(충격)이다.
+    expect((screen.getByLabelText(/정현·랜덤 진동/) as HTMLInputElement).checked).toBe(false)
+    expect((screen.getByLabelText(/기계적 충격/) as HTMLInputElement).checked).toBe(true)
+    // 의견이 하나뿐이면 그것이 다수라 미리 골라진다 — 다만 추천이 아니라 사람의 의견이다.
+    expect(screen.getByText('다수 의견으로 미리 골라 두었습니다.')).toBeTruthy()
+    expect(screen.getByText('이OO')).toBeTruthy()
+  })
+
+  it('의견은 줄을 남기고 갱신되며, 확정만 줄을 보낸다', async () => {
+    await open()
+    await act(async () => {
+      fireEvent.click(screen.getByLabelText(/정현·랜덤 진동/))
+    })
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '의견 내기' }))
+    })
+    expect(posted[0]).toEqual({
+      url: '/review/method_test_items/p1/vote',
+      body: { choice: ['vibration_sine_random'], note: null },
+    })
+    // 의견을 냈어도 줄은 그대로 있다.
+    expect(screen.getByText('ASTM D3580')).toBeTruthy()
   })
 
   it('고르면 서버에 보내고 줄이 사라진다', async () => {
@@ -100,7 +131,7 @@ describe('검토함 물음 화면', () => {
       fireEvent.click(screen.getByLabelText(/기계적 충격/))
     })
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '이걸로 정함' }))
+      fireEvent.click(screen.getByRole('button', { name: '확정' }))
     })
     expect(posted).toEqual([
       {

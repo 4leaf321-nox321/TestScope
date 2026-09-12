@@ -558,12 +558,38 @@ export interface paths {
         };
         /**
          * List Proposals
-         * @description 한 물음의 줄들 — 대상 · 후보(추천과 근거) · 상세 링크.
+         * @description 한 물음의 줄들 — 대상 · 후보(추천과 근거) · 모인 의견 · 상세 링크.
+         *     `status=voted` 는 열린 것 중 의견이 모인 줄.
          */
         get: operations["list_proposals_api_review__queue__get"];
         put?: never;
         post?: never;
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/review/{queue}/{proposal_id}/vote": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Vote
+         * @description 의견을 낸다 — **로그인한 누구나.** 확정이 아니라 데이터는 안 바뀐다. 사람당 한 줄에
+         *     하나, 다시 내면 바뀐다.
+         */
+        post: operations["vote_api_review__queue___proposal_id__vote_post"];
+        /**
+         * Withdraw Vote
+         * @description 내 의견을 거둔다.
+         */
+        delete: operations["withdraw_vote_api_review__queue___proposal_id__vote_delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -4654,6 +4680,10 @@ export interface components {
             decided_by: string | null;
             /** Decided At */
             decided_at: string | null;
+            /** Votes */
+            votes: components["schemas"]["VoteOut"][];
+            /** My Vote */
+            my_vote: string[] | null;
         };
         /** ProposalPage */
         ProposalPage: {
@@ -4680,6 +4710,8 @@ export interface components {
             skipped: number;
             /** Gone */
             gone: number;
+            /** Voted */
+            voted: number;
         };
         /** ReferenceGroupOut */
         ReferenceGroupOut: {
@@ -5715,6 +5747,38 @@ export interface components {
             entry_policy?: string | null;
             /** Attribute Schema */
             attribute_schema?: components["schemas"]["AttributeField"][] | null;
+        };
+        /**
+         * VoteOut
+         * @description 한 사람의 의견. 확정이 아니다 — 데이터를 안 건드린다.
+         */
+        VoteOut: {
+            /**
+             * User Id
+             * Format: uuid
+             */
+            user_id: string;
+            /** User */
+            user: string;
+            /** Choice */
+            choice: string[];
+            /** Note */
+            note: string | null;
+            /**
+             * At
+             * Format: date-time
+             */
+            at: string;
+        };
+        /**
+         * VoteRequest
+         * @description 의견 하나. 후보에 없는 코드도 된다(직접 고르기).
+         */
+        VoteRequest: {
+            /** Choice */
+            choice: string[];
+            /** Note */
+            note?: string | null;
         };
         /** WorkspaceCreateRequest */
         WorkspaceCreateRequest: {
@@ -6938,6 +7002,74 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProposalPage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    vote_api_review__queue___proposal_id__vote_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VoteRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    withdraw_vote_api_review__queue___proposal_id__vote_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProposalOut"];
                 };
             };
             /** @description Validation Error */

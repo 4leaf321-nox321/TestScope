@@ -14,35 +14,39 @@ import { useState } from 'react'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
+import { useAuth } from '@/shared/auth/AuthContext'
 import { useResource } from '@/shared/hooks/useResource'
 import { reviewApi } from '@/modules/review/api'
 
 export default function ReviewPage() {
   const queues = useResource(() => reviewApi.queues(), [])
   const [busy, setBusy] = useState(false)
+  const isAdmin = useAuth().user?.is_system_admin ?? false
 
   return (
     <div className="space-y-6">
       <PageHeader
         title="검토함"
-        description="반입이 못 정한 것을 후보와 근거와 함께 세워 둡니다. 고르면 기존 규칙대로 적용되고, 누가 골랐는지 남습니다."
+        description="반입이 못 정한 것을 후보와 근거와 함께 세워 둡니다. 누구나 의견을 내고, 시스템 관리자가 확정하면 기존 규칙대로 적용됩니다."
         actions={
-          <Button
-            variant="outline"
-            disabled={busy}
-            onClick={async () => {
-              setBusy(true)
-              try {
-                await reviewApi.refresh()
-                queues.reload()
-              } finally {
-                setBusy(false)
-              }
-            }}
-          >
-            <RefreshCw className="mr-1 size-4" />
-            후보 다시 세우기
-          </Button>
+          isAdmin && (
+            <Button
+              variant="outline"
+              disabled={busy}
+              onClick={async () => {
+                setBusy(true)
+                try {
+                  await reviewApi.refresh()
+                  queues.reload()
+                } finally {
+                  setBusy(false)
+                }
+              }}
+            >
+              <RefreshCw className="mr-1 size-4" />
+              후보 다시 세우기
+            </Button>
+          )
         }
       />
       <ErrorNotice error={queues.error} />
@@ -63,13 +67,16 @@ export default function ReviewPage() {
             </div>
             <p className="text-muted-foreground mt-1 text-sm">{one.description}</p>
             <p className="text-muted-foreground mt-2 text-xs">
+              {one.voted > 0 && `의견 있음 ${one.voted} · `}
               정함 {one.decided} · 건너뜀 {one.skipped}
               {one.gone > 0 && ` · 대상 없어짐 ${one.gone}`}
             </p>
             <div className="mt-3">
               {one.open > 0 ? (
                 <Button asChild size="sm">
-                  <Link to={`/admin/review/${one.key}`}>고르러 가기</Link>
+                  <Link to={`/admin/review/${one.key}`}>
+                    {isAdmin ? '고르러 가기' : '의견 내러 가기'}
+                  </Link>
                 </Button>
               ) : (
                 <Button asChild size="sm" variant="outline">
@@ -84,7 +91,8 @@ export default function ReviewPage() {
       <p className="text-muted-foreground text-xs">
         후보는 반입(카탈로그)과 정본의 추천(
         <span className="font-mono">source/catalog/proposals</span>)에서 옵니다. 추천은 정답이
-        아닙니다 — 근거를 읽고, 아니면 직접 고르세요. 건너뛴 것은 다시 뜹니다.
+        아닙니다 — 근거를 읽고, 아니면 직접 고르세요. 의견은 모이기만 하고 데이터를 바꾸지
+        않습니다; 확정할 때 바뀝니다.
       </p>
     </div>
   )

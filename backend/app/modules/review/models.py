@@ -85,3 +85,37 @@ class ReviewProposal(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
     )
+
+
+class ReviewVote(Base):
+    """한 사람의 **의견** — 확정이 아니다. 데이터를 건드리지 않고 모이기만 한다.
+
+    여럿이 갈리는 줄이 눈에 보이게(「3명 중 2:1」) 하려는 것이다. 사람당 한 줄에 하나,
+    바꿀 수 있고 거둘 수 있다. 확정(`ReviewProposal.choice`)은 시스템 관리자가 따로 한다 —
+    의견 없이도 확정할 수 있어 사람이 적을 때 느려지지 않는다.
+    """
+
+    __tablename__ = "review_votes"
+    __table_args__ = (UniqueConstraint("proposal_id", "user_id", name="uq_review_votes_user"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    proposal_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("review_proposals.id", ondelete="CASCADE"),
+        index=True,
+    )
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
+    user_label: Mapped[str] = mapped_column(String(200))
+    """그때의 이름. 계정이 지워져도 누구 의견이었는지 남는다."""
+    choice: Mapped[list[str]] = mapped_column(JSONB, default=list)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )

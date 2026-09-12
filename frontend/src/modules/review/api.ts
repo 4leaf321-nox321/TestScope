@@ -24,5 +24,10 @@ export const reviewApi = {
   /** 정한 것을 다시 연다. 이미 일어난 일은 안 되돌린다 — 그건 원래 화면에서. */
   reopen: (queue: string, id: string) =>
     api.post<ReviewProposal>(`/review/${queue}/${id}/reopen`),
+  /** 의견 — 로그인한 누구나. 확정이 아니라 데이터는 안 바뀐다. 다시 내면 바뀐다. */
+  vote: (queue: string, id: string, choice: string[], note?: string) =>
+    api.post<ReviewProposal>(`/review/${queue}/${id}/vote`, { choice, note: note || null }),
+  withdrawVote: (queue: string, id: string) =>
+    api.delete<ReviewProposal>(`/review/${queue}/${id}/vote`),
   refresh: () => api.post<{ open: Record<string, number> }>('/review/refresh'),
 }

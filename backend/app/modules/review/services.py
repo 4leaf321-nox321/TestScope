@@ -37,8 +37,8 @@ from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelF
 from app.modules.methods.models import TestMethod
 from app.modules.methods.services import promote_pending
 from app.modules.properties.models import TestItemProperty
-from app.modules.review.models import ReviewProposal
-from app.modules.review.schemas import CandidateOut, ProposalOut, QueueOut
+from app.modules.review.models import ReviewProposal, ReviewVote
+from app.modules.review.schemas import CandidateOut, ProposalOut, QueueOut, VoteOut
 from app.modules.test_items.models import (
     SeriesPendingMethod,
     SeriesTestItem,
@@ -670,6 +670,15 @@ def queues(db: Session) -> list[QueueOut]:
     tally: dict[str, dict[str, int]] = {}
     for queue, status, count in rows:
         tally.setdefault(queue, {})[status] = count
+    voted: dict[str, int] = {
+        queue: count
+        for queue, count in db.execute(
+            select(ReviewProposal.queue, func.count(func.distinct(ReviewProposal.id)))
+            .join(ReviewVote, ReviewVote.proposal_id == ReviewProposal.id)
+            .where(ReviewProposal.status == "open")
+            .group_by(ReviewProposal.queue)
+        )
+    }
     return [
         QueueOut(
             key=one.key,
@@ -680,6 +689,7 @@ def queues(db: Session) -> list[QueueOut]:
             decided=tally.get(one.key, {}).get("decided", 0),
             skipped=tally.get(one.key, {}).get("skipped", 0),
             gone=tally.get(one.key, {}).get("gone", 0),
+            voted=voted.get(one.key, 0),
         )
         for one in QUEUES.values()
     ]
@@ -692,8 +702,27 @@ def get_proposal(db: Session, proposal_id: uuid.UUID) -> ReviewProposal:
     return row
 
 
-def proposal_out(row: ReviewProposal) -> ProposalOut:
+def _votes(db: Session, proposal_ids: list[uuid.UUID]) -> dict[uuid.UUID, list[ReviewVote]]:
+    out: dict[uuid.UUID, list[ReviewVote]] = {}
+    if not proposal_ids:
+        return out
+    for vote in db.scalars(
+        select(ReviewVote)
+        .where(ReviewVote.proposal_id.in_(proposal_ids))
+        .order_by(ReviewVote.created_at)
+    ):
+        out.setdefault(vote.proposal_id, []).append(vote)
+    return out
+
+
+def proposal_out(
+    row: ReviewProposal,
+    votes: list[ReviewVote] | None = None,
+    viewer_id: uuid.UUID | None = None,
+) -> ProposalOut:
     queue = QUEUES[row.queue]
+    votes = votes or []
+    mine = next((one for one in votes if one.user_id == viewer_id), None)
     return ProposalOut(
         id=row.id,
         queue=row.queue,
@@ -712,22 +741,92 @@ def proposal_out(row: ReviewProposal) -> ProposalOut:
         note=row.note,
         decided_by=row.decided_by_label,
         decided_at=row.decided_at,
+        votes=[
+            VoteOut(
+                user_id=one.user_id,
+                user=one.user_label,
+                choice=list(one.choice or []),
+                note=one.note,
+                at=one.updated_at,
+            )
+            for one in votes
+        ],
+        my_vote=list(mine.choice or []) if mine else None,
     )
 
 
+def with_votes(db: Session, row: ReviewProposal, viewer_id: uuid.UUID | None) -> ProposalOut:
+    return proposal_out(row, _votes(db, [row.id]).get(row.id, []), viewer_id)
+
+
 def list_proposals(
-    db: Session, queue: str, *, status: str, limit: int, offset: int
+    db: Session,
+    queue: str,
+    *,
+    status: str,
+    limit: int,
+    offset: int,
+    viewer_id: uuid.UUID | None = None,
 ) -> tuple[list[ProposalOut], int]:
     if queue not in QUEUES:
         raise NotFound("TSC-REVIEW-0006", f"모르는 검토함입니다: {queue}")
     base = select(ReviewProposal).where(ReviewProposal.queue == queue)
-    if status != "all":
+    if status == "voted":
+        # 열린 것 중 의견이 모인 줄 — 확정할 사람이 먼저 보는 자리.
+        base = base.where(
+            ReviewProposal.status == "open",
+            ReviewProposal.id.in_(select(ReviewVote.proposal_id)),
+        )
+    elif status != "all":
         base = base.where(ReviewProposal.status == status)
     total = db.scalar(select(func.count()).select_from(base.subquery())) or 0
     rows = db.scalars(
         base.order_by(ReviewProposal.subject_label).limit(limit).offset(offset)
     ).all()
-    return [proposal_out(row) for row in rows], total
+    votes = _votes(db, [row.id for row in rows])
+    return [proposal_out(row, votes.get(row.id, []), viewer_id) for row in rows], total
+
+
+def vote(
+    db: Session, user: User, proposal_id: uuid.UUID, *, choice: list[str], note: str | None
+) -> ReviewProposal:
+    """의견을 낸다(있으면 바꾼다). **로그인한 누구나** — 데이터를 안 건드리니 넓게 연다.
+
+    도메인 전문가가 시스템 관리자일 이유가 없다. 확정만 관리자가 한다.
+    """
+    row = get_proposal(db, proposal_id)
+    if row.status in ("decided", "gone"):
+        raise AppError("TSC-REVIEW-0011", "닫힌 항목에는 의견을 낼 수 없습니다.", status=409)
+    if not QUEUES[row.queue].multi and len(choice) > 1:
+        raise AppError("TSC-REVIEW-0004", "하나만 고르는 물음입니다.", status=400)
+    held = db.scalar(
+        select(ReviewVote).where(
+            ReviewVote.proposal_id == row.id, ReviewVote.user_id == user.id
+        )
+    )
+    if held is None:
+        held = ReviewVote(proposal_id=row.id, user_id=user.id)
+        db.add(held)
+    held.user_label = user.display_name or user.email
+    held.choice = choice
+    held.note = note
+    db.commit()
+    db.refresh(row)
+    return row
+
+
+def withdraw_vote(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
+    row = get_proposal(db, proposal_id)
+    held = db.scalar(
+        select(ReviewVote).where(
+            ReviewVote.proposal_id == row.id, ReviewVote.user_id == user.id
+        )
+    )
+    if held is not None:
+        db.delete(held)
+        db.commit()
+    db.refresh(row)
+    return row
 
 
 def decide(
@@ -764,6 +863,11 @@ def decide(
             "subject": row.subject_key,
             "choice": choice,
             "followed": row.followed,
+            # 그때 모여 있던 의견 — 확정이 다수와 달랐는지 나중에 볼 수 있게.
+            "votes": [
+                {"user": one.user_label, "choice": list(one.choice or [])}
+                for one in _votes(db, [row.id]).get(row.id, [])
+            ],
         },
         reason=note,
     )

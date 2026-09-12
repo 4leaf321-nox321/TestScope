@@ -559,3 +559,117 @@ def test_정한_것은_다시_열어_다른_걸로_고를_수_있다(
         )
     ]
     assert kinds.count(audit.REVIEW_DECIDED) == 2 and audit.REVIEW_REOPENED in kinds
+
+
+def _member(client: TestClient, db: Session, workspace: Any) -> Signed:
+    """관리자가 아닌 사람 — 의견은 내되 확정은 못 한다."""
+    from app.modules.accounts.models import User
+    from app.modules.auth import security
+    from app.modules.workspaces.models import WorkspaceMember
+
+    email = f"expert-{uuid.uuid4().hex[:8]}@testscope.local"
+    user = User(
+        email=email,
+        password_hash=security.hash_password("expert-password"),
+        display_name="도메인 전문가",
+        status="active",
+        home_workspace_id=workspace.id,
+    )
+    db.add(user)
+    db.flush()
+    db.add(WorkspaceMember(workspace_id=workspace.id, user_id=user.id, role="member"))
+    db.commit()
+    login = client.post(
+        "/api/auth/login", json={"email": email, "password": "expert-password"}
+    )
+    assert login.status_code == 200, login.text
+    return Signed(email=email, token=login.json()["access_token"], workspace=workspace.slug)
+
+
+def test_의견은_누구나_내고_확정은_관리자가_한다(
+    client: TestClient, admin: Signed, db: Session, workspace: Any
+) -> None:
+    a_id, a = _item(client, admin, "인장")
+    b_id, b = _item(client, admin, "압축")
+    method = _cited_method(client, admin, [a_id, b_id])
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+    expert = _member(client, db, workspace)
+
+    # 전문가가 의견을 낸다 — 데이터는 안 바뀐다.
+    voted = client.post(
+        f"/api/review/method_test_items/{row['id']}/vote",
+        json={"choice": [a], "note": "규격 4절이 인장"},
+        headers=expert.headers,
+    )
+    assert voted.status_code == 200, voted.text
+    assert voted.json()["my_vote"] == [a]
+    assert voted.json()["status"] == "open"
+    shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
+    assert shown["test_item_term_id"] is None, "의견은 확정이 아니다"
+
+    # 전문가는 확정 못 한다.
+    denied = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [a]},
+        headers=expert.headers,
+    )
+    assert denied.status_code == 403
+
+    # 다시 내면 바뀐다(사람당 하나). 관리자도 의견을 낸다.
+    client.post(
+        f"/api/review/method_test_items/{row['id']}/vote",
+        json={"choice": [b]},
+        headers=expert.headers,
+    )
+    client.post(
+        f"/api/review/method_test_items/{row['id']}/vote",
+        json={"choice": [a]},
+        headers=admin.headers,
+    )
+    seen = next(
+        one
+        for one in _rows(client, admin, "method_test_items", status="voted")
+        if one["id"] == row["id"]
+    )
+    assert [(one["user"], one["choice"]) for one in seen["votes"]] == [
+        ("도메인 전문가", [b]),
+        ("관리자", [a]),
+    ]
+    assert seen["my_vote"] == [a]
+    queues = {
+        one["key"]: one for one in client.get("/api/review", headers=admin.headers).json()
+    }
+    assert queues["method_test_items"]["voted"] >= 1
+
+    # 거두면 빠진다.
+    gone = client.delete(
+        f"/api/review/method_test_items/{row['id']}/vote", headers=expert.headers
+    )
+    assert gone.status_code == 200, gone.text
+    assert [one["user"] for one in gone.json()["votes"]] == ["관리자"]
+
+    # 관리자가 확정하면 적용되고, 그때의 의견이 감사에 남는다.
+    decided = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [a]},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    entry = db.scalar(
+        select(AuditEntry).where(
+            AuditEntry.action == audit.REVIEW_DECIDED,
+            AuditEntry.target_id == uuid.UUID(row["id"]),
+        )
+    )
+    assert entry is not None and entry.changes["votes"] == [{"user": "관리자", "choice": [a]}]
+    late = client.post(
+        f"/api/review/method_test_items/{row['id']}/vote",
+        json={"choice": [b]},
+        headers=expert.headers,
+    )
+    assert late.status_code == 409, "닫힌 줄에는 의견을 못 낸다"

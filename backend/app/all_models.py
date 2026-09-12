@@ -29,7 +29,7 @@ from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
 from app.modules.properties.models import TestItemProperty
-from app.modules.review.models import ReviewProposal  # noqa: F401
+from app.modules.review.models import ReviewProposal, ReviewVote
 from app.modules.test_items.models import (
     EquipmentTestCondition,
     EquipmentTestItem,
@@ -72,6 +72,8 @@ __all__ = [
     "Notification",
     "PersonalAccessToken",
     "RefreshToken",
+    "ReviewProposal",
+    "ReviewVote",
     "SeriesPendingMethod",
     "SeriesRelation",
     "SeriesTestCondition",

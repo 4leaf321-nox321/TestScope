@@ -19,6 +19,8 @@ class QueueOut(BaseModel):
     decided: int
     skipped: int
     gone: int
+    voted: int
+    """열린 것 중 의견이 하나라도 모인 줄 — 확정할 사람이 먼저 볼 것."""
     """대상이 없어져 닫힌 것 — 정한 것과 다르다."""
 
 
@@ -31,6 +33,16 @@ class CandidateOut(BaseModel):
     reason: str | None = None
     """왜 추천하는가. **추천 옆에 늘 붙는다** — 근거 없는 추천은 첫 보기를 누르게 만들
     뿐이다."""
+
+
+class VoteOut(BaseModel):
+    """한 사람의 의견. 확정이 아니다 — 데이터를 안 건드린다."""
+
+    user_id: uuid.UUID
+    user: str
+    choice: list[str]
+    note: str | None
+    at: datetime
 
 
 class ProposalOut(BaseModel):
@@ -51,6 +63,10 @@ class ProposalOut(BaseModel):
     note: str | None
     decided_by: str | None
     decided_at: datetime | None
+    votes: list[VoteOut]
+    """모인 의견. 갈리는 줄이 보이게 — 확정하는 사람이 다수를 미리 본다."""
+    my_vote: list[str] | None
+    """보는 사람이 낸 의견. 없으면 None."""
 
 
 class ProposalPage(BaseModel):
@@ -63,6 +79,13 @@ class DecideRequest(BaseModel):
 
     choice: list[str] = Field(max_length=20)
     """빈 목록은 「해당 없음」 — 검색축이 없는 게 맞다 같은 결정."""
+    note: str | None = Field(default=None, max_length=1000)
+
+
+class VoteRequest(BaseModel):
+    """의견 하나. 후보에 없는 코드도 된다(직접 고르기)."""
+
+    choice: list[str] = Field(max_length=20)
     note: str | None = Field(default=None, max_length=1000)
 
 

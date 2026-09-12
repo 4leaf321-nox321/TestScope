@@ -4,6 +4,12 @@
  * ## 추천은 정답이 아니다
  *
  * 첫 보기를 습관적으로 누르게 되므로 추천에는 늘 근거가 붙고, 확신이 낮은 줄에는 추천이 없다.
+ * ## 의견과 확정은 다르다
+ *
+ * 로그인한 누구나 한 줄에 의견 하나를 낸다 — 데이터는 안 바뀌고 모이기만 한다. 갈리는 줄이
+ * 보이게(「의견 3 · 2:1」). 확정은 시스템 관리자가 하고 그때 적용된다. 의견 없이도 확정할 수
+ * 있어 사람이 적을 때 느려지지 않는다. 확정 칸은 다수 의견으로 미리 채우되 자동 확정은 없다.
+ *
  * 후보에 없는 답을 위해 「직접 고르기」 를, 지금 모르겠으면 「건너뛰기」 를 둔다 — 건너뛴 것은
  * 다시 뜬다. 고르면 기존 규칙(규격 → 인용 계열에 붙임)이 그대로 돌고, 누가 골랐는지 남는다.
  *
@@ -26,6 +32,7 @@ import { PageHeader } from '@/shared/components/PageHeader'
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
+import { useAuth } from '@/shared/auth/AuthContext'
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDateTime } from '@/shared/lib/datetime'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
@@ -43,6 +50,8 @@ function directAxis(queue: string): 'test_item' | 'condition' | null {
 
 export default function ReviewQueuePage() {
   const { queue = '' } = useParams<{ queue: string }>()
+  const { user } = useAuth()
+  const isAdmin = user?.is_system_admin ?? false
   const [params, setParams] = useSearchParams()
   const status = params.get('status') ?? 'open'
   const [offset, setOffset] = useState(0)
@@ -101,6 +110,7 @@ export default function ReviewQueuePage() {
             {(
               [
                 ['open', '남은 것'],
+                ['voted', '의견 있음'],
                 ['skipped', '건너뛴 것'],
                 ['decided', '정한 것'],
                 ['gone', '대상 없음'],
@@ -138,12 +148,15 @@ export default function ReviewQueuePage() {
               multi={meta?.multi ?? false}
               directOptions={directOptions}
               readOnly={status === 'decided' || status === 'gone'}
+              isAdmin={isAdmin}
               onDecide={(choice, note) =>
                 act(row, () => reviewApi.decide(queue, row.id, choice, note))
               }
               onSkip={() => act(row, () => reviewApi.skip(queue, row.id))}
+              onVote={(choice, note) => reviewApi.vote(queue, row.id, choice, note)}
+              onWithdraw={() => reviewApi.withdrawVote(queue, row.id)}
               onReopen={
-                status === 'decided'
+                status === 'decided' && isAdmin
                   ? () => act(row, () => reviewApi.reopen(queue, row.id))
                   : undefined
               }
@@ -186,20 +199,50 @@ function ProposalRow({
   multi,
   directOptions,
   readOnly,
+  isAdmin,
   onDecide,
   onSkip,
+  onVote,
+  onWithdraw,
   onReopen,
 }: {
   row: ReviewProposal
   multi: boolean
   directOptions: { id: string; label: string }[]
   readOnly: boolean
+  isAdmin: boolean
   onDecide: (choice: string[], note?: string) => Promise<void>
   onSkip: () => Promise<void>
+  /** 의견 — 줄은 남고 의견만 갱신된다. */
+  onVote: (choice: string[], note?: string) => Promise<ReviewProposal>
+  onWithdraw: () => Promise<ReviewProposal>
   /** 정한 줄에서만 — 다시 열어 다른 걸로 고른다. */
   onReopen?: () => Promise<void>
 }) {
-  const [picked, setPicked] = useState<string[]>([])
+  /** 의견은 이 줄 안에서 갱신된다 — 목록을 다시 받으면 자리가 뛴다. */
+  const [live, setLive] = useState(row)
+  const votes = live.votes
+  const tally = useMemo(() => {
+    const counts = new Map<string, string[]>()
+    for (const one of votes)
+      for (const code of one.choice) counts.set(code, [...(counts.get(code) ?? []), one.user])
+    return counts
+  }, [votes])
+  /** 다수 의견 — 확정 칸을 미리 채운다. 동수면 없다. */
+  const majority = useMemo<string[] | null>(() => {
+    if (votes.length === 0) return null
+    const seen = new Map<string, number>()
+    for (const one of votes) {
+      const key = [...one.choice].sort().join('|')
+      seen.set(key, (seen.get(key) ?? 0) + 1)
+    }
+    const ranked = [...seen.entries()].sort((a, b) => b[1] - a[1])
+    if (ranked.length > 1 && ranked[0][1] === ranked[1][1]) return null
+    return ranked[0][0] === '' ? [] : ranked[0][0].split('|')
+  }, [votes])
+  const split =
+    votes.length > 1 && new Set(votes.map((one) => [...one.choice].sort().join('|'))).size > 1
+  const [picked, setPicked] = useState<string[]>(live.my_vote ?? majority ?? [])
   const [direct, setDirect] = useState('')
   const [note, setNote] = useState('')
   const [busy, setBusy] = useState(false)
@@ -232,7 +275,22 @@ function ProposalRow({
     <li className="rounded-md border p-4">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="font-medium">{row.subject_label}</p>
+          <p className="font-medium">
+            {row.subject_label}
+            {votes.length > 0 && (
+              // **갈리는 줄이 보인다.** 합의된 건 훑어 확정하고, 갈린 것만 모여 얘기한다.
+              <span
+                className={`ml-2 rounded px-1.5 py-0.5 text-xs font-normal ${
+                  split
+                    ? 'bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-200'
+                    : 'bg-muted text-muted-foreground'
+                }`}
+              >
+                의견 {votes.length}
+                {split ? ' · 갈림' : votes.length > 1 ? ' · 합의' : ''}
+              </span>
+            )}
+          </p>
           {row.context && (
             <p className="text-muted-foreground mt-0.5 text-sm">{row.context}</p>
           )}
@@ -279,6 +337,26 @@ function ProposalRow({
             {row.note && (
               <span className="text-muted-foreground block text-xs">{row.note}</span>
             )}
+            {votes.length > 0 && (
+              <span className="text-muted-foreground block text-xs">
+                의견:{' '}
+                {votes
+                  .map(
+                    (one) =>
+                      `${one.user} → ${
+                        one.choice.length === 0
+                          ? '해당 없음'
+                          : one.choice
+                              .map(
+                                (code) =>
+                                  row.candidates.find((c) => c.code === code)?.label ?? code,
+                              )
+                              .join('·')
+                      }`,
+                  )
+                  .join(' · ')}
+              </span>
+            )}
           </p>
           {onReopen && (
             <Button
@@ -317,6 +395,11 @@ function ProposalRow({
                     />
                     <span>
                       {one.label}
+                      {tally.has(one.code) && (
+                        <span className="text-muted-foreground ml-2 text-xs">
+                          {tally.get(one.code)?.join(' · ')}
+                        </span>
+                      )}
                       {one.recommended && (
                         <span className="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
                           추천
@@ -357,27 +440,74 @@ function ProposalRow({
               placeholder="메모 (선택) — 왜 그렇게 정했나"
               className="max-w-xs"
             />
-            <Button size="sm" disabled={busy || !canDecide} onClick={() => submit(choice)}>
-              {multi && choice.length === 0 ? '축 없음이 맞다' : '이걸로 정함'}
-            </Button>
+            {/* 의견 — 누구나. 줄은 남고 의견만 바뀐다. */}
             <Button
               size="sm"
-              variant="ghost"
-              disabled={busy}
+              variant={isAdmin ? 'outline' : 'default'}
+              disabled={busy || !canDecide}
               onClick={async () => {
                 setBusy(true)
                 try {
-                  await onSkip()
+                  setLive(await onVote(choice, note.trim() || undefined))
                 } finally {
                   setBusy(false)
                 }
               }}
             >
-              건너뛰기
+              {live.my_vote
+                ? '의견 바꾸기'
+                : multi && choice.length === 0
+                  ? '축 없음 의견'
+                  : '의견 내기'}
             </Button>
+            {live.my_vote && (
+              <Button
+                size="sm"
+                variant="ghost"
+                disabled={busy}
+                onClick={async () => {
+                  setBusy(true)
+                  try {
+                    setLive(await onWithdraw())
+                  } finally {
+                    setBusy(false)
+                  }
+                }}
+              >
+                의견 거두기
+              </Button>
+            )}
+            {/* 확정 — 시스템 관리자만. 그때 데이터가 바뀐다. */}
+            {isAdmin && (
+              <Button size="sm" disabled={busy || !canDecide} onClick={() => submit(choice)}>
+                {multi && choice.length === 0 ? '축 없음으로 확정' : '확정'}
+              </Button>
+            )}
+            {isAdmin && (
+              <Button
+                size="sm"
+                variant="ghost"
+                disabled={busy}
+                onClick={async () => {
+                  setBusy(true)
+                  try {
+                    await onSkip()
+                  } finally {
+                    setBusy(false)
+                  }
+                }}
+              >
+                건너뛰기
+              </Button>
+            )}
             {recommended && !picked.length && !direct && (
               <span className="text-muted-foreground text-xs">
                 추천을 따르려면 「{recommended.label}」 을 누르세요 — 자동으로 고르지 않습니다.
+              </span>
+            )}
+            {majority && !live.my_vote && picked.length > 0 && (
+              <span className="text-muted-foreground text-xs">
+                다수 의견으로 미리 골라 두었습니다.
               </span>
             )}
           </div>

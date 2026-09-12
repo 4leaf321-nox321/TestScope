@@ -204,6 +204,15 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: SlidersHorizontal,
         to: '/spec-definitions',
       },
+      {
+        // **후보와 근거를 보고 도메인 전문가가 고르는 자리.** 반입이 못 정한 것(어느 시험의
+        // 규격인가 · 무슨 조건을 묻나 …)이 흩어진 화면마다 「미정」 으로 서 있었다.
+        label: '검토함',
+        icon: CheckSquare,
+        to: '/admin/review',
+        // **「관리」 가 아니라 「공통」 에 있다** — 의견은 로그인한 누구나 내고(데이터를 안
+        // 건드린다), 확정만 시스템 관리자가 한다. 도메인 전문가가 관리자일 이유가 없다.
+      },
     ],
   },
   {
@@ -251,14 +260,6 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '기준정보 편집',
         icon: ListTree,
         to: '/admin/vocabulary',
-        audience: 'system_admin',
-      },
-      {
-        // **후보와 근거를 보고 도메인 전문가가 고르는 자리.** 반입이 못 정한 것(어느 시험의
-        // 규격인가 · 무슨 조건을 묻나 …)이 흩어진 화면마다 「미정」 으로 서 있었다.
-        label: '검토함',
-        icon: CheckSquare,
-        to: '/admin/review',
         audience: 'system_admin',
       },
       {
