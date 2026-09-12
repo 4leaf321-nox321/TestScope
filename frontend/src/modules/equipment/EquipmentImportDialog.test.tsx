@@ -10,7 +10,7 @@
  * 지우기 전까지 검색이 계속 그것으로 답한다.
  */
 
-import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 
 const calls: { path: string; body: unknown }[] = []
@@ -106,6 +106,14 @@ beforeEach(() => {
   made.length = 0
   copied.length = 0
   vi.useFakeTimers({ shouldAdvanceTime: true })
+})
+
+afterEach(() => {
+  // **남은 타이머를 버리고 진짜 시계로 돌린다.** 붙여넣기 뒤 500ms 디바운스가 환경이
+  // 내려간 뒤 터지면 「dispatchEvent 가 Event 가 아니다」 라는 유령 오류로 CI 가 빨개진다
+  // (2026-09-12 실제로 그랬다). 창은 RTL 이 먼저 내리므로 여기서는 시계만 정리한다.
+  vi.clearAllTimers()
+  vi.useRealTimers()
 })
 
 describe('빈 표', () => {
