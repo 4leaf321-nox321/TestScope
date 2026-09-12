@@ -45,7 +45,7 @@ from app.modules.test_items.models import (
     TestItemConditionKey,
 )
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
-from app.modules.vocabulary.specs import SpecGroup
+from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.shared import audit
 from app.shared.errors import AppError, Forbidden, NotFound
 from app.shared.text import method_key
@@ -217,6 +217,32 @@ def _free_label(label: str, source_key: str, unit: str) -> str:
     return f"{label} ({inner})"
 
 
+def _gone(row: ReviewProposal, why: str) -> None:
+    """대상이 없어졌다 — 정한 것이 아니라 **물음 자체가 사라진 것**이다. 남은 수에서 빠지고,
+    「정함」 과 섞이지 않게 따로 센다. 되돌릴 수 없다(대상이 없으니)."""
+    if row.status in ("decided", "gone"):
+        return
+    row.status = "gone"
+    row.choice = None
+    row.followed = None
+    row.decided_by_label = why
+    row.decided_at = datetime.now(UTC)
+
+
+def _sweep_gone(
+    db: Session, queue: str, alive: set[str], why: str, *, by_key: bool = True
+) -> None:
+    """열린·건너뛴 줄 중 대상이 사라진 것을 「대상 없어짐」 으로 닫는다."""
+    for row in db.scalars(
+        select(ReviewProposal).where(
+            ReviewProposal.queue == queue, ReviewProposal.status.in_(("open", "skipped"))
+        )
+    ):
+        marker = row.subject_key if by_key else str(row.subject_id)
+        if marker not in alive:
+            _gone(row, why)
+
+
 def _followed(candidates: list[dict[str, Any]], choice: list[str]) -> bool | None:
     recommended = {one["code"] for one in candidates if one.get("recommended")}
     if not recommended:
@@ -315,6 +341,9 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+    _sweep_gone(
+        db, "method_test_items", {method_key(m.code) for m in methods}, "규격이 지워짐"
+    )
 
 
 def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> None:
@@ -355,6 +384,7 @@ def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+    _sweep_gone(db, "test_item_axes", set(items), "시험 항목이 지워짐")
 
 
 def _refresh_property_links(db: Session, filed: dict[str, dict[str, Any]]) -> None:
@@ -377,9 +407,15 @@ def _refresh_property_links(db: Session, filed: dict[str, dict[str, Any]]) -> No
                 ReviewProposal.queue == "property_links", ReviewProposal.subject_key == subject
             )
         )
-        if link is None or link.status == "confirmed":
+        if link is None:
+            # 연결이 없어졌다 — 다른 화면에서 지웠을 것이다. 「아니다」 로 정한 것과 구별한다:
+            # 거기서 지운 사람의 판단은 감사에 있고, 여기서 지어 붙이면 두 기록이 어긋난다.
+            if row is not None:
+                _gone(row, "연결이 없어짐(다른 화면에서 지움)")
+            continue
+        if link.status == "confirmed":
             if row is not None and row.status == "open":
-                _settle(db, row, ["confirm" if link else "reject"], "화면에서 정함")
+                _settle(db, row, ["confirm"], "화면에서 정함")
             continue
         row = _upsert(
             db,
@@ -414,12 +450,18 @@ def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]
                 ReviewProposal.subject_key == subject,
             )
         )
-        if not rows:
-            # 남은 줄이 없다 — 이미 올렸거나 지웠다.
-            if row is not None and row.status == "open":
-                _settle(db, row, ["promote"], "화면에서 정함")
-            continue
         spec = dict(filed_row.get("definition") or {})
+        if not rows:
+            # 남은 줄이 없다 — 올렸거나 지웠다. 그 키의 정의가 있으면 올린 것, 없으면 지운 것.
+            if row is not None and row.status in ("open", "skipped"):
+                promoted = spec.get("key") and db.scalar(
+                    select(SpecDefinition.id).where(SpecDefinition.key == spec["key"])
+                )
+                if promoted:
+                    _settle(db, row, ["promote"], "화면에서 정함")
+                else:
+                    _gone(row, "사양 줄이 없어짐(다른 화면에서 지움)")
+            continue
         group = groups.get(spec.get("group") or "")
         payload = {
             "key": spec.get("key"),
@@ -637,6 +679,7 @@ def queues(db: Session) -> list[QueueOut]:
             open=tally.get(one.key, {}).get("open", 0),
             decided=tally.get(one.key, {}).get("decided", 0),
             skipped=tally.get(one.key, {}).get("skipped", 0),
+            gone=tally.get(one.key, {}).get("gone", 0),
         )
         for one in QUEUES.values()
     ]
@@ -694,7 +737,11 @@ def decide(
     _require_admin(user)
     row = get_proposal(db, proposal_id)
     if row.status == "decided":
-        raise AppError("TSC-REVIEW-0008", "이미 결정된 항목입니다.", status=409)
+        raise AppError(
+            "TSC-REVIEW-0008", "이미 결정된 항목입니다. 바꾸려면 먼저 다시 여세요.", status=409
+        )
+    if row.status == "gone":
+        raise AppError("TSC-REVIEW-0009", "대상이 없어진 항목입니다.", status=409)
     if not QUEUES[row.queue].multi and len(choice) > 1:
         raise AppError("TSC-REVIEW-0004", "하나만 고르는 물음입니다.", status=400)
     _apply(db, row, choice, actor=user)
@@ -728,9 +775,46 @@ def decide(
 def skip(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
     _require_admin(user)
     row = get_proposal(db, proposal_id)
-    if row.status == "decided":
-        raise AppError("TSC-REVIEW-0008", "이미 결정된 항목입니다.", status=409)
+    if row.status in ("decided", "gone"):
+        raise AppError("TSC-REVIEW-0008", "이미 닫힌 항목입니다.", status=409)
     row.status = "skipped" if row.status == "open" else "open"
+    db.commit()
+    db.refresh(row)
+    return row
+
+
+def reopen(db: Session, user: User, proposal_id: uuid.UUID) -> ReviewProposal:
+    """정한 것을 다시 연다 — 다른 걸로 고르려고. **이미 일어난 일은 안 되돌린다.**
+
+    지운 연결·만들어진 정의는 그대로다. 그것까지 여기서 되돌리면 삭제 취소 규칙이 두 벌이
+    된다 — 원래 화면에서 한다. 첫 결정은 감사에 남아 있고, 여기 줄에는 다시 열었다는 사실이
+    남는다.
+    """
+    _require_admin(user)
+    row = get_proposal(db, proposal_id)
+    if row.status != "decided":
+        raise AppError("TSC-REVIEW-0010", "정한 항목만 다시 열 수 있습니다.", status=409)
+    audit.record(
+        db,
+        action=audit.REVIEW_REOPENED,
+        actor=user,
+        target_table="review_proposals",
+        target_id=row.id,
+        target_label=f"{QUEUES[row.queue].label}: {row.subject_label}",
+        changes={
+            "queue": row.queue,
+            "subject": row.subject_key,
+            "previous_choice": row.choice,
+            "previous_by": row.decided_by_label,
+        },
+    )
+    row.status = "open"
+    row.note = f"다시 열림 — 전에는 {row.decided_by_label} 이(가) {row.choice} 로 정함"
+    row.choice = None
+    row.followed = None
+    row.decided_by_id = None
+    row.decided_by_label = None
+    row.decided_at = None
     db.commit()
     db.refresh(row)
     return row

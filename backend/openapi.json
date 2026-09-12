@@ -1509,7 +1509,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "pattern": "^(open|decided|skipped|all)$",
+              "pattern": "^(open|decided|skipped|gone|all)$",
               "default": "open",
               "title": "Status"
             }
@@ -1633,6 +1633,59 @@
         "summary": "Skip",
         "description": "건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다.",
         "operationId": "skip_api_review__queue___proposal_id__skip_post",
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Queue"
+            }
+          },
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProposalOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/review/{queue}/{proposal_id}/reopen": {
+      "post": {
+        "tags": [
+          "review"
+        ],
+        "summary": "Reopen",
+        "description": "정한 것을 다시 연다 — 다른 걸로 고르려고. 이미 일어난 일(지운 연결·만든 정의)은\n안 되돌린다; 그건 원래 화면에서.",
+        "operationId": "reopen_api_review__queue___proposal_id__reopen_post",
         "parameters": [
           {
             "name": "queue",
@@ -13965,6 +14018,10 @@
           "skipped": {
             "type": "integer",
             "title": "Skipped"
+          },
+          "gone": {
+            "type": "integer",
+            "title": "Gone"
           }
         },
         "type": "object",
@@ -13975,7 +14032,8 @@
           "multi",
           "open",
           "decided",
-          "skipped"
+          "skipped",
+          "gone"
         ],
         "title": "QueueOut"
       },

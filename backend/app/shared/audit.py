@@ -69,6 +69,8 @@ EQUIPMENT_DELETED = "equipment.deleted"
 METHOD_SUPERSEDED = "method.superseded"
 PROPERTY_LINKS_REVIEWED = "property_link.reviewed"
 REVIEW_DECIDED = "review.decided"
+REVIEW_REOPENED = "review.reopened"
+"""정한 것을 다시 열었다 — 전의 결정과 누가 했는지를 담아, 두 결정이 모두 남게."""
 """검토함에서 하나를 정했다 — 어느 물음의 무엇을 무엇으로, 추천을 따랐는지. 도메인 전문가의
 판단이라 「누가 왜」 를 반년 뒤에도 물을 수 있어야 한다."""
 """**물성↔시험 항목 제안을 묶어서 확인(또는 되돌림).** 한 번에 수십 줄이 바뀌는 일이라

@@ -33,7 +33,7 @@ def list_queues(
 @router.get("/{queue}", response_model=ProposalPage)
 def list_proposals(
     queue: str,
-    status: str = Query(default="open", pattern="^(open|decided|skipped|all)$"),
+    status: str = Query(default="open", pattern="^(open|decided|skipped|gone|all)$"),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     _: User = Depends(current_user),
@@ -69,6 +69,18 @@ def skip(
 ) -> ProposalOut:
     """건너뛴다(다시 누르면 되돌린다). 결정이 아니라 「지금은 모르겠다」 다."""
     return services.proposal_out(services.skip(db, user, proposal_id))
+
+
+@router.post("/{queue}/{proposal_id}/reopen", response_model=ProposalOut)
+def reopen(
+    queue: str,
+    proposal_id: uuid.UUID,
+    user: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> ProposalOut:
+    """정한 것을 다시 연다 — 다른 걸로 고르려고. 이미 일어난 일(지운 연결·만든 정의)은
+    안 되돌린다; 그건 원래 화면에서."""
+    return services.proposal_out(services.reopen(db, user, proposal_id))
 
 
 @router.post("/refresh", response_model=RefreshResult)

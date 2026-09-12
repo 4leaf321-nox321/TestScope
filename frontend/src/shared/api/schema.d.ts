@@ -610,6 +610,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/review/{queue}/{proposal_id}/reopen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reopen
+         * @description 정한 것을 다시 연다 — 다른 걸로 고르려고. 이미 일어난 일(지운 연결·만든 정의)은
+         *     안 되돌린다; 그건 원래 화면에서.
+         */
+        post: operations["reopen_api_review__queue___proposal_id__reopen_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/review/refresh": {
         parameters: {
             query?: never;
@@ -4657,6 +4678,8 @@ export interface components {
             decided: number;
             /** Skipped */
             skipped: number;
+            /** Gone */
+            gone: number;
         };
         /** ReferenceGroupOut */
         ReferenceGroupOut: {
@@ -6965,6 +6988,38 @@ export interface operations {
         };
     };
     skip_api_review__queue___proposal_id__skip_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                queue: string;
+                proposal_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProposalOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reopen_api_review__queue___proposal_id__reopen_post: {
         parameters: {
             query?: never;
             header?: never;

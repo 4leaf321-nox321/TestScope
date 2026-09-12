@@ -10,7 +10,9 @@
  * ## 고른 줄은 사라진다
  *
  * 172건을 하나씩 정하는 자리라 고른 줄이 목록에 남아 있으면 어디까지 했는지 모른다. 정한 것은
- * `?status=decided` 에서 본다.
+ * `?status=decided` 에서 보고, 거기서 「다시 열기」 로 다른 걸로 고칠 수 있다 — 이미 일어난
+ * 일(지운 연결·만든 정의)은 안 되돌린다. 대상이 지워진 줄은 `?status=gone` 에 따로 선다:
+ * 정한 것이 아니라 물음이 사라진 것이다.
  */
 
 import { useMemo, useState } from 'react'
@@ -101,6 +103,7 @@ export default function ReviewQueuePage() {
                 ['open', '남은 것'],
                 ['skipped', '건너뛴 것'],
                 ['decided', '정한 것'],
+                ['gone', '대상 없음'],
               ] as const
             ).map(([value, label]) => (
               <Button
@@ -134,11 +137,16 @@ export default function ReviewQueuePage() {
               row={row}
               multi={meta?.multi ?? false}
               directOptions={directOptions}
-              readOnly={status === 'decided'}
+              readOnly={status === 'decided' || status === 'gone'}
               onDecide={(choice, note) =>
                 act(row, () => reviewApi.decide(queue, row.id, choice, note))
               }
               onSkip={() => act(row, () => reviewApi.skip(queue, row.id))}
+              onReopen={
+                status === 'decided'
+                  ? () => act(row, () => reviewApi.reopen(queue, row.id))
+                  : undefined
+              }
             />
           ))}
         </ul>
@@ -180,6 +188,7 @@ function ProposalRow({
   readOnly,
   onDecide,
   onSkip,
+  onReopen,
 }: {
   row: ReviewProposal
   multi: boolean
@@ -187,6 +196,8 @@ function ProposalRow({
   readOnly: boolean
   onDecide: (choice: string[], note?: string) => Promise<void>
   onSkip: () => Promise<void>
+  /** 정한 줄에서만 — 다시 열어 다른 걸로 고른다. */
+  onReopen?: () => Promise<void>
 }) {
   const [picked, setPicked] = useState<string[]>([])
   const [direct, setDirect] = useState('')
@@ -238,24 +249,57 @@ function ProposalRow({
       </div>
 
       {readOnly ? (
-        <p className="mt-2 text-sm">
-          <span className="font-medium">
-            {(row.choice ?? []).length === 0
-              ? '해당 없음'
-              : (row.choice ?? [])
-                  .map(
-                    (code) => row.candidates.find((one) => one.code === code)?.label ?? code,
-                  )
-                  .join(' · ')}
-          </span>
-          <span className="text-muted-foreground">
-            {' '}
-            — {row.decided_by ?? '?'} · {shownDateTime(row.decided_at)}
-            {row.followed === true && ' · 추천대로'}
-            {row.followed === false && ' · 추천과 다르게'}
-          </span>
-          {row.note && <span className="text-muted-foreground block text-xs">{row.note}</span>}
-        </p>
+        <div className="mt-2 flex items-start justify-between gap-3 text-sm">
+          <p className="min-w-0">
+            {row.status === 'gone' ? (
+              // **정한 것이 아니다.** 물음 자체가 사라진 것 — 정한 것과 섞이면 셈이 틀린다.
+              <span className="text-muted-foreground">
+                {row.decided_by ?? '대상 없어짐'} · {shownDateTime(row.decided_at)}
+              </span>
+            ) : (
+              <>
+                <span className="font-medium">
+                  {(row.choice ?? []).length === 0
+                    ? '해당 없음'
+                    : (row.choice ?? [])
+                        .map(
+                          (code) =>
+                            row.candidates.find((one) => one.code === code)?.label ?? code,
+                        )
+                        .join(' · ')}
+                </span>
+                <span className="text-muted-foreground">
+                  {' '}
+                  — {row.decided_by ?? '?'} · {shownDateTime(row.decided_at)}
+                  {row.followed === true && ' · 추천대로'}
+                  {row.followed === false && ' · 추천과 다르게'}
+                </span>
+              </>
+            )}
+            {row.note && (
+              <span className="text-muted-foreground block text-xs">{row.note}</span>
+            )}
+          </p>
+          {onReopen && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="shrink-0"
+              disabled={busy}
+              title="다른 걸로 고르려고 다시 엽니다. 이미 일어난 일(지운 연결·만든 정의)은 안 되돌립니다."
+              onClick={async () => {
+                setBusy(true)
+                try {
+                  await onReopen()
+                } finally {
+                  setBusy(false)
+                }
+              }}
+            >
+              다시 열기
+            </Button>
+          )}
+        </div>
       ) : (
         <>
           <ul className="mt-3 space-y-1">

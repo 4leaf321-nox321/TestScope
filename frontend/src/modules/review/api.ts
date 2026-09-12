@@ -21,5 +21,8 @@ export const reviewApi = {
   decide: (queue: string, id: string, choice: string[], note?: string) =>
     api.post<ReviewProposal>(`/review/${queue}/${id}/decide`, { choice, note: note || null }),
   skip: (queue: string, id: string) => api.post<ReviewProposal>(`/review/${queue}/${id}/skip`),
+  /** 정한 것을 다시 연다. 이미 일어난 일은 안 되돌린다 — 그건 원래 화면에서. */
+  reopen: (queue: string, id: string) =>
+    api.post<ReviewProposal>(`/review/${queue}/${id}/reopen`),
   refresh: () => api.post<{ open: Record<string, number> }>('/review/refresh'),
 }

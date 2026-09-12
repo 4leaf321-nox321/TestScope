@@ -476,3 +476,86 @@ def test_물성_연결은_확인하거나_끊고_사양은_정의로_올린다(
         ).json()
         keys = {one["key"] for group in sheet["groups"] for one in group["items"]}
         assert key in keys
+
+
+def test_대상이_지워지면_정한_것이_아니라_대상_없어짐으로_닫힌다(
+    client: TestClient, admin: Signed, db: Session
+) -> None:
+    a_id, _ = _item(client, admin, "인장")
+    b_id, _ = _item(client, admin, "압축")
+    method = _cited_method(client, admin, [a_id, b_id])
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+    gone = client.delete(f"/api/methods/{method['id']}", headers=admin.headers)
+    assert gone.status_code in (200, 204), gone.text
+    client.post("/api/review/refresh", headers=admin.headers)
+    after = next(
+        one
+        for one in _rows(client, admin, "method_test_items", status="gone")
+        if one["id"] == row["id"]
+    )
+    assert after["decided_by"] == "규격이 지워짐"
+    assert after["choice"] is None
+    # 대상이 없으니 고를 수도, 다시 열 수도 없다.
+    assert (
+        client.post(
+            f"/api/review/method_test_items/{row['id']}/decide",
+            json={"choice": ["tensile"]},
+            headers=admin.headers,
+        ).status_code
+        == 409
+    )
+    queues = {
+        one["key"]: one for one in client.get("/api/review", headers=admin.headers).json()
+    }
+    assert queues["method_test_items"]["gone"] >= 1
+
+
+def test_정한_것은_다시_열어_다른_걸로_고를_수_있다(
+    client: TestClient, admin: Signed, db: Session
+) -> None:
+    a_id, a = _item(client, admin, "인장")
+    b_id, b = _item(client, admin, "압축")
+    method = _cited_method(client, admin, [a_id, b_id])
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+    first = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [a]},
+        headers=admin.headers,
+    )
+    assert first.status_code == 200, first.text
+
+    reopened = client.post(
+        f"/api/review/method_test_items/{row['id']}/reopen", headers=admin.headers
+    )
+    assert reopened.status_code == 200, reopened.text
+    assert reopened.json()["status"] == "open"
+    assert "다시 열림" in (reopened.json()["note"] or "")
+    # 실제 데이터는 그대로다 — 다시 여는 것은 되돌리는 것이 아니다.
+    shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
+    assert shown["test_item_term_id"] == a_id
+
+    second = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [b]},
+        headers=admin.headers,
+    )
+    assert second.status_code == 200, second.text
+    shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
+    assert shown["test_item_term_id"] == b_id
+    kinds = [
+        one.action
+        for one in db.scalars(
+            select(AuditEntry).where(AuditEntry.target_id == uuid.UUID(row["id"]))
+        )
+    ]
+    assert kinds.count(audit.REVIEW_DECIDED) == 2 and audit.REVIEW_REOPENED in kinds

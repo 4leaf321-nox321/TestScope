@@ -64,7 +64,8 @@ class ReviewProposal(Base):
     status: Mapped[str] = mapped_column(
         String(20), default="open", server_default="open", index=True
     )
-    """open · decided · skipped. 건너뛴 것은 다음에 다시 뜬다(다시 열 수 있다)."""
+    """open · decided · skipped · gone. 건너뛴 것은 다시 뜬다; 정한 것은 「다시 열기」 로
+    열린다; gone 은 대상(규격·연결·사양 줄)이 지워져 물음 자체가 없어진 것이라 안 열린다."""
     choice: Mapped[list[str] | None] = mapped_column(JSONB, nullable=True)
     """고른 후보 코드들. 빈 목록은 「해당 없음」 — 축이 없는 게 맞다 같은 결정."""
     followed: Mapped[bool | None] = mapped_column(nullable=True)

@@ -18,6 +18,8 @@ class QueueOut(BaseModel):
     open: int
     decided: int
     skipped: int
+    gone: int
+    """대상이 없어져 닫힌 것 — 정한 것과 다르다."""
 
 
 class CandidateOut(BaseModel):
@@ -43,6 +45,7 @@ class ProposalOut(BaseModel):
     candidates: list[CandidateOut]
     payload: dict[str, Any]
     status: str
+    """open · decided · skipped · gone(대상 없어짐)."""
     choice: list[str] | None
     followed: bool | None
     note: str | None

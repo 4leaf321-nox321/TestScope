@@ -64,6 +64,7 @@ export default function ReviewPage() {
             <p className="text-muted-foreground mt-1 text-sm">{one.description}</p>
             <p className="text-muted-foreground mt-2 text-xs">
               정함 {one.decided} · 건너뜀 {one.skipped}
+              {one.gone > 0 && ` · 대상 없어짐 ${one.gone}`}
             </p>
             <div className="mt-3">
               {one.open > 0 ? (
