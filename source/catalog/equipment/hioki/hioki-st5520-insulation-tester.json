@@ -8,32 +8,168 @@
   "category": "insulation_tester",
   "form_factor": "benchtop",
   "description": "생산라인용 고속 절연저항 시험기. 시험 전압 25~1000 V 를 임의 설정하고 2 MΩ~4000 MΩ 레인지에서 측정한다. 업계 최속 판정(구형 대비 약 990 ms 단축)으로 택트 타임을 줄이고, 절연 시험 전 미세 단락(micro-short) 검사와 접촉 확인 기능으로 불량 유출을 막는다. 리튬이온 전지·전자부품의 절연 검사에 사용. 아날로그 출력(0~4 V, FULL/EACH 두 방식), RS-232C·D-sub9 제어 인터페이스 제공.",
-  "test_items": ["insulation_resistance"],
-  "measurands": ["insulation_resistance", "leakage_current"],
-  "materials": ["lithium-ion cells", "electronic components", "motors", "transformers", "cables", "PCB assemblies"],
-  "standards": {"compliance": [], "test_methods": ["IEC 60950", "IEC 62368-1", "JIS C 1302"]},
+  "test_items": [
+    "insulation_resistance"
+  ],
+  "measurands": [
+    "insulation_resistance",
+    "leakage_current"
+  ],
+  "materials": [
+    "lithium-ion cells",
+    "electronic components",
+    "motors",
+    "transformers",
+    "cables",
+    "PCB assemblies"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "IEC 60950",
+      "IEC 62368-1",
+      "JIS C 1302"
+    ]
+  },
   "limits": {
-    "insulation_test_voltage_V": {"min": 25, "max": 1000, "note": "레인지별 상한: 100~499 V 는 2000 MΩ, 500~1000 V 는 4000 MΩ"},
-    "insulation_resistance_ohm": {"min": 0, "max": 4000000000, "note": "2 MΩ / 20 MΩ / 200 MΩ / 2000 MΩ / 4000 MΩ 레인지"},
-    "response_time_ms": {"max": 20, "note": "판정 출력 5 ms MAX / 20 ms MAX (조건별)"}
+    "insulation_test_voltage_V": {
+      "min": 25,
+      "max": 1000,
+      "note": "레인지별 상한: 100~499 V 는 2000 MΩ, 500~1000 V 는 4000 MΩ"
+    },
+    "insulation_resistance_ohm": {
+      "min": 0,
+      "max": 4000000000,
+      "note": "2 MΩ / 20 MΩ / 200 MΩ / 2000 MΩ / 4000 MΩ 레인지"
+    },
+    "response_time_ms": {
+      "max": 20,
+      "note": "판정 출력 5 ms MAX / 20 ms MAX (조건별)"
+    }
   },
   "models": [
-    {"model": "ST5520", "specs": {"test_voltage_V": {"min": 25, "max": 1000}, "ranges_Mohm": [2, 20, 200, 2000, 4000], "analog_output_V": {"min": 0, "max": 4}, "interfaces": ["RS-232C", "D-sub9 (외부 I/O)"]}},
-    {"model": "ST5520-01", "specs": {"note": "인터페이스 사양 차이 모델"}, "uncertain": true}
+    {
+      "model": "ST5520",
+      "specs": {
+        "test_voltage_V": {
+          "min": 25,
+          "max": 1000
+        },
+        "ranges_Mohm": [
+          2,
+          20,
+          200,
+          2000,
+          4000
+        ],
+        "analog_output_V": {
+          "min": 0,
+          "max": 4
+        },
+        "interfaces": [
+          "RS-232C",
+          "D-sub9 (외부 I/O)"
+        ]
+      }
+    },
+    {
+      "model": "ST5520-01",
+      "specs": {
+        "note": "인터페이스 사양 차이 모델",
+        "test_voltage_V": {
+          "min": 25,
+          "max": 1000
+        },
+        "ranges_Mohm": [
+          2,
+          20,
+          200,
+          2000,
+          4000
+        ],
+        "analog_output_V": {
+          "min": 0,
+          "max": 4
+        }
+      },
+      "uncertain": true
+    }
   ],
   "range_table": [
-    {"range": "2 MΩ", "displayed": "0.000~2.000 MΩ", "analog_out_V": [0, 4]},
-    {"range": "20 MΩ", "displayed": "1.90~20.00 MΩ", "analog_out_V": [0.38, 4]},
-    {"range": "200 MΩ", "displayed": "19.0~200.0 MΩ", "analog_out_V": [0.38, 4]},
-    {"range": "2000 MΩ (100~499 V)", "displayed": "190~2000 MΩ", "analog_out_V": [0.38, 4]},
-    {"range": "4000 MΩ (500~1000 V)", "displayed": "190~4000 MΩ", "analog_out_V": [0.19, 4]}
+    {
+      "range": "2 MΩ",
+      "displayed": "0.000~2.000 MΩ",
+      "analog_out_V": [
+        0,
+        4
+      ]
+    },
+    {
+      "range": "20 MΩ",
+      "displayed": "1.90~20.00 MΩ",
+      "analog_out_V": [
+        0.38,
+        4
+      ]
+    },
+    {
+      "range": "200 MΩ",
+      "displayed": "19.0~200.0 MΩ",
+      "analog_out_V": [
+        0.38,
+        4
+      ]
+    },
+    {
+      "range": "2000 MΩ (100~499 V)",
+      "displayed": "190~2000 MΩ",
+      "analog_out_V": [
+        0.38,
+        4
+      ]
+    },
+    {
+      "range": "4000 MΩ (500~1000 V)",
+      "displayed": "190~4000 MΩ",
+      "analog_out_V": [
+        0.19,
+        4
+      ]
+    }
   ],
-  "features": ["업계 최속 절연저항 판정(약 990 ms 단축)", "미세 단락 사전 검사", "접촉 확인 기능", "잔류 전하 방전 처리", "아날로그 출력 FULL/EACH 선택", "RS-232C 로 PC·PLC 결과 수집", "다수 판정 구간"],
-  "options": ["RS-232C 케이블 9638", "외부 I/O 커넥터"],
+  "features": [
+    "업계 최속 절연저항 판정(약 990 ms 단축)",
+    "미세 단락 사전 검사",
+    "접촉 확인 기능",
+    "잔류 전하 방전 처리",
+    "아날로그 출력 FULL/EACH 선택",
+    "RS-232C 로 PC·PLC 결과 수집",
+    "다수 판정 구간"
+  ],
+  "options": [
+    "RS-232C 케이블 9638",
+    "외부 I/O 커넥터"
+  ],
   "relations": [
-    {"type": "performs", "target": "insulation_resistance"},
-    {"type": "same_family_as", "target": "chroma-19032-safety-analyzer", "note": "생산라인 전기안전 시험 대체·보완 관계"}
+    {
+      "type": "performs",
+      "target": "insulation_resistance"
+    },
+    {
+      "type": "same_family_as",
+      "target": "chroma-19032-safety-analyzer",
+      "note": "생산라인 전기안전 시험 대체·보완 관계"
+    }
   ],
-  "sources": [{"file": "hioki/st5520-insulation-tester-datasheet.pdf", "pages": [1, 2, 6]}],
+  "sources": [
+    {
+      "file": "hioki/st5520-insulation-tester-datasheet.pdf",
+      "pages": [
+        1,
+        2,
+        6
+      ]
+    }
+  ],
   "confidence": "catalog"
 }

@@ -12,6 +12,13 @@
   {
    "origin": "materialtwin-20260905/instrument/197",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/tsd-tse-thermal-shock-chambers.pdf",
+   "pages": [
+    4
+   ],
+   "note": "현행 후속 모델 TSE-12-A 기준"
   }
  ],
  "confidence": "limited",
@@ -31,6 +38,18 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "chamber_volume_L": {
+     "max": 10.9,
+     "note": "현행 후속 TSE-12-A 시험 공간 10.9 L (W320×H148×D230)"
+    },
+    "inner_mm": {
+     "W": 320,
+     "H": 148,
+     "D": 230
+    },
+    "test_zones": "2존 엘리베이터식"
    }
   }
  ]

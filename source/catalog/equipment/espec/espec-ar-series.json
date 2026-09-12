@@ -25,6 +25,16 @@
   {
    "origin": "materialtwin-20260905/instrument/191",
    "note": "ESPEC AR series Temperature & Humidity Chamber · metrology_catalogs/reliability/ESPEC_AR_series.pdf"
+  },
+  {
+   "file": "espec/ar-series-standard-4k-ar02.pdf",
+   "pages": [
+    8,
+    9,
+    10,
+    11
+   ],
+   "note": "AR 시리즈 표준형(4 K/min) 사양표"
   }
  ],
  "confidence": "limited",
@@ -44,6 +54,45 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
     "source_title": "ESPEC AR series Temperature & Humidity Chamber",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -75,
+     "max": 180
+    },
+    "humidity_pct": {
+     "min": 10,
+     "max": 98
+    },
+    "chamber_volume_L": {
+     "min": 220,
+     "max": 1100,
+     "values": [
+      220,
+      390,
+      680,
+      1100
+     ]
+    },
+    "heating_rate_K_min": {
+     "min": 4.7,
+     "max": 6.0,
+     "note": "0220 6.0 · 0390 5.0 · 0680 6.0 · 1100 4.7"
+    },
+    "cooling_rate_K_min": {
+     "min": 4.0,
+     "max": 5.2,
+     "note": "0220 5.2 · 0390 4.0 · 0680 4.2 · 1100 4.1"
+    },
+    "inner_mm": "0220 W700×H800×D400 · 0390 W700×H800×D700 · 0680 W850×H1000×D800 · 1100 W1100×H1000×D1000",
+    "load_kg": {
+     "min": 50,
+     "max": 150
+    },
+    "weight_kg": {
+     "min": 390,
+     "max": 700
+    }
    }
   },
   {
@@ -59,6 +108,31 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
     "source_title": "ESPEC AR series Temperature & Humidity Chamber",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -75,
+     "max": 180
+    },
+    "chamber_volume_L": {
+     "min": 220,
+     "max": 1100,
+     "values": [
+      220,
+      390,
+      680,
+      1100
+     ]
+    },
+    "heating_rate_K_min": {
+     "min": 4.7,
+     "max": 6.0
+    },
+    "cooling_rate_K_min": {
+     "min": 4.0,
+     "max": 5.2
+    },
+    "inner_mm": "0220 W700×H800×D400 · 0390 W700×H800×D700 · 0680 W850×H1000×D800 · 1100 W1100×H1000×D1000"
    }
   },
   {
@@ -74,6 +148,37 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
     "source_title": "ESPEC AR series Temperature & Humidity Chamber",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -45,
+     "max": 180
+    },
+    "humidity_pct": {
+     "min": 10,
+     "max": 98
+    },
+    "chamber_volume_L": {
+     "min": 680,
+     "max": 1100,
+     "values": [
+      680,
+      1100
+     ]
+    },
+    "heating_rate_K_min": {
+     "min": 4.7,
+     "max": 6.3
+    },
+    "cooling_rate_K_min": {
+     "min": 4.4,
+     "max": 4.8
+    },
+    "inner_mm": "0680 W850×H1000×D800 · 1100 W1100×H1000×D1000",
+    "weight_kg": {
+     "min": 510,
+     "max": 600
+    }
    }
   },
   {
@@ -89,6 +194,33 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_AR_series.pdf",
     "source_title": "ESPEC AR series Temperature & Humidity Chamber",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -45,
+     "max": 180
+    },
+    "chamber_volume_L": {
+     "min": 680,
+     "max": 1100,
+     "values": [
+      680,
+      1100
+     ]
+    },
+    "heating_rate_K_min": {
+     "min": 4.7,
+     "max": 6.3
+    },
+    "cooling_rate_K_min": {
+     "min": 4.4,
+     "max": 4.8
+    },
+    "inner_mm": "0680 W850×H1000×D800 · 1100 W1100×H1000×D1000",
+    "weight_kg": {
+     "min": 505,
+     "max": 595
+    }
    }
   }
  ]

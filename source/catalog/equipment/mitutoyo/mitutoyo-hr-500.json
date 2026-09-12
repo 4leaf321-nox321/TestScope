@@ -26,6 +26,13 @@
   {
    "origin": "materialtwin-20260905/instrument/83",
    "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    33
+   ],
+   "note": "HR-511/521/522/523 사양표"
   }
  ],
  "confidence": "catalog",
@@ -59,6 +66,37 @@
       "notes": "최소표시가 사양표에 없어 분해능을 비웠다. HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": [
+     3,
+     10
+    ],
+    "test_load_kgf": {
+     "min": 15,
+     "max": 187.5,
+     "values": [
+      15,
+      30,
+      45,
+      60,
+      100,
+      150,
+      187.5
+     ]
+    },
+    "hardness_scales": "Rockwell + Superficial + Brinell(하중 시퀀스만)",
+    "specimen_height_mm": {
+     "max": 250,
+     "note": "L 형은 395 mm"
+    },
+    "specimen_depth_mm": 150,
+    "footprint_mm": {
+     "W": 250,
+     "D": 670,
+     "H": 605
+    },
+    "weight_kg": 60
    }
   },
   {
@@ -83,6 +121,37 @@
       "notes": "최소표시가 사양표에 없어 분해능을 비웠다. HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": [
+     3,
+     10
+    ],
+    "test_load_kgf": {
+     "min": 15,
+     "max": 187.5,
+     "values": [
+      15,
+      30,
+      45,
+      60,
+      100,
+      150,
+      187.5
+     ]
+    },
+    "hardness_scales": "Rockwell + Superficial + Brinell(하중 시퀀스만)",
+    "specimen_height_mm": {
+     "max": 250,
+     "note": "L 형은 395 mm"
+    },
+    "specimen_depth_mm": 150,
+    "footprint_mm": {
+     "W": 250,
+     "D": 670,
+     "H": 605
+    },
+    "weight_kg": 60
    }
   },
   {
@@ -107,6 +176,37 @@
       "notes": "최소표시가 사양표에 없어 분해능을 비웠다. HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": [
+     3,
+     10
+    ],
+    "test_load_kgf": {
+     "min": 15,
+     "max": 187.5,
+     "values": [
+      15,
+      30,
+      45,
+      60,
+      100,
+      150,
+      187.5
+     ]
+    },
+    "hardness_scales": "Rockwell + Superficial + Brinell(하중 시퀀스만)",
+    "specimen_height_mm": {
+     "max": 250,
+     "note": "L 형은 395 mm"
+    },
+    "specimen_depth_mm": 150,
+    "footprint_mm": {
+     "W": 250,
+     "D": 670,
+     "H": 605
+    },
+    "weight_kg": 60
    }
   },
   {
@@ -131,6 +231,37 @@
       "notes": "최소표시가 사양표에 없어 분해능을 비웠다. HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": [
+     3,
+     10
+    ],
+    "test_load_kgf": {
+     "min": 15,
+     "max": 187.5,
+     "values": [
+      15,
+      30,
+      45,
+      60,
+      100,
+      150,
+      187.5
+     ]
+    },
+    "hardness_scales": "Rockwell + Superficial + Brinell(하중 시퀀스만)",
+    "specimen_height_mm": {
+     "max": 250,
+     "note": "L 형은 395 mm"
+    },
+    "specimen_depth_mm": 150,
+    "footprint_mm": {
+     "W": 250,
+     "D": 670,
+     "H": 605
+    },
+    "weight_kg": 60
    }
   }
  ]

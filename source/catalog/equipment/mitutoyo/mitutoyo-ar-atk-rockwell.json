@@ -26,6 +26,13 @@
   {
    "origin": "materialtwin-20260905/instrument/79",
    "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    31
+   ],
+   "note": "ARK-600 / ATK-600 / AR-10 / AR-20 사양표"
   }
  ],
  "confidence": "catalog",
@@ -61,6 +68,21 @@
       "notes": "최소표시 0.1 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": 10,
+    "test_load_kgf": {
+     "min": 60,
+     "max": 150,
+     "values": [
+      60,
+      100,
+      150
+     ]
+    },
+    "hardness_scales": "Rockwell",
+    "specimen_height_mm": 165,
+    "specimen_depth_mm": 122
    }
   },
   {
@@ -87,6 +109,27 @@
       "notes": "최소표시 0.1 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": [
+     3,
+     10
+    ],
+    "test_load_kgf": {
+     "min": 15,
+     "max": 150,
+     "values": [
+      15,
+      30,
+      45,
+      60,
+      100,
+      150
+     ]
+    },
+    "hardness_scales": "Rockwell + Superficial",
+    "specimen_height_mm": 140,
+    "specimen_depth_mm": 122
    }
   },
   {
@@ -113,6 +156,21 @@
       "notes": "최소표시 0.5 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": 10,
+    "test_load_kgf": {
+     "min": 60,
+     "max": 150,
+     "values": [
+      60,
+      100,
+      150
+     ]
+    },
+    "hardness_scales": "Rockwell (아날로그 다이얼)",
+    "specimen_height_mm": 140,
+    "specimen_depth_mm": 122
    }
   },
   {
@@ -139,6 +197,21 @@
       "notes": "최소표시 0.5 HR 를 분해능으로 넣었다(단위 HRC). HRC 는 원뿔 다이아몬드 압자 + 총하중 1471 N 조건이다."
      }
     ]
+   },
+   "specs": {
+    "preliminary_force_kgf": 10,
+    "test_load_kgf": {
+     "min": 60,
+     "max": 150,
+     "values": [
+      60,
+      100,
+      150
+     ]
+    },
+    "hardness_scales": "Rockwell (아날로그 다이얼)",
+    "specimen_height_mm": 140,
+    "specimen_depth_mm": 122
    }
   }
  ]

@@ -13,6 +13,11 @@
   {
    "origin": "materialtwin-20260905/instrument/204",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "url": "https://espec.com/na/products/family/agree",
+   "retrieved": "2026-09-12",
+   "note": "ET 시리즈는 현행 라인업(EAZ/EADZ)으로 대체됨 — 가족 공통 범위(웹)"
   }
  ],
  "confidence": "limited",
@@ -32,6 +37,21 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -65,
+     "max": 150
+    },
+    "heating_rate_K_min": {
+     "max": 18,
+     "note": "모델에 따라 3.5~18 °C/min (현행 EAZ/EADZ 기준)"
+    },
+    "chamber_volume_L": {
+     "min": 425,
+     "max": 3228,
+     "note": "15~114 cu ft (현행 EAZ/EADZ 기준)"
+    }
    }
   }
  ]

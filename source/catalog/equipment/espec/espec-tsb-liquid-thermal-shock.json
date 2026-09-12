@@ -12,6 +12,13 @@
   {
    "origin": "materialtwin-20260905/instrument/196",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/tsb-liquid-thermal-shock.pdf",
+   "pages": [
+    8
+   ],
+   "note": "TSB-22/52 사양표 (현행 모델; TSB-2/5 후속)"
   }
  ],
  "confidence": "limited",
@@ -31,6 +38,30 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -65,
+     "max": 200,
+     "note": "고온조 +70~+200 · 저온조 −65~0 (현행 TSB-22/52 기준)"
+    },
+    "chamber_volume_L": {
+     "values": [
+      2.1,
+      4.5
+     ],
+     "note": "시편 바스켓 TSB-22 W120×H150×D120 (2.1 L) · TSB-52 W150×H150×D200 (4.5 L)"
+    },
+    "load_kg": {
+     "values": [
+      1.0,
+      2.0
+     ]
+    },
+    "weight_kg": {
+     "min": 650,
+     "max": 790
+    }
    }
   }
  ]

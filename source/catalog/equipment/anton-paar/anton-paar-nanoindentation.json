@@ -7,23 +7,153 @@
   "category": "instrumented_indentation",
   "form_factor": "benchtop",
   "description": "NHT3: 0.1–500 mN(웹 검색 요약), 상면 참조(top surface referencing)로 열안정 대기 불요, Quick Matrix 600 회/h. UNHT3: 초고분해능, 열드리프트 10 fm/s 능동 표면 참조, HTV 진공 800 °C, Bio 연질·생체. Hit 300: 범용 보급형. NST3: 나노 스크래치.",
-  "test_items": ["instrumented_indentation", "friction_wear_tribo"],
-  "measurands": ["indentation_hardness", "indentation_modulus", "creep", "viscoelastic_properties", "scratch_resistance"],
-  "materials": ["thin films", "coatings", "hard materials", "soft materials", "biological materials", "polymers"],
-  "standards": {"compliance": [], "test_methods": ["ISO 14577", "ASTM E2546"]},
+  "test_items": [
+    "instrumented_indentation",
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "indentation_hardness",
+    "indentation_modulus",
+    "creep",
+    "viscoelastic_properties",
+    "scratch_resistance"
+  ],
+  "materials": [
+    "thin films",
+    "coatings",
+    "hard materials",
+    "soft materials",
+    "biological materials",
+    "polymers"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ISO 14577",
+      "ASTM E2546"
+    ]
+  },
   "limits": {
-    "indentation_force_mN": {"min": 0.1, "max": 500, "note": "NHT3 (웹 요약); UNHT3 는 더 낮은 하중 — 수치 미기재", "uncertain": true},
-    "temperature_degC": {"max": 800, "note": "UNHT3 HTV 진공 챔버"}
+    "indentation_force_mN": {
+      "min": 0.1,
+      "max": 500,
+      "note": "NHT3 (웹 요약); UNHT3 는 더 낮은 하중 — 수치 미기재",
+      "uncertain": true
+    },
+    "temperature_degC": {
+      "max": 800,
+      "note": "UNHT3 HTV 진공 챔버"
+    }
   },
   "models": [
-    {"model": "UNHT3", "specs": {"thermal_drift_fm_s": 10, "referencing": "active surface referencing"}},
-    {"model": "UNHT3 HTV", "specs": {"temperature_degC": {"max": 800}, "environment": "vacuum"}},
-    {"model": "UNHT3 Bio", "specs": {"note": "soft & biological materials"}},
-    {"model": "NHT3", "specs": {"indentation_force_mN": {"min": 0.1, "max": 500}, "throughput_per_h": 600}, "uncertain": true},
-    {"model": "Hit 300", "specs": {"note": "general purpose"}},
-    {"model": "NST3", "specs": {"note": "nano scratch tester"}}
+    {
+      "model": "UNHT3",
+      "specs": {
+        "thermal_drift_fm_s": 10,
+        "referencing": "active surface referencing"
+      }
+    },
+    {
+      "model": "UNHT3 HTV",
+      "specs": {
+        "temperature_degC": {
+          "max": 800
+        },
+        "environment": "vacuum"
+      }
+    },
+    {
+      "model": "UNHT3 Bio",
+      "specs": {
+        "note": "soft & biological materials",
+        "test_force_mN": {
+          "max": 20
+        },
+        "indentation_depth_um": {
+          "max": 100
+        },
+        "depth_resolution_nm": 0.006,
+        "load_resolution_uN": 0.001
+      }
+    },
+    {
+      "model": "NHT3",
+      "specs": {
+        "indentation_force_mN": {
+          "min": 0.1,
+          "max": 500
+        },
+        "throughput_per_h": 600
+      },
+      "uncertain": true
+    },
+    {
+      "model": "Hit 300",
+      "specs": {
+        "note": "general purpose",
+        "test_force_mN": {
+          "max": 500
+        },
+        "indentation_depth_um": {
+          "max": 200
+        },
+        "depth_resolution_nm": 0.01,
+        "load_resolution_uN": 0.02,
+        "stage_travel_mm": 40,
+        "footprint_mm": {
+          "W": 269,
+          "D": 259,
+          "H": 420
+        },
+        "weight_kg": 13.5
+      }
+    },
+    {
+      "model": "NST3",
+      "specs": {
+        "note": "nano scratch tester",
+        "test_force_mN": {
+          "max": 1000
+        },
+        "friction_force_mN": {
+          "max": 1000
+        },
+        "indentation_depth_um": {
+          "max": 600
+        },
+        "depth_resolution_nm": 0.1,
+        "load_resolution_uN": 0.01,
+        "scratch_speed_mm_min": {
+          "min": 0.1,
+          "max": 600
+        }
+      }
+    }
   ],
   "relations": [],
-  "sources": [{"file": "anton-paar/document-17877.pdf", "pages": [8], "note": "종합 카탈로그 소개문만 — 전용 데이터시트 미확보(anton-paar.com 문서 다운로드가 카탈로그 전체 PDF 로 연결됨)"}],
+  "sources": [
+    {
+      "file": "anton-paar/document-17877.pdf",
+      "pages": [
+        8
+      ],
+      "note": "종합 카탈로그 소개문만 — 전용 데이터시트 미확보(anton-paar.com 문서 다운로드가 카탈로그 전체 PDF 로 연결됨)"
+    },
+    {
+      "url": "https://www.anton-paar.com/us-en/products/details/hit-300/",
+      "retrieved": "2026-09-12",
+      "note": "제조사 제품 페이지 사양표(웹)"
+    },
+    {
+      "url": "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+      "retrieved": "2026-09-12",
+      "note": "제조사 제품 페이지 사양표(웹)"
+    },
+    {
+      "url": "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+      "retrieved": "2026-09-12",
+      "note": "제조사 제품 페이지 사양표(웹)"
+    }
+  ],
   "confidence": "limited"
 }

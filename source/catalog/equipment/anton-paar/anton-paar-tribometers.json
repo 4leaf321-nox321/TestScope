@@ -7,29 +7,268 @@
   "category": "tribometer",
   "form_factor": "benchtop",
   "description": "TRB3: 데드웨이트 수직력 ≤60 N, 마찰력 ≤20 N(0.06 mN), 회전 0.2–2000 rpm, 반경 ≤40 mm, 왕복 60 mm/370 mm/s/10 Hz, 450 °C(건식), 진공 1e-7 mbar, RH 15–95 %. THT: 800/1000 °C 고온. NTR3: 5 µN–1000 mN(0.003 µN). MCR 트라이보미터(레오미터 기반): 1 nNm–300 mNm, 10^-8–3.3 m/s, -160~600 °C(T-BTP), 접촉압 kPa–1.2 GPa.",
-  "test_items": ["friction_wear_tribo"],
-  "measurands": ["friction_coefficient", "wear_rate", "wear_depth", "electrical_contact_resistance", "stribeck_curve"],
-  "materials": ["coatings", "lubricants", "greases", "polymers", "metals", "ceramics", "asphalt", "cosmetics", "food", "cartilage"],
-  "standards": {"compliance": [], "test_methods": ["ASTM G99", "ASTM G133", "DIN 50324", "ISO 18535"]},
+  "test_items": [
+    "friction_wear_tribo"
+  ],
+  "measurands": [
+    "friction_coefficient",
+    "wear_rate",
+    "wear_depth",
+    "electrical_contact_resistance",
+    "stribeck_curve"
+  ],
+  "materials": [
+    "coatings",
+    "lubricants",
+    "greases",
+    "polymers",
+    "metals",
+    "ceramics",
+    "asphalt",
+    "cosmetics",
+    "food",
+    "cartilage"
+  ],
+  "standards": {
+    "compliance": [],
+    "test_methods": [
+      "ASTM G99",
+      "ASTM G133",
+      "DIN 50324",
+      "ISO 18535"
+    ]
+  },
   "limits": {
-    "force_N": {"min": 0.000005, "max": 70},
-    "temperature_degC": {"min": -160, "max": 1000},
-    "humidity_pct": {"min": 5, "max": 95},
-    "rotation_rpm": {"min": 0.000001, "max": 3000},
-    "sliding_speed_m_s": {"min": 0.00000001, "max": 3.3},
-    "frequency_Hz": {"min": 0.01, "max": 10},
-    "torque_mNm": {"max": 450}
+    "force_N": {
+      "min": 5e-06,
+      "max": 70
+    },
+    "temperature_degC": {
+      "min": -160,
+      "max": 1000
+    },
+    "humidity_pct": {
+      "min": 5,
+      "max": 95
+    },
+    "rotation_rpm": {
+      "min": 1e-06,
+      "max": 3000
+    },
+    "sliding_speed_m_s": {
+      "min": 1e-08,
+      "max": 3.3
+    },
+    "frequency_Hz": {
+      "min": 0.01,
+      "max": 10
+    },
+    "torque_mNm": {
+      "max": 450
+    }
   },
   "models": [
-    {"model": "TRB3 (standard pin-on-disk)", "specs": {"normal_force_N": {"max": 60}, "friction_force_N": {"max": 20, "resolution_mN": 0.06}, "rotation_rpm": {"min": 0.2, "max": 2000}, "radius_mm": {"max": 40}, "torque_mNm": 450, "reciprocating": {"stroke_mm": 60, "speed_mm_s": 370, "frequency_Hz": {"min": 0.01, "max": 10}}, "rotational_reciprocating": {"frequency_Hz": {"max": 7}, "amplitude_deg": [5, 150]}, "wear_depth_mm": {"min": -2, "max": 2}, "temperature_degC": {"max": 450, "note": "dry; 150 liquid"}, "vacuum_mbar": 0.0000001, "humidity_pct": [15, 95]}},
-    {"model": "THT (high temperature 800 / 1000 °C)", "specs": {"normal_force_N": {"max": 60}, "friction_force_N": {"max": 10, "option": 20, "resolution_mN": 0.03}, "rotation_rpm": {"min": 0.3, "max": 600, "option": 1500}, "radius_mm": [0.5, 35], "temperature_degC": {"max": 1000}, "wear_depth_mm": 1.2}},
-    {"model": "NTR3 (nano tribometer)", "specs": {"normal_force_mN": {"min": 0.005, "max": 1000}, "normal_force_resolution_uN": 0.003, "friction_force_mN": {"min": 0.005, "max": 1000}, "rotation_rpm": {"min": 1, "max": 200}, "radius_mm": [0.1, 20], "reciprocating": {"stroke_mm": 5, "speed_mm_s": 26.6, "frequency_Hz": {"max": 10}}, "wear_depth_um": 250}},
-    {"model": "TRB RH (relative humidity chamber)", "specs": {"humidity_pct": [15, 95]}},
-    {"model": "MCR Tribometer T-PTD200 (Peltier)", "specs": {"temperature_degC": {"min": -40, "max": 200}, "normal_force_N": {"min": 1, "max": 50}, "rotation_rpm": {"min": 0.000001, "max": 3000}, "sliding_speed_m_s": {"min": 0.00000001, "max": 3.3}, "torque": "1 nNm – 300 mNm, 0.1 nNm resolution", "contact_pressure": "kPa – 1.2 GPa"}},
-    {"model": "MCR Tribometer T-PID/44 (Peltier pin-on-disk)", "specs": {"temperature_degC": {"min": -30, "max": 190}, "normal_force_N": {"min": 1, "max": 50}, "rotation_rpm": {"max": 1000}, "sliding_speed_m_s": {"max": 2.3}}},
-    {"model": "MCR Tribometer T-BTP (electrical / CTD)", "specs": {"temperature_degC": {"min": -160, "max": 600}, "humidity_pct": [5, 95], "normal_force_N": {"min": 0.1, "max": 70}, "sliding_speed_m_s": {"max": 1.4}}}
+    {
+      "model": "TRB3 (standard pin-on-disk)",
+      "specs": {
+        "normal_force_N": {
+          "max": 60
+        },
+        "friction_force_N": {
+          "max": 20,
+          "resolution_mN": 0.06
+        },
+        "rotation_rpm": {
+          "min": 0.2,
+          "max": 2000
+        },
+        "radius_mm": {
+          "max": 40
+        },
+        "torque_mNm": 450,
+        "reciprocating": {
+          "stroke_mm": 60,
+          "speed_mm_s": 370,
+          "frequency_Hz": {
+            "min": 0.01,
+            "max": 10
+          }
+        },
+        "rotational_reciprocating": {
+          "frequency_Hz": {
+            "max": 7
+          },
+          "amplitude_deg": [
+            5,
+            150
+          ]
+        },
+        "wear_depth_mm": {
+          "min": -2,
+          "max": 2
+        },
+        "temperature_degC": {
+          "max": 450,
+          "note": "dry; 150 liquid"
+        },
+        "vacuum_mbar": 1e-07,
+        "humidity_pct": [
+          15,
+          95
+        ]
+      }
+    },
+    {
+      "model": "THT (high temperature 800 / 1000 °C)",
+      "specs": {
+        "normal_force_N": {
+          "max": 60
+        },
+        "friction_force_N": {
+          "max": 10,
+          "option": 20,
+          "resolution_mN": 0.03
+        },
+        "rotation_rpm": {
+          "min": 0.3,
+          "max": 600,
+          "option": 1500
+        },
+        "radius_mm": [
+          0.5,
+          35
+        ],
+        "temperature_degC": {
+          "max": 1000
+        },
+        "wear_depth_mm": 1.2
+      }
+    },
+    {
+      "model": "NTR3 (nano tribometer)",
+      "specs": {
+        "normal_force_mN": {
+          "min": 0.005,
+          "max": 1000
+        },
+        "normal_force_resolution_uN": 0.003,
+        "friction_force_mN": {
+          "min": 0.005,
+          "max": 1000
+        },
+        "rotation_rpm": {
+          "min": 1,
+          "max": 200
+        },
+        "radius_mm": [
+          0.1,
+          20
+        ],
+        "reciprocating": {
+          "stroke_mm": 5,
+          "speed_mm_s": 26.6,
+          "frequency_Hz": {
+            "max": 10
+          }
+        },
+        "wear_depth_um": 250
+      }
+    },
+    {
+      "model": "TRB RH (relative humidity chamber)",
+      "specs": {
+        "humidity_pct": [
+          15,
+          95
+        ],
+        "normal_force_N": {
+          "max": 60
+        },
+        "friction_force_N": {
+          "max": 20
+        }
+      }
+    },
+    {
+      "model": "MCR Tribometer T-PTD200 (Peltier)",
+      "specs": {
+        "temperature_degC": {
+          "min": -40,
+          "max": 200
+        },
+        "normal_force_N": {
+          "min": 1,
+          "max": 50
+        },
+        "rotation_rpm": {
+          "min": 1e-06,
+          "max": 3000
+        },
+        "sliding_speed_m_s": {
+          "min": 1e-08,
+          "max": 3.3
+        },
+        "torque": "1 nNm – 300 mNm, 0.1 nNm resolution",
+        "contact_pressure": "kPa – 1.2 GPa"
+      }
+    },
+    {
+      "model": "MCR Tribometer T-PID/44 (Peltier pin-on-disk)",
+      "specs": {
+        "temperature_degC": {
+          "min": -30,
+          "max": 190
+        },
+        "normal_force_N": {
+          "min": 1,
+          "max": 50
+        },
+        "rotation_rpm": {
+          "max": 1000
+        },
+        "sliding_speed_m_s": {
+          "max": 2.3
+        }
+      }
+    },
+    {
+      "model": "MCR Tribometer T-BTP (electrical / CTD)",
+      "specs": {
+        "temperature_degC": {
+          "min": -160,
+          "max": 600
+        },
+        "humidity_pct": [
+          5,
+          95
+        ],
+        "normal_force_N": {
+          "min": 0.1,
+          "max": 70
+        },
+        "sliding_speed_m_s": {
+          "max": 1.4
+        }
+      }
+    }
   ],
-  "relations": [{"type": "fits_on", "target": "anton-paar-mcr-rheometer", "note": "MCR 트라이보미터 셀은 MCR 레오미터에 장착"}],
-  "sources": [{"file": "anton-paar/tribometers-overview.pdf", "pages": [4, 5, 6], "note": "유통사(mtbrandao) 미러"}],
+  "relations": [
+    {
+      "type": "fits_on",
+      "target": "anton-paar-mcr-rheometer",
+      "note": "MCR 트라이보미터 셀은 MCR 레오미터에 장착"
+    }
+  ],
+  "sources": [
+    {
+      "file": "anton-paar/tribometers-overview.pdf",
+      "pages": [
+        4,
+        5,
+        6
+      ],
+      "note": "유통사(mtbrandao) 미러"
+    }
+  ],
   "confidence": "catalog"
 }

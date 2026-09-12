@@ -12,6 +12,14 @@
   {
    "origin": "materialtwin-20260905/instrument/201",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/sh-benchtop-chambers.pdf",
+   "pages": [
+    10,
+    12
+   ],
+   "note": "SH/SU 벤치탑 사양표"
   }
  ],
  "confidence": "limited",
@@ -33,6 +41,34 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -60,
+     "max": 150,
+     "note": "-222 −20 · -242/-642 −40 · -262/-662 −60 ~ +150 (옵션 +180); SH 는 온습도, SU 는 온도 전용"
+    },
+    "humidity_pct": {
+     "min": 30,
+     "max": 95,
+     "note": "SH 만"
+    },
+    "chamber_volume_L": {
+     "values": [
+      22.5,
+      64
+     ],
+     "note": "2xx 22.5 L (W300×H300×D250) · 6xx 64 L (W400×H400×D400)"
+    },
+    "heating_rate_K_min": {
+     "min": 2.9,
+     "max": 5.0,
+     "note": "급속형 -242-5 는 5.0"
+    },
+    "weight_kg": {
+     "min": 83,
+     "max": 130
+    }
    }
   }
  ]

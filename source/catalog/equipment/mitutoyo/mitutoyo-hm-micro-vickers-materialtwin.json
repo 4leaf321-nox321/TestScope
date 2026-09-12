@@ -36,6 +36,13 @@
   {
    "origin": "materialtwin-20260905/instrument/70",
    "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    11
+   ],
+   "note": "HM-100 시리즈 사양표"
   }
  ],
  "confidence": "catalog",
@@ -79,6 +86,30 @@
       "notes": "**옵션 압자 장착 시의 능력이다** — 기본 구성은 비커스 압자이고 누프 압자(19BAA061)가 별매 부속품으로 이 기종에 적용된다고 인쇄돼 있다. 시험력 98.07 mN ~ 9.807 N (10~1000 gf)(누프 하중조건은 따로 인쇄돼 있지 않아 비커스와 같은 하중단을 쓰는 것으로 읽었다). 경도 측정범위·정확도·규격번호는 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_gf": {
+     "min": 10,
+     "max": 1000,
+     "values": [
+      10,
+      25,
+      50,
+      100,
+      200,
+      300,
+      500,
+      1000
+     ]
+    },
+    "specimen_height_mm": 95,
+    "specimen_depth_mm": 150,
+    "footprint_mm": {
+     "W": 410,
+     "D": 600,
+     "H": 590
+    },
+    "weight_kg": 42
    }
   },
   {
@@ -111,6 +142,37 @@
       "notes": "**옵션 압자 장착 시의 능력이다** — 기본 구성은 비커스 압자이고 누프 압자(19BAA062)가 별매 부속품으로 이 기종에 적용된다고 인쇄돼 있다. 시험력 4.904 mN ~ 19.61 N (0.5~2000 gf)(누프 하중조건은 따로 인쇄돼 있지 않아 비커스와 같은 하중단을 쓰는 것으로 읽었다). 경도 측정범위·정확도·규격번호는 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_gf": {
+     "min": 0.5,
+     "max": 2000,
+     "values": [
+      0.5,
+      1,
+      2,
+      3,
+      4,
+      5,
+      10,
+      25,
+      50,
+      100,
+      200,
+      300,
+      500,
+      1000,
+      2000
+     ]
+    },
+    "specimen_height_mm": 95,
+    "specimen_depth_mm": 150,
+    "footprint_mm": {
+     "W": 410,
+     "D": 600,
+     "H": 590
+    },
+    "weight_kg": 42
    }
   }
  ]

@@ -22,6 +22,13 @@
   {
    "origin": "materialtwin-20260905/instrument/59",
    "note": "Mitutoyo HR-600 Series High-End CNC Rockwell Hardness Testing Machine · metrology_catalogs/mechanical/Mitutoyo_HR600.pdf"
+  },
+  {
+   "file": "mitutoyo/hr-600-series-bulletin-2295.pdf",
+   "pages": [
+    4
+   ],
+   "note": "HR-600 시리즈 라인업 — 시험력·시편 치수"
   }
  ],
  "confidence": "catalog",
@@ -55,6 +62,16 @@
       "notes": "로크웰 시험기지만 우리 키는 C 척도(HRC)만 있어 그 한 행만 만들었다. 브로슈어에 척도별 경도범위가 없어 범위는 비웠다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 3,
+     "max": 187.5
+    },
+    "hardness_scales": "Rockwell + Superficial + light-force Brinell",
+    "specimen_height_mm": 250,
+    "specimen_depth_mm": 220,
+    "table_load_kg": 100
    }
   },
   {
@@ -79,6 +96,16 @@
       "notes": "브리넬·플라스틱 경도는 별개 척도라 같은 행에 섞지 않았다(척도가 곧 물성이다)."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 1,
+     "max": 250
+    },
+    "hardness_scales": "Rockwell + Superficial + micro-Brinell + plastics",
+    "specimen_height_mm": 250,
+    "specimen_depth_mm": 220,
+    "table_load_kg": 100
    }
   },
   {
@@ -103,6 +130,19 @@
       "notes": "다점 자동측정 기능은 측정범위와 무관해 별도 행으로 두지 않았다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 1,
+     "max": 250
+    },
+    "hardness_scales": "Rockwell + Superficial + micro-Brinell + plastics — Y축 스테이지 다점 자동",
+    "specimen_height_mm": {
+     "max": 250,
+     "note": "X축 스테이지 장착 시 165 mm"
+    },
+    "specimen_depth_mm": 220,
+    "table_load_kg": 100
    }
   }
  ]

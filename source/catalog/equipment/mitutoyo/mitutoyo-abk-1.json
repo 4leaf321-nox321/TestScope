@@ -14,6 +14,13 @@
   {
    "origin": "materialtwin-20260905/instrument/212",
    "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    38
+   ],
+   "note": "ABK-1 사양"
   }
  ],
  "confidence": "catalog",
@@ -48,6 +55,25 @@
       "notes": "**HBW 표기의 필수 조건이 둘 다 인쇄돼 있다** — 시험력 4903~29420 N(500~3000 kgf), 압자 직경 5 mm 와 10 mm 초경 구압자 두 종(표준 부속품). 경도 측정범위·정확도·규격번호는 인쇄돼 있지 않다(카탈로그 p.47 의 JIS Z 2243 은 일반 참고표라 기기 적합성 선언이 아니다). 부속 측정현미경으로 압흔 직경을 읽고 경도환산표로 계산하는 방식이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 500,
+     "max": 3000,
+     "values": [
+      500,
+      750,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000
+     ]
+    },
+    "hardness_scales": "HB (유압식, 압자 5·10 mm)",
+    "specimen_height_mm": 200,
+    "specimen_depth_mm": 155,
+    "weight_kg": 180
    }
   }
  ]

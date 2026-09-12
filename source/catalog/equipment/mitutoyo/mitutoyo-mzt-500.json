@@ -15,6 +15,13 @@
   {
    "origin": "materialtwin-20260905/instrument/75",
    "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "pages": [
+    25
+   ],
+   "note": "MZT-500 사양표"
   }
  ],
  "confidence": "catalog",
@@ -70,6 +77,32 @@
       "notes": "**HM 은 접촉 표면적 기준, H_IT 는 투영면적 기준이라 서로 다른 양이다** — 카탈로그가 'Martens hardness test (ISO14577)' 이라고 못박아서 마르텐스 키에 넣는다. 필수 조건인 시험력은 0.098~980.7 mN(제어분해능 0.916 µN, 정밀도 ±9.8 µN 또는 1%), 압입깊이 0~20 µm(최소단위 0.1 nm), 하중속도 0.1~100 mN/s, 압자는 버코비치 삼각뿔(선단 곡률 0.1 µm 이하). 경도 측정범위·정확도는 인쇄 없음. 데이터 분석 항목의 'universal hardness value(만능경도 HU)' 는 마르텐스 경도의 옛 명칭이라 같은 행으로 본다. **MZT-512·522 한정으로 비커스·누프 시험도 지원한다고 적혀 있으나, 이 시리즈는 사양표가 'All models of MZT-500 Series' 한 열이고 K 섹션 카탈로그는 같은 시리즈를 MZT-500L/500P 로 부른다 — 모델명이 두 카탈로그에서 어긋나 512/522 개별 레코드는 만들지 않았다.**"
      }
     ]
+   },
+   "specs": {
+    "test_force_mN": {
+     "min": 0.1,
+     "max": 1000
+    },
+    "indentation_depth_um": {
+     "max": 20
+    },
+    "depth_resolution_nm": 0.1,
+    "loading_rate_mN_s": {
+     "min": 0.01,
+     "max": 100
+    },
+    "hardness_scales": "HM(마르텐스) / HIT / EIT / CIT — Berkovich 압자",
+    "specimen_height_mm": {
+     "max": 90,
+     "note": "MZT-500L 90 mm · MZT-500P 75 mm"
+    },
+    "specimen_depth_mm": 90,
+    "footprint_mm": {
+     "W": 700,
+     "D": 870,
+     "H": 1100
+    },
+    "weight_kg": 180
    }
   }
  ]

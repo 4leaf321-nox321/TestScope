@@ -20,6 +20,13 @@
   {
    "origin": "materialtwin-20260905/instrument/23",
    "note": "Mitutoyo Surftest SJ-410 Series · metrology_catalogs/surface/Mitutoyo_Surftest_SJ410.pdf"
+  },
+  {
+   "file": "mitutoyo/surftest-sj-410-bulletin-2110.pdf",
+   "pages": [
+    14
+   ],
+   "note": "SJ-411/412 사양표"
   }
  ],
  "confidence": "catalog",
@@ -89,6 +96,32 @@
       "notes": "**Ra·Rq 와 환산되지 않는 별개 파라미터다**(최대높이). 카탈로그 파라미터 목록에 Rz 와 함께 **Rz1max·RzJIS·Rmax·R3z** 가 따로 있는데, RzJIS 는 구 JIS 의 10점평균이라 우리 키(최대높이 Rz)와 다른 양이라 이 행에 섞지 않았다. range 는 카탈로그에 Rz 측정범위가 없어 비웠다. **cutoff_mm** — λc 0.08~8 mm, λs 2.5/8/25 µm. **evaluation_length_mm** — 샘플링길이 0.08~25 mm x 구간수 1~20, 임의길이 0.1~25 mm."
      }
     ]
+   },
+   "specs": {
+    "traverse_mm": 25,
+    "z_range_um": {
+     "max": 800,
+     "note": "800 / 80 / 8 µm 3단; 옵션 스타일러스로 2,400 µm"
+    },
+    "z_resolution_um": {
+     "min": 0.0001,
+     "max": 0.01,
+     "note": "8 µm 레인지 0.0001 · 80 µm 0.001 · 800 µm 0.01"
+    },
+    "stylus_force_mN": {
+     "values": [
+      0.75,
+      4
+     ]
+    },
+    "measuring_speed_mm_s": {
+     "min": 0.05,
+     "max": 1.0
+    },
+    "straightness_um": {
+     "max": 0.3,
+     "note": "25 mm 당"
+    }
    }
   },
   {
@@ -133,6 +166,32 @@
       "notes": "최대높이 Rz 만 이었고 같은 목록의 RzJIS(구 JIS 10점평균)·Rz1max·Rmax 는 다른 양이라 섞지 않았다. range 는 인쇄 없어 비움. **cutoff_mm** — λc 0.08~8 mm. **evaluation_length_mm** — 임의길이 0.1~50 mm."
      }
     ]
+   },
+   "specs": {
+    "traverse_mm": 50,
+    "z_range_um": {
+     "max": 800,
+     "note": "800 / 80 / 8 µm 3단; 옵션 스타일러스로 2,400 µm"
+    },
+    "z_resolution_um": {
+     "min": 0.0001,
+     "max": 0.01,
+     "note": "8 µm 레인지 0.0001 · 80 µm 0.001 · 800 µm 0.01"
+    },
+    "stylus_force_mN": {
+     "values": [
+      0.75,
+      4
+     ]
+    },
+    "measuring_speed_mm_s": {
+     "min": 0.05,
+     "max": 1.0
+    },
+    "straightness_um": {
+     "max": 0.5,
+     "note": "50 mm 당"
+    }
    }
   }
  ]

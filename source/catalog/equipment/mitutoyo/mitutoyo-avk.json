@@ -18,6 +18,13 @@
   {
    "origin": "materialtwin-20260905/instrument/74",
    "note": "Mitutoyo Hardness Testing Machines Catalog No. E4104 · metrology_catalogs/mechanical/Mitutoyo_Hardness_E4104.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    27
+   ],
+   "note": "AVK-C0 사양표"
   }
  ],
  "confidence": "catalog",
@@ -51,6 +58,23 @@
       "notes": "시험력 9.807~490.3 N. 측정분해능 1 µm 는 압흔 길이 분해능이다. 경도범위 인쇄 없음."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 1,
+     "max": 50,
+     "values": [
+      1,
+      5,
+      10,
+      20,
+      30,
+      50
+     ]
+    },
+    "hardness_scales": "HV",
+    "specimen_height_mm": 205,
+    "specimen_depth_mm": 165
    }
   },
   {

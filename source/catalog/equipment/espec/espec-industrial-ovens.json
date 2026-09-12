@@ -12,6 +12,16 @@
   {
    "origin": "materialtwin-20260905/instrument/205",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/pvph-ovens.pdf",
+   "pages": [
+    9,
+    11,
+    12,
+    13
+   ],
+   "note": "PV/PH/STPH/SSPH 사양표"
   }
  ],
  "confidence": "limited",
@@ -31,6 +41,19 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": 20,
+     "max": 700,
+     "note": "PV/PH (주위+20)~200 · PVH/PHH ~300 · STPH ~500 · SSPH 100~700"
+    },
+    "chamber_volume_L": {
+     "min": 91,
+     "max": 1000,
+     "note": "PH 91/216/512/1000 · PV 216/324/432/768 · STPH 91/216 · SSPH 91/216"
+    },
+    "inner_mm": "PH-102 450³ · PH-202 600³ · PH-302 800³ · PH-402 1000³ · PV-212 600×600×600 · PV-332 800×1200×800"
    }
   }
  ]

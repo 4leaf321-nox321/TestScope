@@ -29,6 +29,14 @@
   {
    "origin": "materialtwin-20260905/instrument/203",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/criterion-benchtop-brochure.pdf",
+   "pages": [
+    6,
+    7
+   ],
+   "note": "Criterion 1.5 / 4 cu.ft 사양표"
   }
  ],
  "confidence": "limited",
@@ -49,6 +57,30 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
     "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 180
+    },
+    "chamber_volume_L": {
+     "values": [
+      42,
+      110
+     ],
+     "note": "BTZ-133/175/175E 42 L(1.5 cu ft) · BTZ-475 110 L(4 cu ft)"
+    },
+    "heating_rate_K_min": {
+     "min": 2.75,
+     "max": 5,
+     "note": "IEC 60068-3-5: BTZ-133 3.5 · BTZ-175(E) 5 · BTZ-475 2.75"
+    },
+    "cooling_rate_K_min": {
+     "min": 2.5,
+     "max": 5,
+     "note": "BTZ-133 3 · BTZ-175(E) 5 · BTZ-475 2.5"
+    },
+    "inner_mm": "1.5 cu ft W500×D280×H300 · 4 cu ft W500×D380×H600"
    }
   },
   {
@@ -64,6 +96,27 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
     "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -20,
+     "max": 180
+    },
+    "chamber_volume_L": {
+     "values": [
+      42,
+      110
+     ]
+    },
+    "heating_rate_K_min": {
+     "min": 1.5,
+     "max": 2
+    },
+    "cooling_rate_K_min": {
+     "min": 1.2,
+     "max": 1.6
+    },
+    "inner_mm": "133 W500×D280×H300 · 433 W500×D380×H600"
    }
   },
   {
@@ -79,6 +132,24 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
     "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -20,
+     "max": 180
+    },
+    "humidity_pct": {
+     "min": 10,
+     "max": 95
+    },
+    "chamber_volume_L": 110,
+    "heating_rate_K_min": 1.5,
+    "cooling_rate_K_min": 1.2,
+    "inner_mm": {
+     "W": 500,
+     "D": 380,
+     "H": 600
+    }
    }
   },
   {
@@ -94,6 +165,24 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_criterion.pdf",
     "source_title": "ESPEC Criterion Series Temperature and Humidity Chambers",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 180
+    },
+    "humidity_pct": {
+     "min": 10,
+     "max": 95
+    },
+    "chamber_volume_L": 110,
+    "heating_rate_K_min": 2.75,
+    "cooling_rate_K_min": 2.5,
+    "inner_mm": {
+     "W": 500,
+     "D": 380,
+     "H": 600
+    }
    }
   },
   {

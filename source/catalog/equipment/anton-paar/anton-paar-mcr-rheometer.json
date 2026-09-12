@@ -83,7 +83,30 @@
     {
       "model": "MCR 72 / MCR 92",
       "specs": {
-        "note": "entry level; EDU edition"
+        "note": "entry level; EDU edition",
+        "torque_mNm": {
+          "min": 0.0001,
+          "max": 180,
+          "note": "후속: MCR 73(볼베어링) 100 nNm~160 mNm · MCR 93(에어베어링) 20 nNm~180 mNm"
+        },
+        "angular_velocity_rad_s": {
+          "min": 1e-08,
+          "max": 261
+        },
+        "frequency_Hz": {
+          "min": 1e-07,
+          "max": 100
+        },
+        "normal_force_N": {
+          "min": 0.001,
+          "max": 50,
+          "note": "MCR 93 만"
+        },
+        "temperature_degC": {
+          "min": -50,
+          "max": 400,
+          "note": "CoolPeltier 무구배 −5~+200; 교정 세트 −50~+400"
+        }
       }
     },
     {
@@ -144,13 +167,31 @@
     {
       "model": "SmartMelt 92 / 303",
       "specs": {
-        "note": "polymer melt rheology, ASTM D4440 / ISO 6721"
+        "note": "polymer melt rheology, ASTM D4440 / ISO 6721",
+        "temperature_degC": {
+          "min": -50,
+          "max": 400,
+          "note": "MCR 92/303 본체 기반 — 온도 장치에 따라"
+        },
+        "torque_mNm": {
+          "max": 300,
+          "note": "303 본체 최대 300 mNm(MCR 303 행 참조); 92 본체는 후속 MCR 93 기준 180 mNm"
+        }
       }
     },
     {
       "model": "SmartPave 92 / 303",
       "specs": {
-        "note": "asphalt binder DSR"
+        "note": "asphalt binder DSR",
+        "temperature_degC": {
+          "min": -50,
+          "max": 400,
+          "note": "MCR 92/303 본체 기반 — 온도 장치에 따라"
+        },
+        "torque_mNm": {
+          "max": 300,
+          "note": "303 본체 최대 300 mNm(MCR 303 행 참조); 92 본체는 후속 MCR 93 기준 180 mNm"
+        }
       }
     },
     {
@@ -196,6 +237,11 @@
         17
       ],
       "note": "Anton Paar 종합 제품 카탈로그(2025/26) — 개별 데이터시트 아님; 상세 토크/주파수 표 미포함"
+    },
+    {
+      "url": "https://www.anton-paar.com/us-en/products/details/rheometer-mcr-72-and-mcr-92/",
+      "retrieved": "2026-09-12",
+      "note": "MCR 72/92 는 단종, 페이지가 후속 MCR 53/73/93 사양을 보여 준다 — 후속 세대 기준(웹)"
     }
   ],
   "confidence": "limited"

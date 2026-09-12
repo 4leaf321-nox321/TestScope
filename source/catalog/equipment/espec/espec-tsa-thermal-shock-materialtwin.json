@@ -13,6 +13,14 @@
   {
    "origin": "materialtwin-20260905/instrument/198",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/tsa-thermal-shock-chambers.pdf",
+   "pages": [
+    13,
+    14
+   ],
+   "note": "TSA EL/ES/EH 사양표 — 이 객체는 espec-tsa-thermal-shock 의 MaterialTwin 중복이라 봉투만 적음"
   }
  ],
  "confidence": "limited",
@@ -31,6 +39,19 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 200,
+     "note": "고온조 +50(EL)/+60(ES·EH)~+200 · 저온조 −65(EL)/−70(ES·EH)~0"
+    },
+    "inner_mm": "43 W240×H460×D370 · 73 W410×H460×D370 · 103 W650×H460×D370 · 203 W650×H460×D670 · 303 W970×H460×D670",
+    "test_zones": "2존(EL) · 2/3존 댐퍼 전환(ES·EH)",
+    "weight_kg": {
+     "min": 730,
+     "max": 1420
+    }
    }
   }
  ]

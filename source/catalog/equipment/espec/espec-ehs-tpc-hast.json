@@ -12,6 +12,14 @@
   {
    "origin": "materialtwin-20260905/instrument/199",
    "note": "ESPEC Product Digest — Liquid Thermal Shock (TSB series) · metrology_catalogs/reliability/ESPEC_TSB5A.pdf"
+  },
+  {
+   "file": "espec/ehs-hast-chambers.pdf",
+   "pages": [
+    11,
+    12
+   ],
+   "note": "EHS-212/222/412 사양표"
   }
  ],
  "confidence": "limited",
@@ -31,6 +39,22 @@
     "doc_path": "metrology_catalogs/reliability/ESPEC_TSB5A.pdf",
     "source_title": "ESPEC Product Digest — Liquid Thermal Shock (TSB series)",
     "capabilities": []
+   },
+   "specs": {
+    "temperature_degC": {
+     "min": 105,
+     "max": 162.2,
+     "note": "불포화 제어 +105.0~+142.9(212/222) · +105.0~+162.2(412); 습포화 +105.0~+132.9/+151.1"
+    },
+    "humidity_pct": {
+     "min": 75,
+     "max": 98
+    },
+    "pressure_MPa": {
+     "min": 0.019,
+     "max": 0.389,
+     "note": "게이지압; 212/222 는 0.193 까지"
+    }
    }
   }
  ]

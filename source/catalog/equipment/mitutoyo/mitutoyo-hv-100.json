@@ -32,6 +32,20 @@
   {
    "origin": "materialtwin-20260905/instrument/99",
    "note": "Mitutoyo Test Equipment Section K — Hardness Testing Machines · metrology_catalogs/mechanical/Mitutoyo_K_section.pdf"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-e4104.pdf",
+   "pages": [
+    26
+   ],
+   "note": "HV-112/114 사양표"
+  },
+  {
+   "file": "mitutoyo/hardness-testing-machines-overview-e17001.pdf",
+   "pages": [
+    17
+   ],
+   "note": "HV-110/120 사양표"
   }
  ],
  "confidence": "catalog",
@@ -110,6 +124,31 @@
       "notes": "압자 직경 1.0·2.5·5.0 mm 초경 구압자가 부속품으로 있고 브리넬 기준편(200 HBW)까지 딸려 있어 환산이 아니라 실제 측정으로 읽었다. 다만 사양표 본문이 'Brinell hardness calculation function' 이라는 소프트웨어 항목으로만 적어 medium 으로 낮췄다. 하중은 비커스와 공용인 1.961 N ~ 196.1 N (0.2~20 kgf) 범위이고 브리넬 전용 하중표는 이 기종에 인쇄돼 있지 않다 — 하중/압자경 조합(HBW 표기의 필수 조건)이 확정되지 않는다. 규격번호 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 0.2,
+     "max": 20,
+     "values": [
+      0.2,
+      0.3,
+      0.5,
+      1,
+      2.5,
+      5,
+      10,
+      20
+     ]
+    },
+    "hardness_scales": "HV / HK / HB / Kc(파괴인성, JIS R 1607)",
+    "specimen_height_mm": 210,
+    "specimen_depth_mm": 170,
+    "footprint_mm": {
+     "W": 245,
+     "D": 515,
+     "H": 770
+    },
+    "weight_kg": 50
    }
   },
   {
@@ -159,6 +198,31 @@
       "notes": "압자 직경 1.0·2.5·5.0 mm 초경 구압자가 부속품으로 있고 브리넬 기준편(200 HBW)까지 딸려 있어 환산이 아니라 실제 측정으로 읽었다. 다만 사양표 본문이 'Brinell hardness calculation function' 이라는 소프트웨어 항목으로만 적어 medium 으로 낮췄다. 하중은 비커스와 공용인 9.807 N ~ 490.3 N (1~50 kgf) 범위이고 브리넬 전용 하중표는 이 기종에 인쇄돼 있지 않다 — 하중/압자경 조합(HBW 표기의 필수 조건)이 확정되지 않는다. 규격번호 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 1,
+     "max": 50,
+     "values": [
+      1,
+      2,
+      3,
+      5,
+      10,
+      20,
+      30,
+      50
+     ]
+    },
+    "hardness_scales": "HV / HK / HB / Kc(파괴인성, JIS R 1607)",
+    "specimen_height_mm": 210,
+    "specimen_depth_mm": 170,
+    "footprint_mm": {
+     "W": 245,
+     "D": 515,
+     "H": 770
+    },
+    "weight_kg": 50
    }
   },
   {
@@ -208,6 +272,31 @@
       "notes": "사양표가 지원 시험법으로 'HB (Light Force)' 를 명시하고 초경 구압자(1 mm·2.5 mm)와 브리넬 전용 분동(0.5·1.25·5.625·12.5 kg)이 부속품으로 있어 실제 측정 능력으로 읽었다. 필수 조건 중 압자경은 1.0·2.5 mm, 하중은 본체 9.807 N ~ 490.3 N (1~50 kgf) 에 브리넬 분동을 더한 조합이라 카탈로그가 조합표를 인쇄하지 않아 하중-압자경 짝은 확정되지 않는다. 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 1,
+     "max": 50,
+     "values": [
+      1,
+      2,
+      3,
+      5,
+      10,
+      20,
+      30,
+      50
+     ]
+    },
+    "hardness_scales": "HV / HK / HB / Kc(파괴인성)",
+    "specimen_height_mm": 210,
+    "specimen_depth_mm": 170,
+    "footprint_mm": {
+     "W": 307,
+     "D": 696,
+     "H": 786
+    },
+    "weight_kg": 60
    }
   },
   {
@@ -257,6 +346,31 @@
       "notes": "사양표가 지원 시험법으로 'HB (Light Force)' 를 명시하고 초경 구압자(1 mm·2.5 mm)와 브리넬 전용 분동(0.5·1.25·5.625·12.5 kg)이 부속품으로 있어 실제 측정 능력으로 읽었다. 필수 조건 중 압자경은 1.0·2.5 mm, 하중은 본체 2.942 N ~ 294.2 N (0.3~30 kgf) 에 브리넬 분동을 더한 조합이라 카탈로그가 조합표를 인쇄하지 않아 하중-압자경 짝은 확정되지 않는다. 경도범위·규격 인쇄 없음. **환산은 측정이 아니다** — 이 기기의 환산기능(HV↔HK↔HB↔HR↔HS, 인장강도)은 능력행으로 만들지 않았다. 누프 행은 실제 누프 압자로 압흔을 내고 장·단축을 재는 경우만이다."
      }
     ]
+   },
+   "specs": {
+    "test_load_kgf": {
+     "min": 0.3,
+     "max": 30,
+     "values": [
+      0.3,
+      0.5,
+      1,
+      2.5,
+      5,
+      10,
+      20,
+      30
+     ]
+    },
+    "hardness_scales": "HV / HK / HB / Kc(파괴인성)",
+    "specimen_height_mm": 210,
+    "specimen_depth_mm": 170,
+    "footprint_mm": {
+     "W": 307,
+     "D": 696,
+     "H": 786
+    },
+    "weight_kg": 58
    }
   }
  ]
