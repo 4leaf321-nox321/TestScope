@@ -22,8 +22,11 @@
 | `extra_urls.json` | **입력** — 객체 id → 검색 엔진으로 사람이 찾은 남의 페이지(대리점·대학 장비실·리뷰·논문). `tools_harvest.py --extra` 가 받아 `pages/` 에 이어 붙인다. 등급은 도메인이 정한다(제조사 도메인이면 2, 아니면 3) |
 | `papers/<객체 id>.json` | **논문에서 본 사용 예**(3등급) — OpenAlex(제목·초록·주제, 언급 논문 수)와 Europe PMC(오픈액세스 전문에서 「Instron 3400」 앞뒤 문장 = `usage_snippets`), 거기서 뽑은 규격·시험 항목 낌새 |
 | `wiki/<제조사>.json` | Wikipedia 제조사 소개 한 단락 (배경 — 값이 아니다) |
+| `standard_titles.json` | 규격 코드 → 제목·정식 표기·출처. `tools_standard_titles.py` 가 ANSI 웹스토어 검색과 모은 본문에서 찾는다. 반입(`catalog_import/methods.py`)과 검토함이 시험법을 만들 때 이 제목을 쓴다 |
 | `tools_harvest.py` | 제조사 사이트맵 + extra_urls 를 모으는 도구. 다시 돌려도 있는 객체는 건너뛴다 |
 | `tools_harvest_papers.py` | 논문·Wikipedia 를 모으는 도구 |
+| `tools_propose.py` | 원료에서 검토함 물음 셋(규격·시험·소개 문장)을 세운다 → `source/catalog/proposals/series_*.json` |
+| `tools_standard_titles.py` | 규격 제목을 찾는다 → `standard_titles.json` |
 
 ## 등급 — 카탈로그 PDF 보다 낮다
 
@@ -70,14 +73,20 @@ AZoM·LabWrench·ATEC)·대학 장비실·리뷰·arXiv 논문 페이지를 5~8�
 - 구절은 `phrases_of()` 가 만든다: 제조사 이름(별칭 포함 — Bruker/Hysitron) + 계열 토막 + 기종 코드.
   이름이 같은 쌍둥이 객체(`-materialtwin`)는 `same_as` 로만 적는다.
 
-## 다음 — 이것으로 무엇을 하나
+## 이것으로 무엇을 했나 — 검토함 물음 셋
 
-1. `mentions/*.json` 의 `standards_new` 를 규격 사전과 맞춰 본다: 카탈로그에 이미 있는 규격이면
-   「이 계열이 이 규격도 한다」 후보, 없는 규격이면 새 규격 후보.
-2. 검토함에 물음을 세운다 — `source/catalog/proposals/` 에 큐 파일을 하나 더(예 `series_standards.json`):
-   대상 = 계열, 후보 = 규격 코드들, 근거 = 페이지 url 과 문장. 도메인 전문가가 고르면 반입이 적용한다.
-3. `application_sentences` 는 계열의 `notes`/응용 설명 초안. `test_item_hits` 는 시험 항목 연결 후보 —
-   다만 이름이 문장에 나온 것뿐이라(「compression」 이 「압축 공기」 일 수 있다) 사람이 봐야 한다.
+`tools_propose.py` 가 세운다(2026-09-13). 도메인 전문가가 검토함에서 고르면 그 자리에서 계열에 붙고,
+`backend/scripts/export_review.py` 가 정본의 `decided` 에 되돌려 쓴다.
+
+| 물음 | 원료 | 세운 것 |
+|---|---|---|
+| 계열이 하는 규격 더하기 | 페이지 본문·논문 문장의 규격 코드 (`standards_nearby` 는 안 씀) | 193 계열 · 후보 1,761 |
+| 계열이 하는 시험 더하기 | 논문의 **기종을 언급한 그 문장** · 제조사 응용 문장 | 101 계열 · 후보 246 |
+| 계열 소개에 넣을 문장 | 제조사 페이지의 「used for …」 문장 | 56 계열 · 138 문장 |
+
+안 세운 것: 부속·옵션 관계. 제조사 페이지에서 같은 제조사의 다른 객체 토막을 찾아 봤더니 68건이 나왔는데
+거의 사이트 메뉴(모든 페이지에 「3400 · 5900 · 6800」 이 서 있다)라 근거가 못 된다 — 부속 페이지를 따로
+받아야 한다.
 
 ## 2026-09-13 수집 결과
 
@@ -96,5 +105,7 @@ Thermo · Thermotron · Tinius Olsen · TIRA · TQC · Unholtz-Dickie · Uson ·
     python tools_harvest.py --extra          # extra_urls.json 의 주소를 더 받는다(있는 주소는 건너뜀)
     python tools_harvest_papers.py           # 논문·Wikipedia — 있는 객체는 건너뜀
     python tools_harvest_papers.py --fill-openalex   # OpenAlex 예산에 걸려 비었던 것만
+    python tools_standard_titles.py          # 규격 제목 — 있는 코드는 건너뜀 (ANSI 웹스토어, 1.5초/건)
+    python tools_propose.py                  # 검토함 물음 셋 다시 세우기 (decided 보존)
 
 pdftotext 가 없으면 PDF 페이지의 `text` 가 비고 `kind` 만 `pdf` 로 남는다.

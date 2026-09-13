@@ -5,6 +5,8 @@
 
 from __future__ import annotations
 
+import json
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -52,7 +54,20 @@ def step_methods(
     이미 있는 규격은 `method_key` 로 찾는다 — 「JIS B 0601」 이 있는데 「JIS B0601」 을
     또 만들면 시험법 목록에 같은 규격이 두 줄 서고, 그때부터 어느 쪽에 조건을 적을지
     아무도 모른다.
+
+    ## 제목은 `catalog_extension/standard_titles.json` 에서
+
+    카탈로그는 코드만 말한다. 제목(「Standard Test Method for Tensile Properties of
+    Plastics」)은 보강 원료 쪽 도구가 ANSI 웹스토어와 모은 본문에서 찾아 둔 것을 쓴다 —
+    없으면 코드가 제목이다. 제목이 코드 그대로인 기존 행도 채운다(사람이 적은 제목은 안
+    덮는다).
     """
+    titles_path = cat.root.parent / "catalog_extension" / "standard_titles.json"
+    titles: dict[str, str] = {}
+    if titles_path.exists():
+        for code, row in json.loads(titles_path.read_text(encoding="utf-8")).items():
+            if row.get("title"):
+                titles[method_key(code)] = str(row["title"])
     body_axis = _axis(db, "standard_body")
     methods: dict[str, TestMethod] = {}
 
@@ -84,6 +99,7 @@ def step_methods(
         for row in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
     }
     filled = 0
+    titled = 0
     for code, item_id in sorted(seen.items()):
         if not code:
             continue
@@ -94,6 +110,9 @@ def step_methods(
             if found.test_item_term_id is None and item_id and item_id in items:
                 found.test_item_term_id = items[item_id].id
                 filled += 1
+            if found.title == found.code and method_key(code) in titles:
+                found.title = titles[method_key(code)]
+                titled += 1
             methods[code] = found
             continue
         # 「ASTM D638」 의 앞 토막이 제정기관이다. 못 알아보면 비워 둔다 —
@@ -103,7 +122,7 @@ def step_methods(
         item = items.get(item_id or "")
         found = TestMethod(
             code=code,
-            title=code,
+            title=titles.get(method_key(code), code),
             test_item_term_id=item.id if item else None,
             body_term_id=body.id if body else None,
             summary="제조사 카탈로그에서 인용",
@@ -115,6 +134,8 @@ def step_methods(
         known[method_key(code)] = found
     if filled:
         print(f"  시험 항목이 비어 있던 시험법 {filled}건에 항목을 채웠습니다")
+    if titled:
+        print(f"  제목이 코드 그대로던 시험법 {titled}건에 제목을 채웠습니다")
     return methods
 
 

@@ -1,6 +1,62 @@
 {
  "object": "unholtz-dickie-shakers",
  "manufacturer": "unholtz-dickie",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 8,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC61966-2.1": 4,
+  "MIL-STD-810": 2,
+  "IEC 61966-2.1": 2,
+  "ISO 9001": 1,
+  "MIL-STD-790": 1,
+  "IEC 17025": 1,
+  "ASTM D3580": 1,
+  "IEC 61373": 1,
+  "RTCA DO-160": 1,
+  "SSP 41172": 1,
+  "MIL-STD-167": 1,
+  "MIL-STD-202": 1,
+  "MIL-DTL-3928": 1,
+  "MIL-STD-750": 1,
+  "MIL-STD-883": 1,
+  "MIL-STD-1540": 1
+ },
+ "standards_new": [
+  "IEC 17025",
+  "IEC 61373",
+  "IEC 61966-2.1",
+  "IEC61966-2.1",
+  "ISO 9001",
+  "MIL-DTL-3928",
+  "MIL-STD-1540",
+  "MIL-STD-790",
+  "RTCA DO-160",
+  "SSP 41172"
+ ],
+ "test_item_hits": {
+  "vibration_sine_random": 26,
+  "tensile": 12,
+  "compression": 6,
+  "electrical_transport": 4,
+  "burst_pressure": 3,
+  "mechanical_shock": 3,
+  "altitude_low_pressure": 2,
+  "flexure": 2,
+  "hardness_brinell": 2,
+  "hardness_rockwell": 2,
+  "salt_spray_corrosion": 2,
+  "thermal_shock": 2,
+  "torsion": 2,
+  "damp_heat": 1,
+  "microscopy": 1
+ },
+ "application_sentences": [
+  "This equipment is used in the design and production test of automotive airbag sensors by leading suppliers of automotive airbags and associative control modules.",
+  "ction to automatically power down the UD SAI Amplifier/Shaker system after a test has finished or aborted, and current / voltage limits can be set to abort the test for added system / specimen protection.",
+  "Horizontal slip tables are used for three-axis sequential testing (x, y, z axes) or used when it is necessary to maintain product positioning with respect to gravity.",
+  "Our capabilities The shaker facility is used for vibration and shock tests on a variety of aerospace components to meet industry standards such as MIL‑STD, ISO, ASTM, RTCA or to satisfy proprietary or exploratory requirements.",
+  "It is complete with a 1 m x 1 m slip table and a 1 m x 1 m head expander to test in 3 orthogonal directions independently.",
+  "Custom-made vibration testing fixtures and slip plates allow us to test parts of almost any shape and size.",
+  "es UD T2000 Dual Shaker Vibration Testing Extra Large Payload Vibration Testing Vibration testing system can be used in tandem to provide a combined 80,000 lbf for testing large articles."
+ ]
 }

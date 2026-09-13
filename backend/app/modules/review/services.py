@@ -871,7 +871,9 @@ def _refresh_series_standards(db: Session, filed: dict[str, dict[str, Any]]) -> 
             [
                 {
                     "code": one["code"],
-                    "label": one["code"],
+                    "label": (
+                        f"{one['code']} — {one['title']}" if one.get("title") else one["code"]
+                    ),
                     "reason": one.get("reason"),
                     "sources": one.get("sources") or [],
                 }
@@ -909,7 +911,12 @@ def _refresh_series_standards(db: Session, filed: dict[str, dict[str, Any]]) -> 
 
 
 def _link_series_standard(
-    db: Session, series: EquipmentSeries, code: str, *, actor: User | None
+    db: Session,
+    series: EquipmentSeries,
+    code: str,
+    *,
+    actor: User | None,
+    title: str | None = None,
 ) -> None:
     """규격 하나를 계열에 잇는다 — 반입(`catalog_import.series`)과 같은 규칙.
 
@@ -930,7 +937,7 @@ def _link_series_standard(
         body = _axis_terms(db, "standard_body").get(head) if head.isalpha() else None
         method = TestMethod(
             code=code,
-            title=code,
+            title=title or code,
             body_term_id=body.id if body else None,
             summary="검토함에서 더함 — 제조사 웹·대리점·논문이 이 계열과 함께 적은 규격",
             created_by_id=actor.id if actor else None,
@@ -1158,12 +1165,15 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:
             raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없습니다.")
-        offered = {one["code"] for one in row.candidates}
+        offered = {one["code"]: one for one in row.candidates}
         unknown = [code for code in choice if code not in offered]
         if unknown:
             raise NotFound("TSC-REVIEW-0002", f"후보에 없는 규격입니다: {', '.join(unknown)}")
         for code in choice:
-            _link_series_standard(db, series, code, actor=actor)
+            label = str(offered[code].get("label") or "")
+            # 라벨이 「코드 — 제목」 이면 제목을 새 시험법의 이름으로
+            title = label.split(" — ", 1)[1] if " — " in label else None
+            _link_series_standard(db, series, code, actor=actor, title=title)
     elif queue == "series_test_items":
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:

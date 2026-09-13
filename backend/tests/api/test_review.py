@@ -861,6 +861,7 @@ def test_계열이_하는_규격을_더하면_시험에_붙거나_미정_인용�
                             },
                             {
                                 "code": new_code,
+                                "title": "Standard Test Method for Something",
                                 "reason": "제조사 페이지 2쪽",
                                 "sources": ["https://b", "https://c"],
                             },
@@ -899,6 +900,7 @@ def test_계열이_하는_규격을_더하면_시험에_붙거나_미정_인용�
     assert (
         method is not None and str(method.test_item_term_id) == item_id
     )  # 시험이 하나뿐 → 소거
+    assert method.title == "Standard Test Method for Something"  # 정본의 제목이 이름이 된다
     assert (
         db.scalar(
             select(SeriesTestItemMethod).where(SeriesTestItemMethod.method_id == method.id)

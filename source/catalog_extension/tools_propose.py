@@ -59,6 +59,7 @@ CATALOG = HERE.parent / "catalog"
 OUT = CATALOG / "proposals" / "series_standards.json"
 OUT_ITEMS = CATALOG / "proposals" / "series_test_items.json"
 OUT_SUMMARY = CATALOG / "proposals" / "series_summary.json"
+TITLES = HERE / "standard_titles.json"  # tools_standard_titles.py 가 만든다 — 없으면 제목 없이
 sys.path.insert(0, str(HERE))
 
 # 규격이 아니거나(품질·안전·전원 규격), 규격군 이름만인 것. 정규식.
@@ -404,6 +405,7 @@ def build() -> dict:
     rows = []
     objects = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((CATALOG / "equipment").rglob("*.json"))]
     decided_before = _decided_before(OUT)
+    titles = json.loads(TITLES.read_text(encoding="utf-8")) if TITLES.exists() else {}
     for obj in objects:
         oid = obj["id"]
         have = known_codes(obj)
@@ -424,6 +426,7 @@ def build() -> dict:
             cands.append(
                 {
                     "code": e["code"],
+                    "title": (titles.get(e["code"]) or {}).get("title"),
                     "reason": " · ".join(parts),
                     "sources": (e["grade2"] + e["grade3"])[:4] + e["papers"][:2],
                     "_w": weight,

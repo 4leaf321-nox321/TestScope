@@ -1,6 +1,23 @@
 {
  "object": "unholtz-dickie-ls-thrusters",
  "manufacturer": "unholtz-dickie",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 3,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO 9001": 1
+ },
+ "standards_new": [
+  "ISO 9001"
+ ],
+ "test_item_hits": {
+  "vibration_sine_random": 13,
+  "electrical_transport": 4
+ },
+ "application_sentences": [
+  "This equipment is used in the design and production test of automotive airbag sensors by leading suppliers of automotive airbags and associative control modules.",
+  "ction to automatically power down the UD SAI Amplifier/Shaker system after a test has finished or aborted, and current / voltage limits can be set to abort the test for added system / specimen protection.",
+  "Horizontal slip tables are used for three-axis sequential testing (x, y, z axes) or used when it is necessary to maintain product positioning with respect to gravity.",
+  "Our capabilities The shaker facility is used for vibration and shock tests on a variety of aerospace components to meet industry standards such as MIL‑STD, ISO, ASTM, RTCA or to satisfy proprietary or exploratory requirements.",
+  "It is complete with a 1 m x 1 m slip table and a 1 m x 1 m head expander to test in 3 orthogonal directions independently."
+ ]
 }

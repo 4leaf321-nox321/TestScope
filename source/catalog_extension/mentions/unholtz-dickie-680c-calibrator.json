@@ -1,6 +1,16 @@
 {
  "object": "unholtz-dickie-680c-calibrator",
  "manufacturer": "unholtz-dickie",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 2,
+ "harvested": "2026-09-13",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "electrical_transport": 3
+ },
+ "application_sentences": [
+  "This equipment is used in the design and production test of automotive airbag sensors by leading suppliers of automotive airbags and associative control modules.",
+  "ction to automatically power down the UD SAI Amplifier/Shaker system after a test has finished or aborted, and current / voltage limits can be set to abort the test for added system / specimen protection.",
+  "Horizontal slip tables are used for three-axis sequential testing (x, y, z axes) or used when it is necessary to maintain product positioning with respect to gravity."
+ ]
 }
