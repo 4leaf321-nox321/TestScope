@@ -1,6 +1,22 @@
 {
  "object": "tinius-olsen-st-series",
  "manufacturer": "tinius-olsen",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "particle_size": 28,
+  "halt_hass": 14,
+  "microscopy": 9,
+  "density_porosity": 7,
+  "vibration_sine_random": 5,
+  "compression": 4,
+  "shear": 4,
+  "flexure": 3,
+  "peel": 3,
+  "electrical_transport": 1,
+  "tensile": 1
+ },
+ "application_sentences": []
 }

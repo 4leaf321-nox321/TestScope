@@ -2558,6 +2558,11 @@ export interface components {
             recommended: boolean;
             /** Reason */
             reason?: string | null;
+            /**
+             * Sources
+             * @default []
+             */
+            sources: string[];
         };
         /**
          * CatalogFilterOptionsOut

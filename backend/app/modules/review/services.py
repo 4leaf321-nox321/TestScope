@@ -43,13 +43,14 @@ from app.modules.test_items.models import (
     EquipmentTestItem,
     SeriesPendingMethod,
     SeriesTestItem,
+    SeriesTestItemMethod,
     TestItemConditionKey,
 )
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.shared import audit
 from app.shared.errors import AppError, Forbidden, NotFound
-from app.shared.text import method_key
+from app.shared.text import clean, compare_key, method_key
 
 #: 정본의 후보·결정 파일이 사는 곳. 반입 스크립트의 카탈로그 뿌리와 같다.
 PROPOSALS_DIR = REPO_DIR / "source" / "catalog" / "proposals"
@@ -116,6 +117,14 @@ QUEUES: dict[str, Queue] = {
         False,
         "/conditions",
     ),
+    "series_standards": Queue(
+        "series_standards",
+        "계열이 하는 규격 더하기",
+        "제조사 웹·대리점·논문이 이 계열과 함께 적은 규격 — 카탈로그 PDF 에는 없던 것. "
+        "이 계열이 정말 하는 것만 고른다. 여러 개.",
+        True,
+        "/catalog/equipment-series/{id}",
+    ),
 }
 
 #: 고정 후보 — 물음이 예/아니오 꼴인 큐.
@@ -180,6 +189,7 @@ def _mark(
                 "label": one["label"],
                 "recommended": picked,
                 "reason": (reason if not shown else None) if picked else one.get("reason"),
+                "sources": list(one.get("sources") or []),
             }
         )
         shown = shown or picked
@@ -292,6 +302,7 @@ def refresh(db: Session, root: Path = PROPOSALS_DIR) -> dict[str, int]:
     _refresh_method_cleanup(db, load_file("method_cleanup", root))
     _refresh_test_item_properties(db, load_file("test_item_properties", root))
     _refresh_condition_axes(db, load_file("condition_axes", root))
+    _refresh_series_standards(db, load_file("series_standards", root))
     db.flush()
     for key in QUEUES:
         counts[key] = (
@@ -681,6 +692,144 @@ def _refresh_condition_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
 # --- 적용 -----------------------------------------------------------------------
 
 
+def _refresh_series_standards(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+    """계열이 하는 규격 더하기 — 정본(`catalog_extension/tools_propose.py` 가 만든 것)의
+    후보 중 아직 이 계열에 안 이어진 것. 계열은 이름(+제조사)으로 찾는다 — 반입이 그렇게
+    만든다."""
+    makers = _axis_terms(db, "manufacturer")
+    cited: dict[uuid.UUID, set[str]] = {}
+    for series_id, code in db.execute(
+        select(SeriesTestItem.series_id, TestMethod.code)
+        .join(
+            SeriesTestItemMethod, SeriesTestItemMethod.series_test_item_id == SeriesTestItem.id
+        )
+        .join(TestMethod, TestMethod.id == SeriesTestItemMethod.method_id)
+    ):
+        cited.setdefault(series_id, set()).add(method_key(code))
+    for series_id, code in db.execute(
+        select(SeriesPendingMethod.series_id, TestMethod.code).join(
+            TestMethod, TestMethod.id == SeriesPendingMethod.method_id
+        )
+    ):
+        cited.setdefault(series_id, set()).add(method_key(code))
+    alive: set[str] = set()
+    for subject, filed_row in filed.items():
+        maker = makers.get(str(filed_row.get("manufacturer") or ""))
+        series = db.scalar(
+            select(EquipmentSeries).where(
+                EquipmentSeries.normalized
+                == compare_key(clean(str(filed_row.get("series") or ""))),
+                EquipmentSeries.maker_term_id.is_(None)
+                if maker is None
+                else EquipmentSeries.maker_term_id == maker.id,
+            )
+        )
+        if series is None:
+            continue
+        alive.add(subject)
+        have = cited.get(series.id, set())
+        raw = [one for one in (filed_row.get("candidates") or []) if isinstance(one, dict)]
+        candidates = _mark(
+            [
+                {
+                    "code": one["code"],
+                    "label": one["code"],
+                    "reason": one.get("reason"),
+                    "sources": one.get("sources") or [],
+                }
+                for one in raw
+                if method_key(one["code"]) not in have
+            ],
+            filed_row.get("recommended"),
+            filed_row.get("reason"),
+        )
+        row = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "series_standards",
+                ReviewProposal.subject_key == subject,
+            )
+        )
+        if not candidates:
+            # 후보가 전부 이어졌다 — 화면이나 반입이 이미 한 것이다.
+            if row is not None and row.status in ("open", "skipped"):
+                _settle(db, row, [], "이미 이어짐")
+            continue
+        row = _upsert(
+            db,
+            "series_standards",
+            subject,
+            subject_id=series.id,
+            subject_label=series.name,
+            context=_context(f"인용 중인 규격 {len(have)}", filed_row),
+            candidates=candidates,
+        )
+        decided = filed_row.get("decided")
+        if decided and row.status == "open":
+            _apply(db, row, list(decided.get("choice") or []), actor=None)
+            _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+    _sweep_gone(db, "series_standards", alive, "계열이 지워짐")
+
+
+def _link_series_standard(
+    db: Session, series: EquipmentSeries, code: str, *, actor: User | None
+) -> None:
+    """규격 하나를 계열에 잇는다 — 반입(`catalog_import.series`)과 같은 규칙.
+
+    규격이 없으면 만든다(판은 안 적는다). 규격의 시험 항목이 정해져 있고 계열에 그 시험이
+    있으면 거기에, 계열의 시험이 하나뿐이면 그 시험에(소거), 아니면 항목 미정 인용으로 둔다 —
+    그러면 「규격의 시험 항목」 물음이 이어받는다.
+    """
+    method = next(
+        (
+            m
+            for m in db.scalars(select(TestMethod).where(TestMethod.deleted_at.is_(None)))
+            if method_key(m.code) == method_key(code)
+        ),
+        None,
+    )
+    if method is None:
+        head = code.split()[0].split("/")[0]
+        body = _axis_terms(db, "standard_body").get(head) if head.isalpha() else None
+        method = TestMethod(
+            code=code,
+            title=code,
+            body_term_id=body.id if body else None,
+            summary="검토함에서 더함 — 제조사 웹·대리점·논문이 이 계열과 함께 적은 규격",
+            created_by_id=actor.id if actor else None,
+        )
+        db.add(method)
+        db.flush()
+    items = list(
+        db.scalars(select(SeriesTestItem).where(SeriesTestItem.series_id == series.id))
+    )
+    target = None
+    if method.test_item_term_id is not None:
+        target = next(
+            (t for t in items if t.test_item_term_id == method.test_item_term_id), None
+        )
+    elif len(items) == 1:
+        target = items[0]
+        method.test_item_term_id = target.test_item_term_id
+    if target is not None:
+        exists = db.scalar(
+            select(SeriesTestItemMethod.id).where(
+                SeriesTestItemMethod.series_test_item_id == target.id,
+                SeriesTestItemMethod.method_id == method.id,
+            )
+        )
+        if exists is None:
+            db.add(SeriesTestItemMethod(series_test_item_id=target.id, method_id=method.id))
+        return
+    exists = db.scalar(
+        select(SeriesPendingMethod.id).where(
+            SeriesPendingMethod.series_id == series.id,
+            SeriesPendingMethod.method_id == method.id,
+        )
+    )
+    if exists is None:
+        db.add(SeriesPendingMethod(series_id=series.id, method_id=method.id))
+
+
 def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User | None) -> None:
     """고른 것을 **기존 규칙으로** 적용한다. 큐마다 다르다."""
     queue = row.queue
@@ -867,6 +1016,16 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
             if term is None:
                 continue
             db.add(TestItemConditionKey(test_item_term_id=term.id, condition_key_id=made.id))
+    elif queue == "series_standards":
+        series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
+        if series is None:
+            raise NotFound("TSC-REVIEW-0003", "계열을 찾을 수 없습니다.")
+        offered = {one["code"] for one in row.candidates}
+        unknown = [code for code in choice if code not in offered]
+        if unknown:
+            raise NotFound("TSC-REVIEW-0002", f"후보에 없는 규격입니다: {', '.join(unknown)}")
+        for code in choice:
+            _link_series_standard(db, series, code, actor=actor)
     else:
         raise NotFound("TSC-REVIEW-0006", f"모르는 검토함입니다: {queue}")
 

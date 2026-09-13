@@ -52,7 +52,24 @@ function directAxis(queue: string): 'test_item' | 'condition' | 'property' | nul
 /** 여러 개를 고르는 물음에서 「아무것도 아님」 이 뜻하는 말. 물음마다 다르다. */
 function emptyLabel(queue: string): string {
   if (queue === 'test_item_properties') return '물성 없음'
+  if (queue === 'series_standards') return '더할 규격 없음'
   return '조건 없음'
+}
+
+/** 출처를 링크로 — url 이면 그대로, 논문 id(PMC…)면 Europe PMC 로. */
+function sourceHref(source: string): string {
+  if (/^PMC\d+$/.test(source)) return `https://europepmc.org/article/PMC/${source}`
+  return source
+}
+
+/** 링크 글자는 짧게 — 도메인만. 주소 전체는 후보 한 줄을 세 줄로 만든다. */
+function sourceText(source: string): string {
+  if (/^PMC\d+$/.test(source)) return source
+  try {
+    return new URL(source).hostname.replace(/^www\./, '')
+  } catch {
+    return source
+  }
 }
 
 export default function ReviewQueuePage() {
@@ -428,6 +445,22 @@ function ProposalRow({
                       {one.reason && (
                         <span className="text-muted-foreground block text-xs">
                           {one.reason}
+                        </span>
+                      )}
+                      {one.sources && one.sources.length > 0 && (
+                        <span className="block text-xs">
+                          {one.sources.map((source) => (
+                            <a
+                              key={source}
+                              href={sourceHref(source)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-primary mr-2 underline"
+                              onClick={(event) => event.stopPropagation()}
+                            >
+                              {sourceText(source)}
+                            </a>
+                          ))}
                         </span>
                       )}
                     </span>

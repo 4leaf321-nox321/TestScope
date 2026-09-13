@@ -33,6 +33,9 @@ class CandidateOut(BaseModel):
     reason: str | None = None
     """왜 추천하는가. **추천 옆에 늘 붙는다** — 근거 없는 추천은 첫 보기를 누르게 만들
     뿐이다."""
+    sources: list[str] = []
+    """근거의 출처 — 페이지 url 이나 논문 id. 「계열이 하는 규격」 처럼 밖에서 온 후보는
+    사람이 링크를 열어 보고 판단한다."""
 
 
 class VoteOut(BaseModel):

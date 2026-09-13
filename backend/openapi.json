@@ -7808,6 +7808,14 @@
               }
             ],
             "title": "Reason"
+          },
+          "sources": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Sources",
+            "default": []
           }
         },
         "type": "object",

@@ -815,3 +815,153 @@ def test_시험이_내는_물성을_잇고_새_축을_세운다(
         if one["subject_key"] == axis_key
     )
     assert again["status"] == "decided"
+
+
+def test_계열이_하는_규격을_더하면_시험에_붙거나_미정_인용이_된다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    """보강 원료(제조사 웹·대리점·논문)가 세운 후보. 계열은 **이름으로** 찾고, 고른 규격은
+    반입과 같은 규칙으로 잇는다 — 시험이 하나뿐이면 그 시험에(소거), 여럿이면 항목 미정
+    인용으로."""
+    from app.modules.test_items.models import SeriesPendingMethod, SeriesTestItemMethod
+
+    item_id, _ = _item(client, admin, "인장")
+    name = f"계열-{uuid.uuid4().hex[:6]}"
+    made = client.post("/api/equipment-series", json={"name": name}, headers=admin.headers)
+    assert made.status_code == 201, made.text
+    series_id = made.json()["id"]
+    added = client.post(
+        f"/api/equipment-series/{series_id}/test-items",
+        json={"test_item_term_id": item_id},
+        headers=admin.headers,
+    )
+    assert added.status_code == 201, added.text
+    # 이미 인용 중인 규격은 후보에서 빠진다.
+    cited = _method(client, admin, item_id)
+    db.add(
+        SeriesTestItemMethod(
+            series_test_item_id=uuid.UUID(added.json()["id"]), method_id=uuid.UUID(cited["id"])
+        )
+    )
+    db.commit()
+    new_code = f"ASTM D{uuid.uuid4().hex[:4].upper()}"
+    (tmp_path / "series_standards.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": "obj-x",
+                        "series": name,
+                        "manufacturer": None,
+                        "candidates": [
+                            {
+                                "code": cited["code"],
+                                "reason": "남의 페이지 1쪽",
+                                "sources": ["https://a"],
+                            },
+                            {
+                                "code": new_code,
+                                "reason": "제조사 페이지 2쪽",
+                                "sources": ["https://b", "https://c"],
+                            },
+                        ],
+                        "recommended": [new_code],
+                        "reason": "제조사 페이지에 나왔다",
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+
+    row = next(
+        one
+        for one in _rows(client, admin, "series_standards")
+        if one["subject_key"] == "obj-x"
+    )
+    assert row["subject_id"] == series_id and row["subject_label"] == name
+    assert [one["code"] for one in row["candidates"]] == [new_code]
+    assert row["candidates"][0]["recommended"] and row["candidates"][0]["sources"] == [
+        "https://b",
+        "https://c",
+    ]
+
+    decided = client.post(
+        f"/api/review/series_standards/{row['id']}/decide",
+        json={"choice": [new_code]},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    method = db.scalar(select(TestMethod).where(TestMethod.code == new_code))
+    assert (
+        method is not None and str(method.test_item_term_id) == item_id
+    )  # 시험이 하나뿐 → 소거
+    assert (
+        db.scalar(
+            select(SeriesTestItemMethod).where(SeriesTestItemMethod.method_id == method.id)
+        )
+        is not None
+    )
+
+    # 다시 세우면 후보가 전부 이어졌으니 결정으로 남고, 열린 것은 없다.
+    services.refresh(db, tmp_path)
+    db.commit()
+    again = next(
+        one
+        for one in _rows(client, admin, "series_standards", status="all")
+        if one["subject_key"] == "obj-x"
+    )
+    assert again["status"] == "decided"
+
+    # 시험이 둘인 계열이면 미정 인용으로 간다.
+    other_item, _ = _item(client, admin, "압축")
+    added2 = client.post(
+        f"/api/equipment-series/{series_id}/test-items",
+        json={"test_item_term_id": other_item},
+        headers=admin.headers,
+    )
+    assert added2.status_code == 201, added2.text
+    second = f"ISO {uuid.uuid4().hex[:5]}"
+    (tmp_path / "series_standards.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": "obj-y",
+                        "series": name,
+                        "manufacturer": None,
+                        "candidates": [
+                            {"code": second, "reason": "논문 1편", "sources": ["PMC1"]}
+                        ],
+                        "recommended": [],
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+    row2 = next(
+        one
+        for one in _rows(client, admin, "series_standards")
+        if one["subject_key"] == "obj-y"
+    )
+    decided2 = client.post(
+        f"/api/review/series_standards/{row2['id']}/decide",
+        json={"choice": [second]},
+        headers=admin.headers,
+    )
+    assert decided2.status_code == 200, decided2.text
+    method2 = db.scalar(select(TestMethod).where(TestMethod.code == second))
+    assert method2 is not None and method2.test_item_term_id is None
+    assert (
+        db.scalar(
+            select(SeriesPendingMethod).where(SeriesPendingMethod.method_id == method2.id)
+        )
+        is not None
+    )
