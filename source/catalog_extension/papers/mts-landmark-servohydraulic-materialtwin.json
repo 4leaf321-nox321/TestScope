@@ -1,0 +1,81 @@
+{
+ "object": "mts-landmark-servohydraulic-materialtwin",
+ "manufacturer": "mts",
+ "phrases": [
+  "MTS Systems Landmark"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"MTS Systems Landmark\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"MTS Systems Landmark\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC11685777",
+    "doi": "10.1038/s41598-024-80470-7",
+    "title": "Strength and Poisson's ratio of fused filament fabrication parts made from carbon filler enhanced PEEK compounds at elevated temperatures.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 527",
+     "ISO 527-1"
+    ]
+   },
+   {
+    "pmcid": "PMC13105675",
+    "doi": "10.1097/js9.0000000000004568",
+    "title": "Optimisation strategies for intramedullary nailing parameters in subtrochanteric fractures of the femur: a multimodal assessment based on finite element and biomechanical experiments.",
+    "journal": "Int J Surg",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11767139",
+    "doi": "10.3390/medicina61010110",
+    "title": "Multiplanar Semicircular New-Generation Implant System Developed for Proximal Femur Periprosthetic Fractures: A Biomechanical Study.",
+    "journal": "Medicina (Kaunas)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 2,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC11685777",
+   "title": "Strength and Poisson's ratio of fused filament fabrication parts made from carbon filler enhanced PEEK compounds at elevated temperatures.",
+   "year": "2024",
+   "text": "to avoid creating forces within the specimen before the test. MTS Advantage wedge grips were used. Then, a uniaxial static tensile test was performed at a speed of 2 mm/min, to ensure a slow and controlled deformation of the material being tested and allowing for accurate measurement of mechanical properties. Force was applied by the test system (MTS Systems Landmark 250 kN) while a glued-on strain-gauge recorded the strain data. Fine-resolution (200 Hz sampling) force and stress data was measured using a 10 kN HBM© U2B load cell. The following software tools were used to control the testing and to collect data: MTS© Station Manager V6.2D Build 7137, MTS© TestSuite MP Elite V4.7.2, and HBM© Catman V5.5.3. The",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11767139",
+   "title": "Multiplanar Semicircular New-Generation Implant System Developed for Proximal Femur Periprosthetic Fractures: A Biomechanical Study.",
+   "year": "2025",
+   "text": "ire was used in these clamps ( Figure 4 ). Figure 2 Preparation and radiological appearance of Group I. Figure 3 Preparation and radiological appearance of Group II. Figure 4 Preparation and radiological appearance of Group III. Biomechanical tests were performed at the Iron and Steel Institute, Margem Biomechanics Laboratory, using a test device (MTS Systems Landmark, Eden Prairie, MN, USA) that could apply axial forces to biomaterials and measure biomechanical changes in materials. Axial insufficiency loading tests were applied to all models in the study groups created using different fixation methods. For axial loading, the direction of the resultant force on the femoral head was ensured to be 20 degrees val",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11767139",
+   "title": "Multiplanar Semicircular New-Generation Implant System Developed for Proximal Femur Periprosthetic Fractures: A Biomechanical Study.",
+   "year": "2025",
+   "text": "was placed on the femoral stems, and the force was transferred to the femoral stem from an acetabulum-like socket corresponding to the head. The femoral models were fixed using the same metal device by ensuring the appropriate configuration of the MTS device before each experiment ( Figure 5 ). Force and displacement values were recorded with the MTS Axial LoadCell (MTS Systems Landmark, Eden Prairie, MN, USA). The biomechanical compression test was performed at a 5 mm/min measurement range, and axial loading continued until failure was developed. If a decrease was observed after the peak point in the force–displacement graph and this decrease continued during long-term follow-up, it was accepted that failure had developed due to",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "compression": 1,
+  "tensile": 1
+ }
+}

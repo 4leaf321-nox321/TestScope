@@ -1,0 +1,31 @@
+{
+ "object": "rigaku-smartlab",
+ "manufacturer": "rigaku",
+ "pages": 14,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM E975": 2
+ },
+ "standards_new": [
+  "ASTM E975"
+ ],
+ "test_item_hits": {
+  "microscopy": 127,
+  "optical_spectroscopy": 32,
+  "halt_hass": 18,
+  "vibration_sine_random": 10,
+  "texture": 9,
+  "density_porosity": 4,
+  "particle_size": 4,
+  "crystal_structure_analysis": 2,
+  "electrical_transport": 1,
+  "surface_topography": 1
+ },
+ "application_sentences": [
+  "next generation 2D detector With the SmartLab SE, Rigaku introduces the available HyPix-400, a semiconductor hybrid pixel array detector that was specifically designed for multipurpose X-ray diffractometers.",
+  "ements Multipurpose X-ray Diffractometer (XRD): SmartLab Rigaku SmartLab powered by SmartLab Studio II software is an award-winning automated multi-purpose XRD designed for ultimate ease of use: Even for the most complex measurements, all you need to do is tell the SmartLab Studio II Guidance software what you want to analyze.",
+  "igaku SmartLab XRD GENERAL INFORMATION | STANDARD OPERATING PROCEDURE Location: Mudd 1124A The Rigaku SmartLab is a versatile multipurpose X-ray diffractometer designed for advanced structural characterization of polycrystalline materials, thin films, and nanomaterials.",
+  "XRD can also be used not only for single layer but multiple layer analysis, observing these parameters for all layers simultaneously X-ray diffractometers suitable for investigating structures of nm-thin films.",
+  "Sample Stage Options RX-RY Stage: Provides motorized adjustment of two orthogonal tilt angles for the sample, commonly used for precise correction of substrate/film mis-cut for perfect on-axis measurement."
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "object": "rigaku-zsx-primus-400",
+ "manufacturer": "rigaku",
+ "pages": 9,
+ "harvested": "2026-09-13",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "optical_spectroscopy": 47,
+  "microscopy": 42,
+  "halt_hass": 6,
+  "electrical_transport": 3,
+  "particle_size": 3,
+  "vibration_sine_random": 3,
+  "abrasion": 2,
+  "density_porosity": 2,
+  "texture": 2,
+  "thermal_conductivity": 2,
+  "coating_thickness": 1,
+  "compression": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "scratch_pencil_hardness": 1,
+  "tensile": 1,
+  "torsion": 1
+ },
+ "application_sentences": [
+  "Accepting samples up to 400 mm diameter, 50 mm thick and 30 kg mass, this system is ideal for analyzing sputtering targets, magnetic disks, or for multilayer film metrology or elemental analysis of large samples.",
+  "Ideal for multilayer thickness analysis accommodating up to 10 layers ranging from nano to micrometers in thickness."
+ ],
+ "standards_nearby": [
+  "ASTM D2622-16",
+  "ASTM D5059-21",
+  "ASTM D6443-14"
+ ]
+}

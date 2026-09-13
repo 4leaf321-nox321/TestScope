@@ -1,0 +1,983 @@
+{
+ "object": "buehler-wilson-vh3300-materialtwin",
+ "manufacturer": "buehler",
+ "phrases": [
+  "Buehler VH3100 VH3300",
+  "Buehler VH3100",
+  "Buehler VH3300",
+  "Wilson VH3100 VH3300",
+  "Wilson VH3100"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Buehler VH3100 VH3300\" OR \"Buehler VH3100\" OR \"Buehler VH3300\" OR \"Wilson VH3100 VH3300\" OR \"Wilson VH3100\"",
+  "count": 69,
+  "works": [
+   {
+    "id": "https://openalex.org/W3020874664",
+    "doi": "https://doi.org/10.1016/j.addma.2020.101214",
+    "title": "On the thermal conductivity of AlSi10Mg and lattice structures made by laser powder bed fusion",
+    "year": 2020,
+    "cited": 126,
+    "venue": "Additive manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2214860420305868/pdf",
+    "abstract": "The thermal conductivity of AlSi10Mg made by laser powder bed fusion (LPBF), and its modification via heat treatment, has received little attention despite possible applications for heat exchangers and thermo-mechanical components. Here, we show that heat treatment can increase the thermal conductivity of LPBF AlSi10Mg to that of cast material. Our results indicate that post-manufacture annealing eliminates the thermal conductivity anisotropy present in the as-built condition, and enhances the conductivity by close to 30 % in the transverse direction (perpendicular to the LPBF build orientation). A solution heat treatment increases the thermal conductivity further still (36 % compared to the as-built condition), while a T6-like treatment provides the greatest increase (44 % compared to the as-built condition). These improvements are related to the evolution of the AlSi10Mg microstructure, especially the breakdown of the Si cellular structure. Additionally, the thermal conductivities of gyroid lattice structures were examined in the as-built and annealed conditions. Contrary to solid specimens, the lattice structures exhibited almost isotropic thermal conductivity in the as-built condition. Their thermal conductivities were increased by the annealing treatment in proportion to their volume fraction. Our findings contribute to the development of a general design-for-additive-manufacturing (DfAM) framework which will make the best possible use of AM materials and lattice structures for heat transfer components."
+   },
+   {
+    "id": "https://openalex.org/W3156632147",
+    "doi": "https://doi.org/10.1016/j.addma.2021.102002",
+    "title": "Design of heterogeneous structured Al alloys with wide processing window for laser-powder bed fusion additive manufacturing",
+    "year": 2021,
+    "cited": 81,
+    "venue": "Additive manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1819544",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2997098239",
+    "doi": "https://doi.org/10.3390/ma13010117",
+    "title": "The Effects of Feature Sizes in Selectively Laser Melted Ti-6Al-4V Parts on the Validity of Optimised Process Parameters",
+    "year": 2019,
+    "cited": 67,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/13/1/117/pdf?version=1577339406",
+    "abstract": "Ti-6Al-4V is a popular alloy due to its high strength-to-weight ratio and excellent corrosion resistance. Many applications of additively manufactured Ti-6Al-4V using selective laser melting (SLM) have reached technology readiness. However, issues linked with metallurgical differences in parts manufactured by conventional processes and SLM persist. Very few studies have focused on relating the process parameters to the macroscopic and microscopic properties of parts with different size features. Therefore, the aim of this study was to investigate the effect of the size of features on the density, hardness, microstructural evolution, and mechanical properties of Ti-6Al-4V parts fabricated using a fixed set of parameters. It was found that there is an acceptable range of sizes that can be produced using a fixed set of parameters. Beyond a specific window, the relative density decreased. Upon decreasing the size of a cuboid from (5 × 5 × 5 mm) to (1 × 1 × 5 mm), porosity increased from 0.3% to 4.8%. Within a suitable size range, the microstructure was not significantly affected by size; however, a major change was observed outside the acceptable size window. The size of features played a significant role in the variation of mechanical properties. Under tensile loading, decreasing the gauge size, the ultimate and yield strengths deteriorated. This investigation, therefore, presents an understanding of the correlation between the feature size and process parameters in terms of the microscopic and macroscopic properties of Ti-6Al-4V parts manufactured using SLM. This study also highlights the fact that any set of optimized process parameters will only be valid within a specific size window."
+   },
+   {
+    "id": "https://openalex.org/W4367397110",
+    "doi": "https://doi.org/10.1016/j.msea.2023.145072",
+    "title": "Microstructure and mechanical properties of hypoeutectic Al–6Ce–3Ni-0.7Fe (wt.%) alloy",
+    "year": 2023,
+    "cited": 36,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1973330",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4317754233",
+    "doi": "https://doi.org/10.1016/j.jallcom.2023.169022",
+    "title": "Facile manipulation of mechanical properties of Ti-6Al-4V through composition tailoring in laser powder bed fusion",
+    "year": 2023,
+    "cited": 33,
+    "venue": "Journal of Alloys and Compounds",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0925838823003250-ga1_lrg.jpg",
+    "abstract": "Ti-6Al-4 V alloy when processed by laser powder bed fusion (LPBF) is a useful material which can be used for the manufacture of complex 3D components for aerospace and medical applications. LPBF fabricated Ti-6Al-4 V typically shows high tensile strength (>1200 MPa) but poor ductility (<10%), explained by the characteristic microstructures that form under high cooling rates and multiple thermal cycles. Here, the composition of the feedstock Ti-6Al-4 V powder was modified via the addition of commercially pure Ti (CP Ti) to achieve improved ductility of LPBF parts through an in-situ modified composition, while maintaining good strength. The LPBF printed Ti alloy (with nominal composition Ti-3Al-2 V) showed a tensile strength of ∼1000 MPa, with improved ductility (∼13%), comparable to wrought Ti-6Al-4 V. These properties are thought to be explained by the decreased c/a ratio (where c and a are the lattice parameters of the titanium hexagonal close-packed phase) resulting in enhanced dislocation slip. Good relative density was also achieved using the modified composition under the same processing parameters. Some non-uniform regions were seen in the developed alloys, as well as evidence of increased martensite α′ thickness. It is proposed that with optimized parameters, further enhancements may be achieved. This work has shown that microstructural and mechanical properties can be facilely manipulated with proper CP Ti addition."
+   },
+   {
+    "id": "https://openalex.org/W3000000428",
+    "doi": "https://doi.org/10.1016/j.mtla.2020.100590",
+    "title": "Microstructure and mechanical properties of Cu-modified AlSi10Mg fabricated by Laser-Powder Bed Fusion",
+    "year": 2020,
+    "cited": 21,
+    "venue": "Materialia",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2589152920300077/pdf",
+    "abstract": "This influence of surface modification of powder feedstocks for additive manufacturing is assessed. Commercial AlSi10Mg powder was coated with 1 wt% copper using a copper formate precursor, which was reduced to metallic copper after vacuum heat treatment. Consolidated samples were produced using Laser-Powder Bed Fusion (L-PBF). Both the untreated and coated powders produced materials which exhibited high preferential crystal orientation, with grains aligned parallel to the build direction. The microstructure of the consolidated materials was characterized by SEM and TEM. The cells consisted of a α-Al matrix with copper particles decorating the intercellular region and eutectic silicon homogeneously dispersed in the cell boundary. The effect of the T6 heat treatment on the mechanical properties of the L-PBF-processed materials was a decrease in the strength. The specimens fabricated from coated powder exhibited an increased ultimate tensile strength (461 ± 0.2 MPa) and 12% elongation at break compared to the AlSi10Mg parts (346 ± 1.0 MPa) and 10% elongation. The study establishes the feasibility of modifying the composition of L-PBF-processed materials via the coating of powder feedstocks and that the coating additions can be exploited to enhance mechanical properties of parts after heat treatment."
+   },
+   {
+    "id": "https://openalex.org/W4319997030",
+    "doi": "https://doi.org/10.1016/j.jeurceramsoc.2023.01.015",
+    "title": "Heterogeneous microstructure of yttrium hydride and its relation to mechanical properties",
+    "year": 2023,
+    "cited": 19,
+    "venue": "Journal of the European Ceramic Society",
+    "topics": [
+     "Nuclear Materials and Properties",
+     "Fusion materials and technologies",
+     "Nuclear Physics and Applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1961969",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4288713736",
+    "doi": "https://doi.org/10.1002/adem.202200753",
+    "title": "High‐Temperature Creep Properties of an Additively Manufactured Y 2 O 3 Oxide Dispersion‐Strengthened Ni–Cr–Al–Ti γ/γ’ Superalloy",
+    "year": 2022,
+    "cited": 19,
+    "venue": "Advanced Engineering Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adem.202200753",
+    "abstract": "The effects of the modification of a high‐γ' Ni–8.5Cr–5.5Al–1Ti (wt%) model superalloy with 0.5 wt% Y 2 O 3 , manufactured by laser powder bed fusion, on the microstructure and compressive creep resistance, are investigated. Compared with the base alloy, the oxide dispersion‐strengthened (ODS) alloy exhibits 8–10 times slower creep rates at 800 °C, over a wide range of compressive stresses (35–250 MPa). Two creep regimes are observed: diffusional creep, hypothesized to be due to grain boundary sliding, and dislocation creep, with stress exponents n of 2 and 5, respectively. Compared with the horizontal direction, the vertical build direction is characterized by lower creep rates, due to the vertically elongated grain structure. Nonetheless, the ODS alloy's weakest (horizontal) direction shows better creep resistance than the non‐ODS alloy in its strongest (vertical) direction, despite a higher number of as‐built defects (slag, cracks) in the ODS alloy. The strengthening potential of ODS modification of additively manufactured nickel‐based superalloys is thus demonstrated. The development of successful commercial ODS nickel superalloys for additive manufacturing processing requires further additions of grain boundary strengthening elements as the dispersoids do not significantly increase the grain boundary strength, as their cracking is prevalent in the ODS alloy."
+   },
+   {
+    "id": "https://openalex.org/W4220840694",
+    "doi": "https://doi.org/10.1016/j.matdes.2022.110543",
+    "title": "Metallurgical reactions and tribological properties of self-lubricating Al-WS2 composites: Laser powder bed fusion Vs. spark plasma sintering",
+    "year": 2022,
+    "cited": 17,
+    "venue": "Materials & Design",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Additive Manufacturing Materials and Processes",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127522001642/pdf",
+    "abstract": "Self-lubricating aluminium-based composites reinforced with solid lubricants promise to meet the demand for lightweight materials in green tribological applications. The design advantages granted by additive manufacturing (AM) processes coupled with their capacity for in-situ production of composite materials are yet to be exploited in the realm of Al-transition metal dichalcogenides composites. In this work, laser powder bed fusion (LPBF) was deployed for the in-situ fabrication of Al-WS2 composites for the first time, elucidating the process-structure–property relationships in comparison to reference spark plasma sintering (SPS) samples. The WS2 response to the respective fabrication technique was also firstly investigated through a holistic characterisation. The formation of new phases (W for LPBF, Al5W and Al12W for SPS) provided the potential for microstructural tailoring for optimal tribological performance. For tribological properties, LPBF Al-WS2 exhibited a coefficient of friction (COF) 0.55 ± 0.01 and specific wear rate 3.4 ± 0.3 × 10−3 mm3/N∙m, slightly better than the SPS counterpart (COF 0.57 ± 0.02, specific wear rate 3.6 ± 0.3 × 10−3 mm3/N∙m). Furthermore, a novel methodology for studying the evolution of worn surfaces is proposed and validated, by which a tribo-layer formed at lower friction cycles was observed for the LPBF samples, meaning that AM will also be advantageous for the performance aspect of self-lubricating materials."
+   },
+   {
+    "id": "https://openalex.org/W4392289100",
+    "doi": "https://doi.org/10.1002/advs.202309693",
+    "title": "Ink‐Extrusion 3D Printing and Silicide Coating of HfNbTaTiZr Refractory High‐Entropy Alloy for Extreme Temperature Applications",
+    "year": 2024,
+    "cited": 16,
+    "venue": "Advanced Science",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Advanced materials and composites",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://doi.org/10.1002/advs.202309693",
+    "abstract": "Abstract An oxygen‐resistant refractory high‐entropy alloy is synthesized in microlattice or bulk form by 3D ink‐extrusion printing, interdiffusion, and silicide coating. Additive manufacturing of equiatomic HfNbTaTiZr is implemented by extruding inks containing hydride powders, de‐binding under H2, and sintering under vacuum. The sequential decomposition of hydride powders (HfH2+NbH+TaH0.5+TiH2+ZrH2) is followed by in situ X‐ray diffraction. Upon sintering at 1400 °C for 18 h, a nearly fully densified, equiatomic HfNbTaTiZr alloy is synthesized; on slow cooling, both α‐HCP and β‐BCC phases are formed, but on quenching, a metastable single β‐BCC phase is obtained. Printed and sintered HfNbTaTiZr alloys with ≈1 wt.% O shows excellent mechanical properties at high temperatures. Oxidation resistance is achieved by silicide coating via pack cementation. A small‐size lattice‐core sandwich is fabricated and tested with high‐temperature flames to demonstrate the versatility of this sequential approach (printing, sintering, and siliconizing) for high‐temperature, high‐stress applications of refractory high‐entropy alloys."
+   },
+   {
+    "id": "https://openalex.org/W3038096809",
+    "doi": "https://doi.org/10.1016/j.cja.2020.06.005",
+    "title": "Microstructural evolution and hardness of as-cast Be-Al-Sc-Zr alloy processed by laser surface remelting",
+    "year": 2020,
+    "cited": 16,
+    "venue": "Chinese Journal of Aeronautics",
+    "topics": [
+     "Intermetallics and Advanced Alloy Properties",
+     "High Entropy Alloys Studies",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1000936120302685/pdf",
+    "abstract": "As-cast beryllium-aluminum (Be-Al) alloy exhibits a coarse microstructure with pore defects due to a large solidification interval, greatly limiting its mechanical properties. In this research, the relationship between laser surface remelting process and microstructure and hardness of as-cast Be-Al-Sc-Zr alloy was established. The experimental results demonstrated that a pore-free refined microstructure of remelted layer was obtained by controlling the parameter of effective laser energy input. The microstructure of as-cast Be-Al-Sc-Zr alloy consisted of equiaxed grains with Al phase forming a continuous frame wrapping Be phase, which was significantly refined in the remelted zone (from 25 μm to 2 μm). The Vickers hardness in the remelted zone (approximately 210 HV) was approximately 3 times that of as-cast Be-Al-Sc-Zr alloy. Analysis of the Vickers hardness and the Be phase size showed a good agreement with a Hall-Petch equation. In addition, transmission electron microscopy (TEM), auger electron spectroscopy (AES) and X-ray diffraction (XRD) analysis evidenced that Sc and Zr elements formed a single blocky phase Be13(Scx,Zr1-x), which was also greatly refined from 8 μm to 1.5 μm in the remelted zone. The results obtained in this study indicate that the laser surface remelting allowed refining the microstructure and further strengthening the Vickers hardness of Be-Al-Sc-Zr alloy."
+   },
+   {
+    "id": "https://openalex.org/W4407392514",
+    "doi": "https://doi.org/10.3390/app15041917",
+    "title": "Deposition and Characterization of Cu-Enhanced High-Entropy Alloy Coatings via DC Magnetron Sputtering",
+    "year": 2025,
+    "cited": 15,
+    "venue": "Applied Sciences",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/15/4/1917/pdf?version=1739373207",
+    "abstract": "Protection against microbiologically influenced corrosion (MIC) is critical for materials used in aquatic environments, as MIC accelerates material degradation and leads to faster structural failure. Copper (Cu) has the potential to substantially improve the MIC resistance in alloys. In this study, high-entropy alloy (HEA) coatings containing Cu were deposited using DC (Direct Current) magnetron sputtering to enhance the corrosion resistance and mechanical properties of various substrates. Two CuCrFeMnNi HEA compositions in the form of bulk alloys and PVD (Physical Vapor Deposition) coatings, with 5% and 10% Cu, were analyzed for their microstructural, mechanical, and anticorrosive characteristics. Deposition parameters were varied to select the optimal values. Microstructural evaluations using SEM-EDS (scanning electron microscopy and energy dispersive X-ray spectroscopy), XRD (X-ray diffraction), and AFM (atomic force microscopy) revealed uniform, dense coatings with good adhesion composed of dendritic and interdendritic BCC (body-centered cubic) and FCC (face centered cubic) structures, respectively. Microhardness tests indicated improved mechanical properties for the samples coated with developed HEAs. The coatings exhibited improved corrosion resistance in NaCl solution, the 10% Cu composition displaying the highest polarization resistance and lowest corrosion rate. These findings suggest that Cu-containing HEA coatings are promising candidates for applications requiring enhanced corrosion protection."
+   },
+   {
+    "id": "https://openalex.org/W3202366049",
+    "doi": "https://doi.org/10.1007/s42247-021-00293-4",
+    "title": "Microstructure, mechanical and wear resistance properties of low-pressure cold-sprayed Al-7 Mg/Al2O3 and Al-10 Mg/Al2O3 composite coatings",
+    "year": 2021,
+    "cited": 15,
+    "venue": "Emergent Materials",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Aluminum Alloys Composites Properties",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s42247-021-00293-4.pdf",
+    "abstract": "Abstract Aluminium alloy-based metal matrix composites have successfully provided effective wear resistance and repair solutions in the automotive and aerospace sectors; however, the design and manufacture of these alloys are still under development. In this study, the microstructure, mechanical properties and wear resistance of low-pressure cold-sprayed Al-7 Mg/Al2O3 and Al-10 Mg/Al2O3 composite coatings were investigated. The specific wear rates of the coatings were measured when testing them against alumina (Al2O3) counterbody, and the results showed that the cold-sprayed Al-10 Mg/Al2O3 composite coating showed less wear due to its superior hardness, lower porosity and shorter mean free path compared to the Al-7 Mg/Al2O3 composite coating. The microstructural analysis of the worn surfaces of the composite coatings revealed abrasive wear as the primary wear mechanism, and more damages were observed on Al-7 Mg/Al2O3 composite coatings. Most notably, Al2O3 particles were pulled out from the coating and were entrapped between the Al2O3 counterbody and the coating contact surfaces, resulting in a three-body abrasion mode."
+   },
+   {
+    "id": "https://openalex.org/W4378717208",
+    "doi": "https://doi.org/10.1038/s41524-023-01031-6",
+    "title": "Computational discovery of ultra-strong, stable, and lightweight refractory multi-principal element alloys. Part II: comprehensive ternary design and validation",
+    "year": 2023,
+    "cited": 13,
+    "venue": "npj Computational Materials",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41524-023-01031-6.pdf",
+    "abstract": "Abstract Here the discovery of refractory multi-principal element alloys (MPEAs) with high-temperature strength and stability is pursued within a constrained and application-relevant design space. A comprehensive approach is developed and applied to explore all 165 ternary systems in the Al-Ce-Fe-Hf-Mo-Nb-Ta-Ti-V-W-Zr family. A subset of ternary systems that contain large areas in composition–temperature space with high strength and robust BCC phase stability is found. Twelve sets of high-performing alloys are identified, each set optimized for one combination of phase constraint, optimization target, and temperature range. Preliminary mechanical tests support the viability of the method. This work highlights the importance of considering phase stability, exploring non-equiatomic regions of composition space, and applying application-relevant constraints. Parts I and II provide three down-selection techniques for identifying high-performing BCC refractory MPEAs, design guidelines, and many candidates predicted to have BCC phase stability and strengths 2–3 times higher than any reported to date."
+   },
+   {
+    "id": "https://openalex.org/W3099606740",
+    "doi": "https://doi.org/10.29391/2020.99.020",
+    "title": "Bond Formation Mechanism for Resistance Welding of X70 Pipeline Steel",
+    "year": 2020,
+    "cited": 13,
+    "venue": "Welding Journal",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Welding Techniques and Residual Stresses",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "https://doi.org/10.29391/2020.99.020",
+    "abstract": "A Gleeble® thermo-mechanical simulator combined with microstructure characterization using a field emission scanning electron microscope was used to provide insights into the seam weld formation during resistance welding (RW). Gleeble® was used to physically/microstructurally simulate the seam weld formation during RW for the first time. It was found that a peak temperature of 1500˚C and 10-mm stroke produced a microstructure in the solid-state bondline, the flash, and the heat-affected zone similar to the resistance welded pipe manufactured in an industrial scale. Using the force response obtained during seam weld formation in Gleeble®, microstructure characterization of the seam weld, and thermodynamic calculations, it is pro-posed the seam weld in a resistance weld consists of a mushy zone with delta ferrite and solute-enriched liquid, which solidifies into austenite, and on post welding cooling, transforms into ferrite and stringers of M/A, respectively. The presence of a mushy zone in the weld joints provides a physical explanation for the “decarburization” phenomenon observed in the seam of resistance welds."
+   },
+   {
+    "id": "https://openalex.org/W4390266879",
+    "doi": "https://doi.org/10.3390/ma17010148",
+    "title": "Leveraging Deep Neural Networks for Estimating Vickers Hardness from Nanoindentation Hardness",
+    "year": 2023,
+    "cited": 11,
+    "venue": "Materials",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Advanced materials and composites",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/17/1/148/pdf?version=1703685310",
+    "abstract": "This research presents a comprehensive analysis of deep neural network models (DNNs) for the precise prediction of Vickers hardness (HV) in nitrided and carburized M50NiL steel samples, with hardness values spanning from 400 to 1000 HV. By conducting rigorous experimentation and obtaining corresponding nanoindentation data, we evaluated the performance of four distinct neural network architectures: Multilayer Perceptron (MLP), Convolutional Neural Network (CNN), Long Short-Term Memory network (LSTM), and Transformer. Our findings reveal that MLP and LSTM models excel in predictive accuracy and efficiency, with MLP showing exceptional iteration efficiency and predictive precision. The study validates models for broad application in various steel types and confirms nanoindentation as an effective direct measure for HV hardness in thin films and gradient-variable regions. This work contributes a validated and versatile approach to the hardness assessment of thin-film materials and those with intricate microstructures, enhancing material characterization and potential application in advanced material engineering."
+   },
+   {
+    "id": "https://openalex.org/W3036942734",
+    "doi": "https://doi.org/10.1007/s11663-020-01863-3",
+    "title": "Solidified Microstructure of Wear-Resistant Fe-Cr-C-B Overlays",
+    "year": 2020,
+    "cited": 11,
+    "venue": "Metallurgical and Materials Transactions B",
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Advanced materials and composites",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11663-020-01863-3.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4396858839",
+    "doi": "https://doi.org/10.1016/j.matchemphys.2024.129467",
+    "title": "Corrosion behaviour of SiC particulate reinforced AZ31 magnesium matrix composite in 3.5 % NaCl with and without heat treatment",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Materials Chemistry and Physics",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Aluminum Alloys Composites Properties",
+     "Hydrogen Storage and Materials"
+    ],
+    "oa_url": "https://researchonline.ljmu.ac.uk/id/eprint/25411/3/Corrosion%20behaviour%20of%20SiC%20particulate%20reinforced%20AZ31%20magnesium%20matrix%20composite%20in%203.5%25%20NaCl%20with%20and%20without%20heat%20treatment.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4320526422",
+    "doi": "https://doi.org/10.1016/j.optlastec.2023.109133",
+    "title": "Increasing the build rate of high-strength aluminium alloys produced by laser powder bed fusion",
+    "year": 2023,
+    "cited": 8,
+    "venue": "Optics & Laser Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.optlastec.2023.109133",
+    "abstract": "Aluminium alloys from the 2xxx series represent important structural materials due to their optimal combination of strength and corrosion resistance. However, their production by means of laser powder bed fusion (PBF-LB/M) is hampered by the presence of detrimental pores and hot cracks. These defects can be mitigated with appropriate process parameters investigations, often at the expense of the build rate. In this study, a combination of modelling and experimental work is adopted to predict the consolidation behaviour of AA2024, a well-known high-strength Al alloy, in regimes characterised by a progressive increase of build rate. The melt pool geometries are predicted as a function of various process parameters using the Rosenthal solution and variable values of absorptivity. This leads to a facile production of near-full dense crack-free parts at an increasing build rate. The analysis of the specimens produced with such processing parameters reveals that the microstructural features and mechanical properties of AA2024 are largely preserved when build rate is increased. Our approach can be easily implemented in standard PBF-LB/M systems as it does not rely on machine adaptations. Therefore, our new proposed approach might result in a practical solution to increase the productivity of other high-strength Al-alloys in industrial settings."
+   },
+   {
+    "id": "https://openalex.org/W4401367487",
+    "doi": "https://doi.org/10.1111/jace.20057",
+    "title": "Microstructure evolution of zirconium boride whiskers prepared by electrospinning and their toughening effect",
+    "year": 2024,
+    "cited": 7,
+    "venue": "Journal of the American Ceramic Society",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jace.20057",
+    "abstract": "Abstract Zirconium boride (ZrB 2 ) whiskers hold significant potential for toughening ultra‐high temperature ceramics (UHTCs). Yet, their fabrication remains challenging due to limited knowledge of the microstructure evolution. Herein, high‐purity ZrB 2 whiskers were successfully prepared by electrospinning combined with carbothermal reduction. Specifically, a precursor solution containing Zr–O–C–B networks stabilized through hydrogen bonds with polyvinyl pyrrolidone was synthesized as a spinnable ZrB 2 precursor. High‐purity ZrB 2 whiskers with a diameter of ca . 200 nm and a length of 5–10 µm were obtained by precise heat treatment of ZrB 2 precursor fibers. In this process, ZrO 2 grains formed initially and transformed into ZrB 2 grains through carbothermal reduction, which further converted into ZrB 2 whiskers through a solid‐liquid‐solid mechanism. To testify to the toughening effect for UHTCs, the ZrB 2 whiskers were added into ZrB 2 powders and followed by sintering. This strategic addition of 5 wt% ZrB 2 whiskers led to a 19% enhancement in the fracture toughness of ZrB 2 bulk. This study illuminated the preparation strategy and formation mechanism for ZrB 2 whiskers and their application for toughening UHTCs."
+   },
+   {
+    "id": "https://openalex.org/W4379349064",
+    "doi": "https://doi.org/10.2172/1976043",
+    "title": "Sister Rod Destructive Examinations (FY22)",
+    "year": 2023,
+    "cited": 7,
+    "venue": null,
+    "topics": [
+     "Nuclear Materials and Properties",
+     "Engineering and Material Science Research",
+     "Nuclear reactor physics and engineering"
+    ],
+    "oa_url": "https://doi.org/10.2172/1976043",
+    "abstract": "This report was prepared as an account of work sponsored by an agency of the United"
+   },
+   {
+    "id": "https://openalex.org/W4386471021",
+    "doi": "https://doi.org/10.1088/1361-6668/acf73c",
+    "title": "The research on the influence mechanism of internal deformation for the performance of Bi-2212",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Superconductor Science and Technology",
+    "topics": [
+     "Superconducting Materials and Applications",
+     "Physics of Superconductivity and Magnetism",
+     "Particle accelerators and beam dynamics"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1361-6668/acf73c/pdf",
+    "abstract": "Abstract Cable-in-conduit conductor (CICC), one of the most promising conductors for manufacturing magnets in magnetic confinement fusion devices, has attracted lots of attention. In the production of CICC, porosity control is necessary for its stability. The porosity control is usually realized by the diameter-reducing process, which would also lead to indentation damages to the elements of CICC-superconducting wires. In this article, systematic research of indentation damages was carried out on the next generation of high-temperature superconducting materials–Bi-2212 wires. The results indicate that the current carrying capacity of the indentation-damaged wire would first keep steady and then show exponential decline with the increase of indentation depth. The wires subjected to pre-overpressure (pre-OP) treatment exhibit slightly improved resistance against indentation damage at shallow indentation depths. However, their critical current (I c) deteriorates more rapidly at greater indentation depths when compared to wires that have not undergone the per-OP process. The following structural characterization analyzed the reasons for the property changes with the help of scanning electron microscopy, energy dispersive x-ray spectroscopy, computed tomography, and hardness tester. Misalignment between the Bi-2212 grains and shaped filaments was found in the indentation-damaged wires, with which the degradation in I c of the wires and the differences in properties of the two kinds of wires were further discussed."
+   },
+   {
+    "id": "https://openalex.org/W2598653023",
+    "doi": "https://doi.org/10.5978/islsm.17-or-01",
+    "title": "Microhardness evaluations of CAD/CAM ceramics irradiated with CO2 or Nd:YAP laser",
+    "year": 2017,
+    "cited": 6,
+    "venue": "LASER THERAPY",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Implant Techniques and Outcomes",
+     "Endodontics and Root Canal Treatments"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/islsm/26/1/26_17-OR-01/_pdf",
+    "abstract": "Background and aims: The aim of this study was to measure the microhardness values of irradiated computer-aided design/computer-aided manufacturing (CAD/CAM) ceramics surfaces before and after thermal treatment.Material and Methods: Sixty CAD/CAM ceramic discs were prepared and grouped by material, i.e. lithium disilicate ceramic (Emax CAD) and zirconia ceramic (Emax ZirCAD).Laser irradiation at the material surface was performed with a carbon dioxide laser at 5 Watt (W) or 10 W power in continuous mode (CW mode), or with a neodymium:yttrium aluminum perovskite (Nd:YAP) laser at 10 W on graphite and non-graphite surfaces.Vickers hardness was tested at 0.3 kgF for lithium disilicate and 1 kgF for zirconia.Results: Emax CAD irradiated with CO2 at 5 W increased microhardness by 6.32 GPa whereas Emax ZirCAD irradiated with Nd:YAP decreased microhardness by 17.46 GPa.Conclusion: CO2 laser effectively increases the microhardness of lithium disilicate ceramics (Emax CAD)."
+   },
+   {
+    "id": "https://openalex.org/W2340001134",
+    "doi": "https://doi.org/10.2172/1239761",
+    "title": "Preliminary Results on FeCrAl Alloys in the As-received and Welded State Designed to Have Enhanced Weldability and Radiation Tolerance",
+    "year": 2015,
+    "cited": 6,
+    "venue": null,
+    "topics": [
+     "Nuclear Materials and Properties",
+     "Fusion materials and technologies",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1239761",
+    "abstract": "The present report summarizes and discusses the recent results on developing a modern, nuclear grade FeCrAl alloy designed to have enhanced radiation tolerance and weldability. The alloys used for these investigations are modern FeCrAl alloys based on a Fe-13Cr-5Al-2Mo-0.2Si-0.05Y alloy (in wt.%, designated C35M). Development efforts have focused on assessing the influence of chemistry and microstructure on the fabricability and performance of these newly developed alloys. Specific focus was made to assess the weldability, thermal stability, and radiation tolerance."
+   },
+   {
+    "id": "https://openalex.org/W4414273881",
+    "doi": "https://doi.org/10.1007/s11666-025-02063-8",
+    "title": "Single-Particle Impact of Ti6Al4V and Ti-5553 in Cold Spray: A Novel Approach to Flattening Ratio and Selecting Johnson–Cook Model Parameters",
+    "year": 2025,
+    "cited": 5,
+    "venue": "Journal of Thermal Spray Technology",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Nuclear Materials and Properties",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11666-025-02063-8.pdf",
+    "abstract": "Abstract The application of Finite Element Analysis (FEA) in cold spray (CS) provides valuable information about material deformation and stress distribution. The Johnson–Cook (JC) model is widely used to simulate material behavior, while the particle Flattening Ratio (FR) is commonly used to assess the deformation pattern and mechanism. FR has also been employed to evaluate and select appropriate JC model parameters. Experimental FR values can be obtained from a cross-sectional view of splats; however, the accuracy of these values can be affected by the sectioning location. This study introduces a novel approach for experimental FR observation by integrating top and cross-sectional views of Ti6Al4V and Ti-5553 deposited particle splats, addressing the limitations of the conventional cross-sectional FR method. The influence of the sectioning region on FR values was systematically evaluated through numerical and experimental analyses. Experimental FR results show that off-axis sectioning leads to overestimating FR values, with increases of 25.98% for Ti6Al4V and 15.45% for Ti-5553. The differences in critical velocities obtained using the FEA between the two FR measurement approaches were approximately 24.61% for Ti6Al4V and 32.46% for Ti-5553. The findings highlight the importance of accuracy in FR measurement and its effect on JC parameter selection and FEA results."
+   },
+   {
+    "id": "https://openalex.org/W4303856779",
+    "doi": "https://doi.org/10.3390/mi13101642",
+    "title": "Microstructure Transformation in Laser Additive Manufactured NiTi Alloy with Quasi-In-Situ Compression",
+    "year": 2022,
+    "cited": 5,
+    "venue": "Micromachines",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2072-666X/13/10/1642/pdf?version=1664524840",
+    "abstract": "For NiTi alloys, different additive manufacturing processes may have different compressive recovery capabilities. In particular, there are relatively few studies on the compressive recovery ability of NiTi alloys by the laser-directed energy deposition (LDED) process. In this paper, the compression recovery properties of NiTi alloys with the LDED process were investigated quasi-in-situ by means of transmission electron microscopy, an electron backscatter diffractometer, and focused ion beam–fixed-point sample preparation. The results showed that the material can be completely recovered under 4% deformation and the B19’ martensite phase content and dislocation density are basically unchanged. However, the recovery rate was only 90% and the unrecoverable strain was 0.86% at 8% deformation. Meanwhile, the B19’ martensite phase content and dislocation density of the material increased. Furthermore, with the increase in deformation, the relative dislocation pinning effect of the Ti2Ni precipitated phase in the alloy was enhanced, which reduced the compressive strain recovery to a certain extent."
+   },
+   {
+    "id": "https://openalex.org/W4295213428",
+    "doi": "https://doi.org/10.3390/ma15186267",
+    "title": "Microstructural Characteristics and Hardness Enhancement of Super Duplex Stainless Steel by Friction Stir Processing",
+    "year": 2022,
+    "cited": 5,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Metal Forming Simulation Techniques",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/15/18/6267/pdf?version=1662711692",
+    "abstract": "In the present study, microstructural evolution and hardness of the friction stir processed (FSPed) SAF 2507 super duplex stainless steel fabricated at a rotational speed of 650 rpm and a traverse speed of 60 mm/min were investigated. A scanning electron microscope (SEM) equipped with an electron backscatter diffraction (EBSD) detector was used to study the microstructure of the stir zone. The grain sizes of austenite and ferrite in the FSPed 2507 were found to be smaller (0.75 and 0.96 μm) than those of the substrate (6.6 and 5.6 μm) attributed to the occurrence of continuous dynamic recrystallization (CDRX) in both phases. Higher degree of grain refinement and DRX were obtained at the advancing side of the FSPed specimens due to higher strain and temperature. A non-uniform hardness distribution was observed along the longitudinal direction of the SZ. The maximum hardness was obtained at the bottom (407 HV1)."
+   },
+   {
+    "id": "https://openalex.org/W3016326213",
+    "doi": "https://doi.org/10.3390/ma13081841",
+    "title": "Effect of Corrosion Protection Method on Properties of RSW and RFSSW Lap Joints Applied in Production of Thin-Walled Aerostructures",
+    "year": 2020,
+    "cited": 5,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Welding Techniques and Residual Stresses",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/13/8/1841/pdf?version=1586862623",
+    "abstract": "Aluminum structures, and in particular an element of aerostructures, are strongly exposed to the effects of weather conditions. In the case of using new techniques of joining these structural elements, the selection of proper corrosion protection without losing the required properties of the joint may determine its potential application. This paper presents the results of experimental research concerning the influence of corrosion protection on the microstructure and mechanical strength of resistance spot welded (RSW) and refill friction stir spot welded (RFSSW) joints. The tests were carried out on 2024 T3 aluminum alloy, both sides alcladed. For comparison purposes, the following joints were welded: without any protection, with the primer layer, with anodic oxide coating, and with anodic oxide coating plus sealant between the overlapping surface of the welded metal sheet. The samples were visually inspected, and metallographic and mechanical strength examination was conducted. The test results indicate that the application of the protective layers and its type have an impact on the strength of RSW and RFSSW joints. The use of an adhesive or sealant in welded joints provides an increase in the load capacity of the joint."
+   },
+   {
+    "id": "https://openalex.org/W4400488541",
+    "doi": "https://doi.org/10.1016/j.matdes.2026.116142",
+    "title": "Laser-scanning of induction-melted Al-Zr-Er-Ni alloys: are they representative of additively manufactured ones?",
+    "year": 2026,
+    "cited": 4,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.matdes.2026.116142",
+    "abstract": "The bottleneck of alloy design for powder-based additive manufacturing (AM) resides in customized powder production - an expensive and time-consuming process hindering the rapid closed-loop design iterations. This study analyzed an expedited experimental workflow, i.e., multipath laser scanning of induction-melted samples, to mimic rapid solidification of AM to serve as an alternative approach to down-select from the design space. Using Al-Ni-Zr-Er model alloy, comprehensive multi-scale characterizations were performed to compare microstructural features between laser-scanned and laser powder bed fusion (LPBF) samples. Although demonstrating a difference in melt pool geometries, the microstructures in scanning electron microscopy (SEM)- and transmission electron microscopy (TEM)- scale demonstrate a high degree of similarity, in terms of microstructure morphology, grain size, presence of precipitates, and phase distribution. The mechanical performance was evaluated by microhardness tests. The results revealed a 20% reduction in laser-scanned samples compared to LPBF samples, attributed to the thermal history and potential differences in phase fractions. The decreasing trend was also observed in the benchmark alloy showing a 10% absolute error with respect to the model alloy. This study underscores the potential of this workflow to accelerate alloy design in AM by circumventing customized powder production and encourages further exploration across diverse materials and processing parameters."
+   },
+   {
+    "id": "https://openalex.org/W4389203170",
+    "doi": "https://doi.org/10.3390/cryst13121650",
+    "title": "Effect of Electrical Resistance Heating on Recrystallization of Cold-Rolled Low-Carbon Steel",
+    "year": 2023,
+    "cited": 4,
+    "venue": "Crystals",
+    "topics": [
+     "Electromagnetic Effects on Materials",
+     "Magnetic Properties and Applications",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4352/13/12/1650/pdf?version=1701320501",
+    "abstract": "The “electron wind effect” has long been cited as a potential catalyst of solid-state transformations in metals, particularly when high current densities are involved. However, the literature exploring similar effects at lower current densities, such as those occurring during Gleeble thermomechanical simulation, remains scarce. The present work compares recrystallization activity in cold-rolled low-carbon steel during heat treatment by conventional furnace versus direct resistance heating (Gleeble). Multiple levels of cold work, annealing durations, and soak temperatures were examined, allowing for an in-depth comparison of recrystallization rates and activation energies between samples subjected to identical time–temperature profiles in the furnace and Gleeble. In addition to the expected increase in recrystallization behavior with the increases in temperature and cold-reduction levels, the use of the Gleeble system as the heating method resulted in faster initial microstructural transformation than a conventional furnace. The variability in recrystallized fractions persisted until the microstructures had saturated to their nearly fully recrystallized levels, at which point the microhardness and electron backscatter diffraction (EBSD) revealed convergence to equivalent behavior irrespective of the heating method. Analysis of the recrystallization kinetics by fitting to a JMAK relationship reflected the increased transformation activity during Gleeble treatment, with the value of the kinetic exponent also indicating greater grain growth activity at higher temperature."
+   },
+   {
+    "id": "https://openalex.org/W4387521029",
+    "doi": "https://doi.org/10.1016/j.addlet.2023.100176",
+    "title": "On the development of twinning-induced plasticity in additively manufactured 316L stainless steel",
+    "year": 2023,
+    "cited": 4,
+    "venue": "Additive Manufacturing Letters",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Titanium Alloys Microstructure and Properties",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.addlet.2023.100176",
+    "abstract": "A report on twinning-induced plasticity in 316L stainless steel manufactured by metal additive manufacturing (AM) is presented. A tapered tensile test geometry was used which enabled the investigation of twin formation over a range of strain levels in a single specimen. Hardness and twinning concentration were observed to increase with strain up to peak values of 380 ± 10 HV and 28 ± 4 %, respectively. Furthermore, twin formation was found to be regulated by grain size and crystal texture. This methodology can be applied to new AM materials development and will inform the design of energy-absorbing structures that maximise the benefits of AM design and strain-hardenable materials."
+   },
+   {
+    "id": "https://openalex.org/W4315781885",
+    "doi": "https://doi.org/10.3390/met13010151",
+    "title": "Incorporating the Roles of Feature Size and Build Orientation in the Process-Structure-Property Relationship for Additively Manufactured Parts",
+    "year": 2023,
+    "cited": 4,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/13/1/151/pdf?version=1673438999",
+    "abstract": "Laser powder bed fusion (L-PBF) additive manufacturing has reached wide-scale technology readiness for various sectors. However, some challenges posed by the complex nature of the process persist. Limited studies investigated the correlation between the micro- and macroscopic properties of L-PBF AlSi10Mg parts and the features’ sizes with the build orientation in mind. Therefore, this study presents a comprehensive view on the “size effect” for samples larger than those available in the literature (up to 12 mm) on the defects, microstructure evolution, and mechanical properties in two build orientations using a fixed set of process parameters. Microstructural differences were observed between the build orientations, but no considerable difference with size change was detected. The porosity content was inversely proportional to the feature size irrespective of the build orientation, leading to an increase in ductility that was more evident in the horizontal specimens (~44%). This was attributed to an in-situ heat treatment. Although specimens oriented parallel to the build direction showed no significant size-effect in terms of the mechanical properties (hardness and tensile), anisotropy was evident. Based on the findings presented in the study and the scientific explanations discussed corroborated by thermal imaging during processing, it is concluded that although any set of ‘optimised’ process parameters will only be valid for a specific size range, the severity of the size-effect changes dynamically based on the range."
+   },
+   {
+    "id": "https://openalex.org/W7164755063",
+    "doi": "https://doi.org/10.1038/s41598-026-55056-0",
+    "title": "Tunable mechanical, corrosion, and antimicrobial performance in multifunctional Cux‑Cr-Fe-Mn-Ni high-entropy alloys and E-beam coatings",
+    "year": 2026,
+    "cited": 3,
+    "venue": "Scientific Reports",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Magnesium Alloys: Properties and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-026-55056-0_reference.pdf",
+    "abstract": "Abstract Cu x -Cr-Fe-Mn-Ni high-entropy alloys and their electron-beam-deposited coatings demonstrate a tunable balance of mechanical strength, corrosion resistance, and antimicrobial performance, offering a new paradigm for multifunctional protective materials. Dense nanocrystalline coatings with complex phase coexistence achieved exceptional hardness (~ 9.4 GPa) and a high elastic strain-to-failure ratio (H/E ≈ 0.05), indicating potential for improved resistance to wear and contact damage. Controlled Cu content governs surface oxide composition, simultaneously enhancing corrosion protection and enabling targeted bactericidal activity against Pseudomonas aeruginosa (up to 71% reduction), mitigating microbiologically influenced corrosion (MIC) in saline environments. These results reveal a critical interplay between phase structure, surface chemistry, and functional performance, establishing a rational pathway for designing high-performance coatings and bulk alloys with environment-specific multifunctionality. Cu x -Cr-Fe-Mn-Ni HEAs are versatile candidates for industrial, marine, and energy applications where tailored mechanical, chemical, and antimicrobial properties are required."
+   },
+   {
+    "id": "https://openalex.org/W4360609165",
+    "doi": "https://doi.org/10.21203/rs.3.rs-2706556/v1",
+    "title": "Optimization of GMAW Process Parameters for Weld Overlay of Inconel 686 Superalloy on Low-Carbon Steel",
+    "year": 2023,
+    "cited": 3,
+    "venue": "Research Square",
+    "topics": [
+     "Welding Techniques and Residual Stresses",
+     "Microstructure and Mechanical Properties of Steels",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-2706556/latest.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W7135012829",
+    "doi": "https://doi.org/10.1098/rspa.2025.0757",
+    "title": "Dislocation analysis in CrCoNi medium-entropy alloy using nanoindentation and molecular dynamics simulations",
+    "year": 2026,
+    "cited": 2,
+    "venue": "Proceedings of the Royal Society A Mathematical Physical and Engineering Sciences",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "Shape Memory Alloy Transformations"
+    ],
+    "oa_url": "https://royalsocietypublishing.org/rspa/article-pdf/doi/10.1098/rspa.2025.0757/6123406/rspa.2025.0757.pdf",
+    "abstract": "Abstract This study investigates the indentation size effect (ISE), strain rate sensitivity (SRS) and incipient plasticity in CrCoNi medium-entropy alloys (MEAs) through a combination of nanoindentation experiments and molecular dynamics (MD) simulations. Microstructural characterization reveals grain refinement and twin formation dependent on processing conditions, with significant effects on mechanical response. Nanoindentation results confirm classic ISE behaviour at the microscale, but show pronounced deviations at nanoscale depths, accompanied by discrete pop-in events indicative of homogeneous dislocation nucleation. An SRS of m=0.083 and an activation volume of 40–60 b3 suggest that thermally activated dislocation glide is governed by Peierls friction rather than forest hardening. MD simulations incorporating realistic short-range order (SRO) demonstrate reduced dislocation activity and elevated critical stresses compared to randomly distributed atomic configurations. The presence of SRO modulates deformation mechanisms, suppresses phase transformation and enhances twinning-dominated plasticity. These findings highlight the synergistic role of atomic-scale chemical ordering and geometric confinement in controlling plasticity and strengthen the case for SRO-informed design strategies in next-generation high-performance alloys."
+   },
+   {
+    "id": "https://openalex.org/W4393107251",
+    "doi": "https://doi.org/10.1007/978-3-031-50308-5_32",
+    "title": "Design and Characterization of Hierarchically-Strengthened, Cast Al-Ce-Ni-Mn-Sc-Zr Alloys for High-Temperature Applications",
+    "year": 2024,
+    "cited": 2,
+    "venue": "The minerals, metals & materials series",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2338281",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4362584611",
+    "doi": "https://doi.org/10.1140/epjp/s13360-023-03916-3",
+    "title": "First examinations of ancient ferrous alloys in Renaissance armour by SR-X-Ray diffraction",
+    "year": 2023,
+    "cited": 2,
+    "venue": "The European Physical Journal Plus",
+    "topics": [
+     "Metallurgy and Cultural Artifacts",
+     "Cultural Heritage Materials Analysis",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1140/epjp/s13360-023-03916-3.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2944199344",
+    "doi": "https://doi.org/10.14288/1.0378555",
+    "title": "Development of novel grain refiners for AZ91D magnesium alloys and their effect on hot tearing",
+    "year": 2019,
+    "cited": 2,
+    "venue": "cIRcle (University of British Columbia)",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Magnesium Alloys: Properties and Applications"
+    ],
+    "oa_url": "http://hdl.handle.net/2429/70021",
+    "abstract": "Wider implementation of ultralight magnesium (Mg) alloys in engineering applications can be achieved if the mechanical properties of mass produced as-cast alloys can be further enhanced. Grain refinement of aluminum alloys has supported such initiatives over the past few decades; however, a potent and cost-effective grain refiner for common aluminum containing Mg alloys remains elusive. Further, the effect of grain refinement on common casting defects, such as hot tearing, in Mg alloys remains unclear. In this work, several novel grain refiners were produced via the powder metallurgical process known as spark plasma sintering (SPS). The novel grain refiners were used to treat AZ91D Mg alloy and a grain size reduction of ~75 - 85% was achieved, along with improved dispersion of secondary phases and modified eutectics. Such microstructure modifications during solidification resulted in the elimination of hot tearing in castings where hot tearing was typically observed. The SPS’ed refiners were also observed to outperform a common commercially available grain refiner. Many advanced analysis techniques that were implemented in this research provided further understanding of the mechanism behind the effectiveness of the SPS’ed grain refiners. Additionally, the casting experiments were completed using a unique force contraction mold, providing quantitative data during solidification. Furthermore, the results of microstructure evolution, solidification kinetics and forces, as well as in-situ solidification analysis via neutron diffraction, was related to the grain refinement and hot tearing of AZ91D Mg alloy."
+   },
+   {
+    "id": "https://openalex.org/W7160063966",
+    "doi": "https://doi.org/10.1016/j.msea.2026.150334",
+    "title": "Microstructure and crystallographic phase sensitivity to process parameters in a bespoke PBF-LB 17-4 PH alloy",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Metallurgical and Alloy Processes",
+     "Boron and Carbon Nanomaterials Research"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.msea.2026.150334",
+    "abstract": "17-4 PH stainless steel made by powder bed fusion – laser beam (PBF-LB) has exceptional strength and ductility, brought about by transformation induced plasticity (TRIP). Here, we present an investigation into how PBF-LB laser energy density influences the microstructure, content of retained FCC austenite and the mechanical properties of a bespoke 17-4 PH alloy. X-ray diffraction experiments with in situ tensile loading were carried out to track the development of TRIP behaviour. Ex situ analysis provided microstructure and texture in the undeformed and deformed conditions. We found that the microstructure and phase composition are sensitive to the laser energy density ( E L ) during fabrication and, by exploring the process window, it is possible to vary the evolution of the material properties upon plastic deformation. Material made with a low- E L of 0.29 J/mm comprised 11.1% retained austenite, compared with just 3.8% when E L was raised to 0.67 J/mm. Consequently, the yield strength of the low- E L material was 44.6% lower than that of the high- E L material. This provides an opportunity to tune the properties of 17-4 PH stainless steel made by PBF-LB, with the aim creating high energy absorbing structures."
+   },
+   {
+    "id": "https://openalex.org/W4413803119",
+    "doi": "https://doi.org/10.1038/s44334-025-00034-z",
+    "title": "On the role of interface strategy in multi-scale hybrid additive manufacturing",
+    "year": 2025,
+    "cited": 1,
+    "venue": "npj Advanced Manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s44334-025-00034-z.pdf",
+    "abstract": "As multiple macro scale directed energy deposition (DED) processes begin to be industrially adopted for large scale component manufacture, it is imperative that interface strategies between the processes are fully understood. The present work investigates the asynchronous deposition of a wire component (DED-arc), followed by a powder-based deposition (DED-LP) with varying surface treatments which were evaluated for flatness, porosity, hardness, and Charpy impact energy. The self-regulation effect of DED-LP was fully realized with up to 55% reduction in surface variation relative to the DED-arc surface. Contrarily, as surface contaminants were not removed between each process, the resultant DED-LP porosity was significantly reduced from 99.5% to 92.4%. Albeit the reduction in density did not negatively impact the impact toughness as evidenced by a low correlation coefficient of -0.46. As such, the overall manufacturing costs and application space must be considered for selection of the different interface strategies presented in the current work."
+   },
+   {
+    "id": "https://openalex.org/W4411926796",
+    "doi": "https://doi.org/10.3390/met15070745",
+    "title": "Effect of Oxygen and Zirconium on Oxidation and Mechanical Behavior of Fully γ Ti52AlxZr Alloys",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Metals",
+    "topics": [
+     "Intermetallics and Advanced Alloy Properties",
+     "Titanium Alloys Microstructure and Properties",
+     "Nuclear Materials and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/15/7/745/pdf?version=1751446160",
+    "abstract": "This work provides a comprehensive investigation into the synergistic effects of zirconium and oxygen on the microstructural evolution, high-temperature oxidation resistance, and mechanical properties of γ-phase Ti52AlxZr alloys (x = 0, 0.5, 1, and 2 at.%) under systematically controlled oxygen concentrations. Unlike prior studies that have examined these alloying elements in isolation, this study uniquely decouples the contributions of interstitial (oxygen) and substitutional (zirconium) solutes by employing low (LOx) and high (HOx) oxygen levels. Alloys were synthesized via vacuum arc melting and subsequently subjected to homogenization annealing at 1250 °C for 100 h to ensure phase and microstructural stability. Characterization techniques including scanning electron microscopy (SEM), X-ray diffraction (XRD), and electron backscatter diffraction (EBSD) were employed to elucidate phase constitution and grain morphology. Zirconium addition was found to stabilize the γ-TiAl matrix, suppress α2-phase formation, and promote grain coarsening in LOx specimens. Conversely, elevated oxygen concentrations led to α2-phase precipitation along grain boundaries. Mechanical testing, comprising Vickers hardness and uniaxial compression at ambient and elevated temperatures (800 °C), revealed that both zirconium and oxygen significantly enhanced strength and hardness, with Ti52Al2Zr delivering optimal mechanical performance. Moreover, zirconium substantially improved oxidation resistance by promoting the formation of a thinner, adherent Al2O3 scale while simultaneously inhibiting TiO2 growth. Collectively, the findings demonstrate the critical role of zirconium in engineering advanced γ-TiAl-based intermetallics with superior high-temperature structural integrity and oxidation resistance."
+   },
+   {
+    "id": "https://openalex.org/W4412501108",
+    "doi": "https://doi.org/10.33545/26174693.2025.v9.i7se.4834",
+    "title": "Fabrication and analysis of Zn-SiC metal matrix composites via advanced metallurgical processes",
+    "year": 2025,
+    "cited": 1,
+    "venue": "International Journal of Advanced Biochemistry Research",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced ceramic materials synthesis",
+     "Bauxite Residue and Utilization"
+    ],
+    "oa_url": "https://www.biochemjournal.com/archives/2025/vol9issue7S/PartE/S-9-7-56-289.pdf",
+    "abstract": "This study focused on the processing and properties of zinc-silicon carbide (Zn-SiC) metal matrix composites utilizing upgraded metallurgical processing methods. Zn-SiC composites were made following three liquid metallurgy routes; stir casting, squeeze casting along with powder metallurgy methods with different percentages of SiC particles (5, 10, 15, and 20 wt%). The composite materials were characterized based on microstructural features, mechanical properties and thermal properties. Most importantly, it was shown that SiC particles were incorporated in the zinc matrix which increased the metals mechanical properties were intact with the composites. A maximum limit of 15 wt% SiC appeared to be the optimal percentage based on its tensile strength which increase 85%, along with hardness which increase 120% based on pure zinc. Microstructural characterization revealed the fully homogeneous zoning of SiC particulates in the zinc with very little interfacial reactions. Limited testing of Zn-SiC composites produced by the squeeze cast method, resulted in higher properties when compared too stir cast and powder metallurgy method. In addition thermal characteristics demonstrated the composites exhibited improved thermal stability and a reduced thermal expansion coefficient with increasing SiC particulates content. To conclude, the Zn-SiC composites represent a potential lightweight material system with good mechanical properties and enhanced thermal management for electronics, automotive and aerospace application where this could be critical."
+   },
+   {
+    "id": "https://openalex.org/W4404998174",
+    "doi": "https://doi.org/10.5194/jsss-13-237-2024",
+    "title": "Soft sensor system for in-process eddy current microstructure characterization",
+    "year": 2024,
+    "cited": 1,
+    "venue": "Journal of sensors and sensor systems",
+    "topics": [
+     "Non-Destructive Testing Techniques",
+     "Welding Techniques and Residual Stresses",
+     "Ultrasonics and Acoustic Wave Propagation"
+    ],
+    "oa_url": "https://jsss.copernicus.org/articles/13/237/2024/jsss-13-237-2024.pdf",
+    "abstract": "Abstract. Non-destructive testing methods can be used for material characterization and quality control during manufacturing processes. For process control applications, a fast transformation of the measured signal to a small set of characteristic quantities is required. In this work, a soft sensor system based on digital data processing of an eddy current sensor system is developed and implemented. The analytical model for the voltage transfer function is based on an equivalent circuit for the sensor system. The data processing is implemented in software, and the resulting soft sensor is tested in experiments to show that it is possible to obtain useful material data for metals using comparatively simple sensor hardware in quasi real time."
+   },
+   {
+    "id": "https://openalex.org/W4404053365",
+    "doi": "https://doi.org/10.1007/s00339-024-08029-x",
+    "title": "Advancements in non-destructive archaeometric analysis of ancient ferrous artefacts: insights from SR-X-Ray diffraction investigation using model alloys",
+    "year": 2024,
+    "cited": 1,
+    "venue": "Applied Physics A",
+    "topics": [
+     "Metallurgy and Cultural Artifacts",
+     "Archaeological Research and Protection",
+     "Cultural Heritage Materials Analysis"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00339-024-08029-x.pdf",
+    "abstract": "Abstract The exploration of archaeological heritage aims at understanding past societies through the study of ancient materials. While archaeometric analysis provides valuable insights, invasive sampling raises ethical concerns and is often restricted, necessitating the development of non-invasive techniques. This study presents a methodology based on X-Ray Diffraction using synchrotron radiation. The approach involves the elaboration and characterization of model alloys, with X-ray data analysis using Rietveld refinement and Williamson-Hall plot method. Phase identification along with crystallographical investigations conducted on three medieval armours provides insights into manufacturing techniques and highlights the method’s limitation."
+   },
+   {
+    "id": "https://openalex.org/W4406593265",
+    "doi": "https://doi.org/10.2172/2502196",
+    "title": "Sister Rod Destructive Examinations (FY23)",
+    "year": 2024,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Nuclear Materials and Properties",
+     "Nuclear and radioactivity studies",
+     "Engineering and Material Science Research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2502196",
+    "abstract": "As a part of DOE NE High Burnup Spent Fuel Data Project, Oak Ridge National Laboratory (ORNL) is performing destructive examinations (DEs) of high burnup (HBU) (>45 GWd/MTU) spent nuclear fuel (SNF) rods from the North Anna Nuclear Power Station operated by Dominion Energy. The SNF rods, called sister rods or sibling rods, are all HBU and include four different kinds of fuel rod cladding: standard Zircaloy-4 (Zirc-4), low-tin (LT) Zirc-4, ZIRLO, and M5. The DEs are being conducted to obtain a baseline of the HBU rod’s condition before dry storage and are focused on understanding overall SNF rod strength and durability. Composite fuel and defueled cladding will be tested to derive material properties. Although the data generated can be used for multiple purposes, one primary goal for obtaining the post-irradiation examination data and the associated measured mechanical properties is to support SNF dry storage licensing and relicensing activities by (1) addressing identified knowledge gaps and (2) enhancing the technical basis for post-storage transportation, handling, and subsequent disposition. This report provides a cumulative status report of the testing progress, data accumulated, and conclusions reached as a part of the program."
+   },
+   {
+    "id": "https://openalex.org/W4388784518",
+    "doi": "https://doi.org/10.1007/s41230-023-3039-9",
+    "title": "To improve robustness of mechanical properties of semi-solid cast A356 alloy using taguchi design method",
+    "year": 2023,
+    "cited": 1,
+    "venue": "China Foundry",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s41230-023-3039-9.pdf",
+    "abstract": "Mechanical properties of semi-solid casting are dependent on multiple processing parameters, and improper processing parameters will not only reduce mean data but also increase variations. The present study investigated the impact of parameters in slurry preparation and heat treatment on the yield strength and ductility of T6 heat-treated A356 Al-Si alloy using rapid slurry forming (RSF) semi-solid casting. The focus was primarily on the robustness of mechanical properties based on Taguchi design method. By analyzing signal-to-noise ratio and minimum value calculated from $$\\overline {\\boldsymbol{x}} - 3S$$ , the optimum slurry preparation parameters and heat treatment parameters were determined to be no quench, enthalpy exchange material (EEM) temperature of 140 °C, EEM-to-melt ratio of 6mass%, stirring time of 18 s, solution heat treated at 520 °C for 2 h, and ageing heat treated at 190 °C for 6 h. In a small batch validation, the −3S yield strength and −3S elongation reach 256.1 MPa and 5.03% respectively, showing a satisfactory robustness. The hardness and microstructure of heat-treated samples with the best and worst properties were characterized to gain insight into the underlying mechanisms affecting the mean value and variations of mechanical properties."
+   },
+   {
+    "id": "https://openalex.org/W3000627128",
+    "doi": null,
+    "title": "Nano-structuring of micro-alloyed steels via nano-precipitate formation",
+    "year": 2019,
+    "cited": 1,
+    "venue": "Warwick Research Archive Portal (University of Warwick)",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Microstructure and mechanical properties",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "http://wrap.warwick.ac.uk/128452/1/WRAP_Theses_Clark_2018.pdf",
+    "abstract": "This Thesis presents work undertaken in order to develop the fundamental understanding of nano interphase precipitation in steels. \\n \\nSmall angle neutron scattering (SANS) was employed to characterize the precipitates and their size distributions in an Fe-0.047C-0.2V-1.6Mn (in wt.%) alloy isothermally transformed at 700 °C up to 600 min. Analysis suggested the major axis diameter increased from 18 nm after 3 min to 35 nm after 600 min. The precipitate volume fraction correspondingly increased from 0.009 to 0.022 over the same period and number density fell from 2 × 1021 to 5 × 1020 m−3. \\n \\n In-situ Electron Dispersive Backscatter Diffraction (EBSD) and High Temperature Laser Confocal Microscopy (HT-CSLM) were applied to elucidate the influence of γ → α transformation upon the extent of interphase precipitation. Analysis of the γ/α orientation relationship during cooling at 2 and 10 ℃s−1 suggests the proportion of ferrite likely to hold interphase precipitation varies little with cooling rate. At cooling rates in excess of 20 Ks−1, interphase precipitation is increasingly suppressed due to the Widmanstätten γ → α transformation. \\n \\nAn analytical model is presented which suggests the inter-sheet spacing of interphase precipitates is controlled by a complex interplay between the interfacial energy and interfacial segregation. It is shown that the general trend of refining inter-sheet spacing with growing ferrite half-thickness can be well predicted. \\n \\nThe multi-phase field method, is used to investigate the pairing of interphase precipitates in micro-alloyed steels. Where only the interfacial energy is considered it is shown that this energy can lead to a neck between two neighbouring precipitates. When both strain and interfacial energies act on the system, the bridge between the particles becomes stabilized. \\n \\nA procedure for the ‘layman’ to optimise interphase precipitation in any given alloy is proposed. For the Fe-0.047C-0.2V-0.18Si-1.6Mn (in wt.%) alloy considered in this study specific recommendations of processing parameters are given. \\n"
+   },
+   {
+    "id": "https://openalex.org/W2291608410",
+    "doi": "https://doi.org/10.14288/1.0166346",
+    "title": "Development and characterization of yttria stabilized zirconia doped with erbia",
+    "year": 2015,
+    "cited": 1,
+    "venue": "cIRcle (University of British Columbia)",
+    "topics": [
+     "Nuclear materials and radiation effects",
+     "Advanced ceramic materials synthesis",
+     "Glass properties and applications"
+    ],
+    "oa_url": "http://hdl.handle.net/2429/53996",
+    "abstract": "Zirconia ceramics have high thermal resistance, chemical inertness and irradiation stability. One application where zirconia composites may find use is in supercritical water nuclear reactors (SCWR), which are expected to have improved thermal efficiency in comparison to current nuclear reactors. Zirconia ceramics may be useful as insulator materials in SCWR pressure tubes where high thermal resistance, chemical stability, irradiation resistance and supercritical water (SCW) degradation resistance are necessary. Additionally, some preliminary tests have found that specific zirconia composites, such as yttria stabilized zirconia (YSZ) outperform pure zirconia in SCW environments. YSZ is a commonly used zirconia composite, and has an excellent thermal resistance and chemical inertness. Due to the presence of yttrium, the high temperature brittle failure caused by the tetragonal to monoclinic crystal structure transformation frequently observed in zirconia is avoided. However, currently available YSZ does not fully satisfy the SCW degradation targets for a SCWR, thus motivating research into the possibility of doping YSZ to further improve YSZ’s SCW degradation resistance. One possible dopant is erbium oxide (erbia), a rare earth oxide that is used as a technical ceramic and has been studied for use in nuclear applications due to its ability to absorb neutrons. Erbia has not been studied in depth as a dopant in the zirconia system or in YSZ. Thus, this research was conducted in order to determine the effect of erbia doping on the densification, hardness, grain size, crystal lattice parameter and SCW degradation resistance of YSZ. Erbia-YSZ composites of 8mol% YSZ with 5, 10 and 15mol% erbia were fabricated by spark plasma sintering (SPS), a novel powder metallurgy process that is known to produce high density composites, at 1200, 1300 and 1400°C with 30 and 60MPa pressures for 5min. Densification during SPS was characterized based on ram position during sintering. Grain size analysis of the as-sintered composites was performed on fractured surfaces. A preliminary study of the SCW degradation resistance of the erbia-YSZ composites was conducted by exposing them to SCW for 2.5h in pressure vessels. The results suggest that erbia-YSZ composites with >95% theoretical density (TD) were successfully fabricated using SPS. Erbia doping into YSZ was found to inhibit densification, but promoted grain growth and resulted in crystal lattice expansion. Additionally, weight loss during SCW degradation revealed that erbia doping improved the SCW degradation resistance of YSZ, but additional work is necessary to further improve the degradation resistance to meet SCWR targets."
+   },
+   {
+    "id": "https://openalex.org/W7208737915",
+    "doi": "https://doi.org/10.1016/j.nme.2026.102214",
+    "title": "Understanding the toughness mechanism of high-boron stainless steel: impact of boron content",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Nuclear Materials and Energy",
+    "topics": [
+     "Fusion materials and technologies",
+     "Microstructure and mechanical properties",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2352179126001614/pdf",
+    "abstract": "The increase of boron content leads to decreased toughness of high-boron stainless steel, which limits its application in the nuclear field. Hot isostatic pressing (HIP) sintering can effectively control the size and distribution of borides, improving plasticity and toughness. However, boron content significantly impacts microstructure and mechanical properties, particularly toughness. This study prepared high-boron steel samples with 2.06 wt% and 3.32 wt% boron using HIP, and systematically investigated the specific mechanism by which boron content affects toughness through microstructural observation, phase analysis, and comparative analysis of microstructure and texture before and after tensile deformation. Results show that when the boron content exceeds a critical proportion, the connection between boride grains causes an increase in boride grain size and phase fraction from 23.54% to 50.12%. The tensile strength remains comparable at 819 ± 1 MPa and 839 ± 23 MPa. However, the elongation decreases dramatically from 22.1 ± 2.6% to 1.2 ± 0.2%. In 2 wt sample, the interconnected austenite matrix accommodates coordinated deformation through dislocation cross-grain slip and grain rotation, resulting in ductile dimple fracture. In the 3.3 wt sample, the interconnected boride network restricts cross-grain dislocation motion and grain rotation, leading to brittle intergranular fracture with minimal plastic deformation. This study provides theoretical support for further optimizing the microstructure and mechanical properties of high-boron stainless steel materials."
+   },
+   {
+    "id": "https://openalex.org/W7204633402",
+    "doi": "https://doi.org/10.1016/j.matdes.2026.116906",
+    "title": "Optimization of wear and corrosion resistance in high-entropy alloy coatings: Synergistic enhancement mechanism of Al–Mo alloying",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Materials & Design",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Magnesium Alloys: Properties and Applications",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127526014826/pdf",
+    "abstract": "Strengthening phases generally improve alloy wear resistance but often degrade corrosion resistance, limiting long-term service in marine engineering environments. In this study, an Al–Mo coupled regulation strategy is proposed to optimize both the wear and corrosion resistance of laser-cladded high-entropy alloy coatings. CoCrFeNiSiAl x Mo 1−x (x = 0, 0.25, 0.5, 0.75, and 1) coatings were fabricated by laser cladding, and first-principles calculations were employed to elucidate the intrinsic differences between Al and Mo in wear and corrosion behaviors from an electronic-structure perspective. The results demonstrate that the phase constitution of the coatings gradually evolves from an FCC + σ to the BCC/B2 structure. At x = 0, the wear resistance is optimized, yielding a minimum wear rate of 1.73 × 10 −5 mm 3 ·N −1 ·m −1 . Meanwhile, the combined Al–Mo alloying stabilizes the passive film, and the corrosion resistance reaches its optimum at x = 0.25, with an I corr of 1.31 × 10 −7 A·cm −2 . The present study provides a pathway for the compositional optimization of laser-cladded high-entropy alloy coatings and for the balanced enhancement of wear and corrosion resistance in marine engineering applications."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Buehler VH3100 VH3300\" OR \"Buehler VH3100\" OR \"Buehler VH3300\" OR \"Wilson VH3100 VH3300\" OR \"Wilson VH3100\") AND OPEN_ACCESS:y",
+  "count": 12,
+  "papers": [
+   {
+    "pmcid": "PMC6982097",
+    "doi": "10.3390/ma13010117",
+    "title": "The Effects of Feature Sizes in Selectively Laser Melted Ti-6Al-4V Parts on the Validity of Optimised Process Parameters.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 9,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM F2921-11",
+     "EN AW 2618"
+    ]
+   },
+   {
+    "pmcid": "PMC11077685",
+    "doi": "10.1002/advs.202309693",
+    "title": "Ink-Extrusion 3D Printing and Silicide Coating of HfNbTaTiZr Refractory High-Entropy Alloy for Extreme Temperature Applications.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2024",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10780037",
+    "doi": "10.3390/ma17010148",
+    "title": "Leveraging Deep Neural Networks for Estimating Vickers Hardness from Nanoindentation Hardness.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11243246",
+    "doi": "10.3390/ma17133315",
+    "title": "Effects of Heat Input and Intertrack Overlap on the Microstructure and Properties of Inconel 686 Weld Overlays.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E1245",
+     "ASTM E1245-03"
+    ]
+   },
+   {
+    "pmcid": "PMC9607470",
+    "doi": "10.3390/mi13101642",
+    "title": "Microstructure Transformation in Laser Additive Manufactured NiTi Alloy with Quasi-In-Situ Compression.",
+    "journal": "Micromachines (Basel)",
+    "year": "2022",
+    "cited": 1,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9501154",
+    "doi": "10.3390/ma15186267",
+    "title": "Microstructural Characteristics and Hardness Enhancement of Super Duplex Stainless Steel by Friction Stir Processing.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM-E384"
+    ]
+   },
+   {
+    "pmcid": "PMC7215288",
+    "doi": "10.3390/ma13081841",
+    "title": "Effect of Corrosion Protection Method on Properties of RSW and RFSSW Lap Joints Applied in Production of Thin-Walled Aerostructures.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC13519015",
+    "doi": "10.1038/s41598-026-55056-0",
+    "title": "Tunable mechanical, corrosion, and antimicrobial performance in multifunctional Cu&lt;sub&gt;x&lt;/sub&gt;‑Cr-Fe-Mn-Ni high-entropy alloys and E-beam coatings.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM G61-86"
+    ]
+   },
+   {
+    "pmcid": "PMC13117566",
+    "doi": "10.3390/ma19081666",
+    "title": "Processing of High-Quality WC-Inconel 625 Coating via DED.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13137829",
+    "doi": "10.1002/advs.202522466",
+    "title": "Cluster-Mediated Solute Stabilization and Shear-Bypass Synergistic Strengthening in High-Alloyed Systems.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12396965",
+    "doi": "10.1038/s44334-025-00034-z",
+    "title": "On the role of interface strategy in multi-scale hybrid additive manufacturing.",
+    "journal": "NPJ Adv Manuf",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC8402027",
+    "doi": "10.3390/ma14164760",
+    "title": "Effect of Initial Microstructure on the Toughness of Coarse-Grained Heat-Affected Zone in a Microalloyed Steel.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6982097",
+   "title": "The Effects of Feature Sizes in Selectively Laser Melted Ti-6Al-4V Parts on the Validity of Optimised Process Parameters.",
+   "year": "2019",
+   "text": "very size. This was done to attain statistical confidence in the data. All orthogonal planes (frontal YZ, lateral XZ, and horizontal XY) were analysed for porosity and microstructure using a Nikon Optiphot 100 (Nikon, Japan) optical microscope (OM) and image processing using Image J [ 48 ]. The polished samples were tested for micro-hardness using Buehler Wilson VH3100 vickers hardness tester (Buehler, Germany) with a 500 g load and 10 s dwell time. Figure 1 ( a ) C1–C5 samples with a fixed Z height of 5 mm and variation in length and width from 1 to 5 mm. Height was fixed as 5 mm to avoid poor handling of small samples. ( b ) CAD drawing of tensile samples (T1–T5) and their size parameters. ( c ) Representation",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11077685",
+   "title": "Ink-Extrusion 3D Printing and Silicide Coating of HfNbTaTiZr Refractory High-Entropy Alloy for Extreme Temperature Applications.",
+   "year": "2024",
+   "text": "ial cross‐sections, from at least five optical micrographs (MA200 Automated Microscope). Ex‐situ X‐ray diffraction was performed on polished cross‐sections of sintered and quenched samples, and on the surface of silicided samples, using a Smartlab 3 kW Gen2 instrument. Vickers microhardness was averaged from at least ten indentations measured on a Wilson VH3100 automated micro‐hardness tester, by applying a 1.96 N force for 10 s. High‐temperature compression tests were carried out at an initial strain rate of 1 × 10 −4 s −1 on an MTS‐5 servo‐hydraulic tester with a furnace using flowing argon (99.999% pure). To ensure uniaxial compression, the top and bottom surfaces of sintered samples were ground flat",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10780037",
+   "title": "Leveraging Deep Neural Networks for Estimating Vickers Hardness from Nanoindentation Hardness.",
+   "year": "2023",
+   "text": "s to room temperature. 2.1.2. Hardness Test Prior to the execution of hardness testing, all specimens underwent ultrasonic cleansing within an ethanol medium. Subsequent to this, surface cross-sectional hardness examinations were conducted. The post-nitriding micro-Vickers hardness gradient was quantified utilizing a Micro Vickers Hardness Tester (Buehler, VH3100, Bluff, IL, USA), operating under a load of 500 g for a duration of 15 s. This process facilitated the acquisition of between 300 and 400 Vickers hardness data points at specified depths along the cross-section. All data points used were subjected to error analysis, and data points with varying errors were incorporated into the datasets. Nanoinden",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11243246",
+   "title": "Effects of Heat Input and Intertrack Overlap on the Microstructure and Properties of Inconel 686 Weld Overlays.",
+   "year": "2024",
+   "text": "to a liquid fraction of 0.0001%. 2.5. Microhardness Measurement The hardness of various microstructure zones within the cross-section of the overlay (i.e., the weld metal (WM), fusion zone (FZ), heat-affected zones (HAZs), and base metal (BM)) was analyzed by Vickers micro indentations for all the different weld overlay sample conditions. A Wilson VH3100 automated Vickers hardness machine, Buehler (Glenview, IL, USA), was utilized to apply a load of 1 kg for a dwell time of 10 s for each measurement. To assess the variability in the measured hardness values, three to five indentations were conducted in each specific zone. 3. Results and Discussion 3.1. Welding Geometries and Dilution Table 3 provides the measured dimensions of the weld bead",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9607470",
+   "title": "Microstructure Transformation in Laser Additive Manufactured NiTi Alloy with Quasi-In-Situ Compression.",
+   "year": "2022",
+   "text": "sample by wire cutting, and to minimize the error of the compression test, the compressed upper and lower surfaces weresanded with sandpaper and polished with flannel to ensure sufficient smoothness and parallelism. Next, the quasi-in-situ [ 36 , 37 ] observation area (the light-blue box in Figure 2 ) of the sample was marked by an American Wilson VH3100 microhardness tester (made by Buehler Corporation of America) with aforce value of 50 gf, and the distance between the hardness points was 1.5 mm. The samples with 0% deformation, 4% deformation, and 8% deformation were observed by electron backscatter diffraction (EBSD) and a transmission electron microscope (TEM) to achieve a comparative analysis of the microstructure and phasecompo",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9607470",
+   "title": "Microstructure Transformation in Laser Additive Manufactured NiTi Alloy with Quasi-In-Situ Compression.",
+   "year": "2022",
+   "text": "curve re-enters the elastic region of austenite, and the material then undergoes elastic deformation back to A. The length of the blue line in Figure 4 b is 0.86%,which is the amount of irreversible strain caused by plastic deformation. 3.3. Hardness Analysis after Different Compression The microhardness test was carried out using American Wilson VH3100 (made by Buehler Corporation of America), with a force of 100 gf, and was completed within 10 min after compression. As shown in Figure 5 , with the increase indeformation, the hardness value of the sample also increased, which indicates that the amount of deformation has a positive correlation with microhardness. In addition, the microhardness increased significa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9501154",
+   "title": "Microstructural Characteristics and Hardness Enhancement of Super Duplex Stainless Steel by Friction Stir Processing.",
+   "year": "2022",
+   "text": "ed between every pixel and its surrounding pixels, and the mean value was assigned to that pixel. In addition, misorientations exceeding 5° were discarded, so the misorientations associated with discrete subgrain and grain boundaries were excluded. 2.4. Hardness Test Vickers hardness test was conducted using an automatic Vickers hardness analyzer (Wilson VH3100, Lake Blu, IL, USA) with a diamond indenter subjected to a 1 kg load, according to ASTM-E384 (2011). Before the test, the surface of the specimen was ground with 1000-grit emery paper and then cleaned with ethanol. The hardness test was carried out along the cross-section starting 0.1 mm beneath the surface and repeated at least 3 times. 3. Result",
+   "standards": [
+    "ASTM-E384"
+   ]
+  },
+  {
+   "pmcid": "PMC7215288",
+   "title": "Effect of Corrosion Protection Method on Properties of RSW and RFSSW Lap Joints Applied in Production of Thin-Walled Aerostructures.",
+   "year": "2020",
+   "text": "erature in Keller’s reagent (5 mL HF, 15 mL HCl, 25 mL HNO 3 , 955 mL H 2 O). Finally, etching for 20–30 s was done until the microstructure was revealed. The prepared transverse specimens were subjected to microstructural observations on the Zeiss digital optical microscope. Microhardness measurements were made on transverse cross-sections on the Buehler Wilson VH3100 automatic microhardness tester (Buehler Ltd., Lake Bluff, IL, USA) at 50 G load. A total of 20 and 28 indentations were respectively taken for the RSW and RFSSW samples. All measurements were carried out at least three days after welding to maintain sufficient time for the natural aging process in all samples. The cross-section of the weld in both",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13519015",
+   "title": "Tunable mechanical, corrosion, and antimicrobial performance in multifunctional Cu&lt;sub&gt;x&lt;/sub&gt;‑Cr-Fe-Mn-Ni high-entropy alloys and E-beam coatings.",
+   "year": "2026",
+   "text": "pen Database (COD 2025; entries 9012713, 4113931, 1512502, 9008589, corresponding to FCC, BCC, and α-Mn–type structures). Quantitative phase fractions for bulk alloys were estimated using the Reference Intensity Ratio (RIR) method 18 , 19 . Mechanical characterization Vickers microhardness measurements of the bulk HEA alloys were performed using a Wilson VH3100 hardness tester (Wilson Instruments) equipped with a single indenter system and a load cell range of 0.05–10 kgf, as described in detail in our previous work 20 . The reported values correspond to the average of multiple indentations. Nanohardness and reduced Young’s modulus were evaluated using an Anton Paar NHT nanoindenter (Anton Paar GmbH, Gra",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ASTM-E384": 1
+ },
+ "standards_new": [
+  "ASTM-E384"
+ ],
+ "test_item_hits": {
+  "microscopy": 22,
+  "density_porosity": 19,
+  "abrasion": 16,
+  "hardness_vickers": 13,
+  "tensile": 11,
+  "compression": 7,
+  "creep": 7,
+  "electrical_transport": 5,
+  "thermal_conductivity": 5,
+  "tear": 4,
+  "charpy_impact": 1,
+  "fracture_toughness": 1,
+  "friction_coefficient": 1
+ }
+}

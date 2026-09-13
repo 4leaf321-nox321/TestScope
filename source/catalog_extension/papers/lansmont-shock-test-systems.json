@@ -1,0 +1,27 @@
+{
+ "object": "lansmont-shock-test-systems",
+ "manufacturer": "lansmont",
+ "phrases": [
+  "Lansmont P23",
+  "Lansmont P30",
+  "Lansmont P40",
+  "Lansmont P55",
+  "Lansmont P65",
+  "Lansmont 81"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Lansmont P23\" OR \"Lansmont P30\" OR \"Lansmont P40\" OR \"Lansmont P55\" OR \"Lansmont P65\" OR \"Lansmont 81\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Lansmont P23\" OR \"Lansmont P30\" OR \"Lansmont P40\" OR \"Lansmont P55\" OR \"Lansmont P65\" OR \"Lansmont 81\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

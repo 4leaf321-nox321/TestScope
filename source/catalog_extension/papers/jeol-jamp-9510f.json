@@ -1,0 +1,165 @@
+{
+ "object": "jeol-jamp-9510f",
+ "manufacturer": "jeol",
+ "phrases": [
+  "JEOL JAMP-9510F"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"JEOL JAMP-9510F\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"JEOL JAMP-9510F\") AND OPEN_ACCESS:y",
+  "count": 8,
+  "papers": [
+   {
+    "pmcid": "PMC7554704",
+    "doi": "10.3390/antiox9090880",
+    "title": "Using C-doped TiO<sub>2</sub> Nanoparticles as a Novel Sonosensitizer for Cancer Treatment.",
+    "journal": "Antioxidants (Basel)",
+    "year": "2020",
+    "cited": 39,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 10",
+     "ISO 10993"
+    ]
+   },
+   {
+    "pmcid": "PMC10397256",
+    "doi": "10.1038/s41467-023-40369-9",
+    "title": "Reaction-passivation mechanism driven materials separation for recycling of spent lithium-ion batteries.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 23,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11284756",
+    "doi": "10.1021/acsami.4c07028",
+    "title": "Large-Scale Direct Growth of Monolayer MoS<sub>2</sub> on Patterned Graphene for van der Waals Ultrafast Photoactive Circuits.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2024",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12381243",
+    "doi": "10.1038/s41467-025-63257-w",
+    "title": "A salt-free medium facilitating electrode prelithiation towards fast-charging and high-energy lithium-ion batteries.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6765983",
+    "doi": "10.3390/ma12182843",
+    "title": "Wear Mechanisms and Wear Model of Carbide Tools during Dry Drilling of CFRP/TiAl6V4 Stacks.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6664408",
+    "doi": "10.3762/bjnano.10.142",
+    "title": "Growth of lithium hydride thin films from solutions: Towards solution atomic layer deposition of lithiated films.",
+    "journal": "Beilstein J Nanotechnol",
+    "year": "2019",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12670771",
+    "doi": "10.1021/acs.jpcc.5c05299",
+    "title": "Nondestructive Imaging and Quantification of Composition in 2D MoS&lt;sub&gt;2&lt;/sub&gt; and V‑Doped MoS&lt;sub&gt;2&lt;/sub&gt; by the Auger Scatterplot Method.",
+    "journal": "J Phys Chem C Nanomater Interfaces",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12670367",
+    "doi": "10.1021/acsanm.5c03601",
+    "title": "Experimental and Computational Assessment of Adsorbates in Ultraclean 2D MoS&lt;sub&gt;2(1-&lt;i&gt;x&lt;/i&gt;)&lt;/sub&gt;Se&lt;sub&gt;2&lt;i&gt;x&lt;/i&gt;&lt;/sub&gt; Nanosheets Treated by Ethanol for Enhanced Photodetector Applications.",
+    "journal": "ACS Appl Nano Mater",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7554704",
+   "title": "Using C-doped TiO<sub>2</sub> Nanoparticles as a Novel Sonosensitizer for Cancer Treatment.",
+   "year": "2020",
+   "text": "e size of the material was reconfirmed via Zetasizer (Malvern Nano ZS). The chemical composition of the material was analyzed by an energy dispersive spectrometer (EDS; Nova Nano SEM 450) SEM attachment. To confirm that carbon had been doped in titanium dioxide and formed the bonding, C-doped TiO 2 was measured by auger electron spectroscopy (AES; JEOL JAMP 9510F) and X-ray photoelectron spectroscopy (XPS; Theta Probe). 2.3. Ultrasound Apparatus Ultrasound irradiation was conducted with a function generator (Agilent 33521A) at a resonant frequency of 1.0 MHz and a duty cycle of 50% and amplified by a power amplifier (E&amp;I 1040L) to generate a square wave with a negative pressure of 0.33 MPa and intensit",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10397256",
+   "title": "Reaction-passivation mechanism driven materials separation for recycling of spent lithium-ion batteries.",
+   "year": "2023",
+   "text": "ly coupled plasma mass spectrometry (ICP-MS, ELAN DRC-e). X-ray photoelectron spectroscopy (XPS) depth profiles were collected on the VG MultiLab 2000 system (Thermo VG Scientific). X-ray diffraction (XRD) was carried out on a PANalytical B.V. Empyrean X-ray diffractometer using Cu Kα radiation at 40 kV and 30 mA. AES measurement were conducted on JEOL JAMP-9510F Auger electron microscopy and the electron source was Schottky field emission. Electrochemical measurements All the electrochemical measurements were carried out using CR2032 coin-type cells assembled in the argon-filled glove box with the oxygen and water contents both below 0.1 ppm unless otherwise specified. Pure lithium foil was used as the co",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11284756",
+   "title": "Large-Scale Direct Growth of Monolayer MoS<sub>2</sub> on Patterned Graphene for van der Waals Ultrafast Photoactive Circuits.",
+   "year": "2024",
+   "text": "acetate, MIBK (methyl isobutyl ketone)/IPA, and IPA. The 5 nm Ti and 55 nm Au layers were deposited using an e-beam evaporator for the electrodes and contact pad. After lift-off with hot acetone and rinsing with room-temperature acetone and IPA, the device was realized. Auger Measurements Auger measurements were carried out on an Auger microprobe Jeol JAMP-9510F with a Schottky electron emitter and hemispherical electron analyzer using an excitation primary beam with 10 keV energy and 11 nA current. The beam incidence angle was 30° with an emission angle of 25°. Auger spectra were recorded in direct form in a constant retarding ratio regime with energy resolution of 0.5% at 100 ms dwell time and 1 eV step",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12381243",
+   "title": "A salt-free medium facilitating electrode prelithiation towards fast-charging and high-energy lithium-ion batteries.",
+   "year": "2025",
+   "text": "icrospectrometer, employing 532 nm excitation. Elemental analysis was conducted via ICP-OES. XPS spectra were collected on an AXIS-ULTRA DLD-600W instrument. 7 Li-NMR spectra were obtained on an Avance III 400 MHz NMR spectrometer. Mass spectrometry measurements were executed on a 1100 LC/MSD Trap. Lastly, AES measurements were conducted using the JEOL JAMP-9510F Auger electron microscopy to characterize the composition information at electrode depths. Electrochemical measurements The electrochemical performance of the as-fabricated Si/C electrodes was examined in half-cell using coin-cell configuration (Canrd; CR2032 type), which employed metallic Li (diameter: 15.8 mm; thickness: 1 mm; manufacturers: Chi",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6765983",
+   "title": "Wear Mechanisms and Wear Model of Carbide Tools during Dry Drilling of CFRP/TiAl6V4 Stacks.",
+   "year": "2019",
+   "text": "eratures, it is likely that titanium can diffuse into the tungsten carbide and form the mixed carbide (Ti,W)C. But above 300 °C, titanium can also be in solution in the α-Co ( Figure 1 ) or produce compounds such as Ti 2 Co, TiCo, TiCo 2 or TiCo 3 [ 13 ]. A chemical state analysis has been performed on a titanium chip adhered on the drill, using a Jeol JAMP-9510F Field Emission Auger microprobe, with a 10 nm probe diameter, from the carbide tool to the adhered titanium chip following a straight line L with a chemical analysis every 20 nm ( Figure 19 and Figure 20 ). The Auger analysis shows that titanium can react with CW to form a solid solution (Ti,W)C, or TiC carbide type ( Figure 20 ). The presence of",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6664408",
+   "title": "Growth of lithium hydride thin films from solutions: Towards solution atomic layer deposition of lithiated films.",
+   "year": "2019",
+   "text": "the chamber opened. Since the deposition took place on the entire chamber, the film deposited on the glass slide could be used for further analysis. The chamber had to be cleaned with nitric acid after every deposition. Substrates of Si with native oxide and Pt/Si were used. Characterization Auger spectroscopy was carried out on a Auger microprobe Jeol JAMP-9510F with hemispherical analyser using 3 kV accelerating voltage and 10 nA probe current. Sample was tilted 55° to the excitation, with the normal coincident with the axis of the collection optics of the analyser. Point Auger spectra were collected from different areas on the surface of the sample after 20 s cleaning with 500 eV Ar + ions. Dwell time d",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12670771",
+   "title": "Nondestructive Imaging and Quantification of Composition in 2D MoS&lt;sub&gt;2&lt;/sub&gt; and V‑Doped MoS&lt;sub&gt;2&lt;/sub&gt; by the Auger Scatterplot Method.",
+   "year": "2025",
+   "text": "0 W plasma at a pressure of 0.1 Pa. The first etching cycle lasted 30 s, and this was followed by two additional cycles of 10 s each, resulting in a total etching time of 50 s. The distance between the samples and the plasma source was 250 mm. 2.3 Auger Analysis Secondary electron imaging and Auger analyses (spectra and maps) were carried out on a JEOL JAMP-9510F Auger microprobe equipped with a field emission Schottky electron gun and hemispherical electron analyzer. All samples were excited by 10 keV electrons at 10 nA current, which was calibrated by a Faraday cup. The incident and emission angles were set to 30°, and the constant retard ratio regime was employed with 0.6% energy resolution. Auger spect",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12670367",
+   "title": "Experimental and Computational Assessment of Adsorbates in Ultraclean 2D MoS&lt;sub&gt;2(1-&lt;i&gt;x&lt;/i&gt;)&lt;/sub&gt;Se&lt;sub&gt;2&lt;i&gt;x&lt;/i&gt;&lt;/sub&gt; Nanosheets Treated by Ethanol for Enhanced Photodetector Applications.",
+   "year": "2025",
+   "text": "miangles were set at 45 and 180 mrad for collecting STEM images using a HAADF detector, and the images were processed with 64-bit Digital Micrograph GMS 3.44 (Gatan) software. The quantification of HAADF images was performed by open-source Stat STEM software, as we reported previously. 2.7 Auger Electron Spectroscopy (AES) AES was carried out on a JEOL JAMP-9510F Auger microprobe using 10 keV primary electron energy and 10 nA probe current in a constant retard ratio regime with an energy resolution of 0.6%. The device was equipped with a hemispherical analyzer, and both incident and emission angles were 30. The acquired Auger spectra were evaluated in differentiated mode, followed by 7-point Savitzky-Golay",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 14
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "object": "buehler-wilson-uh4000",
+ "manufacturer": "buehler",
+ "phrases": [
+  "Buehler UH4000",
+  "Buehler UH4250",
+  "Buehler UH4750",
+  "Buehler UH4250 Auto",
+  "Wilson UH4000",
+  "Wilson UH4250"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Buehler UH4000\" OR \"Buehler UH4250\" OR \"Buehler UH4750\" OR \"Buehler UH4250 Auto\" OR \"Wilson UH4000\" OR \"Wilson UH4250\"",
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W4385737528",
+    "doi": "https://doi.org/10.3390/ma16165556",
+    "title": "Metal–Ceramic Compatibility in Dental Restorations According to the Metallic Component Manufacturing Procedure",
+    "year": 2023,
+    "cited": 17,
+    "venue": "Materials",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Implant Techniques and Outcomes",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/16/5556/pdf?version=1691656488",
+    "abstract": "In terms of production technology, metal-ceramic systems for dental restorations comply with a concrete algorithm, the efficiency of which is always dependent on the applications for which they are intended. The first stage involves obtaining metal support, followed by firing the ceramic on the surface of the metal to meet the list of functional and aesthetic requirements of a future restoration. The compatibility of the two materials-the metal component and the ceramic component-must be ensured in several respects: chemical compatibility, thermo-chemical compatibility, and mechanical compatibility. Thus, there is a need to simulate the thermal behavior of the metal-ceramic couple in its processing to achieve appropriate dental prostheses. In this study, three types of Co-Cr metal frames were manufactured using three different production technologies: conventional casting, milling (CAM), and selective laser melting (SLM). Composition analyses, scanning electron microscopy (SEM), and microstructural analyses of the metal-ceramic interface for each type of production technology, as well as the determination of the hardness and the thermal expansion coefficients of experimental materials and three-point bending tests, were carried out in this study. Considering all these aspects, we demonstrated the influence of the technology of producing the metallic part of the metal-ceramic bonding process in dental prostheses."
+   },
+   {
+    "id": "https://openalex.org/W4200347999",
+    "doi": "https://doi.org/10.3390/pr9122189",
+    "title": "Thermal Treatment under Vacuum for Obtaining a Quenchant from Rapeseed Oil",
+    "year": 2021,
+    "cited": 1,
+    "venue": "Processes",
+    "topics": [
+     "Thermochemical Biomass Conversion Processes",
+     "Fiber-reinforced polymer composites",
+     "Graphite, nuclear technology, radiation studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2227-9717/9/12/2189/pdf?version=1638765075",
+    "abstract": "The aim of this study was to improve the quality of a vegetable oil, having in view its use as a quenchant for metallic parts in aircrafts. A process of pyrolysis under vacuum was applied to obtain a bio-oil with reduced viscosity and good quenching properties. Preliminarily, the rapeseed oil was fast pyrolyzed at temperature in the range of 300–375 °C and absolute pressure of 1 μbar. Some results such as viscosity and yields of bio-oil were obtained with a narrowing of the temperature range between 300–320 °C, for further processing. Quenching tests with bio-oils on stainless steel 25CD4 showed cooling curves closer to those of the standard mineral oil (Castrol IloquenchTM 1), by comparing them with unprocessed vegetable oil. The hardness of the steel after treatment rose from 29–30 HRC to 43–45 HRC, in accordance with requirements (35–45 HRC). Therefore, the conclusion is that bio-oils obtained by pyrolysis under vacuum are good quenchant proceeds from this study."
+   },
+   {
+    "id": "https://openalex.org/W7154731581",
+    "doi": "https://doi.org/10.22533/at.ed.13176326270310",
+    "title": "DEVELOPMENT OF THE 51CrV4 ALLOY IN THE ROLLING OF HELICAL BLADES FOR GRAIN CONVEYORS",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Engineering Research",
+    "topics": [
+     "Material Properties and Applications",
+     "Mechanical Failure Analysis and Simulation",
+     "Material Properties and Failure Mechanisms"
+    ],
+    "oa_url": "https://cdn.atenaeditora.com.br/atenaeditora/artigos_anexos/202604/UDzb5CK6fYLw0EfojcsISc9cwV2zFwdN9VJ70lqV.pdf",
+    "abstract": "The helical blades used in grain conveyors are parts welded to a rotating shaft and mounted inside a tube, transporting material from one point to another.They undergo significant cold deformation and require good wear resistance when transporting abrasive materials.The alloys currently used are SAE 1006, which can undergo a carburizing process followed by quenching or metalizing, and the post-quenched 27MnCrB5 alloy to increase hardness and wear resistance.To increase the wear resistance of the helical blades, the re-rolled 51CrV4 alloy was developed so that its structure and mechanical properties would allow for the degree of forming applied in the process.It was possible to achieve mechanical properties (LR -504 MPa, LE -404 MPa, and Al80 -22.5%) and a 100% coalesced microstructure, allowing forming without cracks at the edges, even with a thickness reduction of approximately 60% at the outer edge of the helical blade.Following the forming process, quenching was performed, yielding average hardness values of 61 HRC at the outer edge; subsequently, the helical screw was welded to the rotating shaft of the grain conveyor for field tests, which are still ongoing to quantify the service life of the helical screw produced with the 51CrV4 alloy."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Buehler UH4000\" OR \"Buehler UH4250\" OR \"Buehler UH4750\" OR \"Buehler UH4250 Auto\" OR \"Wilson UH4000\" OR \"Wilson UH4250\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC10456282",
+    "doi": "10.3390/ma16165556",
+    "title": "Metal-Ceramic Compatibility in Dental Restorations According to the Metallic Component Manufacturing Procedure.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 6507-1",
+     "ISO 9693",
+     "ISO9693"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10456282",
+   "title": "Metal-Ceramic Compatibility in Dental Restorations According to the Metallic Component Manufacturing Procedure.",
+   "year": "2023",
+   "text": "erformed on the metal–ceramic samples, according to ISO9693 [ 23 ], using a mechanical-testing machine with a cell force of 10 KN (Instron 3400, Instron, Norwood, MA, USA), and a crosshead speed of 1.5 mm/min was applied. The distance between the supports was 20 mm and the diameter of the bending lever was 5 mm. A universal hardness tester, Wilson UH4250 (Buehler, Germany), was used for the automatic HV5 hardness determination, according to ISO 6507–1 [ 26 ], using the Diamet TM software on 3 samples of each type and 5 idents on each type. For the dilatometric study, cylindrical samples of approximately 50 mm in height and 4 mm in diameter were made from each type of manufactured alloy and from the dentin",
+   "standards": [
+    "ISO 6507-1",
+    "ISO9693"
+   ]
+  }
+ ],
+ "standards_found": {
+  "SAE 1006": 1,
+  "ISO9693": 1,
+  "ISO 6507-1": 1
+ },
+ "standards_new": [
+  "ISO9693",
+  "SAE 1006"
+ ],
+ "test_item_hits": {
+  "abrasion": 3,
+  "flexure": 2,
+  "microscopy": 1
+ }
+}

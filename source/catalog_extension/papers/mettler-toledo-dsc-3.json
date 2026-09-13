@@ -1,0 +1,302 @@
+{
+ "object": "mettler-toledo-dsc-3",
+ "manufacturer": "mettler-toledo",
+ "phrases": [
+  "METTLER TOLEDO DSC 3",
+  "METTLER TOLEDO DSC",
+  "METTLER TOLEDO DSC 3+"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"METTLER TOLEDO DSC 3\" OR \"METTLER TOLEDO DSC\" OR \"METTLER TOLEDO DSC 3+\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"METTLER TOLEDO DSC 3\" OR \"METTLER TOLEDO DSC\" OR \"METTLER TOLEDO DSC 3+\") AND OPEN_ACCESS:y",
+  "count": 1124,
+  "papers": [
+   {
+    "pmcid": "PMC6599166",
+    "doi": "10.1126/sciadv.aaw5484",
+    "title": "Architecting highly hydratable polymer networks to tune the water state for solar water purification.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 319,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9503861",
+    "doi": "10.3390/pharmaceutics14091798",
+    "title": "Quality by Design-Driven Zeta Potential Optimisation Study of Liposomes with Charge Imparting Membrane Additives.",
+    "journal": "Pharmaceutics",
+    "year": "2022",
+    "cited": 193,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6972035",
+    "doi": "10.1021/acs.oprd.9b00422",
+    "title": "Thermal Stability and Explosive Hazard Assessment of Diazo Compounds and Diazo Transfer Reagents.",
+    "journal": "Org Process Res Dev",
+    "year": "2020",
+    "cited": 160,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11468620",
+    "doi": "10.1002/adhm.202100538",
+    "title": "Enhancing the Stabilization Potential of Lyophilization for Extracellular Vesicles.",
+    "journal": "Adv Healthc Mater",
+    "year": "2022",
+    "cited": 112,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6058711",
+    "doi": "10.1080/10717544.2017.1413444",
+    "title": "Fluconazole-loaded solid lipid nanoparticles topical gel for treatment of pityriasis versicolor: formulation and clinical study.",
+    "journal": "Drug Deliv",
+    "year": "2018",
+    "cited": 101,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5956078",
+    "doi": "10.1038/s41467-018-04230-8",
+    "title": "Molecular solar thermal energy storage in photoswitch oligomers increases energy densities and storage times.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 93,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10039082",
+    "doi": "10.1038/s41467-023-37331-0",
+    "title": "Supramolecular glasses with color-tunable circularly polarized afterglow through evaporation-induced self-assembly of chiral metal-organic complexes.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 92,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6372596",
+    "doi": "10.1038/s41467-019-08594-3",
+    "title": "Direct solution-phase synthesis of 1T' WSe<sub>2</sub> nanosheets.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 90,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5096010",
+    "doi": "10.1002/chem.201602530",
+    "title": "Low Molecular Weight Norbornadiene Derivatives for Molecular Solar-Thermal Energy Storage.",
+    "journal": "Chemistry",
+    "year": "2016",
+    "cited": 85
+   },
+   {
+    "pmcid": "PMC4912624",
+    "doi": "10.1038/ncomms11862",
+    "title": "Bio-based polycarbonate as synthetic toolbox.",
+    "journal": "Nat Commun",
+    "year": "2016",
+    "cited": 84
+   },
+   {
+    "pmcid": "PMC3232070",
+    "doi": null,
+    "title": "Formulation and in vitro characterization of domperidone loaded solid lipid nanoparticles and nanostructured lipid carriers.",
+    "journal": "Daru",
+    "year": "2011",
+    "cited": 81
+   },
+   {
+    "pmcid": "PMC3352690",
+    "doi": "10.2147/ijn.s26365",
+    "title": "Chitosan-Pluronic nanoparticles as oral delivery of anticancer gemcitabine: preparation and in vitro study.",
+    "journal": "Int J Nanomedicine",
+    "year": "2012",
+    "cited": 81
+   },
+   {
+    "pmcid": "PMC7804468",
+    "doi": "10.1038/s41467-020-20515-3",
+    "title": "The coupling and competition of crystallization and phase separation, correlating thermodynamics and kinetics in OPV morphology and performances.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 75
+   },
+   {
+    "pmcid": "PMC8159863",
+    "doi": "10.1038/s41589-021-00773-y",
+    "title": "Water-processable, biodegradable and coatable aquaplastic from engineered biofilms.",
+    "journal": "Nat Chem Biol",
+    "year": "2021",
+    "cited": 70
+   },
+   {
+    "pmcid": "PMC7997103",
+    "doi": "10.1021/acs.biomac.0c00057",
+    "title": "Lignin-Based Epoxy Resins: Unravelling the Relationship between Structure and Material Properties.",
+    "journal": "Biomacromolecules",
+    "year": "2020",
+    "cited": 67
+   },
+   {
+    "pmcid": "PMC11217438",
+    "doi": "10.1038/s41467-024-49886-7",
+    "title": "Zero-dimensional halide hybrid bulk glass exhibiting reversible photochromic ultralong phosphorescence.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 65
+   },
+   {
+    "pmcid": "PMC6057881",
+    "doi": "10.1038/s41467-018-05147-y",
+    "title": "Bottle-grade polyethylene furanoate from ring-opening polymerisation of cyclic oligomers.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 65
+   },
+   {
+    "pmcid": "PMC3876746",
+    "doi": "10.1021/bm401312j",
+    "title": "Achieving micelle control through core crystallinity.",
+    "journal": "Biomacromolecules",
+    "year": "2013",
+    "cited": 65
+   },
+   {
+    "pmcid": "PMC3310410",
+    "doi": "10.2147/ijn.s28481",
+    "title": "Role of hydroxypropyl-β-cyclodextrin on freeze-dried and gamma-irradiated PLGA and PLGA-PEG diblock copolymer nanospheres for ophthalmic flurbiprofen delivery.",
+    "journal": "Int J Nanomedicine",
+    "year": "2012",
+    "cited": 65
+   },
+   {
+    "pmcid": "PMC6418665",
+    "doi": "10.3390/polym9100528",
+    "title": "Morphology, Crystallization and Thermal Behaviors of PLA-Based Composites: Wonderful Effects of Hybrid GO/PEG via Dynamic Impregnating.",
+    "journal": "Polymers (Basel)",
+    "year": "2017",
+    "cited": 63
+   },
+   {
+    "pmcid": "PMC5118695",
+    "doi": "10.1038/srep37458",
+    "title": "Natural zwitterionic betaine enables cells to survive ultrarapid cryopreservation.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 54
+   },
+   {
+    "pmcid": "PMC3065869",
+    "doi": "10.1155/2011/629234",
+    "title": "A liposomal formulation able to incorporate a high content of Paclitaxel and exert promising anticancer effect.",
+    "journal": "J Drug Deliv",
+    "year": "2011",
+    "cited": 54
+   },
+   {
+    "pmcid": "PMC4869744",
+    "doi": "10.1007/s10570-016-0896-z",
+    "title": "Impact of selected solvent systems on the pore and solid structure of cellulose aerogels.",
+    "journal": "Cellulose (Lond)",
+    "year": "2016",
+    "cited": 53
+   },
+   {
+    "pmcid": "PMC9102451",
+    "doi": "10.3390/polym14091836",
+    "title": "Thermosensitive Polymer Blend Composed of Poloxamer 407, Poloxamer 188 and Polycarbophil for the Use as Mucoadhesive In Situ Gel.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 51
+   },
+   {
+    "pmcid": "PMC6510894",
+    "doi": "10.1038/s41598-019-43740-3",
+    "title": "Graphene Quantum Dots Decorated Gold-Polyaniline Nanowire for Impedimetric Detection of Carcinoembryonic Antigen.",
+    "journal": "Sci Rep",
+    "year": "2019",
+    "cited": 50
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6599166",
+   "title": "Architecting highly hydratable polymer networks to tune the water state for solar water purification.",
+   "year": "2019",
+   "text": "lank correction with dark correction. The Raman spectra were measured via spectrometer (WITec alpha300). The excitation radiation for the Raman emission was produced using a Yttrium aluminium garnet laser that had a single-mode operation at 532 nm. The evaporation and melting behavior of h-LAHs were observed by a differential scanning calorimeter (METTLER TOLEDO DSC 3). The temperature and melting enthalpy were calibrated by indium. The concentration of ions was tracked by ICP-MS (Agilent 7500ce) with dilutions in 2% HNO 3 to make the loaded ion concentration lower than 10 parts per million. Supplementary Material http://advances.sciencemag.org/cgi/content/full/5/6/eaaw5484/DC1 Download PDF Acknowledgments Fund",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9503861",
+   "title": "Quality by Design-Driven Zeta Potential Optimisation Study of Liposomes with Charge Imparting Membrane Additives.",
+   "year": "2022",
+   "text": "n HRTEM microscope (FEI, Hillsboro, OR, USA) using an accelerating voltage of 200 kV. The TEM measurements were performed after the lyophilisation. Suspensions were prepared from the formulations with ethanol and then dropped onto a carbon film-coated 3 mm diameter copper grid. Thermal Analysis Differential scanning calorimetry (DSC) measurements (Mettler-Toledo DSC 3 + Star e System DSC analyser, Mettler-Toledo International Inc., Columbus, OH, USA) were performed to study the thermodynamic state of the liposomes in the temperature range of 10–65 °C at 2 °C/min heating rate. Phase transition (T m ) and glass transition (T g ) temperatures were determined using 6–10 mg of the freeze-dried samples in hermeticall",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6972035",
+   "title": "Thermal Stability and Explosive Hazard Assessment of Diazo Compounds and Diazo Transfer Reagents.",
+   "year": "2020",
+   "text": "er air with the appropriate B0182864 sealing tool. After equilibrating at 25 °C, samples were heated at 5 °C min –1 to a maximum temperature of 250 °C for diazo compounds and 300 °C for other compounds. Data analysis was conducted using TA Instruments Universal Analysis 2000 software version 4.5.0.5. DSC Method B DSC analysis was performed using a Mettler Toledo DSC 823e. Approx 5 mg was accurately weighed to 1 d.p. into a Mettler Toledo ME-26731 gold-plated 40 μL high-pressure crucible with seal insert and lid rated to 150 bar and sealed under air with the appropriate sealing press. After equilibrating at 25 °C, samples were heated at 2 °C min –1 to a maximum temperature of 350 °C. Data analysis was conducte",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11468620",
+   "title": "Enhancing the Stabilization Potential of Lyophilization for Extracellular Vesicles.",
+   "year": "2022",
+   "text": "lization and after storage. Measurements were performed using an Aqua 40.00 titrator (Analytik Jena AG, Halle, D) equipped with a headspace oven set at 100 °C. Samples of 10 to 20 mg crushed lyophilizates were analyzed in stoppered 2R vials. Differential Scanning Calorimetry (DSC) DSC measurements were performed in 40 µL aluminum crucibles using a Mettler Toledo DSC 822e (MettlerToledo GmbH, Giessen, D). In order to determine the glass transition temperature of the maximally freeze‐concentrated solution ( T g ′), 20 µL of the liquid samples were cooled at −10 °C min −1 from 25 to −60 °C, held at −60 °C for 1 min, and reheated at 10 °C min −1 to 25 °C. For the determination of the glass transition temperature",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6058711",
+   "title": "Fluconazole-loaded solid lipid nanoparticles topical gel for treatment of pityriasis versicolor: formulation and clinical study.",
+   "year": "2018",
+   "text": "ease data of FLZ from prepared SLNs were fitted to various kinetic models and were analyzed in order to explain the mechanism of drug release. Differential scanning calorimetry (DSC) The thermal characters of the prepared FLZ-SLNs were determined by DSC. In addition, DSC analyzes were performed on pure FLZ, Compritol 888 ATO and Precirol ATO5 by a Mettler Toledo DSC (Mettler-Toledo, Viroflay, France). About 1–2 mg of FLZ, Compritol 888 ATO and Precirol ATO5 have been accurately weighted in 40 μl aluminum pans. DSC scans have been recorded at a heating rate of 100 C/min and was run over the range 25–3000 °C, using an empty pan as reference (Castelli, 2005 ). Characterization of FLZ-SLNs topical gels Visual app",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5956078",
+   "title": "Molecular solar thermal energy storage in photoswitch oligomers increases energy densities and storage times.",
+   "year": "2018",
+   "text": "with silica gel. Measurements Infrared (IR) spectra recorded on a Perkin-Elmer Frontier FT-IR instrument as films evaporated from CDCl 3 onto an ATR attachment, where relative intensities are denoted as vw (very weak), w (weak), m (medium), s (strong), and sh (shoulder). All melting points and heat release of neat quadricyclanes were recorded on a Mettler Toledo DSC 2 apparatus. 1 H NMR (400 MHz) and 13 C NMR (100 MHz) spectra were recorded on a Varian 400 MHz instrument or a Bruker 500 MHz instrument with a noninverse cryoprobe using the residual solvent as the internal standard (CDCl 3 , 1 H 7.26 ppm and 13 C 77.16 ppm or d12 -cyclohexane, 1 H 1.38 ppm and 13 C 26.43 ppm). All chemical shifts are quoted on",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10039082",
+   "title": "Supramolecular glasses with color-tunable circularly polarized afterglow through evaporation-induced self-assembly of chiral metal-organic complexes.",
+   "year": "2023",
+   "text": "re performed on a Vario EL elemental analyzer. Single-crystal XRD measurement Single-crystal X-ray diffraction data of the sample were collected at 100 K on Bruker SMART APEX CCD diffractometer employing monochromatized Cu Kα radiation (λ = 1.54184 Å). Thermal analysis DSC thermograms of the SGs, L-His powder and Zn–L crystal were performed on the METTLER TOLEDO DSC 1 calorimeter under N 2 atmosphere with a heating rate of 5 °C min −1 . TGA analyses of them were measured on NETZSCH STA449 F5 Thermogravimetric Analyzer with a heating rate of 5 °C min −1 under N 2 atmosphere. UV-Vis-NIR transmittance/absorption measurement The transmittance spectra of Zn–L/D-2 SGs and Zn-L-RB-1/2 SGs were carried out on a SPECO",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6372596",
+   "title": "Direct solution-phase synthesis of 1T' WSe<sub>2</sub> nanosheets.",
+   "year": "2019",
+   "text": "ample e , where e is the electron charge. Samples for KPFM were prepared on p-doped Si wafers; p-Si was used as a reference. Work function of WSe 2 ϕ Wse2 was calculated with respect to the work function of p-doped Si ϕ Si following the equation ϕ WS 2 = ϕ Si - e × ( CPD WS 2 - CPD Si ) . Differential scanning calorimetry DSC was conducted using a Mettler Toledo DSC 3 calorimeter in nitrogen atmosphere in the temperature range 50–450 °C at heating rate of 20° min −1 . Inductively coupled plasma emission spectroscopy Qualitative elemental analysis was carried out on a Thermo Scientific iCAP 6000 Series spectrometer. Samples for ICP ES were digested in a 45% HNO 3 solution and then diluted to analytical concentra",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "dsc": 4,
+  "electrical_transport": 1,
+  "microscopy": 1
+ }
+}

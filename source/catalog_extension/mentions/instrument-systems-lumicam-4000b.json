@@ -1,0 +1,44 @@
+{
+ "object": "instrument-systems-lumicam-4000b",
+ "manufacturer": "instrument-systems",
+ "pages": 9,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO 17025": 3,
+  "EN ISO 11664": 1,
+  "IEC 17025": 1,
+  "DIN EN 13032-1": 1,
+  "BSDF-100": 1,
+  "BSDF-110": 1,
+  "BSDF-115": 1
+ },
+ "standards_new": [
+  "BSDF-100",
+  "BSDF-110",
+  "BSDF-115",
+  "DIN EN 13032-1",
+  "EN ISO 11664",
+  "IEC 17025",
+  "ISO 17025"
+ ],
+ "test_item_hits": {
+  "density_porosity": 9,
+  "photometry_colorimetry": 8,
+  "electrical_transport": 5,
+  "microscopy": 2,
+  "peel": 2,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "It is equally suitable for tests in the laboratory and in quality assurance for small batch production.",
+  "With its different models it fulfils complex measuring requirements in the automotive industry, aviation, general lighting or display industry, where it is used for quality assurance, e.",
+  "It is equally suitable for test in the laboratory and quality assurance.",
+  "Mono – for luminance measurement only Color – for luminance measurement and chromaticity analysis with 4 filter-based that is particularly suitable for broadband light sources.",
+  "ion curves) to accurately determine y Luminous intensity distribution curves y Spatial homogeneity of color coordinates y Correlated color temperature It is designed for small to ~ mid-sized light sources such as single LEDs, The LVK analysis kit comprises a LumiCam, a light LED modules, retrofit permeable screen and a light source.",
+  "Ideal for pulsed sources such as VCSELs and LEDs, these detectors integrate seamlessly with spectrometers for comprehensive LIV curve analysis.",
+  "micam: Type: Camera-based imaging colorimeter Applications: Production line color quality control: Measures color uniformity across the entire display surface, ideal for identifying and analyzing inconsistencies in brightness, hue, and saturation."
+ ],
+ "standards_nearby": [
+  "DIN 5032-7"
+ ]
+}

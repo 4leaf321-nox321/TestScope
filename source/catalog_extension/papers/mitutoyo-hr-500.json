@@ -1,0 +1,26 @@
+{
+ "object": "mitutoyo-hr-500",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo HR-500",
+  "Mitutoyo HR-511",
+  "Mitutoyo HR-521",
+  "Mitutoyo HR-522",
+  "Mitutoyo HR-523"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo HR-500\" OR \"Mitutoyo HR-511\" OR \"Mitutoyo HR-521\" OR \"Mitutoyo HR-522\" OR \"Mitutoyo HR-523\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo HR-500\" OR \"Mitutoyo HR-511\" OR \"Mitutoyo HR-521\" OR \"Mitutoyo HR-522\" OR \"Mitutoyo HR-523\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

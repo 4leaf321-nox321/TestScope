@@ -1,0 +1,346 @@
+{
+ "object": "innovatest-nexus-3200",
+ "manufacturer": "innovatest",
+ "phrases": [
+  "INNOVATEST NEXUS 3200",
+  "INNOVATEST NEXUS"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"INNOVATEST NEXUS 3200\" OR \"INNOVATEST NEXUS\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"INNOVATEST NEXUS 3200\" OR \"INNOVATEST NEXUS\") AND OPEN_ACCESS:y",
+  "count": 24,
+  "papers": [
+   {
+    "pmcid": "PMC7252534",
+    "doi": "10.26650/eor.20200020",
+    "title": "Effect of surface sealant on the surface roughness of different composites and evaluation of their microhardness.",
+    "journal": "Eur Oral Res",
+    "year": "2020",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8471352",
+    "doi": "10.3390/ma14185276",
+    "title": "Evaluation of Thermal Damage Impact on Microstructure and Properties of Carburized AISI 9310 Gear Steel Grade by Destructive and Non-Destructive Testing Methods.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E975"
+    ]
+   },
+   {
+    "pmcid": "PMC7287657",
+    "doi": "10.3390/ma13102258",
+    "title": "Steel Sheets Laser Lap Joint Welding-Process Analysis.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM A240",
+     "ASTM A570",
+     "EN ISO 15614-11",
+     "EN ISO 17639",
+     "EN ISO 6507-1",
+     "EN ISO 9018",
+     "SS304"
+    ]
+   },
+   {
+    "pmcid": "PMC7040818",
+    "doi": "10.3390/ma13030587",
+    "title": "Crystal Structure Evolution, Microstructure Formation, and Properties of Mechanically Alloyed Ultrafine-Grained Ti-Zr-Nb Alloys at 36≤Ti≤70 (at. %).",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": [
+     "DIN 50",
+     "ISO 14577"
+    ]
+   },
+   {
+    "pmcid": "PMC8269613",
+    "doi": "10.3390/ma14133508",
+    "title": "Theoretical and Experimental Analysis of the Hot Torsion Process of the Hardly Deformable 5XXX Series Aluminium Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 3,
+    "snippets": 2,
+    "standards_in_paper": [
+     "EN 573-3"
+    ]
+   },
+   {
+    "pmcid": "PMC7040711",
+    "doi": "10.3390/ma13030575",
+    "title": "The Influence of Remelting on the Properties of AlSi9Cu3 Alloy with Higher Iron Content.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 17",
+     "EN 1706",
+     "EN AC 45",
+     "EN ISO 6506-1",
+     "EN ISO 6892-1"
+    ]
+   },
+   {
+    "pmcid": "PMC9786566",
+    "doi": "10.3390/ma15248875",
+    "title": "Optical Strain Measurement and Microfractography of the Fractures of Armstal 550 Steel after Temperature Tensile Tests.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN ISO 6892-1",
+     "EN ISO 6892-2",
+     "GOST-21967"
+    ]
+   },
+   {
+    "pmcid": "PMC9653900",
+    "doi": "10.3390/ma15217840",
+    "title": "Effect of Two-Step Sintering on Properties of Alumina Ceramics Containing Waste Alumina Powder.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM C1327-15"
+    ]
+   },
+   {
+    "pmcid": "PMC6747830",
+    "doi": "10.3390/ma12172789",
+    "title": "TiN-Nanoparticulate-Reinforced ZrO<sub>2</sub> for Electrical Discharge Machining.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC6416572",
+    "doi": "10.3390/ma12040653",
+    "title": "Mechanical Alloying and Electrical Current-Assisted Sintering Adopted for In Situ Ti-TiB Metal Matrix Composite Processing.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC11643806",
+    "doi": "10.3390/ma17235913",
+    "title": "Influence of Selected Factors of Vibratory Work Hardening Machining on the Properties of CuZn30 Brass.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC10608754",
+    "doi": "10.3390/ma16206765",
+    "title": "Analyzing the Relationship between the Chemical Composition and the Surface Finish of Alnico Alloys in EDM.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8509138",
+    "doi": "10.3390/ma14195492",
+    "title": "Experimental and Numerical Investigations of Titanium Deposition for Cold Spray Additive Manufacturing as a Function of Standoff Distance.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8230681",
+    "doi": "10.3390/ma14123213",
+    "title": "Technology and Properties of Peripheral Laser-Welded Micro-Joints.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC7829819",
+    "doi": "10.3390/ma14020406",
+    "title": "A Newly Developed Easily Sinterable Low-Alloy Steel Powder.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC7601990",
+    "doi": "10.3390/ma13204538",
+    "title": "Study of Natural and Artificial Aging on AlSi9Cu3 Alloy at Different Ratios of Returnable Material in the Batch.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13514727",
+    "doi": "10.3390/ma19163472",
+    "title": "Effect of Austempering on the Microstructure, Mechanical Properties and Tribological Performance of EN-GJS-800-8 Ductile Iron Castings.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12734558",
+    "doi": "10.3390/ma18245633",
+    "title": "Properties and Microstructure Evaluation of Laser-Welded TP347-TP904L High-Alloy, Stainless Steels Joints, Modified with 309L Filler.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12693020",
+    "doi": "10.3390/ma18235390",
+    "title": "Laser Powder Bed Fusion of 25CrMo4 Steel: Effect of Process Parameters on Metallurgical and Mechanical Properties.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12526354",
+    "doi": "10.3390/ma18194581",
+    "title": "The Impact of Selected ESD Parameters on the Properties of Tungsten Layers.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12028787",
+    "doi": "10.3390/ma18081814",
+    "title": "Influence of High-Temperature Substrate Preheating on Laser Cladding of Stellite 6 onto Inconel 718 Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC9323043",
+    "doi": "10.3390/ma15144798",
+    "title": "Selected Properties of a Zr-Containing AlSi5Cu2Mg Alloy Intended for Cylinder Head Castings.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC8911743",
+    "doi": "10.3390/ma15051801",
+    "title": "Microstructure and Properties of Additively Manufactured AlCoCr<sub>0.75</sub>Cu<sub>0.5</sub>FeNi Multicomponent Alloy: Controlling Magnetic Properties by Laser Powder Bed Fusion via Spinodal Decomposition.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC8347488",
+    "doi": "10.3390/ma14154269",
+    "title": "Characteristics of Impulse Carburization LPC Process.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7252534",
+   "title": "Effect of surface sealant on the surface roughness of different composites and evaluation of their microhardness.",
+   "year": "2020",
+   "text": "rs and Etanol Bisco Inc, Schaumburg, IL, USA Low-viscosity liquid polish Microhardness Measurements Surface hardness of different composite resins was measured using the Vicker's hardness test because of its easeof- use and reliability of the measurements ( 44 ). The microhardness values for the samples in groups 1, 2, and 3 were obtained using an Innovatest Nexus 4503 hardness testing machine (Innovatest Europe, Maastricht, The Netherlands) for loads of 2.5 – 10 kgf (24.51 – 98.07 N) ( Figure 2 ). The surface hardness measurements were performed using a microscope at 20x magnification under a load of 300 g for 15 s. The applied load and the hold time were kept constant for all samples throughout the study.",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8471352",
+   "title": "Evaluation of Thermal Damage Impact on Microstructure and Properties of Carburized AISI 9310 Gear Steel Grade by Destructive and Non-Destructive Testing Methods.",
+   "year": "2021",
+   "text": "s were applied: a magnetizing frequency of 50 Hz at a voltage of 2.5 V for the surface-scanning tests, and a magnetizing frequency of 80 Hz at a voltage of 3.4 V for the center-point tests. During the MBN measurements, the sinusoidal magnetizing current waveform was used. The hardness measurements of laser-processed samples were performed using an Innovatest Nexus 4303 (Innovatest, Maastricht, The Netherlands) hardness tester. Measurements were carried out with a Vickers indenter at a load of 4.9 N. The measurements of surface hardness were performed across the tracks in the direction transverse to the laser beam’s movement. The distance between hardness measurements was 0.05 mm. Prior to the surface hardne",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7287657",
+   "title": "Steel Sheets Laser Lap Joint Welding-Process Analysis.",
+   "year": "2020",
+   "text": "umed lap joint partial penetration of two 2.5 mm thick S235JR steel sheets was obtained [ 44 , 45 , 46 ]. Weld strength characteristics were defined by the mechanical properties of the obtained joint. The weld properties were investigated by using destructive tests. The hardness test was carried out according to PN-EN ISO 6507-1 standard, using an Innovatest Nexus 4303 machine [ 47 ], and the hardness test point distribution for the steel sheets’ lap joint is shown below ( Figure 5 ). The three-point test was performed according to the standards for all characteristic zones: base material (BM), heat-affected zone (HAZ) and fusion zone (FZ) in the upper and lower plates. The material hardness resulting from",
+   "standards": [
+    "EN ISO 6507-1"
+   ]
+  },
+  {
+   "pmcid": "PMC7040818",
+   "title": "Crystal Structure Evolution, Microstructure Formation, and Properties of Mechanically Alloyed Ultrafine-Grained Ti-Zr-Nb Alloys at 36≤Ti≤70 (at. %).",
+   "year": "2020",
+   "text": "g paper 600 grit and clean with ethanol inside the ultrasonic bath before each measurement before starting. Potentiodynamic tests were preceded with open circuit potential measurement for 60 min. Every specimen was measured three times to estimate uncertainties and standard deviation. Vickers microhardness (HV) of the sinters was measured using an Innovatest Nexus microhardness tester (Innovatest, Maastricht, Netherlands) with an applied load of 300 g and loading time 10 s. The modulus analysis of selected specimens based on the EIT (indentation modulus) estimation, was realized on Fischerscope HM2000 nanoindenter with Vickers tip located in Bern University of Applied Sciences (Biel, Switzerland). The measu",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8269613",
+   "title": "Theoretical and Experimental Analysis of the Hot Torsion Process of the Hardly Deformable 5XXX Series Aluminium Alloy.",
+   "year": "2021",
+   "text": "36 ], while physical modelling was performed with the use of the STD 812 torsion plastometer [ 14 ]. Metallographic studies were conducted using light microscopy (Olympus GX 51 microscope, Tokyo, Japan) and electron backscatter diffraction (EBSD) (Hitachi S-3400N microscope, Tokyo, Japan). The microhardness measurements were carried out using the Innovatest Nexus 4000 microhardness tester (INNOVATEST Europe BV, Maastricht, The Netherlands). 2.2.1. Numerical Research: Mathematical Model Using FORGE 2011 ® Software The aim of the numerical tests was to determine the influence of the accuracy of defining the rheological properties of the 5019 aluminium alloy on the strain intensity distribution, strain rate i",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8269613",
+   "title": "Theoretical and Experimental Analysis of the Hot Torsion Process of the Hardly Deformable 5XXX Series Aluminium Alloy.",
+   "year": "2021",
+   "text": "temperature and strain rate. Observations of the microstructure were carried out using an Olympus GX51 light microscope equipped with digital image recording. Additionally, the grain size measurements on the cross-section were performed using the secant method. Microhardness measurements were conducted using the Vickers method with the use of the Innovatest Nexus 4000 hardness tester, applying a 100 gramme load. Both the measurements of grain size and microhardness were carried out in two perpendicular directions on the cross-sections of samples made of the 5019 aluminium alloy (according to Figure 15). The test samples were mechanically polished according to the procedure of the Struers company. To reveal",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7040711",
+   "title": "The Influence of Remelting on the Properties of AlSi9Cu3 Alloy with Higher Iron Content.",
+   "year": "2020",
+   "text": "performed in accordance with the STN EN ISO 6892-1 standard on testing machine WDW 20 (Jnkason, Jinan, China) with a maximum load of 20 kN and a constant crosshead feed rate of 2 mm/min. Samples were made from the casting with turning and milling operations. The Brinell hardness test was performed according to STN EN ISO 6506-1 on testing machine INNOVATEST NEXUS 3002XLM-INV1 (Innovatest, Borgharenweg, Netherlands) with a load of 125 kp (1226 N), 5 mm diameter ball and a dwell time of 15 s. The Brinell hardness value at each state was obtained as the average of at least six measurements. Samples were taken from the front surfaces of the torn bars from the static pull test. Each alloy was gradually evaluate",
+   "standards": [
+    "EN ISO 6506-1",
+    "EN ISO 6892-1"
+   ]
+  },
+  {
+   "pmcid": "PMC9786566",
+   "title": "Optical Strain Measurement and Microfractography of the Fractures of Armstal 550 Steel after Temperature Tensile Tests.",
+   "year": "2022",
+   "text": "is point, the sample has a uniform cross-section, and the radius of the curvature tends to infinity. At the end of the test, in the advanced necking phase, and prior to the break, the average radius of the neck was equal to about 45 mm. Additionally, a hardness test was carried out. The hardness tests were performed on a universal hardness tester (INNOVATEST Nexus 7000, INNOVATEST Europe BV, Maastricht, Netherlands). Three measurements of Rockwell hardness were carried out at various places on the sample plate. The average Rockwell hardness was 52.5 HRC, which gives a Brinell hardness of about 527HB. The material hardness measured after the preparation of the specimens (milling and grinding) was lower than",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9653900",
+   "title": "Effect of Two-Step Sintering on Properties of Alumina Ceramics Containing Waste Alumina Powder.",
+   "year": "2022",
+   "text": "method [ 21 ] was performed when measuring at least 500 grains/per sample to determine average grain sizes (AVGs). The hardness values were determined according to ASTM C1327-15(2019) by the Vickers method ( HV 10), which was performed by applying a load of 98.1 N in the indentation time of 10 s at least 5 times per sample using a hardness tester (Innovatest, Nexus 7500, Maastricht, The Netherlands). The dimensions of the corresponding indentations and subsequent crack lengths were processed by an optical microscope (Carl Zeiss, Axio Imager Z1m, Oberkochen, Germany). The obtained lengths were also used to determine fracture toughness ( K IC ). Numerous mathematical models were proposed for the determination",
+   "standards": [
+    "ASTM C1327-15"
+   ]
+  }
+ ],
+ "standards_found": {
+  "EN ISO 6507-1": 1,
+  "EN ISO 6892-1": 1,
+  "EN ISO 6506-1": 1,
+  "ASTM C1327-15": 1
+ },
+ "standards_new": [
+  "ASTM C1327-15",
+  "EN ISO 6506-1",
+  "EN ISO 6507-1",
+  "EN ISO 6892-1"
+ ],
+ "test_item_hits": {
+  "hardness_brinell": 3,
+  "hardness_rockwell": 2,
+  "fracture_toughness": 1,
+  "microscopy": 1,
+  "torsion": 1
+ }
+}

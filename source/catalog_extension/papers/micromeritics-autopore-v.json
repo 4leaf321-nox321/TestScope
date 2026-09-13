@@ -1,0 +1,304 @@
+{
+ "object": "micromeritics-autopore-v",
+ "manufacturer": "micromeritics",
+ "phrases": [
+  "Micromeritics AutoPore V",
+  "Micromeritics AutoPore"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Micromeritics AutoPore V\" OR \"Micromeritics AutoPore\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Micromeritics AutoPore V\" OR \"Micromeritics AutoPore\") AND OPEN_ACCESS:y",
+  "count": 275,
+  "papers": [
+   {
+    "pmcid": "PMC6441089",
+    "doi": "10.1038/s41467-019-09510-5",
+    "title": "Scalable synthesis of ant-nest-like bulk porous silicon for high-performance lithium-ion battery anodes.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 179,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5384213",
+    "doi": "10.1038/ncomms14921",
+    "title": "Bio-inspired Murray materials for mass transfer and activity.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 102,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8318363",
+    "doi": "10.1126/sciadv.abg3089",
+    "title": "Biomaterials with structural hierarchy and controlled 3D nanotopography guide endogenous bone regeneration.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 83,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6690989",
+    "doi": "10.1038/s41467-019-11565-3",
+    "title": "Towards general network architecture design criteria for negative gas adsorption transitions in ultraporous frameworks.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 58,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7141016",
+    "doi": "10.1002/advs.201902897",
+    "title": "Green Synthesis of Hierarchical Metal-Organic Framework/Wood Functional Composites with Superior Mechanical Properties.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2020",
+    "cited": 54,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5561188",
+    "doi": "10.1038/s41467-017-00372-3",
+    "title": "Protection and consolidation of stone heritage by self-inoculation with indigenous carbonatogenic bacterial communities.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 54,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5952545",
+    "doi": "10.1039/c5sc02794b",
+    "title": "Mechanical energy storage performance of an aluminum fumarate metal-organic framework.",
+    "journal": "Chem Sci",
+    "year": "2016",
+    "cited": 51,
+    "snippets": 1,
+    "standards_in_paper": [
+     "BS10-0005"
+    ]
+   },
+   {
+    "pmcid": "PMC7782533",
+    "doi": "10.1038/s41467-020-20297-8",
+    "title": "A cooperative biphasic MoO<sub>x</sub>-MoP<sub>x</sub> promoter enables a fast-charging lithium-ion battery.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 48,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4759572",
+    "doi": "10.1038/srep21401",
+    "title": "High-internal-phase emulsions stabilized by metal-organic frameworks and derivation of ultralight metal-organic aerogels.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 46
+   },
+   {
+    "pmcid": "PMC8040555",
+    "doi": "10.1177/20417314211005610",
+    "title": "Pro-angiogenic and osteogenic composite scaffolds of fibrin, alginate and calcium phosphate for bone tissue engineering.",
+    "journal": "J Tissue Eng",
+    "year": "2021",
+    "cited": 43
+   },
+   {
+    "pmcid": "PMC7141049",
+    "doi": "10.1002/advs.201902034",
+    "title": "Amorphous Ni-Fe-Mo Suboxides Coupled with Ni Network as Porous Nanoplate Array on Nickel Foam: A Highly Efficient and Durable Bifunctional Electrode for Overall Water Splitting.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2020",
+    "cited": 43
+   },
+   {
+    "pmcid": "PMC6255268",
+    "doi": "10.3390/molecules14114370",
+    "title": "Characterization and dissolution study of chitosan freeze-dried systems for drug controlled release.",
+    "journal": "Molecules",
+    "year": "2009",
+    "cited": 42
+   },
+   {
+    "pmcid": "PMC8119888",
+    "doi": "10.3389/fbioe.2021.662381",
+    "title": "3D Printed Poly(ε-Caprolactone)/Meniscus Extracellular Matrix Composite Scaffold Functionalized With Kartogenin-Releasing PLGA Microspheres for Meniscus Tissue Engineering.",
+    "journal": "Front Bioeng Biotechnol",
+    "year": "2021",
+    "cited": 40
+   },
+   {
+    "pmcid": "PMC6680086",
+    "doi": "10.2147/ijn.s210509",
+    "title": "In vitro behavior of tendon stem/progenitor cells on bioactive electrospun nanofiber membranes for tendon-bone tissue engineering applications.",
+    "journal": "Int J Nanomedicine",
+    "year": "2019",
+    "cited": 38
+   },
+   {
+    "pmcid": "PMC3080277",
+    "doi": "10.1186/1752-153x-5-15",
+    "title": "Reduction of aldehydes and hydrogen cyanide yields in mainstream cigarette smoke using an amine functionalised ion exchange resin.",
+    "journal": "Chem Cent J",
+    "year": "2011",
+    "cited": 38
+   },
+   {
+    "pmcid": "PMC11271565",
+    "doi": "10.1038/s41467-024-50396-9",
+    "title": "Radiative cooling assisted self-sustaining and highly efficient moisture energy harvesting.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 36
+   },
+   {
+    "pmcid": "PMC3859181",
+    "doi": "10.1021/bm401145x",
+    "title": "Galactose-functionalized polyHIPE scaffolds for use in routine three dimensional culture of mammalian hepatocytes.",
+    "journal": "Biomacromolecules",
+    "year": "2013",
+    "cited": 32
+   },
+   {
+    "pmcid": "PMC5634498",
+    "doi": "10.1038/s41467-017-00789-w",
+    "title": "A three-dimensional view of structural changes caused by deactivation of fluid catalytic cracking catalysts.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 31
+   },
+   {
+    "pmcid": "PMC8044160",
+    "doi": "10.1038/s41467-021-22438-z",
+    "title": "Resolving atomic SAPO-34/18 intergrowth architectures for methanol conversion by identifying light atoms and bonds.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 24
+   },
+   {
+    "pmcid": "PMC9115760",
+    "doi": "10.1021/acs.jpcc.8b04549",
+    "title": "Adsorption Contraction Mechanics: Understanding Breathing Energetics in Isoreticular Metal-Organic Frameworks.",
+    "journal": "J Phys Chem C Nanomater Interfaces",
+    "year": "2018",
+    "cited": 23
+   },
+   {
+    "pmcid": "PMC6321522",
+    "doi": "10.3390/pharmaceutics10040273",
+    "title": "Effect of Penetration Enhancers on Drug Nail Permeability from Cyclodextrin/Poloxamer-Soluble Polypseudorotaxane-Based Nail Lacquers.",
+    "journal": "Pharmaceutics",
+    "year": "2018",
+    "cited": 23
+   },
+   {
+    "pmcid": "PMC4498493",
+    "doi": "10.1002/cctc.201402925",
+    "title": "Assessment of the 3 D Pore Structure and Individual Components of Preshaped Catalyst Bodies by X-Ray Imaging.",
+    "journal": "ChemCatChem",
+    "year": "2015",
+    "cited": 23
+   },
+   {
+    "pmcid": "PMC5179083",
+    "doi": "10.1371/journal.pone.0168422",
+    "title": "Natural Cellulose Nanofibers As Sustainable Enhancers in Construction Cement.",
+    "journal": "PLoS One",
+    "year": "2016",
+    "cited": 22
+   },
+   {
+    "pmcid": "PMC8156034",
+    "doi": "10.3390/ma14102617",
+    "title": "Effect of Low Zeolite Doses on Plants and Soil Physicochemical Properties.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC4865943",
+    "doi": "10.1038/srep25830",
+    "title": "Cellular graphene aerogel combines ultralow weight and high mechanical strength: A highly efficient reactor for catalytic hydrogenation.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 18
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6441089",
+   "title": "Scalable synthesis of ant-nest-like bulk porous silicon for high-performance lithium-ion battery anodes.",
+   "year": "2019",
+   "text": "MK-II, VG Instruments, UK), energy-dispersive X-ray spectroscopy (EDS, Bruker, Super-X), Raman scattering (HB RamLab), and Fourier transform infrared spectroscopy (FTIR, VERTEX 70, Bruker). The surface areas were measured via Brunauer-Emmett-Teller (BET, Micrometrics, ASAP2010) method and the porosity was determined using the mercury porosimeter (Micromeritics, AutoPore V). The 3D structure of AMPSi was obtained by tomographic reconstruction strategy, which was carried out via the total variation based simultaneous algebraic reconstruction technique with synchrotron radiation (National Synchrotron Radiation Laboratory, Hefei, Anhui, China). Thermogravimetry (TG, STA449/6/GNETZSCH) was carried out from 30 to 1000 °C",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5384213",
+   "title": "Bio-inspired Murray materials for mass transfer and activity.",
+   "year": "2017",
+   "text": "d by the Brunauer–Emmett–Teller method. The pore size distribution for micropores is calculated from the desorption branch of the isotherm using the non-local density functional theory method. The pore size distribution for mesopores is calculated using the Barrett–Joyner–Halenda model. The pore size distribution for macropores is analysed using a Micromeritics AutoPore IV 9500 mercury porosimeter. The TEM images are obtained using a JEM-2100F with 200 kV accelerating voltage. The SEM images are obtained using a Hitachi S-4800. The XRD pattern is obtained using a Bruker D8 Advance diffractometer equipped with a Cu Kα rotating anode source. GISAXS data were collected on a Bruker NANOSTAR SAXS instrument equipped w",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8318363",
+   "title": "Biomaterials with structural hierarchy and controlled 3D nanotopography guide endogenous bone regeneration.",
+   "year": "2021",
+   "text": "the control, RAS, VAS, and collagen sponge groups and sectioned by cryo-cutting were coated with Pt for 5 min using a Pt sputter coater and imaged by a SEM under 25 kV (FEI, Quanta 200, Billerica, MA, USA). The porosities and pore sizes of RAS and VAS expanded from 0.5-, 1-, and 1.5-mm nanofiber mats (fig. S1) were measured by mercury porosimetry (Micromeritics, AutoPore IV 9500, IL, USA). The average pore size of each region in RAS and VAS ( Fig. 1, C to F ) was measured on the basis of the SEM images. The channel length of the RAS and VAS ( Fig. 1, G to J ) were also measured on the basis of the SEM images. Mechanical tests The mechanical properties of RAS and VAS were examined in the frontal and side directions",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6690989",
+   "title": "Towards general network architecture design criteria for negative gas adsorption transitions in ultraporous frameworks.",
+   "year": "2019",
+   "text": "in with, the solids were activated at 115 °C for 8 h in secondary vacuum (Supplementary Note 6 ). The obtained powder was then loaded into a powder penetrometer of 3.1126 cm 3 volume with a stem volume of 0.412 cm 3 using a glove box (Jacomex P-BOX) under argon atmosphere H 2 O &lt; 5 ppm. The mercury intrusion experiments were carried out using a Micromeritics AutoPore IV 9500 allowing a range of pressure applied from 0.003 to 300 MPa. Prior to the experiment the powder was outgassed in vacuum at ∼6.5 Pa for 15 min. The collected volume of mercury intruded was corrected by a blank measurement recorded under the same conditions (temperature and pressure) using the same penetrometer to obtain the absolute contract",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7141016",
+   "title": "Green Synthesis of Hierarchical Metal-Organic Framework/Wood Functional Composites with Superior Mechanical Properties.",
+   "year": "2020",
+   "text": "powders were used. The diffraction data was recorded in the 2 θ = 5°–60° range with an angular step size of 0.03° and a counting time of 1 s per step. Ar sorption at −196 °C was undertaken in a Micromeritics 3Flex instrument. Prior to the measurement, the samples were evacuated at 90 °C for 48 h. Mercury intrusion porosimetry was conducted with a Micromeritics Autopore IV 9510 following in situ sample evacuation and using a contact angle of 140°. Adsorption isotherms of N 2 and CO 2 at 0 °C were recorded using a Micromeritics 3Flex Analyzer. Prior to the measurement, the samples were evacuated at 90 °C for 48 h. Compression tests and tensile tests were performed using a universal testing machine (Zwick Roell) eq",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5561188",
+   "title": "Protection and consolidation of stone heritage by self-inoculation with indigenous carbonatogenic bacterial communities.",
+   "year": "2017",
+   "text": "tensile strength 65 , 66 . As expected, DR values show an exponential correlation with Mohs’s hardness 65 , and an exponential decay with porosity (for porous materials like limestone, gypsum plaster or lime mortars) 53 . The porosity and pore size distribution of the calcarenite stone blocks were determined by mercury intrusion porosimetry (MIP, Micromeritics Autopore III) before and after treatments. Samples (~ 1 g) were collected from the first 5 mm beneath the stone surface for analysis. Samples were dried in an oven at 80 °C for 24 h prior to analyses which were performed in duplicate. Color changes were evaluated at each sampling time by measuring the L*a*b* color parameters using a Minolta Chroma Meter po",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5952545",
+   "title": "Mechanical energy storage performance of an aluminum fumarate metal-organic framework.",
+   "year": "2016",
+   "text": "al and methods Powder of the aluminum fumarate metal–organic framework MIL-53–FA has been prepared following the optimized synthesis route very recently reported by Alvarez et al. 18 The pressure-induced structural response of both the dehydrated and hydrated solids was characterized using mercury intrusion experiments 2 , 4 , 7 with a porosimeter Micromeritics Autopore 9240. Two intrusion–extrusion (compression–decompression) cycles were applied to the samples in the pressure range 10 –4 to 420 MPa (see the ESI † ). Angle-dispersive X-ray powder diffraction (XRPD) data at high pressure (up to 1.88 GPa) was recorded in-house using filtered Mo-K α ( λ = 0.710730 Å) and at PSICHE beamline of the Synchrotron Soleil",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7782533",
+   "title": "A cooperative biphasic MoO<sub>x</sub>-MoP<sub>x</sub> promoter enables a fast-charging lithium-ion battery.",
+   "year": "2021",
+   "text": "ean, PANalytical) with Cu K α radiation ( λ = 0.154046 nm). XPS (Thermo Scientific, K-alpha) was employed to investigate the chemical states of materials. In situ XRD and ex situ XPS analyses were carried out for MoP x with different SOCs to investigate structure evolution during Li intercalation and deintercalation. Mercury intrusion porosimetry (Micromeritics, AutoPore IV 9510) was employed to measure the porosity of the electrodes. Electrochemical measurements For electrochemical performance evaluation, electrodes were fabricated by a conventional slurry coating process. A slurry prepared by mixing active material (96 wt%) with polyvinylidene fluoride (PVdF) binder (4 wt%) in N -methylpyrrolidone was coated on",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "density_porosity": 6,
+  "compression": 3,
+  "tensile": 2,
+  "contact_angle": 1
+ }
+}

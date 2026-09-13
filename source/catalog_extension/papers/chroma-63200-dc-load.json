@@ -1,0 +1,43 @@
+{
+ "object": "chroma-63200-dc-load",
+ "manufacturer": "chroma",
+ "phrases": [
+  "Chroma ATE 63201",
+  "Chroma ATE 63202",
+  "Chroma ATE 63203",
+  "Chroma ATE 63204",
+  "Chroma ATE 63205",
+  "Chroma ATE 63206"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Chroma ATE 63201\" OR \"Chroma ATE 63202\" OR \"Chroma ATE 63203\" OR \"Chroma ATE 63204\" OR \"Chroma ATE 63205\" OR \"Chroma ATE 63206\"",
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W2997132179",
+    "doi": "https://doi.org/10.24295/cpsstpea.2019.00026",
+    "title": "Analysis and Design of the Soft-Switched Clamped-Resonant Interleaved Boost Converter",
+    "year": 2019,
+    "cited": 25,
+    "venue": "CPSS Transactions on Power Electronics and Applications",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Silicon Carbide Semiconductor Technologies",
+     "Wireless Power Transfer Systems"
+    ],
+    "oa_url": "https://doi.org/10.24295/cpsstpea.2019.00026",
+    "abstract": "This paper presents the detailed analysis and design of a soft-switching DC-DC converter called clamped-resonant interleaved boost converter (CRIB). This topology, thanks to a resonant L-C tank connected between the drain terminals of the switches of two interleaved boost cells, achieves zero-voltage and zero current commutations of all devices, independently of the load current, with a reduced dv/dt across the switches, making the converter suitable for high-frequency operation. Moreover, a proper no-load operation is proved, whenever the minimum voltage gain is higher than a given threshold. Differently from previous works on current-fed resonant converters, the presented theoretical analysis includes the effect of the input filter inductors, allowing to derive a simple design procedure to meet the given specifications. According to the outlined design steps, an experimental prototype was built, rated at 42~54 V to 400 V~300 W. Measurements confirm the theoretical predictions, showing an efficiency above 96% at the nominal power in the whole input voltage range. Finally, the possibility to reduce the overall magnetic volume by coupling the two input inductors is demonstrated."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Chroma ATE 63201\" OR \"Chroma ATE 63202\" OR \"Chroma ATE 63203\" OR \"Chroma ATE 63204\" OR \"Chroma ATE 63205\" OR \"Chroma ATE 63206\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

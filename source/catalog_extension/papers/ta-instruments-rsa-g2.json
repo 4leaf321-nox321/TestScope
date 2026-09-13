@@ -1,0 +1,289 @@
+{
+ "object": "ta-instruments-rsa-g2",
+ "manufacturer": "ta-instruments",
+ "phrases": [
+  "TA Instruments RSA-G2",
+  "TA Instruments G2"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TA Instruments RSA-G2\" OR \"TA Instruments G2\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TA Instruments RSA-G2\" OR \"TA Instruments G2\") AND OPEN_ACCESS:y",
+  "count": 26,
+  "papers": [
+   {
+    "pmcid": "PMC7299613",
+    "doi": "10.1126/sciadv.aba5575",
+    "title": "3D printed deformable sensors.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 81,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8654922",
+    "doi": "10.1038/s41467-021-27467-2",
+    "title": "Engineering Bacillus subtilis for the formation of a durable living biocomposite material.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 38,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5116088",
+    "doi": "10.1038/ncomms13450",
+    "title": "Carbon nanotube dry adhesives with temperature-enhanced adhesion over a large temperature range.",
+    "journal": "Nat Commun",
+    "year": "2016",
+    "cited": 27,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9879017",
+    "doi": "10.1002/mabi.202200103",
+    "title": "3D-Printed Electroactive Hydrogel Architectures with Sub-100 µm Resolution Promote Myoblast Viability.",
+    "journal": "Macromol Biosci",
+    "year": "2022",
+    "cited": 16,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11740944",
+    "doi": "10.1126/sciadv.adt7613",
+    "title": "Redefining the limits of actuating fibers via mesophase control: From contraction to elongation.",
+    "journal": "Sci Adv",
+    "year": "2025",
+    "cited": 14,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11423880",
+    "doi": "10.1126/sciadv.adq2024",
+    "title": "Dynamically reconfigurable shape-morphing and tactile display via hydraulically coupled mergeable and splittable PVC gel actuator.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 11,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10116642",
+    "doi": "10.1021/acsmacrolett.3c00055",
+    "title": "Sequence-Enhanced Self-Healing in \"Lock-and-Key\" Copolymers.",
+    "journal": "ACS Macro Lett",
+    "year": "2023",
+    "cited": 10,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9047662",
+    "doi": "10.1021/acsnano.1c11607",
+    "title": "Contact Printing of Multilayered Thin Films with Shape Memory Polymers.",
+    "journal": "ACS Nano",
+    "year": "2022",
+    "cited": 10,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10959967",
+    "doi": "10.1038/s41467-024-46709-7",
+    "title": "Height-renderable morphable tactile display enabled by programmable modulation of local stiffness in photothermally active polymer.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC11943474",
+    "doi": "10.1093/stcltm/szae101",
+    "title": "TGFBR3 dependent mechanism of TGFB2 in smooth muscle cell differentiation and implications for TGFB2-related aortic aneurysm.",
+    "journal": "Stem Cells Transl Med",
+    "year": "2025",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC7184259",
+    "doi": "10.1016/j.heliyon.2020.e03857",
+    "title": "Mechanical properties of amorphous and semi-crystalline semi-aromatic polyamides.",
+    "journal": "Heliyon",
+    "year": "2020",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC11529043",
+    "doi": "10.1002/advs.202405301",
+    "title": "Sustainable Plastics with High Performance and Convenient Processibility.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2024",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC12153420",
+    "doi": "10.1039/d5me00018a",
+    "title": "Enhanced thermal response of 3D-printed bilayer hydrogels &lt;i&gt;via&lt;/i&gt; nanoclay incorporation.",
+    "journal": "Mol Syst Des Eng",
+    "year": "2025",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC8695462",
+    "doi": "10.1039/d0ra10763h",
+    "title": "Toward sustainable desalination using food waste: capacitive desalination with bread-derived electrodes.",
+    "journal": "RSC Adv",
+    "year": "2021",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12845921",
+    "doi": "10.3390/polym18020294",
+    "title": "Polylactide/Polycaprolactone Nanofiber Scaffold Enhances Primary Cortical Neuron Growth.",
+    "journal": "Polymers (Basel)",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12511436",
+    "doi": "10.1038/s41467-025-64011-y",
+    "title": "Programmable material via thiol-ene polymerization initiated by electric-field induced thiyl radical on piezoelectric ZnO.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12548940",
+    "doi": "10.1002/cssc.202501137",
+    "title": "Propylene-Ethylene Copolymer Covalent Adaptable Networks Synthesized by Resonance-Stabilized, Radical-Based Reactive Processing with Excellent Elevated-Temperature Creep Resistance.",
+    "journal": "ChemSusChem",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12388603",
+    "doi": "10.3390/mi16080889",
+    "title": "Self-Healing 3D-Printed Polyurethane Nanocomposites Based on Graphene.",
+    "journal": "Micromachines (Basel)",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11827630",
+    "doi": "10.1126/sciadv.ads0766",
+    "title": "High-performance electroadhesive clutches with multilayered architecture.",
+    "journal": "Sci Adv",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11707794",
+    "doi": "10.1021/acsmaterialslett.4c01358",
+    "title": "3D-Printable Elastomers for Real-Time Autonomous Self-Healing in Soft Devices.",
+    "journal": "ACS Mater Lett",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13206326",
+    "doi": "10.1002/adhm.202505422",
+    "title": "Temporally Delayed Deployment of Photo-Responsive Liquid Crystal Polymer Networks Toward Neural Interfaces.",
+    "journal": "Adv Healthc Mater",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12356075",
+    "doi": "10.1021/acs.macromol.5c01221",
+    "title": "Phase-Change Silicone Elastomers for Tough, Soft Actuators.",
+    "journal": "Macromolecules",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12656526",
+    "doi": "10.3390/polym17223058",
+    "title": "Sulfonated Poly(Ether Ether Ketone)/Praseodymium Doped Zinc Ferrite Composites as Promising Polyelectrolyte Membranes for Fuel Cells.",
+    "journal": "Polymers (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12584641",
+    "doi": "10.1128/spectrum.00935-25",
+    "title": "Reproducible 3D bioprinting of &lt;i&gt;Streptococcus mutans&lt;/i&gt; to create model oral biofilms.",
+    "journal": "Microbiol Spectr",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12191655",
+    "doi": "10.3390/gels11060388",
+    "title": "Synthesis and Applications of Encapsulated Glycol-Stabilized Lyotropic Cholesteric Liquid Crystal Hydrogels.",
+    "journal": "Gels",
+    "year": "2025",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7299613",
+   "title": "3D printed deformable sensors.",
+   "year": "2020",
+   "text": "d plate geometry. Viscometry tests were performed at shear rates from 10 −1 to 10 2 s −1 , and oscillatory rheometry tests were performed at a frequency of 1 Hz and oscillatory stresses from 10 −1 to 10 3 Pa. Uniaxial tensile tests were performed on porcine lung tissue specimens, 3D-printed hydrogel specimens, and casted silicone specimens using a TA Instruments RSA-G2 extensional dimethylamine (DMA) rheometer. The tissue specimens were cut into rectangular shapes and tested within 12 hours after the lung tissue was taken from the animal. Before testing, the tissue specimens were stored in saline solution in the refrigerator. Static stress-strain curves were acquired for each material at a strain rate of 0.1 mm/",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8654922",
+   "title": "Engineering Bacillus subtilis for the formation of a durable living biocomposite material.",
+   "year": "2021",
+   "text": "the tops removed and then tops were covered instead with sterilized caps to maintain sterile conditions. Silica was added to 1 mL cultures to a concentration of 200 mM. Samples were incubated at 25 °C for 5 h, and the gel plugs were pushed out of the syringe. Mechanical properties of the gel plugs were measured using an extensional DMA Rheometer (TA Instruments RSA-G2) with 15 mm compression disks. A frequency sweep was performed with a gap of 4.5 mm and an oscillation strain of 1%. Larger silica gel blocks from ‘purple’ co-cultures of B. subtilis Δlyt C Δflh G pCT-EutMCotB-EutMSpyC-Hag T209C ::SpyT 588 + B. subtilis Δlyt C Δflh G pCT-Purple-Hag T209C ::SpyT 588 were prepared in the same manner, except that 3 m",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11423880",
+   "title": "Dynamically reconfigurable shape-morphing and tactile display via hydraulically coupled mergeable and splittable PVC gel actuator.",
+   "year": "2024",
+   "text": "and engaging interactions with the digital world. MATERIALS AND METHODS Characterization Thin rectangular specimens of the PVC gels with different DBA:PVC ratio (1:1 to 6:1), which have a thickness of ~400 μm, were prepared by following American Society for Testing and Materials (ASTM) standard D882. Their mechanical properties were measured by a TA instruments RSA-G2 solids analyzer. Storage moduli were measured by applying dynamic strain of 2% with a frequency of 1 Hz under a temperature of ~25°C ( Fig. 2A ). The reported storage moduli were the average of 12 values, which were measured repeatedly. Elongation-recovery curves were obtained under a temperature of ~25°C by stretching the specimens to 150% of ini",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11423880",
+   "title": "Dynamically reconfigurable shape-morphing and tactile display via hydraulically coupled mergeable and splittable PVC gel actuator.",
+   "year": "2024",
+   "text": "ding ( Fig. 2C ). Stress-strain curves were obtained by stretching the specimens to their breaking points at a temperature of ~25°C under a stretching rate of 0.1 mm s −1 . Dielectric constant and tan δ of the PVC gels were measured using an Agilent E4980A LCR meter under a constant compressive force of 1.5 N that applied to the specimen using the TA instruments RSA-G2 solids analyzer. A disc-shaped specimen for each PVC gel (diameter: 25 mm, thickness: 400 μm) was used for the measurements. Thermally induced weight loss of the PVC gel specimens with a weight range of 12.5 to 19.5 mg was measured by a TA instruments TGA 55 during heating with a constant rate of 10 K min −1 . Electrical resistance of the MWCNT el",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10116642",
+   "title": "Sequence-Enhanced Self-Healing in \"Lock-and-Key\" Copolymers.",
+   "year": "2023",
+   "text": "ity, films in the photographs were selectively dyed with oil-based blue and red pen ink. To quantitatively assess recovery behavior, the Young’s modulus ( E ), strain-to-fracture (ε F ), and toughness ( U ) of materials were determined by evaluation of the initial slope ( E ), ultimate strain (ε UT ), and expanded work until fracture ( U ) using a TA Instruments RSA-G2 operated in extension mode at a strain rate 0.05 s –1 ( Figure S4 ). Tensile testing was performed 1, 3, 5, 9, 12, 15, 24, and 36 h after rejoining of films ( Figure S5 ). Normalized recovery ratios ( P E , P ε , and P U ) were defined as E , ε F , and U after rejoining, normalized with respect to values of pristine film samples to allow for compa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9047662",
+   "title": "Contact Printing of Multilayered Thin Films with Shape Memory Polymers.",
+   "year": "2022",
+   "text": "200 Mask Aligner) was used with a Cr photomask (photo science, 5 μm diameter circles array with 5 μm spacing) to fabricate the donor substrate. Reactive ion etcher (RIE, South Bay Technology Reactive Ion Etcher RIE-2000) was used to etch the SiO 2 layer of the donor substrate and to clean the substrate with O 2 plasma. Dynamic mechanical analysis (TA Instruments RSA G2) was used to measure the glass transition temperature and Young’s modulus of the PUA G material. Temperature sweep data were acquired on a thin-film elastomer (6 mm × 30 mm × 0.25 mm) from 10 to 90 °C at 5 °C min –1 . Oscillation was set to 0.50% strain and angular frequency of 2π rad/s. Water contact angle measurements (AST Products VCA Optima) w",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 2,
+  "compression": 1,
+  "contact_angle": 1,
+  "dma": 1,
+  "shear": 1
+ }
+}

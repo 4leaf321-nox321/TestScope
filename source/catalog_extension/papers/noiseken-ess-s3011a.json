@@ -1,0 +1,25 @@
+{
+ "object": "noiseken-ess-s3011a",
+ "manufacturer": "noiseken",
+ "phrases": [
+  "Noise S3011A",
+  "Noise ESS-S3011A",
+  "NOISEKEN S3011A",
+  "NOISEKEN ESS-S3011A"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Noise S3011A\" OR \"Noise ESS-S3011A\" OR \"NOISEKEN S3011A\" OR \"NOISEKEN ESS-S3011A\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Noise S3011A\" OR \"Noise ESS-S3011A\" OR \"NOISEKEN S3011A\" OR \"NOISEKEN ESS-S3011A\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

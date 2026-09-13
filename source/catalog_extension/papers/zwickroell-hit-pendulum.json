@@ -1,0 +1,143 @@
+{
+ "object": "zwickroell-hit-pendulum",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell HIT",
+  "ZwickRoell HIT5P",
+  "ZwickRoell HIT5.5P",
+  "ZwickRoell HIT25P",
+  "ZwickRoell HIT50P"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell HIT\" OR \"ZwickRoell HIT5P\" OR \"ZwickRoell HIT5.5P\" OR \"ZwickRoell HIT25P\" OR \"ZwickRoell HIT50P\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell HIT\" OR \"ZwickRoell HIT5P\" OR \"ZwickRoell HIT5.5P\" OR \"ZwickRoell HIT25P\" OR \"ZwickRoell HIT50P\") AND OPEN_ACCESS:y",
+  "count": 4,
+  "papers": [
+   {
+    "pmcid": "PMC9181684",
+    "doi": "10.3390/ma15113872",
+    "title": "Analysis of Mechanical Properties Related to Fiber Length of Closed-Loop-Recycled Offcuts of a Thermoplastic Fiber Composites (Organo Sheets).",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "DIN ISO 179",
+     "DIN ISO 527-2",
+     "EN ISO 1172",
+     "EN ISO 14040",
+     "ISO 9276"
+    ]
+   },
+   {
+    "pmcid": "PMC13144366",
+    "doi": "10.1038/s41598-026-43032-7",
+    "title": "Recycling paper waste into structural cellulose composites with enhanced mechanical and thermal performance.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 622-5",
+     "ISO 179-1",
+     "ISO 527-1",
+     "ISO 527-2",
+     "ISO 604"
+    ]
+   },
+   {
+    "pmcid": "PMC13515661",
+    "doi": "10.3390/mi17080937",
+    "title": "Interlocking Interfaces for Enhanced Mechanical Properties in Bi-Component 3D Printing of Biodegradable Materials.",
+    "journal": "Micromachines (Basel)",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN ISO 179-1",
+     "ISO 527",
+     "ISO 527-3"
+    ]
+   },
+   {
+    "pmcid": "PMC13317669",
+    "doi": "10.1021/acsapm.6c00885",
+    "title": "Is Recycled Polypropylene Suitable for Flame-Retarded Applications?",
+    "journal": "ACS Appl Polym Mater",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D2863",
+     "ASTM D3801",
+     "ISO 5660",
+     "UL-94"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9181684",
+   "title": "Analysis of Mechanical Properties Related to Fiber Length of Closed-Loop-Recycled Offcuts of a Thermoplastic Fiber Composites (Organo Sheets).",
+   "year": "2022",
+   "text": "produced and the mechanical properties were tested in accordance with common standards. In addition, initial fiber length analyses were carried out. The testing specimens were tested with the tensile test method according to DIN ISO 527-2 (Zwick/Roell type Z020/20kN, ZwickRoell GmbH &amp; Co. KG, Ulm, Germany). Furthermore, an impact bending test (ZwickRoell-HIT50P/5J, ZwickRoell GmbH &amp; Co. KG, Ulm, Germany) according to DIN ISO 179 was carried out. For the determination of the glass fiber content in the component, the samples were additionally ash-tested according to DIN EN ISO 1172. The fiber length analysis was determined with the FibreShape CROSS system (from IST AG company, Ebnat-Kappel, Switzerland",
+   "standards": [
+    "DIN ISO 179",
+    "DIN ISO 527-2",
+    "EN ISO 1172"
+   ]
+  },
+  {
+   "pmcid": "PMC13144366",
+   "title": "Recycling paper waste into structural cellulose composites with enhanced mechanical and thermal performance.",
+   "year": "2026",
+   "text": "astics and polymer-based composite materials under uniaxial compression. There were four specimens per composition due to limitations in specimen preparation. This means statistical significance should be viewed with some caution. Impact test Impact resistance of the polyurethane–cellulose composites was evaluated using the Charpy impact test on a ZwickRoell HIT5.5P testing machine, in accordance with ISO 179–1 for polymer-based composite materials. Although not commonly applied to cellulose composites, the Charpy method was selected due to its suitability for assessing the dynamic brittleness and toughness of low-density boards under impact loading 29 – 31 . All tests were conducted at room temperature. Spec",
+   "standards": [
+    "ISO 179-1"
+   ]
+  },
+  {
+   "pmcid": "PMC13515661",
+   "title": "Interlocking Interfaces for Enhanced Mechanical Properties in Bi-Component 3D Printing of Biodegradable Materials.",
+   "year": "2026",
+   "text": "5 mm, the data acquisition rate was 10 Hz, and the tests were conducted at room temperature (23 °C). The impact strength of test specimens printed from UltraFuse PLA Blue and PLA/PHA Shining Silver materials was determined using the Charpy method in accordance with the SR EN ISO 179-1 standard [ 48 ]. The Charpy impact test was performed using the ZwickRoell HIT25P pendulum (ZwickRoell GmbH &amp; Co.KG, Ulm, Germany), which is designed for testing plastics; it has a nominal energy of 0.209 J, without friction correction, and the pendulum was positioned at an angle of 104.22°. The test parameters used to determine impact resistance were a velocity of 2.9 m/s and a 5 J pendulum. The bending tests were conducte",
+   "standards": [
+    "EN ISO 179-1"
+   ]
+  },
+  {
+   "pmcid": "PMC13317669",
+   "title": "Is Recycled Polypropylene Suitable for Flame-Retarded Applications?",
+   "year": "2026",
+   "text": "perature with a DXR2 Raman microscope (Thermo Scientific) employing a 532 nm excitation laser. The mechanical properties were evaluated using an RGT-20A universal testing machine (Reger) with a crosshead speed of 25 mm/min for tensile tests and 15 mm/min for flexural tests. The impact strength was evaluated through notched Izod impact tests with a ZwickRoell HIT25P equipped with a 5.5 J pendulum. All the mechanical properties were carried out on five samples, and the results were averaged. 3 Results and Discussion 3.1 Microstructure Assessment of IFR-Containing Materials As widely reported, the rheological behavior and the processability of a polymeric system are strongly affected by the thermomechanical deg",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "DIN ISO 527-2": 1,
+  "DIN ISO 179": 1,
+  "EN ISO 1172": 1,
+  "ISO 179-1": 1,
+  "EN ISO 179-1": 1
+ },
+ "standards_new": [
+  "DIN ISO 179",
+  "DIN ISO 527-2",
+  "EN ISO 1172",
+  "EN ISO 179-1"
+ ],
+ "test_item_hits": {
+  "charpy_impact": 2,
+  "flexure": 2,
+  "tensile": 2,
+  "compression": 1,
+  "density_porosity": 1,
+  "izod_impact": 1
+ }
+}

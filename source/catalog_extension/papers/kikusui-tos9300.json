@@ -1,0 +1,27 @@
+{
+ "object": "kikusui-tos9300",
+ "manufacturer": "kikusui",
+ "phrases": [
+  "Kikusui TOS9300",
+  "Kikusui TOS9301 AC",
+  "Kikusui TOS9301PD AC",
+  "Kikusui TOS9302",
+  "Kikusui TOS9303 AC",
+  "Kikusui TOS9303LC AC"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Kikusui TOS9300\" OR \"Kikusui TOS9301 AC\" OR \"Kikusui TOS9301PD AC\" OR \"Kikusui TOS9302\" OR \"Kikusui TOS9303 AC\" OR \"Kikusui TOS9303LC AC\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Kikusui TOS9300\" OR \"Kikusui TOS9301 AC\" OR \"Kikusui TOS9301PD AC\" OR \"Kikusui TOS9302\" OR \"Kikusui TOS9303 AC\" OR \"Kikusui TOS9303LC AC\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

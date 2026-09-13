@@ -1,0 +1,23 @@
+{
+ "object": "anton-paar-tribometers-materialtwin",
+ "manufacturer": "anton-paar",
+ "phrases": [
+  "Anton Paar THT 800 °C",
+  "Anton Paar THT 1000 °C"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Anton Paar THT 800 °C\" OR \"Anton Paar THT 1000 °C\"",
+  "count": 0,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Anton Paar THT 800 °C\" OR \"Anton Paar THT 1000 °C\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

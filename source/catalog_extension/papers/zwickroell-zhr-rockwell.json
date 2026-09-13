@@ -1,0 +1,26 @@
+{
+ "object": "zwickroell-zhr-rockwell",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell ZHR4045 ZHR4150",
+  "ZwickRoell ZHR4045",
+  "ZwickRoell ZHR4150",
+  "ZwickRoell ZHR8150",
+  "ZwickRoell ZHR8150CLK"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell ZHR4045 ZHR4150\" OR \"ZwickRoell ZHR4045\" OR \"ZwickRoell ZHR4150\" OR \"ZwickRoell ZHR8150\" OR \"ZwickRoell ZHR8150CLK\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell ZHR4045 ZHR4150\" OR \"ZwickRoell ZHR4045\" OR \"ZwickRoell ZHR4150\" OR \"ZwickRoell ZHR8150\" OR \"ZwickRoell ZHR8150CLK\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

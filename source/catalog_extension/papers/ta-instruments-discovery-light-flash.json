@@ -1,0 +1,53 @@
+{
+ "object": "ta-instruments-discovery-light-flash",
+ "manufacturer": "ta-instruments",
+ "phrases": [
+  "TA Instruments DLF 1200",
+  "TA Instruments DLF 1600"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TA Instruments DLF 1200\" OR \"TA Instruments DLF 1600\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TA Instruments DLF 1200\" OR \"TA Instruments DLF 1600\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC10573093",
+    "doi": "10.3390/ma16196494",
+    "title": "Powder Bed Thermal Diffusivity Using Laser Flash Three Layer Analysis.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E1461-13",
+     "SS 304L"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10573093",
+   "title": "Powder Bed Thermal Diffusivity Using Laser Flash Three Layer Analysis.",
+   "year": "2023",
+   "text": "f gas atomized IN718 powder particles using a TPS 2200 instrument (Transient Plane Source method). This method utilizes a spiral sensor which simultaneously heats up the sample and measures the time-dependent temperature changes. Zhang et al. [ 25 ] investigated the thermal conductivity of metal powder in LPBF AM for IN625 and Ti64 powders using a TA Instruments DLF 1200 laser flash instrument, and finite element (FE) heat transfer modeling. Ahsan et al. [ 26 ] determined the thermal diffusivity of IN718, Ti-6Al-4V and SS 304L metallic powders using the laser flash technique with a DXF 900 instrument. For their measurements, they used encapsulated powder samples in a holder with a lid. The laser flash system appli",
+   "standards": [
+    "SS 304L"
+   ]
+  }
+ ],
+ "standards_found": {
+  "SS 304L": 1
+ },
+ "standards_new": [
+  "SS 304L"
+ ],
+ "test_item_hits": {
+  "thermal_conductivity": 2
+ }
+}

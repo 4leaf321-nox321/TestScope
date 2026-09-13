@@ -1,0 +1,28 @@
+{
+ "object": "ets-lindgren-smart-reverberation-chamber",
+ "manufacturer": "ets-lindgren",
+ "pages": 5,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO 11452": 1
+ },
+ "standards_new": [
+  "ISO 11452"
+ ],
+ "test_item_hits": {
+  "density_porosity": 8,
+  "microscopy": 5,
+  "thermography": 3,
+  "ground_bond": 2,
+  "halt_hass": 2,
+  "battery_cycle_life": 1,
+  "burst_pressure": 1,
+  "shielding_effectiveness": 1,
+  "surge_eft_immunity": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "cement in which the DUT is placed in a completely sealed chamber with free space vacuum to shield the environment from outside interference, and then connected to test instruments with wireless signals to further emulate real-world scenarios.",
+  "Measurement performance: Designed for NSA/SVSWR, Field‑Uniformity and Quiet‑Zone targets appropriate to the use case."
+ ]
+}

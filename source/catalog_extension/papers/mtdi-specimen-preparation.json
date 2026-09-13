@@ -1,0 +1,27 @@
+{
+ "object": "mtdi-specimen-preparation",
+ "manufacturer": "mtdi",
+ "phrases": [
+  "MTDI KANTA-050E",
+  "MTDI KANTA-E",
+  "MTDI KANTA-S",
+  "MTDI KANTA-F",
+  "MTDI DIAMO-100F",
+  "MTDI DIAMO-100S"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"MTDI KANTA-050E\" OR \"MTDI KANTA-E\" OR \"MTDI KANTA-S\" OR \"MTDI KANTA-F\" OR \"MTDI DIAMO-100F\" OR \"MTDI DIAMO-100S\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"MTDI KANTA-050E\" OR \"MTDI KANTA-E\" OR \"MTDI KANTA-S\" OR \"MTDI KANTA-F\" OR \"MTDI DIAMO-100F\" OR \"MTDI DIAMO-100S\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

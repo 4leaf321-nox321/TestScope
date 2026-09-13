@@ -1,0 +1,47 @@
+{
+ "object": "kla-g200x",
+ "manufacturer": "kla",
+ "phrases": [
+  "KLA Instruments G200X",
+  "KLA Instruments Nano Indenter G200X",
+  "Nanomechanics G200X",
+  "Nanomechanics Nano Indenter G200X"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"KLA Instruments G200X\" OR \"KLA Instruments Nano Indenter G200X\" OR \"Nanomechanics G200X\" OR \"Nanomechanics Nano Indenter G200X\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"KLA Instruments G200X\" OR \"KLA Instruments Nano Indenter G200X\" OR \"Nanomechanics G200X\" OR \"Nanomechanics Nano Indenter G200X\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC12388365",
+    "doi": "10.3390/mi16080935",
+    "title": "Investigating Surface Morphology and Subsurface Damage Evolution in Nanoscratching of Single-Crystal 4H-SiC.",
+    "journal": "Micromachines (Basel)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC12388365",
+   "title": "Investigating Surface Morphology and Subsurface Damage Evolution in Nanoscratching of Single-Crystal 4H-SiC.",
+   "year": "2025",
+   "text": "te used in this study was a 2-inch, N-type polished wafer (thickness: 0.35 mm), purchased from SICC Co., Ltd. (Jinan, China). It featured an ultra-smooth surface (surface roughness Ra = 0.2 nm) and was defect-free, ensuring that the influence of surface quality could be neglected during the scratching process. Scratch testing was conducted using a KLA Instruments G200X nanoindenter (KLA Corporation, Milpitas, CA, USA), which has a maximum load of 500 mN and a displacement resolution of 0.01 nm ( Figure 1 a). The experimental parameters were as follows: a diamond Berkovich indenter (KLA Corporation, Milpitas, CA, USA) with a tip radius of 20 nm was used in an edge-forward orientation [ 31 ]. Tests were carried ou",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "scratch_pencil_hardness": 2,
+  "surface_topography": 1
+ }
+}

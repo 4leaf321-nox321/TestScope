@@ -1,0 +1,120 @@
+{
+ "object": "ateq-f620",
+ "manufacturer": "ateq",
+ "phrases": [
+  "ATEQ F620"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ATEQ F620\"",
+  "count": 5,
+  "works": [
+   {
+    "id": "https://openalex.org/W4410615127",
+    "doi": "https://doi.org/10.3390/s25113272",
+    "title": "Combining Infrared Thermography with Computer Vision Towards Automatic Detection and Localization of Air Leaks",
+    "year": 2025,
+    "cited": 8,
+    "venue": "Sensors",
+    "topics": [
+     "Thermography and Photoacoustic Techniques",
+     "Conservation Techniques and Studies",
+     "Building Energy and Comfort Optimization"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/25/11/3272/pdf?version=1747928080",
+    "abstract": "This paper proposes an automated system integrating infrared thermography (IRT) and computer vision for air leak detection and localization in end-of-line (EOL) testing stations. This system consists of (1) a leak tester for detection and quantification of leaks, (2) an infrared camera for real-time thermal image acquisition; and (3) an algorithm for automatic leak localization. The python-based algorithm acquires thermal frames from the camera's streaming video, identifies potential leak regions by selecting a region of interest, mitigates environmental interferences via image processing, and pinpoints leaks by employing pixel intensity thresholding. A closed circuit with an embedded leak system simulated relevant leakage scenarios, varying leak apertures (ranging from 0.25 to 3 mm), and camera-leak system distances (0.2 and 1 m). Results confirmed that (1) the leak tester effectively detected and quantified leaks, with larger apertures generating higher leak rates; (2) the IRT performance was highly dependent on leak aperture and camera-leak system distance, confirming that shorter distances improve localization accuracy; and (3) the algorithm localized all leaks in both lab and industrial environments, regardless of the camera-leak system distance, mostly achieving accuracies higher than 0.7. Overall, the combined system demonstrated great potential for long-term implementation in EOL leakage stations in the manufacturing sector, offering an effective and cost-effective alternative for manual inspections."
+   },
+   {
+    "id": "https://openalex.org/W7125682971",
+    "doi": "https://doi.org/10.26825/bup.ar.2025.003",
+    "title": "Defect detection and characterization in spin-welded assemblies for automotive fluid transfer systems",
+    "year": 2025,
+    "cited": 0,
+    "venue": "University of Pitesti Scientific Bulletin - Automotive Series",
+    "topics": [
+     "Electronic Packaging and Soldering Technologies",
+     "Non-Destructive Testing Techniques",
+     "Material Properties and Processing"
+    ],
+    "oa_url": "https://doi.org/10.26825/bup.ar.2025.003",
+    "abstract": "Spin Welding (SW) is a solid-state joining process widely used for thermoplastic components in automotive fluid transfer systems, offering high mechanical strength, sealing integrity, and full process traceability. However, due to the internal location of the weld interface, conventional optical inspection methods cannot be applied, making defect detection challenging. This study investigates defect detection and characterization in SW tube–connector assemblies, focusing on applications in safety-critical automotive environments. Assemblies were produced using a Mecasonic 72 horizontal SW machine, with process parameters established through Design of Experiments (DOE). A comprehensive evaluation methodology was applied, combining external visual inspection, bright field and polarized light microscopy, X-ray computed tomography (CT), leak testing, and tensile pull-out testing. The analysis identified common defect types, including flash formation, incomplete fusion, interface cracks, and porosity, and correlated their occurrence with deviations in welding time, displacement, and energy input. CT scanning proved most effective for complete circumferential defect mapping, while a combination of bright field microscopy and functional tests was deemed more practical for production environments. The findings provide a technical foundation for subsequent optimization of SW process parameters to reduce or eliminate defect occurrence."
+   },
+   {
+    "id": "https://openalex.org/W7113030893",
+    "doi": null,
+    "title": "Využití umělé inteligence v rámci koncepce Průmyslu 4.0",
+    "year": 2024,
+    "cited": 0,
+    "venue": "DSpace VŠB-TUO (VŠB-TUO)",
+    "topics": [
+     "Transport and Logistics Innovations",
+     "Mechanical and Thermal Properties Analysis",
+     "Digital Transformation in Industry"
+    ],
+    "oa_url": "https://dspace.vsb.cz/bitstreams/cc350bb2-f5b6-41db-aef3-62b17844bb37/download",
+    "abstract": "Předkládaná disertační práce “ VYUŽITÍ UMĚLÉ INTELIGENCE V RÁMCI KONCEPCE PRŮMYSLU 4.0“ je zaměřena na vývoj a testování metodiky možnosti využití neuronových sítí v oblasti testování kvality výrobků z pohledu jejich těsnosti při využití testovací metody vzduch-vzduch (test těsnosti, kde testovací médium je vzduch) při rozdílné teplotě okolí a testovaného výrobku. Primární využití této metodiky je průmyslová výroba v mnoha oblastech, především automobilový průmysl a další oblasti, kde je kladen důraz na těsnost daných výrobků. Navržená metodika je testována na vzorovém výrobku, u něhož je navozen stav předchozí tepelné operace s následným krokem měření těsnosti. Naměřená data jsou následně využita jako trénovací množina navržené neuronové sítě. Výsledky potvrdily předpoklad, že neuronové sítě je možné využít i v oblasti testování těsnosti v automatizovaném prostředí různých druhů průmyslu. Práce má charakter aplikačně-základního výzkumu, kdy získané výsledky a postupy bude možné aplikovat v provozním prostředí testování kvality za pomoci testů těsnosti. Výsledky práce dále ukazují, že vhodně zvolené nástroje umělé inteligence lze využít v mnoha oblastech, kde je možno nasbírat dostatečné množství dat."
+   },
+   {
+    "id": "https://openalex.org/W2645107350",
+    "doi": null,
+    "title": "Řízení funkcí kvality a trasování v procesu výroby nádrží pro brzdovou kapalinu",
+    "year": 2017,
+    "cited": 0,
+    "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
+    "topics": [
+     "Law, logistics, and international trade"
+    ],
+    "oa_url": "http://hdl.handle.net/11012/65048",
+    "abstract": "Předmětem této diplomové práce je teoretický popis řízení kvality a trasování v diskrétní výrobě, jeho využití k vytvoření koncepce řízení, specifikace použitého hardwaru, popis komunikace mezi periferiemi a PLC a tvorbě řídicího softwaru pro PLC za účelem kontrolování a značení nádrží pro brzdovou kapalinu. Poslední částí této práce je implementace vytvořených algoritmů do reálného zařízení a následné zprovoznění celé linky."
+   },
+   {
+    "id": "https://openalex.org/W2499678208",
+    "doi": null,
+    "title": "Indukční pájení trubkových rozvodů z vysokolegovaných ocelí",
+    "year": 2015,
+    "cited": 0,
+    "venue": "DSpace VŠB-TUO (VŠB-TUO)",
+    "topics": [
+     "Induction Heating and Inverter Technology",
+     "Economic and Fiscal Studies"
+    ],
+    "oa_url": "http://hdl.handle.net/10084/109531",
+    "abstract": "This thesis deals with the induction soldering pipes from high-alloy steels .The first theoretical part describes basic informations about pipe from high-alloy steel.The next chapter is focused on defects that arise during induction soldering .Next part describes soldering, fluxes, characteristic of induction soldering and influence parameters on the creation of perfect join.There are also analyzed solder based on copper and devices used for induction soldering .The experimental section describes induction soldering in the company EFD Induction, experiments of induction soldering pipes from high-alloy steel made in ZKL Hanušovice and the choice of device for induction soldering .In the following part of the thesis are summarized operations after induction soldering.The end of the thesis evaluates achieved results."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"ATEQ F620\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC12157752",
+    "doi": "10.3390/s25113272",
+    "title": "Combining Infrared Thermography with Computer Vision Towards Automatic Detection and Localization of Air Leaks.",
+    "journal": "Sensors (Basel)",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC12157752",
+   "title": "Combining Infrared Thermography with Computer Vision Towards Automatic Detection and Localization of Air Leaks.",
+   "year": "2025",
+   "text": ". In this regard, the present study aims to address these limitations by proposing a solution suited to the constraints and dimensions of EOL testing environments. 3. Proposed Methodology 3.1. Thermal Image Acquisition Setup The experimental setup employed for thermal image acquisition, shown in Figure 1 a, consisted of (1) a universal leak tester ATEQ F620 using differential sensor pressure testing for evaluation of each circuit’s airtightness (ATEQ, Les Clayes-sous-Bois, France); (2) an IR camera Fluke TiX580 with a thermal sensitivity of ≤0.05 °C at 30 °C and spatial resolution of 0.93 mRad (Fluke Corporation, Everett, WA, USA); and (3) a closed hydraulic circuit (provided by Bosch Thermotechnolog",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "density_porosity": 1,
+  "electrical_transport": 1,
+  "leak_rate": 1,
+  "tensile": 1,
+  "thermography": 1
+ }
+}

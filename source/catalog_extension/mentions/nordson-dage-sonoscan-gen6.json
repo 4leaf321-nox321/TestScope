@@ -1,0 +1,31 @@
+{
+ "object": "nordson-dage-sonoscan-gen6",
+ "manufacturer": "nordson-dage",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "JESD204B": 2,
+  "MIL-STD-883": 1,
+  "MIL-STD-1580": 1
+ },
+ "standards_new": [
+  "JESD204B",
+  "MIL-STD-1580",
+  "MIL-STD-883"
+ ],
+ "test_item_hits": {
+  "microscopy": 19,
+  "density_porosity": 7,
+  "electrical_transport": 4,
+  "compression": 1,
+  "scratch_pencil_hardness": 1,
+  "surface_topography": 1,
+  "tensile": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "The 230 MHz transducer cannot be used for thru scanning.",
+  "Potential applications include: Microcracks Fine bonding structures Small interconnects Advanced 3D integration structures TSV-related defects Resolution can approach the micrometer range under suitable conditions.",
+  "dated and recognized tool for non-destructive quality control, inspection and failure analysis in microelectronics components and materials, which is routinely used for the inspection of plastic encapsulated integrated circuits amongst other systems (see Figure 1)."
+ ]
+}

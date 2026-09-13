@@ -1,0 +1,316 @@
+{
+ "object": "instron-6800-series",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron 6800",
+  "Instron 68SC-05",
+  "Instron 68SC-1",
+  "Instron 68SC-2",
+  "Instron 68SC-5",
+  "Instron 68TM-5"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron 6800\" OR \"Instron 68SC-05\" OR \"Instron 68SC-1\" OR \"Instron 68SC-2\" OR \"Instron 68SC-5\" OR \"Instron 68TM-5\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron 6800\" OR \"Instron 68SC-05\" OR \"Instron 68SC-1\" OR \"Instron 68SC-2\" OR \"Instron 68SC-5\" OR \"Instron 68TM-5\") AND OPEN_ACCESS:y",
+  "count": 117,
+  "papers": [
+   {
+    "pmcid": "PMC10113367",
+    "doi": "10.1038/s41467-023-37948-1",
+    "title": "Highly conductive tissue-like hydrogel interface through template-directed assembly.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 144,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7988348",
+    "doi": "10.1016/j.bioactmat.2021.03.023",
+    "title": "Chinese herb microneedle patch for wound healing.",
+    "journal": "Bioact Mater",
+    "year": "2021",
+    "cited": 124,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10576757",
+    "doi": "10.1038/s41467-023-42149-x",
+    "title": "Stretchable surface electromyography electrode array patch for tendon location and muscle injury prevention.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 63,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11186784",
+    "doi": "10.1038/s41565-024-01635-z",
+    "title": "Machine intelligence-accelerated discovery of all-natural plastic substitutes.",
+    "journal": "Nat Nanotechnol",
+    "year": "2024",
+    "cited": 41,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D6413",
+     "ISO 10993",
+     "SSZ-13"
+    ]
+   },
+   {
+    "pmcid": "PMC8519564",
+    "doi": "10.1126/sciadv.abf7435",
+    "title": "Accelerated discovery of 3D printing materials using data-driven multiobjective optimization.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 38,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D638",
+     "IEEE 104"
+    ]
+   },
+   {
+    "pmcid": "PMC9401630",
+    "doi": "10.1126/sciadv.abo2418",
+    "title": "A wearable textile-based pneumatic energy harvesting system for assistive robotics.",
+    "journal": "Sci Adv",
+    "year": "2022",
+    "cited": 37,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10415788",
+    "doi": "10.1016/j.mtbio.2023.100752",
+    "title": "Rapidly <i>in situ</i> forming an injectable Chitosan/PEG hydrogel for intervertebral disc repair.",
+    "journal": "Mater Today Bio",
+    "year": "2023",
+    "cited": 32,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11837898",
+    "doi": "10.1002/adma.202416916",
+    "title": "A Universal Strategy to Mitigate Microphase Separation via Cellulose Nanocrystal Hydration in Fabricating Strong, Tough, and Fatigue-Resistant Hydrogels.",
+    "journal": "Adv Mater",
+    "year": "2025",
+    "cited": 30,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10439188",
+    "doi": "10.1038/s41467-023-40791-z",
+    "title": "Toughening self-healing elastomer crosslinked by metal-ligand coordination through mixed counter anion dynamics.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 30
+   },
+   {
+    "pmcid": "PMC9376816",
+    "doi": "10.1002/advs.202201248",
+    "title": "The Nucleus Bypasses Obstacles by Deforming Like a Drop with Surface Tension Mediated by Lamin A/C.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 29
+   },
+   {
+    "pmcid": "PMC11554781",
+    "doi": "10.1038/s41467-024-53957-0",
+    "title": "Self-healing electronic skin with high fracture strength and toughness.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 26
+   },
+   {
+    "pmcid": "PMC11001992",
+    "doi": "10.1038/s41467-024-47382-6",
+    "title": "Closed-loop recycling of sulfur-rich polymers with tunable properties spanning thermoplastics, elastomers, and vitrimers.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 22
+   },
+   {
+    "pmcid": "PMC11306227",
+    "doi": "10.1038/s41467-024-51002-8",
+    "title": "Ultrastrong, flexible thermogalvanic armor with a Carnot-relative efficiency over 8.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC11150462",
+    "doi": "10.1038/s41598-024-63186-6",
+    "title": "Tannic acid modified keratin/sodium alginate/carboxymethyl chitosan biocomposite hydrogels with good mechanical properties and swelling behavior.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC8871095",
+    "doi": "10.3390/gels8020092",
+    "title": "Soft Stretchable Conductive Carboxymethylcellulose Hydrogels for Wearable Sensors.",
+    "journal": "Gels",
+    "year": "2022",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC12097077",
+    "doi": "10.1002/advs.202414834",
+    "title": "Photopatternable PEDOT:PSS Hydrogels for High-Resolution Photolithography.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2025",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC11695866",
+    "doi": "10.1038/s41467-024-55323-6",
+    "title": "Multimaterial cryogenic printing of three-dimensional soft hydrogel machines.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC11615400",
+    "doi": "10.1038/s41467-024-53955-2",
+    "title": "Self-healing actuatable electroluminescent fibres.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC11578180",
+    "doi": "10.1126/sciadv.adp8260",
+    "title": "Stiffness-tunable velvet worm-inspired soft adhesive robot.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC11144242",
+    "doi": "10.1038/s41467-024-49011-8",
+    "title": "Machine intelligence accelerated design of conductive MXene aerogels with programmable properties.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC12391417",
+    "doi": "10.1038/s41467-025-63512-0",
+    "title": "Emergence of lignin-carbohydrate interactions during plant stem maturation visualized by solid-state NMR.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC11409942",
+    "doi": "10.1126/sciadv.adq3801",
+    "title": "Mechanochemically accelerated deconstruction of chemically recyclable plastics.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC12827264",
+    "doi": "10.1038/s41467-025-67580-0",
+    "title": "A bio-adaptive physical hydrogel enables dynamic tissue engineering for tracheal reconstruction.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC11601196",
+    "doi": "10.1126/sciadv.adq3080",
+    "title": "A universal strategy for decoupling stiffness and extensibility of polymer networks.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC11290974",
+    "doi": "10.1172/jci170369",
+    "title": "The IFITM5 mutation in osteogenesis imperfecta type V is associated with an ERK/SOX9-dependent osteoprogenitor differentiation defect.",
+    "journal": "J Clin Invest",
+    "year": "2024",
+    "cited": 12
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10113367",
+   "title": "Highly conductive tissue-like hydrogel interface through template-directed assembly.",
+   "year": "2023",
+   "text": "ylic acid monomers were changed to acrylamide monomers. T-ECA T-ECA was made by activating the adhesion layer at the surface of T-ECH. An aqueous mixture of EDC (15 mg/mL) and NHS (23 mg/mL) was dropped on T-ECH to make T-ECA. Mechanical characterization Tensile, compression, and fracture tests were measured with a universal testing machine (UTM) (Instron 68SC-1). Samples with dimensions of 5 × 10 mm (width × length), and 6 × 2 mm (radius × thickness) were measured for the tensile test and compression test, respectively. Strain rates for the tensile test and compression test were 50%/min and 0.2%/min. For the measurements of fracture toughness, samples of width 30 mm and length 10 mm were notched and stre",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10113367",
+   "title": "Highly conductive tissue-like hydrogel interface through template-directed assembly.",
+   "year": "2023",
+   "text": "images were obtained using X-ray Micro Computed Tomography (SkyScan 1272, Bruker). Adhesion tests All samples were prepared with a width of 2 cm and attached to PET backing using Krazy glue. Pig skin, artery, kidney, heart, and liver tissues were purchased from the local store. Adhesion tests were performed with a universal testing machine (UTM) (Instron 68SC-1). 180 °C peeling test and shear test were done with a strain rate of 50 mm/min. Interfacial toughness was obtained by dividing the force by the width of the sample. Shear stress was determined by dividing force by the attached area. For the gold adhesion test, the gold substrate was functionalized with amine groups. First, the gold substrate was c",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7988348",
+   "title": "Chinese herb microneedle patch for wound healing.",
+   "year": "2021",
+   "text": "perimental operations involved in animals were reviewed and approved by the Animal Investigation Ethics Committee of Jinling Hospital. 2.2. Characterization A microscopy (Olympus SZX-16) equipped with a CCD (BioHD-D198) was utilized to capture optical images of CHMN patch. Compression strength of the gels were measured by Universal Testing System (Instron, 68SC-2). SEM images were taken by a scanning electron microscope (SEM, Hitachi SU8010). The UV absorbance was measured by a UV–vis spectrophotometer (Agilent, Cary 5000). Fluorescence images of bacterial and cell staining were captured by a laser scanning confocal microscope (Nikon, A1). 2.3. Preparation of plant ash A preparation method of pure plant or",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10576757",
+   "title": "Stretchable surface electromyography electrode array patch for tendon location and muscle injury prevention.",
+   "year": "2023",
+   "text": "of the strain and 1 Hz frequency. The topography of PEDOT-PVA film was characterized by SEM (ZEISS Merlin, Germany) and AFM (MFP-3D Stand Alone, Asylum Research, USA). For the cross-sectional SEM images, TPP films were freeze-dried overnight followed by quenching in liquid nitrogen. The tensile testing was performed by a universal testing system (Instron 68TM-5, USA), size of PEDOT-PVA and TPP films was 30 mm long and 10 mm wide. The stroke speed of the measurement was 0.5 mm min −1 . The peeling force measurement was conducted on the forearm. Before the measurement, the forearm skin was cleaned with a mixed solution of deionized water and ethanol. The TPP films were made 20 mm wide and 20 mm long. Durin",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11186784",
+   "title": "Machine intelligence-accelerated discovery of all-natural plastic substitutes.",
+   "year": "2024",
+   "text": "600 °C o 850 °C) 60 . The fire resistance of the all-natural nanocomposites was quantified in terms of RR . Three replicates were conducted, and the average RR values were recorded as the fire labels. Mechanical property characterization The stress–strain curves of the all-natural nanocomposites were determined using a mechanical testing machine (Instron 68SC-05) fitted with a 500-N load cell. After calibrating the load cell, the all-natural nanocomposites were cut into 3 cm × 1 cm stripes and subject to a tensile test at an extension rate of 0.02 mm s −1 . The tensile tests started with an initial fixture gap of 2 cm. Three replicates were conducted for each all-natural nanocomposites. Materials characte",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8519564",
+   "title": "Accelerated discovery of 3D printing materials using data-driven multiobjective optimization.",
+   "year": "2021",
+   "text": "perties, using the smallest possible dog bone (standard V) allowed in the documentation. This provided for a dog bone of 63.5 mm by 9.5 mm and an overall volume of approximately 1580 mm 3 . While useful for initial testing and verification of our method against material data, these samples require precise positioning in a universal testing system (Instron, 68SC-1) taking approximately 3 min per replicate and 12 min per sample to complete testing. An alternative testing methodology is desired to increase throughput and reduce material requirements. Compression testing ( 44 ) circumvents the precision positioning step required in tensile testing, reducing testing time. In addition, the sample size has been s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9401630",
+   "title": "A wearable textile-based pneumatic energy harvesting system for assistive robotics.",
+   "year": "2022",
+   "text": "ve contact area; furthermore, the polyurethane foam behaves as a nonlinear spring, and its reaction force diverges upon approaching maximum deformation. The change in gas volume and the restoring force from the foam were both measured as a function of vertical displacement through simulated compression of the EHD using a universal testing machine (Instron 68SC-2); the internal volume of the EHD was approximated using a quadratic polynomial fit (fig. S4), whereas the foam reaction force showed good conformance to a neo-Hookean–type force function (fig. S6). We developed a time-stepping routine that solves the nonlinear force balance equation numerically to capture the temporal evolution of system parameter",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10415788",
+   "title": "Rapidly <i>in situ</i> forming an injectable Chitosan/PEG hydrogel for intervertebral disc repair.",
+   "year": "2023",
+   "text": "86.6 eV) with a beam spot at 400 μm and the take-off of the photoelectron was set as 90°. The binding energy was calibrated by C1s 284.8 eV. In SEM (Regulus 800, Japan), all lyophilized hydrogels were coated by a thin film of gold before morphology images capture. Compressive strength on hydrogel samples were carried on mechanical testing machine (Instron 68TM-5, USA) at a speed of 2 mm/min under a 50 N sensor. Rheology property for Schiff base cross-link group hydrogels (CSMA-PEGDA) were performed on rheometer (HAAKE MARS III, Thermo Fisher) with time sweep test model under a fixed strain of 5% at 25 °C. UV–vis spectrophotometer (UV-2600, SHIMADZU) was used to confirm the successful synthesis of PEGDA in",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 7,
+  "compression": 6,
+  "microscopy": 2,
+  "peel": 2,
+  "shear": 2,
+  "fracture_toughness": 1,
+  "optical_spectroscopy": 1
+ }
+}

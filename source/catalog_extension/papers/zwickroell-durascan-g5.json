@@ -1,0 +1,49 @@
+{
+ "object": "zwickroell-durascan-g5",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell DuraScan G5",
+  "ZwickRoell DuraScan",
+  "ZwickRoell G5",
+  "ZwickRoell DuraScan 10 G5",
+  "ZwickRoell DuraScan 20 G5"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell DuraScan G5\" OR \"ZwickRoell DuraScan\" OR \"ZwickRoell G5\" OR \"ZwickRoell DuraScan 10 G5\" OR \"ZwickRoell DuraScan 20 G5\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell DuraScan G5\" OR \"ZwickRoell DuraScan\" OR \"ZwickRoell G5\" OR \"ZwickRoell DuraScan 10 G5\" OR \"ZwickRoell DuraScan 20 G5\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC11395842",
+    "doi": "10.3390/ma17174328",
+    "title": "Effect of Deposition Parameters on Micromechanical Properties and Machining Performance of CrN Coating for Wet Finish Turning of Ti6Al4V Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM B265"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC11395842",
+   "title": "Effect of Deposition Parameters on Micromechanical Properties and Machining Performance of CrN Coating for Wet Finish Turning of Ti6Al4V Alloy.",
+   "year": "2024",
+   "text": "nton Paar-TRB3 Pin-on-Disk tribometer (Anton Paar, Baden, Switzerland) was used to measure the coefficient of friction of the coatings. Tests were performed with a 6 mm alumina ball under a normal load of 20 N, covering a total distance of 250 m, with an amplitude of 4 mm, and a frequency of 8 Hz. The toughness of the coatings was measured using a ZwickRoell Durascan 50 G5 (ZwickRoell, Ulm, Germany) with an applied load of 5 kg. Toughness values were calculated based on the load and the total crack lengths, measured from the crack tip to the corner of each indent. A Bruker D8-Discover equipped with a 2D detector VAATEC-500 (Bruker, Billerica, MA, USA) was used to investigate the phase composition and crystal s",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "friction_coefficient": 1
+ }
+}

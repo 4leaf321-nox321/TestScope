@@ -1,0 +1,98 @@
+{
+ "object": "lansmont-pdt-drop-testers",
+ "manufacturer": "lansmont",
+ "phrases": [
+  "Lansmont PDT",
+  "Lansmont PDT-80",
+  "Lansmont PDT-80M",
+  "Lansmont PDT-56ED"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Lansmont PDT\" OR \"Lansmont PDT-80\" OR \"Lansmont PDT-80M\" OR \"Lansmont PDT-56ED\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Lansmont PDT\" OR \"Lansmont PDT-80\" OR \"Lansmont PDT-80M\" OR \"Lansmont PDT-56ED\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC8509514",
+    "doi": "10.3390/ma14195500",
+    "title": "Screen Printed Antennas on Fiber-Based Substrates for Sustainable HF RFID Assisted E-Fulfilment Smart Packaging.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 11,
+    "snippets": 2,
+    "standards_in_paper": [
+     "ASTM D4169",
+     "ASTM D4169-16",
+     "ASTM D419",
+     "ASTM D5276",
+     "ISO 12048",
+     "ISO 14443",
+     "ISO 187",
+     "ISO 3034",
+     "ISO 3036",
+     "ISO 3037",
+     "ISO 5636-3"
+    ]
+   },
+   {
+    "pmcid": "PMC8472570",
+    "doi": "10.3390/foods10091980",
+    "title": "Susceptibility of Impact Damage to Whole Apples Packaged Inside Molded Fiber and Expanded Polystyrene Trays.",
+    "journal": "Foods",
+    "year": "2021",
+    "cited": 4,
+    "snippets": 2,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8509514",
+   "title": "Screen Printed Antennas on Fiber-Based Substrates for Sustainable HF RFID Assisted E-Fulfilment Smart Packaging.",
+   "year": "2021",
+   "text": "based on distribution cycle 13 (DC 13) (air (intercity) and motor freight (local single package up to 61.8 kg)), resulting in the following specially defined distribution cycle, user specified (DC 2), assurance level II (moderate risk) and box mass lower than 9.1 kg: Manual handling (schedule A): drop test from 381 mm height (ASTM D5276) using the Lansmont PDT 80 Precision Drop Tester (Monterey, CA, USA); Vehicle stacking (schedule C): calculation of maximum package’s load without collapsing using the TechLab Systems VAL100 compression device (Lezo, Spain); Loose-load vibration (schedule F): determination whether the package can withstand repetitive shocks using the Lansmont Vibration Test System 10000",
+   "standards": [
+    "ASTM D5276"
+   ]
+  },
+  {
+   "pmcid": "PMC8509514",
+   "title": "Screen Printed Antennas on Fiber-Based Substrates for Sustainable HF RFID Assisted E-Fulfilment Smart Packaging.",
+   "year": "2021",
+   "text": "er the package can withstand repetitive shocks using the Lansmont Vibration Test System 10000 (Monterey, CA, USA); Vehicle vibration (schedule E): simulation of 1 h truck-and 2 h air transport using the Lansmont Vibration Test System 10000; Manual handling (schedule A): drop test from 381 mm height, except bottom side from 762 mm height, using the Lansmont PDT 80 Precision Drop Tester. 3. Results and Discussion 3.1. Selection of Fiber-Based Substrates Based on Printability and Ink Compatibility The electrical performance of printed electronics on fiber-based substrates highly depends on inherent paper characteristics such as surface roughness, air permeance (i.e., absorption behavior), surface energy, t",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8472570",
+   "title": "Susceptibility of Impact Damage to Whole Apples Packaged Inside Molded Fiber and Expanded Polystyrene Trays.",
+   "year": "2021",
+   "text": "0.05 kg and 18.31 ± 0.17 kg for the containers with MF and EPS trays, respectively. The apples were carefully inspected and arranged in the trays with the flower stalk axis horizontal and running parallel with the molded pockets of the trays ( Figure 1 ). Figure 1 Arrangement of apples in molded pockets prior to testing. 2.3. Free-Fall Drop Test A Lansmont Model PDT 227 Precision Drop Tester (Lansmont Corporation, Monterey, CA, USA) was used to perform the free-fall drop events ( Figure 2 ). Impact bruises were produced by dropping each corrugated container five times from a predetermined drop height onto the concrete floor surface of the drop test equipment. In this study, the packages were dropped onto the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8472570",
+   "title": "Susceptibility of Impact Damage to Whole Apples Packaged Inside Molded Fiber and Expanded Polystyrene Trays.",
+   "year": "2021",
+   "text": "from a predetermined drop height onto the concrete floor surface of the drop test equipment. In this study, the packages were dropped onto the bottom panel of the package from two drop heights, 30 cm and 50 cm. The testing was performed in duplicate for each package configuration at the two different drop heights. Figure 2 Packaged product on the Lansmont PDT 227. To record the impact acceleration of the apple from the free-fall drop event, a model HT356B21 triaxial accelerometer (PCB Piezotronics, Inc., Depew, NY, USA) was attached to the apple located in the corner cell of the top tray. The sensor was placed in this position to ensure it would not shear off during the impacts with surrounding apples.",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ASTM D5276": 1
+ },
+ "standards_new": [],
+ "test_item_hits": {
+  "free_fall_drop": 3,
+  "compression": 1,
+  "contact_angle": 1,
+  "microscopy": 1,
+  "shear": 1,
+  "surface_topography": 1
+ }
+}

@@ -1,0 +1,306 @@
+{
+ "object": "netzsch-sta-449",
+ "manufacturer": "netzsch",
+ "phrases": [
+  "NETZSCH STA 449",
+  "NETZSCH STA",
+  "NETZSCH F1",
+  "NETZSCH F3",
+  "NETZSCH STA 449 F1",
+  "NETZSCH STA 449 F3"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"NETZSCH STA 449\" OR \"NETZSCH STA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH STA 449 F1\" OR \"NETZSCH STA 449 F3\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"NETZSCH STA 449\" OR \"NETZSCH STA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH STA 449 F1\" OR \"NETZSCH STA 449 F3\") AND OPEN_ACCESS:y",
+  "count": 2933,
+  "papers": [
+   {
+    "pmcid": "PMC4598836",
+    "doi": "10.1038/ncomms9485",
+    "title": "Entropy-stabilized oxides.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 536,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4598847",
+    "doi": "10.1038/ncomms9508",
+    "title": "A tunable azine covalent organic framework platform for visible light-induced hydrogen generation.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 519,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5581336",
+    "doi": "10.1038/s41467-017-00467-x",
+    "title": "Rechargeable aqueous zinc-manganese dioxide batteries with high energy and power densities.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 492,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5337987",
+    "doi": "10.1038/ncomms14627",
+    "title": "Conductive porous vanadium nitride/graphene composite as chemical anchor of polysulfides for lithium-sulfur batteries.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 326,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5765169",
+    "doi": "10.1038/s41467-017-02529-6",
+    "title": "MXene molecular sieving membranes for highly efficient gas separation.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 325,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5805684",
+    "doi": "10.1038/s41467-018-02889-7",
+    "title": "Boosting lithium storage in covalent organic framework via activation of 14-electron redox chemistry.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 222,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC3975220",
+    "doi": "10.1038/srep04596",
+    "title": "Effect of aspect ratio and surface defects on the photocatalytic activity of ZnO nanorods.",
+    "journal": "Sci Rep",
+    "year": "2014",
+    "cited": 207,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4560802",
+    "doi": "10.1038/ncomms9079",
+    "title": "Hybrid glasses from strong and fragile metal-organic framework liquids.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 190,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5677036",
+    "doi": "10.1038/s41467-017-01208-w",
+    "title": "A mesoporous cationic thorium-organic framework that rapidly traps anionic persistent organic pollutants.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 177
+   },
+   {
+    "pmcid": "PMC6954217",
+    "doi": "10.1038/s41467-019-13739-5",
+    "title": "Nitrogen-rich covalent organic frameworks with multiple carbonyls for high-performance sodium batteries.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 173
+   },
+   {
+    "pmcid": "PMC5762692",
+    "doi": "10.1038/s41467-017-02479-z",
+    "title": "Green synthesis of graphene oxide by seconds timescale water electrolytic oxidation.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 173
+   },
+   {
+    "pmcid": "PMC5844704",
+    "doi": "10.1126/sciadv.aao6827",
+    "title": "A metal-organic framework with ultrahigh glass-forming ability.",
+    "journal": "Sci Adv",
+    "year": "2018",
+    "cited": 166
+   },
+   {
+    "pmcid": "PMC4468846",
+    "doi": "10.1038/ncomms8345",
+    "title": "Phase and composition controllable synthesis of cobalt manganese spinel nanoparticles towards efficient oxygen electrocatalysis.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 160
+   },
+   {
+    "pmcid": "PMC9970987",
+    "doi": "10.1038/s41467-023-36710-x",
+    "title": "Tuning excited state electronic structure and charge transport in covalent organic frameworks for enhanced photocatalytic performance.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 156
+   },
+   {
+    "pmcid": "PMC5663901",
+    "doi": "10.1038/s41467-017-01166-3",
+    "title": "Carbon dioxide capture and conversion by an acid-base resistant metal-organic framework.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 141
+   },
+   {
+    "pmcid": "PMC6070552",
+    "doi": "10.1038/s41467-018-05380-5",
+    "title": "<sup>99</sup>TcO<sub>4</sub><sup>-</sup> remediation by a cationic polymeric network.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 138
+   },
+   {
+    "pmcid": "PMC6335431",
+    "doi": "10.1038/s41467-018-08234-2",
+    "title": "Cascade enzymes within self-assembled hybrid nanogel mimicked neutrophil lysosomes for singlet oxygen elevated cancer therapy.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 128
+   },
+   {
+    "pmcid": "PMC10289644",
+    "doi": "10.1126/sciadv.adh1718",
+    "title": "IrO<i><sub>x</sub></i>·<i>n</i>H<sub>2</sub>O with lattice water-assisted oxygen exchange for high-performance proton exchange membrane water electrolyzers.",
+    "journal": "Sci Adv",
+    "year": "2023",
+    "cited": 127
+   },
+   {
+    "pmcid": "PMC4762543",
+    "doi": "10.1021/nn5000223",
+    "title": "Oriented thin films of a benzodithiophene covalent organic framework.",
+    "journal": "ACS Nano",
+    "year": "2014",
+    "cited": 120
+   },
+   {
+    "pmcid": "PMC6137161",
+    "doi": "10.1038/s41467-018-06126-z",
+    "title": "Lithiophilic-lithiophobic gradient interfacial layer for a highly stable lithium metal anode.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 119
+   },
+   {
+    "pmcid": "PMC7943776",
+    "doi": "10.1038/s41467-021-21805-0",
+    "title": "Crystallization of CsPbBr<sub>3</sub> single crystals in water for X-ray detection.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 116
+   },
+   {
+    "pmcid": "PMC6262007",
+    "doi": "10.1038/s41467-018-07532-z",
+    "title": "Metal-organic framework glasses with permanent accessible porosity.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 115
+   },
+   {
+    "pmcid": "PMC10224959",
+    "doi": "10.1038/s41467-023-38460-2",
+    "title": "Enabling selective zinc-ion intercalation by a eutectic electrolyte for practical anodeless zinc batteries.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 111
+   },
+   {
+    "pmcid": "PMC10115636",
+    "doi": "10.1038/s41586-023-05840-z",
+    "title": "Ultrafiltration separation of Am(VI)-polyoxometalate from lanthanides.",
+    "journal": "Nature",
+    "year": "2023",
+    "cited": 111
+   },
+   {
+    "pmcid": "PMC3665957",
+    "doi": "10.1038/srep01919",
+    "title": "Rice husks as a sustainable source of nanostructured silicon for high performance Li-ion battery anodes.",
+    "journal": "Sci Rep",
+    "year": "2013",
+    "cited": 110
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC4598836",
+   "title": "Entropy-stabilized oxides.",
+   "year": "2015",
+   "text": "ble divergence and receiving slits to ensure constant illumination area, a Ni filter, and a 1-D 256 element strip detector. The samples are placed in a resistively heated HTK-1200N hot stage in air. The samples are ramped at a constant rate of 5 °C min −1 with a theta–two theta pattern captured every 1.5 min. Calorimetry data are collected using a Netzsch STA 449 F1 Jupiter system in a Pt crucible at 5 °C min −1 in flowing air. Determining solvus lines Five series of powders are mixed where the amount of one constituent oxide is varied from the parent mixture E1. Supplementary Table 2 lists the full set of samples synthesized for this experiment. Each individual sample is cycled through a heat-soak-quench",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4598847",
+   "title": "A tunable azine covalent organic framework platform for visible light-induced hydrogen generation.",
+   "year": "2015",
+   "text": "images were obtained either by a VEGA TS 5130MM (TESCAN) or with a Zeiss Merlin with EsB (energy and angle selective BSE) and SE (secondary electron) detector. TEM was performed with a Philips CM30 ST (300 kV, LaB 6 cathode). The samples were suspended in n -butanol and drop-cast onto a lacey carbon film (Plano). TGA measurements were performed on NETZSCH STA 409 C/CD at a heating rate of 5 K min −1 under argon and in air. For XPS, samples were pressed onto indium foil and the spectra were collected on an Axis Ultra (Kratos Analytical, Manchester) X-ray photoelectron spectrometer with charge neutralization. The spectra were referenced with the adventitious carbon 1-s peak at 284.80 eV. Calculations Str",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5581336",
+   "title": "Rechargeable aqueous zinc-manganese dioxide batteries with high energy and power densities.",
+   "year": "2017",
+   "text": "beamline of Shanghai Synchrotron Radiation Facility and analyzed with software of Ifeffit Athena 62 . ICP-AES measurements were conducted on a PerkinElmer Optima 8300. XPS was tested on a Perkin Elmer PHI 1600 ESCA system. Raman spectra were obtained on confocal Thermo-Fisher Scientific DXR microscope using 532 nm excitation. TGA was measured by a Netzsch STA 449 F3 Jupiter analyzer. Electrochemical test Electrochemical performance was tested using CR2032 coin-type cells. The working electrode was fabricated by blending MnO 2 powder, Super P carbon and polyvinylidene fluoride in a weight ratio of 8:1:1 using N -methyl-2-pyrrolidone as solvent. The obtained slurry was pasted onto a Ti foil and vacuum-dried",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5337987",
+   "title": "Conductive porous vanadium nitride/graphene composite as chemical anchor of polysulfides for lithium-sulfur batteries.",
+   "year": "2017",
+   "text": "ay spectroscopy (EDX) elemental maps were obtained on a FEI Tecnai F20 microscope equipped with an Oxford EDX analysis system with an acceleration voltage of 200 kV. X-ray diffraction patterns were obtained on a Rigaku diffractometer (Cu K α , λ =0.154056, nm). Thermogravimetric-differential scanning calorimetry analysis (TGA) was performed with a NETZSCH STA 449 C thermo balance in air with a heating rate of 10 °C min −1 from room temperature to 1,000 °C. The X-ray photoelectron spectroscopy measurements were carried out in an ultra-high vacuum ESCALAB 250 set-up equipped with a monochromatic Al Kα X-ray source (1486.6 eV; anode operating at 15 kV and 20 mA). Ultraviolet/visible absorption spectroscopy an",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5765169",
+   "title": "MXene molecular sieving membranes for highly efficient gas separation.",
+   "year": "2018",
+   "text": "ange of 400–4000 cm −1 . The XPS analysis was performed using an ESCALAB 250 spectrometer (Thermo Fisher Scientific) with monochromated Al-Kα radiation (1486.6 eV) under a pressure of 2 × 10 −9 Torr. The AFM images were obtained using a Bruker Multi Mode 8 scanning probe microscope (SPM, VEECO) in tapping mode. The TG measurement was analyzed on a Netzsch STA 449F3 instrument under the flow of N 2 . The adsorption isotherms of H 2 , CO 2 , N 2 , and CH 4 on the MXene membranes were measured using a Micromeritics (ASAP 2460) instrument. The mechanical tests were performed using an Instron-5565 universal testing machine (USA). Gas permeation measurements All the gas permeation measurements were conducted",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5805684",
+   "title": "Boosting lithium storage in covalent organic framework via activation of 14-electron redox chemistry.",
+   "year": "2018",
+   "text": "ed spectrometer measurements Fourier transform-infrared spectra were collected on a FTIR spectrophotometer (BIO-RAD FTS 135). X-ray diffraction Powder XRD patterns were collected on Rigaku D/max-2550V (CuK α radiation). Thermal gravimetric analyzer measurements Thermogravimetric analysis was characterized in air at a ramp rate of 10 °C min −1 on a NETZSCH STA 409 PG/PC instrument. BET measurements The BET surface area and pore size distributions were measured on an accelerated surface area and porosimetry analyzer (Micromeritics, ASAP 2020M+C, N 2 ). X-ray photoelectron spectroscopy The elemental valences of the products were characterized by XPS (PHI ESCA-5000C). Field-emission scanning electron micro",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC3975220",
+   "title": "Effect of aspect ratio and surface defects on the photocatalytic activity of ZnO nanorods.",
+   "year": "2014",
+   "text": "electron microscopy (FESEM) images were taken using Hitachi S-4700. Transmission electron microscopy (TEM) images were acquired with a JEM-2010 operated at 200 kV at Yanshan University. The samples were prepared by drop casting a sample dispersed in ethanol on carbon coated Cu-grids and dried in a vacuum. The thermal analysis was carried out using NETZSCH STA 409 simultaneous thermal analyzer and the photocatalytic activity was measured by Perkin-Elmer UV-vis spectrometer. X-ray photoelectron spectra (XPS) of the samples were recorded on XPS ESCA Thermo Fischer Scientific Multilab 2000 using monochromatic Al Kα radiation. Binding energies were corrected with respect to graphitic carbon at 284.6 eV. The",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4560802",
+   "title": "Hybrid glasses from strong and fragile metal-organic framework liquids.",
+   "year": "2015",
+   "text": "ntary Fig. 2 . SAXS profiles were fitted to Lorentzian line shapes, , with the correlation length ξ increasing from ∼220 to ∼840 Å from the edge to the peak ( Fig. 2a ). Additional measurements accompanied by a detailed analysis will be given in a separate publication. The apparent isobaric heat capacity ( C p ) of each sample was measured using a Netzsch STA 449C DSC. The samples were placed in a platinum crucible situated on a sample holder of the DSC at room temperature and subjected to varying numbers of up- and down-scans, depending on the purpose of the measurements. After natural cooling to room temperature, the subsequent up-scans were performed using the same procedure as for the first. Powder",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 8,
+  "density_porosity": 2,
+  "dsc": 1,
+  "tga": 1
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "object": "csz-z-plus-chambers",
+ "manufacturer": "csz",
+ "phrases": [
+  "Cincinnati Sub-Zero Z-Plus Temperature",
+  "Cincinnati Sub-Zero Z-Plus",
+  "CSZ Z-Plus Temperature",
+  "CSZ Z-Plus"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Cincinnati Sub-Zero Z-Plus Temperature\" OR \"Cincinnati Sub-Zero Z-Plus\" OR \"CSZ Z-Plus Temperature\" OR \"CSZ Z-Plus\"",
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W4407559336",
+    "doi": "https://doi.org/10.3390/s25041160",
+    "title": "Experimental Investigation on Passive Survivability of Lithium-Ion Batteries Under Extremely Low Temperatures",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Sensors",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/25/4/1160/pdf?version=1739516191",
+    "abstract": "This paper presents an experimental study using an ultrasonic technique to investigate the impact of extremely low temperatures on the performance of lithium-ion batteries. Lithium-ion polymer batteries were aged in three low-temperature conditions: in a temperature chamber (-34 °C), in a dry ice bath (-78 °C), and in a liquid nitrogen bath (-196 °C). The battery aged in liquid nitrogen was damaged. The batteries aged in the chamber and dry ice bath were then subjected to charge and discharge cycles and simultaneously monitored using the ultrasonic technique. Three key ultrasonic parameters were measured, signal amplitude, time of flight (TOF), and TOF shift, using 5 MHz commercial ultrasonic transducers. These measurements were conducted alongside electrical measurements (voltage and current) to monitor the batteries throughout the testing cycles. The results showed that the aged batteries exhibited significantly lower ultrasonic amplitude compared to the control batteries. Additionally, as the cycle number increased, the TOF increased and the discharge capacity decreased. The TOF shift increased linearly with the discharge capacity. However, no clear correlation was observed between the slope of this linear relationship and the low-temperature aging history of the batteries. Overall, the ultrasonic amplitude proved to be a reliable parameter for differentiating the control and low-temperature aged batteries."
+   },
+   {
+    "id": "https://openalex.org/W4410064468",
+    "doi": "https://doi.org/10.5194/egusphere-2024-4019-rc1",
+    "title": "Comment on egusphere-2024-4019",
+    "year": 2025,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Earthquake Detection and Analysis",
+     "Ionosphere and magnetosphere dynamics"
+    ],
+    "oa_url": "https://egusphere.copernicus.org/preprints/2025/egusphere-2024-4019/egusphere-2024-4019.pdf",
+    "abstract": "Abstract. To improve the accuracy and precision of in situ water vapor measurements from aircraft, a new opto-mechanical design was implemented on the JPL Laser Hygrometer Mark2. The first JPL Laser Hygrometer (JLH Mark1), originally developed in mid-1990s, provided airborne in-situ water vapor measurements for 15 years from several platforms, including the NASA ER-2 and WB-57 aircraft. Due to heavy use over the years and aging of the instrument parts, many of the components in JLH Mark1 have been modified and replaced. This instrument paper reports the redesigned opto-mechanical structure of the instrument, new data retrieval algorithms, and updated data analysis procedures. These improvements are described in this paper, along with recent laboratory and field performance, and a comparison with other water vapor instruments. Key changes in the redesigned instrument have significantly improved the performance, as demonstrated during the NASA Studies of Emissions and Atmospheric Composition, Clouds and Climate Coupling by Regional Surveys (SEAC4RS) field mission and eight years of subsequent science flights on the Northrup Grumman Corporation Flying Test Bed (FTB)."
+   },
+   {
+    "id": "https://openalex.org/W4206394276",
+    "doi": "https://doi.org/10.32920/ryerson.14652480",
+    "title": "Salt Scaling of Pervious Concrete: Optimizing a Test Method and The Effects of Different Deicers",
+    "year": 2021,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Smart Materials for Construction",
+     "Urban Stormwater Management Solutions",
+     "Concrete Corrosion and Durability"
+    ],
+    "oa_url": "https://rshare.library.ryerson.ca/articles/thesis/Salt_Scaling_of_Pervious_Concrete_Optimizing_a_Test_Method_and_The_Effects_of_Different_Deicers/14652480/1/files/28134234.pdf",
+    "abstract": "There is currently no standard test method for evaluating the resistance of pervious concrete to salt scaling. In this study, a number of test methods were evaluated to determine an effective test method. A number of parameters were varied, including sample geometry, cycle length, level of submersion, and the effects of various deicers. The optimum cycle length was found to be 24 hours with the submersion of the bottom 10 mm of the pervious concrete samples made with 14 mm aggregate. Cylinder samples with a diameter of 100 mm and height of 150 mm are recommended as they provide consistent results. Using these samples, a mass loss failure criterion of 3 to 5% is proposed. The deicers that caused the most damage are NaCl, CaCl2, and urea, followed by MgCl2, K acetate, Na acetate, and CMA. More testing is needed to validate the effects of different deicers. i"
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Cincinnati Sub-Zero Z-Plus Temperature\" OR \"Cincinnati Sub-Zero Z-Plus\" OR \"CSZ Z-Plus Temperature\" OR \"CSZ Z-Plus\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC11859083",
+    "doi": "10.3390/s25041160",
+    "title": "Experimental Investigation on Passive Survivability of Lithium-Ion Batteries Under Extremely Low Temperatures.",
+    "journal": "Sensors (Basel)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC11859083",
+   "title": "Experimental Investigation on Passive Survivability of Lithium-Ion Batteries Under Extremely Low Temperatures.",
+   "year": "2025",
+   "text": "amber (group 1), a dry ice bath (group 2), and a liquid nitrogen bath (group 3). In each group, one battery was subjected to the temperature cycles, and one battery was stored at room temperature as a control sample. The test procedures for different conditioning groups are discussed in the following sections. 2.2.1. Group 1: Temperature Chamber A CSZ Z-Plus environmental test chamber was used to cycle the batteries between − 34 °C and + 34 °C. Two batteries (750 mAh and 1050 mAh) were conditioned for 50 cycles. Each cycle included four steps as follows: (1) a −34 °C temperature for 16 h; (2) a 15 min rest; (3) a +34 °C temperature for 8 h; (4) a 15 min rest. Figure 1 a shows the schematic temperature",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

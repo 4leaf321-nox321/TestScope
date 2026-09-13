@@ -1,0 +1,25 @@
+{
+ "object": "espec-tsb-liquid-thermal-shock",
+ "manufacturer": "espec",
+ "phrases": [
+  "ESPEC TSB-2 TSB-5",
+  "ESPEC TSB-2",
+  "ESPEC TSB-5",
+  "ESPEC TSB-20"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ESPEC TSB-2 TSB-5\" OR \"ESPEC TSB-2\" OR \"ESPEC TSB-5\" OR \"ESPEC TSB-20\"",
+  "count": 0,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ESPEC TSB-2 TSB-5\" OR \"ESPEC TSB-2\" OR \"ESPEC TSB-5\" OR \"ESPEC TSB-20\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

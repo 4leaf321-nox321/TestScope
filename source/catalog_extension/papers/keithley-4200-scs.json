@@ -1,0 +1,341 @@
+{
+ "object": "keithley-4200-scs",
+ "manufacturer": "keithley",
+ "phrases": [
+  "Keithley 4200-SCS 4200A-SCS",
+  "Keithley 4200-SCS",
+  "Keithley 4200A-SCS",
+  "Tektronix 4200-SCS 4200A-SCS",
+  "Tektronix 4200-SCS"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Keithley 4200-SCS 4200A-SCS\" OR \"Keithley 4200-SCS\" OR \"Keithley 4200A-SCS\" OR \"Tektronix 4200-SCS 4200A-SCS\" OR \"Tektronix 4200-SCS\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Keithley 4200-SCS 4200A-SCS\" OR \"Keithley 4200-SCS\" OR \"Keithley 4200A-SCS\" OR \"Tektronix 4200-SCS 4200A-SCS\" OR \"Tektronix 4200-SCS\") AND OPEN_ACCESS:y",
+  "count": 1395,
+  "papers": [
+   {
+    "pmcid": "PMC7018944",
+    "doi": "10.1038/s41598-020-59121-0",
+    "title": "SLIM: Simultaneous Logic-in-Memory Computing Exploiting Bilayer Analog OxRAM Devices.",
+    "journal": "Sci Rep",
+    "year": "2020",
+    "cited": 827,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5414034",
+    "doi": "10.1038/ncomms14997",
+    "title": "Wearable smart sensor systems integrated on soft contact lenses for wireless ocular diagnostics.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 454,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4490364",
+    "doi": "10.1038/ncomms8408",
+    "title": "A two-dimensional π-d conjugated coordination polymer with extremely high electrical conductivity and ambipolar transport behaviour.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 381,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6821766",
+    "doi": "10.1038/s41467-019-12857-4",
+    "title": "Conductive 2D metal-organic framework for high-performance cathodes in aqueous rechargeable zinc batteries.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 246,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8730602",
+    "doi": "10.1126/sciadv.abk0967",
+    "title": "Wearable aptamer-field-effect transistor sensing system for noninvasive cortisol monitoring.",
+    "journal": "Sci Adv",
+    "year": "2022",
+    "cited": 224,
+    "snippets": 3,
+    "standards_in_paper": [
+     "GM138843"
+    ]
+   },
+   {
+    "pmcid": "PMC6155079",
+    "doi": "10.1038/s41467-018-06084-6",
+    "title": "Influence of PEDOT:PSS crystallinity and composition on electrochemical transistor performance and long-term stability.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 224,
+    "snippets": 1,
+    "standards_in_paper": [
+     "SS-325"
+    ]
+   },
+   {
+    "pmcid": "PMC4686665",
+    "doi": "10.1038/ncomms10032",
+    "title": "High mobility emissive organic semiconductor.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 204,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4366495",
+    "doi": "10.1038/ncomms7269",
+    "title": "Flexible suspended gate organic thin-film transistors for ultra-sensitive pressure detection.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 198,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC3905699",
+    "doi": "10.1038/ncomms3905",
+    "title": "Three-dimensional strutted graphene grown by substrate-free sugar blowing for high-power-density supercapacitors.",
+    "journal": "Nat Commun",
+    "year": "2013",
+    "cited": 173
+   },
+   {
+    "pmcid": "PMC6949261",
+    "doi": "10.1038/s41467-019-13901-z",
+    "title": "Clinically accurate diagnosis of Alzheimer's disease via multiplexed sensing of core biomarkers in human plasma.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 166
+   },
+   {
+    "pmcid": "PMC6030134",
+    "doi": "10.1038/s41467-018-04906-1",
+    "title": "Transparent and flexible fingerprint sensor array with multiplexed detection of tactile pressure and skin temperature.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 158
+   },
+   {
+    "pmcid": "PMC4309440",
+    "doi": "10.1038/ncomms7013",
+    "title": "A molecular nematic liquid crystalline material for high-performance organic photovoltaics.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 153
+   },
+   {
+    "pmcid": "PMC6588379",
+    "doi": "10.1126/sciadv.aaw2844",
+    "title": "High-resolution, reconfigurable printing of liquid metals with three-dimensional structures.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 150
+   },
+   {
+    "pmcid": "PMC8114032",
+    "doi": "10.1002/jev2.12090",
+    "title": "Emerging methods in biomarker identification for extracellular vesicle-based liquid biopsy.",
+    "journal": "J Extracell Vesicles",
+    "year": "2021",
+    "cited": 149
+   },
+   {
+    "pmcid": "PMC8863887",
+    "doi": "10.1038/s41467-022-28483-6",
+    "title": "Organic electrochemical neurons and synapses with ion mediated spiking.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 145
+   },
+   {
+    "pmcid": "PMC5590784",
+    "doi": "10.1126/sciadv.1700159",
+    "title": "Ultratransparent and stretchable graphene electrodes.",
+    "journal": "Sci Adv",
+    "year": "2017",
+    "cited": 133
+   },
+   {
+    "pmcid": "PMC7794514",
+    "doi": "10.1038/s41467-020-20390-y",
+    "title": "π-Extended perylene diimide double-heterohelicenes as ambipolar organic semiconductors for broadband circularly polarized light detection.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 132
+   },
+   {
+    "pmcid": "PMC9894750",
+    "doi": "10.1038/s41563-022-01450-8",
+    "title": "Ion-tunable antiambipolarity in mixed ion-electron conducting polymers enables biorealistic organic electrochemical neurons.",
+    "journal": "Nat Mater",
+    "year": "2023",
+    "cited": 130
+   },
+   {
+    "pmcid": "PMC6774060",
+    "doi": "10.1002/advs.201901134",
+    "title": "Multilayered PdSe<sub>2</sub>/Perovskite Schottky Junction for Fast, Self-Powered, Polarization-Sensitive, Broadband Photodetectors, and Image Sensor Application.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2019",
+    "cited": 130
+   },
+   {
+    "pmcid": "PMC9166790",
+    "doi": "10.1038/s41467-022-30539-6",
+    "title": "Experimental demonstration of highly reliable dynamic memristor for artificial neuron and neuromorphic computing.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 124
+   },
+   {
+    "pmcid": "PMC6677552",
+    "doi": "10.1126/sciadv.aav9653",
+    "title": "Metal oxide semiconductor nanomembrane-based soft unnoticeable multifunctional electronics for wearable human-machine interfaces.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 114
+   },
+   {
+    "pmcid": "PMC6143610",
+    "doi": "10.1038/s41467-018-06204-2",
+    "title": "In-situ cross-linking strategy for efficient and operationally stable methylammoniun lead iodide solar cells.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 112
+   },
+   {
+    "pmcid": "PMC5804585",
+    "doi": "10.1126/sciadv.aao5758",
+    "title": "Wafer-scale, layer-controlled organic single crystals for high-speed circuit operation.",
+    "journal": "Sci Adv",
+    "year": "2018",
+    "cited": 111
+   },
+   {
+    "pmcid": "PMC9646516",
+    "doi": "10.1038/s41565-022-01220-2",
+    "title": "Human-muscle-inspired single fibre actuator with reversible percolation.",
+    "journal": "Nat Nanotechnol",
+    "year": "2022",
+    "cited": 110
+   },
+   {
+    "pmcid": "PMC8612678",
+    "doi": "10.1126/sciadv.abj7422",
+    "title": "Implantable aptamer-field-effect transistor neuroprobes for in vivo neurotransmitter monitoring.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 109
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7018944",
+   "title": "SLIM: Simultaneous Logic-in-Memory Computing Exploiting Bilayer Analog OxRAM Devices.",
+   "year": "2020",
+   "text": "by DC sputtering and patterned using lift-off technique. Final photolithography (third mask) and ICP dry etching step was performed to open the contact windows (etch the dielectrics) to the BE contact pads. Wire bonding and packaging were the final steps for the OxRAM encapsulation. Electrical measurements for SLIM bitcell characterization We used Keithley 4200 SCS parameter analyzer with custom setup (Supplementary Figure S3 ) to perform electrical measurements. Keithley 4210 high power SMU (source measure unit) and Keithley 4225 PMU (pulse measure unit) were used for applying programming signals and sensing/read. A chip of OxRAM devices was wire bonded with NMOS transistor(s) to realize SLIM bitcell. NMOS",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5414034",
+   "title": "Wearable smart sensor systems integrated on soft contact lenses for wireless ocular diagnostics.",
+   "year": "2017",
+   "text": "2 H 4 O 2 : C 6 H 4 NO 5 SNa: H 2 O (55:1:4:40 vol%) for 10 s. After removing the PR in acetone, graphene was transferred onto the AgNW electrodes and patterned by photolithography and RIE for the hybrid electrodes and channel. The width and length of the channel were 5 and 50 μm, respectively. Electrical characterization We used a probe station (Keithley 4200-SCS semiconductor parametric analyser) to measure sheet resistance, and transfer and output characteristics of devices (back- and solution- gated characterizations). In solution-gated characterization, we used Ag/AgCl wire as a reference electrode. All devices were characterized at 0.1 V of drain bias. Optical characterization Optical transmittance me",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5414034",
+   "title": "Wearable smart sensor systems integrated on soft contact lenses for wireless ocular diagnostics.",
+   "year": "2017",
+   "text": "lock was physically fixed on the sensor. A buffer solution (Samchun Pure Chemical Co., pH 7.00±0.02) containing glucose at various concentrations was passed through the microfluidic channel at a constant rate (1 ml h −1 ) with a syringe pump (New Era Pump Systems, Inc., NE-300). The sensor was characterized with a semiconductor parameter analyser (Keithley 4200-SCS). For real-time sensing the drain current was recorded versus time at fixed drain voltage ( V D ) of 0.1 V and gate voltage ( V G ) of 0 V. Fabrication of intraocular pressure sensor A Cu foil was coated with parylene (∼500 nm-thick) using a parylene coater (Alpha plus). AgNW suspension was spin-coated and annealed on the parylene substrate, and A",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4490364",
+   "title": "A two-dimensional π-d conjugated coordination polymer with extremely high electrical conductivity and ambipolar transport behaviour.",
+   "year": "2015",
+   "text": "ide settled with one side on a Peltier cooler and the other side on a Peltier heater, which were employed to apply a temperature gradient across the gap between the gold electrodes. The temperature difference and thermoelectric potential between the gold electrodes were determined with a Thermal Imaging Cameras (FLIR A300, FLIR Systems Inc.) and a Keithley 4200 SCS semiconductor characterization system (Keithley Instruments Inc.), respectively. Then, the thermopower was calculated by dividing the thermoelectric potential by temperature difference. Light absorption spectrum Light absorption spectrum of the same film used in sheet resistance measurement was recorded on a CIMPS system (ZAHNER) for photoelectroc",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6821766",
+   "title": "Conductive 2D metal-organic framework for high-performance cathodes in aqueous rechargeable zinc batteries.",
+   "year": "2019",
+   "text": "itu XPS characterization of Cu 3 (HHTP) 2 at different charge and discharge states, the cells were opened and rinsed with deionized H 2 O inside a glove-box. The electrical conductivity of Cu 3 (HHTP) 2 was measured by the two-point probe method at 25 °C. A pellet was placed on a home-built in situ pellet press 47 and connected to an electrometer (Keithley 4200-SCS). The current-voltage ( I – V ) measurements were performed at 25 °C by sweeping the voltage. Transmission electron microscopy Pristine and discharged Cu 3 (HHTP) 2 MOF samples were dispersed in EtOH and drop-cast on lacey carbon Mo-based TEM grids. LD-HRTEM was performed using a JEOL Grand ARM instrument operated at 300 kV. Data were collected us",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8730602",
+   "title": "Wearable aptamer-field-effect transistor sensing system for noninvasive cortisol monitoring.",
+   "year": "2022",
+   "text": "d SMU. ( A ) Photograph of the FPCB next to a U.S. quarter. The components are (1) MCU, (2) ADC, (3) potentiostat chip, (4) digital-to-analog converter, and (5) bluetooth. ( B ) Real-time sweep of V GS and recording of I DS to construct FET transfer curves measured by the SMU. ( C ) Comparison of FET transfer curves determined by a commercial SMU (Keithley 4200A-SCS, Tektronix, Beaverton, OR), a multichannel potentiostat (CHI1040C, CH Instrument, Austin, TX), and the on-board SMU. ( D ) Ex situ characterization of the FET sensing system with and without vortical vibration (microfluidic channel height: 170 μm). The recording was paused in between conditions to save sensor readouts and to distinguish scenarios.",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8730602",
+   "title": "Wearable aptamer-field-effect transistor sensing system for noninvasive cortisol monitoring.",
+   "year": "2022",
+   "text": "implemented as a high-resolution SMU. Figure 4B illustrates a representative on-board SMU sweep of V GS (with respect to a biased V DS ) and recording of I DS to acquire a FET transfer curve (6 s). We tested a commercial solid-state FET device (ADL110800) and compared the transfer curves obtained by our SMU with those captured by a commercial SMU (Keithley 4200A-SCS, Tektronix, Beaverton, OR) or a multichannel potentiostat (CHI1040C, CH Instruments, Austin, TX). The block diagrams of the standard laboratory instruments are shown in fig. S12. The transfer curves measured by all three instruments were closely matched ( Fig. 4C ), demonstrating the FET control/signal acquisition capability of our on-board SMU. W",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8730602",
+   "title": "Wearable aptamer-field-effect transistor sensing system for noninvasive cortisol monitoring.",
+   "year": "2022",
+   "text": ", Pickering Laboratories Inc., Mountain View, CA) or artificial sweat (I2BL-0011, Pickering Laboratories) were used as electrolyte solutions (table S5). The Ag/AgCl reference electrodes were placed in the sensing solutions above FETs. Sensor measurements were performed using a manual analytical probe station (Signatone, Gilroy, CA) equipped with a Keithley 4200A-SCS semiconductor parameter analyzer (Tektronix, Beaverton, OR). Transfer curves were obtained by sweeping V GS (0 to 400 mV at 5-mV steps, V DS 10 mV). Five overlapping transfer curves were averaged for each target or nontarget concentration. Calibrated responses to minimize device-to-device variations were calculated at V GS = 100 mV. Signals acquir",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6155079",
+   "title": "Influence of PEDOT:PSS crystallinity and composition on electrochemical transistor performance and long-term stability.",
+   "year": "2018",
+   "text": "the POEDOT:PSS films at the non-channel area. After the residual photoresist removal, the outer electrode patterns were passivated using SU-8 photoresist (Microchemicals GmbH). A polydimethylsiloxane (PDMS, SYLGARD ® 184, Dow Corning) ring was attached to define the aqueous electrolyte reservoir. All electrical measurements were conducted using a Keithley 4200A-SCS parameter analyzer (Keithley, USA) while an Ag/AgCl reference electrode was employed as a gate electrode. For aging test, OECTs immersed in the solution of 0.1 M NaCl were placed in a biological CO 2 incubator (ThermoFisher Scientific) with 5% CO 2 at 37 °C. The autoclaving test was evaluated after OECT devices were placed in a Tomy SS-325 autocla",
+   "standards": [
+    "SS-325"
+   ]
+  },
+  {
+   "pmcid": "PMC4686665",
+   "title": "High mobility emissive organic semiconductor.",
+   "year": "2015",
+   "text": "e transistor with four crossed electrodes on an individual hexagonal crystal is obtained after the organic mask-ribbons are peeled off ( Fig. 2h ) (more details on device fabrication included in Methods). An example device based on an individual DPA crystal with four electrodes along b and c axes is shown in Fig. 2i . Transistors are measured on a Keithley 4200 SCS and Micromanipulator 6150 probe station with a high-resolution microscope (magnification at × 40–200) (in air and at room temperature) and the mobility is extracted from the equation of I DS =( W /2 L ) C i μ ( V G − V T ) 2 . The typical transfer and output characteristics are shown in Fig. 3a–c along the b axis and Fig. 3d–f along the c axis. To",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4686665",
+   "title": "High mobility emissive organic semiconductor.",
+   "year": "2015",
+   "text": "organic ribbon was laminated over the previous one by a 90°, that is, c or b axes; (5) the substrate was transferred to a vacuum chamber and 50 nm gold was deposited on the masked single crystals; (6) the devices were finished by peeling off the ribbons. Organic field-effect transistor characteristics were obtained at room temperature in air on a Keithley 4200 SCS and Micromanipulator 6150 probe station and the mobility was extracted from the saturation region by using the equation of I DS =(W/2L)C i μ(V G −V T ) 2 . Fabrication and measurement of DPA OLEDs OLED devices were fabricated on ITO-coated glass substrate in a chamber with a pressure of 1 × 10 −4 Pa. Electroluminescence spectra characteristics of",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4366495",
+   "title": "Flexible suspended gate organic thin-film transistors for ultra-sensitive pressure detection.",
+   "year": "2015",
+   "text": "essure measurement, a force gauge (Mark-10 025/012) and a highly configurable motorized stand (EMS301-CP) were used to apply an external pressure at speeds of 0.5–1100, mm min −1 . The contact area between the pressing tip and the device is 1.13 mm 2 , which is used to calculate the applied pressure. Capacitance measurements were performed using a Keithley 4200 SCS. A computer-controlled home-made speaker served as an acoustic source, from which both music and acoustic waves of various frequencies could be produced. An oscilloscope (Agilent DSO-X 3052A) was used to record the acoustic sensing signal by measuring the change in voltage drop over a 10-MΩ resistor, which was connected to the SGOTFT acoustic sens",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "SS-325": 1
+ },
+ "standards_new": [
+  "SS-325"
+ ],
+ "test_item_hits": {
+  "peel": 2,
+  "microscopy": 1
+ }
+}

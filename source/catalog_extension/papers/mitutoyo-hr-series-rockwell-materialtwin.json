@@ -1,0 +1,75 @@
+{
+ "object": "mitutoyo-hr-series-rockwell-materialtwin",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo HR-320MS HR-430MR",
+  "Mitutoyo HR-320MS",
+  "Mitutoyo HR-430MR",
+  "Mitutoyo HR-430MS",
+  "Mitutoyo HR-530"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo HR-320MS HR-430MR\" OR \"Mitutoyo HR-320MS\" OR \"Mitutoyo HR-430MR\" OR \"Mitutoyo HR-430MS\" OR \"Mitutoyo HR-530\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo HR-320MS HR-430MR\" OR \"Mitutoyo HR-320MS\" OR \"Mitutoyo HR-430MR\" OR \"Mitutoyo HR-430MS\" OR \"Mitutoyo HR-530\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC11643623",
+    "doi": "10.3390/ma17235998",
+    "title": "On the Use of Cyclic Cryogenic Treatment to Improve the Properties of High-Speed Steel.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN24",
+     "ISO 148-1",
+     "ISO 3685",
+     "ISO 6508-1",
+     "ISO 6892-1"
+    ]
+   },
+   {
+    "pmcid": "PMC11174072",
+    "doi": "10.3390/ma17112662",
+    "title": "Investigation of the Properties of Anti-Friction Coatings Deposited with Different Casting Methods.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN ISO 4136",
+     "ISO 6506-1",
+     "ISO 6892-1"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC11643623",
+   "title": "On the Use of Cyclic Cryogenic Treatment to Improve the Properties of High-Speed Steel.",
+   "year": "2024",
+   "text": "stenite concentrations using a Theta-Theta Edge diffractometer (G.N.R. S.r.l, Agrate Conturbia, Italy) and dedicated EDGE Software (version 1.6.0.0); Charpy impact tests conducted on U-notched specimens using a ZWICK/ROELL HIT50P (ZwickRoell, Ulm, Germany) impact hammer with an impact energy of 50 J (according to the [ 57 ]); Hardness tests with a Mitutoyo HR-530 (Mitutoyo, Takatsu-ku, Japan) hardness tester (according to the [ 58 ]) Tensile tests on a ZWICK/ROELL Z150 (ZwickRoell, Ulm, Germany) tensile testing machine (according to the [ 59 ]). The analysis of austenite content was carried out using the X-ray diffraction method. The measurements were made with the Theta-Theta Edge diffractometer from GNR",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11174072",
+   "title": "Investigation of the Properties of Anti-Friction Coatings Deposited with Different Casting Methods.",
+   "year": "2024",
+   "text": ".2 version software. The tensile tests on the specimens were carried out with a Tinius Olsen H10KT universal tensile test machine (Tinius Olsen Ltd., Salfords, Redhill, UK) featuring a load capacity of 10 kN at room temperature (22 ± 1 °C), with 50 ± 5% relative humidity at a test speed of 13.8 mm/min. Hardness measurements were carried out with a Mitutoyo HR-530 Series Hardness Testing Machine (Mitutoyo Corporation, Kanagawa, Japan) under a load of 10 N with a Ø5.0 mm indenter. 3. Results and Discussion 3.1. Chemical Composition The chemical composition of Babbitt has a significant influence on the properties of the coating and its suitability for various applications. An analysis of this composition was",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 4,
+  "charpy_impact": 1
+ }
+}

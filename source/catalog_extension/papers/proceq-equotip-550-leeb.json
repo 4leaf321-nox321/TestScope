@@ -1,0 +1,49 @@
+{
+ "object": "proceq-equotip-550-leeb",
+ "manufacturer": "proceq",
+ "phrases": [
+  "Proceq Equotip 550 +",
+  "Proceq DC",
+  "Screening Eagle Equotip 550 +",
+  "Screening Eagle DC"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Proceq Equotip 550 +\" OR \"Proceq DC\" OR \"Screening Eagle Equotip 550 +\" OR \"Screening Eagle DC\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Proceq Equotip 550 +\" OR \"Proceq DC\" OR \"Screening Eagle Equotip 550 +\" OR \"Screening Eagle DC\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC11717217",
+    "doi": "10.1371/journal.pone.0314039",
+    "title": "Exploring early Acheulian technological decision-making: A controlled experimental approach to raw material selection for percussive artifacts in Melka Wakena, Ethiopia.",
+    "journal": "PLoS One",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11989730",
+    "doi": "10.3390/ma18071442",
+    "title": "Impact of the Roller Press Briquetting Process on the Morphological and Mechanical Properties of Apatite Ore.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ASTM E140",
+     "ASTM E140-12B"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

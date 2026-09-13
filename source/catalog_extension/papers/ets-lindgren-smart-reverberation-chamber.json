@@ -1,0 +1,40 @@
+{
+ "object": "ets-lindgren-smart-reverberation-chamber",
+ "manufacturer": "ets-lindgren",
+ "phrases": [
+  "ETS-Lindgren SMART"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ETS-Lindgren SMART\"",
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W2564211119",
+    "doi": null,
+    "title": "Investigating the correlation between quality factor of metallic cavities and electromagnetic radiation",
+    "year": 2015,
+    "cited": 0,
+    "venue": "SHAREOK (University of Oklahoma; Oklahoma State University; Central Oklahoma University)",
+    "topics": [
+     "Electromagnetic Compatibility and Measurements",
+     "Pulsed Power Technology Applications"
+    ],
+    "oa_url": "http://hdl.handle.net/11244/45325",
+    "abstract": "This research investigates the correlation in reduction of quality factor of a reverberant cavity and that cavity�s ability to radiate. A reverberant cavity was chosen because it provides an idealized model of many commercial electronic devices since they are usually housed in metal casings. Phase 1 of this research investigates multiple methods for optimizing the reduction in Q through the use of RF absorbing material. Phase 2 of this research develops an experimental approach to obtaining the electromagnetic emissions from a metallic cavity using a nested reverberation chamber approach.This research uses a time domain method for determining the Q factor of a small metallic cavity. This research has shown that increasing the surface area of an absorber has a much more significant impact on reducing the Q of a cavity than increasing the volume of the absorbers. This research has also shown that it is more efficient to use several smaller absorbers spaced apart rather than larger single pieces. Another finding from this research is that the same Q levels can be reached with less material by utilizing absorber designs that increase surface area while reducing volume. This research also addresses an erroneous assumption of the time domain Q factor measurements that states that pulse width must be shorter than the wall scattering time in order to not adversely affect the measurements. It has been found that this requirement is unnecessary. By measuring the change in Q of a cavity and the change in emissions from a cavity, a correlation has been found showing that Q reductions from loading directly result in emission reductions, but the amount of reduction of emissions per reduction in Q is frequency dependent. This could mean that the results may vary from one test cavity to the next."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"ETS-Lindgren SMART\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "density_porosity": 2,
+  "microscopy": 1
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "object": "zwickroell-shore-hardness-testers",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell 3110–3119",
+  "ZwickRoell 3114",
+  "ZwickRoell 3115",
+  "ZwickRoell 3116",
+  "ZwickRoell 3117",
+  "ZwickRoell 3112 , 3113"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell 3110–3119\" OR \"ZwickRoell 3114\" OR \"ZwickRoell 3115\" OR \"ZwickRoell 3116\" OR \"ZwickRoell 3117\" OR \"ZwickRoell 3112 , 3113\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell 3110–3119\" OR \"ZwickRoell 3114\" OR \"ZwickRoell 3115\" OR \"ZwickRoell 3116\" OR \"ZwickRoell 3117\" OR \"ZwickRoell 3112 , 3113\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC12567212",
+    "doi": "10.3390/polym17202785",
+    "title": "Comparative Study of AlSi10Mg and 304 Stainless-Steel Fillers in PA12 Composites Manufactured Using Injection Moulding Process for Liners and Sleeve-Based Applications: Microstructure, Mechanical Properties, Thermal Stability, and Wear Behaviour.",
+    "journal": "Polymers (Basel)",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM G99",
+     "ASTM G99-17",
+     "ISO 21920",
+     "ISO 21920-1",
+     "ISO 527-1",
+     "ISO 868",
+     "SS 31.03",
+     "SS 31.36",
+     "SS 33.261",
+     "SS 423",
+     "SS 426",
+     "SS 47.1",
+     "SS 47.3",
+     "SS 950",
+     "SS 96.28",
+     "SS 97.05"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC12567212",
+   "title": "Comparative Study of AlSi10Mg and 304 Stainless-Steel Fillers in PA12 Composites Manufactured Using Injection Moulding Process for Liners and Sleeve-Based Applications: Microstructure, Mechanical Properties, Thermal Stability, and Wear Behaviour.",
+   "year": "2025",
+   "text": "× thickness). Key parameters measured included tensile strength and tensile modulus, which were compared across different filler loadings to assess reinforcement effectiveness. Figure 2 shows injection-moulded PA12 metal filled composite. 2.7. Hardness Testing Shore D hardness was measured according to ISO 868 [ 25 ] using a calibrated durometer (ZwickRoell 3114, Ulm, Germany) mounted on a stand with a Type-D indenter. Rectangular plaques (≈80 × 10 × 4 mm 3 ) were conditioned at 23 ± 2 °C and 50 ± 10% RH for at least 48 h before testing. Indentations were performed on as-moulded surfaces, avoiding edges, flow marks, and gate areas, with each indent separated by at least 10 mm. The indenter was applied per",
+   "standards": [
+    "ISO 868"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ISO 868": 1
+ },
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 2
+ }
+}

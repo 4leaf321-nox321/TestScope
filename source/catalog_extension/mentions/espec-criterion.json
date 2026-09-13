@@ -1,0 +1,33 @@
+{
+ "object": "espec-criterion",
+ "manufacturer": "espec",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC 60068": 10,
+  "UL 508A": 2,
+  "ISO-9001": 1
+ },
+ "standards_new": [
+  "IEC 60068",
+  "ISO-9001",
+  "UL 508A"
+ ],
+ "test_item_hits": {
+  "halt_hass": 16,
+  "temperature_cycling": 6,
+  "altitude_low_pressure": 2,
+  "battery_cycle_life": 2,
+  "microscopy": 2,
+  "thermal_shock": 2,
+  "compression": 1,
+  "tensile": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "rammed remotely, start, pause, terminate profiles A real-time clock can be used to start a profile at any time Controller is UL/CUL & CE listed Constant Mode Used for quickly setting a single operating condition.",
+  "Options Cabinet Options Humidity Options Roll-around cart with storage Solid-state humidity sensor in cabinet (suitable for chart place of wet-bulb recorder placement) External water supply tank with Cable ports: 2\", 4\", or 6\" recirculating capability Cable port Window diameter (50, 100, or 150mm).",
+  "RS-232 serial boost for faster cooling interface Emergency stop 'mushroom' Chino paperless recorders with button Ethernet and email alarms Safety features for testing Honeywell circular-chart lithium ion batteries or other recorders potentially volatile products.",
+  "It is economical, humidity subsystems are easy to maintain, and reliable because it has no designed for reliability, con- risk of failure due to over-saturation."
+ ]
+}

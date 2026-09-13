@@ -1,0 +1,1100 @@
+{
+ "object": "horiba-fluoromax-plus",
+ "manufacturer": "horiba",
+ "phrases": [
+  "HORIBA FluoroMax"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"HORIBA FluoroMax\"",
+  "count": 1789,
+  "works": [
+   {
+    "id": "https://openalex.org/W2007653298",
+    "doi": "https://doi.org/10.1038/ncomms3661",
+    "title": "Controlling the influence of Auger recombination on the performance of quantum-dot light-emitting diodes",
+    "year": 2013,
+    "cited": 753,
+    "venue": "Nature Communications",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms3661.pdf",
+    "abstract": "Development of light-emitting diodes (LEDs) based on colloidal quantum dots is driven by attractive properties of these fluorophores such as spectrally narrow, tunable emission and facile processibility via solution-based methods. A current obstacle towards improved LED performance is an incomplete understanding of the roles of extrinsic factors, such as non-radiative recombination at surface defects, versus intrinsic processes, such as multicarrier Auger recombination or electron-hole separation due to applied electric field. Here we address this problem with studies that correlate the excited state dynamics of structurally engineered quantum dots with their emissive performance within LEDs. We find that because of significant charging of quantum dots with extra electrons, Auger recombination greatly impacts both LED efficiency and the onset of efficiency roll-off at high currents. Further, we demonstrate two specific approaches for mitigating this problem using heterostructured quantum dots, either by suppressing Auger decay through the introduction of an intermediate alloyed layer, or by using an additional shell that impedes electron transfer into the quantum dot to help balance electron and hole injection. Auger recombination is a loss process that considerably reduces the efficiency of many quantum-dot light-emitting diodes. Here the authors demonstrate that designs such as heterostructure quantum dots can considerably suppress Auger decay in light-emitting diodes."
+   },
+   {
+    "id": "https://openalex.org/W3160621054",
+    "doi": "https://doi.org/10.1038/s41467-021-22864-z",
+    "title": "Degradation mechanism of hybrid tin-based perovskite solar cells and the critical role of tin (IV) iodide",
+    "year": 2021,
+    "cited": 503,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22864-z.pdf",
+    "abstract": "Abstract Tin perovskites have emerged as promising alternatives to toxic lead perovskites in next-generation photovoltaics, but their poor environmental stability remains an obstacle towards more competitive performances. Therefore, a full understanding of their decomposition processes is needed to address these stability issues. Herein, we elucidate the degradation mechanism of 2D/3D tin perovskite films based on (PEA)0.2(FA)0.8SnI3(where PEA is phenylethylammonium and FA is formamidinium). We show that SnI4, a product of the oxygen-induced degradation of tin perovskite, quickly evolves into iodine via the combined action of moisture and oxygen. We identify iodine as a highly aggressive species that can further oxidise the perovskite to more SnI4, establishing a cyclic degradation mechanism. Perovskite stability is then observed to strongly depend on the hole transport layer chosen as the substrate, which is exploited to tackle film degradation. These key insights will enable the future design and optimisation of stable tin-based perovskite optoelectronics."
+   },
+   {
+    "id": "https://openalex.org/W3044012771",
+    "doi": "https://doi.org/10.1021/jacs.0c06039",
+    "title": "Design Principles for Enhancing Photoluminescence Quantum Yield in Hybrid Manganese Bromides",
+    "year": 2020,
+    "cited": 410,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Luminescence Properties of Advanced Materials",
+     "Solid-state spectroscopy and crystallography"
+    ],
+    "oa_url": "https://escholarship.org/content/qt1xd2w2jj/qt1xd2w2jj.pdf?t=qf213y",
+    "abstract": "Hybrid manganese halides have attracted widespread attention because of their highly emissive optical properties. To understand the underlying structural factors that dictate the photoluminescence quantum yield (PLQY) of these materials, we report five new hybrid manganese bromides with the general formula A m MnBr 4 [ m = 1 or 2, A = dimethylammonium (DMA), 3-methylpiperidinium (3MP), 3-aminomethylpiperidinium (3AMP), heptamethylenimine (HEP), and trimethylphenylammonium (TMPEA)]. By studying the crystal structures and optical properties of these materials and combining our results with the findings from previously reported analogs, we have found a direct correlation between Mn···Mn distance and the PLQY, where high PLQYs are associated with long Mn···Mn distances. This effect can be viewed as a manifestation of the concentration-quenching effect, except these are in stoichiometric compounds with precise interatomic distances rather than random alloys. To gain better separation of the Mn centers and prevent energy transfer, a bulky singly protonated cation that avoids H-bonding is ideal. We have demonstrated this principle in one of our newly reported material, (TMPEA) 2 MnBr 4, where a PLQY of 70.8% for a powder sample and 98% for a large single crystal sample is achieved. Our study reveals a generalized method for improving PLQYs in hybrid manganese bromides and is readily extended to designing all varieties of highly emissive hybrid materials."
+   },
+   {
+    "id": "https://openalex.org/W2222999645",
+    "doi": "https://doi.org/10.1021/acsnano.5b06369",
+    "title": "Chiral Graphene Quantum Dots",
+    "year": 2016,
+    "cited": 401,
+    "venue": "ACS Nano",
+    "topics": [
+     "Carbon and Quantum Dots Applications",
+     "Graphene and Nanomaterials Applications",
+     "Nanocluster Synthesis and Applications"
+    ],
+    "oa_url": "https://doi.org/10.1021/acsnano.5b06369",
+    "abstract": "Chiral nanostructures from metals and semiconductors attract wide interest as components for polarization-enabled optoelectronic devices. Similarly to other fields of nanotechnology, graphene-based materials can greatly enrich physical and chemical phenomena associated with optical and electronic properties of chiral nanostructures and facilitate their applications in biology as well as other areas. Here, we report that covalent attachment of l/d-cysteine moieties to the edges of graphene quantum dots (GQDs) leads to their helical buckling due to chiral interactions at the \"crowded\" edges. Circular dichroism (CD) spectra of the GQDs revealed bands at ca. 210-220 and 250-265 nm that changed their signs for different chirality of the cysteine edge ligands. The high-energy chiroptical peaks at 210-220 nm correspond to the hybridized molecular orbitals involving the chiral center of amino acids and atoms of graphene edges. Diverse experimental and modeling data, including density functional theory calculations of CD spectra with probabilistic distribution of GQD isomers, indicate that the band at 250-265 nm originates from the three-dimensional twisting of the graphene sheet and can be attributed to the chiral excitonic transitions. The positive and negative low-energy CD bands correspond to the left and right helicity of GQDs, respectively. Exposure of liver HepG2 cells to L/D-GQDs reveals their general biocompatibility and a noticeable difference in the toxicity of the stereoisomers. Molecular dynamics simulations demonstrated that d-GQDs have a stronger tendency to accumulate within the cellular membrane than L-GQDs. Emergence of nanoscale chirality in GQDs decorated with biomolecules is expected to be a general stereochemical phenomenon for flexible sheets of nanomaterials."
+   },
+   {
+    "id": "https://openalex.org/W2901001562",
+    "doi": "https://doi.org/10.1038/s41467-018-07420-6",
+    "title": "Understanding structure-activity relationships in linear polymer photocatalysts for hydrogen evolution",
+    "year": 2018,
+    "cited": 375,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Conducting polymers and applications",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-07420-6.pdf",
+    "abstract": "Conjugated polymers have sparked much interest as photocatalysts for hydrogen production. However, beyond basic considerations such as spectral absorption, the factors that dictate their photocatalytic activity are poorly understood. Here we investigate a series of linear conjugated polymers with external quantum efficiencies for hydrogen production between 0.4 and 11.6%. We monitor the generation of the photoactive species from femtoseconds to seconds after light absorption using transient spectroscopy and correlate their yield with the measured photocatalytic activity. Experiments coupled with modeling suggest that the localization of water around the polymer chain due to the incorporation of sulfone groups into an otherwise hydrophobic backbone is crucial for charge generation. Calculations of solution redox potentials and charge transfer free energies demonstrate that electron transfer from the sacrificial donor becomes thermodynamically favored as a result of the more polar local environment, leading to the production of long-lived electrons in these amphiphilic polymers."
+   },
+   {
+    "id": "https://openalex.org/W2985868529",
+    "doi": "https://doi.org/10.3390/w11112366",
+    "title": "staRdom: Versatile Software for Analyzing Spectroscopic Data of Dissolved Organic Matter in R",
+    "year": 2019,
+    "cited": 316,
+    "venue": "Water",
+    "topics": [
+     "Water Quality Monitoring and Analysis",
+     "Marine and coastal ecosystems",
+     "Metabolomics and Mass Spectrometry Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4441/11/11/2366/pdf?version=1573547126",
+    "abstract": "The roles of dissolved organic matter (DOM) in microbial processes and nutrient cycles depend on its composition, which requires detailed measurements and analyses. We introduce a package for R, called staRdom (“spectroscopic analysis of DOM in R”), to analyze DOM spectroscopic data (absorbance and fluorescence), which is key to deliver fast insight into DOM composition of many samples. staRdom provides functions that standardize data preparation and analysis of spectroscopic data and are inspired by practical work. The user can perform blank subtraction, dilution correction, Raman normalization, scatter removal and interpolation, and fluorescence normalization. The software performs parallel factor analysis (PARAFAC) of excitation–emission matrices (EEMs), including peak picking of EEMs, and calculates fluorescence indices, absorbance indices, and absorbance slope indices from EEMs and absorbance spectra. A comparison between PARAFAC solutions by staRdom in R compared with drEEM in MATLAB showed nearly identical solutions for most datasets, although different convergence criteria are needed to obtain similar results and interpolation of missing data is important when working with staRdom. In conclusion, staRdom offers the opportunity for standardized multivariate decomposition of spectroscopic data without requiring software licensing fees and presuming only basic R knowledge."
+   },
+   {
+    "id": "https://openalex.org/W2768959128",
+    "doi": "https://doi.org/10.1038/nmat5011",
+    "title": "Optical gain in colloidal quantum dots achieved with direct-current electrical pumping",
+    "year": 2017,
+    "cited": 312,
+    "venue": "Nature Materials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Nanocluster Synthesis and Applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1412893",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2907641242",
+    "doi": "https://doi.org/10.1016/j.rinp.2018.12.089",
+    "title": "Effect of operational parameters on the photocatalytic degradation of Methylene blue dye solution using manganese doped ZnO nanoparticles",
+    "year": 2018,
+    "cited": 286,
+    "venue": "Results in Physics",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "ZnO doping and properties",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2211379718331966/pdf",
+    "abstract": "• Mn doped ZnO nanoparticles synthesized successfully by simple chemical co precipitation method. • Photocatalytic degradation of Methylene blue (MB) dye was studied under UV irradiation. • Photocatalytic efficiency of ZnO increases with Mn doping and there exist an optimum doping level for highest photocatalytic performance. • Under the optimum operational parameters 99% of MB removal is achieved in120 min irradiation time. Photocatalytic degradation of aqueous solution of methylene blue dye under UV light illumination was studied by using manganese doped ZnO ( Z n 1 - x M n x O , where x = 0.00 , x = 0.02 a n d x = 0.05 ) nanoparticles as a photocatalyst. The nanophotocatalysts were synthesized by wet chemical co-precipitation method. The structural, morphological, and optical properties of the photocatalysts were done by X-ray diffraction (XRD), Scanning Electron microscope (SEM), Energy Dispersive X-Ray (EDX), photoluminescence (PL), Fourier Transform Infrared Ray (FTIR) and UV–visible spectroscopic techniques. An improved photocatalytic efficiency of ZnO was observed upon doping with Mn and 2% Mn-doped ZnO exhibited the highest photocatalytic activity among the doped samples. The effect of operating parameters such as amount of catalyst, the initial dye concentration, and initial pH on the rate of dye degradation using 2% Mn-doped ZnO was studied. Under the optimum operation conditions, approximately 99% of dye removal was achieved after 120 min of irradiation."
+   },
+   {
+    "id": "https://openalex.org/W1641115601",
+    "doi": "https://doi.org/10.1029/2012gb004342",
+    "title": "Biodegradability of dissolved organic carbon in the Yukon River and its tributaries: Seasonality and importance of inorganic nitrogen",
+    "year": 2012,
+    "cited": 286,
+    "venue": "Global Biogeochemical Cycles",
+    "topics": [
+     "Marine and coastal ecosystems",
+     "Arctic and Antarctic ice dynamics",
+     "Soil and Water Nutrient Dynamics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1029/2012GB004342",
+    "abstract": "Northern high‐latitude rivers transport large amounts of terrestrially derived dissolved organic matter (DOM) from boreal and arctic ecosystems to coastal areas and oceans. Current knowledge of the biodegradability of DOM in these rivers is limited, particularly for large rivers discharging to the Arctic Ocean. We conducted a seasonally comprehensive study of biodegradable dissolved organic carbon (BDOC) dynamics in the Yukon River and two of its tributaries in Alaska, USA. Distinct seasonal patterns of BDOC, consistent across a wide range of watershed size, indicate BDOC is transported year‐round. Relative biodegradability (%BDOC) was greatest during winter, and decreased into spring and summer. Due to large seasonal differences in DOC concentration, the greatest concentrations of BDOC (mg C L−1) occurred during spring freshet, followed by winter and summer. While chemical composition of DOM was an important driver of BDOC, the overriding control of BDOC was mineral nutrient availability due to wide shifts in carbon (C) and nitrogen (N) stoichiometry across seasons. We calculated seasonal and annual loads of BDOC exported by the Yukon River by applying measured BDOC concentrations to daily water discharge values, and also by applying an empirical correlation between %BDOC and the ratio of DOC to dissolved inorganic N (DIN) to total DOC loads. The Yukon River exports ∼0.2 Tg C yr−1 as BDOC that is decomposable within 28 days. This corresponds to 12–18% of the total annual DOC export. Furthermore, we calculate that the six largest arctic rivers, including the Yukon River, collectively export ∼2.3 Tg C yr−1 as BDOC to the Arctic Ocean."
+   },
+   {
+    "id": "https://openalex.org/W2891438595",
+    "doi": "https://doi.org/10.1021/acs.nanolett.8b03457",
+    "title": "Droop-Free Colloidal Quantum Dot Light-Emitting Diodes",
+    "year": 2018,
+    "cited": 285,
+    "venue": "Nano Letters",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Nanocluster Synthesis and Applications",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1477674",
+    "abstract": "Colloidal semiconductor quantum dots (QDs) are a highly promising materials platform for implementing solution-processable light-emitting diodes (LEDs). They combine high photostability of traditional inorganic semiconductors with chemical flexibility of molecular systems, which makes them well-suited for large-area applications such as television screens, solid-state lighting, and outdoor signage. Additional beneficial features include size-controlled emission wavelengths, narrow bandwidths, and nearly perfect emission efficiencies. State-of-the-art QD-LEDs exhibit high internal quantum efficiencies approaching unity. However, these peak values are observed only at low current densities ( J ) and correspondingly low brightnesses, whereas at higher J, the efficiency usually exhibits a quick roll-off. This efficiency droop limits achievable brightness levels and decreases device longevity due to excessive heat generation. Here, we demonstrate QD-LEDs operating with high internal efficiencies (up to 70%) virtually droop-free up to unprecedented brightness of >100,000 cd m –2 (at ∼500 mA cm –2 ). This exceptional performance is derived from specially engineered QDs that feature a compositionally graded interlayer and a final barrier layer. This QD design allows for improved balance between electron and hole injections combined with considerably suppressed Auger recombination, which helps mitigate efficiency losses due to charge imbalance at high currents. These results indicate a significant potential of newly developed QDs as enablers of future ultrabright, highly efficient devices for both indoor and outdoor applications."
+   },
+   {
+    "id": "https://openalex.org/W4375955839",
+    "doi": "https://doi.org/10.1038/s41467-023-38343-6",
+    "title": "Single-atomic-site platinum steers photogenerated charge carrier lifetime of hematite nanoflakes for photoelectrochemical water splitting",
+    "year": 2023,
+    "cited": 245,
+    "venue": "Nature Communications",
+    "topics": [
+     "Iron oxide chemistry and applications",
+     "Advanced Photocatalysis Techniques",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-38343-6.pdf",
+    "abstract": "Abstract Although much effort has been devoted to improving photoelectrochemical water splitting of hematite (α-Fe 2 O 3 ) due to its high theoretical solar-to-hydrogen conversion efficiency of 15.5%, the low applied bias photon-to-current efficiency remains a huge challenge for practical applications. Herein, we introduce single platinum atom sites coordination with oxygen atom (Pt-O/Pt-O-Fe) sites into single crystalline α-Fe 2 O 3 nanoflakes photoanodes (SAs Pt:Fe 2 O 3 -Ov). The single-atom Pt doping of α-Fe 2 O 3 can induce few electron trapping sites, enhance carrier separation capability, and boost charge transfer lifetime in the bulk structure as well as improve charge carrier injection efficiency at the semiconductor/electrolyte interface. Further introduction of surface oxygen vacancies can suppress charge carrier recombination and promote surface reaction kinetics, especially at low potential. Accordingly, the optimum SAs Pt:Fe 2 O 3 -Ov photoanode exhibits the photoelectrochemical performance of 3.65 and 5.30 mA cm −2 at 1.23 and 1.5 V RHE , respectively, with an applied bias photon-to-current efficiency of 0.68% for the hematite-based photoanodes. This study opens an avenue for designing highly efficient atomic-level engineering on single crystalline semiconductors for feasible photoelectrochemical applications."
+   },
+   {
+    "id": "https://openalex.org/W2164617854",
+    "doi": "https://doi.org/10.1110/ps.041205405",
+    "title": "Protein folding: Defining a “standard” set of experimental conditions and a preliminary kinetic data set of two‐state proteins",
+    "year": 2005,
+    "cited": 238,
+    "venue": "Protein Science",
+    "topics": [
+     "Protein Structure and Dynamics",
+     "Enzyme Structure and Function",
+     "Computational Drug Discovery Methods"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1110/ps.041205405",
+    "abstract": "Recent years have seen the publication of both empirical and theoretical relationships predicting the rates with which proteins fold. Our ability to test and refine these relationships has been limited, however, by a variety of difficulties associated with the comparison of folding and unfolding rates, thermodynamics, and structure across diverse sets of proteins. These difficulties include the wide, potentially confounding range of experimental conditions and methods employed to date and the difficulty of obtaining correct and complete sequence and structural details for the characterized constructs. The lack of a single approach to data analysis and error estimation, or even of a common set of units and reporting standards, further hinders comparative studies of folding. In an effort to overcome these problems, we define here a \"consensus\" set of experimental conditions (25 degrees C at pH 7.0, 50 mM buffer), data analysis methods, and data reporting standards that we hope will provide a benchmark for experimental studies. We take the first step in this initiative by describing the folding kinetics of 30 apparently two-state proteins or protein domains under the consensus conditions. The goal of our efforts is to set uniform standards for the experimental community and to initiate an accumulating, self-consistent data set that will aid ongoing efforts to understand the folding process."
+   },
+   {
+    "id": "https://openalex.org/W4312039561",
+    "doi": "https://doi.org/10.1038/s41467-022-35625-3",
+    "title": "Photoprogrammable circularly polarized phosphorescence switching of chiral helical polyacetylene thin films",
+    "year": 2022,
+    "cited": 233,
+    "venue": "Nature Communications",
+    "topics": [
+     "Synthesis and Properties of Aromatic Compounds",
+     "Luminescence and Fluorescent Materials",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-35625-3.pdf",
+    "abstract": "Abstract The developments of pure organic room-temperature phosphorescence (RTP) materials with circularly polarized luminescence (CPL) have significantly facilitated the future integration and systemization of luminescent material in fundamental science and technological applications. Here, a type of photoinduced circularly polarized RTP materials are constructed by homogeneously dispersing phosphorescent chiral helical substituted polyacetylenes into a processable poly(methyl methacrylate) (PMMA) matrix. These substituted polyacetylenes play vital roles in the propagation of CPL and present prominently optical characteristics with high absorption and luminescent dissymmetric factors up to 0.029 (g abs ) and 0.019 (g lum ). The oxygen consumption properties of the films under UV light irradiation endow materials with dynamic chiro-optical functionality, which can leverage of light to precisely control and manipulate the circularly polarized RTP properties with the remarkable advantages of being contactless, wireless and fatigue-resistant. Significantly, the distinct materials with dynamic properties can be used as anti-counterfeiting materials involving photoprogrammability."
+   },
+   {
+    "id": "https://openalex.org/W3139308072",
+    "doi": "https://doi.org/10.1038/s41467-021-22286-x",
+    "title": "In vivo activation of pH-responsive oxidase-like graphitic nanozymes for selective killing of Helicobacter pylori",
+    "year": 2021,
+    "cited": 229,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Nanomaterials in Catalysis",
+     "Advanced biosensing and bioanalysis techniques",
+     "Nanoplatforms for cancer theranostics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22286-x.pdf",
+    "abstract": "Abstract Helicobacter pylori infection is a major etiological factor in gastric diseases. However, clinical antibiotic therapy for H. pylori is limited by continuously decreased therapeutic efficacy and side effects to symbiotic bacteria. Herein, we develop an in vivo activatable pH-responsive graphitic nanozyme, PtCo@Graphene (PtCo@G), for selective treatment of H. pylori . Such nanozymes can resist gastric acid corrosion, exhibit oxidase-like activity to stably generate reactive oxygen species only in acidic gastric milieu and demonstrate superior selective bactericidal property. C 18 -PEG n -Benzeneboronic acid molecules are modified on PtCo@G, improving its targeting capability. Under acidic gastric pH, graphitic nanozymes show notable bactericidal activity toward H. pylori , while no bacterial killing is observed under intestinal conditions. In mouse model, high antibacterial capability toward H. pylori and negligible side effects toward normal tissues and symbiotic bacteria are achieved. Graphitic nanozyme displays the desired enzyme-like activities at corresponding physiological sites and may address critical issues in clinical treatment of H. pylori infections."
+   },
+   {
+    "id": "https://openalex.org/W2801950439",
+    "doi": "https://doi.org/10.1039/c8sc01170b",
+    "title": "Deciphering the working mechanism of aggregation-induced emission of tetraphenylethylene derivatives by ultrafast spectroscopy",
+    "year": 2018,
+    "cited": 206,
+    "venue": "Chemical Science",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Molecular Sensors and Ion Detection",
+     "Photochemistry and Electron Transfer Studies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2018/sc/c8sc01170b",
+    "abstract": "formation of intermediate or rotation around the elongated C[double bond, length as m-dash]C bond, is responsible for the AIE effect, which is strongly structure-dependent but not related to structural rigidity."
+   },
+   {
+    "id": "https://openalex.org/W1965342510",
+    "doi": "https://doi.org/10.1371/journal.pone.0016564",
+    "title": "Orally Administrated Cinnamon Extract Reduces β-Amyloid Oligomerization and Corrects Cognitive Impairment in Alzheimer's Disease Animal Models",
+    "year": 2011,
+    "cited": 194,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Alzheimer's disease research and treatments",
+     "Cholinesterase and Neurodegenerative Diseases",
+     "Natural Antidiabetic Agents Studies"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0016564&type=printable",
+    "abstract": "An increasing body of evidence indicates that accumulation of soluble oligomeric assemblies of β-amyloid polypeptide (Aβ) play a key role in Alzheimer's disease (AD) pathology. Specifically, 56 kDa oligomeric species were shown to be correlated with impaired cognitive function in AD model mice. Several reports have documented the inhibition of Aβ plaque formation by compounds from natural sources. Yet, evidence for the ability of common edible elements to modulate Aβ oligomerization remains an unmet challenge. Here we identify a natural substance, based on cinnamon extract (CEppt), which markedly inhibits the formation of toxic Aβ oligomers and prevents the toxicity of Aβ on neuronal PC12 cells. When administered to an AD fly model, CEppt rectified their reduced longevity, fully recovered their locomotion defects and totally abolished tetrameric species of Aβ in their brain. Furthermore, oral administration of CEppt to an aggressive AD transgenic mice model led to marked decrease in 56 kDa Aβ oligomers, reduction of plaques and improvement in cognitive behavior. Our results present a novel prophylactic approach for inhibition of toxic oligomeric Aβ species formation in AD through the utilization of a compound that is currently in use in human diet."
+   },
+   {
+    "id": "https://openalex.org/W2143414540",
+    "doi": "https://doi.org/10.1038/ncomms1411",
+    "title": "Dust inputs and bacteria influence dissolved organic matter in clear alpine lakes",
+    "year": 2011,
+    "cited": 191,
+    "venue": "Nature Communications",
+    "topics": [
+     "Marine and coastal ecosystems",
+     "Microbial Community Ecology and Physiology",
+     "Isotope Analysis in Ecology"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms1411.pdf",
+    "abstract": "Remote lakes are usually unaffected by direct human influence, yet they receive inputs of atmospheric pollutants, dust, and other aerosols, both inorganic and organic. In remote, alpine lakes, these atmospheric inputs may influence the pool of dissolved organic matter, a critical constituent for the biogeochemical functioning of aquatic ecosystems. Here, to assess this influence, we evaluate factors related to aerosol deposition, climate, catchment properties, and microbial constituents in a global dataset of 86 alpine and polar lakes. We show significant latitudinal trends in dissolved organic matter quantity and quality, and uncover new evidence that this geographic pattern is influenced by dust deposition, flux of incident ultraviolet radiation, and bacterial processing. Our results suggest that changes in land use and climate that result in increasing dust flux, ultraviolet radiation, and air temperature may act to shift the optical quality of dissolved organic matter in clear, alpine lakes. Dissolved organic matter, the main form of aquatic organic carbon, supports the aquatic food web and regulates light penetration in lakes. This study probes the main influences on the optical properties of dissolved organic matter in a global dataset of alpine and remote lakes revealing latitudinal trends."
+   },
+   {
+    "id": "https://openalex.org/W2066834157",
+    "doi": "https://doi.org/10.1063/1.2717576",
+    "title": "Protein destruction by a helium atmospheric pressure glow discharge: Capability and mechanisms",
+    "year": 2007,
+    "cited": 188,
+    "venue": "Journal of Applied Physics",
+    "topics": [
+     "Plasma Applications and Diagnostics",
+     "Electrohydrodynamics and Fluid Dynamics",
+     "Surface Modification and Superhydrophobicity"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/jap/article-pdf/doi/10.1063/1.2717576/13497426/074701_1_online.pdf",
+    "abstract": "Biological sterilization represents one of the most exciting applications of atmospheric pressure glow discharges (APGD). Despite the fact that surgical instruments are contaminated by both microorganisms and proteinaceous matters, sterilization effects of APGD have so far been studied almost exclusively for microbial inactivation. This work presents the results of a detailed investigation of the capability of a helium-oxygen APGD to inactivate proteins deposited on stainless-steel surfaces. Using a laser-induced fluorescence technique for surface protein measurement, a maximum protein reduction of 4.5 logs is achieved by varying the amount of the oxygen admixture into the background helium gas. This corresponds to a minimum surface protein of 0.36 femtomole/mm2. It is found that plasma reduction of surface-borne protein is through protein destruction and degradation, and that its typically biphasic reduction kinetics is influenced largely by the thickness profile of the surface protein. Also presented is a complementary study of possible APGD protein inactivation mechanisms. By interplaying the protein inactivation kinetics with optical emission spectroscopy, it is shown that the main protein-destructing agents are excited atomic oxygen (via the 777 and 844 nm emission channels) and excited nitride oxide (via the 226, 236, and 246 nm emission channels). It is also demonstrated that the most effective protein reduction is achieved possibly through a synergistic effect between atomic oxygen and nitride oxide. This study is a useful step toward a full confirmation of the efficacy of APGD as a sterilization technology for surgical instruments contaminated by prion proteins."
+   },
+   {
+    "id": "https://openalex.org/W2792284859",
+    "doi": "https://doi.org/10.1002/aenm.201703007",
+    "title": "Molecular Engineering Using an Anthanthrone Dye for Low‐Cost Hole Transport Materials: A Strategy for Dopant‐Free, High‐Efficiency, and Stable Perovskite Solar Cells",
+    "year": 2018,
+    "cited": 186,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.201703007",
+    "abstract": "Abstract In this report, highly efficient and humidity‐resistant perovskite solar cells (PSCs) using two new small molecule hole transporting materials (HTM) made from a cost‐effective precursor anthanthrone (ANT) dye, namely, 4,10‐bis(1,2‐dihydroacenaphthylen‐5‐yl)‐6,12‐bis(octyloxy)‐6,12‐dihydronaphtho[7,8,1,2,3‐nopqr]tetraphene (ACE‐ANT‐ACE) and 4,4′‐(6,12‐bis(octyloxy)‐6,12‐dihydronaphtho[7,8,1,2,3‐nopqr]tetraphene‐4,10‐diyl)bis(N,N‐bis(4‐methoxyphenyl)aniline) (TPA‐ANT‐TPA) are presented. The newly developed HTMs are systematically compared with the conventional 2,2′,7,7′‐tetrakis(N,N′‐di‐p‐methoxyphenylamino)‐9,9′‐spirbiuorene (Spiro‐OMeTAD). ACE‐ANT‐ACE and TPA‐ANT‐TPA are used as a dopant‐free HTM in mesoscopic TiO2/CH3NH3PbI3/HTM solid‐state PSCs, and the performance as well as stability are compared with Spiro‐OMeTAD‐based PSCs. After extensive optimization of the metal oxide scaffold and device processing conditions, dopant‐free novel TPA‐ANT‐TPA HTM‐based PSC devices achieve a maximum power conversion efficiency (PCE) of 17.5% with negligible hysteresis. An impressive current of 21 mA cm−2 is also confirmed from photocurrent density with a higher fill factor of 0.79. The obtained PCE of 17.5% utilizing TPA‐ANT‐TPA is higher performance than the devices prepared using doped Spiro‐OMeTAD (16.8%) as hole transport layer at 1 sun condition. It is found that doping of LiTFSI salt increases hygroscopic characteristics in Spiro‐OMeTAD; this leads to the fast degradation of solar cells. While, solar cells prepared using undoped TPA‐ANT‐TPA show dewetting and improved stability. Additionally, the new HTMs form a fully homogeneous and completely covering thin film on the surface of the active light absorbing perovskite layers that acts as a protective coating for underlying perovskite films. This breakthrough paves the way for development of new inexpensive, more stable, and highly efficient ANT core based lower cost HTMs for cost‐effective, conventional, and printable PSCs."
+   },
+   {
+    "id": "https://openalex.org/W2808352454",
+    "doi": "https://doi.org/10.1038/s41427-018-0055-0",
+    "title": "Efficiency and stability enhancement of perovskite solar cells by introducing CsPbI3 quantum dots as an interface engineering layer",
+    "year": 2018,
+    "cited": 181,
+    "venue": "NPG Asia Materials",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41427-018-0055-0.pdf",
+    "abstract": "Although great efforts have been devoted to enhancing the efficiency and stability of perovskite solar cells (PSCs), the performance of PSCs has been far lower than anticipated. Interface engineering is helpful for obtaining high efficiency and stability through control of the interfacial charge transfer in PSCs. This paper demonstrates that the efficiency and stability of PSCs can be enhanced by introducing stable α-CsPbI3 quantum dots (QDs) as an interface layer between the perovskite film and the hole transport material (HTM) layer. By synergistically controlling the valence band position (VBP) of the perovskite and the interface layer, an interface engineering strategy was successfully used to increase the efficiency of hole transfer from the perovskite to the HTM layer, resulting in the power conversion efficiency increasing from 15.17 to 18.56%. In addition, the enhancement of the stability of PSCs can be attributed to coating inorganic CsPbI3 QDs onto the perovskite layer, which have a high moisture stability and result in long-term stability of the PSCs in ambient air. Researchers have used tiny inorganic crystals known as quantum dots to engineer improved moisture resistance and enhanced power conversion into low-cost solar cells. Perovskites, a family of crystals that includes methylammonium lead tri-iodide, can be easily assembled into photovoltaic devices that harvest sunlight nearly as well as silicon. Baomin Xu and Chun Cheng from China’s Southern University of Science and Technology, Shenzhen, and co-workers report a solar cell containing cesium–lead–iodine quantum dots inserted between a perovskite film and an organic conducting material. The dots introduce new electronic states that improve extraction of photogenerated charge. They also migrate through pores in the perovskite film to form a water-repelling surface layer. This strategy enabled the team to operate the device with high efficiency for over a month in humid conditions that normally degrade perovskite films. Due to the matching energy level of CsPbI3 quantum dots and perovskite layer, the efficiency of perovskite solar cells was substantially enhanced from 15.17% to 18.56% by introducing CsPbI3 quantum dots as interface engineering layer. Moreover, perovskite solar cells with CsPbI3 QDs maintained 82% of its initial performance for 30 days at over 30% RH without any encapsulation."
+   },
+   {
+    "id": "https://openalex.org/W4363678228",
+    "doi": "https://doi.org/10.1038/s41467-023-37687-3",
+    "title": "Realizing efficient blue and deep-blue delayed fluorescence materials with record-beating electroluminescence efficiencies of 43.4%",
+    "year": 2023,
+    "cited": 177,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Luminescence and Fluorescent Materials",
+     "Lanthanide and Transition Metal Complexes"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37687-3.pdf",
+    "abstract": "Abstract As promising luminescent materials for organic light-emitting diodes (OLEDs), thermally activated delayed fluorescence materials are booming vigorously in recent years, but robust blue ones still remain challenging. Herein, we report three highly efficient blue and deep-blue delayed fluorescence materials comprised of a weak electron acceptor chromeno[3,2-c]carbazol-8(5H)-one with a rigid polycyclic structure and a weak electron donor spiro[acridine-9,9’-xanthene]. They hold distinguished merits of excellent photoluminescence quantum yields (99%), ultrahigh horizontal transition dipole ratios (93.6%), and fast radiative transition and reverse intersystem crossing, which furnish superb blue and deep-blue electroluminescence with Commission Internationale de I’Eclairage coordinates (CIE x,y ) of (0.14, 0.18) and (0.14, 0.15) and record-beating external quantum efficiencies ( η ext s) of 43.4% and 41.3%, respectively. Their efficiency roll-offs are successfully reduced by suppressing triplet-triplet and singlet-singlet annihilations. Moreover, high-performance deep-blue and green hyperfluorescence OLEDs are achieved by utilizing these materials as sensitizers for multi-resonance delayed fluorescence dopants, providing state-of-the-art η ext s of 32.5% (CIE x,y = 0.14, 0.10) and 37.6% (CIE x,y = 0.32, 0.64), respectively, as well as greatly advanced operational lifetimes. These splendid results can surely inspire the development of blue and deep-blue luminescent materials and devices."
+   },
+   {
+    "id": "https://openalex.org/W2788528938",
+    "doi": "https://doi.org/10.1039/c7sc05317g",
+    "title": "Observation of a new type of aggregation-induced emission in nanoclusters",
+    "year": 2018,
+    "cited": 172,
+    "venue": "Chemical Science",
+    "topics": [
+     "Nanocluster Synthesis and Applications",
+     "Luminescence and Fluorescent Materials",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2018/sc/c7sc05317g",
+    "abstract": "modulating the dissociation of ligands on the NC surface, which is totally different from the previously reported AIE phenomena in the NC field."
+   },
+   {
+    "id": "https://openalex.org/W2800113815",
+    "doi": "https://doi.org/10.1002/advs.201700989",
+    "title": "Triazatruxene: A Rigid Central Donor Unit for a D–A3 Thermally Activated Delayed Fluorescence Material Exhibiting Sub‐Microsecond Reverse Intersystem Crossing and Unity Quantum Yield via Multiple Singlet–Triplet State Pairs",
+    "year": 2018,
+    "cited": 169,
+    "venue": "Advanced Science",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Luminescence and Fluorescent Materials",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201700989",
+    "abstract": "Abstract By inverting the common structural motif of thermally activated delayed fluorescence materials to a rigid donor core and multiple peripheral acceptors, reverse intersystem crossing (rISC) rates are demonstrated in an organic material that enables utilization of triplet excited states at faster rates than Ir‐based phosphorescent materials. A combination of the inverted structure and multiple donor–acceptor interactions yields up to 30 vibronically coupled singlet and triplet states within 0.2 eV that are involved in rISC. This gives a significant enhancement to the rISC rate, leading to delayed fluorescence decay times as low as 103.9 ns. This new material also has an emission quantum yield ≈1 and a very small singlet–triplet gap. This work shows that it is possible to achieve both high photoluminescence quantum yield and fast rISC in the same molecule. Green organic light‐emitting diode devices with external quantum efficiency >30% are demonstrated at 76 cd m−2."
+   },
+   {
+    "id": "https://openalex.org/W2905929338",
+    "doi": "https://doi.org/10.1038/s41563-018-0254-7",
+    "title": "Asymmetrically strained quantum dots with non-fluctuating single-dot emission spectra and subthermal room-temperature linewidths",
+    "year": 2018,
+    "cited": 162,
+    "venue": "Nature Materials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1491837",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3087090259",
+    "doi": "https://doi.org/10.1038/s41467-020-18431-7",
+    "title": "Two-photon excited deep-red and near-infrared emissive organic co-crystals",
+    "year": 2020,
+    "cited": 153,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Porphyrin and Phthalocyanine Chemistry",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-18431-7.pdf",
+    "abstract": "Two-photon excited near-infrared fluorescence materials have garnered considerable attention because of their superior optical penetration, higher spatial resolution, and lower optical scattering compared with other optical materials. Herein, a convenient and efficient supramolecular approach is used to synthesize a two-photon excited near-infrared emissive co-crystalline material. A naphthalenediimide-based triangular macrocycle and coronene form selectively two co-crystals. The triangle-shaped co-crystal emits deep-red fluorescence, while the quadrangle-shaped co-crystal displays deep-red and near-infrared emission centered on 668 nm, which represents a 162 nm red-shift compared with its precursors. Benefiting from intermolecular charge transfer interactions, the two co-crystals possess higher calculated two-photon absorption cross-sections than those of their individual constituents. Their two-photon absorption bands reach into the NIR-II region of the electromagnetic spectrum. The quadrangle-shaped co-crystal constitutes a unique material that exhibits two-photon absorption and near-infrared emission simultaneously. This co-crystallization strategy holds considerable promise for the future design and synthesis of more advanced optical materials."
+   },
+   {
+    "id": "https://openalex.org/W2605019568",
+    "doi": "https://doi.org/10.1038/srep46193",
+    "title": "Triple-cation mixed-halide perovskites: towards efficient, annealing-free and air-stable solar cells enabled by Pb(SCN)2 additive",
+    "year": 2017,
+    "cited": 153,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep46193.pdf",
+    "abstract": "Abstract Organo-metal halide perovskites have suffered undesirably from structural and thermal instabilities. Moreover, thermal annealing is often indispensable to the crystallization of perovskites and removal of residual solvents, which is unsuitable for scalable fabrication of flexible solar modules. Herein, we demonstrate the non-thermal annealing fabrication of a novel type of air-stable triple-cation mixed-halide perovskites, FA 0.7 MA 0.2 Cs 0.1 Pb(I 5/6 Br 1/6 ) 3 (FMC) by incorporation of Pb(SCN) 2 additive. It is found that adding Pb(SCN) 2 functions the same as thermal annealing process by not only improving the crystallinity and optical absorption of perovskites, but also hindering the formation of morphological defects and non-radiative recombination. Furthermore, such Pb(SCN) 2 -treated FMC unannealed films present micrometer-sized crystal grains and remarkably high moisture stability. Planar solar cells built upon these unannealed films exhibit a high PCE of 14.09% with significantly suppressed hysteresis phenomenon compared to those of thermal annealing. The corresponding room-temperature fabricated flexible solar cell shows an impressive PCE of 10.55%. This work offers a new avenue to low-temperature fabrication of air-stable, flexible and high-efficiency perovskite solar cells."
+   },
+   {
+    "id": "https://openalex.org/W4321598668",
+    "doi": "https://doi.org/10.1002/advs.202206386",
+    "title": "One‐Step Synthesis of White‐Light‐Emitting Carbon Dots for White LEDs with a High Color Rendering Index of 97",
+    "year": 2023,
+    "cited": 151,
+    "venue": "Advanced Science",
+    "topics": [
+     "Carbon and Quantum Dots Applications",
+     "Nanocluster Synthesis and Applications",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202206386",
+    "abstract": "White-light-emitting carbon dots (WCDs) show innate advantages as phosphors in white light-emitting diodes (WLEDs). For WLEDs, the color rendering index (CRI) is the most important metric to evaluate its performance. Herein, WCDs are prepared by a facile one-step solvothermal reaction of trimellitic acid and o-phenylenediamine. It consists of four CDs identified by column chromatography as blue, green, yellow, red, and thus white light is a superposition of these four types of light. The mixture of the four CDs undergoes Förster resonance energy transfer to induce the generation of white light. The photoluminescence of WCDs originates from the synergistic effect of carbon core and surface states. Thereinto, the carbon core states dominate in RCDs, and the increase of amide contents and degree of conjugation promote the redshift of the emission spectra, which is further confirmed by theoretical calculations. In addition, a high CRI of 97 is achieved when the WCDs are used as phosphors to fabricate WLEDs, which is almost the highest value up to now. The multicolor LEDs can also be fabricated by using the four multicolor CDs as phosphors, respectively. This work provides a novel approach to explore the rapid preparation of low-cost, high-performance WCDs and CDs-based WLEDs."
+   },
+   {
+    "id": "https://openalex.org/W3008415532",
+    "doi": "https://doi.org/10.1038/s41467-020-14715-0",
+    "title": "A prenucleation strategy for ambient fabrication of perovskite solar cells with high device performance uniformity",
+    "year": 2020,
+    "cited": 149,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-14715-0.pdf",
+    "abstract": "Humidity is known to be inimical to the halide perovskites and thus typically avoided during fabrication. The poor fundamental understanding of chemical interactions between water and the precursors hampers the further development of perovskite fabrication in ambient atmosphere. Here, we disclose a key finding that the ambient water could promote the formation of lead complexes, which when uncontrolled would make their way into large intermediate fibrillar crystallites and thus discontinuous perovskite films unfavorable for photovoltaics among others. To counter this effect, a prenucleation strategy is proposed, which embodies the controlled burst of profuse intermediate nuclei. Consequently, we are able to obtain a compact and uniform perovskite layer, which affords high efficiency perovskite solar cells. More excitingly, the solar cells show high performance uniformity, demonstrating the distinctive advantages of our prenucleation strategy. This work sheds light on developing reliable and cost-effective fabrication methods for industrial production of perovskite solar cells."
+   },
+   {
+    "id": "https://openalex.org/W4283219336",
+    "doi": "https://doi.org/10.1038/s41467-022-31281-9",
+    "title": "An unexpected dual-emissive luminogen with tunable aggregation-induced emission and enhanced chiroptical property",
+    "year": 2022,
+    "cited": 147,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Synthesis and Properties of Aromatic Compounds",
+     "Supramolecular Chemistry and Complexes"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-31281-9.pdf",
+    "abstract": "In the literature, organic materials with both aggregation-induced emission (AIE) and aggregation-caused quenching (ACQ) effects that can emit with multiple bands both in the solution and aggregated state are rarely reported. Herein we report a novel chiral dual-emissive bismacrocycle with tunable aggregation-induced emission colors. A facile four-step synthesis strategy is developed to construct this rigid bismacrocycle, (1,4)[8]cycloparaphenylenophane (SCPP[8]), which possesses a 1,2,4,5-tetraphenylbenzene core locked by two intersecting polyphenylene-based macrocycles. The luminescent behavior of SCPP[8] shows the unique characteristics of both ACQ effect and AIE effect, inducing remarkable redshift emission with near white-light emission. SCPP[8] is configurationally stable and possesses a novel shape-persistent bismacrocycle scaffold with a high strain energy. In addition, SCPP[8] displays enhanced circularly polarized luminescence properties due to AIE effect."
+   },
+   {
+    "id": "https://openalex.org/W4307659027",
+    "doi": "https://doi.org/10.1016/j.cmet.2022.10.002",
+    "title": "Ultrasensitive sensors reveal the spatiotemporal landscape of lactate metabolism in physiology and disease",
+    "year": 2022,
+    "cited": 146,
+    "venue": "Cell Metabolism",
+    "topics": [
+     "Adipose Tissue and Metabolism",
+     "Metabolomics and Mass Spectrometry Studies",
+     "Mitochondrial Function and Pathology"
+    ],
+    "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10560847/pdf/nihms-1931591.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4409510059",
+    "doi": "https://doi.org/10.1038/s41565-025-01905-4",
+    "title": "Homogeneous 2D/3D heterostructured tin halide perovskite photovoltaics",
+    "year": 2025,
+    "cited": 145,
+    "venue": "Nature Nanotechnology",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41565-025-01905-4.pdf",
+    "abstract": "Tin halide perovskites (THPs) have emerged as promising lead-free candidates for eco-friendly perovskite solar cells, but their photovoltaic performance still lags behind that of lead-based counterparts due to poor thin-film quality. Constructing two-dimensional/three-dimensional (2D/3D) heterostructures can effectively regulate crystallization and suppress defect formation for developing high-quality THP thin films. However, the high aggregation barrier prevents large 2D perovskite colloids from forming stable clusters, making 2D THPs nucleate more slowly than their 3D analogues. Such distinct nucleation kinetics cause undesirable 2D/3D phase segregation that compromises both photovoltaic performance and device durability. Here we introduce small inorganic caesium cations to partially replace bulky organic cations in the electrical double layers of 2D THP colloids, reducing the colloid size to lower their aggregation barrier. The reduced electrostatic repulsion promotes the coagulation of 2D and 3D THP colloids in the precursor solution, synchronizing their nucleation kinetics for the growth of 2D/3D heterostructured THP thin films with a homogeneous microstructure and markedly reduced trap states. Consequently, the caesium-incorporated THP solar cells deliver an excellent power conversion efficiency of 17.13% (certified 16.65%) and exhibit stable operation under continuous one-sun illumination for over 1,500 h in nitrogen without encapsulation. This study offers new insights into the colloidal chemistry and crystallization engineering of mixed-dimensional heterostructures, paving the way for high-performance lead-free perovskite photovoltaics."
+   },
+   {
+    "id": "https://openalex.org/W2148161164",
+    "doi": "https://doi.org/10.1371/journal.pone.0011101",
+    "title": "Complete Phenotypic Recovery of an Alzheimer's Disease Model by a Quinone-Tryptophan Hybrid Aggregation Inhibitor",
+    "year": 2010,
+    "cited": 145,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Alzheimer's disease research and treatments",
+     "Computational Drug Discovery Methods",
+     "Cholinesterase and Neurodegenerative Diseases"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0011101&type=printable",
+    "abstract": "The rational design of amyloid oligomer inhibitors is yet an unmet drug development need. Previous studies have identified the role of tryptophan in amyloid recognition, association and inhibition. Furthermore, tryptophan was ranked as the residue with highest amyloidogenic propensity. Other studies have demonstrated that quinones, specifically anthraquinones, can serve as aggregation inhibitors probably due to the dipole interaction of the quinonic ring with aromatic recognition sites within the amyloidogenic proteins. Here, using in vitro, in vivo and in silico tools we describe the synthesis and functional characterization of a rationally designed inhibitor of the Alzheimer's disease-associated beta-amyloid. This compound, 1,4-naphthoquinon-2-yl-L-tryptophan (NQTrp), combines the recognition capacities of both quinone and tryptophan moieties and completely inhibited Abeta oligomerization and fibrillization, as well as the cytotoxic effect of Abeta oligomers towards cultured neuronal cell line. Furthermore, when fed to transgenic Alzheimer's disease Drosophila model it prolonged their life span and completely abolished their defective locomotion. Analysis of the brains of these flies showed a significant reduction in oligomeric species of Abeta while immuno-staining of the 3(rd) instar larval brains showed a significant reduction in Abeta accumulation. Computational studies, as well as NMR and CD spectroscopy provide mechanistic insight into the activity of the compound which is most likely mediated by clamping of the aromatic recognition interface in the central segment of Abeta. Our results demonstrate that interfering with the aromatic core of amyloidogenic peptides is a promising approach for inhibiting various pathogenic species associated with amyloidogenic diseases. The compound NQTrp can serve as a lead for developing a new class of disease modifying drugs for Alzheimer's disease."
+   },
+   {
+    "id": "https://openalex.org/W4392373956",
+    "doi": "https://doi.org/10.1021/jacs.3c12296",
+    "title": "Organic–Inorganic Hybrid Glasses of Atomically Precise Nanoclusters",
+    "year": 2024,
+    "cited": 144,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Nanocluster Synthesis and Applications",
+     "Lanthanide and Transition Metal Complexes",
+     "Crystal Structures and Properties"
+    ],
+    "oa_url": "https://doi.org/10.1021/jacs.3c12296",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Organic–inorganic atomically precise nanoclusters provide indispensable building blocks for establishing structure–property links in hybrid condensed matter. However, robust glasses of ligand-protected nanocluster solids have yet to be demonstrated. Herein, we show [Cu 4 I 4 (PR 3 ) 4 ] cubane nanoclusters coordinated by phosphine ligands (PR 3 ) form robust melt-quenched glasses in air with reversible crystal–liquid–glass transitions. Protective phosphine ligands critically influence the glass formation mechanism, modulating the glasses’ physical properties. A hybrid glass utilizing ethyldiphenylphosphine-based nanoclusters, [Cu 4 I 4 (PPh 2 Et) 4 ], exhibits superb optical properties, including >90% transmission in both visible and near-infrared wavelengths, negligible self-absorption, near-unity quantum yield, and high light yield. Experimental and theoretical analyses demonstrate the structural integrity of the [Cu 4 I 4 (PPh 2 Et) 4 ] nanocluster, i.e., iodine-bridged tetranuclear cubane, has been fully preserved in the glass state. The strong internanocluster CH−π interactions found in the [Cu 4 I 4 (PPh 2 Et) 4 ] glass and subsequently reduced structural vibration account for its enhanced luminescence properties. Moreover, this highly transparent glass enables performant X-ray imaging and low-loss waveguiding in fibers drawn above the glass transition. The discovery of “nanocluster glass” opens avenues for unraveling glass formation mechanisms and designing novel luminescent glasses of well-defined building blocks for advanced photonics."
+   },
+   {
+    "id": "https://openalex.org/W2754946170",
+    "doi": "https://doi.org/10.1039/c7sc03515b",
+    "title": "An acidic pH independent piperazine–TPE AIEgen as a unique bioprobe for lysosome tracing",
+    "year": 2017,
+    "cited": 143,
+    "venue": "Chemical Science",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Calcium signaling and nucleotide metabolism",
+     "DNA and Nucleic Acid Chemistry"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/sc/c7sc03515b",
+    "abstract": "Lysosomes are involved in a multitude of cellular processes and their dysfunction is associated with various diseases. They are the most acidic organelles (pH 3.8-6.6, size 0.1-1.2 μm) with the highest viscosity (47-190 cP at 25 °C) in the cell. Because of their acidity, pH dependent non-AIE active fluorescent lysosomal probes have been developed that rely on protonation inhibited photoinduced electron transfer (PET). In this work, an acidic pH independent lysosome targetable piperazine-TPE (PIP-TPE) AIEgen has been designed with unique photophysical properties making it a suitable probe for quantifying viscosity. In a non-aggregated state PIP-TPE shows deep-blue emission as opposed to its yellowish-green emission in the bulk. It possesses high specificity for lysosomes with negligible cytotoxicity and good tracing ability due to its better photostability compared to LysoTracker Red. In contrast to most known lysosome probes that rely solely on PET, restriction of intramolecular motion (RIM) due to the larger viscosity inside the lysosomes is the mechanism responsible for PIP-TPE's fluorescence. PIP-TPE's high selectivity is attributed to its unique molecular design that features piperazine fragments providing a perfect balance between lipophilicity and polarity."
+   },
+   {
+    "id": "https://openalex.org/W4225421293",
+    "doi": "https://doi.org/10.1038/s41467-022-30071-7",
+    "title": "Alternative splicing modulation by G-quadruplexes",
+    "year": 2022,
+    "cited": 142,
+    "venue": "Nature Communications",
+    "topics": [
+     "RNA Research and Splicing",
+     "RNA and protein synthesis mechanisms",
+     "DNA and Nucleic Acid Chemistry"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-30071-7.pdf",
+    "abstract": "Alternative splicing is central to metazoan gene regulation, but the regulatory mechanisms are incompletely understood. Here, we show that G-quadruplex (G4) motifs are enriched ~3-fold near splice junctions. The importance of G4s in RNA is emphasised by a higher enrichment for the non-template strand. RNA-seq data from mouse and human neurons reveals an enrichment of G4s at exons that were skipped following depolarisation induced by potassium chloride. We validate the formation of stable RNA G4s for three candidate splice sites by circular dichroism spectroscopy, UV-melting and fluorescence measurements. Moreover, we find that sQTLs are enriched at G4s, and a minigene experiment provides further support for their role in promoting exon inclusion. Analysis of >1,800 high-throughput experiments reveals multiple RNA binding proteins associated with G4s. Finally, exploration of G4 motifs across eleven species shows strong enrichment at splice sites in mammals and birds, suggesting an evolutionary conserved splice regulatory mechanism."
+   },
+   {
+    "id": "https://openalex.org/W4385334711",
+    "doi": "https://doi.org/10.1126/sciadv.adh1789",
+    "title": "One-dimensional scintillator film with benign grain boundaries for high-resolution and fast x-ray imaging",
+    "year": 2023,
+    "cited": 140,
+    "venue": "Science Advances",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Radiation Detection and Scintillator Technologies",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adh1789?download=true",
+    "abstract": "Fast and high-resolution x-ray imaging demands scintillator films with negligible afterglow, high scintillation yield, and minimized cross-talk. However, grain boundaries (GBs) are abundant in polycrystalline scintillator film, and, for current inorganic scintillators, detrimental dangling bonds at GBs inevitably extend radioluminescence lifetime and increase nonradiative recombination loss, deteriorating afterglow and scintillation yield. Here, we demonstrate that scintillators with one-dimensional (1D) crystal structure, Cs 5 Cu 3 Cl 6 I 2 explored here, possess benign GBs without dangling bonds, yielding nearly identical afterglow and scintillation yield for single crystals and polycrystalline films. Because of its 1D crystal structure, Cs 5 Cu 3 Cl 6 I 2 films with desired columnar morphology are easily obtained via close space sublimation, exhibit negligible afterglow (0.1% at 10 ms) and high scintillation yield (1.2 times of CsI:Tl). We have also demonstrated fast x-ray imaging with 27 line pairs mm −1 resolution and frame rate up to 33 fps, surpassing most existing scintillators. We believe that the 1D scintillators can greatly boost x-ray imaging performance."
+   },
+   {
+    "id": "https://openalex.org/W2911332796",
+    "doi": "https://doi.org/10.1002/advs.201801169",
+    "title": "Hydrophobic Cu2O Quantum Dots Enabled by Surfactant Modification as Top Hole‐Transport Materials for Efficient Perovskite Solar Cells",
+    "year": 2019,
+    "cited": 135,
+    "venue": "Advanced Science",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201801169",
+    "abstract": "Abstract The utilization of an inorganic hole‐transport layer (HTL) is one of the most effective methods to improve the stability and reduce the cost of perovskite solar cells (PSCs). However, achieving high‐quality inorganic HTL films, especially HTL films in n‐i‐p structures, via solution processes remains a big challenge. Here, a simple surface modification strategy for low‐cost and stable cuprous oxide (Cu2O) quantum dots is proposed, which utilizes a silane coupling agent. The modified Cu2O can be directly deposited on the perovskite film as the top HTL without decomposing the perovskite to maintain an n‐i‐p structure. The efficiency (18.9%) of PSCs with surface‐modified Cu2O as the HTL is significantly higher than that (11.9%) of PSCs with unmodified Cu2O, which is also the record efficiency for a Cu2O‐based perovskite solar cell in n‐i‐p structure. The enhanced performance of PSCs is attributed to the remarkably enhanced film properties achieved through surface modification. Moreover, because of the dopant‐free technology and hydrophobic surface, the Cu2O‐based PSCs have distinctly better stability than 2,2′,7,7′‐tetrakis[N,N‐di(4‐methoxyphenyl)amino]‐9,9′‐spiro‐bifluorene‐based PSCs."
+   },
+   {
+    "id": "https://openalex.org/W298979460",
+    "doi": "https://doi.org/10.1038/srep09862",
+    "title": "Curcumin Pyrazole and its derivative (N-(3-Nitrophenylpyrazole) Curcumin inhibit aggregation, disrupt fibrils and modulate toxicity of Wild type and Mutant α-Synuclein",
+    "year": 2015,
+    "cited": 135,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Parkinson's Disease Mechanisms and Treatments",
+     "Curcumin's Biomedical Applications",
+     "Alzheimer's disease research and treatments"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep09862.pdf",
+    "abstract": "Accumulating evidence suggests that deposition of neurotoxic α-synuclein aggregates in the brain during the development of neurodegenerative diseases like Parkinson's disease can be curbed by anti-aggregation strategies that either disrupt or eliminate toxic aggregates. Curcumin, a dietary polyphenol exhibits anti-amyloid activity but the use of this polyphenol is limited owing to its instability. As chemical modifications in curcumin confiscate this limitation, such efforts are intensively performed to discover molecules with similar but enhanced stability and superior properties. This study focuses on the inhibitory effect of two stable analogs of curcumin viz. curcumin pyrazole and curcumin isoxazole and their derivatives against α-synuclein aggregation, fibrillization and toxicity. Employing biochemical, biophysical and cell based assays we discovered that curcumin pyrazole (3) and its derivative N-(3-Nitrophenylpyrazole) curcumin (15) exhibit remarkable potency in not only arresting fibrillization and disrupting preformed fibrils but also preventing formation of A11 conformation in the protein that imparts toxic effects. Compounds 3 and 15 also decreased neurotoxicity associated with fast aggregating A53T mutant form of α-synuclein. These two analogues of curcumin described here may therefore be useful therapeutic inhibitors for the treatment of α-synuclein amyloidosis and toxicity in Parkinson's disease and other synucleinopathies."
+   },
+   {
+    "id": "https://openalex.org/W3031156497",
+    "doi": "https://doi.org/10.1093/bib/bbaa114",
+    "title": "Discovery of G-quadruplex-forming sequences in SARS-CoV-2",
+    "year": 2020,
+    "cited": 131,
+    "venue": "Briefings in Bioinformatics",
+    "topics": [
+     "Bacteriophages and microbial interactions",
+     "Viral gastroenteritis research and epidemiology",
+     "DNA and Nucleic Acid Chemistry"
+    ],
+    "oa_url": "https://academic.oup.com/bib/article-pdf/22/2/1150/36654909/bbaa114.pdf",
+    "abstract": "The outbreak caused by the novel coronavirus SARS-CoV-2 has been declared a global health emergency. G-quadruplex structures in genomes have long been considered essential for regulating a number of biological processes in a plethora of organisms. We have analyzed and identified 25 four contiguous GG runs (G2NxG2NyG2NzG2) in the SARS-CoV-2 RNA genome, suggesting putative G-quadruplex-forming sequences (PQSs). Detailed analysis of SARS-CoV-2 PQSs revealed their locations in the open reading frames of ORF1 ab, spike (S), ORF3a, membrane (M) and nucleocapsid (N) genes. Identical PQSs were also found in the other members of the Coronaviridae family. The top-ranked PQSs at positions 13385 and 24268 were confirmed to form RNA G-quadruplex structures in vitro by multiple spectroscopic assays. Furthermore, their direct interactions with viral helicase (nsp13) were determined by microscale thermophoresis. Molecular docking model suggests that nsp13 distorts the G-quadruplex structure by allowing the guanine bases to be flipped away from the guanine quartet planes. Targeting viral helicase and G-quadruplex structure represents an attractive approach for potentially inhibiting the SARS-CoV-2 virus."
+   },
+   {
+    "id": "https://openalex.org/W3099926419",
+    "doi": "https://doi.org/10.1038/s41467-020-19375-8",
+    "title": "NeoR, a near-infrared absorbing rhodopsin",
+    "year": 2020,
+    "cited": 124,
+    "venue": "Nature Communications",
+    "topics": [
+     "Photoreceptor and optogenetics research",
+     "Retinal Development and Disorders",
+     "Neuroscience and Neural Engineering"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-19375-8.pdf",
+    "abstract": "Abstract The Rhizoclosmatium globosum genome encodes three rhodopsin-guanylyl cyclases (RGCs), which are predicted to facilitate visual orientation of the fungal zoospores. Here, we show that RGC1 and RGC2 function as light-activated cyclases only upon heterodimerization with RGC3 (NeoR). RGC1/2 utilize conventional green or blue-light-sensitive rhodopsins ( λ max = 550 and 480 nm, respectively), with short-lived signaling states, responsible for light-activation of the enzyme. The bistable NeoR is photoswitchable between a near-infrared-sensitive (NIR, λ max = 690 nm) highly fluorescent state ( Q F = 0.2) and a UV-sensitive non-fluorescent state, thereby modulating the activity by NIR pre-illumination. No other rhodopsin has been reported so far to be functional as a heterooligomer, or as having such a long wavelength absorption or high fluorescence yield. Site-specific mutagenesis and hybrid quantum mechanics/molecular mechanics simulations support the idea that the unusual photochemical properties result from the rigidity of the retinal chromophore and a unique counterion triad composed of two glutamic and one aspartic acids. These findings substantially expand our understanding of the natural potential and limitations of spectral tuning in rhodopsin photoreceptors."
+   },
+   {
+    "id": "https://openalex.org/W3006306945",
+    "doi": "https://doi.org/10.7150/thno.41228",
+    "title": "Bioinspired tumor-homing nanoplatform for co-delivery of paclitaxel and siRNA-E7 to HPV-related cervical malignancies for synergistic therapy",
+    "year": 2020,
+    "cited": 121,
+    "venue": "Theranostics",
+    "topics": [
+     "RNA Interference and Gene Delivery",
+     "Nanoplatforms for cancer theranostics",
+     "Advanced biosensing and bioanalysis techniques"
+    ],
+    "oa_url": "https://www.thno.org/v10p3325.pdf",
+    "abstract": "Because of the complexity of cancer, a combination of chemotherapy and gene therapy is an emerging treatment modality.To realize the full potential of this strategy, a smart, highly biocompatible nanosystem that enables the precise co-delivery of small-molecule anticancer drugs and small interfering RNA (siRNA) is urgently needed.This study aimed to improve the therapeutic effect against cervical cancer by using cancer cell membrane-camouflaged nanoparticles for simultaneous delivery of paclitaxel (PTX) and siRNA targeting E7.Methods: By camouflaging HeLa cell membranes onto siRNA/PTX co-loaded (lactic-co-glycolic acid) (PLGA) nanoparticles, a biomimetic dual-drug delivery system (Si/PNPs@HeLa) was developed to simultaneously deliver PTX and siRNA targeting E7.After evaluating the physicochemical characteristics as well as their cell uptake and biodistribution behavior, studies on the RNA interference efficiency and antitumor ability of Si/PNPs@HeLa in vitro and in vivo were further carried out.Results: The Si/PNPs@HeLa was capable of delivering PTX and siRNA simultaneously to HeLa cells both in vitro and in vivo.Moreover, benefiting from the recognition and adhesion molecules on the surface of HeLa cells, Si/PNPs@HeLa exhibited an improved immune escape ability and an increased tumor region accumulation (3-fold higher than bare nanoparticles).As a result, an excellent synergistic anti-tumor effect was observed in the HeLa tumor-bearing mice, with tumor volume inhibiting rates of 83.6% and no side effects in major organs.The mechanistic studies confirmed that E7 knockdown sensitized HeLa cells to PTX chemotherapy, mainly by inhibiting PTX-induced AKT pathway activation.Conclusion: Si/PNPs@HeLa, by integrating immune escape and tumor-homing ability, can serve as an efficient dual-drug delivery system to achieve precise treatment of cervical cancer through chemo-gene combined therapy."
+   },
+   {
+    "id": "https://openalex.org/W2511213275",
+    "doi": "https://doi.org/10.1073/pnas.1610421113",
+    "title": "2-Sulfonylpyrimidines: Mild alkylating agents with anticancer activity toward p53-compromised cells",
+    "year": 2016,
+    "cited": 120,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Synthesis and Biological Evaluation",
+     "Click Chemistry and Applications",
+     "Biochemical and Molecular Research"
+    ],
+    "oa_url": "https://www.pnas.org/content/pnas/113/36/E5271.full.pdf",
+    "abstract": "The tumor suppressor p53 has the most frequently mutated gene in human cancers. Many of p53's oncogenic mutants are just destabilized and rapidly aggregate, and are targets for stabilization by drugs. We found certain 2-sulfonylpyrimidines, including one named PK11007, to be mild thiol alkylators with anticancer activity in several cell lines, especially those with mutationally compromised p53. PK11007 acted by two routes: p53 dependent and p53 independent. PK11007 stabilized p53 in vitro via selective alkylation of two surface-exposed cysteines without compromising its DNA binding activity. Unstable p53 was reactivated by PK11007 in some cancer cell lines, leading to up-regulation of p53 target genes such as p21 and PUMA. More generally, there was cell death that was independent of p53 but dependent on glutathione depletion and associated with highly elevated levels of reactive oxygen species and induction of endoplasmic reticulum (ER) stress, as also found for the anticancer agent PRIMA-1(MET)(APR-246). PK11007 may be a lead for anticancer drugs that target cells with nonfunctional p53 or impaired reactive oxygen species (ROS) detoxification in a wide variety of mutant p53 cells."
+   },
+   {
+    "id": "https://openalex.org/W4380628119",
+    "doi": "https://doi.org/10.1038/s41467-023-39125-w",
+    "title": "All-organic polymeric materials with high refractive index and excellent transparency",
+    "year": 2023,
+    "cited": 119,
+    "venue": "Nature Communications",
+    "topics": [
+     "Synthesis and properties of polymers",
+     "Silicone and Siloxane Chemistry",
+     "Photonic and Optical Devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-39125-w.pdf",
+    "abstract": "High refractive index polymers (HRIPs) have drawn attention for their optoelectronic applications and HRIPs with excellent transparency and facile preparation are highly demanded. Herein, sulfur-containing all organic HRIPs with refractive indices up to 1.8433 at 589 nm and excellent optical transparency even in one hundred micrometre scale in the visual and RI region as well as high weight-average molecular weights (up to 44500) are prepared by our developed organobase catalyzed polymerization of bromoalkynes and dithiophenols in yields up to 92%. Notably, the fabricated optical transmission waveguides using the resultant HRIP with the highest refractive index display a reduced propagation loss compared with that generated by the commercial material of SU-8. In addition, the tetraphenylethylene containing polymer not only exhibits a reduced propagation loss, but also is used to examine the uniformity and continuity of optical waveguides with naked eyes because of its aggregation-induced emission feature."
+   },
+   {
+    "id": "https://openalex.org/W4225491289",
+    "doi": "https://doi.org/10.1002/advs.202105569",
+    "title": "Tuning the Coherent Propagation of Organic Exciton‐Polaritons through Dark State Delocalization",
+    "year": 2022,
+    "cited": 118,
+    "venue": "Advanced Science",
+    "topics": [
+     "Strong Light-Matter Interactions",
+     "Thermal Radiation and Cooling Technologies",
+     "Plasmonic and Surface Plasmon Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202105569",
+    "abstract": "Abstract While there have been numerous reports of long‐range polariton transport at room‐temperature in organic cavities, the spatiotemporal evolution of the propagation is scarcely reported, particularly in the initial coherent sub‐ps regime, where photon and exciton wavefunctions are inextricably mixed. Hence the detailed process of coherent organic exciton‐polariton transport and, in particular, the role of dark states has remained poorly understood. Here, femtosecond transient absorption microscopy is used to directly image coherent polariton motion in microcavities of varying quality factor. The transport is found to be well‐described by a model of band‐like propagation of an initially Gaussian distribution of exciton‐polaritons in real space. The velocity of the polaritons reaches values of ≈ 0.65 × 106 m s−1, substantially lower than expected from the polariton dispersion. Further, it is found that the velocity is proportional to the quality factor of the microcavity. This unexpected link between the quality‐factor and polariton velocity is suggested to be a result of varying admixing between delocalized dark and polariton states."
+   },
+   {
+    "id": "https://openalex.org/W2416362275",
+    "doi": "https://doi.org/10.1038/srep11811",
+    "title": "High-resolution NMR characterization of low abundance oligomers of amyloid-β without purification",
+    "year": 2015,
+    "cited": 118,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced NMR Techniques and Applications",
+     "Alzheimer's disease research and treatments",
+     "Protein Structure and Dynamics"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep11811.pdf",
+    "abstract": "Alzheimer's disease is characterized by the misfolding and self-assembly of the amyloidogenic protein amyloid-β (Aβ). The aggregation of Aβ leads to diverse oligomeric states, each of which may be potential targets for intervention. Obtaining insight into Aβ oligomers at the atomic level has been a major challenge to most techniques. Here, we use magic angle spinning recoupling (1)H-(1)H NMR experiments to overcome many of these limitations. Using (1)H-(1)H dipolar couplings as a NMR spectral filter to remove both high and low molecular weight species, we provide atomic-level characterization of a non-fibrillar aggregation product of the Aβ1-40 peptide using non-frozen samples without isotopic labeling. Importantly, this spectral filter allows the detection of the specific oligomer signal without a separate purification procedure. In comparison to other solid-state NMR techniques, the experiment is extraordinarily selective and sensitive. A resolved 2D spectra could be acquired of a small population of oligomers (6 micrograms, 7% of the total) amongst a much larger population of monomers and fibers (93% of the total). By coupling real-time (1)H-(1)H NMR experiments with other biophysical measurements, we show that a stable, primarily disordered Aβ1-40 oligomer 5-15 nm in diameter can form and coexist in parallel with the well-known cross-β-sheet fibrils."
+   },
+   {
+    "id": "https://openalex.org/W3121303817",
+    "doi": "https://doi.org/10.1038/s41598-021-89984-w",
+    "title": "A rich gallery of carbon dots based photoluminescent suspensions and powders derived by citric acid/urea",
+    "year": 2021,
+    "cited": 116,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Carbon and Quantum Dots Applications",
+     "Nanocluster Synthesis and Applications",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-021-89984-w.pdf",
+    "abstract": "In this study we demonstrate simple guidelines to generate a diverse range of fluorescent materials in both liquid and solid state by focusing on the most popular C-dots precursors, i.e. the binary systems of citric acid and urea. The pyrolytic treatment of those precursors combined with standard size separation techniques (dialysis and filtration), leads to four distinct families of photoluminescent materials in which the emissive signal predominantly arises from C-dots with embedded fluorophores, cyanuric acid-rich C-dots, a blend of molecular fluorophores and a mixture of C-dots with unbound molecular fluorophores, respectively. Within each one of those families the chemical composition and the optical properties of their members can be fine-tuned by adjusting the molar ratio of the reactants. Apart from generating a variety of aqueous dispersions, our approach leads to highly fluorescent powders derived from precursors comprising excessive amounts of urea that is consumed for the build-up of the carbogenic cores, the molecular fluorophores and the solid diluent matrix that suppresses self-quenching effects."
+   },
+   {
+    "id": "https://openalex.org/W2944511810",
+    "doi": "https://doi.org/10.1093/nar/gkz336",
+    "title": "Structure-guided post-SELEX optimization of an ochratoxin A aptamer",
+    "year": 2019,
+    "cited": 115,
+    "venue": "Nucleic Acids Research",
+    "topics": [
+     "Advanced biosensing and bioanalysis techniques",
+     "Bacteriophages and microbial interactions",
+     "DNA and Nucleic Acid Chemistry"
+    ],
+    "oa_url": "https://academic.oup.com/nar/article-pdf/47/11/5963/28839136/gkz336.pdf",
+    "abstract": "SELEX is the cornerstone for aptamer research with broad applications in biosensors and medicine. To improve the affinity of selected aptamers, we propose a structure-guided post-SELEX approach, an optimization method based on the precise secondary structure of the aptamer-ligand complex. We demonstrate this approach using the Ochratoxin A (OTA) aptamer. Guided by the structure, we designed a new aptamer whose affinity is improved by more than 50-fold. We also determined the high-resolution NMR structure of the new aptamer-OTA complex and elucidated the discriminatory recognition mechanism of one atomic difference between two analogs, OTA and OTB. The aptamer forms an unusual hairpin structure containing an intramolecular triple helix, which is not seen in the previously determined aptamer complex. The π-π stacking, the hydrophobic interaction, hydrogen bonds and halogen bonds between OTA and the aptamer contribute to the recognition of OTA, and the halogen bonds play an important role in discriminating between OTA and OTB. Our results demonstrate that the structure-guided post-SELEX approach improves aptamers affinity. An improved OTA biosensor system might be developed using this new strategy."
+   },
+   {
+    "id": "https://openalex.org/W2049779453",
+    "doi": "https://doi.org/10.1371/journal.pone.0013863",
+    "title": "Inhibiting α-Synuclein Oligomerization by Stable Cell-Penetrating β-Synuclein Fragments Recovers Phenotype of Parkinson's Disease Model Flies",
+    "year": 2010,
+    "cited": 112,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Parkinson's Disease Mechanisms and Treatments",
+     "Alzheimer's disease research and treatments",
+     "Autism Spectrum Disorder Research"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0013863&type=printable",
+    "abstract": "The intracellular oligomerization of α-synuclein is associated with Parkinson's disease and appears to be an important target for disease-modifying treatment. Yet, to date, there is no specific inhibitor for this aggregation process. Using unbiased systematic peptide array analysis, we identified molecular interaction domains within the β-synuclein polypeptide that specifically binds α-synuclein. Adding such peptide fragments to α-synuclein significantly reduced both amyloid fibrils and soluble oligomer formation in vitro. A retro-inverso analogue of the best peptide inhibitor was designed to develop the identified molecular recognition module into a drug candidate. While this peptide shows indistinguishable activity as compared to the native peptide, it is stable in mouse serum and penetrates α-synuclein over-expressing cells. The interaction interface between the D-amino acid peptide and α-synuclein was mapped by Nuclear Magnetic Resonance spectroscopy. Finally, administering the retro-inverso peptide to a Drosophila model expressing mutant A53T α-synuclein in the nervous system, resulted in a significant recovery of the behavioral abnormalities of the treated flies and in a significant reduction in α-synuclein accumulation in the brains of the flies. The engineered retro-inverso peptide can serve as a lead for developing a novel class of therapeutic agents to treat Parkinson's disease."
+   },
+   {
+    "id": "https://openalex.org/W3196442753",
+    "doi": "https://doi.org/10.1039/d1na00499a",
+    "title": "Sunlight driven photocatalytic degradation of organic pollutants using a MnV 2 O 6 /BiVO 4 heterojunction: mechanistic perception and degradation pathways",
+    "year": 2021,
+    "cited": 110,
+    "venue": "Nanoscale Advances",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "TiO2 Photocatalysis and Solar Cells",
+     "Pigment Synthesis and Properties"
+    ],
+    "oa_url": "https://doi.org/10.1039/d1na00499a",
+    "abstract": "In the field of photocatalysis, fabrication of a heterojunction structure with effective charge separation at the interface and charge shift to enhance the photocatalytic activity has acquired extensive consideration."
+   },
+   {
+    "id": "https://openalex.org/W3163480234",
+    "doi": "https://doi.org/10.1093/nsr/nwab085",
+    "title": "Red-light excited efficient metal-free near-infrared room-temperature phosphorescent films",
+    "year": 2021,
+    "cited": 109,
+    "venue": "National Science Review",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Luminescence and Fluorescent Materials",
+     "Luminescence Properties of Advanced Materials"
+    ],
+    "oa_url": "https://academic.oup.com/nsr/article-pdf/9/2/nwab085/44252464/nwab085.pdf",
+    "abstract": "Abstract A set of red-light-excited, metal-free room-temperature phosphorescence (RTP) systems was constructed with brominated phenolsulfonephthaleine derivatives. The best metal-free RTP system has the reddest near-infrared (NIR) RTP emission (λp = 819 nm) with the highest phosphorescence quantum yield (ΦRTP = 3.0%) so far identified. The RTP emission can be switched ON-OFF by adding acid and alkali alternately. A logic operation with half-subtractor function and dual-channel response (visible light emission/NIR RTP emission) was also constructed based on these properties."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"HORIBA FluoroMax\") AND OPEN_ACCESS:y",
+  "count": 899,
+  "papers": [
+   {
+    "pmcid": "PMC3826634",
+    "doi": "10.1038/ncomms3661",
+    "title": "Controlling the influence of Auger recombination on the performance of quantum-dot light-emitting diodes.",
+    "journal": "Nat Commun",
+    "year": "2013",
+    "cited": 296,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8012368",
+    "doi": "10.1038/s41467-021-22286-x",
+    "title": "In vivo activation of pH-responsive oxidase-like graphitic nanozymes for selective killing of Helicobacter pylori.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 157,
+    "snippets": 3,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8121806",
+    "doi": "10.1038/s41467-021-22864-z",
+    "title": "Degradation mechanism of hybrid tin-based perovskite solar cells and the critical role of tin (IV) iodide.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 141,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6251929",
+    "doi": "10.1038/s41467-018-07420-6",
+    "title": "Understanding structure-activity relationships in linear polymer photocatalysts for hydrogen evolution.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 139,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC3030596",
+    "doi": "10.1371/journal.pone.0016564",
+    "title": "Orally administrated cinnamon extract reduces β-amyloid oligomerization and corrects cognitive impairment in Alzheimer's disease animal models.",
+    "journal": "PLoS One",
+    "year": "2011",
+    "cited": 131,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9065059",
+    "doi": "10.1038/s41467-022-30071-7",
+    "title": "Alternative splicing modulation by G-quadruplexes.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 117,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC2885425",
+    "doi": "10.1371/journal.pone.0011101",
+    "title": "Complete phenotypic recovery of an Alzheimer's disease model by a quinone-tryptophan hybrid aggregation inhibitor.",
+    "journal": "PLoS One",
+    "year": "2010",
+    "cited": 115,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10033409",
+    "doi": "10.1038/s41586-023-05789-z",
+    "title": "Autoregulation of GPCR signalling through the third intracellular loop.",
+    "journal": "Nature",
+    "year": "2023",
+    "cited": 114,
+    "snippets": 4,
+    "standards_in_paper": [
+     "GM117923",
+     "GM126940"
+    ]
+   },
+   {
+    "pmcid": "PMC6082344",
+    "doi": "10.1038/s41565-018-0168-1",
+    "title": "Pathway-controlled formation of mesostructured all-DNA colloids and superstructures.",
+    "journal": "Nat Nanotechnol",
+    "year": "2018",
+    "cited": 114
+   },
+   {
+    "pmcid": "PMC6414200",
+    "doi": "10.7554/elife.44364",
+    "title": "Stepwise activation mechanism of the scramblase nhTMEM16 revealed by cryo-EM.",
+    "journal": "Elife",
+    "year": "2019",
+    "cited": 107
+   },
+   {
+    "pmcid": "PMC8104869",
+    "doi": "10.1126/sciadv.abf9668",
+    "title": "Engendering persistent organic room temperature phosphorescence by trace ingredient incorporation.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 102
+   },
+   {
+    "pmcid": "PMC7787487",
+    "doi": "10.1126/sciadv.abd2091",
+    "title": "Ultrabright Au@Cu<sub>14</sub> nanoclusters: 71.3% phosphorescence quantum yield in non-degassed solution at room temperature.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 97
+   },
+   {
+    "pmcid": "PMC5916020",
+    "doi": "10.1039/c7sc05317g",
+    "title": "Observation of a new type of aggregation-induced emission in nanoclusters.",
+    "journal": "Chem Sci",
+    "year": "2018",
+    "cited": 94
+   },
+   {
+    "pmcid": "PMC4490348",
+    "doi": "10.1038/srep11811",
+    "title": "High-resolution NMR characterization of low abundance oligomers of amyloid-β without purification.",
+    "journal": "Sci Rep",
+    "year": "2015",
+    "cited": 94
+   },
+   {
+    "pmcid": "PMC9772410",
+    "doi": "10.1038/s41467-022-35625-3",
+    "title": "Photoprogrammable circularly polarized phosphorescence switching of chiral helical polyacetylene thin films.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 92
+   },
+   {
+    "pmcid": "PMC2978097",
+    "doi": "10.1371/journal.pone.0013863",
+    "title": "Inhibiting α-synuclein oligomerization by stable cell-penetrating β-synuclein fragments recovers phenotype of Parkinson's disease model flies.",
+    "journal": "PLoS One",
+    "year": "2010",
+    "cited": 92
+   },
+   {
+    "pmcid": "PMC5969501",
+    "doi": "10.1039/c8sc01170b",
+    "title": "Deciphering the working mechanism of aggregation-induced emission of tetraphenylethylene derivatives by ultrafast spectroscopy.",
+    "journal": "Chem Sci",
+    "year": "2018",
+    "cited": 85
+   },
+   {
+    "pmcid": "PMC7053183",
+    "doi": "10.7150/thno.41228",
+    "title": "Bioinspired tumor-homing nanoplatform for co-delivery of paclitaxel and siRNA-E7 to HPV-related cervical malignancies for synergistic therapy.",
+    "journal": "Theranostics",
+    "year": "2020",
+    "cited": 84
+   },
+   {
+    "pmcid": "PMC6803818",
+    "doi": "10.4155/fmc-2019-0181",
+    "title": "A structure-guided molecular chaperone approach for restoring the transcriptional activity of the p53 cancer mutant Y220C.",
+    "journal": "Future Med Chem",
+    "year": "2019",
+    "cited": 81
+   },
+   {
+    "pmcid": "PMC4435243",
+    "doi": "10.1038/srep09862",
+    "title": "Curcumin Pyrazole and its derivative (N-(3-Nitrophenylpyrazole) Curcumin inhibit aggregation, disrupt fibrils and modulate toxicity of Wild type and Mutant α-Synuclein.",
+    "journal": "Sci Rep",
+    "year": "2015",
+    "cited": 81
+   },
+   {
+    "pmcid": "PMC7933130",
+    "doi": "10.1038/s41586-021-03230-x",
+    "title": "Structure and inhibition mechanism of the human citrate transporter NaCT.",
+    "journal": "Nature",
+    "year": "2021",
+    "cited": 80
+   },
+   {
+    "pmcid": "PMC5848814",
+    "doi": "10.1039/c7sc03515b",
+    "title": "An acidic pH independent piperazine-TPE AIEgen as a unique bioprobe for lysosome tracing.",
+    "journal": "Chem Sci",
+    "year": "2017",
+    "cited": 78
+   },
+   {
+    "pmcid": "PMC3144587",
+    "doi": "10.1038/ncomms1411",
+    "title": "Dust inputs and bacteria influence dissolved organic matter in clear alpine lakes.",
+    "journal": "Nat Commun",
+    "year": "2011",
+    "cited": 78
+   },
+   {
+    "pmcid": "PMC5431686",
+    "doi": "10.1039/c6sc05104a",
+    "title": "The tetrahedral structure and luminescence properties of Bi-metallic Pt<sub>1</sub>Ag<sub>28</sub>(SR)<sub>18</sub>(PPh<sub>3</sub>)<sub>4</sub> nanocluster.",
+    "journal": "Chem Sci",
+    "year": "2017",
+    "cited": 77
+   },
+   {
+    "pmcid": "PMC5916881",
+    "doi": "10.1038/s41598-018-24677-5",
+    "title": "In vitro synthesis of gene-length single-stranded DNA.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 76
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC3826634",
+   "title": "Controlling the influence of Auger recombination on the performance of quantum-dot light-emitting diodes.",
+   "year": "2013",
+   "text": "uipped with an energy-dispersive X-ray (EDX) spectrometer (Bruker Quantax). TEM samples were prepared by drop-casting dilute sample solutions onto carbon-coated copper TEM grids. Spectroscopic characterization Optical absorbance was measured with an Agilent 8453 spectrometer; solution PL spectra and single-exciton decay traces were recorded with a Horiba Fluoromax-4 spectrofluorometer. The PL QYs were estimated by comparing their PL intensities with those of standard dye solutions (LD 690 from Exciton Corporation) at the same optical density (0.05) using the same excitation wavelength. Picosecond time-resolved PL measurements were conducted using a Hamamatsu 5860 streak camera with 12 ps time resolution. Th",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8012368",
+   "title": "In vivo activation of pH-responsive oxidase-like graphitic nanozymes for selective killing of Helicobacter pylori.",
+   "year": "2021",
+   "text": "itation (Renishaw, UK). Ultraviolet-visible spectra were recorded by a UV-2450 UV-vis spectrophotometer (Shimadzu, Japan). Hydrodynamic diameters and Zeta potentials were measured by a DLS system (Malvern, UK). TEM images were taken with a JEM-2010 (JEOL, Japan). SEM images were measured by JSM-6700F (Japan). Fluorescence spectra were performed by HORIBA Fluoromax-4 (HORIBA, USA). Electron paramagnetic resonance (EPR) measurements were recorded by JES-FA200 electron spin resonance (JEOL, Japan). A Minispec MQ60 60 MHz TD NMR broadband spectrometer (Bruker, Germany) was used to measure T 2 relaxivity. T 2 -weighted MR imaging was taken by the 1.5 T small animal MR scanner (MRI 1.5 T; Shining Global Science a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8012368",
+   "title": "In vivo activation of pH-responsive oxidase-like graphitic nanozymes for selective killing of Helicobacter pylori.",
+   "year": "2021",
+   "text": "the product O 2 •− , hydroethidine (HE) was used as a probe, which could be easily oxidized by O 2 •− to generate the highly fluorescent product ethidium (E + ). In a typical procedure, HE was added into the reaction solution (PBS, pH 1.0) for 30 min, and then the fluorescence spectra of the samples were collected using fluorescence spectroscopy (HORIBA Fluoromax-4, USA). For assay of the product •OH, TA, and DEPMPO, which were used as probes, could easily react with •OH to form a highly fluorescent product (TAOH) and EPR spin adduct (DEPMPO-OH). In experimental procedure, TA and DEPMPO were added into reaction solutions (PBS, pH 1.0). Then, the fluorescence spectra and EPR of the samples were performed by",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8012368",
+   "title": "In vivo activation of pH-responsive oxidase-like graphitic nanozymes for selective killing of Helicobacter pylori.",
+   "year": "2021",
+   "text": "roduct •OH, TA, and DEPMPO, which were used as probes, could easily react with •OH to form a highly fluorescent product (TAOH) and EPR spin adduct (DEPMPO-OH). In experimental procedure, TA and DEPMPO were added into reaction solutions (PBS, pH 1.0). Then, the fluorescence spectra and EPR of the samples were performed by fluorescence spectroscopy (HORIBA Fluoromax-4, USA) and EPR spectroscopy (JEOL, Japan). Oxidase-like property of PtCo@G in simulated gastric fluid (SGF) Chemicals were added into SGF in an order of certain amounts of PtCo@G and TMB (final concentration 500 μM). The oxidation of TMB by PtCo@G in SGF produces a yellow color, and UV-Vis absorption spectra were recorded using a UV-2450 UV-vis s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8121806",
+   "title": "Degradation mechanism of hybrid tin-based perovskite solar cells and the critical role of tin (IV) iodide.",
+   "year": "2021",
+   "text": "for 20 min. Sample characterisation UV–Visible spectroscopy measurements were performed with a Shimadzu UV-2600 integrating-sphere spectrophotometer. Powder XRD patterns were acquired with a PANalytical X’Pert Pro MRD diffractometer by employing Ni-filtered Cu Kα radiation at 40 kV and 40 mA. Steady-state PL spectra were measured with a Jobin Ybon Horiba Fluoromax-3 spectrofluorometer. Time-resolved PL decays (time-correlated single-photon counting) were measured with a Horiba Deltaflex Modular Fluorescence Lifetime setup fitted with a PPD 900 detector. The excitation wavelength was chosen as 404 nm or 635 nm (whichever specified) and applied via a nanoLED (Model N-07; repetition rate: 1 MHz; pulse duration",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6251929",
+   "title": "Understanding structure-activity relationships in linear polymer photocatalysts for hydrogen evolution.",
+   "year": "2018",
+   "text": "ng sphere attachment, in order to maximally suppress reflectance and scattering losses. The same consideration motivated the use of the thin, 1 mm light path Suprasil quartz cuvettes (Hellma 110-QS, 350 μL) for carrying out the measurements in aqueous suspensions. PL spectra of such suspensions were recorded in standard reflection geometry using a Horiba FluoroMax-3 spectrofluorometer with excitations at 345 nm for P1 polymer, and 360 nm for P7 and P10 polymers. All powder- and suspension-based UV–Vis absorption and photoluminescence measurements were performed at room temperature. Imaging of the polymer morphology was achieved on a Hitachi S4800 Cold Field Emission SEM, with secondary electron, backscatter",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC3030596",
+   "title": "Orally administrated cinnamon extract reduces β-amyloid oligomerization and corrects cognitive impairment in Alzheimer's disease animal models.",
+   "year": "2011",
+   "text": "00 µg/ml). The samples were incubated at 37°C and the fibrillogenesis rate was monitored using ThT fluorescence analysis. The respective excitation and emission wavelengths were 450 nm, 2.5 nm slit, and at 480 nm, 5 nm slit. A 10-fold diluted sample was taken and mixed with 900 µl ThT 0.4 µM. The fluorescence of ThT was measured using a Jobin Yvon Horiba Fluoromax 3 fluorimeter. Each experiment was repeated in quadruplicate. Disaggregation assay Synthetic lyophilized Aβ 40 (Bachem, Bubendorf, Switzerland) was dissolved in dimethylsulfoxide (DMSO) to a concentration of 0.4 mg/ml and sonicated in ice water for 20 sec to avoid pre-aggregation. Aβ solution was prepared by immediate dilution with 10 mM phosphate",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9065059",
+   "title": "Alternative splicing modulation by G-quadruplexes.",
+   "year": "2022",
+   "text": "hed over 11 nm and its first derivative was plotted in Microsoft Excel. The final melting temperature was obtained by averaging the melting temperatures in the forward and reversed scans. Intrinsic fluorescence spectroscopy This assay was performed similarly to our previous work 72 . Briefly, intrinsic fluorescence spectroscopy was performed using HORIBA FluoroMax-4 and a 1-cm path length quartz cuvette (Hellma Analytics) was used with a volume of 2 ml. Samples with 5 μM RNA were prepared in 10 mM LiCac (pH 7.0) and 150 mM KCl/LiCl. The samples were then denatured at 95 °C for 5 min and cooled to room temperature for 15 min for renaturation. For the measurement of intrinsic fluorescence of G-quadruplexes, t",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC2885425",
+   "title": "Complete phenotypic recovery of an Alzheimer's disease model by a quinone-tryptophan hybrid aggregation inhibitor.",
+   "year": "2010",
+   "text": "d the rate of fibril formation was monitored using ThT fluorescence analysis over the course of 270 hours. The respective excitation and emission wavelengths were 450 nm (2.5 nm slit) and 480 nm (5 nm slit), respectively. A 10-fold diluted sample was taken and mixed with 900 mL of 0.4 µM ThT. The fluorescence of ThT was measured using a Jobin Yvon Horiba Fluoromax 3 fluorimeter. Each experiment was repeated in quadruplicates. IC 50 ThT measurements Synthetic lyophilized Aβ 1–42 was dissolved in DMSO to a concentration of 100 µM and sonicated for 1 min to prevent pre-aggregation. Aβ solutions were prepared by immediate dilution with 10 mM PBS. The samples were again diluted to a final concentration of 5 µM w",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC2885425",
+   "title": "Complete phenotypic recovery of an Alzheimer's disease model by a quinone-tryptophan hybrid aggregation inhibitor.",
+   "year": "2010",
+   "text": "h the appropriate inhibitor concentration or with PBS for control samples. ThT fluorescence was measured after 24 hours. The respective excitation and emission wavelengths were 450 nm (2.5 nm slit) and 480 nm (5 nm slit). A 10-fold diluted sample was taken and mixed with 900 mL of 0.4 µM ThT. The fluorescence of ThT was measured using a Jobin Yvon Horiba Fluoromax 3 fluorimeter. Each experiment was repeated in quadruplicates. Transmission electron microscopy Samples of Aβ were taken after 7 days and at the end of the ThT kinetic experiment and placed on a 400 mesh copper grid covered by carbon-stabilized Formvar film (SPI Supplies, West Chester, PA). The sample was allowed to stand for 1.5 min, excess fluid",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10033409",
+   "title": "Autoregulation of GPCR signalling through the third intracellular loop.",
+   "year": "2023",
+   "text": "26-gauge needle 10 times. Lysate was centrifuged again at 135,000 g following the same procedure and resuspended in assay buffer supplemented with 12% sucrose (w/v; 0.5 ml per 15 cm dish). Pellet homogenization was repeated as before. One-hundred microlitres of a 1:20 dilution of sample in assay buffer was used for analytical fluorescence spectra (Fluoromax 4, Horiba Scientific). Spectra were used to confirm expression level (mCerulean peak emission (excitation 430 nm, 475 nm):optical density emission (excitation 430 nm, emission 450 nm) ratio of 1.0 ± 0.2) and sensor integrity (mCitrine peak emission (excitation 490 nm, emission 525 nm):mCerulean peak emission (excitation 430 nm, emission 475 nm) ratio of 2.0",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10033409",
+   "title": "Autoregulation of GPCR signalling through the third intracellular loop.",
+   "year": "2023",
+   "text": "de cell extracts. After the first ultracentrifugation step, lysate pellets were rinsed 10 times with 1 ml assay buffer. After rinsing, pellets were processed as described above. To assess expression and labelling efficiency, lysates were diluted 1:10 in optical quartz cuvettes (3-3.30-SOG-3, Starna Cells), and assessed by fluorescence spectroscopy Horiba Fluoromax 4 Fluorometer using the following parameters for the indicated fluorophores: AZDye488/ATTO488/Oregon Green: excitation at 470 nm, emission scan from 500 nm–650 nm; mNeonGreen: samples in optical quartz cuvettes, excitation at 470 nm, emission scan from 495 nm–600 nm; AZDye546: samples in optical quartz cuvettes, excitation at 540 nm, emission scan",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10033409",
+   "title": "Autoregulation of GPCR signalling through the third intracellular loop.",
+   "year": "2023",
+   "text": "Qpep was added to the membrane mixture following sonication. A final concentration of 100 µM isoproterenol or an equivalent amount of assay buffer was added to each reaction (100 µl final). Reactions were equilibrated for 5 min at 25 °C with shaking (500 rpm). 110 µl of each reaction was loaded into an optical quartz cuvette. Fluorescence spectra (Horiba Fluoromax 4) for mCerulean were acquired for each sample (excitation 430 nm, emission scan 450 nm–600 nm, bandpass 4 nm). The mCitrine (emission 525 nm): mCerulean (emission 475 nm) ratio (FRET ratio) was calculated from each acquired spectra. Each drug–peptide condition was performed in quintuplicate. For each experiment, the ∆FRET metric was calculated by",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10033409",
+   "title": "Autoregulation of GPCR signalling through the third intracellular loop.",
+   "year": "2023",
+   "text": "r containing 10 mg ml −1 Bovine Serum Albumin, 1 mM ascorbic acid and 100 µM isoproterenol and sonicated briefly. Bio-Spep/Bio-Qpep (10 µM final) was added to the reaction mixture (300 µl final) and equilibrated on ice for 30 min. 100 µl of the reaction mixture was removed; an analytical fluorescence spectra of this sample was acquired (mCerulean: Horiba Fluoromax 4, excitation 430 nm, emission scan 450 nm–600 nm, bandpass 4 nm; TagRFP: Tecan Spark Plate Reader, 96-well clear bottom plate, bottom read, excitation at 521 nm, emission scan from 560 nm–650 nm, gain 232) as a measure of the total β 2 AR for a given condition. To the remaining 200 µl, 20 µl of 0.4 mg ml −1 streptavidin-coated magnetic beads were",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "optical_spectroscopy": 35,
+  "microscopy": 21,
+  "electrical_transport": 5,
+  "density_porosity": 4,
+  "burst_pressure": 1,
+  "flexure": 1,
+  "particle_size": 1
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "object": "siemens-t3ster",
+ "manufacturer": "siemens",
+ "phrases": [
+  "Siemens T3Ster",
+  "Simcenter T3Ster"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Siemens T3Ster\" OR \"Simcenter T3Ster\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Siemens T3Ster\" OR \"Simcenter T3Ster\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC13115634",
+    "doi": "10.3390/gels12040293",
+    "title": "Optimization of Processing Parameters and Application Performance Evaluation of a High Thermal Conductivity, Low Thermal Resistance Gel.",
+    "journal": "Gels",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D5470-17",
+     "IEC 61189-2-208",
+     "IEC 61189-2-808",
+     "IEEE 2006",
+     "JEDEC JESD22",
+     "JESD22"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC13115634",
+   "title": "Optimization of Processing Parameters and Application Performance Evaluation of a High Thermal Conductivity, Low Thermal Resistance Gel.",
+   "year": "2026",
+   "text": "m/min. According to the ASTM D5470-17 standard [ 47 ], the thermal conductivity was determined using a steady-state heat flow apparatus (LW-9389, Ruiling Instruments, Taiwan, China). Based on the IEC 61189-2-808 international standard, the contact thermal resistance under service conditions was evaluated using a thermal transient tester (Simcenter T3STER SI, Siemens EDA, Budapest, Hungary). The minimum bond-line thickness (BLT) and the filler morphology of the thermal conductive gels were characterized using an ultra-depth-of-field microscope (DVM6, Leica Microsystems, Wetzlar, Germany) and a scanning electron microscope (Apreo 2, Thermo Fisher Scientific Inc., Waltham, MA 02451, USA), respectively. The long-",
+   "standards": [
+    "ASTM D5470-17",
+    "IEC 61189-2-808"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ASTM D5470-17": 1,
+  "IEC 61189-2-808": 1
+ },
+ "standards_new": [
+  "ASTM D5470-17",
+  "IEC 61189-2-808"
+ ],
+ "test_item_hits": {
+  "microscopy": 1,
+  "thermal_conductivity": 1
+ }
+}

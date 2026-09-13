@@ -1,0 +1,37 @@
+{
+ "object": "goettfert-tcr",
+ "manufacturer": "goettfert",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM D2990": 1,
+  "ASTM D3835": 1,
+  "ASTM D412": 1,
+  "ASTM D638": 1,
+  "ASTM D3123": 1
+ },
+ "standards_new": [
+  "ASTM D2990",
+  "ASTM D3123",
+  "ASTM D3835",
+  "ASTM D412",
+  "ASTM D638"
+ ],
+ "test_item_hits": {
+  "halt_hass": 8,
+  "shear": 8,
+  "flexure": 5,
+  "density_porosity": 3,
+  "electrical_transport": 2,
+  "abrasion": 1,
+  "tensile": 1,
+  "thermal_conductivity": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "In addition, we develop biodegradable compounds specifically designed for fiber applications.",
+  "This compound group is designed for tape extrusion.",
+  "This fully biobased compound group is designed for high thermal resistance and superior mechanical properties to ensure durability and performance.",
+  "This fully biobased compound group is designed for rapid degradation."
+ ]
+}

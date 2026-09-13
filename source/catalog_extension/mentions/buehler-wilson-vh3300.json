@@ -1,0 +1,38 @@
+{
+ "object": "buehler-wilson-vh3300",
+ "manufacturer": "buehler",
+ "pages": 4,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC 17025": 2,
+  "ISO 6507": 2,
+  "ASTM E384": 2,
+  "ISO 9001": 1,
+  "ISO 4545": 1,
+  "ASTM E92": 1,
+  "ISO 6506": 1,
+  "ASTM E10": 1
+ },
+ "standards_new": [
+  "ASTM E10",
+  "IEC 17025",
+  "ISO 6506",
+  "ISO 9001"
+ ],
+ "test_item_hits": {
+  "hardness_knoop": 24,
+  "hardness_rockwell": 4,
+  "microscopy": 3,
+  "hardness_brinell": 2,
+  "optical_spectroscopy": 2,
+  "surface_topography": 2,
+  "abrasion": 1,
+  "electrical_transport": 1,
+  "shear": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "The All-in-One VH3100 is easily operated and is ideal for production control hardness testing.",
+  "With an entirely new look and feel designed for touch panel use, the DiaMet software is simple, useful and smart to work with."
+ ]
+}

@@ -1,0 +1,344 @@
+{
+ "object": "instron-electropuls-e3000",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron ElectroPuls E3000",
+  "Instron ElectroPuls",
+  "Instron E3000",
+  "Instron E3000 Linear-Torsion"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron ElectroPuls E3000\" OR \"Instron ElectroPuls\" OR \"Instron E3000\" OR \"Instron E3000 Linear-Torsion\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron ElectroPuls E3000\" OR \"Instron ElectroPuls\" OR \"Instron E3000\" OR \"Instron E3000 Linear-Torsion\") AND OPEN_ACCESS:y",
+  "count": 323,
+  "papers": [
+   {
+    "pmcid": "PMC9397609",
+    "doi": "10.1158/0008-5472.can-21-0536",
+    "title": "TGFBI Production by Macrophages Contributes to an Immunosuppressive Microenvironment in Ovarian Cancer.",
+    "journal": "Cancer Res",
+    "year": "2021",
+    "cited": 135,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4655227",
+    "doi": "10.1016/j.jmbbm.2015.04.009",
+    "title": "The interfascicular matrix enables fascicle sliding and recovery in tendon, and behaves more elastically in energy storing tendons.",
+    "journal": "J Mech Behav Biomed Mater",
+    "year": "2015",
+    "cited": 124,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10558667",
+    "doi": "10.1002/advs.202302539",
+    "title": "Regulation of Osteoimmune Microenvironment and Osteogenesis by 3D-Printed PLAG/black Phosphorus Scaffolds for Bone Regeneration.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2023",
+    "cited": 99,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GB/T 16",
+     "GB/T16886.5",
+     "ISO 10993",
+     "ISO 844"
+    ]
+   },
+   {
+    "pmcid": "PMC8961307",
+    "doi": "10.1016/j.bioactmat.2022.02.011",
+    "title": "Synergistic osteogenic and angiogenic effects of KP and QK peptides incorporated with an injectable and self-healing hydrogel for efficient bone regeneration.",
+    "journal": "Bioact Mater",
+    "year": "2022",
+    "cited": 97,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GM-60",
+     "GM-LS-001"
+    ]
+   },
+   {
+    "pmcid": "PMC6963791",
+    "doi": "10.1016/j.celrep.2019.12.034",
+    "title": "Mouse Ovarian Cancer Models Recapitulate the Human Tumor Microenvironment and Patient Response to Treatment.",
+    "journal": "Cell Rep",
+    "year": "2020",
+    "cited": 96,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7608813",
+    "doi": "10.1126/sciadv.abc1937",
+    "title": "Viscoelastic properties of biopolymer hydrogels determined by Brillouin spectroscopy: A probe of tissue micromechanics.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 70,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7581430",
+    "doi": "10.7554/elife.55212",
+    "title": "Secondary ossification center induces and protects growth plate structure.",
+    "journal": "Elife",
+    "year": "2020",
+    "cited": 63,
+    "snippets": 1,
+    "standards_in_paper": [
+     "KS 2014"
+    ]
+   },
+   {
+    "pmcid": "PMC8965852",
+    "doi": "10.1016/j.bioactmat.2021.12.032",
+    "title": "3D-printed NIR-responsive shape memory polyurethane/magnesium scaffolds with tight-contact for robust bone regeneration.",
+    "journal": "Bioact Mater",
+    "year": "2022",
+    "cited": 61,
+    "snippets": 2,
+    "standards_in_paper": [
+     "ISO 10993-12"
+    ]
+   },
+   {
+    "pmcid": "PMC9189697",
+    "doi": "10.1016/j.jshs.2021.07.002",
+    "title": "Longitudinal bending stiffness does not affect running economy in Nike Vaporfly Shoes.",
+    "journal": "J Sport Health Sci",
+    "year": "2022",
+    "cited": 60
+   },
+   {
+    "pmcid": "PMC7351749",
+    "doi": "10.1038/s41467-020-17296-0",
+    "title": "Liquid metal-based synthesis of high performance monolayer SnS piezoelectric nanogenerators.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 60
+   },
+   {
+    "pmcid": "PMC11558641",
+    "doi": "10.1016/j.bioactmat.2024.10.019",
+    "title": "3D-printed manganese dioxide incorporated scaffold promotes osteogenic-angiogenic coupling for refractory bone defect by remodeling osteo-regenerative microenvironment.",
+    "journal": "Bioact Mater",
+    "year": "2025",
+    "cited": 52
+   },
+   {
+    "pmcid": "PMC7391441",
+    "doi": "10.1177/2325967120936672",
+    "title": "Surgical Treatment of Meniscal Extrusion: A Biomechanical Study on the Role of the Medial Meniscotibial Ligaments With Early Clinical Validation.",
+    "journal": "Orthop J Sports Med",
+    "year": "2020",
+    "cited": 47
+   },
+   {
+    "pmcid": "PMC9313436",
+    "doi": "10.3390/bios12070491",
+    "title": "Machine Learning-Enabled Prediction of 3D-Printed Microneedle Features.",
+    "journal": "Biosensors (Basel)",
+    "year": "2022",
+    "cited": 45
+   },
+   {
+    "pmcid": "PMC5954336",
+    "doi": "10.1177/2325967118768743",
+    "title": "Adjustable- Versus Fixed-Loop Devices for Femoral Fixation in ACL Reconstruction: An In Vitro Full-Construct Biomechanical Study of Surgical Technique-Based Tibial Fixation and Graft Preparation.",
+    "journal": "Orthop J Sports Med",
+    "year": "2018",
+    "cited": 45
+   },
+   {
+    "pmcid": "PMC7871398",
+    "doi": "10.1186/s12951-021-00788-6",
+    "title": "pH-dependent delivery of chlorhexidine from PGA grafted mesoporous silica nanoparticles at resin-dentin interface.",
+    "journal": "J Nanobiotechnology",
+    "year": "2021",
+    "cited": 43
+   },
+   {
+    "pmcid": "PMC9528762",
+    "doi": "10.1111/cpr.13289",
+    "title": "3D printed PCLA scaffold with nano-hydroxyapatite coating doped green tea EGCG promotes bone growth and inhibits multidrug-resistant bacteria colonization.",
+    "journal": "Cell Prolif",
+    "year": "2022",
+    "cited": 42
+   },
+   {
+    "pmcid": "PMC8587121",
+    "doi": "10.3390/polym13213761",
+    "title": "Wear Resistance, Color Stability and Displacement Resistance of Milled PEEK Crowns Compared to Zirconia Crowns under Stimulated Chewing and High-Performance Aging.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 42
+   },
+   {
+    "pmcid": "PMC9034314",
+    "doi": "10.1016/j.bioactmat.2022.04.004",
+    "title": "A bioactive compliant vascular graft modulates macrophage polarization and maintains patency with robust vascular remodeling.",
+    "journal": "Bioact Mater",
+    "year": "2023",
+    "cited": 39
+   },
+   {
+    "pmcid": "PMC4277102",
+    "doi": "10.1098/rsif.2014.1079",
+    "title": "Multi-scale mechanical characterization of highly swollen photo-activated collagen hydrogels.",
+    "journal": "J R Soc Interface",
+    "year": "2015",
+    "cited": 39
+   },
+   {
+    "pmcid": "PMC11880532",
+    "doi": "10.1038/s41467-025-57609-9",
+    "title": "A metamaterial scaffold beyond modulus limits: enhanced osteogenesis and angiogenesis of critical bone defects.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 36
+   },
+   {
+    "pmcid": "PMC7154770",
+    "doi": "10.1111/aor.13581",
+    "title": "Efficient decellularization of equine tendon with preserved biomechanical properties and cytocompatibility for human tendon surgery indications.",
+    "journal": "Artif Organs",
+    "year": "2020",
+    "cited": 36
+   },
+   {
+    "pmcid": "PMC10883952",
+    "doi": "10.1038/s41467-024-46003-6",
+    "title": "Black phosphorus boosts wet-tissue adhesion of composite patches by enhancing water absorption and mechanical properties.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 34
+   },
+   {
+    "pmcid": "PMC8571783",
+    "doi": "10.1016/j.jot.2021.10.002",
+    "title": "PLGA/β-TCP composite scaffold incorporating cucurbitacin B promotes bone regeneration by inducing angiogenesis.",
+    "journal": "J Orthop Translat",
+    "year": "2021",
+    "cited": 32
+   },
+   {
+    "pmcid": "PMC4938233",
+    "doi": "10.1371/journal.pone.0158976",
+    "title": "Effects of Chondroitinase ABC-Mediated Proteoglycan Digestion on Decellularization and Recellularization of Articular Cartilage.",
+    "journal": "PLoS One",
+    "year": "2016",
+    "cited": 31
+   },
+   {
+    "pmcid": "PMC9402920",
+    "doi": "10.1038/s41467-022-32699-x",
+    "title": "Flexible iontronics based on 2D nanofluidic material.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 29
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9397609",
+   "title": "TGFBI Production by Macrophages Contributes to an Immunosuppressive Microenvironment in Ovarian Cancer.",
+   "year": "2021",
+   "text": "tional Ethical Guidelines for Biomedical Research Involving Human Subjects. Mechanical characterization Prior to mechanical indentation measurements, frozen, unfixed FT, FB, and ovary tissue were fully thawed at room temperature in PBS (catalog no. D8537, Sigma-Aldrich) for 30 minutes. Mechanical indentation of the specimens was performed using an Instron ElectroPuls E1000 (Instron) equipped with a 10N load cell (resolution = 0.1 mN) and a flat, rigid cylindrical indenter with a 1 mm diameter (∅I; previously published in ref. 18 ). Tissue moduli comparative to those obtained from compression tests were calculated from the obtained load-displacement experimental data with the aid of a corrected mathematical mod",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4655227",
+   "title": "The interfascicular matrix enables fascicle sliding and recovery in tendon, and behaves more elastically in energy storing tendons.",
+   "year": "2015",
+   "text": "ed from each tendon. Following our previously validated methods, the diameter of each fascicle was measured in a single plane along a 10 mm section in the middle of the fascicle, and the smallest diameter recorded and used to calculate cross sectional area (CSA), assuming a circular shape ( Thorpe et al., 2012 ). An electrodynamic testing machine (Instron ElectroPuls 1000) equipped with a 250 N load cell was used to determine fascicle mechanical properties. Fascicles were gripped using pneumatic grips (gripping pressure of 4 bar) with a layer of rubber (0.3 mm thick) and sandpaper (0.1 mm thick) over each grip surface. The distance between the grips was set to 20 mm. Fascicles were pre-loaded to 0.1 N, which r",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4655227",
+   "title": "The interfascicular matrix enables fascicle sliding and recovery in tendon, and behaves more elastically in energy storing tendons.",
+   "year": "2015",
+   "text": "ally polarised light, which enables clear visualisation of the individual collagen fascicles ( Fig. 1 a). The opposing end of each fascicle was cut transversely, leaving a consistent 10 mm length of intact IFM ( Fig. 1 b and c). After removal from the dissection rig, the intact end of each fascicle was secured in an electrodynamic testing machine (Instron ElectroPuls 1000) using pneumatic grips, with a grip to grip distance of 20 mm. A preload of 0.02 N was applied (equivalent to approximately 1% of failure load) and the distance between the grips, after pre-load, was recorded as the effective gauge length. The samples were then pre-conditioned with 10 loading cycles between 0 and 0.5 mm of extension (approx.",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10558667",
+   "title": "Regulation of Osteoimmune Microenvironment and Osteogenesis by 3D-Printed PLAG/black Phosphorus Scaffolds for Bone Regeneration.",
+   "year": "2023",
+   "text": "time points. The weight loss percentage of the scaffold for different degradation times (0–28 days) was determined by the equation: Weight loss (%) = ( W 0 ‐ W r)/ W 0 ×100 ( W 0 : original weight, W r: remaining dried weight). The mechanical properties of the Scaffolds were tested and measured using a static and dynamic materials testing machine (Instron‐E3000, Norwood, MA, USA). The testing speed was set at 1 mm min −1 , and four specimens were tested in each group to obtain the force‐displacement curve. The force‐displacement curve was used to calculate the compressive strength and compressive modulus of the beam according to the method of ISO 844:2004 standard. Biocompatibility Testing of BP Scaffold",
+   "standards": [
+    "ISO 844"
+   ]
+  },
+  {
+   "pmcid": "PMC8961307",
+   "title": "Synergistic osteogenic and angiogenic effects of KP and QK peptides incorporated with an injectable and self-healing hydrogel for efficient bone regeneration.",
+   "year": "2022",
+   "text": "d with gold and characterized by using a scanning electron microscope (FEI QUANTA200, Czech) with an acceleration voltage of 10 kV. Compressive analysis: The compressive stress-strain analysis of SN-GMO hydrogel, GelMA hydrogel (10% w/v), DN-GMO hydrogel and DN-GMO hydrogel loaded with KP and QK were conducted by using a universal testing machine (Instron E3000, UK). For this purpose, the hydrogels were prepared in the form of cylinders with 13 mm in diameter and 5 mm in height. The compressive analysis was performed up to 80% of the original height with a steady strain rate of 1 mm/min. Swelling and enzymolysis assay: The cylinderical hydrogels (13 mm in diameter, 3 mm in height) were prepared as descri",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6963791",
+   "title": "Mouse Ovarian Cancer Models Recapitulate the Human Tumor Microenvironment and Patient Response to Treatment.",
+   "year": "2020",
+   "text": "ngfelder and Horvath, 2008 classyfire CRAN Chatzimichali and Bessant, 2016 Other BD LSR Fortessa cytometer BD N/A Hamamatsu NanoZoomer S210 Slide Scanner N/A N/A 3DHISTECH Panoramic 250 digital slide scanner 3DHISTECH, Hungary N/A 70 μm strainers Fisher Scientific N/A GentleMACS M Tubes Miltenyi Cat# 130-093-236 Primaria flasks Corning Cat# 353808 Instron ElectroPuls E1000 Instron, UK N/A Lead Contact and Materials Availability This study did not generate new unique reagents. Further information and requests for resources and reagents should be directed to and will be fulfilled by the Lead Contact, Frances Balkwill ( f.balkwill@qmul.ac.uk ). Experimental Models and Subject Details Study approval Murine models",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6963791",
+   "title": "Mouse Ovarian Cancer Models Recapitulate the Human Tumor Microenvironment and Patient Response to Treatment.",
+   "year": "2020",
+   "text": "e (green), four (yellow), five (orange) or six (red) ECM molecules. Finally, a Calibration bar was applied to the AVG stack with all seven colors and the heatmap image was flattened before export. Mechanical characterization Mechanical characterization was performed on frozen murine or human tissues using a flat-punch indentation methodology on an Instron ElectroPuls E1000 (Instron, UK) equipped with a 10 N load cell (resolution = 0.1 mN) as described ( Delaine-Smith et al., 2016 , Pearce et al., 2018 ). Quantification and Statistical Analysis Tissue sections were scanned either using a 3DHISTECH Panoramic 250 digital slide scanner (3DHISTECH, Hungary) or with Hamamatsu NanoZoomer S210 Slide-Scanner and the sc",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7608813",
+   "title": "Viscoelastic properties of biopolymer hydrogels determined by Brillouin spectroscopy: A probe of tissue micromechanics.",
+   "year": "2020",
+   "text": "ding mass densities, which were 1.00 g/cm −3 for water and 1.35 g/cm 3 for dry gelatin ( 52 ). It is observed that the change in density-to-square refractive index ratio is less than 1% across the entire concentration range probed here (fig. S2B). Compressive testing After preparation, the gels were transferred into custom-built aluminum molds. An Instron ElectroPuls E10000 (High Wycombe, UK) linear dynamic test instrument was used to perform unconfined compressive testing on the hydrogels at a steady rate of 0.03 mm/s. The cylindrical gel sample (21-mm diameter, ~10-mm thickness) sat on a flat aluminum base, and the applied load was measured by a 1-kN load cell (&lt;2% linearity error) mounted onto a flat alu",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7581430",
+   "title": "Secondary ossification center induces and protects growth plate structure.",
+   "year": "2020",
+   "text": "ssible. The height and diameters of the top and side surfaces of the epiphysis were measured with a digital caliper. For each animal, one set of tibia and femur was used for control and the other for treatment. All comparisons involved the bones from the same animal. Still, in dissection medium on ice, the bones were subjected to pressure with the Instron ElectroPuls E1000 Test Instrument. The load was applied at a speed of 0.1 N per second and load/digital position curves recorded in the Bluehill three software. Control bones went through the same procedures, but without loading. For culturing, bones were first washed twice in dissection medium before being placed into DMEM/F12 medium supplemented with 1 mM β",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8965852",
+   "title": "3D-printed NIR-responsive shape memory polyurethane/magnesium scaffolds with tight-contact for robust bone regeneration.",
+   "year": "2022",
+   "text": "avenumber range of 650–4000 cm −1 at room temperature. Thermal analysis was conducted by a differential scanning calorimetry (DSC) (Mettler Toledo, TGA/DSC1) and a TGA machine (Mettler Toledo, DSC1), respectively. The temperature ranges in these two measurements were 30–600 °C and 0–120 °C in several. The compression tests were carried by using an Instron tester (Instron Electropuls E10000 , USA) at a testing rate of 1 mm min −1 at room temperature. Compress Modulus and stress strength were derived from the stress-strain curves to compare the mechanical properties. The degradation and Mg 2+ releasing were investigated through placing the scaffolds specimens in a phosphate-buffered saline (PBS) solution (pH = 7.4) with a ratio",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8965852",
+   "title": "3D-printed NIR-responsive shape memory polyurethane/magnesium scaffolds with tight-contact for robust bone regeneration.",
+   "year": "2022",
+   "text": "12 weeks), the rats were sacrificed by injecting the sodium pentobarbital with a dose of 90–120 mg per kg bodyweight. Biomechanical investigation: Defective bones with various interventions after surgery immediately and 12 weeks were respectively collected for push-out measurement. The harvested samples were first fixed on the custom clamps in an Instron tester (Instron Electropuls E10000 , USA) where the cerebral surface faced up ( Fig. 5b1 ). Then a stainless steel rod with a diameter of 4.5 mm was aligned to the center of the initial bone defect, and compressed with a rate of 1 mm min −1 until failure at room temperature where the peak force was recorded. Fig. 5 Implantation of the 3D printed scaffolds at the defective si",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ISO 844": 1
+ },
+ "standards_new": [
+  "ISO 844"
+ ],
+ "test_item_hits": {
+  "compression": 2,
+  "density_porosity": 1,
+  "dsc": 1,
+  "microscopy": 1,
+  "surge_eft_immunity": 1
+ }
+}

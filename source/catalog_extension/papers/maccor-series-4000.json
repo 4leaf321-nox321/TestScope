@@ -1,0 +1,300 @@
+{
+ "object": "maccor-series-4000",
+ "manufacturer": "maccor",
+ "phrases": [
+  "Maccor 4000",
+  "Maccor Series 4000"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Maccor 4000\" OR \"Maccor Series 4000\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Maccor 4000\" OR \"Maccor Series 4000\") AND OPEN_ACCESS:y",
+  "count": 141,
+  "papers": [
+   {
+    "pmcid": "PMC7442789",
+    "doi": "10.1038/s41467-020-17976-x",
+    "title": "Interface chemistry of an amide electrolyte for highly reversible lithium metal batteries.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 130,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4909938",
+    "doi": "10.1038/ncomms11794",
+    "title": "Stabilizing lithium metal using ionic liquids for long-lived batteries.",
+    "journal": "Nat Commun",
+    "year": "2016",
+    "cited": 127,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11150160",
+    "doi": "10.1038/s41563-024-01833-z",
+    "title": "Trapped O<sub>2</sub> and the origin of voltage fade in layered Li-rich cathodes.",
+    "journal": "Nat Mater",
+    "year": "2024",
+    "cited": 72,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7062893",
+    "doi": "10.1038/s41598-020-61373-9",
+    "title": "Poly(Ethylene Oxide)-based Electrolyte for Solid-State-Lithium-Batteries with High Voltage Positive Electrodes: Evaluating the Role of Electrolyte Oxidation in Rapid Cell Failure.",
+    "journal": "Sci Rep",
+    "year": "2020",
+    "cited": 62,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8058063",
+    "doi": "10.1038/s41467-021-22635-w",
+    "title": "Hierarchical nickel valence gradient stabilizes high-nickel content layered cathode materials.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 52,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10793961",
+    "doi": "10.1126/sciadv.adj8889",
+    "title": "The lasting impact of formation cycling on the Li-ion kinetics between SEI and the Li-metal anode and its correlation with efficiency.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 49,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6814371",
+    "doi": "10.1126/sciadv.aax5587",
+    "title": "Enabling reversible redox reactions in electrochemical cells using protected LiAl intermetallics as lithium metal anodes.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 47,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8511027",
+    "doi": "10.1038/s41467-021-26190-2",
+    "title": "Quantification of the Li-ion diffusion over an interface coating in all-solid-state batteries via NMR measurements.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 34,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5354633",
+    "doi": "10.1021/acs.chemmater.6b04370",
+    "title": "Understanding the Electrochemical Formation and Decomposition of Li&lt;sub&gt;2&lt;/sub&gt;O&lt;sub&gt;2&lt;/sub&gt; and LiOH with &lt;i&gt;Operando&lt;/i&gt; X-ray Diffraction.",
+    "journal": "Chem Mater",
+    "year": "2017",
+    "cited": 30
+   },
+   {
+    "pmcid": "PMC6925282",
+    "doi": "10.1038/s41467-019-13783-1",
+    "title": "An ultrathin ionomer interphase for high efficiency lithium anode in carbonate based electrolyte.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 29
+   },
+   {
+    "pmcid": "PMC4288212",
+    "doi": "10.1038/srep07665",
+    "title": "One-dimensional manganese-cobalt oxide nanofibres as bi-functional cathode catalysts for rechargeable metal-air batteries.",
+    "journal": "Sci Rep",
+    "year": "2015",
+    "cited": 29
+   },
+   {
+    "pmcid": "PMC7007214",
+    "doi": "10.1021/jacs.8b13633",
+    "title": "Stabilization of O-O Bonds by d<sup>0</sup> Cations in Li<sub>4+ x</sub>Ni<sub>1- x</sub>WO<sub>6</sub> (0 ≤ x ≤ 0.25) Rock Salt Oxides as the Origin of Large Voltage Hysteresis.",
+    "journal": "J Am Chem Soc",
+    "year": "2019",
+    "cited": 27
+   },
+   {
+    "pmcid": "PMC4564728",
+    "doi": "10.1038/srep13862",
+    "title": "Graphene-Wrapped Anatase TiO2 Nanofibers as High-Rate and Long-Cycle-Life Anode Material for Sodium Ion Batteries.",
+    "journal": "Sci Rep",
+    "year": "2015",
+    "cited": 27
+   },
+   {
+    "pmcid": "PMC7894331",
+    "doi": "10.1002/cssc.202002113",
+    "title": "Exploiting the Degradation Mechanism of NCM523 ∥ Graphite Lithium-Ion Full Cells Operated at High Voltage.",
+    "journal": "ChemSusChem",
+    "year": "2021",
+    "cited": 24
+   },
+   {
+    "pmcid": "PMC9403639",
+    "doi": "10.1002/advs.202201742",
+    "title": "Opportunities and Challenges of Li<sub>2</sub> C<sub>4</sub> O<sub>4</sub> as Pre-Lithiation Additive for the Positive Electrode in NMC622||Silicon/Graphite Lithium Ion Cells.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 21
+   },
+   {
+    "pmcid": "PMC11586824",
+    "doi": "10.1002/adma.202407443",
+    "title": "Dual-Seed Strategy for High-Performance Anode-Less All-Solid-State Batteries.",
+    "journal": "Adv Mater",
+    "year": "2024",
+    "cited": 20
+   },
+   {
+    "pmcid": "PMC5366863",
+    "doi": "10.1038/srep45105",
+    "title": "Rational Design of 1-D Co<sub>3</sub>O<sub>4</sub> Nanofibers@Low content Graphene Composite Anode for High Performance Li-Ion Batteries.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 20
+   },
+   {
+    "pmcid": "PMC9045678",
+    "doi": "10.1021/acsaem.1c02923",
+    "title": "Suitable Cathode NMP Replacement for Efficient Sustainable Printed Li-Ion Batteries.",
+    "journal": "ACS Appl Energy Mater",
+    "year": "2022",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC6294254",
+    "doi": "10.1038/s41467-018-07331-6",
+    "title": "Fluorine-free water-in-ionomer electrolytes for sustainable lithium-ion batteries.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC4754731",
+    "doi": "10.1038/srep21182",
+    "title": "Hierarchically structured activated carbon for ultracapacitors.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC9979376",
+    "doi": "10.1021/acs.chemmater.2c02639",
+    "title": "Monitoring the Formation of Nickel-Poor and Nickel-Rich Oxide Cathode Materials for Lithium-Ion Batteries with Synchrotron Radiation.",
+    "journal": "Chem Mater",
+    "year": "2023",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC5241664",
+    "doi": "10.1038/srep40910",
+    "title": "Reduced graphene oxide as a stable and high-capacity cathode material for Na-ion batteries.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC5082344",
+    "doi": "10.3762/bjnano.7.114",
+    "title": "Mesoporous hollow carbon spheres for lithium-sulfur batteries: distribution of sulfur and electrochemical performance.",
+    "journal": "Beilstein J Nanotechnol",
+    "year": "2016",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC5780504",
+    "doi": "10.1038/s41598-018-19929-3",
+    "title": "Electrochemical Evaluation and Phase-related Impedance Studies on Silicon-Few Layer Graphene (FLG) Composite Electrode Systems.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC5115367",
+    "doi": "10.1002/advs.201500068",
+    "title": "Model Membrane-Free Li-S Batteries for Enhanced Performance and Cycle Life.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2015",
+    "cited": 14
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7442789",
+   "title": "Interface chemistry of an amide electrolyte for highly reversible lithium metal batteries.",
+   "year": "2020",
+   "text": "hamber, where the experiments were performed. The cells are positioned at an angle of 30° towards the incident neutron beam and parallel to the Canberra PIPS detector placed perpendicular to the battery electrodes at 4.5 cm from the pouch cells in order to measure the energy of the emitted 3 H particles. Galvanostatic cycling was performed using a Maccor 4000 cycling system by plating Li onto the Cu working electrode at 1 mA cm −2 to a total capacity of 1 mAh cm −2 followed by stripping to a cut-off voltage of 1.0 V vs. Li + /Li. SRIM was used to calibrate the stopping power of the materials for converting the triton ( 3 H) energy loss and intensity to the Li depth and Li density 56 . For the calculati",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4909938",
+   "title": "Stabilizing lithium metal using ionic liquids for long-lived batteries.",
+   "year": "2016",
+   "text": "ere removed and rinsed of any residual electrolyte using dimethyl carbonate (DMC) (Fluka) as reported previously 19 . Coin cell fabrication and cycling Symmetrical Li|electrolyte|Li coin cells were fabricated using CR2032 metal jackets as reported previously 11 . The symmetrical cells underwent cyclic charge–discharge galvanostatic testing using a Maccor Series 4000 battery tester at ambient temperature (22.2±2 °C) with a low or high current density of 0.1 or 1.0 mA cm −2 , respectively. Replicate coin cells were cycled for either hundreds or thousands of cycles as specified in the text. Charge and discharge times were 15 min each, with 30 s rest between cycles (a cycle is defined as a charging step followed",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11150160",
+   "title": "Trapped O<sub>2</sub> and the origin of voltage fade in layered Li-rich cathodes.",
+   "year": "2024",
+   "text": "elf-supporting films. Electrodes were assembled into coin cells using Whatman glass fibre separators and 1 M LiPF 6 in ethylene carbonate:dimethyl carbonate 50:50 (battery grade, Sigma-Aldrich) electrolyte, with a Li metal counter electrode. A typical coin cell has an active mass loading of ~10 mg. Galvanostatic cycle testing was carried out using Maccor Series 4000. The cells and electrodes were prepared and assembled/disassembled in the glove box under an inert atmosphere and all cycling for the characterization studies was performed using the same conditions. Cells were cycled between 2.0 V and 4.8 V versus Li + /Li at a rate of 100 mA g −1 without voltage holds, rests or formation cycling. Inductively cou",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7062893",
+   "title": "Poly(Ethylene Oxide)-based Electrolyte for Solid-State-Lithium-Batteries with High Voltage Positive Electrodes: Evaluating the Role of Electrolyte Oxidation in Rapid Cell Failure.",
+   "year": "2020",
+   "text": "hree-electrode setup using the above mentioned positive electrodes as working electrode, and lithium metal as counter and reference electrode 36 . Stated membrane thicknesses refer to the thickness before cell assembly at room temperature. Electrochemical measurements All constant current cycling and potentiodynamic experiments were conducted on a Maccor Series 4000 battery cell test system and VMP device at 60 °C in a climate chamber (Binder KB400). The used experimental conditions are mentioned within the respective text and/or figure captions. Results and discussion Failure during charge: Impact of PEO oxidation? The galvanostatic operation of a NMC622||Li cell with PEO based SPE reveals a typical noisy vo",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8058063",
+   "title": "Hierarchical nickel valence gradient stabilizes high-nickel content layered cathode materials.",
+   "year": "2021",
+   "text": "under a flooded-electrolyte condition. The electrolyte solution was 1 M LiPF 6 in a mixture of ethylene carbonate (EC) and ethyl methyl carbonate (EMC), 3:7 volume ratio, and the separator is Celgard 2325. The fabrication of the half coin-cell in an Argon-filled glove box. Assembled coin cells rested at OCV (3.0 V) for 10 h and were tested by the Maccor (Series 4000) for cycle ability test with a current density at 0.1 C rate (20 mA g −1 ), the voltage range in 2.7–4.4 V for 100 cycles at 30 °C. TEM imaging and spectroscopy The TEM samples were prepared by FIB directly from dissembled cathode electrodes without rinsing. The atomic-resolution scanning transmission electron microscopy (STEM) imaging of the VG-N",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10793961",
+   "title": "The lasting impact of formation cycling on the Li-ion kinetics between SEI and the Li-metal anode and its correlation with efficiency.",
+   "year": "2024",
+   "text": "LiTFSI in 1,2-DME and DOL [1 M LiTFSI in DOL/DME; 1:1 (w/w); Dodochem Co. Ltd.], and (iv) 1 M LiTFSI in DOL/DME [1:1 (w/w)] with 5 wt % LiNO 3 (Dodochem Co. Ltd.). Cell assembly, disassembly, and handling of air sensitive materials were done in an argon-filled glovebox (O 2 &lt; 1 ppm, H 2 O &lt; 0.1 ppm). Galvanostatic cycling was performed on a Maccor 4000 battery cycler or a Land CT2001A at room temperature by deposition of Li onto the Cu working electrode with different current densities up to a total capacity of 1 mAh cm −2 , followed by Li stripping at different current densities up to 1 V. The EIS measurements were obtained using an Autolab PGSTAT302N in the frequency range of 1 MHz to 0.1 Hz w",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6814371",
+   "title": "Enabling reversible redox reactions in electrochemical cells using protected LiAl intermetallics as lithium metal anodes.",
+   "year": "2019",
+   "text": "−2 and a capacity of 1 mAh cm −2 . The disk size of φ 15 mm was used for the electrodes of all the symmetric cells, and an 11-μm polyethylene (PE) separator (W-Scope Korea) with a disk size of φ 18 mm was used. Thirty microliters of the electrolyte was used to construct the symmetric cells. The measurements were performed using the battery cycler (Maccor Series 4000). An asymmetric coin cell was used to measure the nucleation overpotentials of MoS 2 LBASEI. The electrode configuration is Cu MoS 2 |MoS 2 LiAl, where the thickness of MoS 2 ranged from 1.093 to 3.076 μm for the nucleation overpotential measurements. A disk size of φ 16 mm was used for the Cu MoS 2 , and a disk size of φ 15 mm was used for MoS 2",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8511027",
+   "title": "Quantification of the Li-ion diffusion over an interface coating in all-solid-state batteries via NMR measurements.",
+   "year": "2021",
+   "text": "n the three layers. The thickness of the electrode and electrolyte is ~150 and ~1200 μm, respectively, and the diameter of both electrode and electrolyte is 10 mm. The cell used for testing is a home-construced lab-cell, a sketch of which is provided in Supplementary Fig. 1 . The galvanostatic cycling experiments were performed with a programmable Maccor 4000 series galvanostat. The cells were charged to a fixed specific capacity (200–600 mAh/g) and then discharged to 0.8 V vs In-Li at various current densities (0.066–0.264 mA/cm 2 ). The electrochemical experiments were carried out at a constant room temperature of 24 °C. Solid-state 6 Li NMR measurements Solid-state NMR measurements were performed on",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "density_porosity": 3,
+  "microscopy": 1
+ }
+}

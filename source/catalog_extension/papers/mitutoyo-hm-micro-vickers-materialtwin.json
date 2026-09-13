@@ -1,0 +1,331 @@
+{
+ "object": "mitutoyo-hm-micro-vickers-materialtwin",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo HM-100 HM-200",
+  "Mitutoyo HM-100",
+  "Mitutoyo HM-200",
+  "Mitutoyo HM-122",
+  "Mitutoyo HM-124"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo HM-100 HM-200\" OR \"Mitutoyo HM-100\" OR \"Mitutoyo HM-200\" OR \"Mitutoyo HM-122\" OR \"Mitutoyo HM-124\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo HM-100 HM-200\" OR \"Mitutoyo HM-100\" OR \"Mitutoyo HM-200\" OR \"Mitutoyo HM-122\" OR \"Mitutoyo HM-124\") AND OPEN_ACCESS:y",
+  "count": 23,
+  "papers": [
+   {
+    "pmcid": "PMC6388808",
+    "doi": "10.1016/j.jds.2018.07.004",
+    "title": "Remineralization effects when using different methods to apply fluoride varnish <i>in vitro</i>.",
+    "journal": "J Dent Sci",
+    "year": "2018",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5880343",
+    "doi": "10.1371/journal.pone.0193927",
+    "title": "Development and properties of duplex MgF2/PCL coatings on biodegradable magnesium alloy for biomedical applications.",
+    "journal": "PLoS One",
+    "year": "2018",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E384-17",
+     "ASTM G31-72",
+     "ISO 10993-12"
+    ]
+   },
+   {
+    "pmcid": "PMC6651660",
+    "doi": "10.3390/ma12132208",
+    "title": "An Experimental Study on Micro-Milling of a Medical Grade Co-Cr-Mo Alloy Produced by Selective Laser Melting.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM F1537",
+     "ASTM F75",
+     "ASTM-F75",
+     "ISO 5832-4",
+     "ISO-25178",
+     "ISO-5832-4"
+    ]
+   },
+   {
+    "pmcid": "PMC9476509",
+    "doi": "10.1021/acsomega.2c03800",
+    "title": "Improvement in Slurry Erosion and Corrosion Resistance of Plasma-Sprayed Fly Ash Coatings for Marine Applications.",
+    "journal": "ACS Omega",
+    "year": "2022",
+    "cited": 4,
+    "snippets": 2,
+    "standards_in_paper": [
+     "ASTM B117-18",
+     "ASTM C 633-13",
+     "ASTM C-618",
+     "ASTM C618",
+     "ASTM C633-13",
+     "ASTM G31-72",
+     "ASTM-B117"
+    ]
+   },
+   {
+    "pmcid": "PMC9324689",
+    "doi": "10.3390/ma15144743",
+    "title": "Novel Approach toward the Forming Process of CFRP Reinforcement with a Hot Stamped Part by Prepreg Compression Molding.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8224618",
+    "doi": "10.3390/mi12060606",
+    "title": "Combination of Plasma Electrolytic Processing and Mechanical Polishing for Single-Crystal 4H-SiC.",
+    "journal": "Micromachines (Basel)",
+    "year": "2021",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12205262",
+    "doi": "10.7759/cureus.85008",
+    "title": "Comparative Evaluation of Surface Roughness, Wettability, and Hardness of Conventional, Heat-Polymerized, Computer-Aided Designed and Milled, and Three-Dimensionally Printed Polymethyl Methacrylate Denture Base Resins: An In Vitro Study.",
+    "journal": "Cureus",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11396108",
+    "doi": "10.3390/ma17174297",
+    "title": "Manufacturing of Ni-Co-Fe-Cr-Al-Ti High-Entropy Alloy Using Directed Energy Deposition and Evaluation of Its Microstructure, Tensile Strength, and Microhardness.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8509325",
+    "doi": "10.3390/ma14195524",
+    "title": "Microstructural Tailoring and Enhancement in Compressive Properties of Additive Manufactured Ti-6Al-4V Alloy through Heat Treatment.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC7767337",
+    "doi": "10.3390/ma13245829",
+    "title": "Engineering of TeO<sub>2</sub>-ZnO-BaO-Based Glasses for Mid-Infrared Transmitting Optics.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC10820644",
+    "doi": "10.3390/ma17020406",
+    "title": "Surface Defect Mitigation of Additively Manufactured Parts Using Surfactant-Mediated Electroless Nickel Coatings.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC9658164",
+    "doi": "10.3390/ma15217463",
+    "title": "In-Depth Characterization of Laser-Welded Aluminum-and-Copper Dissimilar Joint for Electric Vehicle Battery Connections.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC9625081",
+    "doi": "10.1007/s12540-022-01168-x",
+    "title": "Prediction of Microstructure for AISI316L Steel from Numerical Simulation of Laser Powder Bed Fusion.",
+    "journal": "Met Mater Int",
+    "year": "2022",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8348733",
+    "doi": "10.3390/ma14154265",
+    "title": "Low-Roughness-Surface Additive Manufacturing of Metal-Wire Feeding with Small Power.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC5785491",
+    "doi": "10.1038/s41598-018-20150-5",
+    "title": "Structural effect of two-dimensional BNNS on grain growth suppressing behaviors in Al-matrix nanocomposites.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12835113",
+    "doi": "10.1038/s41598-025-33417-5",
+    "title": "Machine learning models based wear performance prediction of AZ31/TiC composites.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12682327",
+    "doi": "10.7759/cureus.96319",
+    "title": "Effects of Curing Distance and Time on the Microhardness of Posterior Composites: An Experimental Study.",
+    "journal": "Cureus",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12298387",
+    "doi": "10.3390/ma18143285",
+    "title": "Effect of Post-Weld Heat Treatment on Residual Stress and Fatigue Crack Propagation Behavior in Linear Friction Welded Ti-6Al-4V Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12276809",
+    "doi": "10.1242/jeb.250143",
+    "title": "Eastern oysters alter inducible defense mechanism of shell strengthening with age.",
+    "journal": "J Exp Biol",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11676997",
+    "doi": "10.3390/mi15121457",
+    "title": "Impact of Conventional and Laser-Assisted Machining on the Microstructure and Mechanical Properties of Ti-Nb-Cr-V-Ni High-Entropy Alloy Fabricated with Directed Energy Deposition.",
+    "journal": "Micromachines (Basel)",
+    "year": "2024",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11439030",
+    "doi": "10.1038/s41598-024-73481-x",
+    "title": "A comparative characterization analysis of electrode materials for optimal deposition on copper by advancing electrical discharge coating.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC10560272",
+    "doi": "10.1038/s41598-023-44146-y",
+    "title": "Enhancing microstructure and mechanical properties of nickel aluminium bronze alloy through tin addition.",
+    "journal": "Sci Rep",
+    "year": "2023",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC6868221",
+    "doi": "10.1038/s41598-019-53614-3",
+    "title": "Synthesis of a bulk nanostructured metastable Al alloy with extreme supersaturation of Mg.",
+    "journal": "Sci Rep",
+    "year": "2019",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6388808",
+   "title": "Remineralization effects when using different methods to apply fluoride varnish <i>in vitro</i>.",
+   "year": "2018",
+   "text": "(%) = (VHN remin – VHN demin )/VHN demin × 100. a Different superscript letters indicate significant differences in columns using ANOVA and post-hoc Duncan's multiple-comparison method. Pre and post-treatment lesion analyses The treatment effect of each group was evaluated by measuring the VHN of enamel surface with a Vickers microhardness tester (Mitutoyo HM-122 ® , Mitutoyo, Japan). Four indentation were made on each specimen before and after each treatment using a single load of 100 g for 10s. The average hardness value of the specimens was determined from four indentations. Following measurements of VHN after treatment were indented at the place adjacent to first measured. The difference (ΔVHN) between",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5880343",
+   "title": "Development and properties of duplex MgF2/PCL coatings on biodegradable magnesium alloy for biomedical applications.",
+   "year": "2018",
+   "text": "and duplex MgF 2 /PCL coatings (three samples from each set) using a scratch tester (MST/NST, Anton Paar, US). A progressive load of 30–2000 mN was applied at a table speed of 60 mm/min with scanning length of 4 mm during the test. The hardness (HV) of ZK60 Mg alloy and duplex MgF 2 /PCL coatings was determined using Vickers microhardness tester (Mitutoyo HM-122, Germany) under a 10 gf load and dwelling time of 10 sec according to ASTM E384-17 standard. Each set of samples was repeated five times and their average value was calculated along with standard deviation. Invitro degradation test Immersion test was conducted to investigate the long-term stability of developed coatings on Mg alloy. The immersion",
+   "standards": [
+    "ASTM E384-17"
+   ]
+  },
+  {
+   "pmcid": "PMC6651660",
+   "title": "An Experimental Study on Micro-Milling of a Medical Grade Co-Cr-Mo Alloy Produced by Selective Laser Melting.",
+   "year": "2019",
+   "text": "d in a Hirox RH-2000 digital microscope (Hirox, Tokio, Japan) for the morphology analysis and dimensional measurement. 3.4. Microhardness Microhardness was measured in order to have additional information on the influence of the feed per tooth on the finished surface. Therefore, hardness was measured on the machined surface. In particular, using a Mitutoyo HM-200 (Mitutoyo, Sakado, Japan), 20 points on each microchannel were measured (with a distance of 200 µm between each measurement) in order to calculate the average microhardness value and the standard deviation for each channel. 4. Results and Discussion 4.1. Preliminary Tests As regards to the layered effect investigations, the experiment analyzed the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9476509",
+   "title": "Improvement in Slurry Erosion and Corrosion Resistance of Plasma-Sprayed Fly Ash Coatings for Marine Applications.",
+   "year": "2022",
+   "text": "l load that the glued samples could withstand. The adhesion strength was then calculated using eq 1 : 1 where P is the maximum applied average normal load in newtons, A is the glued cross-sectional area of the sample in square millimeters, and adhesion strength is in megapascals. The microhardness was measured using a Vickers microhardness tester (Mitutoyo, HM-200, Japan) with an indentation load of 300 g and a dwell period of 15 s. Indentions were made on a polished cross-sectional surface from the substrate to the coating across the interface. Five indentations were made at each region, and the average values were noted. The elastic modulus was determined using depth-sensing indentations. The indentations",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9476509",
+   "title": "Improvement in Slurry Erosion and Corrosion Resistance of Plasma-Sprayed Fly Ash Coatings for Marine Applications.",
+   "year": "2022",
+   "text": "where d P /d H is the slope of the unloading curve’s upper part in the load–depth plot; π is a constant. The elastic modulus of the coating and substrate was evaluated using eqs 2 and 3 . The fracture toughness was evaluated using the indentation method. Three indentations were made at the cross section of the coating by a microhardness indenter (Mitutoyo, HM-200, Japan) to develop cracks, as shown in Figure 1 . The crack lengths were measured using ImageJ software, and the mean crack length was considered for computing the fracture toughness ( K Ic ) using the Anstis equation, median crack model: 38 4 where P is the normal load applied in newtons, C is the average half-crack length from the center of the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9324689",
+   "title": "Novel Approach toward the Forming Process of CFRP Reinforcement with a Hot Stamped Part by Prepreg Compression Molding.",
+   "year": "2022",
+   "text": "exhibited better quality than the previous case but was still not satisfactory, with inadequate forming on the corner and bottom of the B-pillar. In contrast, in the case of the temperature of 130 °C, the major problems of the previous two results were resolved in the entire B-pillar. Hardness measurements by an automatic hardness testing system (Mitutoyo HM-200) were performed with an indentation load of 500 g for a dwell time of 10 s to observe the change in the hardness of the B-pillar during additional heating in the PCM process. Figure 16 shows a comparison of the measured hardness between the hot stamp and PCM with a tool temperature of 130 °C. The specimens were prepared by wire cutting and were ch",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8224618",
+   "title": "Combination of Plasma Electrolytic Processing and Mechanical Polishing for Single-Crystal 4H-SiC.",
+   "year": "2021",
+   "text": "centrated hydrofluoric acid (HF) solution (40 wt %) for 10 min to remove native oxides. Finally, it is rinsed with deionized water for 10 min and blow-dried with pure nitrogen (N 2 ) gas. The surface hardness of single-crystal 4H-SiC after chemical cleaning and after plasma electrolytic processing is measured using a Micro Vickers hardness tester (Mitutoyo HM-200, Mitutoyo, Kanagawa, Japan) to determine the hardness change. The surface morphology of single-crystal 4H-SiC substrate is measured by scanning electron microscopy (SEM) (TESCAN VEGA3, TESCAN ORSAY HOLDING, a.s., Brno, Czech Republic) to investigate the removal of surface defects. Meanwhile, the substrate is observed by X-ray Photoelectron Spectro",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12205262",
+   "title": "Comparative Evaluation of Surface Roughness, Wettability, and Hardness of Conventional, Heat-Polymerized, Computer-Aided Designed and Milled, and Three-Dimensionally Printed Polymethyl Methacrylate Denture Base Resins: An In Vitro Study.",
+   "year": "2025",
+   "text": "immersion in artificial saliva to simulate oral conditions. The surface wettability was measured using the sessile drop method and contact angle analysis. The surface roughness was evaluated using a contact profilometer (Surftest SJ-210, Mitutoyo Corporation, Kanagawa, Japan), and the surface hardness was measured using a Vickers hardness tester (Mitutoyo HM-200, Mitutoyo Corporation, Kanagawa, Japan). Data were statistically analyzed using one-way analysis of variance (ANOVA) and Tukey’s post hoc test, with significance set at p &lt; 0.001. Results Significant differences were observed among the three groups (p &lt; 0.001). The highest contact angle was recorded in the 3D-printed group (73.94 ± 2.29°), i",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12205262",
+   "title": "Comparative Evaluation of Surface Roughness, Wettability, and Hardness of Conventional, Heat-Polymerized, Computer-Aided Designed and Milled, and Three-Dimensionally Printed Polymethyl Methacrylate Denture Base Resins: An In Vitro Study.",
+   "year": "2025",
+   "text": "asured using a digital contact profilometer (Surftest SJ-210, Mitutoyo Corporation, Kanagawa, Japan) with 0.001 µm resolution and a tracing length of 0.8 mm. Three readings from different points on the polished surface of each specimen were recorded, and the average was calculated. The surface hardness was assessed using a Vickers hardness tester (Mitutoyo HM-200, Mitutoyo Corporation, Kanagawa, Japan) with a 300 g load and 15-second dwell time. Three indentations were made on each specimen, and the Vickers hardness number (VHN) was calculated from the average of the diagonals. Statistical analysis All collected data were statistically analyzed using IBM SPSS software (version 26.0; IBM Corp., Armonk, NY,",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11396108",
+   "title": "Manufacturing of Ni-Co-Fe-Cr-Al-Ti High-Entropy Alloy Using Directed Energy Deposition and Evaluation of Its Microstructure, Tensile Strength, and Microhardness.",
+   "year": "2024",
+   "text": "The specimens were manufactured to a thickness of 4.5 mm as per the ASTM E8/E8M-18 standard [ 37 ], as shown in Figure 4 . The specimen for tensile testing was fabricated using Wire Electrical Discharge Machining (Wire EDM) followed by polishing the surface with a fine grinder for better results. The microhardness analysis was carried out using a Mitutoyo HM-200 Vickers hardness tester (Aurora, IL, USA). Hardness measurements were performed according to the deposited height from the SUS 304 substrate, with an average of five readings per height recorded. Figure 4 The tensile test specimens as per ASTM E8/E8M-18 standard: ( a ) front view, ( b ) side view, and ( c ) fabricated sample. Unit: mm. 3.2. DED Me",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ASTM E384-17": 1
+ },
+ "standards_new": [
+  "ASTM E384-17"
+ ],
+ "test_item_hits": {
+  "hardness_vickers": 5,
+  "contact_angle": 2,
+  "fracture_toughness": 2,
+  "microscopy": 2,
+  "tensile": 2,
+  "scratch_pencil_hardness": 1,
+  "surface_topography": 1
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "object": "uson-qualitek-mr",
+ "manufacturer": "uson",
+ "phrases": [
+  "Uson Qualitek mR",
+  "Uson Qualitek",
+  "PAC Qualitek mR",
+  "PAC Qualitek"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Uson Qualitek mR\" OR \"Uson Qualitek\" OR \"PAC Qualitek mR\" OR \"PAC Qualitek\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Uson Qualitek mR\" OR \"Uson Qualitek\" OR \"PAC Qualitek mR\" OR \"PAC Qualitek\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

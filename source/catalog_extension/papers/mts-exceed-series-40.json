@@ -1,0 +1,27 @@
+{
+ "object": "mts-exceed-series-40",
+ "manufacturer": "mts",
+ "phrases": [
+  "MTS Systems E42.503",
+  "MTS Systems E43.104",
+  "MTS Systems E43.504",
+  "MTS Systems E44.304",
+  "MTS Systems E45.105",
+  "MTS Systems E45.305"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"MTS Systems E42.503\" OR \"MTS Systems E43.104\" OR \"MTS Systems E43.504\" OR \"MTS Systems E44.304\" OR \"MTS Systems E45.105\" OR \"MTS Systems E45.305\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"MTS Systems E42.503\" OR \"MTS Systems E43.104\" OR \"MTS Systems E43.504\" OR \"MTS Systems E44.304\" OR \"MTS Systems E45.105\" OR \"MTS Systems E45.305\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

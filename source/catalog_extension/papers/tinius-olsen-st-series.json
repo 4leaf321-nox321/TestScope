@@ -1,0 +1,349 @@
+{
+ "object": "tinius-olsen-st-series",
+ "manufacturer": "tinius-olsen",
+ "phrases": [
+  "Tinius Olsen ST",
+  "Tinius Olsen 1ST",
+  "Tinius Olsen 5ST",
+  "Tinius Olsen 10ST",
+  "Tinius Olsen 25ST",
+  "Tinius Olsen 50ST"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Tinius Olsen ST\" OR \"Tinius Olsen 1ST\" OR \"Tinius Olsen 5ST\" OR \"Tinius Olsen 10ST\" OR \"Tinius Olsen 25ST\" OR \"Tinius Olsen 50ST\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Tinius Olsen ST\" OR \"Tinius Olsen 1ST\" OR \"Tinius Olsen 5ST\" OR \"Tinius Olsen 10ST\" OR \"Tinius Olsen 25ST\" OR \"Tinius Olsen 50ST\") AND OPEN_ACCESS:y",
+  "count": 38,
+  "papers": [
+   {
+    "pmcid": "PMC9210940",
+    "doi": "10.1093/burnst/tkac024",
+    "title": "Commercial wound dressings for the treatment of exuding wounds: an in-depth physico-chemical comparative study.",
+    "journal": "Burns Trauma",
+    "year": "2022",
+    "cited": 110,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7408463",
+    "doi": "10.3390/polym12071472",
+    "title": "Bio-Based Poly(butylene succinate)/Microcrystalline Cellulose/Nanofibrillated Cellulose-Based Sustainable Polymer Composites: Thermo-Mechanical and Biodegradation Studies.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 28,
+    "snippets": 1,
+    "standards_in_paper": [
+     "NFC 114.2",
+     "NFC 60",
+     "NFC 76.4"
+    ]
+   },
+   {
+    "pmcid": "PMC9097525",
+    "doi": "10.1021/acs.macromol.1c02065",
+    "title": "Double Networks of Liquid-Crystalline Elastomers with Enhanced Mechanical Strength.",
+    "journal": "Macromolecules",
+    "year": "2022",
+    "cited": 19,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11251555",
+    "doi": "10.1002/advs.202306424",
+    "title": "Light-Based 3D Multi-Material Printing of Micro-Structured Bio-Shaped, Conducting and Dry Adhesive Electrodes for Bioelectronics.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2024",
+    "cited": 15,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7552696",
+    "doi": "10.3390/bioengineering7030103",
+    "title": "Additive Manufacturing of Prostheses Using Forest-Based Composites.",
+    "journal": "Bioengineering (Basel)",
+    "year": "2020",
+    "cited": 12,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 10328",
+     "ISO 3167"
+    ]
+   },
+   {
+    "pmcid": "PMC10714464",
+    "doi": "10.1186/s12903-023-03730-4",
+    "title": "Fracture resistance of endodontically treated teeth, restored with two post-core systems in different post space diameters (in vitro study).",
+    "journal": "BMC Oral Health",
+    "year": "2023",
+    "cited": 10,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 40"
+    ]
+   },
+   {
+    "pmcid": "PMC11701805",
+    "doi": "10.1039/d4ra05684a",
+    "title": "Thermomechanical and mechanical analysis of polylactic acid/polyhydroxyalkanoate/poly(butylene succinate-<i>co</i>-adipate) binary and ternary blends.",
+    "journal": "RSC Adv",
+    "year": "2025",
+    "cited": 9,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D1238",
+     "ASTM D6400",
+     "ASTM D6866",
+     "ISO 179-1",
+     "ISO 527-2"
+    ]
+   },
+   {
+    "pmcid": "PMC9681742",
+    "doi": "10.1038/s41598-022-24667-8",
+    "title": "Mechanically tunable resins based on acrylate-based resin for digital light processing (DLP) 3D printing.",
+    "journal": "Sci Rep",
+    "year": "2022",
+    "cited": 9,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D2240",
+     "ASTM D256",
+     "ASTM D790"
+    ]
+   },
+   {
+    "pmcid": "PMC9709866",
+    "doi": "10.4103/jips.jips_226_21",
+    "title": "Comparative evaluation of tensile strength, tear strength, color stability and hardness of conventional and 1% trisnorbornenylisobutyl polyhedralsilsesquioxane modified room temperature vulcanizing maxillofacial silicone after a six month artificial aging period.",
+    "journal": "J Indian Prosthodont Soc",
+    "year": "2022",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC10941065",
+    "doi": "10.1021/acsami.3c14422",
+    "title": "Garnet-Based Solid-State Li Batteries with High-Surface-Area Porous LLZO Membranes.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2024",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC11022174",
+    "doi": "10.1021/acsabm.4c00052",
+    "title": "Impact of the Reduction Time-Dependent Electrical Conductivity of Graphene Nanoplatelet-Coated Aligned &lt;i&gt;Bombyx mori&lt;/i&gt; Silk Scaffolds on Electrically Stimulated Axonal Growth.",
+    "journal": "ACS Appl Bio Mater",
+    "year": "2024",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC9572125",
+    "doi": "10.3390/polym14194062",
+    "title": "Enhanced Mechanical and Thermal Properties of Chain-Extended Waterborne Polyurethane Coatings with Cellulose Acetate Butyrate.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC9194902",
+    "doi": "10.1021/acsapm.2c00340",
+    "title": "Fused Filament Fabrication of a Dynamically Crosslinked Network Derived from Commodity Thermoplastics.",
+    "journal": "ACS Appl Polym Mater",
+    "year": "2022",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC9156498",
+    "doi": "10.1007/s10856-022-06673-4",
+    "title": "Design of an electrospun tubular construct combining a mechanical and biological approach to improve tendon repair.",
+    "journal": "J Mater Sci Mater Med",
+    "year": "2022",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC11257899",
+    "doi": "10.3389/fbioe.2024.1419654",
+    "title": "Accelerated degradation testing impacts the degradation processes in 3D printed amorphous PLLA.",
+    "journal": "Front Bioeng Biotechnol",
+    "year": "2024",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC10406908",
+    "doi": "10.1038/s41598-023-39905-w",
+    "title": "Thermal properties and mechanical behavior of hot pressed PEEK/graphite thin film laminate composites.",
+    "journal": "Sci Rep",
+    "year": "2023",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC9142534",
+    "doi": "10.1038/s41598-022-12503-y",
+    "title": "Integration of thermal imaging and neural networks for mechanical strength analysis and fracture prediction in 3D-printed plastic parts.",
+    "journal": "Sci Rep",
+    "year": "2022",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC6894156",
+    "doi": "10.1021/acsomega.9b03280",
+    "title": "Nano-Bioconjugate Film from <i>Aloe vera</i> To Detect Hazardous Chemicals Used in Cosmetics.",
+    "journal": "ACS Omega",
+    "year": "2019",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC7580565",
+    "doi": "10.1080/15685551.2020.1826124",
+    "title": "Effect of boric acid on poly vinyl alcohol- tannin blend and its application as water-based wood adhesive.",
+    "journal": "Des Monomers Polym",
+    "year": "2020",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC11955918",
+    "doi": "10.1039/d4na00904e",
+    "title": "'Vitrimer nanocomposites' derived from graphene oxide and post-consumer recycled polypropylene.",
+    "journal": "Nanoscale Adv",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11176320",
+    "doi": "10.1038/s41598-024-64426-5",
+    "title": "Evaluation of thermal conductivity models and dielectric properties in metal oxide-filled poly(butylene succinate-co-adipate) composites.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9699085",
+    "doi": "10.3390/polym14224975",
+    "title": "Fast-Processable Non-Flammable Phthalonitrile-Modified Novolac/Carbon and Glass Fiber Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11502902",
+    "doi": "10.1038/s41598-024-74997-y",
+    "title": "Synthesis and characterization of ceramic refractories based on industrial wastes.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12944559",
+    "doi": "10.3390/polym18040438",
+    "title": "Synergistic Effects of Nitrosamine-Safe Accelerators for Enhanced Natural Rubber Latex Balloon in Sulfur Conventional Vulcanizing System.",
+    "journal": "Polymers (Basel)",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12142682",
+    "doi": "10.1039/d5na00176e",
+    "title": "Gold-doped wollastonite nanohybrids enhance bone regeneration &lt;i&gt;via&lt;/i&gt; the bone morphogenetic protein-2, SMAD1, and Runt-related transcription factor-2 signalling pathway.",
+    "journal": "Nanoscale Adv",
+    "year": "2025",
+    "cited": 1
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9210940",
+   "title": "Commercial wound dressings for the treatment of exuding wounds: an in-depth physico-chemical comparative study.",
+   "year": "2022",
+   "text": "ut leaching and freeze-drying) and directly placed for 72 h into 10 mL of solution. The swollen weight was then also recorded ( m ). This second method represented the real-life situation when dressings are applied onto patients. The swelling degree S was calculated using equation ( 1 ): (1) Tensile testing Tensile tests were performed 5-fold on a Tinius Olsen 5ST at 20°C and analysed using Horizon software. Two different load cells were used (25 N and 500 N) as the load cell should work between 1 and 100% of its maximal load for a precise measurement. Dog-bone-shaped (50 mm long, 4 mm wide and 1 mm thick) samples were punched from the different wound dressings. The samples were subjected to tensile testing",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7408463",
+   "title": "Bio-Based Poly(butylene succinate)/Microcrystalline Cellulose/Nanofibrillated Cellulose-Based Sustainable Polymer Composites: Thermo-Mechanical and Biodegradation Studies.",
+   "year": "2020",
+   "text": "e specimen, ΔH m 0 is the theoretical melting enthalpy of 100% crystalline polymer (200 J/g for PBS [ 6 ]) and W f is the cellulose fiber weight content in the composition. The prepared composites specimens were conditioned overnight at temperature of 20 °C and the relative humidity of 50%; the dimensions were measured separately before testing. A Tinius Olsen 25ST testing machine (USA) was used to measure the tensile strength using a minimum of 5 samples for each composition with at a 0.2 mm/min constant crosshead speed. Storage modulus, loss modulus and damping factor of the composites were characterized using Mettler SDTA861e dynamic mechanical analyzer (USA). Experiments were conducted in the tension mod",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9097525",
+   "title": "Double Networks of Liquid-Crystalline Elastomers with Enhanced Mechanical Strength.",
+   "year": "2022",
+   "text": "e reprocessability test is carried out by cutting the DN-LCE samples and placing them under a 200 °C hydraulic press for 1 h, in order to observe whether the DN-LCE pieces have fused together because of bond-exchange reaction or remained separate in a true thermoset. Uniaxial tensile tests of DN-LCEs are carried out on a universal testing machine (Tinius Olsen 1ST) at a constant strain rate of 0.01/s, with the breaking stress and strain-at-break of each sample are recorded. Thermal actuation and blocking stress test are again carried out in a DMA850 instrument in tensile mode. In order to test natural thermal actuation, a very low 50 KPa stress is applied to keep the sample taut. Strain (or natural length)",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11251555",
+   "title": "Light-Based 3D Multi-Material Printing of Micro-Structured Bio-Shaped, Conducting and Dry Adhesive Electrodes for Bioelectronics.",
+   "year": "2024",
+   "text": "eleration voltage of 15 kV at a working distance of ≈8 mm and 150x of magnification, using an Oxford Instruments EDS detector. The microwire was placed on top of carbon tape and analyzed in point‐by‐point scanning mode. 2.2.8 Lap‐shear Test The adhesion properties of the mushroom‐shaped/polyDES electrodes were evaluated at room temperature using a Tinius Olsen 1ST instrument and applying a perpendicular force to the adhesive bond with a displacement rate of 100 mm min −1 . The adhesion was measured against a Kapton substrate. Three different mushroom‐shaped height structures were compared with the planar electrode. The adhesive contact area was maintained constant for all the specimens (297 mm 2 ). The test",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7552696",
+   "title": "Additive Manufacturing of Prostheses Using Forest-Based Composites.",
+   "year": "2020",
+   "text": "s regarding the structural testing of lower limb prostheses. Loading condition II was applied with P6 test geometry, which meant that the tested sockets experienced not only off-axis compression and bending but also twisting around a few axes, as illustrated in Figure 3 a. The test equipment shown in Figure 3 b include a Static Test Machine No. K1 Tinius Olsen 25ST from Tinius Olsen TMC, USA and a Sauter TVS 10KN100 from SAUTER GmbH, Balingen, Germany. The load was measured using a 10 kN load cell with a measurement accuracy of +/−5 N. Figure 3 Structural testing method for lower limb prostheses (ISO 10328:2016). ( a ) Illustration of loading condition II; ( b ) Test equipment with the test piece loaded. Ele",
+   "standards": [
+    "ISO 10328"
+   ]
+  },
+  {
+   "pmcid": "PMC10714464",
+   "title": "Fracture resistance of endodontically treated teeth, restored with two post-core systems in different post space diameters (in vitro study).",
+   "year": "2023",
+   "text": "ct to different diameters for each subgroup. Tests Fracture resistance test Samples with the acrylic resin blocks were held in metallic molds for testing. Specimens were loaded at 3 mm below the incisal part of the core palatally at an angle of 45 o to the long axis of the teeth. Then each specimen was loaded to test its fracture resistance in the Tinius Olsen 5ST (6 Perrywood Business Park, Honeycrock Lane, Salfords (Near Redhill), Surrey RH1 5DZ, England) universal testing machine with a crosshead that had 6-mm diameter and speed of 1 mm/min until catastrophic failure happened. The testing machine automatically recorded the fracture force in Newton by Tinius Olsen Horizon software, version 10.2.4.22 [ 35",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11701805",
+   "title": "Thermomechanical and mechanical analysis of polylactic acid/polyhydroxyalkanoate/poly(butylene succinate-<i>co</i>-adipate) binary and ternary blends.",
+   "year": "2025",
+   "text": "rged in ethanol; ρ EtOH is the density of ethanol (0.805 g cm −3 ), measured with the aerometer; ρ air is the density of the air ( ρ = 0.00120 g cm −3 ) and ρ water is the density of the water (0.99983 g cm −3 ). For measurements, ten replicates of each sample were utilized. The tensile properties were determined using a universal testing machine, Tinius Olsen 25ST, according to the ISO 527-2 type 1B standard, with a crosshead speed of 1 mm min −1 and an S-type load cell with a capacity of 5 kN. The V-notched Charpy impact test was performed on a Zwick IPM-8 testing machine according to the ISO 179-1 standard. Dynamic mechanical analysis was performed utilizing a dynamic mechanical analyzer DMA/SDTA861e from",
+   "standards": [
+    "ISO 179-1",
+    "ISO 527-2"
+   ]
+  },
+  {
+   "pmcid": "PMC9681742",
+   "title": "Mechanically tunable resins based on acrylate-based resin for digital light processing (DLP) 3D printing.",
+   "year": "2022",
+   "text": "test Printing accuracy can be testing by measure the dimension of CAD 3D model file compare with the dimension of 3D printed specimen then calculating as percentage. Printing accuracy was evaluated as an average value of at least three replicates. The flexural strength The testing specimens were printed based on ASTM D790 geometry and performed by Tinius Olsen 5ST, universal testing machine (UTM), testing speed was set at 5 mm/min with load cell 5 kN, the flexural strength was evaluated as an average value of at least five replicates. The impact strength The testing specimens were printed based on ASTM D256 geometry and performed by Gotech GT-7045-MD, impact tester with 2.75 J hammer on Izod method. The imp",
+   "standards": [
+    "ASTM D256",
+    "ASTM D790"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ISO 10328": 1,
+  "ISO 527-2": 1,
+  "ISO 179-1": 1,
+  "ASTM D790": 1,
+  "ASTM D256": 1
+ },
+ "standards_new": [
+  "ASTM D256",
+  "ASTM D790",
+  "ISO 10328",
+  "ISO 179-1",
+  "ISO 527-2"
+ ],
+ "test_item_hits": {
+  "tensile": 7,
+  "density_porosity": 3,
+  "charpy_impact": 1,
+  "compression": 1,
+  "dma": 1,
+  "flexure": 1,
+  "shear": 1,
+  "vibration_sine_random": 1
+ }
+}

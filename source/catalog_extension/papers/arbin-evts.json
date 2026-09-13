@@ -1,0 +1,38 @@
+{
+ "object": "arbin-evts",
+ "manufacturer": "arbin",
+ "phrases": [
+  "Arbin Instruments EVTS"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Arbin Instruments EVTS\"",
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4200615888",
+    "doi": "https://doi.org/10.3390/en15010060",
+    "title": "The Influence of Temperature on the Capacity of Lithium Ion Batteries with Different Anodes",
+    "year": 2021,
+    "cited": 98,
+    "venue": "Energies",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/15/1/60/pdf?version=1640229004",
+    "abstract": "Temperature is considered to be an important indicator that affects the capacity of a lithium ion batteries. Therefore, it is of great significance to study the relationship between the capacity and temperature of lithium ion batteries with different anodes. In this study, the single battery is used as the research object to simulate the temperature environment during the actual use of the power battery, and conduct a charge and discharge comparison test for lithium iron phosphate battery, lithium manganate battery and lithium cobalt oxide battery. In the test of capacity characteristics of lithium ion batteries of three different cathode materials at different temperatures, the optimal operating temperature range of the lithium ion battery is extracted from the discharge efficiencies obtained. According to the research results, the discharge capacity of a lithium ion battery can be approximated by a cubic polynomial of temperature. The optimal operating temperature of lithium ion battery is 20–50 °C within 1 s, as time increases, the direct current (DC) internal resistance of the battery increases and the slope becomes smaller. Between 1 s and 10 s, the DC internal resistance of the battery basically shows a linear relationship with time. In the charge and discharge process, when state of charge (SOC) 0% and SOC 100%, the internal resistance of the battery is the largest. The SOC has the greatest impact on the polarization internal resistance, and the smallest impact on the ohmic internal resistance."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Arbin Instruments EVTS\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

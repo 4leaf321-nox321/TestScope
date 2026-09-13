@@ -1,0 +1,27 @@
+{
+ "object": "inficon-leak-detectors",
+ "manufacturer": "inficon",
+ "phrases": [
+  "INFICON UL6000 Fab",
+  "INFICON UL3000 Fab",
+  "INFICON UL3000 Fab ULTRA",
+  "INFICON UL1000 Fab",
+  "INFICON UL1000",
+  "INFICON Modul1000"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"INFICON UL6000 Fab\" OR \"INFICON UL3000 Fab\" OR \"INFICON UL3000 Fab ULTRA\" OR \"INFICON UL1000 Fab\" OR \"INFICON UL1000\" OR \"INFICON Modul1000\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"INFICON UL6000 Fab\" OR \"INFICON UL3000 Fab\" OR \"INFICON UL3000 Fab ULTRA\" OR \"INFICON UL1000 Fab\" OR \"INFICON UL1000\" OR \"INFICON Modul1000\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

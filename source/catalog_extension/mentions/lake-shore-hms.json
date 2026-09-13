@@ -1,0 +1,59 @@
+{
+ "object": "lake-shore-hms",
+ "manufacturer": "lake-shore",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEEE-488": 1,
+  "IEC 536": 1
+ },
+ "standards_new": [
+  "IEC 536",
+  "IEEE-488"
+ ],
+ "test_item_hits": {
+  "electrical_transport": 439,
+  "microscopy": 103,
+  "density_porosity": 47,
+  "optical_spectroscopy": 5,
+  "abrasion": 4,
+  "particle_size": 3,
+  "thermography": 3,
+  "halt_hass": 2,
+  "thermal_conductivity": 2,
+  "vibration_sine_random": 2,
+  "altitude_low_pressure": 1,
+  "coating_thickness": 1,
+  "compression": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "scratch_pencil_hardness": 1,
+  "tensile": 1,
+  "torsion": 1
+ },
+ "application_sentences": [
+  "alogs News & Trends Exhibitions 7600 1 / 20 PagesView full catalog 7600 Product catalog summary Overview Lake Shore's Hall Effect Measurement Systems (HMS) are designed for characterizing the physical properties of semiconductors and electronic materials.",
+  "These systems are available in configurations with electromagnets up to 2 T and superconducting magnets up to 9 T, suitable for research, development, and quality control.",
+  "Fields of Study Applications include strained semiconductors, organic LEDs, solid state physics, semiconductor characterization, high-temperature superconductivity, and more.",
+  "Measurement Capabilities Designed for Hall effect, magnetoresistance, and other electronic properties, suitable for classical and advanced measurements.",
+  "Applications Used for measuring intrinsic conduction, temperature coefficients, Hall effect in metals, and magnetotransport in magnetic materials.",
+  "When combined with the HMS voltage tracking mode, low mobility materials typically used in organic semiconductors, molecular electronics, organic LEDs, and transparent.",
+  "Hall system software automatically records data for 4-lead van der Pauw structures and 6-lead Hall bar structures and stores data to the hard drive to be used for further processing, analysis, and display.",
+  "3 Model 77020 The AC current Hall option is used for the measurement of Hall effect and resistivity in AC Resistance Option materials with high conductivity (metals) or low mobility (transparent oxides), requiring the measurement of very low voltages.",
+  "The AC Hall option, designed for precise, low noise AC resistance measurements on van der Pauw samples with resistances as small as 10 ), incorporates a Lake Shore Model 370 AC resistance bridge.",
+  "aximum excitation or sample output voltage D 100 mA maximum current D 295 K sample temperature D No current leakage to sample holder D High resistance mode used for sample resistances > 100,000 ) D 25 ) resistance down each lead wire Model 7700A Series Hall Measurement System 1.",
+  "maximum excitation or sample output voltage 100 mA maximum current D 295 K sample temperature D No current leakage to sample holder D High resistance mode used for sample resistances > 100,000 ) D 25 ) resistance down each lead wire D Assumed sample resistivity measurement voltage efficiencies (V_out/V_in) of 0.",
+  "These are the most important sample geometries used for Hall a long thin sample of length L and width w.",
+  "The potential difference (voltage) between 1 4 two contacts, not necessarily the same contacts used for the current source, can be determined.",
+  "This geometry is not suitable for measuring the Hall voltage.",
+  "3 The Greek cross structure shown in F igure resistivity can be used for comparison if the thicknesses of all the 7 has arms that serve to isolate the contacts from the active region.",
+  "Otherwise, the bulk resistivity should be used for When using the Greek cross sample geometry with a/c > 1.",
+  "4 A cloverleaf shaped structure like the one shown in F igure 8 is often used for patternable In a conductive material, the moving charged particles that thin films on a substrate.",
+  "Pads with bond wires are more quantity of greatest interest is the contact resistivity or specific contact suitable for a sample housed in a cryogenic chamber for low temperature measurements.",
+  "5 pairs is the recommended magnitude to be used for resistivity and Hall -0.",
+  "changes in the environment of the sample or self-heating of the sample separate the desired AC signal from the undesired DC signal with a high by the current used for the measurement.",
+  "25,26,2 7,2 8 The technique is based on the field reciprocity theorem and is intended for the high mobility materials typically used in Hall sensors.",
+  "AC field must be for low mobility materials it suffers from the same issues as DC field used for the measurement because of the low mobility.",
+  "Antimonide compounds, like GaSb, are the universe, think used for optical applications."
+ ]
+}

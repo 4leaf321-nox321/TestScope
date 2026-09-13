@@ -1,0 +1,186 @@
+{
+ "object": "oxford-symmetry-s2",
+ "manufacturer": "oxford-instruments",
+ "phrases": [
+  "Oxford Instruments S2",
+  "Oxford Instruments Symmetry S2"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Oxford Instruments S2\" OR \"Oxford Instruments Symmetry S2\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Oxford Instruments S2\" OR \"Oxford Instruments Symmetry S2\") AND OPEN_ACCESS:y",
+  "count": 10,
+  "papers": [
+   {
+    "pmcid": "PMC13483041",
+    "doi": "10.1038/s41467-026-75353-6",
+    "title": "High temperature Nb-Si alloys using data science: optimization of fracture toughness and high-temperature strength.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E399"
+    ]
+   },
+   {
+    "pmcid": "PMC10716850",
+    "doi": "10.1021/acsbiomaterials.3c00928",
+    "title": "Organization and Formation of the Crossed-Foliated Biomineral Microstructure of Limpet Shells.",
+    "journal": "ACS Biomater Sci Eng",
+    "year": "2023",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12452914",
+    "doi": "10.1073/pnas.2511830122",
+    "title": "Toughness enhancement by massive dislocation absorption at the crack front.",
+    "journal": "Proc Natl Acad Sci U S A",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "SS 304"
+    ]
+   },
+   {
+    "pmcid": "PMC10420015",
+    "doi": "10.3390/ma16155486",
+    "title": "Laser Melting of Prefabrication AlOOH-Activated Film on the Surface of Nodular Cast Iron and Its Associated Properties.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 2,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12300789",
+    "doi": "10.3390/ma18143341",
+    "title": "An Annealing Strategy for Inhibiting Recrystallization in Nickel-Based Single-Crystal Superalloys.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "KSL-1700X"
+    ]
+   },
+   {
+    "pmcid": "PMC13149655",
+    "doi": "10.1038/s41598-026-51972-3",
+    "title": "Velocity-dependent shear band formation in blanking processes.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "BSTA 1600",
+     "ISO 21",
+     "ISO 21920"
+    ]
+   },
+   {
+    "pmcid": "PMC12942448",
+    "doi": "10.3390/ma19040731",
+    "title": "Synergistic Enhancement of Hardness and Toughness in WC-Co Cemented Carbides Reinforced with (TiZrHfNbTa) (C, N) High-Entropy Carbonitride.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12879962",
+    "doi": "10.1021/acs.cgd.5c01236",
+    "title": "Calcite Tailoring by Limpets: The Prismatic and Acicular-Foliated Microstructures of Members of The Nacellidae.",
+    "journal": "Cryst Growth Des",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12566145",
+    "doi": "10.3390/ma18204815",
+    "title": "Enhancing Mechanical Properties of Q&amp;P Steel Through Tailoring Film-like Retained Austenite Morphology via Heating Rate Optimization.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11732201",
+    "doi": "10.1016/j.isci.2024.111580",
+    "title": "Robustness of machine learning predictions for Fe-Co-Ni alloys prepared by various synthesis methods.",
+    "journal": "iScience",
+    "year": "2025",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC13483041",
+   "title": "High temperature Nb-Si alloys using data science: optimization of fracture toughness and high-temperature strength.",
+   "year": "2026",
+   "text": "canning electron microscopy (SEM, Merlin Compact, Zeiss, Germany) under backscattered electron (BSE) mode at 20 kV. Elemental distribution was analyzed using the integrated energy-dispersive X-ray spectroscopy (EDS, X-Max 80 mm 2 SDD, Oxford Instruments). EBSD was performed on a Zeiss Gemini 560 field-emission SEM (Zeiss, Germany) equipped with an Oxford Instruments Symmetry S2 detector at 20 kV with a step size of 0.5 μm. Cross-sectional surfaces for EBSD were prepared by cross-section ion polishing. EBSD data were indexed and analyzed using AZtec software (Oxford Instruments) and ATEX software. TEM was performed on a FEI Talos F200X instrument (FEI, USA) operated at 200 kV, equipped with a Super-X EDS detector system (",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10716850",
+   "title": "Organization and Formation of the Crossed-Foliated Biomineral Microstructure of Limpet Shells.",
+   "year": "2023",
+   "text": "ies were mapped. Other maps were performed directly on the internal shell surfaces of P. depressa and P. caerulea without further polishing, despite which they rendered useful information and allowed us to relate the shapes of calcite laths to crystallographic orientations. EBSD analysis was carried out with an FEI Versa 3D FESEM, equipped with an Oxford Instruments Symmetry S2 camera. EBSD maps were collected by applying an acceleration voltage of 12 kV under low vacuum (40 Pa of H 2 O). Data were analyzed with the Data Collection v.7.3 and Aztec 6.0 software. To calculate the number of grains, the grain boundaries were defined where pixel-to-pixel misorientation was above a critical misorientation angle, set at ≥15°. M",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12452914",
+   "title": "Toughness enhancement by massive dislocation absorption at the crack front.",
+   "year": "2025",
+   "text": "rocesses involved in the fracture toughness measurement are described in SI Appendix, Note S1 . Mechanical properties of the Q–P–T steels are summarized in SI Appendix , Table S1 . SEM, EBSD, TEM, XRD, and Synchrotron XRD Characterizations. SEM and EBSD characterizations were conducted in a CIQTEK SEM5000 scanning electron microscope equipped with Oxford Instruments Symmetry S2 EBSD detector. TEM specimens were prepared by mechanical polishing followed by electropolishing in a twin-jet polisher. TEM characterization was performed using an FEI Talos F200x microscope operating at 200 kV. The austenite fraction and carbon content in austenite of the Q–P–T sample were measured by high-resolution synchrotron XRD. The volume f",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12300789",
+   "title": "An Annealing Strategy for Inhibiting Recrystallization in Nickel-Based Single-Crystal Superalloys.",
+   "year": "2025",
+   "text": "rmo Fisher Scientific Inc., Waltham, MA, USA). Prior to the characterization, the surface preparation included mechanical grinding with progressively finer SiC papers (up to #5000 grit) and final electro-polishing in a methanol-perchloric acid electrolyte (CH 3 OH:10 vol.% HClO 4 ) at −30 °C (30 V DC, 70 s). The EBSD mapping was conducted using an Oxford Instruments Symmetry S2 detector (Oxford Instruments, Abingdon, United Kingdom) equipped with AZtecCrystal 2.2 software, employing a 0.5 μm step size for GND and 5 μm for the recrystallization analysis, respectively. 3. Results and Discussion The SEM and EBSD characterization results of the 5% compressed specimens are presented in Figure 1 . Figure 1 a displays the dendr",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13149655",
+   "title": "Velocity-dependent shear band formation in blanking processes.",
+   "year": "2026",
+   "text": "o VDI 2906 17 (the slug has to be flipped, which is displayed by the velocity arrow). In addition, for the lowest and the highest blanking speeds, the shear zone at the blanked surface was analyzed further. Electron backscatter diffraction (EBSD) was performed using a field emission scanning electron microscope ZEISS GeminiSEM 460 equipped with an Oxford Instruments Symmetry S2 EBSD Camera. The cross sections for EBSD analysis were ground (to 2500 grit on SiC-paper) and polished. A final polishing was executed with a vibratory polisher using colloidal silica suspension. The EBSD measurement was performed at 20 kV with a step size of 0.1 μm for the overview scans and at 15 kV with a step size of 0.06 μm for the detail sca",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12942448",
+   "title": "Synergistic Enhancement of Hardness and Toughness in WC-Co Cemented Carbides Reinforced with (TiZrHfNbTa) (C, N) High-Entropy Carbonitride.",
+   "year": "2026",
+   "text": "at a scan rate of 5°/min for powder samples and 20~80° at 10° min −1 for bulk samples. Microstructural morphology and elemental analysis were examined using scanning electron microscopy (SEM; Zeiss Supra 55, Oberkochen, Germany) equipped with energy-dispersive X-ray spectroscopy (EDS). Electron backscatter diffraction (EBSD) was performed using an Oxford Instruments Symmetry S2 detector (Oxford Instruments, Abingdon, Oxfordshire, UK) on a Thermo Scientific Apreo 2S SEM (Thermo Fisher Scientific, Waltham, MA, USA) at 20 kV and 12 nA, with a scan speed of ~1500 pts/s and a step size of 0.02 μm, yielding data with an average CI of 0.45 and an indexing rate &gt; 97%. The actual density of the samples was determined by the Ar",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12879962",
+   "title": "Calcite Tailoring by Limpets: The Prismatic and Acicular-Foliated Microstructures of Members of The Nacellidae.",
+   "year": "2026",
+   "text": "ided useful information about the shapes and crystallographic orientations of calcite laths. However, the quality of the maps on raw growth surfaces was consistently lower, due to the EBSD technique’s sensitivity to surface topography (roughness). EBSD measurements were carried out with an FEI Versa 3D FESEM, equipped with an EDAX Hikari XP and an Oxford Instruments Symmetry S2 camera. EBSD maps were collected at an accelerating voltage of 12–15 kV under low vacuum mode (40 Pa of H 2 O). Data were analyzed with OIM Data Collection V. 7.3 and Aztec 6.1 software. The EBSD data are presented as Pole Figure (PF), Inverse Pole Figure (IPF) maps, and Kernel Average Misorientation (KAM) maps. PFs show the distribution of specif",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 7,
+  "surface_topography": 2,
+  "density_porosity": 1,
+  "fracture_toughness": 1,
+  "shear": 1
+ }
+}

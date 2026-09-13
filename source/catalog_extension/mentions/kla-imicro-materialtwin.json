@@ -1,0 +1,45 @@
+{
+ "object": "kla-imicro-materialtwin",
+ "manufacturer": "kla",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO 14577": 12,
+  "ASTM E 2546": 2
+ },
+ "standards_new": [
+  "ASTM E 2546"
+ ],
+ "test_item_hits": {
+  "microscopy": 18,
+  "scratch_pencil_hardness": 16,
+  "abrasion": 8,
+  "burst_pressure": 5,
+  "creep": 5,
+  "electrical_transport": 5,
+  "vibration_sine_random": 5,
+  "instrumented_indentation": 4,
+  "compression": 3,
+  "particle_size": 3,
+  "shear": 3,
+  "tensile": 3,
+  "dma": 2,
+  "fracture_toughness": 2,
+  "optical_spectroscopy": 2,
+  "coating_thickness": 1,
+  "flexure": 1,
+  "halt_hass": 1,
+  "hardness_vickers": 1,
+  "relaxation": 1,
+  "surface_topography": 1
+ },
+ "application_sentences": [
+  "nter features the InForce 1000 actuator for performing nanoindentation tests and universal nanomechanical tests, and can optionally add the InForce 50 actuator to test softer materials.",
+  "A diamond Berkovich tip (Synton-MDP, Switzerland) was used for the nanoindentation tests.",
+  "The iMicro has also been used for his initila development of high strain rate nanoindentation.",
+  "Interchangeable actuators provide a large dynamic range of force and displacement, allowing researchers to test materials from soft polymers to hard metals and ceramics with accuracy and repeatability.",
+  "The iMicro nanoindenter is well-suited for testing a wide range of battery materials, from soft lithium to hard ceramic substrates.",
+  "CSM is also used for other advanced measurement options, including the ProbeDMA™ method for storage and loss modulus measurements and AccuFilm™ substrate-independent measurements.",
+  "User Method Development for InView Control Software InView is a powerful, intuitive experiment-scripting platform that can be used for designing novel or complex experiments."
+ ]
+}

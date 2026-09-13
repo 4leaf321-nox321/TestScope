@@ -1,0 +1,25 @@
+{
+ "object": "mitutoyo-avk",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo AVK-C0 AVK-HF",
+  "Mitutoyo AVK-C0",
+  "Mitutoyo C0",
+  "Mitutoyo AVK-HF"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo AVK-C0 AVK-HF\" OR \"Mitutoyo AVK-C0\" OR \"Mitutoyo C0\" OR \"Mitutoyo AVK-HF\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo AVK-C0 AVK-HF\" OR \"Mitutoyo AVK-C0\" OR \"Mitutoyo C0\" OR \"Mitutoyo AVK-HF\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

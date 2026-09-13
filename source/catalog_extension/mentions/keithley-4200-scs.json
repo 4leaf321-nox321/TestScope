@@ -1,0 +1,24 @@
+{
+ "object": "keithley-4200-scs",
+ "manufacturer": "keithley",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "electrical_transport": 8,
+  "microscopy": 8,
+  "particle_size": 2,
+  "contact_angle": 1,
+  "density_porosity": 1,
+  "hardness_vickers": 1,
+  "insulation_resistance": 1,
+  "thermal_conductivity": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "The Clarius Software that is integrated into the 4200A-SCS includes a project for testing bioFETs.",
+  "The 4200A-SCS comes with support and ready-to-run tests for the latest in NVRAM technologies from floating gate flash to ReRAM and FeRAM.",
+  "These SMUs are ideal for connecting to LCD test stations, probers, switch matrices or any other large or complicated tester."
+ ]
+}

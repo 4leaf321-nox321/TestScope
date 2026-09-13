@@ -1,0 +1,85 @@
+{
+ "object": "audio-precision-apx555",
+ "manufacturer": "audio-precision",
+ "phrases": [
+  "Audio Precision APx555 APx555",
+  "Audio Precision APx555",
+  "Audio Precision APx555 B Series"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Audio Precision APx555 APx555\" OR \"Audio Precision APx555\" OR \"Audio Precision APx555 B Series\"",
+  "count": 4,
+  "works": [
+   {
+    "id": "https://openalex.org/W4378843397",
+    "doi": "https://doi.org/10.1109/apec43580.2023.10131323",
+    "title": "A 155W −95.6 dB THD+N GaN-based Class-D Audio Amplifier With LC Filter Nonlinearity Compensation",
+    "year": 2023,
+    "cited": 6,
+    "venue": null,
+    "topics": [
+     "Radio Frequency Integrated Circuit Design",
+     "Advanced Power Amplifier Design",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://repository.tudelft.nl/file/File_a5a4e261-3e9f-4494-825e-e7b3df64971c",
+    "abstract": "Silicon MOSFETs-based medium-power (100 W) CDAs, such switching frequency and high load current could lead to significant power loss. Furthermore, in the presence of a large current and voltage applied to the load, the linearity of the system can quickly degrade due to LC filter component voltage/current dependency. Without any LC filter nonlinearity compensation technique, LC components with high voltage/current rating must be used to reach high system linearity, which are often expensive and bulky. This paper presents a CDA using a GaN-based output stage to achieve high switching frequency and good efficiency simultaneously, and an integrated controller implemented in a 180nm CMOS technology to compensate for the LC filter nonlinearity. Switching at 1.8 MHz, the CDA can deliver a maximum of 155W from a 50V supply into a$4\\Omega$load with a peak efficiency of 91.7%. It achieves a peak THD+N of −95.6 dB (0.0017%) while allowing the use of cheaper and smaller nonlinear LC components."
+   },
+   {
+    "id": "https://openalex.org/W7126160969",
+    "doi": "https://doi.org/10.22271/27084493.2026.v6.i1a.81",
+    "title": "Design guidelines for minimizing crosstalk in multi-layer PCB interconnections for audio applications",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Electronics and Microcircuits",
+    "topics": [
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Electronic Packaging and Soldering Technologies",
+     "Music Technology and Sound Studies"
+    ],
+    "oa_url": "https://www.microcircuitsjournal.com/article/81/6-1-5-624.pdf",
+    "abstract": "Channel separation represents a defining specification for high-fidelity audio equipment, with premium products demanding crosstalk levels below -80 dB across the audible frequency range. This research developed and validated design guidelines for multi-layer printed circuit board interconnections targeting professional audio applications requiring exceptional channel isolation. Test vehicles comprised four-layer and six-layer stackups with systematic variation of layer spacing, trace separation, and guard trace configurations. Electromagnetic field simulation using three-dimensional finite element analysis predicted crosstalk behavior, with predictions validated through vector network analyzer measurements on fabricated prototypes. Results demonstrated that near-end crosstalk (NEXT) improved by 12.4 dB when layer spacing increased from 4 mils to 10 mils, while trace separation increases from 4 mils to 15 mils contributed an additional 13.9 dB improvement. Guard traces with via stitching at 50-mil intervals provided 8.7 dB additional isolation compared to unguarded configurations. The optimized six-layer design achieved -55 dB crosstalk across the 20 Hz to 20 kHz audio band, satisfying requirements for professional mixing console applications. Far-end crosstalk exhibited stronger frequency dependence, degrading by approximately 6 dB per octave above 1 MHz, establishing practical trace length limits for high-frequency auxiliary signals. These findings translate into specific design rules for layer stackup selection, trace routing, and guard structure implementation that enable PCB designers to achieve target crosstalk specifications without iterative physical prototyping."
+   },
+   {
+    "id": "https://openalex.org/W7126235342",
+    "doi": "https://doi.org/10.22271/27084531.2026.v7.i1a.109",
+    "title": "Analysis of nonlinear distortion in diode-based clipping circuits",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Research in Circuits Devices and Systems",
+    "topics": [
+     "Advanced Power Amplifier Design",
+     "Radio Frequency Integrated Circuit Design",
+     "Analog and Mixed-Signal Circuit Design"
+    ],
+    "oa_url": "https://www.circuitsjournal.com/article/109/7-1-4-460.pdf",
+    "abstract": "Diode-based clipping circuits find extensive application in audio signal processing, waveform shaping, and overvoltage protection systems where controlled nonlinear distortion produces desired effects or prevents damage. This research presents comprehensive characterisation of harmonic distortion generated by clipping circuits employing silicon, germanium, Schottky, and LED diode types across varying input signal levels and frequencies [1]. The investigation quantifies total harmonic distortion, individual harmonic amplitudes, and intermodulation products through precision measurements using calibrated audio analysers and spectrum instrumentation. Silicon diodes (1N4148) exhibited sharp clipping transitions with forward voltage of 0.62 V, producing THD values ranging from 2.3% at threshold to 28.7% at full clipping conditions [2]. Germanium diodes (1N34A) demonstrated softer knee characteristics with 0.31 V forward voltage, yielding more gradual distortion onset preferred for musical applications. Schottky devices (1N5817) provided the lowest threshold at 0.24 V with intermediate distortion characteristics. LED-based clippers required significantly higher drive levels but produced unique harmonic signatures attributed to their different junction physics [3]. Spectral analysis revealed that soft clipping generates predominantly odd harmonics with rapid high-order rolloff, whilst hard clipping produces richer harmonic content extending to the eighth harmonic and beyond. Transfer characteristic measurements confirmed the exponential relationship between diode current and voltage that underlies observed distortion behaviour [4]. Temperature sensitivity analysis showed THD variations of ±1.8% across the 10-50°C range for silicon devices, with germanium types exhibiting greater thermal coefficient of ±3.2%. The research establishes quantitative guidelines for diode selection in applications requiring specific distortion characteristics [5]."
+   },
+   {
+    "id": "https://openalex.org/W3121158352",
+    "doi": null,
+    "title": "Far-field MEMS microphone array beamforming – Measurements, simulations, and design",
+    "year": 2020,
+    "cited": 0,
+    "venue": "Summit (Simon Fraser University)",
+    "topics": [
+     "Speech and Audio Processing",
+     "Radio Astronomy Observations and Technology",
+     "Antenna Design and Optimization"
+    ],
+    "oa_url": null,
+    "abstract": "This thesis work determines the far-field array response patterns of micro-electromechanical system (MEMS) microphone arrays; and verifies these patterns employing experimental methods. Phase shifts and amplitude behaviour are simulated through finite element methods (FEM) using COMSOL Multiphysics, under both ideal and realistic conditions. Physical measurements are performed with microphone arrays using high accuracy audio analyzer equipment (Audio Precision APX555) to support and compare with mathematical and simulation conclusions. The effects of the packaging, mounting materials, and interference among elements on the array response patterns are studied using two-element microphone arrays. A new form of MEMS microphone array beamformer – a dynamic layout array beamformer – is introduced and simulated with the goals of improving flexibility, while lowering the complexity and power consumption, of MEMS microphone array systems. In addition to the acoustic signal recognition, a new approach is developed with a Xilinx Basys3 FPGA board to record and analyze the audio files using PmodMIC3 MEMS microphone devices. Applications based on the MEMS microphone array beamforming are introduced. Potential applications of the research to intelligent transportation system (ITS) moving vehicle direction of arrival (DOA) estimation are presented for further study."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Audio Precision APx555 APx555\" OR \"Audio Precision APx555\" OR \"Audio Precision APx555 B Series\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

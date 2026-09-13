@@ -1,0 +1,27 @@
+{
+ "object": "zwickroell-hdt-vicat",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell A1",
+  "ZwickRoell HDT",
+  "ZwickRoell Vicat 3-300 S",
+  "ZwickRoell Vicat 4-300 S",
+  "ZwickRoell Vicat 6-300 S",
+  "ZwickRoell Vicat 3-300 A1"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell A1\" OR \"ZwickRoell HDT\" OR \"ZwickRoell Vicat 3-300 S\" OR \"ZwickRoell Vicat 4-300 S\" OR \"ZwickRoell Vicat 6-300 S\" OR \"ZwickRoell Vicat 3-300 A1\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell A1\" OR \"ZwickRoell HDT\" OR \"ZwickRoell Vicat 3-300 S\" OR \"ZwickRoell Vicat 4-300 S\" OR \"ZwickRoell Vicat 6-300 S\" OR \"ZwickRoell Vicat 3-300 A1\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

@@ -1,0 +1,40 @@
+{
+ "object": "zwickroell-zhr-rockwell",
+ "manufacturer": "zwickroell",
+ "pages": 3,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM E384": 2,
+  "ASTM-E18": 1,
+  "EN-ISO 6506": 1,
+  "ISO 6506": 1,
+  "ISO 6507": 1,
+  "ISO 4545": 1,
+  "ASTM E92": 1,
+  "ASTM E10": 1,
+  "ISO 6508": 1,
+  "ASTM E18": 1,
+  "DIN 51917": 1,
+  "ISO 2039-1": 1
+ },
+ "standards_new": [
+  "ASTM E384",
+  "ASTM E92",
+  "ASTM-E18",
+  "EN-ISO 6506",
+  "ISO 4545",
+  "ISO 6507"
+ ],
+ "test_item_hits": {
+  "hardness_rockwell": 12,
+  "compression": 3,
+  "flexure": 3,
+  "hardness_brinell": 3,
+  "tensile": 3,
+  "hardness_vickers": 2,
+  "microscopy": 1
+ },
+ "application_sentences": [
+  "• It can also be used for plastics and carbon testing."
+ ]
+}

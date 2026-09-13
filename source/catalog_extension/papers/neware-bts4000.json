@@ -1,0 +1,35 @@
+{
+ "object": "neware-bts4000",
+ "manufacturer": "neware",
+ "phrases": [
+  "Neware BTS4000-5V6A",
+  "Neware BTS4000-5V6A CT-4008T-5V6A-S1",
+  "Neware 164"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Neware BTS4000-5V6A\" OR \"Neware BTS4000-5V6A CT-4008T-5V6A-S1\" OR \"Neware 164\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Neware BTS4000-5V6A\" OR \"Neware BTS4000-5V6A CT-4008T-5V6A-S1\" OR \"Neware 164\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC11837883",
+    "doi": "10.1002/adma.202414872",
+    "title": "Soft, Modular Power for Composing Robots with Embodied Energy.",
+    "journal": "Adv Mater",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 0,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

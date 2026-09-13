@@ -1,0 +1,306 @@
+{
+ "object": "zeiss-xradia-versa",
+ "manufacturer": "zeiss",
+ "phrases": [
+  "ZEISS Xradia 410 Versa",
+  "ZEISS Xradia 520 Versa",
+  "ZEISS Xradia 610 Versa",
+  "ZEISS Xradia 620 Versa"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZEISS Xradia 410 Versa\" OR \"ZEISS Xradia 520 Versa\" OR \"ZEISS Xradia 610 Versa\" OR \"ZEISS Xradia 620 Versa\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZEISS Xradia 410 Versa\" OR \"ZEISS Xradia 520 Versa\" OR \"ZEISS Xradia 610 Versa\" OR \"ZEISS Xradia 620 Versa\") AND OPEN_ACCESS:y",
+  "count": 333,
+  "papers": [
+   {
+    "pmcid": "PMC5785480",
+    "doi": "10.1038/s41467-017-02782-9",
+    "title": "High-resolution spatiotemporal transcriptome mapping of tomato fruit development and ripening.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 277,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6436924",
+    "doi": "10.1126/sciadv.aav2842",
+    "title": "Elastocapillary self-assembled neurotassels for stable neural activity recordings.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 128,
+    "snippets": 1,
+    "standards_in_paper": [
+     "IEEE 92"
+    ]
+   },
+   {
+    "pmcid": "PMC9646516",
+    "doi": "10.1038/s41565-022-01220-2",
+    "title": "Human-muscle-inspired single fibre actuator with reversible percolation.",
+    "journal": "Nat Nanotechnol",
+    "year": "2022",
+    "cited": 110,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5826918",
+    "doi": "10.1038/s41598-018-21776-1",
+    "title": "Increased mechanical loading through controlled swimming exercise induces bone formation and mineralization in adult zebrafish.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 90,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10954228",
+    "doi": "10.1126/sciadv.adi7724",
+    "title": "Low-impedance tissue-device interface using homogeneously conductive hydrogels chemically bonded to stretchable bioelectronics.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 81,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 10993-12"
+    ]
+   },
+   {
+    "pmcid": "PMC8813992",
+    "doi": "10.1038/s41467-022-28346-0",
+    "title": "Manipulating the oxygen reduction reaction pathway on Pt-coordinated motifs.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 75,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8535816",
+    "doi": "10.1126/sciadv.abi5811",
+    "title": "Osteocalcin attenuates oligodendrocyte differentiation and myelination via GPR37 signaling in the mouse brain.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 72,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6561253",
+    "doi": "10.1073/pnas.1821292116",
+    "title": "An ammonite trapped in Burmese amber.",
+    "journal": "Proc Natl Acad Sci U S A",
+    "year": "2019",
+    "cited": 68,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11009309",
+    "doi": "10.1038/s41467-024-47189-5",
+    "title": "Multiscale architecture design of 3D printed biodegradable Zn-based porous scaffolds for immunomodulatory osteogenesis.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 65
+   },
+   {
+    "pmcid": "PMC7399483",
+    "doi": "10.1126/sciadv.abb4712",
+    "title": "Controlling ice formation on gradient wettability surface for high-performance bioinspired materials.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 62
+   },
+   {
+    "pmcid": "PMC6331727",
+    "doi": "10.15252/embj.201899845",
+    "title": "Prominin-1 controls stem cell activation by orchestrating ciliary dynamics.",
+    "journal": "EMBO J",
+    "year": "2019",
+    "cited": 62
+   },
+   {
+    "pmcid": "PMC8494927",
+    "doi": "10.1038/s41467-021-26126-w",
+    "title": "A bioinspired scaffold for rapid oxygenation of cell encapsulation systems.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 56
+   },
+   {
+    "pmcid": "PMC11018840",
+    "doi": "10.1038/s41467-024-47597-7",
+    "title": "3D printable strong and tough composite organo-hydrogels inspired by natural hierarchical composite design principles.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 47
+   },
+   {
+    "pmcid": "PMC8825331",
+    "doi": "10.1093/plphys/kiab405",
+    "title": "X-ray microscopy enables multiscale high-resolution 3D imaging of plant cells, tissues, and organs.",
+    "journal": "Plant Physiol",
+    "year": "2022",
+    "cited": 45
+   },
+   {
+    "pmcid": "PMC6900596",
+    "doi": "10.1073/pnas.1916186116",
+    "title": "Pollination of Cretaceous flowers.",
+    "journal": "Proc Natl Acad Sci U S A",
+    "year": "2019",
+    "cited": 45
+   },
+   {
+    "pmcid": "PMC10173180",
+    "doi": "10.1016/j.bioactmat.2023.04.017",
+    "title": "A drug-loaded composite coating to improve osteogenic and antibacterial properties of Zn-1Mg porous scaffolds as biodegradable bone implants.",
+    "journal": "Bioact Mater",
+    "year": "2023",
+    "cited": 43
+   },
+   {
+    "pmcid": "PMC8497603",
+    "doi": "10.1038/s41467-021-26168-0",
+    "title": "Self-assembled multifunctional neural probes for precise integration of optogenetics and electrophysiology.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 39
+   },
+   {
+    "pmcid": "PMC9649687",
+    "doi": "10.1038/s41467-022-34496-y",
+    "title": "Transfer learning enhanced water-enabled electricity generation in highly oriented graphene oxide nanochannels.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 37
+   },
+   {
+    "pmcid": "PMC7509645",
+    "doi": "10.1002/advs.202000747",
+    "title": "Integrated and Binder-Free Air Cathodes of Co<sub>3</sub> Fe<sub>7</sub> Nanoalloy and Co<sub>5.47</sub> N Encapsulated in Nitrogen-Doped Carbon Foam with Superior Oxygen Reduction Activity in Flexible Aluminum-Air Batteries.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2020",
+    "cited": 35
+   },
+   {
+    "pmcid": "PMC9929041",
+    "doi": "10.1038/s41467-023-35973-8",
+    "title": "Large-scale physically accurate modelling of real proton exchange membrane fuel cell with deep learning.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 34
+   },
+   {
+    "pmcid": "PMC6587127",
+    "doi": "10.26508/lsa.201800215",
+    "title": "Expression of a constitutively active human <i>STING</i> mutant in hematopoietic cells produces an <i>Ifnar1</i>-dependent vasculopathy in mice.",
+    "journal": "Life Sci Alliance",
+    "year": "2019",
+    "cited": 30
+   },
+   {
+    "pmcid": "PMC8692475",
+    "doi": "10.1038/s41598-021-03726-6",
+    "title": "Evaluation of 2D super-resolution ultrasound imaging of the rat renal vasculature using ex vivo micro-computed tomography.",
+    "journal": "Sci Rep",
+    "year": "2021",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC6882814",
+    "doi": "10.1038/s41598-019-53249-4",
+    "title": "In vivo delivery of VEGF RNA and protein to increase osteogenesis and intraosseous angiogenesis.",
+    "journal": "Sci Rep",
+    "year": "2019",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC10576793",
+    "doi": "10.1038/s41467-023-41740-6",
+    "title": "Growing recyclable and healable piezoelectric composites in 3D printed bioinspired structure for protective wearable sensor.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 27
+   },
+   {
+    "pmcid": "PMC10250191",
+    "doi": "10.1038/s41592-023-01866-3",
+    "title": "High-contrast en bloc staining of mouse whole-brain and human brain samples for EM-based connectomics.",
+    "journal": "Nat Methods",
+    "year": "2023",
+    "cited": 27
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC5785480",
+   "title": "High-resolution spatiotemporal transcriptome mapping of tomato fruit development and ripening.",
+   "year": "2018",
+   "text": "were generated by hand tracing high-resolution photographs or light microscopy viewed pericarp sections, respectively. To create three-dimensional (3D) images of fruit, including internal structures, micro-computed tomography (micro-CT) was used to scan individual fruit at 10, 15, and 20 DPA (14.2, 16.9, and 26.8 μm/voxel resolution, respectively; Zeiss Xradia 520 Versa), and at 30 DPA, MG, Br, and Pk (50 μm/voxel resolution, GE Healthcare eXplore CT-120). Digital radiographs were reconstructed into 3D images using OsiriX software v.5.7 (Pixmeo SARL). Data integration into the TEA database Expression data and anatomical images were deposited in the TEA database ( http://tea.sgn.cornell.edu ) 15 . Spearman correla",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6436924",
+   "title": "Elastocapillary self-assembled neurotassels for stable neural activity recordings.",
+   "year": "2019",
+   "text": "kV. The cross-section of the filament in Fig. 6E was prepared by focused ion beam (FIB) milling. Before milling, a thin platinum layer was deposited by FIB on the sample surface using a CH 3 C 5 H 4 Pt(CH 3 ) 3 gas source. Micro- and nano-CT images of 128- and 1024-channel Neurotassel/PEG composite fibers in fig. S15 (E and F) were acquired using Zeiss Xradia 520 Versa and 800 Ultra 3D X-ray microscopes (Carl Zeiss X-ray Microscopy Inc.), respectively. The tube voltage of the Zeiss Xradia 520 Versa was set to 80 kV. The Zeiss Xradia 800 Ultra used an 8-keV laboratory X-ray source. After scanning, the acquired radiography images were reconstructed into a 3D volume using the ZEISS XMReconstructor software. Supplem",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9646516",
+   "title": "Human-muscle-inspired single fibre actuator with reversible percolation.",
+   "year": "2022",
+   "text": "fibres within rectangle homemade frames. The orientation order parameter of the fibres was calculated as (180° − H °) × 100/180°, where H ° is the half-width of the intensity distribution on the azimuthally scanned peaks. Three-dimensional mapping images of the EG filler configuration during shape deformation were obtained by an X-ray microscope (Zeiss Xradia 520 Versa). Each image was taken by using a ×20 objective lens with 25 s exposure time under 60 kV and 5 W, resulting in a 0.7 μm resolution after fixing the relaxed and contracted states of the samples. All the electrical measurements were conducted using a semiconductor parameter analyser (Keithley 4200-SCS). During device operation, voltage was applied a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5826918",
+   "title": "Increased mechanical loading through controlled swimming exercise induces bone formation and mineralization in adult zebrafish.",
+   "year": "2018",
+   "text": "(TV) was defined as the whole volume of a vertebra including the inner open space, whereas the bone volume (BV) was defined as the vertebral body without the inner space. Volume and length (VL) of the vertebral bodies was determined. 3D X-Ray microscopy The osteocyte network in zebrafish vertebral bodies was quantified using a 3D X-ray microscope (ZEISS Xradia 520 Versa, Carl Zeiss X-ray Microscopy, Pleasanton, CA, USA). Zebrafish vertebrae were scanned at a resolution of 0.7 µm and vertebrae were analyzed using 3D evaluation software (Visual SI Advanced, Object Research Systems Inc, Montreal, Canada; ImageJ2 v1.5, https://imagej.nih.gov/ij ). Orientation of the osteocyte lacunae in relation to the long and short",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10954228",
+   "title": "Low-impedance tissue-device interface using homogeneously conductive hydrogels chemically bonded to stretchable bioelectronics.",
+   "year": "2024",
+   "text": "repared for 3D tomography: The first hydrogel was prepared by incorporating a concentration of 3.3 wt % PEDOT:PSS to a PAAm hydrogel (PEDOT:PSS-PAAm hydrogel). The second sample was prepared by decorating the PEDOT:PSS-PAAm hydrogel with PANi, resulting in the PEDOT:PSS-PANi-PAAm hydrogel. The hydrogel samples were freeze-dried and scanned using a ZEISS Xradia 620 Versa x-ray microscope (XRM; Carl Zeiss). Conductivity measurement of hydrogel films (40 mm by 10 mm by 100 μm) was performed using a four-point probe and connected to a source meter (2450, Keithley). To measure the electrical conductivity of hydrogels according to pH, the hydrogels were soaked in pH buffer solutions for 1 day before the measurement. To",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8813992",
+   "title": "Manipulating the oxygen reduction reaction pathway on Pt-coordinated motifs.",
+   "year": "2022",
+   "text": "f Shanghai Synchrotron Radiation Facility (XAFS station, SSRF). The data were collected in the fluorescence mode and the reference spectrum of Pt metal foil was also collected during the measurement for energy calibration. XANES and EXAFS data were processed and analyzed using the Athena and Artemis software package 68 . MicroCT was performed on a Zeiss Xradia 520 Versa X-ray microscopy. The distances of the sample to the X-ray source (12.53 mm) or to the X-ray detector (72.09 mm) result in a voxel (volume pixel) size of 1 μm. The field of view was approximately 1012.3 μm × 1012.3 μm, and the reconstruction of MicroCT data was conducted using the TXM Reconstructor software (Xradia). XRD spectra were recorded on a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8535816",
+   "title": "Osteocalcin attenuates oligodendrocyte differentiation and myelination via GPR37 signaling in the mouse brain.",
+   "year": "2021",
+   "text": "used as an internal control for normalization. Primer sequences used in this study were supplemented in table S1. All reactions were performed in triplicate with three independent experiments, and the relative expression of mRNA levels was calculated using the 2 −△△ C t method. X-ray microscope analysis The 3D imaging of SC was performed using the ZEISS Xradia 520 Versa X-ray Microscope [Carl Zeiss (Shanghai) Co. Ltd., Shanghai, China]. The specimens were stained with 1% osmium acid solution and dried with the critical point drying method. Before imaging, the specimens were mounted on the sample holder with an aluminum tube as adapter and rotated horizontally by 360°, pausing at discrete angles to collect 2D proj",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6561253",
+   "title": "An ammonite trapped in Burmese amber.",
+   "year": "2019",
+   "text": "s of ∼40 individual focal planes that were obtained using the software Helicon Focus 6 ( http://www.heliconsoft.com ) for better illustration of the 3D structures, as described by Schmidt et al. ( 56 ). To three-dimensionally reconstruct the ammonite, we scanned the fossil at the micro-CT laboratory of NIGPAS, using a 3D X-ray microscope (3D-XRM), Zeiss Xradia 520 versa. Unlike conventional micro-CT, which relies on maximum geometric magnification and a flat panel detector to achieve high resolution, 3D-XRM uses CCD-based objectives to achieve higher spatial resolution. Based on the size of the fossil specimen, a CCD-based 0.4× objective was used, providing isotropic voxel sizes of 13.36 μm with the help of geome",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "electrical_transport": 1,
+  "optical_spectroscopy": 1
+ }
+}

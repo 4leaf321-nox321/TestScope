@@ -1,0 +1,51 @@
+{
+ "object": "bruel-kjaer-hats-5128",
+ "manufacturer": "bruel-kjaer",
+ "phrases": [
+  "Brüel & Kjær Type 5128-B",
+  "Brüel & Kjær Type 5128-C",
+  "Brüel & Kjær Type 5128-D",
+  "HBK Type 5128-B",
+  "HBK Type 5128-C"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Brüel & Kjær Type 5128-B\" OR \"Brüel & Kjær Type 5128-C\" OR \"Brüel & Kjær Type 5128-D\" OR \"HBK Type 5128-B\" OR \"HBK Type 5128-C\"",
+  "count": 0,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Brüel & Kjær Type 5128-B\" OR \"Brüel & Kjær Type 5128-C\" OR \"Brüel & Kjær Type 5128-D\" OR \"HBK Type 5128-B\" OR \"HBK Type 5128-C\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC10662155",
+    "doi": "10.1038/s41598-023-47396-y",
+    "title": "Behavioral dynamics of conversation, (mis)communication and coordination in noisy environments.",
+    "journal": "Sci Rep",
+    "year": "2023",
+    "cited": 16,
+    "snippets": 0,
+    "standards_in_paper": [
+     "IEC 60268-16"
+    ]
+   },
+   {
+    "pmcid": "PMC13389142",
+    "doi": "10.1177/23312165261470622",
+    "title": "Building a Multi-Sensor Lab for Interactive Communication Research: Challenges, Workarounds, and Lessons Learned.",
+    "journal": "Trends Hear",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ISO 338-1"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

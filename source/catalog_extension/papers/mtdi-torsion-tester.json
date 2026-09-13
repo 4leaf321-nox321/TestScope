@@ -1,0 +1,23 @@
+{
+ "object": "mtdi-torsion-tester",
+ "manufacturer": "mtdi",
+ "phrases": [
+  "MTDI Order-Made Torsion",
+  "MTDI Order-Made"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"MTDI Order-Made Torsion\" OR \"MTDI Order-Made\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"MTDI Order-Made Torsion\" OR \"MTDI Order-Made\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

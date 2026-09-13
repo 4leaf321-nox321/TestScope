@@ -1,0 +1,47 @@
+{
+ "object": "espec-su-sh-benchtop",
+ "manufacturer": "espec",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC 60068-3-5": 2,
+  "IEC 60068-3-6": 2,
+  "ISO 1996-1": 2,
+  "ISO-9001": 2,
+  "ISO 12100": 1,
+  "IEC 60204": 1,
+  "IEC 61000-6-2": 1,
+  "IEC-61000-6-4": 1,
+  "JIS Q 9001": 1,
+  "IEC 60068": 1
+ },
+ "standards_new": [
+  "IEC 60068",
+  "IEC 60068-3-5",
+  "IEC 60068-3-6",
+  "IEC 60204",
+  "IEC 61000-6-2",
+  "IEC-61000-6-4",
+  "ISO 12100",
+  "ISO 1996-1",
+  "ISO-9001",
+  "JIS Q 9001"
+ ],
+ "test_item_hits": {
+  "halt_hass": 26,
+  "thermal_shock": 3,
+  "altitude_low_pressure": 2,
+  "microscopy": 2,
+  "temperature_cycling": 2,
+  "tensile": 2,
+  "vibration_sine_random": 2,
+  "battery_cycle_life": 1
+ },
+ "application_sentences": [
+  "Network Web Integrated Network Intranet (Sold separately) Lab Ethernet Ethernet Ideal for customers who needs to USB RS-485 LAN converter manage lots of testing chambers or Bench-Top measuring devices.",
+  "IONS Option box Program-synched DC power supply I/O interface Box prepared to install additional Capable of applying voltage to the options such as: specimen, used for bias testing.",
+  "Because chambers are independent, can be used for manual thermal shock testing.",
+  "Designed for integration with other test equipment to make a complete test stand.",
+  ") Extremely quiet operation as low as 52 dba, suitable for quiet labs or offices."
+ ]
+}

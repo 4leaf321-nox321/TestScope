@@ -1,0 +1,49 @@
+{
+ "object": "shimadzu-ags-v",
+ "manufacturer": "shimadzu",
+ "pages": 10,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "JIS B7721": 4,
+  "EN 10002-2": 4,
+  "ISO 7500-1": 4,
+  "BS 1610": 3,
+  "ISO 527": 1,
+  "JIS K 7161": 1,
+  "ASTM D638": 1,
+  "ISO 178": 1,
+  "JIS K 7171": 1,
+  "ASTM D790": 1
+ },
+ "standards_new": [
+  "ASTM D638",
+  "ASTM D790",
+  "BS 1610",
+  "EN 10002-2",
+  "ISO 178",
+  "ISO 527",
+  "ISO 7500-1",
+  "JIS B7721",
+  "JIS K 7161",
+  "JIS K 7171"
+ ],
+ "test_item_hits": {
+  "tensile": 41,
+  "flexure": 11,
+  "compression": 9,
+  "microscopy": 3,
+  "electrical_transport": 2,
+  "peel": 2,
+  "particle_size": 1,
+  "puncture": 1
+ },
+ "application_sentences": [
+  "Single Software This is used for common uniaxial tests."
+ ],
+ "standards_nearby": [
+  "ISO 6892",
+  "ISO6892",
+  "JIS K7171",
+  "JIS Z2241"
+ ]
+}

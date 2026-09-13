@@ -1,0 +1,27 @@
+{
+ "object": "mts-criterion-series-40",
+ "manufacturer": "mts",
+ "phrases": [
+  "MTS Systems C41.103",
+  "MTS Systems C42.503",
+  "MTS Systems C43.104",
+  "MTS Systems C43.304",
+  "MTS Systems C43.504",
+  "MTS Systems C44.304"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"MTS Systems C41.103\" OR \"MTS Systems C42.503\" OR \"MTS Systems C43.104\" OR \"MTS Systems C43.304\" OR \"MTS Systems C43.504\" OR \"MTS Systems C44.304\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"MTS Systems C41.103\" OR \"MTS Systems C42.503\" OR \"MTS Systems C43.104\" OR \"MTS Systems C43.304\" OR \"MTS Systems C43.504\" OR \"MTS Systems C44.304\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

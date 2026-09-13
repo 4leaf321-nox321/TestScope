@@ -1,0 +1,331 @@
+{
+ "object": "shimadzu-uv-2600-2700",
+ "manufacturer": "shimadzu",
+ "phrases": [
+  "Shimadzu UV-2600 UV-2700",
+  "Shimadzu UV-2600",
+  "Shimadzu UV-2700",
+  "Shimadzu UV-2600i Plus",
+  "Shimadzu UV-2700i Plus"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Shimadzu UV-2600 UV-2700\" OR \"Shimadzu UV-2600\" OR \"Shimadzu UV-2700\" OR \"Shimadzu UV-2600i Plus\" OR \"Shimadzu UV-2700i Plus\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Shimadzu UV-2600 UV-2700\" OR \"Shimadzu UV-2600\" OR \"Shimadzu UV-2700\" OR \"Shimadzu UV-2600i Plus\" OR \"Shimadzu UV-2700i Plus\") AND OPEN_ACCESS:y",
+  "count": 2083,
+  "papers": [
+   {
+    "pmcid": "PMC7490390",
+    "doi": "10.1038/s41467-020-18350-7",
+    "title": "Unique S-scheme heterojunctions in self-assembled TiO<sub>2</sub>/CsPbBr<sub>3</sub> hybrids for CO<sub>2</sub> photoreduction.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 365,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6391499",
+    "doi": "10.1038/s41467-019-08731-y",
+    "title": "Modified carbon nitride nanozyme as bifunctional glucose oxidase-peroxidase for metal-free bioinspired cascade photocatalysis.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 255,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5979747",
+    "doi": "10.1002/advs.201700891",
+    "title": "Photosensitizer Micelles Together with IDO Inhibitor Enhance Cancer Photothermal Therapy and Immunotherapy.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2018",
+    "cited": 246,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7241732",
+    "doi": "10.1021/acsomega.0c01554",
+    "title": "Rapid Detection of IgM Antibodies against the SARS-CoV-2 Virus via Colloidal Gold Nanoparticle-Based Lateral-Flow Assay.",
+    "journal": "ACS Omega",
+    "year": "2020",
+    "cited": 227,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8764117",
+    "doi": "10.1038/s41467-022-28011-6",
+    "title": "Completely aqueous processable stimulus responsive organic room temperature phosphorescence materials with tunable afterglow color.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 204,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7239646",
+    "doi": "10.1126/sciadv.aba5996",
+    "title": "Engineered algae: A novel oxygen-generating system for effective treatment of hypoxic cancer.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 185,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8897311",
+    "doi": "10.1016/j.bioactmat.2021.10.023",
+    "title": "Ultrasmall Fe-doped carbon dots nanozymes for photoenhanced antibacterial therapy and wound healing.",
+    "journal": "Bioact Mater",
+    "year": "2022",
+    "cited": 183,
+    "snippets": 3,
+    "standards_in_paper": [
+     "GB11192",
+     "GB12021",
+     "GB13044",
+     "GB13428"
+    ]
+   },
+   {
+    "pmcid": "PMC6972883",
+    "doi": "10.1038/s41467-020-14333-w",
+    "title": "Manipulating spin polarization of titanium dioxide for efficient photocatalysis.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 175,
+    "snippets": 3,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6926478",
+    "doi": "10.1016/j.molcel.2019.07.022",
+    "title": "Structures of Respiratory Supercomplex I+III&lt;sub&gt;2&lt;/sub&gt; Reveal Functional and Conformational Crosstalk.",
+    "journal": "Mol Cell",
+    "year": "2019",
+    "cited": 170
+   },
+   {
+    "pmcid": "PMC5489716",
+    "doi": "10.1038/ncomms15911",
+    "title": "Adaptive and freeze-tolerant heteronetwork organohydrogels with enhanced mechanical stability over a wide temperature range.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 161
+   },
+   {
+    "pmcid": "PMC9970987",
+    "doi": "10.1038/s41467-023-36710-x",
+    "title": "Tuning excited state electronic structure and charge transport in covalent organic frameworks for enhanced photocatalytic performance.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 156
+   },
+   {
+    "pmcid": "PMC7611764",
+    "doi": "10.1038/s41557-021-00752-9",
+    "title": "Electrostatic co-assembly of nanoparticles with oppositely charged small molecules into static and dynamic superstructures.",
+    "journal": "Nat Chem",
+    "year": "2021",
+    "cited": 149
+   },
+   {
+    "pmcid": "PMC5795388",
+    "doi": "10.1074/mcp.ra117.000470",
+    "title": "The interactome of intact mitochondria by cross-linking mass spectrometry provides evidence for coexisting respiratory supercomplexes.",
+    "journal": "Mol Cell Proteomics",
+    "year": "2018",
+    "cited": 147
+   },
+   {
+    "pmcid": "PMC8880773",
+    "doi": "10.1126/sciadv.abl8392",
+    "title": "Stimulus-responsive room temperature phosphorescence materials with full-color tunability from pure organic amorphous polymers.",
+    "journal": "Sci Adv",
+    "year": "2022",
+    "cited": 143
+   },
+   {
+    "pmcid": "PMC8121806",
+    "doi": "10.1038/s41467-021-22864-z",
+    "title": "Degradation mechanism of hybrid tin-based perovskite solar cells and the critical role of tin (IV) iodide.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 141
+   },
+   {
+    "pmcid": "PMC6251929",
+    "doi": "10.1038/s41467-018-07420-6",
+    "title": "Understanding structure-activity relationships in linear polymer photocatalysts for hydrogen evolution.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 139
+   },
+   {
+    "pmcid": "PMC9284146",
+    "doi": "10.1002/advs.202105274",
+    "title": "Lemon-Derived Extracellular Vesicles Nanodrugs Enable to Efficiently Overcome Cancer Multidrug Resistance by Endocytosis-Triggered Energy Dissipation and Energy Production Reduction.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 133
+   },
+   {
+    "pmcid": "PMC4382695",
+    "doi": "10.1038/ncomms7469",
+    "title": "A molecular catalyst for water oxidation that binds to metal oxide surfaces.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 133
+   },
+   {
+    "pmcid": "PMC6427015",
+    "doi": "10.1038/s41467-019-08980-x",
+    "title": "Synthetic control over orientational degeneracy of spacer cations enhances solar cell efficiency in two-dimensional perovskites.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 118
+   },
+   {
+    "pmcid": "PMC9259601",
+    "doi": "10.1038/s41467-022-31474-2",
+    "title": "Molecular-level insight into photocatalytic CO<sub>2</sub> reduction with H<sub>2</sub>O over Au nanoparticles by interband transitions.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 117
+   },
+   {
+    "pmcid": "PMC5441578",
+    "doi": "10.1371/journal.pbio.2002214",
+    "title": "The in vivo structure of biological membranes and evidence for lipid domains.",
+    "journal": "PLoS Biol",
+    "year": "2017",
+    "cited": 108
+   },
+   {
+    "pmcid": "PMC9300691",
+    "doi": "10.1038/s41467-022-31978-x",
+    "title": "A dynamic assembly-induced emissive system for advanced information encryption with time-dependent security.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 97
+   },
+   {
+    "pmcid": "PMC5780395",
+    "doi": "10.1038/s41467-017-02655-1",
+    "title": "Active and dynamic mitochondrial S-depalmitoylation revealed by targeted fluorescent probes.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 91
+   },
+   {
+    "pmcid": "PMC5969501",
+    "doi": "10.1039/c8sc01170b",
+    "title": "Deciphering the working mechanism of aggregation-induced emission of tetraphenylethylene derivatives by ultrafast spectroscopy.",
+    "journal": "Chem Sci",
+    "year": "2018",
+    "cited": 85
+   },
+   {
+    "pmcid": "PMC10382506",
+    "doi": "10.1038/s41467-023-40174-4",
+    "title": "Elucidating electrochemical nitrate and nitrite reduction over atomically-dispersed transition metal sites.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 84
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7490390",
+   "title": "Unique S-scheme heterojunctions in self-assembled TiO<sub>2</sub>/CsPbBr<sub>3</sub> hybrids for CO<sub>2</sub> photoreduction.",
+   "year": "2020",
+   "text": "C x , where T and C denote TiO 2 and CsPbBr 3 QDs, respectively; x is the mass percentage of CsPbBr 3 QDs. Characterization XRD was performed on a D/Max-RB X-ray diffractometer (Rigaku, Japan) with Cu Kα radiation. TEM images were observed on a Titan G2 60-300 electron microscope equipped with an EDX spectrometer. UV–visible DRS was collected on a Shimadzu UV-2600 UV–visible spectrophotometer (Japan). XPS was performed on a Thermo ESCALAB 250Xi instrument with Al K α X-ray radiation. In-situ XPS was conducted under the same condition, except that UV–visible-light irradiation was introduced. FTIR spectra were recorded with an attenuated total reflectance (ATR) mode on Nicolet iS 50 (Thermo Fisher, USA). The",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6391499",
+   "title": "Modified carbon nitride nanozyme as bifunctional glucose oxidase-peroxidase for metal-free bioinspired cascade photocatalysis.",
+   "year": "2019",
+   "text": "catalysts characterisation The phase structures of resultant catalysts were characterised by a PANalytical X’Pert diffractometer with an X’Celerator detector using Cu Kα line (1253.6 eV) and ATR-FTIR spectroscopy (Thermo Scientific Nicolet iS50 FTIR/ATR) on a ZnSe crystal. Diffuse reflectance UV/visible absorption spectra (DR-UVS) were obtained by Shimadzu UV-2600 with an integrating sphere attachment. The reference material of BaSO 4 was used before the measurement. Zeta potentials of the aqueous suspension (10 mM of NaNO 3 ) with catalysts were conducted through an electrophoretic light scattering spectrophotometer (ELS 8000, Otsuka) with controllable pH from HClO 4 and KOH. The surface atomic properties",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7241732",
+   "title": "Rapid Detection of IgM Antibodies against the SARS-CoV-2 Virus via Colloidal Gold Nanoparticle-Based Lateral-Flow Assay.",
+   "year": "2020",
+   "text": "e fabricated according to the classical method with proper modifications, 46 and the specific steps of the synthesis process are described in the Supporting Information . A JEM-2100 transmission electron microscope (JEOL Ltd.) was used to measure the diameter and morphology of AuNPs, and the UV–vis absorption spectra of AuNPs were obtained using a Shimadzu UV-2600 spectrophotometer (Tokyo, Japan). All the photos in this article were taken with a digital camera by the authors. 4.3. Cloning and Expression of the SARS-CoV-2 NP The recombinant SARS-CoV-2 NP was expressed and purified using the method that our group developed in other protein’s production. 47 The detailed process was presented in the Supporting",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8764117",
+   "title": "Completely aqueous processable stimulus responsive organic room temperature phosphorescence materials with tunable afterglow color.",
+   "year": "2022",
+   "text": "l (PVA) was purchased from Macklin (M W ≈20,000, PDI: 1.16, alcoholysis degree: 87–89%). (3,5-diphenylphenyl)boronic acid (purity: 98%), fluorescein (purity: 97%), and rhodamine B (purity: biological stain, BS) were purchased from Heowns and used as received without further purification. Measurements UV–vis absorption spectra were obtained using a Shimadzu UV-2700. Steady-state photoluminescence/phosphorescence spectra and phosphorescence lifetime were measured using Hitachi F-4700. The fluorescence lifetime and photoluminescence quantum efficiency were obtained on FLS-1000. The luminescent photos were taken by iPhone 6 s under the irradiation of a hand-held UV lamp at room temperature. General procedure fo",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7239646",
+   "title": "Engineered algae: A novel oxygen-generating system for effective treatment of hypoxic cancer.",
+   "year": "2020",
+   "text": "d within 30 min by in vivo imaging system (PerkinElmer, USA). The specific fluorescence signals corresponding to DCHF-DA were collected at 525 nm. Characterization of RBCM-Algae General characterization of the RBCM-Algae was performed by dynamic light scattering (Zetasizer Nano-ZS90 Malvern, USA), fluorescence and ultraviolet/visible spectroscopy (Shimadzu UV-2600, Japan), and field emission SEM (Hitachi SU-70, Japan) and high-resolution transmission electron microscopy (Tecnai F20, FEI, USA). O 2 production of RBCM-Algae To investigate the oxygen release profile in real time, an equal volume of algae and RBCM-Algae, with a dose of 30 ml separately at a final concentration of 10 6 /ml, was added into the cu",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8897311",
+   "title": "Ultrasmall Fe-doped carbon dots nanozymes for photoenhanced antibacterial therapy and wound healing.",
+   "year": "2022",
+   "text": "eter was used to confirm the functional groups of CDs and Fe-CDs. Shimadzu X-ray diffraction (XRD)-6000 X-ray diffractometer was used to characterize the crystalline structures of CDs and Fe-CDs. ESCALab220i-XL high-performance electron spectrometer with a monochromatic Al Kα source was used to characterize the surface structure of CDs and Fe-CDs. Shimadzu UV-2600 spectrophotometer was used to record the UV–Vis–NIR spectra of CDs and Fe-CDs. Malvern Zetasizer Nano ZS was used to measure the zeta potential of as-prepared samples. S-4800 scanning electron microscope (SEM) was used to characterize the morphology of bacteria. The samples were prepared by dropping the bacterial suspension on the silicon wafer. I",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8897311",
+   "title": "Ultrasmall Fe-doped carbon dots nanozymes for photoenhanced antibacterial therapy and wound healing.",
+   "year": "2022",
+   "text": "-CDs aqueous dispersions (1.0 mL) with different concentrations (12.5, 25, 50, 100, 200 and 400 μg mL −1 ) as well as ultrapure water were prepared and irradiated with NIR laser (808 nm, 2 W cm −2 ) for 10 min. The temperatures of the Fe-CDs were recorded through a thermocouple thermometer. 2.5. Peroxidase-like activity and kinetic assay of Fe-CDs Shimadzu UV-2600 spectrophotometer was used to evaluate the POD-like activity of Fe-CDs. Specifically, Fe-CDs (final working concentrations: 100 μg mL −1 ) was injected into HAc/NaAc buffer (0.1 M, pH = 6.5) involved of TMB single-component substrate solution (final system: 3 mL). The photo-enhanced POD-like activity was carried out by exposing to NIR laser irradi",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8897311",
+   "title": "Ultrasmall Fe-doped carbon dots nanozymes for photoenhanced antibacterial therapy and wound healing.",
+   "year": "2022",
+   "text": "O 2 TA + Fe-CDs + H 2 O 2 , TA + Fe-CDs + H 2 O 2 + NIR, respectively. The final concentration of TA, Fe-CDs, and H 2 O 2 were 0.5 mM, 200 μg mL −1 , and 10 mM, respectively. After incubation 12 h, the fluorescence spectra of all groups were conducted. The degradation of Methylene blue (MB) was also used to determine the generation of •OH through Shimadzu UV-2600 spectrophotometer. Specifically, Methylene blue (MB) (final working concentrations: 5 μg mL −1 ) and Fe-CDs were added into HAc/NaAc buffer (0.1 M, pH = 6.5). With the addition of H 2 O 2 (final working concentrations: 1 mM), the MB was degraded, and the MB was degraded more at the same time under NIR laser irradiation (808 nm, 2 W cm −2 ). The ab",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6972883",
+   "title": "Manipulating spin polarization of titanium dioxide for efficient photocatalysis.",
+   "year": "2020",
+   "text": "librated by the C1s peak (284.8 eV) of contamination carbon. Specific surface area ( S BET ) was calculated based on N 2 adsorption/desorption isotherms recorded on a Micromeritics TriStar 3000 instrument at 77 K, and all the samples were outgassed in a vacuum at 150 °C for 12 h. UV-vis diffuse reflectance spectra (UV-vis DRS) were obtained from a Shimadzu UV-2600 spectrometer equipped with a 60 nm diameter integrating sphere using BaSO 4 as reference. Time-resolved fluorescence anisotropy decays were recorded on a FL3 system (Horiba Scientific, Edison, NJ) utilizing the time-correlated single photon count. Raman spectra was recorded by a Raman Microscope (DXR Microscope, ThermoFisher, USA), with a 100-mW 5",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6972883",
+   "title": "Manipulating spin polarization of titanium dioxide for efficient photocatalysis.",
+   "year": "2020",
+   "text": "μmol L −1 ; C 0 (RhB) = 20 μmol L −1 ; C 0 (Rose Bengal) = 20 μmol L −1 and TiO 2 : 0.2 g L −1 ; no acid or alkaline reagents were added. Reaction was conducted by magnetic stirring under atmosphere after stirring for 20 min in darkness to achieve adsorption equilibrium. Samples were withdrawn, centrifuged, and analyzed using UV-vis spectrometer (UV-2600, Shimadzu Ltd.). Photocatalytic degradation under magnetic field Photodegradation of organic pollutants was conducted in a NMR tube (Diameter: 0.5 cm, Length: 18 cm, Content: 2 mL) vertically irradiated by a 300 W high-pressure xenon lamp (100 mW cm −2 , PLS-SXE 300UV) located on the upper position, using the vibrating sample magnetometer (LDJ 9600). The ir",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6972883",
+   "title": "Manipulating spin polarization of titanium dioxide for efficient photocatalysis.",
+   "year": "2020",
+   "text": "ing sample magnetometer (LDJ 9600). The irradiation area was ca . 8 cm 2 . Reaction conditions: temperature, 25 ± 0.2 °C; C 0 (MO) = 120 μmol L −1 ; C 0 (RhB) = 20 μmol L −1 ; C 0 (Rose Bengal) = 20 μmol L −1 and TiO 2 : 2 g L −1 ; no acid or alkaline reagents were added. Samples were withdrawn, centrifuged, and analyzed using UV-vis spectrometer (UV-2600, Shimadzu Ltd.). Supplementary information Supplementary Information Source data source data Peer review information Nature Communication thanks Detlef Bahnemann, Nuala Caffrey, and Ron Naaman for their contributions to the peer review of this work. Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and i",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 5,
+  "optical_spectroscopy": 5,
+  "particle_size": 2,
+  "density_porosity": 1
+ }
+}

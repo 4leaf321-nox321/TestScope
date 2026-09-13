@@ -1,0 +1,61 @@
+{
+ "object": "hegewald-peschke-grips",
+ "manufacturer": "hegewald-peschke",
+ "phrases": [
+  "Hegewald & Peschke 50 kN 14-103-920",
+  "Hegewald & Peschke 14-103-050",
+  "Hegewald & Peschke 250 kN",
+  "Hegewald & Peschke 250 kN 14-109-150",
+  "Hegewald & Peschke 14-109-250",
+  "Hegewald & Peschke 14-096"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Hegewald & Peschke 50 kN 14-103-920\" OR \"Hegewald & Peschke 14-103-050\" OR \"Hegewald & Peschke 250 kN\" OR \"Hegewald & Peschke 250 kN 14-109-150\" OR \"Hegewald & Peschke 14-109-250\" OR \"Hegewald & Peschke 14-096\"",
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W3184599413",
+    "doi": "https://doi.org/10.3390/jcs5080195",
+    "title": "Edge Race-Tracking during Film-Sealed Compression Resin Transfer Molding",
+    "year": 2021,
+    "cited": 4,
+    "venue": "Journal of Composites Science",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Injection Molding Process and Properties",
+     "Mechanical Behavior of Composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-477X/5/8/195/pdf?version=1626852285",
+    "abstract": "Edge race-tracking is a frequently reported issue during resin transfer molding. It is caused by highly permeable channels and areas between the preform edge and cavity, which can significantly change the preform impregnation pattern. To date, information is scarce on the effect of edge race-tracking in compression resin transfer molding (CRTM). To close this gap, laboratory equipment was developed to study the CRTM preform impregnation via flow visualization experiments. The preform was thereby encapsulated in thin thermoplastic films sealing its impregnation. Film-sealed compression resin transfer molding (FS-CRTM) experiments of preforms with a small geometrical aspect ratio showed fast filling of the injection gap and a subsequent through-thickness preform impregnation. Creating an edge race-tracking channel, an additional lateral in-plane flow from the channel towards the preform center was observed, initiating soon after the injection started and caused by the spatial connection between the injection gap and the race-tracking channel. To diminish edge race-tracking, a passive flow control strategy was implemented via a split design of the upper tool to spatially isolate the injection gap from the channel and to pre-compact the preform edge. A delayed and reduced lateral race-tracking flow was observed, showing that the passive flow control strategy increases the process robustness of FS-CRTM regarding edge race-tracking effects."
+   },
+   {
+    "id": "https://openalex.org/W7117852538",
+    "doi": null,
+    "title": "Prozess-Eigenschafts-Beziehungen in der Materialextrusions-Additiven Fertigung",
+    "year": 2025,
+    "cited": 0,
+    "venue": "mediaTUM – the media and publications repository of the Technical University Munich (Technical University Munich)",
+    "topics": [
+     "Engineering and Materials Science Studies",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Polymer Foaming and Composites"
+    ],
+    "oa_url": "https://mediatum.ub.tum.de/doc/1781337/document.pdf",
+    "abstract": "This work explores how process parameters affect fibre alignment, layer bonding, and crystallisation in Material Extrusion. It shows how controlling shear rates and using pseudo-amorphous polymer behaviour improves strength, stiffness, and reliability, providing guidelines for optimising additive manufacturing for industrial applications."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Hegewald & Peschke 50 kN 14-103-920\" OR \"Hegewald & Peschke 14-103-050\" OR \"Hegewald & Peschke 250 kN\" OR \"Hegewald & Peschke 250 kN 14-109-150\" OR \"Hegewald & Peschke 14-109-250\" OR \"Hegewald & Peschke 14-096\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "compression": 2,
+  "shear": 1
+ }
+}

@@ -1,0 +1,312 @@
+{
+ "object": "linseis-thermal-conductivity",
+ "manufacturer": "linseis",
+ "phrases": [
+  "LINSEIS LFA 500",
+  "LINSEIS LFA 1000",
+  "LINSEIS THB",
+  "LINSEIS HFM",
+  "LINSEIS TFA"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"LINSEIS LFA 500\" OR \"LINSEIS LFA 1000\" OR \"LINSEIS THB\" OR \"LINSEIS HFM\" OR \"LINSEIS TFA\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"LINSEIS LFA 500\" OR \"LINSEIS LFA 1000\" OR \"LINSEIS THB\" OR \"LINSEIS HFM\" OR \"LINSEIS TFA\") AND OPEN_ACCESS:y",
+  "count": 48,
+  "papers": [
+   {
+    "pmcid": "PMC8044277",
+    "doi": "10.1007/s40820-021-00640-4",
+    "title": "Breaking Through Bottlenecks for Thermally Conductive Polymer Composites: A Perspective for Intrinsic Thermal Conductivity, Interfacial Thermal Resistance and Theoretics.",
+    "journal": "Nanomicro Lett",
+    "year": "2021",
+    "cited": 53,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5684399",
+    "doi": "10.1038/s41467-017-01618-w",
+    "title": "Dynamic tuning of optical absorbers for accelerated solar-thermal energy storage.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 43,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6744264",
+    "doi": "10.1126/sciadv.aat9461",
+    "title": "Paramagnon drag in high thermoelectric figure of merit Li-doped MnTe.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 35,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6232086",
+    "doi": "10.1038/s41467-018-07208-8",
+    "title": "Large-area and adaptable electrospun silicon-based thermoelectric nanomaterials with high energy conversion efficiencies.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 25,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5378988",
+    "doi": "10.1038/srep07671",
+    "title": "Superior intrinsic thermoelectric performance with zT of 1.8 in single-crystal and melt-quenched highly dense Cu(2-x)Se bulks.",
+    "journal": "Sci Rep",
+    "year": "2015",
+    "cited": 25,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9631075",
+    "doi": "10.1002/advs.202202411",
+    "title": "High Figure-of-Merit Telluride-Based Flexible Thermoelectric Films through Interfacial Modification via Millisecond Photonic-Curing for Fully Printed Thermoelectric Generators.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 15,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5748280",
+    "doi": "10.1021/acsomega.7b01364",
+    "title": "Thermoelectric Performance of Na-Doped GeSe.",
+    "journal": "ACS Omega",
+    "year": "2017",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11468527",
+    "doi": "10.1002/adma.202008708",
+    "title": "Strong Suppression of Thermal Conductivity in the Presence of Long Terminal Alkyl Chains in Low-Disorder Molecular Semiconductors.",
+    "journal": "Adv Mater",
+    "year": "2021",
+    "cited": 12,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5503326",
+    "doi": "10.3390/ma10030233",
+    "title": "Large-Scale Surfactant-Free Synthesis of p-Type SnTe Nanoparticles for Thermoelectric Applications.",
+    "journal": "Materials (Basel)",
+    "year": "2017",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC10119860",
+    "doi": "10.1021/acsami.3c01956",
+    "title": "Room-Temperature Thermoelectric Performance of n-Type Multiphase Pseudobinary Bi<sub>2</sub>Te<sub>3</sub>-Bi<sub>2</sub>S<sub>3</sub> Compounds: Synergic Effects of Phonon Scattering and Energy Filtering.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2023",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC5238374",
+    "doi": "10.1038/srep40436",
+    "title": "Improvement of thermoelectric properties and their correlations with electron effective mass in Cu<sub>1.98</sub>S<sub>x</sub>Se<sub>1-x</sub>.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC8003730",
+    "doi": "10.3390/polym13060955",
+    "title": "Remarkable Thermal Conductivity of Epoxy Composites Filled with Boron Nitride and Cured under Pressure.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC5951420",
+    "doi": "10.3390/ma11040536",
+    "title": "Impact of Interstitial Ni on the Thermoelectric Properties of the Half-Heusler TiNiSn.",
+    "journal": "Materials (Basel)",
+    "year": "2018",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC6837226",
+    "doi": "10.1098/rsos.190870",
+    "title": "Enhancement of thermoelectric properties of La-doped SrTiO<sub>3</sub> bulk by introducing nanoscale porosity.",
+    "journal": "R Soc Open Sci",
+    "year": "2019",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC9653711",
+    "doi": "10.3390/nano12213910",
+    "title": "Reduced Thermal Conductivity in Nanostructured AgSbTe<sub>2</sub> Thermoelectric Material, Obtained by Arc-Melting.",
+    "journal": "Nanomaterials (Basel)",
+    "year": "2022",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC12274412",
+    "doi": "10.1038/s41467-025-61920-w",
+    "title": "Defect-tolerant electron and defect-sensitive phonon transport in quasi-2D conjugated coordination polymers.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11677991",
+    "doi": "10.3390/ma17246111",
+    "title": "Assessing the Conformity of Mycelium Biocomposites for Ecological Insulation Solutions.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11433097",
+    "doi": "10.3390/jof10090634",
+    "title": "Comparative Evaluation of Mechanical and Physical Properties of Mycelium Composite Boards Made from <i>Lentinus sajor-caju</i> with Various Ratios of Corn Husk and Sawdust.",
+    "journal": "J Fungi (Basel)",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11138145",
+    "doi": "10.1021/acsaelm.3c01653",
+    "title": "Optimizing Thermoelectric Properties through Compositional Engineering in Ag-Deficient AgSbTe<sub>2</sub> Synthesized by Arc Melting.",
+    "journal": "ACS Appl Electron Mater",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9823475",
+    "doi": "10.3390/nano13010208",
+    "title": "Characterization of Magnetron Sputtered BiTe-Based Thermoelectric Thin Films.",
+    "journal": "Nanomaterials (Basel)",
+    "year": "2023",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9037351",
+    "doi": "10.1039/d1ra04270j",
+    "title": "Strongly reduced lattice thermal conductivity in Sn-doped rare-earth (M) filled skutterudites M <sub><i>x</i></sub> Co<sub>4</sub>Sb<sub>12-<i>y</i></sub> Sn <sub><i>y</i></sub> , promoted by Sb-Sn disordering and phase segregation.",
+    "journal": "RSC Adv",
+    "year": "2021",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9006220",
+    "doi": "10.1021/acs.inorgchem.1c03841",
+    "title": "Detailed Structural Features of the Perovskite-Related Halide RbPbI<sub>3</sub> for Solar Cell Applications.",
+    "journal": "Inorg Chem",
+    "year": "2022",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC7829886",
+    "doi": "10.3390/polym13020286",
+    "title": "Densification: A Route towards Enhanced Thermal Conductivity of Epoxy Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC6648822",
+    "doi": "10.1021/acsomega.8b03146",
+    "title": "Toward New Thermoelectrics: Tin Selenide/Modified Graphene Oxide Nanocomposites.",
+    "journal": "ACS Omega",
+    "year": "2019",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC6719110",
+    "doi": "10.3390/ma12162591",
+    "title": "Influence of Morphological Changes in a Source Material on the Growth Interface of 4h-Sic Single Crystals.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 3
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8044277",
+   "title": "Breaking Through Bottlenecks for Thermally Conductive Polymer Composites: A Perspective for Intrinsic Thermal Conductivity, Interfacial Thermal Resistance and Theoretics.",
+   "year": "2021",
+   "text": "line epoxy monomers with biphenyl groups were synthesized, and the λ of the cured epoxy exceeded 0.90 W m −1 K −1 , 5 times that of conventional epoxy resin (0.18 W m −1 K −1 ) [ 7 ]. However, it should be noted that the λ value was measured and calculated by the AC calorimetry method, not comparable with the existing λ test equipment, such as the Linseis THB (Germany), AB Hot Disk (Sweden) and Netzsch LFA467 (Germany) by heat flow method, plane transient method and laser flash method. Jeong et al . [ 8 ] prepared a kind of side-chain epoxy resin containing cyanobiphenyl mesogenic end groups. After curing and crosslinking by diamine, the liquid crystalline epoxy resin still retained the oriented liquid",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5684399",
+   "title": "Dynamic tuning of optical absorbers for accelerated solar-thermal energy storage.",
+   "year": "2017",
+   "text": "XPS spectra were measured by an X-ray photoelectron spectrometer (AXIS, UltraDLD). Magnetization curves of the Fe 3 O 4 @graphene NPs were measured by a physical property measurement system (PPMS-9T, Quantum Design). Thermal conductivity of paraffin and paraffin-Fe 3 O 4 @graphene composite samples was measured by a transient hot bridge analyzer (Linseis THB-1). Optical spectra were measured by a UV-Vis spectrometer (Lambda 950, PerkinElmer) equipped with an integrating sphere. TGA and DSC analysis was conducted in a differential scanning calorimeter (Netzsch 204 F1) and a thermo gravimetric analyzer (Pyris 1) under nitrogen atmosphere with a heating and cooling rate of 5 °C min −1 , respectively. The",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6744264",
+   "title": "Paramagnon drag in high thermoelectric figure of merit Li-doped MnTe.",
+   "year": "2019",
+   "text": "values of C p hereunder. Last, we measured the specific heat capacity by DSC from 300 to 625 K and used these values of C p to derive the thermal conductivity from the diffusivity, as described hereunder. Thermal conductivity We calculated the thermal conductivity from κ = DC P d , where the thermal diffusivity coefficient ( D ) was measured with Linseis LFA-1000 from room temperature to 873 K, the density ( d ) was determined by using the Archimedes drainage method, and the specific heat was obtained as described above. We measured the low-temperature thermal conductivity (not reported) using a PPMS (Quantum Design) from 4 K to room temperature and also in the homemade cryostat used for the thermopower an",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6232086",
+   "title": "Large-area and adaptable electrospun silicon-based thermoelectric nanomaterials with high energy conversion efficiencies.",
+   "year": "2018",
+   "text": "ical strength to the samples to overcome the stresses from the clamps and the thermocouple spring constants, the fabric is attached to glass supportive pieces and are contacted on both ends with silver paste and aluminum caps. Thermal properties: The thermal diffusivity ( α ) of the pSi NT fabrics was measured by laser flash analysis (LFA) using a Linseis LFA 1000 apparatus in a vacuum atmosphere. Thermal conductivity ( κ ) was obtained by the application of the defining formula κ = αρC p , being C p the specific heat of the material, obtained from literature and considering the relative amounts of Si and SiO 2 46 , 47 . For the determination of the density ( ρ ), the sample mass was measured by using a hig",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5378988",
+   "title": "Superior intrinsic thermoelectric performance with zT of 1.8 in single-crystal and melt-quenched highly dense Cu(2-x)Se bulks.",
+   "year": "2015",
+   "text": "persive X-ray spectroscopy (EDS) for individual points and mapping was conducted with a JEOL JSM-7500FA system. The electrical resistivity and Seebeck coefficient were measured simultaneously in helium atmosphere in the temperature range from 300 to 973 K using a RZ2001i system. The thermal diffusivity ( D ) was measured by the laser flash method (LINSEIS LFA 1000), and the specific heat ( C p ) was determined by differential scanning calorimetry (TA Q100). The sample density ( dd ) was determined by the Archimedes method. The thermal conductivity ( κ ) was calculated by κ = D × Cp × dd . Supplementary Material Supplementary Information Supplementary Information Acknowledgments L.L.Z. is grateful to the Chi",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9631075",
+   "title": "High Figure-of-Merit Telluride-Based Flexible Thermoelectric Films through Interfacial Modification via Millisecond Photonic-Curing for Fully Printed Thermoelectric Generators.",
+   "year": "2022",
+   "text": "ectrical conductivity ( σ ) were determined from RT to 400 K. The temperature‐dependent Seebeck coefficient ( S ) of the printed films was measured using a custom‐built setup. The working mechanism of the custom‐built setup was described in a previous report. [ 9 ] The in‐plane thermal conductivity ( κ ) of the printed films was determined using a Linseis TFA system. The measurement setup was developed based on the method presented by Völklein et al. [ 49 , 50 ] (see Figure S5 , Supporting Information). The relative measurement errors linked with S , σ , and κ are 10%, 6%, and 10%, respectively. The surface morphology and thicknesses of the printed films were determined using a Bruker 3D microscope bas",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5748280",
+   "title": "Thermoelectric Performance of Na-Doped GeSe.",
+   "year": "2017",
+   "text": "ere measured simultaneously under 0.1 atm helium from room temperature to 573 K using a Linseis LSR-3 instrument. The samples for measurement were cut from pressed pellets and polished into a parallelepiped shape; measurements were performed in the in-plane direction. The thermal diffusivity, D , was measured by the laser flash diffusivity method (Linseis LFA 1000) in the out-of-plane direction over the temperature range 300–573 K. The specific heat capacity ( C p ) was calculated using the equation C p (GeSe, (298.15–940) K) = ((46.777 + 15.099) × 10 –3 T – 0.0316 × 10 –6 T 2 – 1.231 × 10 5 T –2 ) J K –1 mol –1 . 49 The thermal conductivity (κ) was calculated using κ = ρ DC p , where the density (ρ) of the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11468527",
+   "title": "Strong Suppression of Thermal Conductivity in the Presence of Long Terminal Alkyl Chains in Low-Disorder Molecular Semiconductors.",
+   "year": "2021",
+   "text": "stimate the contribution from the thermal contact resistance at the interface between the film and the substrate; the corresponding error bars represent the standard errors of the linear regression. Thermal conductivity measurements were performed in the in‐plane direction according to the 3ω–Völklein method [ 42 , 43 ] implemented in a commercial Linseis Thin Film Analyzer (TFA). [ 44 ] More information about the method and its advantages and can be found in the Supporting Information. The samples were prepared through thermal evaporation of a DNTT layer on top of the membrane of the measurement chips using a masking shutter that allows the deposition of four different thicknesses within the same conditions. Adequate mas",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11468527",
+   "title": "Strong Suppression of Thermal Conductivity in the Presence of Long Terminal Alkyl Chains in Low-Disorder Molecular Semiconductors.",
+   "year": "2021",
+   "text": ".0 SAXS/WAXS system (Xenocs) with a Dectris Pilatus3R 300 K detector using a wavelength of 1.5406 Å and an angle of incidence of 0.2°. For the measurements, the sample was placed in a vacuum chamber to reduce air scattering. Thermal Conductivity Evaluation Calculations were performed according to Linseis et al. [ 44 ] from the raw data obtained on Linseis TFA. Conflict of Interest The authors declare no conflict of interest. Supporting information Supporting Information Acknowledgements E.S., A.V., and G.S. contributed equally to this work. E.S., G.S., and H.S. gratefully acknowledge funding from the Centre for Advanced Materials for Integrated Energy Systems (CAMIES, Grant No. EP/P007767/1). G.S. ackn",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "thermal_conductivity": 17,
+  "density_porosity": 4,
+  "dsc": 1,
+  "microscopy": 1
+ }
+}

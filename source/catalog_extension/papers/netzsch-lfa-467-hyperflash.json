@@ -1,0 +1,318 @@
+{
+ "object": "netzsch-lfa-467-hyperflash",
+ "manufacturer": "netzsch",
+ "phrases": [
+  "NETZSCH LFA 467",
+  "NETZSCH LFA",
+  "NETZSCH LFA 467 HyperFlash",
+  "NETZSCH LFA 467 HT"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"NETZSCH LFA 467\" OR \"NETZSCH LFA\" OR \"NETZSCH LFA 467 HyperFlash\" OR \"NETZSCH LFA 467 HT\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"NETZSCH LFA 467\" OR \"NETZSCH LFA\" OR \"NETZSCH LFA 467 HyperFlash\" OR \"NETZSCH LFA 467 HT\") AND OPEN_ACCESS:y",
+  "count": 334,
+  "papers": [
+   {
+    "pmcid": "PMC8463294",
+    "doi": "10.1038/s41563-021-01064-6",
+    "title": "Polycrystalline SnSe with a thermoelectric figure of merit greater than the single crystal.",
+    "journal": "Nat Mater",
+    "year": "2021",
+    "cited": 168,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5844708",
+    "doi": "10.1126/sciadv.aar3724",
+    "title": "Anisotropic, lightweight, strong, and super thermally insulating nanowood with naturally aligned nanocellulose.",
+    "journal": "Sci Adv",
+    "year": "2018",
+    "cited": 168,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5216132",
+    "doi": "10.1038/ncomms13828",
+    "title": "Vacancy-induced dislocations within grains for high-performance PbSe thermoelectrics.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 137,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6641523",
+    "doi": "10.1021/acsomega.7b02001",
+    "title": "High-Thermal-Stability and High-Thermal-Conductivity Ti<sub>3</sub>C<sub>2</sub>T <i><sub>x</sub></i> MXene/Poly(vinyl alcohol) (PVA) Composites.",
+    "journal": "ACS Omega",
+    "year": "2018",
+    "cited": 107,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7684283",
+    "doi": "10.1038/s41467-020-19756-z",
+    "title": "High-performance compliant thermoelectric generators with magnetically self-assembled soft heat conductors for self-powered wearable electronics.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 87,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D792",
+     "ASTM E1461",
+     "ISO 11357-4"
+    ]
+   },
+   {
+    "pmcid": "PMC4175591",
+    "doi": "10.1038/ncomms5908",
+    "title": "Self-propagating high-temperature synthesis for compound thermoelectrics and new criterion for combustion processing.",
+    "journal": "Nat Commun",
+    "year": "2014",
+    "cited": 77,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8891317",
+    "doi": "10.1038/s41467-022-28798-4",
+    "title": "Maximizing the performance of n-type Mg<sub>3</sub>Bi<sub>2</sub> based materials for room-temperature power generation and thermoelectric cooling.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 76,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8163856",
+    "doi": "10.1038/s41467-021-23569-z",
+    "title": "Entropy engineering promotes thermoelectric performance in p-type chalcogenides.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 72,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9420152",
+    "doi": "10.1038/s41467-022-32773-4",
+    "title": "Glassy thermal conductivity in Cs<sub>3</sub>Bi<sub>2</sub>I<sub>6</sub>Cl<sub>3</sub> single crystal.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 46
+   },
+   {
+    "pmcid": "PMC9198190",
+    "doi": "10.1007/s40820-022-00868-8",
+    "title": "Emerging Flexible Thermally Conductive Films: Mechanism, Fabrication, Application.",
+    "journal": "Nanomicro Lett",
+    "year": "2022",
+    "cited": 41
+   },
+   {
+    "pmcid": "PMC6325113",
+    "doi": "10.1038/s41467-018-07877-5",
+    "title": "Discovery of colossal Seebeck effect in metallic Cu<sub>2</sub>Se.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 41
+   },
+   {
+    "pmcid": "PMC6521233",
+    "doi": "10.1039/c9sc00485h",
+    "title": "Bonding heterogeneity and lone pair induced anharmonicity resulted in ultralow thermal conductivity and promising thermoelectric properties in n-type AgPbBiSe<sub>3</sub>.",
+    "journal": "Chem Sci",
+    "year": "2019",
+    "cited": 40
+   },
+   {
+    "pmcid": "PMC7265306",
+    "doi": "10.1038/s41467-020-16490-4",
+    "title": "A powder-metallurgy-based strategy toward three-dimensional graphene-like network for reinforcing copper matrix composites.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 37
+   },
+   {
+    "pmcid": "PMC4518255",
+    "doi": "10.1038/ncomms8584",
+    "title": "Solubility design leading to high figure of merit in low-cost Ce-CoSb3 skutterudites.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 37
+   },
+   {
+    "pmcid": "PMC11102544",
+    "doi": "10.1038/s41467-024-48635-0",
+    "title": "Divacancy and resonance level enables high thermoelectric performance in n-type SnSe polycrystals.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 35
+   },
+   {
+    "pmcid": "PMC7673762",
+    "doi": "10.1126/sciadv.abc0726",
+    "title": "Electronic quality factor for thermoelectrics.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 34
+   },
+   {
+    "pmcid": "PMC3212096",
+    "doi": "10.1007/s11671-010-9795-7",
+    "title": "Synthesis and Thermoelectric Properties of Bi2Se3 Nanostructures.",
+    "journal": "Nanoscale Res Lett",
+    "year": "2011",
+    "cited": 33
+   },
+   {
+    "pmcid": "PMC4879536",
+    "doi": "10.1038/srep26475",
+    "title": "Synthesis and Characterization of an Alumina Forming Nanolaminated Boride: MoAlB.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 33
+   },
+   {
+    "pmcid": "PMC5862837",
+    "doi": "10.1038/s41467-018-03467-7",
+    "title": "Pressureless glass crystallization of transparent yttrium aluminum garnet-based nanoceramics.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 31
+   },
+   {
+    "pmcid": "PMC5387396",
+    "doi": "10.1038/srep32383",
+    "title": "Cellulose as an adhesion agent for the synthesis of lignin aerogel with strong mechanical performance, Sound-absorption and thermal Insulation.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 31
+   },
+   {
+    "pmcid": "PMC9085852",
+    "doi": "10.1038/s41467-022-29800-9",
+    "title": "Colossal barocaloric effects with ultralow hysteresis in two-dimensional metal-halide perovskites.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 30
+   },
+   {
+    "pmcid": "PMC9873916",
+    "doi": "10.1038/s41467-023-36082-2",
+    "title": "Acid enhanced zipping effect to densify MWCNT packing for multifunctional MWCNT films with ultra-high electrical conductivity.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC9547848",
+    "doi": "10.1038/s41467-022-33684-0",
+    "title": "Realizing high-ranged thermoelectric performance in PbSnS<sub>2</sub> crystals.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC9048165",
+    "doi": "10.1039/c9ra09522e",
+    "title": "An effective utilization of MXene and its effect on electromagnetic interference shielding: flexible, free-standing and thermally conductive composite from MXene-PAT-poly(<i>p</i>-aminophenol)-polyaniline co-polymer.",
+    "journal": "RSC Adv",
+    "year": "2020",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC5867058",
+    "doi": "10.1002/advs.201700727",
+    "title": "Intrinsically High Thermoelectric Performance in AgInSe<sub>2</sub> n-Type Diamond-Like Compounds.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2018",
+    "cited": 28
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8463294",
+   "title": "Polycrystalline SnSe with a thermoelectric figure of merit greater than the single crystal.",
+   "year": "2021",
+   "text": "pellets were cut and polished into a rectangular shape with a length of 13 mm and thickness of roughly 2 mm under a N 2 atmosphere (99.99% purity) (Supplementary Fig. 18 ). The electrical conductivity and Seebeck coefficient were measured simultaneously under an Ar atmosphere from room temperature to 823 K using a Netzsch SBA 458 Nemesis system. A Netzsch LFA 457 MicroFlash instrument was used to record the thermal diffusivity of the samples coated with graphite. The typical samples are disc shaped with a diameter of 8 mm and thickness ranging from 1 to 2 mm. To confirm the reproducibility of ultralow thermal conductivity of the Na 0.03 Sn 0.965 Se samples, the thermal diffusivity was cross-checked at",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8463294",
+   "title": "Polycrystalline SnSe with a thermoelectric figure of merit greater than the single crystal.",
+   "year": "2021",
+   "text": "as used to record the thermal diffusivity of the samples coated with graphite. The typical samples are disc shaped with a diameter of 8 mm and thickness ranging from 1 to 2 mm. To confirm the reproducibility of ultralow thermal conductivity of the Na 0.03 Sn 0.965 Se samples, the thermal diffusivity was cross-checked at Northwestern University and Netzsch Instruments (Korea) using LFA 457 and 467 instruments, respectively (Supplementary Figs. 19 – 21 ). The thermal conductivity was calculated from the formula κ tot = D C p ρ , where D is the thermal diffusivity, C p is the heat capacity, which was directly measured using the DSC technique, and ρ is the mass density of the specimens. The ρ value used was obtained by their geomet",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5844708",
+   "title": "Anisotropic, lightweight, strong, and super thermally insulating nanowood with naturally aligned nanocellulose.",
+   "year": "2018",
+   "text": "sites ( 61 ). According to Feng et al . ( 62 ) and Wiener et al . ( 63 ), LFA can be used to measure aerogels whose thermal conductivities are as low as 0.01 W/m·K. During the measurement, an instantaneous laser pulse was used to heat up one side of the sample, and the response of temperature on the other side was recorded by a detector. Here, the Netzsch LFA (LFA 457) was used for thermal diffusivity measurement. The thermal conductivity k of the sample can then be calculated by the following equation (1) k = α ρ C p where α (mm 2 /s) is the measured thermal diffusivity along a particular direction, ρ is the density, and C p is the heat capacity. Differential scanning calorimetry (DSC) method was used",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5216132",
+   "title": "Vacancy-induced dislocations within grains for high-performance PbSe thermoelectrics.",
+   "year": "2017",
+   "text": "ed from the slope of the thermoelectric voltage versus temperature gradients 59 . The in-plane resistivity and Hall coefficient were measured using the Van der Pauw technique under a reversible magnetic field of 1.5 T. The uncertainty of each transport property measurement is ∼5%. The thermal diffusivity D T was measured by the laser flash method (Netzsch LFA 457) and the thermal conductivity κ was calculated from κ = dD T C p , where C p is the heat capacity determined by C p ( k B /atom)=(3.07+0.00047( T /K-300)) 60 , 61 . The sound velocity was measured by an ultrasonic pulse-receiver (Olympus-NDT) equipped with an oscilloscope (Keysight). The uncertainty for each measurement of transport property i",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6641523",
+   "title": "High-Thermal-Stability and High-Thermal-Conductivity Ti<sub>3</sub>C<sub>2</sub>T <i><sub>x</sub></i> MXene/Poly(vinyl alcohol) (PVA) Composites.",
+   "year": "2018",
+   "text": "as controlled by a heating stage. Polarized-laser power-dependent Raman measurements were performed at 0.01 P 0 , 0.1 P 0 , 0.25 P 0 , 0.5 P 0 , 0.75 P 0 , and P 0 , where P 0 = 2.5 mW. And thermal conductivities of the pristine Ti 3 C 2 T x MXene and Ti 3 C 2 T x /PVA composites were also confirmed by a laser thermal conductivity test instrument (Netzsch, LFA 427) at room temperature. X-ray photoelectron spectroscopy (XPS) studies were carried out in a VG ESCALAB 220i-XL system equipped with a monochromatized Al Kα X-ray source (1486.6 eV), a multichannel plate, and a delay-line detector under a vacuum of 1 × 10 –9 mbar. High-resolution (HR) spectra were collected at a constant pass energy of 20 eV and",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7684283",
+   "title": "High-performance compliant thermoelectric generators with magnetically self-assembled soft heat conductors for self-powered wearable electronics.",
+   "year": "2020",
+   "text": "as measured according to Plastics-differential scanning calorimetry (DSC)—Part 4: Determination of specific heat capacity (ISO 11357-4) using DSC equipment (DSC 25, TA). The thermal diffusivity was measured according to the standard test method for thermal diffusivity by the flash method (ASTM E1461) using a thermal diffusivity measurement system (NETZSCH, LFA 447 NanoFlash). Design of flexible circuits and self-powered wearable warning system To turn on the LEDs to act as a warning sign, a step-up voltage converter was used to step up the generated voltage from the compliant TEG. The step-up voltage converter was implemented on an f-PCB to maintain conformal contact with our compliant TEG and was compo",
+   "standards": [
+    "ASTM E1461",
+    "ISO 11357-4"
+   ]
+  },
+  {
+   "pmcid": "PMC8891317",
+   "title": "Maximizing the performance of n-type Mg<sub>3</sub>Bi<sub>2</sub> based materials for room-temperature power generation and thermoelectric cooling.",
+   "year": "2022",
+   "text": "ial system (ULVAC ZEM-3). The thermal conductivity κ tot was calculated using κ tot = DC p d , where D , C p , and d are the thermal diffusivity, specific heat capacity, and density, respectively. The thermal diffusivity coefficient ( D ) and the specific heat capacity ( C p ) were concurrently measured for the disk sample on a laser flash system (Netzsch LFA 467, Germany) with a pyroceram disk as a reference sample. For example, C p measurement result of Mg 3.2 Bi 1.5 Sb 0.498 Te 0.002 Cu 0.01 samples sintered at 973 K is in good consistency with the corrected Dulong-Petit law in this material system 60 (Fig. S 15 ). The sample density ( d ) was determined by the Archimedes method. The room-temperature Ha",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8163856",
+   "title": "Entropy engineering promotes thermoelectric performance in p-type chalcogenides.",
+   "year": "2021",
+   "text": "und powder was sintered by Spark Plasma Sintering System at 853 K under a pressure of 50 MPa for 10 min. Measurements The measurement methods can be found in our previous work 51 . The electrical transport properties (electric conductivity and Seebeck coefficient), thermal conductivity, and Hall coefficient were measured by commercial Ulvac ZEM-3, Netzsch LFA 457, and Lake Shore 8400 Series, respectively. Calculation DFT calculations were performed by the Perdew–Burke–Ernzerhof functional of the generalized gradient approximation, as implemented in the Vienna ab initio Simulation Package. TE module Co 0.8 Fe 0.2 alloy was bonded to the Pb-based materials as barrier layer in hot side. The Bi 2 Te 3 -bas",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ISO 11357-4": 1,
+  "ASTM E1461": 1
+ },
+ "standards_new": [
+  "ISO 11357-4"
+ ],
+ "test_item_hits": {
+  "thermal_conductivity": 21,
+  "density_porosity": 4,
+  "dsc": 2,
+  "electrical_transport": 2,
+  "abrasion": 1,
+  "microscopy": 1
+ }
+}

@@ -1,0 +1,286 @@
+{
+ "object": "jeol-jxa-epma",
+ "manufacturer": "jeol",
+ "phrases": [
+  "JEOL JXA-iHP200F iSP100",
+  "JEOL JXA-iHP200F",
+  "JEOL JXA-iSP100"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"JEOL JXA-iHP200F iSP100\" OR \"JEOL JXA-iHP200F\" OR \"JEOL JXA-iSP100\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"JEOL JXA-iHP200F iSP100\" OR \"JEOL JXA-iHP200F\" OR \"JEOL JXA-iSP100\") AND OPEN_ACCESS:y",
+  "count": 24,
+  "papers": [
+   {
+    "pmcid": "PMC9169537",
+    "doi": "10.1093/jmicro/dfac009",
+    "title": "Analytical technique for self-absorption structure of iron L-emission spectra obtained by soft X-ray emission spectrometer.",
+    "journal": "Microscopy (Oxf)",
+    "year": "2022",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11579423",
+    "doi": "10.1038/s41467-024-54482-w",
+    "title": "Spinel oxide enables high-temperature self-lubrication in superalloys.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8361216",
+    "doi": "10.1016/j.isci.2021.102922",
+    "title": "Thickness dependence of structural and superconducting properties of Co-doped BaFe<sub>2</sub>As<sub>2</sub> coated conductors.",
+    "journal": "iScience",
+    "year": "2021",
+    "cited": 2,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12916860",
+    "doi": "10.1002/open.202500583",
+    "title": "Rare 3 × 3 Layering in High-Pressure Pseudo-Perovskite Sr&lt;sub&gt;4&lt;/sub&gt;Te&lt;sub&gt;4&lt;/sub&gt;O&lt;sub&gt;15&lt;/sub&gt;.",
+    "journal": "ChemistryOpen",
+    "year": "2026",
+    "cited": 1,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12094243",
+    "doi": "10.1126/sciadv.adu4985",
+    "title": "Variable mantle redox states driven by deeply subducted carbon.",
+    "journal": "Sci Adv",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12165023",
+    "doi": "10.1002/advs.202416288",
+    "title": "Engineering Light-Element Modified LaFe&lt;sub&gt;11.6&lt;/sub&gt;Si&lt;sub&gt;1.4&lt;/sub&gt; Compounds Enables Tunable Giant Magnetocaloric Effect.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11762294",
+    "doi": "10.1038/s41467-025-56312-z",
+    "title": "High-temperature structural disorders stabilize hydrous aluminosilicates in the mantle transition zone.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": null,
+    "doi": "10.21203/rs.3.rs-10693077/v1",
+    "title": "Dating ductile deformation of the Earth’s crust: the critical role of fluids",
+    "journal": null,
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13369813",
+    "doi": "10.1038/s41598-026-60054-3",
+    "title": "Fossil wood cells recorded 300 million years of Europe's tectonic history.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC13342607",
+    "doi": "10.1038/s41467-026-75189-0",
+    "title": "Formation of iron oxide-apatite deposits triggered by magmatic assimilation of evaporitic sulfate.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13469110",
+    "doi": "10.1038/s41467-026-74842-y",
+    "title": "Water exchange process and bulk composition regulate slab dynamics and deep earthquakes.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13287775",
+    "doi": "10.1038/s41598-026-56499-1",
+    "title": "Exceptionally preserved embryos reveal maternal care in freshwater bivalves since the Cretaceous.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13251866",
+    "doi": "10.1126/sciadv.aea3420",
+    "title": "A Noachian hydrosphere component in the 4.1-Ga Martian meteorite Teghaza 001.",
+    "journal": "Sci Adv",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13027059",
+    "doi": "10.3390/jfb17030122",
+    "title": "LXW7 Peptide Modification of Acellular Liver Scaffolds Improves Endothelialization and Hemocompatibility in Bioengineered Liver.",
+    "journal": "J Funct Biomater",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12975864",
+    "doi": "10.1007/s00410-026-02299-9",
+    "title": "Impact of intragrain chemical heterogeneities on &lt;sup&gt;40&lt;/sup&gt;Ar/&lt;sup&gt;39&lt;/sup&gt;Ar and &lt;sup&gt;87&lt;/sup&gt;Rb-&lt;sup&gt;87&lt;/sup&gt;Sr white mica dates.",
+    "journal": "Contrib Mineral Petrol",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13000182",
+    "doi": "10.1038/s41467-026-69272-9",
+    "title": "Phase engineering of relaxor ferroelectricity in van der Waals crystal.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13067764",
+    "doi": "10.1002/advs.202524116",
+    "title": "A Janus-Like Bio-Inspired Strategy for 3D-Printed Bimetallic Metamaterials with Excellent Thermal-Protection and Load Bearing Capacity.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12966288",
+    "doi": "10.1038/s41467-026-68785-7",
+    "title": "Formation of giant carbonatite rare earth deposits controlled by deep-seated magma chambers.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12626229",
+    "doi": "10.1021/acsestwater.5c00542",
+    "title": "Origin and Evolution of High Nickel Concentrations in Rock Glacier Springs.",
+    "journal": "ACS ES T Water",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12521735",
+    "doi": "10.1038/s41467-025-64159-7",
+    "title": "Stress heterogeneities in exhumed high-pressure rocks shed light on deep subduction interface transient coupling.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12113429",
+    "doi": "10.3390/ma18102276",
+    "title": "Enhancement of a Magnetically Controlled Cathodic Arc Source for the Deposition of Multi-Component Hard Nitride Coatings.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11990334",
+    "doi": "10.3390/molecules30071552",
+    "title": "Quantitative Study of Spodumene by Time-of-Flight Secondary Ion Mass Spectrometry (tof-SIMS).",
+    "journal": "Molecules",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11531478",
+    "doi": "10.1038/s41598-024-77544-x",
+    "title": "Experimental evidence of phase transition of silica polymorphs in basaltic eucrites: implications for thermal history of protoplanetary crust.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11266659",
+    "doi": "10.1038/s41598-024-67799-9",
+    "title": "Effect of Ce on structural evolution and corrosion resistance of HRB500E rebar corrosion layer.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9169537",
+   "title": "Analytical technique for self-absorption structure of iron L-emission spectra obtained by soft X-ray emission spectrometer.",
+   "year": "2022",
+   "text": "aterials (Fe metal, FeO, Fe 3 O 4, Fe 2 O 3 , FeS and FeS 2 ) were prepared for obtaining X-ray L -emission spectra at a series of accelerating voltages chosen to provide a range of self-absorption effect. The SXES instrument used in this study was an SXES-ER using a JS2000 grating (dispersive range: 230–2300 eV) attached to a field emission EPMA, JEOL JXA-iHP200F. Fe L -emission spectra were acquired at accelerating voltages of 2, 5, 7, 10 and 15 kV to measure differences in the self-absorption spectra under each condition. Probe current was from 10 to 50 nA. Probe diameter was 20 μm. The acquisition time for each spectrum at each accelerating voltage was 5 min. Fe L -emission is composed of four component",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11579423",
+   "title": "Spinel oxide enables high-temperature self-lubrication in superalloys.",
+   "year": "2024",
+   "text": "aracterization The phase of unworn AP and HT samples was measured by XRD (Bruker D8 Discovery) at 40 kV and 40 mA with Cu Kα (1.54 Å). A scan speed of 0.2° s/step with a step increment of 0.02° was applied for the two-theta scan. The high-resolution surface composition images were measured by WDS with a Field Emission Electron Probe Microanalyzer (JEOL JXA-iHP200F). The wear track region was characterized by an XPS (PHI Quantera SXM, USA) in a vacuum of 10 −9 Torr. The sputtering depth curve was obtained by several sweeps and time steps with 3 kV argon ion. The O 1 s , Cr 2 p 3/2 , Fe 2 p 3/2 , Ni 2 p 3/2 , and Nb 3 d were used for quantitative analysis. The spectra were calibrated using C 1 s at 285 eV usi",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8361216",
+   "title": "Thickness dependence of structural and superconducting properties of Co-doped BaFe<sub>2</sub>As<sub>2</sub> coated conductors.",
+   "year": "2021",
+   "text": "suggesting that additional artificial pinning centers, such as defects by irradiation, secondary phase particles, should be introduced to further improve the performance of thick films in the future. STAR★Methods Key resources table REAGENT or RESOURCE SOURCE IDENTIFIER Software and algorithms Origin 2020 Originlab http://www.originlab.com/ Other JEOL JXA-iSP100 Electron Probe Microanalyzer JEOL (BEIJING) CO., LTD. http://www.jeol.com.cn/product/detail/556 Bruker-D8 Advance X-ray diffractometer Bruker (Beijing) Scientific Technology Co. Ltd. https://www.bruker.com/zh/products-and-solutions/diffractometers-and-scattering-systems/x-ray-diffractometers/d8-advance-family/d8-advance.html Physical Property Meas",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8361216",
+   "title": "Thickness dependence of structural and superconducting properties of Co-doped BaFe<sub>2</sub>As<sub>2</sub> coated conductors.",
+   "year": "2021",
+   "text": "ntrolled by deposition time. The thicknesses of as-prepared thin films were varying from 0.2∼2 μm. Crystal structure and phase purity were measured by X-ray diffraction (XRD) with a Cu Kα radiation on a Bruker D8 Advance. The surface topographies and elemental mapping of the Ba122:Co thin films were observed by Electron Probe Microanalyzer (EPMA) (JXA-iSP100, JEOL). The transport critical current ( I c ) and the temperature dependence of resistivity of the films were measured with the four-probe method by physical property measurement system (PPMS; Quantum Design) equipped with a sample rotator. The angle of the applied field θ was varied from 60° to 240°, where θ = 90 and 180° correspond to the configurati",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12094243",
+   "title": "Variable mantle redox states driven by deeply subducted carbon.",
+   "year": "2025",
+   "text": "s. Analytical techniques The identity of high-pressure minerals was determined by a WITec alpha 300R Confocal Laser Raman Spectrometer with a Zeiss microscope. The laser wavelength is 532 nm, and the power is 10 mW. The integration time is 5 to 10 s with three to five accumulations. Major element compositions of the run products were analyzed by a JEOL JXA-iSP100 electron microprobe. The accelerating voltage is 15 kV for silicates, oxides, and carbonates and 20 kV for metal phases. The operating beam current and diameter were 20 nA and 1 to 3 μm for the metal, silicate, and oxide phases; 10 nA and 3 to 5 μm for magnesite; and 2 nA and 10 to 20 μm for carbonatite melt. The peak counting time was 10 s for Na",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11762294",
+   "title": "High-temperature structural disorders stabilize hydrous aluminosilicates in the mantle transition zone.",
+   "year": "2025",
+   "text": "ron probe microanalyzer The recovered capsules were cut into two parts by knives or diamond saws. All products comprised large, transparent, and colorless single crystals as well as small powders. For each experimental run, several randomly chosen crystal grains were polished to determine their chemical compositions. Analysis was conducted using a JEOL JXA-iSP100 electron probe microanalyzer (EPMA) with an accelerating voltage of 15 kV, a beam current of 5 nA, and a beam spot size of approximately 2 μm. Calibration standards of garnet and diopside were utilized to quantitatively measure the Al and Si contents, respectively. Each grain was measured at seven different points, and the average value was comput",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13369813",
+   "title": "Fossil wood cells recorded 300 million years of Europe's tectonic history.",
+   "year": "2026",
+   "text": "mated from the model of Steele-MacInnis et al. 69 . Raman analyses of selected fluid inclusions were performed using a Horiba-Jobin–Yvon HR-800 Raman spectrometer equipped with a 488 nm (blue) laser and attached to an Olympus BX41 microscope. Electron-probe microanalysis and scanning-electron microscopy The main trace elements were measured with a JEOL JXA-iHP200F field emission gun Electron Probe Microanalyzer with following detection limits: Ti (7 ppm), Al (17 ppm), K (5 ppm) and Fe (13 ppm) (Supplementary Data 4). The study included BSE, CL imaging, and elemental mapping, notably carbon. High-resolution imaging was performed with a SEM JEOL IT 500 Scanning Electron Microscope, mainly to search for opal s",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 9,
+  "abrasion": 1
+ }
+}

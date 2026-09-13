@@ -1,0 +1,63 @@
+{
+ "object": "chroma-17011-battery-cell-tester",
+ "manufacturer": "chroma",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "MIL-STD-461": 27,
+  "GMW3172": 2,
+  "ISO 10605": 2,
+  "ISO 11452": 2,
+  "ISO 16750-2": 2,
+  "SAE J1455": 2,
+  "SAE J1113": 2,
+  "IEC 61000-4-2": 2,
+  "IEC 61000-4-3": 2,
+  "IEC 61000-4-4": 2,
+  "IEC 61000-4-6": 2,
+  "IEC 61000-4-8": 2,
+  "IEC 61000-4-10": 2,
+  "IEC 61000-4-11": 2,
+  "IEC 61000-4-12": 2,
+  "IEC 61000-4-13": 2,
+  "MIL-STD 704F": 2,
+  "ISO 7637": 1,
+  "ANSI C63.4": 1
+ },
+ "standards_new": [
+  "ANSI C63.4",
+  "GMW3172",
+  "IEC 61000-4-10",
+  "IEC 61000-4-11",
+  "IEC 61000-4-12",
+  "IEC 61000-4-13",
+  "IEC 61000-4-2",
+  "IEC 61000-4-3",
+  "IEC 61000-4-4",
+  "IEC 61000-4-6",
+  "IEC 61000-4-8",
+  "ISO 10605",
+  "ISO 11452",
+  "ISO 16750-2",
+  "ISO 7637",
+  "MIL-STD 704F",
+  "MIL-STD-461",
+  "SAE J1113",
+  "SAE J1455"
+ ],
+ "test_item_hits": {
+  "surge_eft_immunity": 7,
+  "microscopy": 4,
+  "burst_pressure": 3,
+  "halt_hass": 2,
+  "altitude_low_pressure": 1,
+  "thermal_shock": 1
+ },
+ "application_sentences": [
+  "The Chroma 17011 series is a high precision charge/discharge tester instrument specifically designed for Lithium-ion batteries, electrical double layer capacitors (EDLC), and lithium-ion capacitors (LIC).",
+  "It is suitable for product characteristics screening, cycle life testing, incoming and shipping inspection, material experiment, and balancing battery voltage.",
+  "tions Documentation Key Features and Functions The Chroma 17011 Battery Cell Charge and Discharge Test System is a high precision system designed specifically for testing lithium-ion battery (LIB) cells, electrical double layer capacitors (EDLC), and lithiumion capacitors (LIC).",
+  "It is suitable for product development, quality control, and is helpful to characteristic research, cycle life testing, product screening, and quality assessment.",
+  "l (PDF) Description Key Features and Functions The Chroma 17011 Battery Cell Charge and Discharge Test System is a high precision system designed specifically for testing lithium-ion battery (LIB) cells, electrical double layer capacitors (EDLC), and lithiumion capacitors (LIC)."
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "object": "espec-tsa-thermal-shock",
+ "manufacturer": "espec",
+ "pages": 8,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC 60068-2-14": 3,
+  "IEC60068-2-1": 3,
+  "IEC60068-2-2": 3,
+  "IEC 60068-3-5": 3,
+  "ISO 1996-1": 3,
+  "MIL-STD-883H": 2,
+  "MIL-STD-202G": 2,
+  "ISO 12100": 2,
+  "ISO-9001": 1,
+  "IEC 60204": 1,
+  "IEC 61000-6-2": 1,
+  "EN 60068-2-14": 1,
+  "MIL-STD-883E": 1,
+  "JIS C 0025": 1,
+  "MIL-STD-883K": 1
+ },
+ "standards_new": [
+  "EN 60068-2-14",
+  "IEC 60068-2-14",
+  "IEC 60068-3-5",
+  "IEC 60204",
+  "IEC 61000-6-2",
+  "IEC60068-2-1",
+  "IEC60068-2-2",
+  "ISO 12100",
+  "ISO 1996-1",
+  "ISO-9001",
+  "JIS C 0025",
+  "MIL-STD-202G",
+  "MIL-STD-883E",
+  "MIL-STD-883H",
+  "MIL-STD-883K"
+ ],
+ "test_item_hits": {
+  "thermal_shock": 64,
+  "halt_hass": 29,
+  "microscopy": 8,
+  "temperature_cycling": 3,
+  "altitude_low_pressure": 2,
+  "contact_angle": 2,
+  "hast": 2,
+  "coating_thickness": 1,
+  "tensile": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "Performance Specifications: Designed for two-zone or three-zone testing, the chambers maintain temperature fluctuation at ±0.",
+  "Procedures: Designed for high and low-temperature exposure tests, the chambers adhere to standards like MIL-STD-883H and IEC 60068-2-14, detailing temperature ranges, exposure, and recovery times.",
+  "This chambers are desired for testing different products to rapid temperature changes.",
+  "Fixed test area type can save testing time because transfer time of the specimen from one chamber to the other is not necessary, also suitable for testing large size, heavy specimens and/or testing many small devices at one time."
+ ]
+}

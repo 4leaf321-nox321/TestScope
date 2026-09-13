@@ -1,0 +1,83 @@
+{
+ "object": "shimadzu-hmv-g",
+ "manufacturer": "shimadzu",
+ "phrases": [
+  "Shimadzu HMV-G31 HMV-G31-FA",
+  "Shimadzu HMV-G31",
+  "Shimadzu G31",
+  "Shimadzu G31-FA",
+  "Shimadzu HMV-G31-FA"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Shimadzu HMV-G31 HMV-G31-FA\" OR \"Shimadzu HMV-G31\" OR \"Shimadzu G31\" OR \"Shimadzu G31-FA\" OR \"Shimadzu HMV-G31-FA\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Shimadzu HMV-G31 HMV-G31-FA\" OR \"Shimadzu HMV-G31\" OR \"Shimadzu G31\" OR \"Shimadzu G31-FA\" OR \"Shimadzu HMV-G31-FA\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC12328732",
+    "doi": "10.1038/s41598-025-14776-5",
+    "title": "Thermal, hardness, and tribological assessment of PEEK/CoCr composites.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM G99"
+    ]
+   },
+   {
+    "pmcid": "PMC13046962",
+    "doi": "10.1038/s41598-026-41202-1",
+    "title": "Enhanced crystallinity, hardness and thermal stability of PEEK/TC4 composites for biomedical applications.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12923910",
+    "doi": "10.1038/s41598-026-38401-1",
+    "title": "Consolidation behaviour of AZ80 magnesium chips: influence of compaction pressure and holding time on porosity, interfaces and mechanical response.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC12328732",
+   "title": "Thermal, hardness, and tribological assessment of PEEK/CoCr composites.",
+   "year": "2025",
+   "text": "b} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$$\\:Xc=\\frac{\\varDelta\\:Hm}{\\varDelta\\:H^\\circ\\:}\\times\\:100\\%$$\\end{document} where ΔHm​ is the melting enthalpy of PEEK or PEEK/CoCr composites, and ΔH⁰ is the enthalpy of 100% crystalline PEEK (ΔH⁰=130 J/g). Vickers microhardness (Shimadzu HMV-G31) testing was conducted on the polished cross-sections using a standard microhardness tester. A load of 10 N was applied with a dwell time of 10 s for each indentation. Ten measurements were taken for each sample at randomly selected regions, carefully avoiding direct indentation on large metal particles. The Vickers hardness (HV) was calculated ba",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13046962",
+   "title": "Enhanced crystallinity, hardness and thermal stability of PEEK/TC4 composites for biomedical applications.",
+   "year": "2026",
+   "text": "Xc ) was determined from the difference in melting enthalpy between the crystalline and amorphous regions, using the following Eq. 2 : 2 where, Δ H m is melting enthalpy of PEEK or PEEK/TC4 composites, ΔH 0 is enthalpy of 100% crystalline PEEK (130 J/g). Microhardness by Vickers was measured on the polished specimens using a microhardness tester (Shimadzu HMV-G31). A load of 10 N was applied for an indentation dwell time of 10 s. For each sample of PEEK and PEEK/TC4 specimens of 10 indents were made in different regions avoiding large metal particles right under the indent. The diagonal lengths of each indent were measured to calculate Vickers hardness (HV). The results were averaged and standard deviation",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12923910",
+   "title": "Consolidation behaviour of AZ80 magnesium chips: influence of compaction pressure and holding time on porosity, interfaces and mechanical response.",
+   "year": "2026",
+   "text": "hough they were sparse and showed no preferential spatial arrangement. The oxygen signal was strictly confined to the outer edge, confirming surface-limited oxidation with no internal oxide penetration. Fig. 3 XRD diffractogram of as-received AZ80-T5 chips. The microhardness of the initial swarf was evaluated using a micro Vickers hardness tester (SHIMADZU HMV-G31-FA-S) operating at a test load of HV0.01 (98 mN) and a dwell time of 15 s. Cross-sectional measurements were conducted by applying a 3 × 3 indentation matrix, with an indent spacing of 0.05 mm across the 0.20 mm chip thickness. Indentations were positioned at 0.025 mm from the free surface to minimize edge-relief effects. The measured hardness val",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "hardness_vickers": 3
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "object": "hegewald-peschke-hot-hardness-1500c",
+ "manufacturer": "hegewald-peschke",
+ "pages": 3,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "RTCA DO-160": 2,
+  "EN IEC 61010": 2,
+  "ISO 12944": 2,
+  "ASTM E92": 1
+ },
+ "standards_new": [
+  "ASTM E92",
+  "EN IEC 61010",
+  "ISO 12944",
+  "RTCA DO-160"
+ ],
+ "test_item_hits": {
+  "microscopy": 10,
+  "halt_hass": 8,
+  "creep": 6,
+  "abrasion": 4,
+  "charpy_impact": 4,
+  "tensile": 4,
+  "compression": 3,
+  "hardness_vickers": 3,
+  "accelerated_weathering": 2,
+  "altitude_low_pressure": 2,
+  "hardness_knoop": 2,
+  "melt_flow": 2,
+  "optical_spectroscopy": 2,
+  "salt_spray_corrosion": 2,
+  "shear": 2,
+  "thermal_conductivity": 2,
+  "electrical_transport": 1,
+  "fracture_toughness": 1,
+  "instrumented_indentation": 1,
+  "relaxation": 1
+ },
+ "application_sentences": [
+  "5 mm (1 inch by 3/8 inch by 3/8 inch) are metallographically polished to a 1 μm finish to prepare them for testing.",
+  "It therefore retains the title of the ideal solution for testing extremely hard materials, including technical-grade ceramics and functional coatings.",
+  "High-Temperature Nanoindentation Testing with Alemnis Alemnis offers a wide range of High Temperature (HT) modules ideal for the precision testing of materials where both the sample and indenter can be heated up to 1000 °C (1832 °F)."
+ ]
+}

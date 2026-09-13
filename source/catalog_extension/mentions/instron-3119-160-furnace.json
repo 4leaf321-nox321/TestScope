@@ -1,0 +1,56 @@
+{
+ "object": "instron-3119-160-furnace",
+ "manufacturer": "instron",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM E21": 3,
+  "ISO 6892-2": 3,
+  "EN10002-5": 3,
+  "EN2002-2": 3,
+  "ISO 1133": 2,
+  "ASTM D1238": 2,
+  "ISO 9513": 1,
+  "ASTM E83": 1,
+  "ISO 11608-5": 1
+ },
+ "standards_new": [
+  "ASTM D1238",
+  "ASTM E83",
+  "EN10002-5",
+  "EN2002-2",
+  "ISO 1133",
+  "ISO 11608-5",
+  "ISO 9513"
+ ],
+ "test_item_hits": {
+  "compression": 18,
+  "tensile": 14,
+  "microscopy": 12,
+  "torsion": 7,
+  "flexure": 6,
+  "drop_weight_impact": 3,
+  "optical_spectroscopy": 3,
+  "particle_size": 3,
+  "abrasion": 2,
+  "density_porosity": 2,
+  "electrical_transport": 2,
+  "shear": 2,
+  "thermal_conductivity": 2,
+  "altitude_low_pressure": 1,
+  "coating_thickness": 1,
+  "contact_angle": 1,
+  "dsc": 1,
+  "halt_hass": 1,
+  "hardness_rockwell": 1,
+  "peel": 1,
+  "scratch_pencil_hardness": 1,
+  "thermal_shock": 1
+ },
+ "application_sentences": [
+  "ringes, Luer locks, autoinjectors, pen injectors, sutures, prosthetics, implants, medical packaging, or PPE, Instron offers a range of fixtures and accessories for testing to industry standards.",
+  "It has the capability to test a variety of materials up to loads of 22,500 lbs.",
+  "The machine can be used for experiments to define the properties of various materials.",
+  "idirectional weave carbon fiber composites @ -65°C to 135°C ATS Split Tube Furnace The split tube furnace has the ability to mount to the Instron 8801 and is used for studying elevated temperature effects on materials under stress."
+ ]
+}

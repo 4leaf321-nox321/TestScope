@@ -1,0 +1,83 @@
+{
+ "object": "kla-imicro-materialtwin",
+ "manufacturer": "kla",
+ "phrases": [
+  "KLA Instruments iMicro",
+  "Nanomechanics iMicro"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"KLA Instruments iMicro\" OR \"Nanomechanics iMicro\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"KLA Instruments iMicro\" OR \"Nanomechanics iMicro\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC6566190",
+    "doi": "10.3390/ma12101677",
+    "title": "Evaluation of Phase Transformation and Mechanical Properties of Metastable Yttria-Stabilized Zirconia by Nanoindentation.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10821297",
+    "doi": "10.3390/ma17020322",
+    "title": "Photopolymer-Based Composite with Substance Release Capability Manufactured Additively with DLP Method.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 527"
+    ]
+   },
+   {
+    "pmcid": "PMC13298815",
+    "doi": "10.1021/acsami.6c03707",
+    "title": "Development of a Cerium-Doped Titanate/Polyphenol Nanostructured Coating for Titanium Implants: Enhancing Antibacterial Properties through Ciprofloxacin Release.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 10993-5"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6566190",
+   "title": "Evaluation of Phase Transformation and Mechanical Properties of Metastable Yttria-Stabilized Zirconia by Nanoindentation.",
+   "year": "2019",
+   "text": "ults. The phase composition was characterized by XRD (D/max-2500, Rigaku, Tokyo, Japan) at a scanning speed of 0.2°·min −1 to differentiate T (004), T′ (004), C (400), T′ (400) and T (400) diffraction peaks in the 2θ range of 72.5°–75.5° [ 37 ]. 2.3. Mechanical Properties of 8YSZ The mechanical properties of 8YSZ were measured with a nanoindenter (Nanomechanics, iMicro, Oak Ridge, TN, USA), and nanoindentation mapping was conducted through the NanoBlitz three-dimensional mechanical property mapping mode. The mapping area was 150 µm × 150 µm with 900 points and the load was 5 mN. The Poisson’s ratio of 8YSZ was assumed to be 0.25 [ 34 ]. Besides, the mechanical properties of single-phase grains were also measured",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10821297",
+   "title": "Photopolymer-Based Composite with Substance Release Capability Manufactured Additively with DLP Method.",
+   "year": "2024",
+   "text": "[ 23 ] for all series of specimens on a Zwick/Roell Z020 testing machine (Zwick Roell, Ulm, Germany). The load capacity was 20 kN and the tensile rate was 1 mm/min. The following parameters were obtained: tensile strength (σ m ), relative elongation (ε B ) and Young’s modulus (E). 2.7. Nanoindentation The nanoindentation test was carried out using Nanomechanics iMicro apparatus (KLA Company, Milpitas, CA, USA) with a load equal to 50 mN. The nanohardness parameter (nH) was determined, and the reduced elastic modulus ( E R ) was calculated using Formula (3): (3) E R = π 2 ∗ S A where A —contact area, and S —measured stiffness. 3. Results 3.1. Evaluation of the Structure and Composition of the Samples Figure 1 sh",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13298815",
+   "title": "Development of a Cerium-Doped Titanate/Polyphenol Nanostructured Coating for Titanium Implants: Enhancing Antibacterial Properties through Ciprofloxacin Release.",
+   "year": "2026",
+   "text": ", was deposited onto the sample, and recording continued for 30 s. The first image capturing the fully settled droplet was used for measurement, and contact angles were calculated with Attension Theta software. For each modification, at least five samples were measured, and the results were averaged. Nanomechanical properties were assessed using a Nanomechanics iMicro nanoindenter with a standard Berkovich tip. Prior to testing, the indenter was calibrated using a quartz glass reference sample. Each indentation was performed until either a maximum force of 50 nN or a depth of 5000 nm was reached, followed by a 1-s hold at the maximum force. Approximately 30 measurements were performed per sample, with the most",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 2,
+  "contact_angle": 1
+ }
+}

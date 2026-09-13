@@ -1,0 +1,77 @@
+{
+ "object": "hegewald-peschke-inspekt-blue",
+ "manufacturer": "hegewald-peschke",
+ "phrases": [
+  "Hegewald & Peschke inspekt blue 5",
+  "Hegewald & Peschke inspekt blue 10",
+  "Hegewald & Peschke inspekt blue 20",
+  "Hegewald & Peschke inspekt blue 30",
+  "Hegewald & Peschke inspekt blue 50"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Hegewald & Peschke inspekt blue 5\" OR \"Hegewald & Peschke inspekt blue 10\" OR \"Hegewald & Peschke inspekt blue 20\" OR \"Hegewald & Peschke inspekt blue 30\" OR \"Hegewald & Peschke inspekt blue 50\"",
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W4391102189",
+    "doi": "https://doi.org/10.1016/j.jmrt.2024.01.155",
+    "title": "Influence of flux agent composition on the ionization potential in A-TIG welding of the electrolytic tough pitch copper (Cu-ETP) sheets",
+    "year": 2024,
+    "cited": 11,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Welding Techniques and Residual Stresses",
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.jmrt.2024.01.155",
+    "abstract": "Due to its high thermal expansion coefficient and high thermal conductivity, welding of copper and copper alloys is considered difficult and demanding. Activated TIG welding (A-TIG)A-TIG welding has been widely researched as a welding method for obtaining deeper penetration on various metals. However, A-TIG welding of copper remains unexplored without guidelines on the influence of flux agentssubstances and the influence of the applied parameters and achieved mechanical properties in produced welds. In this paper three agentssubstances were used as single component fluxes: Calcium oxide (CaO), Silicon dioxide (SiO2) and Sodium carbonate (Na2CO3) for A-TIG welding Cu-ETP sheets. Welds were characterized by visual inspection and macrostructural analysis, also bend testing and tensile strength testing werewas conducted. Microstructure of the weld with optimal mechanical properties was analyzed by means of Field Emission Gun-Scanning Electron Microscope (FEG-SEM)FEG SEM and also the chemical characterization of the weld was made by means of Energy Dispersive Spectroscopy (EDS)EDS. The results showed that the most effective flux used was Silicon dioxide. Welds welded with SiO2 showed good results in visual inspection, macrostructure analysis and band test and also have acceptable values of tensile strength. However, oxide inclusions have been found in weld metal in significant percentage which could indicate the possible degradation of electrical conductivity of the material."
+   },
+   {
+    "id": "https://openalex.org/W4380479833",
+    "doi": "https://doi.org/10.1007/s10853-023-08618-w",
+    "title": "Influence of extrinsic induced tensile stress on the self-propagating high-temperature synthesis of nanosized Al/Ni multilayers",
+    "year": 2023,
+    "cited": 8,
+    "venue": "Journal of Materials Science",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Intermetallics and Advanced Alloy Properties",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10853-023-08618-w.pdf",
+    "abstract": "Abstract Reactive multilayer systems consisting of alternating nanoscale Al and Ni layers are applicable in joining, various pyrotechnic applications and thermal batteries. Since diffusion based high-temperature synthesis occurs without the presence of air, efforts have focused on investigating the understanding of the fundamental reaction processes and characteristics. The aim of this study is to expose the reactive multilayers to extrinsic induced tensile stress so that the self-propagating synthesis can proceed under these conditions. Further, the properties during and after the reaction will be investigated. Multilayers deposited by sputtering on Kapton® substrates with different bilayer– and total thicknesses as well as commercial Nanofoils® with thicknesses of 40 µm and 60 µm were used as samples. The investigations focused on the propagation velocity measured with a high-speed camera, the temperature regime determined with a high-speed pyrometer, and the formed phases after the synthesis examined via X-ray diffraction. The gained results of this study reveal important insights for the application of the reactive Al/Ni multilayer system in terms of stability or reliability related to propagation front velocity, maximum temperature and formed phases under induced external tensile stresses. Graphical abstract"
+   },
+   {
+    "id": "https://openalex.org/W4394764923",
+    "doi": "https://doi.org/10.1002/adem.202302271",
+    "title": "Tailoring the Reaction Path: External Crack Initiation in Reactive Al/Ni Multilayers",
+    "year": 2024,
+    "cited": 1,
+    "venue": "Advanced Engineering Materials",
+    "topics": [
+     "Intermetallics and Advanced Alloy Properties",
+     "Aluminum Alloys Composites Properties",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adem.202302271",
+    "abstract": "The influence of intentionally externally induced cracks in reactive Al/Ni multilayer systems is investigated. These cracks affect the reaction dynamics and enable tailoring of the reaction path and the overall velocity of the reaction front. The influence of layer variations onto mechanical crack formation and resulting reaction behavior are investigated. High‐speed camera imaging shows the meandering propagation of the reaction front along the crack paths. Therefore, the mechanical cracking process significantly changes the total velocity of the reaction front and thus offers a possibility to control the self‐propagating high‐temperature synthesis process. It is shown that the phase formation remains unaffected despite the applied strains and cracks. This favorable stability in phase formation ensures predictability and provides insight into the adaptation of RMS for precision applications in joints. The results expand the understanding of mechanical cracking as a tool to influence high‐temperature synthesis in reactive multilayer coatings and provide an opportunity to expand the range of applications."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Hegewald & Peschke inspekt blue 5\" OR \"Hegewald & Peschke inspekt blue 10\" OR \"Hegewald & Peschke inspekt blue 20\" OR \"Hegewald & Peschke inspekt blue 30\" OR \"Hegewald & Peschke inspekt blue 50\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 4,
+  "flexure": 1,
+  "microscopy": 1,
+  "thermal_conductivity": 1
+ }
+}

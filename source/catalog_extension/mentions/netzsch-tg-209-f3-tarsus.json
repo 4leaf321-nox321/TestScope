@@ -1,0 +1,56 @@
+{
+ "object": "netzsch-tg-209-f3-tarsus",
+ "manufacturer": "netzsch",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "GB399972": 2,
+  "GB399974": 2,
+  "GB399205": 2,
+  "GB397053": 2,
+  "GB399956": 2,
+  "GB399973": 1,
+  "GB399975": 1,
+  "GB399860": 1,
+  "GB397052": 1,
+  "GB399957": 1,
+  "ISO 11358": 1,
+  "DIN 51006": 1,
+  "ASTM E 1131": 1,
+  "BS6102": 1
+ },
+ "standards_new": [
+  "ASTM E 1131",
+  "BS6102",
+  "DIN 51006",
+  "GB397052",
+  "GB397053",
+  "GB399205",
+  "GB399860",
+  "GB399956",
+  "GB399957",
+  "GB399972",
+  "GB399973",
+  "GB399974",
+  "GB399975"
+ ],
+ "test_item_hits": {
+  "density_porosity": 4,
+  "microscopy": 4,
+  "tga": 4,
+  "dsc": 3,
+  "dilatometry": 2,
+  "dma": 2,
+  "thermal_conductivity": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "The calculated DTA-signal c-DTA® (option) not only is ideal for temperature calibration.",
+  "The calculated DTA-signal c-DTA Technical Specifications (subject to change) (optional) is ideal for temperature calibration.",
+  "TGA systems like this one are used for quality control of raw materials and failure analysis of finished products."
+ ],
+ "standards_nearby": [
+  "ASTM D3850",
+  "ASTM E1131"
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "object": "mitutoyo-hh-300-durometer",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo HH-300",
+  "Mitutoyo HH-331",
+  "Mitutoyo HH-332",
+  "Mitutoyo HH-335",
+  "Mitutoyo HH-336",
+  "Mitutoyo HH-333"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo HH-300\" OR \"Mitutoyo HH-331\" OR \"Mitutoyo HH-332\" OR \"Mitutoyo HH-335\" OR \"Mitutoyo HH-336\" OR \"Mitutoyo HH-333\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo HH-300\" OR \"Mitutoyo HH-331\" OR \"Mitutoyo HH-332\" OR \"Mitutoyo HH-335\" OR \"Mitutoyo HH-336\" OR \"Mitutoyo HH-333\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC8510189",
+    "doi": "10.3390/ma14195815",
+    "title": "Development of Waste-Based Alkali-Activated Cement Composites.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D 2240",
+     "DIN EN 196-1",
+     "EN 12390-2",
+     "EN 196-1",
+     "EN 197",
+     "EN 197-1",
+     "ISO 868"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8510189",
+   "title": "Development of Waste-Based Alkali-Activated Cement Composites.",
+   "year": "2021",
+   "text": "rmed using a Perkin Elmer Spectrum Two type instrument equipped with a platinum ATR adapter. During the measurements, the reflectance spectrum (wave number as a function of the Kubelka–Munk unit) was recorded by averaging 512 spectra. According to ASTM D 2240 and ISO 868, the Shore A hardness of the rubber samples was determined with the help of a Mitutoyo HH-336-11 type digital durometer. Computed tomography (CT) images of the produced binders were made using a Nikon XT H 225 ST type X-ray tomograph and the accompanying VG Studio 3.4 software. During the measurements, an accelerating voltage of 160 kV and a cathode current of 85 μA were used (1250 projections/recordings, 2 recordings per projection, 500 m",
+   "standards": [
+    "ASTM D 2240",
+    "ISO 868"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ASTM D 2240": 1,
+  "ISO 868": 1
+ },
+ "standards_new": [
+  "ASTM D 2240",
+  "ISO 868"
+ ],
+ "test_item_hits": {}
+}

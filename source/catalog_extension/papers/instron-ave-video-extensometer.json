@@ -1,0 +1,144 @@
+{
+ "object": "instron-ave-video-extensometer",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron AVE 2",
+  "Instron AVE",
+  "Instron AVE3"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron AVE 2\" OR \"Instron AVE\" OR \"Instron AVE3\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron AVE 2\" OR \"Instron AVE\" OR \"Instron AVE3\") AND OPEN_ACCESS:y",
+  "count": 5,
+  "papers": [
+   {
+    "pmcid": "PMC6316933",
+    "doi": "10.3390/ma11122463",
+    "title": "Study of Size Effect on Microstructure and Mechanical Properties of AlSi10Mg Samples Made by Selective Laser Melting.",
+    "journal": "Materials (Basel)",
+    "year": "2018",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11398033",
+    "doi": "10.3390/polym16172534",
+    "title": "Prediction Accuracy of Hyperelastic Material Models for Rubber Bumper under Compressive Load.",
+    "journal": "Polymers (Basel)",
+    "year": "2024",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 23529",
+     "ISO 48-4",
+     "ISO 7743"
+    ]
+   },
+   {
+    "pmcid": "PMC13334016",
+    "doi": "10.1038/s41598-026-51935-8",
+    "title": "Compressive behavior of additively manufactured circular-core chiral lattice structures with CNT-reinforced PMMA: a multi-scale analysis.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D638",
+     "ASTM D695"
+    ]
+   },
+   {
+    "pmcid": "PMC11902394",
+    "doi": "10.3390/polym17050662",
+    "title": "PLA Reinforced with Limestone Waste: A Way to Sustainable Polymer Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D1238",
+     "EN ISO 179",
+     "EN ISO 179-2",
+     "EN ISO 527-2",
+     "ISO 179-1",
+     "ISO 527-2"
+    ]
+   },
+   {
+    "pmcid": "PMC5848963",
+    "doi": "10.3390/ma11020266",
+    "title": "The Influence of the Heat-Affected Zone Mechanical Properties on the Behaviour of the Welding in Transverse Plate-to-Tube Joints.",
+    "journal": "Materials (Basel)",
+    "year": "2018",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN-1993-1-8"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6316933",
+   "title": "Study of Size Effect on Microstructure and Mechanical Properties of AlSi10Mg Samples Made by Selective Laser Melting.",
+   "year": "2018",
+   "text": "eover, the fracture surfaces of samples after the tensile test were observed using SEM. Uniaxial tensile tests were conducted at room temperature using an Instron 5985 universal machine according to the methods used from [ 27 ], and the crosshead speed was set at 1.0 mm/min. The axial displacement was measured using an infrared video extensometer (Instron AVE 2.0, INSTRON, Boston, MA, USA), and its precision was 0.5 per thousand. The specific experimental setup and SLM-built tensile samples are shown in Figure 3 . These samples were named as D1, D2, D3, D4 and D5 corresponding to various build sizes. 3. Results and Discussion 3.1. Microstructural Analysis The optical micrographs of the sample (D4) in the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11398033",
+   "title": "Prediction Accuracy of Hyperelastic Material Models for Rubber Bumper under Compressive Load.",
+   "year": "2024",
+   "text": "nd 78 Shore A for the product. Figure 2 The sampled specimens and their location within the rubber product. The compression test of the rubber specimens was performed according to the ISO 7743 ‘A’ method and the test conditions specified in Table 3 . The tests were performed using an Instron 68TM-10 (Norwood, MA, USA) uniaxial test machine and the Instron AVE 2 non-contacting video extensometer. The operating rate of the traverse was calculated based on the strain rate used for the compression test of the rubber bumper. Table 3 Test conditions of the uniaxial compression of the cylindrical rubber specimens. Temperature and Relative Humidity of the Test 25 (°C); 50% The number, magnitude and speed of the",
+   "standards": [
+    "ISO 7743"
+   ]
+  },
+  {
+   "pmcid": "PMC13334016",
+   "title": "Compressive behavior of additively manufactured circular-core chiral lattice structures with CNT-reinforced PMMA: a multi-scale analysis.",
+   "year": "2026",
+   "text": "lected for the loading phase 51 . This speed is prescribed for Type IV specimens to ensure quasi-static testing conditions and accurate characterization of modulus, yield stress, and post-yield behavior for rigid polymers such as PMMA. Fig. 7 Direct tensile testing setup for standard ASTM D638 specimens. To enhance strain measurement precision, an Instron AVE 2 video extensometer with a resolution of 1 μm was utilized. The initial gauge length for each specimen was measured prior to testing and inputted into the control software. Following specimen mounting, a slight pre-load of 1 N was applied to eliminate any slack in the loading train. Stress-strain curves were derived from the recorded load-displacem",
+   "standards": [
+    "ASTM D638"
+   ]
+  },
+  {
+   "pmcid": "PMC11902394",
+   "title": "PLA Reinforced with Limestone Waste: A Way to Sustainable Polymer Composites.",
+   "year": "2025",
+   "text": "gcode was generated by PrusaSlicer 2.9.0. with the same dimensions as the injected pieces (see below). The parameters used were nozzle diameter, 0.8 mm; infill density, 100%; raster angle, 45°, bed temperature, 60 °C. An extrusion temperature of 238 °C was used for all percentages. 2.7. Mechanical Testing Using a 59R5884 with a video extensometer Instron AVE (Instron Ltd., Norwood, MA, USA) fitted with a 10 kN force sensor, the tensile characteristics of the samples were investigated. Tensile tests were performed on dumbbell-shaped specimens that had a cross-section of 10 mm by 4 mm (according to EN ISO 527-2 [ 29 ]). A crosshead speed of 10 mm/min and a clamping distance of 110 mm were established. T",
+   "standards": [
+    "EN ISO 527-2"
+   ]
+  },
+  {
+   "pmcid": "PMC5848963",
+   "title": "The Influence of the Heat-Affected Zone Mechanical Properties on the Behaviour of the Welding in Transverse Plate-to-Tube Joints.",
+   "year": "2018",
+   "text": "rain rate of 15 MPa/seg using flat-shaped specimens 3 mm thick and 10 mm in section. The length of the narrow portion of the specimen was 10 mm. For each configuration, at least 3 tensile tests were done. During the tensile tests, precise strains were measured by an optical strain gauge system on the basis of digital image processing. A commercial INSTRON AVE 2 digital image correlation system (Norwood, MA, USA) was used to measure the displacement field during loading. The AVE uses a high-resolution digital camera and advanced real-time image processing to make precise axial and transverse strain measurements. Each welded coupon was sectioned through areas of interest with a bandsaw followed by a low-sp",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ISO 7743": 1,
+  "ASTM D638": 1,
+  "EN ISO 527-2": 1
+ },
+ "standards_new": [
+  "EN ISO 527-2",
+  "ISO 7743"
+ ],
+ "test_item_hits": {
+  "tensile": 8,
+  "compression": 3,
+  "density_porosity": 1
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "object": "tira-tiravib-5x-shakers",
+ "manufacturer": "tira",
+ "phrases": [
+  "TIRA TIRAvib 51075",
+  "TIRA TIRAvib 52110",
+  "TIRA TIRAvib 52120"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TIRA TIRAvib 51075\" OR \"TIRA TIRAvib 52110\" OR \"TIRA TIRAvib 52120\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TIRA TIRAvib 51075\" OR \"TIRA TIRAvib 52110\" OR \"TIRA TIRAvib 52120\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

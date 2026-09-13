@@ -1,0 +1,295 @@
+{
+ "object": "ta-electroforce",
+ "manufacturer": "ta-instruments",
+ "phrases": [
+  "TA Instruments ElectroForce",
+  "TA Instruments ElectroForce 3100",
+  "TA Instruments ElectroForce 5500",
+  "TA Instruments ElectroForce 3200",
+  "TA Instruments DMA 3200",
+  "TA Instruments ElectroForce 3310"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TA Instruments ElectroForce\" OR \"TA Instruments ElectroForce 3100\" OR \"TA Instruments ElectroForce 5500\" OR \"TA Instruments ElectroForce 3200\" OR \"TA Instruments DMA 3200\" OR \"TA Instruments ElectroForce 3310\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TA Instruments ElectroForce\" OR \"TA Instruments ElectroForce 3100\" OR \"TA Instruments ElectroForce 5500\" OR \"TA Instruments ElectroForce 3200\" OR \"TA Instruments DMA 3200\" OR \"TA Instruments ElectroForce 3310\") AND OPEN_ACCESS:y",
+  "count": 36,
+  "papers": [
+   {
+    "pmcid": "PMC6202397",
+    "doi": "10.1038/s41467-018-06504-7",
+    "title": "A biomaterial with a channel-like pore architecture induces endochondral healing of bone defects.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 140,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8497446",
+    "doi": "10.1038/s41551-021-00780-3",
+    "title": "Amelioration of post-traumatic osteoarthritis via nanoparticle depots delivering small interfering RNA to damaged cartilage.",
+    "journal": "Nat Biomed Eng",
+    "year": "2021",
+    "cited": 108,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8786977",
+    "doi": "10.1038/s41413-021-00176-8",
+    "title": "PDGFRα reporter activity identifies periosteal progenitor cells critical for bone formation and fracture repair.",
+    "journal": "Bone Res",
+    "year": "2022",
+    "cited": 52,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8602646",
+    "doi": "10.1038/s41467-021-27013-0",
+    "title": "Soft elasticity optimises dissipation in 3D-printed liquid crystal elastomers.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 51,
+    "snippets": 1,
+    "standards_in_paper": [
+     "SAE J211"
+    ]
+   },
+   {
+    "pmcid": "PMC7614068",
+    "doi": "10.1002/adhm.202200481",
+    "title": "Tissue Engineering Cartilage with Deep Zone Cytoarchitecture by High-Resolution Acoustic Cell Patterning.",
+    "journal": "Adv Healthc Mater",
+    "year": "2022",
+    "cited": 32,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10236428",
+    "doi": "10.1021/acsami.3c02279",
+    "title": "Hydrogel-Assisted Double Molding Enables Rapid Replication of Stereolithographic 3D Prints for Engineered Tissue Design.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2023",
+    "cited": 21,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GM25256"
+    ]
+   },
+   {
+    "pmcid": "PMC8874024",
+    "doi": "10.1016/j.bpj.2022.01.008",
+    "title": "Hydraulic permeability and compressive properties of porcine and human synovium.",
+    "journal": "Biophys J",
+    "year": "2022",
+    "cited": 18,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9463533",
+    "doi": "10.1016/j.reth.2022.08.005",
+    "title": "Personalized tissue-engineered arteries as vascular graft transplants: A safety study in sheep.",
+    "journal": "Regen Ther",
+    "year": "2022",
+    "cited": 15,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8423260",
+    "doi": "10.1371/journal.pone.0257147",
+    "title": "Mechanisms of reducing joint stiffness by blocking collagen fibrillogenesis in a rabbit model of posttraumatic arthrofibrosis.",
+    "journal": "PLoS One",
+    "year": "2021",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC6474606",
+    "doi": "10.1371/journal.pone.0215595",
+    "title": "Cryopreservation of tendon tissue using dimethyl sulfoxide combines conserved cell vitality with maintained biomechanical features.",
+    "journal": "PLoS One",
+    "year": "2019",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC9251720",
+    "doi": "10.1016/j.ohx.2022.e00333",
+    "title": "Biaxial testing system for characterization of mechanical and rupture properties of small samples.",
+    "journal": "HardwareX",
+    "year": "2022",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC9655432",
+    "doi": "10.3390/polym14214486",
+    "title": "Polybutylene Succinate Processing and Evaluation as a Micro Fibrous Graft for Tissue Engineering Applications.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC8927453",
+    "doi": "10.1038/s41598-022-08551-z",
+    "title": "Thermally damaged porcine skin is not a surrogate mechanical model of human skin.",
+    "journal": "Sci Rep",
+    "year": "2022",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC7691997",
+    "doi": "10.1038/s41598-020-77655-1",
+    "title": "Modeling the effects of hyaluronic acid degradation on the regulation of human astrocyte phenotype using multicomponent interpenetrating polymer networks (mIPNs).",
+    "journal": "Sci Rep",
+    "year": "2020",
+    "cited": 10
+   },
+   {
+    "pmcid": "PMC7430100",
+    "doi": "10.1177/1753193420932477",
+    "title": "DendroPrime as an adhesion barrier on fracture fixation plates: an experimental study in rabbits.",
+    "journal": "J Hand Surg Eur Vol",
+    "year": "2020",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC9820334",
+    "doi": "10.3390/ijms24010510",
+    "title": "Influence of the Peripheral Nervous System on Murine Osteoporotic Fracture Healing and Fracture-Induced Hyperalgesia.",
+    "journal": "Int J Mol Sci",
+    "year": "2022",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC9066305",
+    "doi": "10.1098/rsos.211972",
+    "title": "Flexible sutures reduce bending moments in shells: from the echinoid test to tessellated shell structures.",
+    "journal": "R Soc Open Sci",
+    "year": "2022",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC8951525",
+    "doi": "10.3390/ijms23063115",
+    "title": "Poly-Alanine-ε-Caprolacton-Methacrylate as Scaffold Material with Tuneable Biomechanical Properties for Osteochondral Implants.",
+    "journal": "Int J Mol Sci",
+    "year": "2022",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC10958611",
+    "doi": "10.1093/jbmrpl/ziad011",
+    "title": "Sex-specific effects of <i>Fat-1</i> transgene on bone material properties, size, and shape in mice.",
+    "journal": "JBMR Plus",
+    "year": "2024",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC10523007",
+    "doi": "10.1016/j.ohx.2023.e00475",
+    "title": "A custom-built planar biaxial system for soft tissue material testing.",
+    "journal": "HardwareX",
+    "year": "2023",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC11962742",
+    "doi": "10.1088/1741-2552/adbb1e",
+    "title": "Electrical and magnetic stimulation separately modulates the extent and direction of neurite outgrowth in an ionically conductive hydrogel.",
+    "journal": "J Neural Eng",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11784150",
+    "doi": "10.3389/fvets.2024.1525586",
+    "title": "Mechanical evaluation of mandibular fractures stabilized with absorbable implants or intraoral splints in cats.",
+    "journal": "Front Vet Sci",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11646090",
+    "doi": "10.1093/jbmrpl/ziae144",
+    "title": "Sex hormone deficiency in male and female mice expressing the Alzheimer's disease-associated risk-factor TREM2 R47H variant impacts the musculoskeletal system in a sex- and genotype-dependent manner.",
+    "journal": "JBMR Plus",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11096406",
+    "doi": "10.1038/s41598-024-61556-8",
+    "title": "Mechanical behavior of full-thickness burn human skin is rate-independent.",
+    "journal": "Sci Rep",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC10526064",
+    "doi": "10.3390/bioengineering10091037",
+    "title": "Alginate Conjugation Increases Toughness in Auricular Chondrocyte Seeded Collagen Hydrogels.",
+    "journal": "Bioengineering (Basel)",
+    "year": "2023",
+    "cited": 3
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6202397",
+   "title": "A biomaterial with a channel-like pore architecture induces endochondral healing of bone defects.",
+   "year": "2018",
+   "text": "via Ethylene Oxide treatment (HA2 Medizintechnik GmbH, Germany). The mean pore size was evaluated as the average distance between pore walls on microscopic images of multiple sections of the bulk material. Stiffness was characterized on three to four individual specimens via a monoaxial compression test using a BOSE ElectroForce TestBench system (TA Instruments ElectroForce Systems Group). The denaturation temperature, indicating the degree of crosslinking and the stability against degradation, was analyzed via a Differential Scanning Calorimeter Q100 (TA Instruments, USA). Second harmonic generation imaging of collagen fibers Collagen fibrils exhibit endogenous second harmonic generation (SHG) signals arising from t",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8497446",
+   "title": "Amelioration of post-traumatic osteoarthritis via nanoparticle depots delivering small interfering RNA to damaged cartilage.",
+   "year": "2021",
+   "text": "0.05; ** = p &lt; 0.01; *** = p &lt; 0.001, **** = p &lt; 0.0001; center values: mean; error bars: s.e.). Fig. 3 | mAbCII-siNP/siMMP13 are locally-retained and potently silence MMP13 relative to bare and mAbCtrl-functionalized siNPs in the knee joints of a short-term mouse model of PTOA. a. Schematic of the mouse knee mechanical loading apparatus (TA instruments ElectroForce 3100 with a custom 3D printed fitting for the mouse knee and for the ankle/leg) with the corresponding loading regimen used in the short-term PTOA model studies; b-c. Intravital imaging ( b ) and quantification ( c ) of mAbCII-siNP retention in healthy versus PTOA knee joints (Yellow dashed circles represent area of quantified fluorescence; Fluore",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8602646",
+   "title": "Soft elasticity optimises dissipation in 3D-printed liquid crystal elastomers.",
+   "year": "2021",
+   "text": "ing a TA Instruments DMA Q800 in displacement ramp mode. Strips of LCE, cut from larger printed sheets and of ~2.25 × 0.9 mm in cross-section and ~10 mm in gauge length once clamped, were stretched at a nominal strain rate of 1.6 × 10 −4 s −1 . Compressive mechanical tests (lower left quadrant of Fig. 1h , and Figs. 2 c, 3 ) were performed using a TA Instruments Electroforce 3230 equipped with a ± 450 N load cell. Printed LCE and BPA-ink, LCE PD and SD-70 devices of dimensions ~12 × 8 mm 2 cross-sectional area and 8 mm height were prepared and in the case of printed devices, lightly sanded after freezing to give flat surfaces. The sample dimensions following sanding were used in analysis. For comparisons of each mater",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7614068",
+   "title": "Tissue Engineering Cartilage with Deep Zone Cytoarchitecture by High-Resolution Acoustic Cell Patterning.",
+   "year": "2022",
+   "text": "collagen (see Safranin O Staining and Immunostaining sections below). v) Mechanical Testing . Chondrocytes from each group were seeded at a density of 3 × 10 7 cells mL –1 in 1% (w/v) type VII‐A agarose hydrogels and cultured in cartilage tissue engineering media. After 35 d, the constructs were harvested for unconfined compression testing using a TA Instruments ElectroForce 3200 equipped with an Omega LCFD‐5 load cell. Five compression cycles of 1 N load were applied to the tissues with a 60 s dwell time in between each cycle. The resulting load‐displacement curves were used to generate stress‐strain curves based on the tissue dimensions (diameter range = 5.83–6.14 mm, height range = 1.76–1.96 mm, measured prior to t",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10236428",
+   "title": "Hydrogel-Assisted Double Molding Enables Rapid Replication of Stereolithographic 3D Prints for Engineered Tissue Design.",
+   "year": "2023",
+   "text": "ES containing 12.5 mM CaCl 2 with a pH between 8 and 9 for 12 h and then removed and placed in a 37 °C oven for 1 h to dry. 0.2% Triton-X-100 (Fisher BP151) was added to the agar used for replicating the Nanoscribe-printed dogbones and pineapple seen in Figure 4 A. Hydrogel Characterization Compressive mechanical testing of gels was conducted on a TA Instruments ElectroForce 3200, using a 225 N load cell. Gels were precompressed to 0.1 N, after which compression testing was conducted at 1 mm/min until gel failure. The ElectroForce was located in Washington University’s Department of Mechanical Engineering &amp; Material’s Science Shared Instrument Group. n = 9 individual gel punches, obtained from three different batc",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8874024",
+   "title": "Hydraulic permeability and compressive properties of porcine and human synovium.",
+   "year": "2022",
+   "text": "(blue) and osteoarthritic (red) conditions, respectively, where the synovium's thickness varied from 1 to 2 mm in both cases. In all cases, the outer edge of synovium was considered free draining (P 0 = 0). Compression testing Synovial tissue explants underwent confined compression testing using a displacement-controlled mechanical test apparatus (TA Instruments ElectroForce 3200, New Castle, DE). Explant testing occurred in a chamber consisting of a 6.35-mm plastic confining ring atop a porous steel platen (McMaster-Carr 9446T31, 40-micron pore size). As illustrated in Fig. 1 b , an impervious aluminum platen one-quarter-inch diameter was placed in line with the confining ring and testing actuator. The unconfined com",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "compression": 6,
+  "density_porosity": 1,
+  "optical_spectroscopy": 1
+ }
+}

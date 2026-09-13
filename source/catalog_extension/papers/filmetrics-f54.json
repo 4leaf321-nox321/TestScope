@@ -1,0 +1,211 @@
+{
+ "object": "filmetrics-f54",
+ "manufacturer": "filmetrics",
+ "phrases": [
+  "Filmetrics F54",
+  "Filmetrics F54-UV",
+  "Filmetrics F54-UVX",
+  "Filmetrics F54-EXR",
+  "Filmetrics F54-NIR",
+  "KLA F54",
+  "KLA F54-UV"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Filmetrics F54\" OR \"Filmetrics F54-UV\" OR \"Filmetrics F54-UVX\" OR \"Filmetrics F54-EXR\" OR \"Filmetrics F54-NIR\" OR \"KLA F54\" OR \"KLA F54-UV\"",
+  "count": 8,
+  "works": [
+   {
+    "id": "https://openalex.org/W4389377159",
+    "doi": "https://doi.org/10.1063/5.0171106",
+    "title": "Unveiling the origins of quasi-phase matching spectral imperfections in thin-film lithium niobate frequency doublers",
+    "year": 2023,
+    "cited": 27,
+    "venue": "APL Photonics",
+    "topics": [
+     "Photorefractive and Nonlinear Optics",
+     "Advanced Fiber Laser Technologies",
+     "Photonic and Optical Devices"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/app/article-pdf/doi/10.1063/5.0171106/18243874/126106_1_5.0171106.pdf",
+    "abstract": "Thin-film lithium niobate (TFLN) based frequency doublers have widely been recognized as an essential component for both classical and quantum optical communications. Nonetheless, the efficiency (unit: %/W) of these devices is hindered by imperfections present in the quasi-phase matching (QPM) spectrum. In this report, we present a thorough experimental study of spectral imperfections in TFLN frequency doublers with varying lengths, ranging from 5 to 15 mm. A non-destructive diagnostic method based on scattered light imaging is proposed and employed to identify the waveguide sections and primary waveguide parameters contributing to the imperfections in the QPM spectrum. By applying this method, we obtain the evolution of the QPM spectrum along the waveguide’s length. Correlating this information with the measurements of the relevant geometric parameters along the waveguides suggests that the TFLN film thickness variation is the primary source for the measured spectral distortions. Furthermore, we numerically reproduce the QPM spectra with the mapped TFLN film thickness across the entire waveguiding regions. These findings align with and complement the simulation results from previous numerical studies, providing further evidence of the effectiveness of the developed diagnostic method. This comprehensive investigation offers valuable insights into the identification and mitigation of spectral imperfections in TFLN-based frequency doublers, paving the way for the realization of nonlinear optical devices with enhanced efficiency and improved spectral fidelity."
+   },
+   {
+    "id": "https://openalex.org/W4390978545",
+    "doi": "https://doi.org/10.1002/advs.202303518",
+    "title": "Multi‐ and Gray‐Scale Thermal Lithography of Silk Fibroin as Water‐Developable Resist for Micro and Nanofabrication",
+    "year": 2024,
+    "cited": 12,
+    "venue": "Advanced Science",
+    "topics": [
+     "Silk-based biomaterials and applications",
+     "Nanofabrication and Lithography Techniques",
+     "Adhesion, Friction, and Surface Interactions"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202303518",
+    "abstract": "Abstract Silk fibroin (SF) is a natural material with polymorphic structures that determine its water solubility and biodegradability, which can be altered by exposing it to heat. Here, a hybrid thermal lithography method combining scalable microscale laser‐based patterning with nanoscale patterning based on thermal scanning probe lithography is developed. The latter enables in addition grayscale patterns to be made. The resolution limit of the writing in silk fibroin is studied by using a nanoscale heat source from a scanned nanoprobe. The heat thereby induces local water solubility change in the film, which can subsequently be developed in deionized water. Nanopatterns and grayscale patterns down to 50 nm lateral resolution are successfully written in the silk fibroin that behaves like a positive tone resist. The resulting patterned silk fibroin is then applied as a mask for dry etching of SiO2 to form a hard mask for further nano‐processing. A very high selectivity of 42:1 between SiO2 and silk fibroin is obtained allowing for high‐aspect ratio structure to be fabricated. The fabricated nanostructures have very low line edge roughness of 5 ± 2 nm. The results demonstrate the potential of silk fibroin as a water‐soluble resist for hybrid thermal lithography and precise micro/nanofabrication."
+   },
+   {
+    "id": "https://openalex.org/W4415707257",
+    "doi": "https://doi.org/10.1038/s41467-025-64630-5",
+    "title": "Three-dimensional nanoscale control of magnetism in crystalline Yttrium Iron Garnet",
+    "year": 2025,
+    "cited": 8,
+    "venue": "Nature Communications",
+    "topics": [
+     "Magneto-Optical Properties and Applications",
+     "Magnetic properties of thin films",
+     "Multiferroics and related materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-64630-5.pdf",
+    "abstract": "The exceptional magnetic, optical and phononic properties of Yttrium Iron Garnet (YIG) make it unique for spin-wave based and photonic applications. Yet, nanostructuring crystalline YIG and manipulating its magnetism in a non-destructive way is an outstanding challenge, and so far mostly limited to two-dimensional capabilities. Here, we show that irradiation of single-crystal YIG films with a focused UV laser drives a stable, giant enhancement of the perpendicular magnetic anisotropy, preserving the crystalline quality. This modulation is highly confined at the nanoscale in both the lateral and vertical directions, and its extension within the volume can be finely tuned with a continuous depth-control. By harnessing these three-dimensional anisotropy profiles, we demonstrate a large tuning of the spin-wave band structure, volume spatial localization, and non-reciprocity, realizing proof-of-principle 3D magnonic crystals. This straightforward, single-step, laser nanofabrication of three-dimensional magnetic systems based on crystalline YIG thin films opens the way to design novel functions in magnonic and magneto-optic devices. There has been considerable interest in using magnons for information processing. Such ‘magnonic’ devices will require magnetic patterning analogous to the lithographic patterns of integrated circuits. Here, Levati, Vitali and coauthors present one possible approach to this, demonstrating laser induced changes in the perpendicular magnetic anisotropy of Yttrium Iron Garnet."
+   },
+   {
+    "id": "https://openalex.org/W7170560494",
+    "doi": "https://doi.org/10.1002/adfm.77288",
+    "title": "Nanoscale Spatial Tuning of Superconductivity in Cuprate Thin Films via Direct Laser Writing",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Physics of Superconductivity and Magnetism",
+     "Electronic and Structural Properties of Oxides",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://doi.org/10.1002/adfm.77288",
+    "abstract": "ABSTRACT Cuprate high‐temperature superconductors, such as Yttrium Barium Copper Oxide (YBCO), are extremely promising for emerging technologies such as low‐power computing, data storage, quantum sensors, and superconducting electronics. However, the realization of high‐performance functional nanostructures presents formidable challenges due to the difficulty of applying conventional nanofabrication methods to such sensitive materials, making the search for alternative methods a key enabling factor. Since YBCO's superconducting and normal‐state properties are highly dependent on oxygen stoichiometry, precise nanoscale control of the oxygen content represents a highly appealing approach for creating advanced nanoengineered devices. In this work, we demonstrate the precise fabrication of sub‐micrometer, grayscale patterns over large areas in epitaxial YBCO thin films, achieving finely tuned optical and superconducting transport properties by locally controlling the stoichiometry through maskless direct laser writing under ambient conditions. Cryogenic magneto‐optical imaging and transport measurements in irradiated devices directly demonstrate the spatial tuning of the critical temperature and carrier density with the patterning conditions. Correlated Raman microscopy and reflectometry indicate a laser‐power‐dependent oxygen depletion in the irradiated regions. The proposed laser‐controlled stoichiometry approach provides a direct and scalable method to navigate the phase diagram of high‐T C superconducting oxides, offering new possibilities for integrating functional nanostructures into superconducting devices."
+   },
+   {
+    "id": "https://openalex.org/W4405030044",
+    "doi": "https://doi.org/10.48550/arxiv.2411.19118",
+    "title": "Measuring direct flexoelectricity at the nanoscale",
+    "year": 2024,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Nonlocal and gradient elasticity in micro/nano structures",
+     "Force Microscopy Techniques and Applications",
+     "Piezoelectric Actuators and Control"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2411.19118",
+    "abstract": "Flexoelectricity is a property of all dielectric materials, where inhomogeneous strain induces electrical polarization. This effect becomes particularly prominent at the nanoscale where larger strain gradients can be obtained. While flexoelectric charges have been measured in mm-scale systems, direct measurements in nanoscale-thickness materials have not yet been achieved. Given that one of the most prominent applications of flexoelectricity is in nano-electro-mechanical systems (NEMS), confirming the presence and magnitude of the effect at these scales is essential. This study presents the first-ever measurements of flexoelectric-generated charges (direct effect) in nanoscale-thickness materials, using cantilevers with a 50 nm hafnium oxide layer. We confirm that the estimated flexoelectric coefficient from said measurements aligns with the values obtained from complementary experiments using the flexoelectric inverse effect. Additionally, by changing the cantilever geometry (modifying the width of the cantilevers), we demonstrate a 40% increase in the effective flexoelectric coefficient, explained by the interplay of different flexoelectric tensor components. These findings not only validate the presence of flexoelectric effects at the nanoscale but also open the possibility for full flexoelectric transduction of the motion in NEMS/MEMS devices."
+   },
+   {
+    "id": "https://openalex.org/W4403796144",
+    "doi": "https://doi.org/10.48550/arxiv.2409.17722",
+    "title": "Three-dimensional nanoscale control of magnetism in crystalline Yttrium Iron Garnet",
+    "year": 2024,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Magneto-Optical Properties and Applications",
+     "Optical Polarization and Ellipsometry",
+     "Advanced Decision-Making Techniques"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2409.17722",
+    "abstract": "The exceptional magnetic, optical and phononic properties of Yttrium Iron Garnet (YIG) make it unique for spin-wave based and photonic applications. Yet, nanostructuring crystalline YIG and manipulating its magnetism in a non-destructive way is an outstanding challenge, and so far mostly limited to two-dimensional capabilities. Here, we show that irradiation of single-crystal YIG films with a focused UV laser drives a stable, giant enhancement of the perpendicular magnetic anisotropy, preserving the crystalline quality. This modulation is highly confined at the nanoscale in both the lateral and vertical directions, and its extension within the volume can be finely tuned with a continuous depth-control. By harnessing these three-dimensional anisotropy profiles, we demonstrate a large tuning of the spin-wave band structure, volume spatial localization, and non-reciprocity, realizing proof-of-principle 3D magnonic crystals. This straightforward, single-step, laser nanofabrication of three-dimensional magnetic systems based on crystalline YIG thin films opens the way to design novel functions in magnonic and magneto-optic devices."
+   },
+   {
+    "id": "https://openalex.org/W4399912757",
+    "doi": "https://doi.org/10.48550/arxiv.2406.13382",
+    "title": "Flexoelectricity in Amorphous Hafnium Oxide (HfO2)",
+    "year": 2024,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Ferroelectric and Negative Capacitance Devices",
+     "Nonlocal and gradient elasticity in micro/nano structures",
+     "Quantum-Dot Cellular Automata"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2406.13382",
+    "abstract": "Flexoelectricity, inherent in all materials, offers a promising alternative to piezoelectricity for nanoscale actuation and sensing. However, its widespread application faces significant challenges: differentiating flexoelectric effects from those of piezoelectricity and other phenomena, verifying its universality across all material structures and thicknesses, and establishing a comprehensive database of flexoelectric coefficients across different materials. This work introduces a groundbreaking methodology that accurately isolates flexoelectricity from piezoelectric, electrostrictive and electrostatic effects, with a detection threshold extending below 1 fC/m. The robustness of this method is demonstrated through its application to amorphous hafnium oxide (HfO$_2$), successfully measuring a flexoelectric coefficient of 105 $\\pm$ 10 pC/m. This measurement signifies the first measurement of flexoelectricity in hafnia, as well as in any amorphous material. Additionally, the study compiles a list of published flexoelectric coefficients, revealing an important insight. The relationship between the flexoelectric coefficient and the material's relative permittivity is better approximated by a quadratic proportionality. This challenges the traditional linear assumption proposed in Kogan's work and opens new avenues for future research in flexoelectric materials."
+   },
+   {
+    "id": "https://openalex.org/W4306713718",
+    "doi": "https://doi.org/10.5281/zenodo.7221147",
+    "title": "Fabrication of aluminium airbridges for microwave interconnects on lithium niobate on Damascene silicon nitride photonic chips",
+    "year": 2022,
+    "cited": 0,
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "topics": [
+     "Photonic and Optical Devices",
+     "Semiconductor Lasers and Optical Devices",
+     "Photonic Crystals and Applications"
+    ],
+    "oa_url": "https://zenodo.org/record/7221147",
+    "abstract": "Here we discuss the wafer-scale fabrication process flow of aluminium airbridges for microwave (MW) interconnects on lithium niobate on Damascene silicon nitride (LNOD) photonic chips. We also discuss the subsequent chip release procedure that preserves the bridges allowing for safe release of these delicate structures."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Filmetrics F54\" OR \"Filmetrics F54-UV\" OR \"Filmetrics F54-UVX\" OR \"Filmetrics F54-EXR\" OR \"Filmetrics F54-NIR\" OR \"KLA F54\" OR \"KLA F54-UV\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC10966559",
+    "doi": "10.1002/advs.202303518",
+    "title": "Multi- and Gray-Scale Thermal Lithography of Silk Fibroin as Water-Developable Resist for Micro and Nanofabrication.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2024",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12575735",
+    "doi": "10.1038/s41467-025-64630-5",
+    "title": "Three-dimensional nanoscale control of magnetism in crystalline Yttrium Iron Garnet.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12829136",
+    "doi": "10.1016/j.mtbio.2026.102762",
+    "title": "Antithrombotic and antibacterial surface coating based on spiky silver nanoparticles: A counterattack against clotting and biofilm.",
+    "journal": "Mater Today Bio",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 22196"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10966559",
+   "title": "Multi- and Gray-Scale Thermal Lithography of Silk Fibroin as Water-Developable Resist for Micro and Nanofabrication.",
+   "year": "2024",
+   "text": "the same tool. Fourier transform infrared (FTIR) spectra of annealed and thermally modified SF films were performed in attenuated total reflection (ATR) mode (Nicolet 6700, ThermoFisher Scientific). The thickness of the resist was measured by both mechanical profilometer (Bruker Dektak XT, surface profiler) and optical spectroscopic reflectometer (FilMetrics F54, Automated Thickness Mapping Systems). Conflict of Interest The authors declare no conflict of interest. Supporting information Supporting Information Acknowledgements The authors acknowledge funding for the t‐SPL tool from the Swiss National Science Foundation (SNSF) via the R'Equip program (150776). This work received funding from the European R",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12575735",
+   "title": "Three-dimensional nanoscale control of magnetism in crystalline Yttrium Iron Garnet.",
+   "year": "2025",
+   "text": "exchange stiffness A = 4 pJ/m; anisotropy constant of the pristine film K U = 0.2 kJ/m 3 ; anisotropy constant of the modified layer K U = 6 kJ/m 3 . A thorough description of simulation parameters and procedure is given in Supplementary Note 1 . Additional structural, optical and magnetic characterisation Reflectance spectra were acquired with a Filmetrics F54-XY-UVX system through a 10x objective. Magneto-Optic Kerr Effect images were acquired with a custom-made setup based on a microscope equipped with a high power stabilized LED white light source, a 20x objective and a CCD camera. The measurements exploit the polar MOKE effect, which is sensible to the out-of-plane component of the magnetization, an",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12829136",
+   "title": "Antithrombotic and antibacterial surface coating based on spiky silver nanoparticles: A counterattack against clotting and biofilm.",
+   "year": "2026",
+   "text": "). Ultraviolet–visible (UV–Vis) absorbance and fluorescence emission were subsequently measured with a microplate reader (CLARIOstar® Plus, BMG Labtech GmbH, Germany). Surface characteristics. Furthermore, the thickness of the surface coatings on the PET films was determined using filmetric reflectometer, specifically a spectroscopic ellipsometer (Filmetrics F54, KLA Corporation, United States). Water contact angle (WCA) measurements for the coatings were performed at ambient temperature using the contact angle system (Attension® Theta Flex, Biolin Scientific AB, Sweden). Functionality density (AOII assay). AOII was employed to quantify the amine groups present on the surface. The pH of the AOII solution",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "electrical_transport": 5,
+  "contact_angle": 2,
+  "density_porosity": 2,
+  "microscopy": 1,
+  "optical_spectroscopy": 1,
+  "surface_topography": 1
+ }
+}

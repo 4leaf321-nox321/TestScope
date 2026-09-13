@@ -1,0 +1,114 @@
+{
+ "object": "zwickroell-allroundline",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell AllroundLine",
+  "ZwickRoell Z005 TN",
+  "ZwickRoell TH",
+  "ZwickRoell TE",
+  "ZwickRoell Z005 TNW",
+  "ZwickRoell THW"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell AllroundLine\" OR \"ZwickRoell Z005 TN\" OR \"ZwickRoell TH\" OR \"ZwickRoell TE\" OR \"ZwickRoell Z005 TNW\" OR \"ZwickRoell THW\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell AllroundLine\" OR \"ZwickRoell Z005 TN\" OR \"ZwickRoell TH\" OR \"ZwickRoell TE\" OR \"ZwickRoell Z005 TNW\" OR \"ZwickRoell THW\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC8410872",
+    "doi": "10.1038/s41598-021-96325-4",
+    "title": "Impact of shredding degree on papermaking potential of recycled waste.",
+    "journal": "Sci Rep",
+    "year": "2021",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": [
+     "DIN 66",
+     "DIN 66399",
+     "EN ISO 1924-2",
+     "EN ISO 5267-1",
+     "EN ISO 5269-2",
+     "ISO 16065-2",
+     "ISO 187",
+     "ISO 23714",
+     "ISO 5263-1",
+     "ISO 5264-2",
+     "ISO 5351",
+     "ISO 536"
+    ]
+   },
+   {
+    "pmcid": "PMC12131669",
+    "doi": "10.1002/cssc.202500079",
+    "title": "Hydroxyethyl Cellulose as Water-Soluble Co-Binder for High Mass Loading LiNi&lt;sub&gt;0.5&lt;/sub&gt;Mn&lt;sub&gt;1.5&lt;/sub&gt;O&lt;sub&gt;4&lt;/sub&gt; Lithium-Ion Battery Cathodes.",
+    "journal": "ChemSusChem",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10382638",
+    "doi": "10.1016/j.heliyon.2023.e18344",
+    "title": "A Viable and sustainable flat- membrane plate-and-frame module for spent acid regeneration and metal ion recovery.",
+    "journal": "Heliyon",
+    "year": "2023",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 14001",
+     "ISO 25178"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8410872",
+   "title": "Impact of shredding degree on papermaking potential of recycled waste.",
+   "year": "2021",
+   "text": "f 80 g/m 2 (according to ISO 536:2012). Only sheets with basis weights between 79 and 81 g/m 2 were used for further investigation. The sheets were conditioned for 24 h at a relative humidity of 50 ± 2% and a temperature of 23 ± 1°C [ISO 187 (1990)] before determining their properties. The properties of the paper sheets were examined as follows. A ZwickRoell Z005 TN ProLine tensile testing machine (Zwick-Roell, Ulm, Germany) was used to measure the mechanical properties of the paper in accordance with PN-EN ISO 1924-2 (2010). The roughness and air permeability were measured using a Bendtsen apparatus (Messmer Buchel, Veenendaal, The Netherlands). The average degree of polymerisation (DP) of cellulose in each",
+   "standards": [
+    "EN ISO 1924-2",
+    "ISO 187",
+    "ISO 536"
+   ]
+  },
+  {
+   "pmcid": "PMC12131669",
+   "title": "Hydroxyethyl Cellulose as Water-Soluble Co-Binder for High Mass Loading LiNi&lt;sub&gt;0.5&lt;/sub&gt;Mn&lt;sub&gt;1.5&lt;/sub&gt;O&lt;sub&gt;4&lt;/sub&gt; Lithium-Ion Battery Cathodes.",
+   "year": "2025",
+   "text": "ng a Thinky mixer. The wet film thickness of the electrodes was set to 140 μm. The drying procedure was the same as for the cathodes. Eventually, the electrodes were pressed at 1 t for 10 s. The mass loading of graphite was balanced according to an N : P ratio of 1.15. Mechanical Characterization Peel and compression tests were carried out using a ZwickRoell Allroundline testing machine following a procedure that has been reported by Haselrieder et al. [39] Prior to the tests, electrode tapes with the same mass loading were pressed to a thickness of 115–125 μm via calendaring (MX 1051768, Saueressig). For the peel tests, the calendared electrode tapes were cut into several squared samples with an area of 6.45 cm 2",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10382638",
+   "title": "A Viable and sustainable flat- membrane plate-and-frame module for spent acid regeneration and metal ion recovery.",
+   "year": "2023",
+   "text": "o-linear bulk resistivity and conductivity analysis. Where,‘s’ is the probe spacing (1 mm, equidistant), ‘t’ is the membrane thickness; SMU refers to the source-measurement unit and GNDU is the ground unit. Fig. 2 2.5. Mechanical strength and integrity The tensility (tensile strength) ‘σ B ’ of the synthesized (QPECH) membrane was determined using ZwickRoell Z005 TN Proline Material Testing Machine (Germany). The tensile test samples (2 cm × 8 cm, 133 μm thickness) were cut from a dried and wet membrane (soaked in 0.5 M NaCl for &gt;72 h). After cleaning with cotton wipes, the sample was gripped between the clamps at a nominal gauge length of 10 mm and gauge width of 15 mm. The displacement rate was 5 mm/min,",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ISO 536": 1,
+  "ISO 187": 1,
+  "EN ISO 1924-2": 1
+ },
+ "standards_new": [
+  "EN ISO 1924-2",
+  "ISO 187",
+  "ISO 536"
+ ],
+ "test_item_hits": {
+  "tensile": 3,
+  "peel": 2,
+  "compression": 1,
+  "flexure": 1,
+  "surface_topography": 1
+ }
+}

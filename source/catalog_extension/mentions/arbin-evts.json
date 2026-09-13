@@ -1,0 +1,35 @@
+{
+ "object": "arbin-evts",
+ "manufacturer": "arbin",
+ "pages": 11,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "SAE J1939": 1,
+  "ISO 15118": 1
+ },
+ "standards_new": [
+  "ISO 15118",
+  "SAE J1939"
+ ],
+ "test_item_hits": {
+  "abrasion": 6,
+  "electrical_transport": 6,
+  "halt_hass": 4,
+  "vibration_sine_random": 2,
+  "microscopy": 1
+ },
+ "application_sentences": [
+  "Arbin has created an innovative temperature chamber for testing EV cells known as the “MZTC” Multi-Chamber.",
+  "The EVTS series is a potentiostat/galvanostat test station designed for testing high power EV and HEV batteries, packs, and modules.",
+  "1% 16 Bit Arbin's latest circuit regenerative power board design allows for testing of batteries, packs, and modules ranging from 10V to 800V, up to 450kW in a single chassis.",
+  "com Arbin Instruments Arbin provides CAN-Bus Communication for our EVTS systems that can be used to test battery packs with integrated Battery Management System (BMS) systems.",
+  "They go to great lengths to test and validate new designs before putting them into production vehicles.",
+  "At the time, all other high-precision equipment was designed to test small samples of battery materials – typically at an earlier stage of R&D."
+ ],
+ "standards_nearby": [
+  "IEC 17025",
+  "IEC 61960",
+  "ISO 17025",
+  "ISO 9001"
+ ]
+}

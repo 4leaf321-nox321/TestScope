@@ -1,0 +1,25 @@
+{
+ "object": "newtons4th-ppa-series",
+ "manufacturer": "newtons4th",
+ "phrases": [
+  "Newtons4th PPA",
+  "Newtons4th PPA5500",
+  "N4L PPA",
+  "N4L PPA5500"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Newtons4th PPA\" OR \"Newtons4th PPA5500\" OR \"N4L PPA\" OR \"N4L PPA5500\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Newtons4th PPA\" OR \"Newtons4th PPA5500\" OR \"N4L PPA\" OR \"N4L PPA5500\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

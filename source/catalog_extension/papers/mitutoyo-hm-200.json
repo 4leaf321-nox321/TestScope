@@ -1,0 +1,139 @@
+{
+ "object": "mitutoyo-hm-200",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo HM-210 HM-220",
+  "Mitutoyo HM-210",
+  "Mitutoyo HM-220",
+  "Mitutoyo HM-210 Type A",
+  "Mitutoyo HM-210 Type B",
+  "Mitutoyo HM-210 Type D"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo HM-210 HM-220\" OR \"Mitutoyo HM-210\" OR \"Mitutoyo HM-220\" OR \"Mitutoyo HM-210 Type A\" OR \"Mitutoyo HM-210 Type B\" OR \"Mitutoyo HM-210 Type D\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo HM-210 HM-220\" OR \"Mitutoyo HM-210\" OR \"Mitutoyo HM-220\" OR \"Mitutoyo HM-210 Type A\" OR \"Mitutoyo HM-210 Type B\" OR \"Mitutoyo HM-210 Type D\") AND OPEN_ACCESS:y",
+  "count": 5,
+  "papers": [
+   {
+    "pmcid": "PMC12933243",
+    "doi": "10.5037/jomr.2025.16404",
+    "title": "Microhardness of Root Canal Sealers at Different Canal Thirds: a Pilot In Vitro Study.",
+    "journal": "J Oral Maxillofac Res",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 6876"
+    ]
+   },
+   {
+    "pmcid": "PMC8269622",
+    "doi": "10.3390/ma14133633",
+    "title": "Comprehensive Research and Analysis of a Coated Machining Tool with a New TiAlN Composite Microlayer Using Magnetron Sputtering.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN ISO 6507-1",
+     "EN ISO 6507-2",
+     "ISO 6507-1"
+    ]
+   },
+   {
+    "pmcid": "PMC12298085",
+    "doi": "10.3390/ma18143397",
+    "title": "Influence of Magnetorheological Finishing on Surface Topography and Functional Performance of Shoulder Joint Cap Surface.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM F2083-11"
+    ]
+   },
+   {
+    "pmcid": "PMC12111394",
+    "doi": "10.1371/journal.pone.0324501",
+    "title": "RETRACTED: Digital twin-driven design and testing of laser shock processed aluminum-graphene composites for spacecraft docking tribology.",
+    "journal": "PLoS One",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM G 99-95",
+     "EN-31"
+    ]
+   },
+   {
+    "pmcid": "PMC5820591",
+    "doi": "10.1155/2018/6491279",
+    "title": "Influence of Cu Content on the Microstructure and Mechanical Properties of Cr-Cu-N Coatings.",
+    "journal": "Scanning",
+    "year": "2018",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC12933243",
+   "title": "Microhardness of Root Canal Sealers at Different Canal Thirds: a Pilot In Vitro Study.",
+   "year": "2025",
+   "text": "mber at 37 °C (95% humidity) for 24 hours to allow setting. Vickers microhardness (HV) test After setting, the samples were horizontally sectioned at 5 mm intervals to represent the coronal, middle and apical thirds of the canal. The microhardness of the RCS in different thirds of the canal was measured using the Vickers hardness testing machine - Mitutoyo HM-220 ® B-type (Mitutoyo Europe GmbH; Neuss, Germany). The study applied the blinding principle - the researcher performing the measurements was unaware of the material used in each specific sample. The surface of each sample was polished using abrasive papers of varying grit sizes from P800 to P3000 (Riken Corundum Co., Ltd.; Konosu, Japan) and final p",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8269622",
+   "title": "Comprehensive Research and Analysis of a Coated Machining Tool with a New TiAlN Composite Microlayer Using Magnetron Sputtering.",
+   "year": "2021",
+   "text": "i tip. The typical tip radius of the curvature was smaller than 10 nm. The effective area represents the real area with the determination difference from the “basic” area in % (growth). The microhardness test of milling the drill bit with the applied TiAlN coating was performed according to the CSN EN ISO 6507-1 standard on a microhardness tester (Mitutoyo HM-220) [ 20 ]. To measure the hardness, a 136° pyramidal diamond indenter creating a square indent was used. The nominal value of load was HV 0.2 (F = 1961 N, 200 g), which acted on the test specimen for 10 s. Due to the thickness of the layer, emphasis was placed on the chosen diagonal of the indenter in order to respect the ISO 6507-1 standard. 3. Res",
+   "standards": [
+    "EN ISO 6507-1",
+    "ISO 6507-1"
+   ]
+  },
+  {
+   "pmcid": "PMC12298085",
+   "title": "Influence of Magnetorheological Finishing on Surface Topography and Functional Performance of Shoulder Joint Cap Surface.",
+   "year": "2025",
+   "text": "ace refinement stages through low-speed operations at decreased magnetic field strength. The surface roughness measurements executed with a Mitutoyo Surftest SJ-400 profilometer (Kawasaki, Japan) indicated a shift from 0.35 µm to 0.03 µm, which resulted in a 91.4% enhancement. The processed surfaces were analyzed through a Vickers hardness tester (Mitutoyo HM-210, Kawasaki, Japan) under a 500 N load and showed a microhardness elevation from HV 210 to HV 260, thus strengthening their wear resistance. A pin-on-disc tribometer evaluated the tribological performance by working under physiologically simulated conditions at 37 °C, which utilized a simulated body fluid as lubricant with a normal load of 10 N at a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12111394",
+   "title": "RETRACTED: Digital twin-driven design and testing of laser shock processed aluminum-graphene composites for spacecraft docking tribology.",
+   "year": "2025",
+   "text": "as performed with the help of a Jeol 2100F microscope at 200 kV HRTEM techniques were employed to study the microstructure of the grain, dislocation, and interfacial profile of the composite. Aluminium - Graphene specimens mechanical characteristics were evaluated by Vickers hardness measurements with the indentation hardness tests were performed (Mitutoyo HM-210) using a load of 100 mN with a dwell time of 10 s. For each sample, five repetitive tests were accomplished. The hardness test was performed on both the surface and the cross-sections followed by pin-on-disc (DUCOM TR-20LE-PHM-400) type wear tests to quantify the samples’ wear and friction coefficients. The tests were conducted using a pin-on-disc",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5820591",
+   "title": "Influence of Cu Content on the Microstructure and Mechanical Properties of Cr-Cu-N Coatings.",
+   "year": "2018",
+   "text": "l with 6 mm diameter was used as a counterpart material. The sliding tests were conducted with a linear speed of 100 mm/s under a load of 2 N at ambient temperature around 24°C and a relative humidity of 37%. The sliding distance was 60 m in each sample. Finally, the toughness of the coatings was evaluated by using Vickers hardness testing system (Mitutoyo HM-220) at 2 N load. 3. Results and Discussion 3.1. Studies on Chemical Composition and Deposition Rate Figure 1 shows the chemical composition analysis of the coatings measured by EPMA. The concentration of oxygen inside the coatings was less than 5 at.% from all the deposited samples, which may be attributed to residual gas in the chamber during deposi",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "EN ISO 6507-1": 1,
+  "ISO 6507-1": 1
+ },
+ "standards_new": [
+  "EN ISO 6507-1",
+  "ISO 6507-1"
+ ],
+ "test_item_hits": {
+  "hardness_vickers": 4,
+  "abrasion": 3,
+  "composition_analysis": 1,
+  "surface_topography": 1
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "object": "mts-acumen",
+ "manufacturer": "mts",
+ "phrases": [
+  "MTS Systems Acumen 1 G2",
+  "MTS Systems Acumen 3",
+  "MTS Systems Acumen 3 A",
+  "MTS Systems Acumen 12",
+  "MTS Systems Acumen 12 A"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"MTS Systems Acumen 1 G2\" OR \"MTS Systems Acumen 3\" OR \"MTS Systems Acumen 3 A\" OR \"MTS Systems Acumen 12\" OR \"MTS Systems Acumen 12 A\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"MTS Systems Acumen 1 G2\" OR \"MTS Systems Acumen 3\" OR \"MTS Systems Acumen 3 A\" OR \"MTS Systems Acumen 12\" OR \"MTS Systems Acumen 12 A\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

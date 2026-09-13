@@ -1,0 +1,32 @@
+{
+ "object": "hitachi-nexta-sta",
+ "manufacturer": "hitachi-high-tech",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 11,
+  "density_porosity": 6,
+  "optical_spectroscopy": 6,
+  "particle_size": 6,
+  "coating_thickness": 4,
+  "electrical_transport": 3,
+  "abrasion": 2,
+  "tga": 2,
+  "thermal_conductivity": 2,
+  "compression": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "halt_hass": 1,
+  "scratch_pencil_hardness": 1,
+  "shear": 1,
+  "tensile": 1,
+  "torsion": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "The Hitachi NEXTA STA is used for assessing decomposition temperature and thermal resistance, and also for the quantitative analysis of components by TGA data.",
+  "In addition, the NEXTA STA is used for DSC testing, as well as Cp testing with DSC data."
+ ]
+}

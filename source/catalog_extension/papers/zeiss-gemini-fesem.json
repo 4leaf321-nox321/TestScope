@@ -1,0 +1,321 @@
+{
+ "object": "zeiss-gemini-fesem",
+ "manufacturer": "zeiss",
+ "phrases": [
+  "ZEISS GEMINI FE-SEM",
+  "ZEISS GEMINI",
+  "ZEISS ULTRA series"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZEISS GEMINI FE-SEM\" OR \"ZEISS GEMINI\" OR \"ZEISS ULTRA series\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZEISS GEMINI FE-SEM\" OR \"ZEISS GEMINI\" OR \"ZEISS ULTRA series\") AND OPEN_ACCESS:y",
+  "count": 2448,
+  "papers": [
+   {
+    "pmcid": "PMC9812791",
+    "doi": "10.1038/s41586-022-05534-y",
+    "title": "Microglia regulate central nervous system myelin growth and integrity.",
+    "journal": "Nature",
+    "year": "2023",
+    "cited": 453,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5476429",
+    "doi": "10.7554/elife.25916",
+    "title": "Enhanced FIB-SEM systems for large-volume 3D imaging.",
+    "journal": "Elife",
+    "year": "2017",
+    "cited": 332,
+    "snippets": 3,
+    "standards_in_paper": [
+     "GBMF3070"
+    ]
+   },
+   {
+    "pmcid": "PMC6109100",
+    "doi": "10.1038/s41467-018-05774-5",
+    "title": "High entropy oxides for reversible energy storage.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 292,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8595410",
+    "doi": "10.1038/s41467-021-26947-9",
+    "title": "Horizontally arranged zinc platelet electrodeposits modulated by fluorinated covalent organic framework film for high-rate and durable aqueous zinc ion batteries.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 276,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6728090",
+    "doi": "10.1021/acsnano.8b09233",
+    "title": "3D-Printed Biodegradable Microswimmer for Theranostic Cargo Delivery and Release.",
+    "journal": "ACS Nano",
+    "year": "2019",
+    "cited": 275,
+    "snippets": 1,
+    "standards_in_paper": [
+     "IEEE 2015"
+    ]
+   },
+   {
+    "pmcid": "PMC6068140",
+    "doi": "10.1038/s41467-018-05462-4",
+    "title": "Facile transformation of imine covalent organic frameworks into ultrastable crystalline porous aromatic frameworks.",
+    "journal": "Nat Commun",
+    "year": "2018",
+    "cited": 254,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC2132941",
+    "doi": "10.1083/jcb.144.4.745",
+    "title": "Activation of G12/G13 results in shape change and Rho/Rho-kinase-mediated myosin light chain phosphorylation in mouse platelets.",
+    "journal": "J Cell Biol",
+    "year": "1999",
+    "cited": 246,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6606750",
+    "doi": "10.1038/s41467-019-10885-8",
+    "title": "Mechanically strong MXene/Kevlar nanofiber composite membranes as high-performance nanofluidic osmotic power generators.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 239,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8938627",
+    "doi": "10.1016/j.redox.2022.102288",
+    "title": "Empagliflozin attenuates cardiac microvascular ischemia/reperfusion through activating the AMPKα1/ULK1/FUNDC1/mitophagy pathway.",
+    "journal": "Redox Biol",
+    "year": "2022",
+    "cited": 207
+   },
+   {
+    "pmcid": "PMC5800405",
+    "doi": "10.1021/acsnano.7b00116",
+    "title": "Dismantling the \"Red Wall\" of Colloidal Perovskites: Highly Luminescent Formamidinium and Formamidinium-Cesium Lead Iodide Nanocrystals.",
+    "journal": "ACS Nano",
+    "year": "2017",
+    "cited": 193
+   },
+   {
+    "pmcid": "PMC7075876",
+    "doi": "10.1038/s41467-020-15141-y",
+    "title": "Synergistic electroreduction of carbon dioxide to carbon monoxide on bimetallic layered conjugated metal-organic frameworks.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 189
+   },
+   {
+    "pmcid": "PMC7531892",
+    "doi": "10.1126/sciadv.aba8811",
+    "title": "Chromatin arranges in chains of mesoscale domains with nanoscale functional topography independent of cohesin.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 182
+   },
+   {
+    "pmcid": "PMC8457667",
+    "doi": "10.1126/sciadv.abj8833",
+    "title": "A nonferrous ferroptosis-like strategy for antioxidant inhibition-synergized nanocatalytic tumor therapeutics.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 168
+   },
+   {
+    "pmcid": "PMC3625890",
+    "doi": "10.1038/srep01658",
+    "title": "The role of filopodia in the recognition of nanotopographies.",
+    "journal": "Sci Rep",
+    "year": "2013",
+    "cited": 168
+   },
+   {
+    "pmcid": "PMC9331171",
+    "doi": "10.1021/acsnano.1c11016",
+    "title": "Down-Regulating Scar Formation by Microneedles Directly <i>via</i> a Mechanical Communication Pathway.",
+    "journal": "ACS Nano",
+    "year": "2022",
+    "cited": 157
+   },
+   {
+    "pmcid": "PMC4686769",
+    "doi": "10.1038/ncomms10052",
+    "title": "Structural diversity in binary superlattices self-assembled from polymer-grafted nanocrystals.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 154
+   },
+   {
+    "pmcid": "PMC6196515",
+    "doi": "10.1073/pnas.1808829115",
+    "title": "Cytoprotective metal-organic frameworks for anaerobic bacteria.",
+    "journal": "Proc Natl Acad Sci U S A",
+    "year": "2018",
+    "cited": 144
+   },
+   {
+    "pmcid": "PMC10033418",
+    "doi": "10.1038/s41586-023-05793-3",
+    "title": "Spatial mapping of mitochondrial networks and bioenergetics in lung cancer.",
+    "journal": "Nature",
+    "year": "2023",
+    "cited": 142
+   },
+   {
+    "pmcid": "PMC10884398",
+    "doi": "10.1038/s41467-024-45619-y",
+    "title": "Ultrasound-activated piezo-hot carriers trigger tandem catalysis coordinating cuproptosis-like bacterial death against implant infections.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 121
+   },
+   {
+    "pmcid": "PMC8807612",
+    "doi": "10.1038/s41422-021-00582-x",
+    "title": "An App knock-in rat model for Alzheimer's disease exhibiting Aβ and tau pathologies, neuronal death and cognitive impairments.",
+    "journal": "Cell Res",
+    "year": "2022",
+    "cited": 112
+   },
+   {
+    "pmcid": "PMC3265365",
+    "doi": "10.1038/ncomms1441",
+    "title": "Measuring single-nanoparticle wetting properties by freeze-fracture shadow-casting cryo-scanning electron microscopy.",
+    "journal": "Nat Commun",
+    "year": "2011",
+    "cited": 110
+   },
+   {
+    "pmcid": "PMC2782796",
+    "doi": "10.1093/mp/ssp093",
+    "title": "Blocking the metabolism of starch breakdown products in Arabidopsis leaves triggers chloroplast degradation.",
+    "journal": "Mol Plant",
+    "year": "2009",
+    "cited": 110
+   },
+   {
+    "pmcid": "PMC9271037",
+    "doi": "10.1038/s41467-022-31740-3",
+    "title": "Programmable CRISPR-Cas9 microneedle patch for long-term capture and real-time monitoring of universal cell-free DNA.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 96
+   },
+   {
+    "pmcid": "PMC7363915",
+    "doi": "10.1038/s41467-020-17373-4",
+    "title": "Ion sieving by a two-dimensional Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> alginate lamellar membrane with stable interlayer spacing.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 96
+   },
+   {
+    "pmcid": "PMC4935965",
+    "doi": "10.1038/ncomms12012",
+    "title": "Mechanistic insights into chemical and photochemical transformations of bismuth vanadate photoanodes.",
+    "journal": "Nat Commun",
+    "year": "2016",
+    "cited": 95
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9812791",
+   "title": "Microglia regulate central nervous system myelin growth and integrity.",
+   "year": "2023",
+   "text": "in the 70% acetone step for 60 min and embedded in araldite resin. For tissue from unaffected individuals, ultrathin sections were stained with uranyl acetate and lead citrate and imaged with a Zeiss P902 electron microscope. For ALSP tissue, ultrathin sections with virtual absence of limiting artefacts were prepared and entirely digitized using a Zeiss Gemini 300 scanning electron microscope with a scanning transmission electron microscopy. In brief, we used 29 kV acceleration voltage, 5 nm pixel size and 1.5 µs beam dwell time for digitization and Fiji/TrakEM2 for stitching to allow for in-depth analysis with QuPath 0.3.0. Statistics and reproducibility All manual cell counts were performed in a blind",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5476429",
+   "title": "Enhanced FIB-SEM systems for large-volume 3D imaging.",
+   "year": "2017",
+   "text": "n be quantitatively monitored and compared. SEM artifact reduction The detected electrons include both energetic backscattered electrons and lower energy but more numerous secondary electrons. Because the backscattered detector ( Figure 11a ) provides clean and excellent material contrast, it is the de facto choice for FIB-SEM applications. In the Zeiss Gemini SEM column ( Weimer and Drexel, 2002 ), each signal can be detected separately with an EsB and an InLens detector. A larger solid angle of the secondary electrons can be collected by the InLens detector, allowing faster imaging. Unfortunately, the secondary electrons contain new noise terms and artifacts arising from charging, topography, burn mar",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5476429",
+   "title": "Enhanced FIB-SEM systems for large-volume 3D imaging.",
+   "year": "2017",
+   "text": "strates the changes in SNR as a function of sample bias voltage. In addition, it serves as an experimental reference for Monte Carlo simulations in the following section. We conclude that positive specimen bias provides a simple and effective alternative to generate strong EsB-like material contrast images using the built-in InLens detector in the Zeiss Gemini platform. The resulting ‘artifact-free’ images have sufficient contrast and SNR for high-quality automatic segmentation of neural tissue. With this approach, we were able to boost the throughput by a factor of 10 or more over EsB detection alone. However, when the steady state FIB-SEM imaging generated only limited and tolerable artifacts (e.g. st",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5476429",
+   "title": "Enhanced FIB-SEM systems for large-volume 3D imaging.",
+   "year": "2017",
+   "text": "ited for FIB-SEM. ( a ) Electron flight simulation (using SIMION software package) showing paths of 1.1 keV (blue), 600 eV (green), and 50 eV (red) electrons emerging from an unbiased sample surface at a range of angles (−90 o to 90 o in 5 o increments). After emerging from the sample surface, electrons are attracted by the +8 kV liner tube of the Zeiss Gemini column. ( Kumagai and Sekiguchi, 2009 ) Inset shows the 3D CAD model that this simulation was based on. (Only electrostatic elements were modeled, not the magnetic field of the objective lens.) The lowest energy electrons (red) are all funneled up the column and thus potentially impact the InLens detector of the Gemini column. Here, we assume that",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6109100",
+   "title": "High entropy oxides for reversible energy storage.",
+   "year": "2018",
+   "text": "a Titan 80–300 electron microscope (FEI), equipped with a CEOS image spherical aberration corrector, high angle annular dark field (HAADF) scanning transmission electron microscopy (STEM) detector (Fischione model 3000) and a Tridiem Gatan image filter (GIF). The microscope was operated at an accelerating voltage of 300 kV. SEM was performed on a ZEISS Gemini Leo 1530. Galvanostatic charge/discharge measurements were performed at room temperature and at various specific currents of 50–3000 mA g −1 in the voltage range between 0.01 and 3.0 V vs. Li + /Li using a MACCOR battery cycler. Data availability The data used for this study are available from the corresponding authors upon request. Electronic sup",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8595410",
+   "title": "Horizontally arranged zinc platelet electrodeposits modulated by fluorinated covalent organic framework film for high-rate and durable aqueous zinc ion batteries.",
+   "year": "2021",
+   "text": "spectrometer. N 2 adsorption–desorption isotherms are measured at 77 K on a Micromeritics TriStar II 3020 volumetric adsorption analyzer after degassing in a vacuum at 120 °C overnight. Atomic force microscope (AFM) is performed on a NT-MDT NTEGRA Spectra II microscope. Field-emission scanning electron microscopy (FESEM) images are acquired from a Zeiss Gemini SEM500, equipped with an Aztec X-Max Extreme energy dispersive spectrometer (EDS). High-resolution transmission electron microscope (HRTEM) images are collected from a JEM-2010F transmission electron microscope. XPS measurements are carried out with a Thermo Scientific K-Alpha+ spectrometer under vacuum. Nano-indentation surface hardness measureme",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6728090",
+   "title": "3D-Printed Biodegradable Microswimmer for Theranostic Cargo Delivery and Release.",
+   "year": "2019",
+   "text": "canning speeds were optimized for printing as 23.5 mW and 3.0 × 10 5 μm s –1 , respectively ( Supporting Information Figure S10). The overall microprinting rate was measured to be 10 s for a single microrobot. DIC images were taken with Nikon Eclipse Ti-E inverted microscope. Energy-dispersive X-ray spectroscopy (EDS) measurements were made with a Zeiss Gemini 500 scanning electron microscope equipped with Quantax EDS (Bruker). Microswimmers printed on glass substrate, and kept at 4 °C refrigerator overnight in water, were equilibrated to room temperature prior to recombinant human MMP-2 (Sigma-Aldrich) addition at various concentrations ( Figure 3 B and Figure 4 A). Time-lapse images were taken using a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6068140",
+   "title": "Facile transformation of imine covalent organic frameworks into ultrastable crystalline porous aromatic frameworks.",
+   "year": "2018",
+   "text": ") at 4 k × 4 k resolution) with a final image output rate of 40 fps at 4 k × 4 k resolution. The HRTEM image of MF-1a was acquired with an FEI TitanX 60 300 microscope at 200 kV. The COF sample was sonicated in toluene with a sonication probe for 15 min and drop-casted onto a copper grid (Lacey C only, 300 mesh Cu). SEM images were obtained with a Zeiss Gemini Ultra-55 Analytical Field Emission Scanning Electron Microscope operated at 15 kV using an in-lens detector. Water contact angle measurements were carried out using a Kruss easy drop optical contact angle meter (Model: FM41) under ambient conditions. Crystal structure modeling Since the framework structures of MF-1a-e are quite similar, and those",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC2132941",
+   "title": "Activation of G12/G13 results in shape change and Rho/Rho-kinase-mediated myosin light chain phosphorylation in mouse platelets.",
+   "year": "1999",
+   "text": "red onto polycarbonate filters (0.45 μm; Nucleopore) which had been preincubated with 10 μg/ml polylysine. Filters were washed three times with 0.9% NaCl and dehydrated stepwise in aqueous ethanol. After exchange of ethanol for hexadimethyldisilazane, samples were air-dried and sputtered with gold. Scanning electron microscopy was carried out on a Zeiss -Gemini instrument using a beam voltage of 5 kV. MLC Phosphorylation MLC phosphorylation was determined as described ( Daniel and Sellers, 1992 ). Isolated platelets (1–2 × 10 7 platelets per tube) were incubated in 30 μl Hepes-Tyrode buffer at 37°C as indicated. Reactions were stopped by addition of 30 μl of 40% (vol/vol) perchloric acid. Precipitated sa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6606750",
+   "title": "Mechanically strong MXene/Kevlar nanofiber composite membranes as high-performance nanofluidic osmotic power generators.",
+   "year": "2019",
+   "text": "ent. The effective salinity of the natural water was calibrated with a standard curve obtained by measuring the conductivity (with a commercial conductivity meter) of a series of standard NaCl with known concentration. The testing solutions were all prepared using ultrapure water (18.2 MΩ cm). Characterization The SEM image was captured using SEM (Zeiss Gemini 500). The TEM image was captured using JEM 2100F field emission TEM (JEOL, Tokyo, Japan). The XPS was performed in ESCALAB 250Xi. The mechanical characterization of the composite membrane was conducted on a tensile-compressive tester (M5-2) with a loading rate of 1 mm/min. The membrane samples were cut into strips with a width of 2 mm and length o",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 21,
+  "contact_angle": 2,
+  "tensile": 1,
+  "vibration_sine_random": 1
+ }
+}

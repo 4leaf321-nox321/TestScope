@@ -1,0 +1,42 @@
+{
+ "object": "audio-precision-apx555",
+ "manufacturer": "audio-precision",
+ "pages": 11,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC60268": 1
+ },
+ "standards_new": [
+  "IEC60268"
+ ],
+ "test_item_hits": {
+  "vibration_sine_random": 24,
+  "electrical_transport": 13,
+  "microscopy": 9,
+  "audio_performance": 3,
+  "burst_pressure": 3,
+  "density_porosity": 2,
+  "compression": 1,
+  "halt_hass": 1
+ },
+ "application_sentences": [
+  "It also includes a ground-breaking signal-based triggering that eliminates the need for a pilot tone in open-loop test applications, making it ideal for test of “smart” audio devices.",
+  "In addition to standard audio measurements, APx provides variable DC voltage, variable sample rate, and PSR (power supply rejection) measurements for testing devices’ full operating parameters.",
+  "Programmable Serial I/O (option) The Programmable Serial I/O (PSIO) module is for testing digital audio interfaces and provides low logic voltages, improved signal integrity, and a re-engineered serial interface for high-speed, low-power digital audio devices.",
+  "The APx ADIO module enables the generation of advanced impairments for sophisticated test of devices via AES/SPDIF/TOSLINK.",
+  "Electroacoustic Production Test (SW-SPK-PT) The SW-SPK-PT option enables high-speed production test of electroacoustic devices, providing key loudspeaker measurements in a single one-second sweep.",
+  "Download Now › APx Programmable Serial I/O Datasheet The Programmable Serial I/O (PSIO) module is for testing digital audio interfaces and provides low logic voltages, improved signal integrity, and a re-engineered serial interface for high-speed, low-power digital audio devices.",
+  "</a> Block diagram illustrating the APx555 B Series audio analyzer signal connections to test the analog inputs and receive digital outputs of a smart audio codec.",
+  "He had less than one month to test Audio Precision's newest analyzers, and in this article he provides readers with a hint of the new expanded capabilities — both of the APx555 B Series hardware and the new APx500 5.",
+  "Note that for testing USB DACs, we don't use the AP's generator."
+ ],
+ "standards_nearby": [
+  "ANSI S12.54",
+  "IEC 60118-0",
+  "IEC126",
+  "IEC60118",
+  "IEC60118-7",
+  "ISO 17025",
+  "ISO 3744"
+ ]
+}

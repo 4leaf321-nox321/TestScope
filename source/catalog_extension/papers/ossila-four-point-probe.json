@@ -1,0 +1,23 @@
+{
+ "object": "ossila-four-point-probe",
+ "manufacturer": "ossila",
+ "phrases": [
+  "Ossila Four-Point Probe T2001A",
+  "Ossila T2001B"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Ossila Four-Point Probe T2001A\" OR \"Ossila T2001B\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Ossila Four-Point Probe T2001A\" OR \"Ossila T2001B\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

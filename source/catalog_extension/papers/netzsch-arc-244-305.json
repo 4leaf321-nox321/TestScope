@@ -1,0 +1,66 @@
+{
+ "object": "netzsch-arc-244-305",
+ "manufacturer": "netzsch",
+ "phrases": [
+  "NETZSCH ARC 244",
+  "NETZSCH ARC",
+  "NETZSCH ARC 305"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"NETZSCH ARC 244\" OR \"NETZSCH ARC\" OR \"NETZSCH ARC 305\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"NETZSCH ARC 244\" OR \"NETZSCH ARC\" OR \"NETZSCH ARC 305\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC10116623",
+    "doi": "10.1021/acsomega.3c00606",
+    "title": "Preparation of Spherical HMX/DMF Solvates, Spherical HMX Particles, and HMX@NTO Composites: A Way to Reduce the Sensitivity of HMX.",
+    "journal": "ACS Omega",
+    "year": "2023",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC13186450",
+    "doi": "10.1021/acs.oprd.6c00069",
+    "title": "Process Safety Assessment of the Iron-Catalyzed 1,2-&lt;i&gt;cis&lt;/i&gt;-Selective Glycal Aminoglycosylation.",
+    "journal": "Org Process Res Dev",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 13631-4",
+     "GM134926"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10116623",
+   "title": "Preparation of Spherical HMX/DMF Solvates, Spherical HMX Particles, and HMX@NTO Composites: A Way to Reduce the Sensitivity of HMX.",
+   "year": "2023",
+   "text": "e of HMX/DMF solvates. The crystal morphology of the HMX/DMF solvate was characterized by optical microscopy. The micro-surface topographies of HMX/DMF solvates, HMX particles, and HMX@NTO composites were characterized by scanning electron microscopy (SEM, Zeiss Sigma 300). Differential scanning calorimetry (DSC) and accelerating rate calorimetry (ARC, NETZSCH ARC 254) were used to study the non-isothermal decomposition property and adiabatic decomposition property of HMX/DMF solvates, HMX particles, and HMX@NTO composites. The impact sensitivity and friction sensitivity of HMX/DMF solvates, HMX particles, and HMX@NTO composites were measured to evaluate their mechanical safeties according to GJB 772A (",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13186450",
+   "title": "Process Safety Assessment of the Iron-Catalyzed 1,2-&lt;i&gt;cis&lt;/i&gt;-Selective Glycal Aminoglycosylation.",
+   "year": "2026",
+   "text": "dium pressure PerkinElmer stainless steel crucibles under an air atmosphere. All measurements were carried out at a heating rate of 5 K/min. To avoid the influence of internal pressure on degradation of the catalyst, DSC experiments were carried out utilizing a pierced pan. Accelerating Rate Calorimetry The ARC experiments were carried out using a NETZSCH ARC 244 instrument. Approximately, 0.5 g of compound 2a or 0.7 g of compound 2b were placed in Thermal Hazard Technology Hastelloy C 0.025″ wall test-cell (Φ factors of the tests were of 6.9 and 5.0, respectively). The chosen Φ factors gave us the best results in terms of kinetic factors to compare the degradation pathways of compounds 2a and 2b . The sam",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "dsc": 1,
+  "microscopy": 1
+ }
+}

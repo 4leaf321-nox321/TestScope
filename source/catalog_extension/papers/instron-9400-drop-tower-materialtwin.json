@@ -1,0 +1,43 @@
+{
+ "object": "instron-9400-drop-tower-materialtwin",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron 9400 CEAST",
+  "Instron 9400",
+  "Instron CEAST 9300"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron 9400 CEAST\" OR \"Instron 9400\" OR \"Instron CEAST 9300\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron 9400 CEAST\" OR \"Instron 9400\" OR \"Instron CEAST 9300\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC10470020",
+    "doi": "10.7759/cureus.42798",
+    "title": "Fracture Resistance of Endodontically Treated Teeth Restored With Short Fiber Reinforced Composite and a Low Viscosity Bulk Fill Composite in Class II Mesial-Occlusal-Distal Access Cavities: An Ex-vivo Study.",
+    "journal": "Cureus",
+    "year": "2023",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10470020",
+   "title": "Fracture Resistance of Endodontically Treated Teeth Restored With Short Fiber Reinforced Composite and a Low Viscosity Bulk Fill Composite in Class II Mesial-Occlusal-Distal Access Cavities: An Ex-vivo Study.",
+   "year": "2023",
+   "text": "7 degrees Celsius [ 10 ]. To simulate chewing forces over approximately one year, cyclic compressive loads ranging from 15 to 30 N were applied on the palatal incline of the buccal cusp. This was achieved using a 2.5 mm steel ball at a cross-head speed of 0.5 mm/min. A total of 250,000 cycles were completed using a Universal Testing Machine (UTM) (Instron 9400, USA), simulating nearly one year of chewing [ 11 ]. Following the cyclic loading, a steel sphere with a width of 6 mm was used to apply compressive force on the buccal and palatal cusps, as well as the surface of the restoration of each test specimen. The force was continuously applied until the specimen was fractured, and the fracture resistance",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

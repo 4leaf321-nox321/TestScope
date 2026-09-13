@@ -1,0 +1,26 @@
+{
+ "object": "imv-i-series-shaker",
+ "manufacturer": "imv",
+ "phrases": [
+  "IMV i220",
+  "IMV EM1AM i220",
+  "IMV SA1AM",
+  "IMV i260",
+  "IMV SA7M · EM2601"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"IMV i220\" OR \"IMV EM1AM i220\" OR \"IMV SA1AM\" OR \"IMV i260\" OR \"IMV SA7M · EM2601\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"IMV i220\" OR \"IMV EM1AM i220\" OR \"IMV SA1AM\" OR \"IMV i260\" OR \"IMV SA7M · EM2601\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

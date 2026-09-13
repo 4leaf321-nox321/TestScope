@@ -1,0 +1,27 @@
+{
+ "object": "q-lab-q-fog",
+ "manufacturer": "q-lab",
+ "phrases": [
+  "Q-Lab Q-FOG",
+  "Q-Lab Q-FOG SSP600",
+  "Q-Lab SSP1100",
+  "Q-Lab Q-FOG CCT600",
+  "Q-Lab CCT1100",
+  "Q-Lab Q-FOG CRH600"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Q-Lab Q-FOG\" OR \"Q-Lab Q-FOG SSP600\" OR \"Q-Lab SSP1100\" OR \"Q-Lab Q-FOG CCT600\" OR \"Q-Lab CCT1100\" OR \"Q-Lab Q-FOG CRH600\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Q-Lab Q-FOG\" OR \"Q-Lab Q-FOG SSP600\" OR \"Q-Lab SSP1100\" OR \"Q-Lab Q-FOG CCT600\" OR \"Q-Lab CCT1100\" OR \"Q-Lab Q-FOG CRH600\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

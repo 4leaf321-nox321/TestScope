@@ -1,0 +1,25 @@
+{
+ "object": "tinius-olsen-torsion-testers",
+ "manufacturer": "tinius-olsen",
+ "phrases": [
+  "Tinius Olsen 1,000 N·m",
+  "Tinius Olsen 6,000 N·m",
+  "Tinius Olsen 12,000 N·m",
+  "Tinius Olsen 30,000 N·m"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Tinius Olsen 1,000 N·m\" OR \"Tinius Olsen 6,000 N·m\" OR \"Tinius Olsen 12,000 N·m\" OR \"Tinius Olsen 30,000 N·m\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Tinius Olsen 1,000 N·m\" OR \"Tinius Olsen 6,000 N·m\" OR \"Tinius Olsen 12,000 N·m\" OR \"Tinius Olsen 30,000 N·m\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

@@ -1,0 +1,310 @@
+{
+ "object": "woollam-rc2",
+ "manufacturer": "ja-woollam",
+ "phrases": [
+  "J.A. Woollam RC2"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"J.A. Woollam RC2\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"J.A. Woollam RC2\") AND OPEN_ACCESS:y",
+  "count": 40,
+  "papers": [
+   {
+    "pmcid": "PMC10081843",
+    "doi": "10.1126/sciadv.adg1837",
+    "title": "Ultrathin, soft, radiative cooling interfaces for advanced thermal management in skin electronics.",
+    "journal": "Sci Adv",
+    "year": "2023",
+    "cited": 70,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7708482",
+    "doi": "10.1038/s41467-020-19951-y",
+    "title": "Natural optical activity as the origin of the large chiroptical properties in π-conjugated polymer thin films.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 68,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8322170",
+    "doi": "10.1038/s41467-021-24931-x",
+    "title": "Large-area patterning of full-color quantum dot arrays beyond 1000 pixels per inch by selective electrophoretic deposition.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 61,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5905989",
+    "doi": "10.1021/acs.macromol.7b02288",
+    "title": "Photonic Resins: Designing Optical Appearance via Block Copolymer Self-Assembly.",
+    "journal": "Macromolecules",
+    "year": "2018",
+    "cited": 33,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11045824",
+    "doi": "10.1038/s41467-024-47988-w",
+    "title": "Control of polymers' amorphous-crystalline transition enables miniaturization and multifunctional integration for hydrogel bioelectronics.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 25,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7417588",
+    "doi": "10.1038/s41467-020-17234-0",
+    "title": "Electronic correlations and flattened band in magnetic Weyl semimetal candidate Co<sub>3</sub>Sn<sub>2</sub>S<sub>2</sub>.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 22,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10827790",
+    "doi": "10.1038/s41467-024-45047-y",
+    "title": "Mask-inspired moisture-transmitting and durable thermochromic perovskite smart windows.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 21,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D1003"
+    ]
+   },
+   {
+    "pmcid": "PMC11104293",
+    "doi": "10.1515/nanoph-2023-0640",
+    "title": "Direct electron beam patterning of electro-optically active PEDOT:PSS.",
+    "journal": "Nanophotonics",
+    "year": "2024",
+    "cited": 16,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9475557",
+    "doi": "10.1002/advs.202202150",
+    "title": "High-Performance Semitransparent Organic Solar Cells: From Competing Indexes of Transparency and Efficiency Perspectives.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC11724960",
+    "doi": "10.1038/s41467-025-55924-9",
+    "title": "The art and science of translucent color organic solar cells.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC8777471",
+    "doi": "10.34133/2022/9820585",
+    "title": "Cross-Scale Synthesis of Organic High-<i>k</i> Semiconductors Based on Spiro-Gridized Nanopolymers.",
+    "journal": "Research (Wash D C)",
+    "year": "2022",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC10019454",
+    "doi": "10.1021/acs.macromol.2c02532",
+    "title": "High Refractive Index Polymer Thin Films by Charge-Transfer Complexation.",
+    "journal": "Macromolecules",
+    "year": "2023",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC9979650",
+    "doi": "10.1021/acsnano.2c04786",
+    "title": "Reducing Nonradiative Losses in Perovskite LEDs through Atomic Layer Deposition of Al<sub>2</sub>O<sub>3</sub> on the Hole-Injection Contact.",
+    "journal": "ACS Nano",
+    "year": "2023",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC11041683",
+    "doi": "10.1038/s41699-023-00376-2",
+    "title": "Exfoliation procedure-dependent optical properties of solution deposited MoS<sub>2</sub> films.",
+    "journal": "NPJ 2D Mater Appl",
+    "year": "2023",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC10722567",
+    "doi": "10.1021/acspolymersau.3c00028",
+    "title": "Surface-Initiated PET-RAFT via the Z-Group Approach.",
+    "journal": "ACS Polym Au",
+    "year": "2023",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC6804217",
+    "doi": "10.3390/ma12193147",
+    "title": "Optical Dispersions of Bloch Surface Waves and Surface Plasmon Polaritons: Towards Advanced Biosensors.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC11883732",
+    "doi": "10.1021/acs.analchem.4c05037",
+    "title": "Solid-State Nanopore Sensors: Analyte Quantification by Event Frequency Analysis at High Voltages.",
+    "journal": "Anal Chem",
+    "year": "2025",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC12078695",
+    "doi": "10.1038/s41467-025-59600-w",
+    "title": "A Programmable Wafer-scale Chiroptical Heterostructure of Twisted Aligned Carbon Nanotubes and Phase Change Materials.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC10597562",
+    "doi": "10.1039/d3na00512g",
+    "title": "Improved epitaxial growth and multiferroic properties of Bi<sub>3</sub>Fe<sub>2</sub>Mn<sub>2</sub>O<sub><i>x</i></sub> using CeO<sub>2</sub> re-seeding layers.",
+    "journal": "Nanoscale Adv",
+    "year": "2023",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC7304819",
+    "doi": "10.1021/acsami.0c00825",
+    "title": "Critical Coupling of Visible Light Extends Hot-Electron Lifetimes for H<sub>2</sub>O<sub>2</sub> Synthesis.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2020",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC12093368",
+    "doi": "10.1021/acsabm.5c00146",
+    "title": "Enzymatic Polymer Brush Interfaces for Electrochemical Sensing in Biofluids.",
+    "journal": "ACS Appl Bio Mater",
+    "year": "2025",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC9417584",
+    "doi": "10.1039/d0na00405g",
+    "title": "Integration of highly anisotropic multiferroic BaTiO<sub>3</sub>-Fe nanocomposite thin films on Si towards device applications.",
+    "journal": "Nanoscale Adv",
+    "year": "2020",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC4404430",
+    "doi": "10.1186/s11671-015-0854-y",
+    "title": "Spectroellipsometric characterization and modeling of plasmonic diamond-like carbon nanocomposite films with embedded Ag nanoparticles.",
+    "journal": "Nanoscale Res Lett",
+    "year": "2015",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC10324389",
+    "doi": "10.1021/acs.langmuir.3c00981",
+    "title": "Spontaneous Co-Assembly of Cellulose Nanocrystals and TiO<sub>2</sub> Nanorods Followed by Calcination to Form Cholesteric Inorganic Nanostructures.",
+    "journal": "Langmuir",
+    "year": "2023",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC12044420",
+    "doi": "10.1039/d5na00207a",
+    "title": "Morphology and property tuning in ZnO-Ni hybrid metamaterials in vertically aligned nanocomposite (VAN) form.",
+    "journal": "Nanoscale Adv",
+    "year": "2025",
+    "cited": 2
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10081843",
+   "title": "Ultrathin, soft, radiative cooling interfaces for advanced thermal management in skin electronics.",
+   "year": "2023",
+   "text": "ume fractions. The simulated region was limited to 12 μm by 40 μm due to the component’s limitation for a single COMSOL model. The electric field distribution within the interfaces can be obtained using a periodic model consisting of the polymer matrix and functional fillers. The refractive index for polymer matrix was measured by an ellipsometer (J.A. Woollam RC2). The refractive index for TiO 2 and SiO 2 was from ( 51 ). The refractive index for fluorescent pigment was taken as 1.7 (i.e., the refractive index of SrAl 2 O 4 ) since minimal rare earth elements were doped. As shown in fig. S36, all functional fillers were randomly distributed within the matrix. Periodic boundary conditions were applied on th",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7708482",
+   "title": "Natural optical activity as the origin of the large chiroptical properties in π-conjugated polymer thin films.",
+   "year": "2020",
+   "text": "margin}{-69pt} \\begin{document}$$CD_{mdeg} = CD_{\\Delta A} \\times 32982$$\\end{document} C D m d e g = C D Δ A × 32982 . Absorption measurements were acquired using an Agilent Technology Cary 300 UV–vis spectrometer. Film thicknesses were measured using a DektakXT surface profilometer. Mueller Matrix Spectroscopic Ellipsometry was performed using a J.A. Woollam RC2 spectroscopic ellipsometer (model DI). This instrument collects 1091 data points from 193 nm to 1690 nm using a silicon CCD and InGaAs detector array for wavelengths shorter and longer than 1000 nm, respectively. Wavelength spacing is 1 nm and 2.5 nm on the Si and InGaAs detectors, respectively. Data are collected using a dual-rotating compensator",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8322170",
+   "title": "Large-area patterning of full-color quantum dot arrays beyond 1000 pixels per inch by selective electrophoretic deposition.",
+   "year": "2021",
+   "text": "e microscopy images were acquired using an inverted fluorescence microscope (Nikon, Ti-U) under the excitation of a mercury lamp (330−380 nm). The electrophoretic mobility and zeta potential of the QD solution were measured by Brookhaven ZetaPALS zeta potentials analyzer. The refractive index of QD films was measured by spectroscopic ellipsometry (J.A. Woollam RC2). The time-resolved PL spectra were recorded using a fluorescence lifetime spectrometer (Fluo Time 300). Photoluminescence quantum yields (PLQYs) were measured by using an integrating sphere on a HAMAMATSU absolute PL quantum yield spectrometer C11347 . Excitation and fluorescence spectra were registered at room temperature on a Lumina fluorescenc",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5905989",
+   "title": "Photonic Resins: Designing Optical Appearance via Block Copolymer Self-Assembly.",
+   "year": "2018",
+   "text": "LAMBDA 1050 UV/vis/NIR spectrometer, equipped with a 150 mm integrating sphere diffuse reflectance accessory. All measurements were referenced to a Spectralon reflectance standard with a 99% reflection. The light beam size was 7 mm in width and 15 mm in length. Variable Angle Spectroscopic Ellipsometry (VASE) VASE measurements were performed on a J.A. Woollam RC2-DI ellipsometry with variable angles at 55°, 60°, 65°, and 70°. The refractive index was obtained by using a Cauchy model for data fitting. Angular Distribution of Scattered/Transmitted Light The angular distribution was determined using a goniometer setup. The samples were illuminated using a xenon lamp Ocean Optics HPX-2000 coupled into an optic",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11045824",
+   "title": "Control of polymers' amorphous-crystalline transition enables miniaturization and multifunctional integration for hydrogel bioelectronics.",
+   "year": "2024",
+   "text": "PVA solutions used for the membranes were prepared using the same method as discussed above. After spin-coating, the PVA membrane-coated Si wafers were allowed to cross-link and dry in the air for at least 12 h and then annealed at 100 °C for 20 min. The refractive index (RI) of the PVA membrane-coated Si wafers was measured using an ellipsometer (J.A. Woollam RC2) in the range of 400–700 nm. The measurements were carried out on the membranes in their desiccated states. A series of COMPACT hydrogel membranes (0–4 wt. % TEOS) were prepared using a similar procedure as described above but using a rectangular mold (21.5 × 21.5 × 1 mm). The membranes were demolded after cross-linking, dried at room temperature",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7417588",
+   "title": "Electronic correlations and flattened band in magnetic Weyl semimetal candidate Co<sub>3</sub>Sn<sub>2</sub>S<sub>2</sub>.",
+   "year": "2020",
+   "text": "ally black cone locating at the cold finger of a helium flow cryostat. A freshly-cleaved ab -plane of the Co 3 Sn 2 S 2 single crystal was obtained just before pumping the cryostat. An in situ gold and aluminum overcoating technique was employed to get the reflectance spectra R ( ω ). The optical reflectance data are highly reproducible. Moreover, J.A. Woollam RC2 spectroscopic ellipsometer was used to get the optical constants of the Co 3 Sn 2 S 2 single crystals in the energy range from 500 to 6000 meV, which are consistent with the optical constants extracted from the measured reflectance spectra in this energy range. Single-crystal growth The Co 3 Sn 2 S 2 single crystals were grown by a self-flux metho",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10827790",
+   "title": "Mask-inspired moisture-transmitting and durable thermochromic perovskite smart windows.",
+   "year": "2024",
+   "text": "was measured to judge the stability of the T-Perovskite. For the Pb leakage test, the Pb concentration in the contaminated water was detected by an ICP–MS instrument (Perkin Elmer 2000). FDTD simulations To conduct the FDTD simulation, the refractive indices of PHPS and H-MAPbI 3-x Cl x in the cold and hot states were measured by an ellipsometer (J.A. Woollam RC2). In the FDTD simulation (Lumerical software), to obtain the reflection and transmission spectra of the window in the wavelength range of 0.3–2.5 µm, a plane wave was placed on top as the light source. The rough H-MAPbI 3-x Cl x and PHPS layers were created based on the roughness measured by 3D surface metrology. The boundary conditions along the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11104293",
+   "title": "Direct electron beam patterning of electro-optically active PEDOT:PSS.",
+   "year": "2024",
+   "text": "1 Hz to 1 MHz with a 1 mV variation around the open circuit voltage (OCV) of the material. Cyclic voltammetry was carried out by recording the measured current against applied voltage (vs. Ag/AgCl), cycled at a scan rate of 50 mV/s. 4.6. Transmittance measurements The transmittance measurement for the UV–vis range (380–800 nm) was performed in the J.A. Woollam RC2-UI vertical ellipsometer at normal incidence on the sample. For this measurement, the conducting polymer was spin-coated onto a glass substrate resulting in a 90 nm film thickness. For the EBL treated sample a 7 mm × 7 mm area was prepared using EBL. As reference, an uncoated glass substrate was utilized in both measurements. For the FTIR measurem",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11104293",
+   "title": "Direct electron beam patterning of electro-optically active PEDOT:PSS.",
+   "year": "2024",
+   "text": "conducting polymer was spin-coated onto a double-side polished silicon wafer. Here, the film thickness was again ∼90 nm. For the FTIR measurement, a 100 µm × 100 µm area was exposed to the electron-beam. As reference, the bare silicon substrate was utilized. 4.7. Variable angle spectroscopic ellipsometry The VASE measurement was performed using a J.A. Woollam RC2-UI vertical ellipsometer. For the pristine PEDOT:PSS, the sample was spin-coated onto a glass substrate and the angle-of-incidence (AOI) was varied from 60° to 80° in steps of 5°. To characterize the EBL-exposed material, PEDOT:PSS was patterned into a 7 mm × 7 mm square. Measurements were carried out at two AOIs of 60° and 65°. A measurement with",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "optical_spectroscopy": 3,
+  "particle_size": 2,
+  "microscopy": 1,
+  "surface_topography": 1
+ }
+}

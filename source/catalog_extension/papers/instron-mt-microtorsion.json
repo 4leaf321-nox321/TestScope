@@ -1,0 +1,24 @@
+{
+ "object": "instron-mt-microtorsion",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron MT1 MT2",
+  "Instron MT1",
+  "Instron MT2"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron MT1 MT2\" OR \"Instron MT1\" OR \"Instron MT2\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron MT1 MT2\" OR \"Instron MT1\" OR \"Instron MT2\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

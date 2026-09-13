@@ -1,0 +1,33 @@
+{
+ "object": "zwickroell-arbm120-rotary-bending",
+ "manufacturer": "zwickroell",
+ "pages": 2,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "DIN 50100": 3,
+  "ISO 12106": 2,
+  "ASTM E606": 2,
+  "ASTM E399": 2,
+  "ASTM E647": 2,
+  "ASTM E466": 2,
+  "ISO 6892": 1
+ },
+ "standards_new": [
+  "ASTM E399",
+  "ASTM E466",
+  "ASTM E606",
+  "ASTM E647",
+  "DIN 50100",
+  "ISO 12106",
+  "ISO 6892"
+ ],
+ "test_item_hits": {
+  "tensile": 6,
+  "compression": 5,
+  "flexure": 3,
+  "shear": 1
+ },
+ "application_sentences": [
+  "They are ideal for test arrangements that require temperature chambers or furnaces to be installed in the test area."
+ ]
+}

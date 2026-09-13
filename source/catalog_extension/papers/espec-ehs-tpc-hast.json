@@ -1,0 +1,138 @@
+{
+ "object": "espec-ehs-tpc-hast",
+ "manufacturer": "espec",
+ "phrases": [
+  "ESPEC EHS TPC",
+  "ESPEC EHS"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ESPEC EHS TPC\" OR \"ESPEC EHS\"",
+  "count": 7,
+  "works": [
+   {
+    "id": "https://openalex.org/W2271382849",
+    "doi": "https://doi.org/10.7567/jjap.55.022302",
+    "title": "Acceleration of degradation by highly accelerated stress test and air-included highly accelerated stress test in crystalline silicon photovoltaic modules",
+    "year": 2016,
+    "cited": 17,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Photovoltaic System Optimization Techniques",
+     "Solar Thermal and Photovoltaic Systems",
+     "Silicon and Solar Cell Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.7567/JJAP.55.022302/pdf",
+    "abstract": "Abstract We examined the effects of hyper-hygrothermal stresses with or without air on the degradation of crystalline silicon (c-Si) photovoltaic (PV) modules, to shorten the required duration of a conventional hygrothermal-stress test [i.e., the “damp heat (DH) stress test”, which is conducted at 85 °C/85% relative humidity for 1,000 h]. Interestingly, the encapsulant within a PV module becomes discolored under the air-included hygrothermal conditions achieved using DH stress test equipment and an air-included highly accelerated stress test (air-HAST) apparatus, but not under the air-excluded hygrothermal conditions realized using a highly accelerated stress test (HAST) machine. In contrast, the reduction in the output power of the PV module is accelerated irrespective of air inclusion in hyper-hygrothermal test atmosphere. From these findings, we conclude that the required duration of the DH stress test will at least be significantly shortened using air-HAST, but not HAST."
+   },
+   {
+    "id": "https://openalex.org/W4387877656",
+    "doi": "https://doi.org/10.1002/adfm.202309064",
+    "title": "Smart Slides for Optical Monitoring of Cellular Processes",
+    "year": 2023,
+    "cited": 15,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Carbon Nanotubes in Composites",
+     "Graphene and Nanomaterials Applications",
+     "Neuroscience and Neural Engineering"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202309064",
+    "abstract": "Abstract The molecules released by cells are a fingerprint of their current state. Methods that measure them with high spatial and temporal resolution may provide valuable insights into cell physiology and diseases. Here, a nanosensor coating is developed that transforms standard cell culture materials/dishes into “Smart Slides” capable of optically monitoring biochemical efflux from cells. For this purpose, single wall carbon nanotubes (SWCNTs) that are fluorescent in the beneficial near‐infrared (NIR, 850 – 1700 nm) window are used. They are chemically tailored to detect the neurotransmitter dopamine by a change in fluorescence intensity. These nanosensors are spin‐coated on glass substrates and it is shown that such sensor layers can be sterilized by UV light and can be stored in dry condition or buffer for at least 6 weeks and have little influence on cell viability. The optimal sensor density to maximize sensitivity is also identified. Finally, these substrates are used to image dopamine release from neuronal cells cultivated on top in the presence of various psychotropic substances, which represents a system to test pharmaceuticals for neurological or neurodegenerative diseases. Therefore, Smart Slides are a powerful tool to monitor cellular processes in cell culture systems."
+   },
+   {
+    "id": "https://openalex.org/W4327643793",
+    "doi": "https://doi.org/10.1109/temc.2023.3253385",
+    "title": "Validation of IC Conducted Emission and Immunity Models Including Aging and Thermal Stress",
+    "year": 2023,
+    "cited": 15,
+    "venue": "IEEE Transactions on Electromagnetic Compatibility",
+    "topics": [
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Electrostatic Discharge in Electronics",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://hal.science/hal-04123013/document",
+    "abstract": "Environmental factors, such as aging and thermal stress, can seriously impact the electromagnetic compatibility behavior of an integrated circuit (IC). The standardized IC emission model for conducted emission (ICEM-CE) and IC immunity model for conducted immunity (ICIM-CI) can be used in industry to predict electromagnetic behavior at the IC and the printed circuit board level. However, these do not take into account the effect of aging and extreme temperature variations. In this article, a custom IC designed in silicon-on-insulator technology, containing several independent analog blocks, is used to characterize the influence of aging and temperature on conducted emission and immunity through measurements and transistor-level simulations. The highly accelerated temperature and humidity stress test (HAST) was performed to evaluate aging and its influence on IC parameters. The results show that the passive distribution network is only influenced by thermal stress and not HAST aging. The latter mainly affects the active elements in the IC and reduces the conducted emission and immunity levels through intrinsic permanent degradation mechanisms. Furthermore, thermal stress mainly causes drifts in the transistor characteristics (such as threshold voltage and effective mobility), which affect the conducted emission and immunity levels and resulting in soft failures. All drifts/tolerances collected from measurements and simulations are characterized in a way that makes it possible to include them in potential future versions of the ICEM-CE and ICIM-CI standards."
+   },
+   {
+    "id": "https://openalex.org/W4307575528",
+    "doi": "https://doi.org/10.1002/admi.202201617",
+    "title": "Chemical Treatment of Sn‐Containing Transparent Conducting Oxides for the Enhanced Adhesion and Thermal Stability of Electroplated Metals",
+    "year": 2022,
+    "cited": 13,
+    "venue": "Advanced Materials Interfaces",
+    "topics": [
+     "Conducting polymers and applications",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Nanomaterials and Printing Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.202201617",
+    "abstract": "Abstract A surface treatment process, named ReTreat, is presented, and is shown to enhance the adhesion of electroplated metals on Sn‐containing transparent conducting oxides (TCOs). The ReTreat process uses Zn powders, FeSO4 and glycine‐buffered aqueous solutions (pH 3 to 5) in order to regulate a controlled and uniform conversion of SnO2 surfaces to SnO, Sn metal, and FexSny alloys. These surface metallic and intermetallic layers selectively enrich the electroplating of metallic films (including Ni, Au, and Ag). Subsequently, the process has been used to fabricate thermally stable metal films on rigid FTO‐coated glass and flexible ITO‐coated PET substrates. Standardized testing confirms that the metallic coatings exhibit sufficient adhesion to the underlying TCO with high thermal stability and tolerance to flexural strain. A reaction mechanism for the heterogenous surface treatment is deduced from X‐ray diffraction, X‐ray photoelectron spectroscopy, and in situ transmittance measurements. These investigations show how the process parameters (e.g., Zn powders, FeSO4 concentration, pH, and TCO type) impact the reaction rate, morphology, and composition of the treated TCO surface. This report provides detailed insights necessary for the future implementation of this innovative surface treatment, which has the prospect to be a customary process for electroplating onto Sn‐containing TCOs."
+   },
+   {
+    "id": "https://openalex.org/W2982726282",
+    "doi": null,
+    "title": "Corrosion Losses, Mechanisms and Protection Strategies for Sintered Nd-Fe-B Magnets",
+    "year": 2017,
+    "cited": 1,
+    "venue": "Tampere University Institutional Repository (Tampere University)",
+    "topics": [
+     "Magnetic Properties of Alloys",
+     "Superconducting Materials and Applications",
+     "Magnetic Properties and Applications"
+    ],
+    "oa_url": "https://trepo.tuni.fi/bitstream/10024/115248/1/isotahdon_1459.pdf",
+    "abstract": "The need for permanent magnets has increased with the advances in modern renewable energy technologies and electric vehicles. Sintered Nd-Fe-B magnets are, so far, the best alternative for light constructions, since their energy density is superior compared to other permanent magnet materials. They have good magnetic properties, but the stability under elevated temperatures and in humid environments is limited. The aim of this thesis was to gain a deeper understanding of the corrosion behavior of sintered Nd-Fe-B magnets and to provide a basis for selecting a proper corrosion protection method. Typical methods for the improvement of the corrosion resistance include cobalt allo ying and the use of coatings and surface treatments, all of which were investigated in this work. Furthermore, the objective was to correlate losses in the magnetic flux with the weight losses during the corrosion tests. The microstructure of the magnets was characterized before and after the corrosion tests to reveal the degradation mechanisms in different environments. Accelerated cabinet testing and electrochemical measurements were utilized. Electron microscopy studies were used to discover the mechanisms and to estimate the relationship between accelerated corrosion tests and applications. Corrosion tests were performed in the presence of water as vapor and pressurized vapor, immersed in water, in salt spray and under immersion in saline solution. Pressurized water vapor was found to be the most aggressive corrosion environment among the studied cases. It introduced both inter-granular corrosion, i.e., pulverization, and general corrosion of the Nd2Fe14B phase. Cobalt alloying inhibited the pulverization tendency of the magnets. Pressurized heat-humidity tests measured well the tendency for pulverization but did not reveal the tendency for general corrosion of the magnetic phase. Immersion in pure water introduced a new type of degradation mechanism in the microstructure of sintered Nd-Fe-B magnets, where the matrix phase of the magnet was preferentially corroded. In mild heat-humidity environments, the uncoated magnets benefit from modified surface finish so that the initiation of corrosion on the surface of the magnet is hindered. In the case of coated magnets, the principal factor influencing the corrosion performance was the quality of the metallic coating. The most efficient method to evaluate the overall corrosion performance of a permanent magnet material was to perform accelerated tests so that the specimens are magnetized and the losses in weight and magnetic flux are measured simultaneously. The results from the corrosion tests on magnetized specimens showed that the microcrystalline anisotropy of the sintered magnets resulted in heterogeneous corrosion, where the pole faces degraded preferentially to the side faces. However, the geometry of the magnet affected the resulting losses also by another way – the self-field of the magnet contributed to the second s"
+   },
+   {
+    "id": "https://openalex.org/W4412504906",
+    "doi": "https://doi.org/10.26855/ea.2025.04.001",
+    "title": "Research on the Application and Performance of High Weather Resistant Fluorocarbon Coating in Zinc-aluminum-magnesium-fluorocarbon Anchoring System for Steel Frames",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Engineering Advances",
+    "topics": [
+     "Material Properties and Applications"
+    ],
+    "oa_url": "https://www.hillpublisher.com/UpFile/202505/20250514155831.pdf",
+    "abstract": "The commonly used aluminum frames for photovoltaic modules are high in cost, high in energy consumption, and low in mechanical properties. The double-beam alloy steel frame can make up for these deficiencies, but the surface of its galvanized magnesium-aluminum alloy is prone to black spots, requiring a protective coating. Due to the difficulty of paint adhesion on the surface of zinc-magnesium-aluminum substrate, this paper independently developed a single-component high weather-resistant fluorocarbon coating in a zinc-aluminum-magnesium-fluorocarbon anchoring system. Under the same pretreatment, the effects of this coating combined with four different substrates on performance were explored. The results show that after ternary phosphating, the A4 substrate has a 3-5μm phosphating film attached, which performs well. After various aging tests, there were no abnormalities in appearance, adhesion, etc., and it exhibited good performance in salt spray resistance, UV resistance, and other experiments. The modules assembled with it passed the double IEC61215 test and also withstood the test of Super Typhoon Yagi."
+   },
+   {
+    "id": "https://openalex.org/W4385520750",
+    "doi": "https://doi.org/10.1101/2023.08.03.549853",
+    "title": "Smart Slides for Optical Monitoring of Cellular Processes",
+    "year": 2023,
+    "cited": 0,
+    "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+    "topics": [
+     "Carbon Nanotubes in Composites",
+     "Neuroscience and Neural Engineering",
+     "Graphene and Nanomaterials Applications"
+    ],
+    "oa_url": "https://www.biorxiv.org/content/biorxiv/early/2023/08/03/2023.08.03.549853.full.pdf",
+    "abstract": "Abstract The molecules released by cells are a fingerprint of their current state. Methods that measure them with high spatial and temporal resolution would provide valuable insights into cell physiology and diseases. Here, we develop a nanosensor coating that transforms standard cell culture materials/dishes into “Smart Slides” capable of optically monitoring biochemical efflux from cells. For this purpose, we use single wall carbon nanotubes (SWCNTs) that are fluorescent in the beneficial near-infrared (NIR, 850 – 1700 nm) window. They are chemically tailored to detect the neurotransmitter dopamine by a change in fluorescence intensity. These nanosensors are spin-coated on glass substrates and we show that such sensor layers can be sterilized by UV light and can be stored in dry condition or buffer for at least 6 weeks. We also identify the optimal sensor density to maximize sensitivity. Finally, we use these materials to image dopamine release from neuronal cells cultivated on top in the presence of various psychotropic substances, which represents a system to test pharmaceuticals for neurological or neurodegenerative diseases. Therefore, Smart Slides are a powerful tool to monitor cellular processes in cell culture systems."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"ESPEC EHS TPC\" OR \"ESPEC EHS\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {
+  "IEC61215": 1
+ },
+ "standards_new": [
+  "IEC61215"
+ ],
+ "test_item_hits": {
+  "density_porosity": 3,
+  "hast": 2,
+  "microscopy": 2,
+  "optical_spectroscopy": 2,
+  "salt_spray_corrosion": 2,
+  "damp_heat": 1
+ }
+}

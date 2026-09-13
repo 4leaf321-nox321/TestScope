@@ -1,0 +1,127 @@
+{
+ "object": "yokogawa-wt5000",
+ "manufacturer": "yokogawa",
+ "phrases": [
+  "Yokogawa WT5000",
+  "Yokogawa 760901",
+  "Yokogawa 760902"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Yokogawa WT5000\" OR \"Yokogawa 760901\" OR \"Yokogawa 760902\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Yokogawa WT5000\" OR \"Yokogawa 760901\" OR \"Yokogawa 760902\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC13259418",
+    "doi": "10.3390/s26113546",
+    "title": "Comparative Analysis of Additional Measurement Error Introduced by Inductive Current Transformers, Rogowski Coils and Electronic Current Transducer for Harmonics of Distorted Current.",
+    "journal": "Sensors (Basel)",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "IEC 61000-4-7",
+     "IEC 61869",
+     "IEC 61869-1",
+     "IEC 61869-10",
+     "IEC 61869-2"
+    ]
+   },
+   {
+    "pmcid": "PMC13165662",
+    "doi": "10.3390/s26092781",
+    "title": "Energy Measurement Characteristics of Electricity Meters with Different Input Configurations Under IEC 61000-4-19-Based Conducted Disturbances.",
+    "journal": "Sensors (Basel)",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "IEC 61000-4-19",
+     "IEC 61850-9-2",
+     "IEC 62052-11",
+     "IEC 8802-3"
+    ]
+   },
+   {
+    "pmcid": "PMC11175187",
+    "doi": "10.3390/s24113693",
+    "title": "The Accuracy of Evaluation of the Requirements of the Standards IEC 61000-3-2(12) with the Application of the Wideband Current Transducer.",
+    "journal": "Sensors (Basel)",
+    "year": "2024",
+    "cited": 0,
+    "snippets": 4,
+    "standards_in_paper": [
+     "IEC 61000-3-12",
+     "IEC 61000-3-2",
+     "IEC 61869-10"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC13259418",
+   "title": "Comparative Analysis of Additional Measurement Error Introduced by Inductive Current Transformers, Rogowski Coils and Electronic Current Transducer for Harmonics of Distorted Current.",
+   "year": "2026",
+   "text": ". The system was fed by an audio amplifier driven by an arbitrary waveform generator. The DPM measured the RMS values of the current harmonics and their phase angles relative to the reference voltage from the GPA. The current and voltage output signals (current or voltage) from the tested transducers and the RiCT were routed directly to the DPM, a Yokogawa WT5000, for processing and comparison. Regarding its accuracy specifications for harmonic measurements, two key parameters must be distinguished. The base accuracy of the analog input modules in the 1 to 10 kHz band is ±(0.1% of reading + 0.05% of range). The accuracy of the harmonic measurement function inherently decreases in the upper frequency band.",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13165662",
+   "title": "Energy Measurement Characteristics of Electricity Meters with Different Input Configurations Under IEC 61000-4-19-Based Conducted Disturbances.",
+   "year": "2026",
+   "text": "ries, ensuring that the same reference current flowed through both the reference meter and the meter under test. A 2 Ω resistor was used to separate the reference current from the disturbance current. The reference current, the disturbance current, and their sum applied to the tested meter were monitored using a three-phase power quality analyzer, Yokogawa WT5000 (Yokogawa Test &amp; Measurement Corporation, Hachioji, Tokyo, Japan). The entire setup was controlled using custom-developed LabView 2010 (National Instruments, Austin, TX, USA) software. A schematic diagram of the test setup is shown in Figure 1 . Figure 1 A schematic diagram of the test setup for determining electricity meter error characterist",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11175187",
+   "title": "The Accuracy of Evaluation of the Requirements of the Standards IEC 61000-3-2(12) with the Application of the Wideband Current Transducer.",
+   "year": "2024",
+   "text": "/creativecommons.org/licenses/by/4.0/ ). The aim of this paper is to determine the conversion accuracy of the Danisense DC200IF (Danisense A/S, Taastrup, Denmark) wideband current transducer for its possible application to test electromagnetic compatibility requirements of the standards IEC 61000-3-2 and IEC 61000-3-12 with the digital power meter Yokogawa WT5000 (Yokogawa Electric Corporation, Tokyo, Japan). To obtain this goal for distorted current of main frequency equal to 50 Hz and in the frequencies range of higher harmonics from 100 Hz to 2500 Hz its amplitude error and phase shift are evaluated. Moreover, the measurable level of higher harmonics with the rated accuracy of the used precision power a",
+   "standards": [
+    "IEC 61000-3-12",
+    "IEC 61000-3-2"
+   ]
+  },
+  {
+   "pmcid": "PMC11175187",
+   "title": "The Accuracy of Evaluation of the Requirements of the Standards IEC 61000-3-2(12) with the Application of the Wideband Current Transducer.",
+   "year": "2024",
+   "text": "]. The aim of this research is to evaluate the conversion accuracy of the Danisense DC200IF (Danisense A/S, Taastrup, Denmark) wideband current transducer. The focus is on its potential application for electromagnetic compatibility testing according to the IEC 61000-3-2 and IEC 61000-3-12 standards. The chosen instrument for this evaluation is the Yokogawa WT5000 (Yokogawa Electric Corporation, Tokyo, Japan) digital power meter [ 26 ]. In order to achieve this objective, the laboratory study of the accuracy of the Danisense DC200IF (Danisense A/S, Taastrup, Denmark) transducer during transformation distorted current was investigated. Specifically, the analysis covers the main frequency of 50 Hz and extends",
+   "standards": [
+    "IEC 61000-3-12",
+    "IEC 61000-3-2"
+   ]
+  },
+  {
+   "pmcid": "PMC11175187",
+   "title": "The Accuracy of Evaluation of the Requirements of the Standards IEC 61000-3-2(12) with the Application of the Wideband Current Transducer.",
+   "year": "2024",
+   "text": "asure the accuracy of the transducer in measuring distorted currents. In addition, a precision power analyzer is used to investigate the measurable level of higher harmonics within this frequency range to ensure that the transducer is matched to the instrument’s rated accuracy. Therefore, the accuracy of the measured RMS values of harmonics by the Yokogawa WT5000 (Yokogawa Electric Corporation, Tokyo, Japan) is several orders of magnitude greater than that of the transducer under test, so its accuracy does not affect the results obtained. In the final stage of the study, the developed measurement system is practically applied to determine the RMS values of the current harmonics generated by an audio power",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11175187",
+   "title": "The Accuracy of Evaluation of the Requirements of the Standards IEC 61000-3-2(12) with the Application of the Wideband Current Transducer.",
+   "year": "2024",
+   "text": "Danisense DC200IF (Danisense A/S, Taastrup, Denmark) wideband current transducer in meeting the requirements of the IEC 61000-3-2 and IEC 61000-3-12 standards. The focus was on assessing the amplitude error and phase shift for distorted current with a primary frequency of 50 Hz, extending to higher harmonics in the range of 100 Hz to 2500 Hz. The Yokogawa WT5000 (Yokogawa Electric Corporation, Tokyo, Japan) digital power meter was used as the primary measurement instrument, providing accurate measurements of both current amplitude and phase. The technology used was Fluxgate with closed-loop compensation, which had a fixed excitation frequency and second harmonic zero flux detection, which provided greater",
+   "standards": [
+    "IEC 61000-3-12",
+    "IEC 61000-3-2"
+   ]
+  }
+ ],
+ "standards_found": {
+  "IEC 61000-3-2": 3,
+  "IEC 61000-3-12": 3
+ },
+ "standards_new": [
+  "IEC 61000-3-12"
+ ],
+ "test_item_hits": {}
+}

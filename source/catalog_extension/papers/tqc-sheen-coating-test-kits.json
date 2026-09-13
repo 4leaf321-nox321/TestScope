@@ -1,0 +1,27 @@
+{
+ "object": "tqc-sheen-coating-test-kits",
+ "manufacturer": "tqc-sheen",
+ "phrases": [
+  "TQC Sheen VF2377",
+  "TQC Sheen VF2378",
+  "TQC Sheen VF2379",
+  "TQC Sheen CC1000",
+  "Industrial Physics VF2377",
+  "Industrial Physics VF2378"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TQC Sheen VF2377\" OR \"TQC Sheen VF2378\" OR \"TQC Sheen VF2379\" OR \"TQC Sheen CC1000\" OR \"Industrial Physics VF2377\" OR \"Industrial Physics VF2378\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TQC Sheen VF2377\" OR \"TQC Sheen VF2378\" OR \"TQC Sheen VF2379\" OR \"TQC Sheen CC1000\" OR \"Industrial Physics VF2377\" OR \"Industrial Physics VF2378\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

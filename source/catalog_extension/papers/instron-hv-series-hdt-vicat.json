@@ -1,0 +1,93 @@
+{
+ "object": "instron-hv-series-hdt-vicat",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron HV HDT",
+  "Instron HV",
+  "Instron HV3",
+  "Instron HV6",
+  "Instron HV6A",
+  "Instron HV3S"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron HV HDT\" OR \"Instron HV\" OR \"Instron HV3\" OR \"Instron HV6\" OR \"Instron HV6A\" OR \"Instron HV3S\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron HV HDT\" OR \"Instron HV\" OR \"Instron HV3\" OR \"Instron HV6\" OR \"Instron HV6A\" OR \"Instron HV3S\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC11761199",
+    "doi": "10.3390/biomimetics10010046",
+    "title": "Improving the Long-Term Mechanical Properties of Thermoplastic Short Natural Fiber Compounds by Using Alternative Matrices.",
+    "journal": "Biomimetics (Basel)",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 1183",
+     "ISO 178",
+     "ISO 179",
+     "ISO 291",
+     "ISO 294",
+     "ISO 527-2",
+     "ISO 62",
+     "ISO 75",
+     "ISO 899-1",
+     "ISO 899-2"
+    ]
+   },
+   {
+    "pmcid": "PMC9570509",
+    "doi": "10.3390/polym14194115",
+    "title": "Comparison of the Properties of a Random Copolymer and a Molten Blend PA6/PA6.9.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 180",
+     "ISO 527",
+     "ISO 75"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC11761199",
+   "title": "Improving the Long-Term Mechanical Properties of Thermoplastic Short Natural Fiber Compounds by Using Alternative Matrices.",
+   "year": "2025",
+   "text": "ve 30 to 70% energy absorption. The choice for unnotched samples was based on the knowledge that fiber-filled materials are brittle and show little to no distinction between samples when tested with notched samples. 2.2.5. Heat Deflection Temperature The heat deflection temperature was tested following ISO 75 method A (1.8 MPa) (2013) [ 42 ] on an Instron HV3S filled with silicone oil. After concluding that this is a misrepresentation, behavior testing was also performed with ISO 75 method C (8 MPa) [ 42 ] for select samples. 2.2.6. Density Density measurements were performed in accordance with ISO 1183 method A (immersion method) (2012) [ 43 ] on half of the middle part of a tensile sample. 2.2.7. Wate",
+   "standards": [
+    "ISO 1183",
+    "ISO 75"
+   ]
+  },
+  {
+   "pmcid": "PMC9570509",
+   "title": "Comparison of the Properties of a Random Copolymer and a Molten Blend PA6/PA6.9.",
+   "year": "2022",
+   "text": "using a TA Instrument DSC Q20 (TA Instruments, New Castle, DE, USA). The measurements were performed on a sample of about 10 mg, under nitrogen flow of 100 mL/min. The sample is first heated from 20 to 280 °C at a rate of 20 °C/min, then cooled to 0 °C and heated again to 280 °C. The samples’ Heat Deflection Temperature (HDT) was determined via a Instron HV 3S (Instron, Torino, Italy), following ISO 75. 2.3.2. X-ray Diffraction Powder XRD patterns were collected on a Bruker D8 Advance capillary diffractometer (Bruker, Massachusetts, USA) equipped with a Cu Kα source (λ = 1.5418 Å, 40 kV, 40 mA) and considering a Bragg-Brentano geometry (0.1° steps from 5–50°, ambient temperature and in rotation). The",
+   "standards": [
+    "ISO 75"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ISO 75": 3,
+  "ISO 1183": 1
+ },
+ "standards_new": [
+  "ISO 1183",
+  "ISO 75"
+ ],
+ "test_item_hits": {
+  "hdt": 3,
+  "density_porosity": 2,
+  "tensile": 1
+ }
+}

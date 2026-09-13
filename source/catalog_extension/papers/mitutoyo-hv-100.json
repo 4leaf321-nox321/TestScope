@@ -1,0 +1,76 @@
+{
+ "object": "mitutoyo-hv-100",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo HV-100",
+  "Mitutoyo HV-112",
+  "Mitutoyo HV-114",
+  "Mitutoyo HV110",
+  "Mitutoyo HV120"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo HV-100\" OR \"Mitutoyo HV-112\" OR \"Mitutoyo HV-114\" OR \"Mitutoyo HV110\" OR \"Mitutoyo HV120\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo HV-100\" OR \"Mitutoyo HV-112\" OR \"Mitutoyo HV-114\" OR \"Mitutoyo HV110\" OR \"Mitutoyo HV120\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC9921433",
+    "doi": "10.3390/ma16031193",
+    "title": "Investigation of Microstructure and Wear Properties of Precipitates-Strengthened Cu-Ni-Si-Fe Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11509531",
+    "doi": "10.3390/ma17205031",
+    "title": "Friction Characteristics of Low and High Strength Steels with Galvanized and Galvannealed Zinc Coatings.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 6502-2",
+     "ISO22462",
+     "ISO27831-1"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9921433",
+   "title": "Investigation of Microstructure and Wear Properties of Precipitates-Strengthened Cu-Ni-Si-Fe Alloy.",
+   "year": "2023",
+   "text": "Bruker D2 Phaser X-ray diffractometer (XRD) with Cu-Kα radiation (λ = 1.5405 Å) and a scanning velocity of 0.03° per second. The Rietveld refinement analysis method was used in calculating δ-Ni 2 Si lattice constant from XRD diffraction peak, while the calculation and fitting were performed using the Maud software. Hardness test was carried out on Mitutoyo HV 100 Vickers hardness tester using a 5 kg load and holding time for 12 s, while considering the average of 6 values. Electrical conductivity was measured at ambient temperature using Fischer Sigmascope SMP350 conductivity meter, considering the average of 6 values. Wearing tests were performed on a pin-on-disk device with a load of 0.58 MPa, a wearing",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11509531",
+   "title": "Friction Characteristics of Low and High Strength Steels with Galvanized and Galvannealed Zinc Coatings.",
+   "year": "2024",
+   "text": "r as-received specimens, and they clearly represent different initial surface conditions depending on both strength and coating. Table 1 shows the sample details. The strengths of base materials, as well as the strengths and hardness of the coatings, are listed in Table 1 . The hardness of the coatings was measured using a Vickers hardness tester (Mitutoyo HV-100, Mitutoyo, Kawasaki, Japan) following ISO 6502-2 standards [ 35 ], and for comparison with substrate strength, the hardness was converted into tensile strength [ 36 , 37 ]. Figure 1 The top view of the four as-received specimen surfaces: ( a ) TS340-GI, ( b ) TS980-GI, ( c ) TS340-GA, and ( d ) TS980-GA. Table 1 Specimens used in the experiments.",
+   "standards": [
+    "ISO 6502-2"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ISO 6502-2": 1
+ },
+ "standards_new": [
+  "ISO 6502-2"
+ ],
+ "test_item_hits": {
+  "abrasion": 2,
+  "hardness_vickers": 2,
+  "tensile": 1
+ }
+}

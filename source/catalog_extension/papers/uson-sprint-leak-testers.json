@@ -1,0 +1,25 @@
+{
+ "object": "uson-sprint-leak-testers",
+ "manufacturer": "uson",
+ "phrases": [
+  "Uson Sprint LC",
+  "Uson Sprint",
+  "PAC Sprint LC",
+  "PAC Sprint"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Uson Sprint LC\" OR \"Uson Sprint\" OR \"PAC Sprint LC\" OR \"PAC Sprint\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Uson Sprint LC\" OR \"Uson Sprint\" OR \"PAC Sprint LC\" OR \"PAC Sprint\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

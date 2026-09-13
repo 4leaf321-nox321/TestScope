@@ -1,0 +1,26 @@
+{
+ "object": "espec-qualmark-halt-hass",
+ "manufacturer": "espec",
+ "phrases": [
+  "ESPEC Qualmark T1.5",
+  "ESPEC Qualmark T2.5",
+  "ESPEC Qualmark T4.0",
+  "ESPEC Typhoon 3.0V",
+  "ESPEC Typhoon 8.0V"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ESPEC Qualmark T1.5\" OR \"ESPEC Qualmark T2.5\" OR \"ESPEC Qualmark T4.0\" OR \"ESPEC Typhoon 3.0V\" OR \"ESPEC Typhoon 8.0V\"",
+  "count": 0,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ESPEC Qualmark T1.5\" OR \"ESPEC Qualmark T2.5\" OR \"ESPEC Qualmark T4.0\" OR \"ESPEC Typhoon 3.0V\" OR \"ESPEC Typhoon 8.0V\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

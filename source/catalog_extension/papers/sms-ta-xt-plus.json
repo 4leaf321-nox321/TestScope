@@ -1,0 +1,295 @@
+{
+ "object": "sms-ta-xt-plus",
+ "manufacturer": "stable-micro-systems",
+ "phrases": [
+  "Stable Micro Systems TA.XT",
+  "Stable Micro Systems TA.XT Plus"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Stable Micro Systems TA.XT\" OR \"Stable Micro Systems TA.XT Plus\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Stable Micro Systems TA.XT\" OR \"Stable Micro Systems TA.XT Plus\") AND OPEN_ACCESS:y",
+  "count": 36,
+  "papers": [
+   {
+    "pmcid": "PMC4177408",
+    "doi": "10.1371/journal.pone.0108500",
+    "title": "Photodynamic antimicrobial polymers for infection control.",
+    "journal": "PLoS One",
+    "year": "2014",
+    "cited": 22,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7077722",
+    "doi": "10.3390/polym12020497",
+    "title": "The Incorporation of Carvacrol into Poly (vinyl alcohol) Films Encapsulated in Lecithin Liposomes.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 21,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ASTM D882-02",
+     "ASTM E 96",
+     "ASTM F1927",
+     "ULTRA 55"
+    ]
+   },
+   {
+    "pmcid": "PMC9330628",
+    "doi": "10.3390/foods11152213",
+    "title": "Novel Formulation of Bigel-Based Vegetable Oil Spreads Enriched with Lingonberry Pomace.",
+    "journal": "Foods",
+    "year": "2022",
+    "cited": 16,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ISO 3960"
+    ]
+   },
+   {
+    "pmcid": "PMC5852484",
+    "doi": "10.3390/md16020056",
+    "title": "Association of Alpha Tocopherol and Ag Sulfadiazine Chitosan Oleate Nanocarriers in Bioactive Dressings Supporting Platelet Lysate Application to Skin Wounds.",
+    "journal": "Mar Drugs",
+    "year": "2018",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9143331",
+    "doi": "10.3390/pharmaceutics14050984",
+    "title": "Development of Tea Seed Oil Nanostructured Lipid Carriers and In Vitro Studies on Their Applications in Inducing Human Hair Growth.",
+    "journal": "Pharmaceutics",
+    "year": "2022",
+    "cited": 11,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12271796",
+    "doi": "10.1016/j.bioactmat.2025.06.057",
+    "title": "Highly tough and conformal silk-based adhesive patches for sutureless repair of gastrointestinal and peripheral nerve defects.",
+    "journal": "Bioact Mater",
+    "year": "2025",
+    "cited": 10,
+    "snippets": 0,
+    "standards_in_paper": [
+     "NF200"
+    ]
+   },
+   {
+    "pmcid": "PMC10974263",
+    "doi": "10.3390/pharmaceutics16030308",
+    "title": "Microneedle-Assisted Transdermal Delivery of Lurasidone Nanoparticles.",
+    "journal": "Pharmaceutics",
+    "year": "2024",
+    "cited": 9,
+    "snippets": 3,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9264888",
+    "doi": "10.3390/ani12131714",
+    "title": "The Composition of the Carcass, Physicochemical Properties, Texture and Microstructure of the Meat of D11 Dworka and P9 Pekin Ducks.",
+    "journal": "Animals (Basel)",
+    "year": "2022",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7554862",
+    "doi": "10.3390/foods9091165",
+    "title": "Sensory and Physicochemical Characterization of Sourdough Bread Prepared with a Coconut Water Kefir Starter.",
+    "journal": "Foods",
+    "year": "2020",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC11570949",
+    "doi": "10.1016/j.psj.2024.104455",
+    "title": "Effects of genotype and sex on carcass composition, meat quality, digestive tract morphometries and leg bone dimensions of spent parent Pekin ducks.",
+    "journal": "Poult Sci",
+    "year": "2024",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC11174653",
+    "doi": "10.3390/polym16111574",
+    "title": "Active Poly(3-hydroxybutyrate-co-3-hydroxyvalerate) (PHBV) Films Containing Phenolic Compounds with Different Molecular Structures.",
+    "journal": "Polymers (Basel)",
+    "year": "2024",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC10056099",
+    "doi": "10.3390/pharmaceutics15030841",
+    "title": "Terbinafine Nanohybrid: Proposing a Hydrogel Carrying Nanoparticles for Topical Release.",
+    "journal": "Pharmaceutics",
+    "year": "2023",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC12427757",
+    "doi": "10.3390/foods14173113",
+    "title": "Optimization of Gluten-Free Bread Formulation Using Whole Sorghum-Based Flour by Response Surface Methodology.",
+    "journal": "Foods",
+    "year": "2025",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC11010805",
+    "doi": "10.3390/ani14071050",
+    "title": "The Effects of Slaughter Age and Sex on Carcass Traits, Meat Quality, and Leg Bone Characteristics of Farmed Common Pheasants (<i>Phasianus colchicus</i> L.).",
+    "journal": "Animals (Basel)",
+    "year": "2024",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC12073344",
+    "doi": "10.3390/molecules30091988",
+    "title": "Active Polylactic Acid (PLA) Films Incorporating Almond Peel Extracts for Food Preservation.",
+    "journal": "Molecules",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11836068",
+    "doi": "10.1038/s41598-025-89984-0",
+    "title": "Mechanical properties and biodegradability of samples obtained by 3D printing using FDM technology from PLA filament with by-products.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC10840326",
+    "doi": "10.1016/j.psj.2023.103384",
+    "title": "Effect of housing system on carcass composition, meat quality, digestive morphometry, and leg bone dimensions of Ross 308 parent broilers.",
+    "journal": "Poult Sci",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC12756016",
+    "doi": "10.1016/j.psj.2025.106166",
+    "title": "Vitamin D enrichment of eggs and its effects on performance and intestinal health in late-stage laying hens.",
+    "journal": "Poult Sci",
+    "year": "2026",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12002770",
+    "doi": "10.1016/j.psj.2025.105094",
+    "title": "Meat quality of turkeys after reproductive period depending on genotype and sex.",
+    "journal": "Poult Sci",
+    "year": "2025",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC11152976",
+    "doi": "10.1016/j.heliyon.2024.e31974",
+    "title": "Effects of washing with boric acid solutions on residual boric acid content, microbiological load, and quality of fresh-cut spinach.",
+    "journal": "Heliyon",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC11078689",
+    "doi": "10.1016/j.psj.2024.103763",
+    "title": "Carcass characteristics, physicochemical traits, texture and microstructure of young and spent quails meat.",
+    "journal": "Poult Sci",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12427645",
+    "doi": "10.3390/foods14172939",
+    "title": "Qualitative and Antioxidant Evaluation of High-Moisture Plant-Based Meat Analogs Obtained by Extrusion.",
+    "journal": "Foods",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12622435",
+    "doi": "10.1002/advs.202510512",
+    "title": "High-Performance Electrochemical Adhesives Enabled by Perfluorinated Sulfonic-Acid Ionomers with Precise Adhesion Control and Long-Term Switchability.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11279765",
+    "doi": "10.1016/j.psj.2024.103923",
+    "title": "Research Note: Basic chemical composition, physicochemical, and textural characteristics of male and female guinea fowl meat.",
+    "journal": "Poult Sci",
+    "year": "2024",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8753799",
+    "doi": "10.17113/ftb.59.04.21.7262",
+    "title": "A Starch-Milk Paste Enables the Incorporation of Ripened Cheese in Novel Fresh Cheese.",
+    "journal": "Food Technol Biotechnol",
+    "year": "2021",
+    "cited": 1
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC4177408",
+   "title": "Photodynamic antimicrobial polymers for infection control.",
+   "year": "2014",
+   "text": "light that is transmitted through the photosensitizer-incorporated materials. Characterization of mechanical performance of sensitizer-incorporated materials Mechanical analysis of films was performed on dumb-bell shaped samples (length 30 mm, thickness of narrow portion 2 mm) cut using a Ray-Ran hand-operated cutting press, and was tested using a Stable Micro Systems TA.XT plus texture analyzer, fitted with a 40 kg load cell. The dimensions of the narrow portion of the dumb-bell (width and thickness) were measured using a digital micrometer, and the samples were secured between the mobile upper and static lower clamps of the texture analyzer. The distance separating the upper and lower clamps was used to measure the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5852484",
+   "title": "Association of Alpha Tocopherol and Ag Sulfadiazine Chitosan Oleate Nanocarriers in Bioactive Dressings Supporting Platelet Lysate Application to Skin Wounds.",
+   "year": "2018",
+   "text": "ation. 3.3.3. Morphology Dressing morphology was analyzed by means of scanning electron microscopy (SEM, Tescan, Mira3XMU, ARVEDI Center, University of Pavia, Pavia, Italy). Samples were sputtered by means of graphite deposition under vacuum. 3.3.4. Characterization of Mechanical Properties A breaking force test was performed by a Texture Analyser Stable Micro Systems TA.XT Plus (ENCO, Spinea, Venezia, Italy), using a penetration test setting: cylindrical probe (5 mm diameter), trigger force of 0.1 g, loading cell of 1 kg, 1 mm/s rate, at a distance of 1.5 mm. The probe was lowered towards the dressing supported on a ring. As response the breaking force was measured (mN), and the work was calculated as area under the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10974263",
+   "title": "Microneedle-Assisted Transdermal Delivery of Lurasidone Nanoparticles.",
+   "year": "2024",
+   "text": "dissolve the PVA and PVP components in the microneedles, 2 mL of water was added to the vial and then placed in a shaker for 3 h. After this, 5 mL of acetonitrile was added to solubilize lurasidone, and the mixture was shaken for an additional 3 h. The final solution was then analyzed using HPLC [ 27 ]. Microneedle Insertion on the Skin Using the Stable Micro Systems TA.XT Express Texture Analyzer (Texture Technologies Corp., South Hamilton, MA, USA), the microneedles were inserted into the skin. For this procedure, the skin was positioned on the analyzer’s base plate and microneedles were placed on the top of skin, ensuring the microneedles faced the skin. The Texture Analyzer featured a 7 mm diameter stainless ste",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10974263",
+   "title": "Microneedle-Assisted Transdermal Delivery of Lurasidone Nanoparticles.",
+   "year": "2024",
+   "text": "from Globe Scientific, Inc. (Paramus, NJ, USA) and were observed and photographed using a Leica DM 750 microscope. Mechanical Strength of Microneedles The mechanical strength of microneedles is important in ensuring that they remain intact under the force exerted during insertion. To ascertain the microneedles’ mechanical strength, we utilized the Stable Micro Systems TA.XT Express Texture Analyzer from Texture Technologies Corp., South Hamilton, MA, USA. In the setup, a microneedle patch measuring 1 cm by 1 cm was positioned on the analyzer’s base plate, with the needle tips oriented upwards. The evaluation was conducted in compression mode. The steel probe moved at a velocity of 1.00 mm/s with an initial contact fo",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10974263",
+   "title": "Microneedle-Assisted Transdermal Delivery of Lurasidone Nanoparticles.",
+   "year": "2024",
+   "text": "ed. ImageJ was used to measure length, width, and needle-to-needle distance (National Institute of Health, Bethesda, MD, USA). Three replicates were used for accuracy. 2.2.13. IVPT Study with Microneedles An IVPT study evaluated the microneedle patch with an effervescent backing membrane. First, the microneedle was inserted into the skin using the Stable Micro Systems TA.XT Express Texture Analyzer. The steel probe moved at a velocity of 1.00 mm/s with an initial contact force of 5 g and was held on the microneedles for two minutes. Following this, the skin was mounted on a Franz diffusion cell. After a 10 min interval, the effervescent backing was removed, leaving only the inserted microneedle in the skin. The study",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9264888",
+   "title": "The Composition of the Carcass, Physicochemical Properties, Texture and Microstructure of the Meat of D11 Dworka and P9 Pekin Ducks.",
+   "year": "2022",
+   "text": "(Konica Minolta, Tokyo, Japan) colorimeter. The measurement area was 50 mm in diameter. The calibration of the meter was performed using a standard CR410 white plate, taking into account the data needed for the calibration of the device (Y = 94.40, x = 0.3159, y = 0.3325). 2.4. Texture Measurement The texture of m. pectoralis major was tested on a Stable Micro Systems TA.XT plus apparatus (Stable Micro Systems, United Kingdom) using the Texture Profile Analysis (TPA) test and the Warner–Bratzler (WB) test. The tests were carried out in accordance with the texture profile analysis procedures [ 28 ]. Muscles were placed separately in plastic bags, cooked in a water bath at 72 °C until the geometric center reached 70.2",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "compression": 1,
+  "microscopy": 1
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "object": "mitutoyo-mzt-500",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo MZT-500",
+  "Mitutoyo MZT-500 Series"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo MZT-500\" OR \"Mitutoyo MZT-500 Series\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo MZT-500\" OR \"Mitutoyo MZT-500 Series\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

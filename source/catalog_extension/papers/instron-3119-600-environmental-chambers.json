@@ -1,0 +1,468 @@
+{
+ "object": "instron-3119-600-environmental-chambers",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron 3119-600",
+  "Instron 3119-605",
+  "Instron 3119-606",
+  "Instron 3119-609",
+  "Instron 3119-615",
+  "Instron 3119-607"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron 3119-600\" OR \"Instron 3119-605\" OR \"Instron 3119-606\" OR \"Instron 3119-609\" OR \"Instron 3119-615\" OR \"Instron 3119-607\"",
+  "count": 21,
+  "works": [
+   {
+    "id": "https://openalex.org/W3133507265",
+    "doi": "https://doi.org/10.3390/ma14061331",
+    "title": "Effect of Solution Annealing on Fatigue Crack Propagation in the AISI 304L TRIP Steel",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Materials",
+    "topics": [
+     "Fatigue and fracture mechanics",
+     "Microstructure and Mechanical Properties of Steels",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/6/1331/pdf?version=1615430714",
+    "abstract": "Fatigue crack propagation in near-threshold regime was studied in the 304L austenitic stainless steel in two microstructural states: as-received (AR) with finer microstructure and low susceptibility to the transformation-induced plasticity (TRIP) effect, and solution-annealed (SA) with coarser microstructure and higher susceptibility to TRIP. At the load ratio R = 0.1 the threshold was higher in the SA state than in the AR state due to coarser grains and possibly the TRIP effect. In order to clarify the role of crack closure, experiments at R = 0.7 were done. The threshold in the SA state was still higher by 1 MPa·m0.5. This effect was identified as crack tip shielding induced by phase transformation, an example of a non-closure shielding effect. Higher resistance to crack growth in the SA state was attributed to promoted martensitic transformation in non-favorable oriented grain families rather than thicker martensite layers in the crack path area. The conclusions were verified by experiments at R = 0.7 and temperature 150 °C > Ms which did not reveal any notable difference in thresholds. However, the threshold values were affected by the load-shedding gradient C = −dΔK/da, which had to be equalized in both experimental setups inside and outside the furnace."
+   },
+   {
+    "id": "https://openalex.org/W4386170191",
+    "doi": "https://doi.org/10.1016/j.compstruct.2023.117497",
+    "title": "Orthotropic viscoelastic characterization of thin woven composites by a combination of experimental and numerical methods",
+    "year": 2023,
+    "cited": 14,
+    "venue": "Composite Structures",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Electronic Packaging and Soldering Technologies",
+     "Composite Material Mechanics"
+    ],
+    "oa_url": "https://hal.science/hal-04251462v1/file/article_woven_visco_GIRARD.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4385420838",
+    "doi": "https://doi.org/10.1038/s41524-023-01091-8",
+    "title": "Thermo-electro-mechanical microstructural interdependences in conductive thermoplastics",
+    "year": 2023,
+    "cited": 13,
+    "venue": "npj Computational Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Carbon Nanotubes in Composites"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41524-023-01091-8.pdf",
+    "abstract": "Abstract Additive manufacturing has enabled the design of thermoplastic components that provide structural support, electrical conductivity and heat generation modulated by mechanical deformation. The mechanisms and interplays that govern the material response at the microstructural level remain, however, elusive. Here, we develop an experimental method to characterise conductive filaments from a combined mechanical, electrical and thermal perspective. This approach is used to unravel exciting material interplays of conductive polylactic acid. To overcome experimental limitations that prevent a complete microstructural analysis of the problem, we develop a full-field homogenisation framework and implement it for finite elements. The framework accounts for viscoplasticity, electrical and thermal conduction, convection and heat generation via Joule effect, as well as for the interdependences between them. After experimental validation, the framework is applied to virtually optimise fabrication requirements to obtain desired properties in final products, i.e., stiffer products, filaments with higher conductivities or with better sensing capabilities."
+   },
+   {
+    "id": "https://openalex.org/W3169901609",
+    "doi": "https://doi.org/10.1088/2058-8585/abf848",
+    "title": "Enhancing performance and reducing wearing variability for wearable technology system–body interfaces using shape memory materials",
+    "year": 2021,
+    "cited": 10,
+    "venue": "Flexible and Printed Electronics",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Tactile and Sensory Interactions",
+     "Interactive and Immersive Displays"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2058-8585/abf848/pdf",
+    "abstract": "Abstract Advancements in e-textiles, sensors, and actuators have propelled wearable technologies toward wide-spread market use, however the physical interface between these technologies and the human body has remained a functional challenge. Prior research has found that system–body interface challenges produce wearing variability, or variation in system placement, orientation, and tightness in relation to a body both between use trials and between users, resulting in large variation and deterioration in system performance. We break down the mechanics of common system–body interface challenges through a summary of design principles critical to any system interfacing with the human body. Additionally, we present an active interface based on shape memory materials that dimensionally adapts to its user’s dimensions. An experimental investigation of these active system interfaces considers the impact of design variables often overlooked in the design process. Recommendations are provided to optimize interfaces for the requirements for a given wearable technology. Additionally, we illuminate methods to reduce wearing variability for a range of users to produce consistent system–body interaction across a user population. Through these active interfaces, we advance a broad range of wearable technologies, including wearable sensing, motion tracking, haptics, and wearable robotic devices."
+   },
+   {
+    "id": "https://openalex.org/W4391471940",
+    "doi": "https://doi.org/10.3390/polym16030420",
+    "title": "Strain Rate and Temperature Influence on Micromechanisms of Plastic Deformation of Polyethylenes Investigated by Positron Annihilation Lifetime Spectroscopy",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Polymers",
+    "topics": [
+     "Muon and positron interactions and applications",
+     "Polymer crystallization and properties",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/16/3/420/pdf?version=1706864192",
+    "abstract": "Plastic deformation of low/high density polyethylene (LDPE/HDPE) was analyzed in this work using positron annihilation lifetime spectroscopy (PALS). It was shown that in undeformed LDPE, both the mean ortho-positronium lifetime (τ3) and its dispersion (σ3), corresponding to the average size and size distribution of the free-volume pores of the amorphous component, respectively, were clearly higher than in HDPE. This effect was induced by a lower and less uniform molecular packing of the amorphous regions in LDPE. During the deformation of LDPE, an increase in the τ3 value was observed within the local strains of 0–0.25. This effect was mainly stimulated by a positive relative increase in interlamellar distances due to the deformation of lamellar crystals oriented perpendicular (increased by 31.8%) and parallel (decreased by 10.1%) to the deformation directions. At the same time, the dimension of free-volume pores became more uniform, which was manifested by a decrease in the σ3 value. No significant effect of temperature or strain rate on the τ3 and σ3 values was observed during LDPE deformation. In turn, in the case of HDPE, with an increase in the strain rate/or a decrease in temperature, an intensification of the cavitation phenomenon could be observed with a simultaneous decrease in the τ3 value. This effect was caused by the lack of annihilation of ortho-positonium (o-Ps) along the longer axis of the highly anisotropic/ellipsoidal cavities. Therefore, this dimension was not detectable by the PALS technique. At the same time, the increase in the dimension of the shorter axis of the cavities was effectively limited by the thickness of amorphous layers. As the strain rate increased or the temperature decreased, the σ3 value during HDPE deformation increased. This change was correlated with the initiation and intensification of the cavitation phenomenon. Based on the mechanical response of samples with a similar yield stress, it was also proven that the susceptibility of the amorphous regions of LDPE to the formation of cavities is lower than in the case of amorphous component of HDPE."
+   },
+   {
+    "id": "https://openalex.org/W4285731175",
+    "doi": "https://doi.org/10.3390/jcs6070213",
+    "title": "Mechanical Properties of High-Temperature Fiber-Reinforced Thermoset Composites with Plain Weave and Unidirectional Carbon Fiber Fillers",
+    "year": 2022,
+    "cited": 8,
+    "venue": "Journal of Composites Science",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-477X/6/7/213/pdf?version=1658139236",
+    "abstract": "Fiber-reinforced thermoset composites are a class of materials that address the arising needs from the aerospace and hypersonic industries for high specific strength, temperature-resistant structural materials. Among the high-temperature resistant thermoset categories, phenolic triazine (PT) cyanate esters stand out thanks to their inherent high degradation temperature, glass transition temperature, and mechanical strength. Despite the outstanding properties of these thermosets, the performance of carbon fiber composites using PT cyanate esters as matrices has not been thoroughly characterized. This work evaluated PT and carbon fiber composites’ compressive properties and failure mechanisms with different fiber arrangements. A PT resin with both plain weave (PW) and non-crimped unidirectional (UD) carbon fiber mats was analyzed in this research. Highly loaded thermoset composites were obtained using process temperatures not exceeding 260 °C, and the composites proved to retain compressive strength at temperatures beyond 300 °C. Compressive testing revealed that PT composites retained compressive strength values of 50.4% of room temperature for UD composites and 61.4% for PW composites. Post-compressive failure observations of the gage section revealed that the mechanisms for failure evolved with temperature from brittle, delamination-dominant failure to shear-like failure promoted by the plastic failure of the matrix. This study demonstrated that PT composites are a good candidate for structural applications in harsh environments."
+   },
+   {
+    "id": "https://openalex.org/W4407129348",
+    "doi": "https://doi.org/10.1038/s41467-025-56707-y",
+    "title": "In-silico platform for the multifunctional design of 3D printed conductive components",
+    "year": 2025,
+    "cited": 7,
+    "venue": "Nature Communications",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Modular Robots and Swarm Intelligence"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-56707-y.pdf",
+    "abstract": "The effective electric resistivity of conductive thermoplastics manufactured by filament extrusion methods is determined by both the material constituents and the printing parameters. The former determines the multifunctional nature of the composite, whereas the latter dictates the mesostructural characteristics such as filament adhesion and void distribution. This work provides a multi-scale computational framework to evaluate the thermo-electro-mechanical behaviour of printed conductive polymers. A full-field homogenisation model first provides the influence of material and mesostructural features (i.e., filament orientations, voids and adhesion between filaments). Then, a macroscopic continuum model elucidates the effects of thermo-electro-mechanical mixed boundary conditions. The in-silico multi-scale methodology is validated with extensive original multi-physical experiments and a functional application consisting of an electro-heatable printing cartridge. Overall, this work establishes the foundations to virtually break the gap between mesoscopic and macroscopic multifunctional responses in conductive components manufactured by additive manufacturing techniques."
+   },
+   {
+    "id": "https://openalex.org/W4353033177",
+    "doi": "https://doi.org/10.1155/2023/9269987",
+    "title": "Accuracy of Distributed Strain Sensing with Single-Mode Fibre in Composite Laminates under Thermal and Vibration Loads",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Structural Control and Health Monitoring",
+    "topics": [
+     "Advanced Fiber Optic Sensors",
+     "Structural Health Monitoring Techniques",
+     "Vibration and Dynamic Analysis"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/schm/2023/9269987.pdf",
+    "abstract": "In this work, the strain measurement accuracy of single-mode fibre (SMF) under thermal and vibration loads is investigated by strain-frequency shift coefficient analyses. This research allows for the application of SMF sensors for structural health monitoring in real operational conditions. The strain measurement accuracy under combined static and thermal load is investigated experimentally, which demonstrated that temperature fluctuations induce non-negligible errors in the strain measurement, even with temperature compensation applied. The temperature fluctuation range which can induce measurement errors is quantified as less than −20 ° C or higher than 55 ° C. In addition, a fatigue experiment is conducted to investigate the measurement accuracy under low-frequency vibration load. The results of the fatigue experiment demonstrate that the vibrations mainly increase the ratio of null values in strain measurements. Findings from experiments can be applied to enhance structural health monitoring accuracy and reduce false positives. This study has important implications for the service application of distributed optical fibre sensing for composite structure health monitoring."
+   },
+   {
+    "id": "https://openalex.org/W4393965976",
+    "doi": "https://doi.org/10.1016/j.tmater.2024.100028",
+    "title": "Semantic segmentation of progressive micro-cracking in polymer composites using Attention U-Net architecture",
+    "year": 2024,
+    "cited": 5,
+    "venue": "Tomography of Materials and Structures",
+    "topics": [
+     "Infrastructure Maintenance and Monitoring",
+     "Drilling and Well Engineering",
+     "Industrial Vision Systems and Defect Detection"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.tmater.2024.100028",
+    "abstract": "The present study delivers a methodology for investigating the gradual damage development in a carbon fibre-reinforced cross-ply polymer composite during a sequence of thermo-mechanical loadings with the help of X-ray computed tomography. The procedure allows an in-depth analysis of the occurrence and nature of the multiple cracks that form within layers oriented perpendicular, or transverse, to the loading direction. This is achieved by using Attention U-Net architecture for semantic segmentation of the transverse cracks. The model shows promising results, through an ability to identify all the transverse cracks and reflect the damage progression. The described method provides a robust routine for analysing challenging polymer composite tomographic datasets."
+   },
+   {
+    "id": "https://openalex.org/W4416774321",
+    "doi": "https://doi.org/10.1038/s41467-025-66744-2",
+    "title": "Inverse design of stochastic, voxelated thermo-viscoelastic digital materials",
+    "year": 2025,
+    "cited": 3,
+    "venue": "Nature Communications",
+    "topics": [
+     "Composite Material Mechanics",
+     "Theoretical and Computational Physics",
+     "Probabilistic and Robust Engineering Design"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-66744-2_reference.pdf",
+    "abstract": "Polymer material jetting enables the fabrication of voxelated, multi-material structures with material control at the microscale. However, current work often neglects viscoelastic effects and designing voxelated digital materials remains challenging due to the complexity of the vast design freedom and intractability of efficiently modeling macroscale voxel structures. We present an efficient representation of stochastically mixed, voxelated digital materials and develop a generalized viscoelastic temperature-dependent material model to design and simulate digital materials mixed from two constituent polymers. The material model is based on an extended percolation theory considering frequency and temperature. An artificial neural network is trained on the material model to directly estimate target material behavior given arbitrary non-linear, user requirements. The approach is validated using two case studies requiring tailored, non-linear material behavior: a personalized wrist orthosis and a machine damper. These show the newly unlocked possibilities for the design and fabrication of tuned, stochastic digital materials."
+   },
+   {
+    "id": "https://openalex.org/W4415187738",
+    "doi": "https://doi.org/10.1002/adhm.202503689",
+    "title": "Transparent Multifunctional Wearable Strain Sensor With Self‐Healing and Antibacterial Capabilities for Human Motion Detection",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Advanced Healthcare Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Tactile and Sensory Interactions"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adhm.202503689",
+    "abstract": "Wearable strain sensors are highly desirable due to their increasing applications in smart electronic skins and healthcare monitoring systems. Nevertheless, simultaneously integrating high stretchability, sensing linearity, stable operation under sub-zero temperatures, and long-term storage for conductive films remains a formidable challenge. Herein, a dual-network polyvinyl alcohol (PVA)-based high-performance strain sensor that overcomes these limitations through an innovative materials design is reported. The network is constructed via synergistic cross-linking of PVA with tannic acid (TA) and glutaraldehyde (GA), followed by the incorporation of choline acetate ionic liquid (IL) to enhance the multifunctionality of the sensor (denoted as PTGIL). The PTGIL sensor exhibits a compelling combination of properties, such as exceptional mechanical robustness (strength ≈20 MPa; elongation at break ≈900%), room-temperature self-healing capability, and transparency (≈88% transmittance at 550 nm). Critically, it demonstrates stable sensing performance even at sub-zero temperatures and preserves functionality after long-term ambient storage. The biocompatibility with human dermal fibroblasts and the antimicrobial activities against Staphylococcus aureus (S. aureus) and Escherichia coli (E. coli) confirm its safety and further support long-term skin contact applications. Beyond conventional motion monitoring, the multifunctionality of the PTGIL sensor may help bridge soft biomechanics and healthcare applications such as rehabilitation tracking following joint ligament reconstruction and intraoperative motion-outcome correlation analysis."
+   },
+   {
+    "id": "https://openalex.org/W4409727295",
+    "doi": "https://doi.org/10.3390/batteries11050172",
+    "title": "Modular Multifunctional Composite Structure for CubeSat Applications: Embedded Battery Prototype Thermal Analysis",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Batteries",
+    "topics": [
+     "Spacecraft Design and Technology",
+     "Embedded Systems Design Techniques",
+     "Interconnection Networks and Systems"
+    ],
+    "oa_url": "https://www.mdpi.com/2313-0105/11/5/172/pdf?version=1745472639",
+    "abstract": "The present work aims to develop the current CubeSats architecture. Starting from the framework of project ARAMIS (an Italian acronym for a highly modular architecture for satellite infrastructures), a new concept of smart tiles has been developed, employing multifunctional structures and lightweight, composite materials. This enables increased CubeSat mass efficiency and payload volume. An embedded battery tile has been designed, built, and tested from a vibration point of view. In the present work, the LiPo batteries selected for the prototype have been tested with the HPPC testing procedure, to extract their equivalent Randles circuit parameters. Thus, the thermal power dissipation from the batteries can be estimated. With these data, Thermal Desktop simulations of a representative ARAMIS CubeSat are performed, considering LEO orbit and hot/cold cases. Firstly, a parametric analysis was conducted to evaluate the thermal behaviors of various design alternatives. A suitable configuration for the CubeSat was then found, enabling the validation of the embedded battery tile from a thermal point of view. The final configuration includes heaters for the LiPo batteries, a commercial CubeSat skeleton made in aluminum alloy, and a top coating for smart tiles with proper solar absorptivity."
+   },
+   {
+    "id": "https://openalex.org/W3165168782",
+    "doi": "https://doi.org/10.3390/ma14112928",
+    "title": "Heating and Compression at Elevated Temperature of Thin-Walled Titanium Channel Section Columns",
+    "year": 2021,
+    "cited": 2,
+    "venue": "Materials",
+    "topics": [
+     "Fire effects on concrete materials",
+     "Structural Load-Bearing Analysis",
+     "Mechanical and Thermal Properties Analysis"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/11/2928/pdf?version=1622514255",
+    "abstract": "The paper deals with numerical and experimental investigations of the channel section column subjected to heating and compression at elevated temperature. The analyzed columns were made of titanium alloy (Grade 2) and simply supported on both ends. The research procedure involved initial compression of the column (i), heating the preloaded column (ii) and compression of the column at elevated temperature to failure (iii). The tests were performed at temperatures from 23 °C to 300 °C. Numerical calculations were carried out in the Ansys® software and involved the application of bilinear and multilinear isotropic hardening. It has been revealed that the temperature increase in a statically indeterminate system causes a decrease in the load-carrying capacity of the profile. An increase in temperature by 27 °C causes a reduction of the load-carrying capacity by 10%, while compression at temperature 300 °C reduces the nominal load-carrying capacity of the profile by half. Most of the proposed numerical procedures allowed for accurate estimation of reaction forces during heating and maximum compressive forces recorded during compression at elevated temperatures. The correctness of the determined material characteristics and the suitability of shell models for estimation of the response of a thin-walled structure subjected to thermomechanical loading was confirmed."
+   },
+   {
+    "id": "https://openalex.org/W4417045654",
+    "doi": "https://doi.org/10.3390/polym17243241",
+    "title": "Mechanical Behavior of Carbon-Fiber-Reinforced Polymer Composites (Towpreg) Under Various Temperature Conditions",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Polymers",
+    "topics": [
+     "Hybrid Renewable Energy Systems",
+     "Fiber-reinforced polymer composites",
+     "Polymer composites and self-healing"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/17/24/3241/pdf?version=1764941488",
+    "abstract": "As the hydrogen economy rapidly expands, carbon-fiber-reinforced polymer composites (Towpreg) have become key materials for next-generation hydrogen pressure vessels, offering superior processability, reproducibility, and storage stability compared to conventional wet-winding composites. Since hydrogen storage vessels are evaluated at three representative service temperatures (-40, 25, and 85 °C), Towpreg materials must maintain consistent mechanical performance across this range to meet certification standards. This study establishes an integrated methodology combining Towpreg panel fabrication, temperature-controlled tensile and fatigue testing, and quantitative assessment of thermo-mechanical stability using DM epoxy resin as the matrix. To address artifacts such as tab slippage at high temperatures and inefficiency at low temperatures, a \"Localized Thermal Control\" approach was developed. The HY-Mini Heater System enables localized heating at 85 °C, while the HY-Cooler System applies a Joule-Thomson-based Stirling cooler for efficient localized cooling at -40 °C. Quantitative evaluation showed tensile strengths of 2973.3 MPa (RT), 2767.3 MPa (HT, ~7% decrease), and 2907.7 MPa (LT, ~2% decrease). Under R = 0.1 fatigue testing, the Basquin slope (m) was 11.97 (RT), 9.98 (HT), and 10.6 (LT), while the intercept (log b ≈ 3.7) remained nearly constant. These results confirm the excellent thermo-mechanical stability of the carbon-fiber-reinforced polymer composites (Towpreg) for hydrogen tank applications."
+   },
+   {
+    "id": "https://openalex.org/W7133987495",
+    "doi": "https://doi.org/10.1007/s10853-026-12488-3",
+    "title": "Improvement of fatigue properties of duplex-treated ELI Ti6Al4V fabricated by laser powder bed fusion: heat treatment and W-DLC coating under various temperature conditions",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Materials Science",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Surface Treatment and Residual Stress",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10853-026-12488-3.pdf",
+    "abstract": "Abstract This study investigates the effects of a duplex surface treatment, consisting of sub-β-transus heat treatment followed by W-DLC coating via closed-field unbalanced magnetron sputtering (CFUBMS), on the fatigue behavior of Ti6Al4V ELI alloy fabricated using laser powder bed fusion (L-PBF). Post-processing techniques were analyzed for their influence on fatigue performance under diverse ambient conditions (steady and cyclic). Fatigue tests were conducted using the stress-life methodology at 25 ℃ (room temperature), 50 ℃, 250 ℃, −50 ℃, and cyclic conditions ( −50/ + 50 ℃). Structural, morphological, and mechanical properties were characterized using X-ray diffraction (XRD), scanning electron microscopy (SEM), energy-dispersive X-ray spectroscopy (EDX), and Vickers hardness testing. The microstructural analysis highlighted significant strain accumulation near fracture sites and the presence of micropores, which contributed to microcrack initiation. Results demonstrated that test temperature notably influenced fatigue life, significantly reducing under cyclic conditions ( −50/ + 50 ℃) compared to room temperature. Heat treatment and W-DLC coating notably enhanced fatigue performance across all test conditions by forming a protective barrier and reducing residual stresses. Graphical abstract"
+   },
+   {
+    "id": "https://openalex.org/W4410175427",
+    "doi": "https://doi.org/10.1051/matecconf/202540802010",
+    "title": "Impact of Aluminium Ageing in an Industrial Stamping Process",
+    "year": 2025,
+    "cited": 0,
+    "venue": "MATEC Web of Conferences",
+    "topics": [
+     "High-Velocity Impact and Material Behavior",
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.matec-conferences.org/articles/matecconf/pdf/2025/02/matecconf_iddrg2025_02010.pdf",
+    "abstract": "The automotive industry's efforts to reduce vehicle weight are driving the increasing adoption of aluminium alloys in vehicle chassis components. However, using aluminium alloys introduces challenges in forming processes, influenced by diverse factors such as material storage conditions and natural ageing, which can affect the formability. The present study investigates the effect of natural ageing on the formability of the AW 5754-H111 alloy by examining two storage conditions: as received (no ageing) and aged for two months. Formability tests were performed to characterise the mechanical behaviour and determine the material's formability limits. During these tests, the Portevin-Le Châtelier (PLC) effect, a plastic deformation instability, was observed. Its temperature dependence was further examined through controlled-temperature tests. Additionally, the study incorporated experimental and numerical analyses of an industrial stamping process for a component made from this alloy. Key findings include the characterisation of formability limits under different ageing conditions in the principal strain space, an analysis of the PLC effect across diverse temperature ranges and fracture modes, and validation of numerical models against experimental results for the diverse stamping stages. This work provides valuable insights into the mechanical performance of aged aluminium alloys in industrial applications."
+   },
+   {
+    "id": "https://openalex.org/W4405177705",
+    "doi": "https://doi.org/10.1063/12.0028752",
+    "title": "Mechanical properties of UV cured additively manufactured materials",
+    "year": 2024,
+    "cited": 0,
+    "venue": "AIP conference proceedings",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Injection Molding Process and Properties",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/acp/article-pdf/doi/10.1063/12.0028752/20289027/600001_1_12.0028752.pdf",
+    "abstract": "Mechanical and workability performance of high-strength mortar with ferronickel waste slag 4 as fine aggregate replacement"
+   },
+   {
+    "id": "https://openalex.org/W3036058847",
+    "doi": "https://doi.org/10.1088/1755-1315/503/1/012079",
+    "title": "Increase of Mechanical and Thermic Performance of Polymers with Renewable-Base Nanomaterials to Develop Composite for Fiber Reinforced Polymers Industry",
+    "year": 2020,
+    "cited": 0,
+    "venue": "IOP Conference Series Earth and Environmental Science",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Carbon Nanotubes in Composites"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1755-1315/503/1/012079/pdf",
+    "abstract": "Abstract The objective of this research was to evaluate mechanical and thermal performance of a commercial adhesive with the incorporation of renewable-based nanomaterials. Renewable-based CNTs (carbon nanotubes) were synthesized using microwave irradiation of pyrolyzed oat hulls biochar and ferrocene as catalyst. CNTs were mixed with epoxy adhesive and TEPA (tetraethylene pentamine) which were used as curing agents. In the evaluation of mechanical and thermal properties of the composites studied, the samples contained between 0.02-0.1 wt% of CNTs. All composites were cured during 2 hours at 60°C. Mechanical properties (tensile strength and modulus) were tested in a Universal Testing Machine and were evaluated according to ASTM D638. Thermal properties were evaluated using a Thermogravimetric Analyzer. Of the results obtained an improvement of mechanical and thermal properties were observed. Thus, the incorporation of renewable-based CNTs can be a suitable alternative both to reduce fiber reinforced polymer manufacturing costs and in the valorisation of waste biomass"
+   },
+   {
+    "id": "https://openalex.org/W2887276420",
+    "doi": null,
+    "title": "Fracture Mechanics Of Heterogeneous Composites",
+    "year": 2018,
+    "cited": 0,
+    "venue": "DigitalCommons@UTEP (The University of Texas at El Paso)",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Composite Material Mechanics",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://digitalcommons.utep.edu/open_etd/1516",
+    "abstract": "The increasing application of composite materials due to their ubiquitous advance in terms of mechanical and thermal properties has brought attention to the fracture mechanics of the materials possessing heterogeneity. Recent investigations have focused on the micro- and macro-mechanism of fracture in heterogeneous composites (HCs). In this study, the fracture mechanics of the two HCs: Polymer bonded explosive (PBX) simulant and hot mixed asphalt (HMA) are evaluated on the macroscopic scale. It is an interest of Sandia National Laboratory to examine the fracture resistance of PBXs, particularly those of varying composition and subjected to aging. In this research, a batch of PBX simulants are manufactured in the laboratory environment and the fracture resistance is experimentally investigated. Primarily, a simulant composition of 80 wt.% soda lime glass beads (SLGB) and 20 wt.% high impact Polystyrene 825 (HIPS) is prepared to perform Brazilian disk tests to characterize the tensile and compressive properties. Fracture toughness and energy tests are performed in the semi-circular bending (SCB) configuration on 80, 81, 82, and 83 wt.% SLGB compositions. Digital image correlation (DIC) is performed to record the surface displacements and calculate surface strains during testing. The micromechanical behavior of ductile and brittle fracture is observed using digital microscopy and scanning electron microscopy of the fracture surface. It is found that fracture behavior is heavily depended on the microstructural heterogeneous distribution of particulate polymer matrix, micro-voids/cracks, and interfacial bonding energy. In the consecutive section, a proposal on the thermomechanical behavior of hot mixed asphalt (HMA) at low temperature is presented. There is a need to elucidate the thermomechanical fracture resistance of HMAs employed in the pavement. These materials are highly heterogeneous, with batch-to-batch variations outside of these observed in classic structure materials (such as structural alloys or even concrete). The impact of weather on these materials (HMAs) is one of the primary research focuses of the Southern Plains Transportation Center. On that interest, this proposal is prepared to investigate the thermal stress and thermal mismatch of HMA subjected to cooling. HMA specimens will manufacture according to TxDOT standard. This proposal includes a plan to perform the indirect tensile test and thermal stress restrained specimen test for single edge prismatic specimen on several HMAs at varying temperature to acquire a master curve and low-temperature fracture properties. The application of DIC system will enable us to observe crack initiation, propagation, and nucleation as well as the thermal and mechanical strains, and thermal contraction coefficient within asphalt specimens. This plan of the proposal also includes the integration of Infrared (IR) thermography with DIC in order to observe the thermal mismatch gradient. A method will de"
+   },
+   {
+    "id": "https://openalex.org/W2718026704",
+    "doi": "https://doi.org/10.11606/d.85.2017.tde-10042017-151324",
+    "title": "Aplicação do conceito \\\"vazamento antes da falha\\\" (LEAK BEFORE BREAK) em tubulações de aço 316LN soldado com metal de adição 316L",
+    "year": 2017,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Microstructure and Mechanical Properties of Steels",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "http://www.teses.usp.br/teses/disponiveis/85/85134/tde-10042017-151324/publico/2017CuntoAplicacao.pdf",
+    "abstract": "base da minha vida."
+   },
+   {
+    "id": "https://openalex.org/W4236927355",
+    "doi": "https://doi.org/10.17771/pucrio.acad.31560",
+    "title": "QUALIFICAÇÃO DE DIFERENTES PROCEDIMENTOS DE INSTRUMENTAÇÃO DE SENSORES DE DEFORMAÇÃO BASEADOS EM REDES DE BRAGG",
+    "year": 2017,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Advanced Fiber Optic Sensors"
+    ],
+    "oa_url": "https://www.maxwell.vrac.puc-rio.br/31560/31560.PDF",
+    "abstract": "À minha vó (nonna) Esther, pois esteve presente comigo por 22 anos, cuidando de mim como mãe.Seu amor, ensinamentos e empoderamento estarão comigo para sempre.À minha irmã Flavia, por ser além de irmã, ser minha melhor amiga.Aos meus irmãos Cesar e Murilo, por todo apoio e dúvidas tiradas sobre: engenharia, futuro e vida, além de todo o amor compartilhado.Ao meu sobrinho Lucas, pois mesmo tão pequeno e com pouco tempo no mundo, conseguiu me mostrar um novo tipo de amor.Ao meu namorado Raphael, por transformar todo o meu estresse em calmaria.Aos meus amigos de faculdade, Camilla Paixão, Gustavo Lemos, Lucas Silva, e tantos outros, por estarem comigo, do início ao fim, compartilhando esse estresse diário que se chama graduação em engenharia mecânica.Aos meus amigos de LSFO, em especial à Gabriela Wegmann e Sávio Figueiredo, por toda ajuda e parceria neste projeto.Resumo Qualificação de diferentes procedimentos de instrumentação de sensores de deformação baseados em redes de Bragg.O desempenho dos sensores de deformação a fibra óptica baseados em rede de Bragg depende fortemente da escolha adequada do adesivo e do procedimento de instrumentação.O objetivo do projeto é testar e qualificar, tipos de instrumentações para dois tipos distintos de adesivos de alta performance.Foram testados 3 tipos de modos de adesão do sensor ao corpo de prova: livre de força durante a cura, com aplicação de pressão por ímã e com aplicação de pressão por um parafuso micrométrico projetado especialmente para a aplicação neste trabalho.As instrumentações assim obtidas foram testadas em relação a temperatura, tensão e presença de umidade no ambiente.Os resultados permitem apontar qual a melhor instrumentação para cada adesivo e suas limitações de uso."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Instron 3119-600\" OR \"Instron 3119-605\" OR \"Instron 3119-606\" OR \"Instron 3119-609\" OR \"Instron 3119-615\" OR \"Instron 3119-607\") AND OPEN_ACCESS:y",
+  "count": 6,
+  "papers": [
+   {
+    "pmcid": "PMC10857360",
+    "doi": "10.3390/polym16030420",
+    "title": "Strain Rate and Temperature Influence on Micromechanisms of Plastic Deformation of Polyethylenes Investigated by Positron Annihilation Lifetime Spectroscopy.",
+    "journal": "Polymers (Basel)",
+    "year": "2024",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 1133",
+     "ISO 1133-1",
+     "ISO 527-2"
+    ]
+   },
+   {
+    "pmcid": "PMC11794641",
+    "doi": "10.1038/s41467-025-56707-y",
+    "title": "In-silico platform for the multifunctional design of 3D printed conductive components.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7998464",
+    "doi": "10.3390/ma14061331",
+    "title": "Effect of Solution Annealing on Fatigue Crack Propagation in the AISI 304L TRIP Steel.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E647",
+     "ASTM STP-1372"
+    ]
+   },
+   {
+    "pmcid": "PMC12753674",
+    "doi": "10.1038/s41467-025-66744-2",
+    "title": "Inverse design of stochastic, voxelated thermo-viscoelastic digital materials.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D638"
+    ]
+   },
+   {
+    "pmcid": "PMC12864581",
+    "doi": "10.1002/adhm.202503689",
+    "title": "Transparent Multifunctional Wearable Strain Sensor With Self-Healing and Antibacterial Capabilities for Human Motion Detection.",
+    "journal": "Adv Healthc Mater",
+    "year": "2026",
+    "cited": 1,
+    "snippets": 0,
+    "standards_in_paper": [
+     "JIS K 6251"
+    ]
+   },
+   {
+    "pmcid": "PMC8198463",
+    "doi": "10.3390/ma14112928",
+    "title": "Heating and Compression at Elevated Temperature of Thin-Walled Titanium Channel Section Columns.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 0,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ISO ISO 6892-1",
+     "ISO ISO 6892-2",
+     "ISO-834"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10857360",
+   "title": "Strain Rate and Temperature Influence on Micromechanisms of Plastic Deformation of Polyethylenes Investigated by Positron Annihilation Lifetime Spectroscopy.",
+   "year": "2024",
+   "text": "ples were solidified between metal plates. 2.3. Mechanical Testing Mechanical properties of polymers were assessed with the use of a Instron 5582 tensile testing machine produced by Instron (Norwood, MA, USA) within a load range 0–2 kN for tests performed at room temperature and within 0–100 kN for tests performed in temperature-controlled chamber Instron 3119-606. The dumbbell-shaped samples were prepared according to ISO 527-2 standard with 1 mm thickness, 5 mm width and 25 mm gauge length [ 55 ]. HDPE was stretched at room temperature with three strain rates: 3.3 × 10 −2 s −1 , 3.3 × 10 −3 s −1 and 3.3 × 10 −4 s −1 (with speeds of crosshead 50 mm/min, 5 mm/min, 0.5 mm/min, respectively) and with selected",
+   "standards": [
+    "ISO 527-2"
+   ]
+  },
+  {
+   "pmcid": "PMC11794641",
+   "title": "In-silico platform for the multifunctional design of 3D printed conductive components.",
+   "year": "2025",
+   "text": "( V o − V d r o p ) V d r o p where A is the area of the sample’s cross-section and V o the applied voltage. Experimental procedure for thermo-mechanical tests Following the procedure described in 26 , uniaxial tensile tests were performed on rectangular samples at a strain rate of 0.001 s −1 (INSTRON 34TM-5, MA, USA) and using a climatic chamber (INSTRON 3119-605, MA, USA) to control the experiment temperature. A load cell of 5 kN was used, along with wedge action grips of 5 kN. These tests were performed at different testing temperatures of 25, 35, 45 °C. Experimental procedure for mechano-electrical tests Uniaxial tensile tests were performed using the ad-hoc electrode grips employed for the electro-ther",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7998464",
+   "title": "Effect of Solution Annealing on Fatigue Crack Propagation in the AISI 304L TRIP Steel.",
+   "year": "2021",
+   "text": "aried in the range from 60 Hz to 90 Hz, depending on the specimen stiffness. The experiments were done in a laboratory with controlled temperature and humidity. The temperature was set to 23 °C and the absolute humidity was kept at 10 g/m 3 (the corresponding relative humidity is 50%). Additional tests were carried out in the environmental chamber Instron 3119-605 at elevated temperature 150 °C. Crack propagation rates were determined at load ratios R = 0.1 and R = 0.7, where R is equal to K min /K max and K min and K max are minimal and maximal stress intensity factors of the loading cycle, respectively. These load ratios were chosen to acquire representative da/dN vs. ΔK curves for the conditions with cra",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12753674",
+   "title": "Inverse design of stochastic, voxelated thermo-viscoelastic digital materials.",
+   "year": "2025",
+   "text": "material gradient. The seven material mixtures are AB/VW mixtures with an AB content of 0, 16.5, 33.3, 50, 66.6, 83.5, and 100%. The DMA testing is performed on an Instron ElectroPuls E3000 (Instron, Norwood, MA, USA) using an Instron Dynacell 2527 load cell with a range of ±5 kN, Instron fatigue-rated mechanical wedge action tensile grips and an Instron 3119-600 series temperature-controlled chamber. Instron WaveMatrix is used to record all relevant data and to calculate the storage modulus E ′ , loss modulus E ″ and dissipation factor tan δ for a sinusoidal displacement input for frequencies between 1 Hz and 18 Hz with 1 Hz increments. The measurement temperatures are set for each sample to force a chang",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ASTM D638": 1,
+  "ISO 527-2": 1
+ },
+ "standards_new": [
+  "ASTM D638",
+  "ISO 527-2"
+ ],
+ "test_item_hits": {
+  "tensile": 9,
+  "abrasion": 8,
+  "electrical_transport": 7,
+  "compression": 5,
+  "formability": 5,
+  "halt_hass": 4,
+  "microscopy": 3,
+  "fracture_toughness": 2,
+  "density_porosity": 1,
+  "flexure": 1,
+  "hardness_vickers": 1,
+  "shear": 1,
+  "thermography": 1
+ }
+}

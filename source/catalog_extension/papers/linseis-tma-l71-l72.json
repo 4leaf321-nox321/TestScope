@@ -1,0 +1,130 @@
+{
+ "object": "linseis-tma-l71-l72",
+ "manufacturer": "linseis",
+ "phrases": [
+  "LINSEIS TMA L71",
+  "LINSEIS TMA",
+  "LINSEIS L71",
+  "LINSEIS L72",
+  "LINSEIS TMA L71 EM",
+  "LINSEIS TMA L72"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"LINSEIS TMA L71\" OR \"LINSEIS TMA\" OR \"LINSEIS L71\" OR \"LINSEIS L72\" OR \"LINSEIS TMA L71 EM\" OR \"LINSEIS TMA L72\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"LINSEIS TMA L71\" OR \"LINSEIS TMA\" OR \"LINSEIS L71\" OR \"LINSEIS L72\" OR \"LINSEIS TMA L71 EM\" OR \"LINSEIS TMA L72\") AND OPEN_ACCESS:y",
+  "count": 4,
+  "papers": [
+   {
+    "pmcid": "PMC8658850",
+    "doi": "10.3390/polym13234089",
+    "title": "Polyurethane Foam Composites Reinforced with Renewable Fillers for Cryogenic Insulation.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 12,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 1607",
+     "EN ISO 844",
+     "ISO 14896",
+     "ISO 8301"
+    ]
+   },
+   {
+    "pmcid": "PMC5456740",
+    "doi": "10.3390/ma9030134",
+    "title": "Reinforcing Low-Volume Fraction Nano-TiN Particulates to Monolithical, Pure Mg for Enhanced Tensile and Compressive Response.",
+    "journal": "Materials (Basel)",
+    "year": "2016",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E384"
+    ]
+   },
+   {
+    "pmcid": "PMC11944478",
+    "doi": "10.3390/polym17060729",
+    "title": "Phase-Change Materials as Cryo-Shock Absorbers in Rigid Polyurethane Cryogenic Insulation Foams.",
+    "journal": "Polymers (Basel)",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D 2290",
+     "EN 1607",
+     "ISO 1926",
+     "ISO 8301",
+     "ISO 844",
+     "ISO 845"
+    ]
+   },
+   {
+    "pmcid": "PMC9413095",
+    "doi": "10.3390/ma15165642",
+    "title": "New Thermo-Reflective Coatings for Applications as a Layer of Heat Insulating Materials.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 12087",
+     "EN ISO 4589-2",
+     "EN ISO 527",
+     "ISO 4649",
+     "ISO 7783"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8658850",
+   "title": "Polyurethane Foam Composites Reinforced with Renewable Fillers for Cryogenic Insulation.",
+   "year": "2021",
+   "text": "inseis, Selb, Germany), and a test was carried out according to ISO 8301:1991. The sample (dimensions 200 mm × 200 mm × 50 mm) was inserted between two plates (top plate temperature, 20 °C; bottom plate temperature, 0 °C). The coefficient of thermal conductivity was measured at +10 °C. 2.2.10. Thermomechanical Analysis (TMA) and Safety Coefficient TMA tests were performed using Linseis TMA PT (Linseis, Selb, Germany). Each sample was cut in a rectangular cuboid with h ~ 2 cm. The sample was cooled from 20 °C to −160 °C (3 °C/min) and then heated to 50 °C (3 °C/min). The shrinkage of material cooling it from 300 to 77 K is calculated from TMA results. Safety coefficient is a characteristic that describes a material’s ability to m",
+   "standards": [
+    "ISO 8301"
+   ]
+  },
+  {
+   "pmcid": "PMC5456740",
+   "title": "Reinforcing Low-Volume Fraction Nano-TiN Particulates to Monolithical, Pure Mg for Enhanced Tensile and Compressive Response.",
+   "year": "2016",
+   "text": "Japan), an Olympus metallographic optical microscope (Tokyo, Japan) and Scion image analysis software (Scion, Sacramento, CA, USA) were utilized. For every nanocomposite sample, five micrographs were utilized for more accurate estimation of grain size. 4.3.4. Coefficient of Thermal Expansion (CTE) By using a thermo-mechanical analysis instrument “LINSEIS TMA PT 1000LT” (Linseis, Princeton Junction, NJ, USA), the coefficient of thermal expansion values of pure magnesium and Mg-TiN nanocomposites were determined. Heating rate of 5 °C/min was maintained with an argon flow rate of 0.1 lpm. By using an alumina probe, the displacement of the test samples (each of 5 mm length) was measured as a function of t",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11944478",
+   "title": "Phase-Change Materials as Cryo-Shock Absorbers in Rigid Polyurethane Cryogenic Insulation Foams.",
+   "year": "2025",
+   "text": "the dynamic mechanical analysis (DMA). Rectangular samples with dimensions of 30 × 10 × 5 mm were used. Samples were tested in shear oscillation mode in the temperature range from −50 °C to 180 °C (heating rate of 3 °C/min), and the frequency was 1 Hz and in the amplitude range of 0.1–2%. 2.11. Thermomechanical Analysis and Safety Coefficient The Linseis TMA PT instrument, manufactured in Selb, Germany, was used for thermomechanical analysis (TMA) tests. For the examination, rectangular cuboid samples that were about 2 cm tall (h) were generated. Each sample was cooled from 20 °C to −160 °C at a rate of 3 °C/min during the test and then heated to 50 °C (3 °C/min). Based on the TMA data collected durin",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9413095",
+   "title": "New Thermo-Reflective Coatings for Applications as a Layer of Heat Insulating Materials.",
+   "year": "2022",
+   "text": "s afterwards were processed using IRSoft 4.6 software to determine the hottest spot and average temperatures of both plates during the heating. Figure 2 The setup of thermal transmittance experiment. 2.3.3. Methods of Measuring Physical and Mechanical Properties of Coatings For the thermo-mechanical analysis of thermo-reflective coating samples, a Linseis TMA PT was used. Each sample was cut in a rectangular cuboid with h~2 cm. The sample was cooled from 20 °C to −160 °C (3 °C/min) and then heated to 50 °C (3 °C/min). In order to determine the mechanical properties of the coatings, a tensile strength, abrasive wear and a pull-off test were performed. The tensile strength was found to be in line with PN",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ISO 8301": 1
+ },
+ "standards_new": [
+  "ISO 8301"
+ ],
+ "test_item_hits": {
+  "tma": 3,
+  "tensile": 2,
+  "abrasion": 1,
+  "dma": 1,
+  "shear": 1,
+  "thermal_conductivity": 1
+ }
+}

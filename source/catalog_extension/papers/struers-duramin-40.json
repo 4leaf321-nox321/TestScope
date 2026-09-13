@@ -1,0 +1,318 @@
+{
+ "object": "struers-duramin-40",
+ "manufacturer": "struers",
+ "phrases": [
+  "Struers Duramin-40",
+  "Struers Duramin-40 M1",
+  "Struers A1",
+  "Struers Duramin-40 M2",
+  "Struers A2",
+  "Struers Duramin-40 M3"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Struers Duramin-40\" OR \"Struers Duramin-40 M1\" OR \"Struers A1\" OR \"Struers Duramin-40 M2\" OR \"Struers A2\" OR \"Struers Duramin-40 M3\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Struers Duramin-40\" OR \"Struers Duramin-40 M1\" OR \"Struers A1\" OR \"Struers Duramin-40 M2\" OR \"Struers A2\" OR \"Struers Duramin-40 M3\") AND OPEN_ACCESS:y",
+  "count": 23,
+  "papers": [
+   {
+    "pmcid": "PMC9276687",
+    "doi": "10.1038/s41467-022-31658-w",
+    "title": "Exploration of glassy state in Prussian blue analogues.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 29,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7503919",
+    "doi": "10.3390/ma13173770",
+    "title": "Influence of Laser Powder Bed Fusion Process Parameters on Voids, Cracks, and Microhardness of Nickel-Based Superalloy Alloy 247LC.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9920888",
+    "doi": "10.3390/ma16031117",
+    "title": "Microhardness, Indentation Size Effect and Real Hardness of Plastically Deformed Austenitic Hadfield Steel.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 6507-2"
+    ]
+   },
+   {
+    "pmcid": "PMC10582235",
+    "doi": "10.1002/cre2.756",
+    "title": "In vitro comparison of the physical and mechanical properties of an ormocer with an ormocer-based composite and a nanocomposite restorative material.",
+    "journal": "Clin Exp Dent Res",
+    "year": "2023",
+    "cited": 5,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ISO 806",
+     "ISO 838.012"
+    ]
+   },
+   {
+    "pmcid": "PMC10381570",
+    "doi": "10.3390/ma16144937",
+    "title": "Research of Friction Stir Welding (FSW) and Electron Beam Welding (EBW) Process for 6082-T6 Aluminum Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 1706",
+     "EN AW-6082",
+     "EN ISO 4136",
+     "EN19",
+     "EN31"
+    ]
+   },
+   {
+    "pmcid": "PMC9822426",
+    "doi": "10.3390/ma16010351",
+    "title": "Wear Mechanisms of the Forging Tool Used in Pre-Forming in a Double Forging System of Truck Parts.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 4,
+    "snippets": 2,
+    "standards_in_paper": [
+     "EN ISO 4957"
+    ]
+   },
+   {
+    "pmcid": "PMC8538747",
+    "doi": "10.3390/ma14206052",
+    "title": "Influence of Selective Laser Melting Technology Process Parameters on Porosity and Hardness of AISI H13 Tool Steel: Statistical Approach.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 4,
+    "snippets": 2,
+    "standards_in_paper": [
+     "ASTM A681",
+     "SS316L"
+    ]
+   },
+   {
+    "pmcid": "PMC9821937",
+    "doi": "10.3390/ma16010159",
+    "title": "Sub-Surface Analysis of Grinding Burns with Barkhausen Noise Measurements.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 15305",
+     "SAE5140"
+    ]
+   },
+   {
+    "pmcid": "PMC8433638",
+    "doi": "10.3390/ma14175006",
+    "title": "Development of Alternative Method for Manufacturing Structural Zirconium Elements for Nuclear Engineering.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC8200102",
+    "doi": "10.3390/ma14113074",
+    "title": "Influence of Test Conditions on Sliding Wear Performance of High Velocity Air Fuel-Sprayed WC-CoCr Coatings.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC8072534",
+    "doi": "10.3390/ma14082029",
+    "title": "Powder Interlayer Bonding of Nickel-Based Superalloys with Dissimilar Chemistries.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC7924636",
+    "doi": "10.3390/ma14041010",
+    "title": "Ultrasound Effect on the Microstructure and Hardness of AlMg3 Alloy under Upsetting.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC10890668",
+    "doi": "10.3390/ma17040910",
+    "title": "Microstructure and Mechanical Behavior Comparison between Cast and Additive Friction Stir-Deposited High-Entropy Alloy Al<sub>0.35</sub>CoCrFeNi.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8779758",
+    "doi": "10.3390/ma15020455",
+    "title": "Structural Stability of the SUPER304H Steel Used in Energetics.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC7040713",
+    "doi": "10.3390/ma13030601",
+    "title": "The Effect of Processing Variables on Powder Interlayer Bonding in Nickel-Based Superalloys.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC5951454",
+    "doi": "10.3390/ma11040570",
+    "title": "Microstructure, Mechanical Properties, and Corrosion Resistance of Thermomechanically Processed AlZn6Mg0.8Zr Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2018",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC5713143",
+    "doi": "10.1107/s160057671701398x",
+    "title": "Variant selection in surface martensite.",
+    "journal": "J Appl Crystallogr",
+    "year": "2017",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13467366",
+    "doi": "10.3390/ma19153286",
+    "title": "Microstructure and Mechanical Properties of Dissimilar Friction Stir Welded T-Lap Joints Between AA5083 and AA7020.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13216325",
+    "doi": "10.1038/s41598-026-46152-2",
+    "title": "Data-driven wear performance optimization of WAAM aluminum 5356 via intuitionistic fuzzy decision modeling.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13027578",
+    "doi": "10.3390/ma19061195",
+    "title": "Microstructural and Mechanical Characterization of Ultra-Pure Aluminum for Low-Amplitude-Vibration Cryogenic Applications.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12250710",
+    "doi": "10.3390/ma18133000",
+    "title": "Influence of Zr on Al-Ti-B-Based Grain Refiners in AlSiMgCuZr Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11828944",
+    "doi": "10.1038/s41598-025-90163-4",
+    "title": "Process optimization of jet electrodeposition Ni-Co-P alloy coating using response surface methodology and the tribological behavior of Ni-Co-P nanocomposite coatings.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11728279",
+    "doi": "10.3390/ma17246057",
+    "title": "Quantitative Indicators of Microstructure and Texture Heterogeneity in Polycrystalline System.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9276687",
+   "title": "Exploration of glassy state in Prussian blue analogues.",
+   "year": "2022",
+   "text": "axial compression, dilation on compression, and shear, respectively. Mechanical characterization The glass monolith samples Fe[Fe] 3/4 -g and Cu[Fe] 2/3 -g were first polished using SiC grinding papers and, subsequently, using 250 nm diamond paste, both employing n -hexane as the lubrication medium. The Vickers hardness was then determined using a Struers Duramin 40 instrument equipped with a Vickers diamond tip. Indentation experiments were performed using loads ( P ) of 49.0, 98.0, and 196.1 mN (5, 10, and 20 gf, respectively) for the Fe[Fe] 3/4 -g monolith and additional loads of 490.3, 980.7, 1961.3, 4903.3, and 9806.65 mN (50, 100, 200, 500, and 1000 gf, respectively) for the Cu[Fe] 2/3 -g monolith. Five",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7503919",
+   "title": "Influence of Laser Powder Bed Fusion Process Parameters on Voids, Cracks, and Microhardness of Nickel-Based Superalloy Alloy 247LC.",
+   "year": "2020",
+   "text": "length of all the cracks was measured. The measurements were made using the Zeiss application software of the microscope at 100× magnification. The crack density (1/mm) was calculated by dividing the total crack length by the total area of the micrographs to give the crack density. 2.4. Microhardness Measurement The microhardness was measured in a Struers Duramin-40 tester (Struers Inc, Cleveland, OH, USA). A 0.5 kg test load was employed to make indentions at nine points in each sample with a dwell time of 10 s. The nine points were divided into three points each, distributed in the top, middle, and bottom of the samples. This was done to determine if the microhardness measurements varied along the height of",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9920888",
+   "title": "Microhardness, Indentation Size Effect and Real Hardness of Plastically Deformed Austenitic Hadfield Steel.",
+   "year": "2023",
+   "text": "op sample, where a flat band of approximately 4 mm in width was created to facilitate the microhardness measurement. For the worn surfaces, pre-cleaning was applied using soft and wet tissue to uncover the metallic worn surface by removing the attached loose wear debris. 2.2. Methods of Microhardness Testing and Characterisation A hardness tester, Struers Duramin-40 AC3 (STRUERS APS, Ballerup, Denmark), was employed. Figure 1 shows a photographic view of the tester and the processing in measuring the diagonal length of an indent. Careful focusing was manually applied to every indent to be measured in order to ensure the precision of the measurement. Prior to the testing, an indirect verification experiment wa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10381570",
+   "title": "Research of Friction Stir Welding (FSW) and Electron Beam Welding (EBW) Process for 6082-T6 Aluminum Alloy.",
+   "year": "2023",
+   "text": "oscopy (TEM) modes was performed on the HITACHI SU-70 electron microscope (Tokyo, Japan) equipped with a Thermo Scientific EDS system (Waltham, MA, USA). Chemical composition is given in weight %. Thin films for TEM observation were prepared by mechanical thinning on abrasive papers and the electrolytic polishing of mechanically cut samples in the Struers A2 reagent. 3. Results and Discussion 3.1. Microstructure Figure 1 shows the microstructure of the base material of the 6082 alloy (after solutioning and being artificially aged) in the direction transverse to the rolling direction. The average grain diameter, measured by the planimetric method, was 92 μm. Two types of phases can be distinguished: th",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9822426",
+   "title": "Wear Mechanisms of the Forging Tool Used in Pre-Forming in a Double Forging System of Truck Parts.",
+   "year": "2022",
+   "text": "ical microscope with an HDCE-X3 camera and a ThermoFisher Phenom XL scanning electron microscope (the die insert was cut along its shorter side to make test specimens; grinding and polishing on a grinder-polisher Struers 350, the tool’s samples were etched with 4% nital—94 mL H 2 O, 4 mL HNO 3 , 2 mL HF); the hardness measurements were made with a Struers Duramin 40 M1 hardness tester; the numerical modelling was carried out in the three-dimensional state of deformation in the hot forging process in QForm software. The purpose of the simulations was to determine the temperature distribution, effective stress, and strain for the die insert in the hot forging operation in terms of tool life estimation. Boundary",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9822426",
+   "title": "Wear Mechanisms of the Forging Tool Used in Pre-Forming in a Double Forging System of Truck Parts.",
+   "year": "2022",
+   "text": "yer to the range of the austenite formation, followed by equally rapid cooling and the resulting martensitic transformation. This process is accompanied by severe deformation of the crystal structure. To confirm the existence of a white layer on the tool’s surface, hardness measurements were made in area 4a ( Figure 3 ), using, for this purpose, a Struers Duramin 40 M1 hardness tester. Hardness was measured by the Knoop method, which enabled measuring changes in this parameter at a small distance from the surface of the die insert. Several measurements were taken. From the analysis of the measurement results ( Figure 7 ), it can be concluded that as a result of tribological wear of the die insert at high oper",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8538747",
+   "title": "Influence of Selective Laser Melting Technology Process Parameters on Porosity and Hardness of AISI H13 Tool Steel: Statistical Approach.",
+   "year": "2021",
+   "text": "the area where the borderlines are located was removed from the porosity measurement. All the gathered data are shown in Table A1 and in Figure A1 – Figure A3 , which may be found in the Appendix A . 2.8. Analysis of Hardness The material hardness was measured in the same cut section as the porosity was measured. The experiment was performed on a Struers Duramin-40 device (Struers ApS, Ballerup, Copenhagen, Denmark), which is suitable for measuring Vickers hardness. It was decided to measure the hardness using a 2 × 9 indentation matrix. The test started 1 mm above the support structure plane and rose to the top of the specimen. The testing matrix is shown in Figure 8 . Figure 8 Pattern of hardness measuring",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8538747",
+   "title": "Influence of Selective Laser Melting Technology Process Parameters on Porosity and Hardness of AISI H13 Tool Steel: Statistical Approach.",
+   "year": "2021",
+   "text": "st started 1 mm above the support structure plane and rose to the top of the specimen. The testing matrix is shown in Figure 8 . Figure 8 Pattern of hardness measuring. For the experiment, an impact weight of 30 kg was chosen with a 10 s application of the load. The impact diagonal was measured automatically by the microscope that is a part of the Struers Duramin-40 device. For homogeneous specimens, the software had no problem with the measuring distances. If there was a specimen with a higher porosity and the software detects a difference between the diagonal higher than 5%, then the measurement was marked as being invalid. 2.9. Theoretical Aspect of the Issue In this study, laser power P [W] and scanning s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9821937",
+   "title": "Sub-Surface Analysis of Grinding Burns with Barkhausen Noise Measurements.",
+   "year": "2022",
+   "text": "diation. CrKa radiation was selected as it gives a measuring depth of 5–6 µm. This is somewhat less than the information depth of BN measurements [ 19 ]. Residual stress depth information was acquired by the step-by-step electrolytic removal of thin layers with Movipol-3 electrolytic polishing equipment (Struers, Ballerup, Denmark) with commercial Struers A2 perchloric acid solution in a small area with a diameter of 5 mm. The depth of the removed layer was verified using a Mitutoyo dial indicator. Usually, residual stress depth profiles were made deep below the surface where the stress level had been levelled out as a constant value. Figure 2 a presents examples of a normal RS depth profile (A), a mo",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "density_porosity": 5,
+  "abrasion": 2,
+  "compression": 2,
+  "hardness_vickers": 2,
+  "microscopy": 2,
+  "shear": 1
+ }
+}

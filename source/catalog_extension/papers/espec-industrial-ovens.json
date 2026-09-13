@@ -1,0 +1,45 @@
+{
+ "object": "espec-industrial-ovens",
+ "manufacturer": "espec",
+ "phrases": [
+  "ESPEC PH PV",
+  "ESPEC PH",
+  "ESPEC PV",
+  "ESPEC STPH"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ESPEC PH PV\" OR \"ESPEC PH\" OR \"ESPEC PV\" OR \"ESPEC STPH\"",
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W404777071",
+    "doi": "https://doi.org/10.32657/10356/6248",
+    "title": "Study of pool boiling enhancement structures and development of two phase cooling solution for electronics package",
+    "year": 2006,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Heat Transfer and Boiling Studies",
+     "Heat Transfer and Optimization",
+     "Fluid Dynamics and Thin Films"
+    ],
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/6248/1/MAE-THESES_717.pdf",
+    "abstract": "Cavity mouth diameter[ m ] d b Bubble departure diameter g Gravitational acceleration [ 2 m/s ] h Convective heat transfer coefficient [ K W/m 2 ] h fg Latent heat of vaporization [ K J/kg -] k Thermal Conductivity [ K W/m -] Nu Nusselt number Na Nucleation site density P Pressure [ 2 N/m Pa = ] P d Pore diameter[ m ] P p Pore pitch[ m ] Pr Prandtl number q Heat flux [ 2 W/m ] Q tun Latent heat evaporation in the tunnel during bubble cycle[ J ] r Cavity mouth radius[ m ] R Bubble radius[ m ] Re Reynolds number T Temperature [ K or C ° ] t g Bubble growth time[ Sec ] t w Bubble waiting time [ Sec ] ?T Wall superheat [ K or C ° ] ?Liquid contact angle d microlayer thickness[ m ] ?Condenser fin efficiency µ Dynamic viscosity [ 2 N.s/m ] ?Density [ 3 Kg/m ] s Surface Tension [ N/m ] ?Kinematic viscosity ?Specific volume [ /kg m 3 ] ?fg Difference in specific volumes of saturated liquid and vapor Subscripts amb ambient crit critical l fluid h homogenous sat saturation sub sub cooling v vapor"
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"ESPEC PH PV\" OR \"ESPEC PH\" OR \"ESPEC PV\" OR \"ESPEC STPH\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "density_porosity": 2,
+  "contact_angle": 1,
+  "thermal_conductivity": 1
+ }
+}

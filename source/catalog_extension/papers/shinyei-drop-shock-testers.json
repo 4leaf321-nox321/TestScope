@@ -1,0 +1,27 @@
+{
+ "object": "shinyei-drop-shock-testers",
+ "manufacturer": "shinyei",
+ "phrases": [
+  "Shinyei IST",
+  "Shinyei DT-202",
+  "Shinyei DT-202TB",
+  "Shinyei DT-205",
+  "Shinyei DTS",
+  "Shinyei ASQ"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Shinyei IST\" OR \"Shinyei DT-202\" OR \"Shinyei DT-202TB\" OR \"Shinyei DT-205\" OR \"Shinyei DTS\" OR \"Shinyei ASQ\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Shinyei IST\" OR \"Shinyei DT-202\" OR \"Shinyei DT-202TB\" OR \"Shinyei DT-205\" OR \"Shinyei DTS\" OR \"Shinyei ASQ\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

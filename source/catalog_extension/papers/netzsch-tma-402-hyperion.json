@@ -1,0 +1,316 @@
+{
+ "object": "netzsch-tma-402-hyperion",
+ "manufacturer": "netzsch",
+ "phrases": [
+  "NETZSCH TMA 402",
+  "NETZSCH TMA",
+  "NETZSCH F1",
+  "NETZSCH F3",
+  "NETZSCH TMA 402 F1",
+  "NETZSCH TMA 402 F3"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"NETZSCH TMA 402\" OR \"NETZSCH TMA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH TMA 402 F1\" OR \"NETZSCH TMA 402 F3\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"NETZSCH TMA 402\" OR \"NETZSCH TMA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH TMA 402 F1\" OR \"NETZSCH TMA 402 F3\") AND OPEN_ACCESS:y",
+  "count": 47,
+  "papers": [
+   {
+    "pmcid": "PMC7195169",
+    "doi": "10.1126/sciadv.aaz1114",
+    "title": "Lightweight, tough, and sustainable cellulose nanofiber-derived bulk structural materials with low thermal expansion coefficient.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 127,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D2344",
+     "ASTM D790"
+    ]
+   },
+   {
+    "pmcid": "PMC7642342",
+    "doi": "10.1038/s41467-020-19174-1",
+    "title": "An all-natural bioinspired structural material for plastic replacement.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 117,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7143312",
+    "doi": "10.3390/ma13061317",
+    "title": "Effects of the Layer Height and Exposure Energy on the Lateral Resolution of Zirconia Parts Printed by Lithography-Based Additive Manufacturing.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 24,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10788056",
+    "doi": "10.2147/ijn.s438564",
+    "title": "Repaglinide-Solid Lipid Nanoparticles in Chitosan Patches for Transdermal Application: Box-Behnken Design, Characterization, and In Vivo Evaluation.",
+    "journal": "Int J Nanomedicine",
+    "year": "2024",
+    "cited": 15,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4893616",
+    "doi": "10.1038/srep27366",
+    "title": "Reversible Bending Behaviors of Photomechanical Soft Actuators Based on Graphene Nanocomposites.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 14,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4768141",
+    "doi": "10.1038/srep21905",
+    "title": "Development of ytterbium-doped oxyfluoride glasses for laser cooling applications.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 14,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8294645",
+    "doi": "10.1039/d1cp02440j",
+    "title": "Compositional flexibility in Li-N-H materials: implications for ammonia catalysis and hydrogen storage.",
+    "journal": "Phys Chem Chem Phys",
+    "year": "2021",
+    "cited": 11,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8950016",
+    "doi": "10.3390/polym14061131",
+    "title": "Solution-Processable Colorless Polyimides Derived from Hydrogenated Pyromellitic Dianhydride: Strategies to Reduce the Coefficients of Thermal Expansion by Maximizing the Spontaneous Chain Orientation Behavior during Solution Casting.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 9,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D3363",
+     "ASTM E 313",
+     "JIS K 7136",
+     "JIS K 7209",
+     "JIS K 7361-1"
+    ]
+   },
+   {
+    "pmcid": "PMC11176310",
+    "doi": "10.1038/s41467-024-49428-1",
+    "title": "Micro-optical elements from optical-quality ZIF-62 hybrid glasses by hot imprinting.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC7600126",
+    "doi": "10.3390/ma13204508",
+    "title": "Micromechanical Model and Thermal Properties of Dry-Friction Hybrid Polymer Composite Clutch Facings.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC10799068",
+    "doi": "10.1038/s41467-024-44850-x",
+    "title": "Oxide nanolitisation-induced melt iron extraction causes viscosity jumps and enhanced explosivity in silicic magma.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC8320146",
+    "doi": "10.1021/acsomega.1c02285",
+    "title": "Comparison of Properties of Colorless and Transparent Polyimide Nanocomposites Containing Different Diamine Monomers.",
+    "journal": "ACS Omega",
+    "year": "2021",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC3778389",
+    "doi": "10.3762/bjnano.4.57",
+    "title": "Novel composite Zr/PBI-O-PhT membranes for HT-PEFC applications.",
+    "journal": "Beilstein J Nanotechnol",
+    "year": "2013",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC6523893",
+    "doi": "10.3390/polym11040585",
+    "title": "Colorless and Transparent Copolyimides and Their Nanocomposites: Thermo-Optical Properties, Morphologies, and Gas Permeabilities.",
+    "journal": "Polymers (Basel)",
+    "year": "2019",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC10859896",
+    "doi": "10.1021/acsami.3c13665",
+    "title": "Microbial Biomineralization of Alkaline Earth Metal Carbonates on 3D-Printed Surfaces.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2024",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC7409246",
+    "doi": "10.1021/acsomega.0c02773",
+    "title": "Exploration of Basalt Glasses as High-Temperature Sensible Heat Storage Materials.",
+    "journal": "ACS Omega",
+    "year": "2020",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC7178422",
+    "doi": "10.3390/ma13071612",
+    "title": "Spark Plasma Sintered B<sub>4</sub>C-Structural, Thermal, Electrical and Mechanical Properties.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC12791098",
+    "doi": "10.1007/s40820-025-02033-3",
+    "title": "Temperature-Immune High-Entropy Alloy Flexible Strain Sensor on Electrospinning Nanofibrous Membrane.",
+    "journal": "Nanomicro Lett",
+    "year": "2026",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11428512",
+    "doi": "10.3390/biomedicines12091949",
+    "title": "Toxicological Assessment of Biodegradable Poli-ε-Caprolactone Polymer Composite Materials Containing Hydroxyapatite, Bioglass, and Chitosan as Potential Biomaterials for Bone Regeneration Scaffolds.",
+    "journal": "Biomedicines",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9183039",
+    "doi": "10.3390/polym14112171",
+    "title": "Transparent Polymer Blends of Poly(methyl methacrylate) and Poly(propylene glycol).",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9055261",
+    "doi": "10.1039/d0ra04702c",
+    "title": "A naringenin-based benzoxazine with an intramolecular hydrogen bond as both a thermal latent polymerization additive and property modifier for epoxy resins.",
+    "journal": "RSC Adv",
+    "year": "2020",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC8619905",
+    "doi": "10.3390/ma14226961",
+    "title": "Modification of Laser Marking Ability and Properties of Polypropylene Using Silica Waste as a Filler.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC7006688",
+    "doi": "10.1080/14686996.2019.1702861",
+    "title": "Anodic bonding of mid-infrared transparent germanate glasses for high pressure - high temperature microfluidic applications.",
+    "journal": "Sci Technol Adv Mater",
+    "year": "2020",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC4988772",
+    "doi": "10.1126/sciadv.1600772",
+    "title": "A simple high-performance matrix-free biomass molten carbonate fuel cell without CO2 recirculation.",
+    "journal": "Sci Adv",
+    "year": "2016",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC12111205",
+    "doi": "10.3390/gels11050317",
+    "title": "Preparation and Performance of PVDF-HFP/PAN-Based Gel Polymer Electrolytes.",
+    "journal": "Gels",
+    "year": "2025",
+    "cited": 2
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7195169",
+   "title": "Lightweight, tough, and sustainable cellulose nanofiber-derived bulk structural materials with low thermal expansion coefficient.",
+   "year": "2020",
+   "text": "n CEAST 9340 drop hammer tester. The hammer with a weight of 15 kg (total mass) was falling freely from a height of 30 cm, and the dimensions of the tested specimens were about 50 mm by 50 mm by 2 mm. For the SHPB test, the dimensions of the tested specimens were about 6 mm by 6 mm by 2 mm. Thermal expansion coefficient of the CNFP was measured by NETZSCH TMA 402F3. The specimens were carefully cut with a size of about 20 mm by 4 mm by 2 mm, and the test was carried out from −130° to 150°C. Thermal expansion coefficient (α) was calculated by the equation α = Δ L /( L Δ T ) K −1 . Density (ρ) of the CNFP was calculated by first treating the material into a cuboid and then using the equation ρ = mass/vol",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7642342",
+   "title": "An all-natural bioinspired structural material for plastic replacement.",
+   "year": "2020",
+   "text": "te was 1 μm s −1 for SENB samples. Hardness of samples was measured by Shore D Durometer. Each kind of material was tested at least five times. For all the mechanical tests, the applied loading direction was perpendicular to platelets of TiO 2 -mica. Thermal performance testing CTEs of bioinspired structural materials and plastics were measured by NETZSCH TMA 402F3 and the tests were carried out from −130 to 150 °C. For CTE, the direction of bioinspired structural materials was parallel to platelets of TiO 2 -mica. Dynamic mechanical analysis (DMA) measurements were performed on a DMA Q800 instrument using a three-point bending. The samples of bioinspired structural materials and plastics were about 3",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7143312",
+   "title": "Effects of the Layer Height and Exposure Energy on the Lateral Resolution of Zirconia Parts Printed by Lithography-Based Additive Manufacturing.",
+   "year": "2020",
+   "text": "pplier consists of one heat treatment for debinding and sintering. However, the program was divided into two separate steps, as the debinding and pre-sintering were not carried out in the same furnace as the sintering ( Figure 3 ). Figure 3 Debinding and sintering profiles. The shrinkage of the parts was measured by thermo mechanical analysis on a Netzsch TMA 402 F3 (Netzsch Gerätebau GmbH in Selb, Germany), obtaining 11% after debinding and 29% after sintering at 1450 °C for 2 h. The detected shrinkage by TMA corresponded well with the suggested compensation of 1.354 by Lithoz GmbH. 3. Results and Discussion 3.1. Energy Related Resolution Green parts: As already stated by Mitteramskogler et al. [ 24 ] and",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10788056",
+   "title": "Repaglinide-Solid Lipid Nanoparticles in Chitosan Patches for Transdermal Application: Box-Behnken Design, Characterization, and In Vivo Evaluation.",
+   "year": "2024",
+   "text": "n, OPT-REP-SLNs were redispersed in an appropriate volume of 5% w/v mannitol (as a cryoprotectant), deep-frozen at −20°C for 24 h, and lyophilized at 7×10 −2 mbar and –50°C for 48 h (iLShineBioBase freeze-dryer, Gyeonggi-do, South Korea). The lyophilized powder was harvested and kept in the refrigerator till further use. 31 Calorimetric Analysis A Netzsch thermal analyzer (Netzsch F3 Maia, Germany) was used to obtain DSC thermograms of unprocessed REP (raw REP), CMP, PLX, mannitol and REP-SLNs. Samples (~4 mg) were kept in aluminum pans and scanned over a range of 30°C–300°C at a heating rate of 10°C.min −1 . DSC analysis was carried out under a dynamic nitrogen atmosphere. Transdermal Delivery Systems Transdermal patches cont",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4893616",
+   "title": "Reversible Bending Behaviors of Photomechanical Soft Actuators Based on Graphene Nanocomposites.",
+   "year": "2016",
+   "text": "A KEYENCE displacement sensor was used to record the tip deflection of soft bilayers when the nIR light is incident from the PDMS and PDMS/GNPs respectively. The measurement of the thermal conductivity was conducted with the thermal analyzer from TC 3000 series in XIATECH THW technique . In addition, with the thermomechanical analysis supported by NETZSCH TMA 402 F1/F3 Hyperion ® , the coefficient of thermal expansion of the soft bilayers was measured. Additional Information How to cite this article : Niu, D. et al. Reversible Bending Behaviors of Photomechanical Soft Actuators Based on Graphene Nanocomposites. Sci. Rep. 6 , 27366; doi: 10.1038/srep27366 (2016). Supplementary Material Supplementary Informa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4768141",
+   "title": "Development of ytterbium-doped oxyfluoride glasses for laser cooling applications.",
+   "year": "2016",
+   "text": "ying the prism coupling technique (Metricon 2010) at different wavelengths, 532, 633, 972, 1308 and 1538 nm. Differential scanning calorimetric (DSC) measurements were performed by using a Netzsch DSC Pegasus 404F3 apparatus on glass pieces in PtRh pans at a heating rate of 10 °C/min. The thermal expansion coefficient (TEC) was measured by using a Netzsch TMA 402F1 Hyperion thermo-mechanical analyzer apparatus on glass rods of 5 mm length and 10 mm diameter at a heating rate of 5 °C/min up to the glass softening point with a load of 0.02 N. The TEC of the sample was then determined in the temperature range from 100 to 300 °C. UV-visible-near infrared transmission spectra were recorded on a Cary 5000 (V",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8294645",
+   "title": "Compositional flexibility in Li-N-H materials: implications for ammonia catalysis and hydrogen storage.",
+   "year": "2021",
+   "text": "ydride sample was heated to 575 °C at a rate of 10 °C min −1 , dwelled for 10 minutes and cooled back down to 100 °C. A flowing argon atmosphere (50 cm 3 min −1 ) was used throughout each experiment. The reactivity of the lithium imide–nitride–hydride samples when heated under ammonia was studied in a simultaneous thermal analysis (STA) apparatus (Netzsch F1 Jupiter). Each sample was loaded into a 20 μL aluminium pan, sealed with an aluminium lid and pierced before loading to allow gas exchange. The samples were heated to 350 °C under ammonia at a rate of 5 °C min −1 , dwelled at temperature for 5 hours and cooled back down to room temperature. The instrument was then purged with inert gas to remove t",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8950016",
+   "title": "Solution-Processable Colorless Polyimides Derived from Hydrogenated Pyromellitic Dianhydride: Strategies to Reduce the Coefficients of Thermal Expansion by Maximizing the Spontaneous Chain Orientation Behavior during Solution Casting.",
+   "year": "2022",
+   "text": "s (Shodex, SM-105). 2.2.2. Linear Coefficients of Thermal Expansion (CTE) The CTE values of PI specimens (15 mm long, 5 mm wide, and typically 20 μm thick) in the X – Y direction below the T g s were measured by thermomechanical analysis (TMA) as an average in the range of 100–200 °C at a heating rate of 5 °C min −1 on a thermomechanical analyzer (Netzsch, TMA 4000) with a fixed load (0.5 g per unit film thickness in μm, i.e., 10 g load for 20-μm-thick films) in a dry nitrogen atmosphere. In this case, after the preliminary first heating run up to 120 °C and successive cooling to room temperature in the TMA chamber, the data were collected from the second heating run to remove the influence of adsorbed",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "flexure": 2,
+  "tma": 2,
+  "density_porosity": 1,
+  "dma": 1,
+  "thermal_conductivity": 1
+ }
+}

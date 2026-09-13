@@ -1,0 +1,53 @@
+{
+ "object": "newtons4th-ppa-series",
+ "manufacturer": "newtons4th",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC61000-3-2": 4,
+  "IEC61000-4-17": 4,
+  "IEC61000-3-3": 4,
+  "ISO17025": 4,
+  "IEC60076-8": 2,
+  "IEC61000-3-11": 2,
+  "IEC61000-3-12": 2,
+  "DIN EN 61010-1": 1,
+  "EN 61010-1": 1,
+  "IEEE 488": 1,
+  "IEC61000": 1,
+  "IEC62301": 1,
+  "ISO9001": 1
+ },
+ "standards_new": [
+  "DIN EN 61010-1",
+  "EN 61010-1",
+  "IEC60076-8",
+  "IEC61000",
+  "IEC61000-3-11",
+  "IEC61000-3-12",
+  "IEC61000-3-2",
+  "IEC61000-3-3",
+  "IEC61000-4-17",
+  "IEC62301",
+  "IEEE 488",
+  "ISO17025",
+  "ISO9001"
+ ],
+ "test_item_hits": {
+  "halt_hass": 3,
+  "battery_cycle_life": 2,
+  "microscopy": 2,
+  "altitude_low_pressure": 1,
+  "compression": 1,
+  "electrical_transport": 1,
+  "ground_bond": 1
+ },
+ "application_sentences": [
+  "In our shop we offer digital handheld multimeters suitable for quick use as well as local digital multimeters, such as battery testers, frequency counters and many more.",
+  "js is used for secure payment data processing.",
+  "alog PPA5500-TE Precision Power Analyzer Transformer Edition Product catalog summary Overview: The PPA5500-TE Precision Power Analyzer, Transformer Edition, is designed for high accuracy and reliability in power measurement, particularly at low power factors.",
+  "The device supports a wide range of voltage, current, and frequency, making it suitable for various applications.",
+  "These analyzers are designed for high-accuracy power measurement across a wide frequency range, suitable for applications such as power analysis, harmonic analysis, and real-time data logging.",
+  "Applications: The analyzers are suitable for various applications including PWM motor drives, ballast lighting systems, inrush current analysis, power transformer testing, and standby power measurement."
+ ]
+}

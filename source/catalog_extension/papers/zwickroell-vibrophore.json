@@ -1,0 +1,23 @@
+{
+ "object": "zwickroell-vibrophore",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell Vibrophore 250",
+  "ZwickRoell Vibrophore 1000"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell Vibrophore 250\" OR \"ZwickRoell Vibrophore 1000\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell Vibrophore 250\" OR \"ZwickRoell Vibrophore 1000\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

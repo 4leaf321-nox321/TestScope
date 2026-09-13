@@ -1,0 +1,24 @@
+{
+ "object": "zwickroell-kappa-creep",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell Kappa 50 SS",
+  "ZwickRoell Kappa 100 SS",
+  "ZwickRoell Kappa 50 LA"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell Kappa 50 SS\" OR \"ZwickRoell Kappa 100 SS\" OR \"ZwickRoell Kappa 50 LA\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell Kappa 50 SS\" OR \"ZwickRoell Kappa 100 SS\" OR \"ZwickRoell Kappa 50 LA\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

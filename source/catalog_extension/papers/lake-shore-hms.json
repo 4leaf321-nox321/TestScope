@@ -1,0 +1,49 @@
+{
+ "object": "lake-shore-hms",
+ "manufacturer": "lake-shore",
+ "phrases": [
+  "Lake Shore 7600 7700A",
+  "Lake Shore 7600",
+  "Lake Shore 7604 HMS",
+  "Lake Shore 7607 HMS",
+  "Lake Shore 7704A HMS",
+  "Lake Shore 7707A HMS"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Lake Shore 7600 7700A\" OR \"Lake Shore 7600\" OR \"Lake Shore 7604 HMS\" OR \"Lake Shore 7607 HMS\" OR \"Lake Shore 7704A HMS\" OR \"Lake Shore 7707A HMS\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Lake Shore 7600 7700A\" OR \"Lake Shore 7600\" OR \"Lake Shore 7604 HMS\" OR \"Lake Shore 7607 HMS\" OR \"Lake Shore 7704A HMS\" OR \"Lake Shore 7707A HMS\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC9695221",
+    "doi": "10.3390/nano12223994",
+    "title": "Optimization of the Selenization Temperature on the Mn-Substituted Cu<sub>2</sub>ZnSn(S,Se)<sub>4</sub> Thin Films and Its Impact on the Performance of Solar Cells.",
+    "journal": "Nanomaterials (Basel)",
+    "year": "2022",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9695221",
+   "title": "Optimization of the Selenization Temperature on the Mn-Substituted Cu<sub>2</sub>ZnSn(S,Se)<sub>4</sub> Thin Films and Its Impact on the Performance of Solar Cells.",
+   "year": "2022",
+   "text": "e composition of the CMZTSSe was characterized by X-ray photoelectron spectroscopy (XPS) (Thermofisher, Waltham, MA, USA) with monochromated Al Kα radiation. An ultraviolet–visible–near-infrared (UV–vis–NIR) spectrophotometer (UV-3101PC, Tokyo, Japan) was used to characterize the optical properties of the CMZTSSe. A Hall-effect measurement system (Lake shore 7600 Hall, Irvine, CA, USA) was used to test the electrical performance. The current–voltage measurements under AM 1.5 G simulated sunlight illumination (Model 91160, Newport, Irvine, CA, USA) was performed to characterize the electrical properties of the solar cell. An external quantum efficiency (EQE) measurement system was applied to measure the spe",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "electrical_transport": 2,
+  "microscopy": 1
+ }
+}

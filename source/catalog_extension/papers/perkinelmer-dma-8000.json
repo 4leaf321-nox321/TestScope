@@ -1,0 +1,332 @@
+{
+ "object": "perkinelmer-dma-8000",
+ "manufacturer": "perkinelmer",
+ "phrases": [
+  "PerkinElmer DMA 8000",
+  "PerkinElmer DMA"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"PerkinElmer DMA 8000\" OR \"PerkinElmer DMA\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"PerkinElmer DMA 8000\" OR \"PerkinElmer DMA\") AND OPEN_ACCESS:y",
+  "count": 39,
+  "papers": [
+   {
+    "pmcid": "PMC4832209",
+    "doi": "10.1038/srep24429",
+    "title": "Genipin cross-linked decellularized tracheal tubular matrix for tracheal tissue engineering applications.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 36,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8603348",
+    "doi": "10.1021/acsami.1c15771",
+    "title": "Single-Ion Conducting Polymer Nanoparticles as Functional Fillers for Solid Electrolytes in Lithium Metal Batteries.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2021",
+    "cited": 25,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10091355",
+    "doi": "10.1021/acs.biomac.2c01356",
+    "title": "The Glass Transition Temperature of Heterogeneous Biopolymer Systems.",
+    "journal": "Biomacromolecules",
+    "year": "2023",
+    "cited": 18,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GML 150",
+     "GML 153",
+     "GML 200",
+     "GML 60",
+     "GML 79"
+    ]
+   },
+   {
+    "pmcid": "PMC8577930",
+    "doi": "10.1155/2021/5598291",
+    "title": "A Novel Biocompatible Herbal Extract-Loaded Hydrogel for Acne Treatment and Repair.",
+    "journal": "Oxid Med Cell Longev",
+    "year": "2021",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8036919",
+    "doi": "10.3390/polym13071109",
+    "title": "The Characteristics of Natural Rubber Composites with Klason Lignin as a Green Reinforcing Filler: Thermal Stability, Mechanical and Dynamical Properties.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 188-1998",
+     "ISO 289-1",
+     "ISO 527",
+     "ISO 6502"
+    ]
+   },
+   {
+    "pmcid": "PMC6761750",
+    "doi": "10.1021/acsomega.9b01167",
+    "title": "Shape Memory Polyurethane-Based Smart Polymer Substrates for Physiologically Responsive, Dynamic Pressure (Re)Distribution.",
+    "journal": "ACS Omega",
+    "year": "2019",
+    "cited": 15,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D 1622",
+     "ASTM D 3576"
+    ]
+   },
+   {
+    "pmcid": "PMC7865617",
+    "doi": "10.3390/polym13030399",
+    "title": "Fused Filament Deposition of PLA: The Role of Interlayer Adhesion in the Mechanical Performances.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ANSI D368",
+     "ANSI D638"
+    ]
+   },
+   {
+    "pmcid": "PMC7465180",
+    "doi": "10.3390/polym12081643",
+    "title": "Effects of High-Temperature Exposure on the Mechanical Properties of Kenaf Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D5023",
+     "ASTM D638-99",
+     "ASTM D790-99"
+    ]
+   },
+   {
+    "pmcid": "PMC6940706",
+    "doi": "10.1016/j.dib.2019.105008",
+    "title": "Data on thermal conductivity and dynamic mechanical properties of graphene quantum dots in epoxy.",
+    "journal": "Data Brief",
+    "year": "2020",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC9571554",
+    "doi": "10.3390/polym14194132",
+    "title": "Synthesis of a Novel Rigid Semi-Alicyclic Dianhydride and Its Copolymerized Transparent Polyimide Films' Properties.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC8336490",
+    "doi": "10.1002/advs.202100249",
+    "title": "Exploiting Generative Design for 3D Printing of Bacterial Biofilm Resistant Composite Devices.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2021",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC8234614",
+    "doi": "10.3390/polym13122019",
+    "title": "Flow Characteristics, Mechanical, Thermal, and Thermomechanical Properties, and 3D Printability of Biodegradable Polylactide Containing Boehmite at Different Loadings.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC7948221",
+    "doi": "10.1021/acsomega.0c05839",
+    "title": "Shape-Memory Polymer Nanocomposites of Poly(ε-caprolactone) with the Polystyrene-<i>block</i>-polybutadiene-<i>block</i>-polystyrene-tri-<i>block</i> Copolymer Encapsulated with Metal Oxides.",
+    "journal": "ACS Omega",
+    "year": "2021",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC5031975",
+    "doi": "10.1038/srep33503",
+    "title": "Stress and temperature dependence of the avalanche dynamics during creep deformation of metallic glasses.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC6432416",
+    "doi": "10.3390/polym9050172",
+    "title": "Synthesis of Well-Defined Poly(N-H Benzamide-co-N-Octyl Benzamide)s and the Study of their Blends with Nylon 6.",
+    "journal": "Polymers (Basel)",
+    "year": "2017",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC11740110",
+    "doi": "10.1021/acsomega.4c09181",
+    "title": "Effect of Polycaprolactone, Zinc Oxide, and Poly(ethylene glycol) on the Properties of Polylactic Acid Composite Fibers Obtained by Melt Electrospinning.",
+    "journal": "ACS Omega",
+    "year": "2025",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9865088",
+    "doi": "10.3390/membranes13010043",
+    "title": "Nata de Cassava Type of Bacterial Cellulose Doped with Phosphoric Acid as a Proton Exchange Membrane.",
+    "journal": "Membranes (Basel)",
+    "year": "2022",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC7183048",
+    "doi": "10.3390/polym12030663",
+    "title": "Synthesis and Antimicrobial Activity of Metal-Containing Linseed Oil-Based Waterborne Urethane Oil Wood Coatings.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC5512630",
+    "doi": "10.3390/ma7117196",
+    "title": "Mechanism for Tuning the Hydrophobicity of Microfibrillated Cellulose Films by Controlled Thermal Release of Encapsulated Wax.",
+    "journal": "Materials (Basel)",
+    "year": "2014",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC10720479",
+    "doi": "10.1021/acs.macromol.3c01638",
+    "title": "Affine Deformation and Self-Assembly Alignment in Hydrogel Nanocomposites.",
+    "journal": "Macromolecules",
+    "year": "2023",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC10488805",
+    "doi": "10.3390/ma16175906",
+    "title": "Development of a Resilience Parameter for 3D-Printable Shape Memory Polymer Blends.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC9281323",
+    "doi": "10.1021/acsomega.2c01525",
+    "title": "Metal-Free Click Modification of Triple Bond-Containing Polyester with Azide-Functionalized Vegetable Oil: Plasticization and Tunable Solvent Adsorption.",
+    "journal": "ACS Omega",
+    "year": "2022",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12843226",
+    "doi": "10.3390/ma19020275",
+    "title": "Evaluation of Polybutylene Succinate Composites Reinforced with Lignin and Milled Hemp Stalks.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12676310",
+    "doi": "10.1021/acsomega.5c08222",
+    "title": "Pine Bark Tannin-Based Resins for Wood Composite Applications.",
+    "journal": "ACS Omega",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11696434",
+    "doi": "10.1021/acsomega.4c05957",
+    "title": "Self-Reinforced Biocomposites Made from Poly(3-hydroxybutyrate-&lt;i&gt;co&lt;/i&gt;-3-hydroxyvalerate) (PHBV): An Innovative Approach to Sustainable Packaging Production through Melt Processing.",
+    "journal": "ACS Omega",
+    "year": "2024",
+    "cited": 1
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC4832209",
+   "title": "Genipin cross-linked decellularized tracheal tubular matrix for tracheal tissue engineering applications.",
+   "year": "2016",
+   "text": "ecimens were clamped into sample holders, a pre-load (preliminary force) of 1 N was applied and the testing was initiated at a constant elongation rate of 30 mm/min at room temperature. The tensile tester recorded the load and elongation of the tissue in real time. Parameters such as the maximum force (N) and elastic modulus (MPa) were recorded. A PerkinElmer DMA Q800 instrument (TA Instruments, Inc, New Castle, USA) was used to assess and record the compressive properties of the tracheal (native, decellularized, genipin-treated and glutaraldehyde-treated) samples (n = 3 for each condition) in real time. For this testing, the trachea specimens (5 mm diameter) were prepared with the adventitia and lamina pr",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8603348",
+   "title": "Single-Ion Conducting Polymer Nanoparticles as Functional Fillers for Solid Electrolytes in Lithium Metal Batteries.",
+   "year": "2021",
+   "text": "ined fine white powder was further dried under reduced pressure at 90 °C for 18 h and transferred into an argon-filled glovebox. Then the particles were mechanically mixed with dry propylene carbonate (20 to 60 wt % of LiPNPs in PC) to obtain the gel nanocomposite electrolytes. Physical–Chemical Characterization DMA experiments were performed on a PerkinElmer DMA 8000 in tension mode with a heating rate of 5 °C min –1 , at 1 Hz frequency, at a strain of 25 μm, and in a N 2 atmosphere. Small-amplitude oscillatory experiments were performed in a stress-controlled Anton Paar Physica MCR101 rheometer, and the experiments were carried out using 25 mm parallel plate geometry. All the experiments were conducted under",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10091355",
+   "title": "The Glass Transition Temperature of Heterogeneous Biopolymer Systems.",
+   "year": "2023",
+   "text": "ermal step at 90 °C for 30 min. TGA was also used for determining the water content in films of C 3 and C 6 equilibrated to ambient relative humidity using similar scans. TGA results can be found in the Supporting Information , Figure S5 and Table S1. Dynamic Mechanical Thermal Analysis Dynamic mechanical thermal analysis (DMTA) was performed on a PerkinElmer DMA-7e. DMTA experiments on the plasticized films were performed in tensile mode at a frequency of 1 Hz, a −100 to 180 °C temperature range, and a heat rate of 5 °C min –1 with film dimensions of roughly 20.0 mm × 3.0 mm × 0.1 mm. The thickness of the films was measured with the aid of a digital micrometer. The resulting glass transition was observed",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8577930",
+   "title": "A Novel Biocompatible Herbal Extract-Loaded Hydrogel for Acne Treatment and Repair.",
+   "year": "2021",
+   "text": "of the herbal extract-loaded hydrogels. The FTIR spectra of pure CMC, pure gelatin, nonherbal hydrogel, hydrogel (10 : 1), hydrogel (1 : 1), and hydrogel (1 : 10) were used to identify different functional groups. The interactions between CMC, gelatin, and herbal extracts were determined by the spectral signals. 2.7. TGA TGA was performed using a PerkinElmer DMA 7e dynamic mechanical analyzer to determine the storage modulus of our biocompatible herbal extract-loaded hydrogels. Small dried powder quantities (0.5 to 5 mg) were wrapped and placed in a platinum pan. All samples were heated from 30 to 700°C at a heating rate of 10°C/min in an isolated environment that was purged of air. The TGA data were plot",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8036919",
+   "title": "The Characteristics of Natural Rubber Composites with Klason Lignin as a Green Reinforcing Filler: Thermal Stability, Mechanical and Dynamical Properties.",
+   "year": "2021",
+   "text": "ysis (TGA), derivative thermogravimetric analysis, (DTG) and dynamic mechanical analysis (DMA). Thermogravimetric analysis (TGA) was performed by an STA 6000 (Perkin Elmer Inc., Norwalk, CT, USA) in the temperature range of 30 to 800 °C with a heating rate of 10 °C/min under nitrogen atmosphere. Dynamic mechanical analysis (DMA) was performed by a PerkinElmer DMA 8000 (Perkin Elmer Inc., Waltham, MA, USA) in the temperature range of −100 to 100 °C with a heating rate of 5 °C/min, and a frequency of 1 Hz. The storage and loss moduli together with tan δ were determined from the DMA thermograms. 3. Results and Discussion 3.1. Properties of Extracted Klason Lignin Klason lignin was prepared based on RWS by the Klas",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6761750",
+   "title": "Shape Memory Polyurethane-Based Smart Polymer Substrates for Physiologically Responsive, Dynamic Pressure (Re)Distribution.",
+   "year": "2019",
+   "text": "100 °C range, at a ramp rate of 10 °C min –1 and kept under hold conditions for 1 min at −50 °C. This scanning process was repeated up to three cycles, and the result of the second scan was used to obtain a transition endothermic peak. The first scan was performed to remove the residual solvent unconverted monomer. The dynamic mechanical analysis (DMA) was conducted on a PerkinElmer DMA tester to ascertain the variation in the modulus (glassy/rubbery) with temperature. Furthermore, wide-angle X-ray diffraction (WAXD) was also employed to check the crystallinity in the synthesized SMPu foam along with an ordinary thermoplastic polyurethane (TPU) as a reference. The WAXD profile was collected using a Rigaku SmartLab X-ray diffr",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7865617",
+   "title": "Fused Filament Deposition of PLA: The Role of Interlayer Adhesion in the Mechanical Performances.",
+   "year": "2021",
+   "text": "ting machine (ATSFAAR TC1000, Atsfaar Industries SRL, Segrate, Italy) equipped with a load cell of 1 kN. At least five replicates for each kind of printing material were tested at a constant ramp speed of 0.16 mm/min, and the tensile data were obtained as the average of these five specimens. The dynamic mechanical analysis (DMA) was performed with PerkinElmer DMA 8000 (Waltham, MA, USA) using the dual cantilever bending method. The temperature scans were performed from room temperature to 120 °C, with 2 °C/min scan rate, a deformation of 50 μm and a frequency of 1 Hz. Calorimetric analyses were performed by differential scanning calorimeter DSC 822TM (Mettler Toledo Inc., Columbus, OH, USA). The temperature cal",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7465180",
+   "title": "Effects of High-Temperature Exposure on the Mechanical Properties of Kenaf Composites.",
+   "year": "2020",
+   "text": "nd 120 °C, respectively. Next, the flexural-strength test was conducted using the Zwick 30 kN with a speed of 2 mm/min. The dimensions of the sample were 70 × 20 × 2 mm based on ASTM D790-99 for this specific test. Both the tensile and flexural tests were performed using 10 sets of samples. Dynamic mechanical analysis (DMA) was performed using the PerkinElmer DMA 8000 machine at room temperature until a temperature of 150 °C was reached. This test required the samples’ dimensions to be 30 × 10 × 2 mm based on the ASTM D5023 standard, with the heat rate set at 2 °C/min, and with the frequency set at 1 Hz. Unlike with the DMA test, Poisson’s ratio was determined using a Kyowa CC-33A and a PCD 300 Series sensor su",
+   "standards": [
+    "ASTM D5023",
+    "ASTM D790-99"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ASTM D790-99": 1,
+  "ASTM D5023": 1
+ },
+ "standards_new": [
+  "ASTM D5023",
+  "ASTM D790-99"
+ ],
+ "test_item_hits": {
+  "dma": 5,
+  "tensile": 4,
+  "tga": 2,
+  "flexure": 1
+ }
+}

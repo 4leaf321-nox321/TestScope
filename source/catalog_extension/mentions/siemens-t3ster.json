@@ -1,0 +1,54 @@
+{
+ "object": "siemens-t3ster",
+ "manufacturer": "siemens",
+ "pages": 8,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "JESD51-1": 3,
+  "JESD51-14": 3,
+  "JESD 51-1": 3,
+  "JEDEC JESD51-14": 3,
+  "ISO17025": 2,
+  "JEDEC JESD51-1": 2,
+  "JEDEC JESD 51-14": 1,
+  "JEDEC JESD 51-1": 1,
+  "JEDEC 51-14": 1,
+  "JESD51-2": 1
+ },
+ "standards_new": [
+  "ISO17025",
+  "JEDEC 51-14",
+  "JEDEC JESD 51-1",
+  "JEDEC JESD 51-14",
+  "JEDEC JESD51-1",
+  "JEDEC JESD51-14",
+  "JESD 51-1",
+  "JESD51-14",
+  "JESD51-2"
+ ],
+ "test_item_hits": {
+  "microscopy": 34,
+  "electrical_transport": 8,
+  "density_porosity": 6,
+  "vibration_sine_random": 6,
+  "halt_hass": 3,
+  "temperature_cycling": 1,
+  "thermal_conductivity": 1,
+  "torsion": 1
+ },
+ "application_sentences": [
+  "Further boosting of the sensing circuit is designed for small sensing current and has a higher current has a limited effect on reducing the tMD but rapidly resolution.",
+  "at Once the calibration is completed, the derived relationship the electrical disturbance does not decay to zero even after between Vsd and temperature can be used for the cooling curve tMD.",
+  "However, the derived thermal while too large or small sensing current is not ideal for impedance curves barely change as shown in Fig.",
+  "The data can be used by the market leading electronics cooling software Applications include: FloTHERM and FloTHERM PCB to predict device performance in Heat-flow path reconstruction various applications.",
+  "This information can then thermal models resulting in a significant competitive advantage be used for various purposes, for example to obtain metrics like in thermal design.",
+  "Because T3Ster can be used to characterize the heat-flow path from the heat source to the environment, it can also be used for characterizing complete systems or thermal w w w.",
+  "switched power 50 V, 2 A The power step can be created in different modes: A separate power booster (as an add-on option) can be used for 10 to 40 times higher driving capability.",
+  "Third party, liquid based thermostats can also be used for A built-in materials browser can be used to facilitate the calibration and measurement.",
+  "Up to 280 V of voltage is available through a voltage shift and safety switch - ideal for 38A/40V 50A/30V 10A/150V 10A/280V testing AC mains driven LED modules.",
+  "ATE (PN: 239886) T3Ster's fast thermal measurements are possible through an advanced realization of the first stage of the measurement Cold plates are not only used for channel that gets rid of parasitic electrical transients quickly."
+ ],
+ "standards_nearby": [
+  "JEDEC 51"
+ ]
+}

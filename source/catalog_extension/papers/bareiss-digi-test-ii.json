@@ -1,0 +1,398 @@
+{
+ "object": "bareiss-digi-test-ii",
+ "manufacturer": "bareiss",
+ "phrases": [
+  "Bareiss digi II",
+  "Bareiss digi"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Bareiss digi II\" OR \"Bareiss digi\"",
+  "count": 11,
+  "works": [
+   {
+    "id": "https://openalex.org/W4366774523",
+    "doi": "https://doi.org/10.3390/ma16083268",
+    "title": "Analysis of the Mechanical Properties of 3D-Printed Plastic Samples Subjected to Selected Degradation Effects",
+    "year": 2023,
+    "cited": 70,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/8/3268/pdf?version=1682068781",
+    "abstract": "The Fused Filament Fabrication (FFF) method is an additive technology that is used for the creation of prototypes within Rapid Prototyping (RP) as well as for the creation of final components in piece or small-series production. The possibility of using FFF technology in the creation of final products requires knowledge of the properties of the material and, at the same time, how these properties change due to degradation effects. In this study, the mechanical properties of the selected materials (PLA, PETG, ABS, and ASA) were tested in their non-degenerate state and after exposure of the samples to the selected degradation factors. For the analysis, which was carried out by the tensile test and the Shore D hardness test, samples of normalized shape were prepared. The effects of UV radiation, high temperature environments, high humidity environments, temperature cycles, and exposure to weather conditions were monitored. The parameters obtained from the tests (tensile strength and Shore D hardness) were statistically evaluated, and the influence of degradation factors on the properties of individual materials was assessed. The results showed that even between individual manufacturers of the same filament there are differences, both in the mechanical properties and in the behavior of the material after exposure to degradation effects."
+   },
+   {
+    "id": "https://openalex.org/W2989615228",
+    "doi": "https://doi.org/10.3390/ma12233885",
+    "title": "Dimensional Accuracy and Mechanical Properties of Chopped Carbon Reinforced Polymers Produced by Material Extrusion Additive Manufacturing",
+    "year": 2019,
+    "cited": 66,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/12/23/3885/pdf?version=1574652207",
+    "abstract": "Fused Filament Fabrication (FFF), classified under material extrusion additive manufacturing technologies, is a widely used method for fabricating thermoplastic parts with high geometrical complexity. To improve the mechanical properties of pure thermoplastic materials, the polymeric matrix may be reinforced by different materials such as carbon fibers. FFF is an advantageous process for producing polymer matrix composites because of its low cost of investment, high speed and simplicity as well as the possibility to use multiple nozzles with different materials. In this study, the aim was to investigate the dimensional accuracy and mechanical properties of chopped carbon-fiber-reinforced tough nylon produced by the FFF process. The dimensional accuracy and manufacturability limits of the process are evaluated using benchmark geometries as well as process-inherent effects like stair-stepping effect. The hardness and tensile properties of produced specimens in comparison to tough nylon without any reinforcement, as well as continuous carbon-reinforced specimens, were presented by taking different build directions and various infill ratios. The fracture surfaces of tensile specimens were observed using a Scanning Electron Microscope (SEM). The test results showed that there was a severe level of anisotropy in the mechanical properties, especially the modulus of elasticity, due to the insufficient fusion between deposited layers in the build direction. Moreover, continuous carbon-reinforced specimens exhibited very high levels of tensile strength and modulus of elasticity whereas the highest elongation was achieved by tough nylon without reinforcement. The failure mechanisms were found to be inter-layer porosity between successive tracks, as well as fiber pull out."
+   },
+   {
+    "id": "https://openalex.org/W4328124419",
+    "doi": "https://doi.org/10.3390/polym15061552",
+    "title": "Thermal Conductivity and Mechanical Properties of Polymer Composites with Hexagonal Boron Nitride—A Comparison of Three Processing Methods: Injection Moulding, Powder Bed Fusion and Casting",
+    "year": 2023,
+    "cited": 27,
+    "venue": "Polymers",
+    "topics": [
+     "Thermal properties of materials",
+     "Tribology and Wear Analysis",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/15/6/1552/pdf?version=1679385746",
+    "abstract": "Materials providing heat dissipation and electrical insulation are required for many electronic and medical devices. Polymer composites with hexagonal boron nitride (hBN) may fulfil such requirements. The focus of this study is to compare composites with hBN fabricated by injection moulding (IM), powder bed fusion (PBF) and casting. The specimens were characterised by measuring thermal conductivity, tensile properties, hardness and hBN particle orientation. A thermoplastic polyurethane (TPU) was selected as the matrix for IM and PBF, and an epoxy was the matrix for casting. The maximum filler weight fractions were 65%, 55% and 40% for IM, casting and PBF, respectively. The highest thermal conductivity (2.1 W/m∙K) was measured for an IM specimen with 65 wt% hBN. However, cast specimens had the highest thermal conductivity for a given hBN fraction. The orientation of hBN platelets in the specimens was characterised by X-ray diffraction and compared with numerical simulations. The measured thermal conductivities were discussed by comparing them with four models from the literature (the effective medium approximation model, the Ordóñez-Miranda model, the Sun model, and the Lewis-Nielsen model). These models predicted quite different thermal conductivities vs. filler fraction. Adding hBN increased the hardness and tensile modulus, and the tensile strength at high hBN fractions. The strength had a minimum as the function of filler fraction, while the strain at break decreased. These trends can be explained by two mechanisms which occur when adding hBN: reinforcement and embrittlement."
+   },
+   {
+    "id": "https://openalex.org/W4287844207",
+    "doi": "https://doi.org/10.1016/j.jece.2022.108332",
+    "title": "Morpho-structural and thermo-mechanical characterization of recycled polypropylene and polystyrene from mixed post-consumer plastic waste",
+    "year": 2022,
+    "cited": 27,
+    "venue": "Journal of environmental chemical engineering",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2213343722012052-ga1_lrg.jpg",
+    "abstract": "In this work, a complete sorting and characterization of dirty non-recyclable mixed plastic (plasmix fraction) from municipal solid waste was performed. The procedure comprised a visual inspection and identification of the materials presented in the mixed plastic bales, and subsequent moisture and dirt content determination. Afterwards, both polypropylene and polystyrene fractions obtained from the sorting process were recycled and physico-mechanically and thermally characterized for the assessment of recycled material quality. The dirty non-recyclable mixed plastic from municipal solid waste was composed of polypropylene (28.89 %), polyethylene terephthalate (22.02 %), polystyrene (9.65 %) and rigid polyethylene (4.68 %). Regarding the moisture and dirt content of the mixed plastic fraction, the results were highly variable, mainly due to the heterogeneity of the material, its origin, atmospheric conditions, etc. The average sum of both parameters (moisture and dirt) was around 15 %. The mechanical properties were within the expected range for each type of polymer, noting that polystyrene recycled materials are more brittle than recycled polypropylene. The recycling of non-food polypropylene wastes yielded a material with higher impact resistance (70 kJ m−2) and Young´s modulus (1934 MPa) as compared to that obtained from the recycling of food packages. Concerning the polystyrene recyclates, it is worth mentioning that recycled materials obtained from foamed residues (expanded polystyrene and extruded polystyrene showed approximately twice the tensile strength with respect to the recycled materials from high impact polystyrene and general-purpose polystyrene residues. In some cases, infrared and thermal analyses revealed cross-contamination with traces of other polymers."
+   },
+   {
+    "id": "https://openalex.org/W3083464122",
+    "doi": "https://doi.org/10.3390/polym12092032",
+    "title": "Optimization of the Rubber Formulation for Footwear Applications from the Response Surface Method",
+    "year": 2020,
+    "cited": 18,
+    "venue": "Polymers",
+    "topics": [
+     "Lower Extremity Biomechanics and Pathologies",
+     "Sports Dynamics and Biomechanics",
+     "Diabetic Foot Ulcer Assessment and Management"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/12/9/2032/pdf?version=1599619977",
+    "abstract": "Impact force remains the primary cause of foot injury and general discomfort with regard to footwear. The footwear industry traditionally relies on modified elastomers (including natural rubber) whose properties can be physically adjusted by varying the constituents in the rubber formulations. This work aims to investigate the effect of filler/plasticizer fractions on shock attenuation of natural rubber soles. The statistical response surface method (RSM) was used to optimize the loading of natural rubber, fillers (carbon black and china clay) and a plasticizer (paraffinic oil). A novel predictive equation addressing the effects of additives on the physical and mechanical properties of the shoe sole was successfully created using the RSM. Our results demonstrate how the concentrations of these components regulate final properties, such as impact force absorption and hardness, in the commercial manufacture of shoe soles. While a higher loading level of plasticizer promotes reductions in hardness and impact force, as well as energy dissipation, in these modified elastomers, these properties were improved by increasing the filler content."
+   },
+   {
+    "id": "https://openalex.org/W4361007922",
+    "doi": "https://doi.org/10.1002/vnl.22000",
+    "title": "Application of sustainable treatments to fiber surface for performance improvement of elastomeric polyurethane reinforced with basalt fiber",
+    "year": 2023,
+    "cited": 16,
+    "venue": "Journal of Vinyl and Additive Technology",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "Fiber-reinforced polymer composites",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/vnl.22000",
+    "abstract": "Abstract In order to overcome compatibility leakage between composite phases, which is a significant challenge in multidimensional composite applications, it is crucial to optimize the chemical nature of additives. The surface of basalt fiber (BF) was chemically enriched via biobased epoxy resin sizing and functional silanization process to improve its interfacial adhesion to the ecograde elastomeric polyurethane (EPU) matrix. The surface properties of BF were examined with the help of scanning electron microscopy X‐ray spectroscopy (SEM/EDX) and Fourier‐transformed infrared spectroscopy (FTIR) analyses. Impacts of surface modifications were compared based on mechanical, morphological, thermomechanical, and melt‐flow behaviors of composites involving pristine and modified BF. Findings revealed that surface‐modified BF inclusions improved the tensile strength and Shore‐hardness values of composites. Tensile strength of EPU raised from 27.1 to 37.1 MPa after compounding with epoxy‐sized BF. Additionally, the resin‐coated BF incorporation exhibited a two‐fold increase in the tensile modulus of EPU. Thermomechanical response of EPU exhibited an increasing trend by BF inclusions regardless of treatment type. Glass transition temperature of EPU shifted to 5 units higher value with modified BF loadings. SEM investigations confirmed the increased interfacial interaction between the EPU matrix and surface‐sized BF. The chemically enriched surface of BF improves composite performance by improving adhesion at the EPU‐BF interface. The results of this study confirmed that enhanced interfacial adhesion led to performance improvements for BF‐loaded EPU composites."
+   },
+   {
+    "id": "https://openalex.org/W4402378537",
+    "doi": "https://doi.org/10.3390/polym16172534",
+    "title": "Prediction Accuracy of Hyperelastic Material Models for Rubber Bumper under Compressive Load",
+    "year": 2024,
+    "cited": 11,
+    "venue": "Polymers",
+    "topics": [
+     "Elasticity and Material Modeling",
+     "Mechanical Engineering and Vibrations Research",
+     "Polymer Nanocomposites and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/16/17/2534/pdf",
+    "abstract": "Different hyperelastic material models (Mooney-Rivlin, Yeoh, Gent, Arruda-Boyce and Ogden) are able to estimate Treloar's test data series containing uniaxial and biaxial tension and pure shear stress-strain characteristics of rubber. If the rubber behaviour is only determined for the specific load of the product, which, in the case of rubber bumpers, is the compression, the time needed for the laboratory test can be significantly decreased. The stress-strain characteristics of the uniaxial compression test of rubber samples were used to fit hyperelastic material models. Laboratory and numerical tests of a rubber bumper with a given compound and complex geometry were used to determine the accuracy of the material models. Designing rubber products requires special consideration of the numerical discretization process due to the nonlinear behaviours (material nonlinearity, large deformation, connections, etc.). Modelling considerations were presented for the finite element analysis of the rubber bumper. The results showed that if only uniaxial compression test data are available for the curve fitting of the material model, the Yeoh model performs the best in predicting the rubber product material response under compressive load and complex strain state."
+   },
+   {
+    "id": "https://openalex.org/W7203666483",
+    "doi": "https://doi.org/10.25259/apos_133_2026",
+    "title": "Comparative evaluation of mechanical properties of directly 3D-printed clear aligner materials",
+    "year": 2026,
+    "cited": 0,
+    "venue": "APOS Trends in Orthodontics",
+    "topics": [
+     "Orthodontics and Dentofacial Orthopedics",
+     "Dental materials and restorations",
+     "Dental Implant Techniques and Outcomes"
+    ],
+    "oa_url": "https://apospublications.com/content/9/2026/0/1/pdf/APOS-133-2026.pdf",
+    "abstract": "Objectives: This study comparatively evaluated the mechanical properties of four commercially available, directly three-dimensional (3D) printed clear aligner materials by analyzing tensile behavior, flexural properties, and surface hardness. Material and Methods: Four direct-print clear aligner resins were included: Custom resin solutions (CRS), LuxCreo, Rayform 4D clear aligner resin, and PowerResins clear smile resin. Specimens were fabricated according to the manufacturers’ protocols with a standardized thickness of 0.70 mm and 50 µm layer thickness in vertical orientation. Tensile ( n = 5), three-point bending ( n = 5), and Shore D hardness ( n = 10) tests were performed at room temperature (23°C) at the accredited laboratories of TÜBİTAK Marmara Research Center. Statistical analysis was performed using one-way analysis of variance followed by Sidak’s multiple comparisons test ( p < 0.05). Results: Significant differences were found among all materials for all tested parameters ( p < 0.0001). PowerResins showed the highest elastic modulus (2187.7 ± 315.8 MPa), tensile strength (51.5 ± 2.9 MPa), flexural modulus (1609.7 ± 95.6 MPa), flexural strength (71.9 ± 2.9 MPa), and Shore D hardness (87.3 ± 0.9), indicating superior rigidity. LuxCreo demonstrated the highest elongation at break (118.4 ± 10.7%), suggesting greater flexibility and ductility. Rayform 4D showed intermediate mechanical behavior, whereas CRS generally exhibited lower flexural resistance. Conclusion: Directly printed clear aligner materials exhibit significant variability in mechanical properties. PowerResins may be more suitable for cases requiring greater rigidity and force delivery, whereas LuxCreo may be preferable when flexibility and patient comfort are prioritized. Material selection should be based on specific orthodontic treatment objectives and clinical biomechanical requirements."
+   },
+   {
+    "id": "https://openalex.org/W4417452718",
+    "doi": "https://doi.org/10.1002/app.70171",
+    "title": "Investigating the Effect of Temperature on the Curing Kinetics Behavior and Mechanical Properties of Epoxy‐Modified Polysulfide",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Journal of Applied Polymer Science",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Synthesis and properties of polymers",
+     "Silicone and Siloxane Chemistry"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/app.70171",
+    "abstract": "ABSTRACT Epoxy‐modified polysulfide is widely used in coatings and as an adhesive for rocket insulation. Understanding the curing process is essential for enhancing the properties of the material. This research investigates the curing kinetics of epoxy‐modified polysulfide and examines how curing temperature influences its characteristics. In the study, epoxy, polysulfide, and cycloaliphatic amine curing agents are mixed and cured at 25°C, 40°C, and 60°C. The curing durations are determined based on a kinetics model. The curing kinetics are analyzed using differential scanning calorimetry (DSC), employing the Prout‐Tompkins autocatalytic method for modeling. Changes in molecular structure during the curing process are assessed using second derivative analysis from Fourier Transform Infrared Spectroscopy (FTIR). Additionally, the mechanical properties such as hardness, tensile strength, elongation, elastic modulus, and density are measured using a Shore D durometer, a universal testing machine, and a densitometer. Phase separation is examined with a scanning electron microscope (SEM). The results indicate that higher curing temperatures increase density, hardness, tensile strength, and elastic modulus by factors of 1.013, 2.38, 1.75, and 14.95, respectively, while reducing flexibility by 0.75 times. Although phase separation does not occur, higher temperatures do affect the product's opacity."
+   },
+   {
+    "id": "https://openalex.org/W4385428516",
+    "doi": "https://doi.org/10.21203/rs.3.rs-3175770/v1",
+    "title": "Tribology and surface topographical analysis of insitu formed BN and Si3N4 in SiC-Al2O3 Ceramic composites",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Metal and Thin Film Mechanics",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-3175770/latest.pdf",
+    "abstract": "Abstract A multi-phase ceramic composite comprising of a SiC matrix reinforced with Si3N4 and BN was prepared by insitu formation during nitridation of Si metal and B2O3. Al2O3 was used as a sintering additive as well as to improve oxidation and corrosion resistance. XRD and SEM techniques were effectively utilized to confirm phases and analyze the evolutionary changes in microstructure. Dry wear tests were conducted to evaluate the composite’s wear resistance. It was discovered that the SiC-Si3N4–BN–Al2O3 composite possessed exceptional properties, such as high hardness, high abrasive wear resistance, and low coefficient of friction. The examination of surface topography using atomic force microscopy indicates that the composites exhibit improved smoothness and enhanced capacity for load bearing. These characteristics make the composite material highly promising for diverse tribological applications. Furthermore, the strengthening and wear mechanisms of this composite were analysed and discussed in this paper."
+   },
+   {
+    "id": "https://openalex.org/W4317881834",
+    "doi": "https://doi.org/10.21203/rs.3.rs-2456503/v1",
+    "title": "Fabrication, Microstructural, and Mechanical behavior of SiC composite with insitu formation of BN and Si3N4",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-2456503/latest.pdf",
+    "abstract": "Abstract Dealing with high-temperature properties and brittleness and is always one of the hot topics in the field of ceramic materials. Extensive research has been carried out for it and Si3N4-SiC composites are one of the most promising composites. In this study, the impact of Si3N4 and BN reinforcement on the microstructure and physio-mechanical properties of SiC-based composites were explored. Two sets of composites, including Si3N4-SiC and BN-Si3N4-SiC aided with Al2O3, were fabricated using nitridation of Si and B2O3 at 1450°C. The mechanical properties, microstructure, phase transformation, densification, and porosity were depicted and discussed. X-ray diffraction patterns revealed the insitu formation of Si3N4 (both α and β phases) and BN in the final composite. The specimen with 10% Si and 10% B2O3 possessed the superior flexural strength (284.4 MPa) with excellent hardness (23.4 GPa). The incorporation of BN is found to enhance the mechanical properties especially hardness while overcoming the shortcomings of reaction-bonded Si3N4-SiC. The corresponding densification and strengthening mechanism were explained in this paper."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Bareiss digi II\" OR \"Bareiss digi\") AND OPEN_ACCESS:y",
+  "count": 7,
+  "papers": [
+   {
+    "pmcid": "PMC10146359",
+    "doi": "10.3390/ma16083268",
+    "title": "Analysis of the Mechanical Properties of 3D-Printed Plastic Samples Subjected to Selected Degradation Effects.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 20,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D638",
+     "EN ISO 527-2",
+     "EN ISO 868"
+    ]
+   },
+   {
+    "pmcid": "PMC8928548",
+    "doi": "10.1021/acsomega.1c05848",
+    "title": "Preparation of Natural Rubber Composites with High Silica Contents Using a Wet Mixing Process.",
+    "journal": "ACS Omega",
+    "year": "2022",
+    "cited": 17,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D2084",
+     "ISO 37",
+     "ISO 48-2"
+    ]
+   },
+   {
+    "pmcid": "PMC6926501",
+    "doi": "10.3390/ma12233885",
+    "title": "Dimensional Accuracy and Mechanical Properties of Chopped Carbon Reinforced Polymers Produced by Material Extrusion Additive Manufacturing.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM52900",
+     "EN ISO 527-4",
+     "EN ISO 868"
+    ]
+   },
+   {
+    "pmcid": "PMC8838961",
+    "doi": "10.3390/ma15030882",
+    "title": "Prediction of Selected Mechanical Properties of Polymer Composites with Alumina Modifiers.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 7,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN ISO 527-2",
+     "ISO 868"
+    ]
+   },
+   {
+    "pmcid": "PMC10053309",
+    "doi": "10.3390/polym15061552",
+    "title": "Thermal Conductivity and Mechanical Properties of Polymer Composites with Hexagonal Boron Nitride-A Comparison of Three Processing Methods: Injection Moulding, Powder Bed Fusion and Casting.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D2240",
+     "ISO 527",
+     "ISO 527-1",
+     "ISO 527-2"
+    ]
+   },
+   {
+    "pmcid": "PMC7563865",
+    "doi": "10.3390/polym12092032",
+    "title": "Optimization of the Rubber Formulation for Footwear Applications from the Response Surface Method.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D1054",
+     "ASTM D2240",
+     "ASTM F1614",
+     "EN ISO 20344"
+    ]
+   },
+   {
+    "pmcid": "PMC11398033",
+    "doi": "10.3390/polym16172534",
+    "title": "Prediction Accuracy of Hyperelastic Material Models for Rubber Bumper under Compressive Load.",
+    "journal": "Polymers (Basel)",
+    "year": "2024",
+    "cited": 1,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 23529",
+     "ISO 48-4",
+     "ISO 7743"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC10146359",
+   "title": "Analysis of the Mechanical Properties of 3D-Printed Plastic Samples Subjected to Selected Degradation Effects.",
+   "year": "2023",
+   "text": "−2 is included in the length of sunshine [ 41 ]. 4. Testing of Mechanical Properties A Zwick Z100 testing device was used to perform the tensile test. The tests were carried out according to the EN ISO 527-2 standard, and the monitored parameters were ultimate tensile strength and hardness. The hardness was measured by the Shore D method, and the Bareiss Digi-Test II hardness tester was used for the measurement, according to the EN ISO 868 standard. The ends of the test rods were selected for the measurement. Figure 8 , Figure 9 , Figure 10 and Figure 11 show representative graphs of selected representatives of individual types of materials, where the curves during the tensile test are shown. These cur",
+   "standards": [
+    "EN ISO 527-2",
+    "EN ISO 868"
+   ]
+  },
+  {
+   "pmcid": "PMC8928548",
+   "title": "Preparation of Natural Rubber Composites with High Silica Contents Using a Wet Mixing Process.",
+   "year": "2022",
+   "text": "determine the particle size distributions. The curing characteristics of the rubber compound were determined using an oscillating disk rheometer model A-ODR (Presto Stantest Pvt. Ltd., Haryana, India) in accordance with ASTM D2084. 26 The hardness of the vulcanizates at the optimum curing time ( t c90 ) was measured following ISO 48-2, 27 using a Bareiss Digi Test II hardness tester (Bareiss Prüfgerätebau GmbH, Oberdischingen, Germany). Tensile properties were analyzed by using a Gotech universal tensile strength tester model KT-7010 (Gotech Testing Machine, Inc., Taichung, Taiwan) in accordance with ISO 37. Dumbbell specimens for tensile tests were cut using die C from rubber-vulcanized sheets with a",
+   "standards": [
+    "ASTM D2084",
+    "ISO 37",
+    "ISO 48-2"
+   ]
+  },
+  {
+   "pmcid": "PMC6926501",
+   "title": "Dimensional Accuracy and Mechanical Properties of Chopped Carbon Reinforced Polymers Produced by Material Extrusion Additive Manufacturing.",
+   "year": "2019",
+   "text": "ic and orthotropic fiber-reinforced plastic composites” was used. The tensile test equipment was a universal Zwick-Roell equipment with a loading capacity of 250 kN. After the tensile testing was complete, the broken specimens were investigated by optical microscopy and scanning electron microscopy. For the hardness testing, a hardness tester from Bareiss Digi Test was used to measure Shore D hardness as per the TS EN ISO 868 standard with a contact pressure force of 5100 g. 3. Results 3.1. Dimensional Accuracy and Geometrical Features As mentioned before, the Benchmark-1 geometry was created to assess different AM technologies for metallic materials in terms of small bosses/holes, thin walls, stepping",
+   "standards": [
+    "EN ISO 868"
+   ]
+  },
+  {
+   "pmcid": "PMC8838961",
+   "title": "Prediction of Selected Mechanical Properties of Polymer Composites with Alumina Modifiers.",
+   "year": "2022",
+   "text": "nsile testing was performed with the following parameters: measuring length 90 mm, cross-head speed 2 mm/min. The dimensions of the specimens are shown in Figure 2 . Figure 2 Dimensions of composite specimens for the tensile strength test (mm). Apart from the static tensile test, hardness measurements were carried out using the Shore D method on a Bareiss digi test II hardness tester (Bareiss Shore/IRHD Digi Test II, FRT GmbH, Bergisch Gladbach, Germany, Figure 3 ) according to ISO 868 [ 37 ]. Figure 3 Bareiss Shore/IRHD Digi Test II, FRT GmbH, Bergisch Gladbach. The research conducted to date made it possible to obtain the mechanical characteristics of polymer composites characterized by non-linearity,",
+   "standards": [
+    "ISO 868"
+   ]
+  },
+  {
+   "pmcid": "PMC10053309",
+   "title": "Thermal Conductivity and Mechanical Properties of Polymer Composites with Hexagonal Boron Nitride-A Comparison of Three Processing Methods: Injection Moulding, Powder Bed Fusion and Casting.",
+   "year": "2023",
+   "text": "ncluded in figures. The stress reported in this paper is the engineering stress, i.e., force divided by the initial cross section. An example of the repeatability of the tensile test is shown in Figure S3 in the Supplementary Materials . 2.3.3. Hardness Measurement The hardness (Shore A and Shore D) of the specimens were measured with a durometer (Bareiss digi test II, Oberdischingen, Germany) at room temperature, following the standard ASTM D2240. Three specimens were stacked to have the thickness required for the measurements. At least three measurements were performed for each filler content. Hardness measurements were not applicable to the PBF specimens due to high surface roughness. 2.3.4. X-ray Di",
+   "standards": [
+    "ASTM D2240"
+   ]
+  },
+  {
+   "pmcid": "PMC7563865",
+   "title": "Optimization of the Rubber Formulation for Footwear Applications from the Response Surface Method.",
+   "year": "2020",
+   "text": "8 2186 2501 2699 18 55 52.5 100 45.25 44.7 1595 1874 2209 2498 2688 19 100 100 0 48.50 31.1 1171 1558 1862 2201 2495 20 55 52.5 100 46.27 45.0 1573 1882 2201 2490 2696 a X 1 : carbon black; X 2 : plasticizer oil; X 3 : china clay. 2.3. Testing Methods The hardness of the vulcanized rubber compounds was measured with a durometer on a Shore A scale (Bareiss digi test II) according to ASTM D2240 at three different points on each specimen. The rebound PR from impact was also determined using the same instrument according to ASTM D1054. Shock absorption was evaluated according to ASTM F1614 on a custom-built drop-testing machine, as schematically depicted in Figure 1 . The thickness of the molded rubber spec",
+   "standards": [
+    "ASTM D1054",
+    "ASTM D2240",
+    "ASTM F1614"
+   ]
+  },
+  {
+   "pmcid": "PMC11398033",
+   "title": "Prediction Accuracy of Hyperelastic Material Models for Rubber Bumper under Compressive Load.",
+   "year": "2024",
+   "text": "t the material behaviour according to ISO 23529 using a milling machine. Figure 2 illustrates the location of sampling within the product and the prepared specimens, which have a diameter of 29 ± 0.5 (mm) and a height of 12 ± 0.5 (mm). As a reference to the rubber compound, the Shore hardness was measured according to the ISO 48–4 standard using a BAREISS Digi-Test II (Stouffville, ON, Canada) durometer, which is 77 Shore A for the test specimens and 78 Shore A for the product. Figure 2 The sampled specimens and their location within the rubber product. The compression test of the rubber specimens was performed according to the ISO 7743 ‘A’ method and the test conditions specified in Table 3 . The tests",
+   "standards": [
+    "ISO 23529",
+    "ISO 48-4",
+    "ISO 7743"
+   ]
+  }
+ ],
+ "standards_found": {
+  "EN ISO 868": 2,
+  "ASTM D2240": 2,
+  "EN ISO 527-2": 1,
+  "ASTM D2084": 1,
+  "ISO 48-2": 1,
+  "ISO 37": 1,
+  "ISO 868": 1,
+  "ASTM D1054": 1,
+  "ASTM F1614": 1,
+  "ISO 23529": 1,
+  "ISO 48-4": 1,
+  "ISO 7743": 1
+ },
+ "standards_new": [
+  "ASTM D1054",
+  "ASTM D2084",
+  "ASTM F1614",
+  "EN ISO 527-2",
+  "EN ISO 868",
+  "ISO 23529",
+  "ISO 37",
+  "ISO 48-2",
+  "ISO 7743",
+  "ISO 868"
+ ],
+ "test_item_hits": {
+  "tensile": 28,
+  "abrasion": 6,
+  "microscopy": 6,
+  "compression": 4,
+  "density_porosity": 4,
+  "thermal_conductivity": 3,
+  "surface_topography": 2,
+  "dsc": 1,
+  "electrical_transport": 1,
+  "flexure": 1,
+  "friction_coefficient": 1,
+  "particle_size": 1,
+  "shear": 1
+ }
+}

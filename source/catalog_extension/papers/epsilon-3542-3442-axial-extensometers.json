@@ -1,0 +1,1107 @@
+{
+ "object": "epsilon-3542-3442-axial-extensometers",
+ "manufacturer": "epsilon",
+ "phrases": [
+  "Epsilon 3542 3542L",
+  "Epsilon 3542",
+  "Epsilon Model 3542",
+  "Epsilon Model 3442"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Epsilon 3542 3542L\" OR \"Epsilon 3542\" OR \"Epsilon Model 3542\" OR \"Epsilon Model 3442\"",
+  "count": 102,
+  "works": [
+   {
+    "id": "https://openalex.org/W2999730725",
+    "doi": "https://doi.org/10.1016/j.matt.2019.11.016",
+    "title": "Biomineralization and Successive Regeneration of Engineered Living Building Materials",
+    "year": 2020,
+    "cited": 229,
+    "venue": "Matter",
+    "topics": [
+     "Microbial Applications in Construction Materials",
+     "Calcium Carbonate Crystallization and Inhibition",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "http://www.cell.com/article/S2590238519303911/pdf",
+    "abstract": "Living building materials (LBMs) were engineered that are capable of both biological and structural functions. LBMs were created by inoculating an inert structural sand-hydrogel scaffold with Synechococcus sp. PCC 7002, a photosynthetic cyanobacterium. The scaffold provided structural support for Synechococcus , which toughened the hydrogel matrix via calcium carbonate biomineralization. Temperature and humidity switches were utilized to regulate the metabolic activity of the microorganisms and achieve three successive regenerations of viable LBMs from one parent generation. Microbial viability in LBMs maintained in at least 50% relative humidity for 30 days was 9%–14%, which far exceeded literature values of microorganisms encapsulated in cementitious materials for similar timeframes (0.1%–0.4%). While structural function was maximized at ultradesiccated conditions, prolonged dehydration compromised microbial viability. Despite this tradeoff in biological-structural function, LBMs represent a platform technology that leverages biology to impart novel sensing, responsive, and regenerative multifunctionality to structural materials for the built environment."
+   },
+   {
+    "id": "https://openalex.org/W4394718102",
+    "doi": "https://doi.org/10.1038/s41563-024-01871-7",
+    "title": "Harnessing instability for work hardening in multi-principal element alloys",
+    "year": 2024,
+    "cited": 142,
+    "venue": "Nature Materials",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41563-024-01871-7.pdf",
+    "abstract": "The strength-ductility trade-off has long been a Gordian knot in conventional metallic structural materials and it is no exception in multi-principal element alloys. In particular, at ultrahigh yield strengths, plastic instability, that is, necking, happens prematurely, because of which ductility almost entirely disappears. This is due to the growing difficulty in the production and accumulation of dislocations from the very beginning of tensile deformation that renders the conventional dislocation hardening insufficient. Here we propose that premature necking can be harnessed for work hardening in a VCoNi multi-principal element alloy. Lüders banding as an initial tensile response induces the ongoing localized necking at the band front to produce both triaxial stress and strain gradient, which enables the rapid multiplication of dislocations. This leads to forest dislocation hardening, plus extra work hardening due to the interaction of dislocations with the local-chemical-order regions. The dual work hardening combines to restrain and stabilize the premature necking in reverse as well as to facilitate uniform deformation. Consequently, a superior strength-and-ductility synergy is achieved with a ductility of ~20% and yield strength of 2 GPa during room-temperature and cryogenic deformation. These findings offer an instability-control paradigm for synergistic work hardening to conquer the strength-ductility paradox at ultrahigh yield strengths."
+   },
+   {
+    "id": "https://openalex.org/W4320085813",
+    "doi": "https://doi.org/10.1016/j.tws.2023.110543",
+    "title": "Mechanical properties of high strength steels and weld metals at arctic low temperatures",
+    "year": 2023,
+    "cited": 106,
+    "venue": "Thin-Walled Structures",
+    "topics": [
+     "Structural Load-Bearing Analysis",
+     "Fire effects on concrete materials",
+     "Mechanical stress and fatigue analysis"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.tws.2023.110543",
+    "abstract": "This paper attempts to acquire fundamental knowledge on the mechanical properties of high strength steels and the corresponding high strength weld metals at arctic low temperatures. Two types of high strength steels (Q890, Q960) and three types of high strength weld metals (made of ER100S-G, ER110S-G, ER120S-G feedstock wires) were tested at arctic low and ambient temperatures ranging from −75 °C to 25 °C. Tensile coupon specimens for steel materials were directly extracted from high strength steel plates, whilst robotic gas metal arc welding was employed to fabricate the tensile specimens of weld metals. The tensile coupon specimens were designed as per ASTM E8M and wire-cut into shapes. Twenty-three tensile coupon tests on high strength steels and eighteen tensile coupon tests on high strength weld metals were carried out. Coupon specimens were tested in liquid nitrogen cooling chamber to mimic the arctic low temperature environment. The stress–strain responses and key mechanical properties of high strength steels and weld metals at both ambient and arctic low temperatures are presented and discussed. Prediction equations for key mechanical properties, including the Young’s modulus, yield stress and ultimate tensile strength , of high strength steels and weld metals at arctic low temperatures were proposed."
+   },
+   {
+    "id": "https://openalex.org/W2901029561",
+    "doi": "https://doi.org/10.3390/polym10111262",
+    "title": "Additive Manufactured Sandwich Composite/ABS Parts for Unmanned Aerial Vehicle Applications",
+    "year": 2018,
+    "cited": 98,
+    "venue": "Polymers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/10/11/1262/pdf?version=1542104095",
+    "abstract": "Fused deposition modelling (FDM) is one of most popular 3D printing techniques of thermoplastic polymers. Nonetheless, the poor mechanical strength of FDM parts restricts the use of this technology in functional parts of many applications such as unmanned aerial vehicles (UAVs) where lightweight, high strength, and stiffness are required. In the present paper, the fabrication process of low-density acrylonitrile butadiene styrenecarbon (ABS) with carbon fibre reinforced polymer (CFRP) sandwich layers for UAV structure is proposed to improve the poor mechanical strength and elastic modulus of printed ABS. The composite sandwich structures retains FDM advantages for rapid making of complex geometries, while only requires simple post-processing steps to improve the mechanical properties. Artificial neural network (ANN) was used to investigate the influence of the core density and number of CFRP layers on the mechanical properties. The results showed an improvement of specific strength and elastic modulus with increasing the number of CFRP. The specific strength of the samples improved from 20 to 145 KN·m/kg while the Young's modulus increased from 0.63 to 10.1 GPa when laminating the samples with CFRP layers. On the other hand, the core density had no significant effect on both specific strength and elastic modulus. A case study was undertaken by applying the CFRP/ABS/CFRP sandwich structure using the proposed method to manufacture improved dual-tilting clamps of a quadcopter UAV."
+   },
+   {
+    "id": "https://openalex.org/W4307449471",
+    "doi": "https://doi.org/10.1016/j.jcsr.2022.107624",
+    "title": "Characterization of robotized CMT-WAAM carbon steel",
+    "year": 2022,
+    "cited": 91,
+    "venue": "Journal of Constructional Steel Research",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Advanced Surface Polishing Techniques",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0143974X22004941/pdf",
+    "abstract": "This paper analyses the microstructural and mechanical properties of carbon steel coupons produced by CMT-WAAM. The strategy adopted in the fabrication of the test specimens using a robotised facility is explained. Then, the results of the mechanical characterization performed using as-built and machined samples, extracted in several directions (0°, 45°, 90°) relative to the material deposition trajectory, are analysed. The yield and ultimate tensile strengths were determined by performing tensile tests and the Young's modulus was determined using ultra-micro hardness measurements. A deep microstructural characterization was also performed by optical microscopy for establishing a direct relationship between the manufacturing procedures and the registered mechanical properties. The failure micro-mechanisms associated with the building orientation and the surface condition was also examined by scanning electron microscopy. It was found out that the additive manufactured material has isotropic tensile properties, which result from the formation of an annealed microstructure upon cooling from the successive CMT-WAAM thermal cycles. The machined specimens exhibit higher strength and ductility than the as-built ones. The fracture surfaces of both machined and as-built coupons showed ductile failure. The results of the uniaxial tensile tests indicate that the machined and as-built WAAM steel walls satisfy the requirements of a structural steel grade as specified by Eurocode 3."
+   },
+   {
+    "id": "https://openalex.org/W3214582423",
+    "doi": "https://doi.org/10.1038/s41598-021-01598-4",
+    "title": "Mechanical properties of dense mycelium-bound composites under accelerated tropical weathering conditions",
+    "year": 2021,
+    "cited": 79,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Plant and Biological Electrophysiology Studies",
+     "Biocrusts and Microbial Ecology",
+     "Light effects on plants"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-021-01598-4.pdf",
+    "abstract": "Mycelium, as the root of fungi, is composed of filamentous strands of fine hyphae that bind discrete substrate particles into a block material. With advanced processing, dense mycelium-bound composites (DMCs) resembling commercial particleboards can be formed. However, their mechanical properties and performance under the working conditions of particleboards are unknown. Here, we show how weathering conditions affect the DMC stress and elastic modulus. DMC was made using Ganoderma lucidum mycelium grown on a substrate of sawdust and empty fruit bunch. The DMC was then subjected to weathering under tropical conditions over 35 days and tested under flexural, tensile, and compressive loading with reference to international standards. After exposure to specified weathering conditions, the maximum stress in flexure, tension, and compression decreased substantially. The addition of a protective coating improved the resistance of DMC to weathering conditions; however, the difference between coated and uncoated samples was only found to be statistically significant in tensile strength."
+   },
+   {
+    "id": "https://openalex.org/W3047928799",
+    "doi": "https://doi.org/10.1002/pc.25744",
+    "title": "Ultrafast printing of continuous fiber‐reinforced thermoplastic composites with ultrahigh mechanical performance by ultrasonic‐assisted laminated object manufacturing",
+    "year": 2020,
+    "cited": 47,
+    "venue": "Polymer Composites",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Innovations in Concrete and Construction Materials",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pc.25744",
+    "abstract": "Abstract Additive manufacturing (AM) of continuous fiber‐reinforced thermoplastic composites (CFRTPCs) has drawn increasing interest and great attention in academic and industrial communities due to its capability of manufacturing complex lightweight structures with high strength at a low cost. In this study, we proposed a novel AM technique to fabricate CFRTPCs using carbon fiber prepreg sheets based on a novel method: ultrasonic‐assisted laminated object manufacturing (UA‐LOM). The prepreg sheets were first cut into 2D shapes, then every eight layers of the sheets were successively consolidated by an ultrasonic‐vibration roller to fabricate one 3D composite part at a faster speed than conventional AM processes where materials are deposited layer by layer. Samples with controlled fiber alignments were prepared for mechanical tests. The post‐processing hot press was carried out to further improve mechanical properties of the additively manufactured components. Results showed that the unidirectional composite samples displayed an ultra‐high tensile strength of 1760.2 (±71.7) MPa and a tensile modulus of 105.7 (±7.2) GPa. The proposed method exhibited superior mechanical performance compared to state‐of‐the‐art AM techniques. The hot‐press‐treated AM composite parts in this work approached the benchmark mechanical properties provided by the prepreg manufacturing company using traditional fabrication methods. Overall, the proposed AM methods of CFRTPCs show great potential applications in aerospace and transportation industries."
+   },
+   {
+    "id": "https://openalex.org/W2992683695",
+    "doi": "https://doi.org/10.1007/s42452-019-1746-z",
+    "title": "Mechanical properties of self-compacting high-performance concrete with fly ash and silica fume",
+    "year": 2019,
+    "cited": 43,
+    "venue": "SN Applied Sciences",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Recycling and utilization of industrial and municipal waste in materials production"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s42452-019-1746-z.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2620493184",
+    "doi": "https://doi.org/10.3390/app7060562",
+    "title": "Damage Assessment Using Information Entropy of Individual Acoustic Emission Waveforms during Cyclic Fatigue Loading",
+    "year": 2017,
+    "cited": 38,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Fatigue and fracture mechanics",
+     "Ultrasonics and Acoustic Wave Propagation",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/7/6/562/pdf?version=1496900581",
+    "abstract": "Information entropy measured from acoustic emission (AE) waveforms is shown to be an indicator of fatigue damage in a high-strength aluminum alloy. Three methods of measuring the AE information entropy, regarded as a direct measure of microstructural disorder, are proposed and compared with traditional damage-related AE features. Several tension–tension fatigue experiments were performed with dogbone samples of aluminum 7075-T6, a commonly used material in aerospace structures. Unlike previous studies in which fatigue damage is measured based on visible crack growth, this work investigated fatigue damage both prior to and after crack initiation through the use of instantaneous elastic modulus degradation. Results show that one of the three entropy measurement methods appears to better assess the damage than the traditional AE features, whereas the other two entropies have unique trends that can differentiate between small and large cracks."
+   },
+   {
+    "id": "https://openalex.org/W4297425687",
+    "doi": "https://doi.org/10.1038/s41467-022-32930-9",
+    "title": "Non-Hookean large elastic deformation in bulk crystalline metals",
+    "year": 2022,
+    "cited": 35,
+    "venue": "Nature Communications",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Titanium Alloys Microstructure and Properties",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-32930-9.pdf",
+    "abstract": "Crystalline metals can have large theoretical elastic strain limits. However, a macroscopic block of conventional crystalline metals practically suffers a very limited elastic deformation of <0.5% with a linear stress-strain relationship obeying Hooke's law. Here, we report on the experimental observation of a large tensile elastic deformation with an elastic strain of >4.3% in a Cu-based single crystalline alloy at its bulk scale at room temperature. The large macroscopic elastic strain that originates from the reversible lattice strain of a single phase is demonstrated by in situ microstructure and neutron diffraction observations. Furthermore, the elastic reversible deformation, which is nonhysteretic and quasilinear, is associated with a pronounced elastic softening phenomenon. The increase in the stress gives rise to a reduced Young's modulus, unlike the traditional Hooke's law behaviour. The experimental discovery of a non-Hookean large elastic deformation offers the potential for the development of bulk crystalline metals as high-performance mechanical springs or for new applications via \"elastic strain engineering.\""
+   },
+   {
+    "id": "https://openalex.org/W3016880501",
+    "doi": "https://doi.org/10.3390/ma13081937",
+    "title": "Effect of FSW Traverse Speed on Mechanical Properties of Copper Plate Joints",
+    "year": 2020,
+    "cited": 33,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Welding Techniques and Residual Stresses",
+     "Electronic Packaging and Soldering Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/13/8/1937/pdf?version=1587716673",
+    "abstract": "The paper describes the influence of the friction stir welding travel speed on the mechanical properties of the butt joints of copper plates. The results of static and fatigue tests of the base material (Cu-ETP R220) and welded specimens produced at various travel speeds were compared, considering a loading applied both parallel and perpendicularly to the rolling direction of the plates. The mechanical properties of the FSW joints were evaluated with respect to parameters of plates' material in the delivery state and after recrystallisation annealing. The strength parameters of friction stir welding joints were compared with the data on tungsten inert gas welded joints of copper plates available in the literature. The results of microhardness tests and fractographic analysis of tested joints are also presented. Based on the above test results, it was shown that although in the whole range of considered traverse speeds (from 40 to 80 mm/min), comparable properties were obtained for FSW copper joints in terms of their visual and microstructural evaluation, their static and especially fatigue parameters were different, most apparent in the nine-fold greater observed average fatigue life. The fatigue tests turned out to be more sensitive criteria for evaluation of the FSW joints' qualities."
+   },
+   {
+    "id": "https://openalex.org/W1575589734",
+    "doi": null,
+    "title": "Design and analysis of ultrasonic horns operating in longitudinal and torsional vibration",
+    "year": 2012,
+    "cited": 31,
+    "venue": "Enlighten: Theses (The University of Glasgow)",
+    "topics": [
+     "Piezoelectric Actuators and Control",
+     "Advanced MEMS and NEMS Technologies",
+     "Innovative Energy Harvesting Technologies"
+    ],
+    "oa_url": "https://theses.gla.ac.uk/3851/1/2012albudairiphd.pdf",
+    "abstract": "Combining modes of vibration, such as longitudinal and torsional vibration, is advantageous in many ultrasonic applications such as ultrasonic drilling, welding, and motors. In this work we present a novel approach to the design a longitudinal-torsional (LT) ultrasonic horn which adapts the front mass in a traditional Langevin transducer. Different approaches, such as degeneration of longitudinal vibration and coupling between longitudinal (L) and torsional (T) modes, have been used to generate the LT mode of vibration. The degeneration approach creates a non-uniform section, by cutting and twisting a number of slots along the path of the L wave such that part of the wave converts into T wave whilst the remaining part propagates unchanged through the section; these two parts are recombined near the output surface to form LT vibration. The mode coupling approach uses two set of vibration generators, usually piezoelectric elements, where one set generates L vibration whilst the second set generates T vibration. An exponential cross-sectional horn uses to combine the two modes where the area reduction factor is selected such that these modes resonate at the same frequency. However, many limitations prevent the wide usage of these methods in ultrasonic applications. These limitations are the complex design and excitation, possible coupling with surrounding modes, instability in operating at different boundaries, difficulty in securing the structure without influencing the vibrational response and the low produced torsionality, which is the ratio of torsional to longitudinal response at the output face. The new approach is based on combining the principles of these methods to overcome the previously stated limitations, the slotting technique is incorporated into the exponential cross-sectional path and the horn produced is utilised as the front mass of a Langevin transducer. A set of design and performance criteria are used to optimise the transducer and includes applicable design; methods of securing the transducer; and the excitation features of LT transducer such that it can operate without the effects of surrounding modes of vibration and can produce high response and torsionality at the output surface. A methodology which combines mathematical and experimental modelling is used to optimise LT transducer design. The mathematical modelling, which includes finite element (FE) and analytical methods, is performed to optimise the geometry and to predict electromechanical parameters, modal parameters and the dynamic behaviour of LT transducer. The experimental modelling is used to validate the mathematical results and to characterise the fabricated prototypes under different operating conditions. The dimensions of the initial design of the L mode Langevin transducer are derived from the principles of the wave equation. This transducer has a set of piezoceramic components sandwich between a cylindrical back mass and an exponential front mass connected b"
+   },
+   {
+    "id": "https://openalex.org/W2566564853",
+    "doi": "https://doi.org/10.3390/ma10010032",
+    "title": "Monitoring the Damage State of Fiber Reinforced Composites Using an FBG Network for Failure Prediction",
+    "year": 2017,
+    "cited": 28,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Fiber Optic Sensors",
+     "Structural Health Monitoring Techniques",
+     "Ultrasonics and Acoustic Wave Propagation"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/10/1/32/pdf?version=1483440584",
+    "abstract": "A structural health monitoring (SHM) study of biaxial glass fibre-reinforced epoxy matrix composites under a constant, high strain uniaxial fatigue loading is performed using fibre Bragg grating (FBG) optical sensors embedded in composites at various locations to monitor the evolution of local strains, thereby understanding the damage mechanisms. Concurrently, the temperature changes of the samples during the fatigue test have also been monitored at the same locations. Close to fracture, significant variations in local temperatures and strains are observed, and it is shown that the variations in temperature and strain can be used to predict imminent fracture. It is noted that the latter information cannot be obtained using external strain gages, which underlines the importance of the tracking of local strains internally."
+   },
+   {
+    "id": "https://openalex.org/W3115124822",
+    "doi": "https://doi.org/10.3390/s21010145",
+    "title": "Acoustic Emission and K-S Metric Entropy as Methods for Determining Mechanical Properties of Composite Materials",
+    "year": 2020,
+    "cited": 26,
+    "venue": "Sensors",
+    "topics": [
+     "Aerospace, Electronics, Mathematical Modeling",
+     "Material Properties and Failure Mechanisms",
+     "Engineering Diagnostics and Reliability"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/21/1/145/pdf?version=1609941279",
+    "abstract": "Due to the unique properties of polymer composites, these materials are used in many industries, including shipbuilding (hulls of boats, yachts, motorboats, cutters, ship and cooling doors, pontoons and floats, torpedo tubes and missiles, protective shields, antenna masts, radar shields, and antennas, etc.). Modern measurement methods and tools allow to determine the properties of the composite material, already during its design. The article presents the use of the method of acoustic emission and Kolmogorov-Sinai (K-S) metric entropy to determine the mechanical properties of composites. The tested materials were polyester-glass laminate without additives and with a 10% content of polyester-glass waste. The changes taking place in the composite material during loading were visualized using a piezoelectric sensor used in the acoustic emission method. Thanks to the analysis of the RMS parameter (root mean square of the acoustic emission signal), it is possible to determine the range of stresses at which significant changes occur in the material in terms of its use as a construction material. In the K-S entropy method, an important measuring tool is the extensometer, namely the displacement sensor built into it. The results obtained during the static tensile test with the use of an extensometer allow them to be used to calculate the K-S metric entropy. Many materials, including composite materials, do not have a yield point. In principle, there are no methods for determining the transition of a material from elastic to plastic phase. The authors showed that, with the use of a modern testing machine and very high-quality instrumentation to record measurement data using the Kolmogorov-Sinai (K-S) metric entropy method and the acoustic emission (AE) method, it is possible to determine the material transition from elastic to plastic phase. Determining the yield strength of composite materials is extremely important information when designing a structure."
+   },
+   {
+    "id": "https://openalex.org/W3148290952",
+    "doi": "https://doi.org/10.1016/j.compositesb.2021.108795",
+    "title": "Automated manufacturing of bio-inspired carbon-fibre reinforced polymers",
+    "year": 2021,
+    "cited": 25,
+    "venue": "Composites Part B Engineering",
+    "topics": [
+     "Calcium Carbonate Crystallization and Inhibition",
+     "Innovations in Concrete and Construction Materials",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359836821001876/pdf",
+    "abstract": "Carbon-fibre reinforced polymers (CFRPs) present outstanding mechanical performance per unit of mass; however, they also fail in a brittle manner, with little or no warning of their forthcoming catastrophic failure. In this study, a ‘brick-and-mortar’ design inspired by the structure of nacre was implemented by automated tape lay-up for the first time with the aim of changing the failure response of CFRPs. Standard procedures and materials already implemented in the aerospace industry have been used to produce bio-inspired CFRPs laminates, providing the first example of bio-inspired concepts scaled-up to industrial level. The effects of the proposed automated manufacturing process on the morphology and tensile properties of the laminates were investigated. A non-linear response was observed when the bio-inspired laminates were subjected to tensile forces. This type of response agrees with those of previous studies on lab-scale manufactured aligned discontinuous CFRPs."
+   },
+   {
+    "id": "https://openalex.org/W4382794652",
+    "doi": "https://doi.org/10.1016/j.msea.2023.145388",
+    "title": "Unforeseen influence of the prior austenite grain size on the mechanical properties of a carbide-free bainitic steel",
+    "year": 2023,
+    "cited": 20,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0921509323008122-ga1_lrg.jpg",
+    "abstract": "The reasons behind the limited impact toughness of medium manganese, medium carbon carbide-free bainitic steels has been discussed in this manuscript. Various hot-rolling schedules have been employed to obtain microstructures with three different prior austenite grain sizes (PAGSs): coarse (CG = 45 ± 5 μm), medium (MG = 18 ± 4 μm) and fine (FG = 8 ± 2 μm) grain sizes. Although the coarse and middle grain size microstructures present similar levels of strength (Tensile Strength ∼1000 MPa) and ductility (36% and 41%, respectively), the impact toughness measured at room temperature improves significantly from 17 J to 83 J in the middle grain size one because of the lower ductile-to-brittle transition temperature (DBTT) temperature. Compared to the other microstructures, the fine grain size one contains higher contents of blocky unstable retained austenite, which are responsible for the enhanced strain hardening behavior under tensile testing but can be harmful for the toughness. Besides, during the first stages of straining these blocky austenite islands transform effortlessly, deteriorating the ductility (30%) and toughness (58 J) in spite of keeping a similar DBTT as the microstructure with the medium grain size."
+   },
+   {
+    "id": "https://openalex.org/W4380537376",
+    "doi": "https://doi.org/10.1080/17452759.2023.2219665",
+    "title": "Investigation of microstructures and strengthening mechanisms in an N-doped Co-Cr-Mo alloy fabricated by laser powder bed fusion",
+    "year": 2023,
+    "cited": 20,
+    "venue": "Virtual and Physical Prototyping",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://www.tandfonline.com/doi/pdf/10.1080/17452759.2023.2219665?needAccess=true&role=button",
+    "abstract": "This study presented a comprehensive investigation into the microstructures, strengthening mechanisms and deformation behaviours of a novel N-doped Co-28Cr-6Mo (CCMN) alloy fabricated by laser powder bed fusion (LPBF). In addition to the well-known cellular structures, lattice defects including dislocations and stacking faults (SFs), the near-spherical shaped Cr2N precipitates with two typical size distributions were detected. Tensile test results revealed that the LPBF fabricated CCMN alloy demonstrated superior yield strength of 845 ± 49 MPa and elongation to fracture of 12.7 ± 1.9%. The grain boundaries (∼277 MPa), high density of dislocations (∼176–193 MPa), Cr2N precipitates (∼243 MPa) and SFs (∼131 MPa) are regarded as the dominate strengthening contributors. On the other hand, HCP phase triggered by strain induced martensite transformation (SIMT) and the Lomer-Cottrell locks (L-C locks) associated with the numerous SFs significantly enhanced the alloy strain hardening rate. More importantly, the formed Cr2N nanoprecipitates effectively suppressed the strain localisation and the premature failure along the HCP/FCC interfaces by deflecting the continuous growth of SFs, further contributing to the high ductility of the LPBF processed CCMN alloy. The present study is expected to shed light on the future development of N-doped high-performance cobalt-based alloy for the LPBF process."
+   },
+   {
+    "id": "https://openalex.org/W2765134984",
+    "doi": "https://doi.org/10.1007/s40192-017-0103-6",
+    "title": "Tailoring the Properties of a Ni-Based Superalloy via Modification of the Forging Process: an ICME Approach to Fatigue Performance",
+    "year": 2017,
+    "cited": 20,
+    "venue": "Integrating materials and manufacturing innovation",
+    "topics": [
+     "Metallurgy and Material Forming",
+     "Microstructure and mechanical properties",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1765264",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2284867304",
+    "doi": "https://doi.org/10.3390/met6030043",
+    "title": "Temperature Effects on the Tensile Properties of Precipitation-Hardened Al-Mg-Cu-Si Alloys",
+    "year": 2016,
+    "cited": 20,
+    "venue": "Metals",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/6/3/43/pdf?version=1456223355",
+    "abstract": "Because the mechanical performance of precipitation-hardened alloys can be significantly altered with temperature changes, understanding and predicting the effects of temperatures on various mechanical properties for these alloys are important. In the present work, an analytical model has been developed to predict the elastic modulus, the yield stress, the failure stress, and the failure strain taking into consideration the effect of temperatures for precipitation-hardenable Al-Mg-Cu-Si Alloys (Al-A319 alloys). In addition, other important mechanical properties of Al-A319 alloys including the strain hardening exponent, the strength coefficient, and the ductility parameter can be estimated using the current model. It is demonstrated that the prediction results based on the proposed model are in good agreement with those obtained experimentally in Al-A319 alloys in the as-cast condition and after W and T7 heat treatments."
+   },
+   {
+    "id": "https://openalex.org/W4319868770",
+    "doi": "https://doi.org/10.1016/j.matdes.2023.111700",
+    "title": "Evaluation of bimodal microstructures in selective-laser-melted and heat-treated Ti-6Al-4V",
+    "year": 2023,
+    "cited": 19,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Titanium Alloys Microstructure and Properties",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127523001156-ga1_lrg.jpg",
+    "abstract": "As-built, SLM-printed Ti-6Al-4V parts suffer from non-equilibrium, brittle microstructures due to the formation of metastable α’-phase martensite as a result of the printing process. Post-processing heat treatments are required to alleviate residual stress and decompose the martensite into equilibrium phases. Using unconventional ‘cyclical’ heat treatment profiles, it is possible to achieve a bimodal microstructure as opposed to a more typical lamellar microstructure achieved using conventional heat treatment profiles. In the present research, the effect of cyclical heat treatment parameters (maximum temperature, minimum temperature, number of cycles and cooling regime) on the grain morphology, phase composition and mechanical performance (static and dynamic) has been evaluated. Furthermore, a comparison to a typical lamellar microstructure has been completed as a reference."
+   },
+   {
+    "id": "https://openalex.org/W3199584937",
+    "doi": "https://doi.org/10.24425/aoa.2021.138133",
+    "title": "Acoustic Emission as a Method for Analyzing Changes and Detecting Damage in Composite Materials During Loading",
+    "year": 2021,
+    "cited": 19,
+    "venue": "Archives of Acoustics",
+    "topics": [
+     "Ultrasonics and Acoustic Wave Propagation",
+     "Industrial Engineering and Technologies",
+     "Material Properties and Failure Mechanisms"
+    ],
+    "oa_url": "http://journals.pan.pl/Content/120773/aoa.2021.138133.pdf",
+    "abstract": "Thanks to their excellent strength and durability, composite materials are used to manufacture many important structural elements. In the face of their extensive use, it is crucial to seek suitable methods for monitoring damages and locating their origins. The purpose of the article was to verify the possibility of applying the acoustic emissions (AE) method in the detection of damages in the structures of composite materials. The experimental part comprised static tensile tests carried out on various sandwich composites, including simultaneous registration of elastic waves with increasing loads, carried out with the use of an acousticelectrical sensor connected. The signal obtained from the sensor was then further processed and used to draw up diagrams of the AE hits, amplitude, root mean square of the AE source signal (RMS) and duration in the function of time. These diagrams were then applied on their corresponding stretching curves, the obtained charts were analysed. The results obtained point to a conclusion that the acoustic emissions method can be successfully used to detect and locate composite material damages."
+   },
+   {
+    "id": "https://openalex.org/W2972582207",
+    "doi": "https://doi.org/10.3390/app10041527",
+    "title": "Consistent Time-to-Failure Tests and Analyses of Adhesive Anchor Systems",
+    "year": 2020,
+    "cited": 16,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Structural Response to Dynamic Loads",
+     "Geotechnical Engineering and Analysis",
+     "Structural Behavior of Reinforced Concrete"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/10/4/1527/pdf?version=1582523168",
+    "abstract": "Motivated by tunnel accidents in the recent past, several investigations into the sustained load behavior of adhesive anchors have been initiated. Nevertheless, the reliable lifetime prediction of bonded anchor systems based on a relatively short testing period still represents an unsolved challenge due to the complex nonlinear viscoelastic behavior of concrete and adhesives alike. This contribution summarizes the results of a comprehensive experimental investigation and systematically carried out time-to-failure analysis performed on bonded anchors under sustained tensile load. Two different adhesive materials that find widespread application in the building industry were used, one epoxy and one vinylester based. Performed experiments include full material characterizations of concrete and the adhesives, bonded anchor pull-out tests at different loading rates, and time-to-failure sustained load tests. All anchor tests are performed in a confined configuration with close support. After a thorough review of available experimental data and analysis methods in the literature, the experimental data are presented with the main goal to (i) provide guidance for the analysis of load versus time-to-failure test data, and (ii) to derive a set of recommendations for efficient time-to-failure tests having in mind the needs associated with different analysis techniques. Finally, a new approach based on a sigmoid function, previously used only for concrete, is for the first time applied to bonded anchors systems and compared to the established regression models."
+   },
+   {
+    "id": "https://openalex.org/W4412407513",
+    "doi": "https://doi.org/10.1038/s41467-025-61494-7",
+    "title": "Enhancing the strength and ductility of a medium entropy alloy through non-basal slip activation",
+    "year": 2025,
+    "cited": 15,
+    "venue": "Nature Communications",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-61494-7.pdf",
+    "abstract": "Developing alloys with both ultrahigh strength and ductility remains a formidable scientific challenge, primarily due to the inherent strength-ductility tradeoff. Here, we present an approach to enhance the ductility and strength of a medium-entropy alloy (MEA) featuring a fully recrystallized face-centered cubic/hexagonal close-packed dual-phase ultrafine-grained architecture. This is achieved by activating unusual non-basal slips in the ordered hexagonal close-packed superlattice nanoprecipitates, resulting in this MEA that exhibits remarkable uniform elongation (εu) and ultrahigh yield strength (σy) across a wide temperature range, particularly at cryogenic temperatures (σy ~ 2100 MPa, εu ~ 15%). The non-basal slips in the secondary phase are activated at ultrahigh stress levels, which are compatible with the increased yield strength of the MEA attained through multiple strengthening mechanisms, including grain boundaries, lattice friction, and second-phase nanoprecipitates provided by the multi-principal elements of the entropy alloy. The deformation mechanism elucidated in this work not only leverages the significant strengthening and strain hardening effects of brittle nanoprecipitates but also enables the ductilization of the alloy through sequential non-basal slip during ongoing deformation. The authors reveal the activation mechanism of non-basal slip systems in a medium entropy alloy, offering new insights for the design of advanced structural alloys with enhanced ductility and high strength."
+   },
+   {
+    "id": "https://openalex.org/W4320493548",
+    "doi": "https://doi.org/10.3390/machines11020272",
+    "title": "Thin-Walled Commercially Pure Titanium Structures: Laser Powder Bed Fusion Process Parameter Optimization",
+    "year": 2023,
+    "cited": 15,
+    "venue": "Machines",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-1702/11/2/272/pdf?version=1676098109",
+    "abstract": "Laser powder bed fusion (L-PBF) process parameters can be changeable depending on the part geometry due to thermal conductivity differences. The number of studies on the process parameter development for commercial pure titanium (Cp-Ti) with the L-PBF process is also quite limited in the literature. The aim of this study is to present a comprehensive process development for the production of Cp-Ti bulk and thin structures with the L-PBF technology. In the first phase, the right process parameters, including scan speed, laser power, hatch distance, and layer thickness, were identified with prismatic specimens with thin walls so that the obtained parameters could be used for both bulky sections and thin features such as lattice structures. The process parameters were varied to change the volumetric energy density from 19 to 208 J/mm3 among 80 different parameter sets. Parameter sets having a Volumetric Energy Density (VED) value between 32 J/mm3 and 47 J/mm3 gave almost fully dense Cp-Ti parts while the laser power was set to 200–250 W and the scan speed was used as 1000–1400 mm/s. Finally, Vickers hardness and tensile tests were applied to highly dense Cp-Ti parts. This study involving investigating the effect of process parameters on a wide range demonstrated that L-PBF is a favorable manufacturing technology for Cp-Ti parts with almost full density and good mechanical properties as well as good dimensional accuracy even on thin geometries. Moreover, the results show that combining parameters into a single one, i.e., VED, is not a proper way to optimize the process parameters since increasing laser power or decreasing the scan speed may alter the results, although VED is increased in both manners."
+   },
+   {
+    "id": "https://openalex.org/W2986284760",
+    "doi": "https://doi.org/10.1080/15376494.2019.1675106",
+    "title": "Numerical and experimental procedure for material calibration using the serial/parallel mixing theory, to analyze different composite failure modes",
+    "year": 2019,
+    "cited": 15,
+    "venue": "Mechanics of Advanced Materials and Structures",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Epoxy Resin Curing Processes",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://www.tandfonline.com/doi/pdf/10.1080/15376494.2019.1675106?needAccess=true",
+    "abstract": "This work proposes a calibration procedure to obtain the material parameters required by the Serial/Parallel Mixing Theory for the analysis of composites. A set of experimental tests are defined to obtain the main composite failure modes. Then, it is proposed to calculate the parameters required by the formulation using the experimental results. The procedure proposed is validated by comparing the numerical results, with those obtained from the experimental campaign. This comparison shows that the Serial/Parallel mixing theory is capable of representing the failure modes of the composite for different loading scenarios as well as the material toughness."
+   },
+   {
+    "id": "https://openalex.org/W3186622416",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.07.088",
+    "title": "Microstructural evolution in pure copper during accumulative skin pass rolling: experimental and crystal plasticity numerical investigations",
+    "year": 2021,
+    "cited": 14,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Aluminum Alloys Composites Properties",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421007511/pdf",
+    "abstract": "Surface mechanical treatments are known to introduce deformation heterogeneity, thus entailing a combination of excellent strength and ductility in metallic metals. Accumulative skin pass rolling (ASPR) was employed to introduce heterogeneous structure in pure copper, which significantly improved yield strength and maintained high ductility. The experimental observations of the ASPR processed copper showed that surface grains possessed a much larger magnitude of misorientations and geometrically necessary dislocations (GNDs) than the centre grains. Crystal plasticity finite element modelling was utilised to provide an in-depth understanding of microstructure evolution during ASPR. It was found that the surface grains accommodated higher shear strain and had higher slip resistance than the centre grains. The multiple active slip systems in the surface grains induce the lattice rotations and then the formation of intragranular misorientations accompanied by a high density of GNDs, while the single active slip system in the centre grains can accommodate the applied material rotation without the lattice rotation."
+   },
+   {
+    "id": "https://openalex.org/W2426591977",
+    "doi": "https://doi.org/10.1016/j.matdes.2016.06.049",
+    "title": "Martensitic transformation strain and stability of Ni50−x–Ti50–Cox (x=3,4) strips obtained by twin-roll casting and standard processing techniques",
+    "year": 2016,
+    "cited": 14,
+    "venue": "Materials & Design",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127516308012-fx1.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4392354736",
+    "doi": "https://doi.org/10.1007/s40964-024-00566-4",
+    "title": "Mechanical properties of continuous glass fibre-reinforced composites made by material extrusion",
+    "year": 2024,
+    "cited": 13,
+    "venue": "Progress in Additive Manufacturing",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Innovations in Concrete and Construction Materials",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40964-024-00566-4.pdf",
+    "abstract": "Abstract This paper presents an experimental and numerical study on the mechanical properties of continuous glass fibre-reinforced composites fabricated using the material extrusion technique. Specimens with varying numbers of reinforcement layers are 3D printed using a MarkForged Mark Two printer. Both flexural and tensile tests are conducted to evaluate the performance of these specimens. In addition, a numerical modelling approach based on finite-element analysis (FEA) is developed to simulate the flexural and tensile properties of the composites. A comparison between the model predictions and experimental results reveals a reasonable agreement. The findings of this research provide valuable insights into the emerging field of continuous fibre-reinforced 3D printing technology, enabling users to design and fabricate parts that meet the specific requirements of their applications with a high level of confidence."
+   },
+   {
+    "id": "https://openalex.org/W3120939786",
+    "doi": "https://doi.org/10.3390/ma14020404",
+    "title": "Experimental Investigation and Modeling of Damage Accumulation of EN-AW 2024 Aluminum Alloy under Creep Condition at Elevated Temperature",
+    "year": 2021,
+    "cited": 13,
+    "venue": "Materials",
+    "topics": [
+     "High Temperature Alloys and Creep",
+     "Fatigue and fracture mechanics",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/2/404/pdf?version=1611130920",
+    "abstract": "The paper is focused on creep-rupture tests of samples made of the 2024 alloy in the T3511 temper under uniaxial tensile stress conditions. The basic characteristics of the material at the temperatures of 100, 200 and 300 °C were determined, such as the Young’s modulus E, yield point σy, ultimate tensile strength σc and parameters K and n of the Ramberg–Osgood equation. Creep tests were performed for several different levels of nominal axial stress (load) at each temperature. It was observed that in the process of creep to failure at 200 and 300 °C, as the stress decreases, the creep time increases and, at the same time, the strain at rupture increases. However, such a regularity is maintained until a certain transition stress value σt is reached. Reducing the stress below this value results in a decreased value of the strain at rupture. A simple model of creep damage accumulation was proposed for the stress range above the transient value. In this model, the increase in the isotropic damage state variable was made dependent on the value of axial stress and the increase in plastic axial strain. Using the results of experimental creep-rupture tests and the failure condition, the parameters of the proposed model were determined. The surface of fractures obtained in the creep tests with the use of SEM technology was also analyzed."
+   },
+   {
+    "id": "https://openalex.org/W4394680514",
+    "doi": "https://doi.org/10.3390/ma17081724",
+    "title": "Fatigue Behavior and Fracture Surface Analysis of Corroded High-Strength Bridge Cable Wires",
+    "year": 2024,
+    "cited": 12,
+    "venue": "Materials",
+    "topics": [
+     "Mechanical stress and fatigue analysis",
+     "Concrete Corrosion and Durability",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/17/8/1724/pdf?version=1712675367",
+    "abstract": "Bridge cable wires suffer from alternating stress and environmental erosion, leading to premature failure prior to its design life. This paper investigates the fatigue and mechanical behaviors of corroded bridge cable wires with a zinc-aluminum (Zn-Al) alloy coating. Based on the salt spray corrosion test and microstructure analysis, the anti-corrosion resistance and corrosion appearance characteristics of the Zn-Al alloy coating and galvanized coating were investigated. The Zn-Al alloy coating was superior in resistance to corrosion fatigue for the improvement in toughness and the generation of anti-corrosion Zn-Al and Fe-Zn-Al phases. Equations of the accelerated corrosion depth of the steel wires had been regressed to roughly estimate the corrosion life of the Zn-Al alloy coating, which can reach 29.1 years with a thickness of 70 μm. The fatigue and mechanical properties of the bare wires after the salt spray test were further studied based on tensile tests and fatigue tests. The fatigue properties of the bridge cable wire would decrease with the corrosion degree due to the deterioration and embrittlement of materials, where ductility characterized by the elongation rate was the most affected. Fracture surfaces of the wires were captured and analyzed based on a method for recognizing graphical contours. Insufficient fatigue life may occur in the steel wires after corrosion and increase with the degree of corrosion. The pit depth logarithmically weakened the fatigue life of steel wires for the weakening of fatigue toughness and the bearing area. The flat fracture was more common with a single fatigue source, while multiple fatigue sources led to step-like fractures for the generation of multiple dispersed crack propagation regions. Corrosion fatigue was more sensitive to the existence of fatigue sources than the reduction. Multiple initiation sources significantly reduced the fatigue life due to the cracking facilitation of the joint effect of multiple pits. The electrochemical reactions of corrosion can lead to material embrittlement and a reducing effect on the fracture toughness of the steel wires."
+   },
+   {
+    "id": "https://openalex.org/W2467720216",
+    "doi": "https://doi.org/10.1088/1757-899x/89/1/012001",
+    "title": "Microstructural evolutions and stability of gradient nano-grained copper under tensile tests and subsequent storage",
+    "year": 2015,
+    "cited": 12,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Aluminum Alloys Composites Properties",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/89/1/012001/pdf",
+    "abstract": "A gradient nano-grained (GNG) surface layer is produced on a bulk coarse-grained Cu by means of a surface mechanical grinding treatment. Homogeneous grain coarsening induced by mechanical deformation is observed in the GNG Cu layer under tensile tests at both 300 K and 123 K. The concurrent grain coarsening during tensile deformation is proven to be also thermally activated, because the extent of grain coarsening of the GNG Cu layer is less significant at 123 K than at 300 K, although a higher flow stress is achieved at 123 K. During the subsequent storage at 258 K after tensile tests, no obvious change can be found for the grain size in the GNG Cu layer deformed at 300 K. In contrast, widespread abnormal grain coarsening is frequently observed in the GNG Cu layer deformed at 123 K and stored for 100 days, which may be caused by the higher stored energy in the non-equilibrium grain boundary structures."
+   },
+   {
+    "id": "https://openalex.org/W3012024172",
+    "doi": "https://doi.org/10.3390/ma13061386",
+    "title": "Application of the Acoustic Emission Method and Kolmogorov-Sinai Metric Entropy in Determining the Yield Point in Aluminium Alloy",
+    "year": 2020,
+    "cited": 11,
+    "venue": "Materials",
+    "topics": [
+     "Non-Destructive Testing Techniques",
+     "Metal Forming Simulation Techniques",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/13/6/1386/pdf?version=1584605406",
+    "abstract": "This study analyzes the possibility of applying the acoustic emission method (AE) and the Kolmogorov-Sinai (K-S) metric entropy phenomenon in determining the structural changes that take place within the EN AW 7020 aluminum alloy. The experimental part comprised of a static tensile test carried out on aluminum alloy samples, and the simultaneous recording of the acoustic signal generated inside the material. This signal was further processed and diagrams of the effective electrical signal value (RMS) as a function of time were drawn up. The diagrams obtained were applied on tensile curves. A record of measurements carried out was used to analyze the properties of the material, applying a method based on Kolmogorov-Sinai (K-S) metric entropy. For this purpose, a diagram of metric entropy as a function of time was developed for each sample and applied on the corresponding course of stretching. The results of studies applying the AE and the K-S metric entropy method show that K-S metric entropy can be used as a method to determine the yield point of the material where there are no pronounced yield points."
+   },
+   {
+    "id": "https://openalex.org/W4387880109",
+    "doi": "https://doi.org/10.12913/22998624/171496",
+    "title": "Numerical Study of the Energy Absorption Performance of 3D Printed Sandwich Structures",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Advances in Science and Technology – Research Journal",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Architecture and Computational Design"
+    ],
+    "oa_url": "http://www.astrj.com/pdf-171496-95738?filename=Numerical Study of the.pdf",
+    "abstract": "Nowadays, Fused Deposition Modeling (FDM) is a powerful tool for manufacturing complex components, due to its customizability, low cost, accessibility, and fast prototyping time.It is an alternative for creating thin-walled structures, as it allows for novel designs.This article focuses on the design and numerical evaluation of 3D printed sandwich structures for energy absorption applications.For this purpose, five structures of Acrylonitrile Butadiene Styrene (ABS) were designed.To ensure optimal performance, the 3D printing parameters were optimized based on the corresponding literature.The structures had cores based on polygonal and cell arrangements.The effects of cross-section and mass on energy absorption were analyzed, and parameters such as energy absorption, peak load, mean force, and crush force efficiency (CFE) were determined during the study.The structures were assessed by out-of-plane compression tests.The numerical analysis was executed using Abaqus finite element software.Results showed that the energy absorption performance is primarily determined by the geometry and density of the structures.The best performance was found for a circular cellular structure, with a CFE of 0.884."
+   },
+   {
+    "id": "https://openalex.org/W4386366110",
+    "doi": "https://doi.org/10.1016/j.sna.2023.114633",
+    "title": "Tailoring piezoresistive response of carbon nanotubes sensors by hybridization of cellulose nanocrystals for composite structures",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Sensors and Actuators A Physical",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://researchonline.rca.ac.uk/5515/10/Manuscript_revisied_20.06.2023.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4384826413",
+    "doi": "https://doi.org/10.3390/ma16145077",
+    "title": "The Strength and Fracture Characteristics of One-Part Strain-Hardening Green Alkali-Activated Engineered Composites",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Materials",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Concrete Properties and Behavior"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/14/5077/pdf?version=1689747888",
+    "abstract": "Alkali-activated engineered composites (AAECs) are cement-free composites developed using alkali activation technology, which exhibit strain hardening and multiple micro-cracking like conventional engineered cementitious composites (ECCs). Such AAECs are developed in this study by incorporating 2% v/v polyvinyl alcohol (PVA) fibers into alkali-activated mortars (AAMs) produced using binary/ternary combinations of fly ash class C (FA-C), fly ash class F (FA-F), and ground-granulated blast furnace slag (GGBFS) with powder-form alkaline reagents and silica sand through a one-part mixing method under ambient curing conditions. The mechanical and microstructural characteristics of eight AAECs are investigated to characterize their strain-hardening performance based on existing (stress and energy indices) and newly developed tensile/flexural ductility indices. The binary (FA-C + GGBFS) AAECs obtained higher compressive strengths (between 48 MPa and 52 MPa) and ultrasonic pulse velocities (between 3358 m/s and 3947 m/s) than their ternary (FA-C + FA-F + GGBFS) counterparts. The ternary AAECs obtained a higher fracture energy than their binary counterparts. The AAECs incorporating reagent 2 (Ca(OH)2: Na2SO4 = 2.5:1) obtained a greater fracture energy and compressive strengths than their counterparts with reagent 1 (Ca(OH)2: Na2SiO3.5H2O = 1:2.5), due to additional C-S-H gel formation, which increased their energy absorption for crack propagation through superior multiple-cracking behavior. A lower fracture and crack-tip toughness facilitated the development of enhanced flexural strength characteristics with higher flexural strengths (ranging from 5.3 MPa to 11.3 MPa) and a higher energy ductility of the binary AAMs compared to their ternary counterparts. The tensile stress relaxation process was relatively gradual in the binary AAECs, owing to the formation of a more uniform combination of reaction products (C-S-H/C-A-S-H) rather than a blend of amorphous (N-C-A-S-H/N-A-S-H) and crystalline (C-A-S-H/C-S-H) binding phases in the case of the ternary AAECs. All the AAECs demonstrated tensile strain-hardening characteristics at 28 days, with significant improvements from 28% to 100% in the maximum bridging stresses for mixes incorporating 40% to 45% GGBFS at 365 days. This study confirmed the viability of producing green cement-free strain-hardening alkali-activated composites with powder-form reagents, with satisfactory mechanical characteristics under ambient conditions."
+   },
+   {
+    "id": "https://openalex.org/W3043479991",
+    "doi": "https://doi.org/10.1155/2020/6895850",
+    "title": "Finite Element Simulation of NiTiNb Shape Memory Alloy Pipe‐Joint Subjected to Coupled Transformation and Plastic Deformation",
+    "year": 2020,
+    "cited": 10,
+    "venue": "Advances in Materials Science and Engineering",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/amse/2020/6895850.pdf",
+    "abstract": "The assembling process of Ni47Ti44Nb9 alloy pipe joints considering the phase transformation and plasticity was numerically simulated for the first time with a developed constitutive model. The simulated process was based on the experimental material parameters, which were determined with the experimental tensile results of Ni47Ti44Nb9 shape memory alloy (SMA) and steel bars. The results showed that, after assembly, the Mises stress distributed uniformly along the longitudinal direction of the NiTiNb joint, but nonuniformly along the radial direction. The maximum σeq does not appear at the inner wall of the joints due to the coupling effect of the plastic deformation and the recoverable transformation. The contact pressure distributed uniformly along the circumferential direction, but nonuniformly along the longitudinal direction. The sizes of the SMA joint and the pipe should be properly matched to ensure contact during the stage of the rapid reverse phase transformation to obtain stable connection performance. The pull‐out force was also computed, and the results were in good agreement with the experimental results. The results obtained can provide available information for the optimization of the design parameters of the high‐performance SMA pipe‐joint, such as inner diameter and assembly clearance."
+   },
+   {
+    "id": "https://openalex.org/W4242942442",
+    "doi": "https://doi.org/10.25103/jestr.116.22",
+    "title": "Fracture Mechanisms in Dual-Phase Steel: Influence of Martensite Volume Fraction and Ferrite Grain Size",
+    "year": 2018,
+    "cited": 10,
+    "venue": "Journal of Engineering Science and Technology Review",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://doi.org/10.25103/jestr.116.22",
+    "abstract": "The influence of Martensite Volume Fraction (MVF) on fracture mechanisms in a Dual Phase steel with two different grain sizes was studied in this work.Ferrite-Martensite microstructure was obtained by an intercritical heat treatment for both groups of grain sizes.The results show a direct relationship between a higher temperature during the intercritical heat treatment and the increase of the MVF.The fine microstructure with higher MVF presents a high tensile strength and a good ductility.Furthermore, in relation to the material behavior under impact conditions, grain refinement and higher values of MVF promote ductile fracture by typical microvoid coalescence.High values of impact energy refer to the presence of low-carbon martensite formed at higher temperatures, which is more ductile than high carbon martensite formed at lower temperatures.Additionally, fine-grained materials have a better ability to dissipate impact energy.It was shown that an increase of 10.0% in MVF allows fine grain microstructures to improve their capacity to dissipate impact energy by 11.4%.This behavior may be explained because of the low carbon content of the as-received material, and the mechanical properties of the martensite obtained by the intercritical heat treatment."
+   },
+   {
+    "id": "https://openalex.org/W2007062972",
+    "doi": "https://doi.org/10.1016/j.msea.2013.12.102",
+    "title": "Load-biased martensitic transformation strain of Ti50–Ni47–Co3 strip obtained by a twin-roll casting technique",
+    "year": 2014,
+    "cited": 10,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "Titanium Alloys Microstructure and Properties",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509314000082",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2802974022",
+    "doi": "https://doi.org/10.1007/s42452-019-0526-0",
+    "title": "Effects of process variables on the mechanical and physical properties of an Al–Cu–Mg powder metallurgy alloy",
+    "year": 2019,
+    "cited": 9,
+    "venue": "SN Applied Sciences",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Aluminum Alloy Microstructure Properties",
+     "Bauxite Residue and Utilization"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s42452-019-0526-0.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4392243326",
+    "doi": "https://doi.org/10.1007/s11666-024-01738-y",
+    "title": "Quantitative Nondestructive Evaluation of Cold Spray Manufactured Aluminum Alloy 6061 and Copper Samples",
+    "year": 2024,
+    "cited": 8,
+    "venue": "Journal of Thermal Spray Technology",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Particle Dynamics in Fluid Flows",
+     "Erosion and Abrasive Machining"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11666-024-01738-y.pdf",
+    "abstract": "Abstract Cold spray (CS) is a solid-state process for depositing thick layers of material via the successive high-velocity impact of powder particles onto a solid surface, which leads to high rates of deformation, interparticle bonding, and coating build-up. Although CS is finding commercial utilization in non-load-bearing repair and coating applications, clear nondestructive characterization procedures are necessary to realize its potential in load-bearing structural applications. In this study, the viability of electrical conductivity and through thickness ultrasound wave velocity measurement methods was studied to serve as a means for nondestructive quantitative measurement for quality control in CS and potentially other additive manufacturing (AM) methods. Eddy current, ultrasound, porosity, hardness, and uniaxial tensile strength tests were conducted on CS deposited layers of aluminum alloy 6061 and copper on aluminum alloy 6061 and commercially pure copper substrates, respectively. CS gas dynamic parameters were intentionally and systematically varied to result in corresponding discrete differences in mechanical properties of deposits. Ultrasound measurements of longitudinal wave velocity and eddy current electrical conductivity measurements showed good correlation with process conditions, microstructural characterization results, and destructive mechanical tests (hardness, tensile). The results of this work show that ultrasound wave velocity and electrical conductivity correlate well with increased particle impact velocity in CS deposited aluminum and copper blocks, which evidently show an incremental decrease in porosity, increase in hardness, and increase in tensile strength. The outlined ultrasound and eddy current nondestructive testing methods present effective means for quantitative assessment of cold spray deposited structures while intact with the substrate."
+   },
+   {
+    "id": "https://openalex.org/W2779215826",
+    "doi": "https://doi.org/10.1088/1757-899x/279/1/012003",
+    "title": "Strength and electrical resistivity of heavily worked copper",
+    "year": 2017,
+    "cited": 8,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Fusion materials and technologies",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/279/1/012003/pdf",
+    "abstract": "Copper and its alloys are a topic of interest for various cryogenic conductor applications. Often, it is used as a supporting matrix for superconducting filaments requiring that it have good strength and high conductivity. One of the best methods to increase strength while preserving conductivity is work hardening. In this study, CDA101, CDA110, and C182 copper were processed by a severe plastic deformation (SPD) procedure called equal channel angular extrusion (ECAE). In this study we explore the relationships between the levels of plastic strain and annealing with tensile and hardness properties, grain size, and electrical resistivity. While C182 has the highest strength, it also has the lowest conductivity. CDA101 and CDA110 both retain over 95% of their conductivity in the fully worked state, while C182 has about 40% of the IACS value. Saturation of strength occurs around 3-4 ECAE passes. It is concluded that a lower amount of plastic strain via ECAE is best for creating a material with the highest combination of strength and conductivity, and is suitable for high strength high conductivity applications."
+   },
+   {
+    "id": "https://openalex.org/W4212848623",
+    "doi": "https://doi.org/10.1016/j.addlet.2022.100037",
+    "title": "Influence of reduced carbon content on microstructure and mechanical behavior of Inconel 718 prepared by laser powder bed fusion",
+    "year": 2022,
+    "cited": 7,
+    "venue": "Additive Manufacturing Letters",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2772369022000123/pdf",
+    "abstract": "Inconel 718 powder with reduced carbon content was used to manufacture coupons via laser powder bed fusion (LPBF) to study the influence of carbon content on microstructures and mechanical properties of HIP'ed and heat-treated material. The carbon concentration in this material was kept deliberately low (0.01 wt%) relative to a typical commercial powder composition (0.04 wt%) of IN718 in order to minimize the precipitation of primary carbides during post-processing heat treatments, which have been observed to be deleterious to elevated temperature mechanical properties such as elongation, stress rupture ductility, and notch sensitivity. The final microstructure of the lean C alloy is shown to have a significantly reduced NbC population relative to the baseline material. Furthermore, other microstructural variations such as an increased δ phase population and decreased γ’’ particle size were observed. Empirical observations agreed with microstructural simulations calculated by the ThermoCalc/TC-PRISMA precipitation module. These changes to the microstructure resulted in a 10% increase in the yield strength at both 25 and 650 °C in the lean C alloy, bringing the strength of LPBF-printed material closer to that of wrought IN718. Overall, the reduction in carbon content in the raw material has significant effects beyond limiting the pre-solution treatment precipitation of NbC, primarily by freeing Nb for formation of δ and γ’’ phases."
+   },
+   {
+    "id": "https://openalex.org/W2988026021",
+    "doi": "https://doi.org/10.2478/jok-2019-0058",
+    "title": "Application of the Kolmogorov-Sinai Entropy in Determining the Yield Point, as Exemplified by the EN AW-7020 Alloy",
+    "year": 2019,
+    "cited": 7,
+    "venue": "Journal of Konbin",
+    "topics": [
+     "High Temperature Alloys and Creep",
+     "Aluminum Alloy Microstructure Properties",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.sciendo.com/pdf/10.2478/jok-2019-0058",
+    "abstract": "Abstract The article presents a method of determining the yield point, applying calculations based on the Kolmogorov-Sinai (K-S) metric entropy model. Data used in metric entropy calculations was obtained during a static tensile test of the AW-7020 aluminium alloy. The methodology of K-S entropy calculations was presented and illustrated by a selected example from a data collection. Analyzing the results obtained, the values of an arbitrary yield point were compared for R02 selected samples with the values ReK−S."
+   },
+   {
+    "id": "https://openalex.org/W2808463367",
+    "doi": "https://doi.org/10.25103/jestr.112.22",
+    "title": "Fracture Mechanisms in Dual-Phase Steel: Influence of Martensite Volume Fraction and Ferrite Grain Size",
+    "year": 2018,
+    "cited": 7,
+    "venue": "Journal of Engineering Science and Technology Review",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://doi.org/10.25103/jestr.112.22",
+    "abstract": "The influence of Martensite Volume Fraction (MVF) on fracture mechanisms in a Dual Phase steel with two different grain sizes was studied in this work.Ferrite-Martensite microstructure was obtained by an intercritical heat treatment for both groups of grain sizes.The results show a direct relationship between a higher temperature during the intercritical heat treatment and the increase of the MVF.The fine microstructure with higher MVF presents a high tensile strength and a good ductility.Furthermore, in relation to the material behavior under impact conditions, grain refinement and higher values of MVF promote ductile fracture by typical microvoid coalescence.High values of impact energy refer to the presence of low-carbon martensite formed at higher temperatures, which is more ductile than high carbon martensite formed at lower temperatures.Additionally, fine-grained materials have a better ability to dissipate impact energy.It was shown that an increase of 10.0% in MVF allows fine grain microstructures to improve their capacity to dissipate impact energy by 11.4%.This behavior may be explained because of the low carbon content of the as-received material, and the mechanical properties of the martensite obtained by the intercritical heat treatment."
+   },
+   {
+    "id": "https://openalex.org/W2786208123",
+    "doi": "https://doi.org/10.1155/2018/2867281",
+    "title": "Experimental and Numerical Study of Texture Evolution and Anisotropic Plastic Deformation of Pure Magnesium under Various Strain Paths",
+    "year": 2018,
+    "cited": 7,
+    "venue": "Advances in Materials Science and Engineering",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Aluminum Alloys Composites Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "http://downloads.hindawi.com/journals/amse/2018/2867281.pdf",
+    "abstract": "The deformation behavior and texture evolution of pure magnesium were investigated during plane strain compression, simple compression, and uniaxial tension at room temperature. The distinctive stages in the measured anisotropic stress‐strain responses and numerically computed strain‐hardening rates were correlated with texture and deformation mechanisms. More specifically, in plane strain compression and simple compression, the onset of tensile twins and the accompanying texture‐hardening effect were associated with the initial high strain‐hardening rates observed in specimens loaded in directions perpendicular to the crystallographic c‐axis in most of the grains. The subsequent drop in strain‐hardening rates in these samples was correlated with the exhaustion of tensile twins and the activation of pyramidal slip systems. The falling strain‐hardening rates were observed in simple compression and plane strain compression with loading directions parallel to the c‐axis where the second pyramidal slip systems were the only slip families that can accommodate deformation. For uniaxial tension with the basal plane parallel to the tensile axis, the prismatic and second pyramidal slips are the main deformation mechanisms. The predicted relative slip and twin activities from the crystal plasticity simulations clearly showed the effect of texture on the type of activated deformation mechanisms."
+   },
+   {
+    "id": "https://openalex.org/W4411089608",
+    "doi": "https://doi.org/10.1016/j.msea.2025.148656",
+    "title": "Heterogeneous grain structure delivers work hardening and high ductility in a VCoNi alloy with ultrahigh yield strength",
+    "year": 2025,
+    "cited": 6,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Advanced materials and composites",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "http://dspace.imech.ac.cn/bitstream/311007/101227/1/2.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4389264321",
+    "doi": "https://doi.org/10.3390/polym15234602",
+    "title": "Effect of Powder Bed Fusion Laser Sintering on Dimensional Accuracy and Tensile Properties of Reused Polyamide 11",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Polymers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/15/23/4602/pdf?version=1701502087",
+    "abstract": "Polyamide 11 (PA11) is a plant-based nylon made from castor beans. Powder bed fusion laser sintering (PBF-LS) is an additive manufacturing process used for PA11 which allows for the reuse of the unsintered powder. The unsintered powder is mixed with virgin powders at different refresh rates, a process which has been studied extensively for most semi-crystalline polyamides. However, there is lack of information on the effect of using 100% reused PA11 powder and the effect of the number of times it is reused on its own, during powder bed fusion laser sintering. This paper investigates the effect of reusing PA11 powder in PBF-LS and the effect of the number of times it is reused on the dimensional accuracy, density and thermal and tensile properties. From the 100% virgin powder to the third reuse of the powder, there is a decrease in powder wastage, crystallinity and tensile strength. These are associated with the polymerisation and cross-linking process of polymer chains, upon exposure to high temperatures. This results in a higher molecular weight and, hence, a higher density. From the fourth reuse to the tenth reuse, the opposite is observed, which is associated with an increase in high-viscosity unmolten particles, resulting in defects in the PBF-LS parts."
+   },
+   {
+    "id": "https://openalex.org/W4386284054",
+    "doi": "https://doi.org/10.3390/polym15173605",
+    "title": "Tensile and Compression Strength Prediction and Validation in 3D-Printed Short-Fiber-Reinforced Polymers",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Polymers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Innovations in Concrete and Construction Materials",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/15/17/3605/pdf?version=1693391465",
+    "abstract": "In the current study, a methodology is validated for predicting the internal spatially varying strength properties in a single 3D-printed bead composed of 13%, by weight, carbon-fiber-filled acrylonitrile butadiene styrene. The presented method allows for the characterization of the spatially varying microstructural behavior yielding a local anisotropic stiffness and strength that can be integrated in a finite element framework for a bulk estimate of the effective stiffness and strength. The modeling framework is presented with a focus on composite structures made from large area additive manufacturing (LAAM). LAAM is an extrusion-based process yielding components on the order of meters, with a typical raster size of 10 mm. The presented modeling methods are applicable to other short-fiber-reinforced polymer processing methods as well. The results provided indicate the modeling framework yields results for the effective strength and stiffness that align with experimental characterization to within ∼1% and ∼10% for the longitudinal compressive and tensile strength, respectively, and to within ∼3% and ∼50% for the longitudinal compressive and tensile stiffness, respectively."
+   },
+   {
+    "id": "https://openalex.org/W4410211946",
+    "doi": "https://doi.org/10.3390/ma18102172",
+    "title": "Influence of Cu Content on Precipitation Behavior and Mechanical Properties Under Aging Treatment of Al-Cu-Li Alloys",
+    "year": 2025,
+    "cited": 5,
+    "venue": "Materials",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Magnesium Alloys: Properties and Applications"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/18/10/2172/pdf?version=1746753076",
+    "abstract": "The influence of Cu content (3.10, 3.50, and 3.80 wt.%) on the precipitation behavior and mechanical properties of Al-Cu-Li alloys under two aging conditions (direct aging at 175 °C vs. 3.5% pre-stretching followed by aging at 155 °C) was systematically investigated. The alloys were characterized using hardness testing, tensile property evaluation, and transmission electron microscopy (TEM) to correlate microstructural evolution with performance. The results revealed that increased Cu content accelerated early-stage hardening kinetics and elevated peak hardness and strength. Aging at 175 °C/36 h produced T1 phase-dominated microstructures with θ′ phases. With the increase of Cu content, the enhancement effect on the precipitation of T1 and θ′ phases becomes more pronounced, gradually overshadowing the initial promotion effect on precipitate growth. Pre-deformation prior to 155 °C/36 h aging induced significant T1 phase refinement and proliferation, with increasing Cu content continuously reducing T1 phase sizes while moderately enlarging θ′ precipitates. Precipitation-strengthening analysis revealed a transition in T1 strengthening from bypass to shearing dominance under 155 °C/36 h aging after pre-deformation, enhanced by Cu-promoted T1 refinement, which collectively drove superior strength in high-Cu alloys. These findings provide valuable insights for the composition design and mechanical property optimization of Al-Cu-Li alloys."
+   },
+   {
+    "id": "https://openalex.org/W2169134324",
+    "doi": "https://doi.org/10.1186/s40064-015-0860-7",
+    "title": "Effects of cold-treatment and strain-rate on mechanical properties of NbTi/Cu superconducting composite wires",
+    "year": 2015,
+    "cited": 5,
+    "venue": "SpringerPlus",
+    "topics": [
+     "Superconducting Materials and Applications",
+     "Electromagnetic Launch and Propulsion Technology",
+     "Particle accelerators and beam dynamics"
+    ],
+    "oa_url": "https://springerplus.springeropen.com/counter/pdf/10.1186/s40064-015-0860-7",
+    "abstract": "During design and winding of superconducting magnets at room temperature, a pre-tension under different rate is always applied to improve the mechanical stability of the magnets. However, an inconsistency rises for superconductors usually being sensitive to strain and oversized pre-stress which results in degradation of the superconducting composites' critical performance at low temperature. The present study focused on the effects of the cold-treatment and strain-rate of tension deformation on mechanical properties of NbTi/Cu superconducting composite wires. The samples were immersed in a liquid nitrogen (LN2) cryostat for the adiabatic cold-treatment, respectively with 18-hour, 20-hour, 22-hour and 24-hour. A universal testing machine was utilized for tension tests of the NbTi/Cu superconducting composite wires at room temperature; a small-scale extensometer was used to measure strain of samples with variable strain-rate. The strength, elongation at fracture and yield strength of pre-cold-treatment NbTi/Cu composite wires were drawn. It was shown that, the mechanical properties of the superconducting wires are linearly dependent on the holding time of cold-treatment at lower tensile strain-rate, while they exhibit notable nonlinear features at higher strain-rate. The cold-treatment in advance and the strain-rate of pre-tension demonstrate remarkable influences on the mechanical property of the superconducting composite wires."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Epsilon 3542 3542L\" OR \"Epsilon 3542\" OR \"Epsilon Model 3542\" OR \"Epsilon Model 3442\") AND OPEN_ACCESS:y",
+  "count": 26,
+  "papers": [
+   {
+    "pmcid": "PMC6401912",
+    "doi": "10.3390/polym10111262",
+    "title": "Additive Manufactured Sandwich Composite/ABS Parts for Unmanned Aerial Vehicle Applications.",
+    "journal": "Polymers (Basel)",
+    "year": "2018",
+    "cited": 27,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D 638"
+    ]
+   },
+   {
+    "pmcid": "PMC11150159",
+    "doi": "10.1038/s41563-024-01871-7",
+    "title": "Harnessing instability for work hardening in multi-principal element alloys.",
+    "journal": "Nat Mater",
+    "year": "2024",
+    "cited": 13,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8746178",
+    "doi": "10.3390/ma15010313",
+    "title": "Determining the Stages of Deformation and Destruction of Composite Materials in a Static Tensile Test by Acoustic Emission.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 11,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 1330-9",
+     "EN 13554",
+     "EN 15857",
+     "EN ISO 527"
+    ]
+   },
+   {
+    "pmcid": "PMC7794927",
+    "doi": "10.3390/s21010145",
+    "title": "Acoustic Emission and K-S Metric Entropy as Methods for Determining Mechanical Properties of Composite Materials.",
+    "journal": "Sensors (Basel)",
+    "year": "2020",
+    "cited": 10,
+    "snippets": 2,
+    "standards_in_paper": [
+     "EN AW-7020",
+     "EN ISO 527"
+    ]
+   },
+   {
+    "pmcid": "PMC9515142",
+    "doi": "10.1038/s41467-022-32930-9",
+    "title": "Non-Hookean large elastic deformation in bulk crystalline metals.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7215498",
+    "doi": "10.3390/ma13081937",
+    "title": "Effect of FSW Traverse Speed on Mechanical Properties of Copper Plate Joints.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 7,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 573-1",
+     "EN ISO 6892-1",
+     "ISO 6507-1"
+    ]
+   },
+   {
+    "pmcid": "PMC7142768",
+    "doi": "10.3390/ma13061386",
+    "title": "Application of the Acoustic Emission Method and Kolmogorov-Sinai Metric Entropy in Determining the Yield Point in Aluminium Alloy.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN AW 7020",
+     "EN AW-7020",
+     "EN ISO 6892-1"
+    ]
+   },
+   {
+    "pmcid": "PMC5344542",
+    "doi": "10.3390/ma10010032",
+    "title": "Monitoring the Damage State of Fiber Reinforced Composites Using an FBG Network for Failure Prediction.",
+    "journal": "Materials (Basel)",
+    "year": "2017",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10708357",
+    "doi": "10.3390/polym15234602",
+    "title": "Effect of Powder Bed Fusion Laser Sintering on Dimensional Accuracy and Tensile Properties of Reused Polyamide 11.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC10384729",
+    "doi": "10.3390/ma16145077",
+    "title": "The Strength and Fracture Characteristics of One-Part Strain-Hardening Green Alkali-Activated Engineered Composites.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC9920516",
+    "doi": "10.3390/polym15030738",
+    "title": "Fiber Orientation and Strain Rate-Dependent Tensile and Compressive Behavior of Injection Molded Polyamide-6 Reinforced with 20% Short Carbon Fiber.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC4331398",
+    "doi": "10.1186/s40064-015-0860-7",
+    "title": "Effects of cold-treatment and strain-rate on mechanical properties of NbTi/Cu superconducting composite wires.",
+    "journal": "Springerplus",
+    "year": "2015",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC12156030",
+    "doi": "10.3390/ma18112484",
+    "title": "Fatigue Life Anisotropy of API 5L X42 Pipeline Steel in Axial Force-Controlled Tests.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12113464",
+    "doi": "10.3390/ma18102172",
+    "title": "Influence of Cu Content on Precipitation Behavior and Mechanical Properties Under Aging Treatment of Al-Cu-Li Alloys.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12744395",
+    "doi": "10.1093/rb/rbaf123",
+    "title": "Biofabrication of zinc-reinforced PLA scaffolds by FDM for bone tissue engineering.",
+    "journal": "Regen Biomater",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC10489888",
+    "doi": "10.3390/polym15173605",
+    "title": "Tensile and Compression Strength Prediction and Validation in 3D-Printed Short-Fiber-Reinforced Polymers.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC9284507",
+    "doi": "10.1007/s12289-022-01672-w",
+    "title": "Analysis of ESAFORM 2021 cup drawing benchmark of an Al alloy, critical factors for accuracy and efficiency of FE simulations.",
+    "journal": "Int J Mater Form",
+    "year": "2022",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC7830037",
+    "doi": "10.3390/ma14020404",
+    "title": "Experimental Investigation and Modeling of Damage Accumulation of EN-AW 2024 Aluminum Alloy under Creep Condition at Elevated Temperature.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13304210",
+    "doi": "10.3390/ma19122582",
+    "title": "Microstructure and Cryogenic Mechanical Properties of a Heterostructured Al&lt;sub&gt;11&lt;/sub&gt;Cr&lt;sub&gt;14&lt;/sub&gt;Fe&lt;sub&gt;50&lt;/sub&gt;Ni&lt;sub&gt;25&lt;/sub&gt; High-Entropy Alloy Processed by Short-Time Annealing.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12786703",
+    "doi": "10.3390/ma19010039",
+    "title": "Stress Corrosion Cracking (SCC) Resistance of the AW-5083 Alloy with a Plasma Electrolytic Oxidation (PEO) Coating in the Presence of Chloride (Cl&lt;sup&gt;-&lt;/sup&gt;).",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12387194",
+    "doi": "10.3390/ma18163808",
+    "title": "The Influence of Rolling Direction and Dynamic Strengthening on the Properties of Steel.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12259968",
+    "doi": "10.1038/s41467-025-61494-7",
+    "title": "Enhancing the strength and ductility of a medium entropy alloy through non-basal slip activation.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12195519",
+    "doi": "10.3390/ma18122887",
+    "title": "Impact Strength of Adhesive Joints of Pre-Impregnated Composite Elements.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11943649",
+    "doi": "10.3390/ma18061344",
+    "title": "Sustainable Additive Manufacturing of IN718 Blades: Powder Recycling Strategies for Reduced Carbon Footprint.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11435071",
+    "doi": "10.3390/polym16182571",
+    "title": "Revealing Commercial Epoxy Resins' Antimicrobial Activity: A Combined Chemical-Physical, Mechanical, and Biological Study.",
+    "journal": "Polymers (Basel)",
+    "year": "2024",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6401912",
+   "title": "Additive Manufactured Sandwich Composite/ABS Parts for Unmanned Aerial Vehicle Applications.",
+   "year": "2018",
+   "text": "ABS samples were measured using the mass to volume ratio. Electronic scale with 0.001 g accuracy was used to measure the masses of the resin, hardener and the ABS samples. The tensile testing was carried out using Zwick/Roell Z050 machine (Kingston, UK). Tensile test samples were printed and tested according to ASTM D 638 standard. An extensometer epsilon model 3542 was used, it was connected to the tensile machine to calculate the deformation of the samples. The ultimate tensile strength, ductility and elastic modulus were measured for all samples. In addition, specific strength, also defined as the strength-to-weight ratio, was determined by dividing the material’s strength by its density. 2.4. Results and",
+   "standards": [
+    "ASTM D 638"
+   ]
+  },
+  {
+   "pmcid": "PMC11150159",
+   "title": "Harnessing instability for work hardening in multi-principal element alloys.",
+   "year": "2024",
+   "text": "nsometer was used to measure strains during tensile loading. Tensile test at cryogenic temperatures Tensile tests were conducted at a strain rate of 5 × 10 −4 s −1 at both 77 and 4 K in a displacement-controlled mode in an electronic–mechanical test machine (MTS model SANS UTM 5305S, with a load capacity of 300 kN). A cryogenic-grade extensometer (Epsilon model 3542-010M-LT, with a gauge length of 10 mm) was used to record the full-range deformation. In particular, tensile tests at 4 K were conducted by immersing the whole specimen and test jigs into liquid helium in a home-made cryostat installed on the cross-beam of the test machine. All the interior components of the sample chamber were insulated by a high",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8746178",
+   "title": "Determining the Stages of Deformation and Destruction of Composite Materials in a Static Tensile Test by Acoustic Emission.",
+   "year": "2022",
+   "text": "N-EN ISO 527-4_2000P) using the water cutting method. Figure 1 shows a mold for the production of composite materials. The tests were carried out on the Zwick &amp; Roell MPMD P10B universal hydraulic testing machine (ZwickRoell GmbH &amp; Co., Ulm, Germany) with the TestXpert II software (ZwickRoell GmbH &amp; Co., Ulm, Germany). Additionally, an Epsilon 3542 extensometer (Epsilon Technology Corporation, Jackson, USA) was used to precisely measure the elongation. For monitoring the tensile test of chosen specimens, an acoustic emission system from the Physical Acoustics Company (Physical Acoustics Corporation, Princeton, NJ, USA) was used. Diagram of the measuring stand is presented in Figure 2 . Resea",
+   "standards": [
+    "EN ISO 527"
+   ]
+  },
+  {
+   "pmcid": "PMC7794927",
+   "title": "Acoustic Emission and K-S Metric Entropy as Methods for Determining Mechanical Properties of Composite Materials.",
+   "year": "2020",
+   "text": "mples are shown in Figure 2 . Figure 2 Dimensions of samples for static tensile test in accordance with PN-EN ISO 527-4_2000P. The static tensile test of the samples from the tested composites was carried out on a universal testing machine with hydraulic drive, type MPMD P10B, with TestXpert II software, version 3.61. by Zwick &amp; Roell with the Epsilon model 3542 extensometer (Epsilon Technology Corp., Jackson, WY, USA). The tests were carried out on tests at ambient temperature (22 °C) at the strain rate equal to 2 × 10 −5 s −1 . 2.1. Acoustic Emission Method The research was carried out at the universal hydraulic testing machine Zwick&amp;Roell MPMD P10B with TestXpert II software. Additionally, Epsilon",
+   "standards": [
+    "EN ISO 527"
+   ]
+  },
+  {
+   "pmcid": "PMC7794927",
+   "title": "Acoustic Emission and K-S Metric Entropy as Methods for Determining Mechanical Properties of Composite Materials.",
+   "year": "2020",
+   "text": "del 3542 extensometer (Epsilon Technology Corp., Jackson, WY, USA). The tests were carried out on tests at ambient temperature (22 °C) at the strain rate equal to 2 × 10 −5 s −1 . 2.1. Acoustic Emission Method The research was carried out at the universal hydraulic testing machine Zwick&amp;Roell MPMD P10B with TestXpert II software. Additionally, Epsilon 3542 extensometer was used for measuring elongation during test. For monitoring tensile test of chosen specimens Physical Acoustics Company (Physical Acoustic Corporation, 195 Clarksville Rd, Princeton Junction, NJ, USA) acoustic emission system was used. A general view of the laboratory stand is presented in Figure 3 [ 30 ]. Figure 3 General view of l",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9515142",
+   "title": "Non-Hookean large elastic deformation in bulk crystalline metals.",
+   "year": "2022",
+   "text": "ectively. An incident neutron beam slit of 5 mm × 5 mm with a pair of 5 mm radial collimators was used. The MLF beam power during the measurement was approximately 500 kW. The neutron diffraction data were analyzed using a Z-Rietveld software. During the measurement, the macroscopic strain of the specimen was measured using a clip-on extensometer (Epsilon Model-3442). Determination of elastic constants and elastic anisotropy The elastic constants of the Cu 69 Al 17 Mn 14 alloy were precisely evaluated at room temperature using the laser–ultrasonic transient grating spectroscopy method 53 . The measurements were performed on an approximately (110)-oriented single crystal. The alloy exhibits a very small tetrag",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7215498",
+   "title": "Effect of FSW Traverse Speed on Mechanical Properties of Copper Plate Joints.",
+   "year": "2020",
+   "text": "it stabilised a short distance from the tool at 600 °C. Static and fatigue tests were carried out using the MTS 810 universal testing machine, with a load limit of 100 kN. Tensile tests were conducted according to the EN ISO 6892-1:2016 standard under displacement control at a rate of 0.5 mm/min. The strains were measured using axial extensometer (Epsilon 3542-025M-025-ST) with a gauge base of 25 mm and a measuring range of ±6.25 mm. The extensometer was mounted in the centre of the samples, covering the width of the weld when FSW joints were tested. The stress-controlled constant-amplitude fatigue tests were performed with the stress ratio R = 0 using sinusoidal waveform loading at frequency f = 20 Hz.",
+   "standards": [
+    "EN ISO 6892-1"
+   ]
+  },
+  {
+   "pmcid": "PMC7142768",
+   "title": "Application of the Acoustic Emission Method and Kolmogorov-Sinai Metric Entropy in Determining the Yield Point in Aluminium Alloy.",
+   "year": "2020",
+   "text": "procedure for calculating the K-S entropy consists of dividing the data into a correct number of sets of digits. For instance, Table 3 includes one full 50-digit interval obtained from a collection of absolute elongation values in the course of a test of sample. The numerical ranges adopted include subsequent displacement values obtained with the Epsilon 3542 extensometer. The displacement values obtained at the measuring points from No. 101 to 150 were used for further analysis. The lowest recorded value in this number range is 0.001951947 mm, and the highest 0.002047 mm. The interval was divided into four one-sided closed sub-compartments (from 1 and = to N = 4), marked in Table 3 as columns: I, II,",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5344542",
+   "title": "Monitoring the Damage State of Fiber Reinforced Composites Using an FBG Network for Failure Prediction.",
+   "year": "2017",
+   "text": "load cell (MTS 661.20F-03, MTS Systems Corporation, Eden Prairie, MN, USA) and linear variable differential transformer (LVDT) (MTS Systems Corporation, Eden Prairie, MN, USA), respectively. Strain was collected using an axial extensometer (MTS 634.25F-24, MTS Systems Corporation, Eden Prairie, MN, USA). In some tests, a second axial extensometer (Epsilon 3542, Epsilon Technology Corp., Jackson, WY, USA) was used simultaneously to study the effect of gage length on the strain measurement. The Micron Optics SM130-700 interrogator (Micron Optics, Inc., Atlanta, GA, USA) with Micron Optics Enlight software was used to collect FBG data. K-type thermocouples (OMEGA Engineering, Inc., Norwalk, CT, USA) were u",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "EN ISO 527": 2,
+  "EN AW 7020": 1,
+  "ASTM D 638": 1,
+  "EN ISO 6892-1": 1
+ },
+ "standards_new": [
+  "ASTM D 638",
+  "EN AW 7020",
+  "EN ISO 527",
+  "EN ISO 6892-1"
+ ],
+ "test_item_hits": {
+  "tensile": 69,
+  "density_porosity": 14,
+  "compression": 8,
+  "creep": 8,
+  "torsion": 6,
+  "microscopy": 4,
+  "electrical_transport": 2,
+  "fracture_toughness": 2,
+  "salt_spray_corrosion": 2,
+  "shear": 2,
+  "flexure": 1,
+  "hardness_vickers": 1,
+  "particle_size": 1,
+  "relaxation": 1,
+  "thermal_conductivity": 1
+ }
+}

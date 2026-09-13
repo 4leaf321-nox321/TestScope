@@ -1,0 +1,126 @@
+{
+ "object": "mitutoyo-ar-atk-rockwell",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo AR-10 AR-20",
+  "Mitutoyo AR-10",
+  "Mitutoyo AR-20",
+  "Mitutoyo ARK-600",
+  "Mitutoyo ATK-600"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo AR-10 AR-20\" OR \"Mitutoyo AR-10\" OR \"Mitutoyo AR-20\" OR \"Mitutoyo ARK-600\" OR \"Mitutoyo ATK-600\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo AR-10 AR-20\" OR \"Mitutoyo AR-10\" OR \"Mitutoyo AR-20\" OR \"Mitutoyo ARK-600\" OR \"Mitutoyo ATK-600\") AND OPEN_ACCESS:y",
+  "count": 4,
+  "papers": [
+   {
+    "pmcid": "PMC8470235",
+    "doi": "10.3390/polym13183061",
+    "title": "Mechanical Properties of Sugar Palm (<i>Arenga pinnata</i> Wurmb. Merr)/Glass Fiber-Reinforced Poly(lactic acid) Hybrid Composites for Potential Use in Motorcycle Components.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 7,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D 2990",
+     "ASTM D256-10",
+     "ASTM D570",
+     "ASTM D635",
+     "ASTM D635-18",
+     "ASTM D695-15",
+     "ASTM D785",
+     "ASTM D790",
+     "ASTM D790-03",
+     "SAE 20",
+     "UL 94",
+     "UL-94"
+    ]
+   },
+   {
+    "pmcid": "PMC9228938",
+    "doi": "10.3390/nano12122078",
+    "title": "A Novel Two-Stage Heat Treatment with Medium-Temperature Aging Influence on Microstructure, Al<sub>3</sub>(Sc, Zr) Nanoprecipitation, and Application Properties, Enhancing Selective Laser Melting of Al-Mg-Sc-Zr Alloy.",
+    "journal": "Nanomaterials (Basel)",
+    "year": "2022",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11205382",
+    "doi": null,
+    "title": "Study and Application on the Electromagnetic Stainless Steel: Microstructure, Tensile Mechanical Behavior, and Magnetic Properties",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10672874",
+    "doi": null,
+    "title": "Effect of High Temperature and Thermal Cycle of 4043 Al Alloy Manufactured through Continuous Casting Direct Rolling",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E18-20"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC8470235",
+   "title": "Mechanical Properties of Sugar Palm (<i>Arenga pinnata</i> Wurmb. Merr)/Glass Fiber-Reinforced Poly(lactic acid) Hybrid Composites for Potential Use in Motorcycle Components.",
+   "year": "2021",
+   "text": "again as ‘ W e ’. The difference in initial and end weights for each specimen was then used to calculate the oil absorption rate. Equation (2) was used to calculate the oil absorption rate %. (2) oil absorption rate % = W e − W i W i × 100 3.3. Hardness Test The Rockwell hardness test was used to test the composites’ indentation resistance (model Mitutoyo ATK 600, Mitutoyo Corp., Kanagawa, Japan). According to ASTM D785 [ 46 ], a scale S with a steel ball of diameter (1/2)” was used. Then, a 100 kg load was applied. The digital scale was used to read Rockwell hardness (HRS) values. For each specimen, at least five readings were taken to establish an average as a final reading. 3.4. Tensile Test A tensile t",
+   "standards": [
+    "ASTM D785"
+   ]
+  },
+  {
+   "pmcid": "PMC9228938",
+   "title": "A Novel Two-Stage Heat Treatment with Medium-Temperature Aging Influence on Microstructure, Al<sub>3</sub>(Sc, Zr) Nanoprecipitation, and Application Properties, Enhancing Selective Laser Melting of Al-Mg-Sc-Zr Alloy.",
+   "year": "2022",
+   "text": "polish. Finally, etching was performed with a solution of 5 mL of HNO 3 + 3 mL of HCl + 2 mL of HF + 190 mL of H 2 O. Optical microscope (OM, OLYMPUS BX41M-LED, Tokyo, Japan) and XRD spectroscopy (Bruker AXS GmbH, Karlsruhe, Germany) were employed to analyze the phase composition. HRF hardness measurement was conducted by using a hardness machine (Mitutoyo AR-10, Kanagawa, Japan). Universal testing machine (HUNGTA, HT-8336, Taichung, Taiwan) was used for tensile testing the strength with a strain rate of 1 mm/min and an initial strain rate of 1.83 × 10 −3 s −1 at both room temperature and high temperatures in the range of 100–350 °C [ 20 ]. A rotating fatigue-testing machine (HUNGTA HT-810, Taichung, Taiw",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11205382",
+   "title": "Study and Application on the Electromagnetic Stainless Steel: Microstructure, Tensile Mechanical Behavior, and Magnetic Properties",
+   "year": "2024",
+   "text": "the phase composition was conducted with a 2θ range of 20–90 degrees. Surface elemental distribution analysis of the 430F raw material was performed using EPMA (JEOL JXA-8230, Tokyo, Japan), followed by quantitative composition determination utilizing WDS. The materials were characterized for mechanical properties using a Vickers hardness tester (Mitutoyo AR-10, Kanagawa, Japan) and tensile testing machine (SHIMADZU AGX-V2, Kyoto, Japan) with a strain rate of 1 × 10 −3 s −1 ; tensile properties were established through tensile testing. The fracture surface characteristics of the tensile specimens were observed using a scanning electron microscope (SEM, Hitachi 700H, Tokyo, Japan). Before conducting the m",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10672874",
+   "title": "Effect of High Temperature and Thermal Cycle of 4043 Al Alloy Manufactured through Continuous Casting Direct Rolling",
+   "year": "2023",
+   "text": "the assessment of microstructure characteristics across different sections. In this article, the plane that is perpendicular to the secondary rolling is referred to as the ‘transverse section’, while the plane parallel to the secondary rolling is termed the ‘axial section’. Material hardness was analyzed using a Rockwell hardness testing machine (Mitutoyo AR-10 Hardness Testing Machine, Sakado, Japan), following the HRF test specification (in compliance with ASTM E18-20 [ 40 ]). A steel ball indenter with a diameter of 1/16 inches was used as the load source, applying a force of 60 kgf. The hardness measurements were recorded for both the transverse and axial sections of the test specimen. The constituen",
+   "standards": [
+    "ASTM E18-20"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ASTM D785": 1,
+  "ASTM E18-20": 1
+ },
+ "standards_new": [
+  "ASTM D785",
+  "ASTM E18-20"
+ ],
+ "test_item_hits": {
+  "tensile": 7,
+  "hardness_rockwell": 3,
+  "hardness_vickers": 1,
+  "microscopy": 1
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "object": "zwickroell-aflow-extrusion-plastometer",
+ "manufacturer": "zwickroell",
+ "phrases": [
+  "ZwickRoell Aflow 230 V",
+  "ZwickRoell 110 V"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ZwickRoell Aflow 230 V\" OR \"ZwickRoell 110 V\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"ZwickRoell Aflow 230 V\" OR \"ZwickRoell 110 V\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

@@ -1,0 +1,23 @@
+{
+ "object": "chroma-19032-safety-analyzer",
+ "manufacturer": "chroma",
+ "phrases": [
+  "Chroma ATE 19032",
+  "Chroma ATE 19032-P"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Chroma ATE 19032\" OR \"Chroma ATE 19032-P\"",
+  "count": 0,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Chroma ATE 19032\" OR \"Chroma ATE 19032-P\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

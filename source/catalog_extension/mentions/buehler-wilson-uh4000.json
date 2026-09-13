@@ -1,0 +1,38 @@
+{
+ "object": "buehler-wilson-uh4000",
+ "manufacturer": "buehler",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM E384": 4,
+  "ASTM E10": 4,
+  "ISO 6506": 2,
+  "ISO 6507": 2,
+  "ISO 4545": 2,
+  "ASTM E18": 2,
+  "ISO 6506-1": 2,
+  "ISO 6507-1": 2,
+  "ASTM E92": 2,
+  "ISO 6508-1": 2,
+  "ISO4545-1": 2,
+  "ISO 2039-1": 2
+ },
+ "standards_new": [
+  "ISO 4545",
+  "ISO 6506",
+  "ISO 6507",
+  "ISO4545-1"
+ ],
+ "test_item_hits": {
+  "flexure": 6,
+  "shear": 4,
+  "electrical_transport": 3,
+  "abrasion": 2,
+  "hardness_brinell": 2,
+  "hardness_rockwell": 2
+ },
+ "application_sentences": [
+  "45 50 60 62,5 100 125 150 187,5 250 500 750 UH4250 UH4750 3 Wilson UH4000 Series Features Due to its sturdy construction, the UH4000 is a reliable machine and suitable for rough workshop conditions.",
+  "Being designed for touch panel use, with an entirely new look and feel, DiaMet is simple, useful, and smart to work with, easy to operate by touch, mouse or keyboard."
+ ]
+}

@@ -1,0 +1,406 @@
+{
+ "object": "instron-ceast-9050-pendulum",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron CEAST 9000",
+  "Instron CEAST",
+  "Instron CEAST 9050 Manual",
+  "Instron CEAST 9050 Motorized"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron CEAST 9000\" OR \"Instron CEAST\" OR \"Instron CEAST 9050 Manual\" OR \"Instron CEAST 9050 Motorized\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron CEAST 9000\" OR \"Instron CEAST\" OR \"Instron CEAST 9050 Manual\" OR \"Instron CEAST 9050 Motorized\") AND OPEN_ACCESS:y",
+  "count": 197,
+  "papers": [
+   {
+    "pmcid": "PMC7195169",
+    "doi": "10.1126/sciadv.aaz1114",
+    "title": "Lightweight, tough, and sustainable cellulose nanofiber-derived bulk structural materials with low thermal expansion coefficient.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 127,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D2344",
+     "ASTM D790"
+    ]
+   },
+   {
+    "pmcid": "PMC8518944",
+    "doi": "10.1002/cssc.202002666",
+    "title": "Biocatalysis in the Recycling Landscape for Synthetic Polymers and Plastics towards Circular Textiles.",
+    "journal": "ChemSusChem",
+    "year": "2021",
+    "cited": 33,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 1183",
+     "ISO 179",
+     "ISO 527",
+     "ISO 527-2"
+    ]
+   },
+   {
+    "pmcid": "PMC6413052",
+    "doi": "10.3390/ijms20040960",
+    "title": "Evaluation of Mechanical and Interfacial Properties of Bio-Composites Based on Poly(Lactic Acid) with Natural Cellulose Fibers.",
+    "journal": "Int J Mol Sci",
+    "year": "2019",
+    "cited": 29,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO179"
+    ]
+   },
+   {
+    "pmcid": "PMC7827856",
+    "doi": "10.3390/polym13020218",
+    "title": "Poly(lactic acid) (PLA)/Poly(butylene succinate-co-adipate) (PBSA) Compatibilized Binary Biobased Blends: Melt Fluidity, Morphological, Thermo-Mechanical and Micromechanical Analysis.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 28,
+    "snippets": 2,
+    "standards_in_paper": [
+     "ISO 1133",
+     "ISO 1133D",
+     "ISO 179",
+     "ISO 527-1A",
+     "ISO 5271",
+     "ISO 75"
+    ]
+   },
+   {
+    "pmcid": "PMC8912521",
+    "doi": "10.3390/polym14050977",
+    "title": "Improvement of the PLA Crystallinity and Heat Distortion Temperature Optimizing the Content of Nucleating Agents and the Injection Molding Cycle Time.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 27,
+    "snippets": 2,
+    "standards_in_paper": [
+     "ASTM D790",
+     "ISO 179",
+     "ISO 527-1A",
+     "ISO 75-1"
+    ]
+   },
+   {
+    "pmcid": "PMC11161517",
+    "doi": "10.1038/s41467-024-49272-3",
+    "title": "Closed-loop recycling of tough epoxy supramolecular thermosets constructed with hyperbranched topological structure.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 24,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D1652",
+     "ASTM D256",
+     "ASTM D638",
+     "ASTMD974"
+    ]
+   },
+   {
+    "pmcid": "PMC7321633",
+    "doi": "10.3390/ma13112655",
+    "title": "Polylactic Acid/Polycaprolactone Blends: On the Path to Circular Economy, Substituting Single-Use Commodity Plastic Products.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 22,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN ISO 527-1",
+     "ISO 1133-1",
+     "ISO 178",
+     "ISO 179-1",
+     "ISO 527-1"
+    ]
+   },
+   {
+    "pmcid": "PMC6401800",
+    "doi": "10.3390/polym10121320",
+    "title": "Effects of Fabric Counts and Weave Designs on the Properties of Laminated Woven Kenaf/Carbon Fibre Reinforced Epoxy Hybrid Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2018",
+    "cited": 21,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D3039",
+     "ASTM D3800-99",
+     "ASTM D6110",
+     "ASTM D790"
+    ]
+   },
+   {
+    "pmcid": "PMC7361995",
+    "doi": "10.3390/polym12061250",
+    "title": "Graphite Modified Polylactide (PLA) for 3D Printed (FDM/FFF) Sliding Elements.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC8432704",
+    "doi": "10.3390/ma14174856",
+    "title": "Effect of Post-Process Curing and Washing Time on Mechanical Properties of mSLA Printouts.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 17
+   },
+   {
+    "pmcid": "PMC8201365",
+    "doi": "10.3390/ma14113111",
+    "title": "Mechanical and Physicochemical Properties of 3D-Printed Agave Fibers/Poly(lactic) Acid Biocomposites.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 17
+   },
+   {
+    "pmcid": "PMC8124343",
+    "doi": "10.3390/polym13091471",
+    "title": "Enhanced Impact Strength of Recycled PET/Glass Fiber Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 17
+   },
+   {
+    "pmcid": "PMC8625028",
+    "doi": "10.3390/polym13224030",
+    "title": "Sandwich Multi-Material 3D-Printed Polymers: Influence of Aging on the Impact and Flexure Resistances.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC7603044",
+    "doi": "10.3390/ma13204632",
+    "title": "Biogenic Composite Filaments Based on Polylactide and Diatomaceous Earth for 3D Printing.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC7182834",
+    "doi": "10.3390/polym12030503",
+    "title": "Morphological and Mechanical Properties of Bilayers Wood-Plastic Composites and Foams Obtained by Rotational Molding.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC8200125",
+    "doi": "10.3390/ma14113076",
+    "title": "Optimization of the Filler Concentration on Fused Filament Fabrication 3D Printed Polypropylene with Titanium Dioxide Nanocomposites.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC7763661",
+    "doi": "10.3390/molecules25245882",
+    "title": "Limonene Derivative of Spherosilicate as a Polylactide Modifier for Applications in 3D Printing Technology.",
+    "journal": "Molecules",
+    "year": "2020",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC9145730",
+    "doi": "10.3390/ma15103607",
+    "title": "Influence of Diatomaceous Earth Particle Size on Mechanical Properties of PLA/Diatomaceous Earth Composites.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC7240580",
+    "doi": "10.3390/polym12040866",
+    "title": "Mechanical and Thermal Characterization of Natural Intralaminar Hybrid Composites Based on Sisal.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC5457114",
+    "doi": "10.3390/ma9090790",
+    "title": "A Multi-Level Decision Fusion Strategy for Condition Based Maintenance of Composite Structures.",
+    "journal": "Materials (Basel)",
+    "year": "2016",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC7432286",
+    "doi": "10.3390/ijms21155364",
+    "title": "Evaluation of Mussel Shells Powder as Reinforcement for PLA-Based Biocomposites.",
+    "journal": "Int J Mol Sci",
+    "year": "2020",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC7023663",
+    "doi": "10.3390/polym12010029",
+    "title": "Influence of Different Carbon-Based Fillers on Electrical and Mechanical Properties of a PC/ABS Blend.",
+    "journal": "Polymers (Basel)",
+    "year": "2019",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC7472301",
+    "doi": "10.3390/s20164406",
+    "title": "Flexible Ecoflex<sup>®</sup>/Graphene Nanoplatelet Foams for Highly Sensitive Low-Pressure Sensors.",
+    "journal": "Sensors (Basel)",
+    "year": "2020",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC6401834",
+    "doi": "10.3390/polym11010160",
+    "title": "Effect of Thermal Ageing on the Impact Damage Resistance and Tolerance of Carbon-Fibre-Reinforced Epoxy Laminates.",
+    "journal": "Polymers (Basel)",
+    "year": "2019",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC5000558",
+    "doi": "10.4103/0972-4052.176532",
+    "title": "Flexural properties and impact strength of denture base resins reinforced with micronized glass flakes.",
+    "journal": "J Indian Prosthodont Soc",
+    "year": "2016",
+    "cited": 12
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7195169",
+   "title": "Lightweight, tough, and sustainable cellulose nanofiber-derived bulk structural materials with low thermal expansion coefficient.",
+   "year": "2020",
+   "text": "on (4.5 mm) at room temperature with a loading rate of 1 mm min −1 . The Charpy impact test of CNFPs was performed on a Chengde Bao Hui XJJY-5 pendulum impact tester, and the dimensions for Charpy V-notch specimens were about 50 mm long, 10 mm wide, and 2 mm thick with a notch depth of 1 mm. The drop hammer impact test of CNFPs was performed on an Instron CEAST 9340 drop hammer tester. The hammer with a weight of 15 kg (total mass) was falling freely from a height of 30 cm, and the dimensions of the tested specimens were about 50 mm by 50 mm by 2 mm. For the SHPB test, the dimensions of the tested specimens were about 6 mm by 6 mm by 2 mm. Thermal expansion coefficient of the CNFP was measured by NETZSCH",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8518944",
+   "title": "Biocatalysis in the Recycling Landscape for Synthetic Polymers and Plastics towards Circular Textiles.",
+   "year": "2021",
+   "text": "l Type of equipment compounder/extruder – Coperion ZSK 26K 10.6 – melt filtration equipment – Gneuss HSM 45 – melt filters – Gneuss different sizes filter injection molder injection moulding of test bars according to ISO 527‐2 Type 1 A Engel ES 200/110 HL‐V – tensile test ISO 527–2 MTS 20‐M universal tensile testing equipment charpy impact ISO 179 Instron Ceast 9050 notching equipment charpy impact ISO 179 Instron Ceast AN50 impact toughness tester density ISO 1183‐A Mettler Toledo AT200 scale textile tearing equipment – New Shun Xing NSX‐QT310 – carding machine – Cormatex CC/400 – drawing frame – Suessen Stiro Roving Lab – model system of virgin PA6 (Ultramid® B24N 03) mixed with 0–15 % elastane (Roica",
+   "standards": [
+    "ISO 1183",
+    "ISO 179",
+    "ISO 527",
+    "ISO 527-2"
+   ]
+  },
+  {
+   "pmcid": "PMC6413052",
+   "title": "Evaluation of Mechanical and Interfacial Properties of Bio-Composites Based on Poly(Lactic Acid) with Natural Cellulose Fibers.",
+   "year": "2019",
+   "text": "software (INSTRON version 4.42 S/N–014733H) 24 h after specimen production. At least five specimens (gauge dimensions: 25 × 5 × 1.5 mm) were tested for each sample, and the average values reported. The impact tests were performed on V-notched specimens (width: 10 mm, length: 80 mm, thickness: 4 mm, V-notch 2 mm) using a 15 J Charpy pendulum of an Instron CEAST 9050. The standard ISO179:2000 was followed. At least 10 specimens for each blend were tested at room temperature. The fibers and their composites were investigated by Scanning Electron Microscope (SEM) (FEI Quanta 450 FEG). The thermogravimetric analysis (TGA) of Arbocel ® fibers was also performed on a TGA Rheometric Scientific at a scanning vel",
+   "standards": [
+    "ISO179"
+   ]
+  },
+  {
+   "pmcid": "PMC7827856",
+   "title": "Poly(lactic acid) (PLA)/Poly(butylene succinate-co-adipate) (PBSA) Compatibilized Binary Biobased Blends: Melt Fluidity, Morphological, Thermo-Mechanical and Micromechanical Analysis.",
+   "year": "2021",
+   "text": "lateral strain components, according to the following Equation [ 60 , 61 , 62 ]: (1) Δ V V 0 = ( 1 + ε 1 ) ( 1 + ε 2 ) 2 − 1 where the volume variation is Δ V , the starting volume is V 0 , ε 1 is the axial (or longitudinal) strain and ε 2 is the lateral strain. The impact tests were performed using V-notched ISO 179 parallelepiped specimens on a Instron CEAST 9050 machine (INSTRON, Canton, MA, USA) equipped with a 15 J Charpy pendulum. At least ten specimens for each blend were tested at room temperature. The impact tests were also carried out 3 days after the injection molding process. To evaluate the energy stored by the sample before the fracture, three-point bending tests were also carried out. In",
+   "standards": [
+    "ISO 179"
+   ]
+  },
+  {
+   "pmcid": "PMC7827856",
+   "title": "Poly(lactic acid) (PLA)/Poly(butylene succinate-co-adipate) (PBSA) Compatibilized Binary Biobased Blends: Melt Fluidity, Morphological, Thermo-Mechanical and Micromechanical Analysis.",
+   "year": "2021",
+   "text": "ng the design and production of thermoplastic components. The HDT is also strictly correlated to the polymer crystallinity, in fact it is noteworthy that a highly crystalline polymer has an HDT value higher than its amorphous counterpart [ 72 ]. For this purpose, the determination of the deflection temperature under load (HDT) was carried out on a CEAST HV 3 (INSTRON, Canton, MA, USA) in accordance with ISO 75 (method A). A flexural stress of 1.81 MPa and a bath heating rate of 120 °C/h were used. The sample size was 80 mm × 10 mm × 4 mm. When the sample bar deflects by 0.34 mm, the corresponding bath temperature represents the HDT (Type A) value. At least five measurements were carried out and the average val",
+   "standards": [
+    "ISO 75"
+   ]
+  },
+  {
+   "pmcid": "PMC8912521",
+   "title": "Improvement of the PLA Crystallinity and Heat Distortion Temperature Optimizing the Content of Nucleating Agents and the Injection Molding Cycle Time.",
+   "year": "2022",
+   "text": "STM D790 using the following equation (5) E B = L 3 m 4 b d 3 where L is the support span; b and d are the width and the thickness of the sample tested, respectively; and m is the angular coefficient of the linear elastic part of the load–deflection curve (N/mm). The impact tests were performed using V-notched ISO 179 parallelepiped specimens with Instron CEAST 9050 machine (INSTRON, Canton, MA, USA). At least 10 specimens for each blend were tested at room temperature. 2.5. Heat Defection Temperature (HDT) Measurements The heat deflection temperature or heat distortion temperature (HDT) is defined as the temperature at which a polymeric material undergoes to deformation under a specified load. This prop",
+   "standards": [
+    "ISO 179"
+   ]
+  },
+  {
+   "pmcid": "PMC8912521",
+   "title": "Improvement of the PLA Crystallinity and Heat Distortion Temperature Optimizing the Content of Nucleating Agents and the Injection Molding Cycle Time.",
+   "year": "2022",
+   "text": "rgoes to deformation under a specified load. This property is fundamental during the design and production of thermoplastic components, and it is strictly correlated to the polymer crystallinity. Generally, a highly crystalline polymer has an HDT value higher than its amorphous counterpart [ 49 , 50 ]. The determination of HDT was carried out on a CEAST HV 3 (INSTRON, Canton, MA, USA) in accordance with ISO 75-1 (method A). The sample, a parallelepiped with dimensions of 80 × 10 × 4 mm, is immersed in a silicone oil bath and subjected to a flexural stress of 0.45 MPa at the midpoint of the flatwise position of a 3PB configuration. The test starts with heating the bath at a heating rate of 120 °C/h. When the sa",
+   "standards": [
+    "ISO 75-1"
+   ]
+  },
+  {
+   "pmcid": "PMC11161517",
+   "title": "Closed-loop recycling of tough epoxy supramolecular thermosets constructed with hyperbranched topological structure.",
+   "year": "2024",
+   "text": "Norwood, MA) according to ASTM D638. Toughness ( τ ) of the samples can be calculated from the area under the stress ( σ )-strain ( ε ) curves, using the following equation: 2 τ = ∫ ε = 0 ε = ε max σ d ε where ε max is the elongation at break. Each reported value was the average of at least five specimens. The impact strength was measured using an INSTRON CEAST 9050 impact tester (Torino, Italy) with a 25 J pendulum according to ASTM D256. A minimum of ten specimens were tested for each composition. AFM imaging was carried out using an SPM-9700HT atomic force microscope (Shimadzu Enterprise Management Co., Ltd. China) operating in tapping mode. The topographic (height) and phase images were recorded simu",
+   "standards": [
+    "ASTM D256",
+    "ASTM D638"
+   ]
+  },
+  {
+   "pmcid": "PMC7321633",
+   "title": "Polylactic Acid/Polycaprolactone Blends: On the Path to Circular Economy, Substituting Single-Use Commodity Plastic Products.",
+   "year": "2020",
+   "text": "nTM 1122 universal testing machine (Metrotec, Lezo, Spain) equipped with a 5-kN load cell and according to ISO 527-1:2012. The gap between clamps was set at 115 mm with a cross-head testing velocity of 2 mm/min. Impact strength was measured according to ISO 179-1:2010 standard. Unnotched and notched specimens were placed in a Charpy test equipment Instron Ceast 5.5 Resil by Ceast S.p.a. (Pianezza, Italy). The equipment was used to measure the energy absorbed during the impact. 3. Results and Discussion 3.1. Melt Flow Index of the Obtained Blends Injection molding conditions (temperature and pressure) were modified depending on the melt flow index (MFI) of the different materials. As stated above, MFI was",
+   "standards": [
+    "ISO 179-1",
+    "ISO 527-1"
+   ]
+  },
+  {
+   "pmcid": "PMC6401800",
+   "title": "Effects of Fabric Counts and Weave Designs on the Properties of Laminated Woven Kenaf/Carbon Fibre Reinforced Epoxy Hybrid Composites.",
+   "year": "2018",
+   "text": "h sample and average values were recorded. Modulus of elasticity of the composites was calculated based on the slope (m) of load–displacement curves using Equation (5). E = (L²m/4bd²) (5) where, L, b, and d represent support span, width of sample and depth of samples, respectively. The impact strength was measured using Charpy impact test machine (Instron Ceast 9050, Norwood, MA, USA) according to the ASTM D6110. Ten specimens for each composite sample were cut into a dimension of 127 × 12.7 mm × actual thickness for the striking hammer energy of 5 J. 2.4. Morphological Observation Hitachi 3400 SEM (Chiyoda, Tokyo, Japan) was used to observe the tensile fracture surfaces of the woven kenaf/carbon fibre h",
+   "standards": [
+    "ASTM D6110"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ISO 179": 4,
+  "ISO 527": 1,
+  "ISO 527-2": 1,
+  "ISO 1183": 1,
+  "ISO179": 1,
+  "ISO 75": 1,
+  "ISO 75-1": 1,
+  "ASTM D638": 1,
+  "ASTM D256": 1,
+  "ISO 527-1": 1,
+  "ISO 179-1": 1,
+  "ASTM D6110": 1
+ },
+ "standards_new": [
+  "ASTM D638",
+  "ISO 1183",
+  "ISO 179",
+  "ISO 527",
+  "ISO 527-1",
+  "ISO 527-2",
+  "ISO 75",
+  "ISO 75-1",
+  "ISO179"
+ ],
+ "test_item_hits": {
+  "charpy_impact": 4,
+  "tensile": 3,
+  "density_porosity": 1,
+  "flexure": 1,
+  "hdt": 1,
+  "microscopy": 1,
+  "tear": 1,
+  "tga": 1
+ }
+}

@@ -1,0 +1,249 @@
+{
+ "object": "thermo-nexsa-g2",
+ "manufacturer": "thermo-fisher",
+ "phrases": [
+  "Thermo Fisher G2",
+  "Thermo Fisher Nexsa G2",
+  "HAAKE G2",
+  "HAAKE Nexsa G2"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Thermo Fisher G2\" OR \"Thermo Fisher Nexsa G2\" OR \"HAAKE G2\" OR \"HAAKE Nexsa G2\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Thermo Fisher G2\" OR \"Thermo Fisher Nexsa G2\" OR \"HAAKE G2\" OR \"HAAKE Nexsa G2\") AND OPEN_ACCESS:y",
+  "count": 20,
+  "papers": [
+   {
+    "pmcid": "PMC9925504",
+    "doi": "10.1007/s00401-022-02533-1",
+    "title": "Cryo-EM structures of amyloid-β filaments with the Arctic mutation (E22G) from human and mouse brains.",
+    "journal": "Acta Neuropathol",
+    "year": "2023",
+    "cited": 80,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7532664",
+    "doi": "10.7150/thno.42578",
+    "title": "Cyclin K interacts with β-catenin to induce Cyclin D1 expression and facilitates tumorigenesis and radioresistance in lung cancer.",
+    "journal": "Theranostics",
+    "year": "2020",
+    "cited": 25,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10956647",
+    "doi": "10.1039/d4ra01916d",
+    "title": "Chitosan-induced NH<sub>4</sub>V<sub>4</sub>O<sub>10</sub> hierarchical hybrids as high-capacity cathode for aqueous zinc ion batteries.",
+    "journal": "RSC Adv",
+    "year": "2024",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12982770",
+    "doi": "10.1038/s41467-026-69160-2",
+    "title": "Electrolyte chemistry of adaptive hydrogen bonded domains for high voltage lithium metal batteries.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 3,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12561332",
+    "doi": "10.1002/advs.202503388",
+    "title": "Controlled Growth of Graphene-Skinned Al&lt;sub&gt;2&lt;/sub&gt;O&lt;sub&gt;3&lt;/sub&gt; Powders by Fluidized Bed-Chemical Vapor Deposition for Heat Dissipation.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2025",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11481223",
+    "doi": "10.1002/advs.202401218",
+    "title": "Copper Functionalized SnSe Nanoflakes Enabling Nonlinear Optical Features for Ultrafast Photonics.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2024",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC13421312",
+    "doi": "10.1038/s41563-026-02607-5",
+    "title": "High-throughput in situ sizing and quantum yield determination of individual perovskite nanocrystals.",
+    "journal": "Nat Mater",
+    "year": "2026",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12593354",
+    "doi": "10.1021/acsnano.5c12182",
+    "title": "Ultrasensitive Circularly Polarized Photon Detectors Based on Chiral Two-Dimensional MoS&lt;sub&gt;2&lt;/sub&gt;.",
+    "journal": "ACS Nano",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12023024",
+    "doi": "10.1021/acsnano.4c18105",
+    "title": "Quantifying Dynamic Changes of Oxygen Nonstoichiometry and Formation of Surface Phases of SrCoO&lt;sub&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sub&gt; Electrocatalysts by &lt;i&gt;Operando&lt;/i&gt; Characterizations.",
+    "journal": "ACS Nano",
+    "year": "2025",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC13335444",
+    "doi": "10.1002/advs.202524375",
+    "title": "Seedless One-Pot Synthesis of Colloidal InAs Quantum Dots Enabling a High-Accuracy Photoplethysmography Oximeter.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13173400",
+    "doi": "10.1002/adma.202516478",
+    "title": "Electrically Assisted Thermal Stamping of Tunable Carbon-Based Nanofilms for Direct Fabrication of Hydrophobic, Energy Harvesting, and Sensing Devices.",
+    "journal": "Adv Mater",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12218228",
+    "doi": "10.1038/s41598-025-06671-w",
+    "title": "Investigating contact resistance between WO&lt;sub&gt;x&lt;/sub&gt; and metal electrodes in ECRAMs via interface analysis.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13247830",
+    "doi": "10.1039/d6ra01723a",
+    "title": "Efficient hydrogenation of furfural to furfuryl alcohol by recoverable copper tailings catalyst.",
+    "journal": "RSC Adv",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13335906",
+    "doi": "10.1002/advs.75870",
+    "title": "Lattice Distortion-Driven Metal Exsolution in Perovskite Oxides.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12878716",
+    "doi": "10.1021/acsomega.5c03143",
+    "title": "Impact of Copper Ions on the Structuration of the Polydopamine Layer for the Functionalization of Graphene Nanoplatelets.",
+    "journal": "ACS Omega",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12656599",
+    "doi": "10.3390/plants14223509",
+    "title": "Foliar Application of Iron Nanoparticles Improves Chinese Cabbage Growth.",
+    "journal": "Plants (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12656612",
+    "doi": "10.3390/polym17222972",
+    "title": "&lt;i&gt;In Vivo&lt;/i&gt; Quantitative Monitoring of Drug Release from Halo-Spun Rubbery Mats by Fluorescent Organism Bioimaging (FOBI).",
+    "journal": "Polymers (Basel)",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12356906",
+    "doi": "10.1038/s41467-025-62612-1",
+    "title": "Selective reduction in epitaxial SrFe&lt;sub&gt;0.5&lt;/sub&gt;Co&lt;sub&gt;0.5&lt;/sub&gt;O&lt;sub&gt;2.5&lt;/sub&gt; and its reversibility.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC11472221",
+    "doi": "10.1039/d4ra06356b",
+    "title": "A self-regulated shielding layer induced by an electrolyte additive for alkaline Al-air batteries.",
+    "journal": "RSC Adv",
+    "year": "2024",
+    "cited": 0
+   },
+   {
+    "pmcid": null,
+    "doi": "10.1101/2022.11.07.515410",
+    "title": "Cryo-EM Structures of Amyloid-β Filaments With the Arctic Mutation (E22G) From Human and Mouse Brains",
+    "journal": null,
+    "year": "2022",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9925504",
+   "title": "Cryo-EM structures of amyloid-β filaments with the Arctic mutation (E22G) from human and mouse brains.",
+   "year": "2023",
+   "text": "h 0.4 mg/ml pronase for 30–60 min [ 12 ]. Holey carbon grids (Quantifoil AuR1.2/1.3, 300 mesh) were glow-discharged with an Edwards (S150B) sputter coater at 30 mA for 30 s. Three μl aliquots were applied to the grids and blotted for 3–5 s with filter paper at 100% humidity and 4 °C using a Thermo Fisher Vitrobot Mark IV. Datasets were acquired on Thermo Fisher G2 and G3 microscopes, with Gatan K3 detectors in counting mode, using a Bioquantum energy filter (Gatan) with a slit width of 20 e − V. Images were recorded with a total dose of 40 electrons per Å 2 . Helical reconstruction All super-resolution frames were gain-corrected, binned by a factor of 2, aligned, dose-weighted and then summed into a single",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10956647",
+   "title": "Chitosan-induced NH<sub>4</sub>V<sub>4</sub>O<sub>10</sub> hierarchical hybrids as high-capacity cathode for aqueous zinc ion batteries.",
+   "year": "2024",
+   "text": "4 V 4 O 10 materials were also prepared without adding chitosan and labeled as NVO. 2.2. Structure and morphology characterization The crystallographic and phase structure of the samples were evaluated by X-ray diffractometer (XRD, Rigaku Ultima IV, Cu Kα radiation, λ = 0.1541 nm, 40 kV). Then we utilized the X-ray photoelectron spectroscopy (XPS, Thermo fisher Nexsa G2) to characterize the valence of the elements. The morphology and microstructures of the products was observed by scanning electron microscope (SEM, Gemini, 300-71-31) and transmission electron microscope (TEM, JEOL JEM-F200). Finally, the specific surface area and pore size were characterized by the Brunauer–Emmett–Teller (BET) and Barrett–Joyner–",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12561332",
+   "title": "Controlled Growth of Graphene-Skinned Al&lt;sub&gt;2&lt;/sub&gt;O&lt;sub&gt;3&lt;/sub&gt; Powders by Fluidized Bed-Chemical Vapor Deposition for Heat Dissipation.",
+   "year": "2025",
+   "text": "ng an FEI Quattro S scanning electron microscope (Acceleration voltage 10 kV). The thickness of the graphene skin was measured by FIB (Helios UX) and TEM (Thermo Fisher Talos F200X G2). STEM images were acquired using the aberration‐corrected TEM (JEOL ARM300F2, at 300 keV electron energy). The bonding forms on the surface were analyzed using XPS (Thermo Fisher Nexsa G2). Raman characterization was conducted to analyse the chemical composition and graphene quality (Horiba, LabRAM HR‐800, laser excitation wavelength of 532 nm, 50 × objective lens). The carbon content was assessed using Thermogravimetric Analysis (Mettler Toledo TGA2). XRD characterization was conducted using Bruker D8 ADVANCE. BET surface area was",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11481223",
+   "title": "Copper Functionalized SnSe Nanoflakes Enabling Nonlinear Optical Features for Ultrafast Photonics.",
+   "year": "2024",
+   "text": "ical properties were analyzed using TEM, XPS, UV/VIS/NIR Spectroscopy, and XRD. TEM images, HRTEM images, and selected area electron diffraction maps were observed using a TEM system (FEI Talos F200X G2). Elemental mapping was observed using a STEM system with EDS (Super‐X). XPS measurements were carried out on an X‐ray photoelectron spectrometer (Thermo Fisher Nexsa G2). XRD measurements were performed on an X‐ray diffractometer (Ultima IV). Laser Performance The digital oscilloscope (DSOX6004A, 4 GHz bandwidth, and 20 GSa S −1 sampling rate, Keysight Technologies Inc.) with a High‐speed InGaAs PIN photodetector module (PD03, 3 GHz bandwidth) was used to record the pulse trace of the mode‐locking laser. The spec",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13421312",
+   "title": "High-throughput in situ sizing and quantum yield determination of individual perovskite nanocrystals.",
+   "year": "2026",
+   "text": ". To enhance the conductivity of the thin-film samples and improve the SEM image contrast, a layer of gold/palladium was sputtered on top using a Leica EM SCD005. The sputtering process was conducted at a current of 15 mA for 25 s, resulting in a 2-nm metal layer deposited on the prepared thin film. XPS The XPS measurements were carried out with a Thermo Fisher Nexsa G2 equipped with a monochromatic (Al Kα) X-ray source. The sample charging was avoided by using a flood gun. High-resolution spectra were performed with a pass energy of 20 eV. The step size was 0.1 eV. The data were evaluated using CasaXPS (v.2.3.26PR1.0). When necessary, charge compensation was performed based on the adventitious carbon assigned at",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12593354",
+   "title": "Ultrasensitive Circularly Polarized Photon Detectors Based on Chiral Two-Dimensional MoS&lt;sub&gt;2&lt;/sub&gt;.",
+   "year": "2025",
+   "text": "S 2 films were transferred to Pt-coated Si/SiO 2 substrates and were loaded in a vacuum chamber at 10 –10 mbar. The incident X-ray beam was 70° with respect to the normal axis to the basal plane. The beam spot size was approximately 300 mm. X-ray Photoelectron Spectroscopy X-ray Photoelectron Spectroscopy (XPS) measurements were carried out with a Thermo Fisher Nexsa-G2 spectrometer with Cu Kα source on CVD-grown monolayer materials on Si/SiO 2 (oxide thickness = 90 nm). The spot size was 50–100 mm, which can cover the region of a single flake of CVD-grown MoS 2 . A modified flood gun compensation mode was employed to avoid damage to the organic molecule and charging on the nonconductive sample to accurately anal",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 10,
+  "density_porosity": 2,
+  "tga": 1
+ }
+}

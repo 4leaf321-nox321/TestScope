@@ -1,0 +1,82 @@
+{
+ "object": "mecmesin-omnitest",
+ "manufacturer": "mecmesin",
+ "phrases": [
+  "Mecmesin OmniTest",
+  "Mecmesin OmniTest 0.5",
+  "Mecmesin OmniTest 1",
+  "Mecmesin OmniTest 2.5",
+  "Mecmesin OmniTest 5",
+  "Mecmesin OmniTest 7.5"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mecmesin OmniTest\" OR \"Mecmesin OmniTest 0.5\" OR \"Mecmesin OmniTest 1\" OR \"Mecmesin OmniTest 2.5\" OR \"Mecmesin OmniTest 5\" OR \"Mecmesin OmniTest 7.5\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mecmesin OmniTest\" OR \"Mecmesin OmniTest 0.5\" OR \"Mecmesin OmniTest 1\" OR \"Mecmesin OmniTest 2.5\" OR \"Mecmesin OmniTest 5\" OR \"Mecmesin OmniTest 7.5\") AND OPEN_ACCESS:y",
+  "count": 3,
+  "papers": [
+   {
+    "pmcid": "PMC9861692",
+    "doi": "10.3390/ijms24021401",
+    "title": "Application of Silver Nanoparticles to Improve the Antibacterial Activity of Orthodontic Adhesives: An In Vitro Study.",
+    "journal": "Int J Mol Sci",
+    "year": "2023",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11536928",
+    "doi": "10.1186/s12903-024-05127-3",
+    "title": "Antimicrobial efficacy and bonding properties of orthodontic bonding systems enhanced with silver nanoparticles: a systematic review with meta-analysis.",
+    "journal": "BMC Oral Health",
+    "year": "2024",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC13294620",
+    "doi": "10.7759/cureus.109653",
+    "title": "Comparative Evaluation of Aluminum Oxide and Zinc Oxide Fillers on the Impact Strength and Flexural Strength of Heat-Cure Denture Base Resins: An In Vitro Study.",
+    "journal": "Cureus",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9861692",
+   "title": "Application of Silver Nanoparticles to Improve the Antibacterial Activity of Orthodontic Adhesives: An In Vitro Study.",
+   "year": "2023",
+   "text": "dental explorer tool. Then, the composite was light-cured for 20 s from the occlusal surface. The bonding adhesives were all light-cured with a curing light (S10 Elipar; 3M/Unitek Dental Products), with a light intensity of 1000 mW/cm 2 [ 38 ]. 4.4. SBS The samples were placed in a holder attached to the base plate of a universal testing machine (Mecmesin Omnitest Universal Machine, Slinfold, UK). A straight-edge plunger was mounted in the movable crosshead of the testing machine and positioned so that the leading edge was aimed at the enamel–composite interface before being brought into contact. A crosshead speed of 1 mm/min 2 was performed, and the measurements were taken in Newton metrical units after th",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11536928",
+   "title": "Antimicrobial efficacy and bonding properties of orthodontic bonding systems enhanced with silver nanoparticles: a systematic review with meta-analysis.",
+   "year": "2024",
+   "text": "eter 11 nm at 535 µg/mLAgNP S The control group: Transbond™ MIP 3 M, Unitek, US Transbond™ XT 3 M, Unitek, US Prime &amp; Bond Denstply, Sirona, US Agar Diffusion Test Minimum Inhibitory Concentration (MIC) Minimal Bactericidal Concentration (MBC) S. mutans (ATCC 25175) L. acidophilus (ATCC 4356) 24 h Human premolars 180 Universal testing machine (Mecmesin Omnitest Universal Machine, Slinfold, UK) Metal orthodontic brackets, (TD Orthodontics, Monterrey, NL, Mexico) Zhang et al., 2015 [ 29 ] Resin-modified glass ionomer cement (Vitremer, 3 M, St. Paul, MN) with 0,1% AgNPs The control group: (Transbond XT, 3 M, Monrovia, CA) and Resin-modified glass ionomer cement (Vitremer, 3 M, St. Paul, MN) CFU Lactic acid",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC13294620",
+   "title": "Comparative Evaluation of Aluminum Oxide and Zinc Oxide Fillers on the Impact Strength and Flexural Strength of Heat-Cure Denture Base Resins: An In Vitro Study.",
+   "year": "2026",
+   "text": "ral environmental conditions and permit residual monomer release. All specimens were tested under standardized laboratory conditions at room temperature (23 ± 2°C). Mechanical testing was completed within 48 hours after specimen conditioning. Evaluation of flexural strength Flexural strength testing was performed using a universal testing machine (Mecmesin OmniTest 25, PPT Group UK Ltd.) according to American Dental Association Specification Number 12 using the three-point bending test method. Each specimen was positioned horizontally on two supporting rods with a span length of 50 mm. A compressive load was applied centrally at a constant crosshead speed of 5 mm/minute until fracture occurred. The maximum f",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "flexure": 1
+ }
+}

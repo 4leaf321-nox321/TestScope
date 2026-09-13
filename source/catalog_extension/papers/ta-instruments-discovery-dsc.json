@@ -1,0 +1,307 @@
+{
+ "object": "ta-instruments-discovery-dsc",
+ "manufacturer": "ta-instruments",
+ "phrases": [
+  "TA Instruments Discovery DSC",
+  "TA Instruments Discovery"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TA Instruments Discovery DSC\" OR \"TA Instruments Discovery\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TA Instruments Discovery DSC\" OR \"TA Instruments Discovery\") AND OPEN_ACCESS:y",
+  "count": 539,
+  "papers": [
+   {
+    "pmcid": "PMC6731072",
+    "doi": "10.1126/sciadv.aaw2459",
+    "title": "Biomanufacturing of organ-specific tissues with high cellular density and embedded vascular channels.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 683,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5710741",
+    "doi": "10.1016/j.jcmgh.2017.02.011",
+    "title": "Self-renewing Monolayer of Primary Colonic or Rectal Epithelial Cells.",
+    "journal": "Cell Mol Gastroenterol Hepatol",
+    "year": "2017",
+    "cited": 192,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9357007",
+    "doi": "10.1038/s41467-022-32255-7",
+    "title": "Temporal profiling of the breast tumour microenvironment reveals collagen XII as a driver of metastasis.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 177,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7596866",
+    "doi": "10.1021/acscentsci.0c00732",
+    "title": "Injectable Hydrogels for Sustained Codelivery of Subunit Vaccines Enhance Humoral Immunity.",
+    "journal": "ACS Cent Sci",
+    "year": "2020",
+    "cited": 174,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9580449",
+    "doi": "10.1038/s41467-022-33889-3",
+    "title": "Systematic design of cell membrane coating to improve tumor targeting of nanoparticles.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 133,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6803664",
+    "doi": "10.1038/s41538-019-0054-8",
+    "title": "Muscle tissue engineering in fibrous gelatin: implications for meat analogs.",
+    "journal": "NPJ Sci Food",
+    "year": "2019",
+    "cited": 127,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC3652617",
+    "doi": "10.1021/ma302522x",
+    "title": "Mechanical Properties and Degradation of Chain and Step Polymerized Photodegradable Hydrogels.",
+    "journal": "Macromolecules",
+    "year": "2013",
+    "cited": 112,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GM-065103"
+    ]
+   },
+   {
+    "pmcid": "PMC8646307",
+    "doi": "10.1002/adma.202104362",
+    "title": "Hydrogel-Based Slow Release of a Receptor-Binding Domain Subunit Vaccine Elicits Neutralizing Antibody Responses Against SARS-CoV-2.",
+    "journal": "Adv Mater",
+    "year": "2021",
+    "cited": 97,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GM007276"
+    ]
+   },
+   {
+    "pmcid": "PMC7954458",
+    "doi": "10.1126/sciadv.abe4501",
+    "title": "Injury-mediated stiffening persistently activates muscle stem cells through YAP and TAZ mechanotransduction.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 96
+   },
+   {
+    "pmcid": "PMC8296679",
+    "doi": "10.1021/acssuschemeng.0c08022",
+    "title": "Wood-Derived Hydrogels as a Platform for Drug-Release Systems.",
+    "journal": "ACS Sustain Chem Eng",
+    "year": "2021",
+    "cited": 92
+   },
+   {
+    "pmcid": "PMC8245043",
+    "doi": "10.1126/sciadv.abh2022",
+    "title": "Soft-bodied adaptive multimodal locomotion strategies in fluid-filled confined spaces.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 91
+   },
+   {
+    "pmcid": "PMC7610461",
+    "doi": "10.1002/adma.202003013",
+    "title": "Zwitterionic 3D-Printed Non-Immunogenic Stealth Microrobots.",
+    "journal": "Adv Mater",
+    "year": "2020",
+    "cited": 88
+   },
+   {
+    "pmcid": "PMC7846586",
+    "doi": "10.1038/s41467-020-20662-7",
+    "title": "Enhanced piezoelectricity from highly polarizable oriented amorphous fractions in biaxially oriented poly(vinylidene fluoride) with pure β crystals.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 85
+   },
+   {
+    "pmcid": "PMC7864023",
+    "doi": "10.3390/ma14030478",
+    "title": "Effect of the Cross-Linking Density on the Swelling and Rheological Behavior of Ester-Bridged β-Cyclodextrin Nanosponges.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 82
+   },
+   {
+    "pmcid": "PMC9519884",
+    "doi": "10.1038/s41467-022-33413-7",
+    "title": "Tri-explosophoric groups driven fused energetic heterocycles featuring superior energetic and safety performances outperforms HMX.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 76
+   },
+   {
+    "pmcid": "PMC11468689",
+    "doi": "10.1002/adma.202102112",
+    "title": "Mechanochromic, Structurally Colored, and Edible Hydrogels Prepared from Hydroxypropyl Cellulose and Gelatin.",
+    "journal": "Adv Mater",
+    "year": "2021",
+    "cited": 64
+   },
+   {
+    "pmcid": "PMC6018706",
+    "doi": "10.1038/s41598-018-28009-5",
+    "title": "Viscoelastic properties of Pseudomonas aeruginosa variant biofilms.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 64
+   },
+   {
+    "pmcid": "PMC8752670",
+    "doi": "10.1038/s41467-021-27842-z",
+    "title": "Evolution of microscopic heterogeneity and dynamics in choline chloride-based deep eutectic solvents.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 63
+   },
+   {
+    "pmcid": "PMC8153386",
+    "doi": "10.1021/acsbiomaterials.0c01496",
+    "title": "Prolonged Codelivery of Hemagglutinin and a TLR7/8 Agonist in a Supramolecular Polymer-Nanoparticle Hydrogel Enhances Potency and Breadth of Influenza Vaccination.",
+    "journal": "ACS Biomater Sci Eng",
+    "year": "2021",
+    "cited": 59
+   },
+   {
+    "pmcid": "PMC4255276",
+    "doi": "10.1021/la5008389",
+    "title": "Comparing and correlating solubility parameters governing the self-assembly of molecular gels using 1,3:2,4-dibenzylidene sorbitol as the gelator.",
+    "journal": "Langmuir",
+    "year": "2014",
+    "cited": 59
+   },
+   {
+    "pmcid": "PMC5653810",
+    "doi": "10.1038/s41598-017-14236-9",
+    "title": "3D Printing Bioinspired Ceramic Composites.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 56
+   },
+   {
+    "pmcid": "PMC9011390",
+    "doi": "10.1021/acspolymersau.1c00049",
+    "title": "Effect of pH on the Properties of Hydrogels Cross-Linked via Dynamic Thia-Michael Addition Bonds.",
+    "journal": "ACS Polym Au",
+    "year": "2022",
+    "cited": 54
+   },
+   {
+    "pmcid": "PMC9534946",
+    "doi": "10.1002/advs.202103677",
+    "title": "Injectable Nanoparticle-Based Hydrogels Enable the Safe and Effective Deployment of Immunostimulatory CD40 Agonist Antibodies.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 48
+   },
+   {
+    "pmcid": "PMC7908013",
+    "doi": "10.1021/acsami.0c22203",
+    "title": "Metal Nanoparticles/MoS<sub>2</sub> Surface-Enhanced Raman Scattering-Based Sandwich Immunoassay for α-Fetoprotein Detection.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2021",
+    "cited": 48
+   },
+   {
+    "pmcid": "PMC8518857",
+    "doi": "10.1002/jbm.a.37203",
+    "title": "Modulation of injectable hydrogel properties for slow co-delivery of influenza subunit vaccine components enhance the potency of humoral immunity.",
+    "journal": "J Biomed Mater Res A",
+    "year": "2021",
+    "cited": 46
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6731072",
+   "title": "Biomanufacturing of organ-specific tissues with high cellular density and embedded vascular channels.",
+   "year": "2019",
+   "text": "ity of the OBB matrix was then estimated by the ratio of cell number to OBB matrix volume. Rheological measurements Rheological measurements were carried out by first compacting the prepared EB, ECM, and EB-ECM slurries (mean diameter of EBs, ~200 μm) into 3-cm 3 syringes (Nordson EFD) and then extruding them directly onto the rheometer plate of a TA-instruments Discovery HR-3 stress-controlled rheometer. The plate, with a diameter of 25 mm, was precooled to 2°C. Both the plate and disc were coated with sandpaper to prevent wall slip, and the gap height was brought to 1 mm. Any excess slurry was trimmed with a spatula before these measurements. First, oscillatory frequency sweeps were performed from 0.1 to 10 rad/s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5710741",
+   "title": "Self-renewing Monolayer of Primary Colonic or Rectal Epithelial Cells.",
+   "year": "2017",
+   "text": "atin (10 mg/mL) was prepared by cross-linking with transglutaminase. 21 Polyacrylamide possessed a stiffness of about 800 Pa, and its surface was covalently attached to collagen by sulfosuccinimidyl 6-(4′-azido-2′-nitrophenylamino) hexanoate as recommended by the manufacturer. Stiffness Measurements Stiffness measurements were conducted by using a TA Instruments Discovery Hybrid Rheometer (New Castle, DE) (DHR3) in dynamic mechanical analysis mode. Characterization of the Two-dimensional Monolayer The proliferation and viability of cells were quantified by either surface area coverage or a cell viability assay (CellTiter-Glo luminescence assay, Promega G7572; Madison, WI). To ensure the cells possessed grossly norm",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9357007",
+   "title": "Temporal profiling of the breast tumour microenvironment reveals collagen XII as a driver of metastasis.",
+   "year": "2022",
+   "text": "entred protein abundance values of proteins present in at least 70% of all samples ( n = 4 or 5). Principal component analysis biplots were generated using log 2 transformed and median-centred protein abundance values, of proteins in all samples ( n = 4 or 5). Unconfined compression analysis Biomechanical testing of tissues was performed using the TA Instruments Discovery Hybrid Rheometer-3 (DHR3) with TRIOS Data acquisition software. Fresh tumours and mammary glands were isolated at defined timepoints (early [8–10 weeks], mid [11–13 weeks], or late [14–16 weeks]) and immediately subjected to biomechanical testing. Organotypic matrices were profiled after 12 days of remodelling. Compressive elastic modulus was meas",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7596866",
+   "title": "Injectable Hydrogels for Sustained Codelivery of Subunit Vaccines Enhance Humoral Immunity.",
+   "year": "2020",
+   "text": "cine concentrations were prepared in PBS and loaded into a syringe for administration. For the PNP hydrogels, the vaccine cargo was added at the appropriate concentration into the PBS component of the gel before the polymer and NP solutions were added, as described above. Material Characterization Rheological characterization was performed using a TA Instruments Discovery HR-2 torque-controlled rheometer fitted with a Peltier stage. All measurements were performed using a serrated 20 mm plate geometry at 25 °C. Dynamic oscillatory frequency sweep measurements were performed with a constant torque (2 μN·m) from 0.1 to 100 rad/s. Steady shear experiments were performed from 0.1 to 100 s –1 . Step-shear experiments we",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9580449",
+   "title": "Systematic design of cell membrane coating to improve tumor targeting of nanoparticles.",
+   "year": "2022",
+   "text": "a, USA) and the individual lipid species were quantified using the internal standards and Lipid Mass Spectrum Analysis (LIMSA) software 58 , which automatically corrects for an overlap of isotope peaks. Differential scanning calorimetry Phase transition temperatures of liposomes, CM vesicles, and hybrid membrane (HM) vesicles were measured using a TA Instruments Discovery differential scanning calorimetry (DSC). The samples (25 µL) were placed in the DSC sample pans, and the pans were sealed with the lids. The heating scan was started from −40 °C to 70 °C at the rate of 2 °C/min. Measurement of membrane fluidity Membrane fluidity was first evaluated by generalized polarization (GP) of laurdan, as reported previousl",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6803664",
+   "title": "Muscle tissue engineering in fibrous gelatin: implications for meat analogs.",
+   "year": "2019",
+   "text": "re cut into cylindrical samples by circular biopsy punch with 1 cm diameter and ~1.5 mm thickness. To obtain fresh rabbit muscle, we isolated the gracilis muscle from the hind limb and subsequently cut samples as outlined above. These sample geometries were used for rheometry, TPA, and histological sectioning. Shear rheology of gelatin solutions A TA Instruments Discovery Hybrid 3 Rheometer (TA Instruments, New Castle, DE, USA) with a cone plate geometry was used to study 20% (w/w) gelatin solutions and 1:10 ratio solutions of 20% (w/w) gelatin crosslinked with 50% (w/w) mTG solutions. The cone geometry had a 60 mm diameter, 2° angle, and a 400 µm truncation gap. Both the solutions and the rheometer plate were heat",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC3652617",
+   "title": "Mechanical Properties and Degradation of Chain and Step Polymerized Photodegradable Hydrogels.",
+   "year": "2013",
+   "text": "y the initial separation distance multiplied by 100, and the toughness was calculated by numerically integrating for the area under the stress–strain curve. Shear Testing of Hydrogels To determine the shear strain to yield for each of the hydrogels, hydrogel samples ( n = 3 for each gel type) were polymerized in situ on a parallel plate rheometer (TA Instruments Discovery). Once the gels reached complete polymerization, a strain sweep was performed from 1% to 1000% strain at a constant frequency of 2.5 rad/s while monitoring the storage modulus ( G ′) and the loss modulus ( G ″) values. Shear strain to yield was characterized as the strain at which the value of the storage modulus fell below the value of the loss m",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8646307",
+   "title": "Hydrogel-Based Slow Release of a Receptor-Binding Domain Subunit Vaccine Elicits Neutralizing Antibody Responses Against SARS-CoV-2.",
+   "year": "2021",
+   "text": "queous components were loaded into one syringe, the HPMC‐C 12 was loaded into a second syringe and components were mixed using an elbow connector. After mixing, the elbow was replaced with a 21‐gauge needle for injection. Material Characterization Rheological characterization was performed on PNP hydrogels with or without Alum (Alhydrogel) using a TA Instruments Discovery HR‐2 torque‐controlled rheometer (TA Instruments) fitted with a Peltier stage. All measurements were performed using a serrated 20 mm plate geometry at 25 °C with a 700 µm gap height. Dynamic oscillatory frequency sweep measurements were performed from 0.1 to 100 rad s −1 with a constant oscillation strain in the linear viscoelastic regime (1%). A",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "shear": 6,
+  "dsc": 2,
+  "compression": 1,
+  "density_porosity": 1,
+  "dma": 1
+ }
+}

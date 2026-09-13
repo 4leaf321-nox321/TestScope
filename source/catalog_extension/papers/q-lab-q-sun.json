@@ -1,0 +1,95 @@
+{
+ "object": "q-lab-q-sun",
+ "manufacturer": "q-lab",
+ "phrases": [
+  "Q-Lab Q-SUN",
+  "Q-Lab Q-SUN Xe-1",
+  "Q-Lab Q-SUN Xe-2",
+  "Q-Lab Q-SUN Xe-3",
+  "Q-Lab Q-SUN Xe-1-WE",
+  "Q-Lab Q-SUN Xe-8"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Q-Lab Q-SUN\" OR \"Q-Lab Q-SUN Xe-1\" OR \"Q-Lab Q-SUN Xe-2\" OR \"Q-Lab Q-SUN Xe-3\" OR \"Q-Lab Q-SUN Xe-1-WE\" OR \"Q-Lab Q-SUN Xe-8\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Q-Lab Q-SUN\" OR \"Q-Lab Q-SUN Xe-1\" OR \"Q-Lab Q-SUN Xe-2\" OR \"Q-Lab Q-SUN Xe-3\" OR \"Q-Lab Q-SUN Xe-1-WE\" OR \"Q-Lab Q-SUN Xe-8\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC6089898",
+    "doi": "10.1038/s41598-018-30424-7",
+    "title": "Fire-induced structural changes and long-term stability of burned historical rag papers.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 5630-3"
+    ]
+   },
+   {
+    "pmcid": "PMC12525880",
+    "doi": "10.3390/ma18194478",
+    "title": "Influence of Ageing and Post-Processing on the Mechanical and Aesthetic Stability of PA12-Based 3D-Printed Components for Medical Devices.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 1,
+    "snippets": 2,
+    "standards_in_paper": [
+     "EN ISO 10993",
+     "EN ISO 10993-1",
+     "EN ISO 527-1",
+     "ISO 10993",
+     "ISO 14971",
+     "ISO 4892",
+     "ISO 527",
+     "ISO 7724",
+     "ISO 7724-3"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6089898",
+   "title": "Fire-induced structural changes and long-term stability of burned historical rag papers.",
+   "year": "2018",
+   "text": "absorbent blotting papers (KLUG conservation GmbH, Germany), the papers were dried under ambient conditions. Each sample (1.8 g) was also washed once with 150 mL of ethanol (96%, v/v) and dried the same way. Accelerated ageing The accelerated ageing of the samples after the washing steps was carried out at 80 °C and RH of 65% in a climate chamber (Q-LAB Q-Sun Xe-3, USA) based on ISO 5630-3:1996 31 for 25 days and 39 days. Data availability statement Data are available upon request from the authors. Electronic supplementary material Supplementary Information Acknowledgements We are grateful to the Duchess Anna Amalia Library, Weimar, Germany, for supporting this project. We like to thank S. Schiehser an",
+   "standards": [
+    "ISO 5630-3"
+   ]
+  },
+  {
+   "pmcid": "PMC12525880",
+   "title": "Influence of Ageing and Post-Processing on the Mechanical and Aesthetic Stability of PA12-Based 3D-Printed Components for Medical Devices.",
+   "year": "2025",
+   "text": "fuse S 18 HP MJF PA12 HP 3D High Reusability HP 5200 Powershot C 18 Powershot C + DM60 + Powershot S 18 Powershot C + DM60 + Powershot S + Powerfuse S 18 Figure 3 DyeMansion post-processing system presenting three Powershot S machines. 2.3. Ageing Tests and Methods for Assessing Sample Properties Ageing tests [ 90 , 91 , 92 ] were carried out in a Q-Lab Q-SUN Xenon Test Xe-3 chamber [ 93 ], equipped with xenon lamps, according to the following cyclic program: Air temperature: 38 °C; Black standard temperature (IBP): 55 °C; Mixed cycle: dry irradiation/irradiation with relative humidity of 50% RH; UV irradiance: 60 W/m 2 (TUV spectral range 300–400 nm). The samples were placed in a climate chamber, even",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12525880",
+   "title": "Influence of Ageing and Post-Processing on the Mechanical and Aesthetic Stability of PA12-Based 3D-Printed Components for Medical Devices.",
+   "year": "2025",
+   "text": "ide for Accelerated Aging of Sterile Barrier Systems and Medical Devices. 2021. [(accessed on 18 August 2025)]. Available online: https://www.astm.org/f1980-21.html . 92. Westpak Accelerated Aging Calculator. 2023. [(accessed on 27 October 2023)]. Available online: https://www.westpak.com/resources/calculator/accelerated-aging-time-calculator/ 93. Q-Lab Q-Lab Q-SUN Xenon Test Xe-3. 2025. [(accessed on 18 July 2025)]. Available online: https://pl.q-lab.com/weathering/equipment-accessories/q-sun/xe-3 . 94. International Organization for Standardization ISO 7724-3:2003; Paints and Varnishes—Colorimetry—Part 3: Calculation of Colour Differences. 2003. [(accessed on 27 July 2025)]. Available online: https://www.i",
+   "standards": [
+    "ISO 7724-3"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ISO 5630-3": 1,
+  "ISO 7724-3": 1
+ },
+ "standards_new": [
+  "ISO 5630-3",
+  "ISO 7724-3"
+ ],
+ "test_item_hits": {
+  "microscopy": 1,
+  "photometry_colorimetry": 1
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "object": "ta-instruments-vti-sa-sorption",
+ "manufacturer": "ta-instruments",
+ "phrases": [
+  "TA Instruments VTI-SA+"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TA Instruments VTI-SA+\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TA Instruments VTI-SA+\") AND OPEN_ACCESS:y",
+  "count": 4,
+  "papers": [
+   {
+    "pmcid": "PMC12076544",
+    "doi": "10.1021/acssuschemeng.5c00227",
+    "title": "Investigation of Moisture Swing Adsorbents for Direct Air Capture by Dynamic Breakthrough Studies.",
+    "journal": "ACS Sustain Chem Eng",
+    "year": "2025",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9718309",
+    "doi": "10.1021/acsphyschemau.1c00026",
+    "title": "Ethanol and Water Adsorption in Conventional and Hierarchical All-Silica MFI Zeolites.",
+    "journal": "ACS Phys Chem Au",
+    "year": "2022",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8223215",
+    "doi": "10.1021/acsomega.1c01147",
+    "title": "A Novel Hydrate Form of Sodium Dodecyl Sulfate and Its Crystallization Process.",
+    "journal": "ACS Omega",
+    "year": "2021",
+    "cited": 5,
+    "snippets": 1,
+    "standards_in_paper": [
+     "SS 1102"
+    ]
+   },
+   {
+    "pmcid": "PMC12616598",
+    "doi": "10.1021/acsami.5c16139",
+    "title": "Simulated Moving Bed Process for CO&lt;sub&gt;2&lt;/sub&gt; Capture from Humid Postcombustion Flue Gases Using MUF-16.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC12076544",
+   "title": "Investigation of Moisture Swing Adsorbents for Direct Air Capture by Dynamic Breakthrough Studies.",
+   "year": "2025",
+   "text": "ntrations of CO 2 (400 ppm, 1000 ppm, 1%) were purchased from Airgas. 2.2 Characterizations Elemental analysis was conducted by Atlantic Microlab. SEM. Scanning electron microscopy (SEM) images were obtained with a Hitachi SU8010. Before imaging, samples were sputtered with a Quorum Q-150T ES for 40 s. Unary water vapor adsorption isotherms were obtained with a TA Instruments VTI-SA+ after the in situ activation of samples by N 2 purging at 35 °C for 12 h. 2.3 Preparation of IRA-900-C IRA-900-C was synthesized via a series of ion exchange processes. Typically, about 1 g of IRA-900 beads in their chloride form were soaked in 40 mL of 1 M KHCO 3 aqueous solution with gentle shaking. The aqueous supernatant was decanted after 24",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9718309",
+   "title": "Ethanol and Water Adsorption in Conventional and Hierarchical All-Silica MFI Zeolites.",
+   "year": "2022",
+   "text": "lica MFI zeolite synthesized by the fluoride method, 28 referred herein as MFI-F, and of all-silica SPP 19 were taken from prior work. These references also provide details of the materials characterization. 2.2 Vapor-Phase Adsorption Experiments Water and ethanol unary sorption isotherms were measured at 298 K. The experiments were conducted on a TA Instruments VTI-SA+ vapor sorption analyzer located at the Facility for Adsorbent Characterization and Testing at the National Institute of Standards and Technology. (Commercial equipment is identified in the paper in order to specify the experimental procedure adequately. This identification is not intended to imply recommendation by NIST nor is it intended to imply",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8223215",
+   "title": "A Novel Hydrate Form of Sodium Dodecyl Sulfate and Its Crystallization Process.",
+   "year": "2021",
+   "text": "e of 60 to 3500 cm –1 were acquired with an exposure time of 10 s for eight scans using a green laser at 532 nm, whose actual laser energy through an objective lens was 5 to 30 mW. A silicon substrate (SiO 2 /Si) (4 in. P-type (100) silicon wafer) was used for calibration to have a characteristic signal at 520 cm –1 . Dynamic vapor sorption (DVS) (TA Instruments VTI-SA+, New Castle, DE, USA) was used to determine water sorption isotherms at 25 ± 0.1 °C. Each solid sample was loaded into a symmetrical microbalance system (weighing precision: 0.01%) and dried at 0% relative humidity (RH) to establish an equilibrium dry mass initially. The sample was then exposed to environments of different RH ranging from 0 to 90%",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12616598",
+   "title": "Simulated Moving Bed Process for CO&lt;sub&gt;2&lt;/sub&gt; Capture from Humid Postcombustion Flue Gases Using MUF-16.",
+   "year": "2025",
+   "text": "150 °C for at least 12 h under dynamic vacuum (&lt;10 μmHg pressure). Uptake at each pressure point was allowed to equilibrate until the rate of change of pressure during the equilibration interval measured below 0.01% of the average pressure within that interval. H 2 O vapor isotherms were measured using commercial gravimetric sorption equipment, TA Instruments VTI-SA+. Samples were activated in situ at 150 °C for at least 12 h under nitrogen flow. At each relative humidity, uptake measurements were considered equilibrated when the change in weight over a 5 min interval was less than 0.0001% of the sample weight. 2.5. Breakthrough Experiments Breakthrough experiments were conducted on a custom-built setup (SI, F",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 1,
+  "vapor_sorption": 1
+ }
+}

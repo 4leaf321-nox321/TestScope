@@ -1,0 +1,996 @@
+{
+ "object": "espec-su-sh-benchtop",
+ "manufacturer": "espec",
+ "phrases": [
+  "ESPEC SU SH",
+  "ESPEC SU"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ESPEC SU SH\" OR \"ESPEC SU\"",
+  "count": 92,
+  "works": [
+   {
+    "id": "https://openalex.org/W4284989257",
+    "doi": "https://doi.org/10.1007/s40820-022-00886-6",
+    "title": "Microstructure Design of High-Entropy Alloys Through a Multistage Mechanical Alloying Strategy for Temperature-Stable Megahertz Electromagnetic Absorption",
+    "year": 2022,
+    "cited": 89,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Electromagnetic wave absorption materials",
+     "Metamaterials and Metasurfaces Applications",
+     "Advanced Antenna and Metasurface Technologies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-022-00886-6.pdf",
+    "abstract": "Abstract Developing megahertz (MHz) electromagnetic wave (EMW) absorption materials with broadband absorption, multi-temperature adaptability, and facile preparation method remains a challenge. Herein, nanocrystalline FeCoNiCr0.4Cu0.2 high-entropy alloy powders (HEAs) with both large aspect ratios and thin intergranular amorphous layers are constructed by a multistage mechanical alloying strategy, aiming to achieve excellent and temperature-stable permeability and EMW absorption. A single-phase face-centered cubic structure with good ductility and high crystallinity is obtained as wet milling precursors, via precisely controlling dry milling time. Then, HEAs are flattened to improve aspect ratios by synergistically regulating wet milling time. FeCoNiCr0.4Cu0.2 HEAs with dry milling 20 h and wet milling 5 h (D20) exhibit higher and more stable permeability because of larger aspect ratios and thinner intergranular amorphous layers. The maximum reflection loss (RL) of D20/SiO2 composites is greater than − 7 dB with 5 mm thickness, and EMW absorption bandwidth (RL < − 7 dB) can maintain between 523 and 600 MHz from − 50 to 150 °C. Furthermore, relying on the “cocktail effect” of HEAs, D20 sample also exhibits excellent corrosion resistance and high Curie temperature. This work provides a facile and tunable strategy to design MHz electromagnetic absorbers with temperature stability, broadband, and resistance to harsh environments."
+   },
+   {
+    "id": "https://openalex.org/W1522496564",
+    "doi": "https://doi.org/10.1143/jjap.42.6090",
+    "title": "Bi3-xMxTiTaO9(M = La or Nd) Ceramics with High Mechanical Quality FactorQm",
+    "year": 2003,
+    "cited": 83,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Engineering Applied Research",
+     "Ferroelectric and Piezoelectric Materials",
+     "Ultrasonics and Acoustic Wave Propagation"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1143/JJAP.42.6090/pdf",
+    "abstract": "The piezoelectric, ferroelectric and dielectric properties of Nd-modified Bi 3 TiTaO 9 (Bi 3- x Nd x TiTaO 9 , BNTT- x ) (0 ≤ x ≤0.75) and La-modified Bi 3 TiTaO 9 (Bi 3- x La x TiTaO 9 , BLTT- x ) (0 ≤ x ≤1.00) ceramics were investigated and compared. The specimens were fabricated by a conventional ceramic fabrication technique. BNTT-0.50 and BLTT-0.25 ceramics showed the highest coercive field, E c , of approximately 150 kV/cm in the BNTT and BLTT systems, respectively. Furthermore, BNTT-0.50 and BLTT-0.25 ceramics also showed the highest mechanical quality factor, Q m , of approximately 11000 in the BNTT and BLTT systems at the ( 33 )-mode, respectively. On the basis of result of this study, it was found that both BNTT-0.50 and BLTT-0.25 are high- Q m material."
+   },
+   {
+    "id": "https://openalex.org/W4387972555",
+    "doi": "https://doi.org/10.1002/aenm.202302468",
+    "title": "The Rational Design of Low‐Barrier Fluorinated Aluminum Substrates for Anode‑Free Sodium Metal Battery",
+    "year": 2023,
+    "cited": 79,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Inorganic Chemistry and Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202302468",
+    "abstract": "Abstract Anode‐free Na metal batteries are acclaimed for their high energy densities achieved through current collectors in situ plated with Na metal in the absence of active negative materials. The advancement of these devices hinges on the development of affordable current collectors for effective Na deposition and the design of advanced electrolytes with suppressed Na metal loss as measured against the poor cycling performance and safety issues associated with traditional organic electrolytes and convectional current collectors. Herein, the authors report a novel strategy for fabricating an Al current collector through annealing and fluorination using hydrofluoric acid to optimize its crystal orientation and surface properties in a bid to establish highly reversible Na deposition/dissolution processes. Through a series of characterization, electrochemical, and computational analyses, it is ascertained that the F‐rich surface of the (100)‐oriented Al substrate provides high‐affinity nucleation sites that initiate and sustain a uniform Na metal deposition and form a propitious solid electrolyte interphase layer. The present anode‐free Na metal battery prototype comprised of the treated Al substrate, a high mass loading Na 3 V 2 (PO 4 ) 3 positive electrode, and an ionic liquid electrolyte achieves a high average Coulombic efficiency (≈98%) over 50 cycles: indeed, groundbreaking performance for uncoated current collectors that do not require activation cycles."
+   },
+   {
+    "id": "https://openalex.org/W3011185244",
+    "doi": "https://doi.org/10.1149/1945-7111/ab798a",
+    "title": "Modeling the Impact of Manufacturing Uncertainties on Lithium-Ion Batteries",
+    "year": 2020,
+    "cited": 74,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Reliability and Maintenance Optimization",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/ab798a/pdf",
+    "abstract": "This paper describes and analyzes the propagation of uncertainties from the lithium-ion battery electrode manufacturing process to the structural electrode parameters and the resulting varying electrochemical performance. It uses a multi-level model approach, consisting of a process chain simulation and a battery cell simulation. The approach enables to analyze the influence of tolerances in the manufacturing process on the process parameters and to study the process-structure-property relationship. The impact of uncertainties and their propagation and effect is illustrated by a case study with four plausible manufacturing scenarios. The results of the case study reveal that uncertainties in the coating process lead to high deviations in the thickness and mass loading from nominal values. In contrast, uncertainties in the calendering process lead to broad distributions of porosity. Deviations of the thickness and mass loading have the highest impact on the performance. The energy density is less sensitive against porosity and tortuosity as the performance is limited by theoretical capacity. The latter is impacted only by mass loading. Furthermore, it is shown that the shape of the distribution of the electrochemical performance due to parameter variation aids to identify, whether the mean manufacturing parameters are close to an overall performance optimum."
+   },
+   {
+    "id": "https://openalex.org/W2606311232",
+    "doi": "https://doi.org/10.1007/s10832-017-0084-z",
+    "title": "Surface and morphological investigation of the electrode/electrolyte properties in an all-solid-state battery using a Li2S-P2S5 solid electrolyte",
+    "year": 2017,
+    "cited": 70,
+    "venue": "Journal of Electroceramics",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.dora.lib4ri.ch/psi/dload/psi:46280/PDF/view",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2989887166",
+    "doi": "https://doi.org/10.4191/kcers.2019.56.6.01",
+    "title": "Micro/Millimeter-Wave Dielectric Indialite/Cordierite Glass-Ceramics Applied as LTCC and Direct Casting Substrates: Current Status and Prospects",
+    "year": 2019,
+    "cited": 53,
+    "venue": "Journal of the Korean Ceramic Society",
+    "topics": [
+     "Microwave Dielectric Ceramics Synthesis",
+     "Ferroelectric and Piezoelectric Materials",
+     "Electrical and Thermal Properties of Materials"
+    ],
+    "oa_url": "https://www.jkcs.or.kr/upload/pdf/kcers-2019-56-6-01.pdf",
+    "abstract": "Indialite/cordierite glass-ceramics demonstrate excellent microwave dielectric properties such as a low dielectric constant of 4.7 and an extremely high quality factor Qf of more than 200 × 10 3 GHz when crystallized at 1300°C/20 h, which are essential criteria for application to 5G/6G mobile communication systems.The glass-ceramics applied to dielectric resonators, low-temperature co-fired ceramic (LTCC) substrates, and direct casting glass substrates are reviewed in this paper.The glass-ceramics are fabricated by the crystallization of glass with cordierite composition melted at 1550°C.The dielectric resonators are composed of crystallized glass pellets made from glass rods cast in a graphite mold.The LTCC substrates are made from indialite glassceramic powder crystallized at a low temperature of 1000°C/1 h, and the direct casting glass-ceramic substrates are composed of crystallized glass plates cast on a graphite plate.All these materials exhibit excellent microwave dielectric properties."
+   },
+   {
+    "id": "https://openalex.org/W2041102534",
+    "doi": "https://doi.org/10.1063/1.4914012",
+    "title": "Temperature-dependent electro-mechanical actuation sensitivity in stiffness-tunable BaTiO3/polydimethylsiloxane dielectric elastomer nanocomposites",
+    "year": 2015,
+    "cited": 50,
+    "venue": "Applied Physics Letters",
+    "topics": [
+     "Dielectric materials and actuators",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Ferroelectric and Piezoelectric Materials"
+    ],
+    "oa_url": "https://aip.scitation.org/doi/pdf/10.1063/1.4914012",
+    "abstract": "Stiffness-tunable BaTiO3/polydimethylsiloxane (BT/PDMS) dielectric elastomer composites using dimethylsilicone oil (DMSO) as the stiffness tuner were prepared. Significant improvements in both electromechanical actuation sensitivity (0%–490%) and actuation areal strain (0%–350%) can be observed from BT/PDMS samples with DMSO, which should be mainly contributed to the physical swelling behavior. Under wide testing temperature range, the stiffness-tuned BT/PDMS composite exhibited an excellent thermal stability of both dielectric and mechanical performance. The electromechanical sensitivity of BT/PDMS composite can be effectively tuned higher than that of VHB 4910 acrylics via the addition of DMSO under in vivo temperature range (20 °C–40 °C). This simple way endows PDMS-based composites the higher performance for being applied as implantable dielectric elastomer materials."
+   },
+   {
+    "id": "https://openalex.org/W2793144732",
+    "doi": "https://doi.org/10.1149/2.0081803jes",
+    "title": "Density, Viscosity, Ionic Conductivity, and Self-Diffusion Coefficient of Organic Liquid Electrolytes: Part I. Propylene Carbonate + Li, Na, Mg and Ca Cation Salts",
+    "year": 2018,
+    "cited": 45,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Ionic liquids properties and applications",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0081803jes/pdf",
+    "abstract": "To investigate physicochemical relationships between ionic radii, valence number and cationic metal species in electrolyte solutions, propylene carbonate with Li[N(SO 2 CF 3 ) 2 ], Na[N(SO 2 CF 3 ) 2 ], Mg[N(SO 2 CF 3 ) 2 ] 2 and Ca[N(SO 2 CF 3 ) 2 ] 2 were prepared. The temperature dependence of density, viscosity, ionic conductivity (AC impedance method) and self-diffusion coefficient (pulsed-gradient spin-echo nuclear magnetic resonance) was measured. The effects of cationic radii and cation valence number on the fluidity and transport properites (conductivity and self-diffusion coefficient) were analyzed."
+   },
+   {
+    "id": "https://openalex.org/W2104482149",
+    "doi": "https://doi.org/10.1149/1.2736646",
+    "title": "Comparative Study of Lithium Secondary Batteries Using Nonvolatile Safety Electrolytes",
+    "year": 2007,
+    "cited": 40,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.2736646/pdf",
+    "abstract": "The physical properties and electrochemical performances were systematically compared among a quaternary ammonium cation-based room-temperature ionic liquid electrolyte (ILE), a solid polymer electrolyte (SPE), and a conventional organic liquid electrolyte (OLE). The ionic conductivity, an interface impedance at the Li/electrolyte, and the activation energy at the interface were in the order of . Cells using ILE and SPE exhibited sufficiently high discharge capacities of approximately at the 100th cycle using cathode. The required operation temperatures at a rate of 1C discharge, for which the discharge capacity at 1C was of that obtained at C/8, were using SPE and using ILE."
+   },
+   {
+    "id": "https://openalex.org/W4220767429",
+    "doi": "https://doi.org/10.1002/batt.202200067",
+    "title": "Analysis of Lithium‐Ion Battery State and Degradation via Physicochemical Cell and SEI Modeling",
+    "year": 2022,
+    "cited": 34,
+    "venue": "Batteries & Supercaps",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202200067",
+    "abstract": "Abstract The quality of lithium‐ion batteries is affected by the formation of the solid electrolyte interphase (SEI). For a better understanding of its effect on cell performance and aging, fast and economically scalable SEI diagnostics are indispensable. Battery models promise to extract hardly accessible interfacial and bulk properties of the SEI from electrochemical impedance spectra and discharge data. The common analysis of only one measurement, often with empirical models, impedes a precise localization of degradation‐related and performance‐limiting processes. This work offers a solution by combining physicochemical SEI and cell modeling for the joint analysis of both measurement types. Our analysis highlights the minor importance of the SEI ionic conductivity for cell performance along with a significant improvement and notable effect of its interfacial properties along aging. Such a detailed understanding of the initial SEI and its evolution over time could enable, e. g., a knowledge‐based optimization of the cell formation process."
+   },
+   {
+    "id": "https://openalex.org/W4293238610",
+    "doi": "https://doi.org/10.3390/catal12050489",
+    "title": "A Promising Catalyst for the Dehydrogenation of Perhydro-Dibenzyltoluene: Pt/Al2O3 Prepared by Supercritical CO2 Deposition",
+    "year": 2022,
+    "cited": 32,
+    "venue": "Catalysts",
+    "topics": [
+     "Catalytic Processes in Materials Science",
+     "Catalysis and Oxidation Reactions",
+     "Catalysts for Methane Reforming"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4344/12/5/489/pdf?version=1651138946",
+    "abstract": "Pt/Al2O3 catalysts prepared via supercritical deposition (SCD), with supercritical CO2, wet impregnation (WI) methods and a selected benchmark catalyst, were evaluated for the dehydrogenation of perhydro-dibenzyltoluene (H18-DBT) at 300 °C in a batch reactor. After ten dehydrogenation runs, the average performance of the catalyst prepared using SCD was the highest compared to the benchmark and WI-prepared catalysts. The pre-treatment of the catalysts with the product (dibenzyltoluene) indicated that the deactivation observed is mainly due to the adsorbed H0-DBT blocking the active sites for the reactant (H18-DBT). Furthermore, the SCD method afforded a catalyst with a higher dispersion of smaller sized Pt particles, thus improving catalytic performance towards the dehydrogenation of H18-DBT. The particle diameters of the SCD- and WI-prepared catalysts varied in the ranges of 0.6–2.2 nm and 0.8–3.4 nm and had average particle sizes of 1.1 nm and 1.7 nm, respectively. Energy dispersive X-ray spectroscopy analysis of the catalysts after ten dehydrogenation runs revealed the presence of carbon. In this study, improved catalyst performance led to the production of more liquid-based by-products and carbon material compared to catalysts with low catalytic performance."
+   },
+   {
+    "id": "https://openalex.org/W2060030007",
+    "doi": "https://doi.org/10.1109/tcsi.2015.2402937",
+    "title": "An Energy Autonomous 400 MHz Active Wireless SAW Temperature Sensor Powered by Vibration Energy Harvesting",
+    "year": 2015,
+    "cited": 32,
+    "venue": "IEEE Transactions on Circuits and Systems I Regular Papers",
+    "topics": [
+     "Acoustic Wave Resonator Technologies",
+     "Innovative Energy Harvesting Technologies",
+     "Wireless Power Transfer Systems"
+    ],
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/82823/1/An%20Energy%20Autonomous%20400%20MHz%20Active%20Wireless%20SAW%20Temperature%20Sensor%20Powered%20by%20Vibration%20Energy%20Harvesting.pdf",
+    "abstract": "An energy autonomous active wireless surface acoustic wave (SAW) temperature sensor system is presented in this paper. The proposed system adopts direct temperature to frequency conversion using a lithium niobate SAW resonator for both temperature sensing and high-Q resonator core in a cross-coupled RF oscillator. This arrangement simplifies the temperature sensor readout circuit design and reduces the overall system power consumption. A power conditioning circuit based on buck-boost converter is utilized to provide high efficiency power extraction from piezoelectric energy harvester (PEH) and dynamic system power control. The SAW resonator is fabricated in-house using a two-step lithography procedure while the RF oscillator as well as the PEH power conditioning circuit are implemented in standard 65-nm and 0.18- μm CMOS processes respectively. The measured RF transmitter output power is -15 dBm with a phase noise of -99.4 dBc/Hz at 1 kHz offset, achieving a figure of merit (FOM) of -217.6 dB. The measured temperature sensing accuracy is ±0.6°C in -40°C to 120°C range. Fully powered by a vibration PEH, the proposed energy autonomous system has a self-startup voltage of 0.7 V and consumes an average power of 61.5 μW."
+   },
+   {
+    "id": "https://openalex.org/W3137160922",
+    "doi": "https://doi.org/10.1109/tmtt.2021.3061459",
+    "title": "Low Noise Amplifier With 7-K Noise at 1.4 GHz and 25 °C",
+    "year": 2021,
+    "cited": 31,
+    "venue": "IEEE Transactions on Microwave Theory and Techniques",
+    "topics": [
+     "Radio Frequency Integrated Circuit Design",
+     "Superconducting and THz Device Technology",
+     "Electromagnetic Compatibility and Noise Suppression"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/22/9394815/09374769.pdf",
+    "abstract": "This article describes a low noise amplifier which is believed will have a transformative impact because of the following characteristics: 1) the noise temperature at a physical temperature of 25 °C is a factor of 4 lower than typical commercial LNAs; 2) the noise decreases to 4.5 K at a temperature of -40 °C, a temperature realizable with solid-state coolers; 3) the LNA has an integrated, extremely stable noise source to facilitate measurement of system noise temperature; and 4) the amplifier is powered by a dc voltage and controlled by a tone signal on the RF output cable thus requiring no additional wiring. The amplifier benefits systems in the low microwave frequency range with low background temperature, such as those for space communications and radio astronomy, but without the capital and maintenance costs of cryogenic systems. This article describes the construction and test results with an emphasis on the manufacturability and accuracy of the noise measurements. Finally, the noise of a system deploying the LNA is described."
+   },
+   {
+    "id": "https://openalex.org/W4409531781",
+    "doi": "https://doi.org/10.1038/s41467-025-58522-x",
+    "title": "Harnessing database-supported high-throughput screening for the design of stable interlayers in halide-based all-solid-state batteries",
+    "year": 2025,
+    "cited": 29,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Inorganic Chemistry and Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-58522-x.pdf",
+    "abstract": "All-solid-state Li metal batteries (ASSLMBs) promise superior safety and energy density compared to conventional Li-ion batteries. However, their widespread adoption is hindered by detrimental interfacial reactions between solid-state electrolytes (SSEs) and the Li negative electrode, compromising long-term cycling stability. The challenges in directly observing these interfaces impede a comprehensive understanding of reaction mechanisms, necessitating first-principle simulations for designing novel interlayer materials. To overcome these limitations, we develop a database-supported high-throughput screening (DSHTS) framework for identifying stable interlayer materials compatible with both Li and SSEs. Using Li3InCl6 as a model SSE, we identify Li3OCl as a potential interlayer material. Experimental validation demonstrates significantly improved electrochemical performance in both symmetric- and full-cell configurations. A Li|Li3OCl|Li3InCl6|LiCoO2 cell exhibits an initial discharge capacity of 154.4 mAh/g (1.09 mA/cm2, 2.5–4.2 V vs. Li/Li+, 303 K) with 76.36% capacity retention after 1000 cycles. Notably, a cell with a conventional In-Li6PS5Cl interlayer delivers only 132.4 mAh/g and fails after 760 cycles. An additional interlayer-containing battery with Li(Ni0.8Co0.1Mn0.1)O2 as the positive electrode achieves an initial discharge capacity of 151.3 mAh/g (3.84 mA/cm2, 2.5–4.2 V vs. Li/Li+, 303 K), maintaining stable operation over 1650 cycles. The results demonstrate the promise of the DSHTS framework for identifying interlayer materials. All-solid-state lithium metal batteries face interfacial instability challenges. Here, authors develop a computational screening framework to identify Li3OCl as a stable interlayer between Li3InCl6 electrolyte and the Li metal electrode, improving the capacity retention of all-solid-state batteries."
+   },
+   {
+    "id": "https://openalex.org/W3202075476",
+    "doi": "https://doi.org/10.1149/1945-7111/ac2d11",
+    "title": "Understanding the Effects of Alloy Films on the Electrochemical Behavior of Lithium Metal Anodes with Operando Optical Microscopy",
+    "year": 2021,
+    "cited": 29,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/ac2d11/pdf",
+    "abstract": "Uncontrolled morphological evolution of lithium metal anodes during cycling can lead to inactive lithium formation and excessive solid electrolyte interphase growth, causing capacity decay. Here, we investigate how interfacial alloy layers affect the growth and evolution of lithium metal during electrodeposition and stripping from stainless steel current collectors by combining electrochemical methods with operando optical microscopy. We find that thin silver films enable improved Coulombic efficiency for lithium cycling in multiple electrolyte systems compared to bare current collectors or other alloy layers. This is at least partially enabled by the observed larger lithium particle size when grown from alloys, as well as the mechanical integrity of the silver films. Operando optical microscopy reveals reduced growth of dendritic Li on silver-coated current collectors at high current densities compared to bare current collectors, as well as different dendrite growth and stripping dynamics. Together, these findings enhance our understanding of how alloy thin films can affect both the electrochemical behavior and morphological evolution of lithium metal electrodes, highlighting the benefits of interfacial engineering to enable the use lithium metal anodes in \"anode-free\" battery configurations."
+   },
+   {
+    "id": "https://openalex.org/W4323075600",
+    "doi": "https://doi.org/10.1002/aenm.202203663",
+    "title": "Role of Scaffold Architecture and Excess Surface Polymer Layers in a 3D‐Interconnected Ceramic/Polymer Composite Electrolyte",
+    "year": 2023,
+    "cited": 28,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202203663",
+    "abstract": "Abstract 3D‐interconnected ceramic/polymer composite electrolytes offer promise to combine the benefits of both ceramic and polymer electrolytes. However, an in‐depth understanding of the role of the ceramic scaffold's architecture, and the associated polymer/ceramic interfaces on the electrochemical properties of such composite electrolytes is still incomplete. Here, these factors are systematically evaluated using an interconnected composite electrolyte with a tunable and well‐defined architecture. The ionic conductivity of the ceramic scaffold is strongly dependent on its porosity and tortuosity, as demonstrated experimentally and via theoretical modeling. The connectivity of the ceramic framework avoids the high interfacial impedance at the polymer/ceramic electrolyte interface within the composite. However, this work discovers that the interfacial impedance between the bulk composite and excess surface polymer layers of the composite membrane dominates the overall impedance, resulting in a 1–2 order drop of ionic conductivity compared to the ceramic scaffold. Despite the high impedance interfaces, an improved Li+ transference number is found compared to the neat polymer (0.29 vs 0.05), attributed to the ceramic phase's contributions toward ion transport. This leads to flatter overpotentials in lithium symmetric cell cycling. These results are expected to guide future research directions toward scalable manufacturing of composite electrolytes with optimized architecture and interfaces."
+   },
+   {
+    "id": "https://openalex.org/W2731327410",
+    "doi": "https://doi.org/10.1088/1361-6528/aa7c83",
+    "title": "Quinone molecules encapsulated in SWCNTs for low-temperature Na ion batteries",
+    "year": 2017,
+    "cited": 24,
+    "venue": "Nanotechnology",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1361-6528/aa7c83/pdf",
+    "abstract": "We have performed Li and Na ion charge-discharge experiments of 9,10-phenanthrene quinone (PhQ) molecules encapsulated in single-walled carbon nanotubes (SWCNTs) with mean tube diameters of 1.5 and 2.5 nm at room temperature and also at low temperatures. The Na ion reversible capacity of PhQ encapsulated in the larger diameter SWCNTs, measured at a low temperature of 0 °C, remained as high as that measured at room temperature (RT), while the capacity of PhQ in the smaller diameter SWCNTs at 0 °C was about a half of that at RT. The diameter dependence of the capacity should be attributed to the difference in the interactions between the encapsulated PhQ molecules and the host SWCNTs, which was revealed by Raman peak profile analysis. Charge-transfer reaction from metallic tubes to PhQ molecules encapsulated in the smaller diameter SWCNTs was detected by Raman measurements. The electrostatic interaction between charged SWCNTs and PhQ molecules, induced by the charge-transfer reaction, would partly contribute to the stabilization of PhQ molecules in the smaller diameter SWCNTs, while only van der Waals interaction stabilizes PhQ molecules in the larger diameter SWCNTs. The difference in stability was confirmed by thermogravimetric, x-ray photoelectron spectroscopy, and Raman measurements. Charge-discharge curves of PhQ encapsulated in SWCNTs were also discussed based on the stability difference."
+   },
+   {
+    "id": "https://openalex.org/W2759427090",
+    "doi": "https://doi.org/10.7567/jjap.56.10pe01",
+    "title": "Novel low-temperature sintering ceramic substrate based on indialite/cordierite glass ceramics",
+    "year": 2017,
+    "cited": 18,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Microwave Dielectric Ceramics Synthesis",
+     "Ferroelectric and Piezoelectric Materials",
+     "Electrical and Thermal Properties of Materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.7567/JJAP.56.10PE01/pdf",
+    "abstract": "Abstract In this paper, a novel low-temperature sintering substrate for low temperature co-fired ceramic applications based on indialite/cordierite glass ceramics with Bi 2 O 3 as a sintering aid showing low permittivity (ε r ) and ultralow dielectric loss (tan δ) is described. The fine powder of indialite was prepared by the crystallization of cordierite glass at 1000 °C/1 h. The optimized sintering temperature was 900 °C with 10 wt % Bi 2 O 3 addition. The relative density achieved was 97%, and ε r and tan δ were 6.10 and 0.0001 at 1 MHz, respectively. The composition also showed a moderately low temperature coefficient of relative permittivity of 118 ppm/°C at 1 MHz. The obtained linear coefficient of thermal expansion was 3.5 ppm/°C in the measured temperature range of 100 to 600 °C. The decreasing trend in dielectric loss, the low relative permittivity at 1 MHz, and the low thermal expansion of the newly developed composition make it an ideal choice for radio frequency applications."
+   },
+   {
+    "id": "https://openalex.org/W1507521696",
+    "doi": "https://doi.org/10.1002/cta.2122",
+    "title": "A 0.75‐V, 4‐μW, 15‐ppm/°C, 190 °C temperature range, voltage reference",
+    "year": 2015,
+    "cited": 17,
+    "venue": "International Journal of Circuit Theory and Applications",
+    "topics": [
+     "Analog and Mixed-Signal Circuit Design",
+     "Advancements in Semiconductor Devices and Circuit Design",
+     "Low-power high-performance VLSI design"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cta.2122",
+    "abstract": "Summary A low‐voltage, low‐power, low‐area, wide‐temperature‐range CMOS voltage reference is presented. The proposed reference circuit achieves a measured temperature drift of 15 ppm/°C for an extremely wide temperature range of 190 °C (−60 to 130 °C) while consuming only 4 μW at 0.75 V. It performs a high‐order curvature correction of the reference voltage while consisting of only CMOS transistors operating in subthreshold and polysilicon resistors, without utilizing any diodes or external components such as compensating capacitors. A trade‐off of this circuit topology, in its current form, is the high line sensitivity. The design was fabricated using TowerJazz semiconductor's 0.18‐µm standard CMOS technology and occupies an area of 0.039 mm2. The proposed reference circuit is suitable for high‐precision, low‐energy‐budget applications, such as mobile systems, wearable electronics, and energy harvesting systems. Copyright © 2015 John Wiley & Sons, Ltd."
+   },
+   {
+    "id": "https://openalex.org/W2062609206",
+    "doi": "https://doi.org/10.3390/polym7020266",
+    "title": "P(MMA-EMA) Random Copolymer Electrolytes Incorporating Sodium Iodide for Potential Application in a Dye-Sensitized Solar Cell",
+    "year": 2015,
+    "cited": 17,
+    "venue": "Polymers",
+    "topics": [
+     "TiO2 Photocatalysis and Solar Cells",
+     "Advanced Battery Materials and Technologies",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/7/2/266/pdf?version=1423483348",
+    "abstract": "Polymer electrolytes based on 90 wt% of methyl methacrylate and 10 wt% of ethyl methacrylate (90MMA-co-10EMA) incorporating different weight ratios of sodium iodide were prepared using the solution casting method. The complexation between salt and copolymer host has been investigated using Fourier transform infrared spectroscopy. The ionic conductivity and thermal stability of the electrolytes were measured using impedance spectroscopy and differential scanning calorimetry, respectively. Scanning electron microscopy was used to study the morphology of the polymer electrolytes. The ionic conductivity and glass transition temperature increased up to 20 wt% of sodium iodide (5.19 × 10−6 S·cm−1) and decreased with the further addition of salt concentration, because of the crosslinked effect. The morphology behavior of the highest conducting sample also showed smaller pores compared to the other concentration. The total ionic transference number proved that this system was mainly due to ions, and the electrochemical stability window was up to 2.5 V, which is suitable for a dye-sensitized solar cell application. This sample was then tested in a dye-sensitized solar cell and exhibited an efficiency of 0.62%."
+   },
+   {
+    "id": "https://openalex.org/W3173721319",
+    "doi": "https://doi.org/10.1038/s43246-021-00171-w",
+    "title": "The moment of initial crystallization captured on functionalized nanoparticles",
+    "year": 2021,
+    "cited": 15,
+    "venue": "Communications Materials",
+    "topics": [
+     "Methane Hydrates and Related Phenomena",
+     "Spacecraft and Cryogenic Technologies",
+     "Calcium Carbonate Crystallization and Inhibition"
+    ],
+    "oa_url": "https://www.nature.com/articles/s43246-021-00171-w.pdf",
+    "abstract": "Abstract Even if a liquid is cooled below its melting point, the liquid state can be maintained under certain conditions. This state is called supercooling. Spraying fine particles of dry ice or silver iodide induces a phase change from supercooled droplets to ice grains. However, the mechanism by which crystallization seeds diminish supercooling is not well understood. Here, we captured the moment when a cluster, which is the smallest structural unit of a crystal, envelops a silver nanoparticle. As a result of observing the structure of a supercooled aqueous solution of a clathrate hydrate, we found that silver nanoparticles accelerate the formation of clusters, whereas the noble metals palladium, gold and iridium likewise form nanoparticles but do not promote crystallization. Our discoveries elucidate the mechanism of heterogeneous nucleation during a phase change in clathrate hydrates. We anticipate our discovery to be the starting point for the control of supercooling, a technique that can be applied to enhance the production efficiency and quality of manufactured products."
+   },
+   {
+    "id": "https://openalex.org/W2995559525",
+    "doi": "https://doi.org/10.1002/ente.201900998",
+    "title": "Poly(3,4‐Ethylene Dioxythiophene)/Poly(Styrene Sulfonate) Electrodes in Electrochemical Cells for Harvesting Waste Heat",
+    "year": 2019,
+    "cited": 14,
+    "venue": "Energy Technology",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Conducting polymers and applications",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ente.201900998",
+    "abstract": "Low‐grade waste heat is harvested using electrochemical cells. However, the high cost of commonly used platinum electrodes limits their application. Herein, poly(3,4‐ethylene dioxythiophene)/poly(styrene sulfonate) (PEDOT/PSS) films are reported as attractive alternatives to platinum electrodes, as they show a lower charge transfer resistance. Using ferricyanide/ferrocyanide as the electrolyte, the PEDOT/PSS‐based thermoelectrochemical cell with dimensions of 5 cm × 5 cm × 2 cm delivers a maximum power output of 300 μW with 1 Ω loading at a temperature difference of ≈30 K, which is sufficient for driving an array of light‐emitting diodes and Bluetooth humidity/temperature sensors for wireless communication. Furthermore, PEDOT/PSS offers the advantage of compatibility with insoluble redox couples such as Prussian blue analog materials, which facilitates determining the temperature‐dependent redox potential of different materials. The appropriate combination of redox couples enables realizing thermally regenerative electrochemical cells. Power can be generated during an environmental temperature change; however, the temperature difference between different electrodes need not be maintained for these cells."
+   },
+   {
+    "id": "https://openalex.org/W4287329284",
+    "doi": "https://doi.org/10.48550/arxiv.2102.06238",
+    "title": "A High Speed Integrated Quantum Random Number Generator with on-Chip\\n Real-Time Randomness Extraction",
+    "year": 2021,
+    "cited": 12,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Neural Networks and Reservoir Computing",
+     "Quantum Information and Cryptography",
+     "CCD and CMOS Imaging Sensors"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2102.06238",
+    "abstract": "The security of electronic devices has become a key requisite for the\\nrapidly-expanding pervasive and hyper-connected world. Robust security\\nprotocols ensuring secure communication, device's resilience to attacks,\\nauthentication control and users privacy need to be implemented. Random Number\\nGenerators (RNGs) are the fundamental primitive in most secure protocols but,\\noften, also the weakest one. Establishing security in billions of devices\\nrequires high quality random data generated at a sufficiently high throughput.\\nOn the other hand, the RNG should exhibit a high integration level with on-chip\\nextraction to remove, in real time, potential imperfections. We present the\\nfirst integrated Quantum RNG (QRNG) in a standard CMOS technology node. The\\nQRNG is based on a parallel array of independent Single-Photon Avalanche Diodes\\n(SPADs), homogeneously illuminated by a DC-biased LED, and co-integrated logic\\ncircuits for postprocessing. We describe the randomness generation process and\\nwe prove the quantum origin of entropy. We show that co-integration of\\ncombinational logic, even of high complexity, does not affect the quality of\\nrandomness. Our CMOS QRNG can reach up to 400 Mbit/s throughput with low power\\nconsumption. Thanks to the use of standard CMOS technology and a modular\\narchitecture, our QRNG is suitable for a highly scalable solution.\\n"
+   },
+   {
+    "id": "https://openalex.org/W4385720427",
+    "doi": "https://doi.org/10.1021/acsami.3c05567",
+    "title": "Poly(vinylferrocene) as an Ionomer and Sulfur-Confining Additive for Lithium–Sulfur Batteries",
+    "year": 2023,
+    "cited": 11,
+    "venue": "ACS Applied Materials & Interfaces",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2217464",
+    "abstract": "Lithium–sulfur (Li–S) batteries are promising owing to their high energy density, environmental benignity, and low cost. Most of the commonly used binders in Li–S battery cathodes are inert and have no significant effect on the challenges of sulfur as a cathode material, such as the polysulfide shuttle effect, low ionic/electronic conductivity, and a sluggish redox reaction. In this work, we demonstrate the use of poly(vinylferrocene) (PvFc) as a binder additive that can effectively increase the ionic conductivity of the cathode and act as a sulfide-confining agent. Electrochemical tests performed with PvFc as part of the binder mixture used to cast the cathodes demonstrate an increase in rate capability and cycle life when compared to the baseline samples. Ionic conductivity measurements and X-ray photoelectron spectroscopy suggest that the π-cation molecular interaction between the cyclopentadienyl rings from ferrocene and Li + behaves like an ion couple with ferrocene acting as a static, covalently bound acceptor of Li + ions that enhances their mobility through the cathode. This coupled with the affinity between the ferrocenyl cations and the Li salt anions, which provides more distribution of counterions for Li + movement and improves accessibility to the cathode S reservoir, make PvFc a promising ionomer for Li–S batteries. In addition, the π-cation bonds between cyclopentadienyl and lithium polysulfides produce a sulfide-confining effect that mitigates capacity fade through polysulfide dissolution. This work demonstrates an expansion in the utility of PvFc as a component in Li-ion batteries, which so far is mostly limited to use as an active material in organometallic batteries."
+   },
+   {
+    "id": "https://openalex.org/W3094731891",
+    "doi": "https://doi.org/10.5194/essd-12-3481-2020",
+    "title": "Dielectric database of organic Arctic soils (DDOAS)",
+    "year": 2020,
+    "cited": 11,
+    "venue": "Earth system science data",
+    "topics": [
+     "Soil Moisture and Remote Sensing",
+     "Climate change and permafrost",
+     "Soil and Unsaturated Flow"
+    ],
+    "oa_url": "https://essd.copernicus.org/articles/12/3481/2020/essd-12-3481-2020.pdf",
+    "abstract": "Abstract. This article presents a dielectric database of organic Arctic soils (DDOAS). The DDOAS was created based on the dielectric measurements of seven samples of organic-rich soils collected in various parts of the Arctic tundra: Yamal Peninsula, Taimyr Peninsula, Samoylov Island (all in the Russian Federation) and the northern slope of Alaska (US). The organic matter content (by weight) of the presented soil samples varied from 35 % to 90 %. The refractive index (RI) and normalised attenuation coefficient (NAC) were measured under laboratory conditions by the coaxial-waveguide method in the frequency range from ∼ 10 MHz to ∼ 16 GHz, while the moisture content changed from air-dry to field capacity, and the temperature changed from −40 to +25 ∘C. The total number of measured values of the RI and NAC contained in the database is more than 1.5 million. The created database can serve not only as a source of experimental data for the development of new soil dielectric models for the Arctic tundra but also as a source of training data for artificial intelligence satellite algorithms of soil moisture retrievals based on neural networks. The DDOAS is presented as Excel files. The files of the DDOAS are available on https://doi.org/10.5281/zenodo.3819912 (Savin and Mironov, 2020)."
+   },
+   {
+    "id": "https://openalex.org/W4402418184",
+    "doi": "https://doi.org/10.1002/smll.202405007",
+    "title": "Entropy‐Driven 60 mol% Li Electrolyte for Li Metal‐Free Batteries",
+    "year": 2024,
+    "cited": 10,
+    "venue": "Small",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202405007",
+    "abstract": "Abstract Highly Li‐concentrated electrolytes are acknowledged for their compatibility with Li metal negative electrodes and high voltage positive electrodes to achieve high‐energy Li metal batteries, showcasing stable and facile interfaces for Li deposition/dissolution and high anodic stability. This study aims to explore a highly concentrated electrolyte by adopting entropy‐driven chemistry for Li metal‐free (so‐called anode‐free) batteries. The combination of lithium bis(fluorosulfonyl)amide (LiFSA) and lithium trifluoromethanesulfonate (LiOTf) salts in a pyrrolidinium‐based ionic liquid is found to significantly modify the coordination structure, resulting in an unprecedented 60 mol% Li concentration and a low solvent‐to‐salt ratio of 0.67:1 in the electrolyte system. This novel 60 mol% Li electrolyte demonstrates unique coordination stricture, featuring a high ratio of monodentate‐anion structures and aggregates, which facilitates an enhanced Li + transference number and improved anodic stability. Moreover, the developed electrolyte provides a facile de‐coordination process and leads to the formation of an anion‐based solid electrolyte interface, which enables stable Li deposition/dissolution properties and demonstrates excellent cycling stability in the Li metal‐free full cell with a Li[Ni 0.8 Co 0.1 Mn 0.1 ]O 2 (NCM811) positive electrode."
+   },
+   {
+    "id": "https://openalex.org/W3169342181",
+    "doi": "https://doi.org/10.1016/j.jmat.2021.06.004",
+    "title": "Evolution of domain structure in 0.96(K0.48Na0.52)(Nb0.96Sb0.04)O30.04(Bi0.50Na0.50)ZrO3 ceramics with poling and temperature",
+    "year": 2021,
+    "cited": 10,
+    "venue": "Journal of Materiomics",
+    "topics": [
+     "Ferroelectric and Piezoelectric Materials",
+     "Acoustic Wave Resonator Technologies",
+     "Microwave Dielectric Ceramics Synthesis"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2352847821001040/pdf",
+    "abstract": "Domain structure often has significant influences on both piezoelectric properties and piezoelectric temperature stability of a ferroelectric ceramic. In-depth studies on the characters of domain structure should be helpful for the better understanding of piezoelectric performance. In this work, the evolution of domain structure in large-d33 0.96(K0.48Na0.52)(Nb0.96Sb0.04)O3−0.04(Bi0.50Na0.50)ZrO3 ceramics with poling and temperature was systematically investigated via comparing the various domain patterns that are obtained by acid-etching. It was found that domain structure changes greatly upon poling and varies largely with temperature. Complex domain patterns consisting of long narrow parallel stripes or herringbone structure separated by 180°-domain boundaries are observed in the unpoled ceramics at room temperature. Domain patterns become less complicated upon poling, due to the collective polarization reversals of parallel-stripe domain clusters and banded fine-stripe domain segments. Parallel stripes and herringbone bands become much wider upon poling, as some narrow stripes and herringbone bands coalesce into broad ones, respectively. Hierarchical domain structure is commonly seen in the domain patterns acid-etched at room temperature, but is less frequently recognized at elevated temperatures. Schematic models of domain configurations were proposed to explain the domain structure and its evolution with poling."
+   },
+   {
+    "id": "https://openalex.org/W4411420863",
+    "doi": "https://doi.org/10.1039/d5ta02665b",
+    "title": "A single-ion-conducting polymer and high-entropy Li-garnet composite electrolyte with simultaneous enhancement in ion transport and mechanical properties",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Journal of Materials Chemistry A",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ta/d5ta02665b",
+    "abstract": "A schematic comparison between a single-ion-conducting polymer and its composite incorporating high-entropy Li-garnet, illustrating simultaneous enhancement in mechanical modulus and ion transport."
+   },
+   {
+    "id": "https://openalex.org/W4393049239",
+    "doi": "https://doi.org/10.1002/batt.202400023",
+    "title": "Origin of Performance Improvements in Lithium‐Ion Cells after Fast Formation",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Batteries & Supercaps",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202400023",
+    "abstract": "Abstract The formation process of lithium‐ion batteries commonly uses low current densities, which is time‐consuming and costly. Experimental studies have already shown that slow formation may neither be necessary nor beneficial for cell lifetime and performance. This work combines an experimental formation variation with physicochemical cell and solid electrolyte interphase (SEI) modeling to reveal formation‐induced changes within the cells. Formation at C/2 without full discharge compared to a standard C/10 formation at 20 °C notably improves the discharge and charge capacities at 2C by up to 41 % and 63 %, respectively, while reducing the formation time by over 80 %. Model‐based cell diagnostics reveal that these performance gains are driven by improved transport in the anode electrolyte phase, which is affected by SEI formation, and by enhanced transport on the cathode side. Hence, the focus on the dense SEI layer is insufficient for a comprehensive understanding and, ultimately, optimization of cell formation. All formation procedures were also tested at temperatures of 35 °C and 50 °C. Despite often surpassing the 2C discharge capacity of the standard formation at 20 °C, these cells showed comparable or lower 2C charge capacities. This suggests a pivotal role of local temperature in the formation of large‐format cells."
+   },
+   {
+    "id": "https://openalex.org/W3036085426",
+    "doi": "https://doi.org/10.5796/electrochemistry.20-00062",
+    "title": "Fluoride Ion Conductive Polymer Electrolytes for All-solid-state Fluoride Shuttle Batteries",
+    "year": 2020,
+    "cited": 9,
+    "venue": "Electrochemistry",
+    "topics": [
+     "Inorganic Fluorides and Related Compounds",
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/electrochemistry/88/4/88_20-00062/_pdf",
+    "abstract": "To control the fluoride dissociation and conduction of polyether-based solid polymer electrolytes, an electrolyte system composed of a host polymer, metal salt, and anion acceptor was proposed. Appropriate choices of metal salt with low lattice enthalpy and anion acceptor concentration were important to obtain polymer electrolytes with high fluoride conductivity. The results of thermal and electrochemical measurements revealed that the optimal electrolyte system displayed a relatively high fluoride conductivity of ca. 1 × 10−6 S cm−1 at 303 K and fluoride transference number of over 0.8 (80%)."
+   },
+   {
+    "id": "https://openalex.org/W4399799835",
+    "doi": "https://doi.org/10.1016/j.est.2024.112581",
+    "title": "A comprehensive approach to sparse identification of linear parameter-varying models for lithium-ion batteries using improved experimental design",
+    "year": 2024,
+    "cited": 8,
+    "venue": "Journal of Energy Storage",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Control Systems and Identification",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.est.2024.112581",
+    "abstract": "This paper proposes a comprehensive approach to the identification of battery models in the linear parameter-varying (LPV) framework inspired by the equivalent-circuit model structures. The proposed LPV model structure is formulated using the input–output representation, wherein the model parameters are considered to depend on the state-of-charge, the current magnitude, and the current direction. The aforementioned dependence is explained using a suitable set of basis functions motivated with appropriate physical insight. Furthermore, the optimal experimental design problem is discussed to propose an improved input design for the model identification procedure. Subsequently, the Least Absolute Shrinkage and Selection Operator (LASSO) along with the ridge regression are employed for the selection of significant model terms and parameter estimation to yield a sparse model with adequate simulation capabilities. Finally, several battery models with varying model order and basis-function complexity are identified, which are subsequently validated and compared using a real drive-cycle dataset. The corresponding voltage simulation results yield the root-mean-squared error (RMSE) value for the best-performing model to be around 24.5 mV when a 1 A h NMC battery gets discharged with the lower voltage cutoff as low as 2.5 V. • Battery overpotential models are identified in linear parameter-varying (LPV) framework. • Appropriate physical insight is provided for basis-function expansion of model parameters. • An informative current-profile design has been proposed for model identification. • LASSO and ridge regression are used to perform variable selection and parameter estimation."
+   },
+   {
+    "id": "https://openalex.org/W4382762604",
+    "doi": "https://doi.org/10.3390/s23104696",
+    "title": "Environmental Robustness and Resilience of Direct-Write Ultrasonic Transducers Made from P(VDF-TrFE) Piezoelectric Coating",
+    "year": 2023,
+    "cited": 8,
+    "venue": "Sensors",
+    "topics": [
+     "Ultrasonics and Acoustic Wave Propagation",
+     "Smart Materials for Construction",
+     "Acoustic Wave Resonator Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/23/10/4696/pdf?version=1683883485",
+    "abstract": "Conformability, lightweight, consistency and low cost due to batch fabrication in situ on host structures are the attractive advantages of ultrasonic transducers made of piezoelectric polymer coatings for structural health monitoring (SHM). However, knowledge about the environmental impacts of piezoelectric polymer ultrasonic transducers is lacking, limiting their widespread use for SHM in industries. The purpose of this work is to evaluate whether direct-write transducers (DWTs) fabricated from piezoelectric polymer coatings can withstand various natural environmental impacts. The ultrasonic signals of the DWTs and properties of the piezoelectric polymer coatings fabricated in situ on the test coupons were evaluated during and after exposure to various environmental conditions, including high and low temperatures, icing, rain, humidity, and the salt fog test. Our experimental results and analyses showed that it is promising for the DWTs made of piezoelectric P(VDF-TrFE) polymer coating with an appropriate protective layer to pass various operational conditions according to US standards."
+   },
+   {
+    "id": "https://openalex.org/W3162285633",
+    "doi": "https://doi.org/10.1149/1945-7111/ac030c",
+    "title": "Analysis of Ionic Transport and Electrode Interfacial Reaction, and NMR One-Dimensional Imaging of Ether-Based Polymer Electrolytes",
+    "year": 2021,
+    "cited": 8,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/ac030c/pdf",
+    "abstract": "Polyether-based polymer electrolytes containing an M x [N(SO2CF3)2] salt (x = 1 for Li and Na, 0.5 for Mg and Ca) were investigated for their thermal stabilities and ionic conductivities, owing to their high electrochemical stability and interfacial compatibility at electrodes as the electrolyte layer of all-solid-state batteries. The properties of an electrolyte / Na metal electrode interface were also explored. The thermal stability and ionic conductivity exhibited a strong correlation with the Coulombic interaction energy originating from cationic-radii and charge density derived from the cation’s valance number. The ionic conductivity of random copolymers of poly(ethyleneoxide) and poly(propyleneoxide) (P(EO/PO)) electrolytes increased slightly with decreasing cationic radii and decreased appreciably with valence number. In the [metallic electrode ∣ polymer electrolyte ∣ metallic electrode] cells, the interfacial resistances and their apparent activation energies at the polymer electrolyte / metallic electrode interfaces tended to be higher for the Na systems than for the Li systems. The calculated Na+ transport number exhibited a local maximum value when [Na]/[O] ∼0.04. To further evaluate the diffusive properties of active ions, nuclear magnetic resonance one-dimensional imaging was performed. The self-diffusion coefficient of TFSA was confirmed to correspond to the valence number of cation in the P(EO/PO)-M x [N(SO2CF3)2] electrolytes."
+   },
+   {
+    "id": "https://openalex.org/W3108378886",
+    "doi": "https://doi.org/10.1149/1945-7111/abcd49",
+    "title": "Dynamic Characteristic Analysis and Visualization of Current–Voltage Distribution in Pores of Lithium-Ion Battery",
+    "year": 2020,
+    "cited": 8,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/abcd49/pdf",
+    "abstract": "Further improvement of the control technology of lithium-ion batteries (LIBs) under system environments is considered necessary, but the dynamic characteristics have not been sufficiently studied to date. The authors have developed a porous electrode analysis technology that incorporates an electrical engineering method that is the basis of the system technology into the electrochemical technique. A method for optimizing the distributed constant type circuit model of the porous electrode is first constructed based on electrochemical impedance of electrodes, and the structure of the pores. Based on these results, a algorithm is then constructed to realize the dynamic characteristic analysis of the porous electrode. The structure of the porous electrode provides the reaction field, and the current/voltage values and the reaction rate are estimated by calculating the distributed constant type circuit representing the porous structure. These calculations are coupled with the Butler–Volmer equation and diffusion equations on a circuit simulator; as a result, a technique for analyzing the changes of resistance, current, and voltage in each part of the pore is established. It is considered that this technology can be applied to various applications as a basic technique for easily visualizing the current–voltage distribution in a porous electrode."
+   },
+   {
+    "id": "https://openalex.org/W3096994925",
+    "doi": "https://doi.org/10.1038/s41598-020-75593-6",
+    "title": "Study of domain configurations in (Bi,Na)ZrO3-modified (K,Na)(Nb,Sb)O3 piezoelectric ceramics by acid-etching at different temperatures",
+    "year": 2020,
+    "cited": 8,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Ferroelectric and Piezoelectric Materials",
+     "Acoustic Wave Resonator Technologies",
+     "Microwave Dielectric Ceramics Synthesis"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-75593-6.pdf",
+    "abstract": "Abstract Domain structure often greatly affects piezoelectric performance of a ferroelectric ceramic. Accordingly, a convenient method that can well characterize the domain structure at various temperatures is highly desired for understanding the underlying mechanism. An improved acid-etching technique was recently developed for such purpose. Domain structure of poled 0.96(K0.48Na0.52)(Nb0.96Sb0.04)O3–0.04(Bi0.50Na0.50)ZrO3 ceramics with a large piezoelectric coefficient d33 of 535 pC/N was systematically investigated at three typical temperatures. It was found that domain configurations change significantly with temperature. Hierarchical nanodomain structure is widely observed in domain patterns acid-etched at 25 °C, due to the orthorhombic-tetragonal phase coexistence. By contrast, the majority part of those acid-etched at − 60 °C are simply some long parallel stripes, while a small amount of banded structure appears in broad stripes inside some grains. A nearly 63° intersectional angle is seen between two adjacent sets of parallel stripes in the domain pattern of a cuboid-shaped grain, indicating that orthorhombic phase remains down to − 60 °C. The domain patterns acid-etched at 80 °C become even simpler, mainly consisting of long parallel stripes that are several hundred nanometers wide and have quite straight edges. Fundamental issues associating with the possible domain configurations and the acid-etching were discussed on the simple mathematical basis."
+   },
+   {
+    "id": "https://openalex.org/W3092134549",
+    "doi": "https://doi.org/10.5796/electrochemistry.20-00107",
+    "title": "Spinel-Type Metal Oxide Nanoparticles Supported on Platelet-Type Carbon Nanofibers as a Bifunctional Catalyst for Oxygen Evolution Reaction and Oxygen Reduction Reaction",
+    "year": 2020,
+    "cited": 8,
+    "venue": "Electrochemistry",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Fuel Cells and Related Materials"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/electrochemistry/88/6/88_20-00107/_pdf",
+    "abstract": "Development of highly active bifunctional electrocatalysts for oxygen evolution reaction (OER) and oxygen reduction reaction (ORR) is required for air electrodes of zinc-air secondary batteries (ZAB). In this study, we synthesize spinel-type MnCo2O4 (MCO) nanoparticles on highly graphitized platelet-type carbon nanofibers (pCNF) via a solvothermal method. The pCNF is selected as carbon support in this study because of the excellent stability against anodic degradation under the OER condition. The MCO nanoparticles of 2–5 nm in diameter are uniformly dispersed on pCNF and the catalyst exhibits high activities for ORR due to strong interaction pCNF and MCO, in addition to the improvement of OER activities. The MCO/carbon hybrids show comparable electrocatalytic performances to state-of-the-art bifunctional electrodes for OER and ORR."
+   },
+   {
+    "id": "https://openalex.org/W2037697582",
+    "doi": "https://doi.org/10.1109/prdc.2014.16",
+    "title": "Reduction of NBTI-Induced Degradation on Ring Oscillators in FPGA",
+    "year": 2014,
+    "cited": 8,
+    "venue": null,
+    "topics": [
+     "Semiconductor materials and devices",
+     "Advancements in Semiconductor Devices and Circuit Design",
+     "VLSI and Analog Circuit Testing"
+    ],
+    "oa_url": "https://kyutech.repo.nii.ac.jp/records/5049",
+    "abstract": "Ring Oscillators are used for variety of purposes to enhance reliability on LSIs or FPGAs. This paper introduces an aging-tolerant design structure of ring oscillators that are used in FPGAs. The structure is able to reduce NBTI-induced degradation in a ring oscillator's frequency by setting PMOS transistors of look-up tables in an off-state when the oscillator is not working. The evaluation of a variety of ring oscillators using Altera Cyclone IV device (60nm technology) shows that the proposed structure is capable of controlling degradation level as well as reducing more than 37% performance degradation compared to the conventional oscillators."
+   },
+   {
+    "id": "https://openalex.org/W2031705000",
+    "doi": "https://doi.org/10.1143/jjap.47.550",
+    "title": "Synthesis and Characterization of Temperature Sensitive Li–Zn–Cu Ferrite",
+    "year": 2008,
+    "cited": 7,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Magnetic Properties and Synthesis of Ferrites",
+     "Electromagnetic wave absorption materials",
+     "Magneto-Optical Properties and Applications"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1143/JJAP.47.550/pdf",
+    "abstract": "The authors have fabricated the polycrystalline Li–Zn–Cu ferrite as a new temperature sensitive ferrite. The Li–Zn–Cu ferrite had high-frequency permeability profile and high electrical resistivity as well as the Ni–Zn–Cu ferrite for multilayered surface-mounting device such as a high-frequency chip inductor and filter. Since the new Li–Zn–Cu ferrite had both excellent high-frequency magnetic property and temperature sensitivity, it will be suitable for miniaturization of high-frequency inductive temperature sensing device. In this study, the relationship between grain size and the temperature-dependent magnetic properties of polycrystalline Li–Zn–Cu ferrite has been investigated. Three kinds of the Li–Zn–Cu ferrites sintered with Bi 2 O 3 at different temperature were synthesized, and their temperature characteristics were evaluated. The most important result obtained is as follows: as the sintering temperature rose the coarse grain increased without changing bulk density, the permeability and its temperature dependence can be enhanced by grain growth due to higher sintering temperature. Therefore, the temperature dependent permeability of the Li–Zn–Cu ferrite can be controlled by grain size only without a change of the chemical composition."
+   },
+   {
+    "id": "https://openalex.org/W4415955904",
+    "doi": "https://doi.org/10.54536/ajise.v4i3.5836",
+    "title": "Blockchain-Enabled Nanocatalyst Monitoring System for Real-Time Dye Degradation in Industrial Wastewater",
+    "year": 2025,
+    "cited": 6,
+    "venue": "American Journal of Innovation in Science and Engineering",
+    "topics": [
+     "Water Quality Monitoring and Analysis",
+     "Water Quality Monitoring Technologies",
+     "Advanced Technologies and Applied Computing"
+    ],
+    "oa_url": "https://journals.e-palli.com/home/index.php/ajise/article/download/5836/2796",
+    "abstract": "The environmental and regulatory problems caused by industrial wastewater containing synthetic dyes such as methylene blue become more complex because these substances remain toxic and persistent while showing resistance to standard biological treatment methods. The research describes the creation of a blockchain-enabled nanocatalyst tracking system that detects and verifies dye pollutants in water streams through real-time monitoring. The system uses semiconductor nanocatalysts with advanced oxidation processes to break down, and uses microcontrollers to process data signals before blockchain protocols store performance metrics, which maintain transparency and immutability, and meet worldwide environmental reporting requirements. The system included a miniaturized reactor chamber with automated fluid management pollutants efficiently while optical and electrochemical sensors track concentration changes and monitor pH and temperature levels. The system and wireless blockchain connectivity in its compact design. The system achieved 85% methylene blue degradation in controlled tests while sensor data showed pseudo-first-order kinetics and maintained high calibration stability. The system performed well in power efficiency tests while showing fast blockchain transaction speeds and it maintained stability through different operational settings. The cost evaluation showed that the system operates within budget while environmental studies demonstrated better carbon emission performance than traditional monitoring systems. The proposed framework combines nanocatalytic water treatment with blockchain-based data tracking to create a sustainable wastewater management system which works for municipal treatment facilities and industrial sites and decentralized monitoring systems. The integration of environmental nanotechnology with digital compliance systems through this innovation enables the development of self-regulating water treatment systems for the next generation."
+   },
+   {
+    "id": "https://openalex.org/W4411141078",
+    "doi": "https://doi.org/10.1021/jacs.5c00856",
+    "title": "Exploration of Lithium-Ion Conductors Based on Local Coordination Environments Using Crystallographic Site Fingerprints",
+    "year": 2025,
+    "cited": 6,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Machine Learning in Materials Science"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/jacs.5c00856?ref=article_openPDF",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide The development of high-performance solid-state electrolytes for Li-ion batteries represents a critical challenge because many potential Li-containing compounds remain unexplored. In order to overcome this challenge, in this study, we utilized a semisupervised learning approach to streamline the discovery of novel Li-ion conductors by focusing on local coordination environments. Herein, we introduced four structure-representation descriptors to represent local coordination and applied agglomerative clustering to a data set of 3,835 Li-containing structures. The clusters were subsequently labeled with available experimentally determined ionic conductivity values to assess the efficacy of these descriptors in identifying promising conductors. After screening the obtained high-conductivity clusters and their neighboring structures, we shortlisted 147 compounds, which were further evaluated by molecular dynamics simulations to identify Li 3 LaP 2 S 8 as a potential candidate. Li 3 LaP 2 S 8 experimentally displayed low conductivity; however, optimizing the lithium content yielded Li 3.1 La 0.9 Sr 0.1 P 2 S 8, which showed a conductivity of 2.1 × 10 –6 S cm –1 at 298 K. To the best of our knowledge, this is the first reported investigation of Li 3 LaP 2 S 8 as a solid-state electrolyte and highlights the power of semisupervised learning in accelerating the discovery of advanced materials. Our findings provide a valuable methodology for developing next-generation solid-state battery technologies."
+   },
+   {
+    "id": "https://openalex.org/W4385782816",
+    "doi": "https://doi.org/10.1049/ell2.12917",
+    "title": "DNN‐based temperature prediction of large‐scale battery pack",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Electronics Letters",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/ell2.12917",
+    "abstract": "Abstract Temperature monitoring is critical for estimating the available capacity of Lithium‐ion batteries. In electric vehicle applications using large‐scale battery packs, monitoring individual cell temperature is challenging due to difficulties in sensor management. To address this issue, a sensor‐less battery temperature prediction technique is proposed that ensures both accuracy and rapid runtime execution using deep learning. A deep neural network‐based temperature prediction model is introduced that utilizes short sequences of battery voltage and discharge current. An adaptive sequence length strategy is then devised to ensure high accuracy and responsiveness, covering the non‐identically distributed nature of the data. The proposed technique is experimentally validated with commercial batteries, verifying its accuracy and rapid execution."
+   },
+   {
+    "id": "https://openalex.org/W3214937537",
+    "doi": "https://doi.org/10.1039/d1na00739d",
+    "title": "Single-walled carbon nanotubes as a reducing agent for the synthesis of a Prussian blue-based composite: a quartz crystal microbalance study",
+    "year": 2021,
+    "cited": 6,
+    "venue": "Nanoscale Advances",
+    "topics": [
+     "Gas Sensing Nanomaterials and Sensors",
+     "Conducting polymers and applications",
+     "Acoustic Wave Resonator Technologies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2021/na/d1na00739d",
+    "abstract": "We investigated the synthesis mechanism of Prussian blue on single-walled carbon nanotubes, by performing in situ quartz crystal microbalance measurements and intermittent photoirradiation to probe the electrode mass change during the process."
+   },
+   {
+    "id": "https://openalex.org/W3139164749",
+    "doi": "https://doi.org/10.3389/fenrg.2021.640777",
+    "title": "Room-Temperature Mg-Ion Conduction Through Molecular Crystal Mg{N(SO2CF3)2}2(CH3OC5H9)2",
+    "year": 2021,
+    "cited": 6,
+    "venue": "Frontiers in Energy Research",
+    "topics": [
+     "Inorganic Fluorides and Related Compounds",
+     "Advanced Battery Materials and Technologies",
+     "Inorganic Chemistry and Materials"
+    ],
+    "oa_url": "https://www.frontiersin.org/articles/10.3389/fenrg.2021.640777/pdf",
+    "abstract": "Molecular crystals have attracted increasing attention as a candidate for innovative solid electrolytes with solid-state Mg-ion conductivity. In this work, we synthesized a novel Mg-ion-conducting molecular crystal, Mg{N(SO2CF3)2}2(CH3OC5H9)2 (Mg(TFSA)2(CPME)2), composed of Mg bis(trifluoromethanesulfonyl)amide (Mg(TFSA)2) and cyclopentyl methyl ether (CPME) and elucidated its crystal structure. We found that the obtained Mg(TFSA)2(CPME)2 exhibits solid-state ionic conductivity at room temperature and a high Mg-ion transference number of 0.74. Contrastingly, most Mg-conductive inorganic solid electrolytes require heating above 150–300°C to exhibit ionic conductivity. These results further prove the suitability of molecular crystals as candidates for Mg-ion-conducting solid electrolytes."
+   },
+   {
+    "id": "https://openalex.org/W1804489146",
+    "doi": "https://doi.org/10.1016/j.fluid.2015.10.015",
+    "title": "Phase behavior of ethane hydrate system in the presence of ammonium bromide",
+    "year": 2015,
+    "cited": 6,
+    "venue": "Fluid Phase Equilibria",
+    "topics": [
+     "Methane Hydrates and Related Phenomena",
+     "Astro and Planetary Science",
+     "Hydrocarbon exploration and reservoir analysis"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0378381215301771",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2982410530",
+    "doi": "https://doi.org/10.3390/cryst9110567",
+    "title": "Synthesis of an Adduct-Type Organic Ionic Crystal with Solid-State Ionic Conductivity from A Thiocyanate-Based Ionic Liquid and B(C6F5)3",
+    "year": 2019,
+    "cited": 5,
+    "venue": "Crystals",
+    "topics": [
+     "Organoboron and organosilicon chemistry",
+     "Synthesis and characterization of novel inorganic/organometallic compounds",
+     "Ionic liquids properties and applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4352/9/11/567/pdf?version=1573637663",
+    "abstract": "We synthesized the novel adduct-type organic ionic crystal [C3mim][SCN·B(C6F5)3] (1) by the reaction of 1–methyl–3–propylimidazolium thiocyanate ([C3mim][SCN]), which is a room temperature ionic liquid, and B(C6F5)3, a bulky Lewis acid. The formation of a coordinative B–N bond between the SCN anion and the B(C6F5)3 in 1 was revealed by single-crystal X-ray diffractometry. We showed that 1 displays ionic conductivity in the crystalline state and that doping 1 with sodium thiocyanate and B(C6F5)3 results in a dramatic increase in ionic conductivity compared to that of 1."
+   },
+   {
+    "id": "https://openalex.org/W2999843096",
+    "doi": "https://doi.org/10.17308/kcmf.2019.21/2359",
+    "title": "О физико-химических превращениях с участием воды вблизи температуры –45 °C",
+    "year": 2019,
+    "cited": 4,
+    "venue": "Конденсированные среды и межфазные границы",
+    "topics": [
+     "Atmospheric Ozone and Climate",
+     "Molecular Spectroscopy and Structure",
+     "Advanced NMR Techniques and Applications"
+    ],
+    "oa_url": "https://journals.vsu.ru/kcmf/article/download/2359/2388",
+    "abstract": "Представлена гипотеза о новом механизме ускорения химических реакцийс участием переохлажденной воды вблизи –45 °C. Гипотеза основана на свойствах второйкритической точки воды. Предполагается, что возрастание флуктуации энергии молекулводы приводит к ускорению протекания химических превращений. В эксперименте сиспользованием нанопористых увлажненных силикатных сорбентов удалось наблюдатьреакцию взаимодействия водорода с поверхностью пор при –45 °C. Химические реакциис участием воды по предполагаемому механизму могут ускоренно протекать на линииВидома при температурах от –45 °C до –53 °C и в области давлений от 0 до 100 MPa. ЛИТЕРАТУРА1. Palmer M. Y., Cordiner M. A., Nixon C. A., Charnley S. B., Teanby N. A., Kisiel, Z., Irwin P. G. J., MummaM. J. ALMA detection and astrobiological potential of vinyl cyanide on Titan // Science Advances, 2017,v. 3(7), p. e1700022/6. DOI: https://doi.org/10.1126/sciadv.17000222. Goesmann F., Rosenbauer H., Bredehöft J. H., Cabane M., Ehrenfreund P., Gautier T., Giri C.,Kröger H., Le Roy L., MacDermott A.J., McKenna-Lawlor S., Meierhenrich U.J., Caro G.M.M., Raulin F.,Roll R., Steele A., Steininger H., Sternberg R., Szopa C., Thiemann W., Ulamec S. Organic compounds on comet67P/Churyumov–Gerasimenko revealed by COSAC mass spectrometry // Science, 2015, v. 349(6247),p. aab0689-1/3. DOI: https://doi.org/10.1126/science.aab06893. Mumma M. J., Villanueva G. L., Novak R. E., Hewagama T., Bonev B. P., DiSanti M. A., Mandell A. M.,Smith M. D. Strong release of methane on Mars in northern summer 2003 // Science, 2009, v. 323(5917),pp. 1041–1045. DOI: https://doi.org/10.1126/science.1165243.4. Кораблев О. И. Исследования атмосфер планет земной группы // Успехи физических наук, 2005,т. 175(6), с. 655-664.5. Сергеев Г. Б., Батюк В. А. Криохимия. М.: Химия, 1978, 296 с.6. Шавлов А. В., Писарев А. Д., Рябцева А. А. Динамика электропроводности пленок металловво льду при его структурном превращении. Рекомбинационно-фононный механизм ускорения коррозии // Криосфера Земли, 2006, т. 10(3), с. 42–48.7. Шавлов А. В., Писарев А. Д., Рябцева А. А. Коррозия пленок металлов во льду. Динамикаэлектропроводности пленок // Журнал физической химии, 2007, т. 81(7), с. 1180–1185.8. Великоцкий М. А. Коррозионная активность грунтов в различных природных зонах // ВестникМосковского университета. Серия 5: География, 2010(1), с. 21–27.9. Лотник С. В., Казаков В. П. Низкотемпературная хемилюминесценция. М.: Наука, 1987, 176 с.10. Шабатина Т. И., Сергеев Г. Б. Реакции при низких температурах в химии наносистем // Успе-хи химии, 2003, т. 72(7), с. 643–663.11. Chaplin M. Water Structure and Science. Режим доступа: http://www.lsbu.ac.uk/water/chaplin.html(дата обращения: 23.09.2019)12. Rosenfeld D., Woodley W. L. Deep convective clouds with sustained supercooled liquid water downto - 37.5 °C // Nature, 2000, v. 405(6785), pp. 440–442. DOI: https://doi.org/10.1038/3501303013. Бордонский Г. С., Орлов А. О. Признаки возникновения льда “0” в увлажненных нанопор"
+   },
+   {
+    "id": "https://openalex.org/W4400106729",
+    "doi": "https://doi.org/10.1149/1945-7111/ad5d21",
+    "title": "Investigations into the Dynamic Acoustic Response of Lithium-Ion Batteries During Lifetime Testing",
+    "year": 2024,
+    "cited": 3,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Fault Detection and Control Systems",
+     "IoT-based Smart Home Systems"
+    ],
+    "oa_url": "https://doi.org/10.1149/1945-7111/ad5d21",
+    "abstract": "Techniques using acoustic waves to interrogate batteries are increasingly investigated in the literature due to the appeal of three main properties: they are non-destructive, relatively low cost and have acquisition rates enabling operando testing. Popular demonstrations attempt to extract degradation markers from acoustic data, by continuous monitoring, and to attribute them to degradation modes. This is founded on the premise that the speed of sound depends on mechanical properties, such as the density and stiffness. Nevertheless, additional sensitivities of an acoustic time-of-flight analysis are often neglected, leading to incomplete experiments that can overstate the capabilities of the technique. In this work, such sensitivities are quantified and the use of pulse tests instead of CCCV protocols is recommended to elucidate the concurrent dynamic evolution of temperature, voltage and acoustic signals. A degradation experiment is performed, with pulse sequences incorporated in periodic reference performance tests. Dynamic parameters are extracted from each pulse; specifically, the dynamic rise of the time-of-flight (ΔToFrise) and temperature (ΔTemprise) signals. Their evolution with degradation is traced and a statistical comparison of the main effects is performed. It is concluded that markers of degradation in the dynamic acoustic response are very subtle, masked by the effects of temperature."
+   },
+   {
+    "id": "https://openalex.org/W4323059404",
+    "doi": "https://doi.org/10.5796/electrochemistry.23-00020",
+    "title": "Lithium Ion Conductivities of Solid Electrolytes Prepared by Low-temperature Heat Treatment of Amorphous Materials in the Li2O-Al2O3-GeO2-P2O5 System for All-solid-state Batteries",
+    "year": 2023,
+    "cited": 3,
+    "venue": "Electrochemistry",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/electrochemistry/91/3/91_23-00020/_pdf",
+    "abstract": "Amorphous materials (a-LAGP(x = 0.5)) with the composition of Li1.5Al0.5Ge1.5(PO4)3 were prepared by mechanochemical synthesis method. Crystalline compounds with LiGe2(PO4)3-based NASICON-type structure were formed by heat treatment of a-LAGP(x = 0.5) at 400–700 °C in air. Solid electrolytes prepared by the heat treatment of pelletized-type a-LAGP(x = 0.5) and MgO-modified a-LAGP(x = 0.5) at 700 °C exhibited the lithium ion conductivities on the order of 10−5–10−4 S cm−1 at room temperature. The addition of MgO into a-LAGP(x = 0.5) increased the electrical conductivity. Lithium ion conductors prepared by low-temperature heat treatment of pelletized-type amorphous materials in the Li2O-Al2O3-GeO2-P2O5 system would be promising as solid electrolytes for all-solid-state batteries."
+   },
+   {
+    "id": "https://openalex.org/W4389691215",
+    "doi": "https://doi.org/10.15826/urej.2023.7.1.003",
+    "title": "Analysis of Electrical Parameters of Liquids in a Coaxial Cell at Varying Temperatures",
+    "year": 2023,
+    "cited": 3,
+    "venue": "Ural Radio Engineering Journal",
+    "topics": [
+     "Microwave and Dielectric Measurement Techniques"
+    ],
+    "oa_url": "https://doi.org/10.15826/urej.2023.7.1.003",
+    "abstract": "Determination of the electrophysical properties of materials is relevant to many areas of human activity. Methods, approaches and devices are improving, the use of which makes it possible to estimate the electrophysical properties of liquids depending on different parameters. This work presents the analysis of the electrical parameters of liquids with different chemical composition in a coaxial cell in a wide frequency range when the temperature changes. The analysis is based on the S-parameters of liquids measured with a vector circuit analyzer in the frequency range up to 12 GHz, placed inside the coaxial cell, which temperature is set by the heat-cold chamber in the range from 0 to 50 °C. The changes in frequency dependences of liquids S-parameters detected using the above approach indicate their characteristic features occurring at certain frequencies. To investigate the influence of liquids temperature on changes in their electrophysical parameters, we have applied the method of principal components. This method has revealed the relationship between chemical composition of liquids and their representation in the space of principal components."
+   },
+   {
+    "id": "https://openalex.org/W2976709130",
+    "doi": "https://doi.org/10.3390/s19194149",
+    "title": "A Regulated Temperature-Insensitive High-Voltage Charge Pump in Standard CMOS Process for Micromachined Gyroscopes",
+    "year": 2019,
+    "cited": 3,
+    "venue": "Sensors",
+    "topics": [
+     "Advanced MEMS and NEMS Technologies",
+     "Mechanical and Optical Resonators",
+     "Innovative Energy Harvesting Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/19/19/4149/pdf?version=1569393409",
+    "abstract": "Micromachined gyroscopes require high voltage (HV) for actuation and detection to improve its precision, but the deviation of the HV caused by temperature fluctuations will degrade the sensor's performance. In this paper, a high-voltage temperature-insensitive charge pump is proposed. Without adopting BCD (bipolar-CMOS-DMOS) technology, the output voltage can be boosted over the breakdown voltage of n-well/substrate diode using triple-well NMOS (n-type metal-oxide-semiconductor) transistors. By controlling the pumping clock's amplitude continuously, closed-loop regulation is realized to reduce the output voltage's sensitivity to temperature changes. Besides, the output level is programmable linearly in a large range by changing the reference voltage. The whole circuit has been fabricated in a 0.18- μ m standard CMOS (complementary metal-oxide-semiconductor) process with a total area of 2.53 mm 2 . Measurements indicate that its output voltage has a linear adjustable range from around 13 V to 16.95 V, and temperature tests show that the maximum variations of the output voltage at - 40 ∼ 80 ∘ C are less than 1.1%."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"ESPEC SU SH\" OR \"ESPEC SU\") AND OPEN_ACCESS:y",
+  "count": 15,
+  "papers": [
+   {
+    "pmcid": "PMC9271152",
+    "doi": "10.1007/s40820-022-00886-6",
+    "title": "Microstructure Design of High-Entropy Alloys Through a Multistage Mechanical Alloying Strategy for Temperature-Stable Megahertz Electromagnetic Absorption.",
+    "journal": "Nanomicro Lett",
+    "year": "2022",
+    "cited": 15,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10018505",
+    "doi": "10.1021/acsomega.2c02174",
+    "title": "Succinonitrile-Polymer Composite Electrolytes for Li-Ion Solid-State Batteries-The Influence of Polymer Additives on Thermomechanical and Electrochemical Properties.",
+    "journal": "ACS Omega",
+    "year": "2023",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11850694",
+    "doi": "10.1007/s40820-024-01638-4",
+    "title": "Modulating Electromagnetic Genes Through Bi-Phase High-Entropy Engineering Toward Temperature-Stable Ultra-Broadband Megahertz Electromagnetic Wave Absorption.",
+    "journal": "Nanomicro Lett",
+    "year": "2025",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6648015",
+    "doi": "10.1021/acsomega.8b03129",
+    "title": "Electrochemical Reactions of Iodine Molecules Encapsulated in Single-Walled Carbon Nanotubes.",
+    "journal": "ACS Omega",
+    "year": "2019",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12006438",
+    "doi": "10.1038/s41467-025-58522-x",
+    "title": "Harnessing database-supported high-throughput screening for the design of stable interlayers in halide-based all-solid-state batteries.",
+    "journal": "Nat Commun",
+    "year": "2025",
+    "cited": 4,
+    "snippets": 2,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6613049",
+    "doi": "10.1021/acsami.9b07272",
+    "title": "Ultra-Low-Temperature Cofired Ceramic Substrates with Low Residual Carbon for Next-Generation Microwave Applications.",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2019",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10222232",
+    "doi": "10.3390/s23104696",
+    "title": "Environmental Robustness and Resilience of Direct-Write Ultrasonic Transducers Made from P(VDF-TrFE) Piezoelectric Coating.",
+    "journal": "Sensors (Basel)",
+    "year": "2023",
+    "cited": 2,
+    "snippets": 2,
+    "standards_in_paper": [
+     "MIL-STD 810H",
+     "MIL-STD-810H"
+    ]
+   },
+   {
+    "pmcid": "PMC6643756",
+    "doi": "10.1021/acsomega.8b02844",
+    "title": "Alkali Metal Ion Storage of Quinone Molecules Grafted on Single-Walled Carbon Nanotubes at Low Temperature.",
+    "journal": "ACS Omega",
+    "year": "2018",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7760990",
+    "doi": "10.3390/polym12122844",
+    "title": "Joint-Linker Type Ionic Gels Using Polymerizable Ionic Liquid as a Crosslinker via Thiol-Ene Click Reactions.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13319439",
+    "doi": "10.1038/s41598-026-44025-2",
+    "title": "Electro-thermal benchmarking of low-order lithium-ion battery equivalent circuit models under constant-current and dynamic loading.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12430365",
+    "doi": "10.3390/molecules30173574",
+    "title": "Synthesis and Properties of Ethylene Imine-Based Porous Polymer Nanocomposites with Metal Oxide Nanoparticles.",
+    "journal": "Molecules",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12272689",
+    "doi": "10.1021/jacs.5c00856",
+    "title": "Exploration of Lithium-Ion Conductors Based on Local Coordination Environments Using Crystallographic Site Fingerprints.",
+    "journal": "J Am Chem Soc",
+    "year": "2025",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC9417717",
+    "doi": "10.1039/d1na00739d",
+    "title": "Single-walled carbon nanotubes as a reducing agent for the synthesis of a Prussian blue-based composite: a quartz crystal microbalance study.",
+    "journal": "Nanoscale Adv",
+    "year": "2022",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC7595093",
+    "doi": "10.1038/s41598-020-75593-6",
+    "title": "Study of domain configurations in (Bi,Na)ZrO<sub>3</sub>-modified (K,Na)(Nb,Sb)O<sub>3</sub> piezoelectric ceramics by acid-etching at different temperatures.",
+    "journal": "Sci Rep",
+    "year": "2020",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC6807267",
+    "doi": "10.3390/s19194149",
+    "title": "A Regulated Temperature-Insensitive High-Voltage Charge Pump in Standard CMOS Process for Micromachined Gyroscopes.",
+    "journal": "Sensors (Basel)",
+    "year": "2019",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9271152",
+   "title": "Microstructure Design of High-Entropy Alloys Through a Multistage Mechanical Alloying Strategy for Temperature-Stable Megahertz Electromagnetic Absorption.",
+   "year": "2022",
+   "text": "coercivity H c and saturation magnetization M s of D5, D10, D20, and D30 samples from 30 to 150 °C under a applied field of 12,000 Oe. The Curie temperature of D20 sample is also measured with the VSM from 50 to 840 °C. We measure the complex permeability and complex permittivity of samples at − 50–150 °C by Keysight E4991B impedance analyzer with Espec SU-262 Bench-top temperature chamber. The pure D5, D10, D20, and D30 samples are prepared into a concentric ring with inner diameter of 3.1 mm and outer diameter of 8 mm to investigate the permeability temperature dependence. Moreover, the D20 sample and SiO 2 are uniformly mixed according to the mass ratios of 9:1, 8:2, 7:3, and 6:4 and then pressed",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10018505",
+   "title": "Succinonitrile-Polymer Composite Electrolytes for Li-Ion Solid-State Batteries-The Influence of Polymer Additives on Thermomechanical and Electrochemical Properties.",
+   "year": "2023",
+   "text": "polymer, respectively. Glass fiber nonwoven was used because commercial separators like Celgard showed poor infiltration results. For the investigation of ionic conductivity (σ), electrochemical impedance spectroscopy (EIS) was performed in a frequency range of 10 6 –1 Hz and an amplitude of 10 mV in a temperature range from 80 to −20 °C, using an Espec SU-242 temperature chamber (Espec Europe). The samples (infiltrated glass nonwoven) were sandwiched between two ion-blocking stainless steel electrodes of 50 μm thickness and 18 mm diameter. EIS measurements were proceeded every 10K, and cells were held at an appropriate temperature for 30 min prior to measurement for equilibration. For electrochemic",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11850694",
+   "title": "Modulating Electromagnetic Genes Through Bi-Phase High-Entropy Engineering Toward Temperature-Stable Ultra-Broadband Megahertz Electromagnetic Wave Absorption.",
+   "year": "2025",
+   "text": "tent. The surface chemical structure of the samples is characterized by an X-ray photoelectron spectroscopy (XPS, ESCALAB XI+). Electromagnetic Performance Testing The hysteresis loop and thermomagnetic curve are measured with the vibrating sample magnetometer (VSM7404-S) under an applied field of 12,000 Oe. Keysight E4991B impedance analyzer with Espec SU-262 Benchtop temperature chamber is used to test the complex permeability and complex permittivity under variable temperature. The samples are prepared into a concentric ring with inner diameter of 3.1 mm and outer diameter of 8 mm under 4 MPa pressure to investigate the complex permeability. Moreover, the samples are pressed into disk with diamet",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6648015",
+   "title": "Electrochemical Reactions of Iodine Molecules Encapsulated in Single-Walled Carbon Nanotubes.",
+   "year": "2019",
+   "text": "arge–Discharge Experiments of I@SWCNT with Solid Electrolyte Poly(ethylene oxide) (PEO) including LiClO 4 ([O](PEO)/[Li] = 8:1) was used as a solid electrolyte. A test cell consisting of the I@SWCNT working electrode and Li metal counter electrode with PEO solid electrolyte was used. Charge–discharge experiments were done in a temperature chamber (Espec SU-241) to control the temperature of the test cell at 60 °C to obtain good ion conductivity. Supporting Information Available The Supporting Information is available free of charge on the ACS Publications website at DOI: 10.1021/acsomega.8b03129 . TG curve of SWCNT (Figure S1); paper-form SWCNT (Figure S2); XANES spectra of I@SWCNT sample (Figure S3",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12006438",
+   "title": "Harnessing database-supported high-throughput screening for the design of stable interlayers in halide-based all-solid-state batteries.",
+   "year": "2025",
+   "text": "5 Cl interlayer, a 10 mm diameter, 20 μm thick In foil disk was positioned on the Li 6 PS 5 Cl interlayer, followed by a 9 mm diameter, 20 μm thick Li foil disk. The assembly was then compressed at 1.5 tons for 1 min and secured with bolts. The resulting cells were cycled using a CT2001A battery cycling system (LANHE) within a temperature chamber (ESPEC, SU-242-5) maintained at 303 ± 1 K. CCD measurements were performed on symmetric cells using stepwise increasing current densities, with a fixed plating/stripping duration of 1 h per step. Long-term cycling tests of symmetric cells were conducted at 1.0 mA cm −2 for Li|Li 3 OCl|Li 3 InCl 6 |Li 3 OCl|Li cell, and at 1.6 × 10 −2 mA cm −2 for both the Li",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12006438",
+   "title": "Harnessing database-supported high-throughput screening for the design of stable interlayers in halide-based all-solid-state batteries.",
+   "year": "2025",
+   "text": "ck pressure of 1.5 tons (187.5 MPa) was applied, and this value was benchmarked against the literature (Supplementary Table 18 ). All assembly took place within an Ar-filled (≥99.999%, Air Products) glovebox (Mikrouna, Super 1220/750) with O 2 and H 2 O concentrations below 0.01 ppm. Cells were cycled using a LANHE CT2001A battery tester within an ESPEC, SU-242-5 temperature chamber, maintained at 303 ± 1 K. All batteries were cycled with a voltage window of 2.5-4.2 V ( vs . Li/Li + ). Cycling currents were 0.85 mA (1 C, 1.09 mA cm −2 ) for LiCoO 2 positive electrode, and 3.01 mA (3 C, 3.84 mA cm −2 ) for Li(Ni 0.8 Co 0.1 Mn 0.1 )O 2 positive electrode. At least three full cells of each configuration",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6613049",
+   "title": "Ultra-Low-Temperature Cofired Ceramic Substrates with Low Residual Carbon for Next-Generation Microwave Applications.",
+   "year": "2019",
+   "text": "electron microscopy (SEM, Zeiss Ultra Plus, Germany). Microwave dielectric properties of the green and sintered substrates were measured by the split-post dielectric resonator (SPDR) (QWED, Poland) technique using a vector network analyzer (10 MHz to 20 GHz, Rhode &amp; Schwarz, ZVB20, Germany) and their temperature dependence by using a furnace (Espec SU-261) operating at −40 to 80 °C integrated with the microwave measurement setup. With this method, the total uncertainty of the determination of the relative permittivity was about 0.5% and the dielectric loss was in the range of 10 –5 . 20 , 21 Cylindrical samples of diameter 8 mm and thickness 15 mm were used to measure the linear coefficient of",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10222232",
+   "title": "Environmental Robustness and Resilience of Direct-Write Ultrasonic Transducers Made from P(VDF-TrFE) Piezoelectric Coating.",
+   "year": "2023",
+   "text": "itions including temperature, humidity, salt fog, icing, and rain that refers to US Standard (MIL-STD-810H). A stability test was carried out to establish a baseline in measurement using three test coupons (labelled as #1, #2, and #3). The stability test was conducted at 25 ± 0.2 °C for three days, as shown in Figure 3 a, in a temperature chamber (ESPEC SU-240, Hudsonville, MI, USA, shown in the inset). This was then followed by a combined temperature test to examine the effects of high and low temperatures, as shown in Figure 3 b. Next, the effect of a humid atmosphere was examined, as shown in Figure 3 c. This test was carried out in an environmental test chamber, as shown in Figure 3 c inset (Mem",
+   "standards": [
+    "MIL-STD-810H"
+   ]
+  },
+  {
+   "pmcid": "PMC10222232",
+   "title": "Environmental Robustness and Resilience of Direct-Write Ultrasonic Transducers Made from P(VDF-TrFE) Piezoelectric Coating.",
+   "year": "2023",
+   "text": "late, and ( f ) rain tests: ( i ) initial step, ( ii ) during water flow, ( iii ) no water flow, ( iv ) removal of water, and ( v ) drying. Colored regions indicate the duration of each environmental test. Another three test coupons (#4, #5, and #6) were used for the icing and rain tests. The icing test was carried out using a temperature chamber (ESPEC SU-240) to evaluate the impact of coupons exposed to icing caused by freezing rain or freezing drizzle. Figure 3 e is a temperature–time graph obtained to confirm the effect of forming ice on the coupon. For ice formation on the test coupons, a template using polyethylene terephthalate (PET) was used, as shown in the inset of Figure 3 e. The height o",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6643756",
+   "title": "Alkali Metal Ion Storage of Quinone Molecules Grafted on Single-Walled Carbon Nanotubes at Low Temperature.",
+   "year": "2018",
+   "text": "ge experiments, respectively. The charge–discharge measurements using a conventional two-electrode-type cell (Hohsen, HS-Cell) were conducted using a galvanostat (Toyo System, TOSCAT-3200). The cell was assembled in an Ar-filled glove box to avoid air exposure and contamination. Charge–discharge experiments were done inside a thermostatic chamber (Espec, SU-241) to control the temperature of the test cell. Density functional theory (DFT) calculations were performed using Gaussian 09 software. 40 Here, we used the B3PYP exchange–correlation hybrid functional 41 with Dunning’s double-zeta correlation consistent basis sets 42 (cc-pVDZ). Acknowledgments The authors thank the Naito Science and Engineering",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "MIL-STD-810H": 1
+ },
+ "standards_new": [
+  "MIL-STD-810H"
+ ],
+ "test_item_hits": {
+  "density_porosity": 12,
+  "microscopy": 8,
+  "electrical_transport": 7,
+  "particle_size": 2,
+  "abrasion": 1,
+  "dsc": 1,
+  "formability": 1
+ }
+}

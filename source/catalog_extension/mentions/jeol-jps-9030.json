@@ -1,0 +1,35 @@
+{
+ "object": "jeol-jps-9030",
+ "manufacturer": "jeol",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO 14001": 1
+ },
+ "standards_new": [
+  "ISO 14001"
+ ],
+ "test_item_hits": {
+  "microscopy": 135,
+  "optical_spectroscopy": 12,
+  "density_porosity": 6,
+  "particle_size": 3,
+  "abrasion": 2,
+  "electrical_transport": 2,
+  "thermal_conductivity": 2,
+  "coating_thickness": 1,
+  "compression": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "scratch_pencil_hardness": 1,
+  "tensile": 1,
+  "torsion": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "It is suitable for elemental analysis chemical bonding state analysis of specimens of powder, thin film, and plate.",
+  "It can be used for depth profile analysis of ultra-thin multi-layer film.",
+  "It is capable of depth profiles suitable for any application, from measurements demanding precision to processes that require speed.",
+  "Example of Utilization of Wide Area Analysis - Elemental Analysis of LIB Cathode Material The materials used for LIB cathodes seem uniform at first glance."
+ ]
+}

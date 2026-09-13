@@ -1,0 +1,306 @@
+{
+ "object": "jeol-jem-f200",
+ "manufacturer": "jeol",
+ "phrases": [
+  "JEOL JEM-F200 TEM/STEM",
+  "JEOL JEM-F200",
+  "JEOL F200"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"JEOL JEM-F200 TEM/STEM\" OR \"JEOL JEM-F200\" OR \"JEOL F200\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"JEOL JEM-F200 TEM/STEM\" OR \"JEOL JEM-F200\" OR \"JEOL F200\") AND OPEN_ACCESS:y",
+  "count": 1001,
+  "papers": [
+   {
+    "pmcid": "PMC9834061",
+    "doi": "10.1038/s41586-022-05550-y",
+    "title": "Actin cytoskeleton and complex cell architecture in an Asgard archaeon.",
+    "journal": "Nature",
+    "year": "2023",
+    "cited": 161,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8986799",
+    "doi": "10.1038/s41467-022-29428-9",
+    "title": "Electrochemical CO<sub>2</sub> reduction to ethylene by ultrathin CuO nanoplate arrays.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 152,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11095170",
+    "doi": "10.1002/advs.202309984",
+    "title": "Elesclomol Loaded Copper Oxide Nanoplatform Triggers Cuproptosis to Enhance Antitumor Immunotherapy.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2024",
+    "cited": 130,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7817685",
+    "doi": "10.1038/s41467-020-20749-1",
+    "title": "Flexible and efficient perovskite quantum dot solar cells via hybrid interfacial architecture.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 108,
+    "snippets": 1,
+    "standards_in_paper": [
+     "IEC 60904-8"
+    ]
+   },
+   {
+    "pmcid": "PMC9568589",
+    "doi": "10.1038/s41467-022-33846-0",
+    "title": "Promoting nickel oxidation state transitions in single-layer NiFeB hydroxide nanosheets for efficient oxygen evolution.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 105,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7363915",
+    "doi": "10.1038/s41467-020-17373-4",
+    "title": "Ion sieving by a two-dimensional Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> alginate lamellar membrane with stable interlayer spacing.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 96,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9876552",
+    "doi": "10.1126/sciadv.adc8758",
+    "title": "A self-powered multifunctional dressing for active infection prevention and accelerated wound healing.",
+    "journal": "Sci Adv",
+    "year": "2023",
+    "cited": 92,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9068789",
+    "doi": "10.1038/s41467-022-30155-4",
+    "title": "Modulating Pt-O-Pt atomic clusters with isolated cobalt atoms for enhanced hydrogen evolution catalysis.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 92,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9884666",
+    "doi": "10.1038/s41467-023-35993-4",
+    "title": "Stabilizing copper sites in coordination polymers toward efficient electrochemical C-C coupling.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 84
+   },
+   {
+    "pmcid": "PMC8476569",
+    "doi": "10.1038/s41467-021-26001-8",
+    "title": "Promoting exsolution of RuFe alloy nanoparticles on Sr<sub>2</sub>Fe<sub>1.4</sub>Ru<sub>0.1</sub>Mo<sub>0.5</sub>O<sub>6-δ</sub> via repeated redox manipulations for CO<sub>2</sub> electrolysis.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 78
+   },
+   {
+    "pmcid": "PMC11291733",
+    "doi": "10.1038/s41467-024-50890-0",
+    "title": "Stable zinc anode solid electrolyte interphase via inner Helmholtz plane engineering.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 73
+   },
+   {
+    "pmcid": "PMC10368715",
+    "doi": "10.1038/s41467-023-40221-0",
+    "title": "Temperature-dependent interphase formation and Li<sup>+</sup> transport in lithium metal batteries.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 70
+   },
+   {
+    "pmcid": "PMC11035637",
+    "doi": "10.1038/s41467-024-47736-0",
+    "title": "Highly efficient anion exchange membrane water electrolyzers via chromium-doped amorphous electrocatalysts.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 65
+   },
+   {
+    "pmcid": "PMC8932528",
+    "doi": "10.1083/jcb.202105146",
+    "title": "Plectin-mediated cytoskeletal crosstalk controls cell tension and cohesion in epithelial sheets.",
+    "journal": "J Cell Biol",
+    "year": "2022",
+    "cited": 62
+   },
+   {
+    "pmcid": "PMC9279568",
+    "doi": "10.3389/fncel.2022.913009",
+    "title": "Exosomes Derived From Umbilical Cord Mesenchymal Stem Cells Treat Cutaneous Nerve Damage and Promote Wound Healing.",
+    "journal": "Front Cell Neurosci",
+    "year": "2022",
+    "cited": 61
+   },
+   {
+    "pmcid": "PMC11339425",
+    "doi": "10.1038/s41467-024-51370-1",
+    "title": "Bimetallic nanoalloys planted on super-hydrophilic carbon nanocages featuring tip-intensified hydrogen evolution electrocatalysis.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 52
+   },
+   {
+    "pmcid": "PMC9896070",
+    "doi": "10.1002/advs.202204808",
+    "title": "Insights into the Effect of Catalytic Intratumoral Lactate Depletion on Metabolic Reprogramming and Immune Activation for Antitumoral Activity.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2023",
+    "cited": 52
+   },
+   {
+    "pmcid": "PMC8799463",
+    "doi": "10.1038/s41929-021-00723-w",
+    "title": "Switchable wetting of oxygen-evolving oxide catalysts.",
+    "journal": "Nat Catal",
+    "year": "2022",
+    "cited": 52
+   },
+   {
+    "pmcid": "PMC9892045",
+    "doi": "10.1038/s41467-023-35981-8",
+    "title": "Silver nanoparticle enhanced metal-organic matrix with interface-engineering for efficient photocatalytic hydrogen evolution.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 51
+   },
+   {
+    "pmcid": "PMC9097156",
+    "doi": "10.1021/acs.chemmater.2c00522",
+    "title": "High-Voltage Stabilization of O3-Type Layered Oxide for Sodium-Ion Batteries by Simultaneous Tin Dual Modification.",
+    "journal": "Chem Mater",
+    "year": "2022",
+    "cited": 49
+   },
+   {
+    "pmcid": "PMC6789138",
+    "doi": "10.1038/s41467-019-12615-6",
+    "title": "Advantages of eutectic alloys for creating catalysts in the realm of nanotechnology-enabled metallurgy.",
+    "journal": "Nat Commun",
+    "year": "2019",
+    "cited": 47
+   },
+   {
+    "pmcid": "PMC10516836",
+    "doi": "10.1007/s40820-023-01183-6",
+    "title": "Kinetic Limits of Graphite Anode for Fast-Charging Lithium-Ion Batteries.",
+    "journal": "Nanomicro Lett",
+    "year": "2023",
+    "cited": 46
+   },
+   {
+    "pmcid": "PMC9837964",
+    "doi": "10.1186/s12951-023-01773-x",
+    "title": "Peptide-anchored neutrophil membrane-coated biomimetic nanodrug for targeted treatment of rheumatoid arthritis.",
+    "journal": "J Nanobiotechnology",
+    "year": "2023",
+    "cited": 46
+   },
+   {
+    "pmcid": "PMC9334365",
+    "doi": "10.1038/s41467-022-32143-0",
+    "title": "Single-droplet surface-enhanced Raman scattering decodes the molecular determinants of liquid-liquid phase separation.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 46
+   },
+   {
+    "pmcid": "PMC9908878",
+    "doi": "10.1038/s41467-023-36411-5",
+    "title": "Weak CO binding sites induced by Cu-Ag interfaces promote CO electroreduction to multi-carbon liquid products.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 45
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9834061",
+   "title": "Actin cytoskeleton and complex cell architecture in an Asgard archaeon.",
+   "year": "2023",
+   "text": "s furiosus . Immunogold particle statistics were estimated for the controls as well as ‘ Ca. L. ossiferum’ (Supplementary Table 10 ). Transmission electron microscopy was performed using either the Zeiss EM 912 (Zeiss) system, operated at 80 kV and equipped with a Tröndle 2k × 2k slow-scan CCD camera (TRS, Tröndle Restlichtverstärker Systeme) or a JEOL F200 (JEOL), operated at 200 kV and equipped with a XAROSA 20 megapixel CMOS camera (EMSIS). Generation of Lokiactin-specific antibodies and western blotting The Lokiactin antibodies were raised against Lokiactin-specific peptides (ab1: CTFYTDLRVDPSEHPV; ab2: CSKNGFAGEDQPRSVF) and validated through ELISA assays using the services of Eurogentec. Peptide",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8986799",
+   "title": "Electrochemical CO<sub>2</sub> reduction to ethylene by ultrathin CuO nanoplate arrays.",
+   "year": "2022",
+   "text": "speed of 50 rpm during evaporation. Evaporated carbon paper was fixed onto a platinum electrode clip to form a working electrode. The electrochemical oxidation process was the same as the Cu foil except that the current density was 0.13 mA cm −2 for the carbon paper. Materials characterization SEM images were taken by a ZEISS SUPRA55 microscope. A JEOL F200 microscope was used to take the TEM images. AFM images were obtained by Bruker Dimension FastScan microscope. Aberration corrected STEM imaging and EELS mapping were acquired from a Nion HERMES-100 under 100 kV with a 30 mrad convergence angle. The enlarged STEM-BF image is denoised by low-psss filtering. Cu valence state analysis was performend b",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11095170",
+   "title": "Elesclomol Loaded Copper Oxide Nanoplatform Triggers Cuproptosis to Enhance Antitumor Immunotherapy.",
+   "year": "2024",
+   "text": "the mixture was stirred for 12 h at room temperature. The mixed solution was centrifuged (12 000 g, 15 min) and washed with ultrapure water five times until the supernatant was free of fluorescent dye. Material Characterization The morphology and elemental composition of the nanoparticles were evaluated via transmission electron microscopy (TEM) (JEOL, JEM‐F200, Japan). The UV‒vis absorption spectrum was measured using a UV‒vis spectrometer (MAPADA, Shanghai). Dynamic light scattering (DLS) and surface zeta potential were characterized by a Zetasizer Nano Analyzer (Malvern, U.K.). Fourier transform infrared (FTIR) spectra were recorded on an FTIR spectrometer (Thermo Scientific Nicolet iS20, USA) with wa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7817685",
+   "title": "Flexible and efficient perovskite quantum dot solar cells via hybrid interfacial architecture.",
+   "year": "2021",
+   "text": "d at room temperature using a custom laser PL spectroscopy system (Crystal Laser, Model BLC-050-405). The laser pulse width was 130 fs, and the repetition rate was 100 MHz. The excitation wavelength for both PL and TRPL measurements is 600 nm. SEM measurements were carried out by using an FEI Nova Nano SEM 450. TEM measurements were performed by a JEOL JEM-2010 and JEOL JEM-F200 operated at 200 kV. UV–Vis absorption spectra were obtained using a U-4100 spectrophotometer (Hitachi). FTIR was performed on a Thermo Fisher FTIR6700. XPS and UPS measurements were conducted by a VG ESCALAB MK2 system with monochromatized Al Kα radiation under a pressure of 5.0 × 10 −7 Pa. Contact angle measurements were conducted by a Data physi",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9568589",
+   "title": "Promoting nickel oxidation state transitions in single-layer NiFeB hydroxide nanosheets for efficient oxygen evolution.",
+   "year": "2022",
+   "text": "ydroxide nanosheets B-free NiFe hydroxide nanosheets were synthesized by following the typical protocol for the synthesis of NiFeB hydroxide nanosheets, except that 1 mL of 0.5 M NaOH was used in place of 1 mL of 0.5 M NaBH 4 . Characterizations TEM was performed on a Hitachi HT-7700 microscope operated at 100 kV. HRTEM and EDS were performed on a JEOL JEM-F200 microscope operated at 200 kV. XRD patterns were recorded on a Rigaku SmartLab Powder X-ray diffractometer equipped with Cu Kα radiation and a D/TEX Ultra detector. ICP–MS was conducted on a NexION 350D system. XPS data were collected on a Thermo Fisher ESCALAB Xi+ spectrometer equipped with monochromatic Al Kα radiation. All binding energies in X",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7363915",
+   "title": "Ion sieving by a two-dimensional Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> alginate lamellar membrane with stable interlayer spacing.",
+   "year": "2020",
+   "text": "step of 0.02° and a collection time of 6 s/step. SEM (Zeiss Gemini SEM 300, Germany) was used to study the surface topography and structural characteristics of the nanosheets and membranes. AFM (Bruker Multimode 8) was used to obtain a topographical image of the nanosheets in tapping mode. The morphology of the nanosheets was characterized by TEM (JEOL JEM-F200, Japan). XPS analysis was performed using a Thermo Fisher ESCALAB Xi + instrument with monochromated Al-Kα radiation. FTIR characterization was performed using a Bruker VERTEX 33 unit over the wavenumber range of 1500–4000 cm −1 . In situ infrared absorption spectroscopy measurements were conducted in transmission geometry by using a Thermo Scient",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9876552",
+   "title": "A self-powered multifunctional dressing for active infection prevention and accelerated wound healing.",
+   "year": "2023",
+   "text": "nd bottom electrode layers to encapsulate the dressing. The uncoated part of the top and bottom fabric electrodes placed outside the wound area was used as the two electrode terminals, which were connected to the two ends of the TENG for ES experiments. Characterization The morphology of the Bi 2 Te 3 NPs was analyzed by using high-resolution TEM (JEOL, JEM-F200). XRD (Rigaku, TTRAX III) was used to investigate the structural properties of the prepared nanomaterials, such as phase purity and crystallinity. Amplitude-modulated KPFM (Bruker icon ScanAsyst) equipped with a thermal stage was used to monitor the surface potential distribution of the Bi 2 Te 3 NPs. Furthermore, the morphological characterizatio",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9068789",
+   "title": "Modulating Pt-O-Pt atomic clusters with isolated cobalt atoms for enhanced hydrogen evolution catalysis.",
+   "year": "2022",
+   "text": "s/CoNC, were achieved by calcinating the dried samples at 300 o C for 2 h under Ar atmosphere. Characterization XRD spectra were recorded on Bruker D8 Discover XRD with the 2 θ range from 10 to 80° and a scanning step of 0.04° per second. The morphological characterization and EDS analysis of the as-prepared samples were investigated by TEM, Model JEOL JEM-F200, STEM, JEOL JEM-ARM200F and FEI Themis-Z Double-corrected 60–300 kV. XPS spectra were acquired on an ESCALAB250Xi (Thermo Scientific, UK). Raman spectra were recorded on an inVia Renishaw Raman spectrometer system (HR Micro Raman spectrometer, Horiba JOBIN YVON US/ HR800 UV) with a wavelength laser of 632.8 nm. ICP-MS was performed on PerkinElmer",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 2,
+  "contact_angle": 1,
+  "density_porosity": 1,
+  "particle_size": 1,
+  "surface_topography": 1
+ }
+}

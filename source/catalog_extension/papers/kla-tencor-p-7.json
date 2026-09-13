@@ -1,0 +1,23 @@
+{
+ "object": "kla-tencor-p-7",
+ "manufacturer": "kla",
+ "phrases": [
+  "KLA Instruments P-7",
+  "Nanomechanics P-7"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"KLA Instruments P-7\" OR \"Nanomechanics P-7\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"KLA Instruments P-7\" OR \"Nanomechanics P-7\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

@@ -1,0 +1,331 @@
+{
+ "object": "mitutoyo-surftest-sj-410",
+ "manufacturer": "mitutoyo",
+ "phrases": [
+  "Mitutoyo SJ-410",
+  "Mitutoyo Surftest SJ-411",
+  "Mitutoyo Surftest SJ-412"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mitutoyo SJ-410\" OR \"Mitutoyo Surftest SJ-411\" OR \"Mitutoyo Surftest SJ-412\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mitutoyo SJ-410\" OR \"Mitutoyo Surftest SJ-411\" OR \"Mitutoyo Surftest SJ-412\") AND OPEN_ACCESS:y",
+  "count": 32,
+  "papers": [
+   {
+    "pmcid": "PMC6316851",
+    "doi": "10.3390/ma11122343",
+    "title": "Effect of Selective Laser Melting Process Parameters on the Quality of Al Alloy Parts: Powder Characterization, Density, Surface Roughness, and Dimensional Accuracy.",
+    "journal": "Materials (Basel)",
+    "year": "2018",
+    "cited": 35,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM B962-17",
+     "ASTM D7127-17",
+     "ASTM F3049-14"
+    ]
+   },
+   {
+    "pmcid": "PMC9145669",
+    "doi": "10.3390/pharmaceutics14050956",
+    "title": "Importance of Spray-Wall Interaction and Post-Deposition Liquid Motion in the Transport and Delivery of Pharmaceutical Nasal Sprays.",
+    "journal": "Pharmaceutics",
+    "year": "2022",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11047911",
+    "doi": "10.3390/bioengineering11040343",
+    "title": "Surface Modification of Polyetheretherketone (PEEK) Intervertebral Fusion Implant Using Polydopamine Coating for Improved Bioactivity.",
+    "journal": "Bioengineering (Basel)",
+    "year": "2024",
+    "cited": 7,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM F 2077",
+     "ASTM F2077",
+     "ISO 1997"
+    ]
+   },
+   {
+    "pmcid": "PMC7878482",
+    "doi": "10.1038/s41598-021-83158-4",
+    "title": "Effects of silicon doping on low-friction and high-hardness diamond-like carbon coating via filtered cathodic vacuum arc deposition.",
+    "journal": "Sci Rep",
+    "year": "2021",
+    "cited": 7,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10208291",
+    "doi": "10.1590/0103-6440202305248",
+    "title": "Effect of experimental bleaching gels with polymers Natrosol and Aristoflex on the enamel surface properties.",
+    "journal": "Braz Dent J",
+    "year": "2023",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC12442362",
+    "doi": "10.1515/nanoph-2025-0066",
+    "title": "Direct measurement of two-photon absorption and refraction properties of SZ2080&lt;sup&gt;TM&lt;/sup&gt;-based resists at 515 nm: insights into 3D printing.",
+    "journal": "Nanophotonics",
+    "year": "2025",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8198297",
+    "doi": "10.3390/ma14112945",
+    "title": "Process-Structure-Property Relationships of Copper Parts Manufactured by Laser Powder Bed Fusion.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM B193",
+     "ASTM B212",
+     "ASTM B213",
+     "ASTM B214",
+     "ASTM B822",
+     "ASTM B962-14"
+    ]
+   },
+   {
+    "pmcid": "PMC6947018",
+    "doi": "10.3390/ma12244150",
+    "title": "Experimental Investigation and Optimal Prediction of Maximum Forming Angle and Surface Roughness of an Al/SUS Bimetal Sheet in an Incremental Forming Process Using Machine Learning.",
+    "journal": "Materials (Basel)",
+    "year": "2019",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11332831",
+    "doi": "10.1016/j.heliyon.2024.e34931",
+    "title": "Analysis and optimization of machining parameters of AZ91 alloy nanocomposite with the Influences of nano ZrO<sub>2</sub> through vacuum diecast process.",
+    "journal": "Heliyon",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC10767202",
+    "doi": "10.1016/j.heliyon.2023.e23709",
+    "title": "Cyclic fatigue of a repaired 4 YSZ ceramic: Effect of the repair protocol on the adhesive and mechanical behavior.",
+    "journal": "Heliyon",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC13121451",
+    "doi": "10.1038/s41598-026-42714-6",
+    "title": "Optimization of hole quality in drilling of direct hot-pressed Al/SiC composites using Taguchi method.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12244567",
+    "doi": "10.4103/jpbs.jpbs_258_25",
+    "title": "Effect of Scaling and Root Planing on Surface Characteristics of Different Dental Implant Materials.",
+    "journal": "J Pharm Bioallied Sci",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12315629",
+    "doi": "10.1111/jerd.13483",
+    "title": "Assessing the Impact of Vegan Toothpastes on Enamel Color Change and Surface Properties.",
+    "journal": "J Esthet Restor Dent",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11990107",
+    "doi": "10.3390/ma18071669",
+    "title": "An Experimental Investigation into Trochoidal Milling for High-Quality GFRP Machining.",
+    "journal": "Materials (Basel)",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11653993",
+    "doi": "10.1590/0103-6440202406094",
+    "title": "Optical properties and color stability of a translucent zirconia: effects of finishing after grinding.",
+    "journal": "Braz Dent J",
+    "year": "2024",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC11547838",
+    "doi": "10.3390/ma17215175",
+    "title": "Alternative Treatments for Zirconium Oxide to Compare Commonly Used Surface Treatments to Determine Which Has the Least Effect on the Phase Transformation.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC9573409",
+    "doi": "10.3390/ma15196870",
+    "title": "Effect of Surface-Etching Treatment, Glaze, and the Antagonist on Roughness of a Hybrid Ceramic after Two-Body Wear.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8839089",
+    "doi": "10.3390/ma15031028",
+    "title": "Tribological Characterization of Electrical Discharge Machined Surfaces for AISI 304L.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13268189",
+    "doi": "10.1371/journal.pone.0350565",
+    "title": "Development and validation of the TexCoMP model: A nonlinear framework for optimising slip-resistant walkway coatings in diverse environments.",
+    "journal": "PLoS One",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13342694",
+    "doi": "10.1038/s41598-026-51667-9",
+    "title": "Thermohydraulic performance prediction of an additively manufactured minichannel gas-to-gas heat exchanger.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13078685",
+    "doi": "10.1590/0103-644020266769",
+    "title": "Fatigue behavior and translucency of lithium disilicate ceramic: effect of glazing application.",
+    "journal": "Braz Dent J",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12986500",
+    "doi": "10.3390/ma19050975",
+    "title": "Comparative Study on Thermal Behaviour, Tool Wear and Surface Roughness in Milling EN8 Steel for Sustainable Machining.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12872105",
+    "doi": "10.1590/0103-644020256936",
+    "title": "Effect of the screw-retained abutment material on the fatigue behavior of lithium disilicate restorations.",
+    "journal": "Braz Dent J",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC13471821",
+    "doi": "10.1111/jerd.70112",
+    "title": "High-Concentration Hydrogen Peroxide Gels Containing Calcium Polyphosphate Associated With Violet Led Light: Bleaching Efficacy and Effects on Enamel Properties.",
+    "journal": "J Esthet Restor Dent",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12835113",
+    "doi": "10.1038/s41598-025-33417-5",
+    "title": "Machine learning models based wear performance prediction of AZ31/TiC composites.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6316851",
+   "title": "Effect of Selective Laser Melting Process Parameters on the Quality of Al Alloy Parts: Powder Characterization, Density, Surface Roughness, and Dimensional Accuracy.",
+   "year": "2018",
+   "text": "and Al6061 samples. The relative density was also evaluated after sample surface polishing to investigate the percentage of internal porosity. Density measurement via water displacement, according to ASTM B962-17, was performed with an electronic densimeter (MD-200S). Surface roughness measurements were performed according to ASTM D7127-17 with a Mitutoyo SJ-410 surface tester. Five measurements at intervals of 4.5 mm were conducted on the cubic specimen’s top surface, and their average was taken at each location. A light microscope (Alicona Infinite Focus G5) was used to capture the surface texture of some of the AlSi10Mg and Al6061 samples. The area tested was 10 mm × 10 mm using a 10× magnification len",
+   "standards": [
+    "ASTM B962-17",
+    "ASTM D7127-17"
+   ]
+  },
+  {
+   "pmcid": "PMC9145669",
+   "title": "Importance of Spray-Wall Interaction and Post-Deposition Liquid Motion in the Transport and Delivery of Pharmaceutical Nasal Sprays.",
+   "year": "2022",
+   "text": "p shape analyzer (DSA25E, Krüss, Germany) to measure the formulation surface tension for the two sprays [ 13 ]. The formulation surface tension for Flonase was 0.044 ± 0.8 N/m and Flonase Sensimist was 0.042 ± 0.6 N/m. The surface roughness of the 3D printed material (Accura ClearVue with standard finish) was measured using a contact profilometer (Mitutoyo SJ-410). The average surface roughness was measured to be 1.51 ± 0.056 µm. The surface wetting effects were included in the model by measuring the static contact angle on the 3D printed material surface using a ramé-hart Goniometer and DROPimage software. The static contact angles for Flonase and Flonase Sensimist liquid formulations on the 3D printed ma",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11047911",
+   "title": "Surface Modification of Polyetheretherketone (PEEK) Intervertebral Fusion Implant Using Polydopamine Coating for Improved Bioactivity.",
+   "year": "2024",
+   "text": "h range of 500 cm −1 to 4000 cm −1 , and the frequency region of 600 cm −1 to 1200 cm −1 and the functional group frequency region of 1200 cm −1 to 2000 cm −1 were analyzed. The surface average roughness (R a ), average square roughness (R q ), and 10-point average roughness (R z ) values were measured using a surface roughness measurement system (Mitutoyo SJ-410, Kawasaki, Japan) to analyze the surface properties of PEEK. A comparison was made between the PEEK surface before and after coating. Measurement conditions were measured following ISO 1997 standards. The contact angle of each sample was measured using the water drop method with equipment (CA, SEO Phoenix 300, Seoul, Republic of Korea). The contac",
+   "standards": [
+    "ISO 1997"
+   ]
+  },
+  {
+   "pmcid": "PMC7878482",
+   "title": "Effects of silicon doping on low-friction and high-hardness diamond-like carbon coating via filtered cathodic vacuum arc deposition.",
+   "year": "2021",
+   "text": ", Anton Paar, Austria ) with a maximum indentation depth of ~ 100 nm. To minimize the effects of surface roughness and macroparticles on nanohardness, the measurement was performed at least five times in different regions by avoiding macroparticles. Surface roughness of the coated substrates was evaluated using a contact-type surface profilometer (Mitutoyo SJ-410, Japan ). The contact angles on the coatings were measured by the Sessile-drop method using deionized water with a 5-μL volume. Tribological characterization Ball-on-disk tests were performed to investigate the tribological characteristics of the coated films with and without Si dopant. For the reliability of low-friction coating against bearing s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10208291",
+   "title": "Effect of experimental bleaching gels with polymers Natrosol and Aristoflex on the enamel surface properties.",
+   "year": "2023",
+   "text": "fter the initial reading, in which the samples that presented very high (dark) or very low (light) values were excluded from the study ( 19 . Surface Roughness (Ra) The surface roughness of the specimens was measured previously to bleaching protocol and subsequently, 24 hours after exposure to bleaching gels. A surface roughness measuring machine (Mitutoyo SJ-410, São Paulo, SP, Brazil) was used. Three scans were performed, in a 3.0 mm extension, with the reading tip always passing through the geometric center of the specimen, and the change of position allowed by the 120º rotation at the base. The counterclockwise direction was standardized for all readings, and the first reading was established in the su",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC12442362",
+   "title": "Direct measurement of two-photon absorption and refraction properties of SZ2080&lt;sup&gt;TM&lt;/sup&gt;-based resists at 515 nm: insights into 3D printing.",
+   "year": "2025",
+   "text": "ontained in a 1 mm glass cell. Thin films were fabricated on glass substrates to study the NLO properties of photosensitized and pure SZ2080 TM . Films of pure SZ2080 TM , and mixed with 1 wt% of IRG369 and BIS were prepared using the spin coating method at 5,000 rpm for 45 s. The thicknesses of the resulting films were measured by a profilometer (Mitutoyo, SJ-410) and found to be approximately 14 μm. To remove the impact of the possible non-uniformity of the films, the Z-scan measurements were done at multiple positions of the sample for each laser intensity. The collected data were then analyzed, and the average values of the NLO parameters were derived. This approach was applied consistently for all stud",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8198297",
+   "title": "Process-Structure-Property Relationships of Copper Parts Manufactured by Laser Powder Bed Fusion.",
+   "year": "2021",
+   "text": "as-built samples were examined with a TESCAN VP scanning electron microscope (SEM) using secondary electron at 20 kV (accelerating voltage) and 11 pA (probe current). Surface morphology is a good indication of the wettability and fusion between adjacent scan tracks. The top surface roughness was measured in a transverse scanning direction using a Mitutoyo SJ-410 stylus profilometer, and the average of three measurements was used. For the microstructural analysis, the samples were sectioned parallel to the building direction (Z). Then, the samples were ground using SiC abrasive papers with meshes of 800, 1200, 2400, and 4000, followed by a polishing process using diamond pastes with sizes of 6, 3, and 1 μm",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6947018",
+   "title": "Experimental Investigation and Optimal Prediction of Maximum Forming Angle and Surface Roughness of an Al/SUS Bimetal Sheet in an Incremental Forming Process Using Machine Learning.",
+   "year": "2019",
+   "text": "0 software (Siemens PLM, Berlin, Germany) to produce the pyramidal parts according to the designed plan. Moreover, the sheets were cut into 130 mm × 130 mm and clamped along its edges using the blank holder and the backing plate. In order to evaluate the quality of the produced bimetal parts, the average surface roughness (Ra) was measured using a Mitutoyo SJ-410 (Kawasaki, Japan) roughness tester as shown in Figure 1 c. The Ra value of each pyramidal part was measured at the same depth five times and the average value was calculated for easy comparison and more accurate results. The Ra was recorded perpendicular to the forming tool movement with cut of length 0.8 mm and sampling length 6 mm. In order to t",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "ASTM B962-17": 1,
+  "ASTM D7127-17": 1,
+  "ISO 1997": 1
+ },
+ "standards_new": [
+  "ASTM B962-17",
+  "ASTM D7127-17",
+  "ISO 1997"
+ ],
+ "test_item_hits": {
+  "surface_topography": 15,
+  "contact_angle": 4,
+  "density_porosity": 3,
+  "microscopy": 3
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "object": "goettfert-rheograph",
+ "manufacturer": "goettfert",
+ "pages": 13,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO 17744": 14,
+  "ASTM D5930": 12,
+  "ISO 11443": 5,
+  "ASTM D3835": 4,
+  "ASTM D5099": 3,
+  "ISO 17025": 3,
+  "IEC 17025": 2,
+  "DIN 54811": 1,
+  "ISO 1744": 1,
+  "ISO 22007": 1,
+  "EN ISO 9001": 1,
+  "ASTM D2990": 1,
+  "ASTM D412": 1,
+  "ASTM D638": 1
+ },
+ "standards_new": [
+  "ASTM D2990",
+  "ASTM D412",
+  "ASTM D638",
+  "DIN 54811",
+  "EN ISO 9001",
+  "IEC 17025",
+  "ISO 17025",
+  "ISO 1744",
+  "ISO 22007"
+ ],
+ "test_item_hits": {
+  "shear": 70,
+  "thermal_conductivity": 32,
+  "abrasion": 7,
+  "rheology_capillary": 6,
+  "tensile": 5,
+  "density_porosity": 4,
+  "flexure": 3,
+  "microscopy": 3,
+  "altitude_low_pressure": 1,
+  "contact_angle": 1,
+  "electrical_transport": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "The RHEOTENS is well suited as a processability test for materials used in extrusion or film applications.",
+  "This add-on is particularly suitable for thermally unstable material, due to the reduced dwell time.",
+  "It is suitable for use in class A cleanrooms.",
+  "Also, low viscose materials at low shear rates are difficult, if not impossible to test.",
+  "System Overview: The RHEOGRAPH series, including models 20, 25, 50, 75, and 120, are designed for high-pressure capillary rheometry with advanced automation and user-friendly features.",
+  "They are equipped with CAN-Bus technology and are suitable for a wide range of applications in research, development, and quality assurance.",
+  "The insulation of the die plate thermosets in order to test and compare from the upper half of the mould allows to set material batches with regard to processing different temperatures between the mould and the properties.",
+  "All of GTTFERT's pressure sensors are being The counter pressure viscosimeter is a rheological calibrated with our software in order to instrument, that is used for the determination of guarantee highest quality."
+ ],
+ "standards_nearby": [
+  "ASTM D1238",
+  "ISO 1133",
+  "ISO1133"
+ ]
+}

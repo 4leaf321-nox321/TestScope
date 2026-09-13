@@ -1,0 +1,44 @@
+{
+ "object": "espec-tsb-liquid-thermal-shock",
+ "manufacturer": "espec",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "MIL-STD-883E": 2,
+  "MIL-STD-202G": 2,
+  "ISO 9001": 2,
+  "JIS C 1602": 2,
+  "ISO-9001": 2,
+  "IEC 60068-2-14": 2,
+  "MIL-STD-883J": 2,
+  "MIL-STD-202": 2,
+  "JESD22": 2,
+  "IEC 60749-11": 2
+ },
+ "standards_new": [
+  "IEC 60068-2-14",
+  "IEC 60749-11",
+  "ISO 9001",
+  "ISO-9001",
+  "JESD22",
+  "JIS C 1602",
+  "MIL-STD-202",
+  "MIL-STD-202G",
+  "MIL-STD-883E",
+  "MIL-STD-883J"
+ ],
+ "test_item_hits": {
+  "thermal_shock": 88,
+  "halt_hass": 30,
+  "microscopy": 13,
+  "altitude_low_pressure": 2,
+  "hast": 2,
+  "tensile": 2,
+  "vibration_sine_random": 2,
+  "electrical_transport": 1,
+  "temperature_cycling": 1
+ },
+ "application_sentences": [
+  "Liquid-to-liquid thermal shock testing is typically conducted to apply very strong, repetitive thermal stress to test pieces."
+ ]
+}

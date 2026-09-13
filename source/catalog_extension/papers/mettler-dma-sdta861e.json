@@ -1,0 +1,339 @@
+{
+ "object": "mettler-dma-sdta861e",
+ "manufacturer": "mettler-toledo",
+ "phrases": [
+  "METTLER TOLEDO DMA/SDTA861e",
+  "METTLER TOLEDO SDTA861e",
+  "METTLER TOLEDO DMA",
+  "METTLER TOLEDO SDTA861e 18 N",
+  "METTLER TOLEDO 40 N"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"METTLER TOLEDO DMA/SDTA861e\" OR \"METTLER TOLEDO SDTA861e\" OR \"METTLER TOLEDO DMA\" OR \"METTLER TOLEDO SDTA861e 18 N\" OR \"METTLER TOLEDO 40 N\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"METTLER TOLEDO DMA/SDTA861e\" OR \"METTLER TOLEDO SDTA861e\" OR \"METTLER TOLEDO DMA\" OR \"METTLER TOLEDO SDTA861e 18 N\" OR \"METTLER TOLEDO 40 N\") AND OPEN_ACCESS:y",
+  "count": 93,
+  "papers": [
+   {
+    "pmcid": "PMC6164695",
+    "doi": "10.3390/ma11091679",
+    "title": "3D-Printed PCL/PLA Composite Stents: Towards a New Solution to Cardiovascular Problems.",
+    "journal": "Materials (Basel)",
+    "year": "2018",
+    "cited": 85,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11136657",
+    "doi": "10.1038/s41586-024-07399-9",
+    "title": "A renewably sourced, circular photopolymer resin for additive manufacturing.",
+    "journal": "Nature",
+    "year": "2024",
+    "cited": 63,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7700632",
+    "doi": "10.3390/ma13225302",
+    "title": "Dynamic Mechanical Analysis Investigations of PLA-Based Renewable Materials: How Are They Useful?",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 48,
+    "snippets": 3,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7320000",
+    "doi": "10.1038/s41467-020-16945-8",
+    "title": "Elastomeric polyamide biomaterials with stereochemically tuneable mechanical properties and shape memory.",
+    "journal": "Nat Commun",
+    "year": "2020",
+    "cited": 35,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 10993",
+     "ISO 10993-6"
+    ]
+   },
+   {
+    "pmcid": "PMC5039689",
+    "doi": "10.1038/srep34141",
+    "title": "Persistence of fan-shaped keratocytes is a matrix-rigidity-dependent mechanism that requires α<sub>5</sub>β<sub>1</sub> integrin engagement.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 30,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8068002",
+    "doi": "10.3390/polym13081195",
+    "title": "UV-Light Curing of 3D Printing Inks from Vegetable Oils for Stereolithography.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 27,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D3850",
+     "IEEE 2017"
+    ]
+   },
+   {
+    "pmcid": "PMC5456860",
+    "doi": "10.3390/ma9070583",
+    "title": "UV-Assisted 3D Printing of Glass and Carbon Fiber-Reinforced Dual-Cure Polymer Composites.",
+    "journal": "Materials (Basel)",
+    "year": "2016",
+    "cited": 24,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D3039",
+     "ASTM D638"
+    ]
+   },
+   {
+    "pmcid": "PMC11001992",
+    "doi": "10.1038/s41467-024-47382-6",
+    "title": "Closed-loop recycling of sulfur-rich polymers with tunable properties spanning thermoplastics, elastomers, and vitrimers.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 22,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D3985",
+     "ASTM F1249"
+    ]
+   },
+   {
+    "pmcid": "PMC7240454",
+    "doi": "10.3390/polym12040738",
+    "title": "Rigid Polyurethane Foams with Various Isocyanate Indices Based on Polyols from Rapeseed Oil and Waste PET.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 21
+   },
+   {
+    "pmcid": "PMC6044618",
+    "doi": "10.1021/acsomega.7b00834",
+    "title": "Characterization of a Thiol-Ene/Acrylate-Based Polymer for Neuroprosthetic Implants.",
+    "journal": "ACS Omega",
+    "year": "2017",
+    "cited": 20
+   },
+   {
+    "pmcid": "PMC3983150",
+    "doi": "10.1021/bm401620d",
+    "title": "Deconstructing a plant macromolecular assembly: chemical architecture, molecular flexibility, and mechanical performance of natural and engineered potato suberins.",
+    "journal": "Biomacromolecules",
+    "year": "2014",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC7528844",
+    "doi": "10.1016/j.memsci.2020.118756",
+    "title": "Sterilization of polypropylene membranes of facepiece respirators by ionizing radiation.",
+    "journal": "J Memb Sci",
+    "year": "2021",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC6751698",
+    "doi": "10.1021/acsomega.9b01731",
+    "title": "High-Strength, Low-Permeable, and Light-Protective Nanocomposite Films Based on a Hybrid Nanopigment and Biodegradable PLA for Food Packaging Applications.",
+    "journal": "ACS Omega",
+    "year": "2019",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC7284495",
+    "doi": "10.3390/polym12051153",
+    "title": "Hydrothermal Aging of an Epoxy Resin Filled with Carbon Nanofillers.",
+    "journal": "Polymers (Basel)",
+    "year": "2020",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC6418828",
+    "doi": "10.3390/polym9100522",
+    "title": "Evaluation of Thermal and Thermomechanical Behaviour of Bio-Based Polyamide 11 Based Composites Reinforced with Lignocellulosic Fibres.",
+    "journal": "Polymers (Basel)",
+    "year": "2017",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC9112699",
+    "doi": "10.1021/acsapm.2c00335",
+    "title": "Cardanol-Derived Epoxy Resins as Biobased Gel Polymer Electrolytes for Potassium-Ion Conduction.",
+    "journal": "ACS Appl Polym Mater",
+    "year": "2022",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC9078596",
+    "doi": "10.1039/c7ra13634j",
+    "title": "Effect of multi-walled carbon nanotubes on the physical properties and crystallisation of recycled PET/TPU composites.",
+    "journal": "RSC Adv",
+    "year": "2018",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC9057863",
+    "doi": "10.1039/d0ra07682a",
+    "title": "Sustainable access to fully biobased epoxidized vegetable oil thermoset materials prepared by thermal or UV-cationic processes.",
+    "journal": "RSC Adv",
+    "year": "2020",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC8606546",
+    "doi": "10.1016/j.mtbio.2021.100155",
+    "title": "Fatty acid synthase as a feasible biomarker for triple negative breast cancer stem cell subpopulation cultured on electrospun scaffolds.",
+    "journal": "Mater Today Bio",
+    "year": "2021",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC6723261",
+    "doi": "10.3390/polym11081248",
+    "title": "Characterisation of Polyamide (PA)12 Nanocomposites with Montmorillonite (MMT) Filler Clay Used for the Incremental Forming of Sheets.",
+    "journal": "Polymers (Basel)",
+    "year": "2019",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC6224379",
+    "doi": "10.1038/s41598-018-34976-6",
+    "title": "Variation of mechanical and thermal properties in sustainable graphene oxide/epoxy composites.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC9090968",
+    "doi": "10.1039/c8ra06847j",
+    "title": "Thermally-healable network solids of sulfur-crosslinked poly(4-allyloxystyrene).",
+    "journal": "RSC Adv",
+    "year": "2018",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC9033479",
+    "doi": "10.1039/d1ra03203h",
+    "title": "Spent coffee waste as a renewable source for the production of sustainable poly(butylene succinate) biocomposites from a circular economy perspective.",
+    "journal": "RSC Adv",
+    "year": "2021",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC9782678",
+    "doi": "10.3390/polym14245342",
+    "title": "Maltol-Incorporated Acetylated Cassava Starch Films for Shelf-Life-Extension Packaging of Bakery Products.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 10
+   },
+   {
+    "pmcid": "PMC9785596",
+    "doi": "10.3390/polym14245473",
+    "title": "Development of Sustainable High Performance Epoxy Thermosets for Aerospace and Space Applications.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 9
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6164695",
+   "title": "3D-Printed PCL/PLA Composite Stents: Towards a New Solution to Cardiovascular Problems.",
+   "year": "2018",
+   "text": ", USA)(1:200) in blocking buffer; and finally (vi) dye the cells nuclei with (4’,6-diamidino-2-phenylindole) (DAPI) (1/1000) in blocking buffer. The adhesion assay was performed simply to obtain qualitative data about cell adhesion. 2.5.4. Mechanical Properties The PCL, PLA, and PCL/PLA samples were subjected to Dynamic Mechanical Analysis using a METTLER TOLEDO SDTA861e Dynamic Mechanical Analyzer (DMA, METTLER TOLEDO, Columbus, OH, USA). The dynamic storage modulus ( E’ ) was analyzed. The loss tangent is the ratio of loss modulus and storage modulus and this indicates the material’s viscosity and elastic properties, respectively. The loss tangent curve peak appears and can be defined as the material’s glass tra",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11136657",
+   "title": "A renewably sourced, circular photopolymer resin for additive manufacturing.",
+   "year": "2024",
+   "text": "ric analysis thermograms were performed using a Q550 Thermogravimetric analyser (TA Instruments). Thermograms were recorded under an N 2 atmosphere at a heating rate of 10 °C min −1 from 25 to 600 °C. Decomposition temperatures were reported at the 5% weight-loss-temperature ( T d,5% ) Dynamic mechanical thermal analysis data were obtained using a Mettler Toledo DMA 1 star system and analysed using the software package STARe v.13.00a (build 6917). Thermal sweeps were conducted using films (length, L × width, W × thickness = 8.60 × 6.20 × 0.60 ± 0.20 mm) cooled to −180 °C and held isothermally for roughly 5 min. Storage and loss moduli, as well as the loss factor (ratio of E″ and E ′, tan δ ) were probed as th",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7700632",
+   "title": "Dynamic Mechanical Analysis Investigations of PLA-Based Renewable Materials: How Are They Useful?",
+   "year": "2020",
+   "text": "of optically active PLA depending on effect of physical ageing [ 55 ] ▪ PLA synthesized in the laboratory (~95% L-isomer) Polymer Laboratories DMTA: 1 Hz; −150–150 °C; loading mode: ns 50 (tan δ peak) Study of internal motions; Broad secondary relaxations mentioned near −50 °C [ 56 ] ▪ PLA, 2002D type from Nature Works (4.25% D-lactic enantiomer) Mettler Toledo DMA: Isothermal steps at 2°; 1 Hz; 20–140 °C; loading mode: three point bending 58 (onset of E’ drop) PLA mechanically reprocessed up to 5 cycles The shortening of the first rubbery plateau denotes the chain cleavage [ 57 ] ▪ PLA from Nature Works (92% L-lactide, M w 9 × 10 4 g mol −1 , PI 2.75) TA Instruments DMTA V: 2 °C/min; 1 Hz; −140–130 °C; load",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7700632",
+   "title": "Dynamic Mechanical Analysis Investigations of PLA-Based Renewable Materials: How Are They Useful?",
+   "year": "2020",
+   "text": "-shape E’ vs. T plot. [ 58 ] ▪ PLA 3052D type from Nature Works Ingeo TM (M w 13.9 × 10 4 g mol −1 ) TA Instruments Q800 DMA: 3 °C/min; 1 Hz; −60–130 °C; loading mode: single cantilever bending 65.6 (tan δ peak) Glass fiber-reinforced PLA composites [ 59 ] ▪ PLLA 4032D type from Nature Works (1.2–1.6% D-lactide, M w 20.7 × 10 4 g mol −1 , PI 1.74) Mettler Toledo DMA 1: 2 °C/min; 1 Hz; 30–100 °C; loading mode: tension 60 (onset of E’ drop) Nanocomposites of PLLA with CNC 5 and modified CNC (with TMC 6 300); Improved HDT at T &lt; T m 7 [ 60 ] ▪ PLA 2002D type from Nature Works (4.2% D-lactide, M w 4 × 10 4 g mol −1 ) Perkin Elmer Inc. DMA 8000 3 °C/min; −500–150 °C; loading mode: tension 60 (onset of E’ drop)",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7700632",
+   "title": "Dynamic Mechanical Analysis Investigations of PLA-Based Renewable Materials: How Are They Useful?",
+   "year": "2020",
+   "text": "ticed on E’vs. T during the glass transition. [ 61 ] ▪ PLA 2003D type from Nature Works LLC (M w 9.8 × 10 4 and 20 × 10 4 g mol −1 ) TA Instruments Q800 DMA: 1 °C/min; 1 Hz; 25–120 °C; loading mode: bending 66 (tan δ peak) PLA nanocomposites with esterified cellulose nanocrystals [ 62 ] ▪ PLA 3251D type from Nature Works (Naarden, The Netherlands) Mettler Toledo DMA: 3 °C/min; 1 Hz; 0–160 °C; loading mode: dual cantilever bending 60 (onset of E’ drop) PLA composites with BKSW 9 (15–35%) [ 63 ] ▪ PLA 4043D type from Nature Works (2% D-lactide, M w 10 × 10 4 g mol −1 ) TA Instruments Q800 DMA: 3 °C/min; 1 Hz; 20–140 °C; loading mode: bending 70 (tan δ peak) PLA-trifluoropropyl-POSS 10 composites [ 64 ] ▪ PLA 32",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7320000",
+   "title": "Elastomeric polyamide biomaterials with stereochemically tuneable mechanical properties and shape memory.",
+   "year": "2020",
+   "text": "DSC3, Mettler Toledo) from 0 to 180 °C at a heating rate of 10 °C min −1 for three heating/cooling cycles unless otherwise specified. The glass transition temperature ( T g ) was determined from the inflection point in the second heating cycle. Dynamic mechanical analysis (DMA) Dynamic mechanical thermal analysis (DMTA) data were obtained using a Mettler Toledo DMA 1-star system and analysed using the software package STARe V13.00a (build 6917). Thermal sweeps were conducted using bar-shaped films (11.00 mm in length × 6.00 mm in width x 1.00 mm in thickness) cooled to −80 °C and held isothermally for ca . 5 minutes. Storage and loss moduli, as well as the loss factor (ratio of E” and E’ , tan δ), were probe",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5039689",
+   "title": "Persistence of fan-shaped keratocytes is a matrix-rigidity-dependent mechanism that requires α<sub>5</sub>β<sub>1</sub> integrin engagement.",
+   "year": "2016",
+   "text": "in-coated at 5000 rpm on 25 mm glass coverslips. PDMS was then cured for 2–3 hours at 60 °C. Samples were stored at room temperature in a vacuum desiccator. Measurement of polyacrylamide and polydimethylsiloxane stiffness The stiffness (Young’s modulus) of hydroxy-PAAm hydrogels and PDMS elastomers was measured by DMA (Dynamic Mechanical Analysis, Mettler Toledo DMA/SDTA 861e, Switzerland). Briefly, DMA analysis in compression mode was undertaken on circular cylindrical samples of 15 mm in diameter and height of 10 mm. Samples were sandwiched between two parallel plates and an oscillating strain of maximum amplitude of 10% was applied. The stress needed to deform the cylindrical samples (n = 13) was measured",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8068002",
+   "title": "UV-Light Curing of 3D Printing Inks from Vegetable Oils for Stereolithography.",
+   "year": "2021",
+   "text": "ere performed using shear mode with a frequency of 10 Hz and 0.3% of strain, while UV/VIS onset was 30 s. Storage modulus G’, loss modulus G”, loss factor tanδ (tanδ = G”/G’), and complex viscosity η* were recorded during the real-time photorheometry measurement. 2.2.4. Dynamic Mechanical Analysis Dynamic mechanical analysis (DMA) was performed by Mettler Toledo SDTA861e dynamic mechanical analyzer (Columbus, OH, USA). Measurements were performed on UV-cured films (8.5 × 4 × 0.3 mm 3 ) and storage, loss modulus, and damping factor were characterized, with force of 10 N, frequency 1 Hz, elongation 10 µm, and in temperature −70–100 °C, heating rate of 3 °C/min. 2.3. Resins Formulation and Curing Eight different resi",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5456860",
+   "title": "UV-Assisted 3D Printing of Glass and Carbon Fiber-Reinforced Dual-Cure Polymer Composites.",
+   "year": "2016",
+   "text": "using a shear stress-controlled Rheometrics DSR 200 rheometer from 20 to 2000 Pa. All the tests were performed at room temperature. The diameter of the cone-plate geometry mounted on the rheometer was 25 mm with a 0.051 mm gap between them. 3.4. Dynamic Mechanical Analysis (DMA) DMA analyses were performed in three-point bending configuration on a Mettler Toledo DMA/SDTA861 instrument in strain sweep at ambient temperature, and in dynamic scans from 20 °C to 240 °C at 3 °C/min heating rate. The frequency was kept constant (1 Hz). 3.5. Differential Scanning Calorimetry (DSC) DSC analysis was carried out by means of a Mettler Toledo DSC/823 e instrument (Mettler Toledo, Novate Milanese, Italy) indium and n -hex",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11001992",
+   "title": "Closed-loop recycling of sulfur-rich polymers with tunable properties spanning thermoplastics, elastomers, and vitrimers.",
+   "year": "2024",
+   "text": "metric analyses of the resulted polymers were measured on a Mettler-Toledo TGA/SDTA851e. Dynamic mechanical analysis (DMA) A rectangular spline for the Dynamic Mechanical Properties Test with a scale of 16 mm × 3.5 mm × 0.2 mm was obtained by cutting the film. The test was performed at small tension film mode, 0.1% strain, 1 Hz, 3.0 °C min −1 on a Mettler-Toledo DMA/SDTA 1+ . Uniaxial tensile elongation testing The test was performed at a strain rate of 5 mm/min on an INSTRON 6800. Water vapor permeability The moisture vapor transmission rate was determined at 37.8 °C with gas at 90% RH and 10 SCCM, following ASTM F1249 standard. Oxygen permeation analyzer The oxygen transmission rate was determined at 23.0 °",
+   "standards": [
+    "ASTM F1249"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ASTM F1249": 1
+ },
+ "standards_new": [
+  "ASTM F1249"
+ ],
+ "test_item_hits": {
+  "dma": 7,
+  "flexure": 6,
+  "shear": 2,
+  "compression": 1,
+  "dsc": 1,
+  "tensile": 1
+ }
+}

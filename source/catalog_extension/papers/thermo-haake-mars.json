@@ -1,0 +1,308 @@
+{
+ "object": "thermo-haake-mars",
+ "manufacturer": "thermo-fisher",
+ "phrases": [
+  "Thermo Fisher MARS 40",
+  "Thermo Fisher MARS 60",
+  "HAAKE MARS 40",
+  "HAAKE MARS 60"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Thermo Fisher MARS 40\" OR \"Thermo Fisher MARS 60\" OR \"HAAKE MARS 40\" OR \"HAAKE MARS 60\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Thermo Fisher MARS 40\" OR \"Thermo Fisher MARS 60\" OR \"HAAKE MARS 40\" OR \"HAAKE MARS 60\") AND OPEN_ACCESS:y",
+  "count": 399,
+  "papers": [
+   {
+    "pmcid": "PMC7522044",
+    "doi": "10.1016/j.bioactmat.2020.08.030",
+    "title": "Three-dimensional bioprinting of multicell-laden scaffolds containing bone morphogenic protein-4 for promoting M2 macrophage polarization and accelerating bone defect repair in diabetes mellitus.",
+    "journal": "Bioact Mater",
+    "year": "2021",
+    "cited": 158,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GB14925-2010",
+     "GM-90"
+    ]
+   },
+   {
+    "pmcid": "PMC7608828",
+    "doi": "10.1126/sciadv.aba0942",
+    "title": "Ångstrom-scale silver particle-embedded carbomer gel promotes wound healing by inhibiting bacterial colonization and inflammation.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 141,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9338060",
+    "doi": "10.1038/s41467-022-32140-3",
+    "title": "Fatigue-free artificial ionic skin toughened by self-healable elastic nanomesh.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 113,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9256661",
+    "doi": "10.1016/j.bioactmat.2022.06.008",
+    "title": "A novel sprayable thermosensitive hydrogel coupled with zinc modified metformin promotes the healing of skin wound.",
+    "journal": "Bioact Mater",
+    "year": "2023",
+    "cited": 113,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10589730",
+    "doi": "10.1016/j.bioactmat.2023.10.005",
+    "title": "Copper ion/gallic acid MOFs-laden adhesive pomelo peel sponge effectively treats biofilm-infected skin wounds and improves healing quality.",
+    "journal": "Bioact Mater",
+    "year": "2024",
+    "cited": 87,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GB-11063-2"
+    ]
+   },
+   {
+    "pmcid": "PMC10066054",
+    "doi": "10.1007/s40820-023-01043-3",
+    "title": "Self-Healing Liquid Metal Magnetic Hydrogels for Smart Feedback Sensors and High-Performance Electromagnetic Shielding.",
+    "journal": "Nanomicro Lett",
+    "year": "2023",
+    "cited": 73,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10011413",
+    "doi": "10.1038/s41467-023-37036-4",
+    "title": "Aqueous spinning of robust, self-healable, and crack-resistant hydrogel microfibers enabled by hydrogen bond nanoconfinement.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 73,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7979868",
+    "doi": "10.1038/s41522-021-00197-5",
+    "title": "The biofilm matrix scaffold of Pseudomonas aeruginosa contains G-quadruplex extracellular DNA structures.",
+    "journal": "NPJ Biofilms Microbiomes",
+    "year": "2021",
+    "cited": 67,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11219873",
+    "doi": "10.1038/s41467-024-49933-3",
+    "title": "Neutrophil extracellular traps-inspired DNA hydrogel for wound hemostatic adjuvant.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 64
+   },
+   {
+    "pmcid": "PMC9852579",
+    "doi": "10.1038/s41467-022-35140-5",
+    "title": "Bioprinting microporous functional living materials from protein-based core-shell microgels.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 61
+   },
+   {
+    "pmcid": "PMC9255276",
+    "doi": "10.1093/rb/rbac038",
+    "title": "Three-dimensional bioprinting sodium alginate/gelatin scaffold combined with neural stem cells and oligodendrocytes markedly promoting nerve regeneration after spinal cord injury.",
+    "journal": "Regen Biomater",
+    "year": "2022",
+    "cited": 59
+   },
+   {
+    "pmcid": "PMC8132211",
+    "doi": "10.1016/j.jare.2020.11.011",
+    "title": "Robotic <i>in situ</i> 3D bio-printing technology for repairing large segmental bone defects.",
+    "journal": "J Adv Res",
+    "year": "2021",
+    "cited": 59
+   },
+   {
+    "pmcid": "PMC7558587",
+    "doi": "10.3390/pharmaceutics12090820",
+    "title": "Rheology by Design: A Regulatory Tutorial for Analytical Method Validation.",
+    "journal": "Pharmaceutics",
+    "year": "2020",
+    "cited": 53
+   },
+   {
+    "pmcid": "PMC8085758",
+    "doi": "10.1016/j.bioactmat.2021.04.008",
+    "title": "Implantable blood clot loaded with BMP-2 for regulation of osteoimmunology and enhancement of bone repair.",
+    "journal": "Bioact Mater",
+    "year": "2021",
+    "cited": 52
+   },
+   {
+    "pmcid": "PMC9102451",
+    "doi": "10.3390/polym14091836",
+    "title": "Thermosensitive Polymer Blend Composed of Poloxamer 407, Poloxamer 188 and Polycarbophil for the Use as Mucoadhesive In Situ Gel.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 51
+   },
+   {
+    "pmcid": "PMC9919607",
+    "doi": "10.3390/molecules28031043",
+    "title": "Antioxidant, Wound Healing Potential and In Silico Assessment of Naringin, Eicosane and Octacosane.",
+    "journal": "Molecules",
+    "year": "2023",
+    "cited": 50
+   },
+   {
+    "pmcid": "PMC9136184",
+    "doi": "10.1016/j.ultsonch.2022.106045",
+    "title": "The effect of sonication-synergistic natural deep eutectic solvents on extraction yield, structural and physicochemical properties of pectins extracted from mango peels.",
+    "journal": "Ultrason Sonochem",
+    "year": "2022",
+    "cited": 48
+   },
+   {
+    "pmcid": "PMC10682433",
+    "doi": "10.1038/s41467-023-43533-3",
+    "title": "RNA is a key component of extracellular DNA networks in Pseudomonas aeruginosa biofilms.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 46
+   },
+   {
+    "pmcid": "PMC8971536",
+    "doi": "10.1016/j.bioactmat.2022.03.029",
+    "title": "Multi-omics analysis based on 3D-bioprinted models innovates therapeutic target discovery of osteosarcoma.",
+    "journal": "Bioact Mater",
+    "year": "2022",
+    "cited": 44
+   },
+   {
+    "pmcid": "PMC7814104",
+    "doi": "10.1016/j.bioactmat.2020.12.018",
+    "title": "High-precision, gelatin-based, hybrid, bilayer scaffolds using melt electro-writing to repair cartilage injury.",
+    "journal": "Bioact Mater",
+    "year": "2021",
+    "cited": 42
+   },
+   {
+    "pmcid": "PMC6983186",
+    "doi": "10.3390/molecules25010081",
+    "title": "A Novel Gel-Forming Solution Based on PEG-DSPE/Solutol HS 15 Mixed Micelles and Gellan Gum for Ophthalmic Delivery of Curcumin.",
+    "journal": "Molecules",
+    "year": "2019",
+    "cited": 38
+   },
+   {
+    "pmcid": "PMC10771791",
+    "doi": "10.2147/ijn.s432112",
+    "title": "MMP-2 Responsive Peptide Hydrogel-Based Nanoplatform for Multimodal Tumor Therapy.",
+    "journal": "Int J Nanomedicine",
+    "year": "2024",
+    "cited": 33
+   },
+   {
+    "pmcid": "PMC11654680",
+    "doi": "10.1126/sciadv.adt1643",
+    "title": "Biologically inspired bioactive hydrogels for scarless corneal repair.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 32
+   },
+   {
+    "pmcid": "PMC8997637",
+    "doi": "10.3390/foods11071042",
+    "title": "Effects of Ultrasound Combined with Preheating Treatment to Improve the Thermal Stability of Coconut Milk by Modifying the Physicochemical Properties of Coconut Protein.",
+    "journal": "Foods",
+    "year": "2022",
+    "cited": 30
+   },
+   {
+    "pmcid": "PMC7835828",
+    "doi": "10.3390/foods10010197",
+    "title": "Physicochemical Properties and Antioxidant Activity of Pumpkin Polysaccharide (<i>Cucurbita moschata</i> Duchesne ex Poiret) Modified by Subcritical Water.",
+    "journal": "Foods",
+    "year": "2021",
+    "cited": 30
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC7522044",
+   "title": "Three-dimensional bioprinting of multicell-laden scaffolds containing bone morphogenic protein-4 for promoting M2 macrophage polarization and accelerating bone defect repair in diabetes mellitus.",
+   "year": "2021",
+   "text": "/2%gelatin/2%PEG, 5%GelMA/3%gelatin/2%PEG, and 5%GelMA/5%gelatin/2%PEG were prepared to preliminarily investigate the printability. In brief, above bioinks were printed using a 2-mL syringe equipped with a 0.26 mm inner diameter needle [ 16 ]. 2.3.2. Rheology The rheological characteristics of the prepared bioinks were evaluated using a rheometer (HAAKE MARS 60; Germany). A 50-mm-diameter plate-plate geometry was used in all tests. First, all samples were placed on the plate at 40 °C to completely fill the 1-mm gap between the two plates. Tests of viscosity and shear stress were performed by varying the shear rate from 1 to 500 s −1 with rotational tests at 20 °C. The viscosity was then measured with the",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7608828",
+   "title": "Ångstrom-scale silver particle-embedded carbomer gel promotes wound healing by inhibiting bacterial colonization and inflammation.",
+   "year": "2020",
+   "text": "isher Scientific, USA). The thermal stabilities of L-AgÅPs-gel and blank-gel were tested by thermogravimetric analysis with a Q500 thermogravimetric analyzer (TA Instruments, USA) from 30° to 800°C at a heating rate of 20°C min −1 . The rheological properties of L-AgÅPs-gel and blank-gel were analyzed by amplitude and frequency sweep tests using a HAAKE MARS 60 rheometer (Thermo Haake, Germany). The strain amplitude sweep test was conducted at a constant frequency of 1 Hz with strain amplitude ranging from 0.1 to 100%. Frequency sweeps were taken at a constant strain of 1% from 0.1 to 5 Hz. Bacterial strains and culture S. aureus ATCC25923, S. aureus ATCC29213, and P. aeruginosa ATCC27853 were provided b",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9338060",
+   "title": "Fatigue-free artificial ionic skin toughened by self-healable elastic nanomesh.",
+   "year": "2022",
+   "text": "th respect to AAm) and photoinitiator 2-oxoglutaric acid (0.1 mol % with respect to AAm) to a solution containing 4 M AAm and 0.01 M NaCl. The precursor solution was then polymerized under 365 nm UV irradiation for 30 min to form the hydrogel. Characterizations Rheological properties were measured at different frequencies using a Thermo Scientific HAAKE MARS 60 modular advanced rheometer. X-ray diffraction (XRD) was measured on Bruker D8 diffractometer using Ni-filtered Cu Kα radiation (40 kV, 40 mA). The microscopic structures were observed by a field-emission scanning electron microscope (FE-SEM, Regulus 8230) and a POM (Olympus BX53-P). The optical transmittance ranging from 400 to 800 nm was measured",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9256661",
+   "title": "A novel sprayable thermosensitive hydrogel coupled with zinc modified metformin promotes the healing of skin wound.",
+   "year": "2023",
+   "text": "by scanning electron microscope (SEM) (Zeiss, Merlin). Surface morphologies were obtained under 5 kV accelerated voltage [ 33 ]. All samples were coated with platinum before scanning to improve electrical conductivity. Rheological properties of ZnMet-PF127 hydrogel and PF127 hydrogel were measured using a rotary rheometer (ThermoFisher Scientific, HAAKE MARS 40) [ 34 ]. The morphologies of the ZnMet-PF127 samples were examined by transmission electron microscopy (TEM). About 3 μL of sample was gently placed on carbon-coated copper grids (TED Pella, Redding). The grids were discharged before use with a negative current of 15 mA for 10 s. Specimens were prepared in a controlled environment and were allowed",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10589730",
+   "title": "Copper ion/gallic acid MOFs-laden adhesive pomelo peel sponge effectively treats biofilm-infected skin wounds and improves healing quality.",
+   "year": "2024",
+   "text": "ing two differently colored hydrogel strips in half and reconnecting them after exchanging the red and blue halves. Upon heating to 37 °C, permeation occurred between the disconnected hydrogel junctions. 2.9. Rheological experiment The dynamic rheological behavior before and after gelation at 25 °C was assessed using a stress-controlled rheometer (Haake Mars 60) with a 25 mm aluminum parallel-plate geometry. The structural recovery was modeled by determining the modulus changes at 1 % and 300 % strain. Measurements were conducted under linear viscoelastic conditions with a 500 μm gap between plates. 2.10. Adhesion test and leakage test For adhesion testing, 50 g cylindrical alloy samples were placed in a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10066054",
+   "title": "Self-Healing Liquid Metal Magnetic Hydrogels for Smart Feedback Sensors and High-Performance Electromagnetic Shielding.",
+   "year": "2023",
+   "text": "xamined using an FTIR spectrometer (Thermo Nicolet iS10). The morphology and elemental distribution of the PVA–LM hydrogels were characterized using Scanning electron microscopy (SEM, Nova Nano SEM 450) coupled with energy-dispersive X-ray spectroscopy (EDS, Bruker Silicon). The rheological behavior of the hydrogels was investigated using a Thermo HAAKE MARS 60 machine with a 20 mm parallel plate. A dynamic frequency sweep of 0.1–10 Hz was conducted at 25 °C with a fixed oscillation strain of 0.2% in the oscillation mode. The electrical resistivities of the PVA/EGaInSn–Ni and pure PVA hydrogel samples were tested using an RTS-8 four-probe resistivity meter. An LCR instrument (TH2830) operated using a Lab",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10011413",
+   "title": "Aqueous spinning of robust, self-healable, and crack-resistant hydrogel microfibers enabled by hydrogen bond nanoconfinement.",
+   "year": "2023",
+   "text": "for photo-induced polymerization (365 nm, 40 W) for 30 min to obtain a highly viscous solution. The solution was left in air to let excess water evaporate at ambient conditions (25 °C, RH 60%), and PDMAEA-Q/PAA film was finally obtained with moisture equilibrium. Characterizations The rheological behavior of the spinning dope was investigated on a HAAKE MARS 60 rheometer. Dynamic frequency sweep was measured from 1 to 100 rad/s at 25 °C in the oscillation mode, and the oscillatory stress was set to 300 Pa. SEM and elemental mapping images were taken using an environmental scanning electron microscope (Quanta 250, Czech Republic). Attenuated total reflection Fourier transform infrared (ATR-FTIR) spectra w",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7979868",
+   "title": "The biofilm matrix scaffold of Pseudomonas aeruginosa contains G-quadruplex extracellular DNA structures.",
+   "year": "2021",
+   "text": "d power-law fits, with the standard deviation across three replicates shown in Supplementary Tables 1 and 2 , where averages and standard deviations reflect overall data rather than analyses of individual samples. Duplicate measurements for all high shear rheological assays are presented in Supplementary Figure 14 . For oscillatory measurements, a Haake Mars 60 (Thermo Scientific) stress-controlled rotational rheometer with Peltier-controlled element at 25 °C was used. A measure of 0.25 mL biofilm samples was collected from the solution and deposited on 35-mm-diameter parallel plate geometry with smooth titanium plates. These were closed to 250 µm, and the samples were trimmed prior to measurement. A fre",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 5,
+  "shear": 3,
+  "tga": 1
+ }
+}

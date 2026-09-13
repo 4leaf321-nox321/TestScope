@@ -1,0 +1,29 @@
+{
+ "object": "salt-st-1004-hydraulic-utm",
+ "manufacturer": "salt",
+ "phrases": [
+  "SALT Co. ST-1004 ST-1004C",
+  "SALT Co. ST-1004",
+  "SALT Co. ST-1004C",
+  "SALT Co. ST-1004LT",
+  "SALT Co. ST-1004 300 kN",
+  "SALT Co. ST-1004 500 kN",
+  "Light-SALT ST-1004 ST-1004C",
+  "Light-SALT ST-1004"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"SALT Co. ST-1004 ST-1004C\" OR \"SALT Co. ST-1004\" OR \"SALT Co. ST-1004C\" OR \"SALT Co. ST-1004LT\" OR \"SALT Co. ST-1004 300 kN\" OR \"SALT Co. ST-1004 500 kN\" OR \"Light-SALT ST-1004 ST-1004C\" OR \"Light-SALT ST-1004\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"SALT Co. ST-1004 ST-1004C\" OR \"SALT Co. ST-1004\" OR \"SALT Co. ST-1004C\" OR \"SALT Co. ST-1004LT\" OR \"SALT Co. ST-1004 300 kN\" OR \"SALT Co. ST-1004 500 kN\" OR \"Light-SALT ST-1004 ST-1004C\" OR \"Light-SALT ST-1004\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

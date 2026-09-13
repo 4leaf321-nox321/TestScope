@@ -1,0 +1,210 @@
+{
+ "object": "mecmesin-multitest",
+ "manufacturer": "mecmesin",
+ "phrases": [
+  "Mecmesin MultiTest-dV",
+  "Mecmesin MultiTest-dV 0.5",
+  "Mecmesin MultiTest-dV 1",
+  "Mecmesin MultiTest-dV 2.5",
+  "Mecmesin MultiTest 0.5-i",
+  "Mecmesin MultiTest 1-i"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Mecmesin MultiTest-dV\" OR \"Mecmesin MultiTest-dV 0.5\" OR \"Mecmesin MultiTest-dV 1\" OR \"Mecmesin MultiTest-dV 2.5\" OR \"Mecmesin MultiTest 0.5-i\" OR \"Mecmesin MultiTest 1-i\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Mecmesin MultiTest-dV\" OR \"Mecmesin MultiTest-dV 0.5\" OR \"Mecmesin MultiTest-dV 1\" OR \"Mecmesin MultiTest-dV 2.5\" OR \"Mecmesin MultiTest 0.5-i\" OR \"Mecmesin MultiTest 1-i\") AND OPEN_ACCESS:y",
+  "count": 11,
+  "papers": [
+   {
+    "pmcid": "PMC9607144",
+    "doi": "10.3390/polym14204396",
+    "title": "Corn: Its Structure, Polymer, Fiber, Composite, Properties, and Applications.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 18,
+    "snippets": 0,
+    "standards_in_paper": [
+     "ASTM 3985",
+     "ASTM D 638",
+     "ASTM D 638-10",
+     "ASTM D 882",
+     "ASTM D3039-76",
+     "ASTM D638-91",
+     "ASTM D828-97",
+     "ASTM E96-00"
+    ]
+   },
+   {
+    "pmcid": "PMC9046257",
+    "doi": "10.1038/s41598-022-10930-5",
+    "title": "Compressive behaviour of anisotropic mycelium-based composites.",
+    "journal": "Sci Rep",
+    "year": "2022",
+    "cited": 16,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM C67",
+     "ASTM D1037",
+     "ASTM D2166-13",
+     "ASTM D3501",
+     "ASTM D695"
+    ]
+   },
+   {
+    "pmcid": "PMC9375752",
+    "doi": "10.1007/s00414-022-02846-6",
+    "title": "Application of 3D printing in assessment and demonstration of stab injuries.",
+    "journal": "Int J Legal Med",
+    "year": "2022",
+    "cited": 6,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10383664",
+    "doi": "10.3390/polym15143141",
+    "title": "A Systematic Study on Impact of Binder Formulation on Green Body Strength of Vat-Photopolymerisation 3D Printed Silica Ceramics Used in Investment Casting.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 4,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11632586",
+    "doi": "10.1002/cssc.202400844",
+    "title": "Poly(Arylene Alkylene)s with Tetrazole Pendants for Alkaline Ion-Solvating Polymer Electrolytes.",
+    "journal": "ChemSusChem",
+    "year": "2024",
+    "cited": 3,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10491303",
+    "doi": "10.1371/journal.pone.0287652",
+    "title": "Biomechanical study on the effect of atherosclerosis on the vulnerability of thoracic aorta, and it's role in the development of traumatic aorta injury.",
+    "journal": "PLoS One",
+    "year": "2023",
+    "cited": 3,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC11768263",
+    "doi": "10.3390/polym17020194",
+    "title": "Lignin Reinforcement in Polybutylene Succinate Copolymers.",
+    "journal": "Polymers (Basel)",
+    "year": "2025",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9149937",
+    "doi": "10.3390/biomimetics7020053",
+    "title": "Effect of Composition Strategies on Mycelium-Based Composites Flexural Behaviour.",
+    "journal": "Biomimetics (Basel)",
+    "year": "2022",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM C203",
+     "ASTM C393",
+     "ASTM D1037",
+     "ASTM D7250",
+     "ISO 12344",
+     "ISO 16978"
+    ]
+   },
+   {
+    "pmcid": "PMC12843226",
+    "doi": "10.3390/ma19020275",
+    "title": "Evaluation of Polybutylene Succinate Composites Reinforced with Lignin and Milled Hemp Stalks.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13163346",
+    "doi": "10.3390/ijms27094044",
+    "title": "Inverse-Vulcanized Sulfur-Soybean Oil Polymers as Renewable Materials with Tunable Thermal Insulation Properties: Effect of Formulation and Biochar Incorporation.",
+    "journal": "Int J Mol Sci",
+    "year": "2026",
+    "cited": 0
+   },
+   {
+    "pmcid": "PMC12843062",
+    "doi": "10.3390/ma19020357",
+    "title": "Optimizing Wood-Hemp-Sodium Silicate Composites for Strength, Extrudability, and Cost in Additive Manufacturing Applications.",
+    "journal": "Materials (Basel)",
+    "year": "2026",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC9046257",
+   "title": "Compressive behaviour of anisotropic mycelium-based composites.",
+   "year": "2022",
+   "text": "ly. Furthermore, MBC have such a high porosity and a high variation in particle sizes and distribution that gaining accurate measurements would be challenging. This is evidenced in the literature by a larger standard deviation in results using this process applied to homogeneous MBC 7 . In the context of this study, load testing was performed on a Mecmesin MultiTest-dV testing bench equipped with a 2500 N load sensor, with a loading speed of 1.0 mm/min. Young’s modulus and ultimate compressive strength were calculated following ASTM D1037. Chemical analysis Fourier-Transform Infrared (FTIR) spectrometry has been used previously for analysing the lignocellulosic profiles of substrates and their relation to fungal",
+   "standards": [
+    "ASTM D1037"
+   ]
+  },
+  {
+   "pmcid": "PMC9375752",
+   "title": "Application of 3D printing in assessment and demonstration of stab injuries.",
+   "year": "2022",
+   "text": "by a digital caliper. Replica knives were installed into the same stab wounds, and maximal possible horizontal force was applied in the direction of its edge (horizontal to the skin surface). Entrance wound length was measured again by a digital caliper. Dynamic stabbing force measurements Dynamic stabbing force measurements were performed with a Mecmesin MultiTest-dv motorized test stand (2.5 kN) combined with a Mecmesin force gauge AFG-500 (0–500 N capacity, ± 0.5 N accuracy). Stabbing force was 2.5 kN (250 kg), initial tip–surface distance was 10 mm, and displacement (downwards movement) was 60 and 75 mm, with a constant movement speed of 100 mm/min. The load (force) was measured by AFG-500 was recorded with",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10383664",
+   "title": "A Systematic Study on Impact of Binder Formulation on Green Body Strength of Vat-Photopolymerisation 3D Printed Silica Ceramics Used in Investment Casting.",
+   "year": "2023",
+   "text": "easurements. The viscosity of suspensions as a function of shear rate from 0 to 200 s −1 was measured at 25 °C. All test samples for all un- and loaded mixtures were printed in the Z (vertical) direction by 3D printer at room temperature. The mechanical properties of all binder mixtures were studied, according to ASTM standard D638 [ 31 ], using a Mecmesin Multitest-dV Force tester (PPT Group Ltd., Slinfold, UK) with a capacity of 2.5 kN at the ASTM standard speed of 0.5 mm/min. The ASTM standard test method C1161-18 was used to measure the flexural strength of all green (not-sintered) ceramic rectangular test bars with a dimension of 4 mm × 3 mm × 45 mm (type B). The distance between two supports in the three-p",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10491303",
+   "title": "Biomechanical study on the effect of atherosclerosis on the vulnerability of thoracic aorta, and it's role in the development of traumatic aorta injury.",
+   "year": "2023",
+   "text": "copic appearance (one sample was damaged during sample removal, and four were discarded for processing technical failures). Ninety-eight samples were analyzed by their microscopical appearance (one was excluded because of damage to the sample during histological slide preparation). Measurement of sample thickness Sample thickness was measured by a MecMesin MultiTest dV (capacity: 0–2.5 kN; Mecmesin, Slinford, UK) motorized force tester combined with a Mecmesin advanced force gauge (AFG) AFG-50 (measurement range: 0 N—50 N, resolution 0.01 N, accuracy: ±0.005 N; Mecmesin, Slinford, UK). A Mecmesin radius test rod with 8 mm diameter (Part. No. 432–354, Mecmesin, Slinford, UK) was applied to the AFG, and the displa",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC11768263",
+   "title": "Lignin Reinforcement in Polybutylene Succinate Copolymers.",
+   "year": "2025",
+   "text": "according to the ASTM Standard D1708 [ 32 ] using an Instron 5500R-1132 universal test machine, equipped with Bluehill v3.3 software, with a crosshead speed of 1 mm/min and strain measured using an extensometer (model 3542, Epsilon Technology Corp., Jackson, WY, USA). Three-point flexural tests (8 replicates) were performed using a 2.5 kN capacity Mecmesin MultiTest-dV (PPT Group, Slinfold, UK) equipped with VectorPro Lite V6.1.0.0 Software at a crosshead test speed of 1.1 mm/min according to ASTM standard D790 [ 33 ]. 2.10. Data Analysis Statistical analyses were conducted using Tukey’s pairwise comparisons and t -tests to evaluate differences between formulations. The results were considered statistically sign",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9149937",
+   "title": "Effect of Composition Strategies on Mycelium-Based Composites Flexural Behaviour.",
+   "year": "2022",
+   "text": "average by 3.5% in the control group, 2.7% in the inner hessian group, 1.7% in the hessian jacketing group, and 0.8% in the rattan group. The distance of the top and bottom specimen surfaces to the neutral axis of stress in flexion was of 10 mm. Six replicates were produced and tested for each of the specimen types. Load testing was performed on a Mecmesin MultiTest-dV testing bench equipped with a 2500 N load sensor, with a loading speed of 10.0 mm/min. Flexural modulus and modulus of rupture were calculated following ASTM D1037. The four specimen groups specifics are illustrated in Figure 1 . Figure 1 Fibre placement strategies (left to right): hessian jacketing (BM_H), rattan fibres (BM_R), inner hessian (BM_",
+   "standards": [
+    "ASTM D1037"
+   ]
+  }
+ ],
+ "standards_found": {
+  "ASTM D1037": 2
+ },
+ "standards_new": [
+  "ASTM D1037"
+ ],
+ "test_item_hits": {
+  "density_porosity": 1,
+  "electrical_transport": 1,
+  "particle_size": 1,
+  "shear": 1
+ }
+}

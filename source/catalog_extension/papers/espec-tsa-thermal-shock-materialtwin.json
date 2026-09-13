@@ -1,0 +1,180 @@
+{
+ "object": "espec-tsa-thermal-shock-materialtwin",
+ "manufacturer": "espec",
+ "phrases": [
+  "ESPEC TSA",
+  "ESPEC TSA series 2·3"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"ESPEC TSA\" OR \"ESPEC TSA series 2·3\"",
+  "count": 10,
+  "works": [
+   {
+    "id": "https://openalex.org/W2781501274",
+    "doi": "https://doi.org/10.1109/tcpmt.2017.2780102",
+    "title": "Wafer-Level AuSn/Pt Solid–Liquid Interdiffusion Bonding",
+    "year": 2018,
+    "cited": 18,
+    "venue": "IEEE Transactions on Components Packaging and Manufacturing Technology",
+    "topics": [
+     "Electronic Packaging and Soldering Technologies",
+     "3D IC and TSV technologies",
+     "Adhesion, Friction, and Surface Interactions"
+    ],
+    "oa_url": "https://research.aalto.fi/files/31577045/ELEC_Rautiainen_etal_Wafer_Level_AuSn_IEEETraPacManTec_8_2_2018.pdf",
+    "abstract": "In this paper, wafer-level AuSn/Pt solid-liquid interdiffusion bonding for hermetic encapsulation of microelectromechanical systems (MEMS) is evaluated. Although AuSn is used for bonding of ICs, the implementation of AuSn diffusion bonding in MEMS applications requires thorough understanding of its compatibility with the complete layer stack including adhesion, buffer, and metallization layers. Partitioning of the layer stacks is possible in MEMS devices consisting of several silicon wafers since the device wafer carrying functional structures and the encapsulation wafer have different restrictions on process integration and applicable metal deposition techniques. In this paper, CMOS/MEMS compatible sputtered platinum is utilized on the device wafer as a contact metallization for Au-Sn metallized cap wafer. The role of the platinum layer thickness as well as the nickel and molybdenum buffer layers on mechanical reliability were tested. The mechanical shear and tensile tests were performed for samples after bonding as well as after high-temperature storage and thermal shock tests. The results were rationalized based on the combined microstructural, thermodynamic, and fracture surface analyses. High-strength and thermodynamically stable bonds were achieved, exhibiting shear strength up to ~180 MPa and tensile strength up to ~80 MPa. Platinum was consumed completely during bonding and was observed to dissolve mainly into the (Au,Pt)Sn phase. Thicker platinum layer (200 versus 100 nm) increased the (Au,Pt)Sn phase thickness and resulted in higher strength. The molybdenum buffer layer under the platinum metallization increased the tensile strength significantly."
+   },
+   {
+    "id": "https://openalex.org/W2039515624",
+    "doi": "https://doi.org/10.1143/jjap.51.10nf13",
+    "title": "Early Failure Detection of Interconnection with Rapid Thermal Cycling in Photovoltaic Modules",
+    "year": 2012,
+    "cited": 13,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Integrated Circuits and Semiconductor Failure Analysis",
+     "Silicon and Solar Cell Technologies",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": null,
+    "abstract": "To accelerate the degradation with thermal fatigue in crystalline silicon photovoltaic modules, the modules were exposed to dry thermal stress with rapid thermal cycling, and module impedance was monitored in situ during this testing. The spikelike increase in module impedance at a temperature-alteration point was observed in the early stage of this rapid thermal cycling. The pattern of increase in module impedance proceeded step-by-step, from the early stage, via the double-spikelike pattern at two temperature-alteration points (the middle stage), and finally to the successive increases in module impedance in the high-temperature period (the late stage). The nondestructive analyses suggest that the interconnector failures without the defects of photovoltaic cells occurred. From these results, it is suggested that the pattern of increase in module impedance is related to the interconnection degradation of modules, and that the rapid thermal cycling with in situ monitoring of module impedance would be a useful procedure for the earlier detection of interconnection failures in photovoltaic modules."
+   },
+   {
+    "id": "https://openalex.org/W2156419204",
+    "doi": "https://doi.org/10.1109/ectc.1998.678708",
+    "title": "Reliability studies of plastic ball grid array assemblies reflowed in nitrogen ambient",
+    "year": 2002,
+    "cited": 11,
+    "venue": null,
+    "topics": [
+     "Electronic Packaging and Soldering Technologies",
+     "Aluminum Alloys Composites Properties",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": null,
+    "abstract": "In this work, the effect of solder joint geometry, and diameter ratio of solder ball to pad (Ds/Dp), on the reliability of plastic ball grid array assemblies (PBGA) reflow soldered in a nitrogen ambient with oxygen content down to 50 ppm (BTU VIP-70N) is studied. Environmental stress screening such as high-low temperature and humidity cycling (TABAI, ESPEC PL-2FP), and thermal shock (air-to-air, TABAI, ESPEC TSA-70L) are deployed. The uniformity data of solder ball joints, in terms of fatigue life and mechanical shear strength (INSTRON mini44), has yielded useful results on the reproducibility of PBGA similar to typical manufacturing process conditions. All the results show that the reliability of PBGA assemblies reflowed in a nitrogen ambient are better than in a compressed air ambient. The mechanical properties of the PBGA assemblies are found to be best when Ds/Dp is close to 1.2. Theoretical models are developed to explain the experimental data. This work throws new light on major reliability issues of PBGA soldered by nitrogen reflow."
+   },
+   {
+    "id": "https://openalex.org/W4235239292",
+    "doi": "https://doi.org/10.7567/jjap.51.10nf13",
+    "title": "Early Failure Detection of Interconnection with Rapid Thermal Cycling in Photovoltaic Modules",
+    "year": 2012,
+    "cited": 5,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Integrated Circuits and Semiconductor Failure Analysis",
+     "Silicon and Solar Cell Technologies",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1143/JJAP.51.10NF13/pdf",
+    "abstract": "To accelerate the degradation with thermal fatigue in crystalline silicon photovoltaic modules, the modules were exposed to dry thermal stress with rapid thermal cycling, and module impedance was monitored in situ during this testing. The spikelike increase in module impedance at a temperature-alteration point was observed in the early stage of this rapid thermal cycling. The pattern of increase in module impedance proceeded step-by-step, from the early stage, via the double-spikelike pattern at two temperature-alteration points (the middle stage), and finally to the successive increases in module impedance in the high-temperature period (the late stage). The nondestructive analyses suggest that the interconnector failures without the defects of photovoltaic cells occurred. From these results, it is suggested that the pattern of increase in module impedance is related to the interconnection degradation of modules, and that the rapid thermal cycling with in situ monitoring of module impedance would be a useful procedure for the earlier detection of interconnection failures in photovoltaic modules."
+   },
+   {
+    "id": "https://openalex.org/W4415002511",
+    "doi": "https://doi.org/10.1007/s10854-025-15862-0",
+    "title": "Fatigue of metal-ceramic substrates through thermal cycling and its consequences for silver-sintered joint reliability",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Journal of Materials Science Materials in Electronics",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced ceramic materials synthesis",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10854-025-15862-0.pdf",
+    "abstract": "Abstract Understanding the aging mechanisms of materials is essential for improving the reliability of power modules in the field of power electronics. This study investigates the reliability of silver-sintered joints, focusing on the fatigue behavior of copper active-metal-brazed (AMB) substrates under thermal cycling with respect to the copper grain size ranging from 250 to 960 µm. Analytical techniques, including confocal laser scanning microscopy (CLSM), scanning electron microscopy (SEM), and electron backscatter diffraction (EBSD), were used to analyze the fatigue behavior of bare copper substrates. Silver joint reliability of sintered samples was evaluated by scanning acoustic microscopy (SAM), die shear testing, and cross-sectional microstructural observation. The findings indicate that thermal cycling induces thermo-mechanical stresses, resulting in localized plastic deformation, surface defects, and out-of-plane displacement of individual grains in the copper sheet, leading to surface roughening and crack formation in the silver layer. In terms of Ag joint reliability, a clear correlation to the copper grain size is revealed. Larger copper grains exhibit pronounced deformation, leading to high thickness variations in the adjacent silver layer, which critically affects the joint reliability. This research emphasizes that fine-grained copper substrates can enhance the reliability of the silver joints in power electronic applications."
+   },
+   {
+    "id": "https://openalex.org/W2406780928",
+    "doi": "https://doi.org/10.7791/jspmee.4.190",
+    "title": "Development of a New Die-attach Process and Investigation of its Reliability for High Temperature Electronics Using Ni-nanoparticles",
+    "year": 2015,
+    "cited": 1,
+    "venue": "Journal of Smart Processing",
+    "topics": [
+     "Electronic Packaging and Soldering Technologies",
+     "Aluminum Alloys Composites Properties",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/jspmee/4/4/4_190/_pdf",
+    "abstract": "A process condition and reliability of die-attach technique using Ni-nanoparticles for high temperature electronics was investigated. Use of Ni for die-attach material decrease thermal stress induced by the difference of coefficient of thermal expansion and improve the bonding strength of the joints, because the coefficient of thermal expansion of Ni is between that of Si or SiC device and Cu substrate. In the case of the die-attach technique,‘two-step sintering’, the temperature of second-step sintering must be higher than a reduction temperature of NiO which was formed on surface of Ni-nanoparticle before sintering. In order to optimize the process conditions of the two-step sintering, in particular, the temperature of second-step sintering, the behavior of NiO reduction has been investigated by bonding strength, thermal analysis, and TEM observation. As a result, the joints using two-step sintering technique has superior reliability on thermal cycle test with -40/+250°C."
+   },
+   {
+    "id": "https://openalex.org/W2617668312",
+    "doi": null,
+    "title": "Reliability and Lifetime Assessment of Through-Silicon Vias Under Thermal Cycling",
+    "year": 2015,
+    "cited": 1,
+    "venue": "Aaltodoc (Aalto University)",
+    "topics": [
+     "Semiconductor materials and interfaces",
+     "3D IC and TSV technologies",
+     "Integrated Circuits and Semiconductor Failure Analysis"
+    ],
+    "oa_url": "https://aaltodoc.aalto.fi/handle/123456789/15688",
+    "abstract": "Through-silicon via (TSV) is one of the key technologies for three-dimensional (3D) integrated circuits (ICs). TSVs enable vertical electrical connections between components which greatly reduces interconnection lengths. Regardless of all the promise the technique has shown, there are still major obstacles surrounding reliability and the cost of fabrication of the TSV structure. \\n\\n\\nThe first part of the thesis is a literature survey that focuses on different failure mechanisms of TSVs. In addition, different fabrication and design choices of TSVs are presented with the focus being on their effect on reliability. The experimental part of the thesis presents reliability and lifetime assessment of tapered partially copper-filled blind TSVs under thermal cycling. The reliability test was carried out with nine samples. Six of them had 420 vias and three of them had 1400 vias in a daisy chain structure. Finite element method (FEM) was used to predict the critical failure locations of the TSV structure. Lifetime was predicted by Weibull analysis. The cross-sections of the test samples were prepared by molding, mechanical grinding and polishing and analyzed by scanning electron microscope (SEM). \\n\\n\\nElectrical measurements showed almost constant resistance increase in the samples before failures were noticed. The first failed sample was noticed after 200 cycles and the last at 4000 cycles. Lifetime of TSVs under thermal cycling was proven to be acceptable with used failure criterion. According to Weibull analysis, about 10 % of the samples with 420 vias will break after 1000 cycles. Sample preparation for imaging was deemed sufficient although the grinding caused artifacts. The simulation results were compared with SEM micrographs. The images showed that the failures were located at the maximum stress areas, identified with FEM simulations, at the bottom of the via. From the SEM images, it was deduced that the defects initiated from the fabrication process and propagated due to maximum localized stress."
+   },
+   {
+    "id": "https://openalex.org/W7166273361",
+    "doi": null,
+    "title": "Lifetime Prediction of Electrolytic Capacitors Under Variable Loadings in Electric Vehicles for Prognostics and Health Management Applications",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Academic Commons (Stony Brook University)",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Machine Fault Diagnosis Techniques",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://commons.library.stonybrook.edu/context/electronic-disserations-theses/article/1177/viewcontent/MS_Thesis_Manuscript_Final___Jaewon_Lee.pdf",
+    "abstract": "Aluminum electrolytic capacitors (AECs) are widely used in electric vehicles (EVs) power electronics but are also a primary source of wear-out failures. Most previously proposed lifetime models were derived under constant loading conditions and therefore cannot capture variable loading arising from seasonal or diurnal temperature swings and user-dependent driving profiles in EVs. This study develops a variable-loading lifetime prediction framework for AECs, which can be further extended to prognostics and health management (PHM). Collectively, the results of the study demonstrate a framework suitable for PHM application, in which SoD-based lifetime prediction yields reliable predictions under variable loadings. An appropriate lifetime model was first selected based on the identified failure mechanisms of AECs and subsequently validated under constant loading conditions through accelerated life testing (ALT). Next, lifetime prediction under variable loading was formulated using linear and nonlinear state-of-damage (SoD) models and verified by ALT under a simplified EV driving profile. The consistency between SoD model predictions and ALT results indicates that a linear CDM is appropriate for lifetime evaluation under variable loading. In addition, the differential equation for the ESR change rate was analytically derived to assess whether order independence holds in the pre-failure region, providing the basis for applying a linear CDM. This was examined by numerical simulations over permutations of loading sequence and dwell time, and both the analytical derivation. The simulations were verified by another ALT. Results show that, for identical cumulative thermal exposure, final ESR in the pre-failure region is sequence-independent, supporting a linear CDM for lifetime evaluation under variable loading. The framework proposed in this study introduces the normalized state variable SoD into the lifetime prediction of AECs, which supports the remaining useful life (RUL) estimation and provides a foundation for PHM deployment in EV systems."
+   },
+   {
+    "id": "https://openalex.org/W7112821325",
+    "doi": null,
+    "title": "Piin läpivientien luotettavuus ja elinikä termisessä rasituksessa",
+    "year": 2015,
+    "cited": 0,
+    "venue": "Aaltodoc (Aalto University)",
+    "topics": [
+     "3D IC and TSV technologies",
+     "Electronic Packaging and Soldering Technologies",
+     "Copper Interconnects and Reliability"
+    ],
+    "oa_url": "https://aaltodoc.aalto.fi/handle/123456789/15688",
+    "abstract": "Through-silicon via (TSV) is one of the key technologies for three-dimensional (3D) integrated circuits (ICs). TSVs enable vertical electrical connections between components which greatly reduces interconnection lengths. Regardless of all the promise the technique has shown, there are still major obstacles surrounding reliability and the cost of fabrication of the TSV structure. The first part of the thesis is a literature survey that focuses on different failure mechanisms of TSVs. In addition, different fabrication and design choices of TSVs are presented with the focus being on their effect on reliability. The experimental part of the thesis presents reliability and lifetime assessment of tapered partially copper-filled blind TSVs under thermal cycling. The reliability test was carried out with nine samples. Six of them had 420 vias and three of them had 1400 vias in a daisy chain structure. Finite element method (FEM) was used to predict the critical failure locations of the TSV structure. Lifetime was predicted by Weibull analysis. The cross-sections of the test samples were prepared by molding, mechanical grinding and polishing and analyzed by scanning electron microscope (SEM). Electrical measurements showed almost constant resistance increase in the samples before failures were noticed. The first failed sample was noticed after 200 cycles and the last at 4000 cycles. Lifetime of TSVs under thermal cycling was proven to be acceptable with used failure criterion. According to Weibull analysis, about 10 % of the samples with 420 vias will break after 1000 cycles. Sample preparation for imaging was deemed sufficient although the grinding caused artifacts. The simulation results were compared with SEM micrographs. The images showed that the failures were located at the maximum stress areas, identified with FEM simulations, at the bottom of the via. From the SEM images, it was deduced that the defects initiated from the fabrication process and propagated due to maximum localized stress."
+   },
+   {
+    "id": "https://openalex.org/W1974792186",
+    "doi": "https://doi.org/10.6117/kmeps.2012.19.2.001",
+    "title": "Reliability Evaluation for Photovoltaic Modules",
+    "year": 2012,
+    "cited": 0,
+    "venue": "Journal of the Microelectronics and Packaging Society",
+    "topics": [
+     "Photovoltaic System Optimization Techniques",
+     "Photovoltaic Systems and Sustainability"
+    ],
+    "oa_url": "http://koreascience.or.kr:80/article/JAKO201222350106731.pdf",
+    "abstract": "Long-term reliability of Si photovoltaic modules is a crucial issue for the cost-reduction on the power-supply system. To elevate this reliability, several environmental tests have been created as qualification and certification procedures. This paper gives an overview about recent researches of reliability tests for Si photovoltaic modules."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"ESPEC TSA\" OR \"ESPEC TSA series 2·3\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 8,
+  "shear": 4,
+  "tensile": 3,
+  "thermal_shock": 2,
+  "abrasion": 1,
+  "wire_bond_strength": 1
+ }
+}

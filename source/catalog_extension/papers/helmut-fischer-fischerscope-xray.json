@@ -1,0 +1,133 @@
+{
+ "object": "helmut-fischer-fischerscope-xray",
+ "manufacturer": "helmut-fischer",
+ "phrases": [
+  "Helmut Fischer FISCHERSCOPE X-RAY",
+  "Helmut Fischer FISCHERSCOPE",
+  "Helmut Fischer XDLM-PCB"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Helmut Fischer FISCHERSCOPE X-RAY\" OR \"Helmut Fischer FISCHERSCOPE\" OR \"Helmut Fischer XDLM-PCB\"",
+  "count": 6,
+  "works": [
+   {
+    "id": "https://openalex.org/W4313656620",
+    "doi": "https://doi.org/10.1007/978-3-031-22352-5_9",
+    "title": "Composite Finishing for Reuse",
+    "year": 2022,
+    "cited": 2,
+    "venue": "Digital innovations in architecture, engineering and construction",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Fiber-reinforced polymer composites",
+     "Mechanical Behavior of Composites"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/978-3-031-22352-5_9.pdf",
+    "abstract": "Abstract Coating processes are emerging for new applications related to remanufactured products from End-of-Life materials. In this perspective, their employment can generate interesting scenarios for the design of products and solutions in circular economy frameworks, especially for composite materials. This chapter would give an overview of coating design and application for recycled glass fiber reinforced polymers on the base of the experimentation made within the FiberEUse project. New cosmetic and functional coatings were developed and tested on different polymer composite substrates filled with mechanically recycled End-of-Life glass fibers. Afterwards, recycled glass fiber reinforced polymer samples from water-solvable 3D printed molds were successfully coated. Finally, new industrial applications for the developed coatings and general guidelines for the coating of recycled glass fiber reinforced polymers were proposed by using the FiberEUse Demo Cases as a theoretical proof-of-concept."
+   },
+   {
+    "id": "https://openalex.org/W4410875989",
+    "doi": "https://doi.org/10.3390/nano15110813",
+    "title": "Internal Stress of Titanium-Based Nitride with Penetration Depth and Surface Roughness by sin2ψ Method Using HR-XRD",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Nanomaterials",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Boron and Carbon Nanomaterials Research",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-4991/15/11/813/pdf?version=1748424700",
+    "abstract": "The test method for internal stress of titanium-based nitride was optimized via penetration depth and surface roughness. Through the test method, the variations in the mechanical properties due to the ratio of the carbon gradient layer were investigated in terms of internal stress. TiN coatings were deposited on SUS 304 using RF/DC magnetron sputtering, and the penetration depth was adjusted by varying the X-ray power of HR-XRD for test specimens with the same coating thickness of 1 μm. The gradient of diagram for internal stress remained constant regardless of the penetration depth, and this was attributed to the analysis of internal stress focusing on the preferred growth orientation of the coating and excluding the influence of the substrate. In addition, we tested different surface roughness values (0.01 Sa, 0.02 Sa, and 0.03 Sa) to observe the effect on internal stress measurement. The results showed negligible difference in internal stress, confirming that this measurement method is valid for coatings with a surface roughness of 0.03 Sa or less. The test method was applied to analyze the carbon-doped TiZrN coating. TiZrN coatings were deposited on SUS 304, and coating thicknesses of 0.5 μm, 1 μm, and 2 μm were used to control the ratio of the carbon gradient layer. After applying the carbon paste for carbon doping, the TiZrN coating was irradiated with a pulsed laser. The compressive internal stress increased from -1263 MPa to -1687 MPa at a coating thickness of 0.5 μm, where the ratio of the carbon gradient layer was the highest. It was confirmed that the increase in internal stress with the ratio of the carbon gradient layer improved the mechanical properties of the carbon-doped TiZrN coating by laser carburization."
+   },
+   {
+    "id": "https://openalex.org/W7159736147",
+    "doi": null,
+    "title": "Modification of the components of trivalent chromium-based passivation baths for zinc and Zn-Ni alloy coatings to minimize the negative effects of increased zinc and iron ions content on bath life and the properties of the applied protective coating",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Prace Naukowe Uniwersytetu Ekonomicznego we Wrocławiu",
+    "topics": [
+     "Electrodeposition and Electroless Coatings",
+     "Corrosion Behavior and Inhibition",
+     "Metallurgy and Material Science"
+    ],
+    "oa_url": "https://dbc.wroc.pl/Content/145352/kolodziej_modyfikacja_skladnikow_kapieli_phd.pdf",
+    "abstract": "Wrocław"
+   },
+   {
+    "id": "https://openalex.org/W2909152843",
+    "doi": null,
+    "title": "Usporedba svojstava tvrdih prevlaka na alatnom čeliku za topli rad EN X37CrMoV5-1",
+    "year": 2018,
+    "cited": 0,
+    "venue": "Repository of Faculty of Mechanical Engineering and Naval Architecture University of Zagreb",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Metal Alloys Wear and Properties",
+     "Metallurgical and Alloy Processes"
+    ],
+    "oa_url": "http://repozitorij.fsb.hr/8667/1/Polovi%C4%87_2018_diplomski.pdf",
+    "abstract": "U radu su analizirana svojstva tvrdih prevlaka nanesenih na alatni čelik za topli rad X37CrMoV5-1 PVD i PACVD tehnologijom. Nanesene prevlake su PACVD TiN, TiN/TiCN, TiN/TiBN i PVD TiNAlSiN. Analizirane su debljina prevlake, prionjivost, faktor trenja i nanotvrdoća prevlaka. Debljina prevlaka određena je kalotestom, prionjivost prevlaka ispitana je Rockwell-ovom metodom utiskivanja indentora prema normi VDI 3198, faktor trenja određen je metodom ispitivanja „kuglica na ploči“, a nanotvrdoća ispitana je na uređaju Helmut Fischer Fischerscope H100C na Institutu Jožef Stefan u Ljubljani. \\nIspitivanjem je utvrđeno kako PVD TiNAlSiN prevlaka daje najbolje rezultate za primjenu na kalupima za tlačni lijev aluminijskih legura zbog svoje dobre prionjivosti i izdržljivosti na visoke temperature."
+   },
+   {
+    "id": "https://openalex.org/W2774520457",
+    "doi": null,
+    "title": "Ispitivanje svojstva prevlake PACVD TiN na biomedicinskoj leguri ASTM F 1537",
+    "year": 2017,
+    "cited": 0,
+    "venue": "Repository of Faculty of Mechanical Engineering and Naval Architecture University of Zagreb",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Tribology and Wear Analysis",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "http://repozitorij.fsb.hr/8110/1/Ja%C4%8Dan_2017_diplomski.pdf",
+    "abstract": "U ovom radu je provedeno ispitivanje triboloških i korozijskih svojstava uzoraka od legure ASTM F 1537 s odgovarajućom hrapavosti površine te uzorka od legure ASTM F 1537 prevučene s TiN prevlakom primjenom postupka plazmatski potpomognutog kemijskog prevlačenja iz parne faze (PACVD). \\nProvedena je karakterizacija prevlake ispitivanjem hrapavosti, debljine, adhezivnosti i nanotvrdoće. Ispitana je otpornost na adhezijsko trošenje primjenom metode Block on Ring. Otpornost na elektrokemijsku koroziju je ispitana metodama linearne i cikličke polarizacije te elektrokemijske impedancijske spektroskopije (EIS). Korodirane površine uzoraka snimljene su na svjetlosnom i skenirajućem elektronskom mikroskopu (SEM) te analizirane primjenom elektronske disperzijske spektroskopije (EDS). \\nIz provedenih ispitivanja utvrđeno je povećanje otpornosti na adhezijsko trošenje uzoraka prevučenih s PACVD TiN prevlakom u odnosu na neprevučene uzorke legure ASTM F 1537. Na korozijsku postojanost legure značajno utječe sposobnost pasivacije površine koja stvara učinkovitu prepreku za procese elektrokemijske korozije. TiN prevlaka korodira pojavom lokalne točkaste korozije u zadanim uvjetima ispitivanja."
+   },
+   {
+    "id": "https://openalex.org/W2592204897",
+    "doi": null,
+    "title": "Ispitivanje utjecaja debljine prevlake PACVD TiN na prionjivost na površinu alatnog čelika za topli rad",
+    "year": 2017,
+    "cited": 0,
+    "venue": "Repository of Faculty of Mechanical Engineering and Naval Architecture University of Zagreb",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Microstructure and mechanical properties",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "http://repozitorij.fsb.hr/7409/1/Lubina_2017_zavrsni_preddiplomski.pdf.pdf",
+    "abstract": "U radu je opisano ispitivanje utjecaja debljine prevlake na prionjivost na površinu alatnog čelika za topli rad X38CrMoV5–3. Prevlaka TiN je dobivena plazmatski potpomognutim prevlačenjem iz parne faze (PACVD). Debljina prevlake određena je kalotestom i skenirajućom elektronskom mikroskopijom. Prionjivost prevlake ispitana je prema normi VDI 3198 i metodom brazdanja. Ispitivanje nanotvrdoće na karakterističnim mjestima prevlake provedeno je metodom Vickers. Iz provedenih ispitivanja utvrđeno je da položaj obratka u odnosu na smjer nastrujavanja plinova ne utječe na debljinu prevlake niti na kvalitetu prionjivosti prevlake. Značajan utjecaj na debljinu prevlake pokazuje udaljenost dijela prevlačene površine od katode PACVD uređaja. Područje s najvećom debljinom prevlake nalazi se na udaljenosti od 10 do 50 mm od podloge (katode)."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Helmut Fischer FISCHERSCOPE X-RAY\" OR \"Helmut Fischer FISCHERSCOPE\" OR \"Helmut Fischer XDLM-PCB\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC12157817",
+    "doi": "10.3390/nano15110813",
+    "title": "Internal Stress of Titanium-Based Nitride with Penetration Depth and Surface Roughness by sin&lt;sup&gt;2&lt;/sup&gt;ψ Method Using HR-XRD.",
+    "journal": "Nanomaterials (Basel)",
+    "year": "2025",
+    "cited": 0,
+    "snippets": 0,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [],
+ "standards_found": {
+  "ASTM F 1537": 3
+ },
+ "standards_new": [
+  "ASTM F 1537"
+ ],
+ "test_item_hits": {
+  "coating_thickness": 3,
+  "surface_topography": 3
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "object": "nordson-dage-quadra-xray",
+ "manufacturer": "nordson-dage",
+ "phrases": [
+  "Nordson Quadra 5",
+  "Nordson Quadra 7",
+  "DAGE / Sonoscan Quadra 5",
+  "DAGE / Sonoscan Quadra 7"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Nordson Quadra 5\" OR \"Nordson Quadra 7\" OR \"DAGE / Sonoscan Quadra 5\" OR \"DAGE / Sonoscan Quadra 7\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Nordson Quadra 5\" OR \"Nordson Quadra 7\" OR \"DAGE / Sonoscan Quadra 5\" OR \"DAGE / Sonoscan Quadra 7\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

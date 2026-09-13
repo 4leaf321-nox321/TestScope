@@ -1,0 +1,100 @@
+{
+ "object": "hegewald-peschke-inspekt",
+ "manufacturer": "hegewald-peschke",
+ "phrases": [
+  "Hegewald & Peschke inspekt 100 kN",
+  "Hegewald & Peschke inspekt 150 kN",
+  "Hegewald & Peschke inspekt 200 kN",
+  "Hegewald & Peschke inspekt 250 kN",
+  "Hegewald & Peschke inspekt 400 kN",
+  "Hegewald & Peschke inspekt 600 kN"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Hegewald & Peschke inspekt 100 kN\" OR \"Hegewald & Peschke inspekt 150 kN\" OR \"Hegewald & Peschke inspekt 200 kN\" OR \"Hegewald & Peschke inspekt 250 kN\" OR \"Hegewald & Peschke inspekt 400 kN\" OR \"Hegewald & Peschke inspekt 600 kN\"",
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W2922323013",
+    "doi": "https://doi.org/10.17973/mmsj.2019_03_2018127",
+    "title": "INFLUENCE OF BASIC PROCESS PARAMETERS ON MECHANICAL AND INTERNAL PROPERTIES OF 316L STEEL IN SLM PROCESS FOR RENISHAW AM400",
+    "year": 2019,
+    "cited": 22,
+    "venue": "MM Science Journal",
+    "topics": [
+     "Metallurgy and Material Forming",
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.mmscience.eu/journal/issues/march-2019/articles/influence-of-basic-process-parameters-on-mechanical-and-internal-properties-of-316l-steel-in-slm-process-for-renishaw-am400/download",
+    "abstract": "The paper deals with the study and experimental evaluation of the influence of process parameters determining the resulting mechanical properties of the components after additive production using the 1.4404 (316L) stainless steel SLM method.The determining process parameters that have been investigated are laser power, scanning speed and layer creation strategy.These parameters fundamentally affect the microstructure and macrostructure of components created by the SLM method, therefore, they have been subjected to closer examination.The results then determined the ideal set of parameters according to the assessment criteria -tensile test, porosity and roughness of the surface.Experiments were performed on the Renishaw AM400 and therefore the results and recommendations are directly related to this particular machine."
+   },
+   {
+    "id": "https://openalex.org/W3184599413",
+    "doi": "https://doi.org/10.3390/jcs5080195",
+    "title": "Edge Race-Tracking during Film-Sealed Compression Resin Transfer Molding",
+    "year": 2021,
+    "cited": 4,
+    "venue": "Journal of Composites Science",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Injection Molding Process and Properties",
+     "Mechanical Behavior of Composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-477X/5/8/195/pdf?version=1626852285",
+    "abstract": "Edge race-tracking is a frequently reported issue during resin transfer molding. It is caused by highly permeable channels and areas between the preform edge and cavity, which can significantly change the preform impregnation pattern. To date, information is scarce on the effect of edge race-tracking in compression resin transfer molding (CRTM). To close this gap, laboratory equipment was developed to study the CRTM preform impregnation via flow visualization experiments. The preform was thereby encapsulated in thin thermoplastic films sealing its impregnation. Film-sealed compression resin transfer molding (FS-CRTM) experiments of preforms with a small geometrical aspect ratio showed fast filling of the injection gap and a subsequent through-thickness preform impregnation. Creating an edge race-tracking channel, an additional lateral in-plane flow from the channel towards the preform center was observed, initiating soon after the injection started and caused by the spatial connection between the injection gap and the race-tracking channel. To diminish edge race-tracking, a passive flow control strategy was implemented via a split design of the upper tool to spatially isolate the injection gap from the channel and to pre-compact the preform edge. A delayed and reduced lateral race-tracking flow was observed, showing that the passive flow control strategy increases the process robustness of FS-CRTM regarding edge race-tracking effects."
+   },
+   {
+    "id": "https://openalex.org/W4417194488",
+    "doi": "https://doi.org/10.21062/mft.2025.080",
+    "title": "Determining the Force Required to Remove a Screw from a Human Vertebra",
+    "year": 2025,
+    "cited": 0,
+    "venue": "MANUFACTURING TECHNOLOGY",
+    "topics": [
+     "Scoliosis diagnosis and treatment",
+     "Anatomy and Medical Technology",
+     "Medical Imaging and Analysis"
+    ],
+    "oa_url": "http://journalmt.com/doi/10.21062/mft.2025.080.pdf",
+    "abstract": "The article describes a pilot experiment of mechanical testing of 3D printed vertebrae with an inserted screw. The main goal of this work was to verify the design of a measurement methodology for experimentally determining the mechanical properties of vertebrae produced using 3D printing and also for determining the load-bearing capacity of a screw when it is drilled into a vertebra. The work describes the construction of a special fixture with which it is possible to clamp test samples for tensile testing. The stud screws were pulled out of a real or printed vertebra using a tearing machine. Testing was performed on porcine and 3D printed vertebrae. CT images of porcine spines obtained by a computed tomography scanner were used to create the printed vertebrae. This work verified the mechanical properties of printed and real vertebrae. In connection with this work, suitable printed materials and the necessary parameters of 3D printed samples will be sought so that they correspond to the necessary mechanical properties and can replace human vertebrae. It will then be possible to conduct laboratory investigations to obtain better results in spinal stabilization. The experiments verified the measurement methodology, compared the measured values between real and printed vertebrae, and also determined the next direction of research."
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Hegewald & Peschke inspekt 100 kN\" OR \"Hegewald & Peschke inspekt 150 kN\" OR \"Hegewald & Peschke inspekt 200 kN\" OR \"Hegewald & Peschke inspekt 250 kN\" OR \"Hegewald & Peschke inspekt 400 kN\" OR \"Hegewald & Peschke inspekt 600 kN\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC11123091",
+    "doi": "10.3390/ma17102437",
+    "title": "Development of Low-Weight and High-Strength AA6005A Extrudates Intended for Modern Architecture and Design of Innovative Die for Extrusion Process.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 2,
+    "snippets": 0,
+    "standards_in_paper": [
+     "EN 12020-2",
+     "EN 1991",
+     "EN 1991-1-3",
+     "EN 1999",
+     "EN 755-9",
+     "EN AW-6005A",
+     "EN AW-6060",
+     "EN AW-6063",
+     "EN ISO 6892-1"
+    ]
+   }
+  ]
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "compression": 2,
+  "tensile": 2,
+  "density_porosity": 1,
+  "surface_topography": 1,
+  "tear": 1
+ }
+}

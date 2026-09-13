@@ -1,0 +1,27 @@
+{
+ "object": "ossila-four-point-probe",
+ "manufacturer": "ossila",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "vibration_sine_random": 23,
+  "microscopy": 10,
+  "electrical_transport": 5,
+  "scratch_pencil_hardness": 3,
+  "density_porosity": 2,
+  "altitude_low_pressure": 1,
+  "insulation_resistance": 1
+ },
+ "application_sentences": [
+  "esign News Newsletters Media Kit Publications Media Ossila Four-Point Probe System The Ossila Four-Point Probe system is a compact, single-unit probing device designed for measuring sheet resistance, resistivity and conductivity.",
+  "(I) Range Select the range of currents to be used for the measurement.",
+  "The value that should be used for this field is dependent upon the resistance of the sample being tested (see Section 9.",
+  "An alternative, common unit is \"ohms per square\" (denoted / ), which is dimensionally equal to an ohm, but is exclusively used for sheet resistance.",
+  "The inline four-point probe configuration is used for the system, with outer probes as the current probe and inner probes as the voltage probe.",
+  "Arduino is also suitable for rapid prototyping because of readily available libraries and boards [6,76].",
+  "Further, this tests for film integrity over long periods of time.",
+  "The OS4PP performs better at measuring lower values of sheet resistances because higher value of current could be used for these samples, increasing the signal to noise ratio."
+ ]
+}

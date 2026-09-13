@@ -1,0 +1,45 @@
+{
+ "object": "mts-landmark-servohydraulic",
+ "manufacturer": "mts",
+ "pages": 8,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM D3039": 2,
+  "ASTM E1012": 1,
+  "ASTM D-790": 1,
+  "ASTM D-2344": 1,
+  "ASTM E466": 1,
+  "ASTM E466-21": 1
+ },
+ "standards_new": [
+  "ASTM D-2344",
+  "ASTM D-790",
+  "ASTM D3039",
+  "ASTM E1012",
+  "ASTM E466-21"
+ ],
+ "test_item_hits": {
+  "tensile": 33,
+  "fracture_toughness": 29,
+  "compression": 17,
+  "shear": 14,
+  "torsion": 7,
+  "electrical_transport": 6,
+  "microscopy": 6,
+  "flexure": 5,
+  "density_porosity": 2,
+  "formability": 2,
+  "creep": 1,
+  "halt_hass": 1
+ },
+ "application_sentences": [
+  "10 Load Frame is part of the MTS Landmark Servohydraulic Test Systems designed for high performance, flexibility, and easy operation.",
+  "High cyclic fatigue test of Al/Ti alloys and other metals for aerospace industry.",
+  "Temperature Furnace - Temperature ranges from 100°C to 1400°C (Control Point Stability ±1°C) - Hot Zone 50 x 50 x 50mm (W x D x H) HCF performance at cycling test of 60Hz with a load force of 20kN, the displacement amplitude should achieve at least +/-0.",
+  "At cycling test of 100Hz with a load force of 6kN, the displacement amplitude should achieve at least +/-0.",
+  "2 Static and fatigue tests According to ASTM D3039[38], quasi-static tension tests of the GLARE laminate specimens were carried out on the MTS-810-250kN servo-hydraulic tester at room temperature and moisture by using displacement-control mode, and the loading rate is 2 mm/min.",
+  "The Abaqus/Explicit is used for all numerical analysis in this paper, and mass-scaling control is set with the target time increment of 2.",
+  "Besides, it is essential to conduct constant amplitude fatigue and crack growth tests for monolithic metal corresponding to metal layer in the FML to determine all model parameters in Eqs.",
+  "[39] ASTM E466-21, Standard practice for conducting force controlled constant amplitude axial fatigue tests of metallic materials, 2021."
+ ]
+}

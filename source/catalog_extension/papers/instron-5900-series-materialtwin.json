@@ -1,0 +1,341 @@
+{
+ "object": "instron-5900-series-materialtwin",
+ "manufacturer": "instron",
+ "phrases": [
+  "Instron 5900",
+  "Instron 5965-E2",
+  "Instron 5966-E2",
+  "Instron 5967-E2",
+  "Instron 5969-E2",
+  "Instron 5982-E2"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Instron 5900\" OR \"Instron 5965-E2\" OR \"Instron 5966-E2\" OR \"Instron 5967-E2\" OR \"Instron 5969-E2\" OR \"Instron 5982-E2\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Instron 5900\" OR \"Instron 5965-E2\" OR \"Instron 5966-E2\" OR \"Instron 5967-E2\" OR \"Instron 5969-E2\" OR \"Instron 5982-E2\") AND OPEN_ACCESS:y",
+  "count": 58,
+  "papers": [
+   {
+    "pmcid": "PMC5441428",
+    "doi": "10.1002/advs.201600404",
+    "title": "Porous Ionic Membrane Based Flexible Humidity Sensor and its Multifunctional Applications.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2017",
+    "cited": 122,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GBT228"
+    ]
+   },
+   {
+    "pmcid": "PMC6680582",
+    "doi": "10.3390/polym11071154",
+    "title": "Effect of Porosity on Mechanical Properties of 3D Printed Polymers: Experiments and Micromechanical Modeling Based on X-ray Computed Tomography Analysis.",
+    "journal": "Polymers (Basel)",
+    "year": "2019",
+    "cited": 75,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D638",
+     "ASTM D638-14"
+    ]
+   },
+   {
+    "pmcid": "PMC7673729",
+    "doi": "10.1126/sciadv.abc9675",
+    "title": "Expandable and implantable bioelectronic complex for analyzing and regulating real-time activity of the urinary bladder.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 46,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9069463",
+    "doi": "10.1039/c9ra03641e",
+    "title": "3D printable SiO<sub>2</sub> nanoparticle ink for patient specific bone regeneration.",
+    "journal": "RSC Adv",
+    "year": "2019",
+    "cited": 32,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC7999751",
+    "doi": "10.3390/ijms22062886",
+    "title": "Enhanced Regeneration of Vascularized Adipose Tissue with Dual 3D-Printed Elastic Polymer/dECM Hydrogel Complex.",
+    "journal": "Int J Mol Sci",
+    "year": "2021",
+    "cited": 31,
+    "snippets": 2,
+    "standards_in_paper": [
+     "SSU12"
+    ]
+   },
+   {
+    "pmcid": "PMC8636709",
+    "doi": "10.1016/j.bioactmat.2021.09.009",
+    "title": "Experimental study of a 3D printed permanent implantable porous Ta-coated bone plate for fracture fixation.",
+    "journal": "Bioact Mater",
+    "year": "2022",
+    "cited": 29,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 13779-2",
+     "ISO 18437-5",
+     "ISO 9585"
+    ]
+   },
+   {
+    "pmcid": "PMC11468681",
+    "doi": "10.1002/adhm.202202401",
+    "title": "One-Step Preparation of an Injectable Hydrogel Scaffold System Capable of Sequential Dual-Growth Factor Release to Maximize Bone Regeneration.",
+    "journal": "Adv Healthc Mater",
+    "year": "2023",
+    "cited": 28,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4118289",
+    "doi": "10.1038/srep04334",
+    "title": "Oriented MOF-polymer composite nanofiber membranes for high proton conductivity at high temperature and anhydrous condition.",
+    "journal": "Sci Rep",
+    "year": "2014",
+    "cited": 24,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10664982",
+    "doi": "10.1126/sciadv.adi1735",
+    "title": "Elastomeric vitrimers from designer polyhydroxyalkanoates with recyclability and biodegradability.",
+    "journal": "Sci Adv",
+    "year": "2023",
+    "cited": 21
+   },
+   {
+    "pmcid": "PMC8728527",
+    "doi": "10.1016/j.crfs.2021.12.012",
+    "title": "Improving the mechanical properties and thermal stability of sodium alginate/hydrolyzed collagen films through the incorporation of SiO<sub>2</sub>.",
+    "journal": "Curr Res Food Sci",
+    "year": "2022",
+    "cited": 21
+   },
+   {
+    "pmcid": "PMC9182168",
+    "doi": "10.3390/ma15113881",
+    "title": "Biopolymer-Based Films from Sodium Alginate and Citrus Pectin Reinforced with SiO<sub>2</sub>.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC7683622",
+    "doi": "10.1038/s41598-020-77187-8",
+    "title": "Cardiovascular tissue regeneration system based on multiscale scaffolds comprising double-layered hydrogels and fibers.",
+    "journal": "Sci Rep",
+    "year": "2020",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC10181140",
+    "doi": "10.3390/polym15092209",
+    "title": "Effect of 3D Printing Process Parameters and Heat Treatment Conditions on the Mechanical Properties and Microstructure of PEEK Parts.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC8844577",
+    "doi": "10.1002/advs.202104001",
+    "title": "3D-Printed Strong Dental Crown with Multi-Scale Ordered Architecture, High-Precision, and Bioactivity.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 13
+   },
+   {
+    "pmcid": "PMC6720445",
+    "doi": "10.3390/s19163618",
+    "title": "Analysis of Sensitivity, Linearity, Hysteresis, Responsiveness, and Fatigue of Textile Knit Stretch Sensors.",
+    "journal": "Sensors (Basel)",
+    "year": "2019",
+    "cited": 12
+   },
+   {
+    "pmcid": "PMC11372828",
+    "doi": "10.1021/acs.molpharmaceut.4c00599",
+    "title": "Engineering a 3D Biomimetic Peptides Functionalized-Polyethylene Glycol Hydrogel Model Cocultured with Endothelial Cells and Astrocytes: Enhancing In Vitro Blood-Brain Barrier Biomimicry.",
+    "journal": "Mol Pharm",
+    "year": "2024",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC10721838",
+    "doi": "10.1038/s41536-023-00342-y",
+    "title": "Effective protection of photoreceptors using an inflammation-responsive hydrogel to attenuate outer retinal degeneration.",
+    "journal": "NPJ Regen Med",
+    "year": "2023",
+    "cited": 11
+   },
+   {
+    "pmcid": "PMC11042661",
+    "doi": "10.1093/pnasnexus/pgae141",
+    "title": "Alteration of mechanical stresses in the murine brain by age and hemorrhagic stroke.",
+    "journal": "PNAS Nexus",
+    "year": "2024",
+    "cited": 9
+   },
+   {
+    "pmcid": "PMC5937912",
+    "doi": "10.1016/j.biomaterials.2018.04.010",
+    "title": "Caffeine-catalyzed gels.",
+    "journal": "Biomaterials",
+    "year": "2018",
+    "cited": 8
+   },
+   {
+    "pmcid": "PMC8307076",
+    "doi": "10.3390/ma14143971",
+    "title": "Alloying Elements Effects on Electrical Conductivity and Mechanical Properties of Newly Fabricated Al Based Alloys Produced by Conventional Casting Process.",
+    "journal": "Materials (Basel)",
+    "year": "2021",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC11071043",
+    "doi": "10.1021/acsami.4c02095",
+    "title": "External Pressure in Polymer-Based Lithium Metal Batteries: An Often-Neglected Criterion When Evaluating Cycling Performance?",
+    "journal": "ACS Appl Mater Interfaces",
+    "year": "2024",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC9287195",
+    "doi": "10.1016/j.isci.2022.104674",
+    "title": "Fluid-driven hydrogel actuators with an origami structure.",
+    "journal": "iScience",
+    "year": "2022",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC7579550",
+    "doi": "10.3390/ma13194233",
+    "title": "Fabrication and Mechanical Characterization of Dry Three-Dimensional Warp Interlock Para-Aramid Woven Fabrics: Experimental Methods toward Applications in Composite Reinforcement and Soft Body Armor.",
+    "journal": "Materials (Basel)",
+    "year": "2020",
+    "cited": 6
+   },
+   {
+    "pmcid": "PMC10171216",
+    "doi": "10.1021/acssuschemeng.3c00103",
+    "title": "Antioxidant Silicone Elastomers without Covalent Cross-Links.",
+    "journal": "ACS Sustain Chem Eng",
+    "year": "2023",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC10228488",
+    "doi": "10.1097/cm9.0000000000002542",
+    "title": "Human hair follicle-derived mesenchymal stem cells promote tendon repair in a rabbit Achilles tendinopathy model.",
+    "journal": "Chin Med J (Engl)",
+    "year": "2023",
+    "cited": 5
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC5441428",
+   "title": "Porous Ionic Membrane Based Flexible Humidity Sensor and its Multifunctional Applications.",
+   "year": "2017",
+   "text": "in Figure 1 e show that the average sheet resistance values of four wafer‐sized PIM samples (6 in.), which were uniformly distributed and increased from 1.65 ± 0.23 to 2.68 ± 0.2 KΩ γ −1 as the proportions of PVA and KOH increased from 6:1 to 6:4. And the mechanical properties of the obtained PIM samples were also tested in a stretching apparatus (Instron 5900) as shown in Figure 1 f and Figure S1b in the Supporting Information, displaying that the PIM with a mass ratio of PVA/KOH = 6:4 had the best tensile force as high as 5.97 N (and its corresponding tensile strength is calculated as 9.2 Mpa according to the National Standard of Tensile Testing (GBT228‐2002)) and breaking strain (383.6%). The high st",
+   "standards": [
+    "GBT228"
+   ]
+  },
+  {
+   "pmcid": "PMC6680582",
+   "title": "Effect of Porosity on Mechanical Properties of 3D Printed Polymers: Experiments and Micromechanical Modeling Based on X-ray Computed Tomography Analysis.",
+   "year": "2019",
+   "text": "s checked as to whether it matches the parameters specified, mainly covering pore/defect size range and probability. The VGDefX algorithm [ 27 ] was used for this study. 2.3. Mechanical Testing The three specimens for each set of process parameters given in Table 1 were tested by following ASTM D638 testing guidelines. A universal testing machine (Instron 5900 series, Instron Corp., Norwood, MA, USA) with a load cell 100KN as well as 3D digital image correlation (DIC), a full-field deformation measurement technique, was used to test the mechanical properties of the specimens. To utilize the DIC technique, high contrast speckle patterns in black and white were applied to the specimens before the tensile",
+   "standards": [
+    "ASTM D638"
+   ]
+  },
+  {
+   "pmcid": "PMC7673729",
+   "title": "Expandable and implantable bioelectronic complex for analyzing and regulating real-time activity of the urinary bladder.",
+   "year": "2020",
+   "text": "adder tissues (extracted from a 10-week-old animal model) and three different configurations (film, straight, and serpentine) of an expandable electronic system were prepared with dimensions of 10 mm by 5 mm by 0.1 mm. Each sample was examined at a speed of 0.1 mm/min with a 20-N extension force using a universal electromechanical testing machine (Instron 5900 series). In vitro experiments of an expandable electronic system using an artificial bladder model A synthetic bladder model was constructed using a three-dimensional printed scaffold with a silicone elastomer (Ecoflex 00-30) to evaluate the electronic system’s ability to monitor diverse physical/mechanical parameters that may occur in the urinary",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9069463",
+   "title": "3D printable SiO<sub>2</sub> nanoparticle ink for patient specific bone regeneration.",
+   "year": "2019",
+   "text": "ffolds were weighed. Degradation weight percent is calculated as where, W ls = weight of lyophilized scaffold, W sls = weight of swelled lyophilized scaffold. 2.2.5. Mechanical testing of lyophilized scaffolds Compression test was performed on lyophilized scaffolds (diameter 5 mm &amp; height 10 mm) with the help of UTM (Universal testing machine, Instron 5900 series). For all lyophilized scaffolds, length ( L ) and diameter ( D ) was measured with a Vernier caliper before the compression test. The load of 10 kN and strain rate 1 mm min −1 was set during the test. Stress and strain were calculated as where α , P , D , L , μ , and l o denote stress (MPa), L load (N), D diameter (mm), L length (mm), strai",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7999751",
+   "title": "Enhanced Regeneration of Vascularized Adipose Tissue with Dual 3D-Printed Elastic Polymer/dECM Hydrogel Complex.",
+   "year": "2021",
+   "text": "ere measured by unconfined compression tests ( n = 3). A cylinder mold with a 6 mm diameter was prepared to make regular-shaped hydrogels. The mixtures of the hydrogels were poured into the mold. After allowing 30 min for gelation, uniformed cylindrical hydrogels were finally prepared and compressed using a 10 kN load cell at the rate of 1 mm/min (Instron 5900, Norwood, MA, USA). The compressive modulus was determined as the force per unit area applied to the hydrogels during compression and calculated as the slope of the initial straight line in the stress–strain curve. The cell viability measurements for the various adECM and collagen ratios were performed with live/dead cell viability assay kits (L32",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC7999751",
+   "title": "Enhanced Regeneration of Vascularized Adipose Tissue with Dual 3D-Printed Elastic Polymer/dECM Hydrogel Complex.",
+   "year": "2021",
+   "text": "a constant shape and size were fabricated with the PLCL co-polymer and PCL polymer. Human adipose tissue was cut into a cylindrical shape with a stamping mold to compare the compression modulus with the PCL and PLCL scaffolds. Adipose tissue and the PCL and PLCL scaffolds were prepared and compressed using a 10 kN load cell at a rate of 1 mm/min (Instron 5900, Instron®, Norwood, MA, USA). The compressive modulus was determined as the force per unit area applied to the hydrogels during compression and calculated as the slope of the initial straight line in the stress–strain curve. To evaluate the ultimate tensile strength, raw PLCL (before printing) and printed PLCL were made into thin films. The films",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8636709",
+   "title": "Experimental study of a 3D printed permanent implantable porous Ta-coated bone plate for fracture fixation.",
+   "year": "2022",
+   "text": "al force (critical load) at which adhesive failure was first detected (with a sudden change in friction forces) was used as a measure of adhesion. We used Ta coated solid Ti substrates for the XRD and scratch analyses instead of Ta coated pTi scaffolds. The mechanical property tests of the bone plates were conducted on a universal testing machine (Instron-5900, Instron). All mechanical tests were repeated three times. 2.4. Biomechanical tests A three-point bend test was used to evaluate the bending strength of the bone plates, and was tested in accordance with the ISO 9585:1990 standard [ 22 ]. The bone plates were positioned on the same horizontal plane on two lower stabilizing points positioned 30 mm",
+   "standards": [
+    "ISO 9585"
+   ]
+  },
+  {
+   "pmcid": "PMC11468681",
+   "title": "One-Step Preparation of an Injectable Hydrogel Scaffold System Capable of Sequential Dual-Growth Factor Release to Maximize Bone Regeneration.",
+   "year": "2023",
+   "text": "rogel was measured under different temperatures (5–60 °C) at an oscillating frequency of 1 Hz and 5% strain. A new IPS hydrogel was prepared and subjected to the same measurements by varying the oscillating frequency from 1 to 100 Hz with 5% shear strain at 37 °C. Compressive Modulus The compressive modulus of crosslinked IPS was measured using an Instron 5900 universal testing machine (Instron Corporation, USA). The IPS hydrogel was compressed to 20% of its height to obtain the stress–strain curve that was used to calculate the compressive modulus. Zeta Potential and Particle Size Measurements of IPS IPS, IPS_B20, IPS_T1, and IPS_B20T1 samples (1 wt%) were prepared in PBS. Zeta potential and particle s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4118289",
+   "title": "Oriented MOF-polymer composite nanofiber membranes for high proton conductivity at high temperature and anhydrous condition.",
+   "year": "2014",
+   "text": "90 nm thickness, using a Leica Ultracut ultramicrotome, and picked up on copper grids. Images were obtained using a Hitachi H7600 Transmission Electron Microscope with an accelerating voltage of 80 kV. Image J software was used to analyse the micrographs. The mechanical property test of the membrane was performed using a universal testing machine (INSTRON 5900 Testing System) at room temperature, 120°C and 160°C and crosshead speed of 10 mm min −1 . Conductivity measurements The four-probe AC impedance analyses were recorded using an Autolab® PGSTAT 302 (Eco Chemie, Netherlands) in galvanostatic mode (a.c. current amplitude = 0.1 mA, frequency range = 1 MHz to 50 Hz) 39 . Bode plots were used to determi",
+   "standards": []
+  }
+ ],
+ "standards_found": {
+  "GBT228": 1,
+  "ASTM D638": 1,
+  "ISO 9585": 1
+ },
+ "standards_new": [
+  "ASTM D638",
+  "GBT228",
+  "ISO 9585"
+ ],
+ "test_item_hits": {
+  "compression": 6,
+  "tensile": 5,
+  "microscopy": 4,
+  "particle_size": 3,
+  "flexure": 2,
+  "scratch_pencil_hardness": 1,
+  "shear": 1
+ }
+}

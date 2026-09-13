@@ -1,0 +1,23 @@
+{
+ "object": "molex-crimp-pull-tester",
+ "manufacturer": "molex",
+ "phrases": [
+  "Molex Hand-Held Wire",
+  "Molex Hand-Held"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Molex Hand-Held Wire\" OR \"Molex Hand-Held\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Molex Hand-Held Wire\" OR \"Molex Hand-Held\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

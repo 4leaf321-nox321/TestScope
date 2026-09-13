@@ -1,0 +1,23 @@
+{
+ "object": "nordson-dage-4000plus-bondtester",
+ "manufacturer": "nordson-dage",
+ "phrases": [
+  "Nordson 4000Plus",
+  "DAGE / Sonoscan 4000Plus"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Nordson 4000Plus\" OR \"DAGE / Sonoscan 4000Plus\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Nordson 4000Plus\" OR \"DAGE / Sonoscan 4000Plus\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

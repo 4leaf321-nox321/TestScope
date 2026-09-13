@@ -1,0 +1,314 @@
+{
+ "object": "zygo-newview-nx2",
+ "manufacturer": "zygo",
+ "phrases": [
+  "Zygo NewView NX2",
+  "Zygo NewView",
+  "Zygo NX2",
+  "AMETEK NewView NX2",
+  "AMETEK NewView"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Zygo NewView NX2\" OR \"Zygo NewView\" OR \"Zygo NX2\" OR \"AMETEK NewView NX2\" OR \"AMETEK NewView\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Zygo NewView NX2\" OR \"Zygo NewView\" OR \"Zygo NX2\" OR \"AMETEK NewView NX2\" OR \"AMETEK NewView\") AND OPEN_ACCESS:y",
+  "count": 174,
+  "papers": [
+   {
+    "pmcid": "PMC4941047",
+    "doi": "10.1038/ncomms11802",
+    "title": "Bio-inspired sensitive and reversible mechanochromisms via strain-dependent cracks and folds.",
+    "journal": "Nat Commun",
+    "year": "2016",
+    "cited": 114,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8262819",
+    "doi": "10.1126/sciadv.abi5812",
+    "title": "Bionic microenvironment-inspired synergistic effect of anisotropic micro-nanocomposite topology and biology cues on peripheral nerve regeneration.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 66,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6420315",
+    "doi": "10.1126/sciadv.aaw0463",
+    "title": "Vapor-printed polymer electrodes for long-term, on-demand health monitoring.",
+    "journal": "Sci Adv",
+    "year": "2019",
+    "cited": 56,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4432628",
+    "doi": "10.1038/ncomms7948",
+    "title": "Rubrene crystal field-effect mobility modulation via conducting channel wrinkling.",
+    "journal": "Nat Commun",
+    "year": "2015",
+    "cited": 55,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8221626",
+    "doi": "10.1126/sciadv.abg5639",
+    "title": "Dynamic piezoelectric MEMS-based optical metasurfaces.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 49,
+    "snippets": 2,
+    "standards_in_paper": [
+     "BS014"
+    ]
+   },
+   {
+    "pmcid": "PMC3176399",
+    "doi": "10.1007/s00359-011-0658-1",
+    "title": "Elastic modulus of tree frog adhesive toe pads.",
+    "journal": "J Comp Physiol A Neuroethol Sens Neural Behav Physiol",
+    "year": "2011",
+    "cited": 48,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5698435",
+    "doi": "10.1038/s41467-017-01717-8",
+    "title": "Evolution of tribo-induced interfacial nanostructures governing superlubricity in a-C:H and a-C:H:Si films.",
+    "journal": "Nat Commun",
+    "year": "2017",
+    "cited": 45,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC4196919",
+    "doi": "10.1371/journal.pone.0109770",
+    "title": "Complementary effects of two growth factors in multifunctionalized silk nanofibers for nerve reconstruction.",
+    "journal": "PLoS One",
+    "year": "2014",
+    "cited": 45,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5056409",
+    "doi": "10.1038/ncomms12900",
+    "title": "Radiative heat transfer exceeding the blackbody limit between macroscale planar surfaces separated by a nanosize vacuum gap.",
+    "journal": "Nat Commun",
+    "year": "2016",
+    "cited": 39
+   },
+   {
+    "pmcid": "PMC8087415",
+    "doi": "10.1126/sciadv.abe5112",
+    "title": "Metaform optics: Bridging nanophotonics and freeform optics.",
+    "journal": "Sci Adv",
+    "year": "2021",
+    "cited": 32
+   },
+   {
+    "pmcid": "PMC4227028",
+    "doi": "10.1038/srep06998",
+    "title": "Interlocking-based attachment during locomotion in the beetle Pachnoda marginata (Coleoptera, Scarabaeidae).",
+    "journal": "Sci Rep",
+    "year": "2014",
+    "cited": 29
+   },
+   {
+    "pmcid": "PMC12048345",
+    "doi": "10.1038/s41563-025-02169-y",
+    "title": "Topological acoustofluidics.",
+    "journal": "Nat Mater",
+    "year": "2025",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC9018774",
+    "doi": "10.1038/s41467-022-29798-0",
+    "title": "Full-range birefringence control with piezoelectric MEMS-based metasurfaces.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC5390314",
+    "doi": "10.1038/srep46358",
+    "title": "50-nm-resolution full-field X-ray microscope without chromatic aberration using total-reflection imaging mirrors.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 28
+   },
+   {
+    "pmcid": "PMC7450988",
+    "doi": "10.1016/j.addma.2019.100887",
+    "title": "Fast micron-scale 3D printing with a resonant-scanning two-photon microscope.",
+    "journal": "Addit Manuf",
+    "year": "2019",
+    "cited": 27
+   },
+   {
+    "pmcid": "PMC7101219",
+    "doi": "10.1126/sciadv.aay1272",
+    "title": "Atomic-scale insights into the interfacial instability of superlubricity in hydrogenated amorphous carbon films.",
+    "journal": "Sci Adv",
+    "year": "2020",
+    "cited": 25
+   },
+   {
+    "pmcid": "PMC5364536",
+    "doi": "10.1038/srep45152",
+    "title": "Intermediate filament reorganization dynamically influences cancer cell alignment and migration.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 24
+   },
+   {
+    "pmcid": "PMC4507089",
+    "doi": "10.1089/ten.tea.2014.0485",
+    "title": "Investigating the Vascularization of Tissue-Engineered Bone Constructs Using Dental Pulp Cells and 45S5 Bioglass® Scaffolds.",
+    "journal": "Tissue Eng Part A",
+    "year": "2015",
+    "cited": 21
+   },
+   {
+    "pmcid": "PMC9218758",
+    "doi": "10.1002/advs.202105595",
+    "title": "High-Precision Printing of Complex Glass Imaging Optics with Precondensed Liquid Silica Resin.",
+    "journal": "Adv Sci (Weinh)",
+    "year": "2022",
+    "cited": 20
+   },
+   {
+    "pmcid": "PMC4042122",
+    "doi": "10.1038/srep05154",
+    "title": "Adhesion force measurements on the two wax layers of the waxy zone in Nepenthes alata pitchers.",
+    "journal": "Sci Rep",
+    "year": "2014",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC10836917",
+    "doi": "10.1126/sciadv.adl4661",
+    "title": "Electrically tunable topological phase transition in non-Hermitian optical MEMS metasurfaces.",
+    "journal": "Sci Adv",
+    "year": "2024",
+    "cited": 17
+   },
+   {
+    "pmcid": "PMC4820749",
+    "doi": "10.1038/srep23985",
+    "title": "Controlling the Adhesion of Superhydrophobic Surfaces Using Electrolyte Jet Machining Techniques.",
+    "journal": "Sci Rep",
+    "year": "2016",
+    "cited": 17
+   },
+   {
+    "pmcid": "PMC8516895",
+    "doi": "10.1038/s41467-021-26169-z",
+    "title": "Angle-based wavefront sensing enabled by the near fields of flat optics.",
+    "journal": "Nat Commun",
+    "year": "2021",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC3603292",
+    "doi": "10.1038/srep00973",
+    "title": "Direct observation of ion distributions near electrodes in ionic polymer actuators containing ionic liquids.",
+    "journal": "Sci Rep",
+    "year": "2013",
+    "cited": 14
+   },
+   {
+    "pmcid": "PMC3523288",
+    "doi": "10.1038/srep00988",
+    "title": "Friction anisotropy with respect to topographic orientation.",
+    "journal": "Sci Rep",
+    "year": "2012",
+    "cited": 14
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC4941047",
+   "title": "Bio-inspired sensitive and reversible mechanochromisms via strain-dependent cracks and folds.",
+   "year": "2016",
+   "text": "stretching tool to determine the optical performance. The morphology of the topmost rigid thin film with different strains under the transmission (for LM and CAM) and reflective mode (for TCM) were recorded on an optical microscope (AmScope ME 520TA). The strain-dependent surface profile of the topmost rigid thin film of the TCM was examined on a ZYGO NewView 5000 non-contact white-light profilometer. The strain-dependent transmittance test for the TCM was conducted on a Perkin Elmer ultraviolet/visible/near-infrared Lambda 900 spectrophotometer from 400 to 800 nm. Fluorescent spectra for LM and CAM were examined on a Jobin Yvon Fluorolog-3 fluorimeter with an excited light source at 365 or 247 nm. All",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8262819",
+   "title": "Bionic microenvironment-inspired synergistic effect of anisotropic micro-nanocomposite topology and biology cues on peripheral nerve regeneration.",
+   "year": "2021",
+   "text": "rned PCL ridge/groove (M/IKVAV), and micro-nanocomposite topology (M/A/IKVAV). The diameter of all the samples is 14 mm. Geometry and architecture analysis The geometry, structure morphology, and architecture of the prepared samples were characterized using optical microscope (Leica, Germany), SEM (Zeiss Gemini SEM 300), and surface profile meter (Zygo NewView 9000, United States). For optical microscope observation, the dried samples were mounted on the measurement platform, and nine randomly chosen sight fields were captured for statistical analysis of orientation angle. For SEM observation, the samples were first attached to aluminum stubs and sputtered with a golden layer (~50 nm), and then the samp",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6420315",
+   "title": "Vapor-printed polymer electrodes for long-term, on-demand health monitoring.",
+   "year": "2019",
+   "text": "-deposited onto the hosta leaves after UVA irradiation to accurately characterize the bioimpedance signal of a UVA-damaged hosta leaf while excluding errant signal changes arising from photodamage to the PProDOT-Cl coating. Morphology and electrical characterization The thicknesses of PProDOT-Cl coatings were measured with an optical profilometer (Zygo NewView 7300, Veeco Dektak 150, and Veeco NT9080). The optical images and videos of the coated plant matter were captured with an optical microscope (Zeiss Axio Scope.A1 equipped with a Zeiss AxioCam IC1 camera) or a digital camera (K-30, Pentax). Atomic force microscopy (AFM) was performed using a Bruker MultiMode AFM. Water contact angles were measured",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4432628",
+   "title": "Rubrene crystal field-effect mobility modulation via conducting channel wrinkling.",
+   "year": "2015",
+   "text": "where C i is the capacitance per unit area of the dielectric, V G is the gate voltage, V T is the threshold voltage and μ is the field-effect mobility. Mobilities were extracted from the non- V G -dependent mobility region of the μ versus V G plot. Equipment and settings Crystal thickness and topographic data were obtained by optical profilometry (Zygo NewView 7300). Parylene thickness was measured by spectral reflectance (Filmetrics F20). Optical micrographs were obtained with a Zeiss Axio Scope A1 equipped with Zeiss AxioCam ICc1 camera. Author contributions M.A.R.-M. conceived and carried out the experiments, developed the fabrication process for SCFETs, produced the samples and analysed the data. A.",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8221626",
+   "title": "Dynamic piezoelectric MEMS-based optical metasurfaces.",
+   "year": "2021",
+   "text": "ect the fabrication of the nanobricks, featuring overall consistency with the design apart from slightly rounded corners and minor size deviations ( Fig. 3C ) that are not expected to produce noticeable deterioration in the OMS performance ( 8 ). After assembling the MEMS-OMS, the MEMS-OMS separation was estimated using white light interferometry (Zygo NewView 6000) to be ~2 μm (fig. S4E), which is well within the ~6-μm-large moving range of the MEMS mirror (see Materials and Methods along with fig. S4F). Following that, we estimated the smallest achievable separation between the MEMS mirror and OMS substrate surface (crucial for efficient modulation) by using a multiwavelength interferometry (fig. S5).",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8221626",
+   "title": "Dynamic piezoelectric MEMS-based optical metasurfaces.",
+   "year": "2021",
+   "text": "EMS mirror that is of vital importance in developing dynamic MEMS-OMS. After the fabrication of both OMS and MEMS mirror, we move to the assembly and packaging processes for making MEMS-OMS devices (fig. S4A, fourth panel). Before assembly, the surface topography of the MEMS mirror and glass substrate were measured by a white light interferometry (Zygo NewView 6000), so as to select favorable areas on both sides with the least amount of contaminants and surface roughness that might obstruct the MEMS mirror from getting close enough to the OMS. Then, the MEMS mirror was glued to the glass substrate upon which the OMS has been structured (fig. S4, B to D). Getting the mirror and OMS parallel was done by a",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC3176399",
+   "title": "Elastic modulus of tree frog adhesive toe pads.",
+   "year": "2011",
+   "text": "ed in xylene and mounted in the mounting medium, DPX (Electron Microscopy Sciences per Science Services Ltd, London, UK). White light interferometry White light interferometry (WLI) is a technique for touchless measurement of surface topography in three dimensions. In our experiments, carried out at room temperature (24–26°C, 40–60% RH), we used a Zygo NewView 5000 System (model 5010) to scan the toe pads of frogs used in the indentation studies described below. Metropro 7.9.0 software was used to calculate axial and transverse radii of curvature of the pads from their 3D surface profiles, information that is needed for the estimation of toe pad stiffness (see below). The frog was restricted, ventral si",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5698435",
+   "title": "Evolution of tribo-induced interfacial nanostructures governing superlubricity in a-C:H and a-C:H:Si films.",
+   "year": "2017",
+   "text": "iques (Fig. 1b ) and deep-going characterization utilizing scanning electron transmission microscope and electron energy loss spectroscopy (Fig. 1c, d ). The contact areas including the ball wear scars and the wafer wear tracks were imaged using a Nikon optical microscopy. The topographies and sectional profiles of the wear tracks were recorded by Zygo NewView laser-interference surface profilometer. In some cases, the morphologies and surface roughness of the contact areas were characterized by atomic force microscopy (AFM, Asylum Research MFP 3D) using a commercial silicon tip in tapping mode. The bonding structure and configuration, especially the disorder or clustering of C- sp 2 phase in the carbon",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC4196919",
+   "title": "Complementary effects of two growth factors in multifunctionalized silk nanofibers for nerve reconstruction.",
+   "year": "2014",
+   "text": "ocessing software (ImageJ, MATLAB). Fiber diameters were measured from SEM images of the aligned scaffold. Straight lines were drawn along the length of the image and at each intersection of lines and electrospun fibers. The diameter and the angle of each fiber were calculated using ImageJ to define nanofiber alignment. 6 Roughness measurement The Zygo NewView 200 is a scanning white-light interferometer that uses Frequency Domain Analysis (FDA) to generate quantitative 3D images of surfaces [27] ; measurements use a white light filter based on a center wavelength of 600 nm, with a bandwidth of 125 nm. The interference patterns were recorded by a CCD camera; each measurement contains 320 × 240 data poin",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 5,
+  "surface_topography": 5,
+  "abrasion": 3,
+  "contact_angle": 1
+ }
+}

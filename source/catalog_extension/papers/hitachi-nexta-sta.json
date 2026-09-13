@@ -1,0 +1,120 @@
+{
+ "object": "hitachi-nexta-sta",
+ "manufacturer": "hitachi-high-tech",
+ "phrases": [
+  "Hitachi High-Tech NEXTA STA200",
+  "Hitachi High-Tech NEXTA",
+  "Hitachi High-Tech STA200",
+  "Hitachi High-Tech STA200RV",
+  "Hitachi High-Tech STA300"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Hitachi High-Tech NEXTA STA200\" OR \"Hitachi High-Tech NEXTA\" OR \"Hitachi High-Tech STA200\" OR \"Hitachi High-Tech STA200RV\" OR \"Hitachi High-Tech STA300\"",
+  "count": 4,
+  "works": [
+   {
+    "id": "https://openalex.org/W7166797473",
+    "doi": "https://doi.org/10.1038/s41467-026-74148-z",
+    "title": "Toughening elastomer via sequentially activated multi-pathway energy dissipation",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Polymer composites and self-healing",
+     "Force Microscopy Techniques and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-026-74148-z.pdf",
+    "abstract": "Auxiliary energy dissipation pathways have been incorporated into elastomer design to enhance the toughness. However, most strategies involving multiple pathways rely on non-synergistic dissipation that ceases to function once structural evolution occurs. Herein, we report a strategy to toughen elastomer via sequentially activated multi-pathway energy dissipation, simultaneously integrating mechanically interlocked networks (MINs), scissile mechanophore, and woven networks within a single polymer. A rotaxane crosslinker is applied to construct MINs in polyurethane as the primary energy dissipation pathway. After the sliding motion of the rotaxane crosslinkers reaches its maximal extent, the truxinate mechanophore embedded in rotaxane's macrocycle undergoes sacrificial scission as the secondary pathway. Subsequently, the linear chain produced by cleavage of the rotaxane's macrocycle inherently entangles with the axle chain, resulting in woven networks as the tertiary energy dissipation pathway. This strategy substantially enhances the toughness and clarifies how mechanophore activation interacts with supramolecular architecture in polymeric materials."
+   },
+   {
+    "id": "https://openalex.org/W7197023440",
+    "doi": "https://doi.org/10.1021/acsomega.6c07699",
+    "title": "Anodization of Aluminum in Moderate-to-High Concentrations of Sulfuric Acid",
+    "year": 2026,
+    "cited": 0,
+    "venue": "ACS Omega",
+    "topics": [
+     "Anodic Oxide Films and Nanostructures",
+     "Nanoporous metals and alloys",
+     "Advanced Machining and Optimization Techniques"
+    ],
+    "oa_url": "https://doi.org/10.1021/acsomega.6c07699",
+    "abstract": "Sulfuric acid is widely used as an electrolyte for aluminum anodization in both industrial and academic applications. Industrial anodization typically employs sulfuric acid concentrations of 1-2.5 M, whereas academic studies, particularly those on the self-ordering of pore arrangements, often use low-concentration sulfuric acid (≤0.3 M). Although commercially available sulfuric acid (96-98%) has a concentration of approximately 18 M, the anodization behavior of aluminum in highly concentrated sulfuric acid (≥3 M) has received little attention. In this study, the effects of sulfuric acid concentration (1.5-12 M) on the voltage-time response during constant-current anodization, the structure of the resulting anodic film, and film formation efficiency were systematically investigated. The results showed that these properties exhibited nonmonotonic concentration dependence, with similar trends observed at both low and high sulfuric acid concentrations. This characteristic behavior was attributed to changes in the electrical conductivity of the electrolyte associated with the concentration-dependent dissociation of sulfuric acid. Furthermore, anodization in 12 M sulfuric acid resulted in increased sulfate incorporation into the anodic film, accompanied by increased film thickness and an apparent improvement in film formation efficiency."
+   },
+   {
+    "id": "https://openalex.org/W7172199224",
+    "doi": "https://doi.org/10.2494/photopolymer.39.159",
+    "title": "Improvement of Non-PFAS Biomass EUV Resist by Optimization of Chemical Structures",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Photopolymer Science and Technology",
+    "topics": [
+     "Polymer Science and PVC",
+     "Advancements in Photolithography Techniques",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/photopolymer/39/3/39_159/_pdf",
+    "abstract": "Biomass resists have been developed to meet the increasing demand for High-NA EUV lithography. EUV resists are required to provide high resolution, high sensitivity, and high etching resistance; however, achieving sufficient sensitivity and etching resistance remains a challenge for current materials. To address these issues, resists with diverse chemical structures were investigated, and key “knobs” that significantly affect performance were identified. By optimizing these knobs, a 20% increase in etching resistance was achieved while sensitivity was enhanced by up to fourfold compared with conventional resists."
+   },
+   {
+    "id": "https://openalex.org/W7169784838",
+    "doi": "https://doi.org/10.18910/105413",
+    "title": "ニッケルショクバイニヨルフカッセイケツゴウカッセイカヲキバントスルアリールイミデートノテンイハンノウオヨビナンブンカイセイポリマーノケミカルリサイクル・コッカクヘンシュウニカンスルケンキュウ",
+    "year": null,
+    "cited": 0,
+    "venue": "Institutional Repositories DataBase (IRDB)",
+    "topics": [
+     "Inorganic and Organometallic Chemistry",
+     "Catalytic Cross-Coupling Reactions",
+     "Synthesis of Tetrazole Derivatives"
+    ],
+    "oa_url": "https://ir.library.osaka-u.ac.jp/repo/ouka/all/105413/35528_Dissertation.pdf",
+    "abstract": "This thesis focuses on nickel-catalyzed inert bond activation as a platform for developing rearrangement reactions as well as chemical recycling and skeletal-editing strategies for persistent polymers.The completion of this work was made possible through the generous support and encouragement of many individuals.The author would like to express sincere gratitude to all of them.First, the author expresses his deepest appreciation to Professor Mamoru Tobisu for his invaluable guidance and unwavering"
+   }
+  ]
+ },
+ "europepmc": {
+  "query": "(\"Hitachi High-Tech NEXTA STA200\" OR \"Hitachi High-Tech NEXTA\" OR \"Hitachi High-Tech STA200\" OR \"Hitachi High-Tech STA200RV\" OR \"Hitachi High-Tech STA300\") AND OPEN_ACCESS:y",
+  "count": 2,
+  "papers": [
+   {
+    "pmcid": "PMC13491480",
+    "doi": "10.1021/acsomega.6c07699",
+    "title": "Anodization of Aluminum in Moderate-to-High Concentrations of Sulfuric Acid.",
+    "journal": "ACS Omega",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 0,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC13323342",
+    "doi": "10.1038/s41467-026-74148-z",
+    "title": "Toughening elastomer via sequentially activated multi-pathway energy dissipation.",
+    "journal": "Nat Commun",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC13323342",
+   "title": "Toughening elastomer via sequentially activated multi-pathway energy dissipation.",
+   "year": "2026",
+   "text": "% -10% strain. Cyclic tensile tests were performed using Autograph AG-X plus (Shimadzu Co.). Test pieces were continuously stretched and recovered without interval. Maximum strains were set to 100%, 200%, 300%, 400%, 500% and 600% at deformation rate of 300 mm/min. Glass transition temperatures (T g ) of the polymers were measured by a DSC system (Hitachi High-Tech NEXTA DSC200) with N 2 gas flow (30 mL/min.). Thermal transitions were measured in the temperature range of -150–0 °C heated 10 °C/min. (the first scanning). After the first scanning, the samples were cooled to -150 °C and reheated to 0 °C (the second scanning). Dynamic mechanical analysis (DMA): The viscoelastic properties were measured by DMA system u",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "dma": 1,
+  "electrical_transport": 1,
+  "tensile": 1
+ }
+}

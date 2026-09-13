@@ -1,0 +1,317 @@
+{
+ "object": "ta-instruments-discovery-tga-materialtwin",
+ "manufacturer": "ta-instruments",
+ "phrases": [
+  "TA Instruments Discovery TGA 55",
+  "TA Instruments Discovery TGA 550",
+  "TA Instruments Discovery TGA 5500"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"TA Instruments Discovery TGA 55\" OR \"TA Instruments Discovery TGA 550\" OR \"TA Instruments Discovery TGA 5500\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"TA Instruments Discovery TGA 55\" OR \"TA Instruments Discovery TGA 550\" OR \"TA Instruments Discovery TGA 5500\") AND OPEN_ACCESS:y",
+  "count": 36,
+  "papers": [
+   {
+    "pmcid": "PMC6563708",
+    "doi": "10.1002/cssc.201802867",
+    "title": "Furan-Based Copolyesters from Renewable Resources: Enzymatic Synthesis and Properties.",
+    "journal": "ChemSusChem",
+    "year": "2019",
+    "cited": 26,
+    "snippets": 1,
+    "standards_in_paper": [
+     "KS3000"
+    ]
+   },
+   {
+    "pmcid": "PMC10662295",
+    "doi": "10.1038/s41467-023-43117-1",
+    "title": "Unraveling the rheology of inverse vulcanized polymers.",
+    "journal": "Nat Commun",
+    "year": "2023",
+    "cited": 19,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8196837",
+    "doi": "10.3390/polym13111694",
+    "title": "Antimicrobial Property of Polypropylene Composites and Functionalized Copper Nanoparticles.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 17,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM E2149-01"
+    ]
+   },
+   {
+    "pmcid": "PMC9434828",
+    "doi": "10.1021/jacs.2c05122",
+    "title": "Direct Location of Organic Molecules in Framework Materials by Three-Dimensional Electron Diffraction.",
+    "journal": "J Am Chem Soc",
+    "year": "2022",
+    "cited": 14,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6150640",
+    "doi": "10.1021/acsomega.8b01106",
+    "title": "Enzymatic Polymerization of Dimethyl 2,5-Furandicarboxylate and Heteroatom Diamines.",
+    "journal": "ACS Omega",
+    "year": "2018",
+    "cited": 14,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC9182914",
+    "doi": "10.3390/polym14112304",
+    "title": "Utilization of Suberinic Acids Containing Residue as an Adhesive for Particle Boards.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 12,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 310",
+     "EN 312",
+     "EN 317",
+     "EN 319",
+     "EN 323",
+     "ISO 1171"
+    ]
+   },
+   {
+    "pmcid": "PMC8482480",
+    "doi": "10.1021/acsomega.1c03446",
+    "title": "Thermal and Barrier Characterizations of Cellulose Esters with Variable Side-Chain Lengths and Their Effect on PHBV and PLA Bioplastic Film Properties.",
+    "journal": "ACS Omega",
+    "year": "2021",
+    "cited": 10,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ASTM D882-12",
+     "ASTM E96"
+    ]
+   },
+   {
+    "pmcid": "PMC6918140",
+    "doi": "10.3390/polym11111852",
+    "title": "Fabrication of Poly(butylene succinate)/Carbon Black Nanocomposite Foams with Good Electrical Conductivity and High Strength by a Supercritical CO<sub>2</sub> Foaming Process.",
+    "journal": "Polymers (Basel)",
+    "year": "2019",
+    "cited": 8,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC8459366",
+    "doi": "10.1021/acsomega.1c02799",
+    "title": "Synthesis and Characterization of a Low-Molecular-Weight Novolac Epoxy Derived from Lignin-Inspired Phenolics.",
+    "journal": "ACS Omega",
+    "year": "2021",
+    "cited": 7
+   },
+   {
+    "pmcid": "PMC9267181",
+    "doi": "10.3390/ma15134437",
+    "title": "Effects of Blending Tobacco Lignin with HDPE on Thermal and Mechanical Properties.",
+    "journal": "Materials (Basel)",
+    "year": "2022",
+    "cited": 5
+   },
+   {
+    "pmcid": "PMC11898174",
+    "doi": "10.1021/acssuschemeng.4c09338",
+    "title": "Thermoreversible Diels-Alder Cross-Linking of BHMF-Based Polyesters: Synthesis, Characterization and Rheology.",
+    "journal": "ACS Sustain Chem Eng",
+    "year": "2025",
+    "cited": 4
+   },
+   {
+    "pmcid": "PMC11465282",
+    "doi": "10.1021/acsomega.4c05696",
+    "title": "Importance of Primary and Secondary Hydrogen Bonding Interactions of Polyols on the Plasticization of Chitosan.",
+    "journal": "ACS Omega",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC11114569",
+    "doi": "10.1039/d3lp00232b",
+    "title": "Ring-opening polymerization of emulsion-templated deep eutectic system monomer for macroporous polyesters with controlled degradability.",
+    "journal": "RSC Appl Polym",
+    "year": "2024",
+    "cited": 3
+   },
+   {
+    "pmcid": "PMC12820977",
+    "doi": "10.1021/acssuschemeng.5c10550",
+    "title": "Contaminant-Tolerant Conversion of Polyethylene Waste to α‑Olefins.",
+    "journal": "ACS Sustain Chem Eng",
+    "year": "2026",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC11679569",
+    "doi": "10.3390/ma17246274",
+    "title": "Mesoporous Silica-Carbon Composites with Enhanced Conductivity: Analysis of Powder and Thin Film Forms.",
+    "journal": "Materials (Basel)",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC11100303",
+    "doi": "10.1039/d4ra01812e",
+    "title": "Development of phenyllactic acid ionic liquids and evaluation of cytotoxicity to human cervical epithelial cells.",
+    "journal": "RSC Adv",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC11094730",
+    "doi": "10.1021/acs.biomac.3c01433",
+    "title": "Enzymatic Synthesis of Copolyesters with the Heteroaromatic Diol 3,4-Bis(hydroxymethyl)furan and Isomeric Dimethyl Furandicarboxylate Substitutions.",
+    "journal": "Biomacromolecules",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC10825308",
+    "doi": "10.1016/j.heliyon.2024.e24016",
+    "title": "Focused solar annealing for block copolymer fast self-assembly.",
+    "journal": "Heliyon",
+    "year": "2024",
+    "cited": 2
+   },
+   {
+    "pmcid": "PMC12348239",
+    "doi": "10.3390/nano15151173",
+    "title": "Enhanced Response of ZnO Nanorod-Based Flexible MEAs for Recording Ischemia-Induced Neural Activity in Acute Brain Slices.",
+    "journal": "Nanomaterials (Basel)",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12377647",
+    "doi": "10.1073/pnas.2425520122",
+    "title": "Warm, water-depleted rocky exoplanets with surface ionic liquids: A proposed class for planetary habitability.",
+    "journal": "Proc Natl Acad Sci U S A",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12331958",
+    "doi": "10.1038/s41598-025-13450-0",
+    "title": "Sex-based differences in cell migration on aligned topographies.",
+    "journal": "Sci Rep",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC12264955",
+    "doi": "10.1021/acs.biomac.5c00177",
+    "title": "Modulating Thermal Stability and Flexibility in Chitosan Films with Neutral Polyol-Boric Acid Complexes.",
+    "journal": "Biomacromolecules",
+    "year": "2025",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC10674995",
+    "doi": "10.3390/polym15224401",
+    "title": "Cognizant Fiber-Reinforced Polymer Composites Incorporating Seamlessly Integrated Sensing and Computing Circuitry.",
+    "journal": "Polymers (Basel)",
+    "year": "2023",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC8697626",
+    "doi": "10.1039/d1ra00777g",
+    "title": "A diamino-functionalized silsesquioxane pillared graphene oxide for CO<sub>2</sub> capture.",
+    "journal": "RSC Adv",
+    "year": "2021",
+    "cited": 1
+   },
+   {
+    "pmcid": "PMC13537983",
+    "doi": "10.3389/fphar.2026.1767493",
+    "title": "Comparative efficacy of free and PNAGA-encapsulated antimalarial drugs: temperature-dependent modulation of &lt;i&gt;Plasmodium falciparum&lt;/i&gt; growth.",
+    "journal": "Front Pharmacol",
+    "year": "2026",
+    "cited": 0
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6563708",
+   "title": "Furan-Based Copolyesters from Renewable Resources: Enzymatic Synthesis and Properties.",
+   "year": "2019",
+   "text": "rior to injection. Differential scanning calorimetry (DSC) measurements were conducted to measure the thermal transitions of the obtained furan copolyesters. The measurements were performed on a TA‐Instruments Q1000 DSC by heating–cooling–heating scans with heating–cooling rates of 10 °C min −1 . Thermogravimetric analysis (TGA) was performed on a TA‐Instruments Discovery TGA 5500. The samples were heated at a 10 °C min −1 scan rate in a nitrogen environment. Before the standard TGA measurement, the tested sample was first heated up to 100 °C and then maintained at this temperature for 30 min. to remove the remaining water and solvents in the polymer. Wide‐angle X‐ray diffraction (WAXD) patterns of the obtained furan copoly",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10662295",
+   "title": "Unraveling the rheology of inverse vulcanized polymers.",
+   "year": "2023",
+   "text": "es (depending on exact composition) until stirring stopped due to the increased viscosity of the reaction mixture. After cooling to room temperature, the polysulfide was extracted from the vial to yield the polysulfide. Yields and exact procedures for each composition are in the Supplementary Information Methods. Thermogravimetric Analysis (TGA) A TA Instruments Discovery TGA 5500 (New Castle, Delaware) was used for thermal analysis at a constant ramp rate of 10 °C/min from 30 to 800 °C. Platinum sample pans were used with approximately 10 mg of material. Differential Scanning Calorimetry (DSC) A TA Instruments Discovery DSC 2500 (New Castle, Delaware) equipped with a RCS 40 cooler was used for thermal analysis. The samples",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8196837",
+   "title": "Antimicrobial Property of Polypropylene Composites and Functionalized Copper Nanoparticles.",
+   "year": "2021",
+   "text": "n SPECTR AA-250 plus, Varian inc., Mulgrave, Victoria, Australia) at a wavelength of 324.4 nm that corresponds to copper. A calibration curve was prepared using multielemental standards (high-purity standards) at different concentrations (ppm). Thermal stability of the iPP/CuNPs composites was determined by thermogravimetric analysis (TGA) using a TA Instruments Discovery TGA 5500 device (TA instruments Inc., New Castle, DE, USA). The analysis consisted of a temperature sweep from 25 to 600 °C under N 2 atmosphere of a 20 mg sample with a heating rate of 10 °C/min. From 600 to 700 °C the N 2 atmosphere was replaced by an oxygen atmosphere to assure full combustion of the residues. Thermal transitions (melting and crystalliz",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9434828",
+   "title": "Direct Location of Organic Molecules in Framework Materials by Three-Dimensional Electron Diffraction.",
+   "year": "2022",
+   "text": "A single-tilt holder (tilting range: −70 to +70°) was used for the data collection of SU-8 under room temperature. For SU-68, the sample was cooled to 96 K using a Gatan cryotransfer tomography holder. The area used for cRED data collection was about 1.0 μm in diameter, as defined by the selected area aperture. Thermogravimetric Analysis (TGA) Crystals of SU-68 were heated on a TA Instruments Discovery TGA 5500 thermogravimetric analyzer from room temperature to 800 °C at a rate of 10 °C min –1 under airflow. Results and Discussion We applied cRED on SU-8 and SU-68 crystals to locate guest molecules in the open-framework materials. The guest molecules of 2-methyl-1,5-pentanediamine (MPMD) and tris(2-aminoethyl)-amine (TAEA) are immobilized in SU-8 and SU",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6150640",
+   "title": "Enzymatic Polymerization of Dimethyl 2,5-Furandicarboxylate and Heteroatom Diamines.",
+   "year": "2018",
+   "text": "ransitions of the obtained polyamides were measured by DSC on TA-Instruments Discovery DSC 2500. The samples were scanned by heating–cooling–heating scans with heating–cooling rates of 10 °C/min. Tzero aluminium pinhole hermetic pans were used for all of the DSC measurements. Thermal stability of the obtained polyamides was characterized by TGA on TA-Instruments Discovery TGA 5500 on an open pan under a nitrogen environment. The scan rate was 10 °C/min. To remove the remaining water and solvents in the polymer, the tested sample was first heated up to 150 °C and then maintained at this temperature for 30 min before the standard TGA measurement. MALDI-ToF MS measurements were performed on a Biosystems Voyager-DE PRO spectrom",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9182914",
+   "title": "Utilization of Suberinic Acids Containing Residue as an Adhesive for Particle Boards.",
+   "year": "2022",
+   "text": "oledo, Greifensee, Switzerland) was used to analyse the thermal behaviour of adhesive samples. The analysis was performed in pierced aluminium pans under N 2 purging at a rate of 10 °C min −1 in two stages: (1) heating from 20 °C to 260 °C; (2) cooling from 260 °C to 20 °C. 2.4.7. Thermogravimetric Analysis (TGA) TGA analysis was performed using a TA Instruments Discovery TGA 5500 thermogravimetric analyzer. Mass loss was determined in Pt sample pans under an N 2 purge at 50 mL min −1 by isothermally treating the sample at 30 °C, followed by heating to 700 °C at a rate of 10 °C min −1 . 2.4.8. Fourier Transform Infrared Spectroscopy (FTIR) Analysis FTIR spectrometry data was collected with a Nicolet iS50 spectrometer (Therm",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8482480",
+   "title": "Thermal and Barrier Characterizations of Cellulose Esters with Variable Side-Chain Lengths and Their Effect on PHBV and PLA Bioplastic Film Properties.",
+   "year": "2021",
+   "text": "an. X c of the samples was obtained by dividing the enthalpy of fusion (Δ H m , determined from the area under the endotherms using TRIOS Software v4.1.1.33073) by the enthalpy value of a theoretically 100% crystalline sample material. 4.2.3 Thermal Degradation Measurement—TGA The thermal degradation properties of the samples were measured using a TA Instruments Discovery TGA 550 (New Castle, DE, USA). Samples were heated under nitrogen from room temperature to 500 °C at 20 °C/min. The extrapolated onset ( T o ) and peak ( T p ) degradation temperatures were determined from the weight loss and derivative thermograms, respectively, using TRIOS Software v4.1.1.33073. 4.2.4 Moisture Barrier Measurement—WVTR Measurement WVTR o",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6918140",
+   "title": "Fabrication of Poly(butylene succinate)/Carbon Black Nanocomposite Foams with Good Electrical Conductivity and High Strength by a Supercritical CO<sub>2</sub> Foaming Process.",
+   "year": "2019",
+   "text": "te was both set to 10 °C /min. Approximately 3–5 mg specimens of the PBS/CB nanocomposites were heated from 25 to 120 °C, held at 120 °C for 3 min to eliminate the heat history, and then cooled to room temperature. After that, the nanocomposites were reheated to 120 °C again and the DSC test curves were obtained. TGA testing was carried out with a TA Instruments Discovery TGA 550 (New Castle, DE, USA), and each TGA test was conducted at a heating rate of 10 °C/min from 25 to 500 °C under a nitrogen gas atmosphere. A minimum of three samples for each nanocomposite were tested. 2.4.2. Mechanical Property Test A dynamic mechanical analysis (DMA) test was performed using METTLER DMA 1 in the tensile mode. The PBS/CB nanocompos",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tga": 5,
+  "dsc": 2,
+  "dma": 1,
+  "tensile": 1
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "object": "salt-st-1004-hydraulic-utm",
+ "manufacturer": "salt",
+ "pages": 9,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ASTM D695": 2,
+  "ASTM D638": 1,
+  "ASTM D790": 1,
+  "ISO 6892": 1,
+  "ISO 527": 1,
+  "ISO 178": 1,
+  "ISO 37": 1,
+  "ISO 604": 1,
+  "ISO 7743": 1
+ },
+ "standards_new": [
+  "ASTM D638",
+  "ASTM D695",
+  "ASTM D790",
+  "ISO 178",
+  "ISO 37",
+  "ISO 527",
+  "ISO 604",
+  "ISO 6892",
+  "ISO 7743"
+ ],
+ "test_item_hits": {
+  "compression": 44,
+  "tensile": 40,
+  "abrasion": 13,
+  "flexure": 13,
+  "creep": 4,
+  "peel": 3,
+  "burst_pressure": 2,
+  "hdt": 2,
+  "izod_impact": 2,
+  "scratch_pencil_hardness": 2,
+  "shear": 2,
+  "thermal_shock": 2,
+  "halt_hass": 1,
+  "hardness_brinell": 1,
+  "hardness_rockwell": 1,
+  "microscopy": 1,
+  "tear": 1
+ },
+ "application_sentences": [
+  "For testing materials such as metals, concrete, wood, composites, FRP etc.",
+  "'s ST-S-BPH extensometer is perfect for use with the ST-1004 as it offers the durability for testing steel and composites through breaking point stresses.",
+  "view raw data of Remote control of possible testing methods to 50 different test graphs completed tests UTM via software Test information (Data input prior to test) Test options such as load select, graph scale, test speed etc."
+ ]
+}

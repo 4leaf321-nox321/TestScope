@@ -1,0 +1,73 @@
+{
+ "object": "yokogawa-wt5000",
+ "manufacturer": "yokogawa",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "GM10": 7,
+  "IEC 61000": 5,
+  "IEC62301": 3,
+  "ISO17025": 3,
+  "IEC60076-8": 3,
+  "IEC61000-3-12": 2,
+  "IEC 61000-3-2": 2,
+  "IEC 61000-3-3": 2,
+  "IEC 61000-3-11": 2,
+  "IEC 61000-3-12": 2,
+  "EN61000-3-2": 1,
+  "IEC61000-3-2": 1,
+  "EN61000-3-12": 1,
+  "JIS C 61000-3-2": 1,
+  "EN 50564": 1,
+  "IEC61000": 1,
+  "SAE J1634": 1,
+  "ISO 17025": 1,
+  "IEC17025": 1
+ },
+ "standards_new": [
+  "EN61000-3-12",
+  "EN61000-3-2",
+  "GM10",
+  "IEC 61000",
+  "IEC 61000-3-11",
+  "IEC 61000-3-12",
+  "IEC 61000-3-3",
+  "IEC17025",
+  "IEC60076-8",
+  "IEC61000",
+  "IEC61000-3-12",
+  "IEC61000-3-2",
+  "IEC62301",
+  "ISO 17025",
+  "ISO17025",
+  "JIS C 61000-3-2",
+  "SAE J1634"
+ ],
+ "test_item_hits": {
+  "microscopy": 21,
+  "altitude_low_pressure": 12,
+  "vibration_sine_random": 7,
+  "electrical_transport": 3,
+  "halt_hass": 2,
+  "density_porosity": 1
+ },
+ "application_sentences": [
+  "1 inch WXGA display allows split screen viewing of up to 7 waveforms and can display up to 12 pages of diverse measurement parameters, making it ideal for efficiency tests of inverter driven motors, renewable energy technologies and traction applications like pumps, fans and electric vehicles.",
+  "With measurement capabilities from up to 7 input elements the WT5000 is ideal for voltage, current, power, and frequency (for AC) before and after each converter, as well as converter efficiency and charging efficiency.",
+  "This document defines the test conditions and procedures for testing airborne equipment and is the standard by which Boeing, Airbus and other manufacturers require avionic components and sub-systems to be tested.",
+  "Sensor Element for WT5000 Precision Power Analyzer Overview: The current sensor element for the Yokogawa Test&Measurement WT5000 Precision Power Analyzer is ideal for applications requiring a current transformer for high-current measurements.",
+  "er Measurement Easier How-to How to Test to IEC Standards Using a Power Analyzer & Harmonic Flicker Testing Software Overview: This video demonstrates how to test to an IEC standard (IEC 61000) using a Yokogawa Test&Measurement WT5000 Precision Power Analyzer and the harmonic flicker testing software.",
+  "This makes the unit ideal for the precision testing of transformer losses according to the IEC60076-8.",
+  "New Current Sensor Element for WT5000 Precision Power Analyzer The current sensor element for the Yokogawa Test&Measurement WT5000 Precision Power Analyzer is ideal for applications requiring a current transformer for high-current measurements.",
+  "wer Analyzer Current Sensor Element | Yokogawa Test&Measurement The current sensor element for the Yokogawa Test&Measurement WT5000 Precision Power Analyzer is ideal for applications requiring a current transformer for high-current measurements."
+ ],
+ "standards_nearby": [
+  "EIA 89",
+  "EN50564",
+  "IEC61000-3-3",
+  "IEC61000-4-30",
+  "IEEE 1588",
+  "IEEE1588",
+  "JIS 100"
+ ]
+}

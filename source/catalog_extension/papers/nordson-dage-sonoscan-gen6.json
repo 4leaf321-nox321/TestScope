@@ -1,0 +1,23 @@
+{
+ "object": "nordson-dage-sonoscan-gen6",
+ "manufacturer": "nordson-dage",
+ "phrases": [
+  "Nordson Gen6 C-SAM",
+  "DAGE / Sonoscan Gen6 C-SAM"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Nordson Gen6 C-SAM\" OR \"DAGE / Sonoscan Gen6 C-SAM\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Nordson Gen6 C-SAM\" OR \"DAGE / Sonoscan Gen6 C-SAM\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

@@ -1,0 +1,29 @@
+{
+ "object": "salt-st-1000-series-electromechanical-utm",
+ "manufacturer": "salt",
+ "phrases": [
+  "SALT Co. ST-1000 ST-1001",
+  "SALT Co. ST-1000",
+  "SALT Co. ST-1001",
+  "SALT Co. ST-1002",
+  "SALT Co. ST-1000 High Elongation",
+  "SALT Co. ST-1002 30",
+  "Light-SALT ST-1000 ST-1001",
+  "Light-SALT ST-1000"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"SALT Co. ST-1000 ST-1001\" OR \"SALT Co. ST-1000\" OR \"SALT Co. ST-1001\" OR \"SALT Co. ST-1002\" OR \"SALT Co. ST-1000 High Elongation\" OR \"SALT Co. ST-1002 30\" OR \"Light-SALT ST-1000 ST-1001\" OR \"Light-SALT ST-1000\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"SALT Co. ST-1000 ST-1001\" OR \"SALT Co. ST-1000\" OR \"SALT Co. ST-1001\" OR \"SALT Co. ST-1002\" OR \"SALT Co. ST-1000 High Elongation\" OR \"SALT Co. ST-1002 30\" OR \"Light-SALT ST-1000 ST-1001\" OR \"Light-SALT ST-1000\") AND OPEN_ACCESS:y",
+  "count": 0,
+  "papers": []
+ },
+ "usage_snippets": [],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}

@@ -1,0 +1,43 @@
+{
+ "object": "shimadzu-hmv-g",
+ "manufacturer": "shimadzu",
+ "pages": 6,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO6507-1": 4,
+  "JIS G 0559": 3,
+  "ISO6507-2": 3,
+  "ISO 18203": 2,
+  "ISO 3754": 1,
+  "ISO-9001": 1,
+  "ISO-17025": 1
+ },
+ "standards_new": [
+  "ISO 18203",
+  "ISO 3754",
+  "ISO-17025",
+  "ISO-9001",
+  "ISO6507-1",
+  "ISO6507-2",
+  "JIS G 0559"
+ ],
+ "test_item_hits": {
+  "hardness_vickers": 33,
+  "compression": 11,
+  "tensile": 10,
+  "flexure": 9,
+  "fracture_toughness": 3,
+  "microscopy": 2,
+  "optical_spectroscopy": 2,
+  "scratch_pencil_hardness": 2,
+  "density_porosity": 1,
+  "electrical_transport": 1,
+  "hardness_brinell": 1,
+  "hardness_knoop": 1,
+  "hardness_rockwell": 1
+ },
+ "application_sentences": [
+  "Operator-focused software (G31 series): intuitive main operation sequence designed for repeatable workflows across operators.",
+  "In addition to test condition settings, statistical graphs are displayed to summarize the results."
+ ]
+}

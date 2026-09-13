@@ -1,0 +1,48 @@
+{
+ "object": "shimadzu-uh-x-fx",
+ "manufacturer": "shimadzu",
+ "phrases": [
+  "Shimadzu UH-X UH-FX",
+  "Shimadzu UH-X",
+  "Shimadzu UH-200kNX",
+  "Shimadzu UH-200kNXh",
+  "Shimadzu UH-300kNX",
+  "Shimadzu UH-F300kNX"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Shimadzu UH-X UH-FX\" OR \"Shimadzu UH-X\" OR \"Shimadzu UH-200kNX\" OR \"Shimadzu UH-200kNXh\" OR \"Shimadzu UH-300kNX\" OR \"Shimadzu UH-F300kNX\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Shimadzu UH-X UH-FX\" OR \"Shimadzu UH-X\" OR \"Shimadzu UH-200kNX\" OR \"Shimadzu UH-200kNXh\" OR \"Shimadzu UH-300kNX\" OR \"Shimadzu UH-F300kNX\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC11598111",
+    "doi": "10.3390/polym16223193",
+    "title": "Effect of the Infill Density on 3D-Printed Geometrically Graded Impact Attenuators.",
+    "journal": "Polymers (Basel)",
+    "year": "2024",
+    "cited": 2,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC11598111",
+   "title": "Effect of the Infill Density on 3D-Printed Geometrically Graded Impact Attenuators.",
+   "year": "2024",
+   "text": "s on the load response, as presented in Figure 2 . The specimen obtained after manufacturing is presented in Figure 3 . Moreover, the average mass for the impact attenuators with two different printed materials and three variable infill densities is presented in Table 2 . 2.4. Quasi-Static Tests For performing the compression quasi-static tests, a Shimadzu UH-X (Kyoto, Japan), a computer-controlled hydraulic servo system machine with a maximum load of 600 kN was used. The quasi-static tests were carried out at a constant crosshead rate of 1.0 mm/min. 2.5. Impact Tests The drop-weight machine, which has been developed in-house by the authors specifically created for the study of adhesives and adhesive joi",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "compression": 1
+ }
+}

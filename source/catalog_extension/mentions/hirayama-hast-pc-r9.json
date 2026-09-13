@@ -1,0 +1,40 @@
+{
+ "object": "hirayama-hast-pc-r9",
+ "manufacturer": "hirayama",
+ "pages": 7,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "IEC 60068-2-66": 6,
+  "JEDEC JESD22": 4,
+  "JIS C 60068-2-66": 3,
+  "ISO 17025": 2,
+  "IEC 17025": 2,
+  "JESD22": 2,
+  "JIS C 0096": 2,
+  "JIS 855": 1,
+  "JIS C 60068-2-67": 1
+ },
+ "standards_new": [
+  "IEC 17025",
+  "ISO 17025",
+  "JEDEC JESD22",
+  "JESD22",
+  "JIS 855",
+  "JIS C 0096",
+  "JIS C 60068-2-66",
+  "JIS C 60068-2-67"
+ ],
+ "test_item_hits": {
+  "microscopy": 16,
+  "hast": 12,
+  "abrasion": 3,
+  "damp_heat": 3,
+  "electrical_transport": 2,
+  "vibration_sine_random": 2,
+  "thermal_shock": 1
+ },
+ "application_sentences": [
+  "The chamber is also commonly used for JEDEC JESD22-A110 highly accelerated temperature/humidity stress testing.",
+  "product line includes desktop pressure cookers (PC-242 series), mid-volume HAST chambers (PC-422 R8/R9 series), and large-capacity HAST/PCT systems (PC-702R8) suitable for high-throughput production qualification."
+ ]
+}

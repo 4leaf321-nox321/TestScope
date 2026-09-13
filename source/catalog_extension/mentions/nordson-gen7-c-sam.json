@@ -1,0 +1,25 @@
+{
+ "object": "nordson-gen7-c-sam",
+ "manufacturer": "nordson-dage",
+ "pages": 8,
+ "harvested": "2026-09-13",
+ "standards_found": {
+  "ISO9001": 1,
+  "ISO 13485": 1
+ },
+ "standards_new": [
+  "ISO 13485",
+  "ISO9001"
+ ],
+ "test_item_hits": {
+  "microscopy": 29,
+  "electrical_transport": 12,
+  "density_porosity": 2,
+  "temperature_cycling": 2,
+  "surge_eft_immunity": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "However, at CIL our Nordson SONOSCAN Gen7 C-SAM Acoustic Microscope system is used for this and any application whereby X-Ray assessment is not possible such as very thick copper PCB's."
+ ]
+}

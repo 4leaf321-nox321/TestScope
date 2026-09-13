@@ -1,0 +1,323 @@
+{
+ "object": "shimadzu-ags-v",
+ "manufacturer": "shimadzu",
+ "phrases": [
+  "Shimadzu AUTOGRAPH AGS-V",
+  "Shimadzu AUTOGRAPH",
+  "Shimadzu AGS-1NVD",
+  "Shimadzu 2NVD",
+  "Shimadzu 5NVD",
+  "Shimadzu AGS-10NVD"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Shimadzu AUTOGRAPH AGS-V\" OR \"Shimadzu AUTOGRAPH\" OR \"Shimadzu AGS-1NVD\" OR \"Shimadzu 2NVD\" OR \"Shimadzu 5NVD\" OR \"Shimadzu AGS-10NVD\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Shimadzu AUTOGRAPH AGS-V\" OR \"Shimadzu AUTOGRAPH\" OR \"Shimadzu AGS-1NVD\" OR \"Shimadzu 2NVD\" OR \"Shimadzu 5NVD\" OR \"Shimadzu AGS-10NVD\") AND OPEN_ACCESS:y",
+  "count": 245,
+  "papers": [
+   {
+    "pmcid": "PMC6477598",
+    "doi": "10.3390/biomimetics4010019",
+    "title": "Cellulose Nanofiber-Reinforced Chitosan Hydrogel Composites for Intervertebral Disc Tissue Repair.",
+    "journal": "Biomimetics (Basel)",
+    "year": "2019",
+    "cited": 68,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC6290636",
+    "doi": "10.3390/polym10111202",
+    "title": "Injectable and Gellable Chitosan Formulations Filled with Cellulose Nanofibers for Intervertebral Disc Tissue Engineering.",
+    "journal": "Polymers (Basel)",
+    "year": "2018",
+    "cited": 61,
+    "snippets": 1,
+    "standards_in_paper": [
+     "EN 30993-5",
+     "ISO 10993-10",
+     "ISO 10993-5",
+     "ISO10993-5",
+     "NFEN30993-5"
+    ]
+   },
+   {
+    "pmcid": "PMC9958357",
+    "doi": "10.1016/j.mtbio.2023.100574",
+    "title": "Nanocellulose composite wound dressings for real-time pH wound monitoring.",
+    "journal": "Mater Today Bio",
+    "year": "2023",
+    "cited": 49,
+    "snippets": 1,
+    "standards_in_paper": [
+     "ISO 10993-5",
+     "SS-EN 13726-2"
+    ]
+   },
+   {
+    "pmcid": "PMC8758707",
+    "doi": "10.1038/s41467-022-27972-y",
+    "title": "Bridging pico-to-nanonewtons with a ratiometric force probe for monitoring nanoscale polymer physics before damage.",
+    "journal": "Nat Commun",
+    "year": "2022",
+    "cited": 45,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10170512",
+    "doi": "10.1021/acs.biomac.3c00152",
+    "title": "Self-Assembly of Nanocellulose Hydrogels Mimicking Bacterial Cellulose for Wound Dressing Applications.",
+    "journal": "Biomacromolecules",
+    "year": "2023",
+    "cited": 43,
+    "snippets": 1,
+    "standards_in_paper": [
+     "SS-EN 13726-2"
+    ]
+   },
+   {
+    "pmcid": "PMC6389527",
+    "doi": "10.4055/cios.2019.11.1.1",
+    "title": "Biomechanical Evaluation of Internal Fixation of Pauwels Type III Femoral Neck Fractures: A Systematic Review of Various Fixation Methods.",
+    "journal": "Clin Orthop Surg",
+    "year": "2019",
+    "cited": 39,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC5437089",
+    "doi": "10.1038/s41598-017-02270-6",
+    "title": "In situ assembly of Ag nanoparticles (AgNPs) on porous silkworm cocoon-based wound film: enhanced antimicrobial and wound healing activity.",
+    "journal": "Sci Rep",
+    "year": "2017",
+    "cited": 39,
+    "snippets": 1,
+    "standards_in_paper": []
+   },
+   {
+    "pmcid": "PMC10876949",
+    "doi": "10.1038/s41467-024-45703-3",
+    "title": "Molecular co-assembled strategy tuning protein conformation for cartilage regeneration.",
+    "journal": "Nat Commun",
+    "year": "2024",
+    "cited": 37,
+    "snippets": 1,
+    "standards_in_paper": [
+     "GB21301",
+     "GB21303",
+     "GB22301",
+     "GB22303"
+    ]
+   },
+   {
+    "pmcid": "PMC8756800",
+    "doi": "10.1021/acsomega.1c05586",
+    "title": "Nanocellulose and Graphene Oxide Aerogels for Adsorption and Removal Methylene Blue from an Aqueous Environment.",
+    "journal": "ACS Omega",
+    "year": "2022",
+    "cited": 34
+   },
+   {
+    "pmcid": "PMC5760658",
+    "doi": "10.1038/s41598-017-18290-1",
+    "title": "Polyaniline cryogels: Biocompatibility of novel conducting macroporous material.",
+    "journal": "Sci Rep",
+    "year": "2018",
+    "cited": 33
+   },
+   {
+    "pmcid": "PMC4443419",
+    "doi": "10.4103/0019-5413.156220",
+    "title": "A biomechanical comparison of proximal femoral nails and locking proximal anatomic femoral plates in femoral fracture fixation: A study on synthetic bones.",
+    "journal": "Indian J Orthop",
+    "year": "2015",
+    "cited": 33
+   },
+   {
+    "pmcid": "PMC9002704",
+    "doi": "10.3390/polym14071379",
+    "title": "Metallic Nanoparticle Integrated Ternary Polymer Blend of PVA/Starch/Glycerol: A Promising Antimicrobial Food Packaging Material.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 23
+   },
+   {
+    "pmcid": "PMC7596231",
+    "doi": "10.1038/s41598-020-75819-7",
+    "title": "Comprehensive biomechanical analysis of three clinically used fixation constructs for posterior malleolar fractures using cadaveric and finite element analysis.",
+    "journal": "Sci Rep",
+    "year": "2020",
+    "cited": 22
+   },
+   {
+    "pmcid": "PMC5631024",
+    "doi": "10.1302/2046-3758.69.bjr-2016-0317.r2",
+    "title": "Microindentation - a tool for measuring cortical bone stiffness? A systematic review.",
+    "journal": "Bone Joint Res",
+    "year": "2017",
+    "cited": 22
+   },
+   {
+    "pmcid": "PMC10591371",
+    "doi": "10.1186/s12903-023-03542-6",
+    "title": "Evaluation of compressive strength, surface microhardness, solubility and antimicrobial effect of glass ionomer dental cement reinforced with silver doped carbon nanotube fillers.",
+    "journal": "BMC Oral Health",
+    "year": "2023",
+    "cited": 21
+   },
+   {
+    "pmcid": "PMC8347708",
+    "doi": "10.3390/polym13152519",
+    "title": "Influence of 3D-Printed TPU Properties for the Design of Elastic Products.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 20
+   },
+   {
+    "pmcid": "PMC8434283",
+    "doi": "10.3390/polym13172923",
+    "title": "Effect of Powder/Water Ratio Variation on Viscosity, Tear Strength and Detail Reproduction of Dental Alginate Impression Material (<i>In Vitro</i> and Clinical Study).",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 19
+   },
+   {
+    "pmcid": "PMC10254526",
+    "doi": "10.3390/ma16114052",
+    "title": "A Review of Natural Fiber-Based Filaments for 3D Printing: Filament Fabrication and Characterization.",
+    "journal": "Materials (Basel)",
+    "year": "2023",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC9182676",
+    "doi": "10.3390/polym14112140",
+    "title": "Application of Taguchi Method to Optimize the Parameter of Fused Deposition Modeling (FDM) Using Oil Palm Fiber Reinforced Thermoplastic Composites.",
+    "journal": "Polymers (Basel)",
+    "year": "2022",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC8032582",
+    "doi": "10.1007/s10856-021-06509-7",
+    "title": "Design and characterization of 3D printed, neomycin-eluting poly-L-lactide mats for wound-healing applications.",
+    "journal": "J Mater Sci Mater Med",
+    "year": "2021",
+    "cited": 18
+   },
+   {
+    "pmcid": "PMC6034140",
+    "doi": "10.1016/j.bonr.2018.05.006",
+    "title": "Effect of a cathepsin K inhibitor on arthritis and bone mineral density in ovariectomized rats with collagen-induced arthritis.",
+    "journal": "Bone Rep",
+    "year": "2018",
+    "cited": 17
+   },
+   {
+    "pmcid": "PMC6544886",
+    "doi": "10.1098/rsif.2018.0965",
+    "title": "The structural efficiency of the sea sponge Euplectella aspergillum skeleton: bio-inspiration for 3D printed architectures.",
+    "journal": "J R Soc Interface",
+    "year": "2019",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC3881859",
+    "doi": "10.1590/s1678-77572012000600008",
+    "title": "Effects of etching and adhesive applications on the bond strength between composite resin and glass-ionomer cements.",
+    "journal": "J Appl Oral Sci",
+    "year": "2012",
+    "cited": 16
+   },
+   {
+    "pmcid": "PMC9687763",
+    "doi": "10.3390/biom12111692",
+    "title": "Digital Light Processing 3D Printing of Gyroid Scaffold with Isosorbide-Based Photopolymer for Bone Tissue Engineering.",
+    "journal": "Biomolecules",
+    "year": "2022",
+    "cited": 15
+   },
+   {
+    "pmcid": "PMC8309532",
+    "doi": "10.3390/polym13142352",
+    "title": "Characterization of Low-Density Polyethylene and LDPE-Based/Ethylene-Vinyl Acetate with Medium Content of Vinyl Acetate.",
+    "journal": "Polymers (Basel)",
+    "year": "2021",
+    "cited": 15
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC6477598",
+   "title": "Cellulose Nanofiber-Reinforced Chitosan Hydrogel Composites for Intervertebral Disc Tissue Repair.",
+   "year": "2019",
+   "text": "between the lumbar L5 and thoracic T7 vertebrae were considered ( Figure 1 ). Motion segments were dissected, consisting of two adjacent VEPs and the in-between disc. A total of 9 motion segments were tested: T8–T9, T10–T11, T11–T12, T12–T13, T14–T15, L1–L2, L2–L3, L3–L4, and L4–L5 discs ( Figure 1 ). The compression tests have been performed on a Shimadzu Autograph AG-X plus (Kyoto, Japan) equipped with a 10 kN load cell. After a pre-loading of 200 N [ 7 ], compression was applied until failure. Concerning lesioned discs, a fenestration of length ≈10 mm, width ≈5 mm, and thickness ≈1.5 mm was performed in the ventral part of the AF. A composite hydrogel (3% CHI/0.4% CNF ( w / w )) piece of similar dimensions",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6290636",
+   "title": "Injectable and Gellable Chitosan Formulations Filled with Cellulose Nanofibers for Intervertebral Disc Tissue Engineering.",
+   "year": "2018",
+   "text": "aken to measure the disc height before and after injections. Then, the different spine motion segments (injected or not), which consist of one disc and half of the two adjacent vertebrae [ 9 ], were cut parallel to the corresponding vertebral endplates. To assess the disc biomechanics, the motion segments were tested in compression mode by using a Shimadzu Autograph AG-X plus (Kyoto, Japan). The mechanical test consisted of compressing at a displacement rate of 1 mm/min up to a force of 400 N. Then, the unloading was carried out at the same displacement rate up to 5 N. Five loading/unloading cycles were performed. Afterwards, the motion segment was quickly compressed at a rate of 10 mm/min up to 400 N and at",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC9958357",
+   "title": "Nanocellulose composite wound dressings for real-time pH wound monitoring.",
+   "year": "2023",
+   "text": "the characteristic relaxation at 2 ​min. Storage (G′) and Loss moduli (G″) were recorded during the oscillatory rheology steps, and plotted as a function of time, gap, and dry content. All samples were run in quadruplicates and representative curves are presented. Tensile Testing: Mechanical properties of BC, BC-MSN and pH@BC were measured using a Shimadzu Autograph AG-X universal tensile testing machine (Shimadzu Corp., Kyoto, Japan) equipped with a load cell of 1 ​kN. Tests were performed at a strain rate of 2 ​mm/min with a gauge length of 20 ​mm. Samples were formed into strips of 6 ​mm in width and 80 ​mm in length and kept in MilliQ water prior to testing. Average values are based on at least five measu",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC8758707",
+   "title": "Bridging pico-to-nanonewtons with a ratiometric force probe for monitoring nanoscale polymer physics before damage.",
+   "year": "2022",
+   "text": "bsorption spectra were recorded on a Shimadzu UV-3600 spectrometer. Fluorescence (FL) spectra were recorded on a JASCO FP-8500 spectrofluorometer. Absolute FL quantum yields were determined on HAMAMATSU C9920-02S system. The FL lifetime was recorded on a Hamamatsu Photonics Quantaurus-Tau C11367 spectrometer. Tensile tests were carried out using a SHIMADZU AUTOGRAPH AGS-X tester with a 1-kN load cell at the crosshead. Differential scanning calorimetry (DSC) was performed on a Hitachi High-Tech TA7000 system. Rheological measurements were conducted on an Anton Paar MCR702 rheometer. Real-time FL measurements of PU specimens were performed using an Otsuka Electronics MCPD-6800 multichannel photodetector. Crosse",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10170512",
+   "title": "Self-Assembly of Nanocellulose Hydrogels Mimicking Bacterial Cellulose for Wound Dressing Applications.",
+   "year": "2023",
+   "text": "determine dry weight. The WRR was evaluated according to the formula 2 where W i corresponds to the instantaneous weight, W d corresponds to the dry weight, and W w corresponds to the initial weight of the samples. Measurements were taken in quintuplicates. Mechanical Testing The tensile properties of the CNF and BC hydrogels were measured using a Shimadzu Autograph AG-X universal testing machine (Shimadzu Corp., Kyoto, Japan) equipped with a 1 kN load cell. The tests were performed at a strain rate of 2 mm min –1 and a gauge length of 20 mm. The samples were in the form of strips that were 6 mm in width and 80 mm in length and were tested in the hydrogel state (at a dry content of 10.5 wt %). The average val",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC6389527",
+   "title": "Biomechanical Evaluation of Internal Fixation of Pauwels Type III Femoral Neck Fractures: A Systematic Review of Various Fixation Methods.",
+   "year": "2019",
+   "text": "0–700 N force was applied at a frequency of 3 Hz for 10,000 cycles. 70° Osteotomy 25° Adduction - Nowotarski (2012) 19) Instron 8521S test frame (Instron, Norwood, MA, USA) Fastrak 6° freedom magnetic tracking system (Polhemus, Colchester, VT, USA) - 20,000 Cycles at 2 Hz with a load of 350 ± 250 N - 80° Osteotomy 7° Adduction - Gumustas (2014) 6) Shimadzu autograph AGX/50Kn (Shimadzu, Kyoto, Japan) - - 10-mm Compressive deformation by a load of 5 N/mm 2 preload in 2 minutes - 70° Osteotomy 25° Adduction - Kunapuli (2015) 20) Linear actuator (EC4-AKM52H; Kollmorgen, Radford, VA, USA), servo drive (AKD- P00606 , Kollmorgen) Motion capture system (Visualeyez VZ3000; Phoenix Technologies, Burnaby, BC, Canada) Ve",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC5437089",
+   "title": "In situ assembly of Ag nanoparticles (AgNPs) on porous silkworm cocoon-based wound film: enhanced antimicrobial and wound healing activity.",
+   "year": "2017",
+   "text": "nductibility. The structural morphology of the lyophilized samples were observed using a JSM-6610 scanning electron microscope (Shimadzu, Kyoto, Japan) using an accelerating voltage of 15 kV. Characterization The mechanical properties of wet SCWF and SCWF-AgNPs including tensile strength, Young’s modulus, and elongation at break were measured on a Shimadzu Autograph AGS-X machine fitted with a 5 N load cell. Briefly, rectangle shaped samples (45 × 20 × 0.7 mm, length × width × thickness) were pulled at a rate of 5 mm/min and elongated to break. The Young’s modulus was obtained by calculating the gradient from 0 to 10% of elongation of the stress-strain curve. The ultimate elongation and the ultimate tensile s",
+   "standards": []
+  },
+  {
+   "pmcid": "PMC10876949",
+   "title": "Molecular co-assembled strategy tuning protein conformation for cartilage regeneration.",
+   "year": "2024",
+   "text": "erved by TEM (TECNAI G2 F20 S-TWIN at 200 kV). The chemical structure of co-assembled hydrogels was characterized by FT-IR spectroscopy (Nicolet 6700, USA) and DSC (METTLER TOLEDO, Switzerland) with air flow (25 ~ 200 °C, 10 °C/min). The injection force was measured using an electromechanical universal testing machine with a maximum load of 500 N (Shimadzu Autograph AGS-X, Japan) at 30 mm/min crosshead displacement. 1 mL syringes filled with hydrogels were applied to measure the injection force. Three samples were employed to measure. The disintegration performance was measured under simulated physiological conditions. First, four groups of hydrogels were prepared as the method above. Then, the initial weight",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "tensile": 6,
+  "compression": 3,
+  "microscopy": 2,
+  "dsc": 1,
+  "optical_spectroscopy": 1
+ }
+}

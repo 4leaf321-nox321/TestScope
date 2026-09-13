@@ -1,0 +1,41 @@
+{
+ "object": "konica-minolta-ca-410",
+ "manufacturer": "konica-minolta",
+ "phrases": [
+  "Konica Minolta CA-410"
+ ],
+ "harvested": "2026-09-13",
+ "openalex": {
+  "query": "\"Konica Minolta CA-410\"",
+  "count": null,
+  "works": []
+ },
+ "europepmc": {
+  "query": "(\"Konica Minolta CA-410\") AND OPEN_ACCESS:y",
+  "count": 1,
+  "papers": [
+   {
+    "pmcid": "PMC13201626",
+    "doi": "10.1038/s41598-026-48039-8",
+    "title": "Region-segmented gate driver for mitigating RC delay in large-area automotive OLED displays.",
+    "journal": "Sci Rep",
+    "year": "2026",
+    "cited": 0,
+    "snippets": 1,
+    "standards_in_paper": []
+   }
+  ]
+ },
+ "usage_snippets": [
+  {
+   "pmcid": "PMC13201626",
+   "title": "Region-segmented gate driver for mitigating RC delay in large-area automotive OLED displays.",
+   "year": "2026",
+   "text": "ion under the evaluated conditions. After confirming the feasibility of the proposed RSGD through simulations and prototype fabrication, its performance was evaluated using a 27-inch OLED panel. The electrical and optical characteristics, including luminance uniformity, were measured at room temperature using an Agilent DSO-9104 A oscilloscope and Konica Minolta CA-410 color analyzer. The luminance uniformity was evaluated at 27 positions arranged in a 3 × 9 grid across the panel, with white luminance measured at 600 cd/m 2 31 . Experimental results The measurement results are summarized in Fig. 5 . As shown in Fig. 5 a, the gate signal waveforms were measured at both the edge and center of the panel. At the pan",
+   "standards": []
+  }
+ ],
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {}
+}
