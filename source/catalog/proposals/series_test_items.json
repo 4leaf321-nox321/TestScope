@@ -1,0 +1,3231 @@
+{
+ "queue": "series_test_items",
+ "generated": "2026-09-13",
+ "note": "source/catalog_extension/tools_propose.py 가 만든다. decided 만 사람(검토함)이 채운다.",
+ "rows": [
+  {
+   "subject": "ametek-lloyd-ls-series",
+   "series": "Lloyd Instruments LS1 / LS2.5 / LS5 Single Column Universal Test Machines",
+   "manufacturer": "ametek-lloyd",
+   "candidates": [
+    {
+     "code": "texture",
+     "reason": "논문 2편 — 「The cooked samples were placed on a texture analyzer (Lloyd Model AMETEK LS5, Lloyd Instruments Ltd., Largo, Florida, USA), ensuring that the muscle fibers wer…」",
+     "sources": [
+      "PMC12163752",
+      "PMC10143268"
+     ]
+    }
+   ],
+   "recommended": [
+    "texture"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "anton-paar-litesizer",
+   "series": "Anton Paar Litesizer 100 / 500 Particle Analyzers",
+   "manufacturer": "anton-paar",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "논문 1편 — 「ak FT-IR wavenumber cm –1 β-sheets 1623 ± 2 1636 ± 4 1676 ± 4 1688 ± 2 (weak) α-helix 1654 ± 2 random coil/turns 1646…」",
+     "sources": [
+      "PMC6751724"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "anton-paar-nanoindentation",
+   "series": "Anton Paar Nanoindentation Testers (UNHT3 / UNHT3 HTV / UNHT3 Bio, NHT3, Hit 300, NST3 nano scratch)",
+   "manufacturer": "anton-paar",
+   "candidates": [
+    {
+     "code": "scratch_pencil_hardness",
+     "reason": "제조사 문장 6 — 「Adhesion and hardness of galvanic layers by scratch test and nanoindentation」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/hit-300/",
+      "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+      "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 5 — 「Perform investigations of depth-related properties, or measure the viscoelastic properties of your samples without additional expenses.」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/hit-300/",
+      "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+      "https://www.anton-paar.com/corp-en/products/details/unht3/"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 4 — 「You can characterize the storage modulus E’, the loss modulus E’’, and the loss factor Tan ẟ of your polymer samples either in coating or bulk format.」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/hit-300/",
+      "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+      "https://www.anton-paar.com/corp-en/products/details/unht3/"
+     ]
+    },
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 4 — 「Whether you want to exclusively conduct scratch tests, or enhance the results with indentation and AFM measurements, the Step platform always offers the best so」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+      "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+      "https://www.anton-paar.com/corp-en/products/details/unht3/"
+     ]
+    },
+    {
+     "code": "creep",
+     "reason": "제조사 문장 3 — 「Most sensitive characterization of elastic modulus, creep and other properties」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/anton-paar-bioindentertm-unht3-bio/",
+      "https://www.anton-paar.com/corp-en/products/details/unht3/",
+      "https://www.anton-paar.com/corp-en/products/details/nanoindentation-tester-nht3/"
+     ]
+    },
+    {
+     "code": "battery_abuse",
+     "reason": "제조사 문장 2 — 「Nanoindentation for Li-ion batteries: effects of drying temperature and crush test of slurry particles」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/unht3/",
+      "https://www.anton-paar.com/corp-en/products/details/nanoindentation-tester-nht3/"
+     ]
+    },
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 2 — 「Fracture toughness measurements by nanoindentation」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/unht3/",
+      "https://www.anton-paar.com/corp-en/products/details/nanoindentation-tester-nht3/"
+     ]
+    },
+    {
+     "code": "hardness_rockwell",
+     "reason": "제조사 문장 2 — 「The influence of the rockwell indenter tip geometry on the progressive load scratch test」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/nano-scratch-tester-nst3/",
+      "https://www.anton-paar.com/corp-en/products/details/nano-scratch-tester-nst3/"
+     ]
+    },
+    {
+     "code": "hardness_brinell",
+     "reason": "제조사 문장 1 — 「Hardness and elastic modulus of bulk materials are usually measured with conventional techniques (Vickers, Brinell, tensile tests).」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/hit-300/"
+     ]
+    },
+    {
+     "code": "hardness_vickers",
+     "reason": "제조사 문장 1 — 「Hardness and elastic modulus of bulk materials are usually measured with conventional techniques (Vickers, Brinell, tensile tests).」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/hit-300/"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 1 — 「Hardness and elastic modulus of bulk materials are usually measured with conventional techniques (Vickers, Brinell, tensile tests).」",
+     "sources": [
+      "https://www.anton-paar.com/us-en/products/details/hit-300/"
+     ]
+    }
+   ],
+   "recommended": [
+    "scratch_pencil_hardness",
+    "rheology_rotational",
+    "dma",
+    "microscopy",
+    "creep",
+    "battery_abuse",
+    "fracture_toughness",
+    "hardness_rockwell",
+    "hardness_brinell",
+    "hardness_vickers",
+    "tensile"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "anton-paar-tribometers-materialtwin",
+   "series": "Anton Paar Tribometers (TRB3 pin-on-disk, THT 800/1000 °C, NTR3 nano, TRB RH, MCR Tribometer T-PTD200 / T-PID/44 / T-BTP)",
+   "manufacturer": "anton-paar",
+   "candidates": [
+    {
+     "code": "coating_thickness",
+     "reason": "제조사 문장 1 — 「Applications of tribology and coating thickness measurements in automotive industry」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/trb3-pin-on-disk-tribometer/"
+     ]
+    },
+    {
+     "code": "friction_coefficient",
+     "reason": "제조사 문장 1 — 「Tribological testing of implants-bone pair and coefficient of friction of coated knee implants」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/trb3-pin-on-disk-tribometer/"
+     ]
+    }
+   ],
+   "recommended": [
+    "coating_thickness",
+    "friction_coefficient"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "anton-paar-tribometers",
+   "series": "Anton Paar Tribometers (TRB3 pin-on-disk, THT 800/1000 °C, NTR3 nano, TRB RH, MCR Tribometer T-PTD200 / T-PID/44 / T-BTP)",
+   "manufacturer": "anton-paar",
+   "candidates": [
+    {
+     "code": "coating_thickness",
+     "reason": "제조사 문장 1 — 「Applications of tribology and coating thickness measurements in automotive industry」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/trb3-pin-on-disk-tribometer/"
+     ]
+    },
+    {
+     "code": "friction_coefficient",
+     "reason": "제조사 문장 1 — 「Tribological testing of implants-bone pair and coefficient of friction of coated knee implants」",
+     "sources": [
+      "https://www.anton-paar.com/corp-en/products/details/trb3-pin-on-disk-tribometer/"
+     ]
+    }
+   ],
+   "recommended": [
+    "coating_thickness",
+    "friction_coefficient"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ateq-f620",
+   "series": "ATEQ F620 Differential Pressure Decay Leak Tester",
+   "manufacturer": "ateq",
+   "candidates": [
+    {
+     "code": "burst_pressure",
+     "reason": "제조사 문장 1 — 「This multi-functional leak testing device can conduct blockage tests, burst tests, sealed components tests, and others as per your application.」",
+     "sources": [
+      "https://www.ateq-leaktesting.com/products/leak-tester/f620/"
+     ]
+    },
+    {
+     "code": "thermography",
+     "reason": "논문 1편 — 「Thermal Image Acquisition Setup The experimental setup employed for thermal image acquisition, shown in Figure 1 a, consis…」",
+     "sources": [
+      "PMC12157752"
+     ]
+    }
+   ],
+   "recommended": [
+    "burst_pressure"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bareiss-digi-test-ii",
+   "series": "Bareiss digi test II fully automatic Shore / IRHD / VLRH hardness tester",
+   "manufacturer": "bareiss",
+   "candidates": [
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「Apart from the static tensile test, hardness measurements were carried out using the Shore D method on a Bareiss digi test II hardness test…」",
+     "sources": [
+      "PMC8838961"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruel-kjaer-hats-5128",
+   "series": "Bruel & Kjaer Type 5128 High-Frequency Head and Torso Simulator (HF HATS)",
+   "manufacturer": "bruel-kjaer",
+   "candidates": [
+    {
+     "code": "fatigue",
+     "reason": "제조사 문장 4 — 「From digital signal processing to FE-based fatigue analysis, nCode helps you uncover critical insights and manage your data efficiently.」",
+     "sources": [
+      "https://www.bksv.com/en/transducers/simulators/head-and-torso/hats-type-5128",
+      "https://www.bksv.com/en/news/de/hats-type-5128",
+      "https://www.bksv.com/en/news/hats-5128-standardisation"
+     ]
+    },
+    {
+     "code": "compression",
+     "reason": "제조사 문장 2 — 「HBK Force Sensors and Force Transducers with strain gauge or piezo technology measure static and dynamic tensile and compressive loads up to 20 MN - with virtua」",
+     "sources": [
+      "https://www.bksv.com/en/news/de/hats-type-5128",
+      "https://www.bksv.com/en/news/hats-5128-standardisation"
+     ]
+    },
+    {
+     "code": "mechanical_endurance",
+     "reason": "제조사 문장 2 — 「Whether it is in structural durability testing, structural health monitoring, or the production of OEM transducers, HBK's optical and electrical strain gauges a」",
+     "sources": [
+      "https://www.bksv.com/en/news/de/hats-type-5128",
+      "https://www.bksv.com/en/news/hats-5128-standardisation"
+     ]
+    },
+    {
+     "code": "power_consumption",
+     "reason": "제조사 문장 2 — 「Unlock precise efficiency insights with HBK’s Power Analyzer—engineered for high-speed (up to 20 MS/s) measurement of inverter-driven electric machines.」",
+     "sources": [
+      "https://www.bksv.com/en/news/de/hats-type-5128",
+      "https://www.bksv.com/en/news/hats-5128-standardisation"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 2 — 「HBK Force Sensors and Force Transducers with strain gauge or piezo technology measure static and dynamic tensile and compressive loads up to 20 MN - with virtua」",
+     "sources": [
+      "https://www.bksv.com/en/news/de/hats-type-5128",
+      "https://www.bksv.com/en/news/hats-5128-standardisation"
+     ]
+    },
+    {
+     "code": "vibration_sine_random",
+     "reason": "제조사 문장 2 — 「From measurement and modal exciters, power amplifiers to vibration control software, we provide vibration test equipment, tailored to your needs.」",
+     "sources": [
+      "https://www.bksv.com/en/news/de/hats-type-5128",
+      "https://www.bksv.com/en/news/hats-5128-standardisation"
+     ]
+    }
+   ],
+   "recommended": [
+    "fatigue",
+    "compression",
+    "mechanical_endurance",
+    "power_consumption",
+    "tensile",
+    "vibration_sine_random"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruker-d8-advance",
+   "series": "Bruker D8 ADVANCE X-ray Diffractometer",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "composition_analysis",
+     "reason": "제조사 문장 3 — 「One of the most commonly used applications is positive material identification (PMI) with sensitivity to the atomic structure, not possible with elemental analy」",
+     "sources": [
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance.html",
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance-eco.html",
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance-plus.html"
+     ]
+    },
+    {
+     "code": "particle_size",
+     "reason": "제조사 문장 3 — 「Particle size analysis in DIFFRAC.SAXS of NIST SRM 8011 9 nm gold nanoparticles collected with the EIGER2 R 500K in 2D mode.」",
+     "sources": [
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance.html",
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance-eco.html",
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance-plus.html"
+     ]
+    },
+    {
+     "code": "texture",
+     "reason": "제조사 문장 3 — 「Typical examples include, but are not limited to, phase identification, crystalline quality, residual stress, texture analysis, thickness determination and comp」",
+     "sources": [
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance.html",
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance-eco.html",
+      "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance-plus.html"
+     ]
+    }
+   ],
+   "recommended": [
+    "composition_analysis",
+    "particle_size",
+    "texture"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruker-dektakxt-materialtwin",
+   "series": "Bruker DektakXT Stylus Profilometer",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 2편 — 「…es characterization The morphologies and structures of GO sheets and GO-based membranes were characterized by scanning electron microscope (SEM, Nova NanoSEM 4」",
+     "sources": [
+      "PMC5902455",
+      "PMC6379360"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruker-hysitron-pi-95-picoindenter",
+   "series": "Bruker Hysitron PI 95 TEM PicoIndenter",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 5편 — 「…veal the underlying mechanism, we performed in situ monotonic and cyclic uniaxial compression tests inside an SEM on the nanofiber sponges at both room tempera」",
+     "sources": [
+      "PMC5457032",
+      "PMC5396167",
+      "PMC9032966"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「In situ nanomechanical characterizations The basic mechanism of the in situ tensile test for Si nanowires was based on the use of push-to-pull MMDs ( 33 – 35 ) 」",
+     "sources": [
+      "PMC4988777"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruker-hysitron-ti-950-triboindenter",
+   "series": "Bruker Hysitron TI 950 TriboIndenter Nanomechanical Test System",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "compression",
+     "reason": "논문 1편 — 「Quantitative compressive testing at higher temperatures (for example, 400°, 600°, and 800°C) was carried out via a Hysitron TI 950 TriboInd…」",
+     "sources": [
+      "PMC5457032"
+     ]
+    },
+    {
+     "code": "microscopy",
+     "reason": "논문 1편 — 「All AFM measurements and Nanoindentation measurements were conducted using a Hysitron TI 950 TriboIndenter with a dia…」",
+     "sources": [
+      "PMC11697030"
+     ]
+    },
+    {
+     "code": "scratch_pencil_hardness",
+     "reason": "논문 1편 — 「Scratch testing Nanoscratch tests were performed using Hysitron TI-950 TriboIndenter (Bruker, USA) equipped with a 2-D tra…」",
+     "sources": [
+      "PMC7515926"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruker-hysitron-ts-75-triboscope",
+   "series": "Bruker Hysitron TS 75 TriboScope Nanoindentation Attachment for AFM",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 1편 — 「…ion Quasi Static Tests : Nanomechanical tests on NR and AIDBD specimens were performed using a DI Multimode V Atomic Force Microscope coupled with a Hysitron T」",
+     "sources": [
+      "PMC11797951"
+     ]
+    },
+    {
+     "code": "scratch_pencil_hardness",
+     "reason": "논문 1편 — 「A Bruker TS 77 Nano Scratch Tester (Bruker, Germany) was utilized to perform nano-scratch tests, analyzing the friction coefficient and film a…」",
+     "sources": [
+      "PMC12388570"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "bruker-vertex-ftir",
+   "series": "Bruker VERTEX 70 / 70v / 80 / 80v FT-IR Spectrometers",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 3 · 논문 4편 — 「Characterization Fourier Transform Infrared (FT-IR) spectra of GQDs were recorded as KBr pellets with a Bruker Vertex 70 spectrometer from 4000–500 cm −1 .」",
+     "sources": [
+      "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/terahertz/vertex-80-80v-ft-ir-spectrometers.html",
+      "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/ft-ir-research-spectrometers/vertex-research-ft-ir-spectrometer/vertex-80-80v-ft-ir-spectrometer.html",
+      "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/ft-ir-research-spectrometers/vertex-research-ft-ir-spectrometer/vertex-neo-r.html",
+      "PMC4061557",
+      "PMC5765169",
+      "PMC6214640"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "제조사 문장 3 — 「Bestimmung flüchtiger Bestandteile und Zuordnung der Zersetzungsprozesse mit Hilfe der thermischen Analyse (TGA-FT-IR)」",
+     "sources": [
+      "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/terahertz/vertex-80-80v-ft-ir-spectrometers.html",
+      "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/ft-ir-research-spectrometers/vertex-research-ft-ir-spectrometer/vertex-80-80v-ft-ir-spectrometer.html",
+      "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/ft-ir-research-spectrometers/vertex-research-ft-ir-spectrometer/vertex-neo-r.html"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy",
+    "tga"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "defelsko-positest-pt",
+   "series": "DeFelsko PosiTest PT Pencil Hardness Test Kit",
+   "manufacturer": "defelsko",
+   "candidates": [
+    {
+     "code": "coating_adhesion",
+     "reason": "논문 8편 — 「Paint Adhesion Test The adhesion tests were performed using a Pull-off adhesion tester (DeFelsko PosiTest AT, The Woodlands, TX,…」",
+     "sources": [
+      "PMC10575080",
+      "PMC7760528",
+      "PMC9921673"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "논문 2편 — 「The tensile stress applied to peel off the wood surface coating was measured using a Defelsko Positest ® Adhesion tester…」",
+     "sources": [
+      "PMC9921673",
+      "PMC8269507"
+     ]
+    }
+   ],
+   "recommended": [
+    "coating_adhesion",
+    "tensile"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "emco-test-durajet-g5",
+   "series": "EMCO-TEST DuraJet G5 Rockwell hardness tester",
+   "manufacturer": "emco-test",
+   "candidates": [
+    {
+     "code": "hardness_knoop",
+     "reason": "제조사 문장 1 — 「Find out about the basics of hardness testing, the most common standardized test methods Rockwell, Brinell, Vickers and Knoop as well as other test methods such」",
+     "sources": [
+      "https://www.emcotest.com/en/hardness-knowledge/emco-test-app"
+     ]
+    },
+    {
+     "code": "hardness_leeb",
+     "reason": "제조사 문장 1 — 「Find out about the basics of hardness testing, the most common standardized test methods Rockwell, Brinell, Vickers and Knoop as well as other test methods such」",
+     "sources": [
+      "https://www.emcotest.com/en/hardness-knowledge/emco-test-app"
+     ]
+    }
+   ],
+   "recommended": [
+    "hardness_knoop",
+    "hardness_leeb"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "epsilon-3542-3442-axial-extensometers",
+   "series": "Epsilon Model 3542 / 3542L / 3442 Axial Extensometers",
+   "manufacturer": "epsilon",
+   "candidates": [
+    {
+     "code": "creep",
+     "reason": "제조사 문장 6 — 「Model 3910 – Extensometers for Creep Compliance and Tensile Strength Testing of Asphalt」",
+     "sources": [
+      "https://www.epsilontech.com/products/axial-extensometer-model-3542/",
+      "https://www.epsilontech.com/products/miniature-extensometer-model-3442/",
+      "https://www.epsilontech.com/products/long-gauge-length-extensometer-model-3542l/"
+     ]
+    },
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 6 — 「For fracture mechanics studies, these COD gages are in compliance with standardized test methods, such as ASTM E1820 for determination of fracture toughness pro」",
+     "sources": [
+      "https://www.epsilontech.com/products/axial-extensometer-model-3542/",
+      "https://www.epsilontech.com/products/miniature-extensometer-model-3442/",
+      "https://www.epsilontech.com/products/long-gauge-length-extensometer-model-3542l/"
+     ]
+    },
+    {
+     "code": "shear",
+     "reason": "제조사 문장 6 — 「Bolt Proof, Lap Shear & Specialty Extensometers – Specialized extensometers for bolt proof testing, rebar splice assemblies, lap / sandwich core shear, and test」",
+     "sources": [
+      "https://www.epsilontech.com/products/axial-extensometer-model-3542/",
+      "https://www.epsilontech.com/products/miniature-extensometer-model-3442/",
+      "https://www.epsilontech.com/products/long-gauge-length-extensometer-model-3542l/"
+     ]
+    },
+    {
+     "code": "torsion",
+     "reason": "제조사 문장 6 — 「Designed for simultaneously measuring axial and torsional deflections on specimens tested in axial/torsional machines.」",
+     "sources": [
+      "https://www.epsilontech.com/products/axial-extensometer-model-3542/",
+      "https://www.epsilontech.com/products/miniature-extensometer-model-3442/",
+      "https://www.epsilontech.com/products/long-gauge-length-extensometer-model-3542l/"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 3 — 「Rugged, dual flexure design for strength and improved performance.」",
+     "sources": [
+      "https://www.epsilontech.com/products/axial-extensometer-model-3542/",
+      "https://www.epsilontech.com/products/miniature-extensometer-model-3442/",
+      "https://www.epsilontech.com/products/long-gauge-length-extensometer-model-3542l/"
+     ]
+    }
+   ],
+   "recommended": [
+    "creep",
+    "fracture_toughness",
+    "shear",
+    "torsion",
+    "flexure"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "filmetrics-f54",
+   "series": "Filmetrics F54 Thin-Film Mapping Analyzer",
+   "manufacturer": "filmetrics",
+   "candidates": [
+    {
+     "code": "surface_topography",
+     "reason": "제조사 문장 1 · 논문 1편 — 「The thickness of the resist was measured by both mechanical profilometer (Bruker Dektak XT, surface profiler) and optical spectroscopic reflectometer (FilMetric」",
+     "sources": [
+      "https://www.kla.com/products/instruments/thin-film-reflectometers/filmetrics-f54-xy",
+      "PMC10966559"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 1 — 「Semiconductor: Amorphous Silicon (a-Si) and Poly Crystalline Silicon Thickness Measurement」",
+     "sources": [
+      "https://www.kla.com/products/instruments/thin-film-reflectometers/filmetrics-f54"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "논문 1편 — 「…surface coatings on the PET films was determined using filmetric reflectometer, specifically a spectroscopic ellipsometer (Filmetrics F54, KLA Corporation, Uni」",
+     "sources": [
+      "PMC12829136"
+     ]
+    }
+   ],
+   "recommended": [
+    "surface_topography",
+    "crystal_structure_analysis"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "goettfert-counter-pressure-viscosimeter",
+   "series": "GÖTTFERT Counter Pressure Viscosimeter",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 2 — 「This allows the viscoelastic behaviour to be characterized depending on the back pressure.」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/counter-pressure-viscosimeter",
+      "https://www.goettfert.com/knowledge/rheo-info/for-capillary-rheometer/viscosity-measurements-with-counter-pressure-an-important-contribution-to-the-3d-injection-molding-simulation"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 1 — 「The thermal conductivity measurement of solids or melt is performed under stationary conditions.」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/counter-pressure-viscosimeter"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational",
+    "thermal_conductivity"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "goettfert-pvt500",
+   "series": "GÖTTFERT PVT500 Pressure-Volume-Temperature Instrument",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 1 — 「The extended temperature range and the higher cooling rate in the lower temperature range are used in the analysis of the crystallization of semi-crystalline ma」",
+     "sources": [
+      "https://www.goettfert.com/knowledge/rheo-info/for-capillary-rheometer/pvt500-hybrid-cooling"
+     ]
+    },
+    {
+     "code": "melt_flow",
+     "reason": "제조사 문장 1 — 「Density at room temperature (Determination by buoyancy method 23°C) and density at melt temperature (Determination by Melt Flow Indexer 300°C).」",
+     "sources": [
+      "https://www.goettfert.com/knowledge/rheo-info/for-capillary-rheometer/pvt500-the-self-sufficient-test-system-for-pvt-measurement-a-system-comparison"
+     ]
+    },
+    {
+     "code": "rheology_capillary",
+     "reason": "제조사 문장 1 — 「The comparative tests were done with PVT500 and RHEOGRAPH 75 with integrated Add-on option PVT (the Add-on option “PVT“, is one of various extensions which is u」",
+     "sources": [
+      "https://www.goettfert.com/knowledge/rheo-info/for-capillary-rheometer/pvt500-the-self-sufficient-test-system-for-pvt-measurement-a-system-comparison"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 1 — 「The comparative tests were done with PVT500 and RHEOGRAPH 75 with integrated Add-on option PVT (the Add-on option “PVT“, is one of various extensions which is u」",
+     "sources": [
+      "https://www.goettfert.com/knowledge/rheo-info/for-capillary-rheometer/pvt500-the-self-sufficient-test-system-for-pvt-measurement-a-system-comparison"
+     ]
+    }
+   ],
+   "recommended": [
+    "crystal_structure_analysis",
+    "melt_flow",
+    "rheology_capillary",
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "goettfert-rheograph-25e",
+   "series": "GÖTTFERT RHEOGRAPH 25E Clean Room Capillary Rheometer / RAM Extruder",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 5 · 논문 5편 — 「Viscosity measurements at higher shear rates were completed using a modified Göttfert Rheograph 2000 (Göttfert Werkstof…」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25e",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-auto",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on",
+      "PMC4979208",
+      "PMC6404090",
+      "PMC6780909"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 3 — 「The measurement of the thermal conductivity is carried out by means of a probe...」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-auto",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25/50/75/120"
+     ]
+    },
+    {
+     "code": "melt_flow",
+     "reason": "논문 1편 — 「Material Type MFR (ISO 1133) Application Manufacturer HE3493-LSH HDPE 0.24 g/10 min (190 °C, 5 kg) pipes Borealis RD204CF PP-R…」",
+     "sources": [
+      "PMC6780909"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational",
+    "thermal_conductivity"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "goettfert-rheograph-add-ons",
+   "series": "GÖTTFERT RHEOGRAPH Add-On Modules (PVT, Thermal Conductivity, Counter Pressure, RHEOTENS, HAUL-OFF, Die Swell, Shark Skin, CONTIFEED, Normal Stress Die)",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 1 · 논문 3편 — 「Viscosity measurements at higher shear rates were completed using a modified Göttfert Rheograph 2000 (Göttfert Werkstof…」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on",
+      "PMC4979208",
+      "PMC6404090",
+      "PMC6780909"
+     ]
+    },
+    {
+     "code": "melt_flow",
+     "reason": "논문 1편 — 「Material Type MFR (ISO 1133) Application Manufacturer HE3493-LSH HDPE 0.24 g/10 min (190 °C, 5 kg) pipes Borealis RD204CF PP-R…」",
+     "sources": [
+      "PMC6780909"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "goettfert-rheograph-auto",
+   "series": "GÖTTFERT RHEOGRAPH auto Semi-automated Capillary Rheometer",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 4 · 논문 5편 — 「Viscosity measurements at higher shear rates were completed using a modified Göttfert Rheograph 2000 (Göttfert Werkstof…」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25e",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-auto",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on",
+      "PMC4979208",
+      "PMC6404090",
+      "PMC6780909"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 3 — 「The measurement of the thermal conductivity is carried out by means of a probe...」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-auto",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25/50/75/120"
+     ]
+    },
+    {
+     "code": "melt_flow",
+     "reason": "논문 1편 — 「Material Type MFR (ISO 1133) Application Manufacturer HE3493-LSH HDPE 0.24 g/10 min (190 °C, 5 kg) pipes Borealis RD204CF PP-R…」",
+     "sources": [
+      "PMC6780909"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational",
+    "thermal_conductivity"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "goettfert-rheograph",
+   "series": "GÖTTFERT RHEOGRAPH 20 / 25 / 50 / 75 / 120 High Pressure Capillary Rheometer",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 6 · 논문 5편 — 「Viscosity measurements at higher shear rates were completed using a modified Göttfert Rheograph 2000 (Göttfert Werkstof…」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25/50/75/120",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25e",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-auto",
+      "PMC4979208",
+      "PMC6404090",
+      "PMC6780909"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 4 — 「The thermal conductivity measurement of solids or melt is performed under stationary conditions.」",
+     "sources": [
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-25/50/75/120",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-auto",
+      "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on"
+     ]
+    },
+    {
+     "code": "melt_flow",
+     "reason": "논문 1편 — 「Material Type MFR (ISO 1133) Application Manufacturer HE3493-LSH HDPE 0.24 g/10 min (190 °C, 5 kg) pipes Borealis RD204CF PP-R…」",
+     "sources": [
+      "PMC6780909"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational",
+    "thermal_conductivity"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "hegewald-peschke-grips",
+   "series": "Hegewald & Peschke Grips, Specimen Holders and Test Tools (screw wedge / wedge / hydraulic / high-temperature)",
+   "manufacturer": "hegewald-peschke",
+   "candidates": [
+    {
+     "code": "torsion",
+     "reason": "제조사 문장 1 — 「Torsion modules are modular torsion drives that are installed in the universal testing machine.」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/torsion-modules/"
+     ]
+    }
+   ],
+   "recommended": [
+    "torsion"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "hegewald-peschke-inspekt-vario",
+   "series": "Hegewald & Peschke inspekt vario Component Testing Machines (100 kN – 2500 kN)",
+   "manufacturer": "hegewald-peschke",
+   "candidates": [
+    {
+     "code": "fatigue",
+     "reason": "제조사 문장 2 — 「The testing of components includes their application safety, strength, formability, toughness and fatigue properties.」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/furniture-and-component-testing-machines/component-testing-machines-inspekt-vario/",
+      "https://www.hegewald-peschke.com/news-and-press/latest-news/news-detail/archive/2025/article/new-inspekt-vario-testing-machine-series-maximum-flexibility-for-component-testing/"
+     ]
+    },
+    {
+     "code": "peel",
+     "reason": "제조사 문장 2 — 「It includes all test modules (tensile, compression, bending and peel tests) at no extra cost, enabling both simple and complex test sequences to be carried out 」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/furniture-and-component-testing-machines/component-testing-machines-inspekt-vario/",
+      "https://www.hegewald-peschke.com/news-and-press/latest-news/news-detail/archive/2025/article/new-inspekt-vario-testing-machine-series-maximum-flexibility-for-component-testing/"
+     ]
+    },
+    {
+     "code": "torsion",
+     "reason": "제조사 문장 2 — 「Component testing machine inspekt vario with torsion module」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/furniture-and-component-testing-machines/component-testing-machines-inspekt-vario/",
+      "https://www.hegewald-peschke.com/news-and-press/latest-news/news-detail/archive/2025/article/new-inspekt-vario-testing-machine-series-maximum-flexibility-for-component-testing/"
+     ]
+    }
+   ],
+   "recommended": [
+    "fatigue",
+    "peel",
+    "torsion"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "hegewald-peschke-rim-hardness-line",
+   "series": "Hegewald & Peschke Automated Brinell Hardness Tester for Car and Truck Rims",
+   "manufacturer": "hegewald-peschke",
+   "candidates": [
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 1 — 「In this case, fully automated tensile, pressure and bending tests can be conducted.」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/automated-testing-systems/automated-hardness-testing-system-with-robot/"
+     ]
+    },
+    {
+     "code": "hardness_rockwell",
+     "reason": "제조사 문장 1 — 「According to requirements, the automatic hardness testing centre works using the Vickers, Rockwell or Brinell procedure.」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/automated-testing-systems/automated-hardness-testing-system-with-robot/"
+     ]
+    },
+    {
+     "code": "hardness_vickers",
+     "reason": "제조사 문장 1 — 「According to requirements, the automatic hardness testing centre works using the Vickers, Rockwell or Brinell procedure.」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/automated-testing-systems/automated-hardness-testing-system-with-robot/"
+     ]
+    },
+    {
+     "code": "surface_topography",
+     "reason": "제조사 문장 1 — 「geometric measurement or determination of the surface roughness).」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/automated-testing-systems/automated-hardness-testing-system-with-robot/"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 1 — 「In this case, fully automated tensile, pressure and bending tests can be conducted.」",
+     "sources": [
+      "https://www.hegewald-peschke.com/products/automated-testing-systems/automated-hardness-testing-system-with-robot/"
+     ]
+    }
+   ],
+   "recommended": [
+    "flexure",
+    "hardness_rockwell",
+    "hardness_vickers",
+    "surface_topography",
+    "tensile"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "helmut-fischer-fischerscope-xray",
+   "series": "Helmut Fischer FISCHERSCOPE X-RAY XDL / XDLM / XUL / XULM (XRF Coating Thickness)",
+   "manufacturer": "helmut-fischer",
+   "candidates": [
+    {
+     "code": "composition_analysis",
+     "reason": "제조사 문장 6 — 「XRF – Energy dispersive X-ray fluorescence analysis」",
+     "sources": [
+      "https://www.helmut-fischer.com/products/xrf-instruments/fischerscope-x-ray-xan",
+      "https://www.helmut-fischer.com/products/xrf-instruments/fischerscope-x-ray-xdl",
+      "https://www.helmut-fischer.com/products/xrf-instruments/fischerscope-x-ray-xdal"
+     ]
+    }
+   ],
+   "recommended": [
+    "composition_analysis"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "horiba-gd-profiler-2",
+   "series": "HORIBA GD-Profiler 2 Glow Discharge OES",
+   "manufacturer": "horiba",
+   "candidates": [
+    {
+     "code": "acoustic_delamination",
+     "reason": "제조사 문장 3 — 「R&D Engineers analyzing degradation mechanisms such as catalyst relocation, delamination, or barrier-layer formation」",
+     "sources": [
+      "https://www.horiba.com/fra/applications/energy-and-environment/hydrogen/gd-oes-glow-discharge-optical-emission-spectroscopy-gd-profiler-2tm/",
+      "https://www.horiba.com/gbr/applications/energy-and-environment/hydrogen/gd-oes-glow-discharge-optical-emission-spectroscopy-gd-profiler-2tm/",
+      "https://www.horiba.com/int/applications/energy-and-environment/hydrogen/gd-oes-glow-discharge-optical-emission-spectroscopy-gd-profiler-2tm/"
+     ]
+    },
+    {
+     "code": "particle_size",
+     "reason": "제조사 문장 3 — 「Dynamic Light Scattering (DLS) Particle Size Distribution Analysis」",
+     "sources": [
+      "https://www.horiba.com/fra/applications/energy-and-environment/hydrogen/gd-oes-glow-discharge-optical-emission-spectroscopy-gd-profiler-2tm/",
+      "https://www.horiba.com/gbr/applications/energy-and-environment/hydrogen/gd-oes-glow-discharge-optical-emission-spectroscopy-gd-profiler-2tm/",
+      "https://www.horiba.com/int/applications/energy-and-environment/hydrogen/gd-oes-glow-discharge-optical-emission-spectroscopy-gd-profiler-2tm/"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 1 — 「Proton Exchange Membrane Fuel Cell Bipolar Plate Analyses by GD-OES and Raman」",
+     "sources": [
+      "https://www.horiba.com/usa/scientific/products/detail/action/show/Product/gd-profiler-2tm-1401/"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "논문 1편 — 「To elucidate the reasons why transformation temperatures determined by EBSD and X-ray diffraction were higher than those by dilatometry, the chemical compositio」",
+     "sources": [
+      "PMC7008240"
+     ]
+    },
+    {
+     "code": "dilatometry",
+     "reason": "논문 1편 — 「…he reasons why transformation temperatures determined by EBSD and X-ray diffraction were higher than those by dilatometry, the chemical compositions were inspe」",
+     "sources": [
+      "PMC7008240"
+     ]
+    }
+   ],
+   "recommended": [
+    "acoustic_delamination",
+    "particle_size",
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "hot-disk-tps-2200",
+   "series": "Hot Disk TPS 2200 Thermal Constants Analyser",
+   "manufacturer": "hot-disk",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 1 — 「It should also be noted that the TPS 2200 betters the performance of the more modest TPS 1500, in being able to tackle many high-conductivity samples and medium」",
+     "sources": [
+      "https://www.hotdiskinstruments.com/products/instruments/tps-2200/"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "innovatest-nexus-3200",
+   "series": "INNOVATEST NEXUS 3200 Brinell hardness tester (semi-automatic)",
+   "manufacturer": "innovatest",
+   "candidates": [
+    {
+     "code": "hardness_vickers",
+     "reason": "논문 3편 — 「Vickers microhardness (HV) of the sinters was measured using an Innovatest Nexus microhardness tester (Innovatest, Ma…」",
+     "sources": [
+      "PMC7040818",
+      "PMC8269613",
+      "PMC9653900"
+     ]
+    }
+   ],
+   "recommended": [
+    "hardness_vickers"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-3119-600-environmental-chambers",
+   "series": "Instron 3119-600 Series Environmental Chambers",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "dma",
+     "reason": "논문 1편 — 「The DMA testing is performed on an Instron ElectroPuls E3000 (Instron, Norwood, MA, USA) using an Instron Dynacell 25…」",
+     "sources": [
+      "PMC12753674"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-3400-series",
+   "series": "3400 Series Universal Testing Systems",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "coating_adhesion",
+     "reason": "논문 1편 — 「Adhesion tests were performed at room temperature on an Instron 34TM-5 tensile machine mounted with a 5 kN load cell.」",
+     "sources": [
+      "PMC11079033"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "논문 1편 — 「…rsity of Athens) for providing the Instron 3400 Series Universal Testing Machine for the determination of the viscosity of HPMC, gelatin and pectin.」",
+     "sources": [
+      "PMC10767132"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-6800-series",
+   "series": "6800 Series Universal Testing Systems",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "abrasion",
+     "reason": "제조사 문장 1 — 「That engineering shows up in the details: gasketing and a patent-pending airflow design reduce debris ingress, internal electrical and mechanical hardware is lo」",
+     "sources": [
+      "https://www.instron.com/en/products/universal-testing-systems/6800-series/floor-models/"
+     ]
+    },
+    {
+     "code": "torsion",
+     "reason": "제조사 문장 1 — 「The Torsion Add-On easily mounts to any new or existing 68SC, 68TM, or 68FM system to enable biaxial testing of components such as bone screws, Luer locks, elec」",
+     "sources": [
+      "https://www.instron.com/en/products/testing-systems/universal-testing-systems/6800-series/"
+     ]
+    },
+    {
+     "code": "coating_adhesion",
+     "reason": "논문 1편 — 「Adhesion tests were performed with a universal testing machine (UTM) (Instron 68SC-1). 180 °C peeling test and shear test w…」",
+     "sources": [
+      "PMC10113367"
+     ]
+    }
+   ],
+   "recommended": [
+    "abrasion",
+    "torsion"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-8800-servohydraulic",
+   "series": "Instron 8800 Series Servohydraulic Fatigue Testing Systems (8872 / 8874 tabletop, 8801 / 8802 / 8862 floor)",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "thermomechanical_fatigue",
+     "reason": "제조사 문장 2 — 「These systems provide complete testing solutions to satisfy the needs of advanced materials and component testing, and are ideally suited for quasi-static, high」",
+     "sources": [
+      "https://www.instron.com/en/products/testing-systems/dynamic-and-fatigue-systems/servohydraulic-fatigue/8801-8802/",
+      "https://www.instron.com/en/products/testing-systems/dynamic-and-fatigue-systems/8800-cruciform/"
+     ]
+    }
+   ],
+   "recommended": [
+    "thermomechanical_fatigue"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-9400-drop-tower-materialtwin",
+   "series": "Instron 9400 Series (9440 / 9450) and CEAST 9300 Series (9310 / 9340 / 9350) Drop Tower Impact Systems",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 2 — 「Applies force to a material specimen in order to measure the material’s response to tensile (or pulling) stress」",
+     "sources": [
+      "https://www.instron.com/en/resources/news-listing/2019/07/9400-drop-tower-is-released/",
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    },
+    {
+     "code": "compression",
+     "reason": "제조사 문장 1 — 「This is followed by a compression test of the damaged coupon using an electromechanical machine.」",
+     "sources": [
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 1 — 「It is capable of performing various impact tests methods, including puncture, compression after impact, tensile, 3 point bending, adhesive peel, cushioning and 」",
+     "sources": [
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    },
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 1 — 「DCPD Measurement for Fracture Toughness and Crack Growth」",
+     "sources": [
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    }
+   ],
+   "recommended": [
+    "tensile",
+    "compression",
+    "flexure",
+    "fracture_toughness"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-9400-drop-tower",
+   "series": "Instron 9400 Series (9440 / 9450) and CEAST 9300 Series (9310 / 9340 / 9350) Drop Tower Impact Systems",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 2 — 「Applies force to a material specimen in order to measure the material’s response to tensile (or pulling) stress」",
+     "sources": [
+      "https://www.instron.com/en/resources/news-listing/2019/07/9400-drop-tower-is-released/",
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    },
+    {
+     "code": "compression",
+     "reason": "제조사 문장 1 — 「This is followed by a compression test of the damaged coupon using an electromechanical machine.」",
+     "sources": [
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 1 — 「It is capable of performing various impact tests methods, including puncture, compression after impact, tensile, 3 point bending, adhesive peel, cushioning and 」",
+     "sources": [
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    },
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 1 — 「DCPD Measurement for Fracture Toughness and Crack Growth」",
+     "sources": [
+      "https://www.instron.com/en/resources/videos/2022/april/9400-series-drop-weight-impact-testing-machines/"
+     ]
+    }
+   ],
+   "recommended": [
+    "tensile",
+    "compression",
+    "flexure",
+    "fracture_toughness"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-ave-video-extensometer",
+   "series": "Instron AVE 2 / AVE3 Advanced (Non-Contacting) Video Extensometers",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "fatigue",
+     "reason": "제조사 문장 2 — 「Non-Contacting Strain Measurement for Dynamic and Fatigue Testing」",
+     "sources": [
+      "https://www.instron.com/en/products/testing-accessories/extensometers/ave-2-advanced-video-extensometer/",
+      "https://www.instron.com/en/products/testing-accessories/extensometers/non-contacting-video/ave-2-dynamic-low-force-applications/"
+     ]
+    }
+   ],
+   "recommended": [
+    "fatigue"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-ceast-9050-pendulum",
+   "series": "CEAST 9000 Series (9050 Manual / 9050 Motorized) Pendulum Impact Testers",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 5 · 논문 1편 — 「…lter injection molder injection moulding of test bars according to ISO 527‐2 Type 1 A Engel ES 200/110 HL‐V – tensile test ISO 527–2 MTS 20‐M universal tensile」",
+     "sources": [
+      "https://www.instron.com/en/products/testing-systems/impact-systems/pendulums/9050-pendulum/",
+      "https://www.instron.com/en/products/testing-systems/impact-systems/pendulums/9050-pendulum/reinforced-table/",
+      "https://www.instron.com/en/products/testing-systems/impact-systems/pendulums/9050-pendulum/pendulum-impact-hammers/",
+      "PMC8518944"
+     ]
+    },
+    {
+     "code": "hdt",
+     "reason": "논문 2편 — 「For this purpose, the determination of the deflection temperature under load (HDT) was carried out on a CEAST HV 3 (INSTRON, Canton, MA, USA) in accordance with」",
+     "sources": [
+      "PMC7827856",
+      "PMC8912521"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 1 — 「Polymers Pipe Testing according to ISO 7628 and ISO 9854, either complete segments or small sections of pipes are ideal for testing on a pendulum in a 3-point b」",
+     "sources": [
+      "https://www.instron.com/en/products/testing-systems/impact-systems/pendulums/9050-pendulum/pendulum-impact-hammers/"
+     ]
+    },
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 1 — 「While Izod and Charpy testing measure similar properties, crack propagation differs between the two due to differences in specimen design and testing configurat」",
+     "sources": [
+      "https://www.instron.com/en/products/testing-systems/impact-systems/pendulums/9050-pendulum/"
+     ]
+    }
+   ],
+   "recommended": [
+    "tensile",
+    "hdt",
+    "flexure",
+    "fracture_toughness"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "instron-ceast-melt-flow-mf",
+   "series": "Instron CEAST MF Series Melt Flow Testers (MF10 / MF20 / MF30 / MF50)",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "charpy_impact",
+     "reason": "논문 5편 — 「…SO 527‐2 Type 1 A Engel ES 200/110 HL‐V – tensile test ISO 527–2 MTS 20‐M universal tensile testing equipment charpy impact ISO 179 Instron Ceast 9050 notching」",
+     "sources": [
+      "PMC8518944",
+      "PMC6413052",
+      "PMC7827856"
+     ]
+    },
+    {
+     "code": "hdt",
+     "reason": "논문 2편 — 「For this purpose, the determination of the deflection temperature under load (HDT) was carried out on a CEAST HV 3 (INSTRON, Canton, MA, USA) in accordance with」",
+     "sources": [
+      "PMC7827856",
+      "PMC8912521"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「…lter injection molder injection moulding of test bars according to ISO 527‐2 Type 1 A Engel ES 200/110 HL‐V – tensile test ISO 527–2 MTS 20‐M universal tensile」",
+     "sources": [
+      "PMC8518944"
+     ]
+    }
+   ],
+   "recommended": [
+    "charpy_impact",
+    "hdt"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "woollam-rc2",
+   "series": "J.A. Woollam RC2 Spectroscopic Ellipsometer",
+   "manufacturer": "ja-woollam",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 1 · 논문 7편 — 「The refractive index for polymer matrix was measured by an ellipsometer (J.A.」",
+     "sources": [
+      "https://www.jawoollam.com/products/rc2-ellipsometer",
+      "PMC10081843",
+      "PMC7708482",
+      "PMC8322170"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "jeol-jamp-9510f",
+   "series": "JEOL JAMP-9510F Field-Emission Auger Microprobe",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 1 — 「Compared with X-ray emission spectroscopy like SEM-EDS and EPMA, spatial resolution of AES analysis is very high.」",
+     "sources": [
+      "https://www.jeol.com/products/scientific/auger/JAMP-9510F.php"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "jeol-jem-f200",
+   "series": "JEOL JEM-F200 TEM/STEM",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "composition_analysis",
+     "reason": "제조사 문장 1 · 논문 3편 — 「Material Characterization The morphology and elemental composition of the nanoparticles were evaluated via transmission electron microscopy (TEM) (JEOL, JEM‐F20」",
+     "sources": [
+      "https://www.jeol.com/products/scientific/tem/JEM-F200.php",
+      "PMC11095170",
+      "PMC9568589",
+      "PMC9068789"
+     ]
+    }
+   ],
+   "recommended": [
+    "composition_analysis"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "jeol-jsm-it-fesem",
+   "series": "JEOL JSM-IT500HR / IT700HR Field-Emission SEM",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 3 · 논문 8편 — 「The SEM of the uncoated and different concentration mannose-coated nanoparticles were done by drying 2 mg of nanopart…」",
+     "sources": [
+      "https://www.jeol.com/products/scientific/sem/JSM-IT700HR.php",
+      "https://www.jeol.com/products/scientific/sem/JSM-IT500HR.php",
+      "https://www.jeol.com/products/scientific/sem/JSM-IT500HR/special.php",
+      "PMC9169714",
+      "PMC10876570",
+      "PMC9772562"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "jeol-jsx-1000s",
+   "series": "JEOL JSX-1000S Energy-Dispersive XRF",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 1 — 「The JSX-1000S is an X-ray fluorescence spectrometer that provides quick, easy elemental analysis using touch screen operation.」",
+     "sources": [
+      "https://www.jeol.com/products/scientific/xrf/JSX-1000S.php"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "jeol-jxa-epma",
+   "series": "JEOL JXA-iHP200F / iSP100 Electron Probe Microanalyzers",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 2 — 「Auto functions enabling anyone to obtain high quality SEM images Easy EPMA for fast elemental analysis with simplified instrument setting」",
+     "sources": [
+      "https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php",
+      "https://www.jeol.com/products/scientific/epma/JXA-iSP100.php"
+     ]
+    },
+    {
+     "code": "surface_topography",
+     "reason": "논문 1편 — 「The surface topographies and elemental mapping of the Ba122:Co thin films were observed by Electron Probe Microanalyzer (EPMA) (JXA…」",
+     "sources": [
+      "PMC8361216"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "jeol-xtalab-synergy-ed",
+   "series": "JEOL XtaLAB Synergy-ED Electron Diffractometer",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 1 — 「This is the outcome of combinations of RIGAKU's ultra-high sensitivity high speed detector\"HyPix-ED\" and dedicated single crystal structure analysis software \"C」",
+     "sources": [
+      "https://www.jeol.com/products/scientific/others/XtaLAB_Synergy-ED.php"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "keithley-4200-scs",
+   "series": "Keithley 4200-SCS / 4200A-SCS Parameter Analyzers",
+   "manufacturer": "keithley",
+   "candidates": [
+    {
+     "code": "thermography",
+     "reason": "논문 1편 — 「The temperature difference and thermoelectric potential between the gold electrodes were determined with a Thermal Imaging Cameras (FLIR A300, FLIR Systems Inc.」",
+     "sources": [
+      "PMC4490364"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "kic-sra-reflow-analyzer",
+   "series": "KIC SRA Smart Reflow Analyzer",
+   "manufacturer": "kic",
+   "candidates": [
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 3 — 「Introducing the KIC SRA - Smart Reflow Analyzer™ - KIC Thermal」",
+     "sources": [
+      "https://kicthermal.com/introducing-the-kic-sra-smart-reflow-analyzer/",
+      "https://kicthermal.com/kic-and-itac-software-ag-integrate-smart-reflow-process-data-in-the-mes-i4-0-solution/",
+      "https://kicthermal.com/come-see-kics-smart-reflow-cure-wave-ecosystem-see-where-youre-going-know-where-youve-been-at-smta-international-expo-2024/"
+     ]
+    }
+   ],
+   "recommended": [
+    "fracture_toughness"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "kla-g200x",
+   "series": "KLA Nano Indenter G200X",
+   "manufacturer": "kla",
+   "candidates": [
+    {
+     "code": "scratch_pencil_hardness",
+     "reason": "제조사 문장 1 · 논문 1편 — 「Scratch testing was conducted using a KLA Instruments G200X nanoindenter (KLA Corporation, Milpitas, CA, USA), which has a…」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x",
+      "PMC12388365"
+     ]
+    },
+    {
+     "code": "acoustic_delamination",
+     "reason": "제조사 문장 1 — 「Analysis of the load-displacement curves determined the load at crack initiation/delamination at the film/substrate interface, and the energy dissipated during 」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "battery_cycle_life",
+     "reason": "제조사 문장 1 — 「This work investigates the nanomechanical and elastic properties of a lithium/polymer composite battery cathode, measured by nanoindentation mapping to correlat」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "creep",
+     "reason": "제조사 문장 1 — 「Viscoelastic creep and stress relaxation properties can also be measured with the Nano Indenter G200X.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 1 — 「Viscoelastic property measurements including tan delta, and storage and loss modulus」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 1 — 「Traditional mechanical testing of ceramics and glasses (e.g., 4-point bending) can be time-consuming and expensive.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "fracture_toughness",
+     "reason": "제조사 문장 1 — 「Evaluating fracture toughness by nanoindentation is accomplished easily by using the Stiffness Mapping method.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "friction_wear_tribo",
+     "reason": "제조사 문장 1 — 「The Nano Indenter® G200 was used to characterize the nano-tribological behavior of the dental enamel as a function of acid etching.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "hardness_vickers",
+     "reason": "제조사 문장 1 — 「This test method automatically measures and reports Young’s modulus, instrumented hardness, Vickers hardness and the normalized work-of-indentation.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 1 — 「Compact, flexible in situ nanomechanical tester for in situ nanoindentation testing inside scanning electron microscopes or gloveboxes or on benchtops.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "relaxation",
+     "reason": "제조사 문장 1 — 「Viscoelastic creep and stress relaxation properties can also be measured with the Nano Indenter G200X.」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 1 — 「Viscoelastic property measurements including tan delta, and storage and loss modulus」",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/nano-indenter-g200x"
+     ]
+    }
+   ],
+   "recommended": [
+    "scratch_pencil_hardness",
+    "acoustic_delamination",
+    "battery_cycle_life",
+    "creep",
+    "dma",
+    "flexure",
+    "fracture_toughness",
+    "friction_wear_tribo",
+    "hardness_vickers",
+    "microscopy",
+    "relaxation",
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "lansmont-pdt-drop-testers",
+   "series": "Lansmont PDT Precision Drop Testers (PDT-56ED / PDT-80 / PDT-80M)",
+   "manufacturer": "lansmont",
+   "candidates": [
+    {
+     "code": "compression",
+     "reason": "제조사 문장 2 — 「Precision compression testers for evaluating your product and packaging design.」",
+     "sources": [
+      "https://www.lansmont.com/products/drop-testers/pdt-80m",
+      "https://www.lansmont.com/products/drop/lansmont-pdt-80"
+     ]
+    }
+   ],
+   "recommended": [
+    "compression"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "qmesys-qm100",
+   "series": "QMESYS QM100 Series Universal Testing Machines (QM100SS / S / SE / TS / TM / T)",
+   "manufacturer": "limotem",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 1편 — 「Samples for TEM was prepared by dropping NPs solutions onto carbon-coated Cu grids and examined on a Hitachi JED-2300 system…」",
+     "sources": [
+      "PMC12954197"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "linseis-thermal-conductivity",
+   "series": "LINSEIS thermal conductivity instruments (LFA 500 / LFA 1000 laser flash, TIM-Tester, THB, HFM, TFA)",
+   "manufacturer": "linseis",
+   "candidates": [
+    {
+     "code": "tma",
+     "reason": "제조사 문장 1 — 「TMA – 熱機械分析 (TMA – Thermomechanical analysis)」",
+     "sources": [
+      "https://www.linseis.com/ja/messgeraete/%e7%86%b1%e4%bc%9d%e5%b0%8e%e7%8e%87-thermal-conductivity/lfa-%e3%83%ac%e3%83%bc%e3%82%b6%e3%83%bc%e3%83%95%e3%83%a9%e3%83%83%e3%82%b7%e3%83%a5%e3%82%a2%e3%83%8a%e3%83%a9%e3%82%a4%e3%82%b6%e3%83%bc-lfa-laser-flash-analyzer/lfa-1000%e3%81%8b%e3%82%89lfa-l52%e3%81%b8/"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "논문 1편 — 「…) was measured by the laser flash method (LINSEIS LFA 1000), and the specific heat ( C p ) was determined by differential scanning calorimetry (TA Q100).」",
+     "sources": [
+      "PMC5378988"
+     ]
+    }
+   ],
+   "recommended": [
+    "tma"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "linseis-tma-l71-l72",
+   "series": "LINSEIS TMA L71 EM / L71 / L72 Thermomechanical Analyzers",
+   "manufacturer": "linseis",
+   "candidates": [
+    {
+     "code": "dsc",
+     "reason": "제조사 문장 1 — 「Glass transition and softening point determination」",
+     "sources": [
+      "https://www.linseis.com/en/instruments/thermal-analysis/tma-thermomechanical-analysis/tma-l71/"
+     ]
+    }
+   ],
+   "recommended": [
+    "dsc"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "malvern-kinexus-materialtwin",
+   "series": "Malvern Kinexus rotational rheometers (lab+ / pro+ / ultra+)",
+   "manufacturer": "malvern-panalytical",
+   "candidates": [
+    {
+     "code": "audio_performance",
+     "reason": "논문 1편 — 「…ies Oscillatory shear rheology was used to characterize the gelation kinetics, strain amplitude response, and frequency response of alginate hydrogel formulati」",
+     "sources": [
+      "PMC9543600"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "malvern-mastersizer-3000",
+   "series": "Malvern Panalytical Mastersizer 3000 Laser Diffraction Particle Size Analyzer",
+   "manufacturer": "malvern-panalytical",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 2 — 「Since droplet size and the degree of flocculation may also affect characteristics such as the mouthfeel of a food or the viscosity of a drink, particle size sho」",
+     "sources": [
+      "https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000-plus-lab",
+      "https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000-plus-pro"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mecmesin-multitest",
+   "series": "MultiTest-dV / MultiTest-i motorised force test stands",
+   "manufacturer": "mecmesin",
+   "candidates": [
+    {
+     "code": "crimp_pull_strength",
+     "reason": "제조사 문장 2 — 「Specifically designed for ease of use with minimal training, the FMT-W40 is an ideal solution for testing the pull strength of crimped wire terminals right at t」",
+     "sources": [
+      "https://www.mecmesin.com/force-systems/motorised-force-test-stands",
+      "https://www.mecmesin.com/motorised-force-test-stands/motorised-pull-tester"
+     ]
+    },
+    {
+     "code": "shear",
+     "reason": "제조사 문장 1 — 「MultiTest 2.5-dV with AFG force gauge shear test lipstick」",
+     "sources": [
+      "https://www.mecmesin.com/motorised-force-test-stands/motorised-force-tester"
+     ]
+    }
+   ],
+   "recommended": [
+    "crimp_pull_strength",
+    "shear"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mettler-dma-sdta861e",
+   "series": "METTLER TOLEDO DMA/SDTA861e Dynamic Mechanical Analyzer",
+   "manufacturer": "mettler-toledo",
+   "candidates": [
+    {
+     "code": "flexure",
+     "reason": "논문 2편 — 「…% D-lactic enantiomer) Mettler Toledo DMA: Isothermal steps at 2°; 1 Hz; 20–140 °C; loading mode: three point bending 58 (onset of E’ drop) PLA mechanically re」",
+     "sources": [
+      "PMC7700632",
+      "PMC5456860"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "논문 1편 — 「T during the glass transition. [ 61 ] ▪ PLA 2003D type from Nature Works LLC (M w 9.8 × 10 4 and 20 × 10 4 g mol −1 ) TA Instruments Q800 D…」",
+     "sources": [
+      "PMC7700632"
+     ]
+    }
+   ],
+   "recommended": [
+    "flexure"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "micromeritics-autopore-v",
+   "series": "Micromeritics AutoPore V Mercury Porosimeter",
+   "manufacturer": "micromeritics",
+   "candidates": [
+    {
+     "code": "density_porosity",
+     "reason": "논문 7편 — 「…Brunauer-Emmett-Teller (BET, Micrometrics, ASAP2010) method and the porosity was determined using the mercury porosimeter (Micromeritics, AutoPore V).」",
+     "sources": [
+      "PMC6441089",
+      "PMC5384213",
+      "PMC8318363"
+     ]
+    },
+    {
+     "code": "contact_angle",
+     "reason": "논문 1편 — 「…rosimetry was conducted with a Micromeritics Autopore IV 9510 following in situ sample evacuation and using a contact angle of 140°.」",
+     "sources": [
+      "PMC7141016"
+     ]
+    }
+   ],
+   "recommended": [
+    "density_porosity"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mitutoyo-ar-atk-rockwell",
+   "series": "Mitutoyo AR-10 / AR-20 / ARK-600 / ATK-600 Rockwell Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "hardness_vickers",
+     "reason": "논문 1편 — 「The materials were characterized for mechanical properties using a Vickers hardness tester (Mitutoyo AR-10, Kanagawa, Japan) and tensile testing machine (SHIMAD」",
+     "sources": [
+      "PMC11205382"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「…characterized for mechanical properties using a Vickers hardness tester (Mitutoyo AR-10, Kanagawa, Japan) and tensile testing machine (SHIMADZU AGX-V2, Kyoto, 」",
+     "sources": [
+      "PMC11205382"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mitutoyo-hm-200",
+   "series": "Mitutoyo HM-210 / HM-220 Micro Vickers Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "abrasion",
+     "reason": "논문 1편 — 「…apan) under a 500 N load and showed a microhardness elevation from HV 210 to HV 260, thus strengthening their wear resistance.」",
+     "sources": [
+      "PMC12298085"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mitutoyo-hm-micro-vickers-materialtwin",
+   "series": "Mitutoyo HM-100 / HM-200 Series Micro Vickers Hardness Testing Machines",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "surface_topography",
+     "reason": "논문 1편 — 「The surface roughness was evaluated using a contact profilometer (Surftest SJ-210, Mitutoyo Corporation, Kanagawa, Japan), and the…」",
+     "sources": [
+      "PMC12205262"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mitutoyo-hr-600",
+   "series": "Mitutoyo HR-600 Series CNC Rockwell Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "hardness_brinell",
+     "reason": "제조사 문장 1 — 「The HR-600 Series combines functionality for Rockwell hardness testing and for Light Force Brinell testing in a single machine, expanding the range of available」",
+     "sources": [
+      "https://www.mitutoyo.com/news/mitutoyo-america-corporation-introduces-hr-600-hardness-tester/"
+     ]
+    }
+   ],
+   "recommended": [
+    "hardness_brinell"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mitutoyo-hr-series-rockwell-materialtwin",
+   "series": "Mitutoyo HR-320MS / HR-430MR / HR-430MS / HR-530 Rockwell Hardness Testing Machines",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「Hardness tests with a Mitutoyo HR-530 (Mitutoyo, Takatsu-ku, Japan) hardness tester (according to the [ 58 ]) Tensile tests on a ZWICK/ROELL Z150 (ZwickRoell, U」",
+     "sources": [
+      "PMC11643623"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "mitutoyo-hv-100",
+   "series": "Mitutoyo HV-100 Series Vickers Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「…wing ISO 6502-2 standards [ 35 ], and for comparison with substrate strength, the hardness was converted into tensile strength [ 36 , 37 ].」",
+     "sources": [
+      "PMC11509531"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-arc-244-305",
+   "series": "NETZSCH ARC 244 / ARC 305 Accelerating Rate Calorimeter",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "dsc",
+     "reason": "논문 1편 — 「Differential scanning calorimetry (DSC) and accelerating rate calorimetry (ARC, NETZSCH ARC 254) were used to study the non-isother…」",
+     "sources": [
+      "PMC10116623"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-dil-402-expedis-materialtwin",
+   "series": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 6 — 「(LFA) Light/Laser Flash Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/es/productos/dilatometria-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/es/productos/dilatometria-dil/dil-402-expedis-ht",
+      "https://analyzing-testing.netzsch.com/ar/lmntjt/qys-ltmdd-dyl/dyl-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 2 — 「(DMA) Cours d'analyse mécanique dynamique」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/pl/produkty/dylatometria-dil/dil-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "제조사 문장 2 — 「Analyseur thermique simultané (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/pl/produkty/dylatometria-dil/dil-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "제조사 문장 2 — 「Analyseur thermique simultané (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/pl/produkty/dylatometria-dil/dil-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 1 — 「Analyse des gaz évoluésPrésentation de l'analyse des gaz dégagés (EGA)Spectroscopie infrarouge par transformée de Fourier (FT-IR)Spectrométrie de masse (MS)Chro」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme"
+     ]
+    }
+   ],
+   "recommended": [
+    "thermal_conductivity",
+    "dma",
+    "dsc",
+    "tga",
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-dil-402-expedis",
+   "series": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 6 — 「(LFA) Light/Laser Flash Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/es/productos/dilatometria-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/es/productos/dilatometria-dil/dil-402-expedis-ht",
+      "https://analyzing-testing.netzsch.com/ar/lmntjt/qys-ltmdd-dyl/dyl-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 2 — 「(DMA) Cours d'analyse mécanique dynamique」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/pl/produkty/dylatometria-dil/dil-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "제조사 문장 2 — 「Analyseur thermique simultané (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/pl/produkty/dylatometria-dil/dil-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "제조사 문장 2 — 「Analyseur thermique simultané (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme",
+      "https://analyzing-testing.netzsch.com/pl/produkty/dylatometria-dil/dil-402-expedis-select-supreme"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 1 — 「Analyse des gaz évoluésPrésentation de l'analyse des gaz dégagés (EGA)Spectroscopie infrarouge par transformée de Fourier (FT-IR)Spectrométrie de masse (MS)Chro」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/fr/produits/dilatometrie-dil/dil-402-expedis-select-supreme"
+     ]
+    }
+   ],
+   "recommended": [
+    "thermal_conductivity",
+    "dma",
+    "dsc",
+    "tga",
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-dsc-300-caliris",
+   "series": "NETZSCH DSC 300 Caliris Classic / Select / Supreme Differential Scanning Calorimeters",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 6 · 논문 1편 — 「…the UM are carried out using a home-made high-temperature apparatus ( σ and α ) and the ANTER’s Flashline 500 thermal diffusivity apparatus ( D ) in conjunctio」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/differential-scanning-calorimeter-dsc-differential-thermal-analyzer-dta/dsc-300-caliris-classic",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-select-basic-course",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-classic-basic-course",
+      "PMC4175591"
+     ]
+    },
+    {
+     "code": "dilatometry",
+     "reason": "제조사 문장 6 — 「E-Learning(DSC) Differential Scanning Calorimetry Courses(STA/TGA-DSC) Simultaneous Thermal Analysis Courses(TG) Thermogravimetry Courses(DMA) Dynamic Mechanica」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/differential-scanning-calorimeter-dsc-differential-thermal-analyzer-dta/dsc-300-caliris-classic",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-select-basic-course",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-classic-basic-course"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 6 — 「(DMA) Dynamic Mechanical Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/differential-scanning-calorimeter-dsc-differential-thermal-analyzer-dta/dsc-300-caliris-classic",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-select-basic-course",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-classic-basic-course"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 6 — 「Evolved Gas AnalysisEvolved Gas Analysis Overview (EGA)Fourier Transform Infrared Spectroscopy (FT-IR)Mass Spectrometry (MS)Gas Chromatography-Mass Spectrometry」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/differential-scanning-calorimeter-dsc-differential-thermal-analyzer-dta/dsc-300-caliris-classic",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-select-basic-course",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-classic-basic-course"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "제조사 문장 6 — 「Simultaneous Thermal Analyzer (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/differential-scanning-calorimeter-dsc-differential-thermal-analyzer-dta/dsc-300-caliris-classic",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-select-basic-course",
+      "https://analyzing-testing.netzsch.com/en/e-learning/dsc-differential-scanning-calorimetry-courses/dsc-300-caliris-classic-basic-course"
+     ]
+    }
+   ],
+   "recommended": [
+    "thermal_conductivity",
+    "dilatometry",
+    "dma",
+    "optical_spectroscopy",
+    "tga"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-lfa-467-hyperflash",
+   "series": "NETZSCH LFA 467 HyperFlash / LFA 467 HT HyperFlash Light Flash Apparatus",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "dma",
+     "reason": "제조사 문장 5 — 「(DMA) Dynamic Mechanical Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/pl/footer/legacy-products/lfa-467-hiper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-ht-hyper-flash"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "제조사 문장 5 — 「Simultaneous Thermal Analyzer (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/pl/footer/legacy-products/lfa-467-hiper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-ht-hyper-flash"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "제조사 문장 5 — 「Simultaneous Thermal Analyzer (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/pl/footer/legacy-products/lfa-467-hiper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-ht-hyper-flash"
+     ]
+    },
+    {
+     "code": "dilatometry",
+     "reason": "제조사 문장 4 — 「E-Learning(DSC) Differential Scanning Calorimetry Courses(STA/TGA-DSC) Simultaneous Thermal Analysis Courses(TG) Thermogravimetry Courses(DMA) Dynamic Mechanica」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-ht-hyper-flash",
+      "https://analyzing-testing.netzsch.com/en/e-learning/lfa-light-laser-flash-analysis-courses/lfa-717-hyperflash-basic-course"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 4 — 「Evolved Gas AnalysisEvolved Gas Analysis Overview (EGA)Fourier Transform Infrared Spectroscopy (FT-IR)Mass Spectrometry (MS)Gas Chromatography-Mass Spectrometry」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-ht-hyper-flash",
+      "https://analyzing-testing.netzsch.com/en/e-learning/lfa-light-laser-flash-analysis-courses/lfa-717-hyperflash-basic-course"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 1 — 「Characterization of NaNO₃–KNO₃ Salt Mixture Using NETZSCH Thermal Analysis Instruments and X-ray Diffraction」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus"
+     ]
+    },
+    {
+     "code": "friction_wear_tribo",
+     "reason": "제조사 문장 1 — 「Thermal, Rheological, and Tribological Insights into Cutting Fluids with NETZSCH Analysis Instruments」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 1 — 「A New Sample Holder for Low-Viscosity Liquids Part 1 – Principle and Test Results of Water」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus"
+     ]
+    }
+   ],
+   "recommended": [
+    "dma",
+    "dsc",
+    "tga",
+    "dilatometry",
+    "optical_spectroscopy",
+    "crystal_structure_analysis",
+    "friction_wear_tribo",
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-sta-449",
+   "series": "NETZSCH STA 449 F1 / F3 Jupiter Simultaneous Thermal Analyzers",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 6 · 논문 1편 — 「…ng NETZSCH STA 409 simultaneous thermal analyzer and the photocatalytic activity was measured by Perkin-Elmer UV-vis spectrometer.」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f1-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f3-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f5-jupiter",
+      "PMC3975220"
+     ]
+    },
+    {
+     "code": "dilatometry",
+     "reason": "제조사 문장 6 — 「E-Learning(DSC) Differential Scanning Calorimetry Courses(STA/TGA-DSC) Simultaneous Thermal Analysis Courses(TG) Thermogravimetry Courses(DMA) Dynamic Mechanica」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f1-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f3-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f5-jupiter"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 6 — 「(DMA) Dynamic Mechanical Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f1-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f3-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f5-jupiter"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 6 — 「(LFA) Light/Laser Flash Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f1-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f3-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f5-jupiter"
+     ]
+    },
+    {
+     "code": "thermal_resistance",
+     "reason": "제조사 문장 2 — 「DSC correction: Evaluation of exo- and endothermal effects under consideration of system time constants and thermal resistance values」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f1-jupiter",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f3-jupiter"
+     ]
+    },
+    {
+     "code": "composition_analysis",
+     "reason": "제조사 문장 1 — 「While analytical techniques such as EDX or ICP-MS provide a detailed analysis of chemical elements, e.g., of those occurring in a salt sample [1], methods of th」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/application-literature/investigation-of-alkali-salts-with-the-sta-449-f5-jupiter"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 1 — 「Mutlu, Structural Characterization of Some Table Salt Samples by XRD, ICP, FTIR and XRF techniques,Acta Physica Polonica A , Vol.」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/application-literature/investigation-of-alkali-salts-with-the-sta-449-f5-jupiter"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 1 — 「Explore how the Kinexus Rotational Rheometer mimics digestion, revealing vital insights into thermoset curing processes for improved material performance.」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/application-literature/investigation-of-alkali-salts-with-the-sta-449-f5-jupiter"
+     ]
+    },
+    {
+     "code": "tma",
+     "reason": "제조사 문장 1 — 「Combined analysis: comparison and/or evaluation of STA, DSC, TGA, DIL, TMA and DMA measurements in one plot」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f5-jupiter"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy",
+    "dilatometry",
+    "dma",
+    "thermal_conductivity",
+    "thermal_resistance",
+    "composition_analysis",
+    "crystal_structure_analysis",
+    "rheology_rotational",
+    "tma"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-tg-209-f3-tarsus",
+   "series": "NETZSCH TG 209 F3 Tarsus Thermogravimetric Analyzer",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "dsc",
+     "reason": "제조사 문장 1 · 논문 1편 — 「Thermogravimetric analysis was performed on a Netzsch TG 209 F1 Libra and differential scanning calorimetry on a Mettler Toledo DSC 821c, both at a heating rate」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tg-209-f3-tarsus",
+      "PMC4912624"
+     ]
+    },
+    {
+     "code": "dilatometry",
+     "reason": "제조사 문장 1 — 「E-Learning(DSC) Differential Scanning Calorimetry Courses(STA/TGA-DSC) Simultaneous Thermal Analysis Courses(TG) Thermogravimetry Courses(DMA) Dynamic Mechanica」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tg-209-f3-tarsus"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "제조사 문장 1 — 「(DMA) Dynamic Mechanical Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tg-209-f3-tarsus"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 1 — 「Evolved Gas AnalysisEvolved Gas Analysis Overview (EGA)Fourier Transform Infrared Spectroscopy (FT-IR)Mass Spectrometry (MS)Gas Chromatography-Mass Spectrometry」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tg-209-f3-tarsus"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 1 — 「(LFA) Light/Laser Flash Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tg-209-f3-tarsus"
+     ]
+    }
+   ],
+   "recommended": [
+    "dsc",
+    "dilatometry",
+    "dma",
+    "optical_spectroscopy",
+    "thermal_conductivity"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "netzsch-tma-402-hyperion",
+   "series": "NETZSCH TMA 402 F1 / F3 Hyperion (incl. F3 Polymer Edition)",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "dilatometry",
+     "reason": "제조사 문장 6 — 「E-Learning(DSC) Differential Scanning Calorimetry Courses(STA/TGA-DSC) Simultaneous Thermal Analysis Courses(TG) Thermogravimetry Courses(DMA) Dynamic Mechanica」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/fr/produits/analyse-thermomecanique-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/pl/produkty/analiza-termomechaniczna-tma/tma-402-f3-hyperion-polymer-edition"
+     ]
+    },
+    {
+     "code": "thermal_conductivity",
+     "reason": "제조사 문장 6 — 「(LFA) Light/Laser Flash Analysis Courses」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/fr/produits/analyse-thermomecanique-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/pl/produkty/analiza-termomechaniczna-tma/tma-402-f3-hyperion-polymer-edition"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "제조사 문장 5 · 논문 1편 — 「…urther use. 31 Calorimetric Analysis A Netzsch thermal analyzer (Netzsch F3 Maia, Germany) was used to obtain DSC thermograms of unprocessed REP (raw REP), CMP」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/fr/produits/analyse-thermomecanique-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/pl/produkty/analiza-termomechaniczna-tma/tma-402-f3-hyperion-polymer-edition",
+      "PMC10788056"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "제조사 문장 5 — 「Simultaneous Thermal Analyzer (STA/TGA-DSC)」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/fr/produits/analyse-thermomecanique-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/pl/produkty/analiza-termomechaniczna-tma/tma-402-f3-hyperion-polymer-edition"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 3 — 「Evolved Gas AnalysisEvolved Gas Analysis Overview (EGA)Fourier Transform Infrared Spectroscopy (FT-IR)Mass Spectrometry (MS)Gas Chromatography-Mass Spectrometry」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/fr/produits/analyse-thermomecanique-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tma-402-f1-f3-hyperion"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 2 — 「Characterization of NaNO₃–KNO₃ Salt Mixture Using NETZSCH Thermal Analysis Instruments and X-ray Diffraction」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tma-402-f1-f3-hyperion"
+     ]
+    },
+    {
+     "code": "rheology_rotational",
+     "reason": "제조사 문장 2 — 「Determination of Viscoelastic Properties like Relaxation, Creep and Stress/Strain」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition",
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tma-402-f1-f3-hyperion"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "제조사 문장 1 — 「Holding devices for expansion, penetration, and tension measurements are available, as well as push rods and supports for analyses in 3-point bending.」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tma-402-f1-f3-hyperion"
+     ]
+    },
+    {
+     "code": "particle_size",
+     "reason": "제조사 문장 1 — 「Rate-Controlled Sintering (RCS)The properties of sintered products, such as density or particle size distribution, are determined by the sintering conditions (t」",
+     "sources": [
+      "https://analyzing-testing.netzsch.com/en/footer/legacy-products/tma-402-f1-f3-hyperion"
+     ]
+    }
+   ],
+   "recommended": [
+    "dilatometry",
+    "thermal_conductivity",
+    "dsc",
+    "tga",
+    "optical_spectroscopy",
+    "crystal_structure_analysis",
+    "rheology_rotational",
+    "flexure",
+    "particle_size"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "nordson-dage-4000plus-bondtester",
+   "series": "Nordson DAGE 4000Plus Bondtester",
+   "manufacturer": "nordson-dage",
+   "candidates": [
+    {
+     "code": "shear",
+     "reason": "제조사 문장 1 — 「The 4000Plus multi-purpose bondtester performs shear tests up to 200kg, pull tests up to 100kg and push tests up to 50kg, covering all test applications includi」",
+     "sources": [
+      "https://www.nordson.com/en/products/test-and-inspection-products/dage-4000plus-bondtester"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "제조사 문장 1 — 「First bond ball pull of copper wires and pull of studs, bumps and pillars – For the first time custom pull jaws enable tensile tests on these important intercon」",
+     "sources": [
+      "https://www.nordson.com/en/products/test-and-inspection-products/dage-4000plus-bondtester"
+     ]
+    }
+   ],
+   "recommended": [
+    "shear",
+    "tensile"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "oxford-symmetry-s2",
+   "series": "Oxford Instruments Symmetry S2 EBSD Detector",
+   "manufacturer": "oxford-instruments",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "제조사 문장 2 · 논문 4편 — 「EBSD was performed on a Zeiss Gemini 560 field-emission SEM (Zeiss, Germany) equipped with an Oxford Instruments Symmetry S2 detector at 20 kV with a step size 」",
+     "sources": [
+      "https://www.oxinst.com/learning/learning/view/article/rapid-microstructural-characterisation-of-rolled-ni-sheets-using-the-symmetry-ebsd-detector",
+      "https://www.oxinst.com/news/new-ebsd-detector-symmetry-increases-ebsd-speed-by-an-order-of-magnitude/",
+      "PMC13483041",
+      "PMC12452914",
+      "PMC13149655"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 2 — 「Modular Optical SpectroscopyNuclear Magnetic ResonanceBenchtop NMR SpectroscopyTime Domain NMRConfocal Raman Microscopeswitec360 – Raman Imaging MicroscopeRISE 」",
+     "sources": [
+      "https://www.oxinst.com/learning/learning/view/article/rapid-microstructural-characterisation-of-rolled-ni-sheets-using-the-symmetry-ebsd-detector",
+      "https://www.oxinst.com/news/new-ebsd-detector-symmetry-increases-ebsd-speed-by-an-order-of-magnitude/"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy",
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "park-nx10",
+   "series": "Park Systems NX10 Atomic Force Microscope",
+   "manufacturer": "park-systems",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 7편 — 「Characterization of SPI supramolecular aggregates AFM 3-D maps and TEM micrographs were obtained using Park Systems NX10 and Thermo Scientific FEI Talos F200X G」",
+     "sources": [
+      "PMC8192951",
+      "PMC8034844",
+      "PMC4309429"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "perkinelmer-dma-8000",
+   "series": "PerkinElmer DMA 8000 Dynamic Mechanical Analyzer",
+   "manufacturer": "perkinelmer",
+   "candidates": [
+    {
+     "code": "flexure",
+     "reason": "논문 1편 — 「…echanical analysis (DMA) was performed with PerkinElmer DMA 8000 (Waltham, MA, USA) using the dual cantilever bending method.」",
+     "sources": [
+      "PMC7865617"
+     ]
+    },
+    {
+     "code": "tga",
+     "reason": "논문 1편 — 「TGA TGA was performed using a PerkinElmer DMA 7e dynamic mechanical analyzer to determine the storage modulus of…」",
+     "sources": [
+      "PMC8577930"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "perkinelmer-dsc-8000",
+   "series": "PerkinElmer DSC 4000 / 6000 / 8000 / 8500 Differential Scanning Calorimeters",
+   "manufacturer": "perkinelmer",
+   "candidates": [
+    {
+     "code": "tga",
+     "reason": "제조사 문장 3 · 논문 1편 — 「Thermal Analysis Thermogravimetric analysis (TGA) and differential scanning calorimetry (DSC) were performed for DS, carbopol, and Car934-g-poly (acrylic acid…」",
+     "sources": [
+      "https://www.perkinelmer.com/library/bro-model-dsc-8500-differential-scanning-calorimeter.html",
+      "https://www.perkinelmer.com/library/app-tma-4000.html",
+      "https://www.perkinelmer.com/library/fly-fl6500-and-8500-fluorescence-consumables-and-accessories.html",
+      "PMC7698439"
+     ]
+    },
+    {
+     "code": "tma",
+     "reason": "제조사 문장 1 — 「Use of the TMA 4000 to Perform Standard Test Methods in the Electronics Industry」",
+     "sources": [
+      "https://www.perkinelmer.com/library/app-tma-4000.html"
+     ]
+    }
+   ],
+   "recommended": [
+    "tga",
+    "tma"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "perkinelmer-frontier-ftir",
+   "series": "PerkinElmer Frontier FT-IR / FT-NIR / FT-FIR Spectrometer",
+   "manufacturer": "perkinelmer",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "논문 8편 — 「FTIR spectra were performed on a PerkinElmer Frontier FTIR spectrometer.」",
+     "sources": [
+      "PMC7473670",
+      "PMC6954060",
+      "PMC6189134"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "proceq-equotip-550-leeb",
+   "series": "Proceq Equotip 550 Leeb portable hardness tester",
+   "manufacturer": "proceq",
+   "candidates": [
+    {
+     "code": "hardness_rockwell",
+     "reason": "제조사 문장 1 — 「Faster than stationary Rockwell hardness testers, yet very accurate」",
+     "sources": [
+      "https://www.screeningeagle.com/en/products/equotip-550-portable-rockwell"
+     ]
+    },
+    {
+     "code": "surface_topography",
+     "reason": "제조사 문장 1 — 「The Portable Rockwell method covers a wide range of applications like hardness measurements on small, light, thin, walled or tubular test objects, but also larg」",
+     "sources": [
+      "https://www.screeningeagle.com/en/products/equotip-550-portable-rockwell"
+     ]
+    }
+   ],
+   "recommended": [
+    "hardness_rockwell",
+    "surface_topography"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "q-lab-q-fog",
+   "series": "Q-Lab Q-FOG Cyclic Corrosion Test Chambers (SSP / CCT / CRH)",
+   "manufacturer": "q-lab",
+   "candidates": [
+    {
+     "code": "accelerated_weathering",
+     "reason": "제조사 문장 2 — 「Q-Lab Corporation is a global leader in accelerated weathering and corrosion testers, contract testing services, and standard test panels for paints.」",
+     "sources": [
+      "https://www.q-lab.com/education/q-lab-announces-launch-rapid-ramp-heater-q-fog-corrosion-test-chambers",
+      "https://www.q-lab.com/education/q-lab-corporation-world-leader-weathering-corrosion-test-equipment-and-test-services"
+     ]
+    }
+   ],
+   "recommended": [
+    "accelerated_weathering"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "q-lab-q-sun",
+   "series": "Q-Lab Q-SUN Xenon Arc Test Chambers (Xe-1 / Xe-2 / Xe-3, Xe-8)",
+   "manufacturer": "q-lab",
+   "candidates": [
+    {
+     "code": "thermal_runaway_calorimetry",
+     "reason": "제조사 문장 3 — 「Q-Lab Now Accepting Orders for the New Q-SUN Xe-8 Xenon Arc Test Chamber | Q-Lab」",
+     "sources": [
+      "https://www.q-lab.com/education/q-lab-now-accepting-orders-new-q-sun-xe-8-xenon-arc-test-chamber",
+      "https://www.q-lab.com/education/q-sun-xe-1-virtual-simulator",
+      "https://www.q-lab.com/weathering/equipment-accessories/q-sun/xe-1"
+     ]
+    }
+   ],
+   "recommended": [
+    "thermal_runaway_calorimetry"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "q-lab-quv",
+   "series": "Q-Lab QUV Accelerated Weathering Tester (Series 95)",
+   "manufacturer": "q-lab",
+   "candidates": [
+    {
+     "code": "thermal_runaway_calorimetry",
+     "reason": "제조사 문장 2 — 「Q-SUN testers are the simplest, most reliable, and easiest-to-use xenon arc chambers available.」",
+     "sources": [
+      "https://www.q-lab.com/education/q-lab-launches-new-q-sun-e-model-and-gen-4-quv-weathering-testers",
+      "https://www.q-lab.com/company/events-tradeshows/weathering-101-seminar-q-lab-europe-bolton-uk"
+     ]
+    }
+   ],
+   "recommended": [
+    "thermal_runaway_calorimetry"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "renishaw-invia",
+   "series": "Renishaw inVia Confocal Raman Microscopes (Basis / Reflex / Qontor)",
+   "manufacturer": "renishaw",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 6 · 논문 8편 — 「The Raman spectra were collected at room temperature using a Renishaw inVia spectrophotometer.」",
+     "sources": [
+      "https://www.renishaw.com/en/invia-confocal-raman-microscope--6260",
+      "https://www.renishaw.com/en/renishaw-launches-breakthrough-time-resolved-raman-spectroscopy-trrs-integration-for-its-invia-confocal-raman-microscopes--49976",
+      "https://www.renishaw.com/en/invia-inspect-confocal-raman-microscope--45378",
+      "PMC5897348",
+      "PMC5444047",
+      "PMC6060179"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 1 — 「Identify materials that may be difficult or time consuming with other techniques such as hard crystalline powders, ceramic shards and glass chips, easily analys」",
+     "sources": [
+      "https://www.renishaw.com/en/invia-inspect-confocal-raman-microscope--45378"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy",
+    "crystal_structure_analysis"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "rigaku-smartlab",
+   "series": "Rigaku SmartLab X-ray Diffractometer",
+   "manufacturer": "rigaku",
+   "candidates": [
+    {
+     "code": "composition_analysis",
+     "reason": "제조사 문장 6 — 「X-ray fluorescence spectrometers for elemental analysis​」",
+     "sources": [
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab-se",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/ppc-na-smartlab"
+     ]
+    },
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 6 — 「X-ray fluorescence spectrometers for elemental analysis​」",
+     "sources": [
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab-se",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/ppc-na-smartlab"
+     ]
+    },
+    {
+     "code": "texture",
+     "reason": "제조사 문장 6 — 「Elemental, crystalline phase, and texture analysis for metals and alloys ​」",
+     "sources": [
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab-se",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/ppc-na-smartlab"
+     ]
+    },
+    {
+     "code": "particle_size",
+     "reason": "제조사 문장 2 — 「B-XRD1110 - Particle Size Distribution Analysis of Ferroelectric Nanopowder by USAXS」",
+     "sources": [
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab-studio-ii"
+     ]
+    },
+    {
+     "code": "surface_topography",
+     "reason": "제조사 문장 2 — 「B-XRD2022 - Crystal Defect Analysis by X-ray Reflection Topography」",
+     "sources": [
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab",
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab-studio-ii"
+     ]
+    },
+    {
+     "code": "battery_cycle_life",
+     "reason": "제조사 문장 1 — 「BATT1018 - XRD Measurement with Temperature Control and Charge/Discharge Using Laminated Cells」",
+     "sources": [
+      "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab"
+     ]
+    }
+   ],
+   "recommended": [
+    "composition_analysis",
+    "optical_spectroscopy",
+    "texture",
+    "particle_size",
+    "surface_topography",
+    "battery_cycle_life"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "rigaku-zsx-primus-400",
+   "series": "Rigaku ZSX Primus 400 Wavelength-Dispersive XRF",
+   "manufacturer": "rigaku",
+   "candidates": [
+    {
+     "code": "optical_spectroscopy",
+     "reason": "제조사 문장 2 · 논문 3편 — 「X-ray Fluorescence Spectroscopy (XRF) was measured using Rigaku ZSX Primus-II instrument.」",
+     "sources": [
+      "https://rigaku.com/products/xrf-spectrometers/wdxrf/zsx-primus-400",
+      "https://rigaku.com/products/xrf-spectrometers/wdxrf/ppc-na-primus-400",
+      "PMC3339602",
+      "PMC7770871",
+      "PMC7303188"
+     ]
+    },
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "제조사 문장 2 · 논문 2편 — 「Crystalline structure was analyzed using X-ray diffractometer (Rigaku ZSX Primus II).」",
+     "sources": [
+      "https://rigaku.com/products/xrf-spectrometers/wdxrf/zsx-primus-400",
+      "https://rigaku.com/products/xrf-spectrometers/wdxrf/ppc-na-primus-400",
+      "PMC6304255",
+      "PMC6397243"
+     ]
+    },
+    {
+     "code": "texture",
+     "reason": "제조사 문장 2 — 「Elemental, crystalline phase, and texture analysis for metals and alloys ​」",
+     "sources": [
+      "https://rigaku.com/products/xrf-spectrometers/wdxrf/zsx-primus-400",
+      "https://rigaku.com/products/xrf-spectrometers/wdxrf/ppc-na-primus-400"
+     ]
+    }
+   ],
+   "recommended": [
+    "optical_spectroscopy",
+    "crystal_structure_analysis",
+    "texture"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "shimadzu-ag-xplus",
+   "series": "AUTOGRAPH AG-Xplus Series Precision Universal Testers",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "shear",
+     "reason": "제조사 문장 1 — 「Double V-Notched In-Plane Shear Test Jig」",
+     "sources": [
+      "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-precision-universal-tester/option.html"
+     ]
+    }
+   ],
+   "recommended": [
+    "shear"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "shimadzu-ags-v",
+   "series": "AUTOGRAPH AGS-V Series Tabletop Precision Universal Testing Machines",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "mechanical_endurance",
+     "reason": "제조사 문장 1 — 「Tests can be performed with repeated ups and downs, such as durability tests.」",
+     "sources": [
+      "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-ags-v-series/option.html"
+     ]
+    }
+   ],
+   "recommended": [
+    "mechanical_endurance"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "shimadzu-duh-211",
+   "series": "Shimadzu DUH-211 / DUH-211S / DUH-210 / DUH-210S Dynamic Ultra Micro Hardness Tester",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "creep",
+     "reason": "논문 1편 — 「Nanoindentation and Creep Testing For the nanoindentation and creep evaluation, a Shimadzu DUH-211S nanoindenter (Kyoto, Japan) was use…」",
+     "sources": [
+      "PMC10419924"
+     ]
+    },
+    {
+     "code": "hardness_shore",
+     "reason": "논문 1편 — 「…-211S microhardness tester ( Figure 8 to obtain the Martens hardness ( Figure 9 ), as well as using a digital Shore D durometer to obtain the Shore hardness.」",
+     "sources": [
+      "PMC10224371"
+     ]
+    },
+    {
+     "code": "surface_topography",
+     "reason": "논문 1편 — 「…1/DUH-211s) was applied in order to measure the modulus of elasticity and hardness of material, and a surface profilometer (Mitutoyo sj210, USA) was used to me」",
+     "sources": [
+      "PMC5090181"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "shimadzu-uv-2600-2700",
+   "series": "Shimadzu UV-2600 / UV-2700 (i Plus) UV-Vis Spectrophotometers",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 2편 — 「A JEM-2100 transmission electron microscope (JEOL Ltd.) was used to measure the diameter and morphology of AuNPs, and the UV–vis absorption sp…」",
+     "sources": [
+      "PMC7241732",
+      "PMC7239646"
+     ]
+    },
+    {
+     "code": "particle_size",
+     "reason": "논문 1편 — 「Characterization of RBCM-Algae General characterization of the RBCM-Algae was performed by dynamic light scattering (Zetasizer Nano-ZS90 Malvern, USA), fluoresc」",
+     "sources": [
+      "PMC7239646"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "struers-duramin-40",
+   "series": "Struers Duramin-40 automatic micro/macro hardness tester",
+   "manufacturer": "struers",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 2편 — 「Thin films for TEM observation were prepared by mechanical thinning on abrasive papers and the electrolytic polishing of mechani…」",
+     "sources": [
+      "PMC10381570",
+      "PMC9822426"
+     ]
+    }
+   ],
+   "recommended": [
+    "microscopy"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ta-instruments-ar-rheometer",
+   "series": "TA Instruments AR-G2 / AR 2000ex / AR 1500ex Rheometers",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "논문 6편 — 「The rheological properties of aqueous MXene inks were investigated using a rheometer (TA Instruments AR-G2) with a cone-shaped geometry (angle, 2°; diameter, 40」",
+     "sources": [
+      "PMC7047439",
+      "PMC5445605",
+      "PMC6465301"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ta-instruments-discovery-dsc",
+   "series": "TA Instruments Discovery DSC (Differential Scanning Calorimeter)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "논문 7편 — 「…(mean diameter of EBs, ~200 μm) into 3-cm 3 syringes (Nordson EFD) and then extruding them directly onto the rheometer plate of a TA-instruments Discovery HR-3」",
+     "sources": [
+      "PMC6731072",
+      "PMC5710741",
+      "PMC9357007"
+     ]
+    },
+    {
+     "code": "dma",
+     "reason": "논문 1편 — 「…s measurements were conducted by using a TA Instruments Discovery Hybrid Rheometer (New Castle, DE) (DHR3) in dynamic mechanical analysis mode.」",
+     "sources": [
+      "PMC5710741"
+     ]
+    },
+    {
+     "code": "shear",
+     "reason": "논문 1편 — 「Shear Testing of Hydrogels To determine the shear strain to yield for each of the hydrogels, hydrogel samples ( n = 3 fo…」",
+     "sources": [
+      "PMC3652617"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ta-instruments-discovery-hybrid-rheometer",
+   "series": "TA Instruments Discovery Hybrid Rheometer (HR 10 / HR 20 / HR 30)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "compression",
+     "reason": "논문 1편 — 「The unconfined compression test was performed using a force balance transducer mechanical test apparatus (TA Instruments Discovery HR-20 Rheo…」",
+     "sources": [
+      "PMC8874024"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ta-instruments-discovery-tga-materialtwin",
+   "series": "TA Instruments Discovery TGA (Thermogravimetric Analyzer)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "crystal_structure_analysis",
+     "reason": "논문 1편 — 「…he area under the endotherms using TRIOS Software v4.1.1.33073) by the enthalpy value of a theoretically 100% crystalline sample material. 4.2.3 Thermal Degrad」",
+     "sources": [
+      "PMC8482480"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ta-instruments-dma",
+   "series": "TA Instruments DMA (Dynamic Mechanical Analyzer)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "compression",
+     "reason": "논문 1편 — 「Unconfined compression testing was performed on swollen electrospun hydrogels using a TA Instruments DMA Q800 at constant strain rate of…」",
+     "sources": [
+      "PMC4372144"
+     ]
+    },
+    {
+     "code": "flexure",
+     "reason": "논문 1편 — 「…with a heating rate of 5 °C min −1 and a frequency of 1 Hz in the range of −50 to 140 °C using a three-point bending setup.」",
+     "sources": [
+      "PMC4800438"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "ta-instruments-rsa-g2",
+   "series": "TA Instruments RSA-G2 Solids Analyzer",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "rheology_rotational",
+     "reason": "논문 2편 — 「…drogel specimens, and casted silicone specimens using a TA Instruments RSA-G2 extensional dimethylamine (DMA) rheometer.」",
+     "sources": [
+      "PMC7299613",
+      "PMC8654922"
+     ]
+    },
+    {
+     "code": "dsc",
+     "reason": "논문 1편 — 「Dynamic mechanical analysis (TA Instruments RSA G2) was used to measure the glass transition temperature and Young’s modulus of the PUA G material.」",
+     "sources": [
+      "PMC9047662"
+     ]
+    },
+    {
+     "code": "tensile",
+     "reason": "논문 1편 — 「Uniaxial tensile tests were performed on porcine lung tissue specimens, 3D-printed hydrogel specimens, and casted silicone spe…」",
+     "sources": [
+      "PMC7299613"
+     ]
+    }
+   ],
+   "recommended": [
+    "rheology_rotational"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "zwickroell-hit-pendulum",
+   "series": "HIT Pendulum Impact Testers 5 – 50 J (HIT5P / HIT5.5P / HIT25P / HIT50P)",
+   "manufacturer": "zwickroell",
+   "candidates": [
+    {
+     "code": "flexure",
+     "reason": "논문 1편 — 「Furthermore, an impact bending test (ZwickRoell-HIT50P/5J, ZwickRoell GmbH &amp;」",
+     "sources": [
+      "PMC9181684"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "zwickroell-kappa-creep",
+   "series": "ZwickRoell Kappa creep testing machines (Kappa SS, Kappa LA Spring / LA DW, Kappa SS-CF TMF system)",
+   "manufacturer": "zwickroell",
+   "candidates": [
+    {
+     "code": "shear",
+     "reason": "제조사 문장 1 — 「Customized high-temperature testing system for tensile, compression, flexure, creep fatigue and shear tests on ceramic matrix composites (CMC) at ultra-high tem」",
+     "sources": [
+      "https://www.zwickroell.com/products/static-materials-testing-machines/creep-testing-machines/kappa-ss-cf/"
+     ]
+    }
+   ],
+   "recommended": [
+    "shear"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "zwickroell-proline",
+   "series": "ProLine materials testing machines (Z005 – Z100)",
+   "manufacturer": "zwickroell",
+   "candidates": [
+    {
+     "code": "fatigue",
+     "reason": "제조사 문장 1 — 「Our second hand testing machine portfolio changes nearly on a daily basis and includes not only tensile testers but also preowned impact testing machines, fatig」",
+     "sources": [
+      "https://www.zwickroell.com/products/pre-owned-market/used-tensile-testers-z010-z020-z050-z100/"
+     ]
+    }
+   ],
+   "recommended": [
+    "fatigue"
+   ],
+   "reason": "논문 둘 이상이 이 기종으로 그 시험을 했거나, 제조사 문장이 말한다",
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  },
+  {
+   "subject": "zygo-newview-nx2",
+   "series": "Zygo NewView NX2 3D Optical Profiler",
+   "manufacturer": "zygo",
+   "candidates": [
+    {
+     "code": "microscopy",
+     "reason": "논문 1편 — 「…ology, and architecture of the prepared samples were characterized using optical microscope (Leica, Germany), SEM (Zeiss Gemini SEM 300), and surface profile m」",
+     "sources": [
+      "PMC8262819"
+     ]
+    }
+   ],
+   "recommended": [],
+   "reason": null,
+   "hint": "낱말이 문장에 나온 것뿐이다 — 인용문을 읽고 이 계열이 그 시험을 **하는** 것인지 본다(옆 장비 얘기일 수 있다)"
+  }
+ ]
+}

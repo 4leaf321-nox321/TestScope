@@ -965,3 +965,135 @@ def test_계열이_하는_규격을_더하면_시험에_붙거나_미정_인용�
         )
         is not None
     )
+
+
+def test_계열에_시험을_더하고_소개_문장을_붙인다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    """논문·제조사 문장이 세운 후보. 시험을 더하면 그 계열이 항목 미정으로 인용해 둔 그 시험의
+    규격이 같이 올라오고, 소개 문장은 계열 summary 뒤에 붙는다."""
+    from app.modules.equipment.models import EquipmentSeries
+    from app.modules.test_items.models import SeriesTestItem, SeriesTestItemMethod
+
+    item_id, code = _item(client, admin, "압축")
+    name = f"계열-{uuid.uuid4().hex[:6]}"
+    made = client.post(
+        "/api/equipment-series",
+        json={"name": name, "summary": "제조사 소개."},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    series_id = made.json()["id"]
+    # 이 계열이 항목 미정으로 인용해 둔, 압축 규격.
+    method = _method(client, admin, item_id)
+    _pend(series_id, method["id"])
+    (tmp_path / "series_test_items.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": "obj-z",
+                        "series": name,
+                        "manufacturer": None,
+                        "candidates": [
+                            {
+                                "code": code,
+                                "reason": "논문 2편 — 「compression tests…」",
+                                "sources": ["PMC1"],
+                            },
+                            {"code": "no_such_item", "reason": "x", "sources": []},
+                        ],
+                        "recommended": [code],
+                        "reason": "논문 둘",
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "series_summary.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "subject": "obj-z",
+                        "series": name,
+                        "manufacturer": None,
+                        "candidates": [
+                            {
+                                "code": "s1",
+                                "label": "Used for compression testing of foams.",
+                                "sources": ["https://m"],
+                            },
+                            {
+                                "code": "s2",
+                                "label": "Best in class!",
+                                "sources": ["https://m"],
+                            },
+                        ],
+                        "recommended": [],
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+
+    row = next(
+        one
+        for one in _rows(client, admin, "series_test_items")
+        if one["subject_key"] == "obj-z"
+    )
+    assert [one["code"] for one in row["candidates"]] == [code]  # 모르는 코드는 안 선다
+    decided = client.post(
+        f"/api/review/series_test_items/{row['id']}/decide",
+        json={"choice": [code]},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    test_item = db.scalar(
+        select(SeriesTestItem).where(
+            SeriesTestItem.series_id == uuid.UUID(series_id),
+            SeriesTestItem.test_item_term_id == uuid.UUID(item_id),
+        )
+    )
+    assert test_item is not None
+    # 미정이던 압축 규격이 그 시험에 붙었다.
+    assert (
+        db.scalar(
+            select(SeriesTestItemMethod).where(
+                SeriesTestItemMethod.series_test_item_id == test_item.id
+            )
+        )
+        is not None
+    )
+
+    srow = next(
+        one for one in _rows(client, admin, "series_summary") if one["subject_key"] == "obj-z"
+    )
+    assert srow["context"].startswith("지금 소개: 제조사 소개.")
+    picked = client.post(
+        f"/api/review/series_summary/{srow['id']}/decide",
+        json={"choice": ["s1"]},
+        headers=admin.headers,
+    )
+    assert picked.status_code == 200, picked.text
+    db.expire_all()
+    series = db.get(EquipmentSeries, uuid.UUID(series_id))
+    assert series is not None
+    assert series.summary == "제조사 소개.\n\nUsed for compression testing of foams."
+    # 다시 세우면 들어간 문장은 후보에서 빠지고 안 고른 문장만 남는다 — 정한 줄은 그대로.
+    services.refresh(db, tmp_path)
+    db.commit()
+    again = next(
+        one
+        for one in _rows(client, admin, "series_summary", status="all")
+        if one["subject_key"] == "obj-z"
+    )
+    assert again["status"] == "decided" and [one["code"] for one in again["candidates"]] == [
+        "s2"
+    ]

@@ -15,6 +15,8 @@
 | `test_item_properties.json` | 이 시험이 내는 물성은 | 시험 항목 코드 | 물성 코드 — 여러 개 (추천만 후보, 나머지는 직접 고르기) |
 | `condition_axes.json` | 새 검색축을 만드나 | 축 키 | `create` / `skip` + `axis`(label·dimension·unit) · `definitions` · `test_items` |
 | `series_standards.json` | 이 계열이 이 규격도 하나 | 카탈로그 객체 id (+ `series` 이름 · `manufacturer` 로 계열을 찾는다) | 규격 코드 — 여러 개. 후보가 `{code, reason, sources[]}` 로 출처를 든다. `source/catalog_extension/tools_propose.py` 가 만든다 — 손으로 안 고친다 |
+| `series_test_items.json` | 이 계열이 이 시험도 하나 | 카탈로그 객체 id (위와 같음) | 시험 항목 코드 — 여러 개. 후보가 `{code, reason(인용문), sources[]}`. 같은 도구가 만든다 |
+| `series_summary.json` | 이 문장을 계열 소개에 넣을까 | 카탈로그 객체 id (위와 같음) | `s1`…`s5` — 여러 개. 후보가 `{code, label(문장), sources[]}`. 같은 도구가 만든다 |
 
 줄의 모양:
 

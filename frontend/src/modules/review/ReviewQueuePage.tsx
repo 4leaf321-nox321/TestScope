@@ -53,6 +53,8 @@ function directAxis(queue: string): 'test_item' | 'condition' | 'property' | nul
 function emptyLabel(queue: string): string {
   if (queue === 'test_item_properties') return '물성 없음'
   if (queue === 'series_standards') return '더할 규격 없음'
+  if (queue === 'series_test_items') return '더할 시험 없음'
+  if (queue === 'series_summary') return '넣을 문장 없음'
   return '조건 없음'
 }
 
