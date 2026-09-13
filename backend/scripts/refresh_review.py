@@ -2,8 +2,9 @@
 
     python scripts/refresh_review.py
 
-화면의 「다시 세우기」(시스템 관리자) 와 같은 일이다. 반입(`import_catalog.py`)도 끝에 이것을 하므로,
-반입 없이 정본만 고쳤을 때(예: `catalog_extension/tools_propose.py` 를 다시 돌린 뒤) 쓴다.
+화면의 「다시 세우기」(시스템 관리자) 와 같은 일이다. 반입(`import_catalog.py`)도 끝에 이것을
+하므로, 반입 없이 정본만 고쳤을 때 쓴다 — 예: `catalog_extension/tools_propose.py` 를 다시
+돌린 뒤.
 정한 것은 안 건드린다 — 후보와 근거만 따라 바뀐다.
 """
 
