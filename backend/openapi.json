@@ -894,6 +894,32 @@
         }
       }
     },
+    "/api/workspaces/reliability-listed": {
+      "get": {
+        "tags": [
+          "workspaces"
+        ],
+        "summary": "Reliability Listed",
+        "description": "사이드바 「신뢰성 시험」 아래에 설 부서들 — 관리자가 「부서 정보」 에서 고른 것.\n\n소속과 무관하게 로그인한 누구나 본다. 이 시스템의 물음은 부서를 가로지른다.",
+        "operationId": "reliability_listed_api_workspaces_reliability_listed_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WorkspaceOption"
+                  },
+                  "type": "array",
+                  "title": "Response Reliability Listed Api Workspaces Reliability Listed Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/workspaces": {
       "get": {
         "tags": [
@@ -6073,19 +6099,48 @@
           "test-items"
         ],
         "summary": "List Test Item Catalog",
-        "description": "시험 항목 카탈로그 — 항목마다 **사슬 전체의 수**(물성·규격·계열·기종·보유 장비·검색축).\n\n0 이 곧 공백이다. 「물성 없는 시험 항목」 「규격 없는 시험 항목」 을 여기서 거른다.\n보유 장비는 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.",
+        "description": "시험 항목 카탈로그 — 항목마다 **사슬 전체의 수**(물성·규격·계열·기종·보유 장비·검색축).\n\n0 이 곧 공백이다. 「물성 없는 시험 항목」 「규격 없는 시험 항목」 을 여기서 거른다.\n보유 장비는 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.\n\n`workspace` 에 부서 주소를 주면 보유 장비를 **그 부서 것만** 센다 — 「저 부서는 무슨\n시험을 하나」 의 답이고, 0 인 줄이 곧 그 부서가 못 하는 시험이다. 나머지 수는\n전사 공용 정의라 그대로다.",
         "operationId": "list_test_item_catalog_api_test_items_get",
+        "parameters": [
+          {
+            "name": "workspace",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/TestItemCatalogRow"
                   },
-                  "type": "array",
                   "title": "Response List Test Item Catalog Api Test Items Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -6634,6 +6689,224 @@
               "type": "string",
               "format": "uuid",
               "title": "Link Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "List Reliability Tests",
+        "description": "한 부서가 수행하는 신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수\n있는 측정, 전사 공용)과 다르다. 시험마다 쓰는 시험 항목과, 그 항목이 되는 이 부서의\n장비 수를 함께 준다 — 0 이면 시험은 정했는데 돌릴 장비가 없다는 뜻이다.",
+        "operationId": "list_reliability_tests_api_reliability_tests_get",
+        "parameters": [
+          {
+            "name": "workspace",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 64,
+              "title": "Workspace"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReliabilityTestOut"
+                  },
+                  "title": "Response List Reliability Tests Api Reliability Tests Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Create Reliability Test",
+        "description": "등록 — 그 부서의 관리자 또는 시스템 관리자. `test_item_term_ids` 는 시험 항목 축의\n값이어야 한다(`POST /api/resolve` 로 먼저 찾는다).",
+        "operationId": "create_reliability_test_api_reliability_tests_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReliabilityTestCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityTestOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Read Reliability Test",
+        "operationId": "read_reliability_test_api_reliability_tests__test_id__get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityTestOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Update Reliability Test",
+        "description": "부분 수정. 안 보낸 칸은 그대로, `test_item_term_ids` 는 보내면 통째로 바뀐다.",
+        "operationId": "update_reliability_test_api_reliability_tests__test_id__patch",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReliabilityTestUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityTestOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Delete Reliability Test",
+        "description": "지우지 않고 `deleted_at` 만 채운다. 감사 기록에 남는다.",
+        "operationId": "delete_reliability_test_api_reliability_tests__test_id__delete",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
             }
           }
         ],
@@ -14295,6 +14568,171 @@
         ],
         "title": "RejectRequest"
       },
+      "ReliabilityTestCreateRequest": {
+        "properties": {
+          "workspace_slug": {
+            "type": "string",
+            "title": "Workspace Slug"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "purpose": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "Purpose",
+            "default": ""
+          },
+          "test_item_term_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Test Item Term Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "workspace_slug",
+          "name"
+        ],
+        "title": "ReliabilityTestCreateRequest"
+      },
+      "ReliabilityTestItemOut": {
+        "properties": {
+          "term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Term Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "equipment_count": {
+            "type": "integer",
+            "title": "Equipment Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "term_id",
+          "value",
+          "equipment_count"
+        ],
+        "title": "ReliabilityTestItemOut",
+        "description": "이 시험이 쓰는 시험 항목 하나와, 그 항목을 할 수 있는 **이 부서의** 장비 수."
+      },
+      "ReliabilityTestOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "workspace_slug": {
+            "type": "string",
+            "title": "Workspace Slug"
+          },
+          "workspace_name": {
+            "type": "string",
+            "title": "Workspace Name"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "purpose": {
+            "type": "string",
+            "title": "Purpose"
+          },
+          "test_items": {
+            "items": {
+              "$ref": "#/components/schemas/ReliabilityTestItemOut"
+            },
+            "type": "array",
+            "title": "Test Items"
+          },
+          "can_edit": {
+            "type": "boolean",
+            "title": "Can Edit"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "workspace_slug",
+          "workspace_name",
+          "name",
+          "purpose",
+          "test_items",
+          "can_edit",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "ReliabilityTestOut"
+      },
+      "ReliabilityTestUpdateRequest": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "purpose": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Purpose"
+          },
+          "test_item_term_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Test Item Term Ids"
+          }
+        },
+        "type": "object",
+        "title": "ReliabilityTestUpdateRequest",
+        "description": "안 보낸 칸은 그대로. `test_item_term_ids` 는 보내면 **통째로** 바뀐다."
+      },
       "RequirementImportRequest": {
         "properties": {
           "text": {
@@ -17298,6 +17736,10 @@
             "type": "boolean",
             "title": "Restricted"
           },
+          "reliability_listed": {
+            "type": "boolean",
+            "title": "Reliability Listed"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -17334,6 +17776,7 @@
           "sort_order",
           "is_active",
           "restricted",
+          "reliability_listed",
           "created_at",
           "member_count",
           "equipment_count",
@@ -17420,6 +17863,17 @@
               }
             ],
             "title": "Restricted"
+          },
+          "reliability_listed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reliability Listed"
           }
         },
         "type": "object",

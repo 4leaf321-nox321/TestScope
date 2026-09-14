@@ -82,6 +82,9 @@ REVIEW_REOPENED = "review.reopened"
 이 확인은 검색이 물성으로 시험 항목을 펼칠 때 쓰는 근거이고, 내보내기가 카탈로그
 정본(`property_links.json`)에 싣는 값이다. 누가 언제 무엇을 확인했는지는 남아야 한다."""
 METHOD_REQUIREMENTS_IMPORTED = "method.requirements_imported"
+RELIABILITY_TEST_DELETED = "reliability_test.deleted"
+"""부서가 등록한 신뢰성 시험을 내렸다. 화면에서는 사라지므로 「그 시험 어디 갔어」 의 답이
+여기뿐이다. 만들고 고친 것은 줄 자체(created_by · updated_at)가 말한다."""
 
 
 def diff(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:

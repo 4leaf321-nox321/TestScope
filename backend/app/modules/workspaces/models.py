@@ -76,6 +76,16 @@ class Workspace(Base):
     "우리 조직이 무엇을 시험할 수 있나" 에 답하는 것이라, 가리는 쪽이 예외여야
     한다. 쓰기는 이 값과 무관하게 여전히 소유 부서의 관리자만 한다."""
 
+    reliability_listed: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false"
+    )
+    """사이드바 「신뢰성 시험」 아래에 이 부서를 올리나.
+
+    조직도의 부서가 전부 시험을 하는 곳은 아니다 — 본부·지원 부서는 장비가 없다.
+    메뉴에 조직도를 통째로 펼치면 시험을 하는 부서 넷을 찾으려고 서른을 훑게 되므로,
+    관리자가 「부서 정보」 에서 고른 부서만 올린다. 가시성(`restricted`)과는 다른
+    물음이다 — 이것은 메뉴 자리이고, 그것은 장비를 누가 보나다."""
+
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )

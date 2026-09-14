@@ -147,6 +147,7 @@ def workspace_out(
         path=path or workspace.name,
         sort_order=workspace.sort_order,
         restricted=workspace.restricted,
+        reliability_listed=workspace.reliability_listed,
         is_active=workspace.is_active,
         created_at=workspace.created_at,
         member_count=_member_count(db, workspace.id),
@@ -161,6 +162,19 @@ def options(db: Session) -> list[WorkspaceOption]:
         WorkspaceOption(slug=node.slug, name=node.name, path=path, depth=depth)
         for node, depth, path in ordered_tree(db)
         if node.is_active
+    ]
+
+
+def reliability_listed(db: Session) -> list[WorkspaceOption]:
+    """사이드바 「신뢰성 시험」 아래에 설 부서들 — **소속과 무관하게 누구나 본다.**
+
+    이 시스템의 물음은 부서를 가로지른다(「저 부서는 무슨 시험을 하나」). 내 소속만
+    주면 남의 부서 메뉴가 안 보이고, 그때 사람은 그 부서가 시험을 안 하는 줄 안다.
+    보관한 부서는 뺀다 — 메뉴에 남으면 눌러 보고 나서야 없어진 것을 안다."""
+    return [
+        WorkspaceOption(slug=node.slug, name=node.name, path=path, depth=depth)
+        for node, depth, path in ordered_tree(db)
+        if node.is_active and node.reliability_listed
     ]
 
 
@@ -226,6 +240,7 @@ def update(
     name: str | None,
     is_active: bool | None,
     restricted: bool | None,
+    reliability_listed: bool | None = None,
 ) -> Workspace:
     """**안 보낸 것과 비운 것을 구별한다.** None 은 "안 바꿈" 이다 — 구별하지 않으면
     이름만 고칠 때마다 공개 설정이 함께 초기화된다."""
@@ -236,6 +251,8 @@ def update(
         workspace.is_active = is_active
     if restricted is not None:
         workspace.restricted = restricted
+    if reliability_listed is not None:
+        workspace.reliability_listed = reliability_listed
     db.commit()
     db.refresh(workspace)
     return workspace

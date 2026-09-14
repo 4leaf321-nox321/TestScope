@@ -115,6 +115,7 @@ export default function WorkspacesAdminPage() {
             <TableHead className="text-right">멤버</TableHead>
             <TableHead className="text-right">장비</TableHead>
             <TableHead>공개</TableHead>
+            <TableHead>신뢰성 시험</TableHead>
             <TableHead>상태</TableHead>
             <TableHead className="text-right">순서</TableHead>
           </TableRow>
@@ -141,6 +142,27 @@ export default function WorkspacesAdminPage() {
                 >
                   {one.restricted ? '멤버만' : '전원'}
                 </Button>
+              </TableCell>
+              <TableCell>
+                {/* 체크한 부서가 사이드바 「신뢰성 시험」 아래에 선다 — 부서마다 그
+                    부서의 신뢰성 시험 화면 하나. 조직도를 통째로 메뉴에 펼치지 않는다. */}
+                <label className="flex cursor-pointer items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={one.reliability_listed}
+                    aria-label={`${one.name} 을 신뢰성 시험 메뉴에 올림`}
+                    onChange={(event) =>
+                      act(() =>
+                        workspaceApi.update(one.slug, {
+                          reliability_listed: event.target.checked,
+                        }),
+                      )
+                    }
+                  />
+                  <span className="text-muted-foreground text-xs">
+                    {one.reliability_listed ? '메뉴에 올림' : '—'}
+                  </span>
+                </label>
               </TableCell>
               <TableCell>
                 <Button

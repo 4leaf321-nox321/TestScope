@@ -35,6 +35,8 @@ class WorkspaceOut(BaseModel):
     is_active: bool
     restricted: bool
     """장비를 멤버에게만 보이나. 기본 false — 가입자 전원이 본다."""
+    reliability_listed: bool
+    """사이드바 「신뢰성 시험」 아래에 올리나. 기본 false — 관리자가 고른 부서만."""
     created_at: datetime
     member_count: int
     equipment_count: int
@@ -56,6 +58,8 @@ class WorkspaceUpdateRequest(BaseModel):
     """false 로 두면 보관 상태. 자료는 남기고 새 활동만 막는다(삭제하지 않는다)."""
     restricted: bool | None = None
     """true 로 두면 이 부서의 장비를 **멤버에게만** 보인다. 안 보내면 그대로."""
+    reliability_listed: bool | None = None
+    """true 로 두면 사이드바 「신뢰성 시험」 아래에 이 부서가 선다. 안 보내면 그대로."""
 
 
 class WorkspaceMoveRequest(BaseModel):

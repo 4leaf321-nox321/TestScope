@@ -5,15 +5,113 @@
  * 찌그러지지 않고 그대로 잘려 나간다.
  */
 
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { ChevronRight } from 'lucide-react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import { UNKNOWN_VERSION, systemApi } from '@/shared/api/system'
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isAnyManager, isSystemAdmin } from '@/shared/auth/roles'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/shared/components/ui/sheet'
 import { useResource } from '@/shared/hooks/useResource'
-import { itemHref, visibleGroups } from '@/shared/layout/navigation'
+import { itemHref, reliabilityHref, visibleGroups } from '@/shared/layout/navigation'
+import type { NavItem } from '@/shared/layout/navigation'
 import { cn } from '@/shared/lib/utils'
+import { workspaceApi } from '@/modules/workspaces/api'
+
+const ITEM_CLASS = 'flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors'
+const ACTIVE_CLASS = 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
+const IDLE_CLASS = 'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground'
+
+/** 접힌 상태를 기억하는 키. 브라우저에만 남긴다 — 서버가 알 일이 아니다. */
+const EXPANDED_KEY = 'testscope.sidebar.expanded'
+
+function readExpanded(label: string): boolean {
+  try {
+    const raw = window.localStorage.getItem(`${EXPANDED_KEY}:${label}`)
+    return raw === null ? true : raw === 'true'
+  } catch {
+    return true
+  }
+}
+
+function writeExpanded(label: string, expanded: boolean): void {
+  try {
+    window.localStorage.setItem(`${EXPANDED_KEY}:${label}`, String(expanded))
+  } catch {
+    // 시크릿 창 등 — 기억 못 하는 것뿐이다.
+  }
+}
+
+/**
+ * 아래에 부서가 서는 항목 — **항목 자체가 손잡이다.**
+ *
+ * 자식은 서버가 정한다(「부서 정보」 에서 고른 부서). 접고 편 상태는 브라우저가 기억하되,
+ * **자식 화면에 들어서면 편다** — 접힌 채로는 지금 어디 있는지가 안 보인다. 그 뒤에
+ * 다시 접는 것은 사람 뜻이다(들어서 있는 동안 강제로 열어 두면 손잡이가 안 먹는 것처럼
+ * 보인다).
+ */
+function ExpandableItem({ item, onNavigate }: { item: NavItem; onNavigate?: () => void }) {
+  const location = useLocation()
+  const children = useResource(() => workspaceApi.reliabilityListed(), [])
+  const [expanded, setExpanded] = useState(() => readExpanded(item.label))
+  const rows = children.data ?? []
+  const insideChild = rows.some((one) =>
+    location.pathname.startsWith(reliabilityHref(one.slug)),
+  )
+  const open = expanded
+
+  useEffect(() => {
+    if (insideChild) setExpanded(true)
+  }, [insideChild])
+
+  function toggle() {
+    const next = !open
+    setExpanded(next)
+    writeExpanded(item.label, next)
+  }
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
+        className={cn(ITEM_CLASS, 'w-full', insideChild ? ACTIVE_CLASS : IDLE_CLASS)}
+      >
+        <item.icon className="size-4 shrink-0" />
+        <span className="truncate">{item.label}</span>
+        <ChevronRight
+          className={cn('ml-auto size-4 shrink-0 transition-transform', open && 'rotate-90')}
+        />
+      </button>
+      {open && (
+        <ul className="mt-0.5 ml-4 space-y-0.5 border-l pl-2">
+          {/* **비면 이유를 말한다.** 아무것도 안 그리면 손잡이가 고장난 것처럼 보인다. */}
+          {children.data && rows.length === 0 && (
+            <li className="text-muted-foreground/70 px-2 py-1 text-xs">
+              「부서 정보」 에서 고른 부서가 없습니다
+            </li>
+          )}
+          {rows.map((one) => (
+            <li key={one.slug}>
+              <NavLink
+                to={reliabilityHref(one.slug)}
+                onClick={onNavigate}
+                title={one.path}
+                className={({ isActive }) =>
+                  cn(ITEM_CLASS, 'py-1', isActive ? ACTIVE_CLASS : IDLE_CLASS)
+                }
+              >
+                <span className="truncate">{one.name}</span>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  )
+}
 
 interface SidebarProps {
   collapsed: boolean
@@ -83,27 +181,26 @@ function SidebarBody({ workspaceSlug, onNavigate }: Omit<SidebarProps, 'collapse
             <ul className="space-y-0.5">
               {group.items.map((item) => (
                 <li key={item.label}>
-                  <NavLink
-                    to={itemHref(item, workspaceSlug)}
-                    end={item.end}
-                    onClick={onNavigate}
-                    className={({ isActive }) =>
-                      cn(
-                        'flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors',
-                        isActive
-                          ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-                          : 'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground',
-                      )
-                    }
-                  >
-                    <item.icon className="size-4 shrink-0" />
-                    <span className="truncate">{item.label}</span>
-                    {item.pending && (
-                      <span className="text-muted-foreground/70 ml-auto shrink-0 rounded border px-1 text-[10px] leading-4">
-                        미구현
-                      </span>
-                    )}
-                  </NavLink>
+                  {item.expands ? (
+                    <ExpandableItem item={item} onNavigate={onNavigate} />
+                  ) : (
+                    <NavLink
+                      to={itemHref(item, workspaceSlug)}
+                      end={item.end}
+                      onClick={onNavigate}
+                      className={({ isActive }) =>
+                        cn(ITEM_CLASS, isActive ? ACTIVE_CLASS : IDLE_CLASS)
+                      }
+                    >
+                      <item.icon className="size-4 shrink-0" />
+                      <span className="truncate">{item.label}</span>
+                      {item.pending && (
+                        <span className="text-muted-foreground/70 ml-auto shrink-0 rounded border px-1 text-[10px] leading-4">
+                          미구현
+                        </span>
+                      )}
+                    </NavLink>
+                  )}
                 </li>
               ))}
             </ul>

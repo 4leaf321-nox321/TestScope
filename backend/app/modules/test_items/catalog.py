@@ -68,8 +68,14 @@ def _terms(db: Session) -> list[VocabularyTerm]:
     )
 
 
-def _counts(db: Session, user: User) -> dict[str, dict[uuid.UUID, int]]:
-    """시험 항목마다의 수들 — 각각 질의 한 번."""
+def _counts(
+    db: Session, user: User, *, workspace: Workspace | None = None
+) -> dict[str, dict[uuid.UUID, int]]:
+    """시험 항목마다의 수들 — 각각 질의 한 번.
+
+    `workspace` 를 주면 보유 장비만 그 부서 것으로 좁힌다. 나머지 수(물성·규격·계열·
+    기종)는 전사 공용 정의라 부서와 무관하다.
+    """
     out: dict[str, dict[uuid.UUID, int]] = defaultdict(dict)
     for term_id, count in db.execute(
         select(TestItemProperty.test_item_term_id, func.count()).group_by(
@@ -115,12 +121,15 @@ def _counts(db: Session, user: User) -> dict[str, dict[uuid.UUID, int]]:
         .group_by(SeriesTestItem.test_item_term_id)
     ).all():
         out["model_count"][term_id] = int(count)
+    owned = visible_equipment_ids(db, user)
+    if workspace is not None:
+        owned = owned.where(Equipment.owner_workspace_id == workspace.id)
     for term_id, count in db.execute(
         select(
             EquipmentTestItem.test_item_term_id,
             func.count(func.distinct(EquipmentTestItem.equipment_id)),
         )
-        .where(EquipmentTestItem.equipment_id.in_(visible_equipment_ids(db, user)))
+        .where(EquipmentTestItem.equipment_id.in_(owned))
         .group_by(EquipmentTestItem.test_item_term_id)
     ).all():
         out["equipment_count"][term_id] = int(count)
@@ -150,10 +159,19 @@ def _axes(db: Session, term_ids: list[uuid.UUID]) -> dict[uuid.UUID, list[Condit
     return out
 
 
-def list_rows(db: Session, user: User) -> list[TestItemCatalogRow]:
+def list_rows(
+    db: Session, user: User, *, workspace_slug: str | None = None
+) -> list[TestItemCatalogRow]:
+    """`workspace_slug` 를 주면 **그 부서의 신뢰성 시험 현황**이 된다 — 보유 장비 수만
+    그 부서 것으로 좁히고, 0 인 줄이 곧 그 부서가 못 하는 시험이다."""
+    workspace = None
+    if workspace_slug is not None:
+        workspace = db.scalar(select(Workspace).where(Workspace.slug == workspace_slug))
+        if workspace is None:
+            raise NotFound("TSC-TESTITEM-0012", "부서를 찾을 수 없습니다.")
     terms = _terms(db)
     ids = [t.id for t in terms]
-    counts = _counts(db, user)
+    counts = _counts(db, user, workspace=workspace)
     aliases = _aliases(db, ids)
     axes = _axes(db, ids)
     return [

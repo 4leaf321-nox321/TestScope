@@ -54,6 +54,9 @@ const TestItemsCatalogPage = lazy(() => import('@/modules/test_items/TestItemsCa
 const TestItemCatalogDetailPage = lazy(
   () => import('@/modules/test_items/TestItemCatalogDetailPage'),
 )
+const WorkspaceReliabilityPage = lazy(
+  () => import('@/modules/reliability/WorkspaceReliabilityPage'),
+)
 const SignupPage = lazy(() => import('@/modules/auth/SignupPage'))
 const VocabularyAdminPage = lazy(() => import('@/modules/vocabulary/VocabularyAdminPage'))
 const VocabularyPage = lazy(() => import('@/modules/vocabulary/VocabularyPage'))
@@ -102,6 +105,9 @@ export const router = createBrowserRouter([
           { path: 'properties', element: <PropertiesPage /> },
           { path: 'equipment', element: <EquipmentPage /> },
           { path: 'equipment/:id', element: <EquipmentDetailPage /> },
+          // 부서 하나의 신뢰성 시험 — 사이드바 「신뢰성 시험」 아래 자식. 「시험 항목」
+          // (카탈로그)과 다른 층이라 주소도 다르다. 모양은 navigation.ts 의 reliabilityHref 와 같다.
+          { path: 'reliability-tests/:slug', element: <WorkspaceReliabilityPage /> },
 
           // 카탈로그 — 세상에 있는 것. 보유 장비가 이 둘을 엮은 인스턴스다(ADR 0004).
           { path: 'catalog/equipment-series', element: <EquipmentSeriesPage /> },

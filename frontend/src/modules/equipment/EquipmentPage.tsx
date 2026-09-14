@@ -55,12 +55,15 @@ export default function EquipmentPage() {
   // **홈의 「남은 일」 이 이 주소로 온다.** 안 읽으면 눌러도 전체 목록이 떠서,
   // 사람은 「왜 안 걸러졌지」 를 겪고 그 목록을 안 믿게 된다.
   const [params, setParams] = useSearchParams()
+  // 부서별 「신뢰성 시험」 화면의 「장비 N대」 도 여기로 온다(부서 + 시험 항목).
   const fromUrl = (): EquipmentFilterState => ({
     ...EMPTY_FILTERS,
     calibration: params.get('calibration') ?? '',
     testItem: params.get('test_item') ?? '',
     catalog: params.get('catalog') ?? '',
     status: params.get('status') ?? '',
+    workspace: params.get('workspace') ?? '',
+    testItemTermId: params.get('test_item_term_id') ?? '',
   })
   const [typed, setTyped] = useState<EquipmentFilterState>(fromUrl)
   // **거르기를 물어보는 쪽도 같은 값으로 시작한다.** 여기를 비워 두면 첫 조회가

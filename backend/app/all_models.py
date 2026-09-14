@@ -29,6 +29,7 @@ from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
 from app.modules.properties.models import TestItemProperty
+from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.review.models import ReviewProposal, ReviewVote
 from app.modules.test_items.models import (
     EquipmentTestCondition,
@@ -72,6 +73,8 @@ __all__ = [
     "Notification",
     "PersonalAccessToken",
     "RefreshToken",
+    "ReliabilityTest",
+    "ReliabilityTestItem",
     "ReviewProposal",
     "ReviewVote",
     "SeriesPendingMethod",

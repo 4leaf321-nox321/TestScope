@@ -374,6 +374,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/workspaces/reliability-listed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Reliability Listed
+         * @description 사이드바 「신뢰성 시험」 아래에 설 부서들 — 관리자가 「부서 정보」 에서 고른 것.
+         *
+         *     소속과 무관하게 로그인한 누구나 본다. 이 시스템의 물음은 부서를 가로지른다.
+         */
+        get: operations["reliability_listed_api_workspaces_reliability_listed_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/workspaces": {
         parameters: {
             query?: never;
@@ -1867,6 +1889,10 @@ export interface paths {
          *
          *     0 이 곧 공백이다. 「물성 없는 시험 항목」 「규격 없는 시험 항목」 을 여기서 거른다.
          *     보유 장비는 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.
+         *
+         *     `workspace` 에 부서 주소를 주면 보유 장비를 **그 부서 것만** 센다 — 「저 부서는 무슨
+         *     시험을 하나」 의 답이고, 0 인 줄이 곧 그 부서가 못 하는 시험이다. 나머지 수는
+         *     전사 공용 정의라 그대로다.
          */
         get: operations["list_test_item_catalog_api_test_items_get"];
         put?: never;
@@ -2069,6 +2095,58 @@ export interface paths {
          * @description 제안을 확인으로 올리거나 단서를 고친다. `status='confirmed'` 가 확인이다.
          */
         patch: operations["update_link_api_test_item_properties__link_id__patch"];
+        trace?: never;
+    };
+    "/api/reliability-tests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Reliability Tests
+         * @description 한 부서가 수행하는 신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수
+         *     있는 측정, 전사 공용)과 다르다. 시험마다 쓰는 시험 항목과, 그 항목이 되는 이 부서의
+         *     장비 수를 함께 준다 — 0 이면 시험은 정했는데 돌릴 장비가 없다는 뜻이다.
+         */
+        get: operations["list_reliability_tests_api_reliability_tests_get"];
+        put?: never;
+        /**
+         * Create Reliability Test
+         * @description 등록 — 그 부서의 관리자 또는 시스템 관리자. `test_item_term_ids` 는 시험 항목 축의
+         *     값이어야 한다(`POST /api/resolve` 로 먼저 찾는다).
+         */
+        post: operations["create_reliability_test_api_reliability_tests_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read Reliability Test */
+        get: operations["read_reliability_test_api_reliability_tests__test_id__get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete Reliability Test
+         * @description 지우지 않고 `deleted_at` 만 채운다. 감사 기록에 남는다.
+         */
+        delete: operations["delete_reliability_test_api_reliability_tests__test_id__delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Reliability Test
+         * @description 부분 수정. 안 보낸 칸은 그대로, `test_item_term_ids` 는 보내면 통째로 바뀐다.
+         */
+        patch: operations["update_reliability_test_api_reliability_tests__test_id__patch"];
         trace?: never;
     };
     "/api/notices": {
@@ -4764,6 +4842,77 @@ export interface components {
             /** Note */
             note: string;
         };
+        /** ReliabilityTestCreateRequest */
+        ReliabilityTestCreateRequest: {
+            /** Workspace Slug */
+            workspace_slug: string;
+            /** Name */
+            name: string;
+            /**
+             * Purpose
+             * @default
+             */
+            purpose: string;
+            /** Test Item Term Ids */
+            test_item_term_ids?: string[];
+        };
+        /**
+         * ReliabilityTestItemOut
+         * @description 이 시험이 쓰는 시험 항목 하나와, 그 항목을 할 수 있는 **이 부서의** 장비 수.
+         */
+        ReliabilityTestItemOut: {
+            /**
+             * Term Id
+             * Format: uuid
+             */
+            term_id: string;
+            /** Value */
+            value: string;
+            /** Equipment Count */
+            equipment_count: number;
+        };
+        /** ReliabilityTestOut */
+        ReliabilityTestOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Workspace Slug */
+            workspace_slug: string;
+            /** Workspace Name */
+            workspace_name: string;
+            /** Name */
+            name: string;
+            /** Purpose */
+            purpose: string;
+            /** Test Items */
+            test_items: components["schemas"]["ReliabilityTestItemOut"][];
+            /** Can Edit */
+            can_edit: boolean;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+        };
+        /**
+         * ReliabilityTestUpdateRequest
+         * @description 안 보낸 칸은 그대로. `test_item_term_ids` 는 보내면 **통째로** 바뀐다.
+         */
+        ReliabilityTestUpdateRequest: {
+            /** Name */
+            name?: string | null;
+            /** Purpose */
+            purpose?: string | null;
+            /** Test Item Term Ids */
+            test_item_term_ids?: string[] | null;
+        };
         /**
          * RequirementImportRequest
          * @description 엑셀에서 복사해 붙여넣은 요구 조건 표. **머리글 줄까지 함께.** 파일이 아닌 이유는
@@ -5860,6 +6009,8 @@ export interface components {
             is_active: boolean;
             /** Restricted */
             restricted: boolean;
+            /** Reliability Listed */
+            reliability_listed: boolean;
             /**
              * Created At
              * Format: date-time
@@ -5899,6 +6050,8 @@ export interface components {
             is_active?: boolean | null;
             /** Restricted */
             restricted?: boolean | null;
+            /** Reliability Listed */
+            reliability_listed?: boolean | null;
         };
     };
     responses: never;
@@ -6552,6 +6705,26 @@ export interface operations {
         };
     };
     options_api_workspaces_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkspaceOption"][];
+                };
+            };
+        };
+    };
+    reliability_listed_api_workspaces_reliability_listed_get: {
         parameters: {
             query?: never;
             header?: never;
@@ -9684,7 +9857,9 @@ export interface operations {
     };
     list_test_item_catalog_api_test_items_get: {
         parameters: {
-            query?: never;
+            query?: {
+                workspace?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -9698,6 +9873,15 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TestItemCatalogRow"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };
@@ -10046,6 +10230,165 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TestItemPropertyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_reliability_tests_api_reliability_tests_get: {
+        parameters: {
+            query: {
+                workspace: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityTestOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_reliability_test_api_reliability_tests_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReliabilityTestCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityTestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    read_reliability_test_api_reliability_tests__test_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityTestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_reliability_test_api_reliability_tests__test_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_reliability_test_api_reliability_tests__test_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReliabilityTestUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityTestOut"];
                 };
             };
             /** @description Validation Error */

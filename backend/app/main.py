@@ -25,6 +25,7 @@ from app.modules.methods import routes as methods_routes
 from app.modules.notices import routes as notices_routes
 from app.modules.notifications import routes as notifications_routes
 from app.modules.properties import routes as properties_routes
+from app.modules.reliability import routes as reliability_routes
 from app.modules.resolve import routes as resolve_routes
 from app.modules.review import routes as review_routes
 from app.modules.search import routes as search_routes
@@ -72,6 +73,7 @@ def _api_router() -> APIRouter:
     router.include_router(search_routes.router)
     router.include_router(properties_routes.router)
     router.include_router(properties_routes.links_router)
+    router.include_router(reliability_routes.router)
     router.include_router(notices_routes.router)
     router.include_router(notifications_routes.router)
     router.include_router(audit_routes.router)

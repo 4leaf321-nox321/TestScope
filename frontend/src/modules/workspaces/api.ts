@@ -19,6 +19,8 @@ export const workspaceApi = {
   exportCsv: () => downloadFile('/workspaces/export.csv', '부서정보.csv'),
 
   options: () => api.get<WorkspaceOption[]>('/workspaces/options'),
+  /** 사이드바 「신뢰성 시험」 아래에 설 부서들 — 소속과 무관하게 누구나 본다. */
+  reliabilityListed: () => api.get<WorkspaceOption[]>('/workspaces/reliability-listed'),
   list: (all = false) => api.get<Workspace[]>(`/workspaces${all ? '?all=true' : ''}`),
   create: (body: { slug: string; name: string; parent_slug?: string | null }) =>
     api.post<Workspace>('/workspaces', body),

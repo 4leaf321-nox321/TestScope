@@ -42,6 +42,17 @@ def options(db: Session = Depends(get_db)) -> list[WorkspaceOption]:
     return services.options(db)
 
 
+@router.get("/reliability-listed", response_model=list[WorkspaceOption])
+def reliability_listed(
+    _: User = Depends(current_user), db: Session = Depends(get_db)
+) -> list[WorkspaceOption]:
+    """사이드바 「신뢰성 시험」 아래에 설 부서들 — 관리자가 「부서 정보」 에서 고른 것.
+
+    소속과 무관하게 로그인한 누구나 본다. 이 시스템의 물음은 부서를 가로지른다.
+    """
+    return services.reliability_listed(db)
+
+
 @router.get("", response_model=list[WorkspaceOut])
 def list_workspaces(
     all_workspaces: bool = Query(default=False, alias="all"),
@@ -120,6 +131,7 @@ def update_workspace(
         name=payload.name,
         is_active=payload.is_active,
         restricted=payload.restricted,
+        reliability_listed=payload.reliability_listed,
     )
     return services.workspace_out(db, workspace, admin)
 

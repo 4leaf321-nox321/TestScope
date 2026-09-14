@@ -95,6 +95,7 @@ catalog_router = APIRouter(prefix="/test-items", tags=["test-items"])
 
 @catalog_router.get("", response_model=list[TestItemCatalogRow])
 def list_test_item_catalog(
+    workspace: str | None = Query(default=None, max_length=64),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[TestItemCatalogRow]:
@@ -102,8 +103,12 @@ def list_test_item_catalog(
 
     0 이 곧 공백이다. 「물성 없는 시험 항목」 「규격 없는 시험 항목」 을 여기서 거른다.
     보유 장비는 내가 볼 수 있는 것만 센다 — 검색과 같은 규칙.
+
+    `workspace` 에 부서 주소를 주면 보유 장비를 **그 부서 것만** 센다 — 「저 부서는 무슨
+    시험을 하나」 의 답이고, 0 인 줄이 곧 그 부서가 못 하는 시험이다. 나머지 수는
+    전사 공용 정의라 그대로다.
     """
-    return catalog.list_rows(db, user)
+    return catalog.list_rows(db, user, workspace_slug=workspace)
 
 
 @catalog_router.get("/{term_id}", response_model=TestItemCatalogOut)

@@ -19,3 +19,11 @@ export function isSystemAdmin(user: CurrentUser | null | undefined): boolean {
 export function isAnyManager(user: CurrentUser | null | undefined): boolean {
   return isSystemAdmin(user) || (user?.memberships ?? []).some((one) => one.role === 'manager')
 }
+
+/** 이 부서의 관리자인가. 시스템 관리자는 언제나 참이다. */
+export function isManagerOf(user: CurrentUser | null | undefined, slug: string): boolean {
+  return (
+    isSystemAdmin(user) ||
+    (user?.memberships ?? []).some((one) => one.slug === slug && one.role === 'manager')
+  )
+}

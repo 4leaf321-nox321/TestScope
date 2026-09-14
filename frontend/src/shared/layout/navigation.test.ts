@@ -7,7 +7,14 @@
 
 import { describe, expect, it } from 'vitest'
 
-import { NAV_GROUPS, canSee, itemHref, pendingItems, visibleGroups } from './navigation'
+import {
+  NAV_GROUPS,
+  canSee,
+  itemHref,
+  pendingItems,
+  reliabilityHref,
+  visibleGroups,
+} from './navigation'
 
 const MEMBER = { isSystemAdmin: false, isAnyManager: false }
 const MANAGER = { isSystemAdmin: false, isAnyManager: true }
@@ -66,6 +73,16 @@ describe('경로', () => {
     for (const item of NAV_GROUPS.flatMap((group) => group.items)) {
       expect(item.to ?? item.resolve).toBeDefined()
     }
+  })
+
+  it('신뢰성 시험은 아래에 부서가 서는 손잡이다', () => {
+    // 자식 경로의 모양은 라우터(test-items/:slug)와 같아야 한다 — 어긋나면 눌렀을 때
+    // 「없는 페이지」 가 뜬다.
+    const item = NAV_GROUPS.flatMap((group) => group.items).find(
+      (one) => one.label === '신뢰성 시험',
+    )
+    expect(item?.expands).toBe('reliability-workspaces')
+    expect(reliabilityHref('metal-lab')).toBe('/reliability-tests/metal-lab')
   })
 
   it('미구현 항목은 단계를 밝힌다', () => {
