@@ -12,8 +12,84 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Instron HV HDT\" OR \"Instron HV\" OR \"Instron HV3\" OR \"Instron HV6\" OR \"Instron HV6A\" OR \"Instron HV3S\"",
-  "count": null,
-  "works": []
+  "count": 5,
+  "works": [
+   {
+    "id": "https://openalex.org/W3191678926",
+    "doi": "https://doi.org/10.1002/app.51503",
+    "title": "Pilot scale production and evaluation of mechanical and thermal properties of P( 3HB ) from Bacillus megaterium cultivated on desugarized sugar beet molasses",
+    "year": 2021,
+    "cited": 29,
+    "venue": "Journal of Applied Polymer Science",
+    "topics": [
+     "biodegradable polymer synthesis and properties",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Carbon dioxide utilization in catalysis"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/app.51503",
+    "abstract": "Abstract Production of poly[(R)‐3‐hydroxyalkanoate] (PHA) biopolyesters must become more cost efficient in order to be competitive with conventional plastics as well as other bioplastics. This study introduces a simple and reproducible large‐scale production process of poly(3‐hydroxybutyrate) P(3HB) with Bacillus megaterium based on desugarized sugar beet molasses and compares its material properties with commercially available types of PHA. A repeated batch cultivation system was evaluated in 1.2 L bioreactors and could be maintained for at least six cycles without a decrease in process stability, yielding a concentration of 20.4 g/L cell dry mass and 12 g/L P(3HB) per average process cycle. Feasibility of P(3HB) production was demonstrated at 500 L pilot scale to provide sufficient amounts of product for the determination of mechanical and thermal polymer properties. A volumetric productivity of 0.2 g L −1 h −1 was achieved. The resulting polymer exhibited a high tensile modulus of 3.73 GPa and tensile strength of 38.5 MPa. Despite a lower ductility and Vicat softening temperature, the properties of the recovered P(3HB) are comparable to commercial grade P(HB)HV polymers."
+   },
+   {
+    "id": "https://openalex.org/W4406305056",
+    "doi": "https://doi.org/10.3390/biomimetics10010046",
+    "title": "Improving the Long-Term Mechanical Properties of Thermoplastic Short Natural Fiber Compounds by Using Alternative Matrices",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Biomimetics",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "biodegradable polymer synthesis and properties",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2313-7673/10/1/46/pdf?version=1736766357",
+    "abstract": "Wood plastic composites (WPCs) offer a means to reduce the carbon footprint by incorporating natural fibers to enhance the mechanical properties. However, there is limited information on the mechanical properties of these materials under hostile conditions. This study evaluated composites of polypropylene (PP), polystyrene (PS), and polylactic acid (PLA) processed via extrusion and injection molding. Tests were conducted on tensile and flexural strength and modulus, heat deflection temperature (HDT), and creep analysis under varying relative humidity conditions (10% and 90%) and water immersion, followed by freeze-thaw cycles. The addition of fibers generally improved the mechanical properties but increased water absorption. HDT and creep were dependent on the crystallinity of the composites. PLA and PS demonstrated a superior overall performance, except for their impact properties, where PP was slightly better than PLA."
+   },
+   {
+    "id": "https://openalex.org/W4303980890",
+    "doi": "https://doi.org/10.3390/polym14194115",
+    "title": "Comparison of the Properties of a Random Copolymer and a Molten Blend PA6/PA6.9",
+    "year": 2022,
+    "cited": 5,
+    "venue": "Polymers",
+    "topics": [
+     "Polymer crystallization and properties",
+     "biodegradable polymer synthesis and properties",
+     "Advanced Polymer Synthesis and Characterization"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/14/19/4115/pdf?version=1664610496",
+    "abstract": "This study compares the thermal and mechanical properties of two different materials, obtained via two diverse synthetic pathways. The first one is a mixed blend of PA6/PA6.9, while the second is a random copolymer (PA6.9-ran-PA6, obtained via copolymerization of its monomers, i.e., caprolactam, hexamethylenediamine and azelaic acid). Several tests are carried out according to the aforementioned pathways, varying the relative ratio between the two polymeric building blocks. The role of the synthetized plastic is to be coupled to polyamide material, such as PA6, to confer its better properties. The synthetized random copolymer, besides displaying ease of processability with respect to conventional methods, exhibits interesting features. It has a low melting point (135 °C, PA6.9-ran-PA6 50:50) and therefore it might be used as a hot-melt adhesive in composite material. Owing to its low crystallinity content, the material displays a rubber-like behavior and may be employed to confer elastomeric properties to PA6 matrix, in place of non-amidic material (for example elastomeric polyurethanes). This leads to a further advantage in terms of chemical recyclability of the end-of-life material, since the additive increases the percentage of PA6 in waste material and, consequently, the yield of caprolactam recovery."
+   },
+   {
+    "id": "https://openalex.org/W2339876012",
+    "doi": "https://doi.org/10.17073/0368-0797-2014-11-43-47",
+    "title": "MECHANICAL AND PHYSICAL PROPERTIES OF CAST Fe – Mn – Al – C – N ALLOYS",
+    "year": 2015,
+    "cited": 3,
+    "venue": "Izvestiya Ferrous Metallurgy",
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Microstructure and Mechanical Properties of Steels",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://doi.org/10.17073/0368-0797-2014-11-43-47",
+    "abstract": "Cast Fe + (12.7 – 25.6) % Mn + (0 – 14.4) % Al + (0.02 – 2.18) % C alloys including microalloyed by nitrogen (0,001 – 0,135) % N with high speciﬁ c strength are experimentally investigated and studied. It is shown that cast high-carbon Fe – Mn – Al – С alloys, well give in to a hot deformation, up to 40 – 50 % of reduction without a ﬁ recracking. At a warm strain in investigated alloys the high-tensile condition (σв to 1810 MPa) is realised at a toughness adequate supply (to 50 %). The Yield stress of high-carbon austenitic alloys (to 2.18 %) Fe – Mn – Al – С at room temperature attains 1200 MPa. Thermal capacity and thermal conduction decrease with increase at total alloying Al + C + N. Investigated alloys of iron with high contents of Mn and Al have high speciﬁc strength and can be used in cast and strain con-dition as high-strength with a toughness large supply, heatproof and wear-resistant."
+   },
+   {
+    "id": "https://openalex.org/W7132318050",
+    "doi": null,
+    "title": "Poss modifiye alev geciktirici doymamış polyester reçine sentezi ve karakterizasyonu",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Dspace Repository (Marmara Üniversitesi)",
+    "topics": [
+     "Synthesis and properties of polymers",
+     "Polymer Nanocomposites and Properties",
+     "Flame retardant materials and properties"
+    ],
+    "oa_url": "https://katalog.marmara.edu.tr/veriler/yordambt/cokluortam/1B/63d834044df55.pdf",
+    "abstract": "Son dönemde kompozit sektöründe vazgeçilmezlerden biri olan doymamış polyester reçinelerin marin sistemler, demiryolu, havacılık, otomotiv ve inşaat gibi oldukça geniş yelpazede kendine uygulama alanı bulduğu öne çıkan bir bilgidir. Düşük maliyeti, düşük yoğunluğu, korozyon direnci, elektriksel yalıtımı ve yüksek mukavemeti sebebiyle büyük rağbet görmektedir. Çok yönlü ticari kullanımı olan bu termoset reçinelerin, önemli bir dezavantajı ise yanıcılıktır. Yanma esnasında toksik bir duman açığa çıkar ve bu da tıpkı yanıcılık gibi kullanım alanlarının kısıtlanmasına yol açmaktadır. Şimdiye dek yapılan çalışmalarda halojen ihtiva eden toksik gaz salınımı yapan alev geciktirici alternatifler sunulmuştur fakat bu yangın esnasındaki tehlikeyi azaltmak için yeterli görülmemektedir. Bu çalışmada, vinil-poss ve fitik asit ile modifiye doymamış polyester reçinenin sentezi yapılmış ve alev geciktirme özelliği araştırılmıştır. Fitik asit içerdiği yüksek oranda fosfor sayesinde yanma geciktirici biyo-esaslı bileşikler içerisinde potansiyel bir değere sahiptir. Doymamış polyester reçinenin yanma geciktiriciliğini etkili bir şekilde iyileştirmenin bir başka yolu, onları nano boyutlu inorganik parçacıklarla güçlendirmektir. Bu yaklaşımı kullanarak, alev geciktirmedeki gelişmeler ve mekanik özelliklerinin muhafaza edilmesi veya iyileştirilmesi, nispeten düşük dolgu içeriğinde bile etkilidir [1]. Bu tez çalışmasında ilk olarak doymamış polyester sentezi yapılmış, daha sonra stiren monomeri içerisinde dağıtılan vinil POSS ve fitik asit belirlenen oranlarda reçineye katkı olarak eklenmiştir. Oda sıcaklığında, kalıba dökülerek sertleştirilen reçine örneklerinin yapısal karakterizasyonu FTIR, termal özellikleri TGA, HDT, mekanik özellikleri eğilme testleri ile analiz edilmiştir. LOI testi ile sınırlayıcı oksijen indeksi saptanmıştır. Bulgular ışığında en iyi katkı yüzdesi ve optimum koşullar belirlenmiştir."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Instron HV HDT\" OR \"Instron HV\" OR \"Instron HV3\" OR \"Instron HV6\" OR \"Instron HV6A\" OR \"Instron HV3S\") AND OPEN_ACCESS:y",

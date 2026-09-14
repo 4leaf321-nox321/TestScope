@@ -11,8 +11,69 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"IMV i220\" OR \"IMV EM1AM i220\" OR \"IMV SA1AM\" OR \"IMV i260\" OR \"IMV SA7M · EM2601\"",
-  "count": null,
-  "works": []
+  "count": 4,
+  "works": [
+   {
+    "id": "https://openalex.org/W2041036742",
+    "doi": "https://doi.org/10.5050/ksnve.2010.20.10.1121",
+    "title": "Human Response to Idle Vibration of Passenger Vehicle Related to Seating Posture",
+    "year": 2010,
+    "cited": 7,
+    "venue": "Transactions of the Korean Society for Noise and Vibration Engineering",
+    "topics": [
+     "Structural Engineering and Vibration Analysis",
+     "Effects of Vibration on Health",
+     "Ergonomics and Musculoskeletal Disorders"
+    ],
+    "oa_url": "http://koreascience.or.kr:80/article/JAKO201004140972138.pdf",
+    "abstract": "Human characteristic responding to idle vibration on passenger vehicle was studied to find if affected by seating posture of passenger. When twelve male subjects are exposed to moderate vertical vibration of 0.224 $m/s^2$ r.m.s. at frequency range from 3 Hz to 40 Hz, it was found that seating posture significantly affects to biodynamical characteristics, apparent mass and apparent eccentric mass, at most range of idle vibration frequency(20~40 Hz). The supported thigh contact on rigid seat showed bigger values in the two biodynamical characteristics than the average thigh contact. The bigger apparent mass and apparent eccentric mass in the seating posture of the supported thigh contact can be assumed more strengthened muscle at the frequency range."
+   },
+   {
+    "id": "https://openalex.org/W2029674023",
+    "doi": "https://doi.org/10.5050/ksnve.2012.22.5.422",
+    "title": "The Study of Correlation between Objective Human Response and Subjective Discomfort Evaluation of Idle Vibration on Passenger Vehicle",
+    "year": 2012,
+    "cited": 2,
+    "venue": "Transactions of the Korean Society for Noise and Vibration Engineering",
+    "topics": [
+     "Effects of Vibration on Health",
+     "Vehicle Noise and Vibration Control",
+     "Noise Effects and Management"
+    ],
+    "oa_url": "http://koreascience.or.kr:80/article/JAKO201216539834776.pdf",
+    "abstract": "Thirteen taxi drivers as the subject in the experiment were exposed to vertical vibration which is controlled on a rigid seat reflecting vibration on passenger vehicle. They were employed not only to get human response of objective measurement but also to make subjective evaluation of the vibration. The subjective evaluation was estimated using the absolute discomfort threshold of the controlled vibration, which was achieved with the three-down one-up method that is widely used in the field of psychophysics. As the result, apparent mass and apparent eccentric mass as objective human response tend to gradually decrease when frequency of the vibration increases. The absolute discomfort threshold was increased in case of increasing the frequency. Concludingly, the subjective discomfort evaluation is highly correlated with the objective human responses at the range of idle vibration on passenger vehicle."
+   },
+   {
+    "id": "https://openalex.org/W4410846014",
+    "doi": "https://doi.org/10.1299/mej.24-00438",
+    "title": "Ballistocardiogram measurement and noise reduction by using the blind source separation",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Mechanical Engineering Journal",
+    "topics": [
+     "Non-Invasive Vital Sign Monitoring",
+     "Cardiovascular Health and Disease Prevention",
+     "ECG Monitoring and Analysis"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/mej/advpub/0/advpub_24-00438/_pdf",
+    "abstract": "Ballistocardiogram (BCG) is the repetitive body movements related to cardiac cycle. By using non-invasive sensor embedded in a car seat, the sensor reads the vibration caused by the BCG as minute voltage at any time while driving, making it possible to measure heartbeats without being restrained and to obtain the occupant's biological information. However, BCG motion measurement while driving is difficult due to the incorporation of road noise whose magnitude is usually larger than the undisturbed BCG signal. In this study, we propose a method to extract a BCG signal from a mixture of the BCG and road noise contained in a piezoelectric film sensor using online auxiliary-function-based independent vector analysis with iterative source steering (online-AuxIVA-ISS). A device simulating BCG was placed on a seating surface, while two sensors were embedded in a seat cushion. A shaker was used to reproduce road noise disturbance on estimating the BCG. Data from the two sensors were separated into two independent signals using the online-AuxIVA-ISS. We confirmed the effectiveness of the proposed method through dynamic experiments and that the BCG-simulated signal and road noise could be separated under a moderate load on the piezoelectric film sensor."
+   },
+   {
+    "id": "https://openalex.org/W2021953000",
+    "doi": "https://doi.org/10.5050/ksnve.2011.21.10.897",
+    "title": "Study of Apparent Mass and Apparent Eccentric Mass to Vertical Whole-body Vibration by Using Strain-gage Type Six-axis Force Plate",
+    "year": 2011,
+    "cited": 0,
+    "venue": "Transactions of the Korean Society for Noise and Vibration Engineering",
+    "topics": [
+     "Structural Engineering and Vibration Analysis",
+     "Effects of Vibration on Health",
+     "Railway Engineering and Dynamics"
+    ],
+    "oa_url": "http://koreascience.or.kr:80/article/JAKO201132833920295.pdf",
+    "abstract": "When whole-body is exposed to vertical vibration, asymmetry shape of human body affects the response on the translational(fore-aft, lateral, vertical) and rotational(roll, pitch, yaw) motion. While the translational motion has been studied with various titles, it has been rare to study the rotational motion of human body exposed to vertical excitation because of lack of experimental equipment. This study was performed by using a 6-axis force plate installing strain gage type sensors for the rotational response. Sixteen male subjects were exposed to vertical vibration on rigid seat in order to investigate apparent mass of three translational motion and apparent eccentric mass of three rotational motion. Random signal was generated to make excitation vibration which was on an effective frequency range of 3~40 Hz, and magnitude of 0.224 m/ $s^2$ r.m.s. The frequency range and magnitude used was selected for the vibration of passenger vehicle on idling condition. As the result, cross-axis apparent masses of fore-and-aft and lateral direction were not significant showing 20 % and 3 % of vertical apparent mass relatively. And apparent eccentric mass of pitch motion was dominant when compared to that of roll and yaw motion, which is reasoned by asymmetry direction of human body sitting on a seat."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"IMV i220\" OR \"IMV EM1AM i220\" OR \"IMV SA1AM\" OR \"IMV i260\" OR \"IMV SA7M · EM2601\") AND OPEN_ACCESS:y",

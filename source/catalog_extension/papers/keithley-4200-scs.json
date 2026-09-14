@@ -11,8 +11,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Keithley 4200-SCS 4200A-SCS\" OR \"Keithley 4200-SCS\" OR \"Keithley 4200A-SCS\" OR \"Tektronix 4200-SCS 4200A-SCS\" OR \"Tektronix 4200-SCS\"",
-  "count": null,
-  "works": []
+  "count": 3728,
+  "works": [
+   {
+    "id": "https://openalex.org/W2900872097",
+    "doi": "https://doi.org/10.1038/s41598-020-59121-0",
+    "title": "SLIM: Simultaneous Logic-in-Memory Computing Exploiting Bilayer Analog OxRAM Devices",
+    "year": 2020,
+    "cited": 1450,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Ferroelectric and Negative Capacitance Devices",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-59121-0.pdf",
+    "abstract": "von Neumann architecture based computers isolate computation and storage (i.e. data is shuttled between computation blocks (processor) and memory blocks). The to-and-fro movement of data leads to a fundamental limitation of modern computers, known as the Memory wall. Logic in-Memory (LIM)/In-Memory Computing (IMC) approaches aim to address this bottleneck by directly computing inside memory units thereby eliminating energy-intensive and time-consuming data movement. Several recent works in literature, propose realization of logic function(s) directly using arrays of emerging resistive memory devices (example- memristors, RRAM/ReRAM, PCM, CBRAM, OxRAM, STT-MRAM etc.), rather than using conventional transistors for computing. The logic/embedded-side of digital systems (like processors, micro-controllers) can greatly benefit from such LIM realizations. However, the pure storage-side of digital systems (example SSDs, enterprise storage etc.) will not benefit much from such LIM approaches as when memory arrays are used for logic they lose their core functionality of storage. Thus, there is the need for an approach complementary to existing LIM techniques, that's more beneficial for the storage-side of digital systems; one that gives compute capability to memory arrays not at the cost of their existing stored states. Fundamentally, this would require memory nanodevice arrays that are capable of storing and computing simultaneously. In this paper, we propose a novel 'Simultaneous Logic in-Memory' (SLIM) methodology which is complementary to existing LIM approaches in literature. Through extensive experiments we demonstrate novel SLIM bitcells (1T-1R/2T-1R) comprising non-filamentary bilayer analog OxRAM devices with NMOS transistors. Proposed bitcells are capable of implementing both Memory and Logic operations simultaneously. Detailed programming scheme, array level implementation, and controller architecture are also proposed. Furthermore, to study the impact of proposed SLIM approach for real-world implementations, we performed analysis for two applications: (i) Sobel Edge Detection, and (ii) Binary Neural Network- Multi layer Perceptron (BNN-MLP). By performing all computations in SLIM bitcell array, huge Energy Delay Product (EDP) savings of ≈75× for 1T-1R (≈40× for 2T-1R) SLIM bitcell were observed for edge-detection application while EDP savings of ≈3.5× for 1T-1R (≈1.6× for 2T-1R) SLIM bitcell were observed for BNN-MLP application respectively, in comparison to conventional computing. EDP savings owing to reduction in data transfer between CPU ↔ memory is observed to be ≈780× (for both SLIM bitcells)."
+   },
+   {
+    "id": "https://openalex.org/W2609205766",
+    "doi": "https://doi.org/10.1038/ncomms14997",
+    "title": "Wearable smart sensor systems integrated on soft contact lenses for wireless ocular diagnostics",
+    "year": 2017,
+    "cited": 954,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Interactive and Immersive Displays",
+     "Semiconductor Lasers and Optical Devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14997.pdf",
+    "abstract": "Wearable contact lenses which can monitor physiological parameters have attracted substantial interests due to the capability of direct detection of biomarkers contained in body fluids. However, previously reported contact lens sensors can only monitor a single analyte at a time. Furthermore, such ocular contact lenses generally obstruct the field of vision of the subject. Here, we developed a multifunctional contact lens sensor that alleviates some of these limitations since it was developed on an actual ocular contact lens. It was also designed to monitor glucose within tears, as well as intraocular pressure using the resistance and capacitance of the electronic device. Furthermore, in-vivo and in-vitro tests using a live rabbit and bovine eyeball demonstrated its reliable operation. Our developed contact lens sensor can measure the glucose level in tear fluid and intraocular pressure simultaneously but yet independently based on different electrical responses."
+   },
+   {
+    "id": "https://openalex.org/W4291624534",
+    "doi": "https://doi.org/10.1038/s41551-022-00916-z",
+    "title": "A wearable electrochemical biosensor for the monitoring of metabolites and nutrients",
+    "year": 2022,
+    "cited": 892,
+    "venue": "Nature Biomedical Engineering",
+    "topics": [
+     "Electrochemical sensors and biosensors",
+     "Advanced Chemical Sensor Technologies",
+     "Analytical Chemistry and Sensors"
+    ],
+    "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10432133/pdf/nihms-1921916.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2069562046",
+    "doi": "https://doi.org/10.1038/ncomms4158",
+    "title": "Artificial synapse network on inorganic proton conductor for neuromorphic systems",
+    "year": 2014,
+    "cited": 853,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Photoreceptor and optogenetics research",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms4158.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2267990318",
+    "doi": "https://doi.org/10.1038/ncomms8408",
+    "title": "A two-dimensional π–d conjugated coordination polymer with extremely high electrical conductivity and ambipolar transport behaviour",
+    "year": 2015,
+    "cited": 847,
+    "venue": "Nature Communications",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Organic and Molecular Conductors Research",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms8408.pdf",
+    "abstract": "Currently, studies on organic two-dimensional (2D) materials with special optic-electronic properties are attracting great research interest. However, 2D organic systems possessing promising electrical transport properties are still rare. Here a highly crystalline thin film of a copper coordination polymer, Cu-BHT (BHT=benzenehexathiol), is prepared via a liquid-liquid interface reaction between BHT/dichloromethane and copper(II) nitrate/H2O. The morphology and structure characterization reveal that this film is piled up by nanosheets of 2D lattice of [Cu3(C6S6)]n, which is further verified by quantum simulation. Four-probe measurements show that the room temperature conductivity of this material can reach up to 1,580 S cm(-1), which is the highest value ever reported for coordination polymers. Meanwhile, it displays ambipolar charge transport behaviour and extremely high electron and hole mobilities (99 cm(2 )V(-1 )s(-1) for holes and 116 cm(2 )V(-1 )s(-1) for electrons) under field-effect modulation."
+   },
+   {
+    "id": "https://openalex.org/W4376128906",
+    "doi": "https://doi.org/10.1126/science.ade1499",
+    "title": "La- and Mn-doped cobalt spinel oxygen evolution catalyst for proton exchange membrane electrolysis",
+    "year": 2023,
+    "cited": 813,
+    "venue": "Science",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1999225",
+    "abstract": "Discovery of earth-abundant electrocatalysts to replace iridium for the oxygen evolution reaction (OER) in a proton exchange membrane water electrolyzer (PEMWE) represents a critical step in reducing the cost for green hydrogen production. We report a nanofibrous cobalt spinel catalyst codoped with lanthanum (La) and manganese (Mn) prepared from a zeolitic imidazolate framework embedded in electrospun polymer fiber. The catalyst demonstrated a low overpotential of 353 millivolts at 10 milliamperes per square centimeter and a low degradation for OER over 360 hours in acidic electrolyte. A PEMWE containing this catalyst at the anode demonstrated a current density of 2000 milliamperes per square centimeter at 2.47 volts (Nafion 115 membrane) or 4000 milliamperes per square centimeter at 3.00 volts (Nafion 212 membrane) and low degradation in an accelerated stress test."
+   },
+   {
+    "id": "https://openalex.org/W1979146846",
+    "doi": "https://doi.org/10.1038/ncomms3905",
+    "title": "Three-dimensional strutted graphene grown by substrate-free sugar blowing for high-power-density supercapacitors",
+    "year": 2013,
+    "cited": 698,
+    "venue": "Nature Communications",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Graphene research and applications",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms3905.pdf",
+    "abstract": "Three-dimensional graphene architectures in the macroworld can in principle maintain all the extraordinary nanoscale properties of individual graphene flakes. However, current 3D graphene products suffer from poor electrical conductivity, low surface area and insufficient mechanical strength/elasticity; the interconnected self-supported reproducible 3D graphenes remain unavailable. Here we report a sugar-blowing approach based on a polymeric predecessor to synthesize a 3D graphene bubble network. The bubble network consists of mono- or few-layered graphitic membranes that are tightly glued, rigidly fixed and spatially scaffolded by micrometre-scale graphitic struts. Such a topological configuration provides intimate structural interconnectivities, freeway for electron/phonon transports, huge accessible surface area, as well as robust mechanical properties. The graphene network thus overcomes the drawbacks of presently available 3D graphene products and opens up a wide horizon for diverse practical usages, for example, high-power high-energy electrochemical capacitors, as highlighted in this work. Three-dimensional graphene offers an ideal sheet-to-sheet connectivity of assembled graphenes, but often suffers from poor electrochemical performance. Wang et al. present a sugar-blowing technique to prepare a 3D graphene, which overcomes such problems and shows potential in supercapacitor applications."
+   },
+   {
+    "id": "https://openalex.org/W2982681138",
+    "doi": "https://doi.org/10.1038/s41467-019-12857-4",
+    "title": "Conductive 2D metal-organic framework for high-performance cathodes in aqueous rechargeable zinc batteries",
+    "year": 2019,
+    "cited": 691,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-12857-4.pdf",
+    "abstract": "Abstract Currently, there is considerable interest in developing advanced rechargeable batteries that boast efficient distribution of electricity and economic feasibility for use in large-scale energy storage systems. Rechargeable aqueous zinc batteries are promising alternatives to lithium-ion batteries in terms of rate performance, cost, and safety. In this investigation, we employ Cu 3 (HHTP) 2 , a two-dimensional (2D) conductive metal-organic framework (MOF) with large one-dimensional channels, as a zinc battery cathode. Owing to its unique structure, hydrated Zn 2+ ions which are inserted directly into the host structure, Cu 3 (HHTP) 2 , allow high diffusion rate and low interfacial resistance which enable the Cu 3 (HHTP) 2 cathode to follow the intercalation pseudocapacitance mechanism. Cu 3 (HHTP) 2 exhibits a high reversible capacity of 228 mAh g −1 at 50 mA g −1 . At a high current density of 4000 mA g −1 (~18 C), 75.0% of the initial capacity is maintained after 500 cycles. These results provide key insights into high-performance, 2D conductive MOF designs for battery electrodes."
+   },
+   {
+    "id": "https://openalex.org/W2503287062",
+    "doi": "https://doi.org/10.1002/aenm.201600738",
+    "title": "Toward a Low‐Cost Artificial Leaf: Driving Carbon‐Based and Bifunctional Catalyst Electrodes with Solution‐Processed Perovskite Photovoltaics",
+    "year": 2016,
+    "cited": 640,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced battery technologies research",
+     "Electrocatalysts for Energy Conversion",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.201600738",
+    "abstract": "Molecular hydrogen can be generated renewably by water splitting with an “artificial‐leaf device”, which essentially comprises two electrocatalyst electrodes immersed in water and powered by photovoltaics. Ideally, this device should operate efficiently and be fabricated with cost‐efficient means using earth‐abundant materials. Here, a lightweight electrocatalyst electrode, comprising large surface‐area NiCo2O4 nanorods that are firmly anchored onto a carbon–paper current collector via a dense network of nitrogen‐doped carbon nanotubes is presented. This electrocatalyst electrode is bifunctional in that it can efficiently operate as both anode and cathode in the same alkaline solution, as quantified by a delivered current density of 10 mA cm−2 at an overpotential of 400 mV for each of the oxygen and hydrogen evolution reactions. By driving two such identical electrodes with a solution‐processed thin‐film perovskite photovoltaic assembly, a wired artificial‐leaf device is obtained that features a Faradaic H2 evolution efficiency of 100%, and a solar‐to‐hydrogen conversion efficiency of 6.2%. A detailed cost analysis is presented, which implies that the material‐payback time of this device is of the order of 100 days."
+   },
+   {
+    "id": "https://openalex.org/W2085915663",
+    "doi": "https://doi.org/10.1038/ncomms7013",
+    "title": "A molecular nematic liquid crystalline material for high-performance organic photovoltaics",
+    "year": 2015,
+    "cited": 627,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Perovskite Materials and Applications",
+     "Organic Light-Emitting Diodes Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms7013.pdf",
+    "abstract": "Solution-processed organic photovoltaic cells (OPVs) hold great promise to enable roll-to-roll printing of environmentally friendly, mechanically flexible and cost-effective photovoltaic devices. Nevertheless, many high-performing systems show best power conversion efficiencies (PCEs) with a thin active layer (thickness is ~100 nm) that is difficult to translate to roll-to-roll processing with high reproducibility. Here we report a new molecular donor, benzodithiophene terthiophene rhodanine (BTR), which exhibits good processability, nematic liquid crystalline behaviour and excellent optoelectronic properties. A maximum PCE of 9.3% is achieved under AM 1.5G solar irradiation, with fill factor reaching 77%, rarely achieved in solution-processed OPVs. Particularly promising is the fact that BTR-based devices with active layer thicknesses up to 400 nm can still afford high fill factor of ~70% and high PCE of ~8%. Together, the results suggest, with better device architectures for longer device lifetime, BTR is an ideal candidate for mass production of OPVs."
+   },
+   {
+    "id": "https://openalex.org/W2900335747",
+    "doi": "https://doi.org/10.1038/s41598-018-35062-7",
+    "title": "Ultrathin Air-Stable n-Type Organic Phototransistor Array for Conformal Optoelectronics",
+    "year": 2018,
+    "cited": 577,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Neuroscience and Neural Engineering",
+     "Nanowire Synthesis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-018-35062-7.pdf",
+    "abstract": "Abstract Development of conformal n-channel organic phototransistor (OPT) array is urgent for future applications of organic complementary circuits in portable and wearable electronics and optoelectronics. In this work, the ultrathin conformal OPT array based on air-stable n-type PTCDI-C13H27 was fabricated. The OPT array shows excellent electrical and photoelectrical performance, good device uniformity, and remains stable in electron mobility by 83% after 90 days compared to the initial values. Eventhough mobility, on-state current, off-state current, and photocurrent of PTCDI-C13H27 thin film phototransistor show slight decrease with the decreased bending radius, the device still remains the stable photosensitivity as high as 104 when the device is freely adhered on the 2D surfaces and 3D hemispherical sphere, which is in a class with the highest photosensitivity for perylene diimide derivatives. These results present the promising application potential of our conformable air-stable n-type PTCDI-C13H27 OPTs as the photodetection system of curved artificial compound eyes in wearable and portable electronics and optoelectronics."
+   },
+   {
+    "id": "https://openalex.org/W2252583443",
+    "doi": "https://doi.org/10.1038/ncomms10032",
+    "title": "High mobility emissive organic semiconductor",
+    "year": 2015,
+    "cited": 570,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Organic Light-Emitting Diodes Research",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms10032.pdf",
+    "abstract": "The integration of high charge carrier mobility and high luminescence in an organic semiconductor is challenging. However, there is need of such materials for organic light-emitting transistors and organic electrically pumped lasers. Here we show a novel organic semiconductor, 2,6-diphenylanthracene (DPA), which exhibits not only high emission with single crystal absolute florescence quantum yield of 41.2% but also high charge carrier mobility with single crystal mobility of 34 cm2 V−1 s−1. Organic light-emitting diodes (OLEDs) based on DPA give pure blue emission with brightness up to 6,627 cd m−2 and turn-on voltage of 2.8 V. 2,6-Diphenylanthracene OLED arrays are successfully driven by DPA field-effect transistor arrays, demonstrating that DPA is a high mobility emissive organic semiconductor with potential in organic optoelectronics. Organic semiconductors with high mobility and strong fluorescence are necessary for optoelectronic devices. Here, Liu et al. show an organic semiconductor, 2,6-diphenylanthracene, satisfying both requirements with mobility of 34 cm2 V−1 s−1 and emission of 6,627 cd m−2at a turn-on voltage of 2.8 V."
+   },
+   {
+    "id": "https://openalex.org/W2539255848",
+    "doi": "https://doi.org/10.1038/srep35585",
+    "title": "Reconfigurable Complementary Logic Circuits with Ambipolar Organic Transistors",
+    "year": 2016,
+    "cited": 527,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Advanced Memory and Neural Computing",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep35585.pdf",
+    "abstract": "Ambipolar organic electronics offer great potential for simple and low-cost fabrication of complementary logic circuits on large-area and mechanically flexible substrates. Ambipolar transistors are ideal candidates for the simple and low-cost development of complementary logic circuits since they can operate as n-type and p-type transistors. Nevertheless, the experimental demonstration of ambipolar organic complementary circuits is limited to inverters. The control of the transistor polarity is crucial for proper circuit operation. Novel gating techniques enable to control the transistor polarity but result in dramatically reduced performances. Here we show high-performance non-planar ambipolar organic transistors with electrical control of the polarity and orders of magnitude higher performances with respect to state-of-art split-gate ambipolar transistors. Electrically reconfigurable complementary logic gates based on ambipolar organic transistors are experimentally demonstrated, thus opening up new opportunities for ambipolar organic complementary electronics."
+   },
+   {
+    "id": "https://openalex.org/W2891849063",
+    "doi": "https://doi.org/10.1038/s41467-018-06084-6",
+    "title": "Influence of PEDOT:PSS crystallinity and composition on electrochemical transistor performance and long-term stability",
+    "year": 2018,
+    "cited": 497,
+    "venue": "Nature Communications",
+    "topics": [
+     "Conducting polymers and applications",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Memory and Neural Computing"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-06084-6.pdf",
+    "abstract": "Abstract Owing to the mixed electron/hole and ion transport in the aqueous environment, poly(3,4-ethylenedioxythiophene):poly(styrenesulfonate)-based organic electrochemical transistor has been regarded as one of the most promising device platforms for bioelectronics. Nonetheless, there exist very few in-depth studies on how intrinsic channel material properties affect their performance and long-term stability in aqueous environments. Herein, we investigated the correlation among film microstructural crystallinity/composition, device performance, and aqueous stability in poly(3,4-ethylenedioxythiophene):poly(styrenesulfonate) films. The highly organized anisotropic ordering in crystallized conducting polymer films led to remarkable device characteristics such as large transconductance (∼20 mS), extraordinary volumetric capacitance (113 F·cm −3 ), and unprecedentedly high [ μC * ] value (∼490 F·cm −1 V −1 s −1 ). Simultaneously, minimized poly(styrenesulfonate) residues in the crystallized film substantially afforded marginal film swelling and robust operational stability even after >20-day water immersion, >2000-time repeated on-off switching, or high-temperature/pressure sterilization. We expect that the present study will contribute to the development of long-term stable implantable bioelectronics for neural recording/stimulation."
+   },
+   {
+    "id": "https://openalex.org/W1997070259",
+    "doi": "https://doi.org/10.1038/nmat3577",
+    "title": "Revisiting the δ-phase of poly(vinylidene fluoride) for solution-processed ferroelectric thin films",
+    "year": 2013,
+    "cited": 471,
+    "venue": "Nature Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Dielectric materials and actuators",
+     "Ferroelectric and Piezoelectric Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/nmat3577.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2967529249",
+    "doi": "https://doi.org/10.1002/advs.201901134",
+    "title": "Multilayered PdSe 2 /Perovskite Schottky Junction for Fast, Self‐Powered, Polarization‐Sensitive, Broadband Photodetectors, and Image Sensor Application",
+    "year": 2019,
+    "cited": 464,
+    "venue": "Advanced Science",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "2D Materials and Applications",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201901134",
+    "abstract": "Abstract Group‐10 transition metal dichalcogenides (TMDs) with distinct optical and tunable electrical properties have exhibited great potential for various optoelectronic applications. Herein, a self‐powered photodetector is developed with broadband response ranging from deep ultraviolet to near‐infrared by combining FA 1− x Cs x PbI 3 perovskite with PdSe 2 layer, a newly discovered TMDs material. Optoelectronic characterization reveals that the as‐assembled PdSe 2 /perovskite Schottky junction is sensitive to light illumination ranging from 200 to 1550 nm, with the highest sensitivity centered at ≈800 nm. The device also shows a large on/off ratio of ≈10 4 , a high responsivity ( R ) of 313 mA W −1 , a decent specific detectivity ( D *) of ≈10 13 Jones, and a rapid response speed of 3.5/4 µs. These figures of merit are comparable with or much better than most of the previously reported perovskite detectors. In addition, the PdSe 2 /perovskite device exhibits obvious sensitivity to polarized light, with a polarization sensitivity of 6.04. Finally, the PdSe 2 /perovskite detector can readily record five “P,” “O,” “L,” “Y,” and “U” images sequentially produced by 808 nm. These results suggest that the present PdSe 2 /perovskite Schottky junction photodetectors may be useful for assembly of optoelectronic system applications in near future."
+   },
+   {
+    "id": "https://openalex.org/W2808828695",
+    "doi": "https://doi.org/10.1038/s41467-018-04906-1",
+    "title": "Transparent and flexible fingerprint sensor array with multiplexed detection of tactile pressure and skin temperature",
+    "year": 2018,
+    "cited": 428,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Neuroscience and Neural Engineering",
+     "Physical Unclonable Functions (PUFs) and Hardware Security"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-04906-1.pdf",
+    "abstract": "We developed a transparent and flexible, capacitive fingerprint sensor array with multiplexed, simultaneous detection of tactile pressure and finger skin temperature for mobile smart devices. In our approach, networks of hybrid nanostructures using ultra-long metal nanofibers and finer nanowires were formed as transparent, flexible electrodes of a multifunctional sensor array. These sensors exhibited excellent optoelectronic properties and outstanding reliability against mechanical bending. This fingerprint sensor array has a high resolution with good transparency. This sensor offers a capacitance variation ~17 times better than the variation for the same sensor pattern using conventional ITO electrodes. This sensor with the hybrid electrode also operates at high frequencies with negligible degradation in its performance against various noise signals from mobile devices. Furthermore, this fingerprint sensor array can be integrated with all transparent forms of tactile pressure sensors and skin temperature sensors, to enable the detection of a finger pressing on the display."
+   },
+   {
+    "id": "https://openalex.org/W1976342705",
+    "doi": "https://doi.org/10.1038/srep01619",
+    "title": "Ultrafast Synaptic Events in a Chalcogenide Memristor",
+    "year": 2013,
+    "cited": 423,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Photoreceptor and optogenetics research",
+     "Phase-change materials and chalcogenides"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep01619.pdf",
+    "abstract": "Compact and power-efficient plastic electronic synapses are of fundamental importance to overcoming the bottlenecks of developing a neuromorphic chip. Memristor is a strong contender among the various electronic synapses in existence today. However, the speeds of synaptic events are relatively slow in most attempts at emulating synapses due to the material-related mechanism. Here we revealed the intrinsic memristance of stoichiometric crystalline Ge2Sb2Te5 that originates from the charge trapping and releasing by the defects. The device resistance states, representing synaptic weights, were precisely modulated by 30 ns potentiating/depressing electrical pulses. We demonstrated four spike-timing-dependent plasticity (STDP) forms by applying programmed pre- and postsynaptic spiking pulse pairs in different time windows ranging from 50 ms down to 500 ns, the latter of which is 10(5) times faster than the speed of STDP in human brain. This study provides new opportunities for building ultrafast neuromorphic computing systems and surpassing Von Neumann architecture."
+   },
+   {
+    "id": "https://openalex.org/W2806904536",
+    "doi": "https://doi.org/10.1002/adma.201801291",
+    "title": "An Artificial Sensory Neuron with Tactile Perceptual Learning",
+    "year": 2018,
+    "cited": 418,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Neuroscience and Neural Engineering"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201801291",
+    "abstract": "Sensory neurons within skin form an interface between the external physical reality and the inner tactile perception. This interface enables sensory information to be organized identified, and interpreted through perceptual learning-the process whereby the sensing abilities improve through experience. Here, an artificial sensory neuron that can integrate and differentiate the spatiotemporal features of touched patterns for recognition is shown. The system comprises sensing, transmitting, and processing components that are parallel to those found in a sensory neuron. A resistive pressure sensor converts pressure stimuli into electric signals, which are transmitted to a synaptic transistor through interfacial ionic/electronic coupling via a soft ionic conductor. Furthermore, the recognition error rate can be dramatically decreased from 44% to 0.4% by integrating with the machine learning method. This work represents a step toward the design and use of neuromorphic electronic skin with artificial intelligence for robotics and prosthetics."
+   },
+   {
+    "id": "https://openalex.org/W4313380134",
+    "doi": "https://doi.org/10.1038/s41377-022-01047-5",
+    "title": "Phase-controlled van der Waals growth of wafer-scale 2D MoTe2 layers for integrated high-sensitivity broadband infrared photodetection",
+    "year": 2023,
+    "cited": 391,
+    "venue": "Light Science & Applications",
+    "topics": [
+     "2D Materials and Applications",
+     "Topological Materials and Phenomena",
+     "Advanced Thermoelectric Materials and Devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41377-022-01047-5.pdf",
+    "abstract": "Abstract Being capable of sensing broadband infrared (IR) light is vitally important for wide-ranging applications from fundamental science to industrial purposes. Two-dimensional (2D) topological semimetals are being extensively explored for broadband IR detection due to their gapless electronic structure and the linear energy dispersion relation. However, the low charge separation efficiency, high noise level, and on-chip integration difficulty of these semimetals significantly hinder their further technological applications. Here, we demonstrate a facile thermal-assisted tellurization route for the van der Waals (vdW) growth of wafer-scale phase-controlled 2D MoTe 2 layers. Importantly, the type-II Weyl semimetal 1T′-MoTe 2 features a unique orthorhombic lattice structure with a broken inversion symmetry, which ensures efficient carrier transportation and thus reduces the carrier recombination. This characteristic is a key merit for the well-designed 1T′-MoTe 2 /Si vertical Schottky junction photodetector to achieve excellent performance with an ultrabroadband detection range of up to 10.6 µm and a large room temperature specific detectivity of over 10 8 Jones in the mid-infrared (MIR) range. Moreover, the large-area synthesis of 2D MoTe 2 layers enables the demonstration of high-resolution uncooled MIR imaging capability by using an integrated device array. This work provides a new approach to assembling uncooled IR photodetectors based on 2D materials."
+   },
+   {
+    "id": "https://openalex.org/W4391027752",
+    "doi": "https://doi.org/10.1038/s41928-023-01116-6",
+    "title": "A physicochemical-sensing electronic skin for stress response monitoring",
+    "year": 2024,
+    "cited": 390,
+    "venue": "Nature Electronics",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Non-Invasive Vital Sign Monitoring",
+     "Emotion and Mood Recognition"
+    ],
+    "oa_url": "https://escholarship.org/content/qt5dk314ns/qt5dk314ns.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2802755967",
+    "doi": "https://doi.org/10.1002/adma.201800220",
+    "title": "Synergistic Gating of Electro‐Iono‐Photoactive 2D Chalcogenide Neuristors: Coexistence of Hebbian and Homeostatic Synaptic Metaplasticity",
+    "year": 2018,
+    "cited": 363,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Photoreceptor and optogenetics research",
+     "Neural dynamics and brain function"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201800220",
+    "abstract": "Abstract Emulation of brain‐like signal processing with thin‐film devices can lay the foundation for building artificially intelligent learning circuitry in future. Encompassing higher functionalities into single artificial neural elements will allow the development of robust neuromorphic circuitry emulating biological adaptation mechanisms with drastically lesser neural elements, mitigating strict process challenges and high circuit density requirements necessary to match the computational complexity of the human brain. Here, 2D transition metal di‐chalcogenide (MoS 2 ) neuristors are designed to mimic intracellular ion endocytosis–exocytosis dynamics/neurotransmitter‐release in chemical synapses using three approaches: (i) electronic‐mode: a defect modulation approach where the traps at the semiconductor–dielectric interface are perturbed; (ii) ionotronic‐mode: where electronic responses are modulated via ionic gating; and (iii) photoactive‐mode: harnessing persistent photoconductivity or trap‐assisted slow recombination mechanisms. Exploiting a novel multigated architecture incorporating electrical and optical biases, this incarnation not only addresses different charge‐trapping probabilities to finely modulate the synaptic weights, but also amalgamates neuromodulation schemes to achieve “plasticity of plasticity–metaplasticity” via dynamic control of Hebbian spike‐time dependent plasticity and homeostatic regulation. Coexistence of such multiple forms of synaptic plasticity increases the efficacy of memory storage and processing capacity of artificial neuristors, enabling design of highly efficient novel neural architectures."
+   },
+   {
+    "id": "https://openalex.org/W2605339079",
+    "doi": "https://doi.org/10.1002/adma.201602969",
+    "title": "High Mobility 2D Palladium Diselenide Field‐Effect Transistors with Tunable Ambipolar Characteristics",
+    "year": 2017,
+    "cited": 351,
+    "venue": "Advanced Materials",
+    "topics": [
+     "2D Materials and Applications",
+     "Perovskite Materials and Applications",
+     "Advanced Memory and Neural Computing"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201602969",
+    "abstract": "Due to the intriguing optical and electronic properties, 2D materials have attracted a lot of interest for the electronic and optoelectronic applications. Identifying new promising 2D materials will be rewarding toward the development of next generation 2D electronics. Here, palladium diselenide (PdSe 2 ), a noble‐transition metal dichalcogenide (TMDC), is introduced as a promising high mobility 2D material into the fast growing 2D community. Field‐effect transistors (FETs) based on ultrathin PdSe 2 show intrinsic ambipolar characteristic. The polarity of the FET can be tuned. After vacuum annealing, the authors find PdSe 2 to exhibit electron‐dominated transport with high mobility ( µ e (max) = 216 cm 2 V −1 s −1 ) and on/off ratio up to 10 3 . Hole‐dominated‐transport PdSe 2 can be obtained by molecular doping using F 4 ‐TCNQ. This pioneer work on PdSe 2 will spark interests in the less explored regime of noble‐TMDCs."
+   },
+   {
+    "id": "https://openalex.org/W2795210588",
+    "doi": "https://doi.org/10.1002/adma.201800129",
+    "title": "Plasticizing Silk Protein for On‐Skin Stretchable Electrodes",
+    "year": 2018,
+    "cited": 344,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Silk-based biomaterials and applications",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201800129",
+    "abstract": "Abstract Soft and stretchable electronic devices are important in wearable and implantable applications because of the high skin conformability. Due to the natural biocompatibility and biodegradability, silk protein is one of the ideal platforms for wearable electronic devices. However, the realization of skin‐conformable electronic devices based on silk has been limited by the mechanical mismatch with skin, and the difficulty in integrating stretchable electronics. Here, silk protein is used as the substrate for soft and stretchable on‐skin electronics. The original high Young's modulus (5–12 GPa) and low stretchability (<20%) are tuned into 0.1–2 MPa and > 400%, respectively. This plasticization is realized by the addition of CaCl2 and ambient hydration, whose mechanism is further investigated by molecular dynamics simulations. Moreover, highly stretchable (>100%) electrodes are obtained by the thin‐film metallization and the formation of wrinkled structures after ambient hydration. Finally, the plasticized silk electrodes, with the high electrical performance and skin conformability, achieve on‐skin electrophysiological recording comparable to that by commercial gel electrodes. The proposed skin‐conformable electronics based on biomaterials will pave the way for the harmonized integration of electronics into human."
+   },
+   {
+    "id": "https://openalex.org/W1996388323",
+    "doi": "https://doi.org/10.1038/srep04906",
+    "title": "Activity-Dependent Synaptic Plasticity of a Chalcogenide Electronic Synapse for Neuromorphic Systems",
+    "year": 2014,
+    "cited": 344,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Photoreceptor and optogenetics research",
+     "Neural dynamics and brain function"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep04906.pdf",
+    "abstract": "Nanoscale inorganic electronic synapses or synaptic devices, which are capable of emulating the functions of biological synapses of brain neuronal systems, are regarded as the basic building blocks for beyond-Von Neumann computing architecture, combining information storage and processing. Here, we demonstrate a Ag/AgInSbTe/Ag structure for chalcogenide memristor-based electronic synapses. The memristive characteristics with reproducible gradual resistance tuning are utilised to mimic the activity-dependent synaptic plasticity that serves as the basis of memory and learning. Bidirectional long-term Hebbian plasticity modulation is implemented by the coactivity of pre- and postsynaptic spikes, and the sign and degree are affected by assorted factors including the temporal difference, spike rate and voltage. Moreover, synaptic saturation is observed to be an adjustment of Hebbian rules to stabilise the growth of synaptic weights. Our results may contribute to the development of highly functional plastic electronic synapses and the further construction of next-generation parallel neuromorphic computing architecture."
+   },
+   {
+    "id": "https://openalex.org/W4281628293",
+    "doi": "https://doi.org/10.1038/s41467-022-30539-6",
+    "title": "Experimental demonstration of highly reliable dynamic memristor for artificial neuron and neuromorphic computing",
+    "year": 2022,
+    "cited": 337,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Neural Networks and Reservoir Computing",
+     "Photoreceptor and optogenetics research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-30539-6.pdf",
+    "abstract": "Neuromorphic computing, a computing paradigm inspired by the human brain, enables energy-efficient and fast artificial neural networks. To process information, neuromorphic computing directly mimics the operation of biological neurons in a human brain. To effectively imitate biological neurons with electrical devices, memristor-based artificial neurons attract attention because of their simple structure, energy efficiency, and excellent scalability. However, memristor's non-reliability issues have been one of the main obstacles for the development of memristor-based artificial neurons and neuromorphic computings. Here, we show a memristor 1R cross-bar array without transistor devices for individual memristor access with low variation, 100% yield, large dynamic range, and fast speed for artificial neuron and neuromorphic computing. Based on the developed memristor, we experimentally demonstrate a memristor-based neuron with leaky-integrate and fire property with excellent reliability. Furthermore, we develop a neuro-memristive computing system based on the short-term memory effect of the developed memristor for efficient processing of sequential data. Our neuro-memristive computing system successfully trains and generates bio-medical sequential data (antimicrobial peptides) while using a small number of training parameters. Our results open up the possibility of memristor-based artificial neurons and neuromorphic computing systems, which are essential for energy-efficient edge computing devices."
+   },
+   {
+    "id": "https://openalex.org/W4285492555",
+    "doi": "https://doi.org/10.1126/sciadv.abo7422",
+    "title": "Sequential vacuum-evaporated perovskite solar cells with more than 24% efficiency",
+    "year": 2022,
+    "cited": 331,
+    "venue": "Science Advances",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://doi.org/10.1126/sciadv.abo7422",
+    "abstract": "Vacuum evaporation is promising for the high-throughput fabrication of perovskite solar cells (PSCs) because of its solvent-free characteristic, precise control of film thickness, and compatibility with large-scale production. Nevertheless, the power conversion efficiency (PCE) of PSCs fabricated by vacuum evaporation lags behind that of solution-processed PSCs. Here, we report a Cl-containing alloy-mediated sequential vacuum evaporation approach to fabricate perovskite films. The presence of Cl in the alloy facilitates organic ammonium halide diffusion and the subsequent perovskite conversion reaction, leading to homogeneous pinhole-free perovskite films with few defects. The resulting PSCs yield a PCE of 24.42%, 23.44% (certified 22.6%), and 19.87% for 0.1, 1.0, and 14.4 square centimeters (mini-module, aperture area), respectively. The unencapsulated PSCs show good stability with negligible decline in performance after storage in dry air for more than 4000 hours. Our method provides a reproducible approach for scalable fabrication of large-area, high-efficiency PSCs and other perovskite-based optoelectronics."
+   },
+   {
+    "id": "https://openalex.org/W2890564463",
+    "doi": "https://doi.org/10.1038/s41467-018-06204-2",
+    "title": "In-situ cross-linking strategy for efficient and operationally stable methylammoniun lead iodide solar cells",
+    "year": 2018,
+    "cited": 330,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Organic Light-Emitting Diodes Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-06204-2.pdf",
+    "abstract": "Abstract Long-term operational stability is the foremost issue delaying the commercialization of perovskite solar cells (PSCs). Here we demonstrate an in-situ cross-linking strategy for operationally stable inverted MAPbI3 PSCs through the incorporation of a cross-linkable organic small molecule additive trimethylolpropane triacrylate (TMTA) into perovskite films. TMTA can chemically anchor to grain boundaries and then in-situ cross-link to a robust continuous network polymer after thermal treatment, thus enhancing the thermal, water-resisting and light-resisting properties of organic/perovskite films. As a result, the cross-linked PSCs exhibit 590-fold improvement in operational stability, retaining nearly 80% of their initial efficiency after continuous power output for 400 h at maximum power point under full-sun AM 1.5 G illumination of Xenon lamp without any UV-filter. In addition, under moisture or thermal (85 °C) conditions, cross-linked TMTA-based PSCs also show excellent stability with over 90% of their initial or post burn-in efficiency after aging for over 1000 h."
+   },
+   {
+    "id": "https://openalex.org/W2343250281",
+    "doi": "https://doi.org/10.1088/0957-4484/27/22/225501",
+    "title": "Flexible, transparent and ultra-broadband photodetector based on large-area WSe 2 film for wearable devices",
+    "year": 2016,
+    "cited": 324,
+    "venue": "Nanotechnology",
+    "topics": [
+     "2D Materials and Applications",
+     "MXene and MAX Phase Materials",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0957-4484/27/22/225501/pdf",
+    "abstract": "Although two-dimensional (2D) materials have attracted considerable research interest for use in the development of innovative wearable optoelectronic systems, the integrated optoelectronic performance of 2D materials photodetectors, including flexibility, transparency, broadband response and stability in air, remains quite low to date. Here, we demonstrate a flexible, transparent, high-stability and ultra-broadband photodetector made using large-area and highly-crystalline WSe2 films that were prepared by pulsed-laser deposition (PLD). Benefiting from the 2D physics of WSe2 films, this device exhibits excellent average transparency of 72% in the visible range and superior photoresponse characteristics, including an ultra-broadband detection spectral range from 370 to 1064 nm, reversible photoresponsivity approaching 0.92 A W(-1), external quantum efficiency of up to 180% and a relatively fast response time of 0.9 s. The fabricated photodetector also demonstrates outstanding mechanical flexibility and durability in air. Also, because of the wide compatibility of the PLD-grown WSe2 film, we can fabricate various photodetectors on multiple flexible or rigid substrates, and all these devices will exhibit distinctive switching behavior and superior responsivity. These indicate a possible new strategy for the design and integration of flexible, transparent and broadband photodetectors based on large-area WSe2 films, with great potential for practical applications in the wearable optoelectronic devices."
+   },
+   {
+    "id": "https://openalex.org/W3011747191",
+    "doi": "https://doi.org/10.1038/s41467-020-15249-1",
+    "title": "Sub-nanosecond memristor based on ferroelectric tunnel junction",
+    "year": 2020,
+    "cited": 306,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Ferroelectric and Negative Capacitance Devices",
+     "Ferroelectric and Piezoelectric Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-15249-1.pdf",
+    "abstract": "Abstract Next-generation non-volatile memories with ultrafast speed, low power consumption, and high density are highly desired in the era of big data. Here, we report a high performance memristor based on a Ag/BaTiO3/Nb:SrTiO3 ferroelectric tunnel junction (FTJ) with the fastest operation speed (600 ps) and the highest number of states (32 states or 5 bits) per cell among the reported FTJs. The sub-nanosecond resistive switching maintains up to 358 K, and the write current density is as low as 4 × 103 A cm−2. The functionality of spike-timing-dependent plasticity served as a solid synaptic device is also obtained with ultrafast operation. Furthermore, it is demonstrated that a Nb:SrTiO3 electrode with a higher carrier concentration and a metal electrode with lower work function tend to improve the operation speed. These results may throw light on the way for overcoming the storage performance gap between different levels of the memory hierarchy and developing ultrafast neuromorphic computing systems."
+   },
+   {
+    "id": "https://openalex.org/W2951672192",
+    "doi": "https://doi.org/10.1038/s41467-019-10569-3",
+    "title": "Inkjet-printed stretchable and low voltage synaptic transistor array",
+    "year": 2019,
+    "cited": 297,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Memory and Neural Computing",
+     "Neuroscience and Neural Engineering"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-10569-3.pdf",
+    "abstract": "Abstract Wearable and skin electronics benefit from mechanically soft and stretchable materials to conform to curved and dynamic surfaces, thereby enabling seamless integration with the human body. However, such materials are challenging to process using traditional microelectronics techniques. Here, stretchable transistor arrays are patterned exclusively from solution by inkjet printing of polymers and carbon nanotubes. The additive, non-contact and maskless nature of inkjet printing provides a simple, inexpensive and scalable route for stacking and patterning these chemically-sensitive materials over large areas. The transistors, which are stable at ambient conditions, display mobilities as high as 30 cm2 V−1 s−1 and currents per channel width of 0.2 mA cm−1 at operation voltages as low as 1 V, owing to the ionic character of their printed gate dielectric. Furthermore, these transistors with double-layer capacitive dielectric can mimic the synaptic behavior of neurons, making them interesting for conformal brain-machine interfaces and other wearable bioelectronics."
+   },
+   {
+    "id": "https://openalex.org/W2743487474",
+    "doi": "https://doi.org/10.1126/sciadv.1700481",
+    "title": "HfSe 2 and ZrSe 2 : Two-dimensional semiconductors with native high-κ oxides",
+    "year": 2017,
+    "cited": 297,
+    "venue": "Science Advances",
+    "topics": [
+     "2D Materials and Applications",
+     "MXene and MAX Phase Materials",
+     "Ferroelectric and Negative Capacitance Devices"
+    ],
+    "oa_url": "https://doi.org/10.1126/sciadv.1700481",
+    "abstract": "; on current, ~30 μA/μm), with native oxides reducing the effects of interfacial traps. These are the first 2D materials to demonstrate technologically relevant properties of silicon, in addition to unique compatibility with high-κ dielectrics, and scaling benefits from their atomically thin nature."
+   },
+   {
+    "id": "https://openalex.org/W4224296904",
+    "doi": "https://doi.org/10.1038/s41467-022-29727-1",
+    "title": "Reconfigurable halide perovskite nanocrystal memristors for neuromorphic computing",
+    "year": 2022,
+    "cited": 295,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Perovskite Materials and Applications",
+     "Photoreceptor and optogenetics research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-29727-1.pdf",
+    "abstract": "Abstract Many in-memory computing frameworks demand electronic devices with specific switching characteristics to achieve the desired level of computational complexity. Existing memristive devices cannot be reconfigured to meet the diverse volatile and non-volatile switching requirements, and hence rely on tailored material designs specific to the targeted application, limiting their universality. “Reconfigurable memristors” that combine both ionic diffusive and drift mechanisms could address these limitations, but they remain elusive. Here we present a reconfigurable halide perovskite nanocrystal memristor that achieves on-demand switching between diffusive/volatile and drift/non-volatile modes by controllable electrochemical reactions. Judicious selection of the perovskite nanocrystals and organic capping ligands enable state-of-the-art endurance performances in both modes – volatile (2 × 10 6 cycles) and non-volatile (5.6 × 10 3 cycles). We demonstrate the relevance of such proof-of-concept perovskite devices on a benchmark reservoir network with volatile recurrent and non-volatile readout layers based on 19,900 measurements across 25 dynamically-configured devices."
+   },
+   {
+    "id": "https://openalex.org/W4200157328",
+    "doi": "https://doi.org/10.1038/s41467-021-27575-z",
+    "title": "Evolution of the conductive filament system in HfO2-based memristors observed by direct atomic-scale imaging",
+    "year": 2021,
+    "cited": 292,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Ferroelectric and Negative Capacitance Devices",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-27575-z.pdf",
+    "abstract": "Abstract The resistive switching effect in memristors typically stems from the formation and rupture of localized conductive filament paths, and HfO2 has been accepted as one of the most promising resistive switching materials. However, the dynamic changes in the resistive switching process, including the composition and structure of conductive filaments, and especially the evolution of conductive filament surroundings, remain controversial in HfO2-based memristors. Here, the conductive filament system in the amorphous HfO2-based memristors with various top electrodes is revealed to be with a quasi-core-shell structure consisting of metallic hexagonal-Hf6O and its crystalline surroundings (monoclinic or tetragonal HfOx). The phase of the HfOx shell varies with the oxygen reservation capability of the top electrode. According to extensive high-resolution transmission electron microscopy observations and ab initio calculations, the phase transition of the conductive filament shell between monoclinic and tetragonal HfO2 is proposed to depend on the comprehensive effects of Joule heat from the conductive filament current and the concentration of oxygen vacancies. The quasi-core-shell conductive filament system with an intrinsic barrier, which prohibits conductive filament oxidation, ensures the extreme scalability of resistive switching memristors. This study renovates the understanding of the conductive filament evolution in HfO2-based memristors and provides potential inspirations to improve oxide memristors for nonvolatile storage-class memory applications."
+   },
+   {
+    "id": "https://openalex.org/W4362721930",
+    "doi": "https://doi.org/10.1038/s41467-023-37436-6",
+    "title": "Staggered circular nanoporous graphene converts electromagnetic waves into electricity",
+    "year": 2023,
+    "cited": 289,
+    "venue": "Nature Communications",
+    "topics": [
+     "Graphene research and applications",
+     "Electromagnetic wave absorption materials",
+     "Metamaterials and Metasurfaces Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37436-6.pdf",
+    "abstract": "Harvesting largely ignored and wasted electromagnetic (EM) energy released by electronic devices and converting it into direct current (DC) electricity is an attractive strategy not only to reduce EM pollution but also address the ever-increasing energy crisis. Here we report the synthesis of nanoparticle-templated graphene with monodisperse and staggered circular nanopores enabling an EM-heat-DC conversion pathway. We experimentally and theoretically demonstrate that this staggered nanoporous structure alters graphene's electronic and phononic properties by synergistically manipulating its intralayer nanostructures and interlayer interactions. The staggered circular nanoporous graphene exhibits an anomalous combination of properties, which lead to an efficient absorption and conversion of EM waves into heat and in turn an output of DC electricity through the thermoelectric effect. Overall, our results advance the fundamental understanding of the structure-property relationships of ordered nanoporous graphene, providing an effective strategy to reduce EM pollution and generate electric energy."
+   },
+   {
+    "id": "https://openalex.org/W2920055106",
+    "doi": "https://doi.org/10.1038/s41467-019-08930-7",
+    "title": "Polymer gels with tunable ionic Seebeck coefficient for ultra-sensitive printed thermopiles",
+    "year": 2019,
+    "cited": 288,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Thermoelectric Materials and Devices",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-08930-7.pdf",
+    "abstract": "Measuring temperature and heat flux is important for regulating any physical, chemical, and biological processes. Traditional thermopiles can provide accurate and stable temperature reading but they are based on brittle inorganic materials with low Seebeck coefficient, and are difficult to manufacture over large areas. Recently, polymer electrolytes have been proposed for thermoelectric applications because of their giant ionic Seebeck coefficient, high flexibility and ease of manufacturing. However, the materials reported to date have positive Seebeck coefficients, hampering the design of ultra-sensitive ionic thermopiles. Here we report an \"ambipolar\" ionic polymer gel with giant negative ionic Seebeck coefficient. The latter can be tuned from negative to positive by adjusting the gel composition. We show that the ion-polymer matrix interaction is crucial to control the sign and magnitude of the ionic Seebeck coefficient. The ambipolar gel can be easily screen printed, enabling large-area device manufacturing at low cost."
+   },
+   {
+    "id": "https://openalex.org/W2464563468",
+    "doi": "https://doi.org/10.1002/advs.201600018",
+    "title": "Ultrafast, Broadband Photodetector Based on MoSe2/Silicon Heterojunction with Vertically Standing Layered Structure Using Graphene as Transparent Electrode",
+    "year": 2016,
+    "cited": 285,
+    "venue": "Advanced Science",
+    "topics": [
+     "2D Materials and Applications",
+     "Graphene research and applications",
+     "Nanowire Synthesis and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201600018",
+    "abstract": "A MoSe2/Si heterojunction photodetector is constructed by depositing MoSe2 film with vertically standing layered structure on Si substrate. Graphene transparent electrode is utilized to further enhance the separation and transport of photogenerated carriers. The device shows excellent performance in terms of wide response spectrum of UV–visible–NIR, high detectivity of 7.13 × 1010 Jones, and ultrafast response speed of ≈270 ns, unveiling the great potential for the heterojunction for high-performance optoelectronic devices."
+   },
+   {
+    "id": "https://openalex.org/W3124880047",
+    "doi": "https://doi.org/10.1021/acsnano.0c07608",
+    "title": "Applications of Few-Layer Nb 2 C MXene: Narrow-Band Photodetectors and Femtosecond Mode-Locked Fiber Lasers",
+    "year": 2021,
+    "cited": 284,
+    "venue": "ACS Nano",
+    "topics": [
+     "Advanced Fiber Laser Technologies",
+     "MXene and MAX Phase Materials",
+     "2D Materials and Applications"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.0c07608",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Although the physicochemical properties of niobium carbide (Nb 2 C) have been widely investigated, their exploration in the field of photoelectronics is still at the infancy stage with many potential applications that remain to be exploited. Hence, it is demonstrated here that few-layer Nb 2 C MXene can serve as an excellent building block for both photoelectrochemical-type photodetectors (PDs) and mode-lockers. We show that the photoresponse performance can be readily adjusted by external conditions and that Nb 2 C NSs exhibit a great potential for narrow-band PDs. The demonstrated mechanism was further confirmed by work functions predicted by density functional theory calculations. In addition, as an optical switch for passively mode-locked fiber lasers, ultrastable pulses can be demonstrated in the telecommunication and mid-infrared regions for Nb 2 C MXene, and as high as the 69th harmonic order with 411 MHz at the center wavelength of 1882 nm can be achieved. These intriguing results indicate that few-layer Nb 2 C nanosheets can be used as building blocks for various photoelectronic devices, further broadening the application prospects of two-dimensional MXenes."
+   },
+   {
+    "id": "https://openalex.org/W2907017307",
+    "doi": "https://doi.org/10.1038/s41467-018-07904-5",
+    "title": "Three-dimensional monolithic integration in flexible printed organic transistors",
+    "year": 2018,
+    "cited": 284,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Thin-Film Transistor Technologies",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-07904-5.pdf",
+    "abstract": "Direct printing of thin-film transistors has enormous potential for ubiquitous and lightweight wearable electronic applications. However, advances in printed integrated circuits remain very rare. Here we present a three-dimensional (3D) integration approach to achieve technology scaling in printed transistor density, analogous to Moore's law driven by lithography, as well as enhancing device performance. To provide a proof of principle for the approach, we demonstrate the scalable 3D integration of dual-gate organic transistors on plastic foil by printing with high yield, uniformity, and year-long stability. In addition, the 3D stacking of three complementary transistors enables us to propose a programmable 3D logic array as a new route to design printed flexible digital circuitry essential for the emerging applications. The 3D monolithic integration strategy demonstrated here is applicable to other emerging printable materials, such as carbon nanotubes, oxide semiconductors and 2D semiconducting materials."
+   },
+   {
+    "id": "https://openalex.org/W4213109471",
+    "doi": "https://doi.org/10.1038/s41928-022-00712-2",
+    "title": "High-performance inorganic metal halide perovskite transistors",
+    "year": 2022,
+    "cited": 276,
+    "venue": "Nature Electronics",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "ZnO doping and properties",
+     "Thin-Film Transistor Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41928-022-00712-2.pdf",
+    "abstract": "Abstract The p-type characteristic of solution-processed metal halide perovskite transistors means that they could be used in combination with their n-type counterparts, such as indium–gallium–zinc-oxide transistors, to create complementary metal–oxide–semiconductor-like circuits. However, the performance and stability of perovskite-based transistors do not yet match their n-type counterparts, which limit their broader application. Here we report high-performance p-channel perovskite thin-film transistors based on inorganic caesium tin triiodide semiconducting layers that have moderate hole concentrations and high Hall mobilities. The perovskite channels are formed by engineering the film composition and crystallization process using a tin-fluoride-modified caesium-iodide-rich precursor with lead substitution. The optimized transistors exhibit field-effect hole mobilities of over 50 cm2 V−1 s−1 and on/off current ratios exceeding 108, as well as high operational stability and reproducibility."
+   },
+   {
+    "id": "https://openalex.org/W4210848208",
+    "doi": "https://doi.org/10.1007/s40820-022-00800-0",
+    "title": "Porous and Ultra-Flexible Crosslinked MXene/Polyimide Composites for Multifunctional Electromagnetic Interference Shielding",
+    "year": 2022,
+    "cited": 266,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Electromagnetic wave absorption materials",
+     "Advanced Antenna and Metasurface Technologies",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-022-00800-0.pdf",
+    "abstract": "Abstract Lightweight, ultra-flexible, and robust crosslinked transition metal carbide (Ti 3 C 2 MXene) coated polyimide (PI) (C-MXene@PI) porous composites are manufactured via a scalable dip-coating followed by chemical crosslinking approach. In addition to the hydrophobicity, anti-oxidation and extreme-temperature stability, efficient utilization of the intrinsic conductivity of MXene, the interfacial polarization between MXene and PI, and the micrometer-sized pores of the composite foams are achieved. Consequently, the composites show a satisfactory X-band electromagnetic interference (EMI) shielding effectiveness of 22.5 to 62.5 dB at a density of 28.7 to 48.7 mg cm −3 , leading to an excellent surface-specific SE of 21,317 dB cm 2 g −1 . Moreover, the composite foams exhibit excellent electrothermal performance as flexible heaters in terms of a prominent, rapid reproducible, and stable electrothermal effect at low voltages and superior heat performance and more uniform heat distribution compared with the commercial heaters composed of alloy plates. Furthermore, the composite foams are well attached on a human body to check their electromechanical sensing performance, demonstrating the sensitive and reliable detection of human motions as wearable sensors. The excellent EMI shielding performance and multifunctionalities, along with the facile and easy-to-scalable manufacturing techniques, imply promising perspectives of the porous C-MXene@PI composites in next-generation flexible electronics, aerospace, and smart devices."
+   },
+   {
+    "id": "https://openalex.org/W2802222992",
+    "doi": "https://doi.org/10.1038/s41427-018-0035-4",
+    "title": "Ultrafast and sensitive photodetector based on a PtSe2/silicon nanowire array heterojunction with a multiband spectral response from 200 to 1550 nm",
+    "year": 2018,
+    "cited": 257,
+    "venue": "NPG Asia Materials",
+    "topics": [
+     "2D Materials and Applications",
+     "Transition Metal Oxide Nanomaterials",
+     "Gas Sensing Nanomaterials and Sensors"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41427-018-0035-4.pdf",
+    "abstract": "The newly discovered Group-10 transition metal dichalcogenides (TMDs) like PtSe2 have promising applications in high-performance microelectronic and optoelectronic devices due to their high carrier mobilities, widely tunable bandages and ultrastabilities. However, the optoelectronic performance of broadband PtSe2 photodetectors integrated with silicon remains undiscovered. Here, we report the successful preparation of large-scale, uniform and vertically grown PtSe2 films by simple selenization method for the design of a PtSe2/Si nanowire array heterostructure, which exhibited a very good photoresponsivity of 12.65 A/W, a high specific detectivity of 2.5 × 1013 Jones at −5 V and fast rise/fall times of 10.1/19.5 μs at 10 kHz without degradation while being capable of responding to high frequencies of up to 120 kHz. Our work has demonstrated the compatibility of PtSe2 with the existing silicon technology and ultrabroad band detection ranging from deep ultraviolet to optical telecommunication wavelengths, which can largely cover the limitations of silicon detectors. Further investigation of the device revealed pronounced photovoltaic behavior at 0 V, making it capable of operating as a self-powered photodetector. Overall, this representative PtSe2/Si nanowire array-based photodetector offers great potential for applications in next-generation optoelectronic and electronic devices. Aligning ultra-thin semiconductors with silicon nanowires enables high-speed sensing of an unusually broad range of ultraviolet, visible, and infrared light frequencies. The shapes of silicon nanowires enable quicker and more effective light detection than conventional thin films, but their spectral response still falls outside the parameters needed for various applications, including optical telecommunication. Researchers led by Di Wu from China’s Zhengzhou University and Yuen Hong Tsang at Hong Kong Polytechnic University turned to the broadband absorption of graphene-like platinum selenide (PtSe2) films to extend the light sensitivity. To parallel the geometry of nanowires, the team used precision deposition techniques to grow 2D PtSe2 films into vertically-oriented layers, some tens of nanometers thick. Direct transfer of the PtSe2 film onto a large-scale nanowire array produced a microsecond-fast device sensitive to multiple optical bands. Platinum diselenide (PtSe2) is a newly discovered Group-10 transition metal dichalcogenide (TMD) which has unique electronic properties, in particular a semimetal-to-semiconductor transition. In this work, we have demonstrated the proposed vertically standing layered structure PtSe2 nanofilms based on hybrid heterojunction with high overall performance was realized for broadband light photodetection ranging from 200 nm to 1550 nm. The high-performance broadband photodetector will open up a new pathway for the development of next-generation two dimensional Group-10 materials based optoelectronic devices."
+   },
+   {
+    "id": "https://openalex.org/W3155455451",
+    "doi": "https://doi.org/10.1038/s41467-021-22528-y",
+    "title": "A high-conductivity n-type polymeric ink for printed electronics",
+    "year": 2021,
+    "cited": 255,
+    "venue": "Nature Communications",
+    "topics": [
+     "Conducting polymers and applications",
+     "Organic Electronics and Photovoltaics",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22528-y.pdf",
+    "abstract": "Abstract Conducting polymers, such as the p -doped poly(3,4-ethylenedioxythiophene):poly(styrene sulfonate) (PEDOT:PSS), have enabled the development of an array of opto- and bio-electronics devices. However, to make these technologies truly pervasive, stable and easily processable, n -doped conducting polymers are also needed. Despite major efforts, no n -type equivalents to the benchmark PEDOT:PSS exist to date. Here, we report on the development of poly(benzimidazobenzophenanthroline):poly(ethyleneimine) (BBL:PEI) as an ethanol-based n -type conductive ink. BBL:PEI thin films yield an n -type electrical conductivity reaching 8 S cm −1 , along with excellent thermal, ambient, and solvent stability. This printable n -type mixed ion-electron conductor has several technological implications for realizing high-performance organic electronic devices, as demonstrated for organic thermoelectric generators with record high power output and n -type organic electrochemical transistors with a unique depletion mode of operation. BBL:PEI inks hold promise for the development of next-generation bioelectronics and wearable devices, in particular targeting novel functionality, efficiency, and power performance."
+   },
+   {
+    "id": "https://openalex.org/W2601705989",
+    "doi": "https://doi.org/10.1038/ncomms14734",
+    "title": "Monolayer optical memory cells based on artificial trap-mediated charge storage and release",
+    "year": 2017,
+    "cited": 254,
+    "venue": "Nature Communications",
+    "topics": [
+     "2D Materials and Applications",
+     "Perovskite Materials and Applications",
+     "Advanced Memory and Neural Computing"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14734.pdf",
+    "abstract": "Abstract Monolayer transition metal dichalcogenides are considered to be promising candidates for flexible and transparent optoelectronics applications due to their direct bandgap and strong light-matter interactions. Although several monolayer-based photodetectors have been demonstrated, single-layered optical memory devices suitable for high-quality image sensing have received little attention. Here we report a concept for monolayer MoS 2 optoelectronic memory devices using artificially-structured charge trap layers through the functionalization of the monolayer/dielectric interfaces, leading to localized electronic states that serve as a basis for electrically-induced charge trapping and optically-mediated charge release. Our devices exhibit excellent photo-responsive memory characteristics with a large linear dynamic range of ∼4,700 (73.4 dB) coupled with a low OFF-state current (<4 pA), and a long storage lifetime of over 10 4 s. In addition, the multi-level detection of up to 8 optical states is successfully demonstrated. These results represent a significant step toward the development of future monolayer optoelectronic memory devices."
+   },
+   {
+    "id": "https://openalex.org/W3000745939",
+    "doi": "https://doi.org/10.1038/s41467-019-13901-z",
+    "title": "Clinically accurate diagnosis of Alzheimer’s disease via multiplexed sensing of core biomarkers in human plasma",
+    "year": 2020,
+    "cited": 253,
+    "venue": "Nature Communications",
+    "topics": [
+     "Alzheimer's disease research and treatments",
+     "Dementia and Cognitive Impairment Research",
+     "Electrochemical sensors and biosensors"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-13901-z.pdf",
+    "abstract": "Abstract Alzheimer’s disease (AD) is the most prevalent neurodegenerative disorder, affecting one in ten people aged over 65 years. Despite the severity of the disease, early diagnosis of AD is still challenging due to the low accuracy or high cost of neuropsychological tests and neuroimaging. Here we report clinically accurate and ultrasensitive detection of multiple AD core biomarkers (t-tau, p-tau 181 , Aβ 42 , and Aβ 40 ) in human plasma using densely aligned carbon nanotubes (CNTs). The closely packed and unidirectionally aligned CNT sensor array exhibits high precision, sensitivity, and accuracy, evidenced by a low coefficient of variation (<6%), a femtomolar-level limit of detection, and a high degree of recovery (>93.0%). By measuring the levels of t-tau/Aβ 42 , p-tau 181 /Aβ 42 , and Aβ 42 /Aβ 40 in clinical blood samples, the sensor array successfully discriminates the clinically diagnosed AD patients from healthy controls with an average sensitivity of 90.0%, a selectivity of 90.0%, and an average accuracy of 88.6%."
+   },
+   {
+    "id": "https://openalex.org/W4387130548",
+    "doi": "https://doi.org/10.1038/s41560-023-01362-0",
+    "title": "Ammonium cations with high pKa in perovskite solar cells for improved high-temperature photostability",
+    "year": 2023,
+    "cited": 252,
+    "venue": "Nature Energy",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2337954",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2914563784",
+    "doi": "https://doi.org/10.1016/j.ensm.2019.02.014",
+    "title": "New insight into the effect of fluorine doping and oxygen vacancies on electrochemical performance of Co2MnO4 for flexible quasi-solid-state asymmetric supercapacitors",
+    "year": 2019,
+    "cited": 251,
+    "venue": "Energy storage materials",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Advanced battery technologies research",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://ueaeprints.uea.ac.uk/id/eprint/69966/1/Accepted_Manuscript.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3120868299",
+    "doi": "https://doi.org/10.1038/s41467-020-20390-y",
+    "title": "π-Extended perylene diimide double-heterohelicenes as ambipolar organic semiconductors for broadband circularly polarized light detection",
+    "year": 2021,
+    "cited": 249,
+    "venue": "Nature Communications",
+    "topics": [
+     "Synthesis and Properties of Aromatic Compounds",
+     "Luminescence and Fluorescent Materials",
+     "Fullerene Chemistry and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-20390-y.pdf",
+    "abstract": "Abstract Despite great challenges, the development of new molecular structures with multiple and even conflicting characteristics are eagerly pursued for exploring advanced applications. To develop high-performance chiral organic semiconducting molecules, a distorted π-system is required for strong coupling with circularly polarized light (CPL), whereas planar π-stacking systems are necessary for high charge-carrier mobility. To address this dilemma, in this work, we introduce a skeleton merging approach through distortion of a perylene diimide (PDI) core with four fused heteroaromatics to form an ortho-π-extended PDI double-[7]heterohelicene. PDI double helicene inherits a high dissymmetry factor from the helicene skeleton, and the extended π-planar system concurrently maintains a high level of charge transport properties. In addition, ortho-π-extension of the PDI skeleton brings about near-infrared (NIR) light absorption and ambipolar charge transport abilities, endowing the corresponding organic phototransistors with high photoresponsivity of 450 and 120 mA W−1 in p- and n-type modes respectively, along with a high external quantum efficiency (89%) under NIR light irradiations. Remarkably, these multiple characteristics enable high-performance broadband CPL detections up to NIR spectral region with chiral organic semiconductors."
+   },
+   {
+    "id": "https://openalex.org/W2610843306",
+    "doi": "https://doi.org/10.1088/1361-6528/aa6d98",
+    "title": "Electrical transport and persistent photoconductivity in monolayer MoS 2 phototransistors",
+    "year": 2017,
+    "cited": 248,
+    "venue": "Nanotechnology",
+    "topics": [
+     "2D Materials and Applications",
+     "Nanowire Synthesis and Applications",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1361-6528/aa6d98/pdf",
+    "abstract": "Abstract We study electrical transport properties in exfoliated molybdenum disulfide (MoS 2 ) back-gated field effect transistors at low drain bias and under different illumination intensities. It is found that photoconductive and photogating effect as well as space charge limited conduction can simultaneously occur. We point out that the photoconductivity increases logarithmically with the light intensity and can persist with a decay time longer than 10 4 s, due to photo-charge trapping at the MoS 2 /SiO 2 interface and in MoS 2 defects. The transfer characteristics present hysteresis that is enhanced by illumination. At low drain bias, the devices feature low contact resistance of 1.4 k Ω μ m − 1 , ON current as high as 1.25 nA μ m − 1 , 10 5 ON–OFF ratio, mobility of ∼1 cm 2 V −1 s −1 and photoresponsivity ℛ ≈ 1 A W − 1 ."
+   },
+   {
+    "id": "https://openalex.org/W1986407639",
+    "doi": "https://doi.org/10.1038/am.2012.34",
+    "title": "Highly conductive and stretchable conductors fabricated from bacterial cellulose",
+    "year": 2012,
+    "cited": 247,
+    "venue": "NPG Asia Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Cellulose Research Studies",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/am201234.pdf",
+    "abstract": "Advanced materials that can remain electrically conductive under substantial elastic stretch and bending have attracted extensive interest recently owing to their broad application potentials, particularly for flexible electronics. Here, we have developed a simple and inexpensive method to fabricate highly conductive and stretchable composites using bacterial cellulose (BC) pellicles as starting materials, which can be produced in large amounts on an industrial scale via a microbial fermentation process. The prepared pyrolyzed BC (p-BC)/polydimethylsiloxane (PDMS) composites exhibit a high electrical conductivity of 0.20–0.41 S cm−1, which is much higher than conventional carbon nanotubes and graphene-based composites. More importantly, the p-BC/PDMS composites that combine high stretchability with high conductivity show great electromechanical stability. Even after 1000 stretching cycles at the maximum strain of 80%, the resistance of the composites increased by only ∼10%. The resistance increased slightly (∼4%) after 5000 bending cycles with a maximum bending radius of 1.0 mm. Shu-Hong Yu and co-workers at the University of Science and Technology of China in Hefei have devised an easy and cost-effective approach to prepare flexible conductors. Increasingly, conducting materials are required to be stretchable and bendable - properties that are difficult to achieve with conventional conductors. Yu and colleagues have now turned to bacterial cellulose to get around this problem. Although cellulose is mostly known as a component of plants, it can be generated, in high purity, by some micro-organisms through fermentation - a facile process that can be carried out in large quantities. Bacterial cellulose pellicles were treated by freeze-drying and pyrolysis to give a robust aerogel composed of entangled nanofibres, which was then infiltrated with a polymer. The resulting composite material showed excellent electrical conductivity, which was maintained even under stretching and bending, and is thus very well suited to applications in flexible, foldable electronics. Highly conductive and stretchable conductors from bacterial cellulose (BC) can be fabricated through a simple and inexpensive method using bacterial cellulose pellicles as starting materials, which can be produced in large amounts on an industrial scale via a microbial fermentation process. The prepared pyrolyzed BC/polydimethylsiloxane composites exhibit highly stable electric conductivity even under high stretching and bending strain."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Keithley 4200-SCS 4200A-SCS\" OR \"Keithley 4200-SCS\" OR \"Keithley 4200A-SCS\" OR \"Tektronix 4200-SCS 4200A-SCS\" OR \"Tektronix 4200-SCS\") AND OPEN_ACCESS:y",

@@ -12,8 +12,758 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Instron 5900\" OR \"Instron 5965-E2\" OR \"Instron 5966-E2\" OR \"Instron 5967-E2\" OR \"Instron 5969-E2\" OR \"Instron 5982-E2\"",
-  "count": null,
-  "works": []
+  "count": 214,
+  "works": [
+   {
+    "id": "https://openalex.org/W1919781749",
+    "doi": "https://doi.org/10.1088/1748-3190/10/3/035008",
+    "title": "A bioinspired soft manipulator for minimally invasive surgery",
+    "year": 2015,
+    "cited": 341,
+    "venue": "Bioinspiration & Biomimetics",
+    "topics": [
+     "Soft Robotics and Applications",
+     "Micro and Nano Robotics",
+     "Modular Robots and Swarm Intelligence"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1748-3190/10/3/035008/pdf",
+    "abstract": "This paper introduces a novel, bioinspired manipulator for minimally invasive surgery (MIS). The manipulator is entirely composed of soft materials, and it has been designed to provide similar motion capabilities as the octopus's arm in order to reach the surgical target while exploiting its whole length to actively interact with the biological structures. The manipulator is composed of two identical modules (each of them can be controlled independently) with multi-directional bending and stiffening capabilities, like an octopus arm. In the authors' previous works, the design of the single module has been addressed. Here a two-module manipulator is presented, with the final aim of demonstrating the enhanced capabilities that such a structure can have in comparison with rigid surgical tools currently employed in MIS. The performances in terms of workspace, stiffening capabilities, and generated forces are characterized through experimental tests. The combination of stiffening capabilities and manipulation tasks is also addressed to confirm the manipulator potential employment in a real surgical scenario."
+   },
+   {
+    "id": "https://openalex.org/W2955603920",
+    "doi": "https://doi.org/10.3390/polym11071154",
+    "title": "Effect of Porosity on Mechanical Properties of 3D Printed Polymers: Experiments and Micromechanical Modeling Based on X-ray Computed Tomography Analysis",
+    "year": 2019,
+    "cited": 306,
+    "venue": "Polymers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Injection Molding Process and Properties",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/11/7/1154/pdf?version=1562555537",
+    "abstract": "Additive manufacturing (commonly known as 3D printing) is defined as a family of technologies that deposit and consolidate materials to create a 3D object as opposed to subtractive manufacturing methodologies. Fused deposition modeling (FDM), one of the most popular additive manufacturing techniques, has demonstrated extensive applications in various industries such as medical prosthetics, automotive, and aeronautics. As a thermal process, FDM may introduce internal voids and pores into the fabricated thermoplastics, giving rise to potential reduction on the mechanical properties. This paper aims to investigate the effects of the microscopic pores on the mechanical properties of material fabricated by the FDM process via experiments and micromechanical modeling. More specifically, the three-dimensional microscopic details of the internal pores, such as size, shape, density, and spatial location were quantitatively characterized by X-ray computed tomography (XCT) and, subsequently, experiments were conducted to characterize the mechanical properties of the material. Based on the microscopic details of the pores characterized by XCT, a micromechanical model was proposed to predict the mechanical properties of the material as a function of the porosity (ratio of total volume of the pores over total volume of the material). The prediction results of the mechanical properties were found to be in agreement with the experimental data as well as the existing works. The proposed micromechanical model allows the future designers to predict the elastic properties of the 3D printed material based on the porosity from XCT results. This provides a possibility of saving the experimental cost on destructive testing."
+   },
+   {
+    "id": "https://openalex.org/W2581901598",
+    "doi": "https://doi.org/10.1002/advs.201600404",
+    "title": "Porous Ionic Membrane Based Flexible Humidity Sensor and its Multifunctional Applications",
+    "year": 2017,
+    "cited": 296,
+    "venue": "Advanced Science",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Gas Sensing Nanomaterials and Sensors",
+     "Analytical Chemistry and Sensors"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201600404",
+    "abstract": "A highly flexible porous ionic membrane (PIM) is fabricated from a polyvinyl alcohol/KOH polymer gel electrolyte, showing well-defined 3D porous structure. The conductance of the PIM changes more than 70 times as the relative humidity (RH) increases from 10.89% to 81.75% with fast and reversible response at room temperature. In addition, the PIM-based sensor is insensitive to temperature (0-95 °C) and pressure (0-6.8 kPa) change, which indicates that it can be used as highly selective flexible humidity sensor. A noncontact switch system containing PIM-based sensor is assembled, and results show that the switch responds favorably to RH change caused by an approaching finger. Moreover, an attachable smart label using PIM-based sensor is explored to measure the water contents of human skin, which shows a great linear relationship between the sensitivity of the sensor and the facial water contents measured by a commercial reference device."
+   },
+   {
+    "id": "https://openalex.org/W1969241835",
+    "doi": "https://doi.org/10.1007/s40684-014-0028-x",
+    "title": "Application of 3D printing technology for designing light-weight unmanned aerial vehicle wing structures",
+    "year": 2014,
+    "cited": 294,
+    "venue": "International Journal of Precision Engineering and Manufacturing-Green Technology",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Advanced Materials and Mechanics",
+     "Polymer Foaming and Composites"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40684-014-0028-x.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2587227101",
+    "doi": "https://doi.org/10.1039/c6ra25340g",
+    "title": "Wound dressing application of pH-sensitive carbon dots/chitosan hydrogel",
+    "year": 2017,
+    "cited": 190,
+    "venue": "RSC Advances",
+    "topics": [
+     "Carbon and Quantum Dots Applications",
+     "Graphene and Nanomaterials Applications",
+     "Advanced Nanomaterials in Catalysis"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/ra/c6ra25340g",
+    "abstract": "Monitoring the pH of wounds as an essential diagnosis factor during the healing process."
+   },
+   {
+    "id": "https://openalex.org/W3086537295",
+    "doi": "https://doi.org/10.1016/j.matdes.2020.109147",
+    "title": "Design and additive manufacturing of novel conformal cooling molds",
+    "year": 2020,
+    "cited": 128,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Injection Molding Process and Properties",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127520306821/pdf",
+    "abstract": "Additive manufacturing (AM) offers high-freedom in the design and processing of components with complex internal structures. In this work, a new injection mold with the self-supporting large cooling channel and tailored porous structures was designed to improve cooling efficiency and save AM build costs. The optimized internal supports suppressed the collapse and warpage of large channels, which improves the manufacturability and breaks the geometric constraints of laser powder bed fusion (LPBF). The formable diameter of self-supporting channels is significantly increased (≥20 mm). In comparison to the 8 mm normal-sized channel, the self-supporting 13 mm channel reduces the cooling time of more than 20%. Additionally, the porous diamond structure was designated in the assembly part of the mold to save the materials and build time. To tune the strength, a core-shell composite structure with solid shell surrounding inner porous structures is designed. The influence of the wall thickness on the mechanical property of the composite structure was explored, which guides the specific mold design. Finally, a mold with the above-mentioned novel design was successfully processed by LPBF, which substantiates the manufacturability of innovative design. This work also inspires other industrial applications of AM-processed components with improved performance and functionality."
+   },
+   {
+    "id": "https://openalex.org/W1793293096",
+    "doi": "https://doi.org/10.1089/soro.2014.0002",
+    "title": "Robotic Granular Jamming: Does the Membrane Matter?",
+    "year": 2014,
+    "cited": 118,
+    "venue": "Soft Robotics",
+    "topics": [
+     "Soft Robotics and Applications",
+     "Micro and Nano Robotics",
+     "Electrical and Bioimpedance Tomography"
+    ],
+    "oa_url": "https://qmro.qmul.ac.uk/xmlui/bitstream/123456789/32413/1/Althoefer%20Robotic%20Granular%20Jamming%202014%20Accepted.pdf",
+    "abstract": "Soft robotics for medical, endoscopic applications requires a dexterous and compliant mechanism to increase accessibility and decrease patient injury. However, soft structures do not offer the level of image and platform stability provided by rigid structures. Thus, a variable stiffness mechanism is an ideal solution to reconcile the two requirements of compliance and stability; the mechanism explored here is granular jamming. Granular jamming is a phenomenon in which particulate matter within a membrane can transition from a fluidlike to a solidlike state, based on the level of applied vacuum pressure. In the solidlike jammed state, the conventional assumption is made that granule–granule contacts dominantly contribute to the system's stiffness. Thus, many works have evaluated the effects of different granule types by experimentally varying the sizes, shapes, and material properties of the particles. However, the role of the membrane in determining the possible range of stiffness or the variability of granular jamming has not been well studied. This article investigates the effects and significance of membranes for a granular jamming system. Several membranes were experimentally tested and analyzed in order to find the amount of flexibility and stiffness they provide when the system is in an unjammed and jammed state, respectively. This article presents for the first time that the membrane plays a significant contributing factor in granular jamming stiffness."
+   },
+   {
+    "id": "https://openalex.org/W3214587893",
+    "doi": "https://doi.org/10.1007/s11947-021-02727-7",
+    "title": "Sustainable Packaging Films Composed of Sodium Alginate and Hydrolyzed Collagen: Preparation and Characterization",
+    "year": 2021,
+    "cited": 116,
+    "venue": "Food and Bioprocess Technology",
+    "topics": [
+     "Collagen: Extraction and Characterization",
+     "Nanocomposite Films for Food Packaging",
+     "Meat and Animal Product Quality"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11947-021-02727-7.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2089847292",
+    "doi": "https://doi.org/10.1088/1741-2560/11/4/046014",
+    "title": "CNT/PDMS-based canal-typed ear electrodes for inconspicuous EEG recording",
+    "year": 2014,
+    "cited": 113,
+    "venue": "Journal of Neural Engineering",
+    "topics": [
+     "EEG and Brain-Computer Interfaces",
+     "Neuroscience and Neural Engineering",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1741-2560/11/4/046014/pdf",
+    "abstract": "OBJECTIVE: Current electroencephalogram (EEG) monitoring systems typically require cumbersome electrodes that must be pasted on a scalp, making a private recording of an EEG in a public place difficult. We have developed a small, user friendly, biocompatible electrode with a good appearance for inconspicuous EEG monitoring. APPROACH: We fabricated carbon nanotube polydimethylsiloxane (CNT/PDMS)-based canal-type ear electrodes (CEE) for EEG recording. These electrodes have an additional function, triggering sound stimulation like earphones and recording EEG simultaneously for auditory brain-computer interface (BCI). The electrode performance was evaluated by a standard EEG measurement paradigm, including the detection of alpha rhythms and measurements of N100 auditory evoked potential (AEP), steady-state visual evoked potential (SSVEP) and auditory steady-state response (ASSR). Furthermore, the bio- and skin-compatibility of CNT/PDMS were tested. MAIN RESULTS: All feasibility studies were successfully recorded with the fabricated electrodes, and the biocompatibility of CNT/PDMS was also proved. SIGNIFICANCE: These electrodes could be used to monitor EEG clinically, in ubiquitous health care and in brain-computer interfaces."
+   },
+   {
+    "id": "https://openalex.org/W1860534209",
+    "doi": "https://doi.org/10.1016/j.compstruct.2015.08.110",
+    "title": "Auxetic composite made with multilayer orthogonal structural reinforcement",
+    "year": 2015,
+    "cited": 100,
+    "venue": "Composite Structures",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Innovations in Concrete and Construction Materials",
+     "Advanced Theoretical and Applied Studies in Material Sciences and Geometry"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0263822315008065",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2059253509",
+    "doi": "https://doi.org/10.1038/srep04334",
+    "title": "Oriented MOF-polymer Composite Nanofiber Membranes for High Proton Conductivity at High Temperature and Anhydrous Condition",
+    "year": 2014,
+    "cited": 100,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Advanced battery technologies research",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep04334.pdf",
+    "abstract": "The novel oriented electrospun nanofiber membrane composed of MOFs and SPPESK has been synthesized for proton exchange membrane fuel cell operating at high temperature and anhydrous conditions. It is clear that the oriented nanofiber membrane displays the higher proton conductivity than that of the disordered nanofiber membrane or the membrane prepared by conventional solvent-casting method (without nanofibers). Nanofibers within the membranes are significantly oriented. The proton conductivity of the oriented nanofiber membrane can reach up to (8.2 ± 0.16) × 10(-2) S cm(-1) at 160°C under anhydrous condition for the highly orientation of nanofibers. Moreover, the oxidative stability and resistance of methanol permeability of the nanofibers membrane are obviously improved with an increase in orientation of nanofibers. The observed methanol permeability of 0.707 × 10(-7) cm(2) s(-1) is about 6% of Nafion-115. Consequently, orientated nanofibers membrane is proved to be a promising material as the proton exchange membrane for potential application in direct methanol fuel cells."
+   },
+   {
+    "id": "https://openalex.org/W4376866750",
+    "doi": "https://doi.org/10.1002/adma.202301532",
+    "title": "An Amphiphilic Entangled Network Design Toward Ultratough Hydrogels",
+    "year": 2023,
+    "cited": 95,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202301532",
+    "abstract": "Hydrogels find important roles in biomedicine, wearable electronics, and soft robotics, but their mechanical properties are often unsatisfactory. Conventional tough hydrogel designs are based on hydrophilic networks with sacrificial bonds, while the incorporation of hydrophobic polymers into hydrogels is less well understood. In this work, a hydrogel toughening strategy is demonstrated by introducing a hydrophobic polymer as reinforcement. Semicrystalline hydrophobic polymer chains are \"woven\" into a hydrophilic network via entropy-driven miscibility. In-situ-formed sub-micrometer crystallites stiffen the network, while entanglements between hydrophobic polymer and hydrophilic network enable large deformation before failure. The hydrogels are stiff, tough, and durable at high swelling ratios of 6-10, and the mechanical properties are tunable. Moreover, they can effectively encapsulate both hydrophobic and hydrophilic molecules."
+   },
+   {
+    "id": "https://openalex.org/W3166778911",
+    "doi": "https://doi.org/10.1016/j.carbpol.2021.118286",
+    "title": "Effect of low concentrations of SiO2 nanoparticles on the physical and chemical properties of sodium alginate-based films",
+    "year": 2021,
+    "cited": 86,
+    "venue": "Carbohydrate Polymers",
+    "topics": [
+     "Nanocomposite Films for Food Packaging",
+     "biodegradable polymer synthesis and properties",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0144861721006731-ga1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2094824314",
+    "doi": "https://doi.org/10.1088/0957-4484/23/48/485705",
+    "title": "Mechanical properties of low-density polyethylene filled by graphite nanoplatelets",
+    "year": 2012,
+    "cited": 75,
+    "venue": "Nanotechnology",
+    "topics": [
+     "Polymer crystallization and properties",
+     "Polymer Nanocomposites and Properties",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0957-4484/23/48/485705/pdf",
+    "abstract": "The mechanical properties of GNP/LDPE nanocomposites (graphite nanoplatelets/low density polyethylene) have been investigated, in order to establish the effect of nanoscale reinforcement within the polymer matrix. Results show that the presence of the filler does not involve a change in the microscopic structure of the polymer. However, on a macroscopic scale, GNPs limit the mobility of the polymer chains, resulting in an increase in stiffness for the final composite. Orientation of GNPs within the LDPE matrix is also an important issue that affects mechanical properties and it has been evaluated by testing nanocomposites made by different manufacturing techniques (compression moulding and blown extrusion). The comparison between the experimental data and the Halpin-Tsai model shows that the orientation of GNPs due to the extrusion process leads to values of tensile modulus higher than that obtained with the randomly oriented disposition resulting from the compression moulding technique."
+   },
+   {
+    "id": "https://openalex.org/W2966332887",
+    "doi": "https://doi.org/10.1039/c9ra03641e",
+    "title": "3D printable SiO 2 nanoparticle ink for patient specific bone regeneration",
+    "year": 2019,
+    "cited": 69,
+    "venue": "RSC Advances",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Bone Tissue Engineering Materials",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://doi.org/10.1039/c9ra03641e",
+    "abstract": "nanoparticle hydrogel composite ink to fabricate a bone graft using a patient-specific virtual defect was successfully validated. Hence this type of hydrogel composite ink has huge potential and scope for its application in tissue engineering and nanomedicine."
+   },
+   {
+    "id": "https://openalex.org/W1665704724",
+    "doi": "https://doi.org/10.1007/s10965-015-0834-z",
+    "title": "High moisture strength of cassava starch/polyvinyl alcohol-compatible blends for the packaging and agricultural sectors",
+    "year": 2015,
+    "cited": 66,
+    "venue": "Journal of Polymer Research",
+    "topics": [
+     "biodegradable polymer synthesis and properties",
+     "Nanocomposite Films for Food Packaging",
+     "Natural Fiber Reinforced Composites"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10965-015-0834-z.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2969369735",
+    "doi": "https://doi.org/10.3390/s19163618",
+    "title": "Analysis of Sensitivity, Linearity, Hysteresis, Responsiveness, and Fatigue of Textile Knit Stretch Sensors",
+    "year": 2019,
+    "cited": 65,
+    "venue": "Sensors",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Muscle activation and electromyography studies",
+     "Textile materials and evaluations"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/19/16/3618/pdf?version=1566291071",
+    "abstract": "Wearable technology is widely used for collecting information about the human body and its movement by placing sensors on the body. This paper presents research into electronic textile strain sensors designed specifically for wearable applications which need to be lightweight, robust, and comfortable. In this paper, sixteen stretch sensors, each with different conductive stretch fabrics, are evaluated: EeonTex (Eeonyx Corporation), knitted silver-plated yarn, and knitted spun stainless steel yarn. The sensors' performance is tested using a tensile tester while monitoring their resistance with a microcontroller. Each sensor was analyzed for its sensitivity, linearity, hysteresis, responsiveness, and fatigue through a series of dynamic and static tests. The findings show that for wearable applications a subset of the silver-plated yarn sensors had better ranked performance in terms of sensitivity, linearity, and steady state. EeonTex was found to be the most responsive, and the stainless steel yarn performed the worst, which may be due to the characteristics of the knit samples under test."
+   },
+   {
+    "id": "https://openalex.org/W4376630257",
+    "doi": "https://doi.org/10.3390/polym15092209",
+    "title": "Effect of 3D Printing Process Parameters and Heat Treatment Conditions on the Mechanical Properties and Microstructure of PEEK Parts",
+    "year": 2023,
+    "cited": 62,
+    "venue": "Polymers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Injection Molding Process and Properties",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/15/9/2209/pdf?version=1683370122",
+    "abstract": "Fused deposition modeling (FDM) processed Poly-ether-ether-ketone (PEEK) materials are widely used in aerospace, automobile, biomedical, and electronics industries and other industries due to their excellent mechanical properties, thermal properties, chemical resistance, wear resistance, and biocompatibility, etc. However, the manufacture of PEEK materials and parts utilizing the FDM process faces the challenge of fine-tuning a list of process parameters and heat treatment conditions to reach the best-suiting mechanical properties and microstructures. It is non-trivial to make the selection only according to theoretical analysis while counting on a vast number of experiments is the general situation. Therefore, in this paper, the extrusion rate, filling angle, and printing orientation are investigated to adjust the mechanical properties of 3D-printed PEEK parts; then, a variety of heat treatment conditions were applied to tune the crystallinity and strength. The results show that the best mechanical performance is achieved at 1.0 times the extrusion rate, varied angle cross-fillings with ±10° intervals, and vertical printing. Horizontal printing performs better with reduced warpage. Additionally, both crystallinity and mechanical properties are significantly improved after heat treatment, and the best state is achieved after holding at 300 °C for 2 h. The resulting tensile strength is close to 80% of the strength of injection-molded PEEK parts."
+   },
+   {
+    "id": "https://openalex.org/W4297361093",
+    "doi": "https://doi.org/10.1016/j.fhfh.2022.100094",
+    "title": "Preparation and characterization of sodium alginate films with propolis extract and nano-SiO2",
+    "year": 2022,
+    "cited": 62,
+    "venue": "Food Hydrocolloids for Health",
+    "topics": [
+     "Nanocomposite Films for Food Packaging",
+     "Microencapsulation and Drying Processes",
+     "Bee Products Chemical Analysis"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2667025922000413/pdf",
+    "abstract": "The objective of this work was to evaluate the effect of green propolis extract (PE) and silica nanoparticles (SiO 2 ) on the structure of sodium alginate-based films (SA), as well as their physical and antioxidant properties. Control samples (only SA), films with SA and PE (SA/PE3%), as well as films simultaneously containing SA, PE and SiO 2 (SA/PE3%/SiO 2 5% and SA/PE3%/SiO 2 10%) were systematically evaluated. Scanning electron microscopy revealed homogenous distribution of PE and SiO 2 within the film matrix. The addition of both compounds increased tensile strength from 12.9 ± 1.2 (control) to 19.6 ± 1.4 MPa (SA/PE3%/SiO 2 10%), without noting any extreme changes in elongation at break or modulus of elasticity. Additionally, the incorporation of PE provided an outstanding UV light blocking effect, and strong DPPH radical-scavenging activity for all samples, therefore, suggesting their potential for future application in active food packaging."
+   },
+   {
+    "id": "https://openalex.org/W4289890861",
+    "doi": "https://doi.org/10.1016/j.apmate.2022.100076",
+    "title": "Additive manufacturing SiC-reinforced maraging steel: Parameter optimisation, microstructure and properties",
+    "year": 2022,
+    "cited": 62,
+    "venue": "Advanced Powder Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2772834X22000598/pdf",
+    "abstract": "The unique deposition manner of additive manufacturing (AM) allows the near-net-shaping of components with multiple materials configurations and complex geometries, which sheds light on the process of high-performance metal matrix composites (MMCs). This work explores laser powder bed fusion (LPBF) AM of SiC-reinforced maraging steel MMCs to consolidate the merits of both ceramics and metal matrix for improving overall properties. The laser processing parameters were systematically optimised based on the density, roughness and hardness of the deposited samples. The effects of SiC content on the microstructures, mechanical properties, tribological performance, and wear resistance are elucidated. SiC particles are refined with uniform distribution in the metal matrix after laser processing. The highest tensile strength reaches 1611 ​MPa together with an elongation of about 10.1% with 3 ​vol% SiC addition. The tribological performance of MMCs is investigated by studying the coefficient of friction (COF), wear rate, and worn morphology. The COF has been slightly reduced with the SiC addition, and the wear rate of MS reduced from 3.25 ​× ​10−5 to 1.72 ​× ​10−5 mm3/Nm with the 12 ​vol% SiC addition. The underlying wear mechanisms are also investigated. Besides, the corrosion behaviour of MMCs is also investigated; the addition of SiC (≥6 ​vol%) has improved the corrosion properties of the matrix."
+   },
+   {
+    "id": "https://openalex.org/W4200604238",
+    "doi": "https://doi.org/10.1016/j.crfs.2021.12.012",
+    "title": "Improving the mechanical properties and thermal stability of sodium alginate/hydrolyzed collagen films through the incorporation of SiO2",
+    "year": 2021,
+    "cited": 59,
+    "venue": "Current Research in Food Science",
+    "topics": [
+     "Collagen: Extraction and Characterization",
+     "Nanocomposite Films for Food Packaging",
+     "Silk-based biomaterials and applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2665927121001258/pdf",
+    "abstract": "Biopolymer-based films have become leading alternatives to traditional fossil-based packaging plastics. Among the countless types of biopolymers with potential for such applications, films containing hydrolyzed collagen in their composition were scarcely explored. This study determined the effect of different loads of nano-SiO2 (0, 2, 6, 8 and 10% w/w of sodium alginate) in the sodium alginate (SA) and hydrolyzed collagen (HC) blend films in terms of structure, thickness, mechanical properties, and thermal stability. The results indicated an improvement in the general mechanical and thermal behavior. Tensile strength increased from 18.2 MPa (control sample) to 25.4 MPa for the SA/HC film incorporated with 10% nano-SiO2. In the same condition, the film's elongation at break improved impressively (from 19.5 to 35.8%). Thermal stability improved slightly for all proportions of nano-SiO2. Therefore, the addition of nano-SiO2 can be an easy and simple strategy to improve crucial properties of SA/HC blend films, increasing its performance for future application as sustainable packaging."
+   },
+   {
+    "id": "https://openalex.org/W2538313897",
+    "doi": "https://doi.org/10.2991/icadme-16.2016.66",
+    "title": "Microstructure and Mechanical Properties of 18Ni-300 Maraging Steel Fabricated by Selective Laser Melting",
+    "year": 2016,
+    "cited": 54,
+    "venue": null,
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.atlantis-press.com/article/25862785.pdf",
+    "abstract": "High-strength 18Ni-300 maraging steel parts were fabricated by selective laser melting (SLM) additive manufacturing.Aging treatment at 490 ºC for 6 hours was applied for improving the mechanical properties of SLM fabricated parts.The microstructure and properties of the as-fabricated SLM 18Ni-300 parts were carefully characterized and analyzed.The results show that the relatively low surface roughness, with 4.16μm for horizontal surface and 4.79μm for vertical surface, certified the high accuracy of forming process.The almost fully dense microstructures of the as-fabricated SLM specimens were consisted of sub-micron dendritic cellular structures for horizontal cross-section and elongated acicular structures for vertical cross section.Due to precipitated-phase strengthening, the hardness increased from 35~36 HRC to 51~55 HRC after heat treatment.Meanwhile, the ultimate tensile strength (Rm) increases from 1165 MPa to 2014 MPa, which increased by about 73%; while the break elongation (ε) was reduced from 12.44% to 3.28%, owing to the increased embrittlement caused by the heat treatment.The substantial plastic deformation and dispersively distributed dimples in the fracture morphologies indicated a ductile fracture of as-fabricated tensile specimens, while the age-hardened tensile specimen encountered with a main fracture mode of brittle fracture."
+   },
+   {
+    "id": "https://openalex.org/W4309325741",
+    "doi": "https://doi.org/10.1080/15440478.2022.2143979",
+    "title": "Polylactic Acid (PLA) Reinforced with Date Palm Sheath Fiber Bio-Composites: Evaluation of Fiber Density, Geometry, and Content on the Physical and Mechanical Properties",
+    "year": 2022,
+    "cited": 51,
+    "venue": "Journal of Natural Fibers",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "Nanocomposite Films for Food Packaging",
+     "Soil Mechanics and Vehicle Dynamics"
+    ],
+    "oa_url": "https://www.tandfonline.com/doi/epdf/10.1080/15440478.2022.2143979?needAccess=true&role=button",
+    "abstract": "Significant interest for utilizing and processing natural fibers (NF) to develop sustainable and fully biodegradable composites evolved as the global environmental concerns upsurge. Date palm tree (DPT) accounts for more than 2.8 million tons of waste annually, making it the most abundant agricultural biomass waste in the MENA region. This study investigates the effect of date palm fiber (DPF) density, diameter size and content on both the mechanical and physical properties of polylactic acid (PLA) reinforced DPF bio-composite. The bio-composites are developed using melt-mixing technique which is followed by compression molding. The influence of the mechanical properties is investigated by evaluating the tensile, flexural and impact strengths. Meanwhile bio-composite thickness swelling (TS), moisture content (MC) and water absorption (WA) characteristics are evaluated. Bio-composite microstructures are examined using SEM to investigate the interfacial bonding between PLA matrix and DPF. Results showed that at 40 wt.% DPF, the TS, MC, and WA were the highest demonstrating an increase of 4.10%, 4.95%, and 8.22%, respectively. Although the results demonstrated a decrease in mechanical properties as DPF content increased (depending on DPF geometry), the results indicate that the developed technologies could be commercialized under the waste management scheme for non-structural applications."
+   },
+   {
+    "id": "https://openalex.org/W4296068326",
+    "doi": "https://doi.org/10.1016/j.carbpol.2022.120117",
+    "title": "Microstructural architecture and mechanical properties of empowered cellulose-based aerogel composites via TEMPO-free oxidation",
+    "year": 2022,
+    "cited": 50,
+    "venue": "Carbohydrate Polymers",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Aerogels and thermal insulation",
+     "Surface Modification and Superhydrophobicity"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0144861722010220-ga1_lrg.jpg",
+    "abstract": "This paper describes the development of cellulose-based aerogel composites enhanced via a new refinement process. The behaviour and microstructure of treated cellulose aerogel composites are examined including, how the constituents interact and contribute to the overall aerogel composite mechanism. The various forms of cellulose such as treated microcrystalline cellulose (MCT), nanofibrillated cellulose (NFC) and nanocrystalline cellulose (NCC) are also compared. Treated cellulose/Polyvinyl alcohol (PVA) aerogel composites show reinforced microstructural systems that enhance the mechanical property of the aerogels. The specific modulus of treated cellulose aerogels could be increased five-fold compared to the stiffness of untreated cellulose aerogels, reaching specific moduli of 21 kNm/kg. The specific strength of treated cellulose aerogels was also increased by four folds at 1.7 kNm/kg. These results provide insight into the understanding of the morphology and structure of treated cellulose-based aerogel composites."
+   },
+   {
+    "id": "https://openalex.org/W2996414975",
+    "doi": "https://doi.org/10.1088/2053-1591/ab6389",
+    "title": "Role of Magnetite (Fe3O4)-Titania (TiO2) hybrid particle on mechanical, thermal and microwave attenuation behaviour of flexible natural rubber composite in X and Ku band frequencies",
+    "year": 2019,
+    "cited": 50,
+    "venue": "Materials Research Express",
+    "topics": [
+     "Electromagnetic wave absorption materials",
+     "Polymer Nanocomposites and Properties",
+     "Structural Behavior of Reinforced Concrete"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2053-1591/ab6389/pdf",
+    "abstract": "Abstract This current work aims to prepare a flexible elastomeric microwave shielding composite material with good mechanical and thermal properties by dispersing Fe3O4 and titania hybrid nano-particles. The primary aim of this research work is to prepare a high strength and high thermal stable flexible natural rubber composite with higher wave attenuation coefficient against ‘X (8–12 GHz)’ and ‘Ku (12–18 GHz)’ band microwave frequencies. The Fe3O4-Titania hybrids were prepared using low energy ball milling and the hybridization effect was confirmed using transmission electron spectroscopy. The prepared Fe3O4-Titania hybrids were surface-treated using 3-Aminopropyltriethoxysilane via wet solution method to avoid agglomeration. The natural rubber flexible composite was made by two-roll milling with recommended process parameters. The mechanical and thermal results showed improved tensile strength, modulus and mass decomposition. The highest tensile strength of 60 MPa was observed for composite contains 1.0 vol% of Fe3O4–TiO2 particles. Similarly, the highest thermal stability of 385 °C is observed for composite contain Fe3O4–TiO2 particles. The X and Ku band microwave attenuation behaviour revealed the highest attenuation of 28.1 dB for 1.0 vol% of Fe3O4–TiO2 particle dispersed rubber composite in Ku band frequency. These mechanically toughened thermally stable and high microwave attenuation flexible composites could be used as EMI shielding material at antennae and other telecommunication devices where electromagnetic wave interference creates crucial issues."
+   },
+   {
+    "id": "https://openalex.org/W4289261301",
+    "doi": "https://doi.org/10.1016/j.jmrt.2022.07.126",
+    "title": "Effect of fast-frequency pulsed waveforms on the microstructure and mechanical properties of Ti–6Al–4V alloy welded by FFP-TIG",
+    "year": 2022,
+    "cited": 49,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Welding Techniques and Residual Stresses",
+     "Metal and Thin Film Mechanics",
+     "Surface Treatment and Residual Stress"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785422011656/pdf",
+    "abstract": "Ti–6Al–4V alloys have been widely adopted because of their good mechanical properties. TIG welding is a common method for Ti–6Al–4V alloys. However, the high heat input of conventional TIG can lead to a coarsening of grains within Ti–6Al–4V and thus a weaker Ti–6Al–4V weld. This study presents a novel fast-frequency pulsed tungsten inert gas (FFP-TIG) welding technology to fabricate a high-reliability Ti–6Al–4V weld. The effects of fast-frequency pulsed waveforms on microstructures and mechanical properties of Ti–6Al–4V weld samples were uncovered. The arc core diameter of FFP-TIG technology was reduced by 32%–36% compared with that of conventional TIG. The adoption of FFP-TIG decreased the average grain sizes and acicular martensite α′ within the Ti–6Al–4V weld by 47.7% and 40.5%, respectively, which further enhanced the mechanical properties of the corresponding weldments. The hardness, tensile strength, and elongation of Ti–6Al–4V weldments obtained by FFP-TIG were improved by 10.35%, 13.84%, and 304.61% compared with those obtained by conventional TIG, achieving the highest value of 373 HV, 1018.97 MPa, and 4.301%, respectively. This study provides fresh insight into the development and application of high-reliability titanium alloy weldments commonly used in the aviation industry."
+   },
+   {
+    "id": "https://openalex.org/W4283807865",
+    "doi": "https://doi.org/10.1016/j.polymertesting.2022.107686",
+    "title": "Characterization and chemical modification of pullulan produced from a submerged culture of Aureobasidium pullulans ATCC 15233",
+    "year": 2022,
+    "cited": 48,
+    "venue": "Polymer Testing",
+    "topics": [
+     "Polysaccharides Composition and Applications",
+     "biodegradable polymer synthesis and properties",
+     "Nanocomposite Films for Food Packaging"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0142941822002094/pdf",
+    "abstract": "In this paper, the pullulan produced by A. pullulans ATCC 15233 was characterized and chemically modified. The pullulan derivative was synthesized with an acetylation reaction with a degree of substitution (DS) of 2.90. Its structural elucidation was performed using infrared (IR) and nuclear magnetic resonance (NMR) spectroscopy. The results showed signs of α (1–4) and α (1–6) glycosidic bonds, typical of pullulan. The molecular weight (MW) of pullulan was 93.47 kDa. The thermal analysis conducted indicated increased thermal stability (Td) and glass transition temperature (Tg) due to acetylation. Homogeneous morphologies of the samples under analysis were obtained using scanning electron microscopy (SEM). The mechanical properties of the pullulan film exhibited tensile strength (TS) values of 1.70 ± 0.48 MPa and an elongation at break (% E) of 11.89%. Likewise, the pullulan acetate film recorded a TS of 1.23 ± 0.09 MPa and a % E of 1.25%. The results suggest that the physicochemical properties of biosynthesized pullulan and pullulan derivatives can be considered in the development of biomaterials."
+   },
+   {
+    "id": "https://openalex.org/W3037068263",
+    "doi": "https://doi.org/10.1021/acsami.0c07684",
+    "title": "Ultra-High Actuation Stress Polymer Actuators as Light-Driven Artificial Muscles",
+    "year": 2020,
+    "cited": 48,
+    "venue": "ACS Applied Materials & Interfaces",
+    "topics": [
+     "Polymer composites and self-healing",
+     "Advanced Materials and Mechanics",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://pure.tue.nl/ws/files/173793949/acsami.0c07684.pdf",
+    "abstract": "Remotely addressable actuators are of great interest in fields like microrobotics and smart textiles because of their simplicity, integrity, flexibility, and lightweight. However, most of the existing actuator systems are composed of complex assemblies and/or offer a low response rate. Here, the actuation performance of a light-driven, highly oriented film based on ultra-high molecular weight polyethylene (UHMW-PE), containing a photo-responsive additive, 2-(2 H -benzotriazol-2-yl)-4,6-ditertpentylphenol (BZT), is reported. The material exhibits a fast (<1 s) and reversible photo-induced thermal response upon exposure to UV light, which results in an exceptionally high actuation stress (∼70 MPa) at a low strain (<0.1%). The proposed actuation mechanism originates from light absorption by BZT and energy transfer into heat, in combination with the intrinsic high stiffness (∼80 GPa) and a negative thermal expansion (NTE) of the oriented polymer films. This unique set of properties of this actuator, in particular the very high specific actuation stress, compared to existing organic and inorganic actuators, and the remote optical actuation, promises impact in fields related to soft robotics, composites, medical devices, optics, prosthetics, and smart textiles."
+   },
+   {
+    "id": "https://openalex.org/W4388927211",
+    "doi": "https://doi.org/10.1126/sciadv.adi1735",
+    "title": "Elastomeric vitrimers from designer polyhydroxyalkanoates with recyclability and biodegradability",
+    "year": 2023,
+    "cited": 45,
+    "venue": "Science Advances",
+    "topics": [
+     "Polymer composites and self-healing",
+     "biodegradable polymer synthesis and properties",
+     "Lignin and Wood Chemistry"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adi1735?download=true",
+    "abstract": "Cross-linked elastomers are stretchable materials that typically are not recyclable or biodegradable. Medium-chain-length polyhydroxyalkanoates (mcl-PHAs) are soft and ductile, making these bio-based polymers good candidates for biodegradable elastomers. Elasticity is commonly imparted by a cross-linked network structure, and covalent adaptable networks have emerged as a solution to prepare recyclable thermosets via triggered rearrangement of dynamic covalent bonds. Here, we develop biodegradable and recyclable elastomers by chemically installing the covalent adaptable network within biologically produced mcl-PHAs. Specifically, an engineered strain of Pseudomonas putida was used to produce mcl-PHAs containing pendent terminal alkenes as chemical handles for postfunctionalization. Thiol-ene chemistry was used to incorporate boronic ester (BE) cross-links, resulting in PHA-based vitrimers. mcl-PHAs cross-linked with BE at low density (<6 mole %) affords a soft, elastomeric material that demonstrates thermal reprocessability, biodegradability, and denetworking at end of life. The mechanical properties show potential for applications including adhesives and soft, biodegradable robotics and electronics."
+   },
+   {
+    "id": "https://openalex.org/W4310564853",
+    "doi": "https://doi.org/10.1002/adhm.202202401",
+    "title": "One‐Step Preparation of an Injectable Hydrogel Scaffold System Capable of Sequential Dual‐Growth Factor Release to Maximize Bone Regeneration",
+    "year": 2022,
+    "cited": 42,
+    "venue": "Advanced Healthcare Materials",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "3D Printing in Biomedical Research",
+     "Graphene and Nanomaterials Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adhm.202202401",
+    "abstract": "Numerous growth factors are involved in the natural bone healing process, which is precisely controlled in a time- and concentration-dependent manner. Mimicking the secretion pattern of growth factors could be an effective means to maximize the bone regeneration effect. However, achieving the sequential delivery of various growth factors without the use of multiple materials or complex scaffold designs is challenging. Herein, an injectable poly(organophosphazene) hydrogel scaffold (IPS) encapsulating bone morphogenetic protein (BMP)-2 and TGFβ-1 (IPS_BT) is studied to mimic the sequential secretion of growth factors involved in natural bone healing. The IPS_BT system is designed to release TGFβ-1 slowly while retaining BMP-2 for a longer period of time. When IPS_BT is injected in vivo, the hydrogel is replaced by bone tissue. In addition, angiogenic (CD31 and alpha-smooth muscle actin (α-SMA)) and stemness (Nanog and SOX2) markers are highly upregulated in the early stages of bone regeneration. The IPS system developed here has promising applications in tissue engineering because 1) various amounts of the growth factors can be loaded in one step, 2) the release pattern of each growth factor can be controlled via differences in their molecular interactions, and 3) the injected IPS can be degraded and replaced with regenerated bone tissue."
+   },
+   {
+    "id": "https://openalex.org/W3139467581",
+    "doi": "https://doi.org/10.3390/ijms22062886",
+    "title": "Enhanced Regeneration of Vascularized Adipose Tissue with Dual 3D-Printed Elastic Polymer/dECM Hydrogel Complex",
+    "year": 2021,
+    "cited": 42,
+    "venue": "International Journal of Molecular Sciences",
+    "topics": [
+     "Tissue Engineering and Regenerative Medicine",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "3D Printing in Biomedical Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1422-0067/22/6/2886/pdf?version=1616157411",
+    "abstract": "A flexible and bioactive scaffold for adipose tissue engineering was fabricated and evaluated by dual nozzle three-dimensional printing. A highly elastic poly (L-lactide-co-ε-caprolactone) (PLCL) copolymer, which acted as the main scaffolding, and human adipose tissue derived decellularized extracellular matrix (dECM) hydrogels were used as the printing inks to form the scaffolds. To prepare the three-dimensional (3D) scaffolds, the PLCL co-polymer was printed with a hot melting extruder system while retaining its physical character, similar to adipose tissue, which is beneficial for regeneration. Moreover, to promote adipogenic differentiation and angiogenesis, adipose tissue-derived dECM was used. To optimize the printability of the hydrogel inks, a mixture of collagen type I and dECM hydrogels was used. Furthermore, we examined the adipose tissue formation and angiogenesis of the PLCL/dECM complex scaffold. From in vivo experiments, it was observed that the matured adipose-like tissue structures were abundant, and the number of matured capillaries was remarkably higher in the hydrogel-PLCL group than in the PLCL-only group. Moreover, a higher expression of M2 macrophages, which are known to be involved in the remodeling and regeneration of tissues, was detected in the hydrogel-PLCL group by immunofluorescence analysis. Based on these results, we suggest that our PLCL/dECM fabricated by a dual 3D printing system will be useful for the treatment of large volume fat tissue regeneration."
+   },
+   {
+    "id": "https://openalex.org/W4311825272",
+    "doi": "https://doi.org/10.1002/smll.202203464",
+    "title": "Thermo‐Responsive Nanocomposite Bioink with Growth‐Factor Holding and its Application to Bone Regeneration",
+    "year": 2022,
+    "cited": 40,
+    "venue": "Small",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202203464",
+    "abstract": "Three-dimensional (3D) bioprinting, which is being increasingly used in tissue engineering, requires bioinks with tunable mechanical properties, biological activities, and mechanical strength for in vivo implantation. Herein, a growth-factor-holding poly(organophosphazene)-based thermo-responsive nanocomposite (TNC) bioink system is developed. The mechanical properties of the TNC bioink are easily controlled within a moderate temperature range (5-37 °C). During printing, the mechanical properties of the TNC bioink, which determine the 3D printing resolution, can be tuned by varying the temperature (15-30 °C). After printing, TNC bioink scaffolds exhibit maximum stiffness at 37 °C. Additionally, because of its shear-thinning and self-healing properties, TNC bioinks can be extruded smoothly, demonstrating good printing outcomes. TNC bioink loaded with bone morphogenetic protein-2 (BMP-2) and transforming growth factor-beta1 (TGF-β1), key growth factors for osteogenesis, is used to print a scaffold that can stimulate biological activity. A biological scaffold printed using TNC bioink loaded with both growth factors and implanted on a rat calvarial defect model reveals significantly improved bone regenerative effects. The TNC bioink system is a promising next-generation bioink platform because its mechanical properties can be tuned easily for high-resolution 3D bioprinting with long-term stability and its growth-factor holding capability has strong clinical applicability."
+   },
+   {
+    "id": "https://openalex.org/W3015584800",
+    "doi": "https://doi.org/10.1002/adfm.202000737",
+    "title": "Catalyst Free Silicone Sealants That Cure Underwater",
+    "year": 2020,
+    "cited": 39,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Silicone and Siloxane Chemistry",
+     "Polymer composites and self-healing",
+     "Synthesis and properties of polymers"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202000737",
+    "abstract": "Abstract Silicone sealants and adhesives are widely used to prevent the ingress of water. However, silicones must normally be cured in air, as excess water inhibits or prevents cure from occurring. It is reported that aqueous solutions of the aliphatic aldehydes glutaraldehyde, glyoxal or, particularly, formaldehyde rapidly react without catalysts with a variety of aminopropyl‐modified silicone polymers to give silicone elastomers, even underwater. These products, whose properties are readily tailored by controlling the density of amino groups in the starting materials, may be 3D printed, or used both as adhesives and sealants in air or water."
+   },
+   {
+    "id": "https://openalex.org/W3092468210",
+    "doi": "https://doi.org/10.1016/j.jmrt.2020.09.132",
+    "title": "Energy characteristics and mechanical properties of cyclotrimethylenetrinitramine (RDX)-based insensitive high-energy propellant",
+    "year": 2020,
+    "cited": 36,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Energetic Materials and Combustion",
+     "Thermal and Kinetic Analysis",
+     "Rocket and propulsion systems research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785420318597/pdf",
+    "abstract": "In order to improve the energy performance and mechanical properties of insensitive high-energy propellants, cyclotrimethylenetrinitramine (RDX)-based insensitive high-energy propellant with nitrocellulose (NC) and glycidyl azide polymer-energetic thermoplastic elastomer (GAP-ETPE) blends as the binder was prepared by solvent method. The effects of GAP-ETPE/NC ratio and RDX content on the energy properties of propellants were analyzed by numerical calculations. The effects of GAP-ETPE/NC ratio, RDX particle size and RDX content on the mechanical properties of propellants were studied by compression test, impact test and solid surface properties test. The impact sensitivity and friction sensitivity of all the propellant compositions were tested. The theoretical calculation results showed that the introduction of GAP-ETPE into propellant significantly decreased the explosion temperature and increased the specific volume. The density, compression strength, and surface energy of the propellant were gradually decreased with increasing the GAP-ETPE/NC ratio, and the impact strength was increased gradually as well. The mechanical properties and surface energy of the propellant were improved greatly when the RDX particles were smaller. The studied propellants showed a linear increase in the propellant force and explosion temperature with increasing the RDX content. However, increasing the RDX content significantly reduced the impact strength and surface energy. Mechanical reinforcement with solid fillers increased the compression strength and propellant density to a certain degree. Compared with the standard propellants SF-3, the prepared propellant composition is insensitive to the impact and friction."
+   },
+   {
+    "id": "https://openalex.org/W3017116674",
+    "doi": "https://doi.org/10.3390/app10072608",
+    "title": "A Clay-Based Geopolymer in Loess Soil Stabilization",
+    "year": 2020,
+    "cited": 36,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Geotechnical Engineering and Soil Stabilization",
+     "Landfill Environmental Impact Studies",
+     "Grouting, Rheology, and Soil Mechanics"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/10/7/2608/pdf?version=1586501704",
+    "abstract": "Soil erosion has environmental and socioeconomic significances. Loess soils cover about 10% of the global land area. Most of these soils are subjected to increased land uses such as unpaved roads, which increase soil destruction and dust emission to the atmosphere. There is a significant interest in applications for dust control and soil stabilization. Application of geopolymers may significantly reduce environmental impacts. This study examines the use of a metakaolin-based geopolymer for dust control and soil stabilization in a semi-arid loess soil. The application of the geopolymer for dust control in comparison with common products (brine, bitumen, polyvinyl acetate-PVA) resulted in no dust emission. As a soil stabilizer, the geopolymer tested in this study provides remarkably good results in the tensile test. The most successful composition of the geopolymer, which is activation solution of sodium silicate and sodium hydroxide (NaOH) together with an addition of 30% metakaolin, obtained soil strength of 23,900 N after 28 days. The attempt to replace NaOH with lime (CaO) in the activation solution was far inferior to the original composition. There is a strong potential to develop natural soil stabilizers from a mineral base that even surpass their capabilities over existing synthetic stabilizers."
+   },
+   {
+    "id": "https://openalex.org/W2943841838",
+    "doi": "https://doi.org/10.3390/ma12091493",
+    "title": "Formability Limits, Fractography and Fracture Toughness in Sheet Metal Forming",
+    "year": 2019,
+    "cited": 36,
+    "venue": "Materials",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/12/9/1493/pdf?version=1557298528",
+    "abstract": "This paper is focused on the utilisation of double edge notched tension, staggered and shear tests to determine fracture toughness and the formability limits by fracture in principal strain space. The experiments were performed in test specimens with different geometries and ligament angles, and the influence of strain hardening was taken into consideration by selecting two materials (aluminium AA1050-H111 and pure copper), with very different strain hardening exponents. Results are plotted in principal strain space, and the discussion is focused on the link between formability limits, fracture toughness and macroscopic fractography characteristics of the specimens that fail by mode I, mode II or mixed-mode."
+   },
+   {
+    "id": "https://openalex.org/W2136139980",
+    "doi": "https://doi.org/10.1155/2015/367194",
+    "title": "Feedforward Neural Network for Force Coding of an MRI-Compatible Tactile Sensor Array Based on Fiber Bragg Grating",
+    "year": 2015,
+    "cited": 35,
+    "venue": "Journal of Sensors",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Tactile and Sensory Interactions",
+     "Advanced Fiber Optic Sensors"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/js/2015/367194.pdf",
+    "abstract": "This work shows the development and characterization of a fiber optic tactile sensor based on Fiber Bragg Grating (FBG) technology. The sensor is a 3 × 3 array of FBGs encapsulated in a PDMS compliant polymer. The strain experienced by each FBG is transduced into a Bragg wavelength shift and the inverse characteristics of the sensor were computed by means of a feedforward neural network. A 21 mN RMSE error was achieved in estimating the force over the 8 N experimented load range while including all probing sites in the neural network training procedure, whereas the median force RMSE was 199 mN across the 200 instances of a Monte Carlo randomized selection of experimental sessions to evaluate the calibration under generalized probing conditions. The static metrological properties and the possibility to fabricate sensors with relatively high spatial resolution make the proposed design attractive for the sensorization of robotic hands. Furthermore, the proved MRI-compatibility of the sensor opens other application scenarios, such as the possibility to employ the array for force measurement during functional MRI-measured brain activation."
+   },
+   {
+    "id": "https://openalex.org/W2911820817",
+    "doi": "https://doi.org/10.1016/j.compositesa.2019.01.016",
+    "title": "Towards the combination of automated lay-up and stamp forming for consolidation of tailored composite components",
+    "year": 2019,
+    "cited": 33,
+    "venue": "Composites Part A Applied Science and Manufacturing",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Metal Forming Simulation Techniques",
+     "Epoxy Resin Curing Processes"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359835X19300181",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2600618942",
+    "doi": "https://doi.org/10.1039/c7ra01750b",
+    "title": "Continuous fabrication of multi-stimuli responsive graphene oxide composite hydrogel fibres by microfluidics",
+    "year": 2017,
+    "cited": 30,
+    "venue": "RSC Advances",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Dielectric materials and actuators",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/ra/c7ra01750b",
+    "abstract": "Stimuli responsive graphene oxide composite hydrogel fibres were prepared via a microfluidic spinning process, and exhibit both thermo-triggered volume-phase transitions and electrically triggered bending behaviours."
+   },
+   {
+    "id": "https://openalex.org/W4225134833",
+    "doi": "https://doi.org/10.1088/1748-605x/ac6b72",
+    "title": "Dental resin composites with improved antibacterial and mineralization properties via incorporating zinc/strontium-doped hydroxyapatite as functional fillers",
+    "year": 2022,
+    "cited": 29,
+    "venue": "Biomedical Materials",
+    "topics": [
+     "Dental materials and restorations",
+     "Bone Tissue Engineering Materials",
+     "Dental Erosion and Treatment"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1748-605X/ac6b72/pdf",
+    "abstract": "Abstract This study intends to improve the antibacterial and mineralization performance of photocurable dental resin composites (DRCs) to reduce the possibility of repair failure caused by secondary caries. To the end, functionalized hydroxyapatite (HAp), including Zn-doped (Zn/HAp) and Sr-doped HAp (Sr/HAp), were added into the bisphenol A glycidyl methacrylate and triethylene glycol dimethacrylate mixture, providing the DRCs with antibacterial and mineralization capacity, respectively. By controlling the total amount of inorganic filler at 70 wt%, these HAp powders were introduced into the resin matrix with barium glass powder (BaGP), while the ratios of HAp to aGP varied from 0:70 to 8:62. And the 8 wt% of HAp could be pure HAp, Zn/HAp, Sr/HAp, or Zn/HAp +Sr/HAp in different ratios (i.e. 2:6, 4:4, 6:2). Though the fillers varied, the obtained DRCs displayed similar micro-morphology, flexural strength (∼110 MPa) and modulus (∼7 GPa), and Vickers hardness (∼65). When the doping amounts of Sr 2+ /Zn 2+ reached 15 mol% of Ca 2+ in the Sr/HAp and Zn/HAp, the DRCs displayed a high antibacterial activity by killing ∼95% Staphylococcus aureus , and induced rich mineral deposition on surface in simulated body fluid. The incorporation of the Zn/HAp and Sr/HAp into the DRCs did not cause significant cytotoxicity, with L929 fibroblasts remaining >99% viability as cultured in extracts made from the DRCs. Therein, the DRC preparations containing both Zn/HAp and Sr/HAp have achieved improvements in both the biomineralization and antibacterial performance, as well as, having sufficient mechanical properties and excellent biocompatibility for dental restoration."
+   },
+   {
+    "id": "https://openalex.org/W4310072712",
+    "doi": "https://doi.org/10.1016/j.foodres.2022.112217",
+    "title": "Food-Package-Processing relationships in emerging technologies: Ultrasound effects on polyamide multilayer packaging in contact with different food simulants",
+    "year": 2022,
+    "cited": 28,
+    "venue": "Food Research International",
+    "topics": [
+     "Nanocomposite Films for Food Packaging",
+     "Material Properties and Processing",
+     "Microbial Inactivation Methods"
+    ],
+    "oa_url": "https://hal.science/hal-03878862/document",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4283204081",
+    "doi": "https://doi.org/10.1007/s11071-022-07613-1",
+    "title": "Experimental and numerical investigation of a vertical vibration isolator for seismic applications",
+    "year": 2022,
+    "cited": 27,
+    "venue": "Nonlinear Dynamics",
+    "topics": [
+     "Seismic Performance and Analysis",
+     "Vibration Control and Rheological Fluids",
+     "Geophysics and Sensor Technology"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11071-022-07613-1.pdf",
+    "abstract": "Abstract In near-fault seismic zones, the vertical acceleration experienced during a strong event can be greater than horizontal acceleration. Methods to reduce horizontal acceleration are applied in various forms and are in common use. However, methods to reduce vertical acceleration, and practical protection systems for these applications, remain elusive. One strategy to protect structures, which has been demonstrated to be effective in situations where the excitation is horizontal, is to isolate the structure. For vertical excitations, this is difficult due to the need to maintain sufficient stiffness and strength in the direction of gravitational loads. The need to maintain high stiffness for gravity loading while allowing flexibility for isolation during earthquakes has led to research on the use of High-Static-Low-Dynamic Stiffness Systems (HSLDSS) and in particular Quasi-Zero Stiffness Systems (QZSS), which have zero equivalent stiffness in the equilibrium position. Although effective, the QZSS is sensitive to mistuning and prone to large deformations for relatively small increments in static load for building applications. This paper presents the results of an analytical and experimental study in which a HSLDSS isolation system carrying a payload is subject to vertical base excitation using sinusoidal as well as actual, scaled earthquake signals. Static loading tests are also presented. This isolation system consists of rigid rotating arms, horizontal and vertical springs and a vertical damper. By a suitable selection of parameters this could also serve as a QZSS. Results show that both the QZSS and HSLDSS can significantly reduce the magnification of the force as well as the transmission of the acceleration and that the HSLDSS retains stiffness at the equilibrium position. The numerical model includes friction and is solved using direct integration of the equation of motion. Experimental results from a scale model agree well theoretical predictions."
+   },
+   {
+    "id": "https://openalex.org/W2983230141",
+    "doi": "https://doi.org/10.1016/j.jfoodeng.2019.109812",
+    "title": "Influence of high-pressure processing on morphological, thermal and mechanical properties of retort and metallized flexible packaging",
+    "year": 2019,
+    "cited": 27,
+    "venue": "Journal of Food Engineering",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Nanomaterials and Printing Technologies",
+     "Electronic Packaging and Soldering Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S026087741930456X/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2792308579",
+    "doi": "https://doi.org/10.4236/ojmetal.2018.81001",
+    "title": "Microstructural and Mechanical Characterization of Chicken Eggshell-Reinforced Al6061 Matrix Composites",
+    "year": 2018,
+    "cited": 27,
+    "venue": "Open Journal of Metal",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "http://www.scirp.org/journal/PaperDownload.aspx?paperID=83313",
+    "abstract": "Chicken eggshell (ES) is an aviculture byproduct that has been used as the reinforcement in the present study which is recorded worldwide as one of the vilest environmental problems. The present work deals with development of ES-reinforced Al6061 matrix composites by stir-casting process with 0 to 10 wt% of reinforcement at an interval of 2 wt%. The microstructures of the fabricated composites were examined by optical and scanning electron microscopes with energy dispersive spectrometer (SEM/EDS). Optical micrographs divulge the uniform distribution of reinforcing particles in the matrix while X-ray diffraction (XRD) patterns ensure the dispersion of ES particles reinforcement in Al6061 matrix. The properties measured include density, tensile strength and hardness values. The tensile strength and hardness of composites increase with the addition of ES particles and the maximum values were achieved at 4 wt%. Further increase of ES particles in the matrix leads to decrease in hardness and strength owing to increase in porosity."
+   },
+   {
+    "id": "https://openalex.org/W2952657378",
+    "doi": "https://doi.org/10.1515/epoly-2019-0022",
+    "title": "Continuous fabrication of near-infrared light responsive bilayer hydrogel fibers based on microfluidic spinning",
+    "year": 2019,
+    "cited": 26,
+    "venue": "e-Polymers",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Hydrogels: synthesis, properties, applications",
+     "Micro and Nano Robotics"
+    ],
+    "oa_url": "https://www.degruyter.com/downloadpdf/journals/epoly/19/1/article-p215.pdf",
+    "abstract": "Abstract Hydrogel microfibers with inhomogenous structure can achieve some complex motions such as bending, folding and twisting. So it can be applied to soft actuators, soft robots and micropumps. In this paper, continuous bilayer hydrogel fibers in which one layer is calcium alginate hydrogel and the other is linear poly(N-isopropylacrylamide) (PNIPAM)/calcium alginate/graphene oxide (GO) semi-interpenetrating hydrogel were prepared based on microfluidic spinning method. The results show that the bilayer hydrogel fibers have particular porous internal structures of semi-IPN hydrogels and the pore size becomes smaller with the increase of GO content. Besides, the bilayer hydrogel fibers can bend response to the temperature and near-infrared (NIR) light. The diameter of the hydrogel fibers can be tuned by changing the flow rate of spinning fluid and the take-up velocity of winding device."
+   },
+   {
+    "id": "https://openalex.org/W2072944146",
+    "doi": "https://doi.org/10.1016/j.pnsc.2013.11.011",
+    "title": "Novel Ag nanocrystals based dental resin composites with enhanced mechanical and antibacterial properties",
+    "year": 2013,
+    "cited": 26,
+    "venue": "Progress in Natural Science Materials International",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Erosion and Treatment",
+     "Scientific and Engineering Research Topics"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1002007113001603/pdf",
+    "abstract": "The aim of this work was to investigate the effect of trace addition of oleic acid coated Ag nanocrystals (Ag NCs) on mechanical and antibacterial properties of dental resin composites. Composites (70 wt% of silica loading) with 25 ppm, 50 ppm, 75 ppm and 100 ppm (wt) Ag NCs were prepared and the composite without Ag NCs served as a control. The experimental results showed that the addition of Ag NCs significantly improved the strength and modulus of the resin composite without compromising the shade. For the composite with 50 ppm Ag NCs, flexural strength (140.3 MPa), modulus (13.2 GPa) and compressive strength (347.2 MPa) were increased by 4.1%, 22.2%, 13.3%, respectively, compared with the control. The antibacterial test demonstrated that trace Ag NCs provided the resin composites with an antibacterial effect. Such strong and antibacterial dental resin composites might be advantageous to prevent secondary caries and be potential for future clinical applications."
+   },
+   {
+    "id": "https://openalex.org/W4401504667",
+    "doi": "https://doi.org/10.1021/acs.molpharmaceut.4c00599",
+    "title": "Engineering a 3D Biomimetic Peptides Functionalized-Polyethylene Glycol Hydrogel Model Cocultured with Endothelial Cells and Astrocytes: Enhancing In Vitro Blood–Brain Barrier Biomimicry",
+    "year": 2024,
+    "cited": 23,
+    "venue": "Molecular Pharmaceutics",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Hydrogels: synthesis, properties, applications"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.molpharmaceut.4c00599",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide The blood–brain barrier (BBB) poses a significant challenge for drug delivery and is linked to various neurovascular disorders. In vitro BBB models provide a tool to investigate drug permeation across the BBB and the barrier’s response to external injury events. Yet, existing models lack fidelity in replicating the BBB’s complexity, hindering a comprehensive understanding of its functions. This study introduces a three-dimensional (3D) model using polyethylene glycol (PEG) hydrogels modified with biomimetic peptides that represent recognition sequences of key proteins in the brain. Hydrogels were functionalized with recognition sequences for laminin (IKVAV) and fibronectin peptides (RGD) and chemically cross-linked with matrix metalloprotease-sensitive peptides (MMPs) to mimic the extracellular matrix of the BBB. Astrocytes and endothelial cells were seeded within and on the surface of the hydrogels, respectively. The barrier integrity was assessed through different tests including transendothelial electrical resistance (TEER), the permeability of sodium fluorescence (Na–F), the permeability of Evan’s blue bound to albumin (EBA), and the expression of zonula occluden-1 (ZO-1) in seeded endothelial cells. Hydrogels with a combination of RGD and IKVAV peptides displayed superior performance, exhibiting significantly higher TEER values (55.33 ± 1.47 Ω·cm 2 ) at day 5 compared to other 2D controls including HAECs-monoculture and HAECs-cocultured with NHAs seeded on well inserts and 3D controls including RGD hydrogel and RGD-IKVAV monoculture with HAECs and RGD hydrogel cocultured with HAECs and NHAs. The designed 3D system resulted in the lowest Evan’s blue permeability at 120 min (0.215 ± 0.055 μg/mL) compared to controls. ZO-1 expression was significantly higher and formed a relatively larger network in the functionalized hydrogel cocultured with astrocytes and endothelial cells compared to the controls. Thus, the designed 3D model effectively recapitulates the main BBB structure and function in vitro and is expected to contribute to a deeper understanding of pathological CNS angiogenesis and the development of effective CNS medications."
+   },
+   {
+    "id": "https://openalex.org/W4307568277",
+    "doi": "https://doi.org/10.1016/j.matdes.2022.111313",
+    "title": "Mechanical characteristics of laser-deposited sandwich structures and quasi-homogeneous alloys of Fe-Cu system",
+    "year": 2022,
+    "cited": 23,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127522009352/pdf",
+    "abstract": "The laser metal deposition approach implements a unique opportunity for controlling the fabrication of functionally graded and sandwich structures from different metal powders for artificial physical properties management. In this study, the quasi-homogeneous alloys were fabricated by the simultaneous feed of bronze and steel powders from different feeders of the LMD installation and the gradient structures by alternating deposition of the materials. The resulting alloys consisted of 50 wt% − 50 wt% and 25 wt% − 75 wt% non-gradient bronze-steel parts and sandwich structures of alternating 250-μm-height steel and bronze layers. The alloy based on aluminum bronze demonstrated the highest ultimate tensile strength (838.6 MPa). Its yield stress amounted to 665 MPa, strain-to-fracture – 0.035, Poisson’s ratio – 0.23, and modulus of resilience – 1.03 MJ/m3. A digital image correlation approach was applied to study the character of major strain distribution in the fabricated specimens and localizations of strain concentrators and compare them with all specimens’ failure areas. Fractography analysis showed a predominantly brittle character of failure. Investigated materials are expected to be applied as interface regions of Fe-Cu system functionally graded structures."
+   },
+   {
+    "id": "https://openalex.org/W3109740276",
+    "doi": "https://doi.org/10.1038/s41598-020-77187-8",
+    "title": "Cardiovascular tissue regeneration system based on multiscale scaffolds comprising double-layered hydrogels and fibers",
+    "year": 2020,
+    "cited": 23,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Tissue Engineering and Regenerative Medicine",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Mesenchymal stem cell research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-77187-8.pdf",
+    "abstract": "We report a technique to reconstruct cardiovascular tissue using multiscale scaffolds incorporating polycaprolactone fibers with double-layered hydrogels comprising fibrin hydrogel surrounded by secondary alginate hydrogel. The scaffolds compartmentalized cells into the core region of cardiac tissue and the peripheral region of blood vessels to construct cardiovascular tissue, which was accomplished by a triple culture system of adipose-derived mesenchymal stem cells (ADSCs) with C2C12 myoblasts on polycaprolactone (PCL) fibers along with human umbilical vein endothelial cells (HUVECs) in fibrin hydrogel. The secondary alginate hydrogel prevented encapsulated cells from migrating outside scaffold and maintained the scaffold structure without distortion after subcutaneous implantation. According to in vitro studies, resultant scaffolds promoted new blood vessel formation as well as cardiomyogenic phenotype expression of ADSCs. Cardiac muscle-specific genes were expressed from stem cells and peripheral blood vessels from HUVECs were also successfully developed in subcutaneously implanted cell-laden multiscale scaffolds. Furthermore, the encapsulated stem cells modulated the immune response of scaffolds by secreting anti-inflammatory cytokines for successful tissue construction. Our study reveals that multiscale scaffolds can be promising for the remodeling and transplantation of cardiovascular tissue."
+   },
+   {
+    "id": "https://openalex.org/W3017051919",
+    "doi": "https://doi.org/10.3390/polym12040945",
+    "title": "Hybrid Polymerisation: An Exploratory Study of the Chemo-Mechanical and Rheological Properties of Hybrid-Modified Bitumen",
+    "year": 2020,
+    "cited": 22,
+    "venue": "Polymers",
+    "topics": [
+     "Asphalt Pavement Performance Evaluation",
+     "Infrastructure Maintenance and Monitoring",
+     "Innovative concrete reinforcement materials"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/12/4/945/pdf?version=1587885040",
+    "abstract": "In this study, the mechanical and rheological properties of hybrid polymer-modified bitumen (PMB) have been investigated. For this purpose, nine different polymers-including crumb rubber, elastomers and plastomers at varying content-were studied to evaluate their mechanical performance as single polymers, first, and as a combination of two or more polymers as a hybrid polymer blend. Subsequently, the hybrid polymer blends were added in a relatively small percentage into the base bitumen to study its influence on the rheological performance of hybrid PMB. The mechanical properties identified from the analysis of the stress-strain curve of the single polymers were the Young's Modulus, tensile stress, and elongation at break. The chemical structure of the polymer hybrid blends was analysed using FTIR, followed by frequency sweep tests conducted using the dynamic shear rheometer (DSR) to determine the bitumen rheological properties. Results showed that hybrid PMB enhances the viscoelastic behaviour of bitumen at both low and high temperature compared to other PMBs only including single polymers."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Instron 5900\" OR \"Instron 5965-E2\" OR \"Instron 5966-E2\" OR \"Instron 5967-E2\" OR \"Instron 5969-E2\" OR \"Instron 5982-E2\") AND OPEN_ACCESS:y",

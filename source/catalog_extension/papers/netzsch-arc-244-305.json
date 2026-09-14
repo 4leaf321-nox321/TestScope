@@ -9,8 +9,67 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"NETZSCH ARC 244\" OR \"NETZSCH ARC\" OR \"NETZSCH ARC 305\"",
-  "count": null,
-  "works": []
+  "count": 4,
+  "works": [
+   {
+    "id": "https://openalex.org/W4362699630",
+    "doi": "https://doi.org/10.1021/acsomega.3c00606",
+    "title": "Preparation of Spherical HMX/DMF Solvates, Spherical HMX Particles, and HMX@NTO Composites: A Way to Reduce the Sensitivity of HMX",
+    "year": 2023,
+    "cited": 29,
+    "venue": "ACS Omega",
+    "topics": [
+     "Energetic Materials and Combustion",
+     "Thermal and Kinetic Analysis",
+     "Rocket and propulsion systems research"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsomega.3c00606",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide To reduce the sensitivity of HMX (HMX = high-melting explosive─cyclotetramethylenetetranitramine), spherical HMX/DMF (DMF = dimethylformamide) solvates, spherical HMX particles, and [email protected] (NTO = 1,2,4-triazol-5-one) composites are prepared by crystallization. The structure and performance of spherical HMX crystals, HMX particles, and [email protected] composites are characterized by X-ray diffraction, Fourier-transform infrared spectroscopy, scanning electron microscopy, differential scanning calorimetry, accelerating rate calorimetry, and mechanical sensitivity test. The results show that the space group of the spherical HMX/DMF solvate is R ̅3c with the lattice parameters of a = 15.9159(4) Å, b = 15.9159(4) Å, and c = 30.5136(8) Å. The non-isothermal stability and adiabatic thermal stability of HMX/DMF solvates are similar to those of HMX particles. The non-isothermal stability of [email protected] composites is lower than that of NTO and HMX particles, while the adiabatic thermal stability of [email protected] composites is higher than that of NTO but lower than that of HMX particles. The mechanical sensitivities of spherical HMX/DMF cocrystals, spherical HMX particles, and [email protected] composites are lower than that of raw HMX. This study can provide some guidance for desensitizing HMX and other energetic materials."
+   },
+   {
+    "id": "https://openalex.org/W2601049233",
+    "doi": "https://doi.org/10.1149/ma2010-02/11/1106",
+    "title": "Adiabatic and Isothermal Testing of Commercial Li-Ion 18650 Cells",
+    "year": 2010,
+    "cited": 1,
+    "venue": "ECS Meeting Abstracts",
+    "topics": [
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/MA2010-02/11/1106/pdf",
+    "abstract": "Abstract not Available."
+   },
+   {
+    "id": "https://openalex.org/W2884360584",
+    "doi": null,
+    "title": "Thermal stability studies of lithium-intercalated electrode materials with accelerating rate calorimetry (ARC)",
+    "year": 2018,
+    "cited": 0,
+    "venue": "elib (German Aerospace Center)",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://elib.dlr.de/118573/1/Dreizler_Poster_Batterieforum_2018.pdf",
+    "abstract": "Lithium-ion battery cells for portable electronic and automotive applications have to be carefully designed and engineered to be safe under different thermal and electrical abuse conditions. Some electrode materials will approach market introduction soon, while others still require some basic groundwork in materials research. In order to produce market readiness battery materials and cells, it is necessary to improve their safety characteristics. In general, it is extremely challenging to design large lithium-ion cells which pass the same safety test criteria that are applied for smaller lab-sized cells. There is often a big lack between research results on smaller lab-sized and large-sized battery cells or even stacks since the thermal behavior can differ fundamentally due to the various cell housings. Therefore, our goal is to provide a method to test the reactivity of samples that containing small amount of electrode material in electrolyte to make quantitative predictions about the safety of larger and more application-oriented lithium-ion battery cells subjected to thermal or electrical abuse. An accelerating rate calorimeter (ARC), which is an adiabatic calorimeter, is a very advantageous method for such studies. The sample size can be considerably lower than 1 g without losing the sensitivity of self-heating detection, if the mass of the sample container is reduced in the same ratio, too. In this case, safety of large-sized cells can be easily studied on the laboratory scale which is less dangerous for the involved persons and additionally safes costs and expensive research materials. In this work, an ARC is used to measure the thermal stability of lithiated electrode materials in standard electrolytes under adiabatic conditions. In this context, the lithium content is varied in a wide range in order to represent different states of charge in the battery. Measurements are carried out to determine the effects of the lithium content of the electrode as well as the initial heating temperature on thermal stability. In the first instance, the study concentrates on anode materials, in particular graphite and silicon-graphite composite electrodes. First results show that the initial self-heating rate depends strongly on the amount of intercalated lithium in the electrode material, whereby the reactivity increases with increasing lithium content."
+   },
+   {
+    "id": "https://openalex.org/W172975028",
+    "doi": null,
+    "title": "In-situ-Messungen an Lithium-Ionen-Batterien mit dem adiabatischen Reaktionskalorimeter",
+    "year": 2012,
+    "cited": 0,
+    "venue": "elib (German Aerospace Center)",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://elib.dlr.de/77151/1/2012_Bachelorarbeit_Greiner_120828_final.pdf",
+    "abstract": "Die vorliegende Arbeit befasst sich mit der Inbetriebnahme und apparatetechnischen Modifikation eines adiabatischen Reaktionskalorimeters vom Typ Netzsch ARC 254, um es für in-situ-Untersuchungen von Batterien nutzbar zu machen. Hierfür wurden Druckkapseln zur Aufnahme von Rundzellen der Bauart 18650 und 26650 konstruiert sowie ein Halter, der das Zyklisieren dieser Batterien mit höheren Strömen ermöglicht, jedoch ohne einen Druckanstieg während des Experiments zu überwachen. Die für Batterieversuche relevanten Betriebsarten des Kalorimeters wurden funktional überprüft und ein Abgleich mit der vorhergehenden Softwareparametrierung durchgeführt. Die Bedeutung der Parameter in den einzelnen Betriebsarten wurde detailliert beschrieben, so dass die vorliegende Arbeit als Leitfaden für nachfolgende Anwender des Kalorimeters dienen kann. Dies betrifft auch die in regelmäßigem Turnus auszuführende Thermoelementkalibrierung, ohne welche keine zuverlässige Einstellung adiabatischer Versuchsbedingungen möglich ist. Für die Betriebsart HWS (heat-wait-search), welche das für Batterieversuche gebräuchlichste Verfahren darstellt, wurde für das Postprocessing der Messdaten ein Matlab-Skript erstellt. In Anlehnung an die Richtlinie SAND-990497 wurde die thermische Stabilität von drei Batterien der Bauart 18650 mit jeweils verschiedener Zellchemie überprüft. Untersucht wurden eine neue und eine gealterte Batterie mit LiFePO4-Kathode des Herstellers A123 Systems sowie zwei Batterien von Panasonic mit einem Kathodenmaterial auf LiCoO2-Basis, welche jeweils einer schrittweisen Erwärmung in einem HWS-Zyklus unterworfen wurden."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"NETZSCH ARC 244\" OR \"NETZSCH ARC\" OR \"NETZSCH ARC 305\") AND OPEN_ACCESS:y",

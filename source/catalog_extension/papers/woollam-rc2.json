@@ -7,8 +7,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"J.A. Woollam RC2\"",
-  "count": null,
-  "works": []
+  "count": 104,
+  "works": [
+   {
+    "id": "https://openalex.org/W4362705173",
+    "doi": "https://doi.org/10.1126/sciadv.adg1837",
+    "title": "Ultrathin, soft, radiative cooling interfaces for advanced thermal management in skin electronics",
+    "year": 2023,
+    "cited": 167,
+    "venue": "Science Advances",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "Optical properties and cooling technologies in crystalline materials",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adg1837?download=true",
+    "abstract": "Thermal management plays a notable role in electronics, especially for the emerging wearable and skin electronics, as the level of integration, multifunction, and miniaturization of such electronics is determined by thermal management. Here, we report a generic thermal management strategy by using an ultrathin, soft, radiative-cooling interface (USRI), which allows cooling down the temperature in skin electronics through both radiative and nonradiative heat transfer, achieving temperature reduction greater than 56°C. The light and intrinsically flexible nature of the USRI enables its use as a conformable sealing layer and hence can be readily integrated with skin electronics. Demonstrations include passive cooling down of Joule heat for flexible circuits, improving working efficiency for epidermal electronics, and stabling performance outputs for skin-interfaced wireless photoplethysmography sensors. These results offer an alternative pathway toward achieving effective thermal management in advanced skin-interfaced electronics for multifunctionally and wirelessly operated health care monitoring."
+   },
+   {
+    "id": "https://openalex.org/W3183353435",
+    "doi": "https://doi.org/10.1038/s41467-021-24931-x",
+    "title": "Large-area patterning of full-color quantum dot arrays beyond 1000 pixels per inch by selective electrophoretic deposition",
+    "year": 2021,
+    "cited": 150,
+    "venue": "Nature Communications",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Electrophoretic Deposition in Materials Science",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-24931-x.pdf",
+    "abstract": "Colloidal quantum dot (QD) emitters show great promise in the development of next-generation displays. Although various solution-processed techniques have been developed for nanomaterials, high-resolution and uniform patterning technology amicable to manufacturing is still missing. Here, we present large-area, high-resolution, full-color QD patterning utilizing a selective electrophoretic deposition (SEPD) technique. This technique utilizes photolithography combined with SEPD to achieve uniform and fast fabrication, low-cost QD patterning in large-area beyond 1,000 pixels-per-inch. The QD patterns only deposited on selective electrodes with precisely controlled thickness in a large range, which could cater for various optoelectronic devices. The adjustable surface morphology, packing density and refractive index of QD films enable higher efficiency compared to conventional solution-processed methods. We further demonstrate the versatility of our approach to integrate various QDs into large-area arrays of full-color emitting pixels and QLEDs with good performance. The results suggest a manufacture-viable technology for commercialization of QD-based displays."
+   },
+   {
+    "id": "https://openalex.org/W3107257777",
+    "doi": "https://doi.org/10.1038/s41467-020-19951-y",
+    "title": "Natural optical activity as the origin of the large chiroptical properties in π-conjugated polymer thin films",
+    "year": 2020,
+    "cited": 142,
+    "venue": "Nature Communications",
+    "topics": [
+     "Synthesis and Properties of Aromatic Compounds",
+     "Photochromic and Fluorescence Chemistry",
+     "Photoreceptor and optogenetics research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-19951-y.pdf",
+    "abstract": "Polymer thin films that emit and absorb circularly polarised light have been demonstrated with the promise of achieving important technological advances; from efficient, high-performance displays, to 3D imaging and all-organic spintronic devices. However, the origin of the large chiroptical effects in such films has, until now, remained elusive. We investigate the emergence of such phenomena in achiral polymers blended with a chiral small-molecule additive (1-aza[6]helicene) and intrinsically chiral-sidechain polymers using a combination of spectroscopic methods and structural probes. We show that - under conditions relevant for device fabrication - the large chiroptical effects are caused by magneto-electric coupling (natural optical activity), not structural chirality as previously assumed, and may occur because of local order in a cylinder blue phase-type organisation. This disruptive mechanistic insight into chiral polymer thin films will offer new approaches towards chiroptical materials development after almost three decades of research in this area."
+   },
+   {
+    "id": "https://openalex.org/W3048065335",
+    "doi": "https://doi.org/10.1038/s41467-020-17234-0",
+    "title": "Electronic correlations and flattened band in magnetic Weyl semimetal candidate Co3Sn2S2",
+    "year": 2020,
+    "cited": 102,
+    "venue": "Nature Communications",
+    "topics": [
+     "Heusler alloys: electronic and magnetic properties",
+     "2D Materials and Applications",
+     "Topological Materials and Phenomena"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-17234-0.pdf",
+    "abstract": "Abstract The interplay between electronic correlations and topological protection may offer a rich avenue for discovering emergent quantum phenomena in condensed matter. However, electronic correlations have so far been little investigated in Weyl semimetals (WSMs) by experiments. Here, we report a combined optical spectroscopy and theoretical calculation study on the strength and effect of electronic correlations in a magnet Co 3 Sn 2 S 2 . The electronic kinetic energy estimated from our optical data is about half of that obtained from single-particle ab initio calculations in the ferromagnetic ground state, which indicates intermediate-strength electronic correlations in this system. Furthermore, comparing the energy and side-slope ratios between the interband-transition peaks at high energies in the experimental and single-particle-calculation-derived optical conductivity spectra with the bandwidth-renormalization factors obtained by many-body calculations enables us to estimate the Coulomb-interaction strength ( U ∼ 4 eV) in Co 3 Sn 2 S 2 . Besides, a sharp experimental optical conductivity peak at low energy, which is absent in the single-particle-calculation-derived spectrum but is consistent with the optical conductivity peaks obtained by many-body calculations with U ∼ 4 eV, indicates that an electronic band connecting the two Weyl cones is flattened by electronic correlations and emerges near the Fermi energy in Co 3 Sn 2 S 2 . Our work paves the way for exploring flat-band-generated quantum phenomena in WSMs."
+   },
+   {
+    "id": "https://openalex.org/W4391351258",
+    "doi": "https://doi.org/10.1038/s41467-024-45047-y",
+    "title": "Mask-inspired moisture-transmitting and durable thermochromic perovskite smart windows",
+    "year": 2024,
+    "cited": 73,
+    "venue": "Nature Communications",
+    "topics": [
+     "Transition Metal Oxide Nanomaterials",
+     "Perovskite Materials and Applications",
+     "Optical Wireless Communication Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-45047-y.pdf",
+    "abstract": "Thermochromic perovskite smart windows (TPWs) are a cutting-edge energy-efficient window technology. However, like most perovskite-based devices, humidity-related degradation limits their widespread application. Herein, inspired by the structure of medical masks, a unique triple-layer thermochromic perovskite window (MTPW) that enable sufficient water vapor transmission to trigger the thermochromism but effectively repel detrimental water and moisture to extend its lifespan is developed. The MTPW demonstrates superhydrophobicity and maintains a solar modulation ability above 20% during a 45-day aging test, with a decay rate 37 times lower than that of a pristine TPW. It can also immobilize lead ions and significantly reduce lead leakage by 66 times. Furthermore, a significant haze reduction from 90% to 30% is achieved, overcoming the blurriness problem of TPWs. Benefiting from the improved optical performance, extended lifespan, suppressed lead leakage, and facile fabrication, the MTPW pushes forward the wide applications of smart windows in green buildings."
+   },
+   {
+    "id": "https://openalex.org/W4285731941",
+    "doi": "https://doi.org/10.1002/advs.202202150",
+    "title": "High‐Performance Semitransparent Organic Solar Cells: From Competing Indexes of Transparency and Efficiency Perspectives",
+    "year": 2022,
+    "cited": 68,
+    "venue": "Advanced Science",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Organic Electronics and Photovoltaics",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://doi.org/10.1002/advs.202202150",
+    "abstract": "Semitransparent organic solar cells (ST-OSCs) offer potentially more opportunities in areas of self-powered greenhouses and building-integrated photovoltaic systems. In this work, the effort to use a combination of solution-processable gold nanobipyramids (AuNBPs)-based hole transporting layer and a low/high dielectric constant double layer optical coupling layer (OCL) for improving the performance of ST-OSCs over the two competing indexes of power conversion efficiency (PCE) and average visible transmittance (AVT) is reported. The fabrication and characterization of the ST-OSCs are guided, at design and analyses level, using the theoretical simulation and experimental optimization. The use of a low/high dielectric constant double layer OCL helps enhancing the visible light transparency while reflecting the near-infrared (NIR) photons back into the photoactive layer for light harvesting. NIR absorption enhancement in the ST-OSCs is realized through the AuNBPs-induced localized surface plasmon resonance (LSPR). The weight ratio of the polymer donor to nonfullerene acceptor in the bulk heterojunction is adjusted to realize the maximum NIR absorption enhancement, enabled by the AuNBPs-induced LSPR, achieving the high-performance ST-OSCs with a high PCE of 13.15% and a high AVT of 25.9%."
+   },
+   {
+    "id": "https://openalex.org/W3168718732",
+    "doi": "https://doi.org/10.1002/adom.202100512",
+    "title": "High Figure of Merit Magneto‐Optical Ce‐ and Bi‐Substituted Terbium Iron Garnet Films Integrated on Si",
+    "year": 2021,
+    "cited": 54,
+    "venue": "Advanced Optical Materials",
+    "topics": [
+     "Magneto-Optical Properties and Applications",
+     "Phytoplasmas and Hemiptera pathogens",
+     "Plant and Fungal Species Descriptions"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adom.202100512",
+    "abstract": "Abstract Films of polycrystalline terbium iron garnet (TbIG), cerium‐substituted TbIG (CeTbIG), and bismuth‐substituted TbIG (BiTbIG) are grown on Si substrates by pulsed laser deposition. The films grow under tensile strain due to thermal mismatch with the Si substrate, resulting in a dominant magnetoelastic anisotropy which, combined with shape anisotropy, leads to in‐plane magnetization. TbIG has a compensation temperature of 253 K which is reduced by substitution of Ce and Bi. The Faraday rotation at 1550 nm of the TbIG, Ce0.36TbIG, and Bi0.03TbIG films is 5400 ± 600° cm−1, 4500 ± 100° cm–1, and 6200 ± 300° cm−1, respectively, while Ce0.36TbIG and Bi0.03TbIG exhibit lower optical absorption than TbIG, attributed to a reduction in Fe2+ and Tb4+ absorption pathways. The high Faraday rotation of the films, and in particular the high magneto‐optical figure of merit of the Bi0.03TbIG of 720° dB−1 at 1550 nm, make these polycrystalline films valuable for applications in integrated photonics."
+   },
+   {
+    "id": "https://openalex.org/W4323035577",
+    "doi": "https://doi.org/10.1021/acs.macromol.2c02532",
+    "title": "High Refractive Index Polymer Thin Films by Charge-Transfer Complexation",
+    "year": 2023,
+    "cited": 49,
+    "venue": "Macromolecules",
+    "topics": [
+     "Synthesis and properties of polymers",
+     "Semiconductor Lasers and Optical Devices",
+     "Photonic and Optical Devices"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.macromol.2c02532",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide High refractive index polymers are essential in next-generation flexible optical and optoelectronic devices. This paper describes a simple synthetic method to prepare polymeric optical coatings possessing high refractive indexes. Poly(4-vinylpyridine) (P4VP) thin films prepared using initiated chemical vapor deposition are exposed to highly polarizable halogen molecules to form stable charge-transfer complexes: P4VP-IX (X = I, Br, and Cl). Fourier transform infrared spectroscopy was used to confirm the formation of charge-transfer complexes. Characterized by spectroscopic ellipsometry, the maximum refractive index of 2.08 at 587.6 nm is obtained for P4VP-I 2 . For P4VP-IBr and P4VP-ICl, the maximum refractive indexes are 1.849 and 1.774, respectively. By controlling the concentration of charge-transfer complexes, either through the halogen incorporation step or polymer composition through copolymerization with ethylene glycol dimethacrylate, the refractive indexes of the polymer thin films can be precisely controlled. The feasibility of P4VP-IX materials as optical coatings is also explored. The refractive index and thickness uniformity of a P4VP-I 2 film over a 10 mm diameter circular area were characterized, showing standard deviations of 0.0769 and 1.91%, respectively."
+   },
+   {
+    "id": "https://openalex.org/W4395480519",
+    "doi": "https://doi.org/10.1038/s41467-024-47988-w",
+    "title": "Control of polymers’ amorphous-crystalline transition enables miniaturization and multifunctional integration for hydrogel bioelectronics",
+    "year": 2024,
+    "cited": 48,
+    "venue": "Nature Communications",
+    "topics": [
+     "Photoreceptor and optogenetics research",
+     "Neuroscience and Neural Engineering",
+     "Neural dynamics and brain function"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-47988-w.pdf",
+    "abstract": "Soft bioelectronic devices exhibit motion-adaptive properties for neural interfaces to investigate complex neural circuits. Here, we develop a fabrication approach through the control of metamorphic polymers' amorphous-crystalline transition to miniaturize and integrate multiple components into hydrogel bioelectronics. We attain an about 80% diameter reduction in chemically cross-linked polyvinyl alcohol hydrogel fibers in a fully hydrated state. This strategy allows regulation of hydrogel properties, including refractive index (1.37-1.40 at 480 nm), light transmission (>96%), stretchability (139-169%), bending stiffness (4.6 ± 1.4 N/m), and elastic modulus (2.8-9.3 MPa). To exploit the applications, we apply step-index hydrogel optical probes in the mouse ventral tegmental area, coupled with fiber photometry recordings and social behavioral assays. Additionally, we fabricate carbon nanotubes-PVA hydrogel microelectrodes by incorporating conductive nanomaterials in hydrogel for spontaneous neural activities recording. We enable simultaneous optogenetic stimulation and electrophysiological recordings of light-triggered neural activities in Channelrhodopsin-2 transgenic mice."
+   },
+   {
+    "id": "https://openalex.org/W4391223291",
+    "doi": "https://doi.org/10.1002/adma.202311305",
+    "title": "Boosting the Performances of Semitransparent Organic Photovoltaics via Synergetic Near‐Infrared Light Management",
+    "year": 2024,
+    "cited": 48,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Nanowire Synthesis and Applications",
+     "solar cell performance optimization"
+    ],
+    "oa_url": "https://oist.repo.nii.ac.jp/record/2000562/files/Accepted%20version%20of%20AM--0701%20UPDATE-1.pdf",
+    "abstract": "Abstract Semitransparent organic photovoltaics (ST‐OPVs) offer promising prospects for application in building‐integrated photovoltaic systems and greenhouses, but further improvement of their performance faces a delicate trade‐off between the two competing indexes of power conversion efficiency (PCE) and average visible transmittance (AVT). Herein, the authors take advantage of coupling plasmonics with the optical design of ST‐OPVs to enhance near‐infrared absorption and hence simultaneously improve efficiency and visible transparency to the maximum extent. By integrating core–bishell PdCu@Au@SiO 2 nanotripods that act as optically isotropic Lambertian sources with near‐infrared‐customized localized surface plasmon resonance in an optimal ternary PM6:BTP‐eC9:L8‐BO‐based ST‐OPV, it is shown that their interplay with a multilayer optical coupling layer, consisting of ZnS(130 nm)/Na 3 AlF 6 (60 nm)/WO 3 (100 nm)/LaF 3 (50 nm) identified from high‐throughput optical screening, leads to a record‐high PCE of 16.14% (certified as 15.90%) along with an excellent AVT of 33.02%. The strong enhancement of the light utilization efficiency by ≈50% as compared to the counterpart device without optical engineering provides an encouraging and universal pathway for promoting breakthroughs in ST‐OPVs from meticulous optical design."
+   },
+   {
+    "id": "https://openalex.org/W2558888610",
+    "doi": "https://doi.org/10.1063/1.4968545",
+    "title": "Structural, electrical, and optical characterization of as grown and oxidized zinc nitride thin films",
+    "year": 2016,
+    "cited": 44,
+    "venue": "Journal of Applied Physics",
+    "topics": [
+     "ZnO doping and properties",
+     "Ga2O3 and related materials",
+     "GaN-based semiconductor devices and materials"
+    ],
+    "oa_url": "https://aip.scitation.org/doi/pdf/10.1063/1.4968545",
+    "abstract": "Zinc Nitride (Zn3N2) films were grown by DC sputtering of a Zn target in a N2 plasma under a variety of different growth conditions, which resulted in the deposition of films with variable compositions. The as deposited films exhibited a polycrystalline Zn3N2 structure, which was converted to a ZnO-based structure after several weeks of ambient exposure. Zn3N2 films that were N-poor exhibited electrical properties indicative of a natively doped semiconductor and reached a minimum carrier concentration in the order of 1018 cm−3 at compositions, which approached the stoichiometric ratio of Zn3N2. A maximum carrier mobility of 33 cm2 V−1 s−1 was obtained in N-rich films due to an improved microstructure. The Zn3N2 films had an optical band gap of 1.31–1.48 eV and a refractive index of 2.3–2.7. Despite a wide range of Zn3N2 samples examined, little variation of its optical properties was observed, which suggests that they are closely related to the band structure of this material. In contrast to the as grown films, the oxidized film had a band gap of 3.44 eV and the refractive index was 1.6–1.8, similar to ZnO and Zn(OH)2."
+   },
+   {
+    "id": "https://openalex.org/W2967591935",
+    "doi": "https://doi.org/10.1002/adom.201901048",
+    "title": "Dominance of Exciton Lifetime in the Stability of Phosphorescent Dyes",
+    "year": 2019,
+    "cited": 43,
+    "venue": "Advanced Optical Materials",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Luminescence and Fluorescent Materials",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1800528",
+    "abstract": "Abstract Organic light‐emitting devices (OLEDs) are widely used for mobile displays, but the relatively short lifetime of blue OLEDs remains a challenge in many applications. Typically, instability is viewed as a material‐specific chemical degradation problem. It is known to be alleviated by reducing the operating current or otherwise decreasing the exciton density. It is shown here that this view is incomplete. For archetypical phosphorescent materials, it is observed that the dependence of photostability on the triplet exciton lifetime follows a cubic power law, steeper than its dependence on exciton density. It is demonstrated that the triplet exciton lifetime not only determines the energy stored within an OLED, it also determines the loss in luminescence by controlling the yield of quenching by defects. The dominant role of the triplet exciton lifetime suggests that the stability of the best OLED materials can be significantly improved via rapid extraction of the energy stored in triplet excitons."
+   },
+   {
+    "id": "https://openalex.org/W4385398380",
+    "doi": "https://doi.org/10.1002/aenm.202301367",
+    "title": "High‐Throughput Computing Guided Low/High Index Optical Coupling Layer for Record‐Performance Semitransparent Organic Solar Cells",
+    "year": 2023,
+    "cited": 36,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202301367",
+    "abstract": "Abstract Semitransparent organic solar cells (ST‐OSCs) can be made in different colors, allowing light to pass through, and yet absorb enough visible and near‐infrared (NIR) light to generate electricity. However, it remains a challenge to achieve high performing ST‐OSCs over the two competing indexes of power conversion efficiency (PCE) and average visible transmittance (AVT). This work reports an effort to develop record‐performance ST‐OSCs using a low/high index optical coupling layer (OCL) and a 2D photonic‐structured antireflective (AR) coating. High‐throughput optical screening is used to improve the understanding of OCL structure−performance relationships and the predicting of NIR absorption enhancement for ST‐OSCs. The concurrent use of a low/high index Na 3 AlF 6 (170 nm)/ZnS (110 nm) OCL, identified among about 200 thousand simulated device configurations and a 900 nm pitch‐sized 2D photonic‐structured AR coating, fabricated using nanoimprint lithography, enables the record‐performance ternary PM6:BTP‐eC9:L8‐BO‐based ST‐OSCs, achieving simultaneously a record‐high PCE of 15.2%, a high AVT of 32%, an impressive light utilization efficiency of 4.86%, and a favorable color‐rendering index of 82. The results of the ST‐OSCs demonstrated in this work provide an attractive option for a plethora of applications in self‐powered greenhouses and building‐integrated photovoltaic systems."
+   },
+   {
+    "id": "https://openalex.org/W4321785353",
+    "doi": "https://doi.org/10.1038/s41699-023-00376-2",
+    "title": "Exfoliation procedure-dependent optical properties of solution deposited MoS2 films",
+    "year": 2023,
+    "cited": 33,
+    "venue": "npj 2D Materials and Applications",
+    "topics": [
+     "2D Materials and Applications",
+     "Perovskite Materials and Applications",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41699-023-00376-2.pdf",
+    "abstract": "Abstract The development of high-precision large-area optical coatings and devices comprising low-dimensional materials hinges on scalable solution-based manufacturability with control over exfoliation procedure-dependent effects. As such, it is critical to understand the influence of technique-induced transition metal dichalcogenide (TMDC) optical properties that impact the design, performance, and integration of advanced optical coatings and devices. Here, we examine the optical properties of semiconducting MoS 2 films from the exfoliation formulations of four prominent approaches: solvent-mediated exfoliation, chemical exfoliation with phase reconversion, redox exfoliation, and native redox exfoliation. The resulting MoS 2 films exhibit distinct refractive indices ( n ), extinction coefficients ( k ), dielectric functions (ε 1 and ε 2 ), and absorption coefficients (α). For example, a large index contrast of Δ n ≈ 2.3 is observed. These exfoliation procedures and related chemistries produce different exfoliated flake dimensions, chemical impurities, carrier doping, and lattice strain that influence the resulting optical properties. First-principles calculations further confirm the impact of lattice defects and doping characteristics on MoS 2 optical properties. Overall, incomplete phase reconfiguration (from 1T to mixed crystalline 2H and amorphous phases), lattice vacancies, intraflake strain, and Mo oxidation largely contribute to the observed differences in the reported MoS 2 optical properties. These findings highlight the need for controlled technique-induced effects as well as the opportunity for continued development of, and improvement to, liquid phase exfoliation methodologies. Such chemical and processing-induced effects present compelling routes to engineer exfoliated TMDC optical properties toward the development of next-generation high-performance mirrors, narrow bandpass filters, and wavelength-tailored absorbers."
+   },
+   {
+    "id": "https://openalex.org/W4224257528",
+    "doi": "https://doi.org/10.1016/j.jmrt.2022.04.072",
+    "title": "Investigation of metal-coating-assisted IR nanosecond pulsed laser ablation of CVD diamond",
+    "year": 2022,
+    "cited": 28,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Diamond and Carbon-based Materials Research",
+     "Laser-induced spectroscopy and plasma",
+     "Laser Material Processing Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785422005725/pdf",
+    "abstract": "Laser ablation is demonstrated to be a competent approach to processing chemical vapor deposition (CVD) diamond which is admitted to own poor machinability and is accordingly arduous to machine using conventional techniques. Notwithstanding, initial laser absorption by defects typically precipitates undesirable ablation quality and an increment in internal defects. The strategy of metal-coating-assisted laser ablation, which applies a coating on the diamond prior to laser irradiation to curtail defects and advance the quality of the ablated surface, is proposed in this study. In addition, an absorptivity-based laser energy distribution model is established to evaluate surface roughness and ablation depth. It can be concluded that the metal coating prevents local graphitization during the early ablation stage. The laser ablation of Ti-coated diamond surfaces resulted in a maximum reduction in surface roughness of 42.6% and 53%, respectively, for 100 and 500 nm coating, in comparison to that with the uncoated surfaces. Besides, the ablation depth of the laser-ablated 500 nm coating surface abates and reaches 21% in comparison with the uncoated diamond, while the 100 nm coating has a negligible effect on the ablation depth. In summary, the application of thin coatings on diamond prior to laser ablation results in homogeneous graphitization and a better surface finish with a marginal reduction in ablation depth."
+   },
+   {
+    "id": "https://openalex.org/W4206805867",
+    "doi": "https://doi.org/10.34133/2022/9820585",
+    "title": "Cross-Scale Synthesis of Organic High-k Semiconductors Based on Spiro-Gridized Nanopolymers",
+    "year": 2022,
+    "cited": 26,
+    "venue": "Research",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://downloads.spj.sciencemag.org/research/2022/9820585.pdf",
+    "abstract": "High dielectric constants in organic semiconductors have been identified as a central challenge for the improvement in not only piezoelectric, pyroelectric, and ferroelectric effects but also photoelectric conversion efficiency in OPVs, carrier mobility in OFETs, and charge density in charge-trapping memories. Herein, we report an ultralong persistence length ( l p ≈ 41 nm) effect of spiro-fused organic nanopolymers on dielectric properties, together with excitonic and charge carrier behaviors. The state-of-the-art nanopolymers, namely, nanopolyspirogrids (NPSGs), are synthesized via the simple cross-scale Friedel-Crafts polygridization of A 2 B 2 -type nanomonomers. The high dielectric constant ( k = 8.43 ) of NPSG is firstly achieved by locking spiro-polygridization effect that results in the enhancement of dipole polarization. When doping into a polystyrene-based dielectric layer, such a high- k feature of NPSG increases the field-effect carrier mobility from 0.20 to 0.90 cm 2 V -1 s -1 in pentacene OFET devices. Meanwhile, amorphous NPSG film exhibits an ultralow energy disorder (<50 meV) for an excellent zero-field hole mobility of 3.94 × 10 − 3 c m 2 V − 1 s − 1 , surpassing most of the amorphous π -conjugated polymers. Organic nanopolymers with high dielectric constants open a new way to break through the bottleneck of efficiency and multifunctionality in the blueprint of the fourth-generation semiconductors."
+   },
+   {
+    "id": "https://openalex.org/W4320856225",
+    "doi": "https://doi.org/10.1021/acsnano.2c04786",
+    "title": "Reducing Nonradiative Losses in Perovskite LEDs through Atomic Layer Deposition of Al2O3 on the Hole-Injection Contact",
+    "year": 2023,
+    "cited": 25,
+    "venue": "ACS Nano",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Organic Light-Emitting Diodes Research",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.2c04786",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Halide perovskite light-emitting diodes (PeLEDs) exhibit great potential for use in next-generation display technologies. However, scale-up will be challenging due to the requirement of very thin transport layers for high efficiencies, which often present spatial inhomogeneities from improper wetting and drying during solution processing. Here, we show how a thin Al 2 O 3 layer grown by atomic layer deposition can be used to preferentially cover regions of imperfect hole transport layer deposition and form an intermixed composite with the organic transport layer, allowing hole conduction and injection to persist through the organic hole transporter. This has the dual effect of reducing nonradiative recombination at the heterojunction and improving carrier selectivity, which we infer to be due to the inhibition of direct contact between the indium tin oxide and perovskite layers. We observe an immediate improvement in electroluminescent external quantum efficiency in our p-i-n LEDs from an average of 9.8% to 13.5%, with a champion efficiency of 15.0%. The technique uses industrially available equipment and can readily be scaled up to larger areas and incorporated in other applications such as thin-film photovoltaic cells."
+   },
+   {
+    "id": "https://openalex.org/W3044694166",
+    "doi": "https://doi.org/10.1039/d0na00405g",
+    "title": "Integration of highly anisotropic multiferroic BaTiO 3 –Fe nanocomposite thin films on Si towards device applications",
+    "year": 2020,
+    "cited": 25,
+    "venue": "Nanoscale Advances",
+    "topics": [
+     "Multiferroics and related materials",
+     "Ferroelectric and Piezoelectric Materials",
+     "Dielectric properties of ceramics"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2020/na/d0na00405g",
+    "abstract": "/TiN bilayer buffer, the epitaxial quality of the BTO matrix and the anisotropy of the Fe nanopillars can be improved greatly, which in turn enhances the physical properties, including the ferromagnetic, ferroelectric, and optical response of the BTO-Fe thin films. This unique combination of properties integrated on Si offers a promising approach in the design of multifunctional nanocomposites for Si-based memories and optical devices."
+   },
+   {
+    "id": "https://openalex.org/W2051871009",
+    "doi": "https://doi.org/10.1186/s11671-015-0854-y",
+    "title": "Spectroellipsometric characterization and modeling of plasmonic diamond-like carbon nanocomposite films with embedded Ag nanoparticles",
+    "year": 2015,
+    "cited": 25,
+    "venue": "Nanoscale Research Letters",
+    "topics": [
+     "Nonlinear Optical Materials Studies",
+     "Diamond and Carbon-based Materials Research",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1186/s11671-015-0854-y.pdf",
+    "abstract": "Diamond-like carbon nanocomposite films with embedded silver nanoparticles are considered experimentally (spectroellipsometric characterization) and theoretically (modeling of optical properties). Metallic nanocomposite films were synthesized by reactive magnetron sputtering and were studied by transmission electron microscope (TEM) and atomic force microscope (AFM). The optical constants of the films were determined from spectroscopic ellipsometry measurements and were modeled using the Maxwell-Garnett approximations. Comparison between the extended and renormalized Maxwell-Garnett theory was conducted. Surface plasmon resonance peak have been found to be strongly dependent on the shape of nanoparticles and interaction between them."
+   },
+   {
+    "id": "https://openalex.org/W4388833417",
+    "doi": "https://doi.org/10.1021/acspolymersau.3c00028",
+    "title": "Surface-Initiated PET-RAFT via the Z-Group Approach",
+    "year": 2023,
+    "cited": 24,
+    "venue": "ACS Polymers Au",
+    "topics": [
+     "Polymer Surface Interaction Studies",
+     "Analytical Chemistry and Sensors",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acspolymersau.3c00028",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Surface-initiated reversible addition–fragmentation chain transfer (SI-RAFT) is a user-friendly and versatile approach for polymer brush engineering. For SI-RAFT, synthetic strategies follow either surface-anchoring of radical initiators (e.g., azo compounds) or anchoring RAFT chain transfer agents (CTAs) onto a substrate. The latter can be performed via the R-group or Z-group of the CTA, with the previous scientific focus in literature skewed heavily toward work on the R-group approach. This contribution investigates the alternative: a Z-group approach toward light-mediated SI photoinduced electron transfer RAFT (SI-PET-RAFT) polymerization. An appropriate RAFT CTA is synthesized, immobilized onto SiO 2, and its ability to control the growth (and chain extension) of polymer brushes in both organic and aqueous environments is investigated with different acrylamide and methacrylate monomers. O 2 tolerance allows Z-group SI-PET-RAFT to be performed under ambient conditions, and patterning surfaces through photolithography is illustrated. Polymer brushes are characterized via X-ray photoelectron spectroscopy (XPS), ellipsometry, and water contact angle measurements. An examination of polymer brush grafting density showed variation from 0.01 to 0.16 chains nm –2 . Notably, in contrast to the R-group SI-RAFT approach, this chemical approach allows the growth of intermittent layers of polymer brushes underneath the top layer without changing the properties of the outermost surface."
+   },
+   {
+    "id": "https://openalex.org/W1821547057",
+    "doi": "https://doi.org/10.1117/1.jmm.14.3.031208",
+    "title": "Sensitivity analysis and line edge roughness determination of 28-nm pitch silicon fins using Mueller matrix spectroscopic ellipsometry-based optical critical dimension metrology",
+    "year": 2015,
+    "cited": 24,
+    "venue": "Journal of Micro/Nanolithography MEMS and MOEMS",
+    "topics": [
+     "Optical Coatings and Gratings",
+     "Surface Roughness and Optical Measurements",
+     "Near-Field Optical Microscopy"
+    ],
+    "oa_url": "https://www.spiedigitallibrary.org/journals/journal-of-micro-nanolithography-mems-and-moems/volume-14/issue-3/031208/Sensitivity-analysis-and-line-edge-roughness-determination-of-28-nm/10.1117/1.JMM.14.3.031208.pdf",
+    "abstract": "Measurement and control of line edge roughness (LER) is one of the most challenging issues facing patterning technology. As the critical dimensions (CDs) of patterned structures decrease, an LER of only a few nanometers negatively impacts device performance. Here, Mueller matrix (MM) spectroscopic ellipsometry-based scatterometry is used to characterize LER in periodic line-space structures in 28-nm pitch Si fin samples fabricated by directed self-assembly patterning. The optical response of the MM elements is influenced by structural parameters like pitch, CDs, height, and side-wall angle, as well as the optical properties of the materials. Evaluation and decoupling MM element response to LER from other structural parameters requires sensitivity analysis using scatterometry models that include LER. Here, an approach is developed that can be used to characterize LER in Si fins by comparing the optical responses generated by systematically varying the grating shape and measurement conditions. Finally, the validity of this approach is established by comparing the results obtained from power spectral density analysis of top down scanning electron microscope images and cross-sectional transmission electron microscope image of the 28-nm pitch Si fins."
+   },
+   {
+    "id": "https://openalex.org/W2975134403",
+    "doi": "https://doi.org/10.3390/ma12193147",
+    "title": "Optical Dispersions of Bloch Surface Waves and Surface Plasmon Polaritons: Towards Advanced Biosensors",
+    "year": 2019,
+    "cited": 23,
+    "venue": "Materials",
+    "topics": [
+     "Photonic and Optical Devices",
+     "Plasmonic and Surface Plasmon Research",
+     "Optical Coatings and Gratings"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/12/19/3147/pdf?version=1569495224",
+    "abstract": "The total internal reflection ellipsometry (TIRE) method was used for the excitation and study of the sensitivity features of surface plasmon polariton (SPP) and Bloch surface waves (BSWs) resonances. For the BSWs generation distributed Bragg gratings were formed on the tops of the substrates (BK7 glass substrate), which had six bilayers of ~120 nm SiO2 and ~40 nm TiO2 and 40 nm of TiO2 on the top. The SPP sample consisted of the BK7 glass prism and a gold layer (45 nm). Numerical calculations of the optical dispersions and the experimental TIRE data have shown that SPP resonance overtake the BSWs in wavelength scanning by a factor of about 17. However, for the ellipsometric parameters Ψ and Δ in the vicinity of excitations, the BSW sensitivity is comparable with SPP. The obtained resolutions were Δ S P P = 7.14 × 10 − 6 R I U , Ψ S P P = 1.7 × 10 − 5 R I U for the SPP and Δ B S W = 8.7 × 10 − 6 R I U , Ψ B S W = 2.7 × 10 − 5 R I U for the BSW. The capabilities of both surface excitations are discussed from the sensitivity point of view in the design of these advanced biosensors."
+   },
+   {
+    "id": "https://openalex.org/W4390533284",
+    "doi": "https://doi.org/10.1515/nanoph-2023-0640",
+    "title": "Direct electron beam patterning of electro‐optically active PEDOT:PSS",
+    "year": 2024,
+    "cited": 22,
+    "venue": "Nanophotonics",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Nanomaterials and Printing Technologies",
+     "Nanofabrication and Lithography Techniques"
+    ],
+    "oa_url": "https://www.degruyter.com/document/doi/10.1515/nanoph-2023-0640/pdf",
+    "abstract": "The optical and electronic tunability of the conductive polymer poly(3,4-ethylenedioxythiophene):poly(styrene sulfonate) (PEDOT:PSS) has enabled emerging applications as diverse as bioelectronics, flexible electronics, and micro- and nano-photonics. High-resolution spatial patterning of PEDOT:PSS opens up opportunities for novel active devices in a range of fields. However, typical lithographic processes require tedious indirect patterning and dry etch processes, while solution-processing methods such as ink-jet printing have limited spatial resolution. Here, we report a method for direct write nano-patterning of commercially available PEDOT:PSS through electron-beam induced solubility modulation. The written structures are water stable and maintain the conductivity as well as electrochemical and optical properties of PEDOT:PSS, highlighting the broad utility of our method. We demonstrate the potential of our strategy by preparing prototypical nano-wire structures with feature sizes down to 250 nm, an order of magnitude finer than previously reported direct write methods, opening the possibility of writing chip-scale microelectronic and optical devices. We finally use the high-resolution writing capabilities to fabricate electrically-switchable optical diffraction gratings. We show active switching in this archetypal system with >95 % contrast at CMOS-compatible voltages of +2 V and -3 V, offering a route towards highly-miniaturized dynamic optoelectronic devices."
+   },
+   {
+    "id": "https://openalex.org/W3135968308",
+    "doi": "https://doi.org/10.1103/physrevresearch.3.013246",
+    "title": "Transient birefringence and dichroism in ZnO studied with fs-time-resolved spectroscopic ellipsometry",
+    "year": 2021,
+    "cited": 22,
+    "venue": "Physical Review Research",
+    "topics": [
+     "ZnO doping and properties",
+     "Copper-based nanomaterials and applications",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "http://link.aps.org/pdf/10.1103/PhysRevResearch.3.013246",
+    "abstract": "The full transient dielectric-function (DF) tensor of ZnO after UV-laser excitation in the spectral range 1.4-3.6 eV is obtained by measuring an m-plane-oriented ZnO thin film with femtosecond (fs)-time-resolved spectroscopic ellipsometry.From the merits of the method, we can distinguish between changes in the real and the imaginary part of the DF as well as changes in birefringence and dichroism, respectively.We find pump-induced switching from positive to negative birefringence in almost the entire measured spectral range for about 1 ps.Simultaneously, weak dichroism in the spectral range below 3.0 eV hints at contributions of inter-valence-band transitions.Line-shape analysis of the DF above the band gap based on discrete exciton, exciton-continuum, and exciton-phonon-complex contributions shows a maximal dynamic increase in the transient exciton energy by 80 meV.The absorption coefficient below the band gap reveals an exponential line shape attributed to Urbach-rule absorption mediated by exciton-longitudinal-optic-phonon interaction.The transient DF is supported by first-principles calculations for 10 20 cm -3 excited electron-hole pairs in ideal bulk ZnO."
+   },
+   {
+    "id": "https://openalex.org/W3018316467",
+    "doi": "https://doi.org/10.1002/adma.201906478",
+    "title": "A Noble‐Transition Alloy Excels at Hot‐Carrier Generation in the Near Infrared",
+    "year": 2020,
+    "cited": 22,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties",
+     "Phase-change materials and chalcogenides"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1660952",
+    "abstract": "Abstract Above‐equilibrium “hot”‐carrier generation in metals is a promising route to convert photons into electrical charge for efficient near‐infrared optoelectronics. However, metals that offer both hot‐carrier generation in the near‐infrared and sufficient carrier lifetimes remain elusive. Alloys can offer emergent properties and new design strategies compared to pure metals. Here, it is shown that a noble‐transition alloy, AuxPd1−x, outperforms its constituent metals concerning generation and lifetime of hot carriers when excited in the near‐infrared. At optical fiber wavelengths (e.g., 1550 nm), Au50Pd50 provides a 20‐fold increase in the number of ≈0.8 eV hot holes, compared to Au, and a threefold increase in the carrier lifetime, compared to Pd. The discovery that noble‐transition alloys can excel at hot‐carrier generation reveals a new material platform for near‐infrared optoelectronic devices."
+   },
+   {
+    "id": "https://openalex.org/W4400108895",
+    "doi": "https://doi.org/10.1038/s41467-024-49432-5",
+    "title": "Limiting factors for charge generation in low-offset fullerene-based organic solar cells",
+    "year": 2024,
+    "cited": 21,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Organic Light-Emitting Diodes Research",
+     "GaN-based semiconductor devices and materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-49432-5.pdf",
+    "abstract": "Abstract Free charge generation after photoexcitation of donor or acceptor molecules in organic solar cells generally proceeds via (1) formation of charge transfer states and (2) their dissociation into charge separated states. Research often either focuses on the first component or the combined effect of both processes. Here, we provide evidence that charge transfer state dissociation rather than formation presents a major bottleneck for free charge generation in fullerene-based blends with low energetic offsets between singlet and charge transfer states. We investigate devices based on dilute donor content blends of (fluorinated) ZnPc:C 60 and perform density functional theory calculations, device characterization, transient absorption spectroscopy and time-resolved electron paramagnetic resonance measurements. We draw a comprehensive picture of how energies and transitions between singlet, charge transfer, and charge separated states change upon ZnPc fluorination. We find that a significant reduction in photocurrent can be attributed to increasingly inefficient charge transfer state dissociation. With this, our work highlights potential reasons why low offset fullerene systems do not show the high performance of non-fullerene acceptors."
+   },
+   {
+    "id": "https://openalex.org/W4391251085",
+    "doi": "https://doi.org/10.1038/s41467-024-45054-z",
+    "title": "Thermo-optic epsilon-near-zero effects",
+    "year": 2024,
+    "cited": 20,
+    "venue": "Nature Communications",
+    "topics": [
+     "Photonic and Optical Devices",
+     "Advanced Fiber Laser Technologies",
+     "Plasmonic and Surface Plasmon Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-45054-z.pdf",
+    "abstract": "Abstract Nonlinear epsilon-near-zero (ENZ) nanodevices featuring vanishing permittivity and CMOS-compatibility are attractive solutions for large-scale-integrated systems-on-chips. Such confined systems with unavoidable heat generation impose critical challenges for semiconductor-based ENZ performances. While their optical properties are temperature-sensitive, there is no systematic analysis on such crucial dependence. Here, we experimentally report the linear and nonlinear thermo-optic ENZ effects in indium tin oxide. We characterize its temperature-dependent optical properties with ENZ frequencies covering the telecommunication O-band, C-band, and 2- μ m-band. Depending on the ENZ frequency, it exhibits an unprecedented 70–93-THz-broadband 660–955% enhancement over the conventional thermo-optic effect. The ENZ-induced fast-varying large group velocity dispersion up to 0.03–0.18 fs 2 nm −1 and its temperature dependence are also observed for the first time. Remarkably, the thermo-optic nonlinearity demonstrates a 1113–2866% enhancement, on par with its reported ENZ-enhanced Kerr nonlinearity. Our work provides references for packaged ENZ-enabled photonic integrated circuit designs, as well as a new platform for nonlinear photonic applications and emulations."
+   },
+   {
+    "id": "https://openalex.org/W4399679126",
+    "doi": "https://doi.org/10.1002/adfm.202406277",
+    "title": "Rapid Self‐Healing of Robust Surface‐Tethered Covalent Adaptable Coatings",
+    "year": 2024,
+    "cited": 19,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Polymer composites and self-healing",
+     "Surface Modification and Superhydrophobicity",
+     "Advanced Polymer Synthesis and Characterization"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202406277",
+    "abstract": "Abstract The incorporation of self‐healing properties to repair scratches (or other minor damage) has revolutionized the coating industry by increasing service life, sustainability, and optical appearance. This work addresses challenges with the robustness of self‐healing coatings through the inclusion of surface‐tethered covalently adaptable networks (CANs). Surface‐initiated polymerization is combined with spray‐coating to deposit polymers to produce coatings with reversible crosslinks to the tethered chains. These robust coatings are based on reversible vinylogous urethane bonds using 2‐(acetoacetoxy)ethyl methacrylate‐based polymers and tris(2‐aminoethyl) amine (TREN). Here, TREN enables reversible covalent bonding between the spray‐coated and surface‐tethered polymers. Without this polymer brush layer, the physisorbed CAN coatings fail to self‐heal completely, are labile to solvent, and exhibit shear delamination upon scratching. The utility of this tethered coating approach is highlighted through its ability to autonomously self‐heal incisions within seconds at elevated temperatures, or more steadily under ambient conditions. The key to these advancements is the use of polymer brushes as a primer layer to attach the CAN to enhance healing and improve the environmental robustness of the coating."
+   },
+   {
+    "id": "https://openalex.org/W4390916579",
+    "doi": "https://doi.org/10.1002/adom.202302201",
+    "title": "Synthesis of High Refractive Index Polymer Thin Films for Soft, Flexible Optics Through Halomethane Quaternization of Poly(4‐Vinylpyridine)",
+    "year": 2024,
+    "cited": 19,
+    "venue": "Advanced Optical Materials",
+    "topics": [
+     "Synthesis and properties of polymers",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Silicone and Siloxane Chemistry"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adom.202302201",
+    "abstract": "Abstract Applications in soft, flexible optical, and optoelectronic applications demand polymer thin film coatings that can accommodate substantial physical deformations. The preparation of high refractive index polymers (HRIPs) through the quaternization of poly(4‐vinylpyridine) (P4VP) thin films with (di)halomethanes is presented. P4VP thin films are prepared by initiated chemical vapor deposition (iCVD) and then quaternized through exposure to saturated vapors of iodomethane (CH 3 I), dibromomethane (CH 2 Br 2 ), and diiodomethane (CH 2 I 2 ), resulting in refractive indices (RI) as high as 1.67, 1.71, and 2.07, respectively (at 632.8 nm). Fourier‐transform infrared (FTIR) spectroscopy and X‐ray photoelectron spectroscopy (XPS) confirmed the quaternization of pyridine pendant groups on the polymer chain to n‐methylpyridinium with primarily an iodide or bromide counterion, though a minor fraction of polyiodides are also detected. Additionally, these films demonstrate superior thermal stability, retaining their refractive index and thickness after thermal excursions to 200 °C. The halogenated P4VP films exhibit superior mechanical flexibility relative to conventional inorganic coatings (Al 2 O 3 and Ta 2 O 5 ) and do not fracture at uniaxial tensile strains as high as 10%. This new material chemistry and fabrication approach method may enable advanced optical designs and functionality in a wide range of substrates and device architectures."
+   },
+   {
+    "id": "https://openalex.org/W2071620227",
+    "doi": "https://doi.org/10.1117/1.jmm.14.2.021102",
+    "title": "Metrology for block copolymer directed self-assembly structures using Mueller matrix-based scatterometry",
+    "year": 2015,
+    "cited": 18,
+    "venue": "Journal of Micro/Nanolithography MEMS and MOEMS",
+    "topics": [
+     "Optical Coatings and Gratings",
+     "Surface Roughness and Optical Measurements",
+     "Near-Field Optical Microscopy"
+    ],
+    "oa_url": "https://dspace.sunyconnect.suny.edu/bitstreams/864535ef-9992-4b89-a458-77f5b27fdb02/download",
+    "abstract": "Patterning based on directed self-assembly (DSA) of block copolymer (BCP) has been demonstrated to be a cost-effective manufacturing technique for advanced sub-20-nm structures. This paper describes the application of Mueller matrix spectroscopic ellipsometry (MMSE) based scatterometry to optically characterize polystyrene-b-polymethylmethacrylate patterns and Si fins fabricated with DSA. A regression-based (inverse problem) approach is used to calculate the line-width, line-shape, sidewall-angle, and thickness of the DSA structures. In addition, anisotropy and depolarization calculations are used to determine the sensitivity of MMSE to DSA pattern defectivity. As pattern order decreases, the mean squared error value increases, depolarization value increases, and anisotropy value decreases. These specific trends are used in the current work as a method to judge the degree of alignment of the DSA patterns across the wafer."
+   },
+   {
+    "id": "https://openalex.org/W4382461269",
+    "doi": "https://doi.org/10.1029/2023gl103446",
+    "title": "Predicting Real Refractive Index of Organic Aerosols From Elemental Composition",
+    "year": 2023,
+    "cited": 15,
+    "venue": "Geophysical Research Letters",
+    "topics": [
+     "Atmospheric chemistry and aerosols",
+     "Atmospheric Ozone and Climate",
+     "Atmospheric aerosols and clouds"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1029/2023GL103446",
+    "abstract": "Abstract Accurate estimates of aerosol refractive index (RI) are critical for modeling aerosol‐radiation interaction, yet this information is limited for ambient organic aerosols, leading to large uncertainties in estimating aerosol radiative effects. We present a semi‐empirical model that predicts the real RI n of organic aerosol material from its widely measured oxygen‐to‐carbon (O:C) and hydrogen‐to‐carbon (H:C) elemental ratios. The model was based on the theoretical framework of Lorenz‐Lorentz equation and trained with n‐values at 589 nm () of 160 pure compounds. The predictions can be expanded to predict n‐values in a wide spectrum between 300 and 1,200 nm. The model was validated with newly measured and literature datasets of n‐values for laboratory secondary organic aerosol (SOA) materials. Uncertainties of predictions for all SOA samples are within 5%. The model suggests that ‐values of organic aerosols may vary within a relatively small range for typical O:C and H:C values observed in the atmosphere."
+   },
+   {
+    "id": "https://openalex.org/W4376623016",
+    "doi": "https://doi.org/10.1039/d3py00248a",
+    "title": "Thermoresponsive polymer brush photocatalytic substrates for wastewater remediation",
+    "year": 2023,
+    "cited": 14,
+    "venue": "Polymer Chemistry",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Covalent Organic Framework Applications",
+     "Pharmaceutical and Antibiotic Environmental Impacts"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2023/py/d3py00248a",
+    "abstract": "NIPAAm and fluorescein o -acrylate are copolymerized on glass beads to develop multiresponsive heterogeneous photocatalysts that exhibit structural changes at elevated temperatures and alter their photocatalytic performance in wastewater remediation."
+   },
+   {
+    "id": "https://openalex.org/W4409732584",
+    "doi": "https://doi.org/10.1021/acsabm.5c00146",
+    "title": "Enzymatic Polymer Brush Interfaces for Electrochemical Sensing in Biofluids",
+    "year": 2025,
+    "cited": 13,
+    "venue": "ACS Applied Bio Materials",
+    "topics": [
+     "Electrochemical sensors and biosensors",
+     "Electrochemical Analysis and Applications",
+     "Molecular Junctions and Nanostructures"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsabm.5c00146?ref=article_openPDF",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Electrochemical sensors enable specific and sensitive detection of biological markers. However, most small molecule analytes are not electroactive. Therefore, enzymes are widely used for selective breakdown of the markers into electro-active species. However, it has proven difficult to design a sensor interface where any enzyme can be controllably immobilized in high amounts with preserved activity. In addition, most interfaces cease to function in biofluids due to “fouling” of the sensor surface. Here we present a generic strategy employting polymer brushes for enzymatic electrochemical sensing which resolves these issues. Generic conjugation chemistry is used to covalently bind large amounts of enzymes (>1 μg/cm 2 ). Remarkably, despite this enzyme load, the (∼200 nm thick) brushes remain highly hydrated and practically invisible by electrochemical methods: Small molecules freely access the underlying electrode and the charge transfer resistance increment is exceptionally low (<10 Ω). The enzymatic polymer brush interfaces enable specific detection of the biomarkers glucose and glutamate by simple chronoamperometry. Furthermore, by sequential immobilization of several enzymes, cascade reactions can be performed, as illustrated by detection of acetylcholine. Finally, the sensor interface still functions in cerebrospinal fluid (10× diluted, unfiltered). In conclusion, polymer brushes provide extended possibilities for enzymatic catalysis and electrochemical sensing."
+   },
+   {
+    "id": "https://openalex.org/W4390916643",
+    "doi": "https://doi.org/10.1002/adom.202302496",
+    "title": "Four‐Dimensional Design Space of High‐Q Second‐Order Distributed Feedback Perovskite Lasers",
+    "year": 2024,
+    "cited": 12,
+    "venue": "Advanced Optical Materials",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Photonic and Optical Devices",
+     "Photorefractive and Nonlinear Optics"
+    ],
+    "oa_url": "https://lirias.kuleuven.be/retrieve/73cebf91-f80f-4988-80c8-4fd9ce54569b",
+    "abstract": "Abstract Second‐order distributed feedback (DFB) resonators are widely used for thin‐film lasers as they combine low lasing thresholds with ease of manufacturing. Here, the grating design parameters are varied to map the lasing characteristics of lead halide perovskite films deposited on a single substrate that contains hundreds of high‐quality silicon nitride surface gratings. The lowest lasing threshold (≈130 µJ cm−2) is identified through the aid of near‐field and far‐field imaging spectroscopy in a four‐dimensional design space composed of grating period, duty cycle, active layer thickness, and cavity length. Moreover, it is shown that antisymmetric modes support high‐quality lasing (Q up to ≈10800) in the second‐order DFBs. The multi‐dimensional experimental analysis is accompanied by a thorough theoretical study with a semi‐empirical model based on coupled wave equations, which is used to investigate the lasing characteristics beyond the manufacturing range. The results can be applied to a broad range of thin‐film DFB resonators, enabling the design of more complex laser stack configurations including light‐emitting devices for current‐injection lasing."
+   },
+   {
+    "id": "https://openalex.org/W4410364641",
+    "doi": "https://doi.org/10.1038/s41467-025-59600-w",
+    "title": "A Programmable Wafer-scale Chiroptical Heterostructure of Twisted Aligned Carbon Nanotubes and Phase Change Materials",
+    "year": 2025,
+    "cited": 11,
+    "venue": "Nature Communications",
+    "topics": [
+     "Phase-change materials and chalcogenides",
+     "Liquid Crystal Research Advancements",
+     "Synthesis and Properties of Aromatic Compounds"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-59600-w.pdf",
+    "abstract": "The ability to design and dynamically control chiroptical responses in solid-state matter at a wafer scale enables new opportunities in various areas. Here, we present a full stack of computer-aided designs and experimental implementations of a dynamically programmable, unified, scalable chiroptical heterostructure containing wafer-scale twisted aligned one-dimensional carbon nanotubes and non-volatile phase change materials. We develop a software infrastructure based on high-performance machine learning frameworks, including differentiable programming and derivative-free optimization, to efficiently optimize the tunability of both reciprocal and nonreciprocal circular dichroism responses, which are experimentally validated. Further, we demonstrate the heterostructure scalability regarding stacking layers and the dual roles of aligned carbon nanotubes - the layer to produce chiroptical responses and the Joule heating electrode to electrically program phase change materials. This heterostructure platform is versatile and expandable to a library of one-dimensional nanomaterials, phase change materials, and electro-optic materials for exploring novel chiral phenomena and photonic and optoelectronic devices."
+   },
+   {
+    "id": "https://openalex.org/W4396224531",
+    "doi": "https://doi.org/10.1002/solr.202400079",
+    "title": "A Highly Efficient, Selective, and Thermally Stable Dielectric Multilayer Emitter for Solar Thermophotovoltaics",
+    "year": 2024,
+    "cited": 11,
+    "venue": "Solar RRL",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "solar cell performance optimization",
+     "Quantum Electrodynamics and Casimir Effect"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/solr.202400079",
+    "abstract": "Herein, the design, optimization, fabrication, and characterization of a highly efficient selective emitter (SE) for solar thermophotovoltaic systems is presented. An SE consisting of three layers (SiN x –SiO 2 –TiO 2 ) deposited on a tungsten substrate is optimized for use with photovoltaic (PV) cells based on III–V semiconductors, such as GaSb, InGaAs, and InGaAsSb. The fabricated SE shows an emitter efficiency ( η SE ) of 50% when coupled with a PV cell having an energy bandgap of 0.63 eV. After thermal treatment carried out at 1000 °C for 8 h in a vacuum environment, η SE of 46% is recorded, demonstrating the thermal stability of the proposed SE. Its behavior at high temperatures has also been studied using simulations based on the transfer matrix method and on refractive indices experimentally measured at different temperatures (up to 1000 °C). The results show η SE of 44% in the energy bandgap range of 0.55–0.63 eV, proving that the proposed structure is promising and can operate at high temperatures. In addition, the behavior of a real PV cell is simulated, and calculations show a maximum PV cell efficiency of 15% at 1000 °C and 25% at 1600 °C, exceeding the Shockley–Queisser limit."
+   },
+   {
+    "id": "https://openalex.org/W4381157944",
+    "doi": "https://doi.org/10.1021/acs.langmuir.3c00981",
+    "title": "Spontaneous Co-Assembly of Cellulose Nanocrystals and TiO2 Nanorods Followed by Calcination to Form Cholesteric Inorganic Nanostructures",
+    "year": 2023,
+    "cited": 11,
+    "venue": "Langmuir",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Liquid Crystal Research Advancements",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.langmuir.3c00981",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Chiral nanomaterials possess unique electronic, magnetic, and optical properties that are relevant to a wide range of applications including photocatalysis, chiral photonics, and biosensing. A simple, bottom-up method to create chiral, inorganic structures is introduced that involves the co-assembly of TiO 2 nanorods with cellulose nanocrystals (CNCs) in water. To guide experimental efforts, a phase diagram was constructed to describe how phase behavior depends on the CNCs/TiO 2 /H 2 O composition. A lyotropic cholesteric mesophase was observed to extend over a wide composition range as high as 50 wt % TiO 2 nanorods, far exceeding other examples of inorganic nanorods/CNCs co-assembly. Such a high loading enables the fabrication of inorganic, free-standing chiral films through removal of water and calcination. Distinct from the traditional templating method using CNCs, this new approach separates sol–gel synthesis from particle self-assembly using low-cost nanorods."
+   },
+   {
+    "id": "https://openalex.org/W4377013004",
+    "doi": "https://doi.org/10.1002/solr.202300211",
+    "title": "Dual Photonic Structures Enable High‐Performance Semitransparent Organic Photovoltaics with Enhanced Light Utilization",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Solar RRL",
+    "topics": [
+     "solar cell performance optimization",
+     "Organic Electronics and Photovoltaics",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/solr.202300211",
+    "abstract": "Semitransparent organic photovoltaics (ST‐OPVs) offer promising prospects for self‐powered greenhouses and building‐integrated photovoltaic systems. However, a remaining critical challenge is to balance the two competing indexes of power conversion efficiency (PCE) and average visible transmittance (AVT). Herein, a synergetic strategy of light manipulation is developed to achieve high‐performance ST‐OPVs by employing dual photonic structures with a rear single‐layer optical coupling layer (OCL) and a front single‐layer antireflection coating (ARC). The material selection and thickness optimization of both OCL and ARC are systematically guided by combining theoretical simulations and experimental devices, leading to significantly enhanced light utilization in ST‐OPVs. As a result, the use of dual photonic structures enables ST‐OPVs based on the active layer of PM6:Y6 to demonstrate simultaneously a high AVT of 35.7% and a good PCE of 10.29%, yielding an excellent light utilization efficiency of 3.67% with a remarkable improvement of 43% comparing with that of the control device. This work provides a simple yet effective strategy of light manipulation for the development of high‐performance ST‐OPVs."
+   },
+   {
+    "id": "https://openalex.org/W4364359359",
+    "doi": "https://doi.org/10.1038/s41598-023-32959-w",
+    "title": "Deep-trap dominated degradation of the endurance characteristics in OFET memory with polymer charge-trapping layer",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Semiconductor materials and devices",
+     "Thin-Film Transistor Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-023-32959-w.pdf",
+    "abstract": "Organic field-effect transistors (OFETs) with polymer charge-trapping dielectric, which exhibit many advantages over Si-based memory devices such as low cost, light weight, and flexibility, still suffer challenges in practical application due to the unsatisfied endurance characteristics and even the lack of fundamental of behind mechanism. Here, we revealed that the degradation of endurance characteristics of pentacene OFET with poly(2-vinyl naphthalene) (PVN) as charge-storage layer is dominated by the deep hole-traps in PVN by using the photo-stimulated charge de-trapping technique with the fiber-coupled monochromatic-light probes. The depth distribution of hole-traps in PVN film of pentacene OFET is also provided."
+   },
+   {
+    "id": "https://openalex.org/W4383059239",
+    "doi": "https://doi.org/10.1039/d3tb00710c",
+    "title": "A nanoscale inorganic coating strategy for stabilizing hydrogel neural probes in vivo",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Journal of Materials Chemistry B",
+    "topics": [
+     "Neuroscience and Neural Engineering",
+     "Photoreceptor and optogenetics research",
+     "Supramolecular Self-Assembly in Materials"
+    ],
+    "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10530439/pdf/nihms-1914805.pdf",
+    "abstract": "hydrogel fibers resulted in optogenetically modulated mouse locomotor behaviors, including increased contralateral rotation, mobility speeds, and travel distances."
+   },
+   {
+    "id": "https://openalex.org/W4407765523",
+    "doi": "https://doi.org/10.1021/acs.analchem.4c05037",
+    "title": "Solid-State Nanopore Sensors: Analyte Quantification by Event Frequency Analysis at High Voltages",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Analytical Chemistry",
+    "topics": [
+     "Nanopore and Nanochannel Transport Studies",
+     "Geophysical and Geoelectrical Methods",
+     "Microfluidic and Bio-sensing Technologies"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.analchem.4c05037?ref=article_openPDF",
+    "abstract": "Solid state nanopores have emerged as an important electrical label-free single-molecule detection platform. While much effort has been spent on analyzing the current trace to determine size, shape and charge of the translocating species, a less studied aspect is the number of events and how this relates to analyte concentration. In this work we systematically investigate how the event frequency depends on voltage applied across the pore and show that this dependence can be utilized to determine target concentration. Importantly, this method does not require any calibration or any additional species added to the solution. Data analysis algorithms are introduced to accurately count events also for high voltages (up to 1 V). For double stranded DNA as model analyte, we find a linear relation between event frequency and voltage for pores 10 nm or more in diameter. For smaller pores, the majority of events are dockings rather than translocations and the linear relation is lost, in agreement with theory. Our model also predicts that the electrophoretic mobility of the species will influence event frequency, while diffusivity does not, which we confirm by using two different sizes of DNA. The analyte concentration determination is found to be remarkably accurate (10% error) when taking the average of multiple (∼4) experiments. If based on a single experiment, the predictive power is lower, but the method still provides a useful estimate (<30% error). This study should be useful as a guide when performing experiments at higher voltages and may serve as a method to extract analyte concentration in bioanalytical applications of nanopore sensors."
+   },
+   {
+    "id": "https://openalex.org/W4410008681",
+    "doi": "https://doi.org/10.1039/d5na00207a",
+    "title": "Morphology and property tuning in ZnO–Ni hybrid metamaterials in vertically aligned nanocomposite (VAN) form",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Nanoscale Advances",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Metamaterials and Metasurfaces Applications",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2025/na/d5na00207a",
+    "abstract": "ZnO thin films have attracted significant interest in the past decades owing to their unique wide band gap properties, piezoelectric properties, non-linearity and plasmonic properties. Recent efforts have been made in coupling ZnO with secondary phases to enhance its functionalities, such as Au-ZnO nanocomposite thin films with tunable optical and plasmonic properties. In this work, magnetic nanostructures of Ni are incorporated in ZnO thin films in a vertically aligned nanocomposite (VAN) form to couple magnetic and plasmonic response in a complex hybrid metamaterial system. Nickel (Ni) is of interest due to its ferromagnetic and plasmonic properties along with gold (Au) which is also plasmonic. Therefore, two approaches, namely, tuning of the deposition pressure and use of a ZnO-Au seeding layer have been attempted to achieve unique Ni nanostructures in addition to tuning of the microstructure. Together, both approaches demonstrate a range of microstructures such as core-shell, nanodisk, nanocup, and nanocube-like morphologies not previously attempted. Additionally, there is effective tuning of properties. Specifically, the seeding layer thickness causes hyperbolic behavior as well as redshift in the surface plasmon resonance (SPR) wavelength. The addition of the ZnO-Au seeding layer directly influences the optical properties. Plus, regardless of the different approaches, the films demonstrate magnetic anisotropy based on the composition and microstructure of the film which impacted the saturation magnetization and coercivity. This study demonstrates the potential of ZnO-based complex hybrid metamaterials with coupled electro-magneto-optical properties for integrated photonic devices."
+   },
+   {
+    "id": "https://openalex.org/W4317569467",
+    "doi": "https://doi.org/10.1515/nanoph-2022-0690",
+    "title": "Bio‐inspired building blocks for all‐organic metamaterials from visible to near‐infrared",
+    "year": 2023,
+    "cited": 9,
+    "venue": "Nanophotonics",
+    "topics": [
+     "Spectroscopy and Quantum Chemical Studies",
+     "Photosynthetic Processes and Mechanisms",
+     "Advanced Chemical Physics Studies"
+    ],
+    "oa_url": "https://www.degruyter.com/document/doi/10.1515/nanoph-2022-0690/pdf",
+    "abstract": "Abstract Light‐harvesting complexes in natural photosynthetic systems, such as those in purple bacteria, consist of photo‐reactive chromophores embedded in densely packed “antenna” systems organized in well‐defined nanostructures. In the case of purple bacteria, the chromophore antennas are composed of natural J‐aggregates such as bacteriochlorophylls and carotenoids. Inspired by the molecular composition of such biological systems, we create a library of organic materials composed of densely packed J‐aggregates in a polymeric matrix, in which the matrix mimics the optical role of a protein scaffold. This library of organic materials shows polaritonic properties which can be tuned from the visible to the infrared by choice of the model molecule. Inspired by the molecular architecture of the light‐harvesting complexes of Rhodospirillum molischianum bacteria, we study the light–matter interactions of J‐aggregate‐based nanorings with similar dimensions to the analogous natural nanoscale architectures. Electromagnetic simulations show that these nanorings of J‐aggregates can act as resonators, with subwavelength confinement of light while concentrating the electric field in specific regions. These results open the door to bio‐inspired building blocks for metamaterials from visible to infrared in an all‐organic platform, while offering a new perspective on light–matter interactions at the nanoscale in densely packed organic matter in biological organisms including photosynthetic organelles."
+   },
+   {
+    "id": "https://openalex.org/W1970886742",
+    "doi": "https://doi.org/10.1117/12.916289",
+    "title": "Investigation of E-beam patterned nanostructures using Mueller Matrix based Scatterometry",
+    "year": 2012,
+    "cited": 9,
+    "venue": "Proceedings of SPIE, the International Society for Optical Engineering/Proceedings of SPIE",
+    "topics": [
+     "Optical Polarization and Ellipsometry",
+     "Surface Roughness and Optical Measurements",
+     "Optics and Image Analysis"
+    ],
+    "oa_url": null,
+    "abstract": "Scatterometry is one of the most useful metrology methods for the characterization and control of critical dimensions (CD) and the detailed topography of periodic structures in microelectronics fabrication processes. Spectroscopic Ellipsometry (SE) and Normal Incidence Reflectometry (NI) based Scatterometry are the most widely used methodologies for metrology of these structures. Evolution of better optical hardware and faster computing capabilities led to the development of Mueller Matrix (MM) based Scatterometry (MMS). In this paper we present the first study of dimensional metrology using full Mueller Matrix (16 element) Scatterometry in the wavelength range of 245nm- 1000nm. Unlike SE and NI, MM data provides complete information about the optical reflection and transmission of polarized light through a sample. MM is a 4x4 transformation matrix (16 elements) describing the change in the intensities of incident polarized light expressed by means of a Stokes Vector. The symmetry properties associated with MM provide an excellent means of measuring and understanding the topography of the periodic nanostructures. Topography here refers to uniformity of the periodic structure. The advantage of MMS over traditional SE Scatterometry is the ability of MMS to measure samples that have anisotropic optical properties and depolarize light. The present study focuses on understanding the precision and accuracy of Mueller based Scatterometry with respect to other methodologies by a systematic approach. Several laterally complex nanoscale structures with dimensions in the order of nanometers were designed and fabricated using a state of the art E-beam pattering tool (VISTEC [R] 300). Later, Spectroscopic Mueller matrix (all 16 elements) and SE data were collected in planar diffraction mode for the samples using J.A. Woollam RC2 [TM] Spectroscopic Ellipsometer. NanoDiffract [TM] (Scatterometry software provided by Nanometrics Inc.) was used to model the nanostructures to precisely calculate the critical dimensions. Complementary techniques like SEM were used to compare the results obtained from Scatterometry. Finally, Mueller and SE based Scatterometry techniques were compared commenting on reliability of MM based Scatterometry."
+   },
+   {
+    "id": "https://openalex.org/W4413055787",
+    "doi": "https://doi.org/10.1126/sciadv.adu6698",
+    "title": "A single-phase epitaxially grown ferroelectric perovskite nitride",
+    "year": 2025,
+    "cited": 8,
+    "venue": "Science Advances",
+    "topics": [
+     "Ferroelectric and Piezoelectric Materials",
+     "Perovskite Materials and Applications",
+     "Electronic and Structural Properties of Oxides"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adu6698?download=true",
+    "abstract": "The integration of ferroelectrics with semiconductors is crucial for developing functional devices, such as field-effect transistors, tunnel junctions, and nonvolatile memories. However, the synthesis of high-quality single-crystalline ferroelectric nitride perovskites has been limited, hindering a comprehensive understanding of their switching dynamics. Here we report the synthesis and characterizations of epitaxial single-phase ferroelectric cerium tantalum nitride (CeTaN 3 ) on both oxides and semiconductors. The polar symmetry of CeTaN 3 was confirmed by observing the atomic displacement of central ions relative to the center of the TaN 6 octahedra, as well as through optical second harmonic generation. We observed switchable ferroelectric domains using piezoresponse force microscopy, complemented by the characterization of square-like polarization–electric field hysteresis loops. The remanent polarization of CeTaN 3 reaches approximately 20 microcoulomb per square centimeter at room temperature, consistent with theoretical calculations. This work establishes a vital link between ferroelectric nitride perovskites and their practical applications, paving the way for next-generation information and energy storage devices."
+   },
+   {
+    "id": "https://openalex.org/W4390670627",
+    "doi": "https://doi.org/10.3390/cryst14010065",
+    "title": "ZnO-Au Hybrid Metamaterial Thin Films with Tunable Optical Properties",
+    "year": 2024,
+    "cited": 7,
+    "venue": "Crystals",
+    "topics": [
+     "ZnO doping and properties",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Plasmonic and Surface Plasmon Research"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4352/14/1/65/pdf?version=1704523602",
+    "abstract": "ZnO-Au nanocomposite thin films have been previously reported as hybrid metamaterials with unique optical properties such as plasmonic resonance properties and hyperbolic behaviors. In this study, Au composition in the ZnO-Au nanocomposites has been effectively tuned by target composition variation and thus resulted in microstructure and optical property tuning. Specifically, all the ZnO-Au nanocomposite thin films grown through the pulsed laser deposition (PLD) method show obvious vertically aligned nanocomposite (VAN) structure with the Au nanopillars embedded in the ZnO matrix. Moreover, the average diameter of Au nanopillars increases as Au concentration increases, which also leads to the redshifts in the surface plasmon resonance (SPR) wavelength and changes in the hyperbolic behaviors of the films. As a whole, this work discusses how strain-driven tuning of optical properties and microstructure resulted through a novel Au concentration variation approach which has not been previously attempted in the ZnO-Au thin film system. These highly ordered films present great promise in the areas of sensing, waveguides, and nanophotonics to name a few."
+   },
+   {
+    "id": "https://openalex.org/W4387270721",
+    "doi": "https://doi.org/10.1039/d3na00512g",
+    "title": "Improved epitaxial growth and multiferroic properties of Bi 3 Fe 2 Mn 2 O x using CeO 2 re-seeding layers",
+    "year": 2023,
+    "cited": 7,
+    "venue": "Nanoscale Advances",
+    "topics": [
+     "Multiferroics and related materials",
+     "Magnetic and transport properties of perovskites and related materials",
+     "Ferroelectric and Piezoelectric Materials"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2023/na/d3na00512g",
+    "abstract": "interlayers reintroduces the heteroepitaxial strain and effectively re-initiates the growth of the SC phase. The thick BFMO SC phase maintains the overall multiferroic and interesting anisotropic optical properties, even exceeding those of the typical 100 nm SC film. This re-seeding method can be effectively adopted with other SC systems or strain-dependent thin films, thus introducing practical applications of the new SC phases without thickness limitations."
+   },
+   {
+    "id": "https://openalex.org/W4283076414",
+    "doi": "https://doi.org/10.3390/cryst12060849",
+    "title": "TiN–Fe Vertically Aligned Nanocomposites Integrated on Silicon as a Multifunctional Platform toward Device Applications",
+    "year": 2022,
+    "cited": 7,
+    "venue": "Crystals",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "GaN-based semiconductor devices and materials",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4352/12/6/849/pdf?version=1655375534",
+    "abstract": "Transition metal nitrides such as titanium nitride (TiN) possess exceptional mechanical-, chemical-, and thermal-stability and have been utilized in a wide variety of applications ranging from super-hard, corrosion-resistive, and decorative coatings to nanoscale diffusion barriers in semiconductor devices. Despite the ongoing interest in these robust materials, there have been limited reports focused on engineering high-aspect ratio TiN-based nanocomposites with anisotropic magnetic and optical properties. To this end, we explored TiN–Fe thin films with self-assembled vertical structures integrated on Si substrates. We showed that the key physical properties of the individual components (e.g., ferromagnetism from Fe) are preserved, that vertical nanostructures promote anisotropic behavior, and interactions between TiN and Fe enable a special magneto-optical response. This TiN–Fe nanocomposite system presents a new group of complex multifunctional hybrid materials that can be integrated on Si for future Si-based memory, optical, and biocompatible devices."
+   },
+   {
+    "id": "https://openalex.org/W4225906432",
+    "doi": "https://doi.org/10.1007/s41871-022-00131-z",
+    "title": "Polarization Measurement Method Based on Liquid Crystal Variable Retarder (LCVR) for Atomic Thin-Film Thickness",
+    "year": 2022,
+    "cited": 7,
+    "venue": "Nanomanufacturing and Metrology",
+    "topics": [
+     "Thin-Film Transistor Technologies",
+     "Optical Polarization and Ellipsometry",
+     "Surface Roughness and Optical Measurements"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s41871-022-00131-z.pdf",
+    "abstract": "Abstract Atomic thickness thin films are critical functional materials and structures in atomic and close-to-atomic scale manufacturing. However, fast, facile, and highly sensitive precision measurement of atomic film thickness remains challenging. The reflected light has a dramatic phase change and extreme reflectivity considering the Brewster angle, indicating the high sensitivity of the optical signal to film thickness near this angle. Hence, the precision polarization measurement method focusing on Brewster angle is vital for the ultrahigh precision characterization of thin films. A precision polarization measurement method based on a liquid crystal variable retarder (LCVR) is proposed in this paper, and a measurement system with a high angular resolution is established. A comprehensive measurement system calibration scheme is also introduced to accommodate ultrahigh precision film thickness measurement. Repeatable measurement accuracy to the subnanometer level is achieved. Standard silicon oxide film samples of different thicknesses were measured around Brewster angle using the self-developed system and compared with a commercial ellipsometer to verify the measurement accuracy. The consistency of the thickness measurement results demonstrates the feasibility and robustness of the measurement method and calibration scheme. This study also demonstrates the remarkable potential of the LCVR-based polarization method for atomic film thickness measurement in ultraprecision manufacturing."
+   },
+   {
+    "id": "https://openalex.org/W4411713430",
+    "doi": "https://doi.org/10.1002/smtd.202500727",
+    "title": "Photonic Interfaces: an Innovative Wearable Sensing Solution for Continuous Monitoring of Human Motion and Physiological Signals",
+    "year": 2025,
+    "cited": 6,
+    "venue": "Small Methods",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Fiber Optic Sensors",
+     "Non-Invasive Vital Sign Monitoring"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202500727",
+    "abstract": "Abstract Flexible integrated photonic sensors are gaining prominence in intelligent wearable sensing due to their compact size, exceptional sensitivity, rapid response, robust immunity to electromagnetic interference, and the capability to enable parallel sensing through optical multiplexing. However, integrating these sensors for practical applications, such as monitoring human motions and physiological activities together, remains a significant challenge. Herein, it is presented an innovative fully packaged integrated photonic wearable sensor, which features a delicately designed flexible necklace‐shaped microring resonator (MRR), along with a pair of grating couplers (GCs) coupled to a fiber array (FA). The necklace‐shaped MRR is engineered to minimize waveguide sidewall‐induced scattering loss, with a measured intrinsic quality factor (Q int ) of 1.68 × 10 5 , ensuring highly sensitive and precise signal monitoring. GCs and FA enhance the seamless wearability of devices while maintaining superior sensitivity to monitor various human motions and physiological signs. These are further classified signals using machine learning algorithms, achieving an accuracy rate of 97%. This integrated photonic wearable sensor shows promise for human‐machine interfaces, touch‐responsive wearable monitors, and artificial skin, especially in environments susceptible to electromagnetic interference, such as intensive care units (ICUs) and spacecraft. This work significantly advances the field of smart wearable technology."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"J.A. Woollam RC2\") AND OPEN_ACCESS:y",

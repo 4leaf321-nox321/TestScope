@@ -10,8 +10,174 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Newtons4th PPA\" OR \"Newtons4th PPA5500\" OR \"N4L PPA\" OR \"N4L PPA5500\"",
-  "count": null,
-  "works": []
+  "count": 11,
+  "works": [
+   {
+    "id": "https://openalex.org/W2172025893",
+    "doi": "https://doi.org/10.1109/tpel.2015.2441299",
+    "title": "Optimal Design of High-Order Passive-Damped Filters for Grid-Connected Applications",
+    "year": 2015,
+    "cited": 276,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Microgrid Control and Optimization",
+     "Advanced DC-DC Converters",
+     "Islanding Detection in Power Systems"
+    ],
+    "oa_url": "https://vbn.aau.dk/ws/files/225141324/TPEL2441299.pdf",
+    "abstract": "Harmonic stability problems caused by the resonance of high-order filters in power electronic systems are ever increasing. The use of passive damping does provide a robust solution to address these issues, but at the price of reduced efficiency due to the presence of additional passive components. Hence, a new method is proposed in this paper to optimally design the passive damping circuit for the LCL filters and LCL with multituned LC traps. In short, the optimization problem reduces to the proper choice of the multisplit capacitors or inductors in the high-order filter. Compared to existing design procedures, the proposed method simplifies the iterative design of the overall filter while ensuring the minimum resonance peak with a lower damping capacitor and a lower rated resistor. It is shown that there is only one optimal value of the damping resistor or quality factor to achieve a minimum filter resonance. The passive filters are designed, built, and validated both analytically and experimentally for verification."
+   },
+   {
+    "id": "https://openalex.org/W2745910070",
+    "doi": "https://doi.org/10.1109/tpel.2017.2740946",
+    "title": "Mitigation of Grid-Current Distortion for LCL-Filtered Voltage-Source Inverter With Inverter-Current Feedback Control",
+    "year": 2017,
+    "cited": 109,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Microgrid Control and Optimization",
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters"
+    ],
+    "oa_url": "https://vbn.aau.dk/da/publications/bcdc2f09-6a6a-4ec7-b475-62492a3be934",
+    "abstract": "LCL filters feature low inductance; thus, the injected grid current from an LCL -filtered voltage-source inverter can be easily distorted by grid-voltage harmonics. This problem is especially tough for the control system with inverter-side current feedback (ICF), since the grid-current harmonics can freely flow into the filter capacitor. In this case, because of the loss of harmonic information, traditional harmonic controllers fail to mitigate the grid-current distortion. Although this problem may be avoided using the grid-voltage feedforward scheme, the required differentiators may cause the noise amplification. In light of the above issue, this paper develops a simple method for the ICF control system to mitigate the grid-current harmonics without extra sensors. In the proposed method, resonant harmonic controllers and an additional compensation loop are adopted at the same time. The potential instability introduced by the compensation loop can be avoided through a special design of the compensation position. Finally, the effectiveness of the proposed method for harmonic rejection is verified by detailed experimental results."
+   },
+   {
+    "id": "https://openalex.org/W2953524420",
+    "doi": "https://doi.org/10.24295/cpsstpea.2019.00017",
+    "title": "Open-Loop Power Sharing Characteristic of a Three-Port Resonant LLC Converter",
+    "year": 2019,
+    "cited": 62,
+    "venue": "CPSS Transactions on Power Electronics and Applications",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Wireless Power Transfer Systems",
+     "Microgrid Control and Optimization"
+    ],
+    "oa_url": "https://doi.org/10.24295/cpsstpea.2019.00017",
+    "abstract": "The Solid State Transformer (SST) is an attractive solution for highly flexible, cost-effective, compact and efficient power transfer among different grids. Furthermore, a three-port topology is proven as a suitable solution to integrate energy storage resources, the key functionality of emerging SST concept. Among other alternatives, the resonant LLC series resonant converter (SRC) is the cost-effective solution to implement the DC-transformer functionality, which is a core part of the SST. This paper addresses the power sharing characteristics and the zero-voltage switching (ZVS) conditions of a galvanically isolated three-port SRC, operated in DC-transformer mode. A mathematical model, which effectively decouples principal from circulating currents and power flows, is proposed and developed. This new mathematical framework eases the analysis; and reveals a constant power sharing characteristic tightly dominated by the resonant tank parameters even though some degrees of freedom are allowed thanks to the introduction of a differential voltage at the input terminals. Subsequently, design aspects and assessments of working operation conditions are also reported. The accuracy of the proposed model is verified by experimental validation on a lab-scale prototype."
+   },
+   {
+    "id": "https://openalex.org/W3170177949",
+    "doi": "https://doi.org/10.1109/access.2021.3087035",
+    "title": "A Simple Space Vector Modulation Method With DC-Link Voltage Balancing and Reduced Common-Mode Voltage Strategy for a Three-Level T-Type Quasi-Z Source Inverter",
+    "year": 2021,
+    "cited": 23,
+    "venue": "IEEE Access",
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Microgrid Control and Optimization",
+     "HVDC Systems and Fault Protection"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/9312710/09447724.pdf",
+    "abstract": "Single-stage converters based on an impedance source (IS) network merged with a multilevel inverter remain a trending research topic, from both the topological and control perspectives, because of their potential in applications involving renewable energy. This paper presents a new, simplified space vector pulse-width modulation (SVPWM) for a three-phase three-level T-type quasi-impedance source inverter (3L-T-type qZSI). The benefits of the proposed modulation strategy include functionalities, such as boosting the input voltage and controlling the neutral-point (NP) voltage using the redundant small vectors, to mitigate the inner capacitors voltages imbalance. The proposed SVPWM guarantees a minimum common-mode voltage while preserving a very simple implementation, thus reducing the complex computations and cascaded proportional-integral (PI) control loops of the conventional SVPWM methods. The proposed algorithm can be applied to different multilevel inverter configurations combined with an IS network. A comprehensive simulation study and experimental results demonstrated the good performance of the proposed control method for dynamic response and imbalance conditions."
+   },
+   {
+    "id": "https://openalex.org/W4205236351",
+    "doi": "https://doi.org/10.1049/pel2.12234",
+    "title": "Experimental evaluation of a new carrier‐based modulation method for a three‐level T‐type quasi‐impedance‐source inverter",
+    "year": 2022,
+    "cited": 4,
+    "venue": "IET Power Electronics",
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters",
+     "Microgrid Control and Optimization"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/pel2.12234",
+    "abstract": "Abstract Quasi‐impedance‐source inverter topologies require the insertion of short‐circuit states of the DC‐link to achieve the boost feature. Unlike traditional strategies that implement full short‐circuits in the legs of the inverter, new control methods based on space vector modulation (SVM) introduce these states by alternately short‐circuiting the two halves of the DC‐link, improving the harmonic performance and efficiency of the converter. However, because of the complexity involved in the implementation of these SVM strategies, simpler and more direct control techniques are needed. In this study, a new carrier‐based strategy for the control of a three‐level T‐Type quasi‐Z‐source inverter (qZS 3L‐TI), which implements the half‐DC‐link short‐circuit states, is validated through several experimental tests under rated power conditions. The experimental results indicate that the new carrier‐based technique shows improved harmonic performance, lower semiconductor stress, and a better efficiency than the traditional full shoot‐through strategy. Based on these results and the simplicity of implementation, the new carrier‐based control strategy proves to be a competitive alternative for the control of qZS 3L‐TI."
+   },
+   {
+    "id": "https://openalex.org/W2464078351",
+    "doi": "https://doi.org/10.1049/iet-pel.2015.0984",
+    "title": "Experimental validation of a hybrid converter with enhanced switching ripple cancellation",
+    "year": 2016,
+    "cited": 2,
+    "venue": "IET Power Electronics",
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/iet-pel.2015.0984",
+    "abstract": "This study presents the experimental evaluation of a proposed new three phase hybrid converter topology for medium voltage applications. The topology is based on the interconnection of a low switching frequency voltage source inverter (VSI), rated at medium voltage, with a high switching frequency low‐power rated current source inverter (CSI). The main function of the shunt connected CSI is to cancel the large switching current ripple produced by the VSI while operating at a reduced fundamental voltage enabled by the use of series connected capacitors. The simulations and design procedure outline the possibility of achieving high output grid current quality whilst the added installed power by the CSI remains at <4% compared with the VSI. The experimental results show good correlation between analytical/simulated targets of 20% maximum CSI voltage stress albeit with added installed power of 6.7% due to a larger amount of current ripple processed."
+   },
+   {
+    "id": "https://openalex.org/W7144859253",
+    "doi": null,
+    "title": "磁界共振結合方式ワイヤレス電力伝送の入力電力一定動作時における結合係数推定に関する研究",
+    "year": 2020,
+    "cited": 0,
+    "venue": "Institutional Repositories DataBase (IRDB)",
+    "topics": [
+     "Magneto-Optical Properties and Applications",
+     "Wireless Power Transfer Systems",
+     "Magnetic Field Sensors Techniques"
+    ],
+    "oa_url": "https://repository.dl.itc.u-tokyo.ac.jp/record/2003557/files/K-07473.pdf",
+    "abstract": "UTokyo Repositoryは本学で生産されたさまざまな学術成果を電子的形態で集中的に蓄積・保存し、世界に発信することを目的としたインターネット上の発信拠点です。 The UTokyo Repository is the system to store and provide digital resources created by members of the University of Tokyo. Its main purpose is to develop digital collections, make them available online, and preserve them for long-term access."
+   },
+   {
+    "id": "https://openalex.org/W3165649629",
+    "doi": "https://doi.org/10.4229/eupvsec20202020-4av.3.8",
+    "title": "Module-Level Power Electronics under Indoor Performance Tests",
+    "year": 2020,
+    "cited": 0,
+    "venue": "Zürcher Hochschule für Angewandte Wissenschaften digital collection (Zurich University of Applied Sciences)",
+    "topics": [
+     "Photovoltaic System Optimization Techniques",
+     "Advanced DC-DC Converters",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://digitalcollection.zhaw.ch/handle/11475/21903",
+    "abstract": "In the last decade, very few papers with outdoor measurement test results were published, which demonstrated a benefit of module-level power electronics (MLPE) higher than the measurement uncertainty. Due to the expected small difference in efficiency between conventional string-inverter based and MLPE systems, indoor measurements are required to exclude natural variation of solar irradiance in outdoor tests. Therefore, indoor efficiency measurements were performed on MLPE. Afterwards, the indoor measured efficiency of the single PV module DC/DC power optimizers were multiplied with the DC/AC inverter measurements. The final system efficiency with the maximum average value resulted in 94.78 % and with the power weighted efficiency in 94.37 %. Accordingly, if mismatches are neglected, the analysed MLPE system is expected to yield approximately 2.82% less energy than a comparable stringinverter based system in unshaded conditions. However, in the case of shading, the tested system with heavy-shading orthogonal to the cell strings was estimated to yield approximately 3.5 % more energy on a clear-sky day in March in Winterthur, Switzerland. The performances determined in the tests are significantly lower than the efficiencies provided by the datasheet of the power optimizers (around -2.29 %). However, they are still presumed to provide significant additional yields for PV systems with medium- and heavy-shading conditions."
+   },
+   {
+    "id": "https://openalex.org/W4287977101",
+    "doi": "https://doi.org/10.5281/zenodo.3925186",
+    "title": "Analysis and Design of a Resonant Power Converter with Wide Input Voltage Range for AC/DC Applications",
+    "year": 2019,
+    "cited": 0,
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters",
+     "Induction Heating and Inverter Technology"
+    ],
+    "oa_url": "https://zenodo.org/record/3925186",
+    "abstract": "Resonant converter topologies have the ability to eliminate switching losses through zero-voltage switching, making them well-suited for switching operation in the MHz frequency range. However, these types of converters are traditionally very sensitive to changes in input voltage and power level, making them unsuitable as power factor correcting AC-DC converters. This paper present a throughout analysis of the operation of a class DE converter in order to derive a set of conditions, under which it can achieve constant input impedance over a wide input voltage range (60-325 V DC) with constant output voltage (450 V DC) and thus be operated as a PFC converter, while maintaining zero voltage switching across the full range. The operation is experimentally verified under DC-DC operation for different power levels at a series of input voltages within the specified range. The implemented prototype achieves conversion efficiencies of up to 94 % and handles up to 105 W of power at switching frequencies of 2 MHz and above, while achieving constant input impedance over the full input voltage range, enabling its use as a power factor correcting converter."
+   },
+   {
+    "id": "https://openalex.org/W3021159363",
+    "doi": "https://doi.org/10.13140/rg.2.2.31182.20801",
+    "title": "Distributed Power Electronics for Extended Efficiency and Lifetime of Utility-Scale Photovoltaic Systems",
+    "year": 2019,
+    "cited": 0,
+    "venue": "LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas)",
+    "topics": [
+     "Photovoltaic System Optimization Techniques",
+     "Advanced Battery Technologies Research",
+     "solar cell performance optimization"
+    ],
+    "oa_url": "http://hdl.handle.net/20.500.11797/TDX2944",
+    "abstract": "Aquesta tesi es centra en la mitigació dels desequilibris deguts a l'envelliment dels sistemes fotovoltaics. La degradació de la corrent de curtcircuit s'ha considerat com el principal factor que afecta la producció d'energia de sistemes fotovoltaics a causa de l'envelliment. Encara que, en el passat, s'ha detectat la dispersió en corrent de curtcircuit actual i màxima, es va subestimar la pèrdua d'energia deguda a la dispersió. A més, la dispersió dels paràmetres de voltatge-corrent a nivell de mòdul s'ha considerat per a la mitigació dels desequilibris a nivell de submòdul, mentre que la potència recuperable a nivell de submòdul pot ser superior a la que s'ha estimat. Per tal de verificar el compliment de les dades del nivell del submòdul a les dades del nivell del mòdul, en aquesta investigació, s'han realitzat mesures a nivell de submòdul. Es mostra que l'estimació de pèrdua d'energia a causa de l'envelliment basat en dades de dispersió a nivell de mòdul, s'ha infravalorat i considerant que la millora de l'energia en temps de vida a nivell de submòdul és possible fins a un 4-6%. Per tal de mitigar el desequilibri per envelliment en el sistema fotovoltaic, es proposa un convertidor de guany d'unitat, bidireccional i aïllat de baixa potència. Es presenta el procediment de disseny i realització experimental del convertidor i del seu esquema de control. El transformador d'alta freqüència proporciona l'aïllament galvànic entre primària i secundària. A més, els inductors ressonants s'han integrat en el transformador, cosa que redueix la mida i el cost del convertidor. Els resultats experimentals mostren que les eficiències de transferència de potència superen el 90% per a càrregues entre 1 W i 8 W. Es verifica el rendiment del convertidor per a la mitigació de desajustos. Al laboratori, tres prototips s'han provat en un mòdul fotovoltaic seguint l'enfocament d'arquitectura DPP PV-IP. S'observa que aquests tres convertidors mitiguen les dispersions dels submoduls i proporcionen la màxima potència possible. També es discuteix l'impacte de la mitigació dels desequilibris per envelliment en el cost d'energia (LCOE)."
+   },
+   {
+    "id": "https://openalex.org/W2086410143",
+    "doi": "https://doi.org/10.1115/ajk2011-14018",
+    "title": "Driving Performance of Liquid Crystalline Actuators",
+    "year": 2011,
+    "cited": 0,
+    "venue": "ASME-JSME-KSME 2011 Joint Fluids Engineering Conference: Volume 1, Symposia – Parts A, B, C, and D",
+    "topics": [
+     "Liquid Crystal Research Advancements",
+     "Advanced Materials and Mechanics",
+     "Adhesion, Friction, and Surface Interactions"
+    ],
+    "oa_url": "https://kutarr.kochi-tech.ac.jp/?action=repository_action_common_download&item_id=603&item_no=1&attribute_id=19&file_no=1",
+    "abstract": "We have experimentally investigated the driving performance of liquid crystalline actuators, which are recently proposed for micro-actuators. In our experiment, the liquid crystalline material (5CB) is placed between two glass plates with surface orientation treatment. When a pulsed electric field is applied between the plates, the liquid crystalline molecules alternately exhibit clockwise and counterclockwise rotation, inducing the flow of the material. This flow is the source of the actuator drive. For the practical use of the liquid crystalline actuators, one must have the information of the performance of the actuators, such as the motion trajectory, driving speed, driving force, and so on. These performances strongly depend on voltage, frequency and duty ratio of the pulsed electric field. From the results, it is found that the driving speed and driving force can be controlled by these input factors. The maximum driving force is relatively large compare to the other micro-actuators."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Newtons4th PPA\" OR \"Newtons4th PPA5500\" OR \"N4L PPA\" OR \"N4L PPA5500\") AND OPEN_ACCESS:y",

@@ -1,8 +1,72 @@
 {
  "queue": "series_summary",
- "generated": "2026-09-13",
+ "generated": "2026-09-14",
  "note": "source/catalog_extension/tools_propose.py 가 만든다. decided 만 사람(검토함)이 채운다.",
  "rows": [
+  {
+   "subject": "agilent-5977c-gcms",
+   "series": "Agilent 5977C GC/MSD",
+   "manufacturer": "agilent",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,336편이 이 기종을 언급 — 주된 분야: Plant and animal studies · Algal biology and biofuel production · Plant Parasitism and Resistance · Photodynamic Therapy Research Studies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Agilent 5977C GC/MSD\" OR \"Agilent 5977C\" OR \"Agilent 5977C GC\" OR \"Agilent MSD\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ametek-lloyd-ls-series",
+   "series": "Lloyd Instruments LS1 / LS2.5 / LS5 Single Column Universal Test Machines",
+   "manufacturer": "ametek-lloyd",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 30편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Technologies Research · Membrane Separation Technologies · Electrospun Nanofibers in Biomedical Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"AMETEK LS1 LS2.5\" OR \"AMETEK LS1\" OR \"AMETEK LS2.5\" OR \"AMETEK LS5\" OR \"Lloyd Instruments LS1 LS2.5\" OR \"Lloyd Instruments LS1\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "anton-paar-litesizer",
+   "series": "Anton Paar Litesizer 100 / 500 Particle Analyzers",
+   "manufacturer": "anton-paar",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 418편이 이 기종을 언급 — 주된 분야: Nanoparticles: synthesis and applications · Nanoparticle-Based Drug Delivery · Quantum Dots Synthesis And Properties · Advanced Photocatalysis Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Anton Paar Litesizer 500\" OR \"Anton Paar Litesizer 100\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "anton-paar-mcr-rheometer",
+   "series": "Anton Paar Modular Compact Rheometers (MCR 72/92, MCR 303/503/503 Power, MCR 703 MultiDrive, FRS 1600/1800, SmartMelt, SmartPave)",
+   "manufacturer": "anton-paar",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 203편이 이 기종을 언급 — 주된 분야: Food composition and properties · Nanocomposite Films for Food Packaging · 3D Printing in Biomedical Research · Probiotics and Fermented Foods (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Anton Paar MCR 72\" OR \"Anton Paar MCR 92\" OR \"Anton Paar MCR 303\" OR \"Anton Paar MCR 503\" OR \"Anton Paar MCR 503 Power\" OR \"Anton Paar MCR 703 MultiDrive\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
   {
    "subject": "anton-paar-nanoindentation",
    "series": "Anton Paar Nanoindentation Testers (UNHT3 / UNHT3 HTV / UNHT3 Bio, NHT3, Hit 300, NST3 nano scratch)",
@@ -28,6 +92,13 @@
      "sources": [
       "https://www.anton-paar.com/corp-en/products/details/nanoindentation-tester-nht3/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 44편이 이 기종을 언급 — 주된 분야: Metal and Thin Film Mechanics · Additive Manufacturing Materials and Processes · Concrete and Cement Materials Research · Diamond and Carbon-based Materials Research (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Anton Paar UNHT3\" OR \"Anton Paar UNHT3 HTV\" OR \"Anton Paar UNHT3 Bio\" OR \"Anton Paar NHT3\" OR \"Anton Paar Hit 300\" OR \"Anton Paar NST3\""
+     ]
     }
    ],
    "recommended": [],
@@ -43,6 +114,22 @@
      "label": "Arbin has created an innovative temperature chamber for testing EV cells known as the “MZTC” Multi-Chamber.",
      "sources": [
       "https://www.arbin.com/battery-test-equipment/electric-vehicle-battery-testing.html"
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "arbin-mstat",
+   "series": "Arbin MSTAT High Precision Multichannel Potentiostat / Galvanostat",
+   "manufacturer": "arbin",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 16편이 이 기종을 언급 — 주된 분야: Electrocatalysts for Energy Conversion · Catalytic Processes in Materials Science · Advancements in Battery Materials · Fuel Cells and Related Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Arbin Instruments MSTAT\""
      ]
     }
    ],
@@ -66,6 +153,13 @@
      "label": "e Remote Silencer (diameter 74 mm – length 212 mm) F620 HP : TECHNOLOGY By far the most popular technology, differential pressure decay uses a reference volume to test your part.",
      "sources": [
       "https://www.ateq-leaktesting.com/products/leak-tester/f620-hp/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 5편이 이 기종을 언급 — 주된 분야: Thermography and Photoacoustic Techniques · Conservation Techniques and Studies · Electronic Packaging and Soldering Technologies · Non-Destructive Testing Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ATEQ F620\""
      ]
     }
    ],
@@ -117,6 +211,22 @@
    "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
   },
   {
+   "subject": "bareiss-digi-test-ii",
+   "series": "Bareiss digi test II fully automatic Shore / IRHD / VLRH hardness tester",
+   "manufacturer": "bareiss",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 11편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · Manufacturing Process and Optimization · Advanced ceramic materials synthesis · Thermal properties of materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bareiss digi II\" OR \"Bareiss digi\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
    "subject": "bruker-avance-ssnmr",
    "series": "Bruker AVANCE Solid-State NMR",
    "manufacturer": "bruker",
@@ -133,6 +243,29 @@
      "label": "Book a Demo System Architecture & Technical Highlights Built for Performance, Designed for Flexibility Avance Neo-X 200 MHz pNMR system is engineered to meet the demands of modern solid-state NMR research.",
      "sources": [
       "https://www.bruker.com/en/landingpages/bbio/avance-neo-200-mhz-for-paramagnetic-materials.html"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 73,562편이 이 기종을 언급 — 주된 분야: Advanced Photocatalysis Techniques · Perovskite Materials and Applications · Metabolomics and Mass Spectrometry Studies · Advancements in Battery Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker AVANCE\" OR \"Hysitron AVANCE\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "bruker-contourx-200",
+   "series": "Bruker ContourX-200 3D Optical Profilometer",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 7편이 이 기종을 언급 — 주된 분야: Diamond and Carbon-based Materials Research · Aluminum Alloys Composites Properties · Silicon Nanostructures and Photoluminescence · Metallic Glasses and Amorphous Alloys (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker ContourX-200 3D\" OR \"Bruker ContourX-200\" OR \"Hysitron ContourX-200 3D\" OR \"Hysitron ContourX-200\""
      ]
     }
    ],
@@ -171,6 +304,77 @@
      "sources": [
       "https://www.bruker.com/de/products-and-solutions/diffractometers-and-x-ray-microscopes/x-ray-diffractometers/d8-advance-family/d8-advance.html"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 56,632편이 이 기종을 언급 — 주된 분야: Electrocatalysts for Energy Conversion · Advanced Photocatalysis Techniques · Perovskite Materials and Applications · Advancements in Battery Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker D8 ADVANCE\" OR \"Bruker D8\" OR \"Hysitron D8 ADVANCE\" OR \"Hysitron D8\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "bruker-dektakxt-materialtwin",
+   "series": "Bruker DektakXT Stylus Profilometer",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 567편이 이 기종을 언급 — 주된 분야: Perovskite Materials and Applications · Conducting polymers and applications · Advanced Sensor and Energy Harvesting Materials · Quantum Dots Synthesis And Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker DektakXT\" OR \"Hysitron DektakXT\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "bruker-hysitron-pi-95-picoindenter",
+   "series": "Bruker Hysitron PI 95 TEM PicoIndenter",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 300편이 이 기종을 언급 — 주된 분야: Advanced ceramic materials synthesis · Aluminum Alloys Composites Properties · Bone Tissue Engineering Materials · Microstructure and mechanical properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker PI 95\" OR \"Bruker PI\" OR \"Hysitron PI 95\" OR \"Hysitron PI\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "bruker-hysitron-ti-950-triboindenter",
+   "series": "Bruker Hysitron TI 950 TriboIndenter Nanomechanical Test System",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,274편이 이 기종을 언급 — 주된 분야: High Entropy Alloys Studies · High-Temperature Coating Behaviors · Metal and Thin Film Mechanics · Aluminum Alloys Composites Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker TI 950\" OR \"Bruker TI\" OR \"Bruker TI 950 TriboIndenter\" OR \"Hysitron TI 950\" OR \"Hysitron TI\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "bruker-hysitron-ts-75-triboscope",
+   "series": "Bruker Hysitron TS 75 TriboScope Nanoindentation Attachment for AFM",
+   "manufacturer": "bruker",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 31편이 이 기종을 언급 — 주된 분야: Metal and Thin Film Mechanics · Concrete and Cement Materials Research · High-Temperature Coating Behaviors · Graphene research and applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker TS 75\" OR \"Bruker TS\" OR \"Bruker TS 75 TriboScope\" OR \"Hysitron TS 75\" OR \"Hysitron TS\""
+     ]
     }
    ],
    "recommended": [],
@@ -193,6 +397,93 @@
      "label": "Academia The VERTEX NEO R is an exceptional tool for academic research, offering advanced capabilities that make it ideal for diverse applications.",
      "sources": [
       "https://www.bruker.com/de/products-and-solutions/infrared-and-raman/ft-ir-research-spectrometers/vertex-research-ft-ir-spectrometer/vertex-neo-r.html"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 11,953편이 이 기종을 언급 — 주된 분야: Perovskite Materials and Applications · Catalytic Processes in Materials Science · Carbon and Quantum Dots Applications · Graphene research and applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Bruker VERTEX 70\" OR \"Bruker VERTEX\" OR \"Bruker VERTEX 70v\" OR \"Bruker VERTEX 80\" OR \"Bruker VERTEX 80v\" OR \"Hysitron VERTEX 70\" OR \"Hysitron VERTEX\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "buehler-wilson-hardness",
+   "series": "Buehler Wilson Hardness Testers (Rockwell / Vickers / Knoop / Brinell, VH3100 etc.)",
+   "manufacturer": "buehler",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 59편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · High Entropy Alloys Studies · Additive Manufacturing and 3D Printing Technologies · Aluminum Alloys Composites Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Buehler VH3100\" OR \"Wilson VH3100\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "buehler-wilson-vh3300-materialtwin",
+   "series": "Wilson VH3100 / VH3300 Vickers-Knoop Hardness Testers",
+   "manufacturer": "buehler",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 69편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · High Entropy Alloys Studies · Additive Manufacturing and 3D Printing Technologies · Aluminum Alloys Composites Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Buehler VH3100 VH3300\" OR \"Buehler VH3100\" OR \"Buehler VH3300\" OR \"Wilson VH3100 VH3300\" OR \"Wilson VH3100\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "defelsko-positest-pt",
+   "series": "DeFelsko PosiTest PT Pencil Hardness Test Kit",
+   "manufacturer": "defelsko",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 67편이 이 기종을 언급 — 주된 분야: Corrosion Behavior and Inhibition · Flame retardant materials and properties · High-Temperature Coating Behaviors · Asphalt Pavement Performance Evaluation (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"DeFelsko PosiTest PT\" OR \"DeFelsko PosiTest\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "emco-test-durajet-g5",
+   "series": "EMCO-TEST DuraJet G5 Rockwell hardness tester",
+   "manufacturer": "emco-test",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 7편이 이 기종을 언급 — 주된 분야: Aluminum Alloys Composites Properties · Advanced materials and composites · Aluminum Alloy Microstructure Properties · nanoparticles nucleation surface interactions (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"EMCO-TEST DuraJet G5\" OR \"EMCO-TEST DuraJet\" OR \"EMCO-TEST G5\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "emco-test-duravision-g5",
+   "series": "EMCO-TEST DuraVision G5 universal hardness testing machines (20/30 handwheel, 200/300 motorised)",
+   "manufacturer": "emco-test",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 34편이 이 기종을 언급 — 주된 분야: Aluminum Alloys Composites Properties · Advanced ceramic materials synthesis · Aluminum Alloy Microstructure Properties · Hydrogen embrittlement and corrosion behaviors in metals (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"EMCO-TEST DuraVision G5\" OR \"EMCO-TEST DuraVision\" OR \"EMCO-TEST G5\" OR \"EMCO-TEST DuraVision 20 G5\" OR \"EMCO-TEST DuraVision 30 G5\" OR \"EMCO-TEST DuraVision 200 G5\""
      ]
     }
    ],
@@ -238,6 +529,141 @@
      "sources": [
       "https://www.epsilontech.com/products/axial-extensometer-model-3542/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 102편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · Additive Manufacturing Materials and Processes · Aluminum Alloys Composites Properties · Microstructure and mechanical properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Epsilon 3542 3542L\" OR \"Epsilon 3542\" OR \"Epsilon Model 3542\" OR \"Epsilon Model 3442\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-ar-series",
+   "series": "ESPEC AR Series Temperature (& Humidity) Chambers (ARS / ARG / ARL / ARU)",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 7편이 이 기종을 언급 — 주된 분야: TiO2 Photocatalysis and Solar Cells · Optical Coatings and Gratings · Linguistics and Language Studies · Syntax, Semantics, Linguistic Variation (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC AR\" OR \"ESPEC AR series ARS\" OR \"ESPEC 0390\" OR \"ESPEC 0680\" OR \"ESPEC 1100\" OR \"ESPEC AR series ARG\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-ehs-tpc-hast",
+   "series": "ESPEC EHS / TPC HAST Chambers",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 7편이 이 기종을 언급 — 주된 분야: Carbon Nanotubes in Composites · Photovoltaic System Optimization Techniques · Solar Thermal and Photovoltaic Systems · Graphene and Nanomaterials Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC EHS TPC\" OR \"ESPEC EHS\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-lab-series",
+   "series": "ESPEC Lab Series LU / LH / LHL / LHU-113 Compact Chambers",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 26편이 이 기종을 언급 — 주된 분야: Fuel Cells and Related Materials · Advanced Sensor and Energy Harvesting Materials · Nanomaterials and Printing Technologies · Plasma Applications and Diagnostics (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC LHU-113\" OR \"ESPEC LH\" OR \"ESPEC LHL\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-platinous-chambers-materialtwin",
+   "series": "ESPEC Platinous Series Temperature & Humidity Chambers (J series JP / H series NA)",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 9편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Technologies Research · Advanced Battery Materials and Technologies · Forest Insect Ecology and Management (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC Platinous Temperature\" OR \"ESPEC Platinous\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-su-sh-benchtop",
+   "series": "ESPEC SU / SH Series Benchtop Chambers",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 92편이 이 기종을 언급 — 주된 분야: Advanced Battery Materials and Technologies · Advancements in Battery Materials · Advanced Battery Technologies Research · Ferroelectric and Piezoelectric Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC SU SH\" OR \"ESPEC SU\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-tsa-thermal-shock-materialtwin",
+   "series": "ESPEC TSA Series Thermal Shock Chambers (EL / ES / EH type)",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Electronic Packaging and Soldering Technologies · 3D IC and TSV technologies · Aluminum Alloys Composites Properties · Integrated Circuits and Semiconductor Failure Analysis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC TSA\" OR \"ESPEC TSA series 2·3\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-tse-11-a",
+   "series": "ESPEC TSE-11-A Two-Zone Thermal Shock Chamber",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 6편이 이 기종을 언급 — 주된 분야: Polymer Nanocomposites and Properties · Epoxy Resin Curing Processes · Electrodeposition and Electroless Coatings · Additive Manufacturing and 3D Printing Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC TSE-11-A\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "espec-walk-in-chambers-materialtwin",
+   "series": "ESPEC Walk-In Temperature (& Humidity) Chambers — E Series / High-Power Series",
+   "manufacturer": "espec",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 5편이 이 기종을 언급 — 주된 분야: Smart Materials for Construction · Infrastructure Maintenance and Monitoring · Crustacean biology and ecology · Marine and fisheries research (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ESPEC Walk-In Temperature\" OR \"ESPEC Walk-In\""
+     ]
     }
    ],
    "recommended": [],
@@ -260,6 +686,29 @@
      "label": "Download PDF Parylene Coatings The Filmetrics® F20, F40 and F3-CS Thin-Film Analyzers are used for thickness and uniformity measurement of parylene coatings, which are widely used in the biomedical industry due to their unique properties.",
      "sources": [
       "https://www.kla.com/products/instruments/thin-film-reflectometers/filmetrics-f54"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 8편이 이 기종을 언급 — 주된 분야: Magneto-Optical Properties and Applications · Nonlocal and gradient elasticity in micro/nano structures · Photorefractive and Nonlinear Optics · Advanced Fiber Laser Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Filmetrics F54\" OR \"Filmetrics F54-UV\" OR \"Filmetrics F54-UVX\" OR \"Filmetrics F54-EXR\" OR \"Filmetrics F54-NIR\" OR \"KLA F54\" OR \"KLA F54-UV\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "goettfert-rheograph-25e",
+   "series": "GÖTTFERT RHEOGRAPH 25E Clean Room Capillary Rheometer / RAM Extruder",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 43편이 이 기종을 언급 — 주된 분야: Rheology and Fluid Dynamics Studies · biodegradable polymer synthesis and properties · Polymer crystallization and properties · Injection Molding Process and Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"GÖTTFERT RHEOGRAPH 25E\" OR \"GÖTTFERT RHEOGRAPH\""
      ]
     }
    ],
@@ -284,6 +733,45 @@
      "sources": [
       "https://www.goettfert.com/products/capillary-rheometer/rheograph-add-on"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 54편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Rheology and Fluid Dynamics Studies · Polymer crystallization and properties · Injection Molding Process and Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"GÖTTFERT RHEOGRAPH\" OR \"GÖTTFERT PVT Isothermal\" OR \"GÖTTFERT RHEOTENS\" OR \"GÖTTFERT HAUL-OFF\" OR \"GÖTTFERT CONTIFEED\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "goettfert-rheograph-auto",
+   "series": "GÖTTFERT RHEOGRAPH auto Semi-automated Capillary Rheometer",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 43편이 이 기종을 언급 — 주된 분야: Rheology and Fluid Dynamics Studies · biodegradable polymer synthesis and properties · Polymer crystallization and properties · Injection Molding Process and Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"GÖTTFERT RHEOGRAPH\" OR \"GÖTTFERT RHEOGRAPH auto 25\" OR \"GÖTTFERT RHEOGRAPH auto 50\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "goettfert-rheograph",
+   "series": "GÖTTFERT RHEOGRAPH 20 / 25 / 50 / 75 / 120 High Pressure Capillary Rheometer",
+   "manufacturer": "goettfert",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 43편이 이 기종을 언급 — 주된 분야: Rheology and Fluid Dynamics Studies · biodegradable polymer synthesis and properties · Polymer crystallization and properties · Injection Molding Process and Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"GÖTTFERT RHEOGRAPH 20\" OR \"GÖTTFERT RHEOGRAPH\" OR \"GÖTTFERT RHEOGRAPH 25\" OR \"GÖTTFERT RHEOGRAPH 50\" OR \"GÖTTFERT RHEOGRAPH 75\" OR \"GÖTTFERT RHEOGRAPH 120\""
+     ]
     }
    ],
    "recommended": [],
@@ -299,6 +787,54 @@
      "label": "Hydraulic aggregates are used for all hydraulic clamping tools from 20 kN to 2500 kN.",
      "sources": [
       "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/hydraulic-grips/"
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "hegewald-peschke-inspekt-duo",
+   "series": "Hegewald & Peschke inspekt duo Universal Testing Machines (5 kN / 10 kN)",
+   "manufacturer": "hegewald-peschke",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 46편이 이 기종을 언급 — 주된 분야: Mechanical Behavior of Composites · Aluminum Alloys Composites Properties · Metal Forming Simulation Techniques · Additive Manufacturing Materials and Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Hegewald & Peschke inspekt duo\" OR \"Hegewald & Peschke inspekt\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "hegewald-peschke-inspekt-solo",
+   "series": "Hegewald & Peschke inspekt solo Single-Column Universal Testing Machine (up to 2.5 kN)",
+   "manufacturer": "hegewald-peschke",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 46편이 이 기종을 언급 — 주된 분야: Mechanical Behavior of Composites · Aluminum Alloys Composites Properties · Metal Forming Simulation Techniques · Additive Manufacturing Materials and Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Hegewald & Peschke inspekt solo\" OR \"Hegewald & Peschke inspekt\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "hegewald-peschke-inspekt-table",
+   "series": "Hegewald & Peschke inspekt table Universal Testing Machines (10 kN – 250 kN)",
+   "manufacturer": "hegewald-peschke",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 11편이 이 기종을 언급 — 주된 분야: Mechanical Behavior of Composites · Additive Manufacturing and 3D Printing Technologies · Solar-Powered Water Purification Methods · Solar Thermal and Photovoltaic Systems (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Hegewald & Peschke inspekt table 10\" OR \"Hegewald & Peschke inspekt table 20\" OR \"Hegewald & Peschke inspekt table 50\" OR \"Hegewald & Peschke inspekt table 100\" OR \"Hegewald & Peschke inspekt table 250\""
      ]
     }
    ],
@@ -355,6 +891,61 @@
      "sources": [
       "https://www.helmut-fischer.com/products/xrf-instruments/fischerscope-x-ray-xdv-mue"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 6편이 이 기종을 언급 — 주된 분야: Metal and Thin Film Mechanics · Additive Manufacturing and 3D Printing Technologies · Fiber-reinforced polymer composites · Boron and Carbon Nanomaterials Research (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Helmut Fischer FISCHERSCOPE X-RAY\" OR \"Helmut Fischer FISCHERSCOPE\" OR \"Helmut Fischer XDLM-PCB\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "hitachi-su3800-3900-sem",
+   "series": "Hitachi SU3800 / SU3900 Scanning Electron Microscopes",
+   "manufacturer": "hitachi-high-tech",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 6편이 이 기종을 언급 — 주된 분야: Smart Materials for Construction · Ultrasonics and Acoustic Wave Propagation · Aluminum Alloys Composites Properties · Aluminum Alloy Microstructure Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Hitachi High-Tech SU3800\" OR \"Hitachi High-Tech SU3900\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "horiba-fluoromax-plus",
+   "series": "HORIBA FluoroMax Plus Spectrofluorometer",
+   "manufacturer": "horiba",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,789편이 이 기종을 언급 — 주된 분야: Quantum Dots Synthesis And Properties · Luminescence and Fluorescent Materials · Perovskite Materials and Applications · Nanocluster Synthesis and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"HORIBA FluoroMax\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "horiba-gd-profiler-2",
+   "series": "HORIBA GD-Profiler 2 Glow Discharge OES",
+   "manufacturer": "horiba",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 68편이 이 기종을 언급 — 주된 분야: Metal and Thin Film Mechanics · Diamond and Carbon-based Materials Research · High-Temperature Coating Behaviors · Corrosion Behavior and Inhibition (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"HORIBA GD-Profiler 2\""
+     ]
     }
    ],
    "recommended": [],
@@ -399,6 +990,13 @@
      "sources": [
       "https://www.hotdiskinstruments.com/products/instruments/tps-2200/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 700편이 이 기종을 언급 — 주된 분야: Thermal properties of materials · Aerogels and thermal insulation · Solar-Powered Water Purification Methods · Nanofluid Flow and Heat Transfer (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Hot Disk TPS 2200\" OR \"Hot Disk TPS\""
+     ]
     }
    ],
    "recommended": [],
@@ -442,6 +1040,13 @@
      "label": "Learn more > ISO 22007-2 ISO 22007-7 ASTM E3088-25 TPS 1500 For heavy-duty testing The affordable Hot Disk® TPS 1500 is the ideal thermal conductivity meter for testing building materials, insulation materials or any other type of large bulk samples.",
      "sources": [
       "https://www.hotdiskinstruments.com/products/instruments/tps-2500-s/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 700편이 이 기종을 언급 — 주된 분야: Thermal properties of materials · Aerogels and thermal insulation · Solar-Powered Water Purification Methods · Nanofluid Flow and Heat Transfer (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Hot Disk TPS 2500\" OR \"Hot Disk TPS\""
      ]
     }
    ],
@@ -493,6 +1098,22 @@
    "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
   },
   {
+   "subject": "innovatest-nexus-3200",
+   "series": "INNOVATEST NEXUS 3200 Brinell hardness tester (semi-automatic)",
+   "manufacturer": "innovatest",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 95편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies · Metal Alloys Wear and Properties · Aluminum Alloys Composites Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"INNOVATEST NEXUS 3200\" OR \"INNOVATEST NEXUS\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
    "subject": "instron-3119-600-environmental-chambers",
    "series": "Instron 3119-600 Series Environmental Chambers",
    "manufacturer": "instron",
@@ -502,6 +1123,13 @@
      "label": "osilicate Fully compatible with Instron non-contacting Optional roller mounting allows the chamber glass window with twin cartridge heaters video extensometers for testing delicate to be easily removed from the test space.",
      "sources": [
       "https://www.instron.com/en/resources/literature/environmental-chambers-3119-600-series/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 21편이 이 기종을 언급 — 주된 분야: Advanced Sensor and Energy Harvesting Materials · Additive Manufacturing and 3D Printing Technologies · Mechanical Behavior of Composites · Microstructure and Mechanical Properties of Steels (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron 3119-600\" OR \"Instron 3119-605\" OR \"Instron 3119-606\" OR \"Instron 3119-609\" OR \"Instron 3119-615\" OR \"Instron 3119-607\""
      ]
     }
    ],
@@ -519,6 +1147,29 @@
      "sources": [
       "https://www.instron.com/en/products/testing-systems/universal-testing-systems/3400-series/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 187편이 이 기종을 언급 — 주된 분야: Advanced Sensor and Energy Harvesting Materials · biodegradable polymer synthesis and properties · Nanocomposite Films for Food Packaging · Advanced Materials and Mechanics (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron 3400\" OR \"Instron 34SC-05\" OR \"Instron 34SC-1\" OR \"Instron 34SC-2\" OR \"Instron 34SC-5\" OR \"Instron 34TM-5\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "instron-5900-series-materialtwin",
+   "series": "5900 Series (5940 / 5960 / 5980) Universal Testing Systems",
+   "manufacturer": "instron",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 214편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · Nanocomposite Films for Food Packaging · Advanced Sensor and Energy Harvesting Materials · biodegradable polymer synthesis and properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron 5900\" OR \"Instron 5965-E2\" OR \"Instron 5966-E2\" OR \"Instron 5967-E2\" OR \"Instron 5969-E2\" OR \"Instron 5982-E2\""
+     ]
     }
    ],
    "recommended": [],
@@ -534,6 +1185,13 @@
      "label": "2580 Series Load Cells Designed for use with 6800 Series systems, the 2580 Series load cells can measure forces as low as 1/1000th of the force capacity to an accuracy of ±0.",
      "sources": [
       "https://www.instron.com/en/products/testing-systems/universal-testing-systems/6800-series/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 212편이 이 기종을 언급 — 주된 분야: Advanced Sensor and Energy Harvesting Materials · Advanced Materials and Mechanics · Additive Manufacturing and 3D Printing Technologies · Polymer composites and self-healing (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron 6800\" OR \"Instron 68SC-05\" OR \"Instron 68SC-1\" OR \"Instron 68SC-2\" OR \"Instron 68SC-5\" OR \"Instron 68TM-5\""
      ]
     }
    ],
@@ -564,6 +1222,13 @@
      "label": "Using the advanced features of the 8800 controller to provide translation and deformation control of each axis, these systems are ideal for large strain field coverage in two-axis tensile, low-cycle fatigue (LCF), high-cycle fatigue (HCF), thermo-mechanical fatigue (TMF), and fracture tests.",
      "sources": [
       "https://www.instron.com/en/products/testing-systems/dynamic-and-fatigue-systems/8800-cruciform/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 2,865편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies · Mechanical Behavior of Composites · Cellular and Composite Structures (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron 8800\" OR \"Instron 8872\" OR \"Instron 8874\" OR \"Instron 8801\""
      ]
     }
    ],
@@ -608,6 +1273,13 @@
      "label": "This versatile instrument can be used to test anything from Versatile large test area composites to finished products, to accommodate standard and is suitable for a range of impact fixtures, components, a applications including tensile impact, thermostatic chamber, and puncture, Izod, and Charpy.",
      "sources": [
       "https://www.instron.com/en/resources/literature/ceast-9300-series/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 14편이 이 기종을 언급 — 주된 분야: Mechanical Behavior of Composites · Electric and Hybrid Vehicle Technologies · Dental materials and restorations · Endodontics and Root Canal Treatments (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron 9400 CEAST\" OR \"Instron 9400\" OR \"Instron CEAST 9300\""
      ]
     }
    ],
@@ -697,6 +1369,13 @@
      "sources": [
       "https://www.instron.com/en/resources/literature/instron-video-extensometer-ave3-and-sve3-operators-guide/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 43편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · Additive Manufacturing Materials and Processes · Metal Forming Simulation Techniques · Mechanical Behavior of Composites (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron AVE 2\" OR \"Instron AVE\" OR \"Instron AVE3\""
+     ]
     }
    ],
    "recommended": [],
@@ -727,6 +1406,13 @@
      "sources": [
       "https://www.instron.com/en/products/testing-systems/impact-systems/pendulums/9050-pendulum/vice-and-specimen-supports/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 659편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Natural Fiber Reinforced Composites · Additive Manufacturing and 3D Printing Technologies · Mechanical Behavior of Composites (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron CEAST 9000\" OR \"Instron CEAST\" OR \"Instron CEAST 9050 Manual\" OR \"Instron CEAST 9050 Motorized\""
+     ]
     }
    ],
    "recommended": [],
@@ -756,6 +1442,13 @@
      "label": "CIFICATIONS Ranging from simple manual testers to semi-automated testing systems performing multiple weight tests, Instron's Melt Flow Testers are specifically designed for easy and accurate measuring of Melt Flow Rate (MFR) and Melt Volume Rate (MVR) according to ISO 1133-1/2 and ASTM D1238 international standards.",
      "sources": [
       "https://www.instron.com/en/resources/literature/pod_mf20/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 659편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Natural Fiber Reinforced Composites · Additive Manufacturing and 3D Printing Technologies · Mechanical Behavior of Composites (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron CEAST MF\" OR \"Instron CEAST\" OR \"Instron CEAST MF20\" OR \"Instron CEAST MF30\" OR \"Instron CEAST MF10\" OR \"Instron MF50\""
      ]
     }
    ],
@@ -801,6 +1494,13 @@
      "sources": [
       "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/electropuls-all-electric-dynamic-test-systems/1300-305/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 855편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies · Advanced Sensor and Energy Harvesting Materials · Electrospun Nanofibers in Biomedical Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron ElectroPuls E3000\" OR \"Instron ElectroPuls\" OR \"Instron E3000\" OR \"Instron E3000 Linear-Torsion\""
+     ]
     }
    ],
    "recommended": [],
@@ -816,6 +1516,13 @@
      "label": "A global company providing single-source convenience, Instron manufactures and services products used to test the mechanical properties and performances of various materials, components and structures in a wide array of environments.",
      "sources": [
       "https://www.instron.com/en/resources/literature/ceast-aloxide-performs-hdt-and-vicat-tests-at-up-to-500c/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 5편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Electrospun Nanofibers in Biomedical Applications · Natural Fiber Reinforced Composites · Polymer crystallization and properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Instron HV HDT\" OR \"Instron HV\" OR \"Instron HV3\" OR \"Instron HV6\" OR \"Instron HV6A\" OR \"Instron HV3S\""
      ]
     }
    ],
@@ -846,6 +1553,70 @@
    "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
   },
   {
+   "subject": "woollam-rc2",
+   "series": "J.A. Woollam RC2 Spectroscopic Ellipsometer",
+   "manufacturer": "ja-woollam",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 104편이 이 기종을 언급 — 주된 분야: Perovskite Materials and Applications · Organic Electronics and Photovoltaics · Advanced Sensor and Energy Harvesting Materials · ZnO doping and properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"J.A. Woollam RC2\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "jeol-jamp-9510f",
+   "series": "JEOL JAMP-9510F Field-Emission Auger Microprobe",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 15편이 이 기종을 언급 — 주된 분야: Graphene research and applications · 2D Materials and Applications · Extraction and Separation Processes · Recycling and Waste Management Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"JEOL JAMP-9510F\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "jeol-jem-f200",
+   "series": "JEOL JEM-F200 TEM/STEM",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,989편이 이 기종을 언급 — 주된 분야: Electrocatalysts for Energy Conversion · Advancements in Battery Materials · CO2 Reduction Techniques and Catalysts · Quantum Dots Synthesis And Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"JEOL JEM-F200 TEM/STEM\" OR \"JEOL JEM-F200\" OR \"JEOL F200\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "jeol-jps-9030",
+   "series": "JEOL JPS-9030 X-ray Photoelectron Spectrometer",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 91편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Materials and Technologies · Perovskite Materials and Applications · Electrocatalysts for Energy Conversion (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"JEOL JPS-9030\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
    "subject": "jeol-jsm-it-fesem",
    "series": "JEOL JSM-IT500HR / IT700HR Field-Emission SEM",
    "manufacturer": "jeol",
@@ -855,6 +1626,29 @@
      "label": "Scene2 JSM-IT500HR suitable for routine tasks Routine tasks take long hours, including full systematic inspection and foreign material inspection over large areas.",
      "sources": [
       "https://www.jeol.com/products/scientific/sem/JSM-IT500HR/special.php"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 511편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · Advanced Battery Materials and Technologies · Advancements in Battery Materials · Advanced Photocatalysis Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"JEOL JSM-IT500HR IT700HR\" OR \"JEOL JSM-IT500HR\" OR \"JEOL IT500HR\" OR \"JEOL IT700HR\" OR \"JEOL JSM-IT700HR\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "jeol-jsx-1000s",
+   "series": "JEOL JSX-1000S Energy-Dispersive XRF",
+   "manufacturer": "jeol",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 6편이 이 기종을 언급 — 주된 분야: Magnesium Alloys: Properties and Applications · Aluminum Alloys Composites Properties · Luminescence Properties of Advanced Materials · Advanced Photocatalysis Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"JEOL JSX-1000S\""
      ]
     }
    ],
@@ -871,6 +1665,29 @@
      "label": "Thermionic emission guns, which achieves large probe currents with high stability over long periods of time, are suitable for fast trace-element analysis and for overnight analysis of multiple specimens.",
      "sources": [
       "https://www.jeol.com/products/scientific/epma/JXA-iHP200F.php"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 141편이 이 기종을 언급 — 주된 분야: Geological and Geochemical Analysis · High-pressure geophysics and materials · Geology and Paleoclimatology Research · Geochemistry and Elemental Analysis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"JEOL JXA-iHP200F iSP100\" OR \"JEOL JXA-iHP200F\" OR \"JEOL JXA-iSP100\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "keithley-4200-scs",
+   "series": "Keithley 4200-SCS / 4200A-SCS Parameter Analyzers",
+   "manufacturer": "keithley",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 3,728편이 이 기종을 언급 — 주된 분야: Advanced Memory and Neural Computing · Advanced Sensor and Energy Harvesting Materials · Perovskite Materials and Applications · 2D Materials and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Keithley 4200-SCS 4200A-SCS\" OR \"Keithley 4200-SCS\" OR \"Keithley 4200A-SCS\" OR \"Tektronix 4200-SCS 4200A-SCS\" OR \"Tektronix 4200-SCS\""
      ]
     }
    ],
@@ -945,6 +1762,22 @@
    "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
   },
   {
+   "subject": "kla-imicro-materialtwin",
+   "series": "KLA iMicro Nanoindenter",
+   "manufacturer": "kla",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 14편이 이 기종을 언급 — 주된 분야: Advanced materials and composites · Metal and Thin Film Mechanics · Aluminum Alloys Composites Properties · High-Temperature Coating Behaviors (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"KLA Instruments iMicro\" OR \"Nanomechanics iMicro\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
    "subject": "konica-minolta-ca-410",
    "series": "Konica Minolta CA-410 Display Color Analyzer",
    "manufacturer": "konica-minolta",
@@ -989,6 +1822,22 @@
    "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
   },
   {
+   "subject": "konica-minolta-cs-2000",
+   "series": "Konica Minolta CS-2000 / CS-2000A Spectroradiometer",
+   "manufacturer": "konica-minolta",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 178편이 이 기종을 언급 — 주된 분야: Organic Light-Emitting Diodes Research · Quantum Dots Synthesis And Properties · Organic Electronics and Photovoltaics · Visual perception and processing mechanisms (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Konica Minolta CS-2000 CS-2000A\" OR \"Konica Minolta CS-2000\" OR \"Konica Minolta CS-2000A\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
    "subject": "lansmont-pdt-drop-testers",
    "series": "Lansmont PDT Precision Drop Testers (PDT-56ED / PDT-80 / PDT-80M)",
    "manufacturer": "lansmont",
@@ -998,6 +1847,109 @@
      "label": "Speak to an expert Send us an enquiryfor advice, solutions and pricing PDT80 overview The Lansmont PDT 80 is our most popular model of drop tester and used for a wide range of drop testing requirements.",
      "sources": [
       "https://www.lansmont.com/products/drop/lansmont-pdt-80"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 13편이 이 기종을 언급 — 주된 분야: Material Properties and Processing · Postharvest Quality and Shelf Life Management · Nuclear and radioactivity studies · Music Technology and Sound Studies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Lansmont PDT\" OR \"Lansmont PDT-80\" OR \"Lansmont PDT-80M\" OR \"Lansmont PDT-56ED\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "linseis-thermal-conductivity",
+   "series": "LINSEIS thermal conductivity instruments (LFA 500 / LFA 1000 laser flash, TIM-Tester, THB, HFM, TFA)",
+   "manufacturer": "linseis",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 212편이 이 기종을 언급 — 주된 분야: Advanced Thermoelectric Materials and Devices · Chalcogenide Semiconductor Thin Films · Thermal properties of materials · Thermal Radiation and Cooling Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"LINSEIS LFA 500\" OR \"LINSEIS LFA 1000\" OR \"LINSEIS THB\" OR \"LINSEIS HFM\" OR \"LINSEIS TFA\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "linseis-tma-l71-l72",
+   "series": "LINSEIS TMA L71 EM / L71 / L72 Thermomechanical Analyzers",
+   "manufacturer": "linseis",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 16편이 이 기종을 언급 — 주된 분야: Magnesium Alloys: Properties and Applications · Aluminum Alloys Composites Properties · Additive Manufacturing Materials and Processes · Building materials and conservation (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"LINSEIS TMA L71\" OR \"LINSEIS TMA\" OR \"LINSEIS L71\" OR \"LINSEIS L72\" OR \"LINSEIS TMA L71 EM\" OR \"LINSEIS TMA L72\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "maccor-series-4000",
+   "series": "Maccor Series 4000 Automated Battery Test System",
+   "manufacturer": "maccor",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 948편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Materials and Technologies · Advanced Battery Technologies Research · Supercapacitor Materials and Fabrication (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Maccor 4000\" OR \"Maccor Series 4000\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "malvern-kinexus-materialtwin",
+   "series": "Malvern Kinexus rotational rheometers (lab+ / pro+ / ultra+)",
+   "manufacturer": "malvern-panalytical",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 23편이 이 기종을 언급 — 주된 분야: Cellular Mechanics and Interactions · Polymer composites and self-healing · Bacterial biofilms and quorum sensing · Photopolymerization techniques and applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Malvern Panalytical Kinexus\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "malvern-mastersizer-3000",
+   "series": "Malvern Panalytical Mastersizer 3000 Laser Diffraction Particle Size Analyzer",
+   "manufacturer": "malvern-panalytical",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 125편이 이 기종을 언급 — 주된 분야: Concrete and Cement Materials Research · Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies · Extraction and Separation Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Malvern Panalytical Mastersizer 3000\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "malvern-zetasizer-nano-zsp",
+   "series": "Malvern Zetasizer Nano ZSP",
+   "manufacturer": "malvern-panalytical",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 477편이 이 기종을 언급 — 주된 분야: Micro and Nano Robotics · Lipid Membrane Structure and Behavior · Wound Healing and Treatments · Microplastics and Plastic Pollution (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Malvern Panalytical Zetasizer\""
      ]
     }
    ],
@@ -1022,6 +1974,29 @@
      "sources": [
       "https://www.mecmesin.com/motorised-force-test-stands/motorised-force-tester"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 27편이 이 기종을 언급 — 주된 분야: Polymer composites and self-healing · Fuel Cells and Related Materials · Additive Manufacturing and 3D Printing Technologies · biodegradable polymer synthesis and properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mecmesin MultiTest-dV\" OR \"Mecmesin MultiTest-dV 0.5\" OR \"Mecmesin MultiTest-dV 1\" OR \"Mecmesin MultiTest-dV 2.5\" OR \"Mecmesin MultiTest 0.5-i\" OR \"Mecmesin MultiTest 1-i\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mecmesin-omnitest",
+   "series": "OmniTest Universal Testing Machines",
+   "manufacturer": "mecmesin",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 6편이 이 기종을 언급 — 주된 분야: Dental materials and restorations · Dental Anxiety and Anesthesia Techniques · Cellular and Composite Structures · Vibration Control and Rheological Fluids (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mecmesin OmniTest\" OR \"Mecmesin OmniTest 0.5\" OR \"Mecmesin OmniTest 1\" OR \"Mecmesin OmniTest 2.5\" OR \"Mecmesin OmniTest 5\" OR \"Mecmesin OmniTest 7.5\""
+     ]
     }
    ],
    "recommended": [],
@@ -1045,6 +2020,237 @@
      "sources": [
       "https://www.metrohm.com/en/products/karl-fischer-titration/kf-titrando/28510110"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 22편이 이 기종을 언급 — 주된 분야: Microencapsulation and Drying Processes · Advancements in Battery Materials · Inhalation and Respiratory Drug Delivery · Biodiesel Production and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Metrohm 851\" OR \"Metrohm 851 Titrando\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mettler-dma-sdta861e",
+   "series": "METTLER TOLEDO DMA/SDTA861e Dynamic Mechanical Analyzer",
+   "manufacturer": "mettler-toledo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 266편이 이 기종을 언급 — 주된 분야: Polymer composites and self-healing · Natural Fiber Reinforced Composites · biodegradable polymer synthesis and properties · Synthesis and properties of polymers (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"METTLER TOLEDO DMA/SDTA861e\" OR \"METTLER TOLEDO SDTA861e\" OR \"METTLER TOLEDO DMA\" OR \"METTLER TOLEDO SDTA861e 18 N\" OR \"METTLER TOLEDO 40 N\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mettler-tga-dsc-1",
+   "series": "METTLER TOLEDO TGA/DSC 1 Simultaneous Thermal Analyzer (SF 1100 / LF 1100 / HT 1600)",
+   "manufacturer": "mettler-toledo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 6,297편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Materials and Technologies · Concrete and Cement Materials Research · Metal-Organic Frameworks: Synthesis and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"METTLER TOLEDO TGA/DSC 1\" OR \"METTLER TOLEDO TGA/DSC\" OR \"METTLER TOLEDO DSC 1\" OR \"METTLER TOLEDO TGA\" OR \"METTLER TOLEDO DSC 1 SF\" OR \"METTLER TOLEDO DSC 1 LF\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mettler-toledo-dsc-3",
+   "series": "METTLER TOLEDO DSC 3 / DSC 3+ Differential Scanning Calorimeters",
+   "manufacturer": "mettler-toledo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 3,224편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Polymer composites and self-healing · Conducting polymers and applications · Advanced Drug Delivery Systems (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"METTLER TOLEDO DSC 3\" OR \"METTLER TOLEDO DSC\" OR \"METTLER TOLEDO DSC 3+\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "micromeritics-accupyc-ii-1345",
+   "series": "Micromeritics AccuPyc II 1345 Gas Pycnometer",
+   "manufacturer": "micromeritics",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,091편이 이 기종을 언급 — 주된 분야: Metal-Organic Frameworks: Synthesis and Applications · Additive Manufacturing and 3D Printing Technologies · Additive Manufacturing Materials and Processes · Perovskite Materials and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Micromeritics AccuPyc II\" OR \"Micromeritics AccuPyc\" OR \"Micromeritics II 1345\" OR \"Micromeritics AccuPyc II 1345\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "micromeritics-autopore-v",
+   "series": "Micromeritics AutoPore V Mercury Porosimeter",
+   "manufacturer": "micromeritics",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,250편이 이 기종을 언급 — 주된 분야: Concrete and Cement Materials Research · Innovative concrete reinforcement materials · Building materials and conservation · Metal-Organic Frameworks: Synthesis and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Micromeritics AutoPore V\" OR \"Micromeritics AutoPore\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-ar-atk-rockwell",
+   "series": "Mitutoyo AR-10 / AR-20 / ARK-600 / ATK-600 Rockwell Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 16편이 이 기종을 언급 — 주된 분야: Aluminum Alloys Composites Properties · Aluminum Alloy Microstructure Properties · Tribology and Wear Analysis · Additive Manufacturing Materials and Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo AR-10 AR-20\" OR \"Mitutoyo AR-10\" OR \"Mitutoyo AR-20\" OR \"Mitutoyo ARK-600\" OR \"Mitutoyo ATK-600\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-hh-300-durometer",
+   "series": "Mitutoyo HH-300 Series Durometers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 8편이 이 기종을 언급 — 주된 분야: Vibration Control and Rheological Fluids · Natural Fiber Reinforced Composites · Adhesion, Friction, and Surface Interactions · Plant and Biological Electrophysiology Studies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo HH-300\" OR \"Mitutoyo HH-331\" OR \"Mitutoyo HH-332\" OR \"Mitutoyo HH-335\" OR \"Mitutoyo HH-336\" OR \"Mitutoyo HH-333\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-hm-200",
+   "series": "Mitutoyo HM-210 / HM-220 Micro Vickers Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 35편이 이 기종을 언급 — 주된 분야: Aluminum Alloys Composites Properties · Advanced materials and composites · Welding Techniques and Residual Stresses · Advanced Welding Techniques Analysis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo HM-210 HM-220\" OR \"Mitutoyo HM-210\" OR \"Mitutoyo HM-220\" OR \"Mitutoyo HM-210 Type A\" OR \"Mitutoyo HM-210 Type B\" OR \"Mitutoyo HM-210 Type D\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-hm-micro-vickers-materialtwin",
+   "series": "Mitutoyo HM-100 / HM-200 Series Micro Vickers Hardness Testing Machines",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 189편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · High Entropy Alloys Studies · Electrodeposition and Electroless Coatings · Additive Manufacturing and 3D Printing Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo HM-100 HM-200\" OR \"Mitutoyo HM-100\" OR \"Mitutoyo HM-200\" OR \"Mitutoyo HM-122\" OR \"Mitutoyo HM-124\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-hr-500",
+   "series": "Mitutoyo HR-500 Series Rockwell Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 12편이 이 기종을 언급 — 주된 분야: Metal Forming Simulation Techniques · Metallurgy and Material Forming · Natural Fiber Reinforced Composites · Advanced Cellulose Research Studies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo HR-500\" OR \"Mitutoyo HR-511\" OR \"Mitutoyo HR-521\" OR \"Mitutoyo HR-522\" OR \"Mitutoyo HR-523\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-hr-series-rockwell-materialtwin",
+   "series": "Mitutoyo HR-320MS / HR-430MR / HR-430MS / HR-530 Rockwell Hardness Testing Machines",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 6편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · Metal and Thin Film Mechanics · High-Temperature Coating Behaviors · Tribology and Wear Analysis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo HR-320MS HR-430MR\" OR \"Mitutoyo HR-320MS\" OR \"Mitutoyo HR-430MR\" OR \"Mitutoyo HR-430MS\" OR \"Mitutoyo HR-530\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-hv-100",
+   "series": "Mitutoyo HV-100 Series Vickers Hardness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 28편이 이 기종을 언급 — 주된 분야: Additive Manufacturing Materials and Processes · Microstructure and Mechanical Properties of Steels · Aluminum Alloy Microstructure Properties · Advanced ceramic materials synthesis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo HV-100\" OR \"Mitutoyo HV-112\" OR \"Mitutoyo HV-114\" OR \"Mitutoyo HV110\" OR \"Mitutoyo HV120\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "mitutoyo-surftest-sj-410",
+   "series": "Mitutoyo Surftest SJ-410 Series Surface Roughness Testers",
+   "manufacturer": "mitutoyo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 299편이 이 기종을 언급 — 주된 분야: Advanced Machining and Optimization Techniques · Advanced machining processes and optimization · Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Mitutoyo SJ-410\" OR \"Mitutoyo Surftest SJ-411\" OR \"Mitutoyo Surftest SJ-412\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "netzsch-dil-402-expedis-materialtwin",
+   "series": "NETZSCH DIL 402 Expedis Classic / Select / Supreme / Supreme HT Dilatometers",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 742편이 이 기종을 언급 — 주된 분야: Advancements in Solid Oxide Fuel Cells · Advanced Thermoelectric Materials and Devices · Electronic and Structural Properties of Oxides · Advanced ceramic materials synthesis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH DIL 402\" OR \"NETZSCH DIL\""
+     ]
     }
    ],
    "recommended": [],
@@ -1060,6 +2266,29 @@
      "label": "in the NETZSCH Thermal Properties of Polymers which can also be found on the NETZSCH Polymer Poster, along with corresponding measurement methods specifically designed for experimentation.",
      "sources": [
       "https://analyzing-testing.netzsch.com/en/products/differential-scanning-calorimeter-dsc-differential-thermal-analyzer-dta/dsc-300-caliris-classic"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 3,618편이 이 기종을 언급 — 주된 분야: Advanced Thermoelectric Materials and Devices · Metallic Glasses and Amorphous Alloys · Advanced Battery Materials and Technologies · Chalcogenide Semiconductor Thin Films (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH DSC 300\" OR \"NETZSCH DSC\" OR \"NETZSCH DSC 300 Caliris\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "netzsch-lfa-400",
+   "series": "NETZSCH LFA 427 / LFA 457 MicroFlash Laser Flash Analyzers",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,458편이 이 기종을 언급 — 주된 분야: Advanced Thermoelectric Materials and Devices · Chalcogenide Semiconductor Thin Films · Thermal properties of materials · Thermal Radiation and Cooling Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH LFA 427\" OR \"NETZSCH LFA\" OR \"NETZSCH LFA 457\" OR \"NETZSCH LFA 457 MicroFlash\""
      ]
     }
    ],
@@ -1077,6 +2306,13 @@
      "sources": [
       "https://analyzing-testing.netzsch.com/en/footer/legacy-products/lfa-467-hyper-flash-light-flash-apparatus"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 1,458편이 이 기종을 언급 — 주된 분야: Advanced Thermoelectric Materials and Devices · Chalcogenide Semiconductor Thin Films · Thermal properties of materials · Thermal Radiation and Cooling Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH LFA 467\" OR \"NETZSCH LFA\" OR \"NETZSCH LFA 467 HyperFlash\" OR \"NETZSCH LFA 467 HT\""
+     ]
     }
    ],
    "recommended": [],
@@ -1093,6 +2329,29 @@
      "sources": [
       "https://analyzing-testing.netzsch.com/en/footer/legacy-products/sta-449-f1-jupiter"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 10,584편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Materials and Technologies · Graphene research and applications · Supercapacitor Materials and Fabrication (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH STA 449\" OR \"NETZSCH STA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH STA 449 F1\" OR \"NETZSCH STA 449 F3\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "netzsch-tg-209-f3-tarsus",
+   "series": "NETZSCH TG 209 F3 Tarsus Thermogravimetric Analyzer",
+   "manufacturer": "netzsch",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 2,412편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Metal-Organic Frameworks: Synthesis and Applications · Supercapacitor Materials and Fabrication · Advanced Battery Materials and Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH TG 209\" OR \"NETZSCH TG\" OR \"NETZSCH F3\" OR \"NETZSCH TG 209 F3\""
+     ]
     }
    ],
    "recommended": [],
@@ -1108,6 +2367,61 @@
      "label": "Mechanical Cooling to -70°C The TMA 402 F3 Hyperion® Polymer Edition is specifically designed for polymer applications.",
      "sources": [
       "https://analyzing-testing.netzsch.com/en/products/thermomechanical-analysis-tma/tma-402-f3-hyperion-polymer-edition"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 158편이 이 기종을 언급 — 주된 분야: Geological and Geochemical Analysis · Epoxy Resin Curing Processes · High-Temperature Coating Behaviors · Synthesis and properties of polymers (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"NETZSCH TMA 402\" OR \"NETZSCH TMA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH TMA 402 F1\" OR \"NETZSCH TMA 402 F3\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "neware-bts4000",
+   "series": "Neware BTS4000-5V6A Battery Testing System (CT-4008T)",
+   "manufacturer": "neware",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 7편이 이 기종을 언급 — 주된 분야: Advanced Battery Technologies Research · Advancements in Battery Materials · Advanced battery technologies research · Supercapacitor Materials and Fabrication (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Neware BTS4000-5V6A\" OR \"Neware BTS4000-5V6A CT-4008T-5V6A-S1\" OR \"Neware 164\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "newtons4th-ppa-series",
+   "series": "Newtons4th PPA Series Precision Power Analyzer (PPA5500 etc.)",
+   "manufacturer": "newtons4th",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 11편이 이 기종을 언급 — 주된 분야: Advanced DC-DC Converters · Multilevel Inverters and Converters · Microgrid Control and Optimization · Wireless Power Transfer Systems (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Newtons4th PPA\" OR \"Newtons4th PPA5500\" OR \"N4L PPA\" OR \"N4L PPA5500\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "nikon-xt-h-series",
+   "series": "Nikon XT H Series Micro-focus X-ray CT System",
+   "manufacturer": "nikon",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 887편이 이 기종을 언급 — 주된 분야: Advanced Battery Technologies Research · Advancements in Battery Materials · Additive Manufacturing Materials and Processes · Paleontology and Evolutionary Biology (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Nikon XT H\" OR \"Nikon XT\" OR \"Nikon 180 kV\" OR \"Nikon 225 kV\""
      ]
     }
    ],
@@ -1141,6 +2455,45 @@
      "sources": [
       "https://www.oxinst.com/news/new-ebsd-detector-symmetry-increases-ebsd-speed-by-an-order-of-magnitude/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 48편이 이 기종을 언급 — 주된 분야: Microstructure and Mechanical Properties of Steels · Additive Manufacturing Materials and Processes · High Entropy Alloys Studies · Hydrogen embrittlement and corrosion behaviors in metals (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Oxford Instruments S2\" OR \"Oxford Instruments Symmetry S2\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "park-nx10",
+   "series": "Park Systems NX10 Atomic Force Microscope",
+   "manufacturer": "park-systems",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 287편이 이 기종을 언급 — 주된 분야: 2D Materials and Applications · Perovskite Materials and Applications · Advanced Sensor and Energy Harvesting Materials · Conducting polymers and applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Park Systems NX10\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "perkinelmer-dma-8000",
+   "series": "PerkinElmer DMA 8000 Dynamic Mechanical Analyzer",
+   "manufacturer": "perkinelmer",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 110편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Electrospun Nanofibers in Biomedical Applications · Polymer composites and self-healing · Additive Manufacturing and 3D Printing Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"PerkinElmer DMA 8000\" OR \"PerkinElmer DMA\""
+     ]
     }
    ],
    "recommended": [],
@@ -1157,6 +2510,29 @@
      "sources": [
       "https://www.perkinelmer.com/library/fly-fl6500-and-8500-fluorescence-consumables-and-accessories.html"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 871편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Advanced Sensor and Energy Harvesting Materials · Advancements in Battery Materials · Hydrogels: synthesis, properties, applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"PerkinElmer DSC 4000\" OR \"PerkinElmer DSC\" OR \"PerkinElmer DSC 6000\" OR \"PerkinElmer DSC 8000\" OR \"PerkinElmer DSC 8500\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "perkinelmer-frontier-ftir",
+   "series": "PerkinElmer Frontier FT-IR / FT-NIR / FT-FIR Spectrometer",
+   "manufacturer": "perkinelmer",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,578편이 이 기종을 언급 — 주된 분야: Advanced Sensor and Energy Harvesting Materials · Advancements in Battery Materials · Conducting polymers and applications · Metal-Organic Frameworks: Synthesis and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"PerkinElmer Frontier FT-IR\" OR \"PerkinElmer Frontier\""
+     ]
     }
    ],
    "recommended": [],
@@ -1172,6 +2548,13 @@
      "label": "11 nMm for probe D), its suitable for surface-treated materials or small objects, however it must fulfill the requirements specified by the standards and by Proceq.",
      "sources": [
       "https://www.screeningeagle.com/en/products/equotip-550"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Wood Treatment and Properties · Erosion and Abrasive Machining · Building materials and conservation · Pleistocene-Era Hominins and Archaeology (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Proceq Equotip 550 +\" OR \"Proceq DC\" OR \"Screening Eagle Equotip 550 +\" OR \"Screening Eagle DC\""
      ]
     }
    ],

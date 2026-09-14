@@ -11,8 +11,99 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mitutoyo HR-320MS HR-430MR\" OR \"Mitutoyo HR-320MS\" OR \"Mitutoyo HR-430MR\" OR \"Mitutoyo HR-430MS\" OR \"Mitutoyo HR-530\"",
-  "count": null,
-  "works": []
+  "count": 6,
+  "works": [
+   {
+    "id": "https://openalex.org/W4399300496",
+    "doi": "https://doi.org/10.3390/ma17112662",
+    "title": "Investigation of the Properties of Anti-Friction Coatings Deposited with Different Casting Methods",
+    "year": 2024,
+    "cited": 5,
+    "venue": "Materials",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "High-Temperature Coating Behaviors",
+     "Tribology and Wear Analysis"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/17/11/2662/pdf?version=1717219405",
+    "abstract": "This article presents the research results of depositing anti-friction coatings (Babbitt) using three different casting methods: static casting, flame soldering, and clad welding. Babbitt alloy coatings deposited with different casting methods are discussed and explained in terms of changes in the coating properties, such as the microstructure, hardness, strength, and chemical composition. The results showed significant differences in the aforementioned properties, depending on the chosen coating deposition method. The results of the tests confirmed the importance of using shielding gas during deposition to ensure the chemical composition of the coating. The analysis revealed that decreases in the amounts of antimony and copper in the Babbitt coating compared with the initial concentrations were influenced by selective evaporation, oxidation, and the coating process parameters associated with different coating methods. To maintain the desired balance of mechanical properties in Babbitt coatings, it is important to control the antimony and copper contents. Clad welding deposition using a non-consumable tungsten electrode and argon shielding gas achieved a chemically stable coating quite close to the initial chemical composition of the Babbitt alloy."
+   },
+   {
+    "id": "https://openalex.org/W4410695902",
+    "doi": "https://doi.org/10.1590/1517-7076-rmat-2025-0185",
+    "title": "Optimizing alumina reinforcement in kevlar-epoxy composites: a study on mechanical and tribological enhancements",
+    "year": 2025,
+    "cited": 4,
+    "venue": "Matéria (Rio de Janeiro)",
+    "topics": [
+     "Tribology and Wear Analysis",
+     "Natural Fiber Reinforced Composites",
+     "Mechanical Behavior of Composites"
+    ],
+    "oa_url": "https://www.scielo.br/j/rmat/a/BncdH9Yf88Y34xBGxxDSVfM/?lang=en&format=pdf",
+    "abstract": "Abstract Kevlar-reinforced epoxy composites are widely employed in high-performance applications due to their excellent strength-to-weight ratio and impact resistance. However, limitations in wear resistance hinder their use under abrasive conditions. To address this, Alumina (Al2O3) was incorporated as particulate filler at 2%, 4%, and 6% by weight. Composite laminates were fabricated using hand layup followed by compression molding, with a constant Kevlar fiber content of 30 wt%. Mechanical testing was conducted as per ASTM D3039 (tensile), ASTM D790 (flexural), and ASTM D785 (hardness) standards, while wear behavior was evaluated under dry sliding conditions using ASTM G99 with a pin-on-disc setup at 10 N load, 1.5 m/s sliding velocity, and 500 m sliding distance. The addition of 4% alumina yielded optimal performance, resulting in a 28% increase in tensile strength (from 98 MPa to 126 MPa), a 21.6% increase in flexural strength (from 152 MPa to 185 MPa), and a 12.2% increase in hardness (from 82 HRB to 92 HRB) compared to the control. The wear rate was reduced from 3.12 × 10−4 mm3/N·m in the control to 1.89 × 10−4 mm3/N·m at 4% alumina, representing a 39.4% improvement. The coefficient of friction also decreased from 0.52 (control) to 0.46 at 4% alumina."
+   },
+   {
+    "id": "https://openalex.org/W4224254958",
+    "doi": "https://doi.org/10.3233/atde220175",
+    "title": "Microstructural and Mechanical Properties of Polylactic Acid/Tin Bronze Tensile Strength Bars Additive Manufactured by Fused Deposition Modelling",
+    "year": 2022,
+    "cited": 3,
+    "venue": "Advances in transdisciplinary engineering",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Additive Manufacturing Materials and Processes",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://ebooks.iospress.nl/pdf/doi/10.3233/ATDE220175",
+    "abstract": "Tensile stress bar samples have been additive manufactured by fused deposition modelling (FDM) route by using polylactic acid (PLA)/tin bronze filament, thermal de-binding and air sintering. The samples reach sintered density of 7.42 g/cm3 or 85% of the relative density of the continuously casted CuSn10 reference. Tensile stress testing of the samples shows rather moderate mechanical properties, about half yield strength and one third maximal strength, elongation and hardness of the reference. Increase in the sample core density and elimination of large, agglomerated pores may result in largest improvement of the mechanical properties."
+   },
+   {
+    "id": "https://openalex.org/W4399585700",
+    "doi": "https://doi.org/10.21122/1683-6065-2024-2-117-124",
+    "title": "Laser deposition of aluminum and magnesium‑based alloys for repair and surface restoration of components",
+    "year": 2024,
+    "cited": 0,
+    "venue": "Litiyo i Metallurgiya (FOUNDRY PRODUCTION AND METALLURGY)",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Surface Treatment and Coatings"
+    ],
+    "oa_url": "http://dx.doi.org/10.21122/1683-6065-2024-2-117-124",
+    "abstract": "The results of studying the processes of laser deposition of aluminum and magnesium‑based alloys, the features of the structure of deposited layers using electron microscopy and X‑ray computed tomography data, measurements of microhardness after laser deposition of aluminum and magnesium alloys are presented. Modeling of the stress‑strain state of flat components during laser deposition of an aluminum‑magnesium alloy containing 0.6–0.95 % magnesium, 0.7–1.0 silicon, up to 0.3 titanium, up to 0.5 zinc, and up to 0.4 % manganese was performed. The nature of the distribution of deformations and stresses during the use of various technological schemes of laser deposition during surface treatment of aluminum‑magnesium alloys by laser deposition methods is established."
+   },
+   {
+    "id": "https://openalex.org/W4391603151",
+    "doi": "https://doi.org/10.18260/1-2--42412",
+    "title": "A Laboratory Course Design Strategy to Increase Student Confidence: Connecting Material Testing Standards to Course Material and Real Applications",
+    "year": 2024,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Experimental Learning in Engineering",
+     "Engineering Education and Curriculum Development",
+     "Engineering Education and Pedagogy"
+    ],
+    "oa_url": "https://peer.asee.org/42412.pdf",
+    "abstract": "This paper presents a laboratory course design strategy to align material testing standards with hands-on experiments, game-based learning, and real-world application.The goal of this strategy is to strengthen the student's ability in understanding and applying material testing standards.This work presents two case studies that applied the same approach, with one case focusing on the characterization of mechanical material properties and the other on thermofluid properties.In each case, the four-week laboratory module began with the following material selection questions: \"Which of the materials provided should be selected to build a turbine blade?\" or \"Which of the provided glycol-water mixtures is the best engine coolant for cold weather?\" Students had to conduct multiple material tests, compare their experimental results to literature with statistical considerations, and predict what the provided materials were to answer the selection question.Each experimental procedure was adapted from American Society for Testing and Materials (ASTM) standards, and students were asked to highlight any differences.We embedded gamebased learning using Kahoot! in lectures to motivate students and help them comprehend each ASTM standard.In addition, students were given an opportunity to design their own experimental protocol within the module.The module culminated in a conference paper-style report where the students selected the ideal material to answer their selection questions.They needed to support their decision by following a guided analysis using their experimental results.For example, analyzing a heat exchanger's performance based on the thermofluid property values obtained from their experiments for each unspecified specimen.After completing the four-week laboratory module, our survey data indicated that 91% of the students (n=157) are confident or very confident in their abilities to apply the same ASTM standard in the future, and 78% are confident or very confident they can follow a new ASTM test standard.The majority (84%) of the students agreed that the activities helped them understand the real-world application of the theory they had learned in their Mechanical Engineering (ME) curriculum.Additionally, 76% of the students agreed they applied knowledge from their past ME courses to these lab activities.We concluded hands-on experiments were consistently the most encouraging activities that motivated students to read and understand the ASTM standards disregarding the class size and topics."
+   },
+   {
+    "id": "https://openalex.org/W4406342967",
+    "doi": "https://doi.org/10.11606/d.97.2019.tde-14012025-105850",
+    "title": "Avaliação da influência da adição de até 0,41 %p de mischmetal de cério e lantânio ao cobre 60 %IACS processado por fundição",
+    "year": 2019,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Metallurgical Processes and Thermodynamics",
+     "Advanced materials and composites",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "http://www.teses.usp.br/teses/disponiveis/97/97134/tde-14012025-105850/publico/EMD19007_CN.pdf",
+    "abstract": "até 0,41 %p de mischmetal de cério e lantânio ao cobre 60 %IACS processado por fundição / Luis Paulo de Souza; orientador Gilberto Carvalho Coelho -Versão Corrigida.-Lorena, 2019.76 p."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mitutoyo HR-320MS HR-430MR\" OR \"Mitutoyo HR-320MS\" OR \"Mitutoyo HR-430MR\" OR \"Mitutoyo HR-430MS\" OR \"Mitutoyo HR-530\") AND OPEN_ACCESS:y",
@@ -66,8 +157,18 @@
    "standards": []
   }
  ],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "ASTM D3039": 1,
+  "ASTM D790": 1,
+  "ASTM D785": 1,
+  "ASTM G99": 1
+ },
+ "standards_new": [
+  "ASTM D3039",
+  "ASTM D785",
+  "ASTM D790",
+  "ASTM G99"
+ ],
  "test_item_hits": {
   "tensile": 4,
   "charpy_impact": 1

@@ -9,8 +9,38 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Instron MT1 MT2\" OR \"Instron MT1\" OR \"Instron MT2\"",
-  "count": null,
-  "works": []
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W4417307820",
+    "doi": "https://doi.org/10.48550/arxiv.2506.08779",
+    "title": "Aging of amorphous materials under cyclic strain",
+    "year": 2025,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Material Dynamics and Properties",
+     "Metallic Glasses and Amorphous Alloys",
+     "Theoretical and Computational Physics"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2506.08779",
+    "abstract": "Amorphous materials driven away from equilibrium display a diverse repertoire of complex, history-dependent behaviors. One striking feature is a failure to return to equilibrium after an abrupt change in otherwise static external conditions. Instead, amorphous materials often exhibit physical aging: an ever-slowing, nonexponential relaxation that can span a huge range of timescales. Here we examine the aging behavior of three different amorphous materials subjected to slow periodic driving. The results reveal a generic aging phenomenon characterized by a logarithmic decay of dissipation per cycle. This observation is evaluated against several mesoscopic models of amorphous matter that successfully capture aging under static conditions: (i) a collection of noninteracting relaxation processes (ii) a noisy hysteron model with random pairwise interactions, and (iii) a structural model consisting of a random network of bi-stable elastic bonds. We find that only the latter model reproduces all experimental findings and relate its success to its persistent, slow exploration of a complex energy landscape with clear signatures of replica symmetry breaking. Thus, cyclic driving emerges as a simple yet powerful protocol to characterize amorphous materials, probe their complex energy landscapes, and distinguish between different models."
+   },
+   {
+    "id": "https://openalex.org/W1554538357",
+    "doi": null,
+    "title": "Resorbable Polymer-Hydroxyapatite Composites for Bone Trauma Treatment: Synthesis and Properties",
+    "year": 2011,
+    "cited": 0,
+    "venue": "Lincoln (University of Nebraska)",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Polymer Synthesis and Characterization"
+    ],
+    "oa_url": "http://digitalcommons.unl.edu/chemistrydiss/20",
+    "abstract": "Contemporary therapies for hard tissue replacement involve allographs, where the donor and recipient are of the same species, or the use of xenogenic transplants. Intraspecies materials are often in short supply and interspecies materials are subject to immunological barriers such as disease and tissue rejection. Synthetic composites are unencumbered by these limitations. Poly lactic acid (PLLA) and its copolymers have been used in medicine due to their ability to be resorbed by the body without adverse effects. PLLA’s are currently most commonly used in resorbable sutures and gauzes, but there is increasing interest in using them in conjunction with hydroxyapatite (HA) as bioceramics for hard tissue replacement. Early attempts to create a viable PLLA/HA involved dispersing HA particles in a PLLA matrix. There are well defined phase transitions in these types of mixtures. These transitions readily become material failures when placed under stresses or strains. Fortunately the surface hydroxyls on HA can serve as an effective initiator for the ring-opening-polymerization of lactide and other lactones of biological interest. I have shown that bioceramics made in this manner produce materials with superior interfacial strength and that mammalian sources of HA can be used to prepare biomimetic materials that further enhance the physical properties of the resulting composites. I have examined the kinetics of the ring-opening polymerization reaction of L-lactide using bovine derived HA under various conditions and found that the sintering temperature and sintering time of the HA plays a major role. Experiments designed to elucidate the influence of these parameters on reaction rate reveal that two competing processes determine the polymerization rates. Firstly, specific surface area decreases with sintering time, and since the polymerization is initiated by surface nucleophiles, decreased surface areas give slower polymerization rates. Secondly, thermal decomposition of carbonate to oxide or hydroxide generates nucleophiles in the HA during sintering, resulting in increased heterogeneous rate constants. I have also performed preliminary tests to examine the basic physical properties that these composites possess."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Instron MT1 MT2\" OR \"Instron MT1\" OR \"Instron MT2\") AND OPEN_ACCESS:y",

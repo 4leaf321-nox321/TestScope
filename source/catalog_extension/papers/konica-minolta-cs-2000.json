@@ -9,8 +9,758 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Konica Minolta CS-2000 CS-2000A\" OR \"Konica Minolta CS-2000\" OR \"Konica Minolta CS-2000A\"",
-  "count": null,
-  "works": []
+  "count": 178,
+  "works": [
+   {
+    "id": "https://openalex.org/W4295762974",
+    "doi": "https://doi.org/10.1038/s41586-022-05132-y",
+    "title": "Delayed fluorescence from inverted singlet and triplet excited states",
+    "year": 2022,
+    "cited": 295,
+    "venue": "Nature",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Molecular Junctions and Nanostructures",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41586-022-05132-y.pdf",
+    "abstract": ". Rephrasing this rule for molecular excited states predicts a positive energy gap between spin-singlet and spin-triplet excited states, as has been consistent with numerous experimental observations over almost a century. Here we report a fluorescent molecule that disobeys Hund's rule and has a negative singlet-triplet energy gap of -11 ± 2 meV. The energy inversion of the singlet and triplet excited states results in delayed fluorescence with short time constants of 0.2 μs, which anomalously decrease with decreasing temperature owing to the emissive singlet character of the lowest-energy excited state. Organic light-emitting diodes (OLEDs) using this molecule exhibited a fast transient electroluminescence decay with a peak external quantum efficiency of 17%, demonstrating its potential implications for optoelectronic devices, including displays, lighting and lasers."
+   },
+   {
+    "id": "https://openalex.org/W3033478592",
+    "doi": "https://doi.org/10.1038/s41467-020-16652-4",
+    "title": "High-resolution patterning of colloidal quantum dots via non-destructive, light-driven ligand crosslinking",
+    "year": 2020,
+    "cited": 268,
+    "venue": "Nature Communications",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Nanocluster Synthesis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-16652-4.pdf",
+    "abstract": "Establishing multi-colour patterning technology for colloidal quantum dots is critical for realising high-resolution displays based on the material. Here, we report a solution-based processing method to form patterns of quantum dots using a light-driven ligand crosslinker, ethane-1,2-diyl bis(4-azido-2,3,5,6-tetrafluorobenzoate). The crosslinker with two azide end groups can interlock the ligands of neighbouring quantum dots upon exposure to UV, yielding chemically robust quantum dot films. Exploiting the light-driven crosslinking process, different colour CdSe-based core-shell quantum dots can be photo-patterned; quantum dot patterns of red, green and blue primary colours with a sub-pixel size of 4 μm × 16 μm, corresponding to a resolution of >1400 pixels per inch, are demonstrated. The process is non-destructive, such that photoluminescence and electroluminescence characteristics of quantum dot films are preserved after crosslinking. We demonstrate that red crosslinked quantum dot light-emitting diodes exhibiting an external quantum efficiency as high as 14.6% can be obtained."
+   },
+   {
+    "id": "https://openalex.org/W3165663444",
+    "doi": "https://doi.org/10.1038/s41377-021-00545-2",
+    "title": "Deeply learned broadband encoding stochastic hyperspectral imaging",
+    "year": 2021,
+    "cited": 153,
+    "venue": "Light Science & Applications",
+    "topics": [
+     "Random lasers and scattering media",
+     "Photoacoustic and Ultrasonic Imaging",
+     "Sparse and Compressive Sensing Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41377-021-00545-2.pdf",
+    "abstract": "Many applications requiring both spectral and spatial information at high resolution benefit from spectral imaging. Although different technical methods have been developed and commercially available, computational spectral cameras represent a compact, lightweight, and inexpensive solution. However, the tradeoff between spatial and spectral resolutions, dominated by the limited data volume and environmental noise, limits the potential of these cameras. In this study, we developed a deeply learned broadband encoding stochastic hyperspectral camera. In particular, using advanced artificial intelligence in filter design and spectrum reconstruction, we achieved 7000-11,000 times faster signal processing and ~10 times improvement regarding noise tolerance. These improvements enabled us to precisely and dynamically reconstruct the spectra of the entire field of view, previously unreachable with compact computational spectral cameras."
+   },
+   {
+    "id": "https://openalex.org/W4311767233",
+    "doi": "https://doi.org/10.1038/s41560-022-01167-7",
+    "title": "High-performing organic electronics using terpene green solvents from renewable feedstocks",
+    "year": 2022,
+    "cited": 119,
+    "venue": "Nature Energy",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Green IT and Sustainability",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41560-022-01167-7.pdf",
+    "abstract": "Abstract Accelerating the shift towards renewable materials and sustainable processes for printed organic electronic devices is crucial for a green circular economy. Currently, the fabrication of organic devices with competitive performances is linked to toxic petrochemical-based solvents with considerable carbon emissions. Here we show that terpene solvents obtained from renewable feedstocks can replace non-renewable environmentally hazardous solvent counterparts in the production of highly efficient organic photovoltaics (OPVs) light-emitting diodes (OLEDs) and field-effect transistors (OFETs) with on-par performances. Using a Hansen solubility ink formulation framework, we identify various terpene solvent systems and investigate effective film formation and drying mechanisms required for optimal charge transport. This approach is universal for state-of-the-art materials in OPVs, OLEDs and OFETs. We created an interactive library for green solvent selections and made it publicly available through the OMEGALab website. As potential carbon-negative solvents, terpenes open a unique and universal approach towards efficient, large-area and stable organic electronic devices."
+   },
+   {
+    "id": "https://openalex.org/W4307322511",
+    "doi": "https://doi.org/10.1126/sciadv.add0697",
+    "title": "Ultrahigh-resolution full-color perovskite nanocrystal patterning for ultrathin skin-attachable displays",
+    "year": 2022,
+    "cited": 114,
+    "venue": "Science Advances",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Organic Light-Emitting Diodes Research",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.add0697?download=true",
+    "abstract": "High-definition red/green/blue (RGB) pixels and deformable form factors are essential for the next-generation advanced displays. Here, we present ultrahigh-resolution full-color perovskite nanocrystal (PeNC) patterning for ultrathin wearable displays. Double-layer transfer printing of the PeNC and organic charge transport layers is developed, which prevents internal cracking of the PeNC film during the transfer printing process. This results in RGB pixelated PeNC patterns of 2550 pixels per inch (PPI) and monochromic patterns of 33,000 line pairs per inch with 100% transfer yield. The perovskite light-emitting diodes (PeLEDs) with transfer-printed active layers exhibit outstanding electroluminescence characteristics with remarkable external quantum efficiencies (15.3, 14.8, and 2.5% for red, green, and blue, respectively), which are high compared to the printed PeLEDs reported to date. Furthermore, double-layer transfer printing enables the fabrication of ultrathin multicolor PeLEDs that can operate on curvilinear surfaces, including human skin, under various mechanical deformations. These results highlight that PeLEDs are promising for high-definition full-color wearable displays."
+   },
+   {
+    "id": "https://openalex.org/W4394013276",
+    "doi": "https://doi.org/10.1038/s41467-024-47307-3",
+    "title": "Modified t-butyl in tetradentate platinum (II) complexes enables exceptional lifetime for blue-phosphorescent organic light-emitting diodes",
+    "year": 2024,
+    "cited": 86,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-47307-3.pdf",
+    "abstract": "In blue phosphorescent dopants, the tetradentate platinum(II) complex is a promising material showing high efficiency and stability in devices. However, metal-metal-to-ligand charge transfer (MMLCT) formation leads to low photo-luminescence quantum yields (PLQYs), wide spectra, and intermolecular interaction. To suppress MMLCT, PtON-tb-TTB and PtON-tb-DTB are designed using theoretical simulation by modifying t-butyl in PtON-TBBI. Both materials effectively suppress MMLCT and exhibit high PLQYs of 99% and 78% in 5 wt% doped film, respectively. The PtON-tb-TTB and PtON-tb-DTB devices have maximum external quantum efficiencies of 26.3% and 20.9%, respectively. Additionally, the PtON-tb-DTB device has an extended lifetime of 169.3 h with an initial luminescence of 1200 nit, which is 8.5 times greater than the PtON-TBBI device. Extended lifetime because of suppressed MMLCT and smaller displacement between the lowest triplet and triplet metal-centered states compared to other dopants. The study provides an effective approach to designing platinum(II) complexes for long device lifetimes."
+   },
+   {
+    "id": "https://openalex.org/W2336569034",
+    "doi": "https://doi.org/10.1038/srep18718",
+    "title": "Insect stereopsis demonstrated using a 3D insect cinema",
+    "year": 2016,
+    "cited": 73,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Visual perception and processing mechanisms",
+     "Plant and animal studies",
+     "Neurobiology and Insect Physiology Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep18718.pdf",
+    "abstract": "Stereopsis - 3D vision - has become widely used as a model of perception. However, all our knowledge of possible underlying mechanisms comes almost exclusively from vertebrates. While stereopsis has been demonstrated for one invertebrate, the praying mantis, a lack of techniques to probe invertebrate stereopsis has prevented any further progress for three decades. We therefore developed a stereoscopic display system for insects, using miniature 3D glasses to present separate images to each eye, and tested our ability to deliver stereoscopic illusions to praying mantises. We find that while filtering by circular polarization failed due to excessive crosstalk, \"anaglyph\" filtering by spectral content clearly succeeded in giving the mantis the illusion of 3D depth. We thus definitively demonstrate stereopsis in mantises and also demonstrate that the anaglyph technique can be effectively used to deliver virtual 3D stimuli to insects. This method opens up broad avenues of research into the parallel evolution of stereoscopic computations and possible new algorithms for depth perception."
+   },
+   {
+    "id": "https://openalex.org/W3088177249",
+    "doi": "https://doi.org/10.1007/s12274-020-3065-5",
+    "title": "CsPbBrxI3-x thin films with multiple ammonium ligands for low turn-on pure-red perovskite light-emitting diodes",
+    "year": 2020,
+    "cited": 55,
+    "venue": "Nano Research",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Solid-state spectroscopy and crystallography",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://oist.repo.nii.ac.jp/?action=repository_action_common_download&item_id=1789&item_no=1&attribute_id=22&file_no=1",
+    "abstract": "All-inorganic α-CsPbBr x I 3- x perovskites featuring nano-sized crystallites show great potential for pure-red light-emitting diode (LED) applications. Currently, the CsPbBr x I 3– x LEDs based on nano-sized α-CsPbBr x I 3- x crystallites have been fabricated mainly via the classical colloidal route including a tedious procedure of nanocrystal synthesis, purification, ligand or anion exchange, film casting, etc. With the usually adopted conventional LED device structure, only high turn-on voltages (> 2.7) have been achieved for CsPbBr x I 3- x LEDs. Moreover, this mix-halide system may suffer from severe spectra-shift under bias. In this report, CsPbBr x I 3- x thin films featuring nano-sized crystallites are prepared by incorporating multiple ammonium ligands in a one-step spin-coating route. The multiple ammonium ligands constrain the growth of CsPbBr x I 3- x nanograins. Such CsPbBr x I 3- x thin films benefit from quantum confinement. The corresponding CsPbBr x I 3- x LEDs, adopting a conventional LED structure of indium-doped tin oxide (ITO)/poly(3,4-ethylenedioxythiophene):poly(styrenesulfonate) (PEDOT:PSS)/CsPbBr x I 3- x /[6, 6]-phenyl C61 butyric acid methyl ester (PCBM)/bathocuproine (BCP)/Al, emit pure-red color at Commission Internationale de l’éclairage (CIE) coordinates of (0.709, 0.290), (0.711, 0.289), etc., which represent the highest color-purity for reported pure-red perovskite LEDs and meet the Rec. 2020 requirement at CIE (0.708, 0.292) very well. The CsPbBr x I 3- x LED shows a low turn-on voltage of 1.6 V, maximum external quantum efficiency of 8.94%, high luminance of 2,859 cdm −2 , and good color stability under bias."
+   },
+   {
+    "id": "https://openalex.org/W2510158282",
+    "doi": "https://doi.org/10.1021/acsami.6b06833",
+    "title": "Quantum Dot/Light-Emitting Electrochemical Cell Hybrid Device and Mechanism of Its Operation",
+    "year": 2016,
+    "cited": 53,
+    "venue": "ACS Applied Materials & Interfaces",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Organic Light-Emitting Diodes Research",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://repository.bilkent.edu.tr/bitstreams/90244379-fde5-4610-9f5d-76c812440f75/download",
+    "abstract": "A new type of light-emitting hybrid device based on colloidal quantum dots (QDs) and an ionic transition metal complex (iTMC) light-emitting electrochemical cell (LEC) is introduced. The developed hybrid devices show light emission from both active layers, which are combined in a stacked geometry. Time-resolved photoluminescence experiments indicate that the emission is controlled by direct charge injection into both the iTMC and the QD layer. The turn-on time (time to reach 1 cd/m(2)) at constant voltage operation is significantly reduced from 8 min in the case of the reference LEC down to subsecond in the case of the hybrid device. Furthermore, luminance and efficiency of the hybrid device are enhanced compared to reference LEC directly after device turn-on by a factor of 400 and 650, respectively. We attribute these improvements to an increased electron injection efficiency into the iTMC directly after device turn-on."
+   },
+   {
+    "id": "https://openalex.org/W4205644002",
+    "doi": "https://doi.org/10.1186/s40580-021-00295-2",
+    "title": "Electroplated core–shell nanowire network electrodes for highly efficient organic light-emitting diodes",
+    "year": 2022,
+    "cited": 50,
+    "venue": "Nano Convergence",
+    "topics": [
+     "Nanomaterials and Printing Technologies",
+     "Organic Light-Emitting Diodes Research",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://nanoconvergencejournal.springeropen.com/counter/pdf/10.1186/s40580-021-00295-2",
+    "abstract": "Abstract In this study, we performed metal (Ag, Ni, Cu, or Pd) electroplating of core–shell metallic Ag nanowire (AgNW) networks intended for use as the anode electrode in organic light-emitting diodes (OLEDs) to modify the work function (WF) and conductivity of the AgNW networks. This low-cost and facile electroplating method enabled the precise deposition of metal onto the AgNW surface and at the nanowire (NW) junctions. AgNWs coated onto a transparent glass substrate were immersed in four different metal electroplating baths: those containing AgNO3for Ag electroplating, NiSO4for Ni electroplating, Cu2P2O7for Cu electroplating, and PdCl2for Pd electroplating. The solvated metal ions (Ag+, Ni2+, Cu2+, and Pd2+) in the respective electroplating baths were reduced to the corresponding metals on the AgNW surface in the galvanostatic mode under a constant electric current achieved by linear sweep voltammetry via an external circuit between the AgNW networks (cathode) and a Pt mesh (anode). The amount of electroplated metal was systematically controlled by varying the electroplating time. Scanning electron microscopy images showed that the four different metals (shells) were successfully electroplated on the AgNWs (core), and the nanosize-controlled electroplating process produced metal NWs with varying diameters, conductivities, optical transmittances, and WFs. The metal-electroplated AgNWs were successfully employed as the anode electrodes of the OLEDs. This facile and low-cost method of metal electroplating of AgNWs to increase their WFs and conductivities is a promising development for the fabrication of next-generation OLEDs."
+   },
+   {
+    "id": "https://openalex.org/W2531589402",
+    "doi": "https://doi.org/10.1167/tvst.5.5.2",
+    "title": "Genetic Testing as a New Standard for Clinical Diagnosis of Color Vision Deficiencies",
+    "year": 2016,
+    "cited": 49,
+    "venue": "Translational Vision Science & Technology",
+    "topics": [
+     "Retinal Development and Disorders",
+     "Visual perception and processing mechanisms",
+     "Ophthalmology and Visual Impairment Studies"
+    ],
+    "oa_url": "https://tvst.arvojournals.org/arvo/content_public/journal/tvst/935706/i2164-2591-5-5-2.pdf",
+    "abstract": "PURPOSE: The genetics underlying inherited color vision deficiencies is well understood: causative mutations change the copy number or sequence of the long (L), middle (M), or short (S) wavelength sensitive cone opsin genes. This study evaluated the potential of opsin gene analyses for use in clinical diagnosis of color vision defects. METHODS: We tested 1872 human subjects using direct sequencing of opsin genes and a novel genetic assay that characterizes single nucleotide polymorphisms (SNPs) using the MassArray system. Of the subjects, 1074 also were given standard psychophysical color vision tests for a direct comparison with current clinical methods. RESULTS: Protan and deutan deficiencies were classified correctly in all subjects identified by MassArray as having red-green defects. Estimates of defect severity based on SNPs that control photopigment spectral tuning correlated with estimates derived from Nagel anomaloscopy. CONCLUSIONS: The MassArray assay provides genetic information that can be useful in the diagnosis of inherited color vision deficiency including presence versus absence, type, and severity, and it provides information to patients about the underlying pathobiology of their disease. TRANSLATIONAL RELEVANCE: The MassArray assay provides a method that directly analyzes the molecular substrates of color vision that could be used in combination with, or as an alternative to current clinical diagnosis of color defects."
+   },
+   {
+    "id": "https://openalex.org/W2939085300",
+    "doi": "https://doi.org/10.1039/c9ra00145j",
+    "title": "Charge balance control of quantum dot light emitting diodes with atomic layer deposited aluminum oxide interlayers",
+    "year": 2019,
+    "cited": 44,
+    "venue": "RSC Advances",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Semiconductor Quantum Structures and Devices",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2019/ra/c9ra00145j",
+    "abstract": "We developed a 1.0 nm thick aluminum oxide (Al 2 O 3 ) interlayer as an electron blocking layer to reduce leakage current and suppress exciton quenching induced by charge imbalance in inverted quantum dot light emitting diodes (QLEDs)."
+   },
+   {
+    "id": "https://openalex.org/W4393277712",
+    "doi": "https://doi.org/10.1002/adma.202304772",
+    "title": "High‐Color‐Rendition White QLEDs by Balancing Red, Green and Blue Centres in Eco‐Friendly ZnCuGaS:In@ZnS Quantum Dots",
+    "year": 2024,
+    "cited": 43,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202304772",
+    "abstract": "Abstract White light‐emitting diodes (WLEDs) are the key components in the next‐generation lighting and display devices. The inherent toxicity of Cd/Pb‐based quantum dots (QDs) limits the further application in WLEDs. Recently, more attention is focused on eco‐friendly QDs and their WLEDs, especially the phosphor‐free WLEDs based on mono‐component, which profits from bias‐insensitive color stability. However, the imbalanced carrier distribution between red‐green‐blue luminescent centers, even the absence of a certain luminescent center, hinders their balanced and stable photoluminescence/electroluminescence (PL/EL). Here, an In3+‐doped strategy in Zn‐Cu‐Ga‐S@ZnS QDs is first proposed, and the balanced carrier distribution is realized by non‐equivalent substitution and In3+ doping concentration modulation. The alleviation of the green emitter by the In3+‐related red emitter and the compensation of blue emitter by the Zn‐related electronic states contribute to the balanced red‐green‐blue emitting with high PL quantum yield (PLQY) of 95.3% and long lifetime (T90) of over 1100 h in atmospheric conditions. Thus, the In3+‐doped WLEDs can achieve exceedingly slight proportional variations between red‐green‐blue EL intensity over time (∆CIE = (0.007, 0.009)), and high champion CRI of 94.9. This study proposes a single‐component QD with balanced and stable red‐green‐blue PL/EL spectrum, meeting the requirements of lighting and display."
+   },
+   {
+    "id": "https://openalex.org/W4379377226",
+    "doi": "https://doi.org/10.1002/advs.202302906",
+    "title": "Perovskite Nanocrystals Protected by Hermetically Sealing for Highly Bright and Stable Deep‐Blue Light‐Emitting Diodes",
+    "year": 2023,
+    "cited": 41,
+    "venue": "Advanced Science",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202302906",
+    "abstract": "Abstract Metal–halide perovskite nanocrystals (NCs) have emerged as suitable light‐emitting materials for light‐emitting diodes (LEDs) and other practical applications. However, LEDs with perovskite NCs undergo environment‐induced and ion‐migration‐induced structural degradation during operation; therefore, novel NC design concepts, such as hermetic sealing of the perovskite NCs, are required. Thus far, viable synthetic conditions to form a robust and hermetic semiconducting shell on perovskite NCs have been rarely reported for LED applications because of the difficulties in the delicate engineering of encapsulation techniques. Herein, a highly bright and durable deep‐blue perovskite LED (PeLED) formed by hermetically sealing perovskite NCs with epitaxial ZnS shells is reported. This shell protects the perovskite NCs from the environment, facilitates charge injection/transport, and effectively suppresses interparticle ion migration during the LED operation, resulting in exceptional brightness (2916 cd m−2) at 451 nm and a high external quantum efficiency of 1.32%. Furthermore, even in the unencapsulated state, the LED shows a long operational lifetime (T50) of 1192 s (≈20 min) in the air. These results demonstrate that the epitaxial and hermetic encapsulation of perovskite NCs is a powerful strategy for fabricating high‐performance deep‐blue‐emitting PeLEDs."
+   },
+   {
+    "id": "https://openalex.org/W2968424431",
+    "doi": "https://doi.org/10.1038/s41598-019-48042-2",
+    "title": "An S-cone circuit for edge detection in the primate retina",
+    "year": 2019,
+    "cited": 41,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Retinal Development and Disorders",
+     "Visual perception and processing mechanisms",
+     "Neural dynamics and brain function"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-019-48042-2.pdf",
+    "abstract": "Midget retinal ganglion cells (RGCs) are the most common RGC type in the primate retina. Their responses have been proposed to mediate both color and spatial vision, yet the specific links between midget RGC responses and visual perception are unclear. Previous research on the dual roles of midget RGCs has focused on those comparing long (L) vs. middle (M) wavelength sensitive cones. However, there is evidence for several other rare midget RGC subtypes receiving S-cone input, but their role in color and spatial vision is uncertain. Here, we confirm the existence of the single S-cone center OFF midget RGC circuit in the central retina of macaque monkey both structurally and functionally. We investigated the receptive field properties of the S-OFF midget circuit with single cell electrophysiology and 3D electron microscopy reconstructions of the upstream circuitry. Like the well-studied L vs. M midget RGCs, the S-OFF midget RGCs have a center-surround receptive field consistent with a role in spatial vision. While spectral opponency in a primate RGC is classically assumed to contribute to hue perception, a role supporting edge detection is more consistent with the S-OFF midget RGC receptive field structure and studies of hue perception."
+   },
+   {
+    "id": "https://openalex.org/W3126438746",
+    "doi": "https://doi.org/10.34133/2021/3245731",
+    "title": "Pushing the Band Gap Envelope of Quasi-Type II Heterostructured Nanocrystals to Blue: ZnSe/ZnSe 1- X Te X /ZnSe Spherical Quantum Wells",
+    "year": 2021,
+    "cited": 34,
+    "venue": "Energy Material Advances",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://downloads.spj.sciencemag.org/energymatadv/2021/3245731.pdf",
+    "abstract": "Quasi-type II heterostructured nanocrystals (NCs) have been of particular interest due to their great potential for controlling the interplay of charge carriers. However, the lack of material choices for quasi-type II NCs restricts the accessible emission wavelength from red to near-infrared (NIR), which hinders their use in light-emitting applications that demand a wide range of visible colors. Herein, we demonstrate a new class of quasi-type II nanoemitters formulated in ZnSe/ZnSe 1- X Te X /ZnSe seed/spherical quantum well/shell heterostructures (SQWs) whose emission wavelength ranges from blue to orange. In a given geometry, ZnSe 1- X Te X emissive layers grown between the ZnSe seed and the shell layer are strained to fit into the surrounding media, and thus, the lattice mismatch between ZnSe 1- X Te X and ZnSe is effectively alleviated. In addition, composition of the ZnSe 1- X Te X emissive layer and the dimension of the ZnSe shell layer are engineered to tailor the distribution and energy of electron and hole wave functions. Benefitting from the capabilities to tune the charge carriers on demand and to form defect-free heterojunctions, ZnSe/ZnSe 1- X Te X /ZnSe/ZnS NCs show near-unity photoluminescence quantum yield ( PL QY > 90 % ) in a broad range of emission wavelengths (peak PL from 450 nm to 600 nm). Finally, we exemplify dichromatic white NC-based light-emitting diodes (NC-LEDs) employing the mixed layer of blue- and yellow-emitting ZnSe/ZnSe 1- X Te X /ZnSe/ZnS SQW NCs."
+   },
+   {
+    "id": "https://openalex.org/W2968835586",
+    "doi": "https://doi.org/10.1109/icip.2019.8803523",
+    "title": "A Subjective Comparison of AV1 and HEVC for Adaptive Video Streaming",
+    "year": 2019,
+    "cited": 33,
+    "venue": null,
+    "topics": [
+     "Video Coding and Compression Technologies",
+     "Image and Video Quality Assessment",
+     "Advanced Data Compression Techniques"
+    ],
+    "oa_url": "https://research-information.bris.ac.uk/en/publications/ec86aa40-bacd-421c-956e-1e695dab8c22",
+    "abstract": "In this paper we compare the performance of two state-of-the-art competing codecs, AV1 and HEVC, in the context of adaptive streaming. We specifically consider a Dynamic Optimizer (DO) methodology that is content-aware and selects the resolution of the video sequence after constructing the convex hull of the Rate-Quality curves of all considered resolutions. We start with an objective evaluation of the Dynamic Optimizer, based on both PSNR and VMAF quality metrics. The Rate-VMAF curves show an average of 6.3% BD-Rate gain of AV1 over HEVC, while the Rate-PSNR curves an show an average BD-Rate loss of 1.8%. We then report subjective tests which evaluate the perceived quality of the selected bitstreams generated by the two codecs. In this case it was found that, for most rate points, the difference in the perceived quality between HEVC and AV1 is not significant."
+   },
+   {
+    "id": "https://openalex.org/W3027907965",
+    "doi": "https://doi.org/10.1145/3380741",
+    "title": "Three Perceptual Dimensions for Specular and Diffuse Reflection",
+    "year": 2020,
+    "cited": 31,
+    "venue": "ACM Transactions on Applied Perception",
+    "topics": [
+     "Visual perception and processing mechanisms",
+     "Color Science and Applications",
+     "Color perception and design"
+    ],
+    "oa_url": "https://eprints.whiterose.ac.uk/id/eprint/156218/1/TAP_paper_final.pdf",
+    "abstract": "Previous research investigated the perceptual dimensionality of achromatic reflection of opaque surfaces, by using either simple analytic models of reflection or measured reflection properties of a limited sample of materials. Here, we aim to extend this work to a broader range of simulated materials. In a first experiment, we used sparse multidimensional scaling techniques to represent a set of rendered stimuli in a perceptual space that is consistent with participants’ similarity judgments. Participants were presented with one reference object and four comparisons, rendered with different material properties. They were asked to rank the comparisons according to their similarity to the reference, resulting in an efficient collection of a large number of similarity judgments. To interpret the space individuated by multidimensional scaling, we ran a second experiment in which observers were asked to rate our experimental stimuli according to a list of 30 adjectives referring to their surface reflectance properties. Our results suggest that perception of achromatic reflection is based on at least three dimensions, which we labelled “Lightness,” “Gloss,” and “Metallicity,” in accordance with the rating results. These dimensions are characterized by a relatively simple relationship with the parameters of the physically based rendering model used to generate our stimuli, indicating that they correspond to different physical properties of the rendered materials. Specifically, “Lightness” relates to diffuse reflections, “Gloss” to the presence of high contrast sharp specular highlights, and “Metallicity” to spread out specular reflections."
+   },
+   {
+    "id": "https://openalex.org/W2781496290",
+    "doi": "https://doi.org/10.1038/s41598-017-18571-9",
+    "title": "Multifunctional Device based on phosphor-piezoelectric PZT: lighting, speaking, and mechanical energy harvesting",
+    "year": 2018,
+    "cited": 30,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Polydiacetylene-based materials and applications",
+     "Innovative Energy Harvesting Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-017-18571-9.pdf",
+    "abstract": "We demonstrated the tri-functional device based on all powder-processing methods by using ZnS powder as phosphor layer and piezoelectric material as dielectric layer. The fabricated device generated the electroluminescent (EL) light from phosphor and the sound from piezoelectric sheet under a supply of external electric power, and additionally harvested the reverse-piezoelectric energy to be converted into EL light. Under sinusoidal applied voltage, EL luminances were exponentially increased with a maximum luminous efficiency of 1.3 lm/W at 40 V and 1,000 Hz, and sound pressure levels (SPLs) were linearly increased. The EL luminances were linearly dependent on applied frequency while the SPLs showed the parabolic increase behavior below 1,000 Hz and then the flat response. The temperature dependence on EL luminances and SPLs was demonstrated; the former was drastically increased and the latter was slightly decreased with the increase of temperature. Finally, as an energy harvesting application, the piezoelectric-induced electroluminescence effect was demonstrated by applying only mechanical pressure to the device without any external electric power."
+   },
+   {
+    "id": "https://openalex.org/W4386224675",
+    "doi": "https://doi.org/10.1038/s41598-023-41033-4",
+    "title": "Investigating the electrical crosstalk effect between pixels in high-resolution organic light-emitting diode microdisplays",
+    "year": 2023,
+    "cited": 29,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Thin-Film Transistor Technologies",
+     "Green IT and Sustainability"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-023-41033-4.pdf",
+    "abstract": "Organic light-emitting diode (OLED) microdisplays have received great attention owing to their excellent performance for augmented reality/virtual reality devices applications. However, high pixel density of OLED microdisplay causes electrical crosstalk, resulting in color distortion. This study investigated the current crosstalk ratio and changes in the color gamut caused by electrical crosstalk between sub-pixels in high-resolution full-color OLED microdisplays. A pixel structure of 3147 pixels per inch (PPI) with four sub-pixels and a single-stack white OLED with red, green, and blue color filters were used for the electrical crosstalk simulation. The results showed that the sheet resistance of the top and bottom electrodes of OLEDs rarely affected the electrical crosstalk. However, the current crosstalk ratio increased dramatically and the color gamut decreased as the sheet resistance of the common organic layer decreased. Furthermore, the color gamut of the OLED microdisplay decreased as the pixel density of the panel increased from 200 to 5000 PPI. Additionally, we fabricated a sub-pixel circuit to measure the electrical crosstalk current using a 3147 PPI scale multi-finger-type pixel structure and compared it with the simulation result."
+   },
+   {
+    "id": "https://openalex.org/W2552567569",
+    "doi": "https://doi.org/10.1088/0957-4484/27/49/494003",
+    "title": "Realization of Al 2 O 3 /MgO laminated structure at low temperature for thin film encapsulation in organic light-emitting diodes",
+    "year": 2016,
+    "cited": 28,
+    "venue": "Nanotechnology",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Thin-Film Transistor Technologies",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0957-4484/27/49/494003/pdf",
+    "abstract": "Abstract A laminated structure of Al 2 O 3 and MgO deposited by atomic layer deposition (ALD) is used to realize a thin film encapsulation technology in organic light-emitting diodes (OLEDs). This film was targeted to achieve an excellent barrier performance. As the thickness of MgO layer increased from 0 nm to 20 nm, its physical properties transformed from the amorphous state into a crystalline state. The optimized cyclic ratio of ALD Al 2 O 3 and MgO exhibited much lower water vapor transmission rate (WVTR) of 4.6 × 10 −6 gm −2 /day evaluated by Calcium (Ca) corrosion at 60 °C&100% RH, owing to the formation of a terrific laminated structure. Top-emitting OLEDs encapsulated with laminated Al 2 O 3 /MgO show longer operating lifetime under rigorous environmental conditions. These improvements were attributed to the embedded MgO film that served as a modified layer to establish a laminated structure to obstruct gas permeation, as well as a scavenger to absorb water molecules, thus alleviating the hydrolysis of bulk Al 2 O 3 material."
+   },
+   {
+    "id": "https://openalex.org/W4200626185",
+    "doi": "https://doi.org/10.1039/d1na00716e",
+    "title": "An efficient organic and inorganic hybrid interlayer for high performance inverted red cadmium-free quantum dot light-emitting diodes",
+    "year": 2021,
+    "cited": 27,
+    "venue": "Nanoscale Advances",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Nanocluster Synthesis and Applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2022/na/d1na00716e",
+    "abstract": ". Insertion of a thin hybrid interlayer reduces the electron injection to match the charge balance in the QD layer and also suppresses the interfacial exciton quenching between the ZnO ETL and QD EML."
+   },
+   {
+    "id": "https://openalex.org/W3006260713",
+    "doi": "https://doi.org/10.1002/col.22492",
+    "title": "Predicting visual similarity between colour palettes",
+    "year": 2020,
+    "cited": 26,
+    "venue": "Color Research & Application",
+    "topics": [
+     "Color perception and design",
+     "Color Science and Applications"
+    ],
+    "oa_url": "https://eprints.whiterose.ac.uk/155650/1/yang_etal_CRA2020postprint.pdf",
+    "abstract": "Abstract This work is concerned with the prediction of visual colour difference between pairs of palettes. In this study, the palettes contained five colours arranged in a horizontal row. A total of 95 pairs of palettes were rated for visual difference by 20 participants. The colour difference between the palettes was predicted using two algorithms, each based on one of six colour‐difference formulae. The best performance ( r 2 = 0.86 and STRESS = 16.9) was obtained using the minimum colour‐difference algorithm (MICDM) using the CIEDE2000 equation with a lightness weighing of 2. There was some evidence that the order (or arrangement) of the colours in the palettes was a factor affecting the visual colour differences although the MICDM algorithm does not take order into account. Application of this algorithm is intended for digital design workflows where colour palettes are generated automatically using machine learning and for comparing palettes obtained from psychophysical studies to explore, for example, the effect of culture, age, or gender on colour associations."
+   },
+   {
+    "id": "https://openalex.org/W1968808620",
+    "doi": "https://doi.org/10.1117/1.oe.53.11.113102",
+    "title": "Adaptive luminance contrast for enhancing reading performance and visual comfort on smartphone displays",
+    "year": 2014,
+    "cited": 26,
+    "venue": "Optical Engineering",
+    "topics": [
+     "Color perception and design",
+     "Ergonomics and Musculoskeletal Disorders",
+     "Impact of Light on Environment and Health"
+    ],
+    "oa_url": "https://www.spiedigitallibrary.org/journals/optical-engineering/volume-53/issue-11/113102/Adaptive-luminance-contrast-for-enhancing-reading-performance-and-visual-comfort/10.1117/1.OE.53.11.113102.pdf",
+    "abstract": "This study developed a model for setting the adaptive luminance contrast between text and background for enhancing reading performance and visual comfort on smartphone displays. The study was carried out in two experiments. In Experiment I, a user test was conducted to identify the optimal luminance contrast with regard to subjects’ reading performance, measured by lines of text reading and visual comfort, assessed by self-report after the reading. Based on the empirical results of the test, an ideal adaptive model which decreases the luminance contrast gradually with passage of time was developed. In Experiment II, a validation test involving reading performance, visual comfort, and physiological stress measured by a brainwave analysis using an electroencephalogram confirmed that the proposed adaptive luminance contrast is adequate for prolonged text reading on smartphone displays. The developed model enhances both reading performance and visual comfort as well as reduces the energy consumption of a smartphone; hence, it is expected that this study will be applied to diverse kinds of visual display terminals."
+   },
+   {
+    "id": "https://openalex.org/W4396813699",
+    "doi": "https://doi.org/10.1167/jov.24.5.6",
+    "title": "Color constancy mechanisms in virtual reality environments",
+    "year": 2024,
+    "cited": 24,
+    "venue": "Journal of Vision",
+    "topics": [
+     "Color Science and Applications",
+     "Color perception and design",
+     "Visual perception and processing mechanisms"
+    ],
+    "oa_url": "https://jov.arvojournals.org/arvo/content_public/journal/jov/938673/i1534-7362-24-5-6_1715250544.15467.pdf",
+    "abstract": "Prior research has demonstrated high levels of color constancy in real-world scenarios featuring single light sources, extensive fields of view, and prolonged adaptation periods. However, exploring the specific cues humans rely on becomes challenging, if not unfeasible, with actual objects and lighting conditions. To circumvent these obstacles, we employed virtual reality technology to craft immersive, realistic settings that can be manipulated in real time. We designed forest and office scenes illuminated by five colors. Participants selected a test object most resembling a previously shown achromatic reference. To study color constancy mechanisms, we modified scenes to neutralize three contributors: local surround (placing a uniform-colored leaf under test objects), maximum flux (keeping the brightest object constant), and spatial mean (maintaining a neutral average light reflectance), employing two methods for the latter: changing object reflectances or introducing new elements. We found that color constancy was high in conditions with all cues present, aligning with past research. However, removing individual cues led to varied impacts on constancy. Local surrounds significantly reduced performance, especially under green illumination, showing strong interaction between greenish light and rose-colored contexts. In contrast, the maximum flux mechanism barely affected performance, challenging assumptions used in white balancing algorithms. The spatial mean experiment showed disparate effects: Adding objects slightly impacted performance, while changing reflectances nearly eliminated constancy, suggesting human color constancy relies more on scene interpretation than pixel-based calculations."
+   },
+   {
+    "id": "https://openalex.org/W4288752639",
+    "doi": "https://doi.org/10.1007/s40843-022-2121-0",
+    "title": "Suppressing triplet exciton quenching by regulating the triplet energy of crosslinkable hole transport materials for efficient solution-processed TADF OLEDs",
+    "year": 2022,
+    "cited": 24,
+    "venue": "Science China Materials",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40843-022-2121-0.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3096960438",
+    "doi": "https://doi.org/10.3390/nano10112171",
+    "title": "Synthesis of Blue-Emissive InP/GaP/ZnS Quantum Dots via Controlling the Reaction Kinetics of Shell Growth and Length of Capping Ligands",
+    "year": 2020,
+    "cited": 24,
+    "venue": "Nanomaterials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Carbon and Quantum Dots Applications",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-4991/10/11/2171/pdf?version=1604309323",
+    "abstract": "The development of blue-emissive InP quantum dots (QDs) still lags behind that of the red and green QDs because of the difficulty in controlling the reactivity of the small InP core. In this study, the reaction kinetics of the ZnS shell was controlled by varying the length of the hydrocarbon chain in alkanethiols for the synthesis of the small InP core. The reactive alkanethiol with a short hydrocarbon chain forms the ZnS shell rapidly and prevents the growth of the InP core, thus reducing the emission wavelength. In addition, the length of the hydrocarbon chain in the fatty acid was varied to reduce the nucleation kinetics of the core. The fatty acid with a long hydrocarbon chain exhibited a long emission wavelength as a result of the rapid nucleation and growth, due to the insufficient In–P–Zn complex by the steric effect. Blue-emissive InP/GaP/ZnS QDs were synthesized with hexanethiol and lauryl acid, exhibiting a photoluminescence (PL) peak of 485 nm with a full width at half-maximum of 52 nm and a photoluminescence quantum yield of 45%. The all-solution processed quantum dot light-emitting diodes were fabricated by employing the aforementioned blue-emissive QDs as an emitting layer, and the resulting device exhibited a peak luminance of 1045 cd/m2, a current efficiency of 3.6 cd/A, and an external quantum efficiency of 1.0%."
+   },
+   {
+    "id": "https://openalex.org/W3041520380",
+    "doi": "https://doi.org/10.3390/en13143583",
+    "title": "Modeling of Selected Lighting Parameters of LED Panel",
+    "year": 2020,
+    "cited": 24,
+    "venue": "Energies",
+    "topics": [
+     "Impact of Light on Environment and Health",
+     "Color Science and Applications",
+     "Building Energy and Comfort Optimization"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/13/14/3583/pdf?version=1594461657",
+    "abstract": "Semiconductor light sources are currently the fastest growing and most energy efficient group of light sources used in lighting technology. Their lighting parameters, such as luminous flux, correlated color temperature and color rendering index depend on the value of the forward current, as well as the temperature of the junction. LED source manufacturers usually specify, in data sheets, the effect of junction temperature and forward current on the luminous flux for individual light sources. The difficulty, however, is the correct determination of temperature and then lighting parameters, by simulation methods for multi-source lighting systems. Determining the junction temperature which affects lighting parameters is particulary important in the case of LED panels and luminaires, where thermally coupled LED sources shaping the output lighting parameters are in close proximity to each other. Additionally, other factors influencing the temperature distribution of sources, such as the design and geometry of the cooling system, the design of the printed circuit and thermal interface material used, should be considered. The article is a continuation of the publication in this journal where the influence of factors influencing the temperature distribution of the LED panel is presented. The purpose of the research in this article was to confirm the possibility of using CFD (Computational Fluid Dynamics) software, as well as to determine the accuracy of the results obtained in the temperature analysis of the multi-source LED panel, and in determining the output lighting parameters of the LED panel based on it. In this article, based on previously published research, a LED panel model with a cooling system was made, and then the CFD software determined the junction temperature of all light sources. The determined temperature of the LED sources constituted the basis for determining the output lighting parameters of the panel: luminous flux, color temperature and color rendering index. The simulation results were verified by real measurements on the constructed LED panel prototype. The LED panel temperature difference between the simulation results and the real results on the prototype did not exceed 5%. Moreover, the error of lighting parameters between the simulation results obtained and the results on the LED panel prototype in the worst case was 4.36%, which proves the validity and accuracy of simulation studies."
+   },
+   {
+    "id": "https://openalex.org/W4410120864",
+    "doi": "https://doi.org/10.1002/adma.202420633",
+    "title": "Intrinsically‐Stretchable and Patternable Quantum Dot Color Conversion Layers for Stretchable Displays in Robotic Skin and Wearable Electronics",
+    "year": 2025,
+    "cited": 22,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Tactile and Sensory Interactions"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202420633",
+    "abstract": "Stretchable displays are essential components as signal outputs in next-generation stretchable electronics, particularly for robotic skin and wearable device technologies. Intrinsically-stretchable and patternable color conversion layers (CCLs) offer practical solutions for developing full-color stretchable micro-light-emitting diode (LED) displays. However, significant challenges remain in creating stretchable and patternable CCLs without backlight leakage under mechanical deformation. Here, a novel material strategy for stretchable and patternable heavy-metal-free quantum dot (QD) CCLs, potentially useful for robotic skin and wearable electronics is presented. Through a versatile crosslinking technique, uniform and high-concentration QD loading in the elastomeric polydimethylsiloxane matrix without loss of optical properties is achieved. These CCLs demonstrate excellent color conversion capabilities with minimal backlight leakage, even under 50% tensile strain. Additionally, fine-pixel patterning process with resolutions up to 300 pixels per inch is compatible with the QD CCLs, suitable for high-resolution stretchable display applications. The integration of these CCLs with micro-LED displays is also demonstrated, showcasing their use in haptic-responsive robotic skin and wearable healthcare monitoring sensors. This study offers a promising material preparation methodology for stretchable QDs/polymer composites and highlights their potential for advancing flexible and wearable light-emitting devices."
+   },
+   {
+    "id": "https://openalex.org/W3119217320",
+    "doi": "https://doi.org/10.1038/s41598-020-79908-5",
+    "title": "Deep learning-based pupil model predicts time and spectral dependent light responses",
+    "year": 2021,
+    "cited": 22,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Circadian rhythm and melatonin",
+     "Photoreceptor and optogenetics research",
+     "Optical Imaging and Spectroscopy Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-79908-5.pdf",
+    "abstract": "Abstract Although research has made significant findings in the neurophysiological process behind the pupillary light reflex, the temporal prediction of the pupil diameter triggered by polychromatic or chromatic stimulus spectra is still not possible. State of the art pupil models rested in estimating a static diameter at the equilibrium-state for spectra along the Planckian locus. Neither the temporal receptor-weighting nor the spectral-dependent adaptation behaviour of the afferent pupil control path is mapped in such functions. Here we propose a deep learning-driven concept of a pupil model, which reconstructs the pupil’s time course either from photometric and colourimetric or receptor-based stimulus quantities. By merging feed-forward neural networks with a biomechanical differential equation, we predict the temporal pupil light response with a mean absolute error below 0.1 mm from polychromatic (2007 $$\\pm$$ ± 1 K, 4983 $$\\pm$$ ± 3 K, 10,138 $$\\pm$$ ± 22 K) and chromatic spectra (450 nm, 530 nm, 610 nm, 660 nm) at 100.01 ± 0.25 cd/m2. This non-parametric and self-learning concept could open the door to a generalized description of the pupil behaviour."
+   },
+   {
+    "id": "https://openalex.org/W2107520527",
+    "doi": "https://doi.org/10.1016/j.orgel.2012.06.018",
+    "title": "Star-shaped hexaaryltriindoles small molecules: Tuning molecular properties towards solution processed organic light emitting devices",
+    "year": 2012,
+    "cited": 21,
+    "venue": "Organic Electronics",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1566119912002765-fx1.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2788583805",
+    "doi": "https://doi.org/10.1007/s10905-018-9665-1",
+    "title": "Aversive Learning in the Praying Mantis (Tenodera aridifolia), a Sit and Wait Predator",
+    "year": 2018,
+    "cited": 20,
+    "venue": "Journal of Insect Behavior",
+    "topics": [
+     "Neurobiology and Insect Physiology Research",
+     "Animal Behavior and Reproduction",
+     "Plant and animal studies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10905-018-9665-1.pdf",
+    "abstract": "Animals learn to associate sensory cues with the palatability of food in order to avoid bitterness in food (a common sign of toxicity). Associations are important for active foraging predators to avoid unpalatable prey and to invest energy in searching for palatable prey only. However, it has been suggested that sit-and-wait predators might rely on the opportunity that palatable prey approach them by chance: the most efficient strategy could be to catch every available prey and then decide whether to ingest them or not. In the present study, we investigated avoidance learning in a sit-and-wait predator, the praying mantis ( Tenodera aridifolia ). To examine the effects of conspicuousness and novelty of prey on avoidance learning, we used three different prey species: mealworms (novel prey), honeybees (novel prey with conspicuous signals) and crickets (familiar prey). We sequentially presented the prey species in pairs and made one of them artificially bitter. In the absence of bitterness, the mantises consumed bees and crickets more frequently than mealworms. When the prey were made bitter, the mantises still continued to attack bitter crickets as expected. However, they reduced their attacks on bitter mealworms more than on bitter bees. This contrasts with the fact that conspicuous signals (e.g. coloration in bees) facilitate avoidance learning in active foraging predators. Surprisingly, we found that the bitter bees were totally rejected after an attack whereas bitter mealworms were partially eaten (~35%). Our results highlight the fact that the mantises might maintain a selection pressure on bees, and perhaps on aposematic species in general."
+   },
+   {
+    "id": "https://openalex.org/W4407197080",
+    "doi": "https://doi.org/10.1021/acs.chemmater.4c02675",
+    "title": "Direct Photolithography of Colloidal InP-Based Quantum Dots Utilizing the Photoligation Method",
+    "year": 2025,
+    "cited": 19,
+    "venue": "Chemistry of Materials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Molecular Junctions and Nanostructures",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.4c02675?ref=article_openPDF",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide High-resolution quantum dot (QD) pixelation technologies are essential for advancing QD-based light-emitting diodes (QLEDs) in next-generation display systems. Here, we present a ligand with dual functionality for ligand exchange and direct patterning of InP-based QDs. This ligand incorporates a multidentate lipoic acid group and an azide group, enabling simultaneous photoligation and photo-cross-linking. Upon ultraviolet (UV) light exposure (365 nm), in situ ligand exchange occurs in the solvent-dispersed state via photoligation, significantly reducing ligand exchange time and enhancing QD solution stability by securely anchoring ligands to the QD surface. Under 254 nm UV light, the functional azide groups enable selective cross-linking with neighboring QD ligands, achieving high-resolution patterns down to 5 μm while preserving the optical properties of the QDs. Furthermore, QLEDs employing the cross-linked QDs demonstrate improved current efficiency, increasing from 2.8 to 4.3 cd/A, and operational lifetime, extending from 100 to 940 h, at an initial luminance of 150 cd/m 2 . These improvements are attributed to the upshifted energy level, enhanced QD stability, and improved charge balance within the device. This approach provides an efficient and scalable strategy for direct QD patterning, paving the way for next-generation display technologies through innovative ligand design and simplified processing."
+   },
+   {
+    "id": "https://openalex.org/W2890391014",
+    "doi": "https://doi.org/10.1109/icip.2018.8451225",
+    "title": "A Study of Subjective Video Quality at Various Spatial Resolutions",
+    "year": 2018,
+    "cited": 19,
+    "venue": null,
+    "topics": [
+     "Image and Video Quality Assessment",
+     "Advanced Image Processing Techniques",
+     "Image and Signal Denoising Methods"
+    ],
+    "oa_url": "https://research-information.bris.ac.uk/files/156297541/Aaron_Zhang_A_study_of_subjective_video_quality_at_various_spatial_resolutions.pdf",
+    "abstract": "In this paper we present the BVI-SR video database, which contains 24 unique video sequences at a range of spatial resolutions up to UHD-1 (3840p). These sequences were used as the basis for a large-scale subjective experiment exploring the relationship between visual quality and spatial resolution when using three distinct spatial adaptation filters (including a CNN-based super-resolution method). The results demonstrate that while spatial resolution has a significant impact on mean opinion scores (MOS), no significant reduction in visual quality between UHD-1 and HD resolutions for the super-resolution method is reported. A selection of image quality metrics were benchmarked on the subjective evaluations, and analysis indicates that VIF offers the best performance."
+   },
+   {
+    "id": "https://openalex.org/W4310121916",
+    "doi": "https://doi.org/10.1007/s00170-022-10536-1",
+    "title": "Color appearance in rotational material jetting",
+    "year": 2022,
+    "cited": 17,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Color Science and Applications",
+     "Color perception and design"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-022-10536-1.pdf",
+    "abstract": "Abstract Material jetting (MJT) is a recognized additive manufacturing (AM) method to combine various materials and create a wide range of designed appearances. However, the measured color of MJT objects is frequently different from the color provided in the printer software. As a result, estimating the color quality and the measured color attributes of an object before printing is vital for accurate color reproduction. This study investigates the color variation based on the texture in an object 3D-printed using the MJT method on a rotary tray. The novel radial shape of the rotary tray build platform and variation in the layers structure were targeted as the main factors that can increase the uncertainty in accurate color reproduction. The influence of the PolyJet printer setup has been examined by thickness variation of the colored layers, location on the tray (swath selection), ink color, and finish type between layers. Color quality was assessed by comparing the produced object color by calculating spectral and colorimetric differences. Spearman rank correlation coefficient and principal component analysis (PCA) methods were used to analyze the direct or indirect influence of independent categorical factors on the measured color variables. Based on the studied parameters, switching swathes did not fail printer objects for industrial color matching. In contrast, a thickness variation as small as 0.5 mm could cause CIEDE2000 above 5 for most models, resulting in unnatural color reproduction. Color differences in most objects might be discernible to inexperienced observers, depending on the 3D printing parameters."
+   },
+   {
+    "id": "https://openalex.org/W3139125995",
+    "doi": "https://doi.org/10.3390/ma14061505",
+    "title": "Red Y2O3:Eu-Based Electroluminescent Device Prepared by Atomic Layer Deposition for Transparent Display Applications",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Materials",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Catalytic Processes in Materials Science",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/6/1505/pdf?version=1616138343",
+    "abstract": "Y2O3:Eu is a promising red-emitting phosphor owing to its high luminance efficiency, chemical stability, and non-toxicity. Although Y2O3:Eu thin films can be prepared by various deposition methods, most of them require high processing temperatures in order to obtain a crystalline structure. In this work, we report on the fabrication of red Y2O3:Eu thin film phosphors and multilayer structure Y2O3:Eu-based electroluminescent devices by atomic layer deposition at 300 °C. The structural and optical properties of the phosphor films were investigated using X-ray diffraction and photoluminescence measurements, respectively, whereas the performance of the fabricated device was evaluated using electroluminescence measurements. X-ray diffraction measurements show a polycrystalline structure of the films whereas photoluminescence shows emission above 570 nm. Red electroluminescent devices with a luminance up to 40 cd/m2 at a driving frequency of 1 kHz and an efficiency of 0.28 Lm/W were achieved."
+   },
+   {
+    "id": "https://openalex.org/W3123813621",
+    "doi": "https://doi.org/10.3390/en14030527",
+    "title": "Melanopic Limits of Metamer Spectral Optimisation in Multi-Channel Smart Lighting Systems",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Energies",
+    "topics": [
+     "Circadian rhythm and melatonin",
+     "Impact of Light on Environment and Health",
+     "Color Science and Applications"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/14/3/527/pdf?version=1611149872",
+    "abstract": "Modern indoor lighting faces the challenge of finding an appropriate balance between energy consumption, legal requirements, visual performance, and the circadian effectiveness of a spectrum. Multi-channel LED luminaires have the option of keeping image-forming metrics steady while varying the melanopic radiance through metamer spectra for non-visual purposes. Here, we propose the theoretical concept of an automated smart lighting system that is designed to satisfy the user’s visual preference through neural networks while triggering the non-visual pathway via metamers. To quantify the melanopic limits of metamers at a steady chromaticity point, we have used 561 chromaticity coordinates along the Planckian locus (2700 K to 7443 K, ±Duv 0 to 0.048) as optimisation targets and generated the spectra by using a 6-channel, 8-channel, and 11-channel LED combination at three different luminance levels. We have found that in a best-case scenario, the melanopic radiance can be varied up to 65% while keeping the chromaticity coordinates constant (Δu′v′≤7.05×10−5) by using metamer spectra. The highest melanopic metamer contrast can be reached near the Planckian locus between 3292 and 4717 K within a Duv range of −0.009 to 0.006. Additionally, we publish over 1.2 million optimised spectra generated by multichannel LED luminaires as an open-source dataset along with this work."
+   },
+   {
+    "id": "https://openalex.org/W2725942955",
+    "doi": "https://doi.org/10.5594/jmi.2017.2698607",
+    "title": "High Frame Rates and the Visibility of Motion Artifacts",
+    "year": 2017,
+    "cited": 17,
+    "venue": "SMPTE Motion Imaging Journal",
+    "topics": [
+     "Image and Video Quality Assessment",
+     "Advanced Image Processing Techniques",
+     "Advanced Optical Imaging Technologies"
+    ],
+    "oa_url": "https://research-information.bris.ac.uk/files/184363894/Dave_Bull_High_Frame_Rates_and_the_Visibility_of_Motion_Artifacts.pdf",
+    "abstract": "Video frame rates, higher than those in conventional use today, have been shown to lead to an increase in perceived quality due to a reduction in the visibility of motion artifacts, specifically motion blur and temporal aliasing. Despite this, frame rates used in television and cinema have remained constant for many years. Although not currently in widespread use, the most recent ultrahigh-definition television (UHDTV) video standard (International Telecommunications Union-Radiocommunication (ITU-R) Recommendation BT. 2020) specifies a higher spatial resolution and a wider dynamic range than its predecessor; it also supports frame rates up to 120 Hz. In this context, we investigate the influence of temporal sampling rate on the visibility of aliasing artifacts. Our results show that impairments in motion quality can be tolerated to a degree, and that it is acceptable to sample at frame rates 50% lower than the critical frame rate (CFR)—the point at which motion artifacts become perceptible. Based on real-world data related to median viewing distances and screen sizes, we make the recommendation that frame rates should be at least 100 Hz in future immersive video formats. Two further experiments show how the CFR is dependent on both stimulus size and luminance. With respect to luminance dependence, our results indicate that the CFR for a bright high-dynamic range display may be 30% higher than that for a conventional low-dynamic range display."
+   },
+   {
+    "id": "https://openalex.org/W3124631751",
+    "doi": "https://doi.org/10.1039/d0ra10422a",
+    "title": "Improving the performance of quantum-dot light-emitting diodes via an organic–inorganic hybrid hole injection layer",
+    "year": 2021,
+    "cited": 16,
+    "venue": "RSC Advances",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Conducting polymers and applications",
+     "Organic Light-Emitting Diodes Research"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2021/ra/d0ra10422a",
+    "abstract": ". Therefore, the increase of DOS improved the hole injection and the performance of QLEDs. The result shows that the hybrid HIL can improve the performance and the stability of QLEDs."
+   },
+   {
+    "id": "https://openalex.org/W2737354278",
+    "doi": "https://doi.org/10.1155/2017/6752984",
+    "title": "An Analysis of ZnS:Cu Phosphor Layer Thickness Influence on Electroluminescence Device Performances",
+    "year": 2017,
+    "cited": 16,
+    "venue": "International Journal of Photoenergy",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Semiconductor Lasers and Optical Devices",
+     "Green IT and Sustainability"
+    ],
+    "oa_url": "http://downloads.hindawi.com/journals/ijp/2017/6752984.pdf",
+    "abstract": "Electroluminescence (EL) device is a new technology; its thickness is within micrometer range which can bend more easily and emit light. However, the thickness of ZnS:Cu phosphor layer may affect the light intensity, so we have analyzed the thickness of ZnS:Cu phosphor layer on EL device. The EL devices consist of ITO:PET/ZnS:Cu phosphor/insulator (BaTiO3)/Ag electrode. The EL devices were fabricated in changing thickness 10 μm, 30 μm, and 50 μm. At 100 V 400 Hz, the luminance of EL devices was 51.22 cd/m2 for thickness 30 μm more than that of 45.78 cd/m2 (thickness: 10 μm) and 42.58 cd/m2 (thickness: 50 μm). However, the peak light intensity was achieved at wavelength of 507 nm which was not influenced by the thickness of the ZnS:Cu phosphor. The use of the ZnS:Cu phosphor layer at thickness 30 μm in the EL device significantly improves the luminescence performance."
+   },
+   {
+    "id": "https://openalex.org/W2081533854",
+    "doi": "https://doi.org/10.1016/j.synthmet.2011.08.010",
+    "title": "Highly efficient solution-processed white organic light-emitting diodes based on novel copolymer single layer",
+    "year": 2011,
+    "cited": 16,
+    "venue": "Synthetic Metals",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0379677911003390",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4393273603",
+    "doi": "https://doi.org/10.1002/smll.202311671",
+    "title": "Robust, Narrow‐Band Nanorods LEDs with Luminous Efficacy > 200 lm/W: Next‐Generation of Efficient Solid‐State Lighting",
+    "year": 2024,
+    "cited": 15,
+    "venue": "Small",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Luminescence Properties of Advanced Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202311671",
+    "abstract": "Abstract Energy‐efficient white light‐emitting diodes (LEDs) are in high demand across the society. Despite the significant advancements in the modern lighting industry based on solid‐state electronics and inorganic phosphor, solid‐state lighting (SSL) continues to pursue improved efficiency, saturated color performance, and longer lifetime. Here in this article, robust, narrow emission band nanorods (NRs) are disclosed with tailored wavelengths, aiming to enhance the color rendering index (CRI) and luminous efficacy (LE). The fabricated lighting device consists of NRs of configuration CdSe/Zn x Cd 1‐x S/ZnS, which can independently tune CRI R1‐R9 values and maximize the luminous efficacy. For general lighting, NRs with quantum yield (QY) up to 96% and 99% are developed, resulting in ultra‐efficient LEDs reaching a record high luminous efficacy of 214 lm W −1 (certified by the National Accreditation Service). Furthermore, NRs are deployed onto mid‐power (0.3 W@ 50 mA) LEDs, showing significantly enhanced long‐term stability ( T 95 = 400 h @ 50 mA). With these astonishing properties, the proposed NRs can pave the way for efficient lighting with desired optical spectrum."
+   },
+   {
+    "id": "https://openalex.org/W3019239743",
+    "doi": "https://doi.org/10.1155/2020/3971256",
+    "title": "Impact of LED Color Temperatures on Perception Luminance in the Interior Zone of a Tunnel considering Fog Transmittance",
+    "year": 2020,
+    "cited": 15,
+    "venue": "Advances in Civil Engineering",
+    "topics": [
+     "Impact of Light on Environment and Health",
+     "Image Enhancement Techniques",
+     "Ocular and Laser Science Research"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/ace/2020/3971256.pdf",
+    "abstract": "LEDs are widely applied in highways and tunnels for their long life, low light attenuation, and being environment friendly in recent years. The influence of correlated color temperature (CCT) of LED on lighting safety has attracted people’s attention as the demand increased. In this paper, a calculation model of perception luminance of human eye considering mesopic vision and fog concentration was proposed. The influence of different CCTs on perception luminance of human eye under different levels of fog concentration and luminance was calculated and analyzed. The CCT of LED employed in the interior zone of a tunnel was selected based on the highest perception luminance in mesopic vision. Seven kinds of LEDs with different CCTs (3000–6500K) were applied in the experimental system with adjustable fog concentrations. The results showed that the main factors affecting visual perception are luminance and fog concentration. Higher luminance or lower fog concentration provides drivers with higher perception luminance. In contrast, although CCT has a less effect on perception luminance, LEDs with higher CCT (about 6500K) can provide higher perception luminance considering fog in mesopic vision. This paper provides technical support for tunnel lighting and guaranteeing traffic safety."
+   },
+   {
+    "id": "https://openalex.org/W2803985912",
+    "doi": "https://doi.org/10.1038/s41598-018-25920-9",
+    "title": "Invisible light inside the natural blind spot alters brightness at a remote location",
+    "year": 2018,
+    "cited": 15,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Visual perception and processing mechanisms",
+     "Circadian rhythm and melatonin",
+     "Retinal Development and Disorders"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-018-25920-9.pdf",
+    "abstract": "The natural blind spot in the visual field has been known as a large oval region that cannot receive any optical input because it corresponds to the retinal optic disk containing no rod/cone-photoreceptors. Recently, stimulation inside the blind spot was found to enhance, but not trigger, the pupillary light reflex. However, it is unknown whether blind-spot stimulation also affects visual perception. We addressed this question using psychophysical brightness-matching experiments. We found that a test stimulus outside the blind spot was judged as darker when it was accompanied by a consciously unexperienced blue oval inside the blind spot; moreover, the pupillary light reflex was enhanced. These findings suggested that a photo-sensitive mechanism inside the optic disk, presumably involving the photopigment melanopsin, contributes to our image-forming vision and provides a 'reference' for calibrating the perceived brightness of visual objects."
+   },
+   {
+    "id": "https://openalex.org/W2515483116",
+    "doi": "https://doi.org/10.1155/2016/1303247",
+    "title": "Photocatalytic Activity and Optical Properties of Blue Persistent Phosphors under UV and Solar Irradiation",
+    "year": 2016,
+    "cited": 15,
+    "venue": "International Journal of Photoenergy",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Advanced Photocatalysis Techniques",
+     "Microwave Dielectric Ceramics Synthesis"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/ijp/2016/1303247.pdf",
+    "abstract": "Blue phosphorescent strontium aluminosilicate powders were prepared by combustion synthesis route and a postannealing treatments at different temperatures. X-ray diffraction analysis showed that phosphors are composed of two main hexagonal phases: SrAl2O4and Sr3Al32O51. The morphology of the phosphors changed from micrograins (1000°C) to a mixture of bars and hexagons (1200°C) and finally to only hexagons (1300°C) as the annealing temperature is increased. Photoluminescence spectra showed a strong blue-green phosphorescent emission centered at λem=455 nm, which is associated with 4f65d1→4f6 (8S7/2) transition of the Eu2+. The sample annealed at 1200°C presents the highest luminance value (40 Cd/m2) with CIE coordinates (0.1589, 0.1972). Also, the photocatalytic degradation of methylene blue (MB) under UV light (at 365 nm) was monitored. Samples annealed at 1000°C and 1300°C presented the highest percentage of degradation (32% and 38.5%, resp.) after 360 min. In the case of photocatalytic activity under solar irradiation, the samples annealed at 1000°C, 1150°C, and 1200°C produced total degradation of MB after only 300 min. Hence, the results obtained with solar photocatalysis suggest that our powders could be useful for water cleaning in water treatment plants."
+   },
+   {
+    "id": "https://openalex.org/W4321014254",
+    "doi": "https://doi.org/10.1002/adom.202300088",
+    "title": "Realization of Highly Efficient InP Quantum Dot Light‐Emitting Diodes through In‐Depth Investigation of Exciton‐Harvesting Layers",
+    "year": 2023,
+    "cited": 14,
+    "venue": "Advanced Optical Materials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Organic Light-Emitting Diodes Research",
+     "Semiconductor Quantum Structures and Devices"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adom.202300088",
+    "abstract": "Abstract Quantum dot light‐emitting diodes (QLEDs) are considered promising candidates for several optoelectronic applications; however, they are plagued by the over‐injection of electrons compared to holes, which limits device efficiency. Studies have attempted to reuse the leaked electrons and transfer recombination energies via inserting an exciton‐harvesting layer (EHL) between the emissive layer (EML) and hole transport layer (HTL). This study conducts a detailed analysis of the energy transfer mechanisms to obtain better insights into improving the device performance. First, by analyzing the electroluminescence (EL) spectra and exciton dynamics, the effect of EHLs comprising phosphorescence (PH) or thermally activated delayed fluorescence (TADF) blue dopant is compared. Through parallel incorporation of those EHLs on QLEDs and organic LEDs, the minimal contribution of the PH‐EHL to energy transfer in QLEDs is confirmed, whereas the TADF‐EHL has a significant contribution. Second, highly efficient top‐emission green QLEDs with the TADF‐EHL are achieved. They exhibit a maximum luminance (L) and current efficiency (CE) of 40700 cd m−2 and 68.0 cd A−1, respectively, which are the highest among the reported values for green‐emitting InP QLEDs. The proposed approaches are expected to provide aid in the realization of highly efficient QLEDs from the analysis to the device optimization stage."
+   },
+   {
+    "id": "https://openalex.org/W3203363702",
+    "doi": "https://doi.org/10.1109/access.2021.3118438",
+    "title": "On the Validity of Virtual Reality Applications for Professional Use: A Case Study on Color Vision Research and Diagnosis",
+    "year": 2021,
+    "cited": 14,
+    "venue": "IEEE Access",
+    "topics": [
+     "Visual perception and processing mechanisms",
+     "Virtual Reality Applications and Impacts",
+     "Advanced Vision and Imaging"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09562565.pdf",
+    "abstract": "In recent years, there have been very important advances in graphic computing and technology related to the capture and representation of real objects in both 2 and 3 dimensions. One of these technologies is virtual reality, which can be incorporated into common tasks in research laboratories, especially in laboratories related to color vision and lighting research. To incorporate virtual reality devices into research tasks, newly developed applications must be validated with existing and known tests or techniques. The objective of this work was to study the validity of a commercial VR system for research and diagnosis in color vision. We carried out a comparative study on the behavior of these immersive systems for viewing 3D scenes in real time using a color vision test. In particular, we implemented a virtual version of the Farnsworth-Munsell 100 Hue test and compared the results obtained by 17 normal and 3 defective observers in both the physical and virtual tests. The results show that the functionality of both tests is very similar and that the diagnosis of both methods is equivalent. Detailed analysis of the results of both tests indicates that there is a slight difference in scale between the two tests. This difference in scale indicates a greater difficulty in the case of the virtual test but does not affect the final diagnosis. This could be due to the greater difficulty in using a head-mounted display (HMD)."
+   },
+   {
+    "id": "https://openalex.org/W3038428896",
+    "doi": "https://doi.org/10.1038/s41598-020-67593-3",
+    "title": "Prediction accuracy of L- and M-cone based human pupil light models",
+    "year": 2020,
+    "cited": 14,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Impact of Light on Environment and Health",
+     "Circadian rhythm and melatonin",
+     "Visual perception and processing mechanisms"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-67593-3.pdf",
+    "abstract": "Abstract Multi-channel LED luminaires offer a powerful tool to vary retinal receptor signals while keeping visual parameters such as color or brightness perception constant. This technology could provide new fields of application in indoor lighting since the spectrum can be enhanced individually to the users’ favor or task. One possible application would be to optimize a light spectrum by using the pupil diameter as a parameter to increase the visual acuity. A spectral- and time-dependent pupil model is the key requirement for this aim. We benchmarked in our work selected L- and M-cone based pupil models to find the estimation error in predicting the pupil diameter for chromatic and polychromatic spectra at 100 cd/m2. We report an increased estimation error up to 1.21 mm for 450 nm at 60–300 s exposure time. At short exposure times, the pupil diameter was approximately independent of the used spectrum, allowing to use the luminance for a pupil model. Polychromatic spectra along the Planckian locus showed at 60–300 s exposure time, a prediction error within a tolerance range of ± 0.5 mm. The time dependency seems to be more essential than the spectral dependency when using polychromatic spectra."
+   },
+   {
+    "id": "https://openalex.org/W2595638304",
+    "doi": "https://doi.org/10.3390/molecules22030464",
+    "title": "Spirobifluorene Core-Based Novel Hole Transporting Materials for Red Phosphorescence OLEDs",
+    "year": 2017,
+    "cited": 13,
+    "venue": "Molecules",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1420-3049/22/3/464/pdf?version=1489488085",
+    "abstract": "Two new hole transporting materials, named HTM 1A and HTM 1B, were designed and synthesized in significant yields using the well-known Buchwald Hartwig and Suzuki cross- coupling reactions. Both materials showed higher decomposition temperatures (over 450 °C) at 5% weight reduction and HTM 1B exhibited a higher glass transition temperature of 180 °C. Red phosphorescence-based OLED devices were fabricated to analyze the device performances compared to Spiro-NPB and NPB as reference hole transporting materials. Devices consist of hole transporting material as HTM 1B showed better maximum current and power efficiencies of 16.16 cd/A and 11.17 lm/W, at the same time it revealed an improved external quantum efficiency of 13.64%. This efficiency is considerably higher than that of Spiro-NPB and NPB-based reference devices."
+   },
+   {
+    "id": "https://openalex.org/W2795754770",
+    "doi": "https://doi.org/10.3390/molecules23040843",
+    "title": "Oxadiazole-Based Highly Efficient Bipolar Fluorescent Emitters for Organic Light-Emitting Diodes",
+    "year": 2018,
+    "cited": 12,
+    "venue": "Molecules",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1420-3049/23/4/843/pdf?version=1525347460",
+    "abstract": "In this study, a series of bipolar fluorescence emitters named 2DPAc-OXD, DPAc-OXD, 2PTZ-OXD and PTZ-OXD were designed and synthesized with excellent yields. The characterization of materials was investigated by using nuclear magnetic resonance (NMR) (1H, 13C), mass spectrometry and thermogravimetric analysis (TGA). To investigate device efficiencies, two different OLED devices (Device 1, Device 2) were fabricated with two different host materials (Bepp2, DPEPO). The Device 2 with 2PTZ-OXD as fluorescent emitter exhibited excellent power and current efficiencies of 6.88 Lm/W and 10.10 cd/A, respectively. The external quantum efficiency of 2PTZ-OXD was around 3.99% for Device 2. The overall device properties of phenothiazine donor were better than acridine derivatives."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Konica Minolta CS-2000 CS-2000A\" OR \"Konica Minolta CS-2000\" OR \"Konica Minolta CS-2000A\") AND OPEN_ACCESS:y",

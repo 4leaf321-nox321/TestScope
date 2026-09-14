@@ -12,8 +12,97 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mecmesin OmniTest\" OR \"Mecmesin OmniTest 0.5\" OR \"Mecmesin OmniTest 1\" OR \"Mecmesin OmniTest 2.5\" OR \"Mecmesin OmniTest 5\" OR \"Mecmesin OmniTest 7.5\"",
-  "count": null,
-  "works": []
+  "count": 6,
+  "works": [
+   {
+    "id": "https://openalex.org/W4315498990",
+    "doi": "https://doi.org/10.3390/ijms24021401",
+    "title": "Application of Silver Nanoparticles to Improve the Antibacterial Activity of Orthodontic Adhesives: An In Vitro Study",
+    "year": 2023,
+    "cited": 23,
+    "venue": "International Journal of Molecular Sciences",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Anxiety and Anesthesia Techniques",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1422-0067/24/2/1401/pdf?version=1673410155",
+    "abstract": "There is a significant change in the bacterial plaque populations in the oral cavity during and after orthodontic treatment. Numerous studies have demonstrated that 2−96% of patients could increase the risk of white spot lesions. Streptococcus mutans and Lactobacilli ssp. are responsible for these white spot lesions. In this work, silver nanoparticles (AgNPs) with a diameter of 11 nm and dispersed in water were impregnated onto three different commercial orthodontic adhesives at 535 μg/mL. The shear bond strength (SBS) was assessed on 180 human premolars and metallic brackets. The premolars were divided into six groups (three groups for the commercial adhesives and three groups for the adhesives with AgNPs). All the groups were tested for their bactericidal properties, and their MIC, MBC, and agar template diffusion assays were measured. After adding AgNPs, the SBS was not significantly modified for any adhesive (p > 0.05), and the forces measured during the SBS did not exceed the threshold of 6 to 8 MPa for clinical acceptability in all groups. An increase in the bactericidal properties against both S. mutans and L. acidophilus was measured when the adhesives were supplemented with AgNPs. It was concluded that AgNPs can be supplement commercial orthodontic adhesives without modifying their mechanical properties with improved bactericidal activity."
+   },
+   {
+    "id": "https://openalex.org/W7128586581",
+    "doi": "https://doi.org/10.3390/app16041772",
+    "title": "Tunable Cellular Structures with Damping for Industry-Ready Dynamic Load Management in Bus Applications",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Vibration Control and Rheological Fluids",
+     "Vehicle Noise and Vibration Control"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/16/4/1772/pdf",
+    "abstract": "Sustainable mobility has been an emerging topic in recent years, and in this regard, investing heavily in public transport seems to be the best solution. For people to embrace this form of mobility, services must meet expectations, and one of the parameters to be considered is the comfort offered by vehicles. This is directly affected by the vibrations that affect vehicles. This work was developed to create a proof of concept for a support structure for bus seats that mitigates the vibrations felt by passengers, making these vehicles more comfortable and appealing to use. Current systems are expensive and complex, and the proposed solution presented here is based on the field of metamaterials. This study investigated vehicle dynamic loads and comfort standards from ISO 2631 to design a metamaterial-based seat support with optimized stiffness and damping. Using MATLAB (R2024b), ideal parameters were defined (k = 13,422.66 N/m, c = 534.07 Ns/m), with stiffness provided by the cell geometry and damping provided by a viscoelastic material. Parametric modeling and simulations in ANSYS (2025 R2) assessed stiffness, damping, and strength, followed by prototype fabrication and testing. The best structure showed 2.23 m/s2 at 4.5 Hz, achieving the target transmissibility above 8 Hz. While most designs effectively attenuate vibrations beyond 5 Hz, resonance peaks remain high, suggesting future work should focus on improved resonance reduction strategies."
+   },
+   {
+    "id": "https://openalex.org/W4410027738",
+    "doi": "https://doi.org/10.37819/nanofab.9.2019",
+    "title": "Impact of Titanium Oxide Nanoparticles on Microleakage and Bond Strength of Orthodontic Brackets: An In Vitro Analysis",
+    "year": 2024,
+    "cited": 1,
+    "venue": "Nanofabrication",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Research and COVID-19"
+    ],
+    "oa_url": "https://eaapublishing.org/journals/index.php/nanofab/article/download/2019/2237",
+    "abstract": "The present study compares the microleakage and shear bond strength (SBS) of orthodontic brackets bonded with conventional composite resin and composite resin containing Titanium oxide (TiO2) nanoparticles after thermocycling. Eighty human extracted premolars bonded with 0.022 slot MBT brackets were divided into Group I (TiO2 nanoparticles composite) and Group II (conventional Transbond XT composite). After bonding, samples were thermocycled between 5°C and 55°C and evaluated for microleakage (stereomicroscope, 40X) and SBS (Universal testing machine). Adhesive Remnant Index (ARI) was scored under 10X magnification, and data was analyzed using a t-test and Chi-square test. The results showed that Group II (conventional composite) demonstrated higher shear bond strength (19.01 MPa) than Group I (15.05 MPa, p<0.001). Group II also showed lower microleakage (0.42 mm) than Group I (0.83 mm, p=0.01). Incisal microleakage was lower (p=0.16), with a higher ARI score (p=0.03) in the Group II samples. The current study revealed that the conventional composite resin (Transbond XT) has a higher shear bond strength and decreased microleakage compared to Titanium oxide nanoparticle incorporated composite within a clinically significant range. Conventional composite resin bonding also exhibited higher Adhesive remnant index scores, indicating a reduced risk of enamel damage during debonding."
+   },
+   {
+    "id": "https://openalex.org/W7162397610",
+    "doi": "https://doi.org/10.7759/cureus.109653",
+    "title": "Comparative Evaluation of Aluminum Oxide and Zinc Oxide Fillers on the Impact Strength and Flexural Strength of Heat-Cure Denture Base Resins: An In Vitro Study",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Cureus",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Implant Techniques and Outcomes",
+     "Scientific and Engineering Research Topics"
+    ],
+    "oa_url": "https://www.cureus.com/articles/496900-comparative-evaluation-of-aluminum-oxide-and-zinc-oxide-fillers-on-the-impact-strength-and-flexural-strength-of-heat-cure-denture-base-resins-an-in-vitro-study.pdf",
+    "abstract": "Background The long-term performance of heat-cure denture base resins depends largely on their mechanical properties. Heat-cured acrylic resins are widely used in removable prosthodontics because of their practical handling characteristics and acceptable overall clinical utility. The reinforcement of denture base resins with metal oxide fillers has been proposed to improve their resistance to fracture. The present study aimed to evaluate and compare the effects of aluminum oxide and zinc oxide fillers on the impact and flexural strength of heat-cured denture base resins. Methodology This in vitro experimental study was conducted at the Department of Prosthodontics, Jawahar Medical Foundation's Annasaheb Chudaman Patil Memorial Dental College and Hospital, Dhule, Maharashtra, India. The control group (Group 1) (n = 17) consisted of conventional heat-cured denture base resin specimens, Group 2 (n = 17) consisted of aluminum oxide-reinforced specimens, and Group 3 (n = 17) consisted of zinc oxide-reinforced specimens. The flexural strength was evaluated in megapascals (MPa) using a universal testing machine using the three-point bending test method, whereas the impact strength was assessed in kilojoules per square meter (kJ/m²) using the impact test method. Statistical analysis was performed using the Kruskal-Wallis test followed by the Mann-Whitney U test with Bonferroni correction. Results The aluminum oxide-reinforced group demonstrated the highest mean flexural strength value (402.94 ± 57.20 MPa), followed by the zinc oxide-reinforced group (164.71 ± 55.24 MPa), whereas the control group showed the lowest value (93.33 ± 22.04 MPa). Similarly, the highest mean impact strength was observed in the aluminum oxide-reinforced group (3.13 ± 1.00 kJ/m²), followed by the zinc oxide-reinforced group (2.22 ± 0.59 kJ/m²) and the control group (1.44 ± 0.31 kJ/m²). Statistically significant differences were observed among all study groups for both flexural and impact strengths (p < 0.001). Conclusions The incorporation of aluminum oxide and zinc oxide fillers significantly improved the flexural strength and impact strength of the heat-cured denture base resin compared with the conventional acrylic resin. The aluminum oxide reinforcement demonstrated superior enhancement of the mechanical properties compared to the zinc oxide reinforcement. The reinforcement of denture base resins with metal oxide fillers may improve the durability and fracture resistance of removable prostheses."
+   },
+   {
+    "id": "https://openalex.org/W7148327834",
+    "doi": "https://doi.org/10.25258/ijddt.16.3s.91",
+    "title": "In Vitro Abuse-Deterrent Performance of a QbD-Optimized Metformin HCl Extended-Release Matrix Tablet: Resistance to Crushing, Extraction, Syringeability and Alcohol-Induced Dose Dumping",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Drug Delivery Technology",
+    "topics": [
+     "Forensic Toxicology and Drug Analysis",
+     "Opioid Use Disorder Treatment",
+     "Drug Solubulity and Delivery Systems"
+    ],
+    "oa_url": "https://doi.org/10.25258/ijddt.16.3s.91",
+    "abstract": "Objective: To characterize the in vitro abuse-deterrent performance of a QbD-optimized extended-release (ER) matrix tablet containing metformin HCl as a non-opioid model drug, focusing on crushing behaviour, particle size distribution, extraction, Syringeability/injectability and alcohol-induced dose dumping. Methods: The abuse-deterrent formulation (ADF) of Metformin HCl was optimized using mixture design by using hydrophilic polymer Kollidon SR, HPMC K4M, Carbopol 971P and Polyplasdone XL screened in previous study based on drug release in alcoholic media. The optimized ADF (F1) was assessed under category-1 in vitro tampering tests consistent with regulatory recommendations. The ADF tablets were crushed using a pestle–mortar and a domestic coffee grinder; particle size distribution was determined by sieve analysis (500, 250 and 180 µm). Extraction studies employed small volumes (5 mL) of common household solvents (water and ethanol) to quantify drug recovery and potential for solution abuse. Syringeability and injectability were evaluated by attempting to aspirate and expel manipulated samples through standard hypodermic needles. In vitro dissolution in 0.1 N HCl and 0.1 N HCl + 40% v/v ethanol was performed to assess alcohol-induced dose dumping and to compare initial and 3-month stability samples. Results: The drug release from optimized formulation (F1) in alcoholic media (40% ethanol) is <10% more than drug release in non-alcoholic media (0.1N HCl). Particle size of crushed tablets of F1 is more than 500 µm for more than 30-50% of the mass, even the high content of hydrophilic polymers promoted gelation upon contact with moisture which makes F1 formulation not attractive to abusers. Extraction studies in 5 mL of water or ethanol showed restricted drug recovery (4–6% at 5 minutes, 10–14% at 30 minutes), consistent with high viscosity and gel formation in small volumes, suggesting a low risk of rapid dose extraction for injection. Syringeability and injectability tests demonstrated poor ability to draw and eject manipulated formulations through standard needles due to gel formation and particle obstruction. Stability samples showed comparable release and tamper-resistance behaviors after three months at 40°C/75% RH. Conclusion: The optimized ADF (F1) exhibits multiple complementary in vitro abuse-deterrent properties, including resistance to size reduction, limited extractability in small solvent volumes, poor syringeability/injectability and minimal alcohol-induced dose dumping. These results support the suitability of the QbD-engineered polymeric matrix as a candidate platform for abuse-deterrent ER formulations of high-risk opiates."
+   },
+   {
+    "id": "https://openalex.org/W4402839738",
+    "doi": "https://doi.org/10.3934/biophy.2024020",
+    "title": "Advancement in orthodontic bonding: comparing 1-second and 5-second light emitting diode (LED) curing lights",
+    "year": 2024,
+    "cited": 0,
+    "venue": "AIMS Biophysics",
+    "topics": [
+     "Digital Imaging in Medicine",
+     "Dental materials and restorations"
+    ],
+    "oa_url": "http://www.aimspress.com/aimspress-data/aimsbpoa/2024/3/PDF/biophy-11-03-020.pdf",
+    "abstract": "Recent advancements in dentistry have introduced new light-curing units such as 1-second and 5-second LED curing lights to orthodontics. We aimed to evaluate the shear bond strength and Adhesive Remnant Index (ARI) of stainless-steel orthodontic brackets cured with 1-second, and 5-second LED curing lights. Ninety human extracted upper premolars were selected based on the inclusion and exclusion criteria. The selected teeth were randomly divided into 2 groups - Group I and Group II. In Group I, the teeth were bonded with Standard pre-adjusted edgewise upper premolar brackets (Orthox, JJ Orthodontics) using Transbond XT and cured with Woodpecker iLED 1-second curing light. In Group II, the same brackets and composite were used to bond and light-cure with 5-seconds Woodpecker LED-D unit. The shear bond strength and the Adhesive Remnant Index (ARI) of brackets in both groups were evaluated. Student t-test was used for the statistical analysis of the data. In Group-I (1-second LED curing light), the shear bond strength was 6.62 MPa, whereas it was 10.32 MPa in group II (5-second LED curing light). A highly significant difference was observed in the shear bond strength between the groups. The ARI scores further revealed that the 5-second curing light resulted in a safer failure mode, with adhesive remaining mostly on the bracket. We found that the 5-second Woodpecker LED-D curing light demonstrated higher shear bond strength compared to the 1-second iLED curing light, although both sets of bond strength values are clinically acceptable."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mecmesin OmniTest\" OR \"Mecmesin OmniTest 0.5\" OR \"Mecmesin OmniTest 1\" OR \"Mecmesin OmniTest 2.5\" OR \"Mecmesin OmniTest 5\" OR \"Mecmesin OmniTest 7.5\") AND OPEN_ACCESS:y",
@@ -74,8 +163,12 @@
    "standards": []
   }
  ],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "ISO 2631": 1
+ },
+ "standards_new": [
+  "ISO 2631"
+ ],
  "test_item_hits": {
   "flexure": 1
  }

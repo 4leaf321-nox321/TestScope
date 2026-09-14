@@ -8,8 +8,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Maccor 4000\" OR \"Maccor Series 4000\"",
-  "count": null,
-  "works": []
+  "count": 948,
+  "works": [
+   {
+    "id": "https://openalex.org/W1982350871",
+    "doi": "https://doi.org/10.1007/s10450-014-9623-y",
+    "title": "Enzyme immobilization by adsorption: a review",
+    "year": 2014,
+    "cited": 921,
+    "venue": "Adsorption",
+    "topics": [
+     "Enzyme Catalysis and Immobilization",
+     "Electrochemical sensors and biosensors",
+     "Enzyme-mediated dye degradation"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10450-014-9623-y.pdf",
+    "abstract": "Endowed with unparalleled high catalytic activity and selectivity, enzymes offer enormous potential as catalysts in practical applications. These applications, however, are seriously hampered by enzymes’ low thermal and chemical stabilities. One way to improve these stabilities is the enzyme immobilization. Among various tested methods of this process that make use of different enzyme-carrier interactions, immobilization by adsorption on solid carriers has appeared most common. According to these findings, in this review we present a comparative analysis of the literature reports on the recent trends in the immobilization of the enzymes by adsorption. This thorough study was prepared in order to provide a deeper understanding of the process. Both carriers, carrier modifiers and procedures developed for effective adsorption of the enzymes are discussed. The review may thus be helpful in choosing the right adsorption scheme for a given enzyme to achieve the improvement of its stability and activity for a specific application."
+   },
+   {
+    "id": "https://openalex.org/W2128315408",
+    "doi": "https://doi.org/10.1039/c4cp05865h",
+    "title": "Electrochemical in situ investigations of SEI and dendrite formation on the lithium metal anode",
+    "year": 2015,
+    "cited": 791,
+    "venue": "Physical Chemistry Chemical Physics",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2015/cp/c4cp05865h",
+    "abstract": "This comparative work studies the self-enforcing heterogeneity of lithium deposition and dissolution as the cause for dendrite formation on the lithium metal anode in various liquid organic solvent based electrolytes. In addition, the ongoing lithium corrosion, its rate and thus the passivating quality of the SEI are investigated in self-discharge measurements. The behavior of the lithium anode is characterized in two carbonate-based standard electrolytes, 1 M LiPF6 in EC/DEC (3 : 7) and 1 M LiPF6 in EC/DMC (1 : 1), and in two alternative electrolytes 1 M LiPF6 in TEGDME and 1 M LiTFSI in DMSO, which have been proposed in the literature as promising electrolytes for lithium metal batteries, more specifically for lithium/air batteries. As a result, electrolyte decomposition, SEI and dendrite formation at the lithium electrode as well as their mutual influences are understood in the development of overpotentials, surface resistances and lithium electrode surface morphologies in subsequent lithium deposition and dissolution processes. A general model of different stages of these processes could be elaborated."
+   },
+   {
+    "id": "https://openalex.org/W2051352594",
+    "doi": "https://doi.org/10.1002/aenm.201401408",
+    "title": "Solid Electrolyte: the Key for High‐Voltage Lithium Batteries",
+    "year": 2014,
+    "cited": 730,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1185480",
+    "abstract": "A solid-state high-voltage (5 V) lithium battery is demonstrated to deliver a cycle life of 10 000 with 90% capacity retention. The solid electrolyte enables the use of high-voltage cathodes and Li anodes with minimum side reactions, leading to a high Coulombic efficiency of 99.98+%."
+   },
+   {
+    "id": "https://openalex.org/W1981864005",
+    "doi": "https://doi.org/10.1149/2.035112jes",
+    "title": "Electrochemical Properties of Monoclinic NaMnO2",
+    "year": 2011,
+    "cited": 666,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.035112jes/pdf",
+    "abstract": "Monoclinic α- NaMnO 2 is re-investigated electrochemically as a positive electrode material for sodium ion batteries. About 0.85 Na can be deintercalated from NaMnO 2 and 0.8 Na be intercalated back during potentiostatical intermittent charge and discharge. Galvanostatical cycling between 2.0 V and 3.8 V gives 185 mAh/g discharge capacity for the first cycle at C/10 rate and 132 mAh/g remains after 20 cycles. Charge and discharge curves are significantly different indicating more hysteresis than is typical for lithium intercalation compounds. We also explain the remarkable difference between layered LiMnO 2 and NaMnO 2 upon alkali removal."
+   },
+   {
+    "id": "https://openalex.org/W2223057163",
+    "doi": "https://doi.org/10.1149/2.0321602jes",
+    "title": "Optimizing Areal Capacities through Understanding the Limitations of Lithium-Ion Electrodes",
+    "year": 2015,
+    "cited": 642,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0321602jes/pdf",
+    "abstract": "Increasing the areal capacity or electrode thickness in lithium ion batteries is one possible means to increase pack level energy density while simultaneously lowering cost. The physics that limit use of high areal capacity as a function of battery power to energy ratio are poorly understood and thus most currently produced automotive lithium ion cells utilize modest loadings to ensure long life over the vehicle battery operation. Here we show electrolyte transport limits the utilization of the positive electrode at critical C-rates during discharge; whereas, a combination of electrolyte transport and polarization lead to lithium plating in the graphite electrode during charge. Experimental measurements are compared with theoretical predictions based on concentrated solution and porous electrode theories. An analytical expression is derived to provide design criteria for long lived operation based on the physical properties of the electrode and electrolyte. Finally, a guideline is proposed that graphite cells should avoid charge current densities near or above 4 mA/cm 2 unless additional precautions have been made to avoid deleterious side reaction."
+   },
+   {
+    "id": "https://openalex.org/W2151378845",
+    "doi": "https://doi.org/10.1149/2.1011507jes",
+    "title": "Study of the Failure Mechanisms of LiNi0.8Mn0.1Co0.1O2Cathode Material for Lithium Ion Batteries",
+    "year": 2015,
+    "cited": 514,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.1011507jes/pdf",
+    "abstract": "LiNi 0.8 Mn 0.1 Co 0.1 O 2 (NMC811) can deliver a high capacity of ∼200 mAh/g with an average discharge potential of ∼3.8 V (vs. Li + /Li), making it a promising positive electrode material for high energy density lithium ion batteries. However, electrochemical tests from half cells and full cells show poor cycling performance when charged to potentials above 4.2 V. The calendar and cycle lifetimes of cells are affected by the structural stability of the active electrode materials as well as the parasitic reactions that occur in lithium ion batteries. In order to explore the major failure mechanisms of the material, half cells (coin cells) with control electrolyte and full cells (pouch cells) with control electrolyte and with selected electrolyte additives were tested over four different potential ranges. Isothermal microcalorimetry was used to explore the parasitic reactions and their potential dependence. In-situ and ex-situ X-ray diffraction and scanning electron microscopy were used to investigate the structural and morphological degradation of the materials over cycling. It was found that the dramatic c-axis change of the active material during charge and discharge may not be the major problem for cells that are cycled to higher potentials. The parasitic reactions that arise from the interactions between the electrolyte and the highly reactive delithiated cathode surface at high potentials are suggested as the main reason for the failure of cells cycled above 4.2 V. It should be possible to further improve the performance of NMC811 at high potentials by modifying the cathode surface and/or identifying and using electrolyte blends which reduce parasitic reactions."
+   },
+   {
+    "id": "https://openalex.org/W2429337228",
+    "doi": "https://doi.org/10.1038/ncomms11794",
+    "title": "Stabilizing lithium metal using ionic liquids for long-lived batteries",
+    "year": 2016,
+    "cited": 470,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms11794.pdf",
+    "abstract": "Suppressing dendrite formation at lithium metal anodes during cycling is critical for the implementation of future lithium metal-based battery technology. Here we report that it can be achieved via the facile process of immersing the electrodes in ionic liquid electrolytes for a period of time before battery assembly. This creates a durable and lithium ion-permeable solid-electrolyte interphase that allows safe charge-discharge cycling of commercially applicable Li|electrolyte|LiFePO4 batteries for 1,000 cycles with Coulombic efficiencies >99.5%. The tailored solid-electrolyte interphase is prepared using a variety of electrolytes based on the N-propyl-N-methylpyrrolidinium bis(fluorosulfonyl)imide room temperature ionic liquid containing lithium salts. The formation is both time- and lithium salt-dependant, showing dynamic morphology changes, which when optimized prevent dendrite formation and consumption of electrolyte during cycling. This work illustrates that a simple, effective and industrially applicable lithium metal pretreatment process results in a commercially viable cycle life for a lithium metal battery."
+   },
+   {
+    "id": "https://openalex.org/W3080822653",
+    "doi": "https://doi.org/10.1038/s41467-020-17976-x",
+    "title": "Interface chemistry of an amide electrolyte for highly reversible lithium metal batteries",
+    "year": 2020,
+    "cited": 435,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Chemical Synthesis and Characterization"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-17976-x.pdf",
+    "abstract": "Abstract Metallic lithium is a promising anode to increase the energy density of rechargeable lithium batteries. Despite extensive efforts, detrimental reactivity of lithium metal with electrolytes and uncontrolled dendrite growth remain challenging interconnected issues hindering highly reversible Li-metal batteries. Herein, we report a rationally designed amide-based electrolyte based on the desired interface products. This amide electrolyte achieves a high average Coulombic efficiency during cycling, resulting in an outstanding capacity retention with a 3.5 mAh cm −2 high-mass-loaded LiNi 0.8 Co 0.1 Mn 0.1 O 2 cathode. The interface reactions with the amide electrolyte lead to the predicted solid electrolyte interface species, having favorable properties such as high ionic conductivity and high stability. Operando monitoring the lithium spatial distribution reveals that the highly reversible behavior is related to denser deposition as well as top-down stripping, which decreases the formation of porous deposits and inactive lithium, providing new insights for the development of interface chemistries for metal batteries."
+   },
+   {
+    "id": "https://openalex.org/W2060895986",
+    "doi": "https://doi.org/10.1002/anie.200907324",
+    "title": "A High‐Performance Polymer Tin Sulfur Lithium Ion Battery",
+    "year": 2010,
+    "cited": 432,
+    "venue": "Angewandte Chemie International Edition",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.200907324",
+    "abstract": "Above and beyond: A tin sulfur lithium ion battery has an energy density value of the order of 1000 W h kg-1, which is five times higher than those of conventional batteries that containing intercalated materials (see picture). Replacement of the conventional liquid electrolyte with a polymer membrane brings improvements in the fabrication and safety of the battery."
+   },
+   {
+    "id": "https://openalex.org/W2018008417",
+    "doi": "https://doi.org/10.1021/nl402793z",
+    "title": "A Long-Life, High-Rate Lithium/Sulfur Cell: A Multifaceted Approach to Enhancing Cell Performance",
+    "year": 2013,
+    "cited": 427,
+    "venue": "Nano Letters",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://escholarship.org/content/qt97z815sv/qt97z815sv.pdf?t=omyq9s",
+    "abstract": "Lithium/sulfur (Li/S) cells are receiving significant attention as an alternative power source for zero-emission vehicles and advanced electronic devices due to the very high theoretical specific capacity (1675 mA·h/g) of the sulfur cathode. However, the poor cycle life and rate capability have remained a grand challenge, preventing the practical application of this attractive technology. Here, we report that a Li/S cell employing a cetyltrimethyl ammonium bromide (CTAB)-modified sulfur-graphene oxide (S-GO) nanocomposite cathode can be discharged at rates as high as 6C (1C = 1.675 A/g of sulfur) and charged at rates as high as 3C while still maintaining high specific capacity (~ 800 mA·h/g of sulfur at 6C), with a long cycle life exceeding 1500 cycles and an extremely low decay rate (0.039% per cycle), perhaps the best performance demonstrated so far for a Li/S cell. The initial estimated cell-level specific energy of our cell was ~ 500 W·h/kg, which is much higher than that of current Li-ion cells (~ 200 W·h/kg). Even after 1500 cycles, we demonstrate a very high specific capacity (~ 740 mA·h/g of sulfur), which corresponds to ~ 414 mA·h/g of electrode: still higher than state-of-the-art Li-ion cells. Moreover, these Li/S cells with lithium metal electrodes can be cycled with an excellent Coulombic efficiency of 96.3% after 1500 cycles, which was enabled by our new formulation of the ionic liquid-based electrolyte. The performance we demonstrate herein suggests that Li/S cells may already be suitable for high-power applications such as power tools. Li/S cells may now provide a substantial opportunity for the development of zero-emission vehicles with a driving range similar to that of gasoline vehicles."
+   },
+   {
+    "id": "https://openalex.org/W2129625348",
+    "doi": "https://doi.org/10.1002/adma.200602035",
+    "title": "High‐Rate, Long‐Life Ni–Sn Nanostructured Electrodes for Lithium‐Ion Batteries",
+    "year": 2007,
+    "cited": 389,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://oatao.univ-toulouse.fr/2631/2/Hassoun_2631.pdf",
+    "abstract": "Ni3Sn4 intermetallic electrodes prepared into a revolutionary nanostructure, obtained by electrodeposition on a nanoarchitectured Cu substrate, are described. This structure controls the volume stress that accompanies the electrochemical process yielding a performance rarely observed with lithium metal storage electrodes. The new electrode shows impressive electrochemical behavior and cycles in lithium cells for more than 200 cycles (figure shows electrode after cycling) with a stable high capacity."
+   },
+   {
+    "id": "https://openalex.org/W2139692614",
+    "doi": "https://doi.org/10.1149/1.3268129",
+    "title": "Precision Measurements of the Coulombic Efficiency of Lithium-Ion Batteries and of Electrode Materials for Lithium-Ion Batteries",
+    "year": 2009,
+    "cited": 373,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.3268129/pdf",
+    "abstract": "Undesired reactions in Li-ion batteries, which lead to capacity loss, can consume or produce charge at either the positive or negative electrode. For example, the formation and repair of the solid electrolyte interphase consumes and at the negative electrode. High purity electrolytes, elimination of water, various electrolyte additives, electrode coatings, and special electrode materials are known to improve cycle life and therefore must impact coulombic efficiency. Careful measurements of coulombic efficiency are needed to quantify the impact of trace impurities, additives, coatings, etc., in only a few charge–discharge cycles and in a relatively short time. The effects of cycle-induced and time-related capacity loss could be probed by using experiments carried out at different C-rates. In order to make an impact on Li-ion cells for automotive and energy storage applications, where thousands of charge–discharge cycles are required, coulombic efficiency must be measured on the order of 0.01%. In this paper, we describe an instrument designed to make high precision coulombic efficiency measurements and give examples of its use on commercial Li-ion cells and Li half-cells. High precision coulombic efficiency measurements can detect problems occurring in half-cells that do not lead to capacity loss, but would in full cells, and can measure the impact of electrolyte additives and electrode coatings."
+   },
+   {
+    "id": "https://openalex.org/W2801591650",
+    "doi": "https://doi.org/10.3390/app8050659",
+    "title": "Overview of Lithium-Ion Battery Modeling Methods for State-of-Charge Estimation in Electrical Vehicles",
+    "year": 2018,
+    "cited": 364,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Electric Vehicles and Infrastructure"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/8/5/659/pdf",
+    "abstract": "As a critical indictor in the Battery Management System (BMS), State of Charge (SOC) is closely related to the reliable and safe operation of lithium-ion (Li-ion) batteries. Model-based methods are an effective solution for accurate and robust SOC estimation, the performance of which heavily relies on the battery model. This paper mainly focuses on battery modeling methods, which have the potential to be used in a model-based SOC estimation structure. Battery modeling methods are classified into four categories on the basis of their theoretical foundations, and their expressions and features are detailed. Furthermore, the four battery modeling methods are compared in terms of their pros and cons. Future research directions are also presented. In addition, after optimizing the parameters of the battery models by a Genetic Algorithm (GA), four typical battery models including a combined model, two RC Equivalent Circuit Model (ECM), a Single Particle Model (SPM), and a Support Vector Machine (SVM) battery model are compared in terms of their accuracy and execution time."
+   },
+   {
+    "id": "https://openalex.org/W2617929250",
+    "doi": "https://doi.org/10.1149/2.0991707jes",
+    "title": "Comparison of Single Crystal and Polycrystalline LiNi 0.5 Mn 0.3 Co 0.2 O 2 Positive Electrode Materials for High Voltage Li-Ion Cells",
+    "year": 2017,
+    "cited": 364,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0991707jes/pdf",
+    "abstract": "Single-crystal LiNi 0.5 Mn 0.3 Co 0.2 O 2 (NMC532) with a grain size of 2–3 μm was compared to conventional polycrystalline un-coated NMC532 and polycrystalline Al 2 O 3 -coated materials in this work. Studies were made to determine how single crystal NMC532 material with large grain size could be synthesized. Ultra high precision coulometry (UHPC), in-situ gas measurements and isothermal microcalorimetry were used to make comparative studies of the three materials in Li-ion pouch cells. All the diagnostic measurements suggested that the single crystal material should yield Li-ion cells with longer lifetime. Long-term cycling tests verified these predictions and showed that cells with single crystal NMC532 exhibited much better capacity retention than cells with the polycrystalline materials at both 40°C and 55°C when tested to an upper cutoff potential of 4.4 V. The reasons for the superior performance of the single crystal cells were explored using thermogravimetric analysis/mass spectrometry experiments on the charged electrode materials. The single crystal materials were extremely resistant to oxygen loss below 100°C compared to the polycrystalline materials. The major drawback of the single crystal material is its slightly lower specific capacity compared to the polycrystalline materials. However, this may not be an issue for Li-ion cells designed for long lifetime applications."
+   },
+   {
+    "id": "https://openalex.org/W2901437736",
+    "doi": "https://doi.org/10.1016/j.joule.2018.11.014",
+    "title": "High Reversibility of Lattice Oxygen Redox Quantified by Direct Bulk Probes of Both Anionic and Cationic Redox Reactions",
+    "year": 2018,
+    "cited": 334,
+    "venue": "Joule",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "http://www.cell.com/article/S2542435118305634/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2058284592",
+    "doi": "https://doi.org/10.1149/1.1391560",
+    "title": "Rubbery Block Copolymer Electrolytes for Solid‐State Rechargeable Lithium Batteries",
+    "year": 1999,
+    "cited": 306,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.1391560/pdf",
+    "abstract": "For nearly 20 years, poly(ethylene oxide)‐based materials have been researched for use as electrolytes in solid‐state rechargeable lithium batteries. Technical obstacles to commercialization derive from the inability to satisfy simultaneously the electrical and mechanical performance requirements: high ionic conductivity along with resistance to flow. Herein, the synthesis and characterization of a series of poly(lauryl methacrylate)‐ b ‐poly[oligo(oxyethylene) methacrylate]‐based block copolymer electrolytes (BCEs) are reported. With both blocks in the rubbery state (i.e., having glass transition temperatures well below room temperature) these materials exhibit improved conductivities over those of glassy‐rubbery block copolymer systems. Dynamic rheological testing verifies that these materials are dimensionally stable, whereas cyclic voltammetry shows them to be electrochemically stable over a wide potential window, i.e., up to 5 V at 55°C. A solid‐state rechargeable lithium battery was constructed by laminating lithium metal, BCE, and a composite cathode composed of particles of (monoclinic), carbon black, and graphite in a BCE binder. Cycle testing showed the battery to have a high reversible capacity and good capacity retention. Li/BCE/Al cells have been cycled at temperatures as low as −20°C. © 1999 The Electrochemical Society. All rights reserved."
+   },
+   {
+    "id": "https://openalex.org/W2069912559",
+    "doi": "https://doi.org/10.1149/2.002207jes",
+    "title": "Effect of Discharge Cutoff Voltage on Reversibility of Lithium/Sulfur Batteries with LiNO3-Contained Electrolyte",
+    "year": 2012,
+    "cited": 297,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.002207jes/pdf",
+    "abstract": "LiNO 3 is unique in suppressing the redox shuttle of lithium polysulfides in Li/S battery. In this paper we evaluate the effect of discharge cutoff voltage on the reversibility of Li/S battery with a LiNO 3 -contained electrolyte. Based on a study of the liquid Li/S cells with a 0.05 m Li 2 S 9 solution as the catholyte, we find that the highly reversible discharge and charge cycling of Li/S cells occurs at higher than 1.8 V vs. Li/Li + , which corresponds to a multistage redox process of the sulfur cathode between elemental sulfur and insoluble Li 2 S 2 . At lower potentials, not only the Li 2 S 2 is reduced into poorly reversible Li 2 S, but also the LiNO 3 is reduced irreversibly. Moreover, the irreversible reduction of LiNO 3 further reduces the reversibility of the poorly reversible Li 2 S, resulting in a significant slowdown in the electrode reaction kinetics and a permanent loss in the reversibility of the Li/S cell. This work suggests that deep discharge must be avoided for a long cycle life Li/S battery when LiNO 3 is used as an additive or a co-salt of the electrolyte."
+   },
+   {
+    "id": "https://openalex.org/W3009325453",
+    "doi": "https://doi.org/10.1038/s41598-020-61373-9",
+    "title": "Poly(Ethylene Oxide)-based Electrolyte for Solid-State-Lithium-Batteries with High Voltage Positive Electrodes: Evaluating the Role of Electrolyte Oxidation in Rapid Cell Failure",
+    "year": 2020,
+    "cited": 282,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-61373-9.pdf",
+    "abstract": "Abstract Polyethylene oxide (PEO)-based solid polymer electrolytes (SPEs) typically reveal a sudden failure in Li metal cells particularly with high energy density/voltage positive electrodes, e.g . LiNi 0.6 Mn 0.2 Co 0.2 O 2 (NMC622), which is visible in an arbitrary, time – and voltage independent, “voltage noise” during charge. A relation with SPE oxidation was evaluated, for validity reasons on different active materials in potentiodynamic and galvanostatic experiments. The results indicate an exponential current increase and a potential plateau at 4.6 V vs. Li|Li + , respectively, demonstrating that the main oxidation onset of the SPE is above the used working potential of NMC622 being < 4.3 V vs. Li|Li + . Obviously, the SPE│NMC622 interface is unlikely to be the primary source of the observed sudden failure indicated by the “voltage noise”. Instead, our experiments indicate that the Li | SPE interface, and in particular, Li dendrite formation and penetration through the SPE membrane is the main source. This could be simply proven by increasing the SPE membrane thickness or by exchanging the Li metal negative electrode by graphite, which both revealed “voltage noise”-free operation. The effect of membrane thickness is also valid with LiFePO 4 electrodes. In summary, it is the cell set-up (PEO thickness, negative electrode), which is crucial for the voltage-noise associated failure, and counterintuitively not a high potential of the positive electrode."
+   },
+   {
+    "id": "https://openalex.org/W2119897142",
+    "doi": "https://doi.org/10.3390/en7074588",
+    "title": "Understanding of Sulfurized Polyacrylonitrile for Superior Performance Lithium/Sulfur Battery",
+    "year": 2014,
+    "cited": 261,
+    "venue": "Energies",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/7/7/4588/pdf?version=1426593202",
+    "abstract": "Sulfurized polyacrylonitrile (SPAN) is one of the most important sulfurized carbon materials that can potentially be coupled with the carbonaceous anode to fabricate a safe and low cost “all carbon” lithium-ion battery. However, its chemical structure and electrochemical properties have been poorly understood. In this discussion, we analyze the previously published data in combination with our own results to propose a more reasonable chemical structure that consists of short –Sx– chains covalently bonded onto cyclized, partially dehydrogenated, and ribbon-like polyacrylonitrile backbones. The proposed structure fits all previous structural characterizations and explains many unique electrochemical phenomena that were observed from the Li/SPAN cells but have not been understood clearly."
+   },
+   {
+    "id": "https://openalex.org/W2943266146",
+    "doi": "https://doi.org/10.1149/2.0451908jes",
+    "title": "Requirements for Enabling Extreme Fast Charging of High Energy Density Li-Ion Cells while Avoiding Lithium Plating",
+    "year": 2019,
+    "cited": 255,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0451908jes/pdf",
+    "abstract": "To improve electric vehicle market acceptance, the charge time of their batteries should be reduced to 10–15 minutes. However, achieving 4C to 6C charge rates with today's batteries is only possible for cells with thin electrodes coming at the expense of low energy density and high battery manufacturing cost. An electrochemical model is validated versus high rate charge data for cells with several loadings. The model elucidates that the main limitations for high energy density cells are poor electrolyte transport resulting in salt depletion within the anode and Li plating at the graphite/separator interface. Next, the model is used to understand what future electrode and electrolyte properties can help enable 4C and 6C charging. Ideally, future electrolytes would be identified with 2X conductivity, 3–4X diffusivity, and transference number of 0.5–0.6. Alternatively charging at elevated temperatures enhances electrolyte transport by 1.5X conductivity and 2–3X diffusivity with a negligible effect on transference number. Another effective strategy to enable 4C and 6C charging is reducing electrode tortuosity. Conversely, increasing electrode porosity and negative/positive ratio are ineffective strategies to improve fast charge capability."
+   },
+   {
+    "id": "https://openalex.org/W4286492756",
+    "doi": "https://doi.org/10.1038/s41565-022-01162-9",
+    "title": "Improving Li-ion interfacial transport in hybrid solid electrolytes",
+    "year": 2022,
+    "cited": 250,
+    "venue": "Nature Nanotechnology",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41565-022-01162-9.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4392385779",
+    "doi": "https://doi.org/10.1038/s41563-024-01833-z",
+    "title": "Trapped O2 and the origin of voltage fade in layered Li-rich cathodes",
+    "year": 2024,
+    "cited": 233,
+    "venue": "Nature Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41563-024-01833-z.pdf",
+    "abstract": "Abstract Oxygen redox cathodes, such as Li1.2Ni0.13Co0.13Mn0.54O2, deliver higher energy densities than those based on transition metal redox alone. However, they commonly exhibit voltage fade, a gradually diminishing discharge voltage on extended cycling. Recent research has shown that, on the first charge, oxidation of O2− ions forms O2 molecules trapped in nano-sized voids within the structure, which can be fully reduced to O2− on the subsequent discharge. Here we show that the loss of O-redox capacity on cycling and therefore voltage fade arises from a combination of a reduction in the reversibility of the O2−/O2 redox process and O2 loss. The closed voids that trap O2 grow on cycling, rendering more of the trapped O2 electrochemically inactive. The size and density of voids leads to cracking of the particles and open voids at the surfaces, releasing O2. Our findings implicate the thermodynamic driving force to form O2 as the root cause of transition metal migration, void formation and consequently voltage fade in Li-rich cathodes."
+   },
+   {
+    "id": "https://openalex.org/W2021629472",
+    "doi": "https://doi.org/10.1016/j.micromeso.2013.02.032",
+    "title": "Nanoporous carbons from hydrothermally treated biomass as anode materials for lithium ion batteries",
+    "year": 2013,
+    "cited": 228,
+    "venue": "Microporous and Mesoporous Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1387181113001066",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2164098267",
+    "doi": "https://doi.org/10.1002/aenm.201300998",
+    "title": "Structural Changes in Li2MnO3 Cathode Material for Li‐Ion Batteries",
+    "year": 2013,
+    "cited": 226,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.201300998",
+    "abstract": "Structural changes in Li2MnO3 cathode material for rechargeable Li‐ion batteries are investigated during the first and 33rd cycles. It is found that both the participation of oxygen anions in redox processes and Li+‐H+ exchange play an important role in the electrochemistry of Li2MnO3. During activation, oxygen removal from the material along with Li gives rise to the formation of a layered MnO2‐type structure, while the presence of protons in the interslab region, as a result of electrolyte oxidation and Li+‐H+ exchange, alters the stacking sequence of oxygen layers. Li re‐insertion by exchanging already present protons reverts the stacking sequence of oxygen layers. The re‐lithiated structure closely resembles the parent Li2MnO3, except that it contains less Li and O. Mn4+ ions remain electrochemically inactive at all times. Irreversible oxygen release occurs only during activation of the material in the first cycle. During subsequent cycles, electrochemical processes seem to involve unusual redox processes of oxygen anions of active material along with the repetitive, irreversible oxidation of electrolyte species. The deteriorating electrochemical performance of Li2MnO3 upon cycling is attributed to the structural degradation caused by repetitive shearing of oxygen layers."
+   },
+   {
+    "id": "https://openalex.org/W2061325091",
+    "doi": "https://doi.org/10.1149/1.3532047",
+    "title": "Electrolyte Additive in Support of 5 V Li Ion Chemistry",
+    "year": 2011,
+    "cited": 226,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.3532047/pdf",
+    "abstract": "An electrolyte additive based on highly fluorinated phosphate ester structure was identified as being able to stabilize carbonate-based electrolytes on class cathode surfaces. The synthesis and structural analysis of the additive are described, and preliminary yet encouraging results from electrochemical characterization showed that this additive participates in forming a protective interphasial chemistry not only on transition metal oxide cathode at high voltage ( vs Li) but also on graphitic graphite at low voltage ( vs Li), making it possible to formulate an electrolyte supporting reversible -intercalation chemistry in the coveted region."
+   },
+   {
+    "id": "https://openalex.org/W2901811437",
+    "doi": "https://doi.org/10.1109/tie.2018.2880668",
+    "title": "A Simplified Model-Based State-of-Charge Estimation Approach for Lithium-Ion Battery With Dynamic Linear Model",
+    "year": 2018,
+    "cited": 217,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Fault Detection and Control Systems"
+    ],
+    "oa_url": "https://vbn.aau.dk/ws/files/293047133/A_Simplified_Model_based_State_of_Charge_Estimation_Approach_for_Lithium_ion_Battery_with_Dynamic_Linear_Model.pdf",
+    "abstract": "The performance of model-based state-of-charge (SOC) estimation method relies on an accurate battery model. Nonlinear models are thus proposed to accurately describe the external characteristics of the lithium-ion battery. The nonlinear estimation algorithms and online parameter identification methods are needed to guarantee the accuracy of the model-based SOC estimation with nonlinear battery models. A new approach forming a dynamic linear battery model is proposed in this paper, which enables the application of the linear Kalman filter for SOC estimation and also avoids the usage of online parameter identification methods. With a moving window technology, partial least squares regression is able to establish a series of piecewise linear battery models automatically. One element state-space equation is then obtained to estimate the SOC from the linear Kalman filter. The experiments on a LiFePO4battery prove the effectiveness of the proposed method compared with the extended Kalman filter with two resistance and capacitance equivalent circuit model and the adaptive unscented Kalman filter with least squares support vector machines."
+   },
+   {
+    "id": "https://openalex.org/W1984650160",
+    "doi": "https://doi.org/10.3390/en5125190",
+    "title": "Improved Cyclability of Liquid Electrolyte Lithium/Sulfur Batteries by Optimizing Electrolyte/Sulfur Ratio",
+    "year": 2012,
+    "cited": 210,
+    "venue": "Energies",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/5/12/5190/pdf?version=1426591648",
+    "abstract": "A liquid electrolyte lithium/sulfur (Li/S) cell is a liquid electrochemical system. In discharge, sulfur is first reduced to highly soluble Li2S8, which dissolves into the organic electrolyte and serves as the liquid cathode. In solution, lithium polysulfide (PS) undergoes a series of complicated disproportionations, whose chemical equilibriums vary with the PS concentration and affect the cell’s performance. Since the PS concentration relates to a certain electrolyte/sulfur (E/S) ratio, there is an optimized E/S ratio for the cyclability of each Li/S cell system. In this work, we study the optimized E/S ratio by measuring the cycling performance of Li/S cells, and propose an empirical method for determination of the optimized E/S ratio. By employing an electrolyte of 0.25 m LiSO3CF3-0.25 m LiNO3 dissolved in a 1:1 (wt:wt) mixture of dimethyl ether (DME) and 1,3-dioxolane (DOL) in an optimized E/S ratio, we show that the Li/S cell with a cathode containing 72% sulfur and 2 mg cm−2 sulfur loading is able to retain a specific capacity of 780 mAh g−1 after 100 cycles at 0.5 mA cm−2 between 1.7 V and 2.8 V."
+   },
+   {
+    "id": "https://openalex.org/W4320914743",
+    "doi": "https://doi.org/10.1016/j.joule.2023.01.010",
+    "title": "Decoupling, quantifying, and restoring aging-induced Zn-anode losses in rechargeable aqueous zinc batteries",
+    "year": 2023,
+    "cited": 206,
+    "venue": "Joule",
+    "topics": [
+     "Advanced battery technologies research",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.joule.2023.01.010",
+    "abstract": "Rechargeable aqueous zinc batteries offer low cost, safety, and good cycling capacity, largely due to the water-compatible Zn-metal anode. However, Zn anodes corrode in aqueous electrolytes. While such corrosion is well known, distinguishing the relative importance of corrosion contributions toward anode capacity loss remains less understood. Here, by systematically cycling Zn anodes with controlled loading and under different aging conditions, we successfully decouple and quantify the aging-induced contributions toward anode degradation in mildly acidic aqueous electrolytes. While some losses occur due to the irreversible consumption of Zn into corrosion by-products, we demonstrate that the bigger contributor to this efficiency loss (over 80%) is the physical screening effect of evolved gases, preventing the reversible dissolution of deposited Zn. Understanding the crucial role of evolved gas during cell aging, and how it can accumulate and effectively passivate large sections of the battery anode, will have important implications in the development of rechargeable aqueous zinc batteries."
+   },
+   {
+    "id": "https://openalex.org/W2753853715",
+    "doi": "https://doi.org/10.1149/2.1691712jes",
+    "title": "Volume, Pressure and Thickness Evolution of Li-Ion Pouch Cells with Silicon-Composite Negative Electrodes",
+    "year": 2017,
+    "cited": 205,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.1691712jes/pdf",
+    "abstract": "In-situ volume, pressure and thickness measurements were performed on Li-ion pouch cells with various silicon-composite negative electrodes to quantify electrode volume expansion. Li(Ni 1-x-y Co x Al y )O 2 /SiO-graphite, LiCoO 2 /Si Alloy-graphite and Li(Ni 1-x-y Co x Al y )O 2 /nano Si-C pouch cells were tested in this work. Archimedes-type in-situ volume measurements and in-situ thickness measurements showed cell expansion during charge and contraction during discharge due to electrode lithiation and de-lithiation. An in-situ pressure measurement was used to measure the effect of electrode volume expansion on volumetrically-constrained pouch cells. The volume expansion and contraction profiles measured exhibit a non-linear, asymmetric behavior as a function of cell state of charge for all cell types. To explain this, calculations of the volume expansion contribution of each electrode component were performed. Based on the results of the calculations, conclusions about the mechanisms contributing to the measured expansion profiles can be made."
+   },
+   {
+    "id": "https://openalex.org/W2111269103",
+    "doi": "https://doi.org/10.1149/1.3065070",
+    "title": "Evaluation of Commercially Available Carbon Fibers, Fabrics, and Papers for Potential Use in Multifunctional Energy Storage Applications",
+    "year": 2009,
+    "cited": 205,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.3065070/pdf",
+    "abstract": "Many carbon materials have desirable electrochemical, mechanical, electrical, and thermal properties that make them ideal candidates for dual-use energy-storage devices integrated into fiber-matrix composites or textiles. Commercial fabrics are cost-effective, scalable materials that are often fabricated specifically for composite applications. However, the electrochemical properties of these commercial materials are largely unknown. This study focuses on the properties of unmodified commercial carbon fabric materials for use in electrochemical devices such as lithium-ion batteries. Electrochemical capacity was evaluated for carbon fibers derived from a wide variety of grades of fabrics based on polyacrylonitrile (PAN), pitch, or activated carbon, and carbon papers made from carbon nanotubes or nanofoams. Double-layer capacitances were also measured for potential application to supercapacitors. The fiber microstructures were analyzed via X-ray diffraction and Raman spectroscopy. Nanofoam papers demonstrated the best overall electrochemical performance, with capacities consistently achieving after and capacitances of , but the mechanical properties were poor. IM7 and T300 PAN-based woven fabrics demonstrated the best potential for multifunctional use, with reversible-discharge electrochemical capacities as high as after and tensile strengths of . Removing the polymer sizing from PAN-based fibers did not appear to improve performance."
+   },
+   {
+    "id": "https://openalex.org/W1996237118",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2014.02.112",
+    "title": "Application of Stabilized Lithium Metal Powder (SLMP®) in graphite anode – A high efficient prelithiation method for lithium-ion batteries",
+    "year": 2014,
+    "cited": 202,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://escholarship.org/content/qt44w2q6zf/qt44w2q6zf.pdf?t=p72yhl",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2584837988",
+    "doi": "https://doi.org/10.1149/2.0651704jes",
+    "title": "The Impact of Electrolyte Additives and Upper Cut-off Voltage on the Formation of a Rocksalt Surface Layer in LiNi 0.8 Mn 0.1 Co 0.1 O 2 Electrodes",
+    "year": 2017,
+    "cited": 199,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0651704jes/pdf",
+    "abstract": "Many literature reports show that layered Li-Ni-Mn-Co oxides (NMC) have a surface reconstruction to a rocksalt (Fm3m) structure which is claimed to be responsible for the increase in cell impedance during high voltage cycling. It is important to determine if appropriate electrolyte additives can suppress the surface reconstructions of NMC materials. LiNi 0.8 Mn 0.1 Co 0.1 O 2 (NMC811)/Graphite pouch cells with different electrolyte additives and different upper cutoff potentials were charge-discharge cycled and the electrodes were recovered for z-contrast scanning transmission electron microscope (STEM) studies. It was found that there was no significant surface layer growth for cells cycled between 2.8 and 4.1 V. For cells with an upper cutoff voltage of 4.3 V, the electrodes from cells with control electrolyte (no additives) showed the thickest surface layer. The electrolyte additives vinylene carbonate (VC) and prop-1-ene-1,3-sultone (PES) were found to suppress the growth of the surface layer. However, cells with PES showed a more rapid capacity fade than control cells or cells with 2% VC showing that, at least for NMC811/graphite cells with PES or VC additives, failure cannot only be solely ascribed to a growing rocksalt surface layer. Other processes, for example associated with electrolyte oxidation, are believed to be responsible for failure."
+   },
+   {
+    "id": "https://openalex.org/W2466649326",
+    "doi": "https://doi.org/10.1149/2.0361609jes",
+    "title": "Surface Cooling Causes Accelerated Degradation Compared to Tab Cooling for Lithium-Ion Pouch Cells",
+    "year": 2016,
+    "cited": 198,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0361609jes/pdf",
+    "abstract": "One of the biggest causes of degradation in lithium-ion batteries is elevated temperature. In this study we explored the effects of cell surface cooling and cell tab cooling, reproducing two typical cooling systems that are used in real-world battery packs. For new cells using slow-rate standardized testing, very little difference in capacity was seen. However, at higher rates, discharging the cell in just 10 minutes, surface cooling led to a loss of useable capacity of 9.2% compared to 1.2% for cell tab cooling. After cycling the cells for 1,000 times, surface cooling resulted in a rate of loss of useable capacity under load three times higher than cell tab cooling. We show that this is due to thermal gradients being perpendicular to the layers for surface cooling leading to higher local currents and faster degradation, but in-plane with the layers for tab cooling leading to more homogenous behavior. Understanding how thermal management systems interact with the operation of batteries is therefore critical in extending their performance. For automotive applications where 80% capacity is considered end-of-life, using tab cooling rather than surface cooling would therefore be equivalent to extending the lifetime of a pack by 3 times, or reducing the lifetime cost by 66%."
+   },
+   {
+    "id": "https://openalex.org/W2726997148",
+    "doi": "https://doi.org/10.1002/admi.201700166",
+    "title": "Lithium‐Metal Foil Surface Modification: An Effective Method to Improve the Cycling Performance of Lithium‐Metal Batteries",
+    "year": 2017,
+    "cited": 194,
+    "venue": "Advanced Materials Interfaces",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.201700166",
+    "abstract": "Lithium metal as an electrode material possesses a native surface film, which leads to a rough surface and this has a negative impact on the cycling behavior. A simple, fast, and reproducible technique is shown, which makes it possible to flatten and thin the native surface film of the lithium‐metal anode. Atomic force microscopy and scanning electron microscopy images are presented to verify the success of the method and X‐ray photoelectron spectroscopy measurements reveal that the chemical composition of the lithium surface is also changed. Furthermore, galvanostatic measurements indicate superior cycling behavior of the surface modified electrodes compared to the as‐received ones. These results demonstrate that the native surface film plays a key role in the application of lithium metal as an anode material for lithium‐metal batteries and that the shown surface modification method is an excellent tool to obtain better performing Li metal electrodes."
+   },
+   {
+    "id": "https://openalex.org/W2017520709",
+    "doi": "https://doi.org/10.1149/1.1466857",
+    "title": "Study of LiBF[sub 4] as an Electrolyte Salt for a Li-Ion Battery",
+    "year": 2002,
+    "cited": 193,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.1466857/pdf",
+    "abstract": "Using 3:7 (wt) ethylene carbonate/ethylmethyl carbonate mixed solvent, we comparatively studied and as solutes for the electrolyte of a Li-ion battery. Results showed that the -based electrolyte passivates Al (used as a current collector of the cathode) better than the -based one does, while the latter has higher ionic conductivity. It was found that the graphite electrode and the lithium nickel-based mixed oxide cathode have similar lithiation and delithiation cycling behaviors in these two electrolytes. While the difference in the cycling performance of the Li-ion cells using either the or -based electrolyte at ambient temperature is negligible. Compared with the one using -based electrolyte, the Li-ion cell using -based electrolyte is less moisture sensitive and shows much better cycling performance at elevated temperatures. Such a cell could perform even if the electrolyte contained up to 620 ppm of water. The cell also could perform at 60°C with the electrolyte containing 80 ppm of water. At higher temperatures such as 80°C, the Li-ion cell suffered from a severe capacity fading, which is believed to be associated with the irreversible reactions between electrolyte and electrodes. © 2002 The Electrochemical Society. All rights reserved."
+   },
+   {
+    "id": "https://openalex.org/W4205997408",
+    "doi": "https://doi.org/10.1002/aenm.202103045",
+    "title": "Magnesium Substitution in Ni‐Rich NMC Layered Cathodes for High‐Energy Lithium Ion Batteries",
+    "year": 2022,
+    "cited": 186,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202103045",
+    "abstract": "Abstract Ni‐rich LiNi1−x−yMnxCoyO2 (NMC) layered oxides are promising cathode materials for high‐energy density lithium ion batteries but suffer from severe capacity fading upon cycling. Elemental substitution (= doping) with Mg has repeatedly attracted attention in NMC materials to overcome instability problems at reasonable cost, yet rational compositional tuning is needed to guarantee sufficient cycle life without compromising energy density on the material level. Herein, a series of Mg‐substituted NMC materials with 90 mol% Ni are investigated regarding key performance metrics in NMC || graphite full‐cells benchmarked against LiNi0.80Mn0.10Co0.10O2 and LiNi0.90Mn0.05Co0.05O2 synthetized using the same co‐precipitation route. A linear correlation between cycle life and attainable gravimetric capacities is demonstrated, which are directly influenced by the degree of Mg substitution and the amount of Li+ cycled upon (de‐)lithiation processes. A Mg content <2 mol% should be considered to take notable benefit from the increase in Ni content from 80 to 90 mol% to achieve a higher energy density. The present study highlights the importance of evaluating the true implications of elemental substitution on cell performance and is expected to be an insightful guideline for the future development of NMC‐type cathode materials in particular with high Ni and low Co content."
+   },
+   {
+    "id": "https://openalex.org/W3011919999",
+    "doi": "https://doi.org/10.1002/eem2.12077",
+    "title": "Critical Factors Dictating Reversibility of the Zinc Metal Anode",
+    "year": 2020,
+    "cited": 185,
+    "venue": "Energy & environment materials",
+    "topics": [
+     "Advanced battery technologies research",
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/eem2.12077",
+    "abstract": "With high energy density and improved safety, rechargeable battery chemistries with a zinc (Zn) metal anode offer promising and sustainable alternatives to those based on lithium metal or lithium‐ion intercalation/alloying anode materials; however, the poor electrochemical reversibility of Zn plating/stripping, induced by parasitic reactions with both aqueous and non‐aqueous electrolytes, presently limits the practical appeal of these systems. Although recent efforts in rechargeable Zn metal batteries (RZMBs) have achieved certain advancements in Zn metal reversibility, as quantified by the Coulombic efficiency (CE), a standard protocol for CE has not been established, and results across chemistries and systems are often conflicting. More importantly, there is still an insufficient understanding regarding the critical factors dictating Zn reversibility. In this work, a rigorous, established protocol for determining CE of lithium metal anodes is transplanted to the Zn chemistry and is used for systematically examining how a series of factors including current collector chemistry, current density, temperature, and the upper voltage limit during stripping affect the measured reversibility of different Zn electrolytes. With support from density functional theory calculations, this standardized Zn CE protocol is then leveraged to identify an important correlation between electrolyte solvation strength toward Zn 2+ and the measured Zn CE in the corresponding electrolyte, providing new guidance for future development and evaluation of Zn electrolytes."
+   },
+   {
+    "id": "https://openalex.org/W3128697756",
+    "doi": "https://doi.org/10.1002/aenm.202003738",
+    "title": "Understanding the Outstanding High‐Voltage Performance of NCM523||Graphite Lithium Ion Cells after Elimination of Ethylene Carbonate Solvent from Conventional Electrolyte",
+    "year": 2021,
+    "cited": 182,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202003738",
+    "abstract": "Abstract The increase of specific energy of current Li ion batteries via further increase of the cell voltage, for example, to 4.5 V is typically accompanied by a sudden and rapid capacity fade, known as “rollover” failure. This failure is the result of Li dendrite formation triggered in the course of electrode cross‐talk, that is, dissolution of transition metals (TMs) from the cathode and deposition on the anode. It is shown herein, that the elimination of ethylene carbonate (EC) from a state‐of‐the‐art electrolyte, that is, from 1.0 m LiPF6 in a 3:7 mixture of EC and ethyl methyl carbonate prevents this failure in high‐voltage LiNi0.5Co0.2Mn0.3O2||graphite cells, even without any electrolyte additives. While the oxidative stability on the cathode side is similar in both electrolytes, visible by a decomposition plateau at 5.5 V versus Li|Li+ during charge, the anode side in the EC‐free electrolyte reveals significantly less TM deposits and Li metal dendrites compared to the EC‐based electrolyte. The beneficial effect of EC‐free electrolytes is related to a significantly increased amount of degraded LiPF6 species, which effectively trap dissolved TMs and suppress the effect of detrimental cross‐talk, finally realizing rollover‐free performance under high voltage conditions."
+   },
+   {
+    "id": "https://openalex.org/W1728892003",
+    "doi": "https://doi.org/10.1149/1.3439678",
+    "title": "High Rate Micron-Sized Ordered LiNi[sub 0.5]Mn[sub 1.5]O[sub 4]",
+    "year": 2010,
+    "cited": 179,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.3439678/pdf",
+    "abstract": "Ordered LiNi 0.5 Mn 1.5 O 4 was synthesized through a solid-state reaction. Even though the material has a particle size of 3 – 5 μ m , it shows very high rate capability and excellent capacity retention. The capacity is as high as ≈ 78 mAh / g at a 167C discharge rate. This high discharge rate performance is consistent with first-principles calculations of the activation barrier for lithium motion, which predict the lithium diffusivity in this material to be around 10 − 9 – 10 − 8 cm 2 / s . We also systematically investigated the effect of several cell components and electrode construction on the measured rate performance and conclude that care has to be taken to remove all other rate limitations from the cell to measure the rate performance of an electrode material."
+   },
+   {
+    "id": "https://openalex.org/W2301642135",
+    "doi": "https://doi.org/10.1021/acs.jpcc.5b07479",
+    "title": "Direct Experimental Probe of the Ni(II)/Ni(III)/Ni(IV) Redox Evolution in LiNi0.5Mn1.5O4 Electrodes",
+    "year": 2015,
+    "cited": 177,
+    "venue": "The Journal of Physical Chemistry C",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1393001",
+    "abstract": "The LiNi 0.5 Mn 1.5 O 4 spinel is an appealing cathode material for next generation rechargeable Li-ion batteries due to its high operating voltage of ∼4.7 V (vs Li/Li + ). Although it is widely believed that the full range of electrochemical cycling involves the redox of Ni(II)/(IV), it has not been experimentally clarified whether Ni(III) exists as the intermediate state or a double-electron transfer takes place. Here, combined with theoretical calculations, we show unambiguous spectroscopic evidence of the Ni(III) state when the LiNi 0.5 Mn 1.5 O 4 electrode is half charged. This provides a direct verification of single-electron-transfer reactions in LiNi 0.5 Mn 1.5 O 4 upon cycling, namely, from Ni(II) to Ni(III), then to Ni(IV). Additionally, by virtue of its surface sensitivity, soft X-ray absorption spectroscopy also reveals the electrochemically inactive Ni 2+ and Mn 2+ phases on the electrode surface. Our work provides the long-awaited clarification of the single-electron transfer mechanism in LiNi 0.5 Mn 1.5 O 4 electrodes. Furthermore, the experimental results serve as a benchmark for further spectroscopic characterizations of Ni-based battery electrodes."
+   },
+   {
+    "id": "https://openalex.org/W4321078070",
+    "doi": "https://doi.org/10.1038/s41560-023-01211-0",
+    "title": "Delocalized electron holes on oxygen in a battery cathode",
+    "year": 2023,
+    "cited": 175,
+    "venue": "Nature Energy",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Electrocatalysts for Energy Conversion",
+     "Transition Metal Oxide Nanomaterials"
+    ],
+    "oa_url": "https://doi.org/10.1038/s41560-023-01211-0",
+    "abstract": "Oxide ions in transition metal oxide cathodes can store charge at high voltage offering a route towards higher energy density batteries. However, upon charging these cathodes, the oxidized oxide ions condense to form molecular O2 trapped in the material. Consequently, the discharge voltage is much lower than charge, leading to undesirable voltage hysteresis. Here we capture the nature of the electron holes on O2− before O2 formation by exploiting the suppressed transition metal rearrangement in ribbon-ordered Na0.6[Li0.2Mn0.8]O2. We show that the electron holes formed are delocalized across the oxide ions coordinated to two Mn (O–Mn2) arranged in ribbons in the transition metal layers. Furthermore, we track these delocalized hole states as they gradually localize in the structure in the form of trapped molecular O2 over a period of days. Establishing the nature of hole states on oxide ions is important if truly reversible high-voltage O-redox cathodes are to be realized. The mechanism of oxygen redox in high-energy transition metal oxide cathodes is elusive. Here the authors illustrate the nature of the electron-hole states on oxide ions, offering insights for realizing reversible, high-voltage cathodes."
+   },
+   {
+    "id": "https://openalex.org/W2074467232",
+    "doi": "https://doi.org/10.1149/1.1838445",
+    "title": "LiMn2 − x Cu x O 4 Spinels (0.1 ⩽ x ⩽ 0.5): A new Class of 5 V Cathode Materials for Li Batteries: I. Electrochemical, Structural, and Spectroscopic Studies",
+    "year": 1998,
+    "cited": 175,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Magnetic Properties and Synthesis of Ferrites",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.1838445/pdf",
+    "abstract": "A series of electroactive spinel compounds, (0.1 ⩽ x ⩽ 0.5), has been studied by crystallographic, spectroscopic, and electrochemical methods and by electron microscopy. These spinels are nearly identical in structure to cubic and successfully undergo reversible Li intercalation. The electrochemical data show a remarkable reversible electrochemical process at 4.9 V which is attributed to the oxidation of to . The inclusion of Cu in the spinel structure enhances the electrochemical stability of these materials upon cycling. The initial capacity of spinels decreases with increasing x from 130 mAh/g in ( x = 0) to 70 mAh/g in \" \" ( x = 0.5). The data also show slight shifts to higher voltage for the delithiation reaction that normally occurs at 4.1 V in standard electrodes (1 ⩾ x ⩾ 0) corresponding to the oxidation of to . Although the powder X‐ray diffraction pattern of \" \" shows a single‐phase spinel product, neutron diffraction data show a small but significant quantity of an impurity phase, the composition and structure of which could not be identified. X‐ray absorption spectroscopy was used to gather information about the oxidation states of the manganese and copper ions. The composition of the spinel component in the was determined from X‐ray diffraction and X‐ray absorption near‐edge spectroscopy to be , suggesting to a best approximation that the impurity in the sample was a lithium‐copper‐oxide phase. The substitution of manganese by copper enhances the reactivity of the spinel structure toward hydrogen: the compounds are more easily reduced at moderate temperature (∼200°C) than ."
+   },
+   {
+    "id": "https://openalex.org/W2895616024",
+    "doi": "https://doi.org/10.3390/app8101825",
+    "title": "Extending Battery Lifetime by Avoiding High SOC",
+    "year": 2018,
+    "cited": 172,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/8/10/1825/pdf?version=1539864842",
+    "abstract": "The impact of ageing when using various State of Charge (SOC) levels for an electrified vehicle is investigated in this article. An extensive test series is conducted on Li-ion cells, based on graphite and NMC/LMO electrode materials. Lifetime cycling tests are conducted during a period of three years in various 10% SOC intervals, during which the degradation as function of number of cycles is established. An empirical battery model is designed from the degradation trajectories of the test result. An electric vehicle model is used to derive the load profiles for the ageing model. The result showed that, when only considering ageing from different types of driving in small Depth of Discharges (DODs), using a reduced charge level of 50% SOC increased the lifetime expectancy of the vehicle battery by 44–130%. When accounting for the calendar ageing as well, this proved to be a large part of the total ageing. By keeping the battery at 15% SOC during parking and limiting the time at high SOC, the contribution from the calendar ageing could be substantially reduced."
+   },
+   {
+    "id": "https://openalex.org/W2080187109",
+    "doi": "https://doi.org/10.1149/1.2976031",
+    "title": "Effects of Various Conductive Additive and Polymeric Binder Contents on the Performance of a Lithium-Ion Composite Cathode",
+    "year": 2008,
+    "cited": 172,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1.2976031/pdf",
+    "abstract": "Fundamental electrochemical methods, cell performance tests, and physical characterization tests, such as electron microscopy, were used to study the effects of levels of the inert materials ͓acetylene black ͑AB͒, a nanoconductive additive, and polyvinylidene difluoride ͑PVDF͒, a polymer binder͔ on the power performance of lithium-ion composite cathodes.The electronic conductivity of the AB/PVDF composites at different compositions was measured with a four-point probe direct current method.The electronic conductivity was found to increase rapidly and plateau at an AB:PVDF ratio 0.2:1 ͑by weight͒, with 0.8:1 being the highest conductivity composition.AB:PVDF compositions along the plateau of 0.2:1, 0.4:1, 0.6:1, and 0.8:1 were investigated.Electrodes of each of those compositions were fabricated with different fractions of AB/PVDF to active material.It was found that at the 0.8:1 AB:PVDF, the rate performance improved with increases in the AB/PVDF loading, whereas at the 0.2:1 AB:PVDF, the rate performance improved with decreases in the AB/PVDF loading.The impedance of electrodes made with 0.6:1 AB:PVDF was low and relatively invariant."
+   },
+   {
+    "id": "https://openalex.org/W3207967096",
+    "doi": "https://doi.org/10.1016/j.joule.2021.09.015",
+    "title": "Predicting the impact of formation protocols on battery lifetime immediately after manufacturing",
+    "year": 2021,
+    "cited": 169,
+    "venue": "Joule",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "http://www.cell.com/article/S2542435121004438/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2606141856",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2017.04.030",
+    "title": "Enabling aqueous processing for crack-free thick electrodes",
+    "year": 2017,
+    "cited": 168,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1364299",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3156092364",
+    "doi": "https://doi.org/10.1038/s41467-021-22635-w",
+    "title": "Hierarchical nickel valence gradient stabilizes high-nickel content layered cathode materials",
+    "year": 2021,
+    "cited": 167,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Semiconductor materials and devices",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22635-w.pdf",
+    "abstract": "Abstract High-nickel content cathode materials offer high energy density. However, the structural and surface instability may cause poor capacity retention and thermal stability of them. To circumvent this problem, nickel concentration-gradient materials have been developed to enhance high-nickel content cathode materials’ thermal and cycling stability. Even though promising, the fundamental mechanism of the nickel concentration gradient’s stabilization effect remains elusive because it is inseparable from nickel’s valence gradient effect. To isolate nickel’s valence gradient effect and understand its fundamental stabilization mechanism, we design and synthesize a LiNi 0.8 Mn 0.1 Co 0.1 O 2 material that is compositionally uniform and has a hierarchical valence gradient. The nickel valence gradient material shows superior cycling and thermal stability than the conventional one. The result suggests creating an oxidation state gradient that hides the more capacitive but less stable Ni 3+ away from the secondary particle surfaces is a viable principle towards the optimization of high-nickel content cathode materials."
+   },
+   {
+    "id": "https://openalex.org/W2975867039",
+    "doi": "https://doi.org/10.1149/2.0541914jes",
+    "title": "Temperature Dependent EIS Studies Separating Charge Transfer Impedance from Contact Impedance in Lithium-Ion Symmetric Cells",
+    "year": 2019,
+    "cited": 165,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0541914jes/pdf",
+    "abstract": "Measuring electrochemical impedance spectra of lithium-ion symmetric cells at low temperatures allows for unambiguous separation of charge transfer impedance contributions from other cell impedance features. Electrodes from dry Li[Ni 0.5 Mn 0.3 Co 0.2 ]O 2 (NMC 532)/artificial graphite (AG) pouch cells were used to make blocking electrode configuration symmetric cells and blocking electrode full coin cells. NMC532/AG cells with 1.2M LiPF 6 in EC:DMC 3:7 (w:w) electrolyte also underwent the formation process before the electrodes were used to make non-blocking configuration symmetric and full coin cells. Through the use of temperature dependent measurements on blocking and non-blocking cells, the impedance contribution due to faradaic, charge transfer interactions can be distinguished from non-faradaic, high frequency impedance contributions. Fitting the EIS spectra allowed both the charge transfer resistances and the related capacitances to be determined for the solid electrolyte interphase layers on the negative and positive electrodes. The charge transfer resistances were strongly temperature dependent while the capacitances were not. The temperature dependence of the charge transfer resistance was used to determine the activation energies for lithium transport through the solid electrolyte interphase layers on the negative and positive electrodes. Surprisingly, the activation energies were approximately 0.6 eV for both positive and negative electrodes extracted from cells after formation."
+   },
+   {
+    "id": "https://openalex.org/W2334139715",
+    "doi": "https://doi.org/10.1021/cm501203r",
+    "title": "Integrated Nano-Domains of Disordered and Ordered Spinel Phases in LiNi 0.5 Mn 1.5 O 4 for Li-Ion Batteries",
+    "year": 2014,
+    "cited": 163,
+    "venue": "Chemistry of Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Magnetic Properties and Synthesis of Ferrites",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.osti.gov/biblio/1511405",
+    "abstract": "Recent calculations and experimental data suggest that understanding the local ordering behavior of Ni/Mn will be critical to optimize the electrochemical properties of LiNi 0.5 Mn 1.5 O 4 (LNMO) high voltage spinel. In this study, we systematically controlled the evolution of Ni and Mn ordering in LNMO samples by annealing them at 700 °C in air for different dwelling times, followed by quenching to room temperature. The long- and short-range ordering behavior of Ni and Mn were analyzed by combining neutron powder diffraction, X-ray powder diffraction (XRD), transmission electron microscopy (TEM), and Fourier transform infrared spectroscopy (FT-IR) data. The results show that the fraction of ordered phase increases rapidly during initial annealing at 700 °C for 6 h, and accompanied by decreasing amounts of secondary phases. Annealing longer than 6 h led to the growth in size of ordered domains (i.e., increased segregation of ordered and disordered domains) along with a slow increase in the fraction of ordered phase. The dependence of open circuit voltages (OCVs) of the LNMO on the degree of ordering agrees well with recent calculations using the density functional theory. The increase in the degree of ordering increases the open circuit voltage (OCV) and the initial capacity but reduces cycle life and rate capability. The LNMO delivered optimal battery performances (capacity, cycle life, and rate capability) after annealing at 700 °C for 2 h. This partially ordered sample showed the respective advantages from both disordered and ordered spinels: better spinel-phase purity (thus, higher initial capacity) from the ordered LNMO and better cycle life and rate capability from the disordered LNMO."
+   },
+   {
+    "id": "https://openalex.org/W2008415782",
+    "doi": "https://doi.org/10.1149/2.031310jes",
+    "title": "Studies of the Effect of Varying Vinylene Carbonate (VC) Content in Lithium Ion Cells on Cycling Performance and Cell Impedance",
+    "year": 2013,
+    "cited": 163,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.031310jes/pdf",
+    "abstract": "LiCoO 2 /graphite and Li[Ni 1/3 Mn 1/3 Co 1/3 ]O 2 /graphite pouch cells and Li[Ni 1-x-y Mn x Co y ]O 2 /graphite 18650 cells were made with varying concentrations of vinylene carbonate (VC) and studied using high precision coulometry, extended cycling as well as electrochemical impedance spectroscopy (EIS). As expected, adding increased concentrations of VC (up to 6 wt%) to the control electrolyte resulted in improved coulombic efficiency, decreased charge endpoint slippage and longer cycle life. However, high concentrations of VC led to larger charge transfer resistance, especially at the graphite negative electrode. Understanding how varying amounts of VC impact cell lifetime and impedance allows for optimized electrolyte formulations to be found for different applications that may balance lifetime and power demands."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Maccor 4000\" OR \"Maccor Series 4000\") AND OPEN_ACCESS:y",

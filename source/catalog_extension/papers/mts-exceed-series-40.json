@@ -12,8 +12,22 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"MTS Systems E42.503\" OR \"MTS Systems E43.104\" OR \"MTS Systems E43.504\" OR \"MTS Systems E44.304\" OR \"MTS Systems E45.105\" OR \"MTS Systems E45.305\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4412837336",
+    "doi": "https://doi.org/10.21203/rs.3.rs-7066209/v1",
+    "title": "Designing alloy from 100% scrap with multi-modal Artificial Intelligence",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Machine Learning in Materials Science"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-7066209/latest.pdf",
+    "abstract": ""
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"MTS Systems E42.503\" OR \"MTS Systems E43.104\" OR \"MTS Systems E43.504\" OR \"MTS Systems E44.304\" OR \"MTS Systems E45.105\" OR \"MTS Systems E45.305\") AND OPEN_ACCESS:y",

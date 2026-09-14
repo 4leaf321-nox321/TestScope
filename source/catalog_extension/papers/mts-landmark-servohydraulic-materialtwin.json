@@ -7,8 +7,54 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"MTS Systems Landmark\"",
-  "count": null,
-  "works": []
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W4405909522",
+    "doi": "https://doi.org/10.1038/s41598-024-80470-7",
+    "title": "Strength and Poisson’s ratio of fused filament fabrication parts made from carbon filler enhanced PEEK compounds at elevated temperatures",
+    "year": 2024,
+    "cited": 6,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Photopolymerization techniques and applications"
+    ],
+    "oa_url": "https://doi.org/10.1038/s41598-024-80470-7",
+    "abstract": "Engineering plastics are finding widespread applications across a broad temperature spectrum, with additive manufacturing (AM) having now become commonplace for producing aerospace-grade components from polymers. However, there is limited data available on the behavior of plastic AM parts exposed to elevated temperatures. This study focuses on investigating the tensile strength, tensile modulus and Poisson's ratio of parts manufactured using fused filament fabrication (FFF) and polyetheretherketone (PEEK) plastics doped with two additives: short carbon fibers (SCFs) and multi-wall carbon nanotubes (MWCNTs). Tensile test specimens, conforming to the ISO 527 type-1b standard and printed in the XY-plane, were subjected to elevated temperatures (110 °C, 130 °C). After temperature stabilization, a tensile test was conducted to evaluate how elevated temperatures affect the mechanical properties of the parts. The results were compared to tensile test results obtained at room temperature. Additionally, computed micro-tomography was used to determine the porosity of the FFF parts. Furthermore, differential scanning calorimetry measurements were made. The results indicate that exposure to the elevated temperature range used in this work can reduce the tensile strength by 36%. The effects on the tensile modulus and Poisson's ratio were less pronounced. Based on these findings, SCF-PEEK FFF parts demonstrate higher tensile modulus and specific strength compared to plain-PEEK at elevated temperatures (110-130 °C), supporting their use in lightweight aerospace structures."
+   },
+   {
+    "id": "https://openalex.org/W7116776640",
+    "doi": "https://doi.org/10.1097/js9.0000000000004568",
+    "title": "Optimization strategies for intramedullary nailing parameters in subtrochanteric fractures of the femur: a multimodal assessment based on finite element and biomechanical experiments",
+    "year": 2025,
+    "cited": 0,
+    "venue": "International Journal of Surgery",
+    "topics": [
+     "Hip and Femur Fractures",
+     "Bone fractures and treatments",
+     "Bone health and osteoporosis research"
+    ],
+    "oa_url": "https://doi.org/10.1097/js9.0000000000004568",
+    "abstract": "BACKGROUND: Subtrochanteric femur fractures account for 40 % of proximal femur fractures, and intramedullary nailing (IMN) is the treatment of choice, but there is a lack of uniformity in the selection of models. The challenge of individualized adaptation of diameter and length needs to be resolved, as too large or too small may lead to a lack of stability or increased surgical risk. OBJECTIVE: To establish a parametric selection model by analyzing the biomechanical properties of IMNs of different specifications to provide a basis for the clinical optimization of implantation strategies. METHODS: Finite element analysis combined with in vitro biomechanical experiments was used to construct a three-dimensional model based on femur CT data from healthy volunteers to assess the stress distribution and displacement characteristics of 15 sets of IMN (10/11/12 mm in diameter and 280-360 mm in length); a Sawbone artificial bone was used to simulate the Seinsheimer II C fracture, and the strain under axial compression was tested, ultimate load and failure mode. RESULT: The 12 mm diameter IMN performed optimally biomechanically, with lower displacement and stress peaks than the smaller diameter group, but may exacerbate the femoral neck stress masking effect. Nail length had no significant effect on stress. Re-fracture around the locking screws occurred in all groups at a load of 5 kN, suggesting a mechanically weak zone near the fracture line. CONCLUSION: For patients with Seinsheimer type IIC subtrochanteric femoral fractures who have good bone quality and a femoral neck anteversion angle ≤15°, this study proposes a personalized selection strategy using CT-based 3D reconstruction of the narrowest medullary cavity diameter, recommending an anatomically matched intramedullary nail (320 mm length) to optimize both mechanical stability and biological healing. The results provide important theoretical support for clinical precision treatment."
+   },
+   {
+    "id": "https://openalex.org/W4406373813",
+    "doi": "https://doi.org/10.3390/medicina61010110",
+    "title": "Multiplanar Semicircular New-Generation Implant System Developed for Proximal Femur Periprosthetic Fractures: A Biomechanical Study",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Medicina",
+    "topics": [
+     "Orthopaedic implants and arthroplasty",
+     "Orthopedic Infections and Treatments",
+     "Total Knee Arthroplasty Outcomes"
+    ],
+    "oa_url": "https://www.mdpi.com/1648-9144/61/1/110/pdf?version=1736835543",
+    "abstract": "Background and Objectives: The study aimed to evaluate a newly designed semicircular implant for the fixation of Vancouver Type B1 periprosthetic femoral fractures (PFFs) in total hip arthroplasty (THA) patients. To determine its strength and clinical applicability, the new implant was compared biomechanically with conventional fixation methods, such as lateral locking plate fixation and a plate combined with cerclage wires. Materials and Methods: Fifteen synthetic femur models were used in this biomechanical study. A Vancouver Type B1 periprosthetic fracture was simulated by osteotomy 5 mm distal to the femoral stem. The models were divided into three groups: Group I (lateral locking plate fixation), Group II (lateral locking plate with cerclage wires), and Group III (new semicircular implant system). All fixation methods were subjected to axial loading, lateral bending, and torsional force testing using an MTS biomechanical testing device. Failure load and displacement were measured to assess stability. Results: The semicircular implant (Group III) demonstrated a significantly higher failure load (778.8 ± 74.089 N) compared to the lateral plate (Group I: 467 ± 68.165 N) and plate with cerclage wires (Group II: 652.4 ± 65.474 N; p < 0.001). The new implant also exhibited superior stability under axial, lateral bending, and torsional forces. The failure load for Group III was more robust, with fractures occurring at the screw level rather than plate or screw detachment. Conclusions: Compared to traditional fixation methods, the newly designed semicircular implant demonstrated superior biomechanical performance in stabilizing Vancouver Type B1 periprosthetic femoral fractures. It withstood higher physiological loads, offered better structural stability, and could be an alternative to existing fixation systems in clinical practice. Further studies, including cadaveric and in vivo trials, are recommended to confirm these results and assess the long-term clinical outcomes."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"MTS Systems Landmark\") AND OPEN_ACCESS:y",
@@ -72,8 +118,12 @@
    "standards": []
   }
  ],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "ISO 527": 1
+ },
+ "standards_new": [
+  "ISO 527"
+ ],
  "test_item_hits": {
   "compression": 1,
   "tensile": 1

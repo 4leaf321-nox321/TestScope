@@ -11,8 +11,22 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"MTS Systems Acumen 1 G2\" OR \"MTS Systems Acumen 3\" OR \"MTS Systems Acumen 3 A\" OR \"MTS Systems Acumen 12\" OR \"MTS Systems Acumen 12 A\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4402876791",
+    "doi": "https://doi.org/10.2172/2447830",
+    "title": "Polymer Additive Manufacturing for Marine Renewable Energy Applications: Best Practices, Research Trends, and Current Challenges",
+    "year": 2024,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://doi.org/10.2172/2447830",
+    "abstract": "Additive manufacturing (AM) is a rapidly growing technology space, not only for prototyping, but is also becoming more feasible at larger scales and increasing component quantities. There are a large variety of AM processes and materials available to users and effectively applying those processes and materials to a specific use case can be challenging. One specific area where AM could be particularly beneficial is marine renewable energy (MRE). Not only is MRE a relatively nascent industry with a near-term need for rapid deployments and prototype testing, but developers could also see long-term benefits from the broad variety of environmentally resistant materials available and the ability to manufacture complex geometries that AM technologies offer. Over the past 4 years, AM materials have played an increasing role in the Advanced Materials project; a multi-year, multi-laboratory research project funded by the U.S. Department of Energy's Water Power Technologies Office, with the main goal of reducing barriers to the adoption of complex materials in the MRE industry. The primary focus of this project is to develop test methods and generate datasets to understand the long-term performance of advanced materials in marine environmental and address specific material challenges as they arise. This report provides an extensive overview of the research that has been performed specific to AM polymers as part of the Advanced Materials project. The intention of this document is to provide recommendations of best practices with regards to material selection, mechanical test method development, and design practices, lessons learned along the way, current research trends, and ongoing challenges with regards to AM polymers in marine environments. In particular, this report focuses on several key aspects: Material and process selection, Environmental conditioning and subsequent degradation quantification through mechanical characterization, Composite reinforcements on AM polymer substrates, Adhesion of instrumentation for mechanical characterization and loads measurements, Protective coatings for preventing biofouling and water ingress, Other MRE case studies where AM has proved particularly useful. Ultimately, we hope that the test methods that have been developed, data generated, and lessons learned from this research will be valuable to the MRE community (researchers and developers alike), as well as other industries, and can be used as a reference point as the respective MRE and AM industries continue to grow and mature."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"MTS Systems Acumen 1 G2\" OR \"MTS Systems Acumen 3\" OR \"MTS Systems Acumen 3 A\" OR \"MTS Systems Acumen 12\" OR \"MTS Systems Acumen 12 A\") AND OPEN_ACCESS:y",

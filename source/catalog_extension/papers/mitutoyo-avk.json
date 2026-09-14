@@ -10,8 +10,24 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mitutoyo AVK-C0 AVK-HF\" OR \"Mitutoyo AVK-C0\" OR \"Mitutoyo C0\" OR \"Mitutoyo AVK-HF\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4384938883",
+    "doi": "https://doi.org/10.2320/matertrans.mt-m2023057",
+    "title": "Effect of Hf Concentration on the Microstructure and Room Temperature Mechanical Properties of Light-Weight TiVZrNbHfx (x = 0–1.0) Refractory High Entropy Alloys",
+    "year": 2023,
+    "cited": 6,
+    "venue": "MATERIALS TRANSACTIONS",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/matertrans/64/10/64_MT-M2023057/_pdf",
+    "abstract": "This work explores the effect of the Hf concentration on the constituent phase, microstructure, and room temperature mechanical properties of TiVZrNbHfx (x = 0–1.0) light weight refractory high entropy alloys prepared by the arc melting technique. The results show that the TiVZrNbHfx alloys possess a single disordered bcc phase and dendritic structure, with densities ranging from 6.47 ± 0.03 to 8.69 ± 0.02 g/cm3. Elemental scan mapping reveals a relatively homogeneous distribution of all elements, although local concentrations of elements can be observed in the microstructures. The addition of Hf enhances the Vickers hardness, ultimate strength, and the 0.2% proof stress, which could be attributed to solid-solution-like strengthening mechanism. The TiVZrNbHf alloy exhibits the highest values of Vickers hardness (449.0 ± 11.3 HV1), ultimate strength (1682.7 MPa), and the 0.2% proof stress (1291.8 MPa). However, the fracture strain decreases with the increase in Hf composition, from 39.9% (for TiVZrNb) to 18.1% (for TiVZrNbHf)."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mitutoyo AVK-C0 AVK-HF\" OR \"Mitutoyo AVK-C0\" OR \"Mitutoyo C0\" OR \"Mitutoyo AVK-HF\") AND OPEN_ACCESS:y",

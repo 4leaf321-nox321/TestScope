@@ -8,8 +8,338 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Metrohm 851\" OR \"Metrohm 851 Titrando\"",
-  "count": null,
-  "works": []
+  "count": 22,
+  "works": [
+   {
+    "id": "https://openalex.org/W2971386863",
+    "doi": "https://doi.org/10.1039/c9ra05917b",
+    "title": "Improved lithium ion dynamics in crosslinked PMMA gel polymer electrolyte",
+    "year": 2019,
+    "cited": 98,
+    "venue": "RSC Advances",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://doi.org/10.1039/c9ra05917b",
+    "abstract": "expected to slow lithium transport relatively to the anion, has instead a positive effect on lithium transport. Indeed, the ester groups not only participate in lithium solvation and increase ionic dissociation, but since this interaction is rather weak, rather than lowering the lithium diffusion relatively to other species, it mainly decorrelates lithium transport from anionic mobility. Compared to its liquid fraction, the gels show, at the same time, better dissociation and a higher lithium transference number, which results in a higher cationic conductivity, despite the overall conductivity loss."
+   },
+   {
+    "id": "https://openalex.org/W4372047363",
+    "doi": "https://doi.org/10.1039/d3dd00058c",
+    "title": "Automated electrolyte formulation and coin cell assembly for high-throughput lithium-ion battery research",
+    "year": 2023,
+    "cited": 33,
+    "venue": "Digital Discovery",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c",
+    "abstract": "We present ODACell, an automated electrolyte formulation and coin cell assembly system for accelerated battery research."
+   },
+   {
+    "id": "https://openalex.org/W4318479953",
+    "doi": "https://doi.org/10.3390/pharmaceutics15020435",
+    "title": "On the Physical Stability of Leucine-Containing Spray-Dried Powders for Respiratory Drug Delivery",
+    "year": 2023,
+    "cited": 29,
+    "venue": "Pharmaceutics",
+    "topics": [
+     "Inhalation and Respiratory Drug Delivery",
+     "Microencapsulation and Drying Processes",
+     "Drug Solubulity and Delivery Systems"
+    ],
+    "oa_url": "https://www.mdpi.com/1999-4923/15/2/435/pdf?version=1675648977",
+    "abstract": "Carrier-free spray-dried dispersions for pulmonary delivery, for which the demand is growing, frequently require the incorporation of dispersibility-enhancing excipients into the formulations to improve the efficacy of the dosage form. One of the most promising of such excipients, L-leucine, is expected to be approved for inhalation soon and has been studied exhaustively. However, during stability, small fibers protruding from the particles of leucine-containing powders have occasionally been observed. To clarify the origin of these fibers and assess their potential influence on the performance of the powders, three different classes of spray-dried leucine-containing formulation systems were studied over an 8-month accelerated stability program. These systems consisted of a large molecule biologic (bevacizumab) in conjunction with a glass former (trehalose), an amorphous small-molecular mass active (moxidectin), and a crystallizing active (mannitol). It was determined that the appearance of the fibers was due to the presence of small quantities of leucine in higher energy states, either because these were amorphous or present as a less stable crystalline polymorph. It was further shown that the growth of these leucine fibers caused no significant physicochemical instability in the powders. Nor, more importantly, did it decrease their aerosol performance in a dry powder inhaler or reduce the concentration of their active pharmaceutical ingredients."
+   },
+   {
+    "id": "https://openalex.org/W3046410489",
+    "doi": "https://doi.org/10.1007/s11095-020-02890-0",
+    "title": "Solvent-Assisted Secondary Drying of Spray-Dried Polymers",
+    "year": 2020,
+    "cited": 24,
+    "venue": "Pharmaceutical Research",
+    "topics": [
+     "Microencapsulation and Drying Processes",
+     "Drug Solubulity and Delivery Systems",
+     "Inhalation and Respiratory Drug Delivery"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11095-020-02890-0.pdf",
+    "abstract": "PURPOSE: The purpose of this work is to introduce solvent-assisted secondary drying, a method used to accelerate the residual solvent removal from spray dried materials. Spray-drying is used to manufacture amorphous solid dispersions, which enhance the bioavailability of active pharmaceutical ingredients (APIs) with low aqueous solubility. In the spray-drying process, API and excipients are co-dissolved in a volatile organic solvent, atomized into droplets through a nozzle, and introduced to a drying chamber containing heated nitrogen gas. The product dries rapidly to form a powder, but small amounts of residual solvent (typically, 1 to 10 wt%) remain in the product and must be removed in a secondary-drying process. For some spray-dried materials, secondary drying by traditional techniques can take days and requires balancing stability risks with process time. METHODS: Spray-dried polymers were secondary dried, comparing the results for three state-of-the-art methods that employed a jacketed, agitated-vessel dryer: (1) vacuum-only drying, (2) water-assisted drying, or (3) methanol-assisted drying. Samples of material were pulled at various time points and analyzed by gas chromatography (GC) and Karl Fischer (KF) titration to track the drying process. RESULTS: Model systems were chosen for which secondary drying is slow. For all cases studied, methanol-assisted drying outperformed the vacuum-only and water-assisted drying methods. CONCLUSIONS: The observation that methanol-assisted drying is more effective than the other drying techniques is consistent with the free-volume theory of solvent diffusion in polymers."
+   },
+   {
+    "id": "https://openalex.org/W4281735562",
+    "doi": "https://doi.org/10.3390/pharmaceutics14061130",
+    "title": "Simultaneous Spray Drying for Combination Dry Powder Inhaler Formulations",
+    "year": 2022,
+    "cited": 19,
+    "venue": "Pharmaceutics",
+    "topics": [
+     "Inhalation and Respiratory Drug Delivery",
+     "Microencapsulation and Drying Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/1999-4923/14/6/1130/pdf?version=1653648119",
+    "abstract": "Spray drying is a particle engineering technique used to manufacture respirable pharmaceutical powders that are suitable for delivery to the deep lung. It is amenable to processing both small molecules and biologic actives, including proteins. In this work, a simultaneous spray-drying process, termed simul-spray, is described; the process involves two different active pharmaceutical ingredient (API) solutions that are simultaneously atomized through separate nozzles into a single-spray dryer. Collected by a single cyclone, simul-spray produces a uniform mixture of two different active particles in a single-unit operation. While combination therapies for dry powder inhalers containing milled small molecule API are commercially approved, limited options exist for preparing combination treatments that contain both small molecule APIs and biotherapeutic molecules. Simul-spray drying is also ideal for actives which cannot withstand a milling-based particle engineering process, or which require a high dose that is incompatible with a carrier-based formulation. Three combination case studies are demonstrated here, in which bevacizumab is paired with erlotinib, cisplatin, or paclitaxel in a dry powder inhaler formulation. These model systems were chosen for their potential relevance to the local treatment of lung cancer. The resulting formulations preserved the biologic activity of the antibody, achieved target drug concentration, and had aerosol properties suitable for pulmonary delivery."
+   },
+   {
+    "id": "https://openalex.org/W2949192584",
+    "doi": "https://doi.org/10.1080/17597269.2019.1628481",
+    "title": "Characterization of waste bio-oil as an alternate source of renewable fuel for marine engines",
+    "year": 2019,
+    "cited": 12,
+    "venue": "Biofuels",
+    "topics": [
+     "Biodiesel Production and Applications",
+     "Lubricants and Their Additives",
+     "Thermochemical Biomass Conversion Processes"
+    ],
+    "oa_url": "https://research.abo.fi/ws/files/25320791/Manuscript_NB.pdf",
+    "abstract": "Several physical and chemical properties of waste fish oils (FOs) and used cooking oils (UCOs) were of acceptable levels for utilization as renewable fuels in marine engines. However, the relatively high acid number of FOs and its increase with ageing might lead to increased risk of corrosion. The physical properties density and kinematic viscosity, as well as the water content, were measured using different standard methods. Similarly, the acid number, the content of unsaturated fatty acids and the ash content were measured with standard methods. The chemical composition of fatty acids and monoglycerides was measured with a gas chromatograph-flame ionization detector and by Fourier transform infrared spectroscopy. The sulfur and phosphorus contents were measured using inductively coupled plasma-optical emission spectroscopy. Finally, the thermal properties were measured by thermogravimetric analysis while the heat content was measured with an adiabatic oxygen-bomb calorimeter. The results suggest that these locally produced waste stream-based bio-oils have potential as carbon dioxide-neutral fuels. Several properties could be correlated with the fatty acid content of the oils. The results suggested that for waste-derived bio-oils, their earlier history (storage, thermal treatments before waste classification, ageing) affects their suitability as fuels for marine engines."
+   },
+   {
+    "id": "https://openalex.org/W4318947296",
+    "doi": "https://doi.org/10.1016/j.anucene.2023.109709",
+    "title": "Densification and microstructure features of lithium hydride fabrication",
+    "year": 2023,
+    "cited": 11,
+    "venue": "Annals of Nuclear Energy",
+    "topics": [
+     "Hydrogen Storage and Materials",
+     "MXene and MAX Phase Materials",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2005087",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4389614863",
+    "doi": "https://doi.org/10.3389/fgwh.2023.1284614",
+    "title": "The determinants of postpartum contraceptive use in Nigeria",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Frontiers in Global Women s Health",
+    "topics": [
+     "Global Maternal and Child Health",
+     "Reproductive Health and Contraception",
+     "Global Health and Epidemiology"
+    ],
+    "oa_url": "https://www.frontiersin.org/articles/10.3389/fgwh.2023.1284614/pdf?isPublishedV2=False",
+    "abstract": "Introduction: Postpartum contraception is vital for maternal and child health, and reduces the risk of infant mortality. The Health Belief Model (HBM) is a widely accepted framework for exploring health behaviors, such as contraceptive use. Therefore, this study aimed to investigate the factors influencing postpartum contraceptive use in Nigeria and to contextualize the findings within the framework of the HBM. Methods: This study was a secondary analysis of cross-sectional data collected from the Demographic Health Survey conducted in Nigeria (NDHS). In total, 28,041 women were included in this study. Self-reported contraceptive use was the outcome, while the explanatory variables included maternal age, place of residence, region of residence, religion, marital status, educational level, household wealth quintiles, knowledge of the ovulatory cycle, decision-maker for health care, and distance to health care facilities. Descriptive statistics and multivariate logistic regression were used to summarize and identify factors influencing postpartum contraceptive use. The HBM was used to discuss the main findings. Results: The prevalence of postpartum contraceptive use in Nigeria is 27%. Our findings showed that the odds of using contraceptives during the postpartum period were higher among women who knew their ovulation cycles, lived in urban areas in the southern region, had no distance barriers to health care, and were 25-49 years old. Education, wealth, and marital status also increase the odds of contraceptive use. However, women who lived in the northeast and northwest regions or shared decision-making with their partners had lower odds. Conclusion: This study highlights the need for region-specific and age-focused interventions to increase contraceptive use in Nigeria. Additionally, increasing accessibility and affordability of contraceptives for younger and economically disadvantaged women, along with promoting women's autonomy in decision-making, can further enhance contraceptive use across Nigeria."
+   },
+   {
+    "id": "https://openalex.org/W4392817294",
+    "doi": "https://doi.org/10.3390/pharmaceutics16030398",
+    "title": "The Processing Space of the Spray-Dried Mannitol-Leucine System for Pulmonary Drug Delivery",
+    "year": 2024,
+    "cited": 8,
+    "venue": "Pharmaceutics",
+    "topics": [
+     "Inhalation and Respiratory Drug Delivery",
+     "Microencapsulation and Drying Processes",
+     "Combustion and Detonation Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/1999-4923/16/3/398/pdf?version=1710403938",
+    "abstract": "Designing spray-dried particles for inhalation aims at specific physicochemical properties including a respirable aerodynamic diameter and adequate powder dispersibility. Leucine, an amphiphilic amino acid, has been shown to aid in optimizing bulk powder properties. Mannitol, a model crystalline active and common bulking agent, was co-sprayed with leucine at several excipient ratios, ethanol/water ratios, and spray dryer outlet temperatures in order to experimentally probe the underlying particle formation mechanisms in this binary crystalline system. During the droplet drying of two crystallizing components, the material that nucleates first will preferentially enrich the surface. It is desired to have a completely crystalline leucine shell to improve powder properties, however, mannitol competes with leucine for the surface depending on excipient concentration and manufacturing parameters. The resulting particles were studied initially and at a two-month timepoint via solid state characterization, visual analysis, and particle size analysis in order to detect changes in bulk powder properties. It was determined that, similar to systems where only leucine can crystallize, initial leucine saturation in the formulation dictates powder characteristics."
+   },
+   {
+    "id": "https://openalex.org/W4389704662",
+    "doi": "https://doi.org/10.1016/j.electacta.2023.143659",
+    "title": "Evaluation of short alkyl chain modified [DBU][TFSI] based ionic liquids as supercapacitor electrolytes",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Electrochimica Acta",
+    "topics": [
+     "Ionic liquids properties and applications",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.electacta.2023.143659",
+    "abstract": "The need of new electrolytes with wide electrochemical window, good stability and conductivity has promoted novel ionic liquids (ILs) as new solutions for supercapacitors. In this work, four hydrophobic room temperature ionic liquids based on organic superbase-derived cations and Trifluoromethanesulfonimide (TFSI) anion were synthetized. The structures of the novel ILs were analyzed, characterized and their performance as a supercapacitor electrolyte was evaluated. The ILs have high decomposition temperatures of up to 490°C and electrochemical window up to 4.8 V. It was found that there was an optimal chemical structure providing the best stability and operational potential window coupled with moderate conductivity. The IL with the shortest alkyl chain structure provided the highest conductivity but suffered from instability. The performance of the ILs with longer alkyl chains was hindered by lower conductivities and, in the case of the largest chemical structures, also by reduced cyclic stabilities in open air. However, the ionic liquid with moderate alkyl chain length was found to be stable even in open air providing decent conductivity, which can be utilized in future research to develop other hydrophobic ionic liquids suitable as supercapacitor electrolytes."
+   },
+   {
+    "id": "https://openalex.org/W2995197087",
+    "doi": "https://doi.org/10.3390/en12244812",
+    "title": "Factors Affecting the Corrosive Behavior of Used Cooking Oils and a Non-Edible Fish Oil That Are in Contact with Ferrous Metals",
+    "year": 2019,
+    "cited": 6,
+    "venue": "Energies",
+    "topics": [
+     "Biodiesel Production and Applications",
+     "Lubricants and Their Additives",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/12/24/4812/pdf?version=1576589706",
+    "abstract": "The corrosion behavior of three used cooking oils and one non-edible fish oil was experimentally investigated by the immersion test of iron rods at room temperature. The corrosivity of the tested oils was indirectly determined from the amount of the dissolved iron in the tested oils after the immersion test. Different factors that affect the corrosive behavior of the tested oils were assessed. Among the tested oils, the fish oil showed the highest amount of dissolved iron owing to its chemical properties such as high water content and acid number. In general, water content and acid number have direct effects on the amount of dissolved iron. The addition of oleic acid to the used cooking oil resulted in a 60% less amount of dissolved iron. It was suggested that the addition of oleic acid prompted the formation of a monolayer, which inhibited the permeation of oxygen and water to the surface of the iron rod. Moreover, the addition of glycerol gave the lowest amount of dissolved iron in the oil sample owing to its ability to bind water molecules and form microemulsions in the presence of a surfactant (for example, oleic acid)."
+   },
+   {
+    "id": "https://openalex.org/W4200103793",
+    "doi": "https://doi.org/10.3390/su14010355",
+    "title": "Metal Rod Surfaces after Exposure to Used Cooking Oils",
+    "year": 2021,
+    "cited": 3,
+    "venue": "Sustainability",
+    "topics": [
+     "Corrosion Behavior and Inhibition",
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Maritime Transport Emissions and Efficiency"
+    ],
+    "oa_url": "https://www.mdpi.com/2071-1050/14/1/355/pdf?version=1640866068",
+    "abstract": "Used cooking oils (UCOs) have a high potential as renewable fuels for the maritime shipping industry. However, their corrosiveness during storage and usage are some of the concerns yet to be investigated for addressing compatibility issues. Thus, the corrosion of steels and copper exposed to the UCOs was studied through the immersion of metal rods for different periods. The changes on the rod surfaces were analyzed with a scanning electron microscope (SEM). After the immersion, the copper concentration dissolved in the bio-oils was measured using inductively coupled plasma-optical emission spectrometry (ICP-OES). The free fatty acids and glycerides were analyzed using gas chromatography with flame ionization detection (GC-FID). The acid number (AN), water concentration, as well as density and kinematic viscosity of the bio-oils were determined with standard methods. The UCOs with the highest water content were corrosive, while the oils with lower water concentrations but higher ANs induced lower corrosion. After mixing two different UCOs, the metal corrosion decreased with an increasing concentration of the oil with lower corrosive properties. The lower corrosion properties were most likely due to the monounsaturated fatty acids, e.g., oleic acid in oils. These acids formed a barrier layer on the rod surfaces, thereby inhibiting the permeation of oxygen and water to the surface. Even adding 0.025 wt% of tert-butylamine decreased the corrosivity of UCO against polished steel rod. The results suggested that mixing several oil batches and adding a suitable inhibitor reduces the potential corrosive properties of UCOs."
+   },
+   {
+    "id": "https://openalex.org/W7126397549",
+    "doi": "https://doi.org/10.1002/slct.202505906",
+    "title": "Determination of Water Content in Organic Compounds Using Proton Nuclear Magnetic Resonance ( 1 H‐NMR) Spectroscopy",
+    "year": 2026,
+    "cited": 2,
+    "venue": "ChemistrySelect",
+    "topics": [
+     "Metabolomics and Mass Spectrometry Studies",
+     "Drug Solubulity and Delivery Systems",
+     "Analytical Chemistry and Chromatography"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/slct.202505906",
+    "abstract": "ABSTRACT A simple method for determining water content in organic compounds has been demonstrated using Proton Nuclear Magnetic Resonance ( 1 H‐NMR) Spectroscopy. The method has been successfully applied to measure water content in a diverse range of substances, including active pharmaceutical ingredients (APIs), sugar molecules, commercial building blocks, and various solvents. Comparative analyses with Karl Fischer titration (KFT) demonstrate high consistency with this NMR approach, confirming its reliability as an adaptable alternative for water content determination in organic compounds. The current technique offers rapid execution, requires very small sample quantities, accommodates diverse substrates, and enables quantification without precise analyte measurements."
+   },
+   {
+    "id": "https://openalex.org/W4389586790",
+    "doi": "https://doi.org/10.1039/d3ta05448a",
+    "title": "An energy harvester based on UV-polymerized short-alkyl-chain-modified [DBU][TFSI] ionic liquid electrets",
+    "year": 2023,
+    "cited": 1,
+    "venue": "Journal of Materials Chemistry A",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Ionic liquids properties and applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ta/d3ta05448a",
+    "abstract": "The charge generation properties of solid, UV-cured and charge-separated ionic liquid electrets as energy harvesters."
+   },
+   {
+    "id": "https://openalex.org/W7208728306",
+    "doi": "https://doi.org/10.54554/ijeeas.2026.9.01.005",
+    "title": "Comparison of the Dielectric Properties of Soy‑Based Natural Ester Oil and Mineral Oil Subjected to Accelerated Thermal Ageing",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Electrical Engineering and Applied Sciences (IJEEAS)",
+    "topics": [
+     "Power Transformer Diagnostics and Insulation",
+     "High voltage insulation and dielectric phenomena",
+     "Power Systems Fault Detection"
+    ],
+    "oa_url": "https://ijeeas.utem.edu.my/ijeeas/article/download/6363/4145",
+    "abstract": "Even though natural ester oils are recognised as sustainable alternative dielectric liquids to mineral oil in oil-immersed power transformers, their long-term dielectric properties under realistic dielectric liquid–solid insulation–metal interactions remain poorly understood. Currently, there are no well-established dielectric property degradation models, posing uncertainty in the long-term insulation reliability of oil-immersed power transformers. In this study, accelerated thermal ageing experiment was conducted on soy-based natural ester oil (FR3 fluid) and conventional mineral oil (MO) with solid insulations (kraft paper and pressboard, thermally upgraded paper (TUP) and pressboard) and metal catalysts (copper, iron, zinc, and aluminium catalysts) in sealed glass bottles to determine their dielectric properties in response to thermal ageing. Initially, these samples were pre-treated and tested in accordance with the IEC 60156 and IEC 60247 standards, where the samples were aged at 130 °C for 0, 250, 500, 750, 1000, 1250 and 1500 h. Periodic measurements were then conducted to determine the key diagnostic dielectric properties, namely, AC breakdown voltage (AC BDV), dissipation factor (tan δ), and volume resistivity. Despite the low dissipation factor and high volume resistivity, the mineral oil-based insulation systems demonstrated a significant decrease in AC BDV, suggesting low moisture tolerance. In contrast, the FR3-based insulation systems showed an improved and stable AC BDV despite their low volume resistivity and high dissipation factor, which aligned with the polar chemistry and better moisture scavenging of natural ester oils. Based on the results of the accelerated thermal ageing tests, the dielectric performance was most pronounced for the FR3–TUP system. The results showed that using FR3 fluid could improve the sustainability and longterm dielectric reliability of the transformer insulation. However, the results also indicated that the dissipation factor and volume resistivity should be interpreted by considering the fluid chemistry and moisture dynamics"
+   },
+   {
+    "id": "https://openalex.org/W7140327787",
+    "doi": "https://doi.org/10.1007/s11095-026-04081-9",
+    "title": "Hospital-Compounded Birabresib Capsules for NUT Carcinoma: A Quality- and Risk-Based CMC Strategy",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Pharmaceutical Research",
+    "topics": [
+     "Protein Degradation and Inhibitors",
+     "PI3K/AKT/mTOR signaling in cancer",
+     "Sirtuins and Resveratrol in Medicine"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11095-026-04081-9.pdf",
+    "abstract": "PURPOSE: NUT carcinoma is an ultra-rare and highly aggressive malignancy lacking authorised systemic therapies. Birabresib, a bromodomain and extra-terminal (BET) inhibitor, has shown preliminary clinical activity; however, its development was discontinued and no GMP-grade active pharmaceutical ingredient or finished product is available. This work describes the hospital-based pharmaceutical development enabling authorised therapeutic use of birabresib in France. METHODS: Within the French ANSM temporary usage protocol (PUT), a quality- and risk-based Chemistry, Manufacturing and Controls (CMC) strategy inspired by ICH Q8-Q10 was implemented to convert a research-grade material into a qualified drug substance for compounding. An initial batch of birabresib dihydrate underwent comprehensive CMC-like characterisation, including purity, identity, structural confirmation, solid-state properties, residual solvents, and forced degradation to establish a primary chemical reference substance and a stability-indicating analytical method. RESULTS: The generated data supported acceptance criteria for subsequent batches and for 20-mg capsules compounded under Good Preparation Practice in a centralised hospital pharmacy. Finished product controls complied with pharmacopoeial and ICH requirements, and capsules were enrolled in a prospective stability programme under PUT-defined storage conditions. CONCLUSIONS: This risk-proportionate, CMC-oriented hospital framework enabled the first authorised therapeutic use of birabresib in NUT carcinoma and may be extended to other discontinued small molecules used in regulated access programmes for ultra-rare diseases."
+   },
+   {
+    "id": "https://openalex.org/W7128600379",
+    "doi": "https://doi.org/10.1039/d5lf00401b",
+    "title": "Synergy or interference? The effect of electrolyte additives and formation protocols combined in sodium-ion batteries",
+    "year": 2026,
+    "cited": 0,
+    "venue": "RSC Applied Interfaces",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced battery technologies research",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2026/lf/d5lf00401b",
+    "abstract": "When appropriately paired, electrolyte additives and formation protocols can work in synergy to enhance overall battery performance."
+   },
+   {
+    "id": "https://openalex.org/W7146231859",
+    "doi": null,
+    "title": "Caracterización técnica de aceites de motor en la flota de la EMAC EP para establecer una línea base de calidad del lubricante",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Universidad Politécnica Salesiana Repositorio Digital (Universidad Politécnica Salesiana)",
+    "topics": [
+     "Lubricants and Their Additives",
+     "Biodiesel Production and Applications",
+     "Multidisciplinary Science and Engineering Research"
+    ],
+    "oa_url": "http://dspace.ups.edu.ec/bitstream/123456789/32565/1/UPS-CT012711.pdf",
+    "abstract": "El presente trabajo tuvo como objetivo caracterizar técnicamente los aceites de motor utilizados en la flota vehicular de la EMAC EP, para establecer una línea base de calidad del lubricante previa a su uso operativo. Se analizaron muestras de aceite SAE 15W-40 en condición de almacenamiento y en servicio mediante técnicas fisicoquímicas como FTIR, viscosidad, TAN, TBN, contenido de agua y conteo de partículas. Los resultados mostraron estabilidad en el aceite almacenado y degradación moderada en el aceite en servicio, asociada a oxidación y consumo de aditivos. Con base en ello, se definieron rangos de referencia que permiten evaluar la condición del lubricante y fortalecer el mantenimiento predictivo de la flota."
+   },
+   {
+    "id": "https://openalex.org/W4317387823",
+    "doi": "https://doi.org/10.1002/pts.2715",
+    "title": "Moisture ingress in commercial steel drums: Water content determination, diffusion modelling and predicted permeation rates",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Packaging Technology and Science",
+    "topics": [
+     "High voltage insulation and dielectric phenomena",
+     "Concrete Corrosion and Durability",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2005053",
+    "abstract": "Abstract Commercial steel drums underpin the global economy, playing a pivotal role in the storage and transportation of critical materials. Transported and stored materials, such as food, chemical and nuclear waste, can be sensitive to ambient conditions, particularly moisture that can enhance negative effects such as corrosion and material degradation. Although international standards and regulations are in place for the qualification of steel drums, there are no current testing requirements, established limits or boundaries for the permeation of moisture into the drums during transportation or storage. This work aims to provide insights into the moisture ingress over time into properly sealed steel drums and provides estimated moisture ingress rates over time through extrapolation. Water vapour transmission rate (WVTR) measurements through the gasket material at 10–40°C were 0.11–2.1 g/m2/day resulting in a permeation activation energy of 30.2 kJ/mol. Water sorption measurements and Karl Fischer titration (KFT) on ethylene propylene diene monomer (EPDM) gasket material revealed a decrease in equilibrium moisture saturation with increasing temperature. KFT measurements also revealed the presence of moisture within the adhesive and drum wall after exposure to ambient conditions. KFT and Fourier transform infrared spectroscopy (FTIR) show that moisture will desorb from the EPDM and drum wall after exposure to desiccating conditions, although a minimal amount of moisture will remain present. When sealed to the manufacturer's recommendations, the steel drums are effective in minimizing moisture ingress. In sealed empty drums, moisture ingress rates for 19‐L drums were 0.4–1.5 mg/day at 25°C 15% relative humidity (RH) and increased to 7.1–8.8 mg/day at 40°C 90% RH, and moisture ingress rates for 210‐L drums were 2.5 and 3.5 mg/day at field deployment conditions of 15.5°C 51.5% RH and 23°C 40% RH, respectively."
+   },
+   {
+    "id": "https://openalex.org/W2993917688",
+    "doi": null,
+    "title": "Physical properties and solubility properties of trimethylglycine-based deep eutectic solvents",
+    "year": 2019,
+    "cited": 0,
+    "venue": "Theseus (Ammattikorkeakoulujen)",
+    "topics": [
+     "Ionic liquids properties and applications",
+     "Crystallization and Solubility Studies",
+     "Thermodynamic properties of mixtures"
+    ],
+    "oa_url": "http://www.theseus.fi/handle/10024/264879",
+    "abstract": "Työn tarkoituksena oli luoda tietolähde työnantajalle sisältäen katsauksen biomassan ominaisuuksiin, sekä yhteenveto ionisiin nesteihin ja eutektisiin seoksiin. Lisäksi työssä käytettiin em. tietoja hyväksi tutkittaessa kuuden betaiinipohjaisen eutektisen seoksen fysikaalisia ominaisuuksia ja niiden kykyä liuottaa lignosulfonaattisakkaa. \\n \\nKirjallisuusosassa perehdyttiin biomassan eri komponentteihin, niiden rakenteeseen ja kemiallisiin ominaisuuksiin, lisäksi tehtiin katsaus lignosulfonaatteihin. Biomassan esikäsittelymenetelmistä käsiteltiin tarkemmin ionisia nesteitä ja eutektisiä seoksia. Niiden fysikaalisia ominaisuuksia, rakennetta ja käyttöä käytiin läpi. \\n \\nKokeellisessa osassa tutkittiin kuutta eri eutektista seosta, joista kaksi hylättiin heti alussa. Seoksista määritettiin viskositeetti ja johtokyky eri lämpötiloissa, tuloksista piirrettiin Waldenin graafi, jolla määritettiin seosten keskinäinen ionisuuden voimakkuus. Kahta lignosulfonaattipohjaista sakkaa tutkittiin eri analyysimenetelmillä ja lopuksi määritettiin neljän eutektisen seoksen kyky liuottaa näitä sakkoja. \\n \\nTyössä osoitettiin, että urea, etikkahappo, maitohappo ja muurahaishappo muodostivat eutektinen seoksen betaiinin kanssa. Näille seoksille määritettiin viskositeetti, seosten järjestys korkeimmasta matalimpaan oli: maitohappo > etikkahappo > urea > muurahaishappo. Seosten johtokyky oli järjestyksessä korkeimmasta matalimpaan: muurahaishappo > maitohappo > etikkahappo > urea. Waldenin graafista määritettiin seosten ionisuuden voimakkuuden olevan korkeimmasta matalimpaan: muurahaishappo > maitohappo > etikkahappo > urea. Seosten kyky liuottaa lignosulfonaattisakkaa määritettiin spektrofotometrisesti, ureapohjainen seos liuotti näytteen kokonaisuudessaan ja muurahaishappopohjainen seos heikoiten. Yllättävästi ionisuuden voimakkuuden todettiin korreloivan sakan liuotuspotentiaalin kanssa erittäin hyvin (korrelaatiokerroin R²=0,9904). Toisen sakoista, furfuraalihiilen, todettiin liukenevan erittäin helposti laimeaan 0,1M NaOH liuokseen, joten sen liukoisuutta eutektisiin seoksiin ei tutkittu. Furfuraalihiilen moolimassaksi mitattiin keskimäärin n. 750 g/mol."
+   },
+   {
+    "id": "https://openalex.org/W4240199922",
+    "doi": "https://doi.org/10.17760/d20321688",
+    "title": "Self-emulsifying adjuvant systems containing alpha-tocopherol for subunit vaccines",
+    "year": 2019,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Monoclonal and Polyclonal Antibodies Research",
+     "Immunotherapy and Immune Responses",
+     "Protein purification and stability"
+    ],
+    "oa_url": "https://repository.library.northeastern.edu/files/neu:m044kn35j/fulltext.pdf",
+    "abstract": "Recombinant DNA technology has revolutionized vaccine antigen production yielding highly purified synthetic antigens that offer significant advantages such as higher yield, lower production costs and improved safety. However, their higher purity resulted in reduced immunogenicity compared to conventional vaccines, like whole-inactivated or live-attenuated, due to absence of inherent immunomodulatory components such as diverse pathogen-associated molecular patterns (PAMPs). Vaccine adjuvants are components that enhance the immune response to antigens with low immunogenicity. These adjuvants represent a wide range of materials from synthetic molecules to heterogenous extract of natural products and include particulates such as emulsions, nanoparticles and liposomes. Among the particulate adjuvants, emulsion adjuvants have been used since early 1930s to improve immune responses to vaccine antigens. Emulsion adjuvants used in clinic such as MF59 (used in Fluad®) and AS03 used (in Pandemrix®) have helped in reducing the antigen dose as well as the number of immunizations required to achieve the required immune response. These attributes make emulsion adjuvants favorable for use, especially with influenza antigens. Most of the emulsion adjuvants currently available in clinic or in development use high shear and energy consuming processes such as high-pressure homogenization and microfluidization. Such complex processes, requiring expensive equipment and strict manufacturing requirements, make it a limitation for production in developing countries leading to unavailability in these less-privileged regions of the world. The 2009 H1N1 pandemic was an example where not enough doses of vaccine and the adjuvant were available to dose the entire population. Thus, there certainly exists a need to make the adjuvant production simple and less-expensive to aide in efficient storage, distribution and availability in all parts of the world. Like MF59 and AS03, several other emulsion adjuvants have squalene oil as main component along with different surfactants to stabilize the oil droplets. AS03 also has α-tocopherol added as an immunomodulator. α-Tocopherol has been used as an immune supplement for several decades now and has been an active component of veterinary vaccine adjuvants. AS03 has shown better immune response profile compared to squalene-only emulsion adjuvants in preclinical (using Hepatitis B antigen in BALB/c mice) as well as clinical studies (using H7N9 antigen and comparison with MF59) suggesting role of α-tocopherol in providing additional immunostimulation. More recently, it was shown that AS03 elicited a rapid and transient downregulation of lipid metabolism-related genes in the draining lymph node. They showed that the adjuvant effect elicited by AS03 may be due to the metabolic changes induced by AS03 via stress kinase receptor IRE1-α in the monocytic cells. Despite these evidences, use of α-tocopherol has only been in AS03 hitherto. This work"
+   },
+   {
+    "id": "https://openalex.org/W4386792779",
+    "doi": "https://doi.org/10.58837/chula.the.2019.389",
+    "title": "Removal of trace olefins from aromatics with modified USY zeolite and clays",
+    "year": 2019,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Zeolite Catalysis and Synthesis",
+     "Catalysis and Hydrodesulfurization Studies",
+     "Catalysis for Biomass Conversion"
+    ],
+    "oa_url": "http://cuir.car.chula.ac.th/bitstream/123456789/72740/1/Sirawit%20Le_Petro_2019.pdf",
+    "abstract": "Naphtha reforming is an important raw material for aromatic hydrocarbon products in petrochemical processes. However, aromatic hydrocarbon streams obtained from refinery contain unavoidable trace amounts of olefins as an impurity. The trace olefins must be removed because these undesirable olefins are harmful to the following separation processes. Alkylation reaction has been used to remove olefins with acid catalysts. In this study, clays and zeolites were screened for further modification in order to enhance the catalytic activity of olefins removal. The catalytic activity testing was studied in a batch reactor at 195 ℃ for 6 h under 12 barg. USY was modified by dealumination with 0.075 – 0.3 M citric acid, and bentonite was modified by acid activation with 1–6 M hydrochloric acid. The properties of catalysts were determined by XRD, XRF, N₂ adsorption, TPD-NH₃, and STA. The results showed that the modification of USY with 0.15 M citric acid increased the surface area and proportion of strong acid sites to total acid sites resulting in the increase in the initial and final olefins removal from 76 to 87% and 84 to 90%, respectively. Likewise, the modification of bentonite with 1 M hydrochloric acid increased the acidity leading to the increase in the initial and final olefins removal from 74 to 81% and 86 to 90%, respectively."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Metrohm 851\" OR \"Metrohm 851 Titrando\") AND OPEN_ACCESS:y",
@@ -157,8 +487,16 @@
    "standards": []
   }
  ],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "IEC 60156": 1,
+  "IEC 60247": 1,
+  "SAE 15W": 1
+ },
+ "standards_new": [
+  "IEC 60156",
+  "IEC 60247",
+  "SAE 15W"
+ ],
  "test_item_hits": {
   "microscopy": 3,
   "water_content": 1

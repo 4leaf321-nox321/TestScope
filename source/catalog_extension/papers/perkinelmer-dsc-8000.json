@@ -11,8 +11,757 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"PerkinElmer DSC 4000\" OR \"PerkinElmer DSC\" OR \"PerkinElmer DSC 6000\" OR \"PerkinElmer DSC 8000\" OR \"PerkinElmer DSC 8500\"",
-  "count": null,
-  "works": []
+  "count": 871,
+  "works": [
+   {
+    "id": "https://openalex.org/W2018521903",
+    "doi": "https://doi.org/10.1208/pt080121",
+    "title": "Preparation and characterization of polyvinyl alcohol-gelatin hydrogel membranes for biomedical applications",
+    "year": 2007,
+    "cited": 383,
+    "venue": "AAPS PharmSciTech",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "3D Printing in Biomedical Research",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1208/pt080121.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2059197629",
+    "doi": "https://doi.org/10.1016/j.compositesa.2014.04.003",
+    "title": "Polylactic acid (PLA) biocomposites reinforced with coir fibres: Evaluation of mechanical performance and multifunctional properties",
+    "year": 2014,
+    "cited": 351,
+    "venue": "Composites Part A Applied Science and Manufacturing",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "biodegradable polymer synthesis and properties",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://espace.curtin.edu.au/bitstream/20.500.11937/29247/2/199098_199098.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4210353156",
+    "doi": "https://doi.org/10.1002/advs.202104168",
+    "title": "Ultra‐Sensitive, Deformable, and Transparent Triboelectric Tactile Sensor Based on Micro‐Pyramid Patterned Ionic Hydrogel for Interactive Human–Machine Interfaces",
+    "year": 2022,
+    "cited": 330,
+    "venue": "Advanced Science",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Tactile and Sensory Interactions",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202104168",
+    "abstract": "Abstract Rapid advances in wearable electronics and mechno‐sensational human–machine interfaces impose great challenges in developing flexible and deformable tactile sensors with high efficiency, ultra‐sensitivity, environment‐tolerance, and self‐sustainability. Herein, a tactile hydrogel sensor (THS) based on micro‐pyramid‐patterned double‐network (DN) ionic organohydrogels to detect subtle pressure changes by measuring the variations of triboelectric output signal without an external power supply is reported. By the first time of pyramidal‐patterned hydrogel fabrication method and laminated polydimethylsiloxane (PDMS) encapsulation process, the self‐powered THS shows the advantages of remarkable flexibility, good transparency (≈85%), and excellent sensing performance, including extraordinary sensitivity (45.97 mV Pa −1 ), fast response (≈20 ms), very low limit of detection (50 Pa) as well as good stability (36 000 cycles). Moreover, with the LiBr immersion treatment method, the THS possesses excellent long‐term hyper anti‐freezing and anti‐dehydrating properties, broad environmental tolerance (−20 to 60 °C), and instantaneous peak power density of 20 µW cm −2 , providing reliable contact outputs with different materials and detecting very slight human motions. By integrating the signal acquisition/process circuit, the THS with excellent self‐power sensing ability is utilized as a switching button to control electric appliances and robotic hands by simulating human finger gestures, offering its great potentials for wearable and multi‐functional electronic applications."
+   },
+   {
+    "id": "https://openalex.org/W4288699713",
+    "doi": "https://doi.org/10.1038/s41467-022-32140-3",
+    "title": "Fatigue-free artificial ionic skin toughened by self-healable elastic nanomesh",
+    "year": 2022,
+    "cited": 256,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-32140-3.pdf",
+    "abstract": "Abstract Robust ionic sensing materials that are both fatigue-resistant and self-healable like human skin are essential for soft electronics and robotics with extended service life. However, most existing self-healable artificial ionic skins produced on the basis of network reconfiguration suffer from a low fatigue threshold due to the easy fracture of low-energy amorphous polymer chains with susceptible crack propagation. Here we engineer a fatigue-free yet fully healable hybrid ionic skin toughened by a high-energy, self-healable elastic nanomesh, resembling the repairable nanofibrous interwoven structure of human skin. Such a design affords a superhigh fatigue threshold of 2950 J m−2 while maintaining skin-like compliance, stretchability, and strain-adaptive stiffening response. Moreover, nanofiber tension-induced moisture breathing of ionic matrix leads to a record-high strain-sensing gauge factor of 66.8, far exceeding previous intrinsically stretchable ionic conductors. This concept creates opportunities for designing durable ion-conducting materials that replicate the unparalleled combinatory properties of natural skins more precisely."
+   },
+   {
+    "id": "https://openalex.org/W2964598890",
+    "doi": "https://doi.org/10.1038/s41467-019-11439-8",
+    "title": "Overlooked electrolyte destabilization by manganese (II) in lithium-ion batteries",
+    "year": 2019,
+    "cited": 243,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Extraction and Separation Processes"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-11439-8.pdf",
+    "abstract": "Transition-metal dissolution from cathode materials, manganese in particular, has been held responsible for severe capacity fading in lithium-ion batteries, with the deposition of the transition-metal cations on anode surface, in elemental form or as chelated-complexes, as the main contributor for such degradations. In this work we demonstrate with diverse experiments and calculations that, besides interfacial manganese species on anode, manganese(II) in bulk electrolyte also significantly destabilizes electrolyte components with its unique solvation-sheath structure, where the decompositions of carbonate molecules and hexafluorophosphate anion are catalyzed via their interactions with manganese(II). The manganese(II)-species eventually deposited on anode surface resists reduction to its elemental form because of its lower electrophilicity than carbonate molecule or anion, whose destabilization leads to sustained consumption. The reveal understanding of the once-overlooked role of manganese-dissolution in electrolytes provides fresh insight into the failure mechanism of manganese-based cathode chemistries, which serves as better guideline to electrolyte design for future batteries."
+   },
+   {
+    "id": "https://openalex.org/W1986834929",
+    "doi": "https://doi.org/10.2147/ijn.s35329",
+    "title": "Development and evaluation of thymoquinone-encapsulated chitosan nanoparticles for nose-to-brain targeting: a pharmacoscintigraphic study",
+    "year": 2012,
+    "cited": 218,
+    "venue": "International Journal of Nanomedicine",
+    "topics": [
+     "Nigella sativa pharmacological applications",
+     "Nanoparticle-Based Drug Delivery",
+     "Bioactive Compounds and Antitumor Agents"
+    ],
+    "oa_url": "https://www.dovepress.com/getfile.php?fileID=14453",
+    "abstract": "Chitosan (CS) nanoparticles of thymoquinone (TQ) were prepared by the ionic gelation method and are characterized on the basis of surface morphology, in vitro or ex vivo release, dynamic light scattering, and X-ray diffractometry (XRD) studies. Dynamic laser light scattering and transmission electron microscopy confirmed the particle diameter was between 150 to 200 nm. The results showed that the particle size of the formulation was significantly affected by the drug:CS ratio, whereas it was least significantly affected by the tripolyphosphate:CS ratio. The entrapment efficiency and loading capacity of TQ was found to be 63.3% ± 3.5% and 31.23% ± 3.14%, respectively. The drug-entrapment efficiency and drug-loading capacity of the nanoparticles appears to be inversely proportional to the drug:CS ratio. An XRD study proves that TQ dispersed in the nanoparticles changes its form from crystalline to amorphous. This was further confirmed by differential scanning calorimetry thermography. The flat thermogram of the nanoparticle data indicated that TQ formed a molecular dispersion within the nanoparticles. Optimized nanoparticles were evaluated further with the help of scintigraphy imaging, which ascertains the uptake of drug into the brain. Based on maximum concentration, time-to-maximum concentration, area-under-curve over 24 hours, and elimination rate constant, intranasal TQ-loaded nanoparticles (TQ-NP1) proved more effective in brain targeting compared to intravenous and intranasal TQ solution. The high drug-targeting potential and efficiency demonstrates the significant role of the mucoadhesive properties of TQ-NP1."
+   },
+   {
+    "id": "https://openalex.org/W2079955046",
+    "doi": "https://doi.org/10.1016/j.enbuild.2014.03.061",
+    "title": "Analyses of exergy efficiency and pumping power for a conventional flat plate solar collector using SWCNTs based nanofluid",
+    "year": 2014,
+    "cited": 190,
+    "venue": "Energy and Buildings",
+    "topics": [
+     "Nanofluid Flow and Heat Transfer",
+     "Solar Thermal and Photovoltaic Systems",
+     "Heat Transfer and Optimization"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2102037574",
+    "doi": "https://doi.org/10.1038/ncomms3204",
+    "title": "Chemical influence on β-relaxations and the formation of molecule-like metallic glasses",
+    "year": 2013,
+    "cited": 158,
+    "venue": "Nature Communications",
+    "topics": [
+     "Material Dynamics and Properties",
+     "Theoretical and Computational Physics"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms3204.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4393037966",
+    "doi": "https://doi.org/10.1007/s40820-024-01375-8",
+    "title": "Boosting Hydrogen Storage Performance of MgH2 by Oxygen Vacancy-Rich H-V2O5 Nanosheet as an Excited H-Pump",
+    "year": 2024,
+    "cited": 151,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Hydrogen Storage and Materials",
+     "Superconductivity in MgB2 and Alloys",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-024-01375-8.pdf",
+    "abstract": "Abstract MgH 2 is a promising high-capacity solid-state hydrogen storage material, while its application is greatly hindered by the high desorption temperature and sluggish kinetics. Herein, intertwined 2D oxygen vacancy-rich V 2 O 5 nanosheets (H-V 2 O 5 ) are specifically designed and used as catalysts to improve the hydrogen storage properties of MgH 2 . The as-prepared MgH 2 -H-V 2 O 5 composites exhibit low desorption temperatures ( T onset = 185 °C) with a hydrogen capacity of 6.54 wt%, fast kinetics ( E a = 84.55 ± 1.37 kJ mol −1 H 2 for desorption), and long cycling stability. Impressively, hydrogen absorption can be achieved at a temperature as low as 30 °C with a capacity of 2.38 wt% within 60 min. Moreover, the composites maintain a capacity retention rate of ~ 99% after 100 cycles at 275 °C. Experimental studies and theoretical calculations demonstrate that the in-situ formed VH 2 /V catalysts, unique 2D structure of H-V 2 O 5 nanosheets, and abundant oxygen vacancies positively contribute to the improved hydrogen sorption properties. Notably, the existence of oxygen vacancies plays a double role, which could not only directly accelerate the hydrogen ab/de-sorption rate of MgH 2 , but also indirectly affect the activity of the catalytic phase VH 2 /V, thereby further boosting the hydrogen storage performance of MgH 2 . This work highlights an oxygen vacancy excited “hydrogen pump” effect of VH 2 /V on the hydrogen sorption of Mg/MgH 2 . The strategy developed here may pave a new way toward the development of oxygen vacancy-rich transition metal oxides catalyzed hydride systems."
+   },
+   {
+    "id": "https://openalex.org/W3035212201",
+    "doi": "https://doi.org/10.3390/polym12061334",
+    "title": "Morphology and Mechanical Properties of 3D Printed Wood Fiber/Polylactic Acid Composite Parts Using Fused Deposition Modeling (FDM): The Effects of Printing Speed",
+    "year": 2020,
+    "cited": 146,
+    "venue": "Polymers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "biodegradable polymer synthesis and properties",
+     "Microplastics and Plastic Pollution"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/12/6/1334/pdf?version=1592293081",
+    "abstract": "In this study, a wood fiber/polylactic acid composite (WPC) filament was used as feedstock to print the WPC part by means of fused deposition modeling (FDM). The morphology and mechanical properties of WPC parts printed at different speeds (30, 50, and 70 mm/s) were determined. The results show that the density of the printed WPC part increased as the printing speed decreased, while its surface color became darker than that of parts printed at a high speed. The printing time decreased with an increasing printing speed; however, there was a small difference in the time saving percentage without regard to the dimensions of the printed WPC part at a given printing speed. Additionally, the tensile and flexural properties of the printed WPC part were not significantly influenced by the printing speed, whereas the compressive strength and modulus of the FDM-printed part significantly decreased by 34.3% and 14.6%, respectively, when the printing speed was increased from 30 to 70 mm/s. Furthermore, scanning electronic microscopy (SEM) illustrated that the FDM process at a high printing speed produced an uneven surface of the part with a narrower width of printed layers, and pull-outs of wood fibers were more often observed on the fracture surface of the tensile sample. These results show that FDM manufacturing at different printing speeds has a substantial effect on the surface color, surface roughness, density, and compressive properties of the FDM-printed WPC part."
+   },
+   {
+    "id": "https://openalex.org/W2901127019",
+    "doi": "https://doi.org/10.1016/j.foodres.2018.11.023",
+    "title": "Liposomes loaded with phenolic extracts of Spirulina LEB-18: Physicochemical characterization and behavior under simulated gastrointestinal conditions",
+    "year": 2018,
+    "cited": 119,
+    "venue": "Food Research International",
+    "topics": [
+     "Proteins in Food Systems",
+     "Microencapsulation and Drying Processes",
+     "Surfactants and Colloidal Systems"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0963996918309086-ga1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2997966139",
+    "doi": "https://doi.org/10.1002/adfm.201908558",
+    "title": "Re‐Engineering Poly(Acrylic Acid) Binder toward Optimized Electrochemical Performance for Silicon Lithium‐Ion Batteries: Branching Architecture Leads to Balanced Properties of Polymeric Binders",
+    "year": 2019,
+    "cited": 117,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1632851",
+    "abstract": "Abstract Silicon is a promising anode material for lithium‐ion batteries with its superior capacity. However, the drastic volume changes during lithiation/delithiation cycles hinder the cycling performance, resulting in particle pulverization, conductivity loss, and an unstable electrode–electrolyte interface. Herein, a series of synthetic polymeric binders, poly(acrylic acid‐ co ‐tetra(ethylene glycol) diacrylate)—featuring a poly(acrylic acid) (PAA) backbone branched via tetra(ethylene glycol) diacrylate (TEGDA)—are developed that edge toward evidencing well‐balanced properties to confront capacity fading in Si‐based electrodes. The incorporation of ether chain not only leads to the branching architecture of the PAA backbone, thus affecting its mechanical properties, but also promotes the conductivity of Li ions. As a result, a synergistic performance improvement is observed in both half and full cells. The best‐performing cell using a branched PAA binder (bPAA) with a feeding molar ratio ([TEGDA]:[acrylic acid(AA)]) of 0.2 results in a 10% increase in initial capacity and a 31% increase in capacity retention over 100 cycles compared to the linear PAA cell. The cross‐sectional microscopic images of the cycled electrodes reveal that bPAA binders can drastically reduce the electrode expansion. This improvement results from the well‐balanced properties of the polymer design, which could guide further development for more advanced binder materials."
+   },
+   {
+    "id": "https://openalex.org/W4381548454",
+    "doi": "https://doi.org/10.1126/sciadv.adg5332",
+    "title": "A reusable, impurity-tolerant and noble metal–free catalyst for hydrocracking of waste polyolefins",
+    "year": 2023,
+    "cited": 113,
+    "venue": "Science Advances",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adg5332?download=true",
+    "abstract": "One-step conversion of low-purity polyolefins to value-added products without pretreatments represents a great opportunity for chemical recycling of waste plastics. However, additives, contaminants, and heteroatom-linking polymers tend to be incompatible with catalysts that break down polyolefins. Here, we disclose a reusable, noble metal–free and impurity-tolerant bifunctional catalyst, MoS x -Hbeta, for hydroconversion of polyolefins into branched liquid alkanes under mild conditions. The catalyst works for a wide scope of polyolefins, including different kinds of high–molecular weight polyolefins, polyolefins mixed with various heteroatom-linking polymers, contaminated polyolefins, and postconsumer polyolefins with/without cleaning under 250°C and 20 to 30 bar H 2 in 6 to 12 hours. A 96% yield of small alkanes was successfully achieved even at a temperature as low as 180°C. These results demonstrate the great potentials of hydroconversion in practical use of waste plastics as a largely untapped carbon feedstock."
+   },
+   {
+    "id": "https://openalex.org/W2113507608",
+    "doi": "https://doi.org/10.1002/pen.20468",
+    "title": "Homopolymerization of epoxy monomers initiated by 4‐(dimethylamino)pyridine",
+    "year": 2006,
+    "cited": 109,
+    "venue": "Polymer Engineering and Science",
+    "topics": [
+     "Silicone and Siloxane Chemistry",
+     "Synthesis and properties of polymers",
+     "Epoxy Resin Curing Processes"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pen.20468",
+    "abstract": "Abstract The anionic epoxy homopolymerization initiated by tertiary amines, imidazoles, and ammonium salts is a complex reaction exhibiting two undesired characteristics for practical applications: (a) slow reaction rates with long induction periods, and (b) short primary chains due to the high rate of chain transfer reactions. Therefore, these systems have not found an important place in commercial applications. In this study, it is shown that using 4‐(dimethylamino)pyridine (DMAP) as initiator of the polymerization of phenyl glycidyl ether (PGE) or diglycidyl ether of bisphenol A (DGEBA) enables to obtain high polymerization rates and longer primary chains than those generated using typical initiators. A critical molar ratio DMAP/epoxy groups was necessary to attain complete conversion. Networks resulting from the DMAP‐initiated homopolymerization of DGEBA exhibited a high crosslink density and corresponding high values of the glass transition temperature ( T g = 160°C) and of the rubbery elastic modulus (higher than 100 MPa). An intense brown color of reaction products, associated with an absorption band with a maximum at 360 nm, was ascribed to the presence of initiator fragments with conjugated double bonds in chain ends. These results might revalorize the anionic homopolymerization of epoxy monomers for commercial applications. POLYM. ENG. SCI. 46:351–359, 2006. © 2006 Society of Plastics Engineers"
+   },
+   {
+    "id": "https://openalex.org/W2137267593",
+    "doi": "https://doi.org/10.1208/pt0803075",
+    "title": "Micromatricial metronidazole benzoate film as a local mucoadhesive delivery system for treatment of periodontal diseases",
+    "year": 2007,
+    "cited": 102,
+    "venue": "AAPS PharmSciTech",
+    "topics": [
+     "Advanced Drug Delivery Systems",
+     "Oral microbiology and periodontitis research",
+     "Oral and gingival health research"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1208/pt0803075.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2479034580",
+    "doi": "https://doi.org/10.1038/srep30479",
+    "title": "In vitro synthesis of linear α-1,3-glucan and chemical modification to ester derivatives exhibiting outstanding thermal properties",
+    "year": 2016,
+    "cited": 99,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Enzyme Production and Characterization",
+     "Polysaccharides and Plant Cell Walls",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep30479.pdf",
+    "abstract": "Bio-based polymer is considered as one of potentially renewable materials to reduce the consumption of petroleum resources. We report herein on the one-pot synthesis and development of unnatural-type bio-based polysaccharide, α-1,3-glucan. The synthesis can be achieved by in vitro enzymatic polymerization with GtfJ enzyme, one type of glucosyltransferase, cloned from Streptococcus salivarius ATCC 25975 utilizing sucrose, a renewable feedstock, as a glucose monomer source, via environmentally friendly one-pot water-based reaction. The structure of α-1,3-glucan is completely linear without branches with weight-average molecular weight (Mw) of 700 kDa. Furthermore, acetate and propionate esters of α-1,3-glucan were synthesized and characterized. Interestingly, α-1,3-glucan acetate showed a comparatively high melting temperature at 339 °C, higher than that of commercially available thermoplastics such as PET (265 °C) and Nylon 6 (220 °C). Thus, the discovery of crystalline α-1,3-glucan esters without branches with high thermal stability and melting temperature opens the gate for further researches in the application of thermoplastic materials."
+   },
+   {
+    "id": "https://openalex.org/W2725275092",
+    "doi": "https://doi.org/10.1038/nphys4191",
+    "title": "Charge density wave quantum critical point with strong enhancement of superconductivity",
+    "year": 2017,
+    "cited": 95,
+    "venue": "Nature Physics",
+    "topics": [
+     "Rare-earth and actinide compounds",
+     "Iron-based superconductors research",
+     "Organic and Molecular Conductors Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/nphys4191.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4221110429",
+    "doi": "https://doi.org/10.1016/j.colsurfb.2022.112455",
+    "title": "Electroactive calcium-alginate/polycaprolactone/reduced graphene oxide nanohybrid hydrogels for skeletal muscle tissue engineering",
+    "year": 2022,
+    "cited": 93,
+    "venue": "Colloids and Surfaces B Biointerfaces",
+    "topics": [
+     "Graphene and Nanomaterials Applications",
+     "Bone Tissue Engineering Materials",
+     "3D Printing in Biomedical Research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0927776522001382/pdf",
+    "abstract": "Graphene derivatives such as reduced graphene oxide (rGO) are used as components of novel biomaterials for their unique electrical properties. Electrical conductivity is a crucial factor for muscle cells, which are electrically active. This study reports the development of a new type of semi-interpenetrated polymer network based on two biodegradable FDA-approved biomaterials, sodium alginate (SA) and polycaprolactone (PCL), with Ca2+ ions as SA crosslinker. Several drawbacks such as the low cell adhesion of SA and weak structural stability can be improved with the incorporation of PCL. Furthermore, this study demonstrates how this semi-IPN can be engineered with rGO nanosheets (0.5% and 2% wt/wt rGO nanosheets) to produce electroactive nanohybrid composite biomaterials. The study focuses on the microstructure and the enhancement of physical and biological properties of these advanced materials, including water sorption, surface wettability, thermal behavior and thermal degradation, mechanical properties, electrical conductivity, cell adhesion and myogenic differentiation. The results suggest the formation of a complex nano-network with different interactions between the components: bonds between SA chains induced by Ca2+ ions (egg-box model), links between rGO nanosheets and SA chains as well as between rGO nanosheets themselves through Ca2+ ions, and strong hydrogen bonding between rGO nanosheets and SA chains. The incorporation of rGO significantly increases the electrical conductivity of the nanohybrid hydrogels, with values in the range of muscle tissue. In vitro cultures with C2C12 murine myoblasts revealed that the conductive nanohybrid hydrogels are not cytotoxic and can greatly enhance myoblast adhesion and myogenic differentiation. These results indicate that these novel electroactive nanohybrid hydrogels have great potential for biomedical applications related to the regeneration of electroactive tissues, particularly in skeletal muscle tissue engineering."
+   },
+   {
+    "id": "https://openalex.org/W3041376668",
+    "doi": "https://doi.org/10.1039/d0ra00274g",
+    "title": "Study on the biodegradability of modified starch/polylactic acid (PLA) composite materials",
+    "year": 2020,
+    "cited": 93,
+    "venue": "RSC Advances",
+    "topics": [
+     "biodegradable polymer synthesis and properties",
+     "Microplastics and Plastic Pollution",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2020/ra/d0ra00274g",
+    "abstract": "In this work, polylactic acid/thermoplastic acetylated starch (PLA/TPAS) composites were prepared using PLA as a matrix material and TPAS as a modifier. TPAS is based on acetylated starch, which is plasticized using glycerin. Analysis of the mechanical, thermal, and dynamic mechanical properties, and morphological structures of the PLA/TPAS composites shows that with an increase in the TPAS content, the toughness of the PLA/TPAS composites significantly improves. When the amount of TPAS added is 40% by weight, the elongation at break is increased 4 times. At the same time, the addition of TPAS has little effect on the thermal stability of the composites. Differential scanning calorimetry (DSC), dynamic mechanical analysis and scanning electron microscopy (SEM) analysis results show that PLA is incompatible with TPAS. The addition of TPAS promotes the crystallization of PLA, resulting in a decrease in the thermal stability but limits the degradation behavior during the processing of the material, which has little effect on the performance of the material. High temperature and high humidity soil degradation and ultraviolet radiation aging experiments on PLA/TPAS composites show that the PLA/TPAS composites have good biodegradability. In soil burial degradation experiments, the degradation rate of the pure PLA material is slow, and its final mass retention rate is high. The PLA/TPAS composites degrade fast. In ultraviolet radiation aging experiments, the tensile strength of the PLA/TPAS composites was improved to a certain extent after exposure to ultraviolet radiation. With an increase in the ultraviolet irradiation time, the tensile properties of the PLA/TPAS composites gradually decreased."
+   },
+   {
+    "id": "https://openalex.org/W2120589186",
+    "doi": "https://doi.org/10.1002/app.11268",
+    "title": "Effects of molecular architecture on two‐step, melt‐spun poly(lactic acid) fibers",
+    "year": 2002,
+    "cited": 90,
+    "venue": "Journal of Applied Polymer Science",
+    "topics": [
+     "biodegradable polymer synthesis and properties",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Microplastics and Plastic Pollution"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/app.11268",
+    "abstract": "Abstract Fibers of poly(lactic acid) (PLA) produced by two‐step melt spinning have been studied. The PLA resins used contain a 96:04 ratio of L:D stereochemical centers; however, one of the materials is branched by a peroxide treatment. The thermal, mechanical, and morphological properties of the fibers are compared for the two different molecular architectures. In the branched material, at least some of the branches exceed the entanglement molecular weight. The branched material is accordingly characterized by greater shear and extensional viscosity than the linear material. Fiber properties are highly influenced by the draw ratio; both branched and linear materials reach a plateau of about 35% crystallinity. The branched polymer reaches the plateau at a lower draw ratio, and this is indicative of faster crystallization kinetics. Both materials shrink in boiling water, and the amount of shrinkage decreases with increasing draw ratio. At an intermediate draw ratio of 6, the branched material is characterized by significantly larger shrinkage. With small‐angle X‐ray scattering and atomic force microscopy, the morphology is found to be fibrillar. Microfibril diameters range from approximately 20 to 30 nm and are almost identical for the two molecular architectures studied. © 2002 Wiley Periodicals, Inc. J Appl Polym Sci 86: 2839–2846, 2002"
+   },
+   {
+    "id": "https://openalex.org/W2805790164",
+    "doi": "https://doi.org/10.1016/j.carbpol.2018.05.082",
+    "title": "Tough, resilient and pH-sensitive interpenetrating polyacrylamide/alginate/montmorillonite nanocomposite hydrogels",
+    "year": 2018,
+    "cited": 86,
+    "venue": "Carbohydrate Polymers",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "3D Printing in Biomedical Research",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://pure.qub.ac.uk/en/publications/84fc00b3-296b-4f81-b37e-45dd1e23aa0d",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2130484044",
+    "doi": "https://doi.org/10.1039/c4tc02444c",
+    "title": "Reversible J- to H-aggregate transformation in thin films of a perylenebisimide organogelator",
+    "year": 2014,
+    "cited": 85,
+    "venue": "Journal of Materials Chemistry C",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Supramolecular Self-Assembly in Materials",
+     "Photochromic and Fluorescence Chemistry"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2015/tc/c4tc02444c",
+    "abstract": "A perylene bisimide organogelator is shown to behave as a reversible stimuli responsive material: thermal annealing and contact with organic non solvents allow to switch back and forth between a green J-type (Form I) and a red H-type (Form II) aggregate in thin films and powders of a N , N ′-substituted H-bonding perylenebisimide (PBI-C10)."
+   },
+   {
+    "id": "https://openalex.org/W2321335266",
+    "doi": "https://doi.org/10.1021/ma502131k",
+    "title": "Influence of the Carboxylic Acid Additive Structure on the Properties of Poly(3-hexylthiophene) Prepared via Direct Arylation Polymerization (DArP)",
+    "year": 2015,
+    "cited": 84,
+    "venue": "Macromolecules",
+    "topics": [
+     "Catalytic Cross-Coupling Reactions",
+     "Carbon dioxide utilization in catalysis",
+     "N-Heterocyclic Carbenes in Organic and Inorganic Chemistry"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1369887",
+    "abstract": "Carboxylic acids are known to have a profound effect on the rate of direct arylation. Despite this, little attention has been paid to them as additives for direct arylation polymerization (DArP). Here we report the influence of the carboxylic acid chemical structure on the properties of poly(3-hexylthiophene) (P3HT) prepared via DArP. We study the effect that acid p K a, steric bulk, and backbone cyclization have on the reactivity of the DArP catalytic system. We found that p K a values do not correlate with DArP reactivity in the p K a range of 4.76–5.05. The increase of acid size in the classes of linear, secondary, and tertiary acids leads to a continuous increase in polymer yield and molecular weight, whereas for the case of cyclic secondary acids the trend is reversed and a decrease of acid size leads to an increase in polymer yield and molecular weight in an alternating (zigzag) fashion depending on whether the acid contains an even or odd number of carbons. A profound enhancement of reactivity was found for the case of the smallest cyclopropanecarboxylic acid, which yields P3HT with remarkably high molecular weights ( M n 33.4 kDa and M w 207.1 kDa), which is expected to benefit the development of direct arylation protocols for inherently less reactive substrates."
+   },
+   {
+    "id": "https://openalex.org/W3125159809",
+    "doi": "https://doi.org/10.3390/gels7010010",
+    "title": "Fabrication and Characterization of Diclofenac Sodium Loaded Hydrogels of Sodium Alginate as Sustained Release Carrier",
+    "year": 2021,
+    "cited": 83,
+    "venue": "Gels",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "Advanced Drug Delivery Systems",
+     "Advancements in Transdermal Drug Delivery"
+    ],
+    "oa_url": "https://www.mdpi.com/2310-2861/7/1/10/pdf?version=1611826441",
+    "abstract": "The aim of the current study was to fabricate naturally derived polymer based hydrogels for controlled release of diclofenac sodium (DS) for a long duration of time. In this research work, sodium alginate-co-poly(2-acrylamido-2-methyl propane sulphonic acid) (SA-co-poly(AMPS)) hydrogels were prepared by the free radical polymerization technique, where sodium alginate (SA) and 2-acrylamido-2-methyl propane sulphonic acid (AMPS) were used as the polymer and monomer while ammonium peroxodisulfate (APS) and N,N'-Methylene bisacrylamide (MBA) were used as the initiator and cross-linker, respectively. A swelling study was performed to determine the swelling index of developed hydrogels in both acidic (pH 1.2) and basic (pH 7.4) media and pH-independent swelling was observed due to the presence of AMPS. An in vitro release study was conducted to evaluate the percentage of drug released, and a high release of the drug was found at the higher pH of 7.4. Sol-gel analysis was performed to analyze the crosslinked and uncrosslinked part of the hydrogels, and results showed a rise in gel fraction as the composition of SA, AMPS and MBA increased while the sol fraction decreased and vice versa. This work demonstrated a potential for sustained delivery of diclofenac sodium by employing various concentration of SA, AMPS and MBA."
+   },
+   {
+    "id": "https://openalex.org/W3035015165",
+    "doi": "https://doi.org/10.1038/s41598-020-66341-x",
+    "title": "Synthesis, characterization and application of a non-flammable dicationic ionic liquid in lithium-ion battery as electrolyte additive",
+    "year": 2020,
+    "cited": 83,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Ionic liquids properties and applications",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-66341-x.pdf",
+    "abstract": "Abstract A novel dicationic room temperature ionic liquid, 1,1′-(5,14-dioxo-4,6,13,15-tetraazaoctadecane-1,18-diyl) bis(3-(sec-butyl)-1H-imidazol-3-ium) bis((trifluoromethyl)-sulfonyl) imide has been synthesized and fully characterized. Its thermal and electrochemical analyses along with transport properties have been studied. We propose it as a potential nominal additive to the commonly used conventional organic carbonate electrolyte mixture and study its adaptability in Lithium-ion batteries which are the prime power sources for ultraportable electronic devices. We have compared the performance characteristics of the full cells made without and with this ionic liquid. The cells comprise lithium nickel cobalt manganese oxide cathode, graphite anode and ethylene carbonate - dimethyl carbonate (1:1, v/v + LiPF6) mixture electrolyte with nominal amount of ionic liquid as additive. The major concern with conventional electrolytes such as degradation of the materials inside batteries has been addressed by this electrolyte additive. Additionally, this additive is safer at relatively higher temperature. In its presence, the overall battery life is enhanced and it shows good cycling performance and coulombic efficiency with better discharge capacities (22% higher) after 100 cycles. Even after the increase in current rate from 10 mA/g to 100 mA/g, the cell still retains around 73% of capacity."
+   },
+   {
+    "id": "https://openalex.org/W2946973390",
+    "doi": "https://doi.org/10.1016/j.foodhyd.2019.05.036",
+    "title": "Physicochemical and antioxidant properties of a gastroprotective exopolysaccharide produced by Streptococcus thermophilus CRL1190",
+    "year": 2019,
+    "cited": 82,
+    "venue": "Food Hydrocolloids",
+    "topics": [
+     "Polysaccharides and Plant Cell Walls",
+     "Polysaccharides Composition and Applications",
+     "Microbial Metabolites in Food Biotechnology"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0268005X18325153/pdf",
+    "abstract": "The exopolysaccharide EPS1190 was isolated with high purity from skim milk fermented by the strain Streptococcus thermophilus CRL1190, the major EPS amount being recovered at stationary growth-phase (70.7 mg/L after 16 h). This polymer revealed moderate antioxidant activity in vitro and useful technological properties such as good emulsifying and flocculating capacity at low concentrations, high aqueous solubility (9.1 mg/mL), water and oil holding capacity (528.5% and 1266%, respectively) as well as thermal behavior. Thermogravimetric, Differential Thermal Analysis and Differential Scanning Calorimetry curves showed that the biopolymer was thermally stable up to 216 °C with a crystalline deformation in an endothermic process (△H = 284.46 J) at a melting temperature of 74.08 °C. Furthermore, a degradation temperature (Td) of 295.4 °C was observed. These results postulate that EPS1190 could be used in the food industry due to its special micro-structure (scanning electron microscopy of EPS1190 demonstrated a homogeneous matrix with micro-porous and rough structure), its good performance and functionality in both aqueous and oil systems, which would remain at high temperatures."
+   },
+   {
+    "id": "https://openalex.org/W2049649250",
+    "doi": "https://doi.org/10.1002/jps.23983",
+    "title": "Matrix-Assisted Cocrystallization (MAC) Simultaneous Production and Formulation of Pharmaceutical Cocrystals by Hot-Melt Extrusion",
+    "year": 2014,
+    "cited": 82,
+    "venue": "Journal of Pharmaceutical Sciences",
+    "topics": [
+     "Crystallography and molecular interactions",
+     "Crystallization and Solubility Studies",
+     "Crystal structures of chemical compounds"
+    ],
+    "oa_url": "http://jpharmsci.org/article/S0022354915304317/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4300716922",
+    "doi": "https://doi.org/10.1016/j.polymertesting.2022.107803",
+    "title": "Overview of the mechanical, thermal and barrier properties of biobased and/or biodegradable thermoplastic materials",
+    "year": 2022,
+    "cited": 78,
+    "venue": "Polymer Testing",
+    "topics": [
+     "biodegradable polymer synthesis and properties",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Microplastics and Plastic Pollution"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0142941822003245/pdf",
+    "abstract": "This study gives an overview of the most relevant processing and performance properties of a wide selection of biobased and biodegradable plastic materials that are currently commercially available. It provides the most extensive and up-to-date scientific overview of critical properties of biobased and biodegradable plastics. Materials that are tested include fully biobased polymers (polylactic acid, polyethylene, polyamide 10,10 and a range of polyhydroxy alkanoates), partially biobased polymers (polybutylene succinate, polybutylene succinate adipate, cellulose acetate, cellulose acetate propionate, polyethylene terephthalate, polytrimethylene terephthalate, an isosorbide based polycarbonate, a thermoplastic urethane and a starch based blend) and a number of fossil-based materials (polycaprolactone, polybutylene adipate terephthalate, polyglycolic acid and polypropylene). The mechanical (tensile, flexural, impact resistance and hardness), thermal (glass transition temperature, melting temperature, melt-flow index and haul-off force) and barrier (oxygen transmission rate, water vapour transmission rate) properties of all these materials were measured and are presented in a comprehensive overview. This overview shows that the majority of functionalities that are currently being offered by fossil based polymers can be met by biobased alternatives and by biodegradable materials if this is considered to be favourable at end-of-life."
+   },
+   {
+    "id": "https://openalex.org/W2253945020",
+    "doi": "https://doi.org/10.1021/acs.jmedchem.5b01305",
+    "title": "Property Focused Structure-Based Optimization of Small Molecule Inhibitors of the Protein–Protein Interaction between Menin and Mixed Lineage Leukemia (MLL)",
+    "year": 2016,
+    "cited": 76,
+    "venue": "Journal of Medicinal Chemistry",
+    "topics": [
+     "Protein Degradation and Inhibitors",
+     "Click Chemistry and Applications",
+     "Cancer therapeutics and mechanisms"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1498394",
+    "abstract": "Development of potent small molecule inhibitors of protein-protein interactions with optimized druglike properties represents a challenging task in lead optimization process. Here, we report synthesis and structure-based optimization of new thienopyrimidine class of compounds, which block the protein-protein interaction between menin and MLL fusion proteins that plays an important role in acute leukemias with MLL translocations. We performed simultaneous optimization of both activity and druglike properties through systematic exploration of substituents introduced to the indole ring of lead compound 1 (MI-136) to identify compounds suitable for in vivo studies in mice. This work resulted in the identification of compound 27 (MI-538), which showed significantly increased activity, selectivity, polarity, and pharmacokinetic profile over 1 and demonstrated a pronounced effect in a mouse model of MLL leukemia. This study, which reports detailed structure-activity and structure-property relationships for the menin-MLL inhibitors, demonstrates challenges in optimizing inhibitors of protein-protein interactions for potential therapeutic applications."
+   },
+   {
+    "id": "https://openalex.org/W4318317990",
+    "doi": "https://doi.org/10.1002/adfm.202213771",
+    "title": "Light‐Responsive Programmable Shape‐Memory Soft Actuator Based on Liquid Crystalline Polymer/Polyurethane Network",
+    "year": 2023,
+    "cited": 75,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Polymer composites and self-healing",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202213771",
+    "abstract": "Abstract Liquid crystalline polymers (LCPs), especially liquid crystalline elastomers (LCEs) can generate ultrahigh shape change amplitude but has lower mechanical strength. Although some attempts have been tried to improve the mechanical performance of LCE, there are still limitations including complicated fabrication and high actuation temperature. Here, a versatile method is reported to fabricate light‐driven actuator by covalently cross‐linking polyurethane (PU) into LCP networks (PULCN). This new scheme is distinct from the previous interpenetrating network strategy, the hydrogen bonds and covalent bonds are used in this study to improve the miscibility of non‐liquid‐crystalline PU and LCP materials and enhance the stability of the composite system. This material not only possesses the shape memory properties of PU but shows shape‐changing behavior of LCPs. With a shrinkage ratio of 20% at the phase transition temperature, the prepared materials reached a maximum mechanical strength of 20 MPa, higher than conventional LCP. Meanwhile, the resulting film shows diverse and programmable initial shapes by constructing crosslinking density gradient across the thickness of the film. By integration of PULCN with near‐infrared light‐responsive polydopamine, local and sequential light control is achieved. This study may provide a new route for the fabrication of programmable and mechanically robust light‐driven soft actuator."
+   },
+   {
+    "id": "https://openalex.org/W4200057280",
+    "doi": "https://doi.org/10.1016/j.aej.2021.12.046",
+    "title": "Experimental investigations on thermophysical properties of nano-enhanced phase change materials for thermal energy storage applications",
+    "year": 2021,
+    "cited": 75,
+    "venue": "Alexandria Engineering Journal",
+    "topics": [
+     "Phase Change Materials Research",
+     "Solar Thermal and Photovoltaic Systems",
+     "Adsorption and Cooling Systems"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1110016821008565/pdf",
+    "abstract": "Thermophysical properties such as latent heat, viscosity and melting temperature could be changed for different physical properties of dispersed nanoparticle such as size, shape, and concentration. In this study, Nanocomposites-Enhanced Phase Change Materials NePCM are formed by dispersing Aluminium (Al) and Copper (Cu) nanoparticles into paraffin wax in various mass fractions (0.1, 0.3, 0.6, 1, 2.5 and 5%). The impact on the thermophysical properties of paraffin wax by the nanoparticles is also investigated. Heat conduction and differential scanning calorimeter experiments are used to investigate the effects of different nanoparticle concentrations on the melting point, solidification point, and latent capacity of nanocomposites. Experimental results show that the dispersion of nanoparticles of Al and Cu can decrease the melting temperature and increase the solidification temperature of PCM. this dispersion could also be limited due to increase in dynamic viscosity of the NePCM. Furthermore, Al and Cu nanocomposites with mass fractions of 2% and 1%, respectively, show better enhancements in the thermal storage characteristics of the paraffin compared to the next higher mass fraction."
+   },
+   {
+    "id": "https://openalex.org/W3107559415",
+    "doi": "https://doi.org/10.1016/j.jallcom.2020.157959",
+    "title": "Laser power modulated microstructure evolution, phase transformation and mechanical properties in NiTi fabricated by laser powder bed fusion",
+    "year": 2020,
+    "cited": 75,
+    "venue": "Journal of Alloys and Compounds",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0925838820343231",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2077642849",
+    "doi": "https://doi.org/10.7567/jjap.53.09pc02",
+    "title": "High piezoelectric performance of poly(lactic acid) film manufactured by solid-state extrusion",
+    "year": 2014,
+    "cited": 75,
+    "venue": "Japanese Journal of Applied Physics",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Nanocomposite Films for Food Packaging",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.7567/JJAP.53.09PC02/pdf",
+    "abstract": "Recently, the application of uniaxially stretched poly( l -lactic acid) (PLLA) films to speakers, actuators, and pressure sensors has been attempted, taking advantage of their piezoelectric performance. However, the shear piezoelectric constant d 14 of uniaxially stretched PLLA film is conventionally 6–10 pC N −1 . To realize a high sensitivity of pressure sensors, compact speakers, and actuators, and a low driving voltage, further improvement of the piezoelectric performance is desired. In this study, we carried out solid-state extrusion (SSE) to stretch and orient poly( d -lactic acid) (PDLA) and verified its effects on piezoelectric performance. By SSE, we were able to improve the mechanical strength and elastic modulus of PDLA samples. Furthermore, the d 14 of the samples was significantly increased to approximately 20 pC N −1 ."
+   },
+   {
+    "id": "https://openalex.org/W2122742282",
+    "doi": "https://doi.org/10.1016/j.tca.2012.04.024",
+    "title": "Simultaneous DSC-FTIR spectroscopy: Comparison of cross-linking kinetics of an epoxy/amine resin system",
+    "year": 2012,
+    "cited": 74,
+    "venue": "Thermochimica Acta",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Thermal and Kinetic Analysis",
+     "Crystallography and molecular interactions"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0040603112001992/pdf",
+    "abstract": "The top-cover of a conventional differential scanning calorimeter (DSC) was modified to accommodate two custom-made fibre-optic probes. The function of the probes was to illuminate the sample and reference compartments of the DSC and to return the reflected light from the DSC pans to a fibre-coupled Fourier transform near-infrared (FTIR) spectrometer. The cross-linking kinetics of a commercially available epoxy/amine resin system were studied using the conventional and modified DSC along with conventional transmission FTIR spectroscopy. The cross-linking kinetics and the activation energies for the epoxy/amine resin system obtained via the conventional DSC and simultaneous DSC/FTIR were similar (60.22–60.97 kJ mol−1). However, the activation energy obtained for the cuvette-based conventional transmission FTIR experiments was found to be lower (54.66 kJ mol−1). This may be attributed to the temperature-control attained within the cuvette holder. The feasibility of using a simple fibre-optic probe to link the DSC to the FTIR spectrometer was demonstrated."
+   },
+   {
+    "id": "https://openalex.org/W3209588035",
+    "doi": "https://doi.org/10.1002/adhm.202101415",
+    "title": "3D Printed Dual‐Porosity Scaffolds: The Combined Effect of Stiffness and Porosity in the Modulation of Macrophage Polarization",
+    "year": 2021,
+    "cited": 71,
+    "venue": "Advanced Healthcare Materials",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Bone Tissue Engineering Materials",
+     "Wound Healing and Treatments"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adhm.202101415",
+    "abstract": "Tissue regeneration evolves toward the biofabrication of sophisticated 3D scaffolds. However, the success of these will be contingent to their capability to integrate within the host. The control of the mechanical or topographical properties of the implant appears as an ideal method to modulate the immune response. However, the interplay between these properties is yet not clear. Dual-porosity scaffolds with varying mechanical and topographical features are created, and their immunomodulatory properties in rat alveolar macrophages in vitro and in vivo in a rat subcutaneous model are evaluated. Scaffolds are fabricated via additive manufacturing and thermally induced phase separation methods from two copolymers with virtually identical chemistries, but different stiffness. The introduction of porosity enables the modulation of macrophages toward anti-inflammatory phenotypes, with secretion of IL-10 and TGF-β. Soft scaffolds (<5 kPa) result in a pro-inflammatory phenotype in contrast to stiffer (>40 kPa) scaffolds of comparable porosities supporting a pro-healing phenotype, which appears to be related to the surface spread area of cells. In vivo, stiff scaffolds integrate, while softer scaffolds appear encapsulated after three weeks of implantation, resulting in chronic inflammation after six weeks. The results demonstrate the importance of evaluating the interplay between topography and stiffness of candidate scaffolds."
+   },
+   {
+    "id": "https://openalex.org/W3120379935",
+    "doi": "https://doi.org/10.1016/j.polymertesting.2021.107058",
+    "title": "Determining the PE fraction in recycled PP",
+    "year": 2021,
+    "cited": 71,
+    "venue": "Polymer Testing",
+    "topics": [
+     "Polymer crystallization and properties",
+     "Microplastics and Plastic Pollution",
+     "Polymer Nanocomposites and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0142941821000088/pdf",
+    "abstract": "The presence of a polyethylene (PE) fraction in recycled polypropylene (PP) will influence the processing as well as mechanical and thermal properties of recycled polypropylene. The objective of this work has been to compare methods used to determine the fraction of PE in recycled PP, establishing calibration curves for each method. Plastics waste will be a mix of different grades – homopolymers and copolymers. It has therefore been tested how specific material grades affect the results. Characterization methods used were differential scanning calorimetry (DSC), FT-IR spectroscopy, NMR, and gel content measurement after peroxide extrusion. We have applied the derived calibration curves for two different post-consumer, recycled PP (rPP) in addition to a known 50/50 blend of PE and PP. DSC, NMR, FT-IR and gel content give quite consistent estimates of the PE content."
+   },
+   {
+    "id": "https://openalex.org/W3030168304",
+    "doi": "https://doi.org/10.1039/d0sm00742k",
+    "title": "Rates of transesterification in epoxy–thiol vitrimers",
+    "year": 2020,
+    "cited": 71,
+    "venue": "Soft Matter",
+    "topics": [
+     "Polymer composites and self-healing",
+     "Advanced Polymer Synthesis and Characterization",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2020/sm/d0sm00742k",
+    "abstract": "Vitrimers, an important subset of dynamically crosslinked polymer networks, have many technological applications for their excellent properties, and the ability to be re-processed through plastic flow above the so-called vitrification temperature. We report a simple and efficient method of generating such adaptive crosslinked networks relying on transesterification for their bond exchange by utilising the 'click' chemistry of epoxy and thiols, which also has the advantage of a low glass transition temperature. We vary the chemical structure of thiol spacers to probe the effects of concentration and the local environment of ester groups on the macroscopic elastic-plastic transition. The thermal activation energy of transesterification bond exchange is determined for each chemical structure, and for a varying concentration of catalyst, establishing the conditions for the optimal, and for the suppressed bond exchange. However, we also discover that the temperature of elastic-plastic transition is strongly affected by the stiffness (dynamic rubber modulus) of the network, with softer networks having a much lower vitrification temperature even when their bond-exchange activation energy is higher. This combination of chemical and physical control factors should help optimise the processability of vitrimer plastics."
+   },
+   {
+    "id": "https://openalex.org/W2889032990",
+    "doi": "https://doi.org/10.1016/j.actamat.2018.08.032",
+    "title": "Structural and mechanical characterization of heterogeneities in a CuZr-based bulk metallic glass processed by high pressure torsion",
+    "year": 2018,
+    "cited": 71,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Metallic Glasses and Amorphous Alloys",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359645418306694/pdf",
+    "abstract": "Cu 45 Zr 45 Al 5 Ag 5 bulk metallic glass samples, processed by high pressure torsion (HPT) under various conditions, were characterized using synchrotron X-ray diffraction, nanoindentation, differential scanning calorimetry, atomic force and transmission electron microscopy. The experimental results clearly show that HPT modifies the amorphous structure by increasing the mean atomic volume. The level of rejuvenation, correlated with the excess mean atomic volume, is enhanced at higher shear strains as inferred from relaxation enthalpies. By mapping of structural and mechanical quantities, the strain-induced rejuvenated state is characterized on cross-sectional HPT samples on a local scale. A clear correlation both between elastic and plastic softening and between softening and excess mean atomic volume is obtained. But also the heterogeneity of the HPT induced rejuvenation is revealed, resulting in the formation of highly strain-softened regions next to less-deformed ones. A hardness drop of up to 20% is associated with an estimated increase of the mean atomic volume of up to 0.75%. Based on synchrotron X-ray diffraction and nanoindentation measurements it is concluded that elastic fluctuations are enhanced in the rejuvenated material on different length scales down to atomic scale. Furthermore, the calculated flexibility volume and the corresponding average mean square atomic displacement is increased. The plastic response during nanoindentation indicates that HPT processing promotes a more homogeneous-like deformation."
+   },
+   {
+    "id": "https://openalex.org/W4403892831",
+    "doi": "https://doi.org/10.1038/s41467-024-53674-8",
+    "title": "Scalable all polymer dielectrics with self-assembled nanoscale multiboundary exhibiting superior high temperature capacitive performance",
+    "year": 2024,
+    "cited": 70,
+    "venue": "Nature Communications",
+    "topics": [
+     "Dielectric materials and actuators",
+     "Ferroelectric and Piezoelectric Materials",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-53674-8.pdf",
+    "abstract": "Polymers are key dielectric materials for energy storage capacitors in advanced electronics and electric power systems due to their high breakdown strengths, low loss, great reliability, lightweight, and low cost. However, their electric and dielectric performance deteriorates at elevated temperatures, making them unable to meet the rising demand for harsh-environment electronics such as electric vehicles, renewable energy, and electrified transportation. Here, we present an all-polymer nanostructured dielectric material that achieves a discharged energy density of 7.1 J/cm³ with a charge-discharge efficiency of 90% at 150°C, outperforming the existing dielectric polymers and representing more than a twofold improvement in discharged energy density compared with polyetherimide. The self-assembled nano-scale multiboundaries effectively impede the charge injection and excitation, leading to more than one order of magnitude lower leakage current density than the pristine polymer matrix PEI at high electric fields and elevated temperature. In addition, the film processing is simple, straightforward, and low cost, thus this all-polymer nanostructured dielectric material strategy is suitable for the mass production of dielectric polymer films for high-temperature capacitive energy storage. The electric and dielectric performance of polymers usually deteriorates at elevated temperatures limiting their applicability for harsh-environment electronics. Here, the authors report an all-polymer nanostructured dielectric material with high temperature capacitive energy storage performance."
+   },
+   {
+    "id": "https://openalex.org/W2996869513",
+    "doi": "https://doi.org/10.1016/j.jddst.2019.101482",
+    "title": "Impact of nanosizing on dermal delivery and antioxidant activity of quercetin nanocrystals",
+    "year": 2019,
+    "cited": 70,
+    "venue": "Journal of Drug Delivery Science and Technology",
+    "topics": [
+     "Advancements in Transdermal Drug Delivery",
+     "Bee Products Chemical Analysis",
+     "Phytochemicals and Antioxidant Activities"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1773224719315710-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1994855513",
+    "doi": "https://doi.org/10.1002/pola.21265",
+    "title": "Thermal and mechanical analysis of metallocene‐catalyzed ethene–α‐olefin copolymers: The influence of the length and number of the crystallizing side chains",
+    "year": 2006,
+    "cited": 69,
+    "venue": "Journal of Polymer Science Part A Polymer Chemistry",
+    "topics": [
+     "Polymer crystallization and properties",
+     "Fuel Cells and Related Materials",
+     "Polymer Nanocomposites and Properties"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pola.21265",
+    "abstract": "Abstract Copolymers of ethene and 1‐octene, 1‐dodecene, 1‐octadecene, and 1‐hexacosene were carried out with [Ph2C(2,7‐di‐tertBuFlu)(Cp)]ZrCl2/methylalumoxane as a catalyst to obtain short‐chain branched polyethylenes with branch lengths of 6–26 carbon atoms. This catalyst provided high activity and a very good comonomer and hydrogen response. In this study, the influence of the length and number of the side chains on the mechanical properties of the materials was investigated. The crystalline methylene sequence lengths of the copolymers and lamellar thicknesses were calculated after the application of a differential scanning calorimetry/successive self‐annealing separation technique. By dynamic mechanical analysis, the storage modulus as an indicator of the stiffness and the loss modulus as a measure of the effect of branching on the α and β relaxations were studied. The results were related to the measurements of the polymer density and tensile strength to determine the effect of longer side chains on the material properties. The hexacosene copolymers had side chains of 24 carbons and remarkable material properties very different from those of conventional linear low‐density polyethylenes. The side chains of these copolymers crystallized with one another and not only parallel to the backbone lamellar layer, depending on the hexacosene concentration in the copolymer. The side chains crystallized even at low hexacosene concentrations in the copolymer. A transfer of these results to 16 carbons side chains in ethene–octadecene copolymers was also possible. © 2006 The Authors. Journal of Polymer Science Part A: Polymer Chemistry Published by Wiley Periodicals, Inc. J Polym Sci Part A: Polym Chem 44: 1600–1612, 2006"
+   },
+   {
+    "id": "https://openalex.org/W4312143456",
+    "doi": "https://doi.org/10.1016/j.ultsonch.2022.106280",
+    "title": "Physicochemical and antioxidative properties of ultrasound-assisted extraction of mahua (Madhuca longifolia) seed oil in comparison with conventional Soxhlet and mechanical extractions",
+    "year": 2022,
+    "cited": 65,
+    "venue": "Ultrasonics Sonochemistry",
+    "topics": [
+     "Phytochemicals and Antioxidant Activities",
+     "Food Chemistry and Fat Analysis",
+     "Edible Oils Quality and Analysis"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1350417722003765/pdf",
+    "abstract": "Ultrasound-assisted solvent extraction (UAE) was applied to extract underutilized Madhuca longifolia seed oil. The effect of extraction time, temperature, solvent type, solvent/sample ratio, and amplitude on the oil yield and recovery were investigated. Approximately 56.97% of oil yield and 99.54% of oil recovery were attained using mild conditions of 35 min, 35 °C, 40% amplitude, isopropanol to acetone (1:1), and solvent to sample (20 mL/g). UAE oil yield and recovery were comparable with Soxhlet extraction (SXE) whilst mechanical pressing (ME) yielded < 50% of UAE recovery. UAE does not affect the fatty acids composition (46% C18:1; 22% C16:0; 21% C18:0, 10% C18:2), and triacylglycerol profile (23% POO, 17% POS, 16% SOO, and 14% POP). Interestingly, UAE extracted oil conferred remarkably (P < 0.05) higher antioxidant capacity (IC50 of DPPH 106.60 mg/mL and ABTS 39.80 mg/mL) than SXE (IC50 of DPPH 810.40 mg/mL and ABTS 757.43 mg/mL) or ME (IC50 of DPPH 622.38 mg/mL and ABTS 392.87 mg/mL)."
+   },
+   {
+    "id": "https://openalex.org/W3094635988",
+    "doi": "https://doi.org/10.3390/foods9111599",
+    "title": "Development and Characterization of the Edible Packaging Films Incorporated with Blueberry Pomace",
+    "year": 2020,
+    "cited": 65,
+    "venue": "Foods",
+    "topics": [
+     "Nanocomposite Films for Food Packaging",
+     "Postharvest Quality and Shelf Life Management",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2304-8158/9/11/1599/pdf?version=1604539576",
+    "abstract": "This work focused on the development of starch-based (potato, corn, sweet potato, green bean and tapioca) edible packaging film incorporated with blueberry pomace powder (BPP). The optical, mechanical, thermal, and physicochemical properties were subsequently tested. The film color was not affected by the addition of BPP. BPP incorporated into corn and green bean starch films showed increased light barrier properties, indicating a beneficial effect to prevent UV radiation-induced food deterioration. Film thickness and transparency were not primarily affected by changing the starch type or the BPP concentration, although the corn starch films were the most transparent. Furthermore, all films maintained structural integrity and had a high tensile strength. The water vapor transmission rate of all the films was found to be greater than conventional polyethylene films. The average solubility of all the films made from different starch types was between 24 and 37%, which indicates the usability of these films for packaging, specifically for low to intermediate moisture foods. There were no statistical differences in Differential Scanning Calorimetry parameters with changes in the starch type and pomace levels. Migration assays showed a greater release of the active compounds from BPP into acetic acid medium (aqueous food simulant) than ethanol medium (fatty food simulant). The incorporation of BPP into starch-chitosan films resulted in the improvement of film performance, thereby suggesting the potential for applying BPP into starch-based films for active packaging."
+   },
+   {
+    "id": "https://openalex.org/W2903763637",
+    "doi": "https://doi.org/10.1021/acs.chemmater.8b03650",
+    "title": "Antifreeze Hydrogels from Amphiphilic Statistical Copolymers",
+    "year": 2018,
+    "cited": 65,
+    "venue": "Chemistry of Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Material Dynamics and Properties",
+     "Phase Change Materials Research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1493571",
+    "abstract": "Prevention of ice formation is a critical issue for many applications, but routes to overcome the large thermodynamic driving force for crystallization of water at significant supercooling are limited. Here, we demonstrate that supramolecular hydrogels formed from statistical copolymers of 2-hydroxyethyl acrylate (HEA) and 2-( N -ethylperfluorooctane sulfonamido)ethyl methacrylate (FOSM) exhibit a degree of ice formation suppression unprecedented in a synthetic material. The mechanisms of ice prevention by these hydrogels mimic two methods used by nature: (1) hydrogen bonding of water to highly hydrophilic macromolecular chains and (2) nanoconfinement of water between hydrophobic moieties. From systematic variation in the copolymer composition to control the nanoscale (<4 nm) separation of the self-assembled hydrophobic nanodomains, the main mechanism by which these supramolecular hydrogels inhibit large amounts of water from freezing appears to be soft nanoconfinement. Nearly complete ice inhibition was achieved in hydrogels when the nanodomain separation was <3 nm (i.e., confinement volume ∼15 nm 3 ) where <290 water molecules are present. Dielectric spectroscopy is consistent with two primary populations of water: a population of water with a bulk-like dynamics as well as T g (136 K) and a minority population of water with suppressed dynamics and an enhanced T g near 151 K that is attributed to interfacial water. The nanostructured design of these supramolecular hydrogels provides a blueprint concept for controlling and manipulating ice formation in concentrated soft matter using the length scale between hydrophobic domains and the hydrophilicity of the network water-soluble component. These insights have the potential to provide solutions to challenges with ice in engineering applications where confinement of water to nanoscale dimensions is possible."
+   },
+   {
+    "id": "https://openalex.org/W2171337465",
+    "doi": "https://doi.org/10.1002/polb.20781",
+    "title": "Metallocene copolymers of propene and 1‐hexene: The influence of the comonomer content and thermal history on the structure and mechanical properties",
+    "year": 2006,
+    "cited": 64,
+    "venue": "Journal of Polymer Science Part B Polymer Physics",
+    "topics": [
+     "Polymer crystallization and properties",
+     "Polymer Nanocomposites and Properties",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/polb.20781",
+    "abstract": "Abstract The relationships between the structure and properties have been established for copolymers of propylene and 1‐hexene synthesized with an isotactic metallocene catalyst system. The most important factor affecting the structure and properties of these copolymers is the comonomer content. The thermal treatment, that is, the rate of cooling from the melt, is also important. These factors affect the thermal properties, the degree of crystallinity, and therefore the structural parameters and the viscoelastic behavior. A slow cooling from the melt favors the formation of the γ phase instead of the α modification. Regarding the viscoelastic behavior, the β relaxation, associated with the glass‐transition temperature, is shifted to lower temperatures and its intensity is increased as the 1‐hexene content raises. The microhardness values are correlated with those of the storage modulus deduced from dynamic mechanical thermal analysis curves, and good linear relations have been obtained between these parameters. © 2006 Wiley Periodicals, Inc. J Polym Sci Part B: Polym Phys 44: 1253–1267, 2006"
+   },
+   {
+    "id": "https://openalex.org/W2618364642",
+    "doi": "https://doi.org/10.1016/j.xphs.2017.05.019",
+    "title": "Transformation of Biopharmaceutical Classification System Class I and III Drugs Into Ionic Liquids and Lipophilic Salts for Enhanced Developability Using Lipid Formulations",
+    "year": 2017,
+    "cited": 62,
+    "venue": "Journal of Pharmaceutical Sciences",
+    "topics": [
+     "Drug Solubulity and Delivery Systems",
+     "Analytical Chemistry and Chromatography",
+     "Crystallization and Solubility Studies"
+    ],
+    "oa_url": "http://jpharmsci.org/article/S0022354917303738/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2521507228",
+    "doi": "https://doi.org/10.1155/2016/2571060",
+    "title": "Evaluation of Neuroprotective Effect of Thymoquinone Nanoformulation in the Rodent Cerebral Ischemia-Reperfusion Model",
+    "year": 2016,
+    "cited": 62,
+    "venue": "BioMed Research International",
+    "topics": [
+     "Nigella sativa pharmacological applications",
+     "Medicinal Plants and Neuroprotection",
+     "Natural Compounds in Disease Treatment"
+    ],
+    "oa_url": "http://downloads.hindawi.com/journals/bmri/2016/2571060.pdf",
+    "abstract": "The purpose of the present study was to evaluate the neuroprotective efficacy of optimized thymoquinone loaded PLGA-chitosan nanoparticles delivered via nose to brain route in the rodent cerebral ischemia-reperfusion model. The neuroprotective efficacy of the optimized thymoquinone loaded PLGA-chitosan nanoparticles was evaluated in middle cerebral artery occluded rats by various pharmacodynamic and biochemical studies. The pharmacokinetics of thymoquinone loaded PLGA-chitosan nanoparticles in the brain and blood plasma together with qualitative localization of florescent labelled PLGA-chitosan nanoparticles in brain tissues were also determined. Intranasal delivery of optimized thymoquinone loaded PLGA-chitosan nanoparticles (183.5 ± 8.2 nm, 33.63 ± 2.25 mV) to brain significantly reduced the ischemia infarct volume and enhanced the locomotor activity and grip strength in the middle cerebral artery occluded rats. Biochemical studies showed that intranasal delivery of thymoquinone loaded PLGA-chitosan nanoparticles significantly reduced the lipid peroxidation but elevated the glutathione, catalase, and superoxide dismutase in the brain of middle cerebral artery occluded rats. The pharmacokinetic and localization studies showed that thymoquinone loaded PLGA-chitosan nanoparticles facilitated the delivery of thymoquinone to brain by intranasal nose to brain transport pathways and enhanced their pharmacokinetic profile in brain tissues. Thus, intranasal delivery of thymoquinone loaded PLGA-chitosan nanoparticles to brain could be potentially used for the neuroprotection and treatment of cerebral ischemia."
+   },
+   {
+    "id": "https://openalex.org/W4214848423",
+    "doi": "https://doi.org/10.1007/s10853-022-07007-z",
+    "title": "Controlling microstructure evolution and phase transformation behavior in additive manufacturing of nitinol shape memory alloys by tuning hatch distance",
+    "year": 2022,
+    "cited": 61,
+    "venue": "Journal of Materials Science",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10853-022-07007-z.pdf",
+    "abstract": "Abstract Laser powder bed fusion (L-PBF), categorized as additive manufacturing technique, has a capability to fabricate NiTi (Nitinol) shape memory alloys with tailorable functional properties and complex geometries. An important processing parameter, hatch distance (h), is often related to macroscale structural defects; however, its role on controlling the microstructure and functional properties is usually underestimated in L-PBF of NiTi. In this work, equiatomic NiTi (50.0 at% Ni) parts were fabricated with various hatch distances to tailor the microstructure and their shape memory characteristics. Contrary to what is observed in Ni-rich NiTi alloys, in this work, we demonstrate that phase transformation temperatures of L-PBF equiatomic NiTi do not decrease proportionally with hatch distance but rather relate to a critical hatch distance value. This critical value (120 μm) is derived from the synergistic effect of thermal stress and in situ reheating. Below this value, epitaxial grain growth and in situ recrystallization are enhanced, while above, irregular grains are formed and dislocations induced by thermal stresses decrease. However, the critical value found herein is characterized by high dislocation density and fine grain size, resulting in a superior thermal cyclic stability. The proposed finite element model is proven to be an effective tool to understand and predict the effect of hatch distance on grain morphology and dislocation density evolutions in L-PBF NiTi SMAs. In the present study, we provide a comprehensive understanding for in situ controlling L-PBF NiTi microstructure and functional characteristics, which contributes to designing 4-dimensional shape memory alloys."
+   },
+   {
+    "id": "https://openalex.org/W3135456053",
+    "doi": "https://doi.org/10.1002/advs.202004290",
+    "title": "Zn 2+ –Imidazole Coordination Crosslinks for Elastic Polymeric Binders in High‐Capacity Silicon Electrodes",
+    "year": 2021,
+    "cited": 61,
+    "venue": "Advanced Science",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Conducting polymers and applications",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202004290",
+    "abstract": "Abstract Recent research has built a consensus that the binder plays a key role in the performance of high‐capacity silicon anodes in lithium‐ion batteries. These anodes necessitate the use of a binder to maintain the electrode integrity during the immense volume change of silicon during cycling. Here, Zn 2+ –imidazole coordination crosslinks that are formed to carboxymethyl cellulose backbones in situ during electrode fabrication are reported. The recoverable nature of Zn 2+ –imidazole coordination bonds and the flexibility of the poly(ethylene glycol) chains are jointly responsible for the high elasticity of the binder network. The high elasticity tightens interparticle contacts and sustains the electrode integrity, both of which are beneficial for long‐term cyclability. These electrodes, with their commercial levels of areal capacities, exhibit superior cycle life in full‐cells paired with LiNi 0.8 Co 0.15 Al 0.05 O 2 cathodes. The present study underlines the importance of highly reversible metal ion‐ligand coordination chemistries for binders intended for high capacity alloying‐based electrodes."
+   },
+   {
+    "id": "https://openalex.org/W3097776556",
+    "doi": "https://doi.org/10.2147/ijn.s269340",
+    "title": "Formulation, Cellular Uptake and Cytotoxicity of Thymoquinone-Loaded PLGA Nanoparticles in Malignant Melanoma Cancer Cells",
+    "year": 2020,
+    "cited": 61,
+    "venue": "International Journal of Nanomedicine",
+    "topics": [
+     "Nigella sativa pharmacological applications",
+     "Mathematical Inequalities and Applications",
+     "Medicinal Plant Research"
+    ],
+    "oa_url": "https://www.dovepress.com/getfile.php?fileID=62749",
+    "abstract": "INTRODUCTION: a traditional herb with wide therapeutic applications and recognizable anticancer properties. This study aimed to formulate and characterize TQ-nanoparticles using PLGA as a biocompatible coating material (TQ-PLGA NPs) with the evaluation of its therapeutic properties in human melanoma cancer cells. METHODS: The TQ-PLGA NPs were prepared and characterized for size, zeta potential, encapsulation efficiency, and release profile. RESULTS: The particle size was 147.2 nm, with 22.1 positive zeta potential and 96.8% encapsulation efficiency. The NPs released 45.6% of the encapsulated TQ within 3 h followed by characteristic sustained release over 7 days with a total of 69.7% cumulative release. TQ-PLGA NPs were taken up effectively by the cells in a time-dependent manner up to 24 h. Higher cell toxicity was determined within the first 24 h in melanoma cells due to the rapid release of TQ from the NPs and its low stability in the cell culture media. CONCLUSION: TQ-PLGA NPs is a potential anticancer agent taking advantage of the sustained release and tailored size that allows accumulation in the cancer tissue by the enhanced permeability and retention effect. However, stability problems of the active ingredient were address in this study and requires further investigation."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"PerkinElmer DSC 4000\" OR \"PerkinElmer DSC\" OR \"PerkinElmer DSC 6000\" OR \"PerkinElmer DSC 8000\" OR \"PerkinElmer DSC 8500\") AND OPEN_ACCESS:y",

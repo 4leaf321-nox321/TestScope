@@ -12,8 +12,24 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Keysight N9048B PXE\" OR \"Keysight N9048B\" OR \"Keysight N9048B Option 503\" OR \"Keysight N9048B Option 508\" OR \"Keysight N9048B Option 526\" OR \"Keysight N9048B Option 544\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4245274153",
+    "doi": "https://doi.org/10.1109/mim.2019.8782203",
+    "title": "Newproducts",
+    "year": 2019,
+    "cited": 0,
+    "venue": "IEEE Instrumentation & Measurement Magazine",
+    "topics": [
+     "Scientific Measurement and Uncertainty Evaluation",
+     "Analytical Chemistry and Sensors",
+     "Physics and Engineering Research Articles"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/5289/8782185/08782203.pdf",
+    "abstract": "Presents a review of new instrumentation and measurement products and services."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Keysight N9048B PXE\" OR \"Keysight N9048B\" OR \"Keysight N9048B Option 503\" OR \"Keysight N9048B Option 508\" OR \"Keysight N9048B Option 526\" OR \"Keysight N9048B Option 544\") AND OPEN_ACCESS:y",

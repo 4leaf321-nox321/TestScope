@@ -8,8 +8,758 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"PerkinElmer Frontier FT-IR\" OR \"PerkinElmer Frontier\"",
-  "count": null,
-  "works": []
+  "count": 1578,
+  "works": [
+   {
+    "id": "https://openalex.org/W2011055829",
+    "doi": "https://doi.org/10.1038/nprot.2014.110",
+    "title": "Using Fourier transform IR spectroscopy to analyze biological materials",
+    "year": 2014,
+    "cited": 1956,
+    "venue": "Nature Protocols",
+    "topics": [
+     "Spectroscopy Techniques in Biomedical and Chemical Research",
+     "Spectroscopy and Chemometric Analyses",
+     "Bee Products Chemical Analysis"
+    ],
+    "oa_url": "https://eprints.lancs.ac.uk/id/eprint/70092/1/nihms_700198.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4376225597",
+    "doi": "https://doi.org/10.1038/s41467-023-38384-x",
+    "title": "Solvent control of water O−H bonds for highly reversible zinc ion batteries",
+    "year": 2023,
+    "cited": 414,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Perovskite Materials and Applications",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-38384-x.pdf",
+    "abstract": "Abstract Aqueous Zn-ion batteries have attracted increasing research interest; however, the development of these batteries has been hindered by several challenges, including dendrite growth, Zn corrosion, cathode material degradation, limited temperature adaptability and electrochemical stability window, which are associated with water activity and the solvation structure of electrolytes. Here we report that water activity is suppressed by increasing the electron density of the water protons through interactions with highly polar dimethylacetamide and trimethyl phosphate molecules. Meanwhile, the Zn corrosion in the hybrid electrolyte is mitigated, and the electrochemical stability window and the operating temperature of the electrolyte are extended. The dimethylacetamide alters the surface energy of Zn, guiding the (002) plane dominated deposition of Zn. Molecular dynamics simulation evidences Zn 2+ ions are solvated with fewer water molecules, resulting in lower lattice strain in the NaV 3 O 8 ·1.5H 2 O cathode during the insertion of hydrated Zn 2+ ions, boosting the lifespan of Zn|| NaV 3 O 8 ·1.5H 2 O cell to 3000 cycles."
+   },
+   {
+    "id": "https://openalex.org/W3080874027",
+    "doi": "https://doi.org/10.1093/nsr/nwaa178",
+    "title": "Molecular grafting towards high-fraction active nanodots implanted in N-doped carbon for sodium dual-ion batteries",
+    "year": 2020,
+    "cited": 397,
+    "venue": "National Science Review",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://academic.oup.com/nsr/article-pdf/8/7/nwaa178/39375184/nwaa178.pdf",
+    "abstract": "Abstract Sodium-based dual-ion batteries (Na-DIBs) show a promising potential for large-scale energy storage applications due to the merits of environmental friendliness and low cost. However, Na-DIBs are generally subject to poor rate capability and cycling stability for the lack of suitable anodes to accommodate large Na+ ions. Herein, we propose a molecular grafting strategy to in situ synthesize tin pyrophosphate nanodots implanted in N-doped carbon matrix (SnP2O7@N-C), which exhibits a high fraction of active SnP2O7 up to 95.6 wt% and a low content of N-doped carbon (4.4 wt%) as the conductive framework. As a result, this anode delivers a high specific capacity ∼400 mAh g−1 at 0.1 A g−1, excellent rate capability up to 5.0 A g−1 and excellent cycling stability with a capacity retention of 92% after 1200 cycles under a current density of 1.5 A g−1. Further, pairing this anode with an environmentally friendly KS6 graphite cathode yields a SnP2O7@N-C||KS6 Na-DIB, exhibiting an excellent rate capability up to 30 C, good fast-charge/slow-discharge performance and long-term cycling life with a capacity retention of ∼96% after 1000 cycles at 20 C. This study provides a feasible strategy to develop high-performance anodes with high-fraction active materials for Na-based energy storage applications."
+   },
+   {
+    "id": "https://openalex.org/W3217430193",
+    "doi": "https://doi.org/10.1002/adma.202108400",
+    "title": "Constructing a Stable Interface Layer by Tailoring Solvation Chemistry in Carbonate Electrolytes for High‐Performance Lithium‐Metal Batteries",
+    "year": 2021,
+    "cited": 344,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Layered Double Hydroxides Synthesis and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202108400",
+    "abstract": "Abstract Lithium‐metal batteries (LMBs) are considered as promising next‐generation batteries due to their high energy density. However, commercial carbonate electrolytes cannot be used in LMBs due to their poor compatibility with the lithium‐metal anode and detrimental hydrogen fluoride (HF) generation by lithium hexafluorophosphate decomposition. By introducing lithium nitrate additive and a small amount of tetramethylurea as a multifunctional cosolvent to a commercial carbonate electrolyte, NO 3 − , which is usually insoluble, can be introduced into the solvation structure of Li + to form a conductive and stable solid electrolyte interface. At the same time, HF generation is suppressed by manipulating the solvation structure and a scavenging effect. As a result, the Coulombic efficiency (CE) of Li||Cu half cells using the designed carbonate electrolyte can reach 98.19% at room temperature and 96.14% at low temperature (−15 °C), and Li||LiFePO 4 cells deliver a high capacity retention of 94.9% with a high CE of 99.6% after 550 cycles. This work provides a simple and effective way to extend the use of commercial carbonate electrolytes for next‐generation battery systems."
+   },
+   {
+    "id": "https://openalex.org/W2795210588",
+    "doi": "https://doi.org/10.1002/adma.201800129",
+    "title": "Plasticizing Silk Protein for On‐Skin Stretchable Electrodes",
+    "year": 2018,
+    "cited": 344,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Silk-based biomaterials and applications",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201800129",
+    "abstract": "Abstract Soft and stretchable electronic devices are important in wearable and implantable applications because of the high skin conformability. Due to the natural biocompatibility and biodegradability, silk protein is one of the ideal platforms for wearable electronic devices. However, the realization of skin‐conformable electronic devices based on silk has been limited by the mechanical mismatch with skin, and the difficulty in integrating stretchable electronics. Here, silk protein is used as the substrate for soft and stretchable on‐skin electronics. The original high Young's modulus (5–12 GPa) and low stretchability (<20%) are tuned into 0.1–2 MPa and > 400%, respectively. This plasticization is realized by the addition of CaCl2 and ambient hydration, whose mechanism is further investigated by molecular dynamics simulations. Moreover, highly stretchable (>100%) electrodes are obtained by the thin‐film metallization and the formation of wrinkled structures after ambient hydration. Finally, the plasticized silk electrodes, with the high electrical performance and skin conformability, achieve on‐skin electrophysiological recording comparable to that by commercial gel electrodes. The proposed skin‐conformable electronics based on biomaterials will pave the way for the harmonized integration of electronics into human."
+   },
+   {
+    "id": "https://openalex.org/W2233332741",
+    "doi": "https://doi.org/10.1038/ncomms9446",
+    "title": "Mesoporous MnCeOx solid solutions for low temperature and selective oxidation of hydrocarbons",
+    "year": 2015,
+    "cited": 330,
+    "venue": "Nature Communications",
+    "topics": [
+     "Catalytic Processes in Materials Science",
+     "Catalysis and Oxidation Reactions",
+     "Mesoporous Materials and Catalysis"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms9446.pdf",
+    "abstract": "The development of noble-metal-free heterogeneous catalysts that can realize the aerobic oxidation of C-H bonds at low temperature is a profound challenge in the catalysis community. Here we report the synthesis of a mesoporous Mn0.5Ce0.5Ox solid solution that is highly active for the selective oxidation of hydrocarbons under mild conditions (100-120 °C). Notably, the catalytic performance achieved in the oxidation of cyclohexane to cyclohexanone/cyclohexanol (100 °C, conversion: 17.7%) is superior to those by the state-of-art commercial catalysts (140-160 °C, conversion: 3-5%). The high activity can be attributed to the formation of a Mn0.5Ce0.5Ox solid solution with an ultrahigh manganese doping concentration in the CeO2 cubic fluorite lattice, leading to maximum active surface oxygens for the activation of C-H bonds and highly reducible Mn(4+) ions for the rapid migration of oxygen vacancies from the bulk to the surface."
+   },
+   {
+    "id": "https://openalex.org/W2796311581",
+    "doi": "https://doi.org/10.1021/acsnano.8b01010",
+    "title": "Synthesis of Self-Assembled Porphyrin Nanoparticle Photosensitizers",
+    "year": 2018,
+    "cited": 316,
+    "venue": "ACS Nano",
+    "topics": [
+     "Nanoplatforms for cancer theranostics",
+     "Porphyrin and Phthalocyanine Chemistry",
+     "Photodynamic Therapy Research Studies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1469627",
+    "abstract": "The use of nanoparticles as a potential building block for photosensitizers has recently become a focus of interest in the field of photocatalysis and photodynamic therapy. Porphyrins and their derivatives are effective photosensitizers due to extended π-conjugated electronic structure, high molar absorption from visible to near-infrared spectrum, and high singlet oxygen quantum yields as well as chemical versatility. In this paper, we report a synthesis of self-assembled porphyrin nanoparticle photosensitizers using zinc meso-tetra(4-pyridyl)porphyrin (ZnTPyP) through a confined noncovalent self-assembly process. Scanning electron microscopy reveals formation of monodisperse cubic nanoparticles. UV-vis characterizations reveal that optical absorption of the nanoparticles exhibits a red shift due to noncovalent self-assembly of porphyrins, which not only effectively increase intensity of light absorption but also extend light absorption broadly covering visible light for enhanced photodynamic therapy. Electron spin-resonance spectroscopy (ESR) studies show the resultant porphyrin nanoparticles release a high yield of singlet oxygen. Nitric oxide (NO) coordinates to central metal Zn ions to form stabilized ZnTPyP@NO nanoparticles. We show that under light irradiation ZnTPyP@NO nanoparticles release highly reactive peroxynitrite molecules that exhibit enhanced antibacterial photodynamic therapy (APDT) activity. The ease of the synthesis of self-assembled porphyrin nanoparticles and light-triggered release of highly reactive moieties represent a completely different photosensitizer system for APDT application."
+   },
+   {
+    "id": "https://openalex.org/W2945392025",
+    "doi": "https://doi.org/10.1039/c9ra02201e",
+    "title": "Effect of calcination temperature, pH and catalyst loading on photodegradation efficiency of urea derived graphitic carbon nitride towards methylene blue dye solution",
+    "year": 2019,
+    "cited": 293,
+    "venue": "RSC Advances",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Ga2O3 and related materials",
+     "TiO2 Photocatalysis and Solar Cells"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2019/ra/c9ra02201e",
+    "abstract": "The appropriate synthesis temperature and optimized photodegradation reaction conditions result in an appreciable enhancement of the photocatalytic activity of urea derived innate g-C 3 N 4 towards MB dye degradation."
+   },
+   {
+    "id": "https://openalex.org/W2799474912",
+    "doi": "https://doi.org/10.1038/s41560-018-0150-z",
+    "title": "Direct air capture of CO2 via aqueous-phase absorption and crystalline-phase release using concentrated solar power",
+    "year": 2018,
+    "cited": 271,
+    "venue": "Nature Energy",
+    "topics": [
+     "Carbon Dioxide Capture Technologies",
+     "Phase Equilibria and Thermodynamics",
+     "Advanced Thermodynamics and Statistical Mechanics"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1460227",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4214890820",
+    "doi": "https://doi.org/10.1002/adma.202200042",
+    "title": "Stretchable, Breathable, and Stable Lead‐Free Perovskite/Polymer Nanofiber Composite for Hybrid Triboelectric and Piezoelectric Energy Harvesting",
+    "year": 2022,
+    "cited": 264,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202200042",
+    "abstract": "Abstract Halide‐perovskite‐based mechanical energy harvesters display excellent electrical output due to their unique ferroelectricity and dielectricity. However, their high toxicity and moisture sensitivity impede their practical applications. Herein, a stretchable, breathable, and stable nanofiber composite (LPPS‐NFC) is fabricated through electrospinning of lead‐free perovskite/poly(vinylidene fluoride‐co‐hexafluoropropylene) (PVDF‐HFP) and styrene–ethylene–butylene–styrene (SEBS). The Cs3Bi2Br9 perovskites serve as efficient electron acceptors and local nucleating agents for the crystallization of polymer chains, thereby enhancing the electron‐trapping capacity and polar crystalline phase in LPPS‐NFC. The excellent energy level matching between Cs3Bi2Br9 and PVDF‐HFP boosts the electron transfer efficiency and reduces the charge loss, thereby promoting the electron‐trapping process. Consequently, this LPPS‐NFC‐based energy harvester displays an excellent electrical output (400 V, 1.63 µA cm−2, and 2.34 W m−2), setting a record of the output voltage among halide‐perovskite‐based nanogenerators. The LPPS‐NFC also exhibits excellent stretchability, waterproofness, and breathability, enabling the fabrication of robust wearable devices that convert mechanical energy from different biomechanical motions into electrical power to drive common electronic devices. The LPPS‐NFC‐based energy harvesters also endure extreme mechanical deformations (washing, folding, and crumpling) without performance degradation, and maintain stable electrical output up to 5 months, demonstrating their promising potential for use as smart textiles and wearable power sources."
+   },
+   {
+    "id": "https://openalex.org/W3011579125",
+    "doi": "https://doi.org/10.1016/j.nanoen.2020.104676",
+    "title": "All 3D-printed stretchable piezoelectric nanogenerator with non-protruding kirigami structure",
+    "year": 2020,
+    "cited": 258,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Tactile and Sensory Interactions",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2211285520302330-fx1_lrg.jpg",
+    "abstract": "With the advancement of wearable electronics, stretchable energy harvesters are attractive to reduce the need of frequent charging of wearable devices. In this work, a stretchable kirigami piezoelectric nanogenerator (PENG) based on barium titanate (BaTiO3) nanoparticles, Poly(vinylidene fluoride-co-trifluoroethylene) (P(VDF-TrFE)) matrix, and silver flakes-based electrode is fabricated in an all-3D printable process suited for additive manufacturing. The 3D printable extrusion ink is formulated for facile solvent evaporation during layer formation to enable heterogenous multilayer stacking. A well-designed modified T-joint-cut kirigami structure is realized to attain a non-protruding, high structural stretchability performance, overcoming the out-of-plane displacement of the typical kirigami structure and therefore enabling the pressing-mode of a kirigami-structured PENG. This PENG can be stretched to more than 300% strain, which shows a great potential for application in wearable electronic systems. Furthermore, a self-powered gait sensor is demonstrated using this PENG."
+   },
+   {
+    "id": "https://openalex.org/W2810838922",
+    "doi": "https://doi.org/10.1155/2018/2079278",
+    "title": "XPS and FT-IR Characterization of Selected Synthetic Corrosion Products of Zinc Expected in Neutral Environment Containing Chloride Ions",
+    "year": 2018,
+    "cited": 257,
+    "venue": "Journal of Spectroscopy",
+    "topics": [
+     "Corrosion Behavior and Inhibition",
+     "ZnO doping and properties",
+     "Electron and X-Ray Spectroscopy Techniques"
+    ],
+    "oa_url": "http://downloads.hindawi.com/journals/jspec/2018/2079278.pdf",
+    "abstract": "ZnO, Zn(OH) 2 , Zn 5 (OH) 8 Cl 2 ·H 2 O, ZnCO 3 , and Zn 5 (CO 3 ) 2 (OH) 6 synthetic powders were prepared by chemical or solid-state method. Their crystalline phase structure, thermal behavior, and morphology were examined. Characteristic infrared absorbance bands were estimated by means of FT-IR ATR spectroscopy. X-ray photoelectron spectroscopy (XPS) allowed to calculate the modified Auger parameters ( α ′) thereof to 2010.2, 2009.3, 2009.4, 2009.7, and 2009.8 eV, respectively for ZnO, Zn(OH) 2 , Zn 5 (OH) 8 Cl 2 ·H 2 O, ZnCO 3 , and Zn 5 (CO 3 ) 2 (OH) 6 . Finally, comparison of surface composition may be crucial to evaluation of the unknown experimental spectra of corrosion products formed on the surface of zinc alloy coatings exposed in NaCl solution."
+   },
+   {
+    "id": "https://openalex.org/W2549102837",
+    "doi": "https://doi.org/10.1021/jacs.6b10472",
+    "title": "A Sacrificial Coating Strategy Toward Enhancement of Metal–Support Interaction for Ultrastable Au Nanocatalysts",
+    "year": 2016,
+    "cited": 256,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Catalytic Processes in Materials Science",
+     "Nanomaterials for catalytic reactions",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1337043",
+    "abstract": "Supported gold (Au) nanocatalysts hold great promise for heterogeneous catalysis; however, their practical application is greatly hampered by poor thermodynamic stability. Herein, a general synthetic strategy is reported where discrete metal nanoparticles are made resistant to sintering, preserving their catalytic activities in high-temperature oxidation processes. Taking advantage of the unique coating chemistry of dopamine, sacrificial carbon layers are constructed on the material surface, stabilizing the supported catalyst. Upon annealing at high temperature under an inert atmosphere, the interactions between support and metal nanoparticle are dramatically enhanced, while the sacrificial carbon layers can be subsequently removed through oxidative calcination in air. Owing to the improved metal-support contact and strengthened electronic interactions, the resulting Au nanocatalysts are resistant to sintering and exhibit excellent durability for catalytic combustion of propylene at elevated temperatures. Moreover, the facile synthetic strategy can be extended to the stabilization of other supported catalysts on a broad range of supports, providing a general approach to enhancing the thermal stability and sintering resistance of supported nanocatalysts."
+   },
+   {
+    "id": "https://openalex.org/W3160292980",
+    "doi": "https://doi.org/10.1038/s41565-021-00910-7",
+    "title": "Bioorthogonal catalytic patch",
+    "year": 2021,
+    "cited": 255,
+    "venue": "Nature Nanotechnology",
+    "topics": [
+     "Click Chemistry and Applications",
+     "Monoclonal and Polyclonal Antibodies Research",
+     "Chemical Synthesis and Analysis"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1865095",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2507653597",
+    "doi": "https://doi.org/10.1021/acscatal.6b01297",
+    "title": "Rational Design of Bi Nanoparticles for Efficient Electrochemical CO2 Reduction: The Elucidation of Size and Surface Condition Effects",
+    "year": 2016,
+    "cited": 251,
+    "venue": "ACS Catalysis",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Advanced Thermoelectric Materials and Devices",
+     "Ionic liquids properties and applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1302937",
+    "abstract": "We report an efficient electrochemical conversion of CO 2 to CO on surface-activated bismuth nanoparticles (NPs) in acetonitrile (MeCN) under ambient conditions, with the assistance of 1-butyl-3-methylimidazolium trifluoromethanesulfonate ([bmim][OTf]). Through the comparison between electrodeposited Bi films (Bi-ED) and different types of Bi NPs, we, for the first time, demonstrate the effects of catalyst’s size and surface condition on organic phase electrochemical CO 2 reduction. Our study reveals that the surface inhibiting layer (hydrophobic surfactants and Bi 3+ species) formed during the synthesis and purification process hinders the CO 2 reduction, leading to a 20% drop in Faradaic efficiency for CO evolution (FE CO ). Bi particle size showed a significant effect on FE CO when the surface of Bi was air-oxidized, but this effect of size on FE CO became negligible on surface-activated Bi NPs. After the surface activation (hydrazine treatment) that effectively removed the native inhibiting layer, activated 36-nm Bi NPs exhibited an almost-quantitative conversion of CO 2 to CO (96.1% FE CO ), and a mass activity for CO evolution (MA CO ) of 15.6 mA mg –1, which is three-fold higher than the conventional Bi-ED, at −2.0 V (vs Ag/AgCl). This work elucidates the importance of the surface activation for an efficient electrochemical CO 2 conversion on metal NPs and paves the way for understanding the CO 2 electrochemical reduction mechanism in nonaqueous media."
+   },
+   {
+    "id": "https://openalex.org/W3087490316",
+    "doi": "https://doi.org/10.1038/s41467-020-18459-9",
+    "title": "Materializing efficient methanol oxidation via electron delocalization in nickel hydroxide nanoribbon",
+    "year": 2020,
+    "cited": 232,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Catalytic Processes in Materials Science",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-18459-9.pdf",
+    "abstract": "Abstract Achieving a functional and durable non-platinum group metal-based methanol oxidation catalyst is critical for a cost-effective direct methanol fuel cell. While Ni(OH)2 has been widely studied as methanol oxidation catalyst, the initial process of oxidizing Ni(OH)2 to NiOOH requires a high potential of 1.35 V vs. RHE. Such potential would be impractical since the theoretical potential of the cathodic oxygen reduction reaction is at 1.23 V. Here we show that a four-coordinated nickel atom is able to form charge-transfer orbitals through delocalization of electrons near the Fermi energy level. As such, our previously reported periodically arranged four-six-coordinated nickel hydroxide nanoribbon structure (NR-Ni(OH)2) is able to show remarkable methanol oxidation activity with an onset potential of 0.55 V vs. RHE and suggests the operability in direct methanol fuel cell configuration. Thus, this strategy offers a gateway towards the development of high performance and durable non-platinum direct methanol fuel cell."
+   },
+   {
+    "id": "https://openalex.org/W2607948195",
+    "doi": "https://doi.org/10.1038/ncomms15020",
+    "title": "Solid-state synthesis of ordered mesoporous carbon catalysts via a mechanochemical assembly through coordination cross-linking",
+    "year": 2017,
+    "cited": 230,
+    "venue": "Nature Communications",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Mesoporous Materials and Catalysis",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms15020.pdf",
+    "abstract": "Abstract Ordered mesoporous carbons (OMCs) have demonstrated great potential in catalysis, and as supercapacitors and adsorbents. Since the introduction of the organic–organic self-assembly approach in 2004/2005 until now, the direct synthesis of OMCs is still limited to the wet processing of phenol-formaldehyde polycondensation, which involves soluble toxic precursors, and acid or alkali catalysts, and requires multiple synthesis steps, thus restricting the widespread application of OMCs. Herein, we report a simple, general, scalable and sustainable solid-state synthesis of OMCs and nickel OMCs with uniform and tunable mesopores (∼4–10 nm), large pore volumes (up to 0.96 cm3 g−1) and high-surface areas exceeding 1,000 m2 g−1, based on a mechanochemical assembly between polyphenol-metal complexes and triblock co-polymers. Nickel nanoparticles (∼5.40 nm) confined in the cylindrical nanochannels show great thermal stability at 600 °C. Moreover, the nickel OMCs offer exceptional activity in the hydrogenation of bulky molecules (∼2 nm)."
+   },
+   {
+    "id": "https://openalex.org/W3108201028",
+    "doi": "https://doi.org/10.1038/s41467-020-19947-8",
+    "title": "Enhanced dispersion stability of gold nanoparticles by the physisorption of cyclic poly(ethylene glycol)",
+    "year": 2020,
+    "cited": 228,
+    "venue": "Nature Communications",
+    "topics": [
+     "Nanoparticle-Based Drug Delivery",
+     "Gold and Silver Nanoparticles Synthesis and Applications",
+     "Nanocluster Synthesis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-19947-8.pdf",
+    "abstract": "Nano-sized metal particles are attracting much interest in industrial and biomedical applications due to the recent progress and development of nanotechnology, and the surface-modifications by appropriate polymers are key techniques to stably express their characteristics. Herein, we applied cyclic poly(ethylene glycol) (c-PEG), having no chemical inhomogeneity, to provide a polymer topology-dependent stabilization for the surface-modification of gold nanoparticles (AuNPs) through physisorption. By simply mixing c-PEG, but not linear counterparts, enables AuNPs to maintain dispersibility through freezing, lyophilization, or heating. Surprisingly, c-PEG endowed AuNPs with even better dispersion stability than thiolated PEG (HS-PEG-OMe). The stronger affinity of c-PEG was confirmed by DLS, ζ-potential, and FT-IR. Furthermore, the c-PEG system exhibited prolonged blood circulation and enhanced tumor accumulation in mice. Our data suggests that c-PEG induces physisorption on AuNPs, supplying sufficient stability toward bio-medical applications, and would be an alternative approach to the gold-sulfur chemisorption."
+   },
+   {
+    "id": "https://openalex.org/W3124668207",
+    "doi": "https://doi.org/10.1002/advs.202002446",
+    "title": "A New High Entropy Glycerate for High Performance Oxygen Evolution Reaction",
+    "year": 2021,
+    "cited": 199,
+    "venue": "Advanced Science",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Advanced Memory and Neural Computing"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202002446",
+    "abstract": "Abstract Herein, a new high entropy material is reported, i.e., a noble metal‐free high entropy glycerate (HEG), synthesized via a simple solvothermal process. The HEG consists of 5 different metals of Fe, Ni, Co, Cr, and Mn. The unique glycerate structure exhibits an excellent oxygen evolution reaction (OER) activity with a low overpotential of 229 and 278 mV at current densities of 10 and 100 mA cm−2, respectively, in 1 m KOH electrolyte, outperforming its subsystems of binary‐, ternary‐, and quaternary‐metal glycerates. The HEG also shows outstanding stability and durability in the alkaline electrolyte. The result demonstrates the significance of synergistic effect that gives additional freedoms to modify the electronic structure and coordination environment. Moreover, HEG@HEG electrolyzer shows a good overall water splitting performance and durability, requiring a cell voltage of 1.63 V to achieve a current density of 10 mA cm−2."
+   },
+   {
+    "id": "https://openalex.org/W2948199543",
+    "doi": "https://doi.org/10.1021/acscatal.9b01822",
+    "title": "Cu–Al Spinel as a Highly Active and Stable Catalyst for the Reverse Water Gas Shift Reaction",
+    "year": 2019,
+    "cited": 194,
+    "venue": "ACS Catalysis",
+    "topics": [
+     "Carbon dioxide utilization in catalysis",
+     "Catalysts for Methane Reforming",
+     "CO2 Reduction Techniques and Catalysts"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acscatal.9b01822",
+    "abstract": "Abstract The reverse water gas shift reaction is considered to be a highly attractive catalytic route for CO2 recycling in a future sustainable economy. Copper-based catalysts are commonly used for this reaction due to their high activity and selectivity. However, their low thermal stability is problematic for long-term usage. Here, we introduce an in situ formed surface Cu–Al spinel as a highly active and stable catalyst for the reverse water gas shift reaction. Even at high weight hourly space velocities (300 000 mL g–1 h–1), we observed no detectable deactivation after 40 h of operation. Through in situ DRIFTS and DFT studies, it was found that 2-fold coordinated copper ions and 3-fold coordinated surface oxygen atoms constitute the active sites for this reaction."
+   },
+   {
+    "id": "https://openalex.org/W2782647806",
+    "doi": "https://doi.org/10.1038/s41598-018-19375-1",
+    "title": "Silver Nanoparticles in the Water Environment in Malaysia: Inspection, characterization, removal, modeling, and future perspective",
+    "year": 2018,
+    "cited": 182,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Graphene and Nanomaterials Applications",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-018-19375-1.pdf",
+    "abstract": "Abstract The current status of silver nanoparticles (AgNPs) in the water environment in Malaysia was examined and reported. For inspection, two rivers and two sewage treatment plants (STPs) were selected. Two activated carbons derived from oil palm (ACfOPS) and coconut (ACfCS) shells were proposed as the adsorbent to remove AgNPs. It was found that the concentrations of AgNPs in the rivers and STPs are in the ranges of 0.13 to 10.16 mg L −1 and 0.13 to 20.02 mg L −1 , respectively, with the highest concentration measured in July. ACfOPS and ACfCS removed up to 99.6 and 99.9% of AgNPs, respectively, from the water. The interaction mechanism between AgNPs and the activated carbon surface employed in this work was mainly the electrostatic force interaction via binding Ag + with O − presented in the activated carbon to form AgO. Fifteen kinetic models were compared statistically to describe the removal of AgNPs. It was found that the experimental adsorption data can be best described using the mixed 1,2-order model. Therefore, this model has the potential to be a candidate for a general model to describe AgNPs adsorption using numerous materials, its validation of which has been confirmed with other material data from previous works."
+   },
+   {
+    "id": "https://openalex.org/W2803163044",
+    "doi": "https://doi.org/10.1021/acs.biomac.8b00536",
+    "title": "Transparent, Flexible, and Strong 2,3-Dialdehyde Cellulose Films with High Oxygen Barrier Properties",
+    "year": 2018,
+    "cited": 178,
+    "venue": "Biomacromolecules",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Lignin and Wood Chemistry",
+     "Nanocomposite Films for Food Packaging"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.biomac.8b00536",
+    "abstract": "Abstract 2,3-Dialdehyde cellulose (DAC) of a high degree of oxidation (92% relative to AGU units) prepared by oxidation of microcrystalline cellulose with sodium periodate (48 °C, 19 h) is soluble in hot water. Solution casting, slow air drying, hot pressing, and reinforcement by cellulose nanocrystals afforded films (∼100 μm thickness) that feature intriguing properties: they have very smooth surfaces (SEM), are highly flexible, and have good light transmittance for both the visible and near-infrared range (89–91%), high tensile strength (81–122 MPa), and modulus of elasticity (3.4–4.0 GPa) depending on hydration state and respective water content. The extraordinarily low oxygen permeation of <0.005 cm3 μm m–2 day–1 kPa–1 (50% RH) and <0.03 cm3 μm m–2 day–1 kPa–1 (80% RH) can be regarded as a particularly interesting feature of DAC films. The unusually high initial contact angle of about 67° revealed a rather low hydrophilicity compared to other oxidatively modified or unmodified cellulosic materials which is most likely the result of inter- and intramolecular hemiacetal and hemialdal formation during drying and pressing."
+   },
+   {
+    "id": "https://openalex.org/W2946644113",
+    "doi": "https://doi.org/10.1016/j.nanoen.2019.04.089",
+    "title": "Self-restoring, waterproof, tunable microstructural shape memory triboelectric nanogenerator for self-powered water temperature sensor",
+    "year": 2019,
+    "cited": 167,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2211285519303908-fx1_lrg.jpg",
+    "abstract": "The thermal induced temporal changes of microstructured shape memory polymer for self-recovery triboelectric nanogenerator can be indigenously harnessed for water energy harvesting and water temperature sensing, simultaneously. Here, tunable microarchitectures of a thermally triggered shape memory polymer are realized by electrospinning, namely mats of microfibers (MFs), microspheres (MSs), and microspheres-nanofibers (MSNFs). The tunable microarchitectured shape memory triboelectric nanogenerators (mSM-TENG) exhibit self-restoring ability in both macro shape and micro morphology, while attaining enhanced and alterable triboelectric output (∼150–320 V, ∼2.5–4 μA cm −2 ) due to increased frictional effects enabled by the high surface roughness. Typically, the MFs mat is realized as a skin-contact-driven shape memory TENG, serving well as wearable power source due to variable temporary shapes that are realizable under heating. At the micro level, self-restoring capability enabled by thermal stimuli renders the deformed mats capable of restoring to the original microstructures, affording the durable TENGs with prolonged lifetime. By the aid of a cellulose oleoyl ester, waterproof mat based TENGs with retentive rough surface are attainable for harvesting energy from both cold and hot water. Accordingly, a deformed waterproof TENG is found to be recoverable in shape under hot water. The gradient surface roughness delivers distinguishable triboelectric outputs during the structural recovery process, enabling a water energy harvester with sensing ability for water temperature (25 ± 5 °C to 95 °C), promising for self-powered waterproof wearable electronics and smart wastewater management system."
+   },
+   {
+    "id": "https://openalex.org/W3170999054",
+    "doi": "https://doi.org/10.1021/acsnano.1c01431",
+    "title": "Highly Thermal-Wet Comfortable and Conformal Silk-Based Electrodes for On-Skin Sensors with Sweat Tolerance",
+    "year": 2021,
+    "cited": 165,
+    "venue": "ACS Nano",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Tactile and Sensory Interactions",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/157910/2/Silk%20electrode-clean.pdf",
+    "abstract": "Noninvasive and seamless interfacing between the sensors and human skin is highly desired for wearable healthcare. Thin-film-based soft and stretchable sensors can to some extent form conformal contact with skin even under dynamic movements for high-fidelity signals acquisition. However, sweat accumulation underneath these sensors for long-term monitoring would compromise the thermal-wet comfort, electrode adherence to the skin, and signal fidelity. Here, we report the fabrication of a highly thermal-wet comfortable and conformal silk-based electrode, which can be used for on-skin electrophysiological measurement under sweaty conditions. It is realized through incorporating conducting polymers poly(3,4-ethylenedioxythiophene): polystyrenesulfonate (PEDOT:PSS) into glycerol-plasticized silk fiber mats. Glycerol plays the role of tuning the mechanical properties of silk fiber mats and enhancing the conductivity of PEDOT:PSS. Our silk-based electrodes show high stretchability (>250%), low thermal insulation (∼0.13 °C·m 2 ·W –1 ), low evaporative resistance (∼23 Pa·m 2 ·W –1, 10 times lower than ∼1.3 mm thick commercial gel electrodes), and high water-vapor transmission rate (∼117 g·m –2 ·h –1 under sweaty conditions, 2 times higher than skin water loss). These features enable a better electrocardiography signal quality than that of commercial gel electrodes without disturbing the heat dissipation during sweat evaporation and provide possibilities for textile integration to monitor the muscle activities under large deformation. Our glycerol-plasticized silk-based electrodes possessing superior physiological comfortability may further engage progress in on-skin electronics with sweat tolerance."
+   },
+   {
+    "id": "https://openalex.org/W3201536132",
+    "doi": "https://doi.org/10.1016/j.gce.2021.09.003",
+    "title": "FTIR investigation of the interfacial properties and mechanisms of CO2 sorption in porous ionic liquids",
+    "year": 2021,
+    "cited": 163,
+    "venue": "Green Chemical Engineering",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Ionic liquids properties and applications",
+     "Membrane Separation and Gas Transport"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2666952821000674/pdf",
+    "abstract": "Porous liquids, which are liquids with permanent porosity, have received significant attention as a new class of materials with the potential for far-reaching impacts in a variety of applications including gas separation. In this work, in situ Fourier transform infrared spectroscopy measurements were conducted to investigate the mechanism of carbon dioxide absorption in a porous ionic liquid consisting of ZIF-8 combined with 8,8′-(3,6-dioxaoctane-1,8-diyl)bis(1,8-diazabicyclo[5.4.0]undec-7-en-8-ium) bis(trifluoromethanesulfonyl)imide ([DBU-PEG][(Tf2N)2]). While the vibrational modes of the pure ionic liquid remain relatively unchanged, the incorporation of carbon dioxide leads to slight structural fluctuations in the ZIF-8 framework whether it is pure solid or as integrated into the porous ionic liquid. The analysis of the vibrational modes of the porous ionic liquid suggests that the interaction of the CO2 occurs more strongly with the ring structure of the ZIF-8 framework. The splitting of the asymmetric stretch of the CO2 into multiple peaks upon sorption indicate the presence of multiple environments, which could be a combination of free and physisorbed CO2 or simply multiple binding sites within the porous ionic liquid. A better understanding of gas sorption mechanisms in this unique material could lead to new porous ionic liquids with enhanced separations properties."
+   },
+   {
+    "id": "https://openalex.org/W3021884413",
+    "doi": "https://doi.org/10.1016/j.polymdegradstab.2020.109185",
+    "title": "Effect of UV-aging on the mechanical and fracture behavior of low density polyethylene",
+    "year": 2020,
+    "cited": 162,
+    "venue": "Polymer Degradation and Stability",
+    "topics": [
+     "Polymer crystallization and properties",
+     "Mechanical Behavior of Composites",
+     "Polymer Nanocomposites and Properties"
+    ],
+    "oa_url": "https://hal.science/hal-03001397v1/file/PIMM_PDS_2020_COLIN.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2791809716",
+    "doi": "https://doi.org/10.3390/ijerph15040597",
+    "title": "Microplastic Contamination of Wild and Captive Flathead Grey Mullet (Mugil cephalus)",
+    "year": 2018,
+    "cited": 159,
+    "venue": "International Journal of Environmental Research and Public Health",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/1660-4601/15/4/597/pdf?version=1525345247",
+    "abstract": "A total of 60 flathead grey mullets were examined for microplastic ingestion. Thirty wild mullets were captured from the eastern coast of Hong Kong and 30 captive mullets were obtained from fish farms. Microplastic ingestion was detected in 60% of the wild mullets, with an average of 4.3 plastic items per mullet, while only 16.7% of captive mullets were found to have ingested microplastics, with an average of 0.2 items per mullet. The results suggested that wild mullets have a higher risk of microplastic ingestion than their captive counterparts. The most common plastic items were fibres that were green in colour and small in size (<2 mm). Polypropylene was the most common polymer (42%), followed by polyethylene (25%). In addition, the abundance of microplastics was positively correlated with larger body size among the mullets."
+   },
+   {
+    "id": "https://openalex.org/W3093510757",
+    "doi": "https://doi.org/10.1002/advs.202000602",
+    "title": "Phase‐Changing Microcapsules Incorporated with Black Phosphorus for Efficient Solar Energy Storage",
+    "year": 2020,
+    "cited": 158,
+    "venue": "Advanced Science",
+    "topics": [
+     "Phase Change Materials Research",
+     "Solar-Powered Water Purification Methods",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202000602",
+    "abstract": "Abstract A new solar energy storage system is designed and synthesized based on phase‐changing microcapsules incorporated with black phosphorus sheets (BPs). BPs are 2D materials with broad light absorption and high photothermal performance, which are synthesized and covalently modified with poly(methyl methacrylate) (PMMA) to produce the PMMA‐modified BPs (mBPs). With the aid of PMMA, the mBPs and phase‐changing materials (PCM, eicosane) are encapsulated together to form microcapsules. The microencapsulated eicosane and mBPs (mBPs‐MPCM) composites exhibit a high latent heat of over 180 kJ kg −1 , good thermal reliability, as well as excellent photothermal characteristics inherited from BPs. Owing to the direct contact in the integrated mBPs‐MPCM composites, the thermal energy generated by mBPs is transferred to eicosane immediately giving rise to three times higher efficiency in solar energy storage compared to microcapsules with mBPs on the surface. The mBPs‐MPCM composites have great potential in solar energy storage applications and the concept of integrating photothermal materials and PCMs as the core provides insights into the design of high‐efficiency solar energy storage materials."
+   },
+   {
+    "id": "https://openalex.org/W2401032593",
+    "doi": "https://doi.org/10.1038/srep26098",
+    "title": "Luminescence and luminescence quenching of highly efficient Y2Mo4O15:Eu3+ phosphors and ceramics",
+    "year": 2016,
+    "cited": 158,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Inorganic Fluorides and Related Compounds",
+     "Radiation Detection and Scintillator Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep26098.pdf",
+    "abstract": "A good LED phosphor must possess strong enough absorption, high quantum yields, colour purity, and quenching temperatures. Our synthesized Y2Mo4O15:Eu(3+) phosphors possess all of these properties. Excitation of these materials with near-UV or blue radiation yields bright red emission and the colour coordinates are relatively stable upon temperature increase. Furthermore, samples doped with 50% Eu(3+) showed quantum yields up to 85%, what is suitable for commercial application. Temperature dependent emission spectra revealed that heavily Eu(3+) doped phosphors possess stable emission up to 400 K and lose half of the efficiency only at 515 K. In addition, ceramic disks of Y2Mo4O15:75%Eu(3+) phosphor with thickness of 0.71 and 0.98 mm were prepared and it turned out that they efficiently convert radiation of 375 and 400 nm LEDs to the red light, whereas combination with 455 nm LED yields purple colour."
+   },
+   {
+    "id": "https://openalex.org/W4221110254",
+    "doi": "https://doi.org/10.1038/s41467-022-29107-9",
+    "title": "Halogen hydrogen-bonded organic framework (XHOF) constructed by singlet open-shell diradical for efficient photoreduction of U(VI)",
+    "year": 2022,
+    "cited": 151,
+    "venue": "Nature Communications",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Covalent Organic Framework Applications",
+     "Radioactive element chemistry and processing"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-29107-9.pdf",
+    "abstract": "Abstract Synthesis of framework materials possessing specific spatial structures or containing functional ligands has attracted tremendous attention. Herein, a halogen hydrogen-bonded organic framework (XHOF) is fabricated by using Cl − ions as central connection nodes to connect organic ligands, 7,7,8,8-tetraaminoquinodimethane (TAQ), by forming a Cl − ···H 3 hydrogen bond structure. Unlike metallic node-linked MOFs, covalent bond-linked COFs, and intermolecular hydrogen bond-linked HOFs, XHOFs represent a different kind of crystalline framework. The electron-withdrawing effect of Cl − combined with the electron-rich property of the organic ligand TAQ strengthens the hydrogen bonds and endows XHOF-TAQ with high stability. Due to the production of excited electrons by TAQ under light irradiation, XHOF-TAQ can efficiently catalyze the reduction of soluble U(VI) to insoluble U(IV) with a capacity of 1708 mg-U g −1 -material. This study fabricates a material for uranium immobilization for the sustainability of the environment and opens up a new direction for synthesizing crystalline framework materials."
+   },
+   {
+    "id": "https://openalex.org/W3085580005",
+    "doi": "https://doi.org/10.1016/j.nanoen.2020.105358",
+    "title": "Mechanically interlocked stretchable nanofibers for multifunctional wearable triboelectric nanogenerator",
+    "year": 2020,
+    "cited": 149,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2211285520309356",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3008415532",
+    "doi": "https://doi.org/10.1038/s41467-020-14715-0",
+    "title": "A prenucleation strategy for ambient fabrication of perovskite solar cells with high device performance uniformity",
+    "year": 2020,
+    "cited": 149,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-14715-0.pdf",
+    "abstract": "Humidity is known to be inimical to the halide perovskites and thus typically avoided during fabrication. The poor fundamental understanding of chemical interactions between water and the precursors hampers the further development of perovskite fabrication in ambient atmosphere. Here, we disclose a key finding that the ambient water could promote the formation of lead complexes, which when uncontrolled would make their way into large intermediate fibrillar crystallites and thus discontinuous perovskite films unfavorable for photovoltaics among others. To counter this effect, a prenucleation strategy is proposed, which embodies the controlled burst of profuse intermediate nuclei. Consequently, we are able to obtain a compact and uniform perovskite layer, which affords high efficiency perovskite solar cells. More excitingly, the solar cells show high performance uniformity, demonstrating the distinctive advantages of our prenucleation strategy. This work sheds light on developing reliable and cost-effective fabrication methods for industrial production of perovskite solar cells."
+   },
+   {
+    "id": "https://openalex.org/W2962854800",
+    "doi": "https://doi.org/10.1039/c9cp02582k",
+    "title": "Unveiling the thermolysis natures of ZIF-8 and ZIF-67 by employing in situ structural characterization studies",
+    "year": 2019,
+    "cited": 138,
+    "venue": "Physical Chemistry Chemical Physics",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Crystallography and molecular interactions",
+     "Machine Learning in Materials Science"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2019/cp/c9cp02582k",
+    "abstract": "The thermolysis routes of two isostructural metal-organic framework compounds (Zn-based ZIF-8 and Co-based ZIF-67) are investigated based on temperature-dependent and time-dependent in situ Fourier transform infrared (FTIR) spectroscopy and in situ X-ray diffraction data, as well as thermogravimetric-differential scanning calorimetry (TG-DSC) analyses and density functional theory (DFT) calculations. These data highlight thermolysis effects on different vibrations and dissociations within specific atomic moieties. The coordination differences between Zn-N and Co-N lead to the distinct thermolysis routes of ZIF-8 and ZIF-67. ZIF-8 is easily deformed during heating while decomposes at a higher temperature due to the saturated Zn-N coordination. ZIF-67, however, does not deform during heating due to the stronger Co-N bonds, but easily reacts with oxygen due to the unsaturated Co-N bonds. Our results demonstrate that in situ FTIR paired with in situ XRD is a powerful technique for MOF thermolysis investigation, and we suggest that the thermolysis mechanisms of MOFs may be unveiled by investigating a series of MOFs having different coordination types using in situ characterisation methods."
+   },
+   {
+    "id": "https://openalex.org/W2795925858",
+    "doi": "https://doi.org/10.3390/ma11061030",
+    "title": "Degradation of Methylene Blue Dye in the Presence of Visible Light Using SiO2@α-Fe2O3 Nanocomposites Deposited on SnS2 Flowers",
+    "year": 2018,
+    "cited": 136,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Iron oxide chemistry and applications",
+     "TiO2 Photocatalysis and Solar Cells"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/11/6/1030/pdf?version=1529225511",
+    "abstract": "Semiconductor materials have been shown to have good photocatalytic behavior and can be utilized for the photodegradation of organic pollutants. In this work, three-dimensional flower-like SnS₂ (tin sulfide) was synthesized by a facile hydrothermal method. Core-shell structured SiO₂@α-Fe₂O₃ nanocomposites were then deposited on the top of the SnS₂ flowers. The as-synthesized nanocomposites were characterized by X-ray diffraction (XRD), Raman spectroscopy, field emission scanning electron microscopy (FE-SEM), transmission electron microscopy (TEM), X-ray photoelectron spectroscopy (XPS), UV⁻Vis Spectroscopy, Brunauer⁻Emmett⁻Teller (BET) surface area analysis, and photoluminescence (PL) spectroscopy. The photocatalytic behavior of the SnS₂-SiO₂@α-Fe₂O₃ nanocomposites was investigated by observing the degradation of methylene blue (MB). The results show an effective enhancement of photocatalytic activity for the degradation of MB especially for the 15 wt % SiO₂@α-Fe₂O₃ nanocomposites on SnS₂ flowers."
+   },
+   {
+    "id": "https://openalex.org/W2951417000",
+    "doi": "https://doi.org/10.1016/j.marpolbul.2019.05.041",
+    "title": "Particle characteristics of microplastics contaminating the mussel Mytilus edulis and their surrounding environments",
+    "year": 2019,
+    "cited": 135,
+    "venue": "Marine Pollution Bulletin",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0025326X19304096?via%3Dihub",
+    "abstract": "We investigated the environmental partitioning and particle characteristics of macro-, meso- and microplastics and their uptake into the mussel, Mytilus edulis. Sediment samples, overlying seawater and mussels from 9 intertidal locations in the South West of England were analysed for abundance and type of microplastic. Micro- and mesoplastic-like particles were found in 88.5% of the 269 mussels sampled, ranging from 1.43 to 7.64 items per mussel. Of these plastic particles, 70.9% were identified as semi-synthetic (mainly modified-cellulose). Mussel microplastic abundance, but not polymer type, was correlated with that of their surrounding sediment, but not with sea-surface microplastic concentration or mussel size for our study sites. We found significant differences in the relative abundance of polymer types and particle sizes between seawater, sediment, and mussels, with mussels over-representing modified-cellulose fibre abundance but under-representing polyvinyl. Mussels contained significantly smaller plastic fragments than their surrounding sediment and shorter fibres than their overlying seawater."
+   },
+   {
+    "id": "https://openalex.org/W2803237634",
+    "doi": "https://doi.org/10.1002/adma.201801152",
+    "title": "Rechargeable Al–CO2 Batteries for Reversible Utilization of CO2",
+    "year": 2018,
+    "cited": 135,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Ammonia Synthesis and Nitrogen Reduction"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201801152",
+    "abstract": "Abstract The excessive emission of CO2 and the energy crisis are two major issues facing humanity. Thus, the electrochemical reduction of CO2 and its utilization in metal–CO2 batteries have attracted wide attention because the batteries can simultaneously accelerate CO2 fixation/utilization and energy storage/release. Here, rechargeable Al–CO2 batteries are proposed and realized, which use chemically stable Al as the anode. The batteries display small discharge/charge voltage gaps down to 0.091 V and high energy efficiencies up to 87.7%, indicating an efficient battery performance. Their chemical reaction mechanism to produce the performance is revealed to be 4Al + 9CO2 ↔ 2Al2(CO3)3 + 3C, by which CO2 is reversibly utilized. These batteries are envisaged to effectively and safely serve as a potential CO2 fixation/utilization strategy with stable Al."
+   },
+   {
+    "id": "https://openalex.org/W2034995392",
+    "doi": "https://doi.org/10.1038/ncomms7460",
+    "title": "How intermolecular geometrical disorder affects the molecular doping of donor–acceptor copolymers",
+    "year": 2015,
+    "cited": 121,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Conducting polymers and applications",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://doi.org/10.1038/ncomms7460",
+    "abstract": "Molecular doping of conjugated polymers represents an important strategy for improving organic electronic devices. However, the widely reported low efficiency of doping remains a crucial limitation to obtain high performance. Here we investigate how charge transfer between dopant and donor–acceptor copolymers is affected by the spatial arrangement of the dopant molecule with respect to the copolymer repeat unit. We p-dope a donor–acceptor copolymer and probe its charge-sensitive molecular vibrations in films by infrared spectroscopy. We find that, compared with a related homopolymer, a four times higher dopant/polymer molar ratio is needed to observe signatures of charges. By DFT methods, we simulate the vibrational spectra, moving the dopant along the copolymer backbone and finding that efficient charge transfer occurs only when the dopant is close to the donor moiety. Our results show that the donor–acceptor structure poses an obstacle to efficient doping, with the acceptor moiety being inactive for p-type doping. Doping of conjugated polymers is an important strategy for the development of organic electronics. Here, the authors study the spatial organization of dopants in donor–acceptor polymers, indicating that charge transfer is improved when the dopant and donor moiety are in close proximity."
+   },
+   {
+    "id": "https://openalex.org/W2586551425",
+    "doi": "https://doi.org/10.1038/ncomms14308",
+    "title": "Proton enhanced dynamic battery chemistry for aprotic lithium–oxygen batteries",
+    "year": 2017,
+    "cited": 120,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14308.pdf",
+    "abstract": "Water contamination is generally considered to be detrimental to the performance of aprotic lithium-air batteries, whereas this view is challenged by recent contrasting observations. This has provoked a range of discussions on the role of water and its impact on batteries. In this work, a distinct battery chemistry that prevails in water-contaminated aprotic lithium-oxygen batteries is revealed. Both lithium ions and protons are found to be involved in the oxygen reduction and evolution reactions, and lithium hydroperoxide and lithium hydroxide are identified as predominant discharge products. The crystallographic and spectroscopic characteristics of lithium hydroperoxide monohydrate are scrutinized both experimentally and theoretically. Intriguingly, the reaction of lithium hydroperoxide with triiodide exhibits a faster kinetics, which enables a considerably lower overpotential during the charging process. The battery chemistry unveiled in this mechanistic study could provide important insights into the understanding of nominally aprotic lithium-oxygen batteries and help to tackle the critical issues confronted."
+   },
+   {
+    "id": "https://openalex.org/W4403317071",
+    "doi": "https://doi.org/10.1002/adma.202414048",
+    "title": "Targeted Defect Repair and Multi‐functional Interface Construction for the Direct Regeneration of Spent LiFePO4 Cathodes",
+    "year": 2024,
+    "cited": 119,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Extraction and Separation Processes",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202414048",
+    "abstract": "Abstract Due to the low economic benefits and environmental pollution of traditional recycling methods, the disposal of spent LiFePO4 (SLFP) presents a significant challenge. The capacity fade of SLFP cathode is primarily caused by lithium loss and formation of a Fe (III) phase. Herein, a synergistic repair effect is proposed to achieve defect repair and multi‐functional interface construction for the direct regeneration of SLFP. Tannic acid (TA) forms a compact coating precursor for a carbon layer on SLFP with abundant functional groups and creates a mildly acidic environment to enhance the reducibility of thiourea (TU). Therefore, TU reduces Fe (III) to Fe (II) and repairs Li‐Fe anti‐site defects of SLFP, while at the same time acting as a source of N/S‐doping elements for the carbon layer at a lower temperature (140 °C). The multi‐functional carbon layer improves the properties of the regenerated LiFePO4 (RLFP) due to the enhanced conductivity, structure maintenance and protection, and the improved kinetics of Li+ transport. Furthermore, the Fe─O and P─O bonds are strengthened, further enhancing the structural stability of the RLFP. Consequently, the RLFP demonstrates outstanding performance with a discharge capacity of 141.3 mAh g−1 and capacity retention of 72% after 1000 cycles at 1 C."
+   },
+   {
+    "id": "https://openalex.org/W2588529470",
+    "doi": "https://doi.org/10.1111/jam.13421",
+    "title": "AlkaliphilicBacillusspecies show potential application in concrete crack repair by virtue of rapid spore production and germination then extracellular calcite formation",
+    "year": 2017,
+    "cited": 119,
+    "venue": "Journal of Applied Microbiology",
+    "topics": [
+     "Microbial Applications in Construction Materials",
+     "Building materials and conservation",
+     "Bacterial biofilms and quorum sensing"
+    ],
+    "oa_url": "https://doi.org/10.1111/jam.13421",
+    "abstract": "Characterization of alkaliphilic Bacillus species for spore production and germination and calcite formation as a prelude to investigate their potential in microcrack remediation in concrete. Conditions, extent and timing of endospore production was determined by dark‐field light microscopy; germination induction and kinetics were assessed by combining reduction in optical density with formation of refractile bodies by phase‐contrast microscopy. Bacillus pseudofirmus was selected from several species as the most suitable isolate. Levels and timing of calcium carbonate precipitated in vitro by B. pseudofirmus were evaluated by atomic absorption spectroscopy and structural identity confirmed as calcite and aragonite by Raman spectroscopy and FTIR. The isolate produced copious spores that germinated rapidly in the presence of germinants l‐alanine, inosine and NaCl. Bacterial cells produced CaCO3 crystals in microcracks and the resulting occlusion markedly restricted water ingress. By virtue of rapid spore production and germination, calcium carbonate formation in vitro and in situ, leading to sealing of microcracks, B. pseudofirmus shows clear potential for remediation of concrete on a commercial scale. Microbial sealing of microcracks should become a practicable and sustainable means of increasing concrete durability."
+   },
+   {
+    "id": "https://openalex.org/W3201848462",
+    "doi": "https://doi.org/10.1016/j.jksus.2021.101632",
+    "title": "Study of a new piperidone as an anti-Alzheimer agent: Molecular docking, electronic and intermolecular interaction investigations by DFT method",
+    "year": 2021,
+    "cited": 118,
+    "venue": "Journal of King Saud University - Science",
+    "topics": [
+     "Nonlinear Optical Materials Research",
+     "Synthesis and biological activity",
+     "Metal complexes synthesis and properties"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.jksus.2021.101632",
+    "abstract": "In this work, experimental spectroscopic and theoretical methods as quantum chemical calculation were performed for 3-chloro-r(2),c(6)-bis(4-fluorophenyl)-3-methylpiperidin-4-one (abbreviated as CFMP). The CFMP was synthesized and analysed using FT-IR, 1H NMR, 13C NMR, and UV–Vis spectroscopy. Standard functional B3LYP/6–311++G(d,p) density functional theory (DFT) calculations were utilized for the CFMP compound. Molecular electrostatic potential, non-linear optical, and natural bond orbital studies were performed. The charge transfer inside the molecule was demonstrated using HOMO-LUMO energy calculations and Mulliken atomic charges. The vibrational frequency was computed using the DFT/B3LYP/6–311++G(d,p) method. The non-covalent interactions were investigated using the Hirshfeld surface analysis. Furthermore, molecular docking was studied to discover novel inhibitors and drugs in treating Alzheimer's diseases. Further, docking studies were performed to predict and describe the interactions of four proteins with the ligand. This result demonstrates that the CFMP has an inhibitor effect against Alzheimer's diseases."
+   },
+   {
+    "id": "https://openalex.org/W2024893982",
+    "doi": "https://doi.org/10.1002/aenm.201401891",
+    "title": "Micropatterning of Flexible and Free Standing Polyvinylidene Difluoride (PVDF) Films for Enhanced Pyroelectric Energy Transformation",
+    "year": 2015,
+    "cited": 118,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Innovative Energy Harvesting Technologies",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://researchportal.bath.ac.uk/en/publications/0a56e0bc-3a03-439f-ab8f-9a81cda3aea9",
+    "abstract": "In an effort to harvest thermal energy and exploit abundantly available waste heat the pyroelectric effect offers the opportunity to convert temperature fluctuations into useable electrical energy. Here, the micropatterning of the surface of a pyroelectric in order to enhance heat transfer and achieve faster and larger temperature fluctuations, which improve pyroelectric energy transformation, is reported. Methods for the fabrication of partially covered electrodes on polyvinylidene difluoride (PVDF) films are developed to investigate and quantify the benefits of such an electrode structure for pyroelectric energy harvesting. The micropattern consists of an array of holes that are etched into the upper aluminum electrodes of free standing ferroelectric PVDF films using a low cost photolithography and wet etching process. Under the application of infrared radiation heating, it is demonstrated that such microfeatures are able to significantly improve the open circuit voltage by 380% and the closed circuit current by 420% for an electrode area coverage of 45% when compared to a fully covered electrode design. Capacitance measurements show constant electric fields with microfeatures for electrode area coverages as low as 28%. A specific generator performance of 66.9 μJ cm−3 cycle−1 is presented at oscillation temperatures of 2.8 °C."
+   },
+   {
+    "id": "https://openalex.org/W2094224141",
+    "doi": "https://doi.org/10.1109/tac.2007.911347",
+    "title": "Noise in Gene Regulatory Networks",
+    "year": 2008,
+    "cited": 118,
+    "venue": "IEEE Transactions on Automatic Control",
+    "topics": [
+     "Gene Regulatory Network Analysis",
+     "Microbial Metabolic Engineering and Bioproduction",
+     "Single-cell and spatial transcriptomics"
+    ],
+    "oa_url": "http://funes.uniandes.edu.co/17325/1/Chaves2014Espacios.pdf",
+    "abstract": "Life processes in single cells and at the molecular level are inherently stochastic. Quantifying the noise is, however, far from trivial, as a major contribution comes from intrinsic fluctuations, arising from the randomness in the times between discrete jumps. It is shown in this paper how a noise-filtering setup with an operator theoretic interpretation can be relevant for analyzing the intrinsic stochasticity in jump processes described by master equations. Such interpretation naturally exists in linear noise approximations, but it also provides an exact description of the jump process when the transition rates are linear. As an important example, it is shown in this paper how, by addressing the proximity of the underlying dynamics in an appropriate topology, a sequence of coupled birth-death processes, which can be relevant in gene expression, tends to a pure delay; this implies important limitations in noise suppression capabilities. Despite the exactness, in a linear regime, of the analysis of noise in conjunction with the network dynamics, we emphasize in this paper the importance of also analyzing dynamic behavior when transition rates are highly nonlinear; otherwise, steady-state solutions can be misinterpreted. The examples are taken from systems with macroscopic models leading to bistability. It is discussed that bistability in the deterministic mass action kinetics and bimodality in the steady-state solution of the master equation neither always imply one another nor do they necessarily lead to efficient switching behaviours: the underlying dynamics need to be taken into account. Finally, we explore some of these issues in relation to a model of the lac operation."
+   },
+   {
+    "id": "https://openalex.org/W2311780956",
+    "doi": "https://doi.org/10.1002/adfm.201504990",
+    "title": "A New Class of Renewable Thermoplastics with Extraordinary Performance from Nanostructured Lignin‐Elastomers",
+    "year": 2016,
+    "cited": 116,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Lignin and Wood Chemistry",
+     "Polymer composites and self-healing",
+     "Advanced Cellulose Research Studies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1250410",
+    "abstract": "A new class of thermoplastic elastomers has been created by introducing nanoscale‐dispersed lignin (a biomass‐derived phenolic oligomer) into nitrile rubber. Temperature‐induced controlled miscibility between the lignin and the rubber during high shear melt‐phase synthesis allows tuning the material's morphology and performance. The sustainable product has unprecedented yield stress (15–45 MPa), strain hardens at large deformation, and has outstanding recyclability. The multiphase polymers developed from an equal‐mass mixture of a melt‐stable lignin fraction and nitrile rubber with optimal acrylonitrile content, using the method described here, show 5–100 nm lignin lamellae with a high‐modulus rubbery interphase. Molded or printed elastomeric products prepared from the lignin‐nitrile material offer an additional revenue stream to pulping mills and biorefineries."
+   },
+   {
+    "id": "https://openalex.org/W2944332397",
+    "doi": "https://doi.org/10.3390/polym11050853",
+    "title": "Preparation and Composition Optimization of PEO:MC Polymer Blend Films to Enhance Electrical Conductivity",
+    "year": 2019,
+    "cited": 113,
+    "venue": "Polymers",
+    "topics": [
+     "Conducting polymers and applications",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/11/5/853/pdf?version=1557482637",
+    "abstract": "The polymer blend technique was used to improve amorphous phases of a semicrystalline polymer. A series of solid polymer blend films based on polyethylene oxide (PEO) and methylcellulose (MC) were prepared using the solution cast technique. X-ray diffraction (XRD), Polarized optical microscope (POM), Fourier transform infrared (FTIR) and electrical impedance spectroscopy (EIS) were used to characterize the prepared blend films. The XRD and POM studies indicated that all polymer blend films are semicrystalline in nature, and the lowest degree of crystallinity was obtained for PEO:MC polymer blend film with a weight ratio of 60:40. The FTIR spectroscopy was used to identify the chemical structure of samples and examine the interactions between chains of the two polymers. The interaction between PEO and MC is evidenced from the shift of infrared absorption bands. The DC conductivity of the films at different temperatures revealed that the highest conductivity 6.55 × 10−9 S/cm at ambient temperature was achieved for the blend sample with the lowest degree of crystallinity and reach to 26.67 × 10−6 S/cm at 373 K. The conductivity relaxation process and the charge transport through the hopping mechanism have been explained by electric modulus analysis. The imaginary part of electrical modulus M″ shows an asymmetrical peak, suggesting a temperature-dependent non-Debye relaxation for the PEO:MC polymer blend system."
+   },
+   {
+    "id": "https://openalex.org/W2921347041",
+    "doi": "https://doi.org/10.1039/c8ra10087j",
+    "title": "Physicochemical characterization and optimization of glycolipid biosurfactant production by a native strain of Pseudomonas aeruginosa HAK01 and its performance evaluation for the MEOR process",
+    "year": 2019,
+    "cited": 113,
+    "venue": "RSC Advances",
+    "topics": [
+     "Microbial bioremediation and biosurfactants",
+     "Enhanced Oil Recovery Techniques",
+     "Petroleum Processing and Analysis"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2019/ra/c8ra10087j",
+    "abstract": "C-NMR spectroscopy revealed the glycolipid structure of the BS. Response surface methodology was applied to optimize BS production. Several micromodel flooding tests were conducted to study the capability of the produced rhamnolipid in enhanced oil recovery for the first time. An oil recovery factor of 43% was obtained at 120 ppm of BS solution whereas the recovery factor obtained for water flooding was 16%. Contact angle measurements showed that BS solutions altered the wettability of a glass surface from oil wet to a strongly water wet state. Also the results illustrated that all BS solutions were impressive in microbial enhanced oil recovery (MEOR) and using the produced BS a considerable amount of trapped oil can be extracted due to interfacial tension reduction, wettability alteration towards water wet conditions and improving the mobility ratio."
+   },
+   {
+    "id": "https://openalex.org/W3157635219",
+    "doi": "https://doi.org/10.1038/s41467-021-22682-3",
+    "title": "Unique reactivity of nanoporous cellulosic materials mediated by surface-confined water",
+    "year": 2021,
+    "cited": 112,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Nanomaterials for catalytic reactions",
+     "Catalysis for Biomass Conversion"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22682-3.pdf",
+    "abstract": "The remarkable efficiency of chemical reactions is the result of biological evolution, often involving confined water. Meanwhile, developments of bio-inspired systems, which exploit the potential of such water, have been so far rather complex and cumbersome. Here we show that surface-confined water, inherently present in widely abundant and renewable cellulosic fibres can be utilised as nanomedium to endow a singular chemical reactivity. Compared to surface acetylation in the dry state, confined water increases the reaction rate and efficiency by 8 times and 30%, respectively. Moreover, confined water enables control over chemical accessibility of selected hydroxyl groups through the extent of hydration, allowing regioselective reactions, a major challenge in cellulose modification. The reactions mediated by surface-confined water are sustainable and largely outperform those occurring in organic solvents in terms of efficiency and environmental compatibility. Our results demonstrate the unexploited potential of water bound to cellulosic nanostructures in surface esterifications, which can be extended to a wide range of other nanoporous polymeric structures and reactions."
+   },
+   {
+    "id": "https://openalex.org/W2896318241",
+    "doi": "https://doi.org/10.3390/ijerph15102270",
+    "title": "Occurrence and Composition of Microplastics in the Seabed Sediments of the Coral Communities in Proximity of a Metropolitan Area",
+    "year": 2018,
+    "cited": 111,
+    "venue": "International Journal of Environmental Research and Public Health",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1660-4601/15/10/2270/pdf?version=1539686625",
+    "abstract": "In marine environments, microplastics have become a focus in scientific research in the last decade due to the global threat this pollutant poses to the marine environment. Corals in Hong Kong are under threat due to the degradation of the marine environment caused by human activities. This study investigated the occurrence, abundance and composition of microplastic debris (0.3⁻5 mm) in seabed sediments adjacent to coral communities in Hong Kong. Twenty-four benthic sediment samples were collected from four study sites located along the northeastern and eastern shores of Hong Kong. Microplastic concentrations ranged from 169 ± 48 to 221 ± 45 items/kg, and the mean concentration of microplastics in the seabed sediments was 189 ± 50 items/kg, which was comparable to similar studies in other regions. Microplastics accounted for 95.4% of particles extracted from benthic sediment samples using 40× light microscopy. ATR-FTIR spectroscopy analysis showed that polyethylene (PE) and polyethylene terephthalate (PET) comprised the majority of polymer types, contributing 45.3% and 29.3%, respectively. The proportion of microplastics made from PE and PET in seabed sediments was significantly higher than that observed in local beach sediments. The proportion of microplastics made from PE and low-density polyethylene (LDPE) and polypropylene (PP) together in the seabed sediments was much higher than that of PET and polyvinyl chloride (PVC). The results have provided information with reference to environmental concentrations of microplastics for fringe reef habitat close to urban areas, which can be applied in studies concerning ecotoxicity of microplastics."
+   },
+   {
+    "id": "https://openalex.org/W2089017162",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2015.04.009",
+    "title": "Vanadium-based polyoxometalate as new material for sodium-ion battery anodes",
+    "year": 2015,
+    "cited": 109,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Polyoxometalates: Synthesis and Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://eprints.lancs.ac.uk/id/eprint/74675/1/POM_Manuscript.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4313546555",
+    "doi": "https://doi.org/10.1021/acsnano.2c07320",
+    "title": "Cesium Lead Halide Perovskite Decorated Polyvinylidene Fluoride Nanofibers for Wearable Piezoelectric Nanogenerator Yarns",
+    "year": 2023,
+    "cited": 105,
+    "venue": "ACS Nano",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.2c07320",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Piezoelectric nanogenerators (PENGs) provide a viable solution to convert the mechanical energy generated by body movement to electricity. One-dimensional yarns offer a platform for flexible wearable textile PENGs, which can conform to body for comfort and efficient energy harvesting. In this context, we report a flexible piezoelectric yarn, assembled by one-step cocentric deposition of cesium lead halide perovskite decorated polyvinylidene fluoride (PVDF) nanofibers, on a stainless-steel yarn. Perovskite crystals were formed in situ during electrospinning. Our work demonstrates a nanofiber morphology in which perovskite crystals spread over the nanofiber, leading to a rough surface, and complementing piezoelectric nanocomposite formation with PVDF for superior stress excitation. We investigated how the halide anions of perovskite affect the piezoelectric performance of PENG yarns by comparing CsPbBr 3 and CsPbI 2 Br. Effects of the perovskite concentration, annealing temperature, and deposition time on the piezoelectric properties of PENG yarns were investigated. Devices assembled with a single yarn of CsPbI 2 Br decorated PVDF nanofibers yield the optimal performance with an output voltage of 8.3 V and current of 1.91 μA in response to pressing from an actuator and used to charge capacitors for powering electronics. After aging in the ambient environment for 3 months, the device maintained its performance during 19,200 cycles of mechanical stresses. The excellent and stable electrical performance can be ascribed to the optimized crystallization of CsPbI 2 Br crystals, their complementing performance with PVDF, and formation of nanofibers with uniformity and strength. The flexibility of piezoelectric yarns enables them to be bent, twisted, braided, and woven for different textile integrations while harvesting energy from body movements, demonstrating the potential for wearable mechanical energy harvesting."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"PerkinElmer Frontier FT-IR\" OR \"PerkinElmer Frontier\") AND OPEN_ACCESS:y",

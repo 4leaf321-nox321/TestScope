@@ -9,8 +9,114 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Neware BTS4000-5V6A\" OR \"Neware BTS4000-5V6A CT-4008T-5V6A-S1\" OR \"Neware 164\"",
-  "count": null,
-  "works": []
+  "count": 7,
+  "works": [
+   {
+    "id": "https://openalex.org/W4225122409",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2022.231480",
+    "title": "Semi-flowable Zn semi-solid electrodes as renewable energy carrier for refillable Zn–Air batteries",
+    "year": 2022,
+    "cited": 22,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Advanced battery technologies research",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.jpowsour.2022.231480",
+    "abstract": "Today’s society relies on energy storage on a day-to-day basis, e.g. match energy production and demand from renewable sources, power a variety of electronics, and \\nenable emerging technologies. As a result, a vast range of energy storage technologies has emerged in the last decades. Among them, rechargeable Zn–Air batteries \\nhave held great promises for a long time. However, the severe challenges related to the reversible O2 reactions and poor cyclability at the positive and negative \\nelectrodes, respectively, have severely hindered the success of this technology. Herein, electrically-conducting and semi-flowable Zn semi-solid electrodes are \\nproposed to revive the appealing concept of a mechanically–rechargeable alkaline Zn–Air battery, in which the spent negative electrodes are easily substituted at the \\nend of the discharge process (refillable primary battery). In this proof-of-concept study energy densities of ca. 1500 Wh L− 1 (1350 Ah L− 1 \\nelectrode and utilization rate of \\n85%) are achieved thanks to the compromised flowability of the proposed Zn semi-solid electrodes. In this way, semi-solid Zn electrodes become a type of green \\nenergy carrier having intrinsic advantages over gas and liquid fuels. Zn semi-flowable electrode can be generated elsewhere using renewable sources, easily stored, \\ntransported, and used to produce electricity."
+   },
+   {
+    "id": "https://openalex.org/W4410432627",
+    "doi": "https://doi.org/10.1039/d5ta02137e",
+    "title": "Effects of electrolyte, state of charge, and strain rate on the mechanical properties of lithium-ion battery electrodes and separators",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Journal of Materials Chemistry A",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ta/d5ta02137e",
+    "abstract": "The state of charge, electrolyte environment, and strain rate synergistically govern the mechanical integrity of lithium-ion battery electrodes, revealing complex solid–liquid interactions vital for battery safety and durability."
+   },
+   {
+    "id": "https://openalex.org/W4407406914",
+    "doi": "https://doi.org/10.3390/batteries11020073",
+    "title": "Lab-Scale X-Ray Exposure Has No Measurable Impact on Lithium-Ion Battery Performance and Lifetime",
+    "year": 2025,
+    "cited": 5,
+    "venue": "Batteries",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Radiation Effects in Electronics"
+    ],
+    "oa_url": "https://www.mdpi.com/2313-0105/11/2/73/pdf?version=1739423963",
+    "abstract": "X-ray characterization is broadly used in battery research, development, manufacturing, and quality control. However, the impact of lab-scale X-ray exposure on battery performance and lifetime is not well understood. In this work, we evaluate the impact of lab-scale X-rays on battery performance and lifetime. We tested groups of cylindrical 18,650 cells using 2 min and 60 min X-ray imaging conditions; the performance and lifetime of these cells were identical to a control group without X-ray exposure. These results suggest that lab-scale X-ray characterization is safe for lithium-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W4309703502",
+    "doi": "https://doi.org/10.3390/en15228761",
+    "title": "Effect of Synthesis Conditions on Capacitive Properties of Porous Carbon Derived from Hemp Bast Fiber",
+    "year": 2022,
+    "cited": 5,
+    "venue": "Energies",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/15/22/8761/pdf?version=1669115897",
+    "abstract": "A systematic study of the influence of synthesis conditions on the structural, morphological, and electrical properties, as well as the electrochemical performance of hemp fiber-derived carbon materials was performed. An analysis of the capacitive response of carbons obtained under various activation conditions with additional treatment with HNO3 and annealing was completed. The contribution of the formation of an electrical double layer at the outer electrode–electrolyte interface, as well as on surfaces inside micropores, has been studied and analyzed in terms of the effect of the turbostratic carbon properties (average lateral size of graphite crystallites, pore size distribution, BET surface area)."
+   },
+   {
+    "id": "https://openalex.org/W7127582601",
+    "doi": "https://doi.org/10.3390/en19030825",
+    "title": "Analysis of the Measurement Uncertainties in the Characterization Tests of Lithium-Ion Cells",
+    "year": 2026,
+    "cited": 2,
+    "venue": "Energies",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/19/3/825/pdf?version=1770214889",
+    "abstract": "The transition to renewable energy systems and electric mobility depends on the effectiveness, reliability, and durability of lithium-ion battery technology. Accurate modeling and control of battery systems are essential to ensure safety, efficiency, and cost-effectiveness in electric vehicles and grid storage. In engineering and materials science, battery models depend on physical parameters such as capacity, energy, state of charge (SOC), internal resistance, power, and self-discharge rate. These parameters are affected by measurement uncertainty. Despite the widespread use of lithium-ion cells, few studies quantify how measurement uncertainty propagates to derived battery parameters and affects predictive modeling. This study quantifies how uncertainty in voltage, current, and temperature measurements reduces the accuracy of derived parameters used for simulation and control. This work presents a comprehensive uncertainty analysis of 18650 format lithium-ion cells with nickel cobalt aluminum oxide (NCA), nickel manganese cobalt oxide (NMC), and lithium iron phosphate (LFP) cathodes. It applies the law of error propagation to quantify uncertainty in key battery parameters. The main result shows that small variations in voltage, current, and temperature measurements can produce measurable deviations in internal resistance and SOC. These findings challenge the common assumption that such uncertainties are negligible in practice. The results also highlight a risk for battery management systems that rely on these parameters for control and diagnostics. The results show that propagated uncertainty depends on chemistry because of differences in voltage profiles, kinetic limitations, and temperature sensitivity. This observation informs cell selection and testing for specific applications. Improved quantification and control of measurement uncertainty can improve model calibration and reduce lifetime and cost risks in battery systems. These results support more robust diagnostic strategies and more defensible warranty thresholds. This study shows that battery testing and modeling should report and propagate measurement uncertainty explicitly. This is important for data-driven and physics-informed models used in industry and research."
+   },
+   {
+    "id": "https://openalex.org/W7161267532",
+    "doi": "https://doi.org/10.5152/electrica.2026.25028",
+    "title": "Comprehensive Modelling and Prediction of State of Health for 18650 Lithium Titanate Oxide, Lithium Manganese Oxide, and Lithium Iron Phosphate Batteries Using Machine Learning Algorithms",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Istanbul University - Journal of Electrical & Electronics Engineering",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Machine Fault Diagnosis Techniques"
+    ],
+    "oa_url": "https://electricajournal.org/index.php/pub/article/download/1343/1314",
+    "abstract": "In this study, the state of health (SoH) estimation of lithium-ion batteries (LIBs), which have become an indispensable part of modern life due to their widespread use in portable electronics and electric vehicles (EVs), has been conducted. Experimental data have been collected from three different battery chemistries—lithium titanate oxide (LTO), lithium manganese oxide (LMO), and lithium iron phosphate (LFP)—all in 18650 cylindrical format. These cells have been aged through charge–discharge cycling under constant current–constant voltage (CC–CV) conditions using a battery analyzer. Specifically, 2000, 400, and 1000 cycles have been completed for LTO, LMO, and LFP cells, respectively. The acquired datasets have been extracted, cleaned, and pre-processed, then subjected to differential voltage analysis (DVA), a data-driven technique widely utilized for SoH assessment. The DVA has proven effective in identifying detailed degradation patterns by analyzing subtle voltage changes during cycling. In this context, machine learning (ML) algorithms—namely Linear Regression (LR), Support Vector Machine (SVM), and Gaussian Process Regression (GPR)—have been integrated with DVA to improve the predictive accuracy of SoH estimation. This study considers SoH estimation as a regression task, and the combined use of DVA and ML represents a central novelty of the work. Based on regression analyses conducted in MATLAB, LR has provided the most accurate results for LTO and LMO, while the Matern 5/2 kernel-based GPR model has performed best for LFP. The corresponding RMSE values—1.5005 (LTO), 1.246 (LMO), and 1.667 (LFP)—reflect the predictive precision of each approach. These results demonstrate that SoH estimation has been successfully carried out with low error margins. The study confirms that combining DVA with appropriate regression models yields SoH predictions exceeding 98% prediction performance. This highlights the feasibility of data-driven, chemistry-specific diagnostics in battery health monitoring for EVs and ESSs. All results have been comparatively evaluated. Cite this article as: N. Yıldıran, İ. C. Dikmen and T. Karadağ, “Comprehensive modeling and prediction of state of health for 18650 lithium titanate oxide, lithium manganese oxide, and lithium iron phosphate batteries using machine learning algorithms,” Electrica, 26, 0028, 2026. doi: 10.5152/electrica.2026.25028."
+   },
+   {
+    "id": "https://openalex.org/W4386532413",
+    "doi": "https://doi.org/10.36443/10259/7804",
+    "title": "New Battery Technology Concepts Based on Semi-Solid Electrodes",
+    "year": 2022,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Advanced battery technologies research",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://riubu.ubu.es/bitstream/10259/7804/1/Perez_Antolin_Daniel.pdf",
+    "abstract": "At this point, close to the end of the PhD it is time to thank all the people who have helped"
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Neware BTS4000-5V6A\" OR \"Neware BTS4000-5V6A CT-4008T-5V6A-S1\" OR \"Neware 164\") AND OPEN_ACCESS:y",

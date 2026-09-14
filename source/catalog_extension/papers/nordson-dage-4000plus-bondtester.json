@@ -8,8 +8,39 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Nordson 4000Plus\" OR \"DAGE / Sonoscan 4000Plus\"",
-  "count": null,
-  "works": []
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W4401388077",
+    "doi": "https://doi.org/10.1109/dtip62575.2024.10613203",
+    "title": "MOEMS for Space Applications: The Challenge of Multi-Wafer Bonding",
+    "year": 2024,
+    "cited": 2,
+    "venue": null,
+    "topics": [
+     "3D IC and TSV technologies",
+     "Advanced MEMS and NEMS Technologies",
+     "Electronic Packaging and Soldering Technologies"
+    ],
+    "oa_url": "https://hal.science/hal-04900907/document",
+    "abstract": "MOEMS devices are key devices for next generation optical instruments, including space missions for Earth and Universe Observation. They will be used for object/wavelength selection and wavefront control. MIRA is a European development of micro-mirror arrays, with 100 × 200µm2silicon mirrors with remarkable surface quality and actual ability to work at cryogenic temperatures (162K). The challenge of multi-wafer bonding, especially on silicon micro-pillars is developed in this paper. Three bonding methods are proposed as well as various non-destructive and destructive methods of bonding characterisation. Low-temperature plasma-assisted Si-SiO2direct bonding is described in details as very promising method to obtain strong bond on micropillars."
+   },
+   {
+    "id": "https://openalex.org/W4414935964",
+    "doi": "https://doi.org/10.1063/5.0287803",
+    "title": "Electrical conductance at Ga2O3/Si interfaces fabricated via surface activated bonding",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Journal of Applied Physics",
+    "topics": [
+     "Ga2O3 and related materials",
+     "ZnO doping and properties",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/jap/article-pdf/doi/10.1063/5.0287803/20740017/144501_1_5.0287803.pdf",
+    "abstract": "Under ultrahigh vacuum conditions, β-Ga2O3 and Si surfaces form atomic bonds after surface sputtering treatment. It enables the formation of a β-Ga2O3/Si heterostructure, which can contribute to future high-power devices integrated with conventional systems. However, the surface sputtering step generates crystalline damage, hindering electrical conductance across materials. In this study, sputtering conditions were optimized to maximize electrical conductance, and the effects of annealing were investigated to initiate recrystallization. The current between substrates was maximized when Si was sputtered for 40 s and β-Ga2O3 was not sputtered. In addition, annealing at 500 °C achieved ohmic-like current–voltage characteristics between n-type β-Ga2O3 and n-type Si substrates because of recrystallization. An electrically conductive interface can contribute to heterodevices combining β-Ga2O3 devices, which have difficulty in p-type doping, with other materials."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Nordson 4000Plus\" OR \"DAGE / Sonoscan 4000Plus\") AND OPEN_ACCESS:y",

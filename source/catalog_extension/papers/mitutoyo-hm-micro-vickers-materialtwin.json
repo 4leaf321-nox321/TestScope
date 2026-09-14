@@ -11,8 +11,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mitutoyo HM-100 HM-200\" OR \"Mitutoyo HM-100\" OR \"Mitutoyo HM-200\" OR \"Mitutoyo HM-122\" OR \"Mitutoyo HM-124\"",
-  "count": null,
-  "works": []
+  "count": 189,
+  "works": [
+   {
+    "id": "https://openalex.org/W2030825168",
+    "doi": "https://doi.org/10.1016/j.actamat.2011.04.025",
+    "title": "Assessment of surface hardening effects from shot peening on a Ni-based alloy using electron backscatter diffraction techniques",
+    "year": 2011,
+    "cited": 127,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Surface Treatment and Residual Stress",
+     "Erosion and Abrasive Machining",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359645411002679",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2579992456",
+    "doi": "https://doi.org/10.1016/j.ultras.2017.01.021",
+    "title": "Electroless deposition of nickel-boron coatings using low frequency ultrasonic agitation: Effect of ultrasonic frequency on the coatings",
+    "year": 2017,
+    "cited": 53,
+    "venue": "Ultrasonics",
+    "topics": [
+     "Electrodeposition and Electroless Coatings",
+     "Molecular Junctions and Nanostructures",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "https://pure.coventry.ac.uk/ws/files/13234157/Bains_Revised_Manuscript_Clean_Version_.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2960719293",
+    "doi": "https://doi.org/10.3390/ma12132208",
+    "title": "An Experimental Study on Micro-Milling of a Medical Grade Co-Cr-Mo Alloy Produced by Selective Laser Melting",
+    "year": 2019,
+    "cited": 52,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced Machining and Optimization Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/12/13/2208/pdf?version=1562659349",
+    "abstract": "Cobalt-chromium-molybdenum (Co-Cr-Mo) alloys are very promising materials, in particular, in the biomedical field where their unique properties of biocompatibility and wear resistance can be exploited for surgery applications, prostheses, and many other medical devices. While Additive Manufacturing is a key technology in this field, micro-milling can be used for the creation of micro-scale details on the printed parts, not obtainable with Additive Manufacturing techniques. In particular, there is a lack of scientific research in the field of the fundamental material removal mechanisms involving micro-milling of Co-Cr-Mo alloys. Therefore, this paper presents a micro-milling characterization of Co-Cr-Mo samples produced by Additive Manufacturing with the Selective Laser Melting (SLM) technique. In particular, microchannels with different depths were made in order to evaluate the material behavior, including the chip formation mechanism, in micro-milling. In addition, the resulting surface roughness (Ra and Sa) and hardness were analyzed. Finally, the cutting forces were acquired and analyzed in order to ascertain the minimum uncut chip thickness for the material. The results of the characterization studies can be used as a basis for the identification of a machining window for micro-milling of biomedical grade cobalt-chromium-molybdenum (Co-Cr-Mo) alloys."
+   },
+   {
+    "id": "https://openalex.org/W2062124551",
+    "doi": "https://doi.org/10.1016/j.procir.2014.04.069",
+    "title": "The Effect of Cutting Speed and Feed Rate on Hole Surface Integrity in Single-shot Drilling of Metallic-Composite Stacks",
+    "year": 2014,
+    "cited": 52,
+    "venue": "Procedia CIRP",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques",
+     "Advanced Machining and Optimization Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2212827114000705/pdf",
+    "abstract": "Experimental work was carried out to evaluate the influence of cutting speed (Ti/CFRP/Al: 30/120/120 and 36/144/144m/min) and feed rate (0.05, 0.08, 0.12 and 0.15 mm/rev) on workpiece surface integrity following single-shot drilling of multilayer metallic-composite stacks (Ti-6Al-4 V/CFRP/Al-7050) using CVD diamond coated tooling. When operating with the lower cutting speed set of 30/120/120m/min and a feed rate of 0.08 mm/rev, average hole surface roughness (Ra) was ∼ 0.60, 0.87 and 0.27 μm in the Ti, CFRP and Al layers respectively after 30 holes. Roughness values in the stack increased to 0.84, 1.6 and 0.43 μm Ra when employing the higher cutting speed of 36/144/144m/min, with the drill lasting only 20 holes. Microhardness depth profile evaluation of the machined surfaces showed no appreciable variation in both the Ti and Al material, irrespective of cutting conditions. Matrix cracking and burn were apparent in the CFRP layer as feed rate increased due to greater wear of the drill corner."
+   },
+   {
+    "id": "https://openalex.org/W2965707629",
+    "doi": "https://doi.org/10.1016/j.jmrt.2019.07.027",
+    "title": "Optimized mix design for 180 MPa ultra-high-strength concrete",
+    "year": 2019,
+    "cited": 50,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Innovative concrete reinforcement materials",
+     "Concrete and Cement Materials Research",
+     "Structural Behavior of Reinforced Concrete"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S223878541930153X/pdf",
+    "abstract": "This study aims to optimize the proportion and constituents of the mixture used for fabricating 180 MPa ultra-high-strength concrete (UHSC) including coarse aggregate. Various parameters, such as the supplementary cementitious material (SCM) type and amount, water–binder (W/B) ratio, fine and coarse aggregate type and amount, chemical admixture, and mixing process, were considered and their effect on the compressive strength was examined. Based on several experimental tests, the optimized SCM proportions for cement, silica fume (SF), ground-granulated blast furnace slag (BFS), and gypsum are 55%, 20%, 20%, and 5%, respectively. The most appropriate W/B ratio, unit water content, and sand–total aggregate (S/a) ratio are 12.5%, 150 kg/m 3 , and 0.35, respectively. The use of very fine SF with a specific surface area of 13.7 m 2 /g and diorite, which is a type of coarse aggregate, improves the compressive strength of UHSC. The optimum amount of superplasticizer ranges between 1.3% and 1.6% and the most suitable slump flow is 750 mm. Finally, for this type of flowable UHSC, a mixing time and speed of 5 min and 40 rpm, respectively, and natural self-compacting without using a tamping bar are recommended. Based on the optimized mix design, UHSC with a compressive strength of 180 MPa can be certainly fabricated."
+   },
+   {
+    "id": "https://openalex.org/W2806907252",
+    "doi": "https://doi.org/10.1038/s41598-018-20150-5",
+    "title": "Structural effect of two-dimensional BNNS on grain growth suppressing behaviors in Al-matrix nanocomposites",
+    "year": 2018,
+    "cited": 50,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Boron and Carbon Nanomaterials Research",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-018-20150-5.pdf",
+    "abstract": "Abstract While nanocrystalline (NC) metals exhibit superior strength to conventional microcrystalline metals, their thermal instability has hampered their application at high temperatures. Herein, two-dimensional (2D) boron nitride nanosheets (BNNS) are proposed as reinforcement to enhance the strength as well as the thermal stability of NC Al. The strength of pure Al was increased from 80 to 468 MPa by refining its grains from ~600 to ~40 nm, and it was further enhanced to 685 MPa by incorporating 2 vol% of BNNS. Moreover, the small amount of BNNS was found to effectively suppress grain growth of NC Al at 580 °C (~0.9 T m , where T m is the melting point of Al), which prevented a strength drop at high temperature. Finally, the Zener pinning model in conjunction with phase-field simulations was utilized to qualitatively analyze the effect of the BNNS on the grain boundary pinning as a function of volume, shape, and orientation of the reinforcement. The model demonstrated that the pinning force of 2D reinforcements is much higher than that of spherical particles. Hence, 2D BNNS offer the possibility of developing Al-matrix nanocomposites for high-temperature structural applications."
+   },
+   {
+    "id": "https://openalex.org/W2105488832",
+    "doi": "https://doi.org/10.1590/s1516-14392013005000165",
+    "title": "Utilization of minimum quantity lubrication (MQL) with water in CBN grinding of steel",
+    "year": 2013,
+    "cited": 49,
+    "venue": "Materials Research",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Injection Molding Process and Properties",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.scielo.br/j/mr/a/6GhZwKVDPx44j8q5PKkxPGk/?lang=en&format=pdf",
+    "abstract": "The use of cutting fluids is fundamental to machining processes, mainly when it comes to high heat generation, which is the case of grinding. Thus, lubrication and cooling provided by cutting fluids improve the final quality of the workpiece. However, cutting fluid usage provide some drawbacks concerning environmental, costs and health issues. Therefore, new methods for application and optimization of cutting fluids are being researched aiming to reduce the amount of fluid used, as well as the minimization of cutting fluid hazards. The present study analyzes the behavior of a recently proposed optimization method, up to now only tested in turning, which consists of adding water to minimum quantity lubrication (MQL). Three different proportions were tested in this study: 1/1, 1/3 and 1/5 parts of oil per parts of water. The following output variables were evaluated: surface roughness, roundness errors, grinding power and diametric wheel wear. Also, optical microscopy and microhardness measurements were conducted, in order to detect burns and surface alterations. The obtained results were also compared to conventional (flood coolant) cooling-lubrication and traditional MQL (without water). MQL with water (1/5) presented better results of surface roughness and roundness errors, when compared to traditional MQL, and the results are very close to when using flood coolant. For grinding power and wheel wear, the results for MQL with water (1/5) were the best among the tested conditions."
+   },
+   {
+    "id": "https://openalex.org/W2990862646",
+    "doi": "https://doi.org/10.1038/s41598-019-53614-3",
+    "title": "Synthesis of a bulk nanostructured metastable Al alloy with extreme supersaturation of Mg",
+    "year": 2019,
+    "cited": 44,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Aluminum Alloys Composites Properties",
+     "Boron and Carbon Nanomaterials Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-019-53614-3.pdf",
+    "abstract": "Nanostructuring of bulk metals is now well documented with the development of severe plastic deformation (SPD) for improving the physical and mechanical properties of engineering materials. Processing by high-pressure torsion (HPT), which was developed initially as a grain refinement technique, was extended recently to the mechanical bonding of dissimilar metals during nanostrcturing which generally involves significant microstructural heterogeneity. Here we introduce, for the first time, a bulk metastable Al-Mg supersaturated solid solution by the diffusion bonding of separate Al and Mg metal solids at room temperature using HPT. Exceptional hardness was achieved homogeneously throughout the metastable alloy with a record maximum supersaturated Mg content of ~38.5 at.% in the Al matrix having a grain size of ~35-40 nm. Our results demonstrate the synthesis of a bulk nanocrystalline metastable alloy with good microstructural stability at room temperature where such bulk solids are not yet reported for mechanical alloying by powder metallurgy."
+   },
+   {
+    "id": "https://openalex.org/W2406261335",
+    "doi": "https://doi.org/10.1002/idj.2009.59.6s1.325",
+    "title": "Enamel benefits of a new hydroxyapatite containing fluoride toothpaste",
+    "year": 2009,
+    "cited": 41,
+    "venue": "International Dental Journal",
+    "topics": [
+     "Dental Erosion and Treatment",
+     "Dental Health and Care Utilization",
+     "Dental materials and restorations"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0020653920340077/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2271740975",
+    "doi": "https://doi.org/10.1039/c6fd00005c",
+    "title": "Towards large scale preparation of graphene in molten salts and its use in the fabrication of highly toughened alumina ceramics",
+    "year": 2016,
+    "cited": 40,
+    "venue": "Faraday Discussions",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Graphene research and applications",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://www.repository.cam.ac.uk/bitstreams/be10d071-6577-4e22-8877-50675337c43b/download",
+    "abstract": "Highly crystalline graphene nanosheets were reproducibly generated by the electrochemical exfoliation of graphite electrodes in molten LiCl containing protons. The graphene product has been successfully applied in several applications. This paper discusses the effect of molten salt produced graphene on the microstructures and mechanical properties of alumina articles produced by slip casting and pressureless sintering, which is one of the most convenient methods for the commercial production of alumina ceramics. In addition to graphene, graphite powder and multi-walled carbon nanotubes (CNTs) were also used to prepare alumina articles for comparative purposes. A graphene strengthening effect was realized through microstructural refinement and by influencing the formation of alumina nanorods during the sintering of α-Al2O3 articles. The fracture toughness of the sintered alumina articles increased to an impressive value of 6.98 MPa m(1/2) by adding 0.5 wt% graphene nanosheets. This was attributed to the unique microstructure obtained, comprised of micrometer sized alumina grains separated by alumina nanorods."
+   },
+   {
+    "id": "https://openalex.org/W2937757375",
+    "doi": "https://doi.org/10.1016/j.ultsonch.2019.04.027",
+    "title": "Effect of temperature on ultrasound-assisted electroless nickel-boron plating",
+    "year": 2019,
+    "cited": 39,
+    "venue": "Ultrasonics Sonochemistry",
+    "topics": [
+     "Electrodeposition and Electroless Coatings",
+     "Corrosion Behavior and Inhibition",
+     "Molecular Junctions and Nanostructures"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.ultsonch.2019.04.027",
+    "abstract": "Electroless nickel-boron coatings have several advantages over electroplated nickel and electroless nickel-phosphorous: they are harder than both other coatings and, as all electroless coatings, can be applied easily to complex shapes and all substrates, even non conducting ones, contrary to electroplated coatings. Preliminary testing has proved that ultrasound assistance helps improve their properties by increasing the plating rate while conserving the properties of the coating. In this study, the effect of plating temperature on mechanically agitated and ultrasonic assisted electroless nickel-boron deposition was investigated: deposition was performed in two different configurations: one with a classical mechanical agitation at 300 rpm and the other employing ultrasound at a frequency of 35 kHz. In addition, different temperatures in the 80-95 °C range were tested. The increase of plating rate previously observed was confirmed and it was possible to lower slightly plating temperature while conserving plating efficiency, which decreases evaporation of the solution. Morphological, mechanical, corrosion and wear characterization were performed on the coatings, as well as tribocorrosion studies in an alkaline environment (0.1 M NaCl). Ultrasound-assisted coatings presented tribocorrosion behaviour that was similar or better than the standard ones."
+   },
+   {
+    "id": "https://openalex.org/W2054030658",
+    "doi": "https://doi.org/10.1016/j.jeurceramsoc.2014.12.030",
+    "title": "Contact damage of silicon carbide ceramics with different grain structures measured by Hertzian and Vickers indentation",
+    "year": 2015,
+    "cited": 39,
+    "venue": "Journal of the European Ceramic Society",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Metal and Thin Film Mechanics",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0955221914007006/pdf",
+    "abstract": "We have used Hertzian and Vickers indentation to investigate contact damage in sintered SiC ceramics, one consisting of uniform, fine-grains and the other a coarse, elongated grain structure. Cracking-resistance measured by Hertzian indentation, showed no discernible difference, nor did the Vickers hardness. However, numerical analysis of the Vickers indentation size effect, performed using the proportional specimen resistance model, indicates 77.3% greater surface energy, mostly realised through cracking, is experienced by heterogeneous SiC per unit area of indentation impression. This is typified by an observable increase in the number of radial cracks generated around Vickers impressions, which has been found to artificially increase the KIC determined by Vickers indentation fracture. Quantitative measurements of pre-existing flaws by Hertzian indentation show that heterogeneous SiC retains a higher density of larger flaws. Relationships between the differences in cracking around Vickers indents and the pre-existing flaw populations of these two SiC ceramics are discussed."
+   },
+   {
+    "id": "https://openalex.org/W2795578353",
+    "doi": "https://doi.org/10.1371/journal.pone.0193927",
+    "title": "Development and properties of duplex MgF2/PCL coatings on biodegradable magnesium alloy for biomedical applications",
+    "year": 2018,
+    "cited": 38,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Aluminum Alloys Composites Properties",
+     "Hydrogen Storage and Materials"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0193927&type=printable",
+    "abstract": "The present work addresses the performance of polycaprolactone (PCL) coating on fluoride treated (MgF2) biodegradable ZK60 magnesium alloy (Mg) for biomedical application. MgF2 conversion layer was first produced by immersing Mg alloy substrate in hydrofluoric acid solution. The outer PCL coating was then prepared using dip coating technique. Morphology, elements profile, phase structure, roughness, mechanical properties, invitro corrosion, and biocompatibility of duplex MgF2/PCL coating were then characterized and compared to those of fluoride coated and uncoated Mg samples. The invivo degradation behavior and biocompatibility of duplex MgF2/PCL coating with respect to ZK60 Mg alloy were also studied using rabbit model for 2 weeks. SEM and TEM analysis showed that the duplex coating was uniform and comprised of porous PCL film (~3.3 μm) as upper layer with compact MgF2 (~2.2 μm) as inner layer. No significant change in microhardness was found on duplex coating compared with uncoated ZK60 Mg alloy. The duplex coating showed improved invitro corrosion resistance than single layered MgF2 or uncoated alloy samples. The duplex coating also resulted in better cell viability, cell adhesion, and cell proliferation compared to fluoride coated or uncoated alloy. Preliminary invivo studies indicated that duplex MgF2/PCL coating reduced the degradation rate of ZK60 Mg alloy and exhibited good biocompatibility. These results suggested that duplex MgF2/PCL coating on magnesium alloy might have great potential for orthopedic applications."
+   },
+   {
+    "id": "https://openalex.org/W4220699168",
+    "doi": "https://doi.org/10.1016/j.msea.2022.143020",
+    "title": "Study on the effect of preheating temperature of SLM process on characteristics of CoCrMo alloy",
+    "year": 2022,
+    "cited": 37,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509322004270/pdf",
+    "abstract": "This is a study on the effects of the pre-heating temperature of the selective laser melting (SLM) process on the microstructure and mechanical characteristics of CoCrMo alloy specimens. Specimens were created using 36 process conditions at pre-heating temperatures of 50, 100, and 150 °C, and high-density process conditions with 99.99% density or higher were presented. The changes of characteristics such as microstructure, mechanical characteristics, and residual stress were observed according to pre-heating temperature. The phase transformation from FCC α -Co phase to martensitic ε-Co phase was inhibited because the cooling speed increased as the pre-heating temperature increased. And that was caused the coarse grain of alpha phase. In addition, elongation properties were improved because the FCC α-Co phase acted as a deformation mechanism as the martensitic ε-Co phase decreased; however, strength was only minimally reduced because the ε-Co phase of the nano scale formed an orientation relationship. Consequently, the cooling speed increased as the pre-heating temperature increased (50 °C → 150 °C), which inhibited the α-Co phase → martensitic ε-Co phase transformation, resulting in decreased residual stress and improved mechanical characteristics."
+   },
+   {
+    "id": "https://openalex.org/W2920975078",
+    "doi": "https://doi.org/10.3390/met9030308",
+    "title": "Wear and Cavitation Erosion Resistance of an AlMgSc Alloy Produced by DMLS",
+    "year": 2019,
+    "cited": 37,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/9/3/308/pdf?version=1552037541",
+    "abstract": "Pin-on-disk and cavitation tests were performed on an innovative Al-Mg alloy modified with Sc and Zr for additive manufacturing, which was tested in annealed condition. The damaging mechanisms were studied by observations of the morphology of the sample surface after progressive testing. These analyses allowed the identification of an adhesive wear mechanism in the first stages of pin-on-disk test, which evolved into a tribo-oxidative one due to the formation and fragmentation of an oxide layer with increasing testing distance. Regarding cavitation erosion, the AlMgSc alloy was characterized by an incubation period of approximately 1 h before mass loss was measured. Once material removal started, mass loss had a linear behavior as a function of exposure time. No preferential sites for erosion were identified, even though after some minutes of cavitation testing, the boundaries of melting pools can be seen. The comparison with literature data for AlSi10Mg alloy produced by additive manufacturing technology shows that AlMgSc alloy exhibits remarkable wear resistance, while the total mass loss after 8 h of cavitation testing is significantly higher than the value recorded for AlSi10Mg alloy in as-built condition."
+   },
+   {
+    "id": "https://openalex.org/W3120178190",
+    "doi": "https://doi.org/10.1242/jeb.232819",
+    "title": "Ocean acidification alters properties of the exoskeleton in adult Tanner crabs, Chionoecetes bairdi",
+    "year": 2021,
+    "cited": 36,
+    "venue": "Journal of Experimental Biology",
+    "topics": [
+     "Ocean Acidification Effects and Responses",
+     "Physiological and biochemical adaptations",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://journals.biologists.com/jeb/article-pdf/224/3/jeb232819/1816660/jeb232819.pdf",
+    "abstract": "ABSTRACT Ocean acidification can affect the ability of calcifying organisms to build and maintain mineralized tissue. In decapod crustaceans, the exoskeleton is a multilayered structure composed of chitin, protein and mineral, predominately magnesian calcite or amorphous calcium carbonate (ACC). We investigated the effects of acidification on the exoskeleton of mature (post-terminal-molt) female southern Tanner crabs, Chionoecetes bairdi. Crabs were exposed to one of three pH levels – 8.1, 7.8 or 7.5 – for 2 years. Reduced pH led to a suite of body region-specific effects on the exoskeleton. Microhardness of the claw was 38% lower in crabs at pH 7.5 compared with those at pH 8.1, but carapace microhardness was unaffected by pH. In contrast, reduced pH altered elemental content in the carapace (reduced calcium, increased magnesium), but not the claw. Diminished structural integrity and thinning of the exoskeleton were observed at reduced pH in both body regions; internal erosion of the carapace was present in most crabs at pH 7.5, and the claws of these crabs showed substantial external erosion, with tooth-like denticles nearly or completely worn away. Using infrared spectroscopy, we observed a shift in the phase of calcium carbonate present in the carapace of pH 7.5 crabs: a mix of ACC and calcite was found in the carapace of crabs at pH 8.1, whereas the bulk of calcium carbonate had transformed to calcite in pH 7.5 crabs. With limited capacity for repair, the exoskeleton of long-lived crabs that undergo a terminal molt, such as C. bairdi, may be especially susceptible to ocean acidification."
+   },
+   {
+    "id": "https://openalex.org/W4296488344",
+    "doi": "https://doi.org/10.1007/s00170-022-10151-0",
+    "title": "An in-depth analysis of tool wear mechanisms and surface integrity during high-speed hard turning of AISI D2 steel via novel inserts",
+    "year": 2022,
+    "cited": 35,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques",
+     "Advanced Machining and Optimization Techniques"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-022-10151-0.pdf",
+    "abstract": "Abstract Over the years, machinists have been exploring the hard part turning of AISI D2 steels. Initially, cylindrical grinding was used for this purpose, but it was later replaced by single-point turning due to its advantages such as high material removal, low cost, and greater flexibility. Conventional inserts are used in single-point turning, but they have been reported to have large radial forces, high notch wear, and poor surface finish. Therefore, multi-radii wiper inserts were designed to overcome these machining issues, but their use was restricted to shallower depths of cut and moderate feed rates because of the thick chips produced by the high entry angle. Prime inserts, on the other hand, were designed with a modest entry angle, making them ideal for evaluating tool wear/life, material removal and surface roughness at greater cutting speeds, depths of cut, and feed rates. It was observed that cutting speed has a significant effect on tool wear/life with a contribution of 55.38% followed by feed rate (13.72%) and depth of cut (11.43%). Cutting speed (84.87%) and feed rate (13.01%) are observed to be the most significant parameters controlling material removed. It was also observed that feed rate has a significant effect on workpiece surface roughness with a contribution of 67.30% followed by depth of cut (20.60%), whereas cutting speed had no significant effect on surface roughness. Moreover, it is found that prime insert outperformed wiper and conventional inserts in terms of tool life/wear and surface roughness."
+   },
+   {
+    "id": "https://openalex.org/W2981657942",
+    "doi": "https://doi.org/10.1016/j.susmat.2019.e00130",
+    "title": "Replacement of Lead stabilizer in electroless Nickel-Boron baths: Synthesis and characterization of coatings from bismuth stabilized bath",
+    "year": 2019,
+    "cited": 35,
+    "venue": "Sustainable materials and technologies",
+    "topics": [
+     "Electrodeposition and Electroless Coatings",
+     "Corrosion Behavior and Inhibition",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://biblio.ugent.be/publication/8667972/file/8669405.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3216002767",
+    "doi": "https://doi.org/10.1016/j.prostr.2021.10.129",
+    "title": "The effect of laser-cladding on the wear behavior of gray cast iron brake disc",
+    "year": 2021,
+    "cited": 33,
+    "venue": "Procedia Structural Integrity",
+    "topics": [
+     "Brake Systems and Friction Analysis",
+     "Tribology and Wear Analysis",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2452321621002249/pdf",
+    "abstract": "Lamellar grey cast iron (type A) with a pearlitic matrix has excellent vibration damping properties, good thermal capacity and conductivity, good castability and machinability. Such properties, together with the low cost, make this material the most used in the European market for the production of cars discs brake. Recent studies have demonstrated that a part of the total non-exhaust emission produced by a car derives directly from braking systems. During their use, wear debris in the form of solid airborne particles are created from both disc and friction pads wear. Reducing these emissions by increasing the wear resistance of braking systems would therefore contribute to both decreasing pollution and increasing brake disks life. In this research, two laser-cladding coatings were proposed to increase the wear performances of cast iron discs brake. The wear resistance was evaluated through pin-on-disc and block-on-ring laboratory tests. Commercial pads material was used as counterpart in the tribological system. Conventional grey cast iron samples were used as reference material. During the tests, the coefficient of friction with the sliding distance was continuously recorded and the wear rate for both disc and pad materials was calculated at the end of each tests. The wear mechanism of the different tested conditions was investigated by means of Scanning Electron Microscope analyses on the sample worn surfaces, and the results were related to the friction coefficient and to the wear rate. The ability of laser-cladding to reduce the consumption of disk brake materials was stated."
+   },
+   {
+    "id": "https://openalex.org/W4327560027",
+    "doi": "https://doi.org/10.1016/j.ijrmhm.2023.106200",
+    "title": "VNbCrMo refractory high-entropy alloy for nuclear applications",
+    "year": 2023,
+    "cited": 32,
+    "venue": "International Journal of Refractory Metals and Hard Materials",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Nuclear Materials and Properties"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.ijrmhm.2023.106200",
+    "abstract": "Refractory high-entropy alloys (RHEAs) with high melting points and low neutron absorption cross-section are sought for generation-IV fission and fusion reactors. A high throughput computational screening tool, Alloy Search and Predict (ASAP), was used to identify promising RHEA candidates from over 1 million four-element equimolar combinations. The selected VNbCrMo RHEA was further studied by CALPHAD to predict phase formation, which was compared to an experimentally produced ingot aged at 1200 °C. The VNbCrMo RHEA was found to constitute a majority bcc phase, with a 6% area fraction of C15-Laves formed at interdendritic regions, in contrast to the predictions of single-phase. The prediction of the yield strength by a model based upon edge dislocation mechanisms indicated 2.1 GPa at room temperature and 850 MPa at 1000 °C for the equimolar single bcc phase. The hardness of the alloy with C15-Laves was 748 HV (yield strength ∼2.4 GPa). Finally, the macroscopic neutron absorption cross-section was modelled for a wide range of energies. Displacements per atom per year and activation calculations, up to 1000 years after 2 years of continuous operation, in typical fusion and fission reactor scenarios were also performed using the inventory code FISPACT-II. This work gives new insight into the phase stability and performance of the VNbCrMo RHEA, which is compared with a similar design concept alloy, to assess the potential of novel RHEAs for use in advanced nuclear applications."
+   },
+   {
+    "id": "https://openalex.org/W2995467377",
+    "doi": "https://doi.org/10.1016/j.addma.2019.100998",
+    "title": "A novel approach to the production of NiCrAlY bond coat onto IN625 superalloy by selective laser melting",
+    "year": 2019,
+    "cited": 31,
+    "venue": "Additive manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/am/pii/S221486041931276X",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2959216261",
+    "doi": "https://doi.org/10.1016/j.dt.2019.07.004",
+    "title": "Prediction and optimization of machining forces using oxley's predictive theory and RSM approach during machining of WHAs",
+    "year": 2019,
+    "cited": 30,
+    "venue": "Defence Technology",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced materials and composites",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2214914718305725/pdf",
+    "abstract": "Tungsten heavy alloys have come up as one of the best alternatives for high density fragmenting devices and armor piercing ammunition. Machining is mandatory for obtaining the final shapes of such kind of ammunitions. However, due to high density and elastic stiffness of WHAs, cutting forces will be higher than for most of the metals and alloys; thus, making the machining operation challenging. The machining variable, namely, cutting force components are significantly influenced by the cutting parameters. This paper makes use of Oxley's predictive analytical model in conjunction with Johnson-Cook constitutive equation to predict forces under different speed and feed combinations during machining of 95 W tungsten heavy alloy. The cutting forces, so predicted by M1, are considered as input data for the optimization of cutting parameters (cutting speed and feed) using Response Surface Method (RSM)."
+   },
+   {
+    "id": "https://openalex.org/W3160638377",
+    "doi": "https://doi.org/10.3390/coatings11050576",
+    "title": "Characterization of Electroless Nickel–Boron Deposit from Optimized Stabilizer-Free Bath",
+    "year": 2021,
+    "cited": 28,
+    "venue": "Coatings",
+    "topics": [
+     "Electrodeposition and Electroless Coatings",
+     "Corrosion Behavior and Inhibition",
+     "Semiconductor materials and interfaces"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-6412/11/5/576/pdf?version=1621836166",
+    "abstract": "Conventional electroless nickel–boron deposits are produced using solutions that contain lead or thallium, which must be eliminated due to their toxicity. In this research, electroless nickel–boron deposits were produced in a stabilizer-free bath that does not include any toxic heavy metal. During processing, the plating rate increased from 10 to 14.5 µm/h by decreasing the concentration of the reducing agent, leading to increased bath stability. The thickness, composition, roughness, morphology, hardness, wear, and corrosion resistance of the deposits were characterized. The new deposit presents an excellent hardness of 933 ± 56 hv50, 866 ± 30 hk50, and 12 GPa from the instrumented indentation test (IIT), respectively, which are similar to that of hexavalent hard chromium coating. Moreover, by using both potentiodynamic polarization and salt spray tests it was shown that the coating presents higher corrosion resistance as compared to standard nickel-boron coatings. The new deposit exhibits properties close to those of the conventional electroless nickel–boron deposits. Therefore, it could replace them in any industrial applications."
+   },
+   {
+    "id": "https://openalex.org/W3171060731",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.05.039",
+    "title": "Effects of pre- and post-repair heat treatments on microstructure and tensile behaviors of 630 stainless steel repaired by metal additive manufacturing",
+    "year": 2021,
+    "cited": 27,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421004798/pdf",
+    "abstract": "In this study, we report a method for the repair of damaged SUS 630 parts by directed energy deposition (DED). Herein, we aim to analyze the variations in the mechanical properties of such parts caused by post-repair heat treatment performed to regain the pre-repair mechanical properties. Before repair, substrates were subjected to solution annealing (SA-wrought) or SA treatment followed by precipitation hardening (SA + PH-wrought). Each substrate was repaired using SUS 630 powder. The repaired region was dominated by BCC-structured ferrite (96.7%). It also contained FCC-structured retained austenite (3.3%). The martensite fraction of the samples treated with SA after repair increased by 3.1%. Although BCC remained dominant after the SA + PH post-repair heat treatment, reverted austenite and a large amount of precipitate were generated along the grain boundaries after sufficient aging time of PH treatment. The repaired region displayed lower hardness than the substrate. However, the post-repair heat treatment increased the hardness. Meanwhile, the tensile test results revealed that the tensile strength decreased from that of the wrought material because of the cracks generated at the interface between the repaired region and substrate. Although the tensile strength was improved by SA and SA + PH post-repair heat treatments, the elongation decreased because of the cracks at the interface and reduction in the FCC content of the repaired part. Although cracks occurred at the interface, tensile characteristics almost similar to those of SA-wrought and SA + PH-wrought were observed owing to SA + PH post-repair heat treatment."
+   },
+   {
+    "id": "https://openalex.org/W2994524341",
+    "doi": "https://doi.org/10.3390/met9121296",
+    "title": "Synthesis of Spherical V-Nb-Mo-Ta-W High-Entropy Alloy Powder Using Hydrogen Embrittlement and Spheroidization by Thermal Plasma",
+    "year": 2019,
+    "cited": 26,
+    "venue": "Metals",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/9/12/1296/pdf",
+    "abstract": "V-Nb-Mo-Ta-W high-entropy alloy (HEA), one of the refractory HEAs, is considered as a next-generation structural material for ultra-high temperature uses. Refractory HEAs have low castability and machinability due to their high melting temperature and low thermal conductivity. Thus, powder metallurgy becomes a promising method for fabricating components with refractory HEAs. Therefore, in this study, we fabricated spherical V-Nb-Mo-Ta-W HEA powder using hydrogen embrittlement and spheroidization by thermal plasma. The HEA ingot was prepared by vacuum arc melting and revealed to have a single body-centered cubic phase. Hydrogen embrittlement which could be achieved by annealing in a hydrogen atmosphere was introduced to get the ingot pulverized easily to a fine powder having an angular shape. Then, the powder was annealed in a vacuum atmosphere to eliminate the hydrogen from the hydrogenated HEA, resulting in a decrease in the hydrogen concentration from 0.1033 wt% to 0.0003 wt%. The angular shape of the HEA powder was turned into a spherical one by inductively-coupled thermal plasma, allowing to fabricate spherical V-Nb-Mo-Ta-W HEA powder with a d50 value of 28.0 μm."
+   },
+   {
+    "id": "https://openalex.org/W2897964543",
+    "doi": "https://doi.org/10.3389/fmars.2018.00369",
+    "title": "Assessing the Impacts of Ocean Acidification on Adhesion and Shell Formation in the Barnacle Amphibalanus amphitrite",
+    "year": 2018,
+    "cited": 26,
+    "venue": "Frontiers in Marine Science",
+    "topics": [
+     "Ocean Acidification Effects and Responses",
+     "Marine Biology and Environmental Chemistry",
+     "Marine Biology and Ecology Research"
+    ],
+    "oa_url": "https://www.frontiersin.org/articles/10.3389/fmars.2018.00369/pdf",
+    "abstract": "Barnacles are dominant members of marine intertidal communities. Their success depends on firm attachment provided by their proteinaceous adhesive and protection imparted by their calcified shell plates. Little is known about how variations in the environment affect adhesion and shell formation processes in barnacles. Increased levels of atmospheric CO2 have led to a reduction in the pH of ocean waters (i.e. ocean acidification), a trend that is expected to continue into the future. Here, we assessed if a reduction in seawater pH, at levels predicted within the next 200 years, would alter physiology, adhesion, and shell formation in the cosmopolitan barnacle Amphibalanus (=Balanus) amphitrite. Juvenile barnacles, settled on silicone substrates, were exposed to one of three static levels of pHT, 8.01, 7.78 or 7.50, for 13 weeks. We found that barnacles were robust to reduced pH, with no effect of pH on physiological metrics (mortality, tissue mass, and presence of eggs). Likewise, adhesive properties (adhesion strength and adhesive plaque gross morphology) were not affected by reduced pH. Shell formation, however, was affected by seawater pH. Shell mass and base plate area were higher in barnacles exposed to reduced pH; barnacles grown at pHT 8.01 exhibited approximately 30% lower shell mass and 20% smaller base plate area as compared to those at pHT 7.50 or 7.78. Enhanced growth at reduced pH appears to be driven by the increased size of the calcite crystals that comprise the shell. Despite enhanced growth, mechanical properties of the base plate (but not the parietal plates) were compromised at the lowest pH level. Barnacle base plates at pHT 7.5 broke more easily and crack propagation, measured through microhardness testing, was significantly affected by seawater pH. Other shell metrics (plate thickness, relative crystallinity, and atomic disorder) were not affected by seawater pH. Hence, a reduction in pH resulted in larger barnacles but with base plates that would crack more readily. It is yet to be determined if such changes would alter the survival of A. amphitrite in the field, but changes in the abundance of this ecologically dominant species would undoubtedly affect the composition of biofouling communities."
+   },
+   {
+    "id": "https://openalex.org/W3202375607",
+    "doi": "https://doi.org/10.3390/ma14195524",
+    "title": "Microstructural Tailoring and Enhancement in Compressive Properties of Additive Manufactured Ti-6Al-4V Alloy through Heat Treatment",
+    "year": 2021,
+    "cited": 24,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/19/5524/pdf?version=1632466736",
+    "abstract": "Among laser additive manufacturing, selective laser melting (SLM) is one of the most popular methods to produce 3D printing products. The SLM process creates a product by selectively dissolving a layer of powder. However, due to the layerwise printing of metal powders, the initial microstructure is fully acicular α'-martensitic, and mechanical properties of the resultant product are often compromised. In this study, Ti-6Al-4V alloy was prepared using SLM method. The effect of heat treatment was carried out on as-built SLM Ti-6Al-4V alloy from 650-1000 °C to study respective changes in the morphology of α/α'-martensite and mechanical properties. The phase transition temperature was also analyzed through differential thermal analysis (DTA), and the microstructural studies were undertaken by optical microscopy (OM) and scanning electron microscopy (SEM). The mechanical properties were assessed by microhardness and compressive tests before and after heat treatment. The results showed that heat treated samples resulted in a reduction in interior defects and pores and turned the morphology of the α'-martensite into a lamellar (α + β) structure. The strength was significantly reduced after heat treatment, but the elongation was improved due to the reduction in columnar α'-martensite phase. An optimum set of strength and elongation was found at 900 °C."
+   },
+   {
+    "id": "https://openalex.org/W2972350722",
+    "doi": "https://doi.org/10.1111/jace.16793",
+    "title": "The impact of densification on indentation fracture toughness measurements",
+    "year": 2019,
+    "cited": 24,
+    "venue": "Journal of the American Ceramic Society",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jace.16793",
+    "abstract": "Abstract The fracture toughness was measured by the Vickers indentation method and by chevron notch for a series of x CaO‐ x Al 2 O 3 ‐(100 − 2 x )SiO 2 glasses. As the silica content was increased, the fixed ξ value Vickers indentation fracture toughness (IFT) values increased, while the chevron notch values decreased. Glasses with higher silica contents deform with more densification and less shear when indented with a Vickers tip, thus resulting in reduced residual stress in the region surrounding the indent. The reduction in residual stress for high silica glasses results in less median/radial crack extension and unreasonably high Vickers IFT values. This indicates that a fixed ξ value of 0.016 is not appropriate for the glasses in this series. By repeating the IFT method with a sharper 110° four‐sided pyramidal diamond indenter, it is demonstrated that indentation toughness and chevron notch toughness values now trend in the same direction and are in good agreement with a fixed ξ value of 0.0297. With the sharper indenter tip, the densification component to the deformation is substantially reduced for all glass types such that it no longer has such a prominent influence on the residual stress field. This result suggests that a fixed ξ value IFT method may be appropriate for all glass types if a sharper indenter tip is substituted in the place of the Vickers tip."
+   },
+   {
+    "id": "https://openalex.org/W4281651655",
+    "doi": "https://doi.org/10.1016/j.jmrt.2022.05.108",
+    "title": "The effect of plasma-assisted machining and additive path strategies of Inconel 718 manufactured with directed energy deposition",
+    "year": 2022,
+    "cited": 23,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785422007694/pdf",
+    "abstract": "Recently, Inconel 718 has been used as a key component in the automobile and aerospace industries because of its excellent strength and corrosion resistance, even in high-temperature environments. If Inconel 718 is manufactured using additive manufacturing (AM), it is possible to manufacture products at a low cost and time without a mold in the prototype stage. However, post-processing is essential for AM because of the limitation of the surface quality. Therefore, in this study, Inconel 718 was manufactured using directed energy deposition (DED) in AM, and plasma-assisted machining (PAM) was performed as a post-processing step for efficient machining. In addition, Inconel 718 workpieces were fabricated with three additive paths (X-, Y-, and cross-path) to analyze the effects of the additive path on the mechanical properties and microstructure during DED. Before performing PAM, the depth of cut was determined through thermal analysis of the plasma heat source. To analyze the machining effect of PAM, the cutting force, surface roughness, burr formation, hardness, and microstructure of the DED-formed Incoenl718 were compared with those of conventional machining. It was confirmed that PAM can be used for post-processing of AM parts because of its excellent machining effects."
+   },
+   {
+    "id": "https://openalex.org/W3163998052",
+    "doi": "https://doi.org/10.3390/mi12060606",
+    "title": "Combination of Plasma Electrolytic Processing and Mechanical Polishing for Single-Crystal 4H-SiC",
+    "year": 2021,
+    "cited": 23,
+    "venue": "Micromachines",
+    "topics": [
+     "Diamond and Carbon-based Materials Research",
+     "Advanced Surface Polishing Techniques",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://www.mdpi.com/2072-666X/12/6/606/pdf?version=1621851574",
+    "abstract": "Single-crystal 4H-SiC is a typical third-generation semiconductor power-device material because of its excellent electronic and thermal properties. A novel polishing technique that combines plasma electrolytic processing and mechanical polishing (PEP-MP) was proposed in order to polish single-crystal 4H-SiC surfaces effectively. In the PEP-MP process, the single-crystal 4H-SiC surface is modified into a soft oxide layer, which is mainly made of SiO2 and a small amount of silicon oxycarbide by plasma electrolytic processing. Then, the modified oxide layer is easily removed by soft abrasives such as CeO2, whose hardness is much lower than that of single-crystal 4H-SiC. Finally a scratch-free and damage-free surface can be obtained. The hardness of the single-crystal 4H-SiC surface is greatly decreased from 2891.03 to 72.61 HV after plasma electrolytic processing. By scanning electron microscopy (SEM) and X-ray Photoelectron Spectroscopy (XPS) observation, the plasma electrolytic processing behaviors of single-crystal 4H-SiC are investigated. The scanning white light interferometer (SWLI) images of 4H-SiC surface processed by PEP-MP for 30 s shows that an ultra-smooth surface is obtained and the surface roughness decreased from Sz 607 nm, Ra 64.5 nm to Sz 60.1 nm, Ra 8.1 nm and the material removal rate (MRR) of PEP-MP is about 21.8 μm/h."
+   },
+   {
+    "id": "https://openalex.org/W2888954771",
+    "doi": "https://doi.org/10.1016/j.jds.2018.07.004",
+    "title": "Remineralization effects when using different methods to apply fluoride varnish in vitro",
+    "year": 2018,
+    "cited": 23,
+    "venue": "Journal of Dental Sciences",
+    "topics": [
+     "Dental Health and Care Utilization",
+     "Dental Erosion and Treatment",
+     "Dental materials and restorations"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1991790218301296/pdf",
+    "abstract": "Remineralization efficacy for early caries lesion may change when fluoride varnish (FV) is applied directly or indirectly to the lesion. This in vitro study compared direct and indirect remineralization efficacies of FV on artificial caries lesions and evaluated acid-resistance of lesion remineralized by FV and artificial saliva. One hundred and twenty-six bovine demineralized specimens were allocated to four varnish groups (Duraphat®, EnamelPro®, MI™, and ClinproWhite™, n = 28 each) and a negative-control group (n = 14). Half of specimens from each varnish group had the FV applied and the other specimens didn't. The specimens treated and not treated with the FV were immersed together in 20 mL of artificial saliva at 37 °C for 24 h. Then the applied FV was removed carefully from the specimen, and immersion process was continued in fresh artificial saliva for 48 h. The negative-control group was immersed in artificial saliva for same time as in varnish groups. The acid resistance of remineralized specimens from varnish groups was compared to negative-control group. Vickers microhardness number (VHN) was measured to evaluate re-demineralization effect. The ΔVHN was significantly higher for indirect remineralization (134.4 ± 31.5, mean ± SD) than for direct remineralization (66.8 ± 27.9). All varnish groups showed significant differences between the direct and indirect application methods. The acid resistance of remineralized specimens was higher in the all FV groups than in the negative-control. This in vitro study confirmed that the remineralization effect of fluoride varnishes would be higher in the vicinity than the underneath of the varnish treated surface."
+   },
+   {
+    "id": "https://openalex.org/W3024211228",
+    "doi": "https://doi.org/10.1016/j.actbio.2020.04.037",
+    "title": "Mechanical Resistance in Decapod Claw Denticles: Contribution of Structure and Composition",
+    "year": 2020,
+    "cited": 21,
+    "venue": "Acta Biomaterialia",
+    "topics": [
+     "Endodontics and Root Canal Treatments",
+     "Dental materials and restorations",
+     "Calcium Carbonate Crystallization and Inhibition"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/am/pii/S1742706120302348?via%3Dihub",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2983216055",
+    "doi": "https://doi.org/10.3390/met9111167",
+    "title": "Microstructure and Mechanical Properties of Gas Tungsten Arc Welded High Manganese Steel Sheet",
+    "year": 2019,
+    "cited": 21,
+    "venue": "Metals",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Welding Techniques and Residual Stresses",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/9/11/1167/pdf?version=1573106460",
+    "abstract": "This study investigated microstructure and mechanical properties of high manganese steel sheet fabricated by gas tungsten arc welding (GTAW). The weld zone showed longitudinal coarse grains due to the coalescence of columnar dendrites grown into the direction of heat source, and the HAZ showed equiaxed coarser grains than the base metal due to the thermal effect of GTAW process. Mn segregation occurred in the inter-dendritic regions of the weld zone and Mn depletion thus occurred in the weld matrix. Although the stacking fault energy is expected to be lowered due to the Mn depletion, no noticeable change in the initial phase and deformation mechanism was found in the weld matrix. Lower hardness and strength were shown in the weld zone than the base metal, which was caused by the coarser grain size. The negative strain rate sensitivity observed in the weld zone and the base metal is considered to have originated from the negative strain rate dependency of twinning nucleation stress."
+   },
+   {
+    "id": "https://openalex.org/W3046944483",
+    "doi": "https://doi.org/10.1016/j.msea.2020.140050",
+    "title": "Mechanical properties and structural stability of a bulk nanostructured metastable aluminum-magnesium system",
+    "year": 2020,
+    "cited": 20,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Microstructure and mechanical properties",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://eprints.soton.ac.uk/443636/1/MK_AlMg_100turns_final.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4387702546",
+    "doi": "https://doi.org/10.3390/lubricants11100448",
+    "title": "High-Temperature Wear and Frictional Performance of Plasma-Nitrided AISI H13 Die Steel",
+    "year": 2023,
+    "cited": 19,
+    "venue": "Lubricants",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Lubricants and Their Additives",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4442/11/10/448/pdf?version=1697516313",
+    "abstract": "Plasma nitriding, a surface treatment technique, is gaining popularity, as it is environment-friendly and offers superior mechanical properties. This research studied the wear and friction performance of AISI H13 die steel after plasma nitriding in a gas mixture of N2:H2 at 20:80, 50:50, and 80:20 (volume ratio) at a fixed time and temperature. This work aimed to analyze the sliding wear performance of the plasma-nitrided tool die steel in hot-forming operations at higher loads. Scanning electron microscopy/electron-dispersive spectroscopy (SEM/EDS) and X-ray diffraction (XRD) techniques were used to study the microstructures of the H13 die steel pins after plasma nitriding. Wear tests were performed on a high-temperature tribometer under uni-directional sliding and dry conditions using a high-temperature tribometer under a 50 N load at various operating temperatures ranging from 25 °C to 600 °C. The results show that the plasma-nitriding process with N2:H2 at 20:80 improved the wear behavior of H13 steel. The friction coefficients and wear volume losses for all the plasma-nitrided specimens were less than those of the untreated die steel."
+   },
+   {
+    "id": "https://openalex.org/W3115093480",
+    "doi": "https://doi.org/10.3390/ma13245829",
+    "title": "Engineering of TeO2-ZnO-BaO-Based Glasses for Mid-Infrared Transmitting Optics",
+    "year": 2020,
+    "cited": 19,
+    "venue": "Materials",
+    "topics": [
+     "Glass properties and applications",
+     "Optical and Acousto-Optic Technologies",
+     "Luminescence Properties of Advanced Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/13/24/5829/pdf?version=1608553819",
+    "abstract": "In this paper, the glass systems, TeO2–ZnO–BaO (TZB), TeO2–ZnO–BaO–Nb2O5 (TZB–Nb) and TeO2–ZnO–BaO–MoO3 (TZB–Mo), were fabricated by the traditional melt-quench protocol for use as mid-infrared (mid-IR) transmitting optical material. The effect of Nb2O5 and MoO3 on the key glass material properties was studied through various techniques. From the Raman analysis, it was found that the structural modification was clear with the addition of both Nb2O5 and MoO3 in the TZB system. The transmittance of studied glasses was measured and found that the optical window covered a region from 0.4 to 6 μm. The larger linear refractive index was obtained for the Nb2O5-doped TZB glass system than that of other studied systems. High glass transition temperature, low thermo-mechanical coefficient and high Knoop hardness were noticed in the Nb2O5-doped TZB glass system due to the increase in cross-linking density and rigidity in the tellurite network. The results suggest that the Nb2O5-doped TZB optical glasses could be a promising material for mid-infrared transmitting optics."
+   },
+   {
+    "id": "https://openalex.org/W2324770915",
+    "doi": "https://doi.org/10.15282/jmes.2.2012.6.0017",
+    "title": "Nickel as an Alternative Automotive Body Materials",
+    "year": 2012,
+    "cited": 19,
+    "venue": "JOURNAL OF MECHANICAL ENGINEERING AND SCIENCES",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Titanium Alloys Microstructure and Properties",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://doi.org/10.15282/jmes.2.2012.6.0017",
+    "abstract": "The study of the thermal, chemical and mechanical properties of pure nickel as an alternative automotive body material is presented in this paper. Current automotive components mainly use steel as the body material. Due to the increasing demand for high performance and related issues, interest is moving towards alternative materials to steel. The hardness values of both heat-treated and non-heat treated pure nickel do not change after annealing; the hardness values are in the range of 118 to 123 HV. As the annealing temperature increases, the ultimate tensile strength, yield strength and Young’s modulus decrease, which indicates that the ductility increases. The highest ultimate tensile strength of pure nickel at 300 °C annealed temperature is 758.78 MPa. X-ray diffraction (XRD) studies confirmed pure nickel as a face centred cubic (FCC) structure with a lattice constant measured as 0.3492 nm for the unannealed sample, which increases to 0.3512 nm for the annealed samples. The corrosion rate of both annealed and non-heat treated pure nickel is in the range of 0.0266 to 0.048 mm/year."
+   },
+   {
+    "id": "https://openalex.org/W3014657060",
+    "doi": "https://doi.org/10.3390/met10040441",
+    "title": "Study and Characterization of EN AW 6181/6082-T6 and EN AC 42100-T6 Aluminum Alloy Welding of Structural Applications: Metal Inert Gas (MIG), Cold Metal Transfer (CMT), and Fiber Laser-MIG Hybrid Comparison",
+    "year": 2020,
+    "cited": 18,
+    "venue": "Metals",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Welding Techniques and Residual Stresses",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/10/4/441/pdf?version=1585316090",
+    "abstract": "The present research investigates the effects of different welding techniques, namely traditional metal inert gas (MIG), cold metal transfer (CMT), and fiber laser-MIG hybrid, on the microstructural and mechanical properties of joints between extruded EN AW 6181/6082-T6 and cast EN AC 42100-T6 aluminum alloys. These types of weld are very interesting for junctions of Al-alloys parts in the transportation field to promote the lightweight of a large scale chassis. The weld joints were characterized through various metallurgical methods including optical microscopy and hardness measurements to assess their microstructure and to individuate the nature of the intermetallics, their morphology, and distribution. The results allowed for the evaluation of the discrepancies between the welding technologies (MIG, CMT, fiber laser) on different aluminum alloys that represent an exhaustive range of possible joints of a frame. For this reason, both simple bar samples and real junctions of a prototype frame of a sports car were studied and, compared where possible. The study demonstrated the higher quality of innovative CMT and fiber laser-MIG hybrid welding than traditional MIG and the comparison between casting and extrusion techniques provide some inputs for future developments in the automotive field."
+   },
+   {
+    "id": "https://openalex.org/W2464912258",
+    "doi": "https://doi.org/10.1111/eos.12283",
+    "title": "Anti‐erosive effects of fluoride and phytosphingosine: an in vitro study",
+    "year": 2016,
+    "cited": 18,
+    "venue": "European Journal Of Oral Sciences",
+    "topics": [
+     "Dental Erosion and Treatment",
+     "Dental materials and restorations",
+     "Oral microbiology and periodontitis research"
+    ],
+    "oa_url": "https://pure.amsterdamumc.nl/en/publications/cc8edcd4-1842-429a-8c10-fff8993e78c7",
+    "abstract": "A selection of commercially available products containing stannous fluoride (SnF2 )/sodium fluoride (NaF), SnF2 /amorphous calcium phosphate (ACP), SnF2 /NaF/ACP, tin (Sn)/fluorine (F)/chitosan were compared with phytosphingosine (PHS) with respect to their anti-erosive properties in vitro. One-hundred and twenty bovine enamel specimens were immersed in the respective product slurries for 2 min, twice daily. The formulations were diluted with either remineralization solution or artificial saliva. After each treatment, an erosive challenge was performed for 10 min, twice daily, using citric acid, pH 3.4. The specimens were stored in remineralization solution or artificial saliva until the next treatment-erosion challenge. After 10 d, tissue loss was determined using profilometry. Enamel softening was determined through surface microhardness measurements. Tissue-loss values (measured in μm and expressed as mean ± SD) for PHS, SnF2 /NaF, SnF2 /ACP, SnF2 /ACP/NaF, and Sn/F/chitosan treatment groups and for the negative-control group, were, respectively, 35.6 ± 2.8, 15.8 ± 1.8, 22.1 ± 2.0, 22.9 ± 1.8, 16.2 ± 1.2, and 51.2 ± 4.4 in the presence of remineralization solution and 31.7 ± 3.3, 15.6 ± 2.9, 16.5 ± 2.7, 16.8 ± 2.1, 13.1 ± 3.0, and 50.7 ± 2.8 in the presence of artificial saliva. There were no significant differences in surface microhardness measurements between the treatment groups. In conclusion, PHS resulted in a significant reduction of tissue loss compared with the negative control, but in comparison, the toothpastes containing Sn(2+) and F(-) ions were significantly more effective compared with PHS."
+   },
+   {
+    "id": "https://openalex.org/W4387424386",
+    "doi": "https://doi.org/10.1038/s41598-023-44146-y",
+    "title": "Enhancing microstructure and mechanical properties of nickel aluminium bronze alloy through tin addition",
+    "year": 2023,
+    "cited": 17,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Metallurgy and Material Science",
+     "Bauxite Residue and Utilization",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-023-44146-y.pdf",
+    "abstract": "This article describes the changes in the microstructure, cooling curve characteristics and mechanical properties of cast Nickel Aluminium Bronze alloy (NAB) alloy that were produced by the addition of various amounts of Tin (Sn). The solidification parameters were recorded using a computer-aided cooling curve analysis setup, and optical and scanning electron microscopes were utilised to study the evolution of the microstructure. The chemical composition of different phases generated in the NAB alloy with and without Tin was investigated using an X-ray diffraction technique. With the addition of tin, the alloy's microstructure changed from columnar to equiaxed grain structures, and the ideal microstructure was produced at a Tin concentration of roughly 1.0 weight percent. The formation of the high temperature α and the grain boundary Sn rich phases across the alloy microstructure as a result of further addition has a considerable impact on the alloy's increased hardness (upto 69%) and tensile strength (upto 28.4%) compared to untreated NAB alloy. Influence of Sn on microstructure transformation is confirmed by the decline in alloy nucleation temperatures, the reduction in undercooling intensity, and the decrease in cooling rate during solidification. The addition of Tin to the NAB alloy caused morphological changes in the kappa (K) phases, which are also reported in the this article. In addition to this, the research makes an attempt to describe the mechanism underlying the formation of equiaxed grains and phase transformations in Sn-treated NAB alloys."
+   },
+   {
+    "id": "https://openalex.org/W4311958405",
+    "doi": "https://doi.org/10.3390/coatings13010001",
+    "title": "Selection of New Heat Treatment Conditions for Novel Electroless Nickel-Boron Deposits and Characterization of Heat-Treated Coatings",
+    "year": 2022,
+    "cited": 17,
+    "venue": "Coatings",
+    "topics": [
+     "Electrodeposition and Electroless Coatings",
+     "Metal and Thin Film Mechanics",
+     "Semiconductor materials and interfaces"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-6412/13/1/1/pdf?version=1672295615",
+    "abstract": "Electroless nickel-boron coatings were deposited from a novel deposition bath that was stabilizer-free. Those coatings were analyzed by DSC to determine the crystallization temperature of nickel-boride phases, and then the best heat treatment conditions for the new coatings were selected using the Knoop hardness test and XRD. The results of DSC analysis and XRD were coherent with the findings of previous studies, which shows that the new coating has a boron content lower than 4% wt. The maximum hardness was obtained after heat treatment at 300 °C for 4 h and reached 1196 ± 120 hk50, which is much higher than the as-deposited coating. The heat-treated coatings were then fully characterized using optical and scanning electron microscopy, as well tribological and corrosion tests. Various sliding tests (ball-on-disk and ball-on-flat configurations) were conducted to analyze the coefficient of friction (COF) and wear behavior of the coatings. The maximum von Mises stress was calculated, and values of 624 MPa and 728 MPa were obtained for the ball-on-disk and ball-on flat, respectively, at a depth close to 14 µm from the surface, confirming the suitability of the applied load. Abrasive, adhesive, and fatigue wear mechanisms were observed on the worn sample morphology using SEM. It has been determined that during the corrosion test the OCP and corrosion potential values for the heat-treated coating increase as compared with the as-deposited one, whereas its corrosion resistance decreases."
+   },
+   {
+    "id": "https://openalex.org/W4286630694",
+    "doi": "https://doi.org/10.3390/ma15144743",
+    "title": "Novel Approach toward the Forming Process of CFRP Reinforcement with a Hot Stamped Part by Prepreg Compression Molding",
+    "year": 2022,
+    "cited": 17,
+    "venue": "Materials",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Manufacturing Process and Optimization",
+     "Epoxy Resin Curing Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/15/14/4743/pdf?version=1657193094",
+    "abstract": "The use of carbon fiber-reinforced plastics (CFRP) is markedly increasing, particularly for the manufacturing of automotive parts, to achieve better mechanical properties and a light weight. However, it is difficult to manufacture multi-material products because of the problems due to the adhesive between CFRP and steel. The prepreg compression molding (PCM) of laminated CFRP can reduce the production time and increase the flexibility of the manufacturing process. In this study, a new manufacturing process is proposed for CFRP reinforcement on a hot stamped B-pillar using PCM. A finite element (FE) simulation of the hot stamping process is conducted to predict the dimensions of the B-pillar. The feasibility of PCM manufacturing is explored by the simulation of the thermoforming of a CFRP set on a shaped B-pillar. The temperature conditions of the CFRP and B-pillar for the PCM are determined by considering the heat transfer between the CFRP and steel. Finally, the PCM of the B-pillar consisting of steel and CFRP was performed to compare with the analytical results for verification. The evaluation of the B-pillar was conducted by the observation of the cross-section for the B-pillar and interlayer by scanning electron microscopy (SEM). As a result, a steel/CFRP B-pillar assembly could be efficiently manufactured using the PCM process without an additional adhesive process."
+   },
+   {
+    "id": "https://openalex.org/W3134651773",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.03.006",
+    "title": "Microstructural study of the nano-scale martensitic lamellar α-Co and ε-Co phases of a Co–Cr alloy fabricated by selective laser melting",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421002325/pdf",
+    "abstract": "An interfacial microstructural study was carried out to clarify the hardening mechanism of an as-built Co–Cr alloy fabricated by selective laser melting (SLM). Using transmission electron microscopy, we found a unique martensitic lamellar microstructure with a specific orientation relationship between the α-Co and ε-Co phases; specifically, a nanoscale microstructure consisting of (111)α-Co//(0002¯)ε-Co and [01¯1]α-Co//[1¯21¯0]ε-Co was formed on the Co–Cr alloy. The Co–Cr alloy fabricated by SLM with a martensitic microstructure achieved a Vickers hardness value of approximately 369.36 ± 11.86 HV without any secondary-phase particles such as carbides."
+   },
+   {
+    "id": "https://openalex.org/W3130824884",
+    "doi": "https://doi.org/10.1007/s11665-021-05487-9",
+    "title": "Role of Superficial Defects and Machining Depth in Tensile Properties of Electron Beam Melting (EBM) Made Inconel 718",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Journal of Materials Engineering and Performance",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Advanced Machining and Optimization Techniques",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11665-021-05487-9.pdf",
+    "abstract": "Abstract Since there is no report on the influence of machining depth on electron beam melting (EBM) parts, this paper investigated the role of superficial defects and machining depth in the performance of EBM made Inconel 718 (IN718) samples. Therefore, as-built EBM samples were analyzed against the shallow-machined (i.e., only removal of outer surfaces) and deep-machined (i.e., deep surface removal into the material) parts. It was shown that both as-built and shallow-machined samples had a drastically lower yield strength (970 ± 50 MPa), ultimate tensile stress (1200 ± 40 MPa), and ductility (28 ± 2%) compared to the deep-machined samples. This was since premature failure occurred due to various superficial defects. The superficial defects appeared in two levels, as (1) notches and pores on the surface and (2) irregular pores and cracks within the subsurface. Since the latter occurred down to 2 mm underneath the surface, shallow machining only exposed the subsurface defects to outer surfaces. Thus, the shallow-machined parts achieved only 68% and 8% of UTS and elongation of the deep-machined parts, respectively. This low performance occurred to be comparable to the as-built parts, which failed prematurely due to the high fraction surface voids and notches as well as the subsurface defects."
+   },
+   {
+    "id": "https://openalex.org/W4289176441",
+    "doi": "https://doi.org/10.3390/met12081276",
+    "title": "Hydrogen Embrittlement of a Boiler Water Wall Tube in a District Heating System",
+    "year": 2022,
+    "cited": 16,
+    "venue": "Metals",
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Material Properties and Failure Mechanisms",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/8/1276/pdf?version=1659088799",
+    "abstract": "A district heating system is an eco-friendly power generation facility with high energy efficiency. The boiler water wall tube used in the district heating system is exposed to extremely harsh conditions, and unexpected fractures often occur during operation. In this study, a corrosion failure analysis of the boiler water wall tube was performed to elucidate the failure mechanisms. The study revealed that overheating by flames was the cause of the failure of the boiler water wall tube. With an increase in temperature in a localized region the microstructure not only changed from ferrite/pearlite to martensite/bainite, which made it more susceptible to brittleness, but it also developed tensile residual stresses in the water-facing side by generating cavities or microcracks along the grain boundaries inside the tube. High-temperature hydrogen embrittlement combined with stress corrosion cracking initiated many microcracks inside the tube and created an intergranular fracture."
+   },
+   {
+    "id": "https://openalex.org/W3186969883",
+    "doi": "https://doi.org/10.3390/app11146580",
+    "title": "Microstructural Characterization of TiC-Reinforced Metal Matrix Composites Fabricated by Laser Cladding Using FeCrCoNiAlTiC High Entropy Alloy Powder",
+    "year": 2021,
+    "cited": 15,
+    "venue": "Applied Sciences",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/11/14/6580/pdf",
+    "abstract": "TiC-reinforced metal matrix composites were fabricated by laser cladding and FeCrCoNiAlTiC high entropy alloy powder. The heat of the laser formed a TiC phase, which was consistent with the thermodynamic calculation, and produced a coating layer without interfacial defects. TiC reinforcing particles exhibited various morphologies, such as spherical, blocky, and dendritic particles, depending on the heat input and coating depth. A dendritic morphology is observed in the lower part of the coating layer near the AISI 304 substrate, where heat is rapidly transferred. Low heat input leads to an inhomogeneous microstructure and coating depth due to the poor fluidity of molten pool. On the other hand, high heat input dissolved reinforcing particles by dilution with the substrate. The coating layer under the effective heat input of 50 J/mm2 had relatively homogeneous blocky particles of several micrometers in size. The micro-hardness value of the coating layer is over 900 HV, and the nano-hardness of the reinforcing particles and the matrix were 17 GPa and 10 GPa, respectively."
+   },
+   {
+    "id": "https://openalex.org/W3177886771",
+    "doi": "https://doi.org/10.1177/09544054211028844",
+    "title": "Fatigue performance of surface ground and wire electrical discharge machined TiNi shape memory alloy",
+    "year": 2021,
+    "cited": 15,
+    "venue": "Proceedings of the Institution of Mechanical Engineers Part B Journal of Engineering Manufacture",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Shape Memory Alloy Transformations",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://doi.org/10.1177/09544054211028844",
+    "abstract": "Fatigue performance is a major consideration for critical aerospace components. The influence of surface grinding and rough/finish wire electrical discharge machining (WEDM) on the high cycle fatigue performance of a binary Ti 50.8 -Ni 49.2 shape memory alloy was assessed. The effect of machined workpiece surface integrity in terms of surface roughness and subsurface microhardness on the fatigue results was also evaluated, in addition to fractography analysis. Testing was performed using a tensile-tensile regime at an elevated temperature of 150°C with specimens in the austenitic phase. Ground samples showed the highest fatigue strength of 390 MPa at run-out of 1.2 × 10 7 cycles, while finish and rough WEDM specimens were 21% and 57% lower respectively, despite the finish WEDM surfaces having significantly lower roughness. This was likely due to the presence of tensile residual stresses following WEDM. All of the S-N curves however exhibited a relatively flat response with no clear indication of endurance limits. This implies that the different machining processes/conditions affected the fatigue strength of the material, but not the overall trend/shape of the fatigue curves."
+   },
+   {
+    "id": "https://openalex.org/W2270058992",
+    "doi": null,
+    "title": "Microstructural evolution in cast Haynes 282 for applications in advanced power plants",
+    "year": 2014,
+    "cited": 15,
+    "venue": "Loughborough University Institutional Repository (Loughborough University)",
+    "topics": [
+     "Advanced Materials Characterization Techniques",
+     "High Temperature Alloys and Creep",
+     "Heat transfer and supercritical fluids"
+    ],
+    "oa_url": "https://dspace.lboro.ac.uk/2134/14296",
+    "abstract": "Copyright 2014 ASM International, www.asminternational.org. This article was published in Advances in Materials Technology for Fossil Power Plants: Proceedings from the Seventh International Conference and is made available as an electronic reprint with the permission of ASM International. One print or electronic copy may be made for personal use only. Systematic or multiple reproduction, distribution to multiple locations via electronic or other means, duplications of any material in this article for a fee or for commercial purposes, or modification of the content of this article is prohibited."
+   },
+   {
+    "id": "https://openalex.org/W4402054437",
+    "doi": "https://doi.org/10.3390/ma17174297",
+    "title": "Manufacturing of Ni-Co-Fe-Cr-Al-Ti High-Entropy Alloy Using Directed Energy Deposition and Evaluation of Its Microstructure, Tensile Strength, and Microhardness",
+    "year": 2024,
+    "cited": 14,
+    "venue": "Materials",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/17/17/4297/pdf?version=1725009378",
+    "abstract": "High-entropy alloys (HEAs) have drawn significant attention due to their unique design and superior mechanical properties. Comprising 5-35 at% of five or more elements with similar atomic radii, HEAs exhibit high configurational entropy, resulting in single-phase solid solutions rather than intermetallic compounds. Additive manufacturing (AM), particularly direct energy deposition (DED), is effective for producing HEAs due to its rapid cooling rates, which ensure uniform microstructures and minimize defects. These alloys typically form face-centered cubic (FCC) or body-centered cubic (BCC) structures, contributing to their exceptional strength, hardness, and mechanical performance across various temperatures. However, FCC-structured HEAs often have low yield strengths, posing a challenge for structural applications. In this study, a Ni-Co-Fe-Cr-Al-Ti HEA was manufactured using the DED method. This study proposes that the addition of aluminum and titanium creates a γ + γ' phase structure within a multicomponent FCC-HEA matrix, enhancing the thermal stability and coarsening the resistance and strength. The γ' phase with an ordered FCC structure significantly improves the mechanical properties. Analysis confirmed the presence of the γ + γ' structure and demonstrated the alloy's high tensile strength and microhardness. This approach underscores the potential of AM techniques in advancing HEA production for high-performance applications."
+   },
+   {
+    "id": "https://openalex.org/W4388638294",
+    "doi": "https://doi.org/10.3390/jcs7110472",
+    "title": "Effects of Electrolyte Compositions and Electrical Parameters on Micro-Arc Oxidation Coatings on 7075 Aluminum Alloy",
+    "year": 2023,
+    "cited": 14,
+    "venue": "Journal of Composites Science",
+    "topics": [
+     "Corrosion Behavior and Inhibition",
+     "Aluminum Alloy Microstructure Properties",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-477X/7/11/472/pdf?version=1699685667",
+    "abstract": "Aluminum alloys are widely used in a variety of industries nowadays for their high strength-to-weight ratio, good formability, low density, and recyclability. However, their poor corrosion and wear resistance properties restrict their applications. This study investigated the effects of electrical parameters and electrolyte compositions on the microstructures of micro-arc oxidation (MAO) film on a 7075 Al alloy substrate. The morphology, microstructure, and compositions of the MAO coatings were characterized using a scanning electron microscope (SEM), X-ray diffraction (XRD), and an electron probe micro-analyzer (EPMA). Furthermore, measurements of microhardness, corrosion resistance, and wear resistance were also conducted. The cathodic current and duty ratio are proportional to film thickness, which consequently improves the wear and corrosion resistance. The microstructural observations of the aluminate-based coatings revealed that increasing cathodic current reduces the pancake-like structures, and a lot of small pores appear on the top of the coatings, which makes the surface smoother. Moreover, the aluminate-based coatings are mainly composed of α-Al2O3 and γ-Al2O3, while the silicate-based coatings mainly consist of γ-Al2O3 and a small amount of α-Al2O3 phase. Due to the phase compositions, the microhardness of the aluminate-based coatings can reach 1300~1500 HV and exhibit better wear resistance than silicate-based coatings."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mitutoyo HM-100 HM-200\" OR \"Mitutoyo HM-100\" OR \"Mitutoyo HM-200\" OR \"Mitutoyo HM-122\" OR \"Mitutoyo HM-124\") AND OPEN_ACCESS:y",
@@ -314,10 +1065,14 @@
   }
  ],
  "standards_found": {
+  "EN AW 6181": 1,
+  "EN AC 42100": 1,
   "ASTM E384-17": 1
  },
  "standards_new": [
-  "ASTM E384-17"
+  "ASTM E384-17",
+  "EN AC 42100",
+  "EN AW 6181"
  ],
  "test_item_hits": {
   "hardness_vickers": 5,

@@ -10,8 +10,757 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"NETZSCH LFA 467\" OR \"NETZSCH LFA\" OR \"NETZSCH LFA 467 HyperFlash\" OR \"NETZSCH LFA 467 HT\"",
-  "count": null,
-  "works": []
+  "count": 1458,
+  "works": [
+   {
+    "id": "https://openalex.org/W2031861623",
+    "doi": "https://doi.org/10.1073/pnas.1305735110",
+    "title": "High thermoelectric performance by resonant dopant indium in nanostructured SnTe",
+    "year": 2013,
+    "cited": 784,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://www.osti.gov/biblio/1387002",
+    "abstract": "From an environmental perspective, lead-free SnTe would be preferable for solid-state waste heat recovery if its thermoelectric figure-of-merit could be brought close to that of the lead-containing chalcogenides. In this work, we studied the thermoelectric properties of nanostructured SnTe with different dopants, and found indium-doped SnTe showed extraordinarily large Seebeck coefficients that cannot be explained properly by the conventional two-valence band model. We attributed this enhancement of Seebeck coefficients to resonant levels created by the indium impurities inside the valence band, supported by the first-principles simulations. This, together with the lower thermal conductivity resulting from the decreased grain size by ball milling and hot pressing, improved both the peak and average nondimensional figure-of-merit (ZT) significantly. A peak ZT of ∼1.1 was obtained in 0.25 atom % In-doped SnTe at about 873 K."
+   },
+   {
+    "id": "https://openalex.org/W3191451717",
+    "doi": "https://doi.org/10.1038/s41563-021-01064-6",
+    "title": "Polycrystalline SnSe with a thermoelectric figure of merit greater than the single crystal",
+    "year": 2021,
+    "cited": 733,
+    "venue": "Nature Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "2D Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41563-021-01064-6.pdf",
+    "abstract": "Abstract Thermoelectric materials generate electric energy from waste heat, with conversion efficiency governed by the dimensionless figure of merit, ZT. Single-crystal tin selenide (SnSe) was discovered to exhibit a high ZT of roughly 2.2–2.6 at 913 K, but more practical and deployable polycrystal versions of the same compound suffer from much poorer overall ZT, thereby thwarting prospects for cost-effective lead-free thermoelectrics. The poor polycrystal bulk performance is attributed to traces of tin oxides covering the surface of SnSe powders, which increases thermal conductivity, reduces electrical conductivity and thereby reduces ZT. Here, we report that hole-doped SnSe polycrystalline samples with reagents carefully purified and tin oxides removed exhibit an ZT of roughly 3.1 at 783 K. Its lattice thermal conductivity is ultralow at roughly 0.07 W m –1 K –1 at 783 K, lower than the single crystals. The path to ultrahigh thermoelectric performance in polycrystalline samples is the proper removal of the deleterious thermally conductive oxides from the surface of SnSe grains. These results could open an era of high-performance practical thermoelectrics from this high-performance material."
+   },
+   {
+    "id": "https://openalex.org/W1980527175",
+    "doi": "https://doi.org/10.1038/ncomms5515",
+    "title": "Broad temperature plateau for thermoelectric figure of merit ZT>2 in phase-separated PbTe0.7S0.3",
+    "year": 2014,
+    "cited": 556,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Perfectionism, Procrastination, Anxiety Studies",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms5515.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2571373606",
+    "doi": "https://doi.org/10.1038/ncomms13828",
+    "title": "Vacancy-induced dislocations within grains for high-performance PbSe thermoelectrics",
+    "year": 2017,
+    "cited": 501,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms13828.pdf",
+    "abstract": "Abstract To minimize the lattice thermal conductivity in thermoelectrics, strategies typically focus on the scattering of low-frequency phonons by interfaces and high-frequency phonons by point defects. In addition, scattering of mid-frequency phonons by dense dislocations, localized at the grain boundaries, has been shown to reduce the lattice thermal conductivity and improve the thermoelectric performance. Here we propose a vacancy engineering strategy to create dense dislocations in the grains. In Pb1−xSb2x/3Se solid solutions, cation vacancies are intentionally introduced, where after thermal annealing the vacancies can annihilate through a number of mechanisms creating the desired dislocations homogeneously distributed within the grains. This leads to a lattice thermal conductivity as low as 0.4 Wm−1 K−1 and a high thermoelectric figure of merit, which can be explained by a dislocation scattering model. The vacancy engineering strategy used here should be equally applicable for solid solution thermoelectrics and provides a strategy for improving zT."
+   },
+   {
+    "id": "https://openalex.org/W3155510219",
+    "doi": "https://doi.org/10.1016/j.joule.2021.03.017",
+    "title": "Demonstration of ultrahigh thermoelectric efficiency of ∼7.3% in Mg3Sb2/MgAgSb module for low-temperature energy harvesting",
+    "year": 2021,
+    "cited": 430,
+    "venue": "Joule",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Heusler alloys: electronic and magnetic properties",
+     "Topological Materials and Phenomena"
+    ],
+    "oa_url": "http://www.cell.com/article/S2542435121001409/pdf",
+    "abstract": "Thermoelectric harvesting of low-temperature waste heat offers great opportunities for sustainable energy production. However, the investigations of related thermoelectric materials and modules remain sluggish. Here, we reported a great advance in the n-type Mg 3 Sb 1.5 Bi 0.5 system by minor Cu additions. Some Cu atoms preferentially occupy interstitial sites within the Mg 3 Sb 2 lattice and significantly modified phonon modes via filling in the phonon gap and increased anharmonic phonon scattering, thereby leading to the anomalously low thermal conductivity. Simultaneously, the detrimental behavior of thermally activated electrical conductivity was completely eliminated through grain-boundary complexion engineering. These two critical roles contributed to the remarkable improvement of zT . Based on this developed high-performance material coupled with p-type α-MgAgSb-based material, a fabricated thermoelectric module rivaling long-time champion Bi 2 Te 3 , demonstrated a record-high conversion efficiency ∼7.3% at the hot-side temperature of 593 K. These results pave the way for low-temperature thermoelectric harvesting."
+   },
+   {
+    "id": "https://openalex.org/W2161332314",
+    "doi": "https://doi.org/10.1021/ja301245b",
+    "title": "Heavy Doping and Band Engineering by Potassium to Improve the Thermoelectric Figure of Merit in p-Type PbTe, PbSe, and PbTe1–ySey",
+    "year": 2012,
+    "cited": 378,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://dspace.mit.edu/bitstream/1721.1/86875/1/Paper4_Q.Zhang_JACS.pdf",
+    "abstract": "We present detailed studies of potassium doping in PbTe(1-y)Se(y) (y = 0, 0.15, 0.25, 0.75, 0.85, 0.95, and 1). It was found that Se increases the doping concentration of K in PbTe as a result of the balance of electronegativity and also lowers the lattice thermal conductivity because of the increased number of point defects. Tuning the composition and carrier concentration to increase the density of states around the Fermi level results in higher Seebeck coefficients for the two valence bands of PbTe(1-y)Se(y). Peak thermoelectric figure of merit (ZT) values of ~1.6 and ~1.7 were obtained for Te-rich K(0.02)Pb(0.98)Te(0.75)Se(0.25) at 773 K and Se-rich K(0.02)Pb(0.98)Te(0.15)Se(0.85) at 873 K, respectively. However, the average ZT was higher in Te-rich compositions than in Se-rich compositions, with the best found in K(0.02)Pb(0.98)Te(0.75)Se(0.25). Such a result is due to the improved electron transport afforded by heavy K doping with the assistance of Se."
+   },
+   {
+    "id": "https://openalex.org/W1980821031",
+    "doi": "https://doi.org/10.1038/ncomms5908",
+    "title": "Self-propagating high-temperature synthesis for compound thermoelectrics and new criterion for combustion processing",
+    "year": 2014,
+    "cited": 365,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms5908.pdf",
+    "abstract": "The existing methods of synthesis of thermoelectric (TE) materials remain constrained to multi-step processes that are time and energy intensive. Here we demonstrate that essentially all compound thermoelectrics can be synthesized in a single-phase form at a minimal cost and on the timescale of seconds using a combustion process called self-propagating high-temperature synthesis. We illustrate this method on Cu2Se and summarize key reaction parameters for other materials. We propose a new empirically based criterion for sustainability of the combustion reaction, where the adiabatic temperature that represents the maximum temperature to which the reacting compact is raised as the combustion wave passes through, must be high enough to melt the lower melting point component. Our work opens a new avenue for ultra-fast, low-cost, large-scale production of TE materials, and provides new insights into combustion process, which greatly broaden the scope of materials that can be successfully synthesized by this technique. The existing methods to synthesize thermoelectric materials remain constrained to multi-step processes that are usually time and energy consuming. Here, Su et al.use a fast, one-step combustion approach to synthesize various compounds, which holds promise for scalable industrial processing."
+   },
+   {
+    "id": "https://openalex.org/W2039572210",
+    "doi": "https://doi.org/10.1063/1.4880817",
+    "title": "Assessment of the thermoelectric performance of polycrystalline p -type SnSe",
+    "year": 2014,
+    "cited": 358,
+    "venue": "Applied Physics Letters",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Heusler alloys: electronic and magnetic properties"
+    ],
+    "oa_url": "https://aip.scitation.org/doi/pdf/10.1063/1.4880817",
+    "abstract": "We report the evaluation of the thermoelectric performance of polycrystalline p-type SnSe, a material in which unprecedented values of the thermoelectric figure of merit ZT have been recently discovered in single crystals. Besides anisotropic transport properties, our results confirm that this compound exhibits intrinsically very low thermal conductivity values. The electrical properties show trends typical of lightly doped, intrinsic semiconductors with thermopower values reaching 500 μV K−1 in a broad temperature range. An orthorhombic-to-orthorhombic transition sets in at 823 K, a temperature at which the power factor reaches its maximum value. A maximum ZT of 0.5 was obtained at 823 K, suggesting that proper optimization of the transport properties of SnSe might lead to higher ZT values. These findings indicate that this system represents an interesting experimental platform for the search of highly efficient thermoelectric materials."
+   },
+   {
+    "id": "https://openalex.org/W3030460461",
+    "doi": "https://doi.org/10.1038/s41467-020-16490-4",
+    "title": "A powder-metallurgy-based strategy toward three-dimensional graphene-like network for reinforcing copper matrix composites",
+    "year": 2020,
+    "cited": 350,
+    "venue": "Nature Communications",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Graphene research and applications",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-16490-4.pdf",
+    "abstract": "Three-dimensional graphene network is a promising structure for improving both the mechanical properties and functional capabilities of reinforced polymer and ceramic matrix composites. However, direct application in a metal matrix remains difficult due to the reason that wetting is usually unfavorable in the carbon/metal system. Here we report a powder-metallurgy based strategy to construct a three-dimensional continuous graphene network architecture in a copper matrix through thermal-stress-induced welding between graphene-like nanosheets grown on the surface of copper powders. The interpenetrating structural feature of the as-obtained composites not only promotes the interfacial shear stress to a high level and thus results in significantly enhanced load transfer strengthening and crack-bridging toughening simultaneously, but also constructs additional three-dimensional hyperchannels for electrical and thermal conductivity. Our approach offers a general way for manufacturing metal matrix composites with high overall performance."
+   },
+   {
+    "id": "https://openalex.org/W2046600433",
+    "doi": "https://doi.org/10.1063/1.3130718",
+    "title": "A wide-band-gap p-type thermoelectric material based on quaternary chalcogenides of Cu2ZnSnQ4 (Q=S,Se)",
+    "year": 2009,
+    "cited": 335,
+    "venue": "Applied Physics Letters",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://repository.upenn.edu/bitstreams/bc8784dc-a8ac-4238-8ee4-280a53291b0d/download",
+    "abstract": "Chalcopyritelike quaternary chalcogenides, Cu2ZnSnQ4 (Q=S,Se), were investigated as an alternative class of wide-band-gap p-type thermoelectric materials. Their distorted diamondlike structure and quaternary compositions are beneficial to lowering lattice thermal conductivities. Meanwhile, partial substitution of Cu for Zn creates more charge carriers and conducting pathways via the CuQ4 network, enhancing electrical conductivity. The power factor and the figure of merit (ZT) increase with the temperature, making these materials suitable for high temperature applications. For Cu2.1Zn0.9SnQ4, ZT reaches about 0.4 at 700 K, rising to 0.9 at 860 K."
+   },
+   {
+    "id": "https://openalex.org/W2043967470",
+    "doi": "https://doi.org/10.1038/am.2013.86",
+    "title": "Shifting up the optimum figure of merit of p-type bismuth telluride-based thermoelectric materials for power generation by suppressing intrinsic conduction",
+    "year": 2014,
+    "cited": 325,
+    "venue": "NPG Asia Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/am201386.pdf",
+    "abstract": "The abundance of low-temperature waste heat produced by industry and automobile exhaust necessitates the development of power generation with thermoelectric (TE) materials. Commercially available bismuth telluride-based alloys are generally used near room temperature. Materials that are composed of p-type bismuth telluride, which are suitable for low-temperature power generation (near 380 K), were successfully obtained through Sb-alloying, which suppresses detrimental intrinsic conduction at elevated temperatures by increasing hole concentrations and material band gaps. Furthermore, hot deformation (HD)-induced multi-scale microstructures were successfully realized in the high-performance p-type TE materials. Enhanced textures and donor-like effects all contributed to improved electrical transport properties. Multiple phonon scattering centers, including local nanostructures induced by dynamic recrystallization and high-density lattice defects, significantly reduced the lattice thermal conductivity. These combined effects resulted in observable improvement of ZT over the entire temperature range, with all TE parameters measured along the in-plane direction. The maximum ZT of 1.3 for the hot-deformed Bi0.3Sb1.7Te3 alloy was reached at 380 K, whereas the average ZTav of 1.18 was found in the range of 300–480 K, indicating potential for application in low-temperature TE power generation. Thermoelectric materials, which convert temperature differences and electric voltage into each other, serve in refrigeration or power generation applications. Currently, bismuth telluride (Bi2Te3) and its alloys are the most widely used thermoelectric materials. Tie-Jun Zhu, Xin-Bing Zhao and co-workers from Zhejiang University, China, have now investigated the effect of antimony (Sb) alloying on bismuth tellurides through a series of polycrystalline solid solutions of Bi2-xSbxTe3—where x varies between 1.4 and 1.8—prepared by hot deformation. Systematic tuning of the alloy composition showed that higher antimony content raised the material's optimal conversion temperature by repressing undesirable conduction. This effect arises from an increase in both the hole concentration and the band gap in the material. For a composition where x is 1.7, the alloy showed optimal performances at 380 kelvin—a suitable temperature for low-temperature power generation from the waste heat generated by industry or vehicles. The p-type bismuth telluride-based polycrystalline materials suiting for low-temperature power generations (near 380 K) have been obtained through Sb-alloying and HD, which suppresses the detrimental effect of intrinsic conduction at elevated temperature via increasing the hole concentration and band gap. The hot-deformed Bi0.3Sb1.7Te3 alloy, not usual composition Bi0.5Sb1.5Te3, shows a maximum ZT of 1.3 at 380 K, indicating a bright application potential in low-temperature power generations."
+   },
+   {
+    "id": "https://openalex.org/W2107274567",
+    "doi": "https://doi.org/10.1002/aenm.201500360",
+    "title": "Studies on Thermoelectric Properties of n‐type Polycrystalline SnSe1‐xSx by Iodine Doping",
+    "year": 2015,
+    "cited": 321,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Heusler alloys: electronic and magnetic properties"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1370978",
+    "abstract": "Iodine‐doped n‐type SnSe polycrystalline by melting and hot pressing is prepared. The prepared material is anisotropic with a peak ZT of ≈0.8 at about 773 K measured along the hot pressing direction. This is the first report on thermoelectric properties of n‐type Sn chalcogenide alloys. With increasing content of iodine, the carrier concentration changed from 2.3 × 1017 cm−3 (p‐type) to 5.0 × 1015 cm−3 (n‐type) then to 2.0 × 1017 cm−3 (n‐type). The decent ZT is mainly attributed to the intrinsically low thermal conductivity due to the high anharmonicity of the chemical bonds like those in p‐type SnSe. By alloying with 10 at% SnS, even lower thermal conductivity and an enhanced Seebeck coefficient were achieved, leading to an increased ZT of ≈1.0 at about 773 K measured also along the hot pressing direction."
+   },
+   {
+    "id": "https://openalex.org/W3205373288",
+    "doi": "https://doi.org/10.1002/adfm.202109542",
+    "title": "Thermo‐Optically Designed Scalable Photonic Films with High Thermal Conductivity for Subambient and Above‐Ambient Radiative Cooling",
+    "year": 2021,
+    "cited": 320,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "Optical properties and cooling technologies in crystalline materials",
+     "Urban Heat Island Mitigation"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202109542",
+    "abstract": "Abstract Radiative cooling is a promising passive cooling technology that reflects sunlight and emits heat to deep space without any energy consumption. Current research mainly focuses on cooling non‐heat‐generating objects (e.g., water) to a deep subambient temperature under sunlight. Toward real‐world applications, however, cooling outdoor objects that generate tremendous heat and have a temperature higher than ambient (e.g., communication base stations and data centres) remains a challenge. Herein, a scalable photonic film is prepared by introducing 2D dielectric nanoplates with high backward scattering efficiency into a polymer using a simulation aided thermo‐optical design. It is demonstrated that the dielectric nanoplates can break the trade‐off between optical reflection and thermal dissipation of conventional radiative coolers. The photonic film exhibits superior solar reflectance (98%) and has a stronger heat dissipation ability compared to the matrix. It exhibits ≈4 °C subambient cooling performance under direct sunlight and ≈9 °C cooling performance at night. Moreover, it also demonstrates remarkable above‐ambient cooling performance by reducing the underlying heater temperature of ≈18 °C in comparison with traditional polymers under sunlight. The dielectric nanoplates reported here provide an innovative strategy for applications related to light management beyond subambient and above‐ambient radiative cooling."
+   },
+   {
+    "id": "https://openalex.org/W2176981471",
+    "doi": "https://doi.org/10.1016/j.mineng.2015.11.008",
+    "title": "Thermo-physical properties of selected hard rocks and their relation to microwave-assisted comminution",
+    "year": 2015,
+    "cited": 315,
+    "venue": "Minerals Engineering",
+    "topics": [
+     "Mineral Processing and Grinding",
+     "Metal Extraction and Bioleaching",
+     "Minerals Flotation and Separation Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0892687515301278/pdf",
+    "abstract": "This paper deals with experimental studies regarding the thermo-physical properties of granite, sandstone and basalt in the temperature range of 25–1000 °C. It is shown how phase transitions (e.g. α-β quartz phase transition) influence the texture and stability of these rock types. The results of these measurements and analyses are linked to microwave irradiation tests at 17.5 kW power. The measurements demonstrate the strong variation of effects depending on the parameter rock/mineralogy showing possible applications in a mineral processing environment."
+   },
+   {
+    "id": "https://openalex.org/W1981581861",
+    "doi": "https://doi.org/10.1016/j.nanoen.2012.02.010",
+    "title": "Thermoelectric properties of copper selenide with ordered selenium layer and disordered copper layer",
+    "year": 2012,
+    "cited": 308,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1386802",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4362721930",
+    "doi": "https://doi.org/10.1038/s41467-023-37436-6",
+    "title": "Staggered circular nanoporous graphene converts electromagnetic waves into electricity",
+    "year": 2023,
+    "cited": 289,
+    "venue": "Nature Communications",
+    "topics": [
+     "Graphene research and applications",
+     "Electromagnetic wave absorption materials",
+     "Metamaterials and Metasurfaces Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37436-6.pdf",
+    "abstract": "Harvesting largely ignored and wasted electromagnetic (EM) energy released by electronic devices and converting it into direct current (DC) electricity is an attractive strategy not only to reduce EM pollution but also address the ever-increasing energy crisis. Here we report the synthesis of nanoparticle-templated graphene with monodisperse and staggered circular nanopores enabling an EM-heat-DC conversion pathway. We experimentally and theoretically demonstrate that this staggered nanoporous structure alters graphene's electronic and phononic properties by synergistically manipulating its intralayer nanostructures and interlayer interactions. The staggered circular nanoporous graphene exhibits an anomalous combination of properties, which lead to an efficient absorption and conversion of EM waves into heat and in turn an output of DC electricity through the thermoelectric effect. Overall, our results advance the fundamental understanding of the structure-property relationships of ordered nanoporous graphene, providing an effective strategy to reduce EM pollution and generate electric energy."
+   },
+   {
+    "id": "https://openalex.org/W4214926290",
+    "doi": "https://doi.org/10.1038/s41467-022-28798-4",
+    "title": "Maximizing the performance of n-type Mg3Bi2 based materials for room-temperature power generation and thermoelectric cooling",
+    "year": 2022,
+    "cited": 287,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Physics of Superconductivity and Magnetism"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-28798-4.pdf",
+    "abstract": "Abstract Although the thermoelectric effect was discovered around 200 years ago, the main application in practice is thermoelectric cooling using the traditional Bi 2 Te 3 . The related studies of new and efficient room-temperature thermoelectric materials and modules have, however, not come to fruition yet. In this work, the electronic properties of n-type Mg 3.2 Bi 1.5 Sb 0.5 material are maximized via delicate microstructural design with the aim of eliminating the thermal grain boundary resistance, eventually leading to a high zT above 1 over a broad temperature range from 323 K to 423 K. Importantly, we further demonstrated a great breakthrough in the non-Bi 2 Te 3 thermoelectric module, coupled with the high-performance p-type α-MgAgSb, for room-temperature power generation and thermoelectric cooling. A high conversion efficiency of ~2.8% at the temperature difference of 95 K and a maximum temperature difference of 56.5 K are experimentally achieved. If the interfacial contact resistance is further reduced, our non-Bi 2 Te 3 module may rival the long-standing champion commercial Bi 2 Te 3 system. Overall, this work represents a substantial step towards the real thermoelectric application using non-Bi 2 Te 3 materials and devices."
+   },
+   {
+    "id": "https://openalex.org/W2530673825",
+    "doi": "https://doi.org/10.1038/nnano.2016.182",
+    "title": "Magnetoelectric interaction and transport behaviours in magnetic nanocomposite thermoelectric materials",
+    "year": 2016,
+    "cited": 285,
+    "venue": "Nature Nanotechnology",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Heusler alloys: electronic and magnetic properties",
+     "Physics of Superconductivity and Magnetism"
+    ],
+    "oa_url": "https://ueaeprints.uea.ac.uk/id/eprint/60044/1/Wenyu_21953_2_merged_1469437840.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2046846099",
+    "doi": "https://doi.org/10.1103/physrevb.78.125205",
+    "title": "Thermoelectric performance of lanthanum telluride produced via mechanical alloying",
+    "year": 2008,
+    "cited": 272,
+    "venue": "Physical Review B",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "http://link.aps.org/pdf/10.1103/PhysRevB.78.125205",
+    "abstract": "Lanthanum telluride $({\\text{La}}_{3\\ensuremath{-}x}{\\text{Te}}_{4})$ has been synthesized via mechanical alloying and characterized for thermoelectric performance. This work confirms prior reports of lanthanum telluride as a good high-temperature thermoelectric material, with $zT\\ensuremath{\\sim}1.1$ obtained at 1275 K. The thermoelectric performance is found to be better than that of SiGe, the current state-of-the-art high-temperature $n$-type thermoelectric material. Inherent self-doping of the system allows control over carrier concentration via sample stoichiometry. Prior high-temperature syntheses were prone to solute rejection in liquid and vapor phases, which resulted in inhomogeneous chemical composition and carrier concentration. The low-temperature synthesis provides homogeneous samples with acceptable control of the stoichiometry, and thus allows a thorough examination of the transition from a heavily doped degenerate semiconductor to a nondegenerate semiconductor. The effect of carrier concentration on the Hall mobility, Seebeck coefficient, thermal and electrical conductivity, lattice thermal conductivity, and thermoelectric compatibility are examined for $0.03\\ensuremath{\\le}x\\ensuremath{\\le}0.33$."
+   },
+   {
+    "id": "https://openalex.org/W2058364632",
+    "doi": "https://doi.org/10.1016/j.actamat.2007.12.030",
+    "title": "Zr–(Cu,Ag)–Al bulk metallic glasses",
+    "year": 2008,
+    "cited": 271,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Metallic Glasses and Amorphous Alloys",
+     "Glass properties and applications",
+     "Material Dynamics and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359645407008609",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2588412081",
+    "doi": "https://doi.org/10.1002/aenm.201602582",
+    "title": "Grain Boundary Engineering for Achieving High Thermoelectric Performance in n‐Type Skutterudites",
+    "year": 2017,
+    "cited": 260,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1388361",
+    "abstract": "Grain or phase boundaries play a critical role in the carrier and phonon transport in bulk thermoelectric materials. Previous investigations about controlling boundaries primarily focused on the reducing grain size or forming nanoinclusions. Herein, liquid phase compaction method is first used to fabricate the Yb‐filled CoSb3 with excess Sb content, which shows the typical feature of low‐angle grain boundaries with dense dislocation arrays. Seebeck coefficients show a dramatic increase via energy filtering effect through dislocation arrays with little deterioration on the carrier mobility, which significantly enhances the power factor over a broad temperature range with a high room‐temperature value around 47 μW cm−2 K−1. Simultaneously, the lattice thermal conductivity could be further suppressed via scattering phonons via dense dislocation scattering. As a result, the highest average figure of merit ZT of ≈1.08 from 300 to 850 K could be realized, comparable to the best reported result of single or triple‐filled Skutterudites. This work clearly points out that low‐angle grain boundaries fabricated by liquid phase compaction method could concurrently optimize the electrical and thermal transport properties leading to an obvious enhancement of both power factor and ZT."
+   },
+   {
+    "id": "https://openalex.org/W1964743759",
+    "doi": "https://doi.org/10.1088/0957-4484/19/24/245707",
+    "title": "Nanostructures in high-performance (GeTe)x(AgSbTe2)100−xthermoelectric materials",
+    "year": 2008,
+    "cited": 230,
+    "venue": "Nanotechnology",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Phase-change materials and chalcogenides",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0957-4484/19/24/245707/pdf",
+    "abstract": "The thermoelectric properties of (GeTe)(x)(AgSbTe(2))(100-x) compounds (x = 75, 80, 85 and 90; TAGS-x) have been studied as a function of temperature from 300 to 720 K. At 720 K the dimensionless figure of merit ZT reaches the state-of-the-art value of 1.53 for TAGS-75 and 1.50 for TAGS-80 and TAGS-85 samples, respectively. But the ZT value of the TAGS-90 sample is only 0.50 at 720 K due to the high carrier concentration. Utilizing high-resolution transmission electron microscope and selected area electron diffraction techniques, we identify a considerable number of nanoscale domains with typical size ∼10 nm in the samples that show high ZT values. It is suggested that the presence of nanoscale domains, like the situation in PbTe-AgSbTe(2) compounds, should make a slight contribution to the low lattice thermal conductivity of TAGS compounds due to the enhanced mid-frequency phonon scattering."
+   },
+   {
+    "id": "https://openalex.org/W3212190271",
+    "doi": "https://doi.org/10.1016/j.nanoen.2021.106706",
+    "title": "High-performance in n-type PbTe-based thermoelectric materials achieved by synergistically dynamic doping and energy filtering",
+    "year": 2021,
+    "cited": 227,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal Radiation and Cooling Technologies",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2211285521009563-ga1_lrg.jpg",
+    "abstract": "The development of n-type high-performance PbTe thermoelectric materials for matching its p-type counterparts is an urgent matter to expand its practical applications. Here, we introduce Ag2Te into n-type Pb0.975Cr0.025Te for achieving a high peak figure of merit of 1.5 at 773 K. Such a high value is attributed to the synergistic optimization of carrier and phonon transports by Ag2Te introducing and the dynamic doping of Ag. From the detailed structure and property analysis, we found that Ag2Te nanoprecipitates establish coherent interfaces and hence potential barriers with the matrix to induce energy-dependent carrier scattering and maintain relatively high carrier mobility, leading to an optimal electrical-transport properties over a wide temperature range. Moreover, we employ comprehensive electron microscopy investigations and approximate Debye-Callaway model to reveal the origin of the significantly reduced lattice thermal conductivity in Ag2Te-alloyed Pb0.975Cr0.025Te. The strategies used here provide an effective method for designing high-performance thermoelectric material systems."
+   },
+   {
+    "id": "https://openalex.org/W2010796696",
+    "doi": "https://doi.org/10.1021/cm502570b",
+    "title": "Increasing the Thermoelectric Figure of Merit of Tetrahedrites by Co-Doping with Nickel and Zinc",
+    "year": 2015,
+    "cited": 220,
+    "venue": "Chemistry of Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Advanced Thermodynamics and Statistical Mechanics"
+    ],
+    "oa_url": "https://escholarship.org/content/qt6w77g5dp/qt6w77g5dp.pdf",
+    "abstract": "We report a more than 30% increase in the thermoelectric figure of merit of Ni-doped tetrahedrite (Cu 12 Sb 4 S 13 ) by the addition of Zn. We show that this enhancement is due to the combination of two effects: (1) a tuning of the Fermi energy to optimize the Seebeck coefficient and thermoelectric power factor and (2) a reduction in thermal conductivity due to decreases in both the electronic and lattice thermal conductivities. Unlike tetrahedrites doped solely with Zn, which can become electrically insulating at high Zn concentrations, Ni doped samples remain conducting due to the existence of an additional valence band from spin–split Ni states. By adding Zn to these Ni-doped materials, electrons can fill the holes in the valence band, allowing for tuning of the thermoelectric properties. Tetrahedrites optimally doped with both Ni and Zn have thermal conductivity approaching theoretical minimum values, which helps boost the thermoelectric figure of merit zT in these compounds above unity."
+   },
+   {
+    "id": "https://openalex.org/W3010278333",
+    "doi": "https://doi.org/10.1002/adma.201908218",
+    "title": "Metallic n‐Type Mg 3 Sb 2 Single Crystals Demonstrate the Absence of Ionized Impurity Scattering and Enhanced Thermoelectric Performance",
+    "year": 2020,
+    "cited": 213,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Heusler alloys: electronic and magnetic properties"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.201908218",
+    "abstract": "Abstract Mg 3 (Sb,Bi) 2 alloys have recently been discovered as a competitive alternative to the state‐of‐the‐art n‐type Bi 2 (Te,Se) 3 thermoelectric alloys. Previous theoretical studies predict that single crystals Mg 3 (Sb,Bi) 2 can exhibit higher thermoelectric performance near room temperature by eliminating grain boundary resistance. However, the intrinsic Mg defect chemistry makes it challenging to grow n‐type Mg 3 (Sb,Bi) 2 single crystals. Here, the first thermoelectric properties of n‐type Te‐doped Mg 3 Sb 2 single crystals, synthesized by a combination of Sb‐flux method and Mg‐vapor annealing, is reported. The electrical conductivity and carrier mobility of single crystals exhibit a metallic behavior with a typical T −1.5 dependence, indicating that phonon scattering dominates the charge carrier transport. The absence of any evidence of ionized impurity scattering in Te‐doped Mg 3 Sb 2 single crystals proves that the thermally activated mobility previously observed in polycrystalline materials is caused by grain boundary resistance. Eliminating this grain boundary resistance in the single crystals results in a large enhancement of the weighted mobility and figure of merit zT by more than 100% near room temperature. This work experimentally demonstrates the accurate understanding of charge‐carrier scattering is crucial for developing high‐performance thermoelectric materials and indicates that single‐crystalline Mg 3 (Sb,Bi) 2 solid solutions can exhibit higher zT compared to polycrystalline samples."
+   },
+   {
+    "id": "https://openalex.org/W1977468126",
+    "doi": "https://doi.org/10.1016/j.tca.2006.11.026",
+    "title": "A new laser flash system for measurement of the thermophysical properties",
+    "year": 2006,
+    "cited": 206,
+    "venue": "Thermochimica Acta",
+    "topics": [
+     "Thermography and Photoacoustic Techniques",
+     "Advanced Sensor Technologies Research",
+     "Calibration and Measurement Techniques"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2793769624",
+    "doi": "https://doi.org/10.1038/s41467-018-03467-7",
+    "title": "Pressureless glass crystallization of transparent yttrium aluminum garnet-based nanoceramics",
+    "year": 2018,
+    "cited": 199,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Glass properties and applications",
+     "Solid State Laser Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-03467-7.pdf",
+    "abstract": "Abstract Transparent crystalline yttrium aluminum garnet (YAG; Y 3 Al 5 O 12 ) is a dominant host material used in phosphors, scintillators, and solid state lasers. However, YAG single crystals and transparent ceramics face several technological limitations including complex, time-consuming, and costly synthetic approaches. Here we report facile elaboration of transparent YAG-based ceramics by pressureless nano-crystallization of Y 2 O 3 –Al 2 O 3 bulk glasses. The resulting ceramics present a nanostructuration composed of YAG nanocrystals (77 wt%) separated by small Al 2 O 3 crystalline domains (23 wt%). The hardness of these YAG-Al 2 O 3 nanoceramics is 10% higher than that of YAG single crystals. When doped by Ce 3+ , the YAG-Al 2 O 3 ceramics show a 87.5% quantum efficiency. The combination of these mechanical and optical properties, coupled with their simple, economical, and innovative preparation method, could drive the development of technologically relevant materials with potential applications in wide optical fields such as scintillators, lenses, gem stones, and phosphor converters in high-power white-light LED and laser diode."
+   },
+   {
+    "id": "https://openalex.org/W4280524511",
+    "doi": "https://doi.org/10.1007/s40145-022-0589-z",
+    "title": "High-entropy rare-earth zirconate ceramics with low thermal conductivity for advanced thermal-barrier coatings",
+    "year": 2022,
+    "cited": 190,
+    "venue": "Journal of Advanced Ceramics",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "High Entropy Alloys Studies",
+     "Nuclear materials and radiation effects"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40145-022-0589-z.pdf",
+    "abstract": "Abstract The high-entropy rare-earth zirconate ((La 0.2 Nd 0.2 Sm 0.2 Gd 0.2 Yb 0.2 ) 2 Zr 2 O 7 , 5RE 2 Zr 2 O 7 HEREZs) ceramics were successfully prepared by a new high-speed positive grinding strategy combined with solid-state reaction method. The microstructure, crystal structure, phase composition, and thermophysical and mechanical properties of the samples were systematically investigated through various methods. Results indicate that the samples have a single-phase defect fluorite-type crystal structure with excellent high-temperature thermal stability. The as-prepared samples also demonstrate low thermal conductivity (0.9–1.72 W·m −1 ·K −1 at 273–1273 K) and high coefficient of thermal expansion (CTE, 10.9 × 10 −6 K −1 at 1273 K), as well as outstanding mechanical properties including large Young’s modulus ( E = 186–257 GPa) and high fracture toughness ( K IC ). Furthermore, the formation possibility of the as-prepared samples was verified through the first-principles calculations, which suggested the feasibility to form the 5RE 2 Zr 2 O 7 HE-REZs in the thermodynamic direction. Therefore, in view of the excellent multifunctional properties exhibited by the as-prepared 5RE 2 Zr 2 O 7 HE-REZs, they have great potential applications in next-generation thermal-barrier coatings (TBCs)."
+   },
+   {
+    "id": "https://openalex.org/W2909627514",
+    "doi": "https://doi.org/10.1038/s41467-018-07877-5",
+    "title": "Discovery of colossal Seebeck effect in metallic Cu2Se",
+    "year": 2019,
+    "cited": 180,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Molecular Junctions and Nanostructures"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-07877-5.pdf",
+    "abstract": "Abstract Both electrical conductivity σ and Seebeck coefficient S are functions of carrier concentration being correlated with each other, and the value of power factor S2σ is generally limited to less than 0.01 W m−1 K−2. Here we report that, under the temperature gradient applied simultaneously to both parallel and perpendicular directions of measurement, a metallic copper selenide, Cu2Se, shows two sign reversals and colossal values of S exceeding ±2 mV K−1 in a narrow temperature range, 340 K < T < 400 K, where a structure phase transition takes place. The metallic behavior of σ possessing larger magnitude exceeding 600 S cm−1 leads to a colossal value of S2σ = 2.3 W m–1 K–2. The small thermal conductivity less than 2 W m−1 K−1 results in a huge dimensionless figure of merit exceeding 400. This unusual behavior is brought about by the self-tuning carrier concentration effect in the low-temperature phase assisted by the high-temperature phase."
+   },
+   {
+    "id": "https://openalex.org/W2585078138",
+    "doi": "https://doi.org/10.1016/j.synthmet.2017.01.009",
+    "title": "Electrically conductive nanocomposites for fused deposition modelling",
+    "year": 2017,
+    "cited": 176,
+    "venue": "Synthetic Metals",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Material Selection and Properties",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://iris.unitn.it/bitstream/11572/184659/4/SYNMET-D-16-00846R1.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2088710082",
+    "doi": "https://doi.org/10.1007/s11671-010-9795-7",
+    "title": "Synthesis and Thermoelectric Properties of Bi2Se3 Nanostructures",
+    "year": 2010,
+    "cited": 175,
+    "venue": "Nanoscale Research Letters",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Topological Materials and Phenomena",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11671-010-9795-7.pdf",
+    "abstract": "Bismuth selenide (Bi2Se3) nanostructures were synthesized via solvothermal method. The crystallinity of the as-synthesized sample has been analyzed by X-ray diffraction, which shows the formation of rhombohedral Bi2Se3. Electron microscopy examination indicates that the Bi2Se3 nanoparticles have hexagonal flake-like shape. The effect of the synthesis temperature on the morphology of the Bi2Se3 nanostructures has also been investigated. It is found that the particle size increases with the synthesis temperature. Thermoelectric properties of the Bi2Se3 nanostructures were also measured, and the maximum value of dimensionless figure of merit (ZT) of 0.096 was obtained at 523 K."
+   },
+   {
+    "id": "https://openalex.org/W2000685052",
+    "doi": "https://doi.org/10.1016/j.proeng.2014.12.317",
+    "title": "Experimental Analysis of Hybrid Nanofluid as a Coolant",
+    "year": 2014,
+    "cited": 172,
+    "venue": "Procedia Engineering",
+    "topics": [
+     "Nanofluid Flow and Heat Transfer",
+     "Heat Transfer and Optimization",
+     "Heat Transfer and Boiling Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1877705814033852/pdf",
+    "abstract": "Investigation of heat transfer behaviour of hybrid nanofluid (HyNF) flow through the tubular heat exchanger was experimentally studied. In this analysis, the effects of thermal characteristics of forced convection, thermal conductivity and heat transfer coefficient were explored. The nanofluid was prepared by dispersing the copper-titanium hybrid nanocomposite (HyNC) in the water. The experiments were performed for various nanoparticle volume concentrations added in the base fluid ranging from 0.1% to 1.0%. The results showed that the convective heat transfer coefficient was found maximum by 48.4% up to 0.7% volume concentration of HyNC."
+   },
+   {
+    "id": "https://openalex.org/W2126299467",
+    "doi": "https://doi.org/10.1038/ncomms8584",
+    "title": "Solubility design leading to high figure of merit in low-cost Ce-CoSb3 skutterudites",
+    "year": 2015,
+    "cited": 171,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Rare-earth and actinide compounds",
+     "Semiconductor materials and interfaces"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms8584.pdf",
+    "abstract": "CoSb3-based filled skutterudite has emerged as one of the most viable candidates for thermoelectric applications in automotive industry. However, the scale-up commercialization of such materials is still a challenge due to the scarcity and cost of constituent elements. Here we study Ce, the most earth abundant and low-cost rare earth element as a single-filling element and demonstrate that, by solubility design using a phase diagram approach, the filling fraction limit (FFL) x in CexCo4Sb12 can be increased more than twice the amount reported previously (x=0.09). This ultra-high FFL (x=0.20) enables the optimization of carrier concentration such that no additional filling elements are needed to produce a state of the art n-type skutterudite material with a zT value of 1.3 at 850 K before nano-structuring. The earth abundance and low cost of Ce would potentially facilitate a widespread application of skutterudites."
+   },
+   {
+    "id": "https://openalex.org/W4282921380",
+    "doi": "https://doi.org/10.1007/s40820-022-00868-8",
+    "title": "Emerging Flexible Thermally Conductive Films: Mechanism, Fabrication, Application",
+    "year": 2022,
+    "cited": 168,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Thermal properties of materials",
+     "Thermal Radiation and Cooling Technologies",
+     "Heat Transfer and Optimization"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-022-00868-8.pdf",
+    "abstract": "Effective thermal management is quite urgent for electronics owing to their ever-growing integration degree, operation frequency and power density, and the main strategy of thermal management is to remove excess energy from electronics to outside by thermal conductive materials. Compared to the conventional thermal management materials, flexible thermally conductive films with high in-plane thermal conductivity, as emerging candidates, have aroused greater interest in the last decade, which show great potential in thermal management applications of next-generation devices. However, a comprehensive review of flexible thermally conductive films is rarely reported. Thus, we review recent advances of both intrinsic polymer films and polymer-based composite films with ultrahigh in-plane thermal conductivity, with deep understandings of heat transfer mechanism, processing methods to enhance thermal conductivity, optimization strategies to reduce interface thermal resistance and their potential applications. Lastly, challenges and opportunities for the future development of flexible thermally conductive films are also discussed."
+   },
+   {
+    "id": "https://openalex.org/W2791712494",
+    "doi": "https://doi.org/10.1021/acsami.8b00074",
+    "title": "Stable, Heat-Conducting Phosphor Composites for High-Power Laser Lighting",
+    "year": 2018,
+    "cited": 163,
+    "venue": "ACS Applied Materials & Interfaces",
+    "topics": [
+     "Luminescence Properties of Advanced Materials"
+    ],
+    "oa_url": "https://escholarship.org/content/qt1f09v625/qt1f09v625.pdf?t=p4x1sy",
+    "abstract": "Solid-state lighting using laser diodes is an exciting new development that requires new phosphor geometries to handle the greater light fluxes involved. The greater flux from the source results in more conversion and therefore more conversion loss in the phosphor, which generates self-heating, surpassing the stability of current encapsulation strategies used for light-emitting diodes, usually based on silicones. Here, we present a rapid method using spark plasma sintering (SPS) for preparing ceramic phosphor composites of the canonical yellow-emitting phosphor Ce-doped yttrium aluminum garnet (Ce:YAG) combined with a chemically compatible and thermally stable oxide, α-Al 2 O 3 . SPS allows for compositional modulation, and phase fraction, microstructure, and luminescent properties of ceramic composites with varying compositions are studied here in detail. The relationship between density, thermal conductivity, and temperature rise during laser-driven phosphor conversion is elucidated, showing that only modest densities are required to mitigate thermal quenching in phosphor composites. Additionally, the scattering nature of the ceramic composites makes them ideal candidates for laser-driven white lighting in reflection mode, where Lambertian scattering of blue light offers great color uniformity, and a luminous flux >1000 lm is generated using a single commercial laser diode coupled to a single phosphor element."
+   },
+   {
+    "id": "https://openalex.org/W2585192853",
+    "doi": "https://doi.org/10.1039/c6ta08316a",
+    "title": "Simultaneous improvement of power factor and thermal conductivity via Ag doping in p-type Mg 3 Sb 2 thermoelectric materials",
+    "year": 2017,
+    "cited": 152,
+    "venue": "Journal of Materials Chemistry A",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Optical properties and cooling technologies in crystalline materials",
+     "Heusler alloys: electronic and magnetic properties"
+    ],
+    "oa_url": "https://pure.au.dk/portal/en/publications/d05bd716-cadf-477b-84a5-babf36c85e8a",
+    "abstract": "Ag doping in Mg 3 Sb 2 leads to an enhanced average figure-of-merit ( zT ) by simultaneously improving the power factor and thermal conductivity."
+   },
+   {
+    "id": "https://openalex.org/W2507432726",
+    "doi": "https://doi.org/10.1038/am.2016.134",
+    "title": "Attaining high mid-temperature performance in (Bi,Sb)2Te3 thermoelectric materials via synergistic optimization",
+    "year": 2016,
+    "cited": 152,
+    "venue": "NPG Asia Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Advanced Thermodynamics and Statistical Mechanics"
+    ],
+    "oa_url": "https://www.nature.com/articles/am2016134.pdf",
+    "abstract": "For decades, zone-melted Bi2Te3-based alloys have been the most widely used thermoelectric materials with an optimal operation regime near room temperature. However, the abundant waste heat in the mid-temperature range poses a challenge; namely, how and to what extent the service temperature of Bi2Te3-based alloys can be upshifted to the mid-temperature regime. We report herein a synergistic optimization procedure for Indium doping and hot deformation that combines intrinsic point defect engineering, band structure engineering and multiscale microstructuring. Indium doping modulated the intrinsic point defects, broadened the band gap and thus suppressed the detrimental bipolar effect in the mid-temperature regime; in addition, hot deformation treatment rendered a multiscale microstructure favorable for phonon scattering and the donor-like effect helped optimize the carrier concentration. As a result, a peak value of zT of ~1.4 was attained at 500 K, with a state-of-the-art average zTav of ~1.3 between 400 and 600 K in Bi0.3Sb1.625In0.075Te3. These results demonstrate the efficacy of the multiple synergies that can also be applied to optimize other thermoelectric materials. A popular material for converting heat into electricity can now operate at elevated temperatures associated with industrial machinery. Bismuth tellurium is a thermoelectric alloy that works at room temperature and finds use in refrigeration and powergeneration, but much waste heat is created in the so-called middle temperature range of 100–300 degrees Celsius. Tiejun Zhu from Zhejiang University and colleagues doped indium atoms into bismuth tellurium to provide a balance to the excess, thermally activated charge carriers that normally materialize when this alloy is heated to middle temperatures. Hot deformations of the alloy during fabrication introduced missing-atom defects and micrograins that worked together with dopants to scatter heat-transporting phonon waves and optimize carrier concentrations. Thermoelectric and X-ray testing revealed that the doped alloyhad a higher working temperature and better mechanical properties. We herein report a synergistic optimization procedure that combines point defect engineering, band structure engineering and multiscale microstructuring in p-type (Bi,Sb)2Te3 thermoelectric materials by Indium doping and hot deformation. As a result, a peak value of zT ~1.4 was attained in Bi0.3Sb1.625In0.075Te3 at 500 K, along with a state-of-the-art average zTav of ~1.3 between 400 and 600 K. These results demonstrate the efficacy of the multi-synergies that can also be applied to optimize other thermoelectric materials."
+   },
+   {
+    "id": "https://openalex.org/W2565973822",
+    "doi": "https://doi.org/10.1016/j.matdes.2016.12.079",
+    "title": "Thermophysical properties of Ni-containing single-phase concentrated solid solution alloys",
+    "year": 2016,
+    "cited": 150,
+    "venue": "Materials & Design",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1338550",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W326272088",
+    "doi": "https://doi.org/10.1038/srep10136",
+    "title": "Conductivity-limiting bipolar thermal conductivity in semiconductors",
+    "year": 2015,
+    "cited": 148,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Semiconductor materials and interfaces"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep10136.pdf",
+    "abstract": "Intriguing experimental results raised the question about the fundamental mechanisms governing the electron-hole coupling induced bipolar thermal conduction in semiconductors. Our combined theoretical analysis and experimental measurements show that in semiconductors bipolar thermal transport is in general a \"conductivity-limiting\" phenomenon, and it is thus controlled by the carrier mobility ratio and by the minority carrier partial electrical conductivity for the intrinsic and extrinsic cases, respectively. Our numerical method quantifies the role of electronic band structure and carrier scattering mechanisms. We have successfully demonstrated bipolar thermal conductivity reduction in doped semiconductors via electronic band structure modulation and/or preferential minority carrier scatterings. We expect this study to be beneficial to the current interests in optimizing thermoelectric properties of narrow gap semiconductors."
+   },
+   {
+    "id": "https://openalex.org/W1494006518",
+    "doi": "https://doi.org/10.1063/1.3427427",
+    "title": "p-type Bi0.4Sb1.6Te3 nanocomposites with enhanced figure of merit",
+    "year": 2010,
+    "cited": 144,
+    "venue": "Applied Physics Letters",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Topological Materials and Phenomena"
+    ],
+    "oa_url": "https://aip.scitation.org/doi/pdf/10.1063/1.3427427",
+    "abstract": "We report enhanced figure of merit, ZT, in p-type Bi0.4Sb1.6Te3 nanocomposites fabricated by a rapid and high throughput method of mixing nanostructured Bi0.4Sb1.6Te3 particles obtained through melt spinning with micronsized particles obtained via solid state reaction. Due to effective scattering of phonons over a wide wavelength spectrum, low thermal conductivity, and moderately good power factor were obtained in the nanocomposites to achieve ZT above 1.5 at room temperature. A maximum ZT of 1.80 was attained at 43 °C for the nanocomposite consisting 40 wt % nanoinclusions. This was a 56% increment over the bulk sample, and the highest ZT reported for Bi2Te3-based materials."
+   },
+   {
+    "id": "https://openalex.org/W1987090462",
+    "doi": "https://doi.org/10.1038/ncomms4640",
+    "title": "Contrasting role of antimony and bismuth dopants on the thermoelectric performance of lead selenide",
+    "year": 2014,
+    "cited": 138,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms4640.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2982329975",
+    "doi": "https://doi.org/10.1111/jace.16888",
+    "title": "3D printing of high‐purity silicon carbide",
+    "year": 2019,
+    "cited": 135,
+    "venue": "Journal of the American Ceramic Society",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1606976",
+    "abstract": "Abstract A method for advanced manufacturing of silicon carbide offering complete freedom in geometric complexity in the three‐dimensional space is described. The method combines binder jet printing and chemical vapor infiltration in a process capable of yielding a high‐purity, fully crystalline ceramic—attributes essential for ideal performance in very high‐temperature applications or in the presence of displacement damage. Thermal conductivity and characteristic equibiaxial flexural strength of the resulting monolithic SiC at room temperature are 37 W·(m·K) −1 and 297 MPa, respectively."
+   },
+   {
+    "id": "https://openalex.org/W2084779466",
+    "doi": "https://doi.org/10.1073/pnas.1403601111",
+    "title": "Right sizes of nano- and microstructures for high-performance and rigid bulk thermoelectrics",
+    "year": 2014,
+    "cited": 135,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://www.pnas.org/content/pnas/111/30/10949.full.pdf",
+    "abstract": "In this paper, we systematically investigate three different routes of synthesizing 2% Na-doped PbTe after melting the elements: (i) quenching followed by hot-pressing (QH), (ii) annealing followed by hot-pressing, and (iii) quenching and annealing followed by hot-pressing. We found that the thermoelectric figure of merit, zT, strongly depends on the synthesis condition and that its value can be enhanced to ∼ 2.0 at 773 K by optimizing the size distribution of the nanostructures in the material. Based on our theoretical analysis on both electron and thermal transport, this zT enhancement is attributed to the reduction of both the lattice and electronic thermal conductivities; the smallest sizes (2 ∼ 6 nm) of nanostructures in the QH sample are responsible for effectively scattering the wide range of phonon wavelengths to minimize the lattice thermal conductivity to ∼ 0.5 W/m K. The reduced electronic thermal conductivity associated with the suppressed electrical conductivity by nanostructures also helped reduce the total thermal conductivity. In addition to the high zT of the QH sample, the mechanical hardness is higher than the other samples by a factor of around 2 due to the smaller grain sizes. Overall, this paper suggests a guideline on how to achieve high zT and mechanical strength of a thermoelectric material by controlling nano- and microstructures of the material."
+   },
+   {
+    "id": "https://openalex.org/W4282968083",
+    "doi": "https://doi.org/10.1007/s40145-022-0609-z",
+    "title": "(Ho0.25Lu0.25Yb0.25Eu0.25)2SiO5 high-entropy ceramic with low thermal conductivity, tunable thermal expansion coefficient, and excellent resistance to CMAS corrosion",
+    "year": 2022,
+    "cited": 134,
+    "venue": "Journal of Advanced Ceramics",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Nuclear materials and radiation effects",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40145-022-0609-z.pdf",
+    "abstract": "Abstract Low thermal conductivity, compatible thermal expansion coefficient, and good calcium—magnesium—aluminosilicate (CMAS) corrosion resistance are critical requirements of environmental barrier coatings for silicon-based ceramics. Rare earth silicates have been recognized as one of the most promising environmental barrier coating candidates for good water vapor corrosion resistance. However, the relatively high thermal conductivity and high thermal expansion coefficient limit the practical application. Inspired by the high entropy effect, a novel rare earth monosilicate solid solution (Ho0.25Lu0.25Yb0.25Eu0.25)2SiO5was designed to improve the overall performance. The as-synthesized (Ho0.25Lu0.25Yb0.25Eu0.25)2SiO5shows very low thermal conductivity (1.07 W·m−1·K−1at 600 °C). Point defects including mass mismatch and oxygen vacancies mainly contribute to the good thermal insulation properties. The thermal expansion coefficient of (Ho0.25Lu0.25Yb0.25Eu0.25)2SiO5can be decreased to (4.0–5.9)×10−6K−1due to severe lattice distortion and chemical bonding variation, which matches well with that of SiC ((4.5–5.5)×10−6K−1). In addition, (Ho0.25Lu0.25Yb0.25Eu0.25)2SiO5presents good resistance to CMAS corrosion. The improved performance of (Ho0.25Lu0.25Yb0.25Eu0.25)2SiO5highlights it as a promising environmental barrier coating candidate."
+   },
+   {
+    "id": "https://openalex.org/W2012529514",
+    "doi": "https://doi.org/10.1063/1.3534080",
+    "title": "Rapid consolidation of powdered materials by induction hot pressing",
+    "year": 2011,
+    "cited": 133,
+    "venue": "Review of Scientific Instruments",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Electronic Packaging and Soldering Technologies",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/rsi/article-pdf/doi/10.1063/1.3534080/15621383/025104_1_online.pdf",
+    "abstract": "A rapid hot press system in which the heat is supplied by RF induction to rapidly consolidate thermoelectric materials is described. Use of RF induction heating enables rapid heating and consolidation of powdered materials over a wide temperature range. Such rapid consolidation in nanomaterials is typically performed by spark plasma sintering (SPS) which can be much more expensive. Details of the system design, instrumentation, and performance using a thermoelectric material as an example are reported. The Seebeck coefficient, electrical resistivity, and thermal diffusivity of thermoelectric PbTe material pressed at an optimized temperature and time in this system are shown to agree with material consolidated under typical consolidation parameters."
+   },
+   {
+    "id": "https://openalex.org/W2934077144",
+    "doi": "https://doi.org/10.1039/c9sc00485h",
+    "title": "Bonding heterogeneity and lone pair induced anharmonicity resulted in ultralow thermal conductivity and promising thermoelectric properties in n-type AgPbBiSe 3",
+    "year": 2019,
+    "cited": 132,
+    "venue": "Chemical Science",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2019/sc/c9sc00485h",
+    "abstract": "Synergistic effect of bonding inhomogeneity and local off-centering within global cubic structure results in ultralow thermal conductivity of n-type AgPbBiSe 3 ."
+   },
+   {
+    "id": "https://openalex.org/W1976293075",
+    "doi": "https://doi.org/10.1088/0957-4484/24/28/285702",
+    "title": "Metal nanoparticle decorated n-type Bi2Te3-based materials with enhanced thermoelectric performances",
+    "year": 2013,
+    "cited": 131,
+    "venue": "Nanotechnology",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal Radiation and Cooling Technologies",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0957-4484/24/28/285702/pdf",
+    "abstract": "In this study, n-type Cu and Zn metal nanoparticle decorated Bi₂(Te₀.₉Se₀.₁)₃ ingots were prepared by a large-scale zone melting technique, with the concept of 'nanoparticle-in-alloy' to separately tune the electrical and thermal transport properties. Cu and Zn additions play multiple but different roles in the materials, whereas both of them form metal nanoinclusions embedded in van der Waals gaps or grain boundaries, exerting influences on thermoelectric properties. Cu addition, accommodated in the tetrahedral vacancies formed by four Te(1) atoms, effectively adjusts the electron concentration by donating its valence electron, and appreciably optimizes the power factor. Coupled with the significant frustration of heat-carrying phonons by Cu nanoinclusions, a highest ZT of 1.15 can be achieved for the 1 at.% Cu sample, which is an ∼20% improvement compared with that of commercial halogen-doped ingots. Zn addition, however, acting as weak donor, noticeably increases the density of state effective mass and Seebeck coefficient, and gives rise to a high ZT of 1.1. In particular, the kilogram-grade production technique coupled with the high ZT makes metal nanoparticle decorated n-type materials very promising for commercial applications."
+   },
+   {
+    "id": "https://openalex.org/W4293321978",
+    "doi": "https://doi.org/10.1038/s41467-022-32773-4",
+    "title": "Glassy thermal conductivity in Cs3Bi2I6Cl3 single crystal",
+    "year": 2022,
+    "cited": 128,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Perovskite Materials and Applications",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-32773-4.pdf",
+    "abstract": "Abstract As the periodic atomic arrangement of a crystal is made to a disorder or glassy-amorphous system by destroying the long-range order, lattice thermal conductivity, κL, decreases, and its fundamental characteristics changes. The realization of ultralow and unusual glass-like κL in a crystalline material is challenging but crucial to many applications like thermoelectrics and thermal barrier coatings. Herein, we demonstrate an ultralow (~0.20 W/m·K at room temperature) and glass-like temperature dependence (2–400 K) of κL in a single crystal of layered halide perovskite, Cs3Bi2I6Cl3. Acoustic phonons with low cut-off frequency (20 cm−1) are responsible for the low sound velocity in Cs3Bi2I6Cl3 and make the structure elastically soft. While a strong anharmonicity originates from the low energy and localized rattling-like vibration of Cs atoms, synchrotron X-ray pair-distribution function evidence a local structural distortion in the Bi-halide octahedra and Cl vacancy. The hierarchical chemical bonding and soft vibrations from selective sublattice leading to low κL is intriguing from lattice dynamical perspective as well as have potential applications."
+   },
+   {
+    "id": "https://openalex.org/W2045869725",
+    "doi": "https://doi.org/10.1002/aenm.201401977",
+    "title": "Enhancement of Thermoelectric Performance of n‐Type PbSe by Cr Doping with Optimized Carrier Concentration",
+    "year": 2015,
+    "cited": 125,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Heusler alloys: electronic and magnetic properties"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1371030",
+    "abstract": "Ti, V, Cr, Nb, and Mo are found to be effective at increasing the Seebeck coefficient and power factor of n‐type PbSe at temperatures below 600 K. It is found that the higher Seebeck coefficients and power factors are due to higher Hall mobility ≈1000 cm2 V−1s−1 at lower carrier concentration. A larger average ZT value (relevant for applications) can be obtained by an optimization of carrier concentration to ≈1018–1019 cm−3. Even though the highest room temperature power factor ≈3.3 × 10−3 W m−1 K−2 is found in 1 at% Mo‐doped PbSe, the highest ZT is achieved in Cr‐doped PbSe. Combined with the lower thermal conductivity, ZT is improved to ≈0.4 at room temperature and peak ZTs of ≈1.0 are observed at ≈573 K for Pb0.9925Cr0.0075Se and ≈673 K for Pb0.995Cr0.005Se. The calculated device efficiency of Pb0.995Cr0.005Se is as high as ≈12.5% with cold side 300 K and hot side 873 K, higher than those of all the n‐type PbSe materials reported in the literature."
+   },
+   {
+    "id": "https://openalex.org/W4285795933",
+    "doi": "https://doi.org/10.1038/s41467-022-31939-4",
+    "title": "Multiple valence bands convergence and strong phonon scattering lead to high thermoelectric performance in p-type PbSe",
+    "year": 2022,
+    "cited": 123,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-31939-4.pdf",
+    "abstract": "Abstract Thermoelectric generators enable the conversion of waste heat to electricity, which is an effective way to alleviate the global energy crisis. However, the inefficiency of thermoelectric materials is the main obstacle for realizing their widespread applications and thus developing materials with high thermoelectric performance is urgent. Here we show that multiple valence bands and strong phonon scattering can be realized simultaneously in p-type PbSe through the incorporation of AgInSe 2 . The multiple valleys enable large weighted mobility, indicating enhanced electrical properties. Abundant nano-scale precipitates and dislocations result in strong phonon scattering and thus ultralow lattice thermal conductivity. Consequently, we achieve an exceptional ZT of ~ 1.9 at 873 K in p-type PbSe. This work demonstrates that a combination of band manipulation and microstructure engineering can be realized by tuning the composition, which is expected to be a general strategy for improving the thermoelectric performance in bulk materials."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"NETZSCH LFA 467\" OR \"NETZSCH LFA\" OR \"NETZSCH LFA 467 HyperFlash\" OR \"NETZSCH LFA 467 HT\") AND OPEN_ACCESS:y",

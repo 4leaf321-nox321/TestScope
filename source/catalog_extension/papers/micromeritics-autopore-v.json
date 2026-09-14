@@ -8,8 +8,758 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Micromeritics AutoPore V\" OR \"Micromeritics AutoPore\"",
-  "count": null,
-  "works": []
+  "count": 1250,
+  "works": [
+   {
+    "id": "https://openalex.org/W2933257952",
+    "doi": "https://doi.org/10.1038/s41467-019-09510-5",
+    "title": "Scalable synthesis of ant-nest-like bulk porous silicon for high-performance lithium-ion battery anodes",
+    "year": 2019,
+    "cited": 788,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-09510-5.pdf",
+    "abstract": "Abstract Although silicon is a promising anode material for lithium-ion batteries, scalable synthesis of silicon anodes with good cyclability and low electrode swelling remains a significant challenge. Herein, we report a scalable top-down technique to produce ant-nest-like porous silicon from magnesium-silicon alloy. The ant-nest-like porous silicon comprising three-dimensional interconnected silicon nanoligaments and bicontinuous nanopores can prevent pulverization and accommodate volume expansion during cycling resulting in negligible particle-level outward expansion. The carbon-coated porous silicon anode delivers a high capacity of 1,271 mAh g−1 at 2,100 mA g−1 with 90% capacity retention after 1,000 cycles and has a low electrode swelling of 17.8% at a high areal capacity of 5.1 mAh cm−2. The full cell with the prelithiated silicon anode and Li(Ni1/3Co1/3Mn1/3)O2 cathode boasts a high energy density of 502 Wh Kg−1 and 84% capacity retention after 400 cycles. This work provides insights into the rational design of alloy anodes for high-energy batteries."
+   },
+   {
+    "id": "https://openalex.org/W3204176861",
+    "doi": "https://doi.org/10.1039/d1ee01723c",
+    "title": "Ultrahigh solar-driven atmospheric water production enabled by scalable rapid-cycling water harvester with vertically aligned nanocomposite sorbent",
+    "year": 2021,
+    "cited": 414,
+    "venue": "Energy & Environmental Science",
+    "topics": [
+     "Solar-Powered Water Purification Methods",
+     "Surface Modification and Superhydrophobicity",
+     "Solar Thermal and Photovoltaic Systems"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2021/ee/d1ee01723c",
+    "abstract": "A rapid-cycling continuous solar-driven atmospheric water harvester, enabled by vertically aligned nanocomposite sorbent, was developed for realizing ultrahigh water production."
+   },
+   {
+    "id": "https://openalex.org/W2085583497",
+    "doi": "https://doi.org/10.1016/j.petrol.2011.12.014",
+    "title": "Tight gas sands permeability estimation from mercury injection capillary pressure and nuclear magnetic resonance data",
+    "year": 2011,
+    "cited": 378,
+    "venue": "Journal of Petroleum Science and Engineering",
+    "topics": [
+     "Hydrocarbon exploration and reservoir analysis",
+     "NMR spectroscopy and applications",
+     "Hydraulic Fracturing and Reservoir Analysis"
+    ],
+    "oa_url": "https://espace.curtin.edu.au/bitstream/20.500.11937/48042/2/186917_186917.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2047688810",
+    "doi": "https://doi.org/10.1038/ncomms4922",
+    "title": "Mesopore quality determines the lifetime of hierarchically structured zeolite catalysts",
+    "year": 2014,
+    "cited": 349,
+    "venue": "Nature Communications",
+    "topics": [
+     "Zeolite Catalysis and Synthesis",
+     "Muon and positron interactions and applications",
+     "Chemical Synthesis and Characterization"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms4922.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2605164388",
+    "doi": "https://doi.org/10.1038/ncomms14921",
+    "title": "Bio-inspired Murray materials for mass transfer and activity",
+    "year": 2017,
+    "cited": 285,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Supercapacitor Materials and Fabrication",
+     "Solar-Powered Water Purification Methods"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14921.pdf",
+    "abstract": "Both plants and animals possess analogous tissues containing hierarchical networks of pores, with pore size ratios that have evolved to maximize mass transport and rates of reactions. The underlying physical principles of this optimized hierarchical design are embodied in Murray's law. However, we are yet to realize the benefit of mimicking nature's Murray networks in synthetic materials due to the challenges in fabricating vascularized structures. Here we emulate optimum natural systems following Murray's law using a bottom-up approach. Such bio-inspired materials, whose pore sizes decrease across multiple scales and finally terminate in size-invariant units like plant stems, leaf veins and vascular and respiratory systems provide hierarchical branching and precise diameter ratios for connecting multi-scale pores from macro to micro levels. Our Murray material mimics enable highly enhanced mass exchange and transfer in liquid-solid, gas-solid and electrochemical reactions and exhibit enhanced performance in photocatalysis, gas sensing and as Li-ion battery electrodes."
+   },
+   {
+    "id": "https://openalex.org/W2554369225",
+    "doi": "https://doi.org/10.1016/j.nanoen.2016.11.016",
+    "title": "Nano-micro-porous skutterudites with 100% enhancement in ZT for high performance thermoelectricity",
+    "year": 2016,
+    "cited": 252,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2211285516304979/pdf",
+    "abstract": "Increasing energy demands require new materials, e.g., thermoelectrics, for efficient energy conversion of fossil fuels. However, their low figure of merit (ZT) limits widespread applications. Nanostructuring has been an effective way of lowering the thermal conductivity. However, grain growth at elevated temperature is still a big concern, for otherwise expected to be long-lasting thermoelectric generators. Here, we report a porous architecture containing nano- to micrometer size irregularly shaped and randomly oriented pores, scattering a wide spectrum of phonons without employing the conventional rattling phenomenon. Lattice thermal conductivity reaches the phonon glass limit. This design yields >100% enhancement in ZT, as compared to the pristine sample. An unprecedented and very promising ZT of 1.6 is obtained for Co23.4Sb69.1Si1.5Te6.0 alloy, by far the highest ZT ever reported for un-filled skutterudites, with further benefits, i.e. rare-earth-free and improved oxidation resistance enabling simple processing."
+   },
+   {
+    "id": "https://openalex.org/W2001719940",
+    "doi": "https://doi.org/10.1021/es301294q",
+    "title": "Potential CO2 Leakage Reduction through Biofilm-Induced Calcium Carbonate Precipitation",
+    "year": 2012,
+    "cited": 242,
+    "venue": "Environmental Science & Technology",
+    "topics": [
+     "Microbial Applications in Construction Materials",
+     "Drilling and Well Engineering",
+     "Grouting, Rheology, and Soil Mechanics"
+    ],
+    "oa_url": "https://scholarworks.montana.edu/bitstreams/78b30daf-e825-4266-92b9-a301c2f996cb/download",
+    "abstract": "Mitigation strategies for sealing high permeability regions in cap rocks, such as fractures or improperly abandoned wells, are important considerations in the long term security of geologically stored carbon dioxide (CO(2)). Sealing technologies using low-viscosity fluids are advantageous in this context since they potentially reduce the necessary injection pressures and increase the radius of influence around injection wells. Using aqueous solutions and suspensions that can effectively promote microbially induced mineral precipitation is one such technology. Here we describe a strategy to homogenously distribute biofilm-induced calcium carbonate (CaCO(3)) precipitates in a 61 cm long sand-filled column and to seal a hydraulically fractured, 74 cm diameter Boyles Sandstone core. Sporosarcina pasteurii biofilms were established and an injection strategy developed to optimize CaCO(3) precipitation induced via microbial urea hydrolysis. Over the duration of the experiments, permeability decreased between 2 and 4 orders of magnitude in sand column and fractured core experiments, respectively. Additionally, after fracture sealing, the sandstone core withstood three times higher well bore pressure than during the initial fracturing event, which occurred prior to biofilm-induced CaCO(3) mineralization. These studies suggest biofilm-induced CaCO(3) precipitation technologies may potentially seal and strengthen fractures to mitigate CO(2) leakage potential."
+   },
+   {
+    "id": "https://openalex.org/W2998266888",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2020.118112",
+    "title": "Optimization and characterization of high-volume limestone powder in sustainable ultra-high performance concrete",
+    "year": 2020,
+    "cited": 222,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Magnesium Oxide Properties and Applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0950061820301173/pdf",
+    "abstract": "This paper aims to optimize high-volume limestone powder in sustainable ultra-high performance concrete (UHPC), and characterize its roles on plasticization effect, hydration kinetics, microstructure and hardened properties. The spread flow, hydration products, compressive strength, porosity and pore structure, shrinkage, embedded CO2 emission and unit cost are investigated with different substitution levels of binders by limestone powder, varying from 0 to 80 vol%. Results show that replacing high volume of binders by limestone powder is an efficient way to develop eco-friendly and low-cost UHPC. Limestone powder shows a positive mineral plasticization effect that should be considered in designing UHPC. The degree of secondary pozzolanic hydration is more intensive than C3S/C2S hydration, which can enhance the later-age strength development potential. An appropriate content of limestone powder can contribute to a higher strength, denser pore structure, diminished total free shrinkage and higher sustainability efficiency. The optimum content of limestone powder appears to be 50 vol% of the total powder content in UHPC."
+   },
+   {
+    "id": "https://openalex.org/W3004986575",
+    "doi": "https://doi.org/10.1002/advs.201902897",
+    "title": "Green Synthesis of Hierarchical Metal–Organic Framework/Wood Functional Composites with Superior Mechanical Properties",
+    "year": 2020,
+    "cited": 204,
+    "venue": "Advanced Science",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Covalent Organic Framework Applications",
+     "Nanomaterials for catalytic reactions"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201902897",
+    "abstract": "Abstract The applicability of advanced composite materials with hierarchical structure that conjugate metal–organic frameworks (MOFs) with macroporous materials is commonly limited by their inferior mechanical properties. Here, a universal green synthesis method for the in situ growth of MOF nanocrystals within wood substrates is introduced. Nucleation sites for different types of MOFs are readily created by a sodium hydroxide treatment, which is demonstrated to be broadly applicable to different wood species. The resulting MOF/wood composite exhibits hierarchical porosity with 130 times larger specific surface area compared to native wood. Assessment of the CO 2 adsorption capacity demonstrates the efficient utilization of the MOF loading along with similar adsorption ability to that of pure MOF. Compression and tensile tests reveal superior mechanical properties, which surpass those obtained for polymer substrates. The functionalization strategy offers a stable, sustainable, and scalable platform for the fabrication of multifunctional MOF/wood‐derived composites with potential applications in environmental‐ and energy‐related fields."
+   },
+   {
+    "id": "https://openalex.org/W4390350696",
+    "doi": "https://doi.org/10.1016/j.joule.2023.12.003",
+    "title": "Fuel cell stack redesign and component integration radically increase power density",
+    "year": 2023,
+    "cited": 186,
+    "venue": "Joule",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "http://www.cell.com/article/S2542435123004956/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4388104167",
+    "doi": "https://doi.org/10.1038/s44221-023-00150-0",
+    "title": "Scalable and efficient solar-driven atmospheric water harvesting enabled by bidirectionally aligned and hierarchically structured nanocomposites",
+    "year": 2023,
+    "cited": 177,
+    "venue": "Nature Water",
+    "topics": [
+     "Solar-Powered Water Purification Methods",
+     "Surface Modification and Superhydrophobicity",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s44221-023-00150-0.pdf",
+    "abstract": "Abstract Extracting water from air is a promising route to address the global challenge of water scarcity. Sorption-based atmospheric water harvesting (SAWH) has the capability of capturing water from air anytime and anywhere. However, low water production is a long-standing challenge for realizing efficient SAWH. Here we report a facile strategy to synthesize bidirectionally aligned and hierarchically structured nanocomposite (BHNC) for scalable and efficient SAWH. Benefiting from the synergetic effects of ordered hierarchical structures for accelerating vertically oriented moisture convection and radially oriented intrapore diffusion, the BHNC exhibits ultrahigh water uptake of 6.61 kg water kg sorbent −1 and ultrafast water sorption kinetics, superior to the state-of-the-art sorbents. We further engineer a scalable and efficient solar-driven SAWH prototype by assembling BHNC arrays, demonstrating rapid-cycling and high-yielding water production up to 2,820 ml water kg sorbent −1 day −1 . This work provides new insights to bridge the gap between materials and devices for scalable, energy efficient and all-weather water harvesting from air powered by solar energy."
+   },
+   {
+    "id": "https://openalex.org/W2014964105",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2008.07.001",
+    "title": "Fly ash addition in clayey materials to improve the quality of solid bricks",
+    "year": 2008,
+    "cited": 163,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Recycling and utilization of industrial and municipal waste in materials production",
+     "Building materials and conservation",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "https://digibug.ugr.es/bitstream/10481/104375/1/Constr%20Build%20Mat%202009.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2946925019",
+    "doi": "https://doi.org/10.1016/j.cemconres.2019.05.011",
+    "title": "Pore size analyses of cement paste exposed to external sulfate attack and delayed ettringite formation",
+    "year": 2019,
+    "cited": 158,
+    "venue": "Cement and Concrete Research",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Building materials and conservation",
+     "Innovative concrete reinforcement materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/am/pii/S0008884619300122?via%3Dihub",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3004686408",
+    "doi": "https://doi.org/10.1002/advs.201902034",
+    "title": "Amorphous Ni–Fe–Mo Suboxides Coupled with Ni Network as Porous Nanoplate Array on Nickel Foam: A Highly Efficient and Durable Bifunctional Electrode for Overall Water Splitting",
+    "year": 2020,
+    "cited": 157,
+    "venue": "Advanced Science",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201902034",
+    "abstract": "Abstract It is a great challenge to fabricate electrode with simultaneous high activity for the hydrogen evolution reaction (HER) and the oxygen evolution reaction (OER). Herein, a high‐performance bifunctional electrode formed by vertically depositing a porous nanoplate array on the surface of nickel foam is provided, where the nanoplate is made up by the interconnection of trinary Ni–Fe–Mo suboxides and Ni nanoparticles. The amorphous Ni–Fe–Mo suboxide and its in situ transformed amorphous Ni–Fe–Mo (oxy)hydroxide acts as the main active species for HER and OER, respectively. The conductive network built by Ni nanoparticles provides rapid electron transfer to active sites. Moreover, the hydrophilic and aerophobic electrode surface together with the hierarchical pore structure facilitate mass transfer. The corresponding water electrolyzer demonstrates low cell voltage (1.50 V @ 10 mA cm−2 and 1.63 V @ 100 mA cm−2) with high durability at 500 mA cm−2 for at least 100 h in 1 m KOH."
+   },
+   {
+    "id": "https://openalex.org/W2008324605",
+    "doi": "https://doi.org/10.1016/j.coldregions.2015.01.008",
+    "title": "Freeze–thaw fracturing in building granites",
+    "year": 2015,
+    "cited": 153,
+    "venue": "Cold Regions Science and Technology",
+    "topics": [
+     "Building materials and conservation",
+     "Climate change and permafrost",
+     "Smart Materials for Construction"
+    ],
+    "oa_url": "https://digital.csic.es/bitstream/10261/118088/1/CRSC_2015.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2742658858",
+    "doi": "https://doi.org/10.1038/s41467-017-00372-3",
+    "title": "Protection and consolidation of stone heritage by self-inoculation with indigenous carbonatogenic bacterial communities",
+    "year": 2017,
+    "cited": 151,
+    "venue": "Nature Communications",
+    "topics": [
+     "Building materials and conservation",
+     "Calcium Carbonate Crystallization and Inhibition",
+     "Microbial Applications in Construction Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-00372-3.pdf",
+    "abstract": "Abstract Enhanced salt weathering resulting from global warming and increasing environmental pollution is endangering the survival of stone monuments and artworks. To mitigate the effects of these deleterious processes, numerous conservation treatments have been applied that, however, show limited efficacy. Here we present a novel, environmentally friendly, bacterial self-inoculation approach for the conservation of stone, based on the isolation of an indigenous community of carbonatogenic bacteria from salt damaged stone, followed by their culture and re-application back onto the same stone. This method results in an effective consolidation and protection due to the formation of an abundant and exceptionally strong hybrid cement consisting of nanostructured bacterial CaCO 3 and bacterially derived organics, and the passivating effect of bacterial exopolymeric substances (EPS) covering the substrate. The fact that the isolated and identified bacterial community is common to many stone artworks may enable worldwide application of this novel conservation methodology."
+   },
+   {
+    "id": "https://openalex.org/W2011826611",
+    "doi": "https://doi.org/10.1088/1748-6041/6/2/025004",
+    "title": "Fabrication of uniaxially aligned 3D electrospun scaffolds for neural regeneration",
+    "year": 2011,
+    "cited": 151,
+    "venue": "Biomedical Materials",
+    "topics": [
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Nerve injury and regeneration",
+     "Tissue Engineering and Regenerative Medicine"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1748-6041/6/2/025004/pdf",
+    "abstract": "Nanofibrous scaffolds are very promising physical guidance substrates for regenerating nerves to traverse larger nerve gaps. In this study, we have attempted to develop 2D random and 3D longitudinally oriented nanofibers of poly(lactide-co-glycolide) (PLGA) by the modified electrospinning process and characterized the surface morphology, mechanical properties, porosity, degradation and wettability. The orientation of aligned fibers was optimized by varying the speed of the rotating mandrel in the electrospinning process. The mean diameter of random PLGA nanofibers was 197 ± 72 nm, whereas that of the aligned PLGA fiber was 187 ± 121 nm. The pore size of aligned PLGA nanofibers (3.5 ± 1.1 µm) was significantly lower than their respective random nanofibers (8.0 ± 2.0 µm) (p < 0.05). However, the percentage porosity of both scaffolds was comparable (p > 0.05). The mass loss percentage and molecular weight loss percentage due to degradation was higher in random PLGA fibers when compared to aligned PLGA after 5 weeks (p < 0.05). The tensile strength and Young's modulus of random PLGA fibers were significantly higher than those of the aligned PLGA nanofibers (p < 0.05). Both random and longitudinally aligned scaffolds were used for the in vitro culture of Schwann cells. Morphology and cell proliferation results demonstrated that the aligned fibers assist the direction of Schwann cells and a better proliferation rate than their random fibers. The results confirmed that aligned nanofibers have better deformability, slow degradation, comparable porosity and orientation cues than random nanofibers. Hence the longitudinally aligned nanofibers may be ideal scaffolds for nerve regeneration."
+   },
+   {
+    "id": "https://openalex.org/W2567083946",
+    "doi": "https://doi.org/10.1371/journal.pone.0168422",
+    "title": "Natural Cellulose Nanofibers As Sustainable Enhancers in Construction Cement",
+    "year": 2016,
+    "cited": 150,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Natural Fiber Reinforced Composites",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0168422&type=printable",
+    "abstract": "Cement is one of the mostly used construction materials due to its high durability and low cost, but it suffers from brittle fracture and facile crack initiation. This article describes the use of naturally-derived renewable cellulose nanofibers (CNFs) to reinforce cement. The effects of CNFs on the mechanical properties, degree of hydration (DOH), and microstructure of cement pastes have been studied. It is found that an addition of 0.15% by weight of CNFs leads to a 15% and 20% increase in the flexural and compressive strengths of cement paste. The enhancement in mechanical strength is attributed to high DOH and dense microstructure of cement pastes after adding CNFs."
+   },
+   {
+    "id": "https://openalex.org/W2784237600",
+    "doi": "https://doi.org/10.1016/j.ijpharm.2018.01.017",
+    "title": "Characterisation of pore structures of pharmaceutical tablets: A review",
+    "year": 2018,
+    "cited": 149,
+    "venue": "International Journal of Pharmaceutics",
+    "topics": [
+     "Drug Solubulity and Delivery Systems",
+     "Innovative Microfluidic and Catalytic Techniques Innovation",
+     "Protein purification and stability"
+    ],
+    "oa_url": "https://erepo.uef.fi/handle/123456789/6321",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2149934417",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2013.12.078",
+    "title": "New natural hydraulic lime mortars – Physical and microstructural properties in different curing conditions",
+    "year": 2014,
+    "cited": 148,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Building materials and conservation",
+     "Concrete and Cement Materials Research",
+     "Hygrothermal properties of building materials"
+    ],
+    "oa_url": "https://run.unl.pt/bitstream/10362/11253/3/New%20natural%20hydraulic%20lime%20mortars_J.Grilo%20et%20al_accepted_20140315.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3120472972",
+    "doi": "https://doi.org/10.1038/s41467-020-20297-8",
+    "title": "A cooperative biphasic MoOx–MoPx promoter enables a fast-charging lithium-ion battery",
+    "year": 2021,
+    "cited": 147,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-20297-8.pdf",
+    "abstract": "Abstract The realisation of fast-charging lithium-ion batteries with long cycle lifetimes is hindered by the uncontrollable plating of metallic Li on the graphite anode during high-rate charging. Here we report that surface engineering of graphite with a cooperative biphasic MoOx–MoPx promoter improves the charging rate and suppresses Li plating without compromising energy density. We design and synthesise MoOx–MoPx/graphite via controllable and scalable surface engineering, i.e., the deposition of a MoOx nanolayer on the graphite surface, followed by vapour-induced partial phase transformation of MoOx to MoPx. A variety of analytical studies combined with thermodynamic calculations demonstrate that MoOx effectively mitigates the formation of resistive films on the graphite surface, while MoPx hosts Li+ at relatively high potentials via a fast intercalation reaction and plays a dominant role in lowering the Li+ adsorption energy. The MoOx–MoPx/graphite anode exhibits a fast-charging capability (<10 min charging for 80% of the capacity) and stable cycling performance without any signs of Li plating over 300 cycles when coupled with a LiNi0.6Co0.2Mn0.2O2 cathode. Thus, the developed approach paves the way to the design of advanced anode materials for fast-charging Li-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W1977068534",
+    "doi": "https://doi.org/10.3389/fenrg.2014.00056",
+    "title": "Effect of Calendering on Electrode Wettability in Lithium-Ion Batteries",
+    "year": 2014,
+    "cited": 142,
+    "venue": "Frontiers in Energy Research",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.frontiersin.org/articles/10.3389/fenrg.2014.00056/pdf",
+    "abstract": "Controlling the wettability between the porous electrode and the electrolyte in lithium ion batteries can improve both the manufacturing process and the electrochemical performance of the cell. The wetting rate, which is the electrolyte transport rate in the porous electrode, can be quantified using the wetting balance. The effect of the calendering process on the wettability of anode electrodes was investigated. A graphite anode film with an as-coated thickness of 59 μm was used as baseline electrode film and was calendered to produce films with thickness ranging from 55 to 41 µm. Results show that wettability is improved by light calendering from an initial thickness of 59 μm to a calendered thickness of 53 μm where the wetting rate increased from 0.375 to 0.589 mm/s0.5. Further calendering below 53 µm resulted in a decrease in wetting rates to a minimum observed value of 0.206 mm/s0.5 at a calendered thickness of 41 μm. Under the same electrolyte, wettability of the electrode is controlled to a great extent by the pore structure in the electrode film which includes parameters such as porosity, pore size distribution, pore geometry and topology. Relations between the wetting behavior and the pore structure as characterized by mercury intrusion and electron microscopy exist and can be used to manipulate the wetting behavior of electrodes."
+   },
+   {
+    "id": "https://openalex.org/W3201959591",
+    "doi": "https://doi.org/10.1016/j.cemconcomp.2021.104277",
+    "title": "Development of high performance lightweight concrete using ultra high performance cementitious composite and different lightweight aggregates",
+    "year": 2021,
+    "cited": 130,
+    "venue": "Cement and Concrete Composites",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Concrete Properties and Behavior"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/97352/1/Lu_Development_High_Performance.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2752024523",
+    "doi": "https://doi.org/10.1016/j.matdes.2017.09.016",
+    "title": "Using glass powder to improve the durability of architectural mortar prepared with glass aggregates",
+    "year": 2017,
+    "cited": 130,
+    "venue": "Materials & Design",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Concrete Properties and Behavior"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127517308511-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2769804446",
+    "doi": "https://doi.org/10.1016/j.jclepro.2017.11.170",
+    "title": "Earth-based mortars for repair and protection of rammed earth walls. Stabilization with mineral binders and fibers",
+    "year": 2017,
+    "cited": 127,
+    "venue": "Journal of Cleaner Production",
+    "topics": [
+     "Hygrothermal properties of building materials",
+     "Masonry and Concrete Structural Analysis",
+     "Urban Heat Island Mitigation"
+    ],
+    "oa_url": "http://hdl.handle.net/10362/32933",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3159201528",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2021.123441",
+    "title": "Investigation on the effect of entrained air on pore structure in hardened concrete using MIP",
+    "year": 2021,
+    "cited": 123,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Concrete Properties and Behavior",
+     "Building materials and conservation"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0950061821012010/pdf",
+    "abstract": "The influences of entrained air on the pore size distribution and pore parameters of hardened mortar and concrete were investigated by MIP. It was found that the dosage of AEA does not affect the critical diameter for mortar or concrete. For air-entrained mortar with w/c of 0.38, the absence of superplasticizer leads to the critical diameter and threshold diameter shifting significantly to larger pores; and the AEA combined with SP can enhance the ink-bottle effect. As for air-entrained concrete, it is evident that the ITZ peak goes higher and shifts to coarser pores as the entrained air content increases; the ITZ fraction is most highly correlated with the air content (with R-square of 0.9385); also, it was indicated that more entrained air voids in concrete led to a high ITZ fraction. Therefore, together with larger ITZ pores (dc-ITZ), it promotes the ITZ percolation."
+   },
+   {
+    "id": "https://openalex.org/W2968123254",
+    "doi": "https://doi.org/10.1038/s41467-019-11565-3",
+    "title": "Towards general network architecture design criteria for negative gas adsorption transitions in ultraporous frameworks",
+    "year": 2019,
+    "cited": 123,
+    "venue": "Nature Communications",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Phase Equilibria and Thermodynamics",
+     "Hydrocarbon exploration and reservoir analysis"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-11565-3.pdf",
+    "abstract": "Abstract Switchable metal-organic frameworks (MOFs) have been proposed for various energy-related storage and separation applications, but the mechanistic understanding of adsorption-induced switching transitions is still at an early stage. Here we report critical design criteria for negative gas adsorption (NGA), a counterintuitive feature of pressure amplifying materials, hitherto uniquely observed in a highly porous framework compound (DUT-49). These criteria are derived by analysing the physical effects of micromechanics, pore size, interpenetration, adsorption enthalpies, and the pore filling mechanism using advanced in situ X-ray and neutron diffraction, NMR spectroscopy, and calorimetric techniques parallelised to adsorption for a series of six isoreticular networks. Aided by computational modelling, we identify DUT-50 as a new pressure amplifying material featuring distinct NGA transitions upon methane and argon adsorption. In situ neutron diffraction analysis of the methane (CD 4 ) adsorption sites at 111 K supported by grand canonical Monte Carlo simulations reveals a sudden population of the largest mesopore to be the critical filling step initiating structural contraction and NGA. In contrast, interpenetration leads to framework stiffening and specific pore volume reduction, both factors effectively suppressing NGA transitions."
+   },
+   {
+    "id": "https://openalex.org/W2575530866",
+    "doi": "https://doi.org/10.1039/c6ra26831e",
+    "title": "Superhydrophobic silica aerogels reinforced with polyacrylonitrile fibers for adsorbing oil from water and oil mixtures",
+    "year": 2017,
+    "cited": 123,
+    "venue": "RSC Advances",
+    "topics": [
+     "Aerogels and thermal insulation",
+     "Surface Modification and Superhydrophobicity",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/ra/c6ra26831e",
+    "abstract": "Aerogels are modified by a simple method of hydrophobicity and mechanical properties simultaneously."
+   },
+   {
+    "id": "https://openalex.org/W4400807845",
+    "doi": "https://doi.org/10.1038/s41467-024-50396-9",
+    "title": "Radiative cooling assisted self-sustaining and highly efficient moisture energy harvesting",
+    "year": 2024,
+    "cited": 122,
+    "venue": "Nature Communications",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "Solar-Powered Water Purification Methods",
+     "Innovative Energy Harvesting Technologies"
+    ],
+    "oa_url": "https://doi.org/10.1038/s41467-024-50396-9",
+    "abstract": "Abstract Harvesting electricity from ubiquitous water vapor represents a promising route to alleviate the energy crisis. However, existing studies rarely comprehensively consider the impact of natural environmental fluctuations on electrical output. Here, we demonstrate a bilayer polymer enabling self-sustaining and highly efficient moisture-electric generation from the hydrological cycle by establishing a stable internal directed water/ion flow through thermal exchange with the ambient environment. Specifically, the radiative cooling effect of the hydrophobic top layer prevents the excessive daytime evaporation from solar absorption while accelerating nighttime moisture sorption. The introduction of LiCl into the bottom hygroscopic ionic hydrogel enhances moisture sorption capacity and facilitates ion transport, thus ensuring efficient energy conversion. A single device unit (1 cm 2 ) can continuously generate a voltage of ~0.88 V and a current of ~306 μA, delivering a maximum power density of ~51 μW cm −2 at 25 °C and 70% relative humidity (RH). The device has been demonstrated to operate steadily outdoors for continuous 6 days."
+   },
+   {
+    "id": "https://openalex.org/W2946125812",
+    "doi": "https://doi.org/10.1016/j.chemosphere.2019.05.168",
+    "title": "Combining phytoextraction by Brassica napus and biochar amendment for the remediation of a mining soil in Riotinto (Spain)",
+    "year": 2019,
+    "cited": 122,
+    "venue": "Chemosphere",
+    "topics": [
+     "Heavy metals in environment",
+     "Clay minerals and soil interactions",
+     "Coal and Its By-products"
+    ],
+    "oa_url": "https://oa.upm.es/67959/1/INVE_MEM_2019_303159.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1502943355",
+    "doi": "https://doi.org/10.1016/j.micromeso.2015.05.014",
+    "title": "Manufacturing of metal-organic framework monoliths and their application in CO 2 adsorption",
+    "year": 2015,
+    "cited": 121,
+    "venue": "Microporous and Mesoporous Materials",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Covalent Organic Framework Applications",
+     "Membrane Separation and Gas Transport"
+    ],
+    "oa_url": "https://purehost.bath.ac.uk/ws/files/129928450/Manuscript_for_Microporous_Mesoporous_Materials_Manufacturing_of_metal_organic_framework_monoliths_and_their_application_in_CO2_adsorption_Draft.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3027817579",
+    "doi": "https://doi.org/10.1016/j.resconrec.2020.104883",
+    "title": "Recycling and utilization of high volume converter steel slag into CO2 activated mortars – The role of slag particle size",
+    "year": 2020,
+    "cited": 120,
+    "venue": "Resources Conservation and Recycling",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "CO2 Sequestration and Geologic Interactions",
+     "Magnesium Oxide Properties and Applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921344920302019",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2091816032",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2013.06.016",
+    "title": "Research on the microstructure formation of polyacrylate latex modified mortars",
+    "year": 2013,
+    "cited": 116,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Concrete Properties and Behavior"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0950061813005345/pdf",
+    "abstract": "The microstructure forming process of polyacrylate (PA) latex modified cement-based materials was investigated from mixing to hardening. Owing to the chemical reaction between PA particles and calcium ions in the pore solution, PA polymer will not uniformly disperse in cement mortar due to its adsorption on cement particles or hydrates. As a result, PA polymer should exist in cement mortars through different morphologies. The early age mechanical properties of PA modified mortars are lower than those of unmodified mortars, while a rapid progress of the compressive strength and fracture energy can be recognized from the PA modified mortars. It was found that PA polymer addition will refine the small pores but induce big pores to cement mortar. SEM and EDX analysis proves that PA polymer is localized at some places within PA modified mortar which can be named as the localization of polymer modification. The physical and chemical influence of PA polymer on cement-based materials was integrated into an improved model."
+   },
+   {
+    "id": "https://openalex.org/W2771739167",
+    "doi": "https://doi.org/10.1039/c7ra11764g",
+    "title": "Shaping of porous metal–organic framework granules using mesoporous ρ-alumina as a binder",
+    "year": 2017,
+    "cited": 113,
+    "venue": "RSC Advances",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Magnetism in coordination complexes",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/ra/c7ra11764g",
+    "abstract": "We present facile route for the shaping of MOFs (MIL-100(Fe), MIL-101(Cr), UiO-66(Zr), and UiO-66(Zr)_NH 2 ) using mesoporous ρ-alumina (MRA) as a binder."
+   },
+   {
+    "id": "https://openalex.org/W3167394600",
+    "doi": "https://doi.org/10.1016/j.cemconres.2021.106499",
+    "title": "Influence of curing temperature on belite cement hydration: A comparative study with Portland cement",
+    "year": 2021,
+    "cited": 112,
+    "venue": "Cement and Concrete Research",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Building materials and conservation",
+     "Magnesium Oxide Properties and Applications"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.cemconres.2021.106499",
+    "abstract": "Belite cements (BCs) could be a more sustainable binder than Portland cements (PCs) but adequate knowledge of the hydration features has still to be built. In particular, the mild curing hydration temperature effects have been extensively studied for PCs but not for BCs. This research was triggered by a previous work reporting improved mechanical strengths of BCs at higher curing temperatures. Here, we report the hydration characteristics of a BC at 20, 40 and 60 °C and compared to those of a typical PC. We have corroborated previous findings and used a multi-technique approach including Rietveld phase analysis, thermal analysis, calorimetry , silicon MAS-NMR, mercury intrusion porosimetry and chiefly synchrotron X-ray microtomography, to thoroughly understand the different behavior. In a nutshell, the improved mechanical performances at mild curing temperatures for BCs are mainly due to a much larger belite degree of reaction, with lower porosity coarsening of belite cements also playing a role."
+   },
+   {
+    "id": "https://openalex.org/W2547085625",
+    "doi": "https://doi.org/10.1016/j.apcatb.2016.10.081",
+    "title": "Activity and durability of Pt-Ni nanocage electocatalysts in proton exchange membrane fuel cells",
+    "year": 2016,
+    "cited": 111,
+    "venue": "Applied Catalysis B: Environmental",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1533527",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1781570046",
+    "doi": "https://doi.org/10.1039/c5sc02794b",
+    "title": "Mechanical energy storage performance of an aluminum fumarate metal–organic framework",
+    "year": 2015,
+    "cited": 111,
+    "venue": "Chemical Science",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Phase Change Materials Research",
+     "Hydrogen Storage and Materials"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2016/sc/c5sc02794b",
+    "abstract": "The aluminum fumarate MOF A520 or MIL-53-FA is revealed to be a promising material for mechanical energy-related applications with performances in terms of work and heat energies which surpass those of any porous solids reported so far. Complementary experimental and computational tools are deployed to finely characterize and understand the pressure-induced structural transition at the origin of these unprecedented levels of performance."
+   },
+   {
+    "id": "https://openalex.org/W3125934115",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2020.229361",
+    "title": "Understanding the calendering processability of Li(Ni0.33Mn0.33Co0.33)O2-based cathodes",
+    "year": 2021,
+    "cited": 109,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Electrodeposition and Electroless Coatings"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0378775320316487?via%3Dihub",
+    "abstract": "The calendering process aims at enhancing the electrode energy density, and improving the electronic conductivity, and determines the final porous electrode micro/mesostructure. In this sense, one of the main parameters of interest is its impact in the electrode porosity (ε) and the electrochemical performance. Here, we present a systematic study of the calendering conditions (applied calender pressure and roll temperature) effect on the final NMC-based electrodes ε in terms of the active material/carbon additive/binder composition and the amount of solvent used during the preparation of the slurries. The calendering processability was assessed through the cathodes compressibility resistance and minimal attainable ε, the electrode mechanical properties (hardness and elastic deformability), the pore size distribution, the electrode film mesostructure and the C-rate cathode electrochemical performance. Based on our results, it was found that the distribution and organization of the inactive carbon black (CB)/PVdF phase and the electrode mesostructure are the key parameters that control the cathode processability through calendering. Electrodes with high CB/PVdF content and prepared with higher amounts of solvent in the slurry ensure a good electronic conductivity and a film-like structure of the electronic conducting phase around the NMC particles which upon calendering outputs a better electrochemical performance."
+   },
+   {
+    "id": "https://openalex.org/W2052702213",
+    "doi": "https://doi.org/10.1016/j.apcatb.2014.09.079",
+    "title": "TiO2 and TiO2–SiO2 coated cement: Comparison of mechanic and photocatalytic properties",
+    "year": 2014,
+    "cited": 109,
+    "venue": "Applied Catalysis B: Environmental",
+    "topics": [
+     "TiO2 Photocatalysis and Solar Cells",
+     "Advanced Photocatalysis Techniques",
+     "Building materials and conservation"
+    ],
+    "oa_url": "https://orbi.uliege.be/bitstream/2268/204167/1/App%20Cat%20B.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3179479895",
+    "doi": "https://doi.org/10.1016/j.cemconcomp.2021.104165",
+    "title": "Early-age and microstructural properties of glass powder blended cement paste: Improvement by seawater",
+    "year": 2021,
+    "cited": 108,
+    "venue": "Cement and Concrete Composites",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Concrete Properties and Behavior"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/97374/1/Lu_Early-Age_And_Microstructural.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2954089229",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2019.06.231",
+    "title": "Co-utilization of waste glass cullet and glass powder in precast concrete products",
+    "year": 2019,
+    "cited": 104,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Recycled Aggregate Concrete Performance",
+     "Innovative concrete reinforcement materials",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/101140/1/Lu_Co-Utilization_Waste_Glass.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3099062827",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2020.121447",
+    "title": "Synergy between crystalline admixtures and nano-constituents in enhancing autogenous healing capacity of cementitious composites under cracking and healing cycles in aggressive waters",
+    "year": 2020,
+    "cited": 103,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Microbial Applications in Construction Materials",
+     "Innovative concrete reinforcement materials",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0950061820334516/pdf",
+    "abstract": "More than one century after its massive introduction in the building industry, concrete is still the most popular building material. Nevertheless, several critical infrastructures show severe signs of distress. This fact fostered, in recent years, the need of rethinking the design process of concrete structures, in view of reducing maintenance costs and extending their service life. This work has been performed in the framework of the H2020 project ReSHEALience (GA760824). The main idea behind the project is that the long-term behaviour of structures under extremely aggressive exposure conditions can highly benefit from the use of high performance materials, in the framework of durability-based design approaches. The project will tailor the composition of Ultra High Durability Concrete (UHDC), by upgrading the High-Performance Cementitious Composite/High-Performance Fibre Reinforced Cementitious Composite (HPCC/HPFRCC) concept through the incorporation of tailored nanoscale constituents focusing, among the others, on stimulating the autogenous self-healing capacity. This work shows the effectiveness of the aforementioned concept achieved through the incorporation in a reference HPFRCC of three types of nano-constituents: alumina nanofibers (0.25% by weight of cement), cellulose nanocrystals (0.15% by weight of cement) and cellulose nano-fibrils (0.15% by weight of cement). The influence of the nano-constituents has been analysed in terms of mechanical properties, such as flexural and compressive strength and on shrinkage and durability properties, analysed by means of sorptivity tests on un-cracked, cracked and self-healed specimens with reference to selected aggressive exposure scenarios representative of intended engineering applications of the investigated materials."
+   },
+   {
+    "id": "https://openalex.org/W2972784455",
+    "doi": "https://doi.org/10.1016/j.cemconres.2019.105858",
+    "title": "Conceptual design and performance evaluation of two-stage ultra-low binder ultra-high performance concrete",
+    "year": 2019,
+    "cited": 100,
+    "venue": "Cement and Concrete Research",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Magnesium Oxide Properties and Applications"
+    ],
+    "oa_url": "https://research.tue.nl/en/publications/78fc6ad7-c0af-444c-9405-6cc06e45c9f7",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2767364499",
+    "doi": "https://doi.org/10.1016/j.actbio.2017.11.009",
+    "title": "Multifunctional pH sensitive 3D scaffolds for treatment and prevention of bone infection",
+    "year": 2017,
+    "cited": 100,
+    "venue": "Acta Biomaterialia",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Calcium Carbonate Crystallization and Inhibition",
+     "Orthopedic Infections and Treatments"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1742706117306955-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2918984864",
+    "doi": "https://doi.org/10.1016/j.matdes.2019.107683",
+    "title": "Additive manufacturing of magnesium–zinc–zirconium (ZK) alloys via capillary-mediated binderless three-dimensional printing",
+    "year": 2019,
+    "cited": 99,
+    "venue": "Materials & Design",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127519301200/pdf",
+    "abstract": "Several challenges are involved in employing fusion-based additive manufacturing (AM) technologies for magnesium (Mg) alloys. In this study, a novel 3D printing (3DP) technique was used to additively manufacture a green component made of Mg-5.9Zn-0.13Zr powder at ambient temperature that can be densified during subsequent liquid phase sintering, obtaining a functional part with zero process contaminants. Density measurement, microstructural, and mechanical investigations of the green components sintered for 5 h at different temperatures ranging from 535 °C to 610 °C indicated an improvement in properties with an increase in sintering temperature. Swelling during sintering was observed at temperatures ≥ 580 °C. Sintering at 573 °C with an extended holding time up to 60 h resulted in comparable density, compressive properties, and elastic modulus similar to that of human cortical bone. Furthermore, mercury porosimetry analysis revealed that additively manufactured Mg components could provide pores characteristics matching with those found in human bone."
+   },
+   {
+    "id": "https://openalex.org/W2762211238",
+    "doi": "https://doi.org/10.1038/s41467-017-00789-w",
+    "title": "A three-dimensional view of structural changes caused by deactivation of fluid catalytic cracking catalysts",
+    "year": 2017,
+    "cited": 98,
+    "venue": "Nature Communications",
+    "topics": [
+     "Hydrocarbon exploration and reservoir analysis",
+     "Seismic Imaging and Inversion Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-00789-w.pdf",
+    "abstract": "Since its commercial introduction three-quarters of a century ago, fluid catalytic cracking has been one of the most important conversion processes in the petroleum industry. In this process, porous composites composed of zeolite and clay crack the heavy fractions in crude oil into transportation fuel and petrochemical feedstocks. Yet, over time the catalytic activity of these composite particles decreases. Here, we report on ptychographic tomography, diffraction, and fluorescence tomography, as well as electron microscopy measurements, which elucidate the structural changes that lead to catalyst deactivation. In combination, these measurements reveal zeolite amorphization and distinct structural changes on the particle exterior as the driving forces behind catalyst deactivation. Amorphization of zeolites, in particular, close to the particle exterior, results in a reduction of catalytic capacity. A concretion of the outermost particle layer into a dense amorphous silica-alumina shell further reduces the mass transport to the active sites within the composite.Catalyst deactivation in fluid catalytic cracking processes is unavoidably associated with structural changes. Here, the authors visualize the deactivation of zeolite catalysts by ptychography and other imaging techniques, showing pronounced amorphization of the outer layer of the catalyst particles."
+   },
+   {
+    "id": "https://openalex.org/W2141681140",
+    "doi": "https://doi.org/10.1002/anie.201410016",
+    "title": "Impact of Pore Connectivity on the Design of Long‐Lived Zeolite Catalysts",
+    "year": 2014,
+    "cited": 97,
+    "venue": "Angewandte Chemie International Edition",
+    "topics": [
+     "Zeolite Catalysis and Synthesis",
+     "Muon and positron interactions and applications",
+     "Ammonia Synthesis and Nitrogen Reduction"
+    ],
+    "oa_url": "https://www.research-collection.ethz.ch/bitstream/20.500.11850/215438/1/eth-50011-01.pdf",
+    "abstract": "Without techniques sensitive to complex pore architectures, synthetic efforts to enhance molecular transport in zeolite and other porous materials through hierarchical structuring lack descriptors for their rational design. The power of positron annihilation lifetime spectroscopy (PALS) to characterize the pore connectivity in hierarchical MFI zeolites is demonstrated, establishing a direct link with the enhanced catalyst lifetime in the conversion of methanol to valuable hydrocarbons. The unique ability to capture subtleties of the hierarchical structure originates from the dynamic nature of the ortho-positronium response to the pore network. The findings reveal the strong dependence on the way in which the hierarchical zeolites are manufactured, having direct implications for the practical realization of these advanced catalysts."
+   },
+   {
+    "id": "https://openalex.org/W2770777449",
+    "doi": "https://doi.org/10.1186/s40517-017-0085-9",
+    "title": "Microstructural and petrophysical properties of the Permo-Triassic sandstones (Buntsandstein) from the Soultz-sous-Forêts geothermal site (France)",
+    "year": 2017,
+    "cited": 96,
+    "venue": "Geothermal Energy",
+    "topics": [
+     "Hydrocarbon exploration and reservoir analysis",
+     "Geological and Geochemical Analysis",
+     "CO2 Sequestration and Geologic Interactions"
+    ],
+    "oa_url": "https://geothermal-energy-journal.springeropen.com/track/pdf/10.1186/s40517-017-0085-9",
+    "abstract": "Geothermal projects in the Upper Rhine Graben aim to harness thermal anomalies that have arisen due to hydrothermal circulation within the granitic basement and the overlying Permo-Triassic sedimentary units. We present here a systematic microstructural, mineralogical, and petrophysical characterisation of the lowermost unit of this Permo-Triassic sedimentary succession—the Buntsandstein—sampled from exploration well EPS-1 at the Soultz-sous-Forêts geothermal site (France). Twelve depths were sampled (from 1008 to 1414 m) and cylindrical cores were prepared perpendicular and parallel to bedding. These cores were described in terms of their microstructure, grain size and shape, specific surface area, pore size and pore throat size distribution, mineral content, porosity, P -wave velocity, and permeability. The Buntsandstein sandstones are predominantly feldspathic sandstones, often characterised by pores filled or partially filled (with clays (R3 illite–smectite), dolomite, siderite, and barite) as a consequence of diagenesis, tectonics, and the circulation of hydrothermal fluids. The porosity, dry P -wave velocity, and permeability of these sandstones vary from ~ 0.03 to 0.2, ~ 2.5 to 4.5 km s −1 , and ~ 10 −18 to 10 −13 m 2 , respectively. Our data show that P -wave velocity decreases and permeability increases as porosity increases. P -wave velocities are significantly higher when measured parallel to bedding (by about 10 to 25%), and that saturation with water increases P -wave velocity (by about 5 to 50%, depending on sample orientation). The pervasive pore-filling precipitation has significantly reduced the permeabilities of the Buntsandstein sandstones, which are orders of magnitude less permeable than similarly porous unaltered sandstone. We also find that their permeability can be up to an order of magnitude more permeable when measured parallel to bedding than perpendicular to bedding. Although Buntsandstein units with low matrix permeabilities (as low as ~ 10 −18 m 2 ) require macroscopic fractures to attain the high permeability required to sustain regional hydrothermal circulation, matrix permeability is important for units with low fracture densities and high matrix permeabilities. We anticipate that these data will aid future fluid flow modelling and seismic investigations at geothermal sites within the Upper Rhine Graben."
+   },
+   {
+    "id": "https://openalex.org/W2280227549",
+    "doi": "https://doi.org/10.1038/srep21401",
+    "title": "High-internal-phase emulsions stabilized by metal-organic frameworks and derivation of ultralight metal-organic aerogels",
+    "year": 2016,
+    "cited": 96,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Pickering emulsions and particle stabilization",
+     "Covalent Organic Framework Applications",
+     "Enhanced Oil Recovery Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep21401.pdf",
+    "abstract": "To design high-internal-phase emulsion (HIPE) systems is of great interest from the viewpoints of both fundamental researches and practical applications. Here we demonstrate for the first time the utilization of metal-organic framework (MOF) for HIPE formation. By stirring the mixture of water, oil and MOF at room temperature, the HIPE stabilized by the assembly of MOF nanocrystals at oil-water interface could be formed. The MOF-stabilized HIPE provides a novel route to produce highly porous metal-organic aerogel (MOA) monolith. After removing the liquids from the MOF-stabilized HIPE, the ultralight MOA with density as low as 0.01 g·cm(-3) was obtained. The HIPE approach for MOA formation has unique advantages and is versatile in producing different kinds of ultralight MOAs with tunable porosities and structures."
+   },
+   {
+    "id": "https://openalex.org/W1876121668",
+    "doi": "https://doi.org/10.1061/(asce)mt.1943-5533.0001363",
+    "title": "Experimental Characterization of an Earth Eco-Efficient Plastering Mortar",
+    "year": 2015,
+    "cited": 96,
+    "venue": "Journal of Materials in Civil Engineering",
+    "topics": [
+     "Hygrothermal properties of building materials",
+     "Building materials and conservation",
+     "Masonry and Concrete Structural Analysis"
+    ],
+    "oa_url": "https://run.unl.pt/bitstream/10362/15426/1/RI%20-%20Santos%20Faria%20Aubert_earth%20mortar%20testing_JMCE%202015_manuscript.pdf",
+    "abstract": "Earthen plastering mortars are becoming recognized as highly eco-efficient. The assessment of their technical properties needs to be standardized, but only a German standard exists for the moment. An extended experimental campaign was developed in order to assess multiple properties of a ready-mixed earth plastering mortar and also to increase scientific knowledge of the influence of test procedures on those properties. The experimental campaign showed that some aspects related to the equipment, type of samples, and sample preparation can be very important; although others seemed to have less influence on the results and the classification of mortars. It also showed that some complementary tests can easily be performed and considered together with the standardized ones, whereas others may need to be improved. The plaster satisfied the requirements of the existing German standard but, most importantly, it seemed adequate for application as rehabilitation plaster on historic and modern masonry buildings. Apart from their aesthetic aspect, the contribution of earthen plasters to eco-efficiency and, particularly, to hygrometric indoor comfort should be highlighted."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Micromeritics AutoPore V\" OR \"Micromeritics AutoPore\") AND OPEN_ACCESS:y",

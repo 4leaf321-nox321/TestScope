@@ -7,8 +7,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Malvern Panalytical Zetasizer\"",
-  "count": null,
-  "works": []
+  "count": 477,
+  "works": [
+   {
+    "id": "https://openalex.org/W4283266810",
+    "doi": "https://doi.org/10.1038/s41467-022-31161-2",
+    "title": "Trapping and detecting nanoplastics by MXene-derived oxide microrobots",
+    "year": 2022,
+    "cited": 251,
+    "venue": "Nature Communications",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Micro and Nano Robotics",
+     "Modular Robots and Swarm Intelligence"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-31161-2.pdf",
+    "abstract": "Abstract Nanoplastic pollution, the final product of plastic waste fragmentation in the environment, represents an increasing concern for the scientific community due to the easier diffusion and higher hazard associated with their small sizes. Therefore, there is a pressing demand for effective strategies to quantify and remove nanoplastics in wastewater. This work presents the “on-the-fly” capture of nanoplastics in the three-dimensional (3D) space by multifunctional MXene-derived oxide microrobots and their further detection. A thermal annealing process is used to convert Ti 3 C 2 T x MXene into photocatalytic multi-layered TiO 2 , followed by the deposition of a Pt layer and the decoration with magnetic γ-Fe 2 O 3 nanoparticles. The MXene-derived γ-Fe 2 O 3 /Pt/TiO 2 microrobots show negative photogravitaxis, resulting in a powerful fuel-free motion with six degrees of freedom under light irradiation. Owing to the unique combination of self-propulsion and programmable Zeta potential, the microrobots can quickly attract and trap nanoplastics on their surface, including the slits between multi-layer stacks, allowing their magnetic collection. Utilized as self-motile preconcentration platforms, they enable nanoplastics’ electrochemical detection using low-cost and portable electrodes. This proof-of-concept study paves the way toward the “on-site” screening of nanoplastics in water and its successive remediation."
+   },
+   {
+    "id": "https://openalex.org/W4378906478",
+    "doi": "https://doi.org/10.1186/s42825-023-00123-9",
+    "title": "Robust conductive skin hydrogel e-skin constructed by top–down strategy for motion-monitoring",
+    "year": 2023,
+    "cited": 193,
+    "venue": "Collagen and Leather",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Collagen: Extraction and Characterization"
+    ],
+    "oa_url": "https://jlse.springeropen.com/counter/pdf/10.1186/s42825-023-00123-9",
+    "abstract": "Abstract The construction of biomass-based conductive hydrogel e-skins with high mechanical properties is the research hotspot and difficulty in the field of biomass materials. Traditional collagen-based conductive hydrogels, constructed by the typical “bottom–up” strategy, normally have the incompatible problem between high mechanical property and high collagen content, and the extraction of collagen is often necessary. To solve these problems, inspired by the high mechanical properties and high collagen content of animal skins, this work proposed a “top–down” construction strategy, in which the extraction of collagen was unnecessary and the skin collagen skeleton (SCS) with the 3D network structure woven by natural collagen fibers in goatskin was preserved and used as the basic framework of hydrogel. Following a four-step route, namely, pretreatment → soaking in AgNPs (silver nanoparticles) solution → soaking in the mixed solution containing HEA (2-hydroxyethyl methacrylate) and AlCl 3 → polymerization, this work successfully achieved the fabrication of a new skin-based conductive hydrogel e-skin with high mechanical properties (tensile strength of 2.97 MPa, toughness of 6.23 MJ·m −3 and breaking elongation of 428%) by using goatskin as raw material. The developed skin hydrogel (called PH@Ag) possessed a unique structure with the collagen fibers encapsulated by PHEA, and exhibited satisfactory adhesion, considerable antibacterial property, cytocompatibility, conductivity (3.06 S·m −1 ) and sensing sensitivity (the maximum gauge factor of 5.51). The PH@Ag e-skin could serve as strain sensors to accurately monitor and recognize all kinds of human motions such as swallowing, frowning, walking, and so on, and thus is anticipated to have considerable application prospect in many fields including flexible wearable electronic devices, health and motion monitoring. Graphical abstract"
+   },
+   {
+    "id": "https://openalex.org/W3044623545",
+    "doi": "https://doi.org/10.1016/j.enceco.2020.07.005",
+    "title": "Adsorption of malachite green dye from aqueous solutions using mesoporous chitosan–zinc oxide composite material",
+    "year": 2020,
+    "cited": 183,
+    "venue": "Environmental Chemistry and Ecotoxicology",
+    "topics": [
+     "Adsorption and biosorption for pollutant removal",
+     "Nanomaterials for catalytic reactions",
+     "Membrane Separation Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2590182620300163/pdf",
+    "abstract": "Chitosan–zinc oxide composite with an average size of 33 nm was synthesized by facile chemical precipitation technique for application in the removal of water contaminants such as dyes. Malachite green (MG) was the model colorant for the sorption process. Material characterization was achieved using selected spectroscopic techniques. Elemental analysis results revealed that the material had high concentration levels of Zn (965,000 ± 53.2 mg/kg) compared to Fe (756.5 ± 45.3 mg/kg) and P (166 ± 26.6 mg/kg). Batch adsorption experiments of the dye onto chitosan–ZnO (CS–ZnO) composite was investigated with a UV–Visible photometer. The rate of dye removal was greatly influenced by pH, dye strength, amount of adsorbent and contact time. High removal capacity of 98.5% was achieved with reducing dye strength of 2.3 mg/L, dosage of 0.6 g and pH 8 within 180 min equilibration time. Langmuir model depicted the results perfectly with a r2 coefficient of 0.998 and a sorption capacity of 11 mg/g. The separation factor (RL) was 0.49, which is smaller than unity, signifying a favorable removal for the MG dye onto CS–ZnO material. Further, the sorption of the dye followed pseudo-second-order model indicating that chemisorption was the rate-limiting process. The rapid removal of MG on this novel adsorbent within a short time makes it a promising candidate for wastewater treatment applications."
+   },
+   {
+    "id": "https://openalex.org/W4376641797",
+    "doi": "https://doi.org/10.1038/s41467-023-37465-1",
+    "title": "GalNAc-Lipid nanoparticles enable non-LDLR dependent hepatic delivery of a CRISPR base editing therapy",
+    "year": 2023,
+    "cited": 165,
+    "venue": "Nature Communications",
+    "topics": [
+     "CRISPR and Genetic Engineering",
+     "Complement system in diseases",
+     "Systemic Lupus Erythematosus Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37465-1.pdf",
+    "abstract": "Lipid nanoparticles have demonstrated utility in hepatic delivery of a range of therapeutic modalities and typically deliver their cargo via low-density lipoprotein receptor-mediated endocytosis. For patients lacking sufficient low-density lipoprotein receptor activity, such as those with homozygous familial hypercholesterolemia, an alternate strategy is needed. Here we show the use of structure-guided rational design in a series of mouse and non-human primate studies to optimize a GalNAc-Lipid nanoparticle that allows for low-density lipoprotein receptor independent delivery. In low-density lipoprotein receptor-deficient non-human primates administered a CRISPR base editing therapy targeting the ANGPTL3 gene, the introduction of an optimized GalNAc-based asialoglycoprotein receptor ligand to the nanoparticle surface increased liver editing from 5% to 61% with minimal editing in nontargeted tissues. Similar editing was noted in wild-type monkeys, with durable blood ANGPTL3 protein reduction up to 89% six months post dosing. These results suggest that GalNAc-Lipid nanoparticles may effectively deliver to both patients with intact low-density lipoprotein receptor activity as well as those afflicted by homozygous familial hypercholesterolemia."
+   },
+   {
+    "id": "https://openalex.org/W4382934801",
+    "doi": "https://doi.org/10.1016/j.jddst.2023.104709",
+    "title": "Solid lipid nanoparticles: An effective lipid-based technology for cancer treatment",
+    "year": 2023,
+    "cited": 148,
+    "venue": "Journal of Drug Delivery Science and Technology",
+    "topics": [
+     "Advancements in Transdermal Drug Delivery",
+     "Lipid Membrane Structure and Behavior",
+     "RNA Interference and Gene Delivery"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1773224723005610-ga1_lrg.jpg",
+    "abstract": "Solid lipid nanoparticles (SLN) are considered at the forefront of nanotechnology's rapidly developing field, with several potential applications in drug delivery and research. SLN possesses promising attributes for reaching the goal of controlled and site-specific drug delivery and hence attracted researchers' wide attention. The present review briefly introduces SLN and discusses the reasoning behind the use of SLN over other colloidal carriers, such as emulsions and liposomes. Techniques to produce SLN, drug incorporation, loading capacity, and drug release mechanisms are reviewed. Aspects of the SLNs route of administration and the in vivo fate of the carriers are also discussed. The potential of SLN in incorporating different anti-cancer drugs and their effectiveness in various cancer therapies is highlighted. The mechanism of action of some commonly used anti-cancer agents with SLN is provided."
+   },
+   {
+    "id": "https://openalex.org/W3134986185",
+    "doi": "https://doi.org/10.1038/s42004-020-00377-y",
+    "title": "Size dependency of gold nanoparticles interacting with model membranes",
+    "year": 2020,
+    "cited": 132,
+    "venue": "Communications Chemistry",
+    "topics": [
+     "Lipid Membrane Structure and Behavior",
+     "Electrochemical Analysis and Applications",
+     "Computational Drug Discovery Methods"
+    ],
+    "oa_url": "https://www.nature.com/articles/s42004-020-00377-y.pdf",
+    "abstract": "The rapid development of nanotechnology has led to an increase in the number and variety of engineered nanomaterials in the environment. Gold nanoparticles (AuNPs) are an example of a commonly studied nanomaterial whose highly tailorable properties have generated significant interest through a wide range of research fields. In the present work, we characterise the AuNP-lipid membrane interaction by coupling qualitative data with quantitative measurements of the enthalpy change of interaction. We investigate the interactions between citrate-stabilised AuNPs ranging from 5 to 60 nm in diameter and large unilamellar vesicles acting as a model membrane system. Our results reveal the existence of two critical AuNP diameters which determine their fate when in contact with a lipid membrane. The results provide new insights into the size dependent interaction between AuNPs and lipid bilayers which is of direct relevance to nanotoxicology and to the design of NP vectors."
+   },
+   {
+    "id": "https://openalex.org/W4376618271",
+    "doi": "https://doi.org/10.1038/s41929-023-00958-9",
+    "title": "Enhanced activity for the oxygen reduction reaction in microporous water",
+    "year": 2023,
+    "cited": 122,
+    "venue": "Nature Catalysis",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Fuel Cells and Related Materials"
+    ],
+    "oa_url": "https://hal.science/hal-04682507v1/file/NatureCatal-Manuscript-accepeted.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4379983767",
+    "doi": "https://doi.org/10.1126/sciadv.adh1736",
+    "title": "Autonomous metal-organic framework nanorobots for active mitochondria-targeted cancer therapy",
+    "year": 2023,
+    "cited": 110,
+    "venue": "Science Advances",
+    "topics": [
+     "Micro and Nano Robotics",
+     "Molecular Communication and Nanonetworks",
+     "Nanoplatforms for cancer theranostics"
+    ],
+    "oa_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adh1736?download=true",
+    "abstract": "Nanorobotic manipulation to access subcellular organelles remains unmet due to the challenge in achieving intracellular controlled propulsion. Intracellular organelles, such as mitochondria, are an emerging therapeutic target with selective targeting and curative efficacy. We report an autonomous nanorobot capable of active mitochondria-targeted drug delivery, prepared by facilely encapsulating mitochondriotropic doxorubicin-triphenylphosphonium (DOX-TPP) inside zeolitic imidazolate framework-67 (ZIF-67) nanoparticles. The catalytic ZIF-67 body can decompose bioavailable hydrogen peroxide overexpressed inside tumor cells to generate effective intracellular mitochondriotropic movement in the presence of TPP cation. This nanorobot-enhanced targeted drug delivery induces mitochondria-mediated apoptosis and mitochondrial dysregulation to improve the in vitro anticancer effect and suppression of cancer cell metastasis, further verified by in vivo evaluations in the subcutaneous tumor model and orthotopic breast tumor model. This nanorobot unlocks a fresh field of nanorobot operation with intracellular organelle access, thereby introducing the next generation of robotic medical devices with organelle-level resolution for precision therapy."
+   },
+   {
+    "id": "https://openalex.org/W4409119336",
+    "doi": "https://doi.org/10.1038/s41467-025-58153-2",
+    "title": "Bilateral in-situ functionalization towards Ah-scale aqueous zinc metal batteries",
+    "year": 2025,
+    "cited": 106,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-58153-2.pdf",
+    "abstract": "Developing practical technical index of aqueous zinc metal batteries (ZMBs) is crucial to support safe large-scale energy storage. However, the realistic performance demonstration of ampere hour (Ah)-scale aqueous ZMBs under high mass loading and large areal capacity, which is the key to the industrial application of aqueous ZMBs, remains a critical challenge. In this paper, we propose a bilateral in-situ functionalization strategy in response to the issues that face high mass loading and large areal capacity of aqueous ZMBs. A gradient interface of Zn negative electrode was formed by directional adsorption and in-situ decomposition of organic sodium salt electrolyte additive. It avoids the influences from the fluctuation of electrolyte state and positive electrode dissolution, realizing uniform large-capacity plating/stripping in Ah-scale pouch cell. The positive electrode interface was also in-situ modified by electrolyte additive, which not only facilitated ion intercalation but also suppressed positive electrode dissolution through adsorption at the interface, thereby achieving high-loading stability. As a result, the cyclic stability in coin cell maintained more than 4000 cycles at 2 A g−1, underscoring the superior compared to its counterpart. More importantly, the Ah-scale pouch cell can last more than 680 cycles with an accumulated capacity of 319.6 Ah. This work offers a roadmap for designing practical Ah-scale ZMB pouch cells. Large capacity vanadium-based aqueous zinc batteries present significant challenges at both electrodes. Here, authors propose a bifacial in-situ modification strategy to alleviate both severe vanadium dissolution and zinc dendrite growth, thereby enabling large capacity aqueous zinc metal batteries."
+   },
+   {
+    "id": "https://openalex.org/W4280597832",
+    "doi": "https://doi.org/10.1016/j.ultsonch.2022.106045",
+    "title": "The effect of sonication-synergistic natural deep eutectic solvents on extraction yield, structural and physicochemical properties of pectins extracted from mango peels",
+    "year": 2022,
+    "cited": 103,
+    "venue": "Ultrasonics Sonochemistry",
+    "topics": [
+     "Polysaccharides and Plant Cell Walls",
+     "Advanced Cellulose Research Studies",
+     "Nanocomposite Films for Food Packaging"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1350417722001389/pdf",
+    "abstract": "In this study, eco-friendly deep eutectic solvents (DESs) were used as extracting agents for the first time in the extraction of pectins from mango peel. Two novel green solvents including betaine-citric acid (Bet-CA) and choline chloride-malic acid (ChCl-MaA) were screened, and the extraction conditions were further optimized by full factor design experimental along with RSM. In addition, ultrasound treatment also had an influence on extraction yield, structural and physicochemical properties of extracted pectins. Two DES-extracted pectins had significantly higher yield, larger molecular weight and particles size than HCl-extracted pectin. High intensity ultrasound power enhanced the yield of low-ester pectins, but decreased the molecular weight and particles size of the pectins extracted. Monosaccharide compositions analysis showed that higher content of galacturonic acid (GalA) and larger HG region were observed in two DESs-extracted pectins. Fourier transform infrared spectra (FT-IR) of all pectins extracted were similar, with slight differences. Two DESs-extracted pectins exhibited higher DE values than HCl-extracted pectin. Thermal analysis and zeta potential results showed that HCl-extracted pectin had better stability than ChCl-MaA-extracted pectin. Additionally, HCl-extracted pectin had higher viscosity properties than two DESs-extracted pectins or commercial pectin (CP). Moreover, it was found that HCl-extracted pectin was in a colloid state, while two DESs-extracted pectins or CP were in a flow state. Ultrasound treatment significantly improved the yields of pectin/low-ester pectin. Additionally, ultrasound treatment remarkably decreased the viscosity and viscoelastic properties of the pectins extracted. The results were conducive to our understanding of the relationship between extraction conditions and physicochemical properties of the pectins extracted, which provides theoretical basis for the functional application of mango peel pectins in the food and pharmaceutical industry."
+   },
+   {
+    "id": "https://openalex.org/W3092500707",
+    "doi": "https://doi.org/10.1038/s41467-020-18907-6",
+    "title": "A versatile soluble siglec scaffold for sensitive and quantitative detection of glycan ligands",
+    "year": 2020,
+    "cited": 95,
+    "venue": "Nature Communications",
+    "topics": [
+     "Glycosylation and Glycoproteins Research",
+     "Monoclonal and Polyclonal Antibodies Research",
+     "Galectins and Cancer Biology"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-18907-6.pdf",
+    "abstract": "Sialic acid-binding immunoglobulin-type lectins (Siglecs) are immunomodulatory receptors that are regulated by their glycan ligands. The connections between Siglecs and human disease motivate improved methods to detect Siglec ligands. Here, we describe a new versatile set of Siglec-Fc proteins for glycan ligand detection. Enhanced sensitivity and selectivity are enabled through multimerization and avoiding Fc receptors, respectively. Using these Siglec-Fc proteins, Siglec ligands are systematically profiled on healthy and cancerous cells and tissues, revealing many unique patterns. Additional features enable the production of small, homogenous Siglec fragments and development of a quantitative ligand-binding mass spectrometry assay. Using this assay, the ligand specificities of several Siglecs are clarified. For CD33 (Siglec-3), we demonstrate that it recognizes both α2-3 and α2-6 sialosides in solution and on cells, which has implications for its link to Alzheimer's disease susceptibility. These soluble Siglecs reveal the abundance of their glycan ligands on host cells as self-associated molecular patterns."
+   },
+   {
+    "id": "https://openalex.org/W4380996910",
+    "doi": "https://doi.org/10.1002/pol.20230141",
+    "title": "Investigation of the influence of pH on the properties and morphology of gelatin hydrogels",
+    "year": 2023,
+    "cited": 92,
+    "venue": "Journal of Polymer Science",
+    "topics": [
+     "Collagen: Extraction and Characterization",
+     "Proteins in Food Systems",
+     "Muscle metabolism and nutrition"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pol.20230141",
+    "abstract": "Abstract The behavior of gelatin hydrogels is influenced by the charges located on the amino acid side chains throughout the gelatin molecules. The presence and distribution of ionisable side chains influences the surface activity of gelatin and ultimately determines the material properties. Herein, we report the influence of pH on mechanical properties as studied by texture analysis supported by data from polarimetry, zeta potential, pH titrations and NMR experiments. When adjusted to more extreme pH values (pH 2 and 12), softer gelatin blocks were observed. However, at pH values close to the isoelectric point (pH 5–10), the material is firmer. This behavior is related to the helical content. At pH 2 and pH 12 the surface of the gelatin carries a net charge, positive and negative, respectively, that inhibits the formation of tight helices and lowers the physical crosslink network density. Chemical shift perturbations were observed for the acidic amino acids glutamic and aspartic acid, under acidic pH, where their peaks shifted to higher ppm. Intense amide signals were observed at acidic pH but diminished with increasing pH. This was due to an increase in the rate of chemical exchange between the solvent and peptide amide protons as the pH increases."
+   },
+   {
+    "id": "https://openalex.org/W4387542276",
+    "doi": "https://doi.org/10.1002/adfm.202307477",
+    "title": "Biohybrid Magnetically Driven Microrobots for Sustainable Removal of Micro/Nanoplastics from the Aquatic Environment",
+    "year": 2023,
+    "cited": 87,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Micro and Nano Robotics",
+     "Microplastics and Plastic Pollution",
+     "Modular Robots and Swarm Intelligence"
+    ],
+    "oa_url": "https://doi.org/10.1002/adfm.202307477",
+    "abstract": "Abstract The proliferation of micro/nanoplastics derived from the fragmentation of plastic waste released in the environment represents an increasingly alarming issue with adverse implications for aquatic ecosystems worldwide. Conventional approaches for mitigating such contamination are inadequate in removing plastic fragments with exceptionally tiny sizes. Therefore, it is highly urgent to develop efficient strategies to address the threats posed by micro/nanoplastics. Here, biohybrid microrobots, integrating the magnetic properties of Fe 3 O 4 nanoparticles, are investigated for the dynamic removal of micro/nanoplastics from various aquatic environments via high‐precision magnetic actuation and reliable electrostatic interactions. After the surface decoration with Fe 3 O 4 nanoparticles, algae cells can achieve precise locomotion and wireless manipulation by regulating an external magnetic field. Taking advantage of this active movement, magnetic algae robots (MARs) display considerable capture and removal efficiencies for micro/nanoplastics in water with extensive application scenarios. The reusability of MARs is also investigated, proving great recyclable performance. The growth and cell viability experiments elucidate that the presence of Fe 3 O 4 nanoparticles may result in hormesis stimulation of algae growth. Such recyclable microrobots with eco‐friendly and low‐cost characteristics offer an attractive strategy for sustainably tackling micro/nanoplastics pollution."
+   },
+   {
+    "id": "https://openalex.org/W4226132727",
+    "doi": "https://doi.org/10.7150/thno.64244",
+    "title": "Wound microenvironment-responsive glucose consumption and hydrogen peroxide generation synergistic with azithromycin for diabetic wounds healing",
+    "year": 2022,
+    "cited": 83,
+    "venue": "Theranostics",
+    "topics": [
+     "Wound Healing and Treatments",
+     "Diabetic Foot Ulcer Assessment and Management",
+     "Graphene and Nanomaterials Applications"
+    ],
+    "oa_url": "https://www.thno.org/v12p2658.pdf",
+    "abstract": "Rationale: Chronic wounds are one of the common complications of diabetes.Due to the physiological conditions of diabetic patients, these wounds are more susceptible to bacterial infections and the formation of bacterial biofilms, leading to the inefficiency of conventional antibiotic treatment.Methods: Here, hollow mesoporous silica nanoparticles (HMSN) were used as the nanocarriers for co-delivery of azithromycin (AZM) and glucose oxidase (GOX), achieving a remarkable synergistic effect in chronic diabetic wounds.GOX possesses the catalytic ability to consume glucose and produce H2O2 in the diabetic wound area.The down-regulation of local glucose could effectively improve the chronic diabetic wound microenvironment.Meanwhile, the generated H2O2 effectively inhibits bacterial growth and eradicates bacterial biofilms with the synergism of antibiotics AZM.Results: In the bacteria-infected diabetic cutaneous wound models, the reduction of glucose, generation of H2O2, and release of AZM could effectively reduce the bacterial infection and promote the wounds healing.Moreover, there is no obvious toxicity behavior after the treatment.Conclusions: Therefore, the designed nanosystem could effectively accelerate the diabetic wound healing process by the amelioration of the hyperglycemia microenvironment and the eradication of bacterial biofilms around the wounds, making them promising candidates for clinical transformation."
+   },
+   {
+    "id": "https://openalex.org/W4396717895",
+    "doi": "https://doi.org/10.1038/s41467-024-48160-0",
+    "title": "Constructing ordered and tunable extrinsic porosity in covalent organic frameworks via water-mediated soft-template strategy",
+    "year": 2024,
+    "cited": 82,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://doi.org/10.1038/s41467-024-48160-0",
+    "abstract": "As one of the most attractive methods for the synthesis of ordered hierarchically porous crystalline materials, the soft-template method has not appeared in covalent organic frameworks (COFs) due to the incompatibility of surfactant self-assembly and guided crystallization process of COF precursors in the organic phase. Herein, we connect the soft templates to the COF backbone through ionic bonds, avoiding their crystallization incompatibilities, thus introducing an additional ordered arrangement of soft templates into the anionic microporous COFs. The ion exchange method is used to remove the templates while maintaining the high crystallinity of COFs, resulting in the construction of COFs with ordered hierarchically micropores/mesopores, herein named OHMMCOFs (OHMMCOF-1 and OHMMCOF-2). OHMMCOFs exhibit significantly enhanced functional group accessibility and faster mass transfer rate. The extrinsic porosity can be adjusted by changing the template length, concentration, and ratio. Cationic guanidine-based COFs (OHMMCOF-3) are also constructed using the same method, which verifies the scalability of the soft-template strategy. This work provides a path for constructing ordered and tunable extrinsic porosity in COFs with greatly improved mass transfer efficiency and functional group accessibility."
+   },
+   {
+    "id": "https://openalex.org/W4396735683",
+    "doi": "https://doi.org/10.1021/acsnano.4c02115",
+    "title": "Magnetic Microrobot Swarms with Polymeric Hands Catching Bacteria and Microplastics in Water",
+    "year": 2024,
+    "cited": 82,
+    "venue": "ACS Nano",
+    "topics": [
+     "Micro and Nano Robotics",
+     "Modular Robots and Swarm Intelligence",
+     "Molecular Communication and Nanonetworks"
+    ],
+    "oa_url": "https://doi.org/10.1021/acsnano.4c02115",
+    "abstract": "The forefront of micro- and nanorobot research involves the development of smart swimming micromachines emulating the complexity of natural systems, such as the swarming and collective behaviors typically observed in animals and microorganisms, for efficient task execution. This study introduces magnetically controlled microrobots that possess polymeric sequestrant \"hands\" decorating a magnetic core. Under the influence of external magnetic fields, the functionalized magnetic beads dynamically self-assemble from individual microparticles into well-defined rotating planes of diverse dimensions, allowing modulation of their propulsion speed, and exhibiting a collective motion. These mobile microrobotic swarms can actively capture free-swimming bacteria and dispersed microplastics \"on-the-fly\", thereby cleaning aquatic environments. Unlike conventional methods, these microrobots can be collected from the complex media and can release the captured contaminants in a second vessel in a controllable manner, that is, using ultrasound, offering a sustainable solution for repeated use in decontamination processes. Additionally, the residual water is subjected to UV irradiation to eliminate any remaining bacteria, providing a comprehensive cleaning solution. In summary, this study shows a swarming microrobot design for water decontamination processes."
+   },
+   {
+    "id": "https://openalex.org/W2974223462",
+    "doi": "https://doi.org/10.1039/c9sc04439f",
+    "title": "Molecular tunability of surface-functionalized metal nanocrystals for selective electrochemical CO 2 reduction",
+    "year": 2019,
+    "cited": 79,
+    "venue": "Chemical Science",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Electrocatalysts for Energy Conversion",
+     "Advanced Thermoelectric Materials and Devices"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2019/sc/c9sc04439f",
+    "abstract": "Disubstituted imidazolium compounds are used as ligands to promote the CO 2 RR at the surface of Ag nanocrystal catalysts. Catalyst performance is fine-tuned at the molecular scale through systematic variation of the imidazolium substituents."
+   },
+   {
+    "id": "https://openalex.org/W4288061019",
+    "doi": "https://doi.org/10.1016/j.jphotochem.2022.114176",
+    "title": "Photocatalytic transformation of Rhodamine B to Rhodamine-110 – The mechanism revisited",
+    "year": 2022,
+    "cited": 76,
+    "venue": "Journal of Photochemistry and Photobiology A Chemistry",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Radical Photochemical Reactions",
+     "TiO2 Photocatalysis and Solar Cells"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1010603022004014/pdf",
+    "abstract": "Understanding of the TiO2-assisted phototransformations observed for fundamentally important derivatives of Rhodamine B is expected to bring consistent and eventually comprehensive knowledge on behavior of this dye. The photocatalytic transformations of Rhodamine B in solution irradiated with visible light embrace an N-deethylation process eventually forming Rhodamine-110 rather than degradation of the chromophore. The N-deethylation of Rhodamine B was studied in solution and for the first time in the solid state. In this work, the influence of the wavelength of incident light on the photocatalytic processes involving Rhodamine dyes, is presented. The results indicate that the selection of wavelength is crucial to govern the pathway of RhB degradation. The N-deethylation process does not require reactive oxygen species, as assumed in literature, but the photoinduced electron transfer between the adsorbed RhB molecule and the TiO2 support, followed by radical transformations of the dye, plays a key role."
+   },
+   {
+    "id": "https://openalex.org/W4380200292",
+    "doi": "https://doi.org/10.1002/adhm.202301551",
+    "title": "Injectable, Antibacterial, and Hemostatic Tissue Sealant Hydrogels",
+    "year": 2023,
+    "cited": 72,
+    "venue": "Advanced Healthcare Materials",
+    "topics": [
+     "Hemostasis and retained surgical items",
+     "Wound Healing and Treatments",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adhm.202301551",
+    "abstract": "Abstract Hemorrhage and bacterial infections are major hurdles in the management of life‐threatening surgical wounds. Most bioadhesives for wound closure lack sufficient hemostatic and antibacterial properties. Furthermore, they suffer from weak sealing efficacy, particularly for stretchable organs, such as the lung and bladder. Accordingly, there is an unmet need for mechanically robust hemostatic sealants with simultaneous antibacterial effects. Here, an injectable, photocrosslinkable, and stretchable hydrogel sealant based on gelatin methacryloyl (GelMA), supplemented with antibacterial zinc ferrite (ZF) nanoparticles and hemostatic silicate nanoplatelets (SNs) for rapid blood coagulation is nanoengineered. The hydrogel reduces the in vitro viability of Staphylococcus aureus by more than 90%. The addition of SNs (2% w/v) and ZF nanoparticles (1.5 mg mL −1 ) to GelMA (20% w/v) improves the burst pressure of perforated ex vivo porcine lungs by more than 40%. Such enhancement translated to ≈250% improvement in the tissue sealing capability compared with a commercial hemostatic sealant, Evicel. Furthermore, the hydrogels reduce bleeding by ≈50% in rat bleeding models. The nanoengineered hydrogel may open new translational opportunities for the effective sealing of complex wounds that require mechanical flexibility, infection management, and hemostasis."
+   },
+   {
+    "id": "https://openalex.org/W3095178519",
+    "doi": "https://doi.org/10.1039/d0ta06768g",
+    "title": "Colloidal three-dimensional covalent organic frameworks and their application as porous liquids",
+    "year": 2020,
+    "cited": 69,
+    "venue": "Journal of Materials Chemistry A",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1755699",
+    "abstract": "Colloidal COFs suspended in a bulky, size-excluded ionic liquid create a ‘porous liquid’ with enhanced gas uptake."
+   },
+   {
+    "id": "https://openalex.org/W4280488233",
+    "doi": "https://doi.org/10.1038/s41467-022-30474-6",
+    "title": "A bio-functional polymer that prevents retinal scarring through modulation of NRF2 signalling pathway",
+    "year": 2022,
+    "cited": 67,
+    "venue": "Nature Communications",
+    "topics": [
+     "Nanoplatforms for cancer theranostics",
+     "Nitric Oxide and Endothelin Effects",
+     "Redox biology and oxidative stress"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-30474-6.pdf",
+    "abstract": "One common cause of vision loss after retinal detachment surgery is the formation of proliferative and contractile fibrocellular membranes. This aberrant wound healing process is mediated by epithelial-mesenchymal transition (EMT) and hyper-proliferation of retinal pigment epithelial (RPE) cells. Current treatment relies primarily on surgical removal of these membranes. Here, we demonstrate that a bio-functional polymer by itself is able to prevent retinal scarring in an experimental rabbit model of proliferative vitreoretinopathy. This is mediated primarily via clathrin-dependent internalisation of polymeric micelles, downstream suppression of canonical EMT transcription factors, reduction of RPE cell hyper-proliferation and migration. Nuclear factor erythroid 2-related factor 2 signalling pathway was identified in a genome-wide transcriptomic profiling as a key sensor and effector. This study highlights the potential of using synthetic bio-functional polymer to modulate RPE cellular behaviour and offers a potential therapy for retinal scarring prevention."
+   },
+   {
+    "id": "https://openalex.org/W3156474658",
+    "doi": "https://doi.org/10.1038/s41467-021-22285-y",
+    "title": "Stabilization of supramolecular membrane protein–lipid bilayer assemblies through immobilization in a crystalline exoskeleton",
+    "year": 2021,
+    "cited": 61,
+    "venue": "Nature Communications",
+    "topics": [
+     "Lipid Membrane Structure and Behavior",
+     "Nanopore and Nanochannel Transport Studies",
+     "Supramolecular Self-Assembly in Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22285-y.pdf",
+    "abstract": "Artificial native-like lipid bilayer systems constructed from phospholipids assembling into unilamellar liposomes allow the reconstitution of detergent-solubilized transmembrane proteins into supramolecular lipid-protein assemblies called proteoliposomes, which mimic cellular membranes. Stabilization of these complexes remains challenging because of their chemical composition, the hydrophobicity and structural instability of membrane proteins, and the lability of interactions between protein, detergent, and lipids within micelles and lipid bilayers. In this work we demonstrate that metastable lipid, protein-detergent, and protein-lipid supramolecular complexes can be successfully generated and immobilized within zeolitic-imidazole framework (ZIF) to enhance their stability against chemical and physical stressors. Upon immobilization in ZIF bio-composites, blank liposomes, and model transmembrane metal transporters in detergent micelles or embedded in proteoliposomes resist elevated temperatures, exposure to chemical denaturants, aging, and mechanical stresses. Extensive morphological and functional characterization of the assemblies upon exfoliation reveal that all these complexes encapsulated within the framework maintain their native morphology, structure, and activity, which is otherwise lost rapidly without immobilization."
+   },
+   {
+    "id": "https://openalex.org/W4308001801",
+    "doi": "https://doi.org/10.1002/adfm.202208881",
+    "title": "Stability of Thin Film Neuromodulation Electrodes under Accelerated Aging Conditions",
+    "year": 2022,
+    "cited": 59,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Neuroscience and Neural Engineering",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202208881",
+    "abstract": "Abstract Thin film electrodes are becoming increasingly common for interfacing with tissue. However, their long‐term stability has yet to be proven in neuromodulation applications where electrical stimulation over months to years is desired. Here, the stability of pristine and PEDOT:PSS‐coated Au, as well as pristine PEDOT:PSS microelectrodes are examined over a period of 3 months in an accelerated aging setup where they are exposed to current stimulation, hydrogen peroxide, mechanical agitation, and high temperature. Pristine PEDOT:PSS electrodes show the highest stability, while pristine Au electrodes show the lowest stability. Failure mode analysis reveals that delamination and Au corrosion are the key drivers of electrode degradation. The PEDOT:PSS coating slows down Au corrosion to a degree that depends on the overlap between the two films. The results demonstrate that pristine PEDOT:PSS electrodes represent a promising way forward toward thin film devices for long‐term in vivo neuromodulation applications."
+   },
+   {
+    "id": "https://openalex.org/W4392380062",
+    "doi": "https://doi.org/10.1038/s41598-024-54064-2",
+    "title": "Assessment of wound healing activity in diabetic mice treated with a novel therapeutic combination of selenium nanoparticles and platelets rich plasma",
+    "year": 2024,
+    "cited": 56,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Wound Healing and Treatments",
+     "Periodontal Regeneration and Treatments",
+     "Sexual function and dysfunction studies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-024-54064-2.pdf",
+    "abstract": "Diabetic wound healing is sluggish, often ending in amputations. This study tested a novel, two-punch therapy in mice-Selenium nanoparticles (Se NPs) and platelet-rich plasma (PRP)-to boost healing. First, a mouse model of diabetes was created. Then, Se NPs were crafted for their impressive antioxidant and antimicrobial powers. PRP, packed with growth factors, was extracted from the mice's blood. Wound healing was tracked for 28 days through photos, scoring tools, and tissue analysis. Se NPs alone spurred healing, and PRP added extra fuel. Furthermore, when used in combination with PRP, the healing process was accelerated due to the higher concentration of growth factors in PRP. Notably, the combination of Se NPs and PRP exhibited a synergistic effect, significantly enhancing wound healing in diabetic mice. These findings hold promise for the treatment of diabetic wounds and have the potential to reduce the need for lower limb amputations associated with diabetic foot ulcers. The innovative combination therapy using Se NPs and PRP shows great potential in expediting the healing process and addressing the challenges of impaired wound healing in individuals with diabetes. This exciting finding suggests this therapy could change diabetic wound management, potentially saving limbs and improving lives."
+   },
+   {
+    "id": "https://openalex.org/W3113181470",
+    "doi": "https://doi.org/10.1038/s41598-020-78872-4",
+    "title": "Multiple scattering effects on intercept, size, polydispersity index, and intensity for parallel (VV) and perpendicular (VH) polarization detection in photon correlation spectroscopy",
+    "year": 2020,
+    "cited": 54,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Random lasers and scattering media",
+     "Spectroscopy and Chemometric Analyses",
+     "Data Visualization and Analytics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-78872-4.pdf",
+    "abstract": "Dynamic light scattering (DLS) is well established for rapid size, polydispersity, and size distribution determination of colloidal samples. While there are limitations in size range, resolution, and concentration, the technique has found ubiquitous applications from molecules to particles. With the ease of use of today's commercial DLS instrumentation comes an inherent danger of misinterpretation or misapplication at the borderlines of suitability. In this paper, we show how comparison of different polarization components can help ascertain the presence of unwanted multiple scattering, which can lead to false conclusions about a sample's mean size and polydispersity. We find that the contribution of multiple scattering events effectively reduces both the measured scattering intensity and the apparent size from the autocorrelation function. The intercept of the correlation function may serve as an indicator of relative strength of single to multiple scattering. Furthermore, the abundance of single scattering events at measurement positions close to the cell wall results in an apparent increase in uniformity yielding a lower polydispersity index which is more representative of the physical system."
+   },
+   {
+    "id": "https://openalex.org/W3115901014",
+    "doi": "https://doi.org/10.1039/d0sc05874b",
+    "title": "Imaging non-classical mechanical responses of lipid membranes using molecular rotors",
+    "year": 2020,
+    "cited": 53,
+    "venue": "Chemical Science",
+    "topics": [
+     "Lipid Membrane Structure and Behavior",
+     "Force Microscopy Techniques and Applications",
+     "Mechanical and Optical Resonators"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2021/sc/d0sc05874b",
+    "abstract": "Viscosity-sensitive molecular rotors demonstrate that the non-classical mechanical behaviour of model lipid membranes is able to buffer external stress."
+   },
+   {
+    "id": "https://openalex.org/W4391030006",
+    "doi": "https://doi.org/10.1021/acs.chemmater.3c02828",
+    "title": "Polymer-Coated Covalent Organic Frameworks as Porous Liquids for Gas Storage",
+    "year": 2024,
+    "cited": 52,
+    "venue": "Chemistry of Materials",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://doi.org/10.1021/acs.chemmater.3c02828",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Several synthetic methods have recently emerged to develop high-surface-area solid-state organic framework-based materials into free-flowing liquids with permanent porosity. The fluidity of these porous liquid (PL) materials provides them with advantages in certain storage and transport processes. However, most framework-based materials necessitate the use of cryogenic temperatures to store weakly bound gases such as H 2, temperatures where PLs lose their fluidity. Covalent organic framework (COF)-based PLs that could reversibly form stable complexes with H 2 near ambient temperatures would represent a promising development for gas storage and transport applications. We report here the development, characterization, and evaluation of a material with these remarkable characteristics based on Cu(I)-loaded COF colloids. Our synthetic strategy required tailoring conditions for growing robust coatings of poly(dimethylsiloxane)-methacrylate (PDMS-MA) around COF colloids using atom transfer radical polymerization (ATRP). We demonstrate exquisite control over the coating thickness on the colloidal COF, quantified by transmission electron microscopy and dynamic light scattering. The coated COF material was then suspended in a liquid polymer matrix to make a PL. CO 2 isotherms confirmed that the coating preserved the general porosity of the COF in the free-flowing liquid, while CO sorption measurements using diffuse reflectance infrared Fourier transform spectroscopy (DRIFTS) confirmed the preservation of Cu(I) coordination sites. We then evaluated the gas sorption phenomenon in the Cu(I)–COF-based PLs using DRIFTS and temperature-programmed desorption measurements. In addition to confirming that H 2 transport is possible at or near mild refrigeration temperatures with these materials, our observations indicate that H 2 diffusion is significantly influenced by the glass-transition temperature of both the coating and the liquid matrix. The latter result underscores an additional potential advantage of PLs in tailoring gas diffusion and storage temperatures through the coating composition."
+   },
+   {
+    "id": "https://openalex.org/W4387986039",
+    "doi": "https://doi.org/10.1039/d3su00262d",
+    "title": "The effects of lignin source and extraction on the composition and properties of biorefined depolymerization products",
+    "year": 2023,
+    "cited": 52,
+    "venue": "RSC Sustainability",
+    "topics": [
+     "Lignin and Wood Chemistry",
+     "Biochemical and biochemical processes",
+     "Enzyme-mediated dye degradation"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2023/su/d3su00262d",
+    "abstract": "Source and extraction modify lignin structure and subsequent processing. Under our biorefining conditions, organosolv herbaceous lignin yields maximum antioxidant capacity."
+   },
+   {
+    "id": "https://openalex.org/W4402652347",
+    "doi": "https://doi.org/10.1039/d4ra05562d",
+    "title": "Unveiling the reactor effect: a comprehensive characterization of biochar derived from rubber seed shell via pyrolysis and in-house reactor",
+    "year": 2024,
+    "cited": 47,
+    "venue": "RSC Advances",
+    "topics": [
+     "Thermochemical Biomass Conversion Processes",
+     "Graphene research and applications",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ra/d4ra05562d",
+    "abstract": "of RSSBC-2 was articulated by BET analysis. XPS and FESEM analyses revealed the chemical state of surface elements and surface morphology, respectively of the biochar samples. XRD patterns assured the amorphous nature of biochar samples, and functional groups were well depicted by FTIR analysis. DLS showed a larger average hydrodynamic diameter for RSSBC-2 (248.68 nm) with a zeta potential of -14.91 mV compared to RSSBC-1 (115.23 nm) with a heterogeneous charge distribution (-16.72 mV and +37.61 mV). TGA analysis revealed the thermal stability of both biochar samples. Overall, the results explicitly depict a distinction in the properties of biochar samples prepared in two different reactors, where RSSBC-1, with its superior properties suggests the in-house built reactor as a promising alternative to expensive pyrolytic reactors for waste valorization."
+   },
+   {
+    "id": "https://openalex.org/W4366768510",
+    "doi": "https://doi.org/10.1038/s41467-023-38030-6",
+    "title": "Siglec-6 mediates the uptake of extracellular vesicles through a noncanonical glycolipid binding pocket",
+    "year": 2023,
+    "cited": 46,
+    "venue": "Nature Communications",
+    "topics": [
+     "Glycosylation and Glycoproteins Research",
+     "RNA Interference and Gene Delivery",
+     "Lipid Membrane Structure and Behavior"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-38030-6.pdf",
+    "abstract": "Immunomodulatory Siglecs are controlled by their glycoprotein and glycolipid ligands. Siglec-glycolipid interactions are often studied outside the context of a lipid bilayer, missing the complex behaviors of glycolipids in a membrane. Through optimizing a liposomal formulation to dissect Siglec-glycolipid interactions, it is shown that Siglec-6 can recognize glycolipids independent of its canonical binding pocket, suggesting that Siglec-6 possesses a secondary binding pocket tailored for recognizing glycolipids in a bilayer. A panel of synthetic neoglycolipids is used to probe the specificity of this glycolipid binding pocket on Siglec-6, leading to the development of a neoglycolipid with higher avidity for Siglec-6 compared to natural glycolipids. This neoglycolipid facilitates the delivery of liposomes to Siglec-6 on human mast cells, memory B-cells and placental syncytiotrophoblasts. A physiological relevance for glycolipid recognition by Siglec-6 is revealed for the binding and internalization of extracellular vesicles. These results demonstrate a unique and physiologically relevant ability of Siglec-6 to recognize glycolipids in a membrane."
+   },
+   {
+    "id": "https://openalex.org/W4288748936",
+    "doi": "https://doi.org/10.1186/s40824-022-00285-3",
+    "title": "Nanodiamond enhanced mechanical and biological properties of extrudable gelatin hydrogel cross-linked with tannic acid and ferrous sulphate",
+    "year": 2022,
+    "cited": 45,
+    "venue": "Biomaterials Research",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Hydrogels: synthesis, properties, applications",
+     "Polymer Surface Interaction Studies"
+    ],
+    "oa_url": "https://biomaterialsres.biomedcentral.com/counter/pdf/10.1186/s40824-022-00285-3",
+    "abstract": "BACKGROUND: The requirements for cell-encapsulated injectable and bioprintable hydrogels are extrusion ability, cell supportive micro-environment and reasonable post-printing stability for the acclimatization of the cells in the target site. Detonation nanodiamond (ND) has shown its potential to improve the mechanical and biological properties of such hydrogels. Enhancing the performance properties of natural biopolymer gelatin-based hydrogels can widen their biomedical application possibilities to various areas including drug delivery, tissue engineering and 3D bioprinting. METHOD: In this study, natural cross-linker tannic acid (TA) is used along with ferrous sulphate (FS) to optimize the swelling and disintegration of extrudable and 3D printable gelatin hydrogels. The amounts of TA and FS are restricted to improve the extrusion ability of the gels in 3D printing. Further, ND particles (detonation type) are dispersed using twin screw extrusion technology to study their effect on mechanical and biological properties of the 3D printing hydrogel. RESULTS: The improved dispersion of ND particles helps to improve compressive strength almost ten times and dynamic modulus three times using 40 mg ND (2% w/w of gelatin). The surface-functional groups of detonation ND also contributed for such improvement in mechanical properties due to higher interaction with the hydrogel matrix. The stability of the hydrogels in water was also improved to 7 days. Four times improvement of the cell growth and proliferation was observed in ND based hydrogel. CONCLUSION: The cell-supportive nature of these moderately stable and extrudable ND dispersed gelatin hydrogels makes them a good candidate for short term regenerative applications of cell-encapsulated injectable hydrogels with better mechanical properties."
+   },
+   {
+    "id": "https://openalex.org/W4200156041",
+    "doi": "https://doi.org/10.3390/ijms23010264",
+    "title": "An Efficient Protein Evolution Workflow for the Improvement of Bacterial PET Hydrolyzing Enzymes",
+    "year": 2021,
+    "cited": 43,
+    "venue": "International Journal of Molecular Sciences",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "biodegradable polymer synthesis and properties",
+     "Recycling and Waste Management Techniques"
+    ],
+    "oa_url": "https://doi.org/10.3390/ijms23010264",
+    "abstract": "Enzymatic degradation is a promising green approach to bioremediation and recycling of the polymer poly(ethylene terephthalate) (PET). In the past few years, several PET-hydrolysing enzymes (PHEs) have been discovered, and new variants have been evolved by protein engineering. Here, we report on a straightforward workflow employing semi-rational protein engineering combined to a high-throughput screening of variant libraries for their activity on PET nanoparticles. Using this approach, starting from the double variant W159H/S238F of Ideonella sakaiensis 201-F6 PETase, the W159H/F238A-ΔIsPET variant, possessing a higher hydrolytic activity on PET, was identified. This variant was stabilized by introducing two additional known substitutions (S121E and D186H) generating the TS-ΔIsPET variant. By using 0.1 mg mL−1 of TS-ΔIsPET, ~10.6 mM of degradation products were produced in 2 days from 9 mg mL−1 PET microparticles (~26% depolymerization yield). Indeed, TS-ΔIsPET allowed a massive degradation of PET nanoparticles (>80% depolymerization yield) in 1.5 h using only 20 μg of enzyme mL−1. The rationale underlying the effect on the catalytic parameters due to the F238A substitution was studied by enzymatic investigation and molecular dynamics/docking analysis. The present workflow is a well-suited protocol for the evolution of PHEs to help generate an efficient enzymatic toolbox for polyester degradation."
+   },
+   {
+    "id": "https://openalex.org/W3204058302",
+    "doi": "https://doi.org/10.1002/adma.202106858",
+    "title": "The Importance of Surface Adsorbates in Solution‐Processed Thermoelectric Materials: The Case of SnSe",
+    "year": 2021,
+    "cited": 43,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Chalcogenide Semiconductor Thin Films",
+     "Advanced Thermodynamics and Statistical Mechanics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202106858",
+    "abstract": "Abstract Solution synthesis of particles emerges as an alternative to prepare thermoelectric materials with less demanding processing conditions than conventional solid‐state synthetic methods. However, solution synthesis generally involves the presence of additional molecules or ions belonging to the precursors or added to enable solubility and/or regulate nucleation and growth. These molecules or ions can end up in the particles as surface adsorbates and interfere in the material properties. This work demonstrates that ionic adsorbates, in particular Na+ ions, are electrostatically adsorbed in SnSe particles synthesized in water and play a crucial role not only in directing the material nano/microstructure but also in determining the transport properties of the consolidated material. In dense pellets prepared by sintering SnSe particles, Na remains within the crystal lattice as dopant, in dislocations, precipitates, and forming grain boundary complexions. These results highlight the importance of considering all the possible unintentional impurities to establish proper structure–property relationships and control material properties in solution‐processed thermoelectric materials."
+   },
+   {
+    "id": "https://openalex.org/W4291452749",
+    "doi": "https://doi.org/10.1039/d2nr03240f",
+    "title": "Designing the ultrasonic treatment of nanoparticle-dispersions via machine learning",
+    "year": 2022,
+    "cited": 42,
+    "venue": "Nanoscale",
+    "topics": [
+     "Microfluidic and Bio-sensing Technologies",
+     "Spectroscopy Techniques in Biomedical and Chemical Research",
+     "Electrostatics and Colloid Interactions"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2022/nr/d2nr03240f",
+    "abstract": "Ultrasonication is a widely used and standardized method to redisperse nanopowders in liquids and to homogenize nanoparticle dispersions. One goal of sonication is to disrupt agglomerates without changing the intrinsic physicochemical properties of the primary particles. The outcome of sonication, however, is most of the time uncertain, and quantitative models have been beyond reach. The magnitude of this problem is considerable owing to fact that the efficiency of sonication is not only dependent on the parameters of the actual device, but also on the physicochemical properties such as of the particle dispersion itself. As a consequence, sonication suffers from poor reproducibility. To tackle this problem, we propose to involve machine learning. By focusing on four nanoparticle types in aqueous dispersions, we combine supervised machine learning and dynamic light scattering to analyze the aggregate size after sonication, and demonstrate the potential to improve considerably the design and reproducibility of sonication experiments."
+   },
+   {
+    "id": "https://openalex.org/W4318264086",
+    "doi": "https://doi.org/10.1002/smll.202208259",
+    "title": "Magnetically Driven Self‐Degrading Zinc‐Containing Cystine Microrobots for Treatment of Prostate Cancer",
+    "year": 2023,
+    "cited": 41,
+    "venue": "Small",
+    "topics": [
+     "Micro and Nano Robotics",
+     "Molecular Communication and Nanonetworks",
+     "Nanoparticle-Based Drug Delivery"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202208259",
+    "abstract": "Abstract Prostate cancer is the most commonly diagnosed tumor disease in men, and its treatment is still a big challenge in standard oncology therapy. Magnetically actuated microrobots represent the most promising technology in modern nanomedicine, offering the advantage of wireless guidance, effective cell penetration, and non‐invasive actuation. Here, new biodegradable magnetically actuated zinc/cystine‐based microrobots for in situ treatment of prostate cancer cells are reported. The microrobots are fabricated via metal‐ion‐mediated self‐assembly of the amino acid cystine encapsulating superparamagnetic Fe3O4 nanoparticles (NPs) during the synthesis, which allows their precise manipulation by a rotating magnetic field. Inside the cells, the typical enzymatic reducing environment favors the disassembly of the aminoacidic chemical structure due to the cleavage of cystine disulfide bonds and disruption of non‐covalent interactions with the metal ions, as demonstrated by in vitro experiments with reduced nicotinamide adenine dinucleotide (NADH). In this way, the cystine microrobots served for site‐specific delivery of Zn2+ ions responsible for tumor cell killing via a “Trojan horse effect”. This work presents a new concept of cell internalization exploiting robotic systems’ self‐degradation, proposing a step forward in non‐invasive cancer therapy."
+   },
+   {
+    "id": "https://openalex.org/W4409119061",
+    "doi": "https://doi.org/10.1002/mabi.202400640",
+    "title": "Coriander‐Derived Exosome‐Like Nanovesicles Laden Hydrogel with Antioxidant Property Accelerates Wound Healing",
+    "year": 2025,
+    "cited": 39,
+    "venue": "Macromolecular Bioscience",
+    "topics": [
+     "Wound Healing and Treatments",
+     "Extracellular vesicles in disease",
+     "Burn Injury Management and Outcomes"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/mabi.202400640",
+    "abstract": "The oxidative balance and inflammatory responses play important roles in wound healing. Plant-derived exosome-like nanovesicles exhibit antioxidant or anti-inflammatory properties. However, their effects and underlying molecular mechanisms of action in wound healing remain unclear. Herein, coriander-derived exosome-like nanovesicles (CDENs) are isolated and characterized. It is found that the CDENs can be internalized by HaCaT cells and mouse skin tissue, promoting cell migration, scavenging reactive oxygen species (ROS) by increasing the expression of antioxidant enzymes, and effectively relieving inflammation. Furthermore, it designs a CDENs-based hydrogel with a sustained CDENs-release effect and excellent biocompatibility, and explored its potential for use in wound healing in vivo. During the different phases of wound healing, CDENs-hydrogel facilitated macrophage M2 polarization in the inflammation phase, promoted angiogenesis in the proliferation phase, and expedited collagen deposition in the remodeling phase. Mechanistically, through releasing CDENs, CDENs-hydrogel activated Nrf2 signaling pathway, which enhanced the antioxidant enzyme defense system and reduced the inflammatory response, ultimately accelerated wound healing process. This is the first report that CDENs-hydrogel holds great promise as a safe and effective alternative for clinical wound management."
+   },
+   {
+    "id": "https://openalex.org/W4380728285",
+    "doi": "https://doi.org/10.1021/acs.jafc.2c09153",
+    "title": "Influence of CuO Nanoparticle Aspect Ratio and Surface Charge on Disease Suppression in Tomato (Solanum lycopersicum)",
+    "year": 2023,
+    "cited": 39,
+    "venue": "Journal of Agricultural and Food Chemistry",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Copper-based nanomaterials and applications",
+     "Coagulation and Flocculation Studies"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jafc.2c09153",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Nanoparticles (NPs) have been shown to deliver micronutrients to plants to improve health, increase biomass, and suppress disease. Nanoscale properties such as morphology, size, composition, and surface chemistry have all been shown to impact nanomaterial interactions with plant systems. An organic-ligand-free synthesis method was used to prepare positively charged copper oxide (CuO) nanospikes, negatively charged CuO nanospikes, and negatively charged CuO nanosheets with exposed (001) crystal faces. X-ray photoelectron spectroscopy measurements show that the negative charge correlates to increased surface concentration of O on the NP surface, whereas relatively higher Cu concentrations are observed on the positively charged surfaces. The NPs were then used to treat tomato ( Solanum lycopersicum ) grown in soil infested with Fusarium oxysporum f. sp. lycopersici under greenhouse conditions. The negatively charged CuO significantly reduced disease progression and increased biomass, while the positively charged NPs and a CuSO 4 salt control had little impact on the plants. Self-assembled monolayers were used to mimic the leaf surface to understand the intermolecular interactions between the NPs and the plant leaf; the data demonstrate that NP electrostatics and hydrogen-bonding interactions play an important role in adsorption onto leaf surfaces. These findings have important implications for the tunable design of materials as a strategy for the use of nano-enabled agriculture to increase food production."
+   },
+   {
+    "id": "https://openalex.org/W2960954068",
+    "doi": "https://doi.org/10.1016/j.ejpb.2019.07.015",
+    "title": "Exploring the enzymatic degradation of poly(glycerol adipate)",
+    "year": 2019,
+    "cited": 37,
+    "venue": "European Journal of Pharmaceutics and Biopharmaceutics",
+    "topics": [
+     "biodegradable polymer synthesis and properties",
+     "Hydrogels: synthesis, properties, applications",
+     "Polymer Surface Interaction Studies"
+    ],
+    "oa_url": "https://research.birmingham.ac.uk/en/publications/7c40f716-c4b3-4507-b08e-8cdd597d2344",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4377288034",
+    "doi": "https://doi.org/10.3390/app13106263",
+    "title": "Ion Exchange MIEX® GOLD Resin as a Promising Sorbent for the Removal of PFAS Compounds",
+    "year": 2023,
+    "cited": 36,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Per- and polyfluoroalkyl substances research",
+     "Carbon Dioxide Capture Technologies",
+     "Toxic Organic Pollutants Impact"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/13/10/6263/pdf?version=1684568382",
+    "abstract": "Per- and polyfluoroalkyl substances (PFASs) are synthetic compounds, which have been widely produced, used, and recently identified as extremely toxic chemicals, and are responsible for serious environmental and human health risks. In this study, the removal efficiency of MIEX® GOLD resin was tested against six PFAS compounds including perfluorobutanoic acid (PFBA), perfluorobutanesulfonic acid (PFBS), perfluorohexanoic acid (PFHxA), perfluorohexanesulfonic acid (PFHxS), perfluorooctanoic acid (PFOA), and perfluorooctanesulfonic acid (PFOS). The removal of PFASs and the regeneration of resin (NaCl-saturated methanol) were achieved via adsorption and desorption mechanisms. In all cases, the removal efficiency was greater than 99% where the volume ratio of 1 ppm PFAS to resin was maintained at 50-bed volume. Furthermore, the adsorption capacity of MIEX® GOLD resin was studied for PFOA and PFHxS and achieved 1.05 ± 0.01 g PFOA adsorption and 1.01 ± 0.04 g PFHxS adsorption per gram of resin. In addition, a detailed study on the interference of natural organic matter (NOM) and inorganic matter was carried out against PFHxA, PFOA, and PFOS. The presence of 10 ppm NOM (5 ppm tannic acid + 5 ppm humic acid) and 25 ppm inorganic matter (5 ppm nitrate + 20 ppm sulfate) showed no noticeable interference in the removal of selected PFAS compounds. Compared to sulfonic acid-containing PFASs, the interference of organic and inorganic matter on carboxylic acid-containing PFASs was slightly higher. The regeneration of PFAS-adsorbed resin was studied using a mixed solution containing 70% methanol and saturated NaCl. Desorption of PFHxS, PFOS, and PFOA was found to be 98.3, 100, and 43.3%, respectively. The results again indicate that the resin regeneration is strongly affected by the functional group of PFASs; i.e., resin with sulfonic acid-containing PFAS is much easier to regenerate than carboxylic acid-containing PFAS compounds. All the PFAS analyses were performed by using mass spectroscopy and liquid chromatography–mass spectroscopy. In conclusion, this study confirms the remarkable efficiency of MIEX® GOLD resin in removing PFAS compounds, even in the presence of a high concentration of organic and inorganic interferences, and its capacity to be regenerated for repeated usage. These advantages make MIEX® GOLD a promising product for the remediation of PFAS-contaminated water. This study in the broader sense proves that MIEX® GOLD is a promising adsorbent and provides the ground for future study to treat contaminated groundwater."
+   },
+   {
+    "id": "https://openalex.org/W4377195769",
+    "doi": "https://doi.org/10.3390/mi14051086",
+    "title": "A Novel NanoMIP–SPR Sensor for the Point-of-Care Diagnosis of Breast Cancer",
+    "year": 2023,
+    "cited": 35,
+    "venue": "Micromachines",
+    "topics": [
+     "Advanced biosensing and bioanalysis techniques",
+     "Advanced Biosensing Techniques and Applications",
+     "Biosensors and Analytical Detection"
+    ],
+    "oa_url": "https://www.mdpi.com/2072-666X/14/5/1086/pdf?version=1684658999",
+    "abstract": "Simple, fast, selective, and reliable detection of human epidermal growth factor receptor 2 (HER2) is of utmost importance in the early diagnosis of breast cancer to prevent its high prevalence and mortality. Molecularly imprinted polymers (MIPs), also known as artificial antibodies, have recently been used as a specific tool in cancer diagnosis and therapy. In this study, a miniaturized surface plasmon resonance (SPR)-based sensor was developed using epitope-mediated HER2-nanoMIPs. The nanoMIP receptors were characterized using dynamic light scattering (DLS), zeta potential, Fourier-transform infrared spectroscopy (FT-IR), transmission electron microscopy (TEM), energy-dispersive X-ray spectroscopy (EDX), and fluorescent microscopy. The average size of the nanoMIPs was determined to be 67.5 ± 12.5 nm. The proposed novel SPR sensor provided superior selectivity to HER2 with a detection limit (LOD) of 11.6 pg mL−1 in human serum. The high specificity of the sensor was confirmed by cross-reactivity studies using P53, human serum albumin (HSA), transferrin, and glucose. The sensor preparation steps were successfully characterized by employing cyclic and square wave voltammetry. The nanoMIP–SPR sensor demonstrates great potential for use in the early diagnosis of breast cancer as a robust tool with high sensitivity, selectivity, and specificity."
+   },
+   {
+    "id": "https://openalex.org/W4401443616",
+    "doi": "https://doi.org/10.1002/adfm.202410167",
+    "title": "Reconfigurable Magnetic Liquid Metal Microrobots: A Regenerable Solution for the Capture and Removal of Micro/Nanoplastics",
+    "year": 2024,
+    "cited": 34,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Micro and Nano Robotics",
+     "Modular Robots and Swarm Intelligence",
+     "Microplastics and Plastic Pollution"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202410167",
+    "abstract": "Abstract The pervasive presence of micro/nanoplastics in the environment is a significant threat to ecosystems and human health, demanding effective remediation strategies. Traditional methods for extracting these pollutants from water are often inadequate, typically leaving environmentally harmful residues. In response, this work introduces an innovative approach using reconfigurable and regenerable liquid metal microrobots (LiquidBots) that are magnetically driven to actively sequester micro/nanoplastics from aquatic environments. These LiquidBots utilize a coating of gallium oxide for enhanced adhesion and electrostatic interaction to capture over 80% of nanoplastics present in the solution. Additionally, the LiquidBots can be easily regenerated through sonication, which dislodges captured nanoplastics, allowing the microrobots to be reused. This novel technology offers a highly efficient, adaptable, and sustainable solution to combat the micro/nanoplastic pollution crisis."
+   },
+   {
+    "id": "https://openalex.org/W4360989320",
+    "doi": "https://doi.org/10.1021/jacs.2c13489",
+    "title": "Biomimetic Approach to Promote Cellular Uptake and Enhance Photoacoustic Properties of Tumor-Seeking Dyes",
+    "year": 2023,
+    "cited": 34,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Nanoplatforms for cancer theranostics",
+     "Photoacoustic and Ultrasonic Imaging",
+     "Photodynamic Therapy Research Studies"
+    ],
+    "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10120057/pdf/nihms-1888775.pdf",
+    "abstract": "The attachment of glucose to drugs and imaging agents enables cancer cell targeting via interactions with GLUT1 overexpressed on the cell surface. While an added benefit of this modification is the solubilizing effect of carbohydrates, in the context of imaging agents, aqueous solubility does not guarantee decreased π-stacking or aggregation. The resulting broadening of the absorbance spectrum is a detriment to photoacoustic (PA) imaging since the signal intensity, accuracy, and image quality all rely on reliable spectral unmixing. To address this major limitation and further enhance the tumor-targeting ability of imaging agents, we have taken a biomimetic approach to design a multivalent glucose moiety (mvGlu). We showcase the utility of this new group by developing aza-BODIPY-based contrast agents boasting a significant PA signal enhancement greater than 11-fold after spectral unmixing. Moreover, when applied to targeting cancer cells, effective staining could be achieved with ultra-low dye concentrations (50 nM) and compared to a non-targeted analogue, the signal intensity was >1000-fold higher. Lastly, we employed the mvGlu technology to develop a logic-gated acoustogenic probe to detect intratumoral copper (i.e., Cu(I)), which is an emerging cancer biomarker, in a murine model of breast cancer. This exciting application was not possible using other acoustogenic probes previously developed for copper sensing."
+   },
+   {
+    "id": "https://openalex.org/W3203810020",
+    "doi": "https://doi.org/10.1038/s41598-021-98102-9",
+    "title": "Vm-related extracellular potentials observed in red blood cells",
+    "year": 2021,
+    "cited": 34,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Ion channel regulation and function",
+     "Molecular Communication and Nanonetworks",
+     "stochastic dynamics and bifurcation"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-021-98102-9.pdf",
+    "abstract": "Abstract Even in nonexcitable cells, the membrane potential V m is fundamental to cell function, with roles from ion channel regulation, development, to cancer metastasis. V m arises from transmembrane ion concentration gradients; standard models assume homogeneous extracellular and intracellular ion concentrations, and that V m only exists across the cell membrane and has no significance beyond it. Using red blood cells, we show that this is incorrect, or at least incomplete; V m is detectable beyond the cell surface, and modulating V m produces quantifiable and consistent changes in extracellular potential. Evidence strongly suggests this is due to capacitive coupling between V m and the electrical double layer, rather than molecular transporters. We show that modulating V m changes the extracellular ion composition, mimicking the behaviour if voltage-gated ion channels in non-excitable channels. We also observed V m -synchronised circadian rhythms in extracellular potential, with significant implications for cell–cell interactions and cardiovascular disease."
+   },
+   {
+    "id": "https://openalex.org/W4313325337",
+    "doi": "https://doi.org/10.1002/sstr.202200284",
+    "title": "Droplet‐Based Microfluidics Platform for the Synthesis of Single‐Atom Heterogeneous Catalysts",
+    "year": 2022,
+    "cited": 33,
+    "venue": "Small Structures",
+    "topics": [
+     "Innovative Microfluidic and Catalytic Techniques Innovation",
+     "Catalytic Processes in Materials Science",
+     "Electronic and Structural Properties of Oxides"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/sstr.202200284",
+    "abstract": "Wet chemical approaches are among the most versatile and scalable strategies for preparing single‐atom heterogeneous catalysts (SACs). However, despite their broad application, the synthesis of SACs via these routes remains largely ad hoc, with limited attention to the effect of different synthetic parameters on the stabilization of metal species. As a proof of concept, herein, a microfluidic platform is demonstrated for short‐timescale (<10 s), systematic syntheses of SACs via wet impregnation using a range of metal precursor–carrier combinations. The microfluidic environment within rapidly mixed, nanoliter droplets ensures precise control of the concentrations and residence times of the support particles in the metal precursor solutions. This enables the rapid assessment of the influence of the metal precursor concentration on the uptake and dispersion of the adsorbed metal species, as demonstrated for the synthesis of palladium and platinum SACs based on a high‐surface form of graphitic carbon nitride (C 3 N 4 ). Extension to SACs based on other metals (Ni) and relevant carriers (N‐doped carbon, γ‐alumina) confirms the generality of the synthesis method. The microfluidic approach opens possibilities for high‐throughput parameter screening and mechanistic studies in the design of heterogeneous single‐atom catalysts."
+   },
+   {
+    "id": "https://openalex.org/W3120580949",
+    "doi": "https://doi.org/10.2147/ijn.s273883",
+    "title": "The Adjuvant of α-Galactosylceramide Presented by Gold Nanoparticles Enhances Antitumor Immune Responses of MUC1 Antigen-Based Tumor Vaccines",
+    "year": 2021,
+    "cited": 33,
+    "venue": "International Journal of Nanomedicine",
+    "topics": [
+     "Immunotherapy and Immune Responses",
+     "Glycosylation and Glycoproteins Research",
+     "Immune Response and Inflammation"
+    ],
+    "oa_url": "https://www.dovepress.com/getfile.php?fileID=65678",
+    "abstract": "BACKGROUND: Therapeutic tumor vaccines are one of the most promising strategies and have attracted great attention in cancer treatment. However, most of them have shown unsatisfactory immunogenicity, there are still few available vaccines for clinical use. Therefore, there is an urgent demand to develop novel strategies to improve the immune efficacy of antitumor vaccines. PURPOSE: This study aimed to develop novel adjuvants and carriers to enhance the immune effect of MUC1 glycopeptide antigen-based antitumor vaccines. METHODS: An antitumor vaccine was developed, in which MUC1 glycopeptide was used as tumor-associated antigen, α-GalCer served as an immune adjuvant and AuNPs was a multivalent carrier. RESULTS: Immunological evaluation results indicated that the constructed vaccines enabled a significant antibody response. FACS analysis and immunofluorescence assay showed that the induced antisera exhibited a specific binding with MUC1 positive MCF-7 cells. Moreover, the induced antibody can mediate CDC to kill MCF-7 cells. Besides stimulating B cells to produce MUC1-specific antibodies, the prepared vaccines also induced MUC1-specific CTLs in vitro. Furthermore, the vaccines significantly delayed tumor development in tumor-bearing mice model. CONCLUSION: These results showed that the construction of vaccines by presenting α-GalCer adjuvant and an antigen on gold nanoparticles offers a potential strategy to improve the antitumor response in cancer immunotherapy."
+   },
+   {
+    "id": "https://openalex.org/W4285587236",
+    "doi": "https://doi.org/10.1186/s12951-022-01544-0",
+    "title": "Modularity of RBC hitchhiking with polymeric nanoparticles: testing the limits of non-covalent adsorption",
+    "year": 2022,
+    "cited": 32,
+    "venue": "Journal of Nanobiotechnology",
+    "topics": [
+     "Blood properties and coagulation",
+     "Erythrocyte Function and Pathophysiology",
+     "Advancements in Transdermal Drug Delivery"
+    ],
+    "oa_url": "https://jnanobiotechnology.biomedcentral.com/counter/pdf/10.1186/s12951-022-01544-0",
+    "abstract": "Red blood cell (RBC) hitchhiking has great potential in enhancing drug therapy, by improving targeting and reducing rapid clearance of nanoparticles (NPs). However, to improve the potential for clinical translation of RBC hitchhiking, a more thorough understanding of the RBC-NP interface is needed. Here, we evaluate the effects of NP surface parameters on the success and biocompatibility of NP adsorption to extracted RBCs from various species. Major differences in RBC characteristics between rabbit, mouse and human were proven to significantly impact NP adsorption outcomes. Additionally, the effects of NP design parameters, including NP hydrophobicity, zeta potential, surfactant concentration and drug encapsulation, on RBC hitchhiking are investigated. Our studies demonstrate the importance of electrostatic interactions in balancing NP adsorption success and biocompatibility. We further investigated the effect of varying the anti-coagulant used for blood storage. The results presented here offer new insights into the parameters that impact NP adsorption on RBCs that will assist researchers in experimental design choices for using RBC hitchhiking as drug delivery strategy."
+   },
+   {
+    "id": "https://openalex.org/W3207026541",
+    "doi": "https://doi.org/10.3390/antibiotics10111275",
+    "title": "Biosynthesis of Smaller-Sized Platinum Nanoparticles Using the Leaf Extract of Combretum erythrophyllum and Its Antibacterial Activities",
+    "year": 2021,
+    "cited": 32,
+    "venue": "Antibiotics",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Essential Oils and Antimicrobial Activity",
+     "Medicinal Plants and Neuroprotection"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-6382/10/11/1275/pdf?version=1634721490",
+    "abstract": "Nanobiotechnology is a promising field in the development of safe antibiotics to combat the increasing trend of antibiotic resistance. Nature is a vast reservoir for green materials used in the synthesis of non-toxic and environmentally friendly nano-antibiotics. We present for the first time a facile, green, cost-effective, plant-mediated synthesis of platinum nanoparticles (PtNPs) using the extract of Combretum erythrophyllum (CE) plant leaves. The extract of CE served as both a bio-reductant and a stabilizing agent. The as-synthesized PtNPs were characterized using ultraviolet-visible (UV–Vis) absorption spectroscopy, high-resolution transmission electron microscopy (HR-TEM), Fourier transform infrared spectroscopy (FTIR), X-ray diffraction (XRD), and dynamic light scattering (DLS) techniques. The HR-TEM image confirmed that the PtNPs are ultrasmall, spherical, and well dispersed with an average particle diameter of 1.04 ± 0.26 nm. The PtNPs showed strong antibacterial activities against pathogenic Gram-positive Staphylococcus epidermidis (ATCC 14990) at a minimum inhibitory concentration (MIC) of 3.125 µg/mL and Gram-negative Klebsiella oxytoca (ATCC 8724) and Klebsiella aerogenes (ATCC 27853) at an MIC value of 1.56 µg/mL. The CE-stabilized PtNPs was mostly effective in Klebsiella species that are causative organisms in nosocomial infections."
+   },
+   {
+    "id": "https://openalex.org/W4387002662",
+    "doi": "https://doi.org/10.1002/cpz1.898",
+    "title": "mRNA Synthesis and Encapsulation in Ionizable Lipid Nanoparticles",
+    "year": 2023,
+    "cited": 31,
+    "venue": "Current Protocols",
+    "topics": [
+     "RNA Interference and Gene Delivery",
+     "Immunotherapy and Immune Responses",
+     "Animal Virus Infections Studies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cpz1.898",
+    "abstract": "mRNA vaccines have recently generated significant interest due to their success during the COVID-19 pandemic. Their success is due to advances in mRNA design and encapsulation into ionizable lipid nanoparticles (iLNPs). This has highlighted the potential for the use of mRNA-iLNPs in other settings such as cancer, gene therapy, or vaccines for different infectious diseases. Here, we describe the production of mRNA-iLNPs using commercially available reagents that are suitable for use as vaccines and therapeutics. This article contains detailed protocols for the synthesis of mRNA by in vitro transcription with enzymatic capping and tailing and the encapsulation of the mRNA into iLNPs using the ionizable lipid DLin-MC3-DMA. DLin-MC3-DMA is often used as a benchmark for new formulations and provides an efficient delivery vehicle for screening mRNA design. The protocol also describes how the formulation can be adapted to other lipids. Finally, a stepwise methodology is presented for the characterization and quality control of mRNA-iLNPs, including measuring mRNA concentration and encapsulation efficiency, particle size, and zeta potential. © 2023 The Authors. Current Protocols published by Wiley Periodicals LLC. Basic Protocol 1: Synthesis of mRNA by in vitro transcription and enzymatic capping and tailing Basic Protocol 2: Encapsulation of mRNA into ionizable lipid nanoparticles Alternate Protocol: Small-scale encapsulation of mRNA using preformed vesicles Basic Protocol 3: Characterization and quality control of mRNA ionizable lipid nanoparticles."
+   },
+   {
+    "id": "https://openalex.org/W4322495928",
+    "doi": "https://doi.org/10.1002/adhm.202203404",
+    "title": "Poly‐Catecholic Functionalization of Biomolecules for Rapid Gelation, Robust Injectable Bioadhesion, and Near‐Infrared Responsiveness",
+    "year": 2023,
+    "cited": 31,
+    "venue": "Advanced Healthcare Materials",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "3D Printing in Biomedical Research",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adhm.202203404",
+    "abstract": "Abstract Mussel‐inspired catechol‐functionalization of degradable natural biomaterials has garnered significant interest as an approach to achieve bioadhesion for sutureless wound closure. However, conjugation capacity in standard coupling reactions, such as carbodiimide chemistry, is limited by low yield and lack of abundant conjugation sites. Here, a simple oxidative polymerization step before conjugation of catechol‐carrying molecules (i.e., 3,4‐dihydroxy‐l‐phenylalanine, l‐DOPA) as a potential approach to amplify catechol function in bioadhesion of natural gelatin biomaterials is proposed. Solutions of gelatin modified with poly(l‐DOPA) moieties (GelDOPA) are characterized by faster physical gelation and increased viscosity, providing better wound control on double‐curved tissue surfaces compared to those of l‐DOPA‐conjugated gelatin. Physical hydrogels treated topically with low concentrations of NaIO4 solutions are crosslinked on‐demand via through‐thickness diffusion. Poly(l‐DOPA) conjugates enhance crosslinking density compared to l‐DOPA conjugated gelatin, resulting in lower swelling and enhanced cohesion in physiological conditions. Together with cohesion, more robust bioadhesion at body temperature is achieved by poly(l‐DOPA) conjugates, exceeding those of commercial sealants. Further, poly(l‐DOPA) motifs introduced photothermal responsiveness via near‐infrared (NIR) irradiation for controlled drug release and potential applications in photothermal therapy. The above functionalities, along with antibacterial activity, render the proposed approach an effective biomaterial design strategy for wound closure applications."
+   },
+   {
+    "id": "https://openalex.org/W4403895071",
+    "doi": "https://doi.org/10.1002/adma.202404605",
+    "title": "Engineering Radiocatalytic Nanoliposomes with Hydrophobic Gold Nanoclusters for Radiotherapy Enhancement",
+    "year": 2024,
+    "cited": 30,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Nanocluster Synthesis and Applications",
+     "Nanoparticle-Based Drug Delivery",
+     "Nanoplatforms for cancer theranostics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202404605",
+    "abstract": "Abstract Chemoradiation therapy is on the forefront of pancreatic cancer care, and there is a continued effort to improve its safety and efficacy. Liposomes are widely used to improve chemotherapy safety, and may accurately deliver high‐Z element‐ radiocatalytic nanomaterials to cancer tissues. In this study, the interaction between X‐rays and long‐circulating nanoliposome formulations loaded with gold nanoclusters is explored in the context of oxaliplatin chemotherapy for desmoplastic pancreatic cancer. Hydrophobic gold nanoclusters stabilized with dodecanethiol (AuDDT) are efficiently incorporated in nanoliposomal bilayers. AuDDT‐nanoliposomes significantly augmented radiation‐induced • OH production, which is most effective with monochromatic X‐rays at energies that exceed the K‐shell electron binding energy of Au (81.7 keV). Cargo release assays reveal that AuDDT‐nanoliposomes can permeabilize lipid bilayers in an X‐ray dose‐ and formulation‐dependent manner. The radiocatalytic effect of AuDDT‐nanoliposomes significantly augments radiotherapy and oxaliplatin‐chemoradiotherapy outcomes in 3D pancreatic microtumors. The PEGylated AuDDT‐nanoliposomes display high tumor accumulation in an orthotopic mouse model of pancreatic cancer, showing promise for nanoliposomes as carriers for radiocatalytic nanomaterials. Altogether, compelling proof for chemo‐radiation dose‐enhancement using AuDDT‐nanoliposomes is presented. Further improving the nanoliposomal loading of high‐Z elements will advance the safety, efficacy, and translatability of such chemoradiation dose‐enhancement approaches."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Malvern Panalytical Zetasizer\") AND OPEN_ACCESS:y",

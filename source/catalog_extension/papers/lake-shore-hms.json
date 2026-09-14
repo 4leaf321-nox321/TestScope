@@ -12,8 +12,24 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Lake Shore 7600 7700A\" OR \"Lake Shore 7600\" OR \"Lake Shore 7604 HMS\" OR \"Lake Shore 7607 HMS\" OR \"Lake Shore 7704A HMS\" OR \"Lake Shore 7707A HMS\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4308970058",
+    "doi": "https://doi.org/10.3390/nano12223994",
+    "title": "Optimization of the Selenization Temperature on the Mn-Substituted Cu2ZnSn(S,Se)4 Thin Films and Its Impact on the Performance of Solar Cells",
+    "year": 2022,
+    "cited": 5,
+    "venue": "Nanomaterials",
+    "topics": [
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-4991/12/22/3994/pdf?version=1668253063",
+    "abstract": "Cu2ZnSn(S,Se)4 (CZTSSe) films are considered to be promising materials in the advancement of thin-film solar cells. In such films, the amounts of S and Se control the bandgap. Therefore, it is crucial to control the concentration of S/Se to improve efficiency. In this study, Cu2MnxZn1−xSnS4 (CMZTS) films were fabricated using the sol-gel method and treated in a Se environment. The films were post-annealed in a Se atmosphere at various temperature ranges from 300 °C to 550 °C at intervals of 200 °C for 15 min to obtain Cu2MnxZn1−xSn(S,Se)4 (CMZTSSe). The elemental properties, surface morphology, and electro-optical properties of the CMZTSSe films were investigated in detail. The bandgap of the CMZTSSe films was adjustable in the scope of 1.11–1.22 eV. The structural propeties and phase purity of the CMZTSSe films were analyzed by X-ray diffraction and Raman analysis. High-quality CMZTSSe films with large grains could be acquired by suitably changing the selenization temperature. Under the optimized selenization conditions, the efficiency of the fabricated CMZTSSe device reached 3.08%."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Lake Shore 7600 7700A\" OR \"Lake Shore 7600\" OR \"Lake Shore 7604 HMS\" OR \"Lake Shore 7607 HMS\" OR \"Lake Shore 7704A HMS\" OR \"Lake Shore 7707A HMS\") AND OPEN_ACCESS:y",

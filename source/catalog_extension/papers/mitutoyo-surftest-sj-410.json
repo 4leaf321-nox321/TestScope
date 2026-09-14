@@ -9,8 +9,757 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mitutoyo SJ-410\" OR \"Mitutoyo Surftest SJ-411\" OR \"Mitutoyo Surftest SJ-412\"",
-  "count": null,
-  "works": []
+  "count": 299,
+  "works": [
+   {
+    "id": "https://openalex.org/W4390990888",
+    "doi": "https://doi.org/10.1063/5.0177658",
+    "title": "Optimization of wire spark erosion machining of Grade 9 titanium alloy (Grade 9) using a hybrid learning algorithm",
+    "year": 2024,
+    "cited": 91,
+    "venue": "AIP Advances",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/adv/article-pdf/doi/10.1063/5.0177658/18535148/015319_1_5.0177658.pdf",
+    "abstract": "Manufacturing has grown challenging because of the increased usage of harder materials, such as titanium alloys, in many industries, such as aerospace, automobiles, and marine. Conventional material removal procedures are not suitable for these tough materials due to their increased hardness and slow machinability. Wire Electrical discharge machining (WEDM) is a modern approach for material removal, particularly for harder materials, such as titanium alloys, nickel alloys, hard particle reinforced metal matrix composites, etc. The research design was performed by deeming the independent factors, such as duration of pulse and applied current. The removal rate of material, surface roughness of the machined region, dimensional deviation, and tolerance errors in form/orientation are considered performance metrics. Taguchi’s approach was engaged to assess the process variables, and the importance of the process factors was established using analysis of variance approach. The purpose of this research is to create an AI based decision making tool, which can be utilized to anticipate the various parameters that impact the WEDM material removal process. The discoveries of the present exploration allowing the manufacturers to make better-informed decisions with a developed model’s capability by demonstrating that the model’s predicted values were in close confirmation to the actual values."
+   },
+   {
+    "id": "https://openalex.org/W3047555037",
+    "doi": "https://doi.org/10.1016/j.jnucmat.2020.152420",
+    "title": "Mechanical and chemical properties of PVD and cold spray Cr-coatings on Zircaloy-4",
+    "year": 2020,
+    "cited": 84,
+    "venue": "Journal of Nuclear Materials",
+    "topics": [
+     "Nuclear Materials and Properties",
+     "High-Temperature Coating Behaviors",
+     "Fusion materials and technologies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1848106",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4385544214",
+    "doi": "https://doi.org/10.3390/info14080439",
+    "title": "Machinability of Titanium Grade 5 Alloy for Wire Electrical Discharge Machining Using a Hybrid Learning Algorithm",
+    "year": 2023,
+    "cited": 79,
+    "venue": "Information",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/2078-2489/14/8/439/pdf?version=1691071475",
+    "abstract": "Titanium alloys have found widespread use in aviation, automotive, and marine applications, which makes their implementation in mass production more challenging. Conventional methods of removing these alloy materials are unsuitable because of the high wear rate of cutting and slower rate of processing. The complexities of these materials have prompted the creation of cutting-edge machining methods. Wire Electrical Discharge Machining (WEDM) is a technique that has the potential to be useful for the removal of materials that are harder and electrically conductive. In order to create intricate designs, this method is frequently employed. The input factors, including pulse duration (on/off) and peak current, were taken into account during the experimental design process. The rate of material removal, surface roughness, dimensional deviation, and GD&T errors were opted for as performance indicators. The approach proposed by Taguchi was selected for the investigation of the process factors, and an Analysis of Variance was selected to find out the relative momentousness of each factor. From the analysis it is perceived that the applied current is the predominant factor that influences the chosen output characteristics. The aspiration of this article is to evolve a decision-making model based on a hybrid learning method which can be adopted to predict the selected output measures that affect the WEDM process. According to the findings, the value of the ANFIS-GRG, which was predicted to be 0.7777, was in fact closer to that value than any other value. The proposed model has the ability to help make a variety of different production processes more efficient. The analysis showed that the model’s functionality was enhanced, which helps producers make well-informed decisions."
+   },
+   {
+    "id": "https://openalex.org/W3006853802",
+    "doi": "https://doi.org/10.3390/app10041382",
+    "title": "Post-Processing of Complex SLM Parts by Barrel Finishing",
+    "year": 2020,
+    "cited": 67,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/10/4/1382/pdf?version=1582103251",
+    "abstract": "Selective laser melting (SLM) enables the production of metal complex shapes that are difficult or impossible to obtain with conventional production processes. However, the attainable surface quality is insufficient for most applications; thus, a secondary finishing is frequently required. Barrel finishing is an interesting candidate but is often applied without consistent criteria aimed at finding processing parameters. This work presents a methodology based on Bagnold number evaluation and bed behavior diagram, developed on experimental apparatus with different charges and process parameters. The experimentation on an industrial machine and the profilometric analysis allowed the identification of appropriate process parameters and charge media for finishing the investigated materials (Ti6Al4V and Inconel718). Two case studies, characterized by complex shapes, were considered, and consistent surface measures allowed understanding the capability of the technology."
+   },
+   {
+    "id": "https://openalex.org/W2898626266",
+    "doi": "https://doi.org/10.20944/preprints201811.0025.v1",
+    "title": "Effect of SLM Process Parameters on the Quality of Al Alloy Parts; Part I: Powder Characterization, Density, Surface Roughness, and Dimensional Accuracy",
+    "year": 2018,
+    "cited": 65,
+    "venue": "Preprints.org",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://www.preprints.org/manuscript/201811.0025/v1/download",
+    "abstract": "Additive manufacturing (AM) of high strength Al alloys promises to enhance the performance of critical components related to various aerospace and automotive applications. The key advantage of AM is its ability to generate lightweight, robust, and complex shapes. However, the characteristics of the as-built parts may represent an obstacle to satisfy the part quality requirements. The current study investigates the influence of selective laser melting (SLM) process parameters on the quality of parts fabricated from different Al alloys. A design of experiment (DOE) is used to analyze relative density, porosity, surface roughness, and dimensional accuracy according to the interaction effect between the SLM process parameters. The results show a range of energy densities and SLM process parameters for the AlSi10Mg and Al6061 alloys needed to achieve “optimum” values for each performance characteristic. A process map is developed for each material by combining the optimized range of SLM process parameters for each characteristic to ensure good quality of the as-built parts. The second part of this study investigates the effect of SLM process parameters on the microstructure and mechanical properties of the same Al alloys. This comprehensive study is also aimed at reducing the amount of post-processing needed."
+   },
+   {
+    "id": "https://openalex.org/W3127068311",
+    "doi": "https://doi.org/10.1038/s41598-021-83158-4",
+    "title": "Effects of silicon doping on low-friction and high-hardness diamond-like carbon coating via filtered cathodic vacuum arc deposition",
+    "year": 2021,
+    "cited": 58,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Diamond and Carbon-based Materials Research",
+     "Metal and Thin Film Mechanics",
+     "Lubricants and Their Additives"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-021-83158-4.pdf",
+    "abstract": "In this study, silicon (Si) was doped on a tetrahedral amorphous carbon (ta-C) coating and the tribological characteristics of the resulting Si-doped diamond-like carbon (DLC; a-C:Si:H) were investigated against a SUJ2 ball. The Si fraction in the coating was varied from 0 to ~ 20 at.% by increasing the trimethylsilane gas flow rate during filtered cathodic vacuum arc deposition. The coefficient of friction (CoF) showed no obvious change when the Si fraction was less than ~ 7 at.%. However, after Si doping, it significantly decreased when the Si fraction was greater than ~ 8 at.%. The running-in period also decreased to less than 1000 cycles after Si doping. The rapid formation of Si-rich debris and transfer layer led to the fabrication of a low-friction tribofilm, which was induced by the tribochemical reaction with moisture under ambient conditions. When the Si fraction was ~ 17 at.%, the lowest CoF of less than 0.05 was obtained. Further Si doping beyond the critical point led to the destruction of the film because of reduced hardness."
+   },
+   {
+    "id": "https://openalex.org/W2761029305",
+    "doi": "https://doi.org/10.2341/16-108-l",
+    "title": "Grinding With Diamond Burs and Hydrothermal Aging of a Y-TZP Material: Effect on the Material Surface Characteristics and Bacterial Adhesion",
+    "year": 2017,
+    "cited": 40,
+    "venue": "Operative Dentistry",
+    "topics": [
+     "Dental materials and restorations",
+     "Endodontics and Root Canal Treatments",
+     "Dental Implant Techniques and Outcomes"
+    ],
+    "oa_url": "https://meridian.allenpress.com/operative-dentistry/article-pdf/42/6/669/1831913/16-108-l.pdf",
+    "abstract": "The aim of this study was to evaluate the effect of grinding with diamond burs and low-temperature aging on the material surface characteristics and bacteria adhesion on a yttrium-stabilized tetragonal zirconia polycrystalline (Y-TZP) surface. Y-TZP specimens were made from presintered blocks, sintered as recommended by the manufacturer, and assigned into six groups according to two factors-grinding (three levels: as sintered, grinding with extra-fine diamond bur [25-μm grit], and grinding with coarse diamond bur [181-μm grit]) and hydrothermal aging-to promote low-temperature degradation (two levels: presence/absence). Phase transformation (X-ray diffractometer), surface roughness, micromorphological patterns (atomic force microscopy), and contact angle (goniometer) were analyzed. Bacterial adhesion (colony-forming units [CFU]/biofilm) was quantified using an in vitro polymicrobial biofilm model. Both the surface treatment and hydrothermal aging promoted an increase in m-phase content. Roughness values increased as a function of increasing bur grit sizes. Grinding with a coarse diamond bur resulted in significantly lower values of contact angle (p<0.05) when compared with the extra-fine and control groups, while there were no differences (p<0.05) after hydrothermal aging simulation. The CFU/biofilm results showed that neither the surface treatment nor hydrothermal aging simulation significantly affected the bacteria adherence (p>0.05). Grinding with diamond burs and hydrothermal aging modified the Y-TZP surface properties; however, these properties had no effect on the amount of bacteria adhesion on the material surface."
+   },
+   {
+    "id": "https://openalex.org/W2890056948",
+    "doi": "https://doi.org/10.1109/lawp.2018.2870098",
+    "title": "3-D Printed Horn Antennas and Components Performance for Space and Telecommunications",
+    "year": 2018,
+    "cited": 34,
+    "venue": "IEEE Antennas and Wireless Propagation Letters",
+    "topics": [
+     "Antenna Design and Analysis",
+     "Advanced Antenna and Metasurface Technologies",
+     "3D IC and TSV technologies"
+    ],
+    "oa_url": "https://academica-e.unavarra.es/bitstreams/5cabca61-b0b1-4e83-96d3-bdde035f78dc/download",
+    "abstract": "In this work, a study of the performance of several antennas and components, manufactured using an accurate stereolithography three-dimensional printer and resin for maximum accuracy and detail, is carried out. Electroless plating of the components to cover the pieces with a thick copper layer to improve their mechanical resistance is undertaken. Several SatCom horn antennas and components are designed, manufactured, and tested. A detailed study of a spline horn antenna and a filter is covered. These results are compared to the metallic lathe manufactured versions. Conclusions are derived from these tests, which are useful to improve additive manufactured components in future versions."
+   },
+   {
+    "id": "https://openalex.org/W4289261640",
+    "doi": "https://doi.org/10.1016/j.jmrt.2022.07.129",
+    "title": "Effect of the overlap ratio on surface properties of 7B04 aluminum alloy for aviation during laser derusting",
+    "year": 2022,
+    "cited": 31,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Welding Techniques and Residual Stresses",
+     "Additive Manufacturing Materials and Processes",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785422011681/pdf",
+    "abstract": "Due to the harsh service environment of military aircraft, aluminum alloy on aircraft is prone to corrosion. Maintenance personnel need better rust removal methods to ensure the smooth progress of the flight mission. In this paper, the rust layer on the surface of 7B04 aluminum alloy was cleaned by nanosecond pulsed laser and mechanical grinding. Then the effects on surface morphology, surface roughness, surface hardness, residual stress and corrosion resistance of aluminum alloy were analyzed to determine an improved derusting method and optimize laser cleaning parameter based on the overlap ratio (η). Results showed that mechanical grinding not only did not remove rust completely but also damaged the matrix. When the laser scanning speed was 5650 mm s−1, η was 80%, the rust of the sample was completely removed without damaging the matrix. At the same time, the hardness and corrosion resistance of surface were improved and the appropriate increase of roughness was conducive to the repair of surface coating. When the scanning speed increased and the overlap ratio decreased, there was rust residue which can not meet the requirements of rust removal. When the scanning speed decreased and the overlap ratio increased, the rust was completely removed and the corrosion resistance of the surface was enhanced, but it caused excessive ablation damage to the matrix. And the above two cases will increase the difficulty of coating repair."
+   },
+   {
+    "id": "https://openalex.org/W4225127276",
+    "doi": "https://doi.org/10.3390/pharmaceutics14050956",
+    "title": "Importance of Spray–Wall Interaction and Post-Deposition Liquid Motion in the Transport and Delivery of Pharmaceutical Nasal Sprays",
+    "year": 2022,
+    "cited": 29,
+    "venue": "Pharmaceutics",
+    "topics": [
+     "Fluid Dynamics and Heat Transfer",
+     "Pickering emulsions and particle stabilization",
+     "Inhalation and Respiratory Drug Delivery"
+    ],
+    "oa_url": "https://www.mdpi.com/1999-4923/14/5/956/pdf?version=1651457644",
+    "abstract": "Nasal sprays, which produce relatively large pharmaceutical droplets and have high momentum, are primarily used to deliver locally acting drugs to the nasal mucosa. Depending on spray pump administration conditions and insertion angles, nasal sprays may interact with the nasal surface in ways that creates complex droplet-wall interactions followed by significant liquid motion after initial wall contact. Additionally, liquid motion can occur after deposition as the spray liquid moves in bulk along the nasal surface. It is difficult or impossible to capture these conditions with commonly used computational fluid dynamics (CFD) models of spray droplet transport that typically employ a deposit-on-touch boundary condition. Hence, an updated CFD framework with a new spray-wall interaction (SWI) model in tandem with a post-deposition liquid motion (PDLM) model was developed and applied to evaluate nasal spray delivery for Flonase and Flonase Sensimist products. For both nasal spray products, CFD revealed significant effects of the spray momentum on surface liquid motion, as well as motion of the surface film due to airflow generated shear stress and gravity. With Flonase, these factors substantially influenced the final resting place of the liquid. For Flonase Sensimist, anterior and posterior liquid movements were approximately balanced over time. As a result, comparisons with concurrent in vitro experimental results were substantially improved for Flonase compared with the traditional deposit-on-touch boundary condition. The new SWI-PDLM model highlights the dynamicenvironment that occurs when a nasal spray interacts with a nasal wall surface and can be used to better understand the delivery of current nasal spray products as well as to develop new nasal drug delivery strategies with improved regional targeting."
+   },
+   {
+    "id": "https://openalex.org/W2766258636",
+    "doi": "https://doi.org/10.1590/1807-3107bor-2017.vol31.0082",
+    "title": "Effect of ceramic thickness, grinding, and aging on the mechanical behavior of a polycrystalline zirconia",
+    "year": 2017,
+    "cited": 29,
+    "venue": "Brazilian Oral Research",
+    "topics": [
+     "Dental materials and restorations",
+     "Advanced ceramic materials synthesis",
+     "Recycling and utilization of industrial and municipal waste in materials production"
+    ],
+    "oa_url": "http://www.scielo.br/pdf/bor/v31/1807-3107-bor-31-1807-3107BOR-2017vol310082.pdf",
+    "abstract": "Monolithic restorations of Y-TZP have been recommended as a restorative alternative on prosthetic dentistry as it allows a substantial reduction of ceramic thickness, which means a greater preservation of tooth structure. However, the influence of grinding and aging when using a thinner layer of the material is unclear. This investigation aimed to evaluate and compare the effects of ceramic thickness (0.5 mm and 1.0 mm), grinding and aging (low-temperature degradation) on the mechanical behavior and surface characteristics of a full-contour Y-TZP ceramic. Y-TZP disc-shaped specimens (15 mm diameter) were manufactured with both thicknesses and randomly assigned into 4 groups considering the factors 'grinding with diamond bur' and 'aging in autoclave'. Surface topography (roughness, 3D profilometry and SEM), phase transformation, flexural strength and structural reliability (Weibull) analyses were executed. Grinding affected the surface topography, while aging did not promote any effect. An increase in m-phase content was observed after grinding and aging, although different susceptibilities were observed. Regardless of zirconia's thickness, no deleterious effect of grinding or aging on the mechanical properties was observed. Thus, in our testing assembly, reducing the thickness of the Y-TZP ceramic did not alter its response to grinding and low temperature degradation and did not impair its mechanical performance."
+   },
+   {
+    "id": "https://openalex.org/W3214116958",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.11.054",
+    "title": "Effect of laser remelting on the surface characteristics of 316L stainless steel fabricated via directed energy deposition",
+    "year": 2021,
+    "cited": 28,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421013338/pdf",
+    "abstract": "Herein, laser remelting (LRM) technology was adopted for the stainless steel 316L deposited using the directed energy deposition (DED) process. We focused on examining the scanning direction, laser power, and overlap, which are the main parameters of LRM, and changes in the surface characteristics after LRM. The LRM could remove the traces of the spatter, unmelted powder, and deposited tracks remaining on the DEDed surface. Moreover, overlap was the major factor affecting the surface roughness and waviness. The roughness and waviness of the LRM-treated surface decreased as the overlap increased. An interaction was observed between the laser power and overlap in terms of the surface roughness, and when the laser power was high and the overlap was large, the surface roughness was low. Furthermore, the laser power of 1200 W transferred the excess energy to the surface, reducing the surface improvement. After performing LRM, the thermodynamically unstable crystal grains recrystallized. From the X-ray diffraction results, face-centered cubic and body-centered cubic phases were observed; however, no difference was observed in the phase fraction ratio before and after the LRM treatment. Regarding residual stress measurements, no obvious effect was observed on the removal of tensile residual stress formed on the as-prepared surface. For this reason, the change in hardness after LRM was not significant (increased by 10.7%). However, the costs of postprocessing, such as machining and grinding, can be partially reduced using LRM after DED processing."
+   },
+   {
+    "id": "https://openalex.org/W3164762137",
+    "doi": "https://doi.org/10.3390/ma14112945",
+    "title": "Process–Structure–Property Relationships of Copper Parts Manufactured by Laser Powder Bed Fusion",
+    "year": 2021,
+    "cited": 26,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/11/2945/pdf?version=1622516399",
+    "abstract": "The process-structure-property relationships of copper laser powder bed fusion (L-PBF)-produced parts made of high purity copper powder (99.9 wt %) are examined in this work. A nominal laser beam diameter of 100 μm with a continuous wavelength of 1080 nm was employed. A wide range of process parameters was considered in this study, including five levels of laser power in the range of 200 to 370 W, nine levels of scanning speed from 200 to 700 mm/s, six levels of hatch spacing from 50 to 150 μm, and two layer thickness values of 30 μm and 40 μm. The influence of preheating was also investigated. A maximum relative density of 96% was obtained at a laser power of 370 W, scanning speed of 500 mm/s, and hatch spacing of 100 μm. The results illustrated the significant influence of some parameters such as laser power and hatch spacing on the part quality. In addition, surface integrity was evaluated by surface roughness measurements, where the optimum Ra was measured at 8 μm ± 0.5 μm. X-ray photoelectron spectroscopy (XPS) and energy-dispersive X-ray spectroscopy (EDX) were performed on the as-built samples to assess the impact of impurities on the L-PBF part characteristics. The highest electrical conductivity recorded for the optimum density-low contaminated coils was 81% IACS."
+   },
+   {
+    "id": "https://openalex.org/W3133932169",
+    "doi": "https://doi.org/10.1016/j.jobcr.2021.02.013",
+    "title": "Surface roughness of enamel and root surface after scaling, root planning and polishing procedures: An in-vitro study",
+    "year": 2021,
+    "cited": 26,
+    "venue": "Journal of Oral Biology and Craniofacial Research",
+    "topics": [
+     "Oral microbiology and periodontitis research",
+     "Dental Health and Care Utilization",
+     "Periodontal Regeneration and Treatments"
+    ],
+    "oa_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/8080641",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2978938449",
+    "doi": "https://doi.org/10.1590/0103-6440201902801",
+    "title": "The Wear Performance of Glazed and Polished Full Contour Zirconia",
+    "year": 2019,
+    "cited": 26,
+    "venue": "Brazilian Dental Journal",
+    "topics": [
+     "Dental materials and restorations",
+     "Advanced materials and composites",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "http://www.scielo.br/j/bdj/a/S9bR5vCK6ymJcVzmG6PPp4t/?format=pdf&lang=en",
+    "abstract": "This study evaluated the influence of zirconia surface finishes on the wear of an enamel analogue. 40 zirconia discs were divided into four groups: control (without finish); glazed; polished; polished and glazed. All samples were subjected to wear against steatite antagonists. The specimens underwent roughness, topographic, scanning electron microscopy (SEM) and wettability analyses. Quantitative wear measurements were performed on both steatites and discs. To measure wear of steatites the weight before and after the test and the diameter after the test were used. Profilometer measurements were performed to determine the wear on discs. Roughness, volumetric wear and mass loss were analyzed using the Kruskal-Wallis and Dunn tests (5%), while contact angle values were analyzed with One-way ANOVA and Tukey tests (5%). The polished group had the lowest roughness means, being statistically different from the other groups (p-value=0.0001). The glazed group presented the lowest steatite volumetric wear (p-value=0.0001), but not statistically different from the polished and glazed group, whereas these groups presented the highest zirconia volumetric wear, with statistically different (p-value=0.0002) compared to the others. SEM showed irregularities on the control groups surface, grooves on the polished group, and a homogeneous surface for the glazed group with a few pores. All groups presented contact angles lower than 90 degrees, characterizing hydrophilic surfaces. It can be concluded that just glazed zirconia caused less wear on the antagonist when compared to no finish and polished zirconia."
+   },
+   {
+    "id": "https://openalex.org/W2775575958",
+    "doi": "https://doi.org/10.1590/1807-3107bor-2017.vol31.0094",
+    "title": "Mechanical behavior of yttria-stabilized tetragonal zirconia polycrystal: Effects of different aging regimens",
+    "year": 2017,
+    "cited": 26,
+    "venue": "Brazilian Oral Research",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Recycling and utilization of industrial and municipal waste in materials production",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "http://www.scielo.br/pdf/bor/v31/1807-3107-bor-31-1807-3107BOR-2017vol310094.pdf",
+    "abstract": "This study aimed to characterize and compare the effect of different aging regimens on surface characteristic (topography and roughness), structural stability (phase transformation) and mechanical performance (Weibull analysis) of a Y-TZP ceramic. Discs (15 × 1.2 mm; VITA In-Ceram YZ) were prepared according to ISO 6872-2015 for biaxial flexural strength testing and randomly assigned into five groups (n = 30): as-sintered, no aging treatment (CTRL); 20 h in autoclave at 134°C, 2 bar pressure (AUT); intermittent mechanical loading at 20 Hz/106 load pulses (MechLoad); AUT followed by MechLoad (AUT+MechLoad); and storage in distilled water at 37°C, for 1 year (STO). The following analyses were performed: roughness (n = 30), surface topography (n = 2), phase transformation (n = 2) and biaxial flexure strength (n = 30). Phase transformation (increase of m-phase content) was shown to be a spontaneous, unavoidable and time-dependent process, occurring even under ambient conditions (dry storage after 1 year = 6.0% increase), and is considerably accelerated in the presence of moisture (STO = 17.6%; AUT= 63.1%; and AUT+MechLoad = 59.9%). For roughness parameters, only Ra was affected by aging, and the highest values were observed for AUT+MechLoad (0.25 ± 0.07 µm). For Weibull analysis, structural reliability (Weibull moduli) and characteristic strength were not impaired after aging, and some aging conditions led to increased values (highest weibull moduli in AUT, and highest characteristic strength in STO). Phase transformation proves to be a time-dependent spontaneous mechanism that is accelerated in the presence of different stimuli. However, none of the aging regimens had a negative effect on the characteristic strength and structural reliability of Y-TZP ceramic."
+   },
+   {
+    "id": "https://openalex.org/W3013896411",
+    "doi": "https://doi.org/10.3390/app10072280",
+    "title": "Effect of Industrial Heat Treatment and Barrel Finishing on the Mechanical Performance of Ti6Al4V Processed by Selective Laser Melting",
+    "year": 2020,
+    "cited": 24,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/10/7/2280/pdf?version=1586838102",
+    "abstract": "Additive manufacturing is now capable of delivering high-quality, complex-shaped metallic components. The titanium alloy Ti6Al4V is an example of a printable metal being broadly used for advanced structural applications. A sound characterization of static mechanical properties of additively manufactured material is crucial for its proper application, and here specifically for Ti6Al4V. This includes a complete understanding of the influence of postprocess treatment on the material behavior, which has not been reached yet. In the present paper, the postprocess effects of surface finish and heat treatment on the mechanical performance of Ti6Al4V after selective laser melting were investigated. Some samples were subjected to barrel finishing at two different intensities, while different sets of specimens underwent several thermal cycles. As a reference, a control group of specimens was included, which did not undergo any postprocessing. The treatments were selected to be effective and easy to perform, being suitable for real industrial applications. Tensile tests were performed on all the samples, to obtain yield stress, ultimate tensile strength and elongation at fracture. The area reduction of the barrel-finished samples, after being tested, was measured by using a 3D scanner, as a further indication of ductility. Experimental results are reported and discussed, highlighting the effect of postprocessing treatments on the mechanical response. We then propose the optimal postprocessing procedure to enhance ductility without compromising strength, for structures manufactured from Ti6Al4V with selective laser melting."
+   },
+   {
+    "id": "https://openalex.org/W2902498108",
+    "doi": "https://doi.org/10.1590/0103-6440201802044",
+    "title": "Polishing of Ground Y-TZP Ceramic is Mandatory for Improving the Mechanical Behavior",
+    "year": 2018,
+    "cited": 24,
+    "venue": "Brazilian Dental Journal",
+    "topics": [
+     "Dental materials and restorations",
+     "Advanced ceramic materials synthesis",
+     "Recycling and utilization of industrial and municipal waste in materials production"
+    ],
+    "oa_url": "http://www.scielo.br/pdf/bdj/v29n5/1806-4760-bdj-29-05-483.pdf",
+    "abstract": "It evaluated the effect of aging by Low Temperature Degradation (LTD), executed after post- processing surface treatments (polishing, heat treatment and glazing), on the surface characteristics (micromorphology and roughness) and on the structural stability (phase transformation and mechanical behavior-flexural strength and structural reliability) of a ground yttrium-stabilized tetragonal zirconia polycrystal (Y-TZP) ceramic. Discs of Y-TZP (VITA In-Ceram YZ) were manufactured (ISO:6872-2015; 15 mm in diameter and 1.2 ± 0.2 mm in thickness) and randomly assigned into 10 groups according two factors: \"aging\" in 2 levels (with or without) and \"surface treatment\" in 5 levels (Ctrl: as-sintered; Gr: grinding with coarse diamond bur; Gr + HT: grinding plus heat treatment; Gr + Pol: grinding plus polishing; Gr + Gl: grinding plus glazing). Roughness (n=30), biaxial flexural test (n=30), phase transformation (n=2), and surface topography (n=2) analyses were performed. Aging led to an intense increase in monoclinic (m) phase content for all the tested conditions, being the as-sintered samples (Ctrl= 65.6%) more susceptible to the t-m phase transformation. Despite of increasing the m-phase content, aging was not detrimental for characteristic strength (except to the grinding condition). There was no significant reduction in the Weibull modulus after surface treatments. Additionally, heat treatment and glazing after grinding led to a decrease in characteristic strength, while polishing presented the highest characteristic strength values. Thus, polishing is mandatory after grinding the Y-TZP ceramic, while performing glazing or heat-treatment alone after grinding lead to the worst mechanical performance."
+   },
+   {
+    "id": "https://openalex.org/W4210574001",
+    "doi": "https://doi.org/10.1089/3dp.2021.0030",
+    "title": "Performance Analysis of Conventional and DMLS Copper Electrode During EDM Process in AA4032-TiC Composite",
+    "year": 2022,
+    "cited": 23,
+    "venue": "3D Printing and Additive Manufacturing",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Advanced Surface Polishing Techniques",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10280191/pdf/3dp.2021.0030.pdf",
+    "abstract": "In recent days, the additive manufacturing process plays a vital role in the production of tool electrodes, which are used in the electrical discharge machining (EDM) process. In this work, the copper (Cu) electrodes prepared using the direct metal laser sintering (DMLS) process are used for the EDM process. The performance of the DMLS Cu electrode is studied by machining the AA4032-TiC composite material using the EDM process. Then the performance of the DMLS Cu electrode is compared with the conventional Cu electrode. Three input parameters, such as peak current (A), pulse on time (s), and gap voltage (v), are selected for the EDM process. The performance measures, which are determined during the EDM process, are material removal rate (MRR), tool wear rate, surface roughness (SR), microstructural analysis of machined surface, and residual stress. At a higher pulse on time, more material was removed from the workpiece surface and thus MRR is enhanced. Likewise, at a higher peak current, the SR is amplified and thus wider craters are formed on the machined surface. The residual stress on the machined surface has influenced the formation of craters, microvoids, and globules. Lower SR and residual stress are attained by using DMLS Cu electrode, whereas MRR is higher when using conventional Cu electrode."
+   },
+   {
+    "id": "https://openalex.org/W2795109198",
+    "doi": "https://doi.org/10.3390/met8040215",
+    "title": "Hybrid Reinforced Magnesium Matrix Composites (Mg/Sic/GNPs): Drilling Investigation",
+    "year": 2018,
+    "cited": 23,
+    "venue": "Metals",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced ceramic materials synthesis",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/8/4/215/pdf?version=1525345330",
+    "abstract": "The machinability of graphene-reinforced magnesium-based hybrid nanocomposites produced through the application of powder metallurgy method has not been completely reported. This article presents an experimental investigation on the thrust force, the surface roughness (Ra), and drilled surfaces characteristics in the drilling process of a Mg/SiC/GNPs (magnesium matrix based silicon carbide and graphene nanoplatelets) hybrid magnesium matrix composite. The hybrid composite material was produced through the application of a powder metallurgy method. The experiments were carried out with uncoated, PVD (Physical Vapor Deposition), and CVD (Chemical Vapor Deposition) coated tungsten carbide drill bits at three levels of cutting speeds (30, 40, and 50 m/min), and three different levels of feed rate (0.10, 0.15, and 0.20 mm/rev) under dry machining conditions. Taguchi’s L27 (33) orthogonal array and S/N ratio were used to optimize the optimal parameters for thrust force and surface roughness. The experimental results indicated that the thrust force and the surface roughness were extremely dependent on a particular type of drill bits, feed rate, and cutting speed. The feed rate parameter is known to have a significant influence on the surface finish."
+   },
+   {
+    "id": "https://openalex.org/W4387169413",
+    "doi": "https://doi.org/10.3390/pr11102872",
+    "title": "Optimization of Drilling Parameters in Drilling of MWCNT-Reinforced GFRP Nanocomposites Using Fuzzy AHP-Weighted Taguchi-Based MCDM Methods",
+    "year": 2023,
+    "cited": 22,
+    "venue": "Processes",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/2227-9717/11/10/2872/pdf?version=1695984876",
+    "abstract": "Many problems such as delamination, cracking, fiber tearing, ovality, and surface roughness are encountered in the drilling of glass-fiber-reinforced composite (GFRP) materials. In this study, the percentage of multi-walled carbon nano tube (MWCNT), cutting tool type, feed rate, and cutting speed were selected as control factors during the drilling of MWCNT-reinforced GFRP nanocomposites. The quality characteristics of the drilling process were determined as surface roughness, delamination, torque, and thrust force. The experiments were carried out in accordance with the Taguchi L27 orthogonal array. The lowest values obtained because of the experiments were Ra = 4.95 µm, Dm = 1.099, T = 14.78 N, and F = 44.24 N, respectively. However, since each of these outputs were obtained from different experimental trials, different multi-criteria decision-making (MCDM) methods were used to optimize all outputs at the same time. First, the criteria were weighted using the fuzzy AHP method, and then the outputs were optimized using multi-criteria decision-making methods (i.e., GRA, WASPAS and VIKOR). Very close optimal ranking was obtained in all three methods. The best results were obtained for Ra = 4.86 µm, Dm = 1.13, T = 55.57 N, and F = 48.00 N. In the next step, the performance values obtained from each MCDM method were re-optimized using the Taguchi S/N ratio method. By comparing between these models, a single optimal condition for drilling is proposed. Accordingly, A2B3C1D1 (Ra = 4.86 µm, Dm = 1.10, T = 17.47 N and F = 48.33 N) for FAHP-GRA and FAHP-WASPAS and A2B3C2D2 (Ra = 5.02 µm, Dm = 1.09, T = 37.19 N and F = 45.01 N) for FAHP-VIKOR were determined as the best performing experiments. Finally, validation tests were conducted to compare the performance of the experiments. As a result, the FAHP-GRA and FAHP-WASPAS optimization with Taguchi S/N gave an unweighted improvement of 82.9% and a weighted improvement of 10.04% compared to the results of the experiment with MCDM. Compared to the results of the experiments with MCDM, S/N FAHP-VIKOR provided an unweighted improvement of 52.75% and a weighted improvement of 8.19%. According to the results obtained, for this study, FAHP-GRA and FAHP-WASPAS are more effective optimization methods than FAHP-VIKOR."
+   },
+   {
+    "id": "https://openalex.org/W3194531977",
+    "doi": "https://doi.org/10.1016/j.diamond.2021.108568",
+    "title": "Experimental assessment on machinability performance of CNT and DLC coated HSS tools for hard turning",
+    "year": 2021,
+    "cited": 21,
+    "venue": "Diamond and Related Materials",
+    "topics": [
+     "Diamond and Carbon-based Materials Research",
+     "Carbon Nanotubes in Composites",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://strathprints.strath.ac.uk/77874/1/Chenrayan_etal_DRM_2021_Experimental_assessment_on_machinability_performance_of_CNT_and_DLC_coated_HSS_tools.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4387191268",
+    "doi": "https://doi.org/10.1016/j.jmbbm.2023.106154",
+    "title": "Surface properties and flexural fatigue strength of an advanced lithium disilicate",
+    "year": 2023,
+    "cited": 19,
+    "venue": "Journal of the mechanical behavior of biomedical materials/Journal of mechanical behavior of biomedical materials",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Dental materials and restorations",
+     "Recycling and utilization of industrial and municipal waste in materials production"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4206833261",
+    "doi": "https://doi.org/10.1016/j.finmec.2022.100071",
+    "title": "Optimization and measurement of kerf width and surface roughness of AISI 316L",
+    "year": 2022,
+    "cited": 18,
+    "venue": "Forces in Mechanics",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2666359722000014/pdf",
+    "abstract": "AISI 316L steel has wide applications in production of parts used in automobile, biomedical and aviation industries. Machining of AISI316 steel for production of parts with accuracy can be achieved by WEDM. In this work machining of AISI 316L stainless steel is performed using wire electrical discharge machining (WEDM). Taguchi L27 orthogonal array is used to design of machining with five process parameters (wire feed rate, voltage, pulse on time, pulse off time, and peak current). The response parameters surface roughness (SR), and kerf width (Kw),are optimize using single point optimization tool Taguchi S/N ratio, and multi response optimization tool grey relation analysis (GRA). The values of surface roghness (minimun), and kerf width (minimun) are1.76 µm, and 0.07 mm, respectively. Minimun value of SR is observed at wire feed rate of 30 mm/s. A factor level analysis for minimum SR gives optimal response is for Wf- 1, Ip - 3, Ton - 3, voltage – 2, Toff - 3, and for Kw is Toff - 3 Ton - 1, voltage - 2, Wf - 1, Ip - 3. Multi-response optimization is performed using Grey relation analysis (GRA) to select the optimal values of response parameters. Optimum result is obtained at peak current Ip-3 A, Ton 9 µs, Toff 12 µs, voltage 60 V, and wire feed rate 30 mm/s."
+   },
+   {
+    "id": "https://openalex.org/W2766738629",
+    "doi": "https://doi.org/10.1515/amm-2017-0276",
+    "title": "Influence of Cutting Fluid Flow Rate and Cutting Parameters on the Surface Roughness and Flank Wear of TiAlN Coated Tool In Turning AISI 1015 Steel Using Taguchi Method",
+    "year": 2017,
+    "cited": 18,
+    "venue": "Archives of Metallurgy and Materials",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "http://journals.pan.pl/Content/105135/PDF/10172-Volume62_Issue3-57_paper.pdf",
+    "abstract": "Abstract This paper presents the influence of cutting parameters (Depth of cut, feed rate, spindle speed and cutting fluid flow rate) on the surface roughness and flank wear of physical vapor deposition (PVD) Cathodic arc evaporation coated TiAlN tungsten carbide cutting tool insert during CNC turning of AISI 1015 mild steel. Analysis of Variance has been applied to determine the critical influence of cutting parameters. Taguchi orthogonal test design has been employed to optimize the process parameters affecting surface roughness and tool wear. Depth of cut was found to be the most dominant factor contributing to high surface roughness (67.5%) of the inserts. However, cutting speed, feed rate and flow rate of cutting fluid showed minimal contribution to surface roughness. On the other hand, cutting speed (45.6%) and flow rate of cutting fluid (23%) were the dominant factors influencing tool wear. The optimum cutting conditions for desired surface roughness constitutes the following parameters such as medium cutting speed, low feed rate, low depth of cut and high cutting fluid flow rate. Minimal tool wear was achieved for the following process parameters such as low cutting speed, low feed rate, medium depth of cut and high cutting fluid flow rate."
+   },
+   {
+    "id": "https://openalex.org/W4390001579",
+    "doi": "https://doi.org/10.1007/s40544-023-0802-2",
+    "title": "Scuffing failure analysis based on a multiphysics coupling model and experimental verification",
+    "year": 2023,
+    "cited": 17,
+    "venue": "Friction",
+    "topics": [
+     "Lubricants and Their Additives",
+     "Tribology and Lubrication Engineering",
+     "Gear and Bearing Dynamics Analysis"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40544-023-0802-2.pdf",
+    "abstract": "Abstract General reductions in lubricant viscosities and increasing loads in machine components highlight the role of tribofilms in providing surface protection against scuffing. However, the relationship between the scuffing process and the growth and removal of tribofilm is not well understood. In this study, a multiphysics coupling model, which includes hydrodynamic lubrication, asperity contact, thermal effect, tribochemistry reaction, friction, and surface wear, was developed to capture the initiation of surface scuffing. Simulations and experiments for a piston ring and cylinder liner contact were conducted following a step-load sequence under different temperature conditions. The results show that high temperature and extreme load could induce the lubricant film collapse, which in turn triggers the breakdown of the tribofilm due to the significantly increased removal process. The failures of both lubricant film and tribofilm progress instantaneously in a coupling way, which finally leads to severe scuffing."
+   },
+   {
+    "id": "https://openalex.org/W4387655477",
+    "doi": "https://doi.org/10.1016/j.jmbbm.2023.106192",
+    "title": "Advanced lithium disilicate: A comparative evaluation of translucency and fatigue failure load to other ceramics for monolithic restorations",
+    "year": 2023,
+    "cited": 17,
+    "venue": "Journal of the mechanical behavior of biomedical materials/Journal of mechanical behavior of biomedical materials",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Implant Techniques and Outcomes",
+     "Dental Radiography and Imaging"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3164545031",
+    "doi": "https://doi.org/10.3390/met11050843",
+    "title": "Strategy for Surface Post-Processing of AISI 316L Additively Manufactured by Powder Bed Fusion Using Ultrasonic Nanocrystal Surface Modification",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Surface Treatment and Residual Stress",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/11/5/843/pdf?version=1621564865",
+    "abstract": "Ultrasonic nanocrystal surface modification (UNSM) technology was applied to the surfaces of specimens additively manufactured by powder bed fusion (PBF). The changes in roughness and hardness due to the UNSM were set as objective functions, and the optimal conditions for the main parameters were derived through the response surface method (RSM) and Box–Behnken design (BBD). Regression analysis-based mathematical models for predicting the surface hardness and roughness are presented and validated. The RSM results show that the surface roughness is highly dependent on the load and ball tip diameter, and the surface roughness significantly improves as the inter-pass interval and ball tip diameter decrease. Through BBD and ANOVA, the optimal conditions for the improvement of surface characteristics were found to be a load of 40 N, inter-pass interval of 10 μm, and ball tip diameter of 2.38 m. The surface treated under these optimal conditions exhibited a hardness of 497 Hv and surface roughness of 1.32 μm, which were significantly improved compared to the values for an untreated specimen. In addition, it was confirmed that the grains are significantly refined after UNSM, and scratch resistance increases for the top layer of the surface directly affected by the UNSM horn."
+   },
+   {
+    "id": "https://openalex.org/W4385818691",
+    "doi": "https://doi.org/10.2298/jmmb230209022a",
+    "title": "Effect of laser hardening on the mechanical, tribological and corrosion properties of low alloy steels",
+    "year": 2023,
+    "cited": 16,
+    "venue": "Journal of Mining and Metallurgy Section B Metallurgy",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Diamond and Carbon-based Materials Research",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "http://www.doiserbia.nb.rs/ft.aspx?id=1450-53392300022A",
+    "abstract": "This research focuses on studying the mechanical, tribological, and corrosion behaviors of alloy steels: AISI 4340, AISI 5140, and AISI 8620 by laser hardening, respectively. In light of the tests which have been carried out meticulously, it is concluded that the optimum laser hardening parameter for all steel grades is 4 mm/s scanning speed and 1300?C surface temperature. Micro-structural changes, Vickers hardness as mechanical properties, and tribological properties with reciprocating wear tests were carried out. Furthermore, corrosion tests were conducted. The test results reveal that the maximum hardness is achieved 50-300 ?m below the surface for all laser-hardened steels. Additionally, this study demonstrates that the wear resistance of steel is enhanced by the implementation of laser hardening. This study also determines that laser hardening has a positive impact on lifting the corrosion resistance behavior of AISI 4340 steel. In contrast, the corrosion resistance properties of AISI 8620 steel were reduced nearly by 54.17%."
+   },
+   {
+    "id": "https://openalex.org/W4226040835",
+    "doi": "https://doi.org/10.1186/s10033-022-00691-7",
+    "title": "Theoretical Analysis and Experimental Research of Surface Texture Hydrodynamic Lubrication",
+    "year": 2022,
+    "cited": 16,
+    "venue": "Chinese Journal of Mechanical Engineering",
+    "topics": [
+     "Tribology and Lubrication Engineering",
+     "Adhesion, Friction, and Surface Interactions",
+     "Lubricants and Their Additives"
+    ],
+    "oa_url": "https://cjme.springeropen.com/track/pdf/10.1186/s10033-022-00691-7",
+    "abstract": "Abstract The research on surface texture is developing from single macro-texture to composite micro-nano texture. The current research on the anti-friction mechanism and theoretical models of textures is relatively weak. Studying the characteristics of different types of surface textures and determining the applicable working conditions of each texture is the focus of current research. In this paper, a mathematical model of hydrodynamic lubrication is established based on Navier–Stokes equations. The FLUENT software is used to simulate and analyze the four texture models, explore the dynamic pressure lubrication characteristics of different texture types, and provide data support for texture optimization. The key variable values required by the mathematical model are obtained through the simulation data. The friction coefficient of the texture under different working conditions was measured through friction and wear experiments, and the mathematical model was verified by the experimental results. The research results show that circular texture is suitable for low to medium speed and high load conditions, chevron texture is suitable for medium to high speed and medium to high load conditions, groove texture is suitable for high speed and low load conditions, and composite texture is suitable for high speed and medium to high load conditions. Comparing the experimental results with the results obtained by the mathematical model, it is found that the two are basically the same in the ranking of the anti-friction performance of different textures, and there is an error of 10%−40% in the friction coefficient value. In this study, a mathematical model of hydrodynamic lubrication was proposed, and the solution method of the optimal surface texture model was determined."
+   },
+   {
+    "id": "https://openalex.org/W4297399407",
+    "doi": "https://doi.org/10.24191/jmeche.v19i1.19686",
+    "title": "Effect of Polyamide-12 Material Compositions on Mechanical Properties and Surface Morphology of SLS 3D Printed Part",
+    "year": 2022,
+    "cited": 16,
+    "venue": "Journal of Mechanical Engineering",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://doi.org/10.24191/jmeche.v19i1.19686",
+    "abstract": "Despite the fact that many 3D printed products have been developed, there are still issues with the printed product’s physical properties and surface morphology. This study examines the effects of significant Selective Laser Sintering (SLS) 3D printer parameters on the material strength of Polyamide12 (PA-12). A variety of virgin materials, reheat materials, and recycled materials were used for the PA-12 material compositions. The test specimens were prepared at different process parameters and material composition percentages using the SLS 3D printer. The tensile strength, surface roughness, and surface morphology were tested. These samples were tested in accordance with ASTM D638-(IV) for tensile strength and roughness using a 10 mm x 10 mm coated sample prepared for scanning in an electron microscope. The tensile test results showed that the composition of the 100% virgin (CP1) material samples appeared to be stiffer, with a lower plastic deformation at maximum tensile stress (45 MPa) and a smoother surface roughness (10.75µm). Furthermore, the SEM results showed that the specimens were partially melted with a significant amount of PA-12 powder before being sintered and coalesced."
+   },
+   {
+    "id": "https://openalex.org/W4200137223",
+    "doi": "https://doi.org/10.1007/s00170-021-08471-8",
+    "title": "Machinability investigation of polymer/GNP nanocomposites in micro-milling",
+    "year": 2021,
+    "cited": 16,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Injection Molding Process and Properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-021-08471-8.pdf",
+    "abstract": "Abstract Nanoparticles such as graphene have been added to various polymer matrices to enhance the mechanical, thermal, and electrical properties of polymer materials that require complex designs on a microscopic scale. Micro-machining is used to process these nanocomposite materials to achieve high surface quality and dimensional accuracy while maintaining high productivity. In this study, a systematic micro-milling experiment was performed on polymer/graphene nanoplatelet (GNP) nanocomposites to advance knowledge of the micro-machinability of these materials. It evaluates the effect of the addition of 0.1wt% GNP nanoparticles on machined surface morphology, chip formation, cutting forces, and tool wear. It is found that the addition of GNP nanoparticles changes the slot edge formation mode from burring mode to chipping mode."
+   },
+   {
+    "id": "https://openalex.org/W3132650248",
+    "doi": "https://doi.org/10.1007/s00170-021-06715-1",
+    "title": "An experimental investigation on tool wear behaviour of uncoated and coated micro-tools in micro-milling of graphene-reinforced polymer nanocomposites",
+    "year": 2021,
+    "cited": 15,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Diamond and Carbon-based Materials Research",
+     "Tribology and Wear Analysis",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-021-06715-1.pdf",
+    "abstract": "Abstract Nanomaterials such as graphene have been added to various matrices to enhance mechanical, thermal and electrical properties for various applications requiring intricate designs at the micro-scale. At this scale, mechanical micro-machining is utilised as post-processing to achieve high surface quality and dimensional accuracy while still maintaining high productivity. Therefore, in this study, the machinability of polymer nanocomposites in micro-scale (micro-machinability) is investigated. Graphene (0.3 wt%)-reinforced epoxy nanocomposites were fabricated using traditional solution mixing and moulding. The samples were then subjected to micro-milling at various cutting speeds using three different micro-tools, including uncoated, diamond and diamond-like carbon (DLC) tools. Mechanical and thermal properties of nanocomposite were also used to support the discussions. The result indicates that the DLC-coated tool shows better performance than the other tools for less tool wear, improved surface quality and less cutting forces."
+   },
+   {
+    "id": "https://openalex.org/W3039797953",
+    "doi": "https://doi.org/10.2474/trol.15.154",
+    "title": "Influence of Wear Surface Morphology and Phosphorus-Containing Tribofilm on Crack Initiation of Manganese Phosphate Coated Steel under Rolling–Sliding Contact",
+    "year": 2020,
+    "cited": 15,
+    "venue": "Tribology online",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Lubricants and Their Additives",
+     "Tribology and Wear Analysis"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/trol/15/3/15_154/_pdf",
+    "abstract": "To improve the rolling–sliding contact fatigue strength of a case-carburized steel, the effect of the wear surface morphologies of manganese phosphate (MnP) coated steel and the growth and removal of phosphorus-containing tribofilm on surface-initiated crack formation was investigated. In order to modify the wear surface morphologies, two types of surface textures (ground and shot blasted) were prepared, followed by the MnP coating process. The tribological properties of the coated steel, tribofilm growth and removal, and surface-initiated crack formation were evaluated using a ball-on-disk tribometer with a rolling–sliding mode. The MnP coating on both the ground and shot blasted steel had nearly the same thickness and surface roughness. However, for the ground surface sample, the interface morphology between the coating and steel substrate was more irregular than the shot blasted surface sample, resulting in a larger number of exposed steel areas with smaller sizes after the MnP was almost worn away on tribological tests. During the running-in period, phosphorus-containing tribofilm growth and removal on the smaller exposed steel areas were observed. The surface-initiated crack formation on the smaller exposed steel areas was suppressed compared with larger exposed steel areas."
+   },
+   {
+    "id": "https://openalex.org/W3033326066",
+    "doi": "https://doi.org/10.1007/s42452-020-2987-6",
+    "title": "An artificial neural network approach to predict energy consumption and surface roughness of a natural material",
+    "year": 2020,
+    "cited": 15,
+    "venue": "SN Applied Sciences",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Industrial Vision Systems and Defect Detection"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s42452-020-2987-6.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4380047865",
+    "doi": "https://doi.org/10.3390/jmmp7030111",
+    "title": "Multi-Response Optimization and Influence of Expanded Graphite on Performance of WEDM Process of Ti6Al4V",
+    "year": 2023,
+    "cited": 14,
+    "venue": "Journal of Manufacturing and Materials Processing",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-4494/7/3/111/pdf?version=1686136014",
+    "abstract": "Wire electrical discharge machining (WEDM) is widely preferred for machining difficult-to-cut materials like Ti6Al4V. In the present study, current, pulse-off-duration (Toff), and pulse-on-duration (Toff) were identified as vital input factors for the WEDM process of Ti6Al4V. Material removal rate (MRR) and surface roughness (SR) were selected as output measures for the study. The experiments were carried out by employing Taguchi’s L9 design at three levels. Empirical models were generated, which give the relationship between the input and output factors of the process. To check the acceptability of the model terms, analysis of variance (ANOVA) was used. The regression mode was observed to be significant for the output measures. For MRR, Toff was recorded as the highly significant factor affecting the response values with 74.95% impact, followed by Ton with 16.39%, and current with 6.56%. In the case of SR, Ton was found to be a highly significant factor with a 50.24% impact, followed by current with 43.99%, and Toff with 1.47%. Further, multi-objective optimization by using the HTS technique was performed. The effect of expanded graphite (EG) nano-powder has been studied on the output factors of MRR and SR. The use of EG nano-powder was found to improve WEDM operations as MRR was increased by 45.35%, and simultaneously, SR was reduced by 36.16%. Lastly, the surface morphology of the machined surface was investigated by employing SEM to understand the effect of EG nano-powder. The results have shown a reduction in surface defects by using EG nano-powder compared to the conventional WEDM process."
+   },
+   {
+    "id": "https://openalex.org/W4327937580",
+    "doi": "https://doi.org/10.1007/s11665-023-08060-8",
+    "title": "A New Approach to Empirical Optimization of Laser Powder Bed Fusion Process for Ti6Al4V Parts",
+    "year": 2023,
+    "cited": 14,
+    "venue": "Journal of Materials Engineering and Performance",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Laser Material Processing Techniques"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11665-023-08060-8.pdf",
+    "abstract": "Abstract Optimization of all the process parameters for laser powder bed fusion (L-PBF), considering the effects of individual parameters on Ti6Al4V fabricated parts, can be complex and challenging. Therefore, for the first time, the effects of three main variable process parameters (laser power, scan speed, and hatch spacing) on three outcomes parameters (surface roughness, bulk porosity, and production rate of parts) were studied in this work. Then, the combination of above-mentioned process parameters in the form of volumetric energy density (VED) was investigated in order to establish a practical method for optimization of process parameters for making Ti6Al4V parts with the desired quality targets, i.e., the smoothest surface, the lowest bulk porosity and a higher production rate. It was revealed that although VED is a reliable metric for the optimization of process parameters, some thresholds and ranges should be considered for all three parameters of laser power, scan speed, and hatch spacing. It was demonstrated that by employing an optimum laser power of 180 W or 270 W and changing the scan speed and hatch spacing to keep VED in the range of 50-100 J/mm3, fabrication of samples with micro-roughness Ra < 10 µm and bulk porosity less than 0.15% is achievable. In addition, the surface of the L-PBF fabricated parts may appear in two categories of surface morphology; wavy surface classified “meso-roughness topography” and non-wavy surface termed “micro-roughness”. Since there was not any correlation between the value of roughness of samples with meso-rough surface and their bulk porosity, and besides, their process parameters were far from optimized parameters, the samples with meso-rough surface were not included in the final results. However, it was realized in the samples with micro-rough surfaces, the value of their micro-roughness could accurately indicate the porosity content of Ti6Al4V samples."
+   },
+   {
+    "id": "https://openalex.org/W3181428520",
+    "doi": "https://doi.org/10.3390/app11136212",
+    "title": "Advanced Configuration Parameters of Post Processor Influencing Tensile Testing PLA and Add-Mixtures in Polymer Matrix in the Process of FDM Technology",
+    "year": 2021,
+    "cited": 14,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/11/13/6212/pdf?version=1625478224",
+    "abstract": "The present paper focuses on the configuration possibilities of post -processor influencing mechanical properties of a given test sample produced by the FDM printer from different materials. The research consists of assessing the composite material configurations through a static tensile test conducted on 80 samples produced. The samples were produced based on ISO 527-2 standard, type 1A, with a horizontal position and a layer height of 0.2 mm. The individual samples consisted of four basic groups of materials—the pure Polylactic acid (PLA) plastic (reference sample), and three composite samples with admixtures—PLA matrix with a copper admixture, PLA matrix with an iron admixture, and PLA matrix with a steel admixture. The static tensile test was conducted at a test speed of 5 mm/min. During the research, reference samples (pure PLA) were assessed in five orientations. Samples made of the PLA composite materials with admixtures were manufactured, tested, and evaluated only in the 0° orientation. The paper concludes by comparing the results of measurement with the original material, free from additives, and with the researched influence of the orientation of the prints on the resulting mechanical properties of shear samples and their surface structure. In the conducted experiments, the lowest tensile strength has been demonstrated in test samples the orbital transitions and the upper surface layers of which were parallel to the infill."
+   },
+   {
+    "id": "https://openalex.org/W3198287689",
+    "doi": "https://doi.org/10.1016/j.procir.2021.02.004",
+    "title": "Analysis and optimization of surface roughness in turning of AA6061-T6 under various environments and parameters",
+    "year": 2021,
+    "cited": 14,
+    "venue": "Procedia CIRP",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2212827121006466/pdf",
+    "abstract": "The surface quality of a machined component is one of the most important concerns in machining processes and the first and foremost objective is to have a high-quality surface finish in machined components. The surface roughness is influenced by turning parameters including cutting speed, feed rate, and depth of cut and turning environments consisting of DRY, minimum quantity lubrication (MQL), and WET. This research study presents experimental study and optimization of surface roughness parameters versus turning parameters and environments in turning AA 6061-T6. Machining tests were planed using Central Composite Design (CCD) of experiment and was performed under three sets of environmental modes. Response Surface Method (RSM) and Analysis of Variance (ANOVA) were utilized to achieve effective regression predictive models for the arithmetic average surface roughness and the maximum height of the profile in order to obtain their optimum values. The optimization results showed that the feed rate was the most effective parameter on the surface roughness in turning of AA 6061-T6 for each turning environment. It was concluded that the smallest surface roughness parameters were achieved using DRY mode."
+   },
+   {
+    "id": "https://openalex.org/W2966899389",
+    "doi": "https://doi.org/10.1088/1742-6596/1240/1/012041",
+    "title": "Process Parameter Optimization of Ultrasonic Assisted Electrochemical Magnetic Abrasive Finishing of 316L Stainless Steel",
+    "year": 2019,
+    "cited": 14,
+    "venue": "Journal of Physics Conference Series",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1742-6596/1240/1/012041/pdf",
+    "abstract": "Abstract There is requirement of advancements in the machining processes able to achieve better surface finish in tight tolerances. It is not always easy to produce work piece characteristics in order to fulfill the listed requirements by only using the traditional finishing processes. Ultrasonic assisted electrochemical magnetic abrasive finishing (UEMAF) is a hybrid micro machining process and finish surfaces of hard and brittle materials up to nano meter scale. UEMAF integrates the use of electrochemical machining, ultrasonic vibrations and magnetic abrasive finishing. Taguchi technique is used to find optimal process parameters of Ultrasonic assisted electrochemical magnetic abrasive finishing (UEMAF). A L9 Orthogonal array, applied to analyze the effect of ultrasonic assisted electrochemical magnetic abrasive finishing process parameters (rpm of work piece, % wt. of abrasive and ultrasonic frequency time) on percentage improvement in surface finish (PISF)."
+   },
+   {
+    "id": "https://openalex.org/W4213385328",
+    "doi": "https://doi.org/10.1007/s11740-022-01112-3",
+    "title": "Part defects identification in selective laser melting via digital image processing of powder bed anomalies",
+    "year": 2022,
+    "cited": 13,
+    "venue": "Production Engineering",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11740-022-01112-3.pdf",
+    "abstract": "Abstract Despite the potential of additive manufacturing and specifically of selective laser melting, several considerable barriers exist to widespread utilization, especially in specific industries that produce high-value components. Quality control and mechanical characterization remain the most expensive challenge. The quality and mechanical properties of the manufactured parts are influenced by potential defects; the characteristics of these defects, such as size, shape, location, and distribution, have shown to play key roles in mechanical properties. This work proposes a methodology for providing the identification of powder bed anomalies and consequent part defects through a synchronized analysis of the powder layers via digital image processing. This method can be used to study the critical defects formation during the layerwise process, providing important information about their location without the use of expensive or destructive measurements."
+   },
+   {
+    "id": "https://openalex.org/W2967782656",
+    "doi": "https://doi.org/10.1504/ijmmm.2019.103137",
+    "title": "Multi-response optimisation of machining aluminium-6061 under eco-friendly electrostatic minimum quantity lubrication environment",
+    "year": 2019,
+    "cited": 13,
+    "venue": "International Journal of Machining and Machinability of Materials",
+    "topics": [
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization",
+     "Injection Molding Process and Properties"
+    ],
+    "oa_url": "https://www.inderscienceonline.com/doi/epdf/10.1504/IJMMM.2019.103137",
+    "abstract": "The emerging grave consequences of conventional coolants on health, ecology and product quality, have pushed the scientific research to explore eco-friendly lubrication technique. Electrostatic minimum quantity lubrication (EMQL) has been underscored as a burgeoning technology to cut-down bete noire impacts in machining. This research confers the adoption of a negatively charged cold mist of air-castor oil employed in turning of aluminium-6061T6 material by varying the cutting conditions, as per experimental designed through response surface methodology (RSM). For comprehensive sagacity, a range of cutting speed, feed, depth of cut and EMQL-flow rate were considered. Material removal rate, tool life, surface roughness and power consumption of machine tool were adopted as performance measures. To satisfy multi-criterion simultaneously, RSM-based grey relational analysis (GRA) was employed for multi-objective optimisation. Highest proportion of grey relational grade (GRG) as a single desideratum response function, provided a trade-off between performance measures with 15.56% improvement in GRG."
+   },
+   {
+    "id": "https://openalex.org/W7136046987",
+    "doi": "https://doi.org/10.1038/s41598-026-42714-6",
+    "title": "Optimization of hole quality in drilling of direct hot-pressed Al/SiC composites using Taguchi method",
+    "year": 2026,
+    "cited": 12,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Aluminum Alloys Composites Properties",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://doi.org/10.1038/s41598-026-42714-6",
+    "abstract": "Abstract In this study, aluminium (Al) matrix composites reinforced with 0, 5, and 10 vol% silicon carbide (SiC) particles were fabricated by direct hot-pressing under 35 MPa pressure at 600 °C for a holding time of 5 min. The morphological characteristics of the initial Al and SiC powders were examined using scanning electron microscopy. The fabricated composites were characterized through density measurements, microstructural analysis, X-ray diffraction, and microhardness testing. Microstructural observations confirmed a homogeneous distribution of SiC particles within the Al matrix. Although the relative density decreased with increasing SiC content, microhardness increased due to restricted dislocation motion induced by the hard ceramic reinforcement. The cutting speed, feed rate, point angle, and reinforcement ratio were selected as control factors in the drilling process of Al/SiC composites. In contrast, thrust force, surface roughness, deviation from diameter, and deviation from circularity were selected as performance indicators. The Taguchi method was used to determine the optimal experimental conditions for hole performance indicators. The effects of drilling parameters on the drill bit, hole quality, and chip morphology were investigated. The contribution ratios of the control factors on the responses were determined using analysis of variance. The feed rate was found to be the most effective control factor on hole quality. Regression analysis was applied to establish a mathematical relationship between the control factors and the responses. The R 2 values obtained from the regression equations were found to be quite high. Finally, confirmation experiments conducted with the determined optimal parameter sets have proven the validity of the models by yielding statistically significant results within a 95% confidence interval."
+   },
+   {
+    "id": "https://openalex.org/W4311060967",
+    "doi": "https://doi.org/10.1177/09544089221139607",
+    "title": "Statistical analysis and multi-criteria optimization of fused deposition additive manufacturing process for acrylic butadiene styrene parts",
+    "year": 2022,
+    "cited": 12,
+    "venue": "Proceedings of the Institution of Mechanical Engineers Part E Journal of Process Mechanical Engineering",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Additive Manufacturing Materials and Processes",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": null,
+    "abstract": "The current market trend and customer requirement are to find excellent quality products within shortest manufacturing time. Therefore, it is essential to analyze the processing conditions that affect the product’s quality before the actual manufacturing of the product. This study aims to experimental analysis and multi-criteria optimization of fused deposition additive manufacturing (FDAM) process for differently shaped acrylic butadiene styrene material parts. Five process variables such as raster angle, infill density, layer thickness, nozzle temperature and print head speed are considered which vary at three levels. A total of 33 experiments have been designed based on central composite design method. The surface roughness, manufacturing time and improved dimensional accuracy are considered as the response parameters in this study. Mitutoyo SJ-410 roughness tester, stopwatch and electronic digital Vernier caliper gauge are used to record the surface roughness, manufacturing time and dimensional variation, respectively. The multi-criteria optimization was performed through the technique for order of preference by similarity to ideal solution (TOPSIS) and Grey relational analysis (GRA) techniques. Concerning TOPSIS, the improvement in responses are obtained as, surface quality of concave (Ra cc ) 8.85%, convex (Ra cv ) 18.43%, manufacturing time (MT) 11.11%, dimensional improvement in length (δl) 1.60%, width (δw) 0.47% and height (δh) 0.46%. Similarly, the improvement found in same responses through GRA approach are Ra cc 7.85%, Ra cv 10.34%, MT 7.69%, δl 10.05%, δw 6.50% and δh 28.20%, respectively. The experimental results show that, the optimized parameters provide up to 18.43% improvement in surface quality, 11.11% saving in manufacturing time with a significant reduction in dimensional variation. The findings of this study will help the designers of functional parts to improve the quality of designed product."
+   },
+   {
+    "id": "https://openalex.org/W4310017884",
+    "doi": "https://doi.org/10.1016/j.dental.2022.11.015",
+    "title": "Silica infiltration on translucent zirconia restorations: Effects on the antagonist wear and survivability",
+    "year": 2022,
+    "cited": 12,
+    "venue": "Dental Materials",
+    "topics": [
+     "Dental materials and restorations",
+     "Advanced ceramic materials synthesis",
+     "Dental Implant Techniques and Outcomes"
+    ],
+    "oa_url": "http://doi.org/10.1016/j.dental.2022.11.015",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2913909182",
+    "doi": "https://doi.org/10.5267/j.ijdns.2019.1.004",
+    "title": "An experimental investigation of tool nose radius and machining parameters on TI-6AL-4V (ELI) using grey relational analysis, regression and ANN models",
+    "year": 2019,
+    "cited": 12,
+    "venue": "International Journal of Data and Network Science",
+    "topics": [
+     "Industrial Vision Systems and Defect Detection"
+    ],
+    "oa_url": "https://doi.org/10.5267/j.ijdns.2019.1.004",
+    "abstract": "Ti-6Al-4V Extra Low Interstitial (ELI) exhibits superior properties because of controlled interstitial element of iron and oxygen.The effects of four cutting parameters namely cutting speed, feed, depth of cut and tool nose radius on responses like cutting force, average cutting temperature and surface roughness have been investigated for turning of Ti-6Al-4V (ELI).Total 81 experiments have been performed in dry environment.Grey Relational Analysis has been used for multi-objective optimization.Analysis of Variance test has been carried out to investigate contribution of input parameters.The model was found fit with R-Square value of 88.74%.Regression and ANN models are developed for prediction and compared.From the Grey relational analysis, it is clear that optimum parameters to minimize cutting force, cutting temperature and surface roughness while turning Ti-6Al-4V (ELI), are cutting speed as 140 rpm, Nose radius 1.2mm, Feed 0.051mm/rev and depth of cut is 0.5mm.In comparison of regression model, the ANN model is found to be more accurate with average error of 3.57%."
+   },
+   {
+    "id": "https://openalex.org/W2799613611",
+    "doi": "https://doi.org/10.1590/1807-3107bor-2018.vol32.0032",
+    "title": "Effect of grinding and aging on subcritical crack growth of a Y-TZP ceramic",
+    "year": 2018,
+    "cited": 12,
+    "venue": "Brazilian Oral Research",
+    "topics": [
+     "Dental materials and restorations",
+     "Dental Implant Techniques and Outcomes",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "http://www.scielo.br/pdf/bor/v32/1807-3107-bor-1807-3107bor-2018vol320032.pdf",
+    "abstract": "This study aimed to investigate slow crack growth (SCG) behavior of a zirconia ceramic after grinding and simulated aging with low-temperature degradation (LTD). Complementary analysis of hardness, surface topography, crystalline phase transformation, and roughness were also measured. Disc-shaped specimens (15 mm Ø × 1.2 mm thick, n = 42) of a full-contour Y-TZP ceramic (Zirlux FC, Amherst) were manufactured according to ISO:6872-2008, and then divided into: Ctrl - as-sintered condition; Ctrl LTD - as-sintered after aging in autoclave (134°C, 2 bar, 20 h); G - ground with coarse diamond bur (grit size 181 μm); G LTD - ground and aged. The SCG parameters were measured by a dynamic biaxial flexural test, which determines the tensile stress versus stress rate under four different rates: 100, 10, 1 and 0.1 MPa/s. LTD led to m-phase content increase, as well as grinding (m-phase content: Ctrl - 0%; G - 12.3%; G LTD - 59.9%; Ctrl LTD - 81%). Surface topography and roughness analyses showed that grinding created an irregular surface (increased roughness) and aging did not promote any relevant surface change. There was no statistical difference on surface hardness among different conditions. The control group presented the lowest strength values in all tested rates. Regarding SCG, ground conditions were less susceptible to SCG, delaying its occurrence. Aging (LTD) caused an increase in SCG susceptibility for the as-sintered condition (i.e. G < G LTD < Ctrl < Ctrl LTD)."
+   },
+   {
+    "id": "https://openalex.org/W2579368038",
+    "doi": "https://doi.org/10.1051/meca/2016036",
+    "title": "Frictional characteristics of diamond like carbon and tungsten carbide/carbon coated high carbon high chromium steel against carbon in dry sliding conformal contact for mechanical seals",
+    "year": 2017,
+    "cited": 12,
+    "venue": "Mechanics & Industry",
+    "topics": [
+     "Tribology and Lubrication Engineering",
+     "Lubricants and Their Additives",
+     "Tribology and Wear Analysis"
+    ],
+    "oa_url": "https://doi.org/10.1051/meca/2016036",
+    "abstract": "The present work investigates the friction characteristics of high carbon high chromium steel (HCHCr) stationary seal in contact with resin impregnated carbon rotating seal without any interfacial lubricant. An experimental setup was designed and fabricated to study the frictional characteristics of the seal for varying normal load and at a constant speed. The reliability and frictional performance had been improved further by providing DLC (diamond like carbon) and WC/C (tungsten carbide/carbon) coating over the substrate HCHCr D2 steel surface. Compared with the conventional stainless steel (316 SS) mechanical seals, uncoated HCHCr D2 steel had shown better frictional characteristics. Also further deposition of DLC and WC/C film on HCHCr D2 steel had shown significant improvement in the frictional torque, frictional coefficient and face temperature rise. The high hardness and low surface roughness of DLC and WC/C coated seal resulted in low and stable friction coefficient in the range of 0.04–0.05 without any measurable wear."
+   },
+   {
+    "id": "https://openalex.org/W4393352547",
+    "doi": "https://doi.org/10.3390/bioengineering11040343",
+    "title": "Surface Modification of Polyetheretherketone (PEEK) Intervertebral Fusion Implant Using Polydopamine Coating for Improved Bioactivity",
+    "year": 2024,
+    "cited": 11,
+    "venue": "Bioengineering",
+    "topics": [
+     "Orthopaedic implants and arthroplasty",
+     "Bone Tissue Engineering Materials",
+     "Polymer Surface Interaction Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2306-5354/11/4/343/pdf?version=1711876013",
+    "abstract": "The occurrence of bone diseases has been increasing rapidly, in line with the aging population. A representative spinal fusion material, polyetheretherketone (PEEK), is advantageous in this regard as it can work in close proximity to the elastic modulus of cancellous bone. However, if it is used without surface modification, the initial osseointegration will be low due to lack of bioactivity, resulting in limitations in surgical treatment. In this study, we aimed to modify the surface of PEEK cages to a hydrophilic surface by coating with polyethylene glycol (PEG), hyaluronic acid (HA), and polydopamine (PDA), and to analyze whether the coated surface exhibits improved bioactivity and changes in mechanical properties for orthopedic applications. Material properties of coated samples were characterized and compared with various PEEK groups, including PEEK, PEEK-PEG, PEEK-HA, and PEEK-PDA. In an in vitro study, cell proliferation was found to be enhanced on PDA-coated PEEK; it was approximately twice as high compared to the control group. In addition, mechanical properties, including static and torsion, were not affected by the presence of the coating. Thus, the results suggest that PEEK-PDA may have the potential for clinical application in fusion surgery for spinal diseases, as it may improve the rate of osseointegration."
+   },
+   {
+    "id": "https://openalex.org/W4385190224",
+    "doi": "https://doi.org/10.1016/j.matchemphys.2023.128249",
+    "title": "Surface modification of WE43 magnesium alloy via alkali/stearic acid treatment for biodegradable drug-eluting stent applications",
+    "year": 2023,
+    "cited": 11,
+    "venue": "Materials Chemistry and Physics",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Corrosion Behavior and Inhibition",
+     "Hydrogen embrittlement and corrosion behaviors in metals"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.matchemphys.2023.128249",
+    "abstract": "WE43 is a biodegradable magnesium alloy with a high potential for cardiovascular stent applications. Although it has many adequate properties, there are barriers to using it as a drug-eluting stent vehicle. Corrosion and hydrogen gas formation have an adverse effect on the surface, causing attached drug carriers to separate, which limits its functionality as a stent. An alkali treatment in 1 M NaOH solution at various applied potentials was utilized to fix this issue. Subsequently, a stearic acid layer was formed by two different methods to reduce corrosion by decreasing water uptake of the surface. The anodic film's surface morphology and phase structure were analysed using scanning electron microscopy (SEM) and X-ray photoelectron spectroscopy (XPS). Nanoindentation tests were carried out to evaluate the anodic layer's mechanical properties. Its corrosion behaviour was characterized using potentiodynamic polarization (PDP), electrochemical impedance spectroscopy (EIS) and hydrogen evolution tests. The adhesive, thin yet effective oxide layers achieved in all the potentials showed increased corrosion resistance. It significantly decreased hydrogen formation, which were then sealed with stearic acid, and the surface became hydrophobic. This sealing layer acted as an additional barrier and enhanced the corrosion resistance of the magnesium alloy up to fifteen times bigger."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mitutoyo SJ-410\" OR \"Mitutoyo Surftest SJ-411\" OR \"Mitutoyo Surftest SJ-412\") AND OPEN_ACCESS:y",
@@ -313,14 +1062,20 @@
   }
  ],
  "standards_found": {
+  "ISO 6872-2015": 1,
+  "ASTM D638": 1,
+  "ISO 527-2": 1,
   "ASTM B962-17": 1,
   "ASTM D7127-17": 1,
   "ISO 1997": 1
  },
  "standards_new": [
   "ASTM B962-17",
+  "ASTM D638",
   "ASTM D7127-17",
-  "ISO 1997"
+  "ISO 1997",
+  "ISO 527-2",
+  "ISO 6872-2015"
  ],
  "test_item_hits": {
   "surface_topography": 15,

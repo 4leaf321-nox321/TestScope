@@ -7,8 +7,22 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"JEOL XtaLAB\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4399061474",
+    "doi": "https://doi.org/10.48550/arxiv.2405.15623",
+    "title": "Pseudo-easy-axis anisotropy in antiferromagnetic $S=1$ diamond-lattice systems Ni$X_{2}$(pym)$_{2}$",
+    "year": 2024,
+    "cited": 1,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Physics of Superconductivity and Magnetism"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2405.15623",
+    "abstract": "We investigate the magnetic properties of $S=1$ antiferromagnetic diamond lattice, Ni$X_{2}$(pyrimidine)$_{2}$ ($X$ = Cl, Br), hosting a single-ion anisotropy (SIA) orientation which alternates between neighbouring sites. Through neutron diffraction measurements of the $X$ = Cl compound, the ordered state spins are found to align collinearly along a pseudo-easy-axis, a unique direction created by the intersection of two easy planes. Similarities in the magnetization, exhibiting spin-flop transitions, and the magnetic susceptibility in the two compounds imply that the same magnetic structure and a pseudo-easy-axis is also present for $X$ = Br. We estimate the Hamiltonian parameters by combining analytical calculations and Monte-Carlo (MC) simulations of the spin-flop and saturation field. The MC simulations also reveal that the spin-flop transition occurs when the applied field is parallel to the pseudo-easy-axis. Contrary to conventional easy-axis systems, there exist field directions perpendicular to the pseudo-easy-axis for which the magnetic saturation is approached asymptotically and no symmetry-breaking phase transition is observed at finite fields."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"JEOL XtaLAB\") AND OPEN_ACCESS:y",

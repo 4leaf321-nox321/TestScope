@@ -12,8 +12,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"NETZSCH STA 449\" OR \"NETZSCH STA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH STA 449 F1\" OR \"NETZSCH STA 449 F3\"",
-  "count": null,
-  "works": []
+  "count": 10584,
+  "works": [
+   {
+    "id": "https://openalex.org/W2261135145",
+    "doi": "https://doi.org/10.1038/ncomms9485",
+    "title": "Entropy-stabilized oxides",
+    "year": 2015,
+    "cited": 3436,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electronic and Structural Properties of Oxides",
+     "Machine Learning in Materials Science",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms9485.pdf",
+    "abstract": "Configurational disorder can be compositionally engineered into mixed oxide by populating a single sublattice with many distinct cations. The formulations promote novel and entropy-stabilized forms of crystalline matter where metal cations are incorporated in new ways. Here, through rigorous experiments, a simple thermodynamic model, and a five-component oxide formulation, we demonstrate beyond reasonable doubt that entropy predominates the thermodynamic landscape, and drives a reversible solid-state transformation between a multiphase and single-phase state. In the latter, cation distributions are proven to be random and homogeneous. The findings validate the hypothesis that deliberate configurational disorder provides an orthogonal strategy to imagine and discover new phases of crystalline matter and untapped opportunities for property engineering."
+   },
+   {
+    "id": "https://openalex.org/W2009273624",
+    "doi": "https://doi.org/10.1038/ncomms2327",
+    "title": "Sulphur–TiO2 yolk–shell nanoarchitecture with internal void space for long-cycle lithium–sulphur batteries",
+    "year": 2013,
+    "cited": 2105,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms2327.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2747631106",
+    "doi": "https://doi.org/10.1038/s41467-017-00467-x",
+    "title": "Rechargeable aqueous zinc-manganese dioxide batteries with high energy and power densities",
+    "year": 2017,
+    "cited": 1793,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-00467-x.pdf",
+    "abstract": "Abstract Although alkaline zinc-manganese dioxide batteries have dominated the primary battery applications, it is challenging to make them rechargeable. Here we report a high-performance rechargeable zinc-manganese dioxide system with an aqueous mild-acidic zinc triflate electrolyte. We demonstrate that the tunnel structured manganese dioxide polymorphs undergo a phase transition to layered zinc-buserite on first discharging, thus allowing subsequent intercalation of zinc cations in the latter structure. Based on this electrode mechanism, we formulate an aqueous zinc/manganese triflate electrolyte that enables the formation of a protective porous manganese oxide layer. The cathode exhibits a high reversible capacity of 225 mAh g −1 and long-term cyclability with 94% capacity retention over 2000 cycles. Remarkably, the pouch zinc-manganese dioxide battery delivers a total energy density of 75.2 Wh kg −1 . As a result of the superior battery performance, the high safety of aqueous electrolyte, the facile cell assembly and the cost benefit of the source materials, this zinc-manganese dioxide system is believed to be promising for large-scale energy storage applications."
+   },
+   {
+    "id": "https://openalex.org/W2103109670",
+    "doi": "https://doi.org/10.1038/srep06200",
+    "title": "A Promising New Class of High-Temperature Alloys: Eutectic High-Entropy Alloys",
+    "year": 2014,
+    "cited": 1738,
+    "venue": "Scientific Reports",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep06200.pdf",
+    "abstract": "High-entropy alloys (HEAs) can have either high strength or high ductility, and a simultaneous achievement of both still constitutes a tough challenge. The inferior castability and compositional segregation of HEAs are also obstacles for their technological applications. To tackle these problems, here we proposed a novel strategy to design HEAs using the eutectic alloy concept, i.e. to achieve a microstructure composed of alternating soft fcc and hard bcc phases. As a manifestation of this concept, an AlCoCrFeNi2.1 (atomic portion) eutectic high-entropy alloy (EHEA) was designed. The as-cast EHEA possessed a fine lamellar fcc/B2 microstructure, and showed an unprecedented combination of high tensile ductility and high fracture strength at room temperature. The excellent mechanical properties could be kept up to 700°C. This new alloy design strategy can be readily adapted to large-scale industrial production of HEAs with simultaneous high fracture strength and high ductility."
+   },
+   {
+    "id": "https://openalex.org/W2571106995",
+    "doi": "https://doi.org/10.4236/graphene.2017.61001",
+    "title": "Synthesis of Graphene Oxide (GO) by Modified Hummers Method and Its Thermal Reduction to Obtain Reduced Graphene Oxide (rGO)*",
+    "year": 2017,
+    "cited": 1357,
+    "venue": "Graphene",
+    "topics": [
+     "Graphene research and applications",
+     "Graphene and Nanomaterials Applications",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://content.scirp.org/pdf/graphene_2017011014524538.pdf",
+    "abstract": "Over the span of years, improvements over various synthesis methods of graphene are constantly pursued to provide safer and more effective alternatives. Though the extraction of graphene through Hummers method is one of the oldest techniques yet it is one of the most suitable methods for the formation of bulk graphene. Graphene can be obtained in the form of reduced Graphite oxide, sometimes also referred as Graphene oxide. The effectiveness of this oxidation process can be evaluated by the magnitude of carbon/oxygen ratio of the obtained graphene. Here, graphene oxide (GO) was prepared by oxidizing the purified natural flake graphite (NFG) by a modified Hummers method. The attempts have been made to synthesize GO having few layers by using a modified Hummers method where the amount of NaNO3 has been decreased, and the amount of KMnO4 is increased. The reaction has been performed in a 9:1 (by volume) mixture of H2SO4/H3PO4. This modification is successful in increasing the reaction yield and reducing the toxic gas evolution while using a varied proportion of KMnO4 and H2SO4 as those required by Hummers method. A new component of K2S2O8 has been introduced to the reaction system to maintain the pH value. Reduced graphene oxide (rGO) was thereafter extracted by thermal modification of GO. Here, GO has been used as a precursor for graphene synthesis by thermal reduction processes. The results of FTIR and Raman spectroscopy analysis show that the NFG when oxidized by strong oxidants like KMnO4 and NaNO3, introduced oxygen atoms into the graphite layers and formed bonds like C=O, C-H, COOH and C-O-C with the carbon atoms in the graphite layers. The structure and morphology of both GO and rGO were analyzed using X-ray diffraction (XRD), scanning electron microscopy (SEM), high-resolution transmission electron microscopy (HR-TEM), Fourier transform infrared spectroscopy (FTIR), ultraviolet-visible spectroscopy, Raman spectroscopy, Brunauer-Emmett-Teller (BET) surface area analysis and differential scanning calorimetry (DSC) and thermogravimetric analysis (TGA)."
+   },
+   {
+    "id": "https://openalex.org/W2262193673",
+    "doi": "https://doi.org/10.1038/ncomms9508",
+    "title": "A tunable azine covalent organic framework platform for visible light-induced hydrogen generation",
+    "year": 2015,
+    "cited": 1279,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Advanced Photocatalysis Techniques",
+     "Metal-Organic Frameworks: Synthesis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms9508.pdf",
+    "abstract": "Hydrogen evolution from photocatalytic reduction of water holds promise as a sustainable source of carbon-free energy. Covalent organic frameworks (COFs) present an interesting new class of photoactive materials, which combine three key features relevant to the photocatalytic process, namely crystallinity, porosity and tunability. Here we synthesize a series of water- and photostable 2D azine-linked COFs from hydrazine and triphenylarene aldehydes with varying number of nitrogen atoms. The electronic and steric variations in the precursors are transferred to the resulting frameworks, thus leading to a progressively enhanced light-induced hydrogen evolution with increasing nitrogen content in the frameworks. Our results demonstrate that by the rational design of COFs on a molecular level, it is possible to precisely adjust their structural and optoelectronic properties, thus resulting in enhanced photocatalytic activities. This is expected to spur further interest in these photofunctional frameworks where rational supramolecular engineering may lead to new material applications."
+   },
+   {
+    "id": "https://openalex.org/W2592400953",
+    "doi": "https://doi.org/10.1038/ncomms14627",
+    "title": "Conductive porous vanadium nitride/graphene composite as chemical anchor of polysulfides for lithium-sulfur batteries",
+    "year": 2017,
+    "cited": 1136,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14627.pdf",
+    "abstract": "Abstract Although the rechargeable lithium–sulfur battery is an advanced energy storage system, its practical implementation has been impeded by many issues, in particular the shuttle effect causing rapid capacity fade and low Coulombic efficiency. Herein, we report a conductive porous vanadium nitride nanoribbon/graphene composite accommodating the catholyte as the cathode of a lithium–sulfur battery. The vanadium nitride/graphene composite provides strong anchoring for polysulfides and fast polysulfide conversion. The anchoring effect of vanadium nitride is confirmed by experimental and theoretical results. Owing to the high conductivity of vanadium nitride, the composite cathode exhibits lower polarization and faster redox reaction kinetics than a reduced graphene oxide cathode, showing good rate and cycling performances. The initial capacity reaches 1,471 mAh g −1 and the capacity after 100 cycles is 1,252 mAh g −1 at 0.2 C, a loss of only 15%, offering a potential for use in high energy lithium–sulfur batteries."
+   },
+   {
+    "id": "https://openalex.org/W2782051023",
+    "doi": "https://doi.org/10.1038/s41467-017-02529-6",
+    "title": "MXene molecular sieving membranes for highly efficient gas separation",
+    "year": 2018,
+    "cited": 1127,
+    "venue": "Nature Communications",
+    "topics": [
+     "MXene and MAX Phase Materials",
+     "Graphene research and applications",
+     "Membrane Separation and Gas Transport"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-02529-6.pdf",
+    "abstract": "Abstract Molecular sieving membranes with sufficient and uniform nanochannels that break the permeability-selectivity trade-off are desirable for energy-efficient gas separation, and the arising two-dimensional (2D) materials provide new routes for membrane development. However, for 2D lamellar membranes, disordered interlayer nanochannels for mass transport are usually formed between randomly stacked neighboring nanosheets, which is obstructive for highly efficient separation. Therefore, manufacturing lamellar membranes with highly ordered nanochannel structures for fast and precise molecular sieving is still challenging. Here, we report on lamellar stacked MXene membranes with aligned and regular subnanometer channels, taking advantage of the abundant surface-terminating groups on the MXene nanosheets, which exhibit excellent gas separation performance with H2 permeability >2200 Barrer and H2/CO2 selectivity >160, superior to the state-of-the-art membranes. The results of molecular dynamics simulations quantitatively support the experiments, confirming the subnanometer interlayer spacing between the neighboring MXene nanosheets as molecular sieving channels for gas separation."
+   },
+   {
+    "id": "https://openalex.org/W2058611139",
+    "doi": "https://doi.org/10.1038/srep04596",
+    "title": "Effect of aspect ratio and surface defects on the photocatalytic activity of ZnO nanorods",
+    "year": 2014,
+    "cited": 1023,
+    "venue": "Scientific Reports",
+    "topics": [
+     "ZnO doping and properties",
+     "Advanced Photocatalysis Techniques",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep04596.pdf",
+    "abstract": "ZnO, aside from TiO2, has been considered as a promising material for purification and disinfection of water and air, and remediation of hazardous waste, owing to its high activity, environment-friendly feature and lower cost. However, their poor visible light utilization greatly limited their practical applications. Herein, we demonstrate the fabrication of different aspect ratios of the ZnO nanorods with surface defects by mechanical-assisted thermal decomposition method. The experiments revealed that ZnO nanorods with higher aspect ratio and surface defects show significantly higher photocatalytic performances."
+   },
+   {
+    "id": "https://openalex.org/W2138520791",
+    "doi": "https://doi.org/10.1002/anie.200462602",
+    "title": "Nanoscaffold Mediates Hydrogen Release and the Reactivity of Ammonia Borane",
+    "year": 2005,
+    "cited": 791,
+    "venue": "Angewandte Chemie International Edition",
+    "topics": [
+     "Hydrogen Storage and Materials",
+     "Ammonia Synthesis and Nitrogen Reduction",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.200462602",
+    "abstract": "Hydrogen-rich materials infused in nanoscaffolds offer a promising approach to on-board hydrogen storage. A mesoporous scaffold decreases the temperature for hydrogen release from ammonia borane (AB), a conventional hydrogen-storage material, to below 80 °C and leads to an increase in the purity of the hydrogen released. (See schematic representation of a hydrogen-bonded AB network in the cross-section of a single pore.)"
+   },
+   {
+    "id": "https://openalex.org/W2805857153",
+    "doi": "https://doi.org/10.1038/s41467-018-02889-7",
+    "title": "Boosting lithium storage in covalent organic framework via activation of 14-electron redox chemistry",
+    "year": 2018,
+    "cited": 691,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-02889-7.pdf",
+    "abstract": "Abstract Conjugated polymeric molecules have been heralded as promising electrode materials for the next-generation energy-storage technologies owing to their chemical flexibility at the molecular level, environmental benefit, and cost advantage. However, before any practical implementation takes place, the low capacity, poor structural stability, and sluggish ion/electron diffusion kinetics remain the obstacles that have to be overcome. Here, we report the synthesis of a few-layered two-dimensional covalent organic framework trapped by carbon nanotubes as the anode of lithium-ion batteries. Remarkably, upon activation, this organic electrode delivers a large reversible capacity of 1536 mAh g −1 and can sustain 500 cycles at 100 mA g −1 . Aided by theoretical calculations and electrochemical probing of the electrochemical behavior at different stages of cycling, the storage mechanism is revealed to be governed by 14-electron redox chemistry for a covalent organic framework monomer with one lithium ion per C=N group and six lithium ions per benzene ring. This work may pave the way to the development of high-capacity electrodes for organic rechargeable batteries."
+   },
+   {
+    "id": "https://openalex.org/W2782103857",
+    "doi": "https://doi.org/10.1038/s41467-017-02479-z",
+    "title": "Green synthesis of graphene oxide by seconds timescale water electrolytic oxidation",
+    "year": 2018,
+    "cited": 673,
+    "venue": "Nature Communications",
+    "topics": [
+     "Graphene research and applications",
+     "Supercapacitor Materials and Fabrication",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-02479-z.pdf",
+    "abstract": "Graphene oxide is highly desired for printing electronics, catalysis, energy storage, separation membranes, biomedicine, and composites. However, the present synthesis methods depend on the reactions of graphite with mixed strong oxidants, which suffer from explosion risk, serious environmental pollution, and long-reaction time up to hundreds of hours. Here, we report a scalable, safe and green method to synthesize graphene oxide with a high yield based on water electrolytic oxidation of graphite. The graphite lattice is fully oxidized within a few seconds in our electrochemical oxidation reaction, and the graphene oxide obtained is similar to those achieved by the present methods. We also discuss the synthesis mechanism and demonstrate continuous and controlled synthesis of graphene oxide and its use for transparent conductive films, strong papers, and ultra-light elastic aerogels."
+   },
+   {
+    "id": "https://openalex.org/W2198128057",
+    "doi": "https://doi.org/10.1038/ncomms8345",
+    "title": "Phase and composition controllable synthesis of cobalt manganese spinel nanoparticles towards efficient oxygen electrocatalysis",
+    "year": 2015,
+    "cited": 649,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms8345.pdf",
+    "abstract": "Spinel-type oxides are technologically important in many fields, including electronics, magnetism, catalysis and electrochemical energy storage and conversion. Typically, these materials are prepared by conventional ceramic routes that are energy consuming and offer limited control over shape and size. Moreover, for mixed-metal oxide spinels (for example, Co(x)Mn(3-x)O4), the crystallographic phase sensitively correlates with the metal ratio, posing great challenges to synthesize active product with simultaneously tuned phase and composition. Here we report a general synthesis of ultrasmall cobalt manganese spinels with tailored structural symmetry and composition through facile solution-based oxidation-precipitation and insertion-crystallization process at modest condition. As an example application, the nanocrystalline spinels catalyse the oxygen reduction/evolution reactions, showing phase and composition co-dependent performance. Furthermore, the mild synthetic strategy allows the formation of homogeneous and strongly coupled spinel/carbon nanocomposites, which exhibit comparable activity but superior durability to Pt/C and serve as efficient catalysts to build rechargeable Zn-air and Li-air batteries."
+   },
+   {
+    "id": "https://openalex.org/W2564750405",
+    "doi": "https://doi.org/10.1002/adfm.201604307",
+    "title": "Potassium Prussian Blue Nanoparticles: A Low‐Cost Cathode Material for Potassium‐Ion Batteries",
+    "year": 2016,
+    "cited": 576,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://discovery.ucl.ac.uk/10076122/1/A%20Low-cost%20Cathode%20Material%20for%20Potassium-ion%20Batteries.pdf",
+    "abstract": "Potassium‐ion batteries (KIBs) in organic electrolytes hold great promise as an electrochemical energy storage technology owing to the abundance of potassium, close redox potential to lithium, and similar electrochemistry with lithium system. Although carbon materials have been studied as KIB anodes, investigations on KIB cathodes have been scarcely reported. A comprehensive study on potassium Prussian blue K0.220Fe[Fe(CN)6]0.805⋅4.01H2O nanoparticles as a potential cathode material is for the first time reported. The cathode exhibits a high discharge voltage of 3.1–3.4 V, a high reversible capacity of 73.2 mAh g−1, and great cyclability at both low and high rates with a very small capacity decay rate of ≈0.09% per cycle. Electrochemical reaction mechanism analysis identifies the carbon‐coordinated FeIII/FeII couple as redox‐active site and proves structural stability of the cathode during charge/discharge. Furthermore, for the first time, a KIB full‐cell is presented by coupling the nanoparticles with commercial carbon materials. The full‐cell delivers a capacity of 68.5 mAh g−1 at 100 mA g−1 and retains 93.4% of the capacity after 50 cycles. Considering the low cost and material sustainability as well as the great electrochemical performances, this work may pave the way toward more studies on KIB cathodes and trigger future attention on rechargeable KIBs."
+   },
+   {
+    "id": "https://openalex.org/W2156115590",
+    "doi": "https://doi.org/10.1007/s12274-010-0024-6",
+    "title": "Synthesis of porous NiO nanocrystals with controllable surface area and their application as supercapacitor electrodes",
+    "year": 2010,
+    "cited": 566,
+    "venue": "Nano Research",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Transition Metal Oxide Nanomaterials",
+     "Nanoporous metals and alloys"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s12274-010-0024-6.pdf",
+    "abstract": "We report a facile way to grow various porous NiO nanostructures including nanoslices, nanoplates, and nanocolumns, which show a structure-dependence in their specific charge capacitances. The formation of controllable porosity is due to the dehydration and re-crystallization of β -Ni(OH) 2 nanoplates synthesized by a hydrothermal process. Thermogravimetric analysis shows that the decomposition temperature of the β -Ni(OH) 2 nanostructures is related to their morphology. In electrochemical tests, the porous NiO nanostructures show stable cycling performance with retention of specific capacitance over 1000 cycles. Interestingly, the formation of nanocolumns by the stacking of β -Ni(OH) 2 nanoslices/plates favors the creation of small pores in the NiO nanocrystals obtained after annealing, and the surface area is over five times larger than that of NiO nanoslices and nanoplates. Consequently, the specific capacitance of the porous NiO nanocolumns (390 F/g) is significantly higher than that of the nanoslices (176 F/g) or nanoplates (285 F/g) at a discharge current of 5 A/g. This approach provides a clear illustration of the process-structure-property relationship in nanocrystal synthesis and potentially offers strategies to enhance the performance of supercapacitor electrodes."
+   },
+   {
+    "id": "https://openalex.org/W1836745845",
+    "doi": "https://doi.org/10.1039/c5ra05897j",
+    "title": "Thermal runaway of commercial 18650 Li-ion batteries with LFP and NCA cathodes – impact of state of charge and overcharge",
+    "year": 2015,
+    "cited": 559,
+    "venue": "RSC Advances",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2015/ra/c5ra05897j",
+    "abstract": "Destructive thermal ramp experiments with commercial Li-ion batteries at different state of charge were made. Produced gases were quantified and a causing chemical reaction system is proposed."
+   },
+   {
+    "id": "https://openalex.org/W2135410019",
+    "doi": "https://doi.org/10.1038/srep01919",
+    "title": "Rice husks as a sustainable source of nanostructured silicon for high performance Li-ion battery anodes",
+    "year": 2013,
+    "cited": 537,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Extraction and Separation Processes",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep01919.pdf",
+    "abstract": "The recovery of useful materials from earth-abundant substances is of strategic importance for industrial processes. Despite the fact that Si is the second most abundant element in the Earth's crust, processes to form Si nanomaterials is usually complex, costly and energy-intensive. Here we show that pure Si nanoparticles (SiNPs) can be derived directly from rice husks (RHs), an abundant agricultural byproduct produced at a rate of 1.2 × 10(8) tons/year, with a conversion yield as high as 5% by mass. And owing to their small size (10-40 nm) and porous nature, these recovered SiNPs exhibits high performance as Li-ion battery anodes, with high reversible capacity (2,790 mA h g(-1), seven times greater than graphite anodes) and long cycle life (86% capacity retention over 300 cycles). Using RHs as the raw material source, overall energy-efficient, green, and large scale synthesis of low-cost and functional Si nanomaterials is possible."
+   },
+   {
+    "id": "https://openalex.org/W2999141465",
+    "doi": "https://doi.org/10.1038/s41467-019-13739-5",
+    "title": "Nitrogen-rich covalent organic frameworks with multiple carbonyls for high-performance sodium batteries",
+    "year": 2020,
+    "cited": 528,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-13739-5.pdf",
+    "abstract": "Abstract Covalent organic frameworks with designable periodic skeletons and ordered nanopores have attracted increasing attention as promising cathode materials for rechargeable batteries. However, the reported cathodes are plagued by limited capacity and unsatisfying rate performance. Here we report a honeycomb-like nitrogen-rich covalent organic framework with multiple carbonyls. The sodium storage ability of pyrazines and carbonyls and the up-to twelve sodium-ion redox chemistry mechanism for each repetitive unit have been demonstrated by in/ex-situ Fourier transform infrared spectra and density functional theory calculations. The insoluble electrode exhibits a remarkably high specific capacity of 452.0 mAh g −1 , excellent cycling stability (~96% capacity retention after 1000 cycles) and high rate performance (134.3 mAh g −1 at 10.0 A g −1 ). Furthermore, a pouch-type battery is assembled, displaying the gravimetric and volumetric energy density of 101.1 Wh kg −1 cell and 78.5 Wh L −1 cell , respectively, indicating potentially practical applications of conjugated polymers in rechargeable batteries."
+   },
+   {
+    "id": "https://openalex.org/W2110520845",
+    "doi": "https://doi.org/10.1016/j.mineng.2015.01.005",
+    "title": "Leaching of rare earths from bauxite residue (red mud)",
+    "year": 2015,
+    "cited": 519,
+    "venue": "Minerals Engineering",
+    "topics": [
+     "Bauxite Residue and Utilization",
+     "Extraction and Separation Processes",
+     "Recycling and utilization of industrial and municipal waste in materials production"
+    ],
+    "oa_url": "https://lirias.kuleuven.be/retrieve/8783ceb9-8c34-4769-87c4-a3324456c740",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2990191939",
+    "doi": "https://doi.org/10.1038/s41563-019-0536-8",
+    "title": "Hydrophilic microporous membranes for selective ion separation and flow-battery energy storage",
+    "year": 2019,
+    "cited": 505,
+    "venue": "Nature Materials",
+    "topics": [
+     "Advanced battery technologies research",
+     "Fuel Cells and Related Materials",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1616156",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4322503365",
+    "doi": "https://doi.org/10.1038/s41467-023-36710-x",
+    "title": "Tuning excited state electronic structure and charge transport in covalent organic frameworks for enhanced photocatalytic performance",
+    "year": 2023,
+    "cited": 473,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-36710-x.pdf",
+    "abstract": "Covalent organic frameworks (COFs) represent an emerging class of organic photocatalysts. However, their complicated structures lead to indeterminacy about photocatalytic active sites and reaction mechanisms. Herein, we use reticular chemistry to construct a family of isoreticular crystalline hydrazide-based COF photocatalysts, with the optoelectronic properties and local pore characteristics of the COFs modulated using different linkers. The excited state electronic distribution and transport pathways in the COFs are probed using a host of experimental methods and theoretical calculations at a molecular level. One of our developed COFs (denoted as COF-4) exhibits a remarkable excited state electron utilization efficiency and charge transfer properties, achieving a record-high photocatalytic uranium extraction performance of ~6.84 mg/g/day in natural seawater among all techniques reported so far. This study brings a new understanding about the operation of COF-based photocatalysts, guiding the design of improved COF photocatalysts for many applications."
+   },
+   {
+    "id": "https://openalex.org/W2171236786",
+    "doi": "https://doi.org/10.1002/adfm.200400186",
+    "title": "Synthesis and Rate Performance of Monolithic Macroporous Carbon Electrodes for Lithium‐Ion Secondary Batteries",
+    "year": 2005,
+    "cited": 466,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.200400186",
+    "abstract": "Abstract Three‐dimensionally ordered macroporous (3DOM) materials are composed of well‐interconnected pore and wall structures with wall thicknesses of a few tens of nanometers. These characteristics can be applied to enhance the rate performance of lithium‐ion secondary batteries. 3DOM monoliths of hard carbon have been synthesized via a resorcinol‐formaldehyde sol–gel process using poly(methyl methacrylate) colloidal‐crystal templates, and the rate performance of 3DOM carbon electrodes for lithium‐ion secondary batteries has been evaluated. The advantages of monolithic 3DOM carbon electrodes are: 1) solid‐state diffusion lengths for lithium ions of the order of a few tens of nanometers, 2) a large number of active sites for charge‐transfer reactions because of the material's high surface area, 3) reasonable electrical conductivity of 3DOM carbon due to a well‐interconnected wall structure, 4) high ionic conductivity of the electrolyte within the 3DOM carbon matrix, and 5) no need for a binder and/or a conducting agent. These factors lead to significantly improved rate performance compared to a similar but non‐templated carbon electrode and compared to an electrode prepared from spherical carbon with binder. To increase the energy density of 3DOM carbon, tin oxide nanoparticles have been coated on the surface of 3DOM carbon by thermal decomposition of tin sulfate, because the specific capacity of tin oxide is larger than that of carbon. The initial specific capacity of SnO2‐coated 3DOM carbon increases compared to that of 3DOM carbon, resulting in a higher energy density of the modified 3DOM carbon. However, the specific capacity decreases as cycling proceeds, apparently because lithium–tin alloy nanoparticles were detached from the carbon support by volume changes during charge–discharge processes. The rate performance of SnO2‐coated 3DOM carbon is improved compared to 3DOM carbon."
+   },
+   {
+    "id": "https://openalex.org/W2891396998",
+    "doi": "https://doi.org/10.1038/s41467-018-06126-z",
+    "title": "Lithiophilic-lithiophobic gradient interfacial layer for a highly stable lithium metal anode",
+    "year": 2018,
+    "cited": 452,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-06126-z.pdf",
+    "abstract": "Abstract The long-standing issue of lithium dendrite growth during repeated deposition or dissolution processes hinders the practical use of lithium-metal anodes for high-energy density batteries. Here, we demonstrate a promising lithiophilic–lithiophobic gradient interfacial layer strategy in which the bottom lithiophilic zinc oxide/carbon nanotube sublayer tightly anchors the whole layer onto the lithium foil, facilitating the formation of a stable solid electrolyte interphase, and prevents the formation of an intermediate mossy lithium corrosion layer. Together with the top lithiophobic carbon nanotube sublayer, this gradient interfacial layer can effectively suppress dendrite growth and ensure ultralong-term stable lithium stripping/plating. This strategy is further demonstrated to provide substantially improved cycle performance in copper current collector, 10 cm2 pouch cell and lithium–sulfur batteries, which, coupled with a simple fabrication process and wide applicability in various materials for lithium-metal protection, makes the lithiophilic–lithiophobic gradient interfacial layer a favored strategy for next-generation lithium-metal batteries."
+   },
+   {
+    "id": "https://openalex.org/W3155510219",
+    "doi": "https://doi.org/10.1016/j.joule.2021.03.017",
+    "title": "Demonstration of ultrahigh thermoelectric efficiency of ∼7.3% in Mg3Sb2/MgAgSb module for low-temperature energy harvesting",
+    "year": 2021,
+    "cited": 430,
+    "venue": "Joule",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Heusler alloys: electronic and magnetic properties",
+     "Topological Materials and Phenomena"
+    ],
+    "oa_url": "http://www.cell.com/article/S2542435121001409/pdf",
+    "abstract": "Thermoelectric harvesting of low-temperature waste heat offers great opportunities for sustainable energy production. However, the investigations of related thermoelectric materials and modules remain sluggish. Here, we reported a great advance in the n-type Mg 3 Sb 1.5 Bi 0.5 system by minor Cu additions. Some Cu atoms preferentially occupy interstitial sites within the Mg 3 Sb 2 lattice and significantly modified phonon modes via filling in the phonon gap and increased anharmonic phonon scattering, thereby leading to the anomalously low thermal conductivity. Simultaneously, the detrimental behavior of thermally activated electrical conductivity was completely eliminated through grain-boundary complexion engineering. These two critical roles contributed to the remarkable improvement of zT . Based on this developed high-performance material coupled with p-type α-MgAgSb-based material, a fabricated thermoelectric module rivaling long-time champion Bi 2 Te 3 , demonstrated a record-high conversion efficiency ∼7.3% at the hot-side temperature of 593 K. These results pave the way for low-temperature thermoelectric harvesting."
+   },
+   {
+    "id": "https://openalex.org/W2079071691",
+    "doi": "https://doi.org/10.1038/pj.2012.162",
+    "title": "Melamine formaldehyde: curing studies and reaction mechanism",
+    "year": 2012,
+    "cited": 429,
+    "venue": "Polymer Journal",
+    "topics": [
+     "Synthesis and Characterization of Heterocyclic Compounds",
+     "Dyeing and Modifying Textile Fibers",
+     "Thermal and Kinetic Analysis"
+    ],
+    "oa_url": "https://www.nature.com/articles/pj2012162.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3021918868",
+    "doi": "https://doi.org/10.1038/s41467-020-16039-5",
+    "title": "A chemically self-charging aqueous zinc-ion battery",
+    "year": 2020,
+    "cited": 410,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Perovskite Materials and Applications",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-16039-5.pdf",
+    "abstract": "Abstract Self-charging power systems integrating energy harvesting technologies and batteries are attracting extensive attention in energy technologies. However, the conventional integrated systems are highly dependent on the availability of the energy sources and generally possess complicated configuration. Herein, we develop chemically self-charging aqueous zinc-ion batteries with a simplified two-electrode configuration based on CaV 6 O 16 ·3H 2 O electrode. Such system possesses the capability of energy harvesting, conversion and storage simultaneously. It can be chemically self-recharged by the spontaneous redox reaction between the discharged cathode and oxygen from the ambient environment. Chemically self-recharged zinc-ion batteries display an initial open-circuit voltage of about 1.05 V and a considerable discharge capacity of about 239 mAh g −1 , indicating the excellent self-rechargeability. Impressively, such chemically self-charging zinc-ion batteries can also work well at chemical or/and galvanostatic charging hybrid modes. This work not only provides a route to design chemically self-charging energy storage, but also broadens the horizons of aqueous zinc-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W2276923202",
+    "doi": "https://doi.org/10.1021/jacs.5b13220",
+    "title": "Melt-Quenched Glasses of Metal–Organic Frameworks",
+    "year": 2016,
+    "cited": 409,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "X-ray Diffraction in Crystallography",
+     "Crystallography and molecular interactions"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/jacs.5b13220?ref=article_openPDF",
+    "abstract": "Crystalline solids dominate the field of metal-organic frameworks (MOFs), with access to the liquid and glass states of matter usually prohibited by relatively low temperatures of thermal decomposition. In this work, we give due consideration to framework chemistry and topology to expand the phenomenon of the melting of 3D MOFs, linking crystal chemistry to framework melting temperature and kinetic fragility of the glass-forming liquids. Here we show that melting temperatures can be lowered by altering the chemistry of the crystalline MOF state, which provides a route to facilitate the melting of other MOFs. The glasses formed upon vitrification are chemically and structurally distinct from the three other existing categories of melt-quenched glasses (inorganic nonmetallic, organic, and metallic), and retain the basic metal-ligand connectivity of crystalline MOFs, which connects their mechanical properties to their starting chemical composition. The transfer of functionality from crystal to glass points toward new routes to tunable, functional hybrid glasses."
+   },
+   {
+    "id": "https://openalex.org/W2765302254",
+    "doi": "https://doi.org/10.1038/s41467-017-01208-w",
+    "title": "A mesoporous cationic thorium-organic framework that rapidly traps anionic persistent organic pollutants",
+    "year": 2017,
+    "cited": 407,
+    "venue": "Nature Communications",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Covalent Organic Framework Applications",
+     "Molecular Sensors and Ion Detection"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-01208-w.pdf",
+    "abstract": "Abstract Many environmental pollutants inherently exist in their anionic forms and are therefore highly mobile in natural water systems. Cationic framework materials that can capture those pollutants are highly desirable but scarcely reported. Here we present a mesoporous cationic thorium-based MOF (SCU-8) containing channels with a large inner diameter of 2.2 nm and possessing a high surface area of 1360 m 2 g −1 . The anion-exchange properties of SCU-8 were explored with many anions including small oxo anions like ReO 4 − and Cr 2 O 7 2− as well as anionic organic dyes like methyl blue and the persistent organic pollutant, perfluorooctane sulfonate (PFOS). Both fast uptake kinetics and great sorption selectivity toward PFOS are observed. The underlying sorption mechanism was probed using quantum mechanical and molecular dynamics simulations. These computational results reveal that PFOS anions are immobilized in SCU-8 by driving forces including electrostatic interactions, hydrogen bonds, hydrophobic interactions, and van der Waals interactions at different adsorption stages."
+   },
+   {
+    "id": "https://openalex.org/W1971366276",
+    "doi": "https://doi.org/10.3390/molecules15107188",
+    "title": "Preparation of a Carbon-Based Solid Acid Catalyst by Sulfonating Activated Carbon in a Chemical Reduction Process",
+    "year": 2010,
+    "cited": 404,
+    "venue": "Molecules",
+    "topics": [
+     "Catalysis for Biomass Conversion",
+     "Catalysis and Hydrodesulfurization Studies",
+     "Mesoporous Materials and Catalysis"
+    ],
+    "oa_url": "https://www.mdpi.com/1420-3049/15/10/7188/pdf?version=1403112885",
+    "abstract": "Sulfonated (SO(3)H-bearing) activated carbon (AC-SO(3)H) was synthesized by an aryl diazonium salt reduction process. The obtained material had a SO(3)H density of 0.64 mmol·g-1 and a specific surface area of 602 m2·g-1. The catalytic properties of AC-SO(3)H were compared with that of two commercial solid acid catalysts, Nafion NR50 and Amberlyst-15. In a 10-h esterification reaction of acetic acid with ethanol, the acid conversion with AC-SO(3)H (78%) was lower than that of Amberlyst-15 (86%), which could be attributed to the fact that the SO(3)H density of the sulfonated carbon was lower than that of Amberlyst-15 (4.60 mmol·g-1). However, AC-SO(3)H exhibited comparable and even much higher catalytic activities than the commercial catalysts in the esterification of aliphatic acids with longer carbon chains such as hexanoic acid and decanoic acid, which may be due to the large specific surface area and mesoporous structures of the activated carbon. The disadvantage of AC-SO(3)H is the leaching of SO(3)H group during the reactions."
+   },
+   {
+    "id": "https://openalex.org/W2808971936",
+    "doi": "https://doi.org/10.1038/s41467-018-04958-3",
+    "title": "Discovery of ZrCoBi based half Heuslers with high thermoelectric conversion efficiency",
+    "year": 2018,
+    "cited": 401,
+    "venue": "Nature Communications",
+    "topics": [
+     "Heusler alloys: electronic and magnetic properties",
+     "Advanced Thermoelectric Materials and Devices",
+     "2D Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-04958-3.pdf",
+    "abstract": "Abstract Thermoelectric materials are capable of converting waste heat into electricity. The dimensionless figure-of-merit (ZT), as the critical measure for the material’s thermoelectric performance, plays a decisive role in the energy conversion efficiency. Half-Heusler materials, as one of the most promising candidates for thermoelectric power generation, have relatively low ZTs compared to other material systems. Here we report the discovery of p -type ZrCoBi-based half-Heuslers with a record-high ZT of ∼1.42 at 973 K and a high thermoelectric conversion efficiency of ∼9% at the temperature difference of ∼500 K. Such an outstanding thermoelectric performance originates from its unique band structure offering a high band degeneracy ( N v ) of 10 in conjunction with a low thermal conductivity benefiting from the low mean sound velocity ( v m ∼2800 m s −1 ). Our work demonstrates that ZrCoBi-based half-Heuslers are promising candidates for high-temperature thermoelectric power generation."
+   },
+   {
+    "id": "https://openalex.org/W1648284453",
+    "doi": "https://doi.org/10.1038/ncomms9079",
+    "title": "Hybrid glasses from strong and fragile metal-organic framework liquids",
+    "year": 2015,
+    "cited": 400,
+    "venue": "Nature Communications",
+    "topics": [
+     "Material Dynamics and Properties",
+     "Glass properties and applications",
+     "Theoretical and Computational Physics"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms9079.pdf",
+    "abstract": "Hybrid glasses connect the emerging field of metal-organic frameworks (MOFs) with the glass formation, amorphization and melting processes of these chemically versatile systems. Though inorganic zeolites collapse around the glass transition and melt at higher temperatures, the relationship between amorphization and melting has so far not been investigated. Here we show how heating MOFs of zeolitic topology first results in a low density 'perfect' glass, similar to those formed in ice, silicon and disaccharides. This order-order transition leads to a super-strong liquid of low fragility that dynamically controls collapse, before a subsequent order-disorder transition, which creates a more fragile high-density liquid. After crystallization to a dense phase, which can be remelted, subsequent quenching results in a bulk glass, virtually identical to the high-density phase. We provide evidence that the wide-ranging melting temperatures of zeolitic MOFs are related to their network topologies and opens up the possibility of 'melt-casting' MOF glasses."
+   },
+   {
+    "id": "https://openalex.org/W2544377650",
+    "doi": "https://doi.org/10.1002/aenm.201601196",
+    "title": "A Self‐Forming Composite Electrolyte for Solid‐State Sodium Battery with Ultralong Cycle Life",
+    "year": 2016,
+    "cited": 390,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1326759",
+    "abstract": "Replacing organic liquid electrolyte with inorganic solid electrolytes (SE) can potentially address the inherent safety problems in conventional rechargeable batteries. However, solid‐state batteries (SSBs) have been plagued by the relatively low ionic conductivity of SEs and large charge‐transfer resistance between electrode and SE. Here, a new design strategy is reported for improving the ionic conductivity of SE by self‐forming a composite material. An optimized Na+ ion conducting composite electrolyte derived from the Na1+ n Zr2Si n P3− n O12 NASICON (Na Super Ionic Conductor) structure is successfully synthesized, yielding ultrahigh ionic conductivity of 3.4 mS cm−1 at 25 °C and 14 mS cm−1 at 80 °C. On the other hand, in order to enhance the charge‐transfer rate at the electrode/electrolyte interface, an interface modification strategy is demonstrated by utilization of a small amount of nonflammable and nonvolatile ionic liquid (IL) at the cathode side in SSBs. The IL acts as a wetting agent, enabling a favorable interface kinetic in SSBs. The Na3V2(PO4)3/IL/SE/Na SSB exhibits excellent cycle performance and rate capability. A specific capacity of ≈90 mA h g−1 is maintained after 10 000 cycles without capacity decay under 10 C rate at room temperature. This provides a new perspective to design fast ion conductors and fabricate long life SSBs."
+   },
+   {
+    "id": "https://openalex.org/W2765856370",
+    "doi": "https://doi.org/10.1038/s41467-017-01166-3",
+    "title": "Carbon dioxide capture and conversion by an acid-base resistant metal-organic framework",
+    "year": 2017,
+    "cited": 383,
+    "venue": "Nature Communications",
+    "topics": [
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Carbon Dioxide Capture Technologies",
+     "Carbon dioxide utilization in catalysis"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-017-01166-3.pdf",
+    "abstract": "Abstract Considering the rapid increase of CO2 emission, especially from power plants, there is a constant need for materials which can effectively eliminate post-combustion CO2 (the main component: CO2/N2 = 15/85). Here, we show the design and synthesis of a Cu(II) metal-organic framework (FJI-H14) with a high density of active sites, which displays unusual acid and base stability and high volumetric uptake (171 cm3 cm−3) of CO2 under ambient conditions (298 K, 1 atm), making it a potential adsorbing agent for post-combustion CO2. Moreover, CO2 from simulated post-combustion flue gas can be smoothly converted into corresponding cyclic carbonates by the FJI-H14 catalyst. Such high CO2 adsorption capacity and moderate catalytic activity may result from the synergistic effect of multiple active sites."
+   },
+   {
+    "id": "https://openalex.org/W2774108120",
+    "doi": "https://doi.org/10.1002/adma.201703657",
+    "title": "Atomically Thin Mesoporous Co3O4 Layers Strongly Coupled with N‐rGO Nanosheets as High‐Performance Bifunctional Catalysts for 1D Knittable Zinc–Air Batteries",
+    "year": 2017,
+    "cited": 382,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Advanced battery technologies research",
+     "Electrocatalysts for Energy Conversion",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1466320",
+    "abstract": "Abstract Under development for next‐generation wearable electronics are flexible, knittable, and wearable energy‐storage devices with high energy density that can be integrated into textiles. Herein, knittable fiber‐shaped zinc–air batteries with high volumetric energy density (36.1 mWh cm−3) are fabricated via a facile and continuous method with low‐cost materials. Furthermore, a high‐yield method is developed to prepare the key component of the fiber‐shaped zinc–air battery, i.e., a bifunctional catalyst composed of atomically thin layer‐by‐layer mesoporous Co3O4/nitrogen‐doped reduced graphene oxide (N‐rGO) nanosheets. Benefiting from the high surface area, mesoporous structure, and strong synergetic effect between the Co3O4 and N‐rGO nanosheets, the bifunctional catalyst exhibits high activity and superior durability for oxygen reduction and evolution reactions. Compared to a fiber‐shaped zinc–air battery using state‐of‐the‐art Pt/C + RuO2 catalysts, the battery based on these Co3O4/N‐rGO nanosheets demonstrates enhanced and stable electrochemical performance, even under severe deformation. Such batteries, for the first time, can be successfully knitted into clothes without short circuits under external forces and can power various electronic devices and even charge a cellphone."
+   },
+   {
+    "id": "https://openalex.org/W1517208193",
+    "doi": "https://doi.org/10.1186/s11671-015-0931-2",
+    "title": "Preparation of Graphene Oxide-Based Hydrogels as Efficient Dye Adsorbents for Wastewater Treatment",
+    "year": 2015,
+    "cited": 375,
+    "venue": "Nanoscale Research Letters",
+    "topics": [
+     "Graphene research and applications",
+     "Graphene and Nanomaterials Applications",
+     "Adsorption and biosorption for pollutant removal"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1186/s11671-015-0931-2.pdf",
+    "abstract": "Graphene oxide (GO) sheets exhibit superior adsorption capacity for removing organic dye pollutants from an aqueous environment. In this paper, the facile preparation of GO/polyethylenimine (PEI) hydrogels as efficient dye adsorbents has been reported. The GO/PEI hydrogels were achieved through both hydrogen bonding and electrostatic interactions between amine-rich PEI and GO sheets. For both methylene blue (MB) and rhodamine B (RhB), the as-prepared hydrogels exhibit removal rates within about 4 h in accordance with the pseudo-second-order model. The dye adsorption capacity of the hydrogel is mainly attributed to the GO sheets, whereas the PEI was incorporated to facilitate the gelation process of GO sheets. More importantly, the dye-adsorbed hydrogels can be conveniently separated from an aqueous environment, suggesting potential large-scale applications of the GO-based hydrogels for organic dye removal and wastewater treatment."
+   },
+   {
+    "id": "https://openalex.org/W1998941305",
+    "doi": "https://doi.org/10.1021/am403222u",
+    "title": "Adsorption and Desorption of Methylene Blue on Porous Carbon Monoliths and Nanocrystalline Cellulose",
+    "year": 2013,
+    "cited": 374,
+    "venue": "ACS Applied Materials & Interfaces",
+    "topics": [
+     "Adsorption and biosorption for pollutant removal",
+     "Graphene research and applications",
+     "Carbon and Quantum Dots Applications"
+    ],
+    "oa_url": "https://nrc-publications.canada.ca/eng/view/accepted/?id=92dadc96-875c-42db-a950-95b3cfe81f64",
+    "abstract": "The dynamic batch adsorption of methylene blue (MB), a widely used and toxic dye, onto nanocrystalline cellulose (NCC) and crushed powder of carbon monolith (CM) was investigated using the pseudo-first- and -second-order kinetics. CM outperformed NCC with a maximum capacity of 127 mg/g compared to 101 mg/g for NCC. The Langmuir isotherm model was applicable for describing the binding data for MB on CM and NCC, indicating the homogeneous surface of these two materials. The Gibbs free energy of -15.22 kJ/mol estimated for CM unravelled the spontaneous nature of this adsorbent for MB, appreciably faster than the use of NCC (-4.47 kJ/mol). Both pH and temperature exhibited only a modest effect on the adsorption of MB onto CM. The desorption of MB from CM using acetonitrile was very effective with more than 94 % of MB desorbed from CM within 10 min to allow the reusability of this porous carbon material. In contrast, acetonitrile was less effective than ethanol in desorbing MB from NCC. The two solvents were incapable of completely desorbing MB on commercial granular coal-derived activated carbon."
+   },
+   {
+    "id": "https://openalex.org/W2791659868",
+    "doi": "https://doi.org/10.1126/sciadv.aao6827",
+    "title": "A metal-organic framework with ultrahigh glass-forming ability",
+    "year": 2018,
+    "cited": 368,
+    "venue": "Science Advances",
+    "topics": [
+     "Glass properties and applications",
+     "Material Dynamics and Properties",
+     "Phase-change materials and chalcogenides"
+    ],
+    "oa_url": "https://advances.sciencemag.org/content/advances/4/3/eaao6827.full.pdf",
+    "abstract": "ratio, owing to high steric hindrance and frustrated network dynamics and also to the unusually low enthalpy and entropy typical of the soft and flexible nature of MOFs. On the basis of these versatile properties, we explain the exceptional GFA of the ZIF-62 system."
+   },
+   {
+    "id": "https://openalex.org/W2709355658",
+    "doi": "https://doi.org/10.1039/c7dt01289f",
+    "title": "Interconnected hierarchical NiCo 2 O 4 microspheres as high-performance electrode materials for supercapacitors",
+    "year": 2017,
+    "cited": 367,
+    "venue": "Dalton Transactions",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Advancements in Battery Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://doi.org/10.1039/c7dt01289f",
+    "abstract": "Hierarchical NiCo 2 O 4 microspheres with large tunnels and abundant mesopores have been prepared, and they exhibit excellent performance in supercapacitor applications."
+   },
+   {
+    "id": "https://openalex.org/W235727024",
+    "doi": "https://doi.org/10.1021/acsnano.5b00965",
+    "title": "Basal-Plane Functionalization of Chemically Exfoliated Molybdenum Disulfide by Diazonium Salts",
+    "year": 2015,
+    "cited": 367,
+    "venue": "ACS Nano",
+    "topics": [
+     "2D Materials and Applications",
+     "MXene and MAX Phase Materials",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://www.tara.tcd.ie/bitstream/2262/82817/1/Knirsch%20et%20al%20Basal-Plane%20Functionalization%20of%20Chemically-Exfoliated%20Molybdenum%20Disulfide%20by%20Diazonium%20Salts.pdf",
+    "abstract": "Although transition metal dichalcogenides such as MoS2 have been recognized as highly potent two-dimensional nanomaterials, general methods to chemically functionalize them are scarce. Herein, we demonstrate a functionalization route that results in organic groups bonded to the MoS2 surface via covalent C-S bonds. This is based on lithium intercalation, chemical exfoliation and subsequent quenching of the negative charges residing on the MoS2 by electrophiles such as diazonium salts. Typical degrees of functionalization are 10-20 atom % and are potentially tunable by the choice of intercalation conditions. Significantly, no further defects are introduced, and annealing at 350 °C restores the pristine 2H-MoS2. We show that, unlike both chemically exfoliated and pristine MoS2, the functionalized MoS2 is very well dispersible in anisole, confirming a significant modification of the surface properties by functionalization. DFT calculations show that the grafting of the functional group to the sulfur atoms of (charged) MoS2 is energetically favorable and that S-C bonds are formed."
+   },
+   {
+    "id": "https://openalex.org/W2883359628",
+    "doi": "https://doi.org/10.1038/s41467-018-05380-5",
+    "title": "99TcO4− remediation by a cationic polymeric network",
+    "year": 2018,
+    "cited": 362,
+    "venue": "Nature Communications",
+    "topics": [
+     "Radioactive element chemistry and processing",
+     "Chemical Synthesis and Characterization",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-05380-5.pdf",
+    "abstract": "Abstract Direct removal of 99TcO4− from the highly acidic solution of used nuclear fuel is highly beneficial for the recovery of uranium and plutonium and more importantly aids in the elimination of 99Tc discharge into the environment. However, this task represents a huge challenge given the combined extreme conditions of super acidity, high ionic strength, and strong radiation field. Here we overcome this challenge using a cationic polymeric network with significant TcO4− uptake capabilities in four aspects: the fastest sorption kinetics, the highest sorption capacity, the most promising uptake performance from highly acidic solutions, and excellent radiation-resistance and hydrolytic stability among all anion sorbent materials reported. In addition, this material is fully recyclable for multiple sorption/desorption trials, making it extremely attractive for waste partitioning and emergency remediation. The excellent TcO4− uptake capability is elucidated by X-ray absorption spectroscopy, solid-state NMR measurement, and density functional theory analysis on anion coordination and bonding."
+   },
+   {
+    "id": "https://openalex.org/W3035521604",
+    "doi": "https://doi.org/10.1007/s40820-020-00461-x",
+    "title": "A Flexible and Lightweight Biomass-Reinforced Microwave Absorber",
+    "year": 2020,
+    "cited": 359,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Electromagnetic wave absorption materials",
+     "Advanced Antenna and Metasurface Technologies",
+     "Metamaterials and Metasurfaces Applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-020-00461-x.pdf",
+    "abstract": "Abstract Developing a flexible, lightweight and effective electromagnetic (EM) absorber remains challenging despite being on increasing demand as more wearable devices and portable electronics are commercialized. Herein, we report a flexible and lightweight hybrid paper by a facile vacuum-filtration-induced self-assembly process, in which cotton-derived carbon fibers serve as flexible skeletons, compactly surrounded by other microwave-attenuating components (reduced graphene oxide and Fe 3 O 4 @C nanowires). Owing to its unique architecture and synergy of the three components, the as-prepared hybrid paper exhibits flexible and lightweight features as well as superb microwave absorption performance. Maximum absorption intensity with reflection loss as low as − 63 dB can be achieved, and its broadest frequency absorption bandwidth of 5.8 GHz almost covers the entire Ku band. Such a hybrid paper is promising to cope with ever-increasing EM interference. The work also paves the way to develop low-cost and flexible EM wave absorber from biomass through a facile method."
+   },
+   {
+    "id": "https://openalex.org/W2974608400",
+    "doi": "https://doi.org/10.1038/s41467-019-11960-w",
+    "title": "Cross-linked beta alumina nanowires with compact gel polymer electrolyte coating for ultra-stable sodium metal battery",
+    "year": 2019,
+    "cited": 331,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-11960-w.pdf",
+    "abstract": "Sodium metal batteries have potentially high energy densities, but severe sodium-dendrite growth and side reactions prevent their practical applications, especially at high temperatures. Herein, we design an inorganic ionic conductor/gel polymer electrolyte composite, where uniformly cross-linked beta alumina nanowires are compactly coated by a poly(vinylidene fluoride-co-hexafluoropropylene)-based gel polymer electrolyte through their strong molecular interactions. These beta alumina nanowires combined with the gel polymer layer create dense and homogeneous solid-liquid hybrid sodium-ion transportation channels through and along the nanowires, which promote uniform sodium deposition and formation of a stable and flat solid electrolyte interface on the sodium metal anode. Side reactions between the sodium metal and liquid electrolyte, as well as sodium dendrite formation, are successfully suppressed, especially at 60 °C. The sodium vanadium phosphate/sodium full cells with composite electrolyte exhibit 95.3% and 78.8% capacity retention after 1000 cycles at 1 C at 25 °C and 60 °C, respectively."
+   },
+   {
+    "id": "https://openalex.org/W3135205382",
+    "doi": "https://doi.org/10.1038/s41467-021-21805-0",
+    "title": "Crystallization of CsPbBr3 single crystals in water for X-ray detection",
+    "year": 2021,
+    "cited": 322,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Solid-state spectroscopy and crystallography",
+     "Solid State Laser Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-21805-0.pdf",
+    "abstract": "Abstract Metal halide perovskites have fascinated the research community over the past decade, and demonstrated unprecedented success in optoelectronics. In particular, perovskite single crystals have emerged as promising candidates for ionization radiation detection, due to the excellent opto-electronic properties. However, most of the reported crystals are grown in organic solvents and require high temperature. In this work, we develop a low-temperature crystallization strategy to grow CsPbBr 3 perovskite single crystals in water. Then, we carefully investigate the structure and optoelectronic properties of the crystals obtained, and compare them with CsPbBr 3 crystals grown in dimethyl sulfoxide. Interestingly, the water grown crystals exhibit a distinct crystal habit, superior charge transport properties and better stability in air. We also fabricate X-ray detectors based on the CsPbBr 3 crystals, and systematically characterize their device performance. The crystals grown in water demonstrate great potential for X-ray imaging with enhanced performance metrics."
+   },
+   {
+    "id": "https://openalex.org/W1966072933",
+    "doi": "https://doi.org/10.1016/j.cemconres.2014.07.001",
+    "title": "Formation of magnesium silicate hydrate (M-S-H) cement pastes using sodium hexametaphosphate",
+    "year": 2014,
+    "cited": 320,
+    "venue": "Cement and Concrete Research",
+    "topics": [
+     "Magnesium Oxide Properties and Applications",
+     "Concrete and Cement Materials Research",
+     "Layered Double Hydroxides Synthesis and Applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0008884614001355/pdf",
+    "abstract": "Magnesium silicate hydrate (M-S-H) gel is formed by the reaction of brucite with amorphous silica during sulphate attack in concrete and M-S-H is therefore regarded as having limited cementing properties. The aim of this work was to form M-S-H pastes, characterise the hydration reactions and assess the resulting properties. It is shown that M-S-H pastes can be prepared by reacting magnesium oxide (MgO) and silica fume (SF) at low water to solid ratio using sodium hexametaphosphate (NaHMP) as a dispersant. Characterisation of the hydration reactions by x-ray diffraction and thermogravimetric analysis shows that brucite and M-S-H gel are formed and that for samples containing 60 wt.% SF and 40 wt.% MgO all of the brucites react with SF to form M-S-H gel. These M-S-H cement pastes were found to have compressive strengths in excess of 70 MPa."
+   },
+   {
+    "id": "https://openalex.org/W1762319577",
+    "doi": "https://doi.org/10.1039/c5ee02941d",
+    "title": "Unparalleled lithium and sodium superionic conduction in solid electrolytes with large monovalent cage-like anions",
+    "year": 2015,
+    "cited": 319,
+    "venue": "Energy & Environmental Science",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Solid-state spectroscopy and crystallography",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1327910",
+    "abstract": ") unmatched by any other known polycrystalline materials at these temperatures. With proper modifications, we are confident that room-temperature-stabilized superionic salts incorporating such large polyhedral anion building blocks are attainable, thus enhancing their future prospects as practical electrolyte materials in next-generation, all-solid-state batteries."
+   },
+   {
+    "id": "https://openalex.org/W2176981471",
+    "doi": "https://doi.org/10.1016/j.mineng.2015.11.008",
+    "title": "Thermo-physical properties of selected hard rocks and their relation to microwave-assisted comminution",
+    "year": 2015,
+    "cited": 315,
+    "venue": "Minerals Engineering",
+    "topics": [
+     "Mineral Processing and Grinding",
+     "Metal Extraction and Bioleaching",
+     "Minerals Flotation and Separation Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0892687515301278/pdf",
+    "abstract": "This paper deals with experimental studies regarding the thermo-physical properties of granite, sandstone and basalt in the temperature range of 25–1000 °C. It is shown how phase transitions (e.g. α-β quartz phase transition) influence the texture and stability of these rock types. The results of these measurements and analyses are linked to microwave irradiation tests at 17.5 kW power. The measurements demonstrate the strong variation of effects depending on the parameter rock/mineralogy showing possible applications in a mineral processing environment."
+   },
+   {
+    "id": "https://openalex.org/W2098480657",
+    "doi": "https://doi.org/10.1007/s12274-010-0027-3",
+    "title": "Efficient and large-scale synthesis of few-layered graphene using an arc-discharge method and conductivity studies of the resulting films",
+    "year": 2010,
+    "cited": 313,
+    "venue": "Nano Research",
+    "topics": [
+     "Graphene research and applications",
+     "Carbon Nanotubes in Composites",
+     "Fullerene Chemistry and Applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s12274-010-0027-3.pdf",
+    "abstract": "An arc-discharge method using a buffer gas containing carbon dioxide has been developed for the efficient and large-scale synthesis of few-layered graphene. The resulting samples of few-layered graphene, well-dispersed in organic solvents such as N , N -dimethylformamide (DMF) and 1,2-dichlorobenzene ( o -DCB), were examined by transmission electron microscopy (TEM), X-ray diffraction (XRD), Raman spectroscopy, atomic force microscopy (AFM), and thermal gravimetric analysis (TGA). The electrical conductivity and transparency of flexible films prepared using a direct solution process have also been studied."
+   },
+   {
+    "id": "https://openalex.org/W2123716723",
+    "doi": "https://doi.org/10.1016/j.carbon.2003.10.036",
+    "title": "The influence of oxidation on the texture and the number of oxygen-containing surface groups of carbon nanofibers",
+    "year": 2003,
+    "cited": 308,
+    "venue": "Carbon",
+    "topics": [
+     "Carbon Nanotubes in Composites",
+     "Graphene research and applications",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://dspace.library.uu.nl/bitstream/handle/1874/26083/Carbon-Toebes-2004.pdf?sequence=1&isAllowed=y",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4378530438",
+    "doi": "https://doi.org/10.1038/s41467-023-38460-2",
+    "title": "Enabling selective zinc-ion intercalation by a eutectic electrolyte for practical anodeless zinc batteries",
+    "year": 2023,
+    "cited": 294,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Perovskite Materials and Applications",
+     "Thermal Expansion and Ionic Conductivity"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-38460-2.pdf",
+    "abstract": "Abstract Two major challenges hinder the advance of aqueous zinc metal batteries for sustainable stationary storage: (1) achieving predominant Zn-ion (de)intercalation at the oxide cathode by suppressing adventitious proton co-intercalation and dissolution, and (2) simultaneously overcoming Zn dendrite growth at the anode that triggers parasitic electrolyte reactions. Here, we reveal the competition between Zn 2+ vs proton intercalation chemistry of a typical oxide cathode using ex-situ/ operando techniques, and alleviate side reactions by developing a cost-effective and non-flammable hybrid eutectic electrolyte. A fully hydrated Zn 2+ solvation structure facilitates fast charge transfer at the solid/electrolyte interface, enabling dendrite-free Zn plating/stripping with a remarkably high average coulombic efficiency of 99.8% at commercially relevant areal capacities of 4 mAh cm −2 and function up to 1600 h at 8 mAh cm −2 . By concurrently stabilizing Zn redox at both electrodes, we achieve a new benchmark in Zn-ion battery performance of 4 mAh cm −2 anode-free cells that retain 85% capacity over 100 cycles at 25 °C. Using this eutectic-design electrolyte, Zn | |Iodine full cells are further realized with 86% capacity retention over 2500 cycles. The approach represents a new avenue for long-duration energy storage."
+   },
+   {
+    "id": "https://openalex.org/W2063619163",
+    "doi": "https://doi.org/10.2298/hemind100322014i",
+    "title": "Thermal treatment of kaolin clay to obtain metakaolin",
+    "year": 2010,
+    "cited": 288,
+    "venue": "Hemijska industrija",
+    "topics": [
+     "Concrete and Cement Materials Research",
+     "Innovative concrete reinforcement materials",
+     "Clay minerals and soil interactions"
+    ],
+    "oa_url": "http://www.doiserbia.nb.rs/ft.aspx?id=0367-598X1000014I",
+    "abstract": "The metakaolin was produced by thermal treatment (calcination) of the starting high-quality kaolin clay from Serbia. The optimal calcination parameters, for which nearly complete dehydroxylation of the material was achieved, are: temperature 650?C and heating time of 90 min. The conversion of the kaolinite to metakaolin was confirmed by XRD and IR analyses of the starting and thermally treated kaolin samples. The pozzolanic activity was determined by Chapelle test. The obtained value 0.65 g Ca(OH)2/g of metakaolin indicates that produced metakaolin may be used as supplementary cementitious material."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"NETZSCH STA 449\" OR \"NETZSCH STA\" OR \"NETZSCH F1\" OR \"NETZSCH F3\" OR \"NETZSCH STA 449 F1\" OR \"NETZSCH STA 449 F3\") AND OPEN_ACCESS:y",

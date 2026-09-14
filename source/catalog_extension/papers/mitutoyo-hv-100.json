@@ -11,8 +11,428 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mitutoyo HV-100\" OR \"Mitutoyo HV-112\" OR \"Mitutoyo HV-114\" OR \"Mitutoyo HV110\" OR \"Mitutoyo HV120\"",
-  "count": null,
-  "works": []
+  "count": 28,
+  "works": [
+   {
+    "id": "https://openalex.org/W4239406532",
+    "doi": "https://doi.org/10.17222/mit.2013.154",
+    "title": "Effects of the artificial-aging temperature and time on the mechanical properties and springback behavior of AA6061",
+    "year": 2015,
+    "cited": 35,
+    "venue": "Materiali in tehnologije",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Metal Forming Simulation Techniques"
+    ],
+    "oa_url": "https://doi.org/10.17222/mit.2013.154",
+    "abstract": "In this study, the effects of the artificial-aging temperature and time on the mechanical properties and springback behavior of AA6061 are investigated.The results reveal that the yield strength, the tensile strength and the elongations decreased with the increasing artificial-aging temperature, but increased with the increasing artificial-aging time up to the peak age.The springback of the alloy increased significantly with the increasing artificial-aging time at the artificial-aging temperature ranging from 160 °C to 180 °C and decreased with the artificial-aging time at 200 °C.The springback angle in the as-received condition is lower than in all the aged conditions."
+   },
+   {
+    "id": "https://openalex.org/W3214116958",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.11.054",
+    "title": "Effect of laser remelting on the surface characteristics of 316L stainless steel fabricated via directed energy deposition",
+    "year": 2021,
+    "cited": 28,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421013338/pdf",
+    "abstract": "Herein, laser remelting (LRM) technology was adopted for the stainless steel 316L deposited using the directed energy deposition (DED) process. We focused on examining the scanning direction, laser power, and overlap, which are the main parameters of LRM, and changes in the surface characteristics after LRM. The LRM could remove the traces of the spatter, unmelted powder, and deposited tracks remaining on the DEDed surface. Moreover, overlap was the major factor affecting the surface roughness and waviness. The roughness and waviness of the LRM-treated surface decreased as the overlap increased. An interaction was observed between the laser power and overlap in terms of the surface roughness, and when the laser power was high and the overlap was large, the surface roughness was low. Furthermore, the laser power of 1200 W transferred the excess energy to the surface, reducing the surface improvement. After performing LRM, the thermodynamically unstable crystal grains recrystallized. From the X-ray diffraction results, face-centered cubic and body-centered cubic phases were observed; however, no difference was observed in the phase fraction ratio before and after the LRM treatment. Regarding residual stress measurements, no obvious effect was observed on the removal of tensile residual stress formed on the as-prepared surface. For this reason, the change in hardness after LRM was not significant (increased by 10.7%). However, the costs of postprocessing, such as machining and grinding, can be partially reduced using LRM after DED processing."
+   },
+   {
+    "id": "https://openalex.org/W3164545031",
+    "doi": "https://doi.org/10.3390/met11050843",
+    "title": "Strategy for Surface Post-Processing of AISI 316L Additively Manufactured by Powder Bed Fusion Using Ultrasonic Nanocrystal Surface Modification",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Surface Treatment and Residual Stress",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/11/5/843/pdf?version=1621564865",
+    "abstract": "Ultrasonic nanocrystal surface modification (UNSM) technology was applied to the surfaces of specimens additively manufactured by powder bed fusion (PBF). The changes in roughness and hardness due to the UNSM were set as objective functions, and the optimal conditions for the main parameters were derived through the response surface method (RSM) and Box–Behnken design (BBD). Regression analysis-based mathematical models for predicting the surface hardness and roughness are presented and validated. The RSM results show that the surface roughness is highly dependent on the load and ball tip diameter, and the surface roughness significantly improves as the inter-pass interval and ball tip diameter decrease. Through BBD and ANOVA, the optimal conditions for the improvement of surface characteristics were found to be a load of 40 N, inter-pass interval of 10 μm, and ball tip diameter of 2.38 m. The surface treated under these optimal conditions exhibited a hardness of 497 Hv and surface roughness of 1.32 μm, which were significantly improved compared to the values for an untreated specimen. In addition, it was confirmed that the grains are significantly refined after UNSM, and scratch resistance increases for the top layer of the surface directly affected by the UNSM horn."
+   },
+   {
+    "id": "https://openalex.org/W3037694244",
+    "doi": "https://doi.org/10.1016/j.jmrt.2020.06.010",
+    "title": "Effect of C-Mn ratio on the maximum hardness and toughness in TMCP steels with an identical carbon equivalent",
+    "year": 2020,
+    "cited": 15,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785420314113/pdf",
+    "abstract": "In this study, the mechanical properties of two types of thermo-mechanically controlled processed (TMCP) steels with the same carbon equivalent but different alloying constituents of C and Mn were examined. Tensile, impact, hardness, and through-thickness tensile tests were employed for this examination. The taper hardness test was conducted in the weld heat-affected zones (HAZs) by using common onsite welding methods. The results revealed that the two distinct steel plates exhibited different microstructures in the base metal; however, their maximum hardness and microstructures in the HAZs were similar within the heat input range (10–30 kJ/cm) that is often used at manufacturing sites. Moreover, the continuous cooling transformation diagrams for the HAZs and the base metal used for welding the TMCP steels were simulated to validate the experimental results for the microstructure. The drop weight test and weld bead bend test were employed to compare the toughness related with the weldability of the two steel plates. The steel with composition of 0.08% C-1.5% Mn exhibited lower nil-ductility transition temperature and better crack arrestability than that with the composition of 0.15% C-1.1% Mn."
+   },
+   {
+    "id": "https://openalex.org/W2527980200",
+    "doi": "https://doi.org/10.4191/kcers.2016.53.5.535",
+    "title": "Glaze Development with Application of Unity Molecular Formula",
+    "year": 2016,
+    "cited": 7,
+    "venue": "Journal of the Korean Ceramic Society",
+    "topics": [
+     "Pigment Synthesis and Properties",
+     "Glass properties and applications",
+     "Recycling and utilization of industrial and municipal waste in materials production"
+    ],
+    "oa_url": "https://www.jkcs.or.kr/upload/pdf/jkcs-53-5-535.pdf",
+    "abstract": "Effects of compositions and sintering conditions on glaze properties are shown in the diagram constructed by using the unity molecular formula (UMF) method in this study.Glossy characteristics of glaze were clearly differentiated by compositional area in the diagram and sintering process.As alumina and silica contents were increased, texture of the glaze became rough and opaque, akin to having been devitrified or underfired.The correlation between glossiness and surface roughness was found to be non-linear and inversely proportionate.Crystalline phases formed in the glaze were also influenced by the compositional area.Due to the high concentration of CaO, anorthite and wollastonite were formed depending on the compositions.Hardness was increased with an increase of alumina and silica concentrations in the glaze."
+   },
+   {
+    "id": "https://openalex.org/W4403430073",
+    "doi": "https://doi.org/10.3390/ma17205031",
+    "title": "Friction Characteristics of Low and High Strength Steels with Galvanized and Galvannealed Zinc Coatings",
+    "year": 2024,
+    "cited": 6,
+    "venue": "Materials",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Adhesion, Friction, and Surface Interactions",
+     "Mechanical stress and fatigue analysis"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/17/20/5031/pdf?version=1728981306",
+    "abstract": "As vehicle body structures become stronger and part designs more complex for lightweight, controlling frictional properties in automotive press forming has gained critical importance. Friction, a key factor in formability, is influenced by variables such as contact pressure, sliding velocity, sheet strength, and coatings. This study investigates the friction characteristics of steels with tensile strengths of 340 MPa and 980 MPa, under galvanized (GI) and galvannealed (GA) zinc coatings. Experimental results reveal that asperity flattening, a significant factor in determining friction, increases with contact pressure normalized by tensile strength, particularly for GI-coated steels. However, the relationship between friction and surface flattening deviates from conventional expectations, with the friction coefficient initially rising with increased flattening area up to ~20% before decreasing as flattening progresses. These findings suggest that traditional empirical formulas may not fully capture friction behavior under specific conditions. By understanding this inflection point, where friction reduces under high contact pressure, the study provides valuable insights for optimizing formability and improving sheet metal forming processes, especially in scenarios where precise friction control is critical for producing high-quality automotive parts."
+   },
+   {
+    "id": "https://openalex.org/W4318486502",
+    "doi": "https://doi.org/10.3390/ma16031193",
+    "title": "Investigation of Microstructure and Wear Properties of Precipitates-Strengthened Cu-Ni-Si-Fe Alloy",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Materials",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Semiconductor materials and interfaces",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/3/1193/pdf?version=1675827263",
+    "abstract": "Based on multi-component alloys using precipitation hardening, a Cu-Ni-Si-Fe copper alloy was prepared and studied for hardness, electrical conductivity, and wear resistance. Copper Nickel Silicon (Cu-Ni-Si) intermetallic compounds were observed as precipitates, leading to an increase in mechanical and physical properties. Further, the addition of Fe was discussed in intermetallic compound formation. Moreover, microstructures, age hardening, and dry sliding wear resistances of the present alloy were analyzed and compared with C17200 beryllium copper. The results showed that the present alloy performed extraordinarily, with 314 HV in hardness and 22.2 %IACS in conductivity, which is almost similar to C17200 alloy. Furthermore, the dry sliding wear resistance of the present alloy was 2199.3 (m/MPa·mm3) at an ambient temperature, leading to an improvement of 208% compared with the C17200 alloy."
+   },
+   {
+    "id": "https://openalex.org/W4200592475",
+    "doi": "https://doi.org/10.3390/met11121977",
+    "title": "Corner Strengthening by Local Thickening and Ausforming Using Planar Compression in Hot Stamping of Ultra-High Strength Steel Parts",
+    "year": 2021,
+    "cited": 5,
+    "venue": "Metals",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/11/12/1977/pdf?version=1639359585",
+    "abstract": "Hot-stamped products are widely used for the body-in-white of an automobile as they are lightweight and improve crashworthiness. A hot-stamping process using planar compression was developed to strengthen corners of ultra-high strength parts by local thickening and hardening. In this process, the corners are thickened by compressing the blank in the planar direction with the upper and lower dies while blocking the movement of both edges with stoppers in the latter stage of forming. Thickening of the corners largely heightens the strength of the formed parts. Not only the thickness but also the hardness of the corner was increased by large plastic deformation and die quenching. For a hot hat-shaped part, a 30% increase in thickness and a 530 HV20 hardness around the corners were attained. The bending rigidity and strength of the formed parts thickened by 30% in the corners increased by 25% and 20%, respectively. In addition, the improvements of the part shape accuracy and the sidewall quenchability were obtained."
+   },
+   {
+    "id": "https://openalex.org/W4384030884",
+    "doi": "https://doi.org/10.1111/jace.19324",
+    "title": "Fabrication of high aspect ratio boron nitride nanotube–ZrB ₂ composites and the effect of dispersion",
+    "year": 2023,
+    "cited": 4,
+    "venue": "Journal of the American Ceramic Society",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Boron and Carbon Nanomaterials Research",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jace.19324",
+    "abstract": "Abstract Ultrahigh‐temperature ceramics (UHTCs) exhibit remarkable hardness and resistance to oxidative ablation, making them suitable for use in hypersonic environments, such as hypersonic aircraft and space shuttles. However, their low fracture toughness limits their applications as engineering materials. In this study, zirconium diboride, an extremely hard and oxidation‐resistant UHTC, was sintered with high aspect ratio boron nitride nanotubes (BNNTs) to improve the fracture toughness of UHTC. Although the high aspect ratio BNNTs tend to become entangled and are inefficient in improving the fracture toughness of the composite, the use of plasma functionalization can effectively disperse the BNNTs in UHTC, resulting in the increase in the fracture toughness of the UHTC composite."
+   },
+   {
+    "id": "https://openalex.org/W4313379458",
+    "doi": "https://doi.org/10.3365/kjmm.2023.61.1.9",
+    "title": "Effect of Fe-Cr-B on the Microstructure and Mechanical Properties of a Powder Injection Molding Processed Fe-Cr-B/316L Stainless Steel Matrix Composite",
+    "year": 2023,
+    "cited": 4,
+    "venue": "대한금속재료학회지",
+    "topics": [
+     "Powder Metallurgy Techniques and Materials",
+     "Advanced materials and composites",
+     "Orthopaedic implants and arthroplasty"
+    ],
+    "oa_url": "http://kjmm.org/upload/pdf/kjmm-2023-61-1-9.pdf",
+    "abstract": "Stainless steel-based composites (SMCs) mixed with 316L stainless steel powder and Fe-Cr-B based M alloys powder ed M) powder were manufactured using the powder injection molding (PIM) process, and their microstructure and mechanical properties were investigated. To examine the effect of M content on the properties of SMCs, the M fraction was controlled to 30 vol.%, 50 vol.%, and 70 vol.%. It was observed that PIM-processed Fe-Cr-B/316L SMCs (30 vol.%, 50 vol.%, 70 vol.%) had γ-austenite and minor α-ferrite as a matrix, and (Cr, Fe)2B was formed as a reinforced phase. In tensile tests at room temperature, the yield strengths of the 30 vol.%, 50 vol.%, 70 vol.% M SMCs were measured to be 519.9 MPa, 574.1 MPa, and 604.8 MPa (peak stress), respectively. From the fracture surface observation results, it was found that the deformation behavior changed from the intergranular fracture of boride to intergranular fracture between the matrix and boride, as the M fraction increased. Based on the above results, the deformation and fracture mechanisms of novel Fe-Cr-B/316L SMCs are also discussed."
+   },
+   {
+    "id": "https://openalex.org/W2969978239",
+    "doi": "https://doi.org/10.2172/1557483",
+    "title": "Post-Irradiation Examination of High Fluence Baffle-Former Bolts Retrieved from a Westinghouse Two-Loop Downflow Type PWR",
+    "year": 2019,
+    "cited": 4,
+    "venue": null,
+    "topics": [
+     "Nuclear and radioactivity studies",
+     "Fusion materials and technologies",
+     "Graphite, nuclear technology, radiation studies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1557483",
+    "abstract": "As one of the pressurized water reactor (PWR) internal components, baffle-former bolts (BFBs) are subjected to significant mechanical stress and neutron irradiation from the reactor core during the plant operation. Over the long operation period, these conditions lead to potential degradation and reduced load-carrying capacity of the bolts. In support of evaluating long-term operational performance of materials used in core internal components, the Oak Ridge National Laboratory (ORNL), through the Department of Energy (DOE), Light Water Reactor Sustainability (LWRS) Program, Materials Research Pathway (MRP) has harvested two high fluence BFBs from a commercial Westinghouse two-loop downflow type PWR."
+   },
+   {
+    "id": "https://openalex.org/W2485041902",
+    "doi": "https://doi.org/10.9726/kspse.2016.20.3.043",
+    "title": "Mechanical properties and immersion characteristics of sensitinized STS310S, STS316L and STS347H in the range of 480~720℃",
+    "year": 2016,
+    "cited": 3,
+    "venue": "Journal of Power System Engineering",
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Microstructure and Mechanical Properties of Steels",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "http://koreascience.or.kr:80/article/JAKO201621650895309.pdf",
+    "abstract": "The current study was carried to understand the immersion characteristics and mechanical properties of heat treated stainless steels. Stainless steels (STS310S, STS316L and STS347H) were thermally treated at temperature ranges from 480 to $720^{\\circ}C$ . Nominal stress was determined to be slightly different depending on the heat treatment temperature. The Cr concentration in STS310S was increased at the temperatures of 600 and $660^{\\circ}C$ , whereas the Cr concentration in STS316L and STS347H were almost constant regardless of heat treatment temperatures. Vickers hardness was found larger as a thermal treatment temperature was increased. Immersion tests of the stainless steels were also carried out in acidic solution and alkaline solution for 240 hours. Among three different stainless steels, the pitting was detected in the acidic solution, not in the alkaline solution. The pitting of STS347H was occurred more than STS310S and STS316L."
+   },
+   {
+    "id": "https://openalex.org/W2112058109",
+    "doi": "https://doi.org/10.3740/mrsk.2008.18.7.357",
+    "title": "Fabrication and Evaluation of WC-3wt%Co Compacts Fabricatedby Spark Plasma Sintering",
+    "year": 2008,
+    "cited": 2,
+    "venue": "Korean Journal of Materials Research",
+    "topics": [
+     "Advanced materials and composites",
+     "Powder Metallurgy Techniques and Materials",
+     "Injection Molding Process and Properties"
+    ],
+    "oa_url": "http://koreascience.or.kr:80/article/JAKO200824550464909.pdf",
+    "abstract": "Microstructure and mechanical properties of WC-3 wt% Co cemented carbides, fabricated by a spark plasma sintering (SPS) process, were investigated in this study. The WC-3 wt%Co powders were sintered at $900{\\sim}1100^{\\circ}C$ for 5min under 40MPa in high vacuum. The density and hardness were increased as the sintering temperature increased. WC-3 wt%Co compacts with a relative density of 97.1% were successfully fabricated at $1100^{\\circ}C$ . The fracture toughness and hardness of a compact sintered at $1100^{\\circ}C$ were $21.6 MPa{\\cdot}m^{1/2}$ and 4279 Hv, respectively."
+   },
+   {
+    "id": "https://openalex.org/W4416158235",
+    "doi": "https://doi.org/10.1186/s40712-025-00356-y",
+    "title": "Grain refinement in extruded A6063 Al alloy using additively manufactured billets",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Journal of Materials Science Materials in Engineering",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Aluminum Alloy Microstructure Properties",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://jmsg.springeropen.com/counter/pdf/10.1186/s40712-025-00356-y",
+    "abstract": "Abstract In this study, we developed a new process for grain refinement in the A6063 aluminum alloy using extrusion with aluminum billets fabricated by additive manufacturing. The resultant extruded profile exhibited fine grains with an average diameter of 3 μm and displayed a fibrous structure elongated in the extrusion direction. The internal microstructure exhibited the typical texture of a plate-shaped extruded profile, characterized by < 001 > + β-fiber{110} < 112 > . The results obtained using this method were superior to those obtained using the conventional approach, in which cast billets were used for A6063 extruded profiles. Specifically, the tensile strength and elongation values improved by 10% and 40%, respectively. Additionally, we detected the development of a yield point (which is generally not observed in aluminum alloys). This outcome confirmed that uniform fine grains were successfully obtained using this process. In addition, this method facilitated the production of extruded profiles, with complex cross-sectional shapes and fine grains, in an alloy with a low transition-metal concentration, such as the A6063 alloy (whose manufacturing has hitherto remained challenging)."
+   },
+   {
+    "id": "https://openalex.org/W4415740857",
+    "doi": "https://doi.org/10.17576/jkukm-2025-37(7)-26",
+    "title": "Mechanical Performance of Zirconia-Toughened Alumina Composites: The Dual Role of Nitinol as a Toughening and Sintering Aid",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Jurnal Kejuruteraan",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites",
+     "Dental materials and restorations"
+    ],
+    "oa_url": "https://doi.org/10.17576/jkukm-2025-37(7)-26",
+    "abstract": "Zirconia-toughened alumina (ZTA) is an advanced ceramic material used in various applications, including cutting inserts, wear parts, and biomedical applications, due to its improved fracture toughness and suitable hardness. However, further improvement of mechanical properties is still a key consideration for expanding its applicability in such demanding applications. Hence, this study examines the effects of nitinol (NiTi) additions (0–5 wt %) on the physical and mechanical properties of ZTA composites. NiTi was incorporated through wet mixing and the samples were sintered at 1600°C, facilitating liquid-phase sintering at 1300°C. At 2 wt% NiTi, optimal densification (4.197 g/cm³), minimal porosity (0.135%), and maximum hardness (1684.15 HV) were achieved, primarily due to microstructural refinement and the Hall-Petch effect. At higher NiTi content (5 wt%), enhanced fracture toughness (5.966 MPa·m¹/²) was observed, resulting from crack-bridging and stress dissipation enabled by NiTi’s ductility and the presence of the retained B2 austenite phase. X-ray diffraction (XRD) analysis confirmed phase stability with no evidence of secondary phase formation. These findings highlight a trade-off between hardness and fracture toughness, demonstrating NiTi’s dual role as a sintering aid and toughening agent. The results offer significant potential for tailoring ZTA composites for advanced mechanical applications, particularly in the development of high-performance cutting tools and wear-resistant components."
+   },
+   {
+    "id": "https://openalex.org/W4312992031",
+    "doi": "https://doi.org/10.1590/1980-5373-mr-2022-0336",
+    "title": "Artificial Neural Networks for Producing a Low-Cost Austempered Ductile Iron",
+    "year": 2022,
+    "cited": 1,
+    "venue": "Materials Research",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Microstructure and Mechanical Properties of Steels",
+     "Advanced Machining and Optimization Techniques"
+    ],
+    "oa_url": "https://www.scielo.br/j/mr/a/3K6JSjpQkdkVZwnDbgRc4Hq/?lang=en&format=pdf",
+    "abstract": "Two artificial neural networks (ANNs) were developed for producing an austempered ductile iron (ADI) with low-cost chemical composition and mechanical properties as per ASTMA897/897M-16-grade-1050/750/07 standard. Thus, the first ANN predicted the chemical composition range within the lowest cost and required mechanical properties. Next, in the second ANN, the resulting values from the first ANN were refined considering the target chemical composition suggested in the standard. Moreover, mechanical properties and microstructural analyses were undertaken in the ADI produced to support the ANNs’ findings. Hence, ANNs can be used to make a standard-compliant ADI and achieve cost savings."
+   },
+   {
+    "id": "https://openalex.org/W7171783614",
+    "doi": "https://doi.org/10.1007/s10853-026-13429-w",
+    "title": "Large improvement in ductility of ultra-high strength CoCrNi-base alloy by one-stage grain refinement",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Materials Science",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "High Temperature Alloys and Creep",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10853-026-13429-w.pdf",
+    "abstract": "Pursuing a superior combination of strength and ductility in the ultra-high strength range is always a target, as it brings the benefit of reducing the weight and increasing the safety of the alloy during usage. Composition and process design are important ways to achieve the goal. The CoCrNi-base FCC alloy has low yield strength but very high ductility, so it becomes a high-potential alloy system for this goal. In this work, we use a small addition of Ti to achieve precipitation hardening and a one-stage grain refining process to provide a fine microstructure in the CoCrNi-base alloy. This research reveals that the one-stage grain refining process by rolling and annealing will yield finer initial grains, providing higher strain energy and more nucleation sites for more uniform precipitates and higher recrystallization ratios through cold-rolling and ensuing 600 °C heat treatment. The behavior of annealed texture and grain growth ability is different as well. Under identical conditions, yield strength (YS) and ultimate tensile strength (UTS) are in a comparable range of 1300–1400 and 1800–2000 MPa, while total elongation improves by a factor of 1.5–2 when grain sizes are preliminarily reduced by one-stage grain refinement. The reasons for this improvement are discussed."
+   },
+   {
+    "id": "https://openalex.org/W7135063962",
+    "doi": "https://doi.org/10.4018/ijseims.404001",
+    "title": "The Effect of Molybdenum on the Alloy Properties of the CoCrNiFeMnNb System",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Surface Engineering and Interdisciplinary Materials Science",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.igi-global.com/ViewTitle.aspx?TitleId=404001&isxn=9798337386973",
+    "abstract": "The authors studied the influence of Mo and C on the properties of the CoCrNiFeMnNb alloy system. Quasi-high-entropy alloys (QHEAs) were smelted by partially using ferroalloys in the charge, unlike classical high-entropy alloys (HEAs). The Mo content was 2 and 4% mass. The C content was 0.45% mass in the experimental alloys. The C content was determined based on the initial content in the charge. The experimental alloy microstructure was represented by a solid FCC-type solution; Laves phases of various compositions; Me1Me2-type intermetallics; carbides Nb0.8, Cr0.2C, and Mo0.5NbC; and μ-phase NbCo2. All experimental alloys had higher hardness, strength, and wear resistance than the alloy without Mo and C. Increasing the Mo content in the alloy to 4% mass increased the hardness and, in particular, the wear resistance of the alloy. Strengthening the alloy with elements Mo and C is associated with forming a finer grain. Grain growth was limited by implementation phases, as well as dispersion strengthening due to solid implementation phases of various origins being formed."
+   },
+   {
+    "id": "https://openalex.org/W7164944511",
+    "doi": "https://doi.org/10.2298/jmmb260327012d",
+    "title": "Spatial variability of HV5 hardness in industrial direct chill cast EN AW-5083 ingots in the as-cast and homogenized conditions",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Mining and Metallurgy Section B Metallurgy",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Microstructure and mechanical properties",
+     "Magnesium Alloys: Properties and Applications"
+    ],
+    "oa_url": "http://www.doiserbia.nb.rs/ft.aspx?id=1450-53392600012D",
+    "abstract": "This study examines the spatial variability of HV5 hardness in industrially produced Direct Chill (DC) cast EN AW-5083 aluminium alloy ingots in the as-cast and homogenized conditions. Hardness measurements were performed at predefined sampling positions in the front and rear sections of six ingots using a Latin square design and evaluated by analysis of variance (ANOVA), coefficients of variation, correlation analysis, and linear regression. The results indicate a uniform longitudinal hardness distribution, with similar mean HV5 values at the front and rear sections, while significantly larger variations occur across the ingot cross-section. Slice height (i) and slice width (j) were identified as the dominant sources of variability. Homogenization reduced the overall mean HV5 from 81.8 HV5 to 75.7 HV5, decreased the coefficient of variation from 5.56% to 4.64%, and increased the correlation coefficient from r = 0.76 to r = 0.85. A statistically significant but limited relationship between the number of grains per unit area (NA) and hardness was observed, indicating that NA contributes to local hardness variations but is not the dominant factor controlling the overall spatial hardness distribution. The results indicate that homogenization does not increase hardness but improves its spatial homogeneity primarily through reduction of local microstructural and compositional heterogeneity."
+   },
+   {
+    "id": "https://openalex.org/W7128602536",
+    "doi": "https://doi.org/10.31031/acet.2025.06.000644",
+    "title": "Analysis of Factors Influencing the Fatigue Strength of Railway Fastening Clips",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Advancements in Civil Engineering & Technology",
+    "topics": [
+     "Railway Engineering and Dynamics",
+     "Fatigue and fracture mechanics",
+     "Civil and Geotechnical Engineering Research"
+    ],
+    "oa_url": "http://crimsonpublishers.com/acet/pdf/ACET.000644.pdf",
+    "abstract": "Presented paper characterized key factors influencing fatigue strength, including geometry, surface condition and chemical composition, as well as other parameters affecting the performance of railway fastening clips.Additionally, other technologies for improving the fatigue resistance are presented.The aim of the experimental part of the study was to evaluate the cause of the premature failure of a fastening clip during a scheduled fatigue test performed in accordance with the DBS 918 127 standard.A series of tests were conducted, including chemical composition analysis, microstructure examination, hardness testing, and fractographic analysis.Based on this research, it was concluded that the root cause of the premature failure was a particle embedded into the surface of the spring during the bending process."
+   },
+   {
+    "id": "https://openalex.org/W4417107366",
+    "doi": "https://doi.org/10.5937/jaes0-58449",
+    "title": "Gear teeth of ball mills: Wear, restoration, and mathematical modeling",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Istrazivanja i projektovanja za privredu",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Engineering Diagnostics and Reliability",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://aseestant.ceon.rs/index.php/jaes/article/download/58449/29431",
+    "abstract": "This study focuses on the restoration of large-module gear teeth of ball mills using the electroslag welding method, with an emphasis on practical results and mathematical modeling. The research established that optimal electroslag welding conditions are achieved by stabilizing key process parameters, such as current strength, slag bath voltage, and cooling water flow rate. For high-quality welding of gear teeth with a module of 20 mm, the following parameters are recommended: current strength I=362.5 A, slag bath voltage U=73.25-74 V, and water flow rate Qw=3-3.5 l/min. These parameters ensure minimal roughness and the required hardness of the welded teeth. Mathematical modeling provided equations linking welding modes with the roughness and hardness of the welded teeth. The presented experimental data are highly relevant for the scientific community and enterprises involved in the restoration of large-module gear wheels. The results hold significant practical value as they enable enterprises to reduce restoration costs and enhance the durability of components."
+   },
+   {
+    "id": "https://openalex.org/W4399429546",
+    "doi": "https://doi.org/10.1016/j.jobcr.2024.04.009",
+    "title": "Influence of bottled salad dressings on the development of enamel erosion in the presence or absence of salivary pellicle – An in vitro study",
+    "year": 2024,
+    "cited": 0,
+    "venue": "Journal of Oral Biology and Craniofacial Research",
+    "topics": [
+     "Dental Erosion and Treatment",
+     "Oral microbiology and periodontitis research",
+     "Dental materials and restorations"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.jobcr.2024.04.009",
+    "abstract": "Background: Acidic beverages are believed to elevate the risk of enamel surface erosion. In addition to the intake of soft drinks, the increased consumption of salad dressings has been linked to a higher prevalence of dental erosion. Therefore, the current study aimed to investigate the influence of bottled salad dressings on the development of enamel erosion in the presence or absence of pellicle through in vitro experiment. Methods: Preliminary pH and calcium analyses of solutions were performed. Highest pH and calcium content was found for sandwich spread i.e., 4.69 and 55.4 mg/100 g grams, respectively. Eighty tooth specimens (measuring 4 × 4 × 3 mm) were prepared from extracted human premolars and randomly assigned to four groups (group 1: orange juice; group 2: eggless plain mayonnaise; group 3: sandwich spread; and group 4: thousand island dressing) with 20 samples in each group. Ten tooth specimens from each group were immersed in 20 ml of the respective solutions for 5 min (control group). The remaining ten tooth specimens from each group were submerged in 5 mL saliva vials for 3 min to facilitate salivary pellicle formation before being immersed in their respective solutions for 5 min (saliva-covered group). Pre and post-experimental assessments of enamel roughness and hardness were conducted using a surface roughness tester and Knoop Hardness indenter, respectively. Results: Overall, enamel roughness was notably elevated in the control group, with the eggless plain mayonnaise (0.52 ± 0.38) and thousand island dressing groups (0.57 ± 0.29) showing a significant increase in surface roughness post-test (p = 0.05). Nevertheless, there was no significant difference in the enamel roughness between the groups. On the other hand, regardless of the presence/absence of the salivary pellicle, a marked decrease in enamel hardness was observed among all groups except for group 3 (sandwich spread) with a mean score of 311.5 ± 82.6 (p < 0.05). Conclusion: A significant increase in surface roughness and reduction in enamel hardness was observed with salad dressings. However, in vitro formed salivary pellicle showed a protective effect against tooth erosion."
+   },
+   {
+    "id": "https://openalex.org/W4391043246",
+    "doi": "https://doi.org/10.1063/5.0183225",
+    "title": "Effect of sintering on the properties of magnesium doped-biphasic calcium phosphate (Mg-BCP)",
+    "year": 2024,
+    "cited": 0,
+    "venue": "AIP conference proceedings",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Layered Double Hydroxides Synthesis and Applications",
+     "Magnesium Oxide Properties and Applications"
+    ],
+    "oa_url": "https://pubs.aip.org/aip/acp/article-pdf/doi/10.1063/5.0183225/18625950/020028_1_5.0183225.pdf",
+    "abstract": "Magnesium doped-biphasic calcium phosphate (Mg-BCP) powder was successfully synthesized via an aqueous precipitation method at room temperature.Calcium nitrate tetrahydrate (Ca(NO3)2.4H2O),di-ammonium hydrogen phosphate ((NH4)2HPO4), and magnesium nitrate hexahydrate (Mg(NO3)2.6H2O) are the precursors involved.Mg-BCP powder was pressed into pallet form and sintered at three different temperatures (900 °C, 1100 °C, and 1200 °C).The sintered Mg-BCP pellet had been characterized via apparent porosity and bulk density measurement, Vickers hardness test, and Field Emission Scanning Electron Microscopy (FESEM).From the analysis, the 1200 °C sintered Mg-BCP pellet (M12) has the lowest apparent porosity and the highest bulk density.It shows that a higher sintering temperature may affect the increasing grain growth of the Mg-BCP pellet.However, the crack can easily propagate inside the bigger grain of M12 and thus gives a low hardness value.Moreover, the 900 °C sintered Mg-BCP pellet (M9) has the lowest hardness value due to high porosity along with a partially formed grain."
+   },
+   {
+    "id": "https://openalex.org/W4396781100",
+    "doi": "https://doi.org/10.20334/2024-030-m",
+    "title": "Metalo keraminių dangų su volframo karbidais lazerinis apdorojimas ir tyrimai",
+    "year": 2024,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Surface Roughness and Optical Measurements"
+    ],
+    "oa_url": "https://etalpykla.vilniustech.lt/bitstream/123456789/154183/1/Z_Decker%20disertacija.pdf",
+    "abstract": "ČERNAŠĖJUS (Vilniaus Gedimino technikos universitetas, Medžiagų inžinerija -T 008).Vilniaus Gedimino technikos universiteto Medžiagų inžinerijos mokslo krypties disertacijos gynimo taryba: Pirmininkas doc.dr.Justinas GARGASAS (Vilniaus Gedimino technikos universitetas, Medžiagų inžinerija -T 008)."
+   },
+   {
+    "id": "https://openalex.org/W4386304848",
+    "doi": null,
+    "title": "Investigation and Comparison of Process Parameters for Advanced High Strength Steels for Next-Generation Vehicles",
+    "year": 2023,
+    "cited": 0,
+    "venue": "DergiPark (Istanbul University)",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://dergipark.org.tr/tr/download/article-file/2999204",
+    "abstract": "Innovations are now required in the automotive industry, as well as in many other industries, due to environmental concerns and initiatives to minimize greenhouse gas emissions. The use of lightweight materials has grown for this purpose and specifically created new generation high-strength steels have begun to be used. In this work, the hot stamping method was used to examine the impact of process variables on the mechanical characteristics and microstructures of materials from two different steel manufacturers. The outcomes of varying the soaking time and austenitizing temperature were examined in order to analyze the process conditions. The analyses led to the selection of 890°C as the ideal austenitizing temperature and 240s as the ideal soaking time in the furnace. It was found that as the soaking time in the furnace decreased, it improved the microstructure and indirectly the mechanical characteristics. This study has the feature of guiding the determination of the optimum parameters for the materials of different manufacturers starting from the manufacturing stage and then in the material selection stage."
+   },
+   {
+    "id": "https://openalex.org/W3172113123",
+    "doi": "https://doi.org/10.21203/rs.3.rs-546540/v1",
+    "title": "Method of Ultrasonic Nanocrystal Surface Modification for Improvement of Surface Characteristics of Aisi D2 Heat-Treated With Different Tempering Conditions",
+    "year": 2021,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Surface Treatment and Residual Stress",
+     "Metal Alloys Wear and Properties",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-546540/latest.pdf",
+    "abstract": "Abstract AISI D2, an alloy tool steel, has been widely used as a cold-work die steel because of its excellent wear resistance, toughness, and machinability. However, when it is used as a mold or tool under a high load, high hardness and wear resistance are required to improve its service life. This study aimed to apply ultrasonic nanocrystal surface modification (UNSM), a local surface hardening technology, to the surface of D2 steel. To maximize the surface improvement effect achievable through UNSM, it is important to select the optimal process conditions according to the characteristics of the base metal. Therefore, the effects of UNSM were compared for different initial hardness values of D2 in this study. To this end, the base metal was subjected to different heat treatment conditions to exhibit different hardness values (approximately 40, 45, 50, and 55 HRc). Changes in the surface of the base metal were observed according to the three main parameters of the UNSM process: the load, inter-pass interval, and feed rate. No significant changes in the surface roughness and hardness was caused by the feed rate. As the inter-pass interval of UNSM decreased and the static load increased, the surface roughness of the base metal increased. However, the specimen with low initial hardness (D2-H40), the roughness improvement decreased as the load increased. On the other hand, the surface hardness improvement increased as the inter-pass interval decreased and the load increased regardless of the initial hardness of the base metal. It also was found that the specimen with the highest initial hardness (D2-H55) exhibited the greatest hardness improvement rate of 8.7 % and smallest hardened layer thickness of 220 μm. In addition, the largest compressive residual stress (-1,130.6 MPa) was formed on the surface of D2-H55 after UNSM, which occurred because the base metal with high initial hardness had limited plastic flow due to fine grains and low ductility, causing thus the energy repeatedly delivered by UNSM to be concentrated in a limited area. Consequently, reducing the inter-pass interval is effective on improving the surface roughness and hardness regardless of the material hardness. However, the load must be applied at an appropriate level, depending on the material hardness. Therefore, when D2 is heat-treated and used according to the product requirements, it will be effective to consider the changes after UNSM treatment based on hardness after heat treatment that were derived in this study."
+   },
+   {
+    "id": "https://openalex.org/W4308975197",
+    "doi": "https://doi.org/10.7190/shu-thesis-00487",
+    "title": "Laser direct energy deposition – the effect of process parameters on inconel 718",
+    "year": 2021,
+    "cited": 0,
+    "venue": "Sheffield Hallam University",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://shura.shu.ac.uk/29924/1/Elkington_2021_PhD_LaserDirectEnergy.pdf",
+    "abstract": "Laser Direct Energy Deposition (DED-L) is an Additive Manufacturing process which uses a laser beam as an energy source to melt blown metal powder to fabricate components. Complex relationships exist between the process parameters, which means that understanding these relationships, and their effect, is critical in understanding DED-L. This research investigates DED-L process parameters using a Trumpf 505 DMD system, aiming to determine the effect of altering specific process parameters on the metallurgical and mechanical properties of Inconel 718. Laser power, scan speed, and powder feed rate were first investigated using a Taguchi Design of Experiments. Anisotropy, build direction and a heat-treatment were then examined. The results demonstrate that the interactions between laser power, scan speed, and powder feed rate must be considered when determining process parameter values. An empirical working envelope of process parameter combinations for fabricating Inconel 718 on the Trumpf 505 DMD system was identified. For thick wall DED-L parts, changing the process parameters did not have any significant effect on the material properties. Process parameter combinations were found to be non-transferable between geometries – identical process parameters result in different material properties moving between different geometries. Thus individually built small test samples should not be used as representative of a larger components material properties. Combining different build directions did not have a negative effect on material properties at the interface between the build directions. Heat-treating eliminated the columnar dendritic grain structure, reduced Laves phase volume, and increased Vickers Hardness by 55%. This research adds to previous knowledge of how Inconel 718 behaves following fabrication by DED-L, and aids in understanding material integrity in thick wall DED-L builds. This contributes to improving the viability of using DED-L within industry."
+   },
+   {
+    "id": "https://openalex.org/W2055686877",
+    "doi": "https://doi.org/10.9726/kspse.2012.16.1.072",
+    "title": "Characteristics of Cracks under Vickers Indentation in Glass Using Acoustic Emission",
+    "year": 2012,
+    "cited": 0,
+    "venue": "Journal of Power System Engineering",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Ultrasonics and Acoustic Wave Propagation",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://koreascience.kr:443/article/JAKO201216636292999.pdf",
+    "abstract": "Acoustic emission (AE) is known to be sensitive to fracture process and so it was expected that AE data may propose as a means of monitoring the fracture information. The aim of this study is to analyze the characteristic of AE signal emitted from glass during Vickers indentation. To observe AE characteristics by surface effect, both glass and coating glass were studied. During Vickers indentation loading, AE signal resulted from penny-like crack is detected. During Vickers indentation unloading, AE signal resulted from both radial/median crack and lateral crack is detected. In case of indentation on glass, the emission energy( ${\\epsilon}$ ) is found to be approximately proportional to the fourth power of the crack length. In case of indentation on coating glass, the emission energy( ${\\epsilon}$ ) is approximately proportional to the crack length."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mitutoyo HV-100\" OR \"Mitutoyo HV-112\" OR \"Mitutoyo HV-114\" OR \"Mitutoyo HV110\" OR \"Mitutoyo HV120\") AND OPEN_ACCESS:y",
@@ -63,9 +483,13 @@
   }
  ],
  "standards_found": {
+  "ASTMA897": 1,
+  "EN AW-5083": 1,
   "ISO 6502-2": 1
  },
  "standards_new": [
+  "ASTMA897",
+  "EN AW-5083",
   "ISO 6502-2"
  ],
  "test_item_hits": {

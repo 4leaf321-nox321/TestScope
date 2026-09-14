@@ -8,8 +8,208 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"KLA Instruments iMicro\" OR \"Nanomechanics iMicro\"",
-  "count": null,
-  "works": []
+  "count": 14,
+  "works": [
+   {
+    "id": "https://openalex.org/W2946574208",
+    "doi": "https://doi.org/10.3390/ma12101677",
+    "title": "Evaluation of Phase Transformation and Mechanical Properties of Metastable Yttria-Stabilized Zirconia by Nanoindentation",
+    "year": 2019,
+    "cited": 27,
+    "venue": "Materials",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Advanced materials and composites",
+     "Nuclear Materials and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/12/10/1677/pdf?version=1558600612",
+    "abstract": "Microscopical nonuniformity of mechanical properties caused by phase transformation is one of the main reasons for the failure of the materials in engineering applications. Accurate measurement of the mechanical properties of each phase is of virtual importance, in which the traditional approach like Vickers hardness cannot accomplish, due to the large testing range. In this study, nanoindentation is firstly used to analyze the mechanical properties of each phase and demonstrate the phase transformation in thermal barrier coatings during high-temperature aging. The distribution of T-prime metastable tetragonal phase, cubic and tetragonal phase is determined by mapping mode of nanoindentation and confirmed with X-ray diffraction and scanning electron microscope observation. The results show that during 1300 °C aging, the phase transition of metastable Yttria-Stabilized Zirconia induces the quick decrease of T′ phase content and an increase of T and C phases accordingly. It is found that there are some fluctuations in the mechanical properties of individual phase during annealing. The hardness and Young’s modulus of T′ increase at first 9 h, due to the precipitation of Y3+ lean T phase and then decrease to a constant value accompanied by the precipitation of Y3+ rich C phase. The relevant property of C phases also increases a little firstly and then decreases to a constant, due to the homogenization of Y3+ content, while the hardness and Young’s modulus of T phase remain unchanged. After aging of 24h the hardness of T′, C and T phases are 20.5 GPa, 21.3 GPa and 19.1 GPa, respectively. The Young’s modulus of T′, C and T phases are 274 GPa, 275 GPa and 265 GPa, respectively. Present work reveals the availability of nanoindentation method to demonstrate the phase transformation and measure mechanical properties of composites. It also provides an efficient application for single phase identification of ceramics."
+   },
+   {
+    "id": "https://openalex.org/W4382460422",
+    "doi": "https://doi.org/10.1007/s11661-023-07116-7",
+    "title": "Fracture Resistance and Crack Growth Mechanisms in Functionally Graded Ti–TiB",
+    "year": 2023,
+    "cited": 5,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Aluminum Alloys Composites Properties",
+     "Numerical methods in engineering"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11661-023-07116-7.pdf",
+    "abstract": "Abstract This paper presents the results of fracture tests and crack path observations for a layered functionally graded material (FGM) consisting of Ti and TiB phases. The composition varied in a nearly linear manner from a TiB-rich layer at the bottom to commercially pure (CP) Ti at the top. Elastic properties of the mixed phase interlayers were measured using nanoindentation testing, demonstrating a linear variation with composition. These results differ significantly from approximations calculated in previous studies using a non-linear rule-of-mixtures approach. Fracture tests were conducted on single edge notch bend [SEN(B)] specimens with the notch aligned orthogonal to the direction of the composition gradient. For this crack orientation, \"average\" R-curve behavior based on the J-integral was investigated to understand the mechanics of crack growth. The value of J was found to be minimal (less than 1 N/mm) below 47 pct volume fraction of TiB compared to a reported value of approximately 150 N/mm for pure Ti. These results indicate that a steeper transition to high concentrations of the metallic phase is necessary to achieve adequate fracture resistance in this metal/ceramic FGM. Observations on the specimen surface indicate crack path toughening mechanisms of this functionally graded material include crack bridging, branching, and deflection."
+   },
+   {
+    "id": "https://openalex.org/W2621002744",
+    "doi": "https://doi.org/10.1088/1742-6596/843/1/012037",
+    "title": "Correlation between cavitation erosion resistance and cyclic mechanical properties of different metallic materials",
+    "year": 2017,
+    "cited": 5,
+    "venue": "Journal of Physics Conference Series",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Erosion and Abrasive Machining",
+     "Coal Combustion and Slurry Processing"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1742-6596/843/1/012037/pdf",
+    "abstract": "Machine components in contact with flowing fluids are especially prone to cavitation erosion, where plastic deformation and material loss occur due to the repeated implosion of cavitation bubbles in the vicinity of a solid surface. Identifying a correlation between experimentally derivable material properties and resistance against cavitation erosion could help improve the lifetime of cavitation-affected components. Cavitation erosion is a predominantly fatigue-driven phenomenon. In this investigation, we conducted nanoindentation experiments to examine cyclic micromechanical material properties in response to an increasing number of cycles. The experiments were performed on pure iron and different steel grades, i.e., austenitic stainless CrMnCN steels, interstitially alloyed with carbon and nitrogen. We confirmed the view, also proposed in literature, that indentation hardness is inappropriate for ordering the investigated materials by incubation period or maximum erosion rate. We found that the percentage increase of nanoindentation contact stiffness, after an increasing number of cycles, is a promising indicator in terms of the overall ranking of cavitation erosion resistance among the considered materials. Although a single cavitation impact is associated with a significantly higher strain rate than nanoindentation experiments, it is shown that the plastically deformed area around each indent exhibits indications of deformation, such as the formation of slip lines that are also observable after cavitation-induced impacts."
+   },
+   {
+    "id": "https://openalex.org/W4411177288",
+    "doi": "https://doi.org/10.1039/d5tc00653h",
+    "title": "A mechanically robust, high electrically and low thermally conducting silicon oxycarbide ceramic composite by spark plasma sintering",
+    "year": 2025,
+    "cited": 3,
+    "venue": "Journal of Materials Chemistry C",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites",
+     "Electrical and Thermal Properties of Materials"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2025/tc/d5tc00653h",
+    "abstract": "A silicon oxycarbide (SiOC) ceramic composite produced via a high-temperature spark plasma sintering process exhibits excellent mechanical robustness, high electrical conductivity, and low thermal conductivity, useful for various applications."
+   },
+   {
+    "id": "https://openalex.org/W4399403322",
+    "doi": "https://doi.org/10.1063/5.0200416",
+    "title": "A novel method may reveal bulk metallic glass compressive ductility trends in high data rate nanoindentation",
+    "year": 2024,
+    "cited": 3,
+    "venue": "Journal of Applied Physics",
+    "topics": [
+     "Metallic Glasses and Amorphous Alloys",
+     "Adhesion, Friction, and Surface Interactions",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://doi.org/10.1063/5.0200416",
+    "abstract": "Recent methods allow novel amorphous alloy compositions to be rapidly manufactured at small scale; however, obtaining materials properties such as compressive ductility from these smaller specimens has remained a challenge. Here, we suggest a potential high-throughput nanoindentation method that may be able to rapidly characterize the relative compressive ductility between these alloys based on their serration characteristics. The properties of emergent serrations, when interpreted in a simple micromechanical stress relaxation model, may order these materials by their compressive plastic strain to failure. These results are consistent with the ordering obtained from compressed specimens as well as with model simulations, suggesting that this model may be broadly useful for interpreting compressive ductility from nanoindentation serrations. After it is validated on more materials, this new method will match the rapid pace of amorphous alloy development, thus allowing metallic glass properties to be fine-tuned for each application prior to scale prototyping."
+   },
+   {
+    "id": "https://openalex.org/W4390725908",
+    "doi": "https://doi.org/10.3390/ma17020322",
+    "title": "Photopolymer-Based Composite with Substance Release Capability Manufactured Additively with DLP Method",
+    "year": 2024,
+    "cited": 3,
+    "venue": "Materials",
+    "topics": [
+     "Advancements in Transdermal Drug Delivery"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/17/2/322/pdf?version=1704778155",
+    "abstract": "In this study, caffeine-loaded photoresin composites with homogeneous structures, suitable for additive manufacturing of transdermal microneedle systems, were obtained. The properties of the composites with varying caffeine concentrations (0.1–0.4% w/w) were investigated for carbon–carbon double bond conversion using Fourier Transform Infrared Spectroscopy, surface wettability and mechanical properties using a static tensile test and nanoindentation, and caffeine release in ethanol using UV-Vis. The caffeine concentration did not affect the final degree of double bond conversion, which was confirmed in tensile tests, where the strength and Young’s modulus of caffeine-loaded samples had comparable values to control ones. Samples with 0.1 and 0.2% caffeine content showed an increase in nanohardness and reduced elastic modulus of 50 MPa and 1.5 MPa, respectively. The good wettability of the samples with water and the increase in surface energy is a favorable aspect for the dedicated application of the obtained composite materials. The amount of caffeine released into the ethanol solution at 1, 3 and 7 days reached a maximum value of 81%, was higher for the lower concentration of caffeine in the sample and increased over time. The conducted research may enhance the potential application of composite materials obtained through the digital light processing method in additive manufacturing."
+   },
+   {
+    "id": "https://openalex.org/W2921107281",
+    "doi": null,
+    "title": "NiMn Based Ferromagnetic Shape Memory Alloys for Structural Health Monitoring",
+    "year": 2018,
+    "cited": 1,
+    "venue": "OakTrust (Texas A&M University Libraries)",
+    "topics": [
+     "Shape Memory Alloy Transformations"
+    ],
+    "oa_url": "https://hdl.handle.net/1969.1/174531",
+    "abstract": "With the push for advanced space craft and super structures requiring complex and inventive design and construction, monitoring of these structures will become ever increasingly more important. As the health and safety of the public will rely on the continued performance of these structures, monitoring them for damage and structural failure, or “health”, becomes paramount. First among these is acoustic monitoring through the use of piezoelectric sensors interacting with the acoustic vibrations that generally are present during damage processes. Their lightweight and simple construction, along with its ease of miniaturization has permitted their use in a number of civil and aerospace applications for structural health monitoring. Unfortunately, this monitoring method relies on active damage mechanisms to produce measurable acoustic events, can easily be overwhelmed from external vibrations or “noise,” and requires the sensors to be robustly designed and remain attached to surfaces for extended periods of time. Despite these drawbacks, it is one of the cheapest and most easily integrated methods for structural health monitoring. Therefore, a need exists to develop an additional system capable of monitoring the structure in the event of acoustic sensor failure, and can quickly confirm and quantify damage detected by the acoustic sensor network. \\nThis work proposes to embed magnetic shape memory particles to interact with stress concentrations at crack tips and operate in conjunction with the acoustic sensors. Magnetic shape memory alloys possess a unique relationship between stress and \\nmagnetization as the material undergoes a martensitic transformation from one crystallographic system to another. Herein, the feasibility of the idea is demonstrated through the consolidation of powder precursors of Niv43Cov7Mnv39Snv11 magnetic shape memory alloy and pure aluminum. The composite materials demonstrate similar thermo-magnetic properties to the starting Niv43Cov7Mnv39Snv11, and under certain processing conditions lead to a brittle, dual region diffusion zone that negatively affects mechanical properties of the composite. Composite manufactured with Niv43Cov7Mnv39Snv11 and aluminum 7075 yield better compatibility between the matrix and sensory particles, and demonstrated a change in magnetization at 300K from 65.8emu.g-1 at 0% compressive strain to 17.5 emu.g-1 at 11.8% compressive strain, successfully demonstrating the feasibility of the proposed method."
+   },
+   {
+    "id": "https://openalex.org/W2945382427",
+    "doi": null,
+    "title": "INVESTIGATION OF THE FORMATION OF γꞌꞌ PRECIPITATES UNDER ION IRRADIATION AND ELEVATED TEMPERATURE ENVIRONMENTS",
+    "year": 2018,
+    "cited": 1,
+    "venue": "UNM’s Digital Repository (University of New Mexico)",
+    "topics": [
+     "Advanced Power Generation Technologies",
+     "Environmental and Industrial Safety"
+    ],
+    "oa_url": "https://digitalrepository.unm.edu/cgi/viewcontent.cgi?article=1080&context=ne_etds",
+    "abstract": "During a preventative maintenance at the Los Alamos Neutron Science Center (LANSCE) Isotope Production Facility (IPF), a beam window made of solution annealed Alloy 718 was replaced and the old beam window was analyzed. The old beam window underwent mechanical testing and microstructure analysis. During the microstructure analysis, the formation of γꞌꞌ precipitates was observed in Transmission Electron Microscopy (TEM) electron diffraction pattern. The formation of γꞌꞌ precipitates was not expected since they are not stable under irradiation. Furthermore, the formation of γꞌꞌ precipitates was observed only at a temperature of 33ºC, and a dose of 0.7 displacement per atom (dpa) with energetic H+ ions. The precipitate formation was not observed in the rest of the analyzed section of the beam window. The present work attempts to explain the formation of the precipitates with a series of carefully designed in-situ irradiation experiments at different doses, dose rates and temperatures. Testing at Sandia National Laboratory’s (SNL) Ion in situ TEM lab (I3TEM) was used to investigate the temperature and dose rate that γꞌꞌ precipitates will form under irradiation. The first test was conducted with 1.2 MeV Ni ions at room temperature up to a dose of 1.4 dpa. The test results concluded that γꞌꞌ precipitates do not form under high dose rates (compared to protons in the actual beam window). The second test was conducted using 2.8 MeV Au ions at 200 ºC and came up with the same null findings. The test concluded elevated temperatures and irradiation conditions do not foster an environment for precipitation growth. A third and final test to investigate phase stability in solution annealed Alloy 718 was conducted using 800 KeV H+ ion irradiations and concluded that the γꞌꞌ precipitates do not form under slower irradiation doses either. The stress state of the material under influence of the ion beam under normal operations was simulated with finite element analysis using Solidworks. The simulation showed that the maximum stress was located in the same outer region where the γꞌꞌ precipitates were discovered. Furthermore, the stress levels were found to be similar to literature work. Therefore, the formation of γꞌꞌ precipitates in the solution annealed beam window of LANCE Isotope Production Facility could be attributed to stress. Further studies could find a balance between irradiation induced disordering and stress induced formation."
+   },
+   {
+    "id": "https://openalex.org/W7155574303",
+    "doi": null,
+    "title": "Feeling the Pressure: Effects of Formation Pressure on the Physical Properties of Titan Haze Analogs",
+    "year": 2026,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Astro and Planetary Science",
+     "Atmospheric Ozone and Climate",
+     "Silicone and Siloxane Chemistry"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2604.20057",
+    "abstract": "The Cassini-Huygens mission detected large negative ions in Titan's ionosphere at pressures as low as $10^{-6}$ torr. These ions ultimately polymerize to form Titan's complex organic haze particles, which are observed throughout the atmosphere and potentially on the surface. Laboratory analogs of these hazes, known as tholins, have been used to study Titan's aerosols; however, most are produced at much higher pressures. The influence of formation pressures on key physical properties -- such as particle size, density, surface energy, and mechanical strength -- remains poorly constrained. These properties govern the haze's aggregation efficiency, radiative behavior, and surface-atmosphere interactions, shaping Titan's climate and surface. To investigate the effects of formation pressure, we generate tholins using a newly developed cold plasma discharge system. A 95% nitrogen and 5% methane gas mixture is exposed to plasma at two pressures, 1 torr and 0.125 torr. For both samples, we measure the production rate, particle size, morphology, density, surface free energy, Young's modulus, and nanoindentation hardness. While particle size, morphology, surface energy, and Young's modulus are similar across both pressures, tholins produced at lower pressure exhibited a threefold lower production rate, but a higher density and nanoindentation hardness. These variations likely reflect pressure-dependent changes in chemical structure, porosity, and mechanical strength. Because Titan's hazes form at much lower pressures than investigated here, actual haze particles are potentially even denser and mechanically stronger than our analogs, with implications for aerosol aggregation, aeolian and fluvial transport, and surface modification on Titan."
+   },
+   {
+    "id": "https://openalex.org/W7155180639",
+    "doi": "https://doi.org/10.4028/p-xtcfj6",
+    "title": "Effects of Current Density during Electrically Assisted Friction Stir Additive Manufacturing Hole Repair of AA 7075 on a Conventional Machine",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Key engineering materials",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Aluminum Alloys Composites Properties",
+     "Electromagnetic Effects on Materials"
+    ],
+    "oa_url": "https://www.scientific.net/KEM.1047.347.pdf",
+    "abstract": "Of interest for military applications is the repair of damaged fastener holes on aircraft. One of the preferred repair processes, specifically for aluminum alloy 7075 (AA 7075), is friction stir additive manufacturing (FSAM) to avoid hot cracking and high residual stresses. Some of the largest challenges with this additive manufacturing process, however, are the high axial force requirement to deposit the consumable tool onto the substrate material as well as the amount of downtime necessary for repair. One possible solution is the utilization of electrical assistance during the FSAM process, since the yield strength of the alloy decreases with increasing current density when depositing bar stock. This work investigates utilizing electrically assisted friction stir technology on a conventional knee mill, which is commonly used in depots and machine shops, to showcase that repairs can be completed on commercial, commonly available equipment with decreased repair time. Varying current addresses an efficiency challenge of additive manufacturing by lowering the dwell time necessary for deposition. While higher current densities would address one of the largest concerns of FSAM – the high force requirements, the ability to repair holes using a retrofit conventional system would allow for more point-of-need applications. With the eventual application of military interest in mind, 7.95 mm (5/16”) diameter holes are drilled and repaired using FSAM via a conventional Bridgeport knee mill for use in typical machine shop locations. The material properties of AA 7075 stock material are compared to FSAM hole repairs completed with and without electricity incorporated."
+   },
+   {
+    "id": "https://openalex.org/W7152689615",
+    "doi": "https://doi.org/10.2172/3027725",
+    "title": "Irradiation Tailoring of Deformation-Induced Phase Transformations",
+    "year": 2026,
+    "cited": 0,
+    "venue": null,
+    "topics": [],
+    "oa_url": "https://www.osti.gov/servlets/purl/3027725",
+    "abstract": "This report was prepared as an account of work sponsored by an"
+   },
+   {
+    "id": "https://openalex.org/W4396881586",
+    "doi": "https://doi.org/10.48550/arxiv.2405.06007",
+    "title": "Anomalous properties of spark plasma sintered boron nitride solids",
+    "year": 2024,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Boron and Carbon Nanomaterials Research",
+     "Diamond and Carbon-based Materials Research",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2405.06007",
+    "abstract": "Hexagonal boron nitride (h-BN) is a brittle ceramic with a layered structure, however, recent experiments have suggested that inter-layer structural engineering could be key to new structural and functional properties. Here we report the scalable bulk synthesis of high-density crystalline h-BN solids, by using high-temperature spark plasma sintering (SPS) of h-BN powders, which show high values of mechanical strength, ductility, dielectric constant, thermal conductivity, and exceptional neutron radiation shielding capability. Through exhaustive characterizations we reveal that SPS induces non-basal plane crystallinity, twisting of layers, and facilitates inter-grain fusion with a high degree of in-plane alignment across macroscale dimensions, resulting in near-theoretical density and improved properties. Our findings highlight the importance of material design, via new approaches such as layer twisting and interlayer interconnections, to create novel ceramics with properties that could go beyond their intrinsic limits."
+   },
+   {
+    "id": "https://openalex.org/W3184288622",
+    "doi": null,
+    "title": "Electroactive Light Metal Nanostructures for Corrosion Protection and Electrochemical Energy Storage",
+    "year": 2020,
+    "cited": 0,
+    "venue": "OakTrust (Texas A&M University Libraries)",
+    "topics": [
+     "Gas Sensing Nanomaterials and Sensors",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "https://hdl.handle.net/1969.1/192841",
+    "abstract": "Stability in electrochemical systems is governed by interactions at the local scale where isolated inhomogeneities can define system performance. This concept plays a key role in failure of battery systems and corrosion of materials. For rechargeable batteries, replacement of graphite with metal anodes provides considerable promise for sizable gains in gravimetric and volumetric energy densities. However, out of equilibrium processes guide formation of anisotropic, dendritic growths which are capable of short circuiting the cell and causing catastrophic failure of the system. Magnesium-based batteries have garnered significant interest as an alternative to lithium-ion largely due to its designation as a ‘dendrite free’ system. \\nThis would allow for the use of metal anodes providing significant improvements in capacity compared to graphite but requires controlled and consistent plating and stripping of the active metal over hundreds of cycles. Here, we detail our investigations into the electrodeposition of magnesium in varying electric fields, electrolyte concentrations, and with the addition of growth-directing ligands, providing understanding of mechanisms of deposition across a wide range of deposit morphologies. Through combining in situ video microscopy studies of electrodeposition of Mg in symmetric cells with 3D tomographic characterization and mesoscale modeling we demonstrate some of the first definitive examples of dendritic growth on magnesium anodes and elucidate mechanisms of formation. \\nIn corroding systems, local inhomogeneities often serve as key sites in failure, often dominating electrochemical activity. For corrosion inhibition, our approach has involved modular design of nanocomposite coatings enabling multiple modes of corrosion protection. Here we outline our efforts in design of magnesium nanoparticle and exfoliated graphite-based nanocomposites for protection of high-strength aluminum alloys. Mechanisms of corrosion inhibition have been elucidated through extended submersion testing coupled with electrochemical impedance spectroscopy measurements."
+   },
+   {
+    "id": "https://openalex.org/W2978629010",
+    "doi": null,
+    "title": "Mechanics of Electrodes in High Capacity Lithium-Ion Batteries",
+    "year": 2018,
+    "cited": 0,
+    "venue": "OakTrust (Texas A&M University Libraries)",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://hdl.handle.net/1969.1/174017",
+    "abstract": "*Part of this abstract has been reprinted with permission from “Interfacial Fracture of Nanowire Electrodes of Lithium-Ion\\nBatteries” by G. R. Hardin, Y. Zhang, C. D. Fincher et al, 2017. JOM Journal of the Minerals, Metals and Materials Society, 69,\\n9, Copyright 2017 by Springer Nature"
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"KLA Instruments iMicro\" OR \"Nanomechanics iMicro\") AND OPEN_ACCESS:y",

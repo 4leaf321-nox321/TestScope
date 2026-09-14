@@ -10,8 +10,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Instron 8800\" OR \"Instron 8872\" OR \"Instron 8874\" OR \"Instron 8801\"",
-  "count": null,
-  "works": []
+  "count": 2865,
+  "works": [
+   {
+    "id": "https://openalex.org/W2299593614",
+    "doi": "https://doi.org/10.1038/ncomms10602",
+    "title": "Exceptional damage-tolerance of a medium-entropy alloy CrCoNi at cryogenic temperatures",
+    "year": 2016,
+    "cited": 1942,
+    "venue": "Nature Communications",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms10602.pdf",
+    "abstract": "High-entropy alloys are an intriguing new class of metallic materials that derive their properties from being multi-element systems that can crystallize as a single phase, despite containing high concentrations of five or more elements with different crystal structures. Here we examine an equiatomic medium-entropy alloy containing only three elements, CrCoNi, as a single-phase face-centred cubic solid solution, which displays strength-toughness properties that exceed those of all high-entropy alloys and most multi-phase alloys. At room temperature, the alloy shows tensile strengths of almost 1 GPa, failure strains of ∼70% and KJIc fracture-toughness values above 200 MPa m(1/2); at cryogenic temperatures strength, ductility and toughness of the CrCoNi alloy improve to strength levels above 1.3 GPa, failure strains up to 90% and KJIc values of 275 MPa m(1/2). Such properties appear to result from continuous steady strain hardening, which acts to suppress plastic instability, resulting from pronounced dislocation activity and deformation-induced nano-twinning."
+   },
+   {
+    "id": "https://openalex.org/W2088037080",
+    "doi": "https://doi.org/10.1016/j.compscitech.2009.07.009",
+    "title": "Elastic constants of 3-, 4- and 6-connected chiral and anti-chiral honeycombs subject to uniaxial in-plane loading",
+    "year": 2009,
+    "cited": 686,
+    "venue": "Composites Science and Technology",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Polymer composites and self-healing",
+     "Automotive and Human Injury Biomechanics"
+    ],
+    "oa_url": "https://ub-ir.bolton.ac.uk/view/delivery/44UOBO_INST/124052950008841/134108770008841",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2077862115",
+    "doi": "https://doi.org/10.1016/j.jmatprotec.2006.09.007",
+    "title": "Dependence of mechanical properties of polyamide components on build parameters in the SLS process",
+    "year": 2006,
+    "cited": 597,
+    "venue": "Journal of Materials Processing Technology",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "http://hdl.handle.net/10379/5520",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2382359737",
+    "doi": "https://doi.org/10.1016/j.actamat.2016.04.029",
+    "title": "Microstructure, defects and mechanical behavior of beta-type titanium porous structures manufactured by electron beam melting and selective laser melting",
+    "year": 2016,
+    "cited": 585,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Titanium Alloys Microstructure and Properties",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://research-repository.uwa.edu.au/en/publications/9d5ad332-1ee8-433d-96a9-63f74fb75cbc",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4310700150",
+    "doi": "https://doi.org/10.1126/science.abp8070",
+    "title": "Exceptional fracture toughness of CrCoNi-based medium- and high-entropy alloys at 20 kelvin",
+    "year": 2022,
+    "cited": 535,
+    "venue": "Science",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://unsworks.unsw.edu.au/bitstreams/9689433d-2119-4f25-b423-2bd5c4cf2a37/download",
+    "abstract": "CrCoNi-based medium- and high-entropy alloys display outstanding damage tolerance, especially at cryogenic temperatures. In this study, we examined the fracture toughness values of the equiatomic CrCoNi and CrMnFeCoNi alloys at 20 kelvin (K). We found exceptionally high crack-initiation fracture toughnesses of 262 and 459 megapascal-meters ½ (MPa·m ½ ) for CrMnFeCoNi and CrCoNi, respectively; CrCoNi displayed a crack-growth toughness exceeding 540 MPa·m ½ after 2.25 millimeters of stable cracking. Crack-tip deformation structures at 20 K are quite distinct from those at higher temperatures. They involve nucleation and restricted growth of stacking faults, fine nanotwins, and transformed epsilon martensite, with coherent interfaces that can promote both arrest and transmission of dislocations to generate strength and ductility. We believe that these alloys develop fracture resistance through a progressive synergy of deformation mechanisms, dislocation glide, stacking-fault formation, nanotwinning, and phase transformation, which act in concert to prolong strain hardening that simultaneously elevates strength and ductility, leading to exceptional toughness."
+   },
+   {
+    "id": "https://openalex.org/W2060092079",
+    "doi": "https://doi.org/10.1016/j.phpro.2014.08.120",
+    "title": "Effects of Defects in Laser Additive Manufactured Ti-6Al-4V on Fatigue Properties",
+    "year": 2014,
+    "cited": 506,
+    "venue": "Physics Procedia",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S187538921400265X/pdf",
+    "abstract": "Laser Additive Manufacturing (LAM) enables economical production of complex lightweight structures as well as patient individual implants. Due to these possibilities the additive manufacturing technology gains increasing importance in the aircraft and the medical industry. Yet these industries obtain high quality standards and demand predictability of material properties for static and dynamic load cases. However, especially fatigue and crack propagation properties are not sufficiently determined. Therefore this paper presents an analysis and simulation of crack propagation behavior considering Laser Additive Manufacturing specific defects, such as porosity and surface roughness. For the mechanical characterization of laser additive manufactured titanium alloy Ti-6Al-4V, crack propagation rates are experimentally determined and used for an analytical modeling and simulation of fatigue. Using experimental results from HCF tests and simulated data, the fatigue and crack resistance performance is analyzed considering material specific defects and surface roughness. The accumulated results enable the reliable prediction of the defects influence on fatigue life of laser additive manufactured titanium components."
+   },
+   {
+    "id": "https://openalex.org/W2770125989",
+    "doi": "https://doi.org/10.1007/s40279-017-0811-2",
+    "title": "A Comparison of the Energetic Cost of Running in Marathon Racing Shoes",
+    "year": 2017,
+    "cited": 438,
+    "venue": "Sports Medicine",
+    "topics": [
+     "Sports Performance and Training",
+     "Lower Extremity Biomechanics and Pathologies",
+     "Cardiovascular and exercise physiology"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40279-017-0811-2.pdf",
+    "abstract": "BACKGROUND: Reducing the energetic cost of running seems the most feasible path to a sub-2-hour marathon. Footwear mass, cushioning, and bending stiffness each affect the energetic cost of running. Recently, prototype running shoes were developed that combine a new highly compliant and resilient midsole material with a stiff embedded plate. OBJECTIVE: The aim of this study was to determine if, and to what extent, these newly developed running shoes reduce the energetic cost of running compared with established marathon racing shoes. METHODS: 18 high-caliber athletes ran six 5-min trials (three shoes × two replicates) in prototype shoes (NP), and two established marathon shoes (NS and AB) during three separate sessions: 14, 16, and 18 km/h. We measured submaximal oxygen uptake and carbon dioxide production during minutes 3-5 and averaged energetic cost (W/kg) for the two trials in each shoe model. RESULTS: Compared with the established racing shoes, the new shoes reduced the energetic cost of running in all 18 subjects tested. Averaged across all three velocities, the energetic cost for running in the NP shoes (16.45 ± 0.89 W/kg; mean ± SD) was 4.16 and 4.01% lower than in the NS and AB shoes, when shoe mass was matched (17.16 ± 0.92 and 17.14 ± 0.97 W/kg, respectively, both p < 0.001). The observed percent changes were independent of running velocity (14-18 km/h). CONCLUSION: The prototype shoes lowered the energetic cost of running by 4% on average. We predict that with these shoes, top athletes could run substantially faster and achieve the first sub-2-hour marathon."
+   },
+   {
+    "id": "https://openalex.org/W3144760087",
+    "doi": "https://doi.org/10.1016/j.actamat.2021.116869",
+    "title": "Fracture resistance of AlSi10Mg fabricated by laser powder bed fusion",
+    "year": 2021,
+    "cited": 256,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1359645421002494-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3000646958",
+    "doi": "https://doi.org/10.1016/j.ijfatigue.2020.105497",
+    "title": "Improved fatigue strength of additively manufactured Ti6Al4V by surface post processing",
+    "year": 2020,
+    "cited": 251,
+    "venue": "International Journal of Fatigue",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0142112320300281/pdf",
+    "abstract": "A major challenge for additively manufactured structural parts is the low fatigue strength connected to rough as-built surfaces. In this study, Ti6Al4V manufactured with laser powder bed fusion (L-PBF) and electron beam powder bed fusion (E-PBF) have been subjected to five surface processing methods, shot peening, laser shock peening, centrifugal finishing, laser polishing and linishing, in order to increase the fatigue strength. Shot peened and centrifugal finished L-PBF material achieved comparable fatigue strength to machined material. Moreover, the surface roughness alone was found to be an insufficient indicator on the fatigue strength since subsurface defects were hidden below smooth surfaces."
+   },
+   {
+    "id": "https://openalex.org/W2788986124",
+    "doi": "https://doi.org/10.1021/acs.macromol.7b02407",
+    "title": "Vinylogous Urea Vitrimers and Their Application in Fiber Reinforced Composites",
+    "year": 2018,
+    "cited": 234,
+    "venue": "Macromolecules",
+    "topics": [
+     "Polymer composites and self-healing",
+     "Flame retardant materials and properties",
+     "Synthetic Organic Chemistry Methods"
+    ],
+    "oa_url": "https://biblio.ugent.be/publication/8569294/file/8569358.pdf",
+    "abstract": "Vitrimers are covalently cross-linked polymeric materials that can be thermally processed in a liquid state without losing their network integrity. In this work, novel vitrimers based on the dynamic amine exchange reaction of vinylogous urea moieties are introduced. Following a systematic exploration of different vinylogous acyl compounds (urethanes, amides, and urea), vinylogous urea clearly emerges as showing the fastest intrinsic exchange kinetics. The combination of these networks with a simple acid catalyst (0.5 mol % pTsOH) resulted in materials with good mechanical properties ( T g ∼ 110 °C, E ∼ 2.2 GPa) and remarkably short relaxation times above T g, in the order of a few seconds when heated. This attractive combination of properties made it possible to prepare vinylogous urea based composites as enduring prepregs. We demonstrate that the dynamic material properties give fully cured composites that still allow an efficient thermal fusion of multiple layers as well as thermoforming. Finally, we also demonstrate fiber recycling by a simple chemical treatment."
+   },
+   {
+    "id": "https://openalex.org/W2759093009",
+    "doi": "https://doi.org/10.1016/j.ijplas.2017.09.012",
+    "title": "Slip transfer and deformation structures resulting from the low cycle fatigue of near-alpha titanium alloy Ti-6242Si",
+    "year": 2017,
+    "cited": 228,
+    "venue": "International Journal of Plasticity",
+    "topics": [
+     "Titanium Alloys Microstructure and Properties",
+     "Metal and Thin Film Mechanics",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S074964191730387X/pdf",
+    "abstract": "Near-alpha titanium alloy Ti6242Si, widely used in aero-engine compressor discs, was subjected to low cycle fatigue loading at room temperature. Fracture initiated by facet formation, followed by striated fatigue crack growth prior to final failure. Deformation occurred primarily by planar slip, localized into slip bands in the primary alpha. Within soft-oriented grains in a microtextured region, pile-up of a slip band within one grain resulted in the direct transfer of slip into an adjacent similarly oriented grain. In contrast, pile up of dislocations in a soft grain with a ‘hard’ oriented neighbour resulted in the activation of few non-connected dislocations in the hard grain, with -type dislocations being activated and the observation of cross-slip. Whilst a high density of dislocations was present from precipitation of secondary alpha in the retained beta ligaments, a little dislocation interaction was observed between the transformed beta and the primary alpha grains."
+   },
+   {
+    "id": "https://openalex.org/W2921155042",
+    "doi": "https://doi.org/10.1016/j.matdes.2019.107651",
+    "title": "An approach to develop printable strain hardening cementitious composites",
+    "year": 2019,
+    "cited": 209,
+    "venue": "Materials & Design",
+    "topics": [
+     "Innovations in Concrete and Construction Materials",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127519300887/pdf",
+    "abstract": "New additive manufacturing methods for cementitious materials hold a high potential to increase automation in the construction industry. However, these methods require new materials to be developed that meet performance requirements related to specific characteristics of the manufacturing process. The appropriate characterization methods of these materials are still a matter of debate. This study proposes a rheology investigation to systematically develop a printable strain hardening cementitious composite mix design. Two known mixtures were employed and the influence of several parameters, such as the water-to-solid ratio, fibre volume percentage and employment of chemical admixtures, were investigated using a ram extruder and Benbow-Bridgwater equation. Through printing trials, rheology parameters as the initial bulk and shear yield stress were correlated with variables commonly employed to assess printing quality of cementitious materials. The rheology properties measured were used to predict the number of layers a developed mixture could support. Selected mixtures had their mechanical performance assessed through four-point bending, uni-axial tensile and compressive strength tests, to confirm that strain hardening behaviour was obtained. It was concluded that the presented experimental and theoretical framework are promising tools, as the bulk yield stress seems to predict buildability, while shear yield stress may indicate a threshold for pumpability."
+   },
+   {
+    "id": "https://openalex.org/W2777205667",
+    "doi": "https://doi.org/10.3390/ma11010017",
+    "title": "Comparison of Microstructure and Mechanical Properties of Scalmalloy® Produced by Selective Laser Melting and Laser Metal Deposition",
+    "year": 2017,
+    "cited": 200,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/11/1/17/pdf?version=1514028947",
+    "abstract": "The second-generation aluminum-magnesium-scandium (Al-Mg-Sc) alloy, which is often referred to as Scalmalloy®, has been developed as a high-strength aluminum alloy for selective laser melting (SLM). The high-cooling rates of melt pools during SLM establishes the thermodynamic conditions for a fine-grained crack-free aluminum structure saturated with fine precipitates of the ceramic phase Al3-Sc. The precipitation allows tensile and fatigue strength of Scalmalloy® to exceed those of AlSi10Mg by ~70%. Knowledge about properties of other additive manufacturing processes with slower cooling rates is currently not available. In this study, two batches of Scalmalloy® processed by SLM and laser metal deposition (LMD) are compared regarding microstructure-induced properties. Microstructural strengthening mechanisms behind enhanced strength and ductility are investigated by scanning electron microscopy (SEM). Fatigue damage mechanisms in low-cycle (LCF) to high-cycle fatigue (HCF) are a subject of study in a combined strategy of experimental and statistical modeling for calculation of Woehler curves in the respective regimes. Modeling efforts are supported by non-destructive defect characterization in an X-ray computed tomography (µ-CT) platform. The investigations show that Scalmalloy® specimens produced by LMD are prone to extensive porosity, contrary to SLM specimens, which is translated to ~30% lower fatigue strength."
+   },
+   {
+    "id": "https://openalex.org/W2094818132",
+    "doi": "https://doi.org/10.1371/journal.pone.0075697",
+    "title": "Beneficial Effects of Autologous Bone Marrow-Derived Mesenchymal Stem Cells in Naturally Occurring Tendinopathy",
+    "year": 2013,
+    "cited": 193,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Tendon Structure and Treatment",
+     "Veterinary Equine Medical Research",
+     "Periodontal Regeneration and Treatments"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0075697&type=printable",
+    "abstract": "Tendon injuries are a common age-related degenerative condition where current treatment strategies fail to restore functionality and normal quality of life. This disease also occurs naturally in horses, with many similarities to human tendinopathy making it an ideal large animal model for human disease. Regenerative approaches are increasingly used to improve outcome involving mesenchymal stem cells (MSCs), supported by clinical data where injection of autologous bone marrow derived MSCs (BM-MSCs) suspended in marrow supernatant into injured tendons has halved the re-injury rate in racehorses. We hypothesized that stem cell therapy induces a matrix more closely resembling normal tendon than the fibrous scar tissue formed by natural repair. Twelve horses with career-ending naturally-occurring superficial digital flexor tendon injury were allocated randomly to treatment and control groups. 1X10(7) autologous BM-MSCs suspended in 2 ml of marrow supernatant were implanted into the damaged tendon of the treated group. The control group received the same volume of saline. Following a 6 month exercise programme horses were euthanized and tendons assessed for structural stiffness by non-destructive mechanical testing and for morphological and molecular composition. BM-MSC treated tendons exhibited statistically significant improvements in key parameters compared to saline-injected control tendons towards that of normal tendons and those in the contralateral limbs. Specifically, treated tendons had lower structural stiffness (p<0.05) although no significant difference in calculated modulus of elasticity, lower (improved) histological scoring of organisation (p<0.003) and crimp pattern (p<0.05), lower cellularity (p<0.007), DNA content (p<0.05), vascularity (p<0.03), water content (p<0.05), GAG content (p<0.05), and MMP-13 activity (p<0.02). Treatment with autologous MSCs in marrow supernatant therefore provides significant benefits compared to untreated tendon repair in enhancing normalisation of biomechanical, morphological, and compositional parameters. These data in natural disease, with no adverse findings, support the use of this treatment for human tendon injuries."
+   },
+   {
+    "id": "https://openalex.org/W2539188041",
+    "doi": "https://doi.org/10.1016/j.nanoen.2016.10.040",
+    "title": "High performance triboelectric nanogenerators based on phase-inversion piezoelectric membranes of poly(vinylidene fluoride)-zinc stannate (PVDF-ZnSnO3) and polyamide-6 (PA6)",
+    "year": 2016,
+    "cited": 189,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Tactile and Sensory Interactions"
+    ],
+    "oa_url": "https://ub-ir.bolton.ac.uk/view/delivery/44UOBO_INST/124041490008841/134258860008841",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2263029860",
+    "doi": "https://doi.org/10.1016/j.compstruct.2016.02.010",
+    "title": "Design and characterisation of advanced pseudo-ductile unidirectional thin-ply carbon/epoxy–glass/epoxy hybrid composites",
+    "year": 2016,
+    "cited": 184,
+    "venue": "Composite Structures",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0263822316300307/pdf",
+    "abstract": "A comprehensive set of thin-ply pseudo-ductile unidirectional interlayer hybrid composite materials comprising S-glass and a variety of thin carbon prepregs was designed and characterised. Unique elastic–yielding–hardening type stress–strain responses similar to those of ductile metals were achieved through fragmentation and stable pull-out of the carbon layers, generating a range of initial moduli, pseudo-yield strains, plateau stresses and pseudo ductile strains for the various configurations. The typical failure modes of thin-ply hybrid composites were highlighted in four series of stress–strain graphs obtained for the same materials with different carbon layer thicknesses. The predicted failure modes agreed well with the experimental results and demonstrated the merit of our two step design framework based on (i) simple analytical criteria and (ii) novel damage mode maps."
+   },
+   {
+    "id": "https://openalex.org/W2968559537",
+    "doi": "https://doi.org/10.1088/2053-1591/ab39b0",
+    "title": "Influence of AlN particles on microstructure, mechanical and tribological behaviour in AA6351 aluminum alloy",
+    "year": 2019,
+    "cited": 179,
+    "venue": "Materials Research Express",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "MXene and MAX Phase Materials",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2053-1591/ab39b0/pdf",
+    "abstract": "In the current trend, the hard ceramic particles reinforced aluminum matrix composites (AMCs) is extensively being exploited as a composite which shall be utilized for various engineering applications. In the present research, the Al-Si-Mg (AA6351) composite incorporated with aluminium nitride (AlN) filler were prepared via novel and low cost melt stirring process. This study was conducted using AA6351 aluminum alloy in conjunction with AlN particles whose percentages of incorporation were 4%, 8%, 12%, 16% and 20 wt% in the ascending. The stir casted composites and the base alloy were characterized via scanning electron microscope (SEM) and energy dispersive x-ray analysis (EDAX). EDAX pattern proves the occurrence of AlN filler contents in the synthesized AMCs. SEM studies exhibit the even dispersion of the reinforcement particles in the Al matrix. The effects of AlN contents on the mechanical characteristics of AA6351 matrix composites were examined. The dry sliding wear characteristics of the prepared composites was tested employing pin on disc machine. The mechanical and wear behavior of the AMCs had shown a great enhancement by the incorporation of AlN particles into AA6351 matrix alloy. The test outcomes discovered that Al/20 wt% AlN composites had revealed superior wear resistance, hardness, yield strength and tensile strength than the AA6351 base alloy."
+   },
+   {
+    "id": "https://openalex.org/W3196914397",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.08.092",
+    "title": "Development of novel hybrid TPMS cellular lattices and their mechanical characterisation",
+    "year": 2021,
+    "cited": 176,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Structural Response to Dynamic Loads",
+     "Automotive and Human Injury Biomechanics"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421009200/pdf",
+    "abstract": "Uniform lattices composed of one type of lattice structure repeated periodically have been extensively investigated in literature for their mechanical and physical properties. Their promising properties, which include a desirable combination of high strength, stiffness and toughness, suggest that hybrid structures made of two or more lattice types can exhibit even more advantageous and desired properties. In this work, the mechanical properties of hybrid cellular structures designed using implicit functions are investigated both experimentally and numerically. Two proposed samples are investigated comprised of a Gyroid and a Diamond unit cells hybridised linearly and radially. First, a finite element computational model was utilised in LS-DYNA to capture the mechanical properties of the additively manufactured constituent lattices (i.e., Gyroid and Diamond) made of stainless steel 316L and tested under dynamic and quasi-static loading conditions. The model was validated for three different relative densities. Then, the validated computational model was then tested to predict the mechanical behaviour of the proposed hybrid lattices. Finally, the proposed hybrid lattices were fabricated and mechanically tested to obtain their mechanical properties. A good agreement between experimental and computational results was achieved. The validated computational models will be used to evaluate other designs of TPMS lattices and their crashworthiness performance for protective equipment applications."
+   },
+   {
+    "id": "https://openalex.org/W2047088755",
+    "doi": "https://doi.org/10.1002/jor.20722",
+    "title": "Subrupture tendon fatigue damage",
+    "year": 2008,
+    "cited": 173,
+    "venue": "Journal of Orthopaedic Research®",
+    "topics": [
+     "Tendon Structure and Treatment",
+     "Orthopedic Surgery and Rehabilitation",
+     "Knee injuries and reconstruction techniques"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/jor.20722",
+    "abstract": "Abstract The mechanical and microstructural bases of tendon fatigue, by which damage accumulates and contributes to degradation, are poorly understood. To investigate the tendon fatigue process, rat flexor digitorum longus tendons were cyclically loaded (1–16 N) until reaching one of three levels of fatigue damage, defined as peak clamp‐to‐clamp strain magnitudes representing key intervals in the fatigue life: i) Low (6.0%–7.0%); ii) Moderate (8.5%–9.5%); and iii) High (11.0%–12.0%). Stiffness, hysteresis, and clamp‐to‐clamp strain were assessed diagnostically (by cyclic loading at 1–8 N) before and after fatigue loading and following an unloaded recovery period to identify mechanical parameters as measures of damage. Results showed that tendon clamp‐to‐clamp strain increased from pre‐ to post‐fatigue loading significantly and progressively with the fatigue damage level ( p ≤ 0.010). In contrast, changes in both stiffness and hysteresis were significant only at the High fatigue level ( p ≤ 0.043). Correlative microstructural analyses showed that Low level of fatigue was characterized by isolated, transverse patterns of kinked fiber deformations. At higher fatigue levels, tendons exhibited fiber dissociation and localized ruptures of the fibers. Histomorphometric analysis showed that damage area fraction increased significantly with fatigue level ( p ≤ 0.048). The current findings characterized the sequential, microstructural events that underlie the tendon fatigue process and indicate that tendon deformation can be used to accurately assess the progression of damage accumulation in tendons. © 2008 Orthopaedic Research Society. Published by Wiley Periodicals, Inc. J Orthop Res 27:264–273, 2009"
+   },
+   {
+    "id": "https://openalex.org/W2940585293",
+    "doi": "https://doi.org/10.3390/ma12091374",
+    "title": "The Effect of Viscosity-Modifying Admixture on the Extrudability of Limestone and Calcined Clay-Based Cementitious Material for Extrusion-Based 3D Concrete Printing",
+    "year": 2019,
+    "cited": 170,
+    "venue": "Materials",
+    "topics": [
+     "Innovations in Concrete and Construction Materials",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/12/9/1374/pdf?version=1556422605",
+    "abstract": "To investigate the effects of viscosity-modifying admixture (VMA) on the extrudability of limestone and calcined clay-based cementitious materials, three mix designs with different dosages of VMA were proposed in this study. The ram extrusion was utilized as an extrusion model for exploring the fresh properties of printable materials. Two methods were used, based on the ram extruder setup-(a) extruding materials with the same extrusion speed at different rest times to determine how the pressure changes with time; (b) extruding materials with different extrusion speeds at the same rest time to investigate the material flow parameters using the Basterfield et al. model. The main findings of this study could be summarized as-(1) the extrusion pressure of all mix designs exhibited an increasing trend with time. At the same tested age, the extrusion pressure under 0.25 mm/s of piston speed was increased and the shape retention of the extruded filaments was enhanced by increasing the dosage of VMA; (2) the correlation between the experimental results and the Basterfield et al. model was excellent (R-squared value: 0.99). The mixture with a higher content of VMA showed an increased elongational yield stress, flow consistency, and shear yield stress."
+   },
+   {
+    "id": "https://openalex.org/W2168628089",
+    "doi": null,
+    "title": "Fatigue life prediction and strength degradation of wind turbine rotor blade composites",
+    "year": 2006,
+    "cited": 167,
+    "venue": "Research Repository (Delft University of Technology)",
+    "topics": [
+     "Fatigue and fracture mechanics",
+     "Wind Energy Research and Development",
+     "Mechanical stress and fatigue analysis"
+    ],
+    "oa_url": "http://resolver.tudelft.nl/uuid:e33139ca-e181-4c62-87dc-23e55010eac8",
+    "abstract": "Wind turbine rotor blades are subjected to a large number of highly variable loads, but life predictions are typically based on constant amplitude fatigue behaviour. Therefore, it is important to determine how service life under variable amplitude fatigue can be estimated from constant amplitude fatigue behaviour. A life prediction contains different, partly independent, elements: · the counting method, used for describing variable amplitude signals as a collection of constant amplitude cycles · formulations for describing S-N curves which relate the stresses to the number of cycles to failure · constant life diagrams which are made up of S-N curves for different stress ratios · damage rules, which relate the life expectancy of a specimen to the stress history For the description of damage, two models were investigated and compared, viz. the Miner's sum method and strength-based life prediction. In the Miner's sum method, the results of a counting method and constant amplitude fatigue behaviour description are converted into a damage parameter, \"Miner's sum\". Potential effects of load order are not taken into account. Moreover, the value of the damage parameter only indicates whether or not failure occurred: it does not relate to a physically quantifiable damage. These are limitations to the model which suspectedly might cause inaccurate predictions. In the strength-based method, life is predicted by calculating the effect of each load cycle on strength, until the load exceeds the remaining strength. An expected advantage of this cycle-by-cycle method is, that sequence effects can be implicitly included. Moreover, the damage parameter is at all times related to a physically quantifiable parameter (viz. strength). The successful application of the strength-based method requires a description of the post-fatigue strength, which entails considerable experimental effort. In addition, a strength-based life prediction is much more computationally intensive than Miner's sum and can not always utilise the same counting methods. In the comparison of the Miner's sum and the strength-based method, the influence and significance of the other life prediction elements, such as counting methods and description of constant amplitude fatigue behaviour on life prediction are included. The experimental research involved a considerable amount of material tests. The material tests give a detailed image of static strength, constant and variable amplitude fatigue behaviour (both block tests and (variants of) the WISPER spectrum were used), as well as strength degradation for different glass-fibre reinforced laminates. By selecting a single coupon geometry for all material tests on a single material, and the definition and use of standard test conditions, a consistent database was created. The block-test experiments confirm the existence of sequence effects on life, although more data are required to fully quantify them. The residual strength tests show the strength deg"
+   },
+   {
+    "id": "https://openalex.org/W3012624333",
+    "doi": "https://doi.org/10.1021/acs.macromol.9b02526",
+    "title": "Dynamic Curing Agents for Amine-Hardened Epoxy Vitrimers with Short (Re)processing Times",
+    "year": 2020,
+    "cited": 160,
+    "venue": "Macromolecules",
+    "topics": [
+     "Polymer composites and self-healing",
+     "Photopolymerization techniques and applications",
+     "Synthesis and properties of polymers"
+    ],
+    "oa_url": "https://biblio.ugent.be/publication/8666921/file/8755576.pdf",
+    "abstract": "This work presents a straightforward strategy to introduce highly dynamic and adaptable cross-links into common epoxy resin formulations. For this, an oligomeric amine-based curing agent containing vinylogous urethane (VU) bonds was developed. This novel polyfunctional amine curing agent can be used as a drop-in solution for existing epoxy resin technologies, resulting in transparent, rigid, and, at the same time, highly reprocessable catalyst-free epoxy vitrimers. The oligomeric VU-curing agents are prepolymerized via a straightforward condensation reaction between acetoacetates extended with different classical amine monomers and epoxy hardeners. It is found that vitrimer properties can be readily introduced into these epoxy formulations by converting <50 mol % of the hardener’s amine functionalities into dynamic vinylogous urethane bonds. In this way, epoxy vitrimers can be obtained with material properties comparable to ones of the VU-free epoxy formulations. In addition, remarkably short processing times are observed in the absence of any catalyst, and the material displayed very short stress relaxation times and good recyclability, actually representing the most performant VU-based vitrimers so far. Furthermore, a proof of concept for its use in obtaining glass-fiber-reinforced epoxy composites is also presented."
+   },
+   {
+    "id": "https://openalex.org/W2049559499",
+    "doi": "https://doi.org/10.1016/j.actamat.2012.06.055",
+    "title": "Mechanoluminescence in BaSi2O2N2:Eu",
+    "year": 2012,
+    "cited": 157,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Luminescence and Fluorescent Materials",
+     "Electronic and Structural Properties of Oxides"
+    ],
+    "oa_url": "https://linkinghub.elsevier.com/science/article/pii/S1359645412004272",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3084167800",
+    "doi": "https://doi.org/10.1016/j.actamat.2020.09.021",
+    "title": "Effects of cryogenic temperature and grain size on fatigue-crack propagation in the medium-entropy CrCoNi alloy",
+    "year": 2020,
+    "cited": 154,
+    "venue": "Acta Materialia",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://www.osti.gov/biblio/1839249",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2415796975",
+    "doi": "https://doi.org/10.1038/srep14688",
+    "title": "Design and fabrication of a metastable β-type titanium alloy with ultralow elastic modulus and high strength",
+    "year": 2015,
+    "cited": 152,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Titanium Alloys Microstructure and Properties",
+     "Orthopaedic implants and arthroplasty",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep14688.pdf",
+    "abstract": "Titanium and its alloys have become the most attractive implant materials due to their high corrosion resistance, excellent biocompatibility and relatively low elastic modulus. However, the current Ti materials used for implant applications exhibit much higher Young's modulus (50 ~ 120 GPa) than human bone (~30 GPa). This large mismatch in the elastic modulus between implant and human bone can lead to so-called \"stress shielding effect\" and eventual implant failure. Therefore, the development of β-type Ti alloys with modulus comparable to that of human bone has become an ever more pressing subject in the area of advanced biomedical materials. In this study, an attempt was made to produce a bone-compatible metastable β-type Ti alloy. By alloying and thermo-mechanical treatment, a metastable β-type Ti-33Nb-4Sn (wt. %) alloy with ultralow Young's modulus (36 GPa, versus ~30 GPa for human bone) and high ultimate strength (853 MPa) was fabricated. We believe that this method can be applied to developing advanced metastable β-type titanium alloys for implant applications. Also, this approach can shed light on design and development of novel β-type titanium alloys with large elastic limit due to their high strength and low elastic modulus."
+   },
+   {
+    "id": "https://openalex.org/W2344546006",
+    "doi": "https://doi.org/10.1016/j.compositesa.2016.04.014",
+    "title": "Hybrid effects in thin ply carbon/glass unidirectional laminates: Accurate experimental determination and prediction",
+    "year": 2016,
+    "cited": 147,
+    "venue": "Composites Part A Applied Science and Manufacturing",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites",
+     "Epoxy Resin Curing Processes"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359835X16300896/pdf",
+    "abstract": "Experimental results are presented which allow the hybrid effect to be evaluated accurately for thin ply carbon/epoxy–glass/epoxy interlayer hybrid composites. It is shown that there is an enhancement in strain at failure of up to 20% for very thin plies, but no significant effect for thicker plies. Hybrid specimens with thick carbon plies can therefore be used to measure the reference carbon/epoxy failure strain. The latter is significantly higher than the strain from all-carbon specimens in which there is an effect due to stress concentrations at the load introduction. Models are presented which illustrate the mechanisms responsible for the hybrid effect due to the constraint on failure at both the fibre and ply level. These results give a good understanding of how variability in the carbon fibre strengths can translate into hybrid effects in composite laminates."
+   },
+   {
+    "id": "https://openalex.org/W2556552373",
+    "doi": "https://doi.org/10.1016/j.actamat.2016.11.009",
+    "title": "On the role of boron on improving ductility in a new polycrystalline superalloy",
+    "year": 2016,
+    "cited": 146,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "High Temperature Alloys and Creep",
+     "Nuclear Materials and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S135964541630862X/pdf",
+    "abstract": "The role of boron in promoting ductility at high temperature in a prototype nickel-based superalloy designed for industrial gas turbines is studied. Both a boron-containing and boron-free variant are tested in tension at 750 °C, with further in-situ tests carried out using scanning electron microscopy (SEM), to clarify the mechanism of ductility improvement. The improvement in ductility is observed to be greater at the lowest investigated strain rate, where the grain boundary character plays a significant role on the mechanical properties; no ductility improvement was observed at the highest investigated strain rate. The in-situ tests were also performed at 750 °C and revealed directly the greater susceptibility of the grain boundary morphology in the boron-free case to fracture and – in the boron-containing case – the mechanism of ductility enhancement. The findings are supported further by high-resolution electron backscattered diffraction (HR-EBSD) strain mapping which confirms that the distribution of elastic strain and geometrically necessary dislocation (GND) content are influenced markedly by boron addition. The mechanism through which boron indirectly enhances the mechanical properties at elevated temperatures is discussed."
+   },
+   {
+    "id": "https://openalex.org/W2023329372",
+    "doi": "https://doi.org/10.1016/j.matdes.2013.02.075",
+    "title": "Experimental characterization and numerical modeling of micromechanical damage under different stress states",
+    "year": 2013,
+    "cited": 145,
+    "venue": "Materials & Design (1980-2015)",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "High-Velocity Impact and Material Behavior"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0261306913001866",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2765978572",
+    "doi": "https://doi.org/10.1002/mp.12644",
+    "title": "Using 3D printing techniques to create an anthropomorphic thorax phantom for medical imaging purposes",
+    "year": 2017,
+    "cited": 143,
+    "venue": "Medical Physics",
+    "topics": [
+     "Advanced Radiotherapy Techniques",
+     "Anatomy and Medical Technology",
+     "3D Printing in Biomedical Research"
+    ],
+    "oa_url": "https://pure.amsterdamumc.nl/files/157895539/Using-3d-printing-techniques-to-create-an-anthropomorphic-thorax-phantom-for-medical-imaging-purposes.pdf",
+    "abstract": "PURPOSE: Imaging phantoms are widely used for testing and optimization of imaging devices without the need to expose humans to irradiation. However, commercially available phantoms are commonly manufactured in simple, generic forms and sizes and therefore do not resemble the clinical situation for many patients. METHODS: Using 3D printing techniques, we created a life-size phantom based on a clinical CT scan of the thorax from a patient with lung cancer. It was assembled from bony structures printed in gypsum, lung structures consisting of airways, blood vessels >1 mm, and outer lung surface, three lung tumors printed in nylon, and soft tissues represented by silicone (poured into a 3D-printed mold). RESULTS: Kilovoltage x-ray and CT images of the phantom closely resemble those of the real patient in terms of size, shapes, and structures. Surface comparison using 3D models obtained from the phantom and the 3D models used for printing showed mean differences <1 mm for all structures. Tensile tests of the materials used for the phantom show that the phantom is able to endure radiation doses over 24,000 Gy. CONCLUSIONS: It is feasible to create an anthropomorphic thorax phantom using 3D printing and molding techniques. The phantom closely resembles a real patient in terms of spatial accuracy and is currently being used to evaluate x-ray-based imaging quality and positional verification techniques for radiotherapy."
+   },
+   {
+    "id": "https://openalex.org/W2618738563",
+    "doi": "https://doi.org/10.1016/j.ijfatigue.2017.05.026",
+    "title": "Fatigue crack propagation in complex stress fields: Experiments and numerical simulations using the Extended Finite Element Method (XFEM)",
+    "year": 2017,
+    "cited": 143,
+    "venue": "International Journal of Fatigue",
+    "topics": [
+     "Fatigue and fracture mechanics",
+     "Numerical methods in engineering",
+     "Non-Destructive Testing Techniques"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2102809157",
+    "doi": "https://doi.org/10.1016/j.ijsolstr.2005.07.011",
+    "title": "Mechanical behavior of sandwich panels with tetrahedral and Kagome truss cores fabricated from wires",
+    "year": 2005,
+    "cited": 143,
+    "venue": "International Journal of Solids and Structures",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Advanced Materials and Mechanics",
+     "Polymer composites and self-healing"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S002076830500435X/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2660295739",
+    "doi": "https://doi.org/10.1016/j.matdes.2017.06.041",
+    "title": "The influence of laser parameters and scanning strategies on the mechanical properties of a stochastic porous material",
+    "year": 2017,
+    "cited": 142,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S026412751730624X-fx1_lrg.jpg",
+    "abstract": "Additive manufacturing enables architectured porous material design, but 3D-CAD modelling of these materials is prohibitively computationally expensive. This bottleneck can be removed using a line-based representation of porous materials instead, with strut thickness controlled by the supplied laser energy. This study investigated how laser energy and scan strategy affects strut thickness and mechanical strength of porous materials. Specimens were manufactured using varying laser parameters, 3 scan strategies (Contour, Points, Pulsing), 2 porous architectures and 2 materials (Titanium, Stainless Steel), with strut thickness, density, modulus, mechanical strength and build time measured. Struts could be built successfully as low as 15° with a minimum diameter of 0.13 mm. Strut thickness was linearly related to the specific enthalpy delivered by the laser to the melt-pool. For a given stiffness, Titanium specimens built at low power/slow speed had a 10% higher strength than those built at high power/fast speed. The opposite was found in Stainless Steel. As specimen stiffness increased, the Contour Strategy produced samples with the highest strength:stiffness and strength:weight ratio. The Points strategy offered the fastest build time, 20% and 100% faster than the Contour and Pulsing strategies, respectively. This work highlights the importance of optimising build parameters to maximize mechanical performance."
+   },
+   {
+    "id": "https://openalex.org/W2967616294",
+    "doi": "https://doi.org/10.1016/j.msea.2019.138285",
+    "title": "Analysis of fracture toughness properties of wire + arc additive manufactured high strength low alloy structural steel components",
+    "year": 2019,
+    "cited": 136,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0921509319310718-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2572457749",
+    "doi": "https://doi.org/10.1007/s10704-017-0181-7",
+    "title": "Towards understanding the influence of porosity on mechanical and fracture behaviour of quasi-brittle materials: experiments and modelling",
+    "year": 2017,
+    "cited": 135,
+    "venue": "International Journal of Fracture",
+    "topics": [
+     "Rock Mechanics and Modeling",
+     "Drilling and Well Engineering",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007%2Fs10704-017-0181-7.pdf",
+    "abstract": "In this work, porosity-property relationships of quasi-brittle materials are explored through a combined experimental and numerical approach. In the experimental part, hemihyrate gypsum plaster powder ( $$\\hbox {CaSO}_{4}\\cdot 1/2\\hbox {H}_{2}\\hbox {O}$$ ) and expanded spherical polystyrene beads (1.5–2.0 mm dia.) have been mixed to form a model material with controlled additions of porosity. The expanded polystyrene beads represent pores within the bulk due to their light weight and low strength compared with plaster. Varying the addition of infill allows the production of a material with different percentages of porosity: 0, 10, 20, 30 and 31 vol%. The size and location of these pores have been characterised by 3D X-ray computed tomography. Beams of the size of $$20 \\times 20 \\times 150$$ mm were cast and loaded under four-point bending to obtain the mechanical characteristics of each porosity level. The elastic modulus and flexural strength are found to decrease with increased porosity. Fractography studies have been undertaken to identify the role of the pores on the fracture path. Based on the known porosity, a 3D model of each microstructure has been built and the deformation and fracture was computed using a lattice-based multi-scale finite element model. This model predicted similar trends as the experimental results and was able to quantify the fractured sites. The results from this model material experimental data and the lattice model predictions are discussed with respect to the role of porosity on the deformation and fracture of quasi-brittle materials."
+   },
+   {
+    "id": "https://openalex.org/W3048892327",
+    "doi": "https://doi.org/10.1016/j.apenergy.2020.115459",
+    "title": "A compact mechanical power take-off for wave energy converters: Design, analysis, and test verification",
+    "year": 2020,
+    "cited": 131,
+    "venue": "Applied Energy",
+    "topics": [
+     "Wave and Wind Energy Systems",
+     "Fluid Dynamics and Vibration Analysis",
+     "Mechanical stress and fatigue analysis"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1659133",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1140198177",
+    "doi": "https://doi.org/10.1016/j.ejpb.2015.08.007",
+    "title": "A controlled antibiotic release system to prevent orthopedic-implant associated infections: An in vitro study",
+    "year": 2015,
+    "cited": 130,
+    "venue": "European Journal of Pharmaceutics and Biopharmaceutics",
+    "topics": [
+     "Orthopedic Infections and Treatments",
+     "Surgical site infection prevention",
+     "Orthopaedic implants and arthroplasty"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0939641115003392-fx1_lrg.jpg",
+    "abstract": "A new device for local delivery of antibiotics is presented, with potential use as a drug-eluting fixation pin for orthopedic applications. The implant consists of a stainless steel hollow tubular reservoir packed with the desired antibiotic. Release takes place through several orifices previously drilled in the reservoir wall, a process that does not compromise the mechanical properties required for the implant. Depending on the antibiotic chosen and the number of orifices, the release profile can be tailored from a rapid release of the load (ca. 20h) to a combination of rapid initial release and slower, sustained release for a longer period of time (ca. 200h). An excellent bactericidal action is obtained, with 4-log reductions achieved in as little as 2h, and total bacterial eradication in 8h using 6-pinholed implants filled with cefazolin."
+   },
+   {
+    "id": "https://openalex.org/W2742769177",
+    "doi": "https://doi.org/10.1016/j.compositesa.2017.08.008",
+    "title": "Understanding and predicting defect formation in automated fibre placement pre-preg laminates",
+    "year": 2017,
+    "cited": 129,
+    "venue": "Composites Part A Applied Science and Manufacturing",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Mechanical Behavior of Composites",
+     "Material Properties and Processing"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359835X17303081/pdf",
+    "abstract": "Fibre path defects are detrimental to the structural integrity of composite components and need to be minimised through process optimization. This requires understanding of the uncured pre-preg material, which is influenced by multiple process parameters, and sophisticated multi-scale modelling tools. Even though the capabilities of process modelling techniques have been improved over the past decades, the occurrence of localised wrinkles remains challenging to predict. One of the processes known to influence the formation of fibre path defects is the consolidation of laminates manufactured by automated fibre placement. The particular focus of this paper is to understand how out-of-plane wrinkles form during debulking and autoclave curing of laminates with embedded gaps and overlaps between the deposited tapes. Predictions are made using a novel modelling framework and validated against micro-scale geometry characterisation of artificially manufactured samples. The paper demonstrates the model’s ability to predict consolidation defects for the latest generation of toughened pre-pregs."
+   },
+   {
+    "id": "https://openalex.org/W2969899947",
+    "doi": "https://doi.org/10.1038/s41467-019-11520-2",
+    "title": "Integrating tough Antheraea pernyi silk and strong carbon fibres for impact-critical structural composites",
+    "year": 2019,
+    "cited": 128,
+    "venue": "Nature Communications",
+    "topics": [
+     "Silk-based biomaterials and applications",
+     "Mechanical stress and fatigue analysis",
+     "Natural Fiber Reinforced Composites"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-11520-2.pdf",
+    "abstract": "Abstract High stiffness and strength carbon fibres are commonly used to reinforce epoxy-resin composites. While wildAntheraea pernyisilk fibres exhibit high toughness originating from their α-helix/random coil conformation structures and their micro-fibre morphology, their insufficient strength and stiffness hinders them from being used in similar structural composites. In this work, we use interply hybridization of silk and carbon fibres to reinforce epoxy-matrix composites. With increased carbon fibre content, the quasi-static tensile/flexural stiffness and strength increases following the rule of mixtures while more silk fibre acts to increase ductility and impact strength. This results in a composite comprising equal volumes of carbon and silk fibres achieving an impact strength of 98 kJ m−2, which is twice that of purely carbon-fibre reinforced composites (44 kJ m−2). This work shows tough natural silk fibres and strong synthetic fibres can be successfully integrated into epoxy-resin composites for tailored mechanical properties."
+   },
+   {
+    "id": "https://openalex.org/W2186105307",
+    "doi": "https://doi.org/10.1016/j.compositesb.2015.11.032",
+    "title": "In-plane mechanics of a novel zero Poisson's ratio honeycomb core",
+    "year": 2015,
+    "cited": 123,
+    "venue": "Composites Part B Engineering",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Elasticity and Material Modeling",
+     "Polymer composites and self-healing"
+    ],
+    "oa_url": "https://research-information.bris.ac.uk/files/61593092/Scarpa_ZPRnovel_ip_the_revised_manuscript_2_.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2086771257",
+    "doi": "https://doi.org/10.1007/s11661-009-0007-y",
+    "title": "Tensile Deformation and Fracture Mechanism of Bulk Bimodal Ultrafine-Grained Al-Mg Alloy",
+    "year": 2009,
+    "cited": 121,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Metal Forming Simulation Techniques",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11661-009-0007-y.pdf",
+    "abstract": "The tensile fractures of ultrafine-grained (UFG) Al-Mg alloy with a bimodal grain size were investigated at the micro- and macroscale using transmission electron microscopy (TEM), scanning electron microscopy (SEM) equipped with focused ion beam (FIB), and optical microscopy. The nanoscale voids and crack behaviors near the tensile fracture surfaces were revealed in various scale ranges and provided the evidence to determine the underlying tensile deformation and fracture mechanisms associated with the bulk bimodal metals. The bimodal grain structures exhibit unusual deformation and fracture mechanisms similar to ductile-phase toughening of brittle materials. The ductile coarse grains in the UFG matrix effectively impede propagation of microcracks, resulting in enhanced ductility and toughness while retaining high strength. In view of the observations collected, we propose a descriptive model for tensile deformation and fracture of bimodal UFG metals."
+   },
+   {
+    "id": "https://openalex.org/W3034059233",
+    "doi": "https://doi.org/10.1016/j.optlaseng.2020.106208",
+    "title": "Additive manufacturing of NiTi-Ti6Al4V multi-material cellular structures targeting orthopedic implants",
+    "year": 2020,
+    "cited": 120,
+    "venue": "Optics and Lasers in Engineering",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0143816620300993-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2436930007",
+    "doi": "https://doi.org/10.1016/j.prostr.2016.06.395",
+    "title": "Fatigue characterization of Titanium Ti-6Al-4V samples produced by Additive Manufacturing",
+    "year": 2016,
+    "cited": 120,
+    "venue": "Procedia Structural Integrity",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2452321616304140/pdf",
+    "abstract": "Additive Manufacturing offers real opportunities in Thales, since it enables a flexible and cost-effective production of metallic components directly from a 3D digital data model. The manufacture of the parts, layer by layer, allows building more complex geometries by adding new functionalities or reducing the weight. The products of Thales can be more competitive and attractive. Studying and analysing the mechanical properties of such samples is essential. In order to be able to choose the eligible parts, design these parts and ensure their robustness, it is necessary to understand the static and fatigue behaviour of materials built by Additive Manufacturing and, more particularly, the damaging process regarding the microstructure. Following a first study on the static properties of a Titanium alloy used within Thales, a large set of fatigue tests, including both HCF and LCF, have been performed to evaluate the fatigue performances of Ti-6Al-4V samples built by a powder bed fusion process. The fatigue mechanisms and the obtained lifetimes were compared with more conventional processes (casting, wrought). In this paper, the results of these fatigue tests on Titanium (Ti-6Al-4V) samples will be presented. Different parameters have been compared: building orientation, heat treatment (HIP) and post-machining. The fracture mechanisms have also been analysed by performing a correlation between the microstructure analysis (porosity, metallography) and fractographies. It is shown that fatigue performances depend on the selected parameters but these effects are different, depending on the loading domain (HCF, LCF)."
+   },
+   {
+    "id": "https://openalex.org/W2898933293",
+    "doi": "https://doi.org/10.1016/j.msea.2018.10.116",
+    "title": "Microstructure and mechanical properties of friction stir welded AA6092/SiC metal matrix composite",
+    "year": 2018,
+    "cited": 119,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced Welding Techniques Analysis",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509318315077/pdf",
+    "abstract": "There is a need for improved understanding on the effects of friction stir welding (FSW) on the metallurgical and mechanical properties of aluminium matrix composite (AMC). In this study, AA6092/SiC/17.5p-T6 AMC joints were produced by using FSW with varying tool rotation and traverse speeds. The microstructural characterisation by scanning electron microscopy equipped with electron backscattered diffraction (EBSD) system revealed a substantial grain refinement and a homogeneous distribution of reinforcement particles in the nugget zone. The grain size of the nugget zone was greatly influenced by weld pitch, as a key indicator to control the amount of heat input, exposure time and cooling rate. Vickers microhardness proﬁle across the welding zone revealed a signiﬁcant difference in microhardness among the base metal, heat affected zone, thermo-mechanically affected zone and nugget zone. The tensile strength of the cross-weld specimens showed a high joint efficiency of about 75% of the base metal combined with relatively high ductility. Low-cycle fatigue properties were investigated in the axial total strain-amplitude control mode (from 0.3% to 0.5%) with R=εmin/εmax=−1. The results indicate that the fatigue life of the cross-welded joints varies with grain size in the nugget zone and it is lower than that of the base metal. A significant improvement of fatigue life is found to be related to the finer equiaxed grains dominated by high angle grain boundaries in the nugget zone."
+   },
+   {
+    "id": "https://openalex.org/W2155004248",
+    "doi": "https://doi.org/10.1016/j.compositesa.2015.01.019",
+    "title": "Demonstration of pseudo-ductility in unidirectional hybrid composites made of discontinuous carbon/epoxy and continuous glass/epoxy plies",
+    "year": 2015,
+    "cited": 118,
+    "venue": "Composites Part A Applied Science and Manufacturing",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites",
+     "Epoxy Resin Curing Processes"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359835X15000305/pdf",
+    "abstract": "A new, partially discontinuous architecture is proposed to improve the mechanical performance of pseudo-ductile, unidirectional (UD) interlayer carbon/glass hybrid composites. The concept was successfully demonstrated in different laminates with high strength and high modulus carbon and S-glass epoxy UD prepregs. The novel hybrid architecture provided pseudo-ductile tensile stress–strain responses with a linear initial part followed by a wide plateau and a second linear part, all connected by smooth transitions. The best hybrid configuration showed 60% improvement in modulus compared to pure glass, 860 MPa plateau stress and 2% pseudo-ductile strain. The initial modulus, the plateau stress and the overall tensile stress–strain response of each specimen configuration were predicted accurately."
+   },
+   {
+    "id": "https://openalex.org/W2756999113",
+    "doi": "https://doi.org/10.1016/j.ijprt.2017.09.011",
+    "title": "Application of piezoelectric transducer in energy harvesting in pavement",
+    "year": 2017,
+    "cited": 117,
+    "venue": "International Journal of Pavement Research and Technology",
+    "topics": [
+     "Ferroelectric and Piezoelectric Materials",
+     "Acoustic Wave Resonator Technologies",
+     "Geophysics and Sensor Technology"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1996681417300408/pdf",
+    "abstract": "Mechanical energy appears everywhere in the nature, road vibration energy created by the vehicle will not only do damage to pavement structure, but also is difficult to collect. Utilizing electromechanical conversion characteristics of piezoelectric material, gather the vibration energy when vehicle passing on the pavement, and design the piezoelectric transducer package box, for traffic lights along the roads, signs, and so on. Save the cost of laying long distance transmission line, also take full advantage of the loss of energy. Experiments of piezoelectric boxes has been conducted in pavement to prove the effectiveness of this product. This study shows that utilize piezoelectric technology in road energy harvesting is feasible and has a bright future."
+   },
+   {
+    "id": "https://openalex.org/W2914432608",
+    "doi": "https://doi.org/10.1039/c8nr08341j",
+    "title": "Fabrication of highly pressure-sensitive, hydrophobic, and flexible 3D carbon nanofiber networks by electrospinning for human physiological signal monitoring",
+    "year": 2019,
+    "cited": 116,
+    "venue": "Nanoscale",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Muscle activation and electromyography studies"
+    ],
+    "oa_url": "https://doi.org/10.1039/c8nr08341j",
+    "abstract": "Three-dimensional (3D) porous nanostructure materials have promising applications in pressure sensors or other situations. However, the low sensing sensitivity of these materials restricts precise detection of physiological signals, and it is still a challenge to manufacture highly pressure-sensitive materials, which simultaneously possess other versatile properties. Herein, a simple and cost-efficient strategy is proposed to fabricate versatile 3D carbon nanofiber networks (CNFNs) with superior pressure-sensitivity through electrospinning and thermal treatment. The pressure sensitivity of the CNFNs is 1.41 kPa-1, which is much higher than that of similar 3D porous materials. Unlike traditional carbonaceous materials, the CNFNs exhibit excellent flexibility, stable resilience, and super compressibility (>95%), because of the nano-reinforce of Al2O3. Benefiting from the robust mechanical and piezoresistive properties of the CNFNs, a pressure sensor designed with the CNFNs is able to monitor human physiological signals, such as phonation, pulse, respiration and human activities. An arch-array platform for direction identification of tangential forces and an artificial electronic skin bioinspired by human's hairy skin have been ingeniously designed. The CNFNs also present other versatile characteristics as well, including ultralight density, hydrophobicity, low thermal conductivity, and low infrared emissivity. Therefore, the CNFNs have promising potential in a wide range of applications."
+   },
+   {
+    "id": "https://openalex.org/W3033011409",
+    "doi": "https://doi.org/10.1016/j.matdes.2020.108851",
+    "title": "Investigation of surface integrity in laser-assisted machining of nickel based superalloy",
+    "year": 2020,
+    "cited": 115,
+    "venue": "Materials & Design",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127520303853/pdf",
+    "abstract": "While laser-assisted machining can significantly improve the machinability of nickel-based superalloy, the mechanism of surface integrity evolution and its influence on the material functional performance is still not clear. The present study gives a comprehensive investigation on the surface integrity of laser-assisted milling (LAMill) process with an in-depth study of the mechanism of chip formation, microstructural and mechanical alternations, supported by key outcomes from the two constitutive processes, conventional milling (CMill) and single laser scanning (LS). Although the high thermal affected layer in LAMill process has been removed through the cutting chips, a significant bending effect has been found in both the LAMill and LS workpiece. More interestingly, a combined impact of the residual stress from LS and CMill has been found on LAMill workpiece while a lattice evolution has been revealed regarding both the thermal and mechanical influence. Specifically, inadequate fatigue performance on LAMill and LS workpiece has been found due to the high thermal effect in the superficial layer regarding the residual tensile stress distribution and microstructure variation. While LAMill is generally considered as a promising machining method with improved machinability of difficult-to-cut materials, this research shows a poor workpiece functional performance (fatigue) and justifies its application prospect."
+   },
+   {
+    "id": "https://openalex.org/W2166244424",
+    "doi": "https://doi.org/10.1016/j.compscitech.2014.10.022",
+    "title": "Demonstration of pseudo-ductility in unidirectional discontinuous carbon fibre/epoxy prepreg composites",
+    "year": 2014,
+    "cited": 114,
+    "venue": "Composites Science and Technology",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites",
+     "Structural Behavior of Reinforced Concrete"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.compscitech.2014.10.022",
+    "abstract": "The inherent brittleness of continuous unidirectional fibre reinforced composites is a major drawback to their otherwise outstanding mechanical performance. This paper exploits composites with overlapped discontinuities at the ply level to create a significantly non-linear response, due to progressive interlaminar damage under tensile loading. Two distinct configurations were manufactured with the same carbon/epoxy system and tested under quasi-static tension, showing that varying the thickness and length of the overlapping ply blocks resulted in significantly different mechanical responses and failure modes. A previously developed generalised shear-lag model was successfully used to optimise the overlap configuration, and accurately predicted the response in both strength- and toughness-dominated cases. This work demonstrates that unidirectional composites with well-designed discontinuities at the ply level can provide a significantly non-linear response with clear warning before failure, while retaining similar stiffness and up to 50% of the strength of their continuous counterparts."
+   },
+   {
+    "id": "https://openalex.org/W216663967",
+    "doi": "https://doi.org/10.1016/j.compstruct.2015.04.057",
+    "title": "Crush responses of composite cylinder under quasi-static and dynamic loading",
+    "year": 2015,
+    "cited": 111,
+    "venue": "Composite Structures",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Cellular and Composite Structures",
+     "Structural Response to Dynamic Loads"
+    ],
+    "oa_url": "https://pure.qub.ac.uk/en/publications/a1cefcc4-8b4f-458a-bf88-69b989607a92",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2803102736",
+    "doi": "https://doi.org/10.1016/j.addma.2018.05.024",
+    "title": "The influence of laser parameters, scanning strategies and material on the fatigue strength of a stochastic porous structure",
+    "year": 2018,
+    "cited": 110,
+    "venue": "Additive manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2214860418301313/pdf",
+    "abstract": "Additive manufactured (AM) porous materials behave quantitatively and qualitatively differently in fatigue than bulk materials, and the relationships normally used for the fatigue design of continuous bulk materials are not applicable to AM porous materials particularly for low stiffness applications. This study investigated how the manufacturing methods and the material used during powder bed fusion affects the compressive strength and high cycle fatigue strength of a stochastic porous material for a given stiffness. Specimens were manufactured using varying laser parameters, 3 scan strategies (Contour, Points, Pulsing) and 4 materials. The materials investigated were two titanium alloys: commercially pure grade 2 (CP-Ti) and Ti6Al4V ELI, commercially pure tantalum (Ta) and a titanium-tantalum alloy (Ti-30Ta). The trends observed during fatigue testing for monolithic metals and statically for solid and porous AM materials were not always indicative of the high cycle fatigue behaviour of porous AM materials. Unlike their solid counterparts, porous tantalum and the titanium-tantalum alloy had the greatest fatigue strength for a given stiffness, 8% greater than CP-Ti and 19% greater than Ti6Al4V ELI. Optimisation of the laser parameters and scan strategies was found to also increase the fatigue strength for a given stiffness of porous AM materials by 7–8%."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Instron 8800\" OR \"Instron 8872\" OR \"Instron 8874\" OR \"Instron 8801\") AND OPEN_ACCESS:y",

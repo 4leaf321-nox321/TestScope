@@ -37,6 +37,9 @@
 ## 소개 문장 (`series_summary`)
 
 제조사 페이지(2등급)의 응용 문장 중 이 계열 이름 토막이 든 것, 최대 5개. 고르면 계열 `summary` 에 붙는다.
+거기에 **논문이 말하는 쓰임** 한 줄을 더한다 — OpenAlex 가 센 언급 논문 수와 상위 논문들의 주제 분야로
+「논문 187편이 이 기종을 언급 — 주된 분야: 고분자 합성 · 생체재료 · 치과 (OpenAlex, 2026-09)」. 카탈로그에
+분야 칸이 따로 없어(`materials` 는 반입되지 않는 꼬리표) 소개글이 그 자리다. 논문 5편 미만이면 안 세운다.
 
 ## 결정은 어디로 가나
 
@@ -355,8 +358,33 @@ def build_test_items(objects: list[dict], items: dict[str, dict]) -> list[dict]:
     return rows
 
 
+def _openalex_sentence(oid: str) -> tuple[str, str] | None:
+    """(문장, 출처) — 논문 수와 주된 주제 분야. 5편 미만이면 없음."""
+    path = HERE / "papers" / f"{oid}.json"
+    if not path.exists():
+        return None
+    d = json.loads(path.read_text(encoding="utf-8"))
+    oa = d.get("openalex") or {}
+    count = oa.get("count") or 0
+    if count < 5:
+        return None
+    topics: dict[str, int] = {}
+    for w in oa.get("works") or []:
+        for t in (w.get("topics") or [])[:2]:
+            if t:
+                topics[t] = topics.get(t, 0) + 1
+    top = [t for t, _ in sorted(topics.items(), key=lambda kv: -kv[1])[:4]]
+    if not top:
+        return None
+    harvested = d.get("harvested") or ""
+    return (
+        f"논문 {count:,}편이 이 기종을 언급 — 주된 분야: {' · '.join(top)} (OpenAlex, {harvested[:7]})",
+        str(oa.get("query") or ""),
+    )
+
+
 def build_summary(objects: list[dict]) -> list[dict]:
-    """이 문장을 계열 소개에 넣을까 — 제조사 페이지의 응용 문장."""
+    """이 문장을 계열 소개에 넣을까 — 제조사 페이지의 응용 문장 + 논문이 말하는 쓰임."""
     from tools_harvest import APPLY_RE, tokens_of
 
     rows = []
@@ -385,6 +413,15 @@ def build_summary(objects: list[dict]) -> list[dict]:
                     break
             if len(cands) >= 5:
                 break
+        oa = _openalex_sentence(oid)
+        if oa:
+            cands.append(
+                {
+                    "code": "oa",
+                    "label": oa[0],
+                    "sources": ["https://api.openalex.org/works?search=" + oa[1]],
+                }
+            )
         if not cands:
             continue
         row = {

@@ -12,8 +12,54 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"INFICON UL6000 Fab\" OR \"INFICON UL3000 Fab\" OR \"INFICON UL3000 Fab ULTRA\" OR \"INFICON UL1000 Fab\" OR \"INFICON UL1000\" OR \"INFICON Modul1000\"",
-  "count": null,
-  "works": []
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W2891864550",
+    "doi": "https://doi.org/10.1016/j.cja.2018.08.017",
+    "title": "Lightweight structure of a phase-change thermal controller based on lattice cells manufactured by SLM",
+    "year": 2018,
+    "cited": 85,
+    "venue": "Chinese Journal of Aeronautics",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Spacecraft and Cryogenic Technologies",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1000936118302851/pdf",
+    "abstract": "Thermal controllers equipped with phase-change materials are widely used for maintaining the moderate temperatures of various electric devices used in spacecraft. Yet, the structures of amounts of thermal controllers add up to such a large value that restricts the employment of scientific devices due to the limit of rocket capacity. A lightweight structure of phase-change thermal controllers has been one of the main focuses of spacecraft design engineering. In this work, we design a lightweight phase-change thermal controller structure based on lattice cells. The structure is manufactured entirely with AlSi10Mg by direct metal laser melting. The dimensions of the structure are 230 mm × 170 mm × 15 mm, and the mass is 190 g, which is 60% lighter than most traditional structures (500–600 g) with the same dimensions. The 3D-printed structure can reduce the risk of leakage at soldering manufacture by a welding process. Whether the strength of the designed structure is sufficient is determined through mechanical analysis and experiments. Thermal test results show that the thermal capacity of the lattice-based thermal controller is increased by 50% compared to that of traditional controllers with the same volume."
+   },
+   {
+    "id": "https://openalex.org/W7143267952",
+    "doi": null,
+    "title": "Автоматизированная система проверки изделий на герметичность",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Электронный архив ЮУрГУ (South Ural State University)",
+    "topics": [
+     "Military Technology and Strategies",
+     "Legal and Regulatory Analysis",
+     "Linguistic, Cultural, and Literary Studies"
+    ],
+    "oa_url": "http://dspace.susu.ru/xmlui/bitstream/00001.74/66730/1/2025_268_kyshkoia.pdf",
+    "abstract": "ФЕДЕРАЦИИ Федеральное государственное автономное образовательное учреждение высшего образования «Южно-Уральский государственный университет (национальный исследовательский университет)» Политехнический институт Кафедра «Электропривод, мехатроника и электромеханика» Направление подготовки 15.04.06 «Мехатроника и робототехника» ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА ПРОВЕРЕНА Рецензент, Руководитель группы проектирования оборудования ООО «Метрика» _____________________"
+   },
+   {
+    "id": "https://openalex.org/W3137143526",
+    "doi": null,
+    "title": "Влияние параметров режима лазерной сварки на формирование герметичного соединения из алюминиево-магниевых сплавов",
+    "year": 2017,
+    "cited": 0,
+    "venue": "Электронный научный архив ТПУ: Главная страница (Tomsk Polytechnic University)",
+    "topics": [
+     "Military Technology and Strategies",
+     "Legal and Regulatory Analysis",
+     "Linguistic, Cultural, and Literary Studies"
+    ],
+    "oa_url": "http://earchive.tpu.ru/handle/11683/39332",
+    "abstract": "Цель работы – получение герметичного вторичного источника питания из алюминиево-магниевого сплава АМг6 способом импульсной лазерной сварки. В процессе исследования производили импульсную лазерную сварку пластин из алюминиевого сплава АМг6 без покрытия, а также пластин с покрытием никеля различной толщины. Пространственное расположение дефектов в сварном шве определялось с помощью компьютерной томографии. Для оценки влияния режима сварки на глубину проплавления и характер формирования сварного шва в работе проводили макро- и микроисследования. Металлографические исследования выполняли на поперечных микрошлифах, вырезанных из зоны установившегося режима. Изучение макро- и микроструктуры производили с помощью оптической и электронной металлографии."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"INFICON UL6000 Fab\" OR \"INFICON UL3000 Fab\" OR \"INFICON UL3000 Fab ULTRA\" OR \"INFICON UL1000 Fab\" OR \"INFICON UL1000\" OR \"INFICON Modul1000\") AND OPEN_ACCESS:y",

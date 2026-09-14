@@ -12,8 +12,24 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Lansmont P23\" OR \"Lansmont P30\" OR \"Lansmont P40\" OR \"Lansmont P55\" OR \"Lansmont P65\" OR \"Lansmont 81\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W7154629005",
+    "doi": "https://doi.org/10.1088/1361-665x/ae59d7\">https://doi.org/10.1088/1361-665x/ae59d7</a></p",
+    "title": "Tunable Shock and Vibration Damping in Metal Laser Powder Bed Fusion Components via Controlled Post-Print Compaction of Particle Damper Cavities",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Scholar Commons (University of South Carolina)",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Vibration Control and Rheological Fluids",
+     "Bladed Disk Vibration Dynamics"
+    ],
+    "oa_url": "https://scholarcommons.sc.edu/context/emec_facpub/article/1936/viewcontent/Satme_2026_Smart_Mater._Struct._35_045015.pdf",
+    "abstract": "Components manufactured by Laser Powder Bed Fusion (LPBF) can incorporate particle dampers (PDS) by retaining unfused powder within internal pockets, providing inherent vibration suppression without added mass or separate damping components. This study investigates the damping performance of such LPBF-integrated PDs through two complementary approaches: (1) quantifying the effect of post-printing volume compression on energy absorption by mechanically indenting the damper pocket, and (2) evaluating how variations in particle packing density influence the dynamic response under both sinusoidal and transient impulse excitation. Experimental results from shaker and shock testing demonstrate that increased packing density, whether by compression or tighter confinement, reduces damping effectiveness. In shock tests, the PD reduced the quality factor (Q) from 174.8 for the solid beam to 116.7 for the unindented PD, corresponding to an approximate 33% reduction in Q. Indentation of the pocket caused the first-mode modal frequency to shift upward from 416.0 Hz at 0 µm (3.0% below the solid beam) to 428.7 Hz at 111 µm indentation, effectively converging with the solid beam’s frequency. A transfer function model is developed to characterize system dynamics and predict modal behavior. Finite element simulations further confirm that the observed vibration suppression stems from the PD itself rather than changes to the pocket geometry. These findings highlight the potential of LPBF-integrated PDs for tailored vibration control in complex structures, enabling multifunctional design in advanced engineering applications."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Lansmont P23\" OR \"Lansmont P30\" OR \"Lansmont P40\" OR \"Lansmont P55\" OR \"Lansmont P65\" OR \"Lansmont 81\") AND OPEN_ACCESS:y",

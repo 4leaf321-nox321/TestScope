@@ -9,8 +9,24 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Instrument Systems LumiCam 4000B\" OR \"Instrument Systems LumiCam\" OR \"Instrument Systems LumiCam 2400B\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W7113119428",
+    "doi": null,
+    "title": "Determination of Measurement Uncertainty in Mobile Display Measurement Process",
+    "year": 2007,
+    "cited": 0,
+    "venue": "Aaltodoc (Aalto University)",
+    "topics": [
+     "Surface Roughness and Optical Measurements",
+     "Industrial Vision Systems and Defect Detection",
+     "Scientific Measurement and Uncertainty Evaluation"
+    ],
+    "oa_url": "https://aaltodoc.aalto.fi/handle/123456789/1021",
+    "abstract": "Näyttömittauksia tehdään näytön elinkaaren jokaisessa vaiheessa ja mittauksille asetettavat vaatimukset vaihtelevat suuresti mittaustarkoituksen mukaan. Vaihtelevien vaatimusten ansiosta näyttöjen mittaamiseen käytettävien laitteiden kirjo on laaja ja tulokset huonosti vertailtavissa. Jotta tuloksista saataisiin vertailukelpoisia, on mittaustuloksiin liitettävä tieto mittausepävarmuudesta. Tämän työn päällimäisenä tavoitteena oli määrittää mittausepävarmuus Elektrobitin näyttöjenmittausprosessissa. Työ koostuu teoria- ja kokeellisesta osiosta. Teoriaosiossa on esitelty näyttömittauksiin liittyvät perustiedot kuten valon aaltoluonne, valon mittaaminen, näyttötekniikat, mittalaitteet ja mittausmenetelmät. Lisäksi työssä on käyty läpi epävarmuusanalyysin teoriaa ja vertailtu tähän tarkoitukseen kehitettyjä menetelmiä. Työn kokeelliseen osioon menetelmistä on valittu VESA:n FPDMv2 näyttömittastandardi sekä ISO:n Guide to the Expression of Uncertainty in Measurement epävarmuuden määrittämiseen. Kokeellisessa osiossa tutkittiin Elektrobitin näyttölaboratorion mittausprosessissa ilmenevää epävarmuutta sekä luminanssi- että värikoordinaattimittauksissa. Luminanssimittausten epävarmuutta tutkittiin myös eri kirkkautasoilla. Tällä pyrittiin sevittämään laitteiston soveltuvuutta myös tummien kohteiden mittaamiseen. Epävarmuuden lisäksi työssä selvitettiin laboratorion mittalaitteen toistettavuus sekä pidemmän aikavälin vakaus yhden kuukauden aikana. Tieto laitteen toistettavuudesta on tärkeä, sillä VESA asettaa mittalaitteen toistettavuudelle minimiehdot jotka mittalaitteen tulee täyttää, jotta mittaukset olisivat standardin mukaisia. Epävarmuusanalyysi toteutettiin ISO:n oppaan esittelemien menetelmien mukaisesti eristämällä prosessista virhelähteet mahdollisuuksien mukaan ja selvittämällä niille yksilölliset epävarmuudet. Epävarmuudet selvitettiin virhelähteestä riippuen joko tyypin A tai tyypin B tarkastelulla ja yhdistettiin lopuksi yhdistetyksi epävarmuudeksi, joka laajennettiin kertoimella kaksi. Lisäksi tummien kohteiden luminanssin epävarmuuden avulla selvitettiin kontrastimittauksille oma mittausepävarmuus. Tuloksena tutkimuksesta saatiin epävarmuuksiksi luminanssille 2,81 %, värikoordinaateille u', v' 0,0003+ ucal,u' ja 0,0007+ ucal,v', jossa ucal on kalibroinnista johtuva, kohteen aallonpituudesta riippuvainen epävarmuustekijä. Kontrastimittauksien epävarmuuksiksi tutkituilla testinäytöillä saatiin 3,54 % ja 14,3 %. Lisäksi mittausprosessin pitkän aikavälin käyttäytymisen havaittiin vastaavan toistettavuusehdon asettamia raja-arvoja eikä prosessissa siltä osin ollen havaittu puutteita. Myös saatu toistettavuus 0,05 % täyttää VESA:n standardin asettamat ehdot."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Instrument Systems LumiCam 4000B\" OR \"Instrument Systems LumiCam\" OR \"Instrument Systems LumiCam 2400B\") AND OPEN_ACCESS:y",

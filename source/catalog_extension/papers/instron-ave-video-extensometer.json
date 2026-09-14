@@ -9,8 +9,641 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Instron AVE 2\" OR \"Instron AVE\" OR \"Instron AVE3\"",
-  "count": null,
-  "works": []
+  "count": 43,
+  "works": [
+   {
+    "id": "https://openalex.org/W4210286811",
+    "doi": "https://doi.org/10.3390/met12020212",
+    "title": "Effect of Interpass Temperature on Wire Arc Additive Manufacturing Using High-Strength Metal-Cored Wire",
+    "year": 2022,
+    "cited": 83,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/2/212/pdf?version=1643004446",
+    "abstract": "Wire arc additive manufacturing (WAAM) is suitable to fabricate large components because of its high deposition rate. In this study, a metal-cored low-alloy high-strength welding filler metal was used as feedstock. Single wall structures were prepared using the WAAM process with different interpass temperatures (150 °C, 350 °C, and 600 °C). No obvious microstructure change was observed when the alloy was deposited with the interpass temperatures of 150 °C and 350 °C. Electron backscattered diffraction analysis shows that that no significant texture is developed in the samples. The yield strength tends to decrease with the increase in interpass temperature; however, the influence is insignificant. The highest ultimate tensile strength is found at the interpass temperature of 350 °C. A higher interpass temperature can lead to a higher deposition rate because of the shorter waiting time for the cooling of the earlier deposited layer. It was found that the upper limit interpass temperature for WAAM of the low-alloy high-strength steel is 350 °C. When a higher interpass temperature of 600 °C was used, collapse of the deposited materials was observed."
+   },
+   {
+    "id": "https://openalex.org/W4393085714",
+    "doi": "https://doi.org/10.3390/jcs8040115",
+    "title": "Effects of Infill Density and Pattern on the Tensile Mechanical Behavior of 3D-Printed Glycolyzed Polyethylene Terephthalate Reinforced with Carbon-Fiber Composites by the FDM Process",
+    "year": 2024,
+    "cited": 51,
+    "venue": "Journal of Composites Science",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-477X/8/4/115/pdf?version=1711098325",
+    "abstract": "The impacts of infill patterns and densities on the mechanical characteristics of items created by material extrusion additive manufacturing systems were investigated in this study. It is crucial to comprehend how these variables impact a printed object’s mechanical characteristics. This work examined two infill patterns and four densities of 3D-printed polyethylene terephthalate reinforced with carbon-fiber specimens for their tensile characteristics. Rectilinear and honeycomb infill designs were compared at 100%, while each had the following three infill densities: 20%, 50%, and 75%. As predicted, the findings revealed that as the infill densities increased, all analyzed infill patterns’ tensile strengths and Young’s moduli also increased. The design with a 75% honeycomb and 100% infill density has the highest Young’s modulus and tensile strength. The honeycomb was the ideal infill pattern, with 75% and 100% densities, providing significant strength and stiffness."
+   },
+   {
+    "id": "https://openalex.org/W4399273014",
+    "doi": "https://doi.org/10.1002/adfm.202403918",
+    "title": "Fiber‐Based Miniature Strain Sensor with Fast Response and Low Hysteresis",
+    "year": 2024,
+    "cited": 34,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Fiber Optic Sensors",
+     "Tactile and Sensory Interactions"
+    ],
+    "oa_url": "https://doi.org/10.1002/adfm.202403918",
+    "abstract": "Flexible and stretchable strain sensors are in high demand in sports performance monitoring, structural health monitoring, and biomedical applications. However, existing stretchable soft sensors, primarily based on soft polymer materials, often suffer from drawbacks, including high hysteresis, low durability, and delayed response. To overcome these limitations, we introduced a stretchable miniature fiber sensor comprised of a stretchable core tightly coiled with parallel conductive wires. This fiber sensor is flexible and stretchable while exhibiting low hysteresis, a remarkable theoretical resolution of 0.015%, a response time of less than 30 milliseconds, and excellent stability after extensive cycling tests of over 16,000 cycles. To understand and predict the capacitive sensor response of the proposed sensor, an analytical expression was derived and proved to have good agreements with both experimental results and numerical simulation. The potential of the strain sensor as a wearable device is demonstrated by embedding it into belts, gloves, and knee protectors. Additionally, the sensor could extend its applications beyond wearable devices, as demonstrated by its integration into bladder and life safety rope monitoring systems. We envision our sensor can find applications in the field of sports performance evaluations, health care monitoring, and structural safety assessments."
+   },
+   {
+    "id": "https://openalex.org/W4391348663",
+    "doi": "https://doi.org/10.3390/met14020170",
+    "title": "Effect of Interface Wettability on Additively Manufactured Metal Matrix Composites: A Case Study of 316L-Y2O3 Oxide Dispersion-Strengthened Steel",
+    "year": 2024,
+    "cited": 22,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/14/2/170/pdf?version=1706609732",
+    "abstract": "Laser powder bed fusion (LPBF) is a fusion-based additive manufacturing process. It has the advantage of allowing the manufacturing of metal matrix composites. This advantage arises from its small melting zone and rapid cooling rate, which minimize the risk of reinforcement segregation. In this work, 0.3 wt% and 1.0 wt% Y2O3 nanoparticles were added to 316L to fabricate oxide dispersion-strengthened (ODS) steels using the LPBF process. Notably, Y2O3 agglomerates were identified in the LPBF-fabricated 316L ODS steels, without inducing grain refinement, while the impact on tensile strength of Y2O3 addition proved negligible. Tensile elongation was decreased due to the poor bonding of the Y2O3 agglomerations to the matrix. The crucial role of the wettability of the reinforcement and the matrix in facilitating grain refinement and strength enhancement is discussed. The poor wettability of the Y2O3 particles and 316L emerged as the primary cause for Y2O3 agglomeration. This finding highlights the importance of addressing wettability issues to optimize the manufacturing process and enhance the overall performance of LPBF-fabricated metal matrix composites."
+   },
+   {
+    "id": "https://openalex.org/W1608866900",
+    "doi": "https://doi.org/10.3221/igf-esis.24.09",
+    "title": "Research of the effectiveness of mechanical testing methods with analysis of features of destructions and temperature effects",
+    "year": 2013,
+    "cited": 21,
+    "venue": "Frattura ed Integrità Strutturale",
+    "topics": [
+     "Material Properties and Applications",
+     "Structural mechanics and materials",
+     "Material Properties and Failure Mechanisms"
+    ],
+    "oa_url": "https://www.fracturae.com/index.php/fis/article/download/191/161",
+    "abstract": "In this paper is carried out the comparative analysis of effectiveness of test methods of determination of stiffness and strength properties of highly filled unidirectional fiberglass (Direct \"E\" roving 0.7 - orthophthalic polyester resin 0.3) via tensile testing along the reinforcement and three-point bending testing at several bases. The necessity of deviation from standard procedures is substantiated. Deformation and failure features of the material under quasi-static loading, as well as at low and high temperatures, are shown."
+   },
+   {
+    "id": "https://openalex.org/W4389612205",
+    "doi": "https://doi.org/10.1007/s40870-023-00400-y",
+    "title": "Experimental and Numerical Analysis of Aluminum-Polyethylene Composite Structure Subjected to Tension and Perforation Under Dynamic Loading for a Wide Range of Temperatures",
+    "year": 2023,
+    "cited": 12,
+    "venue": "Journal of Dynamic Behavior of Materials",
+    "topics": [
+     "High-Velocity Impact and Material Behavior",
+     "Structural Response to Dynamic Loads",
+     "Energetic Materials and Combustion"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40870-023-00400-y.pdf",
+    "abstract": "Abstract The aim of this work consists of identifying the material behavior of Alucobond composite structures subjected to ballistic impact. The composite is made of Aluminum alloy AW5005 and LDPE (low-density polyethylene). The mechanical properties of these materials are described in term of strain rate and temperature dependencies. Quasi-static tensile and compression tests for Alucobond are performed at four different strain rates, i.e. 0.0001 0.001, 0.01, and 0.03 $${s}^{-1}$$ s - 1 . Moreover, in dynamic regime the used strain rate ranges in compression and perforation tests are ( $${10}^{4}$$ 10 4 $${s}^{-1}$$ s - 1 ≤ $$\\dot{\\varepsilon }$$ ε ˙ ≤ $${10}^{5}$$ 10 5 $${s}^{-1}$$ s - 1 ) at temperatures ranging from room temperature 20 °C to 100 °C. Various parameters influence the behavior of the Alucobond structure under impact: the geometry and the mechanical properties of the projectile, the initial impact velocity, and the thermomechanical behavior of the target. Numerous quasi-static and dynamic original test results (traction and perforation over a wide range of strain rates at room temperature and high temperature) are presented. Numerical simulations, particularly using the finite element (FE) method with the ABAQUS explicit code, are also effective supplements for theoretical and more detailed experimental investigations, which were carried out to analyze the dynamic behavior of impacted structures."
+   },
+   {
+    "id": "https://openalex.org/W4402378537",
+    "doi": "https://doi.org/10.3390/polym16172534",
+    "title": "Prediction Accuracy of Hyperelastic Material Models for Rubber Bumper under Compressive Load",
+    "year": 2024,
+    "cited": 11,
+    "venue": "Polymers",
+    "topics": [
+     "Elasticity and Material Modeling",
+     "Mechanical Engineering and Vibrations Research",
+     "Polymer Nanocomposites and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/16/17/2534/pdf",
+    "abstract": "Different hyperelastic material models (Mooney-Rivlin, Yeoh, Gent, Arruda-Boyce and Ogden) are able to estimate Treloar's test data series containing uniaxial and biaxial tension and pure shear stress-strain characteristics of rubber. If the rubber behaviour is only determined for the specific load of the product, which, in the case of rubber bumpers, is the compression, the time needed for the laboratory test can be significantly decreased. The stress-strain characteristics of the uniaxial compression test of rubber samples were used to fit hyperelastic material models. Laboratory and numerical tests of a rubber bumper with a given compound and complex geometry were used to determine the accuracy of the material models. Designing rubber products requires special consideration of the numerical discretization process due to the nonlinear behaviours (material nonlinearity, large deformation, connections, etc.). Modelling considerations were presented for the finite element analysis of the rubber bumper. The results showed that if only uniaxial compression test data are available for the curve fitting of the material model, the Yeoh model performs the best in predicting the rubber product material response under compressive load and complex strain state."
+   },
+   {
+    "id": "https://openalex.org/W4387378250",
+    "doi": "https://doi.org/10.1016/j.compositesb.2023.111036",
+    "title": "Experimental and numerical investigation of the intra-ply shear behaviour of unidirectional prepreg forming through picture-frame test",
+    "year": 2023,
+    "cited": 10,
+    "venue": "Composites Part B Engineering",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Metal Forming Simulation Techniques",
+     "Mechanical Engineering and Vibrations Research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359836823005395",
+    "abstract": "Intra-ply shear behaviour of uncured composite plies strongly influences component quality in advanced manufacturing processes such as prepreg compression moulding (PCM) and double diaphragm forming (DDF). This study investigates a straightforward method to characterise the intra-ply shear behaviour of a carbon fibre/epoxy UD prepreg using a specially designed picture-frame rig, by which specimens can be tested without involving inter-ply shear as would normally be observed in cross-plied UD prepreg stacks. Applying the proposed method, it is seen that specimens tend to suffer transverse buckling/wrinkling and local fibre-splitting at large shear strains. 3D digital image correlation (DIC) and a non-contacting video extensometer were utilised to determine the shear strain distribution throughout the test and particularly to determine the onset of out-of-plane deformations such that the trellis shear deformation portion of the test can be identified. The obtained shear stress-strain results show a temperature- and rate-dependent viscoelastic response, with the greatest influence from the temperature. The obtained in-plane shear properties were applied in the numerical simulation of the picture frame test based on a hypoelastic law. Although the predicted reaction forces are greater than experimental results at high strains due several factors including local fibre-splitting, a good agreement overall between physical test data and simulation results is seen for all test conditions. Finally, it is demonstrated that major advantages of the proposed test with respect to the conventional picture-frame test are that only load-extension data are required from the trellis shear experiment to calculate accurately the intra-ply shear stress-strain relationship and that the deformation rate can be easily controlled."
+   },
+   {
+    "id": "https://openalex.org/W3203640380",
+    "doi": "https://doi.org/10.14295/bds.2021.v24i4.2626",
+    "title": "Fracture Resistance of Primary Molars Restored with Endocrowns Versus Zirconia Crowns (An in Vitro Study)",
+    "year": 2021,
+    "cited": 9,
+    "venue": "Brazilian Dental Science",
+    "topics": [
+     "Dental Trauma and Treatments",
+     "Dental materials and restorations",
+     "Dental Radiography and Imaging"
+    ],
+    "oa_url": "https://ojs.ict.unesp.br/index.php/cob/article/download/2626/4405",
+    "abstract": "Objective: This study aimed to assess the fracture resistance of primary molars restored with endocrowns compared to prefabricated zirconia crowns. Methods: Twelve sound, defect-free primary second molars were selected and divided into two groups: group I included 6 molars restored with zirconia crowns, while group II included 6 teeth restored with endocrowns. For both groups access cavity was prepared for the teeth to open pulp chamber. Fracture resistance of both groups was tested using a universal testing machine. Results: Zirconia crown showed statistically significantly higher mean fracture resistance than Endocrown (P-value = 0.001, Effect size = 2.72). Conclusion: Pulpotomized primary molars restored with Zirconia crowns showed significantly higher mean fracture resistance compared to primary molars restored with endocrowns, meanwhile both restorations have shown higher mean fracture resistance than the maximum biting force in children. Keywords Composite resins; Endocrown; Fracture strength; Zirconia crowns."
+   },
+   {
+    "id": "https://openalex.org/W4386640932",
+    "doi": "https://doi.org/10.1002/cepa.2441",
+    "title": "Rotating bending fatigue behaviour and quasi‐static tensile properties of Wire Arc Additively Manufactured 308L stainless steel",
+    "year": 2023,
+    "cited": 7,
+    "venue": "ce/papers",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cepa.2441",
+    "abstract": "Abstract Wire Arc Additive Manufacturing (WAAM) is a direct energy deposition method used to manufacture steel components by using an electric arc as a heat source to melt a metal wire and deposit it layer by layer. In this study, monotonic tensile tests, standardized Charpy impact tests, and rotating bending fatigue tests are executed to characterize the mechanical properties of WAAM 308L stainless steel using specimens extracted from additively manufactured plates. In particular, monotonic tensile properties are investigated in three directions: that is 0, 90, and 45 degrees with respect to the plane of deposition, whereas the fatigue strength is quantified for one direction only, i.e. 90 degrees since this is deemed to be the weakest. The mechanical characterization highlights that WAAM 308L SS shows an anisotropic behaviour, an enhanced strain‐rate sensitivity, and an overall reduced yield strength as compared to the base material 308L. The anisotropic material behaviour is explained by the microstructure morphology since the austenite grains form anisotropic columnar zones due to an uneven heat profile during production. During the fatigue tests, the relatively high strain rate sensitivity causes susceptibility to self‐heating at relatively low loading frequencies, i.e. below 100Hz."
+   },
+   {
+    "id": "https://openalex.org/W3174603173",
+    "doi": "https://doi.org/10.3390/pr9071110",
+    "title": "Design and Optimization of a Curved-Crease-Folding Process Applied to a Light Metallic Structure",
+    "year": 2021,
+    "cited": 7,
+    "venue": "Processes",
+    "topics": [
+     "Architecture and Computational Design",
+     "Architecture and Art History Studies",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/2227-9717/9/7/1110/pdf?version=1624618798",
+    "abstract": "Presently, the realization of complex, unconventional designs using efficient modalities is possible due to an increasing interest in interdisciplinary approaches: materials science, mathematics, IT, architecture, etc. Computerized techniques, among which the algorithmic/generative design is the most advanced one, that are associated with the individualized production methods are used for finding solutions for modern spatial forms with an unconventional spatial geometric shape, which are generically called “free-forms”. This work presents the design, realization and testing of a thin-walled metallic structure proposed as a light structural unit. An integrated research approach was proposed that utilized an algorithmic/digital design applied to the curved-crease-folding method with the study (at different length scales) of the metallic material behaviour after folding. An original method was proposed for the digital design and simulations. The specific mechanical behaviour of the metallic material in the elastic–plastic regime was used in this case to improve the structural performances; mechanical and structural tests were realized to analyse the behaviour of the entire structure. The results are useful for enhancing the accuracy of the digital design, the structural simulation programs and the fabrication methods."
+   },
+   {
+    "id": "https://openalex.org/W2792509355",
+    "doi": "https://doi.org/10.3390/ma11020266",
+    "title": "The Influence of the Heat-Affected Zone Mechanical Properties on the Behaviour of the Welding in Transverse Plate-to-Tube Joints",
+    "year": 2018,
+    "cited": 7,
+    "venue": "Materials",
+    "topics": [
+     "Structural Load-Bearing Analysis",
+     "Laser and Thermal Forming Techniques",
+     "Fire effects on concrete materials"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/11/2/266/pdf?version=1518166067",
+    "abstract": "Eurocode 3 establishes the component method to analytically characterize the structural joints between beam and columns. When one of the members involved in the joint is a hollow section (i.e., a tube) there is a lack of information for the specific components present in the joint. There are two different ways to bridge the gap: experimental testing on the actual beam column joints involving tubular sections; or numerical modelization, typically by means of finite element analysis. For this second option, it is necessary to know the actual mechanical properties of the material. As long as the joint implies a welding process, there is a concern related to how the mechanical properties in the heat-affected zone (HAZ) influence the behavior of the joint. In this work, some coupons were extracted from the HAZ of the beam-column joint. The coupons were tested and the results were implemented in the numerical model of the joint, in an attempt to bring it closer to the experimental results of the tested joints."
+   },
+   {
+    "id": "https://openalex.org/W4399933930",
+    "doi": "https://doi.org/10.1088/2631-6331/ad5b4a",
+    "title": "Effect of immediate curing at elevated temperatures on the tensile and interfacial properties of carbon fiber-epoxy composites",
+    "year": 2024,
+    "cited": 6,
+    "venue": "Functional Composites and Structures",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Material Properties and Applications",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2631-6331/ad5b4a/pdf",
+    "abstract": "Abstract Elevated temperature conditions known to improve curing from the onset and during the process of immediate curing are not available in the field, which can hinder the mechanical performance of these strengthening systems. In this study, mechanical testing and material characterization were conducted to identify the effects of subjecting nanomodified epoxy and fiber-reinforced nanomodified epoxy composites to room temperature (RT) (30 °C) and elevated temperature (110 °C) from the onset of curing. Static tensile testing and interfacial adhesion tests were conducted to evaluate the mechanical performance. Differential scanning calorimetry (DSC) and thermogravimetric analysis (TGA) were performed to determine curing characteristics to inform on the immediate curing of nanomodified resins cured under the two temperature conditions. Scanning electron microscopy was performed to identify Carbon nanotube (CNT) dispersion characteristics. Overall, due to the incorporation of CNTs in epoxy, RT curing results in upto 62% increase in strain at failure. By supplying additional energy during immediate curing with elevated temperatures, a 51% increase in strength and 42% increase in Youngs Modulus can be observed in the nanomodified epoxy. In CFRP-epoxy composites, due to the incorporation of CNTs in the epoxy, RT curing results in upto 27% increase in strain at failure. By supplying additional energy during immediate curing with elevated temperatures, upto 133% increase in strain at failure is observed and upto 17% increase in strength is observed. CNTs incorporated in CFRP-epoxy composites demonstrated upto 50% increase in interfacial adhesion whereas supplying additional energy for their immediate curing with elevated temperatures, upto 130% increase in interfacial adhesion was observed. TGA and DSC results supported the mechanical observations and show a need for immediate curing when CNTs are used in epoxy matrices."
+   },
+   {
+    "id": "https://openalex.org/W4388142011",
+    "doi": "https://doi.org/10.3390/batteries9110541",
+    "title": "Mechanical and Optical Characterization of Lithium-Ion Battery Cell Components/Cross-Ply Lamination Effect",
+    "year": 2023,
+    "cited": 6,
+    "venue": "Batteries",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2313-0105/9/11/541/pdf?version=1698833966",
+    "abstract": "Excessive mechanical loading of lithium-ion batteries can impair performance and safety. Their ability to resist loads depends upon the properties of the materials they are made from and how they are constructed and loaded. Here, prismatic lithium-ion battery cell components were mechanically and optically characterized to examine details of material morphology, construction, and mechanical loading response. Tensile tests were conducted on the cell case enclosure, anodes, cathodes, and separators. Compression tests on stacks of anodes, cathodes, separators, and jellyrolls were made from them. Substantially differing behaviors were observed amongst all components tested. An optical examination of the anodes, cathodes, and separators revealed homogeneities, anisotropies, and defects. Substantial texturing was present parallel to the winding direction. When highly compressed, jellyrolls develop well-defined V-shaped cracks aligned parallel to the texturing. Like many laminates, altering the lay-up construction affects jellyroll mechanical performance. To demonstrate, a cross-ply jellyroll was fabricated by rotating every other complete component set (cathode/separator/anode/separator), reassembling, and compressing. A distinctly different fracture pattern and increased compressive strength were observed."
+   },
+   {
+    "id": "https://openalex.org/W2575049090",
+    "doi": "https://doi.org/10.25560/40127",
+    "title": "The dynamic response of blast-loaded monolithic and composite plated structures",
+    "year": 2013,
+    "cited": 4,
+    "venue": "Spiral (Imperial College London)",
+    "topics": [
+     "Structural Response to Dynamic Loads",
+     "Structural Analysis of Composite Materials",
+     "Structural Analysis and Optimization"
+    ],
+    "oa_url": "http://hdl.handle.net/10044/1/40127",
+    "abstract": "The scope of the thesis is to investigate the dynamic behaviour of plated structures when subjected to blast loading, focusing in particular on localised blast loading. Two main categories of plated structures are investigated, viz. monolithic plates and composite plates. The thesis includes a literature survey of existing works on the subject, which concludes that there is no available method of describing a localised blast load arising from a given charge size, geometry and stand-off distance from target. The review also investigates analytical methods for predicting displacement of plates subjected to blast, assuming rigid-plastic behaviour and the concept of using dimensionless parameters to predict such displacements. The survey also reviews material models for composites and damage mechanisms for these materials. On the basis of these findings, the thesis proposes a systematic method of mathematically describing the spatial and temporal variations of a localised blast load from a known set of threat parameters (explosive type, quantity, size and stand-off distance). The method is validated by comparison of numerical results using the proposed loading function implemented in a finite element analysis software with experimental results of blast loads on steel plates. This leads to the first study, which focuses on the performance of monolithic plates subjected to a blast load of the form described above. Existing formulations for uniform loading found in the literature are extended to consider this new form of loading. Various plate thicknesses are investigated (thick, moderately thick and thin) and it is found that good correlation is achieved with numerical results, even when the blast load is simplified into an impulsive one. The performance of composite plates under blast loading is also investigated, focusing primarily on a new high-performance composite material (namely, Dyneema HB26). Material characterisation and blast loading tests were carried out and these were used to develop a material model for Dyneema, which is validated using finite element simulations. Its performance is numerically compared with mild and armour (Armox 370T Class 1) steel plates of equal areal density and it is found that Dyneema offers an improvement over mild steel, but armour steel plates lead to the least permanent midpoint deflection. Using dimensionless parameters, a simple design guideline is provided to estimate the deflection for a given plate geometry made of a monolithic or composite material subjected to a specific blast load. The use of this guideline was also illustrated by considering various threats and using the proposed method to recommend various plate thicknesses required for different material systems to meet a specified damage limitation. Furthermore, a numerical-analytical method is proposed to predict the occurrence of Mode I delamination (or separation between the plies) in the early-time response of laminated composite materials, by "
+   },
+   {
+    "id": "https://openalex.org/W4409818559",
+    "doi": "https://doi.org/10.1002/pc.29877",
+    "title": "Improved adhesion between glass fiber and PAAm / SA hydrogel via a synergy strategy",
+    "year": 2025,
+    "cited": 3,
+    "venue": "Polymer Composites",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Polymer Surface Interaction Studies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pc.29877",
+    "abstract": "Abstract Fiber‐reinforced hydrogels remain mechanically inferior to natural cartilage, primarily due to underexplored design issues at the matrix‐fiber interfaces. In this study, a synergy strategy combining chemical bonding, topology of connection, and energy dissipation is used to improve the interfacial properties of glass fiber and calcium crosslinking polyacrylamide/sodium alginate (PAAm/SA) double‐network hydrogels. Using γ‐(methacryloyloxy)propyltrimethoxysilane (TMSPMA) as a functional modifier is explored to enhance the chemical bonding between the glass fibers and hydrogels. Interfacial shear strength is quantified through pull‐out tests, revealing a significant improvement after chemical modification. Specifically, TMSPMA‐treated samples exhibit an interfacial shear strength of 28.8 ± 2.3 MPa, compared to 5.5 ± 0.4 MPa for untreated samples. The study further examines the influence of energy dissipation via ionic crosslinking, showing that Ca 2+ crosslinked hydrogels achieved superior interfacial strength (28.8 ± 2.3 MPa), which is 3–4 times higher than that of Ba 2+ and Fe 3+ crosslinked counterparts. Additionally, introducing 2–6 twists to the fiber bundle reduces interfacial strength by ~1.4–1.8‐fold, showing that topology area is also essential to the hydrogel adhesion. These findings contribute to the understanding of interfacial properties between fiber and hydrogel and hold potential for advancing load‐bearing biological substitute designs. Highlights Glass fiber is modified by TMSPMA to increase chemical bonding 2 wt% TMSPMA‐treated samples exhibit a superior interfacial shear strength of 28.8 MPa Higher concentration TMSPMA leads to filled gaps in glass fiber bundles. Ca 2+ crosslinked hydrogels achieved superior interfacial properties compared to Ba 2+ and Fe 3+ Hydrogel adhesion relies on chemical bonds, topology, area, and energy dissipation."
+   },
+   {
+    "id": "https://openalex.org/W2978584422",
+    "doi": null,
+    "title": "Predicting Mechanical Properties of Polymer Films after Extrusion Coating using Supervised Machine Learning Algorithms",
+    "year": 2019,
+    "cited": 3,
+    "venue": "Lund University Publications Student Papers (Lund University)",
+    "topics": [
+     "Rheology and Fluid Dynamics Studies",
+     "Injection Molding Process and Properties",
+     "Material Properties and Processing"
+    ],
+    "oa_url": "http://lup.lub.lu.se/student-papers/record/8979024",
+    "abstract": "Tetra Pak is a world leader in providing innovative packaging solutions and processing technologies and has been so for a very long time. It is well – known that the material used for packaging purposes gets subjected to high temperature and pressure during folding and filling which could compromise the integrity of the material. The polymer layer in the packaging material acts as a barrier, and thus a break in the polymer layer will influence the barrier properties. The process by which the polymer layer is applied on to the paperboard is called extrusion coating. The barrier properties of the polymer are affected by the process conditions in the extruder. It is therefore important to understand how the processing affects the mechanical properties of the polymer and hence the barrier properties. In this thesis, polyethylene films are created by varying the process settings, line speed and melt temperature, in the extruder. The mechanical properties are measured by the use of tensile tests and the effect from processing on the mechanical properties are investigated. A model for predicting the mechanical properties of polymer films is built using the collected data. The primary tool for data processing used in this thesis is Python, and the predictive model is built using machine learning algorithms. In the data, there is clear and visible effect from line speed on the mechanical properties but effect from melt temperature is not as strong. The predictive capacity of the simplest model based on linear regression has been found to predict with highest accuracy. Predictive models built on random forest regression has also been found to predict fairly well. The complex models are overall sensitive and require more data than was collected in this study to provide reliable predictions."
+   },
+   {
+    "id": "https://openalex.org/W2310539899",
+    "doi": "https://doi.org/10.83056/mmu.32435871",
+    "title": "A new generation of high stiffness rotational moulding materials",
+    "year": 2026,
+    "cited": 2,
+    "venue": "e-space (Manchester Metropolitan University)",
+    "topics": [
+     "Polymer Foaming and Composites",
+     "Polymer Nanocomposites and Properties",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://e-space.mmu.ac.uk/579563/1/A%20New%20Generation%20of%20High%20Stiffness%20Rotational%20Moulding%20Materials%20-%20Hashim%20Bhabha.pdf",
+    "abstract": "Polyethylene (PE), particularly linear medium density PE (LMDPE), is the most widely used thermoplastic in the rotational moulding (RM or rotomoulding) industry, possessing a balance between melt flow characteristics and mechanical properties best suited to the RM process relative to alternative thermoplastics. Reliance of the RM industry on LMDPE limits the application envelope for manufacturers due to the inherently low modulus of the material; manufacturers overcome this low modulus by increasing the wall thicknesses of their products which is costly and energy intensive. The addition of filler particles to PE as a method of modulus enhancement was considered a feasible alternative to increasing the wall thickness. The resulting composite material could down gauge part thickness and potentially expand the application envelope of RM. Phase 1 of this study observed the behaviour of RM grade PE’s with the introduction of filler particles in order to double the modulus (namely garnet, sand, cenospheres or fly-ash and the latter two combined). The PE/filler composites were mixed by dry blending or melt compounding, moulded and mechanically tested in tensile, flexural and Charpy impact mode. The aim of doubling the tensile modulus of rotomoulding grade PE was achieved by the melt compounded, rotomoulded PE/fly-ash composites. The introduction of maleic anhydride grafted linear low density polyethylene (MA-g-LLDPE) coupling agent also increased the modulus and tensile yield stress of LMDPE with the addition of fly-ash. However, the beneficial melt flow rate and impact toughness of PE decreased significantly with the addition of fly-ash. The latter was especially true for rotomoulded samples. As the RM industry typically uses finite element analysis (FEA) to numerically approximate the stress or deflection of load-bearing parts, phase 2 of this study focused upon developing numerical material properties for FEA of the new PE/fly-ash composites. Physical measurements from compression tests on rotomoulded PE/fly-ash safety steps were close to FEA approximations (confirming the practical value of the numerical materials data), except in the case of the unfilled and highest filled PE samples. The significant differences observed between physical measurements and FEA were probably due to complex factors such as the non-linear behaviour of PE and the variation in wall thickness of rotomoulded parts, highlighting the importance of properly understanding the finite element method (FEM) for RM."
+   },
+   {
+    "id": "https://openalex.org/W4406739473",
+    "doi": "https://doi.org/10.3390/jcs9020054",
+    "title": "Determining the Elastic Constants and Thickness of the Interphase in Fiberglass Plastic Composites from Micromechanical and Macromechanical Tests",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Journal of Composites Science",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Composite Material Mechanics",
+     "Natural Fiber Reinforced Composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-477X/9/2/54/pdf?version=1737649542",
+    "abstract": "The aim of this paper is to describe a methodology for determining the elastic constants and thickness of the interphase between matrix and fiber in fiberglass plastic composites from macro- and micromechanical testing. Macromechanical testing is tension of unidirectional fiberglass plastics along and across the fiber direction. Micromechanical testing is tension of glass fibers and instrumented microindentation into the matrix and the fiberglass. The interphase thickness is determined by dynamic force microscopy on thin sections without a height difference. The measured interphase thickness is 621 nm. Based on the interphase thickness, a mesomechanical finite element model of a fiberglass monolayer is constructed. As a result, it is found that the elastic modulus and Poisson’s ratio are 12.7 GPa, 0.07. It is established that the elastic properties of the interphase differ significantly from those of the matrix. The paper also explores the possibility of determining the interphase thickness through computational experiments. It turns out that by knowing the actual elastic properties of the matrix and the fiber, as well as the fiberglass monolayer, it is feasible to calculate the interphase and its elastic properties with acceptable engineering accuracy. The deviation of the calculated interphase thickness from the experimentally measured one is 6%."
+   },
+   {
+    "id": "https://openalex.org/W3107708880",
+    "doi": "https://doi.org/10.1088/1757-899x/953/1/012095",
+    "title": "Influence of the reinforcement scheme on mechanical properties of 2d, 3d polymer composites",
+    "year": 2020,
+    "cited": 2,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "topics": [
+     "Material Properties and Applications",
+     "Mechanical Behavior of Composites",
+     "Epoxy Resin Curing Processes"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/953/1/012095/pdf",
+    "abstract": "This work provides the results of complex study of mechanical properties of the composition materials based on carbon fiber 3D-preforms and epoxy binder (carbon fiber A-49 by AKSA + epoxy resin T26 by INUMiT CJSC), as well as the analysis of benefits, merits and demerits from the viewpoint of complex analysis of mechanical properties and structural process stability. The paper presents the values of the main mechanical characteristics for all types of materials in proportions for all types of tests. A comprehensive analysis of the mechanical behavior, patterns of damage accumulation and destruction of composite samples was carried out using additional registration means: the method of recording acoustic emission signals, the method of digital image correlation and an infrared thermal imaging system."
+   },
+   {
+    "id": "https://openalex.org/W2247333397",
+    "doi": null,
+    "title": "Etude expérimentale et modélisation du comportement de polymères thermoplastiques renforcés : polypropylène chargé de fibres de chanvre",
+    "year": 2011,
+    "cited": 2,
+    "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
+    "topics": [
+     "Structural Behavior of Reinforced Concrete",
+     "Innovative concrete reinforcement materials",
+     "Natural Fiber Reinforced Composites"
+    ],
+    "oa_url": "https://hal.science/hal-03422480/document",
+    "abstract": "Ces travaux portent sur l'étude du comportement et de l'endommagement d'un thermoplastique, polypropylène, chargé de fibres courtes de chanvre. Des essais de traction à différentes vitesses de déformations (10-4 à 10-1s-1), températures (0°C à 60°C) et taux de chanvres (5% à 20%) ont été effectués. L'endommagement est observé par thermographie IR et tomographie post-mortem. Une modèle éléments finis, basé sur une caractérisation fine 3D de la microstructure du composite à partir de coupes tomographiques, approche le comportement macroscopique du composite."
+   },
+   {
+    "id": "https://openalex.org/W7160069426",
+    "doi": "https://doi.org/10.1038/s41598-026-51935-8",
+    "title": "Compressive behavior of additively manufactured circular-core chiral lattice structures with CNT-reinforced PMMA: a multi-scale analysis",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Cellular and Composite Structures",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-026-51935-8_reference.pdf",
+    "abstract": "This study investigates the compressive behavior of additively manufactured chiral lattice panels fabricated from PMMA/CNT nanocomposites employing a multi-scale numerical-experimental framework. The research introduces an enhanced chiral topology featuring circular cores and utilizes a three-phase representative volume element (RVE) model-comprising the matrix, CNTs, and interphase-to determine equivalent mechanical properties. RVE analysis revealed that 0.5 wt% CNT reinforcement offers optimal performance, enhancing Young's modulus and yield stress by up to 70% and 85%, respectively. Incorporating these homogenized properties into finite element (FE) models indicated that the circular-core topology yields a 71.5% increase in peak load and superior plateau stability compared to conventional configurations. Experimental validation confirmed these trends; the enhanced structure reinforced with 0.5 wt% CNT sustained a peak force of 677 N and absorbed energy exceeding 7.7 J, representing a 137% and 54% improvement, respectively over the pristine specimen. Parametric analysis further identified a ligament thickness of 3 mm and a core radius of 3 mm as geometric optima for maximizing load-bearing capacity. The findings demonstrate that the synergistic integration of the novel chiral geometry and nanoscale reinforcement facilitates uniform stress distribution and mitigates local buckling. Consequently, the proposed multi‑scale RVE‑FE framework emerges as a robust design tool for advancing next‑generation lightweight lattice structures aimed at energy absorption and structural protection."
+   },
+   {
+    "id": "https://openalex.org/W4413095788",
+    "doi": "https://doi.org/10.3390/polym17152074",
+    "title": "Rate-Dependent Tensile Behavior of Glass Fiber Composites Reinforced with Quadriaxial Fabrics, with or Without Coremat Xi3 Interlayer, for Marine Applications",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Polymers",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites",
+     "Structural Analysis and Optimization"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/17/15/2074/pdf?version=1753940904",
+    "abstract": "This study is among the first to characterize the tensile response of composites with quadriaxial glass fiber fabrics designed for marine structural applications. Four composite configurations were fabricated at laboratory scale, combining two matrix types (unsaturated polyester resin and epoxy resin) and the presence or absence of a Coremat Xi3 middle layer. Tensile tests were conducted at four test rates (10 mm/min, 200 mm/min, 500 mm/min, and 1000 mm/min), ranging from quasi-static to moderately dynamic conditions. Tests were conducted using the Instron 5982 universal testing machine (from Laboratory for Advanced Materials and Tribology, INCAS Bucharest, Romania). The specimens have a rectangular cross section, in agreement with SR EN ISO 527-4:2023. For strain measurements, an Instron advanced video extensometer (AVE) was used. Key mechanical parameters, such as maximum force, tensile strength, Young's modulus, strain at break, and energy absorption, were extracted and analyzed. Results show that the polyester-based composite without a mat interlayer displayed the best overall performance, with the highest ultimate strength (~280 MPa), significant energy absorption (~106 J), and a consistent increase in ductility with increasing test rate. In contrast, the epoxy composite with Coremat Xi3 exhibited lower stiffness and strength, but higher strain and energy absorption at higher test rates, indicating a progressive failure behavior. These findings enhance the understanding of the tensile response of composites made of quadriaxial glass fiber fabric and provide valuable design data for structural components in marine environments, where both strength and energy absorption are essential. These insights support producers and end-users of non-crimp fabrics in making experimentally based selections of a composite, technological strategies, and design optimization."
+   },
+   {
+    "id": "https://openalex.org/W4389509146",
+    "doi": "https://doi.org/10.21791/ijems.2023.032",
+    "title": "Effect of the Flow Curve Determination on the Thinning of Drawn Parts",
+    "year": 2023,
+    "cited": 1,
+    "venue": "International Journal of Engineering and Management Sciences",
+    "topics": [
+     "Metallurgy and Material Forming",
+     "Metal Forming Simulation Techniques"
+    ],
+    "oa_url": "https://ojs.lib.unideb.hu/IJEMS/article/download/12300/11580",
+    "abstract": "This study presents the results of finite element simulations based on different variations of the flow curve of DC04 automotive thin sheet. The aim of our research is to investigate how different flow curve equations affect the variation of sheet thickness in cup drawing tests. In order to exclude other influencing factors in the experiment, both the sheet material and the geometric properties of the specimen, as well as the external state factors were considered to be the same in all cases. The finite element simulations were performed using Simufact 2021.1 software. Our results shows that there are no significant differences in wall thicknesses until we reach the zone of double necking, where essential differences are observed."
+   },
+   {
+    "id": "https://openalex.org/W4292615699",
+    "doi": "https://doi.org/10.1088/1757-899x/1246/1/012031",
+    "title": "Analysis of the strength difference effect on tailor welded blanks’ springback",
+    "year": 2022,
+    "cited": 1,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Advanced Welding Techniques Analysis",
+     "Non-Destructive Testing Techniques"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/1246/1/012031/pdf",
+    "abstract": "Abstract Tailor welded blanks (TWBs) are becoming widespread in the automotive industry due to their advantages, such as the possibility of weight reduction or the material usage optimising, resulting from the application. However, their main disadvantage is that the construction design and the simulation of the mechanical processes (like weld line movement, sheet springback, etc) are more complex. Predicting the mechanical response can only be done by accurately estimating the weld properties, which greatly increases the material testing requirements. Moreover, it often does not coincide with the matter of the field of material forming. In this study we focus on the simplified description of the springback of TWBs, to reveal which parameters have the primary influence on this process. Three kinds of DP steels with different strengths were welded to a mild steel grade one by one. Using these pairs we have varied both the strength difference between each sides and the average strength of the blanks, too. Uniaxial tensile tests were performed for the mechanical characterisation of each material, as well as right-angled bends perpendicular to the weld line were carried out to monitor the springback tendency of the samples. Our results show that a transition zone develops near to the weld line, independently from the strength difference between the TWB’s components. This zone is well-defined by linear functions, in which, the parameters are consistent with the physical content of the springback phenomenon."
+   },
+   {
+    "id": "https://openalex.org/W584894778",
+    "doi": null,
+    "title": "Étude du comportement dynamique et modélisation thermoviscoplastique de nuances d'acier soumises à un impact balistique",
+    "year": 2013,
+    "cited": 1,
+    "venue": "Publications Et Travaux Academiques de Lorraine (Universite de Lorraine)",
+    "topics": [
+     "High-Velocity Impact and Material Behavior",
+     "Electromagnetic Launch and Propulsion Technology",
+     "Structural Response to Dynamic Loads"
+    ],
+    "oa_url": "http://docnum.univ-lorraine.fr/public/DDOC_T_2013_0272_KPENYIGBA.pdf",
+    "abstract": "Il s'agit donc de répondre aux besoins scientifiques de l'industrie en matière d'utilisation des matériaux métalliques et de conception de structures sous sollicitations dynamiques.Ceci notamment pour une meilleure maîtrise des lois de comportement des matériaux constitutifs, de la rupture et de l'absorption d'énergie pour la protection des personnes et des structures contre des catastrophes naturelles ou pour la sécurité passive, par exemple dans le secteur des transports.Les problèmes de perforation sont caractérisés par la complexité des processus thermomécaniques qui ont lieu au sein du matériau cible pendant le chargement.Il est donc nécessaire de bien comprendre la relation entre le comportement thermoviscoplastique du matériau, l'absorption d'énergie et les mécanismes de rupture pour des chargements de type impact et perforation.Ce n'est pas toujours facile, car cela nécessite le développement de moyens expérimentaux et numériques adaptés.De nombreuses études expérimentales, analytiques et numériques sont aujourd'hui disponibles dans la littérature internationale.Des travaux sur la pénétration et la perforation des structures par des projectiles ont été menés par des chercheurs comme Goldsmith [I.3], Corbett et al. [I.4], Backman et al. [I.5].L'influence de l'épaisseur de la plaque métallique [I.6], de la vitesse d'impact [I.7, I.8] et de la géométrie du projectile [I.5-I.7]sur le processus de perforation a notamment été examinée.La problématique aujourd'hui réside dans le couplage des aspects expérimentaux, analytiques et numériques afin de fournir une analyse détaillée du comportement des structures sous sollicitations dynamiques rapides.Ceci notamment pour une meilleure maîtrise de l'absorption d'énergie pour la protection des personnes et des structures contre les catastrophes naturelles ou pour la sécurité passive.Ce travail de thèse s'inscrit donc dans cette problématique: élaborer une méthode complète d'analyse du comportement des matériaux allant des essais de caractérisation aux essais de validation en passant par des modèles analytiques.Sur le plan expérimental, il s'agit d'améliorer les dispositifs existants afin de pouvoir mesurer les paramètres matériaux nécessaires à l'étude du comportement dynamique des matériaux.Un modèle numérique exploitant les lois de comportements préalablement identifiées (en se basant sur les essais de caractérisation) sera développé capable de prédire les essais de validation comme l'impact balistique.D'un point de vue rédactionnel, la structure de ce mémoire s'articule autour de quatre grands chapitres.Le premier chapitre sera consacré à une étude bibliographique complète : l'accent sera mis principalement sur le comportement sous impact des matériaux métalliques.Nous étudierons l'influence des caractéristiques du projectile (forme, rigidité, densité, vitesse ...) sur la réponse mécanique de la cible.Nous examinerons également l'effet des propriétés de la cible sur le processus de perforation.Nous p"
+   },
+   {
+    "id": "https://openalex.org/W10664134",
+    "doi": null,
+    "title": "Étude du comportement mécanique et de l'endommagement de composites thermoplastiques renforcés de fibres courtes de chanvre: approche expérimentale et modélisation",
+    "year": 2013,
+    "cited": 1,
+    "venue": "Publications Et Travaux Academiques de Lorraine (Universite de Lorraine)",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "Innovations in Concrete and Construction Materials",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "http://docnum.univ-lorraine.fr/public/DDOC_T_2013_0107_GEHRING.pdf",
+    "abstract": "An de limiter l'utilisation des ressources fossiles, les composites à bres naturelles semblent être une alternative prometteuse aux composites à bres synthétiques.Ainsi cette thèse se propose d'étudier un composite thermoplastique renforcé par des bres courtes d'origine végétale (polypropylène/chanvre). En eet, la température de mise en forme du PP permet l'incorporation de renforts naturels.De plus la culture du chanvre est relativement aisée en Lorraine.Ces composites ont été élaborés via compoundage -moulage par injection.Ce travail s'appuie sur une démarche de caractérisation du comportement thermomécanique de ces composites dans le domaine quasi-statique en prêtant particulièrement attention à l'inuence de la vitesse de déformation, de la fraction volumique de chanvre et de la température.L'endommagement a été mis en évidence par des essais de type charge-décharge-maintien et par un suivi in-situ par thermographie infrarouge.Cette étude a montré une rupture quasifragile par ssuration de la matrice quelque soit le taux de renfort.Une étude statistique complète de la microstructure en terme de distribution d'orientation et de répartition spatiale des bres a été conduite par tomographie aux rayons X et un algorithme de génération automatique d'un modèle éléments-nis intégrant les distributions d'orientation et de répartition ainsi que les facteurs géométriques des bres (L, ) a été développé.Cet algorithme permet de rendre compte, dans la modélisation, de l'interaction complexe entre les bres supposées élastiques isotropes.Enn, la modélisation par éléments-nis du comportement du composite PPC est entreprise.Le comportement élastique avec endommagement progressif de la matrice est obtenu suivant un formalisme micromécanique dans lequel celle-ci est considérée comme un solide élastique isotrope aaibli par des microssures de forme penny-shapped.Ce comportement est implémenté sur abaqus via une routine Fortran.Cette démarche ore de bonnes capacités de prédiction et ouvre des perspectives d'optimisation de ce matériau."
+   },
+   {
+    "id": "https://openalex.org/W7171627508",
+    "doi": "https://doi.org/10.32865/2346/108984",
+    "title": "Design of a Tunable Mechanical Counterpressure Spacesuit Sleeve Using Multi-Material Additive Manufacturing",
+    "year": 2026,
+    "cited": 0,
+    "venue": null,
+    "topics": [],
+    "oa_url": "https://ttu-ir.tdl.org/bitstreams/ff39df50-2605-46e3-b314-5b1c696ec044/download",
+    "abstract": "Conventional extravehicular mobility units (EMUs) rely on gas-pressurized enclosures to maintain the internal pressure required for astronaut life support in vacuum environments. While this approach ensures adequate protection, the pressurized suit structure significantly restricts natural body movement by resisting joint motion and significantly increasing the energy expenditure required for physical tasks. Mechanical Counterpressure (MCP) spacesuits offer an alternative approach by applying direct mechanical pressure to the body using elastic materials to achieve the design reference pressure of 29.6 kPa (4.3 psi). This concept has the potential to significantly reduce suit mass and improve mobility; however, maintaining uniform pressure across complex anatomical contours and enabling practical donning and doffing of high-tension garments remain major engineering challenges. This study explores the integration of custom multi-material 3D-printed parts integrated into textile substrates to create a tunable MCP sleeve prototype. A 3D body-scan–derived digital model was used to generate a form-fitting design with accurate anatomical alignment. Elastomeric and rigid polymers were co-deposited using Stratasys PolyJet printing (~18–30 µm Z-layer resolution, 300 dpi XY) to tailor local stiffness. Three configurations with varying material thickness were fabricated and evaluated to assess pressure distribution and compression performance. This approach demonstrates the potential for localized pressure control and provides preliminary insights that can support future advances in spacesuit design for planetary exploration and extended-duration missions."
+   },
+   {
+    "id": "https://openalex.org/W7160520647",
+    "doi": "https://doi.org/10.1016/j.ijfatigue.2026.109723",
+    "title": "A novel notch mechanics-based fatigue assessment of additively manufactured lattice structures from aluminium A205",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Fatigue",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Cellular and Composite Structures",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.ijfatigue.2026.109723",
+    "abstract": "This investigation applies non-conventional extensions of the linear elastic fracture mechanics, known as notch mechanics, for estimating the fatigue limit of Additively Manufactured (AMed) lattice structures. Being based on local stress field analysis, notch mechanics allows the estimation of the fatigue limit of lattice structures by considering them as defective and notched materials and by using a fatigue design tool (the so-called Atzori–Lazzarin–Meneghetti, ALM, diagram) valid for multiaxial local stresses. Theoretical estimations are validated against experimental data coming from two batches of AMed lightweight A205 aluminium alloy lattice structures having Body Centered Cubic (BCC) and diamond Unit Cells (UCs), respectively. The theoretical fatigue limits estimated by using the multiaxial ALM diagram shows errors below 15% compared to the experimental results."
+   },
+   {
+    "id": "https://openalex.org/W7154466295",
+    "doi": "https://doi.org/10.4028/p-ew8pjl",
+    "title": "The Interaction of n- and r-Values and Total Elongation in Forming Limit Curves’ Theories",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Diffusion and defect data, solid state data. Part B, Solid state phenomena/Solid state phenomena",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "High-Velocity Impact and Material Behavior"
+    ],
+    "oa_url": "https://www.scientific.net/SSP.388.47.pdf",
+    "abstract": "Forming limit curve (FLC) is the most common used manifestation of the failure criterion today in the sheet metal forming industry. All commercial simulation software uses this concept to evaluate the failure strains and to detect the most dangerous section(s) of the workpiece. The laboratory determination of the FLC is standardized. However, because experimental measurement is cumbersome, theoretical calculations of FLCs using mechanical properties from well-defined test conditions are still interesting. Such calculation concepts are already developed by different authors. This paper presents calculated FLCs using the models of Abspoel et al., Stören and Rice and Swift. All the equations include tensile tests data that have been measured physically at room temperature, with quasi-static strain rates. Calculated results of DC04 cold rolled steel sheet with relatively high plastic anisotropy coefficient was compared to a nearly isotropic DP800 high strength steel. Based on the results it is observed that r -value influences the shape of the left-hand side of the FLC as well as the plane strain point significantly, for the DC04 sheet. These effects are less pronounced for the DP800 material, which has lower r -value. At the same time, n -value and total elongation raise or lower the curves, generally. These observations are briefly explained by function analyses using fictitious r -values in the calculations."
+   },
+   {
+    "id": "https://openalex.org/W7162428775",
+    "doi": "https://doi.org/10.17804/2410-9908.2026.2.006-018",
+    "title": "Studying the effect of print orientation on the Poisson ratio of additively manufactured biocompatible polymer samples",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Diagnostics Resource and Mechanics of materials and structures",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Additive Manufacturing Materials and Processes",
+     "Injection Molding Process and Properties"
+    ],
+    "oa_url": "http://dream-journal.org/DREAM_Issue_2_2026_Vindokurov_I.V._et_al._006_018.pdf",
+    "abstract": "The paper studies the effect of filament orientation in Fused Deposition Modeling (FDM) additive manufacturing on the Poisson ratio and mechanical properties of biocompatible polymers, namely polylactide, polyamide 12, polyetheretherketone, polysulfone, and polyetherimide. Tensile tests are carried out at two orientations of the layers (deposited at 0 and 90° relative to the direction of loading). The Poisson ratio is determined by two contactless methods, namely digital image correlation and video extensometer measurements, which allows the reproducibility and measurement accuracy to be evaluated. Additionally, the values of ultimate strength, elastic modulus, and relative elongation after rupture have been obtained. It is shown that the 0° orientation provides higher strength characteristics compared to the 90° one, which is due to the directed load perception along the printed filaments. At the same time, the influence of orientation on the Poisson ratio is found to be insignificant, with differences recorded only in the third decimal place. The maximum relative deviation between the results of the two measurement methods does not exceed 1.59 %, and it is less than 0.6 % for most materials. The data obtained refine the reference values of the Poisson ratio for additively manufactured polymers, and they can be used in numerical simulation of the stress-strain state of medical devices manufactured by FDM."
+   },
+   {
+    "id": "https://openalex.org/W4416867182",
+    "doi": "https://doi.org/10.13111/2066-8201.2025.17.4.3",
+    "title": "Comparative Behavior under Tensile and Three-Point Bending Tests for a Composite with Quadriaxial Fabrics and Epoxy Resin",
+    "year": 2025,
+    "cited": 0,
+    "venue": "INCAS BULLETIN",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Natural Fiber Reinforced Composites",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://doi.org/10.13111/2066-8201.2025.17.4.3",
+    "abstract": "This paper continues recent research of the authors, comparing the experimental results for two test types (tensile and three-point bending), obtained for the same composite. The composite was obtained from 8 layers of quadriaxial glass fiber fabric (with 1200 g/m² and (supplied by Castro Composites Spain) and a bicomponent epoxy resin SikaBiresin® CR82 (supplied by Sika Group Austria). Specimens measured 9 mm × 29 mm × 280 mm, with a bending span of 100 mm and a tensile gauge length of 150 mm. Tests were conducted at rates of 10 mm/min, 200 mm/min, 500 mm/min, and 1000 mm/min. Tests were carried out on Instron 2736-004 universal testing machine. Results show that flexural strength exceeded tensile strength by ~20–26% across all test rates, consistent with the Weibull effect. However, the absorbed energy in tension was more than six times higher than in bending, particularly at higher test rates. Stress–strain curves revealed three characteristic zones: (i) linear elastic, (ii) nonlinear up to maximum stress, and (iii) post-peak failure. Overall, the results demonstrate that mechanical characterization of composites requires both tensile and bending tests. Using only one test type may lead to incomplete or misleading evaluations of structural behavior. For engineering applications, the choice of test should reflect the dominant loading scenario in service. The study confirms that tensile tests capture the composite’s capacity for deformation and energy absorption, while bending highlights outer-layer fragility. Both test types are therefore required for reliable structural characterization and design."
+   },
+   {
+    "id": "https://openalex.org/W4413944476",
+    "doi": "https://doi.org/10.47749/t/unicamp.2025.1501691",
+    "title": "Estudo da processabilidade da liga alsi10mg atomizada a gás e impressa por fusão de leito de pó",
+    "year": 2025,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Electrodeposition and Electroless Coatings"
+    ],
+    "oa_url": "https://doi.org/10.47749/t/unicamp.2025.1501691",
+    "abstract": "UFSCar, Dr. Piter e equipe, pela parceria e pela busca por fomentar a inovação tecnológica no nosso país. RESUMOA manufatura aditiva de ligas de alumínio, especialmente através da técnica de fusão de leito de pó a laser, tem se demonstrado uma tecnologia inovadora.Ela permite uma maior liberdade de fabricação de peças com geometrias complexas mantendo uma alta qualidade superficial, possibilitando a resolução de desafios de redução de peso em componentes para os setores automotivo e aeronáutico.A matéria-prima e os parâmetros de processamento são aspectos fundamentais quando se pensa na repetibilidade e confiabilidade de componentes fabricados por essa tecnologia, sendo responsáveis não apenas pelo acabamento da peça, mas também pelas suas propriedades mecânicas finais.Esse trabalho enquadra-se nesse cenário e teve como objetivo avaliar a influência do tamanho da partícula de um pó atomizado a gás nas propriedades mecânicas de corpos de prova fabricados pela técnica de fusão em leito de pó com feixe de laser.O pó experimental produzido no trabalho apresentou uma grande quantidade de partículas esféricas menores que 20 m que influenciaram o processo de fabricação por fusão de leito de pó a laser.Os resultados obtidos de energia básica de fluidez de 112 J/mm 3 , densidade aparente de 1,19 g/cm 3 e coesão de 0,758 kPa indicaram que esse pó poderia apresentar problemas de escoamento e, por isso, foi feita uma etapa de definição de parâmetros de processamento para a impressora, onde foi escolhida uma potência de 400W e velocidade de 1250 mm/s para minimizar possíveis efeitos indesejáveis durante o processamento.Foram produzidas peças com alta densificação (99%) e dureza em torno de 125 HV, além de resultados mecânicos que indicaram uma pequena redução no limite de resistência a tração acompanhado de um aumento no limite de escoamento em comparação com os resultados disponíveis no datasheet do pó comercial.Foram empregados pós da liga AlSi10Mg, sendo um fornecido pela empresa EOS e outro atomizado e fornecido por empresa parceira."
+   },
+   {
+    "id": "https://openalex.org/W4408543531",
+    "doi": "https://doi.org/10.21741/9781644903551-27",
+    "title": "The effect of height to diameter ratio at stack compression tests on biaxial yield stress",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Materials research proceedings",
+    "topics": [
+     "Engineering Structural Analysis Methods",
+     "Metal Forming Simulation Techniques",
+     "High-Velocity Impact and Material Behavior"
+    ],
+    "oa_url": "https://mrforum.com/wp-content/uploads/open_access/9781644903551/27.pdf",
+    "abstract": "Abstract. This study presents experimental stack compression test results of samples with different height-to-diameter (aspect) ratios for a simplified calculation of the friction- and the stress state contribution on the flow stress compared to the case of simple tension. Standard uniaxial tension tests formed the basis of the investigations as reference curves, and the stack compression tests were carried out on the same material, on commercially available DC04 steel sheet. The aim was to experimentally observe and possibly separate the anisotropic, pure material behavior from the friction-forced reaction of the material to determine the equi-biaxial yield stress for proper yield surface election. Our results show that with proper lubrication conditions, the stress increase caused by friction can be kept at low value for high aspect ratios, as well as with the comparison of the high and low aspect ratios, the value of the Coulomb friction coefficient, and thus the friction contribution on the flow stress can be calculated. After a stress compensation based on the obtained friction coefficient, the calculated stress ratios led to the monitoring of the goodness of different yield surfaces."
+   },
+   {
+    "id": "https://openalex.org/W4387904300",
+    "doi": "https://doi.org/10.17073/0021-3438-2023-5-34-46",
+    "title": "Microstructure and properties of the GEWZ522K casting magnesium alloy based on the Mg–Gd–Nd–Y–Zn–Zr system",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Izvestiya Non-Ferrous Metallurgy",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Aluminum Alloys Composites Properties",
+     "Hydrogen Storage and Materials"
+    ],
+    "oa_url": "https://cvmet.misis.ru/jour/article/download/1528/682",
+    "abstract": "The article discusses the solidification and phase composition of the (wt.%) Mg–4.8Gd–2.1Nd–1.6Y–0.4Zn–0.6Zr (GEWZ522K) casting alloy. It is demonstrated that in the as-cast state, the alloy structure comprises primary zirconium particles, dendrites of the magnesium solid solution (αMg), and eutectic intermetallic phases located between dendritic branches. Following solution heat treatment at t = 530±5 °C, the alloy transitions into a single-phase state and can be significantly strengthened through artificial aging after quenching. It is recommended to apply alloy aging at t = 250 °C for 8–10 h or at t = 200 °C for 15–18 h. This approach leads to the maximum strengthening of the alloy, with the best mechanical properties achieved for the alloy aged at t = 250 °C. Regardless of the aging method used, the ultimate tensile strength (UTS) of the samples surpasses 300 MPa, which significantly exceeds that of commercial casting alloys according to GOST 2856-79. The measured corrosion rate for the GEWZ522K alloy is 7.5±0.4 mm/year, that slightly higher than that for the less alloyed commercial alloy ML10 (approximately 2.5 mm/year) tested under similar conditions. Furthermore, the alloy was subjected to tests for ignition resistance when in contact with air. It was observed that with continuous airflow over the specimen’s surface, ignition centers appear at t = 625 °C due to the breakdown of the oxide film, causing the alloy to nearly completely melt. Therefore, the GEWZ522K alloy can be employed as a high-strength casting alloy. However, during the operation of cast parts, particular attention must be paid to safeguarding the surface of these parts against corrosion."
+   },
+   {
+    "id": "https://openalex.org/W4292615743",
+    "doi": "https://doi.org/10.1088/1757-899x/1246/1/012032",
+    "title": "The plastic strain and the rolling direction dependence of the traditional and the biaxial r-values",
+    "year": 2022,
+    "cited": 0,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "Fatigue and fracture mechanics"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/1246/1/012032/pdf",
+    "abstract": "Abstract The Lankford number (i.e. r-value) has long been used as a key parameter in the science of sheet metal forming, for the mathematical description of plasticity. The traditional way of thinking is that this value is a constant in a given direction, and the definition is recommended at Ag-1 % plastic strain. In this study we focused on the evolution tendency of r-value in the function of the plastic strain, in different loading directions. Two automotive thin sheets, DC04 and DP1000 were examined by uniaxial tensile tests and compression tests to investigate both the traditional and the biaxial r-values. The axial and the transverse deformations during the tensile tests were applied under continuous process monitoring with a touchless video extensometer. The compression tests were carried out intermittently, i.e. the tests were stopped after given forces, and the thickness as well as the diameters were measured parallel and perpendicular to the rolling direction. Our results show that the evolution of the traditional r-value is clearly shown for both materials, and its value is given here by linear and polynomial functions. Besides, the changing characteristic of the r-value as a function of deformation does not show a trend with respect to the rolling direction. The biaxial r-value can be well-defined by compression tests despite the small thickness, and the results are less dependent on friction."
+   },
+   {
+    "id": "https://openalex.org/W4315851985",
+    "doi": "https://doi.org/10.3850/978-981-18-6021-8_or-01-0269.html",
+    "title": "Laser Powder Bed Fusion of Grain Refined 316L Stainless Steel through Ti in-situ Alloying",
+    "year": 2022,
+    "cited": 0,
+    "venue": "Asian Society for Precision Engineering and Nanotechnology (ASPEN 2022)",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "http://rpsonline.com.sg/proceedings/aspen2022/pdf/OR-01-0269.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4386147906",
+    "doi": "https://doi.org/10.47833/2022.2.eng.004",
+    "title": "A Lankford-szám megváltozásának vizsgálata a képlékeny alakváltozás és a hengerlési irány függvényében",
+    "year": 2022,
+    "cited": 0,
+    "venue": "Gradus",
+    "topics": [
+     "Machine Learning and Data Classification"
+    ],
+    "oa_url": "https://doi.org/10.47833/2022.2.eng.004",
+    "abstract": "Cikkünk a korszerű lemezalakító technológiák egyik fontos elméleti (de a szimulációs programokon keresztül közvetlen gyakorlati hasznosulással is bíró) kérdéséről, az anyag képlékeny viselkedését leíró változók közül kiemelten az r-érték kutatásáról számol be. Régóta ismert tény, hogy a lemezek alakításánál kulcsszerepet játszik az elvékonyodási hajlamra utaló Lankford-féle szám (másnéven r-érték), így annak vizsgálata napjainkban is erőteljesen zajlik a világ különböző kutatóhelyein. Munkánk során ezen anyagfüggő paraméternek a változását vizsgáltuk a képlékeny alakváltozás és a hengerlési iránnyal bezárt szög függvényében, és fejlődésének matematikai leírását is megadtuk két, a járműiparban elterjedten használatos lemezanyagra. Eredményeinkből az látható, hogy az r-érték konstanssal avagy függvényként történő definiálása, főleg a nagy alakváltozásokat eredményező technológiáknál, még számos további kérdést vet fel."
+   },
+   {
+    "id": "https://openalex.org/W4393360442",
+    "doi": null,
+    "title": "Effects of polymer ageing on formation and fate of microplastics in sea water",
+    "year": 2020,
+    "cited": 0,
+    "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://theses.hal.science/tel-03589679v1/file/These-2020-SML-Chimie_macromoleculaire-DESHOULLES_Quentin.pdf",
+    "abstract": "La problématique des microplastiques (MP) est devenue une préoccupation mondiale ces dernières années. Ces particules (< 5 mm) sont présentes dans tous les compartiments de l’écosystème marin. Le polyamide 6 (PA6) est un polymère largement utilisé dans le domaine maritime mais peu retrouvé dans l’environnement. Son comportement en milieu marin a donc été caractérisé selon une nouvelle approche par découplage des phénomènes physico-chimiques impliqués dans sa dégradation (vieillissement chimique et contrainte hydrodynamique). Le vieillissement chimique a été étudié en considérant les réactions d’oxydation et d’hydrolyse. L’évolution des propriétés physicochimiques a été caractérisée, notamment par détermination des coupures de chaîne et de l’interaction avec l’eau. Ces données ont permis d’établir un modèle permettant de décrire les scissions de chaîne à la température du milieu marin, en considérant l’évolution de la concentration en eau dans le PA6. L’évolution des propriétés mécaniques, en traction, a montré une fragilisation du polymère. Ce phénomène traduit une diminution de la quantité de transmetteurs de contrainte (molécules liens et enchevêtrements). Au cours de la fragilisation, lePA6, initialement ductile, devient fragile. Cette transition a été désignée comme le critère à partir duquel la formation de MP est envisageable. Le modèle cinétique a été utilisé afin de prédire le changement de comportement du PA6 dans le milieu marin. La sollicitation hydrodynamique a été étudiée, selon un dispositif expérimental unique, et a conduit à la fragmentation d’un polymère dans son état fragile. En parallèle, l’interaction du polymère avec les organismes procaryotes du milieu marin, dans son état neuf et vieilli, a été analysée par metabarcoding. Une large spécificité de taxa bactériens a été observée en fonction de la nature et de l’état du polymère. La diversité des communautés est dépendante de la polarité de surface."
+   },
+   {
+    "id": "https://openalex.org/W3005394646",
+    "doi": null,
+    "title": "Evaluating Measurement of Strain Hardening Method for Mechanical Assessment of Geomembrane Service Life in MSW Landfills",
+    "year": 2019,
+    "cited": 0,
+    "venue": "Scholar Commons (University of South Carolina)",
+    "topics": [
+     "Landfill Environmental Impact Studies",
+     "Recycling and Waste Management Techniques",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://scholarcommons.sc.edu/etd/5572",
+    "abstract": "The increased household production result in more construction of municipal solid waste (MSW) landfills and lagoons. One major part of these engineering projects is high-density polyethylene (HDPE) geomembrane. Geomembrane is an impermeable layer that used along bottom and sides of landfills and lagoons to contain the leachate and to protect the groundwater. Although of their chemicals resistance and high strength, it can be aged under service conditions such as high temperature, ultraviolet (UV) light, and chemicals exposure. These conditions accelerate oxidation of geomembrane and lead to brittle behavior and stress cracking which reduce its service life. Our objective in this work is to properly evaluate and characterize HDPE geomembranes. The conventional method for evaluating geomembrane service life is the stress crack resistance (SCR) test in accordance with ASTM D5397. This method has many disadvantages such as time-consuming, expensive apparatus, and low repeatability of results. Recently, a new method has been standardized to characterize crack resistance of pipe resins from the slope of the curve of the tensile test at strain hardening region at high temperature. Few researchers have investigated this method for HDPE geomembrane. However, no standard has been approved yet for the method for geomembrane resins. Thus, in this research, a series of tensile test at specific displacement rates have been performed for high-density polyethylene (HDPE) geomembrane at room temperature to study and standardize a method to measure strain hardening modulus. The proper displacement rate and measurement method have been specified based on data analysis. It is shown that low displacement rates are more acceptable to measure strain hardening modulus for geomembrane samples. Research has been conducted on how to overcome the limitations encountered during strain measurement using existing conventional methods. These limitations are successfully resolved, and we managed to obtain dependable strain hardening modulus throughout the entire testing range Finally, another set of experimentations are also proposed to be performed for oven aged samples. The aim of this experiment is to study and verify the method of strain hardening modulus for aged HDPE geomembrane. However, several strain measurement problems are encountered while testing the aged samples. Most of the tensile testing data could not be recorded and thus not being able to obtain proper data to finally achieve representative strain hardening curve. Samples are retrieved periodically and kept in the dark for future work."
+   },
+   {
+    "id": "https://openalex.org/W4288966172",
+    "doi": "https://doi.org/10.15593/perm.mech/2019.1.",
+    "title": null,
+    "year": 2019,
+    "cited": 0,
+    "venue": "PNRPU Mechanics Bulletin",
+    "topics": [],
+    "oa_url": "http://vestnik.pstu.ru/get/_res/fs/file.pdf/8455/%D6%E5%ED%F2%F0%F3+%FD%EA%F1%EF%E5%F0%E8%EC%E5%ED%F2%E0%EB%FC%ED%EE%E9+%EC%E5%F5%E0%ED%E8%EA%E8+%CF%CD%C8%CF%D3+%96+10+%EB%E5%F2%21file.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4392211212",
+    "doi": null,
+    "title": "Study of the dynamic behavior and thermoviscoplastic modeling of steel sheet subjected to ballistic impact",
+    "year": 2013,
+    "cited": 0,
+    "venue": "theses.fr (ABES)",
+    "topics": [
+     "High-Velocity Impact and Material Behavior",
+     "Structural Response to Dynamic Loads",
+     "Electromagnetic Launch and Propulsion Technology"
+    ],
+    "oa_url": "http://www.theses.fr/2013LORR0272/document",
+    "abstract": "Ce travail de thèse a pour but de contribuer à l'étude du comportement thermomécanique des matériaux métalliques soumis à un impact balistique. Des études expérimentales, analytiques et numériques ont été réalisées pour analyser en détail le processus de perforation. Deux matériaux ont été étudiés au cours de ce travail : un acier doux ES et un acier IF. Dans un premier temps, des essais de caractérisation mécanique (traction et compression quasi-statique et dynamique) ont été réalisés en vue de la modélisation du comportement mécanique des matériaux étudiés. Les résultats montrent que l'acier doux ES et l'acier IF sont très sensibles à la vitesse de déformation. Deux modèles constitutifs, l'un empirique (Johnson-Cook) et l'autre semi-physique (Rusinek-Klepaczko) ont été utilisés pour modéliser le comportement thermoviscoplastique des matériaux. Une identification complète des constantes définissant les deux modèles a été réalisée pour chaque matériau en vue de l'implémentation des lois dans un code éléments finis pour la simulation numérique des essais d'impact et de perforation. Le comportement à l'impact des matériaux a ensuite été étudié. Les essais d'impact et de perforation ont été réalisés à l'aide d'un canon à gaz. L'influence de la géométrie du projectile, des propriétés mécaniques du matériau le constituant, de l'épaisseur de la cible et de sa configuration (sandwich ou monolithique) sur le processus de perforation a été analysée. Les résultats montrent que le mode de rupture, la limite balistique et la capacité d'absorption d'énergie de la cible métallique sont fortement liés à la forme du projectile utilisé. Il a été montré que les cibles métalliques monolithiques résistent mieux à la perforation que les configurations sandwichs (épaisseur totale inférieure ou égale à 4 mm). En outre, il a été trouvé que la limite balistique de la cible est fortement influencée par la rigidité du projectile utilisé. Enfin un modèle EF 3D a été développé permettant de simuler le comportement mécanique des cibles métalliques soumises à l'impact et à la perforation. Les résultats issus des prévisions numériques ont été comparés aux résultats expérimentaux. Il a été observé de façon globale un bon accord entre les prévisions numériques et l'expérience notamment en termes de courbes balistiques, d'énergie absorbée, de modes de rupture et de temps de rupture pour chaque type de projectile. Les résultats numériques montrent l'importance d'une description précise du comportement des matériaux dans les conditions dynamiques basée sur des expériences de laboratoire incluant les effets d'adoucissement thermique, d'écrouissage et de sensibilité à la vitesse de déformation, dans la modélisation numérique de processus physiques"
+   },
+   {
+    "id": "https://openalex.org/W4392216913",
+    "doi": null,
+    "title": "Mechanical behaviour and damage study of short hemp fibre reinforced thermoplastics (experimental approach and modelling)",
+    "year": 2013,
+    "cited": 0,
+    "venue": "theses.fr (ABES)",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "http://www.theses.fr/2013LORR0107/document",
+    "abstract": "Afin de limiter l'utilisation des ressources fossiles, les composites à fibres naturelles semblent être une alternative prometteuse aux composites à fibres synthétiques. Ainsi cette thèse se propose d'étudier un composite thermoplastique renforcé par des fibres courtes d'origine végétale (polypropylène/chanvre). En effet, la température de mise en forme du PP permet l'incorporation de renforts naturels. De plus la culture du chanvre est relativement aisée en Lorraine. Ces composites ont été élaborés via compoundage - moulage par injection. Ce travail s'appuie sur une démarche de caractérisation du comportement thermomécanique de ces composites dans le domaine quasi-statique en prêtant particulièrement attention à l'influence de la vitesse de déformation, de la fraction volumique de chanvre et de la température. L'endommagement a été mis en évidence par des essais de type charge-décharge-maintien et par un suivi in-situ par thermographie infrarouge. Cette étude a montré une rupture quasi-fragile par fissuration de la matrice quelque soit le taux de renfort. Une étude statistique complète de la microstructure en terme de distribution d'orientation et de répartition spatiale des fibres a été conduite par tomographie aux rayons X et a permis de développer un algorithme de génération automatique d'un modèle éléments-finis intégrant les distributions d'orientation et de répartition ainsi que les facteurs géométriques des fibres (L,Ø). Cet algorithme permet de rendre compte, dans la modélisation, de l'interaction complexe entre les fibres supposées élastiques isotropes. Enfin, la modélisation par éléments-finis du comportement du composite PPC est entreprise. Le comportement élastique avec endommagement progressif de la matrice est obtenu suivant un formalisme micromécanique dans lequel celle-ci est considérée comme un solide élastique isotrope affaibli par des microfissures de forme penny-shapped. Ce comportement est implémenté sur abaqus via une routine Fortran. Cette démarche offre de bonnes capacités de prédiction et ouvre des perspectives d'optimisation de ce matériau"
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Instron AVE 2\" OR \"Instron AVE\" OR \"Instron AVE3\") AND OPEN_ACCESS:y",
@@ -128,12 +761,18 @@
   }
  ],
  "standards_found": {
+  "EN ISO 527-4": 1,
+  "GOST 2856-79": 1,
+  "ASTM D5397": 1,
   "ISO 7743": 1,
   "ASTM D638": 1,
   "EN ISO 527-2": 1
  },
  "standards_new": [
+  "ASTM D5397",
   "EN ISO 527-2",
+  "EN ISO 527-4",
+  "GOST 2856-79",
   "ISO 7743"
  ],
  "test_item_hits": {

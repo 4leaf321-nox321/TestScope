@@ -10,8 +10,199 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Lansmont PDT\" OR \"Lansmont PDT-80\" OR \"Lansmont PDT-80M\" OR \"Lansmont PDT-56ED\"",
-  "count": null,
-  "works": []
+  "count": 13,
+  "works": [
+   {
+    "id": "https://openalex.org/W3200310546",
+    "doi": "https://doi.org/10.3390/ma14195500",
+    "title": "Screen Printed Antennas on Fiber-Based Substrates for Sustainable HF RFID Assisted E-Fulfilment Smart Packaging",
+    "year": 2021,
+    "cited": 33,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Material Properties and Processing",
+     "Nanomaterials and Printing Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/19/5500/pdf?version=1632457125",
+    "abstract": "Intelligent packaging is an emerging technology, aiming to improve the standard communication function of packaging. Radio frequency identification (RFID) assisted smart packaging is of high interest, but the uptake is limited as the market needs cost-efficient and sustainable applications. The integration of screen printed antennas and RFID chips as smart labels in reusable cardboard packaging could offer a solution. Although paper is an interesting and recyclable material, printing on this substrate is challenging as the ink conductivity is highly influenced by the paper properties. In this study, the best paper/functional silver ink combinations were first selected out of 76 paper substrates based on the paper surface roughness, air permeance, sheet resistance and SEM characterization. Next, a flexible high frequency RFID chip (13.56 MHz) was connected on top of screen printed antennas with a conductive adhesive. Functional RFID labels were integrated in cardboard packaging and its potential application as reusable smart box for third party logistics was tested. In parallel, a web-based software application mimicking its functional abilities in the logistic cycle was developed. This multidisciplinary approach to developing an easy-scalable screen printed antenna and RFID-assisted smart packaging application is a good example for future implementation of hybrid electronics in sustainable smart packaging."
+   },
+   {
+    "id": "https://openalex.org/W3195464615",
+    "doi": "https://doi.org/10.3390/foods10091980",
+    "title": "Susceptibility of Impact Damage to Whole Apples Packaged Inside Molded Fiber and Expanded Polystyrene Trays",
+    "year": 2021,
+    "cited": 16,
+    "venue": "Foods",
+    "topics": [
+     "Postharvest Quality and Shelf Life Management",
+     "Material Properties and Processing",
+     "Plant Surface Properties and Treatments"
+    ],
+    "oa_url": "https://www.mdpi.com/2304-8158/10/9/1980/pdf?version=1629876101",
+    "abstract": "Postharvest damage, leading to loss and waste, continues to be a significant problem in the fresh produce industry. Trays, designed to reduce fruit-to-fruit contact, are utilized by the apple industry to minimize bruising of whole apples. During distribution, packaged apples are subjected to various supply chain hazards, which may lead to bruising damage. Currently, molded fiber (MF) and expanded polystyrene (EPS) trays transport whole apples from the packhouse to the retail outlet. Mechanical shock, by free-fall drop method, was used to evaluate the performance differences between the two trays and quantify the bruising characteristics of the apples. Results showed that the EPS trays provided better shock protection to the apple as compared to the MF tray, reducing the impact acceleration by more than 70%. Additionally, the bruise susceptibility was 40% less for the apples packaged inside the EPS trays, regardless of drop height. However, apples packaged in the middle layer trays were most susceptible to bruising damage, regardless of tray type."
+   },
+   {
+    "id": "https://openalex.org/W3175910577",
+    "doi": "https://doi.org/10.3390/app11135815",
+    "title": "Shock Absorption Characteristics and Optimal Design of Corrugated Fiberboard Using Drop Testing",
+    "year": 2021,
+    "cited": 11,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Material Properties and Processing",
+     "Advanced Cellulose Research Studies",
+     "QR Code Applications and Technologies"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/11/13/5815/pdf?version=1624502241",
+    "abstract": "The application of corrugated paper to buffer packaging has increased with the rise of the circular economy. The dynamic buffer curve is the key to designing the buffer packaging structure but requires multiple testing by small- and medium-sized enterprises (SMEs) without resources. In this study, we propose drop testing to perform a fractional factorial experiment and establish a regression model of impact strength through experimental data. The analysis results show that static stress, falling height, and buffer material thickness are the key variables of impact strength, and an impact strength prediction model (R2 = 94.1%) was obtained. Model verification using the buffer package design of a personal computer showed that the measured values of impact strength fell within the estimated 95% confidence interval. These results indicate that SMEs can use the proposed analysis procedure to improve the design of corrugated paper using minimal resources."
+   },
+   {
+    "id": "https://openalex.org/W2981904729",
+    "doi": "https://doi.org/10.1051/matecconf/201929602004",
+    "title": "Assessment and Characterizing Mechanical Damage in Packaged Bananas in the Post-harvest Supply Chain",
+    "year": 2019,
+    "cited": 5,
+    "venue": "MATEC Web of Conferences",
+    "topics": [
+     "Material Properties and Processing",
+     "Postharvest Quality and Shelf Life Management",
+     "Nanocomposite Films for Food Packaging"
+    ],
+    "oa_url": "https://www.matec-conferences.org/articles/matecconf/pdf/2019/45/matecconf_ictle19_02004.pdf",
+    "abstract": "Quality deterioration in packaged bananas caused by mechanical damage along the post-harvest supply chains (SC) remains obscure until the packages are unpacked for sale at the retail stores and therefore, the mechanism of damage occurrence remains unclear. This study assessed the mechanical damage levels of bananas in 300 cartons from pack houses to retail stores in Australia. The damage across the SC were shown to be progressive across the SC. Bruising and neck damage levels in bananas increased from the distribution centre (DC) to the retail stores. Mechanical damage in unripe bananas was influenced by the package location in the stacked-pallet, and the transport and handling of packages within the last-mile of the SC (DC to retail) further exacerbated the damage. This study further characterized the damage development by subjecting packaged bananas to simulated vibration, top-load compression and drop impact. It was revealed that the exposure to vibration resulted in rubbing; top-load package compression contributed to bruising and, the drop impact caused severe neck injuries in bananas. The knowledge of the damage incidences across the SC and causes of damage may contribute to the development of interventions targeted at improving the quality of bananas in the post-harvest SC in Australia."
+   },
+   {
+    "id": "https://openalex.org/W146201912",
+    "doi": null,
+    "title": "A preliminary analysis of PET barrier technologies and mechanical performance related to a 3L PET wine bottle",
+    "year": 2008,
+    "cited": 3,
+    "venue": "RIT Scholar Works (Rochester Institute of Technology)",
+    "topics": [
+     "Material Properties and Processing",
+     "Plant Surface Properties and Treatments",
+     "Forensic Fingerprint Detection Methods"
+    ],
+    "oa_url": "https://scholarworks.rit.edu/theses/496",
+    "abstract": "The objective of this study was to test and compare Monolayer, Amosorb 2%, and Multilayer 3% PET wine jugs for package integrity and mechanical properties. In addition, two secondary package configurations were tested and analyzed. The first a shipper with load bearing inserts, the second configuration consisted of no inserts. Further, both shipping configurations and PET material have different costs associated. A Monolayer PET bottle has a savings of 17% a case compared to Amosorb and Multilayer PET bottle substrate. Shippers not utilizing inserts are $.20 less per case. The analysis was broken into three test and result phases. Phase I used compression testing to compare PET variables with two different shipper configurations. One shipper configuration was tested with load bearing inserts, the second with no inserts. The minimum compression force calculated was 500 lbs (based on warehouse stacking). Phase II testing included drop and vibration for secondary package configurations. Phase III tested primary package compression strength and drop testing. The results concluded both shipper configurations met the minimum 500 lbs compression force. Therefore a shipper with no insert is recommended for a savings of $.20 a case. Multilayer PET did not pass performance testing due to delaminating. Both Monolayer and Amosorb passed testing, however, Monolayer is recommended for production due to the 17% cost savings on material."
+   },
+   {
+    "id": "https://openalex.org/W2900202754",
+    "doi": "https://doi.org/10.2172/1481115",
+    "title": "Measuring Monodisperse Aerosol Transmission in the Los Alamos Respirable Release Fraction Measurement Chamber",
+    "year": 2018,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Particle Dynamics in Fluid Flows",
+     "Aerosol Filtration and Electrostatic Precipitation",
+     "Cyclone Separators and Fluid Dynamics"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1481115",
+    "abstract": "The transmission ratio of monodisperse aerosol (between 1 and 20 μm aerodynamic equivalent diameter) was measured in a modified configuration of the Los Alamos RRFMC (Respirable Release Fraction Measurement Chamber). The RRFMC is a newly built, 20- foot tall, airtight chamber for the drop testing of nuclear material storage containers. The RRFMC was integrated into an existing HEPA filtered wind tunnel system, and is capable of direct measurement of Airborne Release Fraction (ARF) and Respirable Release Fraction (RRF) for plutonium and uranium under various accident conditions. Cerium oxide powder is used as a surrogate for plutonium oxide. Real-time aerosol measurements for aerodynamic diameters from 0.5 to 20 μm are performed with a TSI Inc (Shoreview, MN) Model 3321 APS (Aerodynamic Particle Sizer) spectrometer."
+   },
+   {
+    "id": "https://openalex.org/W1991283873",
+    "doi": "https://doi.org/10.2172/885697",
+    "title": "Design and Certification of Targets for Drop Tests at the NTRC Packaging Research Facility",
+    "year": 2003,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Material Properties and Processing",
+     "Nuclear and radioactivity studies",
+     "Recycling and Waste Management Techniques"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/885697",
+    "abstract": "This report provides documentation of the design and certification of drop pad (targets) at the National Transportation Research Center (NTRC) Packaging Research Facility(PRF). Based on the evaluation performed, it has been demonstrated that the small (interior) drop pad (target) meets the regulatory definition of a flat, essentially unyielding, horizontal surface for packages weighing up to 3,150 lb (1,432 kg). The large (exterior) drop pad (target) meets the regulatory definition of a flat, essentially unyielding, horizontal surface for packages weighing up to 28,184 lb (12,811 kg)."
+   },
+   {
+    "id": "https://openalex.org/W4401475794",
+    "doi": "https://doi.org/10.1002/pts.2843",
+    "title": "Enhancing Packaging Design for Dynamic Loads: A Methodological Approach for Corner Impact Situations in Packaging",
+    "year": 2024,
+    "cited": 0,
+    "venue": "Packaging Technology and Science",
+    "topics": [
+     "Material Properties and Processing",
+     "Music Technology and Sound Studies",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://zaguan.unizar.es/record/144614/files/texto_completo.pdf",
+    "abstract": "ABSTRACT This study addresses the challenges in designing packaging to withstand dynamic loads while considering environmental impact and avoiding polymeric materials. It introduces a novel experimental equipment capable of measuring packaging behaviour under corner impacts. The research aims to fill the gap in design tools for non‐flat impact scenarios. By measuring acceleration through dummy products, the study overcomes limitations in cushioning curves. Results offer insights into the dynamic response of packaging systems, aiding in the selection of suitable materials and configurations. Visual analysis enhances understanding of corner protection placement, optimizing energy dissipation. The developed experimental device facilitates rapid data generation, enabling scalable application to corner drop designs, thus serving as a valuable tool in packaging optimization efforts."
+   },
+   {
+    "id": "https://openalex.org/W4386759526",
+    "doi": "https://doi.org/10.2172/1999531",
+    "title": "Manual No. 17902 LANL-2023 for Lansmont Drop Tester Model PDT 80",
+    "year": 2023,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Advancements in Photolithography Techniques",
+     "Microfluidic and Bio-sensing Technologies"
+    ],
+    "oa_url": "http://dx.doi.org/10.2172/1999531",
+    "abstract": "This document describes the modifications made to a “Model PDT 80 drop test system” from the Lansmont Corporation (Monterey CA). For serial number (SN: M-17902), Los Alamos National Laboratory staff members changed the system, in consultation with Lansmont technical staff."
+   },
+   {
+    "id": "https://openalex.org/W3124687683",
+    "doi": null,
+    "title": "Desenvolvimento de projeto e protótipo de um dispositivo para ensaio de queda livre em embalagens",
+    "year": 2019,
+    "cited": 0,
+    "venue": "Institutional Repository of the Federal Technological University of Paraná (RIUT) (Federal University of Technology – Paraná)",
+    "topics": [
+     "Academic Research in Diverse Fields",
+     "Business and Management Studies",
+     "Occupational Health and Safety in Workplaces"
+    ],
+    "oa_url": "http://repositorio.utfpr.edu.br/jspui/handle/1/24011",
+    "abstract": "Packaging production in Brazil moves billions and shows growth predictions for the next coming years. In its development, it is aimed the protection for products against hazards of distribution and handling, attempting to guarantee its content integrity. In order to simulate transportation conditions, mechanical tests are performed and ruled by standardized organizations such as the International Safe Transit Association (ISTA), that is a global benchmark in packaging test protocols and standardization. However, despite the existence of adequate devices for the execution of tests abiding to the standards, the adaptation of procedures and nonuse of proper devices is recurrent in industrial plants in Curitiba. This happens due to the high costs of devices, besides problems and risks involving outsourcing. Thus, it is often chosen to perform a method that lacks precision, has minimum repeatability, low ergonomics and does not represent the standard accordingly, reducing the accuracy of the results. This monography presents the development of the project and prototype of a low-cost device for package drop testing according to ISTA-1A, sought to provide wide access to a larger range of organizations. By applying the methodology proposed by Pahl et. al. (1996), it is integrated the State of Art Research with Benchmarking and the Client’s Needs Assessment to – after processing the Project Requirements through the Quality Function Deployment – obtain the Product Specifications. Next, the structure and synthesis functions are defined to generate and evaluate alternatives. After the engineering designs and calculations, a prototype is built and tested to validate the proposition."
+   },
+   {
+    "id": "https://openalex.org/W2949228348",
+    "doi": "https://doi.org/10.12792/iciae2019.022",
+    "title": "Evaluation of Absorption Characteristics for Corrugated Fiberboard Using Design of Experiment Approach",
+    "year": 2019,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Material Properties and Processing",
+     "Music Technology and Sound Studies"
+    ],
+    "oa_url": "https://www2.ia-engineers.org/conference/index.php/iciae/iciae2019/paper/download/2027/1298",
+    "abstract": "In this paper, proposed an experimental design framework based on drop test machine to collect data to establish a regression model. The analysis results show that the static stress, the drop height and the thickness of the cushioning material are the key variables of the impact strength. The prediction regression model of impact strength is R 2 = 96.1%. The resulting pattern can replace the current dynamic buffer curve."
+   },
+   {
+    "id": "https://openalex.org/W4245345797",
+    "doi": "https://doi.org/10.2172/1415364",
+    "title": "Photos of Lansmont PDT 80 drop test machine at Los Alamos",
+    "year": 2017,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Graphite, nuclear technology, radiation studies",
+     "Nuclear and radioactivity studies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1415364",
+    "abstract": "The Los Alamos RP-SVS Radiation Protection Services group designed and constructed a drop tower facility for TA- 55 support work. The drop mechanism was supplied by the Lansmont company in Monterey CA. Los Alamos staffers Murray Moore and Yong Tao have noticed that the system is not dropping loads correctly, and they have photographed aspects of the PDT- 80 model system. The first 10 photos show the platen loaded with a cylindrical steel bar. The next 10 photos are of the roller-cam mechanism in the drop tower, and the last 2 photos indicate the amount of looseness in the platen when it is being pulled by a person."
+   },
+   {
+    "id": "https://openalex.org/W34574090",
+    "doi": null,
+    "title": "El azucarado del vino en la CEE",
+    "year": 1991,
+    "cited": 0,
+    "venue": "Alimentación, equipos y tecnología",
+    "topics": [
+     "Wine Industry and Tourism"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Lansmont PDT\" OR \"Lansmont PDT-80\" OR \"Lansmont PDT-80M\" OR \"Lansmont PDT-56ED\") AND OPEN_ACCESS:y",

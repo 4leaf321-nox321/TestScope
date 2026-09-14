@@ -7,8 +7,52 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Konica Minolta CA-410\"",
-  "count": null,
-  "works": []
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W7152569642",
+    "doi": "https://doi.org/10.1038/s41598-026-48039-8",
+    "title": "Region-segmented gate driver for mitigating RC delay in large-area automotive OLED displays",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Thin-Film Transistor Technologies",
+     "Electrostatic Discharge in Electronics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-026-48039-8.pdf",
+    "abstract": "Large-area active-matrix panels suffer from timing distortion caused by resistive–capacitive (RC) accumulation along extended signal lines. To minimize signal propagation length and reduce accumulated RC loading, a distributed gate-driving architecture is proposed. The design embeds multiple gate driver units within a region-segmented pixel array, utilizing a clustered and shielded layout to suppress parasitic coupling. Simulations for a 27-inch AMOLED panel demonstrated a 57% reduction in signal delay, consistent with the Elmore delay approximation. The gate signal delay variation across the panel, which was approximately 4.0 µs in the conventional gate driver, became negligible with the proposed architecture, ensuring sufficient threshold voltage compensation time. A prototype fabricated using low-temperature polycrystalline silicon thin-film transistors exhibited uniform signal timing, 91.4% luminance uniformity, and a black luminance of 0.009 cd/m2. These results validate that the proposed gate driver architecture ensures stable signal delivery, substantially reduces timing non-uniformity, and enhances overall electro-optical performance for large, high-resolution display systems."
+   },
+   {
+    "id": "https://openalex.org/W4401120614",
+    "doi": "https://doi.org/10.1002/sdtp.17965",
+    "title": "P‐138: Color Demura for LTPS TFT MicroLED Displays",
+    "year": 2024,
+    "cited": 0,
+    "venue": "SID Symposium Digest of Technical Papers",
+    "topics": [
+     "Color Science and Applications",
+     "Thin-Film Transistor Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/sdtp.17965",
+    "abstract": "In this study, a loop iterative approach is employed to gradually get closer to the actual red, green, and blue color coordinates and brightness ratio under a given grayscale to realize the brightness and chromaticity compensation (Color Demura) for LTPS TFT MicroLED display. This approach is applied to a 9.38‐inch 480 × 960 resolution MicroLED display, achieving brightness uniformity more than 95% and chromaticity non‐uniformity less than 1JNCD, respectively."
+   },
+   {
+    "id": "https://openalex.org/W4400078837",
+    "doi": "https://doi.org/10.1002/sdtp.17313",
+    "title": "P‐9.5: Research on Image Quality Improvement Methods for Large Screen Splicing Display",
+    "year": 2024,
+    "cited": 0,
+    "venue": "SID Symposium Digest of Technical Papers",
+    "topics": [
+     "Surface Roughness and Optical Measurements",
+     "Advanced Optical Imaging Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/sdtp.17313",
+    "abstract": "Compared to integrated large screen displays, the splicing scheme that uses multiple display units for splicing has significant advantages in various aspects to achieve large screen displays. This article is based on MLCD (Mini LCD) display scheme that combines LCD and LED, and proposes various algorithms to improve the image quality of the splicing. It effectively solves the image quality problems that occur in MLCD display schemes, while taking into account the advantages of cost and maintenance, it can also fully leverage the image quality advantages. The splicing image quality improvement algorithm not only fills the gap in display effect improvement methods in the splicing display field, but also provides new ideas for the development of large screen image quality improvement technology."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Konica Minolta CA-410\") AND OPEN_ACCESS:y",

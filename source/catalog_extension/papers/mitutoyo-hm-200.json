@@ -12,8 +12,530 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Mitutoyo HM-210 HM-220\" OR \"Mitutoyo HM-210\" OR \"Mitutoyo HM-220\" OR \"Mitutoyo HM-210 Type A\" OR \"Mitutoyo HM-210 Type B\" OR \"Mitutoyo HM-210 Type D\"",
-  "count": null,
-  "works": []
+  "count": 35,
+  "works": [
+   {
+    "id": "https://openalex.org/W2896680406",
+    "doi": "https://doi.org/10.1088/2053-1591/aae6dc",
+    "title": "Enhanced tribological properties of SiC reinforced copper metal matrix composites",
+    "year": 2018,
+    "cited": 55,
+    "venue": "Materials Research Express",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced materials and composites",
+     "Advanced ceramic materials synthesis"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2053-1591/aae6dc/pdf",
+    "abstract": "Copper based metal matrix composite (CMMC) attracts the multiple applications due to their good electrical, thermal and mechanical properties. In the present study, new composite of Cu–SiC for different compositions were fabricated at sintering temperature of 950°C by using powder metallurgy technique followed by characterization of physical, mechanical and metallurgical properties of the fabricated composites. Tribological study was carried out using a pin-on-disc tribometer to determine wear and coefficient of friction. The composite samples ‘(1-x) Cu - xSiC’ were prepared by powder metallurgy technique with x = 10, 15 and 20% volume fraction of SiC. Anti-wear properties were tested under the varying loads of 10-30N and sliding speed of 0.5 m s −1 -1.5 m s −1 . The hardness and tensile strength of the samples was found to increase by 48% and 24% respectively by adding 20% of SiC. The experimental results revealed some interesting facts on the tribological behavior of fabricated composite against steel disk including oxidative wear, abrasive wear and presence of mechanically mixed layer. Wear is reduced from 45% to 77%, whereas friction reduced to 25% to 44%, due to the addition of SiC from 10% to 20% respectively. Therefore the results indicate that the SiC reinforcement enhances the wear resistance capacity and reduces the coefficient of friction in Cu–SiC composite."
+   },
+   {
+    "id": "https://openalex.org/W3138720202",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.03.009",
+    "title": "Structural, morphological and biological evaluations of cerium incorporated hydroxyapatite sol–gel coatings on Ti–6Al–4V for orthopaedic applications",
+    "year": 2021,
+    "cited": 52,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Titanium Alloys Microstructure and Properties",
+     "Bone Tissue Engineering Materials",
+     "Orthopaedic implants and arthroplasty"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421002350/pdf",
+    "abstract": "Titanium alloys, especially Ti–6Al–4V, were reported as a promising biomaterial featuring excellent corrosion resistance and good biocompatibility, but it lacks anti-infection capacity and osseointegration. In this work, we aimed to improve the bio-functions and corrosion resistance of AT-Ti-6Al–4V by applying cerium incorporated hydroxyapatite using a spin coater. The triple layer of Ce-HAP coatings was systematically accumulated using different speeds such as 2000, 3000 and 4000 RPM, which were sintered for 2 h at 500 °C. XRD and SEM-EDS characterize the developed Ce-HAP coatings to confirm the phase formation and surface morphology. The Colony Forming Unit confirms that Ce-HAP coatings exhibited significant inhibition efficiency towards the pathogens. In vitro bioactivity study evaluated in SBF indicates excellent apatite layer formation on Ce-HAP coatings. The cell viability studies using MG-63 cells showed good cell proliferation and attachments on a coated implant. The electrochemical properties of coatings were analysed by EIS and the result displayed pronounced anti-corrosion property. This study suggests that the cerium incorporated HAP promotes bioactivity with rapid osteointegration and presented higher corrosion resistance that makes it essential for the desired biomedical applications."
+   },
+   {
+    "id": "https://openalex.org/W2917061345",
+    "doi": "https://doi.org/10.1016/j.jmrt.2019.01.007",
+    "title": "Thermoplastic deformation behavior of a Fe-based bulk metallic glass within the supercooled liquid region",
+    "year": 2019,
+    "cited": 25,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Metallic Glasses and Amorphous Alloys"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785418307166/pdf",
+    "abstract": "Fe 41 Cr 15 Co 7 Mo 14 C 12 B 9 Y 2 (Fe-B9) bulk metallic glass (BMG) rods with high glass forming ability and large supercooled liquid (SCL) region were fabricated by arc melting and suction casting. The amorphous state of these Fe-B9 BMG rods was ascertained by X-ray diffraction (XRD) and differential scanning calorimetry (DSC). The thermoplastic deformation behavior of these BMG rods was studied by using the hot compression test at different temperatures (873 K, 883 K, 893 K, and 903 K in the SCL region) and strain rates (1 × 10 −3 –5 × 10 −2 s −1 ). The results of the hot compression test reveal that the flow stress of Fe-B9 BMG reduces systematically with increasing temperature and decreasing strain rate. Strain sensitivity exponent ( m ) values of the Fe-B9 BMG were calculated to be about 0.36–0.59 in the SCL region, indicating that Fe-B9 BMG possesses superplasticity. Overall, the optimum working conditions of thermoplastic forming for Fe-B9 BMG can be achieved by compressively deforming the sample with a constant strain rate of 2.5 × 10 −3 s −1 at a temperature from 873 to 883 K."
+   },
+   {
+    "id": "https://openalex.org/W4289175133",
+    "doi": "https://doi.org/10.3390/met12081288",
+    "title": "Improving Mechanical and Corrosion Behavior of 5052 Aluminum Alloy Processed by Cyclic Extrusion Compression",
+    "year": 2022,
+    "cited": 19,
+    "venue": "Metals",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Aluminum Alloys Composites Properties",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/8/1288/pdf?version=1659409256",
+    "abstract": "Background The severe plastic deformation approach and its well-known cyclic extrusion compression (CEC) method have been established as a powerful tool for fabricating bulk ultrafine-grained metals and alloys with improved properties. Objective This study focused on the microstructure evolution, hardness behavior, and corrosion properties of the CEC-processed Al5052 up to four passes compared to the initial annealed state. Methods The initial and CEC-processed Al5052 samples at different pass numbers were examined experimentally by EBSD analyses, hardness measurements, and corrosion resistance. Results Substantial grain refinement was attained from ~23 μm for the annealed sample to ~0.8 μm in the four passes sample. In addition, the hardness values considerably increased up to 75.7% after four passes from the initial value of 80 HV. In addition, the increment of pass numbers led to a more uniform dispersion of hardness values. Furthermore, the production of more stable protective oxide layers on the UFG structure of the CEC-processed sample led to the improvement in electrochemical response with a corrosion rate reduction from 1.49 to 1.02 mpy, respectively, in the annealed and final pass CEC-processed samples. In fact, the annealed sample manifested more large-sized and deeper pits than the CECed samples due to the increment of potential values and electrochemical attack of chlorine ions that finally deteriorates the corrosion performance. Conclusions CEC is an efficient method to improve the mechanical properties of materials due to substantial microstructural changes along with enhancement of electrochemical behavior because of the presence of small-sized and shallow pits."
+   },
+   {
+    "id": "https://openalex.org/W3134969620",
+    "doi": "https://doi.org/10.1590/1980-5373-mr-2020-0329",
+    "title": "Investigation and Nanomechanical Behavior of the Microconstituents of Al-Si-Cu alloy After Solution and Ageing Heat Treatments",
+    "year": 2021,
+    "cited": 18,
+    "venue": "Materials Research",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://www.scielo.br/j/mr/a/JP8FVqR4S7fbmPMNh8zjVGr/?lang=en&format=pdf",
+    "abstract": "The effects of heat treatment on the microstructural evolution and mechanical behavior of Al-Si-Cu alloy were investigated. Solution heat treatment was performed at 500oC/6h and 540oC/6h, followed by quenching in warm water at 60ºC. Lastly, artificial ageing treatment was performed at 160ºC/6h, 190ºC/4h and 210ºC/2h. The microstructural evolution of the samples before and after heat treatments was analyzed by optical microscopy, scanning electronic microscopy (SEM) and Energy Dispersive Spectroscopy (EDS). Analyses revealed the presence Al5FeSi, Al15(FeMn)3Si2, Al2Cu and Si particles. The morphologies of the present phases were dependent on the heat treatment. Solution treatment at 540ºC/6h resulted in significant softening of the alloy compared with the treated samples at 500ºC/6h. Vickers hardness analysis indicated that the hardness peak of the alloy after heat treatment was about 125 HV. Mechanical properties of different phases have been investigated by nanoindentation technique, which indicated that the highest hardness and modulus of elasticity were found for the Si particle, especially those distributed in the microstructures of the samples submitted to higher solution and ageing temperatures."
+   },
+   {
+    "id": "https://openalex.org/W2783229055",
+    "doi": "https://doi.org/10.1155/2018/6491279",
+    "title": "Influence of Cu Content on the Microstructure and Mechanical Properties of Cr-Cu-N Coatings",
+    "year": 2018,
+    "cited": 14,
+    "venue": "Scanning",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Advanced materials and composites",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "http://downloads.hindawi.com/journals/scanning/2018/6491279.pdf",
+    "abstract": "gas mixture by a hybrid coating system combining pulsed DC and RF magnetron sputtering techniques. The influence of Cu content on the coating composition, microstructure, and mechanical properties was investigated. The microstructure of the coatings was significantly altered by the introduction of Cu. The deposited coatings exhibit solid solution structure with different compositions in all of the samples. Addition of Cu is intensively favored for preferred orientation growth along (200) direction by restricting in (111) direction. With increasing Cu content, the surface and cross-sectional morphology of coatings were changed from triangle cone-shaped, columnar feature to broccoli-like and compact glassy microstructure, respectively. The mechanical properties including the residual stress, nanohardness, and toughness of the coatings were explored on the basis of Cu content. The highest hardness was obtained at the Cu content of 1.49 (±0.10) at.%."
+   },
+   {
+    "id": "https://openalex.org/W2460061170",
+    "doi": "https://doi.org/10.1088/0022-3727/48/44/445006",
+    "title": "Effect of Ti addition on the mechanical properties and the magnetocaloric effect of Ni–Mn–In metamagnetic shape memory alloys",
+    "year": 2015,
+    "cited": 14,
+    "venue": "Journal of Physics D Applied Physics",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "Magnetic and transport properties of perovskites and related materials",
+     "Ferroelectric and Piezoelectric Materials"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0022-3727/48/44/445006/pdf",
+    "abstract": "The effect of small amounts of Ti on the microstructure, mechanical properties and the magnetocaloric effect of a Ni–Mn–In metamagnetic shape memory alloy has been investigated. A strong grain refinement is observed as a consequence of the Ti addition, which in turn does not affect the crystallographic structure. Linked to the grain size reduction, mechanical properties such as microhardness and yield strength considerably increase with the increasing Ti content, following a Hall–Petch relation. Likewise, the MT temperature diminishes with the decreasing grain size, in spite of the increasing e / a . On the other hand, both the Curie temperature and the saturation magnetization of the martensite decrease as a result of the Ti addition. The lowering of the MT temperature brought by the grain refinement and the decrease of the saturation magnetization of the martensite that occurs as a consequence of the Ti addition result in a considerable enhancement of the magnetocaloric effect."
+   },
+   {
+    "id": "https://openalex.org/W4220749804",
+    "doi": "https://doi.org/10.3390/met12030530",
+    "title": "Evaluation of Microstructural and Mechanical Behavior of AHSS CP780 Steel Welded by GMAW-Pulsed and GMAW-Pulsed-Brazing Processes",
+    "year": 2022,
+    "cited": 12,
+    "venue": "Metals",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Welding Techniques and Residual Stresses",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/3/530/pdf?version=1647871483",
+    "abstract": "Joints of complex phase 780 (CP-780) advanced high strength steel (AHSS) were carried out by using an ER-CuAl-A2 filler metal for the gas metal arc welding pulsed brazing (GMAW-P- brazing) process and the ER-80S-D2 for the GMAW-P process employing two levels of heat input. The phases in the weld bead and HAZ were analyzed, and the evaporation of zinc by means of scanning electron microscopy (SEM) was also monitored. The mechanical properties of the welded joints were evaluated by tension, microhardness and vertical impact tests. It was found that there was greater surface Zn evaporation in the joints welded with the GMAW-P process as compared to the GMAW-P-brazing process. The best results in tensile strength were observed in the joints welded with GMAW-P-brazing process, which increased by ~68% with respect to those of the GMAW-P. This behavior can be attributed to the formation of an intermetallic complex compound Cu-Al-Fe in the fusion line."
+   },
+   {
+    "id": "https://openalex.org/W3088249665",
+    "doi": "https://doi.org/10.1088/2051-672x/abbb7f",
+    "title": "Tribological performance of hardfaced and heat treated EN-47 steel used for tillage applications",
+    "year": 2020,
+    "cited": 12,
+    "venue": "Surface Topography Metrology and Properties",
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Advanced materials and composites",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2051-672X/abbb7f/pdf",
+    "abstract": "Abstract In the present work, two different hardfacings, namely SZ (Super-Zed alloy; C3.83Cr33.37) and ZK (Zedalloy-K; C0.65Cr4.5Mo8.18) were deposited on EN-47 ploughshare steel by manual metal arc welding process to enhance the abrasive wear resistance. In addition, the influence of heat-treatment of steel by two different methods, i.e., carburizing (C) and through-hardening (Q&T), on the abrasive wear behaviour has also been investigated. Abrasive wear studies were conducted on bare, hardfaced, and heat-treated steel in a laboratory by using a three-body dry sand rubber wheel test rig as per the ASTM G-65 standard. The bare steel suffered a high wear rate, which may be attributed to its soft ferritic-pearlitic microstructure. The abrasive wear rate of tested specimens was found to be 1.7651 × 10 −3 g m −1 , 0.7439 × 10 −3 g m −1 , 0.961 × 10 −3 g m −1 , 0.992 × 10 −3 g m −1 and 1.21 × 10 −3 g m −1 for bare, SZ, ZK, C and Q&T steel specimens respectively. The SZ hardfacing provided better abrasive wear protection than the other treatments due to high chromium and carbon concentration in the hardfacings electrodes, which presented a higher area fraction of primary M 7 C 3 carbides in the matrix. The wear resistance indices (WRI) for SZ hardfacing, ZK hardfacing, carburized, and through-hardened steel specimens were found to be 2.37, 1.84, 1.78, and 1.46, respectively."
+   },
+   {
+    "id": "https://openalex.org/W4367298435",
+    "doi": "https://doi.org/10.3390/met13050856",
+    "title": "Laser Cladding of Al 102 Powder on Al 4047 with Direct Energy Deposition",
+    "year": 2023,
+    "cited": 9,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/13/5/856/pdf?version=1682653736",
+    "abstract": "Large-scale serial production industries such as automotive and aerospace have focused on reducing weight to improve fuel economy, and many parts are manufactured from various aluminum alloys. Due to the ease of recycling of aluminum alloys, research on remanufacturing has not been very active. On the other hand, laser cladding on aluminum alloys is a surface modification and repair process that deposits a thin layer on a substrate using a laser beam whose output can be easily controlled. This makes it suitable for remanufacturing processes where thin layers of damaged parts can be easily repaired, and helps to save energy. In this study, laser cladding was performed using aluminum alloy powder (Al-102) containing Si to improve the surface hardness of Al 4047 used as automotive engine parts and repair damaged parts. Several experimental studies have been conducted regarding the effect on laser power and powder flow rate. In addition, the improvement effect through the hardness analysis of the cladded layer and the change of the microstructure through the cross-section analysis of the clad part are discussed. Finally, the experimental conditions analyzed in this study suggest a suitability for the actual remanufacturing process through multi-pass cladding through overlapping."
+   },
+   {
+    "id": "https://openalex.org/W3003213817",
+    "doi": "https://doi.org/10.3390/coatings10020117",
+    "title": "Pure Sn Coatings Produced by Pulse Plating from Stannate Bath",
+    "year": 2020,
+    "cited": 9,
+    "venue": "Coatings",
+    "topics": [
+     "Electronic Packaging and Soldering Technologies",
+     "Electrodeposition and Electroless Coatings",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-6412/10/2/117/pdf?version=1582946077",
+    "abstract": "We have produced pure Sn coatings from an alkaline bath plating. The plating bath was composed of sodium stannate and sodium hydroxide with sorbitol as an additive. The experiments were performed with a potentiostat/galvanostat at various current densities from 5–25 mA/cm2. The morphology of the coatings, thickness, plating rate, and microhardness were evaluated. Furthermore the wetting of the Sn coatings on a Cu substrate was also assessed by area spread ratio measurements after reflow at 250 °C. The resultant coatings were very smooth and shiny. Initially, the plating morphology was uneven and a nodular type, which further improved with increasing current density up to 15 mA/cm2. The plating rate and thickness were the maximum at a current density of 15 mA/cm2. The coatings had higher strength and solderability at 15 mA/cm2 due to the improved microstructure and plating rate."
+   },
+   {
+    "id": "https://openalex.org/W4392517368",
+    "doi": "https://doi.org/10.3390/met14030309",
+    "title": "Impact of Welding Parameters in the Porosity of a Dissimilar Welded Lap Joint of CP800-XPF1000 Steel Weldment by GMAW-P",
+    "year": 2024,
+    "cited": 7,
+    "venue": "Metals",
+    "topics": [
+     "Welding Techniques and Residual Stresses",
+     "Advanced Welding Techniques Analysis",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/14/3/309/pdf?version=1709706565",
+    "abstract": "The use of the orthogonal array L4 allows a determination of the effect between the welding parameters peak current (Ip), background current (Ib) and frequency (f) on the porosities in a dissimilar welded lap joint of CP800 and XPF1000 steel weldment by the gas metal arc welding process with the transfer pulsed mode. According to the results, modifications in the welding parameters affect the heat input during welding. A heat input higher than 0.30 KJ/mm generates up to 0.32% porosity in the weld metal, while a heat input lower than 0.25 KJ/mm generates up to 28% porosity in the weld metal. The variation in heat input generated by the process allowed the observation of the final microstructure of the welded joints and the effect of mechanical properties such as hardness because the results show values of hardness from 300 Hv to 400 Hv in the heat affected zone (HAZ)."
+   },
+   {
+    "id": "https://openalex.org/W4205848620",
+    "doi": "https://doi.org/10.1016/j.jallcom.2022.163683",
+    "title": "In-situ reactive synthesis of dense nanostructured β-FeSi2 by Spark Plasma Sintering",
+    "year": 2022,
+    "cited": 7,
+    "venue": "Journal of Alloys and Compounds",
+    "topics": [
+     "Semiconductor materials and interfaces",
+     "Intermetallics and Advanced Alloy Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://hal.umontpellier.fr/hal-03565475v1/document",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4410769985",
+    "doi": "https://doi.org/10.1371/journal.pone.0324501",
+    "title": "RETRACTED: Digital twin–driven design and testing of laser shock processed aluminum–graphene composites for spacecraft docking tribology",
+    "year": 2025,
+    "cited": 5,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Diamond and Carbon-based Materials Research",
+     "Tribology and Wear Analysis",
+     "Graphene and Nanomaterials Applications"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0324501&type=printable",
+    "abstract": "The study presents the laser shock processed (LSP) aluminum-graphene composite development and performance evaluation as a solution for spacecraft docking systems that require high tribological reliability under vacuum and extreme thermal conditions. Hot extrusion produced a 0.02 wt% single-layer graphene composite that received LSP treatment using 3J energy with 70% pulse coverage degree. Post-LSP treatment showed both good graphene distribution across the material and refined grains throughout the surface. The treatment of LSP raised the Vickers hardness levels of the composite by 28% above the untreated sample's outcome. The wear rate diminished by 42% under 60 N force and 0.15 m/s sliding speed in vacuum conditions. An improvement of 33% occurred in the sliding performance after LSP treatment because the COF reduced from 0.30 to 0.20. The constructed Python-based digital twin model employed multi-variable regression analysis for 30 experimental trials yielding an R² value of 0.91 and an RMSE value of 0.026 mm³/N·m. The predictive model results matched up with experimental data points within 5-8 percent ranges. Surface integrity along with wear resistance in aluminum alloys improves substantially through the application of LSP with graphene reinforcement which makes them appealing for space docking system mechanical components."
+   },
+   {
+    "id": "https://openalex.org/W4412513761",
+    "doi": "https://doi.org/10.3390/ma18143397",
+    "title": "Influence of Magnetorheological Finishing on Surface Topography and Functional Performance of Shoulder Joint Cap Surface",
+    "year": 2025,
+    "cited": 4,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Tribology and Lubrication Engineering",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/18/14/3397/pdf?version=1753000640",
+    "abstract": "The surface quality of biomedical implants, such as shoulder joint caps, plays a critical role in their performance, longevity, and biocompatibility. Most biomedical shoulder joints fail to reach their optimal functionality when finished through conventional techniques like grinding and lapping due to their inability to achieve nanometer-grade smoothness, which results in greater wear and friction along with potential failure. The advanced magnetorheological finishing (MRF) approach provides enhanced surface quality through specific dimensional control material removal. This research evaluates how MRF treatment affects the surface roughness performance and microhardness properties and wear resistance behavior of cobalt-chromium alloy shoulder joint caps which have biocompatible qualities. The study implements a magnetorheological finishing system built with an electromagnetic tool to achieve the surface roughness improvements from 0.35 µm to 0.03 µm. The microhardness measurements show that MRF applications lead to a rise from HV 510 to HV 560 which boosts the wear protection of samples. After MRF finishing, the coefficient of friction demonstrates a decrease from 0.12 to 0.06 which proves improved tribological properties of these implants. The results show that MRF technology delivers superior benefits for biomedical use as it extends implant life span and decreases medical complications leading to better patient health outcomes. The purposeful evaluation of finishing techniques and their effects on implant functionality demonstrates MRF is an advanced technology for upcoming orthopedic implants while yielding high precision and enhanced durability and functional output."
+   },
+   {
+    "id": "https://openalex.org/W4399419301",
+    "doi": "https://doi.org/10.1088/2053-1591/ad55b1",
+    "title": "Mechanosynthesis of TaC-WC powders under environmental conditions and their consolidation via electric arc furnace",
+    "year": 2024,
+    "cited": 3,
+    "venue": "Materials Research Express",
+    "topics": [
+     "Advanced materials and composites",
+     "Advanced ceramic materials synthesis",
+     "Materials Engineering and Processing"
+    ],
+    "oa_url": "https://doi.org/10.1088/2053-1591/ad55b1",
+    "abstract": "Abstract In this study, tantalum carbide (TaC) was synthesized using an innovative approach that synergistically integrates mechanosynthesis and electric arc furnace processes. By employing high-energy ball-milling (HEBM) for 50 min under environmental conditions, TaC-WC powders were successfully synthesized, using a powder mixture of tantalum and carbon in a 1:1 stoichiometric ratio. This method yielded a composition of 72.5 wt% TaC and 27.5 wt% WC, with an average particle size of 0.7 ± 0.3 μm. The use of an electric arc furnace led to the fabrication of a highly dense material with a relative density above 98%. Notably, WC derived from the mechanical milling material served as an effective sintering aid. x-ray photoelectron Spectroscopy (XPS) results indicated the formation of metal oxides on the surface of the sample, and despite the presence of these oxides, the density of the material remained uncompromised. Furthermore, x-ray diffraction (XRD) analysis after the electric arc furnace treatment demonstrated the preservation of the TaC and WC phases. Mechanical properties, including Vickers hardness, Young’s modulus and fracture toughness were 22.8 ± 0.5 GPa under an applied load of 9.8 N, 539 GPa and 6.6 MPa m1/2, respectively. The results underscore a novel and efficient synthesis route for TaC-WC with enhanced mechanical properties and high density, which are crucial aspects for applications in ultra-high temperature ceramics."
+   },
+   {
+    "id": "https://openalex.org/W4415350576",
+    "doi": "https://doi.org/10.1007/s40964-025-01336-6",
+    "title": "Tribological and hardness characteristics of resin materials in masked stereolithography: impact of washing solution and curing time",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Progress in Additive Manufacturing",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Injection Molding Process and Properties",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40964-025-01336-6.pdf",
+    "abstract": "Abstract Masked stereolithography (MSLA) has emerged as a prominent vat photopolymerization technique due to its high-dimensional precision and superior surface finish, making it particularly suitable for applications in engineering, dentistry, and biomedicine. This study examines the influence of post-processing parameters; specifically washing solvent and UV curing time; on the mechanical and tribological behavior of three commercial resins: ABS-like (ABS), High Tough Resin (HTR), and Crown & Bridge resin (CrBr). Post-processing involved three solvents; 70% ethyl alcohol (E70), 95% ethyl alcohol (E95), and isopropanol (IPA); combined with three curing durations (3, 5, and 10 min). Mechanical performance was evaluated using Vickers hardness testing, while wear and frictional behavior were assessed through mass loss and friction coefficient measurements. The highest hardness (13.23 HV) was observed for CrBr following 10 min of curing and washing with E95. HTR demonstrated the best tribological performance, exhibiting the lowest mass loss (0.35%) and friction coefficient (0.188) under 10 min of curing and IPA washing. Analysis of variance indicated that resin type significantly influenced all measured properties ( p < 0.001), while curing time and solvent type had a statistically significant effect on hardness only. Taguchi signal-to-noise ratio analysis supported these findings and helped identify optimal post-processing settings. These results underscore the critical role of resin chemistry and post-curing conditions in tailoring the functional performance of MSLA-fabricated components."
+   },
+   {
+    "id": "https://openalex.org/W4410039432",
+    "doi": "https://doi.org/10.3390/met15050509",
+    "title": "The Effect of Quenching and Partitioning (Q&P) Processing on the Microstructure, Hardness, and Corrosion Resistance of SAE 9254 Spring Steel",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Metals",
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Metallurgy and Material Forming",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/15/5/509/pdf?version=1746031594",
+    "abstract": "In the present work, the effect of quenching and partitioning cycles on the microstructure, hardness, and corrosion behavior of SAE 9254 spring steel was investigated. Initially, the critical phase transformation temperatures were analyzed by dilatometry. The samples were then treated by four routes of quenching and partitioning in a dilatometer with quenching stop temperatures of 250 and 220 °C. The partitioning temperatures were 300 and 400 °C. The partitioning time was 480 s. Quantitative characterization of austenite and martensite volume fractions was carried out by X-ray diffraction. Qualitative characterization was carried out by optical microscopy and scanning electron microscopy in addition to quantitative assessments of the chemical composition of segregations by EDS. The formation of martensite, retained austenite, and bainite was observed. The dilatometric curves displayed the occurrence of volumetric expansion in the partitioning step, indicating the formation of secondary martensite (fresh martensite) during the final cooling process (final quenching). The mechanical properties were evaluated by Vickers microhardness and nanoindentation tests. There was heterogeneity of hardness inside and outside the banding regions. The electrochemical properties were evaluated by electrochemical impedance spectroscopy and potentiodynamic polarization tests in a 0.1 M H2SO4 solution. The best corrosion resistance was achieved for samples quenched at 250 °C and partitioned at 400 °C due to the higher volume fraction of retained austenite when compared to the other heat treatment conditions."
+   },
+   {
+    "id": "https://openalex.org/W4390354441",
+    "doi": "https://doi.org/10.56042/ijems.v30i5.6865",
+    "title": "Co-crystal Growth and Characterizations of Diisopropylammonium Hydrogen Phthalate",
+    "year": 2023,
+    "cited": 2,
+    "venue": "Indian Journal of Engineering and Materials Sciences",
+    "topics": [
+     "Crystallization and Solubility Studies"
+    ],
+    "oa_url": "https://or.niscpr.res.in/index.php/IJEMS/article/download/6865/2288/25987",
+    "abstract": "Slow evaporation solution growth approach has been utilized to synthesize the single co-crystal of diisopropylammonium hydrogen phthalate at room temperature.Its structural attributes owing to the refinement of its cell parameters have been successfully confirmed using Debye -Scherrer method.Ultraviolet-visible spectroscopy has further revealed the optical behaviour of the aforesaid crystal having a 301 nm cut-off with a broad direct optical energy band of 4.09 eV.Its vibrational assignments have been determined using Fourier transform infrared spectral study.Photoluminescence spectroscopy has highlighted the violet emission from the crystal when stimulated by 300 nm excitation wavelength.Vickers micro hardness technique has as certained the mechanical strength of the grown crystal along with the work-hardening coefficient thereby claiming its normal ISE behaviour to the external load.Conclusively, this work has featured the prominence of diisopropylammonium hydrogen phthalate co-crystal for optical applications."
+   },
+   {
+    "id": "https://openalex.org/W3005484102",
+    "doi": "https://doi.org/10.3365/kjmm.2020.58.2.87",
+    "title": "Corrosion Characteristics of Plasma Electrolytic Oxidation Treated AZ31 Magnesium Alloy with an Increase of the Coating Thickness",
+    "year": 2020,
+    "cited": 2,
+    "venue": "대한금속재료학회지",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Aluminum Alloys Composites Properties",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "http://kjmm.org/upload/pdf/kjmm-2020-58-2-87.pdf",
+    "abstract": "The growth of the PEO coating with processing time on an AZ31B magnesium alloy in a dilute alkaline electrolyte containing silicate and the corrosion characteristics according to its thickness were investigated. The oxide film grew a porous outer layer mainly consisting of silicate with the spark discharge phenomenon from the beginning of the reaction and reached a certain limit thickness later in the reaction. This reaction was followed by the inner layer, mainly consisting of MgO, growing rapidly and densifying. Based on the results of the potentiodynamic polarization and chronoamperometric test, it was found that within 1 minute of the processing time, due to the contribution of the dielectric layer and MgF2 phase layer formed at the interface between the oxide and the substrate, the corrosion resistance was relatively high, but its stability against corrosion was not enough. Moreover, when the thickness of the oxide coating was grown mainly with the silicate outer layer, the increase in the pore size, which acts as a channel of spark discharge, was the leading cause of the decrease in the corrosion resistance. The superior corrosion resistance and the stability of the PEO coating in the later reaction time of the processing are due to the growth and densification of the inner layer of MgO."
+   },
+   {
+    "id": "https://openalex.org/W2793458165",
+    "doi": "https://doi.org/10.1139/cjp-2017-0739",
+    "title": "Mg65Ni20Y15–XAgX (X = 1, 2, 3, 5) alloys prepared via atmosphere controlled induction system",
+    "year": 2018,
+    "cited": 2,
+    "venue": "Canadian Journal of Physics",
+    "topics": [
+     "Hydrogen Storage and Materials",
+     "Magnesium Alloys: Properties and Applications",
+     "Magnetic Properties of Alloys"
+    ],
+    "oa_url": "https://utoronto.scholaris.ca/bitstreams/0747accc-e0ce-42aa-88bd-d94a70b4d533/download",
+    "abstract": "In this work, Mg65Ni20Y15–XAgX (X = 1, 2, 3, 5) alloys were manufactured by atmosphere controlled induction system. The effect of Ag ratio on the microstructural properties, micro-hardness, density, and homogeneity of the Mg–Ni–Y alloys were investigated. These alloys were characterized by X-ray diffraction (XRD), optical microscopy, scanning electron microscopy with energy dispersive X-ray (SEM-EDX) and Vickers micro-hardness measurement. According to XRD results, Ni3Y and Mg6Ni phases were observed as well as AgY and Ag17Mg54 phases, which were obtained in alloys. The quantitative results of EDX analysis confirm that the chemical composition of the obtained phases is very close and their homogeneities are so high. The average micro-hardness values of the ingot alloys were measured between 208 and 266 HV for matrix. The elastic modulus and densities of the Mg65Ni20Y15–XAgX (X = 1, 2, 3, 5) alloys increased by increasing Ag in the alloys and they were determined in the range of 58.18–68.12 GPa and 3.14–3.53 g/cm3, respectively."
+   },
+   {
+    "id": "https://openalex.org/W4411497061",
+    "doi": "https://doi.org/10.3390/su17135676",
+    "title": "Laser-Induced Surface Vitrification for the Sustainable Stabilization of Copper Tailings",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Sustainability",
+    "topics": [
+     "Recycling and utilization of industrial and municipal waste in materials production",
+     "Geochemistry and Elemental Analysis",
+     "Laser-Ablation Synthesis of Nanoparticles"
+    ],
+    "oa_url": "https://www.mdpi.com/2071-1050/17/13/5676/pdf?version=1750403559",
+    "abstract": "This study introduces CO2 laser surface vitrification as an innovative method for managing copper mining tailings, offering a sustainable solution to critical challenges in mineral processing. This technique transforms tailings into a stable and impermeable layer, immobilizing hazardous metals contained within them. By achieving vitrification at the surface level and operating at temperatures around 1200 °C, the process significantly reduces energy consumption compared to traditional vitrification methods, making it suitable for large-scale applications in remote mining sites. Detailed geochemical and mechanical analyses confirmed the formation of a dense vitreous matrix with high hardness (7.19–7.48 GPa) and reduced permeability, ensuring compliance with stringent environmental regulations. However, the brittle nature of the vitrified layer underscores the need for further research to enhance mechanical resilience. This work positions CO2 laser vitrification as a transformative approach for integrating energy-efficient technologies into mineral processing, addressing key environmental concerns while advancing the sustainable management of mining waste."
+   },
+   {
+    "id": "https://openalex.org/W4406914882",
+    "doi": "https://doi.org/10.3390/engproc2025084015",
+    "title": "Correlation Between Friction Time, Rotational Speed, and Mechanical Properties in Aluminum-Based Friction Welding Processes",
+    "year": 2025,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Welding Techniques and Residual Stresses",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2673-4591/84/1/15/pdf?version=1738057487",
+    "abstract": "In friction welding, rotational speed is a critical parameter that influences the welding outcomes by interacting with time and temperature variables. This study investigates the effects of varying friction times on the microstructure, hardness, and mechanical properties of friction-welded aluminum alloys. The experiments involved analyzing samples using Scanning Electron Microscopy with Energy Dispersive Spectroscopy (SEM-EDS) to assess elemental composition, alongside measuring hardness, stress, and strain values. Microstructural analysis revealed that a rotation duration of 7 s produced finer grain boundaries than those observed at 3 and 5 s, correlating with enhanced mechanical properties. At a rotational speed of 1450 rpm with a friction time of 3 s, the maximum stress and strain values reached 192.85 MPa and 19.48%, respectively. Increasing the friction time to 5 s resulted in a maximum stress of 196.60 MPa and a strain value of 17.50%, while at 7 s, the maximum stress reached 194.64 MPa with a strain of 17.66%. Findings indicate that prolonged friction time tends to increase material brittleness. Hardness testing at 1450 rpm revealed values of 73.59 VHN at 3 s, 70.23 VHN at 5 s, and 79.47 VHN at 7 s, with increased rotation time resulting in finer grain structure and improved hardness. SEM-EDS analysis across all conditions (3, 5, and 7 s) consistently identified aluminum (Al) as the primary elemental constituent, reflective of the base alloy composition. These results highlight the influence of friction time and rotational speed on the material’s microstructural integrity and mechanical performance in friction welding applications."
+   },
+   {
+    "id": "https://openalex.org/W3104182790",
+    "doi": "https://doi.org/10.37904/metal.2020.3612",
+    "title": "EFFECT OF AlTi3B1 INOCULANT ON THE MICROSTRUCTURE AND HARDNESS OF THE AlCu4Mg1 ALLOY",
+    "year": 2020,
+    "cited": 1,
+    "venue": "Metal ...",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Aluminum Alloy Microstructure Properties",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://www.confer.cz/metal/2020/download/3612-effect-of-alti3b1-inoculant-on-the-microstructure-and-hardness-of-the-alcu4mg1-alloy.pdf",
+    "abstract": "This paper focuses on the effect of AlTi3B1 grain refiner on the microstructure and mechanical properties of AlCu4Mg1 alloy.Inoculant in the form of a master alloy with a titanium content of 3 [wt%] and boron content of 1 [wt%] was added to the alloy in various amounts.Boron is completely bound in the insoluble TiB2 phase, which is usually very finely precipitated in the master alloy.The residue of the titanium content is precipitated in the form of polyhedral particles of the melt-soluble intermetallic phase TiAl3.Inoculation of aluminium alloys is performed in order to improve the mechanical and technological properties of the material.In the case of inoculation, this improvement is mainly due to an increase in chemical and structural homogeneity and a decrease in the tendency to segregate individual elements.Optical microscopy was used to observe the microstructure, which evaluated the structure and its changes depending on the content of the inoculant and also the effect of heat treatment.In this experiment, we further focused on the hardness of the AlCu4Mg1 alloy after heat treatment and the addition of various amounts of inoculant.Hardness was evaluated from both a macro and a micro perspective using the Brinell and Vickers method.This is because the microhardness of the alloy can be significantly affected by the occurrence of chemical heterogeneity in the solidified casting."
+   },
+   {
+    "id": "https://openalex.org/W2529294326",
+    "doi": "https://doi.org/10.1051/matecconf/20167801098",
+    "title": "Synthesis and Characterization of Stabilized Zirconia Toughened Alumina (ZTA) Doped Niobium Pentoxide (Nb2O5)",
+    "year": 2016,
+    "cited": 1,
+    "venue": "MATEC Web of Conferences",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "Advanced materials and composites",
+     "Microwave Dielectric Ceramics Synthesis"
+    ],
+    "oa_url": "https://www.matec-conferences.org/articles/matecconf/pdf/2016/41/matecconf_icongdm2016_01098.pdf",
+    "abstract": "The main target of this research is to study the mechanical properties of the Nb2O5 doped with alumina-zirconia composites. Pellets form samples of ZTA (5YSZ) doped niobium pentoxide in varied amount of 0 wt%, 0.3 wt%, 0.5 wt% and 0.7 wt% were prepared by solid-state conventional method with respective 4:1 ratio or alumina and 5YSZ. The effect of different dopant addition on the morphology, phase transformation and hardness was studied. Each mixture of the compositions were calcined at 1000°C followed by pressing at 220 MPa and then they were sintered at 1650°C with heating rate 10°C min-1 and holding for 2 hours in air. Phase transformation, phase quantification and crystal structure analysis was revealed by using X-ray diffraction data with the help of X-Pert HighScore Plus software using Rietveld Refinement Method while microstructure was observed by scanning electron microscopy. The hardness of the composite is determined by using Vickers hardness test. It found that with 0.5 wt% niobium pentoxide addition would give a great effect on the microstructure distribution, densification and mechanical properties of the ZTA-doped sample."
+   },
+   {
+    "id": "https://openalex.org/W7172253467",
+    "doi": "https://doi.org/10.1016/j.jmrt.2026.07.307",
+    "title": "Microstructural tailoring and property enhancement of Cu–Ti2SnC composites via sequential severe plastic deformation routes",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced materials and composites",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785426020387/pdf",
+    "abstract": "This study investigates the microstructural evolution and property enhancement of Cu–Ti 2 SnC composites fabricated through a sequential severe plastic deformation route combining asymmetric rolling, recrystallization treatment, and cryogenic friction stir processing (LN 2 -FSP). Copper substrates were prepared in two initial states: strain-hardened (75% thickness reduction) and fully recrystallized (500 °C for 90 min). Approximately 7 wt.% Ti 2 SnC particles were introduced prior to processing to evaluate the combined effects of prior deformation and ceramic reinforcement on dynamic recrystallization, strengthening mechanisms, and electrical conductivity. The stir-zone grain size strongly depended on the initial microstructure and reinforcement. The composite produced from strain-hardened copper exhibited the finest grains (4.1 ± 0.3 μm), followed by strain-hardened copper without reinforcement (5.8 ± 0.8 μm), the composite produced from annealed copper (6.9 ± 0.4 μm), and annealed copper without reinforcement (8.5 ± 0.5 μm). Mechanical properties demonstrated a strong synergy between pre-strain and reinforcement. The composite produced from strain-hardened copper achieved the highest ultimate tensile strength (289.4 ± 12.3 MPa), yield strength (209.5 ± 12.3 MPa), elongation (29.3 ± 1.1%), and toughness (85.4 ± 1.2 MJ m -3 ). Electrical conductivity showed the typical strength–conductivity trade-off, with values ranging from 86.3 ± 1.3% to 94.3 ± 1.1% IACS for processed samples, while fully annealed copper reached 98.4 ± 1.1% IACS. The results demonstrate that combining prior asymmetric rolling with Ti 2 SnC reinforcement during cryogenic FSP enables significant grain refinement and mechanical strengthening while retaining high electrical conductivity."
+   },
+   {
+    "id": "https://openalex.org/W7166666626",
+    "doi": "https://doi.org/10.47253/jtrss.v14i2.1902",
+    "title": "Application of TIG-MIG hybrid welding for wire arc additive manufacturing",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of tropical resources and sustainable science/Journal of Tropical Resources and Sustainable Science",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://journal.umk.edu.my/index.php/jtrss/article/download/1902/1323",
+    "abstract": "Wire arc additive manufacturing (WAAM) is an advanced 3D printing technology that fabricates metal components through layer-by-layer deposition using an electric arc as the heat source. However, excessive heat input during repeated thermal cycles in WAAM leads to microstructural coarsening, grain growth and phase instability, which adversely affect mechanical properties. This research aims to apply TIG-MIG hybrid welding in WAAM and compare its performance with conventional MIG welding. The methodology involved depositing four successive welding layers using both TIG-MIG hybrid and MIG processes. The parameters including, current (A), voltage (V), torch configuration, welding speed and wire feeding rate are investigated. The welds are characterized using optical microscopy to observe microstructura; changes and microhardness testing to evaluate the mechanical properties. Results showed that the TIG-MIG hybrid reduced heat input by 7.41% (from 621.00J/mm to 575.00 J/mm) across four layers, with surface temperature decreased from 195.4 ℃ to 231.4 ℃. The hybrid process produced nearly twice the reinforcement height (from 2.286 mm to 6.304 mm) compared to MIG, while the penetration depth decreased from 1.281 mm to 0.816 mm. Microstructural analysis revealed refined ferritic dendrite structures in TIG-MIG hybrid welds compared to the coarser dendrites observed in MIG. Although the TIG-MIG hybrid exhibited slightly lower hardness values (129.9 HV-221.57 HV) compared to MIG (168.17 HV-245.17 HV, the refined microstructure suggests improved toughness and mechanical ability. Overall, TIG-MIG hybrid welding in WAAM effectively mitigates excessive heat input, enhances bead geometry, and refines microstructure compared to MIG, making it a promising approach for improving the mechanical performance of multilayer WAAM components."
+   },
+   {
+    "id": "https://openalex.org/W7161976006",
+    "doi": "https://doi.org/10.36922/msam026110018",
+    "title": "Influence of gas metal arc welding-based wire arc additive manufacturing deposition modes on the hardness, wear, and corrosion behavior of Al5356 walls",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Materials Science in Additive Manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Magnesium Alloys: Properties and Applications"
+    ],
+    "oa_url": "https://doi.org/10.36922/msam026110018",
+    "abstract": "Wire arc additive manufacturing (WAAM) is a promising technique for producing large-scale aluminum components, although the deposition mode strongly affects thermal history, microstructure, and defect formation. This work investigates the influence of three gas metal arc welding (GMAW)-based WAAM modes (pulsed GMAW, cold arc, and pulsed alternating current [AC]) on the microstructure, hardness, wear, and corrosion behavior of Al5356 walls. Differences in heat input and arc characteristics led to variations in grain size and porosity. Pulsed AC showed the largest grain size and the lowest porosity; pulsed GMAW showed intermediate grain size and the highest porosity; and cold arc exhibited the finest microstructure with intermediate porosity. Magnesium segregation at grain boundaries was observed in all conditions, with possible formation of β (Al3Mg2) phase under localized thermal exposure. Hardness values were similar for all samples, although pulsed AC exhibited slightly lower and more homogeneous hardness due to its coarser microstructure. Tribological behavior showed no clear differences among deposition modes. Electrochemical testing revealed that pulsed AC provided the best corrosion resistance, attributed to its reduced porosity and lower grain boundary density, which limits intergranular attack. Overall, deposition mode primarily influences microstructure and corrosion behavior, while its effect on wear performance is limited under the studied conditions."
+   },
+   {
+    "id": "https://openalex.org/W7155568855",
+    "doi": "https://doi.org/10.3390/ma19091745",
+    "title": "Enhanced Wear Resistance of Tungsten-Reinforced Brass Surface Composite Produced Through Friction Stir Processing at Varying Tool Rotational Speed",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Materials",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Metallurgy and Material Science",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://doi.org/10.3390/ma19091745",
+    "abstract": "This study examines the effect of tool rotational speed on the microstructure and dry sliding wear behavior of brass-tungsten (brass/W) surface composites fabricated through friction stir processing. Microstructural analysis confirmed a uniform distribution of tungsten particles within the stir zone, with no observable clustering. Improved properties were achieved at a lower traverse speed of 40 mm/min combined with a higher rotational speed of 1168 rpm, which promoted finer grain formation (~4 µm) and better particle dispersion. An increase in rotational speed led to a corresponding rise in hardness, from 142 HV at 832 rpm to 165 HV at 1168 rpm. In terms of wear behavior, the sample processed at lower rotational speed exhibited abrasive and micro-cutting wear, whereas the sample processed at higher rotational speed predominantly showed adhesive wear."
+   },
+   {
+    "id": "https://openalex.org/W7202165915",
+    "doi": "https://doi.org/10.66648/vtijmrr.vol.01.issue.01.03",
+    "title": "Friction and Wear Analysis of Nano-Particle-Reinforced Composite Ball Bearings for Aerospace Applications",
+    "year": 2026,
+    "cited": 0,
+    "venue": "VT International Press Journal of Multidisciplinary Research and Review",
+    "topics": [
+     "Tribology and Wear Analysis",
+     "Polymer Nanocomposites and Properties",
+     "Lubricants and Their Additives"
+    ],
+    "oa_url": "https://journal.vtinterpress.com/VTIPJMRR/article/download/5/58",
+    "abstract": "A thorough study of the tribology of nano particle reinforced polymer composite ball bearings was carried out for an aerospace application. The three nano-composite formulations tested were; (i) PEEK matrix filled with alumina (Al₂O₃) nanoparticles (ii) PEEK matrix filled with silicon carbide (SiC) nanoparticles (iii) A hybrid Al₂O₃ / SiC loaded at 5wt %, 10wt % and 15wt %. Dry friction and wear testing were performed using a pin-on disc tribometer at contact pressures ranging from 0.5 MPa to 3.0 MPa and sliding speeds ranging from 0.5 m/s to 3.0 m/s. Worn surface characterization by SEM/EDX indicated that the hybrid loaded nano-composite formulation at 10wt% displayed the least friction coefficient (μ = 0.061) and minimum specific wear rate (Wₛ=1.8×10⁻¹⁴ m²/N), and represented reductions in these parameters of 43% and 57% compared to unreinforced PEEK. Thermally stable analysis demonstrated that the nano-composite material would be suitable for service temperatures up to 280°C. Therefore, it has been demonstrated that nano-reinforced PEEK composites can serve as light weight self-lubricating bearing materials for future generation of aerospace systems, such as satellite actuators and gas turbine auxiliary mechanisms."
+   },
+   {
+    "id": "https://openalex.org/W7124148825",
+    "doi": "https://doi.org/10.5037/jomr.2025.16404",
+    "title": "Microhardness of Root Canal Sealers at Different Canal Thirds: a Pilot In Vitro Study",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Journal of Oral and Maxillofacial Research",
+    "topics": [
+     "Endodontics and Root Canal Treatments",
+     "Dental materials and restorations",
+     "Dental Erosion and Treatment"
+    ],
+    "oa_url": "http://www.ejomr.org/JOMR/archives/2025/4/e4/v16n4e4.pdf",
+    "abstract": "Objectives: The aim of this in vitro study was to evaluate the microhardness of various root canal sealers in the coronal, middle and apical thirds of the simulated root canals. Material and Methods:The study analysed the bioceramic root canal sealers (RCS) TotalFill ® BC Sealer™, AH Plus ® Bioceramic Sealer and BioRoot™ RCS, the resin-based RCS AH Plus ® Jet™ and the bioceramic cement ProRoot ® MTA (positive control).Gypsum samples simulating root canals were prepared and divided into five experimental groups.The canals were filled with the respective RCS and incubated for 24 hours at 37 °C (95% humidity).The microhardness of the RCS in different thirds of the canal was evaluated using the Vickers microhardness (HV) test. Results:The microhardness ranged from 6.8 HV (AH Plus ® Bioceramic Sealer) to 70.3 HV (ProRoot ® MTA).TotalFill ® BC Sealer™ remained stable across all thirds (P > 0.05), AH Plus ® Bioceramic Sealer was significantly harder in the coronal third (P = 0.008), BioRoot™ RCS and ProRoot ® MTA were significantly harder in the apical third (P < 0.05), while AH Plus ® Jet™ showed significantly higher hardness in the middle and apical thirds (P = 0.008).BioRoot™ RCS showed no significant difference in microhardness compared to ProRoot ® MTA (P = 0.146).Other RCS were significantly less hard than the positive control (P < 0.05).Conclusions: Sealer microhardness varied across canal thirds, with TotalFill ® BC Sealer™ showing stability, BioRoot™ RCS resembling the positive control and the others displaying regional variation."
+   },
+   {
+    "id": "https://openalex.org/W4417322386",
+    "doi": "https://doi.org/10.1007/s40964-025-01431-8",
+    "title": "Advancing the structural performance of 3D-printed ABS materials for enhanced load-bearing capacity using TiO₂–ATO nanoparticle reinforcement and SSGCNN-based predictive modelling",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Progress in Additive Manufacturing",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Composite Material Mechanics",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40964-025-01431-8.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4406992254",
+    "doi": "https://doi.org/10.3390/engproc2025084020",
+    "title": "Microstructural and Mechanical Analysis of Aluminum Joints Under Varying Rotational Speeds in Friction Welding with Post-Quenching",
+    "year": 2025,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Welding Techniques and Residual Stresses",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2673-4591/84/1/20/pdf?version=1738230261",
+    "abstract": "This study examines the effects of rotational speed and post-weld quenching on aluminum friction-welded joints’ microstructure, hardness, and mechanical properties. Tests were conducted at rotational speeds of 1250 rpm, 1350 rpm, and 1450 rpm, with elemental composition assessed via SEM–EDS, and the hardness and mechanical properties were measured. The results showed that aluminum (Al) was the primary element in all samples. Hardness increased with rotational speed, reaching 70 VHN at 1250 rpm, 80 VHN at 1350 rpm, and 81 VHN at 1450 rpm. The highest stress was recorded at 1350 rpm, with the lowest at 1450 rpm. The aluminum joints exhibited high stress and strain values, confirming their ductile nature. These findings highlight the significant influence of rotational speed and quenching on friction-welded aluminum’s microstructural and mechanical behavior, providing insights for optimizing welding parameters for improved material performance in industrial applications."
+   },
+   {
+    "id": "https://openalex.org/W7120574205",
+    "doi": null,
+    "title": "Efeito da adição de 2%Ag nos parâmetro térmicos de solidificação, macro/microestrutura, micro dureza e condutividade elétrica de uma liga binária Al-4%Cu",
+    "year": 2023,
+    "cited": 0,
+    "venue": "LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas)",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Metallurgical and Alloy Processes",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://app.uff.br/riuff/bitstream/1/31343/1/Disserta%c3%a7%c3%a3o_Rangel%20Almeida.pdf",
+    "abstract": "O alumínio comercialmente puro com adições de cobre possui alta relevância nas aplicações em setores automotivos e aeronáuticos, devido a esses setores exigir do material alta resistência mecânica e tenacidade à fratura, propriedades essas que podem ser encontradas na liga binária de Al-Cu. A adição de teores da prata na liga de Al pode provocar significativas mudanças nas propriedades mecânicas do material. Ligas ternárias de Al-Cu-Ag são empregadas como modelos de estudos de ligas eutéticas ternárias, apresentando alto interesse científico, além de seu uso em aplicações técnicas. Assim sendo, conhecer as variáveis dos processos de obtenção da liga, as estruturas de solidificação, as propriedades mecânicas, bem como, a relevância das propriedades elétricas da liga, é de fundamental importância para gerar conhecimento científico para aplicações industriais. Neste contexto, o presente trabalho teve como objetivo avaliar os efeitos da adição de 2%Ag na liga binária Al-4%Cu, avaliando os parâmetros térmicos, bem como o estudo da microssegregação dos solutos, através da análise de microscopia eletrônica de varredura (MEV), macro/microestrutura, microdureza, pelo ensaio Vickers, e da condutividade elétrica da liga, utilizando o método de sonda de quatro pontos, por meio de solidificação unidirecional vertical ascendente. Ao avaliar as variáveis térmicas, observou-se que a adição da prata levou a um aumento nas velocidades de solidificação, taxa de resfriamento e gradiente térmico. Acerca da macroestrutura, a liga ternária apresentou estruturas com predominância de grãos colunares, ao longo de todo o comprimento do lingote, comportamento este também observado na liga binária de Al-Cu. No que se refere a microestrutura, observou-se a formações das dendritas ao longo do comprimento do lingote para ambas as ligas, entretanto a liga ternária obteve microestruturas mais refinadas, com valores de EDP e EDT menores. Sobre a microssegregação, verificou que os parâmetros térmicos influenciaram na concentração de soluto, tendo a liga com adição da prata um maior grau de segregação. Além disso, a respeito da microdureza Vickers, observou-se um aumento médio de 1,8% da microdureza em relação a liga binária. Por fim, sobre a condutividade elétrica, observou-se a não linearidade dessa propriedade ao longo do comprimento do lingote, havendo variações de acordo com a concentração de soluto no perfil da liga, sobre a comparação com a liga binária, pôde observar a redução da propriedade elétrica com a adição da prata, possuido a liga binária um valor de 23,7% IACS e a liga ternária, 9,7% IACS."
+   },
+   {
+    "id": "https://openalex.org/W4284968957",
+    "doi": "https://doi.org/10.15587/1729-4061.2022.258728",
+    "title": "Fabrication of macrocrack-free thick chromium duplex plating for remanufacturing applications",
+    "year": 2022,
+    "cited": 0,
+    "venue": "Eastern-European Journal of Enterprise Technologies",
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Advanced materials and composites",
+     "Corrosion Behavior and Inhibition"
+    ],
+    "oa_url": "http://journals.uran.ua/eejet/article/download/258728/256899",
+    "abstract": "The remanufacturing process of a hydraulic cylinder rod becomes a challenging prospect in the industrial sector producing heavy equipment. That is because remanufactured components can have the same product quality as new components with a more economical price. Hard chromium electrodeposition is a well-known technique to provide a protective coating for the cylinder rod so that it has favorable wear and corrosion resistance properties. Associated with remanufacturing applications, the used chromium plating covering the cylinder rod should be removed first before applying the new chromium one. Whereas the removal process often slightly consumes the base metal and fresh thicker chromium should be deposited in order to preserve its original diameter. The main problem is that the thick chromium may experience macrocrack after the baking process at 200 °C. Hence, the observation of as-plated and as-baked thick and hard chromium deposit properties is the novelty of this research. In this work, the thick and hard chromium plating over a flat carbon steel substrate was produced by the electrodeposition method. A conventional single-layer chromium deposit with a plating current density greater than 40 A/dm2 shows macrocracks after the baking process at 200 °C for an hour. For the chromium duplex plating composed of two Cr layers, the maximum thickness of the deposit was 261.0±8.5 microns, and the macrocrack was observed. Meanwhile, the as-baked duplex chromium plating composed of a polished Cr-C layer and a Cr layer has a microcrack density of 337±8 cracks/cm and hardness of 924.8±22.2 HV0.3 without macrocracks. EPMA characterization confirmed the presence of a carbon element in the Cr-C layer, and it is presumed due to carbon co-deposition from formic acid additives."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Mitutoyo HM-210 HM-220\" OR \"Mitutoyo HM-210\" OR \"Mitutoyo HM-220\" OR \"Mitutoyo HM-210 Type A\" OR \"Mitutoyo HM-210 Type B\" OR \"Mitutoyo HM-210 Type D\") AND OPEN_ACCESS:y",
@@ -123,12 +645,18 @@
   }
  ],
  "standards_found": {
+  "EN-47": 1,
+  "ASTM G-65": 1,
+  "SAE 9254": 1,
   "EN ISO 6507-1": 1,
   "ISO 6507-1": 1
  },
  "standards_new": [
+  "ASTM G-65",
   "EN ISO 6507-1",
-  "ISO 6507-1"
+  "EN-47",
+  "ISO 6507-1",
+  "SAE 9254"
  ],
  "test_item_hits": {
   "hardness_vickers": 4,
