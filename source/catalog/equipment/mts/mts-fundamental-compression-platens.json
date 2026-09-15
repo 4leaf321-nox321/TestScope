@@ -1,0 +1,155 @@
+{
+ "id": "mts-fundamental-compression-platens",
+ "kind": "accessory",
+ "name": "MTS Fundamental Aluminum (0.5 kN) and Steel (20 / 100 / 300 kN) Compression Platens, Square Compression Platens (200 kN)",
+ "name_ko": "MTS Fundamental 알루미늄 압축 플래튼 (0.5 kN) · 강철 압축 플래튼 (20·100·300 kN) · 사각 압축 플래튼 (200 kN, 450×450)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "compression_platen",
+ "description": "Criterion 시리즈 40 용 경제형 플래튼. 알루미늄 FYA502A Ø50(0.28 kg)·FYB502A Ø100(0.548)·FYC502A: 0.5 kN, 1 kN 이하 소형 로드셀용(폴리스티렌·고무·복합재·소결재), -50~100 °C, 높이 63 mm. 강철(정밀 연삭 경화) FYA204A Ø100·FYB204A Ø150 20 kN, FYA105A Ø100·FYC105A 100 kN, 300 kN, 최소 시편 Ø5 mm, -50~150 °C. Exceed 용 사각 플래튼 DL07589.01 200 kN, 합금 공구강, 450×450 mm, 원형·십자 스케일, 파이프 링 강성 시험, 60.2 kg, 어댑터 60 mm.",
+ "test_items": [
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "polystyrene",
+  "rubber",
+  "composites",
+  "sintered materials",
+  "metals",
+  "foam",
+  "bottles and plastic containers",
+  "pipes"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 0.5,
+   "max": 300
+  },
+  "specimen_diameter_mm": {
+   "max": 150
+  },
+  "temperature_degC": {
+   "min": -50,
+   "max": 150
+  }
+ },
+ "models": [
+  {
+   "model": "FYA502A (aluminum Ø50)",
+   "specs": {
+    "force_N": 500,
+    "specimen_diameter_mm": 50,
+    "weight_kg": 0.28,
+    "temperature_degC": {
+     "min": -50,
+     "max": 100
+    },
+    "height_mm": 63
+   }
+  },
+  {
+   "model": "FYB502A (aluminum Ø100)",
+   "specs": {
+    "force_N": 500,
+    "specimen_diameter_mm": 100,
+    "weight_kg": 0.548,
+    "temperature_degC": {
+     "min": -50,
+     "max": 100
+    },
+    "height_mm": 63
+   }
+  },
+  {
+   "model": "FYA204A (steel Ø100)",
+   "specs": {
+    "force_kN": 20,
+    "specimen_diameter_mm": 100,
+    "weight_kg": 1.491,
+    "temperature_degC": {
+     "min": -50,
+     "max": 150
+    },
+    "height_mm": 156
+   }
+  },
+  {
+   "model": "FYB204A (steel Ø150)",
+   "specs": {
+    "force_kN": 20,
+    "specimen_diameter_mm": 150,
+    "weight_kg": 3.433,
+    "temperature_degC": {
+     "min": -50,
+     "max": 150
+    },
+    "height_mm": 192
+   }
+  },
+  {
+   "model": "FYA105A (steel Ø100)",
+   "specs": {
+    "force_kN": 100,
+    "specimen_diameter_mm": 100,
+    "weight_kg": 2.434,
+    "temperature_degC": {
+     "min": -50,
+     "max": 150
+    },
+    "height_mm": 202
+   }
+  },
+  {
+   "model": "FYC105A (steel)",
+   "specs": {
+    "force_kN": 100
+   }
+  },
+  {
+   "model": "DL07589.01 (square platens, Exceed)",
+   "specs": {
+    "force_kN": 200,
+    "width_mm": 450,
+    "depth_mm": 450,
+    "weight_kg": 60.2,
+    "height_mm": 155,
+    "note": "어댑터 60 mm, 상온"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "C42.503~C45.105"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "사각 플래튼"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/fundamental-aluminum-compression-platens",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/fundamental-steel-compression-platens",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/square-compression-platens",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

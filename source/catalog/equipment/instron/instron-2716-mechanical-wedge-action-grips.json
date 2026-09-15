@@ -1,0 +1,188 @@
+{
+ "id": "instron-2716-mechanical-wedge-action-grips",
+ "kind": "accessory",
+ "name": "Instron 2716 / 2736 Series Mechanical Wedge Action Tensile Grips",
+ "name_ko": "인스트론 2716 / 2736 계열 수동 웨지 액션 인장 그립",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "mechanical_wedge",
+ "description": "그립 몸체가 움직여 조를 닫는 수동 웨지 그립 — 조 면의 수직 위치가 변하지 않아 예압 없이 물리고, 하중이 커질수록 물림력이 커진다. 저하중 2716(1~50 kN)은 플라스틱·엘라스토머·금속, 고하중 2716(100·150 kN)은 금속·복합재. 2736 은 350 °C 까지의 고온 사양. 정밀 웨지 2716-028/030(100·250 kN)은 Nadcap 정렬과 피기백이 된다. 정적 인장·인장 반복용, 고사이클 피로 불가.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "wires",
+  "plastics",
+  "metals",
+  "elastomers",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 1,
+   "max": 250
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 350,
+   "note": "2736 고온 사양 350 °C. 표준형은 -70~315 °C(복합재 그립 가이드 표)"
+  },
+  "width_mm": {
+   "max": 50,
+   "note": "최대 시편 폭"
+  }
+ },
+ "models": [
+  {
+   "model": "2716-016",
+   "specs": {
+    "force_kN": 1,
+    "width_mm": 19
+   }
+  },
+  {
+   "model": "2716-017",
+   "specs": {
+    "force_kN": 2,
+    "width_mm": 19
+   }
+  },
+  {
+   "model": "2716-010",
+   "specs": {
+    "force_kN": 5,
+    "width_mm": 25
+   }
+  },
+  {
+   "model": "2716-015",
+   "specs": {
+    "force_kN": 30,
+    "width_mm": 25
+   }
+  },
+  {
+   "model": "2736-015",
+   "specs": {
+    "force_kN": 30,
+    "width_mm": 25,
+    "temperature_degC": {
+     "max": 350
+    }
+   },
+   "note": "고온형"
+  },
+  {
+   "model": "2716-020",
+   "specs": {
+    "force_kN": 50,
+    "width_mm": 25
+   }
+  },
+  {
+   "model": "2716-002",
+   "specs": {
+    "force_kN": 100,
+    "width_mm": 25
+   }
+  },
+  {
+   "model": "2716-003",
+   "specs": {
+    "force_kN": 100,
+    "width_mm": 50
+   }
+  },
+  {
+   "model": "2736-004",
+   "specs": {
+    "force_kN": 100,
+    "width_mm": 25,
+    "temperature_degC": {
+     "max": 350
+    }
+   },
+   "note": "고온형"
+  },
+  {
+   "model": "2736-005",
+   "specs": {
+    "force_kN": 100,
+    "width_mm": 50,
+    "temperature_degC": {
+     "max": 350
+    }
+   },
+   "note": "고온형"
+  },
+  {
+   "model": "2716-008",
+   "specs": {
+    "force_kN": 150,
+    "width_mm": 50
+   }
+  },
+  {
+   "model": "2716-028",
+   "specs": {
+    "force_kN": 100,
+    "temperature_degC": {
+     "min": -80,
+     "max": 250
+    }
+   },
+   "note": "정밀 수동 웨지 — Nadcap 정렬·피기백 가능"
+  },
+  {
+   "model": "2716-030",
+   "specs": {
+    "force_kN": 250,
+    "temperature_degC": {
+     "min": -80,
+     "max": 250
+    }
+   },
+   "note": "정밀 수동 웨지"
+  }
+ ],
+ "features": [
+  "조를 조여도 조 면 위치가 그대로 — 표점 거리 유지, 압축 예압 없음",
+  "파단 시 되튐 없음 — 신율계가 붙은 채로 유지",
+  "공구 없이 조 면 교체"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/mechanical-wedge-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/composite-test-fixtures/composite-tensile-grip-guide/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

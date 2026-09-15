@@ -1,0 +1,75 @@
+{
+ "id": "micromeritics-accupyc-autopore-accessories",
+ "kind": "accessory",
+ "name": "Micromeritics AccuPyc Volume Insert Kits and FoamPyc Method, AutoPore Mercury QuikVac",
+ "name_ko": "마이크로메리틱스 AccuPyc 용 체적 인서트 키트 · FoamPyc 발포체 셀 함량법 · AutoPore 용 수은 QuikVac",
+ "manufacturer": "micromeritics",
+ "category": "accessory",
+ "subcategory": "pycnometer_accessory",
+ "description": "AccuPyc 가스 피크노미터용: 체적 인서트 키트로 시료실 부피를 줄여 소량 시료의 진밀도 정확도 유지(대용량은 불균질·큰 조각, 소용량은 희귀 시료); FoamPyc 는 ASTM·ISO 방법으로 발포 고분자(PVC·폴리스티렌·폴리우레탄)의 개방·폐쇄 셀 함량, 압축성, 셀 파괴를 구한다. AutoPore 수은 포로시미터용: Mercury QuikVac 수은 유출 회수기 — 250 mL 회수 용기, 0.3~0.5 µm 활성탄 필터.",
+ "test_items": [
+  "density_porosity"
+ ],
+ "measurands": [],
+ "materials": [
+  "powders",
+  "cellular polymers",
+  "PVC foam",
+  "polystyrene",
+  "polyurethane"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "AccuPyc volume insert kits",
+   "specs": {}
+  },
+  {
+   "model": "FoamPyc (open/closed cell content method)",
+   "specs": {
+    "note": "ASTM·ISO 방법"
+   }
+  },
+  {
+   "model": "Mercury QuikVac",
+   "specs": {
+    "sample_volume_mL": 250,
+    "note": "활성탄 필터 0.3~0.5 µm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "micromeritics-accupyc-ii-1345",
+   "note": "체적 인서트·FoamPyc"
+  },
+  {
+   "type": "fits_on",
+   "target": "micromeritics-autopore-v",
+   "note": "Mercury QuikVac"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://micromeritics.com/accessory/volume-insert-kits/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://micromeritics.com/accessory/foampyc/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://micromeritics.com/accessory/mercury-quikvac/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

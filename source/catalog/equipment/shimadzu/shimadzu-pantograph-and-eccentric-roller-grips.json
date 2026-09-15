@@ -1,0 +1,93 @@
+{
+ "id": "shimadzu-pantograph-and-eccentric-roller-grips",
+ "kind": "accessory",
+ "name": "Shimadzu Pantograph Grips (Type 1 / Type 2, 100 N – 5 kN) and 1 kN Eccentric Roller Grips",
+ "name_ko": "시마즈 팬터그래프 그립 (Type 1·2, 100 N~5 kN) · 1 kN 편심 롤러 그립",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "self_tightening",
+ "description": "고무·직물·연질 플라스틱 판 시편용 자기물림 그립. 팬터그래프 그립은 스프링으로 물고 당길수록 조이는 단순 구조 — Type 1 은 넓고 얇은 시편, Type 2 는 좁고 두꺼운 시편, 1 kN·5 kN 과 100 N 형, 평행 홈 조. 1 kN 편심 롤러 그립은 비대칭 롤러가 하중에 따라 조여 두께가 줄어도 물림을 유지, 고무·연질·반경질 플라스틱.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "rubber",
+  "soft plastics",
+  "semi-hard plastics",
+  "textiles"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 100,
+   "max": 5000
+  }
+ },
+ "models": [
+  {
+   "model": "Pantograph Grips Type 1 / Type 2 (1 kN, 5 kN)",
+   "specs": {
+    "force_kN": [
+     1,
+     5
+    ]
+   }
+  },
+  {
+   "model": "100 N Pantograph Grips",
+   "specs": {
+    "force_N": 100
+   }
+  },
+  {
+   "model": "1 kN Eccentric Roller Grips",
+   "specs": {
+    "force_kN": 1
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/type-1-and-type-2-pantograph-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/100-n-pantograph-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/1-kn-eccentric-roller-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

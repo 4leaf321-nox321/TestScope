@@ -1,0 +1,132 @@
+{
+ "id": "mts-advantage-optical-extensometer-aox",
+ "kind": "sensor",
+ "name": "MTS Advantage Optical Extensometer (AOX)",
+ "name_ko": "MTS Advantage 광학 신율계 AOX (비접촉, 300~3,000 Hz, 분해능 <0.5 µm)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "video",
+ "description": "격자·바 없이 설정하는 비접촉 광학 신율계 — 실시간 300~3,000 Hz, 즉시 재설정, 한번 설정하면 항상 측정. 텔레센트릭 렌즈 모델은 금속·복합재·세라믹·CMC 같은 고탄성 재료의 탄성계수·오프셋 항복·파단 변형률까지: RMS 분해능 준정적 <0.5 µm·동적 <2.5 µm·크리프 <0.1 µm(광학·필터 설정에 따라), ISO 9513 Class 0.5·ASTM E83 B-1 이상(표점 ≥10 mm). QC 인장·장기 피로·균열 성장, 필름·세라믹.",
+ "test_items": [
+  "tensile",
+  "flexure",
+  "fatigue",
+  "creep",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "yield_strength",
+  "r_value"
+ ],
+ "materials": [
+  "composites",
+  "metals",
+  "ceramics",
+  "CMC",
+  "plastics",
+  "films",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 0.5",
+   "ASTM E83 Class B-1"
+  ],
+  "test_methods": [
+   "ASTM D3039",
+   "ASTM A48/A48M",
+   "ASTM D3518",
+   "ASTM D412",
+   "ASTM D6272",
+   "ASTM D638",
+   "ASTM D695",
+   "ASTM D7264",
+   "ASTM D790",
+   "ASTM D882",
+   "ASTM E21",
+   "ASTM E517",
+   "ASTM E646",
+   "ASTM E8/E8M",
+   "ASTM E9",
+   "ISO 10113",
+   "ISO 10275",
+   "ISO 14125",
+   "ISO 6892-1",
+   "ISO 6892-2",
+   "ISO 14129",
+   "ISO 178",
+   "ISO 527-2",
+   "ISO 527-3",
+   "ISO 527-4",
+   "ISO 527-5",
+   "ISO 604",
+   "EN 2561",
+   "EN 2562",
+   "EN 2597",
+   "EN 2746",
+   "EN 6031"
+  ]
+ },
+ "limits": {
+  "data_rate_Hz": {
+   "min": 300,
+   "max": 3000
+  },
+  "displacement_um": {
+   "min": 0.1,
+   "note": "분해능(크리프 설정)"
+  },
+  "gauge_length_mm": {
+   "min": 10
+  }
+ },
+ "models": [
+  {
+   "model": "AOX",
+   "specs": {
+    "data_rate_Hz": {
+     "min": 300,
+     "max": 3000
+    },
+    "displacement_um": 0.5,
+    "accuracy_class": "ISO 9513 0.5 / ASTM E83 B-1",
+    "note": "분해능 준정적 <0.5, 동적 <2.5, 크리프 <0.1 µm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-acumen"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/advantage-optical-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,100 @@
+{
+ "id": "instron-2850-t-slot-tables",
+ "kind": "accessory",
+ "name": "Instron 2850 Series T-Slot Tables (CP103964 / 2850-206 / 2850-205 / 2850-203 / 2850-202)",
+ "name_ko": "인스트론 2850 계열 T-슬롯 테이블 (부품·구조물 고정, 5~600 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "table",
+ "description": "표준 그립으로 잡을 수 없는 부품·구조물을 기계 베이스에 고정하는 T-슬롯 테이블 — 앞뒤·좌우·대각 슬롯에 T 너트를 넣고 볼트로 고정하며 표준 그립·지그는 테이블을 떼지 않고 쓴다. 반복 시험을 위해 가이드·스토퍼를 같은 자리에 둘 수 있다. 단일 컬럼 5 kN(200×160), 테이블 모델 50 kN(400×500), 플로어 모델 300 kN(550×500)·600 kN(640×640).",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "peel"
+ ],
+ "measurands": [],
+ "materials": [
+  "components",
+  "structures"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 5,
+   "max": 600
+  }
+ },
+ "models": [
+  {
+   "model": "CP103964",
+   "specs": {
+    "force_kN": 5,
+    "width_mm": 200,
+    "depth_mm": 160,
+    "note": "3340·4440·5540·5840·5940·34SC·68SC 단일 컬럼"
+   }
+  },
+  {
+   "model": "2850-206",
+   "specs": {
+    "force_kN": 50,
+    "width_mm": 400,
+    "depth_mm": 500,
+    "note": "3360 테이블 모델"
+   }
+  },
+  {
+   "model": "2850-205",
+   "specs": {
+    "force_kN": 50,
+    "width_mm": 400,
+    "depth_mm": 500,
+    "note": "4460·5560·5860·5960·34TM·68TM 테이블 모델"
+   }
+  },
+  {
+   "model": "2850-203",
+   "specs": {
+    "force_kN": 300,
+    "width_mm": 550,
+    "depth_mm": 500,
+    "note": "3382/3384/3385H·34FM-100/300·448x·558x·588x·598x·68FM-100/300 플로어 모델"
+   }
+  },
+  {
+   "model": "2850-202",
+   "specs": {
+    "force_kN": 600,
+    "width_mm": 640,
+    "depth_mm": 640,
+    "note": "4400·5500·5800·5900 플로어 모델 250 kN 초과"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/test-plates/t-slot-tables/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

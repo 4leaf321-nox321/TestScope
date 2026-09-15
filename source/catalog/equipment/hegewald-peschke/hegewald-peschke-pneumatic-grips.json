@@ -1,0 +1,120 @@
+{
+ "id": "hegewald-peschke-pneumatic-grips",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Pneumatic Grips (single-sided, double-sided, pneumatic wedge type 10 / 20 kN for temperature chambers) and control units",
+ "name_ko": "헤게발트 운트 페슈케 공압 그립 (단측·양측 · 챔버용 공압 웨지 10/20 kN) 과 제어 유닛",
+ "manufacturer": "hegewald-peschke",
+ "category": "grip_fixture",
+ "subcategory": "pneumatic",
+ "description": "섬유·필름·종이·직물·플라스틱·스트립·테이프·선재와 물림력에 민감한 재료용 공압 그립 — 일정하고 재현되는 예장력, 시험 내내 일정한 물림력, 유압보다 싸고 가볍고 작다, 손·풋스위치 조작. 단측 닫힘형(수동 조절 반대 베어링, 직동 실린더, 역방향 실린더 특수형 — 대칭·비대칭 물림), 양측 닫힘형(콤팩트, 중심 물림만), 공압 웨지형 10 / 20 kN(온도 챔버 -70~+280 °C, 테플론 씰, 연장 로드 길이 가변). 제어 유닛 3 종 — 닫힘 속도 고정 감속, 감압 닫힘·비상정지 조합, 잠금 밸브·압력 조절·재기동 방지 정비 유닛.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "fibers",
+  "foils",
+  "paper",
+  "textiles",
+  "plastics",
+  "strips",
+  "tapes",
+  "wires"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 20,
+   "note": "공압 웨지형 10/20 kN — 단측·양측형 용량은 페이지에 없음"
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 280,
+   "note": "공압 웨지형 챔버 사양"
+  }
+ },
+ "models": [
+  {
+   "model": "Single-sided pneumatic grips",
+   "specs": {
+    "note": "수동 조절 반대 베어링, 직동 실린더 / 역방향 실린더 특수형"
+   }
+  },
+  {
+   "model": "Double-sided pneumatic grips",
+   "specs": {
+    "note": "콤팩트, 중심 물림만"
+   }
+  },
+  {
+   "model": "Pneumatic wedge type grips 10 kN / 20 kN",
+   "specs": {
+    "force_kN": [
+     10,
+     20
+    ],
+    "temperature_degC": {
+     "min": -70,
+     "max": 280
+    }
+   }
+  },
+  {
+   "model": "Pneumatic control units (3 variants)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-duo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-solo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-micro",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-vario",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-temperature-chambers",
+   "note": "공압 웨지형"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/pneumatic-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,154 @@
+{
+ "id": "shimadzu-servopulser-fatigue-grips-and-jigs",
+ "kind": "accessory",
+ "name": "Shimadzu Servopulser Optional Grips and Jigs (front-opening hydraulic, non-shift plate, split flange rod, pin-type, CT grips, bolt jigs)",
+ "name_ko": "시마즈 서보펄서 피로 시험용 그립·지그 (앞열림 유압 · 논시프트 플레이트 · 분할 플랜지 봉 · 핀형 · CT 시편 · 볼트 지그)",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "fatigue",
+ "description": "서보펄서(EHF) 피로 시험기용 옵션 그립·지그. 앞열림 유압 그립 ±20~200 kN(RT~+50 °C, 봉·판, 전진폭 인장·압축). 수동 논시프트 플레이트 그립 ±5~100 kN(RT~+50 또는 -196~+300 °C, 판). 분할 플랜지 봉 그립 ±10~200 kN(RT~+100 또는 -196~+300 °C). 판용 핀형 그립 + 동적 스트레인게이지 +6/10 kN(-196~+300 / -20~+300 °C, 폭 30·두께 5 mm, 인장만, 반진폭). 정적용 논시프트 웨지 그립 ±20~250 kN(0~+120 °C, 인장만). CT 시편 그립 + 클립 게이지 ±6~80 kN(ASTM E399·E1820, RT~+100 / -20~+300 °C). 볼트 지그: 나사 인장 시험 지그 ±100/250 kN, 나사 풀림 시험 장치(체결 방향·직각 방향 진동 변위로 체결력 변화).",
+ "test_items": [
+  "fatigue",
+  "tensile",
+  "compression",
+  "fracture_toughness"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "composites",
+  "bolts and nuts"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E399",
+   "ASTM E1820"
+  ]
+ },
+ "limits": {
+  "dynamic_force_kN": {
+   "min": 5,
+   "max": 250
+  },
+  "temperature_degC": {
+   "min": -196,
+   "max": 300
+  }
+ },
+ "models": [
+  {
+   "model": "Front-Opening Hydraulic Grip",
+   "specs": {
+    "dynamic_force_kN": {
+     "min": 20,
+     "max": 200
+    },
+    "temperature_degC": {
+     "min": 20,
+     "max": 50
+    }
+   }
+  },
+  {
+   "model": "Manual Non-Shift Plate Grip",
+   "specs": {
+    "dynamic_force_kN": {
+     "min": 5,
+     "max": 100
+    },
+    "temperature_degC": {
+     "min": -196,
+     "max": 300
+    }
+   }
+  },
+  {
+   "model": "Split Flange Rod Grip",
+   "specs": {
+    "dynamic_force_kN": {
+     "min": 10,
+     "max": 200
+    },
+    "temperature_degC": {
+     "min": -196,
+     "max": 300
+    }
+   }
+  },
+  {
+   "model": "Pin-Type Grip for Flat Samples + Dynamic Strain Gauge",
+   "specs": {
+    "dynamic_force_kN": [
+     6,
+     10
+    ],
+    "temperature_degC": {
+     "min": -196,
+     "max": 300
+    },
+    "width_mm": {
+     "max": 30
+    },
+    "specimen_thickness_mm": {
+     "max": 5
+    },
+    "note": "인장만(반진폭)"
+   }
+  },
+  {
+   "model": "Non-Shift Wedge Grip for Static Testing",
+   "specs": {
+    "force_kN": {
+     "min": 20,
+     "max": 250
+    },
+    "temperature_degC": {
+     "min": 0,
+     "max": 120
+    },
+    "note": "정적 인장만"
+   }
+  },
+  {
+   "model": "Grips for CT Test Samples + Clip Gauge",
+   "specs": {
+    "dynamic_force_kN": {
+     "min": 6,
+     "max": 80
+    },
+    "temperature_degC": {
+     "min": -20,
+     "max": 300
+    }
+   }
+  },
+  {
+   "model": "Screw Tensile Test Jig",
+   "specs": {
+    "dynamic_force_kN": [
+     100,
+     250
+    ],
+    "temperature_degC": {
+     "min": 20,
+     "max": 50
+    }
+   }
+  },
+  {
+   "model": "Screw Looseness Test Device",
+   "specs": {}
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/fatigue-testingimpact-testing-accessories/optional-accessories-and-systems/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited",
+ "notes": "호스트 서보펄서 EHF 계열이 카탈로그에 없어 fits_on 을 비웠다."
+}

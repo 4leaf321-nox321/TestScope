@@ -1,0 +1,72 @@
+{
+ "id": "shimadzu-pcb-bending-test-jig",
+ "kind": "accessory",
+ "name": "Shimadzu Printed Circuit Board Bending Test Jig (3- and 4-point, resistance measurement option)",
+ "name_ko": "시마즈 인쇄회로기판 굽힘 시험 지그 (3·4점, 저항 동시 측정 옵션, 반복 굽힘)",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "flexure",
+ "description": "전자 부품·기판의 굽힘 강도 평가 지그 — 3점·4점 굽힘, 옵션으로 기판 강도와 저항값 동시 측정, 임계 굽힘 등 계산, 반복 굽힘 시험. 호스트로 AG-Xplus SC(단주형, 10 N~10 kN, 0.0005~1,500 mm/min, 700 mm), EZ-SX(1~500 N), EZ-LX(1 N~5 kN)를 든다.",
+ "test_items": [
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "printed circuit boards",
+  "electronic components"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "PCB Bending Test Jig",
+   "specs": {
+    "note": "3·4점, 저항 측정 옵션, 사이클 굽힘"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "AG-Xplus SC 단주형"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "extends_capability",
+   "target": "shimadzu-ag-xplus",
+   "note": "flexure(PCB)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/printed-circuit-board-bending-test-jig/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/printed-circuit-board-bending-test-jig/spec.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

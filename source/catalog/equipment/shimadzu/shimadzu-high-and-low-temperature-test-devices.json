@@ -1,0 +1,85 @@
+{
+ "id": "shimadzu-high-and-low-temperature-test-devices",
+ "kind": "accessory",
+ "name": "Shimadzu High-Temperature Test Devices (furnaces to 1500 °C, IR lamp furnace, duplex) and Low-Temperature Immersion Tank",
+ "name_ko": "시마즈 고온 시험 장치 (1500 °C 로 · IR 램프 로 · 듀플렉스) · 저온 액체질소 침지조",
+ "manufacturer": "shimadzu",
+ "category": "furnace",
+ "description": "AGX-V2 옵션의 분위기 시험 장치. 고온 장치는 내열 합금·세라믹의 고온 시험용 로 — 전용 신율계와 조합해 변형률 측정·제어, 시험 사이클 시간을 살리는 듀플렉스 유닛, 고속 승온 IR 램프 로, 1500 °C 까지의 유닛. 저온 장치는 취성 시험용 액체질소 침지 굽힘 시험조. 일부는 시험기 연결에 특수 부품이 필요하다. 수치는 상한 1500 °C 외에 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "flexure",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "heat-resistant alloys",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "max": 1500
+  }
+ },
+ "models": [
+  {
+   "model": "High-Temperature Test Device (to 1500 °C)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1500
+    }
+   }
+  },
+  {
+   "model": "IR lamp furnace",
+   "specs": {
+    "note": "고속 승온"
+   }
+  },
+  {
+   "model": "Duplex unit",
+   "specs": {}
+  },
+  {
+   "model": "Low-temperature immersion tank (liquid nitrogen)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "AGS-V 옵션 페이지의 「분위기 시험 장치」"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "requires",
+   "target": "utility-liquid-nitrogen",
+   "note": "저온 침지조"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-precision-universal-tester/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-ags-v-series/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,138 @@
+{
+ "id": "anton-paar-step-platform-modules",
+ "kind": "accessory",
+ "name": "Anton Paar Modules for Step Platforms and Scratch/Indentation Testers (Friction Module for NST³ / MCT³ / RST 300, Heating Modules 200 °C / 450 °C / Petri dish 50 °C, Piezo Stage 100 × 100 µm)",
+ "name_ko": "안톤파 Step 플랫폼·스크래치/압입 시험기 모듈 (마찰 모듈 1 N/30 N/200 N · 가열 모듈 200/450 °C·페트리 50 °C · 피에조 스테이지 100×100 µm)",
+ "manufacturer": "anton-paar",
+ "category": "accessory",
+ "subcategory": "indenter_module",
+ "description": "나노·마이크로 압입 및 스크래치 시험기(Step 701 등)용 모듈. 마찰 모듈: 접선력을 기록해 마찰계수를 자동 계산, 스크래치 임계 하중(코팅 부착) 판정을 보완하고 멀티패스로 기초 트라이볼로지 — NST³ 용 1 N(1 µN), MCT³ 용 30 N(10 µN), RST 300 용 200 N(0.2 mN). 가열 모듈: 200 °C(MCT³·UNHT³, 고분자 Tg, 건식, 25×50 mm), 450 °C(MCT³·UNHT³ HTV, 금속·합금, 건식/액체, Ø25), 페트리 디시 히터 50 °C(UNHT³ BIO, 체온 37 °C, Ø35 페트리), 열전대 0.1 °C, 온도 스캔 자동 절차. 피에조 스테이지: UNHT³ 헤드와 조합해 100×100 µm 영역 압입 매핑, 분해능 0.2 nm, 위치 정확도 10 nm.",
+ "test_items": [
+  "instrumented_indentation",
+  "scratch_pencil_hardness",
+  "friction_wear_tribo"
+ ],
+ "measurands": [],
+ "materials": [
+  "hard coatings",
+  "polymers",
+  "metals",
+  "alloys",
+  "biomaterials",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "friction_force_mN": {
+   "max": 200000,
+   "note": "마찰 모듈 200 N(RST 300)"
+  },
+  "temperature_degC": {
+   "min": 23,
+   "max": 450
+  },
+  "stage_travel_mm": {
+   "max": 0.1,
+   "note": "피에조 100 µm"
+  }
+ },
+ "models": [
+  {
+   "model": "Friction module for NST³",
+   "specs": {
+    "friction_force_mN": 1000,
+    "note": "분해능 1 µN"
+   }
+  },
+  {
+   "model": "Friction module for MCT³",
+   "specs": {
+    "friction_force_mN": 30000,
+    "note": "분해능 10 µN"
+   }
+  },
+  {
+   "model": "Friction module for RST 300",
+   "specs": {
+    "friction_force_mN": 200000,
+    "note": "분해능 0.2 mN"
+   }
+  },
+  {
+   "model": "200 °C heating module (MCT³ / UNHT³)",
+   "specs": {
+    "temperature_degC": {
+     "min": 23,
+     "max": 200
+    },
+    "specimen_size_mm": 40,
+    "note": "건식, 시료 25×40 mm"
+   }
+  },
+  {
+   "model": "450 °C heating module (MCT³ / UNHT³ HTV)",
+   "specs": {
+    "temperature_degC": {
+     "min": 23,
+     "max": 450
+    },
+    "specimen_diameter_mm": 25,
+    "note": "건식/액체"
+   }
+  },
+  {
+   "model": "Petri dish heater (UNHT³ BIO)",
+   "specs": {
+    "temperature_degC": {
+     "min": 23,
+     "max": 50
+    },
+    "specimen_diameter_mm": 35
+   }
+  },
+  {
+   "model": "Piezo Stage 100 µm × 100 µm",
+   "specs": {
+    "stage_travel_mm": 0.1,
+    "position_resolution_nm": 0.2,
+    "note": "위치 정확도 10 nm, 100×100×20 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "anton-paar-nanoindentation"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "anton-paar-nanoindentation"
+  },
+  {
+   "type": "extends_capability",
+   "target": "anton-paar-nanoindentation",
+   "note": "friction_wear_tribo"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/friction-module/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/heating-module/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/piezo-stage/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

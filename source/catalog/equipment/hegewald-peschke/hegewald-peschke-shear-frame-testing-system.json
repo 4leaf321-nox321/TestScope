@@ -1,0 +1,77 @@
+{
+ "id": "hegewald-peschke-shear-frame-testing-system",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Shear Frame Testing System (picture-frame shear for textiles and textile-reinforced plastics)",
+ "name_ko": "헤게발트 운트 페슈케 전단 프레임 시험 시스템 (직물·섬유강화 플라스틱의 드레이핑 전단각)",
+ "manufacturer": "hegewald-peschke",
+ "category": "grip_fixture",
+ "subcategory": "shear",
+ "description": "직물과 섬유강화 플라스틱(복합재·프리프레그·오가노시트)의 전단력-전단각 선도로 드레이핑 변형성을 평가하는 전단 프레임 — 시편이 빠지거나 물림부에서 손상되지 않는 물림, 약 0~200 N 예하중, 모든 환경에서 저마찰 기구, 고강성, 한계각·임계 전단각. 온도 챔버와 함께 다른 온도에서 특성화(예: inspekt table 50-1 + 챔버).",
+ "test_items": [
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "textiles",
+  "textile-reinforced plastics",
+  "prepregs",
+  "organo sheets"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 0,
+   "max": 200,
+   "note": "예하중"
+  }
+ },
+ "models": [
+  {
+   "model": "Shear frame testing system",
+   "specs": {
+    "force_N": {
+     "min": 0,
+     "max": 200
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-duo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-temperature-chambers",
+   "note": "온도 챔버와 조합"
+  },
+  {
+   "type": "extends_capability",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "shear"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/shear-frame-testing-system/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

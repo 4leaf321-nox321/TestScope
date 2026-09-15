@@ -1,0 +1,64 @@
+{
+ "id": "hegewald-peschke-changing-devices",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Changing Devices (linear roller guide for furnaces, long-travel extensometers and other accessories)",
+ "name_ko": "헤게발트 운트 페슈케 교환 장치 (리니어 롤러 가이드 — 고온로·롱트래블 신율계 등을 시험 공간에 넣고 빼는 장치)",
+ "manufacturer": "hegewald-peschke",
+ "category": "accessory",
+ "subcategory": "changing_device",
+ "description": "한 시험기에서 고온로(DIN EN ISO 6892-2 고온 인장)와 롱트래블 신율계 같은 부속을 번갈아 쓰기 위한 리니어 롤러 가이드 교환 장치 — 시험기 뒤 파킹 위치에 두고 손으로 안전하게 밀어 넣는다. 로는 시험 공간 밖에서 가열·냉각해 대기 시간을 줄이고 높이·기울기 수동 조정, 롱트래블 신율계는 300 mm 전동 높이 조절. 고온 인장 시편 취급 장치가 달린 고온로용 교환 장치도 있다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "stage_travel_mm": {
+   "max": 300,
+   "note": "신율계 전동 높이 조절"
+  }
+ },
+ "models": [
+  {
+   "model": "Changing device for high temperature furnaces (with hot specimen handling device)",
+   "specs": {}
+  },
+  {
+   "model": "Changing device for different accessory equipment",
+   "specs": {
+    "stage_travel_mm": 300
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-high-temperature-furnaces"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-extensometers"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/changing-devices-hegewald-peschke/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

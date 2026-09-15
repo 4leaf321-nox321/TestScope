@@ -1,0 +1,189 @@
+{
+ "id": "tinius-olsen-environmental-chambers",
+ "kind": "accessory",
+ "name": "Tinius Olsen Environmental Chambers (-70 to 300 °C standard; Ambient–350, Ambient–600, -100–350, -150–600 °C)",
+ "name_ko": "티니우스 올센 환경 챔버 (표준 -70~300 °C · 상온~350 · 상온~600 · -100~350 · -150~600 °C)",
+ "manufacturer": "tinius-olsen",
+ "category": "environmental_chamber",
+ "description": "트윈 스크류 시험기 기둥 사이 프레임에 달아 뒤로 밀어 둘 수 있는 강제 순환 온도 챔버. 표준형: 상온~300 °C(LN2 옵션 -70), 내부 250×245×605 mm, 30분 후 ±1 °C(중심 80 % 체적), 3중 유리창 320×140(500L 레이저 신율계 스캔·LN2 사용 시 김서림 방지), 3 kW, 62 kg. 고온형 4종: 상온~350 / 상온~600 / -100~350 / -150~600 °C — 내부 240×230×610 mm(외형 350×650×760), Eurotherm 3016, 열전대 샘플링 16 Hz, 안정도 ±2 °C, 창 350×170(비접촉 신율계·디플렉토미터), 도어 인터록, 자가 가압 LN2 듀어 옵션, 4.2 kW·230 V, 61~65 kg.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "rubber",
+  "metals",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -150,
+   "max": 600
+  },
+  "temperature_fluctuation_degC": {
+   "max": 2
+  },
+  "test_room_height_mm": {
+   "max": 610
+  },
+  "test_room_width_mm": {
+   "max": 250
+  },
+  "test_room_depth_mm": {
+   "max": 245
+  },
+  "chamber": {
+   "values": [
+    "yes"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "Chambers (standard, Ambient–300 °C, option -70 °C)",
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 300
+    },
+    "inner_mm": {
+     "width": 250,
+     "depth": 245,
+     "height": 605
+    },
+    "outer_mm": {
+     "width": 355,
+     "depth": 650,
+     "height": 750
+    },
+    "temperature_fluctuation_degC": 1,
+    "power_kW": 3,
+    "weight_kg": 62
+   }
+  },
+  {
+   "model": "Chamber Ambient–350 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 350
+    },
+    "inner_mm": {
+     "width": 240,
+     "depth": 230,
+     "height": 610
+    },
+    "outer_mm": {
+     "width": 350,
+     "depth": 650,
+     "height": 760
+    },
+    "temperature_fluctuation_degC": 2,
+    "power_kW": 4.2,
+    "weight_kg": 61
+   }
+  },
+  {
+   "model": "Chamber Ambient–600 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 600
+    },
+    "inner_mm": {
+     "width": 240,
+     "depth": 230,
+     "height": 610
+    },
+    "temperature_fluctuation_degC": 2,
+    "power_kW": 4.2,
+    "weight_kg": 62
+   }
+  },
+  {
+   "model": "Chamber -100–350 °C",
+   "specs": {
+    "temperature_degC": {
+     "min": -100,
+     "max": 350
+    },
+    "inner_mm": {
+     "width": 240,
+     "depth": 230,
+     "height": 610
+    },
+    "temperature_fluctuation_degC": 2,
+    "power_kW": 4.2,
+    "weight_kg": 65,
+    "cooling": "LN2 듀어"
+   }
+  },
+  {
+   "model": "Chamber -150–600 °C",
+   "specs": {
+    "temperature_degC": {
+     "min": -150,
+     "max": 600
+    },
+    "inner_mm": {
+     "width": 240,
+     "depth": 230,
+     "height": 610
+    },
+    "temperature_fluctuation_degC": 2,
+    "power_kW": 4.2,
+    "weight_kg": 65,
+    "cooling": "LN2 듀어"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series",
+   "note": "「대부분의 트윈 스크류 재료시험기에 적합」 — 카탈로그의 티니우스 올센 UTM 은 ST 계열"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "tinius-olsen-st-series"
+  },
+  {
+   "type": "requires",
+   "target": "utility-liquid-nitrogen",
+   "note": "영하 운전 시"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/chambers/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/chamber-ambient-to-350c/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/chamber-ambient-to-600c/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/chamber-100-to-350c/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/chamber-150-to-600c/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

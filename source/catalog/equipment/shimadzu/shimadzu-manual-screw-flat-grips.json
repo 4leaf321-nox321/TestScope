@@ -1,0 +1,112 @@
+{
+ "id": "shimadzu-manual-screw-flat-grips",
+ "kind": "accessory",
+ "name": "Shimadzu Manual Screw Flat Grips (50 N – 5 kN, stainless type to 320 °C) and 10 N Screw Flat Grips",
+ "name_ko": "시마즈 수동 나사식 플랫 그립 (50 N~5 kN, 스테인리스형 320 °C) · 10 N 나사식 플랫 그립",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "screw_flat",
+ "description": "고무·플라스틱·직물·종이의 판·선재 정적 인장용 범용 그립 — 널링 노브 또는 T 렌치로 조이고 두께 16 mm 까지. 표준형 -70~+250 °C, 스테인리스형 -70~+320 °C. 1·5 kN 은 편면 줄눈 조, 50 N 은 평면 조, 옵션 웨이브·고무·고강도 고무·그랩·라인 접촉 조. 10 N 형은 실·종이·천 같은 저하중 연질 재료용으로 고무 코팅 평면 조, 로드셀에 직접 나사로 거는 훅 + S 형 유니버설 조인트 커플링(AG-Xplus 5 kN 이하 로드셀용, AGS-X·EZ-X 는 별도 커플링).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "rubber",
+  "plastics",
+  "textiles",
+  "cloth",
+  "paper",
+  "yarn"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 10,
+   "max": 5000
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 320
+  },
+  "specimen_thickness_mm": {
+   "max": 16
+  }
+ },
+ "models": [
+  {
+   "model": "Manual Screw Flat Grips 50 N / 1 kN / 5 kN (standard)",
+   "specs": {
+    "force_N": [
+     50,
+     1000,
+     5000
+    ],
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    },
+    "specimen_thickness_mm": {
+     "max": 16
+    }
+   }
+  },
+  {
+   "model": "Manual Screw Flat Grips stainless steel",
+   "specs": {
+    "force_kN": {
+     "max": 5
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 320
+    }
+   }
+  },
+  {
+   "model": "10 N Screw Flat Grips",
+   "specs": {
+    "force_N": 10,
+    "note": "고무 코팅 평면 조, 훅 + S 형 조인트"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/manual-screw-flat-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/10-n-screw-flat-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,142 @@
+{
+ "id": "instron-high-temperature-extensometers",
+ "kind": "sensor",
+ "name": "Instron High-Temperature Extensometers (CP118413 600 °C · 2632 Series 1000 °C · W-E418 E-Series 1200 °C)",
+ "name_ko": "인스트론 고온 신율계 (600 °C 챔버용 · 2632 계열 1000 °C 퍼니스용 · E 계열 1200 °C)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "high_temperature",
+ "description": "세 급의 고온 신율계. CP118413 은 냉각 없이 600 °C 챔버 안에서 환봉·평판 시편의 인장·압축·반복 시험, 표점 25 mm, +50 %/-8 %, 환봉 Ø15·평판 50 mm(두께 6.35) 또는 19 mm(두께 12.5) 까지, 퀵어태치 키트. 2632 계열은 저항로 안 1000 °C 까지의 스트레인게이지 신율계 — 저사이클 피로·크리프·응력완화에 알맞고 세라믹 코드 또는 스프링(2632-061)으로 부착, 석영·알루미나 로드, 12.5 mm(+20/-10 %)·25 mm(+10/-5 %), 3117-150/152/200 퍼니스 호환. E 계열 W-E418 은 슬롯이 있는 퍼니스나 유도 가열용 자립 사이드 엔트리형, 25·50 mm ±20 %, 1200 °C.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "fatigue",
+  "creep",
+  "relaxation"
+ ],
+ "measurands": [
+  "axial_strain"
+ ],
+ "materials": [
+  "metals",
+  "alloys",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "max": 1200
+  },
+  "gauge_length_mm": {
+   "min": 12.5,
+   "max": 50
+  }
+ },
+ "models": [
+  {
+   "model": "CP118413 (600 °C)",
+   "specs": {
+    "temperature_degC": {
+     "max": 600
+    },
+    "gauge_length_mm": 25,
+    "specimen_diameter_mm": {
+     "max": 15
+    },
+    "width_mm": {
+     "max": 50
+    },
+    "note": "+50 %/-8 %"
+   }
+  },
+  {
+   "model": "2632-054 (quartz)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000
+    },
+    "gauge_length_mm": 12.5,
+    "note": "+20 %/-10 %"
+   }
+  },
+  {
+   "model": "2632-055 (alumina)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000
+    },
+    "gauge_length_mm": 12.5,
+    "note": "+20 %/-10 %"
+   }
+  },
+  {
+   "model": "2632-056 (quartz)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000
+    },
+    "gauge_length_mm": 25,
+    "note": "+10 %/-5 %"
+   }
+  },
+  {
+   "model": "2632-057 (alumina)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000
+    },
+    "gauge_length_mm": 25,
+    "note": "+10 %/-5 %"
+   }
+  },
+  {
+   "model": "W-E418-25",
+   "specs": {
+    "temperature_degC": {
+     "max": 1200
+    },
+    "gauge_length_mm": 25,
+    "note": "±20 %"
+   }
+  },
+  {
+   "model": "W-E418-50",
+   "specs": {
+    "temperature_degC": {
+     "max": 1200
+    },
+    "gauge_length_mm": 50,
+    "note": "±20 %"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-3119-600-environmental-chambers"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3119-160-furnace"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/high-temperature/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

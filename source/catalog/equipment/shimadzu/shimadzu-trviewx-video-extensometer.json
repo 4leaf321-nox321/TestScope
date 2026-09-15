@@ -1,0 +1,111 @@
+{
+ "id": "shimadzu-trviewx-video-extensometer",
+ "kind": "sensor",
+ "name": "Shimadzu TRViewX Non-Contact Digital Video Extensometer (with Real-Time Strain View option)",
+ "name_ko": "시마즈 TRViewX 비접촉 디지털 비디오 신율계 (Class 0.5, 실시간 변형률 분포 옵션)",
+ "manufacturer": "shimadzu",
+ "category": "extensometer",
+ "subcategory": "video",
+ "description": "CCD 카메라 영상 처리로 표점 신장을 재는 고정밀 비접촉 신율계 — 금속·고무·플라스틱·목재·필름까지 넓은 범위, Class 0.5, 접촉식을 붙일 수 없는 시편에도. 보호 커버와는 같이 쓸 수 없다. 옵션 Real-Time Strain View 는 표면 격자 마크의 변형 전후 비교로 2D 변형률 분포를 실시간 3 fps(사후 15 fps) 표시, TRAPEZIUM X-V 연동, CSV 저장 — 렌즈 시야 120 또는 240 mm, 5~35 °C·20~80 % RH, 온도 챔버 안 측정은 지원하지 않음(결과는 참고값).",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "metals",
+  "rubber",
+  "plastics",
+  "lumber",
+  "films",
+  "CFRP"
+ ],
+ "standards": {
+  "compliance": [
+   "Class 0.5"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "field_of_view_mm": {
+   "min": 120,
+   "max": 240,
+   "note": "Real-Time Strain View 렌즈"
+  },
+  "operating_temperature_degC": {
+   "min": 5,
+   "max": 35
+  }
+ },
+ "models": [
+  {
+   "model": "TRViewX",
+   "specs": {
+    "accuracy_class": "Class 0.5"
+   }
+  },
+  {
+   "model": "Real-Time Strain View (option)",
+   "specs": {
+    "field_of_view_mm": [
+     120,
+     240
+    ],
+    "operating_temperature_degC": {
+     "min": 5,
+     "max": 35
+    },
+    "operating_humidity_pct": {
+     "min": 20,
+     "max": 80
+    },
+    "note": "실시간 3 fps, 재계산 15 fps"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/trviewx/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/dses-1000/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/sie-560a560sa/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

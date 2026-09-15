@@ -1,0 +1,98 @@
+{
+ "id": "mts-fax1352-fundamental-automatic-extensometer",
+ "kind": "sensor",
+ "name": "MTS Fundamental Automatic Extensometer FAX1352 (0 – 80 mm, 0.2 µm)",
+ "name_ko": "MTS Fundamental 자동 신율계 FAX1352 (Criterion·Exceed 용, 범위 80 mm, 분해능 0.2 µm)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "automatic_contacting",
+ "description": "표점 위치를 자동으로 잡고 시편 변형을 추적하는 고분해능 자동 접촉 신율계 — 지지대가 시편 중심을 따라 동기 이동, 회전 마운트로 시험 공간 밖으로 젖힘, 단일 표점 시편 대량 시험용. 플라스틱·복합재·금속·철근의 탄성계수·오프셋 항복·파단 소성 신장. ISO 9513 Class 0.5, ASTM E8/E8M·ISO 6892-1. FAX1352: 범위 0~80 mm, 표점 10~200 mm(변경 시 재교정), 평판·환봉 0.2~40 mm, 상대 오차 ±1 %, 분해능 ≤0.2 µm, 5~40 °C, 530×120×673 mm, 100~240 VAC.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus",
+  "yield_strength",
+  "elongation"
+ ],
+ "materials": [
+  "plastics",
+  "composites",
+  "metals",
+  "rebar"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM E8/E8M",
+   "ISO 6892-1"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 80
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 200
+  },
+  "specimen_thickness_mm": {
+   "min": 0.2,
+   "max": 40
+  },
+  "specimen_diameter_mm": {
+   "min": 0.2,
+   "max": 40
+  },
+  "operating_temperature_degC": {
+   "min": 5,
+   "max": 40
+  }
+ },
+ "models": [
+  {
+   "model": "FAX1352 (100-530-550)",
+   "specs": {
+    "displacement_mm": 80,
+    "gauge_length_mm": {
+     "min": 10,
+     "max": 200
+    },
+    "specimen_thickness_mm": {
+     "min": 0.2,
+     "max": 40
+    },
+    "accuracy": "±1 %",
+    "displacement_um": 0.2,
+    "operating_temperature_degC": {
+     "min": 5,
+     "max": 40
+    },
+    "width_mm": 530,
+    "depth_mm": 120,
+    "height_mm": 673
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/fundamental-automatic-extensometer-fax",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

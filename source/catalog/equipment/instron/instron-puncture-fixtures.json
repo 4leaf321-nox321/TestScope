@@ -1,0 +1,92 @@
+{
+ "id": "instron-puncture-fixtures",
+ "kind": "accessory",
+ "name": "Instron Puncture Fixtures (2810-501 per ASTM D5748/D4649 · S1-11855 per MIL-STD-3010)",
+ "name_ko": "인스트론 천공 지그 (2810-501 ASTM D5748·D4649 · S1-11855 MIL-STD-3010 포장재)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "puncture",
+ "description": "필름·포장재 천공 저항 지그. 2810-501 은 ASTM D5748·D4649 용 — 4.4 kN, Ø0.75 in 배 모양 테플론 코팅 프로브(11 in 축), 클램핑 링 내경 4 in, 6 in 정사각 시편 절단 템플릿 포함. S1-11855 는 MIL-STD-3010 포장재 천공 — 2.5 kN, 10~40 °C. 둘 다 상부 Type Om, 하부 Type Dm.",
+ "test_items": [
+  "puncture"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastic film",
+  "packaging materials"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D5748",
+   "ASTM D4649",
+   "MIL-STD-3010"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 2.5,
+   "max": 4.4
+  }
+ },
+ "models": [
+  {
+   "model": "2810-501",
+   "specs": {
+    "force_kN": 4.4
+   }
+  },
+  {
+   "model": "S1-11855",
+   "specs": {
+    "force_kN": 2.5,
+    "temperature_degC": {
+     "min": 10,
+     "max": 40
+    },
+    "height_mm": 356,
+    "width_mm": 125
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-6800-series",
+   "note": "puncture"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-3400-series",
+   "note": "puncture"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/peel-friction-puncture/2810-501/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/peel-friction-puncture/s1-11855/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

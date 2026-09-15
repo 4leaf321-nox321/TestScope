@@ -1,0 +1,153 @@
+{
+ "id": "mts-fundamental-wedge-and-hydraulic-grips",
+ "kind": "accessory",
+ "name": "MTS Fundamental Wedge Grips (FXSA 10–300 kN), Hydraulic Wedge Grips (FXYB305C 300 kN / XYB605C 600 kN), Hydraulic Single Side Action Grips (FDYA504A 50 kN / FDYB105A 100 kN)",
+ "name_ko": "MTS Fundamental 웨지 그립 (10~300 kN) · 유압 웨지 그립 (300·600 kN) · 유압 단측 사이드 액션 그립 (50·100 kN)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "wedge",
+ "description": "Criterion·Exceed 전기기계식 프레임용 경제형 고하중 그립. 수동 웨지 FXSA104B 10 kN(3.1 kg)·FXSA304B 30 kN·FXSA105A 100 kN·FXSA305A 300 kN(26 kg) — 삽입 시 압축·좌굴 최소, 회전 방지·정렬 핀, 0~50 °C. 유압 웨지 FXYB305C 300 kN(92.5 kg)·XYB605C 600 kN(165 kg), 측면 장착, 입력 20 MPa. 유압 단측 사이드 액션 FDYA504A 50 kN(25 kg)·FDYB105A 100 kN(42 kg) — U 자형 빠른 작동, 비중심 시편, 20 MPa. 웨지·면과 유압 컨트롤러는 별매.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "strong plastics",
+  "aluminum",
+  "steel",
+  "ceramics",
+  "composites",
+  "wood/paper",
+  "rebar"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E8/E8M",
+   "ASTM E517",
+   "ASTM E646",
+   "ISO 6892-1",
+   "ISO 10113",
+   "ISO 10275"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 10,
+   "max": 600
+  },
+  "temperature_degC": {
+   "min": 0,
+   "max": 50
+  },
+  "pressure_MPa": {
+   "max": 20
+  }
+ },
+ "models": [
+  {
+   "model": "FXSA104B (manual wedge)",
+   "specs": {
+    "force_kN": 10,
+    "weight_kg": 3.1,
+    "height_mm": 344,
+    "width_mm": 104
+   }
+  },
+  {
+   "model": "FXSA304B (manual wedge)",
+   "specs": {
+    "force_kN": 30,
+    "weight_kg": 9.19,
+    "height_mm": 538,
+    "width_mm": 370
+   }
+  },
+  {
+   "model": "FXSA105A (manual wedge)",
+   "specs": {
+    "force_kN": 100,
+    "weight_kg": 14.79,
+    "height_mm": 626,
+    "width_mm": 370
+   }
+  },
+  {
+   "model": "FXSA305A (manual wedge)",
+   "specs": {
+    "force_kN": 300,
+    "weight_kg": 26.0,
+    "height_mm": 688,
+    "width_mm": 385
+   }
+  },
+  {
+   "model": "FXYB305C (hydraulic wedge)",
+   "specs": {
+    "force_kN": 300,
+    "weight_kg": 92.5,
+    "pressure_MPa": 20,
+    "height_mm": 756,
+    "width_mm": 270
+   }
+  },
+  {
+   "model": "XYB605C (hydraulic wedge)",
+   "specs": {
+    "force_kN": 600,
+    "weight_kg": 165,
+    "pressure_MPa": 20,
+    "height_mm": 976,
+    "width_mm": 330
+   }
+  },
+  {
+   "model": "FDYA504A (hydraulic single side action)",
+   "specs": {
+    "force_kN": 50,
+    "weight_kg": 25,
+    "pressure_MPa": 20,
+    "height_mm": 446,
+    "width_mm": 301
+   }
+  },
+  {
+   "model": "FDYB105A (hydraulic single side action)",
+   "specs": {
+    "force_kN": 100,
+    "weight_kg": 42,
+    "pressure_MPa": 20,
+    "height_mm": 506,
+    "width_mm": 358
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-hydraulic-wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/exceed-hydraulic-single-side-action-tension-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

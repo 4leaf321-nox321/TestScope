@@ -1,0 +1,126 @@
+{
+ "id": "mts-model-642-bend-fixtures",
+ "kind": "accessory",
+ "name": "MTS Model 642 Bend Fixtures (642.001 / 642.01 / 642.10 / 642.25, 3- and 4-point)",
+ "name_ko": "MTS 모델 642 굽힘 지그 (3·4점, 0.9~10 kN, ASTM D790·E399·ISO 178·ISO 7438)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "flexure",
+ "description": "눈금 스케일로 롤러를 대칭 배치하고 경화 롤러로 마찰을 줄인 3·4점 굽힘 지그. 642.001: 1~5 mm 롤러, 지간 14~60 mm, 동적 0.9 kN, -129~149 °C. 642.01A-01: 3점, 지간 24~152 mm, 10 kN, ISO 14125·EN 2746 도 충족. 642.10: ASTM E399·EN 2562. 642.25: ASTM E399 파괴인성. ASTM D790·D6272·D7264·D5023·E290, ISO 178·12135·7438.",
+ "test_items": [
+  "flexure",
+  "fracture_toughness",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "composites",
+  "metals"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D790",
+   "ISO 178",
+   "ASTM D6272",
+   "ASTM E399",
+   "ISO 12135",
+   "ISO 14125",
+   "EN 2746",
+   "EN 2562",
+   "ASTM D5023",
+   "ASTM D7264",
+   "ASTM E290",
+   "ISO 7438"
+  ]
+ },
+ "limits": {
+  "dynamic_force_kN": {
+   "min": 0.9,
+   "max": 10
+  },
+  "hdt_span_mm": {
+   "min": 14,
+   "max": 152,
+   "note": "지간(support span)"
+  },
+  "temperature_degC": {
+   "min": -129,
+   "max": 149
+  }
+ },
+ "models": [
+  {
+   "model": "642.001 (3&4-point)",
+   "specs": {
+    "dynamic_force_kN": 0.9,
+    "hdt_span_mm": {
+     "min": 14,
+     "max": 60
+    },
+    "temperature_degC": {
+     "min": -129,
+     "max": 149
+    },
+    "height_mm": 61,
+    "note": "롤러 1·2·3·4·5 mm"
+   }
+  },
+  {
+   "model": "642.01A-01 (3-point)",
+   "specs": {
+    "dynamic_force_kN": 10,
+    "hdt_span_mm": {
+     "min": 24,
+     "max": 152
+    },
+    "temperature_degC": {
+     "min": -129,
+     "max": 149
+    },
+    "height_mm": 172
+   }
+  },
+  {
+   "model": "642.10",
+   "specs": {
+    "note": "ASTM E399·EN 2562"
+   }
+  },
+  {
+   "model": "642.25",
+   "specs": {
+    "note": "ASTM E399 파괴인성"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/model-642-bend-fixtures",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

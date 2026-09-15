@@ -1,6 +1,6 @@
 # 장비 카탈로그 색인
 
-장비 객체 278 개 · 제조사 96 · 노드 1894 · 엣지 3521
+장비 객체 446 개 · 제조사 96 · 노드 2761 · 엣지 5691
 
 `limits` 는 시리즈 전체 범위. 단위는 키 이름에 있다(kN, mm/min, degC …). 빈 칸은 미기재.
 
@@ -14,15 +14,25 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [ametek-lloyd-contacting-and-long-travel-extensometers](equipment/ametek-lloyd/ametek-lloyd-contacting-and-long-travel-extensometers.json) | **센서** | extensometer | tensile, compression, flexure, fatigue | – | – | specimen_thickness_mm=≤25 | limited |
+| [ametek-lloyd-load-cells](equipment/ametek-lloyd/ametek-lloyd-load-cells.json) | **센서** | load_cell | tensile, compression, torsion | – | – |  | limited |
 | [ametek-lloyd-ls-series](equipment/ametek-lloyd/ametek-lloyd-ls-series.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, tear, friction_coefficient, seal_strength | 0.005–5 | – | crosshead_speed_mm_min=0.01–2032; crosshead_travel_mm=500–1400; data_rate_Hz=≤1000 | catalog |
+| [ametek-lloyd-pogos-and-splinter-shields](equipment/ametek-lloyd/ametek-lloyd-pogos-and-splinter-shields.json) | **부속** | accessory | tensile, compression | – | – | specimen_size_mm=≤2000 | limited |
+| [ametek-lloyd-tcf950-furnace](equipment/ametek-lloyd/ametek-lloyd-tcf950-furnace.json) | **부속** | furnace | tensile, compression | – | 50–950 |  | limited |
+| [ametek-lloyd-test-stand-grips-and-fixtures](equipment/ametek-lloyd/ametek-lloyd-test-stand-grips-and-fixtures.json) | **부속** | grip_fixture | tensile, compression, flexure, peel, friction_coefficient, shear | – | -70–180 |  | limited |
+| [ametek-lloyd-thermal-cabinets-tc540-tc550](equipment/ametek-lloyd/ametek-lloyd-thermal-cabinets-tc540-tc550.json) | **부속** | environmental_chamber | tensile, compression, flexure | – | -70–300 |  | limited |
+| [ametek-lloyd-ve1-video-extensometer](equipment/ametek-lloyd/ametek-lloyd-ve1-video-extensometer.json) | **센서** | extensometer | tensile | – | – | data_rate_Hz=≤100 | limited |
 
 ## Anton Paar (`anton-paar`)
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [anton-paar-litesizer](equipment/anton-paar/anton-paar-litesizer.json) | 계열 | particle_size_analyzer | particle_size | – | 0.0–90.0 |  | catalog |
+| [anton-paar-mcr-measuring-cells](equipment/anton-paar/anton-paar-mcr-measuring-cells.json) | **부속** | accessory | rheology_rotational | – | -40–300 | pressure_bar=≤1000; shear_rate_1_s=≤3000; heating_rate_K_min=≤90 | limited |
 | [anton-paar-mcr-rheometer](equipment/anton-paar/anton-paar-mcr-rheometer.json) | 계열 | rotational_rheometer | rheology_rotational, dma, friction_wear_tribo, tensile, compression, flexure | – | -170–1730 (부속) | torque_mNm=2e-07–300; rotation_rpm=≤6000; frequency_Hz=–; humidity_pct=5–95; viscosity_Pa_s=0.001–100000000 | limited |
+| [anton-paar-mcr-temperature-and-humidity-options](equipment/anton-paar/anton-paar-mcr-temperature-and-humidity-options.json) | **부속** | environmental_chamber | rheology_rotational, dma, damp_heat | – | -170–180 | humidity_pct=5–95; cooling_rate_K_min=≤70 | limited |
 | [anton-paar-nanoindentation](equipment/anton-paar/anton-paar-nanoindentation.json) | 계열 | instrumented_indentation | instrumented_indentation, friction_wear_tribo | – | ≤800 | indentation_force_mN=0.1–500 | limited |
+| [anton-paar-step-platform-modules](equipment/anton-paar/anton-paar-step-platform-modules.json) | **부속** | accessory | instrumented_indentation, scratch_pencil_hardness, friction_wear_tribo | – | 23–450 | friction_force_mN=≤200000; stage_travel_mm=≤0.1 | limited |
 | [anton-paar-tribometers](equipment/anton-paar/anton-paar-tribometers.json) | 계열 | tribometer | friction_wear_tribo | – | -160–1000 | force_N=5e-06–70; humidity_pct=5–95; rotation_rpm=1e-06–3000; sliding_speed_m_s=1e-08–3.3; frequency_Hz=0.01–10; torque_mNm=≤450 | catalog |
 | [anton-paar-tribometers-materialtwin](equipment/anton-paar/anton-paar-tribometers-materialtwin.json) | 계열 (보탬→anton-paar-tribometers) | tribometer | friction_wear_tribo | – | – |  | catalog |
 
@@ -51,6 +61,10 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [bareiss-digi-test-ii](equipment/bareiss/bareiss-digi-test-ii.json) | 기종 | shore_irhd_hardness | hardness_shore, hardness_irhd | – | – | hardness_scales=Shore A, Micro Shore A, Shore A0, Shore B, Shore 0, Shore C, Shore D, Micro Shore D; specimen_thickness_mm=0.5–6 | catalog |
+| [bareiss-positioning-devices-centrofix-rotofix-barofix](equipment/bareiss/bareiss-positioning-devices-centrofix-rotofix-barofix.json) | **부속** | accessory | hardness_shore, hardness_irhd | – | – | specimen_thickness_mm=≥0.7 | limited |
+| [bareiss-punching-presses-sp-1000-ii-sp-4000-ii](equipment/bareiss/bareiss-punching-presses-sp-1000-ii-sp-4000-ii.json) | **부속** | specimen_preparation | tensile, tear, hardness_shore | ≤5 | – | specimen_thickness_mm=≤24; throat_depth_mm=≤60 | limited |
+| [bareiss-reference-blocks-and-control-devices](equipment/bareiss/bareiss-reference-blocks-and-control-devices.json) | **부속** | accessory | hardness_shore, hardness_irhd | – | – | hardness_shore_a=20–80 | limited |
+| [bareiss-test-stands-bs-61-ii-bsa-ii](equipment/bareiss/bareiss-test-stands-bs-61-ii-bsa-ii.json) | **부속** | accessory | hardness_shore | – | – | specimen_thickness_mm=≥6 | limited |
 
 ## Brookfield AMETEK (`brookfield-ametek`)
 
@@ -126,6 +140,8 @@
 |---|---|---|---|---|---|---|---|
 | [emco-test-durajet-g5](equipment/emco-test/emco-test-durajet-g5.json) | 계열 | rockwell_hardness | hardness_rockwell, hardness_vickers, hardness_brinell | – | – | test_load_kgf=1–250; hardness_scales=HRA–HRV, HR15/30/45 N/T/W/X/Y, HR 2/10, 2/20, 2/120, HVT 5–100, HBT 1/5 – 2.5/187.5, 5/250, plastics 49–961 N; specimen_hei | catalog |
 | [emco-test-duravision-g5](equipment/emco-test/emco-test-duravision-g5.json) | 계열 | universal_hardness | hardness_brinell, hardness_vickers, hardness_rockwell, hardness_knoop | – | – | test_load_kgf=0.3–3000; hardness_scales=HBW 1/1 – 10/3000, HV 0.3 – HV 150, HK 0.3 – HK 2, HRA–HRV, HR15/30/45 N/T/W/X/Y, plastics 49–961 N, carbon DIN 51917; s | catalog |
+| [emco-test-ecos-workflow-software-modules](equipment/emco-test/emco-test-ecos-workflow-software-modules.json) | software | accessory | hardness_rockwell, hardness_brinell, hardness_vickers, hardness_knoop | – | – |  | limited |
+| [emco-test-hardness-tester-accessories](equipment/emco-test/emco-test-hardness-tester-accessories.json) | **부속** | accessory | hardness_rockwell, hardness_brinell, hardness_vickers, hardness_knoop | – | – | magnification=2.5–100 | limited |
 
 ## Epsilon Technology Corp. (`epsilon`)
 
@@ -197,7 +213,10 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [hegewald-peschke-at130-hardness](equipment/hegewald-peschke/hegewald-peschke-at130-hardness.json) | 계열 | rockwell_hardness | hardness_rockwell, hardness_brinell, hardness_vickers | – | – | load_N=29.4–1839; hardness_scales=HRA, HRB, HRC, HRD, HRF, HRG, HB/30, HRN 전 스케일 | catalog |
+| [hegewald-peschke-bending-devices](equipment/hegewald-peschke/hegewald-peschke-bending-devices.json) | **부속** | grip_fixture | flexure | – | – |  | limited |
 | [hegewald-peschke-bending-fatigue-wire](equipment/hegewald-peschke/hegewald-peschke-bending-fatigue-wire.json) | 계열 | mechanical_dynamic | fatigue, flexure | – | – | wire_diameter_mm=0.3–10; rotation_deg=≤180; stations=≤3; power_kW=≤4.0; weight_kg=300 | catalog |
+| [hegewald-peschke-changing-devices](equipment/hegewald-peschke/hegewald-peschke-changing-devices.json) | **부속** | accessory | tensile | – | – | stage_travel_mm=≤300 | limited |
+| [hegewald-peschke-compression-plates](equipment/hegewald-peschke/hegewald-peschke-compression-plates.json) | **부속** | grip_fixture | compression | 20–250 | – | specimen_diameter_mm=≤150 | limited |
 | [hegewald-peschke-creep-loading-units](equipment/hegewald-peschke/hegewald-peschke-creep-loading-units.json) | 계열 | creep_tester | creep, relaxation | – | – | load_N=50–200; stations=5, 10 | limited |
 | [hegewald-peschke-extensometers](equipment/hegewald-peschke/hegewald-peschke-extensometers.json) | **센서** | extensometer | tensile, compression, flexure | – | -70–1700 | gauge_length_mm=6–100; scan_range_mm=2–1100; displacement_um=≥0.1; data_rate_Hz=≤1600 | catalog |
 | [hegewald-peschke-friction-test-stand](equipment/hegewald-peschke/hegewald-peschke-friction-test-stand.json) | 계열 | tribometer | friction_coefficient, friction_wear_tribo, abrasion | – | – | force_N=≤2000; sliding_speed_m_s=≤10; specimen_diameter_mm=≤50; wear_depth=≤2 | catalog |
@@ -212,11 +231,18 @@
 | [hegewald-peschke-inspekt-table](equipment/hegewald-peschke/hegewald-peschke-inspekt-table.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, shear | 10–250 | – | crosshead_speed_mm_min=0.0005–2000; vertical_test_space_mm=1080–1170; horizontal_test_space_mm=420, 510; frame_stiffness_kN_mm=18–200; weight_kg=100–570 | catalog |
 | [hegewald-peschke-inspekt-vario](equipment/hegewald-peschke/hegewald-peschke-inspekt-vario.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear | 100–2500 | – | vertical_test_space_mm=1900–5000; horizontal_test_space_mm=610, 750, 1000; crosshead_speed_mm_min=0.002–450; frame_stiffness_kN_mm=200; weight_kg=7200 | catalog |
 | [hegewald-peschke-multi-impact-tester](equipment/hegewald-peschke/hegewald-peschke-multi-impact-tester.json) | 계열 | impact | drop_weight_impact, abrasion | – | – | impact_velocity_m_s=≤38.9; specimen_size_mm=–; measurement_distance_mm=150–600 | limited |
+| [hegewald-peschke-peel-test-devices](equipment/hegewald-peschke/hegewald-peschke-peel-test-devices.json) | **부속** | grip_fixture | peel, friction_coefficient | – | – | specimen_orientation_deg=45–180 | limited |
 | [hegewald-peschke-pendulum-impact](equipment/hegewald-peschke/hegewald-peschke-pendulum-impact.json) | 계열 | pendulum_impact | charpy_impact, izod_impact, tensile_impact | – | – | impact_energy_J=0.75–750; impact_velocity_m_s=0.39–5.5; data_rate_Hz=≤10000000 | catalog |
+| [hegewald-peschke-pneumatic-grips](equipment/hegewald-peschke/hegewald-peschke-pneumatic-grips.json) | **부속** | grip_fixture | tensile | ≤20 | -70–280 |  | limited |
 | [hegewald-peschke-rim-hardness-line](equipment/hegewald-peschke/hegewald-peschke-rim-hardness-line.json) | 계열 | brinell_hardness | hardness_brinell | 3.5 | – | test_time_s=30–60 | limited |
 | [hegewald-peschke-rotational-impact-tester](equipment/hegewald-peschke/hegewald-peschke-rotational-impact-tester.json) | 계열 | high_speed_tensile | high_speed_tensile, tensile_impact | 0.1–80 | – | impact_velocity_m_s=1–14; impact_energy_J=≤16300; displacement_mm=≤3.6; data_rate_Hz=≤400000 | catalog |
+| [hegewald-peschke-safety-doors](equipment/hegewald-peschke/hegewald-peschke-safety-doors.json) | **부속** | accessory |  | – | – |  | limited |
+| [hegewald-peschke-shear-frame-testing-system](equipment/hegewald-peschke/hegewald-peschke-shear-frame-testing-system.json) | **부속** | grip_fixture | shear | – | – | force_N=0–200 | limited |
+| [hegewald-peschke-specimen-cutting-presses](equipment/hegewald-peschke/hegewald-peschke-specimen-cutting-presses.json) | **부속** | specimen_preparation | tensile, tear | ≤30 | – |  | limited |
+| [hegewald-peschke-t-groove-plates](equipment/hegewald-peschke/hegewald-peschke-t-groove-plates.json) | **부속** | grip_fixture | tensile, compression | – | – |  | limited |
 | [hegewald-peschke-temperature-chambers](equipment/hegewald-peschke/hegewald-peschke-temperature-chambers.json) | **부속** | environmental_chamber | tensile, compression, flexure | – | -80–260 | heating_rate_K_min=≤10; cooling_rate_K_min=≤8; accuracy_degC=0.5–2; power_VA=2500–11500; weight_kg=80–300 | catalog |
 | [hegewald-peschke-torsion](equipment/hegewald-peschke/hegewald-peschke-torsion.json) | 계열 | torsion_tester | torsion, fatigue | – | – | torque_Nm=200–5000; rotation_rpm=0.005–60; rotation_deg=–; specimen_diameter_mm=0.5–350; weight_kg=105–750 | catalog |
+| [hegewald-peschke-torsion-modules](equipment/hegewald-peschke/hegewald-peschke-torsion-modules.json) | **부속** | accessory | torsion, tensile, compression | – | – |  | limited |
 
 ## Helmut Fischer (`helmut-fischer`)
 
@@ -280,6 +306,36 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [instron-2527-dynacell-load-cells](equipment/instron/instron-2527-dynacell-load-cells.json) | **센서** | load_cell | fatigue, tensile, compression, torsion | – | – |  | limited |
+| [instron-2580-2530-static-load-cells](equipment/instron/instron-2580-2530-static-load-cells.json) | **센서** | load_cell | tensile, compression | – | – | force_N=2.5–600000 | limited |
+| [instron-2601-lvdt-compression-deflectometers](equipment/instron/instron-2601-lvdt-compression-deflectometers.json) | **센서** | extensometer | compression, flexure, tensile | – | -40–100 | displacement_mm=0.5–100 | limited |
+| [instron-2603-long-travel-extensometer](equipment/instron/instron-2603-long-travel-extensometer.json) | **센서** | extensometer | tensile | – | – | displacement_mm=250–750; gauge_length_mm=10–200 | limited |
+| [instron-2630-static-axial-clip-on-extensometers](equipment/instron/instron-2630-static-axial-clip-on-extensometers.json) | **센서** | extensometer | tensile, flexure, compression | – | -100–200 | gauge_length_mm=8–100 | limited |
+| [instron-2650-biaxial-averaging-clip-on-extensometers](equipment/instron/instron-2650-biaxial-averaging-clip-on-extensometers.json) | **센서** | extensometer | tensile, compression | – | -200–200 | gauge_length_mm=25–50.8 | limited |
+| [instron-2670-crack-opening-displacement-gauges](equipment/instron/instron-2670-crack-opening-displacement-gauges.json) | **센서** | extensometer | fracture_toughness, fatigue | – | -200–200 | gauge_length_mm=5–10; displacement_mm=≤4 | limited |
+| [instron-2701-air-kits-for-pneumatic-grips](equipment/instron/instron-2701-air-kits-for-pneumatic-grips.json) | **부속** | accessory | tensile | – | – | pressure_bar=≤8.3 | limited |
+| [instron-2710-screw-side-action-grips](equipment/instron/instron-2710-screw-side-action-grips.json) | **부속** | grip_fixture | tensile, shear | – | – | force_N=100–10000; specimen_thickness_mm=≤46 | limited |
+| [instron-2711-fiber-filament-tensile-grips](equipment/instron/instron-2711-fiber-filament-tensile-grips.json) | **부속** | grip_fixture | tensile | – | -10–100 | force_N=0.825–5 | limited |
+| [instron-2712-pneumatic-side-action-grips](equipment/instron/instron-2712-pneumatic-side-action-grips.json) | **부속** | grip_fixture | tensile | – | – | force_N=50–10000 | limited |
+| [instron-2713-self-tightening-eccentric-roller-grips](equipment/instron/instron-2713-self-tightening-eccentric-roller-grips.json) | **부속** | grip_fixture | tensile | – | -70–315 | force_N=100–5000; width_mm=≤43 | limited |
+| [instron-2714-pneumatic-cord-and-yarn-grips](equipment/instron/instron-2714-pneumatic-cord-and-yarn-grips.json) | **부속** | grip_fixture | tensile | – | – | force_N=50–2000; specimen_diameter_mm=≤4.8 | limited |
+| [instron-2715-capstan-tensile-grips](equipment/instron/instron-2715-capstan-tensile-grips.json) | **부속** | grip_fixture | tensile | 2.5–50 | -73–316 |  | limited |
+| [instron-2716-110-pneumatic-wedge-action-grips](equipment/instron/instron-2716-110-pneumatic-wedge-action-grips.json) | **부속** | grip_fixture | tensile | 100–200 | – | specimen_diameter_mm=≤60; specimen_thickness_mm=≤70 | limited |
+| [instron-2716-mechanical-wedge-action-grips](equipment/instron/instron-2716-mechanical-wedge-action-grips.json) | **부속** | grip_fixture | tensile | 1–250 | -70–350 | width_mm=≤50 | limited |
+| [instron-2717-080-fabric-loop-grips](equipment/instron/instron-2717-080-fabric-loop-grips.json) | **부속** | grip_fixture | tensile | – | – |  | limited |
+| [instron-2717-o-ring-test-fixtures](equipment/instron/instron-2717-o-ring-test-fixtures.json) | **부속** | grip_fixture | tensile | ≤1 | – |  | limited |
+| [instron-2717-threaded-and-button-end-grips](equipment/instron/instron-2717-threaded-and-button-end-grips.json) | **부속** | grip_fixture | tensile | 100–267 | -70–350 | specimen_diameter_mm=≤38 | limited |
+| [instron-2718-hydraulic-grip-pumps](equipment/instron/instron-2718-hydraulic-grip-pumps.json) | **부속** | accessory | tensile | ≤600 | – | pressure_bar=41–207 | limited |
+| [instron-2742-fatigue-rated-wedge-grips](equipment/instron/instron-2742-fatigue-rated-wedge-grips.json) | **부속** | grip_fixture | fatigue, tensile, torsion | – | – | dynamic_force_kN=1–100; torque_Nm=≤100 | limited |
+| [instron-2750-compact-tension-fixtures](equipment/instron/instron-2750-compact-tension-fixtures.json) | **부속** | grip_fixture | fracture_toughness, fatigue | – | ≤1000 | static_force_kN=0.8–500; dynamic_force_kN=10–250; specimen_thickness_mm=12.5–50 | limited |
+| [instron-2810-005-coefficient-of-friction-fixture](equipment/instron/instron-2810-005-coefficient-of-friction-fixture.json) | **부속** | grip_fixture | friction_coefficient | – | – |  | limited |
+| [instron-2810-fatigue-flexure-fixtures](equipment/instron/instron-2810-fatigue-flexure-fixtures.json) | **부속** | grip_fixture | flexure, fatigue | 3–500 | – |  | limited |
+| [instron-2810-flexure-fixtures](equipment/instron/instron-2810-flexure-fixtures.json) | **부속** | grip_fixture | flexure | 5–250 | -100–350 | hdt_span_mm=10–600; width_mm=≤100 | limited |
+| [instron-2820-033-miniature-variable-angle-peel-fixture](equipment/instron/instron-2820-033-miniature-variable-angle-peel-fixture.json) | **부속** | grip_fixture | peel | ≤1 | 10–60 | specimen_orientation_deg=30–150 | limited |
+| [instron-2850-t-slot-tables](equipment/instron/instron-2850-t-slot-tables.json) | **부속** | grip_fixture | tensile, compression, flexure, peel | 5–600 | – |  | limited |
+| [instron-2860-translation-and-clamping-stages](equipment/instron/instron-2860-translation-and-clamping-stages.json) | **부속** | grip_fixture | tensile, wire_bond_strength | ≤1 | – | stage_travel_mm=≤12.5 | limited |
+| [instron-2910-component-test-plates](equipment/instron/instron-2910-component-test-plates.json) | **부속** | grip_fixture | tensile, compression, flexure, peel, puncture | 1–30 | – |  | limited |
+| [instron-2910-load-frame-support-tables](equipment/instron/instron-2910-load-frame-support-tables.json) | **부속** | accessory |  | – | – |  | limited |
 | [instron-3119-160-furnace](equipment/instron/instron-3119-160-furnace.json) | **부속** | furnace | tensile, creep, fatigue | – | 200–1050 | heated_length_mm=300; bore_diameter_mm=75 | catalog |
 | [instron-3119-600-environmental-chambers](equipment/instron/instron-3119-600-environmental-chambers.json) | **부속** | environmental_chamber | tensile, compression, flexure, fatigue | – | -150–600 |  | catalog |
 | [instron-3400-series](equipment/instron/instron-3400-series.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, puncture, friction_coefficient, shear, tear | 0.5–300 | – | crosshead_speed_mm_min=5e-05–1016; vertical_test_space_mm=651–1744; horizontal_test_space_mm=100–575; data_rate_Hz=≤1000 | catalog |
@@ -289,12 +345,28 @@
 | [instron-8800-servohydraulic](equipment/instron/instron-8800-servohydraulic.json) | 계열 | servohydraulic_fatigue | fatigue, fracture_toughness, tensile, compression, flexure, torsion, high_speed_tensile | – | – | dynamic_force_kN=25–250; torque_Nm=100; stroke_mm=100; frequency_Hz=–; vertical_test_space_mm=≤1067 | catalog |
 | [instron-9400-drop-tower](equipment/instron/instron-9400-drop-tower.json) | 계열 | drop_tower_impact | drop_weight_impact, puncture, tensile_impact | 0.45–222 | – | impact_energy_J=0.15–1800; impact_velocity_m_s=0.77–24; drop_height_m=0.03–29.4; drop_mass_kg=0.5–70 | catalog |
 | [instron-9400-drop-tower-materialtwin](equipment/instron/instron-9400-drop-tower-materialtwin.json) | 계열 (보탬→instron-9400-drop-tower) | drop_tower_impact | drop_weight_impact, puncture, tensile_impact | – | – |  | limited |
+| [instron-advanced-hydraulic-wedge-action-grips](equipment/instron/instron-advanced-hydraulic-wedge-action-grips.json) | **부속** | grip_fixture | tensile, fatigue, compression | – | 4–65 | static_force_kN=30–600; dynamic_force_kN=30–500 | limited |
+| [instron-autox750-automatic-contacting-extensometer](equipment/instron/instron-autox750-automatic-contacting-extensometer.json) | **센서** | extensometer | tensile, flexure | – | – | displacement_mm=≤750 | limited |
 | [instron-ave-video-extensometer](equipment/instron/instron-ave-video-extensometer.json) | **센서** | extensometer | tensile, compression, flexure | – | – | field_of_view_mm=85–840; gauge_length_mm=≥2.5; data_rate_Hz=≤500; following_speed_mm_min=≤2500 | catalog |
 | [instron-ceast-9050-pendulum](equipment/instron/instron-ceast-9050-pendulum.json) | 계열 | pendulum_impact | charpy_impact, izod_impact, tensile_impact | – | – | impact_energy_J=0.5–50; impact_velocity_m_s=1–3.8; specimen_diameter_mm=≤25 | catalog |
 | [instron-ceast-melt-flow-mf](equipment/instron/instron-ceast-melt-flow-mf.json) | 계열 | melt_flow_indexer | melt_flow | – | – | melt_temperature_degC=30–400; melt_load_kg=0.325–21.6 | catalog |
+| [instron-debris-shields](equipment/instron/instron-debris-shields.json) | **부속** | accessory | tensile, compression | – | – |  | limited |
 | [instron-electropuls-e3000](equipment/instron/instron-electropuls-e3000.json) | 기종 | electrodynamic_fatigue | fatigue, tensile, compression, flexure, torsion, dma | – | – | dynamic_force_kN=≤3; static_force_kN=≤2.1; torque_Nm=≤25; stroke_mm=60; rotation_deg=≤135; frequency_Hz=≤100; vertical_test_space_mm=≤861; horizontal_test_space | catalog |
+| [instron-electropuls-safety-guards](equipment/instron/instron-electropuls-safety-guards.json) | **부속** | accessory | fatigue | – | – |  | limited |
+| [instron-fastener-shear-fixtures](equipment/instron/instron-fastener-shear-fixtures.json) | **부속** | grip_fixture | shear | – | – | pressure_MPa=≤1380 | limited |
+| [instron-high-temperature-extensometers](equipment/instron/instron-high-temperature-extensometers.json) | **센서** | extensometer | tensile, compression, fatigue, creep, relaxation | – | ≤1200 | gauge_length_mm=12.5–50 | limited |
 | [instron-hv-series-hdt-vicat](equipment/instron/instron-hv-series-hdt-vicat.json) | 계열 | hdt_vicat | hdt, vicat | – | 20–500 | stations=3, 6; heating_rate_K_h=50, 120 | catalog |
+| [instron-hydraulic-side-action-grips-durasync](equipment/instron/instron-hydraulic-side-action-grips-durasync.json) | **부속** | grip_fixture | tensile, fatigue | 250–600 | – | specimen_diameter_mm=3–60; specimen_thickness_mm=≤100; pressure_bar=≤131 | limited |
+| [instron-microelectronics-tensile-grips](equipment/instron/instron-microelectronics-tensile-grips.json) | **부속** | grip_fixture | tensile, wire_bond_strength | – | – | force_N=10–500; specimen_thickness_mm=≤0.8 | limited |
 | [instron-mt-microtorsion](equipment/instron/instron-mt-microtorsion.json) | 계열 | torsion_tester | torsion | – | – | torque_Nm=0.225–225; rotation_rpm=0.01–120; rotation_deg=≤5400000; specimen_diameter_mm=≤203; test_opening_mm=381–775 | catalog |
+| [instron-puncture-fixtures](equipment/instron/instron-puncture-fixtures.json) | **부속** | grip_fixture | puncture | 2.5–4.4 | – |  | limited |
+| [instron-spherically-seated-compression-platens](equipment/instron/instron-spherically-seated-compression-platens.json) | **부속** | grip_fixture | compression | 10–5000 | – | specimen_diameter_mm=≤305 | limited |
+| [instron-t-grip-lever-action-wedge-grips](equipment/instron/instron-t-grip-lever-action-wedge-grips.json) | **부속** | grip_fixture | tensile | 22.2–150 | – |  | limited |
+| [instron-transverse-clip-on-extensometers](equipment/instron/instron-transverse-clip-on-extensometers.json) | **센서** | extensometer | tensile | – | -40–100 | width_mm=0–25 | limited |
+| [instron-w-5155-fastener-holders](equipment/instron/instron-w-5155-fastener-holders.json) | **부속** | grip_fixture | tensile | 100–1500 | – | specimen_diameter_mm=≤72 | limited |
+| [instron-w-5300-hydraulic-wedge-action-grips](equipment/instron/instron-w-5300-hydraulic-wedge-action-grips.json) | **부속** | grip_fixture | tensile | 300–2000 | – | specimen_diameter_mm=≤90; specimen_thickness_mm=≤90 | limited |
+| [instron-w-5510-torsion-load-cells](equipment/instron/instron-w-5510-torsion-load-cells.json) | **센서** | load_cell | torsion | – | – | torque_Nm=0.225–220 | limited |
+| [instron-wire-and-cable-tensile-grips](equipment/instron/instron-wire-and-cable-tensile-grips.json) | **부속** | grip_fixture | tensile | 2.2–90 | -10–80 | wire_diameter_mm=0.125–12.7 | limited |
 
 ## Instrument Systems (`instrument-systems`)
 
@@ -411,8 +483,13 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [mecmesin-adapters-qc-fittings-and-extension-rods](equipment/mecmesin/mecmesin-adapters-qc-fittings-and-extension-rods.json) | **부속** | accessory | tensile, compression | 0.5–25 | – |  | limited |
+| [mecmesin-compression-plates](equipment/mecmesin/mecmesin-compression-plates.json) | **부속** | grip_fixture | compression | ≤50 | – | specimen_diameter_mm=12–196; width_mm=50–596 | limited |
+| [mecmesin-gauge-and-stand-accessories](equipment/mecmesin/mecmesin-gauge-and-stand-accessories.json) | **부속** | accessory | tensile, compression, torsion | – | – |  | limited |
+| [mecmesin-grips](equipment/mecmesin/mecmesin-grips.json) | **부속** | grip_fixture | tensile, peel | – | – | force_N=50–10000; test_opening_mm=≤52 | limited |
 | [mecmesin-multitest](equipment/mecmesin/mecmesin-multitest.json) | 계열 | force_tester | tensile, compression, peel, flexure, friction_coefficient | 0.002–50 | – | crosshead_speed_mm_min=0.1–1200; crosshead_travel_mm=500–1200 | catalog |
 | [mecmesin-omnitest](equipment/mecmesin/mecmesin-omnitest.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, friction_coefficient | 0.002–50 | – | crosshead_speed_mm_min=0.01–500; crosshead_travel_mm=507–1230; horizontal_test_space_mm=420, 425; data_rate_Hz=≤1000 | catalog |
+| [mecmesin-test-fixtures](equipment/mecmesin/mecmesin-test-fixtures.json) | **부속** | grip_fixture | flexure, friction_coefficient, peel, tensile, shear, puncture, compression | 0.05–25 | – |  | limited |
 
 ## Metrohm (`metrohm`)
 
@@ -432,6 +509,7 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [micromeritics-accupyc-autopore-accessories](equipment/micromeritics/micromeritics-accupyc-autopore-accessories.json) | **부속** | accessory | density_porosity | – | – |  | limited |
 | [micromeritics-accupyc-ii-1345](equipment/micromeritics/micromeritics-accupyc-ii-1345.json) | 기종 | pycnometer_porosimeter | density_porosity | – | 15.0–50.0 |  | catalog |
 | [micromeritics-autopore-v](equipment/micromeritics/micromeritics-autopore-v.json) | 기종 | pycnometer_porosimeter | instrumented_indentation | – | – |  | catalog |
 
@@ -477,12 +555,53 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [mts-632-79-immersible-extensometer](equipment/mts/mts-632-79-immersible-extensometer.json) | **센서** | extensometer | tensile, fatigue, flexure | – | -15–85 | gauge_length_mm=25–200; frequency_Hz=≤30 | limited |
+| [mts-632-averaging-biaxial-transverse-diametral-extensometers](equipment/mts/mts-632-averaging-biaxial-transverse-diametral-extensometers.json) | **센서** | extensometer | tensile, compression, fatigue | – | -265–150 | gauge_length_mm=10–25; specimen_diameter_mm=2–32; width_mm=≤51 | limited |
+| [mts-632-axial-extensometers-small-gauge-and-enhanced-travel](equipment/mts/mts-632-axial-extensometers-small-gauge-and-enhanced-travel.json) | **센서** | extensometer | tensile, fatigue, flexure | – | -269–175 | gauge_length_mm=3–50; frequency_Hz=≤150 | limited |
+| [mts-632-clip-on-and-displacement-gages](equipment/mts/mts-632-clip-on-and-displacement-gages.json) | **센서** | extensometer | fracture_toughness, fatigue, flexure | – | -100–175 | gauge_length_mm=2–12; displacement_mm=≤6; frequency_Hz=≤100 | limited |
+| [mts-634-axial-extensometers](equipment/mts/mts-634-axial-extensometers.json) | **센서** | extensometer | tensile, flexure, fatigue | – | -269–175 | gauge_length_mm=25–200 | limited |
+| [mts-650-03-extensometer-calibrator](equipment/mts/mts-650-03-extensometer-calibrator.json) | **부속** | accessory |  | – | – | displacement_um=≥0.5 | limited |
 | [mts-acumen](equipment/mts/mts-acumen.json) | 계열 | electrodynamic_fatigue | fatigue, tensile, compression, flexure, torsion, dma | – | – | dynamic_force_kN=1.25–12; static_force_kN=1–8.5; torque_Nm=30, 120; stroke_mm=70; rotation_deg=≤135; frequency_Hz=≤100; vertical_test_space_mm=0–985; horizontal | catalog |
+| [mts-advantage-mini-grips](equipment/mts/mts-advantage-mini-grips.json) | **부속** | grip_fixture | tensile, fatigue | – | – | static_force_kN=≤2.2; dynamic_force_kN=≤1.1; specimen_thickness_mm=≤2; specimen_diameter_mm=3–5; width_mm=≤10 | limited |
+| [mts-advantage-optical-extensometer-aox](equipment/mts/mts-advantage-optical-extensometer-aox.json) | **센서** | extensometer | tensile, flexure, fatigue, creep, compression | – | – | data_rate_Hz=300–3000; displacement_um=≥0.1; gauge_length_mm=≥10 | limited |
+| [mts-advantage-pneumatic-grips](equipment/mts/mts-advantage-pneumatic-grips.json) | **부속** | grip_fixture | tensile | – | -40–200 | force_N=10–10000; specimen_thickness_mm=≤20; pressure_MPa=≤0.6 | limited |
+| [mts-advantage-screw-action-grips](equipment/mts/mts-advantage-screw-action-grips.json) | **부속** | grip_fixture | tensile, peel, tear, shear | – | -129–200 | force_N=100–10000; specimen_thickness_mm=≤25 | limited |
+| [mts-advantage-wedge-action-grips](equipment/mts/mts-advantage-wedge-action-grips.json) | **부속** | grip_fixture | tensile, peel, tear | 10–300 | -130–315 |  | limited |
+| [mts-ahx850-ltx850-long-travel-extensometers](equipment/mts/mts-ahx850-ltx850-long-travel-extensometers.json) | **센서** | extensometer | tensile | – | – | displacement_mm=≤850; gauge_length_mm=10–100; operating_temperature_degC=5–50 | limited |
+| [mts-bionix-grips](equipment/mts/mts-bionix-grips.json) | **부속** | grip_fixture | tensile, fatigue | – | -130–250 | force_N=32–5000 | limited |
+| [mts-bionix-stainless-steel-compression-platens](equipment/mts/mts-bionix-stainless-steel-compression-platens.json) | **부속** | grip_fixture | compression | ≤10 | -130–250 | specimen_diameter_mm=≤150 | limited |
 | [mts-bionix-tabletop](equipment/mts/mts-bionix-tabletop.json) | 계열 | servohydraulic_fatigue | fatigue, tensile, compression, torsion, flexure | – | – | dynamic_force_kN=15, 25; torque_Nm=150, 250; stroke_mm=100, 150; rotation_deg=≤135; vertical_test_space_mm=30–1335; horizontal_test_space_mm=460 | catalog |
+| [mts-composite-test-fixtures](equipment/mts/mts-composite-test-fixtures.json) | **부속** | grip_fixture | compression, shear, flexure, peel, fatigue | – | -152–318 | static_force_kN=2.2–250 | limited |
 | [mts-criterion-series-40](equipment/mts/mts-criterion-series-40.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear | 0.001–1200 | – | crosshead_speed_mm_min=0.005–3000; vertical_test_space_mm=820–2000; horizontal_test_space_mm=100–1000; data_rate_Hz=≤5000 | catalog |
+| [mts-dcpd-direct-current-potential-drop-solution](equipment/mts/mts-dcpd-direct-current-potential-drop-solution.json) | **센서** | accessory | fracture_toughness, fatigue | – | – | current_A=≤20; voltage_V=≤5; bandwidth_Hz=≤300; channels=2, 7 | limited |
+| [mts-em-adapters-and-extension-kits](equipment/mts/mts-em-adapters-and-extension-kits.json) | **부속** | accessory | tensile, compression | – | -130–315 | force_N=200–150000; height_mm=100–825 | limited |
+| [mts-exceed-3-point-bend-fixtures](equipment/mts/mts-exceed-3-point-bend-fixtures.json) | **부속** | grip_fixture | flexure | 10–30 | -70–350 | hdt_span_mm=≤400; width_mm=≤60 | limited |
 | [mts-exceed-series-40](equipment/mts/mts-exceed-series-40.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel | 0.005–600 | – | crosshead_speed_mm_min=0.001–508; vertical_test_space_mm=700–1450; horizontal_test_space_mm=100–750; data_rate_Hz=≤2500 | catalog |
+| [mts-fax1352-fundamental-automatic-extensometer](equipment/mts/mts-fax1352-fundamental-automatic-extensometer.json) | **센서** | extensometer | tensile | – | – | displacement_mm=≤80; gauge_length_mm=10–200; specimen_thickness_mm=0.2–40; specimen_diameter_mm=0.2–40; operating_temperature_degC=5–40 | limited |
+| [mts-fundamental-90-degree-peel-fixture](equipment/mts/mts-fundamental-90-degree-peel-fixture.json) | **부속** | grip_fixture | peel | – | – | force_N=≤450; width_mm=12.7–95.3 | limited |
+| [mts-fundamental-and-exceed-screw-action-grips](equipment/mts/mts-fundamental-and-exceed-screw-action-grips.json) | **부속** | grip_fixture | tensile, peel, shear | 5–10 | -70–350 | specimen_thickness_mm=≤16 | limited |
+| [mts-fundamental-bollard-grips](equipment/mts/mts-fundamental-bollard-grips.json) | **부속** | grip_fixture | tensile | – | -10–80 | force_N=200–10000; wire_diameter_mm=≤16 | limited |
+| [mts-fundamental-coefficient-of-friction-grips](equipment/mts/mts-fundamental-coefficient-of-friction-grips.json) | **부속** | grip_fixture | friction_coefficient | ≤1 | – | specimen_thickness_mm=≤5 | limited |
+| [mts-fundamental-compression-platens](equipment/mts/mts-fundamental-compression-platens.json) | **부속** | grip_fixture | compression | 0.5–300 | -50–150 | specimen_diameter_mm=≤150 | limited |
+| [mts-fundamental-nut-and-bolt-grips](equipment/mts/mts-fundamental-nut-and-bolt-grips.json) | **부속** | grip_fixture | tensile | 100–600 | 0–50 |  | limited |
+| [mts-fundamental-vise-and-scissors-grips](equipment/mts/mts-fundamental-vise-and-scissors-grips.json) | **부속** | grip_fixture | tensile | – | -130–250 | force_N=10–5000; specimen_thickness_mm=≤14; pressure_MPa=≤1 | limited |
+| [mts-fundamental-wedge-and-hydraulic-grips](equipment/mts/mts-fundamental-wedge-and-hydraulic-grips.json) | **부속** | grip_fixture | tensile | 10–600 | 0–50 | pressure_MPa=≤20 | limited |
+| [mts-geotextile-puncture-fixture](equipment/mts/mts-geotextile-puncture-fixture.json) | **부속** | grip_fixture | puncture | ≤5 | – |  | limited |
+| [mts-high-temperature-extensometers-632-5x](equipment/mts/mts-high-temperature-extensometers-632-5x.json) | **센서** | extensometer | tensile, compression, fatigue, thermomechanical_fatigue, creep | – | ≤1200 | gauge_length_mm=10–25 | limited |
 | [mts-landmark-servohydraulic](equipment/mts/mts-landmark-servohydraulic.json) | 계열 | servohydraulic_fatigue | fatigue, fracture_toughness, thermomechanical_fatigue, tensile, compression, flexure, relaxation | – | – | dynamic_force_kN=5–500; stroke_mm=100, 150, 250; frequency_Hz=≤200; vertical_test_space_mm=0–2129; horizontal_test_space_mm=460, 533, 635, 762 | catalog |
 | [mts-landmark-servohydraulic-materialtwin](equipment/mts/mts-landmark-servohydraulic-materialtwin.json) | 계열 (보탬→mts-landmark-servohydraulic) | servohydraulic_fatigue | fatigue, fracture_toughness, thermomechanical_fatigue, tensile, compression, flexure, relaxation, creep | – | – |  | catalog |
+| [mts-lx-laser-extensometer](equipment/mts/mts-lx-laser-extensometer.json) | **센서** | extensometer | tensile, flexure | – | – | displacement_mm=8–127; data_rate_Hz=≤100 | limited |
+| [mts-model-609-alignment-fixtures](equipment/mts/mts-model-609-alignment-fixtures.json) | **부속** | accessory | fatigue, tensile | 25–500 | – |  | limited |
+| [mts-model-640-fracture-mechanics-clevis-grips](equipment/mts/mts-model-640-fracture-mechanics-clevis-grips.json) | **부속** | grip_fixture | fracture_toughness, fatigue | – | -129–177 | static_force_kN=≤60; specimen_thickness_mm=12.7–25.4 | limited |
+| [mts-model-642-bend-fixtures](equipment/mts/mts-model-642-bend-fixtures.json) | **부속** | grip_fixture | flexure, fracture_toughness, fatigue | – | -129–149 | dynamic_force_kN=0.9–10; hdt_span_mm=14–152 | limited |
+| [mts-model-643-compression-platens](equipment/mts/mts-model-643-compression-platens.json) | **부속** | grip_fixture | compression, fatigue | – | -129–177 | specimen_diameter_mm=60–300; pressure_MPa=≤689 | limited |
+| [mts-model-680-high-temperature-grips](equipment/mts/mts-model-680-high-temperature-grips.json) | **부속** | grip_fixture | fatigue, tensile, creep | – | ≤1500 |  | limited |
+| [mts-model-685-hydraulic-grip-supplies](equipment/mts/mts-model-685-hydraulic-grip-supplies.json) | **부속** | accessory | tensile, fatigue | – | -40–177 | pressure_MPa=0.7–70 | limited |
+| [mts-multi-sample-fatigue-fixture-msf15](equipment/mts/mts-multi-sample-fatigue-fixture-msf15.json) | **부속** | grip_fixture | fatigue | – | 35–39 | stations=15; force_N=≤45 | limited |
+| [mts-series-635-extensometers](equipment/mts/mts-series-635-extensometers.json) | **센서** | extensometer | tensile | – | -85–120 | gauge_length_mm=25–50 | limited |
+| [mts-series-645-fatigue-rated-pneumatic-wedge-grips](equipment/mts/mts-series-645-fatigue-rated-pneumatic-wedge-grips.json) | **부속** | grip_fixture | fatigue, tensile | – | -40–200 | dynamic_force_kN=2–12; pressure_MPa=≤1.03; specimen_thickness_mm=≤12.4 | limited |
+| [mts-series-646-hydraulic-collet-grips](equipment/mts/mts-series-646-hydraulic-collet-grips.json) | **부속** | grip_fixture | fatigue, tensile, torsion | 100–250 | -40–1000 | torque_Nm=≤2200; specimen_diameter_mm=10–30 | limited |
+| [mts-series-647-hydraulic-wedge-grips](equipment/mts/mts-series-647-hydraulic-wedge-grips.json) | **부속** | grip_fixture | tensile, fatigue, shear, fracture_toughness, peel, torsion | – | -130–540 | dynamic_force_kN=≥25; static_force_kN=≥31 | limited |
 
 ## NETZSCH Analyzing & Testing (`netzsch`)
 
@@ -606,8 +725,24 @@
 | [shimadzu-ags-x](equipment/shimadzu/shimadzu-ags-x.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear | 0.001–300 | -70–1100 (부속) | crosshead_speed_mm_min=0.001–1600; vertical_test_space_mm=1200–1475; horizontal_test_space_mm=425–600; data_rate_Hz=≤1000; humidity_pct=40–95 | catalog |
 | [shimadzu-ags-x-materialtwin](equipment/shimadzu/shimadzu-ags-x-materialtwin.json) | 계열 (보탬→shimadzu-ags-x) | universal_testing_machine | tensile, compression, flexure, shear, peel, tear | – | – |  | catalog |
 | [shimadzu-agx-v2](equipment/shimadzu/shimadzu-agx-v2.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, creep, relaxation | 0.01–600 | -70–1100 (부속) | crosshead_speed_mm_min=5e-05–3000; vertical_test_space_mm=180–2325; horizontal_test_space_mm=420–790; frame_stiffness_kN_mm=60–700; data_rate_Hz=≤10000 | catalog |
+| [shimadzu-ceramics-bending-test-jig](equipment/shimadzu/shimadzu-ceramics-bending-test-jig.json) | **부속** | grip_fixture | flexure | ≤5 | – |  | limited |
+| [shimadzu-contact-extensometers-sie-dses-dt-aeh](equipment/shimadzu/shimadzu-contact-extensometers-sie-dses-dt-aeh.json) | **센서** | extensometer | tensile, flexure | – | – |  | limited |
 | [shimadzu-duh-211](equipment/shimadzu/shimadzu-duh-211.json) | 계열 | instrumented_indentation | instrumented_indentation, hardness_vickers, hardness_knoop | – | – | indentation_force_mN=0.1–1961; displacement_um=0–100; specimen_height_mm=≤60; stage_travel_mm=25×25 | catalog |
+| [shimadzu-foam-rubber-compression-test-jig](equipment/shimadzu/shimadzu-foam-rubber-compression-test-jig.json) | **부속** | grip_fixture | compression | ≤1 | 0–40 | specimen_diameter_mm=≤200 | limited |
+| [shimadzu-high-and-low-temperature-test-devices](equipment/shimadzu/shimadzu-high-and-low-temperature-test-devices.json) | **부속** | furnace | tensile, flexure, compression | – | ≤1500 |  | limited |
 | [shimadzu-hmv-g](equipment/shimadzu/shimadzu-hmv-g.json) | 계열 | vickers_knoop_hardness | hardness_vickers, hardness_knoop | – | – | test_load_gf=1–2000; hardness_scales=HV, HK | limited |
+| [shimadzu-hydraulic-flat-grips](equipment/shimadzu/shimadzu-hydraulic-flat-grips.json) | **부속** | grip_fixture | tensile | 10–600 | – | width_mm=≤85; pressure_MPa=≤70 | limited |
+| [shimadzu-manual-screw-flat-grips](equipment/shimadzu/shimadzu-manual-screw-flat-grips.json) | **부속** | grip_fixture | tensile | – | -70–320 | force_N=10–5000; specimen_thickness_mm=≤16 | limited |
+| [shimadzu-non-shift-wedge-grips](equipment/shimadzu/shimadzu-non-shift-wedge-grips.json) | **부속** | grip_fixture | tensile | 5–300 | – | pressure_MPa=≤21 | limited |
+| [shimadzu-pantograph-and-eccentric-roller-grips](equipment/shimadzu/shimadzu-pantograph-and-eccentric-roller-grips.json) | **부속** | grip_fixture | tensile | – | – | force_N=100–5000 | limited |
+| [shimadzu-pcb-bending-test-jig](equipment/shimadzu/shimadzu-pcb-bending-test-jig.json) | **부속** | grip_fixture | flexure, fatigue | – | – |  | limited |
+| [shimadzu-pneumatic-flat-grips](equipment/shimadzu/shimadzu-pneumatic-flat-grips.json) | **부속** | grip_fixture | tensile | – | -70–200 | force_N=50–10000; pressure_MPa=0.2–0.7 | limited |
+| [shimadzu-servopulser-fatigue-grips-and-jigs](equipment/shimadzu/shimadzu-servopulser-fatigue-grips-and-jigs.json) | **부속** | grip_fixture | fatigue, tensile, compression, fracture_toughness | – | -196–300 | dynamic_force_kN=5–250 | limited |
+| [shimadzu-ssg-strain-gauge-extensometers](equipment/shimadzu/shimadzu-ssg-strain-gauge-extensometers.json) | **센서** | extensometer | tensile | – | 5–40 | gauge_length_mm=10–50; displacement_mm=0.1–5 | limited |
+| [shimadzu-thc-temperature-humidity-chamber](equipment/shimadzu/shimadzu-thc-temperature-humidity-chamber.json) | **부속** | environmental_chamber | tensile, compression, flexure, damp_heat | – | – |  | limited |
+| [shimadzu-thermostatic-chambers-tcr-tcl-tce](equipment/shimadzu/shimadzu-thermostatic-chambers-tcr-tcl-tce.json) | **부속** | environmental_chamber | tensile, compression, flexure | – | -70–300 | temperature_fluctuation_degC=≤1.5; inner_mm=– | limited |
+| [shimadzu-trapezium-x-software](equipment/shimadzu/shimadzu-trapezium-x-software.json) | software | accessory |  | – | – |  | limited |
+| [shimadzu-trviewx-video-extensometer](equipment/shimadzu/shimadzu-trviewx-video-extensometer.json) | **센서** | extensometer | tensile, compression, flexure | – | – | field_of_view_mm=120–240; operating_temperature_degC=5–35 | limited |
 | [shimadzu-uh-x-fx](equipment/shimadzu/shimadzu-uh-x-fx.json) | 계열 | hydraulic_utm | tensile, compression, flexure | 200–4000 | – | crosshead_speed_mm_min=0.1–100; stroke_mm=200–350; grip_span_mm=720–1150; specimen_diameter_mm=8–120; specimen_thickness_mm=0–120 | catalog |
 | [shimadzu-uv-2600-2700](equipment/shimadzu/shimadzu-uv-2600-2700.json) | 계열 | optical_spectrometer | optical_spectroscopy | – | – |  | catalog |
 
@@ -628,6 +763,7 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [sms-ta-xt-plus](equipment/stable-micro-systems/sms-ta-xt-plus.json) | 기종 | texture_analyser | texture, compression, tensile, puncture, peel | ≤0.5 | -10–80 | crosshead_speed_mm_min=0.6–2400; crosshead_travel_mm=1–295 | limited |
+| [sms-texture-analyser-probes-and-attachments](equipment/stable-micro-systems/sms-texture-analyser-probes-and-attachments.json) | **부속** | accessory | texture, compression, tensile | – | – |  | limited |
 
 ## Struers (`struers`)
 
@@ -656,6 +792,7 @@
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
 | [taber-rotary-abraser-5135-5155](equipment/taber/taber-rotary-abraser-5135-5155.json) | 계열 | abrasion_tester | abrasion | – | – | rotation_rpm=60, 72; load_g=250, 500, 1000; specimen_thickness_mm=≤40; stations=1, 2 | catalog |
+| [taber-rotary-abraser-accessories](equipment/taber/taber-rotary-abraser-accessories.json) | **부속** | accessory | abrasion | – | – | load_g=75–1000 | limited |
 
 ## Teseq / AMETEK CTS (`teseq`)
 
@@ -668,7 +805,10 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [testometric-extensometers](equipment/testometric/testometric-extensometers.json) | **센서** | extensometer | tensile | – | – | displacement_mm=≤850; field_of_view_mm=≤100 | limited |
 | [testometric-m500](equipment/testometric/testometric-m500.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, creep, fatigue | 0.005–100 | – | crosshead_speed_mm_min=0.001–1000; vertical_test_space_mm=1180–1300; horizontal_test_space_mm=420; data_rate_Hz=≤12000 | catalog |
+| [testometric-tensile-grips](equipment/testometric/testometric-tensile-grips.json) | **부속** | grip_fixture | tensile | – | – | force_N=500–300000 | limited |
+| [testometric-test-fixtures](equipment/testometric/testometric-test-fixtures.json) | **부속** | grip_fixture | flexure, puncture, peel, shear, tear, burst_pressure, compression | ≤100 | – | hdt_span_mm=50–600 | limited |
 
 ## Thermo Fisher Scientific (HAAKE) (`thermo-fisher`)
 
@@ -687,9 +827,19 @@
 
 | id | 종류 | 분류 | 시험 항목 | 힘 kN | 온도 °C | 기타 한계 | 신뢰도 |
 |---|---|---|---|---|---|---|---|
+| [tinius-olsen-100r-100s-extensometers](equipment/tinius-olsen/tinius-olsen-100r-100s-extensometers.json) | **센서** | extensometer | tensile | – | – | displacement_mm=≤970; gauge_length_mm=10–50; specimen_thickness_mm=≤10 | limited |
+| [tinius-olsen-600ls-laser-extensometer](equipment/tinius-olsen/tinius-olsen-600ls-laser-extensometer.json) | **센서** | extensometer | tensile | – | -70–300 | displacement_mm=≤600; gauge_length_mm=≥10; data_rate_Hz=≤660 | limited |
+| [tinius-olsen-automatic-extensometers-ae900-aex](equipment/tinius-olsen/tinius-olsen-automatic-extensometers-ae900-aex.json) | **센서** | extensometer | tensile | – | – | displacement_mm=≤910; gauge_length_mm=10–500; displacement_um=≥0.01; operating_temperature_degC=0–50 | limited |
+| [tinius-olsen-environmental-chambers](equipment/tinius-olsen/tinius-olsen-environmental-chambers.json) | **부속** | environmental_chamber | tensile, compression, flexure | – | -150–600 | temperature_fluctuation_degC=≤2; test_room_height_mm=≤610; test_room_width_mm=≤250; test_room_depth_mm=≤245 | limited |
+| [tinius-olsen-high-temperature-furnaces](equipment/tinius-olsen/tinius-olsen-high-temperature-furnaces.json) | **부속** | furnace | tensile, creep | – | ≤1400 | temperature_fluctuation_degC=≤5; heated_length_mm=110–300; bore_diameter_mm=≤90 | limited |
+| [tinius-olsen-lvdt-and-strain-gage-extensometers](equipment/tinius-olsen/tinius-olsen-lvdt-and-strain-gage-extensometers.json) | **센서** | extensometer | tensile, compression | – | -265–200 | gauge_length_mm=12.7–80; specimen_thickness_mm=1.6–75 | limited |
 | [tinius-olsen-mp1200-melt-flow](equipment/tinius-olsen/tinius-olsen-mp1200-melt-flow.json) | 계열 | melt_flow_indexer | melt_flow | – | – | melt_temperature_degC=≤450; melt_load_kg=0.325–21.6 | catalog |
 | [tinius-olsen-st-series](equipment/tinius-olsen/tinius-olsen-st-series.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, tear, peel | 1–300 | – | crosshead_speed_mm_min=0.0001–2500; vertical_test_space_mm=–; data_rate_Hz=≤1000 | catalog |
+| [tinius-olsen-tensile-grips](equipment/tinius-olsen/tinius-olsen-tensile-grips.json) | **부속** | grip_fixture | tensile | ≤300 | – |  | limited |
+| [tinius-olsen-test-fixtures](equipment/tinius-olsen/tinius-olsen-test-fixtures.json) | **부속** | grip_fixture | flexure, peel, friction_coefficient, shear | – | – |  | limited |
 | [tinius-olsen-torsion-testers](equipment/tinius-olsen/tinius-olsen-torsion-testers.json) | 계열 | torsion_tester | torsion | – | – | torque_Nm=1000–30000; rotation_speed_deg_min=5–360; specimen_diameter_mm=≤127; specimen_length_mm=≤2286 | catalog |
+| [tinius-olsen-uvx3d-video-extensometers](equipment/tinius-olsen/tinius-olsen-uvx3d-video-extensometers.json) | **센서** | extensometer | tensile, compression, flexure, shear, fatigue, torsion | – | – | field_of_view_mm=110–220; gauge_length_mm=10–200; data_rate_Hz=≤1000; displacement_um=≥0.5 | limited |
+| [tinius-olsen-vector-extensometers](equipment/tinius-olsen/tinius-olsen-vector-extensometers.json) | **센서** | extensometer | tensile, compression, flexure, fatigue | – | – | field_of_view_mm=70–200; gauge_length_mm=6–180; data_rate_Hz=≤150; displacement_um=≥0.5 | limited |
 
 ## TIRA GmbH (`tira`)
 
@@ -745,14 +895,32 @@
 | [zwickroell-aflow-extrusion-plastometer](equipment/zwickroell/zwickroell-aflow-extrusion-plastometer.json) | 기종 | melt_flow_indexer | melt_flow | – | – | melt_temperature_degC=50–450; melt_load_kg=0.325–50; piston_speed_mm_min=≤2000 | catalog |
 | [zwickroell-allroundline](equipment/zwickroell/zwickroell-allroundline.json) | 계열 | universal_testing_machine | tensile, compression, flexure, shear, peel, tear, creep, relaxation | 5–250 | -80–250 (부속) | crosshead_speed_mm_min=5e-05–3000; vertical_test_space_mm=1000–2260; horizontal_test_space_mm=440–1040; data_rate_Hz=≤2000 | catalog |
 | [zwickroell-arbm120-rotary-bending](equipment/zwickroell/zwickroell-arbm120-rotary-bending.json) | 기종 | rotating_bending_fatigue | fatigue | – | 200–850 (부속) | bending_moment_Nm=2.5–120; rotation_rpm=500–5000; frequency_Hz=8.3–83.3; specimen_diameter_mm=2–20; grip_span_mm=50–200 | catalog |
+| [zwickroell-clip-on-extensometers](equipment/zwickroell/zwickroell-clip-on-extensometers.json) | **센서** | extensometer | tensile, compression | – | -70–250 | gauge_length_mm=10–100; displacement_mm=≤40 | limited |
+| [zwickroell-cmu-cross-section-measuring-devices](equipment/zwickroell/zwickroell-cmu-cross-section-measuring-devices.json) | **부속** | accessory | tensile, flexure | – | – | specimen_thickness_mm=≤80 | limited |
+| [zwickroell-digiclip-extensometers](equipment/zwickroell/zwickroell-digiclip-extensometers.json) | **센서** | extensometer | tensile, compression | – | – | displacement_mm=≤40; displacement_um=≥0.02 | limited |
+| [zwickroell-displacement-transducers](equipment/zwickroell/zwickroell-displacement-transducers.json) | **센서** | extensometer | compression, flexure | – | -70–250 | displacement_mm=≤50 | limited |
 | [zwickroell-durascan-g5](equipment/zwickroell/zwickroell-durascan-g5.json) | 계열 | vickers_knoop_hardness | hardness_vickers, hardness_knoop, hardness_brinell | – | – | test_load_gf=0.25–62500; hardness_scales=HV, HK, HBW; specimen_height_mm=≤260; specimen_weight_kg=≤50 | catalog |
 | [zwickroell-hdt-vicat](equipment/zwickroell/zwickroell-hdt-vicat.json) | 계열 | hdt_vicat | hdt, vicat | – | 20–300 | heating_rate_K_h=50, 120; stations=3, 4, 6; displacement_mm=1–15; hdt_span_mm=64, 100, 101.6; specimen_max_mm=HDT 13×15×130, VST 10×6.5×10 | catalog |
+| [zwickroell-high-temperature-heating-systems](equipment/zwickroell/zwickroell-high-temperature-heating-systems.json) | **부속** | furnace | tensile, creep, compression, flexure | – | -80–2000 | temperature_fluctuation_degC=≤2 | limited |
 | [zwickroell-hit-pendulum](equipment/zwickroell/zwickroell-hit-pendulum.json) | 계열 | pendulum_impact | charpy_impact, izod_impact, tensile_impact | – | – | impact_energy_J=0.5–50; impact_velocity_m_s=2.9, 3.46, 3.8 | catalog |
 | [zwickroell-kappa-creep](equipment/zwickroell/zwickroell-kappa-creep.json) | 계열 | creep_tester | creep, relaxation, fatigue, thermomechanical_fatigue, fracture_toughness, tensile, compression, flexure | 50, 100 | -80–2000 (부속) | crosshead_speed_mm_min=1.67e-05–250; crosshead_travel_mm=150, 200; vertical_test_space_mm=1397, 1500; horizontal_test_space_mm=520, 720; heating_rate_K_min=≤150 | catalog |
+| [zwickroell-laserxtens](equipment/zwickroell/zwickroell-laserxtens.json) | **센서** | extensometer | tensile, creep, compression | – | -80–2000 | specimen_size_mm=≥1.5 | limited |
+| [zwickroell-lightxtens-2-1000](equipment/zwickroell/zwickroell-lightxtens-2-1000.json) | **센서** | extensometer | tensile | – | -40–120 | displacement_mm=≤1000 | limited |
+| [zwickroell-longstroke-extensometer](equipment/zwickroell/zwickroell-longstroke-extensometer.json) | **센서** | extensometer | tensile | – | -70–250 | displacement_mm=≤1000 | limited |
+| [zwickroell-makroxtens-ii](equipment/zwickroell/zwickroell-makroxtens-ii.json) | **센서** | extensometer | tensile, compression, flexure, fatigue | – | -70–360 | displacement_mm=≤450 | limited |
+| [zwickroell-multixtens-ii-hp](equipment/zwickroell/zwickroell-multixtens-ii-hp.json) | **센서** | extensometer | tensile, compression, flexure, fatigue | – | -70–360 | displacement_mm=≤700 | limited |
 | [zwickroell-proline](equipment/zwickroell/zwickroell-proline.json) | 계열 | universal_testing_machine | tensile, compression, flexure, peel, tear | 5–100 | – | crosshead_speed_mm_min=≤1000; vertical_test_space_mm=570–1450; horizontal_test_space_mm=440–640 | limited |
 | [zwickroell-shore-hardness-testers](equipment/zwickroell/zwickroell-shore-hardness-testers.json) | 계열 | shore_irhd_hardness | hardness_shore | – | – | hardness_scales=Shore A, Shore D, Shore B, Shore C, Shore D0, Shore 0, Shore 00, Shore 000; specimen_thickness_mm=≥6; specimen_diameter_mm=≥35 | catalog |
+| [zwickroell-specimen-grips](equipment/zwickroell/zwickroell-specimen-grips.json) | **부속** | grip_fixture | tensile | 0.02–2500 | -70–250 |  | limited |
+| [zwickroell-specimen-preparation-devices](equipment/zwickroell/zwickroell-specimen-preparation-devices.json) | **부속** | specimen_preparation | tensile, charpy_impact, izod_impact, tensile_impact | – | – | hardness_shore_a=≤60; specimen_thickness_mm=≤8 | limited |
+| [zwickroell-temperature-chamber-360c-allroundline](equipment/zwickroell/zwickroell-temperature-chamber-360c-allroundline.json) | **부속** | environmental_chamber | tensile, compression, flexure | ≤250 | -80–360 | test_room_height_mm=≤900; test_room_width_mm=≤460; test_room_depth_mm=≤740 | limited |
+| [zwickroell-temperature-chamber-zwickiline](equipment/zwickroell/zwickroell-temperature-chamber-zwickiline.json) | **부속** | environmental_chamber | tensile, compression, flexure | ≤2.5 | -50–180 | test_room_height_mm=≤350; test_room_width_mm=≤250; test_room_depth_mm=≤250 | limited |
 | [zwickroell-temperature-chambers-allroundline](equipment/zwickroell/zwickroell-temperature-chambers-allroundline.json) | **부속** | environmental_chamber | tensile, compression, flexure | – | -80–250 | heating_rate_K_min=7.5–13 | catalog |
+| [zwickroell-testcontrol-ii-and-control-cube](equipment/zwickroell/zwickroell-testcontrol-ii-and-control-cube.json) | **부속** | accessory | tensile, compression, flexure, fatigue | – | – | data_rate_Hz=≤10000; digital_sample_rate_Hz=≤400000 | limited |
+| [zwickroell-testxpert-software](equipment/zwickroell/zwickroell-testxpert-software.json) | software | accessory |  | – | – |  | limited |
 | [zwickroell-vibrophore](equipment/zwickroell/zwickroell-vibrophore.json) | 계열 | resonance_fatigue | fatigue, fracture_toughness, tensile, compression, flexure, torsion | – | – | dynamic_force_kN=15–1000; frequency_Hz=30–285; crosshead_speed_mm_min=0.0001–600; vertical_test_space_mm=≤2310; horizontal_test_space_mm=626, 982 | catalog |
+| [zwickroell-videoxtens](equipment/zwickroell/zwickroell-videoxtens.json) | **센서** | extensometer | tensile, compression, flexure | – | – |  | limited |
+| [zwickroell-xforce-load-cells](equipment/zwickroell/zwickroell-xforce-load-cells.json) | **센서** | load_cell | tensile, compression, flexure, fatigue, torsion | – | – | force_N=5–2500000; dynamic_force_kN=1–1000 | limited |
 | [zwickroell-zhr-rockwell](equipment/zwickroell/zwickroell-zhr-rockwell.json) | 계열 | rockwell_hardness | hardness_rockwell, hardness_brinell, hardness_vickers | – | – | test_load_kgf=6.25–250; hardness_scales=HRA–HRV, HR15/30/45 N/T/W/X/Y, HRα plastics E/L/M/R, HR2.5 ball, HBT, HVT 10–100, ball indentation 49–961 N; specimen_he | catalog |
 | [zwickroell-zhu250](equipment/zwickroell/zwickroell-zhu250.json) | 기종 | universal_hardness | hardness_vickers, hardness_knoop, hardness_brinell, hardness_rockwell | – | – | test_load_kgf=1–250; hardness_scales=HV1–HV100, HVT, HK1, HBW 1/1 – 10/250, HBT, HRA/B/C/D/E/F/G/H/K, HR15/30/45 N/T, ball indentation 49–961 N; specimen_height | catalog |
 

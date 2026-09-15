@@ -1,0 +1,66 @@
+{
+ "id": "hegewald-peschke-t-groove-plates",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke T-Groove Plates (e.g. 1000 × 1000 mm; with air-cushion pallet and parking table)",
+ "name_ko": "헤게발트 운트 페슈케 T 홈 플레이트 (부품 시험용, 1000×1000 mm 등, 에어쿠션 팔레트·파킹 테이블 옵션)",
+ "manufacturer": "hegewald-peschke",
+ "category": "grip_fixture",
+ "subcategory": "table",
+ "description": "부품 시험용 T 홈 플레이트 — 여러 크기·홈 형상, 무거운 지그를 시험 공간에 넣고 빼는 에어쿠션 팔레트와 파킹 테이블 옵션으로 시험 종류 전환이 쉽다. 예: 직사각 1000×1000 mm, 판재 부품의 용접 볼트 풀아웃 시험용.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "components",
+  "sheet metal assemblies"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "T-groove plate rectangular 1000×1000 mm",
+   "specs": {
+    "width_mm": 1000,
+    "depth_mm": 1000
+   }
+  },
+  {
+   "model": "T-groove plate for pull-out tests on welded bolts",
+   "specs": {}
+  },
+  {
+   "model": "T-groove plate with air cushion pallet and parking table",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-vario",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/t-groove-plates/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

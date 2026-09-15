@@ -1,0 +1,109 @@
+{
+ "id": "mts-em-adapters-and-extension-kits",
+ "kind": "accessory",
+ "name": "MTS EM Load Extension Kits (Type C 200 N / Type D 150 kN, -130 to 315 °C), Criterion Conversion Adapters and Fundamental Universal Joint (FTA105B)",
+ "name_ko": "MTS 전기기계식 하중 연장 로드 키트 (C 형 200 N·D 형 150 kN, 챔버용) · Criterion 변환 어댑터 · 유니버설 조인트 (100 kN)",
+ "manufacturer": "mts",
+ "category": "accessory",
+ "subcategory": "adapter",
+ "description": "환경 챔버 안의 시험 공간을 살리는 스테인리스 연장 로드 키트 — 5 길이(100·125·150·200·250 mm)를 조합해 핀-핀 100~825 mm 의 23 가지 높이, 25 mm 단위 조절, -130~315 °C 인장·압축, 수냉 포트, 예압 조인트. C 형 200 N(0.18~0.38 kg), D 형 150 kN(0.93~1.93 kg, MTS·Instron 클레비스 핀 호환). 변환 어댑터로 같은 그립·지그를 Exceed·Criterion 양쪽에. Fundamental 유니버설 조인트 FTA105B 100 kN(3.9 kg, 높이 185).",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 200,
+   "max": 150000
+  },
+  "temperature_degC": {
+   "min": -130,
+   "max": 315
+  },
+  "height_mm": {
+   "min": 100,
+   "max": 825,
+   "note": "핀-핀 조합 길이"
+  }
+ },
+ "models": [
+  {
+   "model": "EM Extension Kit Type C (100-151-425)",
+   "specs": {
+    "force_N": 200,
+    "temperature_degC": {
+     "min": -130,
+     "max": 315
+    },
+    "weight_kg": {
+     "min": 0.18,
+     "max": 0.38
+    }
+   }
+  },
+  {
+   "model": "EM Extension Kit Type D (100-150-815)",
+   "specs": {
+    "force_kN": 150,
+    "temperature_degC": {
+     "min": -130,
+     "max": 315
+    },
+    "weight_kg": {
+     "min": 0.93,
+     "max": 1.93
+    }
+   }
+  },
+  {
+   "model": "Criterion electromechanical conversion adapters",
+   "specs": {}
+  },
+  {
+   "model": "FTA105B (universal joint)",
+   "specs": {
+    "force_kN": 100,
+    "weight_kg": 3.9,
+    "height_mm": 185,
+    "width_mm": 84,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/electromechanical-load-extension-kit",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/criterion-electromechanical-conversion-adapters",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-universal-joint",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

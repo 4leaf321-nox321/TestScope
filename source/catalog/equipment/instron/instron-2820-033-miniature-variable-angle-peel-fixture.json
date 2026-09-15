@@ -1,0 +1,90 @@
+{
+ "id": "instron-2820-033-miniature-variable-angle-peel-fixture",
+ "kind": "accessory",
+ "name": "Instron 2820-033 Miniature Variable Angle Peel Fixture",
+ "name_ko": "인스트론 2820-033 소형 가변 각도 박리 지그 (30~150°)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "peel",
+ "description": "구리 배선·필름·테이프를 기판·부품에서 떼는 박리 강도 지그. 링크 기구로 시험 중 박리각이 일정하게 유지되고 30·45·60·90·120·135·150° 로 설정. 기판은 상하 클램프로 테이블에 고정, 테이블이 크로스헤드에 붙어 움직이며 박리력만 측정된다. 1 kN, 10~60 °C, 하부 Type Om, 상부 그립 별도.",
+ "test_items": [
+  "peel"
+ ],
+ "measurands": [],
+ "materials": [
+  "copper runners",
+  "films",
+  "tapes",
+  "PCB substrates"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 1
+  },
+  "temperature_degC": {
+   "min": 10,
+   "max": 60
+  },
+  "specimen_orientation_deg": {
+   "min": 30,
+   "max": 150,
+   "note": "박리각"
+  }
+ },
+ "models": [
+  {
+   "model": "2820-033",
+   "specs": {
+    "force_kN": 1,
+    "specimen_orientation_deg": [
+     30,
+     45,
+     60,
+     90,
+     120,
+     135,
+     150
+    ]
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-6800-series",
+   "note": "peel"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-3400-series",
+   "note": "peel"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/electronics-and-microelectronics-testing-systems-and-accessories/2820-033/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

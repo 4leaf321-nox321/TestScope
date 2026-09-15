@@ -1,0 +1,94 @@
+{
+ "id": "zwickroell-makroxtens-ii",
+ "kind": "sensor",
+ "name": "ZwickRoell makroXtens II / II HP Sensor-Arm Extensometer (450 mm)",
+ "name_ko": "즈윅로엘 makroXtens II 센서 암 신율계 (450 mm, -70~+360 °C, Class 0.5)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "sensor_arm",
+ "description": "설치 대수 7,500 이상의 금속·플라스틱·자동차 산업 표준 센서 암 신율계 — 낮은~중간 신장의 금속·플라스틱·복합재·경질 발포체의 인장·압축·굽힘·반복 시험. 모듈 구조로 수동에서 완전 자동까지, 센서 암 EEPROM 으로 자동 인식, L0 자동 설정과 자동 부착·분리, 파단까지 측정(안전 기구·회전 칼날), 끌림력 <0.05 N, 접촉압 조절, 횡변형 신율계 추가. ISO 9513 Class 0.5(20 µm 부터), ISO 527-1 ±1 µm 요건, HP 판은 ISO 6892-1 A1·ASTM E8 B 폐루프 변형률 제어 승인. 450 mm, -70~+360 °C 온도 챔버 사용. ProLine 용 makroXtens 도 있다.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "r_value"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "fiber composites",
+  "films",
+  "rigid foam"
+ ],
+ "standards": {
+  "compliance": [
+   "EN ISO 9513 Class 0.5",
+   "ISO 527-1 (2011) ±1 µm requirement"
+  ],
+  "test_methods": [
+   "ISO 6892-1 Method A1",
+   "ASTM E8 Method B"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 450
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 360
+  }
+ },
+ "models": [
+  {
+   "model": "makroXtens II",
+   "specs": {
+    "displacement_mm": 450,
+    "temperature_degC": {
+     "min": -70,
+     "max": 360
+    },
+    "accuracy_class": "ISO 9513 0.5"
+   }
+  },
+  {
+   "model": "makroXtens II HP",
+   "specs": {
+    "displacement_mm": 450,
+    "note": "폐루프 변형률 속도 제어 승인, 초기 구간 정밀도 향상 드래그 픽스처"
+   }
+  },
+  {
+   "model": "makroXtens ProLine",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-temperature-chambers-allroundline"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/makroxtens-ii/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,85 @@
+{
+ "id": "zwickroell-laserxtens",
+ "kind": "sensor",
+ "name": "ZwickRoell laserXtens Laser Extensometers (-80 °C to +2,000 °C)",
+ "name_ko": "즈윅로엘 laserXtens 레이저 신율계 (고온·진공용 비접촉, -80~+2,000 °C)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "laser",
+ "description": "녹색 또는 청색 레이저로 시편 표면에 스페클 패턴을 만들고 두 평가 영역의 스페클 이동을 상관 알고리즘으로 추적해 신장을 구하는 비접촉 신율계 — 마크가 필요 없다. 필터 렌즈가 달궈진 시편의 적색광을 막아 -80~+2,000 °C 에서 측정, 공기·진공·불활성 기체 환경, 퍼니스 포트나 유리창 너머로 측정하므로 로·챔버를 닫은 채 시험. 금속·내화물·세라믹·흑연·유리, 1.5 mm 미니 시편, 면 밖 시편 이동 보상. ISO 6892-2·ASTM E21·DIN EN 2002-002 고온 시험 요건 충족.",
+ "test_items": [
+  "tensile",
+  "creep",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "metals",
+  "refractory materials",
+  "ceramics",
+  "graphite",
+  "glass"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 6892-2",
+   "ASTM E21",
+   "DIN EN 2002-002"
+  ]
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -80,
+   "max": 2000
+  },
+  "specimen_size_mm": {
+   "min": 1.5,
+   "note": "미니 시편 하한"
+  }
+ },
+ "models": [
+  {
+   "model": "laserXtens (구성 여러 가지)",
+   "specs": {
+    "temperature_degC": {
+     "min": -80,
+     "max": 2000
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-kappa-creep"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-temperature-chambers-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-high-temperature-heating-systems"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/laserxtens/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

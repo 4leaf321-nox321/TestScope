@@ -1,0 +1,90 @@
+{
+ "id": "ametek-lloyd-contacting-and-long-travel-extensometers",
+ "kind": "sensor",
+ "name": "Lloyd Instruments Long Travel Extensometers (EZ250Plus / EX800Plus), Contacting Extensometers (Epsilon, to 25 mm specimen) and Deflection Gauge Extensometers",
+ "name_ko": "로이드 롱트래블 신율계 (EZ250Plus·EX800Plus) · 접촉식 신율계 (Epsilon, 시편 25 mm 까지) · 처짐 게이지 신율계",
+ "manufacturer": "ametek-lloyd",
+ "category": "extensometer",
+ "subcategory": "contact",
+ "description": "롱트래블 신율계 두 종 — 플라스틱·고무용(클램프 암 둘 + 정밀 전위차계, 암 간격에 비례한 DC 전압, NEXYGENPlus 로 항복·파단점)과 강성·반강성·연성 재료용(외부 전원·룸·커넥터·거치대 포함); 파단까지 견디는 고무 버퍼, 플러그 앤 플레이. 접촉식 신율계(Epsilon 카탈로그)는 시편 두께 25 mm 까지, 이중 굴곡으로 고주파·진동 둔감, 인장·압축·반복, 한 손 부착 키트. 처짐 게이지 신율계는 3·4점 굽힘·압축 변형용. 범위 수치는 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [
+  "axial_strain",
+  "elongation",
+  "force_deflection"
+ ],
+ "materials": [
+  "plastics",
+  "rubber",
+  "metals",
+  "composites",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "specimen_thickness_mm": {
+   "max": 25,
+   "note": "접촉식"
+  }
+ },
+ "models": [
+  {
+   "model": "EZ250Plus Long Travel Extensometer (plastics/rubber)",
+   "specs": {}
+  },
+  {
+   "model": "EX800Plus Long Travel Extensometer (rigid/semi-rigid/ductile)",
+   "specs": {}
+  },
+  {
+   "model": "Contacting extensometers (Epsilon)",
+   "specs": {
+    "specimen_thickness_mm": {
+     "max": 25
+    }
+   }
+  },
+  {
+   "model": "Deflection gauge extensometers",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series",
+   "note": "「모든 시험기에 맞음」"
+  },
+  {
+   "type": "same_family_as",
+   "target": "epsilon-3542-3442-axial-extensometers",
+   "note": "접촉식은 Epsilon 제품"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/extensometers/long-travel-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/extensometers/contacting-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/extensometers/deflection-gauge-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

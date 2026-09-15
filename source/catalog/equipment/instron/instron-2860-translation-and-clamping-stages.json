@@ -1,0 +1,88 @@
+{
+ "id": "instron-2860-translation-and-clamping-stages",
+ "kind": "accessory",
+ "name": "Instron 2860 Series Translation and Clamping Stages (PCB Clamping Stage 2860-200 / Theta-X-Y Stage 2860-101 / Stepped Jaw Vice 2860-210)",
+ "name_ko": "인스트론 2860 계열 PCB 클램핑·XY 이동 스테이지 (전자부품 리드 풀·풀오프)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "stage",
+ "description": "액추에이터 아래에 전자 기판·소형 부품을 정밀 위치·정렬하는 스테이지. PCB 클램핑 스테이지 2860-200 은 기계 베이스 또는 XY 스테이지 위에 달아 0~150 mm 스팬을 잡고 500 N. Theta-X-Y 수동 스테이지 2860-101 은 디지털 마이크로미터로 X·Y ±12.5 mm(1 µm)와 회전각(버니어)을 조절, 1 kN, 상온 전용 — 리드 풀·부품 풀오프. 계단 조 바이스 2860-210 은 PCB·조립품 고정용 500 N.",
+ "test_items": [
+  "tensile",
+  "wire_bond_strength"
+ ],
+ "measurands": [],
+ "materials": [
+  "PCB",
+  "microelectronic assemblies"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 1
+  },
+  "stage_travel_mm": {
+   "max": 12.5,
+   "note": "X·Y ±12.5 mm"
+  }
+ },
+ "models": [
+  {
+   "model": "2860-200 (PCB Clamping Stage)",
+   "specs": {
+    "force_N": 500,
+    "grip_span_mm": {
+     "min": 0,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "2860-101 (Theta-X-Y Manual Translation Stage)",
+   "specs": {
+    "force_kN": 1,
+    "stage_travel_mm": 12.5,
+    "note": "±12.5 mm, 마이크로미터 분해능 1 µm, 상온 전용"
+   }
+  },
+  {
+   "model": "2860-210 (Stepped Jaw Vice Clamp)",
+   "specs": {
+    "force_N": 500
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/electronics-and-microelectronics-testing-systems-and-accessories/translation-clamping-stages/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/electronics-and-microelectronics-testing-systems-and-accessories/2860-210/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

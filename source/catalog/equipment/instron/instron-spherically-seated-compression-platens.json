@@ -1,0 +1,161 @@
+{
+ "id": "instron-spherically-seated-compression-platens",
+ "kind": "accessory",
+ "name": "Instron Self-Aligning / Spherically Seated Compression Platens (S5722–S5728, W-2005, 2501-118, 2840-112)",
+ "name_ko": "인스트론 자기정렬(구면 시트) 압축 플래튼 (10 kN~5000 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "compression_platen",
+ "description": "윗면이 평행하지 않은 압축 시편에 맞춰 예압 중 4° 까지 스스로 기우는 플래튼. 구면 시트 일체형은 Ø50~200 mm × 10·100 kN(S5722A~S5728B), 100 mm 이상은 잠금 장치, LVDT 처짐 센서 부착 가능. 산업용 고하중형 W-2005-A~F(1000~5000 kN)는 ASTM C39·C67·C109·C133·C140·C365, AASHTO T22 구성. 구면 시팅 어댑터 2501-118(300 kN)·2840-112(500 kN 정적/250 kN 동적)는 일반 플래튼을 구면 시트형으로 바꾼다.",
+ "test_items": [
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "concrete",
+  "masonry",
+  "ceramics",
+  "composites",
+  "foam",
+  "packaging"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM C39",
+   "ASTM C67",
+   "ASTM C109",
+   "ASTM C133",
+   "ASTM C140",
+   "ASTM C365",
+   "AASHTO T22"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 10,
+   "max": 5000
+  },
+  "specimen_diameter_mm": {
+   "max": 305,
+   "note": "플래튼/시트 지름"
+  }
+ },
+ "models": [
+  {
+   "model": "S5722A / S5722B (Ø50)",
+   "specs": {
+    "force_kN": [
+     10,
+     100
+    ],
+    "specimen_diameter_mm": 50
+   }
+  },
+  {
+   "model": "S5724A / S5724B (Ø100)",
+   "specs": {
+    "force_kN": [
+     10,
+     100
+    ],
+    "specimen_diameter_mm": 100
+   }
+  },
+  {
+   "model": "S5726A / S5726B (Ø150)",
+   "specs": {
+    "force_kN": [
+     10,
+     100
+    ],
+    "specimen_diameter_mm": 150
+   }
+  },
+  {
+   "model": "S5728A / S5728B (Ø200)",
+   "specs": {
+    "force_kN": [
+     10,
+     100
+    ],
+    "specimen_diameter_mm": 200
+   }
+  },
+  {
+   "model": "W-2005-A",
+   "specs": {
+    "force_kN": 1000,
+    "specimen_diameter_mm": 79
+   }
+  },
+  {
+   "model": "W-2005-B",
+   "specs": {
+    "force_kN": 2000,
+    "specimen_diameter_mm": 114
+   }
+  },
+  {
+   "model": "W-2005-C",
+   "specs": {
+    "force_kN": 4500,
+    "specimen_diameter_mm": 165
+   }
+  },
+  {
+   "model": "W-2005-D",
+   "specs": {
+    "force_kN": 4500,
+    "specimen_diameter_mm": 228
+   }
+  },
+  {
+   "model": "W-2005-F",
+   "specs": {
+    "force_kN": 5000,
+    "specimen_diameter_mm": 305
+   }
+  },
+  {
+   "model": "2501-118 (Spherical Seating)",
+   "specs": {
+    "force_kN": 300,
+    "note": "하부 6×M10 on 100 mm BC, 상부 M48x2 fRH(Type IIf)"
+   }
+  },
+  {
+   "model": "2840-112 (Spherical Seating, fatigue rated)",
+   "specs": {
+    "static_force_kN": 500,
+    "dynamic_force_kN": 250,
+    "note": "2840-11x 압축 플래튼용"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/compression-platens/self-aligning-spherical-seating-platens/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,107 @@
+{
+ "id": "hegewald-peschke-peel-test-devices",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Peel Test Devices (90° per DIN 53494; movable peel-off table 45° / 90° / 180°)",
+ "name_ko": "헤게발트 운트 페슈케 박리 시험 지그 (DIN 53494 90° · 이동 테이블 45°/90°/180°)",
+ "manufacturer": "hegewald-peschke",
+ "category": "grip_fixture",
+ "subcategory": "peel",
+ "description": "필름·직물의 박리력과 미끄럼 마찰계수, 접착 시험용 지그 — 여러 박리각. DIN 53494 90° 박리 지그(코팅재, 예: EC 카드), 이동식 박리 테이블 지그(45°·90°·180°).",
+ "test_items": [
+  "peel",
+  "friction_coefficient"
+ ],
+ "measurands": [],
+ "materials": [
+  "films",
+  "textiles",
+  "coated materials",
+  "adhesives"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "DIN 53494"
+  ]
+ },
+ "limits": {
+  "specimen_orientation_deg": {
+   "min": 45,
+   "max": 180,
+   "note": "박리각"
+  }
+ },
+ "models": [
+  {
+   "model": "Peel test device 90° (DIN 53494)",
+   "specs": {
+    "specimen_orientation_deg": 90
+   }
+  },
+  {
+   "model": "Peel test device with movable peel-off table (45° / 90° / 180°)",
+   "specs": {
+    "specimen_orientation_deg": [
+     45,
+     90,
+     180
+    ]
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-duo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-solo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-micro",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-vario",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "extends_capability",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "peel"
+  },
+  {
+   "type": "extends_capability",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "peel"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/peel-test-devices/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

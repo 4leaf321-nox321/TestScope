@@ -1,0 +1,84 @@
+{
+ "id": "zwickroell-testxpert-software",
+ "kind": "software",
+ "name": "ZwickRoell testXpert Testing Software (incl. testXpert Analytics, Traceability option, autoEdition3)",
+ "name_ko": "즈윅로엘 testXpert 시험 소프트웨어 (Analytics · 추적성 옵션 · 자동화 autoEdition3)",
+ "manufacturer": "zwickroell",
+ "category": "accessory",
+ "subcategory": "software",
+ "description": "즈윅로엘 시험기·계측기 공통 시험 소프트웨어. 800개 이상의 규격 시험 프로그램이 미리 구성되어 규격 준수, 6단계 조작, Windows 10/11·터치, 기본판 무료·무제한 사용자, testControl 로 개조한 타사 기계에도 사용. testXpert Analytics 는 브라우저로 기계·시험 데이터에 접근 — Condition Monitoring(정비·교정 일정), Test Data Management(중앙 저장·보고서·Excel/PDF), Trend Analysis(SPC 관리도), Fatigue Data Evaluation(S-N 곡선). 추적성 옵션은 FDA 21 CFR Part 11·EU GMP Annex 11 — 감사 추적, 전자 기록·서명, 암호화 보관, DQ/IQ/OQ 패키지. autoEdition3 는 로봇 자동화 시스템의 시편 취급·데이터 저장을 맡고 LIMS 연동(ASCII·ODBC, OPC·REST·Oracle).",
+ "test_items": [],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "testXpert III",
+   "specs": {}
+  },
+  {
+   "model": "testXpert Analytics",
+   "specs": {}
+  },
+  {
+   "model": "Traceability option (FDA 21 CFR Part 11)",
+   "specs": {}
+  },
+  {
+   "model": "autoEdition3",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-vibrophore"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-kappa-creep"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-hit-pendulum"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-hdt-vicat"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/testxpert-testing-software/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/testxpert-testing-software/test-data-management/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/testxpert-testing-software/traceability/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/testxpert-testing-software/autoedition3-automation-software/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

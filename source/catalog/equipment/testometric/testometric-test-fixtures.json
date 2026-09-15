@@ -1,0 +1,195 @@
+{
+ "id": "testometric-test-fixtures",
+ "kind": "accessory",
+ "name": "Testometric Test Fixtures (bend, puncture / CBR, peel, shear, tear, adhesion, pull-out, hardness, ball burst, ECT)",
+ "name_ko": "테스토메트릭 시험 지그군 (굽힘·천공(CBR)·박리·전단·인열·접착·풀아웃·경도·볼 파열·ECT)",
+ "manufacturer": "testometric",
+ "category": "grip_fixture",
+ "subcategory": "fixture",
+ "description": "제조사 목록의 지그(이름·규격·일부 용량만 있음). 굽힘: VB 3점, VB310 목재 3점(EN 310, 받침 Ø15·노즈 Ø30, 지간 50~500 mm), VB12390 콘크리트 3점(BS EN 12390-5, 지간 100~600), PBEND 합판 가변 지간, GRCBEND 유리섬유 보강 콘크리트 4점, FB1015 3점, FB4 고정 지간 4점, FB1288-3 유리 굽힘. 천공: PR2~PR15, CBR 천공 PR5-50/6/9/10/12. 박리: PL 90~180°, SP 신발 1~2.5 kN, LP 가죽, YPP1 용기 뚜껑. 전단: MS 금속 100 kN, TS12003 타일, ILS1037 층간 전단. 인열: LT 가죽(Baumann, IUP 8·BS 3144·ISO 3377-2·SATRA TM 162), LT2 스티치(DIN 53331·ISO 23910), LT3 니들(BS 5131·SATRA PM33). 접착: TA 타일, TA1-3 인장 접착, TTP2 평행 인장, FT1 FINAT 택, FR 2 kg 롤러. 풀아웃/풀오프: Z2 지퍼, TW 터프트, TPO 나사, PPO1 멀티 조, PCB1 베이스 클램프. 경도: TH 목재 25~50 kN, INDHARD 압입. BB 볼 파열, ECT 에지 크러시 블록.",
+ "test_items": [
+  "flexure",
+  "puncture",
+  "peel",
+  "shear",
+  "tear",
+  "burst_pressure",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "concrete",
+  "timber",
+  "plywood",
+  "glass",
+  "leather",
+  "textiles",
+  "tiles",
+  "composites",
+  "packaging"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "EN 310",
+   "BS EN 12390-5",
+   "IUP 8",
+   "BS 3144",
+   "ISO 3377-2",
+   "SATRA TM 162",
+   "DIN 53331",
+   "ISO 23910",
+   "BS 5131",
+   "SATRA PM33"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "max": 100
+  },
+  "hdt_span_mm": {
+   "min": 50,
+   "max": 600,
+   "note": "굽힘 지간(VB310 50~500, VB12390 100~600)"
+  }
+ },
+ "models": [
+  {
+   "model": "VB310 3-point bend (timber, EN 310)",
+   "specs": {
+    "hdt_span_mm": {
+     "min": 50,
+     "max": 500
+    },
+    "note": "받침 Ø15, 노즈 Ø30"
+   }
+  },
+  {
+   "model": "VB12390 3-point bend (concrete, BS EN 12390-5)",
+   "specs": {
+    "hdt_span_mm": {
+     "min": 100,
+     "max": 600
+    }
+   }
+  },
+  {
+   "model": "VB / PBEND / GRCBEND / FB1015 / FB4 / FB1288-3 bend fixtures",
+   "specs": {}
+  },
+  {
+   "model": "PR2–PR15 puncture fixtures, PR5-50 / PR6 / PR9 / PR10 / PR12 CBR puncture",
+   "specs": {}
+  },
+  {
+   "model": "PL 90–180° peel / SP shoe peel 1–2.5 kN / LP leather peel / YPP1 container lid peel",
+   "specs": {
+    "force_kN": {
+     "min": 1,
+     "max": 2.5
+    }
+   }
+  },
+  {
+   "model": "MS metal shear 100 kN / TS12003 tile shear / ILS1037 interlaminar shear",
+   "specs": {
+    "force_kN": 100
+   }
+  },
+  {
+   "model": "LT / LT2 / LT3 leather tear fixtures",
+   "specs": {}
+  },
+  {
+   "model": "TA / TA1-3 / TTP2 / FT1 / FR adhesion fixtures",
+   "specs": {}
+  },
+  {
+   "model": "Z2 / TW / TPO / PPO1 / PCB1 pull-out and pull-off fixtures",
+   "specs": {}
+  },
+  {
+   "model": "TH timber hardness 25–50 kN / INDHARD indentation hardness",
+   "specs": {
+    "force_kN": {
+     "min": 25,
+     "max": 50
+    }
+   }
+  },
+  {
+   "model": "BB ball-burst fixture / ECT edge crush test holding blocks",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "testometric-m500",
+   "note": "제조사 목록 페이지 — 카탈로그의 테스토메트릭 시험기는 M500 계열(X 계열은 없음)"
+  },
+  {
+   "type": "extends_capability",
+   "target": "testometric-m500",
+   "note": "flexure·puncture·peel·shear·tear"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.testometric.co.uk/bend-fixture/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/puncture-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/peel-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/shear-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/tear-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/adhesion-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/pull-out-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/hardness-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/burst-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/grip-faces-inserts/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/specialist-grips-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

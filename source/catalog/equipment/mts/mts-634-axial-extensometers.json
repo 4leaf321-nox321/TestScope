@@ -1,0 +1,174 @@
+{
+ "id": "mts-634-axial-extensometers",
+ "kind": "sensor",
+ "name": "MTS Series 634 Axial Extensometers (634.11F / 634.12F 25 mm, 634.25F 50 mm; cryogenic to -269 °C) with gauge length extenders and attachment kits",
+ "name_ko": "MTS 634 계열 축방향 신율계 (표점 25·50 mm, 극저온 -269 °C) · 표점 익스텐더 · 부착 키트 · 교체 칼날",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "금속·플라스틱·고무·복합재의 인장·굽힘·피로용 접촉식 축방향 신율계 — 낮은 작동력(30~45 g)으로 미끄러지지 않고, 기계적 스톱으로 파단까지 붙여 둔다. ASTM E83 Class B1·ISO 9513 Class 0.5. 634.11F 25 mm +20/-10 %(-2x)·+20 %(-5x), 634.12F 25 mm +50/-10 %, 634.25F 50 mm +50/-10 %(-2x)·+50 %(-5x); -21 극저온 -269~65 °C, -24 -85~120 °C, -25/-55 -100~175 °C. 부속: 표점 익스텐더(634.11/12 용 50·100·150·200 mm, 634.25 용 100·150·200; 조합마다 별도 교정), Ø32 mm 초과 대구경 부착 키트, 평판 부착 키트(디스크식 폭 <12 mm·와이어 형성식 ≤25 mm), 교체 칼날(SUS Rc 58~60, 환봉 90° 끼인각·평판 3점 접촉), 퀵어태치 스프링.",
+ "test_items": [
+  "tensile",
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "rubber",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM D638",
+   "ISO 527-4",
+   "ISO 527-5",
+   "EN 2561",
+   "EN 2597"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 25,
+   "max": 200,
+   "note": "익스텐더 포함"
+  },
+  "temperature_degC": {
+   "min": -269,
+   "max": 175
+  }
+ },
+ "models": [
+  {
+   "model": "634.11F-21 / -24 / -25",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "min": -269,
+     "max": 175
+    },
+    "note": "+20 %/-10 %, 작동력 35~45 g; -21 -269~65, -24 -85~120, -25 -100~175 °C"
+   }
+  },
+  {
+   "model": "634.11F-54 / -55",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "+20 %"
+   }
+  },
+  {
+   "model": "634.12F-21",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "min": -269,
+     "max": 65
+    },
+    "note": "+50 %/-10 %, 45 g"
+   }
+  },
+  {
+   "model": "634.25F-21 / -24 / -25",
+   "specs": {
+    "gauge_length_mm": 50,
+    "temperature_degC": {
+     "min": -269,
+     "max": 175
+    },
+    "note": "+50 %/-10 %, 30~45 g, 길이 58.4/151.4 mm"
+   }
+  },
+  {
+   "model": "634.25F-54 / -55",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "+50 %"
+   }
+  },
+  {
+   "model": "Gauge length extenders (051-191-901…911)",
+   "specs": {
+    "gauge_length_mm": [
+     50,
+     100,
+     150,
+     200
+    ]
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/axial-extensometers-50mm-gage",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/axial-extensometers-25mm-gage",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/axial-extensometer-gage-length-extenders",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/axial-extensometer-large-diameter-specimen-attachment-kit",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/flat-specimen-axial-extensometer-attachment-kit-wire-from-method",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/flat-specimen-axial-extensometer-attachment-kit-disc-method",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/replacement-knife-edges-for-axial-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

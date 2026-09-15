@@ -1,0 +1,81 @@
+{
+ "id": "instron-autox750-automatic-contacting-extensometer",
+ "kind": "sensor",
+ "name": "Instron AutoX750 Automatic Contacting Extensometer (and AutoXBiax 2665-751)",
+ "name_ko": "인스트론 AutoX750 자동 접촉식 장거리 신율계 (750 mm, AutoXBiax 축·횡 동시)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "automatic_contacting",
+ "description": "표점 거리 설정과 시편 부착을 자동으로 하는 접촉식 장거리 신율계 — 750 mm 이동에 걸쳐 서브마이크론 정밀도. 카운터밸런스 측정 암은 사실상 무게가 없고 모터로 매번 같은 위치·표점 거리로 간다. 대부분 재료에서 파단까지 붙어 있고 칼날·클램프력을 바꿔 재료에 맞춘다. Bluehill Universal 이 USB 로 제어하며 실시간 변형률·탄성계수·오프셋 항복·신율을 계산하고 표점 거리·암 위치를 기록한다. ISO 527-2·ASTM D638(플라스틱), ISO 6892-1 A1·ASTM E8 B(금속 변형률 제어), ASTM D3039(복합재). AutoXBiax 2665-751 은 횡변형도 같이 잰다. 3360·3380·3400·5500·5960·5980·6800 전동식과 LX·DX·HDX·KPX 정적 유압 시스템에 통합.",
+ "test_items": [
+  "tensile",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "yield_strength",
+  "elongation",
+  "r_value"
+ ],
+ "materials": [
+  "metals",
+  "composites",
+  "plastics",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 527-2",
+   "ASTM D638",
+   "ISO 6892-1",
+   "ASTM E8",
+   "ASTM D3039"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 750,
+   "note": "이동(travel)"
+  }
+ },
+ "models": [
+  {
+   "model": "AutoX750",
+   "specs": {
+    "displacement_mm": 750,
+    "note": "카탈로그 번호는 페이지에 없음"
+   }
+  },
+  {
+   "model": "AutoXBiax (2665-751)",
+   "specs": {
+    "note": "축·횡 변형 동시 측정"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/automatic/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

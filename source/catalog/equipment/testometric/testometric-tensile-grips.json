@@ -1,0 +1,189 @@
+{
+ "id": "testometric-tensile-grips",
+ "kind": "accessory",
+ "name": "Testometric Tensile Grips (spring STG, wedge PWG 10–300 kN, bollard BG, capstan CC, webbing WEB, pneumatic PN1 / PST, needle, dumbbell, pipe, flat, loop)",
+ "name_ko": "테스토메트릭 인장 그립군 (스프링·프리타이트닝 웨지 10~300 kN·미니 웨지·볼라드·캡스탄 3~100 kN·웨빙 50~200 kN·공압·니들·덤벨·파이프·플랫·탄성 루프)",
+ "manufacturer": "testometric",
+ "category": "grip_fixture",
+ "description": "M500 등 테스토메트릭 시험기용 인장 그립 목록(제조사 사이트의 제품명·용량만 있음). 스프링 인장 그립 STG 10~100 kN·STG0.5 1 kN, 프리타이트닝 웨지 PWG 10~300 kN, 미니 스프링 웨지 MSWG, 볼라드 BG 2.5~5 kN, 캡스탄·클램프 CC 3~100 kN, 웨빙 WEB 50~200 kN, 공압 그립 PN1 500 N 까지, 공압 실/코드 그립 PST/PST7, 니들 그립 NTG 250 mm, 항공용 덤벨 클램프 ADC 30~50 kN, 모르타르·시멘트 덤벨 홀더 DH307, 파이프 인장 그립 PPTG 25 mm, 플랫 그립 FF, 탄성 루프 그립 ELG1, 실·그물 롤러 그립 YR/YRN. 그립 면: 그랩 시험 인서트 GTI, 라인 접촉 LCI, 노드 그립 면 NGF 100 mm.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "plastics",
+  "textiles",
+  "yarns",
+  "webbing",
+  "elastomers",
+  "mortar/cement",
+  "pipes"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 500,
+   "max": 300000
+  }
+ },
+ "models": [
+  {
+   "model": "STG Spring Tensile Grips",
+   "specs": {
+    "force_kN": {
+     "min": 10,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "STG0.5 Spring Tensile Grips",
+   "specs": {
+    "force_kN": 1
+   }
+  },
+  {
+   "model": "PWG Pre-Tightening Wedge Grips",
+   "specs": {
+    "force_kN": {
+     "min": 10,
+     "max": 300
+    }
+   }
+  },
+  {
+   "model": "MSWG Miniature Spring-Acting Wedge Grips",
+   "specs": {}
+  },
+  {
+   "model": "BG Bollard Grips",
+   "specs": {
+    "force_kN": {
+     "min": 2.5,
+     "max": 5
+    }
+   }
+  },
+  {
+   "model": "CC Capstan & Clamp Grips",
+   "specs": {
+    "force_kN": {
+     "min": 3,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "WEB Webbing Grips",
+   "specs": {
+    "force_kN": {
+     "min": 50,
+     "max": 200
+    }
+   }
+  },
+  {
+   "model": "PN1 Pneumatic Grips",
+   "specs": {
+    "force_N": {
+     "max": 500
+    }
+   }
+  },
+  {
+   "model": "PST / PST7 Pneumatic Action Yarn / Cord Grips",
+   "specs": {}
+  },
+  {
+   "model": "NTG Needle Grips 250 mm",
+   "specs": {
+    "width_mm": 250
+   }
+  },
+  {
+   "model": "ADC Aerospace Dumbbell Clamps",
+   "specs": {
+    "force_kN": {
+     "min": 30,
+     "max": 50
+    }
+   }
+  },
+  {
+   "model": "DH307 Dumbbell Holders (mortar & cement) / PPTG Pipe Tensile Grips 25 mm / FF Flat Faced Grips",
+   "specs": {}
+  },
+  {
+   "model": "ELG1 Elastic Loop Grips / YR Yarn Roller Grips / YRN Net Roller Grips",
+   "specs": {}
+  },
+  {
+   "model": "Grip faces: GTI Grab Test Inserts, LCI Line Contact Inserts, NGF Node Grip Faces 100 mm",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "testometric-m500",
+   "note": "제조사 목록 페이지 — 카탈로그의 테스토메트릭 시험기는 M500 계열(X 계열은 없음)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.testometric.co.uk/spring-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/wedge-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/bollard-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/loop-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/webbing-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/pneumatic-yarn-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/needle-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/dumbbell-holders/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/grip-faces-inserts-2/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.testometric.co.uk/grips-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

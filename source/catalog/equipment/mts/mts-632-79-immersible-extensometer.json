@@ -1,0 +1,80 @@
+{
+ "id": "mts-632-79-immersible-extensometer",
+ "kind": "sensor",
+ "name": "MTS 632.79 Immersible Extensometer (25 mm, ±20 %, 30 Hz)",
+ "name_ko": "MTS 632.79 침지형 신율계 (물·식염수 속, 표점 25 mm ±20 %, 30 Hz)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "immersible",
+ "description": "물이나 식염수에 완전히 담근 채 변형률을 재는 신율계 — 특허 병렬 굴곡계가 시편 변위를 기밀 밀봉 LVDT 로 전달, 인장·굽힘·30 Hz 피로, AC 컨디셔닝 필요. 632.79F-01 표점 25 mm ±20 %, -15~85 °C, 작동력 60 g, 표점 익스텐더로 200 mm 까지.",
+ "test_items": [
+  "tensile",
+  "fatigue",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain"
+ ],
+ "materials": [
+  "biomaterials",
+  "polymers",
+  "medical devices"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 25,
+   "max": 200
+  },
+  "temperature_degC": {
+   "min": -15,
+   "max": 85
+  },
+  "frequency_Hz": {
+   "max": 30
+  }
+ },
+ "models": [
+  {
+   "model": "632.79F-01",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "min": -15,
+     "max": 85
+    },
+    "frequency_Hz": 30,
+    "note": "±20 %, 작동력 60 g, 길이 76/69.1 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-acumen"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/immersible-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

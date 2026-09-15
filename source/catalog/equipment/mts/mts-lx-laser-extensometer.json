@@ -1,0 +1,97 @@
+{
+ "id": "mts-lx-laser-extensometer",
+ "kind": "sensor",
+ "name": "MTS LX Laser Extensometer (LX 500, 8 – 127 mm)",
+ "name_ko": "MTS LX 레이저 신율계 (LX 500, 8~127 mm, 분해능 0.001 mm, 100 Hz)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "laser",
+ "description": "반사 테이프 마크를 레이저로 스캔해 위치를 추적하는 비접촉 신율계 — 취성·국부 손상 민감·파단 에너지가 큰 시편, 플라스틱·고무·필름·섬유·직물·와이어·케이블·철근. 2~512 스캔 평균, 초기 표점 직접 측정, 표점 안 3 구간 동시 측정, 초당 100회 갱신, 아날로그 출력(폐루프 변형 제어), 평행 빔으로 챔버 유리·투명 수조 너머 측정, Class II 레이저. ASTM B1(표점 25 mm 이상). LX 500: 8~127 mm, 분해능 0.001 mm, 비선형성 ±0.025 mm, 반복성 ±0.003 mm, 16 bit ±10 V, 삼각대·장착판 포함.",
+ "test_items": [
+  "tensile",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain",
+  "elongation"
+ ],
+ "materials": [
+  "plastics",
+  "rubber",
+  "films",
+  "fibers",
+  "textiles",
+  "fasteners",
+  "metal plate and rod",
+  "rebar",
+  "chain",
+  "wire and cable",
+  "carbon fiber",
+  "CMC",
+  "MMC",
+  "PMC"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1 (≥25 mm)"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "min": 8,
+   "max": 127
+  },
+  "data_rate_Hz": {
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "LX 500",
+   "specs": {
+    "displacement_mm": {
+     "min": 8,
+     "max": 127
+    },
+    "data_rate_Hz": 100,
+    "note": "분해능 0.001 mm, 비선형성 ±0.025 mm, 반복성 ±0.003 mm, 115/230 V"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/lx-laser-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

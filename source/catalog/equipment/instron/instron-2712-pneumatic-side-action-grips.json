@@ -1,0 +1,114 @@
+{
+ "id": "instron-2712-pneumatic-side-action-grips",
+ "kind": "accessory",
+ "name": "Instron 2712 Series Pneumatic Side Action Tensile Grips",
+ "name_ko": "인스트론 2712 계열 공압 사이드 액션 인장 그립",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "pneumatic_side_action",
+ "description": "그립 몸체에 든 공기 실린더가 양쪽 레버 암을 닫는 공압 그립. 공기압으로 물림력을 정하고 시편이 물린 부위에서 얇아져도 물림력이 유지된다(follow-up). 2712-04x(1·2·5·10 kN)는 조 면 가드·조 개방 폭 조절·공구 없는 조 교체, 2712-05x(50·250 N)는 필름·포일·섬유 같은 저하중용. 정적 인장과 인장-인장 반복에 쓰고 고사이클 피로에는 맞지 않는다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "metals",
+  "textiles",
+  "paper",
+  "thin sheet",
+  "foil",
+  "wire",
+  "film",
+  "monofilaments"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 50,
+   "max": 10000
+  }
+ },
+ "models": [
+  {
+   "model": "2712-051",
+   "specs": {
+    "force_N": 50
+   }
+  },
+  {
+   "model": "2712-052",
+   "specs": {
+    "force_N": 250
+   }
+  },
+  {
+   "model": "2712-041",
+   "specs": {
+    "force_kN": 1
+   }
+  },
+  {
+   "model": "2712-042",
+   "specs": {
+    "force_kN": 2
+   }
+  },
+  {
+   "model": "2712-045",
+   "specs": {
+    "force_kN": 5
+   }
+  },
+  {
+   "model": "2712-046",
+   "specs": {
+    "force_kN": 10
+   }
+  }
+ ],
+ "features": [
+  "조 면 가드(핀치 방지)",
+  "공기 흐름 조절 밸브로 닫힘 속도 조절",
+  "1~10 kN 은 조 개방 폭을 시편 두께에 맞춰 조절",
+  "공구 없이 조 면 교체",
+  "풋스위치 또는 그립 장착 밸브로 조작"
+ ],
+ "options": [
+  "specimen alignment device",
+  "jaw faces: rubber-coated / serrated / smooth-ground / line-contact / wave-profile / vee-serrated"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "requires",
+   "target": "instron-2701-air-kits-for-pneumatic-grips",
+   "note": "압축공기 공급·풋스위치"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/pneumatic-side-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

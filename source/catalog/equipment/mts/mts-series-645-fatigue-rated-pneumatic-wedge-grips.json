@@ -1,0 +1,103 @@
+{
+ "id": "mts-series-645-fatigue-rated-pneumatic-wedge-grips",
+ "kind": "accessory",
+ "name": "MTS Series 645 Fatigue-Rated Pneumatic Wedge Grips (2 / 5 / 12 kN)",
+ "name_ko": "MTS 시리즈 645 피로 정격 공압 웨지 그립 (2·5·12 kN, -40~200 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "pneumatic_wedge",
+ "description": "Acumen 전기역학 프레임 등에 맞는 측면 장착 공압 웨지 그립 — 대칭 하우징, 물릴 때 시편 위치 불변, 압력 조절로 재료 대응. 2 kN(0.55 MPa, Ø104), 5 kN(0.55 MPa, Ø147), 12 kN(1.03 MPa, Ø175 mm), -40~200 °C. 평판 톱니 웨지 0~7.2 / 3.3~10.6 / 5.4~12.4 mm, V 다이아몬드 팁 3~7.8 mm.",
+ "test_items": [
+  "fatigue",
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "plastics",
+  "rubber",
+  "biomaterials"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "dynamic_force_kN": {
+   "min": 2,
+   "max": 12
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 200
+  },
+  "pressure_MPa": {
+   "max": 1.03
+  },
+  "specimen_thickness_mm": {
+   "max": 12.4
+  }
+ },
+ "models": [
+  {
+   "model": "645 2 kN",
+   "specs": {
+    "dynamic_force_kN": 2,
+    "pressure_MPa": 0.55,
+    "temperature_degC": {
+     "min": -40,
+     "max": 200
+    },
+    "height_mm": 131
+   }
+  },
+  {
+   "model": "645 5 kN",
+   "specs": {
+    "dynamic_force_kN": 5,
+    "pressure_MPa": 0.55,
+    "temperature_degC": {
+     "min": -40,
+     "max": 200
+    },
+    "height_mm": 133
+   }
+  },
+  {
+   "model": "645 12 kN",
+   "specs": {
+    "dynamic_force_kN": 12,
+    "pressure_MPa": 1.03,
+    "temperature_degC": {
+     "min": -40,
+     "max": 200
+    },
+    "height_mm": 142
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-acumen"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「기타 소재 시험 시스템」"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「기타 소재 시험 시스템」"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/series-645-fatigue-rated-pneumatic-wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

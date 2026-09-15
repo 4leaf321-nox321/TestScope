@@ -1,0 +1,83 @@
+{
+ "id": "mts-fundamental-nut-and-bolt-grips",
+ "kind": "accessory",
+ "name": "MTS Fundamental Nut/Bolt Grips (FLA105B 100 kN / FLA305A 300 kN / FLA605B 600 kN)",
+ "name_ko": "MTS Fundamental 너트·볼트 그립 (100·300·600 kN, 인장·보증하중·웨지 하중)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "fastener",
+ "description": "볼트·나사·스터드·너트·와셔·리벳의 인장·보증 하중·웨지 하중 시험용 경제형 그립 — 두 종류의 하중 플레이트와 다양한 나사·너트용 인서트(별매), 회전 방지·정렬 핀, 0~50 °C. FLA105B 100 kN(4.1 kg, 높이 314·폭 134), FLA305A 300 kN(20 kg, 516·187), FLA605B 600 kN(16.9 kg, 540·205, 38 mm 포스트).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "bolts",
+  "screws",
+  "studs",
+  "nuts",
+  "washers",
+  "rivets"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 100,
+   "max": 600
+  },
+  "temperature_degC": {
+   "min": 0,
+   "max": 50
+  }
+ },
+ "models": [
+  {
+   "model": "FLA105B",
+   "specs": {
+    "force_kN": 100,
+    "weight_kg": 4.1,
+    "height_mm": 314,
+    "width_mm": 134
+   }
+  },
+  {
+   "model": "FLA305A",
+   "specs": {
+    "force_kN": 300,
+    "weight_kg": 20,
+    "height_mm": 516,
+    "width_mm": 187
+   }
+  },
+  {
+   "model": "FLA605B",
+   "specs": {
+    "force_kN": 600,
+    "weight_kg": 16.9,
+    "height_mm": 540,
+    "width_mm": 205
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-nut-bolt-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

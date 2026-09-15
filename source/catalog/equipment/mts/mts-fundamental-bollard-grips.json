@@ -1,0 +1,123 @@
+{
+ "id": "mts-fundamental-bollard-grips",
+ "kind": "accessory",
+ "name": "MTS Fundamental Mechanical Bollard Grips (500 N / 2 kN / 10 kN) and Pneumatic Bollard Grips (200 N / 2 kN / 5 kN)",
+ "name_ko": "MTS Fundamental 기계식 볼라드 그립 (500 N~10 kN) · 공압 볼라드 그립 (200 N~5 kN, -10~80 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "bollard",
+ "description": "코드·필라멘트·섬유·가는 와이어·실의 응력 집중과 그립 파손을 줄이는 「뿔」형·캡스탄형 그립. 기계식 500 N·2 kN·10 kN(뿔 또는 수동 클램프 캡스탄). 공압식(건조 공기·컨트롤러 필요) 200 N(Ø1 mm, Cm/Dm — 면사·실크·스판덱스·귀금속선)·2 kN(Ø4, 기술사·얇은 구리 케이블·자기 테이프)·5 kN(Ø5, 나일론 라켓 현·고강도 복합재)·5 kN(Ø16, 코드·실·와이어), -10~80 °C.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "cords",
+  "filaments",
+  "fibers",
+  "fine wires",
+  "yarns"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 200,
+   "max": 10000
+  },
+  "wire_diameter_mm": {
+   "max": 16
+  },
+  "temperature_degC": {
+   "min": -10,
+   "max": 80,
+   "note": "공압형"
+  }
+ },
+ "models": [
+  {
+   "model": "Mechanical bollard 500 N / 2 kN / 10 kN",
+   "specs": {
+    "force_N": [
+     500,
+     2000,
+     10000
+    ]
+   }
+  },
+  {
+   "model": "Pneumatic bollard 200 N",
+   "specs": {
+    "force_N": 200,
+    "wire_diameter_mm": {
+     "max": 1
+    },
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "Pneumatic bollard 2 kN",
+   "specs": {
+    "force_kN": 2,
+    "wire_diameter_mm": {
+     "max": 4
+    },
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "Pneumatic bollard 5 kN (Ø5 mm)",
+   "specs": {
+    "force_kN": 5,
+    "wire_diameter_mm": {
+     "max": 5
+    }
+   }
+  },
+  {
+   "model": "Pneumatic bollard 5 kN (Ø16 mm)",
+   "specs": {
+    "force_kN": 5,
+    "wire_diameter_mm": {
+     "max": 16
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "requires",
+   "target": "mts-advantage-pneumatic-grips",
+   "note": "공압형은 Advantage 공압 그립 컨트롤러"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-mechanical-bollard-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-pneumatic-bollard-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,111 @@
+{
+ "id": "mts-model-685-hydraulic-grip-supplies",
+ "kind": "accessory",
+ "name": "MTS Model 685 Hydraulic Grip Supplies (685.10 / 685.22), Grip Intensifier (685.60) and Load-Frame-Mounted Grip Control Unit (685.53)",
+ "name_ko": "MTS 모델 685 독립형 유압 그립 공급 장치 (10~70 MPa) · 그립 중압기 (45·69 MPa) · 프레임 장착 그립 제어 장치 (0.7~20 MPa)",
+ "manufacturer": "mts",
+ "category": "accessory",
+ "subcategory": "hydraulic_supply",
+ "description": "유압 그립용 압력원. 685.10·685.22 독립형: 자급 펌프·0.75 kW 모터·11.3 L 탱크·10 µm 필터, 상하 그립 개별 방향 밸브, 챔버용 특수 유체, 연속 운전, 출력 10~70 MPa(±0.7 MPa), -40~177 °C, 76 kg, 115/100-115/208-230 V — 비유압 프레임에서 유압 그립 사용. 685.60 중압기: 유체-유체 증압, 45 또는 69 MPa 공장 설정(10 MPa 부터 조절), 대용량 키트. 685.53 프레임 장착 제어 장치: 입력 21 MPa, 그립 압력 0.7~20 MPa(분해능 ±0.07, 안정성 ±0.5 MPa), 그립별 독립, 클램핑 속도 조절 — 647.02/.10 등.",
+ "test_items": [
+  "tensile",
+  "fatigue"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "pressure_MPa": {
+   "min": 0.7,
+   "max": 70
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 177
+  }
+ },
+ "models": [
+  {
+   "model": "685.10E-05/-06/-07/-08 (stand-alone grip supply)",
+   "specs": {
+    "pressure_MPa": {
+     "min": 10,
+     "max": 70
+    },
+    "temperature_degC": {
+     "min": -40,
+     "max": 177
+    },
+    "weight_kg": 76,
+    "power_kW": 0.75,
+    "note": "설정 반복성 ±0.7 MPa, 115 / 100-115 / 208-230 V"
+   }
+  },
+  {
+   "model": "685.22 (stand-alone grip supply)",
+   "specs": {
+    "pressure_MPa": {
+     "min": 10,
+     "max": 70
+    }
+   }
+  },
+  {
+   "model": "685.60 (hydraulic grip intensifier)",
+   "specs": {
+    "pressure_MPa": [
+     45,
+     69
+    ],
+    "note": "출력 10 MPa 부터 조절"
+   }
+  },
+  {
+   "model": "685.53A-01 / 685.53C-02 (grip control unit)",
+   "specs": {
+    "pressure_MPa": {
+     "min": 0.7,
+     "max": 20
+    },
+    "note": "입력 21 MPa, 647.02/.10 · 318.10/.25 용"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "유압 그립을 쓰는 모든 프레임 — 비유압 프레임에는 독립형"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "유압 그립을 쓰는 모든 프레임 — 비유압 프레임에는 독립형"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "유압 그립을 쓰는 모든 프레임 — 비유압 프레임에는 독립형"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "유압 그립을 쓰는 모든 프레임 — 비유압 프레임에는 독립형"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/model-685-hydraulic-grip-supplies-intensifiers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/load-frame-mounted-model-685-grip-control-unit",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

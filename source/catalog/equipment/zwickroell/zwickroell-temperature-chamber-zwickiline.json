@@ -1,0 +1,74 @@
+{
+ "id": "zwickroell-temperature-chamber-zwickiline",
+ "kind": "accessory",
+ "name": "ZwickRoell zwickiLine Temperature Chamber (-50 °C to +180 °C, up to 2.5 kN)",
+ "name_ko": "즈윅로엘 zwickiLine 용 온도 챔버 (-50~+180 °C, 2.5 kN)",
+ "manufacturer": "zwickroell",
+ "category": "environmental_chamber",
+ "description": "소하중 zwickiLine 시험기용 소형 저가 온도 챔버 — -50~+180 °C, 2.5 kN 까지, 시험 공간 350×250×250 mm(HWD), 뒤쪽 왼쪽 관통구 1개(기계식 또는 유리 인서트), 도어 인 도어 옵션. 인장·압축·굽힘.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "elastomers",
+  "films"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -50,
+   "max": 180
+  },
+  "force_kN": {
+   "max": 2.5
+  },
+  "test_room_height_mm": {
+   "max": 350
+  },
+  "test_room_width_mm": {
+   "max": 250
+  },
+  "test_room_depth_mm": {
+   "max": 250
+  },
+  "chamber": {
+   "values": [
+    "yes"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "zwickiLine temperature chamber",
+   "specs": {
+    "temperature_degC": {
+     "min": -50,
+     "max": 180
+    },
+    "force_kN": 2.5,
+    "inner_mm": {
+     "height": 350,
+     "width": 250,
+     "depth": 250
+    }
+   }
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/environmental-chambers/temperature-chambers/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited",
+ "notes": "호스트 zwickiLine 계열이 카탈로그에 없어 fits_on 을 비웠다."
+}

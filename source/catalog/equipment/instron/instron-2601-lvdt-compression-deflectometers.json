@@ -1,0 +1,144 @@
+{
+ "id": "instron-2601-lvdt-compression-deflectometers",
+ "kind": "sensor",
+ "name": "Instron 2601 Series LVDT Compression Deflectometers and W-E401 E-Series Deflectometers",
+ "name_ko": "인스트론 2601 계열 LVDT 압축 디플렉토미터 · W-E401 E 계열 디플렉토미터 (0.5~100 mm)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "deflectometer",
+ "description": "프레임·지그의 컴플라이언스 오차 없이 변위를 재는 LVDT 변위 센서 — 시편에 변형률 센서를 붙이기 어려운 압축·인장 시험용, 전동식·유압식 겸용. 2601-041(±0.5 mm)·042(±2.5, -10~80 °C)·043(±15)·044(±50)·045(±100 mm, -40~100 °C). 자석 베이스 홀더 2601-069, 플래튼 변위 지그 2601-071, 교정용 마이크로미터 2601-072. E 계열 W-E401-A~H(0.15·1·2 in, 6·12·25 mm, -40~100 °C)는 3·4점 굽힘·압축 처짐용, 자석 베이스와 25핀 커넥터.",
+ "test_items": [
+  "compression",
+  "flexure",
+  "tensile"
+ ],
+ "measurands": [
+  "force_deflection"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "min": 0.5,
+   "max": 100
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "2601-041",
+   "specs": {
+    "displacement_mm": 0.5,
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    },
+    "note": "±0.5 mm"
+   }
+  },
+  {
+   "model": "2601-042",
+   "specs": {
+    "displacement_mm": 2.5,
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "2601-043",
+   "specs": {
+    "displacement_mm": 15,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "2601-044",
+   "specs": {
+    "displacement_mm": 50,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "2601-045",
+   "specs": {
+    "displacement_mm": 100,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "W-E401-A / D / J",
+   "specs": {
+    "displacement_mm": [
+     3.8,
+     25.4,
+     50.8
+    ],
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    },
+    "note": "0.15 / 1.0 / 2.0 in"
+   }
+  },
+  {
+   "model": "W-E401-F / G / H",
+   "specs": {
+    "displacement_mm": [
+     6,
+     12,
+     25
+    ],
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    }
+   }
+  }
+ ],
+ "options": [
+  "2601-069 magnetic base LVDT holder",
+  "2601-071 LVDT platen displacement fixture",
+  "2601-072 precision micrometer 0–50 mm"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "전동식·유압식 겸용이라고만 적음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "전동식·유압식 겸용이라고만 적음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "전동식·유압식 겸용이라고만 적음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/compression-deflectometers-lvdt/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,113 @@
+{
+ "id": "tinius-olsen-uvx3d-video-extensometers",
+ "kind": "sensor",
+ "name": "Tinius Olsen UVX3D 110 / UVX3D 220 Video Extensometers (3D, out-of-plane capable)",
+ "name_ko": "티니우스 올센 UVX3D 110 · 220 비디오 신율계 (면 밖 변형 대응, 분해능 <0.5 µm)",
+ "manufacturer": "tinius-olsen",
+ "category": "extensometer",
+ "subcategory": "video",
+ "description": "인장·압축·굽힘·동적·비틀림 변형률과 축·횡 면 밖 변형까지 재는 비접촉 비디오 신율계 — 푸아송비(ASTM E132)·소성 변형비 r(ASTM E517), 변형률 맵. ISO 9513 Class 0.5·ASTM E83 B-1, 분해능 <0.5 µm, 내장 조명으로 눈부심·주변광·고온 시편 복사 영향 억제, Vector 마운트 시스템 호환. UVX3D 110: 시야 110 H × 40 D(폭 120 Hz 94 / 500 Hz 23 / 1000 Hz 11 mm), 표점 10~80 mm. UVX3D 220: 220 H × 40 D(120 Hz 94 / 500 Hz 48 / 1000 Hz 24 mm), 표점 20~200 mm. 측정 모드: 변형률·신장·변위·위치·회전·푸아송비·2축(횡·양면 평균).",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "shear",
+  "fatigue",
+  "torsion"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "poisson_ratio",
+  "r_value",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "composites",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 0.5",
+   "ASTM E83 Class B-1"
+  ],
+  "test_methods": [
+   "ASTM E132",
+   "ASTM E517"
+  ]
+ },
+ "limits": {
+  "field_of_view_mm": {
+   "min": 110,
+   "max": 220
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 200
+  },
+  "data_rate_Hz": {
+   "max": 1000
+  },
+  "displacement_um": {
+   "min": 0.5,
+   "note": "분해능"
+  }
+ },
+ "models": [
+  {
+   "model": "UVX3D 110",
+   "specs": {
+    "field_of_view_mm": 110,
+    "gauge_length_mm": {
+     "min": 10,
+     "max": 80
+    },
+    "data_rate_Hz": {
+     "min": 120,
+     "max": 1000
+    },
+    "displacement_um": 0.5
+   }
+  },
+  {
+   "model": "UVX3D 220",
+   "specs": {
+    "field_of_view_mm": 220,
+    "gauge_length_mm": {
+     "min": 20,
+     "max": 200
+    },
+    "data_rate_Hz": {
+     "min": 120,
+     "max": 1000
+    },
+    "displacement_um": 0.5
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-torsion-testers"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/uvx3d-220-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/uvx3d-110-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

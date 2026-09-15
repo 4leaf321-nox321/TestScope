@@ -1,0 +1,114 @@
+{
+ "id": "instron-transverse-clip-on-extensometers",
+ "kind": "sensor",
+ "name": "Instron Transverse Clip-On Extensometers (W-E404 Series / 2640-010 Transverse Averaging)",
+ "name_ko": "인스트론 횡방향 클립온 신율계 (W-E404 계열 · 2640-010 평균 횡방향)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "transverse_clip_on",
+ "description": "이방성 재료의 횡변형을 재어 플라스틱·복합재의 푸아송비, 판재의 r·n 값을 구하는 신율계. W-E404 계열은 시편(폭·지름 0~25 mm)에 스스로 붙는 자립형으로 축방향 신율계와 같이 쓴다 — ±0.1 in(W-E404-C)·±0.5 mm(-E)·±2.5 mm(-F), -40~100 °C. 2640-010 평균 횡방향 신율계는 ±5 mm 신율계 두 개를 25 mm 표점에 고정해 두 점의 값을 평균한 단일 출력 — 판재 r·n 시험(축방향 표점 50 mm 이상과 조합), 게이지 폭 10~25 mm·두께 0.3~6 mm·수축 10 mm 까지.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "transverse_strain",
+  "poisson_ratio",
+  "r_value"
+ ],
+ "materials": [
+  "composites",
+  "plastics",
+  "sheet metals"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "width_mm": {
+   "min": 0,
+   "max": 25,
+   "note": "시편 폭·지름"
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "W-E404-C",
+   "specs": {
+    "displacement_mm": 2.54,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    },
+    "note": "±0.1 in"
+   }
+  },
+  {
+   "model": "W-E404-E",
+   "specs": {
+    "displacement_mm": 0.5,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    },
+    "note": "±0.5 mm"
+   }
+  },
+  {
+   "model": "W-E404-F",
+   "specs": {
+    "displacement_mm": 2.5,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    },
+    "note": "±2.5 mm"
+   }
+  },
+  {
+   "model": "2640-010 (Transverse Averaging)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "displacement_mm": 5,
+    "width_mm": {
+     "min": 10,
+     "max": 25
+    },
+    "specimen_thickness_mm": {
+     "min": 0.3,
+     "max": 6
+    },
+    "note": "수축 10 mm 까지"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/transverse-clip-on/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

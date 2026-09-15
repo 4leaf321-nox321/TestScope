@@ -1,0 +1,93 @@
+{
+ "id": "tinius-olsen-high-temperature-furnaces",
+ "kind": "accessory",
+ "name": "Tinius Olsen High-Temperature Furnace (3-zone split tube, to 1200 °C) and Compact Split Furnace (to 1200 / 1400 °C)",
+ "name_ko": "티니우스 올센 고온 퍼니스 (3존 분할관 1200 °C) · 소형 분할 퍼니스 (1200·1400 °C)",
+ "manufacturer": "tinius-olsen",
+ "category": "furnace",
+ "description": "시험기 기둥 뒤 프레임 포스트/레일에 달아 쓰지 않을 때 옆으로 밀어 두는 고온 인장용 퍼니스. 3존 분할관형: 상온~1200 °C, 내경 약 90 mm(끝 단열판 Ø30), 가열 길이 300 mm, 외형 480 H × Ø255, 존마다 20 세그먼트 프로그램 제어기(RS232), N 형 열전대, 650 °C 이상에서 200 mm 구간 ±5 °C, 수냉 마운트로 로드셀 열 차단, 2.5 kW·220~240 V, 열림 시 전원 차단. 소형 분할형: 1200 또는 1400 °C, SiC 발열체, 핫존 높이 110 mm, 외형 135 H × 175 W, 시편 접촉 N 형 열전대 3개 + 과열 보호 1개, 안정도 ±2 °C, 3 kW·230 V. 강성 케이스라 고온 신율계를 케이스에 직접 장착한다.",
+ "test_items": [
+  "tensile",
+  "creep"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "alloys",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "max": 1400
+  },
+  "temperature_fluctuation_degC": {
+   "max": 5,
+   "note": "3존 ±5 °C(200 mm), 소형 ±2 °C"
+  },
+  "heated_length_mm": {
+   "min": 110,
+   "max": 300
+  },
+  "bore_diameter_mm": {
+   "max": 90
+  }
+ },
+ "models": [
+  {
+   "model": "Furnace (3-zone split tube)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1200
+    },
+    "heated_length_mm": 300,
+    "bore_diameter_mm": 90,
+    "temperature_fluctuation_degC": 5,
+    "power_kW": 2.5,
+    "height_mm": 480,
+    "note": "Ø255 mm, N 형 열전대, Eurotherm 2408 콘솔"
+   }
+  },
+  {
+   "model": "Compact Split Furnace (1200 / 1400 °C)",
+   "specs": {
+    "temperature_degC": {
+     "max": 1400
+    },
+    "heated_length_mm": 110,
+    "temperature_fluctuation_degC": 2,
+    "power_kW": 3,
+    "height_mm": 135,
+    "width_mm": 175,
+    "note": "SiC 발열체"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series",
+   "note": "「대부분의 트윈 스크류 재료시험기에 적합」 — 카탈로그의 티니우스 올센 UTM 은 ST 계열"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "tinius-olsen-st-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/furnace/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/compact-split-furnace/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

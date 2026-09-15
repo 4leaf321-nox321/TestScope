@@ -1,0 +1,61 @@
+{
+ "id": "ametek-lloyd-pogos-and-splinter-shields",
+ "kind": "accessory",
+ "name": "Lloyd Instruments Pogo Systems (large specimens to 2 × 2 m) and Splinter Shields (sliding / hinged)",
+ "name_ko": "로이드 포고 시스템 (2×2 m 대형 시편 프레임) · 파편 보호 실드 (슬라이딩·경첩형)",
+ "manufacturer": "ametek-lloyd",
+ "category": "accessory",
+ "subcategory": "frame_accessory",
+ "description": "포고 시스템: 기계 베이스 아래 시험 프레임을 달아 2×2 m 까지의 대형 시편을 시험, 고·저온 옵션, 단일·이중 컬럼 벤치 시험기용. 파편 실드: 취성 시편 파편으로부터 조작자 보호 — 컬럼 축을 따라 내리는 슬라이딩형, 시험 공간 또는 기계 전체를 감싸는 경첩형(이중 컬럼 벤치·플로어, 앞뒤 접근, 문 열림 자동 감지).",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "specimen_size_mm": {
+   "max": 2000,
+   "note": "포고 시스템 시편 2×2 m"
+  }
+ },
+ "models": [
+  {
+   "model": "Pogo system",
+   "specs": {
+    "specimen_size_mm": 2000
+   }
+  },
+  {
+   "model": "Sliding splinter shield",
+   "specs": {}
+  },
+  {
+   "model": "Hinged splinter shield",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series",
+   "note": "「단일·이중 컬럼 벤치 시험기」 — 카탈로그의 로이드 시험기는 LS 계열(LR Plus·EZ 는 없음)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/accessories/pogos",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/splinter-shields",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

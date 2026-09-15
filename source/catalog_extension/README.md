@@ -88,10 +88,17 @@ AZoM·LabWrench·ATEC)·대학 장비실·리뷰·arXiv 논문 페이지를 5~8�
 
 안 세운 것: 부속·옵션 관계. 부속 페이지를 따로 받아 봤다(`tools_harvest_accessories.py`, 737쪽) — 261쪽이
 계열을 말한다(「AutoX750 익스텐소미터: 5900·6800·3400 에」 「Shimadzu 세라믹 굽힘 지그: AG-X 계열에」). 그런데
-그 부속 대부분이 **카탈로그에 객체로 없다**(부속 객체는 12개뿐). 양 끝이 다 카탈로그에 있는 새 쌍은 8건이고
-그마저 약해서 검토함 물음으로 세우지 않았다. 이 원료의 쓸모는 관계가 아니라 **부속 객체를 카탈로그에 더하는
-조사**(`source/catalog/equipment/` 에 그립·지그·챔버 객체를 만드는 일) 쪽이다 — 그때 `accessory_mentions.json`
-의 「이 부속이 어느 계열을 말하나」 가 `relations` 의 초안이 된다.
+그 부속 대부분이 **카탈로그에 객체로 없었다**(부속 객체는 12개뿐). 양 끝이 다 카탈로그에 있는 새 쌍은 8건이고
+그마저 약해서 검토함 물음으로 세우지 않았다.
+
+그래서 이 원료로는 **부속 객체를 카탈로그에 직접 만들었다** (2026-09-16, `source/catalog/README.md` 14차).
+737쪽을 제조사별로 읽고 168 객체 — 그립·지그 79, 신율계 40, 챔버 7, 로드셀 5, 퍼니스 4, 시편 제작 3, 그 밖의
+부속 30 — 를 `source/catalog/equipment/<제조사>/` 에 두었다. 값은 2등급이라 `confidence: limited`, 출처는
+`sources[].url`. `accessory_mentions.json` 의 `series_mentioned` 는 토큰 매칭이라 잡음이 많아(「Bending
+Devices」 페이지가 「creep loading units」 를 24번 말한다고 나오는 식) `relations` 초안으로 그대로 쓰지 않고,
+페이지 본문이 프레임을 적었으면 그것을, 안 적었으면 표준 피팅 기준 추정을 `note` 와 함께 달았다. 호스트가
+카탈로그에 없는 부속(Instron 산업용 유압 프레임·Shimadzu 서보펄서·zwickiLine·Bareiss 휴대형 경도계·Weiss
+챔버 11쪽·Micromeritics 대부분·Anton Paar SAXS/XRD 스테이지)은 만들지 않았거나 `fits_on` 을 비웠다.
 
 ## 2026-09-13 수집 결과
 

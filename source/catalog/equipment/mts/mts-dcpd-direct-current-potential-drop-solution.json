@@ -1,0 +1,81 @@
+{
+ "id": "mts-dcpd-direct-current-potential-drop-solution",
+ "kind": "sensor",
+ "name": "MTS DCPD (Direct Current Potential Drop) Crack Growth Measurement Solution",
+ "name_ko": "MTS DCPD 직류 전위차 균열 성장 측정 솔루션 (0~20 A, 2·7 채널, FlexTest 40·TestSuite 통합)",
+ "manufacturer": "mts",
+ "category": "accessory",
+ "subcategory": "crack_measurement",
+ "description": "균열 성장에 따른 시편 저항 변화를 재는 DCPD — 고온 등 접촉 신율계·컴플라이언스법이 어려운 환경의 피로 균열 성장. 반전 DCPD(전류 on/off 로 열전대 효과 보정), 하중 시편과 참조 시편의 전위비에 보정식을 적용해 균열 길이. FlexTest 40 컨트롤러·TestSuite 에 통합(DCPD 모듈 템플릿·Fracture Analyzer), 2 또는 7 채널 측정 시스템, 모듈식 프리앰프(5,000×), 메인 섀시 1×/10×, 전체 이득 5,000/50,000, 전류 0~20 A DC, 전압 5 V DC, 정확도 0.5 %(최대 2 %), 필터 50/300 Hz, 대역폭 300 Hz, 출력 ±10 V. ASTM 준수 피로 균열 성장 평가.",
+ "test_items": [
+  "fracture_toughness",
+  "fatigue"
+ ],
+ "measurands": [
+  "crack_growth"
+ ],
+ "materials": [
+  "metals",
+  "CMC",
+  "MMC",
+  "PMC",
+  "carbon fiber composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "current_A": {
+   "max": 20
+  },
+  "voltage_V": {
+   "max": 5
+  },
+  "bandwidth_Hz": {
+   "max": 300
+  },
+  "channels": {
+   "values": [
+    "2",
+    "7"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "MTS DCPD (2 or 7 channels)",
+   "specs": {
+    "current_A": {
+     "min": 0,
+     "max": 20
+    },
+    "voltage_V": 5,
+    "bandwidth_Hz": 300,
+    "channels": [
+     2,
+     7
+    ],
+    "accuracy": "0.5 % 일반, 2 % 최대"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/direct-current-potential-drop-solution",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

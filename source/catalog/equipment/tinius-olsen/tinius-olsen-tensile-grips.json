@@ -1,0 +1,139 @@
+{
+ "id": "tinius-olsen-tensile-grips",
+ "kind": "accessory",
+ "name": "Tinius Olsen Tensile Grips (bollard, vise, pneumatic, roller, wedge, CA-1-21 50 kN, hydraulic 120 / 300 kN, pocket wedge and suspended 67-N)",
+ "name_ko": "티니우스 올센 인장 그립군 (볼라드·바이스·공압·롤러·웨지·CA-1-21 50 kN·유압 120/300 kN·포켓 웨지·서스펜디드)",
+ "manufacturer": "tinius-olsen",
+ "category": "grip_fixture",
+ "description": "ST 계열용 인장 그립 목록. 볼라드형: HT32 이중·HT33 단일·HT29 분할 볼라드, HT19 분할 콜릿, HT23 인장 훅, HT24/HT31 덤벨, HT25 브리켓, HT20 전기 케이블 압착, HT34 연선, HT43 안전벨트. 바이스형: HT51 측면 로딩, 121-003/121-014, HT54 미니, 121-013 탄성 필라멘트, 157-004/005 가위. 공압형: HT57 혼 볼라드, HT58 경량, HT42/44/45, 122-008 20 kN, 공기 분배 컨트롤러. 롤러형: HT38 이중 롤러, HT53 미니 널링, 131-007/137-004 볼라드, 187-005/006 널링 롤러. 웨지형: HW10/14/20/21, HB15 볼라드. CA-1-21 캡스탄 수동 웨지 50 kN(최소 로드셀 1 kN, 스테인리스 몸체·경화 면, 3/4 in 플래튼 인터페이스, 인서트 55×40 mm — 금속·합금·경질 플라스틱). 유압 인장 그립 120·300 kN, 포켓 웨지 67-N-20/22/23/24 K/25 KR/83 R, 서스펜디드 67-N-27/38/39/42/91/93, 나사 체결부품 툴링. 용량·치수는 CA-1-21 외에 페이지에 없다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "alloys",
+  "rigid plastics",
+  "films",
+  "wires",
+  "cables",
+  "textiles",
+  "webbing"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 300
+  }
+ },
+ "models": [
+  {
+   "model": "CA-1-21 Tensile wedge grip",
+   "specs": {
+    "force_kN": 50,
+    "note": "최소 로드셀 1 kN, 인서트 55×40 mm, 3/4 in 인터페이스"
+   }
+  },
+  {
+   "model": "Hydraulic Tensile Grips 120 kN / 300 kN",
+   "specs": {
+    "force_kN": [
+     120,
+     300
+    ]
+   }
+  },
+  {
+   "model": "122-008 Pneumatic grip",
+   "specs": {
+    "force_kN": 20
+   }
+  },
+  {
+   "model": "Bollard style (HT32 / HT33 / HT29 / HT19 / HT23 / HT24 / HT31 / HT25 / HT20 / HT34 / HT43)",
+   "specs": {}
+  },
+  {
+   "model": "Vise style (HT51 / 121-003 / 121-014 / HT54 / 121-013 / 157-004 / 157-005)",
+   "specs": {}
+  },
+  {
+   "model": "Pneumatic style (HT57 / HT58 / HT42 / HT44 / HT45, air distribution controller)",
+   "specs": {}
+  },
+  {
+   "model": "Roller style (HT38 / HT53 / 131-007 / 137-004 / 187-005 / 187-006)",
+   "specs": {}
+  },
+  {
+   "model": "Wedge style (HW10 / HW14 / HW20 / HW21 / HB15)",
+   "specs": {}
+  },
+  {
+   "model": "Pocket wedge (67-N-20 / 22 / 23 / 24 K / 25 KR / 83 R) and suspended (67-N-27 / 38 / 39 / 42 / 91 / 93)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/ca-1-21-tensile-wedge-grip-50kn/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/bollard-style-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/vise-style-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/pneumatic-style-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/roller-style-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/tensile-vise-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/wedge-style-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/suspended-tensile-test-grip/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/hydraulic-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/wedge-style-pocket-tensile-grip/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

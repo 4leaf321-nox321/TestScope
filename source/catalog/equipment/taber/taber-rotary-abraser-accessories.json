@@ -1,0 +1,110 @@
+{
+ "id": "taber-rotary-abraser-accessories",
+ "kind": "accessory",
+ "name": "Taber Rotary Platform Abraser Accessories (weights 75–1000 g, SH-300 Scuffing Head, wheel refacing S-11 / ST-11 / Model 350, test plates S-16–S-38)",
+ "name_ko": "테이버 회전식 마모시험기 부속 (암당 하중 추·카운터웨이트 75~1000 g · SH-300 스커핑 헤드 · 휠 리페이싱 S-11/ST-11/Model 350 · 시험판 S-16~S-38)",
+ "manufacturer": "taber",
+ "category": "accessory",
+ "subcategory": "abraser_accessory",
+ "description": "Taber 로터리 플랫폼 마모시험기(1700/1750 계열)의 옵션. 하중: 암 자체 250 g, 스테인리스 추로 500·750·1000 g(추 표기는 총 하중), 카운터웨이트 암 키트(50 / 125 / 150 / 175 g)와 조합해 암당 75~1000 g 을 25 g 단위로. 스커핑 헤드 SH-300(1700/1750 용, 왼쪽 암, 110°, 중심에서 32 mm, 0.45 / 0.9 kg, 헤드 A 평날 8 mm·B 칼날 4 mm·C 라운드 8 mm) — Ford BN 108-04·WSS-M99P43-B·WSS-M2P188-B1, GM 9911P, SAE J365(구형용 키트 503-13, 304-GM). 리페이싱: Calibrase CS-8/10/10P/10W/17 은 S-11 디스크(4 in 150 grit, 1회용), CS-10F 는 ST-11 스톤(180 grit), Calibrade H-10/18/22/38 은 Model 350 휠 리페이서(다이아몬드 툴, 최소 지름 1¾ in). 시험판 100 mm 각(중심 구멍 6.35): 강 S-16, 자작 합판 S-17, 알루미늄 S-18, 유리 S-31; 표준화판 아연 S-34(사포 S-42 검증)·아크릴 S-38(그릿 피더).",
+ "test_items": [
+  "abrasion"
+ ],
+ "measurands": [],
+ "materials": [
+  "coatings",
+  "vinyl",
+  "leather",
+  "textiles",
+  "plastics",
+  "painted parts",
+  "fiberboard"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "Ford BN 108-04",
+   "GM 9911P",
+   "SAE J365",
+   "Ford WSS-M99P43-B",
+   "Ford WSS-M2P188-B1"
+  ]
+ },
+ "limits": {
+  "load_g": {
+   "min": 75,
+   "max": 1000,
+   "note": "암당 휠 하중(카운터웨이트 조합)"
+  }
+ },
+ "models": [
+  {
+   "model": "Accessory weights 500 g / 750 g / 1000 g and counterweights 50 / 125 / 150 / 175 g",
+   "specs": {
+    "load_g": {
+     "min": 75,
+     "max": 1000
+    }
+   }
+  },
+  {
+   "model": "SH-300 Scuffing Head Attachment (heads A / B / C)",
+   "specs": {
+    "load_g": [
+     450,
+     900
+    ],
+    "note": "1700/1750 용; 구형 503-13(Ford·SAE), 304-GM"
+   }
+  },
+  {
+   "model": "S-11 Refacing Disc (150 grit) / ST-11 Refacing Stone (180 grit)",
+   "specs": {}
+  },
+  {
+   "model": "Model 350 Wheel Refacer (diamond tool)",
+   "specs": {}
+  },
+  {
+   "model": "Test plates S-16 steel / S-17 wood / S-18 aluminum / S-31 glass; standardization S-34 zinc / S-38 Plexiglas",
+   "specs": {
+    "specimen_size_mm": 100
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "taber-rotary-abraser-5135-5155",
+   "note": "페이지는 Model 1700/1750 을 든다 — 5135/5155 는 같은 로터리 플랫폼 계열"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.taberindustries.com/taber-weight-options",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.taberindustries.com/scuffing-head-attachment",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.taberindustries.com/test-method-scuffing-attachment",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.taberindustries.com/taber-refacing-options",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.taberindustries.com/taber-test-accessories",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

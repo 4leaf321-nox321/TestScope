@@ -1,0 +1,112 @@
+{
+ "id": "instron-2910-component-test-plates",
+ "kind": "accessory",
+ "name": "Instron 2910 Series Component Test Plates (2910-105/106/107/108, CP129729, CP129738)",
+ "name_ko": "인스트론 2910 계열 부품 시험 플레이트 (M6 나사 구멍 배열, 1~30 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "table",
+ "description": "M6 나사 구멍이 전면에 뚫린 금속판을 단일·이중 컬럼 프레임 베이스에 달아 부품·완제품을 직접 고정하는 플레이트 — 인장·압축·굽힘·박리·천공. 표준 베이스 어댑터(Type O·D)를 어느 구멍에나 달 수 있어 그립을 중심 밖에 놓거나 자작 지그를 붙인다(하중점은 중심에 두어야 로드셀이 안전). 단일 컬럼 1 kN(600×300), 이중 컬럼 2 kN(300×300)·30 kN(400×400), 68TM-30 광폭 30 kN(914×610).",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "peel",
+  "puncture"
+ ],
+ "measurands": [],
+ "materials": [
+  "components",
+  "end products",
+  "biomedical devices",
+  "electronics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 1,
+   "max": 30
+  }
+ },
+ "models": [
+  {
+   "model": "2910-108",
+   "specs": {
+    "force_kN": 1,
+    "width_mm": 600,
+    "depth_mm": 300,
+    "note": "68SC"
+   }
+  },
+  {
+   "model": "2910-105",
+   "specs": {
+    "force_kN": 1,
+    "width_mm": 600,
+    "depth_mm": 300,
+    "note": "34SC·594x·554x"
+   }
+  },
+  {
+   "model": "2910-106",
+   "specs": {
+    "force_kN": 1,
+    "width_mm": 600,
+    "depth_mm": 300,
+    "note": "334x"
+   }
+  },
+  {
+   "model": "2910-107",
+   "specs": {
+    "force_kN": 2,
+    "width_mm": 300,
+    "depth_mm": 300,
+    "note": "68TM·34TM·596x·336x·556x·446x"
+   }
+  },
+  {
+   "model": "CP129738",
+   "specs": {
+    "force_kN": 30,
+    "width_mm": 400,
+    "depth_mm": 400,
+    "note": "68TM·34TM·596x·336x·556x·446x"
+   }
+  },
+  {
+   "model": "CP129729",
+   "specs": {
+    "force_kN": 30,
+    "width_mm": 914,
+    "depth_mm": 610,
+    "note": "68TM-30 광폭"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/test-plates/component-test-plate/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

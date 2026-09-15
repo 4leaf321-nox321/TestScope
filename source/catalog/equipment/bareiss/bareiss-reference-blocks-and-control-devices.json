@@ -1,0 +1,104 @@
+{
+ "id": "bareiss-reference-blocks-and-control-devices",
+ "kind": "accessory",
+ "name": "Bareiss Reference Blocks (Shore / Asker / IRHD / Barcol), Control Rings (20 / 40 / 60 / 80 Shore) and Shore Control Device (spring force check)",
+ "name_ko": "바라이스 기준 블록 (쇼어·아스커·IRHD·바콜, ISO 17025 교정) · 컨트롤 링 (20/40/60/80 쇼어 변위 점검) · 쇼어 컨트롤 장치 (스프링력 점검)",
+ "manufacturer": "bareiss",
+ "category": "accessory",
+ "subcategory": "calibration",
+ "description": "교정 주기 사이에 경도계를 검증하는 기준물. 기준 블록: 금속 프레임에 넣은 평행 기준 엘라스토머 — 압입자·변위·스프링력을 비교 측정, 모든 바라이스 경도계용 Shore A/A0/AM/D 등·Asker·IRHD·Barcol·사내 규격, 단품·3개·6개 세트, ISO 17025 인정 교정(DAkkS 또는 공장 인증서), 연 1회 재교정 — ASTM D531·D2583, DIN ISO 48-2/-3/-4/-8, DIN EN ISO 868, DIN EN 59, JIS K 6253·K 7312. 컨트롤 링: 휴대형 경도계의 변위를 20·40·60·80 Shore/Asker 에서 점검(Shore A/D/B/0/00/C/A0/E, Asker C/CS), DAkkS 교정, Ø18.2 × 36~46 mm. 쇼어 컨트롤 장치: 시험대 + 천칭 빔·슬라이딩 추로 Shore A(3.70 kg)·D(5.65 kg) 휴대형 경도계의 스프링 특성 점검, DIN ISO 48-9·ISO 868.",
+ "test_items": [
+  "hardness_shore",
+  "hardness_irhd"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [
+   "ISO 17025 calibration (DAkkS)"
+  ],
+  "test_methods": [
+   "ASTM D531",
+   "ASTM D2583",
+   "DIN ISO 48-2",
+   "DIN ISO 48-3",
+   "DIN ISO 48-4",
+   "DIN ISO 48-8",
+   "DIN ISO 48-9",
+   "DIN EN ISO 868",
+   "DIN EN 59",
+   "JIS K 6253",
+   "JIS K 7312"
+  ]
+ },
+ "limits": {
+  "hardness_shore_a": {
+   "min": 20,
+   "max": 80,
+   "note": "컨트롤 링 점검점"
+  }
+ },
+ "models": [
+  {
+   "model": "Reference blocks (single / set of 3 / set of 6)",
+   "specs": {
+    "hardness_scales": [
+     "Shore A",
+     "Shore A0",
+     "Shore AM",
+     "Shore D",
+     "Asker",
+     "IRHD",
+     "Barcol"
+    ]
+   }
+  },
+  {
+   "model": "Control rings 20 / 40 / 60 / 80 Shore/Asker",
+   "specs": {
+    "hardness_shore_a": [
+     20,
+     40,
+     60,
+     80
+    ],
+    "note": "Ø18.2 × 46.1 / 40.9 / 35.9 mm, 6.7~8.6 g"
+   }
+  },
+  {
+   "model": "Shore Control Device (Shore A / Shore D)",
+   "specs": {
+    "weight_kg": [
+     3.7,
+     5.65
+    ],
+    "width_mm": 355,
+    "height_mm": 320,
+    "depth_mm": 160
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "bareiss-digi-test-ii"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=353:referenzbloecke-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=355:kontrollringe-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=357:kontrolleinrichtung-shore-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

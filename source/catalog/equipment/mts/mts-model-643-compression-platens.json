@@ -1,0 +1,109 @@
+{
+ "id": "mts-model-643-compression-platens",
+ "kind": "accessory",
+ "name": "MTS Model 643 Compression Platens (Ø60 – 300 mm, 689 MPa static / 275 MPa dynamic)",
+ "name_ko": "MTS 모델 643 압축 플래튼 (Ø60~300 mm, 정적 689 MPa·동적 275 MPa, 구면 시트)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "compression_platen",
+ "description": "경질 크롬 도금 케이스 경화 합금강 플래튼 — 동심 링 에칭으로 시편 센터링, 상부는 구면 시트로 정렬·균일 가압. 고정+구면(-01), 고정 2개(-03), 고정 1개(-05) 구성. Ø60(643.06B, M12×1.25)·100·150·200(M27×2)·300 mm(643.30B, M52×2), 베어링 면 중심 단위 응력 정적 689 MPa·동적 275 MPa, -129~177 °C. 암석·콘크리트, ASTM D5024·D695·ISO 604.",
+ "test_items": [
+  "compression",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "rock",
+  "concrete",
+  "plastics",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D5024",
+   "ASTM D695",
+   "ISO 604"
+  ]
+ },
+ "limits": {
+  "specimen_diameter_mm": {
+   "min": 60,
+   "max": 300
+  },
+  "pressure_MPa": {
+   "max": 689
+  },
+  "temperature_degC": {
+   "min": -129,
+   "max": 177
+  }
+ },
+ "models": [
+  {
+   "model": "643.06B",
+   "specs": {
+    "specimen_diameter_mm": 60,
+    "note": "M12×1.25"
+   }
+  },
+  {
+   "model": "643.10B",
+   "specs": {
+    "specimen_diameter_mm": 100,
+    "note": "M27×2"
+   }
+  },
+  {
+   "model": "643.15B",
+   "specs": {
+    "specimen_diameter_mm": 150,
+    "note": "M27×2"
+   }
+  },
+  {
+   "model": "643.20B",
+   "specs": {
+    "specimen_diameter_mm": 200,
+    "note": "M27×2"
+   }
+  },
+  {
+   "model": "643.30B",
+   "specs": {
+    "specimen_diameter_mm": 300,
+    "note": "M52×2"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/model-643-compression-platens",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

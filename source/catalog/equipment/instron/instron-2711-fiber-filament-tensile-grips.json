@@ -1,0 +1,85 @@
+{
+ "id": "instron-2711-fiber-filament-tensile-grips",
+ "kind": "accessory",
+ "name": "Instron 2711 Fiber Filament Tensile Grips (Lever Action 2711-006 / O-Ring 2711-007)",
+ "name_ko": "인스트론 2711 섬유·필라멘트 인장 그립 (레버식 5 N · O-링식 0.825 N)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "fiber",
+ "description": "단섬유·필라멘트용 초저하중 그립. 레버식 2711-006 은 빨래집게처럼 여닫는 대칭 구조, 물림력 조절, 고무 코팅 자기정렬 면, 5 N·Ø2.5 mm. O-링식 2711-007 은 널링 휠 사이의 고무 O-링 두 개가 V 홈으로 점진적으로 물어 조 파단을 줄인다, 0.825 N·Ø1~25 µm. 둘 다 -10~100 °C, Type Om 피팅.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "fine wires",
+  "filaments",
+  "single fibers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 0.825,
+   "max": 5
+  },
+  "temperature_degC": {
+   "min": -10,
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "2711-006 (Lever Action)",
+   "specs": {
+    "force_N": 5,
+    "specimen_diameter_mm": 2.5,
+    "temperature_degC": {
+     "min": -10,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "2711-007 (O-Ring Type)",
+   "specs": {
+    "force_N": 0.825,
+    "specimen_diameter_mm": {
+     "min": 0.001,
+     "max": 0.025
+    },
+    "temperature_degC": {
+     "min": -10,
+     "max": 100
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/fiber-filament-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

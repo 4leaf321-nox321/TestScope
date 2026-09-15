@@ -1,0 +1,67 @@
+{
+ "id": "sms-texture-analyser-probes-and-attachments",
+ "kind": "accessory",
+ "name": "Stable Micro Systems Probes and Attachments for TA.XT Texture Analysers (probes, fixtures, Acoustic Envelope Detector, video sync, linear indexing, temperature control)",
+ "name_ko": "스테이블 마이크로 시스템즈 TA.XT 텍스처 분석기용 프로브·어태치먼트 (프로브 · 지그 · 음향 엔벨로프 검출기 · 비디오 동기 · 자동 리니어 인덱싱 · 온도 제어)",
+ "manufacturer": "stable-micro-systems",
+ "category": "accessory",
+ "subcategory": "texture_attachment",
+ "description": "TA.XTplusC·TA.XTplus100C·TA.HDplusC·TA.XTExpressC 텍스처 분석기의 부속 범주 — 프로브, 어태치먼트(지그), 음향 엔벨로프 검출기(바삭함 소리), 비디오 캡처·동기 시스템, 자동 리니어 인덱싱 시스템, 온도 제어. 제조사 목록 페이지에는 범주 이름만 있고 개별 사양은 없다.",
+ "test_items": [
+  "texture",
+  "compression",
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "foods",
+  "cosmetics",
+  "pharmaceuticals",
+  "packaging"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "Probes",
+   "specs": {}
+  },
+  {
+   "model": "Attachments (fixtures)",
+   "specs": {}
+  },
+  {
+   "model": "Acoustic Envelope Detector",
+   "specs": {}
+  },
+  {
+   "model": "Video Capture and Synchronisation System",
+   "specs": {}
+  },
+  {
+   "model": "Automated Linear Indexing System",
+   "specs": {}
+  },
+  {
+   "model": "Temperature Control",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "sms-ta-xt-plus"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.stablemicrosystems.com/probes-and-attachments/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

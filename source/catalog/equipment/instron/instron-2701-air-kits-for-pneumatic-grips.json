@@ -1,0 +1,82 @@
+{
+ "id": "instron-2701-air-kits-for-pneumatic-grips",
+ "kind": "accessory",
+ "name": "Instron 2701 Series Air Kits for Pneumatic Grips (Smart-Close 2701-095 / Automatic 2701-065 / Footswitch 2701-004 / Distribution 2701-042) and Portable Air Compressor 2810-060",
+ "name_ko": "인스트론 2701 계열 공압 그립용 에어 키트 (스마트 클로즈·자동 제어·풋스위치·분배) 와 휴대형 공기압축기",
+ "manufacturer": "instron",
+ "category": "accessory",
+ "subcategory": "pneumatic_supply",
+ "description": "공압 그립을 여닫는 공기 공급·제어 키트. Smart-Close 2701-095 는 3400·6800 프레임에 내장되는 2단 매니폴드(입력 최대 8.3 bar) — Bluehill 이 설정 압력(권장 1 bar)과 시험 압력(최대 7 bar)을 정하고 풋스위치로 자동 예장력. 자동 에어 컨트롤 2701-065 는 3300·4400·5500·5800·5900 용 컬럼 장착 제어 상자 + 2페달 전기 풋스위치·솔레노이드 밸브. 범용 공압 풋스위치 2701-004(예장력 불가), 범용 분배 키트 2701-042. 압축공기가 없는 곳은 휴대형 압축기 2810-060(240 VAC, 조절기·필터 포함).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "pressure_bar": {
+   "max": 8.3,
+   "note": "Smart-Close 입력 최대. 시험 압력 최대 7 bar"
+  }
+ },
+ "models": [
+  {
+   "model": "2701-095 (Smart-Close Air Kit)",
+   "specs": {
+    "pressure_bar": {
+     "max": 7
+    },
+    "note": "3400·6800 계열 전용, 시스템 통합"
+   }
+  },
+  {
+   "model": "2701-065 (Automatic Air Control Kit)",
+   "specs": {
+    "note": "3300·4400(4411 제외)·5500·5800·5900"
+   }
+  },
+  {
+   "model": "2701-004 (Universal Pneumatic Footswitch)",
+   "specs": {
+    "note": "예장력 제어 불가"
+   }
+  },
+  {
+   "model": "2701-042 (Universal Air Distribution Kit)",
+   "specs": {}
+  },
+  {
+   "model": "2810-060 (Portable Air Compressor, 240 VAC)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/air-kits-for-pneumatic-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/pneumatic-hydraulic-power-supplies/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

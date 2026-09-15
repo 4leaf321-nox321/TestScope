@@ -1,0 +1,195 @@
+{
+ "id": "zwickroell-specimen-grips",
+ "kind": "accessory",
+ "name": "ZwickRoell Specimen Grips (screw / spring-loaded / pneumatic / hydraulic / wedge / wedge-screw / pincer / toggle / roller / capstan)",
+ "name_ko": "즈윅로엘 시편 그립 (나사식·스프링·공압·유압·웨지·웨지 나사·핀서·토글·롤러·캡스탄)",
+ "manufacturer": "zwickroell",
+ "category": "grip_fixture",
+ "description": "인장 시편을 잡는 그립군의 선택표. 작동 원리별 최대 시험 하중과 온도 범위 — 나사식 0.02~50 kN(-70~+250 °C, 필름·스트립·테이프·로프·숄더봉·판·선재·섬유), 스프링식 0.02~0.05 kN(-15~+80, 물림에 민감한 필름·세사·탄성사), 공압 0.02~100 kN(-70~+250, 필름부터 기술 직물·벨트까지), 유압 10~2,500 kN(-70~+250, 판·선재·관·프로파일·지오텍스타일), 웨지 2.5~600 kN(-70~+250), 웨지 나사 0.5~250 kN(-40~+250), 핀서 0.5~10 kN(-40~+250), 토글 0.3~2.5 kN(-15~+80, 필름·부직포), 롤러 2.5~250 kN(-70~+250, 스트랩·벨트), 캡스탄 0.5~20 kN(+10~35, 실·타이어 코드·강연선). 로프 그립, 나사·숄더 헤드 시편용 그립도 있다. 압축·굽힘용 시험 공구는 별도.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "composites",
+  "metals",
+  "textiles",
+  "films",
+  "wires",
+  "ropes",
+  "belts",
+  "paper"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 0.02,
+   "max": 2500
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 250
+  }
+ },
+ "models": [
+  {
+   "model": "Screw grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.02,
+     "max": 50
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Spring-loaded grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.02,
+     "max": 0.05
+    },
+    "temperature_degC": {
+     "min": -15,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "Pneumatic grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.02,
+     "max": 100
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Hydraulic grips",
+   "specs": {
+    "force_kN": {
+     "min": 10,
+     "max": 2500
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Wedge grips",
+   "specs": {
+    "force_kN": {
+     "min": 2.5,
+     "max": 600
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Wedge screw grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.5,
+     "max": 250
+    },
+    "temperature_degC": {
+     "min": -40,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Pincer grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.5,
+     "max": 10
+    },
+    "temperature_degC": {
+     "min": -40,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Toggle grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.3,
+     "max": 2.5
+    },
+    "temperature_degC": {
+     "min": -15,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "Roller grips",
+   "specs": {
+    "force_kN": {
+     "min": 2.5,
+     "max": 250
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "Capstan grips",
+   "specs": {
+    "force_kN": {
+     "min": 0.5,
+     "max": 20
+    },
+    "temperature_degC": {
+     "min": 10,
+     "max": 35
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-vibrophore",
+   "note": "동적용 그립은 별도 사양 — 페이지에 없음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/specimen-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

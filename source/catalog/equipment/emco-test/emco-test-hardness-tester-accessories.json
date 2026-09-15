@@ -1,0 +1,119 @@
+{
+ "id": "emco-test-hardness-tester-accessories",
+ "kind": "accessory",
+ "name": "EMCO-TEST Hardness Tester Accessories (sample holders, test anvils, indenters, objectives, nose cone inserts, test blocks, foot switch / hand scanner / C-adapter / cross-line laser / base)",
+ "name_ko": "에므코테스트 경도계 부속 (시료 홀더 · 시험 앤빌 · 압입자 · 대물렌즈 · 노즈 콘 인서트 · 시험 블록 · 풋스위치·핸드 스캐너·C 어댑터·크로스 라인 레이저·베이스)",
+ "manufacturer": "emco-test",
+ "category": "accessory",
+ "subcategory": "hardness_accessory",
+ "description": "DuraVision·DuraJet 등 경도계용 부속 개요. 시료 홀더: 척(환봉·관), 바이스(불규칙 형상), 매립 시편 홀더(마이크로 경도, 여러 개 동시), 자석 홀더. 앤빌: 평면, 스윙 지지, 볼 앤빌(베어링 볼), V 앤빌(소·편측 세트), 확장 테이블. 압입자: 로크웰 다이아몬드 콘 120°, 브리넬·로크웰 초경 볼 Ø1/2.5/5/10 mm(인치 포함), 비커스 다이아몬드 피라미드 136°, 누프(172.5°/130°), 비자성형 — ISO·ASTM 인증. 대물렌즈: Plan Fluor 2.5×~100×, 장거리형, Brinell SmartLight 조명형. 노즈 콘 인서트: 90 mm 연장(지지 Ø10, 보어 4.5, 압입자 Ø3.8), 2-way 터릿용 클램핑 연장, 판재용 대면적 45×30 mm(압입자 Ø12, L2.5/L5/L10 렌즈), 소면적용. 시험 블록: 로크웰(HRC·HRB·HRF)·브리넬·비커스·누프, 강·알루미늄·황동, ISO·ASTM 인증, 일일 점검. 기타: 클램핑 풋스위치, QR 핸드 스캐너(ecos Workflow CODE R/W), 관 내부 시험 C 어댑터, 더스트 커버, 대형 부품용 외부 제어 유닛, DuraVision G4/G5 키보드 트레이(Z16 테이블 연장과 배타), 베이스, 터릿 어댑터 크로스 라인 레이저.",
+ "test_items": [
+  "hardness_rockwell",
+  "hardness_brinell",
+  "hardness_vickers",
+  "hardness_knoop"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "steel",
+  "aluminum",
+  "brass",
+  "sheet metal",
+  "pipes"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "magnification": {
+   "min": 2.5,
+   "max": 100,
+   "note": "대물렌즈"
+  }
+ },
+ "models": [
+  {
+   "model": "Sample holders (chucks, vices, embedded-sample holders, magnetic holders)",
+   "specs": {}
+  },
+  {
+   "model": "Test anvils (plane, swing support, ball, V-anvil, extendable table)",
+   "specs": {}
+  },
+  {
+   "model": "Indenters (Rockwell diamond cone 120°, carbide balls Ø1 / 2.5 / 5 / 10 mm, Vickers 136°, Knoop, non-magnetic)",
+   "specs": {}
+  },
+  {
+   "model": "Objectives (Plan Fluor 2.5×–100×, long distance, Brinell SmartLight)",
+   "specs": {
+    "magnification": {
+     "min": 2.5,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "Nose cone inserts (90 mm extension, 2-way turret extensions, 45×30 mm sheet metal inserts, small-area inserts)",
+   "specs": {}
+  },
+  {
+   "model": "Test blocks (Rockwell / Brinell / Vickers / Knoop, ISO·ASTM certified)",
+   "specs": {}
+  },
+  {
+   "model": "Other: foot switch, hand scanner, C-adapter, dust cover, external control unit, keyboard tray, base, cross-line laser",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "emco-test-duravision-g5"
+  },
+  {
+   "type": "fits_on",
+   "target": "emco-test-durajet-g5"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.emcotest.com/en/accessories/sample-holder-in-hardness-testing",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/test-anvils-in-hardness-testing",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/indenter-in-hardness-testing",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/lenses-in-hardness-testing",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/nose-cone",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/test-blocks",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/other-accessories",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

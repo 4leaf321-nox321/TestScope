@@ -1,0 +1,103 @@
+{
+ "id": "mts-model-609-alignment-fixtures",
+ "kind": "accessory",
+ "name": "MTS Model 609 Alignment Fixtures (609.02A 25 kN / 609.10A 100 kN / 609.25A 250 kN / 609.50A 500 kN, for 312 / 318 / 370 frames)",
+ "name_ko": "MTS 모델 609 정렬 지그 (25~500 kN, 312·318·Landmark 370 프레임용, 예압 상태 정렬)",
+ "manufacturer": "mts",
+ "category": "accessory",
+ "subcategory": "alignment",
+ "description": "하중 트레인이 완전히 예압된 상태에서 정렬을 조정하는 지그 — 예압 중 생기는 작은 정렬 변화의 오차를 없애고 이전 조정이 보존된다. 정렬용 원형·평판 스트레인게이지 시편(게이지 12개, 4340 강, 413 MPa)으로 동심·각 오정렬을 모두 교정. 312·318 프레임용 609.02A(25 kN, Ø72, M12×1.25)·609.10A(100 kN, M27×2)·609.25A(250 kN, Ø80, M36×2)·609.50A(500 kN, Ø181, M52×2), Landmark 370 용 25·100 kN(크로스헤드 장착) 등.",
+ "test_items": [
+  "fatigue",
+  "tensile"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 25,
+   "max": 500
+  }
+ },
+ "models": [
+  {
+   "model": "609.02A-01",
+   "specs": {
+    "force_kN": 25,
+    "specimen_diameter_mm": 72,
+    "note": "M12×1.25 / 355 mm"
+   }
+  },
+  {
+   "model": "609.10A-01",
+   "specs": {
+    "force_kN": 100,
+    "specimen_diameter_mm": 72,
+    "note": "M27×2 / 343 mm"
+   }
+  },
+  {
+   "model": "609.25A-01",
+   "specs": {
+    "force_kN": 250,
+    "specimen_diameter_mm": 80,
+    "note": "M36×2 / 462 mm"
+   }
+  },
+  {
+   "model": "609.50A-01",
+   "specs": {
+    "force_kN": 500,
+    "specimen_diameter_mm": 181,
+    "note": "M52×2 / 686 mm"
+   }
+  },
+  {
+   "model": "609 for Landmark 370 (25 kN / 100 kN)",
+   "specs": {
+    "force_kN": [
+     25,
+     100
+    ],
+    "specimen_diameter_mm": 73,
+    "note": "크로스헤드 장착"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「다른 하중 프레임에도 쉽게 적용」"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「다른 하중 프레임에도 쉽게 적용」"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「다른 하중 프레임에도 쉽게 적용」"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/model-609-alignment-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

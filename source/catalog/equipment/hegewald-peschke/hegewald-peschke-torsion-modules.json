@@ -1,0 +1,90 @@
+{
+ "id": "hegewald-peschke-torsion-modules",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Torsion Modules for Universal Testing Machines (tension/compression + torsion)",
+ "name_ko": "헤게발트 운트 페슈케 비틀림 모듈 (만능시험기에 설치하는 모듈형 비틀림 구동, 인장·압축 + 비틀림 2축)",
+ "manufacturer": "hegewald-peschke",
+ "category": "accessory",
+ "subcategory": "torsion_drive",
+ "description": "만능시험기에 넣고 빼는 모듈형 비틀림 구동 — 베이스 플레이트에 구동·출력, 자체 제어계, 인장/압축-비틀림 센서(두 채널 개별 평가)로 단축 또는 2축(마스터-슬레이브 또는 독립) 시험, 표준 연결로 그립 결합, LabMaster 소프트웨어. 응용: 인슐린 펜 투여 기구, 회전 스위치·슬립링, 볼펜 회전 기구, 후추 분쇄기, 드릴 피로, 스크류 캡 포장. 토크 범위 등 수치는 페이지에 없다.",
+ "test_items": [
+  "torsion",
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "components",
+  "medical devices",
+  "packaging closures",
+  "tools"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "Torsion module (for installation in UTM)",
+   "specs": {
+    "note": "인장/압축-비틀림 센서 필요"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-duo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-solo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-micro",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-vario",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "extends_capability",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "torsion"
+  },
+  {
+   "type": "extends_capability",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "torsion"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/torsion-modules/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

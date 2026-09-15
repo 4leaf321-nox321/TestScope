@@ -1,0 +1,258 @@
+{
+ "id": "mecmesin-adapters-qc-fittings-and-extension-rods",
+ "kind": "accessory",
+ "name": "Mecmesin Adapters, QC-20 / QC-32 Fittings, Loadcell Mounting Plates, Extension Rods and Crosshead Extensions",
+ "name_ko": "멕메신 어댑터 · QC-20/QC-32 피팅 · 로드셀 마운팅 플레이트 · 연장 로드 · 크로스헤드 연장",
+ "manufacturer": "mecmesin",
+ "category": "accessory",
+ "subcategory": "adapter",
+ "description": "피팅 변환 SKU 목록. 나사 어댑터(500 N: 10-32 UNF↔M6·M10·5/16 UNC·10-32, F/F·M/M; 5 kN: 5/16 UNC↔M6·M10·M12·5/16 UNC; 10 kN: M10↔M12). QC 어댑터: Type A(20 mm M → 5/16 UNC F), B(20 mm F → M12 볼트), C(20 mm M + M6 나사), J 경량(Ø20 M → 10-32 UNF F), K(20 mm F → 5/16 UNC 볼트), L(32 mm M), L→C 변환(32 F → 20 M), 50 kN 시스템용 QC-20 수 포스트 플레이트. 로드셀 마운팅 플레이트: Type M(13 mm 슬롯, 100/200 N S-빔), D(19 mm, 500 N), E(19 mm, 1 kN), F(25 mm, 2.5/5/10 kN), G(25 mm, 25 kN). 연장 로드: 25·30·110·130 mm(500 N·2.5 kN·5 kN, 썸휠·너트), 크로스헤드 연장 16·38 mm, 크로스헤드 연장 + 높인 베이스 플레이트.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 0.5,
+   "max": 25
+  }
+ },
+ "models": [
+  {
+   "model": "Thread adapters 500 N / 5 kN / 10 kN (10-32 UNF, M6, M10, M12, 5/16 UNC)",
+   "specs": {
+    "force_kN": {
+     "min": 0.5,
+     "max": 10
+    }
+   }
+  },
+  {
+   "model": "QC Type A / B / C / J / K / L adapters, L→C converter, QC-20 male post plate (50 kN)",
+   "specs": {}
+  },
+  {
+   "model": "QC Type M / D / E / F / G loadcell mounting plates (100 N – 25 kN S-beam)",
+   "specs": {
+    "force_kN": {
+     "min": 0.1,
+     "max": 25
+    }
+   }
+  },
+  {
+   "model": "Extension rods 25 / 30 / 110 / 130 mm (500 N / 2.5 kN / 5 kN) · Crosshead extensions 16 / 38 mm · Crosshead extension with elevated base plate",
+   "specs": {
+    "height_mm": {
+     "min": 16,
+     "max": 130
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mecmesin-omnitest",
+   "note": "제조사 SKU 목록 — 10-32 UNF·M6·5/16 UNC 피팅은 힘 게이지·MultiTest, QC-20/QC-32 는 OmniTest·MultiTest 스탠드"
+  },
+  {
+   "type": "fits_on",
+   "target": "mecmesin-multitest",
+   "note": "제조사 SKU 목록 — 10-32 UNF·M6·5/16 UNC 피팅은 힘 게이지·MultiTest, QC-20/QC-32 는 OmniTest·MultiTest 스탠드"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mecmesin.com/accessory/432-193",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-293",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-328",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-329",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-330",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-331",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-332",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-333",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-334",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-335",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-364",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-417",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-282",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-283",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-284",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-418",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-429",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-451",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-623",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-622",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-285",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-286",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-287",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-288",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-452",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-006",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-007",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-008",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-100",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-116",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-117",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-123",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-186",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-187",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-307",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-508",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-406",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

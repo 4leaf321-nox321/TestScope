@@ -1,0 +1,93 @@
+{
+ "id": "instron-2715-capstan-tensile-grips",
+ "kind": "accessory",
+ "name": "Instron 2715 Series Capstan Tensile Grips (Webbing 2715-003 / Cord 2715-001)",
+ "name_ko": "인스트론 2715 계열 캡스탄 인장 그립 (웨빙 50 kN · 코드 2.5 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "capstan",
+ "description": "캡스탄 원리로 미끄럼과 조 파단을 줄이는 그립. 웨빙 캡스탄 2715-003 은 안팎 이중 캡스탄 — 시편 끝을 안쪽 캡스탄 홈에 넣고 한 바퀴 감으면 두 캡스탄 표면 모두로 물린다. 안전벨트 등 고강도 벨트·테이프, 50 kN, 폭 50.8 mm·두께 4.75 mm, ASTM D6775·D3950. 코드 캡스탄 2715-001 은 나선 홈(2.5회전) 캡스탄이 반으로 갈라져 시편을 물고 하중에 따라 자기물림, 꼬임·편조 코드 Ø3.2 mm 까지 2.5 kN.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "webbing",
+  "belts",
+  "tapes",
+  "twisted or braided cord"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D6775",
+   "ASTM D3950"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 2.5,
+   "max": 50
+  },
+  "temperature_degC": {
+   "min": -73,
+   "max": 316
+  }
+ },
+ "models": [
+  {
+   "model": "2715-003 (Webbing Capstan)",
+   "specs": {
+    "force_kN": 50,
+    "width_mm": 50.8,
+    "specimen_thickness_mm": 4.75,
+    "temperature_degC": {
+     "min": -29,
+     "max": 121
+    },
+    "note": "피팅 Type Dm, 강성 커플링 필요"
+   }
+  },
+  {
+   "model": "2715-001 (Cord Capstan)",
+   "specs": {
+    "force_kN": 2.5,
+    "specimen_diameter_mm": 3.2,
+    "temperature_degC": {
+     "min": -73,
+     "max": 316
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/webbing-capstan-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/cord-capstan-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

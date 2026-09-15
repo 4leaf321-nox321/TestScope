@@ -1,0 +1,75 @@
+{
+ "id": "emco-test-ecos-workflow-software-modules",
+ "kind": "software",
+ "name": "EMCO-TEST ecos Workflow Software Modules (areaMaster, gearmaster, Jominy, Panorama, Pipemaster, QDAS interfaces)",
+ "name_ko": "에므코테스트 ecos Workflow 소프트웨어 모듈 (areaMaster 경도 매핑 · gearmaster 기어 · Jominy · Panorama · Pipemaster 관 · QDAS 인터페이스)",
+ "manufacturer": "emco-test",
+ "category": "accessory",
+ "subcategory": "software",
+ "description": "기본 소프트웨어 ecos Workflow 가 시험 전체를 제어·관리하고, 모듈로 확장한다 — areaMaster(표면 경도 분포 매핑), gearmaster(기어 경도 분포·형상), Jominy(조미니 끝담금질 경화능), Panorama(파노라마 뷰 복합 구조 분석), Pipemaster(관 세그먼트 경도 분포), QDAS 시스템 인터페이스(통계 공정 관리), CODE R/W(QR 템플릿). 직렬 데이터 전송 세트·PC 구성품.",
+ "test_items": [
+  "hardness_rockwell",
+  "hardness_brinell",
+  "hardness_vickers",
+  "hardness_knoop"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "ecos Workflow (base)",
+   "specs": {}
+  },
+  {
+   "model": "ecos areaMaster",
+   "specs": {}
+  },
+  {
+   "model": "ecos gearmaster",
+   "specs": {}
+  },
+  {
+   "model": "ecos Jominy",
+   "specs": {}
+  },
+  {
+   "model": "ecos Panorama",
+   "specs": {}
+  },
+  {
+   "model": "ecos Pipemaster",
+   "specs": {}
+  },
+  {
+   "model": "QDAS interfaces",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "emco-test-duravision-g5"
+  },
+  {
+   "type": "fits_on",
+   "target": "emco-test-durajet-g5"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.emcotest.com/en/accessories/software-modules",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.emcotest.com/en/accessories/it-equipment-in-hardness-testing",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

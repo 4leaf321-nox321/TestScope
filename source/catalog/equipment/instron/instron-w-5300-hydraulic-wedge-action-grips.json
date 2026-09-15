@@ -1,0 +1,75 @@
+{
+ "id": "instron-w-5300-hydraulic-wedge-action-grips",
+ "kind": "accessory",
+ "name": "Instron Industrial Hydraulic Wedge Action Grips (W-5245 / W-5360 / W-5340 / W-5330 / W-5320)",
+ "name_ko": "인스트론 산업용 유압 웨지 액션 그립 (300~2000 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "hydraulic_wedge",
+ "description": "앞이 트인 산업용 유압 웨지 그립. 환봉 Ø90 mm, 평판 90 mm 두께까지, 300~2000 kN. 그립 앞 손잡이를 돌려 유압으로 여닫고 몸체는 움직이지 않는다. 먼지·칩이 있는 현장용 보호 커버, 조 캐리어 분리형(재급유 없이 조 교체), W-5380/5390 은 자석 안착. 인장 전용 — through-zero·피로 불가.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 300,
+   "max": 2000
+  },
+  "specimen_diameter_mm": {
+   "max": 90
+  },
+  "specimen_thickness_mm": {
+   "max": 90
+  }
+ },
+ "models": [
+  {
+   "model": "W-5245",
+   "specs": {
+    "force_kN": 300
+   }
+  },
+  {
+   "model": "W-5360",
+   "specs": {
+    "force_kN": 600
+   }
+  },
+  {
+   "model": "W-5340",
+   "specs": {
+    "force_kN": 1000
+   }
+  },
+  {
+   "model": "W-5330",
+   "specs": {
+    "force_kN": 1500
+   }
+  },
+  {
+   "model": "W-5320",
+   "specs": {
+    "force_kN": 2000
+   }
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/hydraulic-wedge-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited",
+ "notes": "산업용 정적 유압 프레임(DX/HDX/KPX) 용 — 카탈로그에 호스트 계열 객체가 없어 fits_on 을 비웠다."
+}

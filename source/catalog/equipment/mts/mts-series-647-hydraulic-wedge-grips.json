@@ -1,0 +1,174 @@
+{
+ "id": "mts-series-647-hydraulic-wedge-grips",
+ "kind": "accessory",
+ "name": "MTS Series 647 Hydraulic Wedge Grips (axial / aluminum 647.02 / axial-torsional / all-temperature to 540 °C) and wedges",
+ "name_ko": "MTS 시리즈 647 유압 웨지 그립 (축방향·알루미늄·축-비틀림·전온도 540 °C) 와 웨지",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "hydraulic_wedge",
+ "description": "측면 장착으로 시편을 넣고 유압으로 무는 인장·피로 범용 그립. 대칭 하우징으로 웨지 전면에 균일 하중, 물릴 때 시편 위치가 변하지 않고 예압 챔버가 가동부를 고정해 인장↔압축 전환 백래시가 없다. 외부 유압으로 압력 조절(플라스틱·세라믹까지), 옵션 독립 펌프로 비유압 프레임에도, 고온 유체·씰로 챔버 안에도. 네 판: 축방향(647.02B 25 kN 동적/31 kN 정적 …), 알루미늄 647.02(7 kg, 고주파·탁상용), 축-비틀림(3 용량), 전온도(647.02A-32 -130~315 °C, -51 -130~540 °C, 원격 개폐, 챔버 안 구배 ±1.6 °C). 웨지는 플랫(다이아몬드·90° 톱니·톱니·Surfalloy·평활)·V·환봉, 수냉 키트. -7 °C 이하·66 °C 이상은 685 그립 공급 장치.",
+ "test_items": [
+  "tensile",
+  "fatigue",
+  "shear",
+  "fracture_toughness",
+  "peel",
+  "torsion"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "composites",
+  "plastics",
+  "ceramics",
+  "rebar"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E8/E8M",
+   "ASTM E21",
+   "ASTM E517",
+   "ASTM E646",
+   "ASTM D3039",
+   "ASTM D3518",
+   "ISO 6892-1",
+   "ISO 6892-2",
+   "ISO 10113",
+   "ISO 10275",
+   "ISO 14129",
+   "ISO 527-4",
+   "ISO 527-5",
+   "EN 2561",
+   "EN 2597",
+   "EN 6031"
+  ]
+ },
+ "limits": {
+  "dynamic_force_kN": {
+   "min": 25
+  },
+  "static_force_kN": {
+   "min": 31
+  },
+  "temperature_degC": {
+   "min": -130,
+   "max": 540
+  }
+ },
+ "models": [
+  {
+   "model": "647.02B (axial)",
+   "specs": {
+    "dynamic_force_kN": 25,
+    "static_force_kN": 31
+   }
+  },
+  {
+   "model": "647.02 (aluminum housing)",
+   "specs": {
+    "dynamic_force_kN": 25,
+    "weight_kg": 7,
+    "note": "고주파·탁상용"
+   }
+  },
+  {
+   "model": "647 axial-torsional (3 capacities)",
+   "specs": {}
+  },
+  {
+   "model": "647.02A-32 (all-temperature)",
+   "specs": {
+    "dynamic_force_kN": 25,
+    "static_force_kN": 31,
+    "temperature_degC": {
+     "min": -130,
+     "max": 315
+    },
+    "weight_kg": [
+     14,
+     17
+    ],
+    "note": "스터드 M12×1.25"
+   }
+  },
+  {
+   "model": "647.02A-51 (all-temperature)",
+   "specs": {
+    "dynamic_force_kN": 25,
+    "static_force_kN": 31,
+    "temperature_degC": {
+     "min": -130,
+     "max": 540
+    }
+   }
+  },
+  {
+   "model": "Wedges for 647.02B (flat serrated 38 mm, 0–7.1 mm)",
+   "specs": {
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 7.1
+    },
+    "temperature_degC": {
+     "min": -40,
+     "max": 177
+    }
+   }
+  }
+ ],
+ "options": [
+  "water-cooled kit (with/without flow switch)",
+  "Surfalloy tungsten-carbide flat wedges"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "옵션 독립형 유압 펌프(685)로 비유압 프레임에도"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "옵션 독립형 유압 펌프(685)로 비유압 프레임에도"
+  },
+  {
+   "type": "requires",
+   "target": "mts-model-685-hydraulic-grip-supplies",
+   "note": "비유압 프레임·고저온 운전 시"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/series-647-hydraulic-wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/series-647-all-temperature-hydraulic-wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/wedges-for-series-647-hydraulic-wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

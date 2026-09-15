@@ -1,0 +1,100 @@
+{
+ "id": "testometric-extensometers",
+ "kind": "sensor",
+ "name": "Testometric Extensometers (VEI / VE-XS1-M5 / VE2 optical and video, TMF automatic, TMFA and TE clip-on, DE-A3 long travel 850 mm)",
+ "name_ko": "테스토메트릭 신율계군 (VEI 광학 · VE-XS1-M5 DIC 비디오 · VE2 비디오 100 mm · TMF 자동 0~300 mm · TMFE1000A · TMFA 클립온 · TE 스트레인게이지 클립온 · DE-A3 롱트래블 850 mm)",
+ "manufacturer": "testometric",
+ "category": "extensometer",
+ "description": "제조사 목록의 신율계(이름·범위만 있음). 비접촉: VEI 광학, VE-XS1-M5 DIC 비디오(단일 5 MP 카메라), VE2 비디오 100 mm. 접촉 자동: TMF 자동 클립온 0~300 mm, TMFE1000A 정밀. 클립온: TMFA2 정밀, TMFA20(철근), TMFA25, TE3542 5~10 mm, TE3543-100(철근), TE3442 소형 스트레인게이지. 롱트래블 DE-A3 고무·엘라스토머용 850 mm(0.01 mm).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus",
+  "elongation"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "rubber",
+  "elastomers",
+  "rebar"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 850
+  },
+  "field_of_view_mm": {
+   "max": 100,
+   "note": "VE2"
+  }
+ },
+ "models": [
+  {
+   "model": "VEI Optical Extensometer",
+   "specs": {}
+  },
+  {
+   "model": "VE-XS1-M5 Video extensometer with DIC (5 MP)",
+   "specs": {
+    "detector_megapixels": 5
+   }
+  },
+  {
+   "model": "VE2 Video Extensometer 100 mm",
+   "specs": {
+    "field_of_view_mm": 100
+   }
+  },
+  {
+   "model": "TMF Automatic clip-on extensometer 0–300 mm",
+   "specs": {
+    "displacement_mm": 300
+   }
+  },
+  {
+   "model": "TMFE1000A Precision Extensometer",
+   "specs": {}
+  },
+  {
+   "model": "TMFA2 / TMFA20 (rebar) / TMFA25 clip-on extensometers",
+   "specs": {}
+  },
+  {
+   "model": "TE3542 clip-on 5–10 mm / TE3543-100 (rebar) / TE3442 miniature strain gauge",
+   "specs": {
+    "gauge_length_mm": {
+     "min": 5,
+     "max": 10
+    }
+   }
+  },
+  {
+   "model": "DE-A3 Long Travel Extensometer 850 mm",
+   "specs": {
+    "displacement_mm": 850,
+    "note": "분해능 0.01 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "testometric-m500",
+   "note": "제조사 목록 페이지 — 카탈로그의 테스토메트릭 시험기는 M500 계열(X 계열은 없음)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.testometric.co.uk/extensometer-video/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,58 @@
+{
+ "id": "ametek-lloyd-ve1-video-extensometer",
+ "kind": "sensor",
+ "name": "Lloyd Instruments VE1 Video Extensometer (100 Hz, 20 µm/m to >1000 %, six sizes)",
+ "name_ko": "로이드 VE1 비디오 신율계 (비접촉, 100 Hz, 20 µm/m~1000 % 이상, 6 크기)",
+ "manufacturer": "ametek-lloyd",
+ "category": "extensometer",
+ "subcategory": "video",
+ "description": "디지털 카메라와 실시간 영상 처리로 두 표선 사이의 종·횡 변형률을 재는 고정밀 비접촉 신율계 — 최대 100 Hz, NEXYGENPlus 3(Plus 계열·LS 시험기)와 동기, 변형률 20 µm/m 부터 1000 % 이상, 교정에 따라 수 mm 부터 수 m 까지, 시험 중 영상 저장, 파단까지 사용, 상온·비상온. 금속·경질 플라스틱·복합재·세라믹·후막 등. 설정 템플릿, 6 크기.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "poisson_ratio"
+ ],
+ "materials": [
+  "metals",
+  "rigid plastics",
+  "composites",
+  "ceramics",
+  "thick films"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "data_rate_Hz": {
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "VE1 (six sizes)",
+   "specs": {
+    "data_rate_Hz": 100,
+    "note": "변형률 20 µm/m 부터 >1000 %"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/extensometers/video-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,72 @@
+{
+ "id": "instron-2716-110-pneumatic-wedge-action-grips",
+ "kind": "accessory",
+ "name": "Instron 2716-110 / 2716-120 Pneumatic Wedge Action Grips (100 / 200 kN)",
+ "name_ko": "인스트론 2716-111 / 2716-121 공압 웨지 액션 그립 (100·200 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "pneumatic_wedge",
+ "description": "공압 피스톤이 조를 움직이는 앞이 트인 웨지 그립 — 유압 펌프 없이 100·200 kN. 환봉 Ø60 mm, 평판 70 mm 두께까지. 하중이 걸리면 웨지 작용으로 물림력이 더해진다. 환봉용 V 면은 분할형이라 고에너지 파단을 견딘다. 먼지 커버, 피기백 어댑터 플레이트 옵션. 인장 전용 — through-zero·피로 불가.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "wires",
+  "plastics",
+  "metals",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 100,
+   "max": 200
+  },
+  "specimen_diameter_mm": {
+   "max": 60
+  },
+  "specimen_thickness_mm": {
+   "max": 70
+  }
+ },
+ "models": [
+  {
+   "model": "2716-111",
+   "specs": {
+    "force_kN": 100,
+    "note": "상부 피팅 0.5 in 클레비스 핀(Type Dm)"
+   }
+  },
+  {
+   "model": "2716-121",
+   "specs": {
+    "force_kN": 200,
+    "note": "상부 피팅 M48x2mLH(Type IImLH)"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "플로어 모델(68FM) — 페이지는 「인스트론 플로어 모델 시험 시스템」이라고만 적음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "플로어 모델(598x) — 위와 같음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/pneumatic-wedge-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

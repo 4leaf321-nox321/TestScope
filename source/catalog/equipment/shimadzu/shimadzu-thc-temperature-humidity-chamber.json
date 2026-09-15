@@ -1,0 +1,85 @@
+{
+ "id": "shimadzu-thc-temperature-humidity-chamber",
+ "kind": "accessory",
+ "name": "Shimadzu THC Series Refrigerator Type Constant Temperature and Humidity Chamber for Autograph",
+ "name_ko": "시마즈 THC 계열 냉동기식 항온항습조 (Autograph 용)",
+ "manufacturer": "shimadzu",
+ "category": "environmental_chamber",
+ "description": "온·습도에 민감한 섬유·종이·필름의 기계적 성질을 조절 환경에서 시험하는 Autograph 용 항온항습조 — 히터와 냉동기로 온도를 자동 제어한다. 수치 사양은 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "damp_heat"
+ ],
+ "measurands": [],
+ "materials": [
+  "fibers",
+  "paper",
+  "films"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "chamber": {
+   "values": [
+    "yes"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "THC Series",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-ags-v"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-system/refrigerator-type-constant-temperature-and-humidity-chamber/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing-inspection/uni-ttm-system/refrigerator-type-constant-temperature-and-humidity-chamber/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

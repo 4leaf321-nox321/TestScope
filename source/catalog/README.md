@@ -229,6 +229,29 @@ MTDI 객체 5 개(UC-980 노·UC-350/UC-170 챔버, 마모마찰 4 기종, 비�
 - 재료 분석 장비(SEM·XRD·XPS·FT-IR·입도·접촉각·홀 …)를 담을 시험 항목 9종과 분류 17종을 더했다.
   조건 부여 장비(ESPEC 21종·Q-FOG)는 능력행이 0 이라 `groups.json` 의 `test_items` 로 적었다.
 
+**14차 — 부속 객체 168종 (2026-09-16).** 제조사 웹의 부속·옵션 페이지(`source/catalog_extension/accessories/`,
+17 제조사 737쪽)를 읽고 그립·지그·챔버·퍼니스·신율계·로드셀·소프트웨어 객체를 만들었다 — Instron 46 ·
+MTS 41 · ZwickRoell 18 · Shimadzu 16 · Tinius Olsen 10 · Hegewald & Peschke 10 · Lloyd 7 · Mecmesin 5 ·
+Bareiss 4 · Testometric 3 · Anton Paar 3 · EMCO-TEST 2 · Taber·Micromeritics·SMS 1. 종류는 `accessory` 119 ·
+`sensor` 46 · `software` 3, 분류는 `grip_fixture` 79 · `extensometer` 40 · `environmental_chamber` 7 ·
+`load_cell` 5 · `furnace` 4 · `specimen_preparation` 3 · 그 밖의 `accessory` 30.
+
+- **값은 2등급(제조사 웹 페이지)에서 왔다.** 그래서 전부 `confidence: limited` 이고 `sources[].url` 만
+  있다(`note` 에 「PDF 로는 아직 확인하지 않았다」). 페이지 표에 있는 수치만 옮겼고, 없는 것은 「페이지에
+  없다」 로 적었다. 1등급으로 올리려면 `tools_fetch_pdf.py` 로 데이터시트를 받아 `sources[].file` 을 단다.
+- **객체 한 개 = 제품 계열 페이지 한 개.** 카탈로그 번호별 용량·치수는 `models[]` 로(예: Instron 2712 공압
+  그립 6종, MTS 634 신율계 표점별). 목록 페이지뿐인 제조사(Testometric·Mecmesin·Lloyd)는 계열 하나에
+  SKU 묶음을 `models[]` 로 넣었다 — 이름·용량·피팅밖에 없다.
+- **`relations` 는 페이지가 말한 것과 추정을 구분한다.** 페이지가 「6800·3400 계열용」 처럼 프레임을
+  적었으면 `fits_on` 만, 적지 않았으면 `fits_on` 에 `note`(「페이지가 프레임을 명시하지 않음 — 표준 피팅
+  기준」)를 단다. 챔버·퍼니스는 `extends_temperature`, 굽힘·마찰·박리 지그는 `extends_capability`,
+  공압 그립 → 에어 키트·유압 그립 → 그립 펌프는 `requires`. 호스트 계열이 카탈로그에 없으면(Instron
+  산업용 유압 프레임·Shimadzu 서보펄서·zwickiLine·Bareiss 휴대형 경도계) `fits_on` 을 비우고 `notes` 에
+  적었다. 사용된 `models[].specs` 키는 모두 `condition_keys.json` 에 있는 것이다(굽힘 지간은
+  `hdt_span_mm` 을 빌려 썼다 — 등록된 지간 키가 그것뿐이다).
+- 검토함에는 올리지 않았다. 부속 객체는 값이 아니라 **연결(어느 계열에 붙나)** 이 판단거리인데, 그 판단은
+  `relations[].note` 로 드러나 있으니 정본을 고치는 쪽이 낫다.
+
 ## 표 값 검증 (3단계)
 
 텍스트 추출이 표의 열을 흩뜨리면 값이 뒤바뀐다. 그런 곳은 **원본 쪽을 PNG 로 렌더링해

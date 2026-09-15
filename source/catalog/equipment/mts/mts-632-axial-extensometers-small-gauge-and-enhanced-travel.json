@@ -1,0 +1,220 @@
+{
+ "id": "mts-632-axial-extensometers-small-gauge-and-enhanced-travel",
+ "kind": "sensor",
+ "name": "MTS Series 632 Axial Extensometers (miniature 632.29, small-gauge 632.26 / 632.13, high-frequency 632.27, enhanced-travel 632.24 / 634.28, multiple gauge length)",
+ "name_ko": "MTS 632 계열 축방향 신율계 — 초소형 632.29(3~6 mm) · 소형 632.26/632.13(8~10 mm) · 저변형 고주파 632.27(25 mm, 150 Hz) · 대신장 632.24/634.28(+100 %) · 다중 표점(10~50 mm)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "특수 표점·범위의 접촉식 축방향 신율계군, ASTM E83 B1·ISO 9513 0.5(다중 표점형은 B2). 632.29 초소형: 높이 15.3 mm·약 6 g, 1000 Ω 풀 브리지, 3 mm ±8 %·5 mm -10/+30 %·6 mm ±4 %, -100~150 °C, 30 g — 가는 선·취성·유기 시편. 632.26 8 mm ±6/±15 %(40~60 g, -31 극저온 -269 °C)·632.13 10 mm ±15 %. 632.27 25 mm ±4 %(-3x ±2 %) 짧은 암·높은 고유 진동수로 150 Hz 까지 — 세라믹·CMC 미세 변위. 대신장 632.24F 25 mm +100 %·634.28F 50 mm +100 %(제로 스톱). 다중 표점형: 미터 9 표점(10 mm +40/-20 % … 50 mm +8/-4 %), 환봉 Ø2.5~14·평판 10.5~26 mm.",
+ "test_items": [
+  "tensile",
+  "fatigue",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "fine wires",
+  "brittle materials",
+  "organic specimens",
+  "ceramics",
+  "CMC",
+  "plastics",
+  "rubber",
+  "elastomers",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1 (multi-gauge: B2)",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM D3039",
+   "ISO 527-2",
+   "ISO 527-5"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 3,
+   "max": 50
+  },
+  "temperature_degC": {
+   "min": -269,
+   "max": 175
+  },
+  "frequency_Hz": {
+   "max": 150,
+   "note": "632.27"
+  }
+ },
+ "models": [
+  {
+   "model": "632.29F-20 (3 mm ±8 %)",
+   "specs": {
+    "gauge_length_mm": 3,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "30 g, 높이 15.3 mm"
+   }
+  },
+  {
+   "model": "632.29F-30 (5 mm -10/+30 %, 6 mm ±4 %)",
+   "specs": {
+    "gauge_length_mm": [
+     5,
+     6
+    ],
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "632.26F-30/-31 (8 mm ±6 %)",
+   "specs": {
+    "gauge_length_mm": 8,
+    "temperature_degC": {
+     "min": -269,
+     "max": 150
+    },
+    "note": "40 g; -31 극저온"
+   }
+  },
+  {
+   "model": "632.26F-20/-23 (8 mm ±15 %)",
+   "specs": {
+    "gauge_length_mm": 8,
+    "temperature_degC": {
+     "min": -100,
+     "max": 175
+    }
+   }
+  },
+  {
+   "model": "632.13F-20/-21 (10 mm ±15 %)",
+   "specs": {
+    "gauge_length_mm": 10,
+    "temperature_degC": {
+     "min": -269,
+     "max": 150
+    },
+    "note": "45 g"
+   }
+  },
+  {
+   "model": "632.27F-2x (25 mm ±4 %, 150 Hz)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "frequency_Hz": 150,
+    "temperature_degC": {
+     "min": -269,
+     "max": 175
+    },
+    "note": "60~90 g; -3x 는 ±2 %"
+   }
+  },
+  {
+   "model": "632.24F-50 (25 mm +100 %)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "30 g, 제로 스톱"
+   }
+  },
+  {
+   "model": "634.28F-24 (50 mm +100 %)",
+   "specs": {
+    "gauge_length_mm": 50,
+    "temperature_degC": {
+     "min": -85,
+     "max": 120
+    },
+    "note": "55 g"
+   }
+  },
+  {
+   "model": "Multiple gauge length extensometer (10–50 mm)",
+   "specs": {
+    "gauge_length_mm": {
+     "min": 10,
+     "max": 50
+    },
+    "specimen_diameter_mm": {
+     "min": 2.5,
+     "max": 14
+    },
+    "specimen_thickness_mm": {
+     "min": 10.5,
+     "max": 26
+    },
+    "note": "10 mm +40/-20 % … 50 mm +8/-4 %"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/miniature-axial-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/axial-extensometers-less-than-25mm-gage",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/low-strain-high-frequency-axial-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/enhanced-travel-axial-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/axial-extensometers-with-multiple-gage-lengths",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

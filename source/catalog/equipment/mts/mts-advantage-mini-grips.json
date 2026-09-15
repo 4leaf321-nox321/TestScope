@@ -1,0 +1,81 @@
+{
+ "id": "mts-advantage-mini-grips",
+ "kind": "accessory",
+ "name": "MTS Advantage Mini Grips (2.2 kN static / 1.1 kN dynamic)",
+ "name_ko": "MTS Advantage 미니 그립 (초소형 시편용, 정적 2.2 kN·동적 1.1 kN)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "wedge_mini",
+ "description": "적층 제조 재료 같은 초소형 시편의 인장·인장-인장 피로용 손톱보다 작은 웨지 그립 — 길이 85.6 mm, Ø15.88 mm, 개당 0.226 kg. 시편 삽입 지그에서 프레임 밖에서 시편을 물리고(웨지 여는 힘 16.7~63.6 N, 예압 토크 정적 0.565~1.19 N·m·동적 최대 2.2 N·m, 토크 렌치 포함) 몇 분 안에 시험. 평판 Surfalloy 0~2 mm(폭 10 mm), 환봉 톱니 3~5 mm, 삽입 깊이 7 mm. 상온 전용.",
+ "test_items": [
+  "tensile",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "additively manufactured metals",
+  "miniature specimens"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "static_force_kN": {
+   "max": 2.2
+  },
+  "dynamic_force_kN": {
+   "max": 1.1
+  },
+  "specimen_thickness_mm": {
+   "max": 2
+  },
+  "specimen_diameter_mm": {
+   "min": 3,
+   "max": 5
+  },
+  "width_mm": {
+   "max": 10
+  }
+ },
+ "models": [
+  {
+   "model": "Advantage Mini Grips",
+   "specs": {
+    "static_force_kN": 2.2,
+    "dynamic_force_kN": 1.1,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 2
+    },
+    "specimen_diameter_mm": {
+     "min": 3,
+     "max": 5
+    },
+    "width_mm": 10,
+    "weight_kg": 0.226,
+    "note": "삽입 깊이 7 mm, 그립 길이 85.6 mm × Ø15.88 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "페이지는 「Landmark 계열」을 관련 항목으로만 든다"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "페이지는 「Landmark 계열」을 관련 항목으로만 든다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-mini-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

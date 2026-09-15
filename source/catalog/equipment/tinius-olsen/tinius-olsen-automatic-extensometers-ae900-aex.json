@@ -1,0 +1,119 @@
+{
+ "id": "tinius-olsen-automatic-extensometers-ae900-aex",
+ "kind": "sensor",
+ "name": "Tinius Olsen AE900 Semi-Automatic (900 mm) and AEX200 / AEX500 Automatic Extensometers",
+ "name_ko": "티니우스 올센 AE900 반자동 롱트래블 신율계 (900 mm) · AEX200/AEX500 자동 신율계 (Class 0.5)",
+ "manufacturer": "tinius-olsen",
+ "category": "extensometer",
+ "subcategory": "automatic_contacting",
+ "description": "ST·SL 계열용 광학 증분식 접촉 신율계. AE900: 플라스틱·고무 등 고신장 재료용 910 mm − L0 이동, 표점 위치·L0 는 처음 한 번 수동, 이후 측정 암 물림·복귀는 전동 자동, 표점 10 mm 부터 파단까지, 분해능 ≤1 µm(ERO 1480 1 Vpp, 신호 주기 100 µm; 대안 ERO 1470 TTL 4 µm), 클램프력이 작아 포일·세선 가능, EN ISO 9513 Class 2(1 mm 까지)/1(1 mm 부터)/0.5(8 mm 부터). AEX200/AEX500: 거의 무마찰 리니어 가이드, 비접촉 증분 게이지로 전 이동에서 Class 0.5, 분해능 0.01 µm(1 Vpp)/0.05 µm(TTL), 표점 10 mm 부터(10~200 / 10~500 mm − 이동), 위치·L0 자동 이동·자동 부착, 상·하 시험 공간, 표시 오차 0.5 %·1.5 µm, 표점 오차 ±0.5 %, 작동력 ≤0.01 N, 클램프 0.5~1 N, 0~50 °C, 24 / 30 kg.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus",
+  "elongation"
+ ],
+ "materials": [
+  "plastics",
+  "rubber",
+  "metals",
+  "foils",
+  "thin wires"
+ ],
+ "standards": {
+  "compliance": [
+   "EN ISO 9513 Class 0.5 (AEX; AE900 from 8 mm)"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 910
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 500
+  },
+  "displacement_um": {
+   "min": 0.01,
+   "note": "분해능(AEX 1 Vpp)"
+  },
+  "operating_temperature_degC": {
+   "min": 0,
+   "max": 50
+  }
+ },
+ "models": [
+  {
+   "model": "AE900",
+   "specs": {
+    "displacement_mm": 910,
+    "gauge_length_mm": {
+     "min": 10
+    },
+    "displacement_um": 1,
+    "accuracy_class": "EN ISO 9513 2 / 1 / 0.5 (from 8 mm)"
+   }
+  },
+  {
+   "model": "AEX200",
+   "specs": {
+    "displacement_mm": 200,
+    "gauge_length_mm": {
+     "min": 10,
+     "max": 200
+    },
+    "displacement_um": 0.01,
+    "accuracy_class": "EN ISO 9513 0.5",
+    "weight_kg": 24,
+    "operating_temperature_degC": {
+     "min": 0,
+     "max": 50
+    }
+   }
+  },
+  {
+   "model": "AEX500",
+   "specs": {
+    "displacement_mm": 500,
+    "gauge_length_mm": {
+     "min": 10,
+     "max": 500
+    },
+    "displacement_um": 0.01,
+    "accuracy_class": "EN ISO 9513 0.5",
+    "weight_kg": 30,
+    "operating_temperature_degC": {
+     "min": 0,
+     "max": 50
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/ae900-automatic-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/aex200-automatic-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/aex500-automatic-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

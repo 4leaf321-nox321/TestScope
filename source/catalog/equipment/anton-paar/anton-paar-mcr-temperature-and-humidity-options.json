@@ -1,0 +1,134 @@
+{
+ "id": "anton-paar-mcr-temperature-and-humidity-options",
+ "kind": "accessory",
+ "name": "Anton Paar MCR Temperature and Humidity Options (Humidity Option with CTD 180 Humidity Ready, Low-Temperature Options GCU 10 / GCU 20 / EVU 20, RheolabQC temperature devices C-PTD / C-LTD)",
+ "name_ko": "안톤파 MCR 온도·습도 옵션 (습도 옵션 5~120 °C·5~95 % RH · 저온 옵션 GCU 10 -15 / GCU 20 -90 / EVU 20 -170 °C · RheolabQC 온도 장치 펠티에 0~180 °C)",
+ "manufacturer": "anton-paar",
+ "category": "environmental_chamber",
+ "subcategory": "rheometer_option",
+ "description": "MCR 레오미터의 시료 환경을 넓히는 옵션. 습도 옵션은 대류 온도 장치 CTD 180 Humidity Ready 와 조합해 5~120 °C, 5~95 % RH 를 일정·램프·단계로 제어(응결 방지 건조 공기 흐름) — 접착제·도료·식품·하이드로겔의 건조·경화, 분할 링·신장 유변, EC 드라이브 1·2개 또는 선형 드라이브의 DMA(비틀림·인장·굽힘·압축), 분체 유변·트라이볼로지 셀과 조합. 저온 옵션은 전기(P-/H-ETD)·대류(CTD) 온도 장치용 셋 — GCU 10 유체 순환기 열교환 -15 °C(LN2 불필요), GCU 20 압축 공기·불활성 가스 -90 °C(장시간·LN2 금지 환경), EVU 20 액체질소(50/100 L 듀어) -170 °C; 냉각 속도 70 °C/min, 건조 공기 퍼지로 결빙 방지, Toolmaster 자동 인식. RheolabQC 용 펠티에 C-PTD(0~+180 °C, 액체 대향 냉각 불필요)와 액체 온도 장치 C-LTD(0 °C 이하·정온).",
+ "test_items": [
+  "rheology_rotational",
+  "dma",
+  "damp_heat"
+ ],
+ "measurands": [],
+ "materials": [
+  "adhesives",
+  "sealants",
+  "paints",
+  "food",
+  "cosmetics",
+  "hydrogels",
+  "polymers",
+  "lubricants",
+  "asphalt"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -170,
+   "max": 180
+  },
+  "humidity_pct": {
+   "min": 5,
+   "max": 95
+  },
+  "cooling_rate_K_min": {
+   "max": 70
+  }
+ },
+ "models": [
+  {
+   "model": "Humidity Option (with CTD 180 Humidity Ready)",
+   "specs": {
+    "temperature_degC": {
+     "min": 5,
+     "max": 120
+    },
+    "humidity_pct": {
+     "min": 5,
+     "max": 95
+    }
+   }
+  },
+  {
+   "model": "GCU 10 Gas Chiller Unit",
+   "specs": {
+    "temperature_degC": {
+     "min": -15
+    },
+    "cooling": "유체 순환기 열교환(LN2 불필요)"
+   }
+  },
+  {
+   "model": "GCU 20 Gas Chiller Unit",
+   "specs": {
+    "temperature_degC": {
+     "min": -90
+    },
+    "cooling": "압축 공기·불활성 가스"
+   }
+  },
+  {
+   "model": "EVU 20 Evaporation Unit",
+   "specs": {
+    "temperature_degC": {
+     "min": -170
+    },
+    "cooling": "액체질소(50/100 L 듀어)"
+   }
+  },
+  {
+   "model": "C-PTD Peltier temperature device (RheolabQC)",
+   "specs": {
+    "temperature_degC": {
+     "min": 0,
+     "max": 180
+    }
+   }
+  },
+  {
+   "model": "C-LTD liquid temperature devices (RheolabQC)",
+   "specs": {
+    "note": "정온·0 °C 이하"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "anton-paar-mcr-rheometer"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "anton-paar-mcr-rheometer"
+  },
+  {
+   "type": "requires",
+   "target": "utility-liquid-nitrogen",
+   "note": "EVU 20"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/humidity-option/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/low-temperature-options/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/temperature-devices-for-rheolabqc/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,105 @@
+{
+ "id": "instron-w-5155-fastener-holders",
+ "kind": "accessory",
+ "name": "Instron W-5155 Fastener Holders, Washers and Short Bolt Adapters (ASTM F606)",
+ "name_ko": "인스트론 W-5155 체결부품(볼트·너트) 인장 홀더·와셔 (ASTM F606, 100~1500 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "fastener",
+ "description": "외·내부 나사 체결부품의 정적 인장, 축·웨지 보증하중, 너트 보증하중 시험(ASTM F606). 홀더는 구면 시트 인장 로드 등에 나사로 붙고 키 홈으로 시편을 바로 놓으며 바닥 홈에 와셔가 맞물린다. A(100·150 kN, M12)·B(600 kN, M24)·C(1000 kN, M72)·D(1500 kN, M48). 와셔는 평면·4/6/10° 웨지·60/82/100° 카운터싱크·나사식이 있고 ASTM F606·SAE J429·ISO 898 치수·경도, 짧은 볼트 어댑터.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "bolts",
+  "studs",
+  "nuts",
+  "threaded fasteners"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM F606",
+   "SAE J429",
+   "ISO 898"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 100,
+   "max": 1500
+  },
+  "specimen_diameter_mm": {
+   "max": 72
+  }
+ },
+ "models": [
+  {
+   "model": "W-5155M-A (Series A, Type Dm)",
+   "specs": {
+    "force_kN": 100,
+    "specimen_diameter_mm": 12
+   }
+  },
+  {
+   "model": "W-5155-A (Series A)",
+   "specs": {
+    "force_kN": 150,
+    "specimen_diameter_mm": 12,
+    "note": "어댑팅 나사 M36(Type R4) 암"
+   }
+  },
+  {
+   "model": "W-5155-B (Series B)",
+   "specs": {
+    "force_kN": 600,
+    "specimen_diameter_mm": 24,
+    "note": "M48(Type II RH) 암"
+   }
+  },
+  {
+   "model": "W-5155-C (Series C)",
+   "specs": {
+    "force_kN": 1000,
+    "specimen_diameter_mm": 72,
+    "note": "M72(Type IIA RH) 암"
+   }
+  },
+  {
+   "model": "W-5155-D (Series D)",
+   "specs": {
+    "force_kN": 1500,
+    "specimen_diameter_mm": 48,
+    "note": "M72(Type IIA RH) 암"
+   }
+  }
+ ],
+ "options": [
+  "plain flat washers W-5120",
+  "10°/6°/4° wedge washers W-5121/5122/5123",
+  "countersunk washers 60°/82°/100° W-5139/5138/5137",
+  "threaded flat washers W-5144",
+  "short bolt adapters"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "100·150 kN 급(Series A) — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "위와 같음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/fastener-fixtures/fastener-holders/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

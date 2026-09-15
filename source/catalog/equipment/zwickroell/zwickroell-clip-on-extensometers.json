@@ -1,0 +1,152 @@
+{
+ "id": "zwickroell-clip-on-extensometers",
+ "kind": "sensor",
+ "name": "ZwickRoell Clip-On Extensometers (5025-1 / 8040-1 / 7537-1 strain gauge clip-ons, DMS length 1–5, 2002-2 width, 2501-2 biax)",
+ "name_ko": "즈윅로엘 클립온 신율계 (5025-1·8040-1·7537-1 · 스트레인게이지 DMS 1~5 · 폭 2002-2 · 2축 2501-2)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "표점 거리가 일정하고 측정 횟수가 적은 응용을 위한 저가·고분해능 수동 클립온. 5025-1(L0 50)·8040-1(80)·7537-1(75 mm)은 한 손으로 부착, 잠금으로 L0 재현, 측정 이동 L0 의 50 %, ISO 9513 Class 0.5(이동의 60 % 까지), ISO 6892-1 A1·ASTM E8 B 변형률 제어, ISO 527-1 Annex C 탄성계수, 온도 챔버 보상, 환봉용 프리즘 롤러, 자석 홀더 — 금속 인장 ISO 6892-1·ASTM E8. 스트레인게이지 DMS 계열: 길이 1(L0 25·50 mm, 범위 25 mm, 챔버·압축 불가), 2·3(L0 10·20 mm, 인장 2 mm·압축 1 mm, 3 은 챔버용), 4(양면 병렬), 5(양면 독립 2신호, L0 10, ±1.5 mm, 챔버·HCCF 가능), 2002-2 폭, 2501-2 2축. 확장 편으로 L0 10~100 mm, -50~+200 °C(계열 상한 250 °C).",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "fiber-reinforced composites"
+ ],
+ "standards": {
+  "compliance": [
+   "EN ISO 9513 Class 0.5",
+   "ISO 527-1 Annex C"
+  ],
+  "test_methods": [
+   "ISO 6892-1",
+   "ASTM E8"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 100
+  },
+  "displacement_mm": {
+   "max": 40
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 250
+  }
+ },
+ "models": [
+  {
+   "model": "5025-1",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "이동 L0 의 50 %"
+   }
+  },
+  {
+   "model": "8040-1",
+   "specs": {
+    "gauge_length_mm": 80
+   }
+  },
+  {
+   "model": "7537-1",
+   "specs": {
+    "gauge_length_mm": 75
+   }
+  },
+  {
+   "model": "DMS length 1",
+   "specs": {
+    "gauge_length_mm": [
+     25,
+     50
+    ],
+    "displacement_mm": 25,
+    "note": "챔버·압축·굽힘 불가"
+   }
+  },
+  {
+   "model": "DMS length 2",
+   "specs": {
+    "gauge_length_mm": [
+     10,
+     20
+    ],
+    "displacement_mm": 2,
+    "note": "인장 2 / 압축 1 mm, 유도식, 챔버·파단까지 불가"
+   }
+  },
+  {
+   "model": "DMS length 3",
+   "specs": {
+    "gauge_length_mm": [
+     10,
+     20
+    ],
+    "displacement_mm": 2,
+    "note": "챔버용"
+   }
+  },
+  {
+   "model": "DMS length 4",
+   "specs": {
+    "gauge_length_mm": [
+     10,
+     20
+    ],
+    "note": "양면 병렬"
+   }
+  },
+  {
+   "model": "DMS length 5",
+   "specs": {
+    "gauge_length_mm": 10,
+    "displacement_mm": 1.5,
+    "note": "양면 독립 2신호, ±1.5 mm, 챔버·HCCF"
+   }
+  },
+  {
+   "model": "2002-2 (width)",
+   "specs": {}
+  },
+  {
+   "model": "2501-2 (biax)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/clip-on-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/strain-gauge-clip-on-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,113 @@
+{
+ "id": "instron-hydraulic-side-action-grips-durasync",
+ "kind": "accessory",
+ "name": "Instron Hydraulic Side Action Tensile Grips with DuraSync (W-5450 / W-5400 / W-5410 / W-5420)",
+ "name_ko": "인스트론 DuraSync 유압 사이드 액션 인장 그립 (250·600 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "hydraulic_side_action",
+ "description": "시험 방향에 수직으로 일정한 물림력을 주는 고용량 유압 사이드 액션 그립. 특허 DuraSync 기계식 동기화기가 조 면을 자동 센터링하고 굽은 봉·철근의 측하중을 완충한다. 131 bar 저압 공급, 기계 본체 유압을 쓰며(전동식 정적 프레임은 별도 저압 펌프), 앞이 트인 구조로 시편 넣기가 쉽다. 봉·판·철근·강연선·컨베이어 벨트·목재의 인장, 인장-인장 반복, 옵션 어댑터로 압축, 옵션으로 저주파 through-zero.",
+ "test_items": [
+  "tensile",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "steel rod and plate",
+  "reinforcement bar",
+  "wire strand",
+  "conveyor belt",
+  "wood"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 250,
+   "max": 600
+  },
+  "specimen_diameter_mm": {
+   "min": 3,
+   "max": 60
+  },
+  "specimen_thickness_mm": {
+   "max": 100
+  },
+  "pressure_bar": {
+   "max": 131
+  }
+ },
+ "models": [
+  {
+   "model": "W-5450",
+   "specs": {
+    "force_kN": 250,
+    "type": "Dual Side-Acting",
+    "specimen_diameter_mm": {
+     "min": 3,
+     "max": 60
+    },
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 60
+    }
+   }
+  },
+  {
+   "model": "W-5400",
+   "specs": {
+    "force_kN": 600,
+    "type": "Single Side-Acting",
+    "specimen_diameter_mm": {
+     "min": 3,
+     "max": 57
+    },
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 75
+    }
+   }
+  },
+  {
+   "model": "W-5410",
+   "specs": {
+    "force_kN": 600,
+    "type": "Dual Side-Acting",
+    "specimen_diameter_mm": {
+     "min": 3,
+     "max": 60
+    },
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 100
+    }
+   }
+  },
+  {
+   "model": "W-5420",
+   "specs": {
+    "force_kN": 600,
+    "type": "Dual Side-Acting, Premium"
+   },
+   "note": "평판·환봉·강연선·케이블 구성, through-zero 구성 가능"
+  }
+ ],
+ "relations": [
+  {
+   "type": "requires",
+   "target": "instron-2718-hydraulic-grip-pumps",
+   "note": "전동식 정적 프레임에서 쓸 때 저압 펌프(2718-550)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/hydraulic-side-action-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited",
+ "notes": "장착 프레임은 페이지에 없다 — 인스트론 산업용 정적 유압 프레임(DX/HDX/KPX) 용이며 카탈로그에 그 계열 객체가 없어 fits_on 을 비웠다."
+}

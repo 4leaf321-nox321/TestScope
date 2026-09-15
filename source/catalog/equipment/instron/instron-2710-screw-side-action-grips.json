@@ -1,0 +1,125 @@
+{
+ "id": "instron-2710-screw-side-action-grips",
+ "kind": "accessory",
+ "name": "Instron 2710 Series Screw Side Action Tensile Grips",
+ "name_ko": "인스트론 2710 계열 나사식 사이드 액션 인장 그립",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "screw_side_action",
+ "description": "양쪽 나사 손잡이로 조를 조이는 가장 단순한 그립. 2710-100 계열(100 N~10 kN)은 양방향 작동으로 46 mm 두께까지 물고, 랩 시어나 비대칭 부품처럼 축이 어긋난 시편도 오프셋으로 잡는다. 캐리지 눈금으로 중심 맞추기, 공구 없는 조 교체. 2710-200 계열(1~5 kN)과 2710-004(500 N)는 기본형. 정적 인장·인장-인장 반복용이고 고사이클 피로에는 맞지 않는다.",
+ "test_items": [
+  "tensile",
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "metals",
+  "textiles",
+  "paper",
+  "thin sheet",
+  "foil",
+  "wire",
+  "components"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 100,
+   "max": 10000
+  },
+  "specimen_thickness_mm": {
+   "max": 46
+  }
+ },
+ "models": [
+  {
+   "model": "2710-111",
+   "specs": {
+    "force_N": 100,
+    "test_opening_mm": 35,
+    "note": "톱니 조 면 기준 최대 개방"
+   }
+  },
+  {
+   "model": "2710-112",
+   "specs": {
+    "force_N": 500,
+    "test_opening_mm": 35
+   }
+  },
+  {
+   "model": "2710-113",
+   "specs": {
+    "force_kN": 1,
+    "test_opening_mm": 36
+   }
+  },
+  {
+   "model": "2710-114",
+   "specs": {
+    "force_kN": 2,
+    "test_opening_mm": 36
+   }
+  },
+  {
+   "model": "2710-115",
+   "specs": {
+    "force_kN": 5,
+    "test_opening_mm": 46
+   }
+  },
+  {
+   "model": "2710-116",
+   "specs": {
+    "force_kN": 10,
+    "test_opening_mm": 46
+   }
+  },
+  {
+   "model": "2710-200 Series",
+   "specs": {
+    "force_kN": {
+     "min": 1,
+     "max": 5
+    }
+   },
+   "note": "기본형 중간 하중"
+  },
+  {
+   "model": "2710-004",
+   "specs": {
+    "force_N": 500
+   },
+   "note": "기본형 저하중"
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/screw-side-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

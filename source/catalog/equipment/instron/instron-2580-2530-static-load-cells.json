@@ -1,0 +1,63 @@
+{
+ "id": "instron-2580-2530-static-load-cells",
+ "kind": "sensor",
+ "name": "Instron 2580 and 2530 Series Static Load Cells (2.5 N – 600 kN)",
+ "name_ko": "인스트론 2580 · 2530 계열 정적 로드셀 (2.5 N~600 kN)",
+ "manufacturer": "instron",
+ "category": "load_cell",
+ "subcategory": "static",
+ "description": "6800·3400·5900·3300 계열용 정적 로드셀, 2.5 N~600 kN — 인장·압축·반복·역응력. 2580 계열은 6800·5900 용으로 용량의 1/1000 까지 읽기값의 0.5 % 정확도. 2530 계열은 3400·3300 용이고 5 N~100 N 은 6800·5900 에도 쓴다. 용량별 카탈로그 번호는 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [
+  "peak_force"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 2.5,
+   "max": 600000
+  }
+ },
+ "models": [
+  {
+   "model": "2580 Series",
+   "specs": {
+    "note": "6800·5900 용. 정확도 읽기값의 0.5 %, 용량의 1/1000 부터"
+   }
+  },
+  {
+   "model": "2530 Series",
+   "specs": {
+    "note": "3400·3300 용. 5~100 N 은 6800·5900 에도"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-cells/static/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

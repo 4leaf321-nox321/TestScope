@@ -1,0 +1,130 @@
+{
+ "id": "tinius-olsen-lvdt-and-strain-gage-extensometers",
+ "kind": "sensor",
+ "name": "Tinius Olsen LVDT Type Extensometers and SGM / SG Strain Gage Type Extensometers (incl. transverse SGMT / SGT)",
+ "name_ko": "티니우스 올센 LVDT 형 신율계 · SGM/SG 스트레인게이지형 신율계 (횡방향 SGMT/SGT 포함)",
+ "manufacturer": "tinius-olsen",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "칼날 접촉식 신율계 두 계열. LVDT 형: 고정 칼날 + 피벗 암이 LVDT 코일을 움직인다, 표준 평판·환봉 1.6~16 mm, 옵션 — 평균형(양면), 필름 클램프(3 mm 까지), 브레이크어웨이, 판금 어태치, 연장 브래킷(25·50·75 mm 두께), 공압 릴리스, 카운터밸런스. 스트레인게이지형: 양방향 기계 스톱, 케이블 스톱, ASTM E83 B-1·ISO 9513 0.5, 경화 칼날 교체(예비 포함), -265~200 °C 옵션, 암·스페이서 교체로 표점 변경, 퀵어태치 — SGM-20%-25/-50/-80, SGM-50%-50/-80, SGM-100%-50(종방향), SGMT-10%-25(횡, ±2.5 mm, 0~25 mm), 인치형 SG/SGT.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "r_value",
+  "poisson_ratio"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "foils",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B-1",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 12.7,
+   "max": 80
+  },
+  "specimen_thickness_mm": {
+   "min": 1.6,
+   "max": 75,
+   "note": "LVDT 형 표준 1.6~16, 연장 브래킷 75"
+  },
+  "temperature_degC": {
+   "min": -265,
+   "max": 200
+  }
+ },
+ "models": [
+  {
+   "model": "LVDT Type Extensometer",
+   "specs": {
+    "specimen_thickness_mm": {
+     "min": 1.6,
+     "max": 16
+    },
+    "note": "옵션: 평균형·필름 클램프(≤3 mm)·브레이크어웨이·판금·연장 브래킷 25/50/75·공압 릴리스·카운터밸런스"
+   }
+  },
+  {
+   "model": "SGM-20%-25 / -50 / -80",
+   "specs": {
+    "gauge_length_mm": [
+     25,
+     50,
+     80
+    ],
+    "note": "범위 20 %"
+   }
+  },
+  {
+   "model": "SGM-50%-50 / -80",
+   "specs": {
+    "gauge_length_mm": [
+     50,
+     80
+    ],
+    "note": "범위 50 %"
+   }
+  },
+  {
+   "model": "SGM-100%-50",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "범위 100 %"
+   }
+  },
+  {
+   "model": "SGMT-10%-25 (transverse)",
+   "specs": {
+    "width_mm": {
+     "min": 0,
+     "max": 25
+    },
+    "displacement_mm": 2.5,
+    "note": "±2.5 mm"
+   }
+  },
+  {
+   "model": "SG-20%-0.5 / -1 / -1.4 / -2, SG-50%-2, SGT-10%-1 (inch)",
+   "specs": {
+    "gauge_length_mm": [
+     12.7,
+     25.4,
+     35.6,
+     50.8
+    ]
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series",
+   "note": "「대부분의 트윈 스크류 재료시험기에 적합」 — 카탈로그의 티니우스 올센 UTM 은 ST 계열"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/lvdt-type-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/strain-gage-type-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

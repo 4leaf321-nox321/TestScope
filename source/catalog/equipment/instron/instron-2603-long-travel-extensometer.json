@@ -1,0 +1,89 @@
+{
+ "id": "instron-2603-long-travel-extensometer",
+ "kind": "sensor",
+ "name": "Instron 2603 Series Long Travel (XL) Extensometers (2603-080 / 084 / 085 / 086)",
+ "name_ko": "인스트론 2603 계열 장거리(XL) 신율계 (250·750 mm, 고무·엘라스토머)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "long_travel",
+ "description": "신율이 큰 엘라스토머·반강성 플라스틱·발포체·필름용 신율계 — 최대 750 mm. 시편에 바로 클램프하고 표점 거리를 10~200 mm(0.5~5 in) 단계로 맞춘다. 카운터밸런스된 상하 클램프가 연마 축·리니어 베어링 위를 움직이고 케이블로 전위차계를 돌려 시편에 무게가 걸리지 않으며 파단까지 견딘다. 클램프 압력 조절, 자기 식별 교정. ASTM D412·ISO 37 고무 시험에 알맞다. 상온 전용. 단일 컬럼 2603-084(250)·086(750), 이중 컬럼 2603-080(250)·085(750).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "elongation",
+  "axial_strain"
+ ],
+ "materials": [
+  "elastomers",
+  "semi-rigid plastics",
+  "cellular materials",
+  "films"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D412",
+   "ISO 37"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "min": 250,
+   "max": 750,
+   "note": "풀스케일 이동"
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 200
+  }
+ },
+ "models": [
+  {
+   "model": "2603-084 (single column)",
+   "specs": {
+    "displacement_mm": 250
+   }
+  },
+  {
+   "model": "2603-086 (single column, extra long)",
+   "specs": {
+    "displacement_mm": 750
+   }
+  },
+  {
+   "model": "2603-080 (dual column)",
+   "specs": {
+    "displacement_mm": 250
+   }
+  },
+  {
+   "model": "2603-085 (dual column, extra long)",
+   "specs": {
+    "displacement_mm": 750
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/long-travel-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

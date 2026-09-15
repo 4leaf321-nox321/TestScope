@@ -1,0 +1,81 @@
+{
+ "id": "ametek-lloyd-thermal-cabinets-tc540-tc550",
+ "kind": "accessory",
+ "name": "Lloyd Instruments TC540 Heating (40–300 °C) and TC550 Heating/Cooling (-70–300 °C) Thermal Cabinets",
+ "name_ko": "로이드 TC540 가열 캐비닛 (40~300 °C) · TC550 가열·냉각 캐비닛 (-70~300 °C, LN2)",
+ "manufacturer": "ametek-lloyd",
+ "category": "environmental_chamber",
+ "description": "이중 컬럼 시험기용 고정밀 온도 캐비닛 두 모델 — TC540 가열 40~300 °C, TC550 가열·냉각 -70~300 °C(액체질소 냉각). 앞문 유리 관찰창, 독립 베이스의 바퀴 위에 얹혀 뒤로 밀면 크로스헤드가 자유로워 상온 시험도 가능.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "rubber",
+  "metals",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -70,
+   "max": 300
+  },
+  "chamber": {
+   "values": [
+    "yes"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "TC540",
+   "specs": {
+    "temperature_degC": {
+     "min": 40,
+     "max": 300
+    }
+   }
+  },
+  {
+   "model": "TC550",
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 300
+    },
+    "cooling": "액체질소"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series",
+   "note": "이중 컬럼 시험기용"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "ametek-lloyd-ls-series"
+  },
+  {
+   "type": "requires",
+   "target": "utility-liquid-nitrogen",
+   "note": "TC550"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/accessories/thermal-cabinets",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

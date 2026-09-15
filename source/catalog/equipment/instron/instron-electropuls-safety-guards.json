@@ -1,0 +1,51 @@
+{
+ "id": "instron-electropuls-safety-guards",
+ "kind": "accessory",
+ "name": "Instron Safety Guards for ElectroPuls E1000 / E3000 / E10000 / E20000 (1300-301 / 1300-304 / 1300-303 / 1300-305)",
+ "name_ko": "인스트론 ElectroPuls 안전 가드 (E1000·E3000·E10000·E20000)",
+ "manufacturer": "instron",
+ "category": "accessory",
+ "subcategory": "safety_shield",
+ "description": "ElectroPuls 전기식 동적 시험기의 시험 공간을 막는 안전 가드 — 기종별 1300-301(E1000)·1300-304(E3000)·1300-303(E10000)·1300-305(E20000).",
+ "test_items": [
+  "fatigue"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "1300-301 (E1000)",
+   "specs": {}
+  },
+  {
+   "model": "1300-304 (E3000)",
+   "specs": {}
+  },
+  {
+   "model": "1300-303 (E10000)",
+   "specs": {}
+  },
+  {
+   "model": "1300-305 (E20000)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/electropuls-all-electric-dynamic-test-systems/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

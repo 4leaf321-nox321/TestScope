@@ -1,0 +1,120 @@
+{
+ "id": "instron-2650-biaxial-averaging-clip-on-extensometers",
+ "kind": "sensor",
+ "name": "Instron 2650 Series Biaxial and Averaging Axial Clip-On Extensometers",
+ "name_ko": "인스트론 2650 계열 2축·평균 축방향 클립온 신율계 (복합재·강성 플라스틱·금속)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "biaxial_clip_on",
+ "description": "시편 양면에서 독립 측정한 축변형을 평균해 정렬 오차로 인한 굽힘을 상쇄하는 신율계 — 탄성계수를 일관되게 구한다. 횡변형 변환기를 더한 2축형은 축·횡 변형을 동시에 재어 푸아송비·면내 전단 변형률을 구한다. -200~200 °C, ASTM E83 B-1·ISO 9513 Class 0.5·ISO 527 Annex C 교정 요건. 2축 단일 출력 2650-561/563/565/567(25·50 mm, 1·2 in), 2축 독립 출력 2650-571/573, 평균 축방향 2650-560/564.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "poisson_ratio"
+ ],
+ "materials": [
+  "advanced composites",
+  "rigid plastics",
+  "metals"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B-1",
+   "ISO 9513 Class 0.5",
+   "ISO 527 Annex C"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 25,
+   "max": 50.8
+  },
+  "temperature_degC": {
+   "min": -200,
+   "max": 200
+  }
+ },
+ "models": [
+  {
+   "model": "2650-561 (biaxial, single averaged output)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "축변형 -2 %~+5 %"
+   }
+  },
+  {
+   "model": "2650-563 (biaxial, single averaged output)",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "-1 %~+2.5 %"
+   }
+  },
+  {
+   "model": "2650-565 / 2650-567 (biaxial, 1 in / 2 in)",
+   "specs": {
+    "gauge_length_mm": [
+     25.4,
+     50.8
+    ]
+   }
+  },
+  {
+   "model": "2650-571 (biaxial, two independent axial outputs)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "-2 %~+5 %"
+   }
+  },
+  {
+   "model": "2650-573 (biaxial, two independent axial outputs)",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "-1 %~+2.5 %"
+   }
+  },
+  {
+   "model": "2650-560 (averaging axial)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "-2 %~+5 %"
+   }
+  },
+  {
+   "model": "2650-564 (averaging axial, 1 in)",
+   "specs": {
+    "gauge_length_mm": 25.4
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/biaxial-and-averaging-axial-clip-ons/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

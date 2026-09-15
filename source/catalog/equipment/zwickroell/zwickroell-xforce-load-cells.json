@@ -1,0 +1,135 @@
+{
+ "id": "zwickroell-xforce-load-cells",
+ "kind": "sensor",
+ "name": "ZwickRoell Xforce Load Cells (P / HP / HP+ / K / K+ / High-capacity / Dynamic)",
+ "name_ko": "즈윅로엘 Xforce 로드셀 (5 N~2,500 kN 준정적 · 1~1,000 kN 동적)",
+ "manufacturer": "zwickroell",
+ "category": "load_cell",
+ "description": "즈윅로엘이 직접 만드는 특허 로드셀 계열. 준정적 5 N~2,500 kN, 동적 1~1,000 kN, ISO 7500-1·ASTM E4. Precision P(5 N~150 kN, Class 1 은 정격의 0.4 % 부터, Class 0.5 는 2 % 부터), HP(5 N~10 kN, 0.2 % / 1 %), HP+(500 N~10 kN, 0.1 % / 0.1 %), K(10~250 kN, 0.2 % / 1 %), K+(10~250 kN, 0.1 % / 0.1 %), 고용량 330~2,500 kN(0.2 % / 1 % 부터), Dynamic 1~1,000 kN(0.4 % / 1 % 부터, 5 kN 이상 가속도계 내장). 정격의 300 % 까지 파손 없음, 150 % 까지 영점 이동 없음. HP·K 는 횡력(정격 10 % 에서 ±0.02 %)·온도 보상. testXpert 가 전자 식별로 로드셀을 자동 인식해 한계를 설정한다.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "fatigue",
+  "torsion"
+ ],
+ "measurands": [
+  "peak_force"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 7500-1",
+   "ASTM E4"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 5,
+   "max": 2500000
+  },
+  "dynamic_force_kN": {
+   "min": 1,
+   "max": 1000
+  }
+ },
+ "models": [
+  {
+   "model": "Xforce P (Precision)",
+   "specs": {
+    "force_N": {
+     "min": 5,
+     "max": 150000
+    },
+    "accuracy_class": "Class 1 from 0.4 % Fnom / Class 0.5 from 2 %"
+   }
+  },
+  {
+   "model": "Xforce HP",
+   "specs": {
+    "force_N": {
+     "min": 5,
+     "max": 10000
+    },
+    "accuracy_class": "Class 1 from 0.2 % / Class 0.5 from 1 %"
+   }
+  },
+  {
+   "model": "Xforce HP+",
+   "specs": {
+    "force_N": {
+     "min": 500,
+     "max": 10000
+    },
+    "accuracy_class": "Class 1 from 0.1 % / Class 0.5 from 0.1 %"
+   }
+  },
+  {
+   "model": "Xforce K",
+   "specs": {
+    "force_kN": {
+     "min": 10,
+     "max": 250
+    },
+    "accuracy_class": "Class 1 from 0.2 % / Class 0.5 from 1 %"
+   }
+  },
+  {
+   "model": "Xforce K+",
+   "specs": {
+    "force_kN": {
+     "min": 10,
+     "max": 250
+    },
+    "accuracy_class": "Class 1 from 0.1 % / Class 0.5 from 0.1 %"
+   }
+  },
+  {
+   "model": "Xforce High-capacity",
+   "specs": {
+    "force_kN": {
+     "min": 330,
+     "max": 2500
+    },
+    "accuracy_class": "Class 1 from 0.2 % / Class 0.5 from 1 %"
+   }
+  },
+  {
+   "model": "Xforce Dynamic",
+   "specs": {
+    "dynamic_force_kN": {
+     "min": 1,
+     "max": 1000
+    },
+    "accuracy_class": "Class 1 from 0.4 % / Class 0.5 from 1 %",
+    "note": "5 kN 부터 가속도계 내장"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-vibrophore"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-kappa-creep"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/load-cells/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

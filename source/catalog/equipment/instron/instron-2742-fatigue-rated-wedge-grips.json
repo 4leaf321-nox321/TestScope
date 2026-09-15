@@ -1,0 +1,115 @@
+{
+ "id": "instron-2742-fatigue-rated-wedge-grips",
+ "kind": "accessory",
+ "name": "Instron 2742 / 2743 Series Fatigue-Rated Pneumatic and Mechanical Wedge Grips",
+ "name_ko": "인스트론 2742 / 2743 계열 피로 정격 공압·기계식 웨지 그립 (±1~100 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "fatigue_wedge",
+ "description": "동적 시험기용 피로 정격 웨지 그립. 조 면이 수평으로만 움직여 축방향 예압 없이 물린다. 공압형 2742-103/205/315(±1·±3·±10 kN, 205·315 는 ±25·±100 N·m 비틀림 겸용)와 기계식 2742-102/206/316(같은 정격), ±100 kN 기계식 2743-402. 기계식은 그립 머리 아래 소켓 캡 나사 4개로 조이고, 조 면은 스프링으로 되돌아간다.",
+ "test_items": [
+  "fatigue",
+  "tensile",
+  "torsion"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "plastics",
+  "composites",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "dynamic_force_kN": {
+   "min": 1,
+   "max": 100
+  },
+  "torque_Nm": {
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "2742-103",
+   "specs": {
+    "dynamic_force_kN": 1,
+    "type": "pneumatic"
+   }
+  },
+  {
+   "model": "2742-205",
+   "specs": {
+    "dynamic_force_kN": 3,
+    "torque_Nm": 25,
+    "type": "pneumatic"
+   }
+  },
+  {
+   "model": "2742-315",
+   "specs": {
+    "dynamic_force_kN": 10,
+    "torque_Nm": 100,
+    "type": "pneumatic"
+   }
+  },
+  {
+   "model": "2742-102",
+   "specs": {
+    "dynamic_force_kN": 1,
+    "type": "mechanical"
+   }
+  },
+  {
+   "model": "2742-206",
+   "specs": {
+    "dynamic_force_kN": 3,
+    "torque_Nm": 25,
+    "type": "mechanical"
+   }
+  },
+  {
+   "model": "2742-316",
+   "specs": {
+    "dynamic_force_kN": 10,
+    "torque_Nm": 100,
+    "type": "mechanical"
+   }
+  },
+  {
+   "model": "2743-402",
+   "specs": {
+    "dynamic_force_kN": 100,
+    "type": "mechanical"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic",
+   "note": "페이지가 프레임을 명시하지 않음 — 동적 시험기용 피로 정격"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000",
+   "note": "페이지가 프레임을 명시하지 않음 — 동적 시험기용 피로 정격"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/pneumatic-wedge-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/fatigue-rated-mechanical-wedge-action-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,92 @@
+{
+ "id": "shimadzu-ceramics-bending-test-jig",
+ "kind": "accessory",
+ "name": "Shimadzu Ceramics Bending Test Jig (JIS R1601 / R1604, 3- and 4-point, 5 kN)",
+ "name_ko": "시마즈 세라믹 굽힘 시험 지그 (JIS R1601 상온·R1604 고온, 3·4점, 5 kN)",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "flexure",
+ "description": "파인 세라믹의 3점·4점 굽힘 지그 — JIS R1601 상온 굽힘 시험법, 최대 5 kN, JIS·ISO·ASTM 규격 대응. JIS R1604 고온 굽힘 시험용 지그도 있다.",
+ "test_items": [
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "fine ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "JIS R1601",
+   "JIS R1604"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "max": 5
+  }
+ },
+ "models": [
+  {
+   "model": "Ceramics Bending Test Jig (room temperature)",
+   "specs": {
+    "force_kN": 5
+   }
+  },
+  {
+   "model": "Ceramics High-Temperature Bending Test Jig (JIS R1604)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v"
+  },
+  {
+   "type": "extends_capability",
+   "target": "shimadzu-agx-v2",
+   "note": "flexure(ceramics)"
+  },
+  {
+   "type": "extends_capability",
+   "target": "shimadzu-ag-xplus",
+   "note": "flexure(ceramics)"
+  },
+  {
+   "type": "extends_capability",
+   "target": "shimadzu-ags-x",
+   "note": "flexure(ceramics)"
+  },
+  {
+   "type": "extends_capability",
+   "target": "shimadzu-ags-v",
+   "note": "flexure(ceramics)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/ceramics-bending-test-jig/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/ceramics-bending-test-jig/spec.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

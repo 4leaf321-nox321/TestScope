@@ -1,0 +1,119 @@
+{
+ "id": "mts-ahx850-ltx850-long-travel-extensometers",
+ "kind": "sensor",
+ "name": "MTS Advantage High Elongation Extensometer AHX850 (Criterion) and Long Travel Extensometer LTX850 (Exceed) — 850 mm",
+ "name_ko": "MTS 대신장 신율계 AHX850 (Criterion 용) · 롱트래블 신율계 LTX850 (Exceed 용) — 850 mm",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "long_travel",
+ "description": "고무·폴리머·엘라스토머의 큰 변위를 재는 850 mm 신율계. AHX850(Criterion): 표점 10·20·25·50·75·100 mm 프리셋, 고분해능 광학 디지털 인코더, 균형 잡힌 암·헤드, 미사용 시 시험 영역 밖으로, 고정/회전 마운트, 5~50 °C, 조절 스프링 물림, 암 개방 30 mm, 6 kg. LTX850(Exceed): 고강도 알루미늄, 상하 암 독립 디지털 채널, 교체 칼날, 시편 폭·두께 20 mm, 5.3 kg. ASTM E83 B1·ISO 9513 0.5. ASTM D412·D638·D882, ISO 527-2/-3.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "elongation",
+  "axial_strain"
+ ],
+ "materials": [
+  "rubber",
+  "elastomers",
+  "polymers",
+  "films"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM D412",
+   "ASTM D638",
+   "ASTM D882",
+   "ISO 527-2",
+   "ISO 527-3"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 850
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 100
+  },
+  "operating_temperature_degC": {
+   "min": 5,
+   "max": 50
+  }
+ },
+ "models": [
+  {
+   "model": "AHX850",
+   "specs": {
+    "displacement_mm": 850,
+    "gauge_length_mm": [
+     10,
+     20,
+     25,
+     50,
+     75,
+     100
+    ],
+    "weight_kg": 6,
+    "operating_temperature_degC": {
+     "min": 5,
+     "max": 50
+    },
+    "height_mm": 1025,
+    "note": "암 개방 30 mm"
+   }
+  },
+  {
+   "model": "LTX850",
+   "specs": {
+    "displacement_mm": 850,
+    "gauge_length_mm": [
+     10,
+     20,
+     25,
+     50,
+     75,
+     100
+    ],
+    "weight_kg": 5.3,
+    "operating_temperature_degC": {
+     "min": 5,
+     "max": 50
+    },
+    "height_mm": 1030,
+    "width_mm": 20,
+    "specimen_thickness_mm": 20
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "AHX850"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "LTX850"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/advantage-high-elongation-extensometer-ahx850",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/long-travel-extensometer-ltx850",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

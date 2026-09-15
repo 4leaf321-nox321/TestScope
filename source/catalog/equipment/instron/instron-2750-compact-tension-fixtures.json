@@ -1,0 +1,117 @@
+{
+ "id": "instron-2750-compact-tension-fixtures",
+ "kind": "accessory",
+ "name": "Instron 2750 / 2780 Series Compact Tension (Clevis) Fixtures for Fracture Mechanics",
+ "name_ko": "인스트론 2750 / 2780 계열 파괴역학용 컴팩트 인장(클레비스) 지그",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "fracture_mechanics",
+ "description": "CT 시편의 정적·동적 파괴인성 시험용 클레비스 그립 — ASTM E399·E647·E813·E1290, BS 7448. 상하 그립이 같고 클레비스 핀으로 시편에 건다(핀은 스프링 클립으로 고정). 12.5 mm 두께용 2780-118(±10 kN 동적 / 20 kN 정적), 25 mm 용 2780-119(±50 / 100 kN), 50 mm 용 2750-120(±250 / 500 kN), 고온 클레비스 2420C(0.8 kN @ 1000 °C).",
+ "test_items": [
+  "fracture_toughness",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E399",
+   "ASTM E647",
+   "ASTM E813",
+   "ASTM E1290",
+   "BS 7448"
+  ]
+ },
+ "limits": {
+  "static_force_kN": {
+   "min": 0.8,
+   "max": 500
+  },
+  "dynamic_force_kN": {
+   "min": 10,
+   "max": 250
+  },
+  "specimen_thickness_mm": {
+   "min": 12.5,
+   "max": 50
+  },
+  "temperature_degC": {
+   "max": 1000,
+   "note": "2420C 고온 클레비스"
+  }
+ },
+ "models": [
+  {
+   "model": "2780-118",
+   "specs": {
+    "dynamic_force_kN": 10,
+    "static_force_kN": 20,
+    "specimen_thickness_mm": 12.5
+   }
+  },
+  {
+   "model": "2780-119",
+   "specs": {
+    "dynamic_force_kN": 50,
+    "static_force_kN": 100,
+    "specimen_thickness_mm": 25
+   }
+  },
+  {
+   "model": "2750-120",
+   "specs": {
+    "dynamic_force_kN": 250,
+    "static_force_kN": 500,
+    "specimen_thickness_mm": 50
+   }
+  },
+  {
+   "model": "2420C (High Temperature Clevis Grips)",
+   "specs": {
+    "force_kN": 0.8,
+    "temperature_degC": {
+     "max": 1000
+    },
+    "specimen_thickness_mm": 12.5
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic",
+   "note": "정적·동적 겸용 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000",
+   "note": "정적·동적 겸용 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "정적·동적 겸용 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "정적·동적 겸용 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "정적·동적 겸용 — 페이지가 프레임을 명시하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/clevis-grips-for-fracture-mechanics/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

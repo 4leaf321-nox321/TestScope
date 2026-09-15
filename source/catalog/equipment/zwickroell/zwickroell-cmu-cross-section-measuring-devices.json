@@ -1,0 +1,68 @@
+{
+ "id": "zwickroell-cmu-cross-section-measuring-devices",
+ "kind": "accessory",
+ "name": "ZwickRoell CMU 30 and CMU 80 Cross-Section Measuring Devices",
+ "name_ko": "즈윅로엘 CMU 30 · CMU 80 단면 측정 장치 (두께 30·80 mm 까지)",
+ "manufacturer": "zwickroell",
+ "category": "accessory",
+ "subcategory": "dimension_measurement",
+ "description": "인장·굽힘 응력 계산에 필요한 시편 두께·폭을 재는 독립형 단면 측정기. 닫힌 프레임에 증분 변환기 4개를 달아 두께·폭을 각각 차동으로 재어 온도 영향에 강하고, 폭·두께 방향 센터링 링이 조작자 영향을 없앤다. PLC 제어, 컬러 터치 패널, testXpert 연동, CMUshare 로 중앙 치수 측정 스테이션(바코드 라벨). CMU30 은 두께 30 mm 까지(폭 센터링 수동), CMU80 은 80 mm 까지 자동 클램핑·센터링·프레임 위치 조절. 여러 번 측정 후 평균 또는 최소값 전송.",
+ "test_items": [
+  "tensile",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "plastics",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "specimen_thickness_mm": {
+   "max": 80
+  }
+ },
+ "models": [
+  {
+   "model": "CMU 30",
+   "specs": {
+    "specimen_thickness_mm": {
+     "max": 30
+    }
+   }
+  },
+  {
+   "model": "CMU 80",
+   "specs": {
+    "specimen_thickness_mm": {
+     "max": 80
+    },
+    "note": "자동 클램핑·폭 센터링·측정 프레임 위치"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline",
+   "note": "독립형 — testXpert 에 값을 넘긴다"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline",
+   "note": "독립형 — testXpert 에 값을 넘긴다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/specimen-preparation-and-dimensional-measurement/cmu-30-and-cmu-80-cross-section-measuring-devices/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

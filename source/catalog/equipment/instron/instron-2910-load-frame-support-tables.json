@@ -1,0 +1,62 @@
+{
+ "id": "instron-2910-load-frame-support-tables",
+ "kind": "accessory",
+ "name": "Instron Load Frame Support Tables and Bases (2910-064 / 2910-056 / 1300-311 · 1300-315)",
+ "name_ko": "인스트론 프레임 지지 테이블·베이스 (경량·중량 테이블, ElectroPuls 고강성 테이블)",
+ "manufacturer": "instron",
+ "category": "accessory",
+ "subcategory": "support_table",
+ "description": "테이블 모델 프레임을 인체공학적 높이에 놓는 테이블·베이스. 지지 베이스/연장 2910-064, 중량 지지 테이블 2910-056(이중 컬럼 테이블 모델의 무게를 고르게 받고 수평 작업면), ElectroPuls 용 고강성 지지 테이블 1300-311·1300-315.",
+ "test_items": [],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "2910-064 (Load Frame Support Base/Extension)",
+   "specs": {}
+  },
+  {
+   "model": "2910-056 (Heavy Duty Support Table)",
+   "specs": {}
+  },
+  {
+   "model": "1300-311 / 1300-315 (High Stiffness Support Table for ElectroPuls)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/loadframe-support-tables-bases/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/electromechanical-frame-accessories/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

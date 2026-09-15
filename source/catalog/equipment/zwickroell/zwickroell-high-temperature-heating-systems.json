@@ -1,0 +1,140 @@
+{
+ "id": "zwickroell-high-temperature-heating-systems",
+ "kind": "accessory",
+ "name": "ZwickRoell High-Temperature Heating Systems and Load Strings for AllroundLine and Kappa (furnaces, vacuum chamber, induction heating up to +2,000 °C)",
+ "name_ko": "즈윅로엘 고온 시험 부속 (3존 퍼니스 1,250·1,500 °C · 단로 1,200 °C · 진공 챔버·유도 가열 2,000 °C · 온도 제어기 · 로드 스트링)",
+ "manufacturer": "zwickroell",
+ "category": "furnace",
+ "description": "AllroundLine 과 Kappa 크리프 시험기용 모듈형 고온 부속. 가열계: 3존 퍼니스 +1,250 °C·+1,500 °C(크리프용 1,200·1,500), 단로 +1,200 °C, 진공·불활성 기체 챔버 +2,000 °C, 유도 가열 +2,000 °C(크리프용 1,200), 3·4·6 로 캐러셀, 온도 챔버 +250 °C. 온도 제어기는 DIN EN ISO 204·ISO 6892-2·ASTM E139·ASTM E21 요건 — +200~1,200 °C 자동 설정, 평행부 100 mm 기준 시편 온도 공차 +200~350 °C ±2 K, +350~1,200 °C ±1 K. 시편 온도 측정 장치(K·N·S 열전대 보통 3개). 로드 스트링은 풀로드 마운트·풀로드·시편 어댑터 — 금속 풀로드 +1,200 °C, 크리프용 +1,500 °C 까지; 인장용, 압축·굽힘용, 리버설 케이지 압축용.",
+ "test_items": [
+  "tensile",
+  "creep",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "superalloys",
+  "ceramics",
+  "refractory materials"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "DIN EN ISO 204",
+   "DIN EN ISO 6892-2",
+   "ASTM E139",
+   "ASTM E21"
+  ]
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -80,
+   "max": 2000
+  },
+  "temperature_fluctuation_degC": {
+   "max": 2,
+   "note": "+200~350 °C ±2 K, +350~1,200 °C ±1 K (평행부 100 mm)"
+  }
+ },
+ "models": [
+  {
+   "model": "3-zone furnace +1,250 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 1250
+    }
+   }
+  },
+  {
+   "model": "3-zone furnace +1,500 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 1500
+    }
+   }
+  },
+  {
+   "model": "Short furnace +1,200 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 1200
+    }
+   }
+  },
+  {
+   "model": "Vacuum / inert gas chamber +2,000 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 2000
+    }
+   }
+  },
+  {
+   "model": "Induction heating system +2,000 °C",
+   "specs": {
+    "temperature_degC": {
+     "max": 2000
+    },
+    "note": "크리프용은 1,200 °C"
+   }
+  },
+  {
+   "model": "Furnace carousel (3 / 4 / 6 furnaces)",
+   "specs": {
+    "note": "개별 제어"
+   }
+  },
+  {
+   "model": "Universal 3-zone furnace controller",
+   "specs": {
+    "temperature_degC": {
+     "min": 200,
+     "max": 1200
+    },
+    "note": "자동 제어기 설정 범위"
+   }
+  },
+  {
+   "model": "High-temperature load strings",
+   "specs": {
+    "temperature_degC": {
+     "max": 1500
+    },
+    "note": "금속 풀로드 1,200 °C, 크리프용 1,500 °C"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-kappa-creep"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "zwickroell-kappa-creep"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/environmental-chambers/high-temperature-testing-up-to-2000c/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/environmental-chambers/creep-tests-up-to-2000c/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

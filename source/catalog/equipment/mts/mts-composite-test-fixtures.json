@@ -1,0 +1,366 @@
+{
+ "id": "mts-composite-test-fixtures",
+ "kind": "accessory",
+ "name": "MTS Composite Test Fixtures (compression, shear, bending, CAI, sandwich beam, climbing drum peel — 13 fixtures)",
+ "name_ko": "MTS 복합재 시험 지그 13종 (Celanese·IITRI·CLC 압축, V 노치 레일·Iosipescu 전단, 단보 전단, 혼합 모드 굽힘, 개방/충전 구멍 압축, 충격 후 압축, 면방향 전단, 샌드위치 보, 클라이밍 드럼 박리)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "composite",
+ "description": "스테인리스(일부 강철·알루미늄) 복합재 규격 지그군. 수정 Celanese 압축(ISO 14126 1A, 88 kN, 폭 12.7·두께 3.8~6.35, -85~122 °C), IITRI 압축(ASTM D3410·ISO 14126 1B, 250 kN, 폭 25.4·두께 15.2, 웨지 5.1~10.2), CLC(ASTM D6641, 89 kN), V 노치 레일 전단(ASTM D7078, 44 kN, -152~318 °C), V 노치 보(Iosipescu) 전단(ASTM D5379, 44 kN, 폭 19·두께 0.76~12.7), 단보 전단·3점 굴곡(ASTM D2344, 8.9 kN, 지간 3.2~152), 혼합 모드 굽힘(ASTM D6671, 4.4 kN), 개방/충전 구멍 압축(ASTM D6484·D6742·BS 07260, 222 kN, -152~318), 충격 후 압축(ASTM D7137, 222 kN, 102×152), 면방향 평면 전단 인장/압축(ASTM C273·C394, 89 kN, 알루미늄 접합판 -29~49 °C), 3·4점 샌드위치 보(ASTM C393·D5467·D7249·D7250, 88.9 kN, 지간 152~610), 클라이밍 드럼 박리(ASTM D1781, 2.2 kN, 인치 치수). 장착용 나사 어댑터·압축 플래튼·유압 그립은 별매.",
+ "test_items": [
+  "compression",
+  "shear",
+  "flexure",
+  "peel",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "composite laminates",
+  "sandwich panels",
+  "CFRP",
+  "GFRP"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 14126",
+   "ASTM D3410",
+   "ASTM D6641",
+   "ASTM D7078",
+   "ASTM D5379",
+   "ASTM D2344",
+   "ASTM D6671",
+   "ASTM D6484",
+   "ASTM D6742",
+   "BS 07260",
+   "ASTM D7137",
+   "ASTM C273",
+   "ASTM C394",
+   "ASTM C393",
+   "ASTM D5467",
+   "ASTM D7249",
+   "ASTM D7250",
+   "ASTM D1781"
+  ]
+ },
+ "limits": {
+  "static_force_kN": {
+   "min": 2.2,
+   "max": 250
+  },
+  "temperature_degC": {
+   "min": -152,
+   "max": 318
+  }
+ },
+ "models": [
+  {
+   "model": "Modified Celanese Compression (100-351-817)",
+   "specs": {
+    "static_force_kN": 88,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "width_mm": 12.7,
+    "specimen_thickness_mm": {
+     "min": 3.8,
+     "max": 6.35
+    },
+    "specimen_length_mm": 114.3,
+    "weight_kg": 7.3
+   }
+  },
+  {
+   "model": "IITRI Compression (100-351-818)",
+   "specs": {
+    "static_force_kN": 250,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "width_mm": 25.4,
+    "specimen_thickness_mm": {
+     "max": 15.2
+    },
+    "specimen_length_mm": 140,
+    "weight_kg": 36,
+    "note": "M30×2"
+   }
+  },
+  {
+   "model": "CLC Combined Loading Compression (100-351-819)",
+   "specs": {
+    "static_force_kN": 89,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "width_mm": 25.4,
+    "specimen_thickness_mm": {
+     "max": 12.7
+    },
+    "specimen_length_mm": 140,
+    "weight_kg": 6.8
+   }
+  },
+  {
+   "model": "V-Notched Rail Shear (100-351-820)",
+   "specs": {
+    "static_force_kN": 44,
+    "temperature_degC": {
+     "min": -152,
+     "max": 318
+    },
+    "width_mm": 55.6,
+    "specimen_thickness_mm": {
+     "max": 12.7
+    },
+    "specimen_length_mm": 76,
+    "weight_kg": 7.7
+   }
+  },
+  {
+   "model": "V-Notched Beam (Iosipescu) Shear (100-087-239)",
+   "specs": {
+    "static_force_kN": 44,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "width_mm": 19,
+    "specimen_thickness_mm": {
+     "min": 0.76,
+     "max": 12.7
+    },
+    "specimen_length_mm": 76,
+    "weight_kg": 6.8
+   }
+  },
+  {
+   "model": "Short Beam Shear / 3-Point Flexure (100-351-821)",
+   "specs": {
+    "static_force_kN": 8.9,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "hdt_span_mm": {
+     "min": 3.2,
+     "max": 152
+    },
+    "width_mm": 38,
+    "specimen_thickness_mm": {
+     "max": 50
+    },
+    "weight_kg": 6.8
+   }
+  },
+  {
+   "model": "Mixed-Mode Bending (100-351-822)",
+   "specs": {
+    "static_force_kN": 4.4,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "width_mm": 38,
+    "specimen_thickness_mm": {
+     "max": 6.35
+    },
+    "specimen_length_mm": 228,
+    "weight_kg": 7.3
+   }
+  },
+  {
+   "model": "Open/Filled Hole Compression (100-351-823)",
+   "specs": {
+    "static_force_kN": 222,
+    "temperature_degC": {
+     "min": -152,
+     "max": 318
+    },
+    "width_mm": 38,
+    "specimen_thickness_mm": {
+     "max": 12.7
+    },
+    "specimen_length_mm": 305,
+    "weight_kg": 6.8
+   }
+  },
+  {
+   "model": "Compression After Impact (100-351-824)",
+   "specs": {
+    "static_force_kN": 222,
+    "temperature_degC": {
+     "min": -152,
+     "max": 318
+    },
+    "width_mm": 102,
+    "specimen_thickness_mm": {
+     "min": 3.175,
+     "max": 12.7
+    },
+    "specimen_length_mm": 152,
+    "weight_kg": 16
+   }
+  },
+  {
+   "model": "Flatwise Plane Shear, tension mode (100-204-294)",
+   "specs": {
+    "static_force_kN": 89,
+    "temperature_degC": {
+     "min": -152,
+     "max": 318
+    },
+    "width_mm": 76,
+    "specimen_thickness_mm": {
+     "min": 6.3,
+     "max": 19.1
+    },
+    "specimen_length_mm": 229,
+    "weight_kg": 14.5,
+    "note": "알루미늄 접합판 -29~49 °C"
+   }
+  },
+  {
+   "model": "Flatwise Plane Shear, compression mode (100-056-205)",
+   "specs": {
+    "static_force_kN": 89,
+    "temperature_degC": {
+     "min": -152,
+     "max": 318
+    },
+    "width_mm": 76,
+    "specimen_thickness_mm": {
+     "min": 6.3,
+     "max": 19.1
+    },
+    "specimen_length_mm": 229,
+    "weight_kg": 14.5
+   }
+  },
+  {
+   "model": "3&4-Point Sandwich Beam Flexure/Shear (100-351-826)",
+   "specs": {
+    "static_force_kN": 88.9,
+    "temperature_degC": {
+     "min": -85,
+     "max": 122
+    },
+    "hdt_span_mm": {
+     "min": 152,
+     "max": 610
+    },
+    "width_mm": 100,
+    "specimen_length_mm": 610,
+    "weight_kg": 52
+   }
+  },
+  {
+   "model": "Climbing Drum Peel with roller grips (100-363-421)",
+   "specs": {
+    "static_force_kN": 2.2,
+    "temperature_degC": {
+     "min": -29,
+     "max": 49
+    },
+    "width_mm": {
+     "min": 25.4,
+     "max": 102
+    },
+    "specimen_thickness_mm": {
+     "min": 0.762,
+     "max": 25.4
+    },
+    "specimen_length_mm": 254,
+    "weight_kg": 18
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "페이지가 Exceed 를 관련 항목으로 든다; 나사 어댑터로 다른 프레임에도"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "페이지가 Exceed 를 관련 항목으로 든다; 나사 어댑터로 다른 프레임에도"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/modified-celanese-compression-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/iitri-compression-loading-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/compression-clc-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/v-notched-rail-shear-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/v-notched-beam-shear-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/short-beam-shear-three-point-flexure-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/mixed-mode-bending-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/open-filled-hole-compression-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/compression-after-impact-test-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/flatwise-plane-shear-composite-tensile-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/flatwise-plane-shear-composite-compression-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/three-four-point-sandwich-beam-composite-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/climbing-drum-peel-composite-fixture-roller-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

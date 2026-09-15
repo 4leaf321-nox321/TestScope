@@ -1,0 +1,87 @@
+{
+ "id": "zwickroell-multixtens-ii-hp",
+ "kind": "sensor",
+ "name": "ZwickRoell multiXtens II HP Sensor-Arm Extensometer (700 mm)",
+ "name_ko": "즈윅로엘 multiXtens II HP 센서 암 신율계 (700 mm, Class 0.5, 자동)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "sensor_arm",
+ "description": "700 mm 전 측정 범위에서 ISO 9513 Class 0.5 를 만족하는 다목적 센서 암 신율계 — 20 µm 이동부터 교정, 20~200 µm 구간 차동 변위 오차 ±1 µm(ISO 527-1 2011 추가 요건). 시험 공간 측정·센서 암 센터링·L0 설정·부착·분리를 모두 자동으로 하고, 측정 캐리지와 센서 암을 자체 식별한다. 파단까지 측정(안전 기구·기울어지는 칼날), 세 번째 캐리지로 횡변형·미세 변형 신율계를 자동 부착해 탄성계수·r·n 값·푸아송비. 센서 암 교체로 압축·굽힘·반복 시험, 온도 챔버 -70~+360 °C. ISO 6892-1 A1·ASTM E8 B 폐루프 변형률 속도 제어 승인.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "r_value",
+  "poisson_ratio"
+ ],
+ "materials": [
+  "fiber composites",
+  "rubber/elastomers",
+  "films",
+  "rigid foam",
+  "wood",
+  "paper",
+  "plastics",
+  "metals"
+ ],
+ "standards": {
+  "compliance": [
+   "EN ISO 9513 Class 0.5",
+   "ISO 527-1 (2011) ±1 µm requirement"
+  ],
+  "test_methods": [
+   "ISO 6892-1 Method A1",
+   "ASTM E8 Method B"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 700
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 360
+  }
+ },
+ "models": [
+  {
+   "model": "multiXtens II HP",
+   "specs": {
+    "displacement_mm": 700,
+    "temperature_degC": {
+     "min": -70,
+     "max": 360
+    },
+    "accuracy_class": "ISO 9513 0.5"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-temperature-chambers-allroundline"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/multixtens-ii-hp/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

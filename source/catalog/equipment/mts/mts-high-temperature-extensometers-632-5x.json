@@ -1,0 +1,130 @@
+{
+ "id": "mts-high-temperature-extensometers-632-5x",
+ "kind": "sensor",
+ "name": "MTS Air-Cooled (632.50 / 632.53 / 632.54) and Water-Cooled (632.51) High-Temperature Extensometers to 1200 °C",
+ "name_ko": "MTS 공냉식 (632.50·632.53·632.54) · 수냉식 (632.51) 고온 신율계 (1200 °C)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "high_temperature",
+ "description": "퍼니스 안 시편에 세라믹 연장봉을 대어 1200 °C 까지의 고온 인장·압축·영점 교차 피로에서 축방향 변형을 재는 신율계 — 봉 크리프·열팽창 오차·전도 손실 최소화, ASTM E83 B1·ISO 9513 0.5. 공냉식: 632.50F-08 10 mm +20/-10 % 780 g(Ø3.5 봉), 632.54F-11 12 mm 100 g(Ø2.0), 632.53F-14 12 mm 260/300 g. 수냉식(본체 온도 일정, 잡음 감소): 632.51F-04 12 mm +20/-10 % 780 g, 632.51F-01 25 mm +15/-10 % 400 g. ASTM E21·E606·E2368, ISO 6892-2·12106·12111, GB/T 228-2·26077.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "fatigue",
+  "thermomechanical_fatigue",
+  "creep"
+ ],
+ "measurands": [
+  "axial_strain"
+ ],
+ "materials": [
+  "metals",
+  "superalloys",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM E21",
+   "ISO 6892-2",
+   "ASTM E606",
+   "ASTM E2368",
+   "ISO 12106",
+   "ISO 12111",
+   "GB/T 228-2",
+   "GB/T 26077"
+  ]
+ },
+ "limits": {
+  "temperature_degC": {
+   "max": 1200
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 25
+  }
+ },
+ "models": [
+  {
+   "model": "632.50F-08 (air-cooled)",
+   "specs": {
+    "gauge_length_mm": 10,
+    "temperature_degC": {
+     "max": 1200
+    },
+    "note": "+20 %/-10 %, 접촉력 780 g, V 끌 봉 Ø3.5×85 mm 4개"
+   }
+  },
+  {
+   "model": "632.54F-11 (air-cooled)",
+   "specs": {
+    "gauge_length_mm": 12,
+    "temperature_degC": {
+     "max": 1200
+    },
+    "note": "접촉력 100 g, 봉 Ø2.0"
+   }
+  },
+  {
+   "model": "632.53F-14 (air-cooled)",
+   "specs": {
+    "gauge_length_mm": 12,
+    "temperature_degC": {
+     "max": 1200
+    },
+    "note": "접촉력 260 / 300 g"
+   }
+  },
+  {
+   "model": "632.51F-04 (water-cooled)",
+   "specs": {
+    "gauge_length_mm": 12,
+    "temperature_degC": {
+     "max": 1200
+    },
+    "note": "+20 %/-10 %, 780 g, 봉 2개 84 mm"
+   }
+  },
+  {
+   "model": "632.51F-01 (water-cooled)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "max": 1200
+    },
+    "note": "+15 %/-10 %, 400 g"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-model-680-high-temperature-grips",
+   "note": "고온 그립·퍼니스와 조합"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/air-cooled-high-temperature-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/water-cooled-high-temperature-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,181 @@
+{
+ "id": "anton-paar-mcr-measuring-cells",
+ "kind": "accessory",
+ "name": "Anton Paar MCR Measuring Cells and Holders (Pressure Cells to 1,000 bar, Starch Cell / Starch Pressure Cell, Immobilization Cell, Magneto-Rheological Device, Flexible Cup Holder)",
+ "name_ko": "안톤파 MCR 측정 셀·홀더 (압력 셀 1,000 bar · 전분 셀/전분 압력 셀 · 이모빌라이제이션 셀 · 자기유변 장치 1.4 T · 플렉시블 컵 홀더)",
+ "manufacturer": "anton-paar",
+ "category": "accessory",
+ "subcategory": "rheometer_cell",
+ "description": "MCR 레오미터용 특수 측정 셀. 압력 셀: 가스·액체 가압, 1,000 bar 까지(PED 적합) — 전분 압력 셀 30 bar·160 °C, 150 bar(300 °C 스테인리스/하스텔로이)·400 bar(200 °C 티타늄, 초임계 CO2 고분자 용융·엔진유), 170 bar(가스·액체·자체 가압·플로스루, 170 °C, 시추·파쇄 유체), 저온·플로스루·맞춤. 전분 셀(16083): 전기 가열 + 유체 냉각으로 승온 90 °C/min·냉각 45 °C/min, 상압 99 °C, 임펠러 교반, 시료 약 18 mL, 호화·페이스팅. 이모빌라이제이션 셀(IMC): 종이 코팅·도료·슬러리의 탈수·건조 동역학 — 0~70 °C, 갭 50~2,000 µm, 전단응력 0.1~1,500 Pa, 진공 차압 0~80,000 Pa, Ø50 평행판. 자기유변 장치: 1.4 T 까지(홀·온도 센서), -40~+170 °C, 특허 TwinGap Ø20 평행판으로 3,000 s⁻¹. 플렉시블 컵 홀더(MCR·RheolabQC): Ø40~100 mm 용기를 그대로 — 페인트 캔·요거트 컵, 교반기·베인·동심 원통·Pt100, ASTM D562.",
+ "test_items": [
+  "rheology_rotational"
+ ],
+ "measurands": [],
+ "materials": [
+  "polymers",
+  "petrochemicals",
+  "food",
+  "starch",
+  "paper coatings",
+  "magneto-rheological fluids",
+  "paints",
+  "cosmetics"
+ ],
+ "standards": {
+  "compliance": [
+   "Pressure Equipment Directive (PED)"
+  ],
+  "test_methods": [
+   "ASTM D562"
+  ]
+ },
+ "limits": {
+  "pressure_bar": {
+   "max": 1000
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 300
+  },
+  "shear_rate_1_s": {
+   "max": 3000,
+   "note": "자기유변 장치 TwinGap"
+  },
+  "heating_rate_K_min": {
+   "max": 90,
+   "note": "전분 셀"
+  }
+ },
+ "models": [
+  {
+   "model": "Pressure Cell 150 bar (stainless / Hastelloy, to 300 °C)",
+   "specs": {
+    "pressure_bar": 150,
+    "temperature_degC": {
+     "max": 300
+    }
+   }
+  },
+  {
+   "model": "Pressure Cell 400 bar (titanium, to 200 °C)",
+   "specs": {
+    "pressure_bar": 400,
+    "temperature_degC": {
+     "max": 200
+    }
+   }
+  },
+  {
+   "model": "Pressure Cell 170 bar (gas / liquid / self / flow-through, to 170 °C)",
+   "specs": {
+    "pressure_bar": 170,
+    "temperature_degC": {
+     "max": 170
+    }
+   }
+  },
+  {
+   "model": "Pressure Cells to 1,000 bar (custom)",
+   "specs": {
+    "pressure_bar": 1000
+   }
+  },
+  {
+   "model": "Starch Cell (16083)",
+   "specs": {
+    "temperature_degC": {
+     "max": 99
+    },
+    "heating_rate_K_min": 90,
+    "cooling_rate_K_min": 45,
+    "sample_volume_mL": 18
+   }
+  },
+  {
+   "model": "Starch Pressure Cell",
+   "specs": {
+    "pressure_bar": 30,
+    "temperature_degC": {
+     "max": 160
+    }
+   }
+  },
+  {
+   "model": "Immobilization Cell (TEK-IMC-C/XX2)",
+   "specs": {
+    "temperature_degC": {
+     "min": 0,
+     "max": 70
+    },
+    "differential_pressure_Pa": {
+     "min": 0,
+     "max": 80000
+    },
+    "yield_stress_Pa": {
+     "min": 0.1,
+     "max": 1500
+    },
+    "note": "갭 50~2,000 µm, Ø50 평행판"
+   }
+  },
+  {
+   "model": "Magneto-Rheological Device (MRD, TwinGap)",
+   "specs": {
+    "temperature_degC": {
+     "min": -40,
+     "max": 170
+    },
+    "shear_rate_1_s": 3000,
+    "note": "자속밀도 1.4 T, Ø20 평행판"
+   }
+  },
+  {
+   "model": "Flexible Cup Holder (MCR / RheolabQC)",
+   "specs": {
+    "specimen_diameter_mm": {
+     "min": 40,
+     "max": 100
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "anton-paar-mcr-rheometer"
+  },
+  {
+   "type": "extends_capability",
+   "target": "anton-paar-mcr-rheometer",
+   "note": "압력·자기장·습도 조건의 유변 측정"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/pressure-cell/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/starch-cell/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/immobilization-cell/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/accessory-for-mcr-magneto-rheological-device/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.anton-paar.com/corp-en/products/details/flexible-cup-holder/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

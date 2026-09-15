@@ -1,0 +1,83 @@
+{
+ "id": "zwickroell-testcontrol-ii-and-control-cube",
+ "kind": "accessory",
+ "name": "ZwickRoell testControl II Measurement and Control Electronics / Control Cube Servo Controller",
+ "name_ko": "즈윅로엘 testControl II 측정·제어 전자장치 · Control Cube 서보 제어기",
+ "manufacturer": "zwickroell",
+ "category": "accessory",
+ "subcategory": "controller",
+ "description": "시험기의 심장인 측정·제어 전자장치. testControl II 는 정적·동적 시험기용 — 24 bit A/D, 샘플링 400 kHz, 데이터 전송 10 kHz 까지(측정값 취득 500 Hz 표준, 옵션 2,000 Hz, 전 채널 시간 동기), 구동 제어 1,000 Hz(ISO 6892-1 변형률 속도 제어), 기계 컴플라이언스 실시간 보정, 에코 모드, 시스템 모니터링, 원격 조작기 Xtension; 다른 제조사 기계 개조에도 쓴다. Control Cube 는 서보유압(단축·다축·비틀림)용 세계 최소 ½ 19 in 서보 제어기 — 19 bit, 4 kHz 취득·제어 주기, 전송 0.4 kHz, 1~32 제어 채널, 이더넷, 비상정지 안전 인터페이스, 소프트웨어 Cubus.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "data_rate_Hz": {
+   "max": 10000
+  },
+  "digital_sample_rate_Hz": {
+   "max": 400000
+  }
+ },
+ "models": [
+  {
+   "model": "testControl II",
+   "specs": {
+    "digital_sample_rate_Hz": 400000,
+    "data_rate_Hz": 10000,
+    "note": "24 bit, 구동 제어 1,000 Hz"
+   }
+  },
+  {
+   "model": "Control Cube",
+   "specs": {
+    "digital_sample_rate_Hz": 4000,
+    "data_rate_Hz": 400,
+    "channels": {
+     "min": 1,
+     "max": 32
+    },
+    "note": "19 bit, 서보유압용"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-vibrophore"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/measurement-and-control-electronics/testcontrol-ii-electronics/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/measurement-and-control-electronics/control-cube-servo-controller/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.zwickroell.com/accessories/measurement-and-control-electronics/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

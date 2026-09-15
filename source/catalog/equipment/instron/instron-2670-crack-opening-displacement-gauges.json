@@ -1,0 +1,92 @@
+{
+ "id": "instron-2670-crack-opening-displacement-gauges",
+ "kind": "sensor",
+ "name": "Instron 2670 Series Crack Opening Displacement (COD) Gauges (2670-130 / 2670-132)",
+ "name_ko": "인스트론 2670 계열 균열 개구 변위(COD) 게이지 (5·10 mm 표점)",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "cod_gauge",
+ "description": "하중 아래 균열 양면 사이의 변위를 재어 파괴인성·균열 진전 저항을 구하는 게이지 — BS 7448, ASTM E399·E561·E1290·E1820, ISO 12135 의 정적·반복 시험. CT·SEB·중앙 균열·아크 시편 모두에 맞고 고에너지 파단을 견디며 -200~200 °C. 2670-130(표점 5 mm, 이동 2 mm), 2670-132(10 mm, 4 mm), ASTM E399-09 요건.",
+ "test_items": [
+  "fracture_toughness",
+  "fatigue"
+ ],
+ "measurands": [
+  "crack_growth"
+ ],
+ "materials": [
+  "metals"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E399-09"
+  ],
+  "test_methods": [
+   "BS 7448",
+   "ASTM E399",
+   "ASTM E561",
+   "ASTM E1290",
+   "ASTM E1820",
+   "ISO 12135"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 5,
+   "max": 10
+  },
+  "displacement_mm": {
+   "max": 4
+  },
+  "temperature_degC": {
+   "min": -200,
+   "max": 200
+  }
+ },
+ "models": [
+  {
+   "model": "2670-130",
+   "specs": {
+    "gauge_length_mm": 5,
+    "displacement_mm": 2
+   }
+  },
+  {
+   "model": "2670-132",
+   "specs": {
+    "gauge_length_mm": 10,
+    "displacement_mm": 4
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic",
+   "note": "정적·반복 파괴역학 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000",
+   "note": "정적·반복 파괴역학 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "정적·반복 파괴역학 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-2750-compact-tension-fixtures",
+   "note": "CT 시편 클레비스와 조합"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/crack-opening-displacement-cod-gauges/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

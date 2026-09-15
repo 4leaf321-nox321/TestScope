@@ -1,0 +1,71 @@
+{
+ "id": "instron-w-5510-torsion-load-cells",
+ "kind": "sensor",
+ "name": "Instron W-5510 Torsion Load Cells for 55MT Series Torsion Frames (0.225 – 220 N·m)",
+ "name_ko": "인스트론 W-5510 비틀림 로드셀 (55MT 계열용, 0.225~220 N·m)",
+ "manufacturer": "instron",
+ "category": "load_cell",
+ "subcategory": "torsion",
+ "description": "55MT 비틀림 프레임의 측정 범위를 아래로 넓히는 저용량 반력 토크 변환기. 55MT1 용은 소형(과부하 보호판 일체, 1분 안에 교체), 55MT2·55MT20 용은 플랜지형(굽힘 모멘트 저항·높은 비틀림 강성). 같은 원형 장착 패턴이라 기존 지그가 그대로 붙는다. W-5510-T4 0.225 N·m, -T3 2.25, -T2 22(Ø54 mm), -T1 220 N·m(Ø101.6 mm).",
+ "test_items": [
+  "torsion"
+ ],
+ "measurands": [
+  "torque_angle"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "torque_Nm": {
+   "min": 0.225,
+   "max": 220
+  }
+ },
+ "models": [
+  {
+   "model": "W-5510-T4",
+   "specs": {
+    "torque_Nm": 0.225,
+    "specimen_diameter_mm": 54
+   }
+  },
+  {
+   "model": "W-5510-T3",
+   "specs": {
+    "torque_Nm": 2.25,
+    "specimen_diameter_mm": 54
+   }
+  },
+  {
+   "model": "W-5510-T2",
+   "specs": {
+    "torque_Nm": 22,
+    "specimen_diameter_mm": 54
+   }
+  },
+  {
+   "model": "W-5510-T1",
+   "specs": {
+    "torque_Nm": 220,
+    "specimen_diameter_mm": 101.6
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-mt-microtorsion",
+   "note": "55MT1 / 55MT2 = MT1 / MT2 프레임"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-cells/torsion/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

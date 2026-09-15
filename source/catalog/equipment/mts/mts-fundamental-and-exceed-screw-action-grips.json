@@ -1,0 +1,121 @@
+{
+ "id": "mts-fundamental-and-exceed-screw-action-grips",
+ "kind": "accessory",
+ "name": "MTS Fundamental Screw Action Grips (FDSC503B / FDSB503B 5 kN) and Exceed 10 kN Screw Action Grips (DSA104B / DSC104B)",
+ "name_ko": "MTS Fundamental 나사 액션 그립 (5 kN, 강철·스테인리스) · Exceed 10 kN 나사 액션 그립 (상온·-70~350 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "screw_side_action",
+ "description": "Criterion 시리즈 40 용 Fundamental 나사 그립은 바이스 그립보다 물림력이 커 큰 종이·플라스틱 판·필름·직물·포장 시편용 — FDSC503B(강철)·FDSB503B(스테인리스) 5 kN, 0~16 mm, 고무 면 기본, 0~50 °C. Exceed 10 kN 나사 그립은 U 자형 측면 로딩, 센터링 장치, 면을 동시 또는 개별 이동 — DSA104B 상온, DSC104B -70~350 °C, 어댑터 20 mm, 면 옵션 톱니 34 mm(0~14)·골판지 34/72 mm.",
+ "test_items": [
+  "tensile",
+  "peel",
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "paper",
+  "plastic plates and films",
+  "textiles",
+  "sheet materials",
+  "packaging"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 527-2",
+   "ISO 527-3"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 5,
+   "max": 10
+  },
+  "specimen_thickness_mm": {
+   "max": 16
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 350
+  }
+ },
+ "models": [
+  {
+   "model": "FDSC503B (steel)",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 16
+    },
+    "weight_kg": 2.36,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    },
+    "height_mm": 132.5,
+    "width_mm": 52
+   }
+  },
+  {
+   "model": "FDSB503B (stainless steel)",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 16
+    },
+    "weight_kg": 2.36,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    },
+    "width_mm": 168.8
+   }
+  },
+  {
+   "model": "DSA104B (Exceed, room temperature)",
+   "specs": {
+    "force_kN": 10,
+    "weight_kg": 1.9
+   }
+  },
+  {
+   "model": "DSC104B (Exceed, -70~350 °C)",
+   "specs": {
+    "force_kN": 10,
+    "temperature_degC": {
+     "min": -70,
+     "max": 350
+    },
+    "weight_kg": 1.97
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "FDSC/FDSB"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "DSA104B/DSC104B"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-screw-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/exceed-10-kn-screw-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

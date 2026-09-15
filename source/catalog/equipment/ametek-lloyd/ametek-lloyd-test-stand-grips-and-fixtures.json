@@ -1,0 +1,190 @@
+{
+ "id": "ametek-lloyd-test-stand-grips-and-fixtures",
+ "kind": "accessory",
+ "name": "Lloyd Instruments / Chatillon Grips and Fixtures for Test Stands (wedge, vice, pneumatic, hydraulic, roller, scissor, pincer, bollard, webbing, bending jigs, compression plates, peel and friction)",
+ "name_ko": "로이드·채틸론 시험기용 그립·지그군 (웨지·바이스·공압·유압·편심 롤러·가위·핀서·볼라드·리본/웨빙·나사 헤드·굽힘 지그 -70~+180 °C·압축판·박리/마찰·어댑터)",
+ "manufacturer": "ametek-lloyd",
+ "category": "grip_fixture",
+ "description": "채틸론·로이드 시험기용 그립·지그 개요(용량은 페이지에 없음, 별도 카탈로그). 웨지(측면 레버·캡스탄 휠·나사 초기력, 교환 면), 바이스(단·이중 작동, 오프셋 정렬로 전단), 공압(단·이중 액추에이터, 손·발 제어), 유압(단·이중 액추에이터, 펌프), 자기물림 편심 롤러(고무·필름·종이·판금·포일), 가위(스프링 초기력, 열림이 클수록 강하게), 핀서(작은 전자부품, 체인 자기정렬), 볼라드(섬유·실·로프·스트랩), 분할 C 리본·웨빙, 나사 헤드(미터 나사 덤벨·볼트), 3·4점 굽힘 지그(알루미늄·강, 앤빌·롤러, -70~+180 °C), 원·사각·직사각 압축판(알루미늄 연질용·경화강), 90°·180°·T-박리·COF 지그, 어댑터(나사·아이엔드·핀·잠금링·포고 연장봉).",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "peel",
+  "friction_coefficient",
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "plastics",
+  "rubber",
+  "films",
+  "paper",
+  "textiles",
+  "yarns",
+  "composites",
+  "glass",
+  "ceramics",
+  "wood"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -70,
+   "max": 180,
+   "note": "굽힘 지그"
+  }
+ },
+ "models": [
+  {
+   "model": "Wedge grips",
+   "specs": {}
+  },
+  {
+   "model": "Vice grips (single / dual action)",
+   "specs": {}
+  },
+  {
+   "model": "Pneumatic grips (single / double actuator)",
+   "specs": {}
+  },
+  {
+   "model": "Hydraulic grips (single / double actuator)",
+   "specs": {}
+  },
+  {
+   "model": "Eccentric roller grips",
+   "specs": {}
+  },
+  {
+   "model": "Scissor grips",
+   "specs": {}
+  },
+  {
+   "model": "Pincer grips",
+   "specs": {}
+  },
+  {
+   "model": "Bollard grips",
+   "specs": {}
+  },
+  {
+   "model": "Ribbon and webbing grips (split C)",
+   "specs": {}
+  },
+  {
+   "model": "Thread head grips",
+   "specs": {}
+  },
+  {
+   "model": "Bending / flexural jigs (3- and 4-point)",
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 180
+    }
+   }
+  },
+  {
+   "model": "Compression plates (aluminium / hardened steel; round, square, rectangular)",
+   "specs": {}
+  },
+  {
+   "model": "Peel and friction grips (90°, 180°, T-peel, COF)",
+   "specs": {}
+  },
+  {
+   "model": "Adapters",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series",
+   "note": "「단일·이중 컬럼 벤치 시험기」 — 카탈로그의 로이드 시험기는 LS 계열(LR Plus·EZ 는 없음)"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/wedge-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/vice-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/pneumatic-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/hydraulic-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/eccentric-roller-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/scissor-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/pincer-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/bollard-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/ribbon-and-webbing-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/thread-head-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/bending-flexural-jigs",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/compression-plates",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/peel-and-friction-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/grips-and-fixtures/grips-and-fixtures-for-test-stands/adapters",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

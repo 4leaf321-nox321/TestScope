@@ -1,0 +1,115 @@
+{
+ "id": "mts-exceed-3-point-bend-fixtures",
+ "kind": "accessory",
+ "name": "MTS Exceed 3-Point Bend Fixtures (WA104A 10 kN / WA204A 20 kN / ZWA304 30 kN) and 10 kN Wood Bend Fixture (ZWC104A)",
+ "name_ko": "MTS Exceed 3점 굽힘 지그 (10·20·30 kN) · 10 kN 목재 굽힘 지그 (지간 400 mm)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "flexure",
+ "description": "Exceed 프레임용(변환 어댑터로 Criterion 에도) 3점 굽힘 지그 — 무단 조절 하부 지간, 센터링 장치, 옵션·맞춤 로딩 엣지(R2·R3·R5)와 지지대. WA104A 10 kN 플라스틱(하부 4.95 kg), WA204A 20 kN 플라스틱(9.22 kg, 340 mm 폭), ZWA304 30 kN 스테인리스(-70~350 °C). ISO 14125·14130, ASTM D7264·D790, EN 2377·2746, ISO 6721-5. 목재 굽힘 ZWC104A 10 kN: 공구강 엣지, 회전 롤러, 지간 400 mm, 폭 60 mm, 로딩 엣지 R15(옵션 R7.5), 하부 14.27 kg — 목재 기반 패널.",
+ "test_items": [
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "composite laminates",
+  "wood-based panels"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 14125",
+   "ISO 14130",
+   "ASTM D7264",
+   "ASTM D790",
+   "EN 2377",
+   "EN 2746",
+   "ISO 6721-5"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 10,
+   "max": 30
+  },
+  "hdt_span_mm": {
+   "max": 400,
+   "note": "목재 지그 최대 지간"
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 350,
+   "note": "ZWA304"
+  },
+  "width_mm": {
+   "max": 60,
+   "note": "목재 지그 최대 시편 폭"
+  }
+ },
+ "models": [
+  {
+   "model": "WA104A (10 kN, plastics)",
+   "specs": {
+    "force_kN": 10,
+    "weight_kg": 4.95,
+    "note": "하부 151×280×77 mm, 로딩 엣지 R5"
+   }
+  },
+  {
+   "model": "WA204A (20 kN, plastics)",
+   "specs": {
+    "force_kN": 20,
+    "weight_kg": 9.22,
+    "note": "하부 180×340×88 mm"
+   }
+  },
+  {
+   "model": "ZWA304 (30 kN, SST)",
+   "specs": {
+    "force_kN": 30,
+    "temperature_degC": {
+     "min": -70,
+     "max": 350
+    },
+    "weight_kg": 4.7
+   }
+  },
+  {
+   "model": "ZWC104A (10 kN wood bend)",
+   "specs": {
+    "force_kN": 10,
+    "hdt_span_mm": {
+     "max": 400
+    },
+    "width_mm": 60,
+    "weight_kg": 14.27,
+    "note": "로딩 엣지 R15, 옵션 R7.5; 상온"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "변환 어댑터 필요"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/3-point-bend-fixtures",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/10kn-wood-bend-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

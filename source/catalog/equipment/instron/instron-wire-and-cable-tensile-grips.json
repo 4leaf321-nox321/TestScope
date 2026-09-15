@@ -1,0 +1,128 @@
+{
+ "id": "instron-wire-and-cable-tensile-grips",
+ "kind": "accessory",
+ "name": "Instron Wire and Cable Tensile Grips (Pneumatic Tire Cord 2714-010 / Snubbing W-5074M · W-5075M · W-5143M)",
+ "name_ko": "인스트론 와이어·케이블 인장 그립 (공압 타이어 코드 5·10 kN · 스너빙 2.2~90 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "wire_cable",
+ "description": "코드·타이어 코드·비드 와이어·케이블·토우용 그립 두 종. 공압 타이어 코드 그립은 가이드 핀으로 눈금 캠 위에 얹어 응력을 줄인 물림, 풋스위치 개폐, 크리프 보상, 5 kN(평면 2714-010·홈 면 CP105953)·10 kN(CP110730), -10~80 °C. 스너빙 그립은 스풀에 시편을 감고 스너버(캠·클램프)로 끝을 고정 — 하중은 스풀이 받는다. 와이어 W-5074M 2.2 kN(Ø0.125~1.52 mm), 케이블 W-5075M 36 kN(Ø0.8~6.35), W-5143M 90 kN(Ø0.8~12.7).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "tire cord",
+  "bead wire",
+  "cable",
+  "yarn",
+  "tow",
+  "braided wire"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 2.2,
+   "max": 90
+  },
+  "wire_diameter_mm": {
+   "min": 0.125,
+   "max": 12.7
+  },
+  "temperature_degC": {
+   "min": -10,
+   "max": 80,
+   "note": "공압 타이어 코드 그립"
+  }
+ },
+ "models": [
+  {
+   "model": "2714-010 (Pneumatic Tire Cord, flat face)",
+   "specs": {
+    "force_kN": 5,
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "CP105953 (Pneumatic Tire Cord, grooved face)",
+   "specs": {
+    "force_kN": 5,
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "CP110730 (Pneumatic Tire Cord, flat face)",
+   "specs": {
+    "force_kN": 10,
+    "temperature_degC": {
+     "min": -10,
+     "max": 80
+    }
+   }
+  },
+  {
+   "model": "W-5074M (Wire Snubbing)",
+   "specs": {
+    "force_kN": 2.2,
+    "wire_diameter_mm": {
+     "min": 0.125,
+     "max": 1.52
+    }
+   }
+  },
+  {
+   "model": "W-5075M (Cable Snubbing)",
+   "specs": {
+    "force_kN": 36,
+    "wire_diameter_mm": {
+     "min": 0.8,
+     "max": 6.35
+    }
+   }
+  },
+  {
+   "model": "W-5143M (Cable Snubbing)",
+   "specs": {
+    "force_kN": 90,
+    "wire_diameter_mm": {
+     "min": 0.8,
+     "max": 12.7
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/wire-cable/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

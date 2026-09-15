@@ -1,0 +1,83 @@
+{
+ "id": "mts-model-640-fracture-mechanics-clevis-grips",
+ "kind": "accessory",
+ "name": "MTS Model 640 Fracture Mechanics Clevis Grips (640.20B 12.7 mm / 640.20C 25.4 mm, 60 kN)",
+ "name_ko": "MTS 모델 640 파괴역학 클레비스 그립 (CT 시편 12.7·25.4 mm, 60 kN, ASTM E399)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "fracture_mechanics",
+ "description": "파괴인성·피로 균열 성장률 시험에 가장 많이 쓰는 클레비스 그립 — 항공기급 4340 강, ASTM E399 공차. 그립 2개·0.4W 핀 2개·스프링 리테이너 4개 세트. 640.20B 시편 폭 12.7 mm, 640.20C 25.4 mm, 정적 60 kN, 핀 Ø12.2 mm, 장착 M27×2, -129~177 °C.",
+ "test_items": [
+  "fracture_toughness",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E399"
+  ],
+  "test_methods": [
+   "ASTM E399",
+   "ASTM E606"
+  ]
+ },
+ "limits": {
+  "static_force_kN": {
+   "max": 60
+  },
+  "specimen_thickness_mm": {
+   "min": 12.7,
+   "max": 25.4
+  },
+  "temperature_degC": {
+   "min": -129,
+   "max": 177
+  }
+ },
+ "models": [
+  {
+   "model": "640.20B-X1",
+   "specs": {
+    "static_force_kN": 60,
+    "specimen_thickness_mm": 12.7,
+    "temperature_degC": {
+     "min": -129,
+     "max": 177
+    },
+    "note": "핀 Ø12.2, M27×2"
+   }
+  },
+  {
+   "model": "640.20C-X3",
+   "specs": {
+    "static_force_kN": 60,
+    "specimen_thickness_mm": 25.4,
+    "temperature_degC": {
+     "min": -129,
+     "max": 177
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/model-640-fracture-mechanics-clevis-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

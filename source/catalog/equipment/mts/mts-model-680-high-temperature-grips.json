@@ -1,0 +1,83 @@
+{
+ "id": "mts-model-680-high-temperature-grips",
+ "kind": "accessory",
+ "name": "MTS Model 680 High-Temperature LCF Grips (680.01 / 680.10 to 1000 °C, 680.15 to 1500 °C)",
+ "name_ko": "MTS 모델 680 고온 저주기 피로 그립 (680.01·680.10 1000 °C, 680.15 1500 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "high_temperature",
+ "description": "고온 저주기 피로·정적 시험용 그립 세 종 — 열 응력을 줄이도록 그립 헤드와 연장 로드를 고온 초합금으로 만들어 열 구배를 최소화. 680.01: 1000 °C, 버튼 헤드·나사 끝 환봉, 단일 피스톤, 수냉(핸드 펌프 필수, 시편 어댑터·수냉 키트). 680.10: 1000 °C, 평판·환봉, 양단 피스톤, 수냉 또는 공냉. 680.15: 1500 °C, 평판·환봉. ASTM E21·ISO 6892-2.",
+ "test_items": [
+  "fatigue",
+  "tensile",
+  "creep"
+ ],
+ "measurands": [],
+ "materials": [
+  "superalloys",
+  "high-temperature metals",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E21",
+   "ISO 6892-2"
+  ]
+ },
+ "limits": {
+  "temperature_degC": {
+   "max": 1500
+  }
+ },
+ "models": [
+  {
+   "model": "680.01",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000
+    },
+    "cooling": "수냉",
+    "note": "버튼 헤드·나사 끝 환봉, 단일 피스톤"
+   }
+  },
+  {
+   "model": "680.10",
+   "specs": {
+    "temperature_degC": {
+     "max": 1000
+    },
+    "cooling": "수냉 또는 공냉",
+    "note": "평판·환봉, 양단 피스톤"
+   }
+  },
+  {
+   "model": "680.15",
+   "specs": {
+    "temperature_degC": {
+     "max": 1500
+    },
+    "cooling": "수냉 또는 공냉"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "페이지가 Landmark 를 관련 항목으로 든다"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "mts-landmark-servohydraulic"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/model-680-high-temperature-lcf-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,75 @@
+{
+ "id": "instron-t-grip-lever-action-wedge-grips",
+ "kind": "accessory",
+ "name": "Instron T-Grip Mechanical Wedge Lever Action Grips (W-5021 / W-5151 / W-5057-A)",
+ "name_ko": "인스트론 T-그립 레버식 기계 웨지 그립 (100·150 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "mechanical_wedge",
+ "description": "경제형 T-그립 홀더 — 레버로 조를 올리고 내리고 스프링이 초기 물림력을 준다(20,000 lb 급은 나사식). 하부 홀더의 잠금으로 조를 연 채 두어 한 손으로 시편을 넣는다. 유압·전동식 UTM 겸용, 앞이 트인 형, 평판·환봉 교환 조. 하중이 걸리면 웨지로 더 조인다. 정적 인장 전용.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "wires",
+  "plastics",
+  "metals",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 22.2,
+   "max": 150
+  }
+ },
+ "models": [
+  {
+   "model": "W-5021",
+   "specs": {
+    "force_kN": 100
+   }
+  },
+  {
+   "model": "W-5151",
+   "specs": {
+    "force_kN": 150
+   }
+  },
+  {
+   "model": "W-5057-A",
+   "specs": {
+    "force_kN": 150
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "유압·전동식 UTM 겸용이라고만 적음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "유압·전동식 UTM 겸용이라고만 적음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "유압·전동식 UTM 겸용이라고만 적음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/mechanical-wedge-lever-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

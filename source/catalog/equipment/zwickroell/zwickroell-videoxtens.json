@@ -1,0 +1,65 @@
+{
+ "id": "zwickroell-videoxtens",
+ "kind": "sensor",
+ "name": "ZwickRoell videoXtens Video Extensometers",
+ "name_ko": "즈윅로엘 videoXtens 비디오 신율계 (마크 없는 비접촉 측정)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "video",
+ "description": "카메라 영상의 프레임 간 비교로 변형을 재는 비접촉 신율계. 청색 대비광이 시편 표면의 자연 거칠기를 고대비 패턴으로 바꿔 가상 표점을 소프트웨어에서 찍으므로 시편에 마크를 붙이지 않는다(mark-free). 파단 주변에 표점을 자동 배치해 모든 시편이 유효하고, 폭 변화도 비접촉으로 잰다. 현장 교정으로 10 µm 부터 정확도를 보증, 상온과 온도 챔버에서 같은 장치로 측정. testXpert 에 통합되어 동기화. 정확도·기능·유연성에 따라 여러 구성이 있으며 수치 사양은 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "r_value",
+  "poisson_ratio"
+ ],
+ "materials": [
+  "composites",
+  "plastics",
+  "rubber",
+  "metals",
+  "textiles",
+  "sensitive and mini specimens"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "videoXtens (구성 여러 가지)",
+   "specs": {
+    "note": "정확도 10 µm 부터 현장 교정 인증"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-temperature-chambers-allroundline"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/videoxtens/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

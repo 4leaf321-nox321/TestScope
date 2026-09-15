@@ -1,0 +1,69 @@
+{
+ "id": "instron-2810-005-coefficient-of-friction-fixture",
+ "kind": "accessory",
+ "name": "Instron 2810-005 Coefficient of Friction Fixture",
+ "name_ko": "인스트론 2810-005 마찰계수 지그 (ASTM D1894 · ISO 8295)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "friction",
+ "description": "플라스틱 필름·시트의 정·동마찰계수 지그. 200 g 썰매(폼 패드)를 가로 152.4 × 세로 514.3 mm 금속 테이블 위로 끌고 로드셀이 힘을 기록한다 — 첫 피크가 정마찰, 두 점 사이 평균이 동마찰. 시편을 썰매·테이블·양쪽 어디에도 붙일 수 있고 나일론·금속 견인선 포함. 인스트론 표준 Type D 베이스 어댑터로 UTM 에 바로 장착. 고속용은 아니다.",
+ "test_items": [
+  "friction_coefficient"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastic film",
+  "sheet"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D1894",
+   "ISO 8295"
+  ]
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "2810-005",
+   "specs": {
+    "note": "테이블 152.4×514.3 mm(유효 109.5), 썰매 63.5×63.5 mm 200 g. 상부 Type Cm/Bm/Om, 하부 Type Dm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-6800-series",
+   "note": "friction_coefficient"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-3400-series",
+   "note": "friction_coefficient"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/peel-friction-puncture/coefficient-of-friction-fixture/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

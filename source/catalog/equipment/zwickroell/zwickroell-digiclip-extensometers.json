@@ -1,0 +1,93 @@
+{
+ "id": "zwickroell-digiclip-extensometers",
+ "kind": "sensor",
+ "name": "ZwickRoell digiClip Digital Clip-On Extensometers (short / long / transverse / biaxial)",
+ "name_ko": "즈윅로엘 digiClip 디지털 클립온 신율계 (40 mm, 분해능 0.02 µm, 횡·2축형)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "소형화한 디지털 스케일을 쓰는 클립온 신율계 — 스트레인게이지식보다 넓은 측정 범위, 전 범위 균일한 정확도, 분해능 0.02 µm. 표점 거리 조절 후 부착 시 자동 잠금·분리 시 해제, 「인장만」↔「인장·압축」 측정 범위 전환, 낮은 높이로 짧은 그립 간격에도 사용, 시편 폭 눈금 깊이 스토퍼로 중심 부착. ISO 527-1 탄성계수 요건(20~200 µm 에서 ±1 µm), ISO 6892-1 A1·ASTM E8 B 변형률 제어 승인, 노치 민감 시편용 칼날·낙하 방지 브래킷 포함. 횡방향형은 ASTM E517·ISO 10113 r 값, ISO 527-1/-2/-4 푸아송비, ±45° 전단. 상온용, 최대 40 mm.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "youngs_modulus",
+  "r_value",
+  "poisson_ratio"
+ ],
+ "materials": [
+  "fiber-reinforced composites",
+  "metals",
+  "plastics"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 527-1 (2011) ±1 µm requirement"
+  ],
+  "test_methods": [
+   "ISO 6892-1 Method A1",
+   "ASTM E8 Method B",
+   "ASTM E517",
+   "ISO 10113",
+   "ISO 527-1",
+   "ISO 527-2",
+   "ISO 527-4"
+  ]
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 40
+  },
+  "displacement_um": {
+   "min": 0.02,
+   "note": "분해능"
+  }
+ },
+ "models": [
+  {
+   "model": "digiClip short",
+   "specs": {}
+  },
+  {
+   "model": "digiClip long",
+   "specs": {
+    "displacement_mm": 40
+   }
+  },
+  {
+   "model": "digiClip transverse",
+   "specs": {
+    "note": "폭 변화 — r 값·푸아송비"
+   }
+  },
+  {
+   "model": "digiClip biaxial",
+   "specs": {
+    "note": "신장 + 폭 변화 동시"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/digiclip-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

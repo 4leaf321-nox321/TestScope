@@ -1,0 +1,108 @@
+{
+ "id": "shimadzu-non-shift-wedge-grips",
+ "kind": "accessory",
+ "name": "Shimadzu Non-Shift Wedge Grips — Manual (5–300 kN) / Pneumatic (to 300 kN) / Hydraulic (to 250 kN)",
+ "name_ko": "시마즈 논시프트 웨지 그립 — 수동(5~300 kN) · 공압(300 kN 까지) · 유압(250 kN 까지)",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "wedge",
+ "description": "금속·플라스틱·목재·복합재의 판·봉·선재 인장용 앞이 트인 자기물림 웨지 그립. 수동형(MWG)은 핸들로 조이며 5~300 kN, 50 mm 폭 줄눈 조 사양(5~100 kN, 250·300 kN 은 기본). 공압형은 풋 밸브로 원터치 물림, 0.4~0.6 MPa, 300 kN 까지. 유압형은 일정한 물림력, 250 kN 까지, 3상 200 V 유압 유닛(최대 21 MPa, 냉각수 10 L/min), 스위치 박스, 물릴 때 생기는 초기 하중을 없애는 초기 하중 방지 유닛 포함. 봉·선재·고경도·복합재용 조 면을 따로 고른다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "plastics",
+  "lumber",
+  "composites"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 5,
+   "max": 300
+  },
+  "pressure_MPa": {
+   "max": 21,
+   "note": "유압 유닛"
+  }
+ },
+ "models": [
+  {
+   "model": "Manual Non-Shift Wedge Grips (MWG)",
+   "specs": {
+    "force_kN": {
+     "min": 5,
+     "max": 300
+    },
+    "note": "50 mm 폭 조 사양 5~100 kN"
+   }
+  },
+  {
+   "model": "Pneumatic Non-Shift Wedge Grips",
+   "specs": {
+    "force_kN": {
+     "max": 300
+    },
+    "pressure_MPa": {
+     "min": 0.4,
+     "max": 0.6
+    }
+   }
+  },
+  {
+   "model": "Hydraulic Non-Shift Wedge Grips",
+   "specs": {
+    "force_kN": {
+     "max": 250
+    },
+    "pressure_MPa": 21,
+    "note": "AC 3상 200 V 유압 유닛, 냉각수 10 L/min, 초기 하중 방지 유닛"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/manual-non-shift-wedge-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/pneumatic-non-shift-wedge-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/hydraulic-non-shift-wedge-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

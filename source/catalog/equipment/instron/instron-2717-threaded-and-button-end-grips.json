@@ -1,0 +1,107 @@
+{
+ "id": "instron-2717-threaded-and-button-end-grips",
+ "kind": "accessory",
+ "name": "Instron Threaded-End and Button-End Grip Bodies and Inserts (2717-029 / W-5101 / W-5150 / W-5102)",
+ "name_ko": "인스트론 나사 끝·버튼 끝 시편 그립 (자기정렬 100 kN · 나사 홀더 267 kN · 분할 인서트)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "threaded_end",
+ "description": "나사 끝·숄더 끝·버튼 끝 기계가공 시편용 그립 — ASTM E8·A370·A48 등 고강도 금속의 대량 정적 인장. 자기정렬 그립 2717-029 는 양 끝 이중 정렬(유니버설 조인트)로 단축 인장을 보장, 100 kN, -70~350 °C, 교환 그립 헤드 M8~M24(2717-021~027). 나사 끝 홀더 W-5101/5150(ASTM .505 in)·W-5102(Ø38 mm 까지)는 267 kN, 5~40 °C. 숄더·버튼 끝은 홀더 한 세트에 표준 치수 분할 인서트를 바꿔 낀다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "steel",
+  "non-ferrous metals",
+  "high-strength alloys"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E8",
+   "ASTM A370",
+   "ASTM A48"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 100,
+   "max": 267
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 350
+  },
+  "specimen_diameter_mm": {
+   "max": 38
+  }
+ },
+ "models": [
+  {
+   "model": "2717-029 (Self-Aligning Tension Grips)",
+   "specs": {
+    "force_kN": 100,
+    "temperature_degC": {
+     "min": -70,
+     "max": 350
+    },
+    "note": "피팅 Type Dm. 그립 헤드 M8/M10/M12/M18/M20/M24 = 2717-021~026, 블랭크 2717-027"
+   }
+  },
+  {
+   "model": "W-5101 (Threaded-End Holder, ASTM .505 in)",
+   "specs": {
+    "force_kN": 267,
+    "specimen_diameter_mm": 12.8,
+    "temperature_degC": {
+     "min": 5,
+     "max": 40
+    },
+    "note": "상부 피팅 1.5 in-6fRH, 시편 나사 0.75 in-10"
+   }
+  },
+  {
+   "model": "W-5150 (Threaded-End Holder, ASTM .505 in)",
+   "specs": {
+    "force_kN": 267,
+    "specimen_diameter_mm": 12.8,
+    "note": "상부 피팅 M36x4fRH"
+   }
+  },
+  {
+   "model": "W-5102 (Threaded-End Holder, non-standard)",
+   "specs": {
+    "force_kN": 267,
+    "specimen_diameter_mm": {
+     "max": 38
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/threaded-end-and-button-end-grip-bodies-and-inserts/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

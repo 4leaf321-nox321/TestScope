@@ -1,0 +1,78 @@
+{
+ "id": "bareiss-punching-presses-sp-1000-ii-sp-4000-ii",
+ "kind": "accessory",
+ "name": "Bareiss Punching Presses SP 1000 II (single tool) and SP 4000 II (four tools), 5 kN",
+ "name_ko": "바라이스 펀칭 프레스 SP 1000 II (공구 1개) · SP 4000 II (공구 4개 회전), 5 kN",
+ "manufacturer": "bareiss",
+ "category": "specimen_preparation",
+ "description": "고무·엘라스토머·연질 발포체에서 표준 시편(DIN 53504 숄더 바, ISO 34-1 스트립·Graves 앵글, 경도 시편)을 뽑는 수동 프레스 — 편심 레버로 힘을 줄이고, 널링 나사 하나로 공구 교체, 플런저 높이를 두께에 맞춤, 내장 이젝터. SP 1000 II: 공구 1개, 5 kN, 깊이 24 mm, 목 깊이 60 mm, 받침 175×270 mm, 20 kg. SP 4000 II: 공구 4개를 레버로 회전 교체(깊이 설정 유지), 센터링 링으로 링 시편, 5 kN, 40 kg.",
+ "test_items": [
+  "tensile",
+  "tear",
+  "hardness_shore"
+ ],
+ "measurands": [],
+ "materials": [
+  "rubber",
+  "elastomers",
+  "flexible polymer foams"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "DIN 53504",
+   "ISO 34-1"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "max": 5
+  },
+  "specimen_thickness_mm": {
+   "max": 24
+  },
+  "throat_depth_mm": {
+   "max": 60
+  }
+ },
+ "models": [
+  {
+   "model": "SP 1000 II",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": {
+     "max": 24
+    },
+    "throat_depth_mm": 60,
+    "weight_kg": 20,
+    "note": "받침 175×270 mm"
+   }
+  },
+  {
+   "model": "SP 4000 II",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": {
+     "max": 24
+    },
+    "throat_depth_mm": 60,
+    "weight_kg": 40,
+    "note": "공구 4개, 센터링 링"
+   }
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=361:stanzeinrichtung-sp-1000-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=363:stanzeinrichtung-sp-4000-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

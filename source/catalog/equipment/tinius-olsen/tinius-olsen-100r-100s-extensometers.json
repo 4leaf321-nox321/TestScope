@@ -1,0 +1,103 @@
+{
+ "id": "tinius-olsen-100r-100s-extensometers",
+ "kind": "sensor",
+ "name": "Tinius Olsen 100R High-Elongation and 100S Dual-Purpose (LVDT + optical encoder) Extensometers",
+ "name_ko": "티니우스 올센 100R 고신장 신율계 (720 mm) · 100S 이중 신율계 (LVDT 탄성계수 + 인코더 신장)",
+ "manufacturer": "tinius-olsen",
+ "category": "extensometer",
+ "subcategory": "long_travel",
+ "description": "카운터밸런스 클램프 둘을 표점에 붙여 재는 롱트래블 신율계. 100R: 엘라스토머·비강성 플라스틱, 광학 인코더 720 mm(연장형 970), 표점 10·15·20·25·40·50 mm, 정확도 25 mm 표점 1 %(ISO 5893 A, ASTM E83 C), 분해능 0.01 mm, 추종력 <10 g, 두께 0~5 mm, 5.5 kg. 100S: 폴리카보네이트·PET·GRP·알루미늄처럼 고탄성계수 + 고신장 — LVDT(25 mm 표점 10 %, 분해능 0.0005 mm, EN 10002-4 Class 1)로 E·오프셋 항복, 범위를 넘으면 인코더 720 mm(BS 5214 C&D)로 파단까지, 두께 0~10 mm, 7.5 kg, 소프트웨어 제어 필수.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "elongation",
+  "youngs_modulus",
+  "yield_strength",
+  "axial_strain"
+ ],
+ "materials": [
+  "elastomers",
+  "non-rigid plastics",
+  "polycarbonate",
+  "PET",
+  "GRP",
+  "aluminum alloys"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 5893 class A / ASTM E83 class C (100R)",
+   "EN 10002-4 Class 1 (100S LVDT)",
+   "BS 5214 grade C&D"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 970
+  },
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 50
+  },
+  "specimen_thickness_mm": {
+   "max": 10
+  }
+ },
+ "models": [
+  {
+   "model": "100R",
+   "specs": {
+    "displacement_mm": 720,
+    "gauge_length_mm": [
+     10,
+     15,
+     20,
+     25,
+     40,
+     50
+    ],
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 5
+    },
+    "weight_kg": 5.5,
+    "height_mm": 1015,
+    "note": "연장형 970 mm, 분해능 0.01 mm, 추종력 <10 g"
+   }
+  },
+  {
+   "model": "100S",
+   "specs": {
+    "displacement_mm": 720,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 10
+    },
+    "weight_kg": 7.5,
+    "height_mm": 1015,
+    "note": "LVDT 25 mm 표점 10 % / 50 mm 5 %, 분해능 0.0005 mm; 인코더 0.0004 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series",
+   "note": "「대부분의 트윈 스크류 재료시험기에 적합」 — 카탈로그의 티니우스 올센 UTM 은 ST 계열"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/100r-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/100s-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

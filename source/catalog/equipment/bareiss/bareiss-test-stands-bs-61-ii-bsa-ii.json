@@ -1,0 +1,69 @@
+{
+ "id": "bareiss-test-stands-bs-61-ii-bsa-ii",
+ "kind": "accessory",
+ "name": "Bareiss Test Stands BS 61 II (manual) and BSA II (automatic) for Handheld Hardness Testers (HP, HP Digital, HPE III Basic)",
+ "name_ko": "바라이스 휴대형 경도계용 시험대 BS 61 II (수동) · BSA II (자동 하강, RS232/USB)",
+ "manufacturer": "bareiss",
+ "category": "accessory",
+ "subcategory": "test_stand",
+ "description": "휴대형 쇼어 경도계(HP·HP Digital·HPE III Basic)를 실험실 탁상용으로 바꾸어 일정한 하강 속도·규정 접촉 압력·수직 배치를 보장하는 시험대. BS 61 II 수동: 어댑터 나사(알루미늄/강), 세팅 게이지, Shore D/C/D0 추가 추, Shore 00/000/000S 픽업 브래킷, 16×45×20 cm, 4.98 kg(픽업 브래킷 A 6.62 kg) — DIN EN ISO 868, DIN ISO 48-4, JIS K 7312. BSA II 자동: 총 질량으로 규정 압력, 방법별 추가 추·조임 봉, 제어 유닛, RS232/USB, 평행 시편 6 mm 이상 — ISO 48-4, JIS K 7312, SRIS 0101; BSA 400.",
+ "test_items": [
+  "hardness_shore"
+ ],
+ "measurands": [],
+ "materials": [
+  "rubber",
+  "foams",
+  "polymers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "DIN EN ISO 868",
+   "DIN ISO 48-4",
+   "JIS K 7312",
+   "SRIS 0101"
+  ]
+ },
+ "limits": {
+  "specimen_thickness_mm": {
+   "min": 6,
+   "note": "BSA II"
+  }
+ },
+ "models": [
+  {
+   "model": "BS 61 II (manual)",
+   "specs": {
+    "weight_kg": 4.98,
+    "width_mm": 160,
+    "height_mm": 450,
+    "depth_mm": 200
+   }
+  },
+  {
+   "model": "BSA II (automatic)",
+   "specs": {
+    "specimen_thickness_mm": {
+     "min": 6
+    },
+    "note": "RS232/USB, BSA 400"
+   }
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=391:pruefstaender-bs-61-ii-en-zubehoer&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=393:pruefstaender-bsa-en-zubehoer&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited",
+ "notes": "호스트 휴대형 경도계(HP·HPE III)가 카탈로그에 없어 fits_on 을 비웠다."
+}

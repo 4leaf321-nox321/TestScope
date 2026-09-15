@@ -1,0 +1,60 @@
+{
+ "id": "mts-650-03-extensometer-calibrator",
+ "kind": "accessory",
+ "name": "MTS Model 650.03 Extensometer Calibrator",
+ "name_ko": "MTS 모델 650.03 신율계 캘리브레이터 (마이크로미터 0.0005 mm)",
+ "manufacturer": "mts",
+ "category": "accessory",
+ "subcategory": "calibration",
+ "description": "고분해능 신율계 검증용 정밀 캘리브레이터 — 내마모 프레임, 큰 리드 스크류 스핀들의 마이크로미터 헤드(미터 0.0005 mm / 인치 0.00001 눈금)로 백래시를 줄이고 반복성을 높인다. 프레임 장착 케이스, 신율계 모델별 키트(632.03/.05 칼날, 632.02, 12.7·9.5·3.2 mm 환봉 시편, 프레임 반전, 확장 표점, 632.53/.54 브래킷, 632.18/.19/.20 직경, 변위 게이지, 632.06, 632.17/.85 축·횡, 632.92/.21 원주).",
+ "test_items": [],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_um": {
+   "min": 0.5,
+   "note": "마이크로미터 눈금 0.0005 mm"
+  }
+ },
+ "models": [
+  {
+   "model": "650.03",
+   "specs": {
+    "displacement_um": 0.5
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-634-axial-extensometers"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-632-axial-extensometers-small-gauge-and-enhanced-travel"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-632-averaging-biaxial-transverse-diametral-extensometers"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-632-clip-on-and-displacement-gages"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-high-temperature-extensometers-632-5x"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/extensometer-calibrator",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

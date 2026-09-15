@@ -1,0 +1,55 @@
+{
+ "id": "mts-geotextile-puncture-fixture",
+ "kind": "accessory",
+ "name": "MTS 5 kN Geotextile Puncture Fixture (ZDPA503)",
+ "name_ko": "MTS 5 kN 토목섬유 천공 지그 (ZDPA503, 플런저 Ø50·클램핑 링 Ø150)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "puncture",
+ "description": "도로·철로 사면·제방·방파제용 토목섬유 천공 시험 지그 — Ø50 mm 실린더 플런저(선단 반경 2.5 mm), 클램핑 링 내경 Ø150 mm, 플런저·링 맞춤 가능. 5 kN, 상온, 어댑터 20 mm, 하부 30.4 kg.",
+ "test_items": [
+  "puncture"
+ ],
+ "measurands": [],
+ "materials": [
+  "geotextiles"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 5
+  }
+ },
+ "models": [
+  {
+   "model": "ZDPA503",
+   "specs": {
+    "force_kN": 5,
+    "weight_kg": 30.4,
+    "note": "플런저 Ø50 mm, 링 Ø150 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mts-exceed-series-40",
+   "note": "puncture"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/geotextile-puncture-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

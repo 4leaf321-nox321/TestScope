@@ -1,0 +1,111 @@
+{
+ "id": "hegewald-peschke-compression-plates",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Compression Plates (round 20 kN Ø150 spring testing, tiltable round 250 kN Ø150, square plates for foam ISO 2439 / ISO 3386, round 250 kN with measuring probes)",
+ "name_ko": "헤게발트 운트 페슈케 압축 플레이트 (스프링용 원형 20 kN Ø150 · 틸팅 원형 250 kN Ø150 · 발포체용 사각(ISO 2439·3386) · 측정 프로브 부착 250 kN)",
+ "manufacturer": "hegewald-peschke",
+ "category": "grip_fixture",
+ "subcategory": "compression_platen",
+ "description": "강성·유연(시편 평행도)·치수·경도·최대 하중으로 고르는 압축 플레이트. 스프링 시험용 원형 20 kN Ø150(양쪽 고정, 교환 맨드릴 옵션), 틸팅 원형 250 kN Ø150(상판 ±3°, 온도 챔버 사용 가능), 사각 플레이트(여러 크기, 발포체 ISO 2439·ISO 3386 용 각인·구멍 패턴), 측정 프로브(3개까지, 개별/평균)와 파편 보호가 있는 원형 250 kN. 예: 3D 프린팅 플라스틱 폼 압축.",
+ "test_items": [
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "springs",
+  "foams",
+  "plastics",
+  "metals"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 2439",
+   "ISO 3386"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 20,
+   "max": 250
+  },
+  "specimen_diameter_mm": {
+   "max": 150,
+   "note": "원형 플레이트 지름"
+  }
+ },
+ "models": [
+  {
+   "model": "Round compression plates 20 kN (spring testing)",
+   "specs": {
+    "force_kN": 20,
+    "specimen_diameter_mm": 150
+   }
+  },
+  {
+   "model": "Tiltable round compression plates 250 kN",
+   "specs": {
+    "force_kN": 250,
+    "specimen_diameter_mm": 150,
+    "specimen_orientation_deg": 3,
+    "note": "상판 ±3°, 챔버 사용 가능"
+   }
+  },
+  {
+   "model": "Square compression plates (foam ISO 2439 / ISO 3386)",
+   "specs": {}
+  },
+  {
+   "model": "Round compression plates 250 kN with measuring probes and splinter protection",
+   "specs": {
+    "force_kN": 250,
+    "note": "프로브 3개까지"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-blue",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-duo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-solo",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-micro",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-vario",
+   "note": "「만능시험기용 부속」 — inspekt 계열 공용"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-grips/compression-plates/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,72 @@
+{
+ "id": "shimadzu-trapezium-x-software",
+ "kind": "software",
+ "name": "Shimadzu TRAPEZIUM X-V / TRAPEZIUM X / TRAPEZIUM LITE X Materials Testing Software",
+ "name_ko": "시마즈 TRAPEZIUM X-V · X · LITE X 재료 시험 소프트웨어 (Single·Cycle·Control·Texture·Spring)",
+ "manufacturer": "shimadzu",
+ "category": "accessory",
+ "subcategory": "software",
+ "description": "Autograph 용 시험 소프트웨어. TRAPEZIUM X-V(Windows 10)는 데이터 검색, 시각 위저드 조건 설정, 시작 화면의 퀵 조건 목록 — 단축 시험용 Single(인장·압축·굽힘·박리), Single Lite, Cycle(반복 내구), Control(사용자 패턴), Texture(식품·의약품), Spring(스프링) 패키지. TRViewX·TCE 챔버와 연동. TRAPEZIUM LITE X 는 경량판.",
+ "test_items": [],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "TRAPEZIUM X-V",
+   "specs": {}
+  },
+  {
+   "model": "TRAPEZIUM X",
+   "specs": {}
+  },
+  {
+   "model": "TRAPEZIUM LITE X",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-precision-universal-tester/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-ags-v-series/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-software/trapezium-x/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-software/trapezium-lite-x/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

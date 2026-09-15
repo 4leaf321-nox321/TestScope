@@ -1,0 +1,142 @@
+{
+ "id": "mts-advantage-wedge-action-grips",
+ "kind": "accessory",
+ "name": "MTS Advantage Wedge Action Grips (10 – 300 kN, -130 to 315 °C)",
+ "name_ko": "MTS Advantage 웨지 액션 그립 (10~300 kN, 챔버용 -130~315 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "mechanical_wedge",
+ "description": "물리는 동안 조 면이 고정되어 압축·좌굴력이 생기지 않는 범용 수동 웨지 그립 — 나사·공압 그립의 물림력이 모자라는 응용에. 서보유압·전기기계 겸용, 측면 삽입, 스프링·기계식 후퇴, 좌·우 나사 예압 기구, 환봉·평판 교환 면, D 형 장착(300 kN 은 M36×2). 10·30·50·100·150·300 kN(4.5~54 kg), 각각 감소 하중(7.5·22·37·75·112·213 kN)에서 -130~315 °C 챔버 사용.",
+ "test_items": [
+  "tensile",
+  "peel",
+  "tear"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "composites",
+  "plastics",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM E8/E8M",
+   "ASTM E21",
+   "ASTM D624",
+   "ASTM D638",
+   "ASTM E517",
+   "ASTM D3518",
+   "ASTM D412",
+   "ASTM E646",
+   "ISO 10113",
+   "ISO 10275",
+   "ISO 6892-1",
+   "ISO 6892-2",
+   "ISO 14129",
+   "ISO 527-2",
+   "ISO 527-4",
+   "ISO 527-5"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 10,
+   "max": 300
+  },
+  "temperature_degC": {
+   "min": -130,
+   "max": 315
+  }
+ },
+ "models": [
+  {
+   "model": "Advantage Wedge 10 kN",
+   "specs": {
+    "force_kN": 10,
+    "weight_kg": 4.5,
+    "temperature_degC": {
+     "min": -130,
+     "max": 315
+    },
+    "note": "챔버 사용 시 7.5 kN"
+   }
+  },
+  {
+   "model": "Advantage Wedge 30 kN",
+   "specs": {
+    "force_kN": 30,
+    "weight_kg": 5.5,
+    "note": "챔버 22 kN"
+   }
+  },
+  {
+   "model": "Advantage Wedge 50 kN",
+   "specs": {
+    "force_kN": 50,
+    "weight_kg": 7,
+    "note": "챔버 37 kN"
+   }
+  },
+  {
+   "model": "Advantage Wedge 100 kN",
+   "specs": {
+    "force_kN": 100,
+    "weight_kg": 15,
+    "note": "챔버 75 kN"
+   }
+  },
+  {
+   "model": "Advantage Wedge 150 kN",
+   "specs": {
+    "force_kN": 150,
+    "weight_kg": 19.6,
+    "note": "챔버 112 kN"
+   }
+  },
+  {
+   "model": "Advantage Wedge 300 kN",
+   "specs": {
+    "force_kN": 300,
+    "weight_kg": 54,
+    "note": "챔버 213 kN, 장착 M36×2"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-wedge-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

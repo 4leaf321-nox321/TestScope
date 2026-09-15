@@ -1,0 +1,56 @@
+{
+ "id": "instron-2717-080-fabric-loop-grips",
+ "kind": "accessory",
+ "name": "Instron 2717-080 Fabric Loop Grips (Band Clamps) for Elasticated Fabric",
+ "name_ko": "인스트론 2717-080 탄성 직물 루프 그립 (밴드 클램프)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "loop",
+ "description": "넓거나 좁은 탄성 직물의 루프 인장·신장 시험용 U 자형 그립. 시편을 루프로 꿰매어 상하 그립의 Ø6.5 mm 접촉 봉에 건다. ASTM D4964 의 「지정 신장에서의 루프 장력」「지정 장력에서의 신장」(3 사이클)에 쓴다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "elastic fabrics",
+  "narrow and wide elastics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D4964"
+  ]
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "2717-080",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/elasticated-fabric/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

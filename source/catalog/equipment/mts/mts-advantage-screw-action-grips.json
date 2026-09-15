@@ -1,0 +1,115 @@
+{
+ "id": "mts-advantage-screw-action-grips",
+ "kind": "accessory",
+ "name": "MTS Advantage Screw Action Grips (100 N / 2 kN / 5 kN / 10 kN)",
+ "name_ko": "MTS Advantage 나사 액션 그립 (100 N~10 kN, 두께 13~25 mm)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "screw_side_action",
+ "description": "공압 그립보다 약 2배의 물림력을 내는 수동 나사 그립 — 서보유압·전기기계 겸용, 측면 삽입, 정렬 가이드, 좌·우 손 조작, 랩 전단 시편, 공압 그립과 호환되는 면, 넥다운을 따라가는 탄성 퍽(고정·비고정 구성), 널링 나사, 챔버 사용(알루미늄 퍽 -129~200 °C), 피벗 면. 100 N(13 mm, Cm/Dm)·2 kN(19 mm)·5 kN(25 mm)·10 kN(25 mm, Dm). 5·10 kN 면 50·75 mm 폭.",
+ "test_items": [
+  "tensile",
+  "peel",
+  "tear",
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "elastomers",
+  "films",
+  "textiles",
+  "adhesives"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D638",
+   "ISO 527-2",
+   "ASTM D412"
+  ]
+ },
+ "limits": {
+  "force_N": {
+   "min": 100,
+   "max": 10000
+  },
+  "specimen_thickness_mm": {
+   "max": 25
+  },
+  "temperature_degC": {
+   "min": -129,
+   "max": 200,
+   "note": "알루미늄 퍽 사용 시"
+  }
+ },
+ "models": [
+  {
+   "model": "Advantage Screw Action 100 N",
+   "specs": {
+    "force_N": 100,
+    "specimen_thickness_mm": 13,
+    "weight_kg": 0.36
+   }
+  },
+  {
+   "model": "Advantage Screw Action 2 kN",
+   "specs": {
+    "force_kN": 2,
+    "specimen_thickness_mm": 19,
+    "weight_kg": 0.95
+   }
+  },
+  {
+   "model": "Advantage Screw Action 5 kN",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": 25,
+    "weight_kg": 2.1
+   }
+  },
+  {
+   "model": "Advantage Screw Action 10 kN",
+   "specs": {
+    "force_kN": 10,
+    "specimen_thickness_mm": 25,
+    "weight_kg": 4.9
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-screw-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

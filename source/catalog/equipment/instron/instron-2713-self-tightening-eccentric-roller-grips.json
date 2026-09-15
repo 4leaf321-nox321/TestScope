@@ -1,0 +1,106 @@
+{
+ "id": "instron-2713-self-tightening-eccentric-roller-grips",
+ "kind": "accessory",
+ "name": "Instron 2713 Series Self-Tightening Eccentric Roller Tensile Grips",
+ "name_ko": "인스트론 2713 계열 자기물림 편심 롤러 인장 그립 (얇은 시트·필름·고무)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "eccentric_roller",
+ "description": "하중이 걸리면 편심 롤러가 따라 조여 미끄러지지 않는 그립 — 하중을 받으면 단면이 크게 줄어드는 엘라스토머·연질 플라스틱·필름용. 레버 하나로 빠르게 넣고, 상부 그립은 카운터밸런스로 로드셀과 축을 맞춘다. 1·2·5 kN(2713-007/004/002), 100 N 박막 그립 2713-006 계열. -70~315 °C. 정적·인장 반복용, 고사이클 피로 불가.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "thin sheets",
+  "films",
+  "flexible plastics",
+  "elastomers",
+  "rubber latex",
+  "paper"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 100,
+   "max": 5000
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 315
+  },
+  "width_mm": {
+   "max": 43
+  }
+ },
+ "models": [
+  {
+   "model": "2713-007",
+   "specs": {
+    "force_kN": 1,
+    "width_mm": 43,
+    "temperature_degC": {
+     "min": -70,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "2713-004",
+   "specs": {
+    "force_kN": 2,
+    "width_mm": 28,
+    "temperature_degC": {
+     "min": -70,
+     "max": 315
+    }
+   }
+  },
+  {
+   "model": "2713-002",
+   "specs": {
+    "force_kN": 5,
+    "width_mm": 28,
+    "temperature_degC": {
+     "min": -70,
+     "max": 315
+    }
+   }
+  },
+  {
+   "model": "2713-006 Series (Thin Film Grips)",
+   "specs": {
+    "force_N": 100
+   },
+   "note": "고무 라텍스·엘라스토머·종이·고분자 필름"
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/self-tightening-thin-film-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

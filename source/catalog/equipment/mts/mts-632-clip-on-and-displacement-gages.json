@@ -1,0 +1,166 @@
+{
+ "id": "mts-632-clip-on-and-displacement-gages",
+ "kind": "sensor",
+ "name": "MTS Series 632 Clip-On Displacement Gages (632.02 / 632.03 / 632.05 / 632.65) and Displacement Gages (632.06)",
+ "name_ko": "MTS 632 계열 클립온 변위 게이지 (파괴역학 COD, 632.02/03/05/65) · 변위 게이지 (632.06)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "cod_gauge",
+ "description": "이중 캔틸레버 클립온 게이지는 KIC·JIC·균열 성장·R 곡선 등 파괴역학 시험용 — CT·WOL·원형 CT·C 형·굽힘 시편, 비전도성 유체 침지 가능. 632.02F 5 mm +3/-1 mm 50 Hz; 632.03(가장 정확, 개선 슬롯·3점 접촉 칼날) 12 mm 4 mm 100 Hz, 옵션 2/2.5 mm 표점; 632.02/.03/.05 는 ISO 9513 0.5·ASTM E399·E561 교정 요건, 632.65 는 ISO 9513 0.5; -100~150 °C. 632.06H 변위 게이지는 굽힘·비정형 시편의 작은 변형(±4/±2/±1/±6 mm, 영점 조정 8 mm, 150~250 g), 초과 이동 보호, 장착 블록, ASTM E2309 B·ISO 9513 1; ASTM D6272·D7264·D790, ISO 14125·178, EN 2562·2746.",
+ "test_items": [
+  "fracture_toughness",
+  "fatigue",
+  "flexure"
+ ],
+ "measurands": [
+  "crack_growth",
+  "force_deflection"
+ ],
+ "materials": [
+  "metals"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 0.5 (632.02/.03/.05/.65)",
+   "ASTM E399",
+   "ASTM E561",
+   "ASTM E2309 Class B / ISO 9513 Class 1 (632.06)"
+  ],
+  "test_methods": [
+   "ASTM D6272",
+   "ASTM D7264",
+   "ASTM D790",
+   "ISO 14125",
+   "ISO 178",
+   "EN 2562",
+   "EN 2746"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 2,
+   "max": 12
+  },
+  "displacement_mm": {
+   "max": 6
+  },
+  "temperature_degC": {
+   "min": -100,
+   "max": 175
+  },
+  "frequency_Hz": {
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "632.02F-20",
+   "specs": {
+    "gauge_length_mm": 5,
+    "displacement_mm": 3,
+    "frequency_Hz": 50,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "+3/-1 mm"
+   }
+  },
+  {
+   "model": "632.03F-20",
+   "specs": {
+    "gauge_length_mm": 12,
+    "displacement_mm": 4,
+    "frequency_Hz": 100,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "632.03-3X option 001 / 002",
+   "specs": {
+    "gauge_length_mm": [
+     2,
+     2.5
+    ],
+    "displacement_mm": 4,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "632.06H-20 / -23 (±4 mm)",
+   "specs": {
+    "displacement_mm": 4,
+    "temperature_degC": {
+     "min": -100,
+     "max": 175
+    },
+    "note": "영점에서 150 g"
+   }
+  },
+  {
+   "model": "632.06H-30 option 001 / 002 / 003 (±2 / ±1 / ±6 mm)",
+   "specs": {
+    "displacement_mm": [
+     2,
+     1,
+     6
+    ],
+    "temperature_degC": {
+     "min": -100,
+     "max": 175
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-model-640-fracture-mechanics-clevis-grips",
+   "note": "CT 시편과 조합"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/clip-on-displacement-gages",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/displacement-gages",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

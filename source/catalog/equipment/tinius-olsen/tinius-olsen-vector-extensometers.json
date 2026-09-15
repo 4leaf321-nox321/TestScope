@@ -1,0 +1,119 @@
+{
+ "id": "tinius-olsen-vector-extensometers",
+ "kind": "sensor",
+ "name": "Tinius Olsen VectorExtensometer U70 / B80 / U200 (AI-assisted non-contact)",
+ "name_ko": "티니우스 올센 Vector 신율계 U70 · B80 · U200 (AI 광학, 비접촉, 0.5 µm)",
+ "manufacturer": "tinius-olsen",
+ "category": "extensometer",
+ "subcategory": "video",
+ "description": "접촉·비접촉 센서 여럿을 하나로 대체하는 AI 광학 신율계 — 디지털 표점 배치로 자동화, 링·스페클 마킹, 아날로그 ±10 V 출력, 분해능 <0.5 µm(준정적·반복), ISO 9513 0.5·ASTM E83 B-1. U70: 단일 가변 표점 10~50 mm, 시야 70 H × 25 W × 40 D, ≤150 Hz. B80: 2축 — 축 7.5~70 mm·횡 6~25 mm, 시야 80×30×30, 150 Hz, 이중 아날로그 출력. U200: 표점 25~180 mm, 시야 200 H × 40 W × 100 D, ≥100 Hz, 25 mm 이상 표점에서 B-1 이상.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "poisson_ratio",
+  "r_value"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "composites",
+  "elastomers"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 0.5",
+   "ASTM E83 Class B-1"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "field_of_view_mm": {
+   "min": 70,
+   "max": 200
+  },
+  "gauge_length_mm": {
+   "min": 6,
+   "max": 180
+  },
+  "data_rate_Hz": {
+   "max": 150
+  },
+  "displacement_um": {
+   "min": 0.5,
+   "note": "분해능"
+  }
+ },
+ "models": [
+  {
+   "model": "VectorExtensometer U70",
+   "specs": {
+    "field_of_view_mm": 70,
+    "gauge_length_mm": {
+     "min": 10,
+     "max": 50
+    },
+    "data_rate_Hz": 150,
+    "displacement_um": 0.5
+   }
+  },
+  {
+   "model": "VectorExtensometer B80",
+   "specs": {
+    "field_of_view_mm": 80,
+    "gauge_length_mm": {
+     "min": 7.5,
+     "max": 70
+    },
+    "data_rate_Hz": 150,
+    "displacement_um": 0.5,
+    "note": "횡 표점 6~25 mm, 2축"
+   }
+  },
+  {
+   "model": "VectorExtensometer U200",
+   "specs": {
+    "field_of_view_mm": 200,
+    "gauge_length_mm": {
+     "min": 25,
+     "max": 180
+    },
+    "data_rate_Hz": 100,
+    "displacement_um": 0.5
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-torsion-testers"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/vectorextensometer-u70/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/vectorextensometer-b80/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/vectorextensometer-u200/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

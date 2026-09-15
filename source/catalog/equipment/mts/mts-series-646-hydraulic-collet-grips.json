@@ -1,0 +1,108 @@
+{
+ "id": "mts-series-646-hydraulic-collet-grips",
+ "kind": "accessory",
+ "name": "MTS Series 646 Hydraulic Collet Grips (646.10B 100 kN / 646.25B 250 kN, axial-torsional 1,100 / 2,200 N·m)",
+ "name_ko": "MTS 시리즈 646 유압 콜릿 그립 (100·250 kN, 축-비틀림 1,100·2,200 N·m, 고온 콜릿 1000 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "collet",
+ "description": "환봉 시편을 부드러운 콜릿에 밀어 넣기만 하면 되는 피로용 그립 — 나사·버튼 끝 가공, 볼트·칼라가 필요 없고 시편 간 재현성이 좋아 굽힘 변형이 작다. 646.10B 100 kN(장착 M27×2, Ø114·171 mm), 646.25B 250 kN(M36×2, Ø171·254), -40~65 °C. 축-비틀림형 646.10B 100 kN·1,100 N·m(M68×2), 646.25B 250 kN·2,200 N·m(M92×3). 콜릿 Ø10·12·15 mm(646.10), Ø30 mm(646.25). 646.10 용 고온 콜릿 패키지는 680 그립의 연장 로드를 써서 1,000 °C.",
+ "test_items": [
+  "fatigue",
+  "tensile",
+  "torsion"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "rubber"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 100,
+   "max": 250
+  },
+  "torque_Nm": {
+   "max": 2200
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 1000,
+   "note": "표준 -40~65 °C, 고온 콜릿 패키지 1000 °C"
+  },
+  "specimen_diameter_mm": {
+   "min": 10,
+   "max": 30
+  }
+ },
+ "models": [
+  {
+   "model": "646.10B (axial)",
+   "specs": {
+    "force_kN": 100,
+    "temperature_degC": {
+     "min": -40,
+     "max": 65
+    },
+    "note": "장착 나사 M27×2, Ø114/171 mm"
+   }
+  },
+  {
+   "model": "646.25B (axial)",
+   "specs": {
+    "force_kN": 250,
+    "temperature_degC": {
+     "min": -40,
+     "max": 65
+    },
+    "note": "M36×2, Ø171/254 mm"
+   }
+  },
+  {
+   "model": "646.10B (axial-torsional)",
+   "specs": {
+    "force_kN": 100,
+    "torque_Nm": 1100,
+    "note": "M68×2"
+   }
+  },
+  {
+   "model": "646.25B (axial-torsional)",
+   "specs": {
+    "force_kN": 250,
+    "torque_Nm": 2200,
+    "note": "M92×3"
+   }
+  },
+  {
+   "model": "Collets 646.10-XX Ø10 / 12 / 15 mm, 646.25-XX Ø30 mm",
+   "specs": {
+    "specimen_diameter_mm": [
+     10,
+     12,
+     15,
+     30
+    ]
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "페이지가 Landmark 를 관련 항목으로 든다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/series-646-hydraulic-collet-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

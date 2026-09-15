@@ -1,0 +1,70 @@
+{
+ "id": "zwickroell-displacement-transducers",
+ "kind": "sensor",
+ "name": "ZwickRoell Displacement Transducers for Compression, Flexure and Component Testing (e.g. T15)",
+ "name_ko": "즈윅로엘 압축·굽힘·부품 시험용 변위 변환기 (50 mm, -70~+250 °C)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "deflectometer",
+ "description": "굽힘 시편 아래나 압축 플래튼에 직접 닿아 처짐·변형을 재는 스트레인게이지 변위 변환기 — 프레임·로드셀 변형이 섞이지 않는다. 잠근 뒤 측정 위치가 늘 같아 재현성이 있고 시험 중 접촉력 변화가 작다. ISO 9513 Class 1(측정값의 ±1 %), ASTM E83 B2(50 mm 표점 기준), 온도에 따른 편차는 시험기가 보상. 최대 50 mm, -70~+250 °C. 목재·복합재·부품(댐퍼 등).",
+ "test_items": [
+  "compression",
+  "flexure"
+ ],
+ "measurands": [
+  "force_deflection"
+ ],
+ "materials": [
+  "wood",
+  "fiber composites",
+  "components"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 1",
+   "ASTM E83 Class B2"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 50
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 250
+  }
+ },
+ "models": [
+  {
+   "model": "T15 등",
+   "specs": {
+    "displacement_mm": 50,
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline",
+   "note": "페이지가 기종을 명시하지 않음 — 즈윅로엘 정적 시험기(AllroundLine·ProLine) 공용 부속"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/extensometers-for-compression-flexure-and-components-testing/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

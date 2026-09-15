@@ -1,0 +1,79 @@
+{
+ "id": "instron-2717-o-ring-test-fixtures",
+ "kind": "accessory",
+ "name": "Instron 2717-068 / 2717-078 O-Ring Test Fixtures",
+ "name_ko": "인스트론 2717 O-링 인장 지그 (1 kN, 교환 스핀들)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "o_ring",
+ "description": "O-링 같은 연속 루프 시편의 국부 응력을 줄이며 당기는 지그, 최대 1 kN. 스핀들 세트를 바꿔 규격에 맞춘다 — Ø4.75 mm(ASTM D412 Proc. B), Ø12.7(ASTM D1414), Ø15×25 mm 폭(BS 3704), Ø18.3·22.3(DIN 53504 R2·R1). 단일 컬럼(1 kN 이상)용 2717-068, 테이블 모델용 2717-078.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "elastomers",
+  "O-rings"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D412",
+   "ASTM D1414",
+   "BS 3704",
+   "DIN 53504"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "max": 1
+  }
+ },
+ "models": [
+  {
+   "model": "2717-068 (single column)",
+   "specs": {
+    "force_kN": 1,
+    "note": "334X·34SC·444X·554X·584X·594X·68SC 1 kN 이상"
+   }
+  },
+  {
+   "model": "2717-078 (table model)",
+   "specs": {
+    "force_kN": 1,
+    "note": "336X·34TM·446X·556X·586X·596X·68TM"
+   }
+  }
+ ],
+ "options": [
+  "spindles 2717-074 (Ø3.18)",
+  "2717-070 (Ø4.75, D412 B)",
+  "2717-075 (Ø6.35)",
+  "2717-076 (Ø12.7, ASTM D1414)",
+  "2717-071 (Ø15×25, BS 3704)",
+  "2717-073 (Ø18.3, DIN 53504 R2)",
+  "2717-072 (Ø22.3, DIN 53504 R1)"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/o-ring-test-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

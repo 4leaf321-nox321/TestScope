@@ -1,0 +1,154 @@
+{
+ "id": "instron-2810-flexure-fixtures",
+ "kind": "accessory",
+ "name": "Instron 2810 Series Three/Four Point Bend (Flexure) Fixtures (2810-400 / CP139080 / 2810-182 / 2810-206 / W-6810 / W-6812)",
+ "name_ko": "인스트론 2810 계열 3·4점 굽힘 지그 (5~250 kN, 가이드 벤드·철근 냉간 굽힘)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "flexure",
+ "description": "정밀 가공 앤빌 두 개 위에 시편을 얹고 중앙(3점) 또는 양쪽(4점, 변환 키트)에서 누르는 지그. 지지 빔에 눈금이 있어 지간을 좌우 대칭으로 맞춘다. 5 kN 2810-400 은 지간 10~200 mm, 폭 50 mm, -100~350 °C, ASTM D790·ISO 178; 고정밀형 CP139080 은 디지털 변위 게이지(1 µm). 100 kN 2810-182(지간 30~250), 250 kN 2810-206(지간 10~600, 폭 100). 용접부 가이드 벤드 W-6810(100 kN, 지간 0~254), 철근 냉간 굽힘 W-6812(200 kN, ASTM A615·A706·A996·BS 4449).",
+ "test_items": [
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "metals",
+  "alloys",
+  "composites",
+  "ceramics",
+  "welded plate",
+  "steel rebar"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D790",
+   "ISO 178",
+   "ASTM A615",
+   "ASTM A706",
+   "ASTM A996",
+   "BS 4449"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 5,
+   "max": 250
+  },
+  "temperature_degC": {
+   "min": -100,
+   "max": 350
+  },
+  "hdt_span_mm": {
+   "min": 10,
+   "max": 600,
+   "note": "지간(support span) — HDT 지간 키를 굽힘 지간으로 빌려 씀"
+  },
+  "width_mm": {
+   "max": 100
+  }
+ },
+ "models": [
+  {
+   "model": "2810-400",
+   "specs": {
+    "force_kN": 5,
+    "temperature_degC": {
+     "min": -100,
+     "max": 350
+    },
+    "hdt_span_mm": {
+     "min": 10,
+     "max": 200
+    },
+    "width_mm": 50
+   }
+  },
+  {
+   "model": "CP139080 (High Accuracy 5 kN)",
+   "specs": {
+    "force_kN": 5,
+    "note": "디지털 변위 게이지 1 µm"
+   }
+  },
+  {
+   "model": "2810-182",
+   "specs": {
+    "force_kN": 100,
+    "hdt_span_mm": {
+     "min": 30,
+     "max": 250
+    },
+    "width_mm": 50
+   }
+  },
+  {
+   "model": "2810-206",
+   "specs": {
+    "force_kN": 250,
+    "hdt_span_mm": {
+     "min": 10,
+     "max": 600
+    },
+    "width_mm": 100
+   }
+  },
+  {
+   "model": "W-6810 (Guided-Bend / Weld Bend)",
+   "specs": {
+    "force_kN": 100,
+    "hdt_span_mm": {
+     "min": 0,
+     "max": 254
+    },
+    "width_mm": 76
+   }
+  },
+  {
+   "model": "W-6812 (Cold Bend, Rebar)",
+   "specs": {
+    "force_kN": 200
+   }
+  }
+ ],
+ "options": [
+  "4-point conversion kit",
+  "deflectometer plunger assembly"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-6800-series",
+   "note": "flexure"
+  },
+  {
+   "type": "extends_capability",
+   "target": "instron-3400-series",
+   "note": "flexure"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/flexure-fixtures/three-point-bend-test-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

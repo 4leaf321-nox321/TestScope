@@ -1,0 +1,82 @@
+{
+ "id": "mts-fundamental-90-degree-peel-fixture",
+ "kind": "accessory",
+ "name": "MTS Fundamental 90° Peel Fixture (FCF452, 0.45 kN)",
+ "name_ko": "MTS Fundamental 90° 박리 지그 (FCF452, 0.45 kN — ASTM D1876·FINAT FTM1/2/3·AFERA 4015)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "peel",
+ "description": "고정 기판에서 접착 재료를 90° 로 떼는 힘을 재며 정밀 베어링으로 수직 축 정렬을 유지하는 지그 — ASTM D1876, FINAT FTM1/2/3, AFERA 4015 T4. 0.45 kN, 0~50 °C, 하부 높이 140·폭 404 mm, 시편 이동 152.4(평행)·101.4 mm(직각), 시편 165 mm × 두께 3.556 × 폭 12.7~95.3 mm. 상부 그립 별도.",
+ "test_items": [
+  "peel"
+ ],
+ "measurands": [],
+ "materials": [
+  "tapes",
+  "films",
+  "adhesives"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D1876",
+   "FINAT FTM1",
+   "FINAT FTM2",
+   "FINAT FTM3",
+   "AFERA 4015"
+  ]
+ },
+ "limits": {
+  "force_N": {
+   "max": 450
+  },
+  "width_mm": {
+   "min": 12.7,
+   "max": 95.3
+  }
+ },
+ "models": [
+  {
+   "model": "FCF452",
+   "specs": {
+    "force_N": 450,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    },
+    "height_mm": 140,
+    "width_mm": 404,
+    "specimen_thickness_mm": 3.556,
+    "specimen_length_mm": 165
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mts-exceed-series-40",
+   "note": "peel"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mts-criterion-series-40",
+   "note": "peel"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/fundamental-90-degree-peel-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

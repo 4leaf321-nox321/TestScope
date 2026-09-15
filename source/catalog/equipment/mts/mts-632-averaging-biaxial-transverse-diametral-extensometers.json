@@ -1,0 +1,205 @@
+{
+ "id": "mts-632-averaging-biaxial-transverse-diametral-extensometers",
+ "kind": "sensor",
+ "name": "MTS Series 632 Averaging Axial (632.17), Biaxial (632.85), Cross-Sectional Strain (632.23) and Diametral (632.18 / 632.19 / 632.20) Extensometers",
+ "name_ko": "MTS 632 계열 평균 축방향 (632.17) · 2축 (632.85) · 단면 변형률 (632.23) · 직경 (632.18/19/20) 신율계",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "biaxial_clip_on",
+ "description": "굽힘 오차를 줄이고 푸아송비·r 값을 구하는 632 계열. 632.17 평균 축방향: 시편 양면 센서 둘의 합산 출력(옵션 001 평균 500 Ω / 002 개별 1000 Ω), 특허 굴곡 지지, 교차 굴곡, 비선형성 ≤0.15 %·히스테리시스 ≤0.10 %, 환봉 Ø3~32·평판 51 mm, 10 mm +12/-5 %·25 mm +5/-2 %, -100~150 °C. 632.85 2축: 25 mm, 축 +1.25/-0.5 mm·횡 ±0.5 mm(-05 누화 방지 원추 접점, -14 판금용), ASTM D3518·ISO 14129·EN 6031. 632.23 단면 변형률: 게이지 폭 12.7/20/25 mm, -4~0 mm, 두께 0.5~5 mm, 400 g, 자유 부동 — r 값. 직경 632.18(Ø6.1~26, ±2 mm; -21 극저온 -265 °C)·632.19(Ø3.6~13, ±1)·632.20(Ø2~7.9, ±0.5 mm), 400 g — 단면적 변화·푸아송비. ASTM E83 B1·ISO 9513 0.5.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "fatigue"
+ ],
+ "measurands": [
+  "axial_strain",
+  "transverse_strain",
+  "poisson_ratio",
+  "r_value",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "composites",
+  "metals",
+  "sheet metal",
+  "plastics",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM D3518",
+   "ISO 14129",
+   "EN 6031"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 25
+  },
+  "temperature_degC": {
+   "min": -265,
+   "max": 150
+  },
+  "specimen_diameter_mm": {
+   "min": 2,
+   "max": 32
+  },
+  "width_mm": {
+   "max": 51
+  }
+ },
+ "models": [
+  {
+   "model": "632.17F-40 (averaging axial, 10 mm)",
+   "specs": {
+    "gauge_length_mm": 10,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "+12 %/-5 %"
+   }
+  },
+  {
+   "model": "632.17F-20 (averaging axial, 25 mm)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "+5 %/-2 %"
+   }
+  },
+  {
+   "model": "632.85F-05 / -14 (biaxial, 25 mm)",
+   "specs": {
+    "gauge_length_mm": 25,
+    "displacement_mm": 1.25,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "축 +1.25/-0.5 mm, 횡 ±0.5 mm"
+   }
+  },
+  {
+   "model": "632.23F-20 / -30 (cross-sectional, 12.7 / 20 / 25 mm width)",
+   "specs": {
+    "width_mm": [
+     12.7,
+     20,
+     25
+    ],
+    "displacement_mm": 4,
+    "specimen_thickness_mm": {
+     "min": 0.5,
+     "max": 5
+    },
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    },
+    "note": "-4~0 mm, 클램프 400 g"
+   }
+  },
+  {
+   "model": "632.18F-20 / -21 (diametral Ø6.1–26)",
+   "specs": {
+    "specimen_diameter_mm": {
+     "min": 6.1,
+     "max": 26
+    },
+    "displacement_mm": 2,
+    "temperature_degC": {
+     "min": -265,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "632.19F-20 (diametral Ø3.6–13)",
+   "specs": {
+    "specimen_diameter_mm": {
+     "min": 3.6,
+     "max": 13
+    },
+    "displacement_mm": 1,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    }
+   }
+  },
+  {
+   "model": "632.20F-20 (diametral Ø2–7.9)",
+   "specs": {
+    "specimen_diameter_mm": {
+     "min": 2,
+     "max": 7.9
+    },
+    "displacement_mm": 0.5,
+    "temperature_degC": {
+     "min": -100,
+     "max": 150
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/averaging-axial-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/biaxial-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/cross-sectional-strain-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/diametral-extensometer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

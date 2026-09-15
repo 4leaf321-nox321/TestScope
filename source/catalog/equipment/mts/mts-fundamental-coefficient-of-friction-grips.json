@@ -1,0 +1,80 @@
+{
+ "id": "mts-fundamental-coefficient-of-friction-grips",
+ "kind": "accessory",
+ "name": "MTS Fundamental Coefficient of Friction Grips (FCF103, 1 kN)",
+ "name_ko": "MTS Fundamental 마찰계수 그립 (FCF103, 1 kN — ASTM D1894·TAPPI T542/T549/T816)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "friction",
+ "description": "풀리·스트링으로 마찰 썰매를 시편 위로 끌어 하중을 재는 마찰계수 지그 — ASTM D1894(플라스틱 필름), TAPPI T542(종이·판지)·T549(비섬유)·T816(골판지). 1 kN, 0~50 °C, 하부 지그 높이 112·폭 203 mm, 시편 279.4×152.4 mm·두께 5 mm 까지. 상부 그립 별도.",
+ "test_items": [
+  "friction_coefficient"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastic films",
+  "paper",
+  "paperboard",
+  "corrugated board"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D1894",
+   "TAPPI T542",
+   "TAPPI T549",
+   "TAPPI T816"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "max": 1
+  },
+  "specimen_thickness_mm": {
+   "max": 5
+  }
+ },
+ "models": [
+  {
+   "model": "FCF103",
+   "specs": {
+    "force_kN": 1,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    },
+    "height_mm": 112,
+    "width_mm": 203,
+    "specimen_thickness_mm": 5
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mts-exceed-series-40",
+   "note": "friction_coefficient"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mts-criterion-series-40",
+   "note": "friction_coefficient"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-coefficient-friction-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

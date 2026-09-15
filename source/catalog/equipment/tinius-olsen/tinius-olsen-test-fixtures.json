@@ -1,0 +1,92 @@
+{
+ "id": "tinius-olsen-test-fixtures",
+ "kind": "accessory",
+ "name": "Tinius Olsen Flex, Peel, Friction and Shear Test Fixtures (330-012 / 336-001 / 336-002 / S630 / HF74, 90°/180°/climbing drum peel, COF, V-notched rail shear, bearing strength)",
+ "name_ko": "티니우스 올센 굽힘·박리·마찰·전단 지그 (3·4점 굽힘 330-012/336-001/002/S630/HF74 · 90°/180°/클라이밍 드럼 박리 · 마찰계수 · V 노치 레일 전단 · 베어링 강도)",
+ "manufacturer": "tinius-olsen",
+ "category": "grip_fixture",
+ "subcategory": "fixture",
+ "description": "굽힘: 330-012 3점(LVDT 판 있음), S630 고정 지간, 단보 3점, 336-001 4점, 336-002 3점, HF74 3점 광폭 가변, 챔버용 플렉스 케이지 — ASTM D790(3점)·C1609(4점). 박리: 90° 박리 유닛 1.5 kN(ASTM D6862), 180° 박리, 클라이밍 드럼. 마찰: 마찰계수 시험(ASTM D1894). 전단: V 노치 레일 전단, 이중 전단 베어링 강도(절차 A), 단일 전단 개방 구멍 베어링(B), 단일 전단 베어링 강도(C) — 항공 복합재. 용량은 90° 박리 1.5 kN 외에 페이지에 없다.",
+ "test_items": [
+  "flexure",
+  "peel",
+  "friction_coefficient",
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "composites",
+  "adhesive tapes",
+  "concrete (C1609)"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D790",
+   "ASTM C1609",
+   "ASTM D6862",
+   "ASTM D1894"
+  ]
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "Flex: 330-012 3-point (with/without LVDT), S630 fixed span, short beam 3-point",
+   "specs": {}
+  },
+  {
+   "model": "Flex: 336-001 4-point, 336-002 3-point, HF74 wide variable 3-point, flex cage for environmental chamber",
+   "specs": {}
+  },
+  {
+   "model": "Peel: 90° peel unit 1.5 kN, 180° peel fixture, climbing drum peel unit",
+   "specs": {
+    "force_kN": 1.5
+   }
+  },
+  {
+   "model": "Coefficient of friction test (ASTM D1894)",
+   "specs": {}
+  },
+  {
+   "model": "Shear: V-notched rail shear, double/single shear bearing strength (procedures A / B / C)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series",
+   "note": "「대부분의 트윈 스크류 재료시험기에 적합」 — 카탈로그의 티니우스 올센 UTM 은 ST 계열"
+  },
+  {
+   "type": "extends_capability",
+   "target": "tinius-olsen-st-series",
+   "note": "flexure·peel·friction·shear"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/flex-test-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/peel-test-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/friction-test-grip/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.tiniusolsen.com/product/shear-test-grip/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

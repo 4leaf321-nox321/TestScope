@@ -1,0 +1,103 @@
+{
+ "id": "bareiss-positioning-devices-centrofix-rotofix-barofix",
+ "kind": "accessory",
+ "name": "Bareiss Positioning Devices for digi test II / Gelomat (Centrofix, Rotofix, Barofix 4)",
+ "name_ko": "바라이스 digi test II · Gelomat 용 시편 위치 결정 장치 (Centrofix 수동 · Rotofix 자동 회전 템플릿 · Barofix 4 레이저 자동 센터링)",
+ "manufacturer": "bareiss",
+ "category": "accessory",
+ "subcategory": "specimen_positioning",
+ "description": "경도계 측정 오차의 가장 큰 원인인 시편 고정을 규격대로 하는 장치. Centrofix: digi test II·Gelomat 용 수동 모듈형 위치 장치 — 케이블·호스·성형품, 평면·경사·볼록·오목 복합재, 연질 재료·엘라스토머·발포체·젤 캡슐·배지, 다양한 어태치먼트, 19×7.5×10 cm, 0.79 kg. Rotofix: 버튼 한 번으로 여러 시편(Gelomat 용 최대 10개)을 자동 측정, 전자 유닛으로 측정점 수·위치 정의, 세팅 게이지, Celeste 소프트웨어, digi test II 용 26×10×14 cm 2.82 kg / Gelomat 용 20×14×18 cm 4.87 kg. Barofix 4: digi test II 전용 완전 자동 레이저 센터링 — 평행 시트·성형품·O-링(O-링당 1~2회)을 여러 개 놓으면 레이저로 위치를 찾아 압입자 아래로 자동 이송, 경도와 두께를 한 번에(2-in-1), 최고점/중심점 선택, BareissOne 데이터 전송, DIN ISO 48-2·Micro Shore A·IRHD Micro, 시트 0.7 mm 부터.",
+ "test_items": [
+  "hardness_shore",
+  "hardness_irhd"
+ ],
+ "measurands": [],
+ "materials": [
+  "elastomers",
+  "plastics",
+  "foams",
+  "gel capsules",
+  "O-rings",
+  "molded parts"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "DIN ISO 48-2"
+  ]
+ },
+ "limits": {
+  "specimen_thickness_mm": {
+   "min": 0.7,
+   "note": "Barofix 4 시트 최소 두께"
+  }
+ },
+ "models": [
+  {
+   "model": "Centrofix (manual)",
+   "specs": {
+    "weight_kg": 0.79,
+    "width_mm": 190,
+    "height_mm": 75,
+    "depth_mm": 100
+   }
+  },
+  {
+   "model": "Rotofix for digi test II",
+   "specs": {
+    "weight_kg": 2.82,
+    "width_mm": 260,
+    "height_mm": 100,
+    "depth_mm": 140
+   }
+  },
+  {
+   "model": "Rotofix for Gelomat",
+   "specs": {
+    "weight_kg": 4.87,
+    "width_mm": 200,
+    "height_mm": 140,
+    "depth_mm": 180,
+    "note": "시편 최대 10개"
+   }
+  },
+  {
+   "model": "Barofix 4 (laser, digi test II only)",
+   "specs": {
+    "specimen_thickness_mm": {
+     "min": 0.7
+    },
+    "note": "경도 + 두께 동시"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "bareiss-digi-test-ii"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=420:centrofix-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=359:rotofix-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=418:rotofix-gelomat-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://bareiss.de/en/product-overview/accessories?view=article&id=326:barofix-4-en&catid=17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

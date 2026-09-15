@@ -1,0 +1,59 @@
+{
+ "id": "ametek-lloyd-tcf950-furnace",
+ "kind": "accessory",
+ "name": "Lloyd Instruments TCF950 High-Temperature Vertical Split Furnace (50–950 °C, 3 zones)",
+ "name_ko": "로이드 TCF950 고온 수직 분할 퍼니스 (50~950 °C, 3존)",
+ "manufacturer": "ametek-lloyd",
+ "category": "furnace",
+ "description": "단일·이중 컬럼 시험기용 고온 수직 분할 퍼니스 — 50~950 °C, 3존 발열체를 독립 조절해 로 전장의 온도를 고르게, 별도 제어 콘솔.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": 50,
+   "max": 950
+  }
+ },
+ "models": [
+  {
+   "model": "TCF950",
+   "specs": {
+    "temperature_degC": {
+     "min": 50,
+     "max": 950
+    },
+    "note": "3존"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series",
+   "note": "「단일·이중 컬럼 벤치 시험기」 — 카탈로그의 로이드 시험기는 LS 계열(LR Plus·EZ 는 없음)"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "ametek-lloyd-ls-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/accessories/furnaces",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

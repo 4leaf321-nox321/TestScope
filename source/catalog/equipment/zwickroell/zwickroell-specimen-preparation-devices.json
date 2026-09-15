@@ -1,0 +1,94 @@
+{
+ "id": "zwickroell-specimen-preparation-devices",
+ "kind": "accessory",
+ "name": "ZwickRoell Specimen Preparation Devices (notching plane, cutting presses, film strip cutter, blanking machines)",
+ "name_ko": "즈윅로엘 시편 제작 장치 (노칭 플레인 · 수동·공압 커팅 프레스 · 필름 스트립 커터 · 금속 시편 블랭킹기)",
+ "manufacturer": "zwickroell",
+ "category": "specimen_preparation",
+ "description": "플라스틱·고무·금속 시편 제작 장치군. 수동 노칭 플레인은 ASTM D256·D6110·ISO 179·ISO 180·ISO 8256·ASTM D1822·BS 7413 노치를 크랭크 한 번에 한 행정씩 깎고 잔여 폭에서 자동 정지, 3날 교환 블레이드. 수동 커팅 프레스(벤트 레버·편심 레버)는 60 Shore 까지의 고무·엘라스토머·연질 발포체(두께 8 mm 필름·종이)에서 직사각·덤벨·원형 시편을 뽑고 재래식보다 30 % 큰 절단력. 공압 커팅 프레스, 자동 노치 절단기, 필름 스트립 커터, 자동 시편 제작 시스템. 금속은 시편 블랭킹기 — ISO 6892·ASTM A370 이 요구하는 절단 가장자리 가공경화 영역을 두께의 10 % 이내로.",
+ "test_items": [
+  "tensile",
+  "charpy_impact",
+  "izod_impact",
+  "tensile_impact"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "rubber",
+  "elastomers",
+  "flexible foam",
+  "films",
+  "paper",
+  "sheet metal"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D256",
+   "ASTM D6110",
+   "ISO 179",
+   "ISO 180",
+   "ISO 8256",
+   "ASTM D1822",
+   "BS 7413",
+   "ISO 2818",
+   "ISO 6892",
+   "ASTM A370"
+  ]
+ },
+ "limits": {
+  "hardness_shore_a": {
+   "max": 60,
+   "note": "커팅 프레스로 뽑을 수 있는 최대 경도(ISO 868)"
+  },
+  "specimen_thickness_mm": {
+   "max": 8,
+   "note": "커팅 프레스"
+  }
+ },
+ "models": [
+  {
+   "model": "Manual notching plane",
+   "specs": {}
+  },
+  {
+   "model": "Manual cutting press with bent lever",
+   "specs": {
+    "hardness_shore_a": 60,
+    "specimen_thickness_mm": 8
+   }
+  },
+  {
+   "model": "Manual cutting press with eccentric lever",
+   "specs": {
+    "hardness_shore_a": 60
+   }
+  },
+  {
+   "model": "Pneumatic cutting press",
+   "specs": {}
+  },
+  {
+   "model": "Automatic notch cutting machine",
+   "specs": {}
+  },
+  {
+   "model": "Film strip cutter",
+   "specs": {}
+  },
+  {
+   "model": "Specimen blanking machine (metals)",
+   "specs": {}
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/specimen-preparation-and-dimensional-measurement/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

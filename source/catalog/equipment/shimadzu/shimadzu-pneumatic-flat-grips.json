@@ -1,0 +1,125 @@
+{
+ "id": "shimadzu-pneumatic-flat-grips",
+ "kind": "accessory",
+ "name": "Shimadzu Pneumatic Flat Grips (50 N – 10 kN, bellows type -70 to +200 °C) and 1 kN Pneumatic Flat Grips for Foil",
+ "name_ko": "시마즈 공압 플랫 그립 (50 N~10 kN, 벨로우즈형 -70~+200 °C) · 금속박용 1 kN 공압 플랫 그립",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "pneumatic_flat",
+ "description": "고무·플라스틱·직물·종이의 판·필름·선재를 빠르고 재현성 있게 무는 공압 그립. 표준형 50 N·1·5·10 kN(-10~+180 °C), 벨로우즈형 5 kN 까지(-70~+200 °C, 핑거 가드 기본). 50 N 은 평면 조, 1·5·10 kN 은 편면 줄눈 조, 옵션 웨이브·고무 코팅·그랩 시험·라인 접촉 조. 공기압 0.2~0.7 MPa(0.7 MPa 압축기 필요), 조작은 풋 밸브(AG-Xplus·AGS-X·EZ-X 공통)·F형 크로스헤드 연동 풋스위치·수동 스위치·AG-Xplus 스마트 컨트롤러·AGS-X 20 kN 이상 조작 패널. 금속박용 1 kN 형은 두께 4.5 mm 까지, 조 면 회전을 줄인 강성 구조.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "rubber",
+  "plastics",
+  "textiles",
+  "cloth",
+  "paper",
+  "metal foil"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 50,
+   "max": 10000
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 200
+  },
+  "pressure_MPa": {
+   "min": 0.2,
+   "max": 0.7
+  }
+ },
+ "models": [
+  {
+   "model": "Pneumatic Flat Grips 50 N (standard)",
+   "specs": {
+    "force_N": 50,
+    "temperature_degC": {
+     "min": -10,
+     "max": 180
+    },
+    "note": "평면 조"
+   }
+  },
+  {
+   "model": "Pneumatic Flat Grips 1 kN / 5 kN / 10 kN (standard)",
+   "specs": {
+    "force_kN": [
+     1,
+     5,
+     10
+    ],
+    "temperature_degC": {
+     "min": -10,
+     "max": 180
+    },
+    "note": "편면 줄눈 조"
+   }
+  },
+  {
+   "model": "Pneumatic Flat Grips bellows type (≤5 kN)",
+   "specs": {
+    "force_kN": {
+     "max": 5
+    },
+    "temperature_degC": {
+     "min": -70,
+     "max": 200
+    },
+    "note": "핑거 가드 기본"
+   }
+  },
+  {
+   "model": "1 kN Pneumatic Flat Grips for Foil",
+   "specs": {
+    "force_kN": 1,
+    "specimen_thickness_mm": {
+     "max": 4.5
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/pneumatic-flat-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/1kn-pneumatic-flat-grips-for-foil/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

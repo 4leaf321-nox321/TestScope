@@ -1,0 +1,65 @@
+{
+ "id": "mts-multi-sample-fatigue-fixture-msf15",
+ "kind": "accessory",
+ "name": "MTS Multi-Sample Fatigue Fixture MSF15 (15 test sites, for Acumen)",
+ "name_ko": "MTS 다중 시편 피로 지그 MSF15 (15 스테이션, Acumen 용, 37 °C 수조)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "multi_station",
+ "description": "Acumen 전기역학 시험기로 피로 곡선을 싸게 만드는 15 스테이션 지그 — 스테이션마다 50 mm 시험 공간(높이 조절), 45 N 급 로드셀로 개별 하중 감지·파단 검출, 개별 평균 변형 조정, 정렬 단순화, 접근하기 쉬운 위치에서 세팅 후 37±2 °C 투명 수조로 내려 비디오 검증. NiTi 구조·혈관 스텐트·심장 판막·대정맥 필터·중격 폐색기·치과 임플란트·봉합사의 피로 수명.",
+ "test_items": [
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "NiTi",
+  "vascular stents",
+  "heart valve structures",
+  "dental implants",
+  "sutures"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "stations": {
+   "values": [
+    "15"
+   ]
+  },
+  "force_N": {
+   "max": 45,
+   "note": "스테이션 로드셀 예"
+  },
+  "temperature_degC": {
+   "min": 35,
+   "max": 39,
+   "note": "수조 37±2 °C"
+  }
+ },
+ "models": [
+  {
+   "model": "MSF15",
+   "specs": {
+    "stations": 15,
+    "force_N": 45,
+    "note": "스테이션 간격 50 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-acumen"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/multi-sample-fatigue-fixture",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

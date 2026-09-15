@@ -1,0 +1,120 @@
+{
+ "id": "mts-series-635-extensometers",
+ "kind": "sensor",
+ "name": "MTS Fundamental Series 635 Extensometers (635.25F 25 mm / 635.50F 50 mm, -85 to 120 °C)",
+ "name_ko": "MTS Fundamental 시리즈 635 신율계 (표점 25·50 mm, 대량 QA/QC 인장용)",
+ "manufacturer": "mts",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "단조 인장 변형률 측정에 최적화한 경제형 신율계 — 특수 열처리 합금의 독자 스트레인게이지 요소, 연삭 프로파일 이중 굴곡으로 낮은 작동 하중, 진정한 중심점 굽힘으로 낮은 히스테리시스, 기계적 스톱, 제로 세트 핀, 교체 칼날·퀵어태치 스프링, 1.5 m 케이블. 선형성 0.08 % FS, ASTM E83 B1·ISO 9513 0.5, -85~120 °C, 침지 불가. 635.25F-05 25 mm +20 %, 635.50F-05 50 mm +10 %, 635.50F-10 +20 %, 635.50F-25.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus",
+  "r_value"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "rubber"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83 Class B1",
+   "ISO 9513 Class 0.5"
+  ],
+  "test_methods": [
+   "ASTM A48/A48M",
+   "ASTM E517",
+   "ASTM E646",
+   "ASTM E9",
+   "ISO 10113",
+   "ISO 10275",
+   "ISO 6892-1"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 25,
+   "max": 50
+  },
+  "temperature_degC": {
+   "min": -85,
+   "max": 120
+  }
+ },
+ "models": [
+  {
+   "model": "635.25F-05",
+   "specs": {
+    "gauge_length_mm": 25,
+    "temperature_degC": {
+     "min": -85,
+     "max": 120
+    },
+    "note": "+20 %"
+   }
+  },
+  {
+   "model": "635.50F-05",
+   "specs": {
+    "gauge_length_mm": 50,
+    "temperature_degC": {
+     "min": -85,
+     "max": 120
+    },
+    "note": "+10 %"
+   }
+  },
+  {
+   "model": "635.50F-10",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "+20 %"
+   }
+  },
+  {
+   "model": "635.50F-25",
+   "specs": {
+    "gauge_length_mm": 50
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/extensometers/series-635-extensometers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

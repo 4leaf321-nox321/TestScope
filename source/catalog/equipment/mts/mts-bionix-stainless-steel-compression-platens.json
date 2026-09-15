@@ -1,0 +1,94 @@
+{
+ "id": "mts-bionix-stainless-steel-compression-platens",
+ "kind": "accessory",
+ "name": "MTS Bionix Stainless Steel Compression Platens (10 kN, Ø50 / 100 / 150 mm)",
+ "name_ko": "MTS Bionix 스테인리스 압축 플래튼 (10 kN, Ø50·100·150 mm, -130~250 °C)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "compression_platen",
+ "description": "염수 수조용 스테인리스, 정밀 연삭 경화 표면의 생체재료·뼈·연골·힘줄·의공학 부품 압축 플래튼 — 센터링 홈, 회전 방지·정렬 핀, D 형 어댑터(옵션 나사 어댑터), 전기기계·서보유압 프레임 공용. 10 kN, Ø50(0.68 kg)·100(1.82)·150 mm(3.73 kg), 높이 64 mm, -130~250 °C.",
+ "test_items": [
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "biomaterials",
+  "bone",
+  "cartilage",
+  "tendons",
+  "medical device components"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 10
+  },
+  "specimen_diameter_mm": {
+   "max": 150
+  },
+  "temperature_degC": {
+   "min": -130,
+   "max": 250
+  }
+ },
+ "models": [
+  {
+   "model": "Bionix platen Ø50 (100-182-229)",
+   "specs": {
+    "force_kN": 10,
+    "specimen_diameter_mm": 50,
+    "weight_kg": 0.681,
+    "height_mm": 64
+   }
+  },
+  {
+   "model": "Bionix platen Ø100 (100-182-227)",
+   "specs": {
+    "force_kN": 10,
+    "specimen_diameter_mm": 100,
+    "weight_kg": 1.82,
+    "height_mm": 64
+   }
+  },
+  {
+   "model": "Bionix platen Ø150 (100-182-226)",
+   "specs": {
+    "force_kN": 10,
+    "specimen_diameter_mm": 150,
+    "weight_kg": 3.725,
+    "height_mm": 64
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "전기기계 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "전기기계 프레임 공용"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/fixtures/bionix-stainless-steel-compression-platens",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

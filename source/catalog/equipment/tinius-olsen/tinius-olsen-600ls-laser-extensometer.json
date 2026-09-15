@@ -1,0 +1,77 @@
+{
+ "id": "tinius-olsen-600ls-laser-extensometer",
+ "kind": "sensor",
+ "name": "Tinius Olsen 600LS Laser Extensometer (up to 600 mm, 660 Hz)",
+ "name_ko": "티니우스 올센 600LS 레이저 신율계 (600 mm, 660 Hz 스캔, 챔버 창 너머 -70~300 °C)",
+ "manufacturer": "tinius-olsen",
+ "category": "extensometer",
+ "subcategory": "laser",
+ "description": "반사 테이프 표점 두 개를 적색 레이저로 초당 660회 스캔해 중~고신장 재료(엘라스토머)와 취성 시편의 신장을 재는 비접촉 신율계 — 32 bit 전용 프로세서, 표점 10 mm 부터 시작 시 자동 측정, 빔 차단 시 자동 보정, 챔버 유리창 너머 -70~300 °C. 범위 600 mm, 정확도 25 mm 표점에서 1 %(BS 5214 D), 분해능 0.002 mm(필터), 290×95×144 mm, 4 kg.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "elongation",
+  "axial_strain"
+ ],
+ "materials": [
+  "elastomers",
+  "plastics",
+  "fragile specimens"
+ ],
+ "standards": {
+  "compliance": [
+   "BS 5214 grade D"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 600
+  },
+  "gauge_length_mm": {
+   "min": 10
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 300,
+   "note": "챔버 창 너머 측정"
+  },
+  "data_rate_Hz": {
+   "max": 660
+  }
+ },
+ "models": [
+  {
+   "model": "600LS",
+   "specs": {
+    "displacement_mm": 600,
+    "gauge_length_mm": {
+     "min": 10
+    },
+    "data_rate_Hz": 660,
+    "accuracy": "1 % on 25 mm GL",
+    "weight_kg": 4.0,
+    "note": "분해능 0.002 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-st-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "tinius-olsen-environmental-chambers"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tiniusolsen.com/product/600ls-laser-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

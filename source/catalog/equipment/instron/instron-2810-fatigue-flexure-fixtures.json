@@ -1,0 +1,84 @@
+{
+ "id": "instron-2810-fatigue-flexure-fixtures",
+ "kind": "accessory",
+ "name": "Instron 2810 Series 3 and 4 Point Fatigue Flexure Fixtures (3~500 kN)",
+ "name_ko": "인스트론 2810 계열 피로용 3·4점 굽힘 지그 (3~500 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "flexure_fatigue",
+ "description": "정적·반복 굽힘용 지그 — 회전 또는 고정 앤빌, 눈금 지지 빔, 4점 변환 키트, 중앙 처짐 측정용 디플렉토미터 플런저. 3 kN(2810-600/605), 20 kN(2810-500/505), 100 kN(2810-181), 250 kN(2810-200), 500 kN(2810-250).",
+ "test_items": [
+  "flexure",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "metals",
+  "alloys",
+  "composites",
+  "ceramics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "min": 3,
+   "max": 500
+  }
+ },
+ "models": [
+  {
+   "model": "2810-600/605",
+   "specs": {
+    "force_kN": 3
+   }
+  },
+  {
+   "model": "2810-500/505",
+   "specs": {
+    "force_kN": 20
+   }
+  },
+  {
+   "model": "2810-181",
+   "specs": {
+    "force_kN": 100
+   }
+  },
+  {
+   "model": "2810-200",
+   "specs": {
+    "force_kN": 250
+   }
+  },
+  {
+   "model": "2810-250",
+   "specs": {
+    "force_kN": 500
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic",
+   "note": "동적 시험기용 — 페이지가 프레임을 명시하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000",
+   "note": "동적 시험기용 — 페이지가 프레임을 명시하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/flexure-fixtures/dynamic-bend-test-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

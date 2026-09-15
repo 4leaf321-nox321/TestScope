@@ -1,0 +1,173 @@
+{
+ "id": "instron-2630-static-axial-clip-on-extensometers",
+ "kind": "sensor",
+ "name": "Instron 2630-100 Series Static Axial Clip-On Extensometers and W-6280 Series Long Gauge Length Clip-Ons",
+ "name_ko": "인스트론 2630-100 계열 정적 축방향 클립온 신율계 (8~100 mm 표점) · W-6280 계열 봉·철근용",
+ "manufacturer": "instron",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "가볍고 튼튼한 크로스 브레이스 구조의 클립온 신율계. 특허 콘 래치가 부착 중 표점 거리를 잠갔다가 스스로 풀려 핀 뽑기가 없다. 저력 암으로 칼날 미끄럼을 줄이고 과신장 보호가 내장. ASTM E83·ISO 9513 충족, 개별 시험 성적서. 챔버용 -100~200 °C, 침지 가능, 대부분 재료에서 파단까지 부착, 저속 반복 변형률 제어 가능. 표점 8·10·25·50·75·80·100 mm(±10 %~+100 %)와 인치형. W-6280 계열은 철근·봉용 긴 표점 거리, 파단 시 분리되는 풀어파트 구조.",
+ "test_items": [
+  "tensile",
+  "flexure",
+  "compression"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "plastics",
+  "metals",
+  "composites",
+  "rebar",
+  "rod"
+ ],
+ "standards": {
+  "compliance": [
+   "ASTM E83",
+   "ISO 9513"
+  ],
+  "test_methods": []
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 8,
+   "max": 100
+  },
+  "temperature_degC": {
+   "min": -100,
+   "max": 200
+  }
+ },
+ "models": [
+  {
+   "model": "2630-120",
+   "specs": {
+    "gauge_length_mm": 8,
+    "note": "이동 ±50 %"
+   }
+  },
+  {
+   "model": "2630-101",
+   "specs": {
+    "gauge_length_mm": 10,
+    "note": "±10 %"
+   }
+  },
+  {
+   "model": "2630-102",
+   "specs": {
+    "gauge_length_mm": 10,
+    "note": "±50 %"
+   }
+  },
+  {
+   "model": "2630-105",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "±10 %"
+   }
+  },
+  {
+   "model": "2630-106",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "+50 %"
+   }
+  },
+  {
+   "model": "2630-107",
+   "specs": {
+    "gauge_length_mm": 25,
+    "note": "+100 %"
+   }
+  },
+  {
+   "model": "2630-111",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "±10 %"
+   }
+  },
+  {
+   "model": "2630-112",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "+50 %"
+   }
+  },
+  {
+   "model": "2630-113",
+   "specs": {
+    "gauge_length_mm": 50,
+    "note": "+100 %"
+   }
+  },
+  {
+   "model": "2630-123",
+   "specs": {
+    "gauge_length_mm": 75,
+    "note": "+10 %"
+   }
+  },
+  {
+   "model": "2630-117",
+   "specs": {
+    "gauge_length_mm": 80,
+    "note": "+10 %"
+   }
+  },
+  {
+   "model": "2630-118",
+   "specs": {
+    "gauge_length_mm": 80,
+    "note": "+50 %"
+   }
+  },
+  {
+   "model": "2630-119",
+   "specs": {
+    "gauge_length_mm": 100,
+    "note": "+50 %"
+   }
+  },
+  {
+   "model": "2630-103 / 104 / 108 / 109 / 110 / 114 / 115 / 116 / 121",
+   "specs": {
+    "note": "인치형 — 0.3 / 0.5 / 1.0 / 2.0 in 표점, ±10 %·±50 %·+100 %"
+   }
+  },
+  {
+   "model": "W-6280 Series",
+   "specs": {
+    "note": "봉·철근용 긴 표점, 풀어파트 구조, 퀵어태치 키트"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/extensometers/static-axial-clip-on/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

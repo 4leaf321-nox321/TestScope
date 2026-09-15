@@ -1,0 +1,76 @@
+{
+ "id": "instron-2718-hydraulic-grip-pumps",
+ "kind": "accessory",
+ "name": "Instron 2718-700 Compact and 2718-550 Hydraulic Grip Pumps",
+ "name_ko": "인스트론 2718-700 소형 · 2718-550 유압 그립 펌프 (207 bar)",
+ "manufacturer": "instron",
+ "category": "accessory",
+ "subcategory": "hydraulic_supply",
+ "description": "유압 그립에 물림 압력을 주는 펌프. 소형 2718-700 은 100 kN 까지의 유압 웨지 그립(2742-301·2742-450·2743-401)용, 41~207 bar, 앞면 아날로그 게이지 2개, Bluehill 통합 모드에서 방법마다 압력을 정한다. 2718-550 은 웨지 그립(207 bar)·사이드 액션 그립(138 bar) 겸용, 24시간 연속 운전, 69 bar 까지 고속 유량 후 저속으로 승압하는 2단 유량 — 2742-501/601, W-5450/W-5420 까지 600 kN.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "pressure_bar": {
+   "min": 41,
+   "max": 207
+  },
+  "force_kN": {
+   "max": 600,
+   "note": "구동하는 그립 용량"
+  }
+ },
+ "models": [
+  {
+   "model": "2718-700 (Compact)",
+   "specs": {
+    "pressure_bar": {
+     "min": 41,
+     "max": 207
+    },
+    "force_kN": 100,
+    "note": "웨지 그립 전용, Bluehill 통합 옵션"
+   }
+  },
+  {
+   "model": "2718-550",
+   "specs": {
+    "pressure_bar": {
+     "max": 207
+    },
+    "force_kN": 600,
+    "note": "사이드 액션 그립은 138 bar. 2단 유량(69 bar 까지 고속)"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/2718-550/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

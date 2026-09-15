@@ -1,0 +1,68 @@
+{
+ "id": "instron-microelectronics-tensile-grips",
+ "kind": "accessory",
+ "name": "Instron Microelectronics Tensile Grips (Micro Pneumatic 2712-101 / Pneumatic Lead Pull 2712-212)",
+ "name_ko": "인스트론 마이크로일렉트로닉스 인장 그립 (마이크로 공압 10 N · 리드 풀 500 N)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "microelectronics",
+ "description": "리드·와이어·박막·단섬유·비대칭 조립품 같은 작은 전자 부품용 그립. 마이크로 공압 사이드 액션 2712-101 은 고정 조 하나와 움직이는 조 하나를 풋스위치로 닫아 두 손으로 시편을 놓을 수 있고 0.8 mm 두께·10 N. 공압 리드 풀 2712-212 는 평행 작동 바이스에 니들 노즈 조 면을 달아 미세 피치 리드 프레임을 이웃 부품 손상 없이 잡는다(500 N). 같은 페이지의 2712-05x·2710-100 계열은 각 그립 객체에 있다. 6800·3400 계열용.",
+ "test_items": [
+  "tensile",
+  "wire_bond_strength"
+ ],
+ "measurands": [],
+ "materials": [
+  "leads",
+  "wires",
+  "thin films",
+  "single filaments",
+  "microelectronic assemblies"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 10,
+   "max": 500
+  },
+  "specimen_thickness_mm": {
+   "max": 0.8
+  }
+ },
+ "models": [
+  {
+   "model": "2712-101 (Micro Pneumatic Side Action)",
+   "specs": {
+    "force_N": 10,
+    "specimen_thickness_mm": 0.8
+   }
+  },
+  {
+   "model": "2712-212 (Pneumatic Lead Pull)",
+   "specs": {
+    "force_N": 500
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/microelectronics-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

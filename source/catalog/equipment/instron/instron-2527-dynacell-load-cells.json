@@ -1,0 +1,51 @@
+{
+ "id": "instron-2527-dynacell-load-cells",
+ "kind": "sensor",
+ "name": "Instron 2527 Series Dynacell Dynamic Fatigue Load Cells (incl. Bi-axial)",
+ "name_ko": "인스트론 2527 계열 Dynacell 동적 피로 로드셀 (가속도 보상, 2축형 포함)",
+ "manufacturer": "instron",
+ "category": "load_cell",
+ "subcategory": "dynamic",
+ "description": "동적 하중 측정을 위해 설계된 로드셀 — 하중축 위 중심에 가속도계를 두어 로드 스트링 관성에 의한 하중 오차를 자동 보상하고, 편심 하중으로 인한 가속도 읽기 오차를 없앤다. 용량의 1/250 까지 읽기값의 0.5 % 정확도, 2축(축·비틀림)형이 있다. 용량별 번호는 페이지에 없다.",
+ "test_items": [
+  "fatigue",
+  "tensile",
+  "compression",
+  "torsion"
+ ],
+ "measurands": [
+  "peak_force",
+  "torque_angle"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "2527 Series Dynacell",
+   "specs": {
+    "note": "축방향 / 2축(축·비틀림)"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-cells/dynamic-fatigue/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

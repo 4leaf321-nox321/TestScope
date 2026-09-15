@@ -1,0 +1,163 @@
+{
+ "id": "shimadzu-thermostatic-chambers-tcr-tcl-tce",
+ "kind": "accessory",
+ "name": "Shimadzu Thermostatic Chambers TCR-1 / TCR-2 (refrigerator), TCL (LN2/CO2 injection), TCE-N300A (compact)",
+ "name_ko": "시마즈 항온조 TCR-1·TCR-2(냉동기식) · TCL(LN2/CO2 분사식) · TCE-N300A(소형, -70~+300 °C)",
+ "manufacturer": "shimadzu",
+ "category": "environmental_chamber",
+ "description": "Autograph 용 온도 챔버 계열. TCR1L 은 단일 냉동기(수냉) -35~+250 °C, TCR2L 은 이중 냉동기 -60~+250 °C, TCL-NL/CL 은 액체질소/CO2 분사 -70~+250 °C — 모두 내부 220×220×600 mm(W×D×H), 온도 분포 ±1.5 °C, 승온 30~40분·냉각 30~50분. 롱스트로크형은 연장 벨로우즈로 챔버 연장 없이 유효 인장 스트로크 370 mm, 그립 간격 0~450 mm(250 mm 연장 Autograph 로 구성), 높이 300 mm 구간 ±1.5 °C — 고무·플라스틱의 대신장 시험. TCE-N300A 는 TRAPEZIUM X-V 에서 온도 설정·기록, LN2 분사로 -70 °C, 고온 +300 °C.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "rubber",
+  "plastics",
+  "metals",
+  "films"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -70,
+   "max": 300
+  },
+  "temperature_fluctuation_degC": {
+   "max": 1.5
+  },
+  "inner_mm": {
+   "note": "220×220×600 (W×D×H)"
+  },
+  "chamber": {
+   "values": [
+    "yes"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "TCR1L",
+   "specs": {
+    "temperature_degC": {
+     "min": -35,
+     "max": 250
+    },
+    "inner_mm": {
+     "width": 220,
+     "depth": 220,
+     "height": 600
+    },
+    "cooling": "단일 냉동기(수냉)",
+    "temperature_fluctuation_degC": 1.5,
+    "note": "승온·냉각 40분 이내"
+   }
+  },
+  {
+   "model": "TCR2L",
+   "specs": {
+    "temperature_degC": {
+     "min": -60,
+     "max": 250
+    },
+    "inner_mm": {
+     "width": 220,
+     "depth": 220,
+     "height": 600
+    },
+    "cooling": "이중 냉동기(수냉)",
+    "temperature_fluctuation_degC": 1.5,
+    "note": "승온 40분·냉각 50분 이내"
+   }
+  },
+  {
+   "model": "TCL-NL / TCL-CL",
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    },
+    "inner_mm": {
+     "width": 220,
+     "depth": 220,
+     "height": 600
+    },
+    "cooling": "LN2 / CO2 분사",
+    "temperature_fluctuation_degC": 1.5,
+    "note": "승온·냉각 30분 이내"
+   }
+  },
+  {
+   "model": "TCE-N300A",
+   "specs": {
+    "temperature_degC": {
+     "min": -70,
+     "max": 300
+    },
+    "cooling": "LN2 분사",
+    "note": "TRAPEZIUM X-V 로 온도 설정·기록"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "shimadzu-ags-v"
+  },
+  {
+   "type": "requires",
+   "target": "utility-liquid-nitrogen",
+   "note": "TCL-NL·TCE"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-system/tensile-testing-system-with-thermostatic-chamber/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-system/tensile-testing-system-with-thermostatic-chamber/spec.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing-inspection/uni-ttm-system/thermostatic-chambers/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

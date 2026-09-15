@@ -1,0 +1,229 @@
+{
+ "id": "mecmesin-test-fixtures",
+ "kind": "accessory",
+ "name": "Mecmesin Test Fixtures (3-point bend 1 / 2.5 / 20 kN, COF ASTM D1894 / ISO 8295, peel and pull-off, grab test, wood shear 25 kN, probes, T-slot table)",
+ "name_ko": "멕메신 시험 지그 (3점 굽힘 1/2.5/20 kN · 마찰계수 ASTM D1894/ISO 8295 · 박리·풀오프 지그 · 그랩 직물 지그 · 목재 전단 지그 25 kN · 카트 밀기 지그 · 프로브 · T 슬롯 테이블)",
+ "manufacturer": "mecmesin",
+ "category": "grip_fixture",
+ "subcategory": "fixture",
+ "description": "지그 SKU 목록. 3점 굽힘: 1 kN 알루미늄(T 슬롯 베이스), 2.5 kN 알루미늄(베이스 플레이트), 20 kN 강(QC-20). 마찰계수(COF) 지그 ASTM D1894(10-32 UNF), ISO 8295. 박리·풀오프: 90° 보조 풀필 테이블 500 N, 풀필 휠(QC-20), 3조 파퍼 풀오프 500 N, 버튼 풀오프 500 N, 시퀸 풀오프 50 N, 파퍼 캠 베이스 1 kN, 플립 캡 100 N. 25/50 mm 그랩 직물 지그 500 N. 목재 전단 지그 25 kN(QC-20/32). 카트(트롤리) 밀기 지그 1 kN. 프로브: 퍼스펙스 45° 콘(M3), 스테인리스 2 mm 니들, 패드 라운드 프로브 500 N. 표준 T 슬롯 지그 테이블과 시료 홀더, 다이얼 게이지 브래킷.",
+ "test_items": [
+  "flexure",
+  "friction_coefficient",
+  "peel",
+  "tensile",
+  "shear",
+  "puncture",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "films",
+  "textiles",
+  "packaging",
+  "wood",
+  "garments (poppers, buttons, sequins)",
+  "closures"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D1894",
+   "ISO 8295"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 0.05,
+   "max": 25
+  }
+ },
+ "models": [
+  {
+   "model": "3-Point Bend Jig 1 kN aluminium (T-slot base) / 2.5 kN aluminium (base plate) / 20 kN steel (QC-20)",
+   "specs": {
+    "force_kN": [
+     1,
+     2.5,
+     20
+    ]
+   }
+  },
+  {
+   "model": "Coefficient of Friction Fixture (ASTM D1894) / (ISO 8295)",
+   "specs": {}
+  },
+  {
+   "model": "Assisted Pull-Peel Table 90° 500 N · Pull Peel Wheel Fixture (QC-20)",
+   "specs": {
+    "force_N": 500
+   }
+  },
+  {
+   "model": "3-Jaw Popper Pull-off 500 N · Button Pull-off 500 N · Sequin Pull-off 50 N · Popper Cam Base 1 kN · Flip Cap Accessory 100 N",
+   "specs": {
+    "force_N": {
+     "min": 50,
+     "max": 1000
+    }
+   }
+  },
+  {
+   "model": "25 mm / 50 mm Grab Test Textile Fixture 500 N",
+   "specs": {
+    "force_N": 500
+   }
+  },
+  {
+   "model": "Wood Shear Test Jig 25 kN (QC-20 / QC-32)",
+   "specs": {
+    "force_kN": 25
+   }
+  },
+  {
+   "model": "Trolley pushing fixture 1 kN",
+   "specs": {
+    "force_kN": 1
+   }
+  },
+  {
+   "model": "Probes: cone (perspex, 45°, M3), needle (stainless, 2 mm), padded radiused 500 N",
+   "specs": {}
+  },
+  {
+   "model": "Standard T-slot fixture table and sample holder · Dial Gauge Bracket Set",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mecmesin-omnitest",
+   "note": "제조사 SKU 목록 — 10-32 UNF·M6·5/16 UNC 피팅은 힘 게이지·MultiTest, QC-20/QC-32 는 OmniTest·MultiTest 스탠드"
+  },
+  {
+   "type": "fits_on",
+   "target": "mecmesin-multitest",
+   "note": "제조사 SKU 목록 — 10-32 UNF·M6·5/16 UNC 피팅은 힘 게이지·MultiTest, QC-20/QC-32 는 OmniTest·MultiTest 스탠드"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mecmesin-omnitest",
+   "note": "flexure·friction_coefficient·peel·shear"
+  },
+  {
+   "type": "extends_capability",
+   "target": "mecmesin-multitest",
+   "note": "flexure·friction_coefficient·peel·shear"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mecmesin.com/accessory/432-248",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-151",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-266",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-144",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-501",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-051",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-265",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-409",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-175",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-291",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-179",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-419",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-323",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec17",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-405",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-081",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-087",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-414",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-243",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-244",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-167",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

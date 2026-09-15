@@ -1,0 +1,155 @@
+{
+ "id": "instron-advanced-hydraulic-wedge-action-grips",
+ "kind": "accessory",
+ "name": "Instron Advanced Hydraulic Wedge Action Grips (2742-301 / 2742-450 / 2743-401 / 2742-501 / 2742-601)",
+ "name_ko": "인스트론 어드밴스드 유압 웨지 액션 그립 (±30~600 kN)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "hydraulic_wedge",
+ "description": "외부 유압으로 열고 닫는 웨지 그립. 물릴 때 시편·조 면의 수직 위치가 변하지 않아 물리는 동안 하중이 생기지 않고, 물린 뒤에는 시편 두께 변화를 자동 보상해 물림력이 일정하다. 정적 최대 600 kN, 동적 최대 ±500 kN — 금속·복합재의 정적·동적·역응력 시험용. 100 kN 이상 모델은 옵션 정렬 장치(CP135054)와 피기백 어댑터가 있다. 유압원은 2718 그립 펌프.",
+ "test_items": [
+  "tensile",
+  "fatigue",
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "metals",
+  "composites",
+  "plastics"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "static_force_kN": {
+   "min": 30,
+   "max": 600
+  },
+  "dynamic_force_kN": {
+   "min": 30,
+   "max": 500
+  },
+  "temperature_degC": {
+   "min": 4,
+   "max": 65
+  }
+ },
+ "models": [
+  {
+   "model": "2742-301",
+   "specs": {
+    "static_force_kN": 30,
+    "dynamic_force_kN": 30,
+    "temperature_degC": {
+     "min": 4,
+     "max": 65
+    }
+   },
+   "note": "피로 정격"
+  },
+  {
+   "model": "2742-450",
+   "specs": {
+    "static_force_kN": 50,
+    "temperature_degC": {
+     "min": 4,
+     "max": 65
+    }
+   },
+   "note": "정적 전용"
+  },
+  {
+   "model": "2743-401",
+   "specs": {
+    "static_force_kN": 130,
+    "dynamic_force_kN": 100,
+    "temperature_degC": {
+     "min": 4,
+     "max": 65
+    }
+   }
+  },
+  {
+   "model": "2742-501",
+   "specs": {
+    "static_force_kN": 312,
+    "dynamic_force_kN": 250,
+    "temperature_degC": {
+     "min": 4,
+     "max": 65
+    }
+   }
+  },
+  {
+   "model": "2742-601",
+   "specs": {
+    "static_force_kN": 600,
+    "dynamic_force_kN": 500,
+    "temperature_degC": {
+     "min": 4,
+     "max": 65
+    }
+   }
+  },
+  {
+   "model": "CP104947 / CP109120 (Extended Hydraulic Wedge)",
+   "specs": {
+    "static_force_kN": [
+     130,
+     312
+    ],
+    "temperature_degC": {
+     "min": -70,
+     "max": 350
+    }
+   },
+   "note": "챔버용 연장형 — 복합재 그립 가이드 표"
+  }
+ ],
+ "options": [
+  "specimen alignment device CP135054 (2743-401·2742-501·2742-601)",
+  "piggyback load string adapters",
+  "공압 대안: 50·100 kN 공압 웨지 CP137834 / CP137835"
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "페이지가 프레임을 명시하지 않음 — 정적·동적 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "페이지가 프레임을 명시하지 않음 — 정적·동적 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "페이지가 프레임을 명시하지 않음 — 정적·동적 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-8800-servohydraulic",
+   "note": "페이지가 프레임을 명시하지 않음 — 정적·동적 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-electropuls-e3000",
+   "note": "페이지가 프레임을 명시하지 않음 — 정적·동적 프레임 공용"
+  },
+  {
+   "type": "requires",
+   "target": "instron-2718-hydraulic-grip-pumps"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/advanced-hydraulic-wedge-action-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

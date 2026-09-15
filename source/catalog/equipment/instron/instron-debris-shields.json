@@ -1,0 +1,92 @@
+{
+ "id": "instron-debris-shields",
+ "kind": "accessory",
+ "name": "Instron Debris Shields for Single Column, Table and Floor Model Frames",
+ "name_ko": "인스트론 파편 보호 실드 (단일 컬럼·테이블·플로어 모델, 경첩문·미닫이문)",
+ "manufacturer": "instron",
+ "category": "accessory",
+ "subcategory": "safety_shield",
+ "description": "복합재·철근·케이블처럼 격렬하게 파단하는 시편에서 조작자를 보호하는 투명 실드. 경첩문형은 알루미늄 프레임 + Lexan 패널, 인터록 유무 선택 — 단일 컬럼 500 N(CP127700)·1~5 kN(CP127701)·5 kN 높은형(CP127702), 테이블 모델 2910-074, 플로어 모델 2910-062. 미닫이문형(테이블 모델)은 845×440 mm 개구, 자석 인터록 옵션으로 문이 열리면 시험 시작·크로스헤드 이동을 막는다 — CP129040(68TM·34TM·336X·596X), CP129044(68TM 높은형), CP126003·CP126002.",
+ "test_items": [
+  "tensile",
+  "compression"
+ ],
+ "measurands": [],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "CP127700 (single column, 500 N)",
+   "specs": {
+    "note": "334X·34SC·594X·68SC"
+   }
+  },
+  {
+   "model": "CP127701 (single column, 1–5 kN, standard height)",
+   "specs": {
+    "note": "334X·34SC·594X·68SC"
+   }
+  },
+  {
+   "model": "CP127702 (single column, 5 kN, extra height)",
+   "specs": {
+    "note": "3345·34SC-5·68SC-5"
+   }
+  },
+  {
+   "model": "2910-074 (table model, hinged door)",
+   "specs": {
+    "note": "336X·34TM·446X·556X·586X·596X·68TM"
+   }
+  },
+  {
+   "model": "2910-062 (floor model, hinged door)",
+   "specs": {
+    "note": "3382/3384/3385H·34FM·448x·558x·588x·598x·68FM"
+   }
+  },
+  {
+   "model": "CP129040 (table model, sliding door)",
+   "specs": {
+    "note": "68TM·34TM·336X·596X 표준 높이"
+   }
+  },
+  {
+   "model": "CP129044 (table model, sliding door, extra height)",
+   "specs": {
+    "note": "68TM"
+   }
+  },
+  {
+   "model": "CP126003 / CP126002 (table model, sliding door)",
+   "specs": {
+    "note": "34TM·336X·596X 높은형 / 336X·596X 표준"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/load-frame-accessories/debris-shields/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,80 @@
+{
+ "id": "zwickroell-longstroke-extensometer",
+ "kind": "sensor",
+ "name": "ZwickRoell Longstroke Extensometer (1000 mm sensor-arm, for elastic materials)",
+ "name_ko": "즈윅로엘 롱스트로크 신율계 (탄성 재료용 센서 암, 1,000 mm, -70~+250 °C)",
+ "manufacturer": "zwickroell",
+ "category": "extensometer",
+ "subcategory": "sensor_arm",
+ "description": "신장이 중간~큰 플라스틱·엘라스토머·필름·직물·가죽의 인장·히스테리시스 시험용 센서 암 신율계. 정밀 가이드 프로파일 위의 무게 보상 측정 캐리지 둘에 교환 칼날(환봉·평판·노치 민감) 센서 암, 회전 칼날로 채찍 파단에도 안전, 물림력 조절. 시험 프로그램이 전동으로 자동 부착·분리·L0 복귀. 오프셋 항복·파단 신율 정확, 규격 표점의 시컨트/E 모듈러스는 제공하지 않음. 클립온이나 수동 횡변형 신율계와 조합. 1,000 mm, 연장 센서 암으로 온도 챔버 -70~+250 °C. ProLine·zwicki 용 판도 있다.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "elongation",
+  "axial_strain",
+  "yield_strength"
+ ],
+ "materials": [
+  "rubber/elastomers",
+  "films",
+  "flexible plastics",
+  "textiles",
+  "leather"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "displacement_mm": {
+   "max": 1000
+  },
+  "temperature_degC": {
+   "min": -70,
+   "max": 250
+  }
+ },
+ "models": [
+  {
+   "model": "Longstroke extensometer",
+   "specs": {
+    "displacement_mm": 1000,
+    "temperature_degC": {
+     "min": -70,
+     "max": 250
+    }
+   }
+  },
+  {
+   "model": "ProLine Longstroke",
+   "specs": {}
+  },
+  {
+   "model": "zwicki Longstroke",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-proline"
+  },
+  {
+   "type": "fits_on",
+   "target": "zwickroell-temperature-chambers-allroundline"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/extensometers/longstroke-extensometer/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

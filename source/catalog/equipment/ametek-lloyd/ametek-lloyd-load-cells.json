@@ -1,0 +1,118 @@
+{
+ "id": "ametek-lloyd-load-cells",
+ "kind": "sensor",
+ "name": "Lloyd Instruments / Chatillon Load Cells (HLC for LR Plus floor, XLC for LR Plus/EZ bench, YLC S-beam for LS / TA1 / FT1, CLC for CS, SLC / TLC / STS torque for DFS-R-ND, AFM / AQM for DFS3)",
+ "name_ko": "로이드·채틸론 로드셀 계열 (HLC·XLC·YLC S-빔·CLC·SLC·TLC·STS 토크·AFM/AQM 외부 센서)",
+ "manufacturer": "ametek-lloyd",
+ "category": "load_cell",
+ "description": "풀브리지 스트레인게이지 로드셀 계열 — 15핀 플러그 안 메모리에 용량·감도가 있어 기계가 자동 인식. HLC(LR Plus 플로어형, 주 셀 아래 장착, 읽기값 0.5 %), XLC(LR Plus·EZ 벤치형, 0.5 %), YLC(LS 계열·TA1 텍스처 분석기·FT1 마찰 시험기용 S-빔, 회전 방지 칼라, 축 정렬 조절, 범위 1~100 % 에서 ±0.5 %), CLC(CS 계열 힘 시험기), SLC(DFS-R-ND 디지털 힘 게이지, 3 m 코드), TLC(단종 TCD), STS 토크 로드셀(DFS-R-ND 토크 게이지 전용), AFM 외부 로드셀·AQM 외부 토크 변환기(DFS3 힘 게이지를 3-in-1 로, ADC 인라인 박스로 디지털 식별·교정 정보 보관). 용량표는 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "torsion"
+ ],
+ "measurands": [
+  "peak_force",
+  "torque_angle"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "HLC Series (LR Plus floor standing)",
+   "specs": {
+    "accuracy": "읽기값의 0.5 %"
+   }
+  },
+  {
+   "model": "XLC Series (LR Plus / EZ bench)",
+   "specs": {
+    "accuracy": "읽기값의 0.5 %"
+   }
+  },
+  {
+   "model": "YLC Series (LS / TA1 / FT1, S-beam)",
+   "specs": {
+    "accuracy": "±0.5 % (1~100 % 범위)"
+   }
+  },
+  {
+   "model": "CLC Series (CS Series)",
+   "specs": {}
+  },
+  {
+   "model": "SLC Series (DFS-R-ND)",
+   "specs": {}
+  },
+  {
+   "model": "TLC Series (TCD, obsolete)",
+   "specs": {}
+  },
+  {
+   "model": "STS Series torque load cells (DFS-R-ND torque gauges)",
+   "specs": {}
+  },
+  {
+   "model": "AFM external load cell / AQM external torque transducer (DFS3)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "ametek-lloyd-ls-series",
+   "note": "YLC 계열"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/hlc-series-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/xlc-series-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/ylc-series-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/clc-series-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/afm-aqm-sensorer",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/slc-series-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/tlc-series-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.ametektest.com/products/accessories/load-cells-and-sensors/sts-series-torque-load-cells",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

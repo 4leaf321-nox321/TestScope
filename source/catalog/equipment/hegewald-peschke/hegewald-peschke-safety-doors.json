@@ -1,0 +1,71 @@
+{
+ "id": "hegewald-peschke-safety-doors",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Makrolon Safety Doors for inspekt Series (no interlock / software monitoring PL a / safe electrical locking PL d)",
+ "name_ko": "헤게발트 운트 페슈케 inspekt 계열용 마크롤론 안전문 (인터록 없음 · 소프트웨어 감시 PL a · 전기 잠금 PL d, EN ISO 13849-1)",
+ "manufacturer": "hegewald-peschke",
+ "category": "accessory",
+ "subcategory": "safety_shield",
+ "description": "파편이 튀는 시편에서 조작자를 보호하는 투명 마크롤론 안전문 — inspekt 모든 모델에 장착. 전기 인터록 없음 / 소프트웨어 감시(개폐 상태, 시험 중 잠금, 열려도 이동 가능 — PL a) / 안전 전기 잠금(열리면 이동 불가 — PL d) 세 등급, EN ISO 13849-1. 후면 보호벽은 표준 고정.",
+ "test_items": [],
+ "measurands": [],
+ "standards": {
+  "compliance": [
+   "EN ISO 13849-1 PL a / PL d"
+  ],
+  "test_methods": []
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "Safety door without electrical interlock",
+   "specs": {}
+  },
+  {
+   "model": "Safety door with software monitoring (PL a)",
+   "specs": {}
+  },
+  {
+   "model": "Safety door with safe electrical locking (PL d)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-table"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-blue"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-duo"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-solo"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-micro"
+  },
+  {
+   "type": "fits_on",
+   "target": "hegewald-peschke-inspekt-vario"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/safety-devices/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

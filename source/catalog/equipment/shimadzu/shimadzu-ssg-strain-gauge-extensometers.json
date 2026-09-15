@@ -1,0 +1,167 @@
+{
+ "id": "shimadzu-ssg-strain-gauge-extensometers",
+ "kind": "sensor",
+ "name": "Shimadzu SSG Series Strain Gauge Extensometers (SSG10-10 / SSG25-10 / SSG50-10) and SSG-H One-Touch Extensometers",
+ "name_ko": "시마즈 SSG 계열 스트레인게이지 신율계 (표점 10·25·50 mm) · SSG-H 원터치 신율계",
+ "manufacturer": "shimadzu",
+ "category": "extensometer",
+ "subcategory": "clip_on",
+ "description": "금속·경질 플라스틱용 경량 정밀 신율계 — 신장 센서 + 앰프(ESA 형 100~240 V, SGX 형 무전원), 시편에 나사로 고정, 봉·판 겸용. ISO 527·JIS K 7161·ASTM D638(Class B-2) 탄성계수 요건(1 µm 정확도), ISO 6892·JIS Z 2241 변형률 속도 제어. SSG10-10: 표점 10 mm, 범위 1.0/0.5/0.2/0.1 mm 4단, 봉 Ø10·판 15×10; SSG25-10: 25 mm, 2.5/1.25/0.5/0.25 mm; SSG50-10: 50 mm, 5/2.5/1.0/0.5 mm, 봉 Ø15·판 25×14, 75 g. 정확도 JIS Class 1·ASTM Class C(0.3 mm 까지 ±3 µm, 이상 ±1.0 %; SSG50 은 0.13 mm 까지 ±1 µm), 교정기로 JIS·ISO Class 0.5·ASTM Class C. 5~40 °C. SSG-H 는 원터치 탈부착형.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus"
+ ],
+ "materials": [
+  "metals",
+  "hard plastics"
+ ],
+ "standards": {
+  "compliance": [
+   "JIS Class 1 / ASTM Class C (calibrated: JIS·ISO Class 0.5, ASTM Class B-2)"
+  ],
+  "test_methods": [
+   "ISO 527",
+   "JIS K 7161",
+   "ASTM D638",
+   "ISO 6892",
+   "JIS Z 2241"
+  ]
+ },
+ "limits": {
+  "gauge_length_mm": {
+   "min": 10,
+   "max": 50
+  },
+  "displacement_mm": {
+   "min": 0.1,
+   "max": 5
+  },
+  "temperature_degC": {
+   "min": 5,
+   "max": 40
+  }
+ },
+ "models": [
+  {
+   "model": "SSG10-10",
+   "specs": {
+    "gauge_length_mm": 10,
+    "displacement_mm": [
+     1.0,
+     0.5,
+     0.2,
+     0.1
+    ],
+    "specimen_diameter_mm": {
+     "max": 10
+    },
+    "width_mm": {
+     "max": 15
+    },
+    "specimen_thickness_mm": {
+     "max": 10
+    },
+    "accuracy": "0.3 mm 까지 ±3 µm, 이상 ±1.0 %"
+   }
+  },
+  {
+   "model": "SSG25-10",
+   "specs": {
+    "gauge_length_mm": 25,
+    "displacement_mm": [
+     2.5,
+     1.25,
+     0.5,
+     0.25
+    ],
+    "specimen_diameter_mm": {
+     "max": 10
+    },
+    "width_mm": {
+     "max": 15
+    },
+    "specimen_thickness_mm": {
+     "max": 10
+    },
+    "accuracy": "0.3 mm 까지 ±3 µm, 이상 ±1.0 %"
+   }
+  },
+  {
+   "model": "SSG50-10",
+   "specs": {
+    "gauge_length_mm": 50,
+    "displacement_mm": [
+     5,
+     2.5,
+     1.0,
+     0.5
+    ],
+    "specimen_diameter_mm": {
+     "max": 15
+    },
+    "width_mm": {
+     "max": 25
+    },
+    "specimen_thickness_mm": {
+     "max": 14
+    },
+    "weight_kg": 0.075,
+    "accuracy": "0~0.13 mm ±1 µm, 0.13~0.3 mm ±3 µm, 0.3~5 mm ±1.0 %"
+   }
+  },
+  {
+   "model": "SSG-H Series (one-touch)",
+   "specs": {
+    "note": "교정 후 JIS·ISO Class 0.5, ASTM Class B"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/ssg-series-strain-gauge-extensometers/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/ssg-series-strain-gauge-extensometers/spec.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/ssg-series-strain-gauge-extensometers/features.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/sie-560a560sa/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

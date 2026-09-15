@@ -1,0 +1,111 @@
+{
+ "id": "shimadzu-hydraulic-flat-grips",
+ "kind": "accessory",
+ "name": "Shimadzu Hydraulic Flat Grips HFG (100 / 300 / 600 kN) and Hydraulic Flat Grips for Heavy Cloth (10 / 50 kN)",
+ "name_ko": "시마즈 유압 플랫 그립 HFG (100·300·600 kN, ISO 6892 변형률 제어) · 두꺼운 천용 유압 플랫 그립 (10·50 kN)",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "hydraulic_flat",
+ "description": "평행 조임 유압 플랫 그립 — 강한 물림력과 ISO 6892·JIS Z2241 변형률 제어에 필요한 고정밀 제어, 경질 플라스틱·금속·목재의 판·봉. 100·300 kN(AGX-V2 옵션 페이지는 600 kN 도) 편면 줄눈 조, 일부 압축·굽힘 지그를 직접 연결, AGX-V2 스마트 컨트롤러에서 개폐·물림력 조절, 간헐 운전 절전 유압원. 두꺼운 천용은 폭 85 mm 까지 대칭 물림 — 10 kN(가조임 기구, 수냉 유닛 21 MPa·10 L/min)·50 kN(공냉 유닛 70 MPa, 3상 200 V 750 W + 단상 200 V 35 W), 웨이브 조.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "rigid plastics",
+  "metals",
+  "lumber",
+  "heavy cloth",
+  "belts"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 6892",
+   "JIS Z2241"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "min": 10,
+   "max": 600
+  },
+  "width_mm": {
+   "max": 85,
+   "note": "두꺼운 천용"
+  },
+  "pressure_MPa": {
+   "max": 70
+  }
+ },
+ "models": [
+  {
+   "model": "HFG Hydraulic Flat Grips 100 kN / 300 kN / 600 kN",
+   "specs": {
+    "force_kN": [
+     100,
+     300,
+     600
+    ]
+   }
+  },
+  {
+   "model": "Hydraulic Flat Grips for Heavy Cloth 10 kN",
+   "specs": {
+    "force_kN": 10,
+    "width_mm": 85,
+    "pressure_MPa": 21,
+    "note": "가조임 기구, 수냉 유압 유닛 10 L/min"
+   }
+  },
+  {
+   "model": "Hydraulic Flat Grips for Heavy Cloth 50 kN",
+   "specs": {
+    "force_kN": 50,
+    "width_mm": 85,
+    "pressure_MPa": 70,
+    "note": "공냉 유압 유닛"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/hydraulic-flat-grips/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/accessory/hydraulic-flat-grips-for-heavy-cloth/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-precision-universal-tester/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

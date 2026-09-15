@@ -1,0 +1,126 @@
+{
+ "id": "shimadzu-contact-extensometers-sie-dses-dt-aeh",
+ "kind": "sensor",
+ "name": "Shimadzu Contact Extensometers — SIE-560A/560SA Automatic, AEH-3HR Automatic, DSES-1000 Long-Travel, DT Series Differential Transformer, Bending Deflectometers",
+ "name_ko": "시마즈 접촉식 신율계 — SIE-560A/560SA 자동 · AEH-3HR 자동 · DSES-1000 롱트래블 · DT 계열 차동 변압기식 · 굽힘 처짐계",
+ "manufacturer": "shimadzu",
+ "category": "extensometer",
+ "subcategory": "contact",
+ "description": "Autograph 용 접촉식 신율계 계열. SIE-560A/560SA 자동 신율계는 그립 위치 자동 검출·측정 암 이동·시험 후 자동 분리 복귀로 반자동 운전, 금속(경질)부터 플라스틱(연질)까지 넓은 범위, ±1 µm 고정밀형 있음, Class 0.5. AEH-3HR 는 AGX-V2 와 조합해 ISO 9513 Class 1, 탄성계수부터 파단 신율까지, 외부 잡음에 강해 ISO 6892 변형률 제어. DSES-1000 은 고무 같은 연질 재료를 파단까지 재는 롱트래블형 — 상하 암을 표점선에 원터치로 물리고 독립 추종, Class 0.5. DT 계열은 신장이 작은 금속·경질 플라스틱용 차동 변압기식, AGX-V2 와 전기 교정. 굽힘 처짐계는 ISO 178·JIS K 7171·ASTM D790 대응. 수치 사양은 페이지에 없다.",
+ "test_items": [
+  "tensile",
+  "flexure"
+ ],
+ "measurands": [
+  "axial_strain",
+  "youngs_modulus",
+  "elongation",
+  "force_deflection"
+ ],
+ "materials": [
+  "metals",
+  "plastics",
+  "rubber"
+ ],
+ "standards": {
+  "compliance": [
+   "ISO 9513 Class 1 (AEH-3HR)",
+   "Class 0.5 (SIE, DSES-1000)"
+  ],
+  "test_methods": [
+   "ISO 6892",
+   "ISO 178",
+   "JIS K 7171",
+   "ASTM D790"
+  ]
+ },
+ "limits": {},
+ "models": [
+  {
+   "model": "SIE-560A / SIE-560SA",
+   "specs": {
+    "accuracy_class": "Class 0.5",
+    "note": "고정밀형 ±1 µm"
+   }
+  },
+  {
+   "model": "AEH-3HR",
+   "specs": {
+    "accuracy_class": "ISO 9513 Class 1",
+    "note": "AGX-V2 조합"
+   }
+  },
+  {
+   "model": "DSES-1000",
+   "specs": {
+    "accuracy_class": "Class 0.5",
+    "note": "연질 재료 롱트래블"
+   }
+  },
+  {
+   "model": "DT Series",
+   "specs": {
+    "principle": "차동 변압기(LVDT)"
+   }
+  },
+  {
+   "model": "Bending Deflectometers (ISO 178 / JIS K 7171 / ASTM D790)",
+   "specs": {}
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v",
+   "note": "「AG·AGS·EZ 계열 만능시험기용 부속」 — EZ 계열은 카탈로그에 없다"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/sie-560a560sa/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/dses-1000/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/dt-series/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-precision-universal-tester/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm/autograph-ags-v-series/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/bending-deflectometers-for-iso-178-jis-k-7171-and-astm-d790-compliant-testing/option.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

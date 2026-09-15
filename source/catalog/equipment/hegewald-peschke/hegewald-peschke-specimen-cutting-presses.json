@@ -1,0 +1,55 @@
+{
+ "id": "hegewald-peschke-specimen-cutting-presses",
+ "kind": "accessory",
+ "name": "Hegewald & Peschke Specimen Cutting Presses (manual toggle press 30 kN, hydropneumatic press) and punching knives (eroded steel, Super Dumbbell)",
+ "name_ko": "헤게발트 운트 페슈케 시편 커팅 프레스 (수동 토글 프레스 30 kN · 하이드로뉴매틱 프레스) 와 펀칭 나이프 (방전 가공 강 · Super Dumbbell)",
+ "manufacturer": "hegewald-peschke",
+ "category": "specimen_preparation",
+ "description": "플라스틱·엘라스토머·직물·종이·필름 시편을 규격대로 뽑는 프레스 — 짧은 행정으로 큰 압력, 나사 스핀들 높이 조절, 경화 연삭 원형 램, 거의 무정비. 수동 토글 프레스 30 kN, 양손 조작 하이드로뉴매틱 프레스. 나이프: 방전 가공 솔리드 강 펀칭 나이프(ISO·DIN·JIS·ASTM·IEC 형상, 이젝터·클램핑 핀, 멀티커터), Super Dumbbell(교체 정밀 날 5세트 내장 이젝터, 일본 탄소강, 재연마 불필요).",
+ "test_items": [
+  "tensile",
+  "tear"
+ ],
+ "measurands": [],
+ "materials": [
+  "elastomers",
+  "plastics",
+  "textiles",
+  "paper",
+  "films"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_kN": {
+   "max": 30
+  }
+ },
+ "models": [
+  {
+   "model": "Manual toggle press 30 kN",
+   "specs": {
+    "force_kN": 30
+   }
+  },
+  {
+   "model": "Hydropneumatic cutting press (two-hand operation)",
+   "specs": {}
+  },
+  {
+   "model": "Punching knives (eroded solid steel) / Super Dumbbell punching knife",
+   "specs": {}
+  }
+ ],
+ "relations": [],
+ "sources": [
+  {
+   "url": "https://www.hegewald-peschke.com/products/accessories-for-universal-testing-machines/specimen-preparation/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

@@ -1,0 +1,225 @@
+{
+ "id": "mts-bionix-grips",
+ "kind": "accessory",
+ "name": "MTS Bionix Grips for Biomaterials (scissors action 1 kN, vise action 100 N–5 kN, roller action 1–5 kN, manual bollard 1 kN, spring action)",
+ "name_ko": "MTS Bionix 생체재료용 그립 (가위 1 kN · 바이스 100 N~5 kN · 롤러 1~5 kN · 볼라드 1 kN · 스프링)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "biomedical",
+ "description": "염수 수조에 넣을 수 있는 스테인리스 생체재료·의료기기·의료 포장용 그립군 — 범용 D 형 어댑터(옵션 나사 어댑터), 회전 방지·정렬 핀, 전기기계·서보유압 프레임 공용. 가위 액션 2000: 자기 조임·정렬, 다이아몬드 면, 1 kN, 두께 10·폭 25 mm, -130~250 °C(불규칙 생체재료·뼈·연골·힘줄, ASTM D412·D624). 바이스 액션 100 N(2×10 mm)·2 kN(3.5×63)·5 kN(10×80), 고무 면, -10~50 °C(붕대·바이오 직물·기저귀·필름). 롤러 액션 1 kN(3×50, -10~50)·2 kN(4×50)·5 kN(7×75, -130~250; ASTM D882·ISO 527-3). 수동 볼라드 1000: 1 kN, Ø3 mm, -130~250(코드·섬유·실). 스프링 액션 10A/10B: 저하중, M6 또는 1/4-28 UNF, 조 하중 32±4.4 N, -75~200 °C(필름·종이·직물).",
+ "test_items": [
+  "tensile",
+  "fatigue"
+ ],
+ "measurands": [],
+ "materials": [
+  "biomaterials",
+  "bone",
+  "cartilage",
+  "tendons",
+  "bandages",
+  "bio-textiles",
+  "diapers",
+  "films",
+  "cords",
+  "fibers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D412",
+   "ASTM D624",
+   "ASTM D882",
+   "ISO 527-3"
+  ]
+ },
+ "limits": {
+  "force_N": {
+   "min": 32,
+   "max": 5000
+  },
+  "temperature_degC": {
+   "min": -130,
+   "max": 250
+  }
+ },
+ "models": [
+  {
+   "model": "Bionix Scissors Action Grips 2000",
+   "specs": {
+    "force_kN": 1,
+    "specimen_thickness_mm": 10,
+    "width_mm": 25,
+    "temperature_degC": {
+     "min": -130,
+     "max": 250
+    },
+    "weight_kg": 0.85,
+    "height_mm": 160
+   }
+  },
+  {
+   "model": "Bionix Vise Action 100 N",
+   "specs": {
+    "force_N": 100,
+    "specimen_thickness_mm": 2,
+    "width_mm": 10,
+    "temperature_degC": {
+     "min": -10,
+     "max": 50
+    },
+    "weight_kg": 0.56,
+    "height_mm": 100
+   }
+  },
+  {
+   "model": "Bionix Vise Action 2 kN",
+   "specs": {
+    "force_kN": 2,
+    "specimen_thickness_mm": 3.5,
+    "width_mm": 63,
+    "temperature_degC": {
+     "min": -10,
+     "max": 50
+    },
+    "weight_kg": 1.0,
+    "height_mm": 95
+   }
+  },
+  {
+   "model": "Bionix Vise Action 5 kN",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": 10,
+    "width_mm": 80,
+    "temperature_degC": {
+     "min": -10,
+     "max": 50
+    },
+    "weight_kg": 3.1,
+    "height_mm": 140
+   }
+  },
+  {
+   "model": "Bionix Roller Action 1 kN",
+   "specs": {
+    "force_kN": 1,
+    "specimen_thickness_mm": 3,
+    "width_mm": 50,
+    "temperature_degC": {
+     "min": -10,
+     "max": 50
+    },
+    "weight_kg": 1.3,
+    "height_mm": 123
+   }
+  },
+  {
+   "model": "Bionix Roller Action 2 kN",
+   "specs": {
+    "force_kN": 2,
+    "specimen_thickness_mm": 4,
+    "width_mm": 50,
+    "temperature_degC": {
+     "min": -130,
+     "max": 250
+    },
+    "weight_kg": 1.425,
+    "height_mm": 111
+   }
+  },
+  {
+   "model": "Bionix Roller Action 5 kN",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": 7,
+    "width_mm": 75,
+    "temperature_degC": {
+     "min": -130,
+     "max": 250
+    },
+    "weight_kg": 2.26,
+    "height_mm": 121
+   }
+  },
+  {
+   "model": "Bionix Manual Bollard 1000",
+   "specs": {
+    "force_kN": 1,
+    "specimen_diameter_mm": {
+     "max": 3
+    },
+    "temperature_degC": {
+     "min": -130,
+     "max": 250
+    },
+    "weight_kg": 1.01,
+    "height_mm": 124
+   }
+  },
+  {
+   "model": "Bionix Spring Action 10A / 10B",
+   "specs": {
+    "force_N": 32,
+    "temperature_degC": {
+     "min": -75,
+     "max": 200
+    },
+    "note": "조 하중 32±4.4 N, 장착 M6×1 또는 1/4-28 UNF, 평활/고무 면, 개구 1.0~4.2 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "전기기계·서보유압 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "전기기계·서보유압 프레임 공용"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "전기기계·서보유압 프레임 공용"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/bionix-scissors-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/bionix-vise-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/bionix-roller-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/bionix-manual-bollard-style-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/bionix-spring-action-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

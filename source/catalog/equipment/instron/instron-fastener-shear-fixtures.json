@@ -1,0 +1,83 @@
+{
+ "id": "instron-fastener-shear-fixtures",
+ "kind": "accessory",
+ "name": "Instron Fastener Shear Fixtures (Double Shear W-5135/W-5136 · Single Shear W-5140/W-5141)",
+ "name_ko": "인스트론 체결부품 전단 지그 (이중 전단 MIL-STD-1312-13 · 단일 전단 ASTM F606)",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "fastener_shear",
+ "description": "체결부품 축에 직각으로 하중을 주는 전단 지그. 이중 전단(압축형) W-5135 는 고강도 공구강 맨드릴·앤빌(U 홈) 짝, 1240 MPa, MIL-STD-1312-13·NASM1312-13, 장착판·어댑터 W-5136. 단일 전단(인장형) W-5140/W-5141(1380 MPa)은 닫힌 구멍으로 체결부품을 잡고 너트로 고정, ASTM F606. 체결부품 크기마다 지그가 따로 필요하다.",
+ "test_items": [
+  "shear"
+ ],
+ "measurands": [],
+ "materials": [
+  "bolts",
+  "pins",
+  "rivets",
+  "fasteners"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "MIL-STD-1312-13",
+   "NASM1312-13",
+   "ASTM F606"
+  ]
+ },
+ "limits": {
+  "pressure_MPa": {
+   "max": 1380,
+   "note": "지그 정격 응력"
+  }
+ },
+ "models": [
+  {
+   "model": "W-5135 (Double Shear)",
+   "specs": {
+    "pressure_MPa": 1240
+   }
+  },
+  {
+   "model": "W-5136 (Mandrel Mounting Plate and Adapter)",
+   "specs": {
+    "pressure_MPa": 1240
+   }
+  },
+  {
+   "model": "W-5140 (Single Shear)",
+   "specs": {}
+  },
+  {
+   "model": "W-5141 (Single Shear)",
+   "specs": {
+    "pressure_MPa": 1380
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/fastener-fixtures/fastener-shear-fixtures/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

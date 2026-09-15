@@ -1,0 +1,183 @@
+{
+ "id": "mts-advantage-pneumatic-grips",
+ "kind": "accessory",
+ "name": "MTS Advantage Pneumatic Grips (10 N / 100–200 N / 2 kN / 10 kN), Faces and Pneumatic Grip Controller",
+ "name_ko": "MTS Advantage 공압 그립 (10 N·100/200 N·2 kN·10 kN) · 면 · 공압 그립 컨트롤러",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "pneumatic_vise",
+ "description": "두 면이 동시에 그립 중심선으로 움직여 굽힘 변형을 없애는 이중 작동 공압 그립 — 서보유압·전기기계 겸용, 저용량 로드셀에 맞는 경량. 10 N(전자 금선·텅스텐선·열전대·젤·필름, 클램프 31 N, 두께 5 mm, Bm/Dm, 0.6 MPa, -40~200 °C), 100/200 N(클램프 620 N, 10 mm, -40~100 °C, 1 kg), 2 kN(7,100 N, 12 mm, -40~200, 3.2 kg), 10 kN(17 kN, 10~20 mm, 17.3 kg, 647.02B 와 같은 면). 면(4개 세트): 골판지·톱니·고무·다이아몬드·그랩(ASTM D2208·D5034·D1683, ISO 5082)·라인 접촉. 컨트롤러(0.85 MPa 입력·0.7 MPa 출력, 핸드/풋 스위치, 90~264 V, TestSuite 연동, 비상정지 연결).",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "thin films",
+  "tapes",
+  "thin sheets",
+  "hydrogels",
+  "fine wires",
+  "elastomers",
+  "leather",
+  "textiles"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ASTM D412",
+   "ASTM D624",
+   "ASTM D2208",
+   "ASTM D1683",
+   "ASTM D5034",
+   "ISO 5082"
+  ]
+ },
+ "limits": {
+  "force_N": {
+   "min": 10,
+   "max": 10000
+  },
+  "specimen_thickness_mm": {
+   "max": 20
+  },
+  "temperature_degC": {
+   "min": -40,
+   "max": 200
+  },
+  "pressure_MPa": {
+   "max": 0.6
+  }
+ },
+ "models": [
+  {
+   "model": "Advantage 10 N pneumatic grips",
+   "specs": {
+    "force_N": 10,
+    "specimen_thickness_mm": 5,
+    "pressure_MPa": 0.6,
+    "temperature_degC": {
+     "min": -40,
+     "max": 200
+    },
+    "weight_kg": 0.27,
+    "note": "클램프 하중 31 N"
+   }
+  },
+  {
+   "model": "Advantage 100/200 N pneumatic grips",
+   "specs": {
+    "force_N": 200,
+    "specimen_thickness_mm": 10,
+    "pressure_MPa": 0.6,
+    "temperature_degC": {
+     "min": -40,
+     "max": 100
+    },
+    "weight_kg": 1.0,
+    "height_mm": 180,
+    "width_mm": 114,
+    "note": "클램프 620 N"
+   }
+  },
+  {
+   "model": "Advantage 2 kN pneumatic grips",
+   "specs": {
+    "force_kN": 2,
+    "specimen_thickness_mm": 12,
+    "pressure_MPa": 0.6,
+    "temperature_degC": {
+     "min": -40,
+     "max": 200
+    },
+    "weight_kg": 3.2,
+    "height_mm": 226,
+    "width_mm": 131,
+    "note": "클램프 7,100 N"
+   }
+  },
+  {
+   "model": "Advantage 10 kN pneumatic grips",
+   "specs": {
+    "force_kN": 10,
+    "specimen_thickness_mm": {
+     "min": 10,
+     "max": 20
+    },
+    "pressure_MPa": 0.6,
+    "temperature_degC": {
+     "min": -40,
+     "max": 200
+    },
+    "weight_kg": 17.3,
+    "height_mm": 183,
+    "width_mm": 200,
+    "note": "클램프 17 kN"
+   }
+  },
+  {
+   "model": "Advantage pneumatic grip controller",
+   "specs": {
+    "pressure_MPa": {
+     "min": 0.7,
+     "max": 0.85
+    },
+    "note": "입력 최대 0.85 MPa, 출력 0.7 MPa; 핸드/풋 스위치 별매"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-landmark-servohydraulic",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-bionix-tabletop",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-acumen",
+   "note": "「서보유압식·전기기계식 시험기 겸용」 — 페이지가 기종을 특정하지 않음"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-10-n-pneumatic-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-100-200-n-2-kn-pneumatic-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-100-200-n-2-kn-pneumatic-grip-faces",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-10-kn-pneumatic-grip",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/advantage-pneumatic-grip-controllers",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

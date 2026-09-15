@@ -1,0 +1,82 @@
+{
+ "id": "shimadzu-foam-rubber-compression-test-jig",
+ "kind": "accessory",
+ "name": "Shimadzu Compression Test Jig for Foam Rubber Specimens (JIS K 6400)",
+ "name_ko": "시마즈 발포 고무 압축 시험 지그 (JIS K 6400, 1 kN, Ø200 플레이트)",
+ "manufacturer": "shimadzu",
+ "category": "grip_fixture",
+ "subcategory": "compression_platen",
+ "description": "자동차 시트·가구·침구의 발포 고무·우레탄 폼 경도(압축) 시험 지그 — JIS K 6400 연질 우레탄 폼 시험법. Autograph 에 붙이는 전용 부속으로 최대 1 kN, 가압판 Ø200 mm, 시편 받침판 400×400 mm(공기 구멍 Ø6.5, 피치 20), 0~+40 °C. 두께의 25·40·65 % 에서의 경도, 압축 처짐 계수(S65/S25), 히스테리시스 손실률을 구한다.",
+ "test_items": [
+  "compression"
+ ],
+ "measurands": [],
+ "materials": [
+  "foam rubber",
+  "urethane foam"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "JIS K 6400"
+  ]
+ },
+ "limits": {
+  "force_kN": {
+   "max": 1
+  },
+  "temperature_degC": {
+   "min": 0,
+   "max": 40
+  },
+  "specimen_diameter_mm": {
+   "max": 200,
+   "note": "가압판 지름"
+  }
+ },
+ "models": [
+  {
+   "model": "Compression Test Jig for Foam Rubber",
+   "specs": {
+    "force_kN": 1,
+    "specimen_diameter_mm": 200,
+    "temperature_degC": {
+     "min": 0,
+     "max": 40
+    },
+    "note": "받침판 400×400 mm, 공기 구멍 Ø6.5 mm 피치 20 mm"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "shimadzu-agx-v2"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ag-xplus"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-x"
+  },
+  {
+   "type": "fits_on",
+   "target": "shimadzu-ags-v"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/compression-test-jig-for-foam-rubber-specimens/index.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.shimadzu.com/an/products/materials-testing/uni-ttm-consumables/compression-test-jig-for-foam-rubber-specimens/spec.html",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

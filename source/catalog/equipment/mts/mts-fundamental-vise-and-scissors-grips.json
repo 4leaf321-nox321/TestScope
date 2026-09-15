@@ -1,0 +1,217 @@
+{
+ "id": "mts-fundamental-vise-and-scissors-grips",
+ "kind": "accessory",
+ "name": "MTS Fundamental Mechanical Vise Grips (10 N – 5 kN, incl. low-force FMV101/FMV102/BTV102), Pneumatic Vise Grips (FDQA101B 10 N / FDQA103B 1 kN) and Scissors Grips (FGD203A 2 kN / FGD503A 5 kN)",
+ "name_ko": "MTS Fundamental 기계식 바이스 그립 (10 N~5 kN) · 공압 바이스 그립 (10 N·1 kN) · 가위 그립 (2·5 kN)",
+ "manufacturer": "mts",
+ "category": "grip_fixture",
+ "subcategory": "vise",
+ "description": "Criterion 시리즈 40 용 경제형 그립군 — 종이·플라스틱 필름·직물·시트·포장 부품 인장. 수동 바이스 FDSA102A 100 N(0~1.5 mm)·FDSA502B 0.5 kN(0~6 mm) 등 10 N~5 kN, 고무 면 기본, 회전 방지·정렬 핀, 0~50 °C; 저하중 FMV101 10 N(-20~70 °C)·FMV102 100 N(-130~177)·BTV102 스테인리스(-130~250). 공압 바이스 FDQA103B 1 kN(0~8 mm, 1 MPa)·FDQA101B 10 N(0~0.2 mm, 0.4~0.7 MPa) — FPC2850 공급 컨트롤러(6.9 bar, 12 V DC) 필요. 가위 그립(자기 조임·자기 정렬, 다이아몬드 면) FGD203A 2 kN(0~12 mm)·FGD503A 5 kN(0~14 mm) — 포일·필름·고무·연질 폴리머.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "paper",
+  "plastic films",
+  "textiles",
+  "sheet materials",
+  "packaging",
+  "foils",
+  "rubber",
+  "flexible polymers"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 10,
+   "max": 5000
+  },
+  "specimen_thickness_mm": {
+   "max": 14
+  },
+  "temperature_degC": {
+   "min": -130,
+   "max": 250
+  },
+  "pressure_MPa": {
+   "max": 1
+  }
+ },
+ "models": [
+  {
+   "model": "FDSA102A (manual vise)",
+   "specs": {
+    "force_N": 100,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 1.5
+    },
+    "weight_kg": 0.31,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    },
+    "height_mm": 92.5,
+    "width_mm": 71.5
+   }
+  },
+  {
+   "model": "FDSA502B (manual vise)",
+   "specs": {
+    "force_N": 500,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 6
+    },
+    "weight_kg": 0.998,
+    "temperature_degC": {
+     "min": 0,
+     "max": 50
+    },
+    "height_mm": 119.5,
+    "width_mm": 111
+   }
+  },
+  {
+   "model": "FMV101 (low force)",
+   "specs": {
+    "force_N": 10,
+    "temperature_degC": {
+     "min": -20,
+     "max": 70
+    },
+    "weight_kg": 0.07
+   }
+  },
+  {
+   "model": "FMV102 (low force)",
+   "specs": {
+    "force_N": 100,
+    "temperature_degC": {
+     "min": -130,
+     "max": 177
+    },
+    "weight_kg": 0.11
+   }
+  },
+  {
+   "model": "BTV102 (low force, stainless)",
+   "specs": {
+    "force_N": 100,
+    "temperature_degC": {
+     "min": -130,
+     "max": 250
+    },
+    "weight_kg": 0.14
+   }
+  },
+  {
+   "model": "FDQA103B (pneumatic vise)",
+   "specs": {
+    "force_kN": 1,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 8
+    },
+    "pressure_MPa": 1,
+    "weight_kg": 1.257,
+    "height_mm": 149.25,
+    "width_mm": 130
+   }
+  },
+  {
+   "model": "FDQA101B (pneumatic vise)",
+   "specs": {
+    "force_N": 10,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 0.2
+    },
+    "pressure_MPa": {
+     "min": 0.4,
+     "max": 0.7
+    },
+    "weight_kg": 0.175,
+    "height_mm": 139
+   }
+  },
+  {
+   "model": "FGD203A (scissors)",
+   "specs": {
+    "force_kN": 2,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 12
+    },
+    "weight_kg": 1.016,
+    "height_mm": 134,
+    "width_mm": 138
+   }
+  },
+  {
+   "model": "FGD503A (scissors)",
+   "specs": {
+    "force_kN": 5,
+    "specimen_thickness_mm": {
+     "min": 0,
+     "max": 14
+    },
+    "weight_kg": 1.735,
+    "height_mm": 170,
+    "width_mm": 153
+   }
+  },
+  {
+   "model": "FPC2850 (pneumatic grip supply/controller)",
+   "specs": {
+    "pressure_bar": 6.9,
+    "power_W": 5.5,
+    "note": "12 V DC, 호스 Ø6 mm — FCQA502A·FDQA103B 용"
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mts-criterion-series-40",
+   "note": "호환 프레임 C42.503~C45.105"
+  },
+  {
+   "type": "fits_on",
+   "target": "mts-exceed-series-40",
+   "note": "저하중 FMV/BTV 는 Exceed 페이지에도"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-mechanical-vise-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-mechanical-vise-grips-low-force",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-pneumatic-vise-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-scissors-grips",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mts.com/en/products/materials/grips/fundamental-pneumatic-grip-supply-controller",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

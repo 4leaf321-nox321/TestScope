@@ -1,0 +1,96 @@
+{
+ "id": "zwickroell-temperature-chamber-360c-allroundline",
+ "kind": "accessory",
+ "name": "ZwickRoell 360 °C Temperature Chamber for AllroundLine (-80 °C to +360 °C, up to 250 kN)",
+ "name_ko": "즈윅로엘 AllroundLine 용 360 °C 온도 챔버 (-80~+360 °C, 250 kN)",
+ "manufacturer": "zwickroell",
+ "category": "environmental_chamber",
+ "description": "AllroundLine 용 고온형 온도 챔버 — -80~+360 °C, 250 kN 까지, 시험 공간 900×460×740 mm(HWD) 한 크기. 좌우 배치, 관통구 4개(센서 암 신율계용 기계식 인서트 또는 광학 신율계용 유리 인서트), 도어 인 도어 기본. PEEK·PTFE 매트릭스 복합재, ISO 6892-2·ASTM E21 금속 고온 인장, ISO 527-1·ASTM D638 플라스틱, ASTM D412·ISO 37·ISO 23529 고무. 250 °C 형(5 크기)은 별 객체.",
+ "test_items": [
+  "tensile",
+  "compression",
+  "flexure"
+ ],
+ "measurands": [],
+ "materials": [
+  "plastics",
+  "elastomers",
+  "composites (PEEK, PTFE matrix)",
+  "metals"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": [
+   "ISO 527-1",
+   "ASTM D638",
+   "ASTM D412",
+   "ISO 37",
+   "ISO 23529",
+   "ISO 6892-2",
+   "ASTM E21"
+  ]
+ },
+ "limits": {
+  "temperature_degC": {
+   "min": -80,
+   "max": 360
+  },
+  "force_kN": {
+   "max": 250
+  },
+  "test_room_height_mm": {
+   "max": 900
+  },
+  "test_room_width_mm": {
+   "max": 460
+  },
+  "test_room_depth_mm": {
+   "max": 740
+  },
+  "chamber": {
+   "values": [
+    "yes"
+   ]
+  }
+ },
+ "models": [
+  {
+   "model": "360 °C AllroundLine temperature chamber",
+   "specs": {
+    "temperature_degC": {
+     "min": -80,
+     "max": 360
+    },
+    "force_kN": 250,
+    "inner_mm": {
+     "height": 900,
+     "width": 460,
+     "depth": 740
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "extends_temperature",
+   "target": "zwickroell-allroundline"
+  },
+  {
+   "type": "requires",
+   "target": "utility-liquid-nitrogen",
+   "note": "-80 °C 운전 시"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.zwickroell.com/accessories/environmental-chambers/temperature-chambers/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

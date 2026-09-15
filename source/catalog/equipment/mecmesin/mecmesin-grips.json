@@ -1,0 +1,398 @@
+{
+ "id": "mecmesin-grips",
+ "kind": "accessory",
+ "name": "Mecmesin Grips (vice, pneumatic vice, cam, wedge 10 kN, film, fabric, clevis, parallel, multi-jaw, pinch, pin chuck, spring-loaded fold, toggle clamps, hooks, chain links)",
+ "name_ko": "멕메신 그립군 (바이스·공압 바이스·캠·웨지 10 kN·필름·직물·클레비스·평행·멀티조·핀치·핀 척·폴드·토글 클램프·훅·체인 링크)",
+ "manufacturer": "mecmesin",
+ "category": "grip_fixture",
+ "description": "OmniTest·MultiTest 와 힘 게이지용 그립 SKU 목록(제목의 용량·피팅만 있음). 바이스: 소형 단동 200 N·대형 단동 2 kN(피라미드/고무 면, QC-20), 공압 중형 단동/복동 1 kN(개구 10/20/30/52 mm, QC-20), Mec240g U 형 5 kN 용 V 조(Ø2~50 / 5~50), Mec240k 중형 2.5 kN 용 웨이브 조(30×50/80/100). 캠: 레버식 소·대 톱니 500 N, 케이블 캠 소 1 kN·대 5 kN. 웨지 10 kN(QC-20, 피라미드 조 40×34, V 조 Ø2~10), 수정 대형 웨지 1 kN. 필름 500 N, 직물 100/200 N, 클레비스 소 500 N·대 2.5 kN·대 퀵릴리스 핀 5 kN(M12), 소형 평행 500 N, 멀티조 500 N, 소형 핀치 200 N, 핀 척 100 N, 스프링 폴드 2 kN, 토글 클램프 50 mm 500 N. 훅: 시험 훅 소 50 N·중 500 N·대 2.5 kN, 스위블 훅, 페그 훅·연장 페그 훅 50 N, 조절 훅 50 N, 체인 링크 소 500 N·대 2.5 kN.",
+ "test_items": [
+  "tensile",
+  "peel"
+ ],
+ "measurands": [],
+ "materials": [
+  "films",
+  "fabrics",
+  "cables",
+  "wires",
+  "plastics",
+  "components",
+  "packaging"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 50,
+   "max": 10000
+  },
+  "test_opening_mm": {
+   "max": 52,
+   "note": "공압 바이스 개구"
+  }
+ },
+ "models": [
+  {
+   "model": "Small Single-action Vice Grip 200 N (QC-20)",
+   "specs": {
+    "force_N": 200
+   }
+  },
+  {
+   "model": "Large Single-action Vice Grip 2 kN, pyramid / rubber faced (QC-20)",
+   "specs": {
+    "force_kN": 2
+   }
+  },
+  {
+   "model": "Pneumatic Medium Vice Grip 1 kN, single / double action, 10 / 20 / 30 / 52 mm opening (QC-20)",
+   "specs": {
+    "force_kN": 1,
+    "test_opening_mm": [
+     10,
+     20,
+     30,
+     52
+    ]
+   }
+  },
+  {
+   "model": "Mec240g U-Form Vice Grip 5 kN V-jaws (Ø2–50 / Ø5–50) · Mec240k Medium Vice Grip 2.5 kN wave jaws (30×50/80/100)",
+   "specs": {
+    "force_kN": [
+     5,
+     2.5
+    ]
+   }
+  },
+  {
+   "model": "Lever-operated Cam Grip small / large serrated 500 N · Cable Cam Grip small 1 kN / large 5 kN",
+   "specs": {
+    "force_N": [
+     500,
+     1000,
+     5000
+    ]
+   }
+  },
+  {
+   "model": "Wedge Grip 10 kN (QC-20) with pyramid jaws 40×34 / V-jaws Ø2–10 · Modified Large Wedge Grip 1 kN",
+   "specs": {
+    "force_kN": 10,
+    "specimen_diameter_mm": {
+     "min": 2,
+     "max": 10
+    }
+   }
+  },
+  {
+   "model": "Film Grips 500 N · Fabric Grip 100 / 200 N · Small Parallel Grip 500 N · Multi-Jaw Grip 500 N · Small Pinch Grip 200 N",
+   "specs": {
+    "force_N": {
+     "min": 100,
+     "max": 500
+    }
+   }
+  },
+  {
+   "model": "Pin Chuck 100 N · Spring-Loaded Fold Grip 2 kN · Toggle Clamps 50 mm serrated 500 N",
+   "specs": {
+    "force_N": {
+     "min": 100,
+     "max": 2000
+    }
+   }
+  },
+  {
+   "model": "Clevis Grip small 500 N / large 2.5 kN / large with quick-release pin 5 kN",
+   "specs": {
+    "force_N": [
+     500,
+     2500,
+     5000
+    ]
+   }
+  },
+  {
+   "model": "Test Hooks small 50 N / medium 500 N / large 2.5 kN · Swivel Test Hooks 50 / 500 N",
+   "specs": {
+    "force_N": {
+     "min": 50,
+     "max": 2500
+    }
+   }
+  },
+  {
+   "model": "Peg Hook / Extended Peg Hook / Adjustable Test Hook 50 N · Chain Link Assemblies 500 N / 2.5 kN",
+   "specs": {
+    "force_N": {
+     "min": 50,
+     "max": 2500
+    }
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "mecmesin-omnitest",
+   "note": "제조사 SKU 목록 — 10-32 UNF·M6·5/16 UNC 피팅은 힘 게이지·MultiTest, QC-20/QC-32 는 OmniTest·MultiTest 스탠드"
+  },
+  {
+   "type": "fits_on",
+   "target": "mecmesin-multitest",
+   "note": "제조사 SKU 목록 — 10-32 UNF·M6·5/16 UNC 피팅은 힘 게이지·MultiTest, QC-20/QC-32 는 OmniTest·MultiTest 스탠드"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.mecmesin.com/accessory/432-264",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-267",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-267-v01",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k2ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240kko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-s202ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-s20ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-s302ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-s30ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-s502ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-s50ko",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240g-bv2",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240g-bv5",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-bw100",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-bw50",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mec240k-bw80",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-047",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-383",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-390",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-108",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mecs622",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mecs622-bp",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/mecs622-bv",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-212",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-157",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-384",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-386",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-211",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-215",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-280",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-214",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-262",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-176",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-216",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-400",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-443",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-403",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-118",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-120",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-122",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-169",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-171",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-391",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-392",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-399",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-181",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-380",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-259",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  },
+  {
+   "url": "https://www.mecmesin.com/accessory/432-410",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}

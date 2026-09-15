@@ -1,0 +1,93 @@
+{
+ "id": "instron-2714-pneumatic-cord-and-yarn-grips",
+ "kind": "accessory",
+ "name": "Instron 2714 / 2734 Series Pneumatic Cord and Yarn Tensile Grips",
+ "name_ko": "인스트론 2714 / 2734 계열 공압 코드·실 인장 그립",
+ "manufacturer": "instron",
+ "category": "grip_fixture",
+ "subcategory": "cord_yarn",
+ "description": "섬유·코드·실·가는 편조선의 조 파단을 줄이는 캡스탄식 공압 그립. 곡면 반 캡스탄이 마찰로 물림력을 분산해 물린 부위와 자유 길이 사이의 응력이 완만하게 이어진다. 풋스위치 또는 자동 에어 키트로 손 없이 개폐, 시편 크리프에 따른 물림력 감소를 공압이 보상. 50 N·1 kN·2 kN, 1 kN 고온형(2734-007). 정적·인장 반복용.",
+ "test_items": [
+  "tensile"
+ ],
+ "measurands": [],
+ "materials": [
+  "fine braided wires",
+  "cords",
+  "yarns",
+  "monofilaments"
+ ],
+ "standards": {
+  "compliance": [],
+  "test_methods": []
+ },
+ "limits": {
+  "force_N": {
+   "min": 50,
+   "max": 2000
+  },
+  "specimen_diameter_mm": {
+   "max": 4.8
+  }
+ },
+ "models": [
+  {
+   "model": "2714-031",
+   "specs": {
+    "force_N": 50,
+    "specimen_diameter_mm": 2.4
+   }
+  },
+  {
+   "model": "2714-005",
+   "specs": {
+    "force_kN": 1,
+    "specimen_diameter_mm": 3.2
+   }
+  },
+  {
+   "model": "2734-007",
+   "specs": {
+    "force_kN": 1,
+    "specimen_diameter_mm": 3.2
+   },
+   "note": "고온형"
+  },
+  {
+   "model": "2714-040",
+   "specs": {
+    "force_kN": 2,
+    "specimen_diameter_mm": 4.8
+   }
+  }
+ ],
+ "relations": [
+  {
+   "type": "fits_on",
+   "target": "instron-6800-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-3400-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "fits_on",
+   "target": "instron-5900-series",
+   "note": "제조사 페이지가 프레임을 명시하지 않음 — 인스트론 표준 피팅(Type Om/Dm) 전동식 프레임 기준"
+  },
+  {
+   "type": "requires",
+   "target": "instron-2701-air-kits-for-pneumatic-grips"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.instron.com/en/products/testing-accessories/grips/pneumatic-cord-and-yarn-tensile-grips/",
+   "retrieved": "2026-09-13",
+   "note": "제조사 부속 제품 페이지(2등급). 값은 페이지 표에서 옮겼고 PDF 로는 아직 확인하지 않았다"
+  }
+ ],
+ "confidence": "limited"
+}
