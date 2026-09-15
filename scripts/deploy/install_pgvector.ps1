@@ -58,16 +58,58 @@ function Invoke-Native {
 }
 
 # --- PostgreSQL 찾기 ---------------------------------------------------------
+# **판이 여럿 깔린 서버가 있다.** 「가장 높은 판」 을 집으면 17 을 쓰는 서버에 18 의 폴더에
+# DLL 을 넣고, CREATE EXTENSION 은 17 에서 「제어 파일 없음」 으로 죽는다. 그리고 설치
+# 폴더가 C:\Program Files 가 아닐 수도 있다(D: 에 깐 17). 그래서 둘을 한다:
+#   1. 설치본 후보를 **서비스 등록 경로**에서 모은다(어느 드라이브든 pg_ctl.exe 의 부모의 부모)
+#      + C:\Program Files\PostgreSQL\* 도 본다.
+#   2. -DatabaseUrl 을 줬으면 그 서버에 **판을 물어**(server_version_num) 같은 판의 후보를 고른다.
+#      안 줬으면 후보가 하나일 때만 쓰고, 여럿이면 -PgRoot 를 요구한다 — 짐작하지 않는다.
+function Get-PgMajor([string]$root) {
+    $config = Join-Path $root 'bin\pg_config.exe'
+    if (-not (Test-Path $config)) { return $null }
+    $line = & $config --version 2>$null
+    if ($line -match 'PostgreSQL\s+(\d+)') { return [int]$Matches[1] }
+    return $null
+}
+
+function Find-PgRoots {
+    $roots = @{}
+    foreach ($svc in Get-CimInstance Win32_Service -Filter "Name LIKE 'postgresql%'" -ErrorAction SilentlyContinue) {
+        if ($svc.PathName -match '^"?(.+?)\\bin\\pg_ctl\.exe') { $roots[$Matches[1]] = $true }
+    }
+    foreach ($dir in Get-ChildItem 'C:\Program Files\PostgreSQL' -Directory -ErrorAction SilentlyContinue) {
+        $roots[$dir.FullName] = $true
+    }
+    return @($roots.Keys | Where-Object { Test-Path (Join-Path $_ 'bin\pg_config.exe') })
+}
+
 if (-not $PgRoot) {
-    $found = Get-ChildItem 'C:\Program Files\PostgreSQL' -Directory -ErrorAction SilentlyContinue |
-        Sort-Object { [int]($_.Name -replace '\D', '0') } -Descending | Select-Object -First 1
-    if (-not $found) { throw 'PostgreSQL 을 못 찾았습니다. -PgRoot 로 알려 주세요.' }
-    $PgRoot = $found.FullName
+    $candidates = @(Find-PgRoots)   # 함수 반환은 원소 하나면 배열이 풀린다 — 다시 감싼다
+    if ($candidates.Count -eq 0) { throw 'PostgreSQL 설치본을 못 찾았습니다. -PgRoot 로 알려 주세요(예 D:\PostgreSQL\17).' }
+    if ($DatabaseUrl) {
+        $clean = $DatabaseUrl -replace '^postgresql\+psycopg://', 'postgresql://'
+        $anyPsql = Join-Path $candidates[0] 'bin\psql.exe'
+        $num = (& $anyPsql $clean -tAc 'SHOW server_version_num' 2>$null)
+        if (-not $num) { throw "DB 에 붙지 못해 서버의 판을 알 수 없습니다: $DatabaseUrl" }
+        $serverMajor = [int]([int]$num.Trim() / 10000)
+        $matched = @($candidates | Where-Object { (Get-PgMajor $_) -eq $serverMajor })
+        if ($matched.Count -eq 0) {
+            throw "서버는 PostgreSQL $serverMajor 인데 그 판의 설치본을 못 찾았습니다(후보: $($candidates -join ', ')). -PgRoot 로 알려 주세요."
+        }
+        $PgRoot = $matched[0]
+        Write-Log "서버 판 $serverMajor 에 맞는 설치본을 골랐습니다."
+    } elseif ($candidates.Count -eq 1) {
+        $PgRoot = $candidates[0]
+    } else {
+        throw "PostgreSQL 이 여럿입니다($($candidates -join ', ')). -DatabaseUrl 을 주면 서버의 판에 맞춰 고르고, 아니면 -PgRoot 로 알려 주세요."
+    }
 }
 $libDir = Join-Path $PgRoot 'lib'
 $extDir = Join-Path $PgRoot 'share\extension'
 $psql = Join-Path $PgRoot 'bin\psql.exe'
-Write-Log "PostgreSQL: $PgRoot"
+$major = Get-PgMajor $PgRoot
+Write-Log "PostgreSQL: $PgRoot (판 $major)"
 
 $installed = Test-Path (Join-Path $libDir 'vector.dll')
 Write-Log ("vector.dll : " + $(if ($installed) { '있음' } else { '없음' }))
@@ -79,7 +121,6 @@ if ($CheckOnly) {
 }
 
 if (-not $FromDir) {
-    $major = Split-Path $PgRoot -Leaf
     $FromDir = Join-Path $PSScriptRoot "pgvector\pg$major"
     if (-not (Test-Path $FromDir)) {
         throw "패키지에 PostgreSQL $major 용 pgvector 가 없습니다($FromDir). 개발 PC 에서 build_pgvector.ps1 로 그 판을 빌드해 넣거나 -FromDir 로 주세요."
@@ -97,8 +138,8 @@ if ($sqlFiles.Count -eq 0) { throw "$FromDir 에 vector--*.sql 이 없습니다.
 $infoPath = Join-Path $FromDir 'build-info.json'
 if (Test-Path $infoPath) {
     $info = Get-Content $infoPath -Raw | ConvertFrom-Json
-    $here = Split-Path $PgRoot -Leaf
-    if ($info.postgres_major -and $info.postgres_major -ne $here) {
+    $here = "$major"
+    if ($info.postgres_major -and "$($info.postgres_major)" -ne $here) {
         throw "판이 다릅니다 — 산출물은 PostgreSQL $($info.postgres_major) 용인데 여기는 $here 입니다. 그 판으로 다시 빌드하세요."
     }
     Write-Log "산출물: pgvector $($info.pgvector) / PostgreSQL $($info.postgres_major) / $($info.built_at)"

@@ -60,10 +60,13 @@ function Invoke-Native {
 
 # --- PostgreSQL 찾기 ---------------------------------------------------------
 if (-not $PgRoot) {
-    $found = Get-ChildItem 'C:\Program Files\PostgreSQL' -Directory -ErrorAction SilentlyContinue |
-        Sort-Object { [int]($_.Name -replace '\D', '0') } -Descending | Select-Object -First 1
-    if (-not $found) { throw 'PostgreSQL 을 못 찾았습니다. -PgRoot 로 알려 주세요.' }
-    $PgRoot = $found.FullName
+    $found = @(Get-ChildItem 'C:\Program Files\PostgreSQL' -Directory -ErrorAction SilentlyContinue |
+        Where-Object { Test-Path (Join-Path $_.FullName 'lib\postgres.lib') })
+    if ($found.Count -eq 0) { throw 'PostgreSQL(개발 파일 포함)을 못 찾았습니다. -PgRoot 로 알려 주세요.' }
+    if ($found.Count -gt 1) {
+        throw "PostgreSQL 이 여럿입니다($($found.Name -join ', ')). 어느 판을 빌드할지 -PgRoot 로 알려 주세요 — DLL 은 메이저 판에 묶입니다."
+    }
+    $PgRoot = $found[0].FullName
 }
 if (-not (Test-Path (Join-Path $PgRoot 'lib\postgres.lib'))) {
     throw "$PgRoot 에 lib\postgres.lib 가 없습니다. **서버 개발 파일**이 설치돼 있어야 합니다(설치 프로그램의 'Development' 구성 요소)."
