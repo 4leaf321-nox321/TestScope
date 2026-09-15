@@ -182,14 +182,15 @@ function Get-Definitions {
             DisplayName = 'TestScope MCP'
             Description = "TestScope AI 연결(MCP) — 포트 $mcpPort. 백엔드 서비스 뒤에 뜬다"
             Executable = Join-Path $venvs 'mcp_server\Scripts\python.exe'
-            Arguments = '-c "import server; server.mcp.run(transport=''http'')"'
+            # **공식 mcp SDK 2.x 다** — 전송 이름은 'streamable-http' 이고 host·port 는 인자로 준다.
+            # 'http' 와 FASTMCP_* 환경변수는 다른 패키지(fastmcp)의 것이라 안 통한다(운영 첫 설치
+            # 실측: 그렇게 띄운 MCP 서비스가 곧장 죽었다). 개발용 mcp_server\run_mcp.ps1 과 같은 호출.
+            Arguments = "-c ""import server; server.mcp.run(transport='streamable-http', host='$mcpHost', port=$mcpPort)"""
             WorkingDirectory = Join-Path $AppPath 'mcp_server'
             Env = @{
                 PYTHONIOENCODING = 'utf-8'
                 PYTHONUNBUFFERED = '1'
                 TESTSCOPE_API_BASE = "http://127.0.0.1:$backendPort/api"
-                FASTMCP_PORT = "$mcpPort"
-                FASTMCP_HOST = "$mcpHost"
             }
             # 백엔드가 먼저다. 없으면 MCP 의 도구가 전부 「연결할 수 없다」 로 실패한다.
             DependsOn = @('TestScope')

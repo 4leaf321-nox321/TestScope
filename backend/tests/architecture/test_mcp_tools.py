@@ -92,3 +92,28 @@ def test_도구가_부르는_경로가_실재한다() -> None:
     }
     missing = sorted(one for one in called if one not in known)
     assert not missing, f"서버에 없는 경로를 부른다: {missing}"
+
+
+def test_배포_스크립트가_개발용과_같은_전송으로_MCP_를_띄운다() -> None:
+    """서버는 공식 mcp SDK 2.x 라 `run(transport='streamable-http', host=…, port=…)` 다.
+
+    `'http'` 와 `FASTMCP_*` 환경변수는 다른 패키지(fastmcp)의 관례라 여기서는 안 통한다 —
+    개발용 run_mcp.ps1 은 맞게 부르는데 배포용 템플릿과 서비스 정의가 옛 관례로 남아, 운영
+    첫 설치에서 MCP 서비스만 곧장 죽었다. 셋이 같은 이름을 쓰는지 여기서 본다.
+    """
+    root = SERVER.parents[1]
+    for rel in (
+        "mcp_server/run_mcp.ps1",
+        "scripts/ci/run_mcp_template.ps1",
+        "scripts/deploy/service.ps1",
+    ):
+        text = (root / rel).read_text(encoding="utf-8-sig")
+        assert "transport='streamable-http'" in text, (
+            f"{rel} 이 streamable-http 로 안 띄웁니다"
+        )
+        assert "transport='http'" not in text, (
+            f"{rel} 이 fastmcp 의 전송 이름 'http' 를 씁니다"
+        )
+        assert "$env:FASTMCP_" not in text and "FASTMCP_PORT =" not in text, (
+            f"{rel} 이 FASTMCP_* 환경변수를 씁니다 — 공식 SDK 는 안 읽습니다"
+        )

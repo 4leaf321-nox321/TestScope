@@ -72,14 +72,15 @@ if ($owner) {
     exit 1
 }
 
-$env:FASTMCP_PORT = "$mcpPort"
-$env:FASTMCP_HOST = "$mcpHost"
 Write-Host "MCP ${mcpHost}:${mcpPort} — 등록 주소 http://<서버>:$mcpPort/mcp"
 Write-Host '개인 토큰은 화면의 「내 정보 → 토큰」 에서 발급합니다(범위: read · catalog:write).'
 
 Push-Location $serverDir
 try {
-    & $venvPython -c "import server; server.mcp.run(transport='http')"
+    # 공식 mcp SDK(2.x)다 — 전송 이름은 'streamable-http' 이고 host·port 는 인자로 받는다.
+    # 'http' 와 FASTMCP_* 환경변수는 다른 패키지(fastmcp)의 것이라 여기서는 통하지 않는다
+    # (개발용 mcp_server\run_mcp.ps1 과 같은 호출 — 둘이 갈리면 배포본만 조용히 안 뜬다).
+    & $venvPython -c "import server; server.mcp.run(transport='streamable-http', host='$mcpHost', port=$mcpPort)"
 } finally {
     Pop-Location
 }
