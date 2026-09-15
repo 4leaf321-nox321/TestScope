@@ -234,20 +234,17 @@ function Install-One($def) {
     [System.IO.File]::WriteAllText($xml, $content, (New-Object System.Text.UTF8Encoding $false))
 
     if ($existing) {
-        # WinSW 2.x 에는 정의만 갱신하는 명령이 없다 — 지우고 다시 만든다. 지운 직후 SCM 이
-        # 「삭제 표시」 상태로 잠시 붙잡고 있어 곧바로 만들면 실패하므로, 실제로 사라질 때까지
-        # 기다린다(서비스 관리자 창이 열려 있으면 안 사라진다 — 닫아야 한다).
-        Write-Log "서비스 $id 재등록 (정의 갱신)"
-        Invoke-WinSW $id 'uninstall'
-        $deadline = (Get-Date).AddSeconds(60)
-        while ((Get-ServiceOrNull $id) -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 500 }
-        if (Get-ServiceOrNull $id) {
-            throw "서비스 $id 가 아직 지워지지 않았습니다(삭제 표시 상태). 서비스 관리자(services.msc) 창을 닫고 다시 실행하세요."
-        }
+        # **지웠다 만들지 않는다.** WinSW 는 XML 을 서비스가 시작될 때 읽으므로 실행 파일·인수·
+        # 환경변수·작업 폴더·로그·재시작 규칙은 위에서 XML 을 다시 쓴 것으로 이미 반영됐다.
+        # 전에는 uninstall → install 을 했는데, 지운 직후 SCM 이 「삭제 표시」 로 붙잡거나
+        # 핸들이 남아 uninstall 자체가 -1 로 죽었다(운영 첫 설치에서 실측). SCM 이 갖는 것
+        # (표시 이름·설명·시작 모드·의존성)은 등록 때 정해지고 거의 안 바뀐다 — 바꿔야 하면
+        # `-Action uninstall` 뒤 다시 `install` 한다.
+        Write-Log "서비스 $id 정의 갱신 (XML) — 이미 등록돼 있어 다시 만들지 않습니다"
     } else {
         Write-Log "서비스 $id 등록"
+        Invoke-WinSW $id 'install'
     }
-    Invoke-WinSW $id 'install'
     Write-Log "서비스 $id 시작"
     Invoke-WinSW $id 'start'
 }
