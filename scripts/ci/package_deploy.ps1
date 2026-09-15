@@ -9,9 +9,10 @@
     backend\             코드 + requirements.txt
     backend\packages\    wheel 번들 — 서버는 --no-index 로 여기서만 설치한다
     frontend\dist\       빌드된 SPA. 백엔드가 같은 프로세스에서 서빙한다
-    run_server.ps1       기동
+    run_server.ps1       기동(콘솔)
+    tools\WinSW-x64.exe  서비스 래퍼 — service.ps1 이 이것으로 Windows 서비스를 만든다
     deploy.ps1 / rollback.ps1 / venv_sync.ps1 / install.ps1 / precheck.ps1 /
-    backup.ps1 / restore.ps1
+    backup.ps1 / restore.ps1 / service.ps1
     배포.md              초기 배포·업데이트 배포 절차
     BUILD_INFO.txt       wheel 을 만든 파이썬 마이너 버전과 릴리스 태그
 
@@ -157,6 +158,42 @@ if (Test-Path .\mcp_server\server.py) {
     }
 }
 
+# --- 서비스 래퍼 (WinSW) --------------------------------------------------------
+# 부팅 때 뜨고 죽으면 되살아나는 것은 Windows 서비스가 해 주는데, 콘솔 프로그램을 서비스로
+# 감싸는 것이 WinSW 다(MIT). **저장소에 넣지 않고 패키징 때 받는다** — 18MB 바이너리를
+# git 에 두면 클론이 무거워지고 판을 올릴 때마다 또 쌓인다. 대신 판과 해시를 여기 못
+# 박아, 받은 파일이 그 판이 아니면 패키징을 멈춘다. self-contained 빌드라 서버에 .NET 을
+# 깔 필요가 없다 — 폐쇄망 서버의 OS 판을 묻지 않아도 된다.
+#
+# **없으면 실패시킨다.** 「파일은 담고 띄우는 법은 안 담는 것」 다음으로 나쁜 것이 「띄우는
+# 법은 담고 파일은 안 담는 것」 이다 — 서버에서 service.ps1 이 exe 를 못 찾는다.
+$winswVersion = 'v2.12.0'
+$winswSha256 = '05B82D46AD331CC16BDC00DE5C6332C1EF818DF8CEEFCD49C726553209B3A0DA'
+$winswUrl = "https://github.com/winsw/winsw/releases/download/$winswVersion/WinSW-x64.exe"
+$toolsDir = '.\deploy\tools'
+New-Item -ItemType Directory -Force -Path $toolsDir | Out-Null
+$winswPath = Join-Path $toolsDir 'WinSW-x64.exe'
+# 개발 PC 에서 되풀이할 때 매번 받지 않게 옆에 캐시한다(.gitignore 의 deploy* 에 걸린다).
+$winswCache = ".\deploy_cache\WinSW-$winswVersion-x64.exe"
+if (-not (Test-Path $winswCache)) {
+    Write-Host "WinSW $winswVersion 다운로드"
+    New-Item -ItemType Directory -Force -Path (Split-Path $winswCache) | Out-Null
+    try {
+        Invoke-WebRequest -Uri $winswUrl -OutFile $winswCache -UseBasicParsing
+    } catch {
+        Write-Error "WinSW 를 받지 못했습니다: $winswUrl — $_"
+        exit 1
+    }
+}
+$actualHash = (Get-FileHash $winswCache -Algorithm SHA256).Hash
+if ($actualHash -ne $winswSha256) {
+    Remove-Item -Force $winswCache
+    Write-Error "WinSW 해시가 다릅니다 (기대 $winswSha256, 실제 $actualHash). 판이 바뀌었거나 받다 깨졌습니다 — 패키징을 멈춥니다."
+    exit 1
+}
+Copy-Item -Force $winswCache $winswPath
+Write-Host "  WinSW $winswVersion 확인 (sha256 일치)"
+
 # --- 스크립트와 빌드 정보 ------------------------------------------------------
 Write-Host '실행·배포 스크립트 추가'
 Copy-Item -Force .\scripts\ci\run_server_template.ps1 .\deploy\run_server.ps1
@@ -172,6 +209,7 @@ Copy-Item -Force .\scripts\deploy\install.ps1 .\deploy\install.ps1
 Copy-Item -Force .\scripts\deploy\precheck.ps1 .\deploy\precheck.ps1
 Copy-Item -Force .\scripts\deploy\backup.ps1 .\deploy\backup.ps1
 Copy-Item -Force .\scripts\deploy\restore.ps1 .\deploy\restore.ps1
+Copy-Item -Force .\scripts\deploy\service.ps1 .\deploy\service.ps1
 
 # 배포 문서도 함께 넣는다. 폐쇄망 서버는 zip 하나만 받으므로, 문서가 저장소에만
 # 있으면 **정작 설치하는 자리에서 볼 수 없다.**

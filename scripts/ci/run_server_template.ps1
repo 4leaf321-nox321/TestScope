@@ -14,6 +14,10 @@ FastAPI 는 ASGI 라 waitress(WSGI)를 쓸 수 없다. uvicorn 으로 띄운다.
 **콘솔 실행의 대가**: 이 창을 닫으면 서버가 멈추고, 서버를 재부팅하면 수동으로 다시
 실행해야 한다. 로그는 <AppPath>_data\logs 에 남으므로 창을 닫아도 기록은 사라지지
 않는다.
+
+운영은 이것이 아니라 **서비스**로 돈다 — install.ps1 이 service.ps1 로 Windows 서비스
+(TestScope)를 등록한다. 이 스크립트는 문제를 눈으로 볼 때, 또는 -NoService 로 깔았을 때
+쓴다. 서비스가 떠 있으면 먼저 멈춘다(포트가 하나다): service.ps1 -Action stop
 #>
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path

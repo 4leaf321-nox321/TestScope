@@ -49,7 +49,7 @@ def test_네이티브_명령은_종료_코드로_판정한다() -> None:
     **alembic 은 INFO 로그를 stderr 로 낸다** — 감싸지 않으면 정상 배포가 실패로
     뒤집힌다. alembic·pg_dump·robocopy 를 부르는 스크립트는 감싸는 함수를 갖는다.
     """
-    for name in ("deploy.ps1", "install.ps1", "backup.ps1", "restore.ps1"):
+    for name in ("deploy.ps1", "install.ps1", "backup.ps1", "restore.ps1", "service.ps1"):
         text = (SCRIPTS / "deploy" / name).read_text(encoding="utf-8-sig")
         assert "function Invoke-Native" in text, f"{name} 에 Invoke-Native 가 없습니다"
 
@@ -61,7 +61,7 @@ def test_대시_두_개를_막는다() -> None:
     들어간다** — deploy.ps1 에서는 그것이 -Repo 라서 저장소 이름 자리에 경로가
     가고, 사람은 "gh 가 안 된다" 를 보게 된다.
     """
-    for name in ("deploy.ps1", "install.ps1", "rollback.ps1", "backup.ps1"):
+    for name in ("deploy.ps1", "install.ps1", "rollback.ps1", "backup.ps1", "service.ps1"):
         text = (SCRIPTS / "deploy" / name).read_text(encoding="utf-8-sig")
         assert "Assert-NotFlag" in text, f"{name} 에 Assert-NotFlag 가 없습니다"
 
@@ -88,6 +88,29 @@ def test_패키지에_카탈로그_원천이_든다() -> None:
     assert "materialtwin" in packaged, (
         "package_deploy.ps1 이 source\\materialtwin 을 안 담습니다"
     )
+
+
+def test_서비스_래퍼는_판과_해시를_못_박고_설치가_등록한다() -> None:
+    """부팅 때 뜨는 것은 Windows 서비스(WinSW)가 해 준다. 그 exe 는 저장소가 아니라
+    패키징이 받아 담는데, **판과 sha256 을 못 박지 않으면** 어느 날 다른 바이너리가
+    폐쇄망 서버로 들어간다. 그리고 담기만 하고 install.ps1 이 안 부르면 재부팅한 날
+    아침에 화면이 안 열린다."""
+    packaged = (SCRIPTS / "ci" / "package_deploy.ps1").read_text(encoding="utf-8-sig")
+    assert "$winswVersion = 'v" in packaged, (
+        "package_deploy.ps1 이 WinSW 판을 못 박지 않습니다"
+    )
+    assert "Get-FileHash" in packaged and "$winswSha256" in packaged, (
+        "package_deploy.ps1 이 WinSW 의 sha256 을 검사하지 않습니다"
+    )
+    assert "WinSW-x64.exe" in packaged, "package_deploy.ps1 이 WinSW 를 담지 않습니다"
+    install = (SCRIPTS / "deploy" / "install.ps1").read_text(encoding="utf-8-sig")
+    assert "service.ps1" in install, "install.ps1 이 service.ps1 을 안 부릅니다"
+    # 배포와 롤백은 서비스를 스스로 멈추고 올린다 — 사람이 잊으면 잠금에 막힌다.
+    for name in ("deploy.ps1", "rollback.ps1"):
+        text = (SCRIPTS / "deploy" / name).read_text(encoding="utf-8-sig")
+        assert "Stop-Service" in text and "Start-AppServices" in text, (
+            f"{name} 이 서비스를 멈추고 올리지 않습니다"
+        )
 
 
 def test_설치가_부르는_시드_스크립트가_있다() -> None:

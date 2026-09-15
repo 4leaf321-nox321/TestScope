@@ -24,7 +24,10 @@ param(
     [string]$Tag,
     [string]$ZipPath,
     [string]$PythonExe,
-    [switch]$SkipMigrations
+    [switch]$SkipMigrations,
+    # 멈춘 서비스를 끝에 다시 올리지 않는다 — install.ps1 이 마이그레이션·시드를 마친 뒤
+    # service.ps1 로 직접 올릴 때. 새 코드가 옛 스키마 위에서 잠깐이라도 도는 일을 막는다.
+    [switch]$LeaveServicesStopped
 )
 
 $ErrorActionPreference = 'Stop'
@@ -117,6 +120,34 @@ $isFirstRun = -not (Test-Path $AppPath)
 
 if ($isFirstRun) { Write-Log "$AppPath 에 기존 설치가 없습니다 — 첫 배포로 처리합니다." }
 
+# --- 서비스 -----------------------------------------------------------------
+# service.ps1 이 등록한 Windows 서비스(TestScope · TestScope-MCP)는 앱 폴더를 잠근다.
+# **배포가 스스로 멈추고 끝에 다시 올린다** — 사람이 잊으면 아래 잠금 확인이 막고, 그때
+# 서비스는 「죽여도 되살아나는」 것이라 이름을 알아야 멈출 수 있다. 콘솔로 띄운 것은
+# 여전히 사람이 닫는다.
+#
+# 순서: MCP 가 백엔드에 의존하므로 멈출 때는 MCP 먼저, 올릴 때는 백엔드 먼저.
+$serviceIds = @('TestScope-MCP', 'TestScope') | Where-Object { Get-Service -Name $_ -ErrorAction SilentlyContinue }
+$stoppedServices = @()
+foreach ($id in $serviceIds) {
+    $svc = Get-Service -Name $id
+    if ($svc.Status -ne 'Stopped') {
+        Write-Log "서비스 $id 중지"
+        Stop-Service -Name $id -Force -ErrorAction Stop
+        (Get-Service -Name $id).WaitForStatus('Stopped', (New-TimeSpan -Seconds 60))
+        $stoppedServices += $id
+    }
+}
+function Start-AppServices {
+    # 멈췄던 것만, 백엔드부터.
+    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+        if ($stoppedServices -contains $id) {
+            Write-Log "서비스 $id 시작"
+            try { Start-Service -Name $id -ErrorAction Stop } catch { Write-Warning "서비스 $id 를 시작하지 못했습니다: $_" }
+        }
+    }
+}
+
 # 폴더가 잠겨 있으면 시작 전에 멈춘다.
 #
 # **루트에 파일을 써 보는 것으로는 부족하다.** run_server.ps1 이 작업 디렉터리를
@@ -205,6 +236,7 @@ if (-not $isFirstRun) {
 확실한 방법은 서버 재시작입니다. 배포 중에는 어차피 앱이 멈춥니다.
 "@
         }
+        Start-AppServices
         throw @"
 $AppPath 를 옮길 수 없습니다 — 무언가 이 폴더를 잡고 있습니다.
 
@@ -267,6 +299,9 @@ if ($tempZipDir) { Remove-Item -Recurse -Force $tempZipDir }
 
 function Stop-Staging([string]$message) {
     Remove-Item -Recurse -Force $stagingPath -ErrorAction SilentlyContinue
+    # 운영 폴더는 그대로이니 멈춘 서비스도 그대로 되돌린다 — 배포가 안 됐는데 앱까지
+    # 내려가 있으면 안 된다.
+    Start-AppServices
     throw $message
 }
 
@@ -389,6 +424,9 @@ if ($SkipMigrations) {
         Write-Host ''
         Write-Host '새 코드는 배치됐지만 데이터베이스가 일부만 적용됐을 수 있습니다.'
         Write-Host "파일만 되돌리려면:  .\rollback.ps1 -AppPath '$AppPath'"
+        if ($stoppedServices.Count -gt 0) {
+            Write-Host "서비스는 멈춘 채 둡니다 — 반쯤 적용된 DB 위에 새 코드를 올리지 않습니다. 되돌린 뒤 .\service.ps1 -AppPath '$AppPath' -Action start"
+        }
         exit 10
     }
     Pop-Location
@@ -425,11 +463,22 @@ if ($installed) { Write-Log ("배포한 버전: " + ($installed -replace '^versi
 
 Write-Log '배포 완료'
 Write-Host ''
-Write-Host '시작:'
-Write-Host "  cd '$AppPath'"
-Write-Host '  .\run_server.ps1     # 창 1'
-if (Test-Path (Join-Path $AppPath 'mcp_server\server.py')) {
-    Write-Host '  .\run_mcp.ps1        # 창 2 (AI 연결 — 안 쓰면 생략)'
+if ($serviceIds.Count -gt 0) {
+    if ($LeaveServicesStopped) { Write-Log '서비스는 멈춘 채 둡니다 (-LeaveServicesStopped)' } else { Start-AppServices }
+    Write-Host '서비스:'
+    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+        $svc = Get-Service -Name $id -ErrorAction SilentlyContinue
+        if ($svc) { Write-Host ("  {0,-14} {1}" -f $id, $svc.Status) }
+    }
+    Write-Host "  상태·제어: .\service.ps1 -AppPath '$AppPath' -Action status"
+} else {
+    Write-Host '시작:'
+    Write-Host "  cd '$AppPath'"
+    Write-Host '  .\run_server.ps1     # 창 1'
+    if (Test-Path (Join-Path $AppPath 'mcp_server\server.py')) {
+        Write-Host '  .\run_mcp.ps1        # 창 2 (AI 연결 — 안 쓰면 생략)'
+    }
+    Write-Host "  부팅 때 자동으로 뜨게 하려면(관리자): .\service.ps1 -AppPath '$AppPath'"
 }
 Write-Host ''
 Write-Host "직전 버전은 $prevPath 에 있습니다 (롤백: .\rollback.ps1 -AppPath '$AppPath')"

@@ -47,12 +47,33 @@ $tempPath = $AppPath + '_rollback_tmp'
 if (-not (Test-Path $prevPath)) { throw "직전 버전이 없습니다: $prevPath" }
 if (-not (Test-Path $AppPath)) { throw "현재 설치가 없습니다: $AppPath" }
 
+# 서비스로 돌고 있으면 멈춘다 — deploy.ps1 과 같은 이유, 같은 순서(MCP 먼저).
+$stoppedServices = @()
+foreach ($id in @('TestScope-MCP', 'TestScope')) {
+    $svc = Get-Service -Name $id -ErrorAction SilentlyContinue
+    if ($svc -and $svc.Status -ne 'Stopped') {
+        Write-Log "서비스 $id 중지"
+        Stop-Service -Name $id -Force -ErrorAction Stop
+        (Get-Service -Name $id).WaitForStatus('Stopped', (New-TimeSpan -Seconds 60))
+        $stoppedServices += $id
+    }
+}
+function Start-AppServices {
+    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+        if ($stoppedServices -contains $id) {
+            Write-Log "서비스 $id 시작"
+            try { Start-Service -Name $id -ErrorAction Stop } catch { Write-Warning "서비스 $id 를 시작하지 못했습니다: $_" }
+        }
+    }
+}
+
 # 잠금 확인은 실제로 할 연산(이름 바꾸기)으로 한다. 루트에 파일을 써 보는 것은
 # 하위 폴더(backend)에 머문 프로세스를 잡아내지 못한다 — deploy.ps1 주석 참조.
 if (Test-Path $tempPath) { Remove-Item -Recurse -Force $tempPath }
 try {
     [System.IO.Directory]::Move($AppPath, $tempPath)
 } catch {
+    Start-AppServices
     throw "$AppPath 를 옮길 수 없습니다. 실행 중인 앱과 그 폴더(하위 폴더 포함)에 들어가 있는 창을 닫고 다시 시도하세요."
 }
 
@@ -71,9 +92,13 @@ try {
 
 Write-Log '롤백 완료'
 Write-Host ''
-Write-Host '시작:'
-Write-Host "  cd '$AppPath'"
-Write-Host '  .\run_server.ps1'
-Write-Host ''
+if ($stoppedServices.Count -gt 0) {
+    Start-AppServices
+} else {
+    Write-Host '시작:'
+    Write-Host "  cd '$AppPath'"
+    Write-Host '  .\run_server.ps1'
+    Write-Host ''
+}
 Write-Host "되돌린 버전은 이제 $prevPath 에 있습니다."
 Write-Host '데이터베이스 마이그레이션은 되돌아가지 않았습니다.'

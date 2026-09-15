@@ -34,7 +34,9 @@ param(
     [int]$Port = 8020,
     [string]$PythonExe,
     [string]$AdminEmail = 'admin',
-    [switch]$SkipPrecheck
+    [switch]$SkipPrecheck,
+    # 서비스로 등록하지 않는다 — 콘솔(run_server.ps1)로 띄울 때. 나중에 service.ps1 로 더할 수 있다.
+    [switch]$NoService
 )
 
 $ErrorActionPreference = 'Stop'
@@ -101,7 +103,7 @@ if (-not $SkipPrecheck) {
 # **첫 설치와 갱신이 같은 경로를 타야** "설치는 되는데 갱신이 안 되는" 상태가 생기지
 # 않는다. 마이그레이션은 .env 를 만든 뒤에 돌려야 하므로 여기서는 건너뛴다.
 Write-Log '코드 배치'
-$deployArgs = @{ AppPath = $AppPath; SkipMigrations = $true }
+$deployArgs = @{ AppPath = $AppPath; SkipMigrations = $true; LeaveServicesStopped = $true }
 if ($ZipPath) { $deployArgs.ZipPath = $ZipPath }
 if ($Repo) { $deployArgs.Repo = $Repo }
 if ($Tag) { $deployArgs.Tag = $Tag }
@@ -208,6 +210,26 @@ if ($existing) {
     }
 }
 
+# --- 9. 서비스 ----------------------------------------------------------------
+# 부팅하면 뜨고 죽으면 되살아난다. 이것이 없으면 재부팅 뒤 누군가 로그인해서
+# run_server.ps1 을 켜야 하고, 그 사실은 화면이 안 열리는 날 아침에야 드러난다.
+# 등록은 service.ps1 한 곳이 한다(기존 설치에 더할 때도 같은 스크립트).
+$serviceRegistered = $false
+if ($NoService) {
+    Write-Log '서비스 등록 건너뜀 (-NoService)'
+} else {
+    Write-Log '서비스 등록'
+    try {
+        & (Join-Path $scriptDir 'service.ps1') -AppPath $AppPath -Action install
+        if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) { throw "exit $LASTEXITCODE" }
+        $serviceRegistered = $true
+    } catch {
+        Write-Warning "서비스를 등록하지 못했습니다: $_"
+        Write-Warning "관리자 PowerShell 에서 다시 시도하세요:  .\service.ps1 -AppPath '$AppPath'"
+        Write-Warning "그때까지는 콘솔로 띄웁니다:  cd '$AppPath' ; .\run_server.ps1"
+    }
+}
+
 Write-Host ''
 # **무엇이 깔렸는지 남긴다.** 패키지가 자기 버전을 들고 오므로 여기서 읽어 적기만
 # 하면 된다.
@@ -217,7 +239,11 @@ if ($installed) { Write-Log ("배포한 버전: " + ($installed -replace '^versi
 
 Write-Host '설치 완료.'
 Write-Host ''
-Write-Host "  시작        : cd '$AppPath' ; .\run_server.ps1"
+if ($serviceRegistered) {
+    Write-Host "  서비스      : TestScope (부팅 때 자동 시작) — 상태: .\service.ps1 -AppPath '$AppPath' -Action status"
+} else {
+    Write-Host "  시작        : cd '$AppPath' ; .\run_server.ps1"
+}
 Write-Host "  접속        : http://<서버주소>:$Port/"
 Write-Host "  운영 데이터 : $dataPath  (백업 대상 — DB와 함께 받아야 복구가 성립한다)"
 Write-Host ''

@@ -39,6 +39,8 @@ Thumbs.db
 # `scripts/deploy/` 의 설치·배포 스크립트 일곱 개가 그렇게 저장소에서 통째로
 # 빠져 있었다. 빠졌다는 사실은 다른 기계에서 클론해 보기 전까지 안 보인다.
 /deploy/
+# 패키징이 받아 두는 WinSW 캐시
+/deploy_cache/
 
 # MCP 개발용 개인 토큰. **평문이라 절대 커밋하지 않는다** — probe.py 가 읽는다.
 mcp_server/.pat
