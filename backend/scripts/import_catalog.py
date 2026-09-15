@@ -76,7 +76,7 @@ def main() -> int:
     try:
         actor = db.scalar(select(User).where(User.is_system_admin.is_(True)))
 
-        makers, categories, items = step_ontology(db, cat, actor)
+        makers, categories, items, item_aliases = step_ontology(db, cat, actor)
         properties, aliases = step_property_terms(db, cat, actor)
         methods = step_methods(db, cat, items, actor)
         definitions, pending = step_definitions(db, cat, categories)
@@ -124,7 +124,10 @@ def main() -> int:
             db.commit()
 
         print(f"객체 {len(cat.objects)}건에서:")
-        print(f"  제조사 {len(makers)} · 분류 {len(categories)} · 시험 항목 {len(items)}")
+        print(
+            f"  제조사 {len(makers)} · 분류 {len(categories)} · 시험 항목 {len(items)}"
+            f" (별칭 새로 {item_aliases})"
+        )
         print(
             f"  물성 {len(properties)} (별칭 새로 {aliases})"
             f" · 물성↔시험 항목 연결 새로 {links} · 확인으로 올림 {promoted}"

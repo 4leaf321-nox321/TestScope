@@ -15,6 +15,7 @@ import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시
 from app.modules.accounts.models import User
 from app.modules.vocabulary.models import (
     Vocabulary,
+    VocabularyAlias,
     VocabularyTerm,
 )
 from app.shared.text import clean, compare_key
@@ -96,8 +97,10 @@ def _axis(db: Session, slug: str) -> Vocabulary:
 
 def step_ontology(
     db: Session, cat: Catalog, actor: User | None
-) -> tuple[dict[str, VocabularyTerm], dict[str, VocabularyTerm], dict[str, VocabularyTerm]]:
-    """1. 제조사·분류(트리)·시험 항목을 값으로 심는다."""
+) -> tuple[
+    dict[str, VocabularyTerm], dict[str, VocabularyTerm], dict[str, VocabularyTerm], int
+]:
+    """1. 제조사·분류(트리)·시험 항목을 값으로 심는다. 마지막은 새로 넣은 시험 항목 별칭 수."""
     makers_axis = _axis(db, "manufacturer")
     category_axis = _axis(db, "equipment_category")
     item_axis = _axis(db, "test_item")
@@ -134,8 +137,52 @@ def step_ontology(
         label = row.get("label_ko") or row.get("label") or row["id"]
         items[row["id"]] = _term(db, item_axis, label, actor, code=row["id"])
 
+    # **별칭 — 영문 라벨과 다른 표기.** 사람도 AI 도 「thermal shock」 「HAST」 로 묻는데
+    # 값 이름은 한글이라 이름 매칭이 다 빠지고, 그때 resolve 는 벡터 후보로 떨어져 되묻는다.
+    # 물성(properties.py)과 같은 규칙: 있는 별칭은 안 덮고, 값 이름과 같은 것은 안 넣는다.
+    # 별칭은 화면에서도 더할 수 있으므로 반입은 **더하기만** 한다.
+    item_aliases = _test_item_aliases(db, item_axis, cat.test_items, items)
+
     db.flush()
-    return makers, categories, items
+    return makers, categories, items, item_aliases
+
+
+def _test_item_aliases(
+    db: Session,
+    axis: Vocabulary,
+    rows: list[dict[str, Any]],
+    items: dict[str, VocabularyTerm],
+) -> int:
+    """`label`(영문)과 `aliases` 를 시험 항목 별칭으로. 더한 수를 돌려준다."""
+    known = {
+        one.normalized
+        for one in db.scalars(
+            select(VocabularyAlias).where(VocabularyAlias.vocabulary_id == axis.id)
+        )
+    }
+    added = 0
+    for row in rows:
+        term = items.get(row["id"])
+        if term is None:
+            continue
+        candidates: list[str] = []
+        if row.get("label"):
+            candidates.append(str(row["label"]))
+        for alias in row.get("aliases") or []:
+            candidates.append(str(alias.get("alias") if isinstance(alias, dict) else alias))
+        for raw in candidates:
+            text = clean(raw)
+            norm = compare_key(text)
+            if not text or not norm or norm == term.normalized or norm in known:
+                continue
+            db.add(
+                VocabularyAlias(
+                    vocabulary_id=axis.id, term_id=term.id, value=text, normalized=norm
+                )
+            )
+            known.add(norm)
+            added += 1
+    return added
 
 
 def _slug_axis(
