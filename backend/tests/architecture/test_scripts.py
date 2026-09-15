@@ -14,17 +14,25 @@ SCRIPTS = REPO / "scripts"
 BOM = b"\xef\xbb\xbf"
 
 #: 훑지 않을 곳. 남의 패키지가 들고 온 .ps1 까지 우리 규칙으로 재지 않는다.
-_SKIP = {"node_modules", ".venv", ".git", "deploy"}
+_SKIP = {"node_modules", ".venv", ".git"}
 
 
 def _repo_scripts() -> list[Path]:
     """**저장소 전체**의 .ps1.
 
     `scripts/` 만 보면 루트의 activate.ps1 이 빠진다 — 실제로 그렇게 빠져 있었다.
+
+    패키징 산출물(루트의 `deploy/`)은 뺀다 — **루트의 그것만**. 전에는 경로 어디든 `deploy`
+    가 있으면 뺐고, 그러면 `scripts/deploy/*.ps1` 이 통째로 검사에서 빠진다. 실제로 그래서
+    배포 스크립트의 BOM 도, $command 충돌도 여기서 못 잡았다.
     """
-    return [
-        path for path in REPO.rglob("*.ps1") if not _SKIP & set(path.relative_to(REPO).parts)
-    ]
+    made: list[Path] = []
+    for path in REPO.rglob("*.ps1"):
+        parts = path.relative_to(REPO).parts
+        if _SKIP & set(parts) or parts[0] in ("deploy", "deploy_cache"):
+            continue
+        made.append(path)
+    return made
 
 
 def test_ps1_은_utf8_bom_으로_저장한다() -> None:

@@ -202,7 +202,7 @@ function Get-ServiceOrNull([string]$id) {
     return Get-Service -Name $id -ErrorAction SilentlyContinue
 }
 
-# **블록 안에서 $command 를 쓰지 않는다.** Invoke-Native 의 매개변수 이름이 $Command(블록 자신)라,
+# **블록 안에서 「command」 라는 변수 이름을 쓰지 않는다.** Invoke-Native 의 매개변수 이름(블록 자신)이라,
 # 블록이 그 안에서 실행될 때 같은 이름의 변수는 블록 자신으로 풀린다(동적 스코프, 대소문자 무시).
 # PowerShell 은 스크립트 블록을 exe 인수로 넘길 때 `-encodedCommand <base64>` 로 바꾸므로 WinSW 는
 # 「Unknown command: -encodedcommand」 를 본다 — 운영 첫 설치에서 install·start·uninstall 이 전부
