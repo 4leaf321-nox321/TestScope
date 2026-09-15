@@ -107,7 +107,7 @@ describe('시험법 상세', () => {
   it('인용한 계열을 미정과 이어진 것으로 나눠 보인다', async () => {
     await open('/methods/m1')
     expect(screen.getByText('6800')).toBeTruthy()
-    expect(screen.getByText('항목 미정')).toBeTruthy()
+    expect(screen.getByText('시험 항목 미지정')).toBeTruthy()
     expect(screen.getByText('AG-X')).toBeTruthy()
   })
 

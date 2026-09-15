@@ -59,7 +59,7 @@ export default function AccountsAdminPage() {
         title="계정"
         description={
           filtered
-            ? '승인 대기 중인 계정만 보고 있습니다. 홈의 「남은 일」 에서 왔습니다.'
+            ? '승인 대기 중인 계정만 보고 있습니다. 홈의 「처리 필요 항목」 에서 왔습니다.'
             : '가입 승인과 권한을 다룹니다. 부서 멤버 관리는 부서 화면에서 합니다.'
         }
       />

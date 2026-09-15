@@ -133,7 +133,7 @@ export default function ServerPage() {
                 ? `아직 반입 안 함 (정본 객체 ${one.catalog.objects})`
                 : `${shownDateTime(one.catalog.imported_at)} 반입 · 객체 ${one.catalog.imported_objects ?? '?'}` +
                   (one.catalog.behind
-                    ? ` · 정본은 ${one.catalog.objects} (뒤짐)`
+                    ? ` · 정본은 ${one.catalog.objects} (미반영)`
                     : ' · 정본과 같음')}
           </dd>
         </div>

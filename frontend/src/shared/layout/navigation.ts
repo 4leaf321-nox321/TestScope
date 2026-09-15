@@ -129,7 +129,7 @@ export const NAV_GROUPS: NavGroup[] = [
       {
         // **이 시스템이 답하려는 물음이다**: 「그 시험이 가능한 장비가 우리 조직에
         // 있나」. 나머지 화면은 이 한 물음에 답하기 위해 있다.
-        label: '장비 찾기',
+        label: '장비 검색',
         icon: Search,
         to: '/search',
       },

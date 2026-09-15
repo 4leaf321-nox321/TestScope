@@ -45,7 +45,7 @@ type Gap = 'properties' | 'methods' | 'series' | 'equipment' | 'axes'
 const GAP_LABEL: Record<Gap, string> = {
   properties: '물성 없음',
   methods: '규격 없음',
-  series: '되는 계열 없음',
+  series: '가능 계열 없음',
   equipment: '보유 장비 없음',
   axes: '검색 조건 없음',
 }
@@ -131,7 +131,7 @@ export default function TestItemsCatalogPage() {
               {' '}
               · <strong>{GAP_LABEL[gap]}</strong> {shown.length}종만 보는 중{' '}
               <button type="button" className="underline" onClick={() => setParams({})}>
-                거르기 풀기
+                필터 해제
               </button>
             </>
           )}
@@ -144,7 +144,7 @@ export default function TestItemsCatalogPage() {
         <EmptyState
           title="맞는 시험 항목이 없습니다"
           hint={
-            gap ? '이 공백은 다 채워졌습니다 — 거르기를 풀어 보세요.' : '검색어를 바꿔 보세요.'
+            gap ? '이 공백은 다 채워졌습니다 — 필터를 해제해 보세요.' : '검색어를 바꿔 보세요.'
           }
         />
       ) : (
@@ -152,9 +152,9 @@ export default function TestItemsCatalogPage() {
           <TableHeader>
             <TableRow>
               <TableHead>시험 항목</TableHead>
-              <TableHead className="text-right">얻는 물성</TableHead>
+              <TableHead className="text-right">측정 물성</TableHead>
               <TableHead className="text-right">규격</TableHead>
-              <TableHead className="text-right">되는 계열 / 기종</TableHead>
+              <TableHead className="text-right">가능 계열 / 기종</TableHead>
               <TableHead className="text-right">보유 장비</TableHead>
               <TableHead>검색 조건</TableHead>
             </TableRow>

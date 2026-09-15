@@ -52,9 +52,9 @@ function directAxis(queue: string): 'test_item' | 'condition' | 'property' | nul
 /** 여러 개를 고르는 물음에서 「아무것도 아님」 이 뜻하는 말. 물음마다 다르다. */
 function emptyLabel(queue: string): string {
   if (queue === 'test_item_properties') return '물성 없음'
-  if (queue === 'series_standards') return '더할 규격 없음'
-  if (queue === 'series_test_items') return '더할 시험 없음'
-  if (queue === 'series_summary') return '넣을 문장 없음'
+  if (queue === 'series_standards') return '추가할 규격 없음'
+  if (queue === 'series_test_items') return '추가할 시험 없음'
+  if (queue === 'series_summary') return '추가할 문장 없음'
   return '조건 없음'
 }
 
@@ -144,11 +144,11 @@ export default function ReviewQueuePage() {
           <div className="flex gap-1">
             {(
               [
-                ['open', '남은 것'],
+                ['open', '미처리'],
                 ['voted', '의견 있음'],
-                ['skipped', '건너뛴 것'],
-                ['decided', '정한 것'],
-                ['gone', '대상 없음'],
+                ['skipped', '보류됨'],
+                ['decided', '결정 완료'],
+                ['gone', '대상 삭제됨'],
               ] as const
             ).map(([value, label]) => (
               <Button
@@ -325,7 +325,7 @@ function ProposalRow({
                 }`}
               >
                 의견 {votes.length}
-                {split ? ' · 갈림' : votes.length > 1 ? ' · 합의' : ''}
+                {split ? ' · 의견 불일치' : votes.length > 1 ? ' · 의견 일치' : ''}
               </span>
             )}
           </p>
@@ -350,7 +350,7 @@ function ProposalRow({
             {row.status === 'gone' ? (
               // **정한 것이 아니다.** 물음 자체가 사라진 것 — 정한 것과 섞이면 셈이 틀린다.
               <span className="text-muted-foreground">
-                {row.decided_by ?? '대상 없어짐'} · {shownDateTime(row.decided_at)}
+                {row.decided_by ?? '대상 삭제됨'} · {shownDateTime(row.decided_at)}
               </span>
             ) : (
               <>
@@ -412,7 +412,7 @@ function ProposalRow({
                 }
               }}
             >
-              다시 열기
+              재검토
             </Button>
           )}
         </div>
@@ -482,8 +482,8 @@ function ProposalRow({
                     if (!multi) setPicked([])
                   }}
                   options={directOptions}
-                  placeholder="직접 고르기"
-                  detailTitle="직접 고르기"
+                  placeholder="직접 선택"
+                  detailTitle="직접 선택"
                   detailHint="후보에 없는 답. 이 물음의 어휘 전부에서 고릅니다."
                 />
               </div>
@@ -509,10 +509,10 @@ function ProposalRow({
               }}
             >
               {live.my_vote
-                ? '의견 바꾸기'
+                ? '의견 수정'
                 : multi && choice.length === 0
                   ? `${emptyWord} 의견`
-                  : '의견 내기'}
+                  : '의견 제출'}
             </Button>
             {live.my_vote && (
               <Button
@@ -528,7 +528,7 @@ function ProposalRow({
                   }
                 }}
               >
-                의견 거두기
+                의견 철회
               </Button>
             )}
             {/* 확정 — 시스템 관리자만. 그때 데이터가 바뀐다. */}
@@ -551,7 +551,7 @@ function ProposalRow({
                   }
                 }}
               >
-                건너뛰기
+                보류
               </Button>
             )}
             {recommended && !picked.length && !direct && (

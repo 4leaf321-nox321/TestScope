@@ -383,7 +383,7 @@ function SeriesTestItems({
                 if (mine.length === 0) return null
                 return (
                   <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                    <span className="text-muted-foreground text-xs">얻는 물성</span>
+                    <span className="text-muted-foreground text-xs">측정 물성</span>
                     {mine.map((link) => (
                       <Link
                         key={link.id}

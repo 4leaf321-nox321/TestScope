@@ -62,7 +62,7 @@ beforeEach(() => {
   calls.length = 0
 })
 
-describe('이 기종만의 사양', () => {
+describe('기종 고유 사양', () => {
   it('값을 보이고, 같은 키가 다른 기종에도 있으면 말한다', () => {
     render(<FreeSpecsPanel modelId="m1" rows={rows} canEdit onChanged={() => {}} />)
     expect(screen.getByText('152')).toBeTruthy()
@@ -78,7 +78,7 @@ describe('이 기종만의 사양', () => {
     })
     // 키 후보는 단위 꼬리를 뗀 것 — 사람이 고친다.
     expect((screen.getByLabelText(/^키/) as HTMLInputElement).value).toBe('stroke_mm_pk_pk')
-    expect(screen.getByText(/다른 기종 5개의 값도 함께 옮기기/)).toBeTruthy()
+    expect(screen.getByText(/다른 기종 5개의 값도 함께 이동/)).toBeTruthy()
     // 그룹을 안 고르면 못 누른다 — 정의는 어딘가에 속해야 한다.
     expect(
       (screen.getByText('정의로 세우기', { selector: 'button' }) as HTMLButtonElement)

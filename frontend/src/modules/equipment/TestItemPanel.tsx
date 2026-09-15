@@ -90,7 +90,7 @@ export function TestItemPanel({
       {list.data && list.data.length === 0 ? (
         <EmptyState
           title="등록된 시험 항목이 없습니다"
-          hint="시험 항목이 없으면 이 장비는 검색에 걸리지 않습니다. 할 수 있는 시험 항목부터 적어 주세요."
+          hint="시험 항목이 없으면 이 장비는 검색에 걸리지 않습니다. 수행 가능한 시험 항목부터 적어 주세요."
         />
       ) : (
         <ul className="space-y-3">

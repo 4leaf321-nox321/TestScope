@@ -524,7 +524,7 @@ export default function PropertiesPage() {
           title={view === 'property' ? '물성이 없습니다' : '시험 항목이 없습니다'}
           hint={
             linkedOnly || manyOnly
-              ? '거르기를 풀어 보세요.'
+              ? '필터를 해제해 보세요.'
               : '카탈로그 반입(import_catalog.py)이 MaterialTwin 물성 271종과 연결을 심습니다.'
           }
         />

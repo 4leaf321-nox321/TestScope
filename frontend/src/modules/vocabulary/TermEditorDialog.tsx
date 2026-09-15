@@ -272,7 +272,7 @@ export function TermEditorDialog({
                   {one}
                   <button
                     type="button"
-                    aria-label={`표기 ${one} 떼기`}
+                    aria-label={`표기 ${one} 삭제`}
                     className="hover:text-destructive"
                     disabled={busy || !term}
                     onClick={() =>

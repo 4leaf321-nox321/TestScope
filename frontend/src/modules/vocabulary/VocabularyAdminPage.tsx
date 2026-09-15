@@ -351,7 +351,7 @@ export default function VocabularyAdminPage() {
                 <TableHead>상위 값</TableHead>
                 <TableHead>다른 표기</TableHead>
                 <TableHead>상태</TableHead>
-                <TableHead className="text-right">쓰임</TableHead>
+                <TableHead className="text-right">참조</TableHead>
                 <TableHead className="text-right"> </TableHead>
               </TableRow>
             </TableHeader>

@@ -305,7 +305,7 @@ describe('물성으로 묻기', () => {
       screen.getByText('인장강도(UTS)').click()
     })
     await act(async () => {
-      chip('찾기').click()
+      chip('검색').click()
     })
     expect(posted[0]).toMatchObject({
       url: '/search/test-items',
@@ -325,7 +325,7 @@ describe('카탈로그에서 찾기', () => {
     // 보유 장비에만 뜻이 있는 손잡이는 사라진다.
     expect(screen.queryByLabelText('점검·고장·폐기 장비도 보기')).toBeNull()
     await act(async () => {
-      chip('찾기').click()
+      chip('검색').click()
     })
     expect(posted.at(-1)).toMatchObject({ url: '/search/catalog' })
     expect(screen.getByText('5900 Series')).toBeTruthy()
@@ -341,7 +341,7 @@ describe('왜 모르는지, 왜 없는지', () => {
   it('빈 결과는 이유 셋을 갈라 말하고 채우러 갈 곳을 준다', async () => {
     await open()
     await act(async () => chip('인장').click())
-    await act(async () => chip('찾기').click())
+    await act(async () => chip('검색').click())
     expect(screen.getByText('이 시험을 하는 장비가 등록된 적이 없습니다')).toBeTruthy()
     expect(screen.getByText(/카탈로그에는 이 시험을 하는 계열이/).textContent).toContain(
       '12개',
@@ -357,7 +357,7 @@ describe('왜 모르는지, 왜 없는지', () => {
   it('모르는 조건은 어느 칸이 비었는지와 채우기 링크를 단다', async () => {
     await open()
     await act(async () => chip('압축').click())
-    await act(async () => chip('찾기').click())
+    await act(async () => chip('검색').click())
     expect(screen.getByText(/상한이 없어 「이상」 을 판정할 수 없습니다/)).toBeTruthy()
     expect(screen.getByRole('link', { name: '채우기' }).getAttribute('href')).toBe(
       '/equipment/q1',

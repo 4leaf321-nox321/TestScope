@@ -134,7 +134,7 @@ export function ModelPicker({
             {(
               [
                 ['model', '기종으로 찾기'],
-                ['series', '계열부터 고르기'],
+                ['series', '계열부터 선택'],
               ] as const
             ).map(([value, label]) => (
               <Button

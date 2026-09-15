@@ -191,7 +191,7 @@ function ValueFields({
         onValueChange={(value) => set('text_value', value)}
       >
         <SelectTrigger className="w-56">
-          <SelectValue placeholder="고르기" />
+          <SelectValue placeholder="선택" />
         </SelectTrigger>
         <SelectContent>
           {definition.choices.map((choice) => (
@@ -303,11 +303,11 @@ export function ModelSpecPanel({
 
       {groups.length === 0 ? (
         <p className="text-sm text-amber-700">
-          {/* **「모름」 의 출처가 여기다.** 사양이 없으면 검색이 이 기종을 판정하지 못하고,
+          {/* **「조건 미상」 의 출처가 여기다.** 사양이 없으면 검색이 이 기종을 판정하지 못하고,
               사람은 되는지 안 되는지를 못 본다 — 891 중 224 가 이 상태다. */}
-          <strong>아직 적힌 사양이 없습니다.</strong> 그래서 검색은 이 기종을 「모름」 으로
-          답합니다. 아래에서 칸을 골라, 이 쪽 맨 아래 <strong>「카탈로그 원문」</strong> 에
-          적힌 값을 한 칸씩 옮겨 적으세요.
+          <strong>아직 적힌 사양이 없습니다.</strong> 그래서 검색은 이 기종을 「조건 미상」
+          으로 답합니다. 아래에서 칸을 골라, 이 쪽 맨 아래 <strong>「카탈로그 원문」</strong>{' '}
+          에 적힌 값을 한 칸씩 옮겨 적으세요.
         </p>
       ) : (
         <div className="space-y-4">

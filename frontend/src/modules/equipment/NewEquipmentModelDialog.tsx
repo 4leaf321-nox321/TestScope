@@ -147,7 +147,7 @@ export function NewEquipmentModelDialog({
                   label: one.value,
                   detail: one.code,
                 }))}
-                placeholder="형태 고르기"
+                placeholder="형태 선택"
                 detailTitle="기종 형태"
               />
             </div>

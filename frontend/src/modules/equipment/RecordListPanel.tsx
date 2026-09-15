@@ -183,7 +183,7 @@ export function RecordListPanel({ kind, currentId }: { kind: Kind; currentId: st
           {missing && (
             // 거르기가 지금 보는 것을 밀어냈다. 말 안 하면 「목록에 없다」 로 읽힌다.
             <p className="text-muted-foreground border-t p-3 text-xs">
-              지금 보고 있는 것은 이 거르기에 안 걸립니다.
+              지금 보고 있는 항목은 현재 필터에 해당하지 않습니다.
             </p>
           )}
         </div>

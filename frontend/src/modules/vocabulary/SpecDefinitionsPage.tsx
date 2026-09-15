@@ -135,7 +135,7 @@ export default function SpecDefinitionsPage() {
             <span className="block text-xs">그룹</span>
             <Select value={group} onValueChange={setGroup}>
               <SelectTrigger className="w-40">
-                <SelectValue placeholder="고르기" />
+                <SelectValue placeholder="선택" />
               </SelectTrigger>
               <SelectContent>
                 {(groups.data ?? []).map((one) => (
@@ -192,7 +192,7 @@ export default function SpecDefinitionsPage() {
             <TableHead>단위</TableHead>
             <TableHead>붙는 분류</TableHead>
             <TableHead>검색 조건</TableHead>
-            <TableHead className="text-right">쓰임</TableHead>
+            <TableHead className="text-right">참조</TableHead>
             <TableHead className="text-right">사용</TableHead>
           </TableRow>
         </TableHeader>

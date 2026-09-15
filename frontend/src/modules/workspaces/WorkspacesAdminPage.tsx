@@ -150,7 +150,7 @@ export default function WorkspacesAdminPage() {
                   <input
                     type="checkbox"
                     checked={one.reliability_listed}
-                    aria-label={`${one.name} 을 신뢰성 시험 메뉴에 올림`}
+                    aria-label={`${one.name} 신뢰성 시험 메뉴 표시`}
                     onChange={(event) =>
                       act(() =>
                         workspaceApi.update(one.slug, {
@@ -160,7 +160,7 @@ export default function WorkspacesAdminPage() {
                     }
                   />
                   <span className="text-muted-foreground text-xs">
-                    {one.reliability_listed ? '메뉴에 올림' : '—'}
+                    {one.reliability_listed ? '메뉴 표시' : '—'}
                   </span>
                 </label>
               </TableCell>

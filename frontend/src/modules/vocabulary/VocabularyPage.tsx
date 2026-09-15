@@ -69,7 +69,7 @@ export default function VocabularyPage() {
                 <TableHead>코드</TableHead>
                 <TableHead>상위</TableHead>
                 <TableHead>다른 표기</TableHead>
-                <TableHead className="text-right">쓰임</TableHead>
+                <TableHead className="text-right">참조</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

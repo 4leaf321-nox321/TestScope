@@ -75,7 +75,7 @@ describe('기종 피커', () => {
     // 「계열부터 고르기」 로 바꿔도 같은 뼈대여야 한다 — 여기서 키가 바뀌면
     // 모드를 오갈 때마다 창이 뛴다.
     await act(async () => {
-      screen.getByRole('button', { name: '계열부터 고르기' }).click()
+      screen.getByRole('button', { name: '계열부터 선택' }).click()
     })
     expect(shape(content)).toEqual({ head: true, list: true, foot: true })
   })
@@ -83,7 +83,7 @@ describe('기종 피커', () => {
   it('계열로 좁혀도 뼈대가 같고, 무엇으로 좁혔는지 보인다', async () => {
     const content = await openPicker()
     await act(async () => {
-      screen.getByRole('button', { name: '계열부터 고르기' }).click()
+      screen.getByRole('button', { name: '계열부터 선택' }).click()
     })
     await act(async () => {
       screen.getByRole('button', { name: /인스트론 6800 시리즈/ }).click()

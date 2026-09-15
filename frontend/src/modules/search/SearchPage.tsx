@@ -225,7 +225,7 @@ export default function SearchPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="장비 찾기"
+        title="장비 검색"
         description="시험 항목과 조건을 주면, 그것이 가능한 장비와 보유 위치를 찾습니다."
       />
 
@@ -437,7 +437,7 @@ export default function SearchPage() {
           </div>
           <Button onClick={run} disabled={busy}>
             <SearchIcon className="size-4" />
-            {busy ? '찾는 중…' : '찾기'}
+            {busy ? '검색 중…' : '검색'}
           </Button>
           {scope === 'owned' && (
             <label className="text-muted-foreground flex items-center gap-2 text-sm">

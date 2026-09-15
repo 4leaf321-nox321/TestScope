@@ -30,7 +30,7 @@ import type { Term } from '@/modules/vocabulary/api'
 const DETACH_LABEL: Record<string, string> = {
   delete: '연결 줄을 지웁니다',
   null: '칸을 비웁니다',
-  none: '비울 수 없는 칸 — 옮기기만 됩니다',
+  none: '필수 항목 — 이동만 가능합니다',
 }
 
 export function TermReferences({
@@ -73,10 +73,10 @@ export function TermReferences({
   return (
     <div className="space-y-2">
       <div className="flex items-baseline justify-between">
-        <p className="text-sm font-medium">쓰임</p>
+        <p className="text-sm font-medium">참조 내역</p>
         {groups.data && (
           <span className="text-muted-foreground text-xs">
-            {total === 0 ? '아무것도 이 값을 가리키지 않습니다' : `${total}군데`}
+            {total === 0 ? '이 값을 참조하는 항목이 없습니다' : `${total}건`}
           </span>
         )}
       </div>
@@ -112,7 +112,7 @@ export function TermReferences({
                       variant="ghost"
                       size="sm"
                       className="h-7 px-2 text-xs"
-                      aria-label={`${row.label} 옮기기`}
+                      aria-label={`${row.label} 이동`}
                       disabled={busy || options.length === 0}
                       onClick={() => {
                         setMoving(moving === key ? null : key)
@@ -120,14 +120,14 @@ export function TermReferences({
                       }}
                     >
                       <ArrowRightLeft className="mr-1 size-3" />
-                      옮기기
+                      이동
                     </Button>
                     {group.detach !== 'none' && (
                       <Button
                         variant="ghost"
                         size="sm"
                         className="hover:text-destructive h-7 px-2 text-xs"
-                        aria-label={`${row.label} 떼기`}
+                        aria-label={`${row.label} 참조 해제`}
                         disabled={busy}
                         onClick={() =>
                           window.confirm(
@@ -139,7 +139,7 @@ export function TermReferences({
                         }
                       >
                         <Unlink className="mr-1 size-3" />
-                        떼기
+                        참조 해제
                       </Button>
                     )}
                   </div>
@@ -167,7 +167,7 @@ export function TermReferences({
                           )
                         }
                       >
-                        옮기기
+                        이동
                       </Button>
                       <Button
                         size="sm"

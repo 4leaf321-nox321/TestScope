@@ -111,7 +111,7 @@ def test_패키지에_카탈로그_원천이_든다() -> None:
     <AppPath>\\source\\catalog 를 읽는데, 패키지에 없으면 폐쇄망에서는 들일 길이 없다 —
     실제로 그래서 운영 카탈로그가 비어 있었다."""
     packaged = (SCRIPTS / "ci" / "package_deploy.ps1").read_text(encoding="utf-8-sig")
-    # proposals: 검토함의 정본(후보·추천·개발에서 내린 결정). 빠지면 운영 검토함이 한 물음만 선다.
+    # proposals: 검토함 정본(후보·추천·결정). 빠지면 운영 검토함이 한 물음만 선다.
     for part in ("equipment", "ontology", "proposals", "schema.json", "sources.json"):
         assert f"'{part}'" in packaged, (
             f"package_deploy.ps1 이 source\\catalog\\{part} 를 안 담습니다"

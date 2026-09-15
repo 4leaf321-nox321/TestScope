@@ -76,7 +76,7 @@ export function SeriesPicker({
               </span>
             </span>
           ) : (
-            <span className="text-muted-foreground">계열 고르기</span>
+            <span className="text-muted-foreground">계열 선택</span>
           )}
           <ChevronsUpDown className="size-4 shrink-0 opacity-50" />
         </Button>

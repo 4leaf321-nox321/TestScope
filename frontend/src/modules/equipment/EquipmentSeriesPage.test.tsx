@@ -134,6 +134,6 @@ describe('계열 목록의 열별 거르기', () => {
     items = []
     await open('/catalog/equipment-series?test_item=none')
     expect(screen.getByPlaceholderText('계열명')).toBeTruthy()
-    expect(screen.getByText(/거르기에 맞는 계열이 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/필터에 맞는 계열이 없습니다/)).toBeTruthy()
   })
 })

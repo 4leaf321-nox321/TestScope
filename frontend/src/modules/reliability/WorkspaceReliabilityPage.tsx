@@ -119,7 +119,7 @@ export default function WorkspaceReliabilityPage() {
                 <TableCell>
                   {row.test_items.length === 0 ? (
                     // 「장비 없음」 이 아니라 「안 정함」 — 둘은 해야 할 일이 다르다.
-                    <span className="text-muted-foreground text-sm">시험 항목 안 정함</span>
+                    <span className="text-muted-foreground text-sm">시험 항목 미지정</span>
                   ) : (
                     <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
                       {row.test_items.map((item) => (
@@ -165,7 +165,7 @@ export default function WorkspaceReliabilityPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          aria-label={`${row.name} 내리기`}
+                          aria-label={`${row.name} 삭제`}
                           onClick={() => setRemoving(row)}
                         >
                           <Trash2 className="size-4" />
@@ -197,14 +197,14 @@ export default function WorkspaceReliabilityPage() {
 
       <ConfirmDialog
         open={removing !== null}
-        title="신뢰성 시험을 내립니다"
+        title="신뢰성 시험을 삭제합니다"
         description={
           <>
-            <strong>{removing?.name}</strong> 을 목록에서 내립니다. 지워지지는 않고 변경 이력에
-            남습니다.
+            <strong>{removing?.name}</strong> 을 목록에서 삭제합니다. 데이터는 보존되며 변경
+            이력에 남습니다.
           </>
         }
-        confirmLabel="내리기"
+        confirmLabel="삭제"
         destructive
         onConfirm={async () => {
           if (removing) await reliabilityApi.remove(removing.id)

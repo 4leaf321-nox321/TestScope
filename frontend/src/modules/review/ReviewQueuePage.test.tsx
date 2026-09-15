@@ -115,7 +115,7 @@ describe('검토함 물음 화면', () => {
       fireEvent.click(screen.getByLabelText(/정현·랜덤 진동/))
     })
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '의견 내기' }))
+      fireEvent.click(screen.getByRole('button', { name: '의견 제출' }))
     })
     expect(posted[0]).toEqual({
       url: '/review/method_test_items/p1/vote',
@@ -145,7 +145,7 @@ describe('검토함 물음 화면', () => {
   it('건너뛰기는 결정이 아니다', async () => {
     await open()
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '건너뛰기' }))
+      fireEvent.click(screen.getByRole('button', { name: '보류' }))
     })
     expect(posted[0].url).toBe('/review/method_test_items/p1/skip')
   })

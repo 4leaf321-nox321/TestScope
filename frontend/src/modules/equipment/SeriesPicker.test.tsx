@@ -42,7 +42,7 @@ describe('계열 피커', () => {
     const onChange = vi.fn()
     render(<SeriesPicker value="" onChange={onChange} />)
     await act(async () => {
-      screen.getByRole('button', { name: /계열 고르기/ }).click()
+      screen.getByRole('button', { name: /계열 선택/ }).click()
     })
     // 줄에는 무엇으로 구별하는지가 보인다 — 이름만으로는 본체와 부속 계열이 안 갈린다.
     expect(screen.getByText('Instron · 만능재료시험기 · 본체')).toBeTruthy()

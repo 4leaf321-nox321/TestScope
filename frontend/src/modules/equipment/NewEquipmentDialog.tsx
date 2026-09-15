@@ -226,7 +226,7 @@ export function NewEquipmentDialog({
                       id: one.id,
                       label: one.value,
                     }))}
-                    placeholder="유형 고르기"
+                    placeholder="유형 선택"
                     detailTitle="장비유형"
                     detailHint="장비군 아래의 유형입니다. 고르면 장비군은 따라옵니다."
                   />

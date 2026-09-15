@@ -84,15 +84,15 @@ QUEUES: dict[str, Queue] = {
     ),
     "property_links": Queue(
         "property_links",
-        "물성 연결 의심",
+        "물성 연결 검토",
         "이 시험으로 이 물성이 나오는 게 맞나. 아니면 연결을 끊는다.",
         False,
         "/properties",
     ),
     "free_spec_definitions": Queue(
         "free_spec_definitions",
-        "정의로 올릴 사양",
-        "여러 기종에 같은 이름으로 쌓인 「이 기종만의 사양」 을 정식 사양 칸으로 올릴지.",
+        "사양 정의 승격",
+        "여러 기종에 같은 이름으로 쌓인 「기종 고유 사양」 을 정식 사양 정의로 승격할지.",
         False,
         "/catalog/equipment-models/{id}",
     ),
@@ -105,21 +105,21 @@ QUEUES: dict[str, Queue] = {
     ),
     "test_item_properties": Queue(
         "test_item_properties",
-        "시험이 내는 물성",
+        "시험 항목의 측정 물성",
         "물성이 하나도 안 이어진 시험 항목 — 이 시험으로 얻는 물성이 있으면 잇는다. 여러 개.",
         True,
         "/catalog/test-items/{id}",
     ),
     "condition_axes": Queue(
         "condition_axes",
-        "새 검색 조건",
+        "신규 검색 조건",
         "지금 검색 조건에 없어 검색이 못 답하는 것(점도·압력·파장 …)을 조건으로 세울지.",
         False,
         "/conditions",
     ),
     "series_standards": Queue(
         "series_standards",
-        "계열이 하는 규격 더하기",
+        "계열 인용 규격 추가",
         "제조사 웹·대리점·논문이 이 계열과 함께 적은 규격 — 카탈로그 PDF 에는 없던 것. "
         "이 계열이 정말 하는 것만 고른다. 여러 개.",
         True,
@@ -127,7 +127,7 @@ QUEUES: dict[str, Queue] = {
     ),
     "series_test_items": Queue(
         "series_test_items",
-        "계열이 하는 시험 더하기",
+        "계열 시험 항목 추가",
         "논문이 이 기종으로 했다고 적은 시험, 제조사 페이지가 「이런 시험에 쓴다」 고 한 "
         "시험 — 카탈로그에 없던 것. 인용문을 읽고 정말 하는 것만 고른다. 여러 개.",
         True,
@@ -135,7 +135,7 @@ QUEUES: dict[str, Queue] = {
     ),
     "series_summary": Queue(
         "series_summary",
-        "계열 소개에 넣을 문장",
+        "계열 소개문",
         "제조사 페이지의 응용 문장 — 고른 것이 계열 소개 뒤에 붙는다. 무엇에 쓰는지 말하는 "
         "문장만. 여러 개.",
         True,

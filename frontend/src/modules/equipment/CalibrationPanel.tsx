@@ -113,7 +113,7 @@ export function CalibrationPanel({
                 label: one.value,
                 badge: one.usage_count ? `${one.usage_count}건` : null,
               }))}
-              placeholder="기관 고르기"
+              placeholder="기관 선택"
               detailTitle="교정 기관"
               detailHint="없는 기관은 기준정보 화면에서 더합니다."
               className="w-56"

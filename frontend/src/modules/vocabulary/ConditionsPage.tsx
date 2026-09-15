@@ -125,7 +125,7 @@ export default function ConditionsPage() {
             <TableHead>종류</TableHead>
             <TableHead>저장 단위</TableHead>
             <TableHead>표시 단위</TableHead>
-            <TableHead className="text-right">쓰임</TableHead>
+            <TableHead className="text-right">참조</TableHead>
             <TableHead className="text-right">사용</TableHead>
           </TableRow>
         </TableHeader>

@@ -85,7 +85,7 @@ export function SearchablePicker({
   options,
   value,
   onChange,
-  placeholder = '고르기',
+  placeholder = '선택',
   searchPlaceholder = '이름의 일부를 입력하세요',
   detailTitle,
   detailHint,

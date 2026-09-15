@@ -172,7 +172,7 @@ export function ReliabilityTestDialog({
               options={options}
               value=""
               onChange={(id) => id && setTermIds((prev) => [...prev, id])}
-              placeholder="시험 항목 더하기"
+              placeholder="시험 항목 추가"
               detailTitle="시험 항목 전부"
               detailHint="배지의 수는 이 부서 장비 중 그 항목이 되는 대수입니다."
             />

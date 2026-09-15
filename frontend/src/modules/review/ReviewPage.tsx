@@ -69,7 +69,7 @@ export default function ReviewPage() {
             <p className="text-muted-foreground mt-2 text-xs">
               {one.voted > 0 && `의견 있음 ${one.voted} · `}
               정함 {one.decided} · 건너뜀 {one.skipped}
-              {one.gone > 0 && ` · 대상 없어짐 ${one.gone}`}
+              {one.gone > 0 && ` · 대상 삭제됨 ${one.gone}`}
             </p>
             <div className="mt-3">
               {one.open > 0 ? (
@@ -80,7 +80,7 @@ export default function ReviewPage() {
                 </Button>
               ) : (
                 <Button asChild size="sm" variant="outline">
-                  <Link to={`/admin/review/${one.key}?status=decided`}>정한 것 보기</Link>
+                  <Link to={`/admin/review/${one.key}?status=decided`}>결정 완료 보기</Link>
                 </Button>
               )}
             </div>

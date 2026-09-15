@@ -179,9 +179,9 @@ def promote(
         display_unit=unit,
         sort_order=900,
         help=(
-            f"「이 기종만의 사양」 에서 올림 — 원본 키 `{row.source_key}`."
+            f"「기종 고유 사양」 에서 승격 — 원본 키 `{row.source_key}`."
             if row.source_key
-            else "「이 기종만의 사양」 에서 올림."
+            else "「기종 고유 사양」 에서 승격."
         ),
     )
     db.add(definition)

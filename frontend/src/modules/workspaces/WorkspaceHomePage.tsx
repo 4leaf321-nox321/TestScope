@@ -55,7 +55,7 @@ export default function WorkspaceHomePage() {
       <ErrorNotice error={maintenance.error} />
 
       <section className="space-y-3">
-        <h2 className="text-base font-semibold">남은 일</h2>
+        <h2 className="text-base font-semibold">처리 필요 항목</h2>
         {/* **0 건인 항목은 서버가 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은
             그 자리를 아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다. */}
         {maintenance.data && maintenance.data.length === 0 ? (

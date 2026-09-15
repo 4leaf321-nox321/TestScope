@@ -125,7 +125,7 @@ export default function MethodDetailPage() {
           <dt className="text-muted-foreground text-xs">가능 장비</dt>
           <dd className="text-sm">
             {one.equipment_count === 0 ? (
-              <span className="text-amber-600">없음 — 지금은 못 하는 시험입니다</span>
+              <span className="text-amber-600">없음 — 현재 수행 불가한 시험입니다</span>
             ) : (
               `${one.equipment_count}대`
             )}
@@ -145,7 +145,7 @@ export default function MethodDetailPage() {
           </p>
           <div className="flex flex-wrap items-center gap-2">
             <Select value={pickingItem} onValueChange={setPickingItem}>
-              <SelectTrigger className="w-56" aria-label="시험 항목 고르기">
+              <SelectTrigger className="w-56" aria-label="시험 항목 선택">
                 <SelectValue placeholder="시험 항목" />
               </SelectTrigger>
               <SelectContent>
@@ -181,7 +181,7 @@ export default function MethodDetailPage() {
                   {row.series_name}
                   {/* 미정은 점선 — 인용은 했는데 어느 시험 항목 밑에 둘지 못 정한 것. */}
                   <span className="text-muted-foreground text-xs">
-                    {row.pending ? '항목 미정' : row.test_item}
+                    {row.pending ? '시험 항목 미지정' : row.test_item}
                   </span>
                 </Link>
               </li>

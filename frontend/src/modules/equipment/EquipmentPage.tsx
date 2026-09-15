@@ -150,7 +150,7 @@ export default function EquipmentPage() {
               setParams({})
             }}
           >
-            거르기 풀기
+            필터 해제
           </Button>
         </div>
       )}
@@ -188,7 +188,7 @@ export default function EquipmentPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={8} className="text-muted-foreground py-8 text-center">
-                    거르기에 맞는 장비가 없습니다. 위의 조건을 풀어 보세요.
+                    필터에 맞는 장비가 없습니다. 조건을 해제해 보세요.
                   </TableCell>
                 </TableRow>
               )}

@@ -84,6 +84,6 @@ describe('상세 옆 목록', () => {
 
   it('거르기가 지금 보는 것을 밀어내면 그렇다고 말한다', async () => {
     await open('m9')
-    expect(screen.getByText(/이 거르기에 안 걸립니다/)).toBeTruthy()
+    expect(screen.getByText(/현재 필터에 해당하지 않습니다/)).toBeTruthy()
   })
 })

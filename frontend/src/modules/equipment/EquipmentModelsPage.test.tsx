@@ -165,7 +165,7 @@ describe('기종 목록의 대표 사양', () => {
     await open('/catalog/equipment-models?spec=none')
     // 안 말하면 목록이 짧은 것을 오류로 읽는다.
     expect(screen.getByText(/사양이 하나도 안 적힌 기종/)).toBeTruthy()
-    expect(screen.getByRole('button', { name: '거르기 풀기' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '필터 해제' })).toBeTruthy()
     // **그 거르기가 서버로 갔나.** 화면이 받아 놓고 스스로 거르면 상한을 넘는
     // 순간 나머지가 조용히 빠진다.
     expect(lastList()).toContain('spec=none')
@@ -194,6 +194,6 @@ describe('기종 목록의 대표 사양', () => {
     items = []
     await open('/catalog/equipment-models?spec=none')
     expect(screen.getByPlaceholderText('기종명')).toBeTruthy()
-    expect(screen.getByText(/거르기에 맞는 기종이 없습니다/)).toBeTruthy()
+    expect(screen.getByText(/필터에 맞는 기종이 없습니다/)).toBeTruthy()
   })
 })

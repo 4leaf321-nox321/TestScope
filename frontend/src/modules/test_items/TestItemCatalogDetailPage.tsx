@@ -155,7 +155,7 @@ export default function TestItemCatalogDetailPage() {
       {/* 얻는 물성 — 제안은 점선. 줄 단위로 확인한다. */}
       <section className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
-          <h2 className="text-base font-semibold">얻는 물성</h2>
+          <h2 className="text-base font-semibold">측정 물성</h2>
           <span className="text-muted-foreground text-sm">
             {one.properties.length}
             {suggested.length > 0 && ` · 확인 안 한 제안 ${suggested.length}`}
@@ -223,7 +223,7 @@ export default function TestItemCatalogDetailPage() {
           <p className="text-sm text-amber-600">
             이 시험의 규격으로 정해진 것이 없습니다.{' '}
             <Link to="/methods?test_item=none" className="underline">
-              항목 미정 규격
+              시험 항목 미지정 규격
             </Link>
             에 이 시험의 것이 있을 수 있습니다.
           </p>
@@ -265,7 +265,7 @@ export default function TestItemCatalogDetailPage() {
       {/* 되는 계열 — 카탈로그. */}
       <section className="space-y-2">
         <h2 className="text-base font-semibold">
-          되는 계열{' '}
+          가능 계열{' '}
           <span className="text-muted-foreground text-sm font-normal">
             {one.series.length}
           </span>
@@ -324,7 +324,7 @@ export default function TestItemCatalogDetailPage() {
         </h2>
         {one.equipment.length === 0 ? (
           <p className="text-sm text-amber-600">
-            이 시험이 적힌 보유 장비가 없습니다 — 지금은 우리가 못 하는 시험입니다.
+            이 시험이 적힌 보유 장비가 없습니다 — 현재 수행 불가한 시험입니다.
             {one.series.length > 0 && ' 위 계열의 기종을 사면 됩니다.'}
           </p>
         ) : (

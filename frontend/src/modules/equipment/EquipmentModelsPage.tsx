@@ -54,7 +54,7 @@ import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDi
 /** 홈의 「남은 일」 이 거는 필터. 그 줄을 눌러 온 사람에게 **왜 이 목록인지**를
  *  말해 준다 — 안 말하면 목록이 짧은 것을 오류로 읽는다. */
 const ISSUE_NOTE: Record<string, string> = {
-  none: '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「모름」 으로 답합니다.',
+  none: '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「조건 미상」 으로 답합니다.',
   uncertain:
     '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우세요.',
 }
@@ -181,7 +181,7 @@ export default function EquipmentModelsPage() {
               setParams({})
             }}
           >
-            거르기 풀기
+            필터 해제
           </Button>
         </div>
       )}
@@ -221,7 +221,7 @@ export default function EquipmentModelsPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
-                    거르기에 맞는 기종이 없습니다. 위의 조건을 풀어 보세요.
+                    필터에 맞는 기종이 없습니다. 조건을 해제해 보세요.
                   </TableCell>
                 </TableRow>
               )}

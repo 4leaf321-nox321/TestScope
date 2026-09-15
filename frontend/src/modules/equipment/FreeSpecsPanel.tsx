@@ -156,7 +156,7 @@ function PromoteDialog({
               <Label>그룹</Label>
               <Select value={group} onValueChange={setGroup}>
                 <SelectTrigger aria-label="사양 그룹">
-                  <SelectValue placeholder="고르기" />
+                  <SelectValue placeholder="선택" />
                 </SelectTrigger>
                 <SelectContent>
                   {(groups.data ?? []).map((one) => (
@@ -200,7 +200,7 @@ function PromoteDialog({
                 onChange={(e) => setApplySameKey(e.target.checked)}
               />
               {/* 한 기종만 옮기면 같은 값이 두 자리에 산다. */}
-              같은 원본 키를 가진 다른 기종 {row.same_key_models}개의 값도 함께 옮기기
+              같은 원본 키를 가진 다른 기종 {row.same_key_models}개의 값도 함께 이동
             </label>
           )}
           <p className="text-muted-foreground text-xs">
@@ -299,7 +299,7 @@ export function FreeSpecsPanel({
   return (
     <section className="space-y-3">
       <div>
-        <h2 className="text-base font-semibold">이 기종만의 사양</h2>
+        <h2 className="text-base font-semibold">기종 고유 사양</h2>
         <p className="text-muted-foreground mt-1 text-sm">
           정의 없이 이 기종에만 붙은 값입니다. 카탈로그 키 950종 중 803종이 한 기종에만
           나오는데, 전부 정의로 세우면 「사양 추가」 목록이 못 쓰게 되고 버리면 사라지므로 여기
@@ -421,7 +421,8 @@ export function FreeSpecsPanel({
               setDraft({})
             }}
           >
-            <Plus className="size-4" />이 기종만의 사양 추가
+            <Plus className="size-4" />
+            기종 고유 사양 추가
           </Button>
         ))}
 

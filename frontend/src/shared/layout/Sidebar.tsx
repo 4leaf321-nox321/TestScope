@@ -196,7 +196,7 @@ function SidebarBody({ workspaceSlug, onNavigate }: Omit<SidebarProps, 'collapse
                       <span className="truncate">{item.label}</span>
                       {item.pending && (
                         <span className="text-muted-foreground/70 ml-auto shrink-0 rounded border px-1 text-[10px] leading-4">
-                          미구현
+                          준비 중
                         </span>
                       )}
                     </NavLink>

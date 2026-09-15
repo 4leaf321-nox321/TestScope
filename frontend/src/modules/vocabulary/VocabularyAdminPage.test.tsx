@@ -184,7 +184,7 @@ describe('기준정보 편집', () => {
       fireEvent.click(screen.getByLabelText('항복강도 편집'))
     })
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('표기 Rp0.2 떼기'))
+      fireEvent.click(screen.getByLabelText('표기 Rp0.2 삭제'))
     })
     expect(calls.find((one) => one.method === 'DELETE')?.url).toBe(
       '/vocabularies/terms/t1/aliases?value=Rp0.2',
@@ -231,19 +231,19 @@ describe('값의 쓰임', () => {
     })
     expect(screen.getByText('시험 항목 연결')).toBeTruthy()
     expect(screen.getByText('장비의 거점')).toBeTruthy()
-    expect(screen.getByText('2군데')).toBeTruthy()
+    expect(screen.getByText('2건')).toBeTruthy()
     // 갈 수 있는 곳은 링크다.
     expect(screen.getByRole('link', { name: /UTM-001/ }).getAttribute('href')).toBe(
       '/equipment/e1',
     )
 
     // 비울 수 없는 칸에는 「떼기」 가 없다 — 서버가 말한 대로.
-    expect(screen.queryByLabelText('UTM-001 만능시험기 떼기')).toBeNull()
-    expect(screen.getByLabelText('UTM-001 만능시험기 옮기기')).toBeTruthy()
+    expect(screen.queryByLabelText('UTM-001 만능시험기 참조 해제')).toBeNull()
+    expect(screen.getByLabelText('UTM-001 만능시험기 이동')).toBeTruthy()
 
     vi.spyOn(window, 'confirm').mockReturnValue(true)
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('인장 → 항복강도 떼기'))
+      fireEvent.click(screen.getByLabelText('인장 → 항복강도 참조 해제'))
     })
     expect(calls.find((one) => one.method === 'DELETE')?.url).toBe(
       '/vocabularies/terms/t1/references/item_property_by_property/l1',
@@ -251,7 +251,7 @@ describe('값의 쓰임', () => {
 
     // 옮기기 — 같은 축의 다른 값을 골라 보낸다.
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('UTM-001 만능시험기 옮기기'))
+      fireEvent.click(screen.getByLabelText('UTM-001 만능시험기 이동'))
     })
     await act(async () => {
       screen.getByRole('button', { name: '옮길 값' }).click()
@@ -260,7 +260,7 @@ describe('값의 쓰임', () => {
       screen.getAllByRole('button', { name: /항복 강도 \(오타\)/ })[0].click()
     })
     await act(async () => {
-      fireEvent.click(screen.getAllByRole('button', { name: '옮기기' }).at(-1)!)
+      fireEvent.click(screen.getAllByRole('button', { name: '이동' }).at(-1)!)
     })
     expect(
       calls.find((one) => one.url.endsWith('/references/equipment_site/e1/reassign'))?.body,
