@@ -110,7 +110,10 @@ Copy-Item -Recurse -Force .\frontend\dist .\deploy\frontend\dist
 # 있는 값을 안 덮지만, 언제 들일지는 사람이 정한다.
 Write-Host '카탈로그 원천 복사 (source\catalog · source\materialtwin)'
 New-Item -ItemType Directory -Force -Path .\deploy\source\catalog | Out-Null
-foreach ($part in @('equipment', 'ontology', 'schema.json', 'sources.json', 'urls.json', 'reference_docs.json', 'graph.json', 'index.md', 'README.md', 'build_graph.py')) {
+# **proposals 가 빠지면 검토함이 한 물음만 선다.** 후보·추천·근거와 개발에서 내린 결정이 거기
+# 있어서, 없으면 운영은 「규격의 시험 항목」(정본 없이 서는 유일한 물음)만 보고 나머지 아홉은
+# 빈 채로 — 그리고 개발에서 고른 것을 운영이 다시 묻는다. 운영 첫 반입에서 실측(2026-09-16).
+foreach ($part in @('equipment', 'ontology', 'proposals', 'schema.json', 'sources.json', 'urls.json', 'reference_docs.json', 'graph.json', 'index.md', 'README.md', 'build_graph.py')) {
     Copy-Item -Recurse -Force (Join-Path .\source\catalog $part) (Join-Path .\deploy\source\catalog $part)
 }
 Copy-Item -Recurse -Force .\source\materialtwin .\deploy\source\materialtwin
