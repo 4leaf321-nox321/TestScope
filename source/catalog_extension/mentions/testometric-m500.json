@@ -1,6 +1,38 @@
 {
  "object": "testometric-m500",
  "manufacturer": "testometric",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 6,
+ "harvested": "2026-09-15",
+ "standards_found": {
+  "EN 7500-1": 7,
+  "DIN 51221": 7,
+  "GB 1600": 1
+ },
+ "standards_new": [
+  "DIN 51221",
+  "EN 7500-1",
+  "GB 1600"
+ ],
+ "test_item_hits": {
+  "microscopy": 27,
+  "compression": 17,
+  "peel": 14,
+  "shear": 14,
+  "tensile": 8,
+  "creep": 7,
+  "tear": 7,
+  "vibration_sine_random": 6,
+  "optical_spectroscopy": 3,
+  "particle_size": 3,
+  "abrasion": 2,
+  "density_porosity": 2,
+  "electrical_transport": 2,
+  "thermal_conductivity": 2,
+  "coating_thickness": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "scratch_pencil_hardness": 1,
+  "torsion": 1
+ },
+ "application_sentences": []
 }

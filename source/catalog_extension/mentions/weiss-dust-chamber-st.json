@@ -1,6 +1,59 @@
 {
  "object": "weiss-dust-chamber-st",
  "manufacturer": "weiss-technik",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 7,
+ "harvested": "2026-09-15",
+ "standards_found": {
+  "IEC 60529": 30,
+  "ISO 20653": 6,
+  "IEC 68-2-68": 4,
+  "DIN EN 60529": 2,
+  "SAE J 575": 2,
+  "EN 60529": 2,
+  "DIN 40050": 2,
+  "ISO 9001": 1,
+  "EN 60068-2-68": 1,
+  "SAE J575": 1,
+  "DIN EN 60068-2-68": 1,
+  "DIN 40": 1,
+  "DIN EN 20": 1,
+  "IEC60529": 1
+ },
+ "standards_new": [
+  "DIN 40",
+  "DIN EN 20",
+  "DIN EN 60068-2-68",
+  "DIN EN 60529",
+  "EN 60068-2-68",
+  "EN 60529",
+  "IEC 68-2-68",
+  "IEC60529",
+  "ISO 9001",
+  "SAE J 575",
+  "SAE J575"
+ ],
+ "test_item_hits": {
+  "dust_ingress": 13,
+  "microscopy": 12,
+  "particle_size": 8,
+  "tensile": 6,
+  "accelerated_weathering": 5,
+  "salt_spray_corrosion": 5,
+  "altitude_low_pressure": 4,
+  "thermal_shock": 3,
+  "abrasion": 2,
+  "density_porosity": 2,
+  "halt_hass": 2,
+  "electrical_transport": 1,
+  "water_ingress": 1
+ },
+ "application_sentences": [
+  "We also offer solutions for testing the dust resistance of lithium-ion batteries (e.",
+  "These tests are widely used for electronic components, automotive parts, lighting equipment, electrical enclosures, and industrial products exposed to dusty environments.",
+  "Cleaning and Dust Recovery Because test dust may be reused depending on the testing procedure, the chamber should be designed for convenient powder handling and cleaning.",
+  "LIB Industry IEC 60529 Dust Test Chamber LIB Industry provides dust test chambers designed for manufacturers and laboratories performing IP5X and IP6X testing.",
+  "Dust IP Test Chamber Suitable for applications requiring broader IP testing capabilities and integration with other ingress protection tests.",
+  "Automotive Dust Test Chamber Designed for automotive components such as sensors, connectors, electronic assemblies, and vehicle-mounted equipment where ISO 20653 requirements may apply.",
+  "C60529 IP5X/IP6X - LIB Industry Advanced Chamber Technology and Capabilities LIB Industry's dust test chambers incorporate cutting-edge technology specifically designed for IEC 60529 compliance testing."
+ ]
 }

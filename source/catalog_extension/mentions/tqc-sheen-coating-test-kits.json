@@ -1,6 +1,61 @@
 {
  "object": "tqc-sheen-coating-test-kits",
  "manufacturer": "tqc-sheen",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 7,
+ "harvested": "2026-09-15",
+ "standards_found": {
+  "ASTM D3359": 11,
+  "EN-ISO 2409": 7,
+  "ISO 15184": 6,
+  "ASTM D3363": 6,
+  "JIS K-5600": 6,
+  "BS 3900": 6,
+  "ISO 2409": 4,
+  "GM01": 2,
+  "GM04": 2,
+  "EN-ISO-2409": 2,
+  "SS 15": 2,
+  "JIS K-5400": 2,
+  "EN 13523-4": 2,
+  "JIS K5600": 1,
+  "JIS-K5600": 1
+ },
+ "standards_new": [
+  "BS 3900",
+  "EN 13523-4",
+  "EN-ISO-2409",
+  "GM01",
+  "GM04",
+  "ISO 2409",
+  "JIS K5600",
+  "JIS-K5600",
+  "SS 15"
+ ],
+ "test_item_hits": {
+  "scratch_pencil_hardness": 31,
+  "vibration_sine_random": 10,
+  "coating_thickness": 9,
+  "microscopy": 9,
+  "surface_topography": 6,
+  "tensile": 6,
+  "abrasion": 5,
+  "compression": 4,
+  "density_porosity": 4,
+  "flexure": 4,
+  "electrical_transport": 2,
+  "mechanical_shock": 2,
+  "drop_weight_impact": 1,
+  "shear": 1
+ },
+ "application_sentences": [
+  "Ordering Information Various models are available with different blade counts, teeth distances, and coating thickness capabilities, suitable for both ISO and ASTM standards.",
+  "See more Catalog excerpts PRODUCT DESCRIPTION The TQC Cross Cut Adhesion Test KIT (CC1000) is used to test the adhesion of dry coats of paint on their substrate by means of a series of cuts through the coating.",
+  "● The \"hand-drawn method,\" which involved holding the pencil by hand for testing, has been removed from the specifications.",
+  "Applications and Limitations Suitable for coatings with thicknesses typically between 20 and 250 micrometers.",
+  "Applications and Limitations Widely used for quick adhesion assessment in field and laboratory conditions.",
+  "Less suitable for very soft or very brittle coatings.",
+  "ifications Additonal tools Description The Obsnapmeter Cross Cut Adhesion Test Kit (Master Paint Plate) is a multifunctional stainless steel inspection tool designed for professional coating evaluation.",
+  "Ideal for Coating Development & QC Widely used for testing scratch resistance of furniture finishes, automotive coatings, lacquers, and synthetic resins.",
+  "Ideal for furniture finishes, automotive coatings, lacquers, and synthetic resin development, the instrument ensures consistent and reproducible scratch testing."
+ ]
 }

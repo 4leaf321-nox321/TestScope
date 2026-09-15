@@ -1,6 +1,26 @@
 {
  "object": "thermotron-se-s-series",
  "manufacturer": "thermotron",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 7,
+ "harvested": "2026-09-15",
+ "standards_found": {
+  "IEEE-488": 1,
+  "ISO 17025": 1
+ },
+ "standards_new": [
+  "IEEE-488",
+  "ISO 17025"
+ ],
+ "test_item_hits": {
+  "microscopy": 4,
+  "damp_heat": 2,
+  "halt_hass": 2,
+  "thermal_shock": 2,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "RS 1 / 4 PagesView full catalog S/SM-SERIES ENVIRONMENTAL TEST CHAMBERS Product catalog summary Overview: Thermotron's S-Series Environmental Test Chambers are designed for precise and customizable environmental testing.",
+  "Performance: The chambers are designed for standard laboratory conditions, with performance specifications based on 60Hz and 23.",
+  "Chambers are designed for use under normal laboratory conditions."
+ ]
 }

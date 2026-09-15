@@ -1,6 +1,31 @@
 {
  "object": "tinius-olsen-torsion-testers",
  "manufacturer": "tinius-olsen",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 6,
+ "harvested": "2026-09-15",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "torsion": 33,
+  "microscopy": 19,
+  "compression": 6,
+  "electrical_transport": 3,
+  "flexure": 3,
+  "optical_spectroscopy": 3,
+  "particle_size": 3,
+  "tensile": 3,
+  "abrasion": 2,
+  "density_porosity": 2,
+  "shear": 2,
+  "surge_eft_immunity": 2,
+  "thermal_conductivity": 2,
+  "coating_thickness": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "hardness_rockwell": 1,
+  "scratch_pencil_hardness": 1
+ },
+ "application_sentences": [
+  "lbf torsion tester for testing samples up to 7 ft/2."
+ ]
 }

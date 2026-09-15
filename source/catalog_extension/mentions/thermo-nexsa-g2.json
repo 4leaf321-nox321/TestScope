@@ -1,6 +1,30 @@
 {
  "object": "thermo-nexsa-g2",
  "manufacturer": "thermo-fisher",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 7,
+ "harvested": "2026-09-15",
+ "standards_found": {},
+ "standards_new": [],
+ "test_item_hits": {
+  "microscopy": 46,
+  "electrical_transport": 6,
+  "optical_spectroscopy": 4,
+  "particle_size": 3,
+  "abrasion": 2,
+  "density_porosity": 2,
+  "scratch_pencil_hardness": 2,
+  "thermal_conductivity": 2,
+  "coating_thickness": 1,
+  "compression": 1,
+  "contact_angle": 1,
+  "drop_weight_impact": 1,
+  "surface_topography": 1,
+  "tensile": 1,
+  "torsion": 1,
+  "vibration_sine_random": 1
+ },
+ "application_sentences": [
+  "Fully automated and designed for high throughput, it streamlines data collection to support diverse projects in materials science, chemistry, physics, and engineering.",
+  "ator allows you to select analysis areas from 10 μm to 400 μm in 5 μm steps, so you can focus precisely on features of interest while maximizing signal quality—ideal for studying micro- and nanostructures in advanced research."
+ ]
 }

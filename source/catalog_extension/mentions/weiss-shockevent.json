@@ -1,6 +1,64 @@
 {
  "object": "weiss-shockevent",
  "manufacturer": "weiss-technik",
- "pages": 0,
- "harvested": "2026-09-13"
+ "pages": 8,
+ "harvested": "2026-09-15",
+ "standards_found": {
+  "IEC 60068-2-14": 4,
+  "MIL-STD-883K": 4,
+  "IEC 60068-3-5": 3,
+  "MIL-STD-810H": 2,
+  "MIL-STD 833G": 2,
+  "MIL-STD-883L": 1,
+  "MIL-STD-202G": 1,
+  "IEC 60068-2-1": 1,
+  "JEDEC JESD22": 1,
+  "ETSI EN 300019-2-4": 1,
+  "ISO 9001": 1,
+  "MIL-STD 810": 1,
+  "MIL-STD 883": 1,
+  "JESD22": 1,
+  "MIL-STD-883J": 1
+ },
+ "standards_new": [
+  "ETSI EN 300019-2-4",
+  "IEC 60068-2-1",
+  "IEC 60068-2-14",
+  "IEC 60068-3-5",
+  "ISO 9001",
+  "JEDEC JESD22",
+  "JESD22",
+  "MIL-STD 810",
+  "MIL-STD 833G",
+  "MIL-STD 883",
+  "MIL-STD-202G",
+  "MIL-STD-810H",
+  "MIL-STD-883J",
+  "MIL-STD-883K",
+  "MIL-STD-883L"
+ ],
+ "test_item_hits": {
+  "thermal_shock": 35,
+  "microscopy": 12,
+  "vibration_sine_random": 8,
+  "tensile": 6,
+  "altitude_low_pressure": 2,
+  "halt_hass": 2,
+  "salt_spray_corrosion": 2,
+  "surge_eft_immunity": 2,
+  "temperature_cycling": 2,
+  "compression": 1,
+  "electrical_transport": 1,
+  "flexure": 1
+ },
+ "application_sentences": [
+  "In short, between the hot and cold chambers, it allows endurance tests of over 1,000 cycles to be run without defrosting.",
+  "Lots to test? No problem! Precisely engineered.",
+  "A normal temperature test is often chambers are designed for these situations.",
+  "In order to discover latent weakn esses in the chambers are designed for exactly that.",
+  "The test chamber itself is designed for operation at ambient temperatures of up to +35 C, complying with the current VDE regulations and satisfying the EMV, low voltage and machine directives.",
+  "S-60 Thermal Shock Test Chamber Learn More Medium Thermal Shock Test Chamber – TS-120 Series The TS-120 thermal shock test chamber is our medium-size chamber ideal for the testing of electronics and assemblies.",
+  "for test cabinet) Software Simpati* for network operation Brochures TS Series Thermal Shock Chambers Brochure Case Study: Large-capacity Thermal Shock chamber for testing electric drive modules Videos TS Series Thermal Shock test chamber from Weiss Technik that provides performance and reliability for all your testing requirements.",
+  "The weisstechnik vertical shock chambers allow the performance of endurance tests of over 1000 cycles without defrosting."
+ ]
 }
