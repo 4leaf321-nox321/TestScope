@@ -17,7 +17,7 @@ from sqlalchemy.orm import Session
 from app import schema_version, version
 from app.config import get_settings
 from app.database import engine, get_db
-from app.jobs import queue
+from app.jobs import kinds, queue
 from app.modules.accounts.models import User
 from app.modules.equipment.models import (
     Equipment,
@@ -117,6 +117,14 @@ def status(
     # 의미 검색 — 엔진은 실제로 한 번 재 본다(Ollama 가 죽어 있는지는 그래야만 안다).
     engine_state = embeddings.health()
     counted = semantic.stats(db)
+    reindex = queue.latest_of_kind(db, kinds.SEARCH_REINDEX)
+    reindex_at = None
+    if reindex is not None:
+        reindex_at = (
+            reindex.locked_at
+            if reindex.status == "running"
+            else (reindex.finished_at or reindex.created_at)
+        )
     semantic_state = SemanticStateOut(
         backend=str(engine_state["backend"]),
         engine_ready=bool(engine_state["ready"]),
@@ -125,6 +133,9 @@ def status(
         table=semantic.table_ready(db),
         chunks=int(counted["chunks"]),
         kinds=dict(counted["kinds"]),
+        reindex_status=reindex.status if reindex else None,
+        reindex_at=reindex_at,
+        reindex_error=reindex.last_error if reindex else None,
     )
     jobs = queue.summary(db)
     jobs_state = JobsStateOut(

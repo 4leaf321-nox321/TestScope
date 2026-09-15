@@ -5275,6 +5275,12 @@ export interface components {
             kinds: {
                 [key: string]: number;
             };
+            /** Reindex Status */
+            reindex_status: string | null;
+            /** Reindex At */
+            reindex_at: string | null;
+            /** Reindex Error */
+            reindex_error: string | null;
         };
         /** SeriesRelationCreateRequest */
         SeriesRelationCreateRequest: {

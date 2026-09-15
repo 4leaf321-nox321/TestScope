@@ -52,6 +52,12 @@ class SemanticStateOut(BaseModel):
     table: bool
     chunks: int
     kinds: dict[str, int]
+    reindex_status: str | None
+    """가장 최근 색인 작업의 상태 — queued · running · done · failed. 없으면 None.
+    「지금 색인 중인가」 는 이것이 running 인가다."""
+    reindex_at: datetime | None
+    """running 이면 시작 시각, 아니면 끝난 시각(대기면 만든 시각)."""
+    reindex_error: str | None
 
 
 class JobsStateOut(BaseModel):

@@ -122,6 +122,24 @@ def get(db: Session, job_id: uuid.UUID) -> Job | None:
     return db.get(Job, job_id)
 
 
+def latest_of_kind(db: Session, kind: str) -> Job | None:
+    """이 종류의 가장 최근 작업 — 「지금 색인 중인가, 마지막은 언제 끝났나」 의 근거.
+
+    실행 중인 것이 있으면 그것, 없으면 가장 최근에 만들어진 것.
+    """
+    running = db.scalar(
+        select(Job)
+        .where(Job.kind == kind, Job.status == "running")
+        .order_by(Job.locked_at.desc())
+        .limit(1)
+    )
+    if running is not None:
+        return running
+    return db.scalar(
+        select(Job).where(Job.kind == kind).order_by(Job.created_at.desc()).limit(1)
+    )
+
+
 def summary(db: Session) -> dict[str, int]:
     """상태별 수. 관리자 「서버」 화면이 「실패 N건」 을 보일 근거."""
     rows = db.execute(select(Job.status, func.count()).group_by(Job.status)).all()

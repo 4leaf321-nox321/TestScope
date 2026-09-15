@@ -47,6 +47,10 @@ interface ServerStatus {
     table: boolean
     chunks: number
     kinds: Record<string, number>
+    /** 가장 최근 색인 작업. running 이면 지금 색인 중 — 색인 수가 새로고침마다 는다. */
+    reindex_status: 'queued' | 'running' | 'done' | 'failed' | null
+    reindex_at: string | null
+    reindex_error: string | null
   }
   /** 작업 큐. failed 가 있으면 사람이 봐야 한다 — 워커 로그(_data\logs)에 이유가 있다. */
   jobs: { queued: number; running: number; done: number; failed: number }
@@ -63,6 +67,22 @@ function semanticLine(one: ServerStatus['semantic']): string {
     .map(([kind, count]) => `${kind} ${count}`)
     .join(' · ')
   return `${one.backend} · 색인 ${one.chunks}개` + (kinds ? ` (${kinds})` : ' — 워커가 채운다')
+}
+
+/** 색인 작업의 상태 한 줄. **지금 도는 중인지**가 첫 물음이라 그것부터 말한다. */
+function reindexLine(one: ServerStatus['semantic']): string {
+  if (!one.reindex_status) return '색인 작업 없음 — 반입 뒤 또는 하루 한 번 워커가 넣는다'
+  const when = one.reindex_at ? shownDateTime(one.reindex_at) : ''
+  switch (one.reindex_status) {
+    case 'running':
+      return `색인 진행 중 (${when} 시작) — 새로고침하면 색인 수가 는다`
+    case 'queued':
+      return `색인 대기 중 (${when} 등록) — 워커(TestScope-Worker)가 떠 있으면 곧 시작`
+    case 'failed':
+      return `마지막 색인 실패 (${when}) — ${one.reindex_error ?? ''}`
+    default:
+      return `마지막 색인 완료 ${when}`
+  }
 }
 
 function gib(bytes: number): string {
@@ -139,7 +159,21 @@ export default function ServerPage() {
         </div>
         <div className="sm:col-span-2">
           <dt className="text-muted-foreground text-xs">의미 검색</dt>
-          <dd className="text-sm">{semanticLine(one.semantic)}</dd>
+          <dd className="text-sm">
+            {semanticLine(one.semantic)}
+            {one.semantic.backend !== 'off' && (
+              <span
+                className={
+                  'block text-xs ' +
+                  (one.semantic.reindex_status === 'failed'
+                    ? 'text-amber-600'
+                    : 'text-muted-foreground')
+                }
+              >
+                {reindexLine(one.semantic)}
+              </span>
+            )}
+          </dd>
         </div>
         <div className="sm:col-span-2">
           <dt className="text-muted-foreground text-xs">작업 큐</dt>

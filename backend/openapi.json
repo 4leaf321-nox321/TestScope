@@ -15673,6 +15673,40 @@
             },
             "type": "object",
             "title": "Kinds"
+          },
+          "reindex_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reindex Status"
+          },
+          "reindex_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reindex At"
+          },
+          "reindex_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reindex Error"
           }
         },
         "type": "object",
@@ -15683,7 +15717,10 @@
           "extension",
           "table",
           "chunks",
-          "kinds"
+          "kinds",
+          "reindex_status",
+          "reindex_at",
+          "reindex_error"
         ],
         "title": "SemanticStateOut",
         "description": "의미 검색 부품 셋(엔진·확장·표)이 어디까지 있나. 없는 것은 고장이 아니라 설정이다."
