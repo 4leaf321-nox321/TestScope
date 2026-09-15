@@ -10,8 +10,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZEISS Xradia 410 Versa\" OR \"ZEISS Xradia 520 Versa\" OR \"ZEISS Xradia 610 Versa\" OR \"ZEISS Xradia 620 Versa\"",
-  "count": null,
-  "works": []
+  "count": 985,
+  "works": [
+   {
+    "id": "https://openalex.org/W2765287370",
+    "doi": "https://doi.org/10.1016/j.compscitech.2017.10.023",
+    "title": "X-ray computed tomography of polymer composites",
+    "year": 2017,
+    "cited": 710,
+    "venue": "Composites Science and Technology",
+    "topics": [
+     "Advanced X-ray and CT Imaging",
+     "Advanced X-ray Imaging Techniques",
+     "Medical Imaging Techniques and Applications"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0266353817312460/pdf",
+    "abstract": "The use of X-ray computed tomography (CT), exploiting both synchrotron and laboratory sources, has grown significantly over the last decade, driven primarily by improvements in spatial resolution, reduction in acquisition time and the increasing availability of laboratory X-ray CT systems. It is now able to provide highly accurate three-dimensional (3D) inspections of fibre architectures, manufacturing defects and in-service damage accumulation non-destructively, allowing the user to examine cross-sections that would previously have required laborious and skilled mechanical sectioning with the potential for inducing damage or loss of material. Further, by repeated acquisition of 3D images, it has opened new opportunities for time-lapse studies. This feature article reviews the technical aspects relating to the X-ray CT imaging of composites such as obtaining sufficient contrast, examination of thin panels, sample size/resolution issues, quantification of damage and defects, and image-based modelling. The capability of X-ray CT to provide important information is considered across applications ranging from manufacturing processes, through tensile and compression loading to fatigue and impact damage. The complementary advantages of laboratory and synchrotron X-ray CT are examined with a view to identify new opportunities and challenges."
+   },
+   {
+    "id": "https://openalex.org/W2599550548",
+    "doi": "https://doi.org/10.1039/c7ee00385d",
+    "title": "Characterising thermal runaway within lithium-ion cells by inducing and monitoring internal short circuits",
+    "year": 2017,
+    "cited": 326,
+    "venue": "Energy & Environmental Science",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/ee/c7ee00385d",
+    "abstract": "Internal short circuiting device for lithium-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W3205373288",
+    "doi": "https://doi.org/10.1002/adfm.202109542",
+    "title": "Thermo‐Optically Designed Scalable Photonic Films with High Thermal Conductivity for Subambient and Above‐Ambient Radiative Cooling",
+    "year": 2021,
+    "cited": 322,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "Optical properties and cooling technologies in crystalline materials",
+     "Urban Heat Island Mitigation"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202109542",
+    "abstract": "Abstract Radiative cooling is a promising passive cooling technology that reflects sunlight and emits heat to deep space without any energy consumption. Current research mainly focuses on cooling non‐heat‐generating objects (e.g., water) to a deep subambient temperature under sunlight. Toward real‐world applications, however, cooling outdoor objects that generate tremendous heat and have a temperature higher than ambient (e.g., communication base stations and data centres) remains a challenge. Herein, a scalable photonic film is prepared by introducing 2D dielectric nanoplates with high backward scattering efficiency into a polymer using a simulation aided thermo‐optical design. It is demonstrated that the dielectric nanoplates can break the trade‐off between optical reflection and thermal dissipation of conventional radiative coolers. The photonic film exhibits superior solar reflectance (98%) and has a stronger heat dissipation ability compared to the matrix. It exhibits ≈4 °C subambient cooling performance under direct sunlight and ≈9 °C cooling performance at night. Moreover, it also demonstrates remarkable above‐ambient cooling performance by reducing the underlying heater temperature of ≈18 °C in comparison with traditional polymers under sunlight. The dielectric nanoplates reported here provide an innovative strategy for applications related to light management beyond subambient and above‐ambient radiative cooling."
+   },
+   {
+    "id": "https://openalex.org/W3095114686",
+    "doi": "https://doi.org/10.1002/aenm.202002655",
+    "title": "Identifying the Origins of Microstructural Defects Such as Cracking within Ni‐Rich NMC811 Cathode Particles for Lithium‐Ion Batteries",
+    "year": 2020,
+    "cited": 246,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Extraction and Separation Processes"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202002655",
+    "abstract": "Abstract The next generation of automotive lithium‐ion batteries may employ NMC811 materials; however, defective particles are of significant interest due to their links to performance loss. Here, it is demonstrated that even before operation, on average, one‐third of NMC811 particles experience some form of defect, increasing in severity near the separator interface. It is determined that defective particles can be detected and quantified using low resolution imaging, presenting a significant improvement for material statistics. Fluorescence and diffraction data reveal that the variation of Mn content within the NMC particles may correlate to crystallographic disordering, indicating that the mobility and dissolution of Mn may be a key aspect of degradation during initial cycling. This, however, does not appear to correlate with the severity of particle cracking, which when analyzed at high spatial resolutions, reveals cracking structures similar to lower Ni content NMC, suggesting that the disconnection and separation of neighboring primary particles may be due to electrochemical expansion/contraction, exacerbated by other factors such as grain orientation that are inherent in such polycrystalline materials. These findings can guide research directions toward mitigating degradation at each respective length‐scale: electrode sheets, secondary and primary particles, and individual crystals, ultimately leading to improved automotive ranges and lifetimes."
+   },
+   {
+    "id": "https://openalex.org/W4210368980",
+    "doi": "https://doi.org/10.1038/s41467-022-28346-0",
+    "title": "Manipulating the oxygen reduction reaction pathway on Pt-coordinated motifs",
+    "year": 2022,
+    "cited": 244,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-28346-0.pdf",
+    "abstract": "Abstract Electrochemical oxygen reduction could proceed via either 4e−-pathway toward maximum chemical-to-electric energy conversion or 2e−-pathway toward onsite H2O2 production. Bulk Pt catalysts are known as the best monometallic materials catalyzing O2-to-H2O conversion, however, controversies on the reduction product selectivity are noted for atomic dispersed Pt catalysts. Here, we prepare a series of carbon supported Pt single atom catalyst with varied neighboring dopants and Pt site densities to investigate the local coordination environment effect on branching oxygen reduction pathway. Manipulation of 2e− or 4e− reduction pathways is demonstrated through modification of the Pt coordination environment from Pt-C to Pt-N-C and Pt-S-C, giving rise to a controlled H2O2 selectivity from 23.3% to 81.4% and a turnover frequency ratio of H2O2/H2O from 0.30 to 2.67 at 0.4 V versus reversible hydrogen electrode. Energetic analysis suggests both 2e− and 4e− pathways share a common intermediate of *OOH, Pt-C motif favors its dissociative reduction while Pt-S and Pt-N motifs prefer its direct protonation into H2O2. By taking the Pt-N-C catalyst as a stereotype, we further demonstrate that the maximum H2O2 selectivity can be manipulated from 70 to 20% with increasing Pt site density, providing hints for regulating the stepwise oxygen reduction in different application scenarios."
+   },
+   {
+    "id": "https://openalex.org/W4307407421",
+    "doi": "https://doi.org/10.1038/s41565-022-01220-2",
+    "title": "Human-muscle-inspired single fibre actuator with reversible percolation",
+    "year": 2022,
+    "cited": 232,
+    "venue": "Nature Nanotechnology",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Micro and Nano Robotics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41565-022-01220-2.pdf",
+    "abstract": "Artificial muscles are indispensable components for next-generation robotics capable of mimicking sophisticated movements of living systems. However, an optimal combination of actuation parameters, including strain, stress, energy density and high mechanical strength, is required for their practical applications. Here we report mammalian-skeletal-muscle-inspired single fibres and bundles with large and strong contractive actuation. The use of exfoliated graphene fillers within a uniaxial liquid crystalline matrix enables photothermal actuation with large work capacity and rapid response. Moreover, the reversible percolation of graphene fillers induced by the thermodynamic conformational transition of mesoscale structures can be in situ monitored by electrical switching. Such a dynamic percolation behaviour effectively strengthens the mechanical properties of the actuator fibres, particularly in the contracted actuation state, enabling mammalian-muscle-like reliable reversible actuation. Taking advantage of a mechanically compliant fibre structure, smart actuators are readily integrated into strong bundles as well as high-power soft robotics with light-driven remote control."
+   },
+   {
+    "id": "https://openalex.org/W4320727205",
+    "doi": "https://doi.org/10.1038/s41467-023-35973-8",
+    "title": "Large-scale physically accurate modelling of real proton exchange membrane fuel cell with deep learning",
+    "year": 2023,
+    "cited": 176,
+    "venue": "Nature Communications",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Machine Learning in Materials Science",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-35973-8.pdf",
+    "abstract": "Abstract Proton exchange membrane fuel cells, consuming hydrogen and oxygen to generate clean electricity and water, suffer acute liquid water challenges. Accurate liquid water modelling is inherently challenging due to the multi-phase, multi-component, reactive dynamics within multi-scale, multi-layered porous media. In addition, currently inadequate imaging and modelling capabilities are limiting simulations to small areas (<1 mm 2 ) or simplified architectures. Herein, an advancement in water modelling is achieved using X-ray micro-computed tomography, deep learned super-resolution, multi-label segmentation, and direct multi-phase simulation. The resulting image is the most resolved domain (16 mm 2 with 700 nm voxel resolution) and the largest direct multi-phase flow simulation of a fuel cell. This generalisable approach unveils multi-scale water clustering and transport mechanisms over large dry and flooded areas in the gas diffusion layer and flow fields, paving the way for next generation proton exchange membrane fuel cells with optimised structures and wettabilities."
+   },
+   {
+    "id": "https://openalex.org/W3138260278",
+    "doi": "https://doi.org/10.1038/s41893-021-00688-5",
+    "title": "Sustainable polyethylene fabrics with engineered moisture transport for passive cooling",
+    "year": 2021,
+    "cited": 163,
+    "venue": "Nature Sustainability",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "Urban Heat Island Mitigation",
+     "Building Energy and Comfort Optimization"
+    ],
+    "oa_url": "https://iris.inrim.it/bitstream/11696/75419/4/Sustainable%2bpolyethylene%2bfabrics_postprint.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1514920158",
+    "doi": "https://doi.org/10.1073/pnas.1505797112",
+    "title": "Integrated 3D view of postmating responses by the Drosophila melanogaster female reproductive tract, obtained by micro-computed tomography scanning",
+    "year": 2015,
+    "cited": 161,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Animal Behavior and Reproduction",
+     "Neurobiology and Insect Physiology Research",
+     "Insect and Arachnid Ecology and Behavior"
+    ],
+    "oa_url": "https://www.pnas.org/content/pnas/112/27/8475.full.pdf",
+    "abstract": "Physiological changes in females during and after mating are triggered by seminal fluid components in conjunction with female-derived molecules. In insects, these changes include increased egg production, storage of sperm, and changes in muscle contraction within the reproductive tract (RT). Such postmating changes have been studied in dissected RT tissues, but understanding their coordination in vivo requires a holistic view of the tissues and their interrelationships. Here, we used high-resolution, multiscale micro-computed tomography (CT) scans to visualize and measure postmating changes in situ in the Drosophila female RT before, during, and after mating. These studies reveal previously unidentified dynamic changes in the conformation of the female RT that occur after mating. Our results also reveal how the reproductive organs temporally shift in concert within the confines of the abdomen. For example, we observed chiral loops in the uterus and in the upper common oviduct that relax and constrict throughout sperm storage and egg movement. We found that specific seminal fluid proteins or female secretions mediate some of the postmating changes in morphology. The morphological movements, in turn, can cause further changes due to the connections among organs. In addition, we observed apparent copulatory damage to the female intima, suggesting a mechanism for entry of seminal proteins, or other exogenous components, into the female's circulatory system. The 3D reconstructions provided by high-resolution micro-CT scans reveal how male and female molecules and anatomy interface to carry out and coordinate mating-dependent changes in the female's reproductive physiology."
+   },
+   {
+    "id": "https://openalex.org/W3119257482",
+    "doi": "https://doi.org/10.1002/aenm.202002926",
+    "title": "Exploring the Interface of Skin‐Layered Titanium Fibers for Electrochemical Water Splitting",
+    "year": 2021,
+    "cited": 149,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Electrocatalysts for Energy Conversion",
+     "Hydrogen Storage and Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202002926",
+    "abstract": "Abstract Water electrolysis is the key to a decarbonized energy system, as it enables the conversion and storage of renewably generated intermittent electricity in the form of hydrogen. However, reliability challenges arising from titanium‐based porous transport layers (PTLs) have hitherto restricted the deployment of next‐generation water‐splitting devices. Here, it is shown for the first time how PTLs can be adapted so that their interface remains well protected and resistant to corrosion across ≈4000 h under real electrolysis conditions. It is also demonstrated that the malfunctioning of unprotected PTLs is a result triggered by additional fatal degradation mechanisms over the anodic catalyst layer beyond the impacts expected from iridium oxide stability. Now, superior durability and efficiency in water electrolyzers can be achieved over extended periods of operation with less‐expensive PTLs with proper protection, which can be explained by the detailed reconstruction of the interface between the different elements, materials, layers, and components presented in this work."
+   },
+   {
+    "id": "https://openalex.org/W2327050991",
+    "doi": "https://doi.org/10.1038/srep14665",
+    "title": "Non-destructive mapping of grain orientations in 3D by laboratory X-ray microscopy",
+    "year": 2015,
+    "cited": 147,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Microstructure and Mechanical Properties of Steels",
+     "Non-Destructive Testing Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep14665.pdf",
+    "abstract": "The ability to characterise crystallographic microstructure, non-destructively and in three-dimensions, is a powerful tool for understanding many aspects related to damage and deformation mechanisms in polycrystalline materials. To this end, the technique of X-ray diffraction contrast tomography (DCT) using monochromatic synchrotron and polychromatic laboratory X-ray sources has been shown to be capable of mapping crystal grains and their orientations non-destructively in 3D. Here we describe a novel laboratory-based X-ray DCT modality (LabDCT), enabling the wider accessibility of the DCT technique for routine use and in-depth studies of, for example, temporal changes in crystallographic grain structure non-destructively over time through '4D' in situ time-lapse studies. The capability of the technique is demonstrated by studying a titanium alloy (Ti-β21S) sample. In the current implementation the smallest grains that can be reliably detected are around 40 μm. The individual grain locations and orientations are reconstructed using the LabDCT method and the results are validated against independent measurements from phase contrast tomography and electron backscatter diffraction respectively. Application of the technique promises to provide important insights related to the roles of recrystallization and grain growth on materials properties as well as supporting 3D polycrystalline modelling of materials performance."
+   },
+   {
+    "id": "https://openalex.org/W4212795819",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2022.231119",
+    "title": "Cracking predictions of lithium-ion battery electrodes by X-ray computed tomography and modelling",
+    "year": 2022,
+    "cited": 142,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Non-Destructive Testing Techniques",
+     "Advanced Battery Technologies Research",
+     "Ultrasonics and Acoustic Wave Propagation"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.jpowsour.2022.231119",
+    "abstract": "Fracture of lithium-ion battery electrodes is found to contribute to capacity fade and reduce the lifespan of a battery. Traditional fracture models for batteries are restricted to consideration of a single, idealised particle; here, advanced X-ray computed tomography (CT) imaging, an electro-chemo-mechanical model and a phase field fracture framework are combined to predict the void-driven fracture in the electrode particles of a realistic battery electrode microstructure. The electrode is shown to exhibit a highly heterogeneous electrochemical and fracture response that depends on the particle size and distance from the separator/current collector. The model enables prediction of increased cracking due to enlarged cycling voltage windows, cracking susceptibility as a function of electrode thickness, and damage sensitivity to discharge rate. This framework provides a platform that facilitates a deeper understanding of electrode fracture and enables the design of next-generation electrodes with higher capacities and improved degradation characteristics."
+   },
+   {
+    "id": "https://openalex.org/W2767173061",
+    "doi": "https://doi.org/10.1038/s41598-017-14810-1",
+    "title": "Quantifying the anisotropy and tortuosity of permeable pathways in clay-rich mudstones using models based on X-ray tomography",
+    "year": 2017,
+    "cited": 142,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Hydrocarbon exploration and reservoir analysis",
+     "Hydraulic Fracturing and Reservoir Analysis",
+     "Enhanced Oil Recovery Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-017-14810-1.pdf",
+    "abstract": "The permeability of shales is important, because it controls where oil and gas resources can migrate to and where in the Earth hydrocarbons are ultimately stored. Shales have a well-known anisotropic directional permeability that is inherited from the depositional layering of sedimentary laminations, where the highest permeability is measured parallel to laminations and the lowest permeability is perpendicular to laminations. We combine state of the art laboratory permeability experiments with high-resolution X-ray computed tomography and for the first time can quantify the three-dimensional interconnected pathways through a rock that define the anisotropic behaviour of shales. Experiments record a physical anisotropy in permeability of one to two orders of magnitude. Two- and three-dimensional analyses of micro- and nano-scale X-ray computed tomography illuminate the interconnected pathways through the porous/permeable phases in shales. The tortuosity factor quantifies the apparent decrease in diffusive transport resulting from convolutions of the flow paths through porous media and predicts that the directional anisotropy is fundamentally controlled by the bulk rock mineral geometry. Understanding the mineral-scale control on permeability will allow for better estimations of the extent of recoverable reserves in shale gas plays globally."
+   },
+   {
+    "id": "https://openalex.org/W3081606082",
+    "doi": "https://doi.org/10.1016/j.compositesb.2020.108409",
+    "title": "Durability of seawater and sea sand concrete filled filament wound FRP tubes under seawater environments",
+    "year": 2020,
+    "cited": 137,
+    "venue": "Composites Part B Engineering",
+    "topics": [
+     "Structural Behavior of Reinforced Concrete",
+     "Innovative concrete reinforcement materials",
+     "Concrete Corrosion and Durability"
+    ],
+    "oa_url": "https://researchmgt.monash.edu/ws/files/390796202/321598198_oa.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3100593693",
+    "doi": "https://doi.org/10.1016/j.matdes.2020.109317",
+    "title": "Intensive processing optimization for achieving strong and ductile Al-Mn-Mg-Sc-Zr alloy produced by selective laser melting",
+    "year": 2020,
+    "cited": 135,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127520308534-ga1_lrg.jpg",
+    "abstract": "The Sc-containing AlMn alloy system produced by additive manufacturing (AM) has recently presented exciting new opportunities to achieve a step-change in mechanical properties, but its processability remains unclear. In this work, the optimum processing window for the Al-Mn-Mg-Sc-Zr alloy fabricated by selective laser melting (SLM) has been established for the first time. The window covers the range of processing parameters that can lead to a good combination of part density, strength, ductility, and processability. The alloys fabricated within this optimized processing window of SLM have the material relative density more than 99.8% with less porosity. Moreover, all these alloys have the yield strength exceeding 430 MPa and the ductility of over 17%. Further microstructural examinations suggest that such excellent mechanical properties are associated with a bimodal grain architecture. Also, a high number density of intermetallic particles has been detected in these two-grain regions. They are confirmed to be Al3Sc and Mn(Fe)-rich quasicrystal. Most of these particles distributing along grain boundaries are expected to pin the grain boundaries and contribute to the high strength of this alloy. The findings will provide an essential basis for achieving exceptional mechanical performance and intricate geometry designs of the alloy using AM."
+   },
+   {
+    "id": "https://openalex.org/W3047194796",
+    "doi": "https://doi.org/10.1002/advs.202000747",
+    "title": "Integrated and Binder‐Free Air Cathodes of Co3Fe7 Nanoalloy and Co5.47N Encapsulated in Nitrogen‐Doped Carbon Foam with Superior Oxygen Reduction Activity in Flexible Aluminum‐Air Batteries",
+    "year": 2020,
+    "cited": 125,
+    "venue": "Advanced Science",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202000747",
+    "abstract": "Abstract All‐solid‐sate Al‐air batteries with features of high theoretical energy density, low cost, and environmental‐friendliness are promising as power sources for next‐generation flexible and wearable electronics. However, the sluggish oxygen reduction reaction (ORR) and poor interfacial contact in air cathodes cause unsatisfied performance. Herein, a free‐standing Co3Fe7 nanoalloy and Co5.47N encapsulated in 3D nitrogen‐doped carbon foam (Co3Fe7@Co5.47N/NCF) is prepared as an additive‐free and integrated air cathode for flexible Al‐air batteries in both alkaline and neutral electrolytes. The Co3Fe7@Co5.47N/NCF outperforms commercial platinum/carbon (Pt/C) toward ORR with an onset potential of 1.02 V and a positive half‐wave potential of 0.92 V in an alkaline electrolyte (0.59 V in sodium chloride solution), which is ascribed to the unique interfacial structure between Co3Fe7 and Co5.47N supported by 3D N‐doped carbon foam to facilitate fast electron and mass transfer. The high ORR performance is also supported by in‐situ electrochemical Raman spectra and density functional theory calculation. Furthermore, the fabricated Al‐air battery displays good flexibility and delivers a power density of 199.6 mW cm−2, and the binder‐free and integrated cathode shows better discharge performance than the traditionally slurry casting cathode. This work demonstrates a facile and efficient approach to develop integrated air cathode for metal‐air batteries."
+   },
+   {
+    "id": "https://openalex.org/W3001357057",
+    "doi": "https://doi.org/10.1016/j.addma.2020.101090",
+    "title": "Size-dependent stochastic tensile properties in additively manufactured 316L stainless steel",
+    "year": 2020,
+    "cited": 125,
+    "venue": "Additive manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1605718",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2902692830",
+    "doi": "https://doi.org/10.3390/ma11122386",
+    "title": "A Comprehensive Approach to Powder Feedstock Characterization for Powder Bed Fusion Additive Manufacturing: A Case Study on AlSi7Mg",
+    "year": 2018,
+    "cited": 121,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Additive Manufacturing Materials and Processes",
+     "Granular flow and fluidized beds"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/11/12/2386/pdf?version=1543315927",
+    "abstract": "In powder bed fusion additive manufacturing, the powder feedstock quality is of paramount importance; as the process relies on thin layers of powder being spread and selectively melted to manufacture 3D metallic components. Conventional powder quality assessments for additive manufacturing are limited to particle morphology, particle size distribution, apparent density and flowability. However, recent studies are highlighting that these techniques may not be the most appropriate. The problem is exacerbated when studying aluminium powders as their complex cohesive behaviors dictate their flowability. The current study compares the properties of three different AlSi7Mg powders, and aims to obtain insights about the minimum required properties for acceptable powder feedstock. In addition to conventional powder characterization assessments, the powder spread density, moisture sorption, surface energy, work of cohesion, and powder rheology, were studied. This work has shown that the presence of fine particles intensifies the pick-up of moisture increasing the total particle surface energy as well as the inter-particle cohesion. This effect hinders powder flow and hence, the spreading of uniform layers needed for optimum printing. When spherical particles larger than 48 µm with a narrow particle distribution are present, the moisture sorption as well as the surface energy and cohesion characteristics are decreased enhancing powder spreadability. This result suggest that by manipulating particle distribution, size and morphology, challenging powder feedstock such as Al, can be optimized for powder bed fusion additive manufacturing."
+   },
+   {
+    "id": "https://openalex.org/W2895957531",
+    "doi": "https://doi.org/10.1016/j.matdes.2018.10.025",
+    "title": "On thermal expansion behavior of invar alloy fabricated by modulated laser powder bed fusion",
+    "year": 2018,
+    "cited": 119,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127518307810/pdf",
+    "abstract": "In the present research, structural analyses are conducted on Invar (64% Fe-36% Ni) samples manufactured by modulated laser powder bed fusion (LPBF) under different laser power regimes. Within the selected process window, the results obtained from X-ray computed tomography analysis indicate that the relative density of as-built samples increases with an increase in laser power. In addition, it is observed that irregular-shaped pores with the longest axis normal to the building direction are significantly reduced with increasing the laser power. Microstructural investigation suggests that with increasing the laser power, a transformation from conduction to transition and keyhole modes occurs. In X-ray diffraction patterns of the as-built samples, only fcc γ-phase is detected and no reflection of bcc α-phase is found. Texture measurements show that the intensity of 〈110〉 crystallographic orientation along the building direction of the as-built samples increases with increasing laser power. Coefficient of thermal expansion of the as-built samples is very low and comparable to that of conventionally manufactured Invar alloy. Furthermore, as-built samples fabricated at lowest (250 W) and highest (400 W) laser powers exhibit the lowest and highest thermal expansion displacement, respectively. Finally, the thermal expansion behavior and its correlation with structural integrity and texture are discussed."
+   },
+   {
+    "id": "https://openalex.org/W4394718054",
+    "doi": "https://doi.org/10.1038/s41467-024-47189-5",
+    "title": "Multiscale architecture design of 3D printed biodegradable Zn-based porous scaffolds for immunomodulatory osteogenesis",
+    "year": 2024,
+    "cited": 115,
+    "venue": "Nature Communications",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Bone Metabolism and Diseases",
+     "Orthopaedic implants and arthroplasty"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-47189-5.pdf",
+    "abstract": "Abstract Reconciling the dilemma between rapid degradation and overdose toxicity is challenging in biodegradable materials when shifting from bulk to porous materials. Here, we achieve significant bone ingrowth into Zn-based porous scaffolds with 90% porosity via osteoinmunomodulation. At microscale, an alloy incorporating 0.8 wt% Li is employed to create a eutectoid lamellar structure featuring the LiZn4 and Zn phases. This microstructure optimally balances high strength with immunomodulation effects. At mesoscale, surface pattern with nanoscale roughness facilitates filopodia formation and macrophage spreading. At macroscale, the isotropic minimal surface G unit exhibits a proper degradation rate with more uniform feature compared to the anisotropic BCC unit. In vivo, the G scaffold demonstrates a heightened efficiency in promoting macrophage polarization toward an anti-inflammatory phenotype, subsequently leading to significantly elevated osteogenic markers, increased collagen deposition, and enhanced new bone formation. In vitro, transcriptomic analysis reveals the activation of JAK/STAT pathways in macrophages via up regulating the expression of Il-4, Il-10, subsequently promoting osteogenesis."
+   },
+   {
+    "id": "https://openalex.org/W3195365617",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2021.230340",
+    "title": "Alleviation on battery thermal runaway propagation: Effects of oxygen level and dilution gas",
+    "year": 2021,
+    "cited": 113,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0378775321008521-ga1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2762379703",
+    "doi": "https://doi.org/10.1149/2.0451713jes",
+    "title": "3D Failure Analysis of Pure Mechanical and Pure Chemical Degradation in Fuel Cell Membranes",
+    "year": 2017,
+    "cited": 107,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Advancements in Solid Oxide Fuel Cells",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.0451713jes/pdf",
+    "abstract": "Lifetime-limiting failure of fuel cell membranes is generally attributed to their chemical and/or mechanical degradation. Although both of these degradation modes occur concurrently during operational duty cycles, their uncoupled investigations can provide useful insights into their individual characteristics and consequential impacts on the overall membrane failure. X-ray computed tomography is emerging as an advantageous tool for fuel cell failure analysis due to its non-destructive and non-invasive 3D imaging capabilities at ambient conditions. In the present work, post-mortem failure analysis of pure mechanical and pure chemical membrane degradation modes is performed three-dimensionally using this technique. A uniquely comprehensive analysis afforded by this technique reveals that membrane failure is almost exclusively characterized by crack formations during mechanical degradation and by severe thinning accompanied by electrode shorting and pinhole formation during chemical degradation, respectively. Catalyst layer cracks, particularly on the cathode side, are found to interact strongly with mechanically induced membrane cracks. The conjoint effect of chemical and mechanical stressors is established as a necessary requirement for: (i) exclusive membrane crack development independent of catalyst layer cracks; and (ii) crack branching during membrane crack propagation. Overall, the membrane failure analysis improves its reliability and quantitative character with the adoption of 3D imaging."
+   },
+   {
+    "id": "https://openalex.org/W2800781809",
+    "doi": "https://doi.org/10.1038/s41598-018-21776-1",
+    "title": "Increased mechanical loading through controlled swimming exercise induces bone formation and mineralization in adult zebrafish",
+    "year": 2018,
+    "cited": 106,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Zebrafish Biomedical Research Applications",
+     "Genetics and Physical Performance",
+     "Physiological and biochemical adaptations"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-018-21776-1.pdf",
+    "abstract": "Exercise promotes gain in bone mass through adaptive responses of the vertebrate skeleton. This mechanism counteracts age- and disease-related skeletal degradation, but remains to be fully understood. In life sciences, zebrafish emerged as a vertebrate model that can provide new insights into the complex mechanisms governing bone quality. To test the hypothesis that musculoskeletal exercise induces bone adaptation in adult zebrafish and to characterize bone reorganization, animals were subjected to increased physical exercise for four weeks in a swim tunnel experiment. Cellular, structural and compositional changes of loaded vertebrae were quantified using integrated high-resolution analyses. Exercise triggered rapid bone adaptation with substantial increases in bone-forming osteoblasts, bone volume and mineralization. Clearly, modeling processes in zebrafish bone resemble processes in human bone. This study highlights how exercise experiments in adult zebrafish foster in-depth insight into aging-related bone diseases and can thus catalyze the search for appropriate prevention and new treatment options."
+   },
+   {
+    "id": "https://openalex.org/W4394808213",
+    "doi": "https://doi.org/10.1038/s41467-024-47597-7",
+    "title": "3D printable strong and tough composite organo-hydrogels inspired by natural hierarchical composite design principles",
+    "year": 2024,
+    "cited": 103,
+    "venue": "Nature Communications",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced Materials and Mechanics",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-47597-7.pdf",
+    "abstract": "Abstract Fabrication of composite hydrogels can effectively enhance the mechanical and functional properties of conventional hydrogels. While ceramic reinforcement is common in many hard biological tissues, ceramic-reinforced hydrogels lack a similar natural prototype for bioinspiration. This raises a key question: How can we still attain bioinspired mechanical mechanisms in composite hydrogels without mimicking a specific composition and structure? Abstracting the hierarchical composite design principles of natural materials, this study proposes a hierarchical fabrication strategy for ceramic-reinforced organo-hydrogels, featuring (1) aligned ceramic platelets through direct-ink-write printing, (2) poly(vinyl alcohol) organo-hydrogel matrix reinforced by solution substitution, and (3) silane-treated platelet-matrix interfaces. Unit filaments are further printed into a selection of bioinspired macro-architectures, leading to high stiffness, strength, and toughness (fracture energy up to 31.1 kJ/m 2 ), achieved through synergistic multi-scale energy dissipation. The materials also exhibit wide operation tolerance and electrical conductivity for flexible electronics in mechanically demanding conditions. Hence, this study demonstrates a model strategy that extends the fundamental design principles of natural materials to fabricate composite hydrogels with synergistic mechanical and functional enhancement."
+   },
+   {
+    "id": "https://openalex.org/W2811799108",
+    "doi": "https://doi.org/10.1177/1056789518787025",
+    "title": "Microstructural damage evolution and its effect on fracture behavior of concrete subjected to freeze-thaw cycles",
+    "year": 2018,
+    "cited": 99,
+    "venue": "International Journal of Damage Mechanics",
+    "topics": [
+     "Rock Mechanics and Modeling",
+     "Geophysical Methods and Applications",
+     "Concrete Properties and Behavior"
+    ],
+    "oa_url": "https://journals.sagepub.com/doi/pdf/10.1177/1056789518787025",
+    "abstract": "Concrete structures in cold regions are exposed to cyclic freezing and thawing environment, leading to degraded mechanical and fracture properties of concrete due to microstructural damage. While the X-ray micro-/nano-computed tomography technology has been implemented to directly observe concrete microstructure and characterize local damage in recent years, the freeze-thawed damage evolution processes and its effect on overall mechanical performance are not well understood. In this paper, the X-ray nano-computed tomography technology and micro-scale cohesive zone model are combined to quantitatively investigate microstructural damage evolution and its effect on fracture behavior of freeze-thawed concrete samples in three-point bending tests. A two-level micro-to-macro scale finite element model is developed based on computed tomography microstructural images with microcracks due to freeze-thaw cycles. The macroscopic load–deflection curves and fracture energies are simulated and compared favorably with experimental results. Simulation results demonstrate that microcracks caused by freeze-thaw actions are the primary reason for degradation of concrete mechanical properties. Fracture behaviors of frost-damaged concrete with different mortar and interfacial transition zone strength and fracture constants are also simulated and discussed. The combined X-ray nano-computed tomography technology and cohesive zone model proposed is effective in characterizing fracture behavior of concrete and capturing freeze-thaw cycle-induced microstructural damage evolution and its effect on fracture process of concrete."
+   },
+   {
+    "id": "https://openalex.org/W2889062232",
+    "doi": "https://doi.org/10.1007/s10596-018-9768-y",
+    "title": "A quantified study of segmentation techniques on synthetic geological XRM and FIB-SEM images",
+    "year": 2018,
+    "cited": 97,
+    "venue": "Computational Geosciences",
+    "topics": [
+     "Enhanced Oil Recovery Techniques",
+     "Hydrocarbon exploration and reservoir analysis",
+     "Mineral Processing and Grinding"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10596-018-9768-y.pdf",
+    "abstract": "Three sets of synthetic images were created from two original datasets. A suite exhibiting greyscale contrast was produced from an 8.96- μ m voxel size 3D X-ray microscopy image of a sandstone rock and a two suites (one showing greyscale contrast and one showing both greyscale and textural contrast) were produced from a 5 × 5 × 5 nm voxel size FIB-SEM image of a shale rock. The performance of three image segmentation algorithms (global multi-Otsu thresholding, seeded watershed region growing, and machine learning-based multivariant classification) was then assessed by their ability to recover their respective original segmented 3D images. While all algorithms performed well at low noise levels, machine learning-based classification proved significantly more noise tolerant than either of the traditional algorithms. It was also able to segment the non-greyscale (textural based) contrast, something the traditional completely failed to do, with voxel misclassification rates for the traditional techniques above 50% at a 0 noise level within the textural contrast regions. Machine learning-based classification, in contrast, achieved misclassification rates of less than 5% in the same regions."
+   },
+   {
+    "id": "https://openalex.org/W3008535943",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2020.118399",
+    "title": "Durability of pultruded GFRP tubes subjected to seawater sea sand concrete and seawater environments",
+    "year": 2020,
+    "cited": 96,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Structural Behavior of Reinforced Concrete",
+     "Structural Load-Bearing Analysis",
+     "Concrete Corrosion and Durability"
+    ],
+    "oa_url": "https://researchmgt.monash.edu/ws/files/390796040/299966465_oa.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4297005991",
+    "doi": "https://doi.org/10.1093/nsr/nwac195",
+    "title": "Mechanically robust bamboo node and its hierarchically fibrous structural design",
+    "year": 2022,
+    "cited": 95,
+    "venue": "National Science Review",
+    "topics": [
+     "Bamboo properties and applications",
+     "Natural Fiber Reinforced Composites",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://academic.oup.com/nsr/article-pdf/10/2/nwac195/49234177/nwac195.pdf",
+    "abstract": "Although short bamboo nodes function in mechanical support and fluid exchange for bamboo survival, their structures are not fully understood compared to unidirectional fibrous internodes. Here, we identify the spatial heterostructure of the bamboo node via multiscale imaging strategies and investigate its mechanical properties by multimodal mechanical tests. We find three kinds of hierarchical fiber reinforcement schemes that originate from the bamboo node, including spatially tightened interlocking, triaxial interconnected scaffolding and isotropic intertwining. These reinforcement schemes, built on porous vascular bundles, microfibers and more-refined twist-aligned nanofibers, govern the structural stability of the bamboo via hierarchical toughening. In addition, the spatial liquid transport associated with these multiscale fibers within the bamboo node is experimentally verified, which gives perceptible evidence for life-indispensable multidirectional fluid exchange. The functional integration of mechanical reinforcement and liquid transport reflects the fact that the bamboo node has opted for elaborate structural optimization rather than ingredient richness. This study will advance our understanding of biological materials and provide insight into the design of fiber-reinforced structures and biomass utilization."
+   },
+   {
+    "id": "https://openalex.org/W2792417634",
+    "doi": "https://doi.org/10.1111/cura.12244",
+    "title": "Evaluation of Touchable 3D‐Printed Replicas in Museums",
+    "year": 2017,
+    "cited": 93,
+    "venue": "Curator The Museum Journal",
+    "topics": [
+     "Museums and Cultural Heritage",
+     "Conservation Techniques and Studies",
+     "Aesthetic Perception and Analysis"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/cura.12244",
+    "abstract": "Abstract The multisensory aspect of the museum, while neglected for many years, is undergoing a resurgence as museum workers have begun to push towards re‐establishing the senses as a major component of museum pedagogy. However, for many museums a major roadblock lies in the need to conserve rare objects, a need that prevents visitors from being able to interact with many objects in a meaningful way. This issue can be potentially overcome by the rapidly evolving field of 3D printing, which allows museum visitors to handle authentic replicas without damaging the originals. However, little is known about how museum visitors consider this approach, how they understand it and whether these surrogates are welcome within museums. A front‐end evaluation of this approach is presented, finding that visitors were enthusiastic about interacting with touchable 3D printed replicas, highlighting potential educational benefits among other considerations. Suggestions about the presentation of touchable 3D printed replicas are also discussed."
+   },
+   {
+    "id": "https://openalex.org/W2612119263",
+    "doi": "https://doi.org/10.1016/j.electacta.2017.05.028",
+    "title": "Investigation of Hot Pressed Polymer Electrolyte Fuel Cell Assemblies via X-ray Computed Tomography",
+    "year": 2017,
+    "cited": 93,
+    "venue": "Electrochimica Acta",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Electrocatalysts for Energy Conversion",
+     "Advancements in Solid Oxide Fuel Cells"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0013468617310009-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3203879600",
+    "doi": "https://doi.org/10.1093/plphys/kiab405",
+    "title": "X-ray microscopy enables multiscale high-resolution 3D imaging of plant cells, tissues, and organs",
+    "year": 2021,
+    "cited": 91,
+    "venue": "PLANT PHYSIOLOGY",
+    "topics": [
+     "Plant Molecular Biology Research",
+     "Plant nutrient uptake and metabolism",
+     "Leaf Properties and Growth Measurement"
+    ],
+    "oa_url": "https://academic.oup.com/plphys/article-pdf/188/2/831/43393005/kiab405.pdf",
+    "abstract": "Capturing complete internal anatomies of plant organs and tissues within their relevant morphological context remains a key challenge in plant science. While plant growth and development are inherently multiscale, conventional light, fluorescence, and electron microscopy platforms are typically limited to imaging of plant microstructure from small flat samples that lack a direct spatial context to, and represent only a small portion of, the relevant plant macrostructures. We demonstrate technical advances with a lab-based X-ray microscope (XRM) that bridge the imaging gap by providing multiscale high-resolution three-dimensional (3D) volumes of intact plant samples from the cell to the whole plant level. Serial imaging of a single sample is shown to provide sub-micron 3D volumes co-registered with lower magnification scans for explicit contextual reference. High-quality 3D volume data from our enhanced methods facilitate sophisticated and effective computational segmentation. Advances in sample preparation make multimodal correlative imaging workflows possible, where a single resin-embedded plant sample is scanned via XRM to generate a 3D cell-level map, and then used to identify and zoom in on sub-cellular regions of interest for high-resolution scanning electron microscopy. In total, we present the methodologies for use of XRM in the multiscale and multimodal analysis of 3D plant features using numerous economically and scientifically important plant systems."
+   },
+   {
+    "id": "https://openalex.org/W3157348189",
+    "doi": "https://doi.org/10.1038/s43246-021-00149-8",
+    "title": "Cryogenic toughness in a low-cost austenitic steel",
+    "year": 2021,
+    "cited": 90,
+    "venue": "Communications Materials",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.nature.com/articles/s43246-021-00149-8.pdf",
+    "abstract": "Abstract At low temperatures most metals show reduced ductility and impact toughness. Here, we report a compositionally lean, fine-grained Fe-30Mn-0.11C austenitic steel that breaks this rule, exhibiting an increase in strength, elongation and Charpy impact toughness with decreasing temperature. A Charpy impact energy of 453 J is achieved at liquid nitrogen temperatures, which is about four to five times that of conventional cryogenic austenitic steels. The high toughness is attributed to manganese and carbon austenite stabilizing elements, coupled with a reduction in grain size to the near-micrometer scale. Under these conditions dislocation slip and deformation twinning are the main deformation mechanisms, while embrittlement by α′- and ε-martensite transformations are inhibited. This reduces local stress and strain concentration, thereby retarding crack nucleation and prolonging work-hardening. The alloy is low-cost and can be processed by conventional production processes, making it suitable for low-temperature applications in industry."
+   },
+   {
+    "id": "https://openalex.org/W2553444689",
+    "doi": "https://doi.org/10.1016/j.cej.2016.11.116",
+    "title": "Creating hierarchies promptly: Microwave-accelerated synthesis of ZSM-5 zeolites on macrocellular silicon carbide (SiC) foams",
+    "year": 2016,
+    "cited": 90,
+    "venue": "Chemical Engineering Journal",
+    "topics": [
+     "Zeolite Catalysis and Synthesis",
+     "Catalytic Processes in Materials Science",
+     "Catalysis and Hydrodesulfurization Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1385894716316783/pdf",
+    "abstract": "Hierarchical ZSM-5 coatings supported on macrocellular β-SiC foams were prepared by a microwave-accelerated secondary growth method. Under microwave irradiation, differential heating was enabled due to the high microwave-adsorbing ability of SiC leading to the fast assembly of ZSM-5 zeolites on the SiC foams. The effects of crystallisation temperature, time and agitation on the growth of ZSM-5 zeolites on SiC foams were also investigated under microwave heating. A specific surface area of ca. 52 m2 g−1 was obtained under the optimum condition of 150 °C and 4 h. Comparative studies of conventional hydrothermal and microwave-accelerated synthesis were conducted and the resulting materials were characterised extensively using XRD, SEM and N2 adsorption. The combination of microwave heating, high microwave absorption of SiC substrates and agitation allowed a much more focused heating across the surface of SiC foams than conventional heating, which suppressed the formation of ZSM-5 crystals in the liquid phase and the consequent sedimentation. Additionally, for the first time, mesoscopic features of ZSM-5 coatings on SiC foam composites (>10 μm) were studied in 3D by X-ray micro computed tomography (μ-CT), providing quantitative information on the quality of the ZSM-5 coating such as the global thickness and distribution of ZSM-5 across the SiC foam supports. It was concluded that microwave-accelerated secondary growth synthesis offered an efficient route to give high quality coatings on structured foams with the good crystal quality and uniform thickness as well as lower energy consumption, especially for the substrate with a high loss tangent."
+   },
+   {
+    "id": "https://openalex.org/W4387640618",
+    "doi": "https://doi.org/10.1038/s41467-023-41740-6",
+    "title": "Growing recyclable and healable piezoelectric composites in 3D printed bioinspired structure for protective wearable sensor",
+    "year": 2023,
+    "cited": 88,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-41740-6.pdf",
+    "abstract": "Bionic multifunctional structural materials that are lightweight, strong, and perceptible have shown great promise in sports, medicine, and aerospace applications. However, smart monitoring devices with integrated mechanical protection and piezoelectric induction are limited. Herein, we report a strategy to grow the recyclable and healable piezoelectric Rochelle salt crystals in 3D-printed cuttlebone-inspired structures to form a new composite for reinforcement smart monitoring devices. In addition to its remarkable mechanical and piezoelectric performance, the growth mechanisms, the recyclability, the sensitivity, and repairability of the 3D-printed Rochelle salt cuttlebone composite were studied. Furthermore, the versatility of composite has been explored and applied as smart sensor armor for football players and fall alarm knee pads, focusing on incorporated mechanical reinforcement and electrical self-sensing capabilities with data collection of the magnitude and distribution of impact forces, which offers new ideas for the design of next-generation smart monitoring electronics in sports, military, aerospace, and biomedical engineering."
+   },
+   {
+    "id": "https://openalex.org/W4200331274",
+    "doi": "https://doi.org/10.1016/j.matdes.2021.110358",
+    "title": "Additive manufacturing of short carbon fiber-reinforced polyamide composites by fused filament fabrication: Formulation, manufacturing and characterization",
+    "year": 2021,
+    "cited": 88,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Innovations in Concrete and Construction Materials",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127521009138/pdf",
+    "abstract": "Short carbon fiber-reinforced Polyamide 12 composite materials were prepared and used as filaments for additive manufacturing (AM) of structures using the Fused Filament Fabrication (FFF) method. The effect of carbon fibers concentration and type, infill pattern and environmental temperatures on mechanical properties of the printed test samples were investigated. The measured tensile modulus of the printed composite ranged from 1.4 to 8.8 GPa, an increase of up to 6.3 times the value of the neat printed polymer. The tensile strength ranged from 40 to 90 MPa, for an increase of up to 2.15 times. Optimization of the environmental temperature for improved coalescence of filaments led to a fair increase in values of the tensile modulus and strength, with an improvement up to 1.5 and 2 times, respectively, for the printed samples with pattern orthogonal to the loading directions. Microstructure characterizations were performed for mechanical results interpretations, with the help of a specialized homogenization model. The combination of FFF and carbon fiber-reinforced composite shows high promises for applications in the transportation industry."
+   },
+   {
+    "id": "https://openalex.org/W2595098946",
+    "doi": "https://doi.org/10.1007/s11837-017-2308-8",
+    "title": "Coupled Crystal Plasticity–Phase Field Fracture Simulation Study on Damage Evolution Around a Void: Pore Shape Versus Crystallographic Orientation",
+    "year": 2017,
+    "cited": 88,
+    "venue": "JOM",
+    "topics": [
+     "Numerical methods in engineering",
+     "Fatigue and fracture mechanics",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11837-017-2308-8.pdf",
+    "abstract": "Various mechanisms such as anisotropic plastic flow, damage nucleation, and crack propagation govern the overall mechanical response of structural materials. Understanding how these mechanisms interact, i.e. if they amplify mutually or compete with each other, is an essential prerequisite for the design of improved alloys. This study shows—by using the free and open source software DAMASK (the Düsseldorf Advanced Material Simulation Kit)—how the coupling of crystal plasticity and phase field fracture methods can increase the understanding of the complex interplay between crystallographic orientation and the geometry of a void. To this end, crack initiation and propagation around an experimentally obtained pore with complex shape is investigated and compared to the situation of a simplified spherical void. Three different crystallographic orientations of the aluminum matrix hosting the defects are considered. It is shown that crack initiation and propagation depend in a non-trivial way on crystallographic orientation and its associated plastic behavior as well as on the shape of the pore."
+   },
+   {
+    "id": "https://openalex.org/W3203180208",
+    "doi": "https://doi.org/10.1038/s41467-021-26126-w",
+    "title": "A bioinspired scaffold for rapid oxygenation of cell encapsulation systems",
+    "year": 2021,
+    "cited": 85,
+    "venue": "Nature Communications",
+    "topics": [
+     "Pancreatic function and diabetes",
+     "Tissue Engineering and Regenerative Medicine",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-26126-w.pdf",
+    "abstract": "Abstract Inadequate oxygenation is a major challenge in cell encapsulation, a therapy which holds potential to treat many diseases including type I diabetes. In such systems, cellular oxygen (O 2 ) delivery is limited to slow passive diffusion from transplantation sites through the poorly O 2 -soluble encapsulating matrix, usually a hydrogel. This constrains the maximum permitted distance between the encapsulated cells and host site to within a few hundred micrometers to ensure cellular function. Inspired by the natural gas-phase tracheal O 2 delivery system of insects, we present herein the design of a biomimetic scaffold featuring internal continuous air channels endowed with 10,000-fold higher O 2 diffusivity than hydrogels. We incorporate the scaffold into a bulk hydrogel containing cells, which facilitates rapid O 2 transport through the whole system to cells several millimeters away from the device-host boundary. A computational model, validated by in vitro analysis, predicts that cells and islets maintain high viability even in a thick (6.6 mm) device. Finally, the therapeutic potential of the device is demonstrated through the correction of diabetes in immunocompetent mice using rat islets for over 6 months."
+   },
+   {
+    "id": "https://openalex.org/W2951794870",
+    "doi": "https://doi.org/10.1016/j.fuel.2019.05.162",
+    "title": "Cleat structure analysis and permeability simulation of coal samples based on micro-computed tomography (micro-CT) and scan electron microscopy (SEM) technology",
+    "year": 2019,
+    "cited": 85,
+    "venue": "Fuel",
+    "topics": [
+     "Coal Properties and Utilization",
+     "Hydrocarbon exploration and reservoir analysis",
+     "Enhanced Oil Recovery Techniques"
+    ],
+    "oa_url": "https://hdl.handle.net/2164/14486",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2993010201",
+    "doi": "https://doi.org/10.1016/j.ijhydene.2019.11.069",
+    "title": "Characterization of water management in metal foam flow-field based polymer electrolyte fuel cells using in-operando neutron radiography",
+    "year": 2019,
+    "cited": 84,
+    "venue": "International Journal of Hydrogen Energy",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://discovery.ucl.ac.uk/10090253/7/Wu_Characterization%20of%20water%20management%20in%20metal%20foam%20flow-field%20based%20polymer%20electrolyte%20fuel%20cells%20using%20in-operando%20neutron%20radiography.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2962268007",
+    "doi": "https://doi.org/10.1016/j.compstruct.2019.111224",
+    "title": "Damage investigation and assessment due to low-velocity impact on flax/glass hybrid composite plates",
+    "year": 2019,
+    "cited": 84,
+    "venue": "Composite Structures",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "Mechanical Behavior of Composites",
+     "Textile materials and evaluations"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2786572354",
+    "doi": "https://doi.org/10.1002/jbmr.3445",
+    "title": "Severely Impaired Bone Material Quality in Chihuahua Zebrafish Resembles Classical Dominant Human Osteogenesis Imperfecta",
+    "year": 2018,
+    "cited": 83,
+    "venue": "Journal of Bone and Mineral Research",
+    "topics": [
+     "Connective tissue disorders research",
+     "Bone and Dental Protein Studies",
+     "Elasticity and Material Modeling"
+    ],
+    "oa_url": "https://asbmr.onlinelibrary.wiley.com/doi/pdfdirect/10.1002/jbmr.3445",
+    "abstract": "Excessive skeletal deformations and brittle fractures in the vast majority of patients suffering from osteogenesis imperfecta (OI) are a result of substantially reduced bone quality. Because the mechanical competence of bone is dependent on the tissue characteristics at small length scales, it is of crucial importance to assess how OI manifests at the micro- and nanoscale of bone. In this context, the Chihuahua (Chi/+) zebrafish, carrying a heterozygous glycine substitution in the α1 chain of collagen type I, has recently been proposed as a suitable animal model of classical dominant OI, showing skeletal deformities, altered mineralization patterns, and a smaller body size. This study assessed the bone quality properties of Chi/+ at multiple length scales using micro-computed tomography (micro-CT), histomorphometry, quantitative back-scattered electron imaging, Fourier-transform infrared spectroscopy, nanoindentation, and X-ray microscopy. At the skeletal level, the Chi/+ displays smaller body size, deformities, and fracture calli in the ribs. Morphological changes at the whole bone level showed that the vertebrae in Chi/+ had a smaller size, smaller thickness, and distorted shape. At the tissue level, Chi/+ displayed a higher degree of mineralization, lower collagen maturity, lower mineral maturity, altered osteoblast morphology, and lower osteocyte lacunar density compared to wild-type zebrafish. The alterations in the cellular, compositional, and structural properties of Chi/+ bones bear an explanation for the impaired local mechanical properties, which promote an increase in overall bone fragility in Chi/+. The quantitative assessment of bone quality in Chi/+ thus further validates this mutant as an important model reflecting osseous characteristics associated with human classical dominant OI. © 2018 American Society for Bone and Mineral Research."
+   },
+   {
+    "id": "https://openalex.org/W4213295127",
+    "doi": "https://doi.org/10.1016/j.cjmeam.2022.100018",
+    "title": "Challenges in the Technology Development for Additive Manufacturing in Space",
+    "year": 2022,
+    "cited": 82,
+    "venue": "Chinese Journal of Mechanical Engineering Additive Manufacturing Frontiers",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "3D Printing in Biomedical Research",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2772665722000083/pdf",
+    "abstract": "Instead of foreseeing and preparing for all possible scenarios of machine failures, accidents, and other challenges arising in space missions, it appears logical to take advantage of the flexibility of additive manufacturing for “in-space manufacturing” (ISM). Manned missions into space rely on complicated equipment, and their safe operation is a great challenge. Bearing in mind the absolute distance for manned missions to the Moon and Mars, the supply of spare parts for the repair and replacement of lost equipment via shipment from Earth would require too much time. With the high flexibility in design and the ability to manufacture ready-to-use components directly from a computer-aided model, additive manufacturing technologies appear to be extremely attractive in this context. Moreover, appropriate technologies are required for the manufacture of building habitats for extended stays of astronauts on the Moon and Mars, as well as material/feedstock. The capacities for sending equipment and material into space are not only very limited and costly, but also raise concerns regarding environmental issues on Earth. Accordingly, not all materials can be sent from Earth, and strategies for the use of in-situ resources, i.e., in-situ resource utilization (ISRU), are being envisioned. For the manufacturing of both complex parts and equipment, as well as for large infrastructure, appropriate technologies for material processing in space need to be developed."
+   },
+   {
+    "id": "https://openalex.org/W2946836808",
+    "doi": "https://doi.org/10.1107/s1600576719005442",
+    "title": "3D grain reconstruction from laboratory diffraction contrast tomography",
+    "year": 2019,
+    "cited": 81,
+    "venue": "Journal of Applied Crystallography",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Advanced X-ray Imaging Techniques",
+     "X-ray Diffraction in Crystallography"
+    ],
+    "oa_url": "https://journals.iucr.org/j/issues/2019/03/00/nb5238/nb5238.pdf",
+    "abstract": "A method for reconstructing the three-dimensional grain structure from data collected with a recently introduced laboratory-based X-ray diffraction contrast tomography system is presented. Diffraction contrast patterns are recorded in Laue-focusing geometry. The diffraction geometry exposes shape information within recorded diffraction spots. In order to yield the three-dimensional crystallographic microstructure, diffraction spots are extracted and fed into a reconstruction scheme. The scheme successively traverses and refines solution space until a reasonable reconstruction is reached. This unique reconstruction approach produces results efficiently and fast for well suited samples."
+   },
+   {
+    "id": "https://openalex.org/W2981108954",
+    "doi": "https://doi.org/10.1016/j.conbuildmat.2019.117235",
+    "title": "Microstructure and bonding behavior of fiber-mortar interface in fiber-reinforced concrete",
+    "year": 2019,
+    "cited": 80,
+    "venue": "Construction and Building Materials",
+    "topics": [
+     "Innovative concrete reinforcement materials",
+     "Structural Behavior of Reinforced Concrete",
+     "Concrete and Cement Materials Research"
+    ],
+    "oa_url": "https://escholarship.org/content/qt4r05d1x9/qt4r05d1x9.pdf?t=qaajoc",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2729500573",
+    "doi": "https://doi.org/10.1038/s41598-017-04742-1",
+    "title": "Microstructural evolution during sintering of copper particles studied by laboratory diffraction contrast tomography (LabDCT)",
+    "year": 2017,
+    "cited": 80,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced materials and composites",
+     "Powder Metallurgy Techniques and Materials",
+     "Granular flow and fluidized beds"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-017-04742-1.pdf",
+    "abstract": "Pressureless sintering of loose or compacted granular bodies at elevated temperature occurs by a combination of particle rearrangement, rotation, local deformation and diffusion, and grain growth. Understanding of how each of these processes contributes to the densification of a powder body is still immature. Here we report a fundamental study coupling the crystallographic imaging capability of laboratory diffraction contrast tomography (LabDCT) with conventional computed tomography (CT) in a time-lapse study. We are able to follow and differentiate these processes non-destructively and in three-dimensions during the sintering of a simple copper powder sample at 1050 °C. LabDCT quantifies particle rotation (to <0.05° accuracy) and grain growth while absorption CT simultaneously records the diffusion and deformation-related morphological changes of the sintering particles. We find that the rate of particle rotation is lowest for the more highly coordinated particles and decreases during sintering. Consequently, rotations are greater for surface breaking particles than for more highly coordinated interior ones. Both rolling (cooperative) and sliding particle rotations are observed. By tracking individual grains the grain growth/shrinkage kinetics during sintering are quantified grain by grain for the first time. Rapid, abnormal grain growth is observed for one grain while others either grow or are consumed more gradually."
+   },
+   {
+    "id": "https://openalex.org/W4308702318",
+    "doi": "https://doi.org/10.1038/s41467-022-34496-y",
+    "title": "Transfer learning enhanced water-enabled electricity generation in highly oriented graphene oxide nanochannels",
+    "year": 2022,
+    "cited": 79,
+    "venue": "Nature Communications",
+    "topics": [
+     "Solar-Powered Water Purification Methods",
+     "Nanopore and Nanochannel Transport Studies",
+     "Energy Harvesting in Wireless Networks"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-34496-y.pdf",
+    "abstract": "Harvesting energy from spontaneous water flow within artificial nanochannels is a promising route to meet sustainable power requirements of the fast-growing human society. However, large-scale nanochannel integration and the multi-parameter coupling restrictive influence on electric generation are still big challenges for macroscale applications. In this regard, long-range (1 to 20 cm) ordered graphene oxide assembled framework with integrated 2D nanochannels have been fabricated by a rotational freeze-casting method. The structure can promote spontaneous absorption and directional transmission of water inside the channels to generate considerable electric energy. A transfer learning strategy is implemented to address the complicated multi-parameters coupling problem under limited experimental data, which provides highly accurate performance optimization and efficiently guides the design of 2D water flow enabled generators. A generator unit can produce ~2.9 V voltage or ~16.8 μA current in a controllable manner. High electric output of ~12 V or ~83 μA is realized by connecting several devices in series or parallel. Different water enabled electricity generation systems have been developed to directly power commercial electronics like LED arrays and display screens, demonstrating the material's potential for development of water enabled clean energy."
+   },
+   {
+    "id": "https://openalex.org/W3042841882",
+    "doi": "https://doi.org/10.1016/j.xcrp.2020.100109",
+    "title": "Tough Nature-Inspired Helicoidal Composites with Printing-Induced Voids",
+    "year": 2020,
+    "cited": 78,
+    "venue": "Cell Reports Physical Science",
+    "topics": [
+     "Calcium Carbonate Crystallization and Inhibition",
+     "Planetary Science and Exploration",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2666386420301089/pdf",
+    "abstract": "Exoskeletons of Odontodactylus japonicas, the “smasher-type” mantis shrimp, feature a raptorial appendage comprising a Bouligand architecture of chitin nanofibrils with newly observed voids or defects between the polysaccharide α-chitin and protein interfaces. Here, we use a continuous-fiber 3D printing technology to simulate such materials in carbon fiber-reinforced (helicoidal) composites, complete with the presence of voids due to imperfect printing. The specific impact energies of the 3D printed helicoidal composites are clearly superior and further enhanced by the presence of the voids. To explain the role of the Bouligand architecture, interlaminar stresses are computed and found to yield anti-delamination characteristics, and a theoretical model is derived to evaluate the optimal helicoidal architecture. Finite element modeling indicates that the voids tend to deform and coalesce on loading and appear to guide the fracture into the formation of an ideally twisted crack in the printed helicoidal composites, thereby contributing to the impact toughness."
+   },
+   {
+    "id": "https://openalex.org/W3034629891",
+    "doi": "https://doi.org/10.1016/j.jpowsour.2020.228039",
+    "title": "Correlative acoustic time-of-flight spectroscopy and X-ray imaging to investigate gas-induced delamination in lithium-ion pouch cells during thermal runaway",
+    "year": 2020,
+    "cited": 77,
+    "venue": "Journal of Power Sources",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1660047",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3117901123",
+    "doi": "https://doi.org/10.1149/1945-7111/abd648",
+    "title": "A Dilatometric Study of Graphite Electrodes during Cycling with X-ray Computed Tomography",
+    "year": 2020,
+    "cited": 76,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research",
+     "Extraction and Separation Processes"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/abd648/pdf",
+    "abstract": "Graphite is the most commonly used anode material in commercial lithium-ion batteries (LiBs). Understanding the mechanisms driving the dimensional changes of graphite can pave the way to methods for inhibiting degradation pathways and possibly predict electrochemical performance loss. In this study, correlative microscopy tools were used alongside electrochemical dilatometry (ECD) to provide new insights into the dimensional changes during galvanostatic cycling. X-ray computed tomography (CT) provided a morphological perspective of the cycled electrode so that the effects of dilation and contraction on effective diffusivity and electrode pore phase volume fraction could be examined. During the first cycle, the graphite electrode underwent thickness changes close to 9% after lithiation and, moreover, it did not return to its initial thickness after subsequent delithiation. The irreversible dilation increased over subsequent cycles. It is suggested the primary reason for this dilation is electrode delamination. This is supported by the finding that the electrode porosity remained mostly unchanged during cycling, as revealed by X-ray CT."
+   },
+   {
+    "id": "https://openalex.org/W3097651513",
+    "doi": "https://doi.org/10.1149/1945-7111/abc4c1",
+    "title": "An Advanced Microstructural and Electrochemical Datasheet on 18650 Li-Ion Batteries with Nickel-Rich NMC811 Cathodes and Graphite-Silicon Anodes",
+    "year": 2020,
+    "cited": 76,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/abc4c1/pdf",
+    "abstract": "Cylindrical lithium-ion batteries are used across a wide range of applications from spacesuits to automotive vehicles. Specifically, many manufacturers are producing cells in the 18650 geometry i.e., a steel cylinder of diameter and length ca. 18 and 65 mm, respectively. One example is the LG Chem INR18650 MJ1 (nominal values: 3.5 Ah, 3.6 V, 12.6 Wh). This article describes the electrochemical performance and microstructural assembly of such cells, where all the under-pinning data is made openly available for the benefit of the wider community. The charge-discharge capacity is reported for 400 operational cycles via the manufacturer’s guidelines along with full-cell, individual electrode coating and particle 3D imaging. Within the electrochemical data, the distinction between protocol transition, beginning-of-life (BoL) capacity loss, and prolonged degradation is outlined and, subsequently, each aspect of the microstructural characterization is broken down into key metrics that may aid in understanding such degradation (e.g., electrode assembly layers, coating thickness, areal loading, particle size and shape). All key information is summarized in a quick-access advanced datasheet in order to provide an initial baseline of information to guide research paths, inform experiments and aid computational modellers."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZEISS Xradia 410 Versa\" OR \"ZEISS Xradia 520 Versa\" OR \"ZEISS Xradia 610 Versa\" OR \"ZEISS Xradia 620 Versa\") AND OPEN_ACCESS:y",

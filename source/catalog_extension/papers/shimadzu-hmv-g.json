@@ -11,8 +11,84 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Shimadzu HMV-G31 HMV-G31-FA\" OR \"Shimadzu HMV-G31\" OR \"Shimadzu G31\" OR \"Shimadzu G31-FA\" OR \"Shimadzu HMV-G31-FA\"",
-  "count": null,
-  "works": []
+  "count": 5,
+  "works": [
+   {
+    "id": "https://openalex.org/W4413025313",
+    "doi": "https://doi.org/10.1038/s41598-025-14776-5",
+    "title": "Thermal, hardness, and tribological assessment of PEEK/CoCr composites",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Tribology and Wear Analysis",
+     "Orthopaedic implants and arthroplasty",
+     "Polymer Nanocomposites and Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-025-14776-5.pdf",
+    "abstract": "Poly(ether-ether-ketone) (PEEK) is a high-performance thermoplastic with excellent mechanical strength, thermal stability, and chemical resistance, making it attractive for applications like biomedical implants and prostheses. However, neat PEEK suffers from a high friction coefficient and pronounced wear in sliding contacts. In this work, composites of PEEK with Cobalt-Chromium (CoCr) alloy powder were fabricated by centrifugal powder compaction and vacuum sintering. Four composite compositions, with weight percentages of 10%, 20%, 30%, and 40% of CoCr, were produced. Scanning electron microscopy analysis confirmed uniform dispersion of CoCr particles within the PEEK matrix. Differential scanning calorimetry and thermogravimetric analysis showed that CoCr addition did not significantly alter PEEK's melting temperature or thermal stability. Microhardness increased with filler loading, with the 40% CoCr composite achieving a 40% hardness improvement over neat PEEK. Ball-on-disk tests against steel revealed that all composites exhibited significantly reduced wear loss by 84% compared to neat PEEK, while maintaining a friction coefficient typical for PEEK-steel contacts. Overall, the PEEK/CoCr composites demonstrate enhanced hardness and wear resistance while retaining PEEK's favorable thermal properties, suggesting their potential for applications requiring better tribological performance than unfilled PEEK."
+   },
+   {
+    "id": "https://openalex.org/W4311499348",
+    "doi": "https://doi.org/10.1016/j.ijrmhm.2022.106079",
+    "title": "The effect of microstructure evolution on the wear behavior of tantalum processed by Indirect Extrusion Angular Pressing",
+    "year": 2022,
+    "cited": 7,
+    "venue": "International Journal of Refractory Metals and Hard Materials",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Advanced materials and composites",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.ijrmhm.2022.106079",
+    "abstract": "This article studies the evolution of microstructure and the wear resistance in tantalum processed by a newly developed Severe Plastic Deformation (SPD) technique called Indirect Extrusion Angular Pressing (IEAP). The microstructure and tribological behavior of nanostructured tantalum processed by IEAP were analyzed in this work. The samples were extruded for two, five, and twelve passes of IEAP and then exposed to ball-on-disk wear testing in dry sliding conditions. It was shown that after twelve IEAP passes, an extensive grain refinement down to 500 nm was achieved, hardness increased, and a high dislocation density formed in the material. The wear resistance of the material improved successively after each pass of IEAP, and the wear rate decreased, although the friction coefficient did not change. Evaluation of the morphology of the wear tracks showed that the dominant wear mechanisms were comprised of galling, adhesive wear, pitting and microplowing. Refinement of the microstructure by IEAP led to a reduction in adhesive wear and pitting while a slight increase in oxidation appeared. Comparison of the results of wear testing between tantalum against steel balls and tantalum against alumina balls showed that the presence of alumina generated a larger portion of adhesive wear, making the wear mechanism more complicated while the tantalum-steel pair presented milder wear."
+   },
+   {
+    "id": "https://openalex.org/W4399796667",
+    "doi": "https://doi.org/10.1299/jamdsm.2024jamdsm0050",
+    "title": "Influence of vibration conditions on tool life in low-frequency vibration cutting of difficult-to-cut materials",
+    "year": 2024,
+    "cited": 3,
+    "venue": "Journal of Advanced Mechanical Design Systems and Manufacturing",
+    "topics": [
+     "Engineering Technology and Methodologies",
+     "Advanced machining processes and optimization",
+     "Mechanical Systems and Engineering"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/jamdsm/18/4/18_2024jamdsm0050/_pdf",
+    "abstract": "Low-frequency vibration cutting technology can actively generate an intermittent cutting process in which chips are broken up by vibrating the tool in the feed direction synchronized with the spindle rotation. The sinusoidal oscillation superimposed to feed drive motion triggers cutting thickness fluctuations so that air cutting occurs. To attain efficient and practical machining, selection of appropriate conditions for low-frequency vibration cutting is important. From a practical point of view, it is necessary to analyze the cutting process for its effects on tool wear as well as chip breakup. Low-frequency vibration cutting has been reported to reduce average cutting force and average cutting temperature. On the other hand, few studies have analyzed the effect of tool trajectory on the tool life, and thus the mechanism has not been fully clarified. In this study, the effects of low-frequency vibration on the tool life in turning operations were experimentally investigated for carbon steel, stainless steel, and titanium alloys. In low-frequency vibration cutting of ductile materials such as carbon steel and stainless steel, tool damage was significantly improved by designing an intermittent cutting process with large amplitude. On the other hand, the tool life for titanium alloys was deteriorated in low-frequency-vibration cutting. The experimental results indicated that the higher the vibration speed, the faster the tool wear progression in titanium alloy machining. Model-based analysis of the cutting force revealed a characteristic mechanism of the flank wear development that depends on the tool trajectory with low frequency vibration."
+   },
+   {
+    "id": "https://openalex.org/W7127634450",
+    "doi": "https://doi.org/10.1038/s41598-026-38401-1",
+    "title": "Consolidation behaviour of AZ80 magnesium chips: influence of compaction pressure and holding time on porosity, interfaces and mechanical response",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Aluminum Alloys Composites Properties",
+     "Advanced Welding Techniques Analysis"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-026-38401-1_reference.pdf",
+    "abstract": "Solid-state recycling of magnesium alloys relies on effective pre-compaction to convert loose machining chips into dense precursors suitable for downstream processing. This study investigates the consolidation mechanisms of AZ80 Mg chips containing residual water-based lubricants, compacted in a single-action hydraulic press without prior cleaning. The compaction pressure, holding time, and pressure evolution were analyzed to determine their influence on briquette quality. The findings demonstrated that holding time, rather than peak pressure, was the governing factor for densification. Extended holding promoted internal stress redistribution and geometric adaptation, facilitating pore collapse and yielding green densities of ~ 91-92% with uniform axial distribution, while short holding times limited effective stress transmission, resulting in heterogeneous density gradients. Microstructural analysis revealed that while native oxide barriers persisted, preventing full metallurgical bonding, extended holding achieved sub-micron interfacial spacing and effective geometric closure. Hardness mapping indicated that shorter holding times retained higher hardness values (~ 110-116 HV), consistent with high localized work hardening and incomplete stress redistribution. In addition, compression tests revealed that stiffness was governed by interfacial integrity rather than bulk density. Therefore, samples with superior geometric sealing exhibited significantly higher stiffness (2964 MPa) compared to denser samples with poorer interfacial locking. These results indicate that optimizing interfacial contact through load maintenance is critical for producing stable briquettes, providing a pathway for robust solid-state recycling of AZ80 alloys."
+   },
+   {
+    "id": "https://openalex.org/W7110442426",
+    "doi": "https://doi.org/10.58240/1829006x-2025.21.9-419",
+    "title": "COMPARATIVE EVALUATION OF EFFECT OF AZADIRACHTA INDICA ON SURFACE ROUGHNESS, HARDNESS AND COLOR STABILITY OF POLYMETHYL METHACRYLATE DENTURE BASE MATERIAL - IN VITRO STUDY.",
+    "year": 2025,
+    "cited": 0,
+    "venue": "BULLETIN OF STOMATOLOGY AND MAXILLOFACIAL SURGERY",
+    "topics": [
+     "Dental materials and restorations",
+     "Surgical Sutures and Adhesives",
+     "Biological Stains and Phytochemicals"
+    ],
+    "oa_url": "https://stomatology-mfsjournal.com/wp-content/uploads/2025/10/COMPARATIVE-EVALUATION-OF-EFFECT-OF-AZADIRACHTA-INDICA-ON-SURFACE-ROUGHNESS-HARDNESS-AND-COLOR-STABILITY-OF-POLYMETHYL-METHACRYLATE-DENTURE-BASE-MATERIAL-IN-VITRO-STUDY.pdf",
+    "abstract": "Background:The study consists of two groups. Group-A, prepared with unmodified Polymethylmathacrylate(PMMA) resin and Group-B prepared with PMMA incorporated with neem oil. Colour stability assessment was done using the UV-Vis Spectrophotometer. The initial colour of both groups and after exposure color changes and Delta E (∆E) value was calculated. Surface roughness assessed using Profilometer. Hardness was assessed by Vickers hardness number. Data subjected to statistical analysis. As the data was normally distributed (p > 0.05) parametric tests of significance were used. Independent Sample t-test was used. P value of < 0.05 was considered to be statistically significant. Materilas and Methods: The results obtained from the study indicate that there is a significant difference in the surface roughness of the experimental group of mean 0.0718 was found to be statistically significant (p <0.05) than the control group at baseline with a mean of 0.5652. The post immersion mean of Group B for surface roughness was also lesser than that of Group A Results: The results obtained from the study indicate that there is a significant difference in the surface roughness of the experimental group of mean 0.0718 was found to be statistically significant (p <0.05) than the control group at baseline with a mean of 0.5652.The post immersion mean of Group B for surface roughness was also lesser than that of Group A. Conclusion: This in vitro study shows how PMMA can be modified with fillers such as neem oil to improvise its physical and mechanical properties. The properties of PMMA incorporated with neem oil was comparatively better than conventional resin.Significantly better properties indicate their ability to overcome the shortfalls in PMMA resin."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Shimadzu HMV-G31 HMV-G31-FA\" OR \"Shimadzu HMV-G31\" OR \"Shimadzu G31\" OR \"Shimadzu G31-FA\" OR \"Shimadzu HMV-G31-FA\") AND OPEN_ACCESS:y",

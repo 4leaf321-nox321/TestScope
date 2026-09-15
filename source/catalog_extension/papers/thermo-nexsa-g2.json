@@ -10,8 +10,412 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Thermo Fisher G2\" OR \"Thermo Fisher Nexsa G2\" OR \"HAAKE G2\" OR \"HAAKE Nexsa G2\"",
-  "count": null,
-  "works": []
+  "count": 27,
+  "works": [
+   {
+    "id": "https://openalex.org/W4313681569",
+    "doi": "https://doi.org/10.1007/s00401-022-02533-1",
+    "title": "Cryo-EM structures of amyloid-β filaments with the Arctic mutation (E22G) from human and mouse brains",
+    "year": 2023,
+    "cited": 109,
+    "venue": "Acta Neuropathologica",
+    "topics": [
+     "Alzheimer's disease research and treatments",
+     "Amyloidosis: Diagnosis, Treatment, Outcomes",
+     "Microtubule and mitosis dynamics"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00401-022-02533-1.pdf",
+    "abstract": "Abstract The Arctic mutation, encoding E693G in the amyloid precursor protein (APP) gene [E22G in amyloid-β (Aβ)], causes dominantly inherited Alzheimer’s disease. Here, we report the high-resolution cryo-EM structures of Aβ filaments from the frontal cortex of a previously described case ( A β PParc1 ) with the Arctic mutation. Most filaments consist of two pairs of non-identical protofilaments that comprise residues V12–V40 (human Arctic fold A) and E11–G37 (human Arctic fold B). They have a substructure (residues F20–G37) in common with the folds of type I and type II Aβ42. When compared to the structures of wild-type Aβ42 filaments, there are subtle conformational changes in the human Arctic folds, because of the lack of a side chain at G22, which may strengthen hydrogen bonding between mutant Aβ molecules and promote filament formation. A minority of Aβ42 filaments of type II was also present, as were tau paired helical filaments. In addition, we report the cryo-EM structures of Aβ filaments with the Arctic mutation from mouse knock-in line App NL−G−F . Most filaments are made of two identical mutant protofilaments that extend from D1 to G37 ( App NL−G−F murine Arctic fold). In a minority of filaments, two dimeric folds pack against each other in an anti-parallel fashion. The App NL−G−F murine Arctic fold differs from the human Arctic folds, but shares some substructure."
+   },
+   {
+    "id": "https://openalex.org/W4392459091",
+    "doi": "https://doi.org/10.1002/adom.202303097",
+    "title": "P‐Type Colloidal InSb Quantum Dot Ink Enables III–V Group Bulk‐Heterojunction Shortwave Infrared (SWIR) Photodetector",
+    "year": 2024,
+    "cited": 46,
+    "venue": "Advanced Optical Materials",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Nanowire Synthesis and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adom.202303097",
+    "abstract": "Abstract Infrared (IR) optoelectronics have become important owing to their various applications, such as recognition, autonomous driving, and quantum communications. In particular, detection beyond 1400‐nm wavelength in the shortwave IR (SWIR) spectrum (i.e., 1550 nm) is important for eye safety, and long‐range communication. Recently, group III–V (InAs or InSb) colloidal quantum dots (CQDs) have attracted considerable interest due to their broadband optical tunability and toxic‐elements (Pb and Hg)‐free properties. Herein, a new approach is developed to synthesize highly monodispersed InSb CQD by employing the continuous injection method, which enables facile optical bandgap tuning at a SWIR wavelength of up to 0.9 eV. Furthermore, solution ligand exchange using halides and thiolates results in effective passivation of the InSb CQD surface and renders a stable p ‐type CQD ink. Finally, bulk heterojunction (BHJ) structure is demonstrated using n ‐type InAs: p ‐type InSb CQDs, which exhibits broad absorption up to 1600 nm, and a sixfold higher responsivity compared with the pristine InSb CQD device due to the efficient charge transport in BHJ CQD solids."
+   },
+   {
+    "id": "https://openalex.org/W4400248312",
+    "doi": "https://doi.org/10.1038/s44296-024-00020-0",
+    "title": "Sustainable co-production of porous graphitic carbon and synthesis gas from biomass resources",
+    "year": 2024,
+    "cited": 32,
+    "venue": "npj Materials Sustainability",
+    "topics": [
+     "Thermochemical Biomass Conversion Processes",
+     "Catalytic Processes in Materials Science",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s44296-024-00020-0.pdf",
+    "abstract": "Abstract Existing pathways to produce graphite which include extraction of natural graphite impact the environment, while the conversion of fossil-driven carbon to graphite around temperatures as high as 3000 °C consumes large quantities of energy. Potassium - catalyzed graphitization is a more sustainable route and can achieve graphitic carbon formation at temperatures lower than 1000 °C, while enhancing pore formation and creating porous graphitic carbon (PGC). This two-step approach involves carbonization followed by graphitization. However, the compositions of the gaseous products have not been reported in prior studies. In this perspective, the chemical transformations underlying Alkaline Thermal Graphitization (ATG) for the co-production of synthesis gas (H 2 and CO) and PGC in a single step, utilizing lignocellulosic biomass, are reported. The presence of graphitic and porous carbon structures in PGC are well suited for supercapacitor applications. This promising approach maximizes resource recovery by upgrading volatile matter to synthesis gas and low value biomass residues to porous graphitic carbon (PGC), thus co-producing sustainable fuels and energy storage materials, while lowering CO 2 emissions compared to existing pathways to produce graphite."
+   },
+   {
+    "id": "https://openalex.org/W4400951905",
+    "doi": "https://doi.org/10.1002/advs.202401218",
+    "title": "Copper Functionalized SnSe Nanoflakes Enabling Nonlinear Optical Features for Ultrafast Photonics",
+    "year": 2024,
+    "cited": 30,
+    "venue": "Advanced Science",
+    "topics": [
+     "Nonlinear Optical Materials Studies",
+     "Photonic and Optical Devices",
+     "Advanced Fiber Laser Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202401218",
+    "abstract": "This study enhances the ultrafast photonics application of tin selenide (SnSe) nanoflakes via copper (Cu) functionalization to overcome challenges such as low conductivity and weak near-infrared (NIR) absorption. Cu functionalization enhances concentration, induces strain, and reduces the bandgap through Sn substitution and Sn vacancy filling with Cu ions. Demonstrated by density functional theory calculations and experimental analyses, Cu-functionalized SnSe exhibits improved NIR optical absorption and superior third-order nonlinear optical properties. Z-scan measurements and femtosecond transient absorption spectroscopy reveal better performance of Cu-functionalized SnSe in terms of nonlinear optical properties and shorter carrier relaxation times compared to pristine SnSe. Furthermore, saturable absorbers based on both SnSe types, when integrated into an erbium-doped fiber laser, show that Cu functionalization leads to a decrease in pulse duration to 798 fs and an increase in 3 dB spectral bandwidth to 3.44 nm. Additionally, it enables stable harmonic mode-locking of bound-state solitons. This work suggests a new direction for improving wide bandgap 2D materials by highlighting the enhanced nonlinear optical properties and potential of Cu-functionalized SnSe in ultrafast photonics."
+   },
+   {
+    "id": "https://openalex.org/W7127883140",
+    "doi": "https://doi.org/10.1038/s41467-026-69160-2",
+    "title": "Electrolyte chemistry of adaptive hydrogen bonded domains for high voltage lithium metal batteries",
+    "year": 2026,
+    "cited": 10,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Coordination Chemistry and Organometallics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-026-69160-2_reference.pdf",
+    "abstract": "The practical implementation of lithium metal batteries is hindered by unstable electrode-electrolyte interfaces and sluggish ion transport kinetics. Here, we report a molecular design strategy that remodels electrolyte solvation structures via the formation of hydrogen-bonded domains, thereby enhancing both the thermodynamics and interfacial dynamics of Li+ transport. Specifically, we introduce 2-cyano-N-methylacetamide, an electrochemically stable hydrogen bond donor, as a cosolvent to construct stable nanoscale hydrogen-bonded domains ( < 3.5 Å). 2-Cyano-N-methylacetamide generates both classical (H-bond, Hδ⁺–Oδ⁻) and nonclassical (Z-bond, Nδ⁻–Hδ⁺) hydrogen bonding, which disrupts loosely bound solvated clusters and induces tightly coordinated Li+ solvation structures. The hydrogen-bonded domains facilitate the formation of oriented fast Li+ transport channels. Accordingly, in Li | |LiNi0.8Co0.1Mn0.1O2 cells cycled under demanding conditions of 4.7 V with a high areal capacity of ~3.0 mAh cm−2, the electrolyte enables a capacity retention of 78.8% after 400 cycles. In addition, a stable 4.7 V lithium metal pouch cell is demonstrated with a specific energy (based on the mass of all components) of 418.2 Wh kg−1. This work offers a useful electrolyte design principle on solvation chemistry and interfacial engineering for high-voltage lithium metal batteries. Lithium metal batteries face challenges of unstable interfaces and slow ion transport. Here, authors report a hydrogen-bonded domain electrolyte based on addition of 2-cyano-N-methylacetamidethat as cosolvent which enhances ion transport and interface stability, enabling long cycling high voltage (up to 4.7 V) Li | |LiNi0.8Co0.1Mn0.1O2 batteries with high specific energy of 418.2 Wh kg−1."
+   },
+   {
+    "id": "https://openalex.org/W4412723763",
+    "doi": "https://doi.org/10.1002/advs.202503388",
+    "title": "Controlled Growth of Graphene‐Skinned Al 2 O 3 Powders by Fluidized Bed‐Chemical Vapor Deposition for Heat Dissipation",
+    "year": 2025,
+    "cited": 9,
+    "venue": "Advanced Science",
+    "topics": [
+     "Thermal properties of materials",
+     "Graphene research and applications",
+     "Thermal Radiation and Cooling Technologies"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202503388",
+    "abstract": "Abstract The growing demand for high‐performance chips, driven by digitalization and intelligence advancements, is accompanied by rising power consumption, highlighting the critical need for efficient thermal management in electronics. Graphene and its composites, characterized by their exceptional thermal conductivity, hold a distinctive position in this domain. The controlled synthesis of high‐quality multilayer graphene composites, however, remains a significant challenge, hindering the full utilization of graphene's exceptional thermal conductivity. In this research, we present a breakthrough synthesis strategy for graphene‐skinned alumina (Al 2 O 3 ) composites via fluidized bed‐chemical vapor deposition (FB‐CVD), constructing a continuous graphene skin with high crystallinity with superior reproducibility between batches. This unique structure enhances thermal conductivity and overall performance by leveraging graphene's superior surface characteristics, interlayer thermal properties, and strong phonon coupling with Al 2 O 3 . The heat flow within the graphene skin surpasses that within the Al 2 O 3 powders by more than an order of magnitude, establishing a comprehensive heat transfer network in the composite system. The derived thermal interface materials achieve an exceptional thermal conductivity of 6.44 W·m −1 ·K −1 and reduce hotspot temperatures in micro‐LEDs by 17.7 °C. This research established a scalable platform for the synthesis of graphene‐skinned ceramic composites, representing a paradigm shift in thermal management strategies for next‐generation nanoelectronics."
+   },
+   {
+    "id": "https://openalex.org/W4409205789",
+    "doi": "https://doi.org/10.1021/acsnano.4c18105",
+    "title": "Quantifying Dynamic Changes of Oxygen Nonstoichiometry and Formation of Surface Phases of SrCoOx Electrocatalysts by Operando Characterizations",
+    "year": 2025,
+    "cited": 9,
+    "venue": "ACS Nano",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://doi.org/10.1021/acsnano.4c18105",
+    "abstract": "Perovskite electrocatalysts like strontium cobaltite (SrCoO x, denoted as SCO) experience dynamic changes in both surface and bulk during the oxygen evolution reaction (OER), rather than remaining static. This dynamic, electrochemically driven evolution in composition, structure, and ionic defects ( e.g., oxygen vacancies) can strongly impact the OER activity and stability. Yet, the current lack of quantitative information on these processes impedes a precise and predictive evaluation of the individual and combined effect of both bulk and surface transformations. Here, using epitaxial SCO thin films as a model system, we demonstrate that SCO is a bulk and surface redox-active OER electrocatalyst that undergoes a bulk phase transition via electrochemically induced oxygen intercalation, as well as a surface phase transition toward Co (oxy-)hydroxide. Specifically, applying a suite of operando and ex situ characterization we established a reliable relationship between oxygen nonstoichiometry, optical density, and conductivity as a function of applied potentials. We further accurately quantify the evolution of oxygen stoichiometry in the SCO bulk and the thickness of the formed surface secondary phase. Our work provides a reliable and generalizable workflow and operando characterization toolbox for quantitative assessment of surface and bulk transformations in oxygen-deficient perovskite electrocatalysts."
+   },
+   {
+    "id": "https://openalex.org/W4405013730",
+    "doi": "https://doi.org/10.1007/s10163-024-02126-y",
+    "title": "Eco-friendly recovery of pure and long carbon fibres from aged epoxy matrix composites by H2O2 as an oxidant",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Journal of Material Cycles and Waste Management",
+    "topics": [
+     "Fiber-reinforced polymer composites",
+     "Natural Fiber Reinforced Composites",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10163-024-02126-y.pdf",
+    "abstract": "Abstract In this study, we focused on the chemical recovery of carbon fibres from epoxy matrix composite wastes. First, we laminated and cured composite panels from carbon fibre-reinforced prepregs (CFRP) and then aged them under controlled circumstances to simulate their lifespan. Fibre recovery was then carried out by hydrogen peroxide (H2O2) at 6 bar and between 60 and 150 °C. We chose this material because it results in a rapid, cost-efficient, and environmentally friendly process. Besides, we expected it would allow the removal of the polymer matrix without fragmenting the fibres. We aimed to investigate the matrix decomposition in H2O2, the purity of the obtained fibres and the retention of their mechanical properties. The purity and the structure of the obtained carbon fibres were then characterised by using scanning electronic microscopy (SEM), X-ray diffraction (XRD), thermogravimetry (TGA), infrared spectroscopy (IR), and X-ray photoelectron spectroscopy (XPS). We found that H2O2 was effective in recovering carbon fibres, especially at 150 °C. The mechanical results showed that the retention of the modulus was complete, while the tensile strength and elongation at break decreased by 35% due to microstructural damages. The fibres still have better properties than glass or basalt fibres; therefore, good-quality composites can be made using them. Graphical Abstract"
+   },
+   {
+    "id": "https://openalex.org/W4392097736",
+    "doi": "https://doi.org/10.1021/acsami.3c19029",
+    "title": "Near-IR Photoinduced Electrochemiluminescence Imaging with Structured Silicon Photoanodes",
+    "year": 2024,
+    "cited": 9,
+    "venue": "ACS Applied Materials & Interfaces",
+    "topics": [
+     "Advanced biosensing and bioanalysis techniques",
+     "Electrochemical Analysis and Applications",
+     "Analytical Chemistry and Sensors"
+    ],
+    "oa_url": "https://hal.science/hal-04478358v1/document",
+    "abstract": "Infrared (IR) imaging devices that convert IR irradiation (invisible to the human eye) to a visible signal are based on solid-state components. Here, we introduce an alternative concept based on light-addressable electrochemistry (i.e., electrochemistry spatially confined under the action of a light stimulus) that involves the use of a liquid electrolyte. In this method, the projection of a near-IR image (λ exc = 850 or 840 nm) onto a photoactive Si-based photoanode, immersed into a liquid phase, triggers locally the photoinduced electrochemiluminescence (PECL) of the efficient [Ru(bpy) 3 ] 2+ -TPrA system. This leads to the local conversion of near-IR light to visible (λ PECL = 632 nm) light. We demonstrate that compared to planar Si photoanodes, the use of a micropillar Si array leads to a large enhancement of local light generation and considerably improves the resolution of the PECL image by preventing photogenerated minority carriers from diffusing laterally. These results are important for the design of original light conversion devices and can lead to important applications in photothermal imaging and analytical chemistry."
+   },
+   {
+    "id": "https://openalex.org/W4403379374",
+    "doi": "https://doi.org/10.1039/d4ra06356b",
+    "title": "A self‐regulated shielding layer induced by an electrolyte additive for alkaline Al–air batteries",
+    "year": 2024,
+    "cited": 7,
+    "venue": "RSC Advances",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Ammonia Synthesis and Nitrogen Reduction",
+     "Layered Double Hydroxides Synthesis and Applications"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ra/d4ra06356b",
+    "abstract": "and the anode utilization increased from 31.6% to 80.9%, greatly improving the performance of the battery. Surface characterization of the Al alloy surface was also carried out to investigate the adsorption of EDTA-2Na on it. This electrolyte modification strategy provides a promising option for modulating the anode/electrolyte interface chemistry to achieve high-performance AAB."
+   },
+   {
+    "id": "https://openalex.org/W4290999879",
+    "doi": "https://doi.org/10.3390/coatings12081160",
+    "title": "Zn–Ni Alloy Plating with Trivalent Chromate: Effects of NaF Additive Concentration and Treatment Time on Film Color, Thickness, and Electrochemical Properties",
+    "year": 2022,
+    "cited": 7,
+    "venue": "Coatings",
+    "topics": [
+     "Corrosion Behavior and Inhibition",
+     "Electrodeposition and Electroless Coatings",
+     "Nanoporous metals and alloys"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-6412/12/8/1160/pdf?version=1660220543",
+    "abstract": "Zn–Ni alloy plating is widely applied in manufacturing of automobile and construction material components because it provides better corrosion resistance and wear resistance than Zn plating. Furthermore, chromate coating treatment is gaining attention with respect to improving the corrosion resistance of Zn–Ni alloys. In this study, we investigated the effects of NaF additive concentration and treatment time on trivalent chromate coating, which has been developed as an alternative to hexavalent chromate coating. The chromate post-treatment solution used in this study comprises Cr(NO3)3·9H2O (360 g/L), CoSO4·7H2O (40 g/L), and HNO3 (35 mL/L), to which NaF is added in the concentration range of 0–30 g/L. The as-formed coating films at 1.6 pH and 60 °C treatment temperature for deposition times ranging from 30 to 120 s demonstrated a decreasing corrosion rate as the NaF concentration increased. The electrochemical and morphological analyses inferred that NaF acted as a catalyst, enhancing the rate of film formation. Furthermore, the film thickness increased with the treatment time, and the film color changed in the order of yellow, purple, and green."
+   },
+   {
+    "id": "https://openalex.org/W4413257533",
+    "doi": "https://doi.org/10.1038/s41467-025-62612-1",
+    "title": "Selective reduction in epitaxial SrFe0.5Co0.5O2.5 and its reversibility",
+    "year": 2025,
+    "cited": 4,
+    "venue": "Nature Communications",
+    "topics": [
+     "Magnetic and transport properties of perovskites and related materials",
+     "Electronic and Structural Properties of Oxides",
+     "Advanced Condensed Matter Physics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-025-62612-1.pdf",
+    "abstract": "Oxygen-vacancy engineering in transition metal oxides enables programmable functionalities by modulating the valence states and local coordination of constituents. Here, we report the selective reduction of cobalt ions in epitaxial SrFe0.5Co0.5O2.5 thin films under reducing gas environments, while iron ions remain unchanged. X-ray absorption spectroscopy reveals an absorption edge shift of 1.65 eV in the Co L-edge upon reduction, and multiplet simulations estimate a decrease in the average Co valence from Co2.91+ to Co2.00+. This site- and element-specific reduction leads to the formation of a structurally distinct oxygen-deficient phase stabilized by oxygen vacancies at tetrahedral sites, as confirmed by density functional theory. Optical spectroscopy reveals an increase in the bandgap from 2.47 eV to 3.04 eV, accompanied by enhanced transparency. Furthermore, simultaneous in situ diffraction and transport measurements confirm fully reversible redox-driven transitions among three phases: reduced defective perovskite, brownmillerite, and oxygen-rich perovskite phases. These findings demonstrate that selective redox control in multi-cation oxides enables the realization of chemically and functionally distinct oxygen-deficient phases. Here authors show selective reduction behaviours in a catalytically active iron and cobalt containing multivalent topotactic oxide and demonstrated its low-temperature reversible redox reactions, potentially applicable to energy and electronic devices."
+   },
+   {
+    "id": "https://openalex.org/W4402996669",
+    "doi": "https://doi.org/10.1155/2024/5525410",
+    "title": "Thiol‐Free p‐Type Colloidal Quantum Dot for Efficient Broadband Optoelectronics",
+    "year": 2024,
+    "cited": 4,
+    "venue": "International Journal of Energy Research",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1155/2024/5525410",
+    "abstract": "Colloidal quantum dots (CQDs) are promising semiconductors for optoelectronic applications owing to their bandgap tunability and solution processability. Historically, ethanedithiol has been widely employed as a surface ligand to form a p‐type CQD layer via a layer‐by‐layer process. However, the limited control of p‐type characteristics reduces the device performance, and the high reactivity of ligand and processing solvents degrade the underlying layer. In this study, a thiol‐free p‐type CQD is demonstrated by creating native p‐type CQDs during the synthesis process. Sulfurization of PbS CQD results in p‐type properties that enable the avoidance of any further thiol‐ligand treatment process. Further, alternative surface passivation of the sulfurized CQD using halide ligand yields a robust, p‐type, morphologically uniform, and trap‐suppressed film. The developed CQD film is then employed as a hole‐transporting layer (HTL) for both broadband solar cells and photodetectors. The resulting CQD devices exhibit improved performance with a 65.7% increase in photovoltaic efficiency and a 1.7‐fold improvement in responsivity for infrared photodetection. The devices also demonstrate higher ambient stability, retaining 85% of the initial performance after 1,000 hr owing to the uniform top HTL morphology, indicating the potential of the new p‐type layer to be utilized in various emerging optoelectronics."
+   },
+   {
+    "id": "https://openalex.org/W4308732937",
+    "doi": "https://doi.org/10.1101/2022.11.07.515410",
+    "title": "Cryo-EM Structures of Amyloid-β Filaments With the Arctic Mutation (E22G) From Human and Mouse Brains",
+    "year": 2022,
+    "cited": 3,
+    "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+    "topics": [
+     "Alzheimer's disease research and treatments",
+     "RNA Research and Splicing",
+     "Microtubule and mitosis dynamics"
+    ],
+    "oa_url": "https://www.biorxiv.org/content/biorxiv/early/2022/11/07/2022.11.07.515410.full.pdf",
+    "abstract": "ABSTRACT The Arctic mutation, encoding E693G in the amyloid precursor protein (APP) gene [E22G in amyloid-β (Aβ)], causes dominantly inherited Alzheimer’s disease. Here we report the high-resolution cryo-EM structures of Aβ filaments from the frontal cortex of a previously described case ( AβPParc1 ) with the Arctic mutation. Most filaments consist of two pairs of non-identical protofilaments that comprise residues V12-V40 (human Arctic fold A) and E11-G37 (human Arctic fold B). They have a substructure (residues F20-G37) in common with the folds of type I and type II Aβ42. When compared to the structures of wild-type Aβ42 filaments, there are subtle conformational changes in the human Arctic folds, because of the lack of a side chain at G22, which may strengthen hydrogen bonding between mutant Aβ molecules and promote filament formation. A minority of Aβ42 filaments of type II was also present, as were tau paired helical filaments. In addition, we report the cryo-EM structures of Aβ filaments with the Arctic mutation from mouse knock-in line App NL-G-F . Most filaments are made of two identical mutant protofilaments that extend from D1-G37 (murine Arctic fold). In a minority of filaments, two dimeric folds pack against each other in an anti-parallel fashion. The murine Arctic fold differs from the human Arctic folds, but shares some substructure."
+   },
+   {
+    "id": "https://openalex.org/W4411871239",
+    "doi": "https://doi.org/10.1038/s41598-025-06671-w",
+    "title": "Investigating contact resistance between WOx and metal electrodes in ECRAMs via interface analysis",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Memory and Neural Computing",
+     "Semiconductor materials and devices",
+     "Ferroelectric and Negative Capacitance Devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-025-06671-w.pdf",
+    "abstract": "In neuromorphic computing, which overcomes the limitations of the von Neumann architecture, resistive processing units performing data processing and memory storage simultaneously have been widely researched. Among analog resistive devices, electrochemical random-access memories (ECRAMs) have drawn significant attention, which operate via ion movements to control channel conductance. Despite their promising switching characteristics, the contact resistance between Tungsten oxide (WO x ) channel and metal electrodes has not been studied yet. In this study, we fabricate transmission line model devices to investigate the contact resistance between WO x and the metals of Tungsten (W), Molybdenum (Mo), and Nickel (Ni). Results show that W exhibits the lowest contact resistance with WO x , followed by Ni and Mo. We confirm that W and Mo show Ohmic contacts, whereas Ni reveals a Schottky contact with a Schottky barrier height of 118 meV. Moreover, we demonstrate Mo only forms a metal oxidation layer of 9 nm at the interface between WO x and Mo. Finally, we present the trend of contact resistivity depending on WO x channel resistivity under different channel conductance values of the W contact. These findings provide insights into contact resistance of WO x -based ECRAMs, suggesting that W is the most suitable contact material for achieving high performance."
+   },
+   {
+    "id": "https://openalex.org/W7162020159",
+    "doi": "https://doi.org/10.1038/s41563-026-02607-5",
+    "title": "High-throughput in situ sizing and quantum yield determination of individual perovskite nanocrystals",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Nature Materials",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Machine Learning in Materials Science"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41563-026-02607-5.pdf",
+    "abstract": "Abstract Colloidal nanocrystals exhibit high tunability and low-cost solution processing attractive for next-generation electronic applications. However, colloidal nanocrystals are inherently heterogeneous and the impact of this heterogeneity on device performance has been largely disregarded, since analytical techniques cannot assess the functionality of individual nanocrystals on a large scale. Here we introduce a rapid, in situ method to determine the size and quantum yield of thousands of individual nanocrystals within minutes, based on interferometric scattering microscopy and photoluminescence imaging. Monitoring the life cycle of CsPbBr 3 perovskite nanocubes, our approach uncovers phenomena masked by bulk averaging. We find a substantial performance spread across the nanocubes and an anticorrelation of quantum yield and size. During a subsequent solution-phase defect engineering process, we uncover size-dependent enhancement kinetics, which initially favour the enhancement of smaller nanocubes. Finally, we image light-induced degradation by tracking the size reduction and photobleaching of single sub-20-nm nanocrystals, finding material loss decreases at higher laser powers due to the trapping of photoinduced electrons by the formed metallic lead."
+   },
+   {
+    "id": "https://openalex.org/W7131789185",
+    "doi": "https://doi.org/10.3390/batteries12030082",
+    "title": "Improvement of Cycling Stability of Core–Shell Structured Ni-Rich NMC Cathodes by Using a Tungsten Oxide Stabilization Interlayer",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Batteries",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Transition Metal Oxide Nanomaterials"
+    ],
+    "oa_url": "https://doi.org/10.3390/batteries12030082",
+    "abstract": "The growing demand for higher-energy lithium-ion batteries, encompassing consumer electronics, stationary grid storage, and electric mobility to specialized sectors like aerospace, medical devices, and industrial robotics, requires cathode materials that offer higher capacity while remaining cost-effective. This trend has intensified the development of nickel-rich LiNi1−x−yMnxCoyO2 (NMC) systems. However, high-Ni NMCs such as LiNi0.9Mn0.05Co0.05O2 (NMC90) suffer from limited thermal and cycling stability. Core–shell architectures using LiNi0.6Mn0.2Co0.2O2 (NMC622) as a shell can partially alleviate these drawbacks, but structural degradation caused by interdiffusion between the core and shell persists as a major challenge. This study investigates whether a tungsten oxide interlayer can act as a protective barrier that suppresses interdiffusion, stabilizes the crystal structure, and improves long-term electrochemical performance. In this work, NMC cathode powders were synthesized via a one-pot oxalate co-precipitation route, followed by structural characterization using X-ray diffraction (XRD), scanning electron microscopy (SEM), X-ray photoelectron spectroscopy (XPS), and ion scattering spectroscopy (ISS). Electrochemical performance, including capacity retention, cycling stability, and internal resistance, was evaluated through galvanostatic charge–discharge (GCD) testing and electrochemical impedance spectroscopy (EIS). The core–shell configuration delivered higher specific discharge capacity compared to the individually synthesized core-only and shell-only reference materials, and the incorporation of a tungsten oxide interlayer resulted in a twofold increase in cycle life. These results demonstrate that tungsten oxide effectively enhances cycling stability by inhibiting core–shell interdiffusion, offering a promising pathway toward more durable high-Ni NMC cathodes."
+   },
+   {
+    "id": "https://openalex.org/W7125818821",
+    "doi": "https://doi.org/10.1002/adfm.202526566",
+    "title": "Compression‐Triggered Instantaneous Nanoplastic Release From Dynamic Hydrogen‐Bonded LDH@Cellulose Semi‐Flexible Micro‐Nano Aerogel for Sustainable Water Remediation",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Layered Double Hydroxides Synthesis and Applications",
+     "Advanced Cellulose Research Studies",
+     "Fluoride Effects and Removal"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202526566",
+    "abstract": "ABSTRACT Nanoplastic (NPs) pollution represents one of the most persistent environmental crises of our time, requiring breakthrough material technologies for effective remediation. In this study, we engineer a semi‐flexible micro‐nano structured N‐modified cellulose nanofibers@layered double hydroxide (N‐CNF@LDH) composite aerogel through a dynamic hydrogen bonding and coordination interactions to achieve efficient removal of NPs, in which the LDH nanoflower clusters are uniformly anchored on the nitrogen‐modified cellulose honeycomb skeleton. Under the action of dynamic hydrogen bonds, the structure undergoes spontaneous reorganization at new equilibrium positions upon release of external force, leading to a reversible opening‐closing motion within the floral clusters. This design enables ultrahigh NPs adsorption (3648 mg·g −1 ) through reversible inter‐petal channel opening, while compression‐triggered petal contraction achieves instantaneous release (96% within only 10 s), exhibiting a desorption kinetics rate nearly three orders of magnitude higher than conventional adsorbents. Besides, the dynamic network enables rapid structural reconstruction of N‐CNF@LDH through H‐bond assembly, maintaining 80.4% NPs capacity and 95.2% shape recovery after 100 cycles. Exhibiting outstanding NPs removal performance in various real‐world water systems while remaining cost‐effective, this material breaks through the fundamental capacity‐regeneration compromise in environmental remediation."
+   },
+   {
+    "id": "https://openalex.org/W7123789566",
+    "doi": "https://doi.org/10.26599/nr.2026.94908436",
+    "title": "Orientation-engineered halide perovskite single-crystal cathodes for efficient field emission in nano vacuum channel transistors",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Nano Research",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Thin-Film Transistor Technologies"
+    ],
+    "oa_url": "https://www.sciopen.com/local/article_pdf/10.26599/NR.2026.94908436.pdf",
+    "abstract": "Abstract Nano vacuum channel transistors (NVCTs) are increasingly recognized as a promising class of devices for high-frequency, radiation-hardened, and beyond-complementary metal-oxide-semiconductor (CMOS) electronics, yet their progress has been constrained by the low emission current, high turn-on voltage, and limited manufacturability. Here, we reported the first integration of halide perovskite single crystals (MAPbBr3, MA stands for methylammonium) as the electron emitter in NVCTs, achieving performance levels incomparable to those using other cathode materials. Remarkably, even with a large vacuum channel length of ~ 230 nm, the devices delivered drain currents up to 1.26 mA and operated at a remarkably low turn-on voltage of 8 V in air, highlighting their exceptional emission capability. The perovskite-assisted NVCTs exhibited a robust gate modulation with negligible leakage and pronounced photo-responsivity, enabling potential electrical–optical joint control. Importantly, the devices were fabricated on display glass substrates using thin-film transistor-liquid crystal display (TFT-LCD) manufacturing processes, offering a pathway toward low-cost, scalable, and integrable nano-vacuum electronics. This work established perovskite single crystals as a new material platform for manufacturable, multifunctional vacuum electronics with relevance to the next-generation information and communication technologies."
+   },
+   {
+    "id": "https://openalex.org/W7117299370",
+    "doi": "https://doi.org/10.1002/smtd.202501971",
+    "title": "Tuning the Morphology of Self‐Assembled Au Nanocluster Sheets by Controlling Solvent–Ligand Interactions",
+    "year": 2025,
+    "cited": 1,
+    "venue": "Small Methods",
+    "topics": [
+     "Nanocluster Synthesis and Applications",
+     "Surface Chemistry and Catalysis",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202501971",
+    "abstract": "The precise assembly of colloidal nanoparticles into ordered 2D structures remains challenging due to complex interparticle interactions and variable particle size, shape, and surface chemistry. Herein, we present a facile strategy for the 2D self-assembly of atomically precise Au nanoclusters protected by dodecanethiolate ligands into freestanding monolayer sheets under ambient conditions. The solvent polarity is modified to control interligand and solvent-ligand interactions, successfully tuning the morphology of the nanocluster superstructures without templates or annealing. In non-polar solvents, the extended alkyl ligands promote directional dipole-dipole alignment into 1D chains, which laterally interdigitate into well-ordered 2D nanosheets. In low-polarity solvents, the reduced solvophilicity enhances lateral cohesion, forming larger sheets with smooth edges. In contrast, high-polarity solvents induce collapsed ligand conformations and random aggregation; however, heating supplies sufficient thermal energy to improve ligand flexibility and solvation, enabling reassembly into ordered 2D structures upon cooling. Furthermore, the post-synthesis addition of acetone and oleylamine as secondary ligands induced edge folding and sheet rolling, respectively. This approach underscores the potential of rationally tuning nanoscale interactions to achieve colloidal assemblies with precise structures."
+   },
+   {
+    "id": "https://openalex.org/W4372272647",
+    "doi": "https://doi.org/10.48550/arxiv.2305.02467",
+    "title": "Surface oxides, carbides, and impurities on RF superconducting Nb and Nb3Sn: A comprehensive analysis",
+    "year": 2023,
+    "cited": 1,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Physics of Superconductivity and Magnetism",
+     "Particle accelerators and beam dynamics",
+     "Superconducting Materials and Applications"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2305.02467",
+    "abstract": "Surface structures on radio-frequency (RF) superconductors are crucially important in determining their interaction with the RF field. Here we investigate the surface compositions, structural profiles, and valence distributions of oxides, carbides, and impurities on niobium (Nb) and niobium-tin (Nb3Sn) in situ under different processing conditions. We establish the underlying mechanisms of vacuum baking and nitrogen processing in Nb and demonstrate that carbide formation induced during high-temperature baking, regardless of gas environment, determines subsequent oxide formation upon air exposure or low-temperature baking, leading to modifications of the electron population profile. Our findings support the combined contribution of surface oxides and second-phase formation to the outcome of ultra-high vacuum baking (oxygen processing) and nitrogen processing. Also, we observe that vapor-diffused Nb3Sn contains thick metastable oxides, while electrochemically synthesized Nb3Sn only has a thin oxide layer. Our findings reveal fundamental mechanisms of baking and processing Nb and Nb3Sn surface structures for high-performance superconducting RF and quantum applications"
+   },
+   {
+    "id": "https://openalex.org/W7168111012",
+    "doi": null,
+    "title": "Modification de pilier d'implant dentaire en zircone pour favoriser l‘adhésion des tissus mous",
+    "year": 2026,
+    "cited": 0,
+    "venue": "theses.fr (ABES)",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Dental Implant Techniques and Outcomes",
+     "Mesoporous Materials and Catalysis"
+    ],
+    "oa_url": "https://theses.fr/2026ECDL0015/document",
+    "abstract": "Dental implants are a widely adopted solution for tooth replacement, with long-term success depending on both stable osseointegration and effective integration with peri-implant soft tissues. While bone anchorage ensures mechanical stability, the surrounding soft tissue forms a biological seal that protects against bacterial infiltration and inflammation. The disruption of this seal is a major factor in the development of peri-implant diseases, such as peri-implantitis, which remains a leading cause of implant failure.In this context, surface modification has emerged as a key strategy to improve implant performance by modulating biological responses at the implant-tissue interface. Although zirconia has gained increasing attention as an alternative to titanium due to its favorable mechanical properties, corrosion resistance, and aesthetic advantages, its chemical inertness presents challenges for controlled and reproducible surface functionalization.This thesis focuses on the biofunctionalization of 3Y-TZP zirconia surfaces intended for soft tissue integration, with the objective of developing a controlled and reproducible route toward bioactive interfaces. The proposed strategy relies on a two-step approach consisting of the formation of an organic intermediate layer via silanization, followed by the covalent immobilization of a bioactive peptide. Particular attention was given to the optimization of key parameters governing silane layer formation, including concentration, immersion time, curing conditions, solvent, and pH, in order to ensure homogeneity, stability, and reproducibility while limiting uncontrolled polymerization.A comprehensive surface pre-treatment protocol was established to obtain clean, hydroxylated, and reproducible zirconia surfaces, highlighting the critical role of initial surface state in functionalization efficiency. An conjugation route based on a pentafluorophenyl ester-functionalized silane enabled the formation of an already activated surface, eliminating the need for post-functionalization activation steps and simplifying the overall process.The covalent immobilization of an RGDC peptide was successfully achieved and confirmed using complementary surface-sensitive characterization techniques. The stability of the functionalized layers was evaluated under clinically relevant conditions, including mechanical stress and ethylene oxide sterilization, demonstrating good robustness. In vitro biological assays further showed that the modified surfaces are cytocompatible and significantly enhance cell adhesion compared to non-functionalized zirconia.Overall, this work establishes a reproducible and efficient chemical strategy for the biofunctionalization of zirconia surfaces and demonstrates its potential to promote favorable soft tissue integration, contributing to the improvement of long-term dental implant performance."
+   },
+   {
+    "id": "https://openalex.org/W7128714656",
+    "doi": "https://doi.org/10.1021/acs.cgd.5c01203",
+    "title": "Synthesis and Fingerprint of a Fully Coalescent, High-Quality Epitaxial Co 9 S 8 –CoS 2 Thin Film",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Crystal Growth & Design",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Chalcogenide Semiconductor Thin Films",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://lirias.kuleuven.be/retrieve/874a745a-2dcb-49a9-af75-7da8d7f6b21e",
+    "abstract": "Cobalt sulfide (Co–S) phases are of significant interest for energy conversion and sensing technologies due to their combined catalytic activity and electronic conductivity. In particular, Co 9 S 8 is a promising precatalyst for oxygen evolution reaction, but its synthesis as high-quality thin films has been scarcely reported. Here, we demonstrate the synthesis of highly crystalline, coalescent, mixed-phase Co–S thin films using plasma-assisted molecular beam epitaxy (PAMBE). The epitaxial film exhibits substantially improved crystallinity of Co 9 S 8 compared to conventional deposition techniques and reveals the formation of epitaxial, tetragonal CoS 2, which has not been previously observed in this nonmagnetic form. Thus, this work provides crucial diagnostic tools supporting the fabrication of phase-pure, single-crystal Co–S thin films and, with the discovery of the nonmagnetic CoS 2 phase, a new platform for investigating Co–S catalysts in energy and sensing applications."
+   },
+   {
+    "id": "https://openalex.org/W7163876901",
+    "doi": "https://doi.org/10.1039/d6ra01723a",
+    "title": "Efficient hydrogenation of furfural to furfuryl alcohol by recoverable copper tailings catalyst",
+    "year": 2026,
+    "cited": 0,
+    "venue": "RSC Advances",
+    "topics": [
+     "Catalysis for Biomass Conversion",
+     "Layered Double Hydroxides Synthesis and Applications",
+     "Lignin and Wood Chemistry"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2026/ra/d6ra01723a",
+    "abstract": "within 72 h. Moreover, this catalyst shows good recyclability with no obvious loss in catalytic activity after five successive runs. This work uses copper tailings as an intrinsic catalyst for biomass hydrogenation, realizing the high-value utilization of industrial solid waste and providing a low-cost and sustainable catalytic system for the industrial production of biomass fine chemicals, which goes a step further towards the industrial application of heterogeneous catalysts for fine chemical production from biomass."
+   },
+   {
+    "id": "https://openalex.org/W4415999441",
+    "doi": "https://doi.org/10.3390/polym17222972",
+    "title": "In Vivo Quantitative Monitoring of Drug Release from Halo-Spun Rubbery Mats by Fluorescent Organism Bioimaging (FOBI)",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Polymers",
+    "topics": [
+     "Breast Implant and Reconstruction",
+     "3D Printing in Biomedical Research",
+     "Nanoparticle-Based Drug Delivery"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/17/22/2972/pdf?version=1762519641",
+    "abstract": "release profiles of Doxorubicin.HCl from halo-spun drug-loaded rubbery porous mats. For the very first time, Fluorescent Organism Bioimaging (FOBI) was used to follow drug release in a live animal model with induced tumors. A new predictive model based on apparent diffusion coefficients to simulate release profiles will also be presented and could have general applications for release profile predictions. Surprisingly, histological evaluation found that the tissue layer forming next to the drug-eluting mats had unordered morphology and only necrotic cells. This is a stunning contrast to the highly regular collagen structure next to mats without the drug, typical of an adverse foreign body type reaction. The findings suggest that this drug-eluting fiber mat can be used as a local chemotherapy approach coupled with mitigation of capsular contracture, the major complication associated with breast reconstruction following mastectomy."
+   },
+   {
+    "id": "https://openalex.org/W4412909546",
+    "doi": "https://doi.org/10.1093/mam/ozaf048.588",
+    "title": "Study of Ferroelectric Phases in HfZrOx Thin Films with Varying La Content Using Precession Electron Diffraction & In-Situ Heating- Biasing Techniques",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Microscopy and Microanalysis",
+    "topics": [
+     "Ferroelectric and Negative Capacitance Devices",
+     "MXene and MAX Phase Materials",
+     "Ferroelectric and Piezoelectric Materials"
+    ],
+    "oa_url": "https://academic.oup.com/mam/article-pdf/31/Supplement_1/ozaf048.588/63848645/ozaf048.588.pdf",
+    "abstract": "Recently La-doped Hafnium Zirconate (HZO) thin films have attracted enormous research interest in semiconductor industries as a promising candidate material for micro capacitor, non-volatile ferroelectric random-access memory (FeRAM), ferroelectric field-effect transistor (FeFET) and ferroelectric tunnel junction (FTJ) applications[1-4]. The HZO exists most abundantly in three allotropes, namely orthorhombic (o-phase, Pca21), tetragonal (t-phase, P42/nmc) and monoclinic (m-phase, P21/c), which are affected by various factors such as dopants, impurities, and stress/strain. The non-centrosymmetric o-phase exhibits ferroelectric behavior whereas the t-phase is anti-ferroelectric and metastable. Monoclinic phase is the most stable phase; however, it is non-ferroelectric in nature. Therefore, achieving a predominantly ferroelectric o-phase is critical for industrial applications in the memory-electronic field [5]. The o/t/m-phase fraction in HZO can be tailored by the La dopant content, by forming oxygen vacancies in the HZO layer [3, 4, 6]. The antiferroelectric tetragonal phase can transform into the ferroelectric orthorhombic phase upon biasing, however upon thermal annealing at higher temperature (>800°C) it transforms into the stable m-phase, which lacks ferroelectric properties [3-6]. It is challenging to identify and quantify these phases using conventional grazing incidence x-ray diffraction (GI-XRD) or selected area electron diffraction techniques due to either overlapping or very close-by diffraction peak positions of the orthorhombic and tetragonal phases [7]. Other non-destructive techniques such as Raman and Infrared spectroscopy are being utilized by various research groups for distinct identification of various HZO phases, however such techniques are meant for bulk measurements and are unable to provide the site-specific phase identification and crystallographic orientation of the specimen. Several attempts were made very recently using advanced precession electron diffraction (PED) technique, an adds-on to transmission electron microscopy (TEM) to address the above difficulty in structural characterization of HZO thin films [7, 8]. In PED technique, the fine (∼1-2 nm) electron beam precess (making an angle <1mrad) around the optic axis to minimize the dynamical diffraction effect while rastering over the region of interest on the specimen. During this process, the generated diffraction patterns from each pixel of the scanned region of the specimen were being analyzed further to obtain crystal orientation map of the specimen. The orientation mapping and phase identification using the PED technique is mainly based on diffraction pattern matching algorithm, where the experimental micro/nano-beam diffraction patterns are matched with the various orientations of the simulated diffraction patterns of the desired phases [7, 9]. In-situ heating and electrical biasing experiments in combination with precession assisted orientation mapping in TE"
+   },
+   {
+    "id": "https://openalex.org/W2553471408",
+    "doi": null,
+    "title": "Development of new methods to study cell surface glycosylation",
+    "year": 2016,
+    "cited": 0,
+    "venue": "Arrow@dit (Dublin Institute of Technology)",
+    "topics": [
+     "Glycosylation and Glycoproteins Research"
+    ],
+    "oa_url": "http://doras.dcu.ie/21205/",
+    "abstract": "This thesis seeks to develop new methods to study the glycosylation of cell surfaces, with a particular interest in apoptosis. Existing methods in glyco- biology include mass spectrometry and glycan identification by lectin bind- ing. The use of new carbohydrate binding proteins (CBP) and microfluidic techniques will improve the field of glycobiology and its relevance in the area of apoptosis.\\nA method using the Lab in a Trench (LiaT) platform was developed to allow sequential labelling of cell surface glycans using lectins. Cells are captured in the trench, fluorescently labelled lectins are then added and allowed time to bind. The lectins are then released by their corresponding free sugar, allowing probing with subsequent lectins without steric hindrance due to adjacent sugars of interest. This study represents the first sequential labelling of the same cell surface by lectins.\\nIt has been established, that exposure of terminal N-acetylglucosamine (GlcNAc) occurs in late apoptosis and has a role in immune recognition and clearance of dead cells. AAL-2 is a recombinantly produced lectin or CBP with an affinity for the terminal sugar N-acetyl glucosamine (GlcNAc). It has a binding profile matching that of the commercial GSL II in flow cy- tometry and western blot, but has the advantage of not requiring additional ions in its buffer. Using flow cytometry, this study has shown that AAL- 2 binds exclusively to late apoptotic cells. GafD is another recombinantly produced CBP with an affinity for terminal O-linked GlcNAc (O-GlcNAc). It was determined by flow cytometry that GafD binds to a subset very late apoptotic cells. The proteins to which GafD binds were identified through isolation of the cell membrane followed by mass spectrometric analysis. The proteins were found to be predominantly cytosolic, indicating a migration of the intracellular membrane to the cell surface during late apoptosis."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Thermo Fisher G2\" OR \"Thermo Fisher Nexsa G2\" OR \"HAAKE G2\" OR \"HAAKE Nexsa G2\") AND OPEN_ACCESS:y",

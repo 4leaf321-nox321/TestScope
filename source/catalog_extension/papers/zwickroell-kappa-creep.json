@@ -9,8 +9,24 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZwickRoell Kappa 50 SS\" OR \"ZwickRoell Kappa 100 SS\" OR \"ZwickRoell Kappa 50 LA\"",
-  "count": null,
-  "works": []
+  "count": 1,
+  "works": [
+   {
+    "id": "https://openalex.org/W4306407133",
+    "doi": "https://doi.org/10.1016/j.cartre.2022.100223",
+    "title": "TEM analysis and molecular dynamics simulation of graphene coated Al-Cu micro joints",
+    "year": 2022,
+    "cited": 13,
+    "venue": "Carbon Trends",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Advanced Welding Techniques Analysis",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2667056922000797/pdf",
+    "abstract": "This study compares friction-stir spot welds (FSSW) of pure Al to Cu, with and without graphene interlayer (GL), for tensile load and electrical conductivity (σ). The weld interface of Al-Cu fabricated without a GL is found with brittle intermetallic compounds (IMC) like Al2Cu. The presence of brittle IMCs significantly affects the tensile load and σ. In contrast, the sample with GL suppresses the brittle IMCs and enhances the formation of Al4C3 IMC. The presence of Al4C3 strengthens the weld joint by 26.94% concerning the without GL samples. Further, it was observed that thinner and high-density twins are formed in the samples with GL. The formation of thinner deformation twins is also possible for increased tensile load and σ. The thicker twins in the samples without GL inhibit the electron flow and increase electrical resistivity. The molecular dynamics (MD) simulation was performed to study the in-situ formation of deformed twins. In addition, the MD simulation provides insight into the influence of graphene during the formation of IMCs based on diffusion coefficients of individual atoms. The σ of the Al-Cu joint can be estimated using a cluster Nernst-Einstein equation, which is dependent on the diffusion coefficient obtained from MD simulation."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZwickRoell Kappa 50 SS\" OR \"ZwickRoell Kappa 100 SS\" OR \"ZwickRoell Kappa 50 LA\") AND OPEN_ACCESS:y",

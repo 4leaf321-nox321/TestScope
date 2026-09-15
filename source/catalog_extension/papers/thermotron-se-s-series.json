@@ -8,8 +8,39 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Thermotron SE-Series S/SM-Series\" OR \"Thermotron SE-Series\"",
-  "count": null,
-  "works": []
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W2052169437",
+    "doi": "https://doi.org/10.1108/00022661111120953",
+    "title": "Outgassing studies on thermal control coatings for micro‐satellites",
+    "year": 2011,
+    "cited": 2,
+    "venue": "Aircraft Engineering and Aerospace Technology",
+    "topics": [
+     "Anodic Oxide Films and Nanostructures",
+     "Smart Materials for Construction",
+     "Concrete Corrosion and Durability"
+    ],
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/81013/1/Outgassing%20studies%20on%20thermal%20control%20coatings%20for%20micro-satellites.pdf",
+    "abstract": "Purpose With the advent of micro‐satellites technology, passive thermal controls in the form of surface coatings have become important for onboard thermal management. The thermal coatings, however, suffer outgassing and mass loss due to their direct exposure to harsh thermal environment and high vacuum in space. The purpose of this paper is to discuss testing and evaluation on outgassing of AA6061‐T6 specimen surfaces treated with various types of anodized coatings of different thicknesses and the related mass loss before and after thermal exposure. Design/methodology/approach Samples of chromic acid, polytetrafluroethylene polymer, and black‐ and brown‐colour anodized aluminum coupons were subjected to high vacuum (∼1×10−6 mbar), before and after thermal baking at 120°C. Spectrum analysis of the outgassed material to know their quantities and proportion was conducted subsequently using a Quadrupole mass analyzer. Findings The surface coatings under study complied with the spacecraft requirements for the mass loss of less than 1 percent of the total mass of the coating material used for that surface. The mass spectrum analysis of the outgassed material indicated that the majority of the coating mass loss was on account of water vapours and organic solvents like ethylene. Practical implications These results provided a good insight into the reliability of the coating materials studied and the bonding between the aluminum substrates and the coatings. Originality/value The coatings and the technology needed for their application on aluminum are readily available. The present work on outgassing and mass loss in a simulated space environment will provide useful insight on their usage for micro‐satellites."
+   },
+   {
+    "id": "https://openalex.org/W3145393145",
+    "doi": null,
+    "title": "EXPERIMENTAL AND COMPUTATIONAL STUDY OF THE ACCLIMATION OF NEW IT EQUIPMENT",
+    "year": 2017,
+    "cited": 0,
+    "venue": "UTA ResearchCommons (University of Texas Arlington)",
+    "topics": [
+     "Advanced Research in Systems and Signal Processing",
+     "Cybersecurity and Information Systems",
+     "Military Technology and Strategies"
+    ],
+    "oa_url": "http://hdl.handle.net/10106/26839",
+    "abstract": "Acclimation of newly commissioned IT equipment is an important step that is necessary for safe operations. Proper acclimation is required to prevent an unnecessary condensation from forming and causing premature failure in the equipment. Acclimation is particularly important in cold weather shipping where the component or server reaches the destination well below the destination data center’s dew point, resulting in moisture and condensate. Operating the equipment before it acclimates might cause damage, while waiting too long for the equipment to acclimate might cost companies expensive computational time. This study tries to address the issue by studying the various factors that affect acclimation and prioritizing them. The goal of this project is to understand the factors that influence the acclimation time and develop a method to predict how long one needs to wait before a component can be installed into the server or the server can be turned on"
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Thermotron SE-Series S/SM-Series\" OR \"Thermotron SE-Series\") AND OPEN_ACCESS:y",

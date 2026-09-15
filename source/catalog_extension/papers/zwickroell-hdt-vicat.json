@@ -12,8 +12,39 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZwickRoell A1\" OR \"ZwickRoell HDT\" OR \"ZwickRoell Vicat 3-300 S\" OR \"ZwickRoell Vicat 4-300 S\" OR \"ZwickRoell Vicat 6-300 S\" OR \"ZwickRoell Vicat 3-300 A1\"",
-  "count": null,
-  "works": []
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W4396834058",
+    "doi": "https://doi.org/10.1002/pc.28529",
+    "title": "Preparation and characterization of novel bio‐based polyamide 5.6 composites as sustainable alternatives to petroleum‐derived polyamide 6.6",
+    "year": 2024,
+    "cited": 14,
+    "venue": "Polymer Composites",
+    "topics": [
+     "Natural Fiber Reinforced Composites",
+     "biodegradable polymer synthesis and properties",
+     "Polymer crystallization and properties"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pc.28529",
+    "abstract": "Abstract In the pursuit of sustainable solutions, this study investigates the potential of bio‐based polyamide 5.6 (PA56) as a promising alternative to petroleum‐derived polyamide 6.6 (PA66). Novel composites of PA56 and PA66 were prepared with the incorporation of glass fibers and flame retardant additives by twin screw extruder. Subsequently, these composites were subjected to comprehensive characterization to determine their performance. The physical, mechanical, rheological, thermal, and flammability properties of PA56 composites were investigated and compared with those of PA66 composites with the same formulations. This article aims to unveil the remarkable potential of bio‐based PA56 composites in industrial applications. The results showed that bio‐based PA56 exhibits comparable, and in some cases superior, performance to PA66 while offering the added advantage of environmental sustainability. The findings suggest that bio‐based polyamide 5.6 can serve as a sustainable alternative to petroleum‐derived polyamide 6.6, contributing to a greener future in industrial applications. Highlights Bio‐based PA56 exhibits comparable properties to petroleum‐derived PA66. Incorporation of glass fibers and flame retardants enhances the properties of PA56. Findings propose PA56 as a sustainable alternative to PA66 in various applications."
+   },
+   {
+    "id": "https://openalex.org/W4416073433",
+    "doi": "https://doi.org/10.51764/smutgd.1805493",
+    "title": "Sustainable Polypropylene Composites Filled with Rice Husk Ash: A Comparative Study with Conventional Mineral Fillers and Silane Modification",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Sürdürülebilir Mühendislik Uygulamaları ve Teknolojik Gelişmeler Dergisi",
+    "topics": [
+     "Polymer Nanocomposites and Properties",
+     "Natural Fiber Reinforced Composites",
+     "Fiber-reinforced polymer composites"
+    ],
+    "oa_url": "https://dergipark.org.tr/en/download/article-file/5338350",
+    "abstract": "The transition towards sustainable polymer systems requires the use of bio-based alternatives to conventional mineral fillers. This study investigates the effect of rice husk ash (RHA), an agricultural waste product which is abundant in silica, as a sustainable filler for polypropylene (PP). Composites were created using calcite, talc, RHA, RHA combined with a silane coupling agent, and silane modified RHA at various loadings (10–40 wt.%) and were assessed for their mechanical, physical, thermal, and morphological characteristics. Results revealed that while mineral fillers (calcite, talc) enhanced stiffness and ductility, RHA provided a favorable balance of performance with the additional benefit of lower density. In addition to this, the silane coupling agent significantly improves interfacial adhesion and dispersion, provides better structure and superior thermal stability, including the highest HDT and Vicat values. Overall, RHA emerged as a lightweight, renewable, and technically competitive filler, aligning with circular economy principles. These findings reveal the application potential and importance of rice husk ash in areas such as automotive, electronics and consumer products, where the demand for lightweight and sustainable materials is increasing."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZwickRoell A1\" OR \"ZwickRoell HDT\" OR \"ZwickRoell Vicat 3-300 S\" OR \"ZwickRoell Vicat 4-300 S\" OR \"ZwickRoell Vicat 6-300 S\" OR \"ZwickRoell Vicat 3-300 A1\") AND OPEN_ACCESS:y",

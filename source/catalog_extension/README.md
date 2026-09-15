@@ -84,7 +84,7 @@ AZoM·LabWrench·ATEC)·대학 장비실·리뷰·arXiv 논문 페이지를 5~8�
 |---|---|---|
 | 계열이 하는 규격 더하기 | 페이지 본문·논문 문장의 규격 코드 (`standards_nearby` 는 안 씀) | 193 계열 · 후보 1,761 |
 | 계열이 하는 시험 더하기 | 논문의 **기종을 언급한 그 문장** · 제조사 응용 문장 | 101 계열 · 후보 246 |
-| 계열 소개에 넣을 문장 | 제조사 페이지의 「used for …」 문장 + OpenAlex 「논문 N편이 이 기종을 언급 — 주된 분야 …」 한 줄 | 128 계열 · 243 문장 |
+| 계열 소개에 넣을 문장 | 제조사 페이지의 「used for …」 문장 + OpenAlex 「논문 N편이 이 기종을 언급 — 주된 분야 …」 한 줄 | 162 계열 · 285 문장 |
 
 안 세운 것: 부속·옵션 관계. 부속 페이지를 따로 받아 봤다(`tools_harvest_accessories.py`, 737쪽) — 261쪽이
 계열을 말한다(「AutoX750 익스텐소미터: 5900·6800·3400 에」 「Shimadzu 세라믹 굽힘 지그: AG-X 계열에」). 그런데
@@ -97,7 +97,7 @@ AZoM·LabWrench·ATEC)·대학 장비실·리뷰·arXiv 논문 페이지를 5~8�
 
 278 객체 · 1,953 쪽(제조사 2등급 467 · 남의 페이지 3등급 1,486 · 그중 PDF 197) · 규격 후보가 하나라도 나온
 객체 206 · 카탈로그에 없던 규격 코드 1,194종(잡음 포함 — 검토함 전). 논문: Europe PMC 사용 문장 882개(150 객체),
-OpenAlex 95 객체(나머지는 예산 — `--fill-openalex`). 아직 한 쪽도 없는 객체 19개(Taber · Teseq · Testometric ·
+OpenAlex 278 객체(사흘에 걸쳐 — 하루 예산 약 100건). 아직 한 쪽도 없는 객체 19개(Taber · Teseq · Testometric ·
 Thermo · Thermotron · Tinius Olsen · TIRA · TQC · Unholtz-Dickie · Uson · Weiss · ZEISS Gemini) — 제조사 사이트맵이
 없고 검색 한도에 걸려 `extra_urls.json` 도 못 채웠다. 목록은 `index.json` 에서 `pages == 0` 인 것.
 

@@ -7,8 +7,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Rigaku SmartLab\"",
-  "count": null,
-  "works": []
+  "count": 11408,
+  "works": [
+   {
+    "id": "https://openalex.org/W2606397457",
+    "doi": "https://doi.org/10.1038/nature22391",
+    "title": "Layer-dependent ferromagnetism in a van der Waals crystal down to the monolayer limit",
+    "year": 2017,
+    "cited": 6024,
+    "venue": "Nature",
+    "topics": [
+     "2D Materials and Applications",
+     "Topological Materials and Phenomena",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://arxiv.org/pdf/1703.05892",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1946383872",
+    "doi": "https://doi.org/10.1039/c5ta06398a",
+    "title": "Inorganic caesium lead iodide perovskite solar cells",
+    "year": 2015,
+    "cited": 1843,
+    "venue": "Journal of Materials Chemistry A",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Solid-state spectroscopy and crystallography",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://discovery.ucl.ac.uk/10112570/1/CsPbI3%20cells%20v2.03%20and%20SI%20for%20RPS%20.pdf",
+    "abstract": "The vast majority of perovskite solar cell research has focused on organic–inorganic lead trihalide perovskites; herein, we present working inorganic CsPbI 3 perovskite solar cells for the first time."
+   },
+   {
+    "id": "https://openalex.org/W2286862811",
+    "doi": "https://doi.org/10.1002/adfm.201505328",
+    "title": "Synthesis and Characterization of 2D Molybdenum Carbide (MXene)",
+    "year": 2016,
+    "cited": 1434,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "MXene and MAX Phase Materials",
+     "Graphene research and applications",
+     "2D Materials and Applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1324212",
+    "abstract": "Large scale synthesis and delamination of 2D Mo 2 CT x (where T is a surface termination group) has been achieved by selectively etching gallium from the recently discovered nanolaminated, ternary transition metal carbide Mo 2 Ga 2 C. Different synthesis and delamination routes result in different flake morphologies. The resistivity of free‐standing Mo 2 CT x films increases by an order of magnitude as the temperature is reduced from 300 to 10 K, suggesting semiconductor‐like behavior of this MXene, in contrast to Ti 3 C 2 T x which exhibits metallic behavior. At 10 K, the magnetoresistance is positive. Additionally, changes in electronic transport are observed upon annealing of the films. When 2 μm thick films are tested as electrodes in supercapacitors, capacitances as high as 700 F cm −3 in a 1 m sulfuric acid electrolyte and high capacity retention for at least 10,000 cycles at 10 A g −1 are obtained. Free‐standing Mo 2 CT x films, with ≈8 wt% carbon nanotubes, perform well when tested as an electrode material for Li‐ions, especially at high rates. At 20 and 131 C cycling rates, stable reversible capacities of 250 and 76 mAh g −1 , respectively, are achieved for over 1000 cycles."
+   },
+   {
+    "id": "https://openalex.org/W2912153941",
+    "doi": "https://doi.org/10.1038/s41467-019-08507-4",
+    "title": "Strain engineering in perovskite solar cells and its impacts on carrier dynamics",
+    "year": 2019,
+    "cited": 1044,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Chalcogenide Semiconductor Thin Films",
+     "2D Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-08507-4.pdf",
+    "abstract": "The mixed halide perovskites have emerged as outstanding light absorbers for efficient solar cells. Unfortunately, it reveals inhomogeneity in these polycrystalline films due to composition separation, which leads to local lattice mismatches and emergent residual strains consequently. Thus far, the understanding of these residual strains and their effects on photovoltaic device performance is absent. Herein we study the evolution of residual strain over the films by depth-dependent grazing incident X-ray diffraction measurements. We identify the gradient distribution of in-plane strain component perpendicular to the substrate. Moreover, we reveal its impacts on the carrier dynamics over corresponding solar cells, which is stemmed from the strain induced energy bands bending of the perovskite absorber as indicated by first-principles calculations. Eventually, we modulate the status of residual strains in a controllable manner, which leads to enhanced PCEs up to 20.7% (certified) in devices via rational strain engineering."
+   },
+   {
+    "id": "https://openalex.org/W2127351808",
+    "doi": "https://doi.org/10.1038/nphys3314",
+    "title": "Bandgap opening in few-layered monoclinic MoTe2",
+    "year": 2015,
+    "cited": 1033,
+    "venue": "Nature Physics",
+    "topics": [
+     "2D Materials and Applications",
+     "Topological Materials and Phenomena",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/nphys3314.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2883020705",
+    "doi": "https://doi.org/10.1038/s41467-018-05341-y",
+    "title": "Atomic-level insight into super-efficient electrocatalytic oxygen evolution on iron and vanadium co-doped nickel (oxy)hydroxide",
+    "year": 2018,
+    "cited": 1026,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-05341-y.pdf",
+    "abstract": "It is of great importance to understand the origin of high oxygen-evolving activity of state-of-the-art multimetal oxides/(oxy)hydroxides at atomic level. Herein we report an evident improvement of oxygen evolution reaction activity via incorporating iron and vanadium into nickel hydroxide lattices. X-ray photoelectron/absorption spectroscopies reveal the synergistic interaction between iron/vanadium dopants and nickel in the host matrix, which subtly modulates local coordination environments and electronic structures of the iron/vanadium/nickel cations. Further, in-situ X-ray absorption spectroscopic analyses manifest contraction of metal-oxygen bond lengths in the activated catalyst, with a short vanadium-oxygen bond distance. Density functional theory calculations indicate that the vanadium site of the iron/vanadium co-doped nickel (oxy)hydroxide gives near-optimal binding energies of oxygen evolution reaction intermediates and has lower overpotential compared with nickel and iron sites. These findings suggest that the doped vanadium with distorted geometric and disturbed electronic structures makes crucial contribution to high activity of the trimetallic catalyst."
+   },
+   {
+    "id": "https://openalex.org/W4306888855",
+    "doi": "https://doi.org/10.1038/s41563-022-01380-5",
+    "title": "Non-iridium-based electrocatalyst for durable acidic oxygen evolution reaction in proton exchange membrane water electrolysis",
+    "year": 2022,
+    "cited": 981,
+    "venue": "Nature Materials",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2427991",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3048371381",
+    "doi": "https://doi.org/10.1038/s41467-020-17934-7",
+    "title": "Lattice oxygen activation enabled by high-valence metal sites for enhanced water oxidation",
+    "year": 2020,
+    "cited": 873,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Fuel Cells and Related Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-17934-7.pdf",
+    "abstract": "Abstract Anodic oxygen evolution reaction (OER) is recognized as kinetic bottleneck in water electrolysis. Transition metal sites with high valence states can accelerate the reaction kinetics to offer highly intrinsic activity, but suffer from thermodynamic formation barrier. Here, we show subtle engineering of highly oxidized Ni 4+ species in surface reconstructed (oxy)hydroxides on multicomponent FeCoCrNi alloy film through interatomically electronic interplay. Our spectroscopic investigations with theoretical studies uncover that Fe component enables the formation of Ni 4+ species, which is energetically favored by the multistep evolution of Ni 2+ →Ni 3+ →Ni 4+ . The dynamically constructed Ni 4+ species drives holes into oxygen ligands to facilitate intramolecular oxygen coupling, triggering lattice oxygen activation to form Fe-Ni dual-sites as ultimate catalytic center with highly intrinsic activity. As a result, the surface reconstructed FeCoCrNi OER catalyst delivers outstanding mass activity and turnover frequency of 3601 A g metal −1 and 0.483 s −1 at an overpotential of 300 mV in alkaline electrolyte, respectively."
+   },
+   {
+    "id": "https://openalex.org/W2238462834",
+    "doi": "https://doi.org/10.1039/c5sc04425a",
+    "title": "Metal–organic framework-based CoP/reduced graphene oxide: high-performance bifunctional electrocatalyst for overall water splitting",
+    "year": 2016,
+    "cited": 800,
+    "venue": "Chemical Science",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced Photocatalysis Techniques",
+     "Ammonia Synthesis and Nitrogen Reduction"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2016/sc/c5sc04425a",
+    "abstract": "A Co-based MOF/GO sandwich-type composite with a sheet-like shape was fabricated, and converted to porous CoP/rGO with a retained layered structure. CoP/rGO exhibits superb HER activity in acid solution, and can also be used as a bifunctional catalyst for water splitting in basic media."
+   },
+   {
+    "id": "https://openalex.org/W3129782884",
+    "doi": "https://doi.org/10.1038/s41563-020-00902-3",
+    "title": "Permeable superelastic liquid-metal fibre mat enables biocompatible and monolithic stretchable electronics",
+    "year": 2021,
+    "cited": 770,
+    "venue": "Nature Materials",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Tactile and Sensory Interactions",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/99227/1/Ma_Permeable_Superelastic_Liquid-metal.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2798038136",
+    "doi": "https://doi.org/10.1038/s41467-018-02819-7",
+    "title": "Active sites of copper-complex catalytic materials for electrochemical carbon dioxide reduction",
+    "year": 2018,
+    "cited": 736,
+    "venue": "Nature Communications",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Porphyrin and Phthalocyanine Chemistry",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-02819-7.pdf",
+    "abstract": "Abstract Restructuring-induced catalytic activity is an intriguing phenomenon of fundamental importance to rational design of high-performance catalyst materials. We study three copper-complex materials for electrocatalytic carbon dioxide reduction. Among them, the copper(II) phthalocyanine exhibits by far the highest activity for yielding methane with a Faradaic efficiency of 66% and a partial current density of 13 mA cm −2 at the potential of – 1.06 V versus the reversible hydrogen electrode. Utilizing in-situ and operando X-ray absorption spectroscopy, we find that under the working conditions copper(II) phthalocyanine undergoes reversible structural and oxidation state changes to form ~ 2 nm metallic copper clusters, which catalyzes the carbon dioxide-to-methane conversion. Density functional calculations rationalize the restructuring behavior and attribute the reversibility to the strong divalent metal ion–ligand coordination in the copper(II) phthalocyanine molecular structure and the small size of the generated copper clusters under the reaction conditions."
+   },
+   {
+    "id": "https://openalex.org/W2342701378",
+    "doi": "https://doi.org/10.1021/acs.chemmater.6b01275",
+    "title": "Ion-Exchange and Cation Solvation Reactions in Ti 3 C 2 MXene",
+    "year": 2016,
+    "cited": 723,
+    "venue": "Chemistry of Materials",
+    "topics": [
+     "MXene and MAX Phase Materials",
+     "2D Materials and Applications",
+     "Advanced Memory and Neural Computing"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1388660",
+    "abstract": "Ti 3 C 2 and other two-dimensional transition metal carbides known as MXenes are currently being explored for many applications involving intercalated ions, from electrochemical energy storage, to contaminant sorption from water, to selected ion sieving. We report here a systematic investigation of ion exchange in Ti 3 C 2 MXene and its hydration/dehydration behavior. We have investigated the effects of the presence of LiCl during the chemical etching of the MAX phase Ti 3 AlC 2 into MXene Ti 3 C 2 T x (T stands for surface termination) and found that the resulting MXene has Li + cations in the interlayer space. We successfully exchanged the Li + cations with K +, Na +, Rb +, Mg 2+, and Ca 2+ (supported by X-ray photoelectron and energy-dispersive spectroscopy) and found that the exchanged material expands on the unit-cell level in response to changes in humidity, with the nature of expansion dependent on the intercalated cation, similar to behavior of clay minerals; stepwise expansions of the basal spacing were observed, with changes consistent with the size of the H 2 O molecule. Thermogravimetric analysis of the dehydration behavior of these materials shows that the amounts of H 2 O contained at ambient humidity correlates simply with the hydration enthalpy of the intercalated cation, and that the diffusion of the exiting H 2 O proceeds with kinetics similar to clays. These results have implications for understanding, controlling, and exploiting structural changes and H 2 O sorption in MXene films and powders utilized in applications involving ions, such as electrochemical capacitors, sensors, reverse osmosis membranes, or contaminant sorbents."
+   },
+   {
+    "id": "https://openalex.org/W3135841876",
+    "doi": "https://doi.org/10.1038/s41467-021-21595-5",
+    "title": "Modulating electronic structure of metal-organic frameworks by introducing atomically dispersed Ru for efficient hydrogen evolution",
+    "year": 2021,
+    "cited": 684,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced Photocatalysis Techniques",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-21595-5.pdf",
+    "abstract": "Abstract Developing high-performance electrocatalysts toward hydrogen evolution reaction is important for clean and sustainable hydrogen energy, yet still challenging. Herein, we report a single-atom strategy to construct excellent metal-organic frameworks (MOFs) hydrogen evolution reaction electrocatalyst (NiRu 0.13 -BDC) by introducing atomically dispersed Ru. Significantly, the obtained NiRu 0.13 -BDC exhibits outstanding hydrogen evolution activity in all pH, especially with a low overpotential of 36 mV at a current density of 10 mA cm −2 in 1 M phosphate buffered saline solution, which is comparable to commercial Pt/C. X-ray absorption fine structures and the density functional theory calculations reveal that introducing Ru single-atom can modulate electronic structure of metal center in the MOF, leading to the optimization of binding strength for H 2 O and H*, and the enhancement of HER performance. This work establishes single-atom strategy as an efficient approach to modulate electronic structure of MOFs for catalyst design."
+   },
+   {
+    "id": "https://openalex.org/W4391809119",
+    "doi": "https://doi.org/10.1038/s41586-023-06907-7",
+    "title": "Altermagnetic lifting of Kramers spin degeneracy",
+    "year": 2024,
+    "cited": 674,
+    "venue": "Nature",
+    "topics": [
+     "Magnetic and transport properties of perovskites and related materials",
+     "Advanced Condensed Matter Physics",
+     "Iron-based superconductors research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41586-023-06907-7.pdf",
+    "abstract": "Abstract Lifted Kramers spin degeneracy (LKSD) has been among the central topics of condensed-matter physics since the dawn of the band theory of solids 1,2 . It underpins established practical applications as well as current frontier research, ranging from magnetic-memory technology 3–7 to topological quantum matter 8–14 . Traditionally, LKSD has been considered to originate from two possible internal symmetry-breaking mechanisms. The first refers to time-reversal symmetry breaking by magnetization of ferromagnets and tends to be strong because of the non-relativistic exchange origin 15 . The second applies to crystals with broken inversion symmetry and tends to be comparatively weaker, as it originates from the relativistic spin–orbit coupling (SOC) 16–19 . A recent theory work based on spin-symmetry classification has identified an unconventional magnetic phase, dubbed altermagnetic 20,21 , that allows for LKSD without net magnetization and inversion-symmetry breaking. Here we provide the confirmation using photoemission spectroscopy and ab initio calculations. We identify two distinct unconventional mechanisms of LKSD generated by the altermagnetic phase of centrosymmetric MnTe with vanishing net magnetization 20–23 . Our observation of the altermagnetic LKSD can have broad consequences in magnetism. It motivates exploration and exploitation of the unconventional nature of this magnetic phase in an extended family of materials, ranging from insulators and semiconductors to metals and superconductors 20,21 , that have been either identified recently or perceived for many decades as conventional antiferromagnets 21,24,25 ."
+   },
+   {
+    "id": "https://openalex.org/W2988972072",
+    "doi": "https://doi.org/10.1038/s41467-019-13051-2",
+    "title": "Missing-linker metal-organic frameworks for oxygen evolution reaction",
+    "year": 2019,
+    "cited": 674,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-13051-2.pdf",
+    "abstract": "Abstract Metal-organic frameworks (MOFs) have been recognized as compelling platforms for the development of miscellaneous applications because of their structural diversity and functional tunability. Here, we propose that the electrocatalytic properties could be well modified by incorporating missing linkers into the MOF. Theoretical calculations suggest the electronic structure of MOFs can be tuned by introducing missing linkers, which improves oxygen evolution reaction (OER) performance of the MOF. Inspired by these aspects, we introduced various missing linkers into a layered-pillared MOF Co 2 (OH) 2 (C 8 H 4 O 4 ) (termed as CoBDC) to prepare missing-linker MOFs. Transmission electron microscope and synchrotron X-ray measurements confirmed that the missing linkers in the MOF could be introduced and well controlled by our strategy. The self-supported MOF nanoarrays with missing linkers of carboxyferrocene exhibit excellent OER performance with ultralow overpotential of 241 mV at 100 mA cm −2 . This work opens a new prospect to develop efficient MOF-based electrocatalysts by introducing missing linkers."
+   },
+   {
+    "id": "https://openalex.org/W2762283922",
+    "doi": "https://doi.org/10.1021/jacs.7b08607",
+    "title": "Electrochemical CO 2 Reduction over Compressively Strained CuAg Surface Alloys with Enhanced Multi-Carbon Oxygenate Selectivity",
+    "year": 2017,
+    "cited": 672,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Ionic liquids properties and applications",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1436343",
+    "abstract": "The electrochemical reduction of carbon dioxide using renewably generated electricity offers a potential means for producing fuels and chemicals in a sustainable manner. To date, copper has been found to be the most effective catalyst for electrochemically reducing carbon dioxide to products such as methane, ethene, and ethanol. Unfortunately, the current efficiency of the process is limited by competition with the relatively facile hydrogen evolution reaction. Since multi-carbon products are more valuable precursors to chemicals and fuels than methane, there is considerable interest in modifying copper to enhance the multi-carbon product selectivity. Here, we report our investigations of electrochemical carbon dioxide reduction over CuAg bimetallic electrodes and surface alloys, which we find to be more selective for the formation of multi-carbon products than pure copper. This selectivity enhancement is a result of the selective suppression of hydrogen evolution, which occurs due to compressive strain induced by the formation of a CuAg surface alloy. Furthermore, we report that these bimetallic electrocatalysts exhibit an unusually high selectivity for the formation of multi-carbon carbonyl-containing products, which we hypothesize to be the consequence of a reduced coverage of adsorbed hydrogen and the reduced oxophilicity of the compressively strained copper. Thus, we show that promoting copper surface with small amounts of Ag is a promising means for improving the multi-carbon oxygenated product selectivity of copper during electrochemical CO 2 reduction."
+   },
+   {
+    "id": "https://openalex.org/W2898651003",
+    "doi": "https://doi.org/10.1038/s41467-019-12196-4",
+    "title": "Broadband transparent optical phase change materials for high-performance nonvolatile photonics",
+    "year": 2019,
+    "cited": 624,
+    "venue": "Nature Communications",
+    "topics": [
+     "Phase-change materials and chalcogenides",
+     "Transition Metal Oxide Nanomaterials",
+     "2D Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-12196-4.pdf",
+    "abstract": "Abstract Optical phase change materials (O-PCMs), a unique group of materials featuring exceptional optical property contrast upon a solid-state phase transition, have found widespread adoption in photonic applications such as switches, routers and reconfigurable meta-optics. Current O-PCMs, such as Ge–Sb–Te (GST), exhibit large contrast of both refractive index (Δ n ) and optical loss (Δ k ), simultaneously. The coupling of both optical properties fundamentally limits the performance of many applications. Here we introduce a new class of O-PCMs based on Ge–Sb–Se–Te (GSST) which breaks this traditional coupling. The optimized alloy, Ge 2 Sb 2 Se 4 Te 1 , combines broadband transparency (1–18.5 μm), large optical contrast (Δ n = 2.0), and significantly improved glass forming ability, enabling an entirely new range of infrared and thermal photonic devices. We further demonstrate nonvolatile integrated optical switches with record low loss and large contrast ratio and an electrically-addressed spatial light modulator pixel, thereby validating its promise as a material for scalable nonvolatile photonics."
+   },
+   {
+    "id": "https://openalex.org/W2569917071",
+    "doi": "https://doi.org/10.1038/ncomms13901",
+    "title": "Discovery of high-performance low-cost n-type Mg3Sb2-based thermoelectric materials with multi-valley conduction bands",
+    "year": 2017,
+    "cited": 621,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Heusler alloys: electronic and magnetic properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms13901.pdf",
+    "abstract": "Abstract Widespread application of thermoelectric devices for waste heat recovery requires low-cost high-performance materials. The currently available n-type thermoelectric materials are limited either by their low efficiencies or by being based on expensive, scarce or toxic elements. Here we report a low-cost n-type material, Te-doped Mg 3 Sb 1.5 Bi 0.5 , that exhibits a very high figure of merit zT ranging from 0.56 to 1.65 at 300−725 K. Using combined theoretical prediction and experimental validation, we show that the high thermoelectric performance originates from the significantly enhanced power factor because of the multi-valley band behaviour dominated by a unique near-edge conduction band with a sixfold valley degeneracy. This makes Te-doped Mg 3 Sb 1.5 Bi 0.5 a promising candidate for the low- and intermediate-temperature thermoelectric applications."
+   },
+   {
+    "id": "https://openalex.org/W2323356740",
+    "doi": "https://doi.org/10.1038/ncomms11105",
+    "title": "Efficient and stable perovskite solar cells prepared in ambient air irrespective of the humidity",
+    "year": 2016,
+    "cited": 587,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms11105.pdf",
+    "abstract": "Poor stability of organic-inorganic halide perovskite materials in humid condition has hindered the success of perovskite solar cells in real applications since controlled atmosphere is required for device fabrication and operation, and there is a lack of effective solutions to this problem until now. Here we report the use of lead (II) thiocyanate (Pb(SCN)2) precursor in preparing perovskite solar cells in ambient air. High-quality CH3NH3PbI3-x(SCN)x perovskite films can be readily prepared even when the relative humidity exceeds 70%. Under optimized processing conditions, we obtain devices with an average power conversion efficiency of 13.49% and the maximum efficiency over 15%. In comparison with typical CH3NH3PbI3-based devices, these solar cells without encapsulation show greatly improved stability in humid air, which is attributed to the incorporation of thiocyanate ions in the crystal lattice. The findings pave a way for realizing efficient and stable perovskite solar cells in ambient atmosphere."
+   },
+   {
+    "id": "https://openalex.org/W2946652605",
+    "doi": "https://doi.org/10.1038/s41467-019-09845-z",
+    "title": "Single atom tungsten doped ultrathin α-Ni(OH)2 for enhanced electrocatalytic water oxidation",
+    "year": 2019,
+    "cited": 562,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Electrochemical Analysis and Applications",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-09845-z.pdf",
+    "abstract": "Abstract Electrocatalytic water oxidation is a rate-determining step in the water splitting reaction. Here, we report one single atom W 6+ doped Ni(OH) 2 nanosheet sample (w-Ni(OH) 2 ) with an outstanding oxygen evolution reaction (OER) performance that is, in a 1 M KOH medium, an overpotential of 237 mV is obtained reaching a current density of 10 mA/cm 2 . Moreover, at high current density of 80 mA/cm 2 , the overpotential value is 267 mV. The corresponding Tafel slope is measured to be 33 mV/dec. The d 0 W 6+ atom with a low spin-state has more outermost vacant orbitals, resulting in more water and OH − groups being adsorbed on the exposed W sites of the Ni(OH) 2 nanosheet. Density functional theory (DFT) calculations confirm that the O radical and O-O coupling are both generated at the same site of W 6+ . This work demonstrates that W 6+ doping can promote the electrocatalytic water oxidation activity of Ni(OH) 2 with the highest performance."
+   },
+   {
+    "id": "https://openalex.org/W2787179633",
+    "doi": "https://doi.org/10.1021/acsnano.7b08357",
+    "title": "Role of Acid–Base Equilibria in the Size, Shape, and Phase Control of Cesium Lead Bromide Nanocrystals",
+    "year": 2018,
+    "cited": 554,
+    "venue": "ACS Nano",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Optical properties and cooling technologies in crystalline materials",
+     "Solid-state spectroscopy and crystallography"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.7b08357?ref=article_openPDF",
+    "abstract": "Abstract A binary ligand system composed of aliphatic carboxylic acids and primary amines of various chain lengths is commonly employed in diverse synthesis methods for CsPbBr3 nanocrystals (NCs). In this work, we have carried out a systematic study examining how the concentration of ligands (oleylamine and oleic acid) and the resulting acidity (or basicity) affects the hot-injection synthesis of CsPbBr3 NCs. We devise a general synthesis scheme for cesium lead bromide NCs which allows control over size, size distribution, shape, and phase (CsPbBr3 or Cs4PbBr6) by combining key insights on the acid–base interactions that rule this ligand system. Furthermore, our findings shed light upon the solubility of PbBr2 in this binary ligand system, and plausible mechanisms are suggested in order to understand the ligand-mediated phase control and structural stability of CsPbBr3 NCs."
+   },
+   {
+    "id": "https://openalex.org/W2951644190",
+    "doi": "https://doi.org/10.1038/s41467-019-10303-z",
+    "title": "Electrosynthesis of high-entropy metallic glass nanoparticles for designer, multi-functional electrocatalysis",
+    "year": 2019,
+    "cited": 553,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "High Entropy Alloys Studies",
+     "Metallic Glasses and Amorphous Alloys"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-10303-z.pdf",
+    "abstract": "Creative approaches to the design of catalytic nanomaterials are necessary in achieving environmentally sustainable energy sources. Integrating dissimilar metals into a single nanoparticle (NP) offers a unique avenue for customizing catalytic activity and maximizing surface area. Alloys containing five or more equimolar components with a disordered, amorphous microstructure, referred to as High-Entropy Metallic Glasses (HEMGs), provide tunable catalytic performance based on the individual properties of incorporated metals. Here, we present a generalized strategy to electrosynthesize HEMG-NPs with up to eight equimolar components by confining multiple metal salt precursors to water nanodroplets emulsified in dichloroethane. Upon collision with an electrode, alloy NPs are electrodeposited into a disordered microstructure, where dissimilar metal atoms are proximally arranged. We also demonstrate precise control over metal stoichiometry by tuning the concentration of metal salt dissolved in the nanodroplet. The application of HEMG-NPs to energy conversion is highlighted with electrocatalytic water splitting on CoFeLaNiPt HEMG-NPs."
+   },
+   {
+    "id": "https://openalex.org/W2924647446",
+    "doi": "https://doi.org/10.1038/s41467-019-09308-5",
+    "title": "Tuning Pt-CeO2 interactions by high-temperature vapor-phase synthesis for improved reducibility of lattice oxygen",
+    "year": 2019,
+    "cited": 517,
+    "venue": "Nature Communications",
+    "topics": [
+     "Catalytic Processes in Materials Science",
+     "Catalysis and Oxidation Reactions",
+     "Catalysis and Hydrodesulfurization Studies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-09308-5.pdf",
+    "abstract": "Abstract In this work, we compare the CO oxidation performance of Pt single atom catalysts (SACs) prepared via two methods: (1) conventional wet chemical synthesis (strong electrostatic adsorption–SEA) with calcination at 350 °C in air; and (2) high temperature vapor phase synthesis (atom trapping–AT) with calcination in air at 800 °C leading to ionic Pt being trapped on the CeO2 in a thermally stable form. As-synthesized, both SACs are inactive for low temperature (<150 °C) CO oxidation. After treatment in CO at 275 °C, both catalysts show enhanced reactivity. Despite similar Pt metal particle size, the AT catalyst is significantly more active, with onset of CO oxidation near room temperature. A combination of near-ambient pressure X-ray photoelectron spectroscopy (NAP-XPS) and CO temperature-programmed reduction (CO-TPR) shows that the high reactivity at low temperatures can be related to the improved reducibility of lattice oxygen on the CeO2 support."
+   },
+   {
+    "id": "https://openalex.org/W4282010644",
+    "doi": "https://doi.org/10.1038/s41467-022-30939-8",
+    "title": "Lanthanum nitrate as aqueous electrolyte additive for favourable zinc metal electrodeposition",
+    "year": 2022,
+    "cited": 514,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-30939-8.pdf",
+    "abstract": "Abstract Aqueous zinc batteries are appealing devices for cost-effective and environmentally sustainable energy storage. However, the zinc metal deposition at the anode strongly influences the battery cycle life and performance. To circumvent this issue, here we propose the use of lanthanum nitrate (La(NO 3 ) 3 ) as supporting salt for aqueous zinc sulfate (ZnSO 4 ) electrolyte solutions. Via physicochemical and electrochemical characterizations, we demonstrate that this peculiar electrolyte formulation weakens the electric double layer repulsive force, thus, favouring dense metallic zinc deposits and regulating the charge distribution at the zinc metal|electrolyte interface. When tested in Zn||VS 2 full coin cell configuration (with cathode mass loading of 16 mg cm −2 ), the electrolyte solution containing the lanthanum ions enables almost 1000 cycles at 1 A g −1 (after 5 activation cycles at 0.05 A g −1 ) with a stable discharge capacity of about 90 mAh g −1 and an average cell discharge voltage of ∼0.54 V."
+   },
+   {
+    "id": "https://openalex.org/W3017195183",
+    "doi": "https://doi.org/10.1038/s41467-020-15677-z",
+    "title": "Self-sustainable protonic ceramic electrochemical cells using a triple conducting electrode for hydrogen and power production",
+    "year": 2020,
+    "cited": 503,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Solid Oxide Fuel Cells",
+     "Advanced battery technologies research",
+     "Fuel Cells and Related Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-15677-z.pdf",
+    "abstract": "Abstract The protonic ceramic electrochemical cell (PCEC) is an emerging and attractive technology that converts energy between power and hydrogen using solid oxide proton conductors at intermediate temperatures. To achieve efficient electrochemical hydrogen and power production with stable operation, highly robust and durable electrodes are urgently desired to facilitate water oxidation and oxygen reduction reactions, which are the critical steps for both electrolysis and fuel cell operation, especially at reduced temperatures. In this study, a triple conducting oxide of PrNi 0.5 Co 0.5 O 3-δ perovskite is developed as an oxygen electrode, presenting superior electrochemical performance at 400~600 °C. More importantly, the self-sustainable and reversible operation is successfully demonstrated by converting the generated hydrogen in electrolysis mode to electricity without any hydrogen addition. The excellent electrocatalytic activity is attributed to the considerable proton conduction, as confirmed by hydrogen permeation experiment, remarkable hydration behavior and computations."
+   },
+   {
+    "id": "https://openalex.org/W2903026162",
+    "doi": "https://doi.org/10.1002/anie.201811539",
+    "title": "Antioxidant Grain Passivation for Air‐Stable Tin‐Based Perovskite Solar Cells",
+    "year": 2018,
+    "cited": 498,
+    "venue": "Angewandte Chemie International Edition",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/100316/1/Tai_Antioxidant_Grain_Passivation.pdf",
+    "abstract": "Abstract Tin‐based perovskites with excellent optoelectronic properties and suitable band gaps are promising candidates for the preparation of efficient lead‐free perovskite solar cells (PSCs). However, it is challenging to prepare highly stable and efficient tin‐based PSCs because Sn2+ in perovskites can be easily oxidized to Sn4+ upon air exposure. Here we report the fabrication of air‐stable FASnI3 solar cells by introducing hydroxybenzene sulfonic acid or its salt as an antioxidant additive into the perovskite precursor solution along with excess SnCl2. The interaction between the sulfonate group and the Sn2+ ion enables the in situ encapsulation of the perovskite grains with a SnCl2–additive complex layer, which results in greatly enhanced oxidation stability of the perovskite film. The corresponding PSCs are able to maintain 80 % of the efficiency over 500 h upon air exposure without encapsulation, which is over ten times longer than the best result reported previously. Our results suggest a possible strategy for the future design of efficient and stable tin‐based PSCs."
+   },
+   {
+    "id": "https://openalex.org/W2127084638",
+    "doi": "https://doi.org/10.1002/anie.201412202",
+    "title": "An Efficient Halogen‐Free Electrolyte for Use in Rechargeable Magnesium Batteries",
+    "year": 2015,
+    "cited": 493,
+    "venue": "Angewandte Chemie International Edition",
+    "topics": [
+     "Boron Compounds in Chemistry",
+     "Inorganic Chemistry and Materials",
+     "Boron and Carbon Nanomaterials Research"
+    ],
+    "oa_url": "https://hdl.handle.net/2027.42/111923",
+    "abstract": "Unlocking the full potential of rechargeable magnesium batteries has been partially hindered by the reliance on chloride-based complex systems. Despite the high anodic stability of these electrolytes, they are corrosive toward metallic battery components, which reduce their practical electrochemical window. Following on our new design concept involving boron cluster anions, monocarborane CB11H12(-) produced the first halogen-free, simple-type Mg salt that is compatible with Mg metal and displays an oxidative stability surpassing that of ether solvents. Owing to its inertness and non-corrosive nature, the Mg(CB11H12)2/tetraglyme (MMC/G4) electrolyte system permits standardized methods of high-voltage cathode testing that uses a typical coin cell. This achievement is a turning point in the research and development of Mg electrolytes that has deep implications on realizing practical rechargeable Mg batteries."
+   },
+   {
+    "id": "https://openalex.org/W3156577582",
+    "doi": "https://doi.org/10.1038/s41467-021-22523-3",
+    "title": "Tuning local chemistry of P2 layered-oxide cathode for high energy and long cycles of sodium-ion battery",
+    "year": 2021,
+    "cited": 485,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22523-3.pdf",
+    "abstract": "Abstract Layered transition-metal oxides have attracted intensive interest for cathode materials of sodium-ion batteries. However, they are hindered by the limited capacity and inferior phase transition due to the gliding of transition-metal layers upon Na+ extraction and insertion in the cathode materials. Here, we report that the large-sized K+ is riveted in the prismatic Na+ sites of P2-Na0.612K0.056MnO2 to enable more thermodynamically favorable Na+ vacancies. The Mn-O bonds are reinforced to reduce phase transition during charge and discharge. 0.901 Na+ per formula are reversibly extracted and inserted, in which only the two-phase transition of P2 ↔ P’2 occurs at low voltages. It exhibits the highest specific capacity of 240.5 mAh g−1 and energy density of 654 Wh kg−1 based on the redox of Mn3+/Mn4+, and a capacity retention of 98.2% after 100 cycles. This investigation will shed lights on the tuneable chemical environments of transition-metal oxides for advanced cathode materials and promote the development of sodium-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W4321004412",
+    "doi": "https://doi.org/10.1038/s41467-023-36380-9",
+    "title": "Customized reaction route for ruthenium oxide towards stabilized water oxidation in high-performance PEM electrolyzers",
+    "year": 2023,
+    "cited": 475,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Hybrid Renewable Energy Systems"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-36380-9.pdf",
+    "abstract": "Abstract The poor stability of Ru-based acidic oxygen evolution (OER) electrocatalysts has greatly hampered their application in polymer electrolyte membrane electrolyzers (PEMWEs). Traditional understanding of performance degradation centered on influence of bias fails in describing the stability trend, calling for deep dive into the essential origin of inactivation. Here we uncover the decisive role of reaction route (including catalytic mechanism and intermediates binding strength) on operational stability of Ru-based catalysts. Using MRuO x (M = Ce 4+ , Sn 4+ , Ru 4+ , Cr 4+ ) solid solution as structure model, we find the reaction route, thereby stability, can be customized by controlling the Ru charge. The screened SnRuO x thus exhibits orders of magnitude lifespan extension. A scalable PEMWE single cell using SnRuO x anode conveys an ever-smallest degradation rate of 53 μV h −1 during a 1300 h operation at 1 A cm −2 ."
+   },
+   {
+    "id": "https://openalex.org/W4322503365",
+    "doi": "https://doi.org/10.1038/s41467-023-36710-x",
+    "title": "Tuning excited state electronic structure and charge transport in covalent organic frameworks for enhanced photocatalytic performance",
+    "year": 2023,
+    "cited": 473,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-36710-x.pdf",
+    "abstract": "Covalent organic frameworks (COFs) represent an emerging class of organic photocatalysts. However, their complicated structures lead to indeterminacy about photocatalytic active sites and reaction mechanisms. Herein, we use reticular chemistry to construct a family of isoreticular crystalline hydrazide-based COF photocatalysts, with the optoelectronic properties and local pore characteristics of the COFs modulated using different linkers. The excited state electronic distribution and transport pathways in the COFs are probed using a host of experimental methods and theoretical calculations at a molecular level. One of our developed COFs (denoted as COF-4) exhibits a remarkable excited state electron utilization efficiency and charge transfer properties, achieving a record-high photocatalytic uranium extraction performance of ~6.84 mg/g/day in natural seawater among all techniques reported so far. This study brings a new understanding about the operation of COF-based photocatalysts, guiding the design of improved COF photocatalysts for many applications."
+   },
+   {
+    "id": "https://openalex.org/W4214944543",
+    "doi": "https://doi.org/10.1038/s41467-022-28843-2",
+    "title": "Hydrogen spillover in complex oxide multifunctional sites improves acidic hydrogen evolution electrocatalysis",
+    "year": 2022,
+    "cited": 461,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-28843-2.pdf",
+    "abstract": "Abstract Improving the catalytic efficiency of platinum for the hydrogen evolution reaction is valuable for water splitting technologies. Hydrogen spillover has emerged as a new strategy in designing binary-component Pt/support electrocatalysts. However, such binary catalysts often suffer from a long reaction pathway, undesirable interfacial barrier, and complicated synthetic processes. Here we report a single-phase complex oxide La 2 Sr 2 PtO 7+δ as a high-performance hydrogen evolution electrocatalyst in acidic media utilizing an atomic-scale hydrogen spillover effect between multifunctional catalytic sites. With insights from comprehensive experiments and theoretical calculations, the overall hydrogen evolution pathway proceeds along three steps: fast proton adsorption on O site, facile hydrogen migration from O site to Pt site via thermoneutral La-Pt bridge site serving as the mediator, and favorable H 2 desorption on Pt site. Benefiting from this catalytic process, the resulting La 2 Sr 2 PtO 7+δ exhibits a low overpotential of 13 mV at 10 mA cm −2 , a small Tafel slope of 22 mV dec −1 , an enhanced intrinsic activity, and a greater durability than commercial Pt black catalyst."
+   },
+   {
+    "id": "https://openalex.org/W2997487637",
+    "doi": "https://doi.org/10.1038/s41467-019-13774-2",
+    "title": "Fluorinated hybrid solid-electrolyte-interphase for dendrite-free lithium deposition",
+    "year": 2020,
+    "cited": 456,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-13774-2.pdf",
+    "abstract": "Lithium metal anodes have attracted extensive attention owing to their high theoretical specific capacity. However, the notorious reactivity of lithium prevents their practical applications, as evidenced by the undesired lithium dendrite growth and unstable solid electrolyte interphase formation. Here, we develop a facile, cost-effective and one-step approach to create an artificial lithium metal/electrolyte interphase by treating the lithium anode with a tin-containing electrolyte. As a result, an artificial solid electrolyte interphase composed of lithium fluoride, tin, and the tin-lithium alloy is formed, which not only ensures fast lithium-ion diffusion and suppresses lithium dendrite growth but also brings a synergistic effect of storing lithium via a reversible tin-lithium alloy formation and enabling lithium plating underneath it. With such an artificial solid electrolyte interphase, lithium symmetrical cells show outstanding plating/stripping cycles, and the full cell exhibits remarkably better cycling stability and capacity retention as well as capacity utilization at high rates compared to bare lithium."
+   },
+   {
+    "id": "https://openalex.org/W2146433789",
+    "doi": "https://doi.org/10.1073/pnas.1008958107",
+    "title": "Morphologically controlled synthesis of colloidal upconversion nanophosphors and their shape-directed self-assembly",
+    "year": 2010,
+    "cited": 453,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Luminescence Properties of Advanced Materials",
+     "Quantum Dots Synthesis And Properties",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.pnas.org/content/pnas/107/52/22430.full.pdf",
+    "abstract": "We report a one-pot chemical approach for the synthesis of highly monodisperse colloidal nanophosphors displaying bright upconversion luminescence under 980 nm excitation. This general method optimizes the synthesis with initial heating rates up to 100 °C/minute generating a rich family of nanoscale building blocks with distinct morphologies (spheres, rods, hexagonal prisms, and plates) and upconversion emission tunable through the choice of rare earth dopants. Furthermore, we employ an interfacial assembly strategy to organize these nanocrystals (NCs) into superlattices over multiple length scales facilitating the NC characterization and enabling systematic studies of shape-directed assembly. The global and local ordering of these superstructures is programmed by the precise engineering of individual NC's size and shape. This dramatically improved nanophosphor synthesis together with insights from shape-directed assembly will advance the investigation of an array of emerging biological and energy-related nanophosphor applications."
+   },
+   {
+    "id": "https://openalex.org/W3129036993",
+    "doi": "https://doi.org/10.1038/s41467-021-22049-8",
+    "title": "A general approach to high-efficiency perovskite solar cells by any antisolvent",
+    "year": 2021,
+    "cited": 449,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22049-8.pdf",
+    "abstract": "Deposition of perovskite films by antisolvent engineering is a highly common method employed in perovskite photovoltaics research. Herein, we report on a general method that allows for the fabrication of highly efficient perovskite solar cells by any antisolvent via manipulation of the antisolvent application rate. Through detailed structural, compositional, and microstructural characterization of perovskite layers fabricated by 14 different antisolvents, we identify two key factors that influence the quality of the perovskite layer: the solubility of the organic precursors in the antisolvent and its miscibility with the host solvent(s) of the perovskite precursor solution, which combine to produce rate-dependent behavior during the antisolvent application step. Leveraging this, we produce devices with power conversion efficiencies (PCEs) that exceed 21% using a wide range of antisolvents. Moreover, we demonstrate that employing the optimal antisolvent application procedure allows for highly efficient solar cells to be fabricated from a broad range of precursor stoichiometries."
+   },
+   {
+    "id": "https://openalex.org/W3082702904",
+    "doi": "https://doi.org/10.1038/s41467-020-18143-y",
+    "title": "A Mn-N3 single-atom catalyst embedded in graphitic carbon nitride for efficient CO2 electroreduction",
+    "year": 2020,
+    "cited": 448,
+    "venue": "Nature Communications",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Advanced Photocatalysis Techniques",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-18143-y.pdf",
+    "abstract": "Abstract Developing effective catalysts based on earth abundant elements is critical for CO2 electroreduction. However, simultaneously achieving a high Faradaic efficiency (FE) and high current density of CO (jCO) remains a challenge. Herein, we prepare a Mn single-atom catalyst (SAC) with a Mn-N3 site embedded in graphitic carbon nitride. The prepared catalyst exhibits a 98.8% CO FE with a jCO of 14.0 mA cm−2 at a low overpotential of 0.44 V in aqueous electrolyte, outperforming all reported Mn SACs. Moreover, a higher jCO of 29.7 mA cm−2 is obtained in an ionic liquid electrolyte at 0.62 V overpotential. In situ X-ray absorption spectra and density functional theory calculations demonstrate that the remarkable performance of the catalyst is attributed to the Mn-N3 site, which facilitates the formation of the key intermediate COOH* through a lowered free energy barrier."
+   },
+   {
+    "id": "https://openalex.org/W4364354259",
+    "doi": "https://doi.org/10.1073/pnas.2219923120",
+    "title": "Oxygen doping of cobalt-single-atom coordination enhances peroxymonosulfate activation and high-valent cobalt–oxo species formation",
+    "year": 2023,
+    "cited": 436,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Advanced oxidation water treatment",
+     "Advanced Photocatalysis Techniques",
+     "Environmental remediation with nanomaterials"
+    ],
+    "oa_url": "https://doi.org/10.1073/pnas.2219923120",
+    "abstract": "The high-valent cobalt–oxo species (Co(IV)=O) is being increasingly investigated for water purification because of its high redox potential, long half-life, and antiinterference properties. However, generation of Co(IV)=O is inefficient and unsustainable. Here, a cobalt-single-atom catalyst with N/O dual coordination was synthesized by O-doping engineering. The O-doped catalyst (Co-OCN) greatly activated peroxymonosulfate (PMS) and achieved a pollutant degradation kinetic constant of 73.12 min −1 g −2 , which was 4.9 times higher than that of Co-CN (catalyst without O-doping) and higher than those of most reported single-atom catalytic PMS systems. Co-OCN/PMS realized Co(IV)=O dominant oxidation of pollutants by increasing the steady-state concentration of Co(IV)=O (1.03 × 10 −10 M) by 5.9 times compared with Co-CN/PMS. A competitive kinetics calculation showed that the oxidation contribution of Co(IV)=O to micropollutant degradation was 97.5% during the Co-OCN/PMS process. Density functional theory calculations showed that O-doping influenced the charge density (increased the Bader charge transfer from 0.68 to 0.85 e), optimized the electron distribution of the Co center (increased the d-band center from −1.14 to −1.06 eV), enhanced the PMS adsorption energy from −2.46 to −3.03 eV, and lowered the energy barrier for generation of the key reaction intermediate (*O*H 2 O) during Co(IV)=O formation from 1.12 to 0.98 eV. The Co-OCN catalyst was fabricated on carbon felt for a flow-through device, which achieved continuous and efficient removal of micropollutants (degradation efficiency of >85% after 36 h operation). This study provides a new protocol for PMS activation and pollutant elimination through single-atom catalyst heteroatom-doping and high-valent metal–oxo formation during water purification."
+   },
+   {
+    "id": "https://openalex.org/W3179103525",
+    "doi": "https://doi.org/10.1038/s41566-021-00829-4",
+    "title": "Stable and low-photovoltage-loss perovskite solar cells by multifunctional passivation",
+    "year": 2021,
+    "cited": 424,
+    "venue": "Nature Photonics",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/103581/1/Yang_Stable_Low_Photovoltage.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2078746821",
+    "doi": "https://doi.org/10.1021/nn5018654",
+    "title": "Monodisperse, Air-Stable PbS Nanocrystals via Precursor Stoichiometry Control",
+    "year": 2014,
+    "cited": 417,
+    "venue": "ACS Nano",
+    "topics": [
+     "Quantum Dots Synthesis And Properties",
+     "Chalcogenide Semiconductor Thin Films",
+     "Gold and Silver Nanoparticles Synthesis and Applications"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/nn5018654",
+    "abstract": "Despite their technological importance, lead sulfide (PbS) nanocrystals have lagged behind nanocrystals of cadmium selenide (CdSe) and lead selenide (PbSe) in terms of size and energy homogeneity. Here, we show that the ratio of lead to sulfur precursor available during nucleation is a critical parameter affecting subsequent growth and monodispersity of PbS nanocrystal ensembles. Applying this knowledge, we synthesize highly monodisperse (size dispersity <5%) PbS nanocrystals over a wide range of sizes (exciton energies from 0.70 to 1.25 eV, or 1000-1800 nm) without the use of size-selective precipitations. This degree of monodispersity results in absorption peak half width at half max (HWHM) values as small as 20 meV, indicating an ensemble that is close to the homogeneous limit. Photoluminescence emission is correspondingly narrow and exhibits small Stokes shifts and quantum efficiencies of 30-60%. The nanocrystals readily self-assemble into ordered superlattices and exhibit exceptional air stability over several months."
+   },
+   {
+    "id": "https://openalex.org/W3021918868",
+    "doi": "https://doi.org/10.1038/s41467-020-16039-5",
+    "title": "A chemically self-charging aqueous zinc-ion battery",
+    "year": 2020,
+    "cited": 410,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Perovskite Materials and Applications",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-16039-5.pdf",
+    "abstract": "Abstract Self-charging power systems integrating energy harvesting technologies and batteries are attracting extensive attention in energy technologies. However, the conventional integrated systems are highly dependent on the availability of the energy sources and generally possess complicated configuration. Herein, we develop chemically self-charging aqueous zinc-ion batteries with a simplified two-electrode configuration based on CaV 6 O 16 ·3H 2 O electrode. Such system possesses the capability of energy harvesting, conversion and storage simultaneously. It can be chemically self-recharged by the spontaneous redox reaction between the discharged cathode and oxygen from the ambient environment. Chemically self-recharged zinc-ion batteries display an initial open-circuit voltage of about 1.05 V and a considerable discharge capacity of about 239 mAh g −1 , indicating the excellent self-rechargeability. Impressively, such chemically self-charging zinc-ion batteries can also work well at chemical or/and galvanostatic charging hybrid modes. This work not only provides a route to design chemically self-charging energy storage, but also broadens the horizons of aqueous zinc-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W2902175114",
+    "doi": "https://doi.org/10.1038/s41467-018-07670-4",
+    "title": "An AIEgen-based 3D covalent organic framework for white light-emitting diodes",
+    "year": 2018,
+    "cited": 407,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Luminescence and Fluorescent Materials",
+     "Metal-Organic Frameworks: Synthesis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-07670-4.pdf",
+    "abstract": "Abstract The design and synthesis of three-dimensional covalent organic frameworks (3D COFs) have still been considered as a big challenge. Here we report the design and synthesis of an AIEgen-based 3D COF (3D-TPE-COF), with a high surface area (1084 m2 g−1). According to powder X-ray diffraction and continuous rotation electron diffraction analyses, 3D-TPE-COF is identified to adopt a seven-fold interpenetrated pts topology. Interestingly, 3D-TPE-COF emits yellow fluorescence upon excitation, with a photoluminescence quantum yield of 20%. Moreover, by simply coating 3D-TPE-COF onto a commercial blue light-emitting diode (LED), a prototype white LED (WLED) under continuously driving without degradation for 1200 h was demonstrated. The present work suggests the possibility of using COF materials for stable WLEDs, which will greatly inspire us to design and synthesize fluorescent 3D COFs and facilitate the development of COF-based WLEDs in future."
+   },
+   {
+    "id": "https://openalex.org/W2269877163",
+    "doi": "https://doi.org/10.1038/ncomms8602",
+    "title": "Self-assembled two-dimensional nanofluidic proton channels with high thermal stability",
+    "year": 2015,
+    "cited": 404,
+    "venue": "Nature Communications",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Nanopore and Nanochannel Transport Studies",
+     "Membrane-based Ion Separation Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms8602.pdf",
+    "abstract": "Exfoliated two-dimensional (2D) sheets can readily stack to form flexible, free-standing films with lamellar microstructure. The interlayer spaces in such lamellar films form a percolated network of molecularly sized, 2D nanochannels that could be used to regulate molecular transport. Here we report self-assembled clay-based 2D nanofluidic channels with surface charge-governed proton conductivity. Proton conductivity of these 2D channels exceeds that of acid solution for concentrations up to 0.1 M, and remains stable as the reservoir concentration is varied by orders of magnitude. Proton transport occurs through a Grotthuss mechanism, with activation energy and mobility of 0.19 eV and 1.2 × 10−3 cm2 V−1 s−1, respectively. Vermiculite nanochannels exhibit extraordinary thermal stability, maintaining their proton conduction functions even after annealing at 500 °C in air. The ease of constructing massive arrays of stable 2D nanochannels without lithography should prove useful to the study of confined ionic transport, and will enable new ionic device designs. Two-dimensional materials can be used to construct nanofluidic channels to study molecular transport. Here the authors report a lamellar membrane constructed from exfoliated layers of a clay mineral, which exhibits high proton conductivity and extraordinary thermal stability."
+   },
+   {
+    "id": "https://openalex.org/W2090504473",
+    "doi": "https://doi.org/10.1038/ncomms3009",
+    "title": "Mechanical stimulation and solid seeding trigger single-crystal-to-single-crystal molecular domino transformations",
+    "year": 2013,
+    "cited": 397,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Supramolecular Self-Assembly in Materials",
+     "Polydiacetylene-based materials and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms3009.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2922785149",
+    "doi": "https://doi.org/10.1007/s40820-019-0256-2",
+    "title": "V2O5 Nanospheres with Mixed Vanadium Valences as High Electrochemically Active Aqueous Zinc-Ion Battery Cathode",
+    "year": 2019,
+    "cited": 394,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Advanced battery technologies research",
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-019-0256-2.pdf",
+    "abstract": "Abstract A V4+-V2O5 cathode with mixed vanadium valences was prepared via a novel synthetic method using VOOH as the precursor, and its zinc-ion storage performance was evaluated. The products are hollow spheres consisting of nanoflakes. The V4+-V2O5 cathode exhibits a prominent cycling performance, with a specific capacity of 140 mAh g−1 after 1000 cycles at 10 A g−1, and an excellent rate capability. The good electrochemical performance is attributed to the presence of V4+, which leads to higher electrochemical activity, lower polarization, faster ion diffusion, and higher electrical conductivity than V2O5 without V4+. This engineering strategy of valence state manipulation may pave the way for designing high-performance cathodes for elucidating advanced battery chemistry."
+   },
+   {
+    "id": "https://openalex.org/W3125798042",
+    "doi": "https://doi.org/10.1126/sciadv.abb2412",
+    "title": "Crystallization in one-step solution deposition of perovskite films: Upward or downward?",
+    "year": 2021,
+    "cited": 391,
+    "venue": "Science Advances",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "ZnO doping and properties"
+    ],
+    "oa_url": "https://doi.org/10.1126/sciadv.abb2412",
+    "abstract": "Despite the fast progress of perovskite photovoltaic performances, understanding the crystallization and growth of perovskite films is still lagging. One unanswered fundamental question is whether the perovskite films are grown from top (air side) to bottom (substrate side) or from bottom to top despite 10 years of development. Here, by using grazing incidence x-ray diffraction and morphology characterizations, we unveil that the perovskite films prepared by one-step solution processes, including antisolvent-assisted spin coating and blade coating, follow the downward growth from intermediate phase during thermal annealing. Such a top-to-bottom downward growth is initialized by the evaporation of residual solvent from the top surface of \"wet\" films and is less sensitive to perovskite compositions and the wettability of underlying substrates. Addressing this fundamental question is important to understand the heterogeneity of perovskite films along the vertical direction, which markedly affects the efficiency and stability of perovskite solar cells."
+   },
+   {
+    "id": "https://openalex.org/W2594912369",
+    "doi": "https://doi.org/10.1039/c6sc04903f",
+    "title": "Hollow carbon nanobubbles: monocrystalline MOF nanobubbles and their pyrolysis",
+    "year": 2017,
+    "cited": 370,
+    "venue": "Chemical Science",
+    "topics": [
+     "Minerals Flotation and Separation Techniques",
+     "Catalytic Processes in Materials Science",
+     "Mercury impact and mitigation studies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/sc/c6sc04903f",
+    "abstract": "While bulk-sized metal–organic frameworks (MOFs) face limits to their utilization in various research fields such as energy storage applications, nanoarchitectonics is believed to be a possible solution."
+   },
+   {
+    "id": "https://openalex.org/W2795036045",
+    "doi": "https://doi.org/10.1002/aenm.201703496",
+    "title": "Bismuth Microparticles as Advanced Anodes for Potassium‐Ion Battery",
+    "year": 2018,
+    "cited": 363,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "http://ira.lib.polyu.edu.hk/bitstream/10397/100342/1/Huang_Bismuth_Microparticles_Advanced.pdf",
+    "abstract": "Abstract Potassium‐ion batteries (KIBs) are important alternatives to lithium‐ and sodium‐ion batteries. Herein, microsized a Bi electrode delivers exceptional potassium storage capacity, stability, and rate capability by the formation of an elastic and adhesive oligomer‐containing solid electrolyte interface with the assistance of diglyme electrolytes. The kinetics‐controlled K–Bi phase transitions are unraveled combining electrochemical profiles, in situ X‐ray diffraction and density functional theory calculations. Reversible, stepwise Bi–KBi2–K3Bi2–K3Bi transitions govern the electrochemical processes after the initial continuous surface potassiation. The Bi electrode outperforms the other anode counterparts considering both capacity and potential. This work provides critical insights into the rational design of high‐performance anode materials for KIBs."
+   },
+   {
+    "id": "https://openalex.org/W4306316495",
+    "doi": "https://doi.org/10.1038/s41467-022-33846-0",
+    "title": "Promoting nickel oxidation state transitions in single-layer NiFeB hydroxide nanosheets for efficient oxygen evolution",
+    "year": 2022,
+    "cited": 362,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Copper-based nanomaterials and applications",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-33846-0.pdf",
+    "abstract": "Abstract Promoting the formation of high-oxidation-state transition metal species in a hydroxide catalyst may improve its catalytic activity in the oxygen evolution reaction, which remains difficult to achieve with current synthetic strategies. Herein, we present a synthesis of single-layer NiFeB hydroxide nanosheets and demonstrate the efficacy of electron-deficient boron in promoting the formation of high-oxidation-state Ni for improved oxygen evolution activity. Raman spectroscopy, X-ray absorption spectroscopy, and electrochemical analyses show that incorporation of B into a NiFe hydroxide causes a cathodic shift of the Ni2+(OH)2 → Ni3+δOOH transition potential. Density functional theory calculations suggest an elevated oxidation state for Ni and decreased energy barriers for the reaction with the NiFeB hydroxide catalyst. Consequently, a current density of 100 mA cm–2 was achieved in 1 M KOH at an overpotential of 252 mV, placing it among the best Ni-based catalysts for this reaction. This work opens new opportunities in electronic engineering of metal hydroxides (or oxides) for efficient oxygen evolution in water-splitting applications."
+   },
+   {
+    "id": "https://openalex.org/W4282037715",
+    "doi": "https://doi.org/10.1038/s41467-022-30942-z",
+    "title": "Niobium-doped layered cathode material for high-power and low-temperature sodium-ion batteries",
+    "year": 2022,
+    "cited": 362,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Extraction and Separation Processes",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-30942-z.pdf",
+    "abstract": "Abstract The application of sodium-based batteries in grid-scale energy storage requires electrode materials that facilitate fast and stable charge storage at various temperatures. However, this goal is not entirely achievable in the case of P2-type layered transition-metal oxides because of the sluggish kinetics and unfavorable electrode|electrolyte interphase formation. To circumvent these issues, we propose a P2-type Na 0.78 Ni 0.31 Mn 0.67 Nb 0.02 O 2 (P2-NaMNNb) cathode active material where the niobium doping enables reduction in the electronic band gap and ionic diffusion energy barrier while favoring the Na-ion mobility. Via physicochemical characterizations and theoretical calculations, we demonstrate that the niobium induces atomic scale surface reorganization, hindering metal dissolution from the cathode into the electrolyte. We also report the testing of the cathode material in coin cell configuration using Na metal or hard carbon as anode active materials and ether-based electrolyte solutions. Interestingly, the Na||P2-NaMNNb cell can be cycled up to 9.2 A g −1 (50 C), showing a discharge capacity of approximately 65 mAh g −1 at 25 °C. Furthermore, the Na||P2-NaMNNb cell can also be charged/discharged for 1800 cycles at 368 mA g −1 and −40 °C, demonstrating a capacity retention of approximately 76% and a final discharge capacity of approximately 70 mAh g −1 ."
+   },
+   {
+    "id": "https://openalex.org/W2518079431",
+    "doi": "https://doi.org/10.1021/jacs.6b05111",
+    "title": "Anion Redox Chemistry in the Cobalt Free 3d Transition Metal Oxide Intercalation Electrode Li[Li0.2Ni0.2Mn0.6]O2",
+    "year": 2016,
+    "cited": 361,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Extraction and Separation Processes"
+    ],
+    "oa_url": "https://doi.org/10.1021/jacs.6b05111",
+    "abstract": "Conventional intercalation cathodes for lithium batteries store charge in redox reactions associated with the transition metal cations, e.g., Mn(3+/4+) in LiMn2O4, and this limits the energy storage of Li-ion batteries. Compounds such as Li[Li0.2Ni0.2Mn0.6]O2 exhibit a capacity to store charge in excess of the transition metal redox reactions. The additional capacity occurs at and above 4.5 V versus Li(+)/Li. The capacity at 4.5 V is dominated by oxidation of the O(2-) anions accounting for ∼0.43 e(-)/formula unit, with an additional 0.06 e(-)/formula unit being associated with O loss from the lattice. In contrast, the capacity above 4.5 V is mainly O loss, ∼0.08 e(-)/formula. The O redox reaction involves the formation of localized hole states on O during charge, which are located on O coordinated by (Mn(4+)/Li(+)). The results have been obtained by combining operando electrochemical mass spec on (18)O labeled Li[Li0.2Ni0.2Mn0.6]O2 with XANES, soft X-ray spectroscopy, resonant inelastic X-ray spectroscopy, and Raman spectroscopy. Finally the general features of O redox are described with discussion about the role of comparatively ionic (less covalent) 3d metal-oxygen interaction on anion redox in lithium rich cathode materials."
+   },
+   {
+    "id": "https://openalex.org/W3001244118",
+    "doi": "https://doi.org/10.1016/j.nanoen.2020.104516",
+    "title": "Hierarchically architected polydopamine modified BaTiO3@P(VDF-TrFE) nanocomposite fiber mats for flexible piezoelectric nanogenerators and self-powered sensors",
+    "year": 2020,
+    "cited": 359,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Dielectric materials and actuators",
+     "Conducting polymers and applications"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2211285520300732-fx1_lrg.jpg",
+    "abstract": ""
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Rigaku SmartLab\") AND OPEN_ACCESS:y",

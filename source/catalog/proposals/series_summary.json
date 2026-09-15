@@ -1,6 +1,6 @@
 {
  "queue": "series_summary",
- "generated": "2026-09-14",
+ "generated": "2026-09-15",
  "note": "source/catalog_extension/tools_propose.py 가 만든다. decided 만 사람(검토함)이 채운다.",
  "rows": [
   {
@@ -2588,6 +2588,29 @@
      "sources": [
       "https://www.q-lab.com/weathering/equipment-accessories/q-sun/xe-1"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 9편이 이 기종을 언급 — 주된 분야: Advanced Photocatalysis Techniques · Dyeing and Modifying Textile Fibers · Chalcogenide Semiconductor Thin Films · TiO2 Photocatalysis and Solar Cells (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Q-Lab Q-SUN\" OR \"Q-Lab Q-SUN Xe-1\" OR \"Q-Lab Q-SUN Xe-2\" OR \"Q-Lab Q-SUN Xe-3\" OR \"Q-Lab Q-SUN Xe-1-WE\" OR \"Q-Lab Q-SUN Xe-8\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "q-lab-quv",
+   "series": "Q-Lab QUV Accelerated Weathering Tester (Series 95)",
+   "manufacturer": "q-lab",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 58편이 이 기종을 언급 — 주된 분야: Microplastics and Plastic Pollution · Cultural Heritage Materials Analysis · Environmental Impact and Sustainability · Polymer Nanocomposites and Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Q-Lab QUV\""
+     ]
     }
    ],
    "recommended": [],
@@ -2625,6 +2648,13 @@
      "sources": [
       "https://www.renishaw.com/en/case-study-renishaw-invia-confocal-raman-microscope-a-workhorse-for-laboratory-testing--47134"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 12,816편이 이 기종을 언급 — 주된 분야: Electrocatalysts for Energy Conversion · Advancements in Battery Materials · Graphene research and applications · Advanced Photocatalysis Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Renishaw inVia Confocal\" OR \"Renishaw inVia\""
+     ]
     }
    ],
    "recommended": [],
@@ -2640,6 +2670,13 @@
      "label": "next generation 2D detector With the SmartLab SE, Rigaku introduces the available HyPix-400, a semiconductor hybrid pixel array detector that was specifically designed for multipurpose X-ray diffractometers.",
      "sources": [
       "https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/smartlab-se"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 11,408편이 이 기종을 언급 — 주된 분야: Electrocatalysts for Energy Conversion · Perovskite Materials and Applications · Advanced battery technologies research · Advancements in Battery Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Rigaku SmartLab\""
      ]
     }
    ],
@@ -2657,6 +2694,445 @@
      "sources": [
       "https://rigaku.com/products/xrf-spectrometers/wdxrf/zsx-primus-400"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 1,276편이 이 기종을 언급 — 주된 분야: High Entropy Alloys Studies · Electrocatalysts for Energy Conversion · Geochemistry and Elemental Analysis · Geological and Geochemical Analysis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Rigaku ZSX\" OR \"Rigaku ZSX Primus 400\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-ag-xplus",
+   "series": "AUTOGRAPH AG-Xplus Series Precision Universal Testers",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,227편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Polymer crystallization and properties · Nanocomposite Films for Food Packaging · Electrospun Nanofibers in Biomedical Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu AUTOGRAPH\" OR \"Shimadzu AG-20kN\" OR \"Shimadzu 50kNXplus\" OR \"Shimadzu AG-100kNXplus\" OR \"Shimadzu AG-250kN\" OR \"Shimadzu 300kNXplus\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-ags-v",
+   "series": "AUTOGRAPH AGS-V Series Tabletop Precision Universal Testing Machines",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,215편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Polymer crystallization and properties · Nanocomposite Films for Food Packaging · Electrospun Nanofibers in Biomedical Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu AUTOGRAPH AGS-V\" OR \"Shimadzu AUTOGRAPH\" OR \"Shimadzu AGS-1NVD\" OR \"Shimadzu 2NVD\" OR \"Shimadzu 5NVD\" OR \"Shimadzu AGS-10NVD\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-ags-x-materialtwin",
+   "series": "AUTOGRAPH AGS-X Series Precision Universal Tester",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,215편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Polymer crystallization and properties · Nanocomposite Films for Food Packaging · Electrospun Nanofibers in Biomedical Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu AUTOGRAPH AGS-X\" OR \"Shimadzu AUTOGRAPH\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-agx-v2",
+   "series": "AUTOGRAPH AGX-V2 Series Precision Universal Testing Machines",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,215편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Polymer crystallization and properties · Nanocomposite Films for Food Packaging · Electrospun Nanofibers in Biomedical Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu AUTOGRAPH AGX-V2\" OR \"Shimadzu AUTOGRAPH\" OR \"Shimadzu V2\" OR \"Shimadzu AGX-10kNV2D\" OR \"Shimadzu AGX-20kNV2D\" OR \"Shimadzu AGX-50kNV2D\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-duh-211",
+   "series": "Shimadzu DUH-211 / DUH-211S / DUH-210 / DUH-210S Dynamic Ultra Micro Hardness Tester",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 165편이 이 기종을 언급 — 주된 분야: Metal and Thin Film Mechanics · High Entropy Alloys Studies · Aluminum Alloys Composites Properties · Diamond and Carbon-based Materials Research (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu DUH-211 DUH-211S\" OR \"Shimadzu DUH-211\" OR \"Shimadzu DUH-211S\" OR \"Shimadzu DUH-210\" OR \"Shimadzu DUH-210S\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-hmv-g",
+   "series": "Shimadzu HMV-G31 / HMV-G31-FA Micro Vickers Hardness Tester",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 5편이 이 기종을 언급 — 주된 분야: Tribology and Wear Analysis · Orthopaedic implants and arthroplasty · Microstructure and mechanical properties · Advanced materials and composites (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu HMV-G31 HMV-G31-FA\" OR \"Shimadzu HMV-G31\" OR \"Shimadzu G31\" OR \"Shimadzu G31-FA\" OR \"Shimadzu HMV-G31-FA\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-uh-x-fx",
+   "series": "UH-X / UH-FX Series Hydraulic Universal Testing Machines",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · Innovations in Concrete and Construction Materials · Magnesium Alloys: Properties and Applications · Microstructure and mechanical properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu UH-X UH-FX\" OR \"Shimadzu UH-X\" OR \"Shimadzu UH-200kNX\" OR \"Shimadzu UH-200kNXh\" OR \"Shimadzu UH-300kNX\" OR \"Shimadzu UH-F300kNX\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "shimadzu-uv-2600-2700",
+   "series": "Shimadzu UV-2600 / UV-2700 (i Plus) UV-Vis Spectrophotometers",
+   "manufacturer": "shimadzu",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 4,680편이 이 기종을 언급 — 주된 분야: Advanced Photocatalysis Techniques · Perovskite Materials and Applications · Luminescence and Fluorescent Materials · Conducting polymers and applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Shimadzu UV-2600 UV-2700\" OR \"Shimadzu UV-2600\" OR \"Shimadzu UV-2700\" OR \"Shimadzu UV-2600i Plus\" OR \"Shimadzu UV-2700i Plus\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "siemens-t3ster",
+   "series": "Siemens (MicReD) T3Ster Thermal Transient Tester",
+   "manufacturer": "siemens",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 11편이 이 기종을 언급 — 주된 분야: Silicon Carbide Semiconductor Technologies · Advanced Semiconductor Detectors and Materials · Thermal properties of materials · Aerogels and thermal insulation (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Siemens T3Ster\" OR \"Simcenter T3Ster\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "sms-ta-xt-plus",
+   "series": "Stable Micro Systems TA.XT Plus Texture Analyser",
+   "manufacturer": "stable-micro-systems",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 198편이 이 기종을 언급 — 주된 분야: Food composition and properties · Meat and Animal Product Quality · Nanocomposite Films for Food Packaging · Microencapsulation and Drying Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Stable Micro Systems TA.XT\" OR \"Stable Micro Systems TA.XT Plus\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "struers-duramin-40",
+   "series": "Struers Duramin-40 automatic micro/macro hardness tester",
+   "manufacturer": "struers",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 203편이 이 기종을 언급 — 주된 분야: Microstructure and Mechanical Properties of Steels · Additive Manufacturing Materials and Processes · High Entropy Alloys Studies · Microstructure and mechanical properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Struers Duramin-40\" OR \"Struers Duramin-40 M1\" OR \"Struers A1\" OR \"Struers Duramin-40 M2\" OR \"Struers A2\" OR \"Struers Duramin-40 M3\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-electroforce",
+   "series": "TA Instruments ElectroForce Load Frame (3100 / 3200 / 3300 / 3500 / 5500) and TestBench Instruments",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 66편이 이 기종을 언급 — 주된 분야: Bone Tissue Engineering Materials · 3D Printing in Biomedical Research · Bone health and osteoporosis research · Bone Metabolism and Diseases (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments ElectroForce\" OR \"TA Instruments ElectroForce 3100\" OR \"TA Instruments ElectroForce 5500\" OR \"TA Instruments ElectroForce 3200\" OR \"TA Instruments DMA 3200\" OR \"TA Instruments ElectroForce 3310\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-ar-rheometer",
+   "series": "TA Instruments AR-G2 / AR 2000ex / AR 1500ex Rheometers",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 393편이 이 기종을 언급 — 주된 분야: Supramolecular Self-Assembly in Materials · Hydrogels: synthesis, properties, applications · 3D Printing in Biomedical Research · Advanced Sensor and Energy Harvesting Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments AR-G2 AR\" OR \"TA Instruments AR-G2\" OR \"TA Instruments G2\" OR \"TA Instruments AR 2000ex\" OR \"TA Instruments AR 1500ex\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-discovery-dsc",
+   "series": "TA Instruments Discovery DSC (Differential Scanning Calorimeter)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,426편이 이 기종을 언급 — 주된 분야: Advanced Sensor and Energy Harvesting Materials · Polymer composites and self-healing · Advancements in Battery Materials · Micro and Nano Robotics (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments Discovery DSC\" OR \"TA Instruments Discovery\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-discovery-hybrid-rheometer",
+   "series": "TA Instruments Discovery Hybrid Rheometer (HR 10 / HR 20 / HR 30)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 34편이 이 기종을 언급 — 주된 분야: 3D Printing in Biomedical Research · Hydrogels: synthesis, properties, applications · Advanced Materials and Mechanics · Additive Manufacturing and 3D Printing Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments Discovery HR 30\" OR \"TA Instruments Discovery HR 20\" OR \"TA Instruments Discovery HR 10\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-discovery-light-flash",
+   "series": "TA Instruments Discovery Light Flash DLF 1200 / DLF 1600 (Laser Flash Thermal Diffusivity)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 7편이 이 기종을 언급 — 주된 분야: Thermal properties of materials · Heat Transfer and Optimization · Advanced Thermoelectric Materials and Devices · Additive Manufacturing Materials and Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments DLF 1200\" OR \"TA Instruments DLF 1600\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-discovery-tga-materialtwin",
+   "series": "TA Instruments Discovery TGA (Thermogravimetric Analyzer)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 100편이 이 기종을 언급 — 주된 분야: biodegradable polymer synthesis and properties · Catalysis for Biomass Conversion · Thermochemical Biomass Conversion Processes · Ionic liquids properties and applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments Discovery TGA 55\" OR \"TA Instruments Discovery TGA 550\" OR \"TA Instruments Discovery TGA 5500\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-dma",
+   "series": "TA Instruments DMA (Dynamic Mechanical Analyzer)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 865편이 이 기종을 언급 — 주된 분야: Polymer composites and self-healing · Advanced Sensor and Energy Harvesting Materials · Additive Manufacturing and 3D Printing Technologies · Advanced Materials and Mechanics (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments DMA\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-rsa-g2",
+   "series": "TA Instruments RSA-G2 Solids Analyzer",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 115편이 이 기종을 언급 — 주된 분야: Polymer composites and self-healing · Advanced Sensor and Energy Harvesting Materials · Advancements in Battery Materials · Advanced Battery Materials and Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments RSA-G2\" OR \"TA Instruments G2\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-sdt-q600",
+   "series": "TA Instruments SDT Q600 Simultaneous DSC-TGA",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 2,955편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Materials and Technologies · Supercapacitor Materials and Fabrication · Thermochemical Biomass Conversion Processes (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments SDT Q600\" OR \"TA Instruments SDT\" OR \"TA Instruments Q600\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "ta-instruments-vti-sa-sorption",
+   "series": "TA Instruments VTI-SA+ Vapor Sorption Analyzer (Q5000 SA generation)",
+   "manufacturer": "ta-instruments",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 12편이 이 기종을 언급 — 주된 분야: Adsorption and Cooling Systems · Atmospheric aerosols and clouds · Aerogels and thermal insulation · Carbon Dioxide Capture Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"TA Instruments VTI-SA+\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "taber-rotary-abraser-5135-5155",
+   "series": "Taber Rotary Platform Abraser 5135 (single) / 5155 (dual)",
+   "manufacturer": "taber",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 26편이 이 기종을 언급 — 주된 분야: Natural Fiber Reinforced Composites · Material Properties and Applications · Advanced materials and composites · Cultural Heritage Materials Analysis (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Taber 5135\" OR \"Taber 5155\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "teseq-nsg-3060",
+   "series": "Teseq NSG 3060 Modular EMC Immunity Test System (Surge / EFT / Dips)",
+   "manufacturer": "teseq",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Electromagnetic Compatibility and Noise Suppression · Magnetic Field Sensors Techniques · Lightning and Electromagnetic Phenomena · Electrostatic Discharge in Electronics (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Teseq NSG 3060\" OR \"Teseq NSG\" OR \"Teseq NSG 3060 +\" OR \"AMETEK CTS NSG 3060\" OR \"AMETEK CTS NSG\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "teseq-nsg-438",
+   "series": "Teseq NSG 438 / NSG 438A 30 kV ESD Simulator",
+   "manufacturer": "teseq",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Electromagnetic Compatibility and Noise Suppression · Magnetic Field Sensors Techniques · Lightning and Electromagnetic Phenomena · Electrostatic Discharge in Electronics (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Teseq NSG 438\" OR \"Teseq NSG\" OR \"Teseq NSG 438A\" OR \"AMETEK CTS NSG 438\" OR \"AMETEK CTS NSG\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "testometric-m500",
+   "series": "Testometric M500 CT/AT Universal Testing Machines",
+   "manufacturer": "testometric",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,514편이 이 기종을 언급 — 주된 분야: Nanocomposite Films for Food Packaging · Additive Manufacturing and 3D Printing Technologies · biodegradable polymer synthesis and properties · Natural Fiber Reinforced Composites (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Testometric M500 CT/AT\" OR \"Testometric M500\" OR \"Testometric M500-25 CT\" OR \"Testometric M500-50 CT\" OR \"Testometric AT\" OR \"Testometric M500-100 CT\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "thermo-haake-mars",
+   "series": "Thermo Scientific HAAKE MARS 40 / 60 and HAAKE MARS iQ Rheometers",
+   "manufacturer": "thermo-fisher",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 629편이 이 기종을 언급 — 주된 분야: Polysaccharides Composition and Applications · Proteins in Food Systems · Food composition and properties · Advanced Sensor and Energy Harvesting Materials (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Thermo Fisher MARS 40\" OR \"Thermo Fisher MARS 60\" OR \"HAAKE MARS 40\" OR \"HAAKE MARS 60\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "thermo-nexsa-g2",
+   "series": "Thermo Scientific Nexsa G2 XPS",
+   "manufacturer": "thermo-fisher",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 27편이 이 기종을 언급 — 주된 분야: Quantum Dots Synthesis And Properties · Chalcogenide Semiconductor Thin Films · Alzheimer's disease research and treatments · Advanced Battery Materials and Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Thermo Fisher G2\" OR \"Thermo Fisher Nexsa G2\" OR \"HAAKE G2\" OR \"HAAKE Nexsa G2\""
+     ]
     }
    ],
    "recommended": [],
@@ -2672,6 +3148,29 @@
      "label": "The MP1200 can be upgraded with optional features, including ISO 1133 tools and an encoder-based programmable piston displacement transducer (PPDT), for testing according to Procedures B & C (ASTM D1238) or for volume measurement tests (melt volume rate or MVR) and melt density calculations.",
      "sources": [
       "https://www.tiniusolsen.com/product/model-mp1200/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 29편이 이 기종을 언급 — 주된 분야: Polymer crystallization and properties · biodegradable polymer synthesis and properties · Microplastics and Plastic Pollution · Recycling and Waste Management Techniques (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Tinius Olsen MP1200 MP1200M\" OR \"Tinius Olsen MP1200\" OR \"Tinius Olsen MP1200M\" OR \"Tinius Olsen MP1500\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "tinius-olsen-st-series",
+   "series": "ST Series Electromechanical Universal Testing Systems",
+   "manufacturer": "tinius-olsen",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 121편이 이 기종을 언급 — 주된 분야: Additive Manufacturing and 3D Printing Technologies · biodegradable polymer synthesis and properties · Electrospun Nanofibers in Biomedical Applications · Wound Healing and Treatments (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Tinius Olsen ST\" OR \"Tinius Olsen 1ST\" OR \"Tinius Olsen 5ST\" OR \"Tinius Olsen 10ST\" OR \"Tinius Olsen 25ST\" OR \"Tinius Olsen 50ST\""
      ]
     }
    ],
@@ -2717,6 +3216,61 @@
      "sources": [
       "https://tmi.yokogawa.com/library/videos/product-overviews/wt5000-new-current-sensor-element/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 58편이 이 기종을 언급 — 주된 분야: Advanced DC-DC Converters · Multilevel Inverters and Converters · Silicon Carbide Semiconductor Technologies · Wireless Power Transfer Systems (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Yokogawa WT5000\" OR \"Yokogawa 760901\" OR \"Yokogawa 760902\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "zeiss-gemini-fesem",
+   "series": "ZEISS GEMINI Column FE-SEM (SUPRA / ULTRA)",
+   "manufacturer": "zeiss",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 5,841편이 이 기종을 언급 — 주된 분야: Advancements in Battery Materials · Advanced Battery Materials and Technologies · Perovskite Materials and Applications · Metal-Organic Frameworks: Synthesis and Applications (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ZEISS GEMINI FE-SEM\" OR \"ZEISS GEMINI\" OR \"ZEISS ULTRA series\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "zeiss-xradia-versa",
+   "series": "ZEISS Xradia 410 / 520 / 610 / 620 Versa 3D X-ray Microscopes",
+   "manufacturer": "zeiss",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 985편이 이 기종을 언급 — 주된 분야: Advanced Battery Technologies Research · Advancements in Battery Materials · Additive Manufacturing and 3D Printing Technologies · Electrocatalysts for Energy Conversion (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ZEISS Xradia 410 Versa\" OR \"ZEISS Xradia 520 Versa\" OR \"ZEISS Xradia 610 Versa\" OR \"ZEISS Xradia 620 Versa\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "zwickroell-allroundline",
+   "series": "AllroundLine materials testing machines (Z005 – Z250)",
+   "manufacturer": "zwickroell",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Recycling and Waste Management Techniques · Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies · Material Properties and Processing (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ZwickRoell AllroundLine\" OR \"ZwickRoell Z005 TN\" OR \"ZwickRoell TH\" OR \"ZwickRoell TE\" OR \"ZwickRoell Z005 TNW\" OR \"ZwickRoell THW\""
+     ]
     }
    ],
    "recommended": [],
@@ -2739,6 +3293,29 @@
      "label": "The fully automatic DuraScan 50 / 70 / 80 models are ideal for complex and comprehensive test tasks.",
      "sources": [
       "https://www.zwickroell.com/products/hardness-testing-machines/vickers-hardness-testers/durascan-micro-hardness-tester/"
+     ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 10편이 이 기종을 언급 — 주된 분야: Microstructure and Mechanical Properties of Steels · Metal Alloys Wear and Properties · Additive Manufacturing Materials and Processes · Additive Manufacturing and 3D Printing Technologies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ZwickRoell DuraScan G5\" OR \"ZwickRoell DuraScan\" OR \"ZwickRoell G5\" OR \"ZwickRoell DuraScan 10 G5\" OR \"ZwickRoell DuraScan 20 G5\""
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "zwickroell-hit-pendulum",
+   "series": "HIT Pendulum Impact Testers 5 – 50 J (HIT5P / HIT5.5P / HIT25P / HIT50P)",
+   "manufacturer": "zwickroell",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 11편이 이 기종을 언급 — 주된 분야: Natural Fiber Reinforced Composites · Tribology and Wear Analysis · Advanced Cellulose Research Studies · Polymer Nanocomposites and Properties (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ZwickRoell HIT\" OR \"ZwickRoell HIT5P\" OR \"ZwickRoell HIT5.5P\" OR \"ZwickRoell HIT25P\" OR \"ZwickRoell HIT50P\""
      ]
     }
    ],
@@ -2828,6 +3405,13 @@
      "sources": [
       "https://www.zwickroell.com/products/pre-owned-market/used-tensile-testers-z010-z020-z050-z100/"
      ]
+    },
+    {
+     "code": "oa",
+     "label": "논문 16편이 이 기종을 언급 — 주된 분야: Dental materials and restorations · Additive Manufacturing Materials and Processes · Diatoms and Algae Research · Dyeing and Modifying Textile Fibers (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"ZwickRoell ProLine\" OR \"ZwickRoell ProLine Z005\" OR \"ZwickRoell TS\" OR \"ZwickRoell TN\" OR \"ZwickRoell ProLine Z010\" OR \"ZwickRoell TH\""
+     ]
     }
    ],
    "recommended": [],
@@ -2850,6 +3434,22 @@
      "label": "The optional test device with load weight is suitable for Shore A and D digital handheld hardness testers (ZwickRoell 3130/31).",
      "sources": [
       "https://www.zwickroell.com/products/hardness-testing-machines/shore-irhd-hardness-testers/analog-and-digital-hardness-testers-to-shore/"
+     ]
+    }
+   ],
+   "recommended": [],
+   "hint": "고른 문장이 계열 소개 뒤에 붙는다. 마케팅 문구는 빼고, 무엇에 쓰는지 말하는 문장만"
+  },
+  {
+   "subject": "zygo-newview-nx2",
+   "series": "Zygo NewView NX2 3D Optical Profiler",
+   "manufacturer": "zygo",
+   "candidates": [
+    {
+     "code": "oa",
+     "label": "논문 1,079편이 이 기종을 언급 — 주된 분야: Advanced Surface Polishing Techniques · Advanced Sensor and Energy Harvesting Materials · Advanced machining processes and optimization · Heat Transfer and Boiling Studies (OpenAlex, 2026-09)",
+     "sources": [
+      "https://api.openalex.org/works?search=\"Zygo NewView NX2\" OR \"Zygo NewView\" OR \"Zygo NX2\" OR \"AMETEK NewView NX2\" OR \"AMETEK NewView\""
      ]
     }
    ],

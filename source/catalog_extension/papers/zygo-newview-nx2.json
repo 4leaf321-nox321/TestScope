@@ -11,8 +11,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Zygo NewView NX2\" OR \"Zygo NewView\" OR \"Zygo NX2\" OR \"AMETEK NewView NX2\" OR \"AMETEK NewView\"",
-  "count": null,
-  "works": []
+  "count": 1079,
+  "works": [
+   {
+    "id": "https://openalex.org/W2032368548",
+    "doi": "https://doi.org/10.1103/physrevlett.103.013901",
+    "title": "Observation of a Localization Transition in Quasiperiodic Photonic Lattices",
+    "year": 2009,
+    "cited": 471,
+    "venue": "Physical Review Letters",
+    "topics": [
+     "Nonlinear Photonic Systems",
+     "Nonlinear Dynamics and Pattern Formation",
+     "Cold Atom Physics and Bose-Einstein Condensates"
+    ],
+    "oa_url": "https://arxiv.org/pdf/0807.2845",
+    "abstract": "We report the observation of the signature of a localization phase transition for light in one-dimensional quasiperiodic photonic lattices, by directly measuring wave transport inside the lattice. Below the predicted transition point an initially narrow wave packet expands as it propagates, while above the transition expansion is fully suppressed. In addition, we measure the effect of focusing nonlinear interaction on the propagation and find it increases the width of the localized wave packets."
+   },
+   {
+    "id": "https://openalex.org/W2892459790",
+    "doi": "https://doi.org/10.1038/s41467-018-06494-6",
+    "title": "Curvotaxis directs cell migration through cell-scale curvature landscapes",
+    "year": 2018,
+    "cited": 319,
+    "venue": "Nature Communications",
+    "topics": [
+     "Cellular Mechanics and Interactions",
+     "Microtubule and mitosis dynamics",
+     "3D Printing in Biomedical Research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-06494-6.pdf",
+    "abstract": "Cells have evolved multiple mechanisms to apprehend and adapt finely to their environment. Here we report a new cellular ability, which we term \"curvotaxis\" that enables the cells to respond to cell-scale curvature variations, a ubiquitous trait of cellular biotopes. We develop ultra-smooth sinusoidal surfaces presenting modulations of curvature in all directions, and monitor cell behavior on these topographic landscapes. We show that adherent cells avoid convex regions during their migration and position themselves in concave valleys. Live imaging combined with functional analysis shows that curvotaxis relies on a dynamic interplay between the nucleus and the cytoskeleton-the nucleus acting as a mechanical sensor that leads the migrating cell toward concave curvatures. Further analyses show that substratum curvature affects focal adhesions organization and dynamics, nuclear shape, and gene expression. Altogether, this work identifies curvotaxis as a new cellular guiding mechanism and promotes cell-scale curvature as an essential physical cue."
+   },
+   {
+    "id": "https://openalex.org/W2473022907",
+    "doi": "https://doi.org/10.1038/ncomms11802",
+    "title": "Bio-inspired sensitive and reversible mechanochromisms via strain-dependent cracks and folds",
+    "year": 2016,
+    "cited": 278,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Polydiacetylene-based materials and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms11802.pdf",
+    "abstract": "A number of marine organisms use muscle-controlled surface structures to achieve rapid changes in colour and transparency with outstanding reversibility. Inspired by these display tactics, we develop analogous deformation-controlled surface-engineering approaches via strain-dependent cracks and folds to realize the following four mechanochromic devices: (1) transparency change mechanochromism (TCM), (2) luminescent mechanochromism (LM), (3) colour alteration mechanochromism (CAM) and (4) encryption mechanochromism (EM). These devices are based on a simple bilayer system that exhibits a broad range of mechanochromic behaviours with high sensitivity and reversibility. The TCM device can reversibly switch between transparent and opaque states. The LM can emit intensive fluorescence as stretched with very high strain sensitivity. The CAM can turn fluorescence from green to yellow to orange as stretched within 20% strain. The EM device can reversibly reveal and conceal any desirable patterns."
+   },
+   {
+    "id": "https://openalex.org/W2263976013",
+    "doi": "https://doi.org/10.1073/pnas.1520994113",
+    "title": "Self-dispersed crumpled graphene balls in oil for friction and wear reduction",
+    "year": 2016,
+    "cited": 223,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Lubricants and Their Additives",
+     "Tribology and Wear Analysis",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.pnas.org/content/pnas/113/6/1528.full.pdf",
+    "abstract": "Ultrafine particles are often used as lubricant additives because they are capable of entering tribological contacts to reduce friction and protect surfaces from wear. They tend to be more stable than molecular additives under high thermal and mechanical stresses during rubbing. It is highly desirable for these particles to remain well dispersed in oil without relying on molecular ligands. Borrowing from the analogy that pieces of paper that are crumpled do not readily stick to each other (unlike flat sheets), we expect that ultrafine particles resembling miniaturized crumpled paper balls should self-disperse in oil and could act like nanoscale ball bearings to reduce friction and wear. Here we report the use of crumpled graphene balls as a high-performance additive that can significantly improve the lubrication properties of polyalphaolefin base oil. The tribological performance of crumpled graphene balls is only weakly dependent on their concentration in oil and readily exceeds that of other carbon additives such as graphite, reduced graphene oxide, and carbon black. Notably, polyalphaolefin base oil with only 0.01-0.1 wt % of crumpled graphene balls outperforms a fully formulated commercial lubricant in terms of friction and wear reduction."
+   },
+   {
+    "id": "https://openalex.org/W2958407396",
+    "doi": "https://doi.org/10.1145/3306346.3322946",
+    "title": "Compact snapshot hyperspectral imaging with diffracted rotation",
+    "year": 2019,
+    "cited": 190,
+    "venue": "ACM Transactions on Graphics",
+    "topics": [
+     "Optical Polarization and Ellipsometry",
+     "Optical Coherence Tomography Applications",
+     "Optical and Acousto-Optic Technologies"
+    ],
+    "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3306346.3322946",
+    "abstract": "Traditional snapshot hyperspectral imaging systems include various optical elements: a dispersive optical element (prism), a coded aperture, several relay lenses, and an imaging lens, resulting in an impractically large form factor. We seek an alternative, minimal form factor of snapshot spectral imaging based on recent advances in diffractive optical technology. We thereupon present a compact, diffraction-based snapshot hyperspectral imaging method, using only a novel diffractive optical element (DOE) in front of a conventional, bare image sensor. Our diffractive imaging method replaces the common optical elements in hyperspectral imaging with a single optical element. To this end, we tackle two main challenges: First, the traditional diffractive lenses are not suitable for color imaging under incoherent illumination due to severe chromatic aberration because the size of the point spread function (PSF) changes depending on the wavelength. By leveraging this wavelength-dependent property alternatively for hyperspectral imaging, we introduce a novel DOE design that generates an anisotropic shape of the spectrally-varying PSF. The PSF size remains virtually unchanged, but instead the PSF shape rotates as the wavelength of light changes. Second, since there is no dispersive element and no coded aperture mask, the ill-posedness of spectral reconstruction increases significantly. Thus, we propose an end-to-end network solution based on the unrolled architecture of an optimization procedure with a spatial-spectral prior, specifically designed for deconvolution-based spectral reconstruction. Finally, we demonstrate hyperspectral imaging with a fabricated DOE attached to a conventional DSLR sensor. Results show that our method compares well with other state-of-the-art hyperspectral imaging methods in terms of spectral accuracy and spatial resolution, while our compact, diffraction-based spectral imaging method uses only a single optical element on a bare image sensor."
+   },
+   {
+    "id": "https://openalex.org/W3109316714",
+    "doi": "https://doi.org/10.1126/science.abc7776",
+    "title": "Two-photon frequency comb spectroscopy of atomic hydrogen",
+    "year": 2020,
+    "cited": 180,
+    "venue": "Science",
+    "topics": [
+     "Advanced Fiber Laser Technologies",
+     "Atomic and Molecular Physics",
+     "Spectroscopy and Laser Applications"
+    ],
+    "oa_url": "https://edoc.ub.uni-muenchen.de/27002/1/Grinin_Alexey.pdf",
+    "abstract": "Testing physics using the hydrogen atom Discrepancy between the proton radius determined from hydrogen and muonic hydrogen spectroscopy data, the so-called “proton radius puzzle,” has been a focus of the physics community for more than a decade now. Using two-photon ultraviolet frequency comb spectroscopy below 1 kilohertz, Grinin et al. report a high-precision measurement of the 1S-3S transition frequency in atomic hydrogen (see the Perspective by Ubachs). Combining this measurement with the data for the 1S-2S transition, the authors obtained the Rydberg constant with improved accuracy and an independent value for the proton charge radius that favors the data from muonic hydrogen. However, the present frequency value differs from the one obtained previously using a different spectroscopic technique, leaving the puzzle still unresolved. Science , this issue p. 1061 ; see also p. 1033"
+   },
+   {
+    "id": "https://openalex.org/W2526586394",
+    "doi": "https://doi.org/10.1038/ncomms12900",
+    "title": "Radiative heat transfer exceeding the blackbody limit between macroscale planar surfaces separated by a nanosize vacuum gap",
+    "year": 2016,
+    "cited": 175,
+    "venue": "Nature Communications",
+    "topics": [
+     "Thermal Radiation and Cooling Technologies",
+     "Quantum Electrodynamics and Casimir Effect",
+     "Optical properties and cooling technologies in crystalline materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms12900.pdf",
+    "abstract": "Abstract Using Rytov’s fluctuational electrodynamics framework, Polder and Van Hove predicted that radiative heat transfer between planar surfaces separated by a vacuum gap smaller than the thermal wavelength exceeds the blackbody limit due to tunnelling of evanescent modes. This finding has led to the conceptualization of systems capitalizing on evanescent modes such as thermophotovoltaic converters and thermal rectifiers. Their development is, however, limited by the lack of devices enabling radiative transfer between macroscale planar surfaces separated by a nanosize vacuum gap. Here we measure radiative heat transfer for large temperature differences (∼120 K) using a custom-fabricated device in which the gap separating two 5 × 5 mm2 intrinsic silicon planar surfaces is modulated from 3,500 to 150 nm. A substantial enhancement over the blackbody limit by a factor of 8.4 is reported for a 150-nm-thick gap. Our device paves the way for the establishment of novel evanescent wave-based systems."
+   },
+   {
+    "id": "https://openalex.org/W2588246651",
+    "doi": "https://doi.org/10.1002/2016jb013435",
+    "title": "Frictional stability‐permeability relationships for fractures in shales",
+    "year": 2017,
+    "cited": 174,
+    "venue": "Journal of Geophysical Research Solid Earth",
+    "topics": [
+     "earthquake and tectonic studies",
+     "Seismic Imaging and Inversion Techniques",
+     "Seismic Waves and Analysis"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1355030",
+    "abstract": "Abstract There is wide concern that fluid injection in the subsurface, such as for the stimulation of shale reservoirs or for geological CO 2 sequestration (GCS), has the potential to induce seismicity that may change reservoir permeability due to fault slip. However, the impact of induced seismicity on fracture permeability evolution remains unclear due to the spectrum of modes of fault reactivation (e.g., stable versus unstable). As seismicity is controlled by the frictional response of fractures, we explore friction‐stability‐permeability relationships through the concurrent measurement of frictional and hydraulic properties of artificial fractures in Green River shale (GRS) and Opalinus shale (OPS). We observe that carbonate‐rich GRS shows higher frictional strength but weak neutral frictional stability. The GRS fracture permeability declines during shearing while an increased sliding velocity reduces the rate of permeability decline. By comparison, the phyllosilicate‐rich OPS has lower friction and strong stability while the fracture permeability is reduced due to the swelling behavior that dominates over the shearing induced permeability reduction. Hence, we conclude that the friction‐stability‐permeability relationship of a fracture is largely controlled by mineral composition and that shale mineral compositions with strong frictional stability may be particularly subject to permanent permeability reduction during fluid infiltration."
+   },
+   {
+    "id": "https://openalex.org/W2069793359",
+    "doi": "https://doi.org/10.1016/j.asoc.2015.01.059",
+    "title": "Prediction of surface roughness during hard turning of AISI 4340 steel (69 HRC)",
+    "year": 2015,
+    "cited": 170,
+    "venue": "Applied Soft Computing",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Surface Polishing Techniques",
+     "Advanced Machining and Optimization Techniques"
+    ],
+    "oa_url": "https://pureadmin.qub.ac.uk/ws/files/13351539/manuscript.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2311846920",
+    "doi": "https://doi.org/10.1007/s40948-016-0022-6",
+    "title": "Breakdown pressure and fracture surface morphology of hydraulic fracturing in shale with H 2 O, CO 2 and N 2",
+    "year": 2016,
+    "cited": 154,
+    "venue": "Geomechanics and Geophysics for Geo-Energy and Geo-Resources",
+    "topics": [
+     "Hydraulic Fracturing and Reservoir Analysis",
+     "Drilling and Well Engineering",
+     "Seismic Imaging and Inversion Techniques"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007%2Fs40948-016-0022-6.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3001316492",
+    "doi": "https://doi.org/10.1016/j.matdes.2020.108524",
+    "title": "Subsurface damage and phase transformation in laser-assisted nanometric cutting of single crystal silicon",
+    "year": 2020,
+    "cited": 144,
+    "venue": "Materials & Design",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Laser Material Processing Techniques",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127520300575/pdf",
+    "abstract": "Single crystal Si subsurface damage and phase transformation caused by laser-assisted nanometric cutting were investigated in this paper through the ultraprecision cutting experiments and molecular dynamics simulation. Post-cutting examination of a crystal's subsurface revealed a distorted SiI layer and an amorphous Si with embedded nanocrystalline Si-III and Si-XII. As a result of insufficient contact pressure during laser-assisted cutting, the amorphous Si was directly generated from the SiI through the collapse of the crystal lattice rather than from the intermediate high-pressure phase Si-II. The newly-formed amorphous Si crystallized partially during the laser-assisted cutting and transformed into metastable Si-III and Si-XII phases caused by the laser annealing effect. In comparison to machining without laser assistance, it was found that dislocation activity was increased by a factor of ~8 × 1014 when laser assistance was applied. This gave rise to enhancement of plastic deformability of the material, with the critical ductile-brittle transition depth of cut increasing from 150 nm to 395 nm and the thickness and extent of stress in the distorted SiI subsurface layer being reduced."
+   },
+   {
+    "id": "https://openalex.org/W4231746779",
+    "doi": "https://doi.org/10.1002/(issn)2365-709x",
+    "title": "Advanced Materials Technologies",
+    "year": 2018,
+    "cited": 144,
+    "venue": "Advanced Materials Technologies",
+    "topics": [
+     "Nanoparticle-Based Drug Delivery",
+     "Advanced biosensing and bioanalysis techniques",
+     "Cancer Research and Treatment"
+    ],
+    "oa_url": "https://advanced.onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admt.71294?download=true",
+    "abstract": "A facile platform constituted of ZnO submicropillars and Au nanoparticles is developed to isolate circulating tumor cells efficiently. By electrochemically recognizing P-glycoprotein, drug-resistant cells can be identified for evaluating sensitivity. The proposed platform is biocompatible for isolated cancer cells and enables versatile downstream bioanalysis, which can potentially contribute to drug treatment."
+   },
+   {
+    "id": "https://openalex.org/W2126300079",
+    "doi": "https://doi.org/10.1242/jeb.01683",
+    "title": "Adhesion of echinoderm tube feet to rough surfaces",
+    "year": 2005,
+    "cited": 132,
+    "venue": "Journal of Experimental Biology",
+    "topics": [
+     "Marine Biology and Environmental Chemistry",
+     "Echinoderm biology and ecology",
+     "Surface Modification and Superhydrophobicity"
+    ],
+    "oa_url": "https://orbi.umons.ac.be/bitstream/20.500.12907/17812/1/FLAMMANG-2005-4-JOURNAL-20100810113128.pdf",
+    "abstract": "Echinoderms attach strongly and temporarily to the substratum by means of specialized organs, the podia or tube feet. The latter consist of a basal extensible cylinder, the stem, which bears an apical flattened disc. The disc repeatedly attaches to and detaches from the substratum through adhesive and de-adhesive secretions. In their activities, echinoderms have to cope with substrata of varying degrees of roughness as well as with changing hydrodynamic conditions, and therefore their tube feet must adapt their attachment strength to these environmental constraints. This study is the first attempt to evaluate the influence of substratum roughness on the temporary adhesion of echinoderm tube feet and to investigate the material properties of their contact surface. It was demonstrated that tube foot discs are very soft (E-modulus of 6.0 and 8.1 kPa for sea stars and sea urchins, respectively), have viscoelastic properties and adapt their surface to the substratum profile. They also show increased adhesion on a rough substratum in comparison to its smooth counterpart, which is due mostly to an increase in the geometrical area of contact between the disc and the surface. Tenacity (force per unit area) increases with roughness [e.g. 0.18 and 0.34 MPa on smooth polymethyl-methacrylate (PMMA), 0.21 and 0.47 MPa on rough PMMA for sea stars and sea urchins, respectively] if only the projected surface area of the adhesive footprint is considered. However, if this tenacity is corrected to take into account the actual substratum 3-D profile, surface roughness no longer influences significantly the corrected adhesion strength (e.g. 0.18 and 0.34 MPa on smooth PMMA, 0.19 and 0.42 MPa on rough PMMA for sea stars and sea urchins, respectively). It can be hypothesized that, under slow self-imposed forces, disc material behaves viscously to adapt to substratum roughness while the adhesive fills out only very small surface irregularities (in the nanometer range). It is deposited as a thin film ideal for generation of strong adhesion. Under short pulses of wave-generated forces, attached discs probably behave elastically, distributing the stress along the entire contact area, in order to avoid crack generation and thus precluding disc peeling and tube foot detachment."
+   },
+   {
+    "id": "https://openalex.org/W2030825168",
+    "doi": "https://doi.org/10.1016/j.actamat.2011.04.025",
+    "title": "Assessment of surface hardening effects from shot peening on a Ni-based alloy using electron backscatter diffraction techniques",
+    "year": 2011,
+    "cited": 127,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Surface Treatment and Residual Stress",
+     "Erosion and Abrasive Machining",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359645411002679",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2000994871",
+    "doi": "https://doi.org/10.1039/c2sm25859e",
+    "title": "Wrinkling and strain localizations in polymer thin films",
+    "year": 2012,
+    "cited": 126,
+    "venue": "Soft Matter",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Liquid Crystal Research Advancements"
+    ],
+    "oa_url": "https://works.bepress.com/alfred_crosby/2/download/",
+    "abstract": "Wrinkles and strain localized features are observed in many natural systems and are useful surface patterns for a wide range of applications, including optical gratings and microfluidic devices. However, the transition from sinusoidal wrinkles to more complex strain localized features, such as delaminations or folds, is not well understood. In this paper, we investigate the onset of wrinkling and strain localizations in a model system of a glassy polymer film attached to a surface of an elastomeric substrate. We show that careful measurement of feature amplitude as a function of applied strain allows not only the determination of wrinkle, fold, or delamination onset but also allows clear distinction between each type of feature. We observe that amplitude increases discontinuously as delamination occurs; whereas, the amplitude for a fold deviates gradually compared to the amplitude for a nearby wrinkle as a function of applied strain. The folds observed in these experiments have an outward morphology from the surface, in contrast to folds that form into the plane for a film floating on a liquid substrate. A deformation mode map is presented, where the measured critical strain for localization is compared for films with thickness ranging from 5 nm to 180 nm."
+   },
+   {
+    "id": "https://openalex.org/W3011870603",
+    "doi": "https://doi.org/10.1016/j.nanoen.2020.104659",
+    "title": "Toward wear-resistive, highly durable and high performance triboelectric nanogenerator through interface liquid lubrication",
+    "year": 2020,
+    "cited": 124,
+    "venue": "Nano Energy",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2211285520302160/pdf",
+    "abstract": "Triboelectric nanogenerator (TENG) has been proved as a powerful approach to harvest ambient mechanical energy for many technological applications. However, the service lifetime, stability and robustness of TENG are a challenge owing to the wearing and surface degradation. In this manuscript, liquid lubrication is introduced for the first time to increase the anti-wear property of TENG. The influence of the lubricant layer between the surfaces on TENG outputs is studied. It is surprising to find that proper liquid lubrication can not only provide a super wear-resistive TENG, but also can increase the electric outputs. In comparison to a slide-mode TENG with solid-solid contact, the service life of TENG can be greatly improved through liquid lubrication and there is no detected wear even after 36,000 cycles of operation. Specially, the open-circuit voltage and short-circuit current of squalane-lubricated TENG can be both more than 3 times of the unlubricated TENG. For unlubricated TENG, a transfer polymer film adheres to the harder material surface and reduces the contact effectiveness. Liquid lubrication is able to avoid the formation of the transfer film, increase the effective solid-solid contact area and squeeze the air at the interface, thus giving rise to higher electric outputs. Our study opens a new approach for extending the lifetime and stability of TENGs."
+   },
+   {
+    "id": "https://openalex.org/W2054964627",
+    "doi": "https://doi.org/10.1088/0960-1317/14/12/013",
+    "title": "Micro machining glass with polycrystalline diamond tools shaped by micro electro discharge machining",
+    "year": 2004,
+    "cited": 124,
+    "venue": "Journal of Micromechanics and Microengineering",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0960-1317/14/12/013/pdf",
+    "abstract": "Brittle materials are difficult to mechanically micro machine due to damage resulting from material removal by brittle fracture, cutting force-induced tool deflection or breakage and tool wear. This paper demonstrates the feasibility of micro machining glass materials with polycrystalline diamond (PCD) micro tools that are prepared in a variety of shapes using non-contact micro electro discharge machining. The PCD tools contain randomly distributed sharp protrusions of diamond with dimensions around 1 µm that serve as cutting edges for micro machining grooves in soda-lime glass and pockets in ultra-low expansion glass. Results indicate that smooth surfaces are obtained with process conditions allowing material removal by ductile regime cutting instead of brittle fractures, and the PCD tools show very little wear. With further improvements in material removal rate, micro machining with PCD tools is a promising approach for producing micro molds and micro fluidic devices in glass materials."
+   },
+   {
+    "id": "https://openalex.org/W2258670445",
+    "doi": "https://doi.org/10.1038/ncomms7948",
+    "title": "Rubrene crystal field-effect mobility modulation via conducting channel wrinkling",
+    "year": 2015,
+    "cited": 121,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms7948.pdf",
+    "abstract": "With the impending surge of flexible organic electronic technologies, it has become essential to understand how mechanical deformation affects the electrical performance of organic thin-film devices. Organic single crystals are ideal for the systematic study of strain effects on electrical properties without being concerned about grain boundaries and other defects. Here we investigate how the deformation affects the field-effect mobility of single crystals of the benchmark semiconductor rubrene. The wrinkling instability is used to apply local strains of different magnitudes along the conducting channel in field-effect transistors. We discover that the mobility changes as dictated by the net strain at the dielectric/semiconductor interface. We propose a model based on the plate bending theory to quantify the net strain in wrinkled transistors and predict the change in mobility. These contributions represent a significant step forward in structure-function relationships in organic semiconductors, critical for the development of the next generation of flexible electronic devices."
+   },
+   {
+    "id": "https://openalex.org/W2047016588",
+    "doi": "https://doi.org/10.1088/0031-9155/45/12/315",
+    "title": "A frictional study of total hip joint replacements",
+    "year": 2000,
+    "cited": 116,
+    "venue": "Physics in Medicine and Biology",
+    "topics": [
+     "Orthopaedic implants and arthroplasty",
+     "Total Knee Arthroplasty Outcomes",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0031-9155/45/12/315/pdf",
+    "abstract": "Polymeric wear debris produced by articulation of the femoral head against the ultra-high-molecular-weight polyethylene socket of a total hip replacement has been implicated as the main cause of osteolysis and subsequent failure of these implants. Potential solutions to this problem are to employ hard bearing surface combinations such as metal-on-metal or ceramic-on-ceramic prostheses. The aim of this study was to investigate the difference in lubrication modes and friction of a range of material combinations using synthetic and biological fluids as the lubricants. The experimental results were compared with theoretical predictions of film thicknesses and lubrication modes. A strong correlation was observed between experiment and theory when employing carboxy methyl cellulose (CMC) fluids as the lubricant. Under these conditions the ceramic-on-ceramic joints showed full fluid film lubrication while the metal-on-metal, metal-on-plastic, diamond-like carbon-coated stainless steel (DLC)-on-plastic and ceramic-on-plastic prostheses operated under a mixed lubrication regime. With bovine serum as the lubricant in the all ceramic joints, however, the full fluid film lubrication was inhibited due to adsorbed proteins. In the metal-on-metal joints this adsorbed protein layer acted to reduce the friction while in the ceramic coupling the friction was increased. The use of bovine serum as the lubricant also significantly increased the friction in both the metal-on-plastic and ceramic-on-plastic joints. The friction produced by the DLC-on-plastic joints depended on the quality of the coating. Those joints with a less consistent coating and therefore a higher surface roughness gave significantly higher friction than the smoother, more consistently coated heads."
+   },
+   {
+    "id": "https://openalex.org/W3034796242",
+    "doi": "https://doi.org/10.3390/app10113941",
+    "title": "Prediction of Surface Roughness Based on Cutting Parameters and Machining Vibration in End Milling Using Regression Method and Artificial Neural Network",
+    "year": 2020,
+    "cited": 111,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Advanced machining processes and optimization",
+     "Advanced Machining and Optimization Techniques",
+     "Surface Roughness and Optical Measurements"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/10/11/3941/pdf?version=1591797329",
+    "abstract": "This study presents surface roughness modeling for machined parts based on cutting parameters (spindle speed, cutting depth, and feed rate) and machining vibration in the end milling process. Prediction models were developed using multiple regression analysis and an artificial neural network (ANN) modeling approach. To reduce the effect of chatter, machining tests were conducted under varying cutting parameters as defined in the stable regions of the milling tool. The surface roughness and machining vibration level are modeled with nonlinear quadratic forms based on the cutting parameters and their interactions through multiple regression analysis methods, respectively. Analysis of variance was employed to determine the significance of cutting parameters on surface roughness. The results show that the combined effects of spindle speed and cutting depth significantly influence surface roughness. The comparison between the prediction performance of the multiple regression and neural network-based models reveal that the ANN models achieve higher prediction accuracy for all training data with R = 0.96 and root mean square error (RMSE) = 3.0% compared with regression models with R = 0.82 and RMSE = 7.57%. Independent machining tests were conducted to validate the predictive models; the results conclude that the ANN model based on cutting parameters with machining vibration has a higher average prediction accuracy (93.14%) than those of models with three cutting parameters. Finally, the feasibility of the predictive model as the base to develop an online surface roughness recognition system has been successfully demonstrated based on contour surface milling test. This study reveals that the predictive models derived on the cutting conditions with consideration of machining stability can ensure the prediction accuracy for application in milling process."
+   },
+   {
+    "id": "https://openalex.org/W2791392003",
+    "doi": "https://doi.org/10.1016/j.snb.2018.02.065",
+    "title": "Nucleic aptamer modified porous reduced graphene oxide/MoS2 based electrodes for viral detection: Application to human papillomavirus (HPV)",
+    "year": 2018,
+    "cited": 110,
+    "venue": "Sensors and Actuators B Chemical",
+    "topics": [
+     "Advanced biosensing and bioanalysis techniques",
+     "RNA Interference and Gene Delivery",
+     "SARS-CoV-2 detection and testing"
+    ],
+    "oa_url": "http://hdl.handle.net/20.500.12210/45181",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2607040167",
+    "doi": "https://doi.org/10.1038/srep46358",
+    "title": "50-nm-resolution full-field X-ray microscope without chromatic aberration using total-reflection imaging mirrors",
+    "year": 2017,
+    "cited": 102,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced X-ray Imaging Techniques",
+     "X-ray Spectroscopy and Fluorescence Analysis",
+     "Advanced Electron Microscopy Techniques and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep46358.pdf",
+    "abstract": "X-ray spectromicroscopy with a full-field imaging technique is a powerful method for chemical analysis of heterogeneous complex materials with a nano-scale spatial resolution. For imaging optics, an X-ray reflective optical system has excellent capabilities with highly efficient, achromatic, and long-working-distance properties. An advanced Kirkpatrick-Baez geometry that combines four independent mirrors with elliptic and hyperbolic shapes in both horizontal and vertical directions was developed for this purpose, although the complexity of the system has a limited applicable range. Here, we present an optical system consisting of two monolithic imaging mirrors. Elliptic and hyperbolic shapes were formed on a single substrate to achieve both high resolution and sufficient stability. The mirrors were finished with a ~1-nm shape accuracy using elastic emission machining. The performance was tested at SPring-8 with a photon energy of approximately 10 keV. We could clearly resolve 50-nm features in a Siemens star without chromatic aberration and with high stability over 20 h. We applied this system to X-ray absorption fine structure spectromicroscopy and identified elements and chemical states in specimens of zinc and tungsten micron-size particles."
+   },
+   {
+    "id": "https://openalex.org/W2563098562",
+    "doi": "https://doi.org/10.1016/j.ijheatmasstransfer.2017.03.057",
+    "title": "Flow boiling heat transfer of R134a in multi microchannels",
+    "year": 2017,
+    "cited": 100,
+    "venue": "International Journal of Heat and Mass Transfer",
+    "topics": [
+     "Heat Transfer and Boiling Studies",
+     "Heat Transfer and Optimization",
+     "Heat Transfer Mechanisms"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0017931016324371/pdf",
+    "abstract": "Experiments were conducted to investigate flow boiling heat transfer of R134a in a multi microchannel heat sink. The heat sink consisted of 25 rectangular microchannels with nominal dimensions of 300 µm wide, 700 µm deep ( D h = 420 µm) and 200 µm separating wall thickness. The heat sink was made of oxygen free copper by CNC machining and was 20 mm long and 15 mm wide. The experiments were conducted at 6.5 bar system pressure and covered a footprint area-based heat flux range 11.46–403.1 kW/m 2 and mass flux range 50–300 kg/m 2 s. A high speed camera was used to capture the flow patterns simultaneously with heat transfer measurements. Three flow patterns were observed namely bubbly, slug and wavy-annular flow when the heat flux increased gradually. The heat transfer coefficient increased with heat flux and there was no mass flux effect. Assessing existing correlations indicated that the correlations of Mahmoud and Karayiannis (2013) and Cooper (1984) predict the data very well with a mean absolute error less than 20% compared to the other correlations."
+   },
+   {
+    "id": "https://openalex.org/W2903407296",
+    "doi": "https://doi.org/10.1016/j.matdes.2018.11.048",
+    "title": "Novel thermoplastic fibre-metal laminates manufactured by vacuum resin infusion: The effect of surface treatments on interfacial bonding",
+    "year": 2018,
+    "cited": 97,
+    "venue": "Materials & Design",
+    "topics": [
+     "Mechanical Behavior of Composites",
+     "Fiber-reinforced polymer composites",
+     "Natural Fiber Reinforced Composites"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127518308542-ga1_lrg.jpg",
+    "abstract": "The manufacturing process of a new generation of thermoplastic fibre-metal laminates (TP-FMLs) was investigated. A vacuum assisted resin infusion method was used to produce the hybrid laminates. The effect of various chemical and physical treatments on the surface morphology of the aluminium (Al) alloy sheets and on the bond strength at the metal-composite interface was examined. The wettability, topography and chemical composition of the treated Al alloy sheets were studied by employing contact-angle goniometry, coherence scanning interferometry, profilometry and X-ray photoelectron spectroscopy. The results showed that the applied treatments on the Al alloy sheet changed the surface morphology and surface energy in a different degree, which in turn effectively enhanced the interfacial bond strength between the constituents. In addition, the flexural, interlaminar shear strength and interlaminar fracture toughness of the manufactured TP-FMLs with the optimum metal surface treatment were evaluated. The experimental results of the TP-FMLs were compared to an equivalent thermoplastic composite. The composite-metal interface and the fracture surface characteristics were examined under scanning electron microscopy. In-situ polymerisation was found to play a key role in bonding the treated Al alloy with the composite layer during manufacturing."
+   },
+   {
+    "id": "https://openalex.org/W1750177104",
+    "doi": "https://doi.org/10.1016/j.applthermaleng.2015.08.087",
+    "title": "Single phase flow pressure drop and heat transfer in rectangular metallic microchannels",
+    "year": 2015,
+    "cited": 95,
+    "venue": "Applied Thermal Engineering",
+    "topics": [
+     "Heat Transfer and Optimization",
+     "Heat Transfer and Boiling Studies",
+     "Heat Transfer Mechanisms"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359431115008832/pdf",
+    "abstract": "Numerical simulations were performed using Fluent 14.5 to investigate single phase flow and conjugate heat transfer in copper rectangular microchannels. Two different configurations were simulated: (1) single channel with hydraulic diameter of 0.561 mm and (2) multichannel configuration consisting of inlet and outlet manifolds and 25 channels with hydraulic diameter of 0.409 mm. In the single channel configuration, four numerical models were investigated namely, 2D thin-wall, 3D thin-wall (heated from the bottom), 3D thin-wall (three side heated) and 3D full conjugate models. In the multichannel configuration, only 3D full conjugate model was used. The simulation results of the single channel configuration were validated using experimental data of water as a test fluid while the results of the multichannel configuration were validated using experimental data of R134a refrigerant. In the multichannel configuration, flow distribution among the channels was also investigated. The 3D thin-wall model simulation was conducted at thermal boundary conditions similar to those assumed in the experimental data reduction (uniform heat flux) and showed excellent agreement with the experimental data. However, the results of the 3D full conjugate model demonstrated that there is a significant conjugate effect and the heat flux is not uniformly distributed along the channel resulting in significant deviation compared to the experimental data (more than 50%). Also, the results demonstrated that there is a significant difference between the 3D thin-wall and full conjugate models. The simulation of the multichannel configuration with an inlet manifold having gradual decrease in cross sectional area achieved very reasonable uniform flow distribution among the channels which will provide uniform heat transfer rates across the base of the microchannels."
+   },
+   {
+    "id": "https://openalex.org/W2106360825",
+    "doi": "https://doi.org/10.1242/jeb.01128",
+    "title": "Structure and properties of the glandular surface in the digestive zone of the pitcher in the carnivorous plantNepenthes ventrataand its role in insect trapping and retention",
+    "year": 2004,
+    "cited": 95,
+    "venue": "Journal of Experimental Biology",
+    "topics": [
+     "Plant and Biological Electrophysiology Studies",
+     "Electrowetting and Microfluidic Technologies",
+     "Plant Parasitism and Resistance"
+    ],
+    "oa_url": "https://journals.biologists.com/jeb/article-pdf/207/17/2947/1556803/2947.pdf",
+    "abstract": "Carnivorous plants of the genus Nepenthes grow in nutrient-poor habitats and have evolved specialised trapping organs, known as pitchers. These are composed of different surface zones serving the functions of attraction, capture and digestion of insects, which represent a main source of nitrogen. To investigate the role of the glandular digestive zone in the trapping mechanism of the pitcher, structural, mechanical and physico-chemical studies were applied to N. ventrata and combined with insect behavioural experiments. It was found that the glandular surface is microscopically rough since it is regularly structured with multicellular glands situated in epidermal depressions. The presence of downward-directed 'hoods' over the upper part of glands and sloped depressions in the proximal direction of the pitcher causes a marked anisotropy of the surface. The glandular zone surface is composed of relatively stiff material (Young's modulus, 637.19+/-213.44 kPa). It is not homogeneous, in terms of adhesive properties, and contains numerous areas without adhesion as well as adhesive areas differing greatly in tenacity values (range, 1.39-28.24 kPa). The surface is readily wettable with water (contact angle, 31.9-36.0 degrees C) and has a high surface free energy (56.84-61.93 mN m(-1)) with a relatively high polar component (33.09-52.70 mN m(-1)). To examine the effect of the glandular secretion on attachment systems of insects having hairy and smooth adhesive pads, forces generated on different surfaces by Calliphora vicina flies and Pyrrhocoris apterus bugs, respectively, were measured. Flies attached equally well to both fresh and air-dried glandular surfaces whereas bugs generated a significantly lower force on the fresh glandular surface compared with the air-dried one. It is assumed that the contribution of the glandular surface to insect retention, due to its effect on insect attachment, differs depending on insect weight and the type of insect attachment system. Surface anisotropy does not facilitate effective claw interlocking so that insects possessing only claws are probably not able to cling to the glandular surface. However, stiffness of the pitcher wall material in the digestive zone can provide claw clinging via punching of the pitcher wall by claws. Small insects lacking pads may use adhesive areas on the plant surface to attach themselves, but such solitary points with very strong adhesion possibly impede their overall locomotion and chance of escape. Pad-bearing insects are presumably able to attach to smooth parts of the glandular surface located between glands. High free surface energy of the plant substrate may promote adhesion. Gland secretion may decrease attachment ability in insects with smooth adhesive pads but not influence attachment of insects with hairy attachment systems."
+   },
+   {
+    "id": "https://openalex.org/W2318398974",
+    "doi": "https://doi.org/10.1038/srep22466",
+    "title": "A novel approach of chemical mechanical polishing using environment-friendly slurry for mercury cadmium telluride semiconductors",
+    "year": 2016,
+    "cited": 93,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Electronic and Structural Properties of Oxides",
+     "Advanced Semiconductor Detectors and Materials",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep22466.pdf",
+    "abstract": "A novel approach of chemical mechanical polishing (CMP) is developed for mercury cadmium telluride (HgCdTe or MCT) semiconductors. Firstly, fixed-abrasive lapping is used to machine the MCT wafers, and the lapping solution is deionized water. Secondly, the MCT wafers are polished using the developed CMP slurry. The CMP slurry consists of mainly SiO2 nanospheres, H2O2, and malic and citric acids, which are different from previous CMP slurries, in which corrosive and toxic chemical reagents are usually employed. Finally, the polished MCT wafers are cleaned and dried by deionized water and compressed air, respectively. The novel approach of CMP is environment-friendly. Surface roughness Ra, and peak-to-valley (PV) values of 0.45, and 4.74 nm are achieved, respectively on MCT wafers after CMP. The first and second passivating processes are observed in electrochemical measurements on MCT wafers. The fundamental mechanisms of CMP are proposed according to the X-ray photoelectron spectroscopy (XPS) and electrochemical measurements. Malic and citric acids dominate the first passivating process, and the CMP slurry governs the second process. Te(4+)3d peaks are absent after CMP induced by the developed CMP slurry, indicating the removing of oxidized films on MCT wafers, which is difficult to achieve using single H2O2 and malic and citric acids solutions."
+   },
+   {
+    "id": "https://openalex.org/W3007695878",
+    "doi": "https://doi.org/10.1016/j.matdes.2020.108583",
+    "title": "Elucidating the grain-orientation dependent corrosion rates of austenitic stainless steels",
+    "year": 2020,
+    "cited": 91,
+    "venue": "Materials & Design",
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Corrosion Behavior and Inhibition",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127520301179/pdf",
+    "abstract": "The dependence of oxidation rates on grain orientation has been observed for austenitic alloys suggesting crystallographic control of such processes. To better understand these observations, the active and transpassive oxidation behaviors of an austenitic AISI 316L stainless steel were investigated using vertical scanning interferometry (VSI). The oxidation rates of >100 unique grains were measured and related to their crystallographic orientations (i.e., with respect to the surface normal direction) as identified using electron backscatter diffraction (EBSD). The oxidation rates follow a scaling that is given by: {001} < {101} < {111} for grains undergoing both active and transpassive oxidation. The corrosion tendencies of {001} and {101} grains indicate that the activation energy of dissolution follows a scaling similar to that of the surface energy. However, the high corrosion rates of {111} grains, which feature a surface energy lower than those of the {001} and {101} grains, is attributed to their lower tendency to adsorb passivating species, from solution, that leads to a net reduction in the activation energy of oxidation. These insights provide improved understanding of the crystallographic controls of oxidation processes, and thereby suggest processing pathways for enhancing the oxidation resistance of stainless steels."
+   },
+   {
+    "id": "https://openalex.org/W4226329727",
+    "doi": "https://doi.org/10.1038/s41467-022-29798-0",
+    "title": "Full-range birefringence control with piezoelectric MEMS-based metasurfaces",
+    "year": 2022,
+    "cited": 87,
+    "venue": "Nature Communications",
+    "topics": [
+     "Metamaterials and Metasurfaces Applications",
+     "Advanced Antenna and Metasurface Technologies",
+     "Liquid Crystal Research Advancements"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-29798-0.pdf",
+    "abstract": "Dynamic polarization control is crucial for emerging highly integrated photonic systems with diverse metasurfaces being explored for its realization, but efficient, fast, and broadband operation remains a cumbersome challenge. While efficient optical metasurfaces (OMSs) involving liquid crystals suffer from inherently slow responses, other OMS realizations are limited either in the operating wavelength range (due to resonances involved) or in the range of birefringence tuning. Capitalizing on our development of piezoelectric micro-electro-mechanical system (MEMS) based dynamic OMSs, we demonstrate reflective MEMS-OMS dynamic wave plates (DWPs) with high polarization conversion efficiencies (∼75%), broadband operation (∼100 nm near the operating wavelength of 800 nm), fast responses (<0.4 milliseconds) and full-range birefringence control that enables completely encircling the Poincaré sphere along trajectories determined by the incident light polarization and DWP orientation. Demonstrated complete electrical control over light polarization opens new avenues in further integration and miniaturization of optical networks and systems."
+   },
+   {
+    "id": "https://openalex.org/W3093603036",
+    "doi": "https://doi.org/10.1016/j.ijheatmasstransfer.2020.120587",
+    "title": "Effect of aspect ratio on flow boiling characteristics in microchannels",
+    "year": 2020,
+    "cited": 87,
+    "venue": "International Journal of Heat and Mass Transfer",
+    "topics": [
+     "Heat Transfer and Boiling Studies",
+     "Heat Transfer and Optimization",
+     "Heat Transfer Mechanisms"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0017931020335237?via%3Dihub",
+    "abstract": "The effect of channel aspect ratio on flow boiling characteristics (flow patterns, heat transfer and pressure drop) of HFE-7100 in copper multi-microchannel heat sinks was investigated experimentally. Three heat sinks with base area 500 mm2, channel hydraulic diameter 0.46 mm and channel aspect ratio (ratio of channel width to channel height) of 0.5, 1.0 and 2.0 were tested. The average surface roughness of the channel bottom surface was nearly the same in the three heat sinks and the measured values were 0.271, 0.286 and 0.304 µm. The local heat transfer rates were determined simultaneously with flow visualisation at mass flux ranging from 50 to 250 kg/m2s, wall heat flux from 9.6 to 191.6 kW/m2, system pressure of 1 bar and low inlet sub-cooling of 5 K. The results showed that, when the channel aspect ratio increased, the heat transfer coefficient increased, while the flow boiling pressure drop decreased. However, the heat transfer rate calculated using the heat sink base area was higher in the heat sink with the smallest channel aspect ratio, indicating an enhancement due to the largest surface area."
+   },
+   {
+    "id": "https://openalex.org/W1187888630",
+    "doi": "https://doi.org/10.1016/j.ymssp.2015.05.029",
+    "title": "Multiscale roughness analysis of engineering surfaces: A comparison of methods for the investigation of functional correlations",
+    "year": 2015,
+    "cited": 81,
+    "venue": "Mechanical Systems and Signal Processing",
+    "topics": [
+     "Surface Roughness and Optical Measurements",
+     "Adhesion, Friction, and Surface Interactions",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0888327015002824",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2738313996",
+    "doi": "https://doi.org/10.1117/1.oe.56.11.111714",
+    "title": "Optimization of surface measurement for metal additive manufacturing using coherence scanning interferometry",
+    "year": 2017,
+    "cited": 78,
+    "venue": "Optical Engineering",
+    "topics": [
+     "Optical measurement and interference techniques",
+     "Photoacoustic and Ultrasonic Imaging",
+     "Laser Material Processing Techniques"
+    ],
+    "oa_url": "https://www.spiedigitallibrary.org/journals/Optical-Engineering/volume-56/issue-11/111714/Optimization-of-surface-measurement-for-metal-additive-manufacturing-using-coherence/10.1117/1.OE.56.11.111714.pdf",
+    "abstract": "Surface topography measurement for metal additive manufacturing (AM) is a challenging task for contact and noncontact methods. We present an experimental investigation of the use of coherence scanning interferometry (CSI) for measuring AM surfaces. Our approach takes advantage of recent technical enhancements in CSI, including high dynamic range for light level and adjustable data acquisition rates for noise reduction. The investigation covers several typical metal AM surfaces made from different materials and AM processes. Recommendations for measurement optimization balance three aspects: data coverage, measurement area, and measurement time. This study also presents insight into areas of interest for future rigorous examination, such as measuring noise and further development of guidelines for measuring metal AM surfaces."
+   },
+   {
+    "id": "https://openalex.org/W4391465430",
+    "doi": "https://doi.org/10.1126/sciadv.adl4661",
+    "title": "Electrically tunable topological phase transition in non-Hermitian optical MEMS metasurfaces",
+    "year": 2024,
+    "cited": 76,
+    "venue": "Science Advances",
+    "topics": [
+     "Quantum Mechanics and Non-Hermitian Physics",
+     "Metamaterials and Metasurfaces Applications",
+     "Nonlinear Photonic Systems"
+    ],
+    "oa_url": "https://doi.org/10.1126/sciadv.adl4661",
+    "abstract": "Exceptional points (EPs), unique junctures in non-Hermitian open systems where eigenvalues and eigenstates simultaneously coalesce, have gained notable attention in photonics because of their enthralling physical principles and unique properties. Nonetheless, the experimental observation of EPs, particularly within the optical domain, has proven rather challenging because of the grueling demand for precise and comprehensive control over the parameter space, further compounded by the necessity for dynamic tunability. Here, we demonstrate the occurrence of optical EPs when operating with an electrically tunable non-Hermitian metasurface platform that synergizes chiral metasurfaces with piezoelectric MEMS mirrors. Moreover, we show that, with a carefully constructed metasurface, a voltage-controlled spectral space can be finely tuned to access not only the chiral EP but also the diabolic point characterized by degenerate eigenvalues and orthogonal eigenstates, thereby allowing for dynamic topological phase transition. Our work paves the way for developing cutting-edge optical devices rooted in EP physics and opening uncharted vistas in dynamic topological photonics."
+   },
+   {
+    "id": "https://openalex.org/W2012991392",
+    "doi": "https://doi.org/10.1115/1.3075874",
+    "title": "Examination of Selective Pulsed Laser Micropolishing on Microfabricated Nickel Samples Using Spatial Frequency Analysis",
+    "year": 2009,
+    "cited": 76,
+    "venue": "Journal of Manufacturing Science and Engineering",
+    "topics": [
+     "Laser Material Processing Techniques",
+     "Advanced Surface Polishing Techniques",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://asmedigitalcollection.asme.org/manufacturingscience/article-pdf/131/2/021002/5934671/021002_1.pdf",
+    "abstract": "The precision of parts created by microfabrication processes is limited by surface roughness. Therefore, as a means of improving surface roughness, pulsed laser micropolishing on nickel was examined numerically and experimentally. A one-dimensional finite element method model was used to estimate the melt depth and duration for single 50–300 ns laser pulses. The critical frequency was introduced to predict the effectiveness of polishing in the spatial frequency domain. A 1064 nm Nd:YAG laser with 300 ns pulses was used to experimentally investigate pulsed laser polishing on microfabricated nickel samples with microscale line features. A microfabricated sample with 2.5 μm wide and 0.2 μm high lines spaced 5 μm apart and one with 5 μm wide and 0.38 μm high lines spaced 10 μm apart were polished with 300 ns long pulses of 47.2 J/cm2 and 44.1 J/cm2 fluences, respectively. The critical frequency for these experimental conditions was predicted and compared with the reduction in the average surface roughness measured for samples with two different spatial frequency contents. The average surface roughness of 5 μm and 10 μm wavelength line features were reduced from 0.112 μm to 0.015 μm and from 0.112 μm to 0.059 μm, respectively. Four regimes of pulsed laser micropolishing are identified as a function of laser fluence for a given pulse width: (1) at low fluences no polishing occurs due to insufficient melting, (2) moderate fluences allow sufficient melt time for surface wave damping and significant smoothing occurs, (3) increasing fluence reduces smoothing, and (4) high fluences cause roughening due to large recoil pressure and ablation. Significant improvements in average surface roughness can be achieved by pulsed laser micropolishing if the dominant frequency content of the original surface features is above the critical spatial frequency for polishing."
+   },
+   {
+    "id": "https://openalex.org/W2106370837",
+    "doi": "https://doi.org/10.1088/0957-4484/14/12/009",
+    "title": "Accurate analytical measurements in the atomic force microscope: a microfabricated spring constant standard potentially traceable to the SI",
+    "year": 2003,
+    "cited": 73,
+    "venue": "Nanotechnology",
+    "topics": [
+     "Force Microscopy Techniques and Applications",
+     "Mechanical and Optical Resonators",
+     "Scientific Measurement and Uncertainty Evaluation"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0957-4484/14/12/009/pdf",
+    "abstract": "Calibration of atomic force microscope (AFM) cantilevers is necessary for the measurement of nanonewton and piconewton forces, which are critical to analytical applications of AFM in the analysis of polymer surfaces, biological structures and organic molecules at nanoscale lateral resolution. We have developed a compact and easy-to-use reference artefact for this calibration, using a method that allows traceability to the SI (Système International). Traceability is crucial to ensure that force measurements by AFM are comparable to those made by optical tweezers and other methods. The new non-contact calibration method measures the spring constant of these artefacts, by a combination of electrical measurements and Doppler velocimetry. The device was fabricated by silicon surface micromachining. The device allows AFM cantilevers to be calibrated quite easily by the 'cantilever-on-reference' method, with our reference device having a spring constant uncertainty of around ± 5% at one standard deviation. A simple substitution of the analogue velocimeter used in this work with a digital model should reduce this uncertainty to around ± 2%. Both are significant improvements on current practice, and allow traceability to the SI for the first time at these nanonewton levels."
+   },
+   {
+    "id": "https://openalex.org/W3042460349",
+    "doi": "https://doi.org/10.1016/j.solener.2020.07.018",
+    "title": "Effect of cutting parameters on surface integrity of monocrystalline silicon sawn with an endless diamond wire saw",
+    "year": 2020,
+    "cited": 70,
+    "venue": "Solar Energy",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Diamond and Carbon-based Materials Research",
+     "Tunneling and Rock Mechanics"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0038092X20307507-ga1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2769993407",
+    "doi": "https://doi.org/10.1088/1361-6501/aa9e19",
+    "title": "Feature-based characterisation of signature topography in laser powder bed fusion of metals",
+    "year": 2017,
+    "cited": 68,
+    "venue": "Measurement Science and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Manufacturing Process and Optimization"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1361-6501/aa9e19/pdf",
+    "abstract": "Abstract The use of state-of-the-art areal topography measurement instrumentation allows for a high level of detail in the acquisition of topographic information at micrometric scales. The 3D geometric models of surface topography obtained from measured data create new opportunities for the investigation of manufacturing processes through characterisation of the surfaces of manufactured parts. Conventional methods for quantitative assessment of topography usually only involve the computation of texture parameters, summary indicators of topography-related characteristics that are computed over the investigated area. However, further useful information may be obtained through characterisation of signature topographic formations, as more direct indicators of manufacturing process behaviour and performance. In this work, laser powder bed fusion of metals is considered. An original algorithmic method is proposed to isolate relevant topographic formations and to quantify their dimensional and geometric properties, using areal topography data acquired by state-of-the-art areal topography measurement instrumentation."
+   },
+   {
+    "id": "https://openalex.org/W2108438959",
+    "doi": "https://doi.org/10.1116/1.4927542",
+    "title": "Focused-ion beam patterning of organolead trihalide perovskite for subwavelength grating nanophotonic applications",
+    "year": 2015,
+    "cited": 67,
+    "venue": "Journal of Vacuum Science & Technology B Nanotechnology and Microelectronics Materials Processing Measurement and Phenomena",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Ga2O3 and related materials",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://avs.scitation.org/doi/pdf/10.1116/1.4927542",
+    "abstract": "The coherent amplified spontaneous emission and high photoluminescence quantum efficiency of organolead trihalide perovskite have led to research interest in this material for use in photonic devices. In this paper, the authors present a focused-ion beam patterning strategy for methylammonium lead tribromide (MAPbBr3) perovskite crystal for subwavelength grating nanophotonic applications. The essential parameters for milling, such as the number of scan passes, dwell time, ion dose, ion current, ion incident angle, and gas-assisted etching, were experimentally evaluated to determine the sputtering yield of the perovskite. Based on our patterning conditions, the authors observed that the sputtering yield ranged from 0.0302 to 0.0719 μm3/pC for the MAPbBr3 perovskite crystal. Using XeF2 for the focused-ion beam gas-assisted etching, the authors determined that the etching rate was reduced to between 0.40 and 0.97, depending on the ion dose, compared with milling with ions only. Using the optimized patterning parameters, the authors patterned binary and circular subwavelength grating reflectors on the MAPbBr3 perovskite crystal using the focused-ion beam technique. Based on the computed grating structure with around 97% reflectivity, all of the grating dimensions (period, duty cycle, and grating thickness) were patterned with nanoscale precision (>±3 nm), high contrast, and excellent uniformity. Our results provide a platform for utilizing the focused-ion beam technique for fast prototyping of photonic nanostructures or nanodevices on organolead trihalide perovskite."
+   },
+   {
+    "id": "https://openalex.org/W2070131600",
+    "doi": "https://doi.org/10.1039/c1sm05146f",
+    "title": "Mechanics of wrinkled surface adhesion",
+    "year": 2011,
+    "cited": 67,
+    "venue": "Soft Matter",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Adhesion, Friction, and Surface Interactions",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://works.bepress.com/alfred_crosby/6",
+    "abstract": "Surface buckling instabilities, particularly wrinkles, are spontaneously occurring surface patterns that can cover large areas and have the potential to modify the adhesion of surfaces in a systematic manner; however, the impact of these wrinkled features is not understood quantitatively. We utilize a novel fabrication process to form aligned wrinkles from polystyrene and polydimethylsiloxane and quantify their adhesion using contact adhesion tests. Wrinkle amplitudes range from 0.3 μm to 11.4 μm and wavelengths range from 6.2 μm to 74.0 μm, and these two parameters are tuned independently. The maximum separation force of a flat cylindrical probe from a wrinkled surface depends nonlinearly on the wrinkle geometry, as described by both amplitude and wavelength. Additionally, results are presented for a set of adhesion experiments conducted on single, macroscopic cylinders using small circular flat probes to mimic the contact of individual wrinkles. A simple scaling is presented that incorporates geometric parameters, testing geometry and materials properties to predict the separation force. This relationship is shown to be in good agreement with the experimental data."
+   },
+   {
+    "id": "https://openalex.org/W2267221411",
+    "doi": "https://doi.org/10.1088/0022-3727/49/3/035303",
+    "title": "Investigation of relationship between interfacial electroadhesive force and surface texture",
+    "year": 2015,
+    "cited": 66,
+    "venue": "Journal of Physics D Applied Physics",
+    "topics": [
+     "Adhesion, Friction, and Surface Interactions",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Electrical Contact Performance and Analysis"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0022-3727/49/3/035303/pdf",
+    "abstract": "A novel investigation into the relationship between the obtainable interfacial electroadhesive forces and different surface textures is presented in this paper. Different surface textures were generated then characterized based on a recognized areal-based non-contact surface texture measurement platform and procedure. An advanced electroadhesive force measurement platform and procedure were then implemented to measure the obtainable electroadhesive forces on those different surface textures. The results show that the obtained interfacial electroadhesive forces increase with decreasing Sq (root mean square height) value of the substrate surface provided that the difference in Sq between the different substrates is over 5 μ m. Also, the higher the applied voltage, the larger the relative increase in electroadhesive forces observed. However, when the difference of Sq value between different substrate surfaces is below 2 μ m, the obtained interfacial electroadhesive forces do not necessarily increase with decreasing Sq . Furthermore, the obtainable electroadhesive forces are not necessarily the same when the Sq value of two substrate surfaces are the same due to the fact that the direction of the surface texture plays an important role in achieving electroadhesive forces."
+   },
+   {
+    "id": "https://openalex.org/W3082099364",
+    "doi": "https://doi.org/10.1016/j.applthermaleng.2020.115966",
+    "title": "Effect of inlet subcooling on flow boiling in microchannels",
+    "year": 2020,
+    "cited": 65,
+    "venue": "Applied Thermal Engineering",
+    "topics": [
+     "Heat Transfer and Boiling Studies",
+     "Heat Transfer and Optimization",
+     "Heat Transfer Mechanisms"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359431120334487/pdf",
+    "abstract": "The paper describes experimental work to assess the effect of inlet subcooling on the flow boiling characteristics of HFE-7200 in a multi-microchannel heat sink. The experiments were performed at a mass flux of 200 kg/m2 s and system pressure of 1 bar for inlet subcooling conditions of 5 K, 10 K and 20 K and wall heat flux between 25.9 and 180.7 kW/m2. The equivalent base heat flux was between 99.1 and 605.3 kW/m2. The microchannel evaporator had 44 channels which were 0.36 mm in width and 0.7 mm in depth. The thickness of the fin between the channels was 0.1 mm and the base area of the microchannels was 20 mm × 20 mm. Increasing inlet subcooling generally decreased two-phase pressure drop in the channels and delayed flow regime transitions in the heat sink. Flow instability was also found to be dependent on the degree of inlet subcooling. The extended subcooled region of the channels at higher degrees of subcooling resulted in lower average heat transfer coefficients in the heat sink, especially at low heat fluxes. The effect of inlet subcooling on local heat transfer coefficients was less pronounced in the saturated boiling region. The study verified the importance of the degree of subcooling when comparing heat transfer and pressure drop characteristics in microchannel heat sinks and when optimising the design of integrated thermal management systems for high heat flux electronic devices."
+   },
+   {
+    "id": "https://openalex.org/W1987793270",
+    "doi": "https://doi.org/10.1371/journal.pone.0109770",
+    "title": "Complementary Effects of Two Growth Factors in Multifunctionalized Silk Nanofibers for Nerve Reconstruction",
+    "year": 2014,
+    "cited": 65,
+    "venue": "PLoS ONE",
+    "topics": [
+     "Silk-based biomaterials and applications",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Nerve injury and regeneration"
+    ],
+    "oa_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0109770&type=printable",
+    "abstract": "With the aim of forming bioactive guides for peripheral nerve regeneration, silk fibroin was electrospun to obtain aligned nanofibers. These fibers were functionalized by incorporating Nerve Growth Factor (NGF) and Ciliary NeuroTrophic Factor (CNTF) during electrospinning. PC12 cells grown on the fibers confirmed the bioavailability and bioactivity of the NGF, which was not significantly released from the fibers. Primary neurons from rat dorsal root ganglia (DRGs) were grown on the nanofibers and anchored to the fibers and grew in a directional fashion based on the fiber orientation, and as confirmed by growth cone morphology. These biofunctionalized nanofibers led to a 3-fold increase in neurite length at their contact, which was likely due to the NGF. Glial cell growth, alignment and migration were stimulated by the CNTF in the functionalized nanofibers. Organotypic culture of rat fetal DRGs confirmed the complementary effect of both growth factors in multifunctionalized nanofibers, which allowed glial cell migration, alignment and parallel axonal growth in structures resembling the 'bands of Bungner' found in situ. Graftable multi-channel conduits based on biofunctionalized aligned silk nanofibers were developed as an organized 3D scaffold. Our bioactive silk tubes thus represent new options for a biological and biocompatible nerve guidance conduit."
+   },
+   {
+    "id": "https://openalex.org/W2507226261",
+    "doi": "https://doi.org/10.1016/j.wear.2016.08.003",
+    "title": "The investigation of influence of tool wear on ductile to brittle transition in single point diamond turning of silicon",
+    "year": 2016,
+    "cited": 64,
+    "venue": "Wear",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Advanced machining processes and optimization",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S004316481630165X/pdf",
+    "abstract": "Single point diamond turning (SPDT) of large functional surfaces on silicon remains a challenge owing to severe diamond tool wear. Recently, tremendous efforts have been made in understanding the machining mechanics, especially wear mechanism of diamond tools in SPDT of silicon. However, the localised transition of machining mode from ductile to brittle as a result of progressive tool wear has not been well understood yet. In this paper both experimental and numerical simulation studies of SPDT were performed in an effort to reveal the underlying phenomenon of ductile to brittle transition (DBT) as a consequence of diamond tool wear. Series of facing and plunging cuts were performed and the profile of machined surface was evaluated together with the progression of tool wear. The transition stages from ductile to brittle were identified by analysing the surface profiles of plunging cuts using a scanning electron microscope (SEM) and a 2D contact profilometer and a white light interferometer. The progressive degradation of the cutting edge of diamond tool and its wear mechanism was determined using Least Square (LS) arc analysis and SEM. The study reveals that at initial tool wear stage, the ductile to brittle transition initiates with the formation of lateral cracks which are transformed into brittle pitting damage with further tool edge degradation. Numerical simulation investigation using smoothed particle hydrodynamics (SPH) was also conducted in this paper in order to gain further insight of variation of stress on the cutting edge due to tool wear and its influence on brittle to ductile transition. A significant variation in frictional resistance to shear deformation as well as position shift of the maximum stress values was observed for the worn tools. The magnitude and distribution of hydrostatic stress were also found to change significantly along the cutting edge of new and worn diamond tools."
+   },
+   {
+    "id": "https://openalex.org/W2950784125",
+    "doi": "https://doi.org/10.1149/2.1171910jes",
+    "title": "The Influence of Polyvinylidene Fluoride (PVDF) Binder Properties on LiNi0.33Co0.33Mn0.33O2 (NMC) Electrodes Made by a Dry-Powder-Coating Process",
+    "year": 2019,
+    "cited": 63,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/2.1171910jes/pdf",
+    "abstract": "We have investigated the effects of the molecular weight of the polyvinylidene fluoride (PVDF) binder on the electrochemical performance and mechanical integrity of the LiNi 0.33 Co 0.33 Mn 0.33 O 2 (NMC) electrodes made by a dry-powder-coating process. The microstructure, binding strength, and electrochemical behavior of the electrodes made with two types of PVDF polymers were compared. We show that a thin PVDF layer can form on the NMC particle surface after heating the PVDF to above its melting point. The microstructure and porosity of the PVDF layer depend strongly on the molecular weight of the PVDFs. With increasing molecular weight, the PVDF layer becomes more porous, improving the high-rate capacity without decreasing binding strength and long-term cycling performance of the electrodes."
+   },
+   {
+    "id": "https://openalex.org/W2324798879",
+    "doi": "https://doi.org/10.1038/srep23985",
+    "title": "Controlling the Adhesion of Superhydrophobic Surfaces Using Electrolyte Jet Machining Techniques",
+    "year": 2016,
+    "cited": 63,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Surface Modification and Superhydrophobicity",
+     "Adhesion, Friction, and Surface Interactions",
+     "Fluid Dynamics and Heat Transfer"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep23985.pdf",
+    "abstract": "Patterns with controllable adhesion on superhydrophobic areas have various biomedical and chemical applications. Electrolyte jet machining technique (EJM), an electrochemical machining method, was firstly exploited in constructing dimples with various profiles on the superhydrophobic Al alloy surface using different processing parameters. Sliding angles of water droplets on those dimples firstly increased and then stabilized at a certain value with the increase of the processing time or the applied voltages of the EJM, indicating that surfaces with different adhesion force could be obtained by regulating the processing parameters. The contact angle hysteresis and the adhesion force that restricts the droplet from sliding off were investigated through experiments. The results show that the adhesion force could be well described using the classical Furmidge equation. On account of this controllable adhesion force, water droplets could either be firmly pinned to the surface, forming various patterns or slide off at designed tilting angles at specified positions on a superhydrophobic surface. Such dimples on superhydrophopbic surfaces can be applied in water harvesting, biochemical analysis and lab-on-chip devices."
+   },
+   {
+    "id": "https://openalex.org/W2015372842",
+    "doi": "https://doi.org/10.1364/oe.17.015508",
+    "title": "Predicting the coherent X-ray wavefront focal properties at the Linac Coherent Light Source (LCLS) X-ray free electron laser",
+    "year": 2009,
+    "cited": 62,
+    "venue": "Optics Express",
+    "topics": [
+     "Advanced X-ray Imaging Techniques",
+     "X-ray Spectroscopy and Fluorescence Analysis",
+     "Advanced Electron Microscopy Techniques and Applications"
+    ],
+    "oa_url": "https://doi.org/10.1364/oe.17.015508",
+    "abstract": "The first X-ray free electron laser (XFEL) at keV energies will be the Linac Coherent Light Source (LCLS), located at the SLAC National Accelerator Laboratory. Scheduled to begin operation in 2009, this first-of-a-kind X-ray source will produce ultra-short X-ray pulses of unprecedented brightness in the 0.8 to 8 keV first harmonic photon energy regime. Much effort has been invested in predicting and modeling the XFEL photon source properties at the undulator exit; however, as most LCLS experiments are ultimately dependent on the beam focal spot properties it is equally as important to understand the XFEL beam at the endstations where the experiments are performed. Here, we use newly available precision surface metrology data from actual LCLS mirrors combined with a scalar diffraction model to predict the LCLS beam properties in the experiment chambers."
+   },
+   {
+    "id": "https://openalex.org/W2747232478",
+    "doi": "https://doi.org/10.1007/s00170-017-1021-7",
+    "title": "Investigation of influence of tool rake angle in single point diamond turning of silicon",
+    "year": 2017,
+    "cited": 60,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Advanced machining processes and optimization",
+     "Tunneling and Rock Mechanics"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007%2Fs00170-017-1021-7.pdf",
+    "abstract": "This paper presents an investigation of the effect of tool rake angle in single point diamond turning (SPDT) of silicon using experimental and simulation methods. Machining trials under the same cutting conditions were carried out using three different rake angle tools. In order to delve further into the rake angle effect on the output parameters including material removal, stresses and crack formation, at the onset of chip formation and steady-state conditions, a simulation study using smoothed particle hydrodynamics (SPH) approach was performed. The simulation results were incorporated and found in good agreement with experimental observations. The results indicate that diamond tool wear rate and surface generation mechanism significantly vary using different rake angle tools. The continuance of compressive and shear deformation sequence at the chip incipient stage governs the high-pressure phase transformation (HPPT) as a function of rake angle and tool wear. The capability of diamond tool to maintain this sequence and required hydrostatic pressure under worn conditions is highly influenced by a change in rake angle. The proportional relationship of cutting force magnitude and tool wear also differs owing to disparate wear pattern which influence distribution of stresses and uniform hydrostatic pressure under the tool cutting edge. This subsequently influences structural phase transformation and therefore frictional resistance to cutting. Mainly frictional groove wear was found dominant for all diamond tools in machining of silicon."
+   },
+   {
+    "id": "https://openalex.org/W3098584410",
+    "doi": "https://doi.org/10.1038/s41598-020-76448-w",
+    "title": "Preparation of highly wettable coatings on Ti–6Al–4V ELI alloy for traumatological implants using micro-arc oxidation in an alkaline electrolyte",
+    "year": 2020,
+    "cited": 57,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Bone Tissue Engineering Materials",
+     "Titanium Alloys Microstructure and Properties",
+     "Orthopaedic implants and arthroplasty"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-020-76448-w.pdf",
+    "abstract": "O and NaOH, was used to form a thin porous oxide coating consisting of two layers differing in chemical and phase composition. The unique procedure, combining MAO and removal of the outer layer by blasting, enables to prepare a coating suitable for application in temporary traumatological implants. A bilayer formed in an alkaline electrolyte environment during the application of MAO enables the formation of a wear-resistant layer with silicon incorporated in the oxide phase. Following the removal of the outer rutile-containing porous layer, the required coating properties for traumatological applications were determined. The prepared surfaces were characterized by scanning electron microscopy, X-ray diffraction patterns, X-ray photoelectron spectroscopy, atomic force microscopy and contact angle measurements. Cytocompatibility was evaluated using human osteoblast-like Saos-2 cells. The newly-developed surface modifications of Ti-6Al-4V ELI alloy performed satisfactorily in all cellular tests in comparison with MAO-untreated alloy and standard tissue culture plastic. High cell viability was supported, but the modifications allowed only relatively slow cell proliferation, and showed only moderate osseointegration potential without significant support for matrix mineralization. Materials with these properties are promising for utilization in temporary traumatological implants."
+   },
+   {
+    "id": "https://openalex.org/W2442320345",
+    "doi": "https://doi.org/10.1016/j.procir.2016.02.339",
+    "title": "Improving Surface Finish of 3D-printed Metals by Ultrasonic Nanocrystal Surface Modification",
+    "year": 2016,
+    "cited": 56,
+    "venue": "Procedia CIRP",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Additive Manufacturing Materials and Processes",
+     "Surface Treatment and Residual Stress"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S221282711600634X/pdf",
+    "abstract": "Poor surface finish of 3D-printed metals significantly deteriorates their corrosion, wear and fatigue resistance. Ultrasonic nano-crystal surface modification (UNSM) is an innovative surface processing technique that utilizes low amplitude ultrasonic frequency vibrations superimposed on a static load to generate plastic deformation on a metal surface to its improve properties and performance. In this study, we investigate the effect of UNSM on the surface finish of 3D-printed metals. An aluminum AlSi10Mg alloy fabricated by direct metal laser sintering (DMLS) was used as an example. It has been demonstrated that UNSM can significantly improve surface finish of 3D-printed aluminum alloy. For example, the surface roughness of the AlSi10Mg alloy was decreased from 18 to 3.5 μm. With a better surface finish, UNSM is expected to improve the properties and performance of 3D-printed metals."
+   },
+   {
+    "id": "https://openalex.org/W2114343498",
+    "doi": "https://doi.org/10.4028/www.scientific.net/amr.126-128.423",
+    "title": "High-Integrity Finishing of 4H-SiC (0001) by Plasma-Assisted Polishing",
+    "year": 2010,
+    "cited": 56,
+    "venue": "Advanced materials research",
+    "topics": [
+     "Advanced Surface Polishing Techniques",
+     "Metal and Thin Film Mechanics",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.scientific.net/AMR.126-128.423.pdf",
+    "abstract": "A novel machining method combined with the irradiation of atmospheric pressure plasma was proposed for the finishing of difficult-to-machine materials. The irradiation of helium-based water vapor plasma efficiently oxidized the surface of single-crystal 4H-SiC (0001), and a ball-on-disc test using an alumina ceramic ball revealed that the wear rate of SiC, the surface of which was modified by the irradiation of water vapor plasma, is 20-fold higher than that of the surface without plasma irradiation. Plasma-assisted polishing using CeO2 abrasives enabled us to improve the surface roughness of SiC without introducing crystallographical subsurface damage, and a scratch-free surface with a roughness of less than 0.3 nm rms was obtained."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Zygo NewView NX2\" OR \"Zygo NewView\" OR \"Zygo NX2\" OR \"AMETEK NewView NX2\" OR \"AMETEK NewView\") AND OPEN_ACCESS:y",

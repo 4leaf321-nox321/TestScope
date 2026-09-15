@@ -12,8 +12,158 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Shimadzu UH-X UH-FX\" OR \"Shimadzu UH-X\" OR \"Shimadzu UH-200kNX\" OR \"Shimadzu UH-200kNXh\" OR \"Shimadzu UH-300kNX\" OR \"Shimadzu UH-F300kNX\"",
-  "count": null,
-  "works": []
+  "count": 10,
+  "works": [
+   {
+    "id": "https://openalex.org/W3037404439",
+    "doi": "https://doi.org/10.1016/j.promfg.2020.05.160",
+    "title": "Effects of Nozzle Geometries on 3D Printing of Clay Constructs: Quantifying Contour Deviation and Mechanical Properties",
+    "year": 2020,
+    "cited": 42,
+    "venue": "Procedia Manufacturing",
+    "topics": [
+     "Innovations in Concrete and Construction Materials",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "3D Surveying and Cultural Heritage"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2351978920316127/pdf",
+    "abstract": "In this research, ready-to-print clay was employed to 3D print cylindrical constructs using two different nozzle geometries. The cylinders were printed using a direct ink writing (DIW) 3D printer with similar printing parameters such that the impacts of using different nozzle geometries in contour deviation and mechanical properties of the printed constructs can be quantified. Choosing the right nozzle geometry before printing is critical as it affects the surface finish as well as the mechanical properties of the constructs. This study utilizes point cloud data of the printed samples obtained from a scanning system to measure the contour deviation and surface roughness. According to the results from the point cloud analysis, for cylindrical constructs, circular nozzle imparts less surface roughness and contour deviation whereas square nozzle imparts higher compression strength but with comparatively higher contour deviation and surface roughness. The study provides framework to determine the deviations and mechanical properties of the free form constructs. The work has provided a guideline of nozzle selection in 3D printing of clay constructs for civil infrastructures."
+   },
+   {
+    "id": "https://openalex.org/W4385350015",
+    "doi": "https://doi.org/10.3390/met13081356",
+    "title": "Effect of CaO Addition on Microstructural Evolution Due to the Annealing of AZ31 Alloys Processed by Equal-Channel Angular Pressing (ECAP)",
+    "year": 2023,
+    "cited": 1,
+    "venue": "Metals",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Microstructure and mechanical properties",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/13/8/1356/pdf?version=1690523913",
+    "abstract": "This study demonstrated the application of equal-channel angular processing (ECAP), which was performed via the BC route, to determine the effect of the addition of CaO on the microstructural evolution of an AZ31 alloy due to annealing. Compression tests were performed to evaluate the mechanical properties of the alloy, and the corresponding microstructures were observed to elucidate the flow behavior. Ca-bearing second-phase particles were fragmented with the increase in the number of ECAP passes. The increase in the yield strength and flow stress with the addition of CaO was attributed to the dispersion of the Ca-bearing second-phase particles. When the CaO-added AZ31 and commercial AZ31 alloys were subjected to annealing, their flow stress decreased owing to the grain growth. However, the extent of the decrease in the flow stress for the CaO-added AZ31 alloy was lower than that for the commercial AZ31 alloy."
+   },
+   {
+    "id": "https://openalex.org/W7171672364",
+    "doi": "https://doi.org/10.3390/polym18151860",
+    "title": "Preliminary Feasibility Evaluation of Groove-Filling Thermochromic Polyurea Composites for Low-Temperature Visual Warning in Black Ice-Prone Pavements",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Polymers",
+    "topics": [
+     "Smart Materials for Construction",
+     "Fire effects on concrete materials",
+     "Structural Response to Dynamic Loads"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4360/18/15/1860/pdf?version=1785329827",
+    "abstract": "Black ice poses a serious winter road-safety hazard because its transparent appearance and localized formation make dangerous pavement conditions difficult to detect before vehicles enter affected areas. Converting this hidden low-temperature risk into visible surface information is therefore important for intuitive driver warning and road management. In this study, groove-filling thermochromic polyurea-based composites were fabricated using aliphatic polyurea resin, reversible thermochromic pigment (R.T.P.), and silica sand, and their colorimetric response, mechanical properties, and groove-filling applicability were investigated. Considering visual response and mechanical performance, the mixture containing 10 wt.% binder and 20 phr R.T.P. was selected as the most balanced candidate. For this mixture, the CIE L*a*b* values changed from 58.36, 3.85, and 13.32 for the control specimen to 47.82, 22.95, and 8.52, respectively, indicating a darker and more reddish appearance. The maximum compressive and flexural strengths were 10.13 MPa and 6.20 MPa, respectively. In addition, the selected mixture retained its low-temperature color response in the groove-filled state, confirming its preliminary groove-filling applicability. These results suggest the potential of thermochromic polyurea-based composites as visual-warning pavement materials for winter road safety."
+   },
+   {
+    "id": "https://openalex.org/W7124996709",
+    "doi": "https://doi.org/10.54684/ijmmt.2025.17.3.108",
+    "title": "MECHANICAL PROPERTIES OF 3D-PRINTED POLYLACTIDE CARBON FIBER BASED ON FUSED DEPOSITION MODELING",
+    "year": 2025,
+    "cited": 0,
+    "venue": "International Journal of Modern Manufacturing Technologies",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "3D Printing in Biomedical Research",
+     "Nanofabrication and Lithography Techniques"
+    ],
+    "oa_url": "https://doi.org/10.54684/ijmmt.2025.17.3.108",
+    "abstract": "Three-dimensional (3D) printing, especially using fused deposition modeling (FDM), enables the creation of complex shapes while reducing material waste via a layer-by-layer deposition method. Determining the optimal printing parameters to improve the mechanical properties of printed components is a considerable problem. This study investigates the influence of printing factors, such as layer thickness, infill density, and printing speed, on the tensile and compressive properties of polylactic acid (PLA)-carbon fiber composites. A Taguchi orthogonal array design was utilized to examine nine experimental combinations of printing parameters and their impact on mechanical p. The results demonstrate that a layer thickness of 0.4 mm and an infill density of 80% yield a maximum tensile strength of 54.98 MPa. A layer thickness of 0.3 mm, an infill density of 80%, and a printing speed of 60 mm/s yield a compressive strength of 63.19 MPa. This study offers a thorough examination of parameter interactions and their effects, corroborated by scanning electron microscopy, setting it apart from previous research. The results offer substantial insights for optimizing the FDM process related to PLA-carbon fiber composites."
+   },
+   {
+    "id": "https://openalex.org/W4410102258",
+    "doi": "https://doi.org/10.21203/rs.3.rs-6279671/v1",
+    "title": "Interface behavior of multi-material polymeric structures manufactured by material jetting",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Fluid Dynamics and Heat Transfer",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Erosion and Abrasive Machining"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-6279671/latest.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4405506096",
+    "doi": "https://doi.org/10.1002/appl.202400261",
+    "title": "Functionally Graded Impact Attenuator Using Bonded Construction",
+    "year": 2024,
+    "cited": 0,
+    "venue": "Applied Research",
+    "topics": [
+     "Transportation Safety and Impact Analysis",
+     "Dynamics and Control of Mechanical Systems",
+     "Structural Response to Dynamic Loads"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/appl.202400261",
+    "abstract": "ABSTRACT Automotive collisions are one of the major causes of death in the European Union, especially in childhood and adolescence. However, improvements in vehicle safety cannot be achieved only by increasing the size and dimensions of the structures, as this demands more materials and more costly manufacturing processes, which leads to an increased resource expenditure and lowered sustainability. Moreover, the increase of the structure size raises the vehicle's weight, leading to added fuel consumption, which cannot be accepted considering modern environmental regulations. To solve these issues, the application of bonded joints using the combination of several adherends materials, such as steel and aluminium alloys and fibber‐reinforced polymers with crash‐resistant adhesives presents itself as a novel solution, allowing to attain enhanced joint strength, energy absorption and weight reduction. The present works introduce a novel concept of an impact attenuator using bonded, geometrically optimized using the concept of functionally graded adherends to maximize energy absorption by ensuring that a load‐bearing path is kept during impact, converting the impact energy into the plastic deformation of panels with variable mechanical properties, tailored to withstand specific load cases, fulfilling a gap in the literature regarding impact absorption devices that combines graded materials and bonded construction. The results obtained present an increase in the energy absorption values of the graded impact attenuators above 200% when compared to the homogenous materials."
+   },
+   {
+    "id": "https://openalex.org/W7212340293",
+    "doi": null,
+    "title": "Estudio de un panel de GFRP modificado con material auxético para resistir la presión de agua de mar producida en el fondo de las naves",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Maestría en Control de Operaciones y Gestión Logística (Escuela Superior Politécnica del Litoral)",
+    "topics": [
+     "Ship Hydrodynamics and Maneuverability",
+     "Echinoderm biology and ecology",
+     "Fluid Dynamics Simulations and Interactions"
+    ],
+    "oa_url": "http://www.dspace.espol.edu.ec/bitstream/123456789/58145/1/T-76886%20INGE-1992%20FRERE-JIMENEZ.pdf",
+    "abstract": "En el Ecuador existe un amplio sector pesquero artesanal donde se emplean lanchas que en su mayor parte son hechas de plástico reforzado de fibra de vidrio (PRFV). Cuando las lanchas estan navegando a altas velocidades sufren un fenómeno llamado slamming, este, produce delaminaciones entre las capas del material del casco. Así, es de suma importancia realizar estudios de materiales que permitan aumentar la resistencia del casco y su vida útil. Se presenta el estudio de probetas confeccionadas a con láminas auxéticas; material que tiene propiedades mecánicas muy particulares; con diferentes configuraciones en su geometría para poder determinar cuál será la que es capaz de absorber la mayor cantidad de energía. Para esto se realizaron ensayos de compresión unixial sobre las probetas diseñadas. La ejecución mostró que la probeta en forma de “M” fue aquella capaz de absorber la mayor cantidad de energía. La compresión se consideró cuasiestática con el propósito de simular un impacto instantáneo de slamming y poder procesar la curva del ensayo unaxial para el cálculo de la energía elástica de acuerdo con el nivel de daño en la probeta. Posteriormente se realizó la laminación de la probeta seleccionada para comparar su comportamiento con el de una probeta de fibra pura. Se obtuvo que el laminado de PRFV con auxético mostró un rango de mayor absorción de energía sobre el material de solamente fibra. Por lo cual se concluyó que este material puede ser de usado en la construcción de fibra de vidrio, ya que será capaz de absorber mayor cantidad de energía por los golpes de slamming"
+   },
+   {
+    "id": "https://openalex.org/W4300861993",
+    "doi": "https://doi.org/10.24275/uami.n870zr01k",
+    "title": "Diseño y construcción de un dispositivo para medir la respuesta mecánica de biomateriales y tejidos",
+    "year": 2022,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Osteoarthritis Treatment and Mechanisms",
+     "Electrospun Nanofibers in Biomedical Applications"
+    ],
+    "oa_url": "http://bindani.izt.uam.mx/downloads/w9505071v",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4226247457",
+    "doi": "https://doi.org/10.19184/rotor.v14i2.22086",
+    "title": "PENGARUH TIPE SALURAN PENGECORAN TERHADAP SIFAT MEKANIK DAN STRUKTUR MIKRO ALUMINIUM AL 6061 DENGAN METODE SAND CASTING",
+    "year": 2021,
+    "cited": 0,
+    "venue": "ROTOR",
+    "topics": [
+     "Material Selection and Properties",
+     "Aluminum Alloys Composites Properties",
+     "Metal Forming Simulation Techniques"
+    ],
+    "oa_url": "https://jurnal.unej.ac.id/index.php/RTR/article/download/22086/10862",
+    "abstract": "Industrial technology is developing very rapidly, one of which is in the field of metal casting. In the foundry case, aluminum is one of the most used types. It happen because of aluminum has many advantages than other types of metal, likely: good corrosion resistance, relatively high mechanical properties, and good formability. The purpose of this study was to determine the effect of variations in the duct system on the tensile strength and impact strength of Al 6061 aluminum using the sand casting method. A variation of this line system was to use a direct line, split line, and split line with an adder. From the results of the study, it was found that the ultimate tensile strength occurred in the specimens using a split channel pattern with an adder, which was 120.25 MPa, while the lowest tensile strength occurred in the specimens using a direct channel pattern which was 65,49 MPa. This also occurs for the highest impact value in the variation of the split pattern system with addition of 0.0081 J/mm2 and the lowest impact value is using the direct channel pattern which results in an impact value of 0.005508 J/mm2"
+   },
+   {
+    "id": "https://openalex.org/W3186763298",
+    "doi": "https://doi.org/10.22517/23447214.24513",
+    "title": "Experimental and Computational analysis of springback in dual phase steels",
+    "year": 2021,
+    "cited": 0,
+    "venue": "Scientia et technica",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://doi.org/10.22517/23447214.24513",
+    "abstract": "In this work the comfortability of dual-phase automotive steel DP600 is studied through uniaxial tensile tests and V-die bending tests in different directions relative to the rolling direction. A microstructural analysis was also carried out in each characteristic region of the deformation zone, evidencing the changes in the morphology of the microstructure grains. Additionally, the plastic anisotropy of the material was studied by implementing the constitutive anisotropy models known as Hill-48 and Barlat-89. The results showed an increase in elastic recovery at 45 ° and 90 ° from the rolling direction. This variation can be attributed to the morphology of the martensite that created preferential location zones within the material during the rolling process. The two models Hill-48 and Barlat-89 correctly describe the yield surface and the plastic anisotropy obtained in the experimental tests carried out. The simulation using the finite element method and the Hill-48 model gave satisfactory results in the prediction of the elastic recovery as compared to the experimental results obtained with the V-die bending test."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Shimadzu UH-X UH-FX\" OR \"Shimadzu UH-X\" OR \"Shimadzu UH-200kNX\" OR \"Shimadzu UH-200kNXh\" OR \"Shimadzu UH-300kNX\" OR \"Shimadzu UH-F300kNX\") AND OPEN_ACCESS:y",

@@ -11,8 +11,152 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Teseq NSG 3060\" OR \"Teseq NSG\" OR \"Teseq NSG 3060 +\" OR \"AMETEK CTS NSG 3060\" OR \"AMETEK CTS NSG\"",
-  "count": null,
-  "works": []
+  "count": 10,
+  "works": [
+   {
+    "id": "https://openalex.org/W4315473442",
+    "doi": "https://doi.org/10.1109/jsen.2022.3232160",
+    "title": "Rogowski Coil Sensors for Measuring Lightning Strike Currents on Mechanical Aircraft Joints",
+    "year": 2023,
+    "cited": 9,
+    "venue": "IEEE Sensors Journal",
+    "topics": [
+     "Magnetic Field Sensors Techniques",
+     "Lightning and Electromagnetic Phenomena",
+     "Magneto-Optical Properties and Applications"
+    ],
+    "oa_url": "https://upcommons.upc.edu/bitstreams/f41081b8-95e0-4bdc-9652-e8d0161be0fc/download",
+    "abstract": "The study of currents flowing through the fuselage of an airplane is of vital importance from the standpoint of electromagnetic compatibility due to their potential for causing severe failures on embedded systems. Direct lightning strikes can produce extremely high currents propagating through the fuselage panels. Such high currents are critical when flowing through mechanical joints, a point of complex analysis due to the existing electrical discontinuities. Consequently, understanding the propagation of these currents is vital for protecting avionics through improved joints not only from a structural standpoint, but also from an electromagnetic perspective. In this article, we propose designing and validating a Rogowski coil sensor to measure the current flux through the mechanical joints that attach different fuselage panels. This sensor is theoretically analyzed, and a circuit model is provided. Then, a printed circuit board (PCB) Rogowski coil is designed and manufactured for measuring high-intensity pulsed currents with a bandwidth of 10 MHz. Subsequently, the probe is characterized through its S-parameters. Next, its equivalent lumped-element circuit is extracted and simulated for validating the sensor’s transient response. Finally, the Rogowski coil sensor is experimentally evaluated in the measurement of a surge current pulse that emulates a real scenario."
+   },
+   {
+    "id": "https://openalex.org/W3177387138",
+    "doi": "https://doi.org/10.5370/jeet.2018.13.5.2017",
+    "title": "System Level ESD Analysis - A Comprehensive Review I on ESD Generator Modeling",
+    "year": 2018,
+    "cited": 4,
+    "venue": "Journal of Electrical Engineering and Technology",
+    "topics": [
+     "Electrostatic Discharge in Electronics",
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Integrated Circuits and Semiconductor Failure Analysis"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4403760875",
+    "doi": "https://doi.org/10.1109/emceurope59828.2024.10722759",
+    "title": "Rogowski Coil Sensors with Optical Output for Lightning Current Measurement in Aircraft Fuselage",
+    "year": 2024,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Magnetic Field Sensors Techniques",
+     "Advanced Sensor Technologies Research",
+     "Sensor Technology and Measurement Systems"
+    ],
+    "oa_url": "https://upcommons.upc.edu/bitstreams/e41efd1c-898b-4220-a8a3-98172b60f8d8/download",
+    "abstract": "Rogowski coil sensor have been proven to be valuable for measuring transient currents. Some applications are focused on studying the current flow through metallic joints in airplane fuselages during lightning strikes. In this work, an improved Rogowski coil sensor with optical transmission is presented. Additionally, we report the results of current measurements across fasteners at the junction of two panels, considering different configurations with missing fasteners."
+   },
+   {
+    "id": "https://openalex.org/W3186467856",
+    "doi": "https://doi.org/10.5220/0010512900290038",
+    "title": "An Evolutionary Calibration Approach for Touch Interface Filter Chains",
+    "year": 2021,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Textile materials and evaluations",
+     "Color perception and design",
+     "Animal Behavior and Welfare Studies"
+    ],
+    "oa_url": "https://doi.org/10.5220/0010512900290038",
+    "abstract": "Touch interfaces are human machine interface (HMI) that can be found in a wide range of products ranging from mobile phones over cars to home appliances.Many of these HMIs measure digital signals which are used to detect touch events.These signals are processed using filters in order to decide whether there is a touch event or not.The filterchain must be functional even if the signal contains heavy noise.Thus a precise calibration of the individual filters is necessary.We employ a genetic algorithm (GA) to choose the filter parameters automatically.We evaluate our approach in a series of experiments which includes simulated as well as real data.We additionally compare our GA with manually calibrated parameters and thereby show the superiority of our method in terms of the accuracy of the calibration provided.A cost-intensive manual calibration can thus be avoided."
+   },
+   {
+    "id": "https://openalex.org/W3121305754",
+    "doi": "https://doi.org/10.20944/preprints201712.0081.v1",
+    "title": "Characterization of Different Cable Ferrite Materials to Reduce the Electromagnetic Noise in the 2–150 kHz Frequency Range",
+    "year": 2017,
+    "cited": 1,
+    "venue": "Preprints.org",
+    "topics": [
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Electromagnetic wave absorption materials",
+     "Electromagnetic Compatibility and Measurements"
+    ],
+    "oa_url": "https://www.preprints.org/manuscript/201712.0081/v1/download",
+    "abstract": "The gap of standardization for conducted and field coupled electromagnetic interferences (EMI) in the 2–150 kHz frequency range can lead to Electromagnetic Compatibility (EMC) problems. This is caused by power systems such as PWM controlled rectifiers, photovoltaic inverters or charging battery units in electric vehicles. This is a very important frequency spectral due to interferences generate in a wide range of dives and, specifically, communication problems in the new technologies and devices incorporated to the traditional grid to convert it into Smart Grid. Consequently, it is necessary to provide new solutions to attenuate this kind of interferences, which involve finding new materials able to filter the electromagnetic noise. This contribution is focused on characterizing the performance of different cable ferrite compositions in order to determine the effectiveness of most common materials such as MnZn and NiZn and a new range based on nanocrystalline solutions. This analysis procedure is carried out through two methods: theoretical method by determining the insertion loss through measuring impedance parameter and proposing a new empirical technique based on measuring directly the insertion loss parameter. Therefore, the main aim of this characterization process is to determine the performance of these cable ferrites to reduce the interferences in this controversial frequency range. From the results obtained, it is possible to deduce that nanocrystalline cable ferrites provide the best performance to filter the electromagnetic noise in the 2-150 kHz frequency range."
+   },
+   {
+    "id": "https://openalex.org/W7210734383",
+    "doi": null,
+    "title": "The Impact of the Modern Electromagnetic Environment on the Requirements of the EN 55014-2 Product Standard",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Repository of the University of Ljubljana (University of Ljubljana)",
+    "topics": [
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Lightning and Electromagnetic Phenomena",
+     "Power Line Communications and Noise"
+    ],
+    "oa_url": "https://repozitorij.uni-lj.si/Dokument.php?id=245739&dn=",
+    "abstract": "Elektromagnetna združljivost (EMC) postaja zaradi drastičnega povečanja gostote elektronskih naprav v bivalnem okolju in razmaha sodobnih brezžičnih tehnologij eden ključnih vidikov načrtovanja gospodinjskih aparatov. Trenutno veljavni produktni standard EN 55014-2 je bil vsebinsko zasnovan v obdobju manj kompleksnih porabnikov, zato njegovi predpisani osnovni preskusni nivoji v praksi pogosto zagotavljajo le zadostni prag delovanja v realnem svetu. Namen tega diplomskega dela je bil analizirati ustreznost teh zahtev in raziskati dejanske meje stabilnosti delovanja elektronike v aparatih, prisotnih na današnjem trgu. V okviru eksperimentalnega dela, ki je potekalo v akreditiranem laboratoriju SIQ (Slovenski institut za kakovost in meroslovje), smo na izbranih vzorcih gospodinjskih aparatov izvedli standardne preskuse elektromagnetne odpornosti (ESD, RI, burst, surge, CI in dips) ter napredne preskuse zunaj osnovnega obsega standarda (EN 61000-4-8, EN 61000-4-13, EN 61000-4-16 ter EN 61000-4-19) ob znatno zaostrenih preskusnih nivojih. Rezultati so pokazali, da so se nekateri predpisani nivoji preskusnih obremenitev (npr. za ESD in burst) izkazali za relativno nizke, saj so preskušani vzorci brez težav prenesli tudi znatno povišane obremenitve. Nasprotno pa so se pri sevalnih poljih, padcih napetosti in harmonskih popačenjih pokazale jasne kritične točke delovanja. Pridobljeni rezultati potrjujejo postavljeno tezo, da so interni zaostreni nivoji proizvajalcev inženirska nujnost ter hkrati opozarjajo na smiselnost posodobitve uradnih direktiv in standardov, saj industrijski razvoj produktov trenutno prehiteva veljavne standarde."
+   },
+   {
+    "id": "https://openalex.org/W7126177275",
+    "doi": "https://doi.org/10.22271/27084477.2026.v7.i1.a",
+    "title": null,
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Electronic Devices and Networking",
+    "topics": [],
+    "oa_url": "https://www.electronicnetjournal.com/article/92/7-1-2-215.pdf",
+    "abstract": "What determines the reliability of an Internet of Things sensor network in demanding industrial environments?This research addresses the fundamental question of transmission medium selection by presenting a comparative investigation of signal attenuation characteristics between coaxial and twisted pair cables across diverse frequency ranges pertinent to modern IoT applications.The experimental framework involved systematic measurement of attenuation parameters using RG-58 coaxial cables and Category 6 twisted pair cables over distances ranging from 25 to 150 meters.Testing was conducted at the Lyon Institute of Technology telecommunications laboratory from March through September 2024, employing calibrated signal generators and spectrum analyzers operating across frequencies from 10 MHz to 1 GHz.Results demonstrated that coaxial cables exhibited markedly lower attenuation coefficients, particularly at higher frequencies where twisted pair degradation became pronounced.At 500 MHz, coaxial cables showed attenuation of 21.6 dB per 100 meters compared to 45.8 dB for twisted pair configurations.However, twisted pair cables demonstrated acceptable performance for shorter transmission distances below 50 meters when operating under 100 MHz.The findings indicate that deployment environment significantly influences optimal cable selection, with coaxial configurations proving superior for industrial settings characterized by electromagnetic interference.This research provides practical guidance for IoT network designers balancing performance requirements against installation costs and flexibility constraints."
+   },
+   {
+    "id": "https://openalex.org/W7126199421",
+    "doi": "https://doi.org/10.22271/27084477.2026.v7.i1a.92",
+    "title": "Comparative analysis of signal attenuation in coaxial vs twisted pair cables for IoT sensor networks",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Electronic Devices and Networking",
+    "topics": [
+     "Millimeter-Wave Propagation and Modeling",
+     "Electromagnetic Fields and Biological Effects",
+     "Power Line Communications and Noise"
+    ],
+    "oa_url": null,
+    "abstract": "What determines the reliability of an Internet of Things sensor network in demanding industrial environments? This research addresses the fundamental question of transmission medium selection by presenting a comparative investigation of signal attenuation characteristics between coaxial and twisted pair cables across diverse frequency ranges pertinent to modern IoT applications. The experimental framework involved systematic measurement of attenuation parameters using RG-58 coaxial cables and Category 6 twisted pair cables over distances ranging from 25 to 150 meters. Testing was conducted at the Lyon Institute of Technology telecommunications laboratory from March through September 2024, employing calibrated signal generators and spectrum analyzers operating across frequencies from 10 MHz to 1 GHz. Results demonstrated that coaxial cables exhibited markedly lower attenuation coefficients, particularly at higher frequencies where twisted pair degradation became pronounced. At 500 MHz, coaxial cables showed attenuation of 21.6 dB per 100 meters compared to 45.8 dB for twisted pair configurations. However, twisted pair cables demonstrated acceptable performance for shorter transmission distances below 50 meters when operating under 100 MHz. The findings indicate that deployment environment significantly influences optimal cable selection, with coaxial configurations proving superior for industrial settings characterized by electromagnetic interference. This research provides practical guidance for IoT network designers balancing performance requirements against installation costs and flexibility constraints."
+   },
+   {
+    "id": "https://openalex.org/W2974238653",
+    "doi": "https://doi.org/10.15488/5455",
+    "title": "Analyse ausgewählter Power Quality Parameter für LED-Lampen",
+    "year": 2014,
+    "cited": 0,
+    "venue": "Institutional Repository of Leibniz Universität Hannover (Leibniz Universität Hannover)",
+    "topics": [
+     "Engine and Fuel Emissions",
+     "Impact of Light on Environment and Health"
+    ],
+    "oa_url": "https://repo.uni-hannover.de/bitstreams/d14b7445-7f04-40cb-9c99-f07bf5a74ee9/download",
+    "abstract": "Die Forderung, elektrische Last durch die Verwendung effizienter Beleuchtung zu reduzieren, nicht zuletzt durch die EG-Verordnung 244/2009 [1], resultiert seit einiger Zeit in gesteigertem Interesse an LED Lampen. Aufgrund der erforderlichen Gleichrichter weisen LED Lampen jedoch, ähnlich wie die bereits verbreiteten Energiesparlampen, im Vergleich zu konventionellen Lichtquellen signifikante Unterschiede im Strom-Spannungs-Verhalten auf. Dementsprechend wird die Spannungsqualität (Power Quality) des angrenzenden Versorgungsnetzes beeinflusst. Bei der Diskussion um Energiesparlampen und LEDs wird häufig allein das Energieeinsparpotential betrachtet. Gleichwohl ist eine Untersuchung möglicher Störpotenziale bei hoher Durchdringung des Niederspannungsnetzes mit den neuen Leuchtmitteln erforderlich."
+   },
+   {
+    "id": "https://openalex.org/W3186879261",
+    "doi": null,
+    "title": "Pracoviště pro zkoušky odolnosti zařízení vůči silným vysokofrekvenčním elektromagnetickým polím",
+    "year": 2009,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Education, Psychology, and Social Research"
+    ],
+    "oa_url": null,
+    "abstract": ""
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Teseq NSG 3060\" OR \"Teseq NSG\" OR \"Teseq NSG 3060 +\" OR \"AMETEK CTS NSG 3060\" OR \"AMETEK CTS NSG\") AND OPEN_ACCESS:y",
@@ -20,7 +164,19 @@
   "papers": []
  },
  "usage_snippets": [],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "EN 55014-2": 1,
+  "EN 61000-4-8": 1,
+  "EN 61000-4-13": 1,
+  "EN 61000-4-16": 1,
+  "EN 61000-4-19": 1
+ },
+ "standards_new": [
+  "EN 55014-2",
+  "EN 61000-4-13",
+  "EN 61000-4-16",
+  "EN 61000-4-19",
+  "EN 61000-4-8"
+ ],
  "test_item_hits": {}
 }

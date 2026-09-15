@@ -9,8 +9,518 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"TA Instruments Discovery HR 30\" OR \"TA Instruments Discovery HR 20\" OR \"TA Instruments Discovery HR 10\"",
-  "count": null,
-  "works": []
+  "count": 34,
+  "works": [
+   {
+    "id": "https://openalex.org/W4311568482",
+    "doi": "https://doi.org/10.1021/acspolymersau.2c00051",
+    "title": "Gelation Dynamics during Photo-Cross-Linking of Polymer Nanocomposite Hydrogels",
+    "year": 2022,
+    "cited": 31,
+    "venue": "ACS Polymers Au",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "Polymer Nanocomposites and Properties",
+     "Advanced Polymer Synthesis and Characterization"
+    ],
+    "oa_url": "https://doi.org/10.1021/acspolymersau.2c00051",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Embedding nanomaterials into polymer hydrogels enables the design of functional materials with tailored chemical, mechanical, and optical properties. Nanocapsules that protect interior cargo and disperse readily through a polymeric matrix have drawn particular interest for their ability to integrate chemically incompatible systems and to further expand the parameter space for polymer nanocomposite hydrogels. The properties of polymer nanocomposite hydrogels depend on the material composition and processing route, which were explored systematically in this work. The gelation kinetics of network-forming polymer solutions with and without silica-coated nanocapsules bearing polyethylene glycol (PEG) surface ligands were investigated using in situ dynamic rheology measurements. Network-forming polymers comprised either 4-arm or 8-arm star PEG with terminal anthracene groups, which dimerize upon irradiation with ultraviolet (UV) light. The PEG-anthracene solutions exhibited rapid gel formation upon UV exposure (365 nm); gel formation was observed as a crossover from liquid-like to solid-like behavior during in situ small-amplitude oscillatory shear rheology. This crossover time was non-monotonic with polymer concentration. Far below the overlap concentration ( c / c * ≪ 1), spatially separated PEG-anthracene molecules were subject to forming intramolecular loops over intermolecular cross-links, thereby slowing the gelation process. Near the polymer overlap concentration ( c / c * ∼ 1), rapid gelation was attributed to the ideal proximity of anthracene end groups from neighboring polymer molecules. Above the overlap concentration ( c / c * > 1), increased solution viscosities hindered molecular diffusion, thereby reducing the frequency of dimerization reactions. Adding nanocapsules to PEG-anthracene solutions resulted in faster gelation than nanocapsule-free PEG-anthracene solutions with equivalent effective polymer concentrations. The final elastic modulus of nanocomposite hydrogels increased with nanocapsule volume fraction, signifying synergistic mechanical reinforcement by nanocapsules despite not being cross-linked into the polymer network. Overall, these findings quantify the impact of nanocapsule addition on the gelation kinetics and mechanical properties of polymer nanocomposite hydrogels, which are promising materials for applications in optoelectronics, biotechnology, and additive manufacturing."
+   },
+   {
+    "id": "https://openalex.org/W3179439503",
+    "doi": "https://doi.org/10.1089/3dp.2020.0289",
+    "title": "Toward Stimuli-Responsive Soft Robots with 3D Printed Self-Healing Konjac Glucomannan Gels",
+    "year": 2021,
+    "cited": 14,
+    "venue": "3D Printing and Additive Manufacturing",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Hydrogels: synthesis, properties, applications",
+     "Advanced Materials and Mechanics"
+    ],
+    "oa_url": "https://research-information.bris.ac.uk/en/publications/d0347ea9-bf99-4492-91a3-34861037f39f",
+    "abstract": "Significant progress in fabricating new multifunctional soft materials and the advances of additive manufacturing technologies have given birth to a new generation of soft robots with complex capabilities, such as crawling, swimming, jumping, gripping, and releasing. Within this vast array of responsive soft materials, hydrogels receive considerable attention due to their fascinating properties, including biodegradable, self-healing, stimuli-responsive, and large volume transformation. Konjac glucomannan (KGM) is an edible polysaccharide that forms a pH-responsive, self-healing hydrogel when crosslinked with borax, and it is the focus of this study. A novel KGM-Borax ink for three-dimensional (3D) printing of free-form structures and soft robots at room temperature is presented. A complete process from ink preparation to the fabrication of a completely cross-linked part is demonstrated. Print setting parameters, rheological properties of the ink and crosslinked gels were characterized. Print quality was found to be consistent across a wide range of print settings. The minimum line width achieved is 650 μm. Tensile testing was carried out to validate the self-healing capability of the KGM-Borax gel. Results show that KGM-Borax has a high self-healing efficiency of 98%. Self-healing underwater was also demonstrated, a rarity for crosslinked gels. The means to form complex structures via 3D printing, reacting to environmental stimuli and the resilience against damage, make this new KGM-Borax gel a promising candidate for the fabrication of the next generation of soft robots."
+   },
+   {
+    "id": "https://openalex.org/W4391774662",
+    "doi": "https://doi.org/10.1021/acsapm.3c02628",
+    "title": "Investigating the Structure–Property−Processing Relationship of Polycaprolactone-Based 3D Printed Self-Healing Polymer Blends",
+    "year": 2024,
+    "cited": 13,
+    "venue": "ACS Applied Polymer Materials",
+    "topics": [
+     "Polymer composites and self-healing",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced Polymer Synthesis and Characterization"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsapm.3c02628",
+    "abstract": "Research into the 3D printing of self-healing polymers has increased; however, the understanding regarding the relationship between 3D printing (3DP) parameters, material composition, and their impact on resulting material properties remains limited. In this work, we examine how material composition affects the 3DP, thermal, mechanical, and self-healing properties of an extrinsically self-healing resin system based on linear polycaprolactone (PCL) as a healing agent. The polymer system is based on 2-phenoxyethyl acrylate (POEA) and 1,6-hexanediol dimethacrylate (HDDMA) with up to 25 wt % PCL. Upon mixing, the POEA monomer and PCL remain homogeneous at room temperature. Polymerization-induced phase separation (PIPS) occurs following irradiation; this is reflected in photo-DSC analyses and polarized optical microscopy. DSC analyses showed an insensitivity of the glass transition temperature to PCL concentration and an increase in the melting enthalpy that scales with PCL content, further supporting phase separation post polymerization. The addition of PCL also yielded enhanced mechanical properties; for example, a 281% increase in tensile strength was observed when comparing a 20 wt % PCL blend to that of pure POEA. Likewise, self-healing properties improved with PCL content, exhibiting >90% healing efficiency based on toughness for the 20 wt % PCL blend. The incorporation of PCL was found to impact the dimensions and curling of printed specimens, which can be attributed to the presence of phase-separated PCL. A validation matrix was used to determine a balanced print time for 0 and 20 wt % PCL blends; it was found that PCL reduced the required exposure time for printing, resulting in faster prints of similar dimensional precision. Finally, the ability to 3D print various complex geometries using a conventional MSLA printer was demonstrated for the 20 wt % PCL blend. Further understanding of the relationship between 3DP processing, material composition, and material properties will enable highly engineered products capable of applications in biomedical, soft robotics, and aerospace."
+   },
+   {
+    "id": "https://openalex.org/W4389049425",
+    "doi": "https://doi.org/10.1186/s13036-023-00389-x",
+    "title": "Bilayer osteochondral graft in rabbit xenogeneic transplantation model comprising sintered 3D-printed bioceramic and human adipose-derived stem cells laden biohydrogel",
+    "year": 2023,
+    "cited": 12,
+    "venue": "Journal of Biological Engineering",
+    "topics": [
+     "Osteoarthritis Treatment and Mechanisms",
+     "Periodontal Regeneration and Treatments",
+     "Bone Tissue Engineering Materials"
+    ],
+    "oa_url": "https://jbioleng.biomedcentral.com/counter/pdf/10.1186/s13036-023-00389-x",
+    "abstract": "Reconstruction of severe osteochondral defects in articular cartilage and subchondral trabecular bone remains a challenging problem. The well-integrated bilayer osteochondral graft design expects to be guided the chondrogenic and osteogenic differentiation for stem cells and provides a promising solution for osteochondral tissue repair in this study. The subchondral bone scaffold approach is based on the developed finer and denser 3D β-tricalcium phosphate (β-TCP) bioceramic scaffold process, which is made using a digital light processing (DLP) technology and the novel photocurable negative thermo-responsive (NTR) bioceramic slurry. Then, the concave-top disc sintered 3D-printed bioceramic incorporates the human adipose-derived stem cells (hADSCs) laden photo-cured hybrid biohydrogel (HG + 0.5AFnSi) comprised of hyaluronic acid methacryloyl (HAMA), gelatin methacryloyl (GelMA), and 0.5% (w/v) acrylate-functionalized nano-silica (AFnSi) crosslinker. The 3D β-TCP bioceramic compartment is used to provide essential mechanical support for cartilage regeneration in the long term and slow biodegradation. However, the apparent density and compressive strength of the 3D β-TCP bioceramics can be obtained for ~ 94.8% theoretical density and 11.38 ± 1.72 MPa, respectively. In addition, the in vivo results demonstrated that the hADSC + HG + 0.5AFnSi/3D β-TCP of the bilayer osteochondral graft showed a much better osteochondral defect repair outcome in a rabbit model. The other word, the subchondral bone scaffold of 3D β-TCP bioceramic could accelerate the bone formation and integration with the adjacent host cancellous tissue at 12 weeks after surgery. And then, a thicker cartilage layer with a smooth surface and uniformly aligned chondrocytes were observed by providing enough steady mechanical support of the 3D β-TCP bioceramic scaffold."
+   },
+   {
+    "id": "https://openalex.org/W4319335740",
+    "doi": "https://doi.org/10.1016/j.molliq.2023.121415",
+    "title": "Improving the efficiency of the concentrating solar power plants using heat transfer nanofluids with gold nanoplates: An analysis from laboratory to industrial scale",
+    "year": 2023,
+    "cited": 11,
+    "venue": "Journal of Molecular Liquids",
+    "topics": [
+     "Solar Thermal and Photovoltaic Systems",
+     "Solar-Powered Water Purification Methods",
+     "Nanofluid Flow and Heat Transfer"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0167732223002180-ga1_lrg.jpg",
+    "abstract": "We report about the remarkable changes in the thermophysical properties of the heat transfer fluid used in concentrating solar power plants with parabolic-trough collectors (Dowtherm A, a mixture of diphenyl oxide and biphenyl) by addition of Au nanoplates in mass fractions around 10−2 wt%. The resulting nanofluids are stable for weeks, and their enhanced physical properties make them good candidates for the application. Particularly, with 4.8·10−2 wt% of Au nanoplates, specific heat increases by 12.0 ± 1.2 % at 523 K and thermal conductivity increases by 24.9 ± 6.1 % at 373 K, with no measurable changes in density or dynamic viscosity. This set of physical properties allows to make a realistic estimation of the performance of a prototypical concentrating solar power plant using these nanofluids for solar-to-thermal energy conversion. We determine, using computational cost-free numerical models available in literature, that the performance of a concentrating solar power plant could increase up to 35.1 %, compared to the predicted 24.7 % with the conventional heat transfer fluid, with neither rheological penalties nor economically prohibitive structural changes. The findings here reported may contribute to encourage the application of heat transfer nanofluids in order to improve the efficiency of concentrating solar power plants, and to consolidate a working scheme that positively promotes the transition from laboratory scale to industrial scale."
+   },
+   {
+    "id": "https://openalex.org/W4403465750",
+    "doi": "https://doi.org/10.1021/acsapm.4c01974",
+    "title": "Mechanically Robust and Biodegradable Electrospun Membranes Made from Bioderived Thermoplastic Polyurethane and Polylactic Acid",
+    "year": 2024,
+    "cited": 10,
+    "venue": "ACS Applied Polymer Materials",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "biodegradable polymer synthesis and properties"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsapm.4c01974?ref=article_openPDF",
+    "abstract": "Petroleum-based plastic waste plagues the natural environment, but plastics solve many high-performance solutions across industries. For example, porous polymer membranes are used for air filtration, advanced textiles, energy, and biomedical applications. Sustainable and biodegradable Bioplastic membranes can compete with nonrenewable materials in strength, durability, and functionality but biodegrade under select conditions after disposal. Membranes electrospun using a blend of bioderived thermoplastic polyurethane (TPU) and polylactic acid (PLA) perform effectively under tensile and cyclic loading, act adequately as an air filter media, and biodegrade in a home-compost environment, with the aliphatic formulation of TPU showing greater biodegradability compared to the formulation containing aromatic moieties. Blending TPU with PLA dramatically increases the strain at break of the PLA membrane, while the addition of PLA in TPU stiffens the material considerably. Measurements of the pressure drop and filtration efficiency deem this electrospun membrane an effective air filter. This membrane provides a solution to the need for quality air filtration while decreasing the dependence on petroleum feedstocks and addressing the issue of plastic disposal through biodegradation."
+   },
+   {
+    "id": "https://openalex.org/W4404293825",
+    "doi": "https://doi.org/10.1073/pnas.2403322121",
+    "title": "Implantable 3D printed hydrogels with intrinsic channels for liver tissue engineering",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Tissue Engineering and Regenerative Medicine",
+     "Innovative Microfluidic and Catalytic Techniques Innovation"
+    ],
+    "oa_url": "https://www.pnas.org/doi/pdf/10.1073/pnas.2403322121",
+    "abstract": "This study presents the design, fabrication, and evaluation of a general platform for the creation of three-dimensional printed devices (3DPDs) for tissue engineering applications. As a demonstration, we modeled the liver with 3DPDs consisting of a pair of parallel millifluidic channels that function as portal-venous (PV) and hepatobiliary (HB) structures. Perfusion of medium or whole blood through the PV channel supports the hepatocyte-containing HB channel. Device computer-aided design was optimized for structural stability, after which 3DPDs were 3D printed in a polyethylene(glycol) diacrylate photoink by digital light processing and evaluated in vitro. The HB channels were subsequently seeded with hepatic cells suspended in a collagen hydrogel. Perfusion of 3DPDs in bioreactors enhanced the viability and function of rat hepatoma cells and were maintained over time, along with improved liver-specific functions. Similar results were observed with primary rat hepatocytes, including significant upregulation of cytochrome p450 activity. Additionally, coculture experiments involving primary rat hepatocytes, endothelial cells, and mesenchymal stem cells in 3DPDs showed enhanced viability, broad liver-specific gene expression, and histological features indicative of liver tissue architecture. In vivo implantation of 3DPDs in a rat renal shunt model demonstrated successful blood flow through the devices without clot formation and maintenance of cell viability. 3D printed designs can be scaled in 3D space, allowing for larger devices with increased cell mass. Overall, these findings highlight the potential of 3DPDs for clinical translation in hepatic support applications."
+   },
+   {
+    "id": "https://openalex.org/W4393312718",
+    "doi": "https://doi.org/10.1111/1750-3841.17040",
+    "title": "Determination of the process effect on cocoa butter crystallization by rheometer: Kinetic modeling by Gompertz equation",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Journal of Food Science",
+    "topics": [
+     "Food Chemistry and Fat Analysis",
+     "Proteins in Food Systems"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/1750-3841.17040",
+    "abstract": "Abstract In this study, the effects of temperature (22, 24, 26, 28, and 30°C) and strain (0.1%, 1%, and 5%) on cocoa butter (CB) crystallization were investigated by oscillatory test, and the four‐parameter Gompertz model was used to interpret the effect of parameters on pre‐crystallization, nucleation, and crystal growth stages of CB. Lag time and growth rate were calculated using the Gompertz model using time‐dependent storage modulus ( G′ ) data. According to the results, CB crystallization at 26°C with a 1% strain value had the highest growth rate value, the shortest lag time, and the formation of β v polymorph type. Followingly, polymorphic types of the CB crystals were determined based on the melting points of polymorphs via the temperature ramp step, and the results obtained were correlated with a polarized light microscope. In conclusion, using a rheometer in both the observation of the pre‐crystallization process and the determination of polymorph types is very important for research and development studies in the chocolate industry for process and formulation optimization. Practical Application This study demonstrates the feasibility of a novel approach for investigating crystallization and oscillatory shear of CB using a rheometer, both for observing crystallization kinetics and determining polymorph type, accompanied by the Gompertz equation to model the crystallization kinetics. According to the results, the effect of process parameters (temperature and shear) on the crystallization behavior of CB can be observed by rheometer, which can provide a detailed perspective for chocolate manufacturers and researchers in research and development studies."
+   },
+   {
+    "id": "https://openalex.org/W4386209320",
+    "doi": "https://doi.org/10.1002/bit.28542",
+    "title": "Microtube embedded hydrogel bioprinting for vascularization of tissue‐engineered scaffolds",
+    "year": 2023,
+    "cited": 9,
+    "venue": "Biotechnology and Bioengineering",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Electrospun Nanofibers in Biomedical Applications",
+     "Tissue Engineering and Regenerative Medicine"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/bit.28542",
+    "abstract": "Vascular tissue engineering has been considered promising as one of the alternatives for viable artificial tissues and organs. Macro- and microscale hollow tubes fabricated with various techniques have been widely studied to mimic blood vessels. To date, the fabrication of biomimetic capillary vessels with sizes ranging from 1 to 10 µm is still challenging. In this paper, core-sheath microtubes were electrospun to mimic capillary vessels and were embedded in carboxymethyl cellulose/sodium alginate hydrogel for bioprinting. The results showed improved printing fidelity and promoted cell attachment. The tube concentration and tube length both had significant influences on filament size and merging area. Printed groups with higher microtube concentration showed higher microtube density, with filament/nozzle size ratio, and printed/designed grid area ratio closer to 100%. In the in vitro experiments, microtubes were not only compatible with human umbilical vein endothelial cells but also provided microtopographical cues to promote cell proliferation and morphogenesis in three-dimensional space. In summary, the microtubes fabricated by our groups have the potential for the bioprinting of vascularized soft tissue scaffolds."
+   },
+   {
+    "id": "https://openalex.org/W4391404989",
+    "doi": "https://doi.org/10.1002/smll.202311164",
+    "title": "3D Printable Active Hydrogels with Supramolecular Additive‐Driven Adaptiveness",
+    "year": 2024,
+    "cited": 7,
+    "venue": "Small",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Micro and Nano Robotics",
+     "Advanced Sensor and Energy Harvesting Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202311164",
+    "abstract": "Smart hydrogels are a promising candidate for the development of next-generation soft materials due to their stimuli-responsiveness, deformability, and biocompatibility. However, it remains challenging to enable hydrogels to actively adapt to various environmental conditions like living organisms. In this work, supramolecular additives are introduced to the hydrogel matrix to confer environmental adaptiveness. Specifically, their microstructures, swelling behaviors, mechanical properties, and transparency can adapt to external environmental conditions. Moreover, the presence of hydrogen bonding provides the hydrogel with applicable rheological properties for 3D extrusion printing, thus allowing for the facile preparation of thickness-dependent camouflage and multistimuli responsive complex. The environmentally adaptive hydrogel developed in this study offers new approaches for manipulating supramolecular interactions and broadens the capability of smart hydrogels in information security and multifunctional integrated actuation."
+   },
+   {
+    "id": "https://openalex.org/W4414179359",
+    "doi": "https://doi.org/10.3390/jfb16090346",
+    "title": "Anti-Swelling Antibacterial Hydrogels Based on Electrostatic Repulsion and Hydrophobic Interactions for Human Motion Sensing",
+    "year": 2025,
+    "cited": 6,
+    "venue": "Journal of Functional Biomaterials",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "Supramolecular Self-Assembly in Materials",
+     "Polydiacetylene-based materials and applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-4983/16/9/346/pdf?version=1757919264",
+    "abstract": "The development of high-performance sensing materials is critical for advancing bioelectronics. Conductive hydrogels, with their unique flexibility, are promising candidates for biomedical sensors. However, traditional conductive hydrogels often suffer from excessive swelling and undesirable antibacterial activity, limiting their practical use. To overcome these challenges, anti-swelling, antibacterial, and ionically conductive hydrogels were built through free radical polymerization. The preparation was conducted using a monomer mixture comprising acrylic acid (AA), the antibacterial zwitterionic compound [2-(methacryloyloxy)ethyl]dimethyl-(3-sulfopropyl)ammonium hydroxide (SBMA), and the hydrophobic monomer lauryl methacrylate (LMA). The protonation of SBMA by AA enables electrostatic repulsion, thereby imparting anti-swelling properties to the hydrogel. The introduction of hydrophobic LMA components further enhances the anti-swelling and mechanical performance of hydrogel. The resulting hydrogel exhibits excellent anti-swelling property with a swelling ratio of 59.36% after 120 h and good mechanical performance with a tensile strength of 158 kPa, an elongation at break of 176%, and a compressive strength of 0.37 MPa at 80% strain. In addition, hydrogels possess superior sensing performance for strain sensing with a gauge factor of 1.315 within 40-60% of strain, 330 ms of response time, and 177 ms of recovery time. Furthermore, the hydrogel is capable of monitoring human motion and physiological signals. These attributes make it highly suitable for wearable sensors and biomedical monitoring applications."
+   },
+   {
+    "id": "https://openalex.org/W4391842090",
+    "doi": "https://doi.org/10.1080/19420862.2024.2309685",
+    "title": "Structure- and machine learning-guided engineering demonstrate that a non-canonical disulfide in an anti-PD-1 rabbit antibody does not impede antibody developability",
+    "year": 2024,
+    "cited": 5,
+    "venue": "mAbs",
+    "topics": [
+     "Monoclonal and Polyclonal Antibodies Research",
+     "CAR-T cell therapy research",
+     "Viral Infectious Diseases and Gene Expression in Insects"
+    ],
+    "oa_url": "https://doi.org/10.1080/19420862.2024.2309685",
+    "abstract": "Rabbits produce robust antibody responses and have unique features in their antibody repertoire that make them an attractive alternative to rodents for in vivo discovery. However, the frequent occurrence of a non-canonical disulfide bond between complementarity-determining region (CDR) H1 (C35a) and CDRH2 (C50) is often seen as a liability for therapeutic antibody development, despite limited reports of its effect on antibody binding, function, and stability. Here, we describe the discovery and humanization of a human-mouse cross-reactive anti-programmed cell death 1 (PD-1) monoclonal rabbit antibody, termed h1340.CC, which possesses this non-canonical disulfide bond. Initial removal of the non-canonical disulfide resulted in a loss of PD-1 affinity and cross-reactivity, which led us to explore protein engineering approaches to recover these. First, guided by the sequence of a related clone and the crystal structure of h1340.CC in complex with PD-1, we generated variant h1340.SA.LV with a potency and cross-reactivity similar to h1340.CC, but only partially recovered affinity. Side-by-side developability assessment of both h1340.CC and h1340.SA.LV indicate that they possess similar, favorable properties. Next, and prompted by recent developments in machine learning (ML)-guided protein engineering, we used an unbiased ML- and structure-guided approach to rapidly and efficiently generate a different variant with recovered affinity. Our case study thus indicates that, while the non-canonical inter-CDR disulfide bond found in rabbit antibodies does not necessarily constitute an obstacle to therapeutic antibody development, combining structure- and ML-guided approaches can provide a fast and efficient way to improve antibody properties and remove potential liabilities."
+   },
+   {
+    "id": "https://openalex.org/W4417298739",
+    "doi": "https://doi.org/10.1021/acs.macromol.5c00637",
+    "title": "Effect of Ionomer–Solvent Interactions in PFSA Dispersions: Dispersion Viscosity",
+    "year": 2025,
+    "cited": 4,
+    "venue": "Macromolecules",
+    "topics": [
+     "Fuel Cells and Related Materials",
+     "Lubricants and Their Additives",
+     "Polymer composites and self-healing"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.macromol.5c00637?ref=article_openPDF",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Perfluorosulfonic acid ionomer (PFSA) dispersions are essential to the coating processes used to fabricate membranes, catalyst layers, and thin films for hydrogen fuel cell and water electrolyzer applications. The PFSA dispersion viscosity can significantly affect coating parameters including wetting, leveling, and compatibility with coating equipment. The effect of PFSA concentration, chemical structure, and solvent composition on dispersion viscosity is examined as a function of five different PFSAs and three different binary alcohol–water solvent systems, using n-propanol, isopropanol, or ethanol as the alcohol. The zero-shear viscosity, η 0, is observed to increase with decreasing side chain length, increasing side chain content, and increasing alcohol concentration in the binary alcohol–water solvent. A direct comparison is made between the PFSA colloidal morphology discussed in a previous publication by the present authors and η 0 . At a fixed, nondilute PFSA concentration, two regimes of weak and strong dependence of η 0 on alcohol concentration in the solvent are identified. In the regime where η 0 weakly depends on alcohol concentration, an increase in η 0 is associated with an increase in the aggregate surface area normalized by side chain content. The orders of magnitude increases in η 0 with increasing alcohol concentration in the regime of strong dependence of η 0 are attributed to both aggregate morphology and interaggregate ionic associations. By independently considering the PFSA side chain and backbone solubility parameters, two regimes corresponding to relatively favorable solvent-side chain and relatively favorable solvent-backbone interactions are defined as a function of alcohol–water solvent composition. An analysis of PFSA-solvent interaction parameters shows that interaggregate ionic associations occur when solvent-side chain interactions are unfavorable relative to solvent-backbone interactions─for example, at high alcohol concentrations in the solvent. The alcohol concentration corresponding to the crossover between the weak and strong regimes of η 0 is found to agree within ±5 wt % alcohol with the crossover between the regimes of favorable solvent-side chain and favorable solvent-backbone interactions."
+   },
+   {
+    "id": "https://openalex.org/W4409987429",
+    "doi": "https://doi.org/10.1039/d5py00082c",
+    "title": "Generation of topologically defined linear and cyclic DNA bottle brush polymers via a graft-to approach",
+    "year": 2025,
+    "cited": 3,
+    "venue": "Polymer Chemistry",
+    "topics": [
+     "Advanced biosensing and bioanalysis techniques",
+     "RNA Interference and Gene Delivery",
+     "Nanofabrication and Lithography Techniques"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2025/py/d5py00082c",
+    "abstract": "addition of polymer arms. Finally, the increased steric encumbrance of the DNA BBPs slows enzymatic degradation, potentially providing a general method to increase stability of DNA constructs towards nuclease."
+   },
+   {
+    "id": "https://openalex.org/W4385496446",
+    "doi": "https://doi.org/10.1115/1.4063091",
+    "title": "Manufacturing Multi-Matrix Composites: Out-of-Vacuum Bag Consolidation",
+    "year": 2023,
+    "cited": 3,
+    "venue": "Journal of Manufacturing Science and Engineering",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Mechanical Behavior of Composites",
+     "Composite Material Mechanics"
+    ],
+    "oa_url": "https://purehost.bath.ac.uk/ws/files/295419986/MANU_23_1193.pdf",
+    "abstract": "Abstract The formation of porosity is a major challenge in any composite manufacturing process, particularly in the absence of vacuum assistance. Highly localized injection of polymer matrix into regions of interest in a dry preform is a route to manufacturing multi-matrix fiber-reinforced composites with high filler concentrations, which are otherwise difficult to achieve. Unlike traditional composites, such multi-matrix fiber-reinforced composite systems, which combine multiple resins in continuous form, offer improved structural performance around stress concentrators and multifunctional capabilities. As the process lacks vacuum assistance, porosity becomes a primary issue to be addressed. This paper presents a rheo-kinetic coupled rapid consolidation procedure for optimizing the quality of localized matrix patches. The procedure involves manufacturing trials and analytical consolidation models to determine the best processing program for minimal voidage in the patch. The results provide a step toward an efficient manufacturing process for the optimal design of multi-matrix composites without the need for complex vacuum bag arrangements, thus reducing cost and time while opening avenues to improve overall composite performance."
+   },
+   {
+    "id": "https://openalex.org/W7127582543",
+    "doi": "https://doi.org/10.1038/s41467-026-69097-6",
+    "title": "Binding properties of sulfur to enable solvent-free fabrication of high-performance polymer-free sulfur-carbon positive electrodes",
+    "year": 2026,
+    "cited": 2,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Synthesis and properties of polymers"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-026-69097-6_reference.pdf",
+    "abstract": "The development of a scalable, cost-effective and environmentally benign manufacturing of binder-free sulfur positive electrodes can make substantial advance for lithium-sulfur (Li | |S) batteries as sustainable competitors to lithium-ion systems. Here we show a solvent- and binder-free method to fabricate sulfur-carbon composite electrodes directly on aluminum foil via thermal-assisted dry pressing. A key finding is the role of sulfur as a structural binder, where its softening, distribution, and adhesion properties enable the formation of mechanically robust electrodes without polymer binders. Systematic experimental characterizations and computational modeling reveal the underlying mechanisms governing electrodes formation and electrochemical performance. The developed binder-free positive electrodes achieve a reversible capacity of 932 mAh g⁻¹ after 500 cycles at 1.0 C rate; for comparison, conventional slurry-cast positive electrodes containing 10 wt.% binder deliver lower capacity under the same electrochemical test conditions. This scalable process has the potential to reduce fabrication costs by a factor of 2.1 while eliminating hazardous solvents and binders, offering a sustainable and cost-effective approach to advancing Li | |S battery technology."
+   },
+   {
+    "id": "https://openalex.org/W7118184671",
+    "doi": "https://doi.org/10.3390/jfb17010030",
+    "title": "Photo Crosslinkable Hybrid Hydrogels for High Fidelity Direct Write 3D Printing: Rheology, Curing Kinetics, and Bio-Scaffold Fabrication",
+    "year": 2026,
+    "cited": 2,
+    "venue": "Journal of Functional Biomaterials",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Advanced Materials and Mechanics",
+     "Hydrogels: synthesis, properties, applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-4983/17/1/30/pdf?version=1767515296",
+    "abstract": "This work characterizes hybrid hydrogels prepared via the combination of natural and synthetic polymers. By incorporating a biocompatible compound, poly(ethylene glycol) diacrylate (PEGDA, Mn = 400), into alginate and carboxymethyl cellulose (CMC)-based hydrogels, the in situ UV crosslinking of these materials was assessed. A custom direct-write (DW) 3D bioprinter was utilized to prepare hybrid hydrogel constructs and scaffolds. A control sample, which consisted of 4% w/v alginate and 4% w/v CMC, was prepared and evaluated in addition to three PEGDA (4.5, 6.5, and 10% w/v)-containing hybrid hydrogels. Rotational rheology was utilized to evaluate the thixotropic behavior of these materials. Filament fusion tests were employed to generate bilayer constructs of various pore sizes, providing metrics for the printability and diffusion rate of hydrogels post-extrusion. Printability indicates the shape fidelity of pore geometry, whereas diffusion rate represents material spreading after deposition. Curing kinetics of PEGDA-containing hydrogels were evaluated using photo-Differential Scanning Calorimetry (DSC) and photorheology. The Kamal model was fitted to photo-DSC results, enabling an assessment and comparison of the curing kinetics for PEGDA-containing hydrogels. Photorheological results highlight the increase in hydrogel stiffness concomitant with PEGDA content. The range of obtained complex moduli (G*) provides utility for the development of brain, kidney, and heart tissue (620–4600 Pa). The in situ UV irradiation of PEGDA-containing hydrogels improved the shape fidelity of printed bilayers and decreased filament diffusion rates. In situ UV irradiation enabled 10-layer scaffolds with 1 × 1 mm pore sizes to be printed. Ultimately, this study highlights the utility of PEGDA-containing hybrid hydrogels for high-resolution DW 3D bioprinting and potential application toward customizable tissue analogs."
+   },
+   {
+    "id": "https://openalex.org/W4412803841",
+    "doi": "https://doi.org/10.1557/s43579-025-00780-3",
+    "title": "Additive manufacturing and rheological characterization of ceramic matrix composite inks with high fiber volume loadings",
+    "year": 2025,
+    "cited": 2,
+    "venue": "MRS Communications",
+    "topics": [
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Advanced ceramic materials synthesis",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1557/s43579-025-00780-3.pdf",
+    "abstract": "controlled fiber orientation. Increasing the loading of fibers in additively manufactured CMCs is needed to improve the fracture toughness, yet printing CMCs with high fiber loadings (> 20 vol%) remains challenging. In this work, the combination of viscous silicon oxycarbide preceramic resins, short carbon fibers (50 µm × 7 µm), and Vibration-Assisted Printing enable printing of a mixture with 39.4-vol.% carbon fiber (total loading of 43.3 vol%) with omnidirectional fibers within the bead. Supplementary Information: The online version contains supplementary material available at 10.1557/s43579-025-00780-3."
+   },
+   {
+    "id": "https://openalex.org/W4406642151",
+    "doi": "https://doi.org/10.1016/j.tsep.2025.103288",
+    "title": "Stability is the key for nanofluids to enter applications: Reflections from a case study on PDMS/TiO2 nanofluids",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Thermal Science and Engineering Progress",
+    "topics": [
+     "Nanofluid Flow and Heat Transfer",
+     "Solar Thermal and Photovoltaic Systems",
+     "Enhanced Oil Recovery Techniques"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.tsep.2025.103288",
+    "abstract": "This work examines the stability and the density, dynamic viscosity, specific heat capacity and thermal conductivity of a series of polydimethylsiloxane-based nanofluids with TiO2 nanoparticles. Even though polydimethylsiloxane (silicone) is a promising heat transfer fluid for concentrating solar power, its non-polar, aprotic nature complicates the production of stable nanofluids without surfactants or pH control. This, in turn, limits the efficiency and lifespan of these nanofluids. The case study dedicates some space for reflection about the stability challenge for the research community working on nanofluids at fundamental and applied levels. A robust experimental protocol is sketched for quality control in the design of nanofluids, stressing the need for a quantitative assessment of stability before thermal performance is appraised."
+   },
+   {
+    "id": "https://openalex.org/W7130508078",
+    "doi": "https://doi.org/10.1002/admi.202500944",
+    "title": "Geometrically Templated Dynamic Wrinkling From Suspended Poly(vinyl alcohol) Soap Films",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Advanced Materials Interfaces",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Nanomaterials and Printing Technologies",
+     "Fluid Dynamics and Thin Films"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.202500944",
+    "abstract": "ABSTRACT Wrinkling is commonly observed as mechanical instability when a stiff thin film bound on a compliant thick substrate undergoes in‐plane compression exceeding a threshold. Despite significant efforts to create a broad range of surface patterns via wrinkling, little has been studied about a dynamic and transient wrinkling process, where a suspended polymer thin film undergoes liquid‐to‐solid phase transitions. Here, a spontaneous wrinkling process is reported when drying poly(vinyl alcohol) (PVA) soap films suspended on 3D printed wireframes with near‐zero or negative Gaussian curvatures. As water evaporates, a thickness gradient across the sample is developed, leading to non‐uniform drying rates, and a concentration gradient between the inner and outer sides (exposed to air) of the suspended PVA soap film induces a differential osmotic pressure. Together, these effects contribute to an in‐plane compressive stress, leading to the formation of surface wrinkles, whose growth is guided by the geometry of the frame. Importantly, the wrinkles evolve dynamically: the wavelength and number of the wrinkles can be tuned by altering the concentration of the PVA aqueous solutions, the initial mass, the relative humidity of the drying environment; the patterns of the resulting wrinkles can be programmed by the geometry of the wireframe."
+   },
+   {
+    "id": "https://openalex.org/W4403415857",
+    "doi": "https://doi.org/10.1002/marc.202400481",
+    "title": "Water as Dual‐Function Plasticizer and Cosolvent in Gel Electrolytes for Dye‐Sensitized Solar Cells",
+    "year": 2024,
+    "cited": 1,
+    "venue": "Macromolecular Rapid Communications",
+    "topics": [
+     "TiO2 Photocatalysis and Solar Cells",
+     "Advanced Photocatalysis Techniques",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/marc.202400481",
+    "abstract": "Abstract This study presents a novel approach to developing eco‐friendly dye‐sensitized solar cells (DSSCs) using natural and renewable materials for gel polymer electrolytes (GPEs), reducing reliance on unsustainable solvents. Water is added to polar aprotic solvents, specifically ethylene carbonate/propylene carbonate (EC/PC), across various mass fractions (0:100 to 100:0). An amphiphilic hydroxypropyl cellulose (HPC) natural polymer is employed to formulate GPEs within this water‐EC/PC cosolvent system, achieving successful gelation up to 50:50 mass fractions. Incorporating water reduced the gel strength and viscosity of the GPEs. Water acted as a plasticizer, enhancing the polymer chains mobility, and creating a more flexible and permeable structure. This increased ion diffusion coefficients and ion mobility, resulting in a maximum ionic conductivity of 18.17 mS cm −1 . The highest efficiency achieved in DSSCs using these GPEs is 5.81%, with elevated short‐circuit current density and reduced recombination losses. However, some compositions experienced syneresis, affecting their stability. The GPE with a 40:60 mass fraction exhibited superior long‐term stability because it is free from syneresis, though it achieved a lower efficiency (4.83%), making it the best‐performing sample. This work demonstrates the feasibility and benefits of using gel polymer electrolytes in an aqueous system, improving DSSC efficiency and sustainability."
+   },
+   {
+    "id": "https://openalex.org/W7212280977",
+    "doi": "https://doi.org/10.21203/rs.3.rs-10998220/v1",
+    "title": "The silhouette of a vibrated sessile drop encodes its internal viscous dissipation",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Nanomaterials and Printing Technologies",
+     "Innovative Microfluidic and Catalytic Techniques Innovation",
+     "3D Printing in Biomedical Research"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-10998220/latest.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W7171268652",
+    "doi": null,
+    "title": "Digitally Programmable Photochromic Hydrogel Contact Lenses as Light-Adaptive Artificial Irises",
+    "year": 2026,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Photochromic and Fluorescence Chemistry",
+     "Electrowetting and Microfluidic Technologies",
+     "Liquid Crystal Research Advancements"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2607.20770",
+    "abstract": "Excessive exposure to ultraviolet (UV) radiation is associated with a range of ocular pathologies, motivating the development of soft optical devices that can dynamically regulate incident light. In the human eye, this adaptive optical functionality is performed by the iris, which modulates pupil size to control retinal irradiance in response to ambient illumination. Here we present a photochromic contact lens based artificial iris that mimics this biological light-adaptation mechanism through reversible, spatially programmable modulation of optical transmission with intrinsic UV blocking. Photochromic dyes are embedded within a biocompatible hydrogel matrix, while the cross-linked network is patterned using a digital micromirror device (DMD)based grayscale UV lithography to encode controlled radial gradients in dye switching. This approach generates iris-like attenuation profiles that emulate pupil-dependent light regulation while enabling customizable iris geometries and transmission patterns. The resulting lenses exhibit rapid and reversible UV-induced darkening with position-dependent kinetics, enabling continuous modulation of transmitted light. The photoresponse remains stable over repeated activation cycles without measurable fatigue. The patterned lenses maintain mechanical stability, controlled swelling, and wettability suitable for contact lens applications. This platform combines programmable photochromism and hydrogel optics to enable light-adaptive lenses that mimic key functions of the human iris."
+   },
+   {
+    "id": "https://openalex.org/W7165424685",
+    "doi": null,
+    "title": "Preparation and Characterisation of Peptide-Decorated Nanomaterials",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Archivio Istituzionale della Ricerca (Universita Degli Studi Di Milano)",
+    "topics": [
+     "Supramolecular Self-Assembly in Materials",
+     "Diatoms and Algae Research",
+     "Nanoparticle-Based Drug Delivery"
+    ],
+    "oa_url": "https://air.unimi.it/bitstream/2434/1254715/2/phd_unimi_R14176.pdf",
+    "abstract": "The post-meeting gatherings, where we discussed"
+   },
+   {
+    "id": "https://openalex.org/W7163358899",
+    "doi": "https://doi.org/10.1021/acs.energyfuels.6c00921",
+    "title": "Role of 3-Pentanone in CO 2 –WAG Injection for Post-Waterflood Residual Oil Recovery",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Energy & Fuels",
+    "topics": [
+     "Enhanced Oil Recovery Techniques",
+     "CO2 Sequestration and Geologic Interactions",
+     "Drilling and Well Engineering"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.energyfuels.6c00921?ref=article_openPDF",
+    "abstract": "High Resolution Image Download MS PowerPoint Slide Water-alternating-gas (WAG) injection with carbon dioxide (CO 2 ) is widely used for enhanced oil recovery (EOR), but its effectiveness in oil-wet carbonate reservoirs is often limited by unfavorable wettability and poor microscopic displacement efficiency, particularly in pressure-constrained reservoirs where the CO 2 minimum miscibility pressure (MMP) exceeds the fracture-pressure limit. This study evaluates a ketone-assisted CO 2 –WAG process in which 3-pentanone is added to the aqueous slugs to alter carbonate wettability and reduce the effective MMP. High-pressure, high-temperature experiments were conducted under reservoir-relevant conditions, including contact-angle measurements, pendant-drop interfacial tension measurements with MMP estimation using the vanishing interfacial tension method, and coreflood experiments in oil-wet Austin Chalk carbonate cores. The addition of 1 and 2 wt % 3-pentanone reduced contact angles and CO 2 –oil interfacial tension relative to baseline CO 2 –WAG, leading to a measurable decrease in MMP and higher incremental oil recovery during tertiary WAG injection. The results demonstrate that ketone-assisted CO 2 –WAG can improve oil recovery in carbonate reservoirs where conventional miscible CO 2 flooding is not feasible."
+   },
+   {
+    "id": "https://openalex.org/W7163596978",
+    "doi": null,
+    "title": "Zero-Poisson Ratio Elastomeric Substrates for Distortion-Free Stretchable Displays",
+    "year": 2026,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Advanced Materials and Mechanics",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2606.03000",
+    "abstract": "Stretchable displays are critical for emerging wearable electronics, soft sensors, and next-generation AR/VR interfaces. Although recent advances have enabled foldable, twistable, and rollable displays, intrinsically stretchable substrates often exhibit significant lateral contraction under tensile strain due to their high Poisson ratio, leading to unintended wrapping, distortion, and shrinkage. Here, we report a transparent heterogeneous-modulus elastomeric substrate designed to achieve near-zero Poisson ratio while maintaining mechanical softness and optical transparency. The substrate consists of line-patterned hard polydimethylsiloxane (PDMS) embedded within a soft PDMS matrix, producing spatially heterogeneous strain distribution during stretching. In this architecture, the soft PDMS functions as a strain-absorbing medium, while the embedded hard PDMS patterns suppress lateral deformation perpendicular to the applied strain. As a result, the structure significantly dampens transverse contraction and realizes a near-zero effective Poisson ratio. To demonstrate the utility of this platform for stretchable optoelectronics, LED arrays were integrated onto the heterogeneous substrate. The devices exhibit minimal vertical and lateral distortion during tensile deformation, enabling mechanically stable operation of stretchable light-emitting displays. This heterogeneous modulus strategy provides a simple, scalable approach to mechanically robust stretchable display platforms."
+   },
+   {
+    "id": "https://openalex.org/W7162893053",
+    "doi": null,
+    "title": "Model-free estimation in scattering analysis of microscopy",
+    "year": 2026,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Advanced Fluorescence Microscopy Techniques",
+     "Cell Image Analysis Techniques",
+     "Medical Image Segmentation Techniques"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2605.29424",
+    "abstract": "The mean squared displacement (MSD) of particles or probes is commonly estimated from microscopy videos using particle tracking approaches, which rely on tuning parameters manually, and are often unstable over the entire lag time range, especially in dense or low-contrast situations. In this work, we propose model-free ab initio uncertainty quantification (MF-AIUQ), a model-free method for scattering analysis of microscopy video based on a probabilistic framework, which estimates MSD without isolating particles and linking their trajectories. Based on the relationship between the intermediate scattering function (ISF) and the MSD derived from the cumulant theorem, MF-AIUQ estimates the MSD values by the marginal maximum likelihood estimator. To reduce the computational cost, the likelihood function is approximated by a subset of Fourier-transformed intensities. These intensities are equally spaced at the logarithmic values of Fourier basis functions and lag time points. We found that the ISF is smooth in this logarithmic input space, and the information of the ISF can be captured by this subset of inputs. We examine the method through simulation studies covering several representative stochastic processes and three experimental systems: a Newtonian fluid for evaluating performance in optically dense and bright-field settings, a gelation system with an evolving MSD shape, and snail mucin, a viscoelastic biopolymer, for modulus estimation. Across these studies, MF-AIUQ provides smooth and stable MSD estimates over the full lag time range and serves as a useful complementary approach in settings where particle tracking is unreliable or a parametric model of MSD is unavailable or unverifiable."
+   },
+   {
+    "id": "https://openalex.org/W7169484184",
+    "doi": null,
+    "title": "Leveraging DNA intercalation for the development of tunable, versatile supramolecular hydrogels",
+    "year": 2026,
+    "cited": 0,
+    "venue": "University of New Hampshire Scholars Repository (University of New Hampshire at Manchester)",
+    "topics": [
+     "Hydrogels: synthesis, properties, applications",
+     "Polymer Surface Interaction Studies",
+     "Supramolecular Self-Assembly in Materials"
+    ],
+    "oa_url": "https://scholars.unh.edu/cgi/viewcontent.cgi?article=3986&context=dissertation",
+    "abstract": "Supramolecular hydrogels have emerged as a versatile class of biomaterials capable of mimicking the dynamic behavior of natural tissues due to their inherent hydrophilicity, stimuli-responsiveness, and viscoelastic behavior. However, achieving both biocompatibility and mechanical tunability remains a challenge. This work utilizes DNA intercalation to create a programmable, sustainable hydrogel platform. By utilizing the reversible insertion of planar aromatic molecules between DNA base pairs, we demonstrate that the network’s dissociation kinetics and thermodynamic response are directly governed by the intercalator structure, offering a highly tunable strategy for stimuli-responsive biomaterials.To demonstrate the versatility of double stranded DNA (dsDNA) intercalating supramolecular hydrogels (DISHs), we crosslinked dsDNA using bifunctional polyethylene glycol (MW ≈2,000 Da) capped with intercalators of varying hydrophobicity, charge, and size: acridine, psoralen, thiazole orange, and phenanthridine. Notably, acridine-based cross-linkers displayed invariant and even increasing relaxation times with temperature, suggesting an entropically-driven binding mechanism. In contrast, the other three intercalators exhibited enthalpic behavior, where increased temperature accelerated bond dissociation. This platform establishes a new material system where a broad set of thermal and viscoelastic responses can be obtained due to the vast library of available intercalating molecules. To further expand the utility of DISHs as thermal-stiffening materials, we investigated acridine-based DISH thermodynamics through the control of pH and ionic strength. We demonstrated that high ionic strength effectively screens electrostatic repulsion, allowing positive entropic contributions to dominate the binding equilibrium. This shift enables a temperature-stabilization effect, where elasticity and relaxation times are enhanced with increasing heat. These results provide a highly stimuli-responsive platform for engineering hydrogels that resist thermal softening, achieving mechanical robustness across a broad range of environmental conditions. To expand the use of DISHs as tissue-mimicking biomaterials, we leverage the dual-functionality of psoralen DNA binding. Psoralen-based DISHs were formed by crosslinking DNA using tetrafunctional PEG (Mw ≈10,000 Da). Initially, psoralen intercalation produces an extrudable, self-healing dynamic network with tunable mechanical properties via crosslinker valency and concentration. Upon UVA irradiation (365 nm), psoralen undergoes a [2+2] cycloaddition with thymine to form covalent, inter-duplex bridges. Since this crosslinking occurs without disrupting the DNA phosphodiester backbone, the hydrogel retains fully enzymatic degradability, permitting full digestion for the recovery of cultured cells. Together, the work in this dissertation establishes DNA intercalating supramolecular hydrogels as highly tunable, biocompatible materials. "
+   },
+   {
+    "id": "https://openalex.org/W7154046922",
+    "doi": "https://doi.org/10.1016/j.ijpharm.2026.126871",
+    "title": "Accurate low-temperature direct granule extrusion 3D printing of personalised paediatric minitablets",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Pharmaceutics",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Pharmaceutical studies and practices"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.ijpharm.2026.126871",
+    "abstract": "• Low-temperature direct granule extrusion 3D printing using a pharmaceutical-grade SSE 3D printer. • Production of accurate 3D printing of minitablets as small as 2 mm from direct extrusion-based technology. • Extemporaneous dosage form conversion from the licensed tablets to personalised 3D printed minitablets. • Impact of number of layers and diameters on weight uniformity of 3D printed minitablets. Medicine individualisation remains constrained by the limited availability of age-appropriate strengths and by extemporaneous practices that can compromise dose consistency. Direct extrusion 3D printing offers an alternative manufacturing method for personalised medicine, without introducing solvents, complex preparation, or post-processing that challenge adoption in pharmacy. However, achieving uniform weight and drug content in small objects (e.g., paediatric-friendly minitablets) and lowering the preparation temperature remain challenges for direct extrusion-based 3D printing technologies. In this work, we introduce a facile low-temperature direct granules extrusion 3D printing strategy to manufacture carvedilol minitablets, starting from carvedilol powder or licensed tablets as starting materials, using a high-precision pharmaceutical-grade 3D printer. Methacrylate-based polymers, polyethylene glycol, and glyceryl monostearate were used to enable extrusion at 70–75°C. When the 3D printer was challenged with minute-dimensional designs, it was possible to manufacture batches of minitablets up to 2 mm in diameter with 0.8 mm in thickness. The lowest minitablet weight variation was 1.48%, achieved with an optimal diameter of 3.6 mm and a thickness of 1.6 mm; this was also reflected in the drug content uniformity (within ± 5%). The batches also met British Pharmacopoeia requirements for dissolution (>80% in 45 min). These findings extend direct extrusion 3D printing to a viable manufacturing platform for accurate, low-dose small solid units, such as minitablets. By coupling a GMP-compliant 3D printer with a simplified preparation workflow, this work provides a realistic blueprint for integrating direct extrusion-enabled personalised minitablets into hospital pharmacy and point-of-care settings."
+   },
+   {
+    "id": "https://openalex.org/W4415610628",
+    "doi": "https://doi.org/10.3390/app152111495",
+    "title": "The Effect of In Vitro Gastrointestinal Digestion on the Biological Activity of a Sea Cucumber (Holothuria forskali) Hydrolysate Encapsulated in Chitosan Nanoparticles and Rapeseed Lecithin Liposomes",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Echinoderm biology and ecology",
+     "Seaweed-derived Bioactive Compounds",
+     "Protein Hydrolysis and Bioactive Peptides"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/15/21/11495/pdf?version=1761644675",
+    "abstract": "A growing scientific interest in bioactive compounds from sea cucumbers is contributing to a broader recognition even in regions where their consumption is not common. This study evaluated the biological potential of a Holothuria forskali extract obtained through different extraction methods, including water extraction, ethanol–water extraction, and enzymatic hydrolysis. The hydrolysate (H), rich in low-molecular-weight peptides, yielded the highest antioxidant (30.6 ± 0.6 mg VitC Eq/g sample for ABTS and 10.7 ± 0.1 mg GAEs/g sample for Folin-reactive substances) and ACE-inhibitory (82.6%) activities. Based on these results, the hydrolysate was selected for encapsulation in two nanostructured delivery systems for comparative purposes: chitosan nanoparticles (NPs) and rapeseed lecithin liposomes (LPs). Both nanostructures were characterized in terms of size, ζ-potential, and polydispersity and subjected to simulated in vitro gastrointestinal digestion (GIDv) to assess their stability and mucoadhesive properties. After digestion, antioxidant activity increased in both systems, particularly in liposomes. Although encapsulation initially reduced ACE-inhibitory activity, gastrointestinal digestion restored or enhanced it, especially in liposomal formulations (≈37% inhibition). The mucoadhesive potential of the nanostructures after DGIv, focusing on their interactions with mucin, was assessed. Liposomal digests significantly increased viscosity in the presence of mucin, while chitosan nanoparticles decreased it, suggesting the formation of soluble complexes with reduced hydrodynamic volume. Electrostatic and hydrogen bonding interactions between chitosan and mucin were particularly evident in the NPH formulation. The rheological synergism parameter (Δη) revealed more negative values for NPs and NPHs, indicating stronger mucoadhesive interactions compared to controls and suggesting their suitability for mucosal delivery. These findings support the use of H. forskali hydrolysates as a source of functional bioactive compounds and highlight the potential of chitosan-based nanocarriers for enhancing their stability, bioaccessibility, and mucoadhesive properties in functional food or nutraceutical applications."
+   },
+   {
+    "id": "https://openalex.org/W4415306994",
+    "doi": "https://doi.org/10.48550/arxiv.2504.17257",
+    "title": "Electrohydrodynamic drift of a drop away from an insulating wall",
+    "year": 2025,
+    "cited": 0,
+    "venue": "arXiv (Cornell University)",
+    "topics": [
+     "Aerosol Filtration and Electrostatic Precipitation",
+     "Electrohydrodynamics and Fluid Dynamics",
+     "Power Transformer Diagnostics and Insulation"
+    ],
+    "oa_url": "https://arxiv.org/pdf/2504.17257",
+    "abstract": "An isolated charge-neutral drop suspended in an unbounded medium does not migrate in a uniform DC electric field. A nearby wall breaks the symmetry and causes the drop to drift towards or away from the boundary, depending on the electric properties of the fluids and the wall. In the case of an electrically insulating wall and an electric field applied tangentially to the wall, the interaction of the drop with its electrostatic image gives rise to repulsion by the wall. However, the electrohydrodynamic flow causes either repulsion for a drop with $\\mathrm{R/P}<1$, where $\\mathrm{R}$ and $\\mathrm{P}$ are the drop-to-medium ratios of conductivity and permittivity, respectively, or attraction for $\\mathrm{R/P}>1$. We experimentally measure droplet trajectories and quantify the wall-induced electrohydrodynamic lift in the case $\\mathrm{R/P}<1$. Numerical simulations using the boundary integral method agree well with the experiment and also explore the $\\mathrm{R/P}>1$ case. The results show that the lateral migration of a drop in a uniform electric field applied parallel to an insulating wall is dominated by the long-range flow due to the image stresslet."
+   },
+   {
+    "id": "https://openalex.org/W4377095740",
+    "doi": "https://doi.org/10.26434/chemrxiv-2023-2qldt",
+    "title": "Effect of Surface Functionality on the Rheological and Self-Assembly Properties of Chitin and Chitosan Nanocrystals and Use in Biopolymer Films",
+    "year": 2023,
+    "cited": 0,
+    "venue": "ChemRxiv",
+    "topics": [
+     "Nanocomposite Films for Food Packaging",
+     "Polysaccharides Composition and Applications",
+     "Advanced Cellulose Research Studies"
+    ],
+    "oa_url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/64667406a32ceeff2ddb3f0b/original/effect-of-surface-functionality-on-the-rheological-and-self-assembly-properties-of-chitin-and-chitosan-nanocrystals-and-use-in-biopolymer-films.pdf",
+    "abstract": "Chitin nanocrystals (ChNCs) are unique to all other bio-derived nanomaterials in one aspect: the inherent presence of a nitrogen moiety. By tuning the chemical functionality of this nanomaterial, and thus its charge and hydrogen bonding capacity, one can heavily impact its macroscopic properties such as its rheological and self-assembly characteristics. In this study, two types of ChNCs are made using acid hydrolysis (AH-ChNCs) and oxidative (OX-ChNCs) pathways, unto which deacetylation using a solvent-free procedure is utilized to create chitosan nanocrystals (ChsNCs) of varying degree of deacetylation (DDA). These nanocrystals were then studied for their rheological behaviour and liquid crystalline ordering. It was found that with both deacetylation and carboxylation of OX-ChNCs, viscosity continually increased with increasing concentrations from 2-8 wt. %, contrary to AH-ChNC suspensions in the same range. Interestingly, increasing the amine content of ChNCs was not proportional to the storage modulus, where a peak saturation of amines provided the most stiffness. Conversely, while the introduction of carboxylation increased the elastic modulus of OX-ChNCs by an order of magnitude from that of AH-ChNCs, it was degraded by increasing DDA. Deacetylation and carboxylation both inhibited the formation of a chiral nematic phase. Finally, these series of nanocrystals were incorporated into biodegradable pectin-alginate films as a physical reinforcement, which showed increased tensile strength and Young’s modulus values for the films incorporated with ChsNCs. Overall, this study is the first to investigate how surface functionalization of chitin-derived nanocrystals can affect their rheological and liquid-crystalline properties, and how it augments starch-based pectin/alginate films as a physical reinforcement nanofiller."
+   },
+   {
+    "id": "https://openalex.org/W4285169110",
+    "doi": "https://doi.org/10.2139/ssrn.4119335",
+    "title": "Improving the Efficiency of the Concentrating Solar Power Plants Using Heat Transfer Nanofluids with Gold Nanoplates: An Analysis from Laboratory to Industrial Scale",
+    "year": 2022,
+    "cited": 0,
+    "venue": "SSRN Electronic Journal",
+    "topics": [
+     "Solar Thermal and Photovoltaic Systems",
+     "Photovoltaic System Optimization Techniques",
+     "Solar-Powered Water Purification Methods"
+    ],
+    "oa_url": "https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=4119335",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4210529408",
+    "doi": "https://doi.org/10.32657/10356/154792",
+    "title": "Hybrid effects in the fracture energy of nanocomposites",
+    "year": 2020,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Polymer Nanocomposites and Properties",
+     "Carbon Nanotubes in Composites",
+     "Natural Fiber Reinforced Composites"
+    ],
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/154792/2/PhD_thesis_-_Nadya_Shtern_Lerman-_Updated_with_Declarations.pdf",
+    "abstract": "o I would like to"
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"TA Instruments Discovery HR 30\" OR \"TA Instruments Discovery HR 20\" OR \"TA Instruments Discovery HR 10\") AND OPEN_ACCESS:y",

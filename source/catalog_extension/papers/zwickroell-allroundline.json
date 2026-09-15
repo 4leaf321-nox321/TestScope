@@ -12,8 +12,159 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZwickRoell AllroundLine\" OR \"ZwickRoell Z005 TN\" OR \"ZwickRoell TH\" OR \"ZwickRoell TE\" OR \"ZwickRoell Z005 TNW\" OR \"ZwickRoell THW\"",
-  "count": null,
-  "works": []
+  "count": 10,
+  "works": [
+   {
+    "id": "https://openalex.org/W4221124052",
+    "doi": "https://doi.org/10.3390/met12030482",
+    "title": "Geometry Effect on Microstructure and Mechanical Properties in Laser Powder Bed Fusion of Ti-6Al-4V",
+    "year": 2022,
+    "cited": 45,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/3/482/pdf?version=1647090583",
+    "abstract": "Laser Powder Bed Fusion (LPBF) of Ti-6Al-4V enables the manufacturing of complex parts for lightweight applications. The emerging microstructure in the LPBF process and thus the mechanical properties are defined by the thermal cycles, which are locally variable for complex geometries. Predictions of local mechanical properties by simulation would reduce the development time of new applications drastically but are today not possible on part scale, so new part applications must be qualified experimentally at great effort. In this study, representative geometry sections were transferred into a simplified sample shape to mechanically characterize different geometry-dependent microstructures. In areas exposed to comparatively increased heat input over time, a lamellar α + β microstructure with β fraction up to 20% was measured in contrast to the common martensitic α′ microstructure of LPBF-manufactured Ti-6Al-4V, resulting in reduced tensile strength and fatigue life. For the first time, a correlation was successfully established between ultimate tensile strength of multiple geometries and the corresponding temperature–time cycles. With reduced computational effort by use of simplifying assumptions in the simulation, this correlation model can theoretically be applied to the part level. This work has laid the foundation for the simulation-based prediction of mechanical properties for entire parts manufactured with LPBF."
+   },
+   {
+    "id": "https://openalex.org/W3096724608",
+    "doi": "https://doi.org/10.1002/pts.2542",
+    "title": "The effects of pretreatment and coating on the formability of extrusion‐coated multilayer paperboard–plastic composites",
+    "year": 2020,
+    "cited": 17,
+    "venue": "Packaging Technology and Science",
+    "topics": [
+     "Material Properties and Processing",
+     "Recycling and Waste Management Techniques",
+     "Microplastics and Plastic Pollution"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pts.2542",
+    "abstract": "Sustainable materials like paperboard can substitute for crude oil‐based polymers in packaging applications and, by doing that, reduce the negative environmental impacts caused by plastic waste. For a broader application in the packaging industry, the forming of paperboard needs to overcome its limited forming behaviour and barrier properties. The presented work aims to influence the forming behaviour of uncoated and polyethylene terephthalate (PET)‐coated paperboard with additives like water, gelatin and soap. Furthermore, the differences in the mechanical behaviour of coated and uncoated materials are investigated. For the studies, tensile, bulge and forming tests were combined with different optical measurement methods. The investigations showed that the overall forming behaviour is affected by the mentioned additives and can be improved. Additionally, the interaction of the coating and substrate paper is investigated under different load conditions."
+   },
+   {
+    "id": "https://openalex.org/W3197167613",
+    "doi": "https://doi.org/10.1038/s41598-021-96325-4",
+    "title": "Impact of shredding degree on papermaking potential of recycled waste",
+    "year": 2021,
+    "cited": 11,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Cellulose Research Studies",
+     "Recycling and Waste Management Techniques",
+     "Material Properties and Processing"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-021-96325-4.pdf",
+    "abstract": "Abstract The properties of paper products depend on the structure of the cellulose fibres therein. Although fibre properties in virgin pulps can be modified by a refining process, this is more difficult in pulp from recovered fibre, particularly waste from office shredders that tend to shorten fibres during shredding. The shorter fibres in shredded paper make it difficult to easily reconstitute them into high-quality paper products. Moreover, because of high energy usage during the recycling process and transportation inefficiencies, there is a need to determine how to responsibly shred paper to alleviate this environmental burden. With this in mind, the influence of initial fibre length on the tensile properties of paper was investigated. Changes in initial fibre length significantly influenced many pulp and paper properties. It was found that cutting the paper into pieces with an area less than 25 mm2caused significant changes in the important morphological parameters of the fibres and a sharp decrease in the tensile properties of the reconstituted paper."
+   },
+   {
+    "id": "https://openalex.org/W3192949634",
+    "doi": "https://doi.org/10.1186/s41205-021-00110-y",
+    "title": "Needle penetration test - qualifying examination of 3D printable silicones for vascular models in surgical practice",
+    "year": 2021,
+    "cited": 5,
+    "venue": "3D Printing in Medicine",
+    "topics": [
+     "Anatomy and Medical Technology",
+     "Mechanical Circulatory Support Devices",
+     "Cardiac and Coronary Surgery Techniques"
+    ],
+    "oa_url": "https://threedmedprint.biomedcentral.com/track/pdf/10.1186/s41205-021-00110-y",
+    "abstract": "BACKGROUND: During cardiogenic shock blood circulation is minimal in the human body and does not suffice to survive. The extracorporeal life support system (ECLS) acts as a miniature heart-lung-machine that can be temporarily implanted over major vessels e.g. at the groin of the patient to bridge cardiogenic shock. To perform this procedure in an emergency, a proper training model is desirable. Therefore, a 3-dimensional-printable (3D) material must be found that mimics large vessel needle penetration properties. A suitable test bench for material comparison is desirable. METHODS: A test setup was built, which simulated the clinically relevant wall tension in specimens. The principle was derived from an existing standardized needle penetration test. After design, the setup was fabricated by means of 3D printing and mounted onto an universal testing machine. For testing the setup, a 3D printable polymer with low Shore A hardness and porcine aorta were used. The evaluation was made by comparing the curves of the penetration force to the standardized test considering the expected differences. RESULTS: 3D printing proved to be suitable for manufacturing the test setup, which finally was able to mimic wall tension as if under blood pressure and penetration angle. The force displacement diagrams showed the expected curves and allowed a conclusion to the mechanical properties of the materials. Although the materials forces deviated between the porcine aorta and the Agilus30 polymer, the graphs showed similar but still characteristic curves. CONCLUSIONS: The test bench provided the expected results and was able to show the differences between the two materials. To improve the setup, limitations has been discussed and changes can be implemented without complications."
+   },
+   {
+    "id": "https://openalex.org/W4408463244",
+    "doi": "https://doi.org/10.1007/s11483-025-09941-2",
+    "title": "Function of Different Emulsifiers in Spreadable Meat Emulsions: A Systematic Study of Physical Properties",
+    "year": 2025,
+    "cited": 3,
+    "venue": "Food Biophysics",
+    "topics": [
+     "Proteins in Food Systems",
+     "Pickering emulsions and particle stabilization",
+     "Polysaccharides Composition and Applications"
+    ],
+    "oa_url": "https://doi.org/10.1007/s11483-025-09941-2",
+    "abstract": "Abstract Emulsifiers are often used in the processing of pâtés based on various spreadable and solid meat products to maintain physical properties during production and to maintain the quality of the final product when key components, such as fat composition, are changed. Emulsifiers have been proven as useful tools to control and achieve desired properties in pâté-like products by modifying the product composition. This paper examines the impact of three distinct emulsifiers and stabilizers, namely collagen, sodium stearate and mono- and diglycerides (MDG), on the texture and microstructure of a range of duck liver pâtés. Samples with different emulsifier concentrations were analysed using methods such as rheology and texture analysis to gain insight into their mechanical properties. To visualize the microstructure of the emulsion, Coherent Antistokes Raman Scattering, together with image and statistical analysis, is used. Collagen increases the elastic properties, while sodium stearate significantly increases the hardness in compression tests. MDG only affects the microscopic properties. All emulsifiers exert discernible effects on the microscopic emulsion structure, fat particle sizes and shapes, as well as on mechanical properties. This allows for strategic use of these agents in order to enhance the quality and stability of meat emulsions. Graphical abstract The use of different emulsifiers and stabilizers provide distinct varities in structures. Top left: control system. Top right: collagen system. Lower left: sodium stearate sample. Lower right: MDG system."
+   },
+   {
+    "id": "https://openalex.org/W7111085466",
+    "doi": "https://doi.org/10.21533/pen.v13.i4.1278",
+    "title": "Application of machine learning algorithms to predict mechanical properties of aluminum alloys",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Periodicals of Engineering and Natural Sciences (PEN)",
+    "topics": [
+     "Machine Learning in Materials Science",
+     "Material Selection and Properties",
+     "Scientific and Engineering Research Topics"
+    ],
+    "oa_url": "https://pen.ius.edu.ba/index.php/pen/article/download/1278/902",
+    "abstract": "Alloys used in aerospace, automotive industries and structural engineering have good strength to specific weight ratio, corrosion resistance and workability. Mechanical properties like tensile and yield strengths, elongation and hardness are vital to ensure integrity of structures. However, conventional techniques in measuring these properties are time consuming, tedious and destructive. This paper providesa framework in which limited experimental data & Machine Learning algorithms are employed to evaluate the important mechanical properties of aerospace grade aluminum alloys. Data set of alloy compositions as well as processing parameters were obtained through material libraries to train and validate through techniques like Random Forest Regression (RFR), Artificial Neural Networks (ANN) and Support Vector Regression. The tensile strength was predicted with the best results for R – Squared & Root Mean Squared Errors were Coefficient of Determination R2= 0.96, RMSE = 12.4 MPa using ANN and RFR were more efficient in predicting the elongation (R2>0.93). The given approach demonstrated a better performance than the ordinary regression approaches with over 20 percent improvement and less experimental work up to about 60%. This approach provides the boosted & scalable approach to greatly increase the pace of material design and mechanical characterization of applications in the aerospace industry."
+   },
+   {
+    "id": "https://openalex.org/W7160856346",
+    "doi": "https://doi.org/10.3390/jmmp10050168",
+    "title": "Resistance Projection Welding Using Wire Mesh Inserts: Joining Hollow Profiles to Sheet Metals",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Journal of Manufacturing and Materials Processing",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Welding Techniques and Residual Stresses",
+     "Mechanical Behavior of Composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2504-4494/10/5/168/pdf?version=1778466874",
+    "abstract": "For large-scale manufacturing of profile-intensive vehicle bodies, a suitable joining process for hollow profile–sheet metal joints is required. These joints pose challenges related to minimizing plastic deformation while ensuring low, localized heat input to preserve the properties of high-strength steels. Conventional resistance spot welding often leads to profile deformation due to concentrated force and heat input and the lack of mechanical backing. For this reason, CD-welding tests on sandwich structures consisting of hollow profile-sheet metal with a wire mesh interlayer used as natural projections are conducted. This enables multiple small welds with localized heat input and welding times below 10 ms. This study investigates the influence of the weld parameters electrode force and charging energy, and illustrates that as the electrode force increases, plastic deformation increases up to the point of failure above 24 kN. In this regard, support structures and inserts made of copper and plastic, as well as novel welding electrodes with lateral profile contacts, are being investigated. Joint quality is evaluated based on setdown, electrical resistance, shear strength, and plastic deformation of hollow profiles. The highest shear tensile forces of up to 47 kN were achieved using 60 projections and an inner copper support structure."
+   },
+   {
+    "id": "https://openalex.org/W7154589497",
+    "doi": "https://doi.org/10.1007/s13272-026-00958-y",
+    "title": "Manufacture-oriented design of a topology-optimized nose landing gear fork for a small aircraft with retractable landing gear",
+    "year": 2026,
+    "cited": 0,
+    "venue": "CEAS Aeronautical Journal",
+    "topics": [
+     "Mechanical Failure Analysis and Simulation",
+     "Topology Optimization in Engineering",
+     "Cellular and Composite Structures"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s13272-026-00958-y.pdf",
+    "abstract": "Abstract Retractable landing gears are increasingly used in small and ultralight aircraft to increase range and cruising speeds by reducing aerodynamic drag. However, the available installation space for the landing gear is very limited. To make the best possible use of this space in terms of lightweight design and structural strength, the potential of using topology optimization in conjunction with additive manufacturing is investigated. A service life recalculation of the original nose landing gear fork was conducted after a failure of the conventional fork. The analysis confirmed that the load assumptions in accordance with CS-23 were correctly considered in the original design. However, the bending and welding processes during production introduced additional residual stresses into the system, which likely contributed to the failure. With the help of topology optimization, the fork was redesigned specifically for the loads that occur during operation while ensuring structural integrity with the aim of reducing weight and material usage. The optimized fork was manufactured from aluminium using Laser-Based Powder Bed Fusion of Metals (PBF-LB/M). In addition, another fork was constructed as a milled part based on the topology-optimized design. The limitations and properties of the manufacturing processes were taken into account. The forks were analyzed for static strength using Finite Element Method (FEM) analysis and then manufactured. Compared to the original steel fork, the milled version made from high-strength aluminium EN AW 7075 is approximately 39% lighter, while the 3D-printed fork (AlSi10Mg 3.2382) weighs about 34% less. The two new designs were manufactured and compared with the original fork. This paper evaluates the advantages and disadvantages of the designs in terms of mechanical properties, accuracy, post-processing, surface quality and manufacturing effort."
+   },
+   {
+    "id": "https://openalex.org/W4417158803",
+    "doi": "https://doi.org/10.14314/polimery.2025.11.12",
+    "title": "Low-density polyethylene injection molding process optimization",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Polimery",
+    "topics": [
+     "Injection Molding Process and Properties",
+     "Polymer Foaming and Composites",
+     "Rheology and Fluid Dynamics Studies"
+    ],
+    "oa_url": "https://polimery.ichp.vot.pl/index.php/p/article/download/2571/2441",
+    "abstract": "The paper outlines the objectives and assumptions of an evolutionary operation aimed at optimizing polymer processing and tracking the drift of optimal operating conditions. The method is based on two-level multifactor experimental designs and, depending on the form of the objective function, can be applied both numerically and experimentally. The concept, purpose, and implementation scenarios of the proposed method were characterized. As an example, the results of studies on the optimization of the low-density polyethylene injection molding process were presented."
+   },
+   {
+    "id": "https://openalex.org/W4411746274",
+    "doi": "https://doi.org/10.35784/acs_7308",
+    "title": "Buckling of a structure made of a new eco-composite material",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Applied Computer Science",
+    "topics": [
+     "Structural Analysis and Optimization",
+     "Structural Response to Dynamic Loads",
+     "Innovations in Concrete and Construction Materials"
+    ],
+    "oa_url": "https://ph.pollub.pl/index.php/acs/article/download/7308/5072",
+    "abstract": "This paper reports the experimental results of a study investigating a new eco-composite material made from 100% recycled material. Tensile and density tests were conducted. A numerical model of a one-sided fixed beam was designed by the finite element method and a buckling analysis of this structure was performed. Three different cross-sections and lengths of the beam were tested. The first fundamental buckling mode and the corresponding critical load value were determined. The obtained numerical results were verified by analytical method using Euler's formula, which showed high agreement between the results. The relative error was less than 4%. A higher level of agreement was obtained for longer beams than for shorter ones. The results obtained for the eco-composite were then compared with those reported for other materials with similar properties, namely LDPE, HDPE and PP. Compared to LDPE and HDPE, the eco-composite showed higher stiffness parameters and load resistance, which made the tested structure more rigid and therefore stable for a longer period of time. The analysis of beams with different crosssections and lengths made it possible to determine the effect of these parameters on the critical load, providing valuable insights for designers. It was observed that a 100% increase in the initial rectangular cross-section of 800mm2 resulted in a 685% increase in the stiffness of the beam. A 100% increase in the initial beam length of 150mm resulted in a 75% decrease in the critical force. The results of this study have confirmed that the new eco-composite material can be effectively used in engineering structures."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZwickRoell AllroundLine\" OR \"ZwickRoell Z005 TN\" OR \"ZwickRoell TH\" OR \"ZwickRoell TE\" OR \"ZwickRoell Z005 TNW\" OR \"ZwickRoell THW\") AND OPEN_ACCESS:y",
@@ -95,11 +246,13 @@
   }
  ],
  "standards_found": {
+  "EN AW 7075": 1,
   "ISO 536": 1,
   "ISO 187": 1,
   "EN ISO 1924-2": 1
  },
  "standards_new": [
+  "EN AW 7075",
   "EN ISO 1924-2",
   "ISO 187",
   "ISO 536"

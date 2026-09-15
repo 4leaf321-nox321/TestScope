@@ -11,8 +11,159 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZwickRoell DuraScan G5\" OR \"ZwickRoell DuraScan\" OR \"ZwickRoell G5\" OR \"ZwickRoell DuraScan 10 G5\" OR \"ZwickRoell DuraScan 20 G5\"",
-  "count": null,
-  "works": []
+  "count": 10,
+  "works": [
+   {
+    "id": "https://openalex.org/W4388223284",
+    "doi": "https://doi.org/10.1007/s40194-023-01615-2",
+    "title": "Influence of welding thermal cycles on properties of TMCP and Q&T steels evaluated by thermo-physical simulation",
+    "year": 2023,
+    "cited": 16,
+    "venue": "Welding in the World",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Alloys Wear and Properties",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40194-023-01615-2.pdf",
+    "abstract": "Abstract The welding process represents an unintentional, but unavoidable, heat treatment in the form of soft annealing or tempering, but also hardening during the cooling of the melt. Particularly in the case of high-strength fine-grained structural steels, this leads to critical states of the mechanical-technological properties of the base material. In order to investigate the influence of the heat input during welding on the resulting properties of the heat-affected areas, a thermo-physical simulation was carried out on a quenching and forming dilatometer Bähr DIL 805 A/D, considering low-alloyed quenched and tempered (Q&T) and low-alloyed thermo-mechanically controlled processed steels (TMCP) with yield strengths in the range of 500 to 960 MPa (S500MC, S700MC, S770QL, and S960QL). For this purpose, time–temperature cycles based on gas metal arc welding (GMAW) were simulated with different maximum temperatures (1200 °C; 1000 °C; 800 °C), representing the typical microstructural regions of the heat-affected zones (HAZ), and cooling times t 8/5 (5 s; 12 s; 20 s; 25 s) on miniature tensile specimens. To evaluate the property changes of the characteristic HAZ, tensile tests, hardness measurements, and microstructural investigations were analyzed. The investigations illustrate the significant influence of heat input during the welding process on the resulting mechanical-technological properties and microstructure for both kinds of steel. It was demonstrated that all the steels investigated tend to soften with increasing cooling times. The investigated Q&T steels have a lower risk of falling below the strength of the untreated base material than the investigated TMCP fine-grained structural steels. The considerably pronounced softening also resulted in the minimum strength values not being achieved for certain cooling time ranges."
+   },
+   {
+    "id": "https://openalex.org/W4385202497",
+    "doi": "https://doi.org/10.1007/s12289-023-01775-y",
+    "title": "Experimental and numerical investigation of the deep rolling process focussing on 34CrNiMo6 railway axles",
+    "year": 2023,
+    "cited": 12,
+    "venue": "International Journal of Material Forming",
+    "topics": [
+     "Surface Treatment and Residual Stress",
+     "Metal Alloys Wear and Properties",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s12289-023-01775-y.pdf",
+    "abstract": "Abstract Deep rolling is a powerful tool to increase the service life or reduce the weight of railway axles. Three fatigue-resistant increasing effects are achieved in one treatment: lower surface roughness, strain hardening and compressive residual stresses near the surface. In this work, all measurable changes introduced by the deep rolling process are investigated. A partly deep-rolled railway axle made of high strength steel material 34CrNiMo6 is investigated experimentally. Microstructure analyses, hardness-, roughness-, FWHM- and residual stress measurements are performed. By the microstructure analyses a very local grain distortion, in the range < 5 µm, is proven in the deep rolled section. Stable hardness values, but increased strain hardening is detected by means of FWHM and the surface roughness is significantly reduced by the process application. Residual stresses were measured using the XRD and HD methods. Similar surface values are proven, but the determined depth profiles deviate. Residual stress measurements have generally limitations when measuring in depth, but especially their distribution is significant for increasing the durability of steel materials. Therefore, a numerical deep rolling simulation model is additionally built. Based on uniaxial tensile and cyclic test results, examined on specimen machined from the edge layer of the railway axle, an elastic–plastic Chaboche material model is parameterised. The material model is added to the simulation model and so the introduced residual stresses can be simulated. The comparison of the simulated residual stress in-depth profile, considering the electrochemical removal, shows good agreement to the measurement results. The so validated simulation model is able to determine the prevailing residual stress state near the surface after deep rolling the railway axle. Maximum compressive residual stresses up to about -1,000 MPa near the surface are achieved. The change from the induced compressive to the compensating tensile residual stress range occurs at a depth of 3.5 mm and maximum tensile residual stresses of + 100 MPa at a depth of 4 mm are introduced. In summary, the presented experimental and numerical results demonstrate the modifications induced by the deep rolling process application on a railway axle and lay the foundation for a further optimisation of the deep rolling process."
+   },
+   {
+    "id": "https://openalex.org/W4404932606",
+    "doi": "https://doi.org/10.3390/met14121365",
+    "title": "Deep Drawability of Al-Mg Alloys Produced by Twin Roll Continuous Casting Method: Investigation of Microstructure and Mechanical Properties",
+    "year": 2024,
+    "cited": 9,
+    "venue": "Metals",
+    "topics": [
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/14/12/1365/pdf?version=1732887096",
+    "abstract": "This study explores the development of Al-Mg alloy sheets manufactured through the Twin Roll Continuous Casting (TRC) technique, with the goal of enhancing their mechanical properties via thermomechanical processing. TRC is a cost-effective and efficient method for producing thin sheets directly from molten metal, and this work focuses on the deep drawability of AA5182, AA5754, and AA5052 alloys, widely used in automotive, packaging, and aerospace applications. Improving deep drawability is crucial for meeting the stringent requirements of these industries. The alloys were designed according to EN 573-3 standards, and sheet castings were carried out at both laboratory and industrial scales. Microstructure evolution was analyzed at the as-cast and final thicknesses using optical microscopy. The sheets underwent cold rolling to a thickness of 1 mm, followed by final annealing, and their mechanical properties—including yield strength, tensile strength, elongation, and anisotropy—were evaluated. The deep drawability of the sheets was assessed using Erichsen cupping tests and earing mechanisms. To further understand failure mechanisms, fracture surface morphologies were examined using scanning electron microscopy (SEM), while energy-dispersive X-ray spectroscopy (EDS) was performed to analyze inclusions on fractured surfaces. The findings highlight the effectiveness of the TRC technique in producing high-performance Al-Mg sheets with mechanical properties comparable to or exceeding those of conventionally processed sheets. This study provides valuable insights into the optimization of alloy design and manufacturing methods, laying the groundwork for future advancements in TRC technology."
+   },
+   {
+    "id": "https://openalex.org/W4309090464",
+    "doi": "https://doi.org/10.3390/met12111870",
+    "title": "Fabrication and Characterization of Wire Arc Additively Manufactured AlSi5 Structures",
+    "year": 2022,
+    "cited": 9,
+    "venue": "Metals",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/11/1870/pdf?version=1667382731",
+    "abstract": "For the purpose of this research, single track details were manufactured in the shape of thin walls with a length of 100 mm and a height of 80 mm. Two welding speeds were chosen for this experiment–13.3 mm/s and 20.0 mm/s corresponding to the following heat inputs: 120 J/mm and 80 J/mm. The gas metal arc welding (GMAW) method was used for the build-up of the specimens in the cold arc pulse mode. The structure of the specimens was studied using X-ray diffraction (XRD) analysis carried out with CuKα radiation with a wavelength of 1.5406 Ǻ, optical microscopy, scanning electron microscopy (SEM), and energy dispersive X-ray spectroscopy (EDX). Furthermore, the Vickers hardness of the samples was determined using a ZwickRoell DuraScan 10/20 G5 unit at a force of 1 N. A preferred crystallographic orientation towards the (200) plane was observed in all cases, however a vastly textured structure was observed with inclusions of peaks in the (111), (220), and (311) crystallographic planes. The full width at half maximum (FWHM) of samples taken from different stages of build-up was calculated indicating an increase of the dislocation density at the more advanced stages of specimen growth. Despite that an increase of the hardness was observed towards the top of both specimens. This is attributed to the change in the structure of the αAl + Si formations from an irregular one at the bottom of the specimens, towards a fibrous one at the top. The results are discussed in regard to the optimization of the build-up process during wire arc additive manufacturing (WAAM)."
+   },
+   {
+    "id": "https://openalex.org/W4384927617",
+    "doi": "https://doi.org/10.1080/00325899.2023.2236907",
+    "title": "CIP-FAST: Assessing the production of complex geometry titanium components from powders by combining Cold Isostatic Pressing (CIP) and Field Assisted Sintering Technology (FAST)",
+    "year": 2023,
+    "cited": 4,
+    "venue": "Powder Metallurgy",
+    "topics": [
+     "Advanced materials and composites",
+     "Nuclear Materials and Properties",
+     "Titanium Alloys Microstructure and Properties"
+    ],
+    "oa_url": "https://www.tandfonline.com/doi/pdf/10.1080/00325899.2023.2236907?download=true",
+    "abstract": "A novel, two-step, solid-state method to produce complex geometry titanium parts was investigated by combining Cold Isostatic Pressing (CIP) with Field Assisted Sintering Technology (FAST). Hydride-dehydride powders of commercially pure titanium and Ti-6Al-4V were CIP'ed into shaped compacts using silicone moulds, then further consolidated using FAST, with ZrO 2 powder as a secondary pressing media. The final parts retained the complex features from the CIP moulds but were compressed in the pressing axis. Densities >99% were achieved, with optimised FAST processing parameters required for the different alloys. High hardness and fine equiaxed microstructures were observed at the edges of the parts, suggesting oxygen transfer from the ZrO 2 pressing media had occurred, with more investigation needed to better understand and prevent this. Despite this, the CIP-FAST process route has been demonstrated to be a fast, low-cost and material-efficient option to produce a wide variety of complex titanium parts."
+   },
+   {
+    "id": "https://openalex.org/W7136663800",
+    "doi": "https://doi.org/10.1007/s11665-026-13594-8",
+    "title": "Assessment of the Weldability of High-Strength Low-Alloyed Steels Considering the Manufacturing Routes",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Journal of Materials Engineering and Performance",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Welding Techniques and Residual Stresses",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11665-026-13594-8.pdf",
+    "abstract": "Abstract A welding process inevitably influences the base material in the heat-affected zone (HAZ) of the weld seam, which can critically alter the mechanical properties of high-strength low-alloyed (HSLA) steels. To account for this, weldability is commonly assessed using the carbon equivalent (CE), neglecting essential factors such as microalloying concepts and specific manufacturing routes. Since strengthening mechanisms respond differently to welding thermal cycles, CE alone offers limited reliability for evaluating the weldability of HSLA steels. To address this, thermophysical simulations using a TA Instruments DIL 805 dilatometer were carried out on quenched and tempered and thermomechanical-controlled processed steels with yield strength levels of ~ 700 MPa. Time–temperature cycles based on gas metal arc welding were applied using peak temperatures of 1,200 °C, 1,000 °C, 800 °C, and 600 °C and cooling times t 8/5 of 5–25 s. To evaluate the changes in material properties, tensile testing, hardness measurements, and microscopic analyses were conducted. The results demonstrate significant manufacturing-related differences of mechanical and microstructural properties, with strength reductions of up to 40% and hardness increases of up to 51%. Therefore, a new evaluation approach was discussed for HSLA steels, which incorporates specific manufacturing routes to enable a more reliable assessment of weldability."
+   },
+   {
+    "id": "https://openalex.org/W7160863450",
+    "doi": "https://doi.org/10.13023/etd.2026.163",
+    "title": "FIELD-ASSISTED POST-PROCESSING OF COLD-SPRAYED PURE COPPER",
+    "year": 2026,
+    "cited": 0,
+    "venue": "UKnowledge (University of Kentucky)",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Electromagnetic Effects on Materials",
+     "Surface Treatment and Residual Stress"
+    ],
+    "oa_url": "https://uknowledge.uky.edu/cgi/viewcontent.cgi?article=1274&context=me_etds",
+    "abstract": "The properties of materials processed through cold spray, and many other AM processes, are non-uniform and unpredictable. In most cases, post-processing is required to achieve desired properties and better uniformity. In cold spray, the typical method is an annealing heat treatment (AHT), which can improve bond strength, reduce porosity, and restore ductility, among other effects. AHT alone, however, is unable to completely remedy any of the unfavorable properties. In addition, long treatments at high temperatures are often needed for satisfactory results. This increases energy consumption and extends production times for products made by the process. For these reasons, numerous investigations have been conducted into alternative post-processing methods, many of which are only able to alter the properties of surface layers. This study investigates two field-assisted post-processing methods capable of affecting the full volume of cold-sprayed copper components. The first, magnetic field annealing (MFA), is shown to produce notable improvements in tensile yield strength and porosity over conventional AHT. Another field-assisted process, electropulse treatment, is briefly investigated as part of a preliminary study, constructing a setup for future work. The electropulse treatment has produced visible changes in particle interfaces, although collective material properties show no notable differences."
+   },
+   {
+    "id": "https://openalex.org/W7155184806",
+    "doi": "https://doi.org/10.4028/p-7mvx9y",
+    "title": "Influence of Local Laser Power Distribution and Build-Plate Temperature on Porosity and Microstructure in Laser Powder Bed Fusion (LPBF)",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Key engineering materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Laser Material Processing Techniques"
+    ],
+    "oa_url": "https://www.scientific.net/KEM.1047.259.pdf",
+    "abstract": "Laser powder bed fusion (LPBF) parts are commonly fabricated using nominally uniform process parameters; however, local variations in thermal boundary conditions can significantly influence part quality. In this study, the spatial distribution of build-plate temperature during LPBF of Inconel 718 was experimentally characterized using a thermocouple grid, and its influence on porosity, microstructure and hardness was investigated. Despite a nominal build-plate set temperature of 180 °C, measured temperatures ranged from approximately 101 °C to 120 °C and exhibited a pronounced radial gradient from the center toward the edges of the build-plate. Cubic samples fabricated at locations corresponding to the highest and lowest local temperatures showed distinct microstructural differences, with higher temperatures promoting slightly coarser cellular–dendritic morphologies and lower hardness values. Although bulk volumetric porosity showed identical values for both locations (≈0.01 vol.%), the pore populations differed: the hotter location contained fewer but locally larger voids while the cooler location exhibited a higher number density of smaller pores, as shown by equivalent-diameter histograms and cumulative distributions. Samples produced at cooler locations exhibited finer microstructures and higher hardness. These results demonstrate that spatial non-uniformity in build-plate temperature can lead to local variations in microstructure and mechanical properties within a single LPBF build, highlighting the importance of characterizing local thermal conditions when establishing reliable process-structure property relationships."
+   },
+   {
+    "id": "https://openalex.org/W7155211542",
+    "doi": "https://doi.org/10.4028/p-8j71ld",
+    "title": "Thermal Measurement during High-Velocity Oxy-Fuel Coating Process for Single and Multiple Pass Rotational Spraying",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Key engineering materials",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Erosion and Abrasive Machining",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.scientific.net/KEM.1047.205.pdf",
+    "abstract": "High-velocity oxy-fuel spraying is a widely used thermal spray technology for producing dense and wear-resistant coatings. The thermal input during spraying strongly influences coating microstructure, residual stress state, and substrate integrity. In this work, in situ thermal measurements were performed on S235 substrates during High-velocity oxy-fuel deposition of 316L coatings. Two spraying strategies were compared: (i) single-pass rotation and (ii) multi-pass rotation. Thermocouples embedded at 1.8mm depth captured transient temperature responses, revealing significant thermal cycling effects. Single-pass operations produced no significant heating–cooling cycles, while multi-pass strategies led to thermal accumulation and overlapping cycles. The results provide reference data for the calibration of finite element heat source models and support the development of process–structure–property relationships in High-velocity oxy-fuel coatings."
+   },
+   {
+    "id": "https://openalex.org/W7164452973",
+    "doi": null,
+    "title": "Characterization of specific 3D surface architecture created by water jet on materials intended for bioapplications",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
+    "topics": [
+     "Erosion and Abrasive Machining",
+     "Calcium Carbonate Crystallization and Inhibition",
+     "Fluid Dynamics and Heat Transfer"
+    ],
+    "oa_url": "https://dspace.vut.cz/bitstreams/6916b26d-fdc5-4797-a2d0-361470136a9d/download",
+    "abstract": "Erosion and other degradation processes caused by the water environment are generally considered negative. However, by controlling the erosion process under the influence of water, it is possible to achieve structural changes to the product surface that lead to improvement or modification of its properties in the desired direction. Technologies that erode the surface of a component in a controlled manner include water-jet technology. This work aims to demonstrate the applicability of water-jet technology for optimal surface roughening of biomaterials used to produce joint implants. This roughening is a key technological step that ensures a firm connection of the implant to the bone. The currently used sandblasting technology is not ideal due to contamination of the surface with abrasive particles; therefore, an effort is made to replace it with a cleaner technology. Based on theoretical preparation, an experiment was conducted. It demonstrated that, with appropriate settings of operating conditions, the pulsating water jet can, through erosion, create on the surface of biomaterials a relief that resembles the surface of a commercially produced implant. The work thus demonstrates that the pulsating water beam is a suitable technology for roughening the surface of joint implants without contamination, unlike currently used methods."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZwickRoell DuraScan G5\" OR \"ZwickRoell DuraScan\" OR \"ZwickRoell G5\" OR \"ZwickRoell DuraScan 10 G5\" OR \"ZwickRoell DuraScan 20 G5\") AND OPEN_ACCESS:y",
@@ -41,8 +192,12 @@
    "standards": []
   }
  ],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "EN 573-3": 1
+ },
+ "standards_new": [
+  "EN 573-3"
+ ],
  "test_item_hits": {
   "friction_coefficient": 1
  }

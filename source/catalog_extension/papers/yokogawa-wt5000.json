@@ -9,8 +9,755 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Yokogawa WT5000\" OR \"Yokogawa 760901\" OR \"Yokogawa 760902\"",
-  "count": null,
-  "works": []
+  "count": 58,
+  "works": [
+   {
+    "id": "https://openalex.org/W4308507322",
+    "doi": "https://doi.org/10.3390/en15218262",
+    "title": "Analytical Estimation of Power Losses in a Dual Active Bridge Converter Controlled with a Single-Phase Shift Switching Scheme",
+    "year": 2022,
+    "cited": 28,
+    "venue": "Energies",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Microgrid Control and Optimization",
+     "Multilevel Inverters and Converters"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/15/21/8262/pdf?version=1667888947",
+    "abstract": "Micro-grid solutions around the world rely on the operation of DC/DC power conversion systems. The most commonly used solution for these topologies is the use of a dual active bridge (DAB) converter. Increasing the efficiency and reliability of this system contributes to the improvement in the stability of the entire microgrid. This paper discussed an analytical method of energy efficiency and power loss estimation in a single phase dual active bridge (DAB) converter controlled with a single-phase shift (SPS) modulation scheme for microgrid system stability. The presented approach uses conduction and commutation losses of semiconductors and high frequency transformer. All parameters required for the calculation may be obtained from the manufacturers’ datasheets or can be based on a simple measurement. The approach was validated by the comparison of the estimated energy efficiency characteristics with the measured ones for a prototype of a 5 kW single phase DAB converter equipped with silicon carbide metal-oxide semiconductor field-effect transistors (SiC MOSFET)."
+   },
+   {
+    "id": "https://openalex.org/W4285295346",
+    "doi": "https://doi.org/10.1109/tpel.2022.3189571",
+    "title": "Hybrid-Mode Adaptive Zero-Voltage Switching for Single-Phase DC–AC Conversion With Paralleled SiC MOSFETs",
+    "year": 2022,
+    "cited": 23,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/63/9970584/09822968.pdf",
+    "abstract": "State-of-the-art soft-switching modulations such as critical conduction mode and triangular current mode increase the conduction loss of power semiconductors and require variable switching frequencies; thus, these soft-switching methods are seldom used in high-power dc–ac conversion. To achieve soft-switching while maintaining low root mean square currents, this article proposes a hybrid quadrilateral and continuous current mode (HQCCM) modulation for general high-frequency single-phase dc–ac conversion based on paralleled silicon carbide metal oxide semiconductor field-effect transistors. The proposed HQCCM adaptively operates in soft-switching quadrilateral current mode or hard-switching continuous conduction mode in one ac line cycle depending on the instantaneous ac load current. Thus, high efficiencies can be achieved over the full power range. This HQCCM modulation features adaptive soft-switching, constant switching frequency, and compatibility to line filter and is applicable for high-power applications. A 4.4-kW single-phase dc–ac inverter is developed and tested to verify the advantages of the HQCCM. This article is accompanied by a video demonstrating the effectiveness of the proposed HQCCM in varying load scenarios."
+   },
+   {
+    "id": "https://openalex.org/W4387682408",
+    "doi": "https://doi.org/10.1109/tpel.2023.3325162",
+    "title": "Three-Phase ARCP Inverter Using Soft-Switching With a Single Shared Inductor",
+    "year": 2023,
+    "cited": 18,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/63/4359240/10286393.pdf",
+    "abstract": "Soft-switching in power inverters for drive and grid applications can both enhance the efficiency by reducing switching losses and improve EMI due to lower switching speeds with their associated$\\mathrm{d}v/\\mathrm{d}t$. An advantageous topology is the well-known auxiliary resonant commutated pole (ARCP) inverter. The development of such power electronic inverters often focuses on reducing weight, volume, and cost. Considering a three-phase ARCP system, this article presents a novel single shared inductor$(\\mathrm{S}^{2}\\mathrm{I})$-ARCP approach to reduce the passive component count in the auxiliary circuit from three to one. The simultaneous use of the shared inductor by more than one phase must be detected and avoided by the control algorithm. A frequency analysis of such occurrences is performed, and a method for avoiding them by shifting the switching edges is presented. The proposed$\\mathrm{S}^{2}\\mathrm{I}$-ARCP topology together with an appropriate control algorithm is implemented and validated at 10 kW with an 800 V DC-link. Efficiency measurement results indicated a significant loss reduction under soft-switching operation by more than 38 % compared to hard-switching, with a peak efficiency value of 99.58 %. It is demonstrated that a mere adjustment in the control signal generation can save two resonant inductors without significant disadvantages."
+   },
+   {
+    "id": "https://openalex.org/W4390395070",
+    "doi": "https://doi.org/10.3390/electronics13010154",
+    "title": "A Datasheet-Driven Electrothermal Averaged Model of a Diode–MOSFET Switch for Fast Simulations of DC–DC Converters",
+    "year": 2023,
+    "cited": 15,
+    "venue": "Electronics",
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-9292/13/1/154/pdf?version=1703842684",
+    "abstract": "The design of modern power electronics converters requires accurate electrothermal device models enabling a straightforward parameter estimation and fast, yet accurate, circuit simulations. In this paper, a novel electrothermal averaged model of a diode–MOSFET switch for fast analysis of DC–DC converters is proposed. The model has the form of a SPICE-compatible subcircuit and allows computing in a very short simulation time the DC characteristics of the converter, the waveforms of the terminal voltages and currents of the semiconductor devices, as well as their junction temperatures, both in CCM and DCM.. All the input data required by the parameter estimation procedure can be taken from the datasheets of components. The correctness of the proposed approach is experimentally verified for a buck converter chosen as a case-study. A generally good agreement between measurements and simulations is obtained; as an example, the absolute error in assessing the MOSFET junction temperature does not exceed 12 °C within the whole range of switching frequency of the converter, while the commonly used PLECS model considerably underestimates it."
+   },
+   {
+    "id": "https://openalex.org/W4386183969",
+    "doi": "https://doi.org/10.1109/access.2023.3308687",
+    "title": "Increasing Light Load Efficiency in Phase-Shifted, Variable Frequency Multiport Series Resonant Converters",
+    "year": 2023,
+    "cited": 15,
+    "venue": "IEEE Access",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Wireless Power Transfer Systems",
+     "GaN-based semiconductor devices and materials"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10230231.pdf",
+    "abstract": "Multiport power conversion topologies provide the functionality of more single (and independent) converters but with just one transformer having multiple windings (i.e., ports). In automotive on-board chargers, the multiport approach combined with symmetrical series resonant circuits, the so-called multiport series resonant converter (MSRC), enable the required galvanic isolated connection from the grid-side converter (i.e., usually an AC-DC power factor correction (PFC) stage) to the vehicle’s batteries, i.e., the main high-voltage (HV) traction and the auxiliary low-voltage (LV), theoretically allowing to achieve increased power densities and enabling a flexible (and bidirectional) power routing among the different ports. High efficiency figures are normally specified in the considered application field for a very wide voltage ratios among the different ports, due to the variability of battery voltages, thus requiring proper and optimized control strategies of the underlying converter. The variation of the battery voltage is in fact highly affecting the MSRC operation, especially for light loads at a low state-of-charge, and high losses can be experienced since zero voltage switching conditions are lost. Beside the conventional control approach of the MSRC, where the power flow is set with a phase-shift between the individual full bridges or by changing the switching frequency, this paper proposes a novel and coordinated approach, including the manipulation of both and the additional modulation of the duty-cycle as a function of the grid-side DC-link voltage (i.e., the output of the PFC stage), aiming at introducing a zero-voltage interval on the full bridge output voltages. A full mathematical description of the adopted converter topology is reported, also including accurate simulation models for losses estimation allowing a fair comparison between the proposedduty-cyclemode control and the conventional control strategy. Detailed operation guideline for achieving zero-voltage switching within the connected full bridges is also reported. Experimental results validate the proposal and highlight a significant peak and average efficiency improvements with respect to standard control approaches."
+   },
+   {
+    "id": "https://openalex.org/W3135776611",
+    "doi": "https://doi.org/10.3390/en14051486",
+    "title": "Photovoltaic Inverter Profiles in Relation to the European Network Code NC RfG and the Requirements of Polish Distribution System Operators",
+    "year": 2021,
+    "cited": 12,
+    "venue": "Energies",
+    "topics": [
+     "Renewable energy and sustainable power systems",
+     "Photovoltaic System Optimization Techniques",
+     "Power System Reliability and Maintenance"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/14/5/1486/pdf?version=1615354903",
+    "abstract": "The presently observed rapid increase in photovoltaic (PV) micro-installation connections to low-voltage networks, resulting from numerous financial support programmes, European Union (EU) energy policy and growing social awareness of environmental and economic issues, raise the question if PV inverters widely available in EU market fulfil the numerous technical requirements specified in European and Polish regulations. The paper presents the results of an experimental study carried out on three PV Inverters widely available in the EU in accordance with the EU network code NC RfG, standard EN 50549-1:2019 and internal Polish distribution system operators’ (DSOs’) regulations, governing PV inverter cooperation with the low-voltage distribution network. The laboratory test stand scheme and its description are presented. In each test, at least one of the inverters encountered issues, either with the operation in required frequency ranges (one PV inverter), activating reactive power control modes (all three PV inverters), maintaining required power generation gradient after tripping (one PV inverter) or under-voltage ride through immunity (one PV inverter). The obtained results have shown that all tested PV inverters did not meet requirements that are the key to maintaining reliable and safe operation of transmission and distribution electrical networks."
+   },
+   {
+    "id": "https://openalex.org/W4396575268",
+    "doi": "https://doi.org/10.1109/apec48139.2024.10509033",
+    "title": "Design of a 15kW High-Efficiency and High Power Density Bidirectional TCM Buck/Boost Converter",
+    "year": 2024,
+    "cited": 11,
+    "venue": null,
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://vtechworks.lib.vt.edu/bitstreams/89b2d1f7-45d7-47e3-a5dd-87d84abbdb43/download",
+    "abstract": "A non-isolated buck/boost converter features bidirectional power flow capability and a wide output voltage range. The zero-voltage switching (ZVS) can be achieved under triangular current mode (TCM) operation to achieve high power density and high efficiency. Most research has been conducted on TCM control strategies or low-power applications but rarely on the design of high-power TCM buck/boost converters. In this paper, a simplified inductor design methodology for the power conversion between a common dc bus and a wide-range variable dc voltage TCM buck/boost converter is proposed. A 15kW prototype is designed to regulate the voltage from 150V-1000V from a 1.1kV dc bus. The prototype demonstrates 16.36kW/L power density and 99.81% peak efficiency."
+   },
+   {
+    "id": "https://openalex.org/W3135484572",
+    "doi": "https://doi.org/10.3390/en14051412",
+    "title": "Inductive Power Transfer Subsystem for Integrated Motor Drive",
+    "year": 2021,
+    "cited": 10,
+    "venue": "Energies",
+    "topics": [
+     "Wireless Power Transfer Systems",
+     "Energy Harvesting in Wireless Networks",
+     "RFID technology advancements"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/14/5/1412/pdf",
+    "abstract": "An inductive power transfer subsystem for an integrated motor drive is presented in this paper. First, the concept of an integrated motor drive system is overviewed, and its main components are described. Next, the paper is focused on its inductive power transfer subsystem, which includes a magnetically coupled resonant circuit and two-stage energy conversion with an appropriate control method. Simplified complex domain analysis of the magnetically coupled resonant circuit is provided and the applied procedure for its component selection is explained. Furthermore, the prototype of the integrated motor drive system with its control is described. Finally, the prototype based on the gallium nitride field effect transistors (GaN FET) inductive power transfer subsystem is experimentally tested, confirming the feasibility of the concept."
+   },
+   {
+    "id": "https://openalex.org/W4378842978",
+    "doi": "https://doi.org/10.1109/apec43580.2023.10131171",
+    "title": "Autotuning of Resonant Switched-Capacitor Converters for Zero Current Switching and Terminal Capacitance Reduction",
+    "year": 2023,
+    "cited": 9,
+    "venue": null,
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Wireless Power Transfer Systems",
+     "Multilevel Inverters and Converters"
+    ],
+    "oa_url": "https://escholarship.org/content/qt83g9r2gb/qt83g9r2gb.pdf?t=s97yf2",
+    "abstract": "As a result of their soft-charging and soft-switching capabilities, resonant switched-capacitor (ReSC) converters can achieve higher efficiencies and power densities than pure switched-capacitor (SC) converters. However, the terminal capacitors (i.e, the input and output capacitors) still consume a large volume in ReSC converters and represent the new bottleneck for converter miniaturization. Theoretically, when the terminal capacitances are reduced, an optimum clocking scheme that preserves multi-resonant operation can be calculated. In practice, this optimal operating point may not be precisely obtained due to circuit parasitics, passive component tolerance and derating. This paper demonstrates a closed-loop hysteretic control method that can dynamically track the zero current switching (ZCS) operating point and allow for a reduction in terminal filtering capacitors via multi-resonant operation. A 48-to-24-V ReSC converter prototype is designed and constructed to verify the effectiveness of the proposed control method. The controller is demonstrated to successfully track the ZCS operating point, enabling over 70% reduction in terminal capacitor volume. In the case of reduced terminal capacitances, the controller achieves up to 44% reduction in power loss compared with the conventional open-loop control without ZCS autotuning."
+   },
+   {
+    "id": "https://openalex.org/W4289522922",
+    "doi": "https://doi.org/10.3390/en15155609",
+    "title": "A High-Power-Density Active-Clamp Converter with Integrated Planar Transformer",
+    "year": 2022,
+    "cited": 9,
+    "venue": "Energies",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Silicon Carbide Semiconductor Technologies",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/15/15/5609/pdf?version=1660231182",
+    "abstract": "This paper proposes an active-clamp forward-flyback (ACFF) converter with an integrated planar transformer for wide-input voltage and high-output current applications, such as low-voltage direct-current (LDC) converters in electric vehicles. An integrated planar transformer that consists of a forward-flyback transformer, single primary winding, and efficient structure of secondary windings is adopted for the proposed converter, and since this transformer is implemented with a common four-layer printed circuit board (PCB) winding, a high power density and low cost of the proposed converter can be achieved. In addition, due to the low leakage inductance induced by the planar transformer, a reduced commutation period can be achieved, and it is possible to increase the switching frequency resulting in low volume of transformer. Although the integrated planar transformer has relatively high conduction loss, the active-clamp topology can significantly reduce the conduction loss on switches compared with widely used full-bridge (FB) converters because it only utilizes two switches and shows the low circulating current. As a result, the proposed converter with an integrated planar transformer has strengths in high power density and cost competitiveness without degraded efficiency, and it is a very attractive topology for LDC converters and other applications that require wide-input voltage and high-output current."
+   },
+   {
+    "id": "https://openalex.org/W3197729302",
+    "doi": "https://doi.org/10.3390/en14175580",
+    "title": "All-SiC ANPC Submodule for an Advanced 1.5 kV EV Charging System under Various Modulation Methods",
+    "year": 2021,
+    "cited": 9,
+    "venue": "Energies",
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Silicon Carbide Semiconductor Technologies",
+     "Advanced DC-DC Converters"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/14/17/5580/pdf?version=1630935290",
+    "abstract": "This work is focused on the design and experimental validation of the all-SiC active neutral-point clamped (ANPC) submodule for an advanced electric vehicle (EV) charging station. The topology of the station is based on a three-wire bipolar DC bus (±750 V) connecting an ac grid converter, isolated DC-DC converters, and a non-isolated DC-DC converter with a battery energy storage. Thus, in all types of power converters, the same three-level submodule may be applied. In this paper, a submodule rated at 1/3 of the nominal power of the grid converter (20 kVA) is discussed. In particular, four different modulation strategies for the 1.5 kV ANPC submodule, exclusively employing fast silicon carbide (SiC) MOSFETs, are considered, and their impact on the submodule performance is analyzed. Moreover, the simulation study is included. Finally, the laboratory prototype is described and experimentally verified at a switching frequency of 64 kHz. It is shown that the system can operate with all of the modulations, while techniques PWM2 and PWM3 emerge as the most efficient, and alternating between them, depending on the load, should be considered to maximize the efficiency. Furthermore, the results showcase that the impact of the different PWM techniques on switching oscillations, including overvoltages, can be nearly fully omitted for a parasitic inductance optimized circuit, and the choice of modulation should be based on power loss and/or other factors."
+   },
+   {
+    "id": "https://openalex.org/W4385577978",
+    "doi": "https://doi.org/10.3390/en16155797",
+    "title": "Experimental Validation of 40 kW EV Charger Based on Vienna Rectifier and Series-Resonant Dual Active Bridge",
+    "year": 2023,
+    "cited": 8,
+    "venue": "Energies",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Advanced Battery Technologies Research",
+     "Wireless Power Transfer Systems"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/16/15/5797/pdf?version=1691141871",
+    "abstract": "This work presents the experimental validation of a 40 kW electric vehicle (EV) charger. The proposed system comprises two 20 kW modules connected in parallel at the input and output. Each module has two stages—as a grid converter Vienna Rectifier (VR) was chosen, and as an isolated DC/DC stage, two Series-Resonant Dual-Active-Bridges (SRDABs) in input-series-output-parallel (ISOP) configurations were applied. The AC/DC and DC/DC stages were enclosed in 2U rack standard housing. A bipolar DC-link with ±400 V DC voltage was employed to connect both stages of the charger module while the charger’s output is dedicated to serving 800 V batteries. VRs operated at 66 kHz switching frequency and the SRDABs operated at 100 kHz. The converters used in the charger structure were based on silicon carbide (SiC) power devices. The description and parameters of the built hardware prototypes of both—AC/DC and DC/DC—converters are provided. Moreover, the experimental validation of each stage and the whole charging system, including oscilloscope waveforms and power analyzer measurements at nominal power, are included. Such a configuration enables energy conversion with high efficiency without a negative impact on the grid and high-quality grid waveforms."
+   },
+   {
+    "id": "https://openalex.org/W4380854477",
+    "doi": "https://doi.org/10.1109/tpel.2023.3286818",
+    "title": "Loss Characterization and Modeling of Class II Multilayer Ceramic Capacitors: A Synergistic Material-Microstructure-Device Approach",
+    "year": 2023,
+    "cited": 8,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Supercapacitor Materials and Fabrication",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/63/4359240/10153936.pdf",
+    "abstract": "This paper motivates the loss characterization and modeling of Class II multi-layer ceramic capacitors (MLCCs), which have been widely utilized owing to high energy density, in high-frequency resonant converters. In a resonant tank, MLCCs experience complex electrical operating conditions (e.g., large-signal, high-frequency, DC bias), but the incurred power loss has not been clearly characterized and modeled. This paper first proposes a novel resonant-Sawyer-Tower (Res-ST) circuit which can experimentally extracts the loss of a MLCC in real operation in a resonant tank. A general loss modeling approach named Steinmetz's Pre-electrified Graph (SPeG) is then proposed to correlate capacitor's loss to the peak value of excitation, frequency, and DC bias voltage. The SpeG model provides the material-specific volume loss density of common Class II dielectric materials and can be easily extrapolated to evaluate the loss of the MLCCs with different rated voltage$&$capacitance but employing the same dielectric material. To generalize the material-specific SPeG model to device-level application, this paper also proposes an easy-to-follow tool, dielectric thickness observer (DTO), to estimate the internal microstructural geometry by tracking the$C$-$V$characteristic provided in product datasheet. The synergy of the proposed characterization circuit, SPeG loss model, and DTO establishes a toolkit that enables the estimation of MLCC losses in a manner similar to that of a ferromagnetic inductor/transformer core. This paper is accompanied by microscope images of the investigated MLCC samples and MATLAB scripts of the proposed DTO."
+   },
+   {
+    "id": "https://openalex.org/W4308673288",
+    "doi": "https://doi.org/10.1109/pesgm48719.2022.9917140",
+    "title": "Start-up Optimization Considering Integrated Power Electronic Systems",
+    "year": 2022,
+    "cited": 8,
+    "venue": "2022 IEEE Power &amp; Energy Society General Meeting (PESGM)",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Silicon Carbide Semiconductor Technologies",
+     "Multilevel Inverters and Converters"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1897007",
+    "abstract": "The startup of systems composed of power electronic systems is becoming more complex. As the systems grow, standard pre-configuration sequencing methods will struggle. This work proposes a linear programming optimization method to couple power electronic systems in a series of startup commands. This formulation is demonstrated in a real-time implementation on hardware."
+   },
+   {
+    "id": "https://openalex.org/W4388159473",
+    "doi": "https://doi.org/10.3390/en16217307",
+    "title": "The Reference Wideband Inductive Current Transformer",
+    "year": 2023,
+    "cited": 7,
+    "venue": "Energies",
+    "topics": [
+     "Magnetic Field Sensors Techniques",
+     "Advanced Electrical Measurement Techniques",
+     "Sensor Technology and Measurement Systems"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/16/21/7307/pdf?version=1698638392",
+    "abstract": "The aim of this paper is to show that the developed inductive current transformer may ensure the required wideband transformation accuracy and it may be applied, as the reference source, in the measuring system for the evaluation of the transformation accuracy of inductive current transformers for harmonics of distorted current. This device ensures 5 A and 1 A RMS secondary currents to provide the opportunity to use the differential measuring setup. Such solutions are characterized by the significantly reduced measurement uncertainty in relation to the comparative measurements made between two current/voltage channels. The problems required to ensure the high wideband transformation accuracy, including the self-generation phenomenon of the low order higher harmonics to the secondary current and a too-low frequency range of operation, were overcome in the design process. The values of its ratio error and the phase displacement of the developed reference wideband inductive current transformer did not exceed ±0.2%/° up to 1 kHz, ±0.4%/° from 1 kHz up to 1.5 kHz and ±0.5%/° from 1.5 kHz up to 3 kHz, as is required to perform the test procedure in accordance with the optional requirements for the inductive current transformers defined in the new edition of the standard IEC 61869-1."
+   },
+   {
+    "id": "https://openalex.org/W4319761734",
+    "doi": "https://doi.org/10.21014/tc3-2022.068",
+    "title": "APPLICABILITY OF TORQUE CALIBRATION ON TEST BENCHES FOR ELECTRICAL MACHINES",
+    "year": 2023,
+    "cited": 7,
+    "venue": null,
+    "topics": [
+     "Advanced Measurement and Metrology Techniques",
+     "Real-time simulation and control systems",
+     "Gear and Bearing Dynamics Analysis"
+    ],
+    "oa_url": "https://www.imeko.org/publications/tc3-2022/IMEKO-TC3-2022-068.pdf",
+    "abstract": "The traceability of torque measurements on test benches for electrical machines is primarily established by the static calibration of a torque transducer.However, the loading conditions and signal processing methods are generally different for the static calibration and the measurement on a test bench.Therefore, the applicability of the calibration should be clarified before applying the calibration results for further analysis.In this paper, the torque measurement chain using a power analyser on a test bench for electrical machines is compared to the measurement chain used in the standard calibration procedure DIN 51309."
+   },
+   {
+    "id": "https://openalex.org/W4401643862",
+    "doi": "https://doi.org/10.3390/inventions9040091",
+    "title": "Technical Requirements of Photovoltaic Inverters for Low Voltage Distribution Networks",
+    "year": 2024,
+    "cited": 5,
+    "venue": "Inventions",
+    "topics": [
+     "Photovoltaic System Optimization Techniques",
+     "Microgrid Control and Optimization",
+     "Islanding Detection in Power Systems"
+    ],
+    "oa_url": "https://www.mdpi.com/2411-5134/9/4/91/pdf?version=1723803196",
+    "abstract": "The paper presents the results of an experimental study, which was conducted in 2021 and briefly presented at the conference CIGRE Paris Session 2022, as a part of a joint initiative for comparative studies of PV inverters, of AGH University of Science and Technology and Tauron Dystrybucja (Polish DSO). The study was performed on a representative sample of 29 brand new PV inverters, widely available for sale in the EU, from over 20 various manufacturers from and outside the EU. For the purposes of this research, all tested PV have been made available by their manufacturers or regional distributors, which confirms the origin of the devices from official distribution channels and their designation for the EU market. The conducted research covers the technical aspects of PV inverters’ operation and performance included in the NC RfG network code, technical standard EN-505049-1:2019, and internal regulations of distribution system operators governing PV inverter technical quality and its cooperation with the low-voltage distribution network. The national regulations may differ between individual EU member states. The paper describes the testing procedure, obtained results, conclusions, and recommendations for regulatory bodies and DSOs."
+   },
+   {
+    "id": "https://openalex.org/W4411799055",
+    "doi": "https://doi.org/10.1109/tpel.2025.3584858",
+    "title": "Doubled-Frequency Triangular Current Mode Modulation With Sinusoidal Frequency Profile for a Three-Level ANPC Converter",
+    "year": 2025,
+    "cited": 4,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters",
+     "HVDC Systems and Fault Protection"
+    ],
+    "oa_url": "https://research.utwente.nl/en/publications/6b8213a5-5dfb-4a81-b416-e0997831b39a",
+    "abstract": "Triangular current mode (TCM) modulation is a well-researched technique for optimizing the trade-off between converter power or gravimetric density and power efficiency. However, its application in multilevel AC-DC converters has been limited. This paper extends the TCM concept to a three-level active-neutral-point-clamped (3L-ANPC) converter and addresses key implementation challenges. First, two fundamental TCM commutation sequences are introduced. Building on these, a doubled-frequency TCM (DF-TCM) modulation method is proposed to offer additional benefits. A major drawback of conventional TCM is its complex switching frequency profile, which imposes significant computational burdens and can easily excite circuit resonance. To address this, this paper proposes replacing it with sinusoidal frequency profiles (SFP). Additionally, considerations for parameter design are discussed, and a model for semiconductor conduction losses is developed. Finally, a hardware prototype is constructed to validate the feasibility of the proposed DF-TCM strategy."
+   },
+   {
+    "id": "https://openalex.org/W4410827936",
+    "doi": "https://doi.org/10.3390/machines13060465",
+    "title": "A Comprehensive Analysis of the Loss Mechanism and Thermal Behavior of a High-Speed Magnetic Field-Modulated Motor for a Flywheel Energy Storage System",
+    "year": 2025,
+    "cited": 4,
+    "venue": "Machines",
+    "topics": [
+     "Electric Motor Design and Analysis",
+     "Magnetic Bearings and Levitation Dynamics",
+     "Magnetic Properties and Applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-1702/13/6/465/pdf?version=1748479348",
+    "abstract": "This paper presents a comprehensive analytical framework for investigating loss mechanisms and thermal behavior in high-speed magnetic field-modulated motors for flywheel energy storage systems. Through systematic classification of electromagnetic, mechanical, and additional losses, we reveal that modulator components constitute approximately 45% of total system losses at rated speed. Finite element analysis demonstrates significant spatial non-uniformity in loss distribution, with peak loss densities of 5.5 × 105 W/m3 occurring in the modulator region, while end-region losses exceed central-region values by 42% due to three-dimensional field effects. Our optimized design, implementing composite rotor structures, dual-material permanent magnets, and integrated thermal management solutions, achieves a 43.2% reduction in total electromagnetic losses, with permanent magnet eddy current losses decreasing by 68.7%. The maximum temperature hotspots decrease from 143 °C to 98 °C under identical operating conditions, with temperature gradients reduced by 58%. Peak efficiency increases from 92.3% to 95.8%, with the η > 90% region expanding by 42% in the speed–torque plane. Experimental validation confirms model accuracy with mean absolute percentage errors below 4.2%. The optimized design demonstrates 24.8% faster response times during charging transients while maintaining 41.7% smaller speed oscillations during sudden load changes. These quantitative improvements address critical limitations in existing systems, providing a viable pathway toward high-reliability, grid-scale energy storage solutions with extended operational lifetimes and improved round-trip efficiency."
+   },
+   {
+    "id": "https://openalex.org/W4396542591",
+    "doi": "https://doi.org/10.1109/tpel.2024.3395706",
+    "title": "iTCM-Operated Three-Phase Three-Wire Voltage-Source Converter System Featuring Capacitor-Split Virtual Ground Connection",
+    "year": 2024,
+    "cited": 3,
+    "venue": "IEEE Transactions on Power Electronics",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters",
+     "Microgrid Control and Optimization"
+    ],
+    "oa_url": "https://research.utwente.nl/en/publications/02fda74f-ae12-4cc2-bbdd-3c12c699f4c3",
+    "abstract": "High efficiency can be achieved in grid-connected converters by implementing a zero-voltage switching mechanism, such as the integrated triangular current mode (iTCM) modulation, which reduces the switching losses in the semiconductors. The iTCM can be readily adapted to a three-phase three-wire voltage-source converter (VSC) with the help of virtual ground (VG), which decouples the operation of three-phase switching cells. However, conventional methods of VG have all the zero-sequence currents flowing through the dc-link capacitors, resulting in an increase in the rms current, hence, extra loss for those passive components. This article, thus, introduces a capacitor-split VG topology that can relieve this issue by excluding the dc-link capacitors from the circulating path of the main zero-sequence currents, helping to reduce current stress for the dc-link capacitors. This topology is characterized by its filter capacitors being split into two halves and connected to the top and the bottom dc rails, respectively. Herein, the working principles of the proposed iTCM-operated three-phase three-wire VSC are comprehensively explained, and a detailed design guideline for theLCbranch andLCLfilter is offered. Analytical models for component stresses and the reverse current waveform have been developed and corroborated through PLECS simulations. A 3-kW, heatsink-less VSC system was constructed and tested, confirming both the system's effective functionality and the enhanced power efficiency of the proposed capacitor-split VG connection. Therein, the studied system demonstrated a significant efficiency improvement, ranging from 0.51% to 2% across the entire operating power spectrum, as compared to the conventional VG connection in iTCM-operated VSCs."
+   },
+   {
+    "id": "https://openalex.org/W4392031748",
+    "doi": "https://doi.org/10.3390/machines12030152",
+    "title": "Analytical Solution for Electromagnetic Performance Analysis of Permanent Magnet Synchronous Motor with a Parallel Magnetized Cylindrical Permanent Magnet",
+    "year": 2024,
+    "cited": 3,
+    "venue": "Machines",
+    "topics": [
+     "Electric Motor Design and Analysis",
+     "Magnetic Bearings and Levitation Dynamics",
+     "Magnetic Properties and Applications"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-1702/12/3/152/pdf?version=1708614286",
+    "abstract": "High-speed direct-drive permanent magnet synchronous motors (PMSMs), supported by elastic foil gas bearings, have broad applications, such as in microcompressors. However, some problems remain to be solved for the electrical performance analysis of PMSMs. For example, there is presently no related analytical model that can be used in rotor dynamics expression for this type of PMSM. This study aimed to establish theoretical models for electromagnetic force density and torque. The process involved both theoretical and experimental research. The analytic models of air gap magnetic density, electromagnetic force density, and electromagnetic performance were established for a PMSM with a parallel magnetized cylindrical permanent magnet. The analytic calculation was conducted, and the results of the analytic model were obtained. The analytical model of the electromagnetic torque and force can be applied in theoretical research on rotor dynamics. The model provides a theoretical basis and method for studying the influence of the electromagnetic load on rotor dynamics. A finite element simulation analysis of the electrical performance of the PMSM was carried out. An electrical performance experiment was conducted. The deviation between the experimental result and the theoretical value was less than 4%. This result indicated that the analytic models could be used in a dynamics analysis of compressors that are directly driven by a PMSM for application in engineering and industrial contexts."
+   },
+   {
+    "id": "https://openalex.org/W4390395058",
+    "doi": "https://doi.org/10.3390/electronics13010156",
+    "title": "Bidirectional Converter System in Dual Active Bridge Topology for a Hydrogen Tank",
+    "year": 2023,
+    "cited": 3,
+    "venue": "Electronics",
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Advanced DC-DC Converters",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-9292/13/1/156/pdf?version=1703841746",
+    "abstract": "The paper presents a Dual Active Bridge (DAB) converter operating as an interface between the LiFePo4 battery and the fuel cell/hydrogen generator. The hydrogen tank can increase the stored energy of the battery system. Among the main requirements for a converter is the need to transfer power of up to 10 kW and operate with widely changing voltages on both sides of the converter. The design of the power electronic part and passive components of the converter is deeply discussed. Next, the influence of the wide voltage range on the operation of the converter is depicted, including its impact on power losses and current values. Different topological modifications for power loss reduction are presented and experimentally verified. Finally, a simple modification of the control system, giving the possibility of increasing efficiency, is briefly presented."
+   },
+   {
+    "id": "https://openalex.org/W4411750326",
+    "doi": "https://doi.org/10.1007/s43236-025-01102-5",
+    "title": "Randomly modulated spread spectrum technique employed in boost PFC circuits",
+    "year": 2025,
+    "cited": 2,
+    "venue": "Journal of Power Electronics",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Low-power high-performance VLSI design",
+     "Electromagnetic Compatibility and Noise Suppression"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s43236-025-01102-5.pdf",
+    "abstract": "Abstract Boost power factor correction (PFC) circuit is widely employed in industrial applications to provide regulated DC-link voltage and high-power factor. However, the high switching frequency in boost PFC circuit generates significant electromagnetic (EM) noise. Although electromagnetic interference (EMI) filters can effectively mitigate EM noises, they introduce trade-offs, such as high cost, low efficiency, and low power density. To address those challenges, spread spectrum modulation (SSM) methods have been researched. They distribute the switching frequency over a wide frequency band, reducing peak and quasi-peak EM noises. Random SSM shows high EM noise mitigation performance due to its ability to uniformly distribute noise in a stochastic manner. However, random SSM increases computational burden due to random number generation and operating instability from abrupt frequency shifts in power converters. Although employing random SSM in a CCM boost PFC can effectively mitigate EM noise, its control performance cannot be guaranteed due to distorted current sampling data. To overcome those drawbacks, this paper proposes a variable sampling method to implement random SSM under CCM boost PFC circuit. The design methodology of the proposed random SSM for the boost PFC circuit, focusing on digital implementation, EMI reduction. In addition, associated side effects according to various SSM parameters are analyzed and discussed."
+   },
+   {
+    "id": "https://openalex.org/W4409180734",
+    "doi": "https://doi.org/10.1002/cta.4530",
+    "title": "Design and Optimization of an I‐Shaped Antioffset Coil Structure for Dynamic Wireless Power Transfer Systems in Smart Rail Trains",
+    "year": 2025,
+    "cited": 2,
+    "venue": "International Journal of Circuit Theory and Applications",
+    "topics": [
+     "Wireless Power Transfer Systems",
+     "Energy Harvesting in Wireless Networks",
+     "RFID technology advancements"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cta.4530",
+    "abstract": "ABSTRACT In dynamic wireless power transfer systems for smart rail trains, a high fluctuation rate of mutual inductance leads to reduced efficiency when an offset occurs between the transmitting and receiving coils. This paper explores the mutual inductance characteristics and the variation rule of the magnetic flux density between the transmitting coil and the receiving coil at the offset. In addition, an I‐shaped coil structure is proposed. The I‐shaped coil structure has good antioffset performance in the direction of motion, and the maximum offset distance is up to 1.2 times the outer length of the transmitting coil. First, the mutual inductance characteristics of this I‐shaped coil structure are investigated based on the coupling mechanism of the I‐coil. Moreover, a mutual inductance optimization method is proposed, which is used to obtain the values of each coil parameter that satisfy the requirements. Second, the magnetic core of the I‐coil structure is optimized for higher mutual inductance and better transmission efficiency. Finally, a wireless power transfer system is constructed based on the obtained coil and magnetic core parameters. Simulation and experimental tests are carried out for this coil structure and the coil structure with a magnetic core, respectively. The experimental results verify the rationality and correctness of the structure. The results show that the maximum mutual inductance fluctuation rate is only 4.97% in the coil structure without magnetic cores, with the offset distance between the transmitting and receiving coils at 120% of the outer edge length of the transmitting coil. With the addition of the magnetic core, the maximum mutual inductance fluctuation is only 5.02%, with an efficiency of 97.61% at an offset distance between the transmitting and receiving coils of 120% (50.8 cm) of the outer edge length of the transmitting coil."
+   },
+   {
+    "id": "https://openalex.org/W4399391341",
+    "doi": "https://doi.org/10.3390/s24113693",
+    "title": "The Accuracy of Evaluation of the Requirements of the Standards IEC 61000-3-2(12) with the Application of the Wideband Current Transducer",
+    "year": 2024,
+    "cited": 2,
+    "venue": "Sensors",
+    "topics": [
+     "Non-Destructive Testing Techniques",
+     "Magnetic Properties and Applications",
+     "Advanced Electrical Measurement Techniques"
+    ],
+    "oa_url": "https://doi.org/10.3390/s24113693",
+    "abstract": "The aim of this paper is to determine the conversion accuracy of the Danisense DC200IF (Danisense A/S, Taastrup, Denmark) wideband current transducer for its possible application to test electromagnetic compatibility requirements of the standards IEC 61000-3-2 and IEC 61000-3-12 with the digital power meter Yokogawa WT5000 (Yokogawa Electric Corporation, Tokyo, Japan). To obtain this goal for distorted current of main frequency equal to 50 Hz and in the frequencies range of higher harmonics from 100 Hz to 2500 Hz its amplitude error and phase shift are evaluated. Moreover, the measurable level of higher harmonics with the rated accuracy of the used precision power analyzer is also investigated. Finally, the measuring system is applied to determine the RMS values of current harmonics produced by the audio power amplifier in order to assess its compliance with the standard IEC 61000-3-12."
+   },
+   {
+    "id": "https://openalex.org/W4400055189",
+    "doi": "https://doi.org/10.24295/cpsstpea.2024.00006",
+    "title": "Design of Edge-Enhanced Coil Structure to Obtain Constant Mutual Inductance With Horizontal Misalignment in Wireless Power Transfer Systems of Electric Vehicles",
+    "year": 2024,
+    "cited": 2,
+    "venue": "CPSS Transactions on Power Electronics and Applications",
+    "topics": [
+     "Wireless Power Transfer Systems",
+     "Energy Harvesting in Wireless Networks",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "http://dx.doi.org/10.24295/cpsstpea.2024.00006",
+    "abstract": "I. IntroductIonW IRELESS power transfer (WPT) technology is receiv- ing increasing attention because of the convenience and safety of this technology [1]-[3].This technology is widely used in electric vehicles (EVs) [4], automatic guided vehicles (AGVs) [5], [6], underwater vehicles (UVs) [7], [8], and drones [9], [10].The advantage of WPT technology is that EVs can be charged while on the road using a dynamic WPT system, eliminating the need for batteries.At the same time, the"
+   },
+   {
+    "id": "https://openalex.org/W4391092938",
+    "doi": "https://doi.org/10.3390/wevj15010035",
+    "title": "Online Inductance Identification of Permanent Magnet Synchronous Motors Independent of Rotor Position Information",
+    "year": 2024,
+    "cited": 2,
+    "venue": "World Electric Vehicle Journal",
+    "topics": [
+     "Sensorless Control of Electric Motors",
+     "Electric Motor Design and Analysis",
+     "Magnetic Bearings and Levitation Dynamics"
+    ],
+    "oa_url": "https://www.mdpi.com/2032-6653/15/1/35/pdf?version=1705937212",
+    "abstract": "Sensorless control of permanent magnet synchronous motors is preferable in some applications due to cost and mounting space concerns. The performance of most existing position estimation methods greatly depends on the accuracy of the motor inductance. As the estimated position should not be involved in the parameter identification process in a sensorless control system, an online inductance identification method independent of the rotor position information is developed in this paper. The proposed method utilizes the recursive least square algorithm and the particle swarm optimization algorithm to realize real-time identification of the inductance along the direct axis and the quadrature axis, respectively, based on the deduced parametric equations without position information. The proposed method is efficient enough to be implemented within 0.2 ms and does not introduce any additional signal injection. A test bench is built to validate the characteristics of the method, and the experimental results show that the identified inductance can converge to the actual value rapidly and is robust to changes in the initial values and stator current. With the proposed method, accurate estimation of the rotor position and speed can be obtained using traditional model-based position estimators, and the stability of the sensorless control system can be improved significantly."
+   },
+   {
+    "id": "https://openalex.org/W4385966668",
+    "doi": "https://doi.org/10.5281/zenodo.8112428",
+    "title": "Report describing the calibration of the 5 MN m torque transfer standard partially up to 1.1 MN m with an uncertainty < 0.1 % and in the full range up to 5 MN m with an uncertainty < 0.5 % with synchronised measurements of rotational speed up to 20 rpm on the low-speed shaft respectively torque measurements up to 100 kN m with synchronised measurements of rotational speed up to 1600 rpm on the high-speed shaft",
+    "year": 2023,
+    "cited": 2,
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "topics": [
+     "Sensor Technology and Measurement Systems",
+     "Scientific Measurement and Uncertainty Evaluation",
+     "Advanced Electrical Measurement Techniques"
+    ],
+    "oa_url": "https://zenodo.org/record/8112428",
+    "abstract": "This report has been produced within the EMPIR project entitled Traceable Mechanical and Electrical Power Measurement for Efficiency Determination of Wind Turbines or 19ENG08 WindEFCY. More information about this collaborative research project can be found on the project’s website https://www.ptb.de/empir2020/windefcy/home/. This report describes the calibration of the 5 MN m torque transfer standard partially up to 1.1 MN m including an extrapolation of the calibration results up to 5 MN m as well as the use of the transducer under rotation up to 22.5 rpm. Moreover, a 125 kN m torque transducer was calibrated statically for usage under rotation up to 1600 rpm. Other influences on statically calibrated transducers when used in test benches, such as different data acquisition and filter settings, rotational speed and non-step application of loads, were investigated."
+   },
+   {
+    "id": "https://openalex.org/W4313338929",
+    "doi": "https://doi.org/10.1109/eesat55007.2022.9998039",
+    "title": "An Intelligent Power Electronic System for Secondary Use Batteries",
+    "year": 2022,
+    "cited": 2,
+    "venue": null,
+    "topics": [
+     "Advanced Battery Technologies Research",
+     "Microgrid Control and Optimization",
+     "Energy Harvesting in Wireless Networks"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1973359",
+    "abstract": "This paper presents a plug-and-play power electronic system for integration of multiple energy storage system technologies. The system uses a communication and control architecture with individual developed modules to support scaling to larger systems for the electric grid. An optimization framework is also presented to demonstrate the functionality of the system. This system is shown to work in hardware with a constructed testbed to demonstrate different use cases and systems. Results are presented for a full efficiency cycle test."
+   },
+   {
+    "id": "https://openalex.org/W7166539982",
+    "doi": "https://doi.org/10.3390/electronics15132827",
+    "title": "Design and Analysis of a 75 kW Five-Phase Two-Switch Buck–Boost Converter for Photovoltaic Systems",
+    "year": 2026,
+    "cited": 1,
+    "venue": "Electronics",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters",
+     "Photovoltaic System Optimization Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-9292/15/13/2827/pdf?version=1782553829",
+    "abstract": "This paper presents a five-phase, two-switch buck-boost (5P-TSBB) converter rated at 75 kW, intended for photovoltaic and energy storage applications that require a wide operating voltage range. The proposed system operates with photovoltaic input voltages ranging from 250 V to 1000 V and regulates the DC-link voltage between 600 V and 950 V. The converter supports two distinct operating modes: an independent multi-input mode for multiple independent input sources and an interleaved mode for a single high-power input. The feasible operating area of the converter is determined in the Vin–Vout plane, taking into account voltage, current, and power limitations. Simulation results and experimental investigations on a laboratory prototype, including measurements of efficiency and power losses, support the theoretical considerations."
+   },
+   {
+    "id": "https://openalex.org/W4416962753",
+    "doi": "https://doi.org/10.1109/ecce58356.2025.11259594",
+    "title": "A Triple-Phase Shift Modulation Strategy for a Dual-Active Bridge Modular Conversion System for Electrolysers",
+    "year": 2025,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters",
+     "Power Quality and Harmonics"
+    ],
+    "oa_url": "https://vbn.aau.dk/ws/files/831614928/TPS_ECCE2025_Giuseppe_3_.pdf",
+    "abstract": "The present paper proposes a Fundamental Component Analysis-based Triple Phase Shift (FCA-TPS) modulation strategy for a Dual-Active Bridge (DAB) modular conversion system aimed to green hydrogen production. The proposed FCA-TPS is designed to suppress reverse currents on the DC link output capacitor and to mitigate harmonic content on the high frequency transformer, thus improving system efficiency. A co-simulation study and an experimental investigation on a DAB laboratory prototype validates the effectiveness of the FCA-TPS compared to SPS by achieving an efficiency of 97.4%."
+   },
+   {
+    "id": "https://openalex.org/W4414758306",
+    "doi": "https://doi.org/10.1109/tie.2025.3598163",
+    "title": "Three-Phase Buck-Boost Split-Source Inverter With Improved Bus Utilization",
+    "year": 2025,
+    "cited": 1,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "topics": [
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters",
+     "Induction Heating and Inverter Technology"
+    ],
+    "oa_url": "https://research.utwente.nl/en/publications/3bf583cb-21af-471f-8b3e-543f12d0b3d2",
+    "abstract": "Split source inverters (SSIs) have gained attention as potential alternatives to conventional two-stage systems in applications that require integrating a dc source into an inverter powertrain via a step-up operation such as in fuel cell-powered systems. By incorporating the voltage boost functionality directly into the inverter, SSIs eliminate the additional dc–dc stage which typically consists of semiconductor devices subjected to high current and/or voltage stresses. However, the conventional variant of the topology suffers from poor utilization of the dc-bus voltage and constraints over the dc voltage gain limiting its use in various applications. In this work, a novel variant of the converter$-$buck-boost split source inverter (BSI), is introduced which improves the dc-bus utilization by modifying the conventional circuitry and enables control of power injection from multiple dc sources. Furthermore, the modification provides an extra degree of freedom allowing a larger variation of the voltage gain, which can be beneficial in applications requiring different voltage levels (e.g., with different fuel cell types). In this study, the operation of the topology is analyzed, and suitable modulation methods for the converter are developed analytically and validated through PLECS simulations. Finally, a SiC-based experimental prototype is designed and tested to validate the performance of the proposed converter."
+   },
+   {
+    "id": "https://openalex.org/W4319761741",
+    "doi": "https://doi.org/10.21014/tc3-2022.083",
+    "title": "EFFICIENCY MEASUREMENT WITH A FOCUS ON THE INFLUENCE OF ROTATION AND TEMPERATURE ON TORQUE MEASUREMENTS PERFORMED ON SMALL-SCALE TEST BENCHES",
+    "year": 2023,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "Iterative Learning Control Systems",
+     "Hydraulic and Pneumatic Systems",
+     "Electric Motor Design and Analysis"
+    ],
+    "oa_url": "https://www.imeko.org/publications/tc3-2022/IMEKO-TC3-2022-083.pdf",
+    "abstract": "Torque measurements that account for the influences of temperature and rotation are vital in determining the efficiency of rotating electrical machines on test benches.During experimental efficiency measurements, the influences of temperature and rotational speed generate errors in the torque measurements that could also affect the overall traceable efficiency measurement on test benches.In this paper, experimental efficiency mapping results with a focus on the influence of rotation and temperature on torque measurements are presented."
+   },
+   {
+    "id": "https://openalex.org/W4323895130",
+    "doi": "https://doi.org/10.1109/spec55080.2022.10058268",
+    "title": "A framework for evaluating power electronic systems for grid integration",
+    "year": 2022,
+    "cited": 1,
+    "venue": null,
+    "topics": [
+     "HVDC Systems and Fault Protection",
+     "Real-time simulation and control systems",
+     "Microgrid Control and Optimization"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1973342",
+    "abstract": "As power electronic systems (PESs) grow increasingly complex, integrating and testing these systems in the development stages is becoming more crucial and more challenging. New modes and resource integration strategies are in development and must be tested before pilot demonstrations and mass production. This paper proposes a framework for testing of PES technologies including early validation with integration of simulated resources. The framework is demonstrated to work in two example configurations as proof of principle."
+   },
+   {
+    "id": "https://openalex.org/W7211907443",
+    "doi": "https://doi.org/10.1038/s41598-026-69330-8",
+    "title": "Topology optimization design of solid-state transformer multilevel converters for high-efficiency data centers",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "HVDC Systems and Fault Protection",
+     "Microgrid Control and Optimization"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-026-69330-8_reference.pdf",
+    "abstract": "Electricity demand and carbon pressure in modern data centres have exposed the limits of the line-frequency transformer in the medium-voltage distribution chain, and the solid-state transformer (SST) offers a credible route past them. This paper develops an SST multilevel converter topology shaped around the operating envelope of a high-efficiency data centre. We propose a hybrid cascaded H-bridge whose cells each embed a three-level flying-capacitor leg (CHB–FC), populate those legs with 1.7 kV SiC MOSFETs, and couple every cell to a series-resonant dual-active-bridge isolation stage; the arrangement halves per-device voltage stress and cuts the cell count relative to a conventional CHB–DAB baseline. Figure 1 presents the converter as a device-level circuit schematic, since the redundant switching states that balance the clamp capacitor are legible only at that level of detail. Around this topology we formulate a five-objective design problem—mission-profile-weighted efficiency, power density, cost, reliability and transient stability—subject to voltage, thermal and CISPR 11 EMI constraints. An improved NSGA-II with adaptive operator scheduling and archive-based elitism searches the resulting mixed-integer space, which spans eight power-stage variables together with the four controller gains appended by the stability objective, and under a matched evaluation budget recovers a Pareto front whose hypervolume exceeds that of standard NSGA-II by 9%. That figure comes from a single run and is reported as an observation, not as a statistically established advantage. MATLAB/Simulink–PLECS co-simulation predicts 98.7% efficiency at 50% loading and 1.42% THD on the medium-voltage side, ahead of CHB–DAB and MMC–DAB references. A 10 kV/750 V/100 kW scaled prototype returns 98.57% measured full-load efficiency, with a combined standard uncertainty near ± 0.05 percentage points, and keeps hotspot temperatures and EMI margins inside the design constraints. Simulated and measured quantities are kept apart throughout: 98.7% is a model prediction, 98.57% an instrument reading, and the 0.13-point gap between them is traced to busbar, auxiliary and winding effects. The solver code, the instrument records and the numerical data behind every figure accompany the paper as related files."
+   },
+   {
+    "id": "https://openalex.org/W7171870823",
+    "doi": "https://doi.org/10.3390/en19153585",
+    "title": "Literature Review on LPTN Applied to Radial PMSM: Formulation and Approaches",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Energies",
+    "topics": [
+     "Electric Motor Design and Analysis",
+     "Sensorless Control of Electric Motors",
+     "Magnetic Properties and Applications"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/19/15/3585/pdf?version=1785411240",
+    "abstract": "Permanent magnet synchronous motors (PMSMs) possess high power density and efficiency, which make them suitable for broad applications, including the transportation sector, thus contributing to its decarbonization. As demand for electric vehicles increases, the need for performance improvements on electric motors also rises. An essential requirement is efficient thermal management to prevent and mitigate overheating-related premature motor failure. Among the methods of thermal analysis, the Lumped Parameter Thermal Network (LPTN) model is distinguished by its versatility of applications and its low computational requirements, making it a proper tool for analyzing the temperature distribution within a motor. This paper focuses on radial PMSMs, emphasizing the identification of the primary heat sources and the corresponding heat transfer mechanisms involved. Furthermore, it provides a comprehensive literature review of LPTN models implemented by different authors, analyzing the formulations and highlighting the similarities and differences between the models presented in the existing literature."
+   },
+   {
+    "id": "https://openalex.org/W4416389531",
+    "doi": "https://doi.org/10.1186/s40323-026-00333-w",
+    "title": "Development of a digital twin of a powertrain for efficiency estimations with machine learning and physical modeling",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Advanced Modeling and Simulation in Engineering Sciences",
+    "topics": [
+     "Electric and Hybrid Vehicle Technologies",
+     "Hydraulic and Pneumatic Systems",
+     "Electric Motor Design and Analysis"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1186/s40323-026-00333-w.pdf",
+    "abstract": "Abstract Accurate prediction of the efficiency of electromechanical powertrains is crucial for the development of electric vehicles. Until now, this has been done through time-consuming and costly test bench investigations in late development phases. To address that, digital modeling and development processes are implemented in the product development process. Although, existing modeling approaches such as simulations or classical data-driven models often have limitations in terms of prediction accuracy, prediction speed, or model size. To address this problem, this paper develops five different data-driven modeling approaches for digital twins, ranging from simple black-box models to hybrid grey-box approaches. In addition, a sixth modeling approach, a white-box model, was conducted as a reference to the other model approaches. Validation is based on recorded measurement data from a test bench setup of an electromechanical powertrain consisting of a permanent magnet synchronous machine and a multi-stage transmission.The evaluation includes classic error metrics such as mean absolute error and mean relative error, but also model size, training times, and prediction speeds. In addition, a quotient of input and output variables is included, which is used to evaluate the information content of the model structure. Despite a slightly increased error tolerance, the final bright-grey-model approach offers the best compromise between prediction accuracy, real-time capability, and a high output-to-input quotient. The results demonstrate that data-driven digital twins with physically informed structures enable early and real-time prediction of the efficiency of electromechanical powertrains."
+   },
+   {
+    "id": "https://openalex.org/W7163984143",
+    "doi": "https://doi.org/10.54254/2755-2721/2026.34321",
+    "title": "Research on Low-Carbon Intelligent Machining Path Planning Method for Lightweight Composite Materials of Aerospace Components Toward Green Manufacturing",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Applied and Computational Engineering",
+    "topics": [
+     "Advanced Theoretical and Applied Studies in Material Sciences and Geometry",
+     "Advanced Machining and Optimization Techniques",
+     "Advanced machining processes and optimization"
+    ],
+    "oa_url": "https://ace.ewapub.com/article/view/34321.pdf",
+    "abstract": "The work offers a methodology for low-carbon intelligent path planning in machining operations of carbon fiber reinforced polymers used in aerospace parts. In this case, the object of research is a lightweight bracket made from a carbon composite material with an irregular profile, two different slots, and areas of variable thickness. A set of 30 samples of such brackets was developed using Siemens NX 2306 software. Machining data have been collected on a VMC 850 machine equipped with Yokogawa WT5000 energy meter with a period of data sampling of 0.1 seconds. Genetic algorithm path optimization was carried out in MATLAB R2024a software, whereas data processing and computation of carbon footprint values was done with Python 3.11. The comparison of optimized paths was done against reference trajectories provided by Siemens NX under equal conditions of tools, spindles, feeds, depth of cuts, and inspections. Optimization showed a path shorter by 286.4 ± 42.7 mm, travel distance by 214.8 ± 36.5 mm, machining duration by 18.6 ± 3.9 seconds, energy consumed by 0.184 ± 0.037 kWh, and carbon emissions by 0.105 ± 0.021 kg CO2, with surface roughness being unchanged at 1.42 ± 0.16 μm."
+   },
+   {
+    "id": "https://openalex.org/W7162300521",
+    "doi": "https://doi.org/10.3390/en19112547",
+    "title": "A Complete Impedance-Based Characterization of a High-Frequency Transformer in Triple Active Bridge Converters for EV Onboard Chargers",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Energies",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Wireless Power Transfer Systems"
+    ],
+    "oa_url": "https://doi.org/10.3390/en19112547",
+    "abstract": "This paper proposes an experimental methodology for the systematic determination of the equivalent circuit parameters of three winding high frequency transformers (3W-HFTs) for modeling the electrical behavior and the power losses of triple active bridge (TAB) power converters intended for onboard electric vehicle charging applications. For modeling the 3W-HFTs, a comprehensive lumped element equivalent circuit is adopted, and its electrical and electromagnetic parameters are determined through a structured sequence of open-circuit and short-circuit measurements performed over a wide frequency range from 20 Hz to 13 MHz using a precision impedance analyzer to thoroughly investigate impedance resonance behavior, while wide-bandgap power electronic devices are employed. The comparison between the lumped element impedance model and the measured impedance responses demonstrates strong agreement in terms of both magnitude and phase across the frequency range under study. Furthermore, the comparison of simulation results and experimental measurements performed on a TAB prototype under both open-circuit and load operating conditions validates the 3W-HFT electrical characteristics and the estimation of TAB’s power losses distribution. The close consistency between experimental results and simulation outcomes confirms the effectiveness of the proposed characterization approach."
+   },
+   {
+    "id": "https://openalex.org/W7161847182",
+    "doi": "https://doi.org/10.21203/rs.3.rs-9591934/v1",
+    "title": "Design Optimization and Electromagnetic Performance Investigation of a Magnetically Integrated Transformer-Type Controllable Reactor for Reactive Power Compensation",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Research Square",
+    "topics": [
+     "Magnetic Properties and Applications",
+     "Power System Optimization and Stability",
+     "Power Quality and Harmonics"
+    ],
+    "oa_url": "https://www.researchsquare.com/article/rs-9591934/latest.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W7159802635",
+    "doi": "https://doi.org/10.3390/s26092781",
+    "title": "Energy Measurement Characteristics of Electricity Meters with Different Input Configurations Under IEC 61000-4-19-Based Conducted Disturbances",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Sensors",
+    "topics": [
+     "Advanced Electrical Measurement Techniques",
+     "Power Quality and Harmonics",
+     "Electricity Theft Detection Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/1424-8220/26/9/2781/pdf?version=1778312589",
+    "abstract": "The influence of conducted electromagnetic disturbances on the energy measurement error of electricity meters remains insufficiently explored in electromagnetic compatibility (EMC) studies, particularly in the frequency range above the classical harmonic domain. The aim of this study was to investigate the susceptibility of electricity meters with different input configurations to conducted disturbances in the frequency range 1-150 kHz, including the 2-150 kHz band covered by IEC 61000-4-19. The novelty of this work lies in the comparative analysis of meters employing a shunt resistor, current transformer, Rogowski coil, Hall-effect sensor, and a digital system based on a Merging Unit and Sampled Values. The tests were performed as a preliminary screening stage of the study, using a test procedure based on IEC 61000-4-19, in which the energy measurement error was determined from the difference between the energy measured by the meter under test and that measured by a reference meter while disturbances were injected into the current circuit. The results showed that, for most of the tested electronic meters, the influence of the disturbances at the applied 1 A level was limited. For the tested Class B meters, the observed maximum error deviations remained below 1%, while the largest deviation under continuous-wave disturbance was observed for the Merging Unit + SV system. The highest immunity to amplitude-modulated disturbances was found for the shunt-based meter and the Rogowski coil-based meter. In none of the investigated cases were large error deviations on the order of several percent or several tens of percent observed. The obtained results indicate that, under the applied test conditions, conducted disturbances in the investigated frequency range did not cause significant deterioration of the metrological performance of most of the analyzed electronic meters. However, the results should be interpreted as a comparative assessment under modified IEC-based test conditions, rather than as a full compliance evaluation at the normative disturbance levels for directly connected meters."
+   },
+   {
+    "id": "https://openalex.org/W7201919208",
+    "doi": null,
+    "title": "The Cockcroft-Walton Converter: Capacitive Isolation and Split-Phase Control",
+    "year": 2026,
+    "cited": 0,
+    "venue": "DSpace@MIT (Massachusetts Institute of Technology)",
+    "topics": [
+     "Advanced DC-DC Converters",
+     "Multilevel Inverters and Converters",
+     "Microgrid Control and Optimization"
+    ],
+    "oa_url": "https://dspace.mit.edu/bitstreams/69eba076-445d-47e7-b9c0-97e5dd19291a/download",
+    "abstract": "Composite converters are an effective solution for applications requiring extreme conversion ratios and high power density. Electrical isolation between the input and output return paths is required to facilitate the series-stacking of converters in these composite architectures. This work presents and experimentally validates a capacitively isolated variant of the switched-capacitor Cockcroft-Walton converter for use in stacked converter topologies. A discussion of capacitor charging and charge redistribution losses motivates the design and evaluation of a two-inductor Cockcroft-Walton converter variant with hard charging. Capacitive isolation is investigated for both converter types and split-phase control is introduced to mitigate hard charging losses in the two-inductor converter. An analytical derivation of split-phase timings is shared and experimental split-phase results are presented for the 4-, 6-, and 8-level two-inductor converters."
+   },
+   {
+    "id": "https://openalex.org/W7128510946",
+    "doi": "https://doi.org/10.22271/27084574.2026.v7.i1a.118",
+    "title": "Harmonic impact of multiple electric vehicle chargers on low-voltage distribution networks",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Advances in Electrical Engineering",
+    "topics": [
+     "Electric Vehicles and Infrastructure",
+     "Power Quality and Harmonics",
+     "Advanced Battery Technologies Research"
+    ],
+    "oa_url": "https://www.electricaltechjournal.com/article/118/7-1-7-619.pdf",
+    "abstract": "How many electric vehicle chargers can a residential street accommodate before power quality becomes problematic? This increasingly urgent question confronts distribution network operators across the United Kingdom as EV adoption accelerates toward the 2035 petrol and diesel vehicle sales ban. The present investigation quantified harmonic distortion impacts from multiple residential EV chargers operating simultaneously on low-voltage distribution networks through field monitoring, laboratory characterization, and network simulation conducted at the Bristol Institute of Power Systems between November 2023 and September 2024. Field measurements captured power quality parameters on four residential distribution feeders serving 72 households with EV charger penetration ranging from 15% to 45%. Laboratory testing characterized harmonic emission profiles of prevalent 7kW and 22kW charger models under varying charging conditions. Network simulation using validated models projected impacts at higher penetration levels and evaluated mitigation strategies including passive filtering and smart charging coordination. Results demonstrated that voltage total harmonic distortion increased from 2.8% baseline to 8.5% at 45% charger penetration during evening peak periods, approaching but not exceeding the 8% limit specified in Engineering Recommendation G5/5. Third and fifth harmonics dominated the distortion spectrum, with individual harmonic voltages remaining within planning limits. Current THD in feeder cables reached 28% at highest penetration levels, while neutral conductor currents increased by 340% due to triplen harmonic accumulation. Simulation analysis identified 55% penetration as the threshold where voltage THD would exceed statutory limits under uncontrolled charging scenarios. Smart charging strategies coordinating charging start times reduced peak harmonic levels by 35-42%, potentially enabling penetration levels up to 70% without network reinforcement. The findings inform distribution network planning for the anticipated EV charging infrastructure expansion across UK residential areas."
+   },
+   {
+    "id": "https://openalex.org/W7130324274",
+    "doi": "https://doi.org/10.2172/3018760",
+    "title": "A Review of Distributed Wind Interconnection Technology and Standards",
+    "year": 2026,
+    "cited": 0,
+    "venue": null,
+    "topics": [],
+    "oa_url": "https://www.osti.gov/servlets/purl/3018760",
+    "abstract": "The objectives of this report are to discuss the uniqueness of power converters in distributed wind (DW), identify challenges in complying with existing standards, prioritize technological innovations to facilitate interconnection of DW energy systems, and propose potential revisions to the standards. This report evaluates IEEE 1547-2018, IEEE 1547.1-2020, and UL1741 standards and their implications for DW energy systems. A standards review and interviews of DW industry stakeholders were conduct"
+   },
+   {
+    "id": "https://openalex.org/W7201945679",
+    "doi": null,
+    "title": "Management and diagnostic system of pump stations using optimal energy control and predictive maintenance",
+    "year": 2026,
+    "cited": 0,
+    "venue": "eNTUKhPIIR Repository (Kharkiv Polytechnic Institute)",
+    "topics": [
+     "Water Systems and Optimization",
+     "Reliability and Maintenance Optimization",
+     "Power System Reliability and Maintenance"
+    ],
+    "oa_url": "https://repository.kpi.kharkov.ua/bitstreams/9d6595d4-bdb8-4e94-808d-60bb5eff85cc/download",
+    "abstract": "Дисертація на здобуття наукового ступеня доктора філософії (PhD) за спеціальністю 151 – Автоматизація та комп’ютерно-інтегровані технології (15 – Автоматизація та приладобудування). – Національний технічний університет «Харківський політехнічний інститут», Харків, 2026. Дисертаційна робота присвячена вирішенню актуальної науково-практичної задачі розробки та вдосконалення силового обладнання та алгоритмів автоматизованої станції управління занурювальним насосом, спрямованих на мінімізацію питомих енерговитрат та підвищення ресурсу обладнання в умовах виснажених родовищ. Об’єктом дослідження є процеси керування та діагностики в автоматизованих електромеханічних системах нафтовидобувних насосних установок. Предметом дослідження є методи та алгоритми оптимального енергетичного керування, а також бездротові системи збору та обробки телеметричних даних для предиктивного обслуговування насосних станцій. Мета дослідження – розробка та вдосконалення силового обладнання та алгоритмів автоматизованої станції управління занурювальним насосом, спрямованих на мінімізацію питомих енерговитрат та підвищення ресурсу обладнання в умовах виснажених родовищ України."
+   },
+   {
+    "id": "https://openalex.org/W4417431460",
+    "doi": "https://doi.org/10.26906/sunz.2025.4.027",
+    "title": "ДОСЛІДЖЕННЯ ПАРАМЕТРІВ ПОВНОГО ГАРМОНІЙНОГО СПОТВОРЕННЯ СТАНЦІЇ УПРАВЛІННЯ З ВХІДНИМ ФАЗОЗСУВНИМ АВТОТРАНСФОРМАТОРОМ",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Системи управління навігації та зв’язку Збірник наукових праць",
+    "topics": [
+     "Environmental and Industrial Safety",
+     "Mining and Gasification Technologies",
+     "Coal Properties and Utilization"
+    ],
+    "oa_url": "https://journals.nupp.edu.ua/sunz/article/download/4098/3428",
+    "abstract": "При розробці корисних копалин на території України, таких як нафта, застосовуються механізовані методи видобутку, із застосуванням занурювальних електродвигунів. Такі методи видобутку забезпечують високу продуктивність і можливість підлаштовуватися під поточні параметри свердловини, що в свою чергу забезпечує максимальний дебіт. Для забезпечення оптимального режиму роботи насоса використовуються станції управління занурювальним електродвигуном з частотним регулюванням, які при роботі споживають з мережі живлення несинусоїдальний струм. Також для зниження спотворень споживаного струму застосовуються різні методи зниження загального гармонійного спотворення (THDi) вхідних струмів. Для вирішення даної задачі була розроблена станція управління з багатопульсним випрямлячем, який живиться від фазозсувного автотрансформатора, що дозволяє знизити THDi вхідних струмів. Дане рішення дозволяє покращити габаритні показники обладнання та його вартість за рахунок зменшення потужності фазозсувного трансформатора. Розглянуто функціональні можливості роботи станції управління електроприводом на основі експериментальних даних вимірювання THDi вхідних струмів мережі +30% в діапазоні частот 47,5-52,5Гц. Такий діапазон частот обумовлений тим, що у багатьох випадках, на родовищах, робота ведеться з електроживленням від дизель-генераторів, при якому коливання частоти і напруги живлення знаходяться в значному діапазоні. Додатково досліджено можливість роботи приводу при вхідних напругах живлення 460-480В та 430-460В. Проведено аналіз результатів вимірів, та запропоновано рекомендації щодо підвищення енергоефективності станції."
+   },
+   {
+    "id": "https://openalex.org/W4406064807",
+    "doi": "https://doi.org/10.36227/techrxiv.173603411.17559954/v1",
+    "title": "Evaluation of the Efficiency Measurement Uncertainty of Electric Drive Test Benches for Direct Data-Driven Control Optimization",
+    "year": 2025,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Real-time simulation and control systems",
+     "Engineering Applied Research",
+     "Hydraulic and Pneumatic Systems"
+    ],
+    "oa_url": "https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.173603411.17559954",
+    "abstract": "Increasing efficiency of electric drives combining electrical machines, power electronics and control algorithms, is a major task in industry and academia. Considering the already high efficiency levels of modern drive systems, expected improvements are in the single digit and below percentage point range. Therefore, a low measurement uncertainty of the electrical input and the mechanical output power is necessary to compare the efficiency of different drive designs or to perform an online optimization of control-related operation strategies (such as optimal pulse patterns). Hence, a measurement model is proposed to analyze the occurring power and efficiency uncertainty along the measurement chain in the whole torque-speed plane of threephase drive test benches. This measurement model is published as an open-source software, allowing others to evaluate their test bench setup or to optimize new test bench designs during the specification process. An exemplary evaluation for a traction drive test bench demonstrates the functionality of the proposed model and highlights the importance of rigorous measurement uncertainty assessments in today's data-driven world."
+   },
+   {
+    "id": "https://openalex.org/W7196934431",
+    "doi": "https://doi.org/10.26906/sunz.2025.4.27-31",
+    "title": "Study of the parameters of the total harmonic distortion of a control station with an input phase-shift autotransformer",
+    "year": 2025,
+    "cited": 0,
+    "venue": "eNTUKhPIIR Repository (Kharkiv Polytechnic Institute)",
+    "topics": [
+     "Environmental and Industrial Safety",
+     "Diverse Industrial Engineering Technologies",
+     "Cybersecurity and Information Systems"
+    ],
+    "oa_url": "https://repository.kpi.kharkov.ua/bitstreams/aac59dda-58f4-4831-9648-aa8ef99618e3/download",
+    "abstract": "При розробці корисних копалин на території України, таких як нафта, застосовуються механізовані методи видобутку, із застосуванням занурювальних електродвигунів. Такі методи видобутку забезпечують високу продуктивність і можливість підлаштовуватися під поточні параметри свердловини, що в свою чергу забезпечує максимальний дебіт. Для забезпечення оптимального режиму роботи насоса використовуються станції управління занурювальним електродвигуном з частотним регулюванням, які при роботі споживають з мережі живлення несинусоїдальний струм. Також для зниження спотворень споживаного струму застосовуються різні методи зниження загального гармонійного спотворення (THDi) вхідних струмів. Для вирішення даної задачі була розроблена станція управління з багатопульсним випрямлячем, який живиться від фазозсувного автотрансформатора, що дозволяє знизити THDi вхідних струмів. Дане рішення дозволяє покращити габаритні показники обладнання та його вартість за рахунок зменшення потужності фазозсувного трансформатора. Розглянуто функціональні можливості роботи станції управління електроприводом на основі експериментальних даних вимірювання THDi вхідних струмів мережі +30% в діапазоні частот 47,5-52,5Гц. Такий діапазон частот обумовлений тим, що у багатьох випадках, на родовищах, робота ведеться з електроживленням від дизель-генераторів, при якому коливання частоти і напруги живлення знаходяться в значному діапазоні. Додатково досліджено можливість роботи приводу при вхідних напругах живлення 460-480В та 430-460В. Проведено аналіз результатів вимірів, та запропоновано рекомендації щодо підвищення енергоефективності станції. When developing minerals in Ukraine, such as oil, mechanized extraction methods are used, using submersible electric motors. Such extraction methods provide high productivity and the ability to adjust to the current parameters of the well, which in turn provides maximum flow rate. To ensure the optimal operation of the pump, frequency-controlled submersible electric motor control stations are used, which consume non-sinusoidal current from the power supply network during operation. Also, to reduce distortions of the consumed current, various methods of reducing the total harmonic distortion (THDi) of input currents are used. To solve this problem, a control station with a multi-pulse rectifier powered by a phase-shifting autotransformer was developed, which allows you to reduce the THDi of input currents. This solution allows you to improve the overall performance of the equipment and its cost by reducing the power of the phase-shifting transformer. The functional capabilities of the electric drive control station are considered based on experimental data of measuring THDi of input currents of the network +30% in the frequency range of 47.5-52.5Hz. This frequency range is due to the fact that in many cases, in the fields, work is carried out with power supply from diesel generators, in which the fluctuations of frequency and supply voltage are in "
+   },
+   {
+    "id": "https://openalex.org/W4392613204",
+    "doi": "https://doi.org/10.2172/2310962",
+    "title": "Modular Wide-bandgap String Inverters for Low-cost Medium-voltage Transformerless PV Systems",
+    "year": 2024,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "Multilevel Inverters and Converters",
+     "Advanced DC-DC Converters"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/2310962",
+    "abstract": "The proposed technology combines advances in wide-bandgap power electronics with breakthroughs in distributed and decentralized control to produce ultra-low-cost medium-voltage transformerless PV inverters that are composed of stackable lightweight blocks. Taken together, the proposed circuit designs and accompanying control strategies will yield integrated control+circuit (C2) blocks, each comprising a converter and local controller, that can be assembled in a modular fashion to obtain distributed conversion interfaces for next-generation commercial and utility-scale PV systems. We will utilize SiC devices to obtain C2 blocks that can individually operate at a voltage and power in excess of 1 kV and 100 kW, respectively, such that ensembles of series-connected blocks perform direct dc to three-phase ac conversion at medium voltages (e.g., 12 kV–35 kV) and at multi-MW power levels."
+   },
+   {
+    "id": "https://openalex.org/W4392838505",
+    "doi": "https://doi.org/10.2528/pierc23122101",
+    "title": "Study on Anti-offset Performance of Dynamic Wireless Charging System with Reverse Series Double-layer Symmetrical Coil for Electric Vehicles",
+    "year": 2024,
+    "cited": 0,
+    "venue": "Progress In Electromagnetics Research C",
+    "topics": [
+     "Wireless Power Transfer Systems",
+     "Energy Harvesting in Wireless Networks",
+     "RFID technology advancements"
+    ],
+    "oa_url": "https://www.jpier.org/ac_api/download.php?id=23122101",
+    "abstract": "In dynamic wireless charging systems for electric vehicles (EVs), the coupling mechanism is difficult to align, which leads to high output voltage fluctuations and low transmission efficiency of the system.A reverse series double-layer symmetrical coil (RSDSC) structure with magnetic core is proposed.First, the mutual inductance characteristics of this structure are analyzed based on its coupling structure.Secondly, a mutual inductance optimization method is proposed to obtain the optimal values of each parameter of the coil and the optimal values of the magnetic core parameters.Finally, a wireless power transfer system is built based on the obtained coil and magnetic core parameters, and the correctness of the structure is verified through simulation and experimentation.The results show that the maximum mutual inductance fluctuation of the structure of RSDSC with magnetic core is only 4.88%, and the efficiency is up to 97.86% when the receiving coil is offset within 50% (20.8 cm) of the outer length of the transmitting coil."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Yokogawa WT5000\" OR \"Yokogawa 760901\" OR \"Yokogawa 760902\") AND OPEN_ACCESS:y",
@@ -117,11 +864,27 @@
   }
  ],
  "standards_found": {
-  "IEC 61000-3-2": 3,
-  "IEC 61000-3-12": 3
+  "IEC 61000-3-12": 5,
+  "IEC 61000-3-2": 4,
+  "IEC 61000-4-19": 2,
+  "EN 50549-1": 1,
+  "IEC 61869-1": 1,
+  "DIN 51309": 1,
+  "EN-505049-1": 1,
+  "IEEE 1547-2018": 1,
+  "IEEE 1547.1-2020": 1,
+  "UL1741": 1
  },
  "standards_new": [
-  "IEC 61000-3-12"
+  "DIN 51309",
+  "EN 50549-1",
+  "EN-505049-1",
+  "IEC 61000-3-12",
+  "IEC 61000-4-19",
+  "IEC 61869-1",
+  "IEEE 1547-2018",
+  "IEEE 1547.1-2020",
+  "UL1741"
  ],
  "test_item_hits": {}
 }

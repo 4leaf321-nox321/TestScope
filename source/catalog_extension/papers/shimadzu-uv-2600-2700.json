@@ -11,8 +11,758 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Shimadzu UV-2600 UV-2700\" OR \"Shimadzu UV-2600\" OR \"Shimadzu UV-2700\" OR \"Shimadzu UV-2600i Plus\" OR \"Shimadzu UV-2700i Plus\"",
-  "count": null,
-  "works": []
+  "count": 4680,
+  "works": [
+   {
+    "id": "https://openalex.org/W3085189088",
+    "doi": "https://doi.org/10.1038/s41467-020-18350-7",
+    "title": "Unique S-scheme heterojunctions in self-assembled TiO2/CsPbBr3 hybrids for CO2 photoreduction",
+    "year": 2020,
+    "cited": 1470,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Perovskite Materials and Applications",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-18350-7.pdf",
+    "abstract": "Abstract Exploring photocatalysts to promote CO2 photoreduction into solar fuels is of great significance. We develop TiO2/perovskite (CsPbBr3) S-scheme heterojunctions synthesized by a facile electrostatic-driven self-assembling approach. Density functional theory calculation combined with experimental studies proves the electron transfer from CsPbBr3 quantum dots (QDs) to TiO2, resulting in the construction of internal electric field (IEF) directing from CsPbBr3 to TiO2 upon hybridization. The IEF drives the photoexcited electrons in TiO2 to CsPbBr3 upon light irradiation as revealed by in-situ X-ray photoelectron spectroscopy analysis, suggesting the formation of an S-scheme heterojunction in the TiO2/CsPbBr3 nanohybrids which greatly promotes the separation of electron-hole pairs to foster efficient CO2 photoreduction. The hybrid nanofibers unveil a higher CO2-reduction rate (9.02 μmol g–1 h–1) comparing with pristine TiO2 nanofibers (4.68 μmol g–1 h–1). Isotope (13CO2) tracer results confirm that the reduction products originate from CO2 source."
+   },
+   {
+    "id": "https://openalex.org/W2770365904",
+    "doi": "https://doi.org/10.1002/adma.201704740",
+    "title": "Synthesis of Carbon Dots with Multiple Color Emission by Controlled Graphitization and Surface Functionalization",
+    "year": 2017,
+    "cited": 1252,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Carbon and Quantum Dots Applications",
+     "Nanocluster Synthesis and Applications",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1469628",
+    "abstract": "Multiple-color-emissive carbon dots (CDots) have potential applications in various fields such as bioimaging, light-emitting devices, and photocatalysis. The majority of the current CDots to date exhibit excitation-wavelength-dependent emissions with their maximum emission limited at the blue-light region. Here, a synthesis of multiple-color-emission CDots by controlled graphitization and surface function is reported. The CDots are synthesized through controlled thermal pyrolysis of citric acid and urea. By regulating the thermal-pyrolysis temperature and ratio of reactants, the maximum emission of the resulting CDots gradually shifts from blue to red light, covering the entire light spectrum. Specifically, the emission position of the CDots can be tuned from 430 to 630 nm through controlling the extent of graphitization and the amount of surface functional groups, COOH. The relative photoluminescence quantum yields of the CDots with blue, green, and red emission reach up to 52.6%, 35.1%, and 12.9%, respectively. Furthermore, it is demonstrated that the CDots can be uniformly dispersed into epoxy resins and be fabricated as transparent CDots/epoxy composites for multiple-color- and white-light-emitting devices. This research opens a door for developing low-cost CDots as alternative phosphors for light-emitting devices."
+   },
+   {
+    "id": "https://openalex.org/W2736012892",
+    "doi": "https://doi.org/10.1016/j.jcat.2017.06.006",
+    "title": "A direct Z-scheme g-C3N4/SnS2 photocatalyst with superior visible-light CO2 reduction performance",
+    "year": 2017,
+    "cited": 862,
+    "venue": "Journal of Catalysis",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Covalent Organic Framework Applications",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://eprints.qut.edu.au/109086/1/Direct_Z_scheme_g_C3N4_SnS2_photocatalyst_with_superior_visible_light_CO2_reduction_performance.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2729529316",
+    "doi": "https://doi.org/10.1016/j.ijpharm.2017.06.082",
+    "title": "Selective laser sintering (SLS) 3D printing of medicines",
+    "year": 2017,
+    "cited": 574,
+    "venue": "International Journal of Pharmaceutics",
+    "topics": [
+     "3D Printing in Biomedical Research",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Injection Molding Process and Properties"
+    ],
+    "oa_url": "https://discovery.ucl.ac.uk/1565017/1/Basit_IJP-D-17-01103R1.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2916395234",
+    "doi": "https://doi.org/10.1038/s41467-019-08731-y",
+    "title": "Modified carbon nitride nanozyme as bifunctional glucose oxidase-peroxidase for metal-free bioinspired cascade photocatalysis",
+    "year": 2019,
+    "cited": 554,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Nanomaterials in Catalysis",
+     "Advanced biosensing and bioanalysis techniques",
+     "Electrochemical sensors and biosensors"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-08731-y.pdf",
+    "abstract": "Nanomaterials-based biomimetic catalysts with multiple functions are necessary to address challenges in artificial enzymes mimicking physiological processes. Here we report a metal-free nanozyme of modified graphitic carbon nitride and demonstrate its bifunctional enzyme-mimicking roles. With oxidase mimicking, hydrogen peroxide is generated from the coupled photocatalysis of glucose oxidation and dioxygen reduction under visible-light irradiation with a near 100% apparent quantum efficiency. Then, the in situ generated hydrogen peroxide serves for the subsequent peroxidase-mimicking reaction that oxidises a chromogenic substrate on the same catalysts in dark to complete the bifunctional oxidase-peroxidase for biomimetic detection of glucose. The bifunctional cascade catalysis is successfully demonstrated in microfluidics for the real-time colorimetric detection of glucose with a low detection limit of 0.8 μM within 30 s. The artificial nanozymes with physiological functions provide the feasible strategies for mimicking the natural enzymes and realizing the biomedical diagnostics with a smart and miniature device."
+   },
+   {
+    "id": "https://openalex.org/W3003088858",
+    "doi": "https://doi.org/10.1038/s41467-020-14333-w",
+    "title": "Manipulating spin polarization of titanium dioxide for efficient photocatalysis",
+    "year": 2020,
+    "cited": 543,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electronic and Structural Properties of Oxides",
+     "ZnO doping and properties",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-14333-w.pdf",
+    "abstract": "Abstract Photocatalysis has been regarded as a promising strategy for hydrogen production and high-value-added chemicals synthesis, in which the activity of photocatalyst depends significantly on their electronic structures, however the effect of electron spin polarization has been rarely considered. Here we report a controllable method to manipulate its electron spin polarization by tuning the concentration of Ti vacancies. The characterizations confirm the emergence of spatial spin polarization among Ti-defected TiO 2 , which promotes the efficiency of charge separation and surface reaction via the parallel alignment of electron spin orientation. Specifically, Ti 0.936 O 2 , possessing intensive spin polarization, performs 20-fold increased photocatalytic hydrogen evolution and 8-fold increased phenol photodegradation rates, compared with stoichiometric TiO 2 . Notably, we further observed the positive effect of external magnetic fields on photocatalytic activity of spin-polarized TiO 2 , attributed to the enhanced electron-spin parallel alignment. This work may create the opportunity for tailoring the spin-dependent electronic structures in metal oxides."
+   },
+   {
+    "id": "https://openalex.org/W1742701672",
+    "doi": "https://doi.org/10.1002/adfm.201502253",
+    "title": "Electrostatic Self‐Assembly of Nanosized Carbon Nitride Nanosheet onto a Zirconium Metal–Organic Framework for Enhanced Photocatalytic CO 2 Reduction",
+    "year": 2015,
+    "cited": 520,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications"
+    ],
+    "oa_url": "https://eprints.lib.hokudai.ac.jp/repo/huscap/all/62750/manuscript-SHI Li.pdf",
+    "abstract": "UiO‐66, a zirconium based metal–organic framework, is incorporated with nanosized carbon nitride nanosheets via a facile electrostatic self‐assembly method. This hybrid structure exhibits a large surface area and strong CO 2 capture ability due to the introduction of UiO‐66. We demonstrate that electrons from the photoexcited carbon nitride nanosheet can transfer to UiO‐66, which can substantially suppress electron–hole pair recombination in the carbon nitride nanosheet, as well as supply long‐lived electrons for the reduction of CO 2 molecules that are adsorbed in UiO‐66. As a result, the UiO‐66/carbon nitride nanosheet heterogeneous photocatalyst exhibits a much higher photocatalytic activity for the CO 2 conversion than that of bare carbon nitride nanosheets. We believe this self‐assembly method can be extended to other carbon nitride nanosheet loaded materials."
+   },
+   {
+    "id": "https://openalex.org/W4205822519",
+    "doi": "https://doi.org/10.1038/s41467-022-28011-6",
+    "title": "Completely aqueous processable stimulus responsive organic room temperature phosphorescence materials with tunable afterglow color",
+    "year": 2022,
+    "cited": 507,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Organic Light-Emitting Diodes Research",
+     "Carbon and Quantum Dots Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-28011-6.pdf",
+    "abstract": "Many luminescent stimuli responsive materials are based on fluorescence emission, while stimuli-responsive room temperature phosphorescent materials are less explored. Here, we show a kind of stimulus-responsive room temperature phosphorescence materials by the covalent linkage of phosphorescent chromophore of arylboronic acid and polymer matrix of poly(vinylalcohol). Attributed to the rigid environment offered from hydrogen bond and B-O covalent bond between arylboronic acid and poly(vinylalcohol), the yielded polymer film exhibits ultralong room temperature phosphorescence with lifetime of 2.43 s and phosphorescence quantum yield of 7.51%. Interestingly, the RTP property of this film is sensitive to the water and heat stimuli, because water could destroy the hydrogen bonds between adjacent poly(vinylalcohol) polymers, then changing the rigidity of this system. Furthermore, by introducing another two fluorescent dyes to this system, the color of afterglow with stimulus response effect could be adjusted from blue to green to orange through triplet-to-singlet Förster-resonance energy-transfer. Finally, due to the water/heat-sensitive, multicolor and completely aqueous processable feature for these three afterglow hybrids, they are successfully applied in multifunctional ink for anti-counterfeit, screen printing and fingerprint record."
+   },
+   {
+    "id": "https://openalex.org/W3160621054",
+    "doi": "https://doi.org/10.1038/s41467-021-22864-z",
+    "title": "Degradation mechanism of hybrid tin-based perovskite solar cells and the critical role of tin (IV) iodide",
+    "year": 2021,
+    "cited": 503,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Chalcogenide Semiconductor Thin Films",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-22864-z.pdf",
+    "abstract": "Abstract Tin perovskites have emerged as promising alternatives to toxic lead perovskites in next-generation photovoltaics, but their poor environmental stability remains an obstacle towards more competitive performances. Therefore, a full understanding of their decomposition processes is needed to address these stability issues. Herein, we elucidate the degradation mechanism of 2D/3D tin perovskite films based on (PEA)0.2(FA)0.8SnI3(where PEA is phenylethylammonium and FA is formamidinium). We show that SnI4, a product of the oxygen-induced degradation of tin perovskite, quickly evolves into iodine via the combined action of moisture and oxygen. We identify iodine as a highly aggressive species that can further oxidise the perovskite to more SnI4, establishing a cyclic degradation mechanism. Perovskite stability is then observed to strongly depend on the hole transport layer chosen as the substrate, which is exploited to tackle film degradation. These key insights will enable the future design and optimisation of stable tin-based perovskite optoelectronics."
+   },
+   {
+    "id": "https://openalex.org/W4322503365",
+    "doi": "https://doi.org/10.1038/s41467-023-36710-x",
+    "title": "Tuning excited state electronic structure and charge transport in covalent organic frameworks for enhanced photocatalytic performance",
+    "year": 2023,
+    "cited": 473,
+    "venue": "Nature Communications",
+    "topics": [
+     "Covalent Organic Framework Applications",
+     "Metal-Organic Frameworks: Synthesis and Applications",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-36710-x.pdf",
+    "abstract": "Covalent organic frameworks (COFs) represent an emerging class of organic photocatalysts. However, their complicated structures lead to indeterminacy about photocatalytic active sites and reaction mechanisms. Herein, we use reticular chemistry to construct a family of isoreticular crystalline hydrazide-based COF photocatalysts, with the optoelectronic properties and local pore characteristics of the COFs modulated using different linkers. The excited state electronic distribution and transport pathways in the COFs are probed using a host of experimental methods and theoretical calculations at a molecular level. One of our developed COFs (denoted as COF-4) exhibits a remarkable excited state electron utilization efficiency and charge transfer properties, achieving a record-high photocatalytic uranium extraction performance of ~6.84 mg/g/day in natural seawater among all techniques reported so far. This study brings a new understanding about the operation of COF-based photocatalysts, guiding the design of improved COF photocatalysts for many applications."
+   },
+   {
+    "id": "https://openalex.org/W2901001562",
+    "doi": "https://doi.org/10.1038/s41467-018-07420-6",
+    "title": "Understanding structure-activity relationships in linear polymer photocatalysts for hydrogen evolution",
+    "year": 2018,
+    "cited": 375,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Conducting polymers and applications",
+     "Covalent Organic Framework Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-07420-6.pdf",
+    "abstract": "Conjugated polymers have sparked much interest as photocatalysts for hydrogen production. However, beyond basic considerations such as spectral absorption, the factors that dictate their photocatalytic activity are poorly understood. Here we investigate a series of linear conjugated polymers with external quantum efficiencies for hydrogen production between 0.4 and 11.6%. We monitor the generation of the photoactive species from femtoseconds to seconds after light absorption using transient spectroscopy and correlate their yield with the measured photocatalytic activity. Experiments coupled with modeling suggest that the localization of water around the polymer chain due to the incorporation of sulfone groups into an otherwise hydrophobic backbone is crucial for charge generation. Calculations of solution redox potentials and charge transfer free energies demonstrate that electron transfer from the sacrificial donor becomes thermodynamically favored as a result of the more polar local environment, leading to the production of long-lived electrons in these amphiphilic polymers."
+   },
+   {
+    "id": "https://openalex.org/W2631454304",
+    "doi": "https://doi.org/10.1038/ncomms15911",
+    "title": "Adaptive and freeze-tolerant heteronetwork organohydrogels with enhanced mechanical stability over a wide temperature range",
+    "year": 2017,
+    "cited": 374,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Advanced Materials and Mechanics",
+     "Hydrogels: synthesis, properties, applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms15911.pdf",
+    "abstract": "Many biological organisms with exceptional freezing tolerance can resist the damages to cells from extra-/intracellular ice crystals and thus maintain their mechanical stability at subzero temperatures. Inspired by the freezing tolerance mechanisms found in nature, here we report a strategy of combining hydrophilic/oleophilic heteronetworks to produce self-adaptive, freeze-tolerant and mechanically stable organohydrogels. The organohydrogels can simultaneously use water and oil as a dispersion medium, and quickly switch between hydrogel- and organogel-like behaviours in response to the nature of the surrounding phase. Accordingly, their surfaces display unusual adaptive dual superlyophobic in oil/water system (that is, they are superhydrophobic under oil and superoleophobic under water). Moreover, the organogel component can inhibit the ice crystallization of the hydrogel component, thus enhancing the mechanical stability of organohydrogel over a wide temperature range (-78 to 80 °C). The organohydrogels may have promising applications in complex and harsh environments."
+   },
+   {
+    "id": "https://openalex.org/W2792712473",
+    "doi": "https://doi.org/10.1002/advs.201700891",
+    "title": "Photosensitizer Micelles Together with IDO Inhibitor Enhance Cancer Photothermal Therapy and Immunotherapy",
+    "year": 2018,
+    "cited": 367,
+    "venue": "Advanced Science",
+    "topics": [
+     "Nanoplatforms for cancer theranostics",
+     "Photodynamic Therapy Research Studies",
+     "Immune cells in cancer"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201700891",
+    "abstract": "The therapeutic outcome of photothermal therapy (PTT) remains impeded by the transparent depth of light. Combining PTT with immunotherapy provides strategies to solve this problem. Regulating metabolism-related enzymes is a promising strategy to stimulate immune response. Here, a nanosystem (NLG919/IR780 micelles) with the properties of photothermal conversion and regulation of the tryptophan metabolic pathway is used to suppress the growth of the tumor margin beyond effective PTT and promote tumor PTT and immunotherapy. It is revealed that mild heat treatment promotes the growth of the tumor margin beyond effective PTT for the upregulation of heat shock protein (HSP), indoleamine 2,3-dioxygenase (IDO), and programmed death-ligand 1 (PD-L1). The NLG919/IR780 micelles can effectively inhibit the activity of IDO but do not affect the level of IDO expression. NLG919/IR780 micelles can effectively accumulate in the tumor and can migrate to lymph nodes and the lymphatic system. In vivo antitumor studies reveal that NLG919/IR780 micelles effectively suppress the growth of tumor margin following PTT in primary tumors. NLG919/IR780 micelle-mediated PTT and IDO inhibition further stimulate the activation of T lymphocytes, inhibiting the growth of distal tumors (abscopal effect). The results demonstrate that the NLG919/IR780 micelles combine PTT and immunotherapy and suppress the tumor margin as well as distal tumor growth post photothermal therapy."
+   },
+   {
+    "id": "https://openalex.org/W2512011202",
+    "doi": "https://doi.org/10.1016/j.apcatb.2016.08.022",
+    "title": "Cobalt promoted TiO2/GO for the photocatalytic degradation of oxytetracycline and Congo Red",
+    "year": 2016,
+    "cited": 364,
+    "venue": "Applied Catalysis B: Environmental",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "TiO2 Photocatalysis and Solar Cells",
+     "Advanced Nanomaterials in Catalysis"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0926337316306300-fx1_lrg.jpg",
+    "abstract": "A family of titania derived nanocomposites synthesized via sol-gel and hydrothermal routes exhibit excellent performance for the photocatalytic degradation of two important exemplar water pollutants, oxytetracycline and Congo Red. Low loadings of Co 3 O 4 nanoparticles dispersed over the surfaces of anatase TiO 2 confer visible light photoactivity for the aqueous phase decomposition of organics through the resulting heterojunction and reduced band gap. Subsequent modification of these Co 3 O 4 /TiO 2 composites by trace amounts of graphene oxide nanosheets in the presence of a diamine linker further promotes both oxytetracycline and Congo Red photodegradation under simulated solar and visible irradiation, through a combination of enhanced photoresponse and consequent radical generation. Radical quenching and fluorescence experiments implicate holes and hydroxyl radicals as the respective primary and secondary active species responsible for oxidative photodegradation of pollutants."
+   },
+   {
+    "id": "https://openalex.org/W3082497426",
+    "doi": "https://doi.org/10.1098/rsos.200708",
+    "title": "Photocatalytic degradation of methylene blue under natural sunlight using iron titanate nanoparticles prepared by a modified sol–gel method",
+    "year": 2020,
+    "cited": 334,
+    "venue": "Royal Society Open Science",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "TiO2 Photocatalysis and Solar Cells",
+     "Nanomaterials for catalytic reactions"
+    ],
+    "oa_url": "https://royalsocietypublishing.org/doi/pdf/10.1098/rsos.200708",
+    "abstract": "The aim of this work was to synthesize semiconducting oxide nanoparticles using a simple method with low production cost to be applied in natural sunlight for photocatalytic degradation of pollutants in waste water. Iron titanate (Fe 2 TiO 5 ) nanoparticles with an orthorhombic structure were successfully synthesized using a modified sol–gel method and calcination at 750°C. The as-prepared Fe 2 TiO 5 nanoparticles exhibited a moderate specific surface area. The mesoporous Fe 2 TiO 5 nanoparticles possessed strong absorption in the visible-light region and the band gap was estimated to be around 2.16 eV. The photocatalytic activity was evaluated by the degradation of methylene blue under natural sunlight. The effect of parameters such as the amount of catalyst, initial concentration of the dye and pH of the dye solution on the removal efficiency of methylene blue was investigated. Fe 2 TiO 5 showed high degradation efficiency in a strong alkaline medium that can be the result of the facilitated formation of OH radicals due to an increased concentration of hydroxyl ions."
+   },
+   {
+    "id": "https://openalex.org/W4284883996",
+    "doi": "https://doi.org/10.1038/s41467-022-31474-2",
+    "title": "Molecular-level insight into photocatalytic CO2 reduction with H2O over Au nanoparticles by interband transitions",
+    "year": 2022,
+    "cited": 332,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Catalytic Processes in Materials Science",
+     "CO2 Reduction Techniques and Catalysts"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-31474-2.pdf",
+    "abstract": "Abstract Achieving CO2reduction with H2O on metal photocatalysts and understanding the corresponding mechanisms at the molecular level are challenging. Herein, we report that quantum-sized Au nanoparticles can photocatalytically reduce CO2to CO with the help of H2O by electron-hole pairs mainly originating from interband transitions. Notably, the Au photocatalyst shows a CO production rate of 4.73 mmol g−1h−1(~100% selectivity), ~2.5 times the rate during CO2reduction with H2under the same experimental conditions, under low-intensity irradiation at 420 nm. Theoretical and experimental studies reveal that the increased activity is induced by surface Au–O species formed from H2O decomposition, which synchronously optimizes the rate-determining steps in the CO2reduction and H2O oxidation reactions, lowers the energy barriers for the *CO desorption and *OOH formation, and facilitates CO and O2production. Our findings provide an in-depth mechanistic understanding for designing active metal photocatalysts for efficient CO2reduction with H2O."
+   },
+   {
+    "id": "https://openalex.org/W2010616276",
+    "doi": "https://doi.org/10.1155/2013/598328",
+    "title": "Synthesis and Characterization of Silver Nanoparticles Using Cannonball Leaves and Their Cytotoxic Activity against MCF-7 Cell Line",
+    "year": 2013,
+    "cited": 307,
+    "venue": "Journal of Nanotechnology",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Moringa oleifera research and applications"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/jnt/2013/598328.pdf",
+    "abstract": "Cannonball ( Couroupita guianensis ) is a tree belonging to the family Lecythidaceae. Various parts of the tree have been reported to contain oils, keto steroids, glycosides, couroupitine, indirubin, isatin, and phenolic substances. We report here the synthesis of silver nanoparticles (AgNPs) using cannonball leaves. Green synthesized nanoparticles have been characterized by UV-Vis spectroscopy, SEM, TEM, and FTIR. Cannonball leaf broth as a reducing agent converts silver ions to AgNPs in a rapid and ecofriendly manner. The UV-Vis spectra gave surface plasmon resonance peak at 434 nm. TEM image shows well-dispersed silver nanoparticles with an average particle size of 28.4 nm. FTIR showed the structure and respective bands of the synthesized nanoparticles and the stretch of bonds. Green synthesized silver nanoparticles by cannonball leaf extract show cytotoxicity to human breast cancer cell line (MCF-7). Overall, this environmentally friendly method of biological silver nanoparticles production provides rates of synthesis faster than or comparable to those of chemical methods and can potentially be used in various human contacting areas such as cosmetics, foods, and medical applications."
+   },
+   {
+    "id": "https://openalex.org/W2924619706",
+    "doi": "https://doi.org/10.1038/s41467-019-08980-x",
+    "title": "Synthetic control over orientational degeneracy of spacer cations enhances solar cell efficiency in two-dimensional perovskites",
+    "year": 2019,
+    "cited": 305,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Solid-state spectroscopy and crystallography"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-08980-x.pdf",
+    "abstract": "Two-dimensional perovskites have emerged as more intrinsically stable materials for solar cells. Chemical tuning of spacer organic cations has attracted great interest due to their additional functionalities. However, how the chemical nature of the organic cations affects the properties of two-dimensional perovskites and devices is rarely reported. Here we demonstrate that the selection of spacer cations (i.e., selective fluorination of phenethylammonium) affects the film properties of two-dimensional perovskites, leading to different device performance of two-dimensional perovskite solar cells (average n = 4). Structural analysis reveals that different packing arrangements and orientational disorder of the spacer cations result in orientational degeneracy and different formation energies, largely explaining the difference in film properties. This work provides key missing information on how spacer cations exert influence on desirable electronic properties and device performance of two-dimensional perovskites via the weak and cooperative interactions of these cations in the crystal lattice."
+   },
+   {
+    "id": "https://openalex.org/W3085797894",
+    "doi": "https://doi.org/10.1016/j.jphotochem.2020.112866",
+    "title": "Photocatalytic activity of ZnO nanoparticles and the role of the synthesis method on their physical and chemical properties",
+    "year": 2020,
+    "cited": 298,
+    "venue": "Journal of Photochemistry and Photobiology A Chemistry",
+    "topics": [
+     "ZnO doping and properties",
+     "Advanced Photocatalysis Techniques",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://digital.csic.es/bitstream/10261/400364/1/JPHOTOCHEM-D-20-00438_R1-1_e%20%281%29.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1995566836",
+    "doi": "https://doi.org/10.1038/ncomms7469",
+    "title": "A molecular catalyst for water oxidation that binds to metal oxide surfaces",
+    "year": 2015,
+    "cited": 290,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced Photocatalysis Techniques",
+     "Catalytic Processes in Materials Science"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms7469.pdf",
+    "abstract": "Molecular catalysts are known for their high activity and tunability, but their solubility and limited stability often restrict their use in practical applications. Here we describe how a molecular iridium catalyst for water oxidation directly and robustly binds to oxide surfaces without the need for any external stimulus or additional linking groups. On conductive electrode surfaces, this heterogenized molecular catalyst oxidizes water with low overpotential, high turnover frequency and minimal degradation. Spectroscopic and electrochemical studies show that it does not decompose into iridium oxide, thus preserving its molecular identity, and that it is capable of sustaining high activity towards water oxidation with stability comparable to state-of-the-art bulk metal oxide catalysts."
+   },
+   {
+    "id": "https://openalex.org/W2936055520",
+    "doi": "https://doi.org/10.1038/s41586-019-1074-x",
+    "title": "Production of phosphorene nanoribbons",
+    "year": 2019,
+    "cited": 288,
+    "venue": "Nature",
+    "topics": [
+     "2D Materials and Applications",
+     "MXene and MAX Phase Materials",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://research-information.bris.ac.uk/en/publications/8af5cd99-5906-4557-82be-db05eb781819",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3088651085",
+    "doi": "https://doi.org/10.1126/science.abc4209",
+    "title": "The coupling mechanism of mammalian respiratory complex I",
+    "year": 2020,
+    "cited": 286,
+    "venue": "Science",
+    "topics": [
+     "Mitochondrial Function and Pathology",
+     "ATP Synthase and ATPases Research",
+     "Photosynthetic Processes and Mechanisms"
+    ],
+    "oa_url": "https://research-explorer.ista.ac.at/download/8737/8820/Full_manuscript_with_SI_opt_red.pdf",
+    "abstract": "Mitochondrial complex I couples NADH:ubiquinone oxidoreduction to proton pumping by an unknown mechanism. Here, we present cryo-electron microscopy structures of ovine complex I in five different conditions, including turnover, at resolutions up to 2.3 to 2.5 angstroms. Resolved water molecules allowed us to experimentally define the proton translocation pathways. Quinone binds at three positions along the quinone cavity, as does the inhibitor rotenone that also binds within subunit ND4. Dramatic conformational changes around the quinone cavity couple the redox reaction to proton translocation during open-to-closed state transitions of the enzyme. In the induced deactive state, the open conformation is arrested by the ND6 subunit. We propose a detailed molecular coupling mechanism of complex I, which is an unexpected combination of conformational changes and electrostatic interactions."
+   },
+   {
+    "id": "https://openalex.org/W3198508448",
+    "doi": "https://doi.org/10.1038/s41557-021-00752-9",
+    "title": "Electrostatic co-assembly of nanoparticles with oppositely charged small molecules into static and dynamic superstructures",
+    "year": 2021,
+    "cited": 279,
+    "venue": "Nature Chemistry",
+    "topics": [
+     "Pickering emulsions and particle stabilization",
+     "Gold and Silver Nanoparticles Synthesis and Applications",
+     "Electrostatics and Colloid Interactions"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41557-021-00752-9.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4385349905",
+    "doi": "https://doi.org/10.1038/s41467-023-40174-4",
+    "title": "Elucidating electrochemical nitrate and nitrite reduction over atomically-dispersed transition metal sites",
+    "year": 2023,
+    "cited": 277,
+    "venue": "Nature Communications",
+    "topics": [
+     "Ammonia Synthesis and Nitrogen Reduction",
+     "Advanced Photocatalysis Techniques",
+     "Caching and Content Delivery"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-40174-4.pdf",
+    "abstract": "Abstract Electrocatalytic reduction of waste nitrates (NO 3 − ) enables the synthesis of ammonia (NH 3 ) in a carbon neutral and decentralized manner. Atomically dispersed metal-nitrogen-carbon (M-N-C) catalysts demonstrate a high catalytic activity and uniquely favor mono-nitrogen products. However, the reaction fundamentals remain largely underexplored. Herein, we report a set of 14; 3 d -, 4 d -, 5 d - and f -block M-N-C catalysts. The selectivity and activity of NO 3 − reduction to NH 3 in neutral media, with a specific focus on deciphering the role of the NO 2 − intermediate in the reaction cascade, reveals strong correlations (R=0.9) between the NO 2 − reduction activity and NO 3 − reduction selectivity for NH 3 . Moreover, theoretical computations reveal the associative/dissociative adsorption pathways for NO 2 − evolution, over the normal M-N 4 sites and their oxo-form (O-M-N 4 ) for oxyphilic metals. This work provides a platform for designing multi-element NO 3 RR cascades with single-atom sites or their hybridization with extended catalytic surfaces."
+   },
+   {
+    "id": "https://openalex.org/W4285993058",
+    "doi": "https://doi.org/10.1038/s41467-022-31978-x",
+    "title": "A dynamic assembly-induced emissive system for advanced information encryption with time-dependent security",
+    "year": 2022,
+    "cited": 276,
+    "venue": "Nature Communications",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Polydiacetylene-based materials and applications",
+     "Supramolecular Self-Assembly in Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-31978-x.pdf",
+    "abstract": "The development of advanced materials for information encryption with time-dependent features is essential to meet the increasing demand on encryption security. Herein, smart materials with orthogonal and temporal encryption properties are successfully developed based on a dynamic assembly-induced multicolour supramolecular system. Multicolour fluorescence, including blue, orange and even white light emissions, is achieved by controlling the supramolecular assembly of pyrene derivatives by tailoring the solvent composition. By taking advantage of the tuneable fluorescence, dynamically controlled information encryption materials with orthogonal encryption functions, e.g., 3D codes, are successfully developed. Moreover, time-dependent information encryption materials, such as temporal multi-information displays and 4D codes, are also developed by enabling the fluorescence-controllable supramolecular system in the solid phase, showing multiple pieces of information on a time scale, and the correct information can be identified only at a specified time. This work provides an inspiring point for the design of information encryption materials with higher security requirements."
+   },
+   {
+    "id": "https://openalex.org/W3034870143",
+    "doi": "https://doi.org/10.1038/s41467-020-16831-3",
+    "title": "Bio-inspired vertebral design for scalable and flexible perovskite solar cells",
+    "year": 2020,
+    "cited": 274,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-16831-3.pdf",
+    "abstract": "Abstract The translation of unparalleled efficiency from the lab-scale devices to practical-scale flexible modules affords a huge performance loss for flexible perovskite solar cells (PSCs). The degradation is attributed to the brittleness and discrepancy of perovskite crystal growth upon different substrates. Inspired by robust crystallization and flexible structure of vertebrae, herein, we employ a conductive and glued polymer between indium tin oxide and perovskite layers, which simultaneously facilitates oriented crystallization of perovskite and sticks the devices. With the results of experimental characterizations and theoretical simulations, this bionic interface layer accurately controls the crystallization and acts as an adhesive. The flexible PSCs achieve the power conversion efficiencies of 19.87% and 17.55% at effective areas of 1.01 cm2 and 31.20 cm2 respectively, retaining over 85% of original efficiency after 7000 narrow bending cycles with negligible angular dependence. Finally, the modules are assembled into a wearable solar-power source, enabling the upscaling of flexible electronics."
+   },
+   {
+    "id": "https://openalex.org/W2742158115",
+    "doi": "https://doi.org/10.1002/adfm.201701818",
+    "title": "Copper(I) Thiocyanate (CuSCN) Hole‐Transport Layers Processed from Aqueous Precursor Solutions and Their Application in Thin‐Film Transistors and Highly Efficient Organic and Organometal Halide Perovskite Solar Cells",
+    "year": 2017,
+    "cited": 258,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://discovery.ucl.ac.uk/10077499/1/Wijeyasinghe%20et%20al.%20Adv.%20Funct.%20Mater.%202017_1701818.pdf",
+    "abstract": "This study reports the development of copper(I) thiocyanate (CuSCN) hole‐transport layers (HTLs) processed from aqueous ammonia as a novel alternative to conventional n‐alkyl sulfide solvents. Wide bandgap (3.4–3.9 eV) and ultrathin (3–5 nm) layers of CuSCN are formed when the aqueous CuSCN–ammine complex solution is spin‐cast in air and annealed at 100 °C. X‐ray photoelectron spectroscopy confirms the high compositional purity of the formed CuSCN layers, while the high‐resolution valence band spectra agree with first‐principles calculations. Study of the hole‐transport properties using field‐effect transistor measurements reveals that the aqueous‐processed CuSCN layers exhibit a fivefold higher hole mobility than films processed from diethyl sulfide solutions with the maximum values approaching 0.1 cm 2 V −1 s −1 . A further interesting characteristic is the low surface roughness of the resulting CuSCN layers, which in the case of solar cells helps to planarize the indium tin oxide anode. Organic bulk heterojunction and planar organometal halide perovskite solar cells based on aqueous‐processed CuSCN HTLs yield power conversion efficiency of 10.7% and 17.5%, respectively. Importantly, aqueous‐processed CuSCN‐based cells consistently outperform devices based on poly(3,4‐ethylenedioxythiophene) polystyrene sulfonate HTLs. This is the first report on CuSCN films and devices processed via an aqueous‐based synthetic route that is compatible with high‐throughput manufacturing and paves the way for further developments."
+   },
+   {
+    "id": "https://openalex.org/W2944944780",
+    "doi": "https://doi.org/10.1002/advs.201900151",
+    "title": "Stabilized Molybdenum Trioxide Nanowires as Novel Ultrahigh‐Capacity Cathode for Rechargeable Zinc Ion Battery",
+    "year": 2019,
+    "cited": 235,
+    "venue": "Advanced Science",
+    "topics": [
+     "Advanced battery technologies research",
+     "Supercapacitor Materials and Fabrication",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201900151",
+    "abstract": "Abstract Exploration of high‐performance cathode materials for rechargeable aqueous Zn ion batteries (ZIBs) is highly desirable. The potential of molybdenum trioxide (MoO3) in other electrochemical energy storage devices has been revealed but held understudied in ZIBs. Herein, a demonstration of orthorhombic MoO3 as an ultrahigh‐capacity cathode material in ZIBs is presented. The energy storage mechanism of the MoO3 nanowires based on Zn2+ intercalation/deintercalation and its electrochemical instability mechanism are particularly investigated and elucidated. The severe capacity decay of the MoO3 nanowires during charging/discharging cycles arises from the dissolution and the structural collapse of MoO3 in aqueous electrolyte. To this end, an effective strategy to stabilize MoO3 nanowires by using a quasi‐solid‐state poly(vinyl alcohol)(PVA)/ZnCl2 gel electrolyte to replace the aqueous electrolyte is developed. The capacity retention of the assembled ZIBs after 400 charge/discharge cycles at 6.0 A g−1 is significantly boosted, from 27.1% (in aqueous electrolyte) to 70.4% (in gel electrolyte). More remarkably, the stabilized quasi‐solid‐state ZIBs achieve an attracting areal capacity of 2.65 mAh cm−2 and a gravimetric capacity of 241.3 mAh g−1 at 0.4 A g−1, outperforming most of recently reported ZIBs."
+   },
+   {
+    "id": "https://openalex.org/W2771524153",
+    "doi": "https://doi.org/10.1021/jacs.7b11888",
+    "title": "Singlet Fission Involves an Interplay between Energetic Driving Force and Electronic Coupling in Perylenediimide Films",
+    "year": 2017,
+    "cited": 224,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1416902",
+    "abstract": "Due to its ability to offset thermalization losses in photoharvesting systems, singlet fission has become a topic of research interest. During singlet fission, a high energy spin-singlet state in an organic semiconductor divides its energy to form two lower energy spin-triplet excitations on neighboring chromophores. While key insights into mechanisms leading to singlet fission have been gained recently, developing photostable compounds that undergo quantitative singlet fission remains a key challenge. In this report, we explore triplet exciton production via singlet fission in films of perylenediimides, a class of compounds with a long history of use as industrial dyes and pigments due to their photostability. As singlet fission necessitates electron transfer between neighboring molecules, its rate and yield depend sensitively on their local arrangement. By adding different functional groups at their imide positions, we control how perylenediimides pack in the solid state. We find inducing a long axis displacement of ∼3 Å between neighboring perylenediimides gives a maximal triplet production yield of 178% with a fission rate of ∼245 ps despite the presence of an activation barrier of ∼190 meV. These findings disagree with Marcus theory predictions for the optimal perylenediimide geometry for singlet fission, but do agree with Redfield theory calculations that allow singlet fission to occur via a charge transfer-mediated superexchange mechanism. Unfortunately, triplets produced by singlet fission are found to decay over tens of nanoseconds. Our results highlight that singlet fission materials must be designed to not only produce triplet excitons but to also facilitate their extraction."
+   },
+   {
+    "id": "https://openalex.org/W2565655299",
+    "doi": "https://doi.org/10.1039/c6sc04579k",
+    "title": "Piezochromism and hydrochromism through electron transfer: new stories for viologen materials",
+    "year": 2016,
+    "cited": 223,
+    "venue": "Chemical Science",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Photochromic and Fluorescence Chemistry",
+     "Porphyrin and Phthalocyanine Chemistry"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/sc/c6sc04579k",
+    "abstract": "A pyridinium-carboxylate compound undergoes reversible color change under pressure owing to the formation of radicals via electron transfer; dehydration and hydration can also trigger electron transfer."
+   },
+   {
+    "id": "https://openalex.org/W3205394111",
+    "doi": "https://doi.org/10.1038/s41467-021-26281-0",
+    "title": "A self-healing catalyst for electrocatalytic and photoelectrochemical oxygen evolution in highly alkaline conditions",
+    "year": 2021,
+    "cited": 222,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "Fuel Cells and Related Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-26281-0.pdf",
+    "abstract": "Abstract While self-healing is considered a promising strategy to achieve long-term stability for oxygen evolution reaction (OER) catalysts, this strategy remains a challenge for OER catalysts working in highly alkaline conditions. The self-healing of the OER-active nickel iron layered double hydroxides (NiFe-LDH) has not been successful due to irreversible leaching of Fe catalytic centers. Here, we investigate the introduction of cobalt (Co) into the NiFe-LDH as a promoter for in situ Fe redeposition. An active borate-intercalated NiCoFe-LDH catalyst is synthesized using electrodeposition and shows no degradation after OER tests at 10 mA cm−2 at pH 14 for 1000 h, demonstrating its self-healing ability under harsh OER conditions. Importantly, the presence of both ferrous ions and borate ions in the electrolyte is found to be crucial to the catalyst’s self-healing. Furthermore, the implementation of this catalyst in photoelectrochemical devices is demonstrated with an integrated silicon photoanode. The self-healing mechanism leads to a self-limiting catalyst thickness, which is ideal for integration with photoelectrodes since redeposition is not accompanied by increased parasitic light absorption."
+   },
+   {
+    "id": "https://openalex.org/W2194750746",
+    "doi": "https://doi.org/10.1007/s40820-015-0076-y",
+    "title": "AgCl/Ag/g-C3N4 Hybrid Composites: Preparation, Visible Light-Driven Photocatalytic Activity and Mechanism",
+    "year": 2015,
+    "cited": 222,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Copper-based nanomaterials and applications",
+     "Quantum Dots Synthesis And Properties"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-015-0076-y.pdf",
+    "abstract": "The ternary plasmonic AgCl/Ag/g-C 3 N 4 photocatalysts were successfully fabricated by a modified deposition–precipitation method, through which Ag/AgCl nanoparticles (5–15 nm in size) were evenly dispersed on the surface of g-C 3 N 4 . The AgCl/Ag/g-C 3 N 4 composites exhibited higher photocatalytic activity than Ag/AgCl and g-C 3 N 4 . The enhanced photocatalytic performance could be attributed to an efficient separation of electron–hole pairs through a Z-scheme mechanism, in which Ag nanoparticles acted as charge separation centers."
+   },
+   {
+    "id": "https://openalex.org/W4324311649",
+    "doi": "https://doi.org/10.1038/s41467-023-37066-y",
+    "title": "Rational design of heterogenized molecular phthalocyanine hybrid single-atom electrocatalyst towards two-electron oxygen reduction",
+    "year": 2023,
+    "cited": 206,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research",
+     "CO2 Reduction Techniques and Catalysts"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37066-y.pdf",
+    "abstract": "Abstract Single-atom catalysts supported on solid substrates have inspired extensive interest, but the rational design of high-efficiency single-atom catalysts is still plagued by ambiguous structure determination of active sites and its local support effect. Here, we report hybrid single-atom catalysts by an axial coordination linkage of molecular cobalt phthalocyanine with carbon nanotubes for selective oxygen reduction reaction by screening from a series of metal phthalocyanines via preferential density-functional theory calculations. Different from conventional heterogeneous single-atom catalysts, the hybrid single-atom catalysts are proven to facilitate rational screening of target catalysts as well as understanding of its underlying oxygen reduction reaction mechanism due to its well-defined active site structure and clear coordination linkage in the hybrid single-atom catalysts. Consequently, the optimized Co hybrid single-atom catalysts exhibit improved 2e− oxygen reduction reaction performance compared to the corresponding homogeneous molecular catalyst in terms of activity and selectivity. When prepared as an air cathode in an air-breathing flow cell device, the optimized hybrid catalysts enable the oxygen reduction reaction at 300 mA cm−2 exhibiting a stable Faradaic efficiency exceeding 90% for 25 h."
+   },
+   {
+    "id": "https://openalex.org/W2801950439",
+    "doi": "https://doi.org/10.1039/c8sc01170b",
+    "title": "Deciphering the working mechanism of aggregation-induced emission of tetraphenylethylene derivatives by ultrafast spectroscopy",
+    "year": 2018,
+    "cited": 206,
+    "venue": "Chemical Science",
+    "topics": [
+     "Luminescence and Fluorescent Materials",
+     "Molecular Sensors and Ion Detection",
+     "Photochemistry and Electron Transfer Studies"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2018/sc/c8sc01170b",
+    "abstract": "formation of intermediate or rotation around the elongated C[double bond, length as m-dash]C bond, is responsible for the AIE effect, which is strongly structure-dependent but not related to structural rigidity."
+   },
+   {
+    "id": "https://openalex.org/W3000693281",
+    "doi": "https://doi.org/10.1007/s40843-019-1234-x",
+    "title": "Near-infrared absorbing 2D/3D ZnIn2S4/N-doped graphene photocatalyst for highly efficient CO2 capture and photocatalytic reduction",
+    "year": 2020,
+    "cited": 203,
+    "venue": "Science China Materials",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Covalent Organic Framework Applications",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40843-019-1234-x.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2538389320",
+    "doi": "https://doi.org/10.1038/srep35535",
+    "title": "Nanostructured Boron Nitride With High Water Dispersibility For Boron Neutron Capture Therapy",
+    "year": 2016,
+    "cited": 196,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Boron and Carbon Nanomaterials Research",
+     "Boron Compounds in Chemistry",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://doi.org/10.1038/srep35535",
+    "abstract": "Highly water dispersible boron based compounds are innovative and advanced materials which can be used in Boron Neutron Capture Therapy for cancer treatment (BNCT). Present study deals with the synthesis of highly water dispersible nanostructured Boron Nitride (BN). Unique and relatively low temperature synthesis route is the soul of present study. The morphological examinations (Scanning/transmission electron microscopy) of synthesized nanostructures showed that they are in transient phase from two dimensional hexagonal sheets to nanotubes. It is also supported by dual energy band gap of these materials calculated from UV- visible spectrum of the material. The theoretically calculated band gap also supports the same (calculated by virtual nano lab Software). X-ray diffraction (XRD) analysis shows that the synthesized material has deformed structure which is further supported by Raman spectroscopy. The structural aspect of high water disperse ability of BN is also studied. The ultra-high disperse ability which is a result of structural deformation make these nanostructures very useful in BNCT. Cytotoxicity studies on various cell lines (Hela(cervical cancer), human embryonic kidney (HEK-293) and human breast adenocarcinoma (MCF-7)) show that the synthesized nanostructures can be used for BNCT."
+   },
+   {
+    "id": "https://openalex.org/W2344767611",
+    "doi": "https://doi.org/10.1039/c6sc00943c",
+    "title": "Dendronized delayed fluorescence emitters for non-doped, solution-processed organic light-emitting diodes with high efficiency and low efficiency roll-off simultaneously: two parallel emissive channels",
+    "year": 2016,
+    "cited": 192,
+    "venue": "Chemical Science",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Organic Electronics and Photovoltaics",
+     "Luminescence and Fluorescent Materials"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2016/sc/c6sc00943c",
+    "abstract": "Carbazole-dendronized TADF emitters enable non-doped, solution-processed OLEDs to achieve a high EQE of 13.8% and a low efficiency roll-off simultaneously."
+   },
+   {
+    "id": "https://openalex.org/W3044674855",
+    "doi": "https://doi.org/10.1016/j.jmrt.2020.06.074",
+    "title": "Facile biofabrication of silver nanoparticles using Salvia officinalis leaf extract and its catalytic activity towards Congo red dye degradation",
+    "year": 2020,
+    "cited": 191,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Graphene and Nanomaterials Applications",
+     "Medicinal Plants and Neuroprotection"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785420314757/pdf",
+    "abstract": "A facile, eco-friendly and cost-efficient method has been used for the biofabrication of silver nanoparticles. The aqueous extract of Salvia officinalis was used as a bioreducing agent and as a capping/stabilizing agent in the single-step biosynthesis of silver nanoparticles. Biosynthesized silver nanoparticles were characterized by various instrumental techniques, which included UV–vis spectroscopy, transmission electron microscopy (TEM), X-ray powder diffraction (XRD), Fourier-transform infrared spectroscopy (FTIR) energy-dispersive X-ray spectroscopy (EDS) and thermogravimetric analysis (TGA)-differential thermal analysis (DTA). The colour of the reaction mixture of silver nitrate solution and an aqueous extract of S. officinalis turned dark brown after 10 min of mixing; hence, the reduction of Ag+ to Ag° occurred. UV–vis spectroscopy demonstrated the formation of stable silver nanoparticles with a surface plasmon resonance (SPR) band at λmax of 446 nm. TEM analysis demonstrated that the biosynthesized silver nanoparticles are spherical in shape and approximately 40 nm in size. Based on the observed results, a possible mechanism has been proposed for the formation of the silver nanoparticles. These biosynthesized silver nanoparticles were analysed, and the enhancement of their catalytic properties against toxic dye under various experimental conditions was demonstrated. According to the observed results, the catalytic activity for the degradation of azo dye Congo red (CR) was efficient under optimal experimental conditions. The phytochemical-based synthesis of nanoparticles provides a suitable, inexpensive and ecofriendly alternative for the degradation of highly toxic organic compounds and harmful azo dyes."
+   },
+   {
+    "id": "https://openalex.org/W4403760814",
+    "doi": "https://doi.org/10.1038/s41467-024-53482-0",
+    "title": "Photocatalytic H2O2 production over boron-doped g-C3N4 containing coordinatively unsaturated FeOOH sites and CoOx clusters",
+    "year": 2024,
+    "cited": 189,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Advanced Nanomaterials in Catalysis",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-024-53482-0.pdf",
+    "abstract": "Graphitic carbon nitride (g-C3N4) has gained increasing attention in artificial photosynthesis of H2O2, yet its performance is hindered by sluggish oxygen reduction reaction (ORR) kinetics and short excited-state electron lifetimes. Here we show a B-doped g-C3N4 (BCN) tailored with coordinatively unsaturated FeOOH and CoOx clusters for H2O2 photosynthesis from water and oxygen without sacrificial agents. The optimal material delivers a 30-fold activity enhancement compared with g-C3N4 under visible light, with a solar-to-chemical conversion efficiency of 0.75%, ranking among the forefront of reported g-C3N4-based photocatalysts. Additionally, an electron transfer efficiency reaches 34.1% for the oxygen reduction reaction as revealed by in situ microsecond transient absorption spectroscopy. Experimental and theoretical results reveal that CoOx initiates hole–water oxidation and prolongs the electron lifetime, whereas FeOOH accepts electrons and promotes oxygen activation. Intriguingly, the key to the direct one-step two-electron reaction pathway for H2O2 production lies in coordinatively unsaturated FeOOH to adjust the Pauling-type adsorption configuration of O2 to stabilize peroxide species and restrain the formation of superoxide radicals. The authors develop a strategy to regulate oxygen reduction reaction kinetics and electron lifetimes with coordinatively unsaturated FeOOH and CoOx clusters to access a direct two-electron pathway for H2O2 photosynthesis on boron-doped g-C3N4."
+   },
+   {
+    "id": "https://openalex.org/W2605749497",
+    "doi": "https://doi.org/10.1007/s13204-017-0565-z",
+    "title": "Photocatalytic degradation of methyl orange dye by pristine titanium dioxide, zinc oxide, and graphene oxide nanostructures and their composites under visible light irradiation",
+    "year": 2017,
+    "cited": 189,
+    "venue": "Applied Nanoscience",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "TiO2 Photocatalysis and Solar Cells",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s13204-017-0565-z.pdf",
+    "abstract": "Discharge of azo dyes by textile and allied industries to the environment is a growing problem. Degradation of an azo dye, methyl orange (MO), was tested in simulated wastewater with different oxide nanomaterials acting as photocatalysts under visible light. Titanium dioxide (TiO 2 ), zinc oxide (ZnO), and graphene oxide (GO) were synthesized, characterized, and applied for adsorptive and photocatalytic removal of the dye. Factors such as initial concentration of MO and size of nanoparticle photocatalyst were varied to determine the optimum conditions for dye removal. Finally, nanocomposites of the three materials (GO–TiO 2 –ZnO) were synthesized and tested for its photocatalytic performance. The composition of the individual oxide in the nanocomposite was then varied to achieve the best photocatalytic performance."
+   },
+   {
+    "id": "https://openalex.org/W3027811970",
+    "doi": "https://doi.org/10.1016/j.jphotochem.2020.112622",
+    "title": "On the analysis of diffuse reflectance measurements to estimate the optical properties of amorphous porous carbons and semiconductor/carbon catalysts",
+    "year": 2020,
+    "cited": 186,
+    "venue": "Journal of Photochemistry and Photobiology A Chemistry",
+    "topics": [
+     "Catalytic Processes in Materials Science",
+     "Transition Metal Oxide Nanomaterials",
+     "TiO2 Photocatalysis and Solar Cells"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/am/pii/S1010603020304214?via%3Dihub",
+    "abstract": "This study provides a critical analysis on the use of diffuse reflectance spectroscopy and Tauc equation to estimate the optical energy bandgap of semiconductor/carbon composites and amorphous porous carbons. Determination of the energy gap from diffuse reflectance is strongly dependent on the analyst’s experience, due to uncertainties related to establish the adequate range to fit the experimental data to Tauc equation, and to identify the type of electronic transitions. Furthermore, its application to strong light absorbing or multiphase materials with several absorbing components is not straightforward, due to the appearance of various curvatures/linear ranges. For such, reporting the linear fitting range used in the diffuse reflectance spectra is recommended to avoid miscalculation of a gap value. For materials absorbing in the visible range (e.g., displaced onset in Tauc representation), a double-linear fitting must be used in the extrapolation of [F(R∞)hv]1/n to avoid underestimation of Eg values. For amorphous porous carbons, different optical responses were obtained from the diffuse reflectance spectra recorded upon dilution with a non-absorbing matrix. The application of Tauc equation (indirect transitions) to data rendered bandgap values ranging between 1.5–2.3 eV for fourteen carbons, which are in agreement with those reported for these materials."
+   },
+   {
+    "id": "https://openalex.org/W4213017263",
+    "doi": "https://doi.org/10.1002/advs.202105274",
+    "title": "Lemon‐Derived Extracellular Vesicles Nanodrugs Enable to Efficiently Overcome Cancer Multidrug Resistance by Endocytosis‐Triggered Energy Dissipation and Energy Production Reduction",
+    "year": 2022,
+    "cited": 185,
+    "venue": "Advanced Science",
+    "topics": [
+     "Extracellular vesicles in disease",
+     "Nanoplatforms for cancer theranostics",
+     "Nanoparticle-Based Drug Delivery"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202105274",
+    "abstract": "Multidrug resistance remains a great challenge for cancer chemotherapy. Herein, a biomimetic drug delivery system based on lemon-derived extracellular vesicles (EVs) nanodrugs (marked with heparin-cRGD-EVs-doxorubicin (HRED)) is demonstrated, achieving highly efficient overcoming cancer multidrug resistance. The HRED is fabricated by modifying functional heparin-cRGD (HR) onto the surface of EVs and then by loading with doxorubicin (DOX). The obtained HRED enable to effectively enter DOX-resistant cancer cells by caveolin-mediated endocytosis (main), macropinocytosis (secondary), and clathrin-mediated endocytosis (last), exhibiting excellent cellular uptake capacity. The diversified endocytosis capacity of HRED can efficiently dissipate intracellular energy and meanwhile trigger downstream production reduction of adenosine triphosphate (ATP), leading to a significant reduction of drug efflux. Consequently, they show excellent anti-proliferation capacities to DOX-resistant ovarian cancer, ensuring the efficiently overcoming ovarian cancer multidrug resistance in vivo. The authors believe this strategy provides a new strategy by endocytosis triggered-energy dissipation and ATP production reduction to design drug delivery system for overcoming cancer multidrug resistance."
+   },
+   {
+    "id": "https://openalex.org/W2775246308",
+    "doi": "https://doi.org/10.1074/mcp.ra117.000470",
+    "title": "The interactome of intact mitochondria by cross-linking mass spectrometry provides evidence for coexisting respiratory supercomplexes",
+    "year": 2017,
+    "cited": 185,
+    "venue": "Molecular & Cellular Proteomics",
+    "topics": [
+     "Mitochondrial Function and Pathology",
+     "Biotin and Related Studies",
+     "Advanced Proteomics Techniques and Applications"
+    ],
+    "oa_url": "https://www.mcponline.org/content/mcprot/17/2/216.full.pdf",
+    "abstract": "Mitochondria exert an immense amount of cytophysiological functions, but the structural basis of most of these processes is still poorly understood. Here we use cross-linking mass spectrometry to probe the organization of proteins in native mouse heart mitochondria. Our approach provides the largest survey of mitochondrial protein interactions reported so far. In total, we identify 3,322 unique residue-to-residue contacts involving half of the mitochondrial proteome detected by bottom-up proteomics. The obtained mitochondrial protein interactome gives insights in the architecture and submitochondrial localization of defined protein assemblies, and reveals the mitochondrial localization of four proteins not yet included in the MitoCarta database. As one of the highlights, we show that the oxidative phosphorylation complexes I-V exist in close spatial proximity, providing direct evidence for supercomplex assembly in intact mitochondria. The specificity of these contacts is demonstrated by comparative analysis of mitochondria after high salt treatment, which disrupts the native supercomplexes and substantially changes the mitochondrial interactome."
+   },
+   {
+    "id": "https://openalex.org/W2526777797",
+    "doi": "https://doi.org/10.1038/srep34149",
+    "title": "Fabrication of potato-like silver molybdate microstructures for photocatalytic degradation of chronic toxicity ciprofloxacin and highly selective electrochemical detection of H2O2",
+    "year": 2016,
+    "cited": 183,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Gas Sensing Nanomaterials and Sensors",
+     "Advanced Nanomaterials in Catalysis"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep34149.pdf",
+    "abstract": "Abstract In the present work, potato-like silver molybdate (Ag2MoO4) microstructures were synthesized through a simple hydrothermal method. The microstructures of Ag2MoO4were characterized by various analytical and spectroscopic techniques such as XRD, FTIR, Raman, SEM, EDX and XPS. Interestingly, the as-prepared Ag2MoO4showed excellent photocatalytic and electrocatalytic activity for the degradation of ciprofloxacin (CIP) and electrochemical detection of hydrogen peroxide (H2O2), respectively. The ultraviolet-visible (UV-Vis) spectroscopy results revealed that the potato-like Ag2MoO4microstructures could offer a high photocatalytic activity towards the degradation of CIP under UV-light illumination, leads to rapid degradation within 40 min with a degradation rate of above 98%. In addition, the cyclic voltammetry (CV) and amperometry studies were realized that the electrochemical performance of Ag2MoO4modified electrode toward H2O2detection. Our H2O2sensor shows a wide linear range and lower detection limit of 0.04–240 μM and 0.03 μM, respectively. The Ag2MoO4modified electrode exhibits a high selectivity towards the detection of H2O2in the presence of different biological interferences. These results suggested that the development of potato-like Ag2MoO4microstructure could be an efficient photocatalyst as well as electrocatalyst in the potential application of environmental, biomedical and pharmaceutical samples."
+   },
+   {
+    "id": "https://openalex.org/W4361286323",
+    "doi": "https://doi.org/10.1038/s41467-023-37358-3",
+    "title": "An electron-hole rich dual-site nickel catalyst for efficient photocatalytic overall water splitting",
+    "year": 2023,
+    "cited": 181,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Copper-based nanomaterials and applications",
+     "Electrocatalysts for Energy Conversion"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37358-3.pdf",
+    "abstract": "Abstract Photocatalysis offers an attractive strategy to upgrade H2O to renewable fuel H2. However, current photocatalytic hydrogen production technology often relies on additional sacrificial agents and noble metal cocatalysts, and there are limited photocatalysts possessing overall water splitting performance on their own. Here, we successfully construct an efficient catalytic system to realize overall water splitting, where hole-rich nickel phosphides (Ni2P) with polymeric carbon-oxygen semiconductor (PCOS) is the site for oxygen generation and electron-rich Ni2P with nickel sulfide (NiS) serves as the other site for producing H2. The electron-hole rich Ni2P based photocatalyst exhibits fast kinetics and a low thermodynamic energy barrier for overall water splitting with stoichiometric 2:1 hydrogen to oxygen ratio (150.7 μmol h−1H2and 70.2 μmol h−1O2produced per 100 mg photocatalyst) in a neutral solution. Density functional theory calculations show that the co-loading in Ni2P and its hybridization with PCOS or NiS can effectively regulate the electronic structures of the surface active sites, alter the reaction pathway, reduce the reaction energy barrier, boost the overall water splitting activity. In comparison with reported literatures, such photocatalyst represents the excellent performance among all reported transition-metal oxides and/or transition-metal sulfides and is even superior to noble metal catalyst."
+   },
+   {
+    "id": "https://openalex.org/W3175466720",
+    "doi": "https://doi.org/10.1155/2021/5589703",
+    "title": "Green Synthesis of Copper Oxide Nanoparticles Using Aerva javanica Leaf Extract and Their Characterization and Investigation of In Vitro Antimicrobial Potential and Cytotoxic Activities",
+    "year": 2021,
+    "cited": 179,
+    "venue": "Evidence-based Complementary and Alternative Medicine",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Dielectric properties of ceramics",
+     "Laser-Ablation Synthesis of Nanoparticles"
+    ],
+    "oa_url": "https://downloads.hindawi.com/journals/ecam/2021/5589703.pdf",
+    "abstract": "The development of green technology is creating great interest for researchers towards low-cost and environmentally friendly methods for the synthesis of nanoparticles. Copper oxide nanoparticles (CuO-NPs) attracted many researchers due to their electric, catalytic, optical, textile, photonic, monofluid, and pharmacological activities that depend on the shape and size of the nanoparticles. This investigation aims copper oxide nanoparticles synthesis using Aerva javanica plant leaf extract. Characterization of copper oxide nanoparticles synthesized by green route was performed by three different techniques: X-Ray Diffraction (XRD), Fourier Transform Infrared (FTIR) Spectroscopy, and Scanning Electron Microscopy (SEM). X-ray diffraction (XRD) reveals the crystalline morphology of CuO-NPs and the average crystal size obtained is 15 nm. SEM images showed the spherical nature of the particles and size is lying in the 15–23 nm range. FTIR analysis confirms the functional groups of active components present in the extract which are responsible for reducing and capping agents for the synthesis of CuO-NPs. The synthesized CuO-NPs were studied for their antimicrobial potential against different bacterial as well as fungal pathogens. The results indicated that CuO-NPs show maximum antimicrobial activities against all the selected bacterial and fungal pathogens. Antimicrobial activities of copper oxide nanoparticles were compared with standard drugs Norfloxacin and amphotericin B antibiotics. Minimum inhibitory concentration (MIC) and minimum bactericidal concentration (MBC) of copper oxide nanoparticles were 128 μg/mL against all selected bacterial pathogens. MIC of fungus and minimum fungicidal concentration (MFC) of CuO-NPs were 160 μg/mL. Thus, CuO-NPs can be utilized as a broad-spectrum antimicrobial agent. The cytotoxic activity of the synthesized CuO-NPs suggested that toxicity was negligible at concentrations below 60 μg/mL."
+   },
+   {
+    "id": "https://openalex.org/W3042133161",
+    "doi": "https://doi.org/10.1016/j.envint.2020.105924",
+    "title": "Highly stable AgNPs prepared via a novel green approach for catalytic and photocatalytic removal of biological and non-biological pollutants",
+    "year": 2020,
+    "cited": 179,
+    "venue": "Environment International",
+    "topics": [
+     "Nanoparticles: synthesis and applications",
+     "Nanomaterials for catalytic reactions",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0160412020318791/pdf",
+    "abstract": "Increases in biological and non-biological pollutants pose a significant threat to environmental systems. In an effort to develop an effective means to treat such pollutants, the use of Phaseolus vulgaris (kidney beans) as reducing and capping agents is proposed for the green synthesis of highly stable silver nanoparticles (AgNPs) with a face-centered cubic (fcc) crystalline structure (size range: 10–20 nm). The potent role of the resulting AgNPs was found as triple platforms (photocatalyst, catalyst, and antimicrobial disinfectant). AgNPs were able to photocatalytically degrade approximately 97% of reactive red-141 (RR-141) dye within 150 min of exposure (quantum efficiency of 3.68 × 10-6 molecule.photon-1 and a removal reaction kinetic rate of 1.13 × 10-2 mmol g−1 h−1). The role of specific reactive oxygen species (ROS) in the photocatalytic process and complete mineralization of dye was also explored through scavenger and chemical oxygen demand (COD) experiments, respectively. As an catalyst, AgNPs were also capable of reducing 4-nitrophenol to 4-aminophenol within 15 min. Overall, AgNPs showed excellent stability as catalyst and photocatalyst even after five test cycles. As an antimicrobial agent, the AgNPs are effective against both gram-positive (Bacillus subtilis) and -negative bacteria (Escherichia coli), with the zones of clearance as 15 and 18 mm, respectively. Thus, the results of this study validate the triple role of AgNPs derived via green synthesis as a photocatalyst, catalyst, and antimicrobial agent for effective environmental remediation."
+   },
+   {
+    "id": "https://openalex.org/W3012127754",
+    "doi": "https://doi.org/10.1016/j.jmat.2020.03.004",
+    "title": "Significantly enhanced piezo-photocatalytic capability in BaTiO3 nanowires for degrading organic dye",
+    "year": 2020,
+    "cited": 178,
+    "venue": "Journal of Materiomics",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Gas Sensing Nanomaterials and Sensors",
+     "TiO2 Photocatalysis and Solar Cells"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2352847820300125/pdf",
+    "abstract": "Over the last several years, piezo-photocatalytic effect was intensively investigated for a facile, effective and promising protocol to sewage treatment and environmental remediation. The research on the integration of piezocatalytic and photocatalytic process on lead-free ferroelectric materials is highly demanded to further push this field forward. In this work, BaTiO3 nanowires (BT NWs) were fabricated by a two-step hydrothermal method. The degradation of organic dye (methyl orange, MO) aqueous solution (5 mg L−1) by integrating photocatalysis with the piezoelectric-like effect under UV light radiation and ultrasonic vibration was investigated. The decomposition ratio reaches up to ∼98.17% (at 80 min), which is around 1.28 and 2.24 times of the sole piezocatalysis and photocatalysis process, respectively. The intermediate product of hydroxyl radical (•OH) and superoxide radical (•O2−) was detected and quantified by radical trapping experiments, to illustrating their key role in degrading MO molecules. In addition, we carried out sequential cycles to evaluate the cycling stability and usage durability of catalysts and a reduction of ∼15% in the efficiency was observed after four cycles. This work provides a promising paradigm for the further development of piezo-photocatalytic materials and target applications in environmental field."
+   },
+   {
+    "id": "https://openalex.org/W4363678228",
+    "doi": "https://doi.org/10.1038/s41467-023-37687-3",
+    "title": "Realizing efficient blue and deep-blue delayed fluorescence materials with record-beating electroluminescence efficiencies of 43.4%",
+    "year": 2023,
+    "cited": 177,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Luminescence and Fluorescent Materials",
+     "Lanthanide and Transition Metal Complexes"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-37687-3.pdf",
+    "abstract": "Abstract As promising luminescent materials for organic light-emitting diodes (OLEDs), thermally activated delayed fluorescence materials are booming vigorously in recent years, but robust blue ones still remain challenging. Herein, we report three highly efficient blue and deep-blue delayed fluorescence materials comprised of a weak electron acceptor chromeno[3,2-c]carbazol-8(5H)-one with a rigid polycyclic structure and a weak electron donor spiro[acridine-9,9’-xanthene]. They hold distinguished merits of excellent photoluminescence quantum yields (99%), ultrahigh horizontal transition dipole ratios (93.6%), and fast radiative transition and reverse intersystem crossing, which furnish superb blue and deep-blue electroluminescence with Commission Internationale de I’Eclairage coordinates (CIE x,y ) of (0.14, 0.18) and (0.14, 0.15) and record-beating external quantum efficiencies ( η ext s) of 43.4% and 41.3%, respectively. Their efficiency roll-offs are successfully reduced by suppressing triplet-triplet and singlet-singlet annihilations. Moreover, high-performance deep-blue and green hyperfluorescence OLEDs are achieved by utilizing these materials as sensitizers for multi-resonance delayed fluorescence dopants, providing state-of-the-art η ext s of 32.5% (CIE x,y = 0.14, 0.10) and 37.6% (CIE x,y = 0.32, 0.64), respectively, as well as greatly advanced operational lifetimes. These splendid results can surely inspire the development of blue and deep-blue luminescent materials and devices."
+   },
+   {
+    "id": "https://openalex.org/W3110585934",
+    "doi": "https://doi.org/10.1038/s41467-020-19853-z",
+    "title": "Unraveling the influence of non-fullerene acceptor molecular packing on photovoltaic performance of organic solar cells",
+    "year": 2020,
+    "cited": 175,
+    "venue": "Nature Communications",
+    "topics": [
+     "Organic Electronics and Photovoltaics",
+     "Conducting polymers and applications",
+     "Molecular Junctions and Nanostructures"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-19853-z.pdf",
+    "abstract": "In non-fullerene organic solar cells, the long-range structure ordering induced by end-group π-π stacking of fused-ring non-fullerene acceptors is considered as the critical factor in realizing efficient charge transport and high power conversion efficiency. Here, we demonstrate that side-chain engineering of non-fullerene acceptors could drive the fused-ring backbone assembly from a π-π stacking mode to an intermixed packing mode, and to a non-stacking mode to refine its solid-state properties. Different from the above-mentioned understanding, we find that close atom contacts in a non-stacking mode can form efficient charge transport pathway through close side atom interactions. The intermixed solid-state packing motif in active layers could enable organic solar cells with superior efficiency and reduced non-radiative recombination loss compared with devices based on molecules with the classic end-group π-π stacking mode. Our observations open a new avenue in material design that endows better photovoltaic performance."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Shimadzu UV-2600 UV-2700\" OR \"Shimadzu UV-2600\" OR \"Shimadzu UV-2700\" OR \"Shimadzu UV-2600i Plus\" OR \"Shimadzu UV-2700i Plus\") AND OPEN_ACCESS:y",

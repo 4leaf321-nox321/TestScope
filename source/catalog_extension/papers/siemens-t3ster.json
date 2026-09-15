@@ -8,8 +8,171 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Siemens T3Ster\" OR \"Simcenter T3Ster\"",
-  "count": null,
-  "works": []
+  "count": 11,
+  "works": [
+   {
+    "id": "https://openalex.org/W3208227039",
+    "doi": "https://doi.org/10.3390/en14217068",
+    "title": "Quantitative Performance Comparison of Thermal Structure Function Computations",
+    "year": 2021,
+    "cited": 12,
+    "venue": "Energies",
+    "topics": [
+     "Advanced Electrical Measurement Techniques",
+     "Advanced Sensor Technologies Research",
+     "Probabilistic and Robust Engineering Design"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1073/14/21/7068/pdf?version=1635495639",
+    "abstract": "The determination of thermal structure functions from transient thermal measurements using network identification by deconvolution is a delicate process as it is sensitive to noise in the measured data. Great care must be taken not only during the measurement process but also to ensure a stable implementation of the algorithm. In this paper, a method is presented that quantifies the absolute accuracy of network identification on the basis of different test structures. For this purpose, three measures of accuracy are defined. By these metrics, several variants of network identification are optimized and compared against each other. Performance in the presence of noise is analyzed by adding Gaussian noise to the input data. In the cases tested, the use of a Bayesian deconvolution provided the best results."
+   },
+   {
+    "id": "https://openalex.org/W4401646513",
+    "doi": "https://doi.org/10.3390/app14167186",
+    "title": "Parameter Extraction for a SPICE-like Delphi4LED Multi-Domain Chip-Level LED Model with an Improved Nelder–Mead Method",
+    "year": 2024,
+    "cited": 4,
+    "venue": "Applied Sciences",
+    "topics": [
+     "Organic Light-Emitting Diodes Research",
+     "Green IT and Sustainability",
+     "GaN-based semiconductor devices and materials"
+    ],
+    "oa_url": "https://www.mdpi.com/2076-3417/14/16/7186/pdf?version=1724221944",
+    "abstract": "In this paper, a novel method is presented to estimate the parameters of the SPICE-like multi-domain model of light-emitting diode (LED) chips developed and proposed by the Delphi4LED project. The proposed estimation algorithm employs a modified Nelder-Mead method, as the gradient methods and the original version of Nelder-Mead fail to properly handle this problem. By using the new, modified Nelder-Mead method presented in this paper the parameters are estimated faster, compared to the previously used brute-force algorithm-based parameter extraction process, allowing the same precision of the SPICE-like multi-domain LED model. The modification of the parameter extraction procedure also allows speeding up and simplifying the multi-domain LED characterization method proposed earlier by the Delphi4LED project. The speed and robustness of the new model eliminate the need for time-consuming junction temperature control during measurements by employing a novel extraction strategy that seeks the global minimum, rather than relying on the composition of marginal minima."
+   },
+   {
+    "id": "https://openalex.org/W4409560740",
+    "doi": "https://doi.org/10.1109/jestpe.2025.3561893",
+    "title": "A Novel Transient Thermal Characterization System for Power Modules",
+    "year": 2025,
+    "cited": 3,
+    "venue": "IEEE Journal of Emerging and Selected Topics in Power Electronics",
+    "topics": [
+     "Induction Heating and Inverter Technology",
+     "Silicon Carbide Semiconductor Technologies"
+    ],
+    "oa_url": "https://ir.library.osaka-u.ac.jp/repo/ouka/all/101073/IEEEJEmergSelTopicsPowerElectron_1.pdf",
+    "abstract": "Thermal design of power modules has been required to ensure long-term reliability for industrial applications. The static test method utilizes the temperature dependency of I-V characteristics on power devices to characterize the transient thermal resistance of power module packages. With modern power modules achieving high heat dissipation performance, accurate transient thermal characterization demands precise measurement of the fast and small voltage responses associated with their enhanced thermal performance. This paper develops an advanced transient thermal characterization system to capture the fast and small electrical response of power modules for their appropriate thermal characterization. The performance of the developed system is evaluated based on the experiment compared with the conventional characterization system and is validated with numerical simulation."
+   },
+   {
+    "id": "https://openalex.org/W4382538322",
+    "doi": "https://doi.org/10.21883/sc.2023.01.55619.4338",
+    "title": "On heating mechanisms in LEDs based on p-InAsSbP/n-InAs(Sb)",
+    "year": 2023,
+    "cited": 2,
+    "venue": "Физика и техника полупроводников",
+    "topics": [
+     "Advanced Semiconductor Detectors and Materials"
+    ],
+    "oa_url": "https://journals.ioffe.ru/articles/viewPDF/55619",
+    "abstract": "Three main reasons for a temperature increase in activated p-InAsSbP/n-InAs/n-InAsSbP and p-InAsSbP/ n-InAsSb/n-InAs double heterostructures has been considered, contribution of nonradiative Auger recombination, electron-phonon interaction and Joule heating to diode temperature increase in single element LEDs and flip-chip diode arrays (1x3) were evaluated at forward and reverse bias using data on spatial distribution of the mid-IR radiation intensity and current-voltage characteristics. Keywords: IR LED, IR diode array, Joule heating, Auger recombination, electron-phonon interaction."
+   },
+   {
+    "id": "https://openalex.org/W4411535038",
+    "doi": "https://doi.org/10.1080/15599612.2025.2518922",
+    "title": "VCSEL chip structure and packaging optimization design for high-power VCSEL light source modules",
+    "year": 2025,
+    "cited": 1,
+    "venue": "International Journal of Optomechatronics",
+    "topics": [
+     "Semiconductor Lasers and Optical Devices",
+     "Semiconductor materials and devices",
+     "Photonic and Optical Devices"
+    ],
+    "oa_url": "https://www.tandfonline.com/doi/pdf/10.1080/15599612.2025.2518922?needAccess=true",
+    "abstract": "The demand for high-power, high-density VCSEL light sources in applications such as space, artificial intelligence, silicon photonics, and autonomous vehicles is steadily increasing. VCSEL chips are epitaxially grown on GaAs substrates and then packaged by attaching them to a mounting bracket using high-temperature-resistant adhesives. This issue limits the VCSEL’s output power, and restricts its application range. We propose first removing the VCSEL epitaxial layer from the GaAs substrate and transferring it to a CuW substrate. The VCSEL chip is then mounted on an AlN substrate using a metal eutectic bonding technique. The results indicate that bonding 36 VCSELs with a wavelength of 840 nm to CuW chips and mounting them onto an AlN substrate to form an array achieved voltage of 8.59 V and a driving current of 18 A. The output optical power reached 57.68 W, with a reduced packaging thermal resistance of 0.232 K/W."
+   },
+   {
+    "id": "https://openalex.org/W7147312343",
+    "doi": "https://doi.org/10.3390/gels12040293",
+    "title": "Optimization of Processing Parameters and Application Performance Evaluation of a High Thermal Conductivity, Low Thermal Resistance Gel",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Gels",
+    "topics": [
+     "Thermal properties of materials",
+     "Aerogels and thermal insulation",
+     "Heat Transfer and Boiling Studies"
+    ],
+    "oa_url": "https://www.mdpi.com/2310-2861/12/4/293/pdf?version=1774966375",
+    "abstract": "Thermal interface materials (TIMs) are essential for addressing heat dissipation challenges in high-performance electronic devices. Among various TIMs, thermal conductive gels exhibit significant potential in high heat flux applications due to their excellent flexibility and superior gap-filling capability. Current research primarily concentrates on the fabrication and performance characterization of novel thermal conductive gels, while comparatively little attention has been devoted to the optimization of processing parameters. Furthermore, existing characterization methods often fail to accurately replicate real-world operating conditions, resulting in discrepancies between laboratory measurements and actual performance. An orthogonal experimental design was adopted to systematically elucidate the influence of filler ratio, wetting time, and silicone oil viscosity on the bonding strength of thermal conductive gels. The filler ratio exerts the most significant influence, followed by silicone oil viscosity and wetting time. Subsequently, the thermal conductivity and thermal resistance of both commercial thermal conductive gels and the as-prepared gels were characterized using the steady-state heat flow method and the double-interface method, respectively. Under the optimized preparation conditions (filler ratio of 88%, silicone oil viscosity of 600 cP, and wetting time of 14 h), the self-developed thermal conductive gel exhibits a thermal conductivity of 3.75 W·m−1·K−1 and a bonding strength of 0.248 MPa, outperforming commercial counterparts and demonstrating promising application potential. It was further concluded, through comparisons of curing rheology and long-term reliability evolution with commercial counterparts, that the self-developed thermal conductive gel possesses enhanced stability and reliability. This study provides a practical reference for the development and engineering application of high thermal conductivity, low thermal resistance gels."
+   },
+   {
+    "id": "https://openalex.org/W7133558210",
+    "doi": "https://doi.org/10.20944/preprints202603.0106.v1",
+    "title": "Optimization of Processing Parameters and Application Performance Evaluation of a High Thermal Conductivity, Low Thermal Resistance Gel",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Preprints.org",
+    "topics": [
+     "Thermal properties of materials",
+     "Aerogels and thermal insulation",
+     "Heat Transfer and Boiling Studies"
+    ],
+    "oa_url": "https://www.preprints.org/frontend/manuscript/abea02f65b45788a095e6f251a826a9b/download_pub",
+    "abstract": "Thermal interface materials (TIMs) are essential for addressing heat dissipation challenges in high-performance electronic devices. Among various TIMs, thermal conductive gels exhibit significant potential in high heat flux applications due to their excellent flexibility and superior gap-filling capability. Current research primarily concentrates on the fabrication and performance characterization of novel thermal conductive gels, while comparatively little attention has been devoted to the optimization of processing parameters. Furthermore, existing characterization methods often fail to accurately replicate real-world operating conditions, resulting in discrepancies between laboratory measurements and actual performance. An orthogonal experimental design was adopted to systematically elucidate the influence of filler ratio, wetting time, and silicone oil viscosity on the bonding strength of thermal conductive gels. The filler ratio exerts the most significant influence, followed by silicone oil viscosity and wetting time. Subsequently, the thermal conductivity and thermal resistance of both commercial thermal conductive gels and the as-prepared gels were characterized using the steady-state heat flow method and the double-interface method, respectively. The prepared thermal conductive gel exhibits a thermal conductivity of 3.75 W·m−1·K−1 and a service thermal resistance of 0.611 ℃·W−1, outperforming commercial counterparts and demonstrating promising application potential. This study provides a practical reference for the development and engineering application of high thermal conductivity, low thermal resistance thermal conductive gels."
+   },
+   {
+    "id": "https://openalex.org/W7145237173",
+    "doi": null,
+    "title": "Automotive Power Module Design with Optimal Silicon Carbide Utilization",
+    "year": 2025,
+    "cited": 0,
+    "venue": "Journal of the Arkansas Academy of Science",
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Thermal Analysis in Power Transmission"
+    ],
+    "oa_url": "https://scholarworks.uark.edu/etd/6014",
+    "abstract": "Silicon carbide (SiC) devices continue to reshape the design philosophy of next-generation automotive power electronics by enabling high switching frequencies, superior thermal robustness, and significant reductions in conduction and switching losses. As electric vehicle traction inverters migrate toward compact, high voltage, and higher power density platforms, the efficient utilization of SiC device area inside the power module footprint becomes a critical design challenge. SiC also faces a cost challenge from Si IGBT devices and emerging wide-bandgap technologies such as vertical Gallium Nitride (V-GaN), making it increasingly important that SiC be deployed in packages specifically designed to extract maximum electrical and thermal value from the device area being paid for instead of drop-ins into Si IGBT legacy packages. This thesis explores multiple SiC die-area distribution strategies within the standardized TPak power module footprint to determine a configuration that optimally balances cost, manufacturability, thermal performance, and ampacity. Five device-area utilization approaches ranging from a single large MOSFET device to six smaller devices with constant total area were designed, simulated, and compared under equal thermal, mechanical, and electrical boundary conditions. 3D models were created using SolidWorks, incorporating the latest semiconductor packaging trends, limitations, and materials. Comprehensive thermal and CFD analyses were conducted through finite-element-based simulations to evaluate key thermal resistance parameters such as junction-to-case (RJC) and junction-to-fluid (RJF). The highest performing design was selected and built on Wolfspeed’s semiconductor packaging pilot line located on the University of Arkansas campus in Fayetteville. Hardware validation using Siemens T3Ster equipment demonstrated strong correlation with simulated results. The validated power module design developed through this research offers approximately 50% higher current capability compared with baseline designs while enabling reductions in overall traction inverter volume and contributing to system cost. These gains help ensure that every square millimeter of SiC device area is effectively leveraged as automotive OEMs evaluate the cost-performance balance of SiC relative to competing device technologies. The findings of this thesis establish an end-to-end workflow including concept modelling, simulation analyses, power module design, hardware prototyping, test vehicle development, and thermal characterization, that can serve as a blueprint for future power module innovations."
+   },
+   {
+    "id": "https://openalex.org/W4400230072",
+    "doi": "https://doi.org/10.1109/ipemc-ecceasia60879.2024.10567421",
+    "title": "Thermal Impedance Matrix Characterization of IGBT Modules with Different Configurations",
+    "year": 2024,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "Electromagnetic Compatibility and Noise Suppression",
+     "Induction Heating and Inverter Technology"
+    ],
+    "oa_url": "https://vbn.aau.dk/da/publications/04e421a4-d1a7-4db6-99b6-142325cdb42f",
+    "abstract": "The trend for increasing power density could lead to more significant thermal interactions among chips within a power module, rendering that thermal coupling cannot be neglected. To analyze this phenomenon, the thermal impedance matrix is frequently utilized. Within the current research, Temperature-Sensitive-Electrical-Parameter (TSEP) based thermal impedance characterization emerges as a non-invasive and commonly accepted method. However, the existing study, provides the measurement circuits for self-thermal impedance, leaving a gap for assessing mutual thermal impedance. To address this issue, this paper thoroughly investigates plausible measurement circuits, thereby identifying potential challenges in thermal transient measurement (i.e., thermal calibration and cooling curve measurement). Furthermore, these analyses are performed in three highly representative configurations of IGBT modules. Additionally, all tests in this study utilize a well-established platform, enhancing the direct potential applicability of the results to practical scenarios."
+   },
+   {
+    "id": "https://openalex.org/W4388966740",
+    "doi": "https://doi.org/10.1109/therminic60375.2023.10325681",
+    "title": "Accuracy Comparison of T3ster-Master and Optimization-based Network Identification",
+    "year": 2023,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Silicon Carbide Semiconductor Technologies",
+     "Electronic Packaging and Soldering Technologies",
+     "Radio Frequency Integrated Circuit Design"
+    ],
+    "oa_url": null,
+    "abstract": "For a thermal analyst, the evaluation of structure functions is as a powerful technique to optimize heat transfer processes and to study thermal phenomena. The Optimization-based Network Identification (ONI) offers an alternative approach to construct structure functions, complementing existing methods for thermal transient analysis. The accuracy of ONI in modeling thermal transients is investigated in this study. The method is rigorously compared with a self-implemented variant of Network Identification by Deconvolution (NID) and the widely used implementation of NID in the Siemens Simcenter T3ster Master. While ONI encounters challenges in heat paths with pronounced heat spreading effects, its implicit modeling of structure functions aids in determining partial thermal resistances. In conclusion, ONI’s precision and convergence quality offer a promising way to comprehend thermal dynamics in semiconductor devices."
+   },
+   {
+    "id": "https://openalex.org/W4322722347",
+    "doi": "https://doi.org/10.21883/ftp.2023.01.54929.4338",
+    "title": "К вопросу о механизмах разогрева светодиодов на основе p-InAsSbP/n-InAs(Sb)",
+    "year": 2023,
+    "cited": 0,
+    "venue": "Физика и техника полупроводников",
+    "topics": [
+     "Advanced Semiconductor Detectors and Materials",
+     "Semiconductor Quantum Structures and Devices",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://journals.ioffe.ru/articles/viewPDF/54929",
+    "abstract": "Three main reasons for a temperature increase in activated p-InAsSbP/n-InAs/n-InAsSbP and p-InAsSbP/n-InAsSb/n-InAs double heterostructures has been considered. Contribution of nonradiative Auger recombination, electron-phonon interaction and Joule heating to diode temperature increase in single element LEDs and flip-chip diode arrays (1×3) were evaluated at forward and reverse bias using data on spatial distribution of the mid-IR radiation intensity and current-voltage characteristics."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Siemens T3Ster\" OR \"Simcenter T3Ster\") AND OPEN_ACCESS:y",

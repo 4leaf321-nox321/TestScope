@@ -8,8 +8,110 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"TA Instruments DLF 1200\" OR \"TA Instruments DLF 1600\"",
-  "count": null,
-  "works": []
+  "count": 7,
+  "works": [
+   {
+    "id": "https://openalex.org/W4292448834",
+    "doi": "https://doi.org/10.1002/adma.202205120",
+    "title": "Microstructured BN Composites with Internally Designed High Thermal Conductivity Paths for 3D Electronic Packaging",
+    "year": 2022,
+    "cited": 200,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Thermal properties of materials",
+     "Heat Transfer and Optimization",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/161062/3/He_et_al_Manuscript_R2_Production%20data_No%20highlight%201.pdf",
+    "abstract": "Abstract Miniaturized and high‐power‐density 3D electronic devices pose new challenges on thermal management. Indeed, prompt heat dissipation in electrically insulating packaging is currently limited by the thermal conductivity achieved by thermal interface materials (TIMs) and by their capability to direct the heat toward heat sinks. Here, high thermal conductivity boron nitride (BN)‐based composites that are able to conduct heat intentionally toward specific areas by locally orienting magnetically functionalized BN microplatelets are created using magnetically assisted slip casting. The obtained thermal conductivity along the direction of alignment is unusually high, up to 12.1 W m −1 K −1 , thanks to the high concentration of 62.6 vol% of BN in the composite, the low concentration in polymeric binder, and the high degree of alignment. The BN composites have a low density of 1.3 g cm −3 , a high stiffness of 442.3 MPa, and are electrically insulating. Uniquely, the approach is demonstrated with proof‐of‐concept composites having locally graded orientations of BN microplatelets to direct the heat away from two vertically stacked heat sources. Rationally designing the microstructure of TIMs to direct heat strategically provides a promising solution for efficient thermal management in 3D integrated electronics."
+   },
+   {
+    "id": "https://openalex.org/W4410747515",
+    "doi": "https://doi.org/10.1002/adfm.202507645",
+    "title": "Chemical Pressure‐Driven Three‐ and Four‐Phonon Scattering in SnTe: Toward Suppressed Lattice Thermal Conductivity and Enhanced Thermoelectric Performance",
+    "year": 2025,
+    "cited": 6,
+    "venue": "Advanced Functional Materials",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices",
+     "Thermal properties of materials",
+     "Chalcogenide Semiconductor Thin Films"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202507645",
+    "abstract": "Abstract Thermoelectric efficiency of SnTe is constrained by high lattice thermal conductivity. This study demonstrates that chemical pressure, engineered via Pb substitution, suppresses phonon propagation by amplifying lattice anharmonicity. Raman and Brillouin spectroscopy reveals that chemical pressure enhances four‐phonon scattering and reduces optical and acoustic phonon lifetimes, while density functional theory (DFT) calculations correlate these effects with a more diffuse phonon dispersion, a broadened phonon density of states, and a distinct 3 THz spectral feature. These modifications elevate three‐ and four‐phonon scattering rates and expand the scattering phase space, reducing lattice thermal conductivity to 0.6 W m −1 K −1 . The resultant peak zT of 1.3 at 873 K underscores chemical pressure as a potent phonon‐engineering strategy. Notably, it is revealed that chemical pressure predominantly mimics the “pressure” effect on phonon dynamics through comparative analysis with physically pressurized SnTe, establishing a universal strategy for thermoelectric optimization by tailoring anharmonic lattice dynamics, with implications for advancing high‐performance energy conversion materials."
+   },
+   {
+    "id": "https://openalex.org/W4387264421",
+    "doi": "https://doi.org/10.3390/ma16196494",
+    "title": "Powder Bed Thermal Diffusivity Using Laser Flash Three Layer Analysis",
+    "year": 2023,
+    "cited": 5,
+    "venue": "Materials",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Thermography and Photoacoustic Techniques"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/19/6494/pdf?version=1695997188",
+    "abstract": "The thermal diffusivity of powder bed plays a crucial role in laser powder bed fusion (LPBF) additive manufacturing. The mechanical properties of the parts built by LPBF are immensely influenced by the thermal properties of the powder bed. This study aims to measure the thermal diffusivity of metallic powder, nickel-based super alloy Inconel718 (IN718), in LPBF using laser flash three-layered analysis in a DLF1600 instrument, which incorporates a special powder cell to encapsulate the powdered sample. Measurements were performed at different temperatures. The thermal diffusivity of several reference samples was measured for the purpose of validating the test results, and it was compared to published data for identical measures. It was observed that experimental results for powder samples were smaller than the actual thermal diffusivity of the sample. R software analysis was used to analyze test data in order to obtain powder thermal diffusivity values that were close to the actual values."
+   },
+   {
+    "id": "https://openalex.org/W4410552380",
+    "doi": "https://doi.org/10.1002/pc.30093",
+    "title": "Development of High‐Performance Ablative Composites: Synergistic Effects of Alumina Particles and Silica Fabric in the Polybenzoxazine Matrix",
+    "year": 2025,
+    "cited": 3,
+    "venue": "Polymer Composites",
+    "topics": [
+     "Epoxy Resin Curing Processes",
+     "Mechanical Behavior of Composites",
+     "Composite Material Mechanics"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pc.30093",
+    "abstract": "ABSTRACT The aerospace industry is seeking a replacement of toxic phenolics to use in ablative materials. One of the most promising candidates is polybenzoxazine materials because of their extreme heat resistance and less toxicity. This study introduces thermal and mechanical properties improvement of polybenzoxazine materials by manufacturing a silica fiber‐reinforced polybenzoxazine composite with the incorporation of submicron sized alumina particles. Polybenzoxazine composites with varying alumina amounts are examined in terms of their ablation performance by oxyacetylene test. One of the lowest mass ablation rates of fiber‐reinforced ablative composites in the literature, 0.0284 g/s, has been achieved in the oxyacetylene test by the addition of only 3 wt.% alumina particles into the composite. This addition reduced the ablation rate by ~15% compared to neat composite indicating increased insulation performance for alumina added polybenzoxazine composite. The thermally degraded microstructures of the char layers are examined by SEM and elemental mapping to explain the degradation mechanism and the increased performance. The thermal degradation reactions of the polybenzoxazine composites were investigated by thermogravimetric analysis. Also, the flexural and interlaminar shear strengths of the composites were successfully risen ~11% and ~27%, respectively. This study proves that polybenzoxazine materials are favorable candidates for ablation/insulation materials to be used in thermal protection systems."
+   },
+   {
+    "id": "https://openalex.org/W3174026570",
+    "doi": null,
+    "title": "Synthesis, Processing, and Characterization of Magnesium-Based Thermoelectric Materials",
+    "year": 2020,
+    "cited": 0,
+    "venue": "OakTrust (Texas A&M University Libraries)",
+    "topics": [
+     "Advanced Thermoelectric Materials and Devices"
+    ],
+    "oa_url": "https://hdl.handle.net/1969.1/192942",
+    "abstract": "Thermoelectric generators, solid-state devices that convert heat into electricity, exhibit desirable characteristics such as low maintenance costs and excellent reliability that make them indispensable to any future portfolio of clean energy technologies. Nevertheless, the low conversion efficiencies of these generators mean that deployment significantly lags behind that of other renewable energy technologies such as solar. Thermoelectric power generation efficiency is primarily limited by a material-dependent parameter called the dimensionless figure of merit, zT, which is directly dependent on the materials’ Seebeck coefficients, electrical, and thermal conductivities. Complex relationships between these parameters make enhancing zT values of materials challenging. Another problem with current thermoelectric modules is that they are composed of toxic and rare-earth elements. Therefore, a need exists for enhancing zT values of materials that are solely composed of earth-abundant and non-toxic elements. A material that fits the above-mentioned description is magnesium silicide stannide, a pseudobinary alloy. Unlike magnesium silicide, compositional variation serves as the first tunable parameter in altering the zT values of this material. Another lever for tuning the zT values of this alloy is morphology variation via nanostructuring (e.g., nanowires). As individual nanowires are ill-suited for commercial production of thermoelectrics based on magnesium silicide stannide, properties of bulk nanowire assemblies must be studied and optimized. However, despite theoretical evidence for reduced thermal conductivity in magnesium silicide stannide nanowires relative to bulk, there have been no experimental studies on this topic. Consequently, the primary objective of the present work was to demonstrate the synthesis, processing, and characterization of magnesium silicide stannide nanowires of different diameters and elucidate the effect of intentional nanostructuring and size variations on the thermal conductivity of the material. More specifically, pre-synthesized silicon nanowires and bulk magnesium stannide were employed as starting materials for the solid-state synthesis of magnesium silicide stannide. Variation of the diameters of the silicon nanowires allowed for varying the ultimate diameters of alloy nanowires. Finally, bulk assemblies of magnesium silicide stannide nanowires, obtained via uniaxial hot pressing, indicated that nanowire diameter reduction is an effective strategy for reducing thermal conductivity of the material."
+   },
+   {
+    "id": "https://openalex.org/W2979900711",
+    "doi": null,
+    "title": "Thermoelectric Properties and Stability of Barium Copper Chalcogenides",
+    "year": 2019,
+    "cited": 0,
+    "venue": "UWSpace (University of Waterloo)",
+    "topics": [
+     "Metallurgical and Alloy Processes",
+     "Intermetallics and Advanced Alloy Properties",
+     "Phase-change materials and chalcogenides"
+    ],
+    "oa_url": "http://hdl.handle.net/10012/15152",
+    "abstract": "The objective of this thesis was to study the thermoelectric properties of copper chalcogenide-based materials with mixed chalcogen atom sites. Herein, the effect of different concentrations of chalcogen atoms on the physical property measurements and the performance of the thermoelectric materials with two different crystal structures were investigated. In addition, stability studies of two materials with different chalcogen atoms (S and Se) surprisingly revealed substantially different behavior. Due to the stability issues as a consequence of Cu ion conductivity at elevated temperatures, the thermoelectric application of Cu2-xS and β-Cu2-xSe is restricted at these temperatures. Taking that into consideration, quaternary copper chalcogenides with additional large atoms, Ba and Te, were synthesized. The quaternary barium copper selenide- tellurides, Ba3Cu16-xSe11-yTey, were synthesized with different x and y values by a melting and slow cooling process. Measurement of the thermoelectric properties revealed changes during repeated measurements of the same samples. Further investigations including single crystal studies after the measurements proved that this is likely a consequence of Cu ion conductivity in these materials. The reproducibility of the data was investigated by varying the maximum temperature as well as the current density. As a result, decreasing the maximum temperature and current density led to full stability. Finally, their figure-of-merit, zT, only reached a maximum value of 0.49 at 690 K. Furthermore, thermoelectric properties of the barium copper sulfide-tellurides, Ba3Cu16-xS11-yTey, were studied. Among three different studied compositions, hot-pressed Ba3Cu15.3S7.5Te3.5 has the highest power factor, 4.6 µW cm–1K–2, which is almost 50% higher than that of the best cold-pressed sample, Ba3Cu16S9Te2 with 2.4 µW cm–1K–2 at 700 K. These quaternary sulfide-tellurides are bestowed with an extraordinarily low total thermal conductivity, which is below 0.6 W m−1K−1 throughout the entire studied temperature range. In contrast to the selenides, the sulfides are stable under the applied measurement conditions. In addition, their higher stability at elevated temperatures compared to Cu2S and β-Cu2Se with high zT values renders them more feasible for thermoelectric devices. Among the three studied materials, the one with the highest Te content, Ba3Cu15.3S7.5Te3.5, exhibited the lowest thermal conductivity and the highest electrical conductivity, which resulted in zT = 0.88 at 745 K. This zT value is also almost two times larger than the zT of Ba3Cu16-xSe11-yTey. The quaternary barium copper selenide-tellurides, BaCu6-xSe1-yTe6+y have been reported earlier to be p-type semiconductors, when x = 0.1 and y = 0. Here, we studied the properties after varying the Cu and the Se/Te concentrations. At first, materials with the same nominal Cu concentration, 5.9 Cu per formula unit, and different Se/Te ratios were prepared. The different thermoelect"
+   },
+   {
+    "id": "https://openalex.org/W2620617760",
+    "doi": "https://doi.org/10.2172/1337608",
+    "title": "Final Report for Project titled High Thermal Conductivity Polymer Composites for Low-Cost Heat Exchangers",
+    "year": 2016,
+    "cited": 0,
+    "venue": null,
+    "topics": [
+     "Heat Transfer and Optimization"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1337608",
+    "abstract": "Heat exchangers (HXs) are critical components in a wide range of heat transfer applications, from HVAC (Heating Ventilation and Cooling) to automobiles to manufacturing plants. They require materials capable of transferring heat at high rates while also minimizing thermal expansion over the usage temperature range. Conventionally, metals are used for applications where effective and efficient heat exchange is required, since many metals exhibit thermal conductivity over 100 W/m K. While metal HXs are constantly being improved, they still have some inherent drawbacks due to their metal construction, in particular corrosion. Polymeric material can offer solution to such durability issues and allow designs that cannot be afforded by metal construction either due to complexity or cost. A major drawback of polymeric material is their low thermal conductivity (0.1-0.5? W/mK) that would lead to large system size. Recent improvements in the area of filled polymers have highlighted the possibility to greatly improve the thermal conductivity of polymeric materials while retaining their inherent manufacturing advantage, and have been applied to heat sink applications. Therefore, the objective of this project was to develop a robust review of materials for the manufacturing of industrial and commercial non-metallic heat exchangers. This review consisted of material identification, literature evaluation, as well as empirical and model characterization, resulting in a database of relevant material properties and characteristics to provide guidance for future heat exchanger development."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"TA Instruments DLF 1200\" OR \"TA Instruments DLF 1600\") AND OPEN_ACCESS:y",

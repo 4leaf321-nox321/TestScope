@@ -8,8 +8,757 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Renishaw inVia Confocal\" OR \"Renishaw inVia\"",
-  "count": null,
-  "works": []
+  "count": 12816,
+  "works": [
+   {
+    "id": "https://openalex.org/W2013144732",
+    "doi": "https://doi.org/10.1103/physrevlett.113.076802",
+    "title": "Exciton Binding Energy and Nonhydrogenic Rydberg Series in Monolayer WS 2",
+    "year": 2014,
+    "cited": 2542,
+    "venue": "Physical Review Letters",
+    "topics": [
+     "2D Materials and Applications",
+     "Perovskite Materials and Applications",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://arxiv.org/pdf/1403.4270",
+    "abstract": "We have experimentally determined the energies of the ground and first four excited excitonic states of the fundamental optical transition in monolayer WS_{2}, a model system for the growing class of atomically thin two-dimensional semiconductor crystals. From the spectra, we establish a large exciton binding energy of 0.32 eV and a pronounced deviation from the usual hydrogenic Rydberg series of energy levels of the excitonic states. We explain both of these results using a microscopic theory in which the nonlocal nature of the effective dielectric screening modifies the functional form of the Coulomb interaction. These strong but unconventional electron-hole interactions are expected to be ubiquitous in atomically thin materials."
+   },
+   {
+    "id": "https://openalex.org/W2608790738",
+    "doi": "https://doi.org/10.1021/acsnano.7b03186",
+    "title": "Janus Monolayer Transition-Metal Dichalcogenides",
+    "year": 2017,
+    "cited": 1665,
+    "venue": "ACS Nano",
+    "topics": [
+     "2D Materials and Applications",
+     "Chalcogenide Semiconductor Thin Films",
+     "MXene and MAX Phase Materials"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1390290",
+    "abstract": "The crystal configuration of sandwiched S–Mo–Se structure (Janus SMoSe) at the monolayer limit has been synthesized and carefully characterized in this work. By controlled sulfurization of monolayer MoSe 2, the top layer of selenium atoms is substituted by sulfur atoms, while the bottom selenium layer remains intact. The structure of this material is systematically investigated by Raman, photoluminescence, transmission electron microscopy, and X-ray photoelectron spectroscopy and confirmed by time-of-flight secondary ion mass spectrometry. Density functional theory (DFT) calculations are performed to better understand the Raman vibration modes and electronic structures of the Janus SMoSe monolayer, which are found to correlate well with corresponding experimental results. Finally, high basal plane hydrogen evolution reaction activity is discovered for the Janus monolayer, and DFT calculation implies that the activity originates from the synergistic effect of the intrinsic defects and structural strain inherent in the Janus structure."
+   },
+   {
+    "id": "https://openalex.org/W2042685082",
+    "doi": "https://doi.org/10.1038/srep01755",
+    "title": "Identification of individual and few layers of WS2 using Raman Spectroscopy",
+    "year": 2013,
+    "cited": 1595,
+    "venue": "Scientific Reports",
+    "topics": [
+     "2D Materials and Applications",
+     "MXene and MAX Phase Materials",
+     "Gas Sensing Nanomaterials and Sensors"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep01755.pdf",
+    "abstract": "The Raman scattering of single- and few-layered WS 2 is studied as a function of the number of S-W-S layers and the excitation wavelength in the visible range (488, 514 and 647 nm). For the three excitation wavelengths used in this study, the frequency of the A 1g (Γ) phonon mode monotonically decreases with the number of layers. For single-layer WS 2 , the 514.5 nm laser excitation generates a second-order Raman resonance involving the longitudinal acoustic mode (LA(M)). This resonance results from a coupling between the electronic band structure and lattice vibrations. First-principles calculations were used to determine the electronic and phonon band structures of single-layer and bulk WS 2. The reduced intensity of the 2LA mode was then computed, as a function of the laser wavelength, from the fourth-order Fermi golden rule. Our observations establish an unambiguous and nondestructive Raman fingerprint for identifying single- and few-layered WS 2 films."
+   },
+   {
+    "id": "https://openalex.org/W2883600665",
+    "doi": "https://doi.org/10.1038/s41467-018-04949-4",
+    "title": "Polyaniline-intercalated manganese dioxide nanolayers as a high-performance cathode material for an aqueous zinc-ion battery",
+    "year": 2018,
+    "cited": 1478,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-04949-4.pdf",
+    "abstract": "Abstract Rechargeable zinc–manganese dioxide batteries that use mild aqueous electrolytes are attracting extensive attention due to high energy density and environmental friendliness. Unfortunately, manganese dioxide suffers from substantial phase changes (e.g., from initial α-, β-, or γ-phase to a layered structure and subsequent structural collapse) during cycling, leading to very poor stability at high charge/discharge depth. Herein, cyclability is improved by the design of a polyaniline-intercalated layered manganese dioxide, in which the polymer-strengthened layered structure and nanoscale size of manganese dioxide serves to eliminate phase changes and facilitate charge storage. Accordingly, an unprecedented stability of 200 cycles with at a high capacity of 280 mA h g −1 (i.e., 90% utilization of the theoretical capacity of manganese dioxide) is achieved, as well as a long-term stability of 5000 cycles at a utilization of 40%. The encouraging performance sheds light on the design of advanced cathodes for aqueous zinc-ion batteries."
+   },
+   {
+    "id": "https://openalex.org/W2149053345",
+    "doi": "https://doi.org/10.1038/ncomms2932",
+    "title": "Amorphous nickel hydroxide nanospheres with ultrahigh capacitance and energy density as electrochemical pseudocapacitor materials",
+    "year": 2013,
+    "cited": 1256,
+    "venue": "Nature Communications",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Aerogels and thermal insulation"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms2932.pdf",
+    "abstract": "Among numerous active electrode materials, nickel hydroxide is a promising electrode in electrochemical capacitors. Nickel hydroxide research has thus far focused on the crystalline rather than the amorphous phase, despite the impressive electrochemical properties of the latter, which includes an improved electrochemical efficiency due to disorder. Here we demonstrate high-performance electrochemical supercapacitors prepared from amorphous nickel hydroxide nanospheres synthesized via simple, green electrochemistry. The amorphous nickel hydroxide electrode exhibits high capacitance (2,188 F g−1), and the asymmetric pseudocapacitors of the amorphous nickel hydroxide exhibit high capacitance (153 F g−1), high energy density (35.7 W h kg−1 at a power density of 490 W kg−1) and super-long cycle life (97% and 81% charge retentions after 5,000 and 10,000 cycles, respectively). The integrated electrochemical performance of the amorphous nickel hydroxide is commensurate with crystalline materials in supercapacitors. These findings promote the application of amorphous nanostructures as advanced electrochemical pseudocapacitor materials. Nickel hydroxide is a promising material for capacitor electrodes and most research has focussed on the crystalline form. Here, the authors report that amorphous nickel hydroxide nanospheres, which may be synthesized relatively easily, also exhibit excellent integrated electrochemical performance."
+   },
+   {
+    "id": "https://openalex.org/W2010764629",
+    "doi": "https://doi.org/10.1038/ncomms7929",
+    "title": "Na+ intercalation pseudocapacitance in graphene-coupled titanium oxide enabling ultra-fast sodium storage and long-term cycling",
+    "year": 2015,
+    "cited": 1156,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms7929.pdf",
+    "abstract": "Sodium-ion batteries are emerging as a highly promising technology for large-scale energy storage applications. However, it remains a significant challenge to develop an anode with superior long-term cycling stability and high-rate capability. Here we demonstrate that the Na+ intercalation pseudocapacitance in TiO2/graphene nanocomposites enables high-rate capability and long cycle life in a sodium-ion battery. This hybrid electrode exhibits a specific capacity of above 90 mA h g−1 at 12,000 mA g−1 (∼36 C). The capacity is highly reversible for more than 4,000 cycles, the longest demonstrated cyclability to date. First-principle calculations demonstrate that the intimate integration of graphene with TiO2 reduces the diffusion energy barrier, thus enhancing the Na+ intercalation pseudocapacitive process. The Na-ion intercalation pseudocapacitance enabled by tailor-deigned nanostructures represents a promising strategy for developing electrode materials with high power density and long cycle life. There are intensive efforts in developing anode materials for sodium-ion batteries. Here, the authors present a graphene-titanium dioxide composite as an anode material and show that sodium ion intercalation pseudocapacitance charge storage leads to excellent electrochemical properties."
+   },
+   {
+    "id": "https://openalex.org/W3162703888",
+    "doi": "https://doi.org/10.1038/s41929-021-00605-1",
+    "title": "Atomically dispersed antimony on carbon nitride for the artificial photosynthesis of hydrogen peroxide",
+    "year": 2021,
+    "cited": 1117,
+    "venue": "Nature Catalysis",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Electrocatalysts for Energy Conversion",
+     "Catalytic Processes in Materials Science"
+    ],
+    "oa_url": "https://kyutech.repo.nii.ac.jp/record/7358/files/10367938.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2928125163",
+    "doi": "https://doi.org/10.1038/s41598-019-40613-7",
+    "title": "Surface chromium on Terracotta Army bronze weapons is neither an ancient anti-rust treatment nor the reason for their good preservation",
+    "year": 2019,
+    "cited": 1092,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Cultural Heritage Materials Analysis",
+     "Corrosion Behavior and Inhibition",
+     "Heavy metals in environment"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-019-40613-7.pdf",
+    "abstract": "For forty years, there has been a widely held belief that over 2,000 years ago the Chinese Qin developed an advanced chromate conversion coating technology (CCC) to prevent metal corrosion. This belief was based on the detection of chromium traces on the surface of bronze weapons buried with the Chinese Terracotta Army, and the same weapons' very good preservation. We analysed weapons, lacquer and soils from the site, and conducted experimental replications of CCC and accelerated ageing. Our results show that surface chromium presence is correlated with artefact typology and uncorrelated with bronze preservation. Furthermore we show that the lacquer used to cover warriors and certain parts of weapons is rich in chromium, and we demonstrate that chromium on the metals is contamination from nearby lacquer after burial. The chromium anti-rust treatment theory should therefore be abandoned. The good metal preservation probably results from the moderately alkaline pH and very small particle size of the burial soil, in addition to bronze composition."
+   },
+   {
+    "id": "https://openalex.org/W2807191970",
+    "doi": "https://doi.org/10.1038/s41467-018-03903-8",
+    "title": "In vivo guiding nitrogen-doped carbon nanozyme for tumor catalytic therapy",
+    "year": 2018,
+    "cited": 1071,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Nanomaterials in Catalysis",
+     "Nanocluster Synthesis and Applications",
+     "Nanoplatforms for cancer theranostics"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-018-03903-8.pdf",
+    "abstract": "Nanomaterials with intrinsic enzyme-like activities (nanozymes), have been widely used as artificial enzymes in biomedicine. However, how to control their in vivo performance in a target cell is still challenging. Here we report a strategy to coordinate nanozymes to target tumor cells and selectively perform their activity to destruct tumors. We develop a nanozyme using nitrogen-doped porous carbon nanospheres which possess four enzyme-like activities (oxidase, peroxidase, catalase and superoxide dismutase) responsible for reactive oxygen species regulation. We then introduce ferritin to guide nitrogen-doped porous carbon nanospheres into lysosomes and boost reactive oxygen species generation in a tumor-specific manner, resulting in significant tumor regression in human tumor xenograft mice models. Together, our study provides evidence that nitrogen-doped porous carbon nanospheres are powerful nanozymes capable of regulating intracellular reactive oxygen species, and ferritinylation is a promising strategy to render nanozymes to target tumor cells for in vivo tumor catalytic therapy."
+   },
+   {
+    "id": "https://openalex.org/W2018327646",
+    "doi": "https://doi.org/10.1038/ncomms6881",
+    "title": "Sub-10 nm rutile titanium dioxide nanoparticles for efficient visible-light-driven photocatalytic hydrogen production",
+    "year": 2015,
+    "cited": 854,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "TiO2 Photocatalysis and Solar Cells",
+     "Copper-based nanomaterials and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms6881.pdf",
+    "abstract": "Titanium dioxide is a promising photocatalyst for water splitting, but it suffers from low visible light activity due to its wide band gap. Doping can narrow the band gap of titanium dioxide; however, new charge-carrier recombination centres may be introduced. Here we report the design of sub-10 nm rutile titanium dioxide nanoparticles, with an increased amount of surface/sub-surface defects to overcome the negative effects from bulk defects. Abundant defects can not only shift the top of the valence band of rutile titanium dioxide upwards for band-gap narrowing but also promote charge-carrier separation. The role of titanium(III) is to enhance, rather than initiate, the visible-light-driven water splitting. The sub-10 nm rutile nanoparticles exhibit the state-of-the-art activity among titanium dioxide-based semiconductors for visible-light-driven water splitting and the concept of ultra-small nanoparticles with abundant defects may be extended to the design of other robust semiconductor photocatalysts. Titanium dioxide is a promising photocatalyst for water splitting, although it suffers from low visible light activity. Here, the authors fabricate sub-10 nm rutile nanoparticles and investigate the role of surface/sub-surface defects in band-gap narrowing and enhanced charge-carrier separation."
+   },
+   {
+    "id": "https://openalex.org/W4312201103",
+    "doi": "https://doi.org/10.1038/s41467-022-35664-w",
+    "title": "Active hydrogen boosts electrochemical nitrate reduction to ammonia",
+    "year": 2022,
+    "cited": 835,
+    "venue": "Nature Communications",
+    "topics": [
+     "Ammonia Synthesis and Nitrogen Reduction",
+     "Advanced Photocatalysis Techniques",
+     "Caching and Content Delivery"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-35664-w.pdf",
+    "abstract": "Abstract Electrochemical nitrate reduction to ammonia is a promising alternative strategy to the traditional Haber-Bosch process but suffers from a low Faradaic efficiency and limited ammonia yield due to the sluggish multi-electron/proton-involved steps. Herein, we report a typical hollow cobalt phosphide nanosphere electrocatalyst assembled on a self-supported carbon nanosheet array synthesized with a confinement strategy that exhibits an extremely high ammonia yield rate of 8.47 mmol h −1 cm −2 through nitrate reduction reaction, which is highly superior to previously reported values to our knowledge. In situ experiments and theoretical investigations reveal that the dynamic equilibrium between the generation of active hydrogen on cobalt phosphide and its timely consumption by nitrogen intermediates leads to a superior ammonia yield with a high Faradaic efficiency. This unique insight based on active hydrogen equilibrium provides new opportunities for large-scale ammonia production through electrochemical techniques and can be further used for carbon dioxide capture."
+   },
+   {
+    "id": "https://openalex.org/W2270589204",
+    "doi": "https://doi.org/10.1038/ncomms10601",
+    "title": "Three-dimensional porous carbon composites containing high sulfur nanoparticle content for high-performance lithium–sulfur batteries",
+    "year": 2016,
+    "cited": 803,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advancements in Battery Materials",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms10601.pdf",
+    "abstract": "Sulfur is a promising cathode material for lithium-sulfur batteries because of its high theoretical capacity (1,675 mA h g(-1)); however, its low electrical conductivity and the instability of sulfur-based electrodes limit its practical application. Here we report a facile in situ method for preparing three-dimensional porous graphitic carbon composites containing sulfur nanoparticles (3D S@PGC). With this strategy, the sulfur content of the composites can be tuned to a high level (up to 90 wt%). Because of the high sulfur content, the nanoscale distribution of the sulfur particles, and the covalent bonding between the sulfur and the PGC, the developed 3D S@PGC cathodes exhibit excellent performance, with a high sulfur utilization, high specific capacity (1,382, 1,242 and 1,115 mA h g(-1) at 0.5, 1 and 2 C, respectively), long cycling life (small capacity decay of 0.039% per cycle over 1,000 cycles at 2 C) and excellent rate capability at a high charge/discharge current."
+   },
+   {
+    "id": "https://openalex.org/W2016976886",
+    "doi": "https://doi.org/10.1038/nature06273",
+    "title": "Efficient organic carbon burial in the Bengal fan sustained by the Himalayan erosional system",
+    "year": 2007,
+    "cited": 781,
+    "venue": "Nature",
+    "topics": [
+     "Methane Hydrates and Related Phenomena",
+     "Geology and Paleoclimatology Research",
+     "Hydrocarbon exploration and reservoir analysis"
+    ],
+    "oa_url": "http://darchive.mblwhoilibrary.org/bitstreams/6134d3d7-9205-5979-8b13-a2c5473a527a/download",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2144088175",
+    "doi": "https://doi.org/10.1038/ncomms2652",
+    "title": "Controlled charge trapping by molybdenum disulphide and graphene in ultrathin heterostructured memory devices",
+    "year": 2013,
+    "cited": 769,
+    "venue": "Nature Communications",
+    "topics": [
+     "Graphene research and applications",
+     "Electronic and Structural Properties of Oxides",
+     "Semiconductor materials and devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms2652.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2116258739",
+    "doi": "https://doi.org/10.1038/ncomms4186",
+    "title": "Effect of defects on the intrinsic strength and stiffness of graphene",
+    "year": 2014,
+    "cited": 750,
+    "venue": "Nature Communications",
+    "topics": [
+     "Graphene research and applications",
+     "Carbon Nanotubes in Composites",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms4186.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2120315564",
+    "doi": "https://doi.org/10.1038/ncomms1589",
+    "title": "Plasmon resonance enhanced multicolour photodetection by graphene",
+    "year": 2011,
+    "cited": 746,
+    "venue": "Nature Communications",
+    "topics": [
+     "Plasmonic and Surface Plasmon Research",
+     "Gold and Silver Nanoparticles Synthesis and Applications",
+     "Photonic and Optical Devices"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms1589.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2999090610",
+    "doi": "https://doi.org/10.1016/j.chempr.2019.12.008",
+    "title": "Enabling Direct H2O2 Production in Acidic Media through Rational Design of Transition Metal Single Atom Catalyst",
+    "year": 2020,
+    "cited": 735,
+    "venue": "Chem",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Catalytic Processes in Materials Science",
+     "CO2 Reduction Techniques and Catalysts"
+    ],
+    "oa_url": "http://www.cell.com/article/S2451929419305558/pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2979525526",
+    "doi": "https://doi.org/10.1038/s41467-019-12510-0",
+    "title": "A universal ligand mediated method for large scale synthesis of transition metal single atom catalysts",
+    "year": 2019,
+    "cited": 722,
+    "venue": "Nature Communications",
+    "topics": [
+     "Catalytic Processes in Materials Science",
+     "Electrocatalysts for Energy Conversion",
+     "Nanomaterials for catalytic reactions"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-12510-0.pdf",
+    "abstract": "There is interest in metal single atom catalysts due to their remarkable activity and stability. However, the synthesis of metal single atom catalysts remains somewhat ad hoc, with no universal strategy yet reported that allows their generic synthesis. Herein, we report a universal synthetic strategy that allows the synthesis of transition metal single atom catalysts containing Cr, Mn, Fe, Co, Ni, Cu, Zn, Ru, Pt or combinations thereof. Aberration-corrected high-angle annular dark-field scanning transmission electron microscopy and extended X-ray absorption fine structure spectroscopy confirm that the transition metal atoms are uniformly dispersed over a carbon black support. The introduced synthetic method allows the production of carbon-supported metal single atom catalysts in large quantities (>1 kg scale) with high metal loadings. A Ni single atom catalyst exhibits outstanding activity for electrochemical reduction of carbon dioxide to carbon monoxide, achieving a 98.9% Faradaic efficiency at -1.2 V."
+   },
+   {
+    "id": "https://openalex.org/W2114474373",
+    "doi": "https://doi.org/10.1038/ncomms3541",
+    "title": "Ultrathin high-temperature oxidation-resistant coatings of hexagonal boron nitride",
+    "year": 2013,
+    "cited": 720,
+    "venue": "Nature Communications",
+    "topics": [
+     "Graphene research and applications",
+     "Diamond and Carbon-based Materials Research",
+     "Thermal properties of materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms3541.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W1563946068",
+    "doi": "https://doi.org/10.1140/epjti/s40485-015-0018-6",
+    "title": "Review of multidimensional data processing approaches for Raman and infrared spectroscopy",
+    "year": 2015,
+    "cited": 688,
+    "venue": "EPJ Techniques and Instrumentation",
+    "topics": [
+     "Spectroscopy Techniques in Biomedical and Chemical Research",
+     "Spectroscopy and Chemometric Analyses",
+     "Identification and Quantification in Food"
+    ],
+    "oa_url": "https://epjtechniquesandinstrumentation.springeropen.com/counter/pdf/10.1140/epjti/s40485-015-0018-6",
+    "abstract": "Raman and Infrared (IR) spectroscopies provide information about the structure, functional groups and environment of the molecules in the sample. In combination with a microscope, these techniques can also be used to study molecular distributions in heterogeneous samples. Over the past few decades Raman and IR microspectroscopy based techniques have been extensively used to understand fundamental biology and responses of living systems under diverse physiological and pathological conditions. The spectra from biological systems are complex and diverse, owing to their heterogeneous nature consisting of bio-molecules such as proteins, lipids, nucleic acids, carbohydrates etc. Sometimes minor differences may contain critical information. Therefore, interpretation of the results obtained from Raman and IR spectroscopy is difficult and to overcome these intricacies and for deeper insight we need to employ various data mining methods. These methods must be suitable for handling large multidimensional data sets and for exploring the complete spectral information simultaneously. The effective implementation of these multivariate data analysis methods requires the pretreatment of data. The preprocessing of raw data helps in the elimination of noise (unwanted signals) and the enhancement of discriminating features. This review provides an outline of the state-of-the-art data processing tools for multivariate analysis and the various preprocessing methods that are widely used in Raman and IR spectroscopy including imaging for better qualitative and quantitative analysis of biological samples."
+   },
+   {
+    "id": "https://openalex.org/W4381189700",
+    "doi": "https://doi.org/10.1038/s41467-023-39366-9",
+    "title": "Fe/Cu diatomic catalysts for electrochemical nitrate reduction to ammonia",
+    "year": 2023,
+    "cited": 679,
+    "venue": "Nature Communications",
+    "topics": [
+     "Ammonia Synthesis and Nitrogen Reduction",
+     "Caching and Content Delivery",
+     "Advanced Photocatalysis Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-023-39366-9.pdf",
+    "abstract": "Abstract Electrochemical conversion of nitrate to ammonia offers an efficient approach to reducing nitrate pollutants and a potential technology for low-temperature and low-pressure ammonia synthesis. However, the process is limited by multiple competing reactions and NO 3 − adsorption on cathode surfaces. Here, we report a Fe/Cu diatomic catalyst on holey nitrogen-doped graphene which exhibits high catalytic activities and selectivity for ammonia production. The catalyst enables a maximum ammonia Faradaic efficiency of 92.51% (−0.3 V(RHE)) and a high NH 3 yield rate of 1.08 mmol h −1 mg −1 (at − 0.5 V(RHE)). Computational and theoretical analysis reveals that a relatively strong interaction between NO 3 − and Fe/Cu promotes the adsorption and discharge of NO 3 − anions. Nitrogen-oxygen bonds are also shown to be weakened due to the existence of hetero-atomic dual sites which lowers the overall reaction barriers. The dual-site and hetero-atom strategy in this work provides a flexible design for further catalyst development and expands the electrocatalytic techniques for nitrate reduction and ammonia synthesis."
+   },
+   {
+    "id": "https://openalex.org/W3048126906",
+    "doi": "https://doi.org/10.1038/s41467-020-17752-x",
+    "title": "Revealing the role of crystal orientation of protective layers for stable zinc anode",
+    "year": 2020,
+    "cited": 673,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced battery technologies research",
+     "Advanced Battery Materials and Technologies",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-020-17752-x.pdf",
+    "abstract": "Rechargeable aqueous zinc-ion batteries are a promising candidate for next-generation energy storage devices. However, their practical application is limited by the severe safety issue caused by uncontrollable dendrite growth on zinc anodes. Here we develop faceted titanium dioxide with relatively low zinc affinity, which can restrict dendrite formation and homogenize zinc deposition when served as the protective layer on zinc anodes. The as-prepared zinc anodes can be stripped and plated steadily for more than 460 h with low voltage hysteresis and flat voltage plateau in symmetric cells. This work reveals the key role of crystal orientation in zinc affinity and its internal mechanism is suitable for various crystal materials applied in the surface modification of other metal anodes such as lithium and sodium."
+   },
+   {
+    "id": "https://openalex.org/W2397919288",
+    "doi": "https://doi.org/10.1038/ncomms10228",
+    "title": "A polymer scaffold for self-healing perovskite solar cells",
+    "year": 2016,
+    "cited": 667,
+    "venue": "Nature Communications",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Conducting polymers and applications",
+     "Organic Electronics and Photovoltaics"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms10228.pdf",
+    "abstract": "Advancing of the lead halide perovskite solar cells towards photovoltaic market demands large-scale devices of high-power conversion efficiency, high reproducibility and stability via low-cost fabrication technology, and in particular resistance to humid environment for long-time operation. Here we achieve uniform perovskite film based on a novel polymer-scaffold architecture via a mild-temperature process. These solar cells exhibit efficiency of up to ∼ 16% with small variation. The unencapsulated devices retain high output for up to 300 h in highly humid environment (70% relative humidity). Moreover, they show strong humidity resistant and self-healing behaviour, recovering rapidly after removing from water vapour. Not only the film can self-heal in this case, but the corresponding devices can present power conversion efficiency recovery after the water vapour is removed. Our work demonstrates the value of cheap, long chain and hygroscopic polymer scaffold in perovskite solar cells towards commercialization."
+   },
+   {
+    "id": "https://openalex.org/W2529985710",
+    "doi": "https://doi.org/10.1039/c6tc03713e",
+    "title": "Lightweight conductive graphene/thermoplastic polyurethane foams with ultrahigh compressibility for piezoresistive sensing",
+    "year": 2016,
+    "cited": 666,
+    "venue": "Journal of Materials Chemistry C",
+    "topics": [
+     "Advanced Sensor and Energy Harvesting Materials",
+     "Conducting polymers and applications",
+     "Dielectric materials and actuators"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2017/tc/c6tc03713e",
+    "abstract": "Lightweight conductive graphene/thermoplastic polyurethane foams exhibited stable piezoresistive sensing signals at a strain of up to 90%."
+   },
+   {
+    "id": "https://openalex.org/W2227043478",
+    "doi": "https://doi.org/10.1038/ncomms8221",
+    "title": "Facile synthesis of ultrahigh-surface-area hollow carbon nanospheres for enhanced adsorption and energy storage",
+    "year": 2015,
+    "cited": 665,
+    "venue": "Nature Communications",
+    "topics": [
+     "Supercapacitor Materials and Fabrication",
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms8221.pdf",
+    "abstract": "Exceptionally large surface area and well-defined nanostructure are both critical in the field of nanoporous carbons for challenging energy and environmental issues. The pursuit of ultrahigh surface area while maintaining definite nanostructure remains a formidable challenge because extensive creation of pores will undoubtedly give rise to the damage of nanostructures, especially below 100 nm. Here we report that high surface area of up to 3,022 m(2) g(-1) can be achieved for hollow carbon nanospheres with an outer diameter of 69 nm by a simple carbonization procedure with carefully selected carbon precursors and carbonization conditions. The tailor-made pore structure of hollow carbon nanospheres enables target-oriented applications, as exemplified by their enhanced adsorption capability towards organic vapours, and electrochemical performances as electrodes for supercapacitors and sulphur host materials for lithium-sulphur batteries. The facile approach may open the doors for preparation of highly porous carbons with desired nanostructure for numerous applications."
+   },
+   {
+    "id": "https://openalex.org/W2269760464",
+    "doi": "https://doi.org/10.1038/srep10160",
+    "title": "Fast and fully-scalable synthesis of reduced graphene oxide",
+    "year": 2015,
+    "cited": 663,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Graphene research and applications",
+     "Graphene and Nanomaterials Applications",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep10160.pdf",
+    "abstract": "Exfoliation of graphite is a promising approach for large-scale production of graphene. Oxidation of graphite effectively facilitates the exfoliation process, yet necessitates several lengthy washing and reduction processes to convert the exfoliated graphite oxide (graphene oxide, GO) to reduced graphene oxide (RGO). Although filtration, centrifugation and dialysis have been frequently used in the washing stage, none of them is favorable for large-scale production. Here, we report the synthesis of RGO by sonication-assisted oxidation of graphite in a solution of potassium permanganate and concentrated sulfuric acid followed by reduction with ascorbic acid prior to any washing processes. GO loses its hydrophilicity during the reduction stage which facilitates the washing step and reduces the time required for production of RGO. Furthermore, simultaneous oxidation and exfoliation significantly enhance the yield of few-layer GO. We hope this one-pot and fully-scalable protocol paves the road toward out of lab applications of graphene."
+   },
+   {
+    "id": "https://openalex.org/W2561581195",
+    "doi": "https://doi.org/10.1038/ncomms13869",
+    "title": "A metal-free electrocatalyst for carbon dioxide reduction to multi-carbon hydrocarbons and oxygenates",
+    "year": 2016,
+    "cited": 654,
+    "venue": "Nature Communications",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Electrocatalysts for Energy Conversion",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms13869.pdf",
+    "abstract": "Electroreduction of carbon dioxide into higher-energy liquid fuels and chemicals is a promising but challenging renewable energy conversion technology. Among the electrocatalysts screened so far for carbon dioxide reduction, which includes metals, alloys, organometallics, layered materials and carbon nanostructures, only copper exhibits selectivity towards formation of hydrocarbons and multi-carbon oxygenates at fairly high efficiencies, whereas most others favour production of carbon monoxide or formate. Here we report that nanometre-size N-doped graphene quantum dots (NGQDs) catalyse the electrochemical reduction of carbon dioxide into multi-carbon hydrocarbons and oxygenates at high Faradaic efficiencies, high current densities and low overpotentials. The NGQDs show a high total Faradaic efficiency of carbon dioxide reduction of up to 90%, with selectivity for ethylene and ethanol conversions reaching 45%. The C2 and C3 product distribution and production rate for NGQD-catalysed carbon dioxide reduction is comparable to those obtained with copper nanoparticle-based electrocatalysts."
+   },
+   {
+    "id": "https://openalex.org/W2025110867",
+    "doi": "https://doi.org/10.1038/srep00586",
+    "title": "Nitrogen-doped graphene: beyond single substitution and enhanced molecular sensing",
+    "year": 2012,
+    "cited": 650,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Graphene research and applications",
+     "Advanced biosensing and bioanalysis techniques",
+     "Molecular Junctions and Nanostructures"
+    ],
+    "oa_url": "https://www.nature.com/articles/srep00586.pdf",
+    "abstract": "Graphene is a two-dimensional network in which sp(2)-hybridized carbon atoms are arranged in two different triangular sub-lattices (A and B). By incorporating nitrogen atoms into graphene, its physico-chemical properties could be significantly altered depending on the doping configuration within the sub-lattices. Here, we describe the synthesis of large-area, highly-crystalline monolayer N-doped graphene (NG) sheets via atmospheric-pressure chemical vapor deposition, yielding a unique N-doping site composed of two quasi-adjacent substitutional nitrogen atoms within the same graphene sub-lattice (N(2)(AA)). Scanning tunneling microscopy and spectroscopy (STM and STS) of NG revealed the presence of localized states in the conduction band induced by N(2)(AA)-doping, which was confirmed by ab initio calculations. Furthermore, we demonstrated for the first time that NG could be used to efficiently probe organic molecules via a highly improved graphene enhanced Raman scattering."
+   },
+   {
+    "id": "https://openalex.org/W2503287062",
+    "doi": "https://doi.org/10.1002/aenm.201600738",
+    "title": "Toward a Low‐Cost Artificial Leaf: Driving Carbon‐Based and Bifunctional Catalyst Electrodes with Solution‐Processed Perovskite Photovoltaics",
+    "year": 2016,
+    "cited": 640,
+    "venue": "Advanced Energy Materials",
+    "topics": [
+     "Advanced battery technologies research",
+     "Electrocatalysts for Energy Conversion",
+     "Perovskite Materials and Applications"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.201600738",
+    "abstract": "Molecular hydrogen can be generated renewably by water splitting with an “artificial‐leaf device”, which essentially comprises two electrocatalyst electrodes immersed in water and powered by photovoltaics. Ideally, this device should operate efficiently and be fabricated with cost‐efficient means using earth‐abundant materials. Here, a lightweight electrocatalyst electrode, comprising large surface‐area NiCo2O4 nanorods that are firmly anchored onto a carbon–paper current collector via a dense network of nitrogen‐doped carbon nanotubes is presented. This electrocatalyst electrode is bifunctional in that it can efficiently operate as both anode and cathode in the same alkaline solution, as quantified by a delivered current density of 10 mA cm−2 at an overpotential of 400 mV for each of the oxygen and hydrogen evolution reactions. By driving two such identical electrodes with a solution‐processed thin‐film perovskite photovoltaic assembly, a wired artificial‐leaf device is obtained that features a Faradaic H2 evolution efficiency of 100%, and a solar‐to‐hydrogen conversion efficiency of 6.2%. A detailed cost analysis is presented, which implies that the material‐payback time of this device is of the order of 100 days."
+   },
+   {
+    "id": "https://openalex.org/W2600902863",
+    "doi": "https://doi.org/10.1038/ncomms14873",
+    "title": "Rapid electron transfer by the carbon matrix in natural pyrogenic carbon",
+    "year": 2017,
+    "cited": 629,
+    "venue": "Nature Communications",
+    "topics": [
+     "Microbial Fuel Cells and Bioremediation",
+     "Supercapacitor Materials and Fabrication",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14873.pdf",
+    "abstract": "Surface functional groups constitute major electroactive components in pyrogenic carbon. However, the electrochemical properties of pyrogenic carbon matrices and the kinetic preference of functional groups or carbon matrices for electron transfer remain unknown. Here we show that environmentally relevant pyrogenic carbon with average H/C and O/C ratios of less than 0.35 and 0.09 can directly transfer electrons more than three times faster than the charging and discharging cycles of surface functional groups and have a 1.5 V potential range for biogeochemical reactions that invoke electron transfer processes. Surface functional groups contribute to the overall electron flux of pyrogenic carbon to a lesser extent with greater pyrolysis temperature due to lower charging and discharging capacities, although the charging and discharging kinetics remain unchanged. This study could spur the development of a new generation of biogeochemical electron flux models that focus on the bacteria-carbon-mineral conductive network."
+   },
+   {
+    "id": "https://openalex.org/W2609730754",
+    "doi": "https://doi.org/10.1021/acsnano.6b08551",
+    "title": "Inhaled Nanoparticles Accumulate at Sites of Vascular Disease",
+    "year": 2017,
+    "cited": 618,
+    "venue": "ACS Nano",
+    "topics": [
+     "Air Quality and Health Impacts",
+     "Nanoparticles: synthesis and applications",
+     "Air Quality Monitoring and Forecasting"
+    ],
+    "oa_url": "https://doi.org/10.1021/acsnano.6b08551",
+    "abstract": "The development of engineered nanomaterials is growing exponentially, despite concerns over their potential similarities to environmental nanoparticles that are associated with significant cardiorespiratory morbidity and mortality. The mechanisms through which inhalation of nanoparticles could trigger acute cardiovascular events are emerging, but a fundamental unanswered question remains: Do inhaled nanoparticles translocate from the lung in man and directly contribute to the pathogenesis of cardiovascular disease? In complementary clinical and experimental studies, we used gold nanoparticles to evaluate particle translocation, permitting detection by high-resolution inductively coupled mass spectrometry and Raman microscopy. Healthy volunteers were exposed to nanoparticles by acute inhalation, followed by repeated sampling of blood and urine. Gold was detected in the blood and urine within 15 min to 24 h after exposure, and was still present 3 months after exposure. Levels were greater following inhalation of 5 nm (primary diameter) particles compared to 30 nm particles. Studies in mice demonstrated the accumulation in the blood and liver following pulmonary exposure to a broader size range of gold nanoparticles (2-200 nm primary diameter), with translocation markedly greater for particles <10 nm diameter. Gold nanoparticles preferentially accumulated in inflammation-rich vascular lesions of fat-fed apolipoproteinE-deficient mice. Furthermore, following inhalation, gold particles could be detected in surgical specimens of carotid artery disease from patients at risk of stroke. Translocation of inhaled nanoparticles into the systemic circulation and accumulation at sites of vascular inflammation provides a direct mechanism that can explain the link between environmental nanoparticles and cardiovascular disease and has major implications for risk management in the use of engineered nanomaterials."
+   },
+   {
+    "id": "https://openalex.org/W2044279302",
+    "doi": "https://doi.org/10.1073/pnas.0710575105",
+    "title": "Noninvasive molecular imaging of small living subjects using Raman spectroscopy",
+    "year": 2008,
+    "cited": 606,
+    "venue": "Proceedings of the National Academy of Sciences",
+    "topics": [
+     "Spectroscopy Techniques in Biomedical and Chemical Research",
+     "Gold and Silver Nanoparticles Synthesis and Applications",
+     "Biosensors and Analytical Detection"
+    ],
+    "oa_url": "https://www.pnas.org/content/pnas/105/15/5844.full.pdf",
+    "abstract": "Molecular imaging of living subjects continues to rapidly evolve with bioluminescence and fluorescence strategies, in particular being frequently used for small-animal models. This article presents noninvasive deep-tissue molecular images in a living subject with the use of Raman spectroscopy. We describe a strategy for small-animal optical imaging based on Raman spectroscopy and Raman nanoparticles. Surface-enhanced Raman scattering nanoparticles and single-wall carbon nanotubes were used to demonstrate whole-body Raman imaging, nanoparticle pharmacokinetics, multiplexing, and in vivo tumor targeting, using an imaging system adapted for small-animal Raman imaging. The imaging modality reported here holds significant potential as a strategy for biomedical imaging of living subjects."
+   },
+   {
+    "id": "https://openalex.org/W2965196536",
+    "doi": "https://doi.org/10.1126/sciadv.aav0129",
+    "title": "High thermal conductivity of high-quality monolayer boron nitride and its thermal expansion",
+    "year": 2019,
+    "cited": 605,
+    "venue": "Science Advances",
+    "topics": [
+     "Thermal properties of materials",
+     "Graphene research and applications",
+     "Boron and Carbon Nanomaterials Research"
+    ],
+    "oa_url": "https://advances.sciencemag.org/content/advances/5/6/eaav0129.full.pdf",
+    "abstract": "Heat management has become more and more critical, especially in miniaturized modern devices, so the exploration of highly thermally conductive materials with electrical insulation is of great importance. Here, we report that high-quality one-atom-thin hexagonal boron nitride (BN) has a thermal conductivity (κ) of 751 W/mK at room temperature, the second largest κ per unit weight among all semiconductors and insulators. The κ of atomically thin BN decreases with increased thickness. Our molecular dynamic simulations accurately reproduce this trend, and the density functional theory (DFT) calculations reveal the main scattering mechanism. The thermal expansion coefficients of monolayer to trilayer BN at 300 to 400 K are also experimentally measured for the first time. Owing to its wide bandgap, high thermal conductivity, outstanding strength, good flexibility, and excellent thermal and chemical stability, atomically thin BN is a strong candidate for heat dissipation applications, especially in the next generation of flexible electronic devices."
+   },
+   {
+    "id": "https://openalex.org/W2898664959",
+    "doi": "https://doi.org/10.1038/s41929-018-0170-x",
+    "title": "Highly selective oxidation of methane to methanol at ambient conditions by titanium dioxide-supported iron species",
+    "year": 2018,
+    "cited": 598,
+    "venue": "Nature Catalysis",
+    "topics": [
+     "Advanced Photocatalysis Techniques",
+     "Catalytic Processes in Materials Science",
+     "Catalysis and Oxidation Reactions"
+    ],
+    "oa_url": "https://discovery.ucl.ac.uk/10066222/1/Sankar_Manuscript%20clean.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4247106343",
+    "doi": "https://doi.org/10.1038/ncomms11722",
+    "title": "A stable room-temperature sodium–sulfur battery",
+    "year": 2016,
+    "cited": 593,
+    "venue": "Nature Communications",
+    "topics": [
+     "Advanced Battery Materials and Technologies",
+     "Advanced battery technologies research",
+     "Advancements in Battery Materials"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms11722.pdf",
+    "abstract": "High-energy rechargeable batteries based on earth-abundant materials are important for mobile and stationary storage technologies. Rechargeable sodium-sulfur batteries able to operate stably at room temperature are among the most sought-after platforms because such cells take advantage of a two-electron-redox process to achieve high storage capacity from inexpensive electrode materials. Here we report a room-temperature sodium-sulfur battery that uses a microporous carbon-sulfur composite cathode, and a liquid carbonate electrolyte containing the ionic liquid 1-methyl-3-propylimidazolium-chlorate tethered to SiO2 nanoparticles. We show that these cells can cycle stably at a rate of 0.5 C (1 C=1675, mAh g(-1)) with 600 mAh g(-1) reversible capacity and nearly 100% Coulombic efficiency. By means of spectroscopic and electrochemical analysis, we find that the particles form a sodium-ion conductive film on the anode, which stabilizes deposition of sodium. We also find that sulfur remains interred in the carbon pores and undergo solid-state electrochemical reactions with sodium ions."
+   },
+   {
+    "id": "https://openalex.org/W2606438371",
+    "doi": "https://doi.org/10.1038/ncomms14430",
+    "title": "Multiscale structural and electronic control of molybdenum disulfide foam for highly efficient hydrogen production",
+    "year": 2017,
+    "cited": 583,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Advanced Photocatalysis Techniques",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms14430.pdf",
+    "abstract": "Hydrogen production through water splitting has been considered as a green, pure and high-efficient technique. As an important half-reaction involved, hydrogen evolution reaction is a complex electrochemical process involving liquid-solid-gas three-phase interface behaviour. Therefore, new concepts and strategies of material design are needed to smooth each pivotal step. Here we report a multiscale structural and electronic control of molybdenum disulfide foam to synergistically promote the hydrogen evolution process. The optimized three-dimensional molybdenum disulfide foam with uniform mesopores, vertically aligned two-dimensional layers and cobalt atoms doping demonstrated a high hydrogen evolution activity and stability. In addition, density functional theory calculations indicate that molybdenum disulfide with moderate cobalt doping content possesses the optimal activity. This study demonstrates the validity of multiscale control in molybdenum disulfide via overall consideration of the mass transport, and the accessibility, quantity and capability of active sites towards electrocatalytic hydrogen evolution, which may also be extended to other energy-related processes."
+   },
+   {
+    "id": "https://openalex.org/W3165317721",
+    "doi": "https://doi.org/10.1007/s40820-021-00635-1",
+    "title": "Environmentally Friendly and Multifunctional Shaddock Peel-Based Carbon Aerogel for Thermal-Insulation and Microwave Absorption",
+    "year": 2021,
+    "cited": 580,
+    "venue": "Nano-Micro Letters",
+    "topics": [
+     "Electromagnetic wave absorption materials",
+     "Advanced Antenna and Metasurface Technologies",
+     "Metamaterials and Metasurfaces Applications"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-021-00635-1.pdf",
+    "abstract": "Highlights The eco-friendly shaddock peel-derived carbon aerogels were prepared by a freeze-drying method. Multiple functions such as thermal insulation, compression resistance and microwave absorption can be integrated into one material-carbon aerogel. Novel computer simulation technology strategy was selected to simulate significant radar cross-sectional reduction values under real far field condition. . Abstract Eco-friendly electromagnetic wave absorbing materials with excellent thermal infrared stealth property, heat-insulating ability and compression resistance are highly attractive in practical applications. Meeting the aforesaid requirements simultaneously is a formidable challenge. Herein, ultra-light carbon aerogels were fabricated via fresh shaddock peel by facile freeze-drying method and calcination process, forming porous network architecture. With the heating platform temperature of 70 °C, the upper surface temperatures of the as-prepared carbon aerogel present a slow upward trend. The color of the sample surface in thermal infrared images is similar to that of the surroundings. With the maximum compressive stress of 2.435 kPa, the carbon aerogels can provide favorable endurance. The shaddock peel-based carbon aerogels possess the minimum reflection loss value ( RL min ) of − 29.50 dB in X band. Meanwhile, the effective absorption bandwidth covers 5.80 GHz at a relatively thin thickness of only 1.7 mm. With the detection theta of 0°, the maximum radar cross-sectional (RCS) reduction values of 16.28 dB m 2 can be achieved. Theoretical simulations of RCS have aroused extensive interest owing to their ingenious design and time-saving feature. This work paves the way for preparing multi-functional microwave absorbers derived from biomass raw materials under the guidance of RCS simulations."
+   },
+   {
+    "id": "https://openalex.org/W2596914059",
+    "doi": "https://doi.org/10.1021/acs.est.7b00369",
+    "title": "Occurrence and Characteristics of Microplastic Pollution in Xiangxi Bay of Three Gorges Reservoir, China",
+    "year": 2017,
+    "cited": 577,
+    "venue": "Environmental Science & Technology",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques"
+    ],
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.est.7b00369",
+    "abstract": "Microplastic pollution in inland waters is receiving growing attentions. Reservoirs are suspected to be particularly vulnerable to microplastic pollution. However, very limited information is currently available on pollution characteristics of microplastics in reservoir ecosystems. This work studied the distribution and characteristics of microplastics in the backwater area of Xiangxi River, a typical tributary of the Three Gorges Reservoir. Microplastics were detected in both surface water and sediment with concentrations ranging from 0.55 × 10 5 to 342 × 10 5 items km –2 and 80 to 864 items m –2, respectively. Polyethylene, polypropylene, and polystyrene were identified in surface water, whereas polyethylene, polypropylene, and polyethylene terephthalate, and pigments were observed in sediment. In addition, microplastics were also detected in the digestion tracts of 25.7% of fish samples, and polyethylene and nylon were identified. Redundancy analysis indicates a weak correlation between microplastics and water quality variables but a negative correlation with water level of the reservoir and Secchi depth. Results from this study confirm the presence of high abundance microplastics in reservoir impacted tributaries, and suggest that water level regulated hydrodynamic condition and input of nonpoint sources are important regulators for microplastic accumulation and distribution in the backwater area of reservoir tributaries."
+   },
+   {
+    "id": "https://openalex.org/W2944198683",
+    "doi": "https://doi.org/10.1021/jacs.9b02945",
+    "title": "Binding Site Diversity Promotes CO 2 Electroreduction to Ethanol",
+    "year": 2019,
+    "cited": 573,
+    "venue": "Journal of the American Chemical Society",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Electrocatalysts for Energy Conversion",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://utoronto.scholaris.ca/bitstreams/e5da4070-6b10-4e5a-8f25-832c0c9a0aff/download",
+    "abstract": "The electrochemical reduction of CO 2 has seen many record-setting advances in C 2 productivity in recent years. However, the selectivity for ethanol, a globally significant commodity chemical, is still low compared to the selectivity for products such as ethylene. Here we introduce diverse binding sites to a Cu catalyst, an approach that destabilizes the ethylene reaction intermediates and thereby promotes ethanol production. We develop a bimetallic Ag/Cu catalyst that implements the proposed design toward an improved ethanol catalyst. It achieves a record Faradaic efficiency of 41% toward ethanol at 250 mA/cm 2 and −0.67 V vs RHE, leading to a cathodic-side (half-cell) energy efficiency of 24.7%. The new catalysts exhibit an in situ Raman spectrum, in the region associated with CO stretching, that is much broader than that of pure Cu controls, a finding we account for via the diversity of binding configurations. This physical picture, involving multisite binding, accounts for the enhanced ethanol production for bimetallic catalysts, and presents a framework to design multimetallic catalysts to control reaction paths in CO 2 reductions toward desired products."
+   },
+   {
+    "id": "https://openalex.org/W2520851564",
+    "doi": "https://doi.org/10.1002/advs.201600243",
+    "title": "Large‐Area Carbon Nanosheets Doped with Phosphorus: A High‐Performance Anode Material for Sodium‐Ion Batteries",
+    "year": 2016,
+    "cited": 567,
+    "venue": "Advanced Science",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Supercapacitor Materials and Fabrication"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.201600243",
+    "abstract": "Large‐area phosphorus‐doped carbon nanosheets (P‐CNSs) are first obtained from carbon dots (CDs) through self‐assembly driving from thermal treatment with Na catalysis. This is the first time to realize the conversion from 0D CDs to 2D nanosheets doped with phosphorus. The sodium storage behavior of phosphorus‐doped carbon material is also investigated for the first time. As anode material for sodium‐ion batteries (SIBs), P‐CNSs exhibit superb performances for electrochemical storage of sodium. When cycled at 0.1 A g−1, the P‐CNSs electrode delivers a high reversible capacity of 328 mAh g−1, even at a high current density of 20 A g−1, a considerable capacity of 108 mAh g−1 can still be maintained. Besides, this material also shows excellent cycling stability, at a current density of 5 A g−1, the reversible capacity can still reach 149 mAh g−1 after 5000 cycles. This work will provide significant value for the development of both carbon materials and SIBs anode materials."
+   },
+   {
+    "id": "https://openalex.org/W2946652605",
+    "doi": "https://doi.org/10.1038/s41467-019-09845-z",
+    "title": "Single atom tungsten doped ultrathin α-Ni(OH)2 for enhanced electrocatalytic water oxidation",
+    "year": 2019,
+    "cited": 562,
+    "venue": "Nature Communications",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Electrochemical Analysis and Applications",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-019-09845-z.pdf",
+    "abstract": "Abstract Electrocatalytic water oxidation is a rate-determining step in the water splitting reaction. Here, we report one single atom W 6+ doped Ni(OH) 2 nanosheet sample (w-Ni(OH) 2 ) with an outstanding oxygen evolution reaction (OER) performance that is, in a 1 M KOH medium, an overpotential of 237 mV is obtained reaching a current density of 10 mA/cm 2 . Moreover, at high current density of 80 mA/cm 2 , the overpotential value is 267 mV. The corresponding Tafel slope is measured to be 33 mV/dec. The d 0 W 6+ atom with a low spin-state has more outermost vacant orbitals, resulting in more water and OH − groups being adsorbed on the exposed W sites of the Ni(OH) 2 nanosheet. Density functional theory (DFT) calculations confirm that the O radical and O-O coupling are both generated at the same site of W 6+ . This work demonstrates that W 6+ doping can promote the electrocatalytic water oxidation activity of Ni(OH) 2 with the highest performance."
+   },
+   {
+    "id": "https://openalex.org/W2996755838",
+    "doi": "https://doi.org/10.1038/s41929-019-0397-1",
+    "title": "Catalyst synthesis under CO2 electroreduction favours faceting and promotes renewable fuels electrosynthesis",
+    "year": 2019,
+    "cited": 560,
+    "venue": "Nature Catalysis",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Electrocatalysts for Energy Conversion",
+     "Ionic liquids properties and applications"
+    ],
+    "oa_url": "https://www.osti.gov/servlets/purl/1630297",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2948539118",
+    "doi": "https://doi.org/10.1038/s41598-019-44117-2",
+    "title": "The vertical distribution and biological transport of marine microplastics across the epipelagic and mesopelagic water column",
+    "year": 2019,
+    "cited": 559,
+    "venue": "Scientific Reports",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41598-019-44117-2.pdf",
+    "abstract": "Plastic waste has been documented in nearly all types of marine environments and has been found in species spanning all levels of marine food webs. Within these marine environments, deep pelagic waters encompass the largest ecosystems on Earth. We lack a comprehensive understanding of the concentrations, cycling, and fate of plastic waste in sub-surface waters, constraining our ability to implement effective, large-scale policy and conservation strategies. We used remotely operated vehicles and engineered purpose-built samplers to collect and examine the distribution of microplastics in the Monterey Bay pelagic ecosystem at water column depths ranging from 5 to 1000 m. Laser Raman spectroscopy was used to identify microplastic particles collected from throughout the deep pelagic water column, with the highest concentrations present at depths between 200 and 600 m. Examination of two abundant particle feeders in this ecosystem, pelagic red crabs (Pleuroncodes planipes) and giant larvaceans (Bathochordaeus stygius), showed that microplastic particles readily flow from the environment into coupled water column and seafloor food webs. Our findings suggest that one of the largest and currently underappreciated reservoirs of marine microplastics may be contained within the water column and animal communities of the deep sea."
+   },
+   {
+    "id": "https://openalex.org/W2727835235",
+    "doi": "https://doi.org/10.1016/j.marpolbul.2017.06.081",
+    "title": "Screening for microplastics in sediment, water, marine invertebrates and fish: Method development and microplastic accumulation",
+    "year": 2017,
+    "cited": 554,
+    "venue": "Marine Pollution Bulletin",
+    "topics": [
+     "Microplastics and Plastic Pollution",
+     "Recycling and Waste Management Techniques",
+     "Pharmaceutical and Antibiotic Environmental Impacts"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0025326X17305799-fx1_lrg.jpg",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2016956814",
+    "doi": "https://doi.org/10.1038/ncomms1828",
+    "title": "Graphene quilts for thermal management of high-power GaN transistors",
+    "year": 2012,
+    "cited": 548,
+    "venue": "Nature Communications",
+    "topics": [
+     "Thermal properties of materials",
+     "GaN-based semiconductor devices and materials",
+     "Graphene research and applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/ncomms1828.pdf",
+    "abstract": "Self-heating is a severe problem for high-power gallium nitride (GaN) electronic and optoelectronic devices. Various thermal management solutions, for example, flip-chip bonding or composite substrates, have been attempted. However, temperature rise due to dissipated heat still limits applications of the nitride-based technology. Here we show that thermal management of GaN transistors can be substantially improved via introduction of alternative heat-escaping channels implemented with few-layer graphene—an excellent heat conductor. The graphene–graphite quilts were formed on top of AlGaN/GaN transistors on SiC substrates. Using micro-Raman spectroscopy for in situ monitoring we demonstrated that temperature of the hotspots can be lowered by ∼20 °C in transistors operating at ∼13 W mm−1, which corresponds to an order-of-magnitude increase in the device lifetime. The simulations indicate that graphene quilts perform even better in GaN devices on sapphire substrates. The proposed local heat spreading with materials that preserve their thermal properties at nanometre scale represents a transformative change in thermal management. Electronic and optoelectronic devices based on gallium nitride suffer from self-heating arising as a result of their operation. This study presents and demonstrates a strategy for managing this problem that relies on graphene quilts which dissipate the heat away."
+   },
+   {
+    "id": "https://openalex.org/W3175322153",
+    "doi": "https://doi.org/10.1038/s41467-021-24052-5",
+    "title": "Orbital coupling of hetero-diatomic nickel-iron site for bifunctional electrocatalysis of CO2 reduction and oxygen evolution",
+    "year": 2021,
+    "cited": 536,
+    "venue": "Nature Communications",
+    "topics": [
+     "CO2 Reduction Techniques and Catalysts",
+     "Electrocatalysts for Energy Conversion",
+     "Electrochemical Analysis and Applications"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-021-24052-5.pdf",
+    "abstract": "Abstract While inheriting the exceptional merits of single atom catalysts, diatomic site catalysts (DASCs) utilize two adjacent atomic metal species for their complementary functionalities and synergistic actions. Herein, a DASC consisting of nickel-iron hetero-diatomic pairs anchored on nitrogen-doped graphene is synthesized. It exhibits extraordinary electrocatalytic activities and stability for both CO 2 reduction reaction (CO 2 RR) and oxygen evolution reaction (OER). Furthermore, the rechargeable Zn-CO 2 battery equipped with such bifunctional catalyst shows high Faradaic efficiency and outstanding rechargeability. The in-depth experimental and theoretical analyses reveal the orbital coupling between the catalytic iron center and the adjacent nickel atom, which leads to alteration in orbital energy level, unique electronic states, higher oxidation state of iron, and weakened binding strength to the reaction intermediates, thus boosted CO 2 RR and OER performance. This work provides critical insights to rational design, working mechanism, and application of hetero-DASCs."
+   },
+   {
+    "id": "https://openalex.org/W4315629287",
+    "doi": "https://doi.org/10.1002/adma.202210714",
+    "title": "High Durability of Fe–N–C Single‐Atom Catalysts with Carbon Vacancies toward the Oxygen Reduction Reaction in Alkaline Media",
+    "year": 2023,
+    "cited": 534,
+    "venue": "Advanced Materials",
+    "topics": [
+     "Electrocatalysts for Energy Conversion",
+     "Fuel Cells and Related Materials",
+     "Advanced battery technologies research"
+    ],
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202210714",
+    "abstract": "Abstract Single‐atom catalysts (SACs) have attracted extensive interest to catalyze the oxygen reduction reaction (ORR) in fuel cells and metal–air batteries. However, the development of SACs with high selectivity and long‐term stability is a great challenge. In this work, carbon vacancy modified Fe–N–C SACs (Fe H –N–C) are practically designed and synthesized through microenvironment modulation, achieving high‐efficient utilization of active sites and optimization of electronic structures. The Fe H –N–C catalyst exhibits a half‐wave potential ( E 1/2 ) of 0.91 V and sufficient durability of 100 000 voltage cycles with 29 mV E 1/2 loss. Density functional theory (DFT) calculations confirm that the vacancies around metal–N 4 sites can reduce the adsorption free energy of OH*, and hinder the dissolution of metal center, significantly enhancing the ORR kinetics and stability. Accordingly, Fe H –N–C SACs presented a high‐power density and long‐term stability over 1200 h in rechargeable zinc–air batteries (ZABs). This work will not only guide for developing highly active and stable SACs through rational modulation of metal–N 4 sites, but also provide an insight into the optimization of the electronic structure to boost electrocatalytical performances."
+   },
+   {
+    "id": "https://openalex.org/W2771319237",
+    "doi": "https://doi.org/10.1038/s41560-017-0054-3",
+    "title": "Large guanidinium cation mixed with methylammonium in lead iodide perovskites for 19% efficient solar cells",
+    "year": 2017,
+    "cited": 531,
+    "venue": "Nature Energy",
+    "topics": [
+     "Perovskite Materials and Applications",
+     "Quantum Dots Synthesis And Properties",
+     "Coral and Marine Ecosystems Studies"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41560-017-0054-3.pdf",
+    "abstract": "Abstract Organic–inorganic lead halide perovskites have shown photovoltaic performances above 20% in a range of solar cell architectures while offering simple and low-cost processability. Despite the multiple ionic compositions that have been reported so far, the presence of organic constituents is an essential element in all of the high-efficiency formulations, with the methylammonium and formamidinium cations being the sole efficient options available to date. In this study, we demonstrate improved material stability after the incorporation of a large organic cation, guanidinium, into the MAPbI 3 crystal structure, which delivers average power conversion efficiencies over 19%, and stabilized performance for 1,000 h under continuous light illumination, a fundamental step within the perovskite field."
+   },
+   {
+    "id": "https://openalex.org/W4283689033",
+    "doi": "https://doi.org/10.1038/s41586-022-04784-0",
+    "title": "Hypocrystalline ceramic aerogels for thermal insulation at extreme conditions",
+    "year": 2022,
+    "cited": 515,
+    "venue": "Nature",
+    "topics": [
+     "Aerogels and thermal insulation",
+     "Magnesium Oxide Properties and Applications",
+     "Silicone and Siloxane Chemistry"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41586-022-04784-0.pdf",
+    "abstract": "Abstract Thermal insulation under extreme conditions requires materials that can withstand complex thermomechanical stress and retain excellent thermal insulation properties at temperatures exceeding 1,000 degrees Celsius 1–3 . Ceramic aerogels are attractive thermal insulating materials; however, at very high temperatures, they often show considerably increased thermal conductivity and limited thermomechanical stability that can lead to catastrophic failure 4–6 . Here we report a multiscale design of hypocrystalline zircon nanofibrous aerogels with a zig-zag architecture that leads to exceptional thermomechanical stability and ultralow thermal conductivity at high temperatures. The aerogels show a near-zero Poisson’s ratio (3.3 × 10 −4 ) and a near-zero thermal expansion coefficient (1.2 × 10 −7 per degree Celsius), which ensures excellent structural flexibility and thermomechanical properties. They show high thermal stability with ultralow strength degradation (less than 1 per cent) after sharp thermal shocks, and a high working temperature (up to 1,300 degrees Celsius). By deliberately entrapping residue carbon species in the constituent hypocrystalline zircon fibres, we substantially reduce the thermal radiation heat transfer and achieve one of the lowest high-temperature thermal conductivities among ceramic aerogels so far—104 milliwatts per metre per kelvin at 1,000 degrees Celsius. The combined thermomechanical and thermal insulating properties offer an attractive material system for robust thermal insulation under extreme conditions."
+   },
+   {
+    "id": "https://openalex.org/W3048095969",
+    "doi": "https://doi.org/10.1039/d0ee01363c",
+    "title": "A revised mechanistic model for sodium insertion in hard carbons",
+    "year": 2020,
+    "cited": 507,
+    "venue": "Energy & Environmental Science",
+    "topics": [
+     "Advancements in Battery Materials",
+     "Advanced Battery Materials and Technologies",
+     "Chemical Synthesis and Characterization"
+    ],
+    "oa_url": "https://pubs.rsc.org/en/content/articlepdf/2020/ee/d0ee01363c",
+    "abstract": "Sodium filling inside hard carbon pores demonstrates increasingly metallic character with increasing pore size."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Renishaw inVia Confocal\" OR \"Renishaw inVia\") AND OPEN_ACCESS:y",

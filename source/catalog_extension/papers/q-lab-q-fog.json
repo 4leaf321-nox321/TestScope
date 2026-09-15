@@ -12,8 +12,54 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Q-Lab Q-FOG\" OR \"Q-Lab Q-FOG SSP600\" OR \"Q-Lab SSP1100\" OR \"Q-Lab Q-FOG CCT600\" OR \"Q-Lab CCT1100\" OR \"Q-Lab Q-FOG CRH600\"",
-  "count": null,
-  "works": []
+  "count": 3,
+  "works": [
+   {
+    "id": "https://openalex.org/W3000588379",
+    "doi": "https://doi.org/10.1088/2053-1591/ab61ac",
+    "title": "New insights on the influence of low frequency pulsed current on the characteristics of PEO coatings formed on AZ31B",
+    "year": 2019,
+    "cited": 9,
+    "venue": "Materials Research Express",
+    "topics": [
+     "Magnesium Alloys: Properties and Applications",
+     "Corrosion Behavior and Inhibition",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1088/2053-1591/ab61ac/pdf",
+    "abstract": "Abstract In this work, anodic oxide layers on the surface of an AZ31 magnesium alloy were obtained by plasma electrolytic oxidation (PEO) process under low frequency pulsed current. For this, electrolytical solutions containing hexamethylenetetramine and sodium fluoride were used. The morphology and chemical composition of formed coatings were examined by scanning electron microscopy (SEM), energy dispersive spectroscopy (EDS), Fourier transform infrared spectroscopy (FTIR) and X-ray diffraction (XRD). Also, salt spray test, hydrogen evolution and electrochemical tests (potentiodynamic polarization and electrochemical impedance spectroscopy) were conducted in order to study the corrosion behavior of the coated samples. It was found that the use of low frequency pulsed current for the PEO process reduces the film porosity and increases its thickness, compared with PEO films obtained by continuous anodization. The effect of the pulsed current signal was also analyzed for a two steps PEO process, observing changes in the morphological characteristics of the coatings which allow a better corrosion according electrochemical tests (short term corrosion measurements). However, long term tests results as hydrogen evolution and salt spray tests, indicated the opposite. Both the film porosity and thickness were affected by either the pulsing of the current or the use of a two-step process."
+   },
+   {
+    "id": "https://openalex.org/W4317042812",
+    "doi": "https://doi.org/10.3390/buildings13020270",
+    "title": "Understanding and Predicting Localised Variations in the Degradation Rate of Architectural, Organically Coated, Steel Cladding",
+    "year": 2023,
+    "cited": 1,
+    "venue": "Buildings",
+    "topics": [
+     "Building materials and conservation",
+     "Conservation Techniques and Studies",
+     "Hygrothermal properties of building materials"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-5309/13/2/270/pdf?version=1675070933",
+    "abstract": "Organically coated architectural steel provides an economic, visually attractive, innovation friendly and robust building cladding. However, its performance, usually calculated using accelerated weathering and ‘artificial’ outdoor weathering testing, can be compromised within specific areas of the building envelope. The exact reasons for this are not fully understood. In an attempt to discern where and why performance varies, an investigation is carried out into some possible reasons for the performance discrepancy, and it is concluded that a combination of high humidity and the build-up of aggressive natural deposits contribute to high degradation rates in sheltered regions, such as building eaves, where microclimates are created. The build-up of deposits and their effect is presented as a key degradation accelerant during in-use service. A numerical simulation approach is developed to predict the natural washing, via rain impact and characteristics of the building analysed. This approach shows promise for determining areas unlikely to be naturally washed, and therefore subjected to a degradation accelerating, build-up of deposits. It is shown that such a simulation could be used to optimize the building design process to promote natural washing as well as provide an area-of-concern map in which exposed cut edge should be avoided and any manual inspection should be concentrated. It is also shown that nearby buildings can provide sheltering effects leading to decreased natural washing, increased deposit build-up and ultimately accelerated failure."
+   },
+   {
+    "id": "https://openalex.org/W2589258973",
+    "doi": "https://doi.org/10.1149/07711.0785ecst",
+    "title": "Investigation of Corrosion Resistance for Annealed and Hardened Stainless Steels",
+    "year": 2017,
+    "cited": 1,
+    "venue": "ECS Transactions",
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Corrosion Behavior and Inhibition",
+     "Concrete Corrosion and Durability"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/07711.0785ecst/pdf",
+    "abstract": "Stainless steels are desirable for their good corrosion resistance and mechanical properties, and are widely used in marine applications that require high hardness. Heat treatment procedures increase the hardness of stainless steel, and affect microstructural, compositional and surface properties of these materials, hence affect their corrosion resistance. To investigate these relationships, a series of electrochemical, corrosion resistance, and mechanical tests at room temperature and ambient pressure were conducted on stainless steels that were exposed to simulated seawater conditions. Both annealed and hardened conditions were tested and evaluated during aforementioned tests. Preliminary salt solution spray tests have indicated that 2205 duplex stainless steel, 17-7 and 15-5 stainless steels have better corrosion resistance than other alloys in annealed condition. A series of electrochemical impedance spectroscopy (EIS) and cyclic polarization (CP) measurements were conducted on duplex 2205 stainless steel, 17-7 and 15-5 stainless steel in order to evaluate their corrosion resistance both in annealed and hardened conditions. The mechanisms that lead to changes in corrosion resistance due to heat treatment processes are discussed."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Q-Lab Q-FOG\" OR \"Q-Lab Q-FOG SSP600\" OR \"Q-Lab SSP1100\" OR \"Q-Lab Q-FOG CCT600\" OR \"Q-Lab CCT1100\" OR \"Q-Lab Q-FOG CRH600\") AND OPEN_ACCESS:y",

@@ -12,8 +12,759 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"Struers Duramin-40\" OR \"Struers Duramin-40 M1\" OR \"Struers A1\" OR \"Struers Duramin-40 M2\" OR \"Struers A2\" OR \"Struers Duramin-40 M3\"",
-  "count": null,
-  "works": []
+  "count": 203,
+  "works": [
+   {
+    "id": "https://openalex.org/W2739109045",
+    "doi": "https://doi.org/10.1007/s11661-017-4228-1",
+    "title": "The Investigation of Strain-Induced Martensite Reverse Transformation in AISI 304 Austenitic Stainless Steel",
+    "year": 2017,
+    "cited": 91,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007%2Fs11661-017-4228-1.pdf",
+    "abstract": "Abstract This paper presents a comprehensive study on the strain-induced martensitic transformation and reversion transformation of the strain-induced martensite in AISI 304 stainless steel using a number of complementary techniques such as dilatometry, calorimetry, magnetometry, and in-situ X-ray diffraction, coupled with high-resolution microstructural transmission Kikuchi diffraction analysis. Tensile deformation was applied at temperatures between room temperature and 213 K (−60 °C) in order to obtain a different volume fraction of strain-induced martensite (up to ~70 pct). The volume fraction of the strain-induced martensite, measured by the magnetometric method, was correlated with the total elongation, hardness, and linear thermal expansion coefficient. The thermal expansion coefficient, as well as the hardness of the strain-induced martensitic phase was evaluated. The in-situ thermal treatment experiments showed unusual changes in the kinetics of the reverse transformation (α′ → γ). The X-ray diffraction analysis revealed that the reverse transformation may be stress assisted—strains inherited from the martensitic transformation may increase its kinetics at the lower annealing temperature range. More importantly, the transmission Kikuchi diffraction measurements showed that the reverse transformation of the strain-induced martensite proceeds through a displacive, diffusionless mechanism, maintaining the Kurdjumov–Sachs crystallographic relationship between the martensite and the reverted austenite. This finding is in contradiction to the results reported by other researchers for a similar alloy composition."
+   },
+   {
+    "id": "https://openalex.org/W2900336307",
+    "doi": "https://doi.org/10.1016/j.matdes.2018.10.051",
+    "title": "Design of high-manganese steels for additive manufacturing applications with energy-absorption functionality",
+    "year": 2018,
+    "cited": 82,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127518308062-ga1_lrg.jpg",
+    "abstract": "High-manganese steels (HMnS) are alloys with outstanding mechanical properties, but their application is inhibited by inherent limitations in conventional processing. Additive manufacturing (AM) provides an alternative to make use of the unique properties of HMnS due to strongly differing processing conditions. However, no established methodology exists currently to tailor metallic alloys specifically for AM. Therefore, a methodology combining theoretical and experimental screening was used to design a HMnS specifically suited for AM. First, different chemical compositions were screened with thermodynamics-based stacking fault energy (SFE) maps to predict the activation of transformation-induced plasticity (TRIP) and twinning-induced plasticity (TWIP). For experimental screening, selected X30MnAl23-# alloys (with # ≤ 2 wt%) were produced by laser metal deposition (LMD). The metal physical mechanisms active during solidification and plastic deformation were identified by multiscale microstructure characterization (XRD, OM, SEM, EBSD, EDX, EPMA, APT) and tensile testing. Finally, two steels with the highest work-hardening capacity and formability were applied in lattice structures produced by selective laser melting (SLM) and compared to benchmark 316L steel. The correlation of AM-specific features of HMnS and their effect on deformation behavior as well as the applicability of the used methodology are discussed to illustrate the effectiveness of the chosen approach toward the development of high performance materials for AM."
+   },
+   {
+    "id": "https://openalex.org/W4285090365",
+    "doi": "https://doi.org/10.1038/s41467-022-31658-w",
+    "title": "Exploration of glassy state in Prussian blue analogues",
+    "year": 2022,
+    "cited": 77,
+    "venue": "Nature Communications",
+    "topics": [
+     "Glass properties and applications",
+     "Pigment Synthesis and Properties",
+     "Phase-change materials and chalcogenides"
+    ],
+    "oa_url": "https://www.nature.com/articles/s41467-022-31658-w.pdf",
+    "abstract": "Abstract Prussian blue analogues (PBAs) are archetypes of microporous coordination polymers/metal–organic frameworks whose versatile composition allows for diverse functionalities. However, developments in PBAs have centred solely on their crystalline state, and the glassy state of PBAs has not been explored. Here we describe the preparation of the glassy state of PBAs via a mechanically induced crystal-to-glass transformation and explore their properties. The preservation of short-range metal–ligand–metal connectivity is confirmed, enabling the framework-based functionality and semiconductivity in the glass. The transformation also generates unconventional CN − vacancies, followed by the reduction of metal sites. This leads to significant porosity enhancement in recrystallised PBA, enabled by further accessibility of isolated micropores. Finally, mechanical stability under stress for successful vitrification is correlated to defect contents and interstitial water. Our results demonstrate how mechanochemistry provides opportunities to explore glassy states of molecular framework materials in which the stable liquid state is absent."
+   },
+   {
+    "id": "https://openalex.org/W3092461160",
+    "doi": "https://doi.org/10.1016/j.matchar.2020.110695",
+    "title": "Grain boundary structures and their correlation with intergranular corrosion in an extruded Al-Mg-Si-Cu alloy",
+    "year": 2020,
+    "cited": 76,
+    "venue": "Materials Characterization",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Corrosion Behavior and Inhibition",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1044580320321665/pdf",
+    "abstract": "A detailed analysis of grain boundaries in a highly textured Al-Mg-Si-Cu alloy is presented in this work. Electron backscatter diffraction demonstrates the presence of three main categories of grain boundaries in addition to sub-grain boundaries. These grain boundaries have been systematically analysed using high–resolution scanning transmission electron microscopy. Intergranular corrosion (IGC) susceptibility was statistically correlated with the same defined grain boundaries. A high density of metastable Q′-phase grain boundary particles correlates with a reduction in Cu segregation at grain boundaries and increased IGC resistance. Results herein are relevant in further understanding grain boundary structures in Al-Mg-Si-Cu alloys and their susceptibility to IGC, and can be implemented into modelling frameworks."
+   },
+   {
+    "id": "https://openalex.org/W3190124042",
+    "doi": "https://doi.org/10.1016/j.surfcoat.2021.127585",
+    "title": "Influence of nozzle configuration and particle size on characteristics and sliding wear behaviour of HVAF-sprayed WC-CoCr coatings",
+    "year": 2021,
+    "cited": 69,
+    "venue": "Surface and Coatings Technology",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Advanced materials and composites",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0257897221007593/pdf",
+    "abstract": "In this study, effect of feedstock particle size and nozzle configuration on deposition, microstructural features, hardness and sliding wear behaviour of high velocity air fuel (HVAF)-sprayed WC-CoCr coatings was evaluated. Three different WC-CoCr powders with nominal particle sizes of 5/20 μm (fine), 5/30 μm (medium) and 15/45 μm (coarse) were sprayed employing a HVAF gun with four distinct DeLaval nozzle configurations involving different lengths and/or exit diameters. Microstructure, phase constitution and mechanical characteristics of the coatings were evaluated using SEM, EDS, XRD and micro indentation testing. Specific wear rate for all the samples was determined under sliding conditions and a comprehensive post wear analysis was conducted. X-ray diffraction analysis showed negligible decarburization in all the HVAF-sprayed coatings. It was shown that decrease in particle size of employed feedstock results in discernible changes in microstructural features of the coatings as well as considerable improvement in their performance. Also, notable changes in wear mechanisms were identified on reducing particle size from coarse to medium or fine. Fine and coarse feedstock powders were found to be sensitive to the type of nozzle used while no major difference was observed in coatings from powders with medium cut size sprayed with different nozzles."
+   },
+   {
+    "id": "https://openalex.org/W1982674289",
+    "doi": "https://doi.org/10.1016/j.matchar.2015.04.005",
+    "title": "The evolution with strain of the stored energy in different texture components of cold-rolled IF steel revealed by high resolution X-ray diffraction",
+    "year": 2015,
+    "cited": 51,
+    "venue": "Materials Characterization",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Microstructure and mechanical properties",
+     "Magnetic Properties and Applications"
+    ],
+    "oa_url": "https://hal.science/hal-02137003v1/file/PIMM_%20MC_2015_%20WAUTHIER%20MONNIN%20pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4365816770",
+    "doi": "https://doi.org/10.1016/j.ijplas.2023.103610",
+    "title": "On the origin of the strain hardening mechanisms of Ni20Cr alloy manufactured by laser powder bed fusion",
+    "year": 2023,
+    "cited": 48,
+    "venue": "International Journal of Plasticity",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://hal.science/hal-04089732v1/document",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W3099748759",
+    "doi": "https://doi.org/10.1016/j.matdes.2020.109315",
+    "title": "Enhanced precipitation strengthening of multi-principal element alloys by κ- and B2-phases",
+    "year": 2020,
+    "cited": 48,
+    "venue": "Materials & Design",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127520308510/pdf",
+    "abstract": "Discoveries of new multi-principal element alloys (MPEAs) with outstanding performance have been challenging due to the large complexity of the compositional space. Many existing highly alloyed steels already incorporate MPEA concepts and detailed research is readily available, which can be utilized for a more efficient design approach. Inspired by this consideration, Ni- and Co-additions to the Al14.6C4.9Fe53.6Mn26.9 (at%) high‑manganese steel were assessed to introduce B2-precipitates in addition to the κ-carbides to increase strength. Thermodynamic screening in the Al-C-Co-Fe-Mn-Ni system was performed with a custom calphad database and combined with experimental screening to identify novel MPEAs with enhanced mechanical properties. The selected MPEAs were produced by thermo-mechanical processing and the mechanisms active during annealing and deformation were investigated experimentally. The modification with Co did not result in the formation of B2-precipitates and improved mechanical properties. The Ni-added MPEA, Al14.7C4.7Fe49.9Mn26.4Ni4.2, revealed significant precipitation and dispersion hardening by nanoscale κ- and B2-phases combined with excellent strain hardening capacity due to slip band refinement-induced plasticity (SRIP). A combination of 1 to 1.2 GPa yield strength (21.3 % increase) with a total elongation of 20 to 10 % was achieved. The chosen methodology was efficient in the design of a novel MPEA with an improved strength-ductility synergy."
+   },
+   {
+    "id": "https://openalex.org/W4291718188",
+    "doi": "https://doi.org/10.1007/s00170-022-09878-7",
+    "title": "Experimental investigation of CMT discontinuous wire arc additive manufacturing of Inconel 625",
+    "year": 2022,
+    "cited": 41,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-022-09878-7.pdf",
+    "abstract": "Abstract Additive manufacturing (AM) is a progressive technology which holds promise for manufacturing of heat resistant super alloys. One of the most productive methods is wire arc additive manufacturing (WAAM). In this article, an alternative WAAM strategy is investigated. Experimental clads and material tests were performed to evaluate the material properties obtained through a cold metal transfer (CMT) discontinuous WAAM of Inconel 625 alloy. Using the modern terminology of Fronius Gmbh this method is called CMT cycle step. The difference is that it is automatically controlled by the welding source. CMT discontinuous WAAM has lower productivity and a higher consumption of shielding gas. However, it excels in low heat input and precise material cladding in comparison with a standard CMT continuous WAAM. It enables fabrication of finer details even on thin-walled components or in sections with problematic heat dissipation. Samples manufactured using this strategy were also compared with samples manufactured through a standard CMT continuous WAAM. Two sets of manufactured samples were thus tested. The following material tests were performed: (i) metallographic analysis, (ii) x-ray tomography, (iii) SEM analysis, (iv) hardness, (v) tensile strength (20 °C, 650 °C) and (vi) pin-on-disc (20 °C, 650 °C). The results show that the CMT discontinuous WAAM led to improved material properties in the Inconel 625 samples. Ultimate tensile strength improved by 15% at 20 °C and by 4% at 650 °C. Wear resistance at 650 °C was about two times higher. This paper concludes that the CMT discontinuous WAAM for Inconel 625 is definitely suitable for manufacturing of complex shapes, fine details and thin-walled components."
+   },
+   {
+    "id": "https://openalex.org/W2190477736",
+    "doi": "https://doi.org/10.1007/s11340-015-0114-1",
+    "title": "On the Accuracy of Elastic Strain Field Measurements by Laue Microdiffraction and High-Resolution EBSD: a Cross-Validation Experiment",
+    "year": 2015,
+    "cited": 40,
+    "venue": "Experimental Mechanics",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Microstructure and mechanical properties",
+     "Microstructure and Mechanical Properties of Steels"
+    ],
+    "oa_url": "https://hal.science/hal-02141119/document",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2980682299",
+    "doi": "https://doi.org/10.1016/j.matdes.2019.108278",
+    "title": "Microalloying effects of Mo versus Cr in HSLA steels with ultrafine-grained ferrite microstructures",
+    "year": 2019,
+    "cited": 38,
+    "venue": "Materials & Design",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Microstructure and mechanical properties",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127519307166/pdf",
+    "abstract": "Thermo-mechanical processing with warm-deformation in the ferrite is a promising pathway towards manufacturing of large volumes of steels with ultrafine grain sizes. We apply this processing to HSLA steels to invoke grain refinement coupled with strengthening arising from microalloying. The aim is to systematically unravel the strengthening via the addition of ‘modern’ microalloying elements Mo versus Cr besides Nb. These elements have been proposed to provide significant additional strengthening during such processing but the mechanisms yet remain unknown. Therefore, three model Fe-1.6Mn-0.04C-0.1Nb+0.5Mo/Cr steels were warm-rolled at ∼600 °C with an overall reduction of 50% followed by ageing. It was found that Mo leads to an increase in hardness of ∼20% compared to the base alloy, whereas Cr provides only a minor hardening increment. SEM, EBSD, TEM and atom probe were used to reveal the beneficial effect of Mo versus Cr. It was found that Mo is more effective delaying dislocation recovery. We also report that Mo partitions into nanoscale Nb–C solute clusters and precipitates of NbC and Fe3C during ageing, retarding the coarsening of these phases. However, Cr was found to partition into Fe3C only, and does not contribute to the nature of the dispersion of clusters and NbC."
+   },
+   {
+    "id": "https://openalex.org/W4392947982",
+    "doi": "https://doi.org/10.1016/j.jmst.2024.01.080",
+    "title": "Correlation of microstructure, mechanical properties, and residual stress of 17-4 PH stainless steel fabricated by laser powder bed fusion",
+    "year": 2024,
+    "cited": 37,
+    "venue": "Journal of Material Science and Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1005030224002949-ga1_lrg.jpg",
+    "abstract": "17-4 precipitation hardening (PH) stainless steel is a multi-purpose engineering alloy offering an excellent trade-off between strength, toughness, and corrosion properties. It is commonly employed in additive manufacturing via laser powder bed fusion owing to its good weldability. However, there are remaining gaps in the processing-structure-property relationships for AM 17-4 PH that need to be addressed. For instance, discrepancies in literature regarding the as-built microstructure, subsequent development of the matrix phase upon heat treatment, as well as the as-built residual stress should be addressed to enable reproducible printing of 17-4 builds with superior properties. As such, this work applies a comprehensive characterisation and testing approach to 17-4 PH builds fabricated with different processing parameters, both in the as-built state and after standard heat treatments. Tensile properties in as-built samples both along and normal to the build direction were benchmarked against standard wrought samples in the solution annealed and quenched condition (CA). When testing along the build direction, higher ductility was observed for samples produced with a higher laser power (energy density) due to the promotion of interlayer cohesion and, hence, reduction of interlayer defects. Following the CA heat treatment, the austenite volume fraction increased to ∼35%, resulting in a lower yield stress and greater work hardening capacity than the as-built specimens due to the transformation induced plasticity effect. Neutron diffraction revealed a slight reduction in the magnitude of residual stress with laser power. A concentric scanning strategy led to a higher magnitude of residual stress than a bidirectional raster pattern."
+   },
+   {
+    "id": "https://openalex.org/W4322732044",
+    "doi": "https://doi.org/10.1007/s11661-022-06955-0",
+    "title": "Electron Beam Based Additive Manufacturing of Alloy 247 for Turbine Engine Application: From Research towards Industrialization",
+    "year": 2023,
+    "cited": 36,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11661-022-06955-0.pdf",
+    "abstract": "Abstract In this contribution it will be shown how the metal powder bed fusion technology electron beam melting (EBM) enables a successful crack- and defect-free processing of the non-weldable Ni-based superalloy Alloy 247. Besides a defect-free processing, EBM process capabilities offer unique opportunities to tailor the microstructure according to material requirements for high-temperature applications. It could be demonstrated that EBM material properties are comparable or even better than traditionally casted Alloy 247 material. Tailored polycrystalline and columnar microstructures were achieved by process parameter adoption for solidification control. The EBM as-built microstructure was characterized by conventional metallography techniques and the results were used to define an adopted HIP + heat-treatment cycle which was applied prior to mechanical testing. Thus, corresponding mechanical and microstructural properties in different conditions will be presented and discussed to show EBM material capabilities. As a result, directionally solidified (DS) EBM material can achieve similar creep performance as DS cast material, despite an observed fine-grained “micro-DS” structure in EBM. Graphical Abstract"
+   },
+   {
+    "id": "https://openalex.org/W4386258641",
+    "doi": "https://doi.org/10.1016/j.mtla.2023.101882",
+    "title": "Aging 17-4 PH martensitic stainless steel prior to hardening: effects on martensitic transformation, microstructure and properties",
+    "year": 2023,
+    "cited": 35,
+    "venue": "Materialia",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2589152923002090-ga1_lrg.jpg",
+    "abstract": "Precipitation hardening martensitic stainless steel 17-4 PH is conventionally austenitized and air cooled to room temperature to form martensite. On aging the martensitic condition tiny Cu-rich precipitates are formed that provide high strength. In the present investigation, the steel was aged in austenitic condition prior to martensite formation. Dilatometry, transmission electron microscopy, atomic probe tomography, synchrotron X-Ray diffraction, electron backscatter diffraction, hardness tests and tensile tests were applied to study austenite aging and its effects on: (i) the subsequent transformation of austenite into martensite, (ii) the microstructure of the forming martensite and (iii) the mechanical properties of the material. Austenite aging favors early formation of Cu clusters followed by precipitation of Cu particles. The evolution of the Cu precipitate size with aging time follows traditional Ostwald ripening kinetics which is rate controlled by Cu diffusion in austenite. Austenite aging affects the kinetics of martensite formation and the substructure of the martensite laths; overall, it provides significant strengthening to the martensitic material. The contribution of precipitates to the strength of martensite is interpreted in terms of the Russell-Brown model for modulus strengthening. The data and the model are reconciled by re-evaluating the adjustable parameter used in the original work. Finally, the work reports the influence of austenite aging on the mechanical properties of the material when this is further aged to peak strength in martensitic condition."
+   },
+   {
+    "id": "https://openalex.org/W4281623578",
+    "doi": "https://doi.org/10.1016/j.matdes.2022.110805",
+    "title": "Effect of the anisotropy of martensitic transformation on ferrite deformation in Dual-Phase steels",
+    "year": 2022,
+    "cited": 33,
+    "venue": "Materials & Design",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Magnetic Properties and Applications",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0264127522004270/pdf",
+    "abstract": "The volume increase and shape change during austenite to martensite transformation in dual-phase (DP) steels are largely accommodated in the microstructure by the deformation of the surrounding ferrite matrix. Accurate estimation of transformation-induced deformation of ferrite via experiments and modeling is essential for predicting the subsequent mechanical behavior of DP steels. This study aims to illustrate the disadvantages of simplifying the anisotropic transformation deformation of martensite to isotropic dilatation for modeling the transformation-induced deformation of ferrite. A novel methodology is developed comprising sequential experimental and numerical research on DP steels to quantify transformation-induced strains in ferrite. This methodology combines the results of prior austenite grain reconstruction, phenomenological theory of martensite crystallography and electron backscatter diffraction (EBSD) orientation data to estimate variant-specific transformation deformation. Subsequently, by comparison of full-field micromechanical calculation results on a virtual DP steel microstructure with experimental EBSD kernel average misorientation and geometrically necessary dislocation measurement results it is shown that neglecting the shear deformation associated with the martensitic transformation leads to significant underestimation in the prediction of transformation-induced strains in ferrite."
+   },
+   {
+    "id": "https://openalex.org/W4200094514",
+    "doi": "https://doi.org/10.1016/j.msea.2021.142416",
+    "title": "Precipitation behavior of a Co-free Fe-Ni-Cr-Mo-Ti-Al maraging steel after severe plastic deformation",
+    "year": 2021,
+    "cited": 32,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Advanced Materials Characterization Techniques",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509321016798/pdf",
+    "abstract": "Maraging steels are martensitic steels that are strengthened by the precipitation of nano-sized intermetallic phases. Severe plastic deformation is known to influence diffusion, stability and properties of metallic materials. The goal of this study is to reveal the influence of severe plastic deformation on the hardness and the precipitation behavior of a Co-free maraging steel. For this study the as-quenched material was deformed with high-pressure torsion. Afterwards, a series of heat treatments were conducted. The hardness increase was measured and correlated with micro-to-nanoscale microstructural characteristics, focused on the precipitate characterization with atom probe tomography. Severe plastic deformation transformed the microstructure to a globular microstructure, delayed and minimized austenite reversion as well as accelerated and influenced the precipitation reaction, affecting the size, morphology and type of intermetallic phases."
+   },
+   {
+    "id": "https://openalex.org/W2994976878",
+    "doi": "https://doi.org/10.1016/j.scriptamat.2019.12.004",
+    "title": "Combined Al and C alloying enables mechanism-oriented design of multi-principal element alloys: Ab initio calculations and experiments",
+    "year": 2019,
+    "cited": 32,
+    "venue": "Scripta Materialia",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High-Temperature Coating Behaviors",
+     "Intermetallics and Advanced Alloy Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359646219307237",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4210673245",
+    "doi": "https://doi.org/10.3390/met12020214",
+    "title": "Damage Analysis of Third-Generation Advanced High-Strength Steel Based on the Gurson–Tvergaard–Needleman (GTN) Model",
+    "year": 2022,
+    "cited": 30,
+    "venue": "Metals",
+    "topics": [
+     "Microstructure and Mechanical Properties of Steels",
+     "Metal Forming Simulation Techniques",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.mdpi.com/2075-4701/12/2/214/pdf?version=1643113728",
+    "abstract": "The third generation of advanced high-strength steels (AHSS) brought attention to the steel and automotive industries due to its good compromise between formability and production costs. This work evaluated a third-generation AHSS (USS CR980XG3TM) through microstructural and X-ray diffraction (XRD) analyses, uniaxial tensile and plane-strain tension testing, and numerical simulations. The damage behavior of this steel is described with the Gurson–Tvergaard–Needleman (GTN) model using an identification procedure based on the uniaxial tensile and initial microvoids data. The microstructure of the CR980XG3TM steel is composed of ferrite, martensite–austenite islands, and retained austenite with a volume fraction of 12.2%. The global formability of the CR980XG3TM steel, namely the product of the uniaxial tensile strength and total elongation values, is 24.3 GPa%. The Lankford coefficient shows a weak initial plastic anisotropy of the CR980XG3TM steel with the in-plane anisotropy close to zero (−0.079) and the normal anisotropy close to unity (0.917). The identified GTN parameters for the CR980XG3TM steel provided a good forecast for the limit strains defined according to ISO 12004-2 standard from the uniaxial tensile and plane-strain tension data."
+   },
+   {
+    "id": "https://openalex.org/W4308620774",
+    "doi": "https://doi.org/10.1016/j.msea.2022.144313",
+    "title": "The role of alloying elements in NiAl and Ni3Ti strengthened Co-free maraging steels",
+    "year": 2022,
+    "cited": 28,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Microstructure and Mechanical Properties of Steels",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509322016938/pdf",
+    "abstract": "Some precipitation hardened steels use a combination of the intermetallic β-NiAl and η-Ni3Ti phases to achieve a beneficial combination of ultra-high strength and toughness. The age-hardening in such steels is a complex process that includes the simultaneous formation of precipitates and reverted austenite. The phase constitution and volume fraction of the precipitates strongly depends on the content of the alloying elements, such as Ti, Al, Cr and Mo. By using a step-wise alloy design scheme and high-resolution characterization methods this study seeks to reveal the influence of Ti and Al variations as well as of Cr and Mo on the precipitation hardening and austenite reversion for Co-free maraging steels based on the Fe-12Ni alloy system. It was found that Cr plays a major role in promoting the precipitation of the η-Ni3Ti phase and simultaneously increases strength and toughness, Ti and Al variations can change the balance between η-Ni3Ti and β-NiAl precipitates and Mo significantly promotes austenite reversion."
+   },
+   {
+    "id": "https://openalex.org/W1981573865",
+    "doi": "https://doi.org/10.1016/j.msea.2014.07.076",
+    "title": "Short fatigue cracks nucleation and growth in lean duplex stainless steel LDX 2101",
+    "year": 2014,
+    "cited": 28,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "Fatigue and fracture mechanics",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509314009435",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4283754689",
+    "doi": "https://doi.org/10.1016/j.scriptamat.2022.114896",
+    "title": "Evidence of in-situ Cu clustering as a function of laser power during laser powder bed fusion of 17–4 PH stainless steel",
+    "year": 2022,
+    "cited": 27,
+    "venue": "Scripta Materialia",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S135964622200392X/pdf",
+    "abstract": "The use of intrinsic heat treatments to control the microstructural evolution during additive manufacturing could eliminate the need for costly post-build processing. Using atom probe microscopy and cluster search algorithms, this study investigates the degree of Cu clustering and precipitation in 17–4 precipitate hardening (PH) stainless steel fabricated by laser powder bed fusion (LPBF). It was found that LPBF samples exhibit a greater than random degree of Cu clustering, irrespective of the laser power during fabrication. It is further shown that using a higher laser power (161.5 W rather than 127.5 W) led to a higher number density of Cu clusters, Cu precipitates, and higher hardness due to the greater heat input. The observations of Cu-rich clusters and precipitates within as-printed LPBF samples and its laser power dependence are novel and show potential for inducing desired strengthening phases directly during LPBF, mitigating the need for post-fabrication heat treatments."
+   },
+   {
+    "id": "https://openalex.org/W4393857844",
+    "doi": "https://doi.org/10.1016/j.addma.2024.104110",
+    "title": "Nano-twining and deformation-induced martensitic transformation in a duplex stainless steel 2205 fabricated by laser powder bed fusion",
+    "year": 2024,
+    "cited": 26,
+    "venue": "Additive manufacturing",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Welding Techniques and Residual Stresses",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2214860424001568-ga1_lrg.jpg",
+    "abstract": "Duplex stainless steels (DSSs) possess desirable combinations of mechanical properties and excellent corrosion resistance due to their composition and equilibrium microstructure of roughly equivalent fractions of ferrite and austenite. They are used in harsh environments such as marine infrastructures, oil & gas, and paper & pulp industries. Components with complex geometries are often required for these applications. Additive manufacturing (AM) techniques such as laser powder bed fusion (LPBF) can be harnessed to fabricate components with greatest complexity. However, AM fabrication is well-known to promote non-equilibrium microstructures with high dislocation densities and Cr2N precipitates, resulting in inferior ductility. This is generally regarded as a challenge, however, short heat treatments of such as-built microstructures have been shown to attain refined duplex equilibrium microstructures. Recently, annealed LPBF DSS 2205 has been reported to possess strength higher than wrought counterparts and ductility properties better than the as-built state. However, the microstructural phenomena and deformation mechanisms behind these attractive properties remain poorly understood. Through multi-scale microstructural characterization, we show that the improved strength results not only from the hard ferrite phase, but also fine austenite grain size and nanoscale oxide dispersion strengthening. The enhanced ductility may be attributed to a combination of deformation mechanisms including dislocation slip, stacking fault formation, deformation twinning, and a deformation-induced martensitic transformation. We discuss how the level of microstructural complexity and solid-state phase transformations during LPBF and annealing can unlock multiple strengthening mechanisms during tensile deformation. Such fundamental understanding is crucial for designing AM parts with reproducible and optimised mechanical properties."
+   },
+   {
+    "id": "https://openalex.org/W4318467775",
+    "doi": "https://doi.org/10.3390/ma16031117",
+    "title": "Microhardness, Indentation Size Effect and Real Hardness of Plastically Deformed Austenitic Hadfield Steel",
+    "year": 2023,
+    "cited": 26,
+    "venue": "Materials",
+    "topics": [
+     "Metal and Thin Film Mechanics",
+     "Force Microscopy Techniques and Applications",
+     "Diamond and Carbon-based Materials Research"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/3/1117/pdf?version=1675331410",
+    "abstract": "Microhardness testing is a widely used method for measuring the hardness property of small-scale materials. However, pronounced indentation size effect (ISE) causes uncertainties when the method is used to estimate the real hardness. In this paper, three austenitic Hadfield steel samples of different plastic straining conditions were subjected to Vickers microhardness testing, using a range of loads from 10 to 1000 g. The obtained results reveal that the origin of ISE is derived from the fact, that the indentation load P and the resultant indent diagonal d do not obey Kick’s law (P = A · d2). Instead, the P and d parameters obey Meyer’s power law (P = A · dn) with n < 2. The plastically strained samples showed not only significant work hardening, but also different ISE significance, as compared to the non-deformed bulk steel. After extensive assessment of several theoretical models, including the Hays-Kendall model, Li-Bradt model, Bull model and Nix-Gao model, it was found that the real hardness can be determined by Vickers microhardness indentation and subsequent analysis using the Nix-Gao model. The newly developed method was subsequently utilised in two case studies to determine the real hardness properties of sliding worn surfaces and the subsurface hardness profile."
+   },
+   {
+    "id": "https://openalex.org/W4306247338",
+    "doi": "https://doi.org/10.1016/j.actamat.2022.118437",
+    "title": "Strong silicon oxide inclusions in iron",
+    "year": 2022,
+    "cited": 26,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Metallurgical Processes and Thermodynamics",
+     "Microstructure and Mechanical Properties of Steels",
+     "Advanced Surface Polishing Techniques"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S135964542200814X-ga1_lrg.jpg",
+    "abstract": "Oxide inclusions are ubiquitous in steel and are known to affect, generally in a negative sense, the mechanical performance of steel products. Micromechanical properties of those phases are therefore important, yet they have remained largely unexplored. We present strength measurements performed on individual silicon oxide inclusions in iron. The inclusions are produced in laboratory-fabricated samples by silicon deoxidation of high-purity iron melts containing dissolved oxygen. Spherical silica inclusions of diameter ∼3 µm thus produced are notched using ion milling and then tested in bending for their strength, by loading under displacement control in-situ within a scanning electron microscope. Results show that silicon oxide inclusions thus precipitated within iron are amorphous in structure, exhibit a smooth outer surface, and have fracture strains in the range from 8 to 17%, corresponding to fracture stress levels on the order of 10 GPa. The strength of silicon oxide inclusions precipitated in iron can hence approach the highest values so far measured in dry silica. The presence within iron and its alloys of precipitated silica thus need not be deleterious, and might perhaps even be exploited to produce novel high-strength materials."
+   },
+   {
+    "id": "https://openalex.org/W4383911015",
+    "doi": "https://doi.org/10.3390/ma16144937",
+    "title": "Research of Friction Stir Welding (FSW) and Electron Beam Welding (EBW) Process for 6082-T6 Aluminum Alloy",
+    "year": 2023,
+    "cited": 25,
+    "venue": "Materials",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Aluminum Alloy Microstructure Properties",
+     "Welding Techniques and Residual Stresses"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/16/14/4937/pdf?version=1689050422",
+    "abstract": "The paper presents the results of the joining tests of the EN AW-6082 T6 alloy. The materials were joined using the EBW high-energy (electron beam welding) and friction stir welding (FSW) methods. In the case of FSW welding, the following parameters were used: the linear speed was 355 mm/min, and the rotational speed of the welding tool was 710. In the case of EBW welding, the following parameters were used: accelerating voltage U = 120 kV, beam intensity I = 18.7 mA, welding speed v = 1600 mm/min and, in the case of a smoothing weld, U = 80 kV, beam intensity I = 17 mA, and welding speed v = 700 mm/min. Comprehensive microstructural tests of all welded joints (MO, SEM and TEM) and mechanical property tests (tensile and hardness tests) were carried out. The topographies of the fractures after the tensile test were also examined. Based on the results, it was found that the strength properties of the EBW joint were reduced by 23% and the FSW joint by 38% compared to the base material. A decrease in elongation was also noted, with an FSW elongation of 7.2% and an elongation of 2.7% for EBW. In the case of the EBW joint, magnesium evaporation was found in the weld during welding, while in the FSW joint, the dissolution of the Mg2Si particles responsible for strengthening the material during heat treatment to the T6 state was observed."
+   },
+   {
+    "id": "https://openalex.org/W4308572395",
+    "doi": "https://doi.org/10.1149/1945-7111/aca127",
+    "title": "Effect of Microstructure of Low-Alloy Steel on Corrosion Propagation in a Simulated CO2 Environment",
+    "year": 2022,
+    "cited": 22,
+    "venue": "Journal of The Electrochemical Society",
+    "topics": [
+     "Corrosion Behavior and Inhibition",
+     "Hydrogen embrittlement and corrosion behaviors in metals",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://iopscience.iop.org/article/10.1149/1945-7111/aca127/pdf",
+    "abstract": "The paper focuses on the analysis of initiation and propagation of CO2 corrosion in several samples of low-alloy steel with different microstructures using scanning electrochemical microscopy (SECM) and other microscopy techniques. It is found that the corrosion rate and the mode of corrosion are highly sensitive to the microstructure. The overall current density is much higher and more uniformly distributed for the tempered martensite structure than for samples having either a ferritic-pearlitic microstructure or a microstructure combining ferritic, bainitic and martensitic-austenitic regions. As a result, the sample with the tempered martensite structure undergoes uniform corrosion, while the other two samples undergo selective corrosion. The SECM maps show that regions of polygonal ferrite generate larger anodic currents than the pearlitic structure in the early stages of corrosion. The residual cementite provides greater cathodic surface areas after the initial dissolution of ferritic lamellae within pearlite, promoting galvanic corrosion and subsequently enhanced dissolution of ferritic lamellae. According to SECM data, the dissolution of iron in polygonal ferritic grains is 2.4 times faster than that of ferritic lamellae in pearlitic regions."
+   },
+   {
+    "id": "https://openalex.org/W2328398589",
+    "doi": "https://doi.org/10.2320/matertrans.me201306",
+    "title": "3-Dimensional Microstructural Evaluation of Wear-Induced Layer in Al–Al3Ti Functionally Graded Materials by Serial Sectioning",
+    "year": 2013,
+    "cited": 22,
+    "venue": "MATERIALS TRANSACTIONS",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Microstructure and mechanical properties",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/matertrans/54/8/54_ME201306/_pdf",
+    "abstract": "The wear behavior of Al–Al3Ti functionally graded materials (FGMs) ring was investigated by 3-dimensional microstructural observations. The Al–Al3Ti FGMs ring was cast which contained platelet-shaped Al3Ti particles. The plane normal of the particles was parallel to the radial direction of the ring. The wear resistance of the Al–Al3Ti FGMs ring depended on the sliding direction of the wear tests because of the anisotropic distribution of the Al3Ti platelet particles. A wear-induced layer with a fine microstructure was formed just below the worn surface, and the formation behavior of the layer also depended on the sliding direction. However, the equivalent Hencky strain required to form the wear-induced layer was about 5, regardless of sliding direction. The anisotropy of the wear resistance in the Al–Al3Ti FGMs ring and the formation behavior of the wear-induced layer were explained by the shear strain distribution on the worn surface."
+   },
+   {
+    "id": "https://openalex.org/W4392564047",
+    "doi": "https://doi.org/10.1007/s11661-024-07319-6",
+    "title": "Advanced Polycrystalline γ′-Strengthened CoNiCr-Based Superalloys",
+    "year": 2024,
+    "cited": 21,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "High Temperature Alloys and Creep",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11661-024-07319-6.pdf",
+    "abstract": "Abstract Novel compositionally complex CoNiCr-based superalloys with excellent mechanical properties have been developed, which combine the multiprincipal element nature of high-entropy alloys with the precipitation strengthening in superalloys. A series of advanced polycrystalline γ′-strengthened CoNiCr-based superalloys, called CoWAlloys, with varying contents of Al, W, Ti, Ta, Mo, and Nb are investigated in terms of microstructure, thermophysical properties, yield, and creep strength. The microstructure of all CoWAlloys consists of an fcc solid solution matrix phase (approximate γ composition in at. pct: 50Co–20Ni–20Cr–10X (X = other alloying elements)), which is strengthened by a multicomponent γ′ (Ni,Co)3(Al,Ti,Ta,W,Nb)-based precipitate phase with a very high-volume fraction of around 60 vol pct (approximate γ′ composition in at. pct: 45Ni–30Co–25X). These alloys have high solidus temperatures above 1300 °C and moderate γ′ solvus temperature between 985 °C and 1080 °C leading to a large processing window. The increasing content of γ′-forming elements Ti, Ta, W, and Nb decreases this window, but increases the γ/γ′ lattice misfit and the anti-phase boundary energy, which contribute to a significantly higher yield and creep strength. Their properties are discussed in comparison with conventional polycrystalline Ni-base superalloys and so-called L12-strengthened high-entropy alloys, revealing that the creep strengths of the CoWAlloys are significantly higher. This is due to the reduced strain rate sensitivity of the CoWAlloys due to different underlying deformation mechanisms: By increasing the anti-phase boundary energy, a transition to stacking fault shearing and microtwinning occurs, which leads to the enhanced creep strength. Based on these results, guidelines and strategies for the design of next-generation advanced high-temperature polycrystalline superalloys are proposed. Graphical Abstract"
+   },
+   {
+    "id": "https://openalex.org/W4311910678",
+    "doi": "https://doi.org/10.1007/s11666-022-01506-w",
+    "title": "Tribological Performance of Thin HVAF-Sprayed WC-CoCr Coatings Fabricated Employing Fine Powder Feedstock",
+    "year": 2022,
+    "cited": 21,
+    "venue": "Journal of Thermal Spray Technology",
+    "topics": [
+     "Advanced materials and composites",
+     "High-Temperature Coating Behaviors",
+     "Metal and Thin Film Mechanics"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11666-022-01506-w.pdf",
+    "abstract": "Abstract In this study, sliding and abrasion wear performance of WC-CoCr coatings deposited by high velocity air–fuel (HVAF) spraying with various thicknesses (i.e., 240, 150, 100, 50 and 30 µm), fabricated from fine feedstock powder (5–15 µm), were evaluated. The main aim was to investigate how thinner coatings (30 and 50 µm) perform compared to conventional thick coatings (> 100 µm), in an effort to address the supply and cost concerns associated with Co and W. The feedstock powder and deposited coatings were characterized in terms of microstructure. The hardness of the thin and thick coatings was measured using Vickers hardness method from both cross section and top-surface. It was found that, regardless of the thickness, extremely dense coatings with very high hardness (~ 1500 HV) can be deposited employing HVAF and fine feedstock powder. Thin and thick coatings were found to perform similarly under sliding wear with a normal load of 10 N or lower as well as under abrasion wear conditions which highlights the possibility of employing thinner coatings for a majority of the real applications. The results suggest that peening effect does not have a considerable influence on the microstructure or performance of the deposited coatings. However, for sliding wear tests with a 20 N normal load, it was noticed that wear resistance of the coatings slightly declines with decreasing thickness of the coating beyond 150 µm. The main reason was identified to be the involvement of substrate effect when performing tests under severe Hertzian contact pressure."
+   },
+   {
+    "id": "https://openalex.org/W4280509177",
+    "doi": "https://doi.org/10.1007/s11661-022-06710-5",
+    "title": "Influence of Strain Rate Sensitivity on Cube Texture Evolution in Aluminium Alloys",
+    "year": 2022,
+    "cited": 21,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "Aluminum Alloys Composites Properties",
+     "Microstructure and mechanical properties",
+     "Metal Forming Simulation Techniques"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11661-022-06710-5.pdf",
+    "abstract": "Abstract The influence of strain rate sensitivity on development of Cube texture and on the morphology of Cube-oriented grains is often neglected in simulations approaches. Therefore, crystal plasticity simulations and experiments were performed up to 73 pct of thickness reduction for cold rolling on Al 6016. It is found, that low values of strain rate sensitivity promote Cube grains fragmentation and avoid formation of transition bands already at 50 to 55 pct thickness reduction. High values of strain-rate sensitivity cause formation of Cube transition bands leaving thin Cube grains in the microstructure and delay their fragmentation. Other texture components are affected by changes in strain rate sensitivity as well. The Copper volume fraction in the final texture diminishes as the strain rate sensitivity decreases, while Brass and S components of the beta fiber show a moderately higher volume fraction when the strain rate sensitivity increases. The final volume fraction of Goss is highest when the strain rate sensitivity is 10−2 but low if the strain rate sensitivity is 10−3 or raises up to 10−1. Recrystallization texture components (P, Q) are not affected by strain rate sensitivity, while the invGoss fraction decreases for high values of strain rate sensitivity. The results found in cold rolling crystal plasticity simulations were compared with experimentally determined Cube distribution and texture components obtained through thickness for Al6016 rolled at 80 m/min and 600 m/min. Further crystal plasticity simulations were performed to predict the influence of strain rate sensitivity during several hot rolling conditions where activity of non-octahedral slip systems was included in the simulations. During hot rolling, high values of strain rate sensitivity contribute to Cube stabilization and promote formation of Copper texture and delay Brass and S."
+   },
+   {
+    "id": "https://openalex.org/W4388999186",
+    "doi": "https://doi.org/10.1016/j.actamat.2023.119551",
+    "title": "A quasi-2D integrated experimental–numerical approach to high-fidelity mechanical analysis of metallic microstructures",
+    "year": 2023,
+    "cited": 20,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Microstructure and Mechanical Properties of Steels",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S1359645423008807-ga1_lrg.jpg",
+    "abstract": "Integrated experimental-numerical testing on bulk metal alloys with fine, complex microstructures is known to be highly challenging, since measurements are restricted to the sample surface, thereby failing to capture the effects of the 3D subsurface microstructure. Consequently, a quantitative comparison of deformation fields between experiments and simulations is hardly possible. To overcome this, we propose a novel ‘quasi-2D’ integrated experimental-numerical testing methodology that hinges on the fabrication of μm-thin specimens with practically through-thickness microstructures over large regions of >100 μm. The specimens are fully characterized from both surfaces and tested in-situ to retrieve microstructure-resolved deformation fields. Simultaneously, the full microstructure is discretized in 3D and simulated. This allows for a detailed, one-to-one quantitative comparison of deformation fields between experiments and simulations, with negligible uncertainty in the subsurface microstructure. Consequently, a degree of agreement between experiments and simulations is attained which we believe to be unprecedented at this scale. We demonstrate the capabilities of the framework on polycrystalline ferritic steel and dual-phase ferritic-martensitic steel specimens. At the mesoscale, the methodology enables quantitative comparisons of the interaction between multiple grains, while, at the microscale, it enables advancement of numerical models by direct confrontation with detailed experimental observations. Specifically, it is revealed that the individual slip system activity maps, identified with SSLIP, near a grain boundary can only be reasonably predicted by enhancing the adopted crystal plasticity simulations with a discrete slip plane model. Additionally, the experimentally observed strong anisotropic plasticity of martensite can only be captured with a substructure-enriched crystal plasticity model."
+   },
+   {
+    "id": "https://openalex.org/W4307955163",
+    "doi": "https://doi.org/10.1016/j.msea.2022.144222",
+    "title": "Local mechanical properties and precipitation inhomogeneity in large-grained Al–Mg–Si alloy",
+    "year": 2022,
+    "cited": 20,
+    "venue": "Materials Science and Engineering A",
+    "topics": [
+     "Microstructure and mechanical properties",
+     "Metal and Thin Film Mechanics",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0921509322016021/pdf",
+    "abstract": "Al-Mg-Si (6xxx series) alloys show excellent mechanical properties due to the precipitates formed during heat treatment. However, heat treatment of these alloys results in a soft precipitation free zone (PFZ) close to grain boundaries that weakens them and promotes fracture, and thereby reduces the ductility of the material. This study provides quantitative insights into the mechanical properties and underlying plasticity behavior of Al-Mg-Si (6xxx series) alloys through combined nanoindentation hardness measurements and in-depth characterization of the microstructure adjacent to the PFZ region and in the grain interior. Experimental nanoindentation, transmission microscopy (TEM) and electron channeling contrast imaging results confirm the weakening effect from PFZ by means of a reduced hardness close to grain boundaries. The nanoindentation hardness mapping also revealed an increase in hardness a few micrometers from the grain boundary with respect to the grain interior. Precipitate quantification from TEM images confirms that the hardness increase is caused by a locally higher density of precipitates.To the authors’ best knowledge, this harder zone has not been recognized nor discussed in previously reported findings. The phenomenon has important implications for the mechanical properties of large-grained (>100 µm) aluminium alloys."
+   },
+   {
+    "id": "https://openalex.org/W3166216292",
+    "doi": "https://doi.org/10.3390/ma14113074",
+    "title": "Influence of Test Conditions on Sliding Wear Performance of High Velocity Air Fuel-Sprayed WC–CoCr Coatings",
+    "year": 2021,
+    "cited": 20,
+    "venue": "Materials",
+    "topics": [
+     "Advanced materials and composites",
+     "High-Temperature Coating Behaviors",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/1996-1944/14/11/3074/pdf?version=1622795064",
+    "abstract": "Sliding wear performance of thermal spray WC-based coatings has been widely studied. However, there is no systematic investigation on the influence of test conditions on wear behaviour of these coatings. In order to have a good understanding of the effect of test parameters on sliding wear test performance of HVAF-sprayed WC-CoCr coatings, ball-on-disc tests were conducted under varying test conditions, including different angular velocities, loads and sliding distances. Under normal load of 20 N and sliding distance of 5 km (used as 'reference' conditions), it was shown that, despite changes in angular velocity (from 1333 rpm up to 2400 rpm), specific wear rate values experienced no major variation. No major change was observed in specific wear rate values even upon increasing the load from 20 N to 40 N and sliding distance from 5 km to 10 km, and no significant change was noted in the prevailing wear mechanism, either. Results suggest that no dramatic changes in applicable wear regime occur over the window of test parameters investigated. Consequently, the findings of this study inspire confidence in utilizing test conditions within the above range to rank different WC-based coatings."
+   },
+   {
+    "id": "https://openalex.org/W4328128376",
+    "doi": "https://doi.org/10.3390/cryst13030540",
+    "title": "Local Microstructure and Texture Development during Friction Stir Spot of 5182 Aluminum Alloy",
+    "year": 2023,
+    "cited": 19,
+    "venue": "Crystals",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Aluminum Alloys Composites Properties",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://doi.org/10.3390/cryst13030540",
+    "abstract": "The local microstructure, texture gradient and mechanical properties through the shoulder dimension (10 mm) of upper and lower AA5182 aluminum sheets were investigated using electron backscatter diffraction (EBSD) and Vickers microhardness after friction stir spot welding (FSSW). Based on the microstructural features (mean grain size, grain boundary type and dynamic recrystallization (DRX)), the upper sheet was found to be mainly composed of the stir zone (SZ) and thermomechanically affected zone (TMAZ) due to the high deformation induced simultaneously by the tool rotation and the shoulder download force, while the SZ, TMAZ, heat-affected zone (HAZ) and base metal (BM) were detected in the lower sheet due to the limited effect of the shoulder on the lower sheet. The texture changes, due to the nature of the deformation, demonstrated a shear-type texture at the SZ to a plane strain compression deformation type texture at the TMAZ and then a recrystallization texture at the HAZ and BM. The microhardness gradually decreased with the increasing distance from the keyhole along the SZ, TMAZ and HAZ regions. Eventually, the microstructure and microhardness evolutions were correlated based on the Hall–Petch relationship."
+   },
+   {
+    "id": "https://openalex.org/W4282943534",
+    "doi": "https://doi.org/10.3390/jmse10060818",
+    "title": "Optimizing the Voce–Chaboche Model Parameters for Fatigue Life Estimation of Welded Joints in High-Strength Marine Structures",
+    "year": 2022,
+    "cited": 19,
+    "venue": "Journal of Marine Science and Engineering",
+    "topics": [
+     "Fatigue and fracture mechanics",
+     "Structural Load-Bearing Analysis",
+     "Structural Integrity and Reliability Analysis"
+    ],
+    "oa_url": "https://www.mdpi.com/2077-1312/10/6/818/pdf?version=1655708517",
+    "abstract": "This work studies the Voce–Chaboche (V–C) material model parameter optimization for high-strength steel welded joints subjected to cyclic loading. The model parameters of each material zone in a S690 steel butt-welded joint were determined using an optimization algorithm based on the Newton trust region (NTR) method and an accumulated true strain parameter. The model parameters were fitted to stress–strain histories from uniaxial strain-controlled cyclic tests. To validate the model, fully-reversed variable amplitude fatigue experiments were performed under load control. The experimental results were then compared to numerical results from a finite element analysis. When the elastic modulus is optimized as a V–C parameter, the results indicate that the V–C model slightly underestimates the strain range, leading to conservative fatigue life estimates. However, the results can be improved by using an elastic modulus obtained experimentally. In this case, the resulting material model slightly overestimates the strain range, leading to a non-conservative, but more accurate, fatigue life estimation. It can be concluded that the NTR-based accumulated true strain approach successfully determined the V–C model parameters for different material zones in the welded joint, and closely estimated the strain range and the fatigue life for a variable amplitude load history."
+   },
+   {
+    "id": "https://openalex.org/W4220703374",
+    "doi": "https://doi.org/10.3390/coatings12030374",
+    "title": "Influence of Heat Treatment on the Microstructure and Wear Properties of Arc-Sprayed FeCrAl/Al Coating",
+    "year": 2022,
+    "cited": 19,
+    "venue": "Coatings",
+    "topics": [
+     "High-Temperature Coating Behaviors",
+     "Intermetallics and Advanced Alloy Properties",
+     "Metal Alloys Wear and Properties"
+    ],
+    "oa_url": "https://www.mdpi.com/2079-6412/12/3/374/pdf?version=1647934195",
+    "abstract": "Intermetallic compounds formed during heat treatment of alloy coatings affect the coating structure and properties. In order to determine the phase changes and coating performance, FeCrAl (Fe Bal., Cr 26 wt.%, Al 6 wt.%) and Al (99.9 wt.%) coating was sprayed onto low carbon steel substrates and subsequently heat-treated at different temperatures. The effects of heat treatment on the microstructure, phase composition, tensile bonding strength, microhardness, and wear properties of the coatings were analyzed. The as-sprayed coating had a dense, layered structure with an average porosity of 3.6%. The microhardness of the as-sprayed coating was comprised of hard FeCrAl splats and ductile Al splats with an average microhardness value of 494 HV0.1. The coating at 300 °C had the highest tensile strength of 37.5 MPa. At 500 °C, FeAl intermetallic compounds formed at the phase boundaries due to the diffusion of elements. The coating microhardness and wear resistance were affected by the uniform coating structure and the precipitation of FeAl intermetallic compounds. Compared with the annealed coatings, the as-sprayed coating had the lowest wear rate."
+   },
+   {
+    "id": "https://openalex.org/W2041026389",
+    "doi": "https://doi.org/10.1051/jp4:1995233",
+    "title": "The Effect of Dislocation Substructure and Decomposition on the Course of Diffusionless Transformations",
+    "year": 1995,
+    "cited": 19,
+    "venue": "Journal de Physique IV (Proceedings)",
+    "topics": [
+     "Shape Memory Alloy Transformations",
+     "Titanium Alloys Microstructure and Properties",
+     "Additive Manufacturing Materials and Processes"
+    ],
+    "oa_url": "http://jp4.journaldephysique.org/articles/jp4/pdf/1995/02/jp4199505C233.pdf",
+    "abstract": "Abst~acct: The mechanical properties (yield strength, hardness, transformation stresses) and the transformation temperatures of SMA can be affected by the combination of different solid-state reactions.In this context the combination of local change in chemical composition by precipitation processes and the rearrangement of defects by recovery and recrystallization are of special interest.The influence of different heat treatments on Ni-rich j3-NiTi-alloys was investigated by polarization light microscopy, TEM, DSC-measurements and microhardness tests above M,.Of particular interest were the occurance and interactions due to the different nature of martensitic (M-) phase and R-phase transformation."
+   },
+   {
+    "id": "https://openalex.org/W4366579131",
+    "doi": "https://doi.org/10.1007/s10853-023-08472-w",
+    "title": "Strengthening effect of NiAl and Ni3Ti precipitates in Co-free maraging steels",
+    "year": 2023,
+    "cited": 18,
+    "venue": "Journal of Materials Science",
+    "topics": [
+     "Advanced Materials Characterization Techniques",
+     "Microstructure and Mechanical Properties of Steels",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10853-023-08472-w.pdf",
+    "abstract": "Abstract One class of maraging steels are strengthened by a combination of β-NiAl and η-Ni3Ti intermetallic phases which are precipitated during an aging heat treatment. To establish a meaningful structure-property relationship the precipitation strengthening effect from each phase must be isolated from the other strengthening mechanisms. To achieve this, a series of model alloys based on the Fe-12Ni alloy system were aged and characterized to determine the precipitation strengthening effect. In the course of this study, using a new approach, atom probe tomography was used to determine the spacing between precipitates and to calculate the individual strength contribution of the β and the η phase using a model describing the precipitate-dislocation interactions. It was found that the precipitation strengthening of the combined β and η phases is close to 1000 MPa and that the relative strengthening effect of each phase is sensitive to the Ti and Al concentration."
+   },
+   {
+    "id": "https://openalex.org/W3148467848",
+    "doi": "https://doi.org/10.1007/s00170-021-06938-2",
+    "title": "An investigation of the anisotropic properties of heat-treated maraging steel grade 300 processed by laser powder bed fusion",
+    "year": 2021,
+    "cited": 18,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "Additive Manufacturing and 3D Printing Technologies",
+     "High Entropy Alloys Studies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-021-06938-2.pdf",
+    "abstract": "Abstract In order to explore the possibilities enabled by laser beam powder bed fusion of metals (PBF-LB/M), reliable material models are necessary to optimize designs with respect to weight and stiffness. Due to the unique processing conditions in PBF-LB/M, materials often develop a dominating microstructure that leads to anisotropic mechanical properties, and thus isotropic material models fail to account for the orientation-dependent mechanical properties. To investigate the anisotropy of 18Ni300 maraging steel, tensile specimens were built in seven different orientations. The specimens were heat treated at two different conditions and tested for their tensile properties using digital image correlation (DIC) technique. The microstructure and fracture surfaces are investigated with scanning electron microscope and electron backscatter diffraction. The tensile properties are typical for the material, with a yield strength in the range of 1850 MPa to 1950 MPa, and ultimate tensile strength in the range of 1900 MPa to 2000 MPa. The elastic modulus is 180 GPa, and the elongation at fracture is in the range of 2–6% for all specimens. The strain fields analysed with DIC reveals anisotropic straining in both the elastic and plastic parts of the flow curve for both direct ageing and solution treatment plus ageing specimens. In the former condition, the elastic anisotropy is dictated by the fraction of melt pool boundaries on the transverse surfaces of the specimens. When the material is solution treated prior to ageing, the melt pool boundary effect was supressed."
+   },
+   {
+    "id": "https://openalex.org/W3196454562",
+    "doi": "https://doi.org/10.1007/s11661-021-06427-x",
+    "title": "Quantitative Comparison of the Recrystallization Kinetics of Two Industrially Processed 5xxx Aluminum Alloys",
+    "year": 2021,
+    "cited": 17,
+    "venue": "Metallurgical and Materials Transactions A",
+    "topics": [
+     "Metallurgy and Material Forming",
+     "Aluminum Alloy Microstructure Properties",
+     "Crystallization and Solubility Studies"
+    ],
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11661-021-06427-x.pdf",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W2513402307",
+    "doi": null,
+    "title": "Band Positions Used for On-Line Crystallographic Orientation Determination from Electron Back Scattering Patterns",
+    "year": 1991,
+    "cited": 17,
+    "venue": "Digital Commons - USU (Utah State University)",
+    "topics": [
+     "X-ray Diffraction in Crystallography",
+     "Enzyme Structure and Function",
+     "Crystallography and Radiation Phenomena"
+    ],
+    "oa_url": "https://digitalcommons.usu.edu/microscopy/vol5/iss3/6",
+    "abstract": "A computer procedure for on-line analysis of electron back scattering patterns (EBSP) has been developed. An experimental EBSP is computer recorded and displayed on a computer monitor. The user identifies the positions of at least two bands in the EBSP with a cursor. Based on this input the computer calculates possible crystallographic orientations. The corresponding EBSPs are simulated and superimposed on the experimental EBSP. The correct crystallographic orientation is determined from a comparison between the experimental and simulated EBSPs. Typically, the analysis takes a 10-30 seconds per pattern. Advantages with the present procedure are that it can be applied for any crystal symmetry, that it requires no knowledge about electron diffraction maps, that it can be used for EBSPs with relatively low contrast, and that the indexing is very precise. For relative orientation measurements the accuracy is found to be within range 0.05°-0.20°, whereas, for repeated measurements of a given grain after complete remounting of sample and EBSP equipment, it was determined to be 0.5°. Furthermore, the procedure facilitates fully automatic pattern recognition."
+   },
+   {
+    "id": "https://openalex.org/W3183385945",
+    "doi": "https://doi.org/10.1016/j.jallcom.2021.161374",
+    "title": "Tailored ductility and strength for enhanced impact toughness of laser powder fusion built Alloy 718",
+    "year": 2021,
+    "cited": 16,
+    "venue": "Journal of Alloys and Compounds",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0925838821027833/pdf",
+    "abstract": "Impact toughness of Alloy 718 built via laser powder bed fusion (LPBF) in as-built and thermally post-treated conditions were investigated. The effect of various stages in the thermal post-treatment, including stress relief, hot isostatic pressing, solution treatment, and aging on the microstructure, texture, ductility, hardness, and impact toughness were studied. The greatest impact toughness was found in the as-built Alloy 718 material, associated with the high ductility of the material. The ductility results were also inversely related to the hardness of the investigated materials. Where the material with the highest ductility had the lowest hardness etc. Anisotropy in the impact toughness behavior was present in the as-built and post-heat treated specimens, which was explained by the presence of texture in all of the investigated material. With the applied heat treatments, recrystallization occurred and the preferential crystal orientations were randomized, decreasing the texture. The thermal post-treating conditions rendered different types of microstructures, with various grain sizes. The carbide content remained the same for the three investigated thermal post-treating conditions."
+   },
+   {
+    "id": "https://openalex.org/W4400619122",
+    "doi": "https://doi.org/10.1016/j.matdes.2024.113160",
+    "title": "Mechanical properties and microstructural characterisation including high-temperature performance of Al-Mn-Cr-Zr-based alloys tailored for additive manufacturing",
+    "year": 2024,
+    "cited": 15,
+    "venue": "Materials & Design",
+    "topics": [
+     "Additive Manufacturing Materials and Processes",
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing and 3D Printing Technologies"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127524005355-ga1_lrg.jpg",
+    "abstract": "Powder bed fusion-laser beam (PBF-LB), an additive manufacturing process, takes advantage of rapid cooling rates (103-106 K/s) to enable novel aluminium alloys. This study reports the mechanical properties of one such alloy system (Al-Mn-Cr-Zr based). The alloys based on this system are designed to be precipitation hardenable with high service temperatures. To elucidate the precipitation hardening, three alloy variants were studied involving different heat-treated conditions. Uniaxial tensile testing at room temperature revealed yield strengths between 250–500 MPa with elongation to fracture of 5–25 % with high repeatability. To demonstrate high-temperature resistance, two alloy variants in peak hardened condition were tested at temperatures of up to 573 K. Yield strength up to 170 MPa at 573 K was observed. These properties in combination demonstrate highly competitive Al-alloys for high-temperature applications."
+   },
+   {
+    "id": "https://openalex.org/W4396231683",
+    "doi": "https://doi.org/10.1016/j.matdes.2024.112987",
+    "title": "Advancing structure − property homogeneity in forged Alloy 718 engine disks: A pathway towards enhanced performance",
+    "year": 2024,
+    "cited": 15,
+    "venue": "Materials & Design",
+    "topics": [
+     "Metallurgy and Material Forming",
+     "Advanced Materials Characterization Techniques",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S0264127524003617-ga1_lrg.jpg",
+    "abstract": "Alloy 718 is widely used in critical temperature components of modern aircraft engines and gas turbines. However, its industrial-scale forging faces challenges around heterogeneous microstructures and properties in the final product. This has been attributed to inherent heterogeneous microstructures of the billet starting materials and/or the heterogeneous nature of deformation during hot forging itself, leading to heterogeneities and inferior mechanical performance during service. To overcome these challenges, a three-step TMP approach, denoted simply as TMP3, is introduced to unlock effective microstructure and homogeneity control, irrespective of the given billet microstructure. Using electron and atom probe microscopy, the through-process microstructure evolution is revealed, highlighting dependencies of homogeneity and superior properties on various dynamic recrystallization mechanisms and the δ-phase dissolution. The process affects the dislocation density, δ-phase characteristics, and solute distribution in the matrix γ-phase. This facilitates Nb redistribution, resulting in fractions and morphologies of γʹ and γ“ Co-precipitates during subsequent direct ageing. The final samples have a hardness of ∼ 500 HV, a ∼ 5 % improvement over previous methods, providing a reliable proxy for high-temperature yield strength, independent of the billet position. Our TMP3 approach can be scaled-up and will enable manufacturing of high-performance Alloy 718 parts ready for next generation aircraft engines."
+   },
+   {
+    "id": "https://openalex.org/W4386955210",
+    "doi": "https://doi.org/10.1016/j.jajp.2023.100156",
+    "title": "Robotic friction stir welding in lightweight battery assembly of extrusion-cast aluminium alloys",
+    "year": 2023,
+    "cited": 15,
+    "venue": "Journal of Advanced Joining Processes",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Aluminum Alloys Composites Properties",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2666330923000183-ga1_lrg.jpg",
+    "abstract": "The present study focuses on developing lightweight assembly of two different aluminium alloys extruded and high pressure die cast (HPDC) for battery frame assembly in BEV. The goal is to produce defect-free welds in lap configuration with smooth surface finish. Stationary shoulder friction stir welding (SSFSW) was employed with welding speeds of 3-15 mm/s. EBSD analysis revealed two groups of grains in the stir zone (SZ) due to dynamic recrystallization. Moreover, the grain size of the SZ significantly decreased compared to both alloys. The cast alloy contains large iron particles, and that were broken by the rotating probe, and the stirred material consisted of fine dispersed precipitates. Tensile-shear test found the fracture location at the hook area near to cast, and a model representing fracture behavior is also discussed. With increasing welding speed from 3 mm/s to 5 mm/s, the tensile strength found ∼95 and ∼100 MPa, respectively without any significance difference in the fracture behaviour and location. Overall, this study provides valuable insights such as materials mixing, grain refinement, and joint strength in dissimilar joining using SSFSW. The findings could be useful in developing optimized welding parameters and improving the overall quality and productivity of the SSFSW process for battery pack assembly in BEV."
+   },
+   {
+    "id": "https://openalex.org/W3193499660",
+    "doi": "https://doi.org/10.1016/j.jmrt.2021.08.046",
+    "title": "A comparison of the microstructures and hardness values of non-equiatomic (FeNiCo)-(AlCrSiTi) high entropy alloys having thermal histories related to laser direct metal deposition or vacuum remelting",
+    "year": 2021,
+    "cited": 15,
+    "venue": "Journal of Materials Research and Technology",
+    "topics": [
+     "High Entropy Alloys Studies",
+     "Additive Manufacturing Materials and Processes",
+     "High-Temperature Coating Behaviors"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2238785421008711/pdf",
+    "abstract": "Compared with conventional casting process, laser direct metal deposition (LDMD) can effectively reduce component segregation in non-equiatomic high entropy alloys (HEAs). However, the non-equilibrium thermal history imparted by this method has a significant effect on the microstructure and mechanical properties of the HEA. The present work prepared non-equiatomic (FeNiCo)-(AlCrSiTi) HEAs using the LDMD process, after which some samples were subjected to a subsequent vacuum remelting (VRM) treatment. The variations in phase composition, microstructure and hardness between the HEAs processed using the LDMD or VRM methods were investigated. Differences in phase composition increased with increases in the proportion of the Al, Cr, Si and Ti components. Compared with the HEA samples processed using the VRM method, the LDMD specimens possessed much finer and simpler microstructures mainly comprising solid solution phases. At relatively high concentrations of the Al, Cr, Si and Ti components (32 at% and 40 at% in total), the HEAs processed under LDMD conditions had similar grain morphologies, intermetallic phases and microhardness values, while the VRM specimens presented completely different microstructures and properties."
+   },
+   {
+    "id": "https://openalex.org/W1970355242",
+    "doi": "https://doi.org/10.2320/matertrans.me201305",
+    "title": "Damping Capacity of Fe–17mass%Mn High Damping Alloy with Variant Controlled Microstructure",
+    "year": 2013,
+    "cited": 15,
+    "venue": "MATERIALS TRANSACTIONS",
+    "topics": [
+     "Magnetic Properties and Applications",
+     "Microstructure and Mechanical Properties of Steels",
+     "Metallurgy and Material Forming"
+    ],
+    "oa_url": "https://www.jstage.jst.go.jp/article/matertrans/54/8/54_ME201305/_pdf",
+    "abstract": "In our previous study, it is reported that damping capacity as well as hardness of an Fe–20 mass%Mn alloy can be improved by the thermo-mechanical training featured by rolling deformation. In this study, the thermo-mechanical training of an Fe–17 mass%Mn alloy is carried out with bending mode, since vibration manner of the internal friction measurement refers to bending mode. An anisotropic damping capacity is observed for samples subjected to bending mode training. Moreover, the trade-off between the damping capacity and hardness can be overcome by thermo-mechanical training. To be concluded, the thermo-mechanical training is useful for enhancement of damping properties and hardness of Fe–Mn alloys."
+   },
+   {
+    "id": "https://openalex.org/W2020860583",
+    "doi": "https://doi.org/10.1155/2008/360617",
+    "title": "Mechanical Behaviour and Microstructure of Aluminum-Steel Sheets Joined by FSSW",
+    "year": 2008,
+    "cited": 15,
+    "venue": "Texture Stress and Microstructure",
+    "topics": [
+     "Advanced Welding Techniques Analysis",
+     "Aluminum Alloy Microstructure Properties",
+     "Aluminum Alloys Composites Properties"
+    ],
+    "oa_url": "https://downloads.hindawi.com/archive/2008/360617.pdf",
+    "abstract": "At the prospect of a lightening of the automobile structures, welded spots have been realized on a stacking of two sheets (a 6008 aluminum alloy on steel) Friction Stir Spot welding (FSSW). Different process parameters have been tested, but only the influence of the dwell time will be described in the present paper. The dwell time corresponds to the time during which the probe stays in rotation at its bottom location before extracting. A study of the microstructures and textures associated to mechanical tests (tensile shear tests) allowed determining the best set of welding parameters. The recrystallized area around the welding spot has been characterized by electron back-scattered diffraction (EBSD). A mechanism of continuous dynamic recrystallization has been identified since the misorientation of subboundaries increases close to the weld, and this is for all the dwell times tested. Elsewhere, the increase of the dwell time induced a larger recrystallized zone. It has also been found that a long dwell time induced a larger welded area but also a higher quantity of intermetallic compounds (especially FeAl, Fe2Al7 , and FeAl2 ) with high-microhardness values (up to 800 Hv). Thus, the dwell time must not exceed a certain value, otherwise it can weaken the weld."
+   },
+   {
+    "id": "https://openalex.org/W2144561309",
+    "doi": "https://doi.org/10.1016/j.actamat.2008.04.037",
+    "title": "Origin of intragranular crystallographic misorientations in hot-dip Al–Zn–Si coatings",
+    "year": 2008,
+    "cited": 15,
+    "venue": "Acta Materialia",
+    "topics": [
+     "Aluminum Alloy Microstructure Properties",
+     "Solidification and crystal growth phenomena",
+     "Microstructure and mechanical properties"
+    ],
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1359645408002966",
+    "abstract": ""
+   },
+   {
+    "id": "https://openalex.org/W4402565448",
+    "doi": "https://doi.org/10.1016/j.jallcom.2024.176459",
+    "title": "Discontinuous γ′ nucleation due to Boron and Carbon segregation in Ni-based superalloys",
+    "year": 2024,
+    "cited": 14,
+    "venue": "Journal of Alloys and Compounds",
+    "topics": [
+     "High Temperature Alloys and Creep",
+     "Advanced Materials Characterization Techniques",
+     "Aluminum Alloy Microstructure Properties"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.jallcom.2024.176459",
+    "abstract": "Discontinuous γ′ precipitation is a solid-state phase transformation that involves nucleation at migrating grain boundaries during slow cooling, resulting in rod-like γ’. It has recently found applications in addressing hot-working challenges in Ni-based superalloys and large-scale nanorod production. However, more widespread adoption of discontinuous precipitation requires a better understanding of its nucleation and growth stages. Existing research provides inconclusive results on whether elemental segregation or secondary phases serve as nucleation sites. The nucleation mechanisms at these sites remain unclear due to two key factors. Firstly, elemental segregation reduces grain boundary energy, consequently decreasing the driving force for heterogeneous nucleation. Secondly, the growth of discontinuous γ′ is directly linked to grain boundary mobility, which is reduced by solute drag or Zener pinning. Here, we compare two Ni-based superalloys with different B and C contents to establish their role in discontinuous γ′ precipitation. We show that the high B & C variant exhibits increased susceptibility to discontinuous γ′ nucleation compared to the low B & C variant. In the high B & C variant only, discontinuous γ′ precipitation is achieved at a cooling rate of 5 °C/min. At a slower cooling rate of 1 °C/min, both variants undergo an almost complete transformation via the discontinuous reaction. Atom probe microscopy confirms that nucleation occurs at grain boundaries with increased interfacial excess of B and C, rather than at carbides or borides . CALPHAD simulations show that elevated B and C concentrations around grain boundaries locally increase the general driving force for γ′ nucleation. As growth proceeds, the morphology transitions from initial fan-like into spaghetti-like structures, alongside with emergence of misfit dislocations where differently aligned discontinuous γ′ cells intersect. We suggest that stresses cells exert on each other determine growth directions, leading to the spaghetti morphology. These insights are pivotal for controlling discontinuous precipitation and facilitating broader adoptions in advanced hot-working and nanotechnology."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"Struers Duramin-40\" OR \"Struers Duramin-40 M1\" OR \"Struers A1\" OR \"Struers Duramin-40 M2\" OR \"Struers A2\" OR \"Struers Duramin-40 M3\") AND OPEN_ACCESS:y",
@@ -305,8 +1056,14 @@
    "standards": []
   }
  ],
- "standards_found": {},
- "standards_new": [],
+ "standards_found": {
+  "ISO 12004-2": 1,
+  "EN AW-6082": 1
+ },
+ "standards_new": [
+  "EN AW-6082",
+  "ISO 12004-2"
+ ],
  "test_item_hits": {
   "density_porosity": 5,
   "abrasion": 2,

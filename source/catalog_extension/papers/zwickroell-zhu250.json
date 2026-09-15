@@ -7,8 +7,39 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZwickRoell ZHU250\"",
-  "count": null,
-  "works": []
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W3213654150",
+    "doi": "https://doi.org/10.3390/cryst11111378",
+    "title": "Spark Plasma Sintering of SiAlON Ceramics Synthesized via Various Cations Charge Stabilizers and Their Effect on Thermal and Mechanical Characteristics",
+    "year": 2021,
+    "cited": 12,
+    "venue": "Crystals",
+    "topics": [
+     "Advanced ceramic materials synthesis",
+     "MXene and MAX Phase Materials",
+     "Advanced materials and composites"
+    ],
+    "oa_url": "https://www.mdpi.com/2073-4352/11/11/1378/pdf?version=1636707064",
+    "abstract": "Oxygen-rich SiAlON ceramics doped with various nanosized metal oxide (MO) stabilizers were synthesized with a view to examine their effect on thermal and mechanical characteristics. The nanosized starting powder precursors comprising Si3N4, AlN, Al2O3, and SiO2 along with oxides of Ba, Y, Mg, La, Nd, Eu, Dy, Er, and Yb as the MO charge stabilizer were employed in developing different SiAlON samples. Ultrasonic probe sonication was utilized to develop a homogenous mixture of initial powder precursors followed by spark plasma sintering (SPS) of the samples at the low temperature of 1500 °C coupled with 30 min of isothermal treatment. Sample compositions (according to general formula of alpha SiAlON: Mm/vv+Si12−(m+n)Alm+nOnN16−n) selected in the present study are represented by m value of 1.1 and n value of 1.6. The synthesized samples were evaluated for their physical behavior, microstructural and crystal structure evolution, and thermal and mechanical characteristics. More specifically, the sintered ceramics were examined by X-ray diffraction and electron microscopy to comprehend and relate the structural characteristics with the densification, thermal conductivity, hardness, and fracture toughness. The high reactivity of the nanopowders and the localized heating provided by SPS resulted in densified ceramics with relative densities in the range of 92–96%. Vickers hardness values were found to be in the range of 12.4–17.0 GPa and were seen to be profoundly influenced by the grain size of the alpha SiAlON (primary) phase. The fracture toughness of the samples was measured to be in the range of 4.1–6.2 MPa·m1/2. SiAlON samples synthesized using Er and Yb charge stabilizers were found to have the highest fracture toughness of 5.7 and 6.2 MPa·m1/2, primarily due to the relatively higher content of the elongated beta phase. While there was no obvious relationship between the thermal conductivity and the alpha SiAlON metal charge stabilizers, the values were seen to be influenced by the grain size of alpha phase where Dy-SiAlON had the lowest thermal conductivity of 5.79 W/m⋅K and Er-SiAlON showed the highest value of thermal conductivity (6.91 W/m⋅K). It was concluded that scientifically selected metal oxide charge stabilizers are beneficial in developing SiAlON ceramics with properties tailored according to specific applications."
+   },
+   {
+    "id": "https://openalex.org/W7204025963",
+    "doi": "https://doi.org/10.67317/ijmsrt26aug057",
+    "title": "Optimising Chilled Cast Iron Grinding Wheels for Food Processing through Microstructure Control",
+    "year": 2026,
+    "cited": 0,
+    "venue": "International Journal of Modern Science and Research Technology",
+    "topics": [
+     "Metal Alloys Wear and Properties",
+     "Advanced machining processes and optimization",
+     "Brake Systems and Friction Analysis"
+    ],
+    "oa_url": "https://ijmsrt.com/storages/download-paper/IJMSRT26AUG057",
+    "abstract": "Domestic food processing across West Africa depends on cast iron grinding wheels with a white iron surface layer containing a continuous cementite network for wear resistance and a grey iron core for structural support, yet these components suffer severe wear degradation. The wear coefficient evolution as a function of heat treatment temperature has not been quantified, nor has the friction-wear coupling mechanism been established, leaving manufacturers without guidance. Specimens from a locally manufactured wheel (3.35 wt% C, 1.80 wt% Si) were subjected to annealing, normalising, quenching, and tempering at 700°C, 750°C, and 800°C. Hardness was measured by Brinell testing, microstructures by optical microscopy, and wear performance by the Archard model with microstructure-dependent coefficients. The as-cast material exhibited 229 HBW, while all heat treatments reduced hardness; water quenching did not produce martensite due to 1.80 wt% Si limiting hardenability. Calculated mass loss increased from 250 mg to 310–3,400 mg for heat-treated conditions, representing up to 1,300% increase, as thermal energy promotes cementite decomposition. Heat treatment increases the wear coefficient by up to 830% and transitions wear from micro-cutting to ploughing. The as-cast condition provides 21-month estimated service life compare to 2- month for annealed wheels, representing a 14-fold annual cost reduction. Manufacturers should prioritise casting conditions over thermal processing. This study introduces the first microstructure-specific wear coefficient framework and economic life-cycle cost model for these wheels."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZwickRoell ZHU250\") AND OPEN_ACCESS:y",

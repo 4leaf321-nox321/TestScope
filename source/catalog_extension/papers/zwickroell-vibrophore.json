@@ -8,8 +8,39 @@
  "harvested": "2026-09-13",
  "openalex": {
   "query": "\"ZwickRoell Vibrophore 250\" OR \"ZwickRoell Vibrophore 1000\"",
-  "count": null,
-  "works": []
+  "count": 2,
+  "works": [
+   {
+    "id": "https://openalex.org/W4313422901",
+    "doi": "https://doi.org/10.1016/j.prostr.2022.12.138",
+    "title": "Comparison of crack propagation rates in selected structural components made from AISI 304 grades: Three-point bending test",
+    "year": 2022,
+    "cited": 2,
+    "venue": "Procedia Structural Integrity",
+    "topics": [
+     "Fatigue and fracture mechanics",
+     "Structural Load-Bearing Analysis",
+     "High Temperature Alloys and Creep"
+    ],
+    "oa_url": "https://doi.org/10.1016/j.prostr.2022.12.138",
+    "abstract": "This study focuses on crack propagation rates of AISI 304 stainless-steel specimens made from selected structural components experimentally tested in three-point bending. Components of two productions loaded with constant force with selected stress ratio were submitted to cyclic loading in order to measure crack opening displacement. Experimentally obtained data were evaluated using 3D modelling in finite element modeling software intending to determine fracture mechanical parameters. The tool to describe fatigue behavior was Paris’ law, used to describe crack propagation in intermediate crack growth rate range. Paris–Erdogan equation was evaluated as a fitting of linear part of the graphical plot of crack growth rate with respect to the stress intensity range and material constants were gained from numerical description of the relation. Comparison of fatigue crack behavior in AISI 304 steel components of two productions was studied and evaluated."
+   },
+   {
+    "id": "https://openalex.org/W7164449311",
+    "doi": null,
+    "title": "Assessment of welding quality of chassis parts made of high-strength MC materials in automotive conditions",
+    "year": 2026,
+    "cited": 0,
+    "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
+    "topics": [
+     "Powder Metallurgy Techniques and Materials",
+     "Mechanical and Thermal Properties Analysis",
+     "Advancements in Materials Engineering"
+    ],
+    "oa_url": "https://dspace.vut.cz/bitstreams/f47b2508-f83f-4e60-bfb2-aff698baeea7/download",
+    "abstract": "Diplomová práce se zaměřuje na posouzení kvality svarů podvozkových dílů z termomechanicky válcovaných ocelí S355MC a S550MC a na optimalizaci parametrů robotického MAG svařování pro podmínky automotive. Z úvodní analýzy byl pro detailní zkoumání v kombinaci tlouštěk plechů 4 a 2,8 mm vybrán přeplátovaný spoj, neboť vykazoval více vad než koutový spoj pod úhlem. Experimentální část zahrnovala odladění 50 variant svařovacích parametrů, z nichž byly vybrány dvě finální s odlišným vneseným teplem. U vzorku DA_05 bylo vnesené teplo Q = 434,5 J.mm-1, a druhého DT_44_SH pak Q = 521,4 J.mm-1. Následně proběhlo měření tvrdosti, tahové a následně únavové zkoušky se zatěžující amplitudou 50; 40; 30; 25 MPa. Jako poslední byla provedena verifikace pomocí MKP simulace v programu SYSWELD. Výsledky prokázaly výrazné změknutí v tepelně ovlivněné oblasti. U oceli S550MC klesla tvrdost z 225 na 191 HV1 a u oceli S355MC byl pokles mírnější ze 174 HV1 základního materiálu na 155 HV1 v TOO. Svařence při tahových zkouškách praskaly v základním materiálu S355MC při dosažení maximální síly Fm5 = 26,08 kN a Fm44 = 28,86 kN. Únavové testy odhalily jako hlavní místo iniciace trhlin patu svaru. Při porovnání s únavovou referenční křivkou FAT 36 s napětím v účinném průřezu svaru vzorky bezpečně splnily. Přísnější kritérium FAT 63 pro napětí v základním materiálu v přechodu svaru kvůli vysoké lokální koncentraci napětí nesplnily. Vyšší vnesené teplo se ukázalo jako prospěšné pro prodloužení únavové životnosti. Numerická simulace experimentální data podpořila, když predikovala propad tvrdosti a identifikovala patu svaru jako kritický koncentrátor napětí dosahující 4,3násobku nominální hodnoty."
+   }
+  ]
  },
  "europepmc": {
   "query": "(\"ZwickRoell Vibrophore 250\" OR \"ZwickRoell Vibrophore 1000\") AND OPEN_ACCESS:y",
