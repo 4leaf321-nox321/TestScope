@@ -54,6 +54,28 @@ def test_네이티브_명령은_종료_코드로_판정한다() -> None:
         assert "function Invoke-Native" in text, f"{name} 에 Invoke-Native 가 없습니다"
 
 
+def test_Invoke_Native_블록_안에서_command_변수를_안_쓴다() -> None:
+    """Invoke-Native 의 매개변수가 `$Command`(블록 자신)다. 호출부가 같은 이름을 블록 안에
+    쓰면 동적 스코프 때문에 **블록 자신**으로 풀리고, PowerShell 은 그것을 exe 에
+    `-encodedCommand` 로 넘긴다 — 운영 첫 설치에서 WinSW 가 「Unknown command」 로 전부 죽었다.
+    `$FailureMessage` 도 같은 이유로 막는다."""
+    import re
+
+    for path in _repo_scripts():
+        text = path.read_text(encoding="utf-8-sig")
+        if "function Invoke-Native" not in text:
+            continue
+        # 정의 자체는 빼고 본다.
+        start = text.index("function Invoke-Native")
+        end = text.index("\n}\n", start) + 3
+        outside = text[:start] + text[end:]
+        clashes = re.findall(r"\$(?:command|failuremessage)\b", outside, flags=re.IGNORECASE)
+        assert not clashes, (
+            f"{path.name}: Invoke-Native 밖에서 $Command/$FailureMessage 를 씁니다 — "
+            "블록 안에서 블록 자신으로 풀립니다. 다른 이름을 쓰세요."
+        )
+
+
 def test_대시_두_개를_막는다() -> None:
     """`--AppPath '<경로>'` 로 쓰면 PowerShell 은 오류를 내지 않는다.
 

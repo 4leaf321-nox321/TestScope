@@ -202,9 +202,14 @@ function Get-ServiceOrNull([string]$id) {
     return Get-Service -Name $id -ErrorAction SilentlyContinue
 }
 
-function Invoke-WinSW([string]$id, [string]$command) {
+# **블록 안에서 $command 를 쓰지 않는다.** Invoke-Native 의 매개변수 이름이 $Command(블록 자신)라,
+# 블록이 그 안에서 실행될 때 같은 이름의 변수는 블록 자신으로 풀린다(동적 스코프, 대소문자 무시).
+# PowerShell 은 스크립트 블록을 exe 인수로 넘길 때 `-encodedCommand <base64>` 로 바꾸므로 WinSW 는
+# 「Unknown command: -encodedcommand」 를 본다 — 운영 첫 설치에서 install·start·uninstall 이 전부
+# 그렇게 죽었다. 이름을 $verb 로 두고, 시험(test_scripts)이 재발을 막는다.
+function Invoke-WinSW([string]$id, [string]$verb) {
     $exe = Join-Path $serviceDir "$id.exe"
-    Invoke-Native "서비스 $id $command 실패" { & $exe $command }
+    Invoke-Native "서비스 $id $verb 실패" { & $exe $verb }
 }
 
 function Install-One($def) {
