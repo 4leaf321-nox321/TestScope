@@ -28,9 +28,18 @@ SYSTEM 으로 돌면 모델이 `C:\Windows\System32\config\systemprofile\.ollama
 「분명히 받았는데 서비스는 없다고 한다」 가 된다. `OLLAMA_MODELS` 를 기계 전역
 변수로 박아 양쪽이 같은 자리를 보게 한다.
 
+## 이미 트레이 앱으로 깔려 있는 서버 — `-TakeOver`
+
+사람이 설치 프로그램으로 깐 Ollama 는 **로그인한 사람의 트레이 앱**으로 떠 있다. 응답은 하니
+이 스크립트는 그것을 「이미 도는 엔진」 으로 보고 서비스를 안 만든다 — 그런데 그 사람이
+로그아웃하거나 재부팅하면 사라진다. `-TakeOver` 를 주면 트레이 인스턴스를 내리고, 로그인 시
+자동 실행 항목을 지우고, SYSTEM 작업으로 넘긴다. 모델 자리도 `-ModelPath` 를 **명시하면**
+전역 값을 덮고, 옛 자리에 있던 모델을 새 자리로 복사한다(옛 것은 지우지 않는다).
+
 사용:
   .\setup_ollama.ps1                          # 설치 + 서비스 + bge-m3
   .\setup_ollama.ps1 -Model bge-m3 -Port 11434
+  .\setup_ollama.ps1 -ModelPath 'D:\Ollama\models' -TakeOver   # 이미 깔린 것을 서비스로, 모델은 D: 로
   .\setup_ollama.ps1 -SkipService             # 서비스 없이 지금 세션에서만
   .\setup_ollama.ps1 -CheckOnly               # 아무것도 안 바꾸고 상태만 본다
 #>
@@ -41,7 +50,9 @@ param(
     [string]$ModelPath = 'C:\ProgramData\Ollama\models',
     [string]$TaskName = 'TestScope-Ollama',
     [switch]$SkipService,
-    [switch]$CheckOnly
+    [switch]$CheckOnly,
+    # 트레이 앱으로 떠 있는 인스턴스를 내리고 SYSTEM 작업으로 넘긴다(위 설명).
+    [switch]$TakeOver
 )
 
 $ErrorActionPreference = 'Stop'
@@ -154,23 +165,62 @@ if ((-not $exe) -and (Test-Alive)) {
 # **기계 전역이어야 한다.** SYSTEM 으로 도는 서비스와 사람이 손으로 돌리는
 # `ollama pull` 이 같은 자리를 봐야 「받았는데 없다」 가 안 생긴다. 이미 전역 값이
 # 있으면(다른 앱이 정했으면) 그대로 둔다 — 바꾸면 그쪽 모델이 안 보이게 된다.
+# 다만 **-ModelPath 를 명시했으면 그것이 이긴다** — 사람이 옮기려고 준 값이다.
 $already = [Environment]::GetEnvironmentVariable('OLLAMA_MODELS', 'Machine')
-if ($already) {
+$explicit = $PSBoundParameters.ContainsKey('ModelPath')
+if ($already -and -not $explicit) {
     $ModelPath = $already
     Write-Log "모델 자리(이미 정해짐): $ModelPath"
 } else {
+    $ModelPath = [System.IO.Path]::GetFullPath($ModelPath)
     if (-not (Test-Path $ModelPath)) { New-Item -ItemType Directory -Force $ModelPath | Out-Null }
+    # 옛 자리에 모델이 있으면 새 자리로 **복사**한다(지우지 않는다). 트레이 앱은 사용자
+    # 프로필(.ollama\models)에 받아 두므로 그 자리도 본다. 이미 새 자리에 blobs 가 있으면 건너뛴다.
+    $oldPlaces = @()
+    if ($already -and $already -ne $ModelPath) { $oldPlaces += $already }
+    $oldPlaces += (Join-Path $env:USERPROFILE '.ollama\models')
+    if (-not (Test-Path (Join-Path $ModelPath 'blobs'))) {
+        foreach ($old in $oldPlaces) {
+            if ((Test-Path (Join-Path $old 'blobs')) -and ($old -ne $ModelPath)) {
+                Write-Log "옛 자리의 모델을 복사합니다: $old → $ModelPath (몇 분 걸릴 수 있습니다)"
+                # 5.1 은 robocopy 의 stderr 를 오류로 착각하지 않지만 종료 코드가 0 이 아니어서
+                # (비트 플래그) Invoke-Native 로 못 감싼다 — 8 미만이면 성공이다.
+                & robocopy $old $ModelPath /E /R:1 /W:1 /NFL /NDL /NJH /NJS | Out-Null
+                if ($LASTEXITCODE -ge 8) { throw "모델 복사 실패 (robocopy exit $LASTEXITCODE)" }
+                break
+            }
+        }
+    }
     [Environment]::SetEnvironmentVariable('OLLAMA_MODELS', $ModelPath, 'Machine')
     Write-Log "모델 자리: $ModelPath"
 }
 $env:OLLAMA_MODELS = $ModelPath
+
+# --- 2-b. 트레이 인스턴스 내리기 (-TakeOver) ------------------------------------
+# 사람 세션의 트레이 앱이 11434 를 물고 있으면 SYSTEM 작업이 떠도 포트를 못 잡는다.
+# 그리고 그 앱은 로그인 시 자동 실행 항목으로 되살아나니 그것도 지운다(현재 사용자의 Run 키).
+if ($TakeOver) {
+    $tray = Get-Process -Name 'ollama app', 'ollama' -ErrorAction SilentlyContinue
+    if ($tray) {
+        Write-Log ("트레이 인스턴스를 내립니다: " + (($tray | ForEach-Object { "$($_.ProcessName)($($_.Id))" }) -join ', '))
+        $tray | Stop-Process -Force -ErrorAction SilentlyContinue
+        Start-Sleep -Seconds 2
+    }
+    $runKey = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
+    $entry = Get-ItemProperty -Path $runKey -Name 'Ollama' -ErrorAction SilentlyContinue
+    if ($entry) {
+        Remove-ItemProperty -Path $runKey -Name 'Ollama'
+        Write-Log '로그인 시 자동 실행(트레이) 항목을 지웠습니다 — 이제 SYSTEM 작업이 띄웁니다.'
+    }
+    if (Test-Alive) { throw '11434 가 아직 응답합니다 — 다른 계정의 세션에서 도는 인스턴스일 수 있습니다. 그 세션에서 종료한 뒤 다시 돌리세요.' }
+}
 
 # --- 3. 서비스(작업 스케줄러) ------------------------------------------------
 if (Test-Alive) {
     # 누가 띄웠든 이미 도는 것을 쓴다. 우리 작업이 없어도 등록하지 않는다 — 재부팅 뒤에
     # 그쪽이 안 뜨면 그때 이 스크립트를 다시 돌리면 된다(그때는 응답이 없으니 등록한다).
     $ours = Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
-    Write-Log ("엔진이 이미 응답합니다 — 서비스를 " + $(if ($ours) { "다시 등록하지 않습니다('$TaskName' 있음)." } else { '등록하지 않습니다(다른 앱이 띄운 것을 씁니다).' }))
+    Write-Log ("엔진이 이미 응답합니다 — 서비스를 " + $(if ($ours) { "다시 등록하지 않습니다('$TaskName' 있음)." } else { '등록하지 않습니다(다른 앱이 띄운 것을 씁니다). 트레이 앱이라 재부팅하면 사라지는 것이면 -TakeOver 를 주세요.' }))
 } elseif ($SkipService) {
     Write-Log '서비스 등록을 건너뜁니다.'
     if (-not (Test-Alive)) {
