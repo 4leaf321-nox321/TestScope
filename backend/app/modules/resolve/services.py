@@ -7,14 +7,19 @@
 둬야 한다. 그 셋을 목록만 보고 판단하게 두면 AI 는 첫 줄을 집는다 — 틀린 줄도
 첫 줄이면 집는다.
 
-## 세 단계로 좁힌다
+## 네 단계로 좁힌다
 
     1. 비교키가 정확히 같다      -> exact
     2. 별칭이 정확히 같다        -> exact (기준정보 값만)
     3. 이름에 포함된다           -> candidates
+    4. 뜻이 가깝다               -> candidates (의미 검색이 켜져 있을 때만)
 
 정확히 하나만 남아도 **곧바로 exact 로 올리지 않는다**(포함 검색은 우연히 하나일
 수 있다). 다만 후보가 하나면 화면·AI 둘 다 그것을 쓰기 쉬우므로 `hint` 로 말한다.
+
+4 는 글자가 하나도 안 겹칠 때를 위한 것이다 — 「HAST」 를 물었는데 값은 「고가속 습열」 이고
+별칭에도 없을 때. 후보일 뿐이고 **exact 로는 절대 안 올린다**: 벡터가 가깝다는 것은 같다는
+뜻이 아니다. 의미 검색이 꺼져 있으면(pgvector·Ollama 없음) 이 단계는 그냥 비어 있다.
 """
 
 from __future__ import annotations
@@ -30,12 +35,35 @@ from app.modules.equipment.models import EquipmentModel, EquipmentSeries
 from app.modules.methods.models import TestMethod
 from app.modules.resolve.schemas import ResolveCandidate, ResolveResponse
 from app.modules.vocabulary.models import Vocabulary, VocabularyAlias, VocabularyTerm
+from app.shared import semantic
 from app.shared.errors import AppError
 from app.shared.text import clean, compare_key
 
 _EXACT = "정확히 같음"
 _ALIAS = "별칭"
 _PART = "이름에 포함"
+_NEAR = "뜻이 가까움"
+
+#: 이보다 멀면 후보로 안 올린다. bge-m3 실측(2026-09-15): 맞는 것은 0.5 위, 엉뚱한 것은
+#: 0.4 안팎 — 「HAST」 에 「마모」 가 0.395 로 따라왔다.
+_NEAR_MIN_SCORE = 0.45
+
+
+def _near(db: Session, text: str, kind: str, limit: int) -> list[ResolveCandidate]:
+    """뜻이 가까운 후보. 의미 검색이 없으면 빈 목록 — 예외를 안 낸다."""
+    made: list[ResolveCandidate] = []
+    for found in semantic.search(db, text, kinds=[kind], limit=limit):
+        if found.score < _NEAR_MIN_SCORE:
+            continue
+        made.append(
+            ResolveCandidate(
+                id=uuid.UUID(found.entity_id),
+                label=found.title,
+                detail=f"유사도 {found.score:.2f}",
+                why=_NEAR,
+            )
+        )
+    return made
 
 
 def _answer(
@@ -109,15 +137,13 @@ def _resolve_series(db: Session, text: str, maker: str | None, limit: int) -> Re
         .order_by(EquipmentSeries.name)
         .limit(limit)
     ).all()
-    return _answer(
-        None,
-        [
-            ResolveCandidate(
-                id=row.id, label=_series_label(db, row), detail=row.name, why=_PART
-            )
-            for row in rows
-        ],
-    )
+    candidates = [
+        ResolveCandidate(id=row.id, label=_series_label(db, row), detail=row.name, why=_PART)
+        for row in rows
+    ]
+    if not candidates and not maker:
+        candidates = _near(db, text, "series", limit)
+    return _answer(None, candidates)
 
 
 def _resolve_model(db: Session, text: str, maker: str | None, limit: int) -> ResolveResponse:
@@ -236,10 +262,13 @@ def _resolve_term(db: Session, text: str, axis: str | None, limit: int) -> Resol
         .order_by(VocabularyTerm.value)
         .limit(limit)
     ).all()
-    return _answer(
-        None,
-        [ResolveCandidate(id=row.id, label=row.value, detail=axis, why=_PART) for row in rows],
-    )
+    candidates = [
+        ResolveCandidate(id=row.id, label=row.value, detail=axis, why=_PART) for row in rows
+    ]
+    # 카드가 있는 축(시험 항목·물성)만 뜻으로도 찾는다.
+    if not candidates and axis in ("test_item", "property"):
+        candidates = _near(db, text, axis, limit)
+    return _answer(None, candidates)
 
 
 def _resolve_method(db: Session, text: str, limit: int) -> ResolveResponse:
@@ -266,18 +295,18 @@ def _resolve_method(db: Session, text: str, limit: int) -> ResolveResponse:
         .order_by(TestMethod.code)
         .limit(limit)
     ).all()
-    return _answer(
-        None,
-        [
-            ResolveCandidate(
-                id=row.id,
-                label=f"{row.code} {row.edition or ''}".strip(),
-                detail=row.title,
-                why=_PART,
-            )
-            for row in found
-        ],
-    )
+    candidates = [
+        ResolveCandidate(
+            id=row.id,
+            label=f"{row.code} {row.edition or ''}".strip(),
+            detail=row.title,
+            why=_PART,
+        )
+        for row in found
+    ]
+    if not candidates:
+        candidates = _near(db, text, "method", limit)
+    return _answer(None, candidates)
 
 
 def resolve(db: Session, payload: dict[str, Any]) -> ResolveResponse:

@@ -40,6 +40,29 @@ class CatalogStateOut(BaseModel):
     """정본과 반입 시점의 지문이 다르다. 며칠 뒤졌는지는 모른다 — 정본에 날짜가 없다."""
 
 
+class SemanticStateOut(BaseModel):
+    """의미 검색 부품 셋(엔진·확장·표)이 어디까지 있나. 없는 것은 고장이 아니라 설정이다."""
+
+    backend: str
+    """off · mock · ollama"""
+    engine_ready: bool
+    engine_note: str | None
+    extension: bool
+    """pgvector 가 이 DB 에 켜져 있나."""
+    table: bool
+    chunks: int
+    kinds: dict[str, int]
+
+
+class JobsStateOut(BaseModel):
+    """작업 큐 — 상태별 수. `failed` 가 있으면 사람이 봐야 한다."""
+
+    queued: int
+    running: int
+    done: int
+    failed: int
+
+
 class ServerStatusOut(BaseModel):
     version: str
     app_env: str
@@ -55,6 +78,8 @@ class ServerStatusOut(BaseModel):
     counts: list[TableCountOut]
     started_at: datetime
     catalog: CatalogStateOut
+    semantic: SemanticStateOut
+    jobs: JobsStateOut
 
 
 class MaintenanceItemOut(BaseModel):

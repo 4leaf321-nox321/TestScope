@@ -126,8 +126,8 @@ if ($isFirstRun) { Write-Log "$AppPath 에 기존 설치가 없습니다 — 첫
 # 서비스는 「죽여도 되살아나는」 것이라 이름을 알아야 멈출 수 있다. 콘솔로 띄운 것은
 # 여전히 사람이 닫는다.
 #
-# 순서: MCP 가 백엔드에 의존하므로 멈출 때는 MCP 먼저, 올릴 때는 백엔드 먼저.
-$serviceIds = @('TestScope-MCP', 'TestScope') | Where-Object { Get-Service -Name $_ -ErrorAction SilentlyContinue }
+# 순서: MCP 가 백엔드에 의존하므로 멈출 때는 MCP 먼저, 올릴 때는 백엔드 먼저. 워커는 그 사이.
+$serviceIds = @('TestScope-MCP', 'TestScope-Worker', 'TestScope') | Where-Object { Get-Service -Name $_ -ErrorAction SilentlyContinue }
 $stoppedServices = @()
 foreach ($id in $serviceIds) {
     $svc = Get-Service -Name $id
@@ -140,7 +140,7 @@ foreach ($id in $serviceIds) {
 }
 function Start-AppServices {
     # 멈췄던 것만, 백엔드부터.
-    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+    foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
         if ($stoppedServices -contains $id) {
             Write-Log "서비스 $id 시작"
             try { Start-Service -Name $id -ErrorAction Stop } catch { Write-Warning "서비스 $id 를 시작하지 못했습니다: $_" }
@@ -453,6 +453,20 @@ if ($SkipMigrations) {
         Write-Host "  & '$backendPython' scripts\seed_reference.py"
     }
     Pop-Location
+
+    # --- 의미 검색 표 --------------------------------------------------------
+    #
+    # `search_chunks` 는 pgvector 가 있어야 만들 수 있어 마이그레이션에 없다. 이 스크립트가
+    # **있으면 만들고 없으면 조용히 넘어간다** — 검색의 곁가지 때문에 배포가 서면 안 된다.
+    # 표가 생겼고 엔진이 켜져 있으면 첫 색인 작업을 넣어 워커가 채우게 한다.
+    Write-Log '의미 검색 표 확인'
+    Push-Location (Join-Path $AppPath 'backend')
+    try {
+        Invoke-Native '의미 검색 표 확인 실패' { & $backendPython scripts\ensure_semantic_schema.py }
+    } catch {
+        Write-Log "의미 검색 표 확인 실패 (배포는 계속합니다): $_"
+    }
+    Pop-Location
 }
 
 # **무엇이 깔렸는지 남긴다.** 태그를 지정하지 않고 배포하면 나중에 되짚을 방법이
@@ -466,7 +480,7 @@ Write-Host ''
 if ($serviceIds.Count -gt 0) {
     if ($LeaveServicesStopped) { Write-Log '서비스는 멈춘 채 둡니다 (-LeaveServicesStopped)' } else { Start-AppServices }
     Write-Host '서비스:'
-    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+    foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
         $svc = Get-Service -Name $id -ErrorAction SilentlyContinue
         if ($svc) { Write-Host ("  {0,-14} {1}" -f $id, $svc.Status) }
     }

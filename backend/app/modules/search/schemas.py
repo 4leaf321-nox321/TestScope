@@ -195,3 +195,29 @@ class CatalogSearchResponse(BaseModel):
     unmet_models: int
     """조건에 걸려 빠진 기종 수. 0 건일 때 「없어서」 와 「조건이 좁아서」 를 가른다."""
     expanded_test_items: list[str] = []
+
+
+class SemanticHit(BaseModel):
+    """뜻이 가까운 것 하나."""
+
+    kind: str
+    """test_item · property · series · model · method · equipment · reliability_test"""
+    id: str
+    title: str
+    snippet: str
+    """카드의 앞부분 — 왜 걸렸는지 사람이 보는 자리."""
+    score: float
+    """0~1. 코사인 유사도. bge-m3 실측으로 0.5 위가 맞는 것, 0.4 안팎은 우연이다."""
+
+
+class SemanticSearchResponse(BaseModel):
+    """의미 검색 — **글자가 안 겹쳐도 뜻이 가까우면** 찾는다.
+
+    구조화 검색(`/search/test-items`)의 **앞자리**다: 「열충격 500사이클 되는 챔버」 같은
+    자유 문장에서 시험 항목·계열 후보를 뽑고, 그다음은 사슬(시험 항목 → 조건 → 장비)이
+    답한다. 벡터가 장비를 직접 답하지 않는다. 부품(pgvector·Ollama)이 없으면 `available`
+    이 false 이고 결과는 빈 목록이다 — 오류가 아니다.
+    """
+
+    available: bool
+    hits: list[SemanticHit]

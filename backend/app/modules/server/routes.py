@@ -17,6 +17,7 @@ from sqlalchemy.orm import Session
 from app import schema_version, version
 from app.config import get_settings
 from app.database import engine, get_db
+from app.jobs import queue
 from app.modules.accounts.models import User
 from app.modules.equipment.models import (
     Equipment,
@@ -31,7 +32,9 @@ from app.modules.server.schemas import (
     CalibrationDueOut,
     CatalogStateOut,
     DiskOut,
+    JobsStateOut,
     MaintenanceItemOut,
+    SemanticStateOut,
     ServerStatusOut,
     TableCountOut,
 )
@@ -41,6 +44,7 @@ from app.modules.test_items.models import (
     SeriesTestItemMethod,
 )
 from app.modules.vocabulary.models import VocabularyTerm
+from app.shared import embeddings, semantic
 from app.shared.auth import current_user, require_system_admin
 
 router = APIRouter(prefix="/server", tags=["server"])
@@ -110,6 +114,26 @@ def status(
         # 서버 상태 전체를 못 보면 정작 원인을 볼 데가 없어진다.
         disk = None
 
+    # 의미 검색 — 엔진은 실제로 한 번 재 본다(Ollama 가 죽어 있는지는 그래야만 안다).
+    engine_state = embeddings.health()
+    counted = semantic.stats(db)
+    semantic_state = SemanticStateOut(
+        backend=str(engine_state["backend"]),
+        engine_ready=bool(engine_state["ready"]),
+        engine_note=str(engine_state["note"]) if engine_state.get("note") else None,
+        extension=bool(counted.get("extension")),
+        table=semantic.table_ready(db),
+        chunks=int(counted["chunks"]),
+        kinds=dict(counted["kinds"]),
+    )
+    jobs = queue.summary(db)
+    jobs_state = JobsStateOut(
+        queued=jobs.get("queued", 0),
+        running=jobs.get("running", 0),
+        done=jobs.get("done", 0),
+        failed=jobs.get("failed", 0),
+    )
+
     return ServerStatusOut(
         version=version.current(),
         app_env=settings.app_env,
@@ -131,6 +155,8 @@ def status(
         ],
         started_at=STARTED_AT,
         catalog=_catalog(db),
+        semantic=semantic_state,
+        jobs=jobs_state,
     )
 
 

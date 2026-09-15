@@ -1986,6 +1986,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/search/semantic": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Search Semantic
+         * @description 뜻이 가까운 시험 항목·물성·계열·기종·규격·보유 장비·신뢰성 시험.
+         *
+         *     자유 문장으로 물을 때의 첫 손잡이다 — 「HAST」 「thermal shock」 「얇은 판 잡아당기는
+         *     규격」. 답은 **후보**다: 시험 항목이 정해지면 `POST /search/test-items` 로 조건을 붙여
+         *     장비를 찾고, 이름이 하나로 정해졌는지는 `POST /resolve` 가 말한다. `kind` 로 종류를
+         *     거른다(여러 개 가능). 보유 장비는 이 사람이 볼 수 있는 것만 온다 — 목록·검색과 같은 규칙.
+         *     부품(pgvector·Ollama)이 없으면 `available=false` 에 빈 목록 — 오류가 아니다.
+         */
+        get: operations["search_semantic_api_search_semantic_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/search/method-conditions/{method_id}": {
         parameters: {
             query?: never;
@@ -4007,6 +4033,20 @@ export interface components {
             /** Make Value */
             make_value?: string | null;
         };
+        /**
+         * JobsStateOut
+         * @description 작업 큐 — 상태별 수. `failed` 가 있으면 사람이 봐야 한다.
+         */
+        JobsStateOut: {
+            /** Queued */
+            queued: number;
+            /** Running */
+            running: number;
+            /** Done */
+            done: number;
+            /** Failed */
+            failed: number;
+        };
         /** LimitOut */
         LimitOut: {
             /**
@@ -5183,6 +5223,59 @@ export interface components {
              */
             expanded_test_items: string[];
         };
+        /**
+         * SemanticHit
+         * @description 뜻이 가까운 것 하나.
+         */
+        SemanticHit: {
+            /** Kind */
+            kind: string;
+            /** Id */
+            id: string;
+            /** Title */
+            title: string;
+            /** Snippet */
+            snippet: string;
+            /** Score */
+            score: number;
+        };
+        /**
+         * SemanticSearchResponse
+         * @description 의미 검색 — **글자가 안 겹쳐도 뜻이 가까우면** 찾는다.
+         *
+         *     구조화 검색(`/search/test-items`)의 **앞자리**다: 「열충격 500사이클 되는 챔버」 같은
+         *     자유 문장에서 시험 항목·계열 후보를 뽑고, 그다음은 사슬(시험 항목 → 조건 → 장비)이
+         *     답한다. 벡터가 장비를 직접 답하지 않는다. 부품(pgvector·Ollama)이 없으면 `available`
+         *     이 false 이고 결과는 빈 목록이다 — 오류가 아니다.
+         */
+        SemanticSearchResponse: {
+            /** Available */
+            available: boolean;
+            /** Hits */
+            hits: components["schemas"]["SemanticHit"][];
+        };
+        /**
+         * SemanticStateOut
+         * @description 의미 검색 부품 셋(엔진·확장·표)이 어디까지 있나. 없는 것은 고장이 아니라 설정이다.
+         */
+        SemanticStateOut: {
+            /** Backend */
+            backend: string;
+            /** Engine Ready */
+            engine_ready: boolean;
+            /** Engine Note */
+            engine_note: string | null;
+            /** Extension */
+            extension: boolean;
+            /** Table */
+            table: boolean;
+            /** Chunks */
+            chunks: number;
+            /** Kinds */
+            kinds: {
+                [key: string]: number;
+            };
+        };
         /** SeriesRelationCreateRequest */
         SeriesRelationCreateRequest: {
             /**
@@ -5290,6 +5383,8 @@ export interface components {
              */
             started_at: string;
             catalog: components["schemas"]["CatalogStateOut"];
+            semantic: components["schemas"]["SemanticStateOut"];
+            jobs: components["schemas"]["JobsStateOut"];
         };
         /** SignupRequest */
         SignupRequest: {
@@ -10003,6 +10098,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CatalogSearchResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    search_semantic_api_search_semantic_get: {
+        parameters: {
+            query: {
+                q: string;
+                kind?: string[] | null;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SemanticSearchResponse"];
                 };
             };
             /** @description Validation Error */

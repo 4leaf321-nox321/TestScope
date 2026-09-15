@@ -120,6 +120,7 @@ def test_설치가_부르는_시드_스크립트가_있다() -> None:
     for name, caller in (
         ("seed_install.py", "install.ps1"),
         ("seed_reference.py", "deploy.ps1"),
+        ("ensure_semantic_schema.py", "deploy.ps1"),
     ):
         assert (backend_scripts / name).exists(), f"{name} 이 없습니다"
         text = (SCRIPTS / "deploy" / caller).read_text(encoding="utf-8-sig")

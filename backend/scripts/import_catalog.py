@@ -37,6 +37,7 @@ from sqlalchemy import select
 import app.all_models  # noqa: F401  (DB 를 만지는 스크립트는 반드시 이것을 읽는다)
 from _console import survive_cp949
 from app.database import SessionLocal
+from app.jobs import kinds, queue
 from app.modules.accounts.models import User
 from app.modules.review import services as review
 from app.modules.server import catalog_state
@@ -116,6 +117,10 @@ def main() -> int:
                 },
                 reason="scripts/import_catalog.py",
             )
+            # 카탈로그가 바뀌었으니 의미 검색 카드도 다시 만든다 — 워커가 한다(꺼져 있으면
+            # 워커가 조용히 넘어간다). 같은 커밋에 넣어 「반입은 됐는데 색인 작업은 안 들어간」
+            # 상태를 안 만든다.
+            queue.enqueue_unless_pending(db, kind=kinds.SEARCH_REINDEX, max_attempts=1)
             db.commit()
 
         print(f"객체 {len(cat.objects)}건에서:")

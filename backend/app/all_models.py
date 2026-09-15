@@ -11,6 +11,7 @@ DB 를 만지는 스크립트도 이 모듈을 import 한다 — 앱에서는 �
 from __future__ import annotations
 
 from app.database import Base
+from app.jobs.models import Job
 from app.modules.accounts.models import User
 from app.modules.audit.models import AccessLog, AuditEntry
 from app.modules.auth.models import PersonalAccessToken, RefreshToken
@@ -65,6 +66,7 @@ __all__ = [
     "EquipmentSpecValue",
     "EquipmentTestCondition",
     "EquipmentTestItem",
+    "Job",
     "MethodRequirement",
     "ModelFreeSpec",
     "ModelSpecValue",

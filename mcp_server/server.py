@@ -313,6 +313,31 @@ async def search_catalog(
 
 
 @mcp.tool()
+async def search_semantic(
+    ctx: Context, q: str, kind: list[str] | None = None, limit: int = 10
+) -> dict[str, Any]:
+    """**글자가 안 겹쳐도 뜻이 가까운 것** — 자유 문장으로 물을 때의 첫 손잡이.
+
+    「HAST」 「thermal shock」 「얇은 판 잡아당길 때 쓰는 규격」 「-40~150도 왔다갔다 하는
+    챔버」 처럼 사람 말 그대로 넣는다. 돌아오는 것은 **후보**다 — 시험 항목·물성·계열·기종·
+    규격·보유 장비·신뢰성 시험 중 뜻이 가까운 것들과 유사도(`score`, bge-m3 실측으로 0.5 위가
+    맞는 것, 0.4 안팎은 우연). 벡터가 장비를 직접 답하지 않는다: 시험 항목이 정해지면
+    `search_test_items(test_item_term_id=…)` 로 조건을 붙여 장비를 찾고, 이름이 하나로
+    정해졌는지는 `resolve` 가 말한다 — `resolve` 도 글자로 못 찾으면 이 결과를 후보로 준다.
+
+    `kind` 로 종류를 거른다 — `test_item` · `property` · `series` · `model` · `method` ·
+    `equipment` · `reliability_test`. 보유 장비는 이 토큰의 사람이 볼 수 있는 것만 온다.
+
+    `available=false` 면 부품(pgvector·Ollama)이 없는 설치다 — 오류가 아니다. 그때는
+    `search_properties`·`resolve`·`search_series(q=…)` 처럼 이름으로 찾는 도구를 쓴다.
+    """
+    return _listed(
+        await _get(ctx, "/search/semantic", {"q": q, "kind": kind, "limit": limit}),
+        "hits",
+    )
+
+
+@mcp.tool()
 async def search_properties(
     ctx: Context, q: str | None = None, linked_only: bool = True
 ) -> dict[str, Any]:

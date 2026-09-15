@@ -92,6 +92,9 @@ createdb testscope ; createdb testscope_test
 # 백엔드 실행
 .\.venv\Scripts\python.exe run.py
 
+# 워커 (별도 창 — 의미 검색 색인 등 요청 밖의 일. 없어도 앱은 돈다)
+.\.venv\Scripts\python.exe run_worker.py
+
 # 프론트엔드 (별도 창)
 cd frontend
 npm install

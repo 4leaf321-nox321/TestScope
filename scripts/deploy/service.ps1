@@ -9,6 +9,7 @@ Windows 서비스 등록 — 부팅하면 뜨고, 죽으면 되살아난다.
 
     <AppPath>_service\TestScope.exe        WinSW 복사본 — 서비스의 실행 파일
     <AppPath>_service\TestScope.xml        무엇을 어떻게 띄우나
+    <AppPath>_service\TestScope-Worker.*   작업 큐 워커(의미 검색 색인 등)
     <AppPath>_service\TestScope-MCP.*      MCP 서버(패키지에 있을 때만)
     <AppPath>_data\logs\service\           서비스 래퍼의 stdout/stderr (앱 로그는 logs\ 에 그대로)
 
@@ -159,6 +160,19 @@ function Get-Definitions {
             DependsOn = @()
         }
     )
+    if (Test-Path (Join-Path $AppPath 'backend\run_worker.py')) {
+        $defs += @{
+            Id = 'TestScope-Worker'
+            DisplayName = 'TestScope Worker'
+            Description = '작업 큐 워커 — 의미 검색 색인 등 요청 밖에서 시간이 걸리는 일. 백엔드와 같은 DB'
+            Executable = Join-Path $venvs 'backend\Scripts\python.exe'
+            Arguments = 'run_worker.py'
+            WorkingDirectory = Join-Path $AppPath 'backend'
+            Env = @{ PYTHONIOENCODING = 'utf-8'; PYTHONUNBUFFERED = '1' }
+            # DB 만 있으면 된다. 백엔드에 의존시키지 않는다 — 백엔드가 잠깐 죽어도 색인은 돈다.
+            DependsOn = @()
+        }
+    }
     $hasMcp = Test-Path (Join-Path $AppPath 'mcp_server\server.py')
     if ($hasMcp -and -not $NoMcp) {
         $mcpPort = Read-EnvValue 'MCP_PORT' '8022'
@@ -251,7 +265,7 @@ function Uninstall-One([string]$id) {
 }
 
 function Show-Status {
-    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+    foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
         $svc = Get-ServiceOrNull $id
         if ($svc) {
             Write-Host ("  {0,-14} {1,-10} {2}" -f $id, $svc.Status, $svc.StartType)
@@ -276,27 +290,27 @@ switch ($Action) {
     }
     'uninstall' {
         # MCP 가 백엔드에 의존하므로 MCP 부터 내린다.
-        foreach ($id in @('TestScope-MCP', 'TestScope')) { Uninstall-One $id }
+        foreach ($id in @('TestScope-MCP', 'TestScope-Worker', 'TestScope')) { Uninstall-One $id }
     }
     'start' {
-        foreach ($id in @('TestScope', 'TestScope-MCP')) {
+        foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
             if (Get-ServiceOrNull $id) { Write-Log "서비스 $id 시작"; Start-Service -Name $id -ErrorAction Stop }
         }
         Show-Status
     }
     'stop' {
-        foreach ($id in @('TestScope-MCP', 'TestScope')) {
+        foreach ($id in @('TestScope-MCP', 'TestScope-Worker', 'TestScope')) {
             $svc = Get-ServiceOrNull $id
             if ($svc -and $svc.Status -ne 'Stopped') { Write-Log "서비스 $id 중지"; Stop-Service -Name $id -Force -ErrorAction Stop }
         }
         Show-Status
     }
     'restart' {
-        foreach ($id in @('TestScope-MCP', 'TestScope')) {
+        foreach ($id in @('TestScope-MCP', 'TestScope-Worker', 'TestScope')) {
             $svc = Get-ServiceOrNull $id
             if ($svc -and $svc.Status -ne 'Stopped') { Stop-Service -Name $id -Force -ErrorAction Stop }
         }
-        foreach ($id in @('TestScope', 'TestScope-MCP')) {
+        foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
             if (Get-ServiceOrNull $id) { Write-Log "서비스 $id 시작"; Start-Service -Name $id -ErrorAction Stop }
         }
         Show-Status

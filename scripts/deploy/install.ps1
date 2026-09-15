@@ -36,7 +36,9 @@ param(
     [string]$AdminEmail = 'admin',
     [switch]$SkipPrecheck,
     # 서비스로 등록하지 않는다 — 콘솔(run_server.ps1)로 띄울 때. 나중에 service.ps1 로 더할 수 있다.
-    [switch]$NoService
+    [switch]$NoService,
+    # pgvector(의미 검색)를 PostgreSQL 에 넣지 않는다. 기본은 **DB 가 이 PC 에 있을 때만** 넣는다.
+    [switch]$NoPgvector
 )
 
 $ErrorActionPreference = 'Stop'
@@ -210,6 +212,26 @@ if ($existing) {
     }
 }
 
+# --- 8-b. pgvector (선택) -------------------------------------------------------
+# 의미 검색의 부품이다. **없어도 앱은 돈다** — 검색이 이름·별칭으로만 답할 뿐이다. DB 가 이
+# PC 에 있고 패키지에 그 판의 산출물이 있으면 넣는다(관리자 권한이 필요한 자리라 실패해도
+# 설치는 계속한다). 원격 DB 면 그 서버에서 install_pgvector.ps1 을 따로 돌린다.
+$localDb = $DbHost -in @('localhost', '127.0.0.1', '::1', $env:COMPUTERNAME)
+if ($NoPgvector) {
+    Write-Log 'pgvector 건너뜀 (-NoPgvector)'
+} elseif (-not $localDb) {
+    Write-Log "pgvector 건너뜀 — DB 가 다른 PC($DbHost)에 있습니다. 그 서버에서 install_pgvector.ps1 을 돌리세요."
+} else {
+    Write-Log 'pgvector 설치'
+    try {
+        & (Join-Path $scriptDir 'install_pgvector.ps1') -DatabaseUrl $dsn
+        if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) { throw "exit $LASTEXITCODE" }
+    } catch {
+        Write-Warning "pgvector 를 넣지 못했습니다(의미 검색만 꺼진 채 갑니다): $_"
+        Write-Warning "나중에 관리자 PowerShell 에서:  .\install_pgvector.ps1 -DatabaseUrl '<DATABASE_URL>'"
+    }
+}
+
 # --- 9. 서비스 ----------------------------------------------------------------
 # 부팅하면 뜨고 죽으면 되살아난다. 이것이 없으면 재부팅 뒤 누군가 로그인해서
 # run_server.ps1 을 켜야 하고, 그 사실은 화면이 안 열리는 날 아침에야 드러난다.
@@ -240,11 +262,12 @@ if ($installed) { Write-Log ("배포한 버전: " + ($installed -replace '^versi
 Write-Host '설치 완료.'
 Write-Host ''
 if ($serviceRegistered) {
-    Write-Host "  서비스      : TestScope (부팅 때 자동 시작) — 상태: .\service.ps1 -AppPath '$AppPath' -Action status"
+    Write-Host "  서비스      : TestScope · TestScope-Worker (부팅 때 자동 시작) — 상태: .\service.ps1 -AppPath '$AppPath' -Action status"
 } else {
-    Write-Host "  시작        : cd '$AppPath' ; .\run_server.ps1"
+    Write-Host "  시작        : cd '$AppPath' ; .\run_server.ps1   (워커: .\run_worker.ps1)"
 }
 Write-Host "  접속        : http://<서버주소>:$Port/"
+Write-Host "  의미 검색   : .\setup_ollama.ps1 로 엔진을 올리고, 찍어 주는 네 줄을 backend\.env 에 적은 뒤 서비스 재시작 (배포.md 2-6)"
 Write-Host "  운영 데이터 : $dataPath  (백업 대상 — DB와 함께 받아야 복구가 성립한다)"
 Write-Host ''
 Write-Host '  위에 출력된 관리자 비밀번호는 다시 표시되지 않습니다. 첫 로그인 시 변경이 강제됩니다.'

@@ -60,6 +60,21 @@ class Settings(BaseSettings):
     """사내망 http 배포가 기본이라 False. https 로 서비스하면 True 로 올린다.
     (True 인데 http 로 접속하면 브라우저가 쿠키를 버려 로그인이 유지되지 않는다)"""
 
+    # --- 의미 검색 (임베딩) — 선택 부품. 없어도 검색은 이름·별칭으로 돈다 ---
+    embedding_backend: str = "off"
+    """`off` · `mock` · `ollama`.
+
+    `off` 가 기본인 이유: 설치 안 한 곳에서 켜져 있으면 검색마다 11434 를 두드리다
+    타임아웃한다. 운영은 `setup_ollama.ps1` 이 찍어 주는 네 줄을 .env 에 적어 켠다."""
+    ollama_base_url: str = "http://127.0.0.1:11434"
+    embedding_model: str = "bge-m3"
+    embedding_dim: int = 1024
+    """모델의 벡터 길이. **`search_chunks.embedding vector(N)` 과 같아야 한다** — 다르면
+    거리 계산이 조용히 엉뚱해진다. `setup_ollama.ps1` 이 실제 차원을 찍어 준다."""
+    embedding_timeout_s: float = 30.0
+    embedding_batch: int = 16
+    """한 번에 임베딩할 카드 수. 너무 크면 Ollama 가 요청 하나에 오래 물린다."""
+
     login_delay_after: int = 5
     """같은 계정의 로그인 실패가 이 횟수부터 응답을 늦춘다. **잠그지 않는다** —
     관리자 복구가 서버 콘솔뿐인 시스템에서 잠금은 자해다."""

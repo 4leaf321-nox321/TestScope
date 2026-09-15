@@ -9,10 +9,12 @@
     backend\             코드 + requirements.txt
     backend\packages\    wheel 번들 — 서버는 --no-index 로 여기서만 설치한다
     frontend\dist\       빌드된 SPA. 백엔드가 같은 프로세스에서 서빙한다
-    run_server.ps1       기동(콘솔)
+    run_server.ps1       기동(콘솔) · run_worker.ps1 워커(콘솔)
     tools\WinSW-x64.exe  서비스 래퍼 — service.ps1 이 이것으로 Windows 서비스를 만든다
+    pgvector\pg17\       의미 검색용 PostgreSQL 확장 — install_pgvector.ps1 이 넣는다
     deploy.ps1 / rollback.ps1 / venv_sync.ps1 / install.ps1 / precheck.ps1 /
-    backup.ps1 / restore.ps1 / service.ps1
+    backup.ps1 / restore.ps1 / service.ps1 / setup_ollama.ps1 /
+    build_pgvector.ps1 / install_pgvector.ps1
     배포.md              초기 배포·업데이트 배포 절차
     BUILD_INFO.txt       wheel 을 만든 파이썬 마이너 버전과 릴리스 태그
 
@@ -197,6 +199,7 @@ Write-Host "  WinSW $winswVersion 확인 (sha256 일치)"
 # --- 스크립트와 빌드 정보 ------------------------------------------------------
 Write-Host '실행·배포 스크립트 추가'
 Copy-Item -Force .\scripts\ci\run_server_template.ps1 .\deploy\run_server.ps1
+Copy-Item -Force .\scripts\ci\run_worker_template.ps1 .\deploy\run_worker.ps1
 # MCP 를 담은 패키지에만 넣는다. **파일은 담고 띄우는 법은 안 담는 것**이 제일
 # 나쁘다 — 받는 쪽은 폴더만 보고 어떻게 쓰는지 알 수 없다(실측: 첫 패키지가 그랬다).
 if (Test-Path .\deploy\mcp_server\server.py) {
@@ -210,6 +213,11 @@ Copy-Item -Force .\scripts\deploy\precheck.ps1 .\deploy\precheck.ps1
 Copy-Item -Force .\scripts\deploy\backup.ps1 .\deploy\backup.ps1
 Copy-Item -Force .\scripts\deploy\restore.ps1 .\deploy\restore.ps1
 Copy-Item -Force .\scripts\deploy\service.ps1 .\deploy\service.ps1
+Copy-Item -Force .\scripts\deploy\setup_ollama.ps1 .\deploy\setup_ollama.ps1
+Copy-Item -Force .\scripts\deploy\build_pgvector.ps1 .\deploy\build_pgvector.ps1
+Copy-Item -Force .\scripts\deploy\install_pgvector.ps1 .\deploy\install_pgvector.ps1
+# pgvector 산출물(판별 폴더). 저장소에 함께 둔 것을 그대로 담는다 — 폐쇄망이 zip 하나로 받는다.
+Copy-Item -Recurse -Force .\scripts\deploy\pgvector .\deploy\pgvector
 
 # 배포 문서도 함께 넣는다. 폐쇄망 서버는 zip 하나만 받으므로, 문서가 저장소에만
 # 있으면 **정작 설치하는 자리에서 볼 수 없다.**

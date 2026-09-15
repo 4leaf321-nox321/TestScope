@@ -6322,6 +6322,82 @@
         }
       }
     },
+    "/api/search/semantic": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search Semantic",
+        "description": "뜻이 가까운 시험 항목·물성·계열·기종·규격·보유 장비·신뢰성 시험.\n\n자유 문장으로 물을 때의 첫 손잡이다 — 「HAST」 「thermal shock」 「얇은 판 잡아당기는\n규격」. 답은 **후보**다: 시험 항목이 정해지면 `POST /search/test-items` 로 조건을 붙여\n장비를 찾고, 이름이 하나로 정해졌는지는 `POST /resolve` 가 말한다. `kind` 로 종류를\n거른다(여러 개 가능). 보유 장비는 이 사람이 볼 수 있는 것만 온다 — 목록·검색과 같은 규칙.\n부품(pgvector·Ollama)이 없으면 `available=false` 에 빈 목록 — 오류가 아니다.",
+        "operationId": "search_semantic_api_search_semantic_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "title": "Q"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Kind"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 40,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SemanticSearchResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/search/method-conditions/{method_id}": {
       "get": {
         "tags": [
@@ -12183,6 +12259,35 @@
         "title": "ImportProblem",
         "description": "한 줄에서 걸린 것 하나. **어느 칸인지 함께 준다.**\n\n화면이 그 칸을 붉게 칠하려면 열을 알아야 한다. 글자에서 되짚어 찾게 하면\n(「거점:」 으로 시작하나 보고) 말을 조금만 다듬어도 색이 사라진다."
       },
+      "JobsStateOut": {
+        "properties": {
+          "queued": {
+            "type": "integer",
+            "title": "Queued"
+          },
+          "running": {
+            "type": "integer",
+            "title": "Running"
+          },
+          "done": {
+            "type": "integer",
+            "title": "Done"
+          },
+          "failed": {
+            "type": "integer",
+            "title": "Failed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "queued",
+          "running",
+          "done",
+          "failed"
+        ],
+        "title": "JobsStateOut",
+        "description": "작업 큐 — 상태별 수. `failed` 가 있으면 사람이 봐야 한다."
+      },
       "LimitOut": {
         "properties": {
           "id": {
@@ -15473,6 +15578,116 @@
         ],
         "title": "SearchResponse"
       },
+      "SemanticHit": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "snippet": {
+            "type": "string",
+            "title": "Snippet"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "id",
+          "title",
+          "snippet",
+          "score"
+        ],
+        "title": "SemanticHit",
+        "description": "뜻이 가까운 것 하나."
+      },
+      "SemanticSearchResponse": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "title": "Available"
+          },
+          "hits": {
+            "items": {
+              "$ref": "#/components/schemas/SemanticHit"
+            },
+            "type": "array",
+            "title": "Hits"
+          }
+        },
+        "type": "object",
+        "required": [
+          "available",
+          "hits"
+        ],
+        "title": "SemanticSearchResponse",
+        "description": "의미 검색 — **글자가 안 겹쳐도 뜻이 가까우면** 찾는다.\n\n구조화 검색(`/search/test-items`)의 **앞자리**다: 「열충격 500사이클 되는 챔버」 같은\n자유 문장에서 시험 항목·계열 후보를 뽑고, 그다음은 사슬(시험 항목 → 조건 → 장비)이\n답한다. 벡터가 장비를 직접 답하지 않는다. 부품(pgvector·Ollama)이 없으면 `available`\n이 false 이고 결과는 빈 목록이다 — 오류가 아니다."
+      },
+      "SemanticStateOut": {
+        "properties": {
+          "backend": {
+            "type": "string",
+            "title": "Backend"
+          },
+          "engine_ready": {
+            "type": "boolean",
+            "title": "Engine Ready"
+          },
+          "engine_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Engine Note"
+          },
+          "extension": {
+            "type": "boolean",
+            "title": "Extension"
+          },
+          "table": {
+            "type": "boolean",
+            "title": "Table"
+          },
+          "chunks": {
+            "type": "integer",
+            "title": "Chunks"
+          },
+          "kinds": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Kinds"
+          }
+        },
+        "type": "object",
+        "required": [
+          "backend",
+          "engine_ready",
+          "engine_note",
+          "extension",
+          "table",
+          "chunks",
+          "kinds"
+        ],
+        "title": "SemanticStateOut",
+        "description": "의미 검색 부품 셋(엔진·확장·표)이 어디까지 있나. 없는 것은 고장이 아니라 설정이다."
+      },
       "SeriesRelationCreateRequest": {
         "properties": {
           "part_series_id": {
@@ -15777,6 +15992,12 @@
           },
           "catalog": {
             "$ref": "#/components/schemas/CatalogStateOut"
+          },
+          "semantic": {
+            "$ref": "#/components/schemas/SemanticStateOut"
+          },
+          "jobs": {
+            "$ref": "#/components/schemas/JobsStateOut"
           }
         },
         "type": "object",
@@ -15790,7 +16011,9 @@
           "disk",
           "counts",
           "started_at",
-          "catalog"
+          "catalog",
+          "semantic",
+          "jobs"
         ],
         "title": "ServerStatusOut"
       },

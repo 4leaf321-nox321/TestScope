@@ -26,6 +26,18 @@ if config.config_file_name is not None:
 
 target_metadata = Base.metadata
 
+#: 자동 생성이 손대면 안 되는 표. `search_chunks` 는 pgvector 가 있을 때만 존재하고
+#: `app/shared/semantic.py` 가 직접 만든다 — 메타데이터에 없으니 autogenerate 가 확장
+#: 없는 기계에서 **이 표를 지우는 마이그레이션**을 만들려 든다. 그것을 막는다.
+_OUTSIDE_ALEMBIC = {"search_chunks"}
+
+
+def include_object(obj, name, type_, reflected, compare_to):  # type: ignore[no-untyped-def]
+    if type_ == "table":
+        return name not in _OUTSIDE_ALEMBIC
+    table = getattr(obj, "table", None)
+    return not (type_ == "index" and table is not None and table.name in _OUTSIDE_ALEMBIC)
+
 
 def run_migrations_offline() -> None:
     context.configure(
@@ -34,6 +46,7 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         compare_type=True,
+        include_object=include_object,
     )
     with context.begin_transaction():
         context.run_migrations()
@@ -47,7 +60,10 @@ def run_migrations_online() -> None:
     )
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata, compare_type=True
+            connection=connection,
+            target_metadata=target_metadata,
+            compare_type=True,
+            include_object=include_object,
         )
         with context.begin_transaction():
             context.run_migrations()

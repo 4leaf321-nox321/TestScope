@@ -253,6 +253,26 @@
   네이티브 명령의 것을 물려받는데, robocopy 는 성공해도 0 이 아니다(비트 플래그).
   그대로 두면 작업 스케줄러가 매일 백업을 실패로 기록하고, 사람은 곧 그 알림을
   무시하게 된다 — 그러면 진짜 실패한 날에도 아무도 안 본다.
+- **요청 밖에서 시간이 걸리는 일은 작업 큐로**(`app/jobs/` · `run_worker.py` · 서비스
+  `TestScope-Worker`). 브로커 없이 `jobs` 표 + `SELECT … FOR UPDATE SKIP LOCKED` — ReportArchive·
+  MatNexus 와 같은 방식이고, 폐쇄망에 Redis 를 반입하지 않는다. 핸들러는 `@handlers.handler(kind)`
+  로 등록하고 `handlers.load_all()` 에 모듈 한 줄을 더한다; 종류 이름은 `kinds.py` 한 곳(오타가
+  나면 조용히 `failed` 로만 쌓인다). 핸들러는 예외를 삼키지 않는다 — 워커가 잡아 백오프로 재시도하고
+  한도를 넘기면 `failed` 로 남긴다. 워커는 `app.all_models` 를 먼저 읽는다(안 읽으면 핸들러가
+  모르는 표를 외래키로 가리키는 순간 첫 flush 에서 죽는다). 주기 작업은 `schedule.PERIODIC` 한 줄 —
+  시각을 메모리에 들지 않고 큐에 마지막으로 넣은 시각을 본다.
+- **의미 검색은 선택 부품이다**(`shared/embeddings.py` · `shared/semantic.py`). 엔진(Ollama
+  bge-m3) · 확장(pgvector) · 표(`search_chunks`) 셋이 다 있어야 켜지고, 하나라도 없으면 검색은
+  이름·별칭으로만 돈다 — **예외를 내지 않는다.** `EMBEDDING_BACKEND` 는 `off`(기본) · `mock`(해시
+  벡터, 시험용 — 뜻은 없다) · `ollama`. 표는 마이그레이션이 아니라 `semantic.ensure_schema()` 가
+  만든다(확장이 없는 서버에서 `alembic upgrade` 가 통째로 서면 안 된다) — `Base.metadata` 에 없고
+  `migrations/env.py` 가 autogenerate 에서 뺀다. 카드 단위로 건다: 객체 하나(시험 항목·물성·계열·
+  기종·규격·보유 장비·신뢰성 시험) = 카드 한 장, 이름만이 아니라 별칭·소개·이어진 것을 적는다.
+  결과는 **후보**다 — `resolve` 의 4단계(`뜻이 가까움`, 유사도 0.45 아래는 버림)와
+  `/search/semantic` 이 주고, 장비는 여전히 사슬(시험 항목 → 조건 → 장비)이 답한다. 보유 장비
+  카드는 `visible_equipment_ids` 로 거른다. 차원이 모델과 다르면 거절한다(섞이면 순위가 조용히
+  엉뚱해진다). pgvector 의 Windows 산출물은 `scripts/deploy/pgvector/pg<판>` 에 커밋한다
+  (300KB, `build_pgvector.ps1` 로 재현) — PG 메이저마다 따로.
 - **운영은 Windows 서비스로 돈다**(`service.ps1` · WinSW). 콘솔로 띄운 앱은 재부팅한 날
   아침에 화면이 안 열리고, 그 사실은 그때야 드러난다. 서비스 정의는 **앱 폴더 밖**
   `<AppPath>_service\` 에 둔다 — 배포가 앱 폴더를 통째로 `_prev` 로 옮기므로 안에 있으면

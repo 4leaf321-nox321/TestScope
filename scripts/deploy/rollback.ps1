@@ -49,7 +49,7 @@ if (-not (Test-Path $AppPath)) { throw "현재 설치가 없습니다: $AppPath"
 
 # 서비스로 돌고 있으면 멈춘다 — deploy.ps1 과 같은 이유, 같은 순서(MCP 먼저).
 $stoppedServices = @()
-foreach ($id in @('TestScope-MCP', 'TestScope')) {
+foreach ($id in @('TestScope-MCP', 'TestScope-Worker', 'TestScope')) {
     $svc = Get-Service -Name $id -ErrorAction SilentlyContinue
     if ($svc -and $svc.Status -ne 'Stopped') {
         Write-Log "서비스 $id 중지"
@@ -59,7 +59,7 @@ foreach ($id in @('TestScope-MCP', 'TestScope')) {
     }
 }
 function Start-AppServices {
-    foreach ($id in @('TestScope', 'TestScope-MCP')) {
+    foreach ($id in @('TestScope', 'TestScope-Worker', 'TestScope-MCP')) {
         if ($stoppedServices -contains $id) {
             Write-Log "서비스 $id 시작"
             try { Start-Service -Name $id -ErrorAction Stop } catch { Write-Warning "서비스 $id 를 시작하지 못했습니다: $_" }

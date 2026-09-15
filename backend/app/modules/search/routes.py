@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -19,8 +19,12 @@ from app.modules.search.schemas import (
     ConditionQuery,
     SearchRequest,
     SearchResponse,
+    SemanticHit,
+    SemanticSearchResponse,
 )
+from app.shared import semantic
 from app.shared.auth import current_user
+from app.shared.permissions import visible_equipment_ids
 
 router = APIRouter(prefix="/search", tags=["search"])
 
@@ -46,6 +50,44 @@ def search_catalog(
     세상에 있는 것을 답한다 — 가진 것이 없을 때 다음 물음은 늘 「그러면 무엇을 사나」 다.
     """
     return catalog_search.search_catalog(db, user, payload)
+
+
+@router.get("/semantic", response_model=SemanticSearchResponse)
+def search_semantic(
+    q: str = Query(..., min_length=1, max_length=500),
+    kind: list[str] | None = Query(default=None),
+    limit: int = Query(default=10, ge=1, le=40),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> SemanticSearchResponse:
+    """뜻이 가까운 시험 항목·물성·계열·기종·규격·보유 장비·신뢰성 시험.
+
+    자유 문장으로 물을 때의 첫 손잡이다 — 「HAST」 「thermal shock」 「얇은 판 잡아당기는
+    규격」. 답은 **후보**다: 시험 항목이 정해지면 `POST /search/test-items` 로 조건을 붙여
+    장비를 찾고, 이름이 하나로 정해졌는지는 `POST /resolve` 가 말한다. `kind` 로 종류를
+    거른다(여러 개 가능). 보유 장비는 이 사람이 볼 수 있는 것만 온다 — 목록·검색과 같은 규칙.
+    부품(pgvector·Ollama)이 없으면 `available=false` 에 빈 목록 — 오류가 아니다.
+    """
+    unknown = [one for one in (kind or []) if one not in semantic.KINDS]
+    if unknown:
+        return SemanticSearchResponse(available=semantic.available(db), hits=[])
+    visible = None
+    if not user.is_system_admin:
+        visible = [str(one) for one in db.scalars(visible_equipment_ids(db, user))]
+    found = semantic.search(db, q, kinds=kind or None, visible_equipment=visible, limit=limit)
+    return SemanticSearchResponse(
+        available=semantic.available(db),
+        hits=[
+            SemanticHit(
+                kind=one.kind,
+                id=one.entity_id,
+                title=one.title,
+                snippet=one.snippet,
+                score=round(one.score, 4),
+            )
+            for one in found
+        ],
+    )
 
 
 @router.get("/method-conditions/{method_id}", response_model=list[ConditionQuery])

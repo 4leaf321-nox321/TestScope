@@ -37,6 +37,32 @@ interface ServerStatus {
     never: boolean
     behind: boolean
   }
+  /** 의미 검색 부품 셋 — 엔진(Ollama)·확장(pgvector)·표. 없는 것은 고장이 아니라 설정이고,
+   *  그 사실을 여기서 말하지 않으면 「검색이 뜻을 못 알아듣네」 로만 드러난다. */
+  semantic: {
+    backend: string
+    engine_ready: boolean
+    engine_note: string | null
+    extension: boolean
+    table: boolean
+    chunks: number
+    kinds: Record<string, number>
+  }
+  /** 작업 큐. failed 가 있으면 사람이 봐야 한다 — 워커 로그(_data\logs)에 이유가 있다. */
+  jobs: { queued: number; running: number; done: number; failed: number }
+}
+
+function semanticLine(one: ServerStatus['semantic']): string {
+  if (one.backend === 'off') return '꺼짐 (.env 의 EMBEDDING_BACKEND) — 검색은 이름·별칭으로만'
+  if (!one.extension)
+    return `엔진 ${one.backend} · pgvector 없음 — install_pgvector.ps1 로 넣는다`
+  if (!one.table)
+    return `엔진 ${one.backend} · 표 없음 — 다음 배포(ensure_semantic_schema)가 만든다`
+  if (!one.engine_ready) return `엔진 ${one.backend} 응답 없음 — ${one.engine_note ?? ''}`
+  const kinds = Object.entries(one.kinds)
+    .map(([kind, count]) => `${kind} ${count}`)
+    .join(' · ')
+  return `${one.backend} · 색인 ${one.chunks}개` + (kinds ? ` (${kinds})` : ' — 워커가 채운다')
 }
 
 function gib(bytes: number): string {
@@ -109,6 +135,25 @@ export default function ServerPage() {
                   (one.catalog.behind
                     ? ` · 정본은 ${one.catalog.objects} (뒤짐)`
                     : ' · 정본과 같음')}
+          </dd>
+        </div>
+        <div className="sm:col-span-2">
+          <dt className="text-muted-foreground text-xs">의미 검색</dt>
+          <dd className="text-sm">{semanticLine(one.semantic)}</dd>
+        </div>
+        <div className="sm:col-span-2">
+          <dt className="text-muted-foreground text-xs">작업 큐</dt>
+          <dd className="text-sm">
+            대기 {one.jobs.queued} · 실행 중 {one.jobs.running} · 끝남 {one.jobs.done} ·{' '}
+            <span className={one.jobs.failed > 0 ? 'font-semibold text-amber-600' : ''}>
+              실패 {one.jobs.failed}
+            </span>
+            {one.jobs.queued > 0 && one.jobs.running === 0 && (
+              <span className="text-muted-foreground">
+                {' '}
+                — 워커(TestScope-Worker)가 떠 있나 확인
+              </span>
+            )}
           </dd>
         </div>
         {one.disk && (
