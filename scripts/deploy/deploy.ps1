@@ -118,7 +118,15 @@ $prevPath = $AppPath + '_prev'
 $stagingPath = $AppPath + '_staging'
 $isFirstRun = -not (Test-Path $AppPath)
 
-if ($isFirstRun) { Write-Log "$AppPath 에 기존 설치가 없습니다 — 첫 배포로 처리합니다." }
+# **운영 폴더는 없는데 _prev 는 있다** — 지난 배포가 교체 도중 멈춘 흔적이다(현재 설치를
+# _prev 로 옮긴 뒤 새 버전 배치가 실패). 이것을 첫 배포로 읽으면 .env 를 이어받지 않아
+# 마이그레이션이 DATABASE_URL 없이 돌다 실패한다 — 실제로 그렇게 두 번째 배포가 깨졌다.
+$isResume = $isFirstRun -and (Test-Path (Join-Path $prevPath 'backend'))
+if ($isResume) {
+    Write-Log "$AppPath 는 없고 $prevPath 가 있습니다 — 중단된 배포를 이어서 합니다(.env 는 _prev 에서)."
+} elseif ($isFirstRun) {
+    Write-Log "$AppPath 에 기존 설치가 없습니다 — 첫 배포로 처리합니다."
+}
 
 # --- 서비스 -----------------------------------------------------------------
 # service.ps1 이 등록한 Windows 서비스(TestScope · TestScope-MCP)는 앱 폴더를 잠근다.
@@ -373,19 +381,56 @@ if ($buildPython) {
 # Move-Item 이 아니라 [System.IO.Directory]::Move 를 쓴다. Move-Item 은 옮기지 못하는
 # 항목이 있으면 복사+삭제로 흘러가 폴더를 반쯤 옮긴 상태로 남기지만, Directory.Move
 # 는 원자적 이름 변경이라 실패하면 아무것도 바뀌지 않는다.
-if (-not $isFirstRun) {
-    if (Test-Path $prevPath) { Write-Log '이전 백업 삭제'; Remove-Item -Recurse -Force $prevPath }
-    Write-Log "현재 설치를 $prevPath 로 이동"
-    [System.IO.Directory]::Move($AppPath, $prevPath)
+#
+# **몇 번 다시 시도한다 — 2·4·6·8초 늘려 가며(총 20초).** 압축을 풀자마자 백신·인덱서가
+# 새 파일을 훑는 동안은 폴더 이름 바꾸기가 「액세스 거부」 로 튄다 — 몇 초 뒤면 된다. 끝내
+# 안 되면 **되돌린다**: 옮겨 둔 현재 설치를 제자리로, 서비스는 다시 올린다. 운영 폴더가
+# 사라진 채로 끝내지 않는다.
+function Move-FolderWithRetry([string]$from, [string]$to, [string]$what) {
+    $attempts = 5
+    for ($i = 1; $i -le $attempts; $i++) {
+        try {
+            [System.IO.Directory]::Move($from, $to)
+            return
+        } catch {
+            if ($i -eq $attempts) { throw }
+            $wait = 2 * $i
+            Write-Log "$what 실패($i/$attempts): $($_.Exception.Message) — ${wait}초 뒤 다시"
+            Start-Sleep -Seconds $wait
+        }
+    }
 }
-Write-Log "새 버전 배치: $AppPath"
-[System.IO.Directory]::Move($stagingPath, $AppPath)
+
+$movedAway = $false
+try {
+    if (-not $isFirstRun) {
+        if (Test-Path $prevPath) { Write-Log '이전 백업 삭제'; Remove-Item -Recurse -Force $prevPath }
+        Write-Log "현재 설치를 $prevPath 로 이동"
+        Move-FolderWithRetry $AppPath $prevPath '현재 설치 이동'
+        $movedAway = $true
+    }
+    Write-Log "새 버전 배치: $AppPath"
+    Move-FolderWithRetry $stagingPath $AppPath '새 버전 배치'
+} catch {
+    $why = $_.Exception.Message
+    if ($movedAway -and -not (Test-Path $AppPath)) {
+        Write-Log "되돌리기: $prevPath → $AppPath"
+        [System.IO.Directory]::Move($prevPath, $AppPath)
+    }
+    Remove-Item -Recurse -Force $stagingPath -ErrorAction SilentlyContinue
+    Start-AppServices
+    throw @"
+폴더 교체 실패: $why
+운영 폴더는 원래대로 되돌렸고 서비스는 다시 올렸습니다. 이 서버는 바뀌지 않았습니다.
+'$($stagingPath)' 를 백신·인덱서·탐색기가 잡고 있었을 가능성이 큽니다 — 잠시 뒤 다시 실행하세요.
+"@
+}
 
 # --- 패키지에 없는 것 이어받기 -------------------------------------------------
 # .env 는 접속 정보라 git 에도 패키지에도 없다. filestore·logs 는 <AppPath>_data 에
 # 있어 애초에 교체 대상이 아니다 — 배포마다 운영 데이터를 복사하는 방식은 데이터가
 # 커지면 성립하지 않는다.
-if (-not $isFirstRun) {
+if (-not $isFirstRun -or $isResume) {
     $envFrom = Join-Path $prevPath 'backend\.env'
     $envTo = Join-Path $AppPath 'backend\.env'
     if (Test-Path $envFrom) {

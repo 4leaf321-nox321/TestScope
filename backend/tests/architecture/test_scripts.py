@@ -170,3 +170,18 @@ def test_콘솔이_아닌_출력에서_죽지_않게_한다() -> None:
             continue
         text = path.read_text(encoding="utf-8")
         assert "survive_cp949()" in text, f"{path.name} 이 survive_cp949 를 안 부릅니다"
+
+
+def test_배포는_중단된_교체를_이어받고_폴더_이동은_되돌릴_수_있다() -> None:
+    """운영 폴더는 없고 _prev 만 남은 상태(지난 배포가 새 버전 배치에서 멈춤)를 첫 배포로
+    읽으면 .env 를 이어받지 않아 마이그레이션이 DATABASE_URL 없이 실패한다 — 실제로 그렇게
+    깨졌다. 그리고 새 버전 배치의 이름 바꾸기는 백신이 새 파일을 훑는 몇 초 동안 「액세스
+    거부」 로 튀므로 다시 시도하고, 끝내 안 되면 현재 설치를 제자리로 돌린다."""
+    text = (SCRIPTS / "deploy" / "deploy.ps1").read_text(encoding="utf-8-sig")
+    assert "$isResume" in text and "-or $isResume" in text, (
+        "deploy.ps1 이 _prev 만 남은 중단 상태에서 .env 를 이어받지 않습니다"
+    )
+    assert "Move-FolderWithRetry" in text, "deploy.ps1 이 폴더 이동을 다시 시도하지 않습니다"
+    assert "Directory]::Move($prevPath, $AppPath)" in text, (
+        "deploy.ps1 이 새 버전 배치 실패 때 현재 설치를 되돌리지 않습니다"
+    )
