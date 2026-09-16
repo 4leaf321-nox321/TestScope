@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import uuid
+from typing import Any
 
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
@@ -18,14 +19,15 @@ from tests.api.conftest import Signed
 from tests.api.test_reliability_tests import _signed_in
 
 
-def _definitions(client: TestClient, who: Signed, **params: str) -> list[dict]:
+def _definitions(client: TestClient, who: Signed, **params: str) -> list[dict[str, Any]]:
     got = client.get(
         "/api/attribute-definitions",
         params={"target": "reliability_test", **params},
         headers=who.headers,
     )
     assert got.status_code == 200, got.text
-    return got.json()
+    rows: list[dict[str, Any]] = got.json()
+    return rows
 
 
 def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다(
@@ -178,7 +180,7 @@ def test_합치면_값이_옮겨_가고_정식으로_올릴_수_있다(
 ) -> None:
     tag = uuid.uuid4().hex[:6]
 
-    def write(name: str, label: str, kind: str, **value: object) -> dict:
+    def write(name: str, label: str, kind: str, **value: object) -> dict[str, Any]:
         made = client.post(
             "/api/reliability-tests",
             json={
@@ -189,7 +191,8 @@ def test_합치면_값이_옮겨_가고_정식으로_올릴_수_있다(
             headers=admin.headers,
         )
         assert made.status_code == 201, made.text
-        return made.json()
+        body: dict[str, Any] = made.json()
+        return body
 
     first = write(f"A-{tag}", f"온도-{tag}", "range", num_min=-40, num_max=125, unit="degC")
     second = write(f"B-{tag}", f"시험온도-{tag}", "range", num_min=85, num_max=85, unit="degC")
