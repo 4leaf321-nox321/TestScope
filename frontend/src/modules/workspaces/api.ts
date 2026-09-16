@@ -7,6 +7,8 @@ export type Workspace = components['schemas']['WorkspaceOut']
 export type Member = components['schemas']['MemberOut']
 export type WorkspaceReference = components['schemas']['WorkspaceReferenceOut']
 export type WorkspaceOption = components['schemas']['WorkspaceOption']
+export type WorkspaceImportResult = components['schemas']['WorkspaceImportResult']
+export type WorkspaceImportRow = components['schemas']['WorkspaceImportRowOut']
 
 export const workspaceApi = {
   /**
@@ -19,6 +21,18 @@ export const workspaceApi = {
   exportCsv: () => downloadFile('/workspaces/export.csv', '부서정보.csv'),
 
   options: () => api.get<WorkspaceOption[]>('/workspaces/options'),
+  /**
+   * ReportArchive 「부서 정보 내보내기」 를 **붙여넣은 글자**로 들인다. 파일이 아닌 이유는 장비
+   * 반입과 같다(DRM). `dryRun` 이면 무엇이 만들어질지만 — 미리보기와 적용이 같은 판정이다.
+   */
+  importText: (text: string, updateExisting: boolean, dryRun: boolean) =>
+    api.post<WorkspaceImportResult>(
+      `/workspaces/import?dry_run=${dryRun ? 'true' : 'false'}`,
+      {
+        text,
+        update_existing: updateExisting,
+      },
+    ),
   /** 사이드바 「신뢰성 시험」 아래에 설 부서들 — 소속과 무관하게 누구나 본다. */
   reliabilityListed: () => api.get<WorkspaceOption[]>('/workspaces/reliability-listed'),
   list: (all = false) => api.get<Workspace[]>(`/workspaces${all ? '?all=true' : ''}`),

@@ -10,6 +10,7 @@ from __future__ import annotations
 import sys
 import uuid
 from pathlib import Path
+from typing import Any
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -19,7 +20,7 @@ from app.modules.vocabulary.models import Vocabulary, VocabularyAlias, Vocabular
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
-from catalog_import.terms import _term, _test_item_aliases
+from catalog_import.terms import _term, _test_item_aliases  # type: ignore[import-not-found]
 
 
 def _aliases_of(db: Session, term: VocabularyTerm) -> set[str]:
@@ -37,7 +38,7 @@ def test_영문_라벨과_aliases_가_별칭이_되고_두_번_돌려도_안_겹
     assert axis is not None
     actor = db.scalar(select(User).limit(1))
     tag = uuid.uuid4().hex[:6]
-    rows = [
+    rows: list[dict[str, Any]] = [
         {
             "id": f"thermal_shock_{tag}",
             "label_ko": f"열충격-{tag}",

@@ -414,6 +414,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/workspaces/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Import Workspaces
+         * @description ReportArchive 「부서 정보 내보내기」 를 붙여넣어 조직도를 들인다.
+         *
+         *     `dry_run=true`(기본)면 **무엇이 만들어질지만** 준다 — 조직도는 한 번 잘못 들어가면 지우기
+         *     어렵다(부서마다 장비가 매달린다). 계획을 보고 사람이 `dry_run=false` 로 다시 부른다.
+         *     둘은 같은 코드로 판정한다. 적용은 한 트랜잭션이다 — 절반만 들어간 조직도는 없느니만 못하다.
+         *     이미 있는 부서는 건너뛴다(`update_existing` 으로 덮음). 공개 정책(external_view_default)은
+         *     다른 물음이라 옮기지 않는다.
+         */
+        post: operations["import_workspaces_api_workspaces_import_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/workspaces/{slug}": {
         parameters: {
             query?: never;
@@ -6044,6 +6070,55 @@ export interface components {
             /** Parent Slug */
             parent_slug?: string | null;
         };
+        /**
+         * WorkspaceImportRequest
+         * @description ReportArchive 「부서 정보 내보내기」 를 **붙여넣은 글자**.
+         *
+         *     파일이 아닌 이유는 장비 반입과 같다 — 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수
+         *     없다. 쉼표든 탭이든 받고, 머리글 줄까지 함께 붙여넣어야 한다.
+         */
+        WorkspaceImportRequest: {
+            /** Text */
+            text: string;
+            /**
+             * Update Existing
+             * @default false
+             */
+            update_existing: boolean;
+        };
+        /** WorkspaceImportResult */
+        WorkspaceImportResult: {
+            /** Rows */
+            rows: components["schemas"]["WorkspaceImportRowOut"][];
+            /** Created */
+            created: number;
+            /** Updated */
+            updated: number;
+            /** Skipped */
+            skipped: number;
+            /** Errors */
+            errors: number;
+            /** Dry Run */
+            dry_run: boolean;
+        };
+        /**
+         * WorkspaceImportRowOut
+         * @description 가져오기 한 행의 운명. **줄 번호를 든다** — 파일에서 되짚을 수 있게.
+         */
+        WorkspaceImportRowOut: {
+            /** Line */
+            line: number;
+            /** Slug */
+            slug: string;
+            /** Name */
+            name: string;
+            /** Parent Slug */
+            parent_slug: string | null;
+            /** Action */
+            action: string;
+            /** Reason */
+            reason: string;
+        };
         /** WorkspaceMembershipOut */
         WorkspaceMembershipOut: {
             /**
@@ -6896,6 +6971,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["WorkspaceOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    import_workspaces_api_workspaces_import_post: {
+        parameters: {
+            query?: {
+                dry_run?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WorkspaceImportRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkspaceImportResult"];
                 };
             };
             /** @description Validation Error */

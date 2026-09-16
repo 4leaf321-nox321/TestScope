@@ -102,3 +102,36 @@ class MemberAddRequest(BaseModel):
 
 class MemberRoleRequest(BaseModel):
     role: str
+
+
+class WorkspaceImportRequest(BaseModel):
+    """ReportArchive 「부서 정보 내보내기」 를 **붙여넣은 글자**.
+
+    파일이 아닌 이유는 장비 반입과 같다 — 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수
+    없다. 쉼표든 탭이든 받고, 머리글 줄까지 함께 붙여넣어야 한다.
+    """
+
+    text: str = Field(min_length=1, max_length=2_000_000)
+    update_existing: bool = False
+    """이미 있는 부서의 이름·설명·순서·보관 상태를 저쪽 값으로 덮나. 기본은 안 덮는다."""
+
+
+class WorkspaceImportRowOut(BaseModel):
+    """가져오기 한 행의 운명. **줄 번호를 든다** — 파일에서 되짚을 수 있게."""
+
+    line: int
+    slug: str
+    name: str
+    parent_slug: str | None
+    action: str
+    """`create` · `update` · `skip_exists` · `skip_kind` · `error`."""
+    reason: str
+
+
+class WorkspaceImportResult(BaseModel):
+    rows: list[WorkspaceImportRowOut]
+    created: int
+    updated: int
+    skipped: int
+    errors: int
+    dry_run: bool

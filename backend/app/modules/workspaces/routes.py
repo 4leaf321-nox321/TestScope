@@ -12,16 +12,20 @@ import uuid
 from urllib.parse import quote
 
 from fastapi import APIRouter, Depends, Query, Response
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
-from app.modules.workspaces import services
+from app.modules.workspaces import imports, services
 from app.modules.workspaces.schemas import (
     MemberAddRequest,
     MemberOut,
     MemberRoleRequest,
     WorkspaceCreateRequest,
+    WorkspaceImportRequest,
+    WorkspaceImportResult,
+    WorkspaceImportRowOut,
     WorkspaceMoveRequest,
     WorkspaceOption,
     WorkspaceOut,
@@ -30,7 +34,7 @@ from app.modules.workspaces.schemas import (
     WorkspaceUpdateRequest,
 )
 from app.shared.auth import current_user, require_system_admin
-from app.shared.errors import Forbidden
+from app.shared.errors import Conflict, Forbidden
 from app.shared.permissions import require_manager, require_member, workspace_by_slug
 
 router = APIRouter(prefix="/workspaces", tags=["workspaces"])
@@ -99,6 +103,57 @@ def export_csv(
         content="﻿" + buffer.getvalue(),
         media_type="text/csv; charset=utf-8",
         headers={"Content-Disposition": disposition},
+    )
+
+
+@router.post("/import", response_model=WorkspaceImportResult)
+def import_workspaces(
+    payload: WorkspaceImportRequest,
+    dry_run: bool = Query(default=True),
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> WorkspaceImportResult:
+    """ReportArchive 「부서 정보 내보내기」 를 붙여넣어 조직도를 들인다.
+
+    `dry_run=true`(기본)면 **무엇이 만들어질지만** 준다 — 조직도는 한 번 잘못 들어가면 지우기
+    어렵다(부서마다 장비가 매달린다). 계획을 보고 사람이 `dry_run=false` 로 다시 부른다.
+    둘은 같은 코드로 판정한다. 적용은 한 트랜잭션이다 — 절반만 들어간 조직도는 없느니만 못하다.
+    이미 있는 부서는 건너뛴다(`update_existing` 으로 덮음). 공개 정책(external_view_default)은
+    다른 물음이라 옮기지 않는다.
+    """
+    rows = imports.parse(payload.text)
+    if dry_run:
+        planned = imports.plan(db, rows, update_existing=payload.update_existing)
+    else:
+        planned = imports.apply(
+            db, rows, creator=admin, update_existing=payload.update_existing
+        )
+        try:
+            db.commit()
+        except IntegrityError as exc:
+            # 미리보기와 commit 사이에 다른 관리자가 같은 slug 를 만들었다 — 500 대신 말한다.
+            db.rollback()
+            raise Conflict(
+                "TSC-WORKSPACES-0021",
+                "같은 순간에 다른 관리자가 부서를 만들고 있습니다. 다시 시도해 주세요.",
+            ) from exc
+    return WorkspaceImportResult(
+        rows=[
+            WorkspaceImportRowOut(
+                line=one.line,
+                slug=one.slug,
+                name=one.name,
+                parent_slug=one.parent_slug,
+                action=one.action,
+                reason=one.reason,
+            )
+            for one in planned
+        ],
+        created=sum(1 for one in planned if one.action == "create"),
+        updated=sum(1 for one in planned if one.action == "update"),
+        skipped=sum(1 for one in planned if one.action.startswith("skip")),
+        errors=sum(1 for one in planned if one.action == "error"),
+        dry_run=dry_run,
     )
 
 

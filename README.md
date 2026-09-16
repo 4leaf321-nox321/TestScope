@@ -190,7 +190,10 @@ cd backend
 ### 부서 정보 주고받기 (ReportArchive)
 
 ReportArchive 의 「부서 정보 내보내기」 파일을 그대로 받습니다. 컬럼과 순서가 같아
-**양쪽으로 오갑니다.**
+**양쪽으로 오갑니다.** 화면에서는 **관리 → 부서 정보 → 가져오기** 에 파일 내용을 붙여넣으면
+미리보기(생성·갱신·건너뜀·오류) 뒤 적용합니다 — 명령줄과 같은 코드(`workspaces/imports.py`)로
+판정합니다. 이미 있는 부서는 덮지 않고, 공개 정책(external_view_default)은 다른 물음이라 옮기지
+않습니다.
 
 ```powershell
 cd backend

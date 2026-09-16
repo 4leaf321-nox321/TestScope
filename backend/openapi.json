@@ -1006,6 +1006,60 @@
         }
       }
     },
+    "/api/workspaces/import": {
+      "post": {
+        "tags": [
+          "workspaces"
+        ],
+        "summary": "Import Workspaces",
+        "description": "ReportArchive 「부서 정보 내보내기」 를 붙여넣어 조직도를 들인다.\n\n`dry_run=true`(기본)면 **무엇이 만들어질지만** 준다 — 조직도는 한 번 잘못 들어가면 지우기\n어렵다(부서마다 장비가 매달린다). 계획을 보고 사람이 `dry_run=false` 로 다시 부른다.\n둘은 같은 코드로 판정한다. 적용은 한 트랜잭션이다 — 절반만 들어간 조직도는 없느니만 못하다.\n이미 있는 부서는 건너뛴다(`update_existing` 으로 덮음). 공개 정책(external_view_default)은\n다른 물음이라 옮기지 않는다.",
+        "operationId": "import_workspaces_api_workspaces_import_post",
+        "parameters": [
+          {
+            "name": "dry_run",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Dry Run"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceImportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceImportResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/workspaces/{slug}": {
       "patch": {
         "tags": [
@@ -17863,6 +17917,114 @@
           "name"
         ],
         "title": "WorkspaceCreateRequest"
+      },
+      "WorkspaceImportRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 2000000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "update_existing": {
+            "type": "boolean",
+            "title": "Update Existing",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "WorkspaceImportRequest",
+        "description": "ReportArchive 「부서 정보 내보내기」 를 **붙여넣은 글자**.\n\n파일이 아닌 이유는 장비 반입과 같다 — 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수\n없다. 쉼표든 탭이든 받고, 머리글 줄까지 함께 붙여넣어야 한다."
+      },
+      "WorkspaceImportResult": {
+        "properties": {
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceImportRowOut"
+            },
+            "type": "array",
+            "title": "Rows"
+          },
+          "created": {
+            "type": "integer",
+            "title": "Created"
+          },
+          "updated": {
+            "type": "integer",
+            "title": "Updated"
+          },
+          "skipped": {
+            "type": "integer",
+            "title": "Skipped"
+          },
+          "errors": {
+            "type": "integer",
+            "title": "Errors"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rows",
+          "created",
+          "updated",
+          "skipped",
+          "errors",
+          "dry_run"
+        ],
+        "title": "WorkspaceImportResult"
+      },
+      "WorkspaceImportRowOut": {
+        "properties": {
+          "line": {
+            "type": "integer",
+            "title": "Line"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "parent_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Slug"
+          },
+          "action": {
+            "type": "string",
+            "title": "Action"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "line",
+          "slug",
+          "name",
+          "parent_slug",
+          "action",
+          "reason"
+        ],
+        "title": "WorkspaceImportRowOut",
+        "description": "가져오기 한 행의 운명. **줄 번호를 든다** — 파일에서 되짚을 수 있게."
       },
       "WorkspaceMembershipOut": {
         "properties": {

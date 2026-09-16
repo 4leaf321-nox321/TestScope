@@ -9,7 +9,7 @@
  */
 
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Download, Plus } from 'lucide-react'
+import { ChevronDown, ChevronUp, Download, FileInput, Plus } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -26,6 +26,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { ImportWorkspacesDialog } from '@/modules/workspaces/ImportWorkspacesDialog'
 import { workspaceApi } from '@/modules/workspaces/api'
 
 export default function WorkspacesAdminPage() {
@@ -33,6 +34,7 @@ export default function WorkspacesAdminPage() {
   const [slug, setSlug] = useState('')
   const [name, setName] = useState('')
   const [error, setError] = useState<ApiError | Error | null>(null)
+  const [importing, setImporting] = useState(false)
 
   async function act(run: () => Promise<unknown>) {
     setError(null)
@@ -52,18 +54,30 @@ export default function WorkspacesAdminPage() {
         actions={
           // ReportArchive 의 「부서 정보 내보내기」 와 컬럼·순서가 같다 — 양쪽으로
           // 오간다. 한쪽으로만 들어가는 것은 호환이 아니라 이사다.
-          <Button
-            variant="outline"
-            onClick={() =>
-              act(async () => {
-                await workspaceApi.exportCsv()
-              })
-            }
-          >
-            <Download className="size-4" />
-            CSV 내보내기
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => setImporting(true)}>
+              <FileInput className="size-4" />
+              가져오기
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() =>
+                act(async () => {
+                  await workspaceApi.exportCsv()
+                })
+              }
+            >
+              <Download className="size-4" />
+              CSV 내보내기
+            </Button>
+          </div>
         }
+      />
+
+      <ImportWorkspacesDialog
+        open={importing}
+        onClose={() => setImporting(false)}
+        onDone={() => list.reload()}
       />
 
       <form
