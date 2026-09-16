@@ -7057,6 +7057,247 @@
         }
       }
     },
+    "/api/attribute-definitions": {
+      "get": {
+        "tags": [
+          "attributes"
+        ],
+        "summary": "List Attribute Definitions",
+        "description": "한 대상(`reliability_test` · `equipment`)에 붙는 항목 정의 — 정식이 먼저, 초안이 뒤.\n`value_count` 는 그 항목으로 적힌 값의 수다. 초안을 건수순으로 보면 무엇을 정식으로\n올릴지 보인다.",
+        "operationId": "list_attribute_definitions_api_attribute_definitions_get",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 20,
+              "title": "Target"
+            }
+          },
+          {
+            "name": "include_inactive",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Inactive"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AttributeDefinitionOut"
+                  },
+                  "title": "Response List Attribute Definitions Api Attribute Definitions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "attributes"
+        ],
+        "summary": "Create Attribute Definition",
+        "description": "정식 항목을 만든다. `status=\"draft\"` 로 보내면 조사 중인 후보를 미리 목록에 세운다.",
+        "operationId": "create_attribute_definition_api_attribute_definitions_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttributeDefinitionCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeDefinitionOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attribute-definitions/{definition_id}": {
+      "patch": {
+        "tags": [
+          "attributes"
+        ],
+        "summary": "Update Attribute Definition",
+        "description": "부분 수정. 정식으로 올리기는 `{\"status\": \"standard\"}`. 종류는 값이 없을 때만 바뀐다.",
+        "operationId": "update_attribute_definition_api_attribute_definitions__definition_id__patch",
+        "parameters": [
+          {
+            "name": "definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Definition Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttributeDefinitionUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeDefinitionOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "attributes"
+        ],
+        "summary": "Delete Attribute Definition",
+        "description": "값이 하나도 없는 항목만 지운다(오타 초안). 값이 있으면 409 — 끄거나 합친다.",
+        "operationId": "delete_attribute_definition_api_attribute_definitions__definition_id__delete",
+        "parameters": [
+          {
+            "name": "definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Definition Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attribute-definitions/{definition_id}/merge": {
+      "post": {
+        "tags": [
+          "attributes"
+        ],
+        "summary": "Merge Attribute Definition",
+        "description": "이름만 다른 항목을 `target_id` 로 합친다. 값이 옮겨 가고 이 항목은 꺼진다. 종류가 같아야\n한다.",
+        "operationId": "merge_attribute_definition_api_attribute_definitions__definition_id__merge_post",
+        "parameters": [
+          {
+            "name": "definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Definition Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttributeMergeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttributeDefinitionOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/notices": {
       "get": {
         "tags": [
@@ -7861,6 +8102,411 @@
         "type": "object",
         "title": "ApproveRequest"
       },
+      "AttributeDefinitionCreateRequest": {
+        "properties": {
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Key"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind",
+            "default": "text"
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Unit",
+            "default": ""
+          },
+          "choices": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Choices"
+          },
+          "condition_key_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Key Id"
+          },
+          "vocabulary_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vocabulary Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "standard"
+          },
+          "is_required": {
+            "type": "boolean",
+            "title": "Is Required",
+            "default": false
+          },
+          "help": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Help"
+          },
+          "sort_order": {
+            "type": "integer",
+            "title": "Sort Order",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "target",
+          "label"
+        ],
+        "title": "AttributeDefinitionCreateRequest",
+        "description": "시스템 관리자가 정식(또는 미리 준비하는 초안) 항목을 만든다."
+      },
+      "AttributeDefinitionOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "choices": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Choices"
+          },
+          "condition_key_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Key Id"
+          },
+          "condition_key_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Key Label"
+          },
+          "vocabulary_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vocabulary Id"
+          },
+          "vocabulary_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vocabulary Slug"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "is_required": {
+            "type": "boolean",
+            "title": "Is Required"
+          },
+          "help": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Help"
+          },
+          "sort_order": {
+            "type": "integer",
+            "title": "Sort Order"
+          },
+          "is_active": {
+            "type": "boolean",
+            "title": "Is Active"
+          },
+          "merged_into_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Merged Into Id"
+          },
+          "value_count": {
+            "type": "integer",
+            "title": "Value Count"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "target",
+          "key",
+          "label",
+          "kind",
+          "unit",
+          "choices",
+          "condition_key_id",
+          "condition_key_label",
+          "vocabulary_id",
+          "vocabulary_slug",
+          "status",
+          "is_required",
+          "help",
+          "sort_order",
+          "is_active",
+          "merged_into_id",
+          "value_count",
+          "created_at"
+        ],
+        "title": "AttributeDefinitionOut"
+      },
+      "AttributeDefinitionUpdateRequest": {
+        "properties": {
+          "label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 150,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 60,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Key"
+          },
+          "kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kind"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "choices": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Choices"
+          },
+          "condition_key_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Condition Key Id"
+          },
+          "vocabulary_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vocabulary Id"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "is_required": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Required"
+          },
+          "help": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Help"
+          },
+          "sort_order": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sort Order"
+          },
+          "is_active": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Active"
+          }
+        },
+        "type": "object",
+        "title": "AttributeDefinitionUpdateRequest",
+        "description": "안 보낸 칸은 그대로. `kind` 는 값이 하나도 없을 때만 바뀐다."
+      },
       "AttributeField": {
         "properties": {
           "key": {
@@ -7901,6 +8547,341 @@
           "label"
         ],
         "title": "AttributeField"
+      },
+      "AttributeMergeRequest": {
+        "properties": {
+          "target_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Target Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target_id"
+        ],
+        "title": "AttributeMergeRequest"
+      },
+      "AttributeValueIn": {
+        "properties": {
+          "definition_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definition Id"
+          },
+          "new_label": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 150,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "New Label"
+          },
+          "new_kind": {
+            "type": "string",
+            "title": "New Kind",
+            "default": "text"
+          },
+          "num_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Value"
+          },
+          "num_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Min"
+          },
+          "num_max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Max"
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Unit",
+            "default": ""
+          },
+          "text_value": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Value"
+          },
+          "bool_value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bool Value"
+          },
+          "date_value": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date Value"
+          },
+          "term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Id"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "title": "AttributeValueIn",
+        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id. 다른 칸은 무시한다."
+      },
+      "AttributeValueOut": {
+        "properties": {
+          "definition_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Definition Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "num_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Value"
+          },
+          "num_min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Min"
+          },
+          "num_max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Num Max"
+          },
+          "text_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Value"
+          },
+          "bool_value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bool Value"
+          },
+          "date_value": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date Value"
+          },
+          "term_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Id"
+          },
+          "term_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Term Value"
+          },
+          "method_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Id"
+          },
+          "method_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Method Code"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "display": {
+            "type": "string",
+            "title": "Display"
+          }
+        },
+        "type": "object",
+        "required": [
+          "definition_id",
+          "label",
+          "kind",
+          "status",
+          "unit",
+          "num_value",
+          "num_min",
+          "num_max",
+          "text_value",
+          "bool_value",
+          "date_value",
+          "term_id",
+          "term_value",
+          "method_id",
+          "method_code",
+          "note",
+          "display"
+        ],
+        "title": "AttributeValueOut"
       },
       "AuditEntryOut": {
         "properties": {
@@ -9270,6 +10251,13 @@
               }
             ],
             "title": "Note"
+          },
+          "attributes": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeValueIn"
+            },
+            "type": "array",
+            "title": "Attributes"
           }
         },
         "type": "object",
@@ -10259,6 +11247,13 @@
             "type": "integer",
             "title": "Spec Override Count"
           },
+          "attributes": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeValueOut"
+            },
+            "type": "array",
+            "title": "Attributes"
+          },
           "created_at": {
             "type": "string",
             "format": "date-time",
@@ -10303,6 +11298,7 @@
           "calibration_due_estimated",
           "calibration_missing",
           "spec_override_count",
+          "attributes",
           "created_at",
           "can_edit"
         ],
@@ -11890,6 +12886,20 @@
               }
             ],
             "title": "Workspace Slug"
+          },
+          "attributes": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AttributeValueIn"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attributes"
           }
         },
         "type": "object",
@@ -14752,6 +15762,13 @@
             },
             "type": "array",
             "title": "Test Item Term Ids"
+          },
+          "attributes": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeValueIn"
+            },
+            "type": "array",
+            "title": "Attributes"
           }
         },
         "type": "object",
@@ -14816,6 +15833,13 @@
             "type": "array",
             "title": "Test Items"
           },
+          "attributes": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeValueOut"
+            },
+            "type": "array",
+            "title": "Attributes"
+          },
           "can_edit": {
             "type": "boolean",
             "title": "Can Edit"
@@ -14839,6 +15863,7 @@
           "name",
           "purpose",
           "test_items",
+          "attributes",
           "can_edit",
           "created_at",
           "updated_at"
@@ -14886,6 +15911,20 @@
               }
             ],
             "title": "Test Item Term Ids"
+          },
+          "attributes": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AttributeValueIn"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attributes"
           }
         },
         "type": "object",

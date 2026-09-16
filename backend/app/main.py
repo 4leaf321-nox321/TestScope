@@ -18,6 +18,7 @@ from app.config import Settings, get_settings
 from app.database import SessionLocal, engine
 from app.logging_setup import setup_logging
 from app.modules.accounts import routes as accounts_routes
+from app.modules.attributes import routes as attributes_routes
 from app.modules.audit import routes as audit_routes
 from app.modules.auth import routes as auth_routes
 from app.modules.equipment import routes as equipment_routes
@@ -74,6 +75,7 @@ def _api_router() -> APIRouter:
     router.include_router(properties_routes.router)
     router.include_router(properties_routes.links_router)
     router.include_router(reliability_routes.router)
+    router.include_router(attributes_routes.router)
     router.include_router(notices_routes.router)
     router.include_router(notifications_routes.router)
     router.include_router(audit_routes.router)

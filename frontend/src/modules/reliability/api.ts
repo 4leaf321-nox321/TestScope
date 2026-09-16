@@ -2,6 +2,7 @@
 
 import { api } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'
+import type { AttributeValueIn } from '@/modules/attributes/api'
 
 export type ReliabilityTest = components['schemas']['ReliabilityTestOut']
 export type ReliabilityTestItem = components['schemas']['ReliabilityTestItemOut']
@@ -9,6 +10,8 @@ export type ReliabilityTestWrite = {
   name: string
   purpose: string
   test_item_term_ids: string[]
+  /** 항목 값. 보내면 통째로 바뀐다. `definition_id` 없이 `new_label` 이면 초안이 생긴다. */
+  attributes: AttributeValueIn[]
 }
 
 export const reliabilityApi = {

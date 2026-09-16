@@ -10,6 +10,8 @@ from sqlalchemy import func, select, true
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import services as attributes
+from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import Equipment
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.reliability.schemas import ReliabilityTestItemOut, ReliabilityTestOut
@@ -77,6 +79,9 @@ def _outs(db: Session, user: User, rows: list[ReliabilityTest]) -> list[Reliabil
         w.id: w for w in db.scalars(select(Workspace).where(Workspace.id.in_(workspace_ids)))
     }
     items = _items_of(db, [r.id for r in rows])
+    attribute_values = attributes.values_of(
+        db, target="reliability_test", object_ids=[r.id for r in rows]
+    )
     counts_by_workspace: dict[uuid.UUID, dict[uuid.UUID, int]] = {}
     for workspace_id in workspaces:
         term_ids = sorted(
@@ -101,6 +106,7 @@ def _outs(db: Session, user: User, rows: list[ReliabilityTest]) -> list[Reliabil
                     )
                     for t in items[row.id]
                 ],
+                attributes=attribute_values[row.id],
                 can_edit=editable[row.workspace_id],
                 created_at=row.created_at,
                 updated_at=row.updated_at,
@@ -188,6 +194,14 @@ def _set_items(db: Session, test_id: uuid.UUID, term_ids: list[uuid.UUID]) -> No
         db.add(ReliabilityTestItem(reliability_test_id=test_id, test_item_term_id=term_id))
 
 
+def _attribute_items(raw: Any) -> list[AttributeValueIn]:
+    """`model_dump` 를 거쳐 dict 로 온 것을 되돌린다 — 값 검증은 attributes 서비스가 한다."""
+    return [
+        one if isinstance(one, AttributeValueIn) else AttributeValueIn.model_validate(one)
+        for one in (raw or [])
+    ]
+
+
 def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     workspace = workspace_by_slug(db, payload["workspace_slug"])
     require_manager(db, workspace=workspace, user=user)
@@ -207,6 +221,13 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     db.add(row)
     db.flush()
     _set_items(db, row.id, term_ids)
+    attributes.set_values(
+        db,
+        user,
+        target="reliability_test",
+        object_id=row.id,
+        items=_attribute_items(payload.get("attributes")),
+    )
     db.commit()
     db.refresh(row)
     return row
@@ -233,6 +254,14 @@ def update(
         term_ids = list(changes["test_item_term_ids"])
         _check_test_item_terms(db, term_ids)
         _set_items(db, row.id, term_ids)
+    if changes.get("attributes") is not None:
+        attributes.set_values(
+            db,
+            user,
+            target="reliability_test",
+            object_id=row.id,
+            items=_attribute_items(changes["attributes"]),
+        )
     db.commit()
     db.refresh(row)
     return row

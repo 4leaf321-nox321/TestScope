@@ -1,8 +1,9 @@
 /**
  * 신뢰성 시험 등록·수정.
  *
- * 칸은 이름·목적·쓰는 시험 항목 셋뿐이다 — **나머지는 현장의 목록을 보고 더한다.** 조건·판정
- * 기준·근거 규격을 지금 지어 넣으면 그 칸은 아무도 안 채운다.
+ * 고정 칸은 이름·목적·쓰는 시험 항목 셋이다. **나머지(조건·판정 기준·근거 규격·시료 수 …)는
+ * 「항목」 으로 붙인다** — 열을 미리 뚫지 않고 이름을 데이터로 둔 것(attributes 모듈). 정식
+ * 항목은 관리자가 정하고, 없는 이름은 초안으로 남아 나중에 정식으로 올라간다.
  *
  * 시험 항목은 **이 부서에 장비가 몇 대인지**를 옆에 달아 고른다. 「열충격」 을 고르는 순간
  * 「우리 부서에 챔버가 0대」 가 보여야, 등록하면서 「돌릴 장비가 없다」 를 안다.
@@ -28,6 +29,12 @@ import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
+import {
+  AttributeValuesEditor,
+  fromValues,
+  toPayload,
+} from '@/modules/attributes/AttributeValuesEditor'
+import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 import { testItemCatalogApi } from '@/modules/test_items/api'
@@ -53,6 +60,7 @@ export function ReliabilityTestDialog({
   const [name, setName] = useState('')
   const [purpose, setPurpose] = useState('')
   const [termIds, setTermIds] = useState<string[]>([])
+  const [attributes, setAttributes] = useState<AttributeRow[]>([])
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
 
@@ -62,6 +70,7 @@ export function ReliabilityTestDialog({
     setName(editing?.name ?? '')
     setPurpose(editing?.purpose ?? '')
     setTermIds(editing?.test_items.map((one) => one.term_id) ?? [])
+    setAttributes(editing ? fromValues(editing.attributes) : [])
     setError(null)
   }, [open, editing])
 
@@ -88,7 +97,12 @@ export function ReliabilityTestDialog({
     setBusy(true)
     setError(null)
     try {
-      const body = { name: name.trim(), purpose: purpose.trim(), test_item_term_ids: termIds }
+      const body = {
+        name: name.trim(),
+        purpose: purpose.trim(),
+        test_item_term_ids: termIds,
+        attributes: toPayload(attributes),
+      }
       if (editing) await reliabilityApi.update(editing.id, body)
       else await reliabilityApi.create(workspace, body)
       onSaved()
@@ -101,7 +115,7 @@ export function ReliabilityTestDialog({
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && !busy && onClose()}>
-      <DialogContent>
+      <DialogContent className="sm:max-w-2xl">
         <form onSubmit={submit} className="space-y-4">
           <DialogHeader>
             <DialogTitle>{editing ? '신뢰성 시험 수정' : '신뢰성 시험 등록'}</DialogTitle>
@@ -179,6 +193,15 @@ export function ReliabilityTestDialog({
             <p className="text-muted-foreground text-xs">
               비워 둘 수 있습니다 — 장비 없이 하는 시험이거나 아직 안 정한 경우.
             </p>
+          </div>
+
+          <div className="space-y-2">
+            <Label>속성</Label>
+            <AttributeValuesEditor
+              target="reliability_test"
+              rows={attributes}
+              onChange={setAttributes}
+            />
           </div>
 
           <ErrorNotice error={error ?? catalog.error} />

@@ -30,6 +30,9 @@ const AccountsAdminPage = lazy(() => import('@/modules/accounts/AccountsAdminPag
 const AuditPage = lazy(() => import('@/modules/audit/AuditPage'))
 const ConditionsPage = lazy(() => import('@/modules/vocabulary/ConditionsPage'))
 const SpecDefinitionsPage = lazy(() => import('@/modules/vocabulary/SpecDefinitionsPage'))
+const AttributeDefinitionsPage = lazy(
+  () => import('@/modules/attributes/AttributeDefinitionsPage'),
+)
 const EquipmentDetailPage = lazy(() => import('@/modules/equipment/EquipmentDetailPage'))
 const EquipmentModelDetailPage = lazy(
   () => import('@/modules/equipment/EquipmentModelDetailPage'),
@@ -133,6 +136,7 @@ export const router = createBrowserRouter([
           { path: 'vocabulary', element: <VocabularyPage /> },
           { path: 'conditions', element: <ConditionsPage /> },
           { path: 'spec-definitions', element: <SpecDefinitionsPage /> },
+          { path: 'attribute-definitions/:target', element: <AttributeDefinitionsPage /> },
           { path: 'audit', element: <AuditPage /> },
 
           // 관리 (전사)

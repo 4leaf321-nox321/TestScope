@@ -106,6 +106,7 @@ export default function WorkspaceReliabilityPage() {
               <TableHead>신뢰성 시험</TableHead>
               <TableHead>목적</TableHead>
               <TableHead>쓰는 시험 항목 · 이 부서 장비</TableHead>
+              <TableHead>속성</TableHead>
               {canEdit && <TableHead className="w-24" />}
             </TableRow>
           </TableHeader>
@@ -144,6 +145,29 @@ export default function WorkspaceReliabilityPage() {
                             >
                               {item.equipment_count}대
                             </Link>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </TableCell>
+                <TableCell>
+                  {row.attributes.length === 0 ? (
+                    <span className="text-muted-foreground text-sm">—</span>
+                  ) : (
+                    <ul className="space-y-0.5 text-sm">
+                      {row.attributes.map((item) => (
+                        <li key={item.definition_id} className="flex flex-wrap gap-x-1">
+                          <span className="text-muted-foreground">{item.label}</span>
+                          <span>{item.display}</span>
+                          {item.status === 'draft' && (
+                            // 초안은 표시·수집만 — 검색 판정에 안 쓰인다는 것을 읽는 사람이 알아야 한다.
+                            <span
+                              className="text-muted-foreground text-xs"
+                              title="초안 속성 — 시스템 관리자가 정식으로 올리기 전입니다"
+                            >
+                              초안
+                            </span>
                           )}
                         </li>
                       ))}

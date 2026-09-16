@@ -15,6 +15,8 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import services as attributes
+from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment import catalog
 from app.modules.equipment.category_tree import family, rollup
 from app.modules.equipment.models import (
@@ -202,6 +204,7 @@ def equipment_out(db: Session, row: Equipment, viewer: User) -> EquipmentOut:
         calibration_due_estimated=due_estimated,
         calibration_missing=due_missing,
         spec_override_count=_override_count(db, row.id),
+        attributes=attributes.values_of(db, target="equipment", object_ids=[row.id])[row.id],
         created_at=row.created_at,
         can_edit=_can_edit(db, viewer, row),
     )
@@ -563,6 +566,13 @@ def create(
     # **모델을 골랐으면 계열의 시험 항목을 이 장비로 복사한다.** 같은 트랜잭션이어야
     # "장비는 생겼는데 시험 항목만 없는" 상태가 안 생긴다(ADR 0004).
     copied = catalog.copy_test_items_to(db, row, user)
+    attributes.set_values(
+        db,
+        user,
+        target="equipment",
+        object_id=row.id,
+        items=_attribute_items(payload.get("attributes")),
+    )
 
     if not commit:
         # 부른 쪽이 트랜잭션을 들고 있다. 여기서 커밋하면 그 쪽의 「전부 아니면
@@ -672,12 +682,28 @@ def update(
         # 붙어 있고, 목록은 그것을 그대로 그린다.
         row.retired_on = None
     _check_identity(db, row.category_term_id, row.model_id)
+    if changes.get("attributes") is not None:
+        attributes.set_values(
+            db,
+            user,
+            target="equipment",
+            object_id=row.id,
+            items=_attribute_items(changes["attributes"]),
+        )
 
     if not commit:
         return row
     db.commit()
     db.refresh(row)
     return row
+
+
+def _attribute_items(raw: Any) -> list[AttributeValueIn]:
+    """`model_dump` 를 거쳐 dict 로 온 것을 되돌린다 — 값 검증은 attributes 서비스가 한다."""
+    return [
+        one if isinstance(one, AttributeValueIn) else AttributeValueIn.model_validate(one)
+        for one in (raw or [])
+    ]
 
 
 def delete(db: Session, user: User, equipment_id: uuid.UUID) -> None:

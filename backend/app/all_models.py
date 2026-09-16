@@ -13,6 +13,7 @@ from __future__ import annotations
 from app.database import Base
 from app.jobs.models import Job
 from app.modules.accounts.models import User
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.audit.models import AccessLog, AuditEntry
 from app.modules.auth.models import PersonalAccessToken, RefreshToken
 from app.modules.equipment.models import (
@@ -56,6 +57,8 @@ from app.modules.workspaces.models import Workspace, WorkspaceMember
 
 __all__ = [
     "AccessLog",
+    "AttributeDefinition",
+    "AttributeValue",
     "AuditEntry",
     "Base",
     "ConditionKey",

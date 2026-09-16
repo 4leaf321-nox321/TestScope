@@ -41,6 +41,7 @@ from sqlalchemy.orm import Session
 
 from app.config import get_settings
 from app.shared import embeddings
+from app.shared.attribute_text import display_attribute
 
 logger = logging.getLogger(__name__)
 
@@ -440,6 +441,7 @@ def _equipment_cards(db: Session) -> list[Chunk]:
         ORDER BY e.asset_no
         """)
     ).all()
+    attributes = _standard_attributes(db, "equipment_id")
     made: list[Chunk] = []
     for (
         equipment_id,
@@ -467,12 +469,48 @@ def _equipment_cards(db: Session) -> list[Chunk]:
                 f"부서: {workspace}",
                 f"위치: {site} {location}".strip() if site or location else "",
                 _listed("되는 시험", tests.get(eid, [])),
+                *attributes.get(eid, []),
                 f"비고: {note}" if note else "",
             ],
         )
         for seq, piece in enumerate(split(body)):
             made.append(Chunk("equipment", eid, seq, f"{name} ({asset_no})", piece))
     return made
+
+
+def _standard_attributes(db: Session, column: str) -> dict[str, list[str]]:
+    """대상마다 **정식 속성**의 「이름: 값」 줄. 초안은 표시와 수집용이라 카드에 넣지 않는다 —
+    초안이 쌓여도 검색 품질이 흔들리지 않아야 한다(attributes/models.py)."""
+    assert column in ("reliability_test_id", "equipment_id")
+    rows = db.execute(
+        text(f"""
+        SELECT v.{column}, d.label, d.kind, v.num_value, v.num_min, v.num_max,
+               v.unit, v.text_value, v.bool_value, v.date_value, t.value, m.code
+        FROM attribute_values v
+        JOIN attribute_definitions d ON d.id = v.definition_id AND d.status = 'standard'
+        LEFT JOIN vocabulary_terms t ON t.id = v.term_id
+        LEFT JOIN test_methods m ON m.id = v.method_id
+        WHERE v.{column} IS NOT NULL
+        ORDER BY d.sort_order, d.label
+        """)
+    ).all()
+    out: dict[str, list[str]] = {}
+    for row in rows:
+        shown = display_attribute(
+            row[2],
+            num_value=row[3],
+            num_min=row[4],
+            num_max=row[5],
+            unit=row[6] or "",
+            text_value=row[7],
+            bool_value=row[8],
+            date_value=row[9],
+            term_value=row[10],
+            method_code=row[11],
+        )
+        if shown:
+            out.setdefault(str(row[0]), []).append(f"{row[1]}: {shown}")
+    return out
 
 
 def _reliability_cards(db: Session) -> list[Chunk]:
@@ -483,6 +521,7 @@ def _reliability_cards(db: Session) -> list[Chunk]:
         JOIN vocabulary_terms t ON t.id = r.test_item_term_id ORDER BY t.value
         """,
     )
+    attributes = _standard_attributes(db, "reliability_test_id")
     rows = db.execute(
         text("""
         SELECT r.id, r.name, r.purpose, w.name FROM reliability_tests r
@@ -498,6 +537,7 @@ def _reliability_cards(db: Session) -> list[Chunk]:
                 f"부서: {workspace}",
                 _listed("쓰는 시험 항목", tests.get(str(test_id), [])),
                 f"목적: {purpose}" if purpose else "",
+                *attributes.get(str(test_id), []),
             ],
         )
         for seq, piece in enumerate(split(body)):

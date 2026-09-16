@@ -2201,6 +2201,77 @@ export interface paths {
         patch: operations["update_reliability_test_api_reliability_tests__test_id__patch"];
         trace?: never;
     };
+    "/api/attribute-definitions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Attribute Definitions
+         * @description 한 대상(`reliability_test` · `equipment`)에 붙는 항목 정의 — 정식이 먼저, 초안이 뒤.
+         *     `value_count` 는 그 항목으로 적힌 값의 수다. 초안을 건수순으로 보면 무엇을 정식으로
+         *     올릴지 보인다.
+         */
+        get: operations["list_attribute_definitions_api_attribute_definitions_get"];
+        put?: never;
+        /**
+         * Create Attribute Definition
+         * @description 정식 항목을 만든다. `status="draft"` 로 보내면 조사 중인 후보를 미리 목록에 세운다.
+         */
+        post: operations["create_attribute_definition_api_attribute_definitions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/attribute-definitions/{definition_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Attribute Definition
+         * @description 값이 하나도 없는 항목만 지운다(오타 초안). 값이 있으면 409 — 끄거나 합친다.
+         */
+        delete: operations["delete_attribute_definition_api_attribute_definitions__definition_id__delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Attribute Definition
+         * @description 부분 수정. 정식으로 올리기는 `{"status": "standard"}`. 종류는 값이 없을 때만 바뀐다.
+         */
+        patch: operations["update_attribute_definition_api_attribute_definitions__definition_id__patch"];
+        trace?: never;
+    };
+    "/api/attribute-definitions/{definition_id}/merge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Merge Attribute Definition
+         * @description 이름만 다른 항목을 `target_id` 로 합친다. 값이 옮겨 가고 이 항목은 꺼진다. 종류가 같아야
+         *     한다.
+         */
+        post: operations["merge_attribute_definition_api_attribute_definitions__definition_id__merge_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/notices": {
         parameters: {
             query?: never;
@@ -2571,6 +2642,128 @@ export interface components {
              */
             role: string;
         };
+        /**
+         * AttributeDefinitionCreateRequest
+         * @description 시스템 관리자가 정식(또는 미리 준비하는 초안) 항목을 만든다.
+         */
+        AttributeDefinitionCreateRequest: {
+            /** Target */
+            target: string;
+            /** Label */
+            label: string;
+            /** Key */
+            key?: string | null;
+            /**
+             * Kind
+             * @default text
+             */
+            kind: string;
+            /**
+             * Unit
+             * @default
+             */
+            unit: string;
+            /** Choices */
+            choices?: string[];
+            /** Condition Key Id */
+            condition_key_id?: string | null;
+            /** Vocabulary Id */
+            vocabulary_id?: string | null;
+            /**
+             * Status
+             * @default standard
+             */
+            status: string;
+            /**
+             * Is Required
+             * @default false
+             */
+            is_required: boolean;
+            /** Help */
+            help?: string | null;
+            /**
+             * Sort Order
+             * @default 0
+             */
+            sort_order: number;
+        };
+        /** AttributeDefinitionOut */
+        AttributeDefinitionOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Target */
+            target: string;
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Kind */
+            kind: string;
+            /** Unit */
+            unit: string;
+            /** Choices */
+            choices: string[];
+            /** Condition Key Id */
+            condition_key_id: string | null;
+            /** Condition Key Label */
+            condition_key_label: string | null;
+            /** Vocabulary Id */
+            vocabulary_id: string | null;
+            /** Vocabulary Slug */
+            vocabulary_slug: string | null;
+            /** Status */
+            status: string;
+            /** Is Required */
+            is_required: boolean;
+            /** Help */
+            help: string | null;
+            /** Sort Order */
+            sort_order: number;
+            /** Is Active */
+            is_active: boolean;
+            /** Merged Into Id */
+            merged_into_id: string | null;
+            /** Value Count */
+            value_count: number;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /**
+         * AttributeDefinitionUpdateRequest
+         * @description 안 보낸 칸은 그대로. `kind` 는 값이 하나도 없을 때만 바뀐다.
+         */
+        AttributeDefinitionUpdateRequest: {
+            /** Label */
+            label?: string | null;
+            /** Key */
+            key?: string | null;
+            /** Kind */
+            kind?: string | null;
+            /** Unit */
+            unit?: string | null;
+            /** Choices */
+            choices?: string[] | null;
+            /** Condition Key Id */
+            condition_key_id?: string | null;
+            /** Vocabulary Id */
+            vocabulary_id?: string | null;
+            /** Status */
+            status?: string | null;
+            /** Is Required */
+            is_required?: boolean | null;
+            /** Help */
+            help?: string | null;
+            /** Sort Order */
+            sort_order?: number | null;
+            /** Is Active */
+            is_active?: boolean | null;
+        };
         /** AttributeField */
         AttributeField: {
             /** Key */
@@ -2584,6 +2777,97 @@ export interface components {
             kind: string;
             /** Help */
             help?: string | null;
+        };
+        /** AttributeMergeRequest */
+        AttributeMergeRequest: {
+            /**
+             * Target Id
+             * Format: uuid
+             */
+            target_id: string;
+        };
+        /**
+         * AttributeValueIn
+         * @description 값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로
+         *     만든다.**
+         *
+         *     종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·
+         *     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
+         *     term: term_id · method: method_id. 다른 칸은 무시한다.
+         */
+        AttributeValueIn: {
+            /** Definition Id */
+            definition_id?: string | null;
+            /** New Label */
+            new_label?: string | null;
+            /**
+             * New Kind
+             * @default text
+             */
+            new_kind: string;
+            /** Num Value */
+            num_value?: number | null;
+            /** Num Min */
+            num_min?: number | null;
+            /** Num Max */
+            num_max?: number | null;
+            /**
+             * Unit
+             * @default
+             */
+            unit: string;
+            /** Text Value */
+            text_value?: string | null;
+            /** Bool Value */
+            bool_value?: boolean | null;
+            /** Date Value */
+            date_value?: string | null;
+            /** Term Id */
+            term_id?: string | null;
+            /** Method Id */
+            method_id?: string | null;
+            /** Note */
+            note?: string | null;
+        };
+        /** AttributeValueOut */
+        AttributeValueOut: {
+            /**
+             * Definition Id
+             * Format: uuid
+             */
+            definition_id: string;
+            /** Label */
+            label: string;
+            /** Kind */
+            kind: string;
+            /** Status */
+            status: string;
+            /** Unit */
+            unit: string;
+            /** Num Value */
+            num_value: number | null;
+            /** Num Min */
+            num_min: number | null;
+            /** Num Max */
+            num_max: number | null;
+            /** Text Value */
+            text_value: string | null;
+            /** Bool Value */
+            bool_value: boolean | null;
+            /** Date Value */
+            date_value: string | null;
+            /** Term Id */
+            term_id: string | null;
+            /** Term Value */
+            term_value: string | null;
+            /** Method Id */
+            method_id: string | null;
+            /** Method Code */
+            method_code: string | null;
+            /** Note */
+            note: string | null;
+            /** Display */
+            display: string;
         };
         /** AuditEntryOut */
         AuditEntryOut: {
@@ -3086,6 +3370,8 @@ export interface components {
             contact_user_id?: string | null;
             /** Note */
             note?: string | null;
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][];
         };
         /**
          * EquipmentFilterOptionsOut
@@ -3425,6 +3711,8 @@ export interface components {
             calibration_missing: boolean;
             /** Spec Override Count */
             spec_override_count: number;
+            /** Attributes */
+            attributes: components["schemas"]["AttributeValueOut"][];
             /**
              * Created At
              * Format: date-time
@@ -3888,6 +4176,8 @@ export interface components {
             note?: string | null;
             /** Workspace Slug */
             workspace_slug?: string | null;
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][] | null;
         };
         /**
          * FilterOption
@@ -4921,6 +5211,8 @@ export interface components {
             purpose: string;
             /** Test Item Term Ids */
             test_item_term_ids?: string[];
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][];
         };
         /**
          * ReliabilityTestItemOut
@@ -4954,6 +5246,8 @@ export interface components {
             purpose: string;
             /** Test Items */
             test_items: components["schemas"]["ReliabilityTestItemOut"][];
+            /** Attributes */
+            attributes: components["schemas"]["AttributeValueOut"][];
             /** Can Edit */
             can_edit: boolean;
             /**
@@ -4978,6 +5272,8 @@ export interface components {
             purpose?: string | null;
             /** Test Item Term Ids */
             test_item_term_ids?: string[] | null;
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][] | null;
         };
         /**
          * RequirementImportRequest
@@ -10633,6 +10929,170 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ReliabilityTestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_attribute_definitions_api_attribute_definitions_get: {
+        parameters: {
+            query: {
+                target: string;
+                include_inactive?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttributeDefinitionOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_attribute_definition_api_attribute_definitions_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AttributeDefinitionCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttributeDefinitionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_attribute_definition_api_attribute_definitions__definition_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                definition_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_attribute_definition_api_attribute_definitions__definition_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                definition_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AttributeDefinitionUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttributeDefinitionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    merge_attribute_definition_api_attribute_definitions__definition_id__merge_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                definition_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AttributeMergeRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttributeDefinitionOut"];
                 };
             };
             /** @description Validation Error */

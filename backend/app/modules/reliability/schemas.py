@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
+from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
+
 
 class ReliabilityTestItemOut(BaseModel):
     """이 시험이 쓰는 시험 항목 하나와, 그 항목을 할 수 있는 **이 부서의** 장비 수."""
@@ -25,6 +27,8 @@ class ReliabilityTestOut(BaseModel):
     name: str
     purpose: str
     test_items: list[ReliabilityTestItemOut]
+    attributes: list[AttributeValueOut]
+    """항목 값 — 정식이 먼저, 초안이 뒤. `status` 로 가른다."""
     can_edit: bool
     """요청한 사람이 고칠 수 있나 — 그 부서의 관리자 또는 시스템 관리자. 화면이 단추를
     보일지 정하는 데 쓴다. 판정은 서버가 한다."""
@@ -37,6 +41,8 @@ class ReliabilityTestCreateRequest(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     purpose: str = Field(default="", max_length=4000)
     test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)
+    attributes: list[AttributeValueIn] = Field(default_factory=list)
+    """항목 값. `definition_id` 가 없고 `new_label` 이 있으면 초안 항목이 생긴다."""
 
 
 class ReliabilityTestUpdateRequest(BaseModel):
@@ -45,3 +51,5 @@ class ReliabilityTestUpdateRequest(BaseModel):
     name: str | None = Field(default=None, min_length=1, max_length=200)
     purpose: str | None = Field(default=None, max_length=4000)
     test_item_term_ids: list[uuid.UUID] | None = None
+    attributes: list[AttributeValueIn] | None = None
+    """보내면 통째로 바뀐다 — 시험 항목과 같은 규칙."""

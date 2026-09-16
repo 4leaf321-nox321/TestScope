@@ -8,6 +8,8 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
+
 
 class CalibrationOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -97,6 +99,9 @@ class EquipmentOut(BaseModel):
     spec_override_count: int
     """카탈로그 위에 덮어 둔 실측 사양이 몇 칸인가. 0 이면 이 장비의 수치는 전부
     사양서에서 온 값이다."""
+    attributes: list[AttributeValueOut]
+    """부서가 붙인 속성 값(담당 구역·구매 연도 …) — 정식이 먼저, 초안이 뒤. 고정 칸이
+    아닌 정보는 전부 이쪽이다(`modules/attributes`)."""
     created_at: datetime
     can_edit: bool
     """요청한 사람이 고칠 수 있는가. **서버가 판정한다** — 화면이 스스로 계산하면
@@ -376,6 +381,8 @@ class EquipmentCreateRequest(BaseModel):
 
     contact_user_id: uuid.UUID | None = None
     note: str | None = None
+    attributes: list[AttributeValueIn] = Field(default_factory=list)
+    """속성 값. `definition_id` 없이 `new_label` 이면 초안 속성이 생긴다."""
 
 
 class EquipmentUpdateRequest(BaseModel):
@@ -410,6 +417,8 @@ class EquipmentUpdateRequest(BaseModel):
     note: str | None = None
     workspace_slug: str | None = None
     """다른 부서로 넘긴다. **넘기려면 양쪽 다 관리자여야 한다.**"""
+    attributes: list[AttributeValueIn] | None = None
+    """보내면 통째로 바뀐다 — 신뢰성 시험과 같은 규칙."""
 
 
 class CalibrationCreateRequest(BaseModel):

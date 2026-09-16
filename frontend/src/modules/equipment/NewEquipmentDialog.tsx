@@ -43,6 +43,8 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select'
 import { useResource } from '@/shared/hooks/useResource'
+import { AttributeValuesEditor, toPayload } from '@/modules/attributes/AttributeValuesEditor'
+import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
 import { ModelPicker } from '@/modules/equipment/ModelPicker'
 import { EQUIPMENT_STATUS_OPTIONS } from '@/modules/equipment/status'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
@@ -89,6 +91,7 @@ export function NewEquipmentDialog({
   const [calibrated, setCalibrated] = useState(false)
   const [interval, setInterval] = useState('12')
 
+  const [attributes, setAttributes] = useState<AttributeRow[]>([])
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
 
@@ -119,7 +122,9 @@ export function NewEquipmentDialog({
         manufactured_year: madeYear ? Number(madeYear) : null,
         calibration_required: calibrated,
         calibration_interval_months: calibrated && interval ? Number(interval) : null,
+        attributes: toPayload(attributes),
       })
+      setAttributes([])
       setAssetNo('')
       setName('')
       setDeptAssetNo('')
@@ -391,6 +396,17 @@ export function NewEquipmentDialog({
                 </div>
               )}
             </div>
+          </section>
+
+          {/* **고정 칸이 아닌 정보는 여기.** 담당 구역·구매 연도처럼 부서마다 다른 것 — 열을
+              미리 뚫지 않고 「보유 장비 속성」 정의로 받는다(attributes 모듈). */}
+          <section className="space-y-2 border-t pt-4">
+            <Label>속성</Label>
+            <AttributeValuesEditor
+              target="equipment"
+              rows={attributes}
+              onChange={setAttributes}
+            />
           </section>
 
           <ErrorNotice error={error} />

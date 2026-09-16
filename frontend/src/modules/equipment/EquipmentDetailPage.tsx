@@ -14,6 +14,7 @@ import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs'
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
+import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { equipmentApi } from '@/modules/equipment/api'
 import { TestItemPanel } from '@/modules/equipment/TestItemPanel'
 import { CalibrationPanel } from '@/modules/equipment/CalibrationPanel'
@@ -129,6 +130,9 @@ export default function EquipmentDetailPage() {
             {one.spec_override_count > 0 && ` · 실측 ${one.spec_override_count}`}
           </TabsTrigger>
           <TabsTrigger value="calibration">교정 이력</TabsTrigger>
+          <TabsTrigger value="attributes">
+            속성{one.attributes.length > 0 && ` · ${one.attributes.length}`}
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="test_items" className="pt-4">
           <TestItemPanel equipmentId={one.id} canEdit={one.can_edit} />
@@ -138,6 +142,19 @@ export default function EquipmentDetailPage() {
         </TabsContent>
         <TabsContent value="calibration" className="pt-4">
           <CalibrationPanel equipmentId={one.id} canEdit={one.can_edit} />
+        </TabsContent>
+        <TabsContent value="attributes" className="pt-4">
+          {/* 부서가 적는 정보(담당 구역·구매 연도 …). 「사양」 탭은 카탈로그 기종의 사양서
+              칸이고, 여기는 우리 장비에 붙는 속성이다 — 다른 층. */}
+          <AttributeValuesPanel
+            target="equipment"
+            values={one.attributes}
+            canEdit={one.can_edit}
+            onSave={async (attributes) => {
+              await equipmentApi.update(one.id, { attributes })
+              equipment.reload()
+            }}
+          />
         </TabsContent>
       </Tabs>
     </div>
