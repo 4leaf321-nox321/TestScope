@@ -25,9 +25,7 @@ def upgrade() -> None:
     # 기존 값의 method_id 는 전부 「값이 가리키는 규격」 이었다 — 참조 열로 옮기고 대상 열은 비운다.
     op.execute("UPDATE attribute_values SET ref_method_id = method_id, method_id = NULL")
     # CHECK 제약은 autogenerate 가 못 본다 — 대상 넷으로 다시 건다.
-    op.drop_constraint(
-        "target", "attribute_definitions", type_="check"
-    )
+    op.drop_constraint("target", "attribute_definitions", type_="check")
     op.create_check_constraint(
         "target",
         "attribute_definitions",
@@ -133,9 +131,7 @@ def downgrade() -> None:
         "attribute_values",
         "(reliability_test_id IS NOT NULL)::int + (equipment_id IS NOT NULL)::int = 1",
     )
-    op.drop_constraint(
-        "target", "attribute_definitions", type_="check"
-    )
+    op.drop_constraint("target", "attribute_definitions", type_="check")
     op.create_check_constraint(
         "target",
         "attribute_definitions",
