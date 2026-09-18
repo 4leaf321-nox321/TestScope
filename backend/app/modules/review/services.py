@@ -37,8 +37,15 @@ from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelF
 from app.modules.methods.models import TestMethod
 from app.modules.methods.services import detach_citations, merge_into, promote_pending
 from app.modules.properties.models import TestItemProperty
+from app.modules.review.facts import Sheet
 from app.modules.review.models import ReviewProposal, ReviewVote
-from app.modules.review.schemas import CandidateOut, ProposalOut, QueueOut, VoteOut
+from app.modules.review.schemas import (
+    CandidateOut,
+    FactOut,
+    ProposalOut,
+    QueueOut,
+    VoteOut,
+)
 from app.modules.test_items.models import (
     EquipmentTestItem,
     SeriesPendingMethod,
@@ -46,7 +53,12 @@ from app.modules.test_items.models import (
     SeriesTestItemMethod,
     TestItemConditionKey,
 )
-from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
+from app.modules.vocabulary.models import (
+    ConditionKey,
+    Vocabulary,
+    VocabularyAlias,
+    VocabularyTerm,
+)
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.shared import audit
 from app.shared.errors import AppError, Forbidden, NotFound
@@ -141,6 +153,15 @@ QUEUES: dict[str, Queue] = {
         True,
         "/catalog/equipment-series/{id}",
     ),
+    "test_item_aliases": Queue(
+        "test_item_aliases",
+        "시험 항목의 별칭",
+        "이 시험을 부르는 다른 이름 — 영문 라벨의 조각, 이름의 조각, 이 시험의 규격 제목에 "
+        "되풀이되는 구절. 고른 것이 별칭이 되어 찾기(resolve)와 검토함의 제목 일치에 쓰인다. "
+        "여러 개. 후보에 없는 표기는 직접 적는다.",
+        True,
+        "/catalog/test-items/{id}",
+    ),
 }
 
 #: 고정 후보 — 물음이 예/아니오 꼴인 큐.
@@ -204,7 +225,11 @@ def _mark(
                 "code": one["code"],
                 "label": one["label"],
                 "recommended": picked,
-                "reason": (reason if not shown else None) if picked else one.get("reason"),
+                "reason": (
+                    ((reason if not shown else None) if reason else one.get("reason"))
+                    if picked
+                    else one.get("reason")
+                ),
                 "sources": list(one.get("sources") or []),
             }
         )
@@ -222,6 +247,8 @@ def _upsert(
     context: str | None,
     candidates: list[dict[str, Any]],
     payload: dict[str, Any] | None = None,
+    question: str | None = None,
+    facts: list[dict[str, Any]] | None = None,
 ) -> ReviewProposal:
     row = db.scalar(
         select(ReviewProposal).where(
@@ -238,6 +265,8 @@ def _upsert(
     row.context = context
     row.candidates = candidates
     row.payload = payload or {}
+    row.question = question
+    row.facts = facts or []
     return row
 
 
@@ -311,16 +340,19 @@ def refresh(db: Session, root: Path = PROPOSALS_DIR) -> dict[str, int]:
     돌려주는 것은 {큐: 열린 수}.
     """
     counts: dict[str, int] = {}
-    _refresh_method_test_items(db, load_file("method_test_items", root))
-    _refresh_test_item_axes(db, load_file("test_item_axes", root))
-    _refresh_property_links(db, load_file("property_links", root))
-    _refresh_free_spec_definitions(db, load_file("free_spec_definitions", root))
-    _refresh_method_cleanup(db, load_file("method_cleanup", root))
-    _refresh_test_item_properties(db, load_file("test_item_properties", root))
+    # 줄마다 붙일 물음·근거 자료의 사전 — 한 번 읽어 열 큐가 같이 쓴다.
+    sheet = Sheet(db)
+    _refresh_method_test_items(db, load_file("method_test_items", root), sheet)
+    _refresh_test_item_axes(db, load_file("test_item_axes", root), sheet)
+    _refresh_property_links(db, load_file("property_links", root), sheet)
+    _refresh_free_spec_definitions(db, load_file("free_spec_definitions", root), sheet)
+    _refresh_method_cleanup(db, load_file("method_cleanup", root), sheet)
+    _refresh_test_item_properties(db, load_file("test_item_properties", root), sheet)
     _refresh_condition_axes(db, load_file("condition_axes", root))
-    _refresh_series_standards(db, load_file("series_standards", root))
-    _refresh_series_test_items(db, load_file("series_test_items", root))
-    _refresh_series_summary(db, load_file("series_summary", root))
+    _refresh_series_standards(db, load_file("series_standards", root), sheet)
+    _refresh_series_test_items(db, load_file("series_test_items", root), sheet)
+    _refresh_series_summary(db, load_file("series_summary", root), sheet)
+    _refresh_test_item_aliases(db, load_file("test_item_aliases", root), sheet)
     db.flush()
     for key in QUEUES:
         counts[key] = (
@@ -334,7 +366,9 @@ def refresh(db: Session, root: Path = PROPOSALS_DIR) -> dict[str, int]:
     return counts
 
 
-def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_method_test_items(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     items = _axis_terms(db, "test_item")
     by_id = {t.id: t for t in items.values()}
     citing: dict[uuid.UUID, set[uuid.UUID]] = {}
@@ -355,12 +389,27 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
         derived: set[uuid.UUID] = set()
         for series_id in cited:
             derived |= series_items.get(series_id, set())
-        codes: list[str] = [
-            code for t in derived if t in by_id and (code := by_id[t].code) is not None
-        ]
+        # 후보마다 **왜 이 후보인지** — 「인용한 계열 X 가 하는 시험」 「다른 판이 이미 이
+        # 시험」.
+        # 근거 없는 후보 목록은 첫 보기를 누르게 할 뿐이다.
+        reasons: dict[str, str] = {}
+        for series_id in sorted(cited, key=lambda s: series_names.get(s, "")):
+            for t in series_items.get(series_id, set()):
+                code = by_id[t].code if t in by_id else None
+                if code and code not in reasons:
+                    reasons[code] = (
+                        f"인용한 계열 「{series_names.get(series_id, '')}」 가 하는 시험"
+                    )
+        codes: list[str] = list(reasons)
         for code in (filed_row or {}).get("candidates") or []:
             if code in items and code not in codes:
                 codes.append(code)
+        edition_codes = sheet.edition_codes(method)
+        for code, why in edition_codes:
+            if code in items and code not in codes:
+                codes.append(code)
+            reasons.setdefault(code, why)
+        del derived
         if method.test_item_term_id is not None:
             # 이미 정해졌다 — 열린 검토가 있었으면 결정으로 닫는다.
             row = db.scalar(
@@ -376,14 +425,40 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
         decided = (filed_row or {}).get("decided")
         if not codes and not decided:
             continue
+        recommended = (filed_row or {}).get("recommended")
+        reason = (filed_row or {}).get("reason")
+        if not recommended and len({c for c, _ in edition_codes}) == 1:
+            # 정본이 추천을 못 했어도 다른 판이 이미 정해져 있으면 그것이 가장 강한 근거다.
+            recommended, reason = edition_codes[0]
+        if method.title != method.code:
+            # 그다음 근거는 **규격 제목의 글자** — 「Rockwell hardness testing of …」 에는
+            # 로크웰 경도의 영문 이름이 들어 있다. 한 시험만 걸리면 추천, 여럿이면 후보만.
+            matched = [
+                (term, name) for term, name in sheet.title_matches(method.title) if term.code
+            ]
+            for term, name in matched:
+                assert term.code is not None
+                if term.code not in codes:
+                    codes.append(term.code)
+                reasons.setdefault(term.code, f"규격 제목에 「{name}」 이 있음")
+            if not recommended and len(matched) == 1:
+                recommended = matched[0][0].code
+                reason = f"규격 제목에 「{matched[0][1]}」 이 있음"
         candidates = _mark(
-            [{"code": code, "label": items[code].value} for code in sorted(set(codes))],
-            (filed_row or {}).get("recommended"),
-            (filed_row or {}).get("reason"),
+            [
+                {"code": code, "label": items[code].value, "reason": reasons.get(code)}
+                for code in sorted(set(codes))
+            ],
+            recommended,
+            reason,
         )
         names = sorted(series_names.get(s, "") for s in cited)[:2]
         context = _context(
             ("인용: " + " · ".join(n for n in names if n)) if names else None, filed_row
+        )
+        question = (
+            f"규격 「{method.code}」 는 어느 시험의 규격입니까? 정하면 이 규격을 인용한 계열 "
+            f"{len(cited)}개의 그 시험에 붙고, 이 규격 기준으로 장비를 찾을 수 있게 됩니다."
         )
         row = _upsert(
             db,
@@ -395,6 +470,10 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
             else f"{method.code} — {method.title}",
             context=context,
             candidates=candidates,
+            question=question,
+            facts=sheet.method_facts(
+                method, sorted(cited, key=lambda s: series_names.get(s, ""))
+            ),
         )
         if decided and row.status == "open":
             _apply(db, row, list(decided.get("choice") or []), actor=None)
@@ -404,7 +483,9 @@ def _refresh_method_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
     )
 
 
-def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_test_item_axes(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     items = _axis_terms(db, "test_item")
     keys = {k.key: k for k in db.scalars(select(ConditionKey))}
     have: dict[uuid.UUID, set[uuid.UUID]] = {}
@@ -424,10 +505,33 @@ def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
             continue
         if filed_row is None:
             continue
+        # 축마다 근거 — 이 시험을 하는 계열의 기종 사양에 실제로 있는 조건, 이 시험의 규격이
+        # 요구 조건으로 적은 조건. 정본이 추천을 안 했으면 이 근거로 추천한다(규격이 적었거나
+        # 두 기종 이상에 사양이 있는 축).
+        evidence = sheet.axis_evidence(term)
+        axis_reasons: dict[str, str] = {}
+        strong: list[str] = []
+        for k in keys.values():
+            models_n, methods_n = evidence.get(k.id, (0, 0))
+            parts = []
+            if methods_n:
+                parts.append(f"이 시험의 규격 {methods_n}건이 요구 조건으로 적음")
+            if models_n:
+                parts.append(f"이 시험을 하는 계열의 기종 사양에 {models_n}기종")
+            if parts:
+                axis_reasons[k.key] = " · ".join(parts)
+            if methods_n or models_n >= 2:
+                strong.append(k.key)
+        recommended = filed_row.get("recommended") or strong or None
+        reason = filed_row.get("reason") if filed_row.get("recommended") else None
         candidates = _mark(
-            [{"code": k.key, "label": k.label} for k in keys.values() if k.is_active],
-            filed_row.get("recommended"),
-            filed_row.get("reason"),
+            [
+                {"code": k.key, "label": k.label, "reason": axis_reasons.get(k.key)}
+                for k in keys.values()
+                if k.is_active
+            ],
+            recommended,
+            reason,
         )
         row = _upsert(
             db,
@@ -437,6 +541,13 @@ def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
             subject_label=term.value,
             context=_context(filed_row.get("context"), filed_row),
             candidates=candidates,
+            question=(
+                f"「{term.value}」 이 되는 장비를 찾을 때 어떤 조건을 물어야 합니까? 고른 "
+                "조건만 검색 화면에 뜹니다(안 정하면 열두 조건을 전부 묻습니다). 여러 개를 "
+                "고르고, "
+                "조건이 필요 없는 시험이면 아무것도 고르지 않습니다."
+            ),
+            facts=sheet.test_item_facts(term, with_conditions=True),
         )
         decided = filed_row.get("decided")
         if decided and row.status == "open":
@@ -445,7 +556,9 @@ def _refresh_test_item_axes(db: Session, filed: dict[str, dict[str, Any]]) -> No
     _sweep_gone(db, "test_item_axes", set(items), "시험 항목이 지워짐")
 
 
-def _refresh_property_links(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_property_links(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     if not filed:
         return
     items = _axis_terms(db, "test_item")
@@ -482,6 +595,12 @@ def _refresh_property_links(db: Session, filed: dict[str, dict[str, Any]]) -> No
             subject_id=link.id,
             subject_label=f"{item.value} → {prop.value}",
             context=_context(filed_row.get("context"), filed_row),
+            question=(
+                f"「{item.value}」 시험으로 「{prop.value}」 이(가) 나옵니까? 맞으면 확인 "
+                "표시가 붙고, 아니면 연결이 지워져 물성으로 찾을 때 이 시험이 빠집니다."
+            ),
+            facts=sheet.test_item_facts(item)
+            + sheet.property_facts(prop, except_item=item.id),
             candidates=_mark(
                 YES_NO["property_links"], filed_row.get("recommended"), filed_row.get("reason")
             ),
@@ -492,7 +611,9 @@ def _refresh_property_links(db: Session, filed: dict[str, dict[str, Any]]) -> No
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
 
 
-def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_free_spec_definitions(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     if not filed:
         return
     groups = {g.slug: g for g in db.scalars(select(SpecGroup))}
@@ -552,6 +673,12 @@ def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]
                 filed_row.get("reason"),
             ),
             payload=payload,
+            question=(
+                f"기종 {payload['models']}개에 「{sample.label}」 이라는 이름으로 적힌 사양을 "
+                "정식 사양 정의로 올립니까? 올리면 그 값들이 정의 아래로 옮겨 가고 "
+                "검색·비교가 됩니다."
+            ),
+            facts=_free_spec_facts(sheet, rows),
         )
         decided = filed_row.get("decided")
         if decided and row.status == "open":
@@ -559,7 +686,40 @@ def _refresh_free_spec_definitions(db: Session, filed: dict[str, dict[str, Any]]
             _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
 
 
-def _refresh_method_cleanup(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _free_spec_facts(sheet: Sheet, rows: list[ModelFreeSpec]) -> list[dict[str, Any]]:
+    """어느 기종들에 무슨 값으로 적혔나 — 「정의로 올릴 만한 사양인가」 의 근거."""
+    models = {
+        m.id: m
+        for m in sheet.db.scalars(
+            select(EquipmentModel).where(EquipmentModel.id.in_({one.model_id for one in rows}))
+        )
+    }
+    names: set[str] = set()
+    for one in rows:
+        model = models.get(one.model_id)
+        if model is None:
+            continue
+        series = sheet.series().get(model.series_id)
+        maker = sheet.term_value(series.maker_term_id) if series else None
+        names.add(" ".join(p for p in (maker, model.name) if p))
+    shown = sorted(names)
+    out = [
+        {
+            "label": "기종",
+            "value": " · ".join(shown[:4])
+            + (f" 외 {len(shown) - 4}" if len(shown) > 4 else ""),
+            "link": None,
+        }
+    ]
+    values = list(dict.fromkeys(one.value_text.strip() for one in rows if one.value_text))
+    if values:
+        out.append({"label": "값 예", "value": " · ".join(values[:4]), "link": None})
+    return out
+
+
+def _refresh_method_cleanup(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     """규격 목록 정리 — 정본이 고른 규격만. 후보: 둔다 · 지운다 · 「…」 로 합친다."""
     methods = {
         method_key(m.code): m
@@ -621,7 +781,9 @@ def _refresh_method_cleanup(db: Session, filed: dict[str, dict[str, Any]]) -> No
     _sweep_gone(db, "method_cleanup", set(methods), "규격이 지워짐")
 
 
-def _refresh_test_item_properties(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_test_item_properties(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     """물성이 없는 시험 항목 — 정본이 추천한 물성이 후보, 나머지는 직접 고르기."""
     items = _axis_terms(db, "test_item")
     props = _axis_terms(db, "property")
@@ -654,6 +816,12 @@ def _refresh_test_item_properties(db: Session, filed: dict[str, dict[str, Any]])
             subject_label=term.value,
             context=_context(filed_row.get("context"), filed_row),
             candidates=_mark(candidates, wanted, filed_row.get("reason")),
+            question=(
+                f"「{term.value}」 시험으로 얻는 물성은 무엇입니까? 지금은 물성이 하나도 "
+                "이어져 있지 않아 물성으로 찾을 때 이 시험이 안 나옵니다. 합격/불합격만 내는 "
+                "시험이면 아무것도 고르지 않습니다."
+            ),
+            facts=sheet.test_item_facts(term),
         )
         decided = filed_row.get("decided")
         if decided and row.status == "open":
@@ -726,7 +894,9 @@ def _series_of_row(
     )
 
 
-def _refresh_series_test_items(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_series_test_items(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     """계열이 하는 시험 더하기 — 정본의 후보 중 계열에 아직 없는 시험 항목."""
     makers = _axis_terms(db, "manufacturer")
     items = _axis_terms(db, "test_item")
@@ -774,8 +944,15 @@ def _refresh_series_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
             subject,
             subject_id=series.id,
             subject_label=series.name,
-            context=_context(f"지금 하는 시험 {len(mine)}", filed_row),
+            context=_context(None, filed_row),
             candidates=candidates,
+            question=sheet.series_question(
+                series,
+                "아래 시험도 합니까? 논문이나 제조사 페이지가 그렇게 적었지만 카탈로그 PDF "
+                "에는 없던 것입니다. 인용문을 열어 읽고 정말 하는 것만 고르세요 — 고르면 그 "
+                "시험이 이 계열에 붙습니다.",
+            ),
+            facts=sheet.series_facts(series),
         )
         decided = filed_row.get("decided")
         if decided and row.status == "open":
@@ -784,7 +961,9 @@ def _refresh_series_test_items(db: Session, filed: dict[str, dict[str, Any]]) ->
     _sweep_gone(db, "series_test_items", alive, "계열이 지워짐")
 
 
-def _refresh_series_summary(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_series_summary(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     """계열 소개에 넣을 문장 — 정본의 문장 중 아직 소개에 안 들어간 것."""
     makers = _axis_terms(db, "manufacturer")
     alive: set[str] = set()
@@ -824,13 +1003,15 @@ def _refresh_series_summary(db: Session, filed: dict[str, dict[str, Any]]) -> No
             subject,
             subject_id=series.id,
             subject_label=series.name,
-            context=_context(
-                ("지금 소개: " + summary[:120] + ("…" if len(summary) > 120 else ""))
-                if summary
-                else "지금 소개 없음",
-                filed_row,
-            ),
+            context=_context(None, filed_row),
             candidates=candidates,
+            question=sheet.series_question(
+                series,
+                "소개에 아래 문장을 붙입니까? 제조사 페이지의 응용 문장입니다 — 무엇에 쓰는지 "
+                "말하는 문장만 고르고 마케팅 문구는 두세요. 고른 문장이 지금 소개 뒤에 "
+                "붙습니다.",
+            ),
+            facts=sheet.series_facts(series),
         )
         decided = filed_row.get("decided")
         if decided and row.status == "open":
@@ -839,7 +1020,85 @@ def _refresh_series_summary(db: Session, filed: dict[str, dict[str, Any]]) -> No
     _sweep_gone(db, "series_summary", alive, "계열이 지워짐")
 
 
-def _refresh_series_standards(db: Session, filed: dict[str, dict[str, Any]]) -> None:
+def _refresh_test_item_aliases(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
+    """시험 항목의 별칭 — 정본(`draft_test_item_aliases.py` 가 만든 것)의 후보 중 **아직 이
+    축에 없는 표기**만. 값이든 별칭이든 이미 쓰인 비교키는 뺀다(다른 시험의 이름이면
+    더더욱)."""
+    items = _axis_terms(db, "test_item")
+    axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == "test_item"))
+    taken: set[str] = set()
+    if axis is not None:
+        taken |= set(
+            db.scalars(
+                select(VocabularyTerm.normalized).where(
+                    VocabularyTerm.vocabulary_id == axis.id
+                )
+            )
+        )
+        taken |= set(
+            db.scalars(
+                select(VocabularyAlias.normalized).where(
+                    VocabularyAlias.vocabulary_id == axis.id
+                )
+            )
+        )
+    alive: set[str] = set()
+    for code, filed_row in filed.items():
+        term = items.get(code)
+        if term is None:
+            continue
+        alive.add(code)
+        candidates = _mark(
+            [
+                {"code": one["code"], "label": one["code"], "reason": one.get("reason")}
+                for one in (filed_row.get("candidates") or [])
+                if isinstance(one, dict) and compare_key(str(one["code"])) not in taken
+            ],
+            [
+                one
+                for one in (filed_row.get("recommended") or [])
+                if compare_key(str(one)) not in taken
+            ],
+            None,
+        )
+        row = db.scalar(
+            select(ReviewProposal).where(
+                ReviewProposal.queue == "test_item_aliases",
+                ReviewProposal.subject_key == code,
+            )
+        )
+        if not candidates:
+            if row is not None and row.status in ("open", "skipped"):
+                _settle(db, row, [], "이미 있음")
+            continue
+        row = _upsert(
+            db,
+            "test_item_aliases",
+            code,
+            subject_id=term.id,
+            subject_label=term.value,
+            context=_context(None, filed_row),
+            candidates=candidates,
+            question=(
+                f"「{term.value}」 을 부르는 다른 이름으로 아래 표기를 별칭에 더합니까? "
+                "별칭은 찾기(resolve)가 이름보다 먼저 보는 것이라, AI 가 「thermal shock」 "
+                "으로 물어도 이 시험을 찾게 됩니다. 이 시험만 가리키는 표기만 고르고, 후보에 "
+                "없는 표기는 직접 적으세요."
+            ),
+            facts=sheet.test_item_facts(term),
+        )
+        decided = filed_row.get("decided")
+        if decided and row.status == "open":
+            _apply(db, row, list(decided.get("choice") or []), actor=None)
+            _settle(db, row, list(decided.get("choice") or []), decided.get("by") or "정본")
+    _sweep_gone(db, "test_item_aliases", alive, "시험 항목이 지워짐")
+
+
+def _refresh_series_standards(
+    db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
+) -> None:
     """계열이 하는 규격 더하기 — 정본(`catalog_extension/tools_propose.py` 가 만든 것)의
     후보 중 아직 이 계열에 안 이어진 것. 계열은 이름(+제조사)으로 찾는다 — 반입이 그렇게
     만든다."""
@@ -900,7 +1159,14 @@ def _refresh_series_standards(db: Session, filed: dict[str, dict[str, Any]]) -> 
             subject,
             subject_id=series.id,
             subject_label=series.name,
-            context=_context(f"인용 중인 규격 {len(have)}", filed_row),
+            context=_context(None, filed_row),
+            question=sheet.series_question(
+                series,
+                "아래 규격도 씁니까? 제조사 웹·대리점·논문이 이 계열과 함께 적었지만 카탈로그 "
+                "PDF 에는 없던 규격입니다. 출처를 열어 이 계열 얘기가 맞는지 보고 고르세요 — "
+                "고르면 그 규격이 이 계열에 붙습니다.",
+            ),
+            facts=sheet.series_facts(series),
             candidates=candidates,
         )
         decided = filed_row.get("decided")
@@ -1213,6 +1479,54 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 )
             ):
                 promote_pending(db, method)
+    elif queue == "test_item_aliases":
+        if row.subject_id is None:
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+        term = db.get(VocabularyTerm, row.subject_id)
+        if term is None:
+            raise NotFound("TSC-REVIEW-0003", "시험 항목을 찾을 수 없습니다.")
+        for value in choice:
+            text_value = clean(str(value))
+            if not text_value:
+                continue
+            existing = db.scalar(
+                select(VocabularyAlias).where(
+                    VocabularyAlias.vocabulary_id == term.vocabulary_id,
+                    VocabularyAlias.normalized == compare_key(text_value),
+                )
+            )
+            if existing is not None:
+                if existing.term_id == term.id:
+                    continue
+                other = db.get(VocabularyTerm, existing.term_id)
+                raise AppError(
+                    "TSC-REVIEW-0010",
+                    f"「{text_value}」 은 이미 「{other.value if other else '?'}」 의 "
+                    "별칭입니다.",
+                    status=409,
+                )
+            clash = db.scalar(
+                select(VocabularyTerm).where(
+                    VocabularyTerm.vocabulary_id == term.vocabulary_id,
+                    VocabularyTerm.normalized == compare_key(text_value),
+                )
+            )
+            if clash is not None and clash.id != term.id:
+                raise AppError(
+                    "TSC-REVIEW-0010",
+                    f"「{text_value}」 은 시험 항목 「{clash.value}」 의 이름입니다.",
+                    status=409,
+                )
+            if clash is None:
+                db.add(
+                    VocabularyAlias(
+                        vocabulary_id=term.vocabulary_id,
+                        term_id=term.id,
+                        value=text_value,
+                        normalized=compare_key(text_value),
+                    )
+                )
+        db.flush()
     elif queue == "series_summary":
         series = db.get(EquipmentSeries, row.subject_id) if row.subject_id else None
         if series is None:
@@ -1371,6 +1685,8 @@ def proposal_out(
         subject_id=row.subject_id,
         subject_label=row.subject_label,
         context=row.context,
+        question=row.question,
+        facts=[FactOut(**one) for one in (row.facts or [])],
         link=queue.link.format(id=row.subject_id)
         if row.subject_id or "{id}" not in queue.link
         else None,

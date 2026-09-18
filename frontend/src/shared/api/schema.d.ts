@@ -4180,6 +4180,18 @@ export interface components {
             attributes?: components["schemas"]["AttributeValueIn"][] | null;
         };
         /**
+         * FactOut
+         * @description 대상을 이해하는 사실 한 줄. 「제조사: Instron」 「지금 하는 시험: 인장 · 압축」.
+         */
+        FactOut: {
+            /** Label */
+            label: string;
+            /** Value */
+            value: string;
+            /** Link */
+            link?: string | null;
+        };
+        /**
          * FilterOption
          * @description 거르기 한 칸이 고를 수 있는 값 하나. **수를 함께 준다.**
          *
@@ -5099,6 +5111,13 @@ export interface components {
             subject_label: string;
             /** Context */
             context: string | null;
+            /** Question */
+            question?: string | null;
+            /**
+             * Facts
+             * @default []
+             */
+            facts: components["schemas"]["FactOut"][];
             /** Link */
             link: string | null;
             /** Candidates */

@@ -115,7 +115,7 @@ export default function WorkspacesAdminPage() {
         </div>
         <Button type="submit">
           <Plus className="size-4" />
-          부서 추가
+          부서 등록
         </Button>
       </form>
 

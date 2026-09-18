@@ -1077,7 +1077,10 @@ def test_계열에_시험을_더하고_소개_문장을_붙인다(
     srow = next(
         one for one in _rows(client, admin, "series_summary") if one["subject_key"] == "obj-z"
     )
-    assert srow["context"].startswith("지금 소개: 제조사 소개.")
+    # 지금 소개는 근거 자료의 「소개」 줄로 — 물음은 무엇을 붙일지 묻는 완전한 문장이다.
+    facts = {one["label"]: one["value"] for one in srow["facts"]}
+    assert facts["소개"].startswith("제조사 소개.")
+    assert srow["question"] and "소개에 아래 문장을 붙입니까" in srow["question"]
     picked = client.post(
         f"/api/review/series_summary/{srow['id']}/decide",
         json={"choice": ["s1"]},
@@ -1099,3 +1102,118 @@ def test_계열에_시험을_더하고_소개_문장을_붙인다(
     assert again["status"] == "decided" and [one["code"] for one in again["candidates"]] == [
         "s2"
     ]
+
+
+def test_줄마다_물음과_근거_자료가_붙고_다른_판의_결정이_추천이_된다(
+    client: TestClient, admin: Signed
+) -> None:
+    """「3400」 만 주고 「무슨 시험을 하나」 를 묻지 않는다 — 물음은 완전한 문장, 근거 자료에는
+    인용한 계열과 그 계열이 하는 시험이 서고, 후보마다 왜 후보인지가 적힌다. 같은 코드의 다른
+    판이 이미 정해져 있으면 정본 추천이 없어도 그것이 추천이다."""
+    vib_id, vib = _item(client, admin, "진동")
+    shock_id, shock = _item(client, admin, "충격")
+    method = _cited_method(client, admin, [vib_id, shock_id])
+    # 같은 코드의 다른 판 — 이미 「진동」 으로 정해져 있다.
+    sibling = client.post(
+        "/api/methods",
+        json={
+            "code": method["code"],
+            "edition": "2019",
+            "title": "다른 판",
+            "test_item_term_id": vib_id,
+        },
+        headers=admin.headers,
+    )
+    assert sibling.status_code == 201, sibling.text
+
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+    assert row["question"] and method["code"] in row["question"]
+    labels = {one["label"]: one["value"] for one in row["facts"]}
+    assert "인용한 계열" in labels, row["facts"]
+    assert "다른 판" in labels and "진동" in labels["다른 판"]
+    by_code = {one["code"]: one for one in row["candidates"]}
+    assert by_code[shock]["reason"] and "인용한 계열" in by_code[shock]["reason"]
+    assert by_code[vib]["recommended"] is True
+    assert by_code[vib]["reason"] and "다른 판" in by_code[vib]["reason"]
+
+
+def test_별칭_후보를_고르면_별칭이_되고_이미_쓰인_표기는_안_선다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    """정본이 세운 별칭 후보 중 이 축에 이미 있는 표기(값이든 별칭이든)는 빠지고, 고른 것과
+    직접 적은 것이 별칭이 된다 — 그 뒤 resolve 가 그 표기로 이 시험을 exact 로 찾는다. 다른
+    시험의 이름을 별칭으로 고르면 409."""
+    shock_id, shock = _item(client, admin, "열충격")
+    _other_id, other = _item(client, admin, "충격")
+    other_name = f"충격-{other[-6:]}"  # _item 이 붙이는 값 이름
+    tag = shock[-6:]
+    (tmp_path / "test_item_aliases.json").write_text(
+        json.dumps(
+            {
+                "queue": "test_item_aliases",
+                "rows": [
+                    {
+                        "subject": shock,
+                        "candidates": [
+                            {"code": f"thermal shock {tag}", "reason": "영문 라벨의 조각"},
+                            {"code": f"TS-{tag}", "reason": "규격 제목"},
+                            {"code": other_name, "reason": "다른 시험의 이름(빠져야 함)"},
+                        ],
+                        "recommended": [f"thermal shock {tag}"],
+                    }
+                ],
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    services.refresh(db, tmp_path)
+    db.commit()
+    row = next(
+        one
+        for one in _rows(client, admin, "test_item_aliases")
+        if one["subject_id"] == shock_id
+    )
+    codes = [one["code"] for one in row["candidates"]]
+    assert f"thermal shock {tag}" in codes and f"TS-{tag}" in codes
+    assert other_name not in codes, "다른 시험의 이름은 후보에서 빠진다"
+    assert row["question"] and "별칭" in row["question"]
+    assert next(one for one in row["candidates"] if one["code"] == f"thermal shock {tag}")[
+        "recommended"
+    ]
+
+    # 다른 시험의 이름을 직접 적어 고르면 409.
+    clash = client.post(
+        f"/api/review/test_item_aliases/{row['id']}/decide",
+        json={"choice": [other_name]},
+        headers=admin.headers,
+    )
+    assert clash.status_code == 409, clash.text
+
+    decided = client.post(
+        f"/api/review/test_item_aliases/{row['id']}/decide",
+        json={"choice": [f"thermal shock {tag}", f"직접 적은 표기 {tag}"]},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    term = next(
+        one
+        for one in client.get(
+            "/api/vocabularies/test_item/terms", headers=admin.headers
+        ).json()
+        if one["id"] == shock_id
+    )
+    assert {f"thermal shock {tag}", f"직접 적은 표기 {tag}"} <= set(term["aliases"])
+
+    found = client.post(
+        "/api/resolve",
+        json={"kind": "term", "axis": "test_item", "text": f"Thermal Shock {tag}"},
+        headers=admin.headers,
+    )
+    assert found.status_code == 200, found.text
+    assert found.json()["match"] == "exact" and found.json()["id"] == shock_id

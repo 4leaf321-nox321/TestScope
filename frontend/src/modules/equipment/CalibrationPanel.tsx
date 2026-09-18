@@ -119,7 +119,7 @@ export function CalibrationPanel({
               className="w-56"
             />
           </div>
-          <Button type="submit">기록 추가</Button>
+          <Button type="submit">교정 기록 등록</Button>
         </form>
       )}
 

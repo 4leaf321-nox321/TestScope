@@ -12906,6 +12906,36 @@
         "title": "EquipmentUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.**\n\n부분 수정이라 None 은 \"안 바꿈\" 이다. 구별하지 않으면 상태 하나 바꿀 때마다\n담당자와 설치 위치가 지워지고, 그 손실은 저장한 사람 눈에 안 보인다.\n빈 문자열을 보내면 그것은 \"비운다\" 이다."
       },
+      "FactOut": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Link"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label",
+          "value"
+        ],
+        "title": "FactOut",
+        "description": "대상을 이해하는 사실 한 줄. 「제조사: Instron」 「지금 하는 시험: 인장 · 압축」."
+      },
       "FilterOption": {
         "properties": {
           "value": {
@@ -15424,6 +15454,25 @@
               }
             ],
             "title": "Context"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/FactOut"
+            },
+            "type": "array",
+            "title": "Facts",
+            "default": []
           },
           "link": {
             "anyOf": [

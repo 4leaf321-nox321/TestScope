@@ -171,7 +171,7 @@ export default function EquipmentSeriesDetailPage() {
           one.can_edit ? (
             <Button onClick={() => setAdding(true)}>
               <Plus className="size-4" />
-              기종 추가
+              기종 등록
             </Button>
           ) : undefined
         }

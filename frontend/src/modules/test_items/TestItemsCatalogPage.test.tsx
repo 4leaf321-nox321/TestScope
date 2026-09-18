@@ -42,6 +42,11 @@ vi.mock('@/shared/api/client', () => ({
   ApiError: class extends Error {},
 }))
 
+// 「시험 항목 등록」 단추가 관리자 여부를 본다 — 이 시험은 목록만 본다.
+vi.mock('@/shared/auth/AuthContext', () => ({
+  useAuth: () => ({ user: { memberships: [], is_system_admin: false } }),
+}))
+
 import TestItemsCatalogPage from '@/modules/test_items/TestItemsCatalogPage'
 
 async function open(url = '/catalog/test-items') {

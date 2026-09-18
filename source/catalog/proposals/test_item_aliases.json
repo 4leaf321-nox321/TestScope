@@ -1,0 +1,1900 @@
+{
+ "queue": "test_item_aliases",
+ "generated": "2026-09-18",
+ "note": "scripts/draft_test_item_aliases.py 가 만든다 — 손으로 안 고친다. 결정(decided)은 보존된다.",
+ "rows": [
+  {
+   "subject": "abrasion",
+   "candidates": [
+    {
+     "code": "Abrasion",
+     "reason": "영문 라벨 「Abrasion / wear」 의 조각"
+    },
+    {
+     "code": "wear",
+     "reason": "영문 라벨 「Abrasion / wear」 의 조각"
+    },
+    {
+     "code": "coated fabrics abrasion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3389"
+    },
+    {
+     "code": "resistance to wear",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 9352"
+    }
+   ],
+   "recommended": [
+    "Abrasion",
+    "wear"
+   ]
+  },
+  {
+   "subject": "accelerated_weathering",
+   "candidates": [
+    {
+     "code": "촉진 내후성",
+     "reason": "이름 「촉진 내후성(광·열·수분)」 의 조각"
+    },
+    {
+     "code": "수분",
+     "reason": "이름 「촉진 내후성(광·열·수분)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "촉진 내후성"
+   ]
+  },
+  {
+   "subject": "acoustic_delamination",
+   "candidates": [
+    {
+     "code": "초음파 박리",
+     "reason": "이름 「초음파 박리·보이드 검사」 의 조각"
+    },
+    {
+     "code": "보이드 검사",
+     "reason": "이름 「초음파 박리·보이드 검사」 의 조각"
+    }
+   ],
+   "recommended": [
+    "초음파 박리",
+    "보이드 검사"
+   ]
+  },
+  {
+   "subject": "altitude_low_pressure",
+   "candidates": [
+    {
+     "code": "Altitude",
+     "reason": "영문 라벨 「Altitude / low pressure」 의 조각"
+    },
+    {
+     "code": "low pressure",
+     "reason": "영문 라벨 「Altitude / low pressure」 의 조각"
+    },
+    {
+     "code": "저기압",
+     "reason": "이름 「저기압·고도」 의 조각"
+    },
+    {
+     "code": "고도",
+     "reason": "이름 「저기압·고도」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Altitude",
+    "low pressure",
+    "저기압",
+    "고도"
+   ]
+  },
+  {
+   "subject": "audio_performance",
+   "candidates": [
+    {
+     "code": "오디오 성능",
+     "reason": "이름 「오디오 성능(THD·SNR·주파수응답)」 의 조각"
+    },
+    {
+     "code": "THD",
+     "reason": "이름 「오디오 성능(THD·SNR·주파수응답)」 의 괄호 안"
+    },
+    {
+     "code": "SNR",
+     "reason": "이름 「오디오 성능(THD·SNR·주파수응답)」 의 괄호 안"
+    },
+    {
+     "code": "주파수응답",
+     "reason": "이름 「오디오 성능(THD·SNR·주파수응답)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "오디오 성능"
+   ]
+  },
+  {
+   "subject": "battery_abuse",
+   "candidates": [
+    {
+     "code": "Battery abuse",
+     "reason": "영문 라벨 「Battery abuse (crush / nail penetration)」 의 조각"
+    },
+    {
+     "code": "crush",
+     "reason": "영문 라벨 「Battery abuse (crush / nail penetration)」 의 조각"
+    },
+    {
+     "code": "nail penetration",
+     "reason": "영문 라벨 「Battery abuse (crush / nail penetration)」 의 조각"
+    },
+    {
+     "code": "배터리 기계적 학대",
+     "reason": "이름 「배터리 기계적 학대(압괴·관통)」 의 조각"
+    },
+    {
+     "code": "압괴",
+     "reason": "이름 「배터리 기계적 학대(압괴·관통)」 의 괄호 안"
+    },
+    {
+     "code": "관통",
+     "reason": "이름 「배터리 기계적 학대(압괴·관통)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Battery abuse",
+    "crush",
+    "nail penetration",
+    "배터리 기계적 학대"
+   ]
+  },
+  {
+   "subject": "battery_cycle_life",
+   "candidates": [
+    {
+     "code": "배터리 충방전",
+     "reason": "이름 「배터리 충방전·사이클 수명」 의 조각"
+    },
+    {
+     "code": "사이클 수명",
+     "reason": "이름 「배터리 충방전·사이클 수명」 의 조각"
+    }
+   ],
+   "recommended": [
+    "배터리 충방전",
+    "사이클 수명"
+   ]
+  },
+  {
+   "subject": "burst_pressure",
+   "candidates": [
+    {
+     "code": "Burst",
+     "reason": "영문 라벨 「Burst / hoop pressure」 의 조각"
+    },
+    {
+     "code": "hoop pressure",
+     "reason": "영문 라벨 「Burst / hoop pressure」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Burst",
+    "hoop pressure"
+   ]
+  },
+  {
+   "subject": "charpy_impact",
+   "candidates": [
+    {
+     "code": "instrumented impact",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 179-2"
+    },
+    {
+     "code": "non-instrumented impact",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 179-1"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "coating_adhesion",
+   "candidates": [
+    {
+     "code": "Coating adhesion",
+     "reason": "영문 라벨 「Coating adhesion (cross-cut)」 의 조각"
+    },
+    {
+     "code": "cross-cut",
+     "reason": "영문 라벨 「Coating adhesion (cross-cut)」 의 조각"
+    },
+    {
+     "code": "도막 부착력",
+     "reason": "이름 「도막 부착력(크로스컷)」 의 조각"
+    },
+    {
+     "code": "크로스컷",
+     "reason": "이름 「도막 부착력(크로스컷)」 의 괄호 안"
+    },
+    {
+     "code": "adhesion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3359"
+    },
+    {
+     "code": "adhesion by tape",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3359"
+    }
+   ],
+   "recommended": [
+    "Coating adhesion",
+    "cross-cut",
+    "도막 부착력"
+   ]
+  },
+  {
+   "subject": "coating_thickness",
+   "candidates": [
+    {
+     "code": "도금",
+     "reason": "이름 「도금·코팅 두께」 의 조각"
+    },
+    {
+     "code": "코팅 두께",
+     "reason": "이름 「도금·코팅 두께」 의 조각"
+    }
+   ],
+   "recommended": [
+    "도금",
+    "코팅 두께"
+   ]
+  },
+  {
+   "subject": "composition_analysis",
+   "candidates": [
+    {
+     "code": "화학 조성 분석",
+     "reason": "이름 「화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)」 의 조각"
+    },
+    {
+     "code": "XPS",
+     "reason": "이름 「화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)」 의 괄호 안"
+    },
+    {
+     "code": "FT-IR",
+     "reason": "이름 「화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)」 의 괄호 안"
+    },
+    {
+     "code": "라만",
+     "reason": "이름 「화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)」 의 괄호 안"
+    },
+    {
+     "code": "XRF",
+     "reason": "이름 「화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)」 의 괄호 안"
+    },
+    {
+     "code": "EPMA",
+     "reason": "이름 「화학 조성 분석(XPS·FT-IR·라만·XRF·EPMA)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "화학 조성 분석"
+   ]
+  },
+  {
+   "subject": "compression",
+   "candidates": [
+    {
+     "code": "compressive",
+     "reason": "이 시험의 규격 3건 제목에 나옴 — 예: ASTM D695"
+    },
+    {
+     "code": "flatwise compressive",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM C365"
+    }
+   ],
+   "recommended": [
+    "compressive"
+   ]
+  },
+  {
+   "subject": "contact_angle",
+   "candidates": [
+    {
+     "code": "Contact angle",
+     "reason": "영문 라벨 「Contact angle / surface energy」 의 조각"
+    },
+    {
+     "code": "surface energy",
+     "reason": "영문 라벨 「Contact angle / surface energy」 의 조각"
+    },
+    {
+     "code": "접촉각",
+     "reason": "이름 「접촉각·표면에너지」 의 조각"
+    },
+    {
+     "code": "표면에너지",
+     "reason": "이름 「접촉각·표면에너지」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Contact angle",
+    "surface energy",
+    "접촉각",
+    "표면에너지"
+   ]
+  },
+  {
+   "subject": "creep",
+   "candidates": [
+    {
+     "code": "Creep",
+     "reason": "영문 라벨 「Creep / stress rupture」 의 조각"
+    },
+    {
+     "code": "stress rupture",
+     "reason": "영문 라벨 「Creep / stress rupture」 의 조각"
+    },
+    {
+     "code": "크리프",
+     "reason": "이름 「크리프·응력파단」 의 조각"
+    },
+    {
+     "code": "응력파단",
+     "reason": "이름 「크리프·응력파단」 의 조각"
+    },
+    {
+     "code": "stress-rupture",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E139"
+    },
+    {
+     "code": "uniaxial creep",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 204"
+    }
+   ],
+   "recommended": [
+    "Creep",
+    "stress rupture",
+    "크리프",
+    "응력파단"
+   ]
+  },
+  {
+   "subject": "crystal_structure_analysis",
+   "candidates": [
+    {
+     "code": "결정 구조 분석",
+     "reason": "이름 「결정 구조 분석(XRD·EBSD)」 의 조각"
+    },
+    {
+     "code": "XRD",
+     "reason": "이름 「결정 구조 분석(XRD·EBSD)」 의 괄호 안"
+    },
+    {
+     "code": "EBSD",
+     "reason": "이름 「결정 구조 분석(XRD·EBSD)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "결정 구조 분석"
+   ]
+  },
+  {
+   "subject": "damp_heat",
+   "candidates": [
+    {
+     "code": "Damp heat",
+     "reason": "영문 라벨 「Damp heat / temperature-humidity」 의 조각"
+    },
+    {
+     "code": "temperature-humidity",
+     "reason": "영문 라벨 「Damp heat / temperature-humidity」 의 조각"
+    },
+    {
+     "code": "항온항습",
+     "reason": "이름 「항온항습(습열)」 의 조각"
+    },
+    {
+     "code": "습열",
+     "reason": "이름 「항온항습(습열)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Damp heat",
+    "temperature-humidity",
+    "항온항습"
+   ]
+  },
+  {
+   "subject": "density_porosity",
+   "candidates": [
+    {
+     "code": "Density",
+     "reason": "영문 라벨 「Density / porosity / surface area」 의 조각"
+    },
+    {
+     "code": "porosity",
+     "reason": "영문 라벨 「Density / porosity / surface area」 의 조각"
+    },
+    {
+     "code": "surface area",
+     "reason": "영문 라벨 「Density / porosity / surface area」 의 조각"
+    },
+    {
+     "code": "밀도",
+     "reason": "이름 「밀도·기공률·비표면적」 의 조각"
+    },
+    {
+     "code": "기공률",
+     "reason": "이름 「밀도·기공률·비표면적」 의 조각"
+    },
+    {
+     "code": "비표면적",
+     "reason": "이름 「밀도·기공률·비표면적」 의 조각"
+    },
+    {
+     "code": "open cell content",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D6226"
+    }
+   ],
+   "recommended": [
+    "Density",
+    "porosity",
+    "surface area",
+    "밀도",
+    "기공률",
+    "비표면적"
+   ]
+  },
+  {
+   "subject": "dielectric_withstand",
+   "candidates": [
+    {
+     "code": "Dielectric withstand",
+     "reason": "영문 라벨 「Dielectric withstand (hipot)」 의 조각"
+    },
+    {
+     "code": "hipot",
+     "reason": "영문 라벨 「Dielectric withstand (hipot)」 의 조각"
+    },
+    {
+     "code": "내전압",
+     "reason": "이름 「내전압(절연내력)」 의 조각"
+    },
+    {
+     "code": "절연내력",
+     "reason": "이름 「내전압(절연내력)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Dielectric withstand",
+    "hipot",
+    "내전압"
+   ]
+  },
+  {
+   "subject": "dilatometry",
+   "candidates": [
+    {
+     "code": "열팽창",
+     "reason": "이름 「열팽창(DIL)」 의 조각"
+    },
+    {
+     "code": "DIL",
+     "reason": "이름 「열팽창(DIL)」 의 괄호 안"
+    },
+    {
+     "code": "linear thermal expansion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E228"
+    }
+   ],
+   "recommended": [
+    "열팽창"
+   ]
+  },
+  {
+   "subject": "dma",
+   "candidates": [
+    {
+     "code": "DMA",
+     "reason": "이름 「DMA (동적기계)」 의 조각"
+    },
+    {
+     "code": "동적기계",
+     "reason": "이름 「DMA (동적기계)」 의 괄호 안"
+    },
+    {
+     "code": "assignment",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E1640"
+    },
+    {
+     "code": "dynamic mechanical",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 6721"
+    }
+   ],
+   "recommended": [
+    "DMA"
+   ]
+  },
+  {
+   "subject": "drop_weight_impact",
+   "candidates": [
+    {
+     "code": "Drop weight",
+     "reason": "영문 라벨 「Drop weight / puncture impact」 의 조각"
+    },
+    {
+     "code": "puncture impact",
+     "reason": "영문 라벨 「Drop weight / puncture impact」 의 조각"
+    },
+    {
+     "code": "낙추 충격",
+     "reason": "이름 「낙추 충격·천공」 의 조각"
+    },
+    {
+     "code": "high speed puncture",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3763"
+    },
+    {
+     "code": "damage",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D7136"
+    },
+    {
+     "code": "drop-weight tear",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E436"
+    },
+    {
+     "code": "instrumented impact",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 6603-2"
+    }
+   ],
+   "recommended": [
+    "Drop weight",
+    "puncture impact",
+    "낙추 충격"
+   ]
+  },
+  {
+   "subject": "dsc",
+   "candidates": [
+    {
+     "code": "DSC",
+     "reason": "이름 「DSC (열량)」 의 조각"
+    },
+    {
+     "code": "열량",
+     "reason": "이름 「DSC (열량)」 의 괄호 안"
+    },
+    {
+     "code": "transition temperatures and enthalpies",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3418"
+    },
+    {
+     "code": "oxidative",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3895"
+    },
+    {
+     "code": "specific heat capacity",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: DIN EN ISO 11357-4"
+    },
+    {
+     "code": "assignment",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E1356"
+    },
+    {
+     "code": "enthalpies",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E793"
+    }
+   ],
+   "recommended": [
+    "DSC"
+   ]
+  },
+  {
+   "subject": "dust_ingress",
+   "candidates": [
+    {
+     "code": "분진 침투",
+     "reason": "이름 「분진 침투(IP5X/IP6X)」 의 조각"
+    },
+    {
+     "code": "IP5X/IP6X",
+     "reason": "이름 「분진 침투(IP5X/IP6X)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "분진 침투"
+   ]
+  },
+  {
+   "subject": "electrical_transport",
+   "candidates": [
+    {
+     "code": "Electrical transport",
+     "reason": "영문 라벨 「Electrical transport (4-point probe / Hall / I-V)」 의 조각"
+    },
+    {
+     "code": "4-point probe",
+     "reason": "영문 라벨 「Electrical transport (4-point probe / Hall / I-V)」 의 조각"
+    },
+    {
+     "code": "Hall",
+     "reason": "영문 라벨 「Electrical transport (4-point probe / Hall / I-V)」 의 조각"
+    },
+    {
+     "code": "I-V",
+     "reason": "영문 라벨 「Electrical transport (4-point probe / Hall / I-V)」 의 조각"
+    },
+    {
+     "code": "전기 저항률",
+     "reason": "이름 「전기 저항률·홀 효과·반도체 특성」 의 조각"
+    },
+    {
+     "code": "홀 효과",
+     "reason": "이름 「전기 저항률·홀 효과·반도체 특성」 의 조각"
+    },
+    {
+     "code": "반도체 특성",
+     "reason": "이름 「전기 저항률·홀 효과·반도체 특성」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Electrical transport",
+    "4-point probe",
+    "Hall",
+    "I-V",
+    "전기 저항률",
+    "홀 효과",
+    "반도체 특성"
+   ]
+  },
+  {
+   "subject": "emi_emission",
+   "candidates": [
+    {
+     "code": "전자파 방사",
+     "reason": "이름 「전자파 방사·전도 잡음」 의 조각"
+    },
+    {
+     "code": "전도 잡음",
+     "reason": "이름 「전자파 방사·전도 잡음」 의 조각"
+    }
+   ],
+   "recommended": [
+    "전자파 방사",
+    "전도 잡음"
+   ]
+  },
+  {
+   "subject": "esd_immunity",
+   "candidates": [
+    {
+     "code": "electrostatic discharge immunity",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: IEC 61000-4-2"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "fatigue",
+   "candidates": [
+    {
+     "code": "Fatigue",
+     "reason": "영문 라벨 「Fatigue (HCF/LCF)」 의 조각"
+    },
+    {
+     "code": "HCF/LCF",
+     "reason": "영문 라벨 「Fatigue (HCF/LCF)」 의 조각"
+    },
+    {
+     "code": "strain",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E606"
+    },
+    {
+     "code": "strain-controlled fatigue",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E606"
+    },
+    {
+     "code": "amplitude axial fatigue",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E466"
+    },
+    {
+     "code": "bar bending fatigue",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 1143"
+    }
+   ],
+   "recommended": [
+    "Fatigue",
+    "HCF/LCF"
+   ]
+  },
+  {
+   "subject": "flexure",
+   "candidates": [
+    {
+     "code": "Flexure",
+     "reason": "영문 라벨 「Flexure / bend」 의 조각"
+    },
+    {
+     "code": "bend",
+     "reason": "영문 라벨 「Flexure / bend」 의 조각"
+    },
+    {
+     "code": "flexural",
+     "reason": "이 시험의 규격 3건 제목에 나옴 — 예: ASTM D790"
+    },
+    {
+     "code": "core shear",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM C393"
+    },
+    {
+     "code": "bend testing",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E290"
+    },
+    {
+     "code": "methods for bend",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E290"
+    },
+    {
+     "code": "young's modulus",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: EN 843-2"
+    }
+   ],
+   "recommended": [
+    "Flexure",
+    "bend",
+    "flexural"
+   ]
+  },
+  {
+   "subject": "formability",
+   "candidates": [
+    {
+     "code": "Formability",
+     "reason": "영문 라벨 「Formability / forming limit」 의 조각"
+    },
+    {
+     "code": "forming limit",
+     "reason": "영문 라벨 「Formability / forming limit」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Formability",
+    "forming limit"
+   ]
+  },
+  {
+   "subject": "fracture_toughness",
+   "candidates": [
+    {
+     "code": "Fracture toughness",
+     "reason": "영문 라벨 「Fracture toughness / crack growth」 의 조각"
+    },
+    {
+     "code": "crack growth",
+     "reason": "영문 라벨 「Fracture toughness / crack growth」 의 조각"
+    },
+    {
+     "code": "파괴인성",
+     "reason": "이름 「파괴인성·균열성장」 의 조각"
+    },
+    {
+     "code": "균열성장",
+     "reason": "이름 「파괴인성·균열성장」 의 조각"
+    },
+    {
+     "code": "linear",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E399"
+    },
+    {
+     "code": "quasistatic fracture toughness",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 12135"
+    },
+    {
+     "code": "unified method of",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 12135"
+    }
+   ],
+   "recommended": [
+    "Fracture toughness",
+    "crack growth",
+    "파괴인성",
+    "균열성장"
+   ]
+  },
+  {
+   "subject": "free_fall_drop",
+   "candidates": [
+    {
+     "code": "Free-fall drop",
+     "reason": "영문 라벨 「Free-fall drop / tumble」 의 조각"
+    },
+    {
+     "code": "tumble",
+     "reason": "영문 라벨 「Free-fall drop / tumble」 의 조각"
+    },
+    {
+     "code": "낙하",
+     "reason": "이름 「낙하·텀블」 의 조각"
+    },
+    {
+     "code": "텀블",
+     "reason": "이름 「낙하·텀블」 의 조각"
+    },
+    {
+     "code": "drop test",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D5276"
+    },
+    {
+     "code": "vertical impact",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 2248"
+    }
+   ],
+   "recommended": [
+    "Free-fall drop",
+    "tumble",
+    "낙하",
+    "텀블"
+   ]
+  },
+  {
+   "subject": "friction_coefficient",
+   "candidates": [
+    {
+     "code": "static and kinetic coefficients",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D1894"
+    },
+    {
+     "code": "coefficients",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 8295"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "friction_wear_tribo",
+   "candidates": [
+    {
+     "code": "Friction & wear",
+     "reason": "영문 라벨 「Friction & wear (tribometry)」 의 조각"
+    },
+    {
+     "code": "tribometry",
+     "reason": "영문 라벨 「Friction & wear (tribometry)」 의 조각"
+    },
+    {
+     "code": "마찰",
+     "reason": "이름 「마찰·마모 (트라이보)」 의 조각"
+    },
+    {
+     "code": "트라이보",
+     "reason": "이름 「마찰·마모 (트라이보)」 의 괄호 안"
+    },
+    {
+     "code": "wear and friction testing",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM G99"
+    },
+    {
+     "code": "wear and friction",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM G99"
+    },
+    {
+     "code": "linearly reciprocating ball",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM G133"
+    },
+    {
+     "code": "friction and wear",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 18535"
+    }
+   ],
+   "recommended": [
+    "Friction & wear",
+    "tribometry",
+    "마찰"
+   ]
+  },
+  {
+   "subject": "ground_bond",
+   "candidates": [
+    {
+     "code": "Ground bond",
+     "reason": "영문 라벨 「Ground bond / earth continuity」 의 조각"
+    },
+    {
+     "code": "earth continuity",
+     "reason": "영문 라벨 「Ground bond / earth continuity」 의 조각"
+    },
+    {
+     "code": "접지연속성",
+     "reason": "이름 「접지연속성(본딩)」 의 조각"
+    },
+    {
+     "code": "본딩",
+     "reason": "이름 「접지연속성(본딩)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Ground bond",
+    "earth continuity",
+    "접지연속성"
+   ]
+  },
+  {
+   "subject": "halt_hass",
+   "candidates": [
+    {
+     "code": "HALT",
+     "reason": "영문 라벨 「HALT / HASS」 의 조각"
+    },
+    {
+     "code": "HASS",
+     "reason": "영문 라벨 「HALT / HASS」 의 조각"
+    },
+    {
+     "code": "HALT/HASS 가속 수명",
+     "reason": "이름 「HALT/HASS 가속 수명·스크리닝」 의 조각"
+    },
+    {
+     "code": "스크리닝",
+     "reason": "이름 「HALT/HASS 가속 수명·스크리닝」 의 조각"
+    },
+    {
+     "code": "product accelerated",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: IEC 62506"
+    }
+   ],
+   "recommended": [
+    "HALT",
+    "HASS",
+    "HALT/HASS 가속 수명",
+    "스크리닝"
+   ]
+  },
+  {
+   "subject": "hardness_leeb",
+   "candidates": [
+    {
+     "code": "리브 경도",
+     "reason": "이름 「리브(반발) 경도」 의 조각"
+    },
+    {
+     "code": "반발",
+     "reason": "이름 「리브(반발) 경도」 의 괄호 안"
+    },
+    {
+     "code": "leeb hardness",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: ASTM A956"
+    },
+    {
+     "code": "leeb hardness testing",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM A956"
+    }
+   ],
+   "recommended": [
+    "리브 경도",
+    "leeb hardness"
+   ]
+  },
+  {
+   "subject": "hardness_shore",
+   "candidates": [
+    {
+     "code": "indentation hardness",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: DIN EN ISO 868"
+    },
+    {
+     "code": "hardness",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 48-4"
+    }
+   ],
+   "recommended": [
+    "indentation hardness"
+   ]
+  },
+  {
+   "subject": "hardness_vickers",
+   "candidates": [
+    {
+     "code": "vickers hardness and knoop hardness",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E92"
+    },
+    {
+     "code": "microindentation hardness",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E384"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "hast",
+   "candidates": [
+    {
+     "code": "고가속 습열",
+     "reason": "이름 「고가속 습열(HAST)」 의 조각"
+    },
+    {
+     "code": "HAST",
+     "reason": "이름 「고가속 습열(HAST)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "고가속 습열"
+   ]
+  },
+  {
+   "subject": "hdt",
+   "candidates": [
+    {
+     "code": "열변형온도",
+     "reason": "이름 「열변형온도 (HDT)」 의 조각"
+    },
+    {
+     "code": "HDT",
+     "reason": "이름 「열변형온도 (HDT)」 의 괄호 안"
+    },
+    {
+     "code": "temperature",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: ISO 75-1"
+    },
+    {
+     "code": "deflection temperature",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D648"
+    }
+   ],
+   "recommended": [
+    "열변형온도",
+    "temperature"
+   ]
+  },
+  {
+   "subject": "instrumented_indentation",
+   "candidates": [
+    {
+     "code": "계장화 압입",
+     "reason": "이름 「계장화 압입(나노인덴테이션)」 의 조각"
+    },
+    {
+     "code": "나노인덴테이션",
+     "reason": "이름 「계장화 압입(나노인덴테이션)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "계장화 압입"
+   ]
+  },
+  {
+   "subject": "leak_rate",
+   "candidates": [
+    {
+     "code": "non-destructive",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: EN 1779"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "mechanical_endurance",
+   "candidates": [
+    {
+     "code": "Mechanical endurance",
+     "reason": "영문 라벨 「Mechanical endurance / cycling life」 의 조각"
+    },
+    {
+     "code": "cycling life",
+     "reason": "영문 라벨 「Mechanical endurance / cycling life」 의 조각"
+    },
+    {
+     "code": "부품 반복 동작 수명",
+     "reason": "이름 「부품 반복 동작 수명(키·힌지·커넥터)」 의 조각"
+    },
+    {
+     "code": "힌지",
+     "reason": "이름 「부품 반복 동작 수명(키·힌지·커넥터)」 의 괄호 안"
+    },
+    {
+     "code": "커넥터",
+     "reason": "이름 「부품 반복 동작 수명(키·힌지·커넥터)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Mechanical endurance",
+    "cycling life",
+    "부품 반복 동작 수명"
+   ]
+  },
+  {
+   "subject": "mechanical_shock",
+   "candidates": [
+    {
+     "code": "mechanical handling",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D6055"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "melt_flow",
+   "candidates": [
+    {
+     "code": "용융지수",
+     "reason": "이름 「용융지수 (MFR/MVR)」 의 조각"
+    },
+    {
+     "code": "MFR/MVR",
+     "reason": "이름 「용융지수 (MFR/MVR)」 의 괄호 안"
+    },
+    {
+     "code": "melt mass",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: ISO 1133-2"
+    },
+    {
+     "code": "melt flow rates",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D1238"
+    },
+    {
+     "code": "flow rates",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3364"
+    }
+   ],
+   "recommended": [
+    "용융지수",
+    "melt mass"
+   ]
+  },
+  {
+   "subject": "microscopy",
+   "candidates": [
+    {
+     "code": "Electron",
+     "reason": "영문 라벨 「Electron / atomic force microscopy」 의 조각"
+    },
+    {
+     "code": "atomic force microscopy",
+     "reason": "영문 라벨 「Electron / atomic force microscopy」 의 조각"
+    },
+    {
+     "code": "전자",
+     "reason": "이름 「전자·원자간력 현미경 관찰」 의 조각"
+    },
+    {
+     "code": "원자간력 현미경 관찰",
+     "reason": "이름 「전자·원자간력 현미경 관찰」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Electron",
+    "atomic force microscopy",
+    "전자",
+    "원자간력 현미경 관찰"
+   ]
+  },
+  {
+   "subject": "optical_spectroscopy",
+   "candidates": [
+    {
+     "code": "Optical spectroscopy",
+     "reason": "영문 라벨 「Optical spectroscopy (UV-Vis / fluorescence / ellipsometry)」 의 조각"
+    },
+    {
+     "code": "UV-Vis",
+     "reason": "영문 라벨 「Optical spectroscopy (UV-Vis / fluorescence / ellipsometry)」 의 조각"
+    },
+    {
+     "code": "fluorescence",
+     "reason": "영문 라벨 「Optical spectroscopy (UV-Vis / fluorescence / ellipsometry)」 의 조각"
+    },
+    {
+     "code": "ellipsometry",
+     "reason": "영문 라벨 「Optical spectroscopy (UV-Vis / fluorescence / ellipsometry)」 의 조각"
+    },
+    {
+     "code": "투과",
+     "reason": "이름 「투과·반사·형광 분광」 의 조각"
+    },
+    {
+     "code": "반사",
+     "reason": "이름 「투과·반사·형광 분광」 의 조각"
+    },
+    {
+     "code": "형광 분광",
+     "reason": "이름 「투과·반사·형광 분광」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Optical spectroscopy",
+    "UV-Vis",
+    "fluorescence",
+    "ellipsometry",
+    "투과",
+    "반사",
+    "형광 분광"
+   ]
+  },
+  {
+   "subject": "particle_size",
+   "candidates": [
+    {
+     "code": "Particle size",
+     "reason": "영문 라벨 「Particle size / zeta potential」 의 조각"
+    },
+    {
+     "code": "zeta potential",
+     "reason": "영문 라벨 「Particle size / zeta potential」 의 조각"
+    },
+    {
+     "code": "입도",
+     "reason": "이름 「입도·제타전위」 의 조각"
+    },
+    {
+     "code": "제타전위",
+     "reason": "이름 「입도·제타전위」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Particle size",
+    "zeta potential",
+    "입도",
+    "제타전위"
+   ]
+  },
+  {
+   "subject": "photometry_colorimetry",
+   "candidates": [
+    {
+     "code": "Photometry",
+     "reason": "영문 라벨 「Photometry / colorimetry」 의 조각"
+    },
+    {
+     "code": "colorimetry",
+     "reason": "영문 라벨 「Photometry / colorimetry」 의 조각"
+    },
+    {
+     "code": "휘도",
+     "reason": "이름 「휘도·색도(광학) 측정」 의 조각"
+    },
+    {
+     "code": "색도 측정",
+     "reason": "이름 「휘도·색도(광학) 측정」 의 조각"
+    },
+    {
+     "code": "광학",
+     "reason": "이름 「휘도·색도(광학) 측정」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Photometry",
+    "colorimetry",
+    "휘도",
+    "색도 측정"
+   ]
+  },
+  {
+   "subject": "power_consumption",
+   "candidates": [
+    {
+     "code": "전력",
+     "reason": "이름 「전력·효율·대기전력」 의 조각"
+    },
+    {
+     "code": "효율",
+     "reason": "이름 「전력·효율·대기전력」 의 조각"
+    },
+    {
+     "code": "대기전력",
+     "reason": "이름 「전력·효율·대기전력」 의 조각"
+    },
+    {
+     "code": "efficiency from",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: IEC 60034-2-1"
+    }
+   ],
+   "recommended": [
+    "전력",
+    "효율",
+    "대기전력"
+   ]
+  },
+  {
+   "subject": "rheology_capillary",
+   "candidates": [
+    {
+     "code": "모세관 유변",
+     "reason": "이름 「모세관 유변(고전단 점도)」 의 조각"
+    },
+    {
+     "code": "고전단 점도",
+     "reason": "이름 「모세관 유변(고전단 점도)」 의 괄호 안"
+    },
+    {
+     "code": "thermal conductivity",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D5930"
+    },
+    {
+     "code": "fluidity",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 11443"
+    },
+    {
+     "code": "specific volume as a function",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 17744"
+    }
+   ],
+   "recommended": [
+    "모세관 유변"
+   ]
+  },
+  {
+   "subject": "rheology_rotational",
+   "candidates": [
+    {
+     "code": "회전 유변",
+     "reason": "이름 「회전 유변(점도·점탄성)」 의 조각"
+    },
+    {
+     "code": "점도",
+     "reason": "이름 「회전 유변(점도·점탄성)」 의 괄호 안"
+    },
+    {
+     "code": "점탄성",
+     "reason": "이름 「회전 유변(점도·점탄성)」 의 괄호 안"
+    },
+    {
+     "code": "dynamic mechanical",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 6721-10"
+    }
+   ],
+   "recommended": [
+    "회전 유변"
+   ]
+  },
+  {
+   "subject": "salt_spray_corrosion",
+   "candidates": [
+    {
+     "code": "Salt spray",
+     "reason": "영문 라벨 「Salt spray / cyclic corrosion」 의 조각"
+    },
+    {
+     "code": "cyclic corrosion",
+     "reason": "영문 라벨 「Salt spray / cyclic corrosion」 의 조각"
+    },
+    {
+     "code": "염수분무",
+     "reason": "이름 「염수분무·복합부식」 의 조각"
+    },
+    {
+     "code": "복합부식",
+     "reason": "이름 「염수분무·복합부식」 의 조각"
+    },
+    {
+     "code": "laboratory cyclic corrosion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: SAE J2334"
+    },
+    {
+     "code": "corrosion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 9227"
+    }
+   ],
+   "recommended": [
+    "Salt spray",
+    "cyclic corrosion",
+    "염수분무",
+    "복합부식"
+   ]
+  },
+  {
+   "subject": "scratch_pencil_hardness",
+   "candidates": [
+    {
+     "code": "Scratch",
+     "reason": "영문 라벨 「Scratch / pencil hardness」 의 조각"
+    },
+    {
+     "code": "pencil hardness",
+     "reason": "영문 라벨 「Scratch / pencil hardness」 의 조각"
+    },
+    {
+     "code": "스크래치",
+     "reason": "이름 「스크래치·연필 경도」 의 조각"
+    },
+    {
+     "code": "연필 경도",
+     "reason": "이름 「스크래치·연필 경도」 의 조각"
+    },
+    {
+     "code": "film hardness",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: ASTM D3363"
+    },
+    {
+     "code": "hardness by pencil",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: ASTM D3363"
+    }
+   ],
+   "recommended": [
+    "Scratch",
+    "pencil hardness",
+    "스크래치",
+    "연필 경도",
+    "film hardness",
+    "hardness by pencil"
+   ]
+  },
+  {
+   "subject": "seal_strength",
+   "candidates": [
+    {
+     "code": "실링 강도",
+     "reason": "이름 「실링 강도(포장)」 의 조각"
+    },
+    {
+     "code": "포장",
+     "reason": "이름 「실링 강도(포장)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "실링 강도"
+   ]
+  },
+  {
+   "subject": "shear",
+   "candidates": [
+    {
+     "code": "in-plane shear response",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3518"
+    },
+    {
+     "code": "materials by tensile",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D3518"
+    },
+    {
+     "code": "mechanical",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM F606"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "solderability",
+   "candidates": [
+    {
+     "code": "Solderability",
+     "reason": "영문 라벨 「Solderability (wetting balance)」 의 조각"
+    },
+    {
+     "code": "wetting balance",
+     "reason": "영문 라벨 「Solderability (wetting balance)」 의 조각"
+    },
+    {
+     "code": "솔더링성",
+     "reason": "이름 「솔더링성(웨팅밸런스)」 의 조각"
+    },
+    {
+     "code": "웨팅밸런스",
+     "reason": "이름 「솔더링성(웨팅밸런스)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Solderability",
+    "wetting balance",
+    "솔더링성"
+   ]
+  },
+  {
+   "subject": "surface_topography",
+   "candidates": [
+    {
+     "code": "Surface topography",
+     "reason": "영문 라벨 「Surface topography / roughness」 의 조각"
+    },
+    {
+     "code": "roughness",
+     "reason": "영문 라벨 「Surface topography / roughness」 의 조각"
+    },
+    {
+     "code": "표면 형상",
+     "reason": "이름 「표면 형상·거칠기」 의 조각"
+    },
+    {
+     "code": "거칠기",
+     "reason": "이름 「표면 형상·거칠기」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Surface topography",
+    "roughness",
+    "표면 형상",
+    "거칠기"
+   ]
+  },
+  {
+   "subject": "surge_eft_immunity",
+   "candidates": [
+    {
+     "code": "Surge",
+     "reason": "영문 라벨 「Surge / EFT immunity」 의 조각"
+    },
+    {
+     "code": "EFT immunity",
+     "reason": "영문 라벨 「Surge / EFT immunity」 의 조각"
+    },
+    {
+     "code": "서지",
+     "reason": "이름 「서지·EFT 내성」 의 조각"
+    },
+    {
+     "code": "EFT 내성",
+     "reason": "이름 「서지·EFT 내성」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Surge",
+    "EFT immunity",
+    "서지",
+    "EFT 내성"
+   ]
+  },
+  {
+   "subject": "tear",
+   "candidates": [
+    {
+     "code": "angle and crescent",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 34-1"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "tensile",
+   "candidates": [
+    {
+     "code": "tension testing",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E8/E8M"
+    },
+    {
+     "code": "methods for tension",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E8/E8M"
+    },
+    {
+     "code": "elevated temperature tension tests",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E21"
+    },
+    {
+     "code": "elevated temperature tension",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E21"
+    },
+    {
+     "code": "plastic strain ratio",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 10113"
+    },
+    {
+     "code": "definitions for mechanical",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM A370"
+    },
+    {
+     "code": "tensile strain",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E646"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "texture",
+   "candidates": [
+    {
+     "code": "텍스처",
+     "reason": "이름 「텍스처(식품·화장품 물성)」 의 조각"
+    },
+    {
+     "code": "식품",
+     "reason": "이름 「텍스처(식품·화장품 물성)」 의 괄호 안"
+    },
+    {
+     "code": "화장품 물성",
+     "reason": "이름 「텍스처(식품·화장품 물성)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "텍스처"
+   ]
+  },
+  {
+   "subject": "tga",
+   "candidates": [
+    {
+     "code": "TGA",
+     "reason": "이름 「TGA (열중량)」 의 조각"
+    },
+    {
+     "code": "열중량",
+     "reason": "이름 「TGA (열중량)」 의 괄호 안"
+    },
+    {
+     "code": "compositional",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E1131"
+    }
+   ],
+   "recommended": [
+    "TGA"
+   ]
+  },
+  {
+   "subject": "thermal_conductivity",
+   "candidates": [
+    {
+     "code": "Thermal conductivity",
+     "reason": "영문 라벨 「Thermal conductivity / diffusivity」 의 조각"
+    },
+    {
+     "code": "diffusivity",
+     "reason": "영문 라벨 「Thermal conductivity / diffusivity」 의 조각"
+    },
+    {
+     "code": "열전도율",
+     "reason": "이름 「열전도율·열확산율」 의 조각"
+    },
+    {
+     "code": "열확산율",
+     "reason": "이름 「열전도율·열확산율」 의 조각"
+    },
+    {
+     "code": "steady",
+     "reason": "이 시험의 규격 2건 제목에 나옴 — 예: ASTM C518"
+    },
+    {
+     "code": "thermal transmission",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM D5470"
+    },
+    {
+     "code": "thermal diffusivity",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E1461"
+    }
+   ],
+   "recommended": [
+    "Thermal conductivity",
+    "diffusivity",
+    "열전도율",
+    "열확산율",
+    "steady"
+   ]
+  },
+  {
+   "subject": "thermal_resistance",
+   "candidates": [
+    {
+     "code": "Thermal resistance",
+     "reason": "영문 라벨 「Thermal resistance (junction-to-ambient)」 의 조각"
+    },
+    {
+     "code": "junction-to-ambient",
+     "reason": "영문 라벨 「Thermal resistance (junction-to-ambient)」 의 조각"
+    },
+    {
+     "code": "열저항",
+     "reason": "이름 「열저항(접합부-주위)」 의 조각"
+    },
+    {
+     "code": "접합부-주위",
+     "reason": "이름 「열저항(접합부-주위)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Thermal resistance",
+    "junction-to-ambient",
+    "열저항"
+   ]
+  },
+  {
+   "subject": "thermal_runaway_calorimetry",
+   "candidates": [
+    {
+     "code": "Thermal runaway calorimetry",
+     "reason": "영문 라벨 「Thermal runaway calorimetry (ARC)」 의 조각"
+    },
+    {
+     "code": "ARC",
+     "reason": "영문 라벨 「Thermal runaway calorimetry (ARC)」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Thermal runaway calorimetry",
+    "ARC"
+   ]
+  },
+  {
+   "subject": "thermomechanical_fatigue",
+   "candidates": [
+    {
+     "code": "controlled thermomechanical fatigue",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E2368"
+    },
+    {
+     "code": "fatigue",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 12111"
+    },
+    {
+     "code": "strain-controlled thermomechanical fatigue",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 12111"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "tma",
+   "candidates": [
+    {
+     "code": "TMA",
+     "reason": "이름 「TMA (열기계)」 의 조각"
+    },
+    {
+     "code": "열기계",
+     "reason": "이름 「TMA (열기계)」 의 괄호 안"
+    },
+    {
+     "code": "assignment",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E1545"
+    },
+    {
+     "code": "linear thermal expansion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E831"
+    }
+   ],
+   "recommended": [
+    "TMA"
+   ]
+  },
+  {
+   "subject": "torsion",
+   "candidates": [
+    {
+     "code": "torsion testing",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM A938"
+    },
+    {
+     "code": "shear modulus",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ASTM E143"
+    },
+    {
+     "code": "simple torsion",
+     "reason": "이 시험의 규격 1건 제목에 나옴 — 예: ISO 7800"
+    }
+   ],
+   "recommended": []
+  },
+  {
+   "subject": "vapor_sorption",
+   "candidates": [
+    {
+     "code": "Vapor sorption",
+     "reason": "영문 라벨 「Vapor sorption (DVS)」 의 조각"
+    },
+    {
+     "code": "DVS",
+     "reason": "영문 라벨 「Vapor sorption (DVS)」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Vapor sorption",
+    "DVS"
+   ]
+  },
+  {
+   "subject": "vibration_sine_random",
+   "candidates": [
+    {
+     "code": "Sine",
+     "reason": "영문 라벨 「Sine / random vibration」 의 조각"
+    },
+    {
+     "code": "random vibration",
+     "reason": "영문 라벨 「Sine / random vibration」 의 조각"
+    },
+    {
+     "code": "정현",
+     "reason": "이름 「정현·랜덤 진동」 의 조각"
+    },
+    {
+     "code": "랜덤 진동",
+     "reason": "이름 「정현·랜덤 진동」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Sine",
+    "random vibration",
+    "정현",
+    "랜덤 진동"
+   ]
+  },
+  {
+   "subject": "water_content",
+   "candidates": [
+    {
+     "code": "Water content",
+     "reason": "영문 라벨 「Water content (Karl Fischer)」 의 조각"
+    },
+    {
+     "code": "Karl Fischer",
+     "reason": "영문 라벨 「Water content (Karl Fischer)」 의 조각"
+    },
+    {
+     "code": "수분 함량",
+     "reason": "이름 「수분 함량(칼피셔)」 의 조각"
+    },
+    {
+     "code": "칼피셔",
+     "reason": "이름 「수분 함량(칼피셔)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "Water content",
+    "Karl Fischer",
+    "수분 함량"
+   ]
+  },
+  {
+   "subject": "water_ingress",
+   "candidates": [
+    {
+     "code": "방수",
+     "reason": "이름 「방수(IPX1–IPX9K)」 의 조각"
+    },
+    {
+     "code": "IPX1–IPX9K",
+     "reason": "이름 「방수(IPX1–IPX9K)」 의 괄호 안"
+    }
+   ],
+   "recommended": [
+    "방수"
+   ]
+  },
+  {
+   "subject": "wire_bond_strength",
+   "candidates": [
+    {
+     "code": "Wire bond pull",
+     "reason": "영문 라벨 「Wire bond pull / die shear」 의 조각"
+    },
+    {
+     "code": "die shear",
+     "reason": "영문 라벨 「Wire bond pull / die shear」 의 조각"
+    },
+    {
+     "code": "와이어 본드 강도",
+     "reason": "이름 「와이어 본드 강도·다이 전단」 의 조각"
+    },
+    {
+     "code": "다이 전단",
+     "reason": "이름 「와이어 본드 강도·다이 전단」 의 조각"
+    }
+   ],
+   "recommended": [
+    "Wire bond pull",
+    "die shear",
+    "와이어 본드 강도",
+    "다이 전단"
+   ]
+  },
+  {
+   "subject": "xray_void_inspection",
+   "candidates": [
+    {
+     "code": "X-ray void",
+     "reason": "영문 라벨 「X-ray void / internal defect inspection」 의 조각"
+    },
+    {
+     "code": "internal defect inspection",
+     "reason": "영문 라벨 「X-ray void / internal defect inspection」 의 조각"
+    },
+    {
+     "code": "X-ray 보이드",
+     "reason": "이름 「X-ray 보이드·내부 결함 검사」 의 조각"
+    },
+    {
+     "code": "내부 결함 검사",
+     "reason": "이름 「X-ray 보이드·내부 결함 검사」 의 조각"
+    }
+   ],
+   "recommended": [
+    "X-ray void",
+    "internal defect inspection",
+    "X-ray 보이드",
+    "내부 결함 검사"
+   ]
+  }
+ ]
+}

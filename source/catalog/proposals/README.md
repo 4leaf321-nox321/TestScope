@@ -17,6 +17,7 @@
 | `series_standards.json` | 이 계열이 이 규격도 하나 | 카탈로그 객체 id (+ `series` 이름 · `manufacturer` 로 계열을 찾는다) | 규격 코드 — 여러 개. 후보가 `{code, reason, sources[]}` 로 출처를 든다. `source/catalog_extension/tools_propose.py` 가 만든다 — 손으로 안 고친다 |
 | `series_test_items.json` | 이 계열이 이 시험도 하나 | 카탈로그 객체 id (위와 같음) | 시험 항목 코드 — 여러 개. 후보가 `{code, reason(인용문), sources[]}`. 같은 도구가 만든다 |
 | `series_summary.json` | 이 문장을 계열 소개에 넣을까 | 카탈로그 객체 id (위와 같음) | `s1`…`s5` — 여러 개. 후보가 `{code, label(문장), sources[]}`. 같은 도구가 만든다 |
+| `test_item_aliases.json` | 이 시험을 부르는 다른 이름 | 시험 항목 코드 | 표기 글자 그대로 — 여러 개. 후보가 `{code(표기), reason}`. `backend/scripts/draft_test_item_aliases.py` 가 영문 라벨·이름의 조각과 이 시험의 규격 제목 구절에서 만든다 — 손으로 안 고친다. 후보에 없는 표기는 화면에서 직접 적는다 |
 
 줄의 모양:
 

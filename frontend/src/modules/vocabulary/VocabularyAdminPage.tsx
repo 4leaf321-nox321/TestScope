@@ -310,7 +310,7 @@ export default function VocabularyAdminPage() {
             <Input
               value={value}
               onChange={(event) => setValue(event.target.value)}
-              placeholder="새 값"
+              placeholder={axis ? `새 ${axis.label}` : '새 값'}
               className="w-56"
             />
             <Input
@@ -329,7 +329,10 @@ export default function VocabularyAdminPage() {
               }
               disabled={!value || !current}
             >
-              추가
+              {/* **새 기록을 만드는 단추는 「<대상> 등록」.** 계열 등록·기종 등록·장비 등록과
+                  같은 말 — 어느 화면에서 눌러도 같은 일이라는 것이 이름에 보여야 한다. 있는
+                  것에 잇는 단추(시험 항목 추가·표기 추가)는 「추가」 로 남긴다. */}
+              {axis ? `${axis.label} 등록` : '등록'}
             </Button>
             <Input
               value={query}

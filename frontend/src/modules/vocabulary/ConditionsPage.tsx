@@ -1,5 +1,5 @@
 /**
- * 시험 조건 정의.
+ * 시험 항목 검색 조건.
  *
  * 기준정보가 **값의 목록**이라면 이것은 **칸의 계약**이다. 조건에는 차원·단위처럼
  * 값이 아닌 것이 붙고, 그래서 표가 다르다.
@@ -52,7 +52,7 @@ export default function ConditionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="시험 조건 정의"
+        title="시험 항목 검색 조건"
         description="온도·하중·주파수처럼 장비의 시험 조건과 규격의 요구 조건이 함께 쓰는 칸입니다. 값은 언제나 저장 단위로 담깁니다."
       />
 
@@ -111,7 +111,7 @@ export default function ConditionsPage() {
               placeholder="J"
             />
           </div>
-          <Button type="submit">조건 추가</Button>
+          <Button type="submit">검색 조건 등록</Button>
         </form>
       )}
 

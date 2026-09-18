@@ -72,7 +72,7 @@ export default function MembersPage() {
           placeholder="추가할 계정의 아이디"
           required
         />
-        <Button type="submit">추가</Button>
+        <Button type="submit">멤버 추가</Button>
       </form>
 
       <ErrorNotice error={error ?? list.error} />

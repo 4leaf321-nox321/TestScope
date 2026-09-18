@@ -38,6 +38,7 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { testItemCatalogApi } from '@/modules/test_items/api'
+import { NewTermButton } from '@/modules/vocabulary/NewTermButton'
 import type { TestItemCatalogRow } from '@/modules/test_items/api'
 
 type Gap = 'properties' | 'methods' | 'series' | 'equipment' | 'axes'
@@ -99,6 +100,7 @@ export default function TestItemsCatalogPage() {
       <PageHeader
         title="시험 항목"
         description="어떤 시험이 어떤 물성을 내고, 어떤 규격을 따르고, 어떤 계열이 하고, 우리가 몇 대 가졌나 — 한 줄에. 0 이 곧 공백입니다."
+        actions={<NewTermButton slug="test_item" onCreated={() => rows.reload()} />}
       />
 
       <div className="flex flex-wrap items-center gap-3">

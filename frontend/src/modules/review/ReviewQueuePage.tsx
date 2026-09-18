@@ -55,6 +55,7 @@ function emptyLabel(queue: string): string {
   if (queue === 'series_standards') return '추가할 규격 없음'
   if (queue === 'series_test_items') return '추가할 시험 없음'
   if (queue === 'series_summary') return '추가할 문장 없음'
+  if (queue === 'test_item_aliases') return '추가할 별칭 없음'
   return '조건 없음'
 }
 
@@ -329,9 +330,29 @@ function ProposalRow({
               </span>
             )}
           </p>
-          {row.context && (
-            <p className="text-muted-foreground mt-0.5 text-sm">{row.context}</p>
+          {/* **무엇을 묻는지가 먼저다.** 「3400」 만 주고 후보를 세우면 도메인 전문가도 못 정한다 —
+              물음은 완전한 문장으로, 그 아래 대상을 이해할 사실 몇 줄(제조사·분류·소개·지금
+              하는 시험 …). 후보 옆의 근거가 「왜 이 후보인가」 라면 여기는 「대상이 무엇인가」. */}
+          {row.question && <p className="mt-1 text-sm">{row.question}</p>}
+          {row.facts && row.facts.length > 0 && (
+            <dl className="text-muted-foreground mt-2 space-y-0.5 text-xs">
+              {row.facts.map((one, index) => (
+                <div key={`${one.label}-${index}`} className="flex gap-2">
+                  {one.label && <dt className="shrink-0 font-medium">{one.label}</dt>}
+                  <dd className="min-w-0">
+                    {one.link ? (
+                      <Link to={one.link} target="_blank" className="hover:underline">
+                        {one.value}
+                      </Link>
+                    ) : (
+                      one.value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           )}
+          {row.context && <p className="text-muted-foreground mt-1 text-xs">{row.context}</p>}
         </div>
         {row.link && (
           <Link
@@ -473,6 +494,16 @@ function ProposalRow({
           </ul>
 
           <div className="mt-3 flex flex-wrap items-end gap-2">
+            {/* 별칭은 어휘가 아니라 **글자**라 고르는 목록이 없다 — 후보에 없는 표기는 적는다. */}
+            {row.queue === 'test_item_aliases' && (
+              <Input
+                value={direct}
+                onChange={(event) => setDirect(event.target.value)}
+                placeholder="직접 적기 — 후보에 없는 표기"
+                aria-label="별칭 직접 적기"
+                className="w-56"
+              />
+            )}
             {directOptions.length > 0 && (
               <div className="w-64">
                 <SearchablePicker

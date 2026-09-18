@@ -24,6 +24,14 @@ class QueueOut(BaseModel):
     """대상이 없어져 닫힌 것 — 정한 것과 다르다."""
 
 
+class FactOut(BaseModel):
+    """대상을 이해하는 사실 한 줄. 「제조사: Instron」 「지금 하는 시험: 인장 · 압축」."""
+
+    label: str
+    value: str
+    link: str | None = None
+
+
 class CandidateOut(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
@@ -55,6 +63,9 @@ class ProposalOut(BaseModel):
     subject_id: uuid.UUID | None
     subject_label: str
     context: str | None
+    question: str | None = None
+    """무엇을 묻는지 — 완전한 문장. 화면이 대상 이름 아래에 그린다."""
+    facts: list[FactOut] = []
     link: str | None
     """대상 상세로 가는 링크. 후보만으로 못 정할 때 원문을 보러 가는 길."""
     candidates: list[CandidateOut]

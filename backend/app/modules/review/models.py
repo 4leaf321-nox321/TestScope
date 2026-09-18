@@ -54,6 +54,13 @@ class ReviewProposal(Base):
     """이 설치에서의 대상 행 id. 화면이 상세로 가는 링크."""
     subject_label: Mapped[str] = mapped_column(String(300))
     context: Mapped[str | None] = mapped_column(Text, nullable=True)
+    question: Mapped[str | None] = mapped_column(Text, nullable=True)
+    """이 줄이 정확히 무엇을 묻는지 — 완전한 문장. 「3400」 만 주고 「무슨 시험을 하나」 를
+    묻지 않게(review/facts.py)."""
+    facts: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONB, default=list, server_default="[]"
+    )
+    """대상을 이해하는 사실 몇 줄 — {label, value, link}. 제조사·분류·소개·지금 하는 시험 …"""
     """대상을 이해하는 데 필요한 한 줄 — 「인용: Unholtz-Dickie 진동 시험기」 같은 것."""
 
     candidates: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, default=list)

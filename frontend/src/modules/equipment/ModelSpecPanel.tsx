@@ -333,7 +333,7 @@ export function ModelSpecPanel({
                         // 모름이라 하지」 가 된다.
                         <span
                           className="text-destructive rounded bg-red-500/10 px-1.5 py-0.5 text-xs"
-                          title="이 사양은 검색 조건에 이어져 있지만 단위를 조건의 단위로 못 바꿔 검색에 안 실립니다. 「장비 사양 정의」 에서 단위나 축을 고치세요."
+                          title="이 사양은 검색 조건에 이어져 있지만 단위를 조건의 단위로 못 바꿔 검색에 안 실립니다. 「장비 기종 사양」 에서 단위나 축을 고치세요."
                         >
                           단위 안 맞음 · 검색에 안 실림
                         </span>

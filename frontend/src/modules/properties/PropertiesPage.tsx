@@ -41,6 +41,7 @@ import { Check, CheckCheck, Plus, Trash2, Undo2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { useAuth } from '@/shared/auth/AuthContext'
+import { NewTermButton } from '@/modules/vocabulary/NewTermButton'
 import { isSystemAdmin } from '@/shared/auth/roles'
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -369,6 +370,7 @@ export default function PropertiesPage() {
       <PageHeader
         title="물성 항목"
         description="어떤 시험으로 어떤 물성을 얻는지. 검색이 「인장강도 재는 장비」 를 이 표로 시험 항목으로 바꿉니다."
+        actions={<NewTermButton slug="property" onCreated={() => properties.reload()} />}
       />
 
       <div className="flex flex-wrap items-center gap-3">
