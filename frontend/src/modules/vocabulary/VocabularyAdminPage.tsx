@@ -18,11 +18,11 @@
  */
 
 import { useEffect, useMemo, useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { Pencil, Plus, Trash2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
-import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
@@ -43,7 +43,6 @@ import {
 } from '@/shared/components/ui/table'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { useResource } from '@/shared/hooks/useResource'
-import { AxisList } from '@/modules/vocabulary/AxisList'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 import type { Term, Vocabulary } from '@/modules/vocabulary/api'
 import { TermEditorDialog } from '@/modules/vocabulary/TermEditorDialog'
@@ -244,10 +243,13 @@ function AxisEditor({
   )
 }
 
-export default function VocabularyAdminPage() {
+/**
+ * 축 하나의 편집 판 — 기준정보 허브의 오른쪽. `canEdit` 이 아니면 읽기만(축 편집·등록·값
+ * 편집 단추를 감춘다). 권한은 서버가 판정한다.
+ */
+export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean }) {
   const axes = useResource(() => vocabularyApi.list(), [])
-  const [slug, setSlug] = useState('')
-  const current = slug || axes.data?.[0]?.slug || ''
+  const current = slug
   const axis = useMemo(
     () => (axes.data ?? []).find((one) => one.slug === current) ?? null,
     [axes.data, current],
@@ -292,118 +294,115 @@ export default function VocabularyAdminPage() {
 
   return (
     <div className="space-y-6">
-      <PageHeader
-        title="기준정보 편집"
-        description="축의 뜻과 값의 칸을 정하고, 값을 더하고 고치고 합칩니다. 이름 변경과 병합은 변경 이력에 남습니다."
-      />
-
-      <div className="flex gap-6">
-        {/* 축을 접어 두지 않는다 — 값을 더하는 사람은 "이 값이 어느 축에
-            속하는가" 를 먼저 정해야 한다. 드롭다운은 그 판단에 필요한 나머지
-            축들을 숨긴다. 옆에 펼쳐 두면 잘못 고른 것이 눈에 띈다. */}
-        <AxisList axes={axes.data ?? []} current={current} onSelect={setSlug} />
-
-        <div className="min-w-0 flex-1 space-y-4">
-          {axis && <AxisEditor axis={axis} onSaved={() => axes.reload()} />}
-
-          <div className="flex flex-wrap items-end gap-2">
-            <Input
-              value={value}
-              onChange={(event) => setValue(event.target.value)}
-              placeholder={axis ? `새 ${axis.label}` : '새 값'}
-              className="w-56"
-            />
-            <Input
-              value={code}
-              onChange={(event) => setCode(event.target.value)}
-              placeholder="코드 (선택)"
-              className="w-40 font-mono"
-            />
-            <Button
-              onClick={() =>
-                act(async () => {
-                  await vocabularyApi.createTerm(current, { value, code: code || null })
-                  setValue('')
-                  setCode('')
-                })
-              }
-              disabled={!value || !current}
-            >
-              {/* **새 기록을 만드는 단추는 「<대상> 등록」.** 계열 등록·기종 등록·장비 등록과
-                  같은 말 — 어느 화면에서 눌러도 같은 일이라는 것이 이름에 보여야 한다. 있는
-                  것에 잇는 단추(시험 항목 추가·표기 추가)는 「추가」 로 남긴다. */}
-              {axis ? `${axis.label} 등록` : '등록'}
-            </Button>
-            <Input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="찾기 — 이름 · 코드 · 표기"
-              className="ml-auto w-56"
-            />
+      <div className="min-w-0 flex-1 space-y-4">
+        {axis && canEdit && <AxisEditor axis={axis} onSaved={() => axes.reload()} />}
+        {axis && !canEdit && (
+          <div className="space-y-1">
+            <h2 className="text-base font-semibold">{axis.label}</h2>
+            {axis.description && (
+              <p className="text-muted-foreground text-sm">{axis.description}</p>
+            )}
           </div>
+        )}
 
-          {/* 서버가 중복을 잡으면 **어느 값과 겹치는지**까지 말해 준다. 그 메시지를
+        <div className="flex flex-wrap items-end gap-2">
+          {canEdit && (
+            <>
+              <Input
+                value={value}
+                onChange={(event) => setValue(event.target.value)}
+                placeholder={axis ? `새 ${axis.label}` : '새 값'}
+                className="w-56"
+              />
+              <Input
+                value={code}
+                onChange={(event) => setCode(event.target.value)}
+                placeholder="코드 (선택)"
+                className="w-40 font-mono"
+              />
+              <Button
+                onClick={() =>
+                  act(async () => {
+                    await vocabularyApi.createTerm(current, { value, code: code || null })
+                    setValue('')
+                    setCode('')
+                  })
+                }
+                disabled={!value || !current}
+              >
+                {/* **새 기록을 만드는 단추는 「<대상> 등록」.** 계열 등록·기종 등록·장비
+                      등록과 같은 말 — 어느 화면에서 눌러도 같은 일이라는 것이 이름에 보여야
+                      한다. 있는 것에 잇는 단추(시험 항목 추가·표기 추가)는 「추가」 로 남긴다. */}
+                {axis ? `${axis.label} 등록` : '등록'}
+              </Button>
+            </>
+          )}
+          <Input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="찾기 — 이름 · 코드 · 표기"
+            className="ml-auto w-56"
+          />
+        </div>
+
+        {/* 서버가 중복을 잡으면 **어느 값과 겹치는지**까지 말해 준다. 그 메시지를
               그대로 보여 준다 — 다시 쓰면 표현이 갈린다. */}
-          <ErrorNotice error={error ?? terms.error} />
+        <ErrorNotice error={error ?? terms.error} />
 
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>값</TableHead>
-                <TableHead>코드</TableHead>
-                <TableHead>상위 값</TableHead>
-                <TableHead>다른 표기</TableHead>
-                <TableHead>상태</TableHead>
-                <TableHead className="text-right">참조</TableHead>
-                <TableHead className="text-right"> </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {shownTerms.map((term) => (
-                <TableRow
-                  key={term.id}
-                  className={term.status !== 'active' ? 'opacity-60' : ''}
-                >
-                  <TableCell>
-                    <div>{term.value}</div>
-                    {Object.keys(term.attributes).length > 0 && (
-                      <div className="text-muted-foreground text-xs">
-                        {(axis?.attribute_schema ?? [])
-                          .filter((field) => term.attributes[field.key] !== undefined)
-                          .map(
-                            (field) => `${field.label} ${String(term.attributes[field.key])}`,
-                          )
-                          .join(' · ')}
-                      </div>
-                    )}
-                  </TableCell>
-                  <TableCell className="font-mono text-xs">{term.code ?? '—'}</TableCell>
-                  <TableCell className="text-sm">
-                    {term.parent_value ??
-                      (term.parent_term_id
-                        ? (byId.get(term.parent_term_id)?.value ?? '…')
-                        : '—')}
-                  </TableCell>
-                  <TableCell className="text-muted-foreground text-sm">
-                    {term.aliases.join(', ') || '—'}
-                  </TableCell>
-                  <TableCell>{term.status === 'active' ? '사용' : '폐기'}</TableCell>
-                  <TableCell className="text-right">
-                    {/* 수를 누르면 내역이 열린다 — 「12」 만으로는 무엇이 쓰는지 모른다. */}
-                    {term.usage_count > 0 ? (
-                      <button
-                        type="button"
-                        className="underline decoration-dotted underline-offset-2"
-                        title="무엇이 이 값을 쓰는지 본다"
-                        onClick={() => setEditing(term)}
-                      >
-                        {term.usage_count}
-                      </button>
-                    ) : (
-                      <span className="text-muted-foreground">0</span>
-                    )}
-                  </TableCell>
-                  <TableCell className="text-right">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>값</TableHead>
+              <TableHead>코드</TableHead>
+              <TableHead>상위 값</TableHead>
+              <TableHead>다른 표기</TableHead>
+              <TableHead>상태</TableHead>
+              <TableHead className="text-right">참조</TableHead>
+              <TableHead className="text-right"> </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {shownTerms.map((term) => (
+              <TableRow key={term.id} className={term.status !== 'active' ? 'opacity-60' : ''}>
+                <TableCell>
+                  <div>{term.value}</div>
+                  {Object.keys(term.attributes).length > 0 && (
+                    <div className="text-muted-foreground text-xs">
+                      {(axis?.attribute_schema ?? [])
+                        .filter((field) => term.attributes[field.key] !== undefined)
+                        .map((field) => `${field.label} ${String(term.attributes[field.key])}`)
+                        .join(' · ')}
+                    </div>
+                  )}
+                </TableCell>
+                <TableCell className="font-mono text-xs">{term.code ?? '—'}</TableCell>
+                <TableCell className="text-sm">
+                  {term.parent_value ??
+                    (term.parent_term_id
+                      ? (byId.get(term.parent_term_id)?.value ?? '…')
+                      : '—')}
+                </TableCell>
+                <TableCell className="text-muted-foreground text-sm">
+                  {term.aliases.join(', ') || '—'}
+                </TableCell>
+                <TableCell>{term.status === 'active' ? '사용' : '폐기'}</TableCell>
+                <TableCell className="text-right">
+                  {/* 수를 누르면 내역이 열린다 — 「12」 만으로는 무엇이 쓰는지 모른다. */}
+                  {term.usage_count > 0 ? (
+                    <button
+                      type="button"
+                      className="underline decoration-dotted underline-offset-2"
+                      title="무엇이 이 값을 쓰는지 본다"
+                      onClick={() => setEditing(term)}
+                    >
+                      {term.usage_count}
+                    </button>
+                  ) : (
+                    <span className="text-muted-foreground">0</span>
+                  )}
+                </TableCell>
+                <TableCell className="text-right">
+                  {canEdit && (
                     <Button
                       variant="ghost"
                       size="sm"
@@ -412,12 +411,12 @@ export default function VocabularyAdminPage() {
                     >
                       <Pencil className="size-4" />
                     </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
 
       {axis && (
@@ -441,4 +440,9 @@ export default function VocabularyAdminPage() {
       )}
     </div>
   )
+}
+
+/** 예전 주소(`/admin/vocabulary`)로 온 사람을 허브로 보낸다 — 기준정보는 한 화면이다. */
+export default function VocabularyAdminPage() {
+  return <Navigate to="/reference" replace />
 }

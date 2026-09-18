@@ -35,6 +35,8 @@ from app.shared.text import clean
 _TARGET_COLUMN = {
     "reliability_test": AttributeValue.reliability_test_id,
     "equipment": AttributeValue.equipment_id,
+    "series": AttributeValue.series_id,
+    "method": AttributeValue.method_id,
 }
 
 #: 종류마다 수치 칸을 쓰는 것. 단위는 이들만 뜻이 있다.
@@ -475,7 +477,7 @@ def set_values(
             bool_value=item.bool_value if definition.kind == "boolean" else None,
             date_value=item.date_value if definition.kind == "date" else None,
             term_id=item.term_id if definition.kind == "term" else None,
-            method_id=item.method_id if definition.kind == "method" else None,
+            ref_method_id=item.method_id if definition.kind == "method" else None,
             note=clean(item.note or "") or None,
         )
         setattr(value, column.key, object_id)
@@ -538,7 +540,7 @@ def values_of(
         if term_ids
         else {}
     )
-    method_ids = {v.method_id for v, _ in pairs if v.method_id}
+    method_ids = {v.ref_method_id for v, _ in pairs if v.ref_method_id}
     methods = (
         {
             m.id: m.code
@@ -549,7 +551,7 @@ def values_of(
     )
     for value, definition in pairs:
         term_value = terms.get(value.term_id) if value.term_id else None
-        method_code = methods.get(value.method_id) if value.method_id else None
+        method_code = methods.get(value.ref_method_id) if value.ref_method_id else None
         out[getattr(value, column.key)].append(
             AttributeValueOut(
                 definition_id=definition.id,
@@ -565,7 +567,7 @@ def values_of(
                 date_value=value.date_value,
                 term_id=value.term_id,
                 term_value=term_value,
-                method_id=value.method_id,
+                method_id=value.ref_method_id,
                 method_code=method_code,
                 note=value.note,
                 display=display_of(

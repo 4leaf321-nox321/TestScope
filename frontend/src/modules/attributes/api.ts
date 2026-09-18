@@ -11,7 +11,7 @@ import type { components } from '@/shared/api/schema'
 export type AttributeDefinition = components['schemas']['AttributeDefinitionOut']
 export type AttributeValue = components['schemas']['AttributeValueOut']
 export type AttributeValueIn = components['schemas']['AttributeValueIn']
-export type AttributeTarget = 'reliability_test' | 'equipment'
+export type AttributeTarget = 'reliability_test' | 'equipment' | 'series' | 'method'
 
 export const attributeApi = {
   /** 한 대상의 항목 정의 — 정식이 먼저, 초안이 뒤. `value_count` 가 그 항목으로 적힌 값의 수. */

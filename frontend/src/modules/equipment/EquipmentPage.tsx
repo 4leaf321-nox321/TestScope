@@ -37,6 +37,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { Pager } from '@/shared/components/Pager'
 import { shownDate } from '@/shared/lib/datetime'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { equipmentApi } from '@/modules/equipment/api'
 import {
   EMPTY_FILTERS,
@@ -114,6 +115,7 @@ export default function EquipmentPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title="보유 장비"
         description="자산번호·이름으로 찾습니다. 시험 항목이 0 인 장비는 검색에 걸리지 않습니다."
         actions={

@@ -134,6 +134,21 @@ def list_for_workspace(db: Session, user: User, slug: str) -> list[ReliabilityTe
     return _outs(db, user, rows)
 
 
+def list_all(db: Session, user: User) -> list[ReliabilityTestOut]:
+    """전사의 신뢰성 시험 — **「저 부서는 무슨 시험을 하나」 를 부서를 가로질러 묻는 표.**
+    읽기는 누구나(부서를 가로지르는 것이 이 시스템의 물음), 고치기는 각 부서 화면에서.
+    부서 순서(조직도) → 이름."""
+    rows = list(
+        db.scalars(
+            select(ReliabilityTest)
+            .join(Workspace, Workspace.id == ReliabilityTest.workspace_id)
+            .where(ReliabilityTest.deleted_at.is_(None))
+            .order_by(Workspace.sort_order, Workspace.name, ReliabilityTest.name)
+        )
+    )
+    return _outs(db, user, rows)
+
+
 def get(db: Session, test_id: uuid.UUID) -> ReliabilityTest:
     row = db.get(ReliabilityTest, test_id)
     if row is None or row.deleted_at is not None:

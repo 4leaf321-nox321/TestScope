@@ -33,6 +33,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { methodApi } from '@/modules/methods/api'
 import { NewMethodDialog } from '@/modules/methods/NewMethodDialog'
 import { RequirementImportDialog } from '@/modules/methods/RequirementImportDialog'
@@ -77,6 +78,7 @@ export default function MethodsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title="시험법·규격"
         description="규격이 요구하는 조건을 적어 두면, 검색이 그 숫자를 그대로 물어 줍니다."
         actions={

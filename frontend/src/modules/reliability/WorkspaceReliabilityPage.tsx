@@ -32,6 +32,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { ReliabilityTestDialog } from '@/modules/reliability/ReliabilityTestDialog'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
@@ -68,6 +69,7 @@ export default function WorkspaceReliabilityPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title={workspace ? `${workspace.name} · 신뢰성 시험` : '신뢰성 시험'}
         description={
           workspace

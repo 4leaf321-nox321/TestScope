@@ -89,7 +89,10 @@ export default function EquipmentDetailPage() {
           label="보유 부서"
           value={one.shared_use ? `${one.workspace_name ?? '—'} · 공용` : one.workspace_name}
         />
-        <Field label="위치" value={[one.site, one.location].filter(Boolean).join(' · ')} />
+        <Field
+          label="건물 · 설치 위치"
+          value={[one.site, one.location].filter(Boolean).join(' · ')}
+        />
         <Field label="담당자" value={one.contact_name} />
         <Field label="제조사" value={one.manufacturer} />
         <Field label="제조번호" value={one.serial_no} />

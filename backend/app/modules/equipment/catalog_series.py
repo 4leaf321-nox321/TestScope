@@ -14,6 +14,8 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import services as attributes
+from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment import specs
 from app.modules.equipment.catalog_common import (
     _limits,
@@ -126,6 +128,7 @@ def series_out(db: Session, row: EquipmentSeries, viewer: User) -> EquipmentSeri
         test_items=_test_items(db, row.id),
         pending_methods=_pending_methods(db, row.id),
         relations=_relations(db, row.id),
+        attributes=attributes.values_of(db, target="series", object_ids=[row.id])[row.id],
         created_at=row.created_at,
         can_edit=viewer.is_system_admin,
     )
@@ -341,6 +344,14 @@ def update_series(
     ):
         if field in changes:
             setattr(row, field, changes[field])
+    if changes.get("attributes") is not None:
+        attributes.set_values(
+            db,
+            None,
+            target="series",
+            object_id=row.id,
+            items=[AttributeValueIn.model_validate(one) for one in changes["attributes"]],
+        )
 
     db.commit()
     db.refresh(row)

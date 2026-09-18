@@ -36,6 +36,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { seriesApi } from '@/modules/equipment/api'
 import {
   EMPTY_SERIES_FILTERS,
@@ -112,6 +113,7 @@ export default function EquipmentSeriesPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title="장비 계열"
         description="제조사가 파는 계열의 목록입니다. 무슨 시험이 되는지는 계열이 정하고, 어디까지 되는지는 그 안의 기종이 정합니다."
         actions={

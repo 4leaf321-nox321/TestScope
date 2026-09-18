@@ -26,6 +26,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { ImportWorkspacesDialog } from '@/modules/workspaces/ImportWorkspacesDialog'
 import { workspaceApi } from '@/modules/workspaces/api'
 
@@ -49,6 +50,7 @@ export default function WorkspacesAdminPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title="부서 정보"
         description="조직도를 만들고 고칩니다. 부서를 옮겨도 장비는 하나도 움직이지 않습니다."
         actions={

@@ -1,95 +1,10 @@
 /**
- * 기준정보 보기 — **고르는 사람이 목록을 볼 수 있어야 한다.**
- *
- * 이 값을 매일 드롭다운에서 고르는 것은 멤버다. 못 보면 찾는 값이 없을 때
- * "아직 없다" 인지 "이름이 다르다" 인지 구별할 수 없다. 고치는 자리는 관리 화면이다.
+ * 예전 주소 `/vocabulary` — **기준정보는 한 화면이다.** 이름 사전 보기는 허브(`/reference`)의
+ * 오른쪽 판이 되었다. 여기로 온 링크(문서·즐겨찾기)를 그리로 보낸다.
  */
 
-import { useState } from 'react'
-
-import { ErrorNotice } from '@/shared/components/ErrorNotice'
-import { PageHeader } from '@/shared/components/PageHeader'
-import { Input } from '@/shared/components/ui/input'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/shared/components/ui/table'
-import { useResource } from '@/shared/hooks/useResource'
-import { AxisList } from '@/modules/vocabulary/AxisList'
-import { vocabularyApi } from '@/modules/vocabulary/api'
+import { Navigate } from 'react-router-dom'
 
 export default function VocabularyPage() {
-  const axes = useResource(() => vocabularyApi.list(), [])
-  const [slug, setSlug] = useState<string | null>(null)
-  const [query, setQuery] = useState('')
-
-  const current = slug ?? axes.data?.[0]?.slug ?? null
-  const terms = useResource(
-    () => (current ? vocabularyApi.terms(current, query || undefined) : Promise.resolve([])),
-    [current, query],
-  )
-
-  return (
-    <div className="space-y-6">
-      <PageHeader
-        title="기준정보"
-        description="폼에서 고르는 값들의 목록입니다. 값을 더하거나 고치는 것은 관리자가 합니다."
-      />
-
-      <ErrorNotice error={axes.error ?? terms.error} />
-
-      <div className="flex gap-6">
-        <AxisList axes={axes.data ?? []} current={current} onSelect={setSlug} />
-
-        <div className="min-w-0 flex-1 space-y-3">
-          {/* 축 설명을 보여 준다 — 고르는 사람이 축의 뜻을 모르면 비슷한 축 둘 중
-              아무 데나 값을 넣는다. */}
-          {(() => {
-            const axis = (axes.data ?? []).find((one) => one.slug === current)
-            return axis?.description ? (
-              <p className="text-muted-foreground text-sm">{axis.description}</p>
-            ) : null
-          })()}
-
-          <Input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="값 찾기"
-            className="max-w-sm"
-          />
-
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>값</TableHead>
-                <TableHead>코드</TableHead>
-                <TableHead>상위</TableHead>
-                <TableHead>다른 표기</TableHead>
-                <TableHead className="text-right">참조</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {(terms.data ?? []).map((term) => (
-                <TableRow key={term.id}>
-                  <TableCell>{term.value}</TableCell>
-                  <TableCell className="font-mono text-xs">{term.code ?? '—'}</TableCell>
-                  <TableCell>{term.parent_value ?? '—'}</TableCell>
-                  {/* **별칭을 보여 준다.** 찾는 값이 별칭으로 이미 묶여 있는지를
-                      알 수 있어야 사람이 같은 값을 또 만들지 않는다. */}
-                  <TableCell className="text-muted-foreground text-sm">
-                    {term.aliases.join(', ') || '—'}
-                  </TableCell>
-                  <TableCell className="text-right">{term.usage_count}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
-    </div>
-  )
+  return <Navigate to="/reference" replace />
 }

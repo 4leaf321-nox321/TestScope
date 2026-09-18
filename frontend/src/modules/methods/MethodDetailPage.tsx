@@ -37,6 +37,7 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
+import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { methodApi } from '@/modules/methods/api'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 요구와 구별되지 않는다. */
@@ -162,6 +163,19 @@ export default function MethodDetailPage() {
           </div>
         </div>
       )}
+
+      <section className="space-y-3">
+        <h2 className="text-base font-semibold">속성</h2>
+        <AttributeValuesPanel
+          target="method"
+          values={one.attributes ?? []}
+          canEdit={one.can_edit}
+          onSave={async (attributes) => {
+            await methodApi.update(one.id, { attributes })
+            method.reload()
+          }}
+        />
+      </section>
 
       <section className="space-y-3">
         <h2 className="text-base font-semibold">인용한 계열</h2>

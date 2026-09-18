@@ -22,15 +22,18 @@ router = APIRouter(prefix="/reliability-tests", tags=["reliability"])
 
 @router.get("", response_model=list[ReliabilityTestOut])
 def list_reliability_tests(
-    workspace: str = Query(..., max_length=64),
+    workspace: str | None = Query(default=None, max_length=64),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[ReliabilityTestOut]:
-    """한 부서가 수행하는 신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수
-    있는 측정, 전사 공용)과 다르다. 시험마다 쓰는 시험 항목과, 그 항목이 되는 이 부서의
-    장비 수를 함께 준다 — 0 이면 시험은 정했는데 돌릴 장비가 없다는 뜻이다.
+    """신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사
+    공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다
+    쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데
+    돌릴 장비가 없다는 뜻이다.
     """
-    return services.list_for_workspace(db, user, workspace)
+    if workspace:
+        return services.list_for_workspace(db, user, workspace)
+    return services.list_all(db, user)
 
 
 @router.post("", response_model=ReliabilityTestOut, status_code=201)

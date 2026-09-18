@@ -106,13 +106,14 @@ vi.mock('@/shared/api/client', () => ({
   ApiError: class extends Error {},
 }))
 
-import VocabularyAdminPage from '@/modules/vocabulary/VocabularyAdminPage'
+import { AxisPanel } from '@/modules/vocabulary/VocabularyAdminPage'
 
+// 축 편집 판은 기준정보 허브(`/reference`)의 오른쪽이다 — 축 하나를 직접 준다.
 async function open() {
   await act(async () => {
     render(
       <MemoryRouter>
-        <VocabularyAdminPage />
+        <AxisPanel slug="property" canEdit />
       </MemoryRouter>,
     )
   })

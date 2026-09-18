@@ -604,6 +604,8 @@ class EquipmentSeriesOut(BaseModel):
     """인용은 했는데 시험 항목 밑에 못 넣은 규격. 비어 있는 것이 정상이고, 남아 있으면
     그 규격의 시험 항목을 정하라는 뜻이다."""
     relations: list[SeriesRelationOut]
+    attributes: list[AttributeValueOut] = []
+    """관리자가 정의한 속성 값(「장비 계열 속성」). 고정 칸이 아닌 정보는 이쪽."""
     created_at: datetime
     can_edit: bool
     """카탈로그는 전사 공용이라 시스템 관리자만 고친다. **서버가 판정한다.**"""
@@ -660,6 +662,8 @@ class EquipmentSeriesUpdateRequest(BaseModel):
     summary: str | None = None
     spec_note: str | None = None
     source_id: uuid.UUID | None = None
+    attributes: list[AttributeValueIn] | None = None
+    """보내면 통째로 바뀐다 — 신뢰성 시험과 같은 규칙."""
 
 
 class SeriesRelationCreateRequest(BaseModel):

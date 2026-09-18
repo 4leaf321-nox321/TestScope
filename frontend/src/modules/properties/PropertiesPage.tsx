@@ -57,6 +57,7 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select'
 import { useResource } from '@/shared/hooks/useResource'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { Term } from '@/modules/vocabulary/api'
 import { DOMAIN_LABEL, propertyApi } from '@/modules/properties/api'
@@ -368,6 +369,7 @@ export default function PropertiesPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title="물성 항목"
         description="어떤 시험으로 어떤 물성을 얻는지. 검색이 「인장강도 재는 장비」 를 이 표로 시험 항목으로 바꿉니다."
         actions={<NewTermButton slug="property" onCreated={() => properties.reload()} />}

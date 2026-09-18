@@ -2158,9 +2158,10 @@ export interface paths {
         };
         /**
          * List Reliability Tests
-         * @description 한 부서가 수행하는 신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수
-         *     있는 측정, 전사 공용)과 다르다. 시험마다 쓰는 시험 항목과, 그 항목이 되는 이 부서의
-         *     장비 수를 함께 준다 — 0 이면 시험은 정했는데 돌릴 장비가 없다는 뜻이다.
+         * @description 신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사
+         *     공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다
+         *     쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데
+         *     돌릴 장비가 없다는 뜻이다.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
         put?: never;
@@ -2266,6 +2267,27 @@ export interface paths {
          *     한다.
          */
         post: operations["merge_attribute_definition_api_attribute_definitions__definition_id__merge_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reference/overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Reference Overview
+         * @description 객체 종류마다 한 줄 — 저장 방식 · 건수 · 고정 칸 · 관리자가 정의한 칸(종류·수·초안 수) ·
+         *     목록과 정의 화면 주소. 「이 시스템의 기준정보가 무엇인가」 의 답.
+         */
+        get: operations["reference_overview_api_reference_overview_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -3825,6 +3847,11 @@ export interface components {
             /** Relations */
             relations: components["schemas"]["SeriesRelationOut"][];
             /**
+             * Attributes
+             * @default []
+             */
+            attributes: components["schemas"]["AttributeValueOut"][];
+            /**
              * Created At
              * Format: date-time
              */
@@ -3906,6 +3933,8 @@ export interface components {
             spec_note?: string | null;
             /** Source Id */
             source_id?: string | null;
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][] | null;
         };
         /** EquipmentSpecGroupOut */
         EquipmentSpecGroupOut: {
@@ -4581,6 +4610,11 @@ export interface components {
             /** Requirements */
             requirements: components["schemas"]["RequirementOut"][];
             /**
+             * Attributes
+             * @default []
+             */
+            attributes: components["schemas"]["AttributeValueOut"][];
+            /**
              * Created At
              * Format: date-time
              */
@@ -4604,6 +4638,8 @@ export interface components {
             status?: string | null;
             /** Superseded By Id */
             superseded_by_id?: string | null;
+            /** Attributes */
+            attributes?: components["schemas"]["AttributeValueIn"][] | null;
         };
         /**
          * ModelHeadlineSpecOut
@@ -4924,6 +4960,33 @@ export interface components {
              * Format: date-time
              */
             created_at: string;
+        };
+        /** ObjectKindOut */
+        ObjectKindOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Layer */
+            layer: string;
+            /** Storage */
+            storage: string;
+            /** Count */
+            count: number;
+            /** Fixed Fields */
+            fixed_fields: string[];
+            /** Defined Kind */
+            defined_kind: string | null;
+            /** Defined Count */
+            defined_count: number;
+            /** Draft Count */
+            draft_count: number;
+            /** List Path */
+            list_path: string;
+            /** Define Path */
+            define_path: string | null;
+            /** Note */
+            note: string;
         };
         /** Page[AccessLogOut] */
         Page_AccessLogOut_: {
@@ -10804,8 +10867,8 @@ export interface operations {
     };
     list_reliability_tests_api_reliability_tests_get: {
         parameters: {
-            query: {
-                workspace: string;
+            query?: {
+                workspace?: string | null;
             };
             header?: never;
             path?: never;
@@ -11121,6 +11184,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reference_overview_api_reference_overview_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ObjectKindOut"][];
                 };
             };
         };

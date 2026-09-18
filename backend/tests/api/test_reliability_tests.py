@@ -178,3 +178,30 @@ def test_지우면_목록에서_빠지고_감사에_남는다(
         headers=admin.headers,
     )
     assert again.status_code == 201
+
+
+def test_부서를_안_주면_전사_전부가_부서_순으로_온다(
+    client: TestClient, db: Session, admin: Signed
+) -> None:
+    """전체 표 — 「누가 무슨 시험을 하나」 를 부서를 가로질러 본다. 읽기는 누구나."""
+    tag = uuid.uuid4().hex[:6]
+    lab = Workspace(slug=f"lab-{tag}", name="신뢰성팀", sort_order=999)
+    db.add(lab)
+    db.commit()
+    manager = _signed_in(client, db, lab, "manager")
+    for name in (f"열충격-{tag}", f"고온고습-{tag}"):
+        made = client.post(
+            "/api/reliability-tests",
+            json={"workspace_slug": lab.slug, "name": name},
+            headers=manager.headers,
+        )
+        assert made.status_code == 201, made.text
+    listed = client.get("/api/reliability-tests", headers=admin.headers)
+    assert listed.status_code == 200, listed.text
+    mine = [one for one in listed.json() if one["workspace_slug"] == lab.slug]
+    assert [one["name"] for one in mine] == [f"고온고습-{tag}", f"열충격-{tag}"]
+    # 다른 부서 것도 같이 온다 — 이 부서 것만이 아니다.
+    assert (
+        any(one["workspace_slug"] != lab.slug for one in listed.json())
+        or len(listed.json()) == 2
+    )

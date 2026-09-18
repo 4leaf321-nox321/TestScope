@@ -10,6 +10,8 @@ from sqlalchemy import Select, func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import services as attributes
+from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import EquipmentSeries
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.methods.schemas import CitedSeriesOut, MethodOut, RequirementOut
@@ -220,6 +222,7 @@ def method_out(
         pending_series_count=pending,
         cited_series=cited_series(db, row.id) if with_series else [],
         requirements=_requirements(db, row.id),
+        attributes=attributes.values_of(db, target="method", object_ids=[row.id])[row.id],
         created_at=row.created_at,
         can_edit=_can_edit(db, viewer, row),
     )
@@ -371,6 +374,14 @@ def update(
         row.status = changes["status"]
     if "superseded_by_id" in changes:
         row.superseded_by_id = changes["superseded_by_id"]
+    if changes.get("attributes") is not None:
+        attributes.set_values(
+            db,
+            user,
+            target="method",
+            object_id=row.id,
+            items=[AttributeValueIn.model_validate(one) for one in changes["attributes"]],
+        )
 
     db.commit()
     db.refresh(row)

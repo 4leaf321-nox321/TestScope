@@ -52,6 +52,7 @@ export default function ConditionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={{ to: '/reference?kind=axis:test_item', label: '기준정보' }}
         title="시험 항목 검색 조건"
         description="온도·하중·주파수처럼 장비의 시험 조건과 규격의 요구 조건이 함께 쓰는 칸입니다. 값은 언제나 저장 단위로 담깁니다."
       />

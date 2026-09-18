@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
+
 
 class RequirementOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -61,6 +63,8 @@ class MethodOut(BaseModel):
     cited_series: list[CitedSeriesOut] = []
     """상세에서만 채운다 — 목록에서 계열까지 실으면 한 쪽이 커진다."""
     requirements: list[RequirementOut]
+    attributes: list[AttributeValueOut] = []
+    """관리자가 정의한 속성 값(「시험법 속성」)."""
     created_at: datetime
     can_edit: bool
 
@@ -84,6 +88,8 @@ class MethodUpdateRequest(BaseModel):
     summary: str | None = None
     status: str | None = Field(default=None, pattern="^(draft|active|superseded)$")
     superseded_by_id: uuid.UUID | None = None
+    attributes: list[AttributeValueIn] | None = None
+    """보내면 통째로 바뀐다."""
 
 
 class RequirementUpsertRequest(BaseModel):

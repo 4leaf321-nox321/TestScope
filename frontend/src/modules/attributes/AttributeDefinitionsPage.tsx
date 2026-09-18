@@ -51,11 +51,23 @@ import { vocabularyApi } from '@/modules/vocabulary/api'
 export const TARGET_BY_PATH: Record<string, AttributeTarget> = {
   'reliability-test': 'reliability_test',
   equipment: 'equipment',
+  'equipment-series': 'series',
+  method: 'method',
+}
+
+/** 허브에서 이 대상이 서는 줄 — 되돌아갈 때 그 줄이 골라져 있게. */
+const HUB_KIND: Record<AttributeTarget, string> = {
+  reliability_test: 'reliability_test',
+  equipment: 'equipment',
+  series: 'series',
+  method: 'method',
 }
 
 const TARGET_LABEL: Record<AttributeTarget, string> = {
   reliability_test: '신뢰성 시험',
   equipment: '보유 장비',
+  series: '장비 계열',
+  method: '시험법',
 }
 
 /** 관리자가 새로 만들 수 있는 종류 — 초안이 못 만드는 축·선택지 종류가 여기 있다. */
@@ -231,6 +243,7 @@ export default function AttributeDefinitionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={{ to: `/reference?kind=${HUB_KIND[target]}`, label: '기준정보' }}
         title={`${TARGET_LABEL[target]} 속성 정의`}
         description={`${TARGET_LABEL[target]}에 붙는 속성(고정 칸이 아닌 정보)입니다. 정식 속성은 검색·색인에 쓰이고, 초안은 값을 적은 사람이 새 이름을 쓴 것 — 건수를 보고 정식으로 올리거나 합칩니다.`}
       />

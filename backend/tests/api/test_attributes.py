@@ -321,3 +321,103 @@ def test_보유_장비에도_같은_규칙으로_속성이_붙는다(
     card = next(c for c in semantic.collect(db) if c.entity_id == made.json()["id"])
     assert f"담당 구역-{tag}: A라인 {tag}" in card.body
     assert "2021" not in card.body
+
+
+def test_장비_계열과_시험법에도_속성이_붙고_허브가_종류마다_칸을_센다(
+    client: TestClient, admin: Signed
+) -> None:
+    """모든 객체 종류에 관리자가 칸을 더할 수 있다 — 계열·규격도. 허브(/reference/overview)는
+    종류마다 저장 방식·건수·고정 칸·정의한 칸을 한 줄로 준다."""
+    tag = uuid.uuid4().hex[:6]
+    series = client.post(
+        "/api/equipment-series", json={"name": f"계열-{tag}"}, headers=admin.headers
+    ).json()
+    method = client.post(
+        "/api/methods",
+        json={"code": f"KS {tag}", "title": "규격"},
+        headers=admin.headers,
+    ).json()
+    made = client.post(
+        "/api/attribute-definitions",
+        json={"target": "series", "label": f"국내 대리점-{tag}", "kind": "text"},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+
+    patched = client.patch(
+        f"/api/equipment-series/{series['id']}",
+        json={
+            "attributes": [
+                {"definition_id": made.json()["id"], "text_value": "한국인스트론"},
+                {
+                    "new_label": f"보증 기간-{tag}",
+                    "new_kind": "number",
+                    "num_value": 2,
+                    "unit": "년",
+                },
+            ]
+        },
+        headers=admin.headers,
+    )
+    assert patched.status_code == 200, patched.text
+    shown = {one["label"]: one for one in patched.json()["attributes"]}
+    assert shown[f"국내 대리점-{tag}"]["status"] == "standard"
+    assert shown[f"보증 기간-{tag}"]["display"] == "2 년"
+
+    # 규격 속성 — 값이 규격을 가리키는 종류(method)와 대상 열이 부딪히지 않는다.
+    ref = client.post(
+        "/api/attribute-definitions",
+        json={"target": "method", "label": f"대체 규격-{tag}", "kind": "method"},
+        headers=admin.headers,
+    ).json()
+    other = client.post(
+        "/api/methods",
+        json={"code": f"KS {tag}-2", "title": "다른 규격"},
+        headers=admin.headers,
+    ).json()
+    patched = client.patch(
+        f"/api/methods/{method['id']}",
+        json={"attributes": [{"definition_id": ref["id"], "method_id": other["id"]}]},
+        headers=admin.headers,
+    )
+    assert patched.status_code == 200, patched.text
+    assert patched.json()["attributes"][0]["display"] == f"KS {tag}-2"
+    # 계열 속성 정의를 규격에 붙이면 거절.
+    wrong = client.patch(
+        f"/api/methods/{method['id']}",
+        json={"attributes": [{"definition_id": made.json()["id"], "text_value": "x"}]},
+        headers=admin.headers,
+    )
+    assert wrong.status_code == 400
+
+    hub = client.get("/api/reference/overview", headers=admin.headers)
+    assert hub.status_code == 200, hub.text
+    kinds = {one["key"]: one for one in hub.json()}
+    assert kinds["series"]["storage"] == "table" and kinds["series"]["defined_kind"] == "속성"
+    assert kinds["series"]["defined_count"] >= 1 and kinds["series"]["draft_count"] >= 1
+    assert kinds["model"]["defined_kind"] == "사양"
+    assert kinds["axis:test_item"]["storage"] == "vocabulary"
+    assert kinds["axis:test_item"]["defined_kind"] == "검색 조건"
+    assert kinds["workspace"]["defined_kind"] is None
+
+
+def test_보유_장비의_정식_속성은_설치가_심고_다시_심어도_안_겹친다(db: Session) -> None:
+    """장비 용도 · 투자 연도 · 장비 예약 URL — 현장 장비 목록의 열 중 고정 칸에 없는 셋."""
+    from sqlalchemy import select
+
+    from app.modules.attributes.models import AttributeDefinition
+    from app.modules.vocabulary.reference import ensure_equipment_attributes
+
+    ensure_equipment_attributes(db)
+    db.flush()
+    again = ensure_equipment_attributes(db)
+    assert again == 0
+    keys = {
+        d.key: d
+        for d in db.scalars(
+            select(AttributeDefinition).where(AttributeDefinition.target == "equipment")
+        )
+    }
+    assert {"equipment_purpose", "investment_year", "reservation_url"} <= set(keys)
+    assert keys["reservation_url"].status == "standard"
+    assert keys["investment_year"].kind == "number"

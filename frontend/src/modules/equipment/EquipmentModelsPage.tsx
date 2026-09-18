@@ -40,6 +40,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { catalogApi } from '@/modules/equipment/api'
 import type { EquipmentModelRow } from '@/modules/equipment/api'
 import {
@@ -145,6 +146,7 @@ export default function EquipmentModelsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
+        back={useBackFromReference()}
         title="장비 기종"
         description="보유 장비는 여기서 기종을 골라 만듭니다. 무슨 시험이 되는지는 그 기종이 속한 계열이 정합니다."
         actions={

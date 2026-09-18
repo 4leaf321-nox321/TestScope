@@ -17,6 +17,7 @@ import SearchPage from '@/modules/search/SearchPage'
 import { useAuth } from '@/shared/auth/AuthContext'
 import { ProtectedRoute } from '@/shared/auth/ProtectedRoute'
 import { Placeholder } from '@/shared/components/Placeholder'
+import { RouteError } from '@/shared/components/RouteError'
 import { AppShell } from '@/shared/layout/AppShell'
 import { DEFAULT_WORKSPACE, pendingItems } from '@/shared/layout/navigation'
 
@@ -57,12 +58,14 @@ const TestItemsCatalogPage = lazy(() => import('@/modules/test_items/TestItemsCa
 const TestItemCatalogDetailPage = lazy(
   () => import('@/modules/test_items/TestItemCatalogDetailPage'),
 )
+const ReliabilityTestsPage = lazy(() => import('@/modules/reliability/ReliabilityTestsPage'))
 const WorkspaceReliabilityPage = lazy(
   () => import('@/modules/reliability/WorkspaceReliabilityPage'),
 )
 const SignupPage = lazy(() => import('@/modules/auth/SignupPage'))
 const VocabularyAdminPage = lazy(() => import('@/modules/vocabulary/VocabularyAdminPage'))
 const VocabularyPage = lazy(() => import('@/modules/vocabulary/VocabularyPage'))
+const ReferenceHubPage = lazy(() => import('@/modules/reference/ReferenceHubPage'))
 const WorkspaceHomePage = lazy(() => import('@/modules/workspaces/WorkspaceHomePage'))
 const WorkspacesAdminPage = lazy(() => import('@/modules/workspaces/WorkspacesAdminPage'))
 
@@ -91,9 +94,11 @@ function HomeRedirect() {
 }
 
 export const router = createBrowserRouter([
-  { path: '/login', element: <LoginPage /> },
-  { path: '/signup', element: <SignupPage /> },
+  { path: '/login', element: <LoginPage />, errorElement: <RouteError /> },
+  { path: '/signup', element: <SignupPage />, errorElement: <RouteError /> },
   {
+    // **조각을 못 받으면 새로고침 한 번** — 배포 뒤 낡은 탭의 오류는 여기서 끝난다(RouteError).
+    errorElement: <RouteError />,
     element: <ProtectedRoute />,
     children: [
       { path: '/force-password-change', element: <ForcePasswordChangePage /> },
@@ -110,6 +115,7 @@ export const router = createBrowserRouter([
           { path: 'equipment/:id', element: <EquipmentDetailPage /> },
           // 부서 하나의 신뢰성 시험 — 사이드바 「신뢰성 시험」 아래 자식. 「시험 항목」
           // (카탈로그)과 다른 층이라 주소도 다르다. 모양은 navigation.ts 의 reliabilityHref 와 같다.
+          { path: 'reliability-tests', element: <ReliabilityTestsPage /> },
           { path: 'reliability-tests/:slug', element: <WorkspaceReliabilityPage /> },
 
           // 카탈로그 — 세상에 있는 것. 보유 장비가 이 둘을 엮은 인스턴스다(ADR 0004).
@@ -133,6 +139,7 @@ export const router = createBrowserRouter([
 
           // 공통
           { path: 'notices', element: <NoticesPage /> },
+          { path: 'reference', element: <ReferenceHubPage /> },
           { path: 'vocabulary', element: <VocabularyPage /> },
           { path: 'conditions', element: <ConditionsPage /> },
           { path: 'spec-definitions', element: <SpecDefinitionsPage /> },

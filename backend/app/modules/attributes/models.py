@@ -50,8 +50,10 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
 
-#: 항목이 붙는 대상. 보유 장비는 표만 준비하고 화면은 신뢰성 시험 뒤에 잇는다.
-ATTRIBUTE_TARGETS = ("reliability_test", "equipment")
+#: 속성이 붙는 대상. **모든 객체 종류에 관리자가 칸을 더할 수 있어야 한다** — 기준정보 허브가
+#: 그것을 한 표로 보여 준다. 새 대상은 여기와 AttributeValue 의 열, services._TARGET_COLUMN,
+#: 그 대상의 Out/Update 에 한 줄씩.
+ATTRIBUTE_TARGETS = ("reliability_test", "equipment", "series", "method")
 
 #: 항목 한 칸이 담는 것.
 #:
@@ -63,7 +65,7 @@ ATTRIBUTE_TARGETS = ("reliability_test", "equipment")
 #:   choice     정의가 준 선택지 중 하나. 시료 형태 = 시편 | 완제품
 #:   condition  검색 조건 축의 값.       정의의 condition_key_id 가 축, 값은 range 와 같은 칸
 #:   term       기준정보 축의 값 참조.   정의의 vocabulary_id 가 축, 값은 term_id
-#:   method     규격 참조.               값은 method_id
+#:   method     규격 참조.               값은 ref_method_id
 #:
 #: condition 을 range 와 따로 두는 이유: 같은 물리량을 검색 조건 축과 **같은 축·같은 차원**
 #: 으로 적어야 나중에 「이 절차를 돌릴 수 있는 장비」 판정이 성립한다. 문장으로 받으면 그
@@ -96,7 +98,10 @@ class AttributeDefinition(Base):
             unique=True,
             postgresql_where=text("is_active"),
         ),
-        CheckConstraint("target IN ('reliability_test','equipment')", name="target"),
+        CheckConstraint(
+            "target IN ('reliability_test','equipment','series','method')",
+            name="target",
+        ),
         CheckConstraint("status IN ('draft','standard')", name="status"),
     )
 
@@ -164,7 +169,8 @@ class AttributeValue(Base):
     __tablename__ = "attribute_values"
     __table_args__ = (
         CheckConstraint(
-            "(reliability_test_id IS NOT NULL)::int + (equipment_id IS NOT NULL)::int = 1",
+            "(reliability_test_id IS NOT NULL)::int + (equipment_id IS NOT NULL)::int"
+            " + (series_id IS NOT NULL)::int + (method_id IS NOT NULL)::int = 1",
             name="one_target",
         ),
         Index(
@@ -180,6 +186,20 @@ class AttributeValue(Base):
             "definition_id",
             unique=True,
             postgresql_where=text("equipment_id IS NOT NULL"),
+        ),
+        Index(
+            "uq_attribute_values_series",
+            "series_id",
+            "definition_id",
+            unique=True,
+            postgresql_where=text("series_id IS NOT NULL"),
+        ),
+        Index(
+            "uq_attribute_values_method",
+            "method_id",
+            "definition_id",
+            unique=True,
+            postgresql_where=text("method_id IS NOT NULL"),
         ),
     )
 
@@ -203,6 +223,20 @@ class AttributeValue(Base):
         nullable=True,
         index=True,
     )
+    series_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("equipment_series.id", ondelete="CASCADE"),
+        nullable=True,
+        index=True,
+    )
+    method_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        ForeignKey("test_methods.id", ondelete="CASCADE"),
+        nullable=True,
+        index=True,
+    )
+    """규격 속성의 대상. 값의 `method_id`(kind=method 참조)와는 다른 열 — 하나는 「어느 규격에
+    붙은 값인가」, 하나는 「값이 가리키는 규격」 이다."""
 
     num_value: Mapped[float | None] = mapped_column(Float, nullable=True)
     num_min: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -217,11 +251,12 @@ class AttributeValue(Base):
         ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
         nullable=True,
     )
-    method_id: Mapped[uuid.UUID | None] = mapped_column(
+    ref_method_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("test_methods.id", ondelete="RESTRICT"),
         nullable=True,
     )
+    """kind=method 값이 가리키는 규격. 대상 열 `method_id`(이 값이 붙은 규격)와 다르다."""
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
     """수치로 못 담는 단서. 「챔버 장착 시」 「시료 5개 기준」."""
 

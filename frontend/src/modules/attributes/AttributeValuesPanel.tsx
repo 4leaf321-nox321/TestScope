@@ -25,7 +25,8 @@ import type {
 } from '@/modules/attributes/api'
 
 export function AttributeValuesList({ values }: { values: AttributeValue[] }) {
-  if (values.length === 0) {
+  // 응답 스키마가 기본값 [] 라 없을 수 없지만, 오래된 응답을 그린 화면이 죽지는 않게.
+  if (!values || values.length === 0) {
     return <p className="text-muted-foreground text-sm">적힌 속성이 없습니다.</p>
   }
   return (
@@ -44,7 +45,19 @@ export function AttributeValuesList({ values }: { values: AttributeValue[] }) {
             )}
           </dt>
           <dd className="text-sm">
-            {one.display || '—'}
+            {/* 주소는 링크로 — 「장비 예약 URL」 을 복사해 붙이게 하지 않는다. */}
+            {/^https?:\/\//i.test(one.display) ? (
+              <a
+                href={one.display}
+                target="_blank"
+                rel="noreferrer"
+                className="text-primary underline break-all"
+              >
+                {one.display}
+              </a>
+            ) : (
+              one.display || '—'
+            )}
             {one.note && (
               <span className="text-muted-foreground ml-1 text-xs">({one.note})</span>
             )}

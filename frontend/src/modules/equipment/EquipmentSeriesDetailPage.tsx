@@ -37,6 +37,7 @@ import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { ConditionKey } from '@/modules/vocabulary/api'
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
+import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
 import type { EquipmentSeries } from '@/modules/equipment/api'
 import { propertyApi } from '@/modules/properties/api'
@@ -229,6 +230,25 @@ export default function EquipmentSeriesDetailPage() {
         setNewItem={setNewItem}
         act={act}
       />
+
+      <section className="space-y-3">
+        <div>
+          <h2 className="text-base font-semibold">속성</h2>
+          <p className="text-muted-foreground mt-1 text-sm">
+            고정 칸이 아닌 정보 — 「장비 계열 속성」 에서 정의한 칸과, 여기서 새 이름으로 적은
+            초안.
+          </p>
+        </div>
+        <AttributeValuesPanel
+          target="series"
+          values={one.attributes ?? []}
+          canEdit={one.can_edit}
+          onSave={async (attributes) => {
+            await seriesApi.update(one.id, { attributes })
+            series.reload()
+          }}
+        />
+      </section>
 
       <section className="space-y-3">
         <div>

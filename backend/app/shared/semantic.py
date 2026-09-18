@@ -342,6 +342,7 @@ def _series_cards(db: Session) -> list[Chunk]:
         ORDER BY s.name
         """)
     ).all()
+    attributes = _standard_attributes(db, "series_id")
     made: list[Chunk] = []
     for series_id, name, name_ko, summary, maker, category in rows:
         sid = str(series_id)
@@ -354,6 +355,7 @@ def _series_cards(db: Session) -> list[Chunk]:
                 _listed("되는 시험", tests.get(sid, [])),
                 _listed("인용 규격", standards.get(sid, [])),
                 _listed("기종", models.get(sid, [])),
+                *attributes.get(sid, []),
                 f"소개: {summary}" if summary else "",
             ],
         )
@@ -402,6 +404,7 @@ def _method_cards(db: Session) -> list[Chunk]:
         ORDER BY m.code
         """)
     ).all()
+    attributes = _standard_attributes(db, "method_id")
     made: list[Chunk] = []
     for method_id, code, edition, title, summary, test_item in rows:
         label = f"{code} {title}" if title and title != code else code
@@ -410,6 +413,7 @@ def _method_cards(db: Session) -> list[Chunk]:
             [
                 f"판: {edition}" if edition else "",
                 f"시험 항목: {test_item}" if test_item else "",
+                *attributes.get(str(method_id), []),
                 f"요약: {summary}" if summary else "",
             ],
         )
@@ -481,7 +485,7 @@ def _equipment_cards(db: Session) -> list[Chunk]:
 def _standard_attributes(db: Session, column: str) -> dict[str, list[str]]:
     """대상마다 **정식 속성**의 「이름: 값」 줄. 초안은 표시와 수집용이라 카드에 넣지 않는다 —
     초안이 쌓여도 검색 품질이 흔들리지 않아야 한다(attributes/models.py)."""
-    assert column in ("reliability_test_id", "equipment_id")
+    assert column in ("reliability_test_id", "equipment_id", "series_id", "method_id")
     rows = db.execute(
         text(f"""
         SELECT v.{column}, d.label, d.kind, v.num_value, v.num_min, v.num_max,
@@ -489,7 +493,7 @@ def _standard_attributes(db: Session, column: str) -> dict[str, list[str]]:
         FROM attribute_values v
         JOIN attribute_definitions d ON d.id = v.definition_id AND d.status = 'standard'
         LEFT JOIN vocabulary_terms t ON t.id = v.term_id
-        LEFT JOIN test_methods m ON m.id = v.method_id
+        LEFT JOIN test_methods m ON m.id = v.ref_method_id
         WHERE v.{column} IS NOT NULL
         ORDER BY d.sort_order, d.label
         """)

@@ -23,6 +23,7 @@ from typing import NamedTuple
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.modules.attributes.models import AttributeDefinition
 from app.modules.vocabulary.models import ConditionKey, Vocabulary
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 
@@ -759,9 +760,63 @@ class ReferenceCounts(NamedTuple):
     #: 이미 있던 정의에 축을 이어 준 수 · 문장을 구간으로 바꾼 값의 수.
     linked_definitions: int = 0
     converted_values: int = 0
+    #: 보유 장비의 정식 속성 중 새로 심은 수.
+    attributes: int = 0
 
 
 _NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
+
+
+#: 보유 장비의 **정식 속성** — 고정 칸에 없는 것만. 현장 장비 목록의 열(중분류·소분류·장비명·
+#: 장비 용도·보유처·건물·설치 위치·담당자·자산번호·투자년도·예약 URL, 2026-09-18) 중 나머지는
+#: 고정 칸이 이미 갖는다: 중분류·소분류 = 장비 분류의 군·유형, 장비명 = 장비명, 보유처 = 보유
+#: 부서, 건물 = 거점, 설치 위치 = 설치 위치, 담당자 = 담당자, 자산번호 = 자산번호. 투자년도는
+#: 도입일과 다른 물음(예산 집행 연도)이라 따로 둔다. 없을 때만 심는다 — 관리자가 끄거나 이름을
+#: 바꾼 것을 설치가 되돌리면 안 된다.
+#:
+#:   (key, label, kind, unit, help, sort_order)
+EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
+    ("equipment_purpose", "장비 용도", "text", "", "이 장비로 무엇을 하나 — 한두 문장.", 1),
+    (
+        "investment_year",
+        "투자 연도",
+        "number",
+        "",
+        "예산이 집행된 해. 도입일(실제 들어온 날)과 다를 수 있다.",
+        2,
+    ),
+    (
+        "reservation_url",
+        "장비 예약 URL",
+        "text",
+        "",
+        "예약 시스템의 주소. http 로 시작하면 화면이 링크로 그린다.",
+        3,
+    ),
+)
+
+
+def ensure_equipment_attributes(db: Session) -> int:
+    """보유 장비의 정식 속성을 심는다 — key 로 찾아 없는 것만."""
+    known = set(db.scalars(select(AttributeDefinition.key)))
+    added = 0
+    for key, label, kind, unit, help_text, order in EQUIPMENT_ATTRIBUTES:
+        if key in known:
+            continue
+        db.add(
+            AttributeDefinition(
+                target="equipment",
+                key=key,
+                label=label,
+                kind=kind,
+                unit=unit,
+                status="standard",
+                help=help_text,
+                sort_order=order,
+            )
+        )
+        added += 1
+    return added
 
 
 def _text_to_range(text: str) -> tuple[float, float, str | None] | None:
@@ -931,9 +986,16 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
         added_definitions += 1
 
     db.flush()
+    added_attributes = ensure_equipment_attributes(db)
     linked, converted = converge_spec_definitions(db)
 
     db.commit()
     return ReferenceCounts(
-        added_axes, added_keys, added_groups, added_definitions, linked, converted
+        added_axes,
+        added_keys,
+        added_groups,
+        added_definitions,
+        linked,
+        converted,
+        added_attributes,
     )

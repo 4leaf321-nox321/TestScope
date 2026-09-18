@@ -20,6 +20,8 @@ export const reliabilityApi = {
     api.get<ReliabilityTest[]>(
       `/reliability-tests?workspace=${encodeURIComponent(workspace)}`,
     ),
+  /** 전사 전부 — 부서 순. 「누가 무슨 시험을 하나」 를 가로질러 본다. */
+  listAll: () => api.get<ReliabilityTest[]>('/reliability-tests'),
   read: (id: string) => api.get<ReliabilityTest>(`/reliability-tests/${id}`),
   create: (workspace: string, body: ReliabilityTestWrite) =>
     api.post<ReliabilityTest>('/reliability-tests', { workspace_slug: workspace, ...body }),
