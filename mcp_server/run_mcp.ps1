@@ -1,7 +1,8 @@
 ﻿Param(
     [int]$Port = 0,
     [string]$ApiBase,
-    [switch]$Stdio
+    [switch]$Stdio,
+    [switch]$ReadOnly
 )
 <#
 개발 중 MCP 서버 기동.
@@ -23,6 +24,7 @@ un_mcp.ps1 -Port 8031        다른 포트로
 un_mcp.ps1 -ApiBase '...'    백엔드 주소를 직접
     .
 un_mcp.ps1 -Stdio            개인 연결(stdio) — HTTP 대신
+    -ReadOnly 를 주면 읽기 도구만 싣는다(39개 · 목록 절반).
 #>
 
 $ErrorActionPreference = 'Stop'
@@ -57,6 +59,11 @@ if (-not $ApiBase) {
 }
 $env:TESTSCOPE_API_BASE = $ApiBase
 Write-Host "백엔드: $ApiBase"
+
+# 도구 목록은 매 턴 통째로 실린다 — 읽기만 쓰는 연결에 쓰기 도구 스물넷을 보여 줄
+# 이유가 없다(어차피 범위가 없으면 403 이다).
+$env:TESTSCOPE_MCP_TOOLS = if ($ReadOnly) { 'read' } else { 'all' }
+if ($ReadOnly) { Write-Host '도구: 읽기만' }
 
 if ($Stdio) {
     & $venvPython (Join-Path $here 'server.py')

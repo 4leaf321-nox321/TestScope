@@ -38,17 +38,66 @@ API_BASE = os.environ.get("TESTSCOPE_API_BASE", "http://127.0.0.1:8021/api").rst
 #: 호출이 수만 자가 되어 대화가 끊긴다.
 MAX_LIMIT = 50
 
+#: 무엇을 싣나 — `all`(기본) · `read`(읽기만).
+#:
+#: **도구 목록은 매 턴 통째로 실린다.** 예순 개가 넘으면 그것만으로 수만 자이고, 그만큼
+#: 대화가 짧아진다(실측: 전부 48,000자 · 읽기만 22,000자). 읽기 전용 토큰을 쓰는 사람에게
+#: 쓰기 도구 스물다섯을 보여 줄 이유가 없다 — 어차피 403 이다. 그래서 **부를 수 없는 것은
+#: 아예 안 싣는다**: 고르는 일이 쉬워지고 자리도 는다.
+#:
+#: 기본을 `all` 로 두는 이유: 켜는 것을 잊으면 「그 도구가 없다」 가 되고, 없는 것과 안
+#: 실은 것을 쓰는 쪽에서는 구별할 수 없다.
+TOOL_PROFILE = os.environ.get("TESTSCOPE_MCP_TOOLS", "all").strip().lower()
+READ_ONLY = TOOL_PROFILE == "read"
+
 GUIDE_PATH = Path(__file__).parent / "guide" / "GUIDE.md"
+
+#: 물음 -> 첫 도구. **도구가 예순 개가 넘으면 이름을 훑어 고르는 것이 안 된다** —
+#: 비슷한 이름이 여럿이라(search_test_items · search_catalog · search_semantic) 고르는
+#: 데 실패하면 그 다음 행동이 통째로 틀린다. 그래서 「무엇을 물었나」 로 들어가는 문을
+#: 하나 둔다. 이 글은 도구 목록과 함께 **항상** 실리므로 짧아야 한다 — 줄마다 첫 도구
+#: 하나씩이고, 나머지는 그 도구의 설명과 get_guide(주제) 가 말한다.
+ROUTING = """무엇을 물었나 -> 여기서 시작한다 (자세한 것은 그 도구의 설명과 get_guide):
+
+  이 시험 되는 장비 있나      search_test_items   (물성으로 물으면 search_properties 먼저)
+  이 규격/조건으로 되나        search_test_items(conditions=…) · list_conditions
+  말로만 아는 것을 찾기         resolve · search_semantic · graph_search
+  이름 하나를 id 로            resolve (계열·기종·값·규격·시험·장비·부서 전부)
+  우리 부서 시험 절차           list_reliability_tests · test_capability
+  장비 대장 넣기               import_equipment (한 대면 register_equipment)
+  장비 한 대 고치기            get_equipment · update_equipment · add_equipment_test_item
+  계열/기종/사양 채우기         search_series · search_models · get_specs · set_spec
+  이 값을 어디 적나            list_reference · list_axes · list_terms
+  무슨 칸을 적을 수 있나        list_attribute_definitions
+  무엇이 무엇과 이어지나        graph_search -> graph_node
+  사람이 정할 것이 뭐가 남았나   list_review_queues (확정은 사람이 화면에서)
+  어디부터 채우나              list_pending_work"""
 
 mcp = MCPServer(
     name="testscope",
     instructions=(
         "TestScope 시험 장비 지도. 「이 시험이 가능한 장비가 우리 조직에 있나」 에"
         " 답한다. 카탈로그는 계열(무슨 시험이 되나)과 기종(어디까지 되나) 두 층이고,"
-        " 보유 장비는 기종을 가리킨다. 먼저 get_guide() 를 읽어라 — 특히 「만들기"
-        " 전에 resolve 로 찾는다」 와 「모르면 비운다」 는 규약이 있다."
+        " 보유 장비는 기종을 가리킨다. 규약 둘이 모든 도구에 걸린다 — **만들기 전에"
+        " resolve 로 찾는다**, **모르면 비운다**(지어낸 값은 검색이 「됩니다」 로"
+        " 답한다). 처음이면 get_guide() 를 읽어라.\n\n" + ROUTING
     ),
 )
+
+
+# ── 도구 등록 ─────────────────────────────────────────────────────────────────
+
+
+def writes(func: Any) -> Any:
+    """**바꾸는 도구**임을 표시한다. `TESTSCOPE_MCP_TOOLS=read` 면 안 싣는다.
+
+    표시를 빠뜨리면 읽기 전용 프로필에서도 그 도구가 실리고, 부르면 403 이 온다 — 그
+    403 은 「범위가 없다」 로 읽혀 사람이 토큰을 다시 만들게 만든다. 그래서 새 쓰기
+    도구에는 반드시 붙인다(`tests/architecture/test_mcp_tools.py` 가 본다).
+    """
+    if READ_ONLY:
+        return func
+    return mcp.tool()(func)
 
 
 # ── 백엔드 호출 ────────────────────────────────────────────────────────────────
@@ -171,19 +220,84 @@ def _listed(payload: object, key: str) -> dict[str, object]:
 # ── 안내 ──────────────────────────────────────────────────────────────────────
 
 
-@mcp.tool()
-def get_guide() -> str:
-    """**무엇을 하기 전에 이것을 먼저 읽어라.**
-
-    카탈로그의 두 층(계열·기종), 「만들기 전에 찾는다」 규약, 모르는 값을 다루는
-    방법이 적혀 있다. 서버가 파일을 매 호출 읽으므로 안내를 고치면 재시작 없이
-    반영된다 — 클라이언트 쪽에 복사해 두면 고쳐도 옛 사본을 쓰는 사람에게는
-    전달되지 않는다.
-    """
+def _guide_text() -> str:
     try:
         return GUIDE_PATH.read_text(encoding="utf-8")
     except OSError as failed:
         return f"안내를 읽지 못했습니다({GUIDE_PATH}): {failed}"
+
+
+def _sections(text: str) -> list[tuple[str, str]]:
+    """`## 제목` 으로 자른 조각들. 머리말은 제목 없이 맨 앞에 둔다."""
+    out: list[tuple[str, str]] = []
+    title = ""
+    lines: list[str] = []
+    for line in text.splitlines():
+        if line.startswith("## "):
+            out.append((title, "\n".join(lines).strip()))
+            title = line[3:].strip()
+            lines = []
+        else:
+            lines.append(line)
+    out.append((title, "\n".join(lines).strip()))
+    return [one for one in out if one[1]]
+
+
+def _matches(topic: str, title: str) -> bool:
+    """대목 이름을 **사람이 부르는 말로** 찾게 한다.
+
+    제목은 문장이라(「장비를 등록할 때 — 비울 수 없는 것이 있다」) 글자 그대로 물으면
+    아무도 못 맞힌다. 「장비 등록」 처럼 조각으로 물어도 걸리게, 물은 말의 낱말이 전부
+    제목 안에 있으면 그 대목으로 본다. 못 맞히면 안내가 통째로 안 읽히고, 그러면
+    규약(만들기 전에 찾는다 · 모르면 비운다)이 전달되지 않는다.
+    """
+    lowered = title.casefold()
+    words = [one for one in topic.casefold().split() if one]
+    if not words:
+        return False
+    if all(one in lowered for one in words):
+        return True
+    # 「장비 등록」 vs 「장비를 등록할 때」 — 조사·어미가 붙어 낱말이 그대로는 안 맞는다.
+    # **낱말이 둘 이상일 때만** 느슨하게 본다: 한 낱말로 느슨하게 맞히면 「없는것」 이
+    # 「비울 수 없는 것」 에 걸려, 엉뚱한 대목을 조용히 돌려준다.
+    if len(words) < 2:
+        return False
+    return all(len(one) >= 2 and one[:2] in lowered for one in words)
+
+
+@mcp.tool()
+def get_guide(topic: str | None = None) -> str:
+    """**무엇을 하기 전에 이것을 먼저 읽어라.** 그다음엔 필요한 대목만.
+
+    `topic` 없이 부르면 머리말(이 시스템이 답하는 물음 · 세 층 · 규약 넷)과 **대목의
+    목록**이 온다. 대목 이름의 한 조각을 `topic` 으로 주면 그 대목만 온다 —
+    `get_guide("장비 등록")` · `get_guide("기준정보")` · `get_guide("권한")`.
+
+    통째로 받고 싶으면 `topic="전부"`. 안내는 길어서(수천 자) 매번 다 받으면 정작
+    도구를 부를 자리가 줄어든다 — 그래서 대목으로 나눠 준다.
+
+    서버가 파일을 매 호출 읽으므로 안내를 고치면 재시작 없이 반영된다 — 클라이언트
+    쪽에 복사해 두면 고쳐도 옛 사본을 쓰는 사람에게는 전달되지 않는다.
+    """
+    text = _guide_text()
+    if text.startswith("안내를 읽지"):
+        return text
+    if topic in ("전부", "all", "*"):
+        return text
+    sections = _sections(text)
+    if topic:
+        found = [body for title, body in sections if _matches(topic, title)]
+        if found:
+            return "\n\n".join(found)
+        titles = " · ".join(title for title, _ in sections if title)
+        return f"「{topic}」 라는 대목이 없습니다. 있는 대목: {titles}"
+    # 머리말 + 대목 목록 — 어디를 더 읽을지 고르는 데 필요한 만큼만.
+    head = sections[0][1] if sections and not sections[0][0] else ""
+    intro = [body for title, body in sections if title in ("층이 셋이다", "규약 넷")]
+    titles = "\n".join(f"  {title}" for title, _ in sections if title)
+    return "\n\n".join(
+        [head, *intro, f'더 읽을 대목 — get_guide("이름의 한 조각"):\n{titles}']
+    )
 
 
 # ── 찾기 ──────────────────────────────────────────────────────────────────────
@@ -196,12 +310,13 @@ async def resolve(
     text: str,
     axis: str | None = None,
     maker: str | None = None,
+    workspace: str | None = None,
 ) -> dict[str, Any]:
-    """이름으로 계열·기종·기준정보 값·시험법을 찾는다. **만들기 전에 반드시 부른다.**
+    """이름 하나를 id 로. **만들거나 고치기 전에 반드시 부른다.**
 
-    `kind` 는 `series` · `model` · `term` · `method` 중 하나. `term` 이면 `axis` 를
-    함께 준다(manufacturer · equipment_category · test_item · property · site ·
-    standard_body). `property` 는 별칭까지 찾는다 — 「항복강도」·「Rp0.2」 로 쳐도 된다.
+    `kind` — `series` · `model` · `term`(+`axis`) · `method` · `reliability_test` ·
+    `equipment` · `workspace`. `term` 의 축은 manufacturer · equipment_category ·
+    test_item · property · site · standard_body 이고, 별칭까지 찾는다(「Rp0.2」 로 쳐도 된다).
 
     응답의 `match` 가 셋이다.
 
@@ -209,13 +324,24 @@ async def resolve(
         candidates  여럿이다. **고르지 말고 사람에게 묻는다**
         none        없다. 새로 만들거나 비워 둔다 — **지어내지 않는다**
 
+    **부서가 가진 것은 이름이 겹친다.** 「고온고습 1000h」 는 거의 모든 부서에 하나씩
+    있으므로 이름이 같아도 둘이면 `candidates` 다 — `workspace`(slug)를 함께 주면 하나로
+    줄어든다. slug 를 모르면 `resolve(kind="workspace", …)` 로 먼저 찾는다. 장비는
+    자산번호가 유일해서 그것만 exact 이고, 이름은 대개 여럿이다.
+
     못 찾은 것은 실패가 아니다. `hint` 에 다음에 할 일이 한 줄로 적혀 있다.
     """
     return await _send(
         ctx,
         "POST",
         "/resolve",
-        {"kind": kind, "text": text, "axis": axis, "maker": maker},
+        {
+            "kind": kind,
+            "text": text,
+            "axis": axis,
+            "maker": maker,
+            "workspace": workspace,
+        },
     )
 
 
@@ -423,7 +549,7 @@ async def get_series(ctx: Context, series_id: str) -> dict[str, Any]:
     return await _get(ctx, f"/equipment-series/{series_id}")
 
 
-@mcp.tool()
+@writes
 async def create_series(
     ctx: Context,
     name: str,
@@ -459,7 +585,7 @@ async def create_series(
     )
 
 
-@mcp.tool()
+@writes
 async def add_test_item(
     ctx: Context,
     series_id: str,
@@ -564,7 +690,7 @@ async def search_models(
     )
 
 
-@mcp.tool()
+@writes
 async def create_model(
     ctx: Context,
     name: str,
@@ -644,7 +770,7 @@ async def get_model(ctx: Context, model_id: str) -> dict[str, Any]:
     return await _get(ctx, f"/equipment-models/{model_id}")
 
 
-@mcp.tool()
+@writes
 async def set_spec(
     ctx: Context,
     model_id: str,
@@ -744,7 +870,7 @@ async def get_equipment(ctx: Context, equipment_id: str) -> dict[str, Any]:
     return await _get(ctx, f"/equipment/{equipment_id}")
 
 
-@mcp.tool()
+@writes
 async def import_equipment(
     ctx: Context,
     text: str,
@@ -801,7 +927,7 @@ async def import_columns(ctx: Context) -> dict[str, Any]:
     return _listed(await _get(ctx, "/equipment/import/columns"), "columns")
 
 
-@mcp.tool()
+@writes
 async def register_equipment(
     ctx: Context,
     asset_no: str,
@@ -915,7 +1041,7 @@ async def get_equipment_specs(ctx: Context, equipment_id: str) -> dict[str, Any]
     return await _get(ctx, f"/equipment/{equipment_id}/specs")
 
 
-@mcp.tool()
+@writes
 async def set_equipment_spec(
     ctx: Context,
     equipment_id: str,
@@ -964,7 +1090,7 @@ async def set_equipment_spec(
     )
 
 
-@mcp.tool()
+@writes
 async def add_equipment_test_item(
     ctx: Context,
     equipment_id: str,
@@ -1006,7 +1132,7 @@ async def add_equipment_test_item(
     )
 
 
-@mcp.tool()
+@writes
 async def set_test_condition(
     ctx: Context,
     equipment_test_item_id: str,
@@ -1059,7 +1185,7 @@ async def set_test_condition(
     )
 
 
-@mcp.tool()
+@writes
 async def update_equipment(
     ctx: Context,
     equipment_id: str,
@@ -1104,7 +1230,7 @@ async def update_equipment(
     )
 
 
-@mcp.tool()
+@writes
 async def add_calibration(
     ctx: Context,
     equipment_id: str,
@@ -1217,7 +1343,7 @@ async def get_test_item(ctx: Context, test_item_term_id: str) -> dict[str, Any]:
     return await _get(ctx, f"/test-items/{test_item_term_id}")
 
 
-@mcp.tool()
+@writes
 async def set_test_item_axes(
     ctx: Context, test_item_term_id: str, condition_key_ids: list[str]
 ) -> dict[str, Any]:
@@ -1277,7 +1403,7 @@ async def list_methods(
     )
 
 
-@mcp.tool()
+@writes
 async def set_method_test_item(
     ctx: Context, method_id: str, test_item_term_id: str
 ) -> dict[str, Any]:
@@ -1299,7 +1425,7 @@ async def get_method(ctx: Context, method_id: str) -> dict[str, Any]:
     return await _get(ctx, f"/methods/{method_id}")
 
 
-@mcp.tool()
+@writes
 async def import_requirements(ctx: Context, text: str, dry_run: bool = True) -> dict[str, Any]:
     """규격의 **요구 조건을 표로** 넣는다 — 규격서를 보고 적은 것을 통째로.
 
@@ -1325,7 +1451,7 @@ async def import_requirements(ctx: Context, text: str, dry_run: bool = True) -> 
 # ── 물성 연결 — 묶음 확인 ─────────────────────────────────────────────────────
 
 
-@mcp.tool()
+@writes
 async def confirm_property_links(
     ctx: Context, link_ids: list[str], status: str = "confirmed"
 ) -> dict[str, Any]:
@@ -1346,7 +1472,7 @@ async def confirm_property_links(
 # ── 이 기종만의 사양 — 정의 없이 붙는 값 ───────────────────────────────────────
 
 
-@mcp.tool()
+@writes
 async def add_free_spec(
     ctx: Context,
     model_id: str,
@@ -1379,7 +1505,7 @@ async def add_free_spec(
     )
 
 
-@mcp.tool()
+@writes
 async def promote_free_spec(
     ctx: Context,
     model_id: str,
@@ -1416,6 +1542,110 @@ async def promote_free_spec(
     )
 
 
+# ── 기준정보 — 축과 값 ────────────────────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_reference(ctx: Context) -> dict[str, Any]:
+    """**이 시스템의 기준정보가 무엇인가** — 객체 종류마다 한 줄.
+
+    종류(시험 항목·물성·장비 계열·기종·보유 장비·신뢰성 시험 …)마다 저장 방식(축의 값인지
+    제 표를 가진 객체인지) · 건수 · 고정 칸 · 관리자가 정의한 칸(검색 조건·사양·속성)이 온다.
+    **무엇을 어디에 적어야 하는지 모를 때 여기부터 본다** — 「이 값은 축에 더하는 것인가,
+    객체로 만드는 것인가」 의 답이 여기 있다.
+    """
+    return _listed(await _get(ctx, "/reference/overview"), "kinds")
+
+
+@mcp.tool()
+async def list_axes(ctx: Context) -> dict[str, Any]:
+    """기준정보 **축**의 목록 — slug · 이름 · 소속 · 값 수 · 등록 정책.
+
+    `entry_policy` 가 `open` 이면 값은 **누구나 더한다**(`create_term`). `closed` 면 시스템
+    관리자만 — 제정기관·조건처럼 뜻이 계약인 축이다. 값이 0인 축은 아직 아무도 안 채운
+    축이고, 거기에 값을 넣으면 그 축을 쓰는 화면이 그날부터 답을 한다.
+    """
+    return _listed(await _get(ctx, "/vocabularies"), "axes")
+
+
+@mcp.tool()
+async def list_terms(
+    ctx: Context, axis: str, q: str | None = None, include_inactive: bool = False
+) -> dict[str, Any]:
+    """한 축의 값 — 이름 · 코드 · 별칭 · 상위 값 · 상태.
+
+    `axis` 는 `list_axes` 의 slug(`test_item` · `property` · `site` ·
+    `equipment_category` · `maker` · `standard_body` …). **값을 만들기 전에 이걸로
+    찾는다** — 같은 뜻의 값이 이미 있는데 새로 만들면 검색이 절반만 답한다. 이름이
+    갈릴 것 같으면 `resolve(kind="term", axis=…)` 가 별칭까지 본다.
+    """
+    return _listed(
+        await _get(
+            ctx,
+            f"/vocabularies/{axis}/terms",
+            {"q": q, "include_inactive": "true" if include_inactive else None},
+        ),
+        "terms",
+    )
+
+
+@writes
+async def create_term(
+    ctx: Context,
+    axis: str,
+    value: str,
+    code: str | None = None,
+    parent_term_id: str | None = None,
+) -> dict[str, Any]:
+    """기준정보 값 하나를 더한다. **만들기 전에 반드시 찾는다.**
+
+    `resolve(kind="term", axis=…, name=…)` 나 `list_terms` 로 먼저 보고, 같은 뜻의 값이
+    있으면 **그것을 쓴다**. 이미 있는 이름이면 409 가 오는데 그것은 실패가 아니라 답이다
+    — 별칭까지 보고 막으므로, 409 가 오면 그 값의 id 를 쓰면 된다.
+
+    `code` 는 정본·반입이 거는 이름이다(시험 항목의 `tensile` 처럼). **모르면 비운다** —
+    지어내면 다음 반입이 다른 코드로 같은 값을 또 만든다. `parent_term_id` 는 계층이
+    있는 축(장비 분류의 군 → 유형)에서만.
+
+    `entry_policy` 가 `closed` 인 축(제정기관·조건 …)은 시스템 관리자만 더할 수 있다 —
+    거절되면 사람에게 넘긴다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        f"/vocabularies/{axis}/terms",
+        {"value": value, "code": code, "parent_term_id": parent_term_id},
+    )
+
+
+@writes
+async def add_term_alias(ctx: Context, term_id: str, value: str) -> dict[str, Any]:
+    """기준정보 값에 **다른 이름**을 붙인다. 시스템 관리자.
+
+    별칭은 찾기(`resolve`)가 이름보다 먼저 보는 것이라, 「thermal shock」 으로 물어도
+    「열충격」 을 찾게 만든다. **같은 축의 다른 값이 쓰는 표기는 못 붙인다**(409) — 그러면
+    한 이름이 두 값을 가리켜 찾기가 갈린다. 실제로 갈려 들어온 표기만 붙이고, 있을 법한
+    표기를 지어 붙이지 않는다.
+    """
+    return await _send(ctx, "POST", f"/vocabularies/terms/{term_id}/aliases", {"value": value})
+
+
+@writes
+async def merge_terms(ctx: Context, term_id: str, into_term_id: str) -> dict[str, Any]:
+    """같은 뜻으로 갈린 값 둘을 하나로. 시스템 관리자.
+
+    `term_id` 의 쓰임이 `into_term_id` 로 옮겨 가고, 원래 이름은 **별칭으로 남는다** —
+    지우지 않는 이유는 같은 오타가 또 들어오는 것을 막기 위해서다.
+
+    **사람이 「이 둘은 같은 것」 이라고 말했을 때만** 부른다. 비슷해 보인다는 이유로 합치면
+    (「인장」 과 「고온 인장」) 서로 다른 시험이 한 줄이 되고, 그 뒤로는 갈랐던 사실조차
+    안 남는다. 먼저 `get_term_references` 로 무엇이 옮겨 가는지 보여 주고 확인받는다.
+    """
+    return await _send(
+        ctx, "POST", f"/vocabularies/terms/{term_id}/merge", {"target_term_id": into_term_id}
+    )
+
+
 # ── 기준정보 — 쓰임과 연결 해제 ──────────────────────────────────────────────
 
 
@@ -1427,7 +1657,7 @@ async def get_term_references(ctx: Context, term_id: str) -> dict[str, Any]:
     return _listed(await _get(ctx, f"/vocabularies/terms/{term_id}/references"), "groups")
 
 
-@mcp.tool()
+@writes
 async def detach_term_reference(
     ctx: Context,
     term_id: str,
@@ -1451,6 +1681,306 @@ async def detach_term_reference(
     return await _send(
         ctx, "DELETE", f"/vocabularies/terms/{term_id}/references/{kind}/{row_id}"
     )
+
+
+# ── 신뢰성 시험 — 부서가 수행하는 절차 ────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_reliability_tests(
+    ctx: Context, workspace: str | None = None, attr: list[str] | None = None
+) -> dict[str, Any]:
+    """부서가 수행하는 **신뢰성 시험**(고온고습 1000h · 열충격 500 cycle …).
+
+    「시험 항목」(장비가 하는 측정 — 인장·경도)과 **다른 층**이다: 신뢰성 시험 하나가 시험
+    항목 하나 이상을 써서 돌고, 그 항목이 장비로 이어진다. `workspace` 를 주면 그 부서 것만,
+    안 주면 전사 전부 — 「저 부서는 무슨 시험을 하나」 를 가로질러 본다.
+
+    줄마다 쓰는 시험 항목과 **그 항목이 되는 그 부서 장비 수**가 온다. 0 이면 시험은 정했는데
+    돌릴 장비가 그 부서에 없다는 뜻이다(다른 부서에는 있을 수 있다 — `test_capability`).
+
+    `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
+    (`["temp_x>=100"]`). 여러 개면 **모두** 만족해야 한다.
+    """
+    return _listed(
+        await _get(ctx, "/reliability-tests", {"workspace": workspace, "attr": attr}),
+        "tests",
+    )
+
+
+@mcp.tool()
+async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
+    """신뢰성 시험 하나 — 목적 · 쓰는 시험 항목 · 속성 값 전부.
+
+    속성의 `status` 가 `draft` 면 **초안**이다: 표시와 수집만 하고 검색·판정·색인 카드에는
+    안 들어간다. 초안 값을 근거로 「이 조건으로 검색됩니다」 라고 말하지 마라.
+    """
+    return await _get(ctx, f"/reliability-tests/{test_id}")
+
+
+@writes
+async def create_reliability_test(
+    ctx: Context,
+    workspace_slug: str,
+    name: str,
+    purpose: str = "",
+    test_item_term_ids: list[str] | None = None,
+    attributes: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """신뢰성 시험 하나를 등록한다. **그 부서의 관리자**(또는 시스템 관리자)만.
+
+    먼저 `resolve(kind="reliability_test", text=…, workspace=…)` 로 **같은 시험이 이미
+    있는지** 본다. 부서마다 같은 이름이 있는 표라, 안 보고 만들면 한 부서에 「고온고습
+    1000h」 가 둘이 되고 그 뒤로는 어느 쪽이 정본인지 아무도 모른다.
+
+    `test_item_term_ids` 는 이 시험이 쓰는 **시험 항목**의 값 id 다 — `resolve(kind="term",
+    axis="test_item", name=…)` 로 찾는다. **모르면 비운다**: 비슷한 항목을 끼워 넣으면 그
+    시험이 엉뚱한 장비로 이어지고, 검색은 그 장비로 「됩니다」 라고 답한다.
+
+    `attributes` 는 칸 하나가 한 줄이다(`list_attribute_definitions(target="reliability_test")`
+    가 정의를 준다):
+
+        {"definition_id": "…", "num_min": -40, "num_max": 125, "unit": "degC"}   구간·조건
+        {"definition_id": "…", "num_value": 5}                                    수치
+        {"definition_id": "…", "text_value": "외관 이상 없음"}                     문장
+        {"new_label": "시료 수", "new_kind": "number", "num_value": 5}      새 이름 → 초안
+
+    **새 이름을 만들기 전에 정의 목록을 본다.** `new_label` 로 적으면 초안 속성이 새로 생기고,
+    초안은 온톨로지 밖이라 검색·판정에 안 쓰인다 — 같은 뜻의 정식 속성이 있으면 그 쪽
+    `definition_id` 를 쓴다.
+
+    **조건 속성(`kind="condition"`)은 그대로 장비 판정이 된다** — -40~125 degC 로 적어 두면
+    `test_capability` 가 그 온도를 내는 장비만 답한다. 그래서 조건은 문장이 아니라 수치로
+    적는 것이 중요하다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/reliability-tests",
+        {
+            "workspace_slug": workspace_slug,
+            "name": name,
+            "purpose": purpose,
+            "test_item_term_ids": test_item_term_ids or [],
+            "attributes": attributes or [],
+        },
+    )
+
+
+@writes
+async def update_reliability_test(
+    ctx: Context,
+    test_id: str,
+    name: str | None = None,
+    purpose: str | None = None,
+    test_item_term_ids: list[str] | None = None,
+    attributes: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """신뢰성 시험을 고친다. **안 보낸 칸은 그대로.**
+
+    `test_id` 는 `resolve(kind="reliability_test", …)` 로 정한다 — 목록에서 이름만 보고
+    고르면 같은 이름의 **다른 부서 시험**을 고치게 된다.
+
+    `test_item_term_ids` 와 `attributes` 는 보내면 **통째로 바뀐다** — 하나를 더하려면 지금
+    있는 것(`get_reliability_test`)에 더해서 **전부** 보낸다. 빠뜨리면 조용히 지워진다.
+    """
+    body: dict[str, Any] = {}
+    if name is not None:
+        body["name"] = name
+    if purpose is not None:
+        body["purpose"] = purpose
+    if test_item_term_ids is not None:
+        body["test_item_term_ids"] = test_item_term_ids
+    if attributes is not None:
+        body["attributes"] = attributes
+    return await _send(ctx, "PATCH", f"/reliability-tests/{test_id}", body)
+
+
+@mcp.tool()
+async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
+    """**이 시험을 돌릴 수 있는 장비.** 이 시스템이 답하려는 물음의 마지막 한 걸음.
+
+    `test_id` 는 `resolve(kind="reliability_test", …)` 가 준 것을 쓴다.
+
+    이 시험의 조건 속성이 그대로 검색 조건이 되어(범위 하나는 「위로 얼마까지」 와 「아래로
+    얼마까지」 두 물음이다) 시험 항목마다 장비를 판정한다. 부서로 안 좁힌다 — 옆 부서에
+    있으면 빌리러 간다.
+
+    읽는 법:
+
+    * `conditions_asked` — 실제로 물은 조건 수. 0 이면 조건 속성이 없어 **시험 항목만으로**
+      본 것이다. 그때의 「가능」 은 온도·하중을 안 본 답이므로 그렇게 말해야 한다.
+    * `skipped` — 단위를 못 옮겨 **뺀** 조건과 그 이유. 있으면 조건을 다 본 것이 아니다.
+    * `unmet_count` — 조건이 안 맞아 빠진 장비 수. 0대라는 답이 「그 항목이 되는 장비가
+      없어서」 인지 「조건이 안 맞아서」 인지를 이것이 가른다.
+    * 줄의 `verdict` — `match` 다 충족 · `accessory` 옵션 부속 필요 · `partial` 일부는
+      **모른다** · `unknown` 전부 모른다. **`unknown` 을 「가능합니다」 로 옮기지 마라.**
+    """
+    return await _get(ctx, f"/reliability-tests/{test_id}/equipment")
+
+
+# ── 속성 — 열이 아니라 행으로 붙는 칸 ─────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_attribute_definitions(
+    ctx: Context, target: str, include_inactive: bool = False
+) -> dict[str, Any]:
+    """어떤 객체에 **무슨 칸을 적을 수 있나** — 속성 정의 목록.
+
+    `target` 은 `reliability_test` · `equipment` · `series` · `method`. 줄마다 `key`(거르기
+    조건에 쓰는 이름) · `label` · `kind` · `unit` · `status` · `value_count` 가 온다.
+
+    `status` 가 `standard` 면 정식이고 검색·판정·색인 카드에 들어간다. `draft` 는 **초안**
+    이다 — 값을 적는 사람이 새 이름을 써서 생긴 것이고 온톨로지 밖이다. 값을 적을 때는
+    **정식부터 찾아 쓰고**, 없을 때만 새 이름을 만든다.
+
+    `kind` 가 `condition` 인 것은 검색축에 이어진 조건이다 — 그 칸에 수치를 적으면
+    `test_capability` 가 그 조건으로 장비를 판정한다.
+    """
+    return _listed(
+        await _get(
+            ctx,
+            "/attribute-definitions",
+            {
+                "target": target,
+                "include_inactive": "true" if include_inactive else None,
+            },
+        ),
+        "definitions",
+    )
+
+
+@writes
+async def create_attribute_definition(
+    ctx: Context,
+    target: str,
+    label: str,
+    kind: str = "text",
+    key: str | None = None,
+    unit: str = "",
+    condition_key_id: str | None = None,
+    vocabulary_id: str | None = None,
+    choices: list[str] | None = None,
+    status: str = "draft",
+) -> dict[str, Any]:
+    """새 속성 칸을 정의한다. **시스템 관리자만**, 그리고 사람이 시켰을 때만.
+
+    `kind` 는 number(수치) · range(구간) · text(문장) · boolean · date · choice(선택지) ·
+    condition(검색축에 이어진 조건) · term(기준정보 값) · method(규격). 조건은
+    `condition_key_id`(`list_conditions`), 기준정보는 `vocabulary_id`, 선택은 `choices` 가
+    필요하다.
+
+    `key` 는 **거르기 조건에 그대로 실리는 이름**이라 영문·숫자·`_.-` 만 된다. 비우면 서버가
+    임의로 만든다 — 코드나 반입이 걸 이름이면 직접 준다.
+
+    **먼저 `list_attribute_definitions` 로 본다.** 같은 뜻의 칸을 하나 더 만들면 값이 두
+    군데로 쌓이고, 그 뒤 어느 쪽이 맞는지 알 방법이 없다. `status="standard"` 로 바로
+    정식으로 세우는 것은 **사람이 그 이름으로 굳히기로 했을 때만** — 확신이 없으면
+    초안으로 두고 검토함의 「초안 속성 정리」 가 묻게 한다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/attribute-definitions",
+        {
+            "target": target,
+            "label": label,
+            "kind": kind,
+            "key": key,
+            "unit": unit,
+            "condition_key_id": condition_key_id,
+            "vocabulary_id": vocabulary_id,
+            "choices": choices or [],
+            "status": status,
+        },
+    )
+
+
+# ── 검토함 — 사람이 정할 것 (읽기) ────────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_review_queues(ctx: Context) -> dict[str, Any]:
+    """검토함의 물음별 남은 수 — 어느 물음이 얼마나 밀렸나.
+
+    반입이 못 정한 것(어느 시험의 규격인가 · 무슨 조건을 묻나 · 이 물성이 나오나 · 초안
+    속성을 합칠까)이 여기 쌓인다. **AI 는 정하지 않는다** — 확정은 사람이 화면에서 하고,
+    기계 자격으로는 아예 막혀 있다. 여기서 할 일은 **근거를 모아 사람 앞에 놓는 것**이다.
+    """
+    return _listed(await _get(ctx, "/review"), "queues")
+
+
+@mcp.tool()
+async def list_review_items(
+    ctx: Context, queue: str, status: str = "open", limit: int = 20, offset: int = 0
+) -> dict[str, Any]:
+    """한 물음의 줄들 — 대상 · 물음 문장 · 근거 자료 · 후보 · 추천과 그 이유.
+
+    `queue` 는 `list_review_queues` 의 `key`. `status` 는 open · voted · decided · skipped ·
+    gone · all.
+
+    줄의 `question` 은 그 줄이 정확히 무엇을 묻는지 완전한 문장이고, `facts` 는 판단에
+    필요한 사실이다. **추천(`recommended`)은 정답이 아니다** — 근거(`reason`)를 함께 읽고,
+    사람에게 옮길 때도 둘을 같이 옮긴다. 확정은 사람이 화면에서 한다.
+    """
+    return await _get(
+        ctx, f"/review/{queue}", {"status": status, "limit": limit, "offset": offset}
+    )
+
+
+# ── 지식 그래프 — 무엇이 무엇과 이어지나 (읽기) ──────────────────────────────
+
+
+@mcp.tool()
+async def graph_overview(ctx: Context) -> dict[str, Any]:
+    """이 저장소의 **구조** — 객체 종류와 관계 종류, 각각 실제 건수.
+
+    「이 시스템에 무엇이 들어 있고 무엇이 무엇과 이어지나」 를 한 번에 본다. 건수가 0인
+    관계는 정의만 있고 아직 아무도 안 이은 것이다 — 채울 자리가 어디인지 그것이 말한다.
+    """
+    return await _get(ctx, "/graph/overview")
+
+
+@mcp.tool()
+async def graph_search(ctx: Context, q: str) -> dict[str, Any]:
+    """그래프의 시작점을 **종류를 가리지 않고** 찾는다 — 이름·코드·별칭·자산번호.
+
+    돌려주는 `id` 가 `graph_neighbors` · `graph_node` 에 넣는 노드 id 다. 무엇을 물어야 할지
+    모를 때, 사람이 말한 이름 하나로 어느 종류의 무엇인지부터 가른다.
+    """
+    return _listed(await _get(ctx, "/graph/search", {"q": q}), "hits")
+
+
+@mcp.tool()
+async def graph_neighbors(
+    ctx: Context, node_id: str, depth: int = 1, fanout: int = 30, limit: int = 100
+) -> dict[str, Any]:
+    """한 객체의 **이웃** — 무엇과 어떻게 이어져 있나.
+
+    `node_id` 는 `"<종류>:<uuid>"` 꼴이다(`test_item:…` · `series:…` · `method:…` ·
+    `equipment:…` · `reliability_test:…`). 종류 없이 uuid 만으로는 어느 표인지 모르므로
+    `graph_search` 가 준 id 를 그대로 쓴다.
+
+    **서버가 상한을 강제한다.** 노드에 `truncated` 가 붙어 있으면 그 노드의 이웃이 다 온
+    것이 아니다(`degree` 가 실제 수) — 「이것이 전부입니다」 라고 말하지 말고, 더 봐야 하면
+    그 노드를 중심으로 다시 부른다.
+    """
+    return await _get(
+        ctx,
+        "/graph/neighborhood",
+        {"focus": node_id, "depth": depth, "fanout": fanout, "limit": limit},
+    )
+
+
+@mcp.tool()
+async def graph_node(ctx: Context, node_id: str) -> dict[str, Any]:
+    """한 객체의 요약과 **관계 목록** — 어느 관계로 무엇과 이어져 있는지 이름까지.
+
+    `related_total` 이 목록보다 크면 잘린 것이다. 상세 화면 주소(`detail_path`)가 함께 오니
+    사람에게 옮길 때 그 링크를 준다 — id 만 주면 사람은 그것으로 아무것도 못 한다.
+    """
+    return await _get(ctx, "/graph/node", {"id": node_id})
 
 
 if __name__ == "__main__":

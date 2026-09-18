@@ -13,19 +13,39 @@ from pathlib import Path
 SERVER = Path(__file__).resolve().parents[3] / "mcp_server" / "server.py"
 
 
+#: 바꾸는 도구의 이름 앞머리. 읽기 전용 프로필에서 안 실려야 하는 것들이다.
+WRITE_PREFIXES = (
+    "create_",
+    "set_",
+    "add_",
+    "import_",
+    "update_",
+    "register_",
+    "merge_",
+    "promote_",
+    "detach_",
+    "confirm_",
+)
+
+
+def _decorated(node: ast.FunctionDef | ast.AsyncFunctionDef) -> str | None:
+    """이 함수가 도구라면 어느 데코레이터로 달렸나 — `tool` 또는 `writes`."""
+    for decorator in node.decorator_list:
+        if isinstance(decorator, ast.Call) and getattr(decorator.func, "attr", "") == "tool":
+            return "tool"
+        if isinstance(decorator, ast.Name) and decorator.id == "writes":
+            return "writes"
+    return None
+
+
 def _tools() -> list[ast.FunctionDef | ast.AsyncFunctionDef]:
     tree = ast.parse(SERVER.read_text(encoding="utf-8"))
-    found: list[ast.FunctionDef | ast.AsyncFunctionDef] = []
-    for node in ast.walk(tree):
-        if not isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef):
-            continue
-        for decorator in node.decorator_list:
-            if (
-                isinstance(decorator, ast.Call)
-                and getattr(decorator.func, "attr", "") == "tool"
-            ):
-                found.append(node)
-    return found
+    return [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef)
+        and _decorated(node) is not None
+    ]
 
 
 def test_mcp_서버가_있다() -> None:
@@ -117,3 +137,62 @@ def test_배포_스크립트가_개발용과_같은_전송으로_MCP_를_띄운�
         assert "$env:FASTMCP_" not in text and "FASTMCP_PORT =" not in text, (
             f"{rel} 이 FASTMCP_* 환경변수를 씁니다 — 공식 SDK 는 안 읽습니다"
         )
+
+
+def test_바꾸는_도구는_writes_로_단다() -> None:
+    """읽기 전용 프로필(`TESTSCOPE_MCP_TOOLS=read`)에서 **안 실려야 할 것**을 가른다.
+
+    표시를 빠뜨리면 그 도구가 읽기 전용에서도 실리고, 부르면 403 이 온다 — 그 403 은
+    「범위가 없다」 로 읽혀 사람이 토큰을 다시 만들게 만든다. 읽기 도구에 잘못 달면
+    반대로 그 도구가 조용히 사라진다.
+    """
+    for tool in _tools():
+        writes = tool.name.startswith(WRITE_PREFIXES) and tool.name != "import_columns"
+        marked = _decorated(tool) == "writes"
+        assert marked == writes, (
+            f"{tool.name}: {'@writes 로 달아야' if writes else '@mcp.tool() 이어야'} 합니다"
+        )
+
+
+def test_도구_목록이_조용히_불어나지_않는다() -> None:
+    """**도구 목록은 매 턴 통째로 실린다.** 예순 개가 넘으면 그것만으로 수만 자이고,
+    그만큼 대화가 짧아진다 — 그리고 그 비용은 도구를 더한 사람 눈에 안 보인다.
+
+    그래서 상한을 여기 적는다. 넘기려면 이 수를 고치면서 **왜 그만한 값어치가 있는지**
+    한 번 생각하게 하는 것이 목적이다. 설명 하나가 너무 길어지는 것도 같이 본다 —
+    긴 이야기는 `get_guide(주제)` 가 할 일이고, 도구 설명에는 규칙만 남긴다.
+    """
+    tools = _tools()
+    assert len(tools) <= 70, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    for tool in tools:
+        doc = ast.get_docstring(tool) or ""
+        assert len(doc) <= 1600, (
+            f"{tool.name}: 설명이 {len(doc)}자입니다 — 긴 것은 GUIDE.md 의 대목으로 옮기고"
+            f" 도구에는 규칙만 남기세요"
+        )
+        first = doc.strip().splitlines()[0]
+        assert len(first) <= 100, (
+            f"{tool.name}: 첫 줄이 {len(first)}자입니다 — 첫 줄만 읽고 고를 수 있어야 합니다"
+        )
+
+
+def test_길잡이가_도구_목록과_함께_실린다() -> None:
+    """**도구 예순 개를 이름으로 훑어 고르는 것은 안 된다.** 비슷한 이름이 여럿이라
+    (search_test_items · search_catalog · search_semantic) 고르는 데 실패하면 그다음
+    행동이 통째로 틀린다. 그래서 「무엇을 물었나 -> 첫 도구」 표를 서버 안내문에 싣는다 —
+    그 글은 도구 목록과 함께 항상 실리는 유일한 자리다.
+    """
+    text = SERVER.read_text(encoding="utf-8")
+    assert "ROUTING" in text, "길잡이 표(ROUTING)가 없습니다"
+    start = text.index("ROUTING = ")
+    routing = text[start : text.index('"""', text.index('"""', start) + 3)]
+    for tool in (
+        "search_test_items",
+        "import_equipment",
+        "list_reference",
+        "list_pending_work",
+    ):
+        assert tool in routing, f"길잡이에 {tool} 이 없습니다"
+    assert "ROUTING" in text[text.index("instructions=") :], (
+        "길잡이를 instructions 에 안 싣습니다 — 안 실리면 아무도 안 읽는다"
+    )

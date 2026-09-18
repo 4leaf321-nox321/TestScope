@@ -28,7 +28,22 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 | `equipment:write` | 보유 장비·시험 항목·교정 |
 
 **기본은 읽기뿐이다.** 계정 관리와 서버 설정은 어느 범위로도 안 열린다 — 표에 없는
-경로는 기계 자격으로 못 쓴다.
+경로는 기계 자격으로 못 쓴다. 검토함의 확정도 여기 없다: 고른 것이 곧 카탈로그 정본이라
+사람이 화면에서 한다.
+
+## 도구가 몇 개 실리나
+
+도구 목록은 **매 턴 통째로 실린다** — 지금 63개에 48,000자다. 읽기만 쓰는 연결이면
+
+```powershell
+.\run_mcp.ps1 -ReadOnly        # 또는 TESTSCOPE_MCP_TOOLS=read
+```
+
+로 쓰기 도구 스물넷을 뺀다(39개 · 22,000자). 어차피 범위가 없으면 403 이라, 보여 주면
+고르는 일만 어려워진다.
+
+무엇부터 부를지는 서버 안내문의 **길잡이 표**(「무엇을 물었나 -> 첫 도구」)가 말한다 —
+도구 목록과 함께 항상 실린다. 자세한 것은 `get_guide("대목 이름")`.
 
 들어온 변경에는 통로(`X-Client: mcp`)와 토큰 이름이 감사에 남는다. 소유자만 남기면
 사람이 넣은 것과 AI 가 넣은 것이 구별되지 않는다.
@@ -39,12 +54,18 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 읽는다 — 클라이언트에 복사해 두면 고쳐도 옛 사본을 쓰는 사람에게는 전달되지 않는다.
 
 ```
-찾기      resolve · list_conditions · list_spec_definitions · list_spec_sources
-검색      search_capabilities                    ← 이 시스템이 존재하는 이유
-계열      search_series · get_series · create_series · add_capability · link_series
-기종      search_models(series=…) · create_model · get_specs · set_spec
-보유 장비  search_equipment · get_equipment · register_equipment
-남은 일    list_pending_work                      ← 어디부터 채울지
+찾기       resolve · list_conditions · list_spec_definitions · list_spec_sources
+검색       search_test_items · search_catalog · search_semantic · search_properties
+계열       search_series · get_series · create_series · add_test_item · link_series
+기종       search_models(series=…) · create_model · get_specs · set_spec
+보유 장비   search_equipment · get_equipment · register_equipment · import_equipment
+기준정보    list_reference · list_axes · list_terms · create_term · add_term_alias · merge_terms
+신뢰성 시험  list_reliability_tests · create_reliability_test · update_reliability_test
+            test_capability                        ← 이 시험, 어느 장비로 돌리나
+속성       list_attribute_definitions · create_attribute_definition
+검토함      list_review_queues · list_review_items   ← 읽기만. 확정은 사람이 화면에서
+그래프      graph_overview · graph_search · graph_node · graph_neighbors
+남은 일     list_pending_work                      ← 어디부터 채울지
 ```
 
 ## 규약 (자세한 것은 `guide/GUIDE.md`)
