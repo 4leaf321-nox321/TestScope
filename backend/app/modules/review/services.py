@@ -32,6 +32,8 @@ from sqlalchemy.orm import Session
 
 from app.config import REPO_DIR
 from app.modules.accounts.models import User
+from app.modules.attributes import services as attributes
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.equipment import free_specs
 from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelFreeSpec
 from app.modules.methods.models import TestMethod
@@ -61,6 +63,7 @@ from app.modules.vocabulary.models import (
 )
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 from app.shared import audit
+from app.shared.attribute_text import display_attribute
 from app.shared.errors import AppError, Forbidden, NotFound
 from app.shared.text import clean, compare_key, method_key
 
@@ -77,6 +80,12 @@ class Queue:
     """여러 개를 고르나(검색축) — 아니면 하나."""
     link: str
     """상세로 가는 링크 서식. `{id}` 가 subject_id."""
+    local: bool = False
+    """이 설치에서 생기는 물음인가 — 정본(`proposals/*.json`)과 주고받지 않는다.
+
+    초안 속성이 그렇다: 값을 적는 사람이 새 이름을 쓰면 생기고, 자동 key 는 설치마다 다른
+    난수다. 정본에 내보내면 다른 설치에서 아무것도 안 가리키는 결정이 쌓인다.
+    """
 
 
 QUEUES: dict[str, Queue] = {
@@ -152,6 +161,15 @@ QUEUES: dict[str, Queue] = {
         "문장만. 여러 개.",
         True,
         "/catalog/equipment-series/{id}",
+    ),
+    "attribute_drafts": Queue(
+        "attribute_drafts",
+        "초안 속성 정리",
+        "값을 적는 사람이 새 이름을 써서 생긴 초안 속성 — 같은 뜻인 속성에 합칠지, 정식으로 "
+        "올릴지, 아직 둘지. 초안은 온톨로지 밖이라 두면 검색·판정에 안 쓰인다.",
+        False,
+        "/attribute-definitions/reliability-test",
+        local=True,
     ),
     "test_item_aliases": Queue(
         "test_item_aliases",
@@ -353,6 +371,7 @@ def refresh(db: Session, root: Path = PROPOSALS_DIR) -> dict[str, int]:
     _refresh_series_test_items(db, load_file("series_test_items", root), sheet)
     _refresh_series_summary(db, load_file("series_summary", root), sheet)
     _refresh_test_item_aliases(db, load_file("test_item_aliases", root), sheet)
+    _refresh_attribute_drafts(db)
     db.flush()
     for key in QUEUES:
         counts[key] = (
@@ -1096,6 +1115,233 @@ def _refresh_test_item_aliases(
     _sweep_gone(db, "test_item_aliases", alive, "시험 항목이 지워짐")
 
 
+#: 종류의 우리말. 화면(`attributes/kinds.ts`)과 같은 말을 쓴다 — 여기서만 「숫자」 라고
+#: 부르면 같은 것을 두 이름으로 배우게 된다.
+ATTRIBUTE_KIND_LABELS = {
+    "number": "수치",
+    "range": "구간",
+    "text": "문장",
+    "boolean": "있음/없음",
+    "date": "날짜",
+    "choice": "선택",
+    "condition": "시험 조건",
+    "term": "기준정보",
+    "method": "규격",
+}
+
+
+def _attribute_value_counts(db: Session, ids: list[uuid.UUID]) -> dict[uuid.UUID, int]:
+    if not ids:
+        return {}
+    rows = db.execute(
+        select(AttributeValue.definition_id, func.count())
+        .where(AttributeValue.definition_id.in_(ids))
+        .group_by(AttributeValue.definition_id)
+    ).all()
+    return {one: int(count) for one, count in rows}
+
+
+def display_attribute_value(value: AttributeValue, definition: AttributeDefinition) -> str:
+    """값 한 줄 — 화면·색인 카드와 같은 글자(`shared/attribute_text`). 가리키는 이름
+    (기준정보 값·규격)은 여기서 안 읽는다: 예시 몇 줄에 질의를 더 붙일 일이 아니다."""
+    return display_attribute(
+        definition.kind,
+        num_value=value.num_value,
+        num_min=value.num_min,
+        num_max=value.num_max,
+        unit=value.unit or definition.unit,
+        text_value=value.text_value,
+        bool_value=value.bool_value,
+        date_value=value.date_value,
+    )
+
+
+#: 속성이 붙는 대상의 우리말과 정의 화면 주소. 대상마다 화면이 다르므로 줄마다 링크가 다르다.
+ATTRIBUTE_TARGETS: dict[str, tuple[str, str]] = {
+    "reliability_test": ("신뢰성 시험", "/attribute-definitions/reliability-test"),
+    "equipment": ("보유 장비", "/attribute-definitions/equipment"),
+    "series": ("장비 계열", "/attribute-definitions/equipment-series"),
+    "method": ("시험법·규격", "/attribute-definitions/method"),
+}
+
+
+def _attribute_name_key(label: str) -> str:
+    """속성 이름의 비교키 — **띄어쓰기까지 지운다.** 「시험 온도」 와 「시험온도」 는 같은 칸이
+    갈린 것이고, 그 둘이 다른 줄로 남으면 값이 두 군데로 쌓인다. 일반 비교키(`compare_key`)는
+    구두점·공백을 남기는데(계열사 이름 때문에), 사람이 손으로 친 칸 이름에는 그 보수성이
+    오히려 갈림을 못 잡는다."""
+    return "".join(compare_key(label).split())
+
+
+def _attribute_merge_candidates(
+    draft: AttributeDefinition, siblings: list[AttributeDefinition]
+) -> tuple[list[dict[str, Any]], str | None]:
+    """합칠 만한 속성과, 확실한 하나가 있으면 그 코드.
+
+    **이름이 같은 것만 추천한다**(띄어쓰기·대소문자·붙임표를 지운 비교키가 같을 때). 「시험
+    온도」 와 「시험온도」 는 같은 칸이 갈린 것이 분명하지만, 「온도」 와 「보관 온도」 는 다른
+    칸일 수 있다 — 후보로는 올리되 추천은 안 붙인다. 습관적으로 첫 보기를 누르는 것을
+    막으려면 확신이 낮은 것에 추천이 없어야 한다.
+    """
+    mine = _attribute_name_key(draft.label)
+    out: list[dict[str, Any]] = []
+    exact: list[str] = []
+    for other in siblings:
+        # 종류가 다르면 값이 안 읽혀 합칠 수 없다(attributes.merge_into 가 막는다).
+        if other.id == draft.id or other.kind != draft.kind or not other.is_active:
+            continue
+        theirs = _attribute_name_key(other.label)
+        same = theirs == mine
+        touching = not same and (theirs in mine or mine in theirs)
+        if not same and not touching:
+            continue
+        code = f"merge:{other.key}"
+        where = "정식" if other.status == "standard" else "초안"
+        out.append(
+            {
+                "code": code,
+                "label": f"「{other.label}」 에 합친다 ({where})",
+                "reason": (
+                    "띄어쓰기·대소문자를 지우면 이름이 같습니다."
+                    if same
+                    else "이름이 한쪽에 들어 있습니다 — 같은 칸인지 읽고 정하세요."
+                ),
+            }
+        )
+        if same:
+            exact.append(code)
+    # 정식이 먼저 — 같은 값이면 온톨로지에 이미 든 쪽으로 모으는 것이 낫다.
+    out.sort(key=lambda one: (0 if "(정식)" in one["label"] else 1, one["label"]))
+    return out, exact[0] if len(exact) == 1 else None
+
+
+def _attribute_draft_facts(
+    db: Session, draft: AttributeDefinition, count: int
+) -> list[dict[str, Any]]:
+    """이 초안이 무엇인지 — 종류·단위·몇 건·실제로 적힌 값 몇 개.
+
+    **값을 봐야 판단이 된다.** 「시료 수」 라는 이름만으로는 합칠지 올릴지 못 정하고,
+    「5」 「5개」 「5 ea」 가 섞여 있으면 그것이 곧 답이다(종류가 글자로 잡혀 있다).
+    """
+    label, link = ATTRIBUTE_TARGETS.get(draft.target, (draft.target, ""))
+    facts: list[dict[str, Any]] = [
+        {"label": "붙는 곳", "value": label, "link": link or None},
+        {
+            "label": "종류",
+            "value": ATTRIBUTE_KIND_LABELS.get(draft.kind, draft.kind)
+            + (f" · {draft.unit}" if draft.unit else ""),
+        },
+        {"label": "적힌 값", "value": f"{count}건"},
+    ]
+    samples = [
+        display_attribute_value(value, draft)
+        for value in db.scalars(
+            select(AttributeValue)
+            .where(AttributeValue.definition_id == draft.id)
+            .order_by(AttributeValue.created_at)
+            .limit(4)
+        )
+    ]
+    shown = [one for one in samples if one]
+    if shown:
+        facts.append({"label": "값의 예", "value": " · ".join(shown)})
+    return facts
+
+
+def _refresh_attribute_drafts(db: Session) -> None:
+    """초안 속성 — **정본이 아니라 이 설치의 상태에서** 세운다.
+
+    초안은 값을 적는 사람이 새 이름을 쓰면 서버가 만든다. 그래서 후보 파일이 있을 수 없고,
+    쌓이는 것도 설치마다 다르다. 두면 온톨로지 밖에 남아 검색·판정·색인 카드 어디에도 안
+    쓰이므로, 「합칠지 · 올릴지 · 둘지」 를 묻는 자리가 있어야 한다.
+
+    값이 0건인 초안은 묻지 않는다 — 값이 없으면 정의 화면에서 지우면 그만이고, 물음으로
+    세우면 아무 일도 안 하는 줄이 검토함을 채운다.
+    """
+    drafts = list(
+        db.scalars(
+            select(AttributeDefinition)
+            .where(
+                AttributeDefinition.status == "draft",
+                AttributeDefinition.is_active.is_(True),
+            )
+            .order_by(AttributeDefinition.target, AttributeDefinition.label)
+        )
+    )
+    by_target: dict[str, list[AttributeDefinition]] = {}
+    for one in db.scalars(select(AttributeDefinition)):
+        by_target.setdefault(one.target, []).append(one)
+
+    counts = _attribute_value_counts(db, [one.id for one in drafts])
+    alive: set[str] = set()
+    for draft in drafts:
+        count = counts.get(draft.id, 0)
+        if count == 0:
+            continue
+        alive.add(draft.key)
+        merges, exact = _attribute_merge_candidates(draft, by_target.get(draft.target, []))
+        target_label = ATTRIBUTE_TARGETS.get(draft.target, (draft.target, ""))[0]
+        candidates = _mark(
+            [
+                *merges,
+                {
+                    "code": "standard",
+                    "label": "정식으로 올린다 — 이 이름으로 굳힌다",
+                    "reason": None,
+                },
+                {
+                    "code": "keep",
+                    "label": "초안으로 둔다 — 더 모아 보고 정한다",
+                    "reason": None,
+                },
+                {"code": "off", "label": "끈다 — 새 입력에서 안 뜨게", "reason": None},
+            ],
+            exact,
+            None,
+        )
+        _upsert(
+            db,
+            "attribute_drafts",
+            draft.key,
+            subject_id=draft.id,
+            subject_label=f"{draft.label} ({target_label})",
+            context=f"{target_label}에 {count}건 적힘",
+            candidates=candidates,
+            payload={
+                "target": draft.target,
+                "link": ATTRIBUTE_TARGETS.get(draft.target, (draft.target, ""))[1],
+            },
+            question=(
+                f"「{draft.label}」 은 {target_label}에 {count}건 적힌 **초안** 속성입니다. "
+                "초안은 온톨로지 밖이라 검색·판정·색인 카드 어디에도 안 쓰입니다. 같은 뜻인 "
+                "속성이 이미 있으면 거기 합치고, 이 이름으로 굳힐 것이면 정식으로 올리세요."
+            ),
+            facts=_attribute_draft_facts(db, draft, count),
+        )
+    # 정식이 되었거나 합쳐졌거나 꺼진 초안 — 화면에서 이미 정해진 것이다.
+    for row in db.scalars(
+        select(ReviewProposal).where(
+            ReviewProposal.queue == "attribute_drafts",
+            ReviewProposal.status.in_(("open", "skipped")),
+        )
+    ):
+        if row.subject_key in alive:
+            continue
+        found = db.scalar(
+            select(AttributeDefinition).where(AttributeDefinition.key == row.subject_key)
+        )
+        if found is None:
+            _gone(row, "속성이 지워짐")
+        elif found.merged_into_id is not None:
+            _settle(db, row, [f"merge:{row.subject_key}"], "화면에서 합침")
+        elif found.status == "standard":
+            _settle(db, row, ["standard"], "화면에서 정식으로 올림")
+        elif not found.is_active:
+            _settle(db, row, ["off"], "화면에서 끔")
+        else:
+            _gone(row, "값이 없어짐")
+
+
 def _refresh_series_standards(
     db: Session, filed: dict[str, dict[str, Any]], sheet: Sheet
 ) -> None:
@@ -1324,6 +1570,29 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 "apply_same_key": True,
             },
         )
+    elif queue == "attribute_drafts":
+        draft = db.get(AttributeDefinition, row.subject_id) if row.subject_id else None
+        if draft is None:
+            return  # 이미 없어졌다.
+        code = choice[0] if choice else "keep"
+        if code == "keep":
+            return
+        if code == "standard":
+            attributes.update_definition(db, draft.id, {"status": "standard"})
+        elif code == "off":
+            attributes.update_definition(db, draft.id, {"is_active": False})
+        elif code.startswith("merge:"):
+            into = db.scalar(
+                select(AttributeDefinition).where(
+                    AttributeDefinition.key == code.removeprefix("merge:")
+                )
+            )
+            if into is None:
+                raise NotFound("TSC-REVIEW-0002", f"합칠 속성을 모릅니다: {code}")
+            # 합치는 규칙은 속성 쪽 하나다 — 값이 옮겨 가고 원래 것은 꺼진다.
+            attributes.merge_into(db, draft.id, into.id)
+        else:
+            raise AppError("TSC-REVIEW-0004", f"모르는 선택입니다: {code}", status=400)
     elif queue == "method_cleanup":
         method = db.get(TestMethod, row.subject_id) if row.subject_id else None
         if method is None or method.deleted_at is not None:
@@ -1562,7 +1831,10 @@ def export_decisions(
     """
     root.mkdir(parents=True, exist_ok=True)
     out: dict[str, tuple[int, int, int]] = {}
-    for queue in QUEUES:
+    for queue, spec in QUEUES.items():
+        if spec.local:
+            # 이 설치에서만 뜻이 있는 물음 — 내보내면 다른 설치에서 안 맞는 결정이 쌓인다.
+            continue
         path = root / f"{queue}.json"
         doc: dict[str, Any] = (
             json.loads(path.read_text(encoding="utf-8"))
@@ -1687,9 +1959,14 @@ def proposal_out(
         context=row.context,
         question=row.question,
         facts=[FactOut(**one) for one in (row.facts or [])],
-        link=queue.link.format(id=row.subject_id)
-        if row.subject_id or "{id}" not in queue.link
-        else None,
+        # 줄이 제 링크를 가지면 그것을 쓴다 — 같은 큐인데 대상마다 화면이 다른 물음이
+        # 있다(초안 속성: 신뢰성 시험·보유 장비·계열·규격의 정의 화면이 각각이다).
+        link=(row.payload or {}).get("link")
+        or (
+            queue.link.format(id=row.subject_id)
+            if row.subject_id or "{id}" not in queue.link
+            else None
+        ),
         candidates=[CandidateOut(**one) for one in row.candidates],
         payload=row.payload,
         status=row.status,

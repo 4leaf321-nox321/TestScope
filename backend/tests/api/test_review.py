@@ -1217,3 +1217,121 @@ def test_별칭_후보를_고르면_별칭이_되고_이미_쓰인_표기는_안
     )
     assert found.status_code == 200, found.text
     assert found.json()["match"] == "exact" and found.json()["id"] == shock_id
+
+
+def test_초안_속성은_합치거나_정식으로_올린다(
+    client: TestClient, admin: Signed, db: Session, tmp_path: Path
+) -> None:
+    """초안 속성은 값을 적는 사람이 새 이름을 쓰면 생긴다 — 두면 온톨로지 밖에 남는다.
+
+    여기서 지키는 것 — 값이 붙은 초안만 묻는다(0건은 정의 화면에서 지우면 그만) · 이름이 같은
+    (띄어쓰기·대소문자를 지운) 속성이 하나면 그것을 추천한다 · 합치면 값이 그쪽으로 옮겨 가고
+    초안은 꺼진다 · 정식으로 올리면 그 뒤로는 안 묻는다 · 화면에서 먼저 정한 것은 결정으로
+    닫힌다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    standard = client.post(
+        "/api/attribute-definitions",
+        json={
+            "target": "reliability_test",
+            "label": f"시험 온도 {tag}",
+            "key": f"temp_{tag}",
+            "kind": "text",
+            "status": "standard",
+        },
+        headers=admin.headers,
+    )
+    assert standard.status_code == 201, standard.text
+
+    # 부서 사람이 「시험온도」(띄어쓰기만 다름)로 적으면 초안이 생긴다.
+    made = client.post(
+        "/api/reliability-tests",
+        json={
+            "workspace_slug": admin.workspace,
+            "name": f"고온고습-{tag}",
+            "attributes": [
+                {"new_label": f"시험온도 {tag}", "new_kind": "text", "text_value": "85"},
+                {
+                    "new_label": f"판정 기준 {tag}",
+                    "new_kind": "text",
+                    "text_value": "이상 없음",
+                },
+            ],
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    drafts = {
+        one["label"]: one for one in made.json()["attributes"] if one["status"] == "draft"
+    }
+    assert set(drafts) == {f"시험온도 {tag}", f"판정 기준 {tag}"}
+
+    services.refresh(db, tmp_path)
+    db.commit()
+    rows = {
+        one["subject_label"]: one
+        for one in _rows(client, admin, "attribute_drafts", status="open")
+    }
+    same = rows[f"시험온도 {tag} (신뢰성 시험)"]
+    other = rows[f"판정 기준 {tag} (신뢰성 시험)"]
+
+    # 이름이 같은 정식 속성 하나 → 그것이 추천. 근거가 줄에 적힌다.
+    picked = [one for one in same["candidates"] if one["recommended"]]
+    assert [one["code"] for one in picked] == [f"merge:temp_{tag}"]
+    assert "이름이 같습니다" in (picked[0]["reason"] or "")
+    # 근거 자료 — 어디 붙는지 · 종류 · 몇 건 · 값의 예.
+    facts = {one["label"]: one["value"] for one in same["facts"]}
+    assert facts["붙는 곳"] == "신뢰성 시험" and facts["적힌 값"] == "1건"
+    assert facts["값의 예"] == "85"
+    assert same["link"] == "/attribute-definitions/reliability-test"
+    # 짝이 없는 초안에는 추천이 없다 — 첫 보기를 습관적으로 누르게 두지 않는다.
+    assert not any(one["recommended"] for one in other["candidates"])
+    assert {one["code"] for one in other["candidates"]} == {"standard", "keep", "off"}
+
+    decided = client.post(
+        f"/api/review/attribute_drafts/{same['id']}/decide",
+        json={"choice": [f"merge:temp_{tag}"]},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    assert decided.json()["followed"] is True
+
+    # 값이 정식 쪽으로 옮겨 갔고 초안은 꺼졌다.
+    listed = client.get(
+        "/api/attribute-definitions",
+        params={"target": "reliability_test", "include_inactive": "true"},
+        headers=admin.headers,
+    ).json()
+    by_key = {one["key"]: one for one in listed}
+    assert by_key[f"temp_{tag}"]["value_count"] == 1
+    merged = next(one for one in listed if one["label"] == f"시험온도 {tag}")
+    assert merged["is_active"] is False
+    # 합친 속성으로 거를 수 있다 — 값이 옮겨 갔으니 정식 key 로 걸린다.
+    found = client.get(
+        "/api/reliability-tests",
+        params={"attr": f"temp_{tag}=85"},
+        headers=admin.headers,
+    )
+    assert [one["name"] for one in found.json()] == [f"고온고습-{tag}"]
+
+    # 남은 초안을 화면에서 먼저 정식으로 올리면, 다시 세울 때 결정으로 닫힌다.
+    promoted = client.patch(
+        f"/api/attribute-definitions/{other['subject_id']}",
+        json={"status": "standard"},
+        headers=admin.headers,
+    )
+    assert promoted.status_code == 200, promoted.text
+    services.refresh(db, tmp_path)
+    db.commit()
+    closed = next(
+        one
+        for one in _rows(client, admin, "attribute_drafts", status="decided")
+        if one["id"] == other["id"]
+    )
+    assert closed["choice"] == ["standard"]
+    assert closed["decided_by"] == "화면에서 정식으로 올림"
+    # 이 시험이 만든 초안 둘은 이제 열린 줄에 없다(다른 시험이 만든 초안은 있을 수 있다).
+    open_labels = {
+        one["subject_label"] for one in _rows(client, admin, "attribute_drafts", status="open")
+    }
+    assert not open_labels & {same["subject_label"], other["subject_label"]}
