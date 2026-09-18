@@ -9,8 +9,10 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
+from app.modules.reliability import capability as capability_service
 from app.modules.reliability import services
 from app.modules.reliability.schemas import (
+    CapabilityOut,
     ReliabilityTestCreateRequest,
     ReliabilityTestOut,
     ReliabilityTestUpdateRequest,
@@ -23,6 +25,7 @@ router = APIRouter(prefix="/reliability-tests", tags=["reliability"])
 @router.get("", response_model=list[ReliabilityTestOut])
 def list_reliability_tests(
     workspace: str | None = Query(default=None, max_length=64),
+    attr: list[str] = Query(default_factory=list, max_length=10),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[ReliabilityTestOut]:
@@ -30,10 +33,14 @@ def list_reliability_tests(
     공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다
     쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데
     돌릴 장비가 없다는 뜻이다.
+
+    `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
+    연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
+    `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
     """
     if workspace:
-        return services.list_for_workspace(db, user, workspace)
-    return services.list_all(db, user)
+        return services.list_for_workspace(db, user, workspace, attr)
+    return services.list_all(db, user, attr)
 
 
 @router.post("", response_model=ReliabilityTestOut, status_code=201)
@@ -55,6 +62,24 @@ def read_reliability_test(
     db: Session = Depends(get_db),
 ) -> ReliabilityTestOut:
     return services.test_out(db, user, services.get(db, test_id))
+
+
+@router.get("/{test_id}/equipment", response_model=CapabilityOut)
+def read_capability(
+    test_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> CapabilityOut:
+    """**이 시험을 돌릴 수 있는 장비.** 조건 속성(`kind="condition"`)을 그대로 검색 조건으로
+    옮겨 시험 항목마다 장비를 판정한다 — 판정 규칙은 장비 찾기와 같은 것 하나다.
+
+    범위 속성 하나는 물음 둘이 된다(위로 얼마까지 · 아래로 얼마까지). 단위를 축의 SI 로
+    못 바꾸는 조건은 빼고 `skipped` 에 이유를 적는다 — 조용히 빼면 조건을 다 본 것처럼
+    「가능」 으로 읽힌다.
+
+    부서로 좁히지 않는다. 옆 부서에 있으면 빌리러 가는 것이 이 시스템의 쓸모다.
+    """
+    return capability_service.capability(db, user, services.get(db, test_id))
 
 
 @router.patch("/{test_id}", response_model=ReliabilityTestOut)

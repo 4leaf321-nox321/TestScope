@@ -5,6 +5,7 @@ import type { components } from '@/shared/api/schema'
 import type { AttributeValueIn } from '@/modules/attributes/api'
 
 export type ReliabilityTest = components['schemas']['ReliabilityTestOut']
+export type Capability = components['schemas']['CapabilityOut']
 export type ReliabilityTestItem = components['schemas']['ReliabilityTestItemOut']
 export type ReliabilityTestWrite = {
   name: string
@@ -20,8 +21,17 @@ export const reliabilityApi = {
     api.get<ReliabilityTest[]>(
       `/reliability-tests?workspace=${encodeURIComponent(workspace)}`,
     ),
-  /** 전사 전부 — 부서 순. 「누가 무슨 시험을 하나」 를 가로질러 본다. */
-  listAll: () => api.get<ReliabilityTest[]>('/reliability-tests'),
+  /** 전사 전부 — 부서 순. 「누가 무슨 시험을 하나」 를 가로질러 본다.
+   *  `attrs` 는 속성 값 조건(`키>=값`) — 여러 개면 **모두** 만족해야 한다. */
+  listAll: (attrs: string[] = []) => {
+    const search = new URLSearchParams()
+    for (const one of attrs) search.append('attr', one)
+    const query = search.toString()
+    return api.get<ReliabilityTest[]>(`/reliability-tests${query ? `?${query}` : ''}`)
+  },
+  /** **이 시험을 돌릴 수 있는 장비.** 조건 속성이 그대로 검색 조건이 된다 — 판정 규칙은
+   *  장비 찾기와 같은 것 하나다. 범위 하나는 물음 둘(위로·아래로). */
+  capability: (id: string) => api.get<Capability>(`/reliability-tests/${id}/equipment`),
   read: (id: string) => api.get<ReliabilityTest>(`/reliability-tests/${id}`),
   create: (workspace: string, body: ReliabilityTestWrite) =>
     api.post<ReliabilityTest>('/reliability-tests', { workspace_slug: workspace, ...body }),

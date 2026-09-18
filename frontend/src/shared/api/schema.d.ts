@@ -1036,6 +1036,10 @@ export interface paths {
          *     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
          *     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
          *
+         *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다.
+         *     `attr=invest_year>=2020` · `attr=purpose~고온` · `attr=reserve_url*`(적혀 있기만 하면).
+         *     왼쪽은 속성 정의의 `key` 다(이름이 아니다 — 이름은 관리자가 고치면 바뀐다).
+         *
          *     `catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운
          *     경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.
          */
@@ -1298,6 +1302,10 @@ export interface paths {
          *     `test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이
          *     없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기
          *     거르는 조건이 같아야 한다.
+         *
+         *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
+         *     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
+         *     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
          */
         get: operations["list_series_api_equipment_series_get"];
         put?: never;
@@ -1694,7 +1702,14 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List Methods */
+        /**
+         * List Methods
+         * @description 규격 목록.
+         *
+         *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
+         *     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
+         *     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
+         */
         get: operations["list_methods_api_methods_get"];
         put?: never;
         /** Create Method */
@@ -2162,6 +2177,10 @@ export interface paths {
          *     공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다
          *     쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데
          *     돌릴 장비가 없다는 뜻이다.
+         *
+         *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
+         *     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
+         *     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
         put?: never;
@@ -2200,6 +2219,33 @@ export interface paths {
          * @description 부분 수정. 안 보낸 칸은 그대로, `test_item_term_ids` 는 보내면 통째로 바뀐다.
          */
         patch: operations["update_reliability_test_api_reliability_tests__test_id__patch"];
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}/equipment": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Read Capability
+         * @description **이 시험을 돌릴 수 있는 장비.** 조건 속성(`kind="condition"`)을 그대로 검색 조건으로
+         *     옮겨 시험 항목마다 장비를 판정한다 — 판정 규칙은 장비 찾기와 같은 것 하나다.
+         *
+         *     범위 속성 하나는 물음 둘이 된다(위로 얼마까지 · 아래로 얼마까지). 단위를 축의 SI 로
+         *     못 바꾸는 조건은 빼고 `skipped` 에 이유를 적는다 — 조용히 빼면 조건을 다 본 것처럼
+         *     「가능」 으로 읽힌다.
+         *
+         *     부서로 좁히지 않는다. 옆 부서에 있으면 빌리러 가는 것이 이 시스템의 쓸모다.
+         */
+        get: operations["read_capability_api_reliability_tests__test_id__equipment_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
         trace?: never;
     };
     "/api/attribute-definitions": {
@@ -3133,6 +3179,42 @@ export interface components {
              * @default []
              */
             sources: string[];
+        };
+        /**
+         * CapabilityItemOut
+         * @description 이 시험이 쓰는 시험 항목 하나에 대한 답.
+         */
+        CapabilityItemOut: {
+            /**
+             * Term Id
+             * Format: uuid
+             */
+            term_id: string;
+            /** Value */
+            value: string;
+            /** Total */
+            total: number;
+            /** Unmet Count */
+            unmet_count: number;
+            /** Hits */
+            hits: components["schemas"]["SearchHit"][];
+        };
+        /**
+         * CapabilityOut
+         * @description 「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것.
+         */
+        CapabilityOut: {
+            /**
+             * Test Id
+             * Format: uuid
+             */
+            test_id: string;
+            /** Conditions Asked */
+            conditions_asked: number;
+            /** Skipped */
+            skipped: components["schemas"]["SkippedConditionOut"][];
+            /** Items */
+            items: components["schemas"]["CapabilityItemOut"][];
         };
         /**
          * CatalogFilterOptionsOut
@@ -6051,6 +6133,16 @@ export interface components {
             display_name: string;
             /** Workspace Slug */
             workspace_slug: string;
+        };
+        /**
+         * SkippedConditionOut
+         * @description 물음에서 뺀 조건과 그 이유. **조용히 빼지 않는다** — 다 본 것처럼 읽힌다.
+         */
+        SkippedConditionOut: {
+            /** Label */
+            label: string;
+            /** Reason */
+            reason: string;
         };
         /** SpecDefinitionCreateRequest */
         SpecDefinitionCreateRequest: {
@@ -9002,6 +9094,7 @@ export interface operations {
                 catalog?: string | null;
                 calibration?: string | null;
                 shared_use?: boolean | null;
+                attr?: string[];
                 limit?: number;
                 offset?: number;
             };
@@ -9428,6 +9521,7 @@ export interface operations {
                 models?: string | null;
                 test_item?: string | null;
                 owned?: boolean;
+                attr?: string[];
                 limit?: number;
                 offset?: number;
             };
@@ -10265,6 +10359,7 @@ export interface operations {
                 cited?: string | null;
                 used?: string | null;
                 include_superseded?: boolean;
+                attr?: string[];
                 limit?: number;
                 offset?: number;
             };
@@ -11180,6 +11275,7 @@ export interface operations {
         parameters: {
             query?: {
                 workspace?: string | null;
+                attr?: string[];
             };
             header?: never;
             path?: never;
@@ -11322,6 +11418,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ReliabilityTestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    read_capability_api_reliability_tests__test_id__equipment_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CapabilityOut"];
                 };
             };
             /** @description Validation Error */

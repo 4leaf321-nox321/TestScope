@@ -11,6 +11,7 @@
 
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Wrench } from 'lucide-react'
 
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -26,6 +27,9 @@ import {
 } from '@/shared/components/ui/table'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { useResource } from '@/shared/hooks/useResource'
+import { Button } from '@/shared/components/ui/button'
+import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
+import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 
@@ -42,8 +46,11 @@ function haystack(row: ReliabilityTest): string {
 }
 
 export default function ReliabilityTestsPage() {
-  const tests = useResource(() => reliabilityApi.listAll(), [])
+  // 속성 조건은 **서버가** 거른다 — 아래 찾기 칸은 받은 쪽 안에서만 훑는다.
+  const [attrs, setAttrs] = useState<string[]>([])
+  const tests = useResource(() => reliabilityApi.listAll(attrs), [attrs])
   const [query, setQuery] = useState('')
+  const [asking, setAsking] = useState<ReliabilityTest | null>(null)
   const rows = tests.data ?? []
   const needle = query.trim().toLowerCase()
   const shown = useMemo(
@@ -59,6 +66,9 @@ export default function ReliabilityTestsPage() {
         title="신뢰성 시험"
         description="부서가 제품 개발·검증을 위해 수행하는 시험 전부 — 부서를 가로질러 한 표로. 등록·수정은 그 부서의 화면(사이드바 아래 부서 이름)에서 합니다."
       />
+
+      {/* 조건 속성으로 거르기 — 「-40 °C 이하로 내려가는 시험」 을 물을 수 있어야 조건을 적는다. */}
+      <AttributeFilterBar target="reliability_test" value={attrs} onChange={setAttrs} />
 
       <div className="flex flex-wrap items-center gap-3">
         <Input
@@ -93,6 +103,7 @@ export default function ReliabilityTestsPage() {
               <TableHead>목적</TableHead>
               <TableHead>구성 시험 항목 · 그 부서 장비</TableHead>
               <TableHead>속성</TableHead>
+              <TableHead className="w-32" />
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -156,11 +167,22 @@ export default function ReliabilityTestsPage() {
                     </ul>
                   )}
                 </TableCell>
+                <TableCell className="text-right whitespace-nowrap">
+                  {/* **이 시험, 어느 장비로 돌리나.** 조건 속성이 그대로 검색 조건이 된다 —
+                      시험 항목까지만 이으면 답이 「인장 되는 장비 N대」 라서, 사람이 다시
+                      장비를 하나씩 열어 봐야 한다. */}
+                  <Button size="sm" variant="outline" onClick={() => setAsking(row)}>
+                    <Wrench className="mr-1 size-3.5" />
+                    가능한 장비
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       )}
+
+      {asking && <CapabilityDialog test={asking} onClose={() => setAsking(null)} />}
     </div>
   )
 }

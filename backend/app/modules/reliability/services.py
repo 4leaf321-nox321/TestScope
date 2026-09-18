@@ -6,10 +6,11 @@ import uuid
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import func, select, true
+from sqlalchemy import Select, func, select, true
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import Equipment
@@ -119,33 +120,49 @@ def test_out(db: Session, user: User, row: ReliabilityTest) -> ReliabilityTestOu
     return _outs(db, user, [row])[0]
 
 
-def list_for_workspace(db: Session, user: User, slug: str) -> list[ReliabilityTestOut]:
+def list_for_workspace(
+    db: Session, user: User, slug: str, attrs: list[str] | None = None
+) -> list[ReliabilityTestOut]:
     workspace = workspace_by_slug(db, slug)
-    rows = list(
-        db.scalars(
-            select(ReliabilityTest)
-            .where(
-                ReliabilityTest.workspace_id == workspace.id,
-                ReliabilityTest.deleted_at.is_(None),
-            )
-            .order_by(ReliabilityTest.name)
+    stmt = (
+        select(ReliabilityTest)
+        .where(
+            ReliabilityTest.workspace_id == workspace.id,
+            ReliabilityTest.deleted_at.is_(None),
         )
+        .order_by(ReliabilityTest.name)
     )
+    rows = list(db.scalars(_by_attributes(db, stmt, attrs)))
     return _outs(db, user, rows)
 
 
-def list_all(db: Session, user: User) -> list[ReliabilityTestOut]:
+def _by_attributes(
+    db: Session, stmt: Select[tuple[ReliabilityTest]], attrs: list[str] | None
+) -> Select[tuple[ReliabilityTest]]:
+    """속성 값으로 거르기 — 「-40 °C 이하로 내려가는 시험」 을 못 물으면 조건을 적을 이유가
+    없다. 문법은 장비·계열·규격 목록과 같은 것 하나다(`attributes/filters.py`)."""
+    return attribute_filters.apply(
+        db,
+        stmt,
+        "reliability_test",
+        ReliabilityTest.id,
+        attribute_filters.parse(db, "reliability_test", attrs or []),
+    )
+
+
+def list_all(
+    db: Session, user: User, attrs: list[str] | None = None
+) -> list[ReliabilityTestOut]:
     """전사의 신뢰성 시험 — **「저 부서는 무슨 시험을 하나」 를 부서를 가로질러 묻는 표.**
     읽기는 누구나(부서를 가로지르는 것이 이 시스템의 물음), 고치기는 각 부서 화면에서.
     부서 순서(조직도) → 이름."""
-    rows = list(
-        db.scalars(
-            select(ReliabilityTest)
-            .join(Workspace, Workspace.id == ReliabilityTest.workspace_id)
-            .where(ReliabilityTest.deleted_at.is_(None))
-            .order_by(Workspace.sort_order, Workspace.name, ReliabilityTest.name)
-        )
+    stmt = (
+        select(ReliabilityTest)
+        .join(Workspace, Workspace.id == ReliabilityTest.workspace_id)
+        .where(ReliabilityTest.deleted_at.is_(None))
+        .order_by(Workspace.sort_order, Workspace.name, ReliabilityTest.name)
     )
+    rows = list(db.scalars(_by_attributes(db, stmt, attrs)))
     return _outs(db, user, rows)
 
 

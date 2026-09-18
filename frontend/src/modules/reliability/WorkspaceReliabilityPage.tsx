@@ -14,7 +14,7 @@
 
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Pencil, Plus, Trash2 } from 'lucide-react'
+import { Pencil, Plus, Trash2, Wrench } from 'lucide-react'
 
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isManagerOf } from '@/shared/auth/roles'
@@ -33,6 +33,7 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
+import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import { ReliabilityTestDialog } from '@/modules/reliability/ReliabilityTestDialog'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
@@ -47,6 +48,7 @@ export default function WorkspaceReliabilityPage() {
   const [editing, setEditing] = useState<ReliabilityTest | null>(null)
   const [creating, setCreating] = useState(false)
   const [removing, setRemoving] = useState<ReliabilityTest | null>(null)
+  const [asking, setAsking] = useState<ReliabilityTest | null>(null)
 
   const workspace = listed.data?.find((one) => one.slug === slug)
   const rows = tests.data ?? []
@@ -109,6 +111,7 @@ export default function WorkspaceReliabilityPage() {
               <TableHead>목적</TableHead>
               <TableHead>쓰는 시험 항목 · 이 부서 장비</TableHead>
               <TableHead>속성</TableHead>
+              <TableHead className="w-32" />
               {canEdit && <TableHead className="w-24" />}
             </TableRow>
           </TableHeader>
@@ -176,6 +179,15 @@ export default function WorkspaceReliabilityPage() {
                     </ul>
                   )}
                 </TableCell>
+                {/* **이 시험, 어느 장비로 돌리나.** 조건 속성이 그대로 검색 조건이 된다 —
+                    「이 부서 장비 N대」 는 조건을 안 본 수라, 그 N 대를 사람이 다시 하나씩
+                    열어 봐야 했다. 읽기는 누구나 — 빌릴 곳을 찾는 것이 이 화면의 쓸모다. */}
+                <TableCell className="text-right whitespace-nowrap">
+                  <Button size="sm" variant="outline" onClick={() => setAsking(row)}>
+                    <Wrench className="mr-1 size-3.5" />
+                    가능한 장비
+                  </Button>
+                </TableCell>
                 {canEdit && (
                   <TableCell className="text-right whitespace-nowrap">
                     {row.can_edit && (
@@ -205,6 +217,8 @@ export default function WorkspaceReliabilityPage() {
           </TableBody>
         </Table>
       )}
+
+      {asking && <CapabilityDialog test={asking} onClose={() => setAsking(null)} />}
 
       <ReliabilityTestDialog
         open={creating || editing !== null}

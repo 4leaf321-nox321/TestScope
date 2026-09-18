@@ -8,6 +8,7 @@ from datetime import datetime
 from pydantic import BaseModel, Field
 
 from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
+from app.modules.search.schemas import SearchHit
 
 
 class ReliabilityTestItemOut(BaseModel):
@@ -53,3 +54,33 @@ class ReliabilityTestUpdateRequest(BaseModel):
     test_item_term_ids: list[uuid.UUID] | None = None
     attributes: list[AttributeValueIn] | None = None
     """보내면 통째로 바뀐다 — 시험 항목과 같은 규칙."""
+
+
+class SkippedConditionOut(BaseModel):
+    """물음에서 뺀 조건과 그 이유. **조용히 빼지 않는다** — 다 본 것처럼 읽힌다."""
+
+    label: str
+    reason: str
+
+
+class CapabilityItemOut(BaseModel):
+    """이 시험이 쓰는 시험 항목 하나에 대한 답."""
+
+    term_id: uuid.UUID
+    value: str
+    total: int
+    """조건을 걸고도 남은 장비 수. `hits` 는 그중 앞에서부터 상한까지다."""
+    unmet_count: int
+    """조건이 **안 되는** 것으로 판정돼 빠진 장비 수. 0 대라는 답이 「등록이 없어서」 인지
+    「조건이 안 맞아서」 인지를 가른다."""
+    hits: list[SearchHit]
+
+
+class CapabilityOut(BaseModel):
+    """「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것."""
+
+    test_id: uuid.UUID
+    conditions_asked: int
+    """검색에 넘긴 조건 물음 수. 범위 하나는 물음 둘이다(위로 얼마까지 · 아래로 얼마까지)."""
+    skipped: list[SkippedConditionOut]
+    items: list[CapabilityItemOut]

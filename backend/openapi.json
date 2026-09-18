@@ -3035,7 +3035,7 @@
           "equipment"
         ],
         "summary": "List Equipment",
-        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.\n\n`catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운\n경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.",
+        "description": "보유 장비 목록. **거르기는 서버가 한다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.\n\n`calibration` 은 넷이다 — `required` 대상 전부 · `exempt` 대상 아님 ·\n`missing` 대상인데 이력 없음 · `overdue` 기한 지남.\n\n`q` 는 자산번호와 이름을 함께 보고, `asset_no`·`name` 은 **그 열만** 본다 —\n화면은 열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로\n링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다.\n`attr=invest_year>=2020` · `attr=purpose~고온` · `attr=reserve_url*`(적혀 있기만 하면).\n왼쪽은 속성 정의의 `key` 다(이름이 아니다 — 이름은 관리자가 고치면 바뀐다).\n\n`catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운\n경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.",
         "operationId": "list_equipment_api_equipment_get",
         "parameters": [
           {
@@ -3254,6 +3254,19 @@
                 }
               ],
               "title": "Shared Use"
+            }
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "title": "Attr"
             }
           },
           {
@@ -3840,7 +3853,7 @@
           "catalog"
         ],
         "summary": "List Series",
-        "description": "계열 목록. **거르는 것은 서버다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 계열이 이것뿐」 이라고 거짓말한다.\n\n`q` 는 계열명·한글명·제조사를 함께 보고, `name` 은 **그 열만** 본다 — 화면은\n열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이\n없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기\n거르는 조건이 같아야 한다.",
+        "description": "계열 목록. **거르는 것은 서버다.**\n\n화면이 한 쪽을 받아 놓고 거르면 상한을 넘는 순간 나머지가 조용히 빠지고, 그때\n목록은 「그 조건에 맞는 계열이 이것뿐」 이라고 거짓말한다.\n\n`q` 는 계열명·한글명·제조사를 함께 보고, `name` 은 **그 열만** 본다 — 화면은\n열마다 거르므로 뒤엣것을 쓴다.\n\n`test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이\n없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기\n거르는 조건이 같아야 한다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.",
         "operationId": "list_series_api_equipment_series_get",
         "parameters": [
           {
@@ -3985,6 +3998,19 @@
               "type": "boolean",
               "default": false,
               "title": "Owned"
+            }
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "title": "Attr"
             }
           },
           {
@@ -5364,6 +5390,7 @@
           "methods"
         ],
         "summary": "List Methods",
+        "description": "규격 목록.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.",
         "operationId": "list_methods_api_methods_get",
         "parameters": [
           {
@@ -5458,6 +5485,19 @@
               "type": "boolean",
               "default": false,
               "title": "Include Superseded"
+            }
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "title": "Attr"
             }
           },
           {
@@ -6845,7 +6885,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다\n쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다\n쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -6863,6 +6903,19 @@
                 }
               ],
               "title": "Workspace"
+            }
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "title": "Attr"
             }
           }
         ],
@@ -7050,6 +7103,50 @@
         "responses": {
           "204": {
             "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/equipment": {
+      "get": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Read Capability",
+        "description": "**이 시험을 돌릴 수 있는 장비.** 조건 속성(`kind=\"condition\"`)을 그대로 검색 조건으로\n옮겨 시험 항목마다 장비를 판정한다 — 판정 규칙은 장비 찾기와 같은 것 하나다.\n\n범위 속성 하나는 물음 둘이 된다(위로 얼마까지 · 아래로 얼마까지). 단위를 축의 SI 로\n못 바꾸는 조건은 빼고 `skipped` 에 이유를 적는다 — 조용히 빼면 조건을 다 본 것처럼\n「가능」 으로 읽힌다.\n\n부서로 좁히지 않는다. 옆 부서에 있으면 빌리러 가는 것이 이 시스템의 쓸모다.",
+        "operationId": "read_capability_api_reliability_tests__test_id__equipment_get",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CapabilityOut"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -9718,6 +9815,80 @@
           "label"
         ],
         "title": "CandidateOut"
+      },
+      "CapabilityItemOut": {
+        "properties": {
+          "term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Term Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "unmet_count": {
+            "type": "integer",
+            "title": "Unmet Count"
+          },
+          "hits": {
+            "items": {
+              "$ref": "#/components/schemas/SearchHit"
+            },
+            "type": "array",
+            "title": "Hits"
+          }
+        },
+        "type": "object",
+        "required": [
+          "term_id",
+          "value",
+          "total",
+          "unmet_count",
+          "hits"
+        ],
+        "title": "CapabilityItemOut",
+        "description": "이 시험이 쓰는 시험 항목 하나에 대한 답."
+      },
+      "CapabilityOut": {
+        "properties": {
+          "test_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Test Id"
+          },
+          "conditions_asked": {
+            "type": "integer",
+            "title": "Conditions Asked"
+          },
+          "skipped": {
+            "items": {
+              "$ref": "#/components/schemas/SkippedConditionOut"
+            },
+            "type": "array",
+            "title": "Skipped"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CapabilityItemOut"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "test_id",
+          "conditions_asked",
+          "skipped",
+          "items"
+        ],
+        "title": "CapabilityOut",
+        "description": "「이 시험, 어느 장비로 돌리나」 의 답 — 조건 속성을 그대로 검색 조건으로 옮긴 것."
       },
       "CatalogFilterOptionsOut": {
         "properties": {
@@ -18225,6 +18396,25 @@
           "workspace_slug"
         ],
         "title": "SignupRequest"
+      },
+      "SkippedConditionOut": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "label",
+          "reason"
+        ],
+        "title": "SkippedConditionOut",
+        "description": "물음에서 뺀 조건과 그 이유. **조용히 빼지 않는다** — 다 본 것처럼 읽힌다."
       },
       "SpecDefinitionCreateRequest": {
         "properties": {
