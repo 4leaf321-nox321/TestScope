@@ -38,6 +38,7 @@ import {
 import { useResource } from '@/shared/hooks/useResource'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
+import { GraphPanel } from '@/modules/graph/GraphPanel'
 import { methodApi } from '@/modules/methods/api'
 
 /** "제한 없음" 을 0 으로 적지 않는다 — 하한이 0 인 요구와 구별되지 않는다. */
@@ -163,6 +164,8 @@ export default function MethodDetailPage() {
           </div>
         </div>
       )}
+
+      <GraphPanel objectId={`method:${one.id}`} />
 
       <section className="space-y-3">
         <h2 className="text-base font-semibold">속성</h2>

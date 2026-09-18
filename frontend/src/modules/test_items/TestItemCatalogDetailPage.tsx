@@ -16,6 +16,7 @@ import { useAuth } from '@/shared/auth/AuthContext'
 import { isSystemAdmin } from '@/shared/auth/roles'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
 import { PageHeader } from '@/shared/components/PageHeader'
+import { GraphPanel } from '@/modules/graph/GraphPanel'
 import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Button } from '@/shared/components/ui/button'
 import {
@@ -356,6 +357,8 @@ export default function TestItemCatalogDetailPage() {
           </Table>
         )}
       </section>
+
+      <GraphPanel objectId={`test_item:${one.id}`} />
     </div>
   )
 }

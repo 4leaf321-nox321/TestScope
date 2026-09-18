@@ -22,6 +22,7 @@ import {
   Server,
   Tags,
   UserCog,
+  Waypoints,
   Users,
   Wrench,
 } from 'lucide-react'
@@ -206,6 +207,14 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '기준정보',
         icon: Tags,
         to: '/reference',
+      },
+      {
+        // **기준정보가 「무엇이 있나」 라면 지식 그래프는 「무엇이 무엇과 이어지나」.** 구조(종류와
+        // 관계 종류)와 탐색(하나의 주변) — StandardPlatform 의 것을 옮겨 왔다. 「전부」 를 그리는
+        // 단추는 없다: 상한을 서버가 강제하고, 잘린 자리에 「+N」 이 붙는다.
+        label: '지식 그래프',
+        icon: Waypoints,
+        to: '/graph',
       },
       // **정의 화면(시험 항목 검색 조건 · 장비 기종 사양 · 네 속성 정의)은 사이드바에 없다**
       // (2026-09-18). 전부 「기준정보」 안의 문이다 — 객체 종류를 고르면 그 종류의 정의 화면으로

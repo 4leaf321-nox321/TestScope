@@ -15,6 +15,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
+import { GraphPanel } from '@/modules/graph/GraphPanel'
 import { equipmentApi } from '@/modules/equipment/api'
 import { TestItemPanel } from '@/modules/equipment/TestItemPanel'
 import { CalibrationPanel } from '@/modules/equipment/CalibrationPanel'
@@ -124,6 +125,8 @@ export default function EquipmentDetailPage() {
       </dl>
 
       {one.note && <p className="text-sm">{one.note}</p>}
+
+      <GraphPanel objectId={`equipment:${one.id}`} />
 
       <Tabs defaultValue="test_items">
         <TabsList>

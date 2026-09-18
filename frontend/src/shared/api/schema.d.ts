@@ -2294,6 +2294,129 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/graph/overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Overview
+         * @description 정의 그래프 — 종류가 노드, 선 종류가 선. 선의 굵기는 실제로 걸린 수라 정의만 있고 비어
+         *     있는 선은 점선으로 드러난다.
+         */
+        get: operations["overview_api_graph_overview_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/graph/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Search
+         * @description 종류를 가리지 않고 시작점을 찾는다 — 무엇이 어느 종류인지 모르는 사람의 자리.
+         */
+        get: operations["search_api_graph_search_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/graph/browse": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Browse
+         * @description 한 종류를 이름순으로 쪽 단위로 — 훑어서 시작점을 고르는 길.
+         */
+        get: operations["browse_api_graph_browse_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/graph/neighborhood": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Neighborhood
+         * @description 시작점에서 depth 단계까지의 이웃. **한 단계씩, 노드마다 fanout 개까지, 전체 limit
+         *     개까지.** 잘리면 `truncated` 와 노드의 `degree` 로 잘렸다고 말한다.
+         */
+        get: operations["neighborhood_api_graph_neighborhood_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/graph/subgraph": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Subgraph
+         * @description 한 종류(들)의 노드를 **쪽 단위로** 전부, 그 사이의 선과 함께. 「N개 중 M개」.
+         */
+        get: operations["subgraph_api_graph_subgraph_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/graph/node": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Node
+         * @description 고른 노드의 요약 — 그래프를 떠나지 않고 「이게 뭐지」 에 답한다. 관계는 종류별로 화면이
+         *     묶는다.
+         */
+        get: operations["node_api_graph_node_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/notices": {
         parameters: {
             query?: never;
@@ -2926,6 +3049,17 @@ export interface components {
              */
             created_at: string;
         };
+        /** BrowseOut */
+        BrowseOut: {
+            /** Items */
+            items: components["schemas"]["SearchHitOut"][];
+            /** Total */
+            total: number;
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+        };
         /** CalibrationCreateRequest */
         CalibrationCreateRequest: {
             /**
@@ -3327,6 +3461,23 @@ export interface components {
             free_bytes: number;
             /** Used Percent */
             used_percent: number;
+        };
+        /** EdgeOut */
+        EdgeOut: {
+            /** Id */
+            id: string;
+            /** Relation */
+            relation: string;
+            /** Label */
+            label: string;
+            /** Inverse Label */
+            inverse_label: string;
+            /** Directed */
+            directed: boolean;
+            /** Src */
+            src: string;
+            /** Dst */
+            dst: string;
         };
         /**
          * EquipmentCreateRequest
@@ -4209,18 +4360,6 @@ export interface components {
             attributes?: components["schemas"]["AttributeValueIn"][] | null;
         };
         /**
-         * FactOut
-         * @description 대상을 이해하는 사실 한 줄. 「제조사: Instron」 「지금 하는 시험: 인장 · 압축」.
-         */
-        FactOut: {
-            /** Label */
-            label: string;
-            /** Value */
-            value: string;
-            /** Link */
-            link?: string | null;
-        };
-        /**
          * FilterOption
          * @description 거르기 한 칸이 고를 수 있는 값 하나. **수를 함께 준다.**
          *
@@ -4885,6 +5024,71 @@ export interface components {
             /** Source Page */
             source_page?: number | null;
         };
+        /** NeighborhoodOut */
+        NeighborhoodOut: {
+            /** Focus */
+            focus: string;
+            /** Nodes */
+            nodes: components["schemas"]["NodeOut"][];
+            /** Edges */
+            edges: components["schemas"]["EdgeOut"][];
+            /** Depth */
+            depth: number;
+            /** Fanout */
+            fanout: number;
+            /** Node Limit */
+            node_limit: number;
+            /** Truncated */
+            truncated: boolean;
+        };
+        /** NodeDetailOut */
+        NodeDetailOut: {
+            /** Id */
+            id: string;
+            /** Label */
+            label: string;
+            /** Key */
+            key: string | null;
+            /** Type Slug */
+            type_slug: string;
+            /** Type Label */
+            type_label: string;
+            /** Status */
+            status: string;
+            /** Detail Path */
+            detail_path: string | null;
+            /** Facts */
+            facts: components["schemas"]["app__modules__graph__schemas__FactOut"][];
+            /** Related */
+            related: components["schemas"]["RelatedOut"][];
+            /** Related Total */
+            related_total: number;
+        };
+        /** NodeOut */
+        NodeOut: {
+            /** Id */
+            id: string;
+            /** Label */
+            label: string;
+            /** Key */
+            key: string | null;
+            /** Sublabel */
+            sublabel: string | null;
+            /** Type Slug */
+            type_slug: string;
+            /** Type Label */
+            type_label: string;
+            /** Status */
+            status: string;
+            /** Owner Workspace Slug */
+            owner_workspace_slug: string | null;
+            /** Degree */
+            degree: number;
+            /** Truncated */
+            truncated: boolean;
+            /** Detail Path */
+            detail_path: string | null;
+        };
         /** NoticeOut */
         NoticeOut: {
             /**
@@ -4987,6 +5191,17 @@ export interface components {
             define_path: string | null;
             /** Note */
             note: string;
+        };
+        /** OverviewOut */
+        OverviewOut: {
+            /** Nodes */
+            nodes: components["schemas"]["TypeNodeOut"][];
+            /** Edges */
+            edges: components["schemas"]["TypeEdgeOut"][];
+            /** Object Count */
+            object_count: number;
+            /** Edge Count */
+            edge_count: number;
         };
         /** Page[AccessLogOut] */
         Page_AccessLogOut_: {
@@ -5180,7 +5395,7 @@ export interface components {
              * Facts
              * @default []
              */
-            facts: components["schemas"]["FactOut"][];
+            facts: components["schemas"]["app__modules__review__schemas__FactOut"][];
             /** Link */
             link: string | null;
             /** Candidates */
@@ -5279,6 +5494,21 @@ export interface components {
         RejectRequest: {
             /** Note */
             note: string;
+        };
+        /** RelatedOut */
+        RelatedOut: {
+            /** Relation */
+            relation: string;
+            /** Label */
+            label: string;
+            /** Outgoing */
+            outgoing: boolean;
+            /** Node Id */
+            node_id: string;
+            /** Node Label */
+            node_label: string;
+            /** Node Type Label */
+            node_type_label: string;
         };
         /** ReliabilityTestCreateRequest */
         ReliabilityTestCreateRequest: {
@@ -5589,6 +5819,21 @@ export interface components {
             conditions: components["schemas"]["ConditionMatch"][];
             /** Calibration Due On */
             calibration_due_on: string | null;
+        };
+        /** SearchHitOut */
+        SearchHitOut: {
+            /** Id */
+            id: string;
+            /** Label */
+            label: string;
+            /** Key */
+            key: string | null;
+            /** Sublabel */
+            sublabel: string | null;
+            /** Type Slug */
+            type_slug: string;
+            /** Type Label */
+            type_label: string;
         };
         /** SearchRequest */
         SearchRequest: {
@@ -5995,6 +6240,21 @@ export interface components {
             /** Published On */
             published_on: string | null;
         };
+        /** SubgraphOut */
+        SubgraphOut: {
+            /** Nodes */
+            nodes: components["schemas"]["NodeOut"][];
+            /** Edges */
+            edges: components["schemas"]["EdgeOut"][];
+            /** Total */
+            total: number;
+            /** Limit */
+            limit: number;
+            /** Offset */
+            offset: number;
+            /** Truncated */
+            truncated: boolean;
+        };
         /**
          * SystemAdminRequest
          * @description 시스템 관리자 권한을 주거나 뺀다.
@@ -6322,6 +6582,38 @@ export interface components {
             /** Method Codes */
             method_codes: string[];
         };
+        /** TypeEdgeOut */
+        TypeEdgeOut: {
+            /** Relation */
+            relation: string;
+            /** Label */
+            label: string;
+            /** Inverse Label */
+            inverse_label: string;
+            /** Directed */
+            directed: boolean;
+            /** Src Type */
+            src_type: string;
+            /** Dst Type */
+            dst_type: string;
+            /** Count */
+            count: number;
+        };
+        /** TypeNodeOut */
+        TypeNodeOut: {
+            /** Slug */
+            slug: string;
+            /** Label */
+            label: string;
+            /** Icon */
+            icon: string;
+            /** Layer */
+            layer: string;
+            /** Count */
+            count: number;
+            /** Detail Path */
+            detail_path: string | null;
+        };
         /** UnreadCountOut */
         UnreadCountOut: {
             /** Unread */
@@ -6606,6 +6898,25 @@ export interface components {
             restricted?: boolean | null;
             /** Reliability Listed */
             reliability_listed?: boolean | null;
+        };
+        /** FactOut */
+        app__modules__graph__schemas__FactOut: {
+            /** Label */
+            label: string;
+            /** Value */
+            value: string;
+        };
+        /**
+         * FactOut
+         * @description 대상을 이해하는 사실 한 줄. 「제조사: Instron」 「지금 하는 시험: 인장 · 압축」.
+         */
+        app__modules__review__schemas__FactOut: {
+            /** Label */
+            label: string;
+            /** Value */
+            value: string;
+            /** Link */
+            link?: string | null;
         };
     };
     responses: never;
@@ -11204,6 +11515,206 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ObjectKindOut"][];
+                };
+            };
+        };
+    };
+    overview_api_graph_overview_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OverviewOut"];
+                };
+            };
+        };
+    };
+    search_api_graph_search_get: {
+        parameters: {
+            query: {
+                /** @description 이름·코드·별칭·자산번호의 일부 */
+                q: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SearchHitOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    browse_api_graph_browse_get: {
+        parameters: {
+            query: {
+                /** @description 종류 slug */
+                type: string;
+                q?: string | null;
+                limit?: number;
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BrowseOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    neighborhood_api_graph_neighborhood_get: {
+        parameters: {
+            query: {
+                /** @description 시작 노드 id (<종류>:<uuid>) */
+                focus: string;
+                /** @description 몇 단계까지. 최대 6 */
+                depth?: number | null;
+                /** @description 노드 하나가 데려오는 이웃 수. 최대 500 */
+                fanout?: number | null;
+                /** @description 노드 상한. 최대 20000 */
+                limit?: number | null;
+                /** @description 선 종류 slug, 쉼표로 */
+                relations?: string | null;
+                /** @description 이웃 종류 slug, 쉼표로 */
+                types?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NeighborhoodOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    subgraph_api_graph_subgraph_get: {
+        parameters: {
+            query: {
+                /** @description 종류 slug, 쉼표로 */
+                types: string;
+                /** @description 선 종류 slug, 쉼표로 */
+                relations?: string | null;
+                /** @description 이름의 일부 */
+                q?: string | null;
+                /** @description 노드 상한. 최대 20000 */
+                limit?: number | null;
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubgraphOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    node_api_graph_node_get: {
+        parameters: {
+            query: {
+                /** @description 노드 id (<종류>:<uuid>) */
+                id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NodeDetailOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

@@ -38,6 +38,7 @@ import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import type { ConditionKey } from '@/modules/vocabulary/api'
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
+import { GraphPanel } from '@/modules/graph/GraphPanel'
 import { catalogApi, seriesApi } from '@/modules/equipment/api'
 import type { EquipmentSeries } from '@/modules/equipment/api'
 import { propertyApi } from '@/modules/properties/api'
@@ -230,6 +231,8 @@ export default function EquipmentSeriesDetailPage() {
         setNewItem={setNewItem}
         act={act}
       />
+
+      <GraphPanel objectId={`series:${one.id}`} />
 
       <section className="space-y-3">
         <div>
