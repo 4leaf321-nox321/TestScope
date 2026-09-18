@@ -21,7 +21,8 @@ from sqlalchemy.orm import Session
 from app.modules.accounts.models import User
 from app.modules.auth import security
 from app.modules.auth.models import PersonalAccessToken
-from tests.api.conftest import Signed
+from app.modules.workspaces.models import Workspace, WorkspaceMember
+from tests.api.conftest import Signed, category_id, site_id
 
 
 def _token(client: TestClient, admin: Signed, scopes: list[str]) -> dict[str, str]:
@@ -76,6 +77,93 @@ def test_토큰은_준_범위_안에서만_쓴다(client: TestClient, admin: Sig
     assert elsewhere.json()["error"]["code"] == "TSC-AUTH-0105"
 
 
+def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, admin: Signed) -> None:
+    """**도구를 더하면 그 경로가 기계 자격으로 열려 있는지 여기서 본다.**
+
+    범위 표(`shared/auth._WRITE_SCOPES`)에 없는 경로는 어느 범위로도 못 쓴다 — 그것이
+    규칙이고, 그래서 새 도구가 조용히 403 을 받는 일이 생긴다. MCP 도구가 실제로 부르는
+    경로를 여기서 한 번 눌러 본다: 기준정보 값·신뢰성 시험·속성 정의는 되고, 검토함의
+    확정은 **안 되는 것이 맞다**(고른 것이 곧 카탈로그 정본이라 사람이 화면에서 한다).
+    """
+    read_only = _token(client, admin, ["read"])
+    catalog = _token(client, admin, ["read", "catalog:write"])
+    equipment = _token(client, admin, ["read", "equipment:write"])
+    tag = uuid.uuid4().hex[:6]
+
+    # 기준정보 값 — catalog:write.
+    term = client.post(
+        "/api/vocabularies/test_item/terms", json={"value": f"MCP인장-{tag}"}, headers=catalog
+    )
+    assert term.status_code == 201, term.text
+    assert (
+        client.post(
+            "/api/vocabularies/test_item/terms",
+            json={"value": f"MCP경도-{tag}"},
+            headers=read_only,
+        ).status_code
+        == 403
+    )
+
+    # 속성 정의 — catalog:write.
+    definition = client.post(
+        "/api/attribute-definitions",
+        json={
+            "target": "reliability_test",
+            "label": f"시험 온도-{tag}",
+            "key": f"mcp_temp_{tag}",
+            "kind": "number",
+            "unit": "degC",
+            "status": "standard",
+        },
+        headers=catalog,
+    )
+    assert definition.status_code == 201, definition.text
+
+    # 신뢰성 시험 — 부서 것이라 equipment:write.
+    test = client.post(
+        "/api/reliability-tests",
+        json={
+            "workspace_slug": admin.workspace,
+            "name": f"MCP 고온고습-{tag}",
+            "test_item_term_ids": [term.json()["id"]],
+            "attributes": [
+                {"definition_id": definition.json()["id"], "num_value": 85, "unit": "degC"}
+            ],
+        },
+        headers=equipment,
+    )
+    assert test.status_code == 201, test.text
+    assert (
+        client.post(
+            "/api/reliability-tests",
+            json={"workspace_slug": admin.workspace, "name": f"막힘-{tag}"},
+            headers=catalog,
+        ).status_code
+        == 403
+    ), "카탈로그 범위로 부서의 시험을 못 만든다"
+
+    # 읽기 도구들은 read 하나로 된다 — 가능한 장비·그래프·검토함.
+    for path, params in (
+        (f"/api/reliability-tests/{test.json()['id']}/equipment", None),
+        ("/api/attribute-definitions", {"target": "reliability_test"}),
+        ("/api/reference/overview", None),
+        ("/api/graph/overview", None),
+        ("/api/graph/search", {"q": tag}),
+        ("/api/review", None),
+    ):
+        reading = client.get(path, params=params, headers=read_only)
+        assert reading.status_code == 200, f"{path}: {reading.text}"
+
+    # **검토함의 확정은 기계 자격으로 안 연다.** 버그가 아니라 결정이다.
+    blocked = client.post(
+        f"/api/review/attribute_drafts/{uuid.uuid4()}/decide",
+        json={"choice": ["keep"]},
+        headers=catalog,
+    )
+    assert blocked.status_code == 403
+    assert blocked.json()["error"]["code"] == "TSC-AUTH-0105"
+
+
 def _resolve(client: TestClient, headers: dict[str, str], **body: object) -> dict[str, Any]:
     response = client.post("/api/resolve", json=body, headers=headers)
     assert response.status_code == 200, response.text
@@ -123,6 +211,123 @@ def test_해석은_셋으로_답한다(
     )
     assert missing.status_code == 400
     assert missing.json()["error"]["code"] == "TSC-RESOLVE-0001"
+
+
+def test_부서의_것도_이름으로_하나로_정한다(
+    client: TestClient, admin: Signed, db: Session, workspace: Workspace
+) -> None:
+    """**목록을 주면 AI 는 첫 줄을 집는다.** 「고온고습 1000h」 는 거의 모든 부서에 하나씩
+    있으므로, 이름이 정확히 같아도 둘이면 exact 가 아니라 candidates 여야 한다 — 부서를
+    함께 주면 그때 하나로 줄어든다. 장비는 자산번호가 유일하니 그것만 exact 다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    other = Workspace(slug=f"lab-{tag}", name=f"신뢰성팀-{tag}")
+    db.add(other)
+    db.commit()
+
+    name = f"고온고습 1000h-{tag}"
+    for slug in (admin.workspace, other.slug):
+        made = client.post(
+            "/api/reliability-tests",
+            json={"workspace_slug": slug, "name": name},
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+    both = _resolve(client, admin.headers, kind="reliability_test", text=name)
+    assert both["match"] == "candidates", "같은 이름이 둘인데 하나로 정하면 안 된다"
+    assert {one["detail"] for one in both["candidates"]} == {"시험팀", f"신뢰성팀-{tag}"}
+    assert "사람에게" in both["hint"]
+
+    one_team = _resolve(
+        client, admin.headers, kind="reliability_test", text=name, workspace=other.slug
+    )
+    assert one_team["match"] == "exact" and one_team["label"] == name
+
+    # 부서 자신도 찾는다 — 쓰기 API 가 요구하는 것은 이름이 아니라 slug 다.
+    found = _resolve(client, admin.headers, kind="workspace", text=f"신뢰성팀-{tag}")
+    assert found["match"] == "exact" and found["candidates"][0]["detail"] == f"slug: lab-{tag}"
+
+    # 장비 — 자산번호는 유일하니 exact, 이름은 여럿이면 후보다.
+    for index in (1, 2):
+        client.post(
+            "/api/equipment",
+            json={
+                "asset_no": f"UTM-{tag}-{index}",
+                "name": f"만능재료시험기-{tag}",
+                "workspace_slug": admin.workspace,
+                "site_term_id": site_id(client, admin),
+                "location": "3동",
+                "category_term_id": category_id(client, admin),
+            },
+            headers=admin.headers,
+        )
+    by_asset = _resolve(client, admin.headers, kind="equipment", text=f"UTM-{tag}-1")
+    assert by_asset["match"] == "exact"
+    assert by_asset["label"] == f"만능재료시험기-{tag} (UTM-{tag}-1)"
+    by_name = _resolve(client, admin.headers, kind="equipment", text=f"만능재료시험기-{tag}")
+    assert by_name["match"] == "candidates" and len(by_name["candidates"]) == 2
+
+    # 없는 이름은 none — **지어내지 말라**는 안내가 함께 온다.
+    empty = _resolve(client, admin.headers, kind="reliability_test", text=f"없는시험-{tag}")
+    assert empty["match"] == "none" and "비슷한 이름을" in empty["hint"]
+
+    # 없는 부서로 좁히면 조용히 무시하지 않고 거절한다 — 무시하면 전사 결과를 부서
+    # 결과로 오해한다.
+    bad = client.post(
+        "/api/resolve",
+        json={"kind": "reliability_test", "text": name, "workspace": f"없는부서-{tag}"},
+        headers=admin.headers,
+    )
+    assert bad.status_code == 400
+
+
+def test_가린_부서의_장비는_후보에도_안_선다(
+    client: TestClient, admin: Signed, db: Session, workspace: Workspace
+) -> None:
+    """resolve 는 목록과 **같은 가시성 규칙**을 쓴다. 안 그러면 못 보는 장비의 id 가
+    후보로 흘러나오고, 그 id 로 부른 다음 요청이 404 로 끝난다."""
+    tag = uuid.uuid4().hex[:6]
+    made = client.post(
+        "/api/equipment",
+        json={
+            "asset_no": f"HID-{tag}",
+            "name": f"가린 챔버-{tag}",
+            "workspace_slug": admin.workspace,
+            "site_term_id": site_id(client, admin),
+            "location": "3동",
+            "category_term_id": category_id(client, admin),
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    assert (
+        _resolve(client, admin.headers, kind="equipment", text=f"HID-{tag}")["match"]
+        == "exact"
+    )
+
+    workspace.restricted = True
+    other = Workspace(slug=f"out-{tag}", name="다른팀")
+    db.add(other)
+    db.flush()
+    email = f"outsider-{tag}@testscope.local"
+    member = User(
+        email=email,
+        password_hash=security.hash_password("member-password"),
+        display_name="멤버",
+        status="active",
+        home_workspace_id=other.id,
+    )
+    db.add(member)
+    db.flush()
+    db.add(WorkspaceMember(workspace_id=other.id, user_id=member.id, role="member"))
+    db.commit()
+    token = client.post(
+        "/api/auth/login", json={"email": email, "password": "member-password"}
+    ).json()["access_token"]
+    outsider = {"Authorization": f"Bearer {token}"}
+
+    assert _resolve(client, outsider, kind="equipment", text=f"HID-{tag}")["match"] == "none"
 
 
 def test_이름으로_써도_되지만_모호하면_거절한다(

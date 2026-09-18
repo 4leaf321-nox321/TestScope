@@ -1503,7 +1503,7 @@
           "resolve"
         ],
         "summary": "Resolve",
-        "description": "이름으로 계열·기종·기준정보 값·시험법을 찾는다.\n\n**무엇을 만들기 전에 이것을 먼저 부른다.** 응답의 `match` 가 셋이다:\n\n    exact       하나로 정해졌다. `id` 를 그대로 쓴다\n    candidates  여럿이다. 고르지 말고 사람에게 묻는다\n    none        없다. 새로 만들거나 비워 둔다 — **지어내지 않는다**\n\n못 찾은 것은 실패가 아니라서 언제나 200 이다. `hint` 에 다음에 할 일이 한 줄로\n적혀 있다.",
+        "description": "이름으로 계열·기종·기준정보 값·시험법·신뢰성 시험·보유 장비·부서를 찾는다.\n\n**무엇을 만들기 전에 이것을 먼저 부른다.** 응답의 `match` 가 셋이다:\n\n    exact       하나로 정해졌다. `id` 를 그대로 쓴다\n    candidates  여럿이다. 고르지 말고 사람에게 묻는다\n    none        없다. 새로 만들거나 비워 둔다 — **지어내지 않는다**\n\n못 찾은 것은 실패가 아니라서 언제나 200 이다. `hint` 에 다음에 할 일이 한 줄로\n적혀 있다.\n\n**부서가 가진 것은 이름이 겹친다.** 「고온고습 1000h」 는 거의 모든 부서에 하나씩\n있으므로, 이름이 정확히 같아도 둘 이상이면 `candidates` 다 — `workspace` 를 함께\n주면 하나로 줄어든다. 보유 장비는 **볼 수 있는 것만** 본다(가린 부서 것은 후보에도\n안 선다).",
         "operationId": "resolve_api_resolve_post",
         "requestBody": {
           "content": {
@@ -17441,7 +17441,7 @@
         "properties": {
           "kind": {
             "type": "string",
-            "pattern": "^(series|model|term|method)$",
+            "pattern": "^(series|model|term|method|reliability_test|equipment|workspace)$",
             "title": "Kind"
           },
           "text": {
@@ -17471,6 +17471,17 @@
               }
             ],
             "title": "Maker"
+          },
+          "workspace": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workspace"
           },
           "limit": {
             "type": "integer",

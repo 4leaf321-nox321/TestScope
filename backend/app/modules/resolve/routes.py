@@ -21,10 +21,10 @@ router = APIRouter(prefix="/resolve", tags=["resolve"])
 @router.post("", response_model=ResolveResponse)
 def resolve(
     payload: ResolveRequest,
-    _: User = Depends(current_user),
+    user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> ResolveResponse:
-    """이름으로 계열·기종·기준정보 값·시험법을 찾는다.
+    """이름으로 계열·기종·기준정보 값·시험법·신뢰성 시험·보유 장비·부서를 찾는다.
 
     **무엇을 만들기 전에 이것을 먼저 부른다.** 응답의 `match` 가 셋이다:
 
@@ -34,5 +34,10 @@ def resolve(
 
     못 찾은 것은 실패가 아니라서 언제나 200 이다. `hint` 에 다음에 할 일이 한 줄로
     적혀 있다.
+
+    **부서가 가진 것은 이름이 겹친다.** 「고온고습 1000h」 는 거의 모든 부서에 하나씩
+    있으므로, 이름이 정확히 같아도 둘 이상이면 `candidates` 다 — `workspace` 를 함께
+    주면 하나로 줄어든다. 보유 장비는 **볼 수 있는 것만** 본다(가린 부서 것은 후보에도
+    안 선다).
     """
-    return services.resolve(db, payload.model_dump())
+    return services.resolve(db, payload.model_dump(), user=user)

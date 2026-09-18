@@ -15,15 +15,25 @@ class ResolveRequest(BaseModel):
     구별해 주지 않기 때문이다.
     """
 
-    kind: str = Field(pattern="^(series|model|term|method)$")
-    """무엇을 찾나. `term` 이면 `axis` 를 함께 준다."""
+    kind: str = Field(
+        pattern="^(series|model|term|method|reliability_test|equipment|workspace)$"
+    )
+    """무엇을 찾나. `term` 이면 `axis` 를 함께 준다.
+
+    카탈로그(series·model·term·method)뿐 아니라 **부서가 가진 것**(reliability_test ·
+    equipment)과 부서 자신(workspace)도 여기서 찾는다 — 목록으로 찾게 두면 AI 가 첫 줄을
+    집고, 「고온고습」 이 부서마다 하나씩 있는 표에서 그것은 곧 틀린 줄이다."""
     text: str = Field(min_length=1, max_length=300)
-    """사람이 쓰는 말 그대로. `Instron 68FM-300` · `인스트론 6800 시리즈` · `인장`."""
+    """사람이 쓰는 말 그대로. `Instron 68FM-300` · `인스트론 6800 시리즈` · `인장` ·
+    `고온고습 1000h` · `UTM-301`."""
     axis: str | None = None
     """`kind=term` 일 때 어느 축인가 — manufacturer · equipment_category ·
     test_item · site · standard_body."""
     maker: str | None = None
     """제조사를 알면 준다. 같은 이름의 기종이 제조사마다 있을 때 후보가 줄어든다."""
+    workspace: str | None = None
+    """부서(slug)를 알면 준다. **같은 이름의 시험이 부서마다 있다** — 「고온고습 1000h」 는
+    거의 모든 부서에 있고, 부서를 안 주면 후보가 다섯씩 뜬다."""
     limit: int = Field(default=8, ge=1, le=25)
 
 

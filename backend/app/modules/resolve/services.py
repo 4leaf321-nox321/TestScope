@@ -31,12 +31,16 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.modules.equipment.models import EquipmentModel, EquipmentSeries
+from app.modules.accounts.models import User
+from app.modules.equipment.models import Equipment, EquipmentModel, EquipmentSeries
 from app.modules.methods.models import TestMethod
+from app.modules.reliability.models import ReliabilityTest
 from app.modules.resolve.schemas import ResolveCandidate, ResolveResponse
 from app.modules.vocabulary.models import Vocabulary, VocabularyAlias, VocabularyTerm
+from app.modules.workspaces.models import Workspace
 from app.shared import semantic
 from app.shared.errors import AppError
+from app.shared.permissions import visible_equipment
 from app.shared.text import clean, compare_key
 
 _EXACT = "정확히 같음"
@@ -309,11 +313,155 @@ def _resolve_method(db: Session, text: str, limit: int) -> ResolveResponse:
     return _answer(None, candidates)
 
 
-def resolve(db: Session, payload: dict[str, Any]) -> ResolveResponse:
+def _workspace_id(db: Session, slug: str | None) -> uuid.UUID | None:
+    """부서 slug -> id. 없는 slug 는 거절한다 — 조용히 무시하면 **부서를 좁힌 줄 알고**
+    받은 후보를 사람이 전사 것으로 오해한다."""
+    if not slug:
+        return None
+    row = db.scalar(select(Workspace).where(Workspace.slug == slug))
+    if row is None:
+        raise AppError("TSC-RESOLVE-0004", f"없는 부서입니다: {slug}", status=400)
+    return row.id
+
+
+def _resolve_reliability_test(
+    db: Session, text: str, workspace: str | None, limit: int
+) -> ResolveResponse:
+    """부서가 등록한 시험 절차를 찾는다. **이름은 부서를 가로질러 겹친다.**
+
+    「고온고습 1000h」 는 거의 모든 부서에 하나씩 있다. 그래서 이름이 정확히 같아도
+    **둘 이상이면 exact 가 아니다** — 부서(`workspace`)를 함께 주거나, 사람에게 어느
+    부서의 것인지 물어야 한다. 이름표에 부서를 붙여 후보끼리 구별되게 한다.
+    """
+    stmt = select(ReliabilityTest).where(ReliabilityTest.deleted_at.is_(None))
+    picked = _workspace_id(db, workspace)
+    if picked is not None:
+        stmt = stmt.where(ReliabilityTest.workspace_id == picked)
+
+    def _label(row: ReliabilityTest) -> tuple[str, str | None]:
+        team = db.get(Workspace, row.workspace_id)
+        return row.name, team.name if team else None
+
+    key = compare_key(text)
+    same = [row for row in db.scalars(stmt) if compare_key(row.name) == key]
+    if len(same) == 1:
+        head, detail = _label(same[0])
+        return _answer(
+            ResolveCandidate(id=same[0].id, label=head, detail=detail, why=_EXACT), []
+        )
+    if len(same) > 1:
+        # **같은 이름이 여럿이면 고르지 않는다.** 부서를 주면 하나로 줄어든다.
+        return _answer(
+            None,
+            [
+                ResolveCandidate(
+                    id=row.id, label=_label(row)[0], detail=_label(row)[1], why=_EXACT
+                )
+                for row in same[:limit]
+            ],
+        )
+
+    like = f"%{clean(text)}%"
+    rows = db.scalars(
+        stmt.where(ReliabilityTest.name.ilike(like) | ReliabilityTest.purpose.ilike(like))
+        .order_by(ReliabilityTest.name)
+        .limit(limit)
+    ).all()
+    return _answer(
+        None,
+        [
+            ResolveCandidate(id=row.id, label=_label(row)[0], detail=_label(row)[1], why=_PART)
+            for row in rows
+        ],
+    )
+
+
+def _resolve_equipment(
+    db: Session, user: User, text: str, workspace: str | None, limit: int
+) -> ResolveResponse:
+    """보유 장비를 자산번호·이름으로 찾는다. **볼 수 있는 것만** 본다.
+
+    자산번호는 유일하므로 그것이 정확히 맞으면 exact 다. 이름은 안 그렇다 —
+    「만능재료시험기」 는 한 부서에만 넷일 수 있고, 그때 첫 줄을 집으면 하중이 다른 장비의
+    수치로 답하게 된다(계열이 아니라 기종을 가리키게 한 것과 같은 이유다).
+    """
+    stmt = visible_equipment(db, user)
+    picked = _workspace_id(db, workspace)
+    if picked is not None:
+        stmt = stmt.where(Equipment.owner_workspace_id == picked)
+
+    def _label(row: Equipment) -> tuple[str, str | None]:
+        team = db.get(Workspace, row.owner_workspace_id) if row.owner_workspace_id else None
+        place = " · ".join(
+            part for part in (team.name if team else None, row.location) if part
+        )
+        return f"{row.name} ({row.asset_no})", place or None
+
+    key = compare_key(text)
+    by_asset = [row for row in db.scalars(stmt) if compare_key(row.asset_no) == key]
+    if len(by_asset) == 1:
+        head, detail = _label(by_asset[0])
+        return _answer(
+            ResolveCandidate(id=by_asset[0].id, label=head, detail=detail, why=_EXACT), []
+        )
+
+    like = f"%{clean(text)}%"
+    rows = db.scalars(
+        stmt.where(Equipment.asset_no.ilike(like) | Equipment.name.ilike(like))
+        .order_by(Equipment.asset_no)
+        .limit(limit)
+    ).all()
+    return _answer(
+        None,
+        [
+            ResolveCandidate(id=row.id, label=_label(row)[0], detail=_label(row)[1], why=_PART)
+            for row in rows
+        ],
+    )
+
+
+def _resolve_workspace(db: Session, text: str, limit: int) -> ResolveResponse:
+    """부서를 slug 나 이름으로 찾는다. **쓰기 API 가 요구하는 것은 slug 다.**
+
+    「DX 부문」 이라고 말한 사람에게 필요한 것은 `dx` 이고, 그 둘을 잇는 자리가 여기다 —
+    없으면 AI 가 이름을 slug 로 짐작해 넣고, 그 짐작은 대개 404 이거나 남의 부서다.
+    """
+    key = compare_key(text)
+    rows = list(db.scalars(select(Workspace)))
+    same = [row for row in rows if key in (compare_key(row.slug), compare_key(row.name))]
+    if len(same) == 1:
+        return _answer(
+            ResolveCandidate(
+                id=same[0].id, label=same[0].name, detail=f"slug: {same[0].slug}", why=_EXACT
+            ),
+            [],
+        )
+    text_key = clean(text).casefold()
+    found = [
+        row
+        for row in rows
+        if text_key in row.name.casefold() or text_key in row.slug.casefold()
+    ]
+    return _answer(
+        None,
+        [
+            ResolveCandidate(id=row.id, label=row.name, detail=f"slug: {row.slug}", why=_PART)
+            for row in found[:limit]
+        ],
+    )
+
+
+def resolve(
+    db: Session, payload: dict[str, Any], *, user: User | None = None
+) -> ResolveResponse:
+    """이름 하나를 id 로. `kind="equipment"` 만 **보는 사람**이 필요하다 — 가시성이
+    사람마다 다르기 때문이다(가린 부서의 장비는 후보에도 안 선다). 서버 안쪽에서 규격을
+    집을 때처럼 사람이 없는 자리도 있어 선택 인자로 둔다."""
     kind = payload["kind"]
     text = payload["text"]
     limit = payload.get("limit") or 8
     maker = payload.get("maker")
+    workspace = payload.get("workspace")
 
     if kind == "series":
         return _resolve_series(db, text, maker, limit)
@@ -321,6 +469,16 @@ def resolve(db: Session, payload: dict[str, Any]) -> ResolveResponse:
         return _resolve_model(db, text, maker, limit)
     if kind == "term":
         return _resolve_term(db, text, payload.get("axis"), limit)
+    if kind == "reliability_test":
+        return _resolve_reliability_test(db, text, workspace, limit)
+    if kind == "equipment":
+        if user is None:  # pragma: no cover - 라우터는 늘 사람을 준다
+            raise AppError(
+                "TSC-RESOLVE-0005", "보유 장비는 보는 사람이 있어야 찾습니다.", status=400
+            )
+        return _resolve_equipment(db, user, text, workspace, limit)
+    if kind == "workspace":
+        return _resolve_workspace(db, text, limit)
     return _resolve_method(db, text, limit)
 
 
