@@ -21,6 +21,8 @@ export const methodApi = {
     /** `owned` 면 보유 장비의 시험 항목이 실제로 가리키는 규격만 — 요구 조건은 여기부터. */
     used?: string
     includeSuperseded?: boolean
+    /** 속성 값으로 거른다 — `키>=값` 꼴, 여러 개면 **모두** 만족해야 한다. */
+    attrs?: string[]
   }) => {
     const search = new URLSearchParams()
     if (params.q) search.set('q', params.q)
@@ -29,6 +31,7 @@ export const methodApi = {
     if (params.cited) search.set('cited', params.cited)
     if (params.used) search.set('used', params.used)
     if (params.includeSuperseded) search.set('include_superseded', 'true')
+    for (const one of params.attrs ?? []) search.append('attr', one)
     const query = search.toString()
     return api.get<MethodPage>(`/methods${query ? `?${query}` : ''}`)
   },

@@ -33,6 +33,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { methodApi } from '@/modules/methods/api'
 import { NewMethodDialog } from '@/modules/methods/NewMethodDialog'
@@ -49,6 +50,8 @@ export default function MethodsPage() {
   const used = params.get('used') ?? undefined
   const [query, setQuery] = useState('')
   const [includeSuperseded, setIncludeSuperseded] = useState(false)
+  // 속성 조건은 주소에 실린다 — 물은 화면을 그대로 보낼 수 있다.
+  const [attrs, setAttrs] = useState<string[]>(() => params.getAll('attr'))
   const [creating, setCreating] = useState(false)
   const [importing, setImporting] = useState(false)
   const page = useResource(
@@ -60,8 +63,9 @@ export default function MethodsPage() {
         cited,
         used,
         includeSuperseded,
+        attrs,
       }),
-    [query, requirement, testItem, cited, used, includeSuperseded],
+    [query, requirement, testItem, cited, used, includeSuperseded, attrs],
   )
   const filtered =
     requirement === 'none' || testItem === 'none' || cited === 'none' || used === 'owned'
@@ -96,6 +100,9 @@ export default function MethodsPage() {
           ) : undefined
         }
       />
+
+      {/* 속성 값으로 거르기 — 규격에 붙인 관리자 정의 칸을 되찾는 길. */}
+      <AttributeFilterBar target="method" value={attrs} onChange={setAttrs} />
 
       <div className="flex flex-wrap items-center gap-3">
         <Input

@@ -15,6 +15,7 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment import catalog
@@ -265,6 +266,7 @@ def list_equipment(
     catalog: str | None = None,
     calibration: str | None = None,
     shared_use: bool | None = None,
+    attrs: list[str] | None = None,
     limit: int,
     offset: int,
 ) -> Page[EquipmentOut]:
@@ -342,6 +344,15 @@ def list_equipment(
         stmt = stmt.where(
             Equipment.owner_workspace_id == (workspace.id if workspace else None)
         )
+
+    # 속성 값으로도 거른다 — 적어 둔 것을 되찾을 길이 없으면 아무도 안 적는다.
+    stmt = attribute_filters.apply(
+        db,
+        stmt,
+        "equipment",
+        Equipment.id,
+        attribute_filters.parse(db, "equipment", attrs or []),
+    )
 
     # **total 을 함께 준다.** 없으면 화면이 다음 쪽 유무를 알려고 한 건 더 요청하는
     # 편법을 쓰게 되고, 그 편법은 화면마다 달라진다.

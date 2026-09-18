@@ -10,6 +10,7 @@ from sqlalchemy import Select, func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import EquipmentSeries
@@ -239,6 +240,7 @@ def list_methods(
     cited: str | None = None,
     used: str | None = None,
     include_superseded: bool,
+    attrs: list[str] | None = None,
     limit: int,
     offset: int,
 ) -> Page[MethodOut]:
@@ -280,6 +282,10 @@ def list_methods(
         # **기본은 현행만.** 대체된 판이 섞여 있으면 사람이 옛 규격을 고르고,
         # 그 사실은 시험이 끝난 뒤에야 드러난다.
         stmt = stmt.where(TestMethod.status != "superseded")
+
+    stmt = attribute_filters.apply(
+        db, stmt, "method", TestMethod.id, attribute_filters.parse(db, "method", attrs or [])
+    )
 
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
     rows = list(

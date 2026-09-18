@@ -67,6 +67,8 @@ export const equipmentApi = {
     /** `required` 대상 전부 · `exempt` 대상 아님 · `missing` 이력 없음 · `overdue` 기한 지남. */
     calibration?: string
     sharedUse?: boolean
+    /** 속성 값으로 거른다 — `키>=값` 꼴, 여러 개면 **모두** 만족해야 한다. */
+    attrs?: string[]
     limit?: number
     offset?: number
   }) => {
@@ -84,6 +86,7 @@ export const equipmentApi = {
     if (params.catalog) search.set('catalog', params.catalog)
     if (params.calibration) search.set('calibration', params.calibration)
     if (params.sharedUse !== undefined) search.set('shared_use', String(params.sharedUse))
+    for (const one of params.attrs ?? []) search.append('attr', one)
     if (params.limit) search.set('limit', String(params.limit))
     if (params.offset) search.set('offset', String(params.offset))
     const query = search.toString()
@@ -188,6 +191,8 @@ export const seriesApi = {
     testItem?: string
     /** 보유 장비가 가리키는 계열만. 홈의 「남은 일」 이 이걸로 링크한다. */
     owned?: boolean
+    /** 속성 값으로 거른다 — `키>=값` 꼴, 여러 개면 **모두** 만족해야 한다. */
+    attrs?: string[]
     limit?: number
     offset?: number
   }) => {
@@ -201,6 +206,7 @@ export const seriesApi = {
     if (params.models) search.set('models', params.models)
     if (params.testItem) search.set('test_item', params.testItem)
     if (params.owned) search.set('owned', 'true')
+    for (const one of params.attrs ?? []) search.append('attr', one)
     if (params.limit) search.set('limit', String(params.limit))
     if (params.offset) search.set('offset', String(params.offset))
     const query = search.toString()

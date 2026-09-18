@@ -36,6 +36,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { seriesApi } from '@/modules/equipment/api'
 import {
@@ -76,6 +77,8 @@ export default function EquipmentSeriesPage() {
   const [typed, setTyped] = useState<SeriesFilterState>(fromUrl)
   const [filters, setFilters] = useState<SeriesFilterState>(fromUrl)
   const [offset, setOffset] = useState(0)
+  // 속성 조건 — 목록마다 같은 칸, 같은 문법.
+  const [attrs, setAttrs] = useState<string[]>([])
   const [creating, setCreating] = useState(false)
 
   // 글자마다 조회하지 않는다 — 타이핑 중에 결과가 요동치면 읽는 눈이 미끄러진다.
@@ -104,10 +107,11 @@ export default function EquipmentSeriesPage() {
         models: filters.models || undefined,
         testItem: filters.testItem || undefined,
         owned: filters.owned === 'owned',
+        attrs,
         limit: PAGE_SIZE,
         offset,
       }),
-    [filters, offset],
+    [filters, attrs, offset],
   )
 
   return (
@@ -127,6 +131,9 @@ export default function EquipmentSeriesPage() {
           ) : undefined
         }
       />
+
+      {/* 속성 값으로 거르기 — 관리자가 정의한 칸은 열이 아니라 행이라 여기서만 되찾는다. */}
+      <AttributeFilterBar target="series" value={attrs} onChange={setAttrs} />
 
       {/* 찾는 칸은 **열마다** 있다(머리글 아래) — 여기 또 두면 같은 일을 하는 칸이
           둘이 되고, 둘은 반드시 어긋난다. */}

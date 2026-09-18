@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+import re
 import uuid
 from typing import Any
 
@@ -183,6 +184,19 @@ def _auto_key() -> str:
     return f"draft-{uuid.uuid4().hex[:8]}"
 
 
+#: key 에 쓸 수 있는 글자. **주소에 그대로 실리는 이름**이라(`?attr=invest_year>=2020`)
+#: 한글·공백·연산자 글자가 들어가면 그 속성은 영영 못 거른다 — 적어 두고 못 찾는 칸이 된다.
+_KEY_SHAPE = re.compile(r"^[A-Za-z0-9_.-]{1,60}$")
+
+
+def _check_key_shape(key: str) -> None:
+    if _KEY_SHAPE.match(key) is None:
+        raise AppError(
+            "TSC-ATTR-0009",
+            f"key 「{key}」 는 못 씁니다 — 영문·숫자·_ . - 만 됩니다(거르기 주소에 실립니다).",
+        )
+
+
 def _check_key_free(db: Session, key: str, *, except_id: uuid.UUID | None) -> None:
     stmt = select(AttributeDefinition).where(AttributeDefinition.key == key)
     if except_id is not None:
@@ -208,6 +222,7 @@ def create_definition(db: Session, user: User, payload: dict[str, Any]) -> Attri
         raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있습니다: {label}")
     _check_axes(db, kind, payload)
     key = clean(str(payload.get("key") or "")) or _auto_key()
+    _check_key_shape(key)
     _check_key_free(db, key, except_id=None)
     row = AttributeDefinition(
         target=target,
@@ -248,6 +263,7 @@ def update_definition(
         row.label = label
     if changes.get("key"):
         key = clean(str(changes["key"]))
+        _check_key_shape(key)
         _check_key_free(db, key, except_id=row.id)
         row.key = key
     if "kind" in changes and changes["kind"] != row.kind:

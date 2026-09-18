@@ -35,11 +35,18 @@ def list_methods(
     cited: str | None = Query(default=None, pattern="^none$"),
     used: str | None = Query(default=None, pattern="^owned$"),
     include_superseded: bool = Query(default=False),
+    attr: list[str] = Query(default_factory=list, max_length=10),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> Page[MethodOut]:
+    """규격 목록.
+
+    `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
+    연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
+    `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
+    """
     return services.list_methods(
         db,
         user,
@@ -53,6 +60,7 @@ def list_methods(
         cited=cited,
         used=used,
         include_superseded=include_superseded,
+        attrs=attr,
         limit=clamp_limit(limit),
         offset=offset,
     )

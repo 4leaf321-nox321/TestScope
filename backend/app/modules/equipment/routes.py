@@ -78,6 +78,7 @@ def list_equipment(
         default=None, pattern="^(required|exempt|missing|overdue)$"
     ),
     shared_use: bool | None = Query(default=None),
+    attr: list[str] = Query(default_factory=list, max_length=10),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -96,6 +97,10 @@ def list_equipment(
 
     `test_item=none` 은 **시험 항목이 하나도 없는 장비**다. 홈의 「남은 일」 이 그 줄로
     링크하므로, 세는 조건과 여기 거르는 조건이 같아야 한다.
+
+    `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다.
+    `attr=invest_year>=2020` · `attr=purpose~고온` · `attr=reserve_url*`(적혀 있기만 하면).
+    왼쪽은 속성 정의의 `key` 다(이름이 아니다 — 이름은 관리자가 고치면 바뀐다).
 
     `catalog=unlinked` 는 **기종을 안 고른 장비**다. 그 기종이 카탈로그에 없어서 비운
     경우가 실제로 있고, 시스템 관리자가 이 목록을 보고 카탈로그를 채운다.
@@ -116,6 +121,7 @@ def list_equipment(
         catalog=catalog,
         calibration=calibration,
         shared_use=shared_use,
+        attrs=attr,
         limit=clamp_limit(limit),
         offset=offset,
     )
@@ -361,6 +367,7 @@ def list_series(
     models: str | None = Query(default=None, pattern="^none$"),
     test_item: str | None = Query(default=None, pattern="^none$"),
     owned: bool = Query(default=False),
+    attr: list[str] = Query(default_factory=list, max_length=10),
     limit: int = Query(default=50, ge=1, le=MAX_LIMIT),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(current_user),
@@ -377,6 +384,10 @@ def list_series(
     `test_item=none` 은 시험 항목이 하나도 안 적힌 계열, `models=none` 은 기종이
     없는 계열이다. 둘 다 홈의 「남은 일」 이 링크하는 자리라, 세는 조건과 여기
     거르는 조건이 같아야 한다.
+
+    `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
+    연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
+    `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
     """
     return catalog.list_series(
         db,
@@ -390,6 +401,7 @@ def list_series(
         models=models,
         test_item=test_item,
         owned=owned,
+        attrs=attr,
         limit=clamp_limit(limit),
         offset=offset,
     )

@@ -47,6 +47,7 @@ import {
 import type { EquipmentFilterState } from '@/modules/equipment/EquipmentFilters'
 import { EquipmentImportDialog } from '@/modules/equipment/EquipmentImportDialog'
 import { NewEquipmentDialog } from '@/modules/equipment/NewEquipmentDialog'
+import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
 
 /** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다. */
 const PAGE_SIZE = 50
@@ -72,6 +73,8 @@ export default function EquipmentPage() {
   // 한순간이 「안 걸러졌다」 로 읽힌다.
   const [filters, setFilters] = useState<EquipmentFilterState>(fromUrl)
   const [offset, setOffset] = useState(0)
+  // 속성 조건은 주소에 실린다 — 「투자 연도 2020 이후」 를 물은 화면을 그대로 보낼 수 있다.
+  const [attrs, setAttrs] = useState<string[]>(() => params.getAll('attr'))
   const [creating, setCreating] = useState(false)
   const [importing, setImporting] = useState(false)
 
@@ -104,10 +107,11 @@ export default function EquipmentPage() {
         testItem: filters.testItem || undefined,
         catalog: filters.catalog || undefined,
         calibration: filters.calibration || undefined,
+        attrs,
         limit: PAGE_SIZE,
         offset,
       }),
-    [filters, offset],
+    [filters, attrs, offset],
   )
 
   const canCreate = isAnyManager(user)
@@ -138,6 +142,9 @@ export default function EquipmentPage() {
         }
       />
 
+      {/* 속성 값으로 거르기 — 열이 아니라 행으로 적힌 것은 여기서만 되찾을 수 있다. */}
+      <AttributeFilterBar target="equipment" value={attrs} onChange={setAttrs} />
+
       {/* 찾는 칸은 **열마다** 있다(머리글 아래) — 여기 또 두면 같은 일을 하는 칸이
           둘이 되고, 둘은 반드시 어긋난다. */}
       {activeCount(filters) > 0 && (
@@ -148,6 +155,7 @@ export default function EquipmentPage() {
             variant="outline"
             onClick={() => {
               setTyped(EMPTY_FILTERS)
+              setAttrs([])
               // 주소에 남은 거르기도 함께 푼다 — 안 그러면 새로고침에 되살아난다.
               setParams({})
             }}

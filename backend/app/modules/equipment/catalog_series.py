@@ -14,6 +14,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment import specs
@@ -147,6 +148,7 @@ def list_series(
     models: str | None = None,
     test_item: str | None = None,
     owned: bool = False,
+    attrs: list[str] | None = None,
     limit: int,
     offset: int,
 ) -> Page[EquipmentSeriesRow]:
@@ -205,6 +207,14 @@ def list_series(
             | EquipmentSeries.name_ko.ilike(text)
             | EquipmentSeries.maker_term_id.in_(makers)
         )
+    stmt = attribute_filters.apply(
+        db,
+        stmt,
+        "series",
+        EquipmentSeries.id,
+        attribute_filters.parse(db, "series", attrs or []),
+    )
+
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
     rows = list(db.scalars(stmt.order_by(EquipmentSeries.name).limit(limit).offset(offset)))
 
