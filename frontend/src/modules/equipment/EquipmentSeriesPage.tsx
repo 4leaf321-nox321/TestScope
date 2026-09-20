@@ -133,7 +133,12 @@ export default function EquipmentSeriesPage() {
       />
 
       {/* 속성 값으로 거르기 — 관리자가 정의한 칸은 열이 아니라 행이라 여기서만 되찾는다. */}
-      <AttributeFilterBar target="series" value={attrs} onChange={setAttrs} />
+      <AttributeFilterBar
+        target="series"
+        value={attrs}
+        onChange={setAttrs}
+        empty={page.data?.items.length === 0}
+      />
 
       {/* 찾는 칸은 **열마다** 있다(머리글 아래) — 여기 또 두면 같은 일을 하는 칸이
           둘이 되고, 둘은 반드시 어긋난다. */}

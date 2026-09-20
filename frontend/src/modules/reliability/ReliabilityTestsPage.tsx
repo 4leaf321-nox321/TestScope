@@ -68,7 +68,12 @@ export default function ReliabilityTestsPage() {
       />
 
       {/* 조건 속성으로 거르기 — 「-40 °C 이하로 내려가는 시험」 을 물을 수 있어야 조건을 적는다. */}
-      <AttributeFilterBar target="reliability_test" value={attrs} onChange={setAttrs} />
+      <AttributeFilterBar
+        target="reliability_test"
+        value={attrs}
+        onChange={setAttrs}
+        empty={tests.data?.length === 0}
+      />
 
       <div className="flex flex-wrap items-center gap-3">
         <Input

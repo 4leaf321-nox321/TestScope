@@ -143,7 +143,12 @@ export default function EquipmentPage() {
       />
 
       {/* 속성 값으로 거르기 — 열이 아니라 행으로 적힌 것은 여기서만 되찾을 수 있다. */}
-      <AttributeFilterBar target="equipment" value={attrs} onChange={setAttrs} />
+      <AttributeFilterBar
+        target="equipment"
+        value={attrs}
+        onChange={setAttrs}
+        empty={page.data?.items.length === 0}
+      />
 
       {/* 찾는 칸은 **열마다** 있다(머리글 아래) — 여기 또 두면 같은 일을 하는 칸이
           둘이 되고, 둘은 반드시 어긋난다. */}

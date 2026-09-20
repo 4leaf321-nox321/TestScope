@@ -7259,6 +7259,67 @@
         }
       }
     },
+    "/api/attribute-definitions/diagnose": {
+      "get": {
+        "tags": [
+          "attributes"
+        ],
+        "summary": "Diagnose Filters",
+        "description": "속성 조건으로 거른 목록이 **0건일 때** 부른다 — 조건마다 왜 아무것도 못 걸렀나.\n\n빈 목록은 「아무도 안 적었다」 「조건이 좁다」 「단위를 못 바꿨다」 「조건끼리 겹쳐\n비었다」 를 똑같이 생겼다. 조건마다 값이 적힌 수 · 단위 못 바꾼 수 · 그 조건 하나로\n걸리는 수와 한 줄 안내를 준다. 문법과 대상은 목록의 `attr` 과 같다. 장비는 **내가 볼 수\n있는 것**만 센다 — 목록과 같은 규칙이라야 「목록엔 없는데 진단엔 있다」 가 안 생긴다.",
+        "operationId": "diagnose_filters_api_attribute_definitions_diagnose_get",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 20,
+              "title": "Target"
+            }
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 10,
+              "title": "Attr"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AttributeFilterDiagnosisOut"
+                  },
+                  "title": "Response Diagnose Filters Api Attribute Definitions Diagnose Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/attribute-definitions/{definition_id}": {
       "patch": {
         "tags": [
@@ -9123,6 +9184,50 @@
           "label"
         ],
         "title": "AttributeField"
+      },
+      "AttributeFilterDiagnosisOut": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "with_value": {
+            "type": "integer",
+            "title": "With Value"
+          },
+          "unconvertible": {
+            "type": "integer",
+            "title": "Unconvertible"
+          },
+          "matched": {
+            "type": "integer",
+            "title": "Matched"
+          },
+          "hint": {
+            "type": "string",
+            "title": "Hint"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "status",
+          "with_value",
+          "unconvertible",
+          "matched",
+          "hint"
+        ],
+        "title": "AttributeFilterDiagnosisOut",
+        "description": "속성 조건 하나가 왜 아무것도 못 걸렀나 — 0건일 때 목록 옆에 붙는 한 줄의 근거.\n\n`with_value` 0 은 조건이 아니라 **아무도 안 적은 것**이고, `unconvertible` 이 있으면 조건이\n아니라 값의 단위를 고칠 일이며, `matched` 가 0 이 아닌데 전체가 비었으면 다른 조건과 함께\n걸어서 빈 것이다. AI 는 이것을 읽고 그대로 말한다 — 「그런 것 없습니다」 로 뭉개지 않는다."
       },
       "AttributeMergeRequest": {
         "properties": {
@@ -19661,6 +19766,18 @@
               }
             ],
             "title": "Note"
+          },
+          "status": {
+            "type": "string",
+            "pattern": "^(suggested|confirmed)$",
+            "title": "Status",
+            "default": "confirmed"
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^(manual|agent)$",
+            "title": "Source",
+            "default": "manual"
           }
         },
         "type": "object",

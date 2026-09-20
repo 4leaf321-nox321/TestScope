@@ -2279,6 +2279,31 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/attribute-definitions/diagnose": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Diagnose Filters
+         * @description 속성 조건으로 거른 목록이 **0건일 때** 부른다 — 조건마다 왜 아무것도 못 걸렀나.
+         *
+         *     빈 목록은 「아무도 안 적었다」 「조건이 좁다」 「단위를 못 바꿨다」 「조건끼리 겹쳐
+         *     비었다」 를 똑같이 생겼다. 조건마다 값이 적힌 수 · 단위 못 바꾼 수 · 그 조건 하나로
+         *     걸리는 수와 한 줄 안내를 준다. 문법과 대상은 목록의 `attr` 과 같다. 장비는 **내가 볼 수
+         *     있는 것**만 센다 — 목록과 같은 규칙이라야 「목록엔 없는데 진단엔 있다」 가 안 생긴다.
+         */
+        get: operations["diagnose_filters_api_attribute_definitions_diagnose_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/attribute-definitions/{definition_id}": {
         parameters: {
             query?: never;
@@ -2973,6 +2998,30 @@ export interface components {
             kind: string;
             /** Help */
             help?: string | null;
+        };
+        /**
+         * AttributeFilterDiagnosisOut
+         * @description 속성 조건 하나가 왜 아무것도 못 걸렀나 — 0건일 때 목록 옆에 붙는 한 줄의 근거.
+         *
+         *     `with_value` 0 은 조건이 아니라 **아무도 안 적은 것**이고, `unconvertible` 이 있으면 조건이
+         *     아니라 값의 단위를 고칠 일이며, `matched` 가 0 이 아닌데 전체가 비었으면 다른 조건과 함께
+         *     걸어서 빈 것이다. AI 는 이것을 읽고 그대로 말한다 — 「그런 것 없습니다」 로 뭉개지 않는다.
+         */
+        AttributeFilterDiagnosisOut: {
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /** Status */
+            status: string;
+            /** With Value */
+            with_value: number;
+            /** Unconvertible */
+            unconvertible: number;
+            /** Matched */
+            matched: number;
+            /** Hint */
+            hint: string;
         };
         /** AttributeMergeRequest */
         AttributeMergeRequest: {
@@ -6599,6 +6648,16 @@ export interface components {
             property_term_id: string;
             /** Note */
             note?: string | null;
+            /**
+             * Status
+             * @default confirmed
+             */
+            status: string;
+            /**
+             * Source
+             * @default manual
+             */
+            source: string;
         };
         /** TestItemPropertyLinkOut */
         TestItemPropertyLinkOut: {
@@ -11521,6 +11580,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AttributeDefinitionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    diagnose_filters_api_attribute_definitions_diagnose_get: {
+        parameters: {
+            query: {
+                target: string;
+                attr?: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttributeFilterDiagnosisOut"][];
                 };
             };
             /** @description Validation Error */

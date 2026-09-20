@@ -116,3 +116,20 @@ class AttributeValueOut(BaseModel):
     display: str
     """사람이 읽는 한 줄. 「-40 ~ 125 ℃」 「ISO 6892-1」 「있음」. 화면과 MCP 가 같은 글자를
     쓴다."""
+
+
+class AttributeFilterDiagnosisOut(BaseModel):
+    """속성 조건 하나가 왜 아무것도 못 걸렀나 — 0건일 때 목록 옆에 붙는 한 줄의 근거.
+
+    `with_value` 0 은 조건이 아니라 **아무도 안 적은 것**이고, `unconvertible` 이 있으면 조건이
+    아니라 값의 단위를 고칠 일이며, `matched` 가 0 이 아닌데 전체가 비었으면 다른 조건과 함께
+    걸어서 빈 것이다. AI 는 이것을 읽고 그대로 말한다 — 「그런 것 없습니다」 로 뭉개지 않는다.
+    """
+
+    key: str
+    label: str
+    status: str
+    with_value: int
+    unconvertible: int
+    matched: int
+    hint: str

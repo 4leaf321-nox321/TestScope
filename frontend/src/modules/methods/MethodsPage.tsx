@@ -102,7 +102,12 @@ export default function MethodsPage() {
       />
 
       {/* 속성 값으로 거르기 — 규격에 붙인 관리자 정의 칸을 되찾는 길. */}
-      <AttributeFilterBar target="method" value={attrs} onChange={setAttrs} />
+      <AttributeFilterBar
+        target="method"
+        value={attrs}
+        onChange={setAttrs}
+        empty={page.data?.items.length === 0}
+      />
 
       <div className="flex flex-wrap items-center gap-3">
         <Input

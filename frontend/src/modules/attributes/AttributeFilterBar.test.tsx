@@ -34,7 +34,23 @@ const DEFINITIONS: Partial<AttributeDefinition>[] = [
 ]
 
 vi.mock('@/shared/api/client', () => ({
-  api: { get: vi.fn(async () => DEFINITIONS) },
+  api: {
+    get: vi.fn(async (path: string) =>
+      path.includes('/diagnose')
+        ? [
+            {
+              key: 'temp_x',
+              label: '시험 온도',
+              status: 'standard',
+              with_value: 0,
+              unconvertible: 0,
+              matched: 0,
+              hint: '「시험 온도」 에 값이 적힌 것이 없습니다 — 조건이 아니라 적힌 값이 없는 것입니다.',
+            },
+          ]
+        : DEFINITIONS,
+    ),
+  },
   ApiError: class extends Error {},
 }))
 
@@ -58,6 +74,18 @@ suite('속성 거르기 칸', () => {
 
     await userEvent.click(screen.getByRole('button', { name: '시험 온도 100 degC 이상 빼기' }))
     expect(onChange).toHaveBeenCalledWith(['use_x~고온'])
+  })
+
+  it('0건이면 조건마다 왜 비었는지가 뜬다 — 빈 표는 「없다」 로 읽힌다', async () => {
+    render(
+      <AttributeFilterBar
+        target="reliability_test"
+        value={['temp_x>=100']}
+        onChange={() => undefined}
+        empty
+      />,
+    )
+    await waitFor(() => expect(screen.getByText(/값이 적힌 것이 없습니다/)).toBeTruthy())
   })
 
   it('모르는 키는 삼키지 않고 글자 그대로 보여 준다', () => {

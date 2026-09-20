@@ -317,3 +317,102 @@ def test_시험_목록도_조건_속성으로_거른다(
         "/api/reliability-tests", params={"attr": f"temp_{tag}>=100"}, headers=admin.headers
     )
     assert {one["name"] for one in hot.json()} == {f"열충격-{tag}"}
+
+
+def test_빈_결과는_왜_비었는지_조건마다_말한다(
+    client: TestClient, admin: Signed, condition_ids: dict[str, str]
+) -> None:
+    """빈 목록은 넷을 똑같이 생겼다 — 아무도 안 적음 · 조건이 좁음 · 단위를 못 바꿈 · 조건끼리
+    겹쳐 비었음. 진단이 그 넷을 가른다. 안 가르면 답은 늘 「그런 것 없습니다」 다."""
+    tag = uuid.uuid4().hex[:6]
+    temperature = _definition(
+        client,
+        admin,
+        target="reliability_test",
+        label=f"시험 온도-{tag}",
+        key=f"temp_{tag}",
+        kind="condition",
+        unit="degC",
+        condition_key_id=condition_ids["temperature"],
+        status="standard",
+    )
+    hours = _definition(
+        client,
+        admin,
+        target="reliability_test",
+        label=f"시험 시간-{tag}",
+        key=f"hours_{tag}",
+        kind="number",
+        unit="h",
+        status="standard",
+    )
+    _definition(  # 값이 하나도 안 적힐 속성
+        client,
+        admin,
+        target="reliability_test",
+        label=f"시료 수-{tag}",
+        key=f"samples_{tag}",
+        kind="number",
+        status="standard",
+    )
+    for name, low, high, unit in (
+        (f"고온고습-{tag}", 85, 85, "degC"),
+        (f"열충격-{tag}", -40, 125, "degC"),
+        (f"엉뚱-{tag}", 1, 2, "쇼어"),
+    ):
+        made = client.post(
+            "/api/reliability-tests",
+            json={
+                "workspace_slug": admin.workspace,
+                "name": name,
+                "attributes": [
+                    {
+                        "definition_id": temperature["id"],
+                        "num_min": low,
+                        "num_max": high,
+                        "unit": unit,
+                    },
+                    {"definition_id": hours["id"], "num_value": 1000},
+                ],
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+    def diagnose(*attrs: str) -> dict[str, dict[str, Any]]:
+        got = client.get(
+            "/api/attribute-definitions/diagnose",
+            params=[("target", "reliability_test")] + [("attr", one) for one in attrs],
+            headers=admin.headers,
+        )
+        assert got.status_code == 200, got.text
+        return {one["key"]: one for one in got.json()}
+
+    # 1. 아무도 안 적음 — 조건이 아니라 값이 없는 것.
+    none = diagnose(f"samples_{tag}>=1")[f"samples_{tag}"]
+    assert none["with_value"] == 0 and "값이 적힌 것이 없습니다" in none["hint"]
+
+    # 2. 조건이 좁음 — 값은 있는데(단위 못 바꾼 것 빼고 2건) 200 이상은 없다.
+    narrow = diagnose(f"temp_{tag}>=200")[f"temp_{tag}"]
+    assert narrow["with_value"] == 3 and narrow["matched"] == 0
+    assert "조건을 넓혀" in narrow["hint"]
+    # 3. 단위를 못 바꿈 — 「쇼어」 는 온도가 아니다. 조용히 빠지지 않고 수로 나온다.
+    assert narrow["unconvertible"] == 1 and "못 바꿔 뺀 값이 1건" in narrow["hint"]
+
+    # 4. 조건끼리 겹쳐 비었음 — 하나씩은 걸리는데 함께 걸면 없다.
+    both = diagnose(f"temp_{tag}<=-40", f"hours_{tag}>=2000")
+    assert (
+        both[f"temp_{tag}"]["matched"] == 1
+        and "다른 조건과 함께" in both[f"temp_{tag}"]["hint"]
+    )
+    assert both[f"hours_{tag}"]["matched"] == 0
+
+    # 문법이 틀리면 목록과 같은 400 — 진단이 조용히 빈 목록을 주면 다시 헛돈다.
+    assert (
+        client.get(
+            "/api/attribute-definitions/diagnose",
+            params={"target": "reliability_test", "attr": "temp"},
+            headers=admin.headers,
+        ).status_code
+        == 400
+    )

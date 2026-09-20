@@ -11,6 +11,7 @@ import type { components } from '@/shared/api/schema'
 export type AttributeDefinition = components['schemas']['AttributeDefinitionOut']
 export type AttributeValue = components['schemas']['AttributeValueOut']
 export type AttributeValueIn = components['schemas']['AttributeValueIn']
+export type AttributeFilterDiagnosis = components['schemas']['AttributeFilterDiagnosisOut']
 export type AttributeTarget = 'reliability_test' | 'equipment' | 'series' | 'method'
 
 export const attributeApi = {
@@ -19,6 +20,13 @@ export const attributeApi = {
     api.get<AttributeDefinition[]>(
       `/attribute-definitions?target=${target}${includeInactive ? '&include_inactive=true' : ''}`,
     ),
+  /** 속성 조건으로 거른 목록이 **0건일 때** — 조건마다 왜 아무것도 못 걸렀나. 빈 목록은
+   *  「아무도 안 적음」 「조건이 좁음」 「단위 못 바꿈」 「조건끼리 겹쳐 비었음」 을 똑같이 생겼다. */
+  diagnose: (target: AttributeTarget, attrs: string[]) => {
+    const params = new URLSearchParams({ target })
+    for (const one of attrs) params.append('attr', one)
+    return api.get<AttributeFilterDiagnosis[]>(`/attribute-definitions/diagnose?${params}`)
+  },
   create: (body: Record<string, unknown>) =>
     api.post<AttributeDefinition>('/attribute-definitions', body),
   /** 정식으로 올리기는 `{ status: 'standard' }` 하나. 종류는 값이 없을 때만 바뀐다. */

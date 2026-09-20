@@ -72,9 +72,30 @@ interface Props {
   /** 지금 걸린 조건들 — 서버 문법 그대로. 주소에 그대로 실어 공유할 수 있다. */
   value: string[]
   onChange: (next: string[]) => void
+  /** 목록이 **0건으로 끝났나.** 참이고 조건이 걸려 있으면 조건마다 「왜 0건인가」 를 서버에
+   *  묻는다 — 빈 표만 보여 주면 사람은 「그런 것 없다」 로 읽는데, 가장 흔한 실제는 「아무도
+   *  안 적었다」 다. */
+  empty?: boolean
 }
 
-export function AttributeFilterBar({ target, value, onChange }: Props) {
+/** 0건일 때 조건마다 한 줄 — 서버가 세고 서버가 말한다(MCP 도 같은 것을 받는다). */
+function EmptyDiagnosis({ target, attrs }: { target: AttributeTarget; attrs: string[] }) {
+  const key = attrs.join('\u0000')
+  const rows = useResource(() => attributeApi.diagnose(target, attrs), [target, key])
+  if (!rows.data || rows.data.length === 0) return null
+  return (
+    <ul className="space-y-0.5 rounded-md border border-dashed p-2 text-xs">
+      {rows.data.map((one) => (
+        <li key={one.key}>
+          <span className="font-medium">{one.label}</span>{' '}
+          <span className="text-muted-foreground">{one.hint}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export function AttributeFilterBar({ target, value, onChange, empty = false }: Props) {
   const definitions = useResource(() => attributeApi.definitions(target), [target])
   const rows = useMemo(
     () => (definitions.data ?? []).filter((one) => one.is_active),
@@ -182,6 +203,7 @@ export function AttributeFilterBar({ target, value, onChange }: Props) {
           <li className="text-muted-foreground ml-1">모두 만족하는 것만</li>
         </ul>
       )}
+      {empty && value.length > 0 && <EmptyDiagnosis target={target} attrs={value} />}
     </div>
   )
 }

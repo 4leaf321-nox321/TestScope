@@ -13,14 +13,17 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
+from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services
 from app.modules.attributes.schemas import (
     AttributeDefinitionCreateRequest,
     AttributeDefinitionOut,
     AttributeDefinitionUpdateRequest,
+    AttributeFilterDiagnosisOut,
     AttributeMergeRequest,
 )
 from app.shared.auth import current_user, require_system_admin
+from app.shared.permissions import visible_equipment_ids
 
 router = APIRouter(prefix="/attribute-definitions", tags=["attributes"])
 
@@ -36,6 +39,28 @@ def list_attribute_definitions(
     `value_count` 는 그 항목으로 적힌 값의 수다. 초안을 건수순으로 보면 무엇을 정식으로
     올릴지 보인다."""
     return services.list_definitions(db, target=target, include_inactive=include_inactive)
+
+
+@router.get("/diagnose", response_model=list[AttributeFilterDiagnosisOut])
+def diagnose_filters(
+    target: str = Query(..., max_length=20),
+    attr: list[str] = Query(default_factory=list, max_length=10),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> list[AttributeFilterDiagnosisOut]:
+    """속성 조건으로 거른 목록이 **0건일 때** 부른다 — 조건마다 왜 아무것도 못 걸렀나.
+
+    빈 목록은 「아무도 안 적었다」 「조건이 좁다」 「단위를 못 바꿨다」 「조건끼리 겹쳐
+    비었다」 를 똑같이 생겼다. 조건마다 값이 적힌 수 · 단위 못 바꾼 수 · 그 조건 하나로
+    걸리는 수와 한 줄 안내를 준다. 문법과 대상은 목록의 `attr` 과 같다. 장비는 **내가 볼 수
+    있는 것**만 센다 — 목록과 같은 규칙이라야 「목록엔 없는데 진단엔 있다」 가 안 생긴다.
+    """
+    parsed = attribute_filters.parse(db, target, attr)
+    base = visible_equipment_ids(db, user) if target == "equipment" else None
+    return [
+        AttributeFilterDiagnosisOut(**one.__dict__)
+        for one in attribute_filters.diagnose(db, target, parsed, base=base)
+    ]
 
 
 @router.post("", response_model=AttributeDefinitionOut, status_code=201)
