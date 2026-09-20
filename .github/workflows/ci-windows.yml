@@ -38,6 +38,7 @@ jobs:
           cache-dependency-path: |
             backend/requirements.txt
             backend/requirements-dev.txt
+            mcp_server/requirements.txt
 
       # windows 러너 이미지에는 PostgreSQL 이 설치돼 있지만 꺼져 있다.
       - name: PostgreSQL 시작
@@ -83,6 +84,45 @@ jobs:
           & "$env:PGBIN\createdb" -U postgres -h localhost testscope
           python -m alembic upgrade head
           python -m alembic check
+
+      # **MCP 도구를 진짜로 불러 본다.** curl 로는 멀쩡한데 도구로는 죽는 고장(반환 모양
+      # 검증 · 경로 오타)은 이렇게 불러 봐야만 드러난다 — 도구가 41개일 때 넷이 죽어 있던
+      # 것이 그 예다. 정적 검사(test_mcp_tools.py)는 그것을 못 잡는다.
+      #
+      # 위 단계가 만들어 둔 testscope DB(마이그레이션 끝)에 설치 시드를 심고, 백엔드를
+      # reload 없이 띄우고(reload 워커는 부모를 죽여도 소켓을 물고 남는다), 확인용 계정의
+      # 토큰으로 읽기 묶음과 쓰기 사슬을 돈다. 만든 것은 끝에 지운다 — 러너는 버려지지만
+      # 같은 스크립트를 개발 PC 에서도 쓰기 때문이다.
+      - name: MCP 왕복 (실제 도구 호출)
+        working-directory: backend
+        shell: pwsh
+        env:
+          APP_ENV: development
+        run: |
+          python scripts/seed_install.py --email ci-admin --password ci-password --name CI
+          $token = (python scripts/mcp_probe_account.py mint | Select-Object -Last 1)
+
+          python -m venv ..\mcp_server\.venv
+          & ..\mcp_server\.venv\Scripts\python.exe -m pip install --quiet -r ..\mcp_server\requirements.txt
+
+          $server = Start-Process -FilePath python -PassThru -NoNewWindow `
+            -ArgumentList '-m','uvicorn','app.main:app','--host','127.0.0.1','--port','8021' `
+            -RedirectStandardOutput ..\backend-ci.log -RedirectStandardError ..\backend-ci.err
+          $deadline = (Get-Date).AddSeconds(90)
+          $up = $false
+          while (-not $up -and (Get-Date) -lt $deadline) {
+            Start-Sleep -Milliseconds 500
+            try { $up = (Invoke-WebRequest -UseBasicParsing http://127.0.0.1:8021/api/health).StatusCode -eq 200 } catch { $up = $false }
+          }
+          if (-not $up) { Get-Content ..\backend-ci.err; throw '백엔드가 90초 안에 안 떴습니다' }
+
+          $env:TESTSCOPE_API_BASE = 'http://127.0.0.1:8021/api'
+          $env:TESTSCOPE_PAT = $token
+          & ..\mcp_server\.venv\Scripts\python.exe ..\mcp_server\roundtrip.py --write
+          $code = $LASTEXITCODE
+          Stop-Process -Id $server.Id -Force -ErrorAction SilentlyContinue
+          python scripts/mcp_probe_account.py cleanup
+          if ($code -ne 0) { Get-Content ..\backend-ci.err -Tail 40; throw "MCP 왕복 실패 (exit $code)" }
 
   frontend:
     name: 프론트 (빌드 · vitest · oxlint · 생성 타입)

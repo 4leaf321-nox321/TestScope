@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import pathlib
 import sys
 from typing import Any
@@ -37,12 +38,24 @@ def _short(value: Any, limit: int = 90) -> str:
     return text if len(text) <= limit else text[:limit] + "…"
 
 
-async def main() -> int:
+def token() -> str | None:
+    """개인 토큰 — 환경변수 `TESTSCOPE_PAT` 가 먼저, 다음이 `.pat` 파일.
+
+    CI 는 환경변수로 준다(러너에 파일을 남기지 않게). 개발 PC 는 파일이 편하다.
+    """
+    given = os.environ.get("TESTSCOPE_PAT", "").strip()
+    if given:
+        return given
     pat = pathlib.Path(__file__).parent / ".pat"
-    if not pat.exists():
-        print("개인 토큰이 없습니다. .pat 파일에 넣으세요.")
+    return pat.read_text(encoding="utf-8").strip() if pat.exists() else None
+
+
+async def main() -> int:
+    raw = token()
+    if raw is None:
+        print("개인 토큰이 없습니다. TESTSCOPE_PAT 환경변수나 .pat 파일에 넣으세요.")
         return 1
-    ctx = _Ctx(pat.read_text(encoding="utf-8").strip())
+    ctx = _Ctx(raw)
 
     print(f"백엔드 {server.API_BASE}\n")
     print("안내", len(server.get_guide()), "자")

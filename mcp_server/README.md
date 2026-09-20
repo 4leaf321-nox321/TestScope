@@ -33,7 +33,7 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 
 ## 도구가 몇 개 실리나
 
-도구 목록은 **매 턴 통째로 실린다** — 지금 63개에 48,000자다. 읽기만 쓰는 연결이면
+도구 목록은 **매 턴 통째로 실린다** — 지금 69개에 5만 자 남짓이다. 읽기만 쓰는 연결이면
 
 ```powershell
 .\run_mcp.ps1 -ReadOnly        # 또는 TESTSCOPE_MCP_TOOLS=read
@@ -56,9 +56,13 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 ```
 찾기       resolve · list_conditions · list_spec_definitions · list_spec_sources
 검색       search_test_items · search_catalog · search_semantic · search_properties
+부서       list_workspaces · resolve(kind="workspace")
 계열       search_series · get_series · create_series · add_test_item · link_series
 기종       search_models(series=…) · create_model · get_specs · set_spec
 보유 장비   search_equipment · get_equipment · register_equipment · import_equipment
+교정       get_calibrations · list_calibrations_due · add_calibration
+규격       list_methods · get_method · create_method · set_requirement · import_requirements
+물성 연결   search_properties · suggest_property_link(제안만) · confirm_property_links
 기준정보    list_reference · list_axes · list_terms · create_term · add_term_alias · merge_terms
 신뢰성 시험  list_reliability_tests · create_reliability_test · update_reliability_test
             test_capability                        ← 이 시험, 어느 장비로 돌리나
@@ -75,6 +79,19 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 3. **기종은 계열부터 좁혀 고른다.** 라벨과 대조하려면 그 계열의 기종이 전부 보여야 한다.
 4. **`unknown` 을 「가능합니다」 로 옮기지 않는다.**
 5. 값에는 출처와 비고를 붙인다.
+
+## 진짜로 불러 보기
+
+```powershell
+cd backend
+$env:TESTSCOPE_PAT = python scripts/mcp_probe_account.py mint    # 확인용 계정·토큰
+..\mcp_server\.venv\Scripts\python.exe ..\mcp_serveroundtrip.py --write
+python scripts/mcp_probe_account.py cleanup                       # 만든 것과 계정을 지운다
+```
+
+CI 가 매 푸시 같은 세 명령을 돈다(빈 DB 에 시드를 심고, 백엔드를 reload 없이 띄워서).
+curl 로는 멀쩡한데 도구로는 죽는 고장은 이렇게만 드러난다. `roundtrip.py` 는 `probe.py` 의
+읽기 묶음을 그대로 쓰고 쓰기 사슬을 더한 것이다 — `--write` 없이 돌리면 읽기만.
 
 ## 왜 얇은 프록시인가
 
