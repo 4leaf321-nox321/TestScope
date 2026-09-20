@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TestScope 데이터 모델 관계 정의</title>
+<style>
+  :root { --ink:#1f2328; --muted:#6b7280; --line:#d0d7de; --bg:#ffffff; --soft:#f6f8fa;
+          --catalog:#dbeafe; --catalog-ink:#1e3a8a; --ours:#dcfce7; --ours-ink:#14532d;
+          --vocab:#fef3c7; --vocab-ink:#78350f; --axis:#ede9fe; --axis-ink:#4c1d95; }
+  html,body { margin:0; background:var(--bg); color:var(--ink);
+    font: 14px/1.65 -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; }
+  main { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 40px 0 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+  h3 { font-size: 15px; margin: 20px 0 6px; }
+  p.lead { color: var(--muted); margin: 0 0 20px; }
+  pre.chain { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px;
+    font: 13px/1.7 ui-monospace, Consolas, monospace; overflow-x: auto; }
+  code { font: 12.5px ui-monospace, Consolas, monospace; background: var(--soft); padding: 1px 5px; border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { border: 1px solid var(--line); padding: 7px 9px; vertical-align: top; text-align: left; }
+  th { background: var(--soft); font-weight: 600; white-space: nowrap; }
+  td.num { text-align: center; font-weight: 700; white-space: nowrap; width: 36px; }
+  .wrap { overflow-x: auto; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; border: 1px solid var(--line); }
+  .legend .c::before { background: var(--catalog); } .legend .o::before { background: var(--ours); }
+  .legend .v::before { background: var(--vocab); } .legend .a::before { background: var(--axis); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+  .card h3 { margin: 0 0 6px; }
+  .card .tag { font-size: 11px; padding: 1px 7px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+  .tag.c { background: var(--catalog); color: var(--catalog-ink); } .tag.o { background: var(--ours); color: var(--ours-ink); }
+  .tag.v { background: var(--vocab); color: var(--vocab-ink); } .tag.a { background: var(--axis); color: var(--axis-ink); }
+  .card dl { margin: 6px 0 0; display: grid; grid-template-columns: 64px 1fr; gap: 2px 8px; font-size: 13px; }
+  .card dt { color: var(--muted); } .card dd { margin: 0; }
+  .note { background: var(--soft); border-left: 3px solid #9ca3af; padding: 8px 12px; margin: 10px 0; font-size: 13px; }
+  svg text { font-family: inherit; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 40px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>TestScope 데이터 모델 관계 정의</h1>
+  <p class="lead">카탈로그 영역(장비 계열 · 장비 기종 · 시험 항목 · 시험법/규격 · 물성 항목)과 사내 운영 영역(신뢰성 시험 · 보유 장비 · 부서)의 관계 정의. 기준: v0.6.7 (2026-09-16) 코드의 외래키 구조. 표 이름은 실제 DB 표. <b>그 뒤에 더해진 관계는 6절</b>에 있고, 살아 있는 그림은 화면의 「공통 → 지식 그래프」 가 실제 건수와 함께 그린다 — 이 문서는 관계의 <i>이유</i>를 적는 자리다.</p>
+
+  <pre class="chain">핵심 질의     "80 ℃ 환경에서 20 kN 이상의 인장시험이 가능한 장비의 유무"
+
+    물성 항목  ⇄  시험 항목  →  검색 조건·요구 조건  →  시험법/규격  →  장비 계열  →  장비 기종  →  보유 장비  →  부서
+    인장강도       인장          온도 80 ℃ · 하중 20 kN     ISO 6892-1       Instron 6800     68FM-300       UTM-001       재료시험팀
+
+사내 운영 층   신뢰성 시험(부서 등록 절차: 고온고습 1000h · 열충격 500 cycle)  →  구성 시험 항목  →  위 사슬</pre>
+
+  <h2>1. 관계 개요</h2>
+  <p class="note">읽는 법 — 화살표는 참조 방향(참조하는 표 → 참조되는 표). 실선은 외래키 참조, 점선은 <b>복사</b> 또는 <b>파생</b>. 번호 ①~⑬은 아래 「2. 관계 정의」 표의 번호와 동일. 선 위의 글은 관계의 뜻, 괄호는 차수.</p>
+  <div class="wrap">
+  <svg viewBox="0 0 1100 690" width="100%" role="img" aria-label="TestScope 관계도">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/>
+      </marker>
+    </defs>
+    <style>
+      .box { stroke:#9ca3af; stroke-width:1; rx:8; }
+      .lbl { font-size:14px; font-weight:700; fill:#1f2328; text-anchor:middle; }
+      .sub { font-size:11px; fill:#6b7280; text-anchor:middle; }
+      .edge { stroke:#4b5563; stroke-width:1.5; fill:none; marker-end:url(#arr); }
+      .edge.both { marker-start:url(#arr); }
+      .edge.dash { stroke-dasharray:5 4; }
+      .el { font-size:11.5px; fill:#111827; text-anchor:middle; paint-order:stroke; stroke:#fff; stroke-width:5px; stroke-linejoin:round; }
+      .num { font-size:11px; font-weight:700; fill:#fff; text-anchor:middle; dominant-baseline:central; }
+      .numbg { fill:#374151; }
+      .band { font-size:12px; fill:#6b7280; font-weight:600; }
+    </style>
+
+    <!-- 영역 띠 -->
+    <text x="16" y="22" class="band">카탈로그 영역 — 세상에 존재하는 것 (전사 공용 · 시스템 관리자 편집)</text>
+    <line x1="16" y1="405" x2="1084" y2="405" stroke="#d0d7de" stroke-dasharray="6 6"/>
+    <text x="16" y="426" class="band">사내 운영 영역 — 보유·수행하는 것 (부서 단위 · 부서 관리자 편집)</text>
+
+    <!-- 상자 -->
+    <rect class="box" x="840" y="40" width="200" height="64" fill="#dbeafe"/>
+    <text class="lbl" x="940" y="66">시험법 / 규격</text>
+    <text class="sub" x="940" y="86">test_methods</text>
+
+    <rect class="box" x="60" y="170" width="200" height="64" fill="#fef3c7"/>
+    <text class="lbl" x="160" y="196">물성 항목</text>
+    <text class="sub" x="160" y="216">vocabulary_terms (property)</text>
+
+    <rect class="box" x="450" y="170" width="200" height="64" fill="#fef3c7"/>
+    <text class="lbl" x="550" y="196">시험 항목</text>
+    <text class="sub" x="550" y="216">vocabulary_terms (test_item)</text>
+
+    <rect class="box" x="840" y="170" width="200" height="64" fill="#ede9fe"/>
+    <text class="lbl" x="940" y="196">검색 조건</text>
+    <text class="sub" x="940" y="216">condition_keys</text>
+
+    <rect class="box" x="60" y="300" width="200" height="64" fill="#dbeafe"/>
+    <text class="lbl" x="160" y="326">장비 계열</text>
+    <text class="sub" x="160" y="346">equipment_series</text>
+
+    <rect class="box" x="840" y="300" width="200" height="64" fill="#ede9fe"/>
+    <text class="lbl" x="940" y="326">사양 정의</text>
+    <text class="sub" x="940" y="346">spec_definitions</text>
+
+    <rect class="box" x="60" y="440" width="200" height="64" fill="#dbeafe"/>
+    <text class="lbl" x="160" y="466">장비 기종</text>
+    <text class="sub" x="160" y="486">equipment_models</text>
+
+    <rect class="box" x="840" y="440" width="200" height="64" fill="#dcfce7"/>
+    <text class="lbl" x="940" y="466">부서</text>
+    <text class="sub" x="940" y="486">workspaces</text>
+
+    <rect class="box" x="60" y="570" width="200" height="64" fill="#dcfce7"/>
+    <text class="lbl" x="160" y="596">보유 장비</text>
+    <text class="sub" x="160" y="616">equipment</text>
+
+    <rect class="box" x="450" y="570" width="200" height="64" fill="#dcfce7"/>
+    <text class="lbl" x="550" y="596">신뢰성 시험</text>
+    <text class="sub" x="550" y="616">reliability_tests</text>
+
+    <!-- ① 물성 ⇄ 시험 항목 -->
+    <line class="edge both" x1="262" y1="202" x2="448" y2="202"/>
+    <circle class="numbg" cx="300" cy="188" r="10"/><text class="num" x="300" y="188">1</text>
+    <text class="el" x="365" y="188">측정 물성 (N:M)</text>
+
+    <!-- ② 시험 항목 → 검색 조건 -->
+    <line class="edge" x1="652" y1="202" x2="838" y2="202"/>
+    <circle class="numbg" cx="690" cy="188" r="10"/><text class="num" x="690" y="188">2</text>
+    <text class="el" x="760" y="188">조회 조건 축 (N:M)</text>
+
+    <!-- ③ 시험 항목 → 시험법/규격 -->
+    <path class="edge" d="M 550 168 L 550 72 L 838 72"/>
+    <circle class="numbg" cx="600" cy="58" r="10"/><text class="num" x="600" y="58">3</text>
+    <text class="el" x="700" y="58">규격의 소속 시험 항목 (1:N)</text>
+
+    <!-- ④ 시험법/규격 → 검색 조건 -->
+    <line class="edge" x1="940" y1="106" x2="940" y2="168"/>
+    <circle class="numbg" cx="960" cy="137" r="10"/><text class="num" x="960" y="137">4</text>
+    <text class="el" x="1020" y="137">규격 요구 조건</text>
+
+    <!-- ⑤ 장비 계열 → 시험 항목 -->
+    <path class="edge" d="M 160 298 L 160 267 L 470 267 L 470 236"/>
+    <circle class="numbg" cx="200" cy="253" r="10"/><text class="num" x="200" y="253">5</text>
+    <text class="el" x="330" y="253">수행 가능 시험 항목 (N:M) · 인용 규격 포함</text>
+
+    <!-- ⑥ 장비 계열 → 장비 기종 -->
+    <line class="edge" x1="160" y1="366" x2="160" y2="438"/>
+    <circle class="numbg" cx="180" cy="402" r="10"/><text class="num" x="180" y="402">6</text>
+    <text class="el" x="245" y="402">구성 기종 (1:N)</text>
+
+    <!-- ⑦ 장비 계열 ↔ 장비 계열 -->
+    <path class="edge" d="M 60 312 C 20 312, 20 352, 58 352"/>
+    <circle class="numbg" cx="34" cy="290" r="10"/><text class="num" x="34" y="290">7</text>
+    <text class="el" x="60" y="378">계열 간 관계 (부속·후속)</text>
+
+    <!-- ⑧ 장비 기종 → 사양 정의 -->
+    <path class="edge" d="M 262 462 L 760 462 L 760 332 L 838 332"/>
+    <circle class="numbg" cx="300" cy="448" r="10"/><text class="num" x="300" y="448">8</text>
+    <text class="el" x="400" y="448">사양 값 (N:M)</text>
+
+    <!-- ⑧′ 사양 정의 → 검색 조건 -->
+    <line class="edge dash" x1="940" y1="298" x2="940" y2="236"/>
+    <circle class="numbg" cx="960" cy="267" r="10"/><text class="num" x="960" y="267">8′</text>
+    <text class="el" x="1025" y="267">조건 축 연계</text>
+
+    <!-- ⑨ 보유 장비 → 장비 기종 -->
+    <line class="edge" x1="160" y1="568" x2="160" y2="506"/>
+    <circle class="numbg" cx="180" cy="537" r="10"/><text class="num" x="180" y="537">9</text>
+    <text class="el" x="250" y="537">지정 기종 (N:1)</text>
+
+    <!-- ⑩ 보유 장비 → 시험 항목 (복사) -->
+    <path class="edge dash" d="M 58 602 L 14 602 L 14 150 L 500 150 L 500 168"/>
+    <circle class="numbg" cx="60" cy="150" r="10"/><text class="num" x="60" y="150">10</text>
+    <text class="el" x="280" y="136">수행 시험 항목 (N:M · 계열에서 복사)</text>
+
+    <!-- ⑪ 보유 장비 → 부서 -->
+    <path class="edge" d="M 160 636 L 160 662 L 900 662 L 900 506"/>
+    <circle class="numbg" cx="330" cy="662" r="10"/><text class="num" x="330" y="662">11</text>
+    <text class="el" x="410" y="662">소유 부서 (N:1)</text>
+
+    <!-- ⑫ 신뢰성 시험 → 부서 -->
+    <path class="edge" d="M 652 602 L 870 602 L 870 506"/>
+    <circle class="numbg" cx="690" cy="588" r="10"/><text class="num" x="690" y="588">12</text>
+    <text class="el" x="765" y="588">수행 부서 (N:1)</text>
+
+    <!-- ⑬ 신뢰성 시험 → 시험 항목 -->
+    <line class="edge" x1="550" y1="568" x2="550" y2="236"/>
+    <circle class="numbg" cx="570" cy="400" r="10"/><text class="num" x="570" y="400">13</text>
+    <text class="el" x="655" y="400">구성 시험 항목 (N:M)</text>
+  </svg>
+  </div>
+  <div class="legend"><span class="v">기준정보 축 (값 · 별칭 · 코드)</span><span class="c">카탈로그 (반입으로 적재)</span><span class="a">조건 · 사양 정의 (검색 축)</span><span class="o">사내 운영 데이터 (부서 등록)</span></div>
+
+  <h2>2. 관계 정의</h2>
+  <div class="wrap">
+  <table>
+    <thead><tr><th>#</th><th>관계</th><th>구현 표 / 열</th><th>차수</th><th>정의 및 규칙</th></tr></thead>
+    <tbody>
+      <tr><td class="num">①</td><td><b>물성 항목 ⇄ 시험 항목</b><br>측정 물성</td><td><code>test_item_properties</code><br>status: suggested · confirmed</td><td>N : M</td><td>시험 항목이 산출하는 물성의 연결. 한 물성은 여러 시험에서 산출 가능(유리전이온도: DSC·DMA·TMA), 한 시험은 여러 물성 산출(인장: 강도·항복·영률·연신율). 반입은 <b>제안(suggested)</b>으로 적재, 사람의 <b>확인(confirmed)</b>으로 확정. 물성 기준 검색 시 이 표로 시험 항목 집합 확장 (ADR 0007).</td></tr>
+      <tr><td class="num">②</td><td><b>시험 항목 → 검색 조건</b><br>조회 조건 축</td><td><code>test_item_condition_keys</code></td><td>N : M</td><td>해당 시험 항목 검색 시 질의 대상이 되는 조건 축(인장: 하중·속도·온도, 챔버: 온도·습도). 미정의 시 전체 축(12종) 질의. 시드는 논쟁 없는 항목만 적재, 추가는 검토함 「시험 항목의 검색 조건」 물음으로 결정.</td></tr>
+      <tr><td class="num">③</td><td><b>시험 항목 → 시험법/규격</b><br>규격의 소속 시험 항목</td><td><code>test_methods.test_item_term_id</code><br>(NULL 허용)</td><td>1 : N</td><td>규격 1건은 시험 항목 1종에 소속. NULL 인 경우 「시험 항목 미지정」 상태 — 해당 규격 기준 검색 불가, 검토함 「규격의 시험 항목」 물음으로 결정. 판 개정은 <code>superseded_by_id</code>, 제정기관은 <code>body_term_id</code>.</td></tr>
+      <tr><td class="num">④</td><td><b>시험법/규격 → 검색 조건</b><br>규격 요구 조건</td><td><code>method_requirements</code></td><td>1 : N</td><td>규격 본문이 요구하는 조건 값(속도·온도·하중)의 SI 단위 저장. 카탈로그에서 추출 불가하므로 표 반입(붙여넣기)으로 사람이 입력. 검색 화면의 조건 칸 자동 채움에 사용.</td></tr>
+      <tr><td class="num">⑤</td><td><b>장비 계열 → 시험 항목</b><br>수행 가능 시험 항목</td><td><code>series_test_items</code><br>+ <code>series_test_conditions</code> (조건 범위)<br>+ <code>series_test_item_methods</code> (인용 규격)<br>+ <code>series_pending_methods</code> (시험 항목 미지정 인용)</td><td>N : M</td><td>계열 단위의 수행 가능 시험 목록 — 「이 계열은 인장 수행 가능」 1행. 인용 규격은 별도 표로 연결(규격별 분할 금지 — 검색 결과 중복 방지, ADR 0006). 시험 항목 미확정 인용은 <code>series_pending_methods</code>에 보존, 시험 항목 확정 시 자동 승격(<code>promote_pending</code>).</td></tr>
+      <tr><td class="num">⑥</td><td><b>장비 계열 → 장비 기종</b><br>구성 기종</td><td><code>equipment_models.series_id</code></td><td>1 : N</td><td>수행 가능 시험은 계열 속성, <b>수치 사양은 기종 속성</b>. 동일 계열 내 하중 용량이 수백 배 차이 — 계열 단위로는 「300 kN 가능 여부」 판정 불가.</td></tr>
+      <tr><td class="num">⑦</td><td><b>장비 계열 ↔ 장비 계열</b><br>계열 간 관계</td><td><code>series_relations</code><br>host · part · kind · note</td><td>N : M</td><td>부속·후속 관계 9종: <code>compatible_accessory</code> <code>fits_on</code> <code>requires</code> <code>controlled_by</code> <code>extends_temperature</code> <code>simulates_environment</code> <code>successor_of</code> <code>same_family_as</code> <code>variant_of</code>. 챔버 장착 시 온도 범위 확장 등이 검색 판정 「부속 있으면」의 근거.</td></tr>
+      <tr><td class="num">⑧</td><td><b>장비 기종 → 사양 정의</b><br>사양 값</td><td><code>model_spec_values</code> → <code>spec_definitions</code><br><code>model_free_specs</code> (정의 없는 값)</td><td>N : M</td><td>정의된 사양은 값 행으로 저장(ADR 0005), 정의 없는 값은 「기종 고유 사양」으로 보존, 원문은 <code>raw_specs</code>. 사양 정의의 <code>kind</code>·<code>key</code>는 생성 후 불변.</td></tr>
+      <tr><td class="num">⑧′</td><td><b>사양 정의 → 검색 조건</b><br>조건 축 연계 (파생)</td><td><code>spec_definitions.condition_key_id</code><br>연결표 <code>SPEC_DEFINITION_LINKS</code></td><td>N : 1</td><td>사양 정의가 검색 조건 축에 연결된 경우 기종 사양 값을 <b>단위 환산</b>하여 검색 조건으로 반영. 환산 불가 조합(쇼어 경도 ↔ kN)은 미반영 — 「500 gf → 500 kN」 오류 방지.</td></tr>
+      <tr><td class="num">⑨</td><td><b>보유 장비 → 장비 기종</b><br>지정 기종</td><td><code>equipment.model_id</code> (NULL 허용)</td><td>N : 1</td><td>보유 장비의 참조 대상은 <b>기종</b>(계열 아님). 카탈로그에 기종 부재 시 NULL — 「카탈로그 미연결」 목록으로 시스템 관리자가 보완. 개체 사양(<code>equipment_spec_values</code>)은 기종 사양과 <b>상이한 값만</b> 저장(중첩 조회).</td></tr>
+      <tr><td class="num">⑩</td><td><b>보유 장비 → 시험 항목</b><br>수행 시험 항목 (복사)</td><td><code>equipment_test_items</code><br>confidence: catalog · verified · limited<br>+ <code>equipment_test_conditions</code></td><td>N : M</td><td>기종 지정 시 계열의 수행 가능 시험 항목을 <b>개체로 복사</b>(ADR 0004) — 등록 시점의 판단 스냅샷, 카탈로그 개정에 비연동. 조건은 계열 범위와 기종 사양의 병합 복사, <b>기종 우선</b>. 실측 확인 시 confidence=verified, 확인일 <code>verified_on</code>.</td></tr>
+      <tr><td class="num">⑪</td><td><b>보유 장비 → 부서</b><br>소유 부서</td><td><code>equipment.owner_workspace_id</code><br>+ <code>shared_use</code> · <code>site_term_id</code> · <code>location</code></td><td>N : 1</td><td>필수 항목(소유 부서·거점·상세위치·종류) 중 하나. 공용 여부는 별도 열 <code>shared_use</code>. 부서의 <code>restricted</code>가 장비 가시성 결정(기본: 전원 공개). 수정 권한은 소유 부서 관리자.</td></tr>
+      <tr><td class="num">⑫</td><td><b>신뢰성 시험 → 부서</b><br>수행 부서</td><td><code>reliability_tests.workspace_id</code> (필수)</td><td>N : 1</td><td>신뢰성 시험은 <b>부서가 수행하는 절차</b>(고온고습 1000h 등) — 시험 항목(장비의 측정 능력)과 별개 층. 전역 신뢰성 시험 없음. 동일 부서 내 동일 명칭 불가. 소프트 삭제 및 감사 기록.</td></tr>
+      <tr><td class="num">⑬</td><td><b>신뢰성 시험 → 시험 항목</b><br>구성 시험 항목</td><td><code>reliability_test_items</code></td><td>N : M</td><td>절차가 사용하는 측정 항목. 장비로의 연결 경로 — 시험 항목별 「해당 부서 보유 장비 수」 산출(0 = 절차 정의됨, 수행 장비 부재). 공란 허용(장비 불필요 시험).</td></tr>
+      <tr><td class="num">—</td><td><b>부서 → 사이드바</b><br>메뉴 표시</td><td><code>workspaces.reliability_listed</code></td><td>—</td><td>「부서 정보」에서 표시 설정한 부서만 사이드바 「신뢰성 시험」 하위에 노출. 조직도 전체 노출 시 탐색 비용 증가 방지.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>3. 객체 정의 — 정본 · 편집 화면 · 편집 권한</h2>
+  <div class="cards">
+    <div class="card"><h3>물성 항목 <span class="tag v">기준정보</span></h3>
+      기준정보 축 <code>property</code>의 값 271종. <code>code</code> = MaterialTwin 키(<code>mechanical.yield_strength</code>) — 명칭 변경과 무관한 식별자. 별칭(기호·영문) 반입.
+      <dl><dt>정본</dt><dd><code>source/catalog/ontology/properties.json</code></dd><dt>화면</dt><dd>카탈로그 → 물성 항목 (연결 확인은 행 단위 일괄)</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+    <div class="card"><h3>시험 항목 <span class="tag v">기준정보</span></h3>
+      축 <code>test_item</code>의 값 94종 + 별칭(영문 라벨·약어). 사슬의 중심 — 물성·규격·계열·기종·보유 장비가 모두 참조. 검색 조건 축 보유.
+      <dl><dt>정본</dt><dd><code>ontology/test_items.json</code> (label · aliases · measurands · typical_standards)</dd><dt>화면</dt><dd>카탈로그 → 시험 항목 (0 = 공백)</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+    <div class="card"><h3>시험법 / 규격 <span class="tag c">카탈로그</span></h3>
+      <code>test_methods</code> 463건 — 코드·판·제목·소속 시험 항목·제정기관·후속 판. 요구 조건은 <code>method_requirements</code>. 기관명만 인용된 행은 검토함에서 정리, 표기 상이 항목은 <code>merge_into</code>로 병합.
+      <dl><dt>정본</dt><dd>계열 객체의 인용 + <code>standard_titles.json</code>(제목)</dd><dt>화면</dt><dd>카탈로그 → 시험법·규격</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+    <div class="card"><h3>장비 계열 <span class="tag c">카탈로그</span></h3>
+      <code>equipment_series</code> — 제조사·분류(군 → 유형 2층)·종류(main · accessory · sensor · software)·소개. 수행 가능 시험의 정의 단위. 계열 간 관계(⑦)로 부속·후속 표현.
+      <dl><dt>정본</dt><dd><code>source/catalog/equipment/&lt;제조사&gt;/*.json</code> (446 객체)</dd><dt>화면</dt><dd>카탈로그 → 장비 계열 (상세 + 측면 목록)</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+    <div class="card"><h3>장비 기종 <span class="tag c">카탈로그</span></h3>
+      <code>equipment_models</code> — 수치 사양의 저장 단위. 정의된 사양(<code>model_spec_values</code>) · 기종 고유 사양(<code>model_free_specs</code>) · 원문(<code>raw_specs</code>) 3계층. 보유 장비의 참조 대상.
+      <dl><dt>정본</dt><dd>계열 객체의 <code>models[]</code></dd><dt>화면</dt><dd>카탈로그 → 장비 기종 (대표 사양은 분류가 정의)</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+    <div class="card"><h3>검색 조건 · 사양 정의 <span class="tag a">축</span></h3>
+      <code>condition_keys</code> 12축(온도·하중·속도·습도·주파수·전압·전류·토크·가속도·충격 에너지 등), SI 단위 저장. <code>spec_definitions</code> 300종 중 조건 축 연결 항목이 검색에 반영.
+      <dl><dt>정본</dt><dd><code>vocabulary/reference.py</code>(시드) + 검토함 「신규 검색 조건」</dd><dt>화면</dt><dd>공통 → 시험 조건 정의 · 장비 사양 정의</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+    <div class="card"><h3>보유 장비 <span class="tag o">사내 운영</span></h3>
+      <code>equipment</code> — 자산번호·명칭·기종·소유 부서·거점·위치·상태·교정 이력. 수행 시험 항목은 계열에서 복사된 개체 속성(⑩), 조건·사양은 실측으로 갱신.
+      <dl><dt>입력</dt><dd>장비 등록 · 대장 일괄 반입(붙여넣기)</dd><dt>화면</dt><dd>사내 장비·시험 현황 → 보유 장비 / 장비 검색</dd><dt>권한</dt><dd>소유 부서 관리자. 가시성 판정은 <code>visible_equipment_ids</code> 단일 지점</dd></dl></div>
+    <div class="card"><h3>신뢰성 시험 <span class="tag o">사내 운영</span></h3>
+      <code>reliability_tests</code> — 수행 부서·명칭·목적 + 구성 시험 항목(⑬). 현재 항목은 3종(조건·판정 기준·근거 규격은 현장 목록 확인 후 확장 예정).
+      <dl><dt>입력</dt><dd>부서별 화면에서 등록</dd><dt>화면</dt><dd>사이드바 「신뢰성 시험」 → 부서 (<code>/reliability-tests/&lt;부서&gt;</code>)</dd><dt>권한</dt><dd>해당 부서 관리자 · 시스템 관리자</dd></dl></div>
+    <div class="card"><h3>부서 <span class="tag o">사내 운영</span></h3>
+      <code>workspaces</code> — 트리(parent_id · sort_order) · 보관 상태(is_active) · 장비 가시성(restricted) · 메뉴 표시(reliability_listed). 장비의 소유 단위이자 권한 단위. ReportArchive 조직도와 CSV 상호 교환(가져오기 · 내보내기).
+      <dl><dt>입력</dt><dd>관리 → 부서 정보 (등록 · 가져오기)</dd><dt>역할</dt><dd>member · manager (시스템 역할은 <code>users.is_system_admin</code> — 별도 축)</dd><dt>권한</dt><dd>시스템 관리자</dd></dl></div>
+  </div>
+
+  <h2>4. 질의 경로 예시</h2>
+  <div class="wrap">
+  <table>
+    <thead><tr><th>질의</th><th>경유 관계</th><th>응답 형태</th></tr></thead>
+    <tbody>
+      <tr><td>80 ℃ · 20 kN 인장 가능 장비</td><td>시험 항목(인장) → ② 조회 조건 축(온도·하중) → ⑩ 보유 장비의 수행 시험 항목 + 개체 조건 → ⑪ 소유 부서 · 위치</td><td>장비별 판정: <b>조건 충족 / 부속 있으면 / 조건 미상 / 불충족</b> — 미상과 불충족의 구분 유지</td></tr>
+      <tr><td>인장강도 측정 장비 (물성 기준)</td><td>물성 → ① 측정 물성(N:M 확장) → 상기 경로</td><td>관련 시험 항목 전체의 합집합</td></tr>
+      <tr><td>ISO 6892-1 수행 가능 장비 (규격 기준)</td><td>규격 → ③ 소속 시험 항목 → ④ 요구 조건(조건 자동 채움) → 상기 경로. 시험 항목 미지정 규격은 경로 차단</td><td>조건이 채워진 장비 검색</td></tr>
+      <tr><td>구매 후보 기종 (카탈로그 기준)</td><td>시험 항목 → ⑤ 수행 가능 계열 → ⑥ 구성 기종 → ⑧·⑧′ 사양 값의 조건 환산 → ⑦ 부속 관계</td><td>카탈로그 검색 — 미보유 기종 포함</td></tr>
+      <tr><td>특정 부서의 신뢰성 시험 현황</td><td>⑫ 수행 부서 → 신뢰성 시험 → ⑬ 구성 시험 항목 → 항목별 해당 부서 ⑩ 보유 장비 수</td><td>절차 목록 + 「해당 부서 장비 N대」 (0 = 수행 장비 부재)</td></tr>
+      <tr><td>명칭 불일치 질의 (thermal shock · HAST)</td><td><code>resolve</code>: 값 정확 일치 → 별칭 일치 → 명칭 부분 일치 → 의미 검색(<code>search_chunks</code>) 후보</td><td>exact / candidates / none — 후보는 자동 선택 없음</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>5. 관계 설계 원칙</h2>
+  <ul>
+    <li><b>3계층 분리</b> — 계열의 수행 가능 시험 · 기종의 수치 사양 · 개체의 실제 수행 시험 (ADR 0004 · 0006).</li>
+    <li><b>복사와 중첩 조회의 구분</b> — 시험 항목은 개체로 복사(시점 스냅샷), 사양은 기종 값 위에 상이한 개체 값만 중첩(사양서 값과 실측 값의 병존).</li>
+    <li><b>관계의 표 저장</b> — 규격 인용 · 계열 관계 · 물성 연결 전부 연결 표. 비고 텍스트는 검색 불가.</li>
+    <li><b>미상과 불충족의 구분</b> — 조건 부재는 「조건 미상」, 시험 항목 미지정 규격은 「검색 불가」로 별도 표시.</li>
+    <li><b>제안과 확인의 구분</b> — 물성 연결 상태 · 시험 항목 신뢰도(confidence) · 검토함 결정 모두 기계 제안과 사람 확인을 별도 값으로 보존.</li>
+    <li><b>삭제 금지</b> — 장비 · 규격 · 신뢰성 시험 · 계정은 <code>deleted_at</code> 설정(소프트 삭제). 외부 산출물의 참조 보존.</li>
+    <li><b>신뢰성 시험의 상위 층 배치</b> — 하위 사슬(시험 항목 → 조건 → 규격 → 장비) 불변, 그 위에 절차 층 추가.</li>
+  </ul>
+
+  <h2>6. v0.6.7 이후 더해진 관계 (v0.14.0 기준)</h2>
+  <p class="lead">아래는 원래 그림에 없던 표와 선이다. 그림을 다시 그리지 않은 이유는 「공통 → 지식 그래프」 가 이 관계 전부를 정의(<code>graph/model.py</code>)에서 읽어 실제 건수와 함께 그리기 때문이다 — 관계의 정본은 그 파일 하나다.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th></th><th>관계</th><th>구현</th><th>기수</th><th>정의 근거</th></tr></thead>
+    <tbody>
+      <tr><td class="num">⑭</td><td><b>객체 → 속성 값</b><br>관리자가 정의한 칸</td><td><code>attribute_definitions</code>(대상 · 종류 · 초안/정식) · <code>attribute_values</code>(reliability_test_id | equipment_id | series_id | method_id 중 하나)</td><td>1 : N</td><td>칸을 열이 아니라 <b>행</b>으로 둔다 — 조사 중인 칸을 열로 뚫으면 안 쓰는 열이 남고 두 사람이 각각 더하면 갈린다. 초안은 온톨로지 밖(검색·판정·색인 카드에 안 듦), 정식으로 올리는 문 하나. 이름이 갈린 초안은 검토함 「초안 속성 정리」 가 사람에게 묻는다.</td></tr>
+      <tr><td class="num">⑭′</td><td><b>속성 정의 → 검색 조건 축</b><br>조건 속성</td><td><code>attribute_definitions.condition_key_id</code> (kind=condition)</td><td>N : 1</td><td>조건을 검색축과 <b>같은 축·같은 차원</b>으로 적어야 「이 시험을 돌릴 장비」 판정이 성립한다. 신뢰성 시험의 조건 속성은 그대로 <code>ConditionQuery</code> 가 되어 장비 찾기(②·⑩)에 넘어간다 — 판정 규칙은 두 벌이 아니라 하나(<code>reliability/capability.py</code>).</td></tr>
+      <tr><td class="num">⑭″</td><td><b>속성 값 → 기준정보 값 · 규격</b><br>참조 속성</td><td><code>attribute_values.term_id</code> (kind=term) · <code>ref_method_id</code> (kind=method)</td><td>N : 1</td><td>값이 글자가 아니라 참조라야 갈리지 않는다. <code>ref_method_id</code> 는 「값이 가리키는 규격」 이고 <code>method_id</code> 는 「이 값이 붙은 규격」 — 다른 열이다.</td></tr>
+      <tr><td class="num">⑮</td><td><b>검토함 줄 → 대상</b><br>사람이 정할 것</td><td><code>review_proposals</code>(queue · subject_key · subject_id) · <code>review_votes</code></td><td>N : 1</td><td>반입이 못 정한 것(어느 시험의 규격인가 · 무슨 조건을 묻나 · 이 물성이 나오나 · 초안 속성을 합칠까)을 후보·추천·근거와 함께 둔다. 의견(누구나)과 확정(시스템 관리자)을 가르고, 확정은 기계 자격으로 막혀 있다(403) — 고른 것이 곧 정본이라. 대상이 지워진 줄은 「대상 없어짐」 으로 따로 닫는다.</td></tr>
+      <tr><td class="num">⑯</td><td><b>물성 연결의 출처</b><br>제안 · 확인</td><td><code>test_item_properties.status</code>(suggested | confirmed) · <code>source</code>(ontology | materialtwin | manual | <b>agent</b>)</td><td>—</td><td>①에 열 둘. AI 가 낸 연결은 언제나 <code>suggested</code>·<code>agent</code> 로 들어오고 사람이 확인한다 — 확인은 「사람이 봤다」 는 뜻이고 카탈로그 정본에 실리므로 기계가 대신 못 한다.</td></tr>
+      <tr><td class="num">—</td><td><b>지식 그래프</b><br>관계의 정본</td><td><code>graph/model.py</code> 의 <code>EDGE_KINDS</code> — 위 관계 전부를 (원본 종류 · 대상 종류 · SELECT) 한 줄씩</td><td>—</td><td>새 관계는 거기 한 줄이고 구조·이웃·subgraph·노드 상세가 전부 그 목록을 돈다. 화면마다 관계를 따로 적으면 「그림에는 있는데 상세에는 없는」 선이 생긴다. 장비는 <code>visible_equipment_ids</code> 로 걸러 가린 부서의 것은 어디에도 안 선다.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>이 시기에 더해진 질의 경로</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>질의</th><th>경로</th><th>답의 형태</th></tr></thead>
+    <tbody>
+      <tr><td>이 신뢰성 시험, 어느 장비로 돌리나</td><td>⑫ 시험 → ⑭′ 조건 속성 → <code>ConditionQuery</code>(범위 하나 = 위·아래 두 물음) → ⑬ 시험 항목마다 ② ⑩ 장비 찾기</td><td>시험 항목별 후보 장비 + 판정, <b>뺀 조건(단위 못 바꿈)</b>과 <b>조건 미달로 빠진 장비 수</b>를 함께 — 「0대」 의 이유를 가른다</td></tr>
+      <tr><td>투자 연도 2020 이후 장비 · −40 ℃ 이하로 내려가는 시험</td><td>목록의 <code>attr=&lt;키&gt;&lt;연산&gt;&lt;값&gt;</code> → ⑭ 값 행을 정의 단위로 환산해 판정(빈 끝 = 제한 없음)</td><td>거른 목록. 0건이면 <code>/attribute-definitions/diagnose</code> 가 조건마다 「값 적힌 수 · 단위 못 바꾼 수 · 그 조건 하나로 걸리는 수」 를 준다 — 빈 목록은 넷을 똑같이 생겼기 때문</td></tr>
+      <tr><td>무엇이 무엇과 이어지나</td><td><code>/graph/overview</code>(종류 · 선 종류 · 건수) → <code>/graph/search</code> → <code>/graph/neighborhood</code>(서버 상한 · 잘리면 <code>truncated</code>)</td><td>「전부」 는 없다 — 잘랐으면 잘랐다고 말한다</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <footer>TestScope v0.6.7 (2026-09-16) — 6절은 v0.14.0 (2026-09-20) · 정본: <code>backend/app/modules/*/models.py</code>(표 구조), <code>AGENTS.md</code> · <code>docs/adr/</code>(규칙). 본 문서는 요약본이며 불일치 시 코드 우선.</footer>
+</main>
+</body>
+</html>

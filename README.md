@@ -45,8 +45,15 @@
 | | 포트 | 비고 |
 |---|---|---|
 | 백엔드(개발) | **8021** | 운영과 가른다 — 아래 참조 |
-| 백엔드(운영) | **8020** | |
+| 백엔드(운영) | **8020** | 배포본은 API 와 SPA 를 같은 프로세스가 낸다 |
+| MCP 서버 | **8022** | 백엔드 +2. 8030 은 CrossAXTF 운영 포트라 같은 PC 에서 겹쳤다 |
 | 프론트(개발) | **5200** | `strictPort` — 밀려서 다른 포트로 뜨지 않게 |
+| PostgreSQL(개발) | 5432 | `backend/.env` 의 `DATABASE_URL` |
+| PostgreSQL(운영) | 5434 | 운영 PC 의 PG17 — 다른 플랫폼과 인스턴스를 가른다 |
+| Ollama(의미 검색, 선택) | 11434 | `OLLAMA_BASE_URL`. 없으면 검색은 이름·별칭으로만 돈다 |
+
+「플랫폼마다 10씩」 — TestScope 는 802x 대역이다(MatNexus·ReportArchive·StandardPlatform 과
+겹치지 않게). 새 서비스를 붙이면 이 대역 안에서 고른다.
 
 개발과 운영이 같은 포트를 쓰면, 개발 백엔드를 내린 순간 프론트 프록시가 **운영
 설치본에 그대로 붙는다** — 화면은 그 사실을 아무 데도 말하지 않는다.
@@ -384,17 +391,17 @@ un_mcp.ps1 -Stdio     # 개인 연결
 Windows 는 두 프로세스가 같은 포트를 LISTEN 하는 것을 막지 않는다. reload 로 띄운
 개발 서버는 부모와 자식 워커 둘인데, 부모만 죽으면 **자식이 소켓을 물고 남는다** —
 그다음에 띄운 새 서버와 옛 워커가 번갈아 답하고, 그러면 `TSC-COMMON-0404` 가
-띄엄띄엄 온다. `run.py` 가 이제 그 자리에서 기동을 거부하지만, 이미 쌓인 것은
-직접 내려야 한다.
+띄엄띄엄 온다. `run.py` 가 뜰 때 이것을 본다: 포트를 쥔 PID 가 **이미 죽은 프로세스**면
+그 부모의 워커는 아무도 안 거두는 고아라 스스로 내리고 뜬다(「죽은 부모(…)의 워커 … 를
+내렸습니다」). 쥔 프로세스가 살아 있으면 남의 서버일 수 있어 거절한다 — 그때는 직접 본다.
 
 ```powershell
 Get-NetTCPConnection -LocalPort 8021 -State Listen |
   Select-Object -ExpandProperty OwningProcess | Sort-Object -Unique
 ```
 
-**죽은 PID 가 나오면** 그 PID 를 부모로 둔 워커가 잡고 있는 것이다 —
-`Get-CimInstance Win32_Process` 의 `CommandLine` 에서 `parent_pid=<그 PID>` 를 찾아
-내린다.
+CI 와 확인 스크립트는 애초에 reload 없이 띄운다(`python -m uvicorn app.main:app --port …`)
+— 워커가 없으니 고아도 없다.
 
 **채울 자리는 홈의 「남은 일」 이 짚어 준다.** 카탈로그 전체가 아니라 **우리가
 가진 것만** 센다 — 사양이 안 적힌 보유 기종, 시험 항목이 안 적힌 보유 계열, 원본
