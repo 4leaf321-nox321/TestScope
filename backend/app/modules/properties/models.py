@@ -51,7 +51,8 @@ LINK_STATUSES = ("suggested", "confirmed")
 #:   ontology      `source/catalog/ontology/test_items.json` 의 measurands
 #:   materialtwin  MaterialTwin 능력행 (기종, 물성, 기법)
 #:   manual        사람이 화면에서 더했다
-LINK_SOURCES = ("ontology", "materialtwin", "manual")
+#:   agent         AI 가 규격·문헌을 읽고 제안했다 — 늘 `suggested` 로 들어오고 사람이 확인한다
+LINK_SOURCES = ("ontology", "materialtwin", "manual", "agent")
 
 
 class TestItemProperty(Base):

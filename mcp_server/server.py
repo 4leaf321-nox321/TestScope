@@ -66,6 +66,8 @@ ROUTING = """무엇을 물었나 -> 여기서 시작한다 (자세한 것은 그
   우리 부서 시험 절차           list_reliability_tests · test_capability
   장비 대장 넣기               import_equipment (한 대면 register_equipment)
   장비 한 대 고치기            get_equipment · update_equipment · add_equipment_test_item
+  교정 언제였나/언제 만료     get_calibrations · list_calibrations_due
+  규격이 없다/조건을 적자      resolve(method) -> create_method · set_requirement
   계열/기종/사양 채우기         search_series · search_models · get_specs · set_spec
   이 값을 어디 적나            list_reference · list_axes · list_terms
   무슨 칸을 적을 수 있나        list_attribute_definitions
@@ -497,6 +499,21 @@ async def list_conditions(ctx: Context) -> dict[str, Any]:
     각 조건의 `si_unit` 과 `display_unit` 이 함께 온다. **값은 저장 단위로 보낸다.**
     """
     return _listed(await _get(ctx, "/condition-keys"), "conditions")
+
+
+# ── 부서 ──────────────────────────────────────────────────────────────────────
+
+
+@mcp.tool()
+async def list_workspaces(ctx: Context) -> dict[str, Any]:
+    """부서 목록 — slug · 이름 · 조직도 경로(「개발본부 / 재료시험팀」).
+
+    쓰기 API 가 요구하는 것은 이름이 아니라 **slug** 다(`create_reliability_test` 의
+    `workspace_slug`, `register_equipment` 의 `workspace_slug`). 이 목록 없이 이름으로
+    짐작해 넣으면 대개 404 이거나 남의 부서다. **같은 이름의 팀이 본부마다 있을 수 있다** —
+    경로(`path`)로 가른다. 이름 하나만 알면 `resolve(kind="workspace", …)` 가 더 빠르다.
+    """
+    return _listed(await _get(ctx, "/workspaces/options"), "workspaces")
 
 
 # ── 카탈로그: 계열 ─────────────────────────────────────────────────────────────
@@ -1230,6 +1247,27 @@ async def update_equipment(
     )
 
 
+@mcp.tool()
+async def get_calibrations(ctx: Context, equipment_id: str) -> dict[str, Any]:
+    """이 장비의 **교정 이력** — 언제, 누가(기관), 결과, 차기일. 최근 것이 먼저.
+
+    「마지막 교정이 언제였나」 「지금 유효한가」 의 답. 이력이 비어 있는데 장비가 교정
+    대상(`calibration_required`)이면 그것은 「모른다」 가 아니라 **채워야 할 자리**다 —
+    그렇게 말하라.
+    """
+    return _listed(await _get(ctx, f"/equipment/{equipment_id}/calibrations"), "calibrations")
+
+
+@mcp.tool()
+async def list_calibrations_due(ctx: Context) -> dict[str, Any]:
+    """곧 만료되거나 **이미 지난** 교정 — 전사, 내가 볼 수 있는 장비.
+
+    지난 것을 빼지 않는다. 빼면 만료된 장비가 조용히 계속 쓰이고, 그것으로 낸 값은
+    나중에 통째로 못 믿게 된다. 「이달 교정 받아야 할 장비」 를 물으면 여기서 시작한다.
+    """
+    return _listed(await _get(ctx, "/server/calibrations-due"), "due")
+
+
 @writes
 async def add_calibration(
     ctx: Context,
@@ -1404,6 +1442,77 @@ async def list_methods(
 
 
 @writes
+async def create_method(
+    ctx: Context,
+    code: str,
+    title: str,
+    edition: str | None = None,
+    test_item_term_id: str | None = None,
+    body_term_id: str | None = None,
+    summary: str | None = None,
+) -> dict[str, Any]:
+    """규격 하나를 등록한다. **먼저 `resolve(kind="method", text=code)` 로 찾아라.**
+
+    규격 번호는 표기가 갈린다(「JIS B 0601」/「JIS B0601」) — 서버가 공백을 지워 견주므로
+    이미 있으면 409 가 오고, 그것은 실패가 아니라 답이다(그 id 를 쓴다).
+
+    `edition` 은 판(「2019」 「Ed.3」). 같은 규격의 다른 판은 **다른 줄**이다 — 요구 조건이
+    판마다 바뀐다. `test_item_term_id` 는 이 규격이 어느 시험의 것인지(`resolve(kind="term",
+    axis="test_item")`), `body_term_id` 는 제정기관(`axis="standard_body"`). **둘 다 모르면
+    비운다** — 항목 미정 규격은 검토함이 사람에게 묻는다. 전사 공용으로 만들어진다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/methods",
+        {
+            "code": code,
+            "title": title,
+            "edition": edition,
+            "test_item_term_id": test_item_term_id,
+            "body_term_id": body_term_id,
+            "summary": summary,
+        },
+    )
+
+
+@writes
+async def set_requirement(
+    ctx: Context,
+    method_id: str,
+    condition_key_id: str,
+    min_value: float | None = None,
+    max_value: float | None = None,
+    text_value: str | None = None,
+    is_mandatory: bool = True,
+    note: str | None = None,
+) -> dict[str, Any]:
+    """규격의 **요구 조건 한 줄** — 규격서를 읽다 조건 하나를 발견했을 때. 표로 여럿이면
+    `import_requirements`.
+
+    `condition_key_id` 는 `list_conditions` 가 준다. **값은 SI 로**(`si_unit`) — 20 kN 이면
+    20000 이다. 같은 조건이 이미 있으면 덮어쓴다. **한쪽을 비울 수 있다**: 「20 kN 이상」 은
+    min 만 있고 max 는 None 이다 — 0 으로 채우면 상한이 0 인 것과 구별되지 않는다.
+
+    이 조건이 곧 검색 물음이 된다(`search_test_items(method_id=…)`). 그래서 규격서에 적힌
+    것만 적고, 관례로 아는 값은 `note` 에 그렇다고 적는다.
+    """
+    return await _send(
+        ctx,
+        "PUT",
+        f"/methods/{method_id}/requirements",
+        {
+            "condition_key_id": condition_key_id,
+            "min_value": min_value,
+            "max_value": max_value,
+            "text_value": text_value,
+            "is_mandatory": is_mandatory,
+            "note": note,
+        },
+    )
+
+
+@writes
 async def set_method_test_item(
     ctx: Context, method_id: str, test_item_term_id: str
 ) -> dict[str, Any]:
@@ -1449,6 +1558,34 @@ async def import_requirements(ctx: Context, text: str, dry_run: bool = True) -> 
 
 
 # ── 물성 연결 — 묶음 확인 ─────────────────────────────────────────────────────
+
+
+@writes
+async def suggest_property_link(
+    ctx: Context, test_item_term_id: str, property_term_id: str, note: str | None = None
+) -> dict[str, Any]:
+    """시험 항목 → 물성 연결을 **제안**한다. 확인이 아니다.
+
+    「인장에서 항복강도가 나온다」 처럼 규격·문헌을 읽고 알게 된 연결을 적는 자리다. 들어가는
+    상태는 언제나 `suggested`, 출처는 `agent` — **AI 가 알아서 확인하지 않는다.** 확인은
+    「사람이 봤다」 는 뜻이고 카탈로그 정본에 실리므로, 사람이 물성 화면이나
+    `confirm_property_links` 로 한다.
+
+    둘 다 id 다(`resolve(kind="term", axis="test_item"|"property")`). 이미 이어져 있으면 409.
+    `note` 에는 덧붙는 조건(「신율계 필요」)이나 근거(규격 번호)를 적는다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/test-item-properties",
+        {
+            "test_item_term_id": test_item_term_id,
+            "property_term_id": property_term_id,
+            "note": note,
+            "status": "suggested",
+            "source": "agent",
+        },
+    )
 
 
 @writes
@@ -1701,11 +1838,24 @@ async def list_reliability_tests(
 
     `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
     (`["temp_x>=100"]`). 여러 개면 **모두** 만족해야 한다.
+
+    조건을 걸었는데 0건이면 `diagnosis` 가 함께 온다 — 조건마다 값이 적힌 수 · 단위 못
+    바꾼 수 · 그 조건 하나로 걸리는 수와 한 줄. **「그런 시험 없습니다」 로 뭉개지 말고 그
+    줄을 그대로 말하라.** 가장 흔한 실제는 「아무도 안 적었다」 다.
     """
-    return _listed(
+    found = _listed(
         await _get(ctx, "/reliability-tests", {"workspace": workspace, "attr": attr}),
         "tests",
     )
+    if attr and found.get("count") == 0:
+        # 빈 목록만 돌려주면 AI 는 「없다」 로 옮긴다. 진단은 서버가 세고 서버가 말한다 —
+        # 화면도 같은 엔드포인트를 쓴다.
+        found["diagnosis"] = await _get(
+            ctx,
+            "/attribute-definitions/diagnose",
+            {"target": "reliability_test", "attr": attr},
+        )
+    return found
 
 
 @mcp.tool()

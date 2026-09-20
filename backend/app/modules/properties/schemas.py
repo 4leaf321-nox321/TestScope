@@ -46,6 +46,12 @@ class TestItemPropertyCreateRequest(BaseModel):
     property_term_id: uuid.UUID
     note: str | None = Field(default=None, max_length=2000)
     """덧붙는 조건 — 「신율계 필요」 처럼."""
+    status: str = Field(default="confirmed", pattern="^(suggested|confirmed)$")
+    """사람이 화면에서 더한 것은 그 자체가 확인이라 기본은 `confirmed` 다. **AI 가 내는
+    것은 `suggested`** — 제안은 사람이 봐야 확인이 된다(MCP 도구가 이 값을 고정해 보낸다)."""
+    source: str = Field(default="manual", pattern="^(manual|agent)$")
+    """어디서 왔나. `agent` 는 AI 가 규격·문헌을 읽고 낸 제안 — 화면이 「왜 이 연결이
+    있나」 에 답할 때 사람이 더한 것과 구별되어야 한다."""
 
 
 class LinkBulkRequest(BaseModel):

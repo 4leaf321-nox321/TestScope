@@ -25,6 +25,7 @@ WRITE_PREFIXES = (
     "promote_",
     "detach_",
     "confirm_",
+    "suggest_",
 )
 
 

@@ -192,17 +192,20 @@ def create_link(db: Session, user: User, payload: dict[str, Any]) -> TestItemPro
             "TSC-PROPERTIES-0004", f"이미 이어져 있습니다: {item.value} → {prop.value}"
         )
     # 사람이 손으로 더한 것은 그 자체가 확인이다 — 제안으로 두면 자기가 만든 것을
-    # 자기가 다시 확인하는 헛걸음이 생긴다.
+    # 자기가 다시 확인하는 헛걸음이 생긴다. **AI 가 낸 것은 제안이다**(status=suggested):
+    # 확인은 「사람이 봤다」 는 뜻이고 카탈로그 정본에 실리므로 기계가 대신 못 한다.
+    status = str(payload.get("status") or "confirmed")
+    confirmed = status == "confirmed"
     now = datetime.now(UTC)
     row = TestItemProperty(
         test_item_term_id=item.id,
         property_term_id=prop.id,
-        status="confirmed",
-        source="manual",
+        status=status,
+        source=str(payload.get("source") or "manual"),
         note=payload.get("note"),
         created_by_id=user.id,
-        confirmed_by_id=user.id,
-        confirmed_at=now,
+        confirmed_by_id=user.id if confirmed else None,
+        confirmed_at=now if confirmed else None,
     )
     db.add(row)
     db.commit()

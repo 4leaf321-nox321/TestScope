@@ -156,6 +156,12 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 
 ## 규격 — 못 하는 시험과 끊긴 연결을 가른다
 
+규격이 없으면 `resolve(kind="method", text=번호)` 로 먼저 찾고(표기가 갈려도 서버가 공백을
+지워 견준다), 없을 때만 `create_method` 로 만든다. 요구 조건은 규격서에 적힌 것만 —
+한 줄이면 `set_requirement`(값은 SI), 표면 `import_requirements`. 그 조건이 곧 검색 물음이
+된다.
+
+
 `list_methods` 의 `series_count` 가 0 인데 `pending_series_count` 가 0 이 아니면 못 하는
 시험이 아니라 **끊긴 연결**이다: 계열이 인용은 했는데 어느 시험 항목의 규격인지 안 정해진
 것. `set_method_test_item` 으로 정하면 인용한 계열에 자동으로 붙는다. 규격 번호가 무슨
@@ -173,6 +179,11 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 공유하는 값이니 `promote_free_spec` 으로 정의로 올린다 — 이름·단위·종류는 사람이 정한다.
 
 ## 물성 연결의 확인
+
+규격·문헌을 읽다 「이 시험에서 이 물성이 나온다」 를 알게 되면 `suggest_property_link` 로
+**제안**을 낸다 — 상태는 언제나 `suggested`, 출처는 `agent` 다. 근거(규격 번호)를 `note` 에
+적어 두면 사람이 확인할 때 그것을 본다.
+
 
 `search_properties` 의 `links[].status` 가 `suggested` 면 기계의 제안이다. 사람이 「인장이
 내는 것은 이 다섯 개, 맞다」 고 했을 때 `confirm_property_links` 로 그 줄을 묶어 올린다.

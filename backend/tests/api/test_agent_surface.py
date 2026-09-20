@@ -142,9 +142,29 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
         == 403
     ), "카탈로그 범위로 부서의 시험을 못 만든다"
 
-    # 읽기 도구들은 read 하나로 된다 — 가능한 장비·그래프·검토함.
+    # 규격 등록과 요구 조건 한 줄 — catalog:write. 물성 연결 제안도 같은 범위다.
+    method = client.post(
+        "/api/methods",
+        json={"code": f"MCP {tag}", "title": "확인용 규격"},
+        headers=catalog,
+    )
+    assert method.status_code == 201, method.text
+    keys = {
+        one["key"]: one["id"]
+        for one in client.get("/api/condition-keys", headers=read_only).json()
+    }
+    requirement = client.put(
+        f"/api/methods/{method.json()['id']}/requirements",
+        json={"condition_key_id": keys["force"], "min_value": 20000},
+        headers=catalog,
+    )
+    assert requirement.status_code == 200, requirement.text
+
+    # 읽기 도구들은 read 하나로 된다 — 가능한 장비·그래프·검토함·교정·부서.
     for path, params in (
         (f"/api/reliability-tests/{test.json()['id']}/equipment", None),
+        ("/api/workspaces/options", None),
+        ("/api/server/calibrations-due", None),
         ("/api/attribute-definitions", {"target": "reliability_test"}),
         ("/api/reference/overview", None),
         ("/api/graph/overview", None),

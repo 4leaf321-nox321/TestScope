@@ -321,3 +321,40 @@ def test_제안을_묶어서_확인하고_되돌린다(
 
     # 「bulk」 가 연결 id 로 읽히면 안 된다 — 라우트 순서.
     assert client.get("/api/test-item-properties", headers=admin.headers).status_code == 200
+
+
+def test_AI_가_낸_연결은_제안으로_들어오고_사람이_확인한다(
+    client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
+) -> None:
+    """손으로 더한 것은 그 자체가 확인이지만, **기계가 낸 것은 제안**이다. 확인은 「사람이
+    봤다」 는 뜻이고 카탈로그 정본에 실리므로 기계가 대신 못 한다 — MCP 도구가 이 값을 고정해
+    보낸다. 출처 `agent` 는 화면이 「왜 이 연결이 있나」 에 답할 때 사람 것과 구별되게 한다."""
+    tag = uuid.uuid4().hex[:6]
+    item = term_factory("test_item", f"인장-{tag}")
+    prop = _property(client, admin, f"항복강도-{tag}", f"mechanical.yield_strength_{tag}")
+
+    made = _link(
+        client, admin, item, prop, status="suggested", source="agent", note="ISO 6892-1"
+    )
+    assert made["status"] == "suggested" and made["source"] == "agent"
+    assert made["confirmed_at"] is None
+
+    # 사람이 확인하면 그때 확인자·시각이 찍힌다.
+    confirmed = client.patch(
+        "/api/test-item-properties/bulk",
+        json={"link_ids": [made["id"]], "status": "confirmed"},
+        headers=admin.headers,
+    )
+    assert confirmed.status_code == 200, confirmed.text
+    listed = client.get(
+        "/api/test-item-properties", params={"test_item": item}, headers=admin.headers
+    ).json()
+    assert listed[0]["status"] == "confirmed" and listed[0]["confirmed_at"]
+
+    # 모르는 출처·상태는 거절 — 「그냥 넣어 두자」 가 정본에 흘러들지 않게.
+    bad = client.post(
+        "/api/test-item-properties",
+        json={"test_item_term_id": item, "property_term_id": prop, "source": "guess"},
+        headers=admin.headers,
+    )
+    assert bad.status_code in (400, 409, 422)
