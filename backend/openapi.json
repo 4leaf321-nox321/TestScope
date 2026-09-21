@@ -8581,6 +8581,52 @@
         ],
         "title": "AccessLogOut"
       },
+      "AccessoryOffer": {
+        "properties": {
+          "series_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Series Id"
+          },
+          "series_name": {
+            "type": "string",
+            "title": "Series Name"
+          },
+          "model_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Model Id"
+          },
+          "model_name": {
+            "type": "string",
+            "title": "Model Name"
+          },
+          "condition_range": {
+            "type": "string",
+            "title": "Condition Range"
+          },
+          "owned_units": {
+            "type": "integer",
+            "title": "Owned Units"
+          },
+          "relation": {
+            "type": "string",
+            "title": "Relation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "series_id",
+          "series_name",
+          "model_id",
+          "model_name",
+          "condition_range",
+          "owned_units",
+          "relation"
+        ],
+        "title": "AccessoryOffer",
+        "description": "**부속을 붙이면 된다** — 무엇을, 어디까지, 우리가 갖고 있나.\n\n본체 사양으로는 안 되거나 모르는 조건에 챔버·노가 답할 때 온다. 「부속이 필요하다」 만\n말하면 사람은 어느 부속인지 찾으러 카탈로그를 뒤져야 하고, 대개 거기서 멈춘다."
+      },
       "AccountOut": {
         "properties": {
           "id": {
@@ -10678,6 +10724,16 @@
               }
             ],
             "title": "Reason"
+          },
+          "accessory": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AccessoryOffer"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",

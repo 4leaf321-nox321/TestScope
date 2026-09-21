@@ -451,14 +451,15 @@ async def search_test_items(
     ## 판정을 셋으로 읽어라
 
         met        된다
-        accessory  범위는 맞는데 **옵션 부속(챔버·노)이 있어야** 된다 — 「됨」 으로 옮기지 마라
+        accessory  **부속(챔버·노)을 달면 된다** — 「됨」 으로 옮기지 마라
         unmet      안 된다
         unknown    **모른다** — 그 장비에 그 조건이 안 적혀 있다
 
-    **unknown 을 met 으로 옮기지 마라.** 「가능합니다」 로 옮기면 그 답을 믿고 일정을
-    짠 사람이 막힌다. 「그 장비에 그 조건이 적혀 있지 않다」 고 그대로 말하라 — 조건마다
-    `reason` 이 왜 모르는지를 준다(`missing` 안 적힘 · `no_max` 상한 없음 · `no_min` ·
-    `no_range`). 채우려면 `set_test_condition` 이다.
+    `accessory` 조건의 `accessory` 칸이 **무엇을 달면 되는지** 짚어 준다(부속 기종·범위·
+    보유 대수). 보유가 0 이 아니면 사는 이야기가 아니다 — 부속을 다시 뒤지지 마라, 답에 있다.
+
+    **unknown 을 met 으로 옮기지 마라.** 「그 장비에 그 조건이 적혀 있지 않다」 고 그대로
+    말하라 — `reason` 이 왜 모르는지를 준다. 채우려면 `set_test_condition` 이다.
 
     결과가 비면 `diagnosis` 를 읽어라: `equipment_with_item` 이 0 이면 조건이 좁은 것이
     아니라 그 시험을 등록한 장비가 없는 것이고, `catalog_series_with_item` 이 0 이 아니면
@@ -517,7 +518,9 @@ async def search_catalog(
 
     답은 계열마다 **기종 단위**다(계열 봉투 0.5~600 kN 은 답이 못 된다). 기종마다
     `verdict`(match · accessory · partial · unknown)와 `owned_units`(이미 등록된 보유 대수)가
-    온다. **owned_units 가 0 이 아니면 사기 전에 그 장비를 먼저 말하라.** `unmet_models` 는
+    온다. **owned_units 가 0 이 아니면 사기 전에 그 장비를 먼저 말하라.** `accessory` 는
+    **챔버·노를 달면 되는 것**이고, 그 조건 줄의 `accessory` 칸이 어느 부속 기종을 얼마까지
+    쓰는지와 그것의 보유 대수를 짚어 준다 — 본체와 부속을 따로 세어 말하라. `unmet_models` 는
     조건에 걸려 빠진 기종 수다 — 0 건일 때 「없어서」 와 「조건이 좁아서」 를 가른다.
     """
     found = await _send(
@@ -2075,8 +2078,10 @@ async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
     * `skipped` — 단위를 못 옮겨 **뺀** 조건과 그 이유. 있으면 조건을 다 본 것이 아니다.
     * `unmet_count` — 조건이 안 맞아 빠진 장비 수. 0대라는 답이 「그 항목이 되는 장비가
       없어서」 인지 「조건이 안 맞아서」 인지를 이것이 가른다.
-    * 줄의 `verdict` — `match` 다 충족 · `accessory` 옵션 부속 필요 · `partial` 일부는
-      **모른다** · `unknown` 전부 모른다. **`unknown` 을 「가능합니다」 로 옮기지 마라.**
+    * 줄의 `verdict` — `match` 다 충족 · `accessory` **부속(챔버·노)을 달면 됨** · `partial`
+      일부는 **모른다** · `unknown` 전부 모른다. **`unknown` 을 「가능합니다」 로 옮기지 마라.**
+    * 조건 줄의 `accessory` 칸 — 무엇을 달면 되나(`model_name`), 얼마까지(`condition_range`),
+      **우리가 갖고 있나**(`owned_units`). 0 이 아니면 사는 이야기가 아니다.
 
     **0대면 그것이 답이다.** 「그 시험 항목이 적힌 장비가 없다」(unmet_count 0) 또는 「조건이
     안 맞는다」(unmet_count > 0) 로 말하고 멈춰라 — 챔버·항온항습 같은 다른 이름으로 장비를

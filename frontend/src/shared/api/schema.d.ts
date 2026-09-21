@@ -2802,6 +2802,35 @@ export interface components {
              */
             created_at: string;
         };
+        /**
+         * AccessoryOffer
+         * @description **부속을 붙이면 된다** — 무엇을, 어디까지, 우리가 갖고 있나.
+         *
+         *     본체 사양으로는 안 되거나 모르는 조건에 챔버·노가 답할 때 온다. 「부속이 필요하다」 만
+         *     말하면 사람은 어느 부속인지 찾으러 카탈로그를 뒤져야 하고, 대개 거기서 멈춘다.
+         */
+        AccessoryOffer: {
+            /**
+             * Series Id
+             * Format: uuid
+             */
+            series_id: string;
+            /** Series Name */
+            series_name: string;
+            /**
+             * Model Id
+             * Format: uuid
+             */
+            model_id: string;
+            /** Model Name */
+            model_name: string;
+            /** Condition Range */
+            condition_range: string;
+            /** Owned Units */
+            owned_units: number;
+            /** Relation */
+            relation: string;
+        };
         /** AccountOut */
         AccountOut: {
             /**
@@ -3532,6 +3561,7 @@ export interface components {
             condition_range: string | null;
             /** Reason */
             reason?: string | null;
+            accessory?: components["schemas"]["AccessoryOffer"] | null;
         };
         /**
          * ConditionQuery

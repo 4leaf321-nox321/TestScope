@@ -171,6 +171,33 @@ vi.mock('@/shared/api/client', () => ({
                   owned_units: 0,
                   conditions: [],
                 },
+                {
+                  // 본체는 온도를 모르는데 붙는 챔버가 댄다 — **무엇을 달면 되는지**까지.
+                  model_id: 'm3',
+                  model_name: '5969',
+                  verdict: 'accessory',
+                  owned_units: 0,
+                  conditions: [
+                    {
+                      condition_key_id: 'k2',
+                      condition_label: '시험 온도',
+                      display_unit: 'degC',
+                      verdict: 'accessory',
+                      asked: '300 degC 에서',
+                      condition_range: null,
+                      reason: null,
+                      accessory: {
+                        series_id: 's9',
+                        series_name: 'Instron 3119-600 챔버',
+                        model_id: 'm9',
+                        model_name: '3119-608',
+                        condition_range: '-150 degC ~ 600 degC',
+                        owned_units: 1,
+                        relation: 'extends_temperature',
+                      },
+                    },
+                  ],
+                },
               ],
             },
           ],
@@ -332,8 +359,14 @@ describe('카탈로그에서 찾기', () => {
     expect(screen.getByText('5982')).toBeTruthy()
     // **사기 전에 있는 것을 본다.**
     expect(screen.getByText('보유 2대')).toBeTruthy()
-    expect(screen.getByText('부속 있으면')).toBeTruthy()
+    expect(screen.getAllByText('부속 있으면').length).toBe(2)
     expect(screen.getByText(/빠진 기종 3종/)).toBeTruthy()
+    // **「부속 필요」 만 적으면 사람은 카탈로그를 뒤지러 간다.** 어느 기종을 얼마까지,
+    // 그리고 이미 갖고 있는지까지 한 줄에 있어야 한다.
+    const offer = screen.getByRole('link', { name: '3119-608' })
+    expect(offer.getAttribute('href')).toBe('/catalog/equipment-models/m9')
+    expect(screen.getByText(/-150 degC ~ 600 degC — 달면 됩니다/)).toBeTruthy()
+    expect(screen.getByText('· 보유 1대')).toBeTruthy()
   })
 })
 

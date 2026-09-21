@@ -58,6 +58,27 @@ class SearchRequest(BaseModel):
     """거점으로 좁힌다. **가려면 이동해야 하는 단위**라 실무에서 가장 먼저 묻는다."""
 
 
+class AccessoryOffer(BaseModel):
+    """**부속을 붙이면 된다** — 무엇을, 어디까지, 우리가 갖고 있나.
+
+    본체 사양으로는 안 되거나 모르는 조건에 챔버·노가 답할 때 온다. 「부속이 필요하다」 만
+    말하면 사람은 어느 부속인지 찾으러 카탈로그를 뒤져야 하고, 대개 거기서 멈춘다.
+    """
+
+    series_id: uuid.UUID
+    series_name: str
+    model_id: uuid.UUID
+    model_name: str
+    """**기종을 짚는다.** 계열로 답하면 -70~300 °C 챔버 계열이 600 °C 도 된다고 말한다."""
+    condition_range: str
+    """그 부속이 내는 범위. -150 ~ 600 degC."""
+    owned_units: int
+    """이 부속 기종으로 등록된 보유 대수(내가 볼 수 있는 것). **0 이 아니면 살 것이
+    아니라 옆에서 가져오면 되는 것이다.**"""
+    relation: str
+    """카탈로그가 적어 둔 관계. extends_temperature · compatible_accessory · fits_on."""
+
+
 class ConditionMatch(BaseModel):
     condition_key_id: uuid.UUID
     condition_label: str
@@ -68,9 +89,11 @@ class ConditionMatch(BaseModel):
     unknown 을 met 과 섞지 않는 것이 이 화면의 핵심이다. "그 조건이 안 적혀
     있다" 와 "된다" 는 다르고, 둘을 같게 답하면 사람은 헛걸음을 한다.
 
-    accessory 는 **범위는 맞는데 옵션 부속(챔버·노)이 있어야** 나오는 값이다. 카탈로그가
-    항온조 옵션 기준으로 적은 온도가 그렇다 — 「됨」 으로 답하면 갖고 있지도 않은 챔버를
-    전제로 하는 것이다. 그 대에 챔버가 실제로 있으면 사람이 그 표시를 끈다.
+    accessory 는 **범위는 맞는데 옵션 부속(챔버·노)이 있어야** 나오는 값이다. 두 갈래로
+    나온다: 카탈로그가 항온조 옵션 기준으로 적은 값이거나(사양에 표시가 붙어 있다), 본체로는
+    안 되는데 **붙는 부속이 그 조건을 대 주거나**(`accessory` 칸이 그 부속을 짚는다). 앞은
+    「됨」 으로 답하면 갖고 있지도 않은 챔버를 전제로 하는 것이고, 뒤는 빠뜨리면 「그런 장비가
+    없다」 가 된다. 그 대에 챔버가 실제로 있으면 사람이 그 표시를 끈다.
     """
     asked: str
     """사람이 읽을 물음. 80 degC 에서 · 20 kN 이상."""
@@ -84,6 +107,10 @@ class ConditionMatch(BaseModel):
         no_max    상한이 없어 「이상」 을 판정할 수 없다
         no_min    하한이 없어 「이하」 를 판정할 수 없다
     """
+    accessory: AccessoryOffer | None = None
+    """`accessory` 판정을 만든 부속. **본체가 못 대는 조건을 이것이 댄다** — 어느 기종인지,
+    어디까지 되는지, 우리가 갖고 있는지까지. 사양에 붙은 옵션 표시로 `accessory` 가 된
+    경우에는 비어 있다(무엇을 달아야 하는지가 카탈로그에 안 적혀 있다)."""
 
 
 class SearchDiagnosis(BaseModel):

@@ -12,6 +12,31 @@ import { EmptyState } from '@/shared/components/EmptyState'
 import { StatusBadge } from '@/shared/components/StatusBadge'
 import { Button } from '@/shared/components/ui/button'
 import type { CatalogSearchResponse, SearchResponse } from '@/modules/search/api'
+import type { components } from '@/shared/api/schema'
+
+type AccessoryOffer = components['schemas']['AccessoryOffer']
+
+/** **부속을 붙이면 된다** — 무엇을, 어디까지, 우리가 갖고 있나.
+ *
+ *  「부속 필요」 만 적으면 사람은 어느 부속인지 찾으러 카탈로그를 뒤져야 하고 대개 거기서
+ *  멈춘다. 보유 대수가 0 이 아니면 **살 것이 아니라 옆에서 가져오면 되는 것**이라, 그
+ *  숫자를 같은 줄에 둔다. */
+function Accessory({ offer }: { offer: AccessoryOffer }) {
+  return (
+    <span className="text-amber-700">
+      <Link
+        to={`/catalog/equipment-models/${offer.model_id}`}
+        className="underline decoration-dotted underline-offset-2"
+      >
+        {offer.model_name}
+      </Link>
+      {` (${offer.series_name}) ${offer.condition_range} — 달면 됩니다`}
+      {offer.owned_units > 0 && (
+        <strong className="text-emerald-700"> · 보유 {offer.owned_units}대</strong>
+      )}
+    </span>
+  )
+}
 
 /** `unknown` 의 이유를 사람 말로. **어디를 채우면 되는지**까지 — 「모른다」 만 말하면 사람은
  *  채울 자리를 못 찾는다. 장비 쪽은 그 장비의 조건, 카탈로그 쪽은 그 기종의 사양이다. */
@@ -153,7 +178,13 @@ export function CatalogResult({ result }: { result: CatalogSearchResponse }) {
                     {model.conditions.map((one) => (
                       <span key={one.condition_key_id}>
                         {one.condition_label} {one.condition_range ?? '안 적힘'}
-                        {one.verdict === 'accessory' && ' (부속)'}
+                        {one.verdict === 'accessory' && !one.accessory && ' (부속)'}
+                        {one.accessory && (
+                          <>
+                            {' — '}
+                            <Accessory offer={one.accessory} />
+                          </>
+                        )}
                         {one.verdict === 'unknown' &&
                           ` — ${whyUnknown(one.reason, 'catalog')}`}
                       </span>
@@ -267,10 +298,14 @@ export function SearchResult({ result }: { result: SearchResponse }) {
                         </Link>
                       </span>
                     )}
-                    {one.verdict === 'accessory' && (
-                      <span className="text-amber-700">
-                        옵션 부속(챔버·노)이 있어야 되는 범위
-                      </span>
+                    {one.accessory ? (
+                      <Accessory offer={one.accessory} />
+                    ) : (
+                      one.verdict === 'accessory' && (
+                        <span className="text-amber-700">
+                          옵션 부속(챔버·노)이 있어야 되는 범위
+                        </span>
+                      )
                     )}
                   </li>
                 ))}

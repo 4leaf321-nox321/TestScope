@@ -40,7 +40,7 @@ const VERDICTS: Record<string, { label: string; tone: string; hint: string }> = 
   accessory: {
     label: '부속 필요',
     tone: 'text-sky-600',
-    hint: '조건은 맞지만 그중 하나 이상이 옵션 부속 기준입니다',
+    hint: '챔버·노를 달면 되는 조건이 있습니다 — 줄에 어느 기종인지와 보유 대수가 적힙니다',
   },
   partial: {
     label: '일부 모름',
@@ -199,6 +199,16 @@ export function CapabilityDialog({
                                         {one.condition_range
                                           ? ` (${one.condition_range})`
                                           : ''}
+                                        {/* **무엇을 달면 되는지까지.** 「부속 필요」 만
+                                            적으면 사람은 카탈로그를 뒤지러 간다. */}
+                                        {one.accessory && (
+                                          <span className="text-sky-700">
+                                            {` — ${one.accessory.model_name} ${one.accessory.condition_range}`}
+                                            {one.accessory.owned_units > 0
+                                              ? ` · 보유 ${one.accessory.owned_units}대`
+                                              : ' · 미보유'}
+                                          </span>
+                                        )}
                                       </li>
                                     ))}
                                   </ul>

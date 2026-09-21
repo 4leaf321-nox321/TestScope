@@ -10,7 +10,7 @@ from __future__ import annotations
 import uuid
 
 from app.modules.search.schemas import ConditionQuery
-from app.modules.search.services import _verdict
+from app.modules.search.verdict import _verdict
 from app.modules.test_items.models import EquipmentTestCondition
 
 #: 어느 조건이냐는 판정에 안 쓰인다 — 값만 본다.

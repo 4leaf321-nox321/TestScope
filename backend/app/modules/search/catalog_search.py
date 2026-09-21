@@ -26,7 +26,6 @@ from __future__ import annotations
 
 import uuid
 from collections import defaultdict
-from dataclasses import dataclass
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -36,6 +35,7 @@ from app.modules.equipment.models import Equipment, EquipmentModel, EquipmentSer
 from app.modules.equipment.specs import conditions_from_specs_bulk
 from app.modules.methods.models import TestMethod
 from app.modules.properties.services import test_item_ids_for_property
+from app.modules.search import accessories
 from app.modules.search.schemas import (
     CatalogHit,
     CatalogModelHit,
@@ -43,7 +43,14 @@ from app.modules.search.schemas import (
     ConditionMatch,
     SearchRequest,
 )
-from app.modules.search.services import _asked, _hit_verdict, _judge, _range_text
+from app.modules.search.verdict import (
+    VERDICT_RANK,
+    Bound,
+    _asked,
+    _hit_verdict,
+    _judge,
+    _range_text,
+)
 from app.modules.test_items.models import (
     SeriesTestCondition,
     SeriesTestItem,
@@ -54,16 +61,6 @@ from app.shared.permissions import visible_equipment_ids
 
 #: 계열 상한. 넘으면 사람이 안 읽는다.
 MAX_SERIES = 100
-
-
-@dataclass(frozen=True)
-class Bound:
-    """조건 한 칸 — 장비 조건과 같은 모양이라 같은 판정 함수를 탄다."""
-
-    min_value: float | None
-    max_value: float | None
-    text_value: str | None
-    requires_accessory: bool
 
 
 def _candidates(db: Session, request: SearchRequest) -> list[SeriesTestItem]:
@@ -183,6 +180,9 @@ def search_catalog(db: Session, user: User, request: SearchRequest) -> CatalogSe
         )
     }
 
+    # 이 계열에 무엇을 달 수 있나 — 본체 사양으로 못 대는 조건을 챔버·노가 대 준다.
+    offers = accessories.offers_for(db, user, series_ids, request.conditions, keys)
+
     hits: list[CatalogHit] = []
     unmet = 0
     for item in items:
@@ -212,6 +212,9 @@ def search_catalog(db: Session, user: User, request: SearchRequest) -> CatalogSe
                         reason=reason,
                     )
                 )
+            # 본체가 못 대는 조건을 붙는 부속이 대나. **판정 종합보다 먼저** — 「안 됨」 은
+            # 기종을 통째로 빼므로, 뒤에 하면 부속으로 되는 기종이 이미 사라진 뒤다.
+            accessories.fill(matches, offers, series.id)
             verdict = _hit_verdict(matches)
             if verdict is None:
                 unmet += 1
@@ -263,11 +266,8 @@ def search_catalog(db: Session, user: User, request: SearchRequest) -> CatalogSe
     )
 
 
-_RANK = {"match": 0, "accessory": 1, "partial": 2, "unknown": 3}
-
-
 def _best_rank(hit: CatalogHit) -> int:
-    return min((_RANK.get(m.verdict, 9) for m in hit.models), default=9)
+    return min((VERDICT_RANK.get(m.verdict, 9) for m in hit.models), default=9)
 
 
 def _expanded(db: Session, request: SearchRequest) -> list[str]:

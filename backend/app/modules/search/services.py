@@ -10,12 +10,15 @@
 
 그래서 후보를 SQL 로 좁히고(항목·부서·거점·상태), 조건 판정은 파이썬에서 한다.
 후보 수는 장비 수 규모라 이 방식으로 충분하다.
+
+판정 규칙 자체는 `verdict.py` 에 있다 — 카탈로그 검색·신뢰성 화면·MCP 가 같은 것을 탄다.
+본체로 안 되는 조건에 붙는 부속이 답하는지는 `accessories.py` 가 본다.
 """
 
 from __future__ import annotations
 
 import uuid
-from typing import Any, Protocol
+from typing import Any
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -25,10 +28,12 @@ from app.modules.equipment.models import (
     AVAILABLE_STATUSES,
     Equipment,
     EquipmentCalibration,
+    EquipmentModel,
     EquipmentSeries,
 )
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.properties.services import test_item_ids_for_property
+from app.modules.search import accessories
 from app.modules.search.schemas import (
     ConditionMatch,
     ConditionQuery,
@@ -36,6 +41,13 @@ from app.modules.search.schemas import (
     SearchHit,
     SearchRequest,
     SearchResponse,
+)
+from app.modules.search.verdict import (
+    VERDICT_RANK,
+    _asked,
+    _hit_verdict,
+    _judge,
+    _range_text,
 )
 from app.modules.test_items.models import (
     EquipmentTestCondition,
@@ -48,113 +60,6 @@ from app.shared.permissions import visible_equipment_ids
 
 #: 결과 상한. 넘으면 사람이 안 읽는다 — 좁히라고 말하는 편이 낫다.
 MAX_HITS = 200
-
-
-class Limit(Protocol):
-    """조건 한 칸이 갖는 것. 장비 조건(`EquipmentTestCondition`)과 카탈로그 검색이 기종
-    사양에서 만든 칸이 같은 판정 함수를 타게 하는 계약 — 판정이 두 벌이면 「카탈로그에서는
-    되는데 등록하니 안 된다」 가 생긴다."""
-
-    @property
-    def min_value(self) -> float | None: ...
-
-    @property
-    def max_value(self) -> float | None: ...
-
-    @property
-    def text_value(self) -> str | None: ...
-
-    @property
-    def requires_accessory(self) -> bool: ...
-
-
-def _fmt(value: float | None, unit: str) -> str:
-    """숫자를 사람이 읽는 꼴로. **단위를 빼지 않는다** — 20 만 적으면 N 인지
-    kN 인지 알 수 없고, 그 둘은 자릿수가 셋 다르다."""
-    if value is None:
-        return "제한 없음"
-    text = f"{value:g}"
-    return f"{text} {unit}".strip()
-
-
-def _asked(query: ConditionQuery, key: ConditionKey) -> str:
-    unit = key.display_unit or key.si_unit
-    if query.at is not None:
-        return f"{_fmt(query.at, unit)} 에서"
-    if query.at_least is not None:
-        return f"{_fmt(query.at_least, unit)} 이상"
-    if query.at_most is not None:
-        return f"{_fmt(query.at_most, unit)} 이하"
-    if query.text:
-        return query.text
-    return "지정 없음"
-
-
-def _range_text(limit: Limit | None, key: ConditionKey) -> str | None:
-    if limit is None:
-        return None
-    if limit.text_value:
-        return limit.text_value
-    unit = key.display_unit or key.si_unit
-    return f"{_fmt(limit.min_value, unit)} ~ {_fmt(limit.max_value, unit)}"
-
-
-def _verdict(query: ConditionQuery, limit: Limit | None) -> str:
-    """조건 하나의 판정. met · accessory · unmet · unknown. 이유는 `_judge` 가 준다."""
-    return _judge(query, limit)[0]
-
-
-def _judge(query: ConditionQuery, limit: Limit | None) -> tuple[str, str | None]:
-    """조건 하나의 판정과 **모르면 왜 모르는지.** (verdict, reason).
-
-    **비어 있는 한쪽은 "제한 없음" 이다.** 0 으로 취급하면 상한을 안 적은 장비가
-    전부 탈락한다 — 실제로 사람들은 아는 쪽만 적는다.
-
-    범위는 맞는데 그 범위가 **옵션 부속 기준**이면 「됨」 이 아니라 `accessory` 다.
-    부속을 사거나 빌려야 되는 것이고, 그 사실을 사람이 알아야 한다.
-
-    「모른다」 만 말하면 사람은 채울 자리를 못 찾는다. 조건이 아예 없는 것(`missing`)과
-    상한만 없는 것(`no_max`)은 채우는 칸이 다르다.
-    """
-    if limit is None:
-        return "unknown", "missing"
-    verdict, reason = _range_verdict(query, limit)
-    if verdict == "met" and limit.requires_accessory:
-        return "accessory", None
-    return verdict, reason
-
-
-def _range_verdict(query: ConditionQuery, limit: Limit) -> tuple[str, str | None]:
-
-    if query.text is not None:
-        if limit.text_value is None:
-            return "unknown", "no_range"
-        return ("met" if limit.text_value.strip() == query.text.strip() else "unmet"), None
-
-    if query.at is not None:
-        if limit.min_value is not None and query.at < limit.min_value:
-            return "unmet", None
-        if limit.max_value is not None and query.at > limit.max_value:
-            return "unmet", None
-        # 양쪽 다 비어 있으면 범위를 안 적은 것이다 — 통과가 아니라 모름이다.
-        if limit.min_value is None and limit.max_value is None:
-            return "unknown", "no_range"
-        return "met", None
-
-    if query.at_least is not None:
-        if limit.max_value is None:
-            # 상한을 안 적었다. 무제한이라는 뜻일 수도, 안 적은 것일 수도 있다 —
-            # **구별할 수 없으면 모른다고 답한다.** 된다고 답했다가 틀리면 그
-            # 한 번으로 시스템 전체가 안 믿긴다.
-            return "unknown", "no_max"
-        return ("met" if limit.max_value >= query.at_least else "unmet"), None
-
-    if query.at_most is not None:
-        if limit.min_value is None:
-            return "unknown", "no_min"
-        return ("met" if limit.min_value <= query.at_most else "unmet"), None
-
-    return "unknown", "no_range"
 
 
 def _candidates(db: Session, user: User, request: SearchRequest) -> list[EquipmentTestItem]:
@@ -213,28 +118,25 @@ def _limits_by_key(
     return {(row.equipment_test_item_id, row.condition_key_id): row for row in rows}
 
 
-def _hit_verdict(matches: list[ConditionMatch]) -> str | None:
-    """시험 항목 하나의 종합 판정. None 이면 결과에서 뺀다.
+def _series_by_equipment(
+    db: Session, equipment_ids: list[uuid.UUID]
+) -> dict[uuid.UUID, uuid.UUID]:
+    """{장비 id: 그 장비가 가리키는 기종의 계열 id}.
 
-    **하나라도 안 되면 뺀다.** 안 되는 장비를 목록에 남기는 것은 답이 아니라
-    소음이고, 사람은 목록이 길면 위에서부터 읽다가 틀린 것을 고른다.
+    부속이 무엇에 붙는지는 **계열**에 적혀 있다(`SeriesRelation`) — 기종마다 적으면 같은
+    챔버를 계열의 기종 수만큼 베껴 적게 된다. 기종에 안 이어진 장비는 여기 안 나오고,
+    그 장비는 부속 판정도 못 받는다(그 사실은 `diagnosis.unlinked_equipment` 가 말한다).
     """
-    if any(one.verdict == "unmet" for one in matches):
-        return None
-    if not matches:
-        return "match"
-    if all(one.verdict == "unknown" for one in matches):
-        return "unknown"
-    if any(one.verdict == "unknown" for one in matches):
-        return "partial"
-    if any(one.verdict == "accessory" for one in matches):
-        return "accessory"
-    return "match"
+    if not equipment_ids:
+        return {}
+    rows = db.execute(
+        select(Equipment.id, EquipmentModel.series_id)
+        .join(EquipmentModel, EquipmentModel.id == Equipment.model_id)
+        .where(Equipment.id.in_(equipment_ids))
+    ).all()
+    return {row[0]: row[1] for row in rows}
 
 
-#: 결과 정렬 우선순위. **확실한 것이 위로 온다.** 부속이 있어야 되는 것은 확실히 되는 것
-#: 다음이고, 모르는 것보다는 앞이다 — 사면 되는 것과 모르는 것은 다르다.
-_VERDICT_RANK = {"match": 0, "accessory": 1, "partial": 2, "unknown": 3}
 _CONFIDENCE_RANK = {"verified": 0, "catalog": 1, "limited": 2}
 
 
@@ -250,6 +152,12 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
             )
         )
     }
+
+    # 이 장비에 무엇을 달 수 있나 — 계열이 안다. **판정 앞에 한 번에 읽는다.**
+    series_of = _series_by_equipment(db, [one.equipment_id for one in candidates])
+    offers = accessories.offers_for(
+        db, user, set(series_of.values()), request.conditions, keys
+    )
 
     hits: list[SearchHit] = []
     unmet = 0
@@ -272,6 +180,9 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
                     reason=reason,
                 )
             )
+        # 본체가 못 대는 조건에 붙는 부속이 답하나. **판정 종합보다 먼저** — 「안 됨」 은
+        # 줄을 통째로 빼므로, 뒤에 하면 부속으로 되는 장비가 이미 사라진 뒤다.
+        accessories.fill(matches, offers, series_of.get(test_item.equipment_id))
 
         verdict = _hit_verdict(matches)
         if verdict is None:
@@ -287,7 +198,7 @@ def search(db: Session, user: User, request: SearchRequest) -> SearchResponse:
     # 같은 검색을 두 번 했을 때 순서가 다르면 사람은 결과를 못 믿는다.
     hits.sort(
         key=lambda hit: (
-            _VERDICT_RANK.get(hit.verdict, 9),
+            VERDICT_RANK.get(hit.verdict, 9),
             _CONFIDENCE_RANK.get(hit.confidence, 9),
             hit.asset_no,
         )
