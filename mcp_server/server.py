@@ -25,9 +25,11 @@ MatNexus 의 MCP 서버를 본떴다. 그쪽에서 실측으로 얻은 것 넷�
 from __future__ import annotations
 
 import os
+import time
 from pathlib import Path
 from typing import Any
 
+import calltrace
 import httpx
 from mcp.server.mcpserver import Context, MCPServer
 
@@ -82,9 +84,39 @@ mcp = MCPServer(
         " 답한다. 카탈로그는 계열(무슨 시험이 되나)과 기종(어디까지 되나) 두 층이고,"
         " 보유 장비는 기종을 가리킨다. 규약 둘이 모든 도구에 걸린다 — **만들기 전에"
         " resolve 로 찾는다**, **모르면 비운다**(지어낸 값은 검색이 「됩니다」 로"
-        " 답한다). 처음이면 get_guide() 를 읽어라.\n\n" + ROUTING
+        " 답한다), **응답의 next 가 「이것이 답이다」 면 멈춘다**(거점별·장비별로 다시"
+        " 부르거나 사양을 열어 재확인하지 않는다 — 판정은 서버가 했다). 처음이면"
+        " get_guide() 를 읽어라.\n\n" + ROUTING
     ),
 )
+
+
+# ── 자취 ──────────────────────────────────────────────────────────────────────
+
+_TRACE_PATH = calltrace.trace_path()
+_call_tool_plain = mcp.call_tool
+
+
+async def _call_tool_traced(
+    name: str, arguments: dict[str, Any], context: Context | None = None
+) -> Any:
+    """모든 도구 호출이 지나는 자리 — 자취 한 줄을 남긴다(`TESTSCOPE_MCP_TRACE` 가 켜졌을 때).
+
+    SDK 의 `call_tool` 을 인스턴스에서 덮는다. 도구마다 데코레이터를 하나 더 다는 것보다
+    빠뜨릴 곳이 없고, 미들웨어 API 는 아직 「바뀔 수 있다」 고 적혀 있어 피했다.
+    """
+    started = time.perf_counter()
+    outcome = await _call_tool_plain(name, arguments, context)
+    if _TRACE_PATH is not None:
+        # 도구가 돌려준 값은 CallToolResult 로 감싸여 온다 — 구조화된 것이 있으면 그것으로
+        # 빈손인지 본다(우리 도구는 전부 dict 나 str 을 돌려준다).
+        payload = getattr(outcome, "structured_content", None)
+        calltrace.record(name, arguments, payload, started, path=_TRACE_PATH)
+    return outcome
+
+
+if _TRACE_PATH is not None:
+    mcp.call_tool = _call_tool_traced  # type: ignore[method-assign]
 
 
 # ── 도구 등록 ─────────────────────────────────────────────────────────────────
@@ -217,6 +249,45 @@ def _listed(payload: object, key: str) -> dict[str, object]:
         return payload
     rows = list(payload) if isinstance(payload, list) else []
     return {key: rows, "count": len(rows)}
+
+
+#: 검색 도구가 한 번에 돌려주는 줄 수. 서버는 200건까지 주지만 그것을 통째로 넘기면 도구
+#: 응답 한도(클라이언트마다 다르다 — Claude Code 는 8만 자 안팎)를 넘겨 **잘린 채** 도착한다.
+#: 측정(2026-09-20, q03)에서 AI 가 「결과가 한도를 넘어 거점별로 쪼갰다」 고 스스로 적었다 —
+#: 그래서 검색 한 번이 다섯 번이 됐다. 확실한 것이 위로 오게 정렬돼 있으니 앞 몇 십 건이면
+#: 답하기에 충분하고, 나머지는 판정별 수로 요약한다.
+SEARCH_HITS = 20
+SEARCH_HITS_MAX = 50
+
+
+def _trim_hits(found: Any, limit: int, key: str = "hits") -> Any:
+    """긴 목록을 앞 `limit` 건으로 자르고 판정별 수(`by_verdict`)와 `shown` 을 붙인다."""
+    if not isinstance(found, dict) or "error" in found or not isinstance(found.get(key), list):
+        return found
+    rows = found[key]
+    counts: dict[str, int] = {}
+    for one in rows:
+        verdict = str(one.get("verdict") or "?")
+        counts[verdict] = counts.get(verdict, 0) + 1
+    found["by_verdict"] = counts
+    found["shown"] = min(len(rows), limit)
+    found[key] = rows[:limit]
+    return found
+
+
+def _then(payload: Any, advice: str) -> Any:
+    """응답 끝에 「다음에 할 것」 한 줄을 얹는다(`next`).
+
+    길잡이는 **첫 도구**를 맞히게 했지만 그다음 걸음이 길었다 — 측정(2026-09-20)에서 AI 는
+    검색 한 번 뒤에 거점마다 같은 검색을 네 번 더 돌렸고(q01·q03), 판정이 0대라 하자 다른
+    이름으로 장비를 뒤졌다(q11). 「이 응답이 답이다, 여기서 멈춰라」 가 응답에 없어서다. 도구
+    설명은 부르기 전에 읽는 글이고, 이 줄은 **결과를 손에 든 순간** 읽는 글이다.
+
+    오류 봉투에는 안 얹는다 — 오류가 곧 다음 할 일이다.
+    """
+    if isinstance(payload, dict) and "error" not in payload:
+        payload["next"] = advice
+    return payload
 
 
 # ── 안내 ──────────────────────────────────────────────────────────────────────
@@ -359,6 +430,7 @@ async def search_test_items(
     conditions: list[dict[str, Any]] | None = None,
     site_term_id: str | None = None,
     include_unavailable: bool = False,
+    limit: int = SEARCH_HITS,
 ) -> dict[str, Any]:
     """**「80도에서 20 kN 이상 인장 되는 장비 있나」 에 답한다.**
 
@@ -392,8 +464,15 @@ async def search_test_items(
     아니라 그 시험을 등록한 장비가 없는 것이고, `catalog_series_with_item` 이 0 이 아니면
     `search_catalog` 로 「사면 되는 것」 을 찾을 수 있으며, `unlinked_equipment` 는 기종에 안
     이어져 검색에 안 걸리는 장비 수다.
+
+    **이 응답이 답이다.** 줄마다 거점·부서·위치·담당자가 이미 있다 — 거점별로 다시 부르거나
+    장비마다 사양을 열어 재확인하지 마라(판정은 서버가 사양을 보고 한 것이다).
+
+    줄은 확실한 것(match)이 먼저다. `total` 이 `shown` 보다 크면 나머지는 **나열하지 말고**
+    `by_verdict`(판정별 수)로 요약하라 — 「match 3대, 모름 40대」. 전부 봐야 할 때만 `limit`
+    을 올린다(최대 50).
     """
-    return await _send(
+    found = await _send(
         ctx,
         "POST",
         "/search/test-items",
@@ -406,6 +485,19 @@ async def search_test_items(
             "include_unavailable": include_unavailable,
         },
     )
+    empty = isinstance(found, dict) and not found.get("hits")
+    found = _trim_hits(found, max(1, min(limit, SEARCH_HITS_MAX)))
+    return _then(
+        found,
+        (
+            "0건이다 — diagnosis 를 그대로 말하라. 사면 되는 것은 search_catalog 한 번이고,"
+            " 다른 이름·거점·장비로 다시 뒤지지 마라."
+            if empty
+            else "이것이 답이다. 확실한 것(match)이 먼저이고 줄마다 거점·부서·위치·담당자가"
+            " 있다. 나머지는 by_verdict 로 요약하라 — 거점별로 다시 부르거나 장비마다 사양을"
+            " 열어 재확인하지 마라(판정은 서버가 사양을 보고 한 것이다)."
+        ),
+    )
 
 
 @mcp.tool()
@@ -415,6 +507,7 @@ async def search_catalog(
     property_term_id: str | None = None,
     method_id: str | None = None,
     conditions: list[dict[str, Any]] | None = None,
+    limit: int = SEARCH_HITS,
 ) -> dict[str, Any]:
     """**「이 시험을 하려면 어떤 기종이 되나 / 사야 하나」** — 카탈로그에서 찾는다.
 
@@ -427,7 +520,7 @@ async def search_catalog(
     온다. **owned_units 가 0 이 아니면 사기 전에 그 장비를 먼저 말하라.** `unmet_models` 는
     조건에 걸려 빠진 기종 수다 — 0 건일 때 「없어서」 와 「조건이 좁아서」 를 가른다.
     """
-    return await _send(
+    found = await _send(
         ctx,
         "POST",
         "/search/catalog",
@@ -437,6 +530,13 @@ async def search_catalog(
             "method_id": method_id,
             "conditions": conditions or [],
         },
+    )
+    found = _trim_hits(found, max(1, min(limit, SEARCH_HITS_MAX)))
+    return _then(
+        found,
+        "이것이 답이다. 줄마다 판정과 보유 대수(owned_units)가 있으니 기종마다 장비를 다시"
+        " 찾거나 사양을 열지 마라. 보유 대수가 0 이 아니면 사기 전에 그 장비부터 말하고,"
+        " total 이 shown 보다 크면 나머지는 by_verdict 로 요약하라.",
     )
 
 
@@ -1490,9 +1590,11 @@ async def set_requirement(
     """규격의 **요구 조건 한 줄** — 규격서를 읽다 조건 하나를 발견했을 때. 표로 여럿이면
     `import_requirements`.
 
-    `condition_key_id` 는 `list_conditions` 가 준다. **값은 SI 로**(`si_unit`) — 20 kN 이면
-    20000 이다. 같은 조건이 이미 있으면 덮어쓴다. **한쪽을 비울 수 있다**: 「20 kN 이상」 은
-    min 만 있고 max 는 None 이다 — 0 으로 채우면 상한이 0 인 것과 구별되지 않는다.
+    `condition_key_id` 는 `list_conditions` 가 준다. **값은 그 축의 `si_unit` 으로** —
+    `list_conditions` 가 축마다 알려 준다(하중 축은 kN 이라 20 kN 이면 20 이다; 축의 단위를
+    지어내지 말고 읽어라). 같은 조건이 이미 있으면 덮어쓴다. **한쪽을 비울 수 있다**:
+    「20 kN 이상」 은 min 만 있고 max 는 None 이다 — 0 으로 채우면 상한이 0 인 것과 구별되지
+    않는다.
 
     이 조건이 곧 검색 물음이 된다(`search_test_items(method_id=…)`). 그래서 규격서에 적힌
     것만 적고, 관례로 아는 값은 `note` 에 그렇다고 적는다.
@@ -1521,6 +1623,10 @@ async def set_method_test_item(
 
     **지어서 정하지 마라.** ASTM D638 이 인장이라는 것은 규격 번호를 아는 사람의 판단이다.
     모르면 `get_method` 의 `cited_series`(어느 계열이 인용했나)를 보고 사람에게 물어라.
+
+    **검토함에 물음이 열려 있는 규격은 여기서 정하지 않는다** — 검토함의 확정은 사람이
+    화면에서 하고, 이 도구로 같은 결과를 내면 확정을 우회한 것이다(서버가 409 로 막는다).
+    「검토함 첫 줄 확정해줘」 에는 「화면에서 하시라」 고 답한다.
     """
     return await _send(
         ctx, "PATCH", f"/methods/{method_id}", {"test_item_term_id": test_item_term_id}
@@ -1740,6 +1846,10 @@ async def create_term(
     있으면 **그것을 쓴다**. 이미 있는 이름이면 409 가 오는데 그것은 실패가 아니라 답이다
     — 별칭까지 보고 막으므로, 409 가 오면 그 값의 id 를 쓰면 된다.
 
+    **`resolve` 가 `candidates` 를 주면 만들지도, 별칭으로 잇지도 말고 사람에게 묻는다.**
+    「크리프」 가 「크리프 파단」 의 후보로 잡혔을 때 그것을 별칭으로 붙이면 다른 시험이
+    한 이름이 된다 — 실측에서 AI 가 정확히 그렇게 했다. 같은 것인지는 사람만 안다.
+
     `code` 는 정본·반입이 거는 이름이다(시험 항목의 `tensile` 처럼). **모르면 비운다** —
     지어내면 다음 반입이 다른 코드로 같은 값을 또 만든다. `parent_term_id` 는 계층이
     있는 축(장비 분류의 군 → 유형)에서만.
@@ -1760,7 +1870,9 @@ async def add_term_alias(ctx: Context, term_id: str, value: str) -> dict[str, An
     """기준정보 값에 **다른 이름**을 붙인다. 시스템 관리자.
 
     별칭은 찾기(`resolve`)가 이름보다 먼저 보는 것이라, 「thermal shock」 으로 물어도
-    「열충격」 을 찾게 만든다. **같은 축의 다른 값이 쓰는 표기는 못 붙인다**(409) — 그러면
+    「열충격」 을 찾게 만든다. **사람이 「이 표기는 저 값이다」 라고 말했을 때만** 붙인다 —
+    `resolve` 가 후보로 잡아 줬다는 이유로 붙이지 않는다(후보는 「비슷하다」 지 「같다」 가
+    아니다). **같은 축의 다른 값이 쓰는 표기는 못 붙인다**(409) — 그러면
     한 이름이 두 값을 가리켜 찾기가 갈린다. 실제로 갈려 들어온 표기만 붙이고, 있을 법한
     표기를 지어 붙이지 않는다.
     """
@@ -1965,8 +2077,28 @@ async def test_capability(ctx: Context, test_id: str) -> dict[str, Any]:
       없어서」 인지 「조건이 안 맞아서」 인지를 이것이 가른다.
     * 줄의 `verdict` — `match` 다 충족 · `accessory` 옵션 부속 필요 · `partial` 일부는
       **모른다** · `unknown` 전부 모른다. **`unknown` 을 「가능합니다」 로 옮기지 마라.**
+
+    **0대면 그것이 답이다.** 「그 시험 항목이 적힌 장비가 없다」(unmet_count 0) 또는 「조건이
+    안 맞는다」(unmet_count > 0) 로 말하고 멈춰라 — 챔버·항온항습 같은 다른 이름으로 장비를
+    뒤지지 마라. 그 장비는 시험 항목이 안 적혀 있어 검색에 안 걸리는 것이고, 그것을 적는 일은
+    사람의 몫이다. 사면 되는 것은 `search_catalog` 한 번.
     """
-    return await _get(ctx, f"/reliability-tests/{test_id}/equipment")
+    found = await _get(ctx, f"/reliability-tests/{test_id}/equipment")
+    total = (
+        sum(int(one.get("total") or 0) for one in found.get("items", []))
+        if isinstance(found, dict)
+        else 0
+    )
+    return _then(
+        found,
+        (
+            "0대다 — 이것이 답이다. unmet_count 로 이유(항목 안 적힘 / 조건 미달)를 말하고"
+            " 멈춰라. 다른 이름으로 장비를 뒤지지 말고, 사면 되는 것은 search_catalog 한 번."
+            if total == 0
+            else "이것이 답이다. 줄마다 부서·위치·담당자·판정이 있다 — 장비를 다시 검색하거나"
+            " 사양을 열어 재확인하지 마라."
+        ),
+    )
 
 
 # ── 속성 — 열이 아니라 행으로 붙는 칸 ─────────────────────────────────────────

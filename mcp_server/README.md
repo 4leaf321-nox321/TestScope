@@ -11,8 +11,17 @@ cd mcp_server
 가상환경이 없으면 만들고 의존성까지 넣는다. **`backend\.venv` 와 섞지 않는다** —
 MCP SDK 가 언제든 프레임워크 판을 올릴 수 있고, 그때 앱이 인질이 되면 안 된다.
 
-백엔드 주소는 `backend\.env` 의 `PORT` 를 읽어 스스로 맞춘다. 다르면
-`-ApiBase 'http://…/api'` 로 직접 준다.
+**설정은 `backend\.env` 한 곳에서 읽는다** — 개발·운영이 같은 키를 본다.
+
+| 키 | 무엇을 | 기본 |
+| --- | --- | --- |
+| `PORT`·`APP_ENV` | 백엔드 주소를 계산한다(개발은 `PORT`+1, 운영은 `PORT`) | 8020 · development |
+| `MCP_PORT` | 이 서버가 들을 포트 | 8022 (백엔드 +2) |
+| `MCP_HOST` | 들을 자리. 밖에 열려면 `0.0.0.0` | 127.0.0.1 |
+
+한 번만 다르게 띄우려면 인자가 이긴다 — `-ApiBase 'http://…/api'`, `-Port 8032`,
+`-BindHost 0.0.0.0`. `TESTSCOPE_API_BASE` 같은 `TESTSCOPE_*` 는 `.env` 에 적어도
+안 읽힌다(서버는 프로세스 환경변수만 본다) — 띄우는 스크립트가 넣어 준다.
 
 ## 자격
 
@@ -85,13 +94,24 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 ```powershell
 cd backend
 $env:TESTSCOPE_PAT = python scripts/mcp_probe_account.py mint    # 확인용 계정·토큰
-..\mcp_server\.venv\Scripts\python.exe ..\mcp_serveroundtrip.py --write
+..\mcp_server\.venv\Scripts\python.exe ..\mcp_server\roundtrip.py --write
 python scripts/mcp_probe_account.py cleanup                       # 만든 것과 계정을 지운다
 ```
 
 CI 가 매 푸시 같은 세 명령을 돈다(빈 DB 에 시드를 심고, 백엔드를 reload 없이 띄워서).
 curl 로는 멀쩡한데 도구로는 죽는 고장은 이렇게만 드러난다. `roundtrip.py` 는 `probe.py` 의
 읽기 묶음을 그대로 쓰고 쓰기 사슬을 더한 것이다 — `--write` 없이 돌리면 읽기만.
+
+## AI 가 헤매는지 재기
+
+```powershell
+.\run_mcp.ps1 -Trace                         # 호출 자취를 logs\calls.jsonl 에
+.\.venv\Scripts\python.exe eval\score.py    # 물음별 자취를 다섯 항목으로 채점
+```
+
+답이 아니라 **도구 호출의 자취**를 본다 — 호출 수 · 길잡이대로 시작했나 · 필수 도구 · 금지
+도구 · 빈손 호출. 자세한 것은 `eval/README.md`. pytest 처럼 「AI 가 보는 것」 을 고쳤을 때
+돌려 기준선과 견준다; CI 에는 안 넣는다.
 
 ## 왜 얇은 프록시인가
 

@@ -1,0 +1,164 @@
+{"ts": "2026-09-20T11:48:14.242+00:00", "session": "20260920T114805", "event": "question", "id": "q01"}
+{"ts": "2026-09-20T11:48:19.023+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "인장"}, "ms": 282, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:19.267+00:00", "session": "20260920T114805", "tool": "list_conditions", "args": {}, "ms": 229, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:24.943+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d", "conditions": [{"condition_key_id": "13b5ab09-4a10-4a22-9e08-9ec1b84394ea", "at": 80}, {"condition_key_id": "027853be-a604-4c31-886f-00d03fb4ede8", "at_least": 20}]}, "ms": 559, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:25.497+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 264, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:41.361+00:00", "session": "20260920T114805", "tool": "list_terms", "args": {"axis": "site"}, "ms": 257, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:44.996+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d", "site_term_id": "00c62b0a-6b85-4eb4-a64c-139ceea850ee", "conditions": [{"condition_key_id": "13b5ab09-4a10-4a22-9e08-9ec1b84394ea", "at": 80}, {"condition_key_id": "027853be-a604-4c31-886f-00d03fb4ede8", "at_least": 20}]}, "ms": 194, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:48:46.958+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d", "site_term_id": "91bfa322-c3af-4c02-a92f-49adb648c897", "conditions": [{"condition_key_id": "13b5ab09-4a10-4a22-9e08-9ec1b84394ea", "at": 80}, {"condition_key_id": "027853be-a604-4c31-886f-00d03fb4ede8", "at_least": 20}]}, "ms": 245, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:54.529+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d", "site_term_id": "8550c607-a2d0-4dc2-814c-87feb8cbc10e", "conditions": [{"condition_key_id": "13b5ab09-4a10-4a22-9e08-9ec1b84394ea", "at": 80}, {"condition_key_id": "027853be-a604-4c31-886f-00d03fb4ede8", "at_least": 20}]}, "ms": 228, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:48:59.802+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d", "site_term_id": "2b2f99a3-4838-4fa8-a0bb-274e46c9ed75", "conditions": [{"condition_key_id": "13b5ab09-4a10-4a22-9e08-9ec1b84394ea", "at": 80}, {"condition_key_id": "027853be-a604-4c31-886f-00d03fb4ede8", "at_least": 20}]}, "ms": 264, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:49:32.096+00:00", "session": "20260920T114805", "event": "question", "id": "q02"}
+{"ts": "2026-09-20T11:49:38.890+00:00", "session": "20260920T114805", "tool": "search_properties", "args": {"q": "인장강도"}, "ms": 267, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:49:42.656+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"property_term_id": "f9ab96a0-a8e0-4119-9c45-99877f39419a"}, "ms": 429, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:49:56.461+00:00", "session": "20260920T114805", "tool": "get_equipment", "args": {"equipment_id": "052b3f59-3d95-4a36-80c5-b1064cb2a058"}, "ms": 231, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:50:05.559+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 202, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:50:31.917+00:00", "session": "20260920T114805", "event": "question", "id": "q03"}
+{"ts": "2026-09-20T11:50:36.479+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "method", "text": "ISO 6892-1"}, "ms": 180, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:50:39.525+00:00", "session": "20260920T114805", "tool": "get_method", "args": {"method_id": "38d0c224-92ce-4540-b0e6-b6f58f40e557"}, "ms": 206, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:50:41.100+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"method_id": "38d0c224-92ce-4540-b0e6-b6f58f40e557"}, "ms": 1222, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:50:57.042+00:00", "session": "20260920T114805", "tool": "list_terms", "args": {"axis": "site"}, "ms": 174, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:02.235+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"method_id": "38d0c224-92ce-4540-b0e6-b6f58f40e557", "site_term_id": "00c62b0a-6b85-4eb4-a64c-139ceea850ee"}, "ms": 172, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:51:03.816+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"method_id": "38d0c224-92ce-4540-b0e6-b6f58f40e557", "site_term_id": "2b2f99a3-4838-4fa8-a0bb-274e46c9ed75"}, "ms": 522, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:11.653+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 185, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:35.094+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"method_id": "38d0c224-92ce-4540-b0e6-b6f58f40e557", "site_term_id": "91bfa322-c3af-4c02-a92f-49adb648c897"}, "ms": 600, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:45.010+00:00", "session": "20260920T114805", "tool": "search_catalog", "args": {"method_id": "38d0c224-92ce-4540-b0e6-b6f58f40e557"}, "ms": 224, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:56.760+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"model_id": "2dac621e-da12-4cb9-b130-6de4caa2a2fc"}, "ms": 201, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:57.283+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"model_id": "bec5e9b3-3046-44d5-ae70-37e91cb979d2"}, "ms": 193, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:57.915+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"model_id": "9a57955e-3576-4695-bdf2-91b599e10171"}, "ms": 199, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:51:58.413+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"model_id": "14a989a6-5637-491b-96a4-bc1c3ee880d9"}, "ms": 192, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:52:05.872+00:00", "session": "20260920T114805", "tool": "get_specs", "args": {"model_id": "9a57955e-3576-4695-bdf2-91b599e10171"}, "ms": 219, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:52:06.405+00:00", "session": "20260920T114805", "tool": "get_specs", "args": {"model_id": "2dac621e-da12-4cb9-b130-6de4caa2a2fc"}, "ms": 197, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:52:16.552+00:00", "session": "20260920T114805", "tool": "get_equipment", "args": {"equipment_id": "04f4b45b-c8cb-4078-ae1d-7827674fa560"}, "ms": 175, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:52:49.880+00:00", "session": "20260920T114805", "event": "question", "id": "q04"}
+{"ts": "2026-09-20T11:52:54.313+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "thermal shock"}, "ms": 213, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:53:00.997+00:00", "session": "20260920T114805", "tool": "search_semantic", "args": {"q": "thermal shock 열충격", "kind": ["test_item", "series", "equipment", "reliability_test"]}, "ms": 6265, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:53:05.053+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "94b8658c-e4f1-462b-a3f1-86efddf6b0f8"}, "ms": 177, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:53:08.901+00:00", "session": "20260920T114805", "tool": "search_catalog", "args": {"test_item_term_id": "94b8658c-e4f1-462b-a3f1-86efddf6b0f8"}, "ms": 201, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:53:09.484+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"q": "열충격", "limit": 30}, "ms": 413, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:53:30.250+00:00", "session": "20260920T114805", "event": "question", "id": "q05"}
+{"ts": "2026-09-20T11:53:55.898+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "인장"}, "ms": 171, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:53:57.086+00:00", "session": "20260920T114805", "tool": "get_catalog_state", "args": {}, "ms": 1174, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:54:01.479+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 401, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:54:01.710+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 201, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:54:11.581+00:00", "session": "20260920T114805", "tool": "search_catalog", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 237, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:54:26.225+00:00", "session": "20260920T114805", "tool": "search_models", "args": {"series_id": "264671d6-fbc5-4215-a1f2-c1ed2c512d14"}, "ms": 227, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:54:26.707+00:00", "session": "20260920T114805", "tool": "search_models", "args": {"series_id": "4ec08221-4781-4064-9af0-85921c2b05aa"}, "ms": 211, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:54:58.097+00:00", "session": "20260920T114805", "event": "question", "id": "q06"}
+{"ts": "2026-09-20T11:55:02.326+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "equipment", "text": "DEMO-UTM-001"}, "ms": 261, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:04.725+00:00", "session": "20260920T114805", "tool": "get_equipment", "args": {"equipment_id": "284f82de-3767-41a1-a303-d5b67f9214a6"}, "ms": 236, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:05.261+00:00", "session": "20260920T114805", "tool": "get_equipment_specs", "args": {"equipment_id": "284f82de-3767-41a1-a303-d5b67f9214a6"}, "ms": 179, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:05.686+00:00", "session": "20260920T114805", "tool": "get_calibrations", "args": {"equipment_id": "284f82de-3767-41a1-a303-d5b67f9214a6"}, "ms": 166, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:08.675+00:00", "session": "20260920T114805", "tool": "get_model", "args": {"model_id": "168edbb8-f1eb-4970-8de6-f8a18fe1ad50"}, "ms": 234, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:17.396+00:00", "session": "20260920T114805", "event": "question", "id": "q07"}
+{"ts": "2026-09-20T11:55:21.459+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "equipment", "text": "DEMO-UTM-001"}, "ms": 189, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:23.774+00:00", "session": "20260920T114805", "tool": "get_calibrations", "args": {"equipment_id": "284f82de-3767-41a1-a303-d5b67f9214a6"}, "ms": 171, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:27.298+00:00", "session": "20260920T114805", "event": "question", "id": "q08"}
+{"ts": "2026-09-20T11:55:30.945+00:00", "session": "20260920T114805", "tool": "list_calibrations_due", "args": {}, "ms": 191, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:34.916+00:00", "session": "20260920T114805", "tool": "get_equipment", "args": {"equipment_id": "d294a58c-417d-40ac-b5dc-c489a8afb92c"}, "ms": 192, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:35.353+00:00", "session": "20260920T114805", "tool": "get_calibrations", "args": {"equipment_id": "d294a58c-417d-40ac-b5dc-c489a8afb92c"}, "ms": 167, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:37.764+00:00", "session": "20260920T114805", "tool": "list_pending_work", "args": {}, "ms": 482, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:45.534+00:00", "session": "20260920T114805", "event": "question", "id": "q09"}
+{"ts": "2026-09-20T11:55:49.588+00:00", "session": "20260920T114805", "tool": "list_workspaces", "args": {}, "ms": 172, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:55:56.461+00:00", "session": "20260920T114805", "event": "question", "id": "q10"}
+{"ts": "2026-09-20T11:55:59.997+00:00", "session": "20260920T114805", "tool": "list_workspaces", "args": {}, "ms": 211, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:02.424+00:00", "session": "20260920T114805", "tool": "list_reliability_tests", "args": {"workspace": "dx"}, "ms": 192, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:05.410+00:00", "session": "20260920T114805", "tool": "list_reliability_tests", "args": {}, "ms": 175, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:14.983+00:00", "session": "20260920T114805", "event": "question", "id": "q11"}
+{"ts": "2026-09-20T11:56:20.778+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "reliability_test", "text": "고온고습"}, "ms": 172, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:21.485+00:00", "session": "20260920T114805", "tool": "search_semantic", "args": {"q": "고온고습 시험"}, "ms": 625, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:24.602+00:00", "session": "20260920T114805", "tool": "list_reliability_tests", "args": {}, "ms": 174, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:25.107+00:00", "session": "20260920T114805", "tool": "get_reliability_test", "args": {"test_id": "4d599cd9-3fa2-43be-bc8b-7f62c26191cb"}, "ms": 166, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:30.125+00:00", "session": "20260920T114805", "tool": "test_capability", "args": {"test_id": "4d599cd9-3fa2-43be-bc8b-7f62c26191cb"}, "ms": 204, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:56:30.499+00:00", "session": "20260920T114805", "tool": "list_terms", "args": {"axis": "test_item", "q": "습"}, "ms": 197, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:34.434+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "4b55ff19-e6c2-45ff-8904-a86a56eb5a12"}, "ms": 236, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:34.645+00:00", "session": "20260920T114805", "tool": "list_conditions", "args": {}, "ms": 185, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:38.964+00:00", "session": "20260920T114805", "tool": "search_test_items", "args": {"test_item_term_id": "4b55ff19-e6c2-45ff-8904-a86a56eb5a12"}, "ms": 173, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:56:39.483+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"q": "챔버", "limit": 30}, "ms": 330, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:48.514+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "52cab598-d1cc-49c5-a463-254d997184e7"}, "ms": 188, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:56:49.019+00:00", "session": "20260920T114805", "tool": "search_equipment", "args": {"q": "항온항습", "limit": 10}, "ms": 269, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:57:13.664+00:00", "session": "20260920T114805", "event": "question", "id": "q12"}
+{"ts": "2026-09-20T11:57:19.233+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "workspace", "text": "DX 부문"}, "ms": 229, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:57:19.980+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "열충격"}, "ms": 210, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:57:20.297+00:00", "session": "20260920T114805", "tool": "list_attribute_definitions", "args": {"target": "reliability_test"}, "ms": 204, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:57:24.478+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "reliability_test", "text": "열충격 500 cycle", "workspace": "dx"}, "ms": 182, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:57:24.786+00:00", "session": "20260920T114805", "tool": "list_conditions", "args": {}, "ms": 194, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:57:24.967+00:00", "session": "20260920T114805", "tool": "list_reliability_tests", "args": {"workspace": "dx"}, "ms": 169, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:57:56.583+00:00", "session": "20260920T114805", "tool": "create_attribute_definition", "args": {"target": "reliability_test", "label": "시험 온도", "key": "temperature", "kind": "condition", "condition_key_id": "13b5ab09-4a10-4a22-9e08-9ec1b84394ea", "unit": "degC", "status": "draft"}, "ms": 209, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:57:59.907+00:00", "session": "20260920T114805", "tool": "create_reliability_test", "args": {"workspace_slug": "dx", "name": "열충격 500 cycle", "test_item_term_ids": ["94b8658c-e4f1-462b-a3f1-86efddf6b0f8"], "attributes": [{"definition_id": "210491a2-7014-46ac-8ef2-55932e794cab", "num_min": -40, "num_max": 125, "unit": "degC"}]}, "ms": 291, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:02.812+00:00", "session": "20260920T114805", "tool": "test_capability", "args": {"test_id": "4aa5538e-3604-46fc-9a8b-72d18c1f4f5a"}, "ms": 195, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:12.723+00:00", "session": "20260920T114805", "event": "question", "id": "q13"}
+{"ts": "2026-09-20T11:58:17.059+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "reliability_test", "text": "열충격"}, "ms": 212, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:19.600+00:00", "session": "20260920T114805", "tool": "get_reliability_test", "args": {"test_id": "4aa5538e-3604-46fc-9a8b-72d18c1f4f5a"}, "ms": 203, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:25.575+00:00", "session": "20260920T114805", "tool": "update_reliability_test", "args": {"test_id": "4aa5538e-3604-46fc-9a8b-72d18c1f4f5a", "purpose": "기판 크랙 확인"}, "ms": 183, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:32.904+00:00", "session": "20260920T114805", "event": "question", "id": "q14"}
+{"ts": "2026-09-20T11:58:36.565+00:00", "session": "20260920T114805", "tool": "list_attribute_definitions", "args": {"target": "reliability_test"}, "ms": 162, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:39.745+00:00", "session": "20260920T114805", "tool": "list_attribute_definitions", "args": {"target": "reliability_test", "include_inactive": true}, "ms": 165, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:45.252+00:00", "session": "20260920T114805", "tool": "list_conditions", "args": {}, "ms": 168, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:58:59.871+00:00", "session": "20260920T114805", "event": "question", "id": "q15"}
+{"ts": "2026-09-20T11:59:04.351+00:00", "session": "20260920T114805", "tool": "list_attribute_definitions", "args": {"target": "reliability_test"}, "ms": 174, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:06.962+00:00", "session": "20260920T114805", "tool": "list_reliability_tests", "args": {"attr": ["temperature>=100"]}, "ms": 171, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:09.761+00:00", "session": "20260920T114805", "tool": "list_reliability_tests", "args": {}, "ms": 180, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:20.636+00:00", "session": "20260920T114805", "event": "question", "id": "q16"}
+{"ts": "2026-09-20T11:59:25.634+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "크리프"}, "ms": 267, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:26.062+00:00", "session": "20260920T114805", "tool": "list_terms", "args": {"axis": "test_item", "q": "크리프"}, "ms": 271, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:39.995+00:00", "session": "20260920T114805", "tool": "add_term_alias", "args": {"term_id": "50902922-a15c-4c18-9a5f-b3cf998c7b05", "value": "크리프"}, "ms": 285, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:42.257+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "크리프"}, "ms": 261, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T11:59:48.482+00:00", "session": "20260920T114805", "event": "question", "id": "q17"}
+{"ts": "2026-09-20T11:59:53.360+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "manufacturer", "text": "인스트론"}, "ms": 275, "ok": true, "empty": true, "error": null}
+{"ts": "2026-09-20T11:59:53.800+00:00", "session": "20260920T114805", "tool": "list_terms", "args": {"axis": "manufacturer", "q": "instron"}, "ms": 265, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:02.596+00:00", "session": "20260920T114805", "event": "question", "id": "q18"}
+{"ts": "2026-09-20T12:00:06.734+00:00", "session": "20260920T114805", "tool": "list_reference", "args": {}, "ms": 278, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:07.060+00:00", "session": "20260920T114805", "tool": "list_axes", "args": {}, "ms": 302, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:07.432+00:00", "session": "20260920T114805", "tool": "graph_overview", "args": {}, "ms": 358, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:10.151+00:00", "session": "20260920T114805", "tool": "list_conditions", "args": {}, "ms": 280, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:11.038+00:00", "session": "20260920T114805", "tool": "list_pending_work", "args": {}, "ms": 869, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:27.896+00:00", "session": "20260920T114805", "event": "question", "id": "q19"}
+{"ts": "2026-09-20T12:00:33.630+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "인장"}, "ms": 181, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:33.848+00:00", "session": "20260920T114805", "tool": "graph_search", "args": {"q": "인장"}, "ms": 202, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:36.308+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 201, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:41.373+00:00", "session": "20260920T114805", "tool": "graph_node", "args": {"node_id": "test_item:10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 216, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:00:48.479+00:00", "session": "20260920T114805", "tool": "get_equipment", "args": {"equipment_id": "052b3f59-3d95-4a36-80c5-b1064cb2a058"}, "ms": 180, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:01:27.418+00:00", "session": "20260920T114805", "event": "question", "id": "q20"}
+{"ts": "2026-09-20T12:01:33.228+00:00", "session": "20260920T114805", "tool": "graph_overview", "args": {}, "ms": 366, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:01:33.419+00:00", "session": "20260920T114805", "tool": "list_reference", "args": {}, "ms": 176, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:01:37.056+00:00", "session": "20260920T114805", "tool": "list_pending_work", "args": {}, "ms": 714, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:01:37.339+00:00", "session": "20260920T114805", "tool": "get_catalog_state", "args": {}, "ms": 272, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:01:51.411+00:00", "session": "20260920T114805", "event": "question", "id": "q21"}
+{"ts": "2026-09-20T12:01:55.133+00:00", "session": "20260920T114805", "tool": "list_review_queues", "args": {}, "ms": 218, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:07.104+00:00", "session": "20260920T114805", "event": "question", "id": "q22"}
+{"ts": "2026-09-20T12:02:12.002+00:00", "session": "20260920T114805", "tool": "list_review_queues", "args": {}, "ms": 165, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:14.776+00:00", "session": "20260920T114805", "tool": "list_review_items", "args": {"queue": "method_test_items", "limit": 1}, "ms": 186, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:26.220+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "회전 유변(점도·점탄성)"}, "ms": 161, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:29.719+00:00", "session": "20260920T114805", "tool": "set_method_test_item", "args": {"method_id": "40503d05-6a78-4f78-ad26-9d85943b6d0f", "test_item_term_id": "cfa0fa98-19d6-4f60-a595-58ee1df27b17"}, "ms": 173, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:33.864+00:00", "session": "20260920T114805", "tool": "list_review_items", "args": {"queue": "method_test_items", "limit": 1, "status": "all"}, "ms": 169, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:42.480+00:00", "session": "20260920T114805", "tool": "list_review_queues", "args": {}, "ms": 179, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:54.346+00:00", "session": "20260920T114805", "event": "question", "id": "q23"}
+{"ts": "2026-09-20T12:02:59.239+00:00", "session": "20260920T114805", "tool": "list_pending_work", "args": {}, "ms": 698, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:59.425+00:00", "session": "20260920T114805", "tool": "list_review_queues", "args": {}, "ms": 171, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:02:59.697+00:00", "session": "20260920T114805", "tool": "get_catalog_state", "args": {}, "ms": 260, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:05.886+00:00", "session": "20260920T114805", "tool": "list_calibrations_due", "args": {}, "ms": 174, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:06.379+00:00", "session": "20260920T114805", "tool": "list_review_items", "args": {"queue": "method_test_items", "limit": 5}, "ms": 168, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:29.918+00:00", "session": "20260920T114805", "event": "question", "id": "q24"}
+{"ts": "2026-09-20T12:03:33.854+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "method", "text": "ASTM D638"}, "ms": 160, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:34.041+00:00", "session": "20260920T114805", "tool": "list_conditions", "args": {}, "ms": 173, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:37.823+00:00", "session": "20260920T114805", "tool": "get_method", "args": {"method_id": "f7cc404a-4328-48cb-9539-baed6f91833e"}, "ms": 177, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:45.158+00:00", "session": "20260920T114805", "tool": "set_requirement", "args": {"method_id": "f7cc404a-4328-48cb-9539-baed6f91833e", "condition_key_id": "027853be-a604-4c31-886f-00d03fb4ede8", "min_value": 5, "is_mandatory": true, "note": "사용자 지시로 등록 (5 kN 이상). 규격서 확인 필요."}, "ms": 206, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:03:47.356+00:00", "session": "20260920T114805", "tool": "get_method", "args": {"method_id": "f7cc404a-4328-48cb-9539-baed6f91833e"}, "ms": 241, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:01.680+00:00", "session": "20260920T114805", "event": "question", "id": "q25"}
+{"ts": "2026-09-20T12:04:06.604+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "인장"}, "ms": 167, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:07.187+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "property", "text": "항복강도"}, "ms": 175, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:10.165+00:00", "session": "20260920T114805", "tool": "suggest_property_link", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d", "property_term_id": "ec7fcb5f-4d0b-408a-9aeb-38f4b8961b16", "note": "사용자 요청으로 연결. 인장 시험에서 항복강도 산출."}, "ms": 168, "ok": false, "empty": false, "error": "이미 이어져 있습니다: 인장 → 항복강도 (TSC-PROPERTIES-0004)"}
+{"ts": "2026-09-20T12:04:12.725+00:00", "session": "20260920T114805", "tool": "get_test_item", "args": {"test_item_term_id": "10fba0cf-7b92-4891-99ca-4a5597e2893d"}, "ms": 215, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:22.811+00:00", "session": "20260920T114805", "event": "question", "id": "q26"}
+{"ts": "2026-09-20T12:04:27.860+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "series", "text": "Instron 6800"}, "ms": 630, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:31.237+00:00", "session": "20260920T114805", "tool": "get_series", "args": {"series_id": "264671d6-fbc5-4215-a1f2-c1ed2c512d14"}, "ms": 359, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:44.368+00:00", "session": "20260920T114805", "event": "question", "id": "q27"}
+{"ts": "2026-09-20T12:04:48.302+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "model", "text": "68FM-300"}, "ms": 181, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:50.541+00:00", "session": "20260920T114805", "tool": "get_model", "args": {"model_id": "88766ce5-8356-436a-8389-87cd8b6834ff"}, "ms": 210, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:04:50.998+00:00", "session": "20260920T114805", "tool": "get_specs", "args": {"model_id": "88766ce5-8356-436a-8389-87cd8b6834ff"}, "ms": 205, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:05:02.309+00:00", "session": "20260920T114805", "event": "question", "id": "q28"}
+{"ts": "2026-09-20T12:05:06.663+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "equipment", "text": "DEMO-HRD-001"}, "ms": 167, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:05:07.313+00:00", "session": "20260920T114805", "tool": "resolve", "args": {"kind": "term", "axis": "test_item", "text": "경도"}, "ms": 188, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:05:10.598+00:00", "session": "20260920T114805", "tool": "get_equipment", "args": {"equipment_id": "d294a58c-417d-40ac-b5dc-c489a8afb92c"}, "ms": 175, "ok": true, "empty": false, "error": null}
+{"ts": "2026-09-20T12:05:15.126+00:00", "session": "20260920T114805", "tool": "list_terms", "args": {"axis": "test_item", "q": "경도"}, "ms": 172, "ok": true, "empty": false, "error": null}

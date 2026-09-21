@@ -16,6 +16,7 @@ from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import EquipmentSeries
 from app.modules.methods.models import MethodRequirement, TestMethod
 from app.modules.methods.schemas import CitedSeriesOut, MethodOut, RequirementOut
+from app.modules.review.models import ReviewProposal
 from app.modules.test_items.models import (
     EquipmentTestItem,
     SeriesPendingMethod,
@@ -32,6 +33,7 @@ from app.shared.permissions import (
     resolve_owner_workspace,
     visible_owner_clause,
 )
+from app.shared.request_context import get_actor_token
 from app.shared.text import clean
 
 _WHAT = "시험법"
@@ -339,6 +341,30 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> TestMethod:
 _PLAIN_FIELDS = ("title", "edition", "test_item_term_id", "body_term_id", "summary")
 
 
+def _refuse_machine_decision(db: Session, row: TestMethod) -> None:
+    """검토함에 열린 물음이 있는 규격의 시험 항목은 **기계 자격으로 못 정한다.**
+
+    검토함의 확정은 범위 표에 없어 AI 가 못 누르는데, 규격의 시험 항목을 직접 고치는 길은
+    열려 있었다 — 그 길로 가면 결과는 확정과 같다(인용한 계열에 붙고, 검토함 줄만 open 으로
+    남는다). 실측: 「검토함 첫 줄 추천대로 확정해줘」 에 AI 가 정확히 이 우회로를 썼다
+    (2026-09-20 측정, q22). 사람 세션은 막지 않는다 — 그 사람의 권한이 이미 한계다.
+    """
+    if get_actor_token() is None:
+        return
+    pending = db.scalar(
+        select(ReviewProposal.id).where(
+            ReviewProposal.queue == "method_test_items",
+            ReviewProposal.subject_id == row.id,
+            ReviewProposal.status.in_(("open", "skipped")),
+        )
+    )
+    if pending is not None:
+        raise Conflict(
+            "TSC-METHODS-0007",
+            "이 규격은 검토함에 물음이 열려 있습니다 — 시험 항목은 사람이 검토함에서 정합니다",
+        )
+
+
 def update(
     db: Session, user: User, method_id: uuid.UUID, changes: dict[str, Any]
 ) -> TestMethod:
@@ -349,6 +375,7 @@ def update(
         if field in changes:
             setattr(row, field, changes[field])
     if changes.get("test_item_term_id"):
+        _refuse_machine_decision(db, row)
         # 시험 항목이 정해지는 순간 항목 미정 인용이 그 계열의 시험 항목에 붙는다 —
         # 사람이 계열마다 다시 이을 필요가 없다.
         promote_pending(db, row)

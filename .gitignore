@@ -44,6 +44,9 @@ Thumbs.db
 
 # MCP 개발용 개인 토큰. **평문이라 절대 커밋하지 않는다** — probe.py 가 읽는다.
 mcp_server/.pat
+# 도구 호출 자취(TESTSCOPE_MCP_TRACE) 와 측정 결과 — 기준선(baseline)만 올린다
+mcp_server/logs/
+mcp_server/eval/runs/
 mcp_server/.venv/
 
 # 제조사 원본 자료 — **저장소에 안 넣는다.**

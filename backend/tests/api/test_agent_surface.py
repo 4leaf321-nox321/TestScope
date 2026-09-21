@@ -21,6 +21,7 @@ from sqlalchemy.orm import Session
 from app.modules.accounts.models import User
 from app.modules.auth import security
 from app.modules.auth.models import PersonalAccessToken
+from app.modules.review.models import ReviewProposal
 from app.modules.workspaces.models import Workspace, WorkspaceMember
 from tests.api.conftest import Signed, category_id, site_id
 
@@ -474,3 +475,48 @@ def test_이름을_바꿔도_이미_나간_토큰은_계속_쓴다(
     # 구 표식이라고 범위가 넓어지지는 않는다.
     blocked = client.post("/api/equipment-series", json={"name": "막혀야 한다"}, headers=old)
     assert blocked.status_code == 403
+
+
+def test_검토함에_열린_규격의_시험_항목은_기계_자격으로_못_정한다(
+    client: TestClient, admin: Signed, db: Session
+) -> None:
+    """검토함의 확정은 막혀 있는데 규격의 시험 항목을 직접 고치는 길은 열려 있었다 — 그 길로
+    가면 결과는 확정과 같다. 실측(2026-09-20, q22)에서 AI 가 정확히 그 우회로를 썼다. 사람
+    세션은 막지 않는다."""
+    tag = uuid.uuid4().hex[:6]
+    made = client.post(
+        "/api/methods",
+        json={"code": f"GUARD {tag}", "title": "우회 확인"},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    method_id = made.json()["id"]
+    item = client.post(
+        "/api/vocabularies/test_item/terms",
+        json={"value": f"인장-{tag}"},
+        headers=admin.headers,
+    ).json()["id"]
+    db.add(
+        ReviewProposal(
+            queue="method_test_items",
+            subject_key=f"guard {tag}",
+            subject_id=uuid.UUID(method_id),
+            subject_label=f"GUARD {tag}",
+            candidates=[],
+            status="open",
+        )
+    )
+    db.commit()
+
+    machine = _token(client, admin, ["read", "catalog:write"])
+    blocked = client.patch(
+        f"/api/methods/{method_id}", json={"test_item_term_id": item}, headers=machine
+    )
+    assert blocked.status_code == 409, blocked.text
+    assert blocked.json()["error"]["code"] == "TSC-METHODS-0007"
+
+    # 사람은 된다 — 그 사람의 권한이 이미 한계다.
+    allowed = client.patch(
+        f"/api/methods/{method_id}", json={"test_item_term_id": item}, headers=admin.headers
+    )
+    assert allowed.status_code == 200, allowed.text

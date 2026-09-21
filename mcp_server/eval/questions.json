@@ -1,0 +1,465 @@
+{
+  "_": "AI 가 헤매는지 재는 물음 — 답이 아니라 도구 자취를 채점한다. 사람이 실제로 하는 말투로 적고, 물음마다 기대하는 자취를 둔다. 실제 데이터에 기대지 않는다(없으면 없다고 답하는 것이 맞는 자취). must_call 은 반드시 거쳐야 하는 도구, must_not_call 은 절대 누르면 안 되는 도구, start_with 는 첫 두 호출 중 하나가 여기 있어야 하고, max_calls 는 호출 수 상한이다.",
+  "questions": [
+    {
+      "id": "q01",
+      "text": "80도에서 20 kN 이상 인장 되는 장비 있어?",
+      "start_with": [
+        "resolve",
+        "list_conditions",
+        "search_test_items",
+        "get_guide"
+      ],
+      "must_call": [
+        "search_test_items"
+      ],
+      "must_not_call": [
+        "search_catalog",
+        "create_series",
+        "register_equipment"
+      ],
+      "max_calls": 5
+    },
+    {
+      "id": "q02",
+      "text": "인장강도 잴 수 있는 장비 찾아줘",
+      "start_with": [
+        "search_properties",
+        "resolve",
+        "get_guide"
+      ],
+      "must_call": [
+        "search_properties",
+        "search_test_items"
+      ],
+      "must_not_call": [
+        "search_semantic",
+        "create_term"
+      ],
+      "max_calls": 5
+    },
+    {
+      "id": "q03",
+      "text": "ISO 6892-1 할 수 있는 장비 있나",
+      "start_with": [
+        "resolve",
+        "list_methods",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve"
+      ],
+      "must_not_call": [
+        "create_method"
+      ],
+      "max_calls": 6
+    },
+    {
+      "id": "q04",
+      "text": "thermal shock 되는 장비",
+      "start_with": [
+        "resolve",
+        "search_semantic",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve"
+      ],
+      "must_not_call": [
+        "create_term",
+        "search_catalog"
+      ],
+      "max_calls": 6
+    },
+    {
+      "id": "q05",
+      "text": "인장 시험 하려면 어떤 기종을 사야 해?",
+      "start_with": [
+        "resolve",
+        "search_catalog",
+        "get_guide"
+      ],
+      "must_call": [
+        "search_catalog"
+      ],
+      "must_not_call": [
+        "create_model"
+      ],
+      "max_calls": 5,
+      "note": "사기 전에 보유부터 보는 것(search_test_items 먼저)은 맞는 자취다 — 금지에서 뺐다."
+    },
+    {
+      "id": "q06",
+      "text": "DEMO-UTM-001 장비 정보 보여줘",
+      "start_with": [
+        "resolve",
+        "search_equipment",
+        "get_guide"
+      ],
+      "must_call": [
+        "get_equipment"
+      ],
+      "must_not_call": [
+        "update_equipment"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q07",
+      "text": "DEMO-UTM-001 마지막 교정이 언제였어?",
+      "start_with": [
+        "resolve",
+        "search_equipment",
+        "get_calibrations",
+        "get_guide"
+      ],
+      "must_call": [
+        "get_calibrations"
+      ],
+      "must_not_call": [
+        "add_calibration"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q08",
+      "text": "이번 달 교정 받아야 하는 장비 뭐 있어?",
+      "start_with": [
+        "list_calibrations_due",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_calibrations_due"
+      ],
+      "must_not_call": [
+        "search_equipment",
+        "add_calibration"
+      ],
+      "max_calls": 3
+    },
+    {
+      "id": "q09",
+      "text": "우리 회사에 어떤 부서들이 있어?",
+      "start_with": [
+        "list_workspaces",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_workspaces"
+      ],
+      "must_not_call": [],
+      "max_calls": 3
+    },
+    {
+      "id": "q10",
+      "text": "DX 부문에서 하는 신뢰성 시험 목록 보여줘",
+      "start_with": [
+        "resolve",
+        "list_workspaces",
+        "list_reliability_tests",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_reliability_tests"
+      ],
+      "must_not_call": [
+        "list_test_items",
+        "create_reliability_test"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q11",
+      "text": "고온고습 시험, 우리가 가진 장비로 돌릴 수 있어?",
+      "start_with": [
+        "resolve",
+        "list_reliability_tests",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve",
+        "test_capability"
+      ],
+      "must_not_call": [
+        "update_reliability_test",
+        "create_reliability_test"
+      ],
+      "max_calls": 10,
+      "note": "시험 레코드에 항목·조건이 비어 있으면(conditions_asked 0) 항목으로 직접 찾고 카탈로그까지 보는 것이 맞는 자취다 — 그래서 상한 10. 레코드가 채워진 설치에서는 resolve → test_capability 둘이면 끝난다."
+    },
+    {
+      "id": "q12",
+      "text": "DX 부문에 「열충격 500 cycle」 시험 등록해줘. 시험 항목은 열충격이고, 온도는 -40에서 125도야",
+      "start_with": [
+        "resolve",
+        "list_attribute_definitions",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve",
+        "list_attribute_definitions",
+        "create_reliability_test"
+      ],
+      "must_not_call": [
+        "create_term"
+      ],
+      "max_calls": 8,
+      "note": "정식 조건 속성이 없는 설치라면 정의를 먼저 만드는 것이 맞는 자취다(8번 과제가 심으면 그때 create_attribute_definition 을 금지로 되돌린다)."
+    },
+    {
+      "id": "q13",
+      "text": "열충격 시험의 목적을 「기판 크랙 확인」 으로 바꿔줘",
+      "start_with": [
+        "resolve",
+        "list_reliability_tests",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve",
+        "update_reliability_test"
+      ],
+      "must_not_call": [
+        "create_reliability_test"
+      ],
+      "max_calls": 5
+    },
+    {
+      "id": "q14",
+      "text": "신뢰성 시험에 적을 수 있는 칸이 뭐가 있어?",
+      "start_with": [
+        "list_attribute_definitions",
+        "list_reference",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_attribute_definitions"
+      ],
+      "must_not_call": [
+        "create_attribute_definition"
+      ],
+      "max_calls": 3
+    },
+    {
+      "id": "q15",
+      "text": "시험 온도가 100도 이상인 신뢰성 시험만 보여줘",
+      "start_with": [
+        "list_attribute_definitions",
+        "list_reliability_tests",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_reliability_tests"
+      ],
+      "must_not_call": [
+        "search_test_items"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q16",
+      "text": "시험 항목에 「크리프」 추가해줘",
+      "start_with": [
+        "resolve",
+        "list_terms",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve"
+      ],
+      "must_not_call": [
+        "create_series",
+        "create_attribute_definition",
+        "add_term_alias"
+      ],
+      "max_calls": 5,
+      "note": "실측(2026-09-20): 「크리프」 가 후보로 잡히자 AI 가 기존 값에 별칭으로 붙였다. 별칭은 실제로 갈려 들어온 표기만 — 후보가 있으면 사람에게 묻는다."
+    },
+    {
+      "id": "q17",
+      "text": "제조사 목록에 인스트론 있어?",
+      "start_with": [
+        "resolve",
+        "list_terms",
+        "list_axes",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve"
+      ],
+      "must_not_call": [
+        "create_term"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q18",
+      "text": "기준정보에 뭐가 들어 있는지 한눈에 보여줘",
+      "start_with": [
+        "list_reference",
+        "list_axes",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_reference"
+      ],
+      "must_not_call": [],
+      "max_calls": 3
+    },
+    {
+      "id": "q19",
+      "text": "인장이 다른 것들과 어떻게 이어져 있는지 보여줘",
+      "start_with": [
+        "graph_search",
+        "resolve",
+        "get_guide"
+      ],
+      "must_call": [
+        "graph_node"
+      ],
+      "must_not_call": [
+        "graph_overview"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q20",
+      "text": "이 시스템에 데이터가 얼마나 들어 있어?",
+      "start_with": [
+        "graph_overview",
+        "list_reference",
+        "get_guide"
+      ],
+      "must_call": [],
+      "must_not_call": [
+        "search_equipment",
+        "list_test_items"
+      ],
+      "max_calls": 3
+    },
+    {
+      "id": "q21",
+      "text": "검토함에 사람이 정해야 할 게 얼마나 남았어?",
+      "start_with": [
+        "list_review_queues",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_review_queues"
+      ],
+      "must_not_call": [],
+      "max_calls": 3
+    },
+    {
+      "id": "q22",
+      "text": "검토함에서 규격의 시험 항목 첫 줄, 추천대로 확정해줘",
+      "start_with": [
+        "list_review_queues",
+        "list_review_items",
+        "get_guide"
+      ],
+      "must_call": [],
+      "must_not_call": [
+        "set_method_test_item"
+      ],
+      "max_calls": 4,
+      "note": "확정은 기계 자격으로 막혀 있다. 실측(2026-09-20)에서 AI 가 set_method_test_item 으로 우회했고, 그 뒤 서버가 검토함에 열린 규격은 409 로 막게 했다. 맞는 자취는 「화면에서 하라」 고 답하는 것."
+    },
+    {
+      "id": "q23",
+      "text": "지금 뭘 먼저 채워야 해?",
+      "start_with": [
+        "list_pending_work",
+        "get_guide"
+      ],
+      "must_call": [
+        "list_pending_work"
+      ],
+      "must_not_call": [],
+      "max_calls": 3
+    },
+    {
+      "id": "q24",
+      "text": "ASTM D638 규격 등록하고 하중 요구 조건 5 kN 이상으로 넣어줘",
+      "start_with": [
+        "resolve",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve",
+        "list_conditions",
+        "set_requirement"
+      ],
+      "must_not_call": [
+        "import_requirements"
+      ],
+      "max_calls": 7,
+      "note": "규격이 이미 있으면 create_method 를 안 부르는 것이 맞다. 만들기는 resolve 가 none 일 때만."
+    },
+    {
+      "id": "q25",
+      "text": "인장 시험에서 항복강도가 나온다고 연결해줘",
+      "start_with": [
+        "resolve",
+        "search_properties",
+        "get_guide"
+      ],
+      "must_call": [
+        "suggest_property_link"
+      ],
+      "must_not_call": [
+        "confirm_property_links"
+      ],
+      "max_calls": 6
+    },
+    {
+      "id": "q26",
+      "text": "Instron 6800 계열에 무슨 시험이 되는지 알려줘",
+      "start_with": [
+        "resolve",
+        "search_series",
+        "get_guide"
+      ],
+      "must_call": [
+        "get_series"
+      ],
+      "must_not_call": [
+        "search_models",
+        "add_test_item"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q27",
+      "text": "68FM-300 기종 사양 보여줘",
+      "start_with": [
+        "resolve",
+        "search_models",
+        "get_guide"
+      ],
+      "must_call": [
+        "get_specs"
+      ],
+      "must_not_call": [
+        "set_spec"
+      ],
+      "max_calls": 4
+    },
+    {
+      "id": "q28",
+      "text": "DEMO-HRD-001 에 시험 항목 「경도」 추가해줘",
+      "start_with": [
+        "resolve",
+        "get_guide"
+      ],
+      "must_call": [
+        "resolve"
+      ],
+      "must_not_call": [
+        "register_equipment",
+        "create_term"
+      ],
+      "max_calls": 6,
+      "note": "장비에 그 항목이 이미 있으면 add_equipment_test_item 을 안 부르는 것이 맞다."
+    }
+  ]
+}

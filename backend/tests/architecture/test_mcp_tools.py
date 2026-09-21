@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import ast
 from pathlib import Path
+from typing import Any
 
 SERVER = Path(__file__).resolve().parents[3] / "mcp_server" / "server.py"
 
@@ -140,6 +141,43 @@ def test_배포_스크립트가_개발용과_같은_전송으로_MCP_를_띄운�
         )
 
 
+def test_MCP_설정은_개발도_운영도_backend_env_에서_읽는다() -> None:
+    """`MCP_PORT`·`MCP_HOST` 는 **띄우는 스크립트 셋이 같은 파일에서** 읽어야 한다.
+
+    운영(service.ps1)만 이 두 키를 읽고 개발(run_mcp.ps1)은 무시하던 때가 있었다 —
+    `.env` 에 적어 둔 포트가 개발에서만 안 듣는 것은, 도구가 실패하고 나서야 드러나고
+    그때 원인이 「내가 적은 값이 안 읽힌다」 라 찾는 데 오래 걸린다. 셋이 같은 키를
+    보는지, 그리고 `.env.example` 이 그 키를 알려 주는지 여기서 본다.
+    """
+    root = SERVER.parents[1]
+    for rel in (
+        "mcp_server/run_mcp.ps1",
+        "scripts/ci/run_mcp_template.ps1",
+        "scripts/deploy/service.ps1",
+    ):
+        text = (root / rel).read_text(encoding="utf-8-sig")
+        for key in ("MCP_PORT", "MCP_HOST"):
+            assert key in text, f"{rel} 이 {key} 를 안 읽습니다 — 개발·운영이 갈립니다"
+
+    example = (root / "backend" / ".env.example").read_text(encoding="utf-8-sig")
+    for key in ("MCP_PORT", "MCP_HOST"):
+        assert f"{key}=" in example, (
+            f".env.example 에 {key} 가 없습니다 — 이 파일만 보고 설정하는 사람은"
+            f" 그 키의 존재를 모릅니다"
+        )
+    #: 서버 주소는 스크립트가 PORT 로 계산한다. 두 군데 적으면 언젠가 한쪽만 고친다.
+    #: 주석으로 「여기 적지 않는다」 라고 말하는 것은 괜찮다 — 값을 주는 줄만 막는다.
+    assigned = [
+        one.split("=", 1)[0].strip()
+        for one in example.splitlines()
+        if "=" in one and not one.lstrip().startswith("#")
+    ]
+    assert "TESTSCOPE_API_BASE" not in assigned, (
+        ".env.example 이 TESTSCOPE_API_BASE 에 값을 줍니다 — mcp_server/server.py 는"
+        " .env 를 안 읽으므로 그 값은 효과가 없고, 주소가 두 군데로 갈립니다"
+    )
+
+
 def test_바꾸는_도구는_writes_로_단다() -> None:
     """읽기 전용 프로필(`TESTSCOPE_MCP_TOOLS=read`)에서 **안 실려야 할 것**을 가른다.
 
@@ -197,3 +235,88 @@ def test_길잡이가_도구_목록과_함께_실린다() -> None:
     assert "ROUTING" in text[text.index("instructions=") :], (
         "길잡이를 instructions 에 안 싣습니다 — 안 실리면 아무도 안 읽는다"
     )
+
+
+def test_측정_물음이_부르는_도구가_실재한다() -> None:
+    """도구 이름을 바꾸면 물음 파일의 기대 자취가 조용히 틀린다 — 그러면 채점이 늘 「필수
+    미달」 로 나오는데, 그것은 AI 가 헤맨 것이 아니라 파일이 낡은 것이다."""
+    import json
+
+    doc = json.loads((SERVER.parent / "eval" / "questions.json").read_text(encoding="utf-8"))
+    names = {tool.name for tool in _tools()}
+    for question in doc["questions"]:
+        for key in ("start_with", "must_call", "must_not_call"):
+            for tool in question.get(key, []):
+                assert tool in names, f"{question['id']}.{key}: {tool} 라는 도구가 없습니다"
+        assert question["max_calls"] >= len(question.get("must_call", [])), (
+            f"{question['id']}: 필수 도구가 상한보다 많습니다"
+        )
+
+
+def test_자취_채점은_표식으로_자르고_다섯_항목을_센다() -> None:
+    """채점기는 LLM 없이도 돌아야 한다 — 자취만 있으면. 표식이 있으면 그것으로 자르고,
+    없으면 시간 간격으로 자르되 그렇다고 말한다."""
+    import importlib.util
+    import sys
+
+    spec = importlib.util.spec_from_file_location("score", SERVER.parent / "eval" / "score.py")
+    assert spec is not None and spec.loader is not None
+    score = importlib.util.module_from_spec(spec)
+    # dataclass 가 `from __future__ import annotations` 를 풀 때 sys.modules 에서 제 모듈을
+    # 찾는다 — 등록 안 하면 None.__dict__ 로 죽는다.
+    sys.modules["score"] = score
+    spec.loader.exec_module(score)
+
+    questions = [
+        {
+            "id": "q01",
+            "text": "인장 되는 장비",
+            "start_with": ["resolve"],
+            "must_call": ["search_test_items"],
+            "must_not_call": ["create_series"],
+            "max_calls": 3,
+        },
+        {
+            "id": "q02",
+            "text": "뭐가 있나",
+            "start_with": ["list_reference"],
+            "must_call": [],
+            "must_not_call": [],
+            "max_calls": 2,
+        },
+    ]
+
+    def call(tool: str, ts: str, empty: bool = False) -> dict[str, Any]:
+        return {"ts": ts, "session": "s", "tool": tool, "ok": True, "empty": empty}
+
+    # 표식이 있는 자취 — q01 은 잘 갔고, q02 는 빈손으로 세 번 더듬었다.
+    rows: list[dict[str, Any]] = [
+        {"ts": "2026-09-20T01:00:00+00:00", "session": "s", "event": "question", "id": "q01"},
+        call("resolve", "2026-09-20T01:00:01+00:00"),
+        call("search_test_items", "2026-09-20T01:00:02+00:00"),
+        {"ts": "2026-09-20T01:01:00+00:00", "session": "s", "event": "question", "id": "q02"},
+        call("search_semantic", "2026-09-20T01:01:01+00:00", empty=True),
+        call("search_series", "2026-09-20T01:01:02+00:00", empty=True),
+        call("list_reference", "2026-09-20T01:01:03+00:00"),
+    ]
+    report = score.score(rows, questions, gap_seconds=90)
+    assert report["marked"] is True and report["answered"] == 2
+    first, second = report["results"]
+    assert first["score"] == 5 and first["trace"] == ["resolve", "search_test_items"]
+    assert second["checks"] == {
+        "호출 수": False,
+        "시작": False,
+        "필수": True,
+        "금지": True,
+        "빈손": False,
+    }
+    assert report["score"] == 7 and report["possible"] == 10
+
+    # 표식이 없으면 시간 간격으로 자르고, 덜 정확하다고 말한다.
+    unmarked = [row for row in rows if "tool" in row]
+    unmarked[2]["ts"] = "2026-09-20T01:05:00+00:00"  # 세 번째 호출부터 새 물음
+    unmarked[3]["ts"] = "2026-09-20T01:05:01+00:00"
+    unmarked[4]["ts"] = "2026-09-20T01:05:02+00:00"
+    loose = score.score(unmarked, questions, gap_seconds=90)
+    assert loose["marked"] is False and loose["answered"] == 2
+    assert "덜 정확" in score.render(loose)
