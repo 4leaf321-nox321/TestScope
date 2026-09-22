@@ -66,10 +66,10 @@
         "resolve"
       ],
       "must_not_call": [
-        "create_term",
-        "search_catalog"
+        "create_term"
       ],
-      "max_calls": 6
+      "max_calls": 6,
+      "note": "실측(2026-09-22): 보유 0건일 때 search_catalog 를 부른 것을 벌점으로 매기고 있었는데, 그것은 **서버가 시킨 일**이다 — 빈 검색 응답의 next 줄이 「사면 되는 것은 search_catalog 한 번」 이라고 적는다. 채점표가 안내와 반대면 AI 에게 제 안내를 어기라고 가르치는 꼴이라 금지에서 뺐다. q05 와 같은 판단이다."
     },
     {
       "id": "q05",

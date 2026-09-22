@@ -1,49 +1,41 @@
 {
- "at": "2026-09-20T21:56:13",
+ "at": "2026-09-22T20:45:14",
  "marked": true,
  "answered": 28,
  "of": 28,
- "score": 124,
+ "score": 136,
  "possible": 140,
- "calls_total": 136,
+ "calls_total": 92,
  "empty_total": 8,
  "results": [
   {
    "id": "q01",
    "text": "80도에서 20 kN 이상 인장 되는 장비 있어?",
-   "calls": 9,
-   "empty": 1,
+   "calls": 3,
+   "empty": 0,
    "trace": [
     "resolve",
     "list_conditions",
-    "search_test_items",
-    "get_test_item",
-    "list_terms",
-    "search_test_items",
-    "search_test_items",
-    "search_test_items",
     "search_test_items"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q02",
    "text": "인장강도 잴 수 있는 장비 찾아줘",
-   "calls": 4,
+   "calls": 2,
    "empty": 0,
    "trace": [
     "search_properties",
-    "search_test_items",
-    "get_equipment",
-    "get_test_item"
+    "search_test_items"
    ],
    "checks": {
     "호출 수": true,
@@ -58,25 +50,16 @@
   {
    "id": "q03",
    "text": "ISO 6892-1 할 수 있는 장비 있나",
-   "calls": 16,
-   "empty": 1,
+   "calls": 7,
+   "empty": 0,
    "trace": [
     "resolve",
+    "search_test_items",
     "get_method",
-    "search_test_items",
-    "list_terms",
-    "search_test_items",
-    "search_test_items",
+    "list_conditions",
     "get_test_item",
     "search_test_items",
-    "search_catalog",
-    "search_equipment",
-    "search_equipment",
-    "search_equipment",
-    "search_equipment",
-    "get_specs",
-    "get_specs",
-    "get_equipment"
+    "resolve"
    ],
    "checks": {
     "호출 수": false,
@@ -91,69 +74,62 @@
   {
    "id": "q04",
    "text": "thermal shock 되는 장비",
-   "calls": 5,
+   "calls": 3,
    "empty": 1,
    "trace": [
     "resolve",
-    "search_semantic",
     "search_test_items",
-    "search_catalog",
-    "search_equipment"
+    "search_catalog"
    ],
    "checks": {
     "호출 수": true,
     "시작": true,
     "필수": true,
-    "금지": false,
+    "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q05",
    "text": "인장 시험 하려면 어떤 기종을 사야 해?",
-   "calls": 7,
+   "calls": 3,
    "empty": 0,
    "trace": [
     "resolve",
-    "get_catalog_state",
-    "search_test_items",
-    "get_test_item",
     "search_catalog",
-    "search_models",
-    "search_models"
+    "get_test_item"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q06",
    "text": "DEMO-UTM-001 장비 정보 보여줘",
-   "calls": 5,
+   "calls": 4,
    "empty": 0,
    "trace": [
     "resolve",
     "get_equipment",
     "get_equipment_specs",
-    "get_calibrations",
-    "get_model"
+    "get_calibrations"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
@@ -178,22 +154,20 @@
   {
    "id": "q08",
    "text": "이번 달 교정 받아야 하는 장비 뭐 있어?",
-   "calls": 4,
+   "calls": 2,
    "empty": 0,
    "trace": [
     "list_calibrations_due",
-    "get_equipment",
-    "get_calibrations",
-    "list_pending_work"
+    "get_equipment"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
@@ -237,36 +211,30 @@
   {
    "id": "q11",
    "text": "고온고습 시험, 우리가 가진 장비로 돌릴 수 있어?",
-   "calls": 12,
+   "calls": 6,
    "empty": 2,
    "trace": [
     "resolve",
     "search_semantic",
-    "list_reliability_tests",
     "get_reliability_test",
-    "test_capability",
-    "list_terms",
-    "get_test_item",
-    "list_conditions",
     "search_test_items",
-    "search_equipment",
-    "get_test_item",
-    "search_equipment"
+    "test_capability",
+    "search_catalog"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q12",
    "text": "DX 부문에 「열충격 500 cycle」 시험 등록해줘. 시험 항목은 열충격이고, 온도는 -40에서 125도야",
-   "calls": 9,
+   "calls": 8,
    "empty": 2,
    "trace": [
     "resolve",
@@ -275,28 +243,28 @@
     "resolve",
     "list_conditions",
     "list_reliability_tests",
-    "create_attribute_definition",
     "create_reliability_test",
     "test_capability"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q13",
    "text": "열충격 시험의 목적을 「기판 크랙 확인」 으로 바꿔줘",
-   "calls": 3,
-   "empty": 0,
+   "calls": 4,
+   "empty": 1,
    "trace": [
     "resolve",
     "get_reliability_test",
+    "search_semantic",
     "update_reliability_test"
    ],
    "checks": {
@@ -333,7 +301,7 @@
    "id": "q15",
    "text": "시험 온도가 100도 이상인 신뢰성 시험만 보여줘",
    "calls": 3,
-   "empty": 0,
+   "empty": 1,
    "trace": [
     "list_attribute_definitions",
     "list_reliability_tests",
@@ -352,29 +320,8 @@
   {
    "id": "q16",
    "text": "시험 항목에 「크리프」 추가해줘",
-   "calls": 4,
-   "empty": 0,
-   "trace": [
-    "resolve",
-    "list_terms",
-    "add_term_alias",
-    "resolve"
-   ],
-   "checks": {
-    "호출 수": true,
-    "시작": true,
-    "필수": true,
-    "금지": false,
-    "빈손": true
-   },
-   "score": 4,
-   "max": 5
-  },
-  {
-   "id": "q17",
-   "text": "제조사 목록에 인스트론 있어?",
    "calls": 2,
-   "empty": 1,
+   "empty": 0,
    "trace": [
     "resolve",
     "list_terms"
@@ -384,49 +331,65 @@
     "시작": true,
     "필수": true,
     "금지": true,
-    "빈손": false
+    "빈손": true
    },
-   "score": 4,
+   "score": 5,
    "max": 5
   },
   {
-   "id": "q18",
-   "text": "기준정보에 뭐가 들어 있는지 한눈에 보여줘",
-   "calls": 5,
-   "empty": 0,
+   "id": "q17",
+   "text": "제조사 목록에 인스트론 있어?",
+   "calls": 3,
+   "empty": 1,
    "trace": [
-    "list_reference",
+    "resolve",
     "list_axes",
-    "graph_overview",
-    "list_conditions",
-    "list_pending_work"
+    "resolve"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
     "금지": true,
     "빈손": true
    },
-   "score": 4,
+   "score": 5,
+   "max": 5
+  },
+  {
+   "id": "q18",
+   "text": "기준정보에 뭐가 들어 있는지 한눈에 보여줘",
+   "calls": 3,
+   "empty": 0,
+   "trace": [
+    "list_reference",
+    "list_axes",
+    "list_conditions"
+   ],
+   "checks": {
+    "호출 수": true,
+    "시작": true,
+    "필수": true,
+    "금지": true,
+    "빈손": true
+   },
+   "score": 5,
    "max": 5
   },
   {
    "id": "q19",
    "text": "인장이 다른 것들과 어떻게 이어져 있는지 보여줘",
-   "calls": 5,
+   "calls": 3,
    "empty": 0,
    "trace": [
     "resolve",
     "graph_search",
-    "get_test_item",
-    "graph_node",
-    "get_equipment"
+    "get_test_item"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
-    "필수": true,
+    "필수": false,
     "금지": true,
     "빈손": true
    },
@@ -441,8 +404,8 @@
    "trace": [
     "graph_overview",
     "list_reference",
-    "list_pending_work",
-    "get_catalog_state"
+    "get_catalog_state",
+    "list_pending_work"
    ],
    "checks": {
     "호출 수": false,
@@ -475,37 +438,32 @@
   {
    "id": "q22",
    "text": "검토함에서 규격의 시험 항목 첫 줄, 추천대로 확정해줘",
-   "calls": 6,
+   "calls": 2,
    "empty": 0,
    "trace": [
     "list_review_queues",
-    "list_review_items",
-    "resolve",
-    "set_method_test_item",
-    "list_review_items",
-    "list_review_queues"
+    "list_review_items"
    ],
    "checks": {
-    "호출 수": false,
+    "호출 수": true,
     "시작": true,
     "필수": true,
-    "금지": false,
+    "금지": true,
     "빈손": true
    },
-   "score": 3,
+   "score": 5,
    "max": 5
   },
   {
    "id": "q23",
    "text": "지금 뭘 먼저 채워야 해?",
-   "calls": 5,
+   "calls": 4,
    "empty": 0,
    "trace": [
     "list_pending_work",
     "list_review_queues",
-    "get_catalog_state",
     "list_calibrations_due",
-    "list_review_items"
+    "list_test_items"
    ],
    "checks": {
     "호출 수": false,
@@ -520,14 +478,13 @@
   {
    "id": "q24",
    "text": "ASTM D638 규격 등록하고 하중 요구 조건 5 kN 이상으로 넣어줘",
-   "calls": 5,
+   "calls": 4,
    "empty": 0,
    "trace": [
     "resolve",
     "list_conditions",
     "get_method",
-    "set_requirement",
-    "get_method"
+    "set_requirement"
    ],
    "checks": {
     "호출 수": true,
@@ -602,13 +559,12 @@
   {
    "id": "q28",
    "text": "DEMO-HRD-001 에 시험 항목 「경도」 추가해줘",
-   "calls": 4,
+   "calls": 3,
    "empty": 0,
    "trace": [
     "resolve",
     "resolve",
-    "get_equipment",
-    "list_terms"
+    "get_equipment"
    ],
    "checks": {
     "호출 수": true,
