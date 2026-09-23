@@ -251,3 +251,79 @@ def test_사내_시험_카드의_칸이_설치에_들어있다(client: TestClien
 
     assert by_label["참조 규격"]["kind"] == "method"
     assert by_label["시료 수"]["kind"] == "number"
+
+
+def test_등급별_수량은_짝으로_담기고_이름_없는_숫자는_거절한다(
+    client: TestClient, admin: Signed
+) -> None:
+    """「A등급 4 · B등급 4」 는 **값 하나가 아니다.** 글자로 뭉개 넣으면 사람은 읽어도
+    기계는 못 읽고, 그러면 그 칸을 만든 뜻이 없다.
+
+    **이름 없는 숫자는 안 받는다.** 「4」 만 남으면 그것이 A등급인지 1단계인지 적어 둔
+    사람 말고는 아무도 모른다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    definitions = {
+        one["label"]: one["id"]
+        for one in client.get(
+            "/api/attribute-definitions",
+            params={"target": "reliability_test"},
+            headers=admin.headers,
+        ).json()
+    }
+    assert "등급별 수량" in definitions and "적용 사양 매트릭스" in definitions
+
+    made = client.post(
+        "/api/reliability-tests",
+        json={
+            "workspace_slug": admin.workspace,
+            "name": f"짝 시험-{tag}",
+            "attributes": [
+                {
+                    "definition_id": definitions["등급별 수량"],
+                    "json_value": [
+                        {"label": "A등급", "value": 4},
+                        {"label": "B등급", "value": 4},
+                    ],
+                },
+                {
+                    "definition_id": definitions["적용 사양 매트릭스"],
+                    "json_value": [
+                        {
+                            "label": "사양 A",
+                            "entries": [
+                                {"label": "A등급", "value": 4},
+                                {"label": "B등급", "value": 2},
+                            ],
+                        }
+                    ],
+                },
+            ],
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    values = {one["label"]: one for one in made.json()["attributes"]}
+
+    # 값은 그대로 돌아오고, **읽는 글자는 서버가 만든다** — 화면·MCP·찾기가 같은 말을 쓴다.
+    assert values["등급별 수량"]["json_value"] == [
+        {"label": "A등급", "value": 4},
+        {"label": "B등급", "value": 4},
+    ]
+    assert values["등급별 수량"]["display"] == "A등급 4 개 · B등급 4 개"
+    assert values["적용 사양 매트릭스"]["display"] == "사양 A: A등급 4 개 · B등급 2 개"
+
+    # 이름이 빈 줄은 거절한다.
+    bad = client.post(
+        "/api/reliability-tests",
+        json={
+            "workspace_slug": admin.workspace,
+            "name": f"이름 없는 숫자-{tag}",
+            "attributes": [
+                {"definition_id": definitions["등급별 수량"], "json_value": [{"value": 4}]}
+            ],
+        },
+        headers=admin.headers,
+    )
+    assert bad.status_code == 400, bad.text
+    assert bad.json()["error"]["code"] == "TSC-ATTR-0011"

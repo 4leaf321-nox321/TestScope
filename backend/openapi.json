@@ -9423,6 +9423,15 @@
             ],
             "title": "Bool Value"
           },
+          "json_value": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Json Value"
+          },
           "date_value": {
             "anyOf": [
               {
@@ -9474,7 +9483,7 @@
         },
         "type": "object",
         "title": "AttributeValueIn",
-        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id. 다른 칸은 무시한다."
+        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id · pairs/matrix: json_value. 다른 칸은 무시한다."
       },
       "AttributeValueOut": {
         "properties": {
@@ -9611,6 +9620,15 @@
               }
             ],
             "title": "Method Code"
+          },
+          "json_value": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Json Value"
           },
           "note": {
             "anyOf": [

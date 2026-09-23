@@ -2183,6 +2183,9 @@ async def create_reliability_test(
         {"definition_id": "…", "num_min": -40, "num_max": 125, "unit": "degC"}   구간·조건
         {"definition_id": "…", "num_value": 5}                                    수치
         {"definition_id": "…", "text_value": "외관 이상 없음"}                     문장
+        {"definition_id": "…", "term_id": "…"}          기준정보(유형·적용군)
+        {"definition_id": "…", "method_id": "…"}        규격(참조 규격)
+        {"definition_id": "…", "json_value": [{"label": "A등급", "value": 4}]}   이름별 수량
         {"new_label": "시료 수", "new_kind": "number", "num_value": 5}      새 이름 → 초안
 
     **새 이름을 만들기 전에 정의 목록을 본다.** `new_label` 로 적으면 초안 속성이 새로 생기고,

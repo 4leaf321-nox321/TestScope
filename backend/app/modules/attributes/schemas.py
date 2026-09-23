@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import date, datetime
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -76,7 +77,7 @@ class AttributeValueIn(BaseModel):
 
     종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·
     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
-    term: term_id · method: method_id. 다른 칸은 무시한다.
+    term: term_id · method: method_id · pairs/matrix: json_value. 다른 칸은 무시한다.
     """
 
     definition_id: uuid.UUID | None = None
@@ -89,6 +90,14 @@ class AttributeValueIn(BaseModel):
     unit: str = Field(default="", max_length=20)
     text_value: str | None = Field(default=None, max_length=4000)
     bool_value: bool | None = None
+    json_value: Any | None = None
+    """`pairs` · `matrix` 의 값 — 홑값 칸으로는 못 담는 것.
+
+        pairs    [{"label": "A등급", "value": 4}, …]
+        matrix   [{"label": "사양 A", "entries": [{"label": "A등급", "value": 4}, …]}, …]
+
+    **이름 없는 숫자는 안 받는다**(422) — 「4」 만 남으면 그것이 A등급인지 1단계인지
+    적어 둔 사람 말고는 아무도 모른다."""
     date_value: date | None = None
     term_id: uuid.UUID | None = None
     method_id: uuid.UUID | None = None
@@ -112,6 +121,7 @@ class AttributeValueOut(BaseModel):
     term_value: str | None
     method_id: uuid.UUID | None
     method_code: str | None
+    json_value: Any | None = None
     note: str | None
     display: str
     """사람이 읽는 한 줄. 「-40 ~ 125 ℃」 「ISO 6892-1」 「있음」. 화면과 MCP 가 같은 글자를

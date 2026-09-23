@@ -7,7 +7,17 @@
  */
 
 export type AttributeKind =
-  'number' | 'range' | 'text' | 'boolean' | 'date' | 'choice' | 'condition' | 'term' | 'method'
+  | 'number'
+  | 'range'
+  | 'text'
+  | 'boolean'
+  | 'date'
+  | 'choice'
+  | 'condition'
+  | 'term'
+  | 'method'
+  | 'pairs'
+  | 'matrix'
 
 export const KIND_LABEL: Record<AttributeKind, string> = {
   number: '수치',
@@ -19,6 +29,25 @@ export const KIND_LABEL: Record<AttributeKind, string> = {
   condition: '시험 조건',
   term: '기준정보',
   method: '규격',
+  pairs: '이름별 수량',
+  matrix: '사양별 수량',
+}
+
+/** 짝의 목록을 쓰는 종류 — 값이 하나가 아니라 `json_value` 에 담긴다. */
+export function isPaired(kind: string): boolean {
+  return kind === 'pairs' || kind === 'matrix'
+}
+
+/** `pairs` 의 한 줄. 이름 없는 숫자는 서버가 거절한다. */
+export interface Pair {
+  label: string
+  value: number | null
+}
+
+/** `matrix` 의 한 줄 — 사양 하나에 그 사양의 짝들. */
+export interface MatrixRow {
+  label: string
+  entries: Pair[]
 }
 
 /** 새 초안으로 만들 수 있는 종류. 축·선택지가 필요한 것은 관리자가 정의부터 만든다. */

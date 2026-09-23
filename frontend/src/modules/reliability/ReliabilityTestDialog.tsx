@@ -1,9 +1,13 @@
 /**
  * 신뢰성 시험 등록·수정.
  *
- * 고정 칸은 이름·목적·쓰는 시험 항목 셋이다. **나머지(조건·판정 기준·근거 규격·시료 수 …)는
- * 「항목」 으로 붙인다** — 열을 미리 뚫지 않고 이름을 데이터로 둔 것(attributes 모듈). 정식
- * 항목은 관리자가 정하고, 없는 이름은 초안으로 남아 나중에 정식으로 올라간다.
+ * 열을 미리 뚫지 않고 이름을 데이터로 둔다(attributes 모듈). 그런데 **사내 시험 카드의
+ * 칸들(유형·참조 규격·시험 조건·절차·판정 기준 …)은 새로 만드는 것이 아니라 원래 있는
+ * 것**이라, 「속성 추가」 뒤에 두면 사람은 선택 사항으로 읽고 안 채운다 — 그리고 안 채운
+ * 조건은 장비 판정에 안 실린다. 그래서 정식 항목은 이름·목적과 **나란히 칸으로** 서고,
+ * 그 밖의 것을 적고 싶은 사람만 아래 편집기를 쓴다.
+ *
+ * 창이 넓은 이유: 칸이 스물이라 좁은 창에서는 스크롤만 하다 끝난다.
  *
  * 시험 항목은 **이 부서에 장비가 몇 대인지**를 옆에 달아 고른다. 「열충격」 을 고르는 순간
  * 「우리 부서에 챔버가 0대」 가 보여야, 등록하면서 「돌릴 장비가 없다」 를 안다.
@@ -35,6 +39,13 @@ import {
   toPayload,
 } from '@/modules/attributes/AttributeValuesEditor'
 import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
+import {
+  StandardAttributeFields,
+  fromValues as fromStandardValues,
+  toStandardPayload,
+} from '@/modules/attributes/StandardAttributeFields'
+import type { StandardValue } from '@/modules/attributes/StandardAttributeFields'
+import type { AttributeDefinition } from '@/modules/attributes/api'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 import { testItemCatalogApi } from '@/modules/test_items/api'
@@ -61,6 +72,9 @@ export function ReliabilityTestDialog({
   const [purpose, setPurpose] = useState('')
   const [termIds, setTermIds] = useState<string[]>([])
   const [attributes, setAttributes] = useState<AttributeRow[]>([])
+  /** 정식 칸의 값과 그 정의 — 정의는 칸을 그린 쪽이 알려 준다(보낼 때 종류가 필요하다). */
+  const [standard, setStandard] = useState<Record<string, StandardValue>>({})
+  const [standardDefs, setStandardDefs] = useState<AttributeDefinition[]>([])
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
 
@@ -70,7 +84,14 @@ export function ReliabilityTestDialog({
     setName(editing?.name ?? '')
     setPurpose(editing?.purpose ?? '')
     setTermIds(editing?.test_items.map((one) => one.term_id) ?? [])
-    setAttributes(editing ? fromValues(editing.attributes) : [])
+    // 정식 칸은 위에서 따로 그리므로 **아래 편집기에는 초안만** 남긴다 — 둘 다 그리면
+    // 같은 값이 두 번 서고, 저장할 때 뒤의 것이 이긴다.
+    setStandard(editing ? fromStandardValues(editing.attributes) : {})
+    setAttributes(
+      editing
+        ? fromValues((editing.attributes ?? []).filter((one) => one.status === 'draft'))
+        : [],
+    )
     setError(null)
   }, [open, editing])
 
@@ -101,7 +122,7 @@ export function ReliabilityTestDialog({
         name: name.trim(),
         purpose: purpose.trim(),
         test_item_term_ids: termIds,
-        attributes: toPayload(attributes),
+        attributes: [...toStandardPayload(standardDefs, standard), ...toPayload(attributes)],
       }
       if (editing) await reliabilityApi.update(editing.id, body)
       else await reliabilityApi.create(workspace, body)
@@ -115,7 +136,7 @@ export function ReliabilityTestDialog({
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && !busy && onClose()}>
-      <DialogContent className="sm:max-w-2xl">
+      <DialogContent className="max-h-[85vh] w-[80vw] overflow-y-auto sm:max-w-[80vw]">
         <form onSubmit={submit} className="space-y-4">
           <DialogHeader>
             <DialogTitle>{editing ? '신뢰성 시험 수정' : '신뢰성 시험 등록'}</DialogTitle>
@@ -195,8 +216,20 @@ export function ReliabilityTestDialog({
             </p>
           </div>
 
-          <div className="space-y-2">
-            <Label>속성</Label>
+          {/* 사내 시험 카드의 칸들 — 이름·목적과 나란히 선다. */}
+          <StandardAttributeFields
+            target="reliability_test"
+            values={standard}
+            onChange={setStandard}
+            onLoaded={setStandardDefs}
+          />
+
+          <div className="space-y-2 border-t pt-4">
+            <Label>그 밖에 적을 것</Label>
+            <p className="text-muted-foreground text-xs">
+              위 칸으로 안 잡히는 것만. 여기서 새로 적은 이름은 **초안**으로 남고, 관리자가
+              정식으로 올리면 그때부터 모두의 칸이 됩니다.
+            </p>
             <AttributeValuesEditor
               target="reliability_test"
               rows={attributes}

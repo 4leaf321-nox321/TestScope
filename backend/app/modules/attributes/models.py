@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import date, datetime
+from typing import Any
 
 from sqlalchemy import (
     Boolean,
@@ -80,6 +81,10 @@ ATTRIBUTE_KINDS = (
     "condition",
     "term",
     "method",
+    # **값이 하나가 아닌 것들.** 「A등급 4 · B등급 4」 처럼 이름마다 숫자가 붙는다.
+    # matrix 는 그 짝이 사양마다 따로 있는 것(사양 -> 등급 -> 값).
+    "pairs",
+    "matrix",
 )
 ATTRIBUTE_STATUSES = ("draft", "standard")
 
@@ -246,6 +251,14 @@ class AttributeValue(Base):
     text_value: Mapped[str | None] = mapped_column(Text, nullable=True)
     bool_value: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     date_value: Mapped[date | None] = mapped_column(Date, nullable=True)
+    json_value: Mapped[Any | None] = mapped_column(JSONB, nullable=True)
+    """`pairs` · `matrix` 의 값. **홑값 칸으로는 못 담는 것**만 여기 온다.
+
+        pairs    [{"label": "A등급", "value": 4}, …]
+        matrix   [{"label": "사양 A", "entries": [{"label": "A등급", "value": 4}, …]}, …]
+
+    열을 종류마다 늘리지 않는 이유: 이런 칸은 모양이 자라는 쪽이고, 자랄 때마다
+    마이그레이션을 하면 운영이 그만큼 멈춘다."""
     term_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),

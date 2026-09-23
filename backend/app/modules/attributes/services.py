@@ -388,8 +388,8 @@ def _ensure_draft(
     if existing is not None:
         return existing
     _check_kind(kind)
-    if kind in ("condition", "term", "choice"):
-        # 축·선택지가 필요한 종류는 초안으로 못 만든다 — 관리자가 정의부터 만든다.
+    if kind in ("condition", "term", "choice", "pairs", "matrix"):
+        # 축·선택지·짝처럼 **모양이 있는** 종류는 초안으로 못 만든다 — 관리자가 정의부터.
         raise AppError("TSC-ATTR-0010", f"{kind} 종류의 속성은 관리자가 먼저 정의합니다.")
     row = AttributeDefinition(
         target=target,
@@ -445,6 +445,42 @@ def _check_value_shape(
         method = db.get(TestMethod, item.method_id) if item.method_id else None
         if method is None or method.deleted_at is not None:
             raise AppError("TSC-ATTR-0011", f"「{label}」 은 있는 규격이어야 합니다.")
+    if kind in ("pairs", "matrix"):
+        _check_pairs_shape(kind, label, item.json_value)
+
+
+def _pair_rows(label: str, rows: Any, *, where: str) -> None:
+    """짝 목록 한 벌 — 이름과 숫자가 둘 다 있어야 한다.
+
+    **이름 없는 숫자는 못 읽는다.** 「4」 만 남으면 그것이 A등급인지 1단계인지 알 수 없고,
+    그 값은 적어 둔 사람 말고는 아무도 못 쓴다.
+    """
+    if not isinstance(rows, list) or not rows:
+        raise AppError("TSC-ATTR-0011", f"「{label}」 {where} 줄이 하나는 필요합니다.")
+    for one in rows:
+        if not isinstance(one, dict):
+            raise AppError("TSC-ATTR-0011", f"「{label}」 {where} 줄의 모양이 아닙니다.")
+        name = clean(str(one.get("label") or ""))
+        value = one.get("value")
+        if not name:
+            raise AppError("TSC-ATTR-0011", f"「{label}」 {where} 이름이 빈 줄이 있습니다.")
+        if value is None or isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise AppError("TSC-ATTR-0011", f"「{label}」 의 「{name}」 에 숫자가 필요합니다.")
+
+
+def _check_pairs_shape(kind: str, label: str, rows: Any) -> None:
+    if kind == "pairs":
+        _pair_rows(label, rows, where="에는")
+        return
+    if not isinstance(rows, list) or not rows:
+        raise AppError("TSC-ATTR-0011", f"「{label}」 에는 줄이 하나는 필요합니다.")
+    for one in rows:
+        if not isinstance(one, dict):
+            raise AppError("TSC-ATTR-0011", f"「{label}」 줄의 모양이 아닙니다.")
+        name = clean(str(one.get("label") or ""))
+        if not name:
+            raise AppError("TSC-ATTR-0011", f"「{label}」 에 이름이 빈 사양이 있습니다.")
+        _pair_rows(f"{label} / {name}", one.get("entries"), where="에는")
 
 
 def set_values(
@@ -494,6 +530,7 @@ def set_values(
             date_value=item.date_value if definition.kind == "date" else None,
             term_id=item.term_id if definition.kind == "term" else None,
             ref_method_id=item.method_id if definition.kind == "method" else None,
+            json_value=(item.json_value if definition.kind in ("pairs", "matrix") else None),
             note=clean(item.note or "") or None,
         )
         setattr(value, column.key, object_id)
@@ -510,18 +547,26 @@ def display_of(
     term_value: str | None,
     method_code: str | None,
 ) -> str:
-    """사람이 읽는 한 줄. 화면과 MCP 와 색인 카드가 같은 글자를 쓰게 서버가 만든다."""
+    """사람이 읽는 한 줄. 화면과 MCP 와 색인 카드가 같은 글자를 쓰게 서버가 만든다.
+
+    **짝 종류의 단위는 칸의 것이다.** 숫자·구간은 적은 사람이 단위를 함께 적지만
+    (「85 %」), 짝은 줄마다 단위를 적지 않는다 — 「등급별 수량」 은 통째로 「개」 다.
+    """
+    unit = value.unit
+    if not unit and definition.kind in ("pairs", "matrix"):
+        unit = definition.unit
     return display_attribute(
         definition.kind,
         num_value=value.num_value,
         num_min=value.num_min,
         num_max=value.num_max,
-        unit=value.unit,
+        unit=unit,
         text_value=value.text_value,
         bool_value=value.bool_value,
         date_value=value.date_value,
         term_value=term_value,
         method_code=method_code,
+        json_value=value.json_value,
     )
 
 
@@ -584,6 +629,7 @@ def values_of(
                 term_id=value.term_id,
                 term_value=term_value,
                 method_id=value.ref_method_id,
+                json_value=value.json_value,
                 method_code=method_code,
                 note=value.note,
                 display=display_of(

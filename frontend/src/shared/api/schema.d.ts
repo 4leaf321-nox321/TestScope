@@ -3072,7 +3072,7 @@ export interface components {
          *
          *     종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·
          *     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
-         *     term: term_id · method: method_id. 다른 칸은 무시한다.
+         *     term: term_id · method: method_id · pairs/matrix: json_value. 다른 칸은 무시한다.
          */
         AttributeValueIn: {
             /** Definition Id */
@@ -3099,6 +3099,8 @@ export interface components {
             text_value?: string | null;
             /** Bool Value */
             bool_value?: boolean | null;
+            /** Json Value */
+            json_value?: unknown | null;
             /** Date Value */
             date_value?: string | null;
             /** Term Id */
@@ -3143,6 +3145,8 @@ export interface components {
             method_id: string | null;
             /** Method Code */
             method_code: string | null;
+            /** Json Value */
+            json_value?: unknown | null;
             /** Note */
             note: string | null;
             /** Display */

@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 from datetime import date
+from typing import Any
 
 
 def _number(value: float) -> str:
@@ -27,6 +28,7 @@ def display_attribute(
     date_value: date | None = None,
     term_value: str | None = None,
     method_code: str | None = None,
+    json_value: Any | None = None,
 ) -> str:
     """「-40 ~ 125 degC」 「85 %」 「ISO 6892-1」 「있음」. 비어 있으면 빈 글자."""
     suffix = f" {unit}" if unit else ""
@@ -52,4 +54,35 @@ def display_attribute(
         return term_value or ""
     if kind == "method":
         return method_code or ""
+    if kind == "pairs":
+        return _pairs_text(json_value, suffix)
+    if kind == "matrix":
+        rows = json_value if isinstance(json_value, list) else []
+        parts = [
+            f"{clean_label(one)}: {_pairs_text(one.get('entries'), suffix)}"
+            for one in rows
+            if isinstance(one, dict) and _pairs_text(one.get("entries"), suffix)
+        ]
+        return " | ".join(parts)
     return ""
+
+
+def clean_label(row: dict[str, Any]) -> str:
+    return str(row.get("label") or "").strip()
+
+
+def _pairs_text(rows: Any, suffix: str) -> str:
+    """「A등급 4개 · B등급 4개」. **글자를 서버가 만든다** — 화면·MCP·색인 카드가 같은 말을
+    쓰게 하려는 것이고, 찾기도 이 글자를 훑는다."""
+    if not isinstance(rows, list):
+        return ""
+    parts = []
+    for one in rows:
+        if not isinstance(one, dict):
+            continue
+        label = clean_label(one)
+        value = one.get("value")
+        if not label or value is None:
+            continue
+        parts.append(f"{label} {_number(float(value))}{suffix}")
+    return " · ".join(parts)
