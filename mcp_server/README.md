@@ -42,13 +42,13 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 
 ## 도구가 몇 개 실리나
 
-도구 목록은 **매 턴 통째로 실린다** — 지금 71개에 5만 자 남짓이다. 읽기만 쓰는 연결이면
+도구 목록은 **매 턴 통째로 실린다** — 지금 73개에 5만 자 남짓이다. 읽기만 쓰는 연결이면
 
 ```powershell
 .\run_mcp.ps1 -ReadOnly        # 또는 TESTSCOPE_MCP_TOOLS=read
 ```
 
-로 쓰기 도구 스물아홉을 뺀다(42개). 어차피 범위가 없으면 403 이라, 보여 주면
+로 쓰기 도구 서른하나를 뺀다(42개). 어차피 범위가 없으면 403 이라, 보여 주면
 고르는 일만 어려워진다.
 
 무엇부터 부를지는 서버 안내문의 **길잡이 표**(「무엇을 물었나 -> 첫 도구」)가 말한다 —
@@ -72,8 +72,9 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 교정       get_calibrations · list_calibrations_due · add_calibration
 규격       list_methods · get_method · create_method · set_requirement · import_requirements
 물성 연결   search_properties · suggest_property_link(제안만) · confirm_property_links
-기준정보    list_reference · list_axes · list_terms · create_term · add_term_alias · merge_terms
-            create_axis · create_condition_key      ← 축을 새로 (드물다. 먼저 목록을 본다)
+기준정보    list_reference · list_axes · list_terms
+            create_term · update_term · add_term_alias · merge_terms
+            create_axis · update_axis · create_condition_key   ← 축. 드물다, 먼저 목록을 본다
 신뢰성 시험  list_reliability_tests · create_reliability_test · update_reliability_test
             test_capability                        ← 이 시험, 어느 장비로 돌리나
 속성       list_attribute_definitions · create_attribute_definition

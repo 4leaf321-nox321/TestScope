@@ -1844,6 +1844,7 @@ async def create_axis(
     description: str | None = None,
     entry_policy: str = "open",
     parent_slug: str | None = None,
+    attribute_schema: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """기준정보 **축**을 새로 세운다. 시스템 관리자. **웬만하면 만들지 마라.**
 
@@ -1858,6 +1859,11 @@ async def create_axis(
 
     `domain` 은 화면이 묶는 자리 — `equipment` · `catalog` · `method` · `common`.
     `entry_policy` 가 `closed` 면 값도 시스템 관리자만 더한다.
+
+    `attribute_schema` 는 **이 축의 값이 갖는 칸**이다(물성 값의 기호·단위처럼):
+    `[{"key": "symbol", "label": "기호", "kind": "text"}]` — `kind` 는 `text`·`number`·`list`.
+    **축에 한 번 적는다** — 값마다 물으면 같은 답을 수백 번 저장하는 셈이다. 나중에 고치는
+    것은 `update_axis`.
 
     **이 설치에만 산다.** 설치 시드(`ensure_reference_data`)가 심는 축이 정본이라, 여기서
     만든 축은 새로 설치하는 서버에 안 생긴다. 계속 쓸 축이면 사람이 시드에 더해야 한다고
@@ -1874,8 +1880,41 @@ async def create_axis(
             "description": description,
             "entry_policy": entry_policy,
             "parent_slug": parent_slug,
+            "attribute_schema": attribute_schema or [],
         },
     )
+
+
+@writes
+async def update_axis(
+    ctx: Context,
+    axis: str,
+    label: str | None = None,
+    description: str | None = None,
+    entry_policy: str | None = None,
+    attribute_schema: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """축의 **이름·설명·정책·값이 갖는 칸**을 고친다. 시스템 관리자. 안 보낸 것은 그대로.
+
+    **`slug` 와 소속은 못 바꾼다** — 코드가 그 이름을 걸고 있다.
+
+    `attribute_schema` 는 **통째로 갈린다.** 칸 하나를 더하려면 `list_axes` 로 지금 있는
+    것을 받아 **전부** 보낸다 — 빠뜨린 칸은 정의에서 사라지고, 그러면 화면이 그 칸을 안
+    그린다(값에 적힌 내용은 남는다. 「그 밖의 속성」 으로 보인다).
+
+    `entry_policy` 를 `open` -> `closed` 로 잠그는 일은 실제로 있다(값이 흩어지기 시작한
+    축). 반대로 여는 것도 되지만, 검색의 첫 축이면 오타가 값이 된다.
+    """
+    body: dict[str, Any] = {}
+    if label is not None:
+        body["label"] = label
+    if description is not None:
+        body["description"] = description
+    if entry_policy is not None:
+        body["entry_policy"] = entry_policy
+    if attribute_schema is not None:
+        body["attribute_schema"] = attribute_schema
+    return await _send(ctx, "PATCH", f"/vocabularies/{axis}", body)
 
 
 @writes
@@ -1936,6 +1975,7 @@ async def create_term(
     value: str,
     code: str | None = None,
     parent_term_id: str | None = None,
+    attributes: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """기준정보 값 하나를 더한다. **만들기 전에 반드시 찾는다.**
 
@@ -1953,13 +1993,54 @@ async def create_term(
 
     `entry_policy` 가 `closed` 인 축(제정기관·조건 …)은 시스템 관리자만 더할 수 있다 —
     거절되면 사람에게 넘긴다.
+
+    `attributes` 는 **그 축이 정한 칸**을 채운다(`list_axes` 의 `attribute_schema` 가
+    무슨 칸인지 말한다): 물성이면 `{"symbol": "σ", "unit": "MPa"}`. 스키마에 없는 키를
+    넣어도 지워지지는 않지만 화면이 「그 밖의 속성」 으로 밀어 둔다 — **칸 이름을 지어내지
+    말고 스키마를 먼저 봐라.** 모르는 칸은 비운다.
     """
     return await _send(
         ctx,
         "POST",
         f"/vocabularies/{axis}/terms",
-        {"value": value, "code": code, "parent_term_id": parent_term_id},
+        {
+            "value": value,
+            "code": code,
+            "parent_term_id": parent_term_id,
+            "attributes": attributes or {},
+        },
     )
+
+
+@writes
+async def update_term(
+    ctx: Context,
+    term_id: str,
+    value: str | None = None,
+    code: str | None = None,
+    status: str | None = None,
+    attributes: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """기준정보 값을 고친다. **안 보낸 칸은 그대로.**
+
+    **이름을 바꾸는 것은 그 값을 쓰는 모든 화면의 글자를 바꾸는 일이다.** 오타를 고치는
+    것이라면 맞다. 뜻이 다른 값이면 고치지 말고 새로 만들어라 — 「인장」 을 「고온 인장」 으로
+    고치면 그 값을 쓰던 장비 전부가 조용히 다른 시험을 하는 장비가 된다.
+
+    `attributes` 는 **보낸 키만 바뀐다**(축의 `attribute_schema` 가 무슨 칸인지 말한다).
+    `status` 는 `active` · `deprecated` — **폐기해도 지워지지 않는다.** 쓰던 곳은 그대로
+    남고 새로 고를 때만 안 보인다. 값을 합치려면 `merge_terms` 다.
+    """
+    body: dict[str, Any] = {}
+    if value is not None:
+        body["value"] = value
+    if code is not None:
+        body["code"] = code
+    if status is not None:
+        body["status"] = status
+    if attributes is not None:
+        body["attributes"] = attributes
+    return await _send(ctx, "PATCH", f"/vocabularies/terms/{term_id}", body)
 
 
 @writes

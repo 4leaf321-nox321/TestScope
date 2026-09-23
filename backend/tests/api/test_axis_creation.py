@@ -146,3 +146,69 @@ def test_자격_없이는_축을_못_만든다(client: TestClient) -> None:
         json={"key": f"no_auth_{tag}", "label": "권한 없음"},
     )
     assert condition.status_code == 401, condition.text
+
+
+def test_축이_정한_칸을_값이_채우고_나중에_고친다(
+    client: TestClient, admin: Signed
+) -> None:
+    """**축에 한 번 적고, 값이 채운다.** 칸 정의를 값마다 물으면 같은 답을 수백 번 저장한다.
+
+    칸 정의가 없으면 값의 `attributes` 는 자유 JSON 이라 화면이 무엇을 그릴지 모른다 —
+    그때 편집 화면은 JSON 을 통째로 보이는 수밖에 없고, 그러면 아무도 안 고친다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    slug = f"defect_{tag}"
+    made = client.post(
+        "/api/vocabularies",
+        json={
+            "slug": slug,
+            "label": f"불량 유형-{tag}",
+            "attribute_schema": [
+                {"key": "symbol", "label": "기호", "kind": "text"},
+                {"key": "severity", "label": "심각도", "kind": "number"},
+            ],
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    assert [one["key"] for one in made.json()["attribute_schema"]] == ["symbol", "severity"]
+
+    # 값이 그 칸을 채운다.
+    term = client.post(
+        f"/api/vocabularies/{slug}/terms",
+        json={"value": f"크랙-{tag}", "attributes": {"symbol": "CR", "severity": 3}},
+        headers=admin.headers,
+    )
+    assert term.status_code == 201, term.text
+    assert term.json()["attributes"] == {"symbol": "CR", "severity": 3}
+
+    # 값의 칸을 고친다 — **보낸 것만 바뀐다.**
+    fixed = client.patch(
+        f"/api/vocabularies/terms/{term.json()['id']}",
+        json={"attributes": {"symbol": "CRK", "severity": 5}},
+        headers=admin.headers,
+    )
+    assert fixed.status_code == 200, fixed.text
+    assert fixed.json()["attributes"]["symbol"] == "CRK"
+
+    # 축의 칸 정의를 나중에 더한다 — **통째로 갈리므로 있던 것을 같이 보낸다.**
+    grown = client.patch(
+        f"/api/vocabularies/{slug}",
+        json={
+            "attribute_schema": [
+                {"key": "symbol", "label": "기호", "kind": "text"},
+                {"key": "severity", "label": "심각도", "kind": "number"},
+                {"key": "causes", "label": "원인", "kind": "list"},
+            ]
+        },
+        headers=admin.headers,
+    )
+    assert grown.status_code == 200, grown.text
+    assert [one["key"] for one in grown.json()["attribute_schema"]] == [
+        "symbol",
+        "severity",
+        "causes",
+    ]
+    # 이미 적힌 값은 그대로다 — 칸이 늘어도 지워지지 않는다.
+    again = client.get(f"/api/vocabularies/{slug}/terms", headers=admin.headers).json()
+    assert again[0]["attributes"]["symbol"] == "CRK"
