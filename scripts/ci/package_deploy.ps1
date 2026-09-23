@@ -150,6 +150,11 @@ if (Test-Path .\mcp_server\server.py) {
     Write-Host 'MCP 서버 포함'
     New-Item -ItemType Directory -Force -Path .\deploy\mcp_server\guide | Out-Null
     Copy-Item -Force .\mcp_server\server.py .\deploy\mcp_server\server.py
+    # **server.py 가 import 하는 제 옆 모듈도 담는다.** 빠지면 서비스가 ImportError 로
+    # 즉시 죽고, WinSW 가 되살리다 무한 재시작에 빠진다 — 그 증상은 로그를 열기 전까지
+    # 「서비스가 STOPPED」 로만 보인다(운영 실측 2026-09-23, v0.15.0~v0.17.0 세 판이 그랬다).
+    # 새 모듈을 더하면 여기에도 더한다 — 잊으면 test_mcp_tools.py 가 잡는다.
+    Copy-Item -Force .\mcp_server\calltrace.py .\deploy\mcp_server\calltrace.py
     Copy-Item -Force .\mcp_server\requirements.txt .\deploy\mcp_server\requirements.txt
     Copy-Item -Force .\mcp_server\README.md .\deploy\mcp_server\README.md
     Copy-Item -Force .\mcp_server\guide\GUIDE.md .\deploy\mcp_server\guide\GUIDE.md

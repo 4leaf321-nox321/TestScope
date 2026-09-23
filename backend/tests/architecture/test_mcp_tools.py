@@ -320,3 +320,36 @@ def test_자취_채점은_표식으로_자르고_다섯_항목을_센다() -> No
     loose = score.score(unmarked, questions, gap_seconds=90)
     assert loose["marked"] is False and loose["answered"] == 2
     assert "덜 정확" in score.render(loose)
+
+
+def test_server_가_import_하는_옆_모듈은_배포_패키지에도_담긴다() -> None:
+    """**빠지면 운영에서만, 그것도 조용히 터진다.**
+
+    `server.py` 가 `import calltrace` 를 하는데 `package_deploy.ps1` 이 그 파일을 안 담았다.
+    개발에서는 폴더에 있으니 멀쩡하고, CI 의 왕복 시험도 저장소에서 도니까 멀쩡하다. 운영에만
+    안 들어가서 서비스가 ImportError 로 즉시 죽고, WinSW 가 되살리다 무한 재시작에 빠졌다 —
+    화면에 보이는 것은 「서비스 STOPPED」 뿐이라 로그를 열기 전에는 원인을 알 수 없었다
+    (v0.15.0 부터 세 판이 그렇게 나갔다, 2026-09-23 실측).
+
+    그래서 **여기서 잡는다** — server.py 가 제 옆의 .py 를 import 하면 패키징 스크립트가
+    그것을 담는지 본다.
+    """
+    root = SERVER.parent
+    packager = SERVER.resolve().parents[1] / "scripts" / "ci" / "package_deploy.ps1"
+    script = packager.read_text(encoding="utf-8")
+
+    imported: set[str] = set()
+    for node in ast.walk(ast.parse(SERVER.read_text(encoding="utf-8"))):
+        if isinstance(node, ast.Import):
+            imported.update(alias.name.split(".")[0] for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
+            imported.add(node.module.split(".")[0])
+
+    # 옆에 같은 이름의 .py 가 있으면 그것은 이 저장소의 모듈이다(설치된 패키지가 아니라).
+    local = sorted(name for name in imported if (root / f"{name}.py").exists())
+    assert local, "server.py 가 옆 모듈을 하나도 안 쓴다면 이 시험의 전제가 바뀐 것이다"
+    for name in local:
+        assert f"mcp_server\{name}.py" in script, (
+            f"server.py 가 {name} 을 import 하는데 package_deploy.ps1 이 안 담습니다 —"
+            f" 담지 않으면 운영 MCP 서비스가 ImportError 로 죽습니다."
+        )
