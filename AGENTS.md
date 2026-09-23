@@ -556,6 +556,11 @@ cd backend
 cd ..\frontend ; npm run build ; npm test ; npm run lint
 ```
 
+**`npx tsc --noEmit` 로 대신하지 마라 — 아무것도 안 본다.** `frontend/tsconfig.json` 은
+`"files": []` 에 참조만 둔 솔루션 파일이라, 그것을 곧장 부르면 검사할 파일이 0개다. 타입은
+`npm run build`(`tsc -b && vite build`)가 본다. 실측(2026-09-23): 그렇게 「통과」 를 보고
+푸시했다가 CI 에서 타입 오류 일곱으로 떨어졌다.
+
 `alembic check` 가 여기 있는 이유: **시험은 모델로 표를 만들기 때문에**
 마이그레이션이 모델과 어긋난 것을 못 잡는다 — 그 어긋남은 배포하고 나서 500 으로
 드러난다.

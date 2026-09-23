@@ -94,7 +94,8 @@ export function toStandardPayload(
   for (const definition of definitions) {
     const value = values[definition.id]
     if (!value) continue
-    const base = { definition_id: definition.id, new_kind: definition.kind }
+    // `unit` 은 생성 타입에서 필수 칸이다 — 안 쓰는 종류도 빈 값으로 채운다.
+    const base = { definition_id: definition.id, new_kind: definition.kind, unit: '' }
     if (definition.kind === 'number' && value.numValue !== null) {
       out.push({ ...base, num_value: value.numValue, unit: definition.unit })
     } else if (
@@ -599,19 +600,13 @@ function MethodField({
   value: string | null
   onChange: (next: string | null) => void
 }) {
-  const [typed, setTyped] = useState('')
-  const [query, setQuery] = useState('')
-  useEffect(() => {
-    const timer = setTimeout(() => setQuery(typed.trim()), 250)
-    return () => clearTimeout(timer)
-  }, [typed])
-  const found = useResource(
-    () => methodApi.list({ q: query || undefined, limit: 50 }),
-    [query],
-  )
+  // 목록을 한 번 받고 **피커가 제자리에서 거른다** — 글자마다 서버를 부르면 고르는 손이
+  // 결과가 요동치는 사이에 미끄러진다(SearchablePicker 는 제 안에서 거르는 칸을 갖는다).
+  const found = useResource(() => methodApi.list({}), [])
   const options = (found.data?.items ?? []).map((one) => ({
     id: one.id,
     label: `${one.code} ${one.title}`.trim(),
+    detail: one.edition ?? null,
   }))
   return (
     <SearchablePicker
@@ -619,8 +614,8 @@ function MethodField({
       options={options}
       value={value ?? ''}
       onChange={(next) => onChange(next || null)}
-      onSearch={setTyped}
       placeholder="규격 고르기"
+      searchPlaceholder="규격 번호의 일부 (ISO 6892)"
       detailTitle="규격"
       detailHint="규격 사전에서 고릅니다 — 글자로 적으면 같은 규격이 둘로 갈립니다."
     />
