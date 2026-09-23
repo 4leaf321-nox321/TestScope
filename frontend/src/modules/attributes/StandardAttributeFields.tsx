@@ -135,6 +135,63 @@ const LONG = new Set([
   'reliability_equipment_note',
 ])
 
+/**
+ * 칸을 **갈래로 묶는다.** 스물을 한 줄로 세우면 사람은 스크롤만 하다 끝나고, 무엇이 무엇과
+ * 한 묶음인지도 안 보인다. 묶음은 카드로 서서 경계가 눈에 띈다.
+ *
+ * 여기 없는 key 는 마지막 묶음으로 간다 — 다른 대상(보유 장비·계열)이나 나중에 는 칸도
+ * 자리를 잃지 않는다.
+ */
+const SECTIONS: { title: string; hint?: string; keys: string[] }[] = [
+  {
+    title: '무엇을 왜',
+    keys: ['reliability_type', 'reliability_product_group'],
+  },
+  {
+    title: '근거',
+    hint: '공인 규격은 사전에서 고르고, 사내 문서는 번호를 적습니다.',
+    keys: ['reliability_reference_method', 'reliability_spec_document'],
+  },
+  {
+    title: '시험 조건',
+    hint: '여기 적은 수치가 그대로 「이 시험 돌릴 수 있는 장비」 판정이 됩니다. 「기타 조건」 은 글이라 판정에 안 쓰입니다.',
+    keys: [
+      'reliability_temperature',
+      'reliability_humidity',
+      'reliability_frequency',
+      'reliability_acceleration',
+      'reliability_other_conditions',
+    ],
+  },
+  {
+    title: '대상과 수량',
+    keys: [
+      'reliability_target',
+      'reliability_sample_count',
+      'reliability_equipment_note',
+      'reliability_grade_counts',
+      'reliability_stage_counts',
+      'reliability_spec_matrix',
+    ],
+  },
+  {
+    title: '방법과 판정',
+    keys: [
+      'reliability_procedure',
+      'reliability_method',
+      'reliability_criteria',
+      'reliability_caution',
+    ],
+  },
+]
+
+/** 한 줄을 통째로 쓰는 종류 — 글상자와 짝 목록은 좁은 칸에 못 담는다. */
+function isWide(definition: AttributeDefinition): boolean {
+  return (
+    definition.kind === 'pairs' || definition.kind === 'matrix' || LONG.has(definition.key)
+  )
+}
+
 export function StandardAttributeFields({
   target,
   values,
@@ -159,129 +216,179 @@ export function StandardAttributeFields({
   const set = (id: string, patch: Partial<StandardValue>) =>
     onChange({ ...values, [id]: { ...(values[id] ?? empty()), ...patch } })
 
+  // 갈래마다 제 칸을 모은다. 표에 없는 key 는 마지막 갈래로 — 나중에 는 칸도 자리를 잃지 않는다.
+  const grouped = useMemo(() => {
+    const placed = new Set<string>()
+    const out = SECTIONS.map((section) => ({
+      ...section,
+      rows: section.keys
+        .map((key) => definitions.find((one) => one.key === key))
+        .filter((one): one is AttributeDefinition => {
+          if (!one) return false
+          placed.add(one.key)
+          return true
+        }),
+    })).filter((section) => section.rows.length > 0)
+    const rest = definitions.filter((one) => !placed.has(one.key))
+    if (rest.length > 0)
+      out.push({ title: '그 밖의 칸', hint: undefined, keys: [], rows: rest })
+    return out
+  }, [definitions])
+
   if (definitions.length === 0) return null
 
   return (
     <>
-      {definitions.map((definition) => {
-        const value = values[definition.id] ?? empty()
-        const id = `attr-${definition.id}`
-        return (
-          <div key={definition.id} className="space-y-2">
-            <Label htmlFor={id}>
-              {definition.label}
-              {definition.unit && (
-                <span className="text-muted-foreground ml-1 text-xs">({definition.unit})</span>
-              )}
-            </Label>
-
-            {definition.kind === 'condition' || definition.kind === 'range' ? (
-              // **구간은 두 칸이다.** 「-40 ~ 85」 를 한 칸에 받으면 글자가 되고,
-              // 글자가 된 조건은 장비 판정에 안 실린다.
-              <div className="flex items-center gap-2">
-                <Input
-                  id={id}
-                  type="number"
-                  value={value.numMin ?? ''}
-                  onChange={(event) =>
-                    set(definition.id, {
-                      numMin: event.target.value === '' ? null : Number(event.target.value),
-                    })
+      {grouped.map((section) => (
+        <fieldset key={section.title} className="rounded-lg border p-4">
+          <legend className="px-1.5 text-sm font-medium">{section.title}</legend>
+          {section.hint && (
+            <p className="text-muted-foreground mb-3 text-xs">{section.hint}</p>
+          )}
+          {/* **가로로 다 벌리지 않는다.** 창이 넓어도 입력 칸이 화면을 가로지르면 라벨과
+              칸이 멀어져 무엇을 적는 자리인지 안 보인다 — 열을 늘려 칸 폭을 잡아 둔다. */}
+          <div className="grid gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+            {section.rows.map((definition) => {
+              const value = values[definition.id] ?? empty()
+              const id = `attr-${definition.id}`
+              return (
+                <div
+                  key={definition.id}
+                  className={
+                    isWide(definition) ? 'space-y-2 md:col-span-2 xl:col-span-3' : 'space-y-2'
                   }
-                  placeholder="최소"
-                  className="w-32"
-                />
-                <span className="text-muted-foreground">~</span>
-                <Input
-                  type="number"
-                  value={value.numMax ?? ''}
-                  onChange={(event) =>
-                    set(definition.id, {
-                      numMax: event.target.value === '' ? null : Number(event.target.value),
-                    })
-                  }
-                  placeholder="최대"
-                  aria-label={`${definition.label} 최대`}
-                  className="w-32"
-                />
-                <span className="text-muted-foreground text-sm">{definition.unit}</span>
-              </div>
-            ) : definition.kind === 'number' ? (
-              <Input
-                id={id}
-                type="number"
-                value={value.numValue ?? ''}
-                onChange={(event) =>
-                  set(definition.id, {
-                    numValue: event.target.value === '' ? null : Number(event.target.value),
-                  })
-                }
-                className="w-40"
-              />
-            ) : definition.kind === 'term' ? (
-              <TermField
-                id={id}
-                definition={definition}
-                value={value.termId}
-                onChange={(termId) => set(definition.id, { termId })}
-              />
-            ) : definition.kind === 'method' ? (
-              <MethodField
-                id={id}
-                value={value.methodId}
-                onChange={(methodId) => set(definition.id, { methodId })}
-              />
-            ) : definition.kind === 'choice' ? (
-              <Select
-                value={value.textValue || undefined}
-                onValueChange={(next) => set(definition.id, { textValue: next })}
-              >
-                <SelectTrigger id={id}>
-                  <SelectValue placeholder="고르기" />
-                </SelectTrigger>
-                <SelectContent>
-                  {(definition.choices ?? []).map((one) => (
-                    <SelectItem key={one} value={one}>
-                      {one}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            ) : definition.kind === 'pairs' ? (
-              <PairsEditor
-                rows={value.pairs}
-                unit={definition.unit}
-                onChange={(pairs) => set(definition.id, { pairs })}
-              />
-            ) : definition.kind === 'matrix' ? (
-              <MatrixEditor
-                rows={value.matrix}
-                unit={definition.unit}
-                onChange={(matrix) => set(definition.id, { matrix })}
-              />
-            ) : LONG.has(definition.key) ? (
-              <Textarea
-                id={id}
-                value={value.textValue}
-                onChange={(event) => set(definition.id, { textValue: event.target.value })}
-                rows={3}
-                maxLength={4000}
-              />
-            ) : (
-              <Input
-                id={id}
-                value={value.textValue}
-                onChange={(event) => set(definition.id, { textValue: event.target.value })}
-                maxLength={4000}
-              />
-            )}
+                >
+                  <Label htmlFor={id}>
+                    {definition.label}
+                    {definition.unit && (
+                      <span className="text-muted-foreground ml-1 text-xs">
+                        ({definition.unit})
+                      </span>
+                    )}
+                  </Label>
 
-            {definition.help && (
-              <p className="text-muted-foreground text-xs">{definition.help}</p>
-            )}
+                  {definition.kind === 'condition' || definition.kind === 'range' ? (
+                    // **구간은 두 칸이다.** 「-40 ~ 85」 를 한 칸에 받으면 글자가 되고,
+                    // 글자가 된 조건은 장비 판정에 안 실린다.
+                    <div className="flex items-center gap-2">
+                      <Input
+                        id={id}
+                        type="number"
+                        value={value.numMin ?? ''}
+                        onChange={(event) =>
+                          set(definition.id, {
+                            numMin:
+                              event.target.value === '' ? null : Number(event.target.value),
+                          })
+                        }
+                        placeholder="최소"
+                        className="w-32"
+                      />
+                      <span className="text-muted-foreground">~</span>
+                      <Input
+                        type="number"
+                        value={value.numMax ?? ''}
+                        onChange={(event) =>
+                          set(definition.id, {
+                            numMax:
+                              event.target.value === '' ? null : Number(event.target.value),
+                          })
+                        }
+                        placeholder="최대"
+                        aria-label={`${definition.label} 최대`}
+                        className="w-32"
+                      />
+                      <span className="text-muted-foreground text-sm">{definition.unit}</span>
+                    </div>
+                  ) : definition.kind === 'number' ? (
+                    <Input
+                      id={id}
+                      type="number"
+                      value={value.numValue ?? ''}
+                      onChange={(event) =>
+                        set(definition.id, {
+                          numValue:
+                            event.target.value === '' ? null : Number(event.target.value),
+                        })
+                      }
+                      className="w-40"
+                    />
+                  ) : definition.kind === 'term' ? (
+                    <TermField
+                      id={id}
+                      definition={definition}
+                      value={value.termId}
+                      onChange={(termId) => set(definition.id, { termId })}
+                    />
+                  ) : definition.kind === 'method' ? (
+                    <MethodField
+                      id={id}
+                      value={value.methodId}
+                      onChange={(methodId) => set(definition.id, { methodId })}
+                    />
+                  ) : definition.kind === 'choice' ? (
+                    <Select
+                      value={value.textValue || undefined}
+                      onValueChange={(next) => set(definition.id, { textValue: next })}
+                    >
+                      <SelectTrigger id={id}>
+                        <SelectValue placeholder="고르기" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {(definition.choices ?? []).map((one) => (
+                          <SelectItem key={one} value={one}>
+                            {one}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  ) : definition.kind === 'pairs' ? (
+                    <div className="max-w-xl">
+                      <PairsEditor
+                        rows={value.pairs}
+                        unit={definition.unit}
+                        onChange={(pairs) => set(definition.id, { pairs })}
+                      />
+                    </div>
+                  ) : definition.kind === 'matrix' ? (
+                    <div className="max-w-2xl">
+                      <MatrixEditor
+                        rows={value.matrix}
+                        unit={definition.unit}
+                        onChange={(matrix) => set(definition.id, { matrix })}
+                      />
+                    </div>
+                  ) : LONG.has(definition.key) ? (
+                    <Textarea
+                      className="max-w-3xl"
+                      id={id}
+                      value={value.textValue}
+                      onChange={(event) =>
+                        set(definition.id, { textValue: event.target.value })
+                      }
+                      rows={3}
+                      maxLength={4000}
+                    />
+                  ) : (
+                    <Input
+                      id={id}
+                      value={value.textValue}
+                      onChange={(event) =>
+                        set(definition.id, { textValue: event.target.value })
+                      }
+                      maxLength={4000}
+                    />
+                  )}
+
+                  {definition.help && (
+                    <p className="text-muted-foreground text-xs">{definition.help}</p>
+                  )}
+                </div>
+              )
+            })}
           </div>
-        )
-      })}
+        </fieldset>
+      ))}
     </>
   )
 }

@@ -136,7 +136,7 @@ export function ReliabilityTestDialog({
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && !busy && onClose()}>
-      <DialogContent className="max-h-[85vh] w-[80vw] overflow-y-auto sm:max-w-[80vw]">
+      <DialogContent className="max-h-[85vh] w-[80vw] overflow-y-auto sm:max-w-[80vw] lg:max-w-6xl">
         <form onSubmit={submit} className="space-y-4">
           <DialogHeader>
             <DialogTitle>{editing ? '신뢰성 시험 수정' : '신뢰성 시험 등록'}</DialogTitle>
@@ -146,32 +146,40 @@ export function ReliabilityTestDialog({
             </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-2">
-            <Label htmlFor="rt-name">이름</Label>
-            <Input
-              id="rt-name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder="고온고습 1000h"
-              required
-              maxLength={200}
-            />
-          </div>
+          <fieldset className="rounded-lg border p-4">
+            <legend className="px-1.5 text-sm font-medium">이름과 목적</legend>
+            <div className="grid gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="space-y-2">
+                <Label htmlFor="rt-name">이름</Label>
+                <Input
+                  id="rt-name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="고온고습 1000h"
+                  required
+                  maxLength={200}
+                />
+              </div>
+              <div className="space-y-2 md:col-span-2 xl:col-span-3">
+                <Label htmlFor="rt-purpose">목적</Label>
+                <Textarea
+                  id="rt-purpose"
+                  className="max-w-3xl"
+                  value={purpose}
+                  onChange={(event) => setPurpose(event.target.value)}
+                  placeholder="무엇을 확인하는 시험인지. 옆 부서 사람이 이름만 보고는 모릅니다."
+                  rows={3}
+                  maxLength={4000}
+                />
+              </div>
+            </div>
+          </fieldset>
 
-          <div className="space-y-2">
-            <Label htmlFor="rt-purpose">목적</Label>
-            <Textarea
-              id="rt-purpose"
-              value={purpose}
-              onChange={(event) => setPurpose(event.target.value)}
-              placeholder="무엇을 확인하는 시험인지. 옆 부서 사람이 이름만 보고는 모릅니다."
-              rows={3}
-              maxLength={4000}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="rt-item">쓰는 시험 항목</Label>
+          <fieldset className="max-w-2xl space-y-2 rounded-lg border p-4">
+            <legend className="px-1.5 text-sm font-medium">쓰는 시험 항목</legend>
+            <Label htmlFor="rt-item" className="sr-only">
+              쓰는 시험 항목
+            </Label>
             {termIds.length > 0 && (
               <ul className="flex flex-wrap gap-1">
                 {termIds.map((id) => {
@@ -214,7 +222,7 @@ export function ReliabilityTestDialog({
             <p className="text-muted-foreground text-xs">
               비워 둘 수 있습니다 — 장비 없이 하는 시험이거나 아직 안 정한 경우.
             </p>
-          </div>
+          </fieldset>
 
           {/* 사내 시험 카드의 칸들 — 이름·목적과 나란히 선다. */}
           <StandardAttributeFields
@@ -224,8 +232,8 @@ export function ReliabilityTestDialog({
             onLoaded={setStandardDefs}
           />
 
-          <div className="space-y-2 border-t pt-4">
-            <Label>그 밖에 적을 것</Label>
+          <fieldset className="rounded-lg border p-4">
+            <legend className="px-1.5 text-sm font-medium">그 밖에 적을 것</legend>
             <p className="text-muted-foreground text-xs">
               위 칸으로 안 잡히는 것만. 여기서 새로 적은 이름은 **초안**으로 남고, 관리자가
               정식으로 올리면 그때부터 모두의 칸이 됩니다.
@@ -235,7 +243,7 @@ export function ReliabilityTestDialog({
               rows={attributes}
               onChange={setAttributes}
             />
-          </div>
+          </fieldset>
 
           <ErrorNotice error={error ?? catalog.error} />
 

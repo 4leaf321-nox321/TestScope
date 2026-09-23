@@ -65,7 +65,10 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  /* **입력 칸의 테두리는 경계선보다 진하다.** 둘 다 0.922 였더니 흰 배경에서 칸이
+     안 보였고(2026-09-23), 사람은 어디를 눌러야 적히는지 몰라 라벨을 눌렀다. 경계선
+     (--border)은 그대로 둔다 — 카드가 굵어지면 화면이 시끄러워진다. */
+  --input: oklch(0.86 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -100,7 +103,7 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --input: oklch(1 0 0 / 24%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
