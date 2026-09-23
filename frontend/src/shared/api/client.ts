@@ -216,6 +216,21 @@ export async function downloadFile(path: string, filename: string): Promise<void
   }
 }
 
+/**
+ * 그림을 화면에 그릴 주소. **`<img src>` 에 API 주소를 그대로 못 쓴다** —
+ * 위의 `downloadFile` 과 같은 이유다: 토큰이 메모리에만 있어 브라우저가 스스로 여는
+ * 주소에는 안 실리고, 그러면 401 이 나는데 그 오류는 화면에 아무 표시도 안 남긴다
+ * (사용자는 그냥 깨진 그림을 본다).
+ *
+ * 그래서 자격을 실어 받아 온 뒤 blob 주소를 만든다. **쓰고 나면 돌려줘야 한다** —
+ * 부르는 쪽이 `URL.revokeObjectURL` 을 하지 않으면 그 탭이 살아 있는 동안 메모리에 남는다.
+ */
+export async function fetchBlobUrl(path: string): Promise<string> {
+  const response = await send(path)
+  if (!response.ok) throw await parseError(response)
+  return URL.createObjectURL(await response.blob())
+}
+
 export const api = {
   get: <T>(path: string) => request<T>(path),
   post: <T>(path: string, body?: unknown) =>
@@ -230,4 +245,8 @@ export const api = {
       method: 'DELETE',
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     }),
+  /** 파일 올리기. **Content-Type 을 우리가 정하지 않는다** — 브라우저가 multipart
+   *  경계 문자열과 함께 넣는다. 손으로 적으면 서버가 본문을 못 가른다. */
+  upload: <T>(path: string, form: FormData) =>
+    request<T>(path, { method: 'POST', body: form }),
 }

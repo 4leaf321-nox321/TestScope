@@ -46,6 +46,8 @@ import {
 } from '@/modules/attributes/StandardAttributeFields'
 import type { StandardValue } from '@/modules/attributes/StandardAttributeFields'
 import type { AttributeDefinition } from '@/modules/attributes/api'
+import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
+import { attachmentApi } from '@/modules/attachments/api'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 import { testItemCatalogApi } from '@/modules/test_items/api'
@@ -75,6 +77,11 @@ export function ReliabilityTestDialog({
   /** 정식 칸의 값과 그 정의 — 정의는 칸을 그린 쪽이 알려 준다(보낼 때 종류가 필요하다). */
   const [standard, setStandard] = useState<Record<string, StandardValue>>({})
   const [standardDefs, setStandardDefs] = useState<AttributeDefinition[]>([])
+  // 그림은 **저장된 시험에만** 붙는다 — 대상 id 가 있어야 붙일 자리가 정해진다.
+  const shots = useResource(
+    () => (editing ? attachmentApi.list('reliability_test', editing.id) : Promise.resolve([])),
+    [editing?.id, open],
+  )
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
 
@@ -230,7 +237,28 @@ export function ReliabilityTestDialog({
             values={standard}
             onChange={setStandard}
             onLoaded={setStandardDefs}
+            attachments={{
+              rows: shots.data ?? [],
+              canEdit: Boolean(editing),
+              objectId: editing?.id ?? null,
+              onChanged: () => shots.reload(),
+            }}
           />
+
+          <fieldset className="rounded-lg border p-4">
+            <legend className="px-1.5 text-sm font-medium">그림</legend>
+            <p className="text-muted-foreground mb-3 text-xs">
+              **어느 칸에도 안 붙는 그림**이 여기 섭니다(부록·전경 사진). 절차나 판정 기준에
+              붙는 그림은 그 칸 아래에서 넣으세요.
+            </p>
+            <AttachmentStrip
+              target="reliability_test"
+              objectId={editing?.id ?? null}
+              rows={(shots.data ?? []).filter((one) => one.definition_id === null)}
+              canEdit
+              onChanged={() => shots.reload()}
+            />
+          </fieldset>
 
           <fieldset className="rounded-lg border p-4">
             <legend className="px-1.5 text-sm font-medium">그 밖에 적을 것</legend>

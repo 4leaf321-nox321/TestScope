@@ -53,6 +53,9 @@ _WRITE_SCOPES: tuple[tuple[str, str], ...] = (
     # 부서가 등록하는 시험 절차 — 장비와 같은 「부서 것」 이라 같은 범위다.
     ("/api/reliability-tests", "equipment:write"),
     ("/api/attribute-definitions", "catalog:write"),
+    # 첨부는 **붙는 대상의 것**이다 — 지금은 신뢰성 시험뿐이라 그 범위를 쓴다.
+    # 대상이 늘면(장비 사진·교정 성적서) 경로를 가르는 것이 아니라 이 한 줄을 다시 본다.
+    ("/api/attachments", "equipment:write"),
 )
 
 _SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})

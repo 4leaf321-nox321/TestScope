@@ -50,7 +50,10 @@ async function draw(props: Record<string, unknown> = {}) {
 }
 
 describe('그래프 캔버스', () => {
-  it('넓게 보기는 **자리를 실제로 바꾼다**', async () => {
+  // **이 줄만 오래 걸린다.** 그림 라이브러리를 lazy 로 받아 오고 그 뒤에 도구 막대가
+  // 서는데, 시험이 늘수록 한 파일에 몰리는 부하 때문에 기본 5초를 넘긴다(2026-09-23 에
+  // 세 번 흔들렸다). 재는 것은 클래스가 바뀌는가이지 얼마나 빠른가가 아니다.
+  it('넓게 보기는 **자리를 실제로 바꾼다**', { timeout: 15_000 }, async () => {
     // `relative` 와 `fixed` 를 함께 두면 Tailwind 가 내보내는 차례(fixed → relative)
     // 때문에 나중 것이 이긴다 — 켜도 제자리에 남고 높이만 사라져 그림이 사라졌다.
     const box = await draw()

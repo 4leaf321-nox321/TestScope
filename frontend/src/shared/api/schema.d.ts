@@ -2354,6 +2354,68 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/attachments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Attachments */
+        get: operations["list_attachments_api_attachments_get"];
+        put?: never;
+        /**
+         * Upload
+         * @description 그림 한 장을 붙인다.
+         *
+         *     **한 번에 한 장이다.** 여러 장을 한 요청에 담으면 열째에서 막혔을 때 앞의 아홉이
+         *     들어갔는지 사람이 알 수 없다 — 화면이 한 장씩 보내고 줄마다 성패를 보인다.
+         */
+        post: operations["upload_api_attachments_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/attachments/{attachment_id}/file": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Download
+         * @description 파일 자체. **보는 것은 대상을 볼 수 있는 누구나** — 그림은 조회하는 사람의 것이다.
+         */
+        get: operations["download_api_attachments__attachment_id__file_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/attachments/{attachment_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Attachment */
+        delete: operations["delete_attachment_api_attachments__attachment_id__delete"];
+        options?: never;
+        head?: never;
+        /** Update Attachment */
+        patch: operations["update_attachment_api_attachments__attachment_id__patch"];
+        trace?: never;
+    };
     "/api/reference/overview": {
         parameters: {
             query?: never;
@@ -2897,6 +2959,54 @@ export interface components {
              */
             role: string;
         };
+        /** AttachmentOut */
+        AttachmentOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Target */
+            target: string;
+            /**
+             * Object Id
+             * Format: uuid
+             */
+            object_id: string;
+            /** Definition Id */
+            definition_id: string | null;
+            /** Definition Label */
+            definition_label: string | null;
+            /** Original Name */
+            original_name: string;
+            /** Caption */
+            caption: string;
+            /** Content Type */
+            content_type: string;
+            /** Bytes */
+            bytes: number;
+            /** Sort Order */
+            sort_order: number;
+            /** Url */
+            url: string;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+        };
+        /**
+         * AttachmentUpdateRequest
+         * @description 설명과 붙는 자리를 고친다. **파일은 안 바꾼다** — 다른 그림이면 새로 붙인다.
+         */
+        AttachmentUpdateRequest: {
+            /** Caption */
+            caption?: string | null;
+            /** Definition Id */
+            definition_id?: string | null;
+            /** Sort Order */
+            sort_order?: number | null;
+        };
         /**
          * AttributeDefinitionCreateRequest
          * @description 시스템 관리자가 정식(또는 미리 준비하는 초안) 항목을 만든다.
@@ -3186,6 +3296,25 @@ export interface components {
              * Format: date-time
              */
             created_at: string;
+        };
+        /** Body_upload_api_attachments_post */
+        Body_upload_api_attachments_post: {
+            /** Target */
+            target: string;
+            /**
+             * Object Id
+             * Format: uuid
+             */
+            object_id: string;
+            /** File */
+            file: string;
+            /** Definition Id */
+            definition_id?: string | null;
+            /**
+             * Caption
+             * @default
+             */
+            caption: string;
         };
         /** BrowseOut */
         BrowseOut: {
@@ -11818,6 +11947,166 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AttributeDefinitionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_attachments_api_attachments_get: {
+        parameters: {
+            query: {
+                target: string;
+                object_id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttachmentOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    upload_api_attachments_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["Body_upload_api_attachments_post"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttachmentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    download_api_attachments__attachment_id__file_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                attachment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_attachment_api_attachments__attachment_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                attachment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_attachment_api_attachments__attachment_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                attachment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AttachmentUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttachmentOut"];
                 };
             };
             /** @description Validation Error */

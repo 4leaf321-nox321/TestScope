@@ -10,6 +10,7 @@ from sqlalchemy import Select, func, select, true
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attachments import services as attachments
 from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
@@ -265,14 +266,23 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> ReliabilityTest:
     return row
 
 
+def require_editable(db: Session, user: User, test_id: uuid.UUID) -> None:
+    """이 시험을 고칠 수 있나. **첨부도 같은 물음을 쓴다** — 판정이 두 벌이면
+    「시험은 못 고치는데 그림은 붙는」 사람이 생긴다."""
+    row = get(db, test_id)
+    workspace = db.get(Workspace, row.workspace_id)
+    assert workspace is not None
+    require_manager(db, workspace=workspace, user=user)
+
+
 def update(
     db: Session, user: User, test_id: uuid.UUID, changes: dict[str, Any]
 ) -> ReliabilityTest:
     """`changes` 는 `exclude_unset` 으로 온다 — 안 보낸 칸은 안 건드린다."""
     row = get(db, test_id)
+    require_editable(db, user, test_id)
     workspace = db.get(Workspace, row.workspace_id)
     assert workspace is not None
-    require_manager(db, workspace=workspace, user=user)
 
     if "name" in changes:
         name = str(changes["name"]).strip()
@@ -304,6 +314,9 @@ def delete(db: Session, user: User, test_id: uuid.UUID) -> None:
     workspace = db.get(Workspace, row.workspace_id)
     assert workspace is not None
     require_manager(db, workspace=workspace, user=user)
+    # **그림도 같이 간다.** 시험이 안 보이는데 파일만 남으면 디스크를 먹고, 그것을
+    # 알아챌 자리가 없다. 파일 자체는 다른 시험이 그 그림을 안 쓸 때만 지워진다.
+    removed = attachments.remove_all(db, target="reliability_test", object_id=row.id)
     row.deleted_at = datetime.now(UTC)
     # **반년 뒤에 「그 시험 어디 갔어」 를 묻는다.** 지운 줄은 화면에서 사라지므로 여기 남는다.
     audit.record(
@@ -312,7 +325,10 @@ def delete(db: Session, user: User, test_id: uuid.UUID) -> None:
         actor=user,
         target_table="reliability_tests",
         target_id=row.id,
-        target_label=f"{workspace.name} · {row.name}",
+        # **그림이 몇 장 같이 갔는지 적는다** — 「사진이 없어졌어요」 를 나중에 물을 때
+        # 그것이 이 삭제 때문인지 가릴 자리가 여기뿐이다.
+        target_label=f"{workspace.name} · {row.name}"
+        + (f" (그림 {removed}장 함께 지움)" if removed else ""),
         workspace_id=workspace.id,
     )
     db.commit()

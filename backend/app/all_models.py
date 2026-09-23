@@ -13,6 +13,7 @@ from __future__ import annotations
 from app.database import Base
 from app.jobs.models import Job
 from app.modules.accounts.models import User
+from app.modules.attachments.models import Attachment, StoredFile
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.audit.models import AccessLog, AuditEntry
 from app.modules.auth.models import PersonalAccessToken, RefreshToken
@@ -57,6 +58,7 @@ from app.modules.workspaces.models import Workspace, WorkspaceMember
 
 __all__ = [
     "AccessLog",
+    "Attachment",
     "AttributeDefinition",
     "AttributeValue",
     "AuditEntry",
@@ -91,6 +93,7 @@ __all__ = [
     "SpecDefinitionCategory",
     "SpecGroup",
     "SpecSource",
+    "StoredFile",
     "TestItemConditionKey",
     "TestItemProperty",
     "TestMethod",

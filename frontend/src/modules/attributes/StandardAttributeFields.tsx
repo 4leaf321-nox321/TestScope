@@ -32,6 +32,8 @@ import type {
   AttributeValue,
   AttributeValueIn,
 } from '@/modules/attributes/api'
+import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
+import type { Attachment } from '@/modules/attachments/api'
 import type { MatrixRow, Pair } from '@/modules/attributes/kinds'
 import { MatrixEditor, PairsEditor } from '@/modules/attributes/PairsEditor'
 import { methodApi } from '@/modules/methods/api'
@@ -212,11 +214,20 @@ export function StandardAttributeFields({
   values,
   onChange,
   onLoaded,
+  attachments,
 }: {
   target: AttributeTarget
   values: Record<string, StandardValue>
   onChange: (next: Record<string, StandardValue>) => void
   onLoaded?: (definitions: AttributeDefinition[]) => void
+  /** 칸마다 그림을 그릴 때. **어느 칸에 붙는지가 문서마다 다르므로** 칸이 아니라
+   *  그림이 자리를 안다 — 여기서는 그 칸의 것만 골라 준다. */
+  attachments?: {
+    rows: Attachment[]
+    canEdit: boolean
+    objectId: string | null
+    onChanged: () => void
+  }
 }) {
   const listed = useResource(() => attributeApi.definitions(target), [target])
   const definitions = useMemo(
@@ -415,6 +426,9 @@ export function StandardAttributeFields({
                   {definition.help && (
                     <p className="text-muted-foreground text-xs">{definition.help}</p>
                   )}
+                  {attachments && (
+                    <FieldAttachments definition={definition} bag={attachments} />
+                  )}
                 </div>
               )
             })}
@@ -559,6 +573,47 @@ function describeRange(value: StandardValue, unit: string): string {
   if (value.numMax !== null) return `${value.numMax}${suffix} 이하 (최소는 제한 없음)`
   if (value.note.trim()) return '숫자가 없어 장비 판정에는 안 쓰입니다 — 사람이 읽는 줄입니다.'
   return '최소·최대 중 하나만 적어도 됩니다.'
+}
+
+/** 이 칸에 붙은 그림. **한 장도 없고 넣을 수도 없으면 아무것도 안 그린다** — 빈 자리가
+ *  칸마다 서면 카드가 그만큼 길어진다. */
+function FieldAttachments({
+  definition,
+  bag,
+}: {
+  definition: AttributeDefinition
+  bag: {
+    rows: Attachment[]
+    canEdit: boolean
+    objectId: string | null
+    onChanged: () => void
+  }
+}) {
+  const mine = bag.rows.filter((one) => one.definition_id === definition.id)
+  const [open, setOpen] = useState(false)
+  if (mine.length === 0 && !bag.canEdit) return null
+  if (mine.length === 0 && !open) {
+    return (
+      <button
+        type="button"
+        className="text-muted-foreground hover:text-foreground text-xs underline decoration-dotted underline-offset-2"
+        onClick={() => setOpen(true)}
+      >
+        그림 넣기
+      </button>
+    )
+  }
+  return (
+    <AttachmentStrip
+      target="reliability_test"
+      objectId={bag.objectId}
+      definitionId={definition.id}
+      rows={mine}
+      canEdit={bag.canEdit}
+      onChanged={bag.onChanged}
+      label="이 칸에 그림"
+    />
+  )
 }
 
 function TermField({
