@@ -20,10 +20,10 @@ from __future__ import annotations
 import re
 from typing import NamedTuple
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.modules.attributes.models import AttributeDefinition
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.vocabulary.models import ConditionKey, Vocabulary
 from app.modules.vocabulary.specs import SpecDefinition, SpecGroup
 
@@ -134,6 +134,35 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         56,
         "이 시험을 적용하는 제품군. 사내 시험 카드의 「적용군」 칸이 이 축에서 고른다. "
         "ERP·PLM 의 제품 코드를 가져올지는 아직 안 정했다(사내 신뢰성 반입 문서 5절).",
+    ),
+    (
+        "reliability_category",
+        "신뢰성 시험 분류",
+        "common",
+        "open",
+        None,
+        57,
+        "사내 시험을 묶는 분류. 유형(환경·기계 …)보다 위이거나 옆인 갈래로, 회사마다 다르다 "
+        "— 그래서 값을 코드로 심지 않고 축으로 연다.",
+    ),
+    (
+        "spec_document",
+        "규격서",
+        "method",
+        "open",
+        None,
+        58,
+        "사내 규격서 — MX-REL-012 처럼 문서관리 시스템의 번호. 글자로 두면 같은 문서가 "
+        "판(Rev.)마다 다른 값이 되고, 그러면 「이 규격서를 쓰는 시험」 을 못 묶는다.",
+    ),
+    (
+        "document_type",
+        "문서 유형",
+        "method",
+        "open",
+        None,
+        59,
+        "규격서·지침서·작업표준처럼 문서의 갈래.",
     ),
 ]
 
@@ -860,14 +889,35 @@ RELIABILITY_ATTRIBUTES: tuple[
         3,
     ),
     (
-        "reliability_spec_document",
-        "규격서",
-        "text",
+        "reliability_category",
+        "분류",
+        "term",
         "",
         None,
+        "reliability_category",
+        "사내 시험을 묶는 분류. 없으면 기준정보에서 값을 더한다.",
+        3,
+    ),
+    (
+        "reliability_spec_document",
+        "규격서",
+        "term",
+        "",
         None,
-        "사내 규격서 번호와 판(MX-REL-012 Rev.3). 문서관리 시스템의 번호를 그대로 적는다.",
+        "spec_document",
+        "사내 규격서를 목록에서 고른다. **글자로 적지 않는다** — 같은 문서가 판마다 다른 "
+        "값이 되면 「이 규격서를 쓰는 시험」 을 못 묶는다.",
         4,
+    ),
+    (
+        "reliability_document_type",
+        "문서 유형",
+        "term",
+        "",
+        None,
+        "document_type",
+        "규격서·지침서·작업표준처럼 이 문서가 어느 갈래인가.",
+        5,
     ),
     (
         "reliability_target",
@@ -991,6 +1041,48 @@ RELIABILITY_ATTRIBUTES: tuple[
 #: 조건 칸은 **축 목록에서 만든다.** 손으로 넷만 적어 두었더니 「전압으로 도는 시험」 을
 #: 적을 자리가 없었다(2026-09-23) — 축이 늘면 칸도 따라 는다. 수치가 아닌 축(항온조 같은
 #: boolean)은 빼고, 조건 갈래의 자리(5)부터 축의 차례대로 선다.
+def _converge_reliability_attributes(db: Session) -> int:
+    """이미 있는 칸을 표에 맞춘다 — **값이 하나도 없을 때만.**
+
+    「규격서」 를 글자로 심었다가 목록에서 고르는 것으로 바꿨다(2026-09-23). 심는 쪽은
+    「없는 것만」 이라 이미 깔린 설치는 글자인 채로 남는데, 그러면 같은 문서가 판마다
+    다른 값이 되어 「이 규격서를 쓰는 시험」 을 못 묶는다.
+
+    **값이 하나라도 적혀 있으면 안 바꾼다.** 종류를 바꾸는 순간 그 값이 읽히지 않는
+    칸에 남고, 그것은 조용한 데이터 손실이다. 이름은 건드리지 않는다 — 관리자가 고친
+    이름을 설치가 되돌리면 안 된다(사양 정의의 `converge_spec_definitions` 와 같은 판단).
+    """
+    axes = {slug: vid for vid, slug in db.execute(select(Vocabulary.id, Vocabulary.slug))}
+    changed = 0
+    for (
+        key,
+        _label,
+        kind,
+        _unit,
+        _condition_key,
+        axis_slug,
+        _help,
+        _order,
+    ) in RELIABILITY_ATTRIBUTES:
+        if kind != "term" or axis_slug not in axes:
+            continue
+        row = db.scalar(select(AttributeDefinition).where(AttributeDefinition.key == key))
+        if row is None or row.kind == "term":
+            continue
+        used = db.scalar(
+            select(func.count())
+            .select_from(AttributeValue)
+            .where(AttributeValue.definition_id == row.id)
+        )
+        if used:
+            continue
+        row.kind = "term"
+        row.vocabulary_id = axes[axis_slug]
+        row.unit = ""
+        changed += 1
+    return changed
+
+
 def _condition_attributes(
     db: Session,
 ) -> list[tuple[str, str, str, str, str | None, str | None, str, int]]:
@@ -1269,6 +1361,7 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
     db.flush()
     # **축·조건을 먼저 내보낸 뒤에 심는다** — 신뢰성 속성이 방금 만든 축을 가리킨다.
     added_attributes = ensure_equipment_attributes(db) + ensure_reliability_attributes(db)
+    _converge_reliability_attributes(db)
     linked, converted = converge_spec_definitions(db)
 
     db.commit()

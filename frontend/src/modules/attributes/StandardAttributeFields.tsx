@@ -158,12 +158,16 @@ const SECTIONS: {
 }[] = [
   {
     title: '무엇을 왜',
-    keys: ['reliability_type', 'reliability_product_group'],
+    keys: ['reliability_type', 'reliability_category', 'reliability_product_group'],
   },
   {
     title: '근거',
-    hint: '공인 규격은 사전에서 고르고, 사내 문서는 번호를 적습니다.',
-    keys: ['reliability_reference_method', 'reliability_spec_document'],
+    hint: '공인 규격도 사내 규격서도 **목록에서 고릅니다** — 글자로 적으면 같은 문서가 판마다 다른 값이 되어 「이 규격서를 쓰는 시험」 을 못 묶습니다.',
+    keys: [
+      'reliability_reference_method',
+      'reliability_spec_document',
+      'reliability_document_type',
+    ],
   },
   {
     // 조건 칸은 **축마다 하나**라 열하나가 된다. 키로 적지 않고 종류로 모은다 —
