@@ -28,6 +28,7 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
+from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
@@ -37,6 +38,7 @@ from app.modules.equipment.models import (
 )
 from app.modules.methods.models import TestMethod
 from app.modules.properties.models import TestItemProperty
+from app.modules.reliability.models import ReliabilityTest
 from app.modules.test_items.models import EquipmentTestItem, SeriesTestItem
 from app.modules.vocabulary.models import VocabularyTerm
 from app.modules.vocabulary.specs import SpecDefinition, SpecDefinitionCategory
@@ -110,6 +112,19 @@ def _describe_item_property(db: Session, row: TestItemProperty) -> Described:
 
 def _describe_source(db: Session, row: SpecSource) -> Described:
     return row.title or row.path, None
+
+
+def _describe_attribute_value(db: Session, row: Any) -> tuple[str, str | None]:
+    """속성 값 한 줄이 무엇에 붙어 있나. **대상까지 말한다** — 「유형: 환경」 만 보이면
+    어느 시험의 것인지 몰라 뗄지 말지를 정할 수 없다."""
+    definition = db.get(AttributeDefinition, row.definition_id)
+    label = definition.label if definition else "(속성 없음)"
+    test = (
+        db.get(ReliabilityTest, row.reliability_test_id) if row.reliability_test_id else None
+    )
+    if test is None:
+        return f"{label} (대상 없음)", None
+    return f"{test.name} — {label}", f"/reliability/{test.id}"
 
 
 def _describe_calibration(db: Session, row: EquipmentCalibration) -> Described:
@@ -268,6 +283,26 @@ REFERENCE_KINDS: tuple[ReferenceKind, ...] = (
         TestMethod.body_term_id,
         "null",
         _describe_method,
+    ),
+    # 속성의 **고르는 칸**(`kind="term"`)이 쓰는 값. 축 하나에 칸 하나가 아니라 여러
+    # 칸이 같은 축을 가리킬 수 있어서, 한 축의 쓰임은 이 한 줄이 통째로 센다.
+    ReferenceKind(
+        "reliability_type_value",
+        "reliability_test_type",
+        "신뢰성 시험의 유형",
+        AttributeValue,
+        AttributeValue.term_id,
+        "delete",
+        _describe_attribute_value,
+    ),
+    ReferenceKind(
+        "product_group_value",
+        "product_group",
+        "신뢰성 시험의 적용군",
+        AttributeValue,
+        AttributeValue.term_id,
+        "delete",
+        _describe_attribute_value,
     ),
 )
 

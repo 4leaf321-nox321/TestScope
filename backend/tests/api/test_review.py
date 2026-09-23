@@ -1252,7 +1252,7 @@ def test_초안_속성은_합치거나_정식으로_올린다(
             "attributes": [
                 {"new_label": f"시험온도 {tag}", "new_kind": "text", "text_value": "85"},
                 {
-                    "new_label": f"판정 기준 {tag}",
+                    "new_label": f"포장 낙하 높이 {tag}",
                     "new_kind": "text",
                     "text_value": "이상 없음",
                 },
@@ -1264,7 +1264,7 @@ def test_초안_속성은_합치거나_정식으로_올린다(
     drafts = {
         one["label"]: one for one in made.json()["attributes"] if one["status"] == "draft"
     }
-    assert set(drafts) == {f"시험온도 {tag}", f"판정 기준 {tag}"}
+    assert set(drafts) == {f"시험온도 {tag}", f"포장 낙하 높이 {tag}"}
 
     services.refresh(db, tmp_path)
     db.commit()
@@ -1273,7 +1273,7 @@ def test_초안_속성은_합치거나_정식으로_올린다(
         for one in _rows(client, admin, "attribute_drafts", status="open")
     }
     same = rows[f"시험온도 {tag} (신뢰성 시험)"]
-    other = rows[f"판정 기준 {tag} (신뢰성 시험)"]
+    other = rows[f"포장 낙하 높이 {tag} (신뢰성 시험)"]
 
     # 이름이 같은 정식 속성 하나 → 그것이 추천. 근거가 줄에 적힌다.
     picked = [one for one in same["candidates"] if one["recommended"]]
@@ -1285,6 +1285,9 @@ def test_초안_속성은_합치거나_정식으로_올린다(
     assert facts["값의 예"] == "85"
     assert same["link"] == "/attribute-definitions/reliability-test"
     # 짝이 없는 초안에는 추천이 없다 — 첫 보기를 습관적으로 누르게 두지 않는다.
+    # **이름이 정식 속성과 겹치지 않는 것을 고른다**(2026-09-23): 「판정 기준」 을 쓰다가
+    # 같은 이름의 정식 속성이 설치에 생기면서 짝이 생겼다 — 시험이 보려는 것은 짝이
+    # 없을 때의 보기이지, 그 이름이 특별해서가 아니다.
     assert not any(one["recommended"] for one in other["candidates"])
     assert {one["code"] for one in other["candidates"]} == {"standard", "keep", "off"}
 

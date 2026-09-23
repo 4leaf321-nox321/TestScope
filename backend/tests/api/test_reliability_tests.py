@@ -205,3 +205,49 @@ def test_부서를_안_주면_전사_전부가_부서_순으로_온다(
         any(one["workspace_slug"] != lab.slug for one in listed.json())
         or len(listed.json()) == 2
     )
+
+
+def test_사내_시험_카드의_칸이_설치에_들어있다(client: TestClient, admin: Signed) -> None:
+    """**카드 한 장이 곧 이 속성들이다.** 없으면 사람은 목적 칸에 조건을 몰아 적고,
+    그렇게 적힌 조건은 `test_capability` 가 못 읽는다.
+
+    조건 칸(`kind="condition"`)은 **축에 이어져 있어야** 한다 — 이어져 있지 않으면
+    값은 저장되지만 장비 판정에 안 실린다.
+    """
+    rows = client.get(
+        "/api/attribute-definitions",
+        params={"target": "reliability_test"},
+        headers=admin.headers,
+    )
+    assert rows.status_code == 200, rows.text
+    by_label = {one["label"]: one for one in rows.json()}
+
+    for label in (
+        "유형",
+        "적용군",
+        "참조 규격",
+        "규격서",
+        "시험 대상",
+        "시험기·비품",
+        "시료 수",
+        "기타 조건",
+        "시험 절차",
+        "시험 방법",
+        "판정 기준",
+        "주의사항",
+    ):
+        assert label in by_label, f"「{label}」 칸이 없습니다"
+
+    # 조건은 축에 이어져 있어야 판정이 된다.
+    for label in ("시험 온도", "상대 습도", "가진 주파수", "가속도"):
+        one = by_label[label]
+        assert one["kind"] == "condition", label
+        assert one["condition_key_id"], f"「{label}」 이 조건 축에 안 이어져 있습니다"
+
+    # 고르는 칸은 기준정보 축에 이어져 있어야 고를 것이 있다.
+    for label in ("유형", "적용군"):
+        assert by_label[label]["kind"] == "term", label
+        assert by_label[label]["vocabulary_id"], f"「{label}」 이 축에 안 이어져 있습니다"
+
+    assert by_label["참조 규격"]["kind"] == "method"
+    assert by_label["시료 수"]["kind"] == "number"

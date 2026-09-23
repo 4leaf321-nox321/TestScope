@@ -115,6 +115,26 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         50,
         "ASTM · ISO · KS · 사내.",
     ),
+    (
+        "reliability_test_type",
+        "신뢰성 시험 유형",
+        "common",
+        "open",
+        None,
+        55,
+        "환경·기계·전기처럼 이 시험이 어느 갈래인가. 사내 시험 카드의 「유형」 칸이 "
+        "이 축에서 고른다 — 글자로 두면 「환경」 과 「환경시험」 이 갈린다.",
+    ),
+    (
+        "product_group",
+        "적용군",
+        "common",
+        "open",
+        None,
+        56,
+        "이 시험을 적용하는 제품군. 사내 시험 카드의 「적용군」 칸이 이 축에서 고른다. "
+        "ERP·PLM 의 제품 코드를 가져올지는 아직 안 정했다(사내 신뢰성 반입 문서 5절).",
+    ),
 ]
 
 #: 축의 값이 갖는 칸. **설치가 심고, 이미 적힌 축은 안 덮는다.** 물성만 갖는다 —
@@ -796,6 +816,232 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
 )
 
 
+#: 신뢰성 시험의 **정식 속성** — 사내 시험 카드의 칸들(2026-09-23, 사용자가 부른 순서).
+#: 이름·목적은 고정 칸이 이미 갖는다.
+#:
+#: **조건은 축마다 한 칸이다**(`kind="condition"`). 「-40~85 °C」 를 글로 적으면 사람은
+#: 읽지만 `test_capability`(이 시험 돌릴 수 있는 장비)는 못 읽는다 — 그것이 이 플랫폼이
+#: 하려는 일이다. 여기 없는 축(전압·토크 …)이 필요하면 `create_attribute_definition` 으로
+#: 한 칸 더 만든다. 그 밖의 조건은 「기타 조건」 에 글로 적는다.
+#:
+#:   (key, label, kind, unit, 조건축 key, 기준정보 축 slug, help, sort_order)
+RELIABILITY_ATTRIBUTES: tuple[
+    tuple[str, str, str, str, str | None, str | None, str, int], ...
+] = (
+    (
+        "reliability_type",
+        "유형",
+        "term",
+        "",
+        None,
+        "reliability_test_type",
+        "환경·기계·전기처럼 이 시험이 어느 갈래인가.",
+        1,
+    ),
+    (
+        "reliability_product_group",
+        "적용군",
+        "term",
+        "",
+        None,
+        "product_group",
+        "이 시험을 적용하는 제품군.",
+        2,
+    ),
+    (
+        "reliability_reference_method",
+        "참조 규격",
+        "method",
+        "",
+        None,
+        None,
+        "이 시험이 따르는 공인 규격(ASTM·IEC·KS …). 규격 사전에서 고른다 — 글자로 적으면 "
+        "「IEC 60068-2-14」 와 「IEC60068-2-14」 가 갈린다.",
+        3,
+    ),
+    (
+        "reliability_spec_document",
+        "규격서",
+        "text",
+        "",
+        None,
+        None,
+        "사내 규격서 번호와 판(MX-REL-012 Rev.3). 문서관리 시스템의 번호를 그대로 적는다.",
+        4,
+    ),
+    (
+        "reliability_temperature",
+        "시험 온도",
+        "condition",
+        "degC",
+        "temperature",
+        None,
+        "구간이면 최소·최대를 적는다(-40 ~ 85). **이 값이 그대로 장비 판정이 된다.**",
+        5,
+    ),
+    (
+        "reliability_humidity",
+        "상대 습도",
+        "condition",
+        "%",
+        "humidity",
+        None,
+        "구간이면 최소·최대를 적는다(85 ~ 95).",
+        6,
+    ),
+    (
+        "reliability_frequency",
+        "가진 주파수",
+        "condition",
+        "Hz",
+        "frequency",
+        None,
+        "진동 시험의 주파수 범위(5 ~ 500).",
+        7,
+    ),
+    (
+        "reliability_acceleration",
+        "가속도",
+        "condition",
+        "g",
+        "acceleration",
+        None,
+        "진동·충격의 가속도.",
+        8,
+    ),
+    (
+        "reliability_target",
+        "시험 대상",
+        "text",
+        "",
+        None,
+        None,
+        "무엇을 시험하나 — 완제품·모듈·부품·시편 중 무엇이고 어느 상태인가.",
+        9,
+    ),
+    (
+        "reliability_equipment_note",
+        "시험기·비품",
+        "text",
+        "",
+        None,
+        None,
+        "이 시험에 쓰는 장비와 비품. **어느 장비로 되는지는 서버가 조건으로 찾는다** "
+        "— 여기는 지그·치구처럼 조건으로 안 잡히는 것을 적는 자리다.",
+        10,
+    ),
+    (
+        "reliability_sample_count",
+        "시료 수",
+        "number",
+        "개",
+        None,
+        None,
+        "한 번 돌릴 때의 시료 수. 등급·단계마다 다르면 「등급별 수량」 에 적는다.",
+        11,
+    ),
+    (
+        "reliability_other_conditions",
+        "기타 조건",
+        "text",
+        "",
+        None,
+        None,
+        "위 조건 칸으로 안 잡히는 것 — 사이클 수·유지 시간·승온 속도·분위기 가스 등. "
+        "**여기 적은 것은 장비 판정에 안 쓰인다**(글자라서). 판정에 쓰려면 조건 칸을 "
+        "하나 더 만든다.",
+        12,
+    ),
+    (
+        "reliability_procedure",
+        "시험 절차",
+        "text",
+        "",
+        None,
+        None,
+        "순서대로 무엇을 하나. 프로파일이 있으면 단계별로.",
+        13,
+    ),
+    (
+        "reliability_method",
+        "시험 방법",
+        "text",
+        "",
+        None,
+        None,
+        "어떤 방식으로 재나 — 절차와 달리 「무엇을 어떻게 측정하는가」 다.",
+        14,
+    ),
+    (
+        "reliability_criteria",
+        "판정 기준",
+        "text",
+        "",
+        None,
+        None,
+        "무엇을 합격으로 보나. 수치 기준이면 값과 단위를 같이 적는다.",
+        15,
+    ),
+    (
+        "reliability_caution",
+        "주의사항",
+        "text",
+        "",
+        None,
+        None,
+        "안전·취급·해석에서 놓치면 안 되는 것.",
+        16,
+    ),
+)
+
+
+def ensure_reliability_attributes(db: Session) -> int:
+    """신뢰성 시험의 정식 속성을 심는다 — key 로 찾아 **없는 것만.**
+
+    관리자가 끄거나 이름을 바꾼 것을 설치가 되돌리면 안 된다(보유 장비 속성과 같은 규칙).
+    조건 축·기준정보 축이 아직 없으면 그 칸은 **안 심는다** — 빈 축을 가리키는 속성은
+    화면에서 고를 것이 없는 칸으로 서고, 그것은 사람이 「고장」 으로 읽는다.
+    """
+    known = set(db.scalars(select(AttributeDefinition.key)))
+    conditions = {
+        key: cid for cid, key in db.execute(select(ConditionKey.id, ConditionKey.key))
+    }
+    axes = {slug: vid for vid, slug in db.execute(select(Vocabulary.id, Vocabulary.slug))}
+    added = 0
+    for (
+        key,
+        label,
+        kind,
+        unit,
+        condition_key,
+        axis_slug,
+        help_text,
+        order,
+    ) in RELIABILITY_ATTRIBUTES:
+        if key in known:
+            continue
+        if kind == "condition" and condition_key not in conditions:
+            continue
+        if kind == "term" and axis_slug not in axes:
+            continue
+        db.add(
+            AttributeDefinition(
+                target="reliability_test",
+                key=key,
+                label=label,
+                kind=kind,
+                unit=unit,
+                status="standard",
+                condition_key_id=conditions.get(condition_key) if condition_key else None,
+                vocabulary_id=axes.get(axis_slug) if axis_slug else None,
+                help=help_text,
+                sort_order=order,
+            )
+        )
+        added += 1
+    return added
+
+
 def ensure_equipment_attributes(db: Session) -> int:
     """보유 장비의 정식 속성을 심는다 — key 로 찾아 없는 것만."""
     known = set(db.scalars(select(AttributeDefinition.key)))
@@ -986,7 +1232,8 @@ def ensure_reference_data(db: Session) -> ReferenceCounts:
         added_definitions += 1
 
     db.flush()
-    added_attributes = ensure_equipment_attributes(db)
+    # **축·조건을 먼저 내보낸 뒤에 심는다** — 신뢰성 속성이 방금 만든 축을 가리킨다.
+    added_attributes = ensure_equipment_attributes(db) + ensure_reliability_attributes(db)
     linked, converted = converge_spec_definitions(db)
 
     db.commit()
