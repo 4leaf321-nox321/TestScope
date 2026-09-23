@@ -39,6 +39,25 @@ class VocabularyOut(BaseModel):
     같아 보이고, 어디를 채워야 하는지 알 수 없다."""
 
 
+class VocabularyCreateRequest(BaseModel):
+    """축 하나를 새로 세운다. **slug 는 코드가 거는 이름**이라 만든 뒤 못 바꾼다.
+
+    `domain` 은 화면이 축을 묶는 자리다 — 안 고르면 `common` 이 되는데, 그것은 얼버무리는
+    자리가 아니라 **정말 여러 층이 쓰는 축**을 뜻한다. 보유 장비만 쓰는 축이면 `equipment`
+    라고 적는 편이 목록에서 찾기 쉽다.
+    """
+
+    slug: str = Field(pattern=r"^[a-z][a-z0-9_]{1,49}$")
+    label: str = Field(min_length=1, max_length=100)
+    domain: str = Field(default="common", pattern="^(equipment|catalog|method|common)$")
+    description: str | None = None
+    entry_policy: str = Field(default="open", pattern="^(open|closed)$")
+    parent_slug: str | None = Field(default=None, max_length=50)
+    """계층이 있는 축에서 위 축의 slug. 장비 분류의 군 → 유형이 그렇다."""
+    sort_order: int = 0
+    attribute_schema: list[AttributeField] = Field(default_factory=list)
+
+
 class VocabularyUpdateRequest(BaseModel):
     """축을 고친다. **slug 와 소속은 못 바꾼다** — 코드가 걸고 있다.
 

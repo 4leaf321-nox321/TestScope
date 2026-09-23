@@ -89,6 +89,55 @@ def vocabulary_out(db: Session, row: Vocabulary) -> VocabularyOut:
     )
 
 
+def create_vocabulary(db: Session, *, payload: dict[str, Any]) -> Vocabulary:
+    """축 하나를 새로 세운다. **시스템 관리자만.**
+
+    오래 API 를 안 열어 두었다. 이유는 그대로 유효하다 — **축은 코드가 걸어야 뜻이 있다.**
+    `manufacturer` 축은 계열 화면이 그 slug 로 제조사를 고르게 만들어 두었기 때문에 값이
+    쓰인다. 여기서 만든 축은 그런 자리가 없으므로 **값을 담는 서랍**일 뿐이고, 검색·판정·
+    반입 어디에도 저절로 끼지 않는다.
+
+    그래도 여는 이유: 사내 온톨로지에는 우리가 미리 못 정한 축이 실제로 있다(불량 모드 ·
+    제품군 …). 그것을 못 만들면 사람은 **있는 축에 뜻이 다른 값을 넣는다** — 제정기관 축에
+    회사 이름이 들어가는 것과 같은 일이고, 그 뒤로는 갈라 놓을 방법이 없다. 서랍이라도
+    제 이름의 서랍에 두는 편이 낫다.
+
+    ## 만들기 전에 있는 것을 본다
+
+    slug 가 겹치면 409 다(비교키가 아니라 그대로 본다 — 코드가 거는 이름이라 대소문자·
+    밑줄까지 그대로여야 한다). **비슷한 이름의 축이 이미 있으면 그것을 쓴다.** 축이 둘로
+    갈리면 값도 둘로 갈리고, 합치는 길은 값 병합(`merge_terms`)뿐인데 그것은 축을 가로질러
+    못 한다.
+
+    ## 이 설치에만 산다
+
+    `ensure_reference_data`(설치 시드)가 심는 축이 정본이다. 여기서 만든 축은 **그 목록에
+    없으므로** 새로 설치하는 서버에는 안 생긴다. 계속 쓸 축이면 시드에 더해야 한다 —
+    그 전까지는 이 DB 안에서만 있는 것이다.
+    """
+    slug = clean(str(payload["slug"]))
+    if db.scalar(select(Vocabulary).where(Vocabulary.slug == slug)) is not None:
+        raise Conflict("TSC-VOCAB-0012", f"이미 있는 축입니다: {slug}")
+    parent = payload.get("parent_slug")
+    if parent and db.scalar(select(Vocabulary).where(Vocabulary.slug == parent)) is None:
+        # 없는 축을 부모로 걸면 계층 화면이 빈 가지를 그린다 — 여기서 막는다.
+        raise AppError("TSC-VOCAB-0013", f"부모 축을 찾을 수 없습니다: {parent}", status=422)
+    row = Vocabulary(
+        slug=slug,
+        label=clean(str(payload["label"])),
+        domain=payload.get("domain") or "common",
+        description=payload.get("description"),
+        entry_policy=payload.get("entry_policy") or "open",
+        parent_slug=parent,
+        sort_order=int(payload.get("sort_order") or 0),
+        attribute_schema=payload.get("attribute_schema") or [],
+    )
+    db.add(row)
+    db.commit()
+    db.refresh(row)
+    return row
+
+
 def update_vocabulary(db: Session, *, slug: str, changes: dict[str, Any]) -> Vocabulary:
     """축의 이름·설명·정책·속성 칸. **slug 와 소속은 안 받는다** — 코드가 건다."""
     row = get_vocabulary(db, slug)

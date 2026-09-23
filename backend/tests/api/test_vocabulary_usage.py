@@ -6,9 +6,14 @@
 
 여기서 지키는 것:
 
-1. 모든 축이 **셀 줄 안다.** 축을 새로 만들면서 참조 표에 한 줄 더하는 것을 잊으면,
-   그 축의 값은 영원히 0 으로 보인다.
+1. **시드가 심는 축**은 전부 셀 줄 안다. 축을 새로 만들면서 참조 표에 한 줄 더하는 것을
+   잊으면, 그 축의 값은 영원히 0 으로 보인다.
 2. 실제로 쓰이는 값은 0 이 아니다.
+
+**DB 에 있는 축 전부가 아니라 시드 목록(`AXES`)과 견준다**(2026-09-23). 축을 API 로도
+만들 수 있게 되면서 「DB 에 있는 축」 이 더는 코드가 정하는 집합이 아니다. 런타임에 만든
+축은 **아무 코드도 그 slug 를 안 걸고 있으므로 쓰임 0 이 참이다** — 나중에 거는 코드를
+쓰는 사람이 그때 `_REFERENCES` 에 한 줄 더한다.
 """
 
 from __future__ import annotations
@@ -18,6 +23,7 @@ from typing import Any
 
 from fastapi.testclient import TestClient
 
+from app.modules.vocabulary.reference import AXES
 from app.modules.vocabulary.references import _REFERENCES
 from tests.api.conftest import Signed, site_id
 
@@ -29,12 +35,12 @@ def _axes(client: TestClient, admin: Signed) -> list[dict[str, Any]]:
     return rows
 
 
-def test_모든_축이_쓰임을_셀_줄_안다(client: TestClient, admin: Signed) -> None:
+def test_시드가_심는_축은_모두_쓰임을_셀_줄_안다() -> None:
     """표에 없는 축의 값은 **영원히 0** 으로 보인다.
 
     그 0 은 「안 쓰인다」 와 구별되지 않는다.
     """
-    missing = [row["slug"] for row in _axes(client, admin) if row["slug"] not in _REFERENCES]
+    missing = [row[0] for row in AXES if row[0] not in _REFERENCES]
     assert not missing, f"쓰임을 셀 줄 모르는 축: {missing}"
 
 

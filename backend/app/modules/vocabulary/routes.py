@@ -32,6 +32,7 @@ from app.modules.vocabulary.schemas import (
     TermMergeRequest,
     TermOut,
     TermUpdateRequest,
+    VocabularyCreateRequest,
     VocabularyOut,
     VocabularyUpdateRequest,
 )
@@ -45,6 +46,20 @@ def list_vocabularies(
     _: User = Depends(current_user), db: Session = Depends(get_db)
 ) -> list[VocabularyOut]:
     return services.list_vocabularies(db)
+
+
+@router.post("", response_model=VocabularyOut, status_code=201)
+def create_vocabulary(
+    payload: VocabularyCreateRequest,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> VocabularyOut:
+    """축 하나를 새로 세운다. **만들기 전에 목록을 본다** — 비슷한 축이 둘로 갈리면
+    값도 둘로 갈리고, 합치는 길이 없다(값 병합은 축을 가로질러 못 한다)."""
+    body = payload.model_dump()
+    body["attribute_schema"] = [one.model_dump() for one in payload.attribute_schema]
+    row = services.create_vocabulary(db, payload=body)
+    return services.vocabulary_out(db, row)
 
 
 @router.patch("/{slug}", response_model=VocabularyOut)

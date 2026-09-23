@@ -741,7 +741,12 @@ export interface paths {
         /** List Vocabularies */
         get: operations["list_vocabularies_api_vocabularies_get"];
         put?: never;
-        post?: never;
+        /**
+         * Create Vocabulary
+         * @description 축 하나를 새로 세운다. **만들기 전에 목록을 본다** — 비슷한 축이 둘로 갈리면
+         *     값도 둘로 갈리고, 합치는 길이 없다(값 병합은 축을 가로질러 못 한다).
+         */
+        post: operations["create_vocabulary_api_vocabularies_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -6842,6 +6847,41 @@ export interface components {
             /** Context */
             ctx?: Record<string, never>;
         };
+        /**
+         * VocabularyCreateRequest
+         * @description 축 하나를 새로 세운다. **slug 는 코드가 거는 이름**이라 만든 뒤 못 바꾼다.
+         *
+         *     `domain` 은 화면이 축을 묶는 자리다 — 안 고르면 `common` 이 되는데, 그것은 얼버무리는
+         *     자리가 아니라 **정말 여러 층이 쓰는 축**을 뜻한다. 보유 장비만 쓰는 축이면 `equipment`
+         *     라고 적는 편이 목록에서 찾기 쉽다.
+         */
+        VocabularyCreateRequest: {
+            /** Slug */
+            slug: string;
+            /** Label */
+            label: string;
+            /**
+             * Domain
+             * @default common
+             */
+            domain: string;
+            /** Description */
+            description?: string | null;
+            /**
+             * Entry Policy
+             * @default open
+             */
+            entry_policy: string;
+            /** Parent Slug */
+            parent_slug?: string | null;
+            /**
+             * Sort Order
+             * @default 0
+             */
+            sort_order: number;
+            /** Attribute Schema */
+            attribute_schema?: components["schemas"]["AttributeField"][];
+        };
         /** VocabularyOut */
         VocabularyOut: {
             /**
@@ -8485,6 +8525,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VocabularyOut"][];
+                };
+            };
+        };
+    };
+    create_vocabulary_api_vocabularies_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VocabularyCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VocabularyOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

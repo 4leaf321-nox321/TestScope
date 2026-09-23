@@ -1970,6 +1970,46 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "vocabulary"
+        ],
+        "summary": "Create Vocabulary",
+        "description": "축 하나를 새로 세운다. **만들기 전에 목록을 본다** — 비슷한 축이 둘로 갈리면\n값도 둘로 갈리고, 합치는 길이 없다(값 병합은 축을 가로질러 못 한다).",
+        "operationId": "create_vocabulary_api_vocabularies_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VocabularyCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VocabularyOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/vocabularies/{slug}": {
@@ -20259,6 +20299,75 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "VocabularyCreateRequest": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,49}$",
+            "title": "Slug"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "domain": {
+            "type": "string",
+            "pattern": "^(equipment|catalog|method|common)$",
+            "title": "Domain",
+            "default": "common"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "entry_policy": {
+            "type": "string",
+            "pattern": "^(open|closed)$",
+            "title": "Entry Policy",
+            "default": "open"
+          },
+          "parent_slug": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 50
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Slug"
+          },
+          "sort_order": {
+            "type": "integer",
+            "title": "Sort Order",
+            "default": 0
+          },
+          "attribute_schema": {
+            "items": {
+              "$ref": "#/components/schemas/AttributeField"
+            },
+            "type": "array",
+            "title": "Attribute Schema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "slug",
+          "label"
+        ],
+        "title": "VocabularyCreateRequest",
+        "description": "축 하나를 새로 세운다. **slug 는 코드가 거는 이름**이라 만든 뒤 못 바꾼다.\n\n`domain` 은 화면이 축을 묶는 자리다 — 안 고르면 `common` 이 되는데, 그것은 얼버무리는\n자리가 아니라 **정말 여러 층이 쓰는 축**을 뜻한다. 보유 장비만 쓰는 축이면 `equipment`\n라고 적는 편이 목록에서 찾기 쉽다."
       },
       "VocabularyOut": {
         "properties": {

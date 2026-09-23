@@ -1836,6 +1836,100 @@ async def list_terms(
 
 
 @writes
+async def create_axis(
+    ctx: Context,
+    slug: str,
+    label: str,
+    domain: str = "common",
+    description: str | None = None,
+    entry_policy: str = "open",
+    parent_slug: str | None = None,
+) -> dict[str, Any]:
+    """기준정보 **축**을 새로 세운다. 시스템 관리자. **웬만하면 만들지 마라.**
+
+    **먼저 `list_axes` 로 본다.** 뜻이 닿는 축이 있으면 그 축에 값을 더하는 것(`create_term`)
+    이 맞다. 축이 둘로 갈리면 값도 둘로 갈리고, 합치는 길이 없다 — 값 병합(`merge_terms`)은
+    같은 축 안에서만 된다. 「불량 모드」 와 「불량 유형」 이 따로 서면 그대로 굳는다.
+
+    **여기서 만든 축은 서랍일 뿐이다.** 기존 축(`manufacturer` 같은)은 화면과 코드가 그
+    slug 를 걸고 있어서 값이 쓰인다. 새 축에는 그런 자리가 없으므로 검색·판정·반입 어디에도
+    저절로 끼지 않는다 — 값을 담아 두고 사람이 보는 목록이 된다. 그래도 **뜻이 다른 값을
+    남의 축에 넣는 것보다는 낫다**(제정기관 축에 회사 이름이 들어가는 일이 실제로 있다).
+
+    `domain` 은 화면이 묶는 자리 — `equipment` · `catalog` · `method` · `common`.
+    `entry_policy` 가 `closed` 면 값도 시스템 관리자만 더한다.
+
+    **이 설치에만 산다.** 설치 시드(`ensure_reference_data`)가 심는 축이 정본이라, 여기서
+    만든 축은 새로 설치하는 서버에 안 생긴다. 계속 쓸 축이면 사람이 시드에 더해야 한다고
+    말해 줘라.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/vocabularies",
+        {
+            "slug": slug,
+            "label": label,
+            "domain": domain,
+            "description": description,
+            "entry_policy": entry_policy,
+            "parent_slug": parent_slug,
+        },
+    )
+
+
+@writes
+async def create_condition_key(
+    ctx: Context,
+    key: str,
+    label: str,
+    kind: str = "range",
+    dimension: str = "",
+    si_unit: str = "",
+    display_unit: str = "",
+    choices: list[str] | None = None,
+    help: str | None = None,
+) -> dict[str, Any]:
+    """**검색 조건 축**을 새로 만든다(온도·하중처럼 판정에 쓰이는 칸). 시스템 관리자.
+
+    **먼저 `list_conditions` 로 본다.** 같은 뜻의 축이 있으면 그것을 쓴다 — 「시험 온도」 와
+    「온도」 가 따로 서면 장비마다 다른 축에 적히고, 검색은 그때부터 절반만 답한다.
+
+    ## 단위를 틀리면 조용히 틀린 답이 나온다
+
+    `si_unit` 은 **저장 단위**, `display_unit` 은 화면이 쓰는 실무 단위다. 하중은
+    `si_unit="kN"`, 온도는 `si_unit="degC"` 처럼 이 저장소가 실제로 쓰는 값을 따른다 —
+    `list_conditions` 로 옆 축이 무엇을 쓰는지 보고 맞춰라. `dimension` 이 같은 축끼리만
+    환산이 성립한다(temperature · force · length · time · frequency).
+
+    **만든 뒤 `si_unit` 은 못 바꾸는 것으로 여겨라.** 고치는 API 는 있지만, 그 순간 이미
+    저장된 숫자 전부가 다른 값이 된다.
+
+    `kind` 는 `range`(구간 — 대부분) · `choice`(고른 값, `choices` 필요) · `boolean`.
+
+    ## 만든 다음이 중요하다
+
+    축만 만들면 아무 일도 안 일어난다. **시험 항목에 걸어야**(`set_test_item_axes`) 그
+    시험을 물을 때 조건으로 뜨고, 장비·기종에 값이 적혀야 판정이 된다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        "/condition-keys",
+        {
+            "key": key,
+            "label": label,
+            "kind": kind,
+            "dimension": dimension,
+            "si_unit": si_unit,
+            "display_unit": display_unit,
+            "choices": choices or [],
+            "help": help,
+        },
+    )
+
+
+@writes
 async def create_term(
     ctx: Context,
     axis: str,
