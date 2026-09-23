@@ -95,8 +95,26 @@ def visible_owner_clause(
     return or_(column.is_(None), column.in_(mine))
 
 
+def _require_role(db: Session, *, workspace: Workspace, user: User, role: str) -> None:
+    """`member` 면 그 부서 사람이면 되고, `manager` 면 부서 관리자여야 한다.
+
+    **기본은 manager 다.** 부르는 쪽이 `member` 라고 적어야 열린다 — 자격이 넓어지는
+    일은 호출 자리에 보여야 하고, 기본값이 넓으면 새로 생긴 경로가 조용히 열린다.
+    """
+    if role == "member":
+        require_member(db, workspace=workspace, user=user)
+    else:
+        require_manager(db, workspace=workspace, user=user)
+
+
 def resolve_owner_workspace(
-    db: Session, user: User, slug: str | None, *, what: str, code: str
+    db: Session,
+    user: User,
+    slug: str | None,
+    *,
+    what: str,
+    code: str,
+    role: str = "manager",
 ) -> uuid.UUID | None:
     """만들 때 누구 것으로 할지. None 이면 전역 — 시스템 관리자만."""
     if slug is None:
@@ -106,17 +124,29 @@ def resolve_owner_workspace(
             )
         return None
     workspace = workspace_by_slug(db, slug)
-    require_manager(db, workspace=workspace, user=user)
+    _require_role(db, workspace=workspace, user=user, role=role)
     return workspace.id
 
 
 def require_owner_edit(
-    db: Session, user: User, owner_workspace_id: uuid.UUID | None, *, what: str, code: str
+    db: Session,
+    user: User,
+    owner_workspace_id: uuid.UUID | None,
+    *,
+    what: str,
+    code: str,
+    role: str = "manager",
 ) -> None:
     """고칠 수 있는가.
 
     전역은 **여러 부서가 함께 쓴다.** 한 부서가 고치면 다른 부서의 데이터가 다르게
     읽힌다 — 그래서 전역은 시스템 관리자만 손댄다.
+
+    **보유 장비는 `role="member"` 로 부른다**(2026-09-23). 장비를 쓰는 사람이 그 장비를
+    등록하고 시험 항목을 적는다 — 부서 관리자를 거치게 하면 등록이 밀리고, 밀린 장비는
+    검색에 안 걸린다. 그리고 등록만 열고 수정을 막는 것이 더 나쁘다: 제가 넣은 오타를
+    못 고치고, 무엇보다 **시험 항목을 못 달아 그 장비가 영영 검색에 안 걸린다.**
+    부서의 운영(멤버·신뢰성 시험·부서 규격)은 여전히 관리자다.
     """
     if user.is_system_admin:
         return
@@ -129,7 +159,7 @@ def require_owner_edit(
     workspace = db.get(Workspace, owner_workspace_id)
     if workspace is None:
         raise NotFound(code, f"{what}의 소속 부서를 찾을 수 없습니다.")
-    require_manager(db, workspace=workspace, user=user)
+    _require_role(db, workspace=workspace, user=user, role=role)
 
 
 # --- 장비의 가시 범위 -------------------------------------------------------

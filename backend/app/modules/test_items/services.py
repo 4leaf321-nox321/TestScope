@@ -53,7 +53,9 @@ def _limits(db: Session, equipment_test_item_id: uuid.UUID) -> list[LimitOut]:
 
 def _can_edit(db: Session, user: User, equipment: Equipment) -> bool:
     try:
-        require_owner_edit(db, user, equipment.owner_workspace_id, what=_WHAT, code=_CODE)
+        require_owner_edit(
+            db, user, equipment.owner_workspace_id, what=_WHAT, code=_CODE, role="member"
+        )
     except AppError:
         return False
     return True
@@ -107,7 +109,9 @@ def get_test_item(
 
 def create(db: Session, user: User, payload: dict[str, Any]) -> EquipmentTestItem:
     equipment = get_equipment(db, user, payload["equipment_id"])
-    require_owner_edit(db, user, equipment.owner_workspace_id, what=_WHAT, code=_CODE)
+    require_owner_edit(
+        db, user, equipment.owner_workspace_id, what=_WHAT, code=_CODE, role="member"
+    )
 
     method_id = payload.get("method_id")
     clash = db.scalar(
@@ -147,7 +151,12 @@ def update(
     row = get_test_item(db, user, equipment_test_item_id)
     equipment = db.get(Equipment, row.equipment_id)
     require_owner_edit(
-        db, user, equipment.owner_workspace_id if equipment else None, what=_WHAT, code=_CODE
+        db,
+        user,
+        equipment.owner_workspace_id if equipment else None,
+        what=_WHAT,
+        code=_CODE,
+        role="member",
     )
 
     for field in ("method_id", "confidence", "verified_on", "note"):
@@ -162,7 +171,12 @@ def delete(db: Session, user: User, equipment_test_item_id: uuid.UUID) -> None:
     row = get_test_item(db, user, equipment_test_item_id)
     equipment = db.get(Equipment, row.equipment_id)
     require_owner_edit(
-        db, user, equipment.owner_workspace_id if equipment else None, what=_WHAT, code=_CODE
+        db,
+        user,
+        equipment.owner_workspace_id if equipment else None,
+        what=_WHAT,
+        code=_CODE,
+        role="member",
     )
     db.delete(row)
     db.commit()
@@ -175,7 +189,12 @@ def upsert_limit(
     row = get_test_item(db, user, equipment_test_item_id)
     equipment = db.get(Equipment, row.equipment_id)
     require_owner_edit(
-        db, user, equipment.owner_workspace_id if equipment else None, what=_WHAT, code=_CODE
+        db,
+        user,
+        equipment.owner_workspace_id if equipment else None,
+        what=_WHAT,
+        code=_CODE,
+        role="member",
     )
 
     key = db.get(ConditionKey, payload["condition_key_id"])
@@ -219,7 +238,12 @@ def delete_limit(
     row = get_test_item(db, user, equipment_test_item_id)
     equipment = db.get(Equipment, row.equipment_id)
     require_owner_edit(
-        db, user, equipment.owner_workspace_id if equipment else None, what=_WHAT, code=_CODE
+        db,
+        user,
+        equipment.owner_workspace_id if equipment else None,
+        what=_WHAT,
+        code=_CODE,
+        role="member",
     )
     target = db.get(EquipmentTestCondition, limit_id)
     if target is None or target.equipment_test_item_id != row.id:

@@ -608,7 +608,12 @@ def _update_plan(
     """
     try:
         require_owner_edit(
-            db, user, existing.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002"
+            db,
+            user,
+            existing.owner_workspace_id,
+            what="장비",
+            code="TSC-EQUIPMENT-0002",
+            role="member",
         )
     except AppError as error:
         problems.add(None, error.message)

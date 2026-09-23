@@ -148,9 +148,7 @@ def test_자격_없이는_축을_못_만든다(client: TestClient) -> None:
     assert condition.status_code == 401, condition.text
 
 
-def test_축이_정한_칸을_값이_채우고_나중에_고친다(
-    client: TestClient, admin: Signed
-) -> None:
+def test_축이_정한_칸을_값이_채우고_나중에_고친다(client: TestClient, admin: Signed) -> None:
     """**축에 한 번 적고, 값이 채운다.** 칸 정의를 값마다 물으면 같은 답을 수백 번 저장한다.
 
     칸 정의가 없으면 값의 `attributes` 는 자유 JSON 이라 화면이 무엇을 그릴지 모른다 —

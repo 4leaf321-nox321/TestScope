@@ -609,10 +609,8 @@ def test_기준정보를_고치는_것은_범위가_아니라_자격이_막는�
         assert response.status_code == 403, f"{path}: {response.status_code} {response.text}"
         assert response.json()["error"]["code"] == "TSC-AUTH-0103", path
 
-    # **보유 장비 등록도 부서 멤버로는 안 된다** — 부서 관리자여야 한다. 자격이 셋으로
-    # 갈린다는 뜻이다: 멤버(열린 축 값만) · 부서 관리자(+ 제 부서 장비) · 시스템 관리자
-    # (+ 기준정보). 「일반 유저는 인스턴스 추가」 라고 말할 때 그 「일반 유저」 는 부서
-    # 관리자다.
+    # **제 부서의 장비는 멤버가 넣고 고친다**(2026-09-23). 장비를 쓰는 사람이 등록한다 —
+    # 부서 관리자를 거치게 하면 등록이 밀리고, 밀린 장비는 검색에 안 걸린다.
     unit_body = {
         "asset_no": f"MEM-{tag}",
         "name": f"일반 유저 장비-{tag}",
@@ -621,17 +619,64 @@ def test_기준정보를_고치는_것은_범위가_아니라_자격이_막는�
         "location": "1동",
         "category_term_id": category_id(client, admin),
     }
-    as_member = client.post("/api/equipment", json=unit_body, headers=machine)
-    assert as_member.status_code == 403
-    assert as_member.json()["error"]["code"] == "TSC-WORKSPACES-0003"
+    unit = client.post("/api/equipment", json=unit_body, headers=machine)
+    assert unit.status_code == 201, unit.text
+    equipment_id = unit.json()["id"]
 
-    manager = _member_token(client, db, workspace, scopes, role="manager")
-    as_manager = client.post("/api/equipment", json=unit_body, headers=manager)
-    assert as_manager.status_code == 201, as_manager.text
+    # 고치는 것도, **시험 항목을 다는 것도** 된다 — 등록만 열고 시험 항목을 막으면
+    # 그 장비는 영영 검색에 안 걸린다.
+    assert (
+        client.patch(
+            f"/api/equipment/{equipment_id}", json={"location": "2동"}, headers=machine
+        ).status_code
+        == 200
+    )
+    marked = client.post(
+        "/api/equipment-test-items",
+        json={
+            "equipment_id": equipment_id,
+            "test_item_term_id": _any_test_item(client, admin),
+        },
+        headers=machine,
+    )
+    assert marked.status_code == 201, marked.text
+    assert (
+        client.post(
+            f"/api/equipment/{equipment_id}/calibrations",
+            json={"calibrated_on": "2026-01-01", "next_due_on": "2027-01-01"},
+            headers=machine,
+        ).status_code
+        == 201
+    )
+
+    # **지우는 것만 부서 관리자다.** 고친 것은 되돌릴 수 있지만 지운 것은 목록에서 사라진다.
+    assert client.delete(f"/api/equipment/{equipment_id}", headers=machine).status_code == 403
+
+    # 신뢰성 시험은 부서의 **절차**라 여전히 부서 관리자다.
+    assert (
+        client.post(
+            "/api/reliability-tests",
+            json={"workspace_slug": workspace.slug, "name": f"시험-{tag}"},
+            headers=machine,
+        ).status_code
+        == 403
+    )
 
     # 부서 관리자여도 **기준정보는 여전히 못 고친다.**
+    manager = _member_token(client, db, workspace, scopes, role="manager")
     still = client.patch(
         f"/api/vocabularies/terms/{term_id}", json={"value": f"또 고침-{tag}"}, headers=manager
     )
     assert still.status_code == 403
     assert still.json()["error"]["code"] == "TSC-AUTH-0103"
+
+
+def _any_test_item(client: TestClient, admin: Signed) -> str:
+    """시험 항목 값 하나 — 닫힌 축이라 관리자가 만든다."""
+    made = client.post(
+        "/api/vocabularies/test_item/terms",
+        json={"value": f"인장-{uuid.uuid4().hex[:6]}"},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    return str(made.json()["id"])

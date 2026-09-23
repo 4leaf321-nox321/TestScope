@@ -157,7 +157,9 @@ def _can_edit(db: Session, user: User, row: Equipment) -> bool:
     """고칠 수 있는가. **판정 로직을 재사용한다** — 화면이 스스로 계산하면
     버튼은 보이는데 누르면 403 인 상태가 생긴다."""
     try:
-        require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
+        require_owner_edit(
+            db, user, row.owner_workspace_id, what=_WHAT, code=_CODE, role="member"
+        )
     except AppError:
         return False
     return True
@@ -372,7 +374,8 @@ def owner_workspace(db: Session, user: User, slug: Any) -> uuid.UUID:
     전에는 비우면 「전사 공용」 이었는데, 그러면 공용으로 표시하는 순간 관리 부서를
     잃었다. 공용인지는 `shared_use` 가 따로 말한다 — 두 물음을 한 칸에 담지 않는다.
     """
-    owner = resolve_owner_workspace(db, user, slug, what=_WHAT, code=_CODE)
+    # **부서 멤버가 제 부서의 장비를 등록한다** — 장비를 쓰는 사람이 넣는다.
+    owner = resolve_owner_workspace(db, user, slug, what=_WHAT, code=_CODE, role="member")
     if owner is None:
         raise AppError(
             "TSC-EQUIPMENT-0008",
@@ -630,7 +633,7 @@ def update(
     된다.
     """
     row = get_equipment(db, user, equipment_id)
-    require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
+    require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE, role="member")
     _check_not_emptied(changes)
 
     if "workspace_slug" in changes:
@@ -721,6 +724,8 @@ def delete(db: Session, user: User, equipment_id: uuid.UUID) -> None:
     """소프트 삭제. **행은 남는다** — 이 장비로 잰 데이터가 밖에 있고, 몇 년 뒤에도
     그것이 어느 장비였는지는 물어질 수 있다."""
     row = get_equipment(db, user, equipment_id)
+    # **지우는 것만 부서 관리자다.** 고치는 것은 되돌릴 수 있지만 지운 것은
+    # 목록에서 사라진다 — 그 장비로 잡아 둔 일정이 있는지는 다른 사람이 안다.
     require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
     audit.record(
         db,
@@ -766,7 +771,7 @@ def add_calibration(
     db: Session, user: User, equipment_id: uuid.UUID, payload: dict[str, Any]
 ) -> CalibrationOut:
     row = get_equipment(db, user, equipment_id)
-    require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE)
+    require_owner_edit(db, user, row.owner_workspace_id, what=_WHAT, code=_CODE, role="member")
     record = EquipmentCalibration(equipment_id=row.id, **payload)
     db.add(record)
     db.commit()

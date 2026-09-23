@@ -322,7 +322,7 @@ def upsert_equipment_spec(
     """
     row = get_equipment(db, user, equipment_id)
     require_owner_edit(
-        db, user, row.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002"
+        db, user, row.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002", role="member"
     )
     value, label, reflected = equipment_specs.upsert(db, row, payload.model_dump(), user)
     return EquipmentSpecSaveResult(value=value, condition_label=label, reflected=reflected)
@@ -342,7 +342,7 @@ def delete_equipment_spec(
     """
     row = get_equipment(db, user, equipment_id)
     require_owner_edit(
-        db, user, row.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002"
+        db, user, row.owner_workspace_id, what="장비", code="TSC-EQUIPMENT-0002", role="member"
     )
     equipment_specs.delete(db, row, definition_id)
 
