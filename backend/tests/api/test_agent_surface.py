@@ -520,3 +520,118 @@ def test_검토함에_열린_규격의_시험_항목은_기계_자격으로_못_
         f"/api/methods/{method_id}", json={"test_item_term_id": item}, headers=admin.headers
     )
     assert allowed.status_code == 200, allowed.text
+
+
+def _member_token(
+    client: TestClient,
+    db: Session,
+    workspace: Workspace,
+    scopes: list[str],
+    role: str = "member",
+) -> dict[str, str]:
+    """**관리자가 아닌 사람**의 MCP 토큰. 범위는 다 줘 본다 — 막는 것이 범위가 아니라
+    자격임을 보이려는 것이다."""
+    email = f"member-{uuid.uuid4().hex[:8]}@testscope.local"
+    person = User(
+        email=email,
+        password_hash=security.hash_password("member-password"),
+        display_name="일반 사용자",
+        status="active",
+        is_system_admin=False,
+        home_workspace_id=workspace.id,
+    )
+    db.add(person)
+    db.flush()
+    db.add(WorkspaceMember(workspace_id=workspace.id, user_id=person.id, role=role))
+    db.commit()
+
+    login = client.post(
+        "/api/auth/login", json={"email": email, "password": "member-password"}
+    )
+    assert login.status_code == 200, login.text
+    made = client.post(
+        "/api/auth/tokens",
+        json={"name": f"일반 유저 MCP-{uuid.uuid4().hex[:6]}", "scopes": scopes},
+        headers={"Authorization": f"Bearer {login.json()['access_token']}"},
+    )
+    assert made.status_code == 201, made.text
+    return {"Authorization": f"Bearer {made.json()['token']}", "X-Client": "mcp"}
+
+
+def test_기준정보를_고치는_것은_범위가_아니라_자격이_막는다(
+    client: TestClient, admin: Signed, db: Session, workspace: Workspace
+) -> None:
+    """**막는 자리가 둘이다** — 토큰 범위(무엇을 건드리나)와 사람의 자격(해도 되나).
+
+    범위를 다 줘도 일반 사용자는 기준정보를 **못 고친다**. 이 규칙이 지금은 라우터마다
+    `require_system_admin` 으로 흩어져 있어서, 누가 한 줄을 `current_user` 로 바꿔도
+    아무도 모른다 — 그 한 줄이 온톨로지를 누구나 고칠 수 있게 만든다.
+
+    403 의 뜻도 여기서 갈린다: `TSC-AUTH-0106` 은 「범위가 없다」(토큰을 다시 만들면 된다),
+    `TSC-AUTH-0103` 은 「자격이 없다」(토큰을 다시 만들어도 소용없다). 도구 설명과 README 가
+    그 둘을 구별해 말해야 사람이 헛되이 토큰을 재발급하지 않는다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    scopes = ["read", "catalog:write", "equipment:write"]
+    machine = _member_token(client, db, workspace, scopes)
+
+    # 읽기는 된다 — 못 보면 「없다」 와 「이름이 다르다」 를 구별할 수 없다.
+    assert client.get("/api/vocabularies", headers=machine).status_code == 200
+
+    # **열린 축에 값은 더한다.** 승인 대기를 두면 피커가 멈추고 사람은 시스템 밖에서 일한다.
+    added = client.post(
+        "/api/vocabularies/manufacturer/terms",
+        json={"value": f"일반유저 제조사-{tag}"},
+        headers=machine,
+    )
+    assert added.status_code == 201, added.text
+    term_id = added.json()["id"]
+
+    # 닫힌 축은 관리자만 — 시험 항목이 흩어지면 검색이 절반만 답한다.
+    closed = client.post(
+        "/api/vocabularies/test_item/terms", json={"value": f"닫힌-{tag}"}, headers=machine
+    )
+    assert closed.status_code == 403
+    assert closed.json()["error"]["code"] == "TSC-VOCAB-0002"
+
+    # **고치는 것은 전부 관리자다.** 이름을 바꾸는 것은 그 값을 쓰는 모든 화면의 글자를
+    # 바꾸는 일이라, 기계 자격으로 열어 두면 되돌릴 자리가 감사 기록뿐이다.
+    forbidden = (
+        ("PATCH", f"/api/vocabularies/terms/{term_id}", {"value": f"고침-{tag}"}),
+        ("POST", f"/api/vocabularies/terms/{term_id}/aliases", {"value": f"별칭-{tag}"}),
+        ("POST", "/api/vocabularies", {"slug": f"probe_{tag}", "label": "축"}),
+        ("PATCH", "/api/vocabularies/manufacturer", {"label": "바뀌면 안 됨"}),
+        ("POST", "/api/condition-keys", {"key": f"probe_{tag}", "label": "조건축"}),
+        ("POST", "/api/equipment-series", {"name": f"계열-{tag}"}),
+    )
+    for method, path, body in forbidden:
+        response = client.request(method, path, json=body, headers=machine)
+        assert response.status_code == 403, f"{path}: {response.status_code} {response.text}"
+        assert response.json()["error"]["code"] == "TSC-AUTH-0103", path
+
+    # **보유 장비 등록도 부서 멤버로는 안 된다** — 부서 관리자여야 한다. 자격이 셋으로
+    # 갈린다는 뜻이다: 멤버(열린 축 값만) · 부서 관리자(+ 제 부서 장비) · 시스템 관리자
+    # (+ 기준정보). 「일반 유저는 인스턴스 추가」 라고 말할 때 그 「일반 유저」 는 부서
+    # 관리자다.
+    unit_body = {
+        "asset_no": f"MEM-{tag}",
+        "name": f"일반 유저 장비-{tag}",
+        "workspace_slug": workspace.slug,
+        "site_term_id": site_id(client, admin),
+        "location": "1동",
+        "category_term_id": category_id(client, admin),
+    }
+    as_member = client.post("/api/equipment", json=unit_body, headers=machine)
+    assert as_member.status_code == 403
+    assert as_member.json()["error"]["code"] == "TSC-WORKSPACES-0003"
+
+    manager = _member_token(client, db, workspace, scopes, role="manager")
+    as_manager = client.post("/api/equipment", json=unit_body, headers=manager)
+    assert as_manager.status_code == 201, as_manager.text
+
+    # 부서 관리자여도 **기준정보는 여전히 못 고친다.**
+    still = client.patch(
+        f"/api/vocabularies/terms/{term_id}", json={"value": f"또 고침-{tag}"}, headers=manager
+    )
+    assert still.status_code == 403
+    assert still.json()["error"]["code"] == "TSC-AUTH-0103"
