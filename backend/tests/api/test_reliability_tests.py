@@ -327,3 +327,59 @@ def test_등급별_수량은_짝으로_담기고_이름_없는_숫자는_거절�
     )
     assert bad.status_code == 400, bad.text
     assert bad.json()["error"]["code"] == "TSC-ATTR-0011"
+
+
+def test_조건은_한쪽만_적어도_되고_숫자로_못_적으면_비고에_적는다(
+    client: TestClient, admin: Signed
+) -> None:
+    """**조건이 늘 두 값 사이인 것은 아니다.**
+
+    「85 이상」 은 최대를 비운 것이고, 「상온」 은 숫자로 못 적는 것이다. 숫자가 없는 줄은
+    사람이 읽고 장비 판정에는 안 실린다(`capability` 가 값 없는 조건을 「제한 없음」 으로
+    넘긴다) — 그렇게라도 남겨야 카드가 시험을 다 말한다.
+
+    그리고 조건 축은 **열하나 전부** 칸으로 서 있다. 넷만 있던 때는 「전압으로 도는 시험」 을
+    적을 자리가 없었다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    rows = client.get(
+        "/api/attribute-definitions",
+        params={"target": "reliability_test"},
+        headers=admin.headers,
+    ).json()
+    conditions = {one["label"]: one for one in rows if one["kind"] == "condition"}
+    # 손으로 적던 넷 말고도 축이 있으면 칸이 있다.
+    for label in ("시험 온도", "상대 습도", "전압", "토크", "충격 에너지"):
+        assert label in conditions, f"「{label}」 조건 칸이 없습니다"
+
+    made = client.post(
+        "/api/reliability-tests",
+        json={
+            "workspace_slug": admin.workspace,
+            "name": f"한쪽 조건-{tag}",
+            "attributes": [
+                # 85 이상 — 최대를 비운다.
+                {"definition_id": conditions["시험 온도"]["id"], "num_min": 85},
+                # 숫자로 못 적는 것.
+                {"definition_id": conditions["전압"]["id"], "note": "규격에 따름"},
+            ],
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    values = {one["label"]: one for one in made.json()["attributes"]}
+    assert values["시험 온도"]["display"] == "85 degC 이상"
+    assert values["전압"]["num_min"] is None and values["전압"]["note"] == "규격에 따름"
+
+    # 숫자도 비고도 없으면 아무 말도 안 하는 줄이라 거절한다.
+    empty = client.post(
+        "/api/reliability-tests",
+        json={
+            "workspace_slug": admin.workspace,
+            "name": f"빈 조건-{tag}",
+            "attributes": [{"definition_id": conditions["토크"]["id"]}],
+        },
+        headers=admin.headers,
+    )
+    assert empty.status_code == 400, empty.text
+    assert empty.json()["error"]["code"] == "TSC-ATTR-0011"

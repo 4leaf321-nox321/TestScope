@@ -412,8 +412,19 @@ def _check_value_shape(
     label = definition.label
     if kind == "number" and item.num_value is None:
         raise AppError("TSC-ATTR-0011", f"「{label}」 은 수치가 필요합니다.")
-    if kind in ("range", "condition") and item.num_min is None and item.num_max is None:
-        raise AppError("TSC-ATTR-0011", f"「{label}」 은 최소나 최대 중 하나는 필요합니다.")
+    # **숫자 대신 말로 적을 수도 있다** — 「상온」 · 「규격에 따름」 · 「1축씩 3방향」.
+    # 그런 줄은 사람이 읽고 장비 판정에는 안 실린다(capability 가 값 없는 조건을 「제한
+    # 없음」 으로 넘긴다). 비고까지 비면 아무 말도 안 하는 줄이라 거절한다.
+    if (
+        kind in ("range", "condition")
+        and item.num_min is None
+        and item.num_max is None
+        and not clean(item.note or "")
+    ):
+        raise AppError(
+            "TSC-ATTR-0011",
+            f"「{label}」 은 최소·최대 중 하나를 적거나, 숫자로 못 적으면 비고에 적으세요.",
+        )
     if (
         kind in ("range", "condition")
         and item.num_min is not None
@@ -549,12 +560,12 @@ def display_of(
 ) -> str:
     """사람이 읽는 한 줄. 화면과 MCP 와 색인 카드가 같은 글자를 쓰게 서버가 만든다.
 
-    **짝 종류의 단위는 칸의 것이다.** 숫자·구간은 적은 사람이 단위를 함께 적지만
-    (「85 %」), 짝은 줄마다 단위를 적지 않는다 — 「등급별 수량」 은 통째로 「개」 다.
+    **값에 단위가 없으면 칸의 단위를 쓴다.** 「85 이상」 은 85 N 인지 85 kN 인지 알 수
+    없고, 그 둘은 자릿수가 셋 다르다 — 화면은 단위를 함께 보내지만 MCP 가 빠뜨릴 수 있다.
+    짝 종류(`pairs`·`matrix`)는 아예 줄마다 단위를 안 적는다: 「등급별 수량」 은 통째로
+    「개」 다.
     """
-    unit = value.unit
-    if not unit and definition.kind in ("pairs", "matrix"):
-        unit = definition.unit
+    unit = value.unit or definition.unit
     return display_attribute(
         definition.kind,
         num_value=value.num_value,

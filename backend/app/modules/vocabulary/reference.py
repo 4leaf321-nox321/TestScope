@@ -870,46 +870,6 @@ RELIABILITY_ATTRIBUTES: tuple[
         4,
     ),
     (
-        "reliability_temperature",
-        "시험 온도",
-        "condition",
-        "degC",
-        "temperature",
-        None,
-        "구간이면 최소·최대를 적는다(-40 ~ 85). **이 값이 그대로 장비 판정이 된다.**",
-        5,
-    ),
-    (
-        "reliability_humidity",
-        "상대 습도",
-        "condition",
-        "%",
-        "humidity",
-        None,
-        "구간이면 최소·최대를 적는다(85 ~ 95).",
-        6,
-    ),
-    (
-        "reliability_frequency",
-        "가진 주파수",
-        "condition",
-        "Hz",
-        "frequency",
-        None,
-        "진동 시험의 주파수 범위(5 ~ 500).",
-        7,
-    ),
-    (
-        "reliability_acceleration",
-        "가속도",
-        "condition",
-        "g",
-        "acceleration",
-        None,
-        "진동·충격의 가속도.",
-        8,
-    ),
-    (
         "reliability_target",
         "시험 대상",
         "text",
@@ -1028,6 +988,36 @@ RELIABILITY_ATTRIBUTES: tuple[
 )
 
 
+#: 조건 칸은 **축 목록에서 만든다.** 손으로 넷만 적어 두었더니 「전압으로 도는 시험」 을
+#: 적을 자리가 없었다(2026-09-23) — 축이 늘면 칸도 따라 는다. 수치가 아닌 축(항온조 같은
+#: boolean)은 빼고, 조건 갈래의 자리(5)부터 축의 차례대로 선다.
+def _condition_attributes(
+    db: Session,
+) -> list[tuple[str, str, str, str, str | None, str | None, str, int]]:
+    rows: list[tuple[str, str, str, str, str | None, str | None, str, int]] = []
+    order = 5
+    for key in db.scalars(
+        select(ConditionKey)
+        .where(ConditionKey.kind == "range", ConditionKey.is_active.is_(True))
+        .order_by(ConditionKey.sort_order, ConditionKey.key)
+    ):
+        rows.append(
+            (
+                f"reliability_cond_{key.key}",
+                key.label,
+                "condition",
+                key.display_unit or key.si_unit,
+                key.key,
+                None,
+                "최소·최대 중 **하나만 적어도 된다** — 비운 쪽은 「제한 없음」 이다. "
+                "숫자 없이 비고만 적으면 사람은 읽지만 장비 판정에는 안 쓰인다.",
+                order,
+            )
+        )
+        order += 1
+    return rows
+
+
 def ensure_reliability_attributes(db: Session) -> int:
     """신뢰성 시험의 정식 속성을 심는다 — key 로 찾아 **없는 것만.**
 
@@ -1036,6 +1026,17 @@ def ensure_reliability_attributes(db: Session) -> int:
     화면에서 고를 것이 없는 칸으로 서고, 그것은 사람이 「고장」 으로 읽는다.
     """
     known = set(db.scalars(select(AttributeDefinition.key)))
+    # **이름도 본다.** (대상, 이름)에 유일 색인이 걸려 있어서, key 가 달라도 이름이 같으면
+    # 넣다가 터진다 — 손으로 적던 조건 넷을 축 목록으로 옮길 때 실제로 겹쳤다.
+    taken = {
+        label.lower()
+        for label in db.scalars(
+            select(AttributeDefinition.label).where(
+                AttributeDefinition.target == "reliability_test",
+                AttributeDefinition.is_active.is_(True),
+            )
+        )
+    }
     conditions = {
         key: cid for cid, key in db.execute(select(ConditionKey.id, ConditionKey.key))
     }
@@ -1050,9 +1051,10 @@ def ensure_reliability_attributes(db: Session) -> int:
         axis_slug,
         help_text,
         order,
-    ) in RELIABILITY_ATTRIBUTES:
-        if key in known:
+    ) in [*RELIABILITY_ATTRIBUTES, *_condition_attributes(db)]:
+        if key in known or label.lower() in taken:
             continue
+        taken.add(label.lower())
         if kind == "condition" and condition_key not in conditions:
             continue
         if kind == "term" and axis_slug not in axes:

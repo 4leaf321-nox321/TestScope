@@ -11,6 +11,7 @@
  */
 
 import { useEffect, useMemo, useState } from 'react'
+import { X } from 'lucide-react'
 
 import { SearchablePicker } from '@/shared/components/SearchablePicker'
 import { Input } from '@/shared/components/ui/input'
@@ -46,6 +47,8 @@ export interface StandardValue {
   methodId: string | null
   pairs: Pair[]
   matrix: MatrixRow[]
+  /** 조건 줄의 비고 — 숫자로 못 적는 것(「상온」·「규격에 따름」). */
+  note: string
 }
 
 function empty(): StandardValue {
@@ -58,6 +61,7 @@ function empty(): StandardValue {
     methodId: null,
     pairs: [],
     matrix: [],
+    note: '',
   }
 }
 
@@ -75,6 +79,7 @@ export function fromValues(rows: AttributeValue[] | undefined): Record<string, S
       methodId: row.method_id ?? null,
       pairs: Array.isArray(json) && row.kind === 'pairs' ? (json as Pair[]) : [],
       matrix: Array.isArray(json) && row.kind === 'matrix' ? (json as MatrixRow[]) : [],
+      note: row.note ?? '',
     }
   }
   return out
@@ -94,13 +99,15 @@ export function toStandardPayload(
       out.push({ ...base, num_value: value.numValue, unit: definition.unit })
     } else if (
       (definition.kind === 'condition' || definition.kind === 'range') &&
-      (value.numMin !== null || value.numMax !== null)
+      // **숫자가 없어도 비고가 있으면 보낸다** — 「상온」 처럼 숫자로 못 적는 조건이 있다.
+      (value.numMin !== null || value.numMax !== null || value.note.trim())
     ) {
       out.push({
         ...base,
         num_min: value.numMin,
         num_max: value.numMax,
         unit: definition.unit,
+        note: value.note.trim() || null,
       })
     } else if (definition.kind === 'term' && value.termId) {
       out.push({ ...base, term_id: value.termId })
@@ -142,7 +149,13 @@ const LONG = new Set([
  * 여기 없는 key 는 마지막 묶음으로 간다 — 다른 대상(보유 장비·계열)이나 나중에 는 칸도
  * 자리를 잃지 않는다.
  */
-const SECTIONS: { title: string; hint?: string; keys: string[] }[] = [
+const SECTIONS: {
+  title: string
+  hint?: string
+  keys: string[]
+  /** 참이면 조건 종류(`kind="condition"`) 칸을 전부 이 갈래가 가져간다. */
+  conditions?: boolean
+}[] = [
   {
     title: '무엇을 왜',
     keys: ['reliability_type', 'reliability_product_group'],
@@ -153,15 +166,12 @@ const SECTIONS: { title: string; hint?: string; keys: string[] }[] = [
     keys: ['reliability_reference_method', 'reliability_spec_document'],
   },
   {
+    // 조건 칸은 **축마다 하나**라 열하나가 된다. 키로 적지 않고 종류로 모은다 —
+    // 축이 늘면 칸도 따라 늘어야 하고, 그때 이 표를 고치는 것을 누가 잊는다.
     title: '시험 조건',
-    hint: '여기 적은 수치가 그대로 「이 시험 돌릴 수 있는 장비」 판정이 됩니다. 「기타 조건」 은 글이라 판정에 안 쓰입니다.',
-    keys: [
-      'reliability_temperature',
-      'reliability_humidity',
-      'reliability_frequency',
-      'reliability_acceleration',
-      'reliability_other_conditions',
-    ],
+    hint: '적은 수치가 그대로 「이 시험 돌릴 수 있는 장비」 판정이 됩니다. 한쪽만 적으면 「이상」·「이하」 이고, 숫자로 못 적는 것은 비고에 적습니다(그 줄은 판정에 안 쓰입니다).',
+    keys: ['reliability_other_conditions'],
+    conditions: true,
   },
   {
     title: '대상과 수량',
@@ -219,19 +229,29 @@ export function StandardAttributeFields({
   // 갈래마다 제 칸을 모은다. 표에 없는 key 는 마지막 갈래로 — 나중에 는 칸도 자리를 잃지 않는다.
   const grouped = useMemo(() => {
     const placed = new Set<string>()
+    const take = (one: AttributeDefinition | undefined): one is AttributeDefinition => {
+      if (!one) return false
+      placed.add(one.key)
+      return true
+    }
     const out = SECTIONS.map((section) => ({
       ...section,
-      rows: section.keys
-        .map((key) => definitions.find((one) => one.key === key))
-        .filter((one): one is AttributeDefinition => {
-          if (!one) return false
-          placed.add(one.key)
-          return true
-        }),
-    })).filter((section) => section.rows.length > 0)
+      rows: section.keys.map((key) => definitions.find((one) => one.key === key)).filter(take),
+      // 조건 칸은 축마다 하나라 이름으로 못 적는다 — 종류로 모은다.
+      conditionRows: section.conditions
+        ? definitions.filter((one) => one.kind === 'condition').filter(take)
+        : [],
+    })).filter((section) => section.rows.length > 0 || section.conditionRows.length > 0)
     const rest = definitions.filter((one) => !placed.has(one.key))
     if (rest.length > 0)
-      out.push({ title: '그 밖의 칸', hint: undefined, keys: [], rows: rest })
+      out.push({
+        title: '그 밖의 칸',
+        hint: undefined,
+        keys: [],
+        conditions: false,
+        rows: rest,
+        conditionRows: [],
+      })
     return out
   }, [definitions])
 
@@ -244,6 +264,13 @@ export function StandardAttributeFields({
           <legend className="px-1.5 text-sm font-medium">{section.title}</legend>
           {section.hint && (
             <p className="text-muted-foreground mb-3 text-xs">{section.hint}</p>
+          )}
+          {section.conditionRows.length > 0 && (
+            <ConditionRows
+              definitions={section.conditionRows}
+              values={values}
+              onChange={onChange}
+            />
           )}
           {/* **가로로 다 벌리지 않는다.** 창이 넓어도 입력 칸이 화면을 가로지르면 라벨과
               칸이 멀어져 무엇을 적는 자리인지 안 보인다 — 열을 늘려 칸 폭을 잡아 둔다. */}
@@ -391,6 +418,142 @@ export function StandardAttributeFields({
       ))}
     </>
   )
+}
+
+/**
+ * 시험 조건 — **줄을 필요한 만큼 늘린다.**
+ *
+ * 조건 축은 열하나다. 전부 빈 칸으로 세워 두면 카드가 빈 칸으로만 길어지고, 정작 적을
+ * 두 줄이 그 사이에 묻힌다. 그래서 **적은 것만 서고**, 나머지는 「조건 추가」 로 꺼낸다.
+ *
+ * 한 줄이 셋 중 하나가 된다:
+ *
+ *     -40 ~ 85       양쪽 다 적음 — 그 사이
+ *     85 이상         최대만 비움
+ *     -40 이하        최소만 비움
+ *     (비고만)        숫자로 못 적는 것 — 「상온」·「규격에 따름」. 판정에는 안 쓰인다
+ */
+function ConditionRows({
+  definitions,
+  values,
+  onChange,
+}: {
+  definitions: AttributeDefinition[]
+  values: Record<string, StandardValue>
+  onChange: (next: Record<string, StandardValue>) => void
+}) {
+  const filled = (one: AttributeDefinition) => {
+    const value = values[one.id]
+    if (!value) return false
+    return value.numMin !== null || value.numMax !== null || value.note.trim() !== ''
+  }
+  // 한 번 꺼낸 줄은 비워도 남는다 — 지우려고 값을 비웠는데 줄이 사라지면 놀란다.
+  const [shown, setShown] = useState<string[]>(() =>
+    definitions.filter(filled).map((one) => one.id),
+  )
+  useEffect(() => {
+    setShown((prev) => {
+      const next = definitions.filter((one) => filled(one) && !prev.includes(one.id))
+      return next.length > 0 ? [...prev, ...next.map((one) => one.id)] : prev
+    })
+    // 값이 밖에서 통째로 바뀔 때(수정 창 열기)만 맞춘다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [definitions, values])
+
+  const rows = definitions.filter((one) => shown.includes(one.id))
+  const rest = definitions.filter((one) => !shown.includes(one.id))
+  const set = (id: string, patch: Partial<StandardValue>) =>
+    onChange({ ...values, [id]: { ...(values[id] ?? empty()), ...patch } })
+
+  return (
+    <div className="mb-4 max-w-4xl space-y-2">
+      {rows.map((definition) => {
+        const value = values[definition.id] ?? empty()
+        const id = `attr-${definition.id}`
+        return (
+          <div key={definition.id} className="bg-muted/30 rounded-md border p-2.5">
+            <div className="flex flex-wrap items-center gap-2">
+              <Label htmlFor={id} className="w-28 shrink-0 text-sm">
+                {definition.label}
+              </Label>
+              <Input
+                id={id}
+                type="number"
+                value={value.numMin ?? ''}
+                onChange={(event) =>
+                  set(definition.id, {
+                    numMin: event.target.value === '' ? null : Number(event.target.value),
+                  })
+                }
+                placeholder="최소"
+                className="w-24"
+              />
+              <span className="text-muted-foreground text-sm">~</span>
+              <Input
+                type="number"
+                value={value.numMax ?? ''}
+                onChange={(event) =>
+                  set(definition.id, {
+                    numMax: event.target.value === '' ? null : Number(event.target.value),
+                  })
+                }
+                placeholder="최대"
+                aria-label={`${definition.label} 최대`}
+                className="w-24"
+              />
+              <span className="text-muted-foreground w-12 text-sm">{definition.unit}</span>
+              <Input
+                value={value.note}
+                onChange={(event) => set(definition.id, { note: event.target.value })}
+                placeholder="비고 — 숫자로 못 적는 것 (상온 · 규격에 따름)"
+                aria-label={`${definition.label} 비고`}
+                className="min-w-40 flex-1"
+                maxLength={2000}
+              />
+              <button
+                type="button"
+                aria-label={`${definition.label} 빼기`}
+                className="text-muted-foreground hover:text-foreground"
+                onClick={() => {
+                  setShown((prev) => prev.filter((one) => one !== definition.id))
+                  set(definition.id, { numMin: null, numMax: null, note: '' })
+                }}
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <p className="text-muted-foreground mt-1 pl-30 text-xs">
+              {describeRange(value, definition.unit)}
+            </p>
+          </div>
+        )
+      })}
+
+      {rest.length > 0 && (
+        <SearchablePicker
+          id="condition-add"
+          options={rest.map((one) => ({ id: one.id, label: one.label, detail: one.unit }))}
+          value=""
+          onChange={(id) => id && setShown((prev) => [...prev, id])}
+          placeholder="조건 추가"
+          detailTitle="시험 조건"
+          detailHint="여기 없는 축이 필요하면 관리자가 「검색 조건」 에 축을 더합니다."
+        />
+      )}
+    </div>
+  )
+}
+
+/** 지금 적힌 것이 무슨 뜻인지 한 줄로 — 한쪽만 적은 것이 실수인지 뜻인지 사람이 본다. */
+function describeRange(value: StandardValue, unit: string): string {
+  const suffix = unit ? ` ${unit}` : ''
+  if (value.numMin !== null && value.numMax !== null) {
+    return `${value.numMin} ~ ${value.numMax}${suffix} 사이`
+  }
+  if (value.numMin !== null) return `${value.numMin}${suffix} 이상 (최대는 제한 없음)`
+  if (value.numMax !== null) return `${value.numMax}${suffix} 이하 (최소는 제한 없음)`
+  if (value.note.trim()) return '숫자가 없어 장비 판정에는 안 쓰입니다 — 사람이 읽는 줄입니다.'
+  return '최소·최대 중 하나만 적어도 됩니다.'
 }
 
 function TermField({

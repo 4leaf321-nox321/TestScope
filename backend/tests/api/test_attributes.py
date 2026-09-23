@@ -145,7 +145,9 @@ def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다
         headers=manager.headers,
     )
     assert patched.status_code == 200, patched.text
-    assert [one["display"] for one in patched.json()["attributes"]] == ["-40 ~ 125"]
+    # **단위를 빼지 않는다**(2026-09-23). 값에 단위를 안 보내도 칸의 단위로 읽어 준다 —
+    # 「-40 ~ 125」 만 남으면 degC 인지 K 인지 알 수 없고, 그 답은 아무도 못 쓴다.
+    assert [one["display"] for one in patched.json()["attributes"]] == ["-40 ~ 125 degC"]
 
 
 def test_초안은_색인_카드에_안_들어가고_정식은_들어간다(
