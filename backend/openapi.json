@@ -17616,6 +17616,11 @@
             "type": "array",
             "title": "Attributes"
           },
+          "attachment_count": {
+            "type": "integer",
+            "title": "Attachment Count",
+            "default": 0
+          },
           "can_edit": {
             "type": "boolean",
             "title": "Can Edit"

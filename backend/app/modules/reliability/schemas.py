@@ -30,6 +30,9 @@ class ReliabilityTestOut(BaseModel):
     test_items: list[ReliabilityTestItemOut]
     attributes: list[AttributeValueOut]
     """항목 값 — 정식이 먼저, 초안이 뒤. `status` 로 가른다."""
+    attachment_count: int = 0
+    """붙은 그림 수. **목록이 낱장을 받지 않는다** — 줄마다 그림을 받아 오면 스무 줄에
+    쉰 번을 왕복한다. 수만 보이고, 누르면 그때 받는다."""
     can_edit: bool
     """요청한 사람이 고칠 수 있나 — 그 부서의 관리자 또는 시스템 관리자. 화면이 단추를
     보일지 정하는 데 쓴다. 판정은 서버가 한다."""

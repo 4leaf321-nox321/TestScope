@@ -261,3 +261,24 @@ def test_보는_것은_누구나_넣는_것은_고칠_수_있는_사람(
         client.delete(f"/api/attachments/{made.json()['id']}", headers=member).status_code
         == 403
     )
+
+
+def test_목록은_장수만_보이고_낱장은_안_받는다(client: TestClient, admin: Signed) -> None:
+    """**목록이 낱장을 받으면 스무 줄에 쉰 번을 왕복한다.** 수만 보이고, 누르면 그때 받는다.
+
+    그리고 그 수가 있어야 화면이 「그림 3」 단추를 보일지 정한다 — 없으면 줄마다 눌러 봐야
+    붙은 그림이 있는지 안다.
+    """
+    tag = uuid.uuid4().hex[:6]
+    test_id = _test(client, admin, f"장수 시험-{tag}")
+    for shade in (11, 22):
+        assert (
+            _upload(client, admin.headers, test_id, data=_png((shade, 0, 0))).status_code
+            == 201
+        )
+
+    rows = client.get("/api/reliability-tests", headers=admin.headers).json()
+    mine = next(one for one in rows if one["id"] == test_id)
+    assert mine["attachment_count"] == 2
+    # 낱장은 목록에 안 실린다.
+    assert "attachments" not in mine

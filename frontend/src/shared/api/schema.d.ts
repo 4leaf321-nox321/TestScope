@@ -5864,6 +5864,11 @@ export interface components {
             test_items: components["schemas"]["ReliabilityTestItemOut"][];
             /** Attributes */
             attributes: components["schemas"]["AttributeValueOut"][];
+            /**
+             * Attachment Count
+             * @default 0
+             */
+            attachment_count: number;
             /** Can Edit */
             can_edit: boolean;
             /**

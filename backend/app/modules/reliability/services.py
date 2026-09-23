@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.attachments import services as attachments
+from app.modules.attachments.models import Attachment
 from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
@@ -91,6 +92,18 @@ def _outs(db: Session, user: User, rows: list[ReliabilityTest]) -> list[Reliabil
         )
         counts_by_workspace[workspace_id] = _equipment_counts(db, user, workspace_id, term_ids)
     editable = {wid: _can_edit(db, user, wid) for wid in workspaces}
+    # **한 번에 센다** — 줄마다 세면 스무 줄에 스무 번 왕복한다.
+    shots = {
+        object_id: count
+        for object_id, count in db.execute(
+            select(Attachment.object_id, func.count())
+            .where(
+                Attachment.target == "reliability_test",
+                Attachment.object_id.in_([row.id for row in rows]),
+            )
+            .group_by(Attachment.object_id)
+        ).all()
+    }
     out: list[ReliabilityTestOut] = []
     for row in rows:
         workspace = workspaces[row.workspace_id]
@@ -109,6 +122,7 @@ def _outs(db: Session, user: User, rows: list[ReliabilityTest]) -> list[Reliabil
                     for t in items[row.id]
                 ],
                 attributes=attribute_values[row.id],
+                attachment_count=shots.get(row.id, 0),
                 can_edit=editable[row.workspace_id],
                 created_at=row.created_at,
                 updated_at=row.updated_at,

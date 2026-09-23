@@ -2158,6 +2158,27 @@ async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
     return await _get(ctx, f"/reliability-tests/{test_id}")
 
 
+@mcp.tool()
+async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[str, Any]:
+    """붙은 **그림과 첨부**의 목록 — 무엇이 어느 칸에 붙어 있나.
+
+    `target` 은 지금 `reliability_test` 뿐이다. 줄마다 `caption`(무엇을 찍었나) ·
+    `definition_label`(어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
+
+    **너는 그림을 못 본다.** 읽을 수 있는 것은 `caption` 뿐이다 — 설명이 비어 있으면 그
+    그림은 너에게 없는 것과 같으니, 「그림 3장이 있고 설명은 없습니다」 라고 그대로 말하고
+    **내용을 짐작하지 마라.** 「시편 장착 방향」 이라고 적힌 그림을 보고 방향을 말하는 것도
+    짐작이다 — 적힌 글자까지만 옮긴다.
+
+    사람에게 보이려면 화면의 그 시험을 열라고 말한다. 파일 주소(`url`)는 자격이 있어야
+    열리므로 그대로 건네도 브라우저에서 안 열린다.
+    """
+    return _listed(
+        await _get(ctx, "/attachments", {"target": target, "object_id": object_id}),
+        "attachments",
+    )
+
+
 @writes
 async def create_reliability_test(
     ctx: Context,

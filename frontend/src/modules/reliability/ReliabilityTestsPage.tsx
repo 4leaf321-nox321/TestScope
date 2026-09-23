@@ -11,7 +11,7 @@
 
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Wrench } from 'lucide-react'
+import { Image as ImageIcon, Wrench } from 'lucide-react'
 
 import { EmptyState } from '@/shared/components/EmptyState'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -28,6 +28,7 @@ import {
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { useResource } from '@/shared/hooks/useResource'
 import { Button } from '@/shared/components/ui/button'
+import { AttachmentsDialog } from '@/modules/attachments/AttachmentsDialog'
 import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
 import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 import { reliabilityApi } from '@/modules/reliability/api'
@@ -51,6 +52,8 @@ export default function ReliabilityTestsPage() {
   const tests = useResource(() => reliabilityApi.listAll(attrs), [attrs])
   const [query, setQuery] = useState('')
   const [asking, setAsking] = useState<ReliabilityTest | null>(null)
+  /** 그림 보기 — **조회하는 사람의 자리.** 수정 창을 열지 않고 본다. */
+  const [showing, setShowing] = useState<typeof asking>(null)
   const rows = tests.data ?? []
   const needle = query.trim().toLowerCase()
   const shown = useMemo(
@@ -176,6 +179,17 @@ export default function ReliabilityTestsPage() {
                   {/* **이 시험, 어느 장비로 돌리나.** 조건 속성이 그대로 검색 조건이 된다 —
                       시험 항목까지만 이으면 답이 「인장 되는 장비 N대」 라서, 사람이 다시
                       장비를 하나씩 열어 봐야 한다. */}
+                  {row.attachment_count > 0 && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="mr-1"
+                      onClick={() => setShowing(row)}
+                    >
+                      <ImageIcon className="mr-1 size-3.5" />
+                      그림 {row.attachment_count}
+                    </Button>
+                  )}
                   <Button size="sm" variant="outline" onClick={() => setAsking(row)}>
                     <Wrench className="mr-1 size-3.5" />
                     가능한 장비
@@ -188,6 +202,12 @@ export default function ReliabilityTestsPage() {
       )}
 
       {asking && <CapabilityDialog test={asking} onClose={() => setAsking(null)} />}
+      <AttachmentsDialog
+        open={showing !== null}
+        testId={showing?.id ?? null}
+        title={showing?.name ?? ''}
+        onClose={() => setShowing(null)}
+      />
     </div>
   )
 }
