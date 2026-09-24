@@ -103,7 +103,7 @@ export function NewEquipmentSeriesDialog({
               required
             />
             <p className="text-muted-foreground text-xs">
-              제조사는 아래에서 고릅니다. 이름에 같이 적지 마세요.
+              제조사는 아래에서 고릅니다. 이름에 같이 적지 마십시오.
             </p>
           </div>
 

@@ -81,7 +81,7 @@ export function activeCount(filters: EquipmentFilterState): number {
 const CALIBRATION_OPTIONS = [
   { value: 'required', label: '대상 전부' },
   { value: 'missing', label: '이력 없음' },
-  { value: 'overdue', label: '기한 지남' },
+  { value: 'overdue', label: '기한 초과' },
   { value: 'exempt', label: '대상 아님' },
 ]
 

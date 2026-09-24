@@ -8,6 +8,7 @@ from __future__ import annotations
 import logging
 import uuid
 from calendar import monthrange
+from dataclasses import dataclass
 from datetime import UTC, date, datetime
 from typing import Any
 
@@ -123,6 +124,17 @@ def _due(db: Session, row: Equipment) -> tuple[date | None, bool, bool]:
         .order_by(EquipmentCalibration.calibrated_on.desc())
         .limit(1)
     ).first()
+    return _due_from(row, last if last is None else (last[0], last[1]))
+
+
+def _due_from(
+    row: Equipment, last: tuple[date | None, date | None] | None
+) -> tuple[date | None, bool, bool]:
+    """마지막 교정 한 줄로 차기일을 정한다 — **셈만 한다.**
+
+    질의와 갈라 둔 이유: 목록은 쉰 대의 마지막 교정을 한 번에 받아 오고(`_bulk`), 그때도
+    셈은 똑같아야 한다. 규칙이 두 벌이면 목록과 상세의 차기일이 갈린다.
+    """
     if last is None:
         # 대상인데 한 번도 안 받았다. **이력이 없다는 사실만으로는 못 가른다** —
         # 대상이 아닌 장비와 빠뜨린 장비가 같아 보인다.
@@ -131,7 +143,7 @@ def _due(db: Session, row: Equipment) -> tuple[date | None, bool, bool]:
     if stated is not None:
         return stated, False, False
     months = row.calibration_interval_months
-    if not row.calibration_required or not months:
+    if not row.calibration_required or not months or calibrated_on is None:
         return None, False, False
     # 달을 더한다. 말일 문제는 그 달의 마지막 날로 눕힌다 — 1/31 + 1개월은 2/28 이다.
     total = calibrated_on.month - 1 + months
@@ -153,27 +165,257 @@ def _override_count(db: Session, equipment_id: uuid.UUID) -> int:
     )
 
 
-def _can_edit(db: Session, user: User, row: Equipment) -> bool:
-    """고칠 수 있는가. **판정 로직을 재사용한다** — 화면이 스스로 계산하면
-    버튼은 보이는데 누르면 403 인 상태가 생긴다."""
+def _can_edit_workspace(db: Session, user: User, workspace_id: uuid.UUID | None) -> bool:
+    """이 부서의 장비를 고칠 수 있는가. **판정 로직을 재사용한다** — 화면이 스스로
+    계산하면 버튼은 보이는데 누르면 403 인 상태가 생긴다.
+
+    장비가 아니라 **부서**로 묻는다: 한 부서의 장비 쉰 대에 같은 답이 쉰 번 나오는데,
+    그 판정은 부서당 한 번이면 된다(`_bulk`).
+    """
     try:
-        require_owner_edit(
-            db, user, row.owner_workspace_id, what=_WHAT, code=_CODE, role="member"
-        )
+        require_owner_edit(db, user, workspace_id, what=_WHAT, code=_CODE, role="member")
     except AppError:
         return False
     return True
 
 
-def equipment_out(db: Session, row: Equipment, viewer: User) -> EquipmentOut:
-    workspace = db.get(Workspace, row.owner_workspace_id) if row.owner_workspace_id else None
-    contact = db.get(User, row.contact_user_id) if row.contact_user_id else None
-    model = db.get(EquipmentModel, row.model_id) if row.model_id else None
-    series = db.get(EquipmentSeries, model.series_id) if model else None
-    # **카탈로그가 있으면 카탈로그가 이긴다.** 개체가 적어 둔 글자는 미연결일 때만
-    # 쓰이고, 연결하는 순간 서버가 비운다 — 같은 사실이 두 곳에 남으면 안 된다.
-    category_term_id = series.category_term_id if series else row.category_term_id
-    due_on, due_estimated, due_missing = _due(db, row)
+def _can_edit(db: Session, user: User, row: Equipment) -> bool:
+    return _can_edit_workspace(db, user, row.owner_workspace_id)
+
+
+@dataclass
+class _Bulk:
+    """목록 한 쪽에 필요한 것을 **한 번에** 받아 둔 것.
+
+    ## 왜 있나
+
+    `equipment_out()` 은 줄 하나를 만들며 거점·분류·장비군·제조사·교정 이력·시험 항목·
+    실측 수·속성을 낱개로 묻는다. 한 줄이면 아무 문제가 없고, 쉰 줄이면 **질의가 593번**
+    이다(실측 2026-09-24, 50줄 · 줄당 11.9회 · 330 ms). 줄 수에 정비례하므로 대장이
+    자랄수록 나빠지고, 299대인 지금이 이미 느리다.
+
+    신뢰성 시험 목록(`reliability/services.py` 의 `_outs`)이 같은 이유로 이미 이 모양이다 —
+    「한 번에 센다: 줄마다 세면 스무 줄에 스무 번 왕복한다」.
+
+    ## 규칙
+
+    **줄 수에 비례하는 질의를 만들지 않는다.** 여기 칸을 더할 때도 `IN (...)` 한 번으로
+    받아 dict 에 담는다. 낱개로 물으면 이 표의 존재 이유가 사라진다.
+    """
+
+    workspaces: dict[uuid.UUID, Workspace]
+    users: dict[uuid.UUID, User]
+    models: dict[uuid.UUID, EquipmentModel]
+    series: dict[uuid.UUID, EquipmentSeries]
+    terms: dict[uuid.UUID, VocabularyTerm]
+    item_count: dict[uuid.UUID, int]
+    items: dict[uuid.UUID, list[str]]
+    overrides: dict[uuid.UUID, int]
+    due: dict[uuid.UUID, tuple[date | None, date | None]]
+    attributes: dict[uuid.UUID, list[Any]]
+    editable: dict[uuid.UUID | None, bool]
+
+    def term_value(self, term_id: uuid.UUID | None) -> str | None:
+        term = self.terms.get(term_id) if term_id else None
+        return term.value if term else None
+
+    def group_of(self, term_id: uuid.UUID | None) -> str | None:
+        """장비군 — 그 유형의 최상위 조상. `_category_group` 과 같은 규칙(고리도 끊는다)."""
+        seen: set[uuid.UUID] = set()
+        term = self.terms.get(term_id) if term_id else None
+        while term is not None and term.parent_term_id is not None:
+            if term.id in seen:
+                break
+            seen.add(term.id)
+            parent = self.terms.get(term.parent_term_id)
+            if parent is None:
+                break
+            term = parent
+        return term.value if term else None
+
+
+def _load_terms(db: Session, want: set[uuid.UUID]) -> dict[uuid.UUID, VocabularyTerm]:
+    """값들과 **그 조상 전부**를 받는다.
+
+    장비군은 부모를 타고 올라가야 나오므로 한 번만 받아서는 부족하다. 깊이가 얕아(21군 /
+    87유형) 두세 번이면 닫히고, 그 몇 번은 줄 수와 무관하다.
+    """
+    out: dict[uuid.UUID, VocabularyTerm] = {}
+    todo = {one for one in want if one}
+    # 데이터가 고리를 이루면 영원히 돈다 — 깊이를 못 박는다.
+    for _ in range(10):
+        todo -= out.keys()
+        if not todo:
+            break
+        for term in db.scalars(select(VocabularyTerm).where(VocabularyTerm.id.in_(todo))):
+            out[term.id] = term
+        todo = {one.parent_term_id for one in out.values() if one.parent_term_id}
+    return out
+
+
+def _bulk(db: Session, rows: list[Equipment], viewer: User) -> _Bulk:
+    """`equipment_out` 이 줄마다 묻던 것을 한 번씩 묻는다. 질의 수는 **줄 수와 무관**하다."""
+    ids = [row.id for row in rows]
+    if not ids:
+        empty: dict[Any, Any] = {}
+        return _Bulk(
+            empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty
+        )
+
+    models = {
+        one.id: one
+        for one in db.scalars(
+            select(EquipmentModel).where(
+                EquipmentModel.id.in_({row.model_id for row in rows if row.model_id})
+            )
+        )
+    }
+    series = {
+        one.id: one
+        for one in db.scalars(
+            select(EquipmentSeries).where(
+                EquipmentSeries.id.in_({one.series_id for one in models.values()})
+            )
+        )
+    }
+    workspaces = {
+        one.id: one
+        for one in db.scalars(
+            select(Workspace).where(
+                Workspace.id.in_(
+                    {row.owner_workspace_id for row in rows if row.owner_workspace_id}
+                )
+            )
+        )
+    }
+    users = {
+        one.id: one
+        for one in db.scalars(
+            select(User).where(
+                User.id.in_({row.contact_user_id for row in rows if row.contact_user_id})
+            )
+        )
+    }
+    # 거점 · 분류(계열 것이 이긴다) · 제조사 — 세 자리가 모두 기준정보 값이다.
+    wanted: set[uuid.UUID] = set()
+    for row in rows:
+        model = models.get(row.model_id) if row.model_id else None
+        line = series.get(model.series_id) if model else None
+        for term_id in (
+            line.category_term_id if line else row.category_term_id,
+            row.site_term_id,
+            line.maker_term_id if line else None,
+        ):
+            if term_id:
+                wanted.add(term_id)
+    terms = _load_terms(db, wanted)
+
+    item_count = {
+        equipment_id: int(count)
+        for equipment_id, count in db.execute(
+            select(EquipmentTestItem.equipment_id, func.count())
+            .where(EquipmentTestItem.equipment_id.in_(ids))
+            .group_by(EquipmentTestItem.equipment_id)
+        ).all()
+    }
+    items: dict[uuid.UUID, list[str]] = {}
+    for equipment_id, value in db.execute(
+        select(EquipmentTestItem.equipment_id, VocabularyTerm.value)
+        .join(VocabularyTerm, VocabularyTerm.id == EquipmentTestItem.test_item_term_id)
+        .where(EquipmentTestItem.equipment_id.in_(ids))
+        .distinct()
+        .order_by(EquipmentTestItem.equipment_id, VocabularyTerm.value)
+    ).all():
+        items.setdefault(equipment_id, []).append(value)
+    overrides = {
+        equipment_id: int(count)
+        for equipment_id, count in db.execute(
+            select(EquipmentSpecValue.equipment_id, func.count())
+            .where(EquipmentSpecValue.equipment_id.in_(ids))
+            .group_by(EquipmentSpecValue.equipment_id)
+        ).all()
+    }
+    # 마지막 교정 한 줄씩 — `DISTINCT ON` 이 장비마다 맨 앞 하나만 남긴다.
+    due = {
+        equipment_id: (calibrated_on, next_due_on)
+        for equipment_id, calibrated_on, next_due_on in db.execute(
+            select(
+                EquipmentCalibration.equipment_id,
+                EquipmentCalibration.calibrated_on,
+                EquipmentCalibration.next_due_on,
+            )
+            .where(EquipmentCalibration.equipment_id.in_(ids))
+            .distinct(EquipmentCalibration.equipment_id)
+            .order_by(
+                EquipmentCalibration.equipment_id,
+                EquipmentCalibration.calibrated_on.desc(),
+            )
+        ).all()
+    }
+    # 권한은 **부서마다** 한 번 — 같은 부서의 장비 쉰 대가 같은 답을 받는다.
+    editable: dict[uuid.UUID | None, bool] = {
+        workspace_id: _can_edit_workspace(db, viewer, workspace_id)
+        for workspace_id in {row.owner_workspace_id for row in rows}
+    }
+    return _Bulk(
+        workspaces=workspaces,
+        users=users,
+        models=models,
+        series=series,
+        terms=terms,
+        item_count=item_count,
+        items=items,
+        overrides=overrides,
+        due=due,
+        attributes=attributes.values_of(db, target="equipment", object_ids=ids),
+        editable=editable,
+    )
+
+
+def equipment_out(
+    db: Session, row: Equipment, viewer: User, bulk: _Bulk | None = None
+) -> EquipmentOut:
+    """줄 하나의 응답.
+
+    `bulk` 를 주면 **질의를 한 번도 더 하지 않는다** — 목록이 그 길로 온다. 안 주면
+    낱개로 묻는다: 상세 한 건에 배치를 세우는 것은 오히려 손해다.
+    """
+    if bulk is None:
+        workspace = (
+            db.get(Workspace, row.owner_workspace_id) if row.owner_workspace_id else None
+        )
+        contact = db.get(User, row.contact_user_id) if row.contact_user_id else None
+        model = db.get(EquipmentModel, row.model_id) if row.model_id else None
+        series = db.get(EquipmentSeries, model.series_id) if model else None
+        category_term_id = series.category_term_id if series else row.category_term_id
+        category = _term_value(db, category_term_id)
+        category_group = _category_group(db, category_term_id)
+        maker = _term_value(db, series.maker_term_id) if series else row.maker_text
+        site = _term_value(db, row.site_term_id)
+        due_on, due_estimated, due_missing = _due(db, row)
+        test_item_count = _test_item_count(db, row.id)
+        test_items = _test_items(db, row.id)
+        overrides = _override_count(db, row.id)
+        values = attributes.values_of(db, target="equipment", object_ids=[row.id])[row.id]
+        editable = _can_edit(db, viewer, row)
+    else:
+        workspace = (
+            bulk.workspaces.get(row.owner_workspace_id) if row.owner_workspace_id else None
+        )
+        contact = bulk.users.get(row.contact_user_id) if row.contact_user_id else None
+        model = bulk.models.get(row.model_id) if row.model_id else None
+        series = bulk.series.get(model.series_id) if model else None
+        category_term_id = series.category_term_id if series else row.category_term_id
+        category = bulk.term_value(category_term_id)
+        category_group = bulk.group_of(category_term_id)
+        maker = bulk.term_value(series.maker_term_id) if series else row.maker_text
+        site = bulk.term_value(row.site_term_id)
+        due_on, due_estimated, due_missing = _due_from(row, bulk.due.get(row.id))
+        test_item_count = bulk.item_count.get(row.id, 0)
+        test_items = bulk.items.get(row.id, [])
+        overrides = bulk.overrides.get(row.id, 0)
+        values = bulk.attributes.get(row.id, [])
+        editable = bulk.editable.get(row.owner_workspace_id, False)
     return EquipmentOut(
         id=row.id,
         asset_no=row.asset_no,
@@ -183,15 +425,15 @@ def equipment_out(db: Session, row: Equipment, viewer: User) -> EquipmentOut:
         model_name=model.name if model else row.model_text,
         series_id=model.series_id if model else None,
         series_name=series.name if series else None,
-        category=_term_value(db, category_term_id),
-        category_group=_category_group(db, category_term_id),
-        manufacturer=(_term_value(db, series.maker_term_id) if series else row.maker_text),
+        category=category,
+        category_group=category_group,
+        manufacturer=maker,
         catalog_linked=model is not None,
         serial_no=row.serial_no,
         workspace_slug=workspace.slug if workspace else None,
         workspace_name=workspace.name if workspace else None,
         shared_use=row.shared_use,
-        site=_term_value(db, row.site_term_id),
+        site=site,
         location=row.location,
         status=row.status,
         acquired_on=row.acquired_on,
@@ -199,17 +441,17 @@ def equipment_out(db: Session, row: Equipment, viewer: User) -> EquipmentOut:
         retired_on=row.retired_on,
         contact_name=contact.display_name if contact else None,
         note=row.note,
-        test_item_count=_test_item_count(db, row.id),
-        test_items=_test_items(db, row.id),
+        test_item_count=test_item_count,
+        test_items=test_items,
         calibration_required=row.calibration_required,
         calibration_interval_months=row.calibration_interval_months,
         calibration_due_on=due_on,
         calibration_due_estimated=due_estimated,
         calibration_missing=due_missing,
-        spec_override_count=_override_count(db, row.id),
-        attributes=attributes.values_of(db, target="equipment", object_ids=[row.id])[row.id],
+        spec_override_count=overrides,
+        attributes=values,
         created_at=row.created_at,
-        can_edit=_can_edit(db, viewer, row),
+        can_edit=editable,
     )
 
 
@@ -359,9 +601,13 @@ def list_equipment(
     # **total 을 함께 준다.** 없으면 화면이 다음 쪽 유무를 알려고 한 건 더 요청하는
     # 편법을 쓰게 되고, 그 편법은 화면마다 달라진다.
     total = db.scalar(select(func.count()).select_from(stmt.subquery())) or 0
-    rows = db.scalars(stmt.order_by(Equipment.asset_no).limit(limit).offset(offset))
+    # **목록으로 굳힌다.** `db.scalars` 는 한 번 훑으면 끝나는 이터레이터라, 배치에 넘기며
+    # `list(rows)` 로 감싸면 그것이 다 써 버리고 **응답이 빈 목록이 된다**(실측으로 잡음).
+    rows = list(db.scalars(stmt.order_by(Equipment.asset_no).limit(limit).offset(offset)))
+    # **한 번에 받는다.** 줄마다 물으면 쉰 줄에 질의 593번이다(실측 2026-09-24).
+    bulk = _bulk(db, rows, user)
     return Page(
-        items=[equipment_out(db, row, user) for row in rows],
+        items=[equipment_out(db, row, user, bulk) for row in rows],
         total=total,
         limit=limit,
         offset=offset,

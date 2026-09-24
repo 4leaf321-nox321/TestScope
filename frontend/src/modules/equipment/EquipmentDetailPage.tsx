@@ -5,6 +5,8 @@
  * 답하는 것은 시험 항목 쪽이다.
  */
 
+import { useState } from 'react'
+import { Pencil } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -16,6 +18,8 @@ import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { GraphPanel } from '@/modules/graph/GraphPanel'
+import { Button } from '@/shared/components/ui/button'
+import { EquipmentDialog } from '@/modules/equipment/EquipmentDialog'
 import { equipmentApi } from '@/modules/equipment/api'
 import { TestItemPanel } from '@/modules/equipment/TestItemPanel'
 import { CalibrationPanel } from '@/modules/equipment/CalibrationPanel'
@@ -35,6 +39,7 @@ function Field({ label, value }: { label: string; value: string | null | undefin
 export default function EquipmentDetailPage() {
   const { id = '' } = useParams<{ id: string }>()
   const equipment = useResource(() => equipmentApi.read(id), [id])
+  const [editing, setEditing] = useState(false)
 
   if (equipment.error) return <ErrorNotice error={equipment.error} />
   if (!equipment.data) return null
@@ -75,6 +80,27 @@ export default function EquipmentDetailPage() {
             )}
           </>
         }
+        /* **여기가 고치는 문이다.** 탭 안(시험 항목·사양·교정)은 각자 고칠 수 있었는데
+           이름·부서·거점·위치·상태 같은 기본 칸은 화면에 고치는 자리가 없어서, 한 대의
+           위치를 바꾸려고 대장을 엑셀로 다시 붙여넣어야 했다. */
+        actions={
+          one.can_edit && (
+            <Button variant="outline" onClick={() => setEditing(true)}>
+              <Pencil className="size-4" />
+              수정
+            </Button>
+          )
+        }
+      />
+
+      <EquipmentDialog
+        open={editing}
+        editing={one}
+        onClose={() => setEditing(false)}
+        onSaved={() => {
+          setEditing(false)
+          equipment.reload()
+        }}
       />
 
       <dl className="grid grid-cols-2 gap-4 rounded-md border p-4 sm:grid-cols-4">

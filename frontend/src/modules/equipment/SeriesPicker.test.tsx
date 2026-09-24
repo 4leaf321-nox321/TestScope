@@ -48,7 +48,7 @@ describe('계열 피커', () => {
     expect(screen.getByText('Instron · 만능재료시험기 · 본체')).toBeTruthy()
     expect(screen.getByText('기종 10')).toBeTruthy()
     // **잘렸으면 말한다.** 안 말하면 「카탈로그에 없구나」 가 된다.
-    expect(screen.getByText('265건 중 1건. 더 자세히 입력하세요.')).toBeTruthy()
+    expect(screen.getByText('265건 중 1건. 더 자세히 입력하십시오.')).toBeTruthy()
 
     await act(async () => {
       fireEvent.change(screen.getByPlaceholderText('계열명·한글명 또는 제조사'), {

@@ -9,8 +9,8 @@
  */
 
 import { describe, expect, it, vi, beforeEach } from 'vitest'
-import { act, render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { act, fireEvent, render, screen } from '@testing-library/react'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 const calls: string[] = []
 /** 걸러서 0 건이 된 상황을 만든다. */
@@ -73,7 +73,11 @@ async function open(url = '/equipment') {
   await act(async () => {
     render(
       <MemoryRouter initialEntries={[url]}>
-        <EquipmentPage />
+        <Routes>
+          <Route path="/equipment" element={<EquipmentPage />} />
+          {/* 줄을 눌러 상세로 가는지 보려면 갈 곳이 있어야 한다. */}
+          <Route path="/equipment/:id" element={<p>상세 화면</p>} />
+        </Routes>
       </MemoryRouter>,
     )
   })
@@ -133,5 +137,18 @@ describe('보유 장비 목록', () => {
     // 기준정보 전체가 아니라 **목록에 있는 값만** — 골라도 0 건인 선택지가 섞이면
     // 사람은 거르기를 안 믿는다.
     expect(calls.some((one) => one.startsWith('/equipment/filter-options'))).toBe(true)
+  })
+
+  it('줄 아무 데나 누르면 상세로 간다 — 자산번호를 누른 것과 같다', async () => {
+    /**
+     * 열이 여덟인데 눌리는 것은 글자 두 개(자산번호·이름)뿐이라 과녁이 너무 작았다.
+     * 신뢰성 시험 목록과 같은 규칙으로 맞춘다.
+     */
+    await open()
+    // 링크가 아닌 칸 — 분류 글자.
+    await act(async () => {
+      fireEvent.click(screen.getByText('만능재료시험기'))
+    })
+    expect(screen.getByText('상세 화면')).toBeTruthy()
   })
 })

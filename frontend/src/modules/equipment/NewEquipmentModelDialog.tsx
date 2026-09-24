@@ -120,7 +120,7 @@ export function NewEquipmentModelDialog({
               required
             />
             <p className="text-muted-foreground text-xs">
-              계열 이름은 위 칸이 갖습니다. 이름에 같이 적지 마세요.
+              계열 이름은 위 칸이 갖습니다. 이름에 같이 적지 마십시오.
             </p>
           </div>
 

@@ -271,7 +271,7 @@ export default function EquipmentSeriesDetailPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>기종</TableHead>
-                <TableHead>생김새</TableHead>
+                <TableHead>외형</TableHead>
                 <TableHead className="text-right">보유</TableHead>
                 <TableHead>상태</TableHead>
               </TableRow>
@@ -302,7 +302,7 @@ export default function EquipmentSeriesDetailPage() {
         {modelsTotal > (models.data?.items ?? []).length && (
           <p className="text-muted-foreground text-xs">
             {modelsTotal}개 중 {(models.data?.items ?? []).length}개만 보입니다 — 나머지는 기종
-            목록에서 이 계열로 거르세요.
+            목록에서 이 계열로 거르십시오.
           </p>
         )}
       </section>
@@ -358,7 +358,7 @@ function SeriesTestItems({
         <h2 className="text-base font-semibold">시험 항목</h2>
         <p className="text-muted-foreground mt-1 text-sm">
           여기 적은 값은 이 계열의 기종으로 <strong>보유 장비를 등록할 때 복사됩니다.</strong>{' '}
-          조건은 <strong>계열 전체가 만족하는 것만</strong> 적습니다 — 기종마다 갈리는 수치는
+          조건은 <strong>계열 전체가 만족하는 값만</strong> 적습니다 — 기종마다 갈리는 수치는
           그 기종의 사양에 적으면 등록할 때 합쳐집니다.
         </p>
       </div>
@@ -412,8 +412,7 @@ function SeriesTestItems({
                         key={link.id}
                         to="/properties"
                         title={
-                          link.note ??
-                          (link.status === 'suggested' ? '기계가 제안한 연결' : '')
+                          link.note ?? (link.status === 'suggested' ? '자동 제안 연결' : '')
                         }
                         className={`rounded-full border px-2 py-0.5 text-xs hover:underline ${
                           link.status === 'suggested'
@@ -483,7 +482,7 @@ function SeriesTestItems({
                           act(() => seriesApi.removeLimit(series.id, test_item.id, limit.id))
                         }
                       >
-                        빼기
+                        제거
                       </Button>
                     )}
                   </li>

@@ -123,7 +123,7 @@ function PromoteDialog({
     <Dialog open onOpenChange={(next) => !next && !busy && onClose()}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>정의로 세우기</DialogTitle>
+          <DialogTitle>정의로 등록</DialogTitle>
           <DialogDescription>
             이 값을 정식 사양 정의로 올립니다. 정의는 이 기종의 분류에 붙고, 앞으로 그 분류의
             모든 기종에서 「사양 추가」 에 뜹니다.{' '}
@@ -215,7 +215,7 @@ function PromoteDialog({
             취소
           </Button>
           <Button onClick={submit} disabled={busy || !group || !key || !label}>
-            정의로 세우기
+            정의로 등록
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -303,7 +303,7 @@ export function FreeSpecsPanel({
         <p className="text-muted-foreground mt-1 text-sm">
           정의 없이 이 기종에만 붙은 값입니다. 카탈로그 키 950종 중 803종이 한 기종에만
           나오는데, 전부 정의로 세우면 「사양 추가」 목록이 못 쓰게 되고 버리면 사라지므로 여기
-          둡니다. <strong>다른 기종에도 같은 값이 있으면 정의로 세우세요</strong> — 그때부터
+          둡니다. <strong>다른 기종에도 같은 값이 있으면 정의로 세우십시오</strong> — 그때부터
           비교가 됩니다.
         </p>
       </div>
@@ -364,7 +364,7 @@ export function FreeSpecsPanel({
                         variant="ghost"
                         size="sm"
                         className="h-7 px-1.5"
-                        aria-label={`${row.label} 정의로 세우기`}
+                        aria-label={`${row.label} 정의로 등록`}
                         onClick={() => setPromoting(row)}
                       >
                         <ArrowUpToLine className="size-3.5" />

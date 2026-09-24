@@ -132,7 +132,7 @@ export default function EquipmentSeriesPage() {
         }
       />
 
-      {/* 속성 값으로 거르기 — 관리자가 정의한 칸은 열이 아니라 행이라 여기서만 되찾는다. */}
+      {/* 속성 값으로 거르기 — 관리자 정의 항목은 열이 아니라 행이라 여기서만 되찾는다. */}
       <AttributeFilterBar
         target="series"
         value={attrs}
@@ -194,7 +194,7 @@ export default function EquipmentSeriesPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={7} className="text-muted-foreground py-8 text-center">
-                    필터에 맞는 계열이 없습니다. 조건을 해제해 보세요.
+                    필터에 맞는 계열이 없습니다. 조건을 해제해 보십시오.
                   </TableCell>
                 </TableRow>
               )}

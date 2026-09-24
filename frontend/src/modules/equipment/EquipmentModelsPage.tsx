@@ -57,7 +57,7 @@ import { NewEquipmentModelDialog } from '@/modules/equipment/NewEquipmentModelDi
 const ISSUE_NOTE: Record<string, string> = {
   none: '사양이 하나도 안 적힌 기종입니다. 비워 두면 이 기종으로 등록하는 장비가 조건 없이 복사되고, 검색은 그것을 「조건 미상」 으로 답합니다.',
   uncertain:
-    '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우세요.',
+    '반입이 원본 카탈로그의 표를 잘못 읽었을 수 있다고 표시한 기종입니다. 원본을 열어 확인한 뒤 비고의 표시를 지우십시오.',
 }
 
 /** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다 — 상한까지 받아 놓고 안 그리면
@@ -223,7 +223,7 @@ export default function EquipmentModelsPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
-                    필터에 맞는 기종이 없습니다. 조건을 해제해 보세요.
+                    필터에 맞는 기종이 없습니다. 조건을 해제해 보십시오.
                   </TableCell>
                 </TableRow>
               )}

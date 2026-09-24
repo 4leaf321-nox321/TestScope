@@ -71,23 +71,22 @@ describe('기종 고유 사양', () => {
     expect(screen.getByText('다른 기종 5개도')).toBeTruthy()
   })
 
-  it('정의로 세우기 창은 이름·키·종류를 사람이 정하게 한다', async () => {
+  it('정의로 등록 창은 이름·키·종류를 사람이 정하게 한다', async () => {
     render(<FreeSpecsPanel modelId="m1" rows={rows} canEdit onChanged={() => {}} />)
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('stroke_mm_pk_pk 정의로 세우기'))
+      fireEvent.click(screen.getByLabelText('stroke_mm_pk_pk 정의로 등록'))
     })
     // 키 후보는 단위 꼬리를 뗀 것 — 사람이 고친다.
     expect((screen.getByLabelText(/^키/) as HTMLInputElement).value).toBe('stroke_mm_pk_pk')
     expect(screen.getByText(/다른 기종 5개의 값도 함께 이동/)).toBeTruthy()
     // 그룹을 안 고르면 못 누른다 — 정의는 어딘가에 속해야 한다.
     expect(
-      (screen.getByText('정의로 세우기', { selector: 'button' }) as HTMLButtonElement)
-        .disabled,
+      (screen.getByText('정의로 등록', { selector: 'button' }) as HTMLButtonElement).disabled,
     ).toBe(true)
   })
 
   it('고칠 수 없으면 단추가 없다', () => {
     render(<FreeSpecsPanel modelId="m1" rows={rows} canEdit={false} onChanged={() => {}} />)
-    expect(screen.queryByLabelText('stroke_mm_pk_pk 정의로 세우기')).toBeNull()
+    expect(screen.queryByLabelText('stroke_mm_pk_pk 정의로 등록')).toBeNull()
   })
 })

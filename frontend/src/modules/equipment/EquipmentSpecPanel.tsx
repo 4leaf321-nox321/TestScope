@@ -131,7 +131,7 @@ export function EquipmentSpecPanel({
         title="적힌 사양이 없습니다"
         hint={
           data.model_id
-            ? '이 기종에 아직 사양이 안 적혔습니다. 기종 화면에서 사양서 값을 채우거나, 여기서 실측을 적으세요.'
+            ? '이 기종에 아직 사양이 안 적혔습니다. 기종 화면에서 사양서 값을 채우거나, 여기서 실측을 적으십시오.'
             : '카탈로그에 연결되지 않은 장비입니다. 기종을 연결하면 사양서 값이 따라옵니다.'
         }
       />
@@ -141,7 +141,7 @@ export function EquipmentSpecPanel({
   return (
     <div className="space-y-6">
       <p className="text-muted-foreground text-sm">
-        사양서 값 위에 <strong>이 장비를 잰 값</strong>을 덮습니다. 덮은 칸은 둘 다 보이고,
+        사양서 값 위에 <strong>이 장비의 실측값</strong>을 덮습니다. 덮은 칸은 둘 다 보이고,
         검색 조건에 이어진 사양은 이 장비의 시험 조건이 됩니다.
         {data.override_count > 0 && ` 지금 ${data.override_count}칸이 실측입니다.`}
       </p>
@@ -199,7 +199,7 @@ export function EquipmentSpecPanel({
                       <div className="flex shrink-0 gap-2">
                         <Button size="sm" variant="outline" onClick={() => start(item)}>
                           <Pencil className="size-4" />
-                          실측 적기
+                          실측값 입력
                         </Button>
                         {item.measured && (
                           <Button

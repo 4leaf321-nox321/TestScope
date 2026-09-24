@@ -92,7 +92,7 @@ export default function EquipmentModelDetailPage() {
           </dd>
         </div>
         <div>
-          <dt className="text-muted-foreground text-xs">생김새</dt>
+          <dt className="text-muted-foreground text-xs">외형</dt>
           <dd className="text-sm">{one.form_factor || '—'}</dd>
         </div>
         {one.summary && (
@@ -139,7 +139,7 @@ export default function EquipmentModelDetailPage() {
             >
               {one.series_name}
             </Link>{' '}
-            에서 하세요. 위 사양의 값이 조건을 좁힙니다.
+            에서 하십시오. 위 사양의 값이 조건을 좁힙니다.
           </p>
         </div>
         {one.test_items.length === 0 ? (
@@ -217,7 +217,7 @@ export default function EquipmentModelDetailPage() {
         {unitsTotal > mine.length && (
           <p className="text-muted-foreground text-xs">
             {unitsTotal}대 중 {mine.length}대만 보입니다 — 나머지는 보유 장비 목록에서 이
-            기종으로 거르세요.
+            기종으로 거르십시오.
           </p>
         )}
       </section>

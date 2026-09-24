@@ -593,7 +593,7 @@ describe('넣은 뒤', () => {
 
 describe('이미 등록된 장비 갱신', () => {
   function toggle(): HTMLInputElement {
-    return screen.getByLabelText(/이미 등록된 장비는 갱신/) as HTMLInputElement
+    return screen.getByLabelText(/기존 장비 갱신/) as HTMLInputElement
   }
 
   it('기본은 꺼져 있고, 켜면 서버에 그렇게 보낸다', async () => {
@@ -729,7 +729,7 @@ describe('줄마다 넣을지 고르기', () => {
     await open()
     await paste(['자산번호\t장비명', 'A-1\t가', 'A-2\t나'].join('\n'))
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('전부 넣기'))
+      fireEvent.click(screen.getByLabelText('전체 선택'))
     })
     // 20줄을 빼려고 20번 누르게 하지 않는다.
     expect(rowCheck(0).checked).toBe(false)
@@ -756,7 +756,7 @@ describe('넣는 동안', () => {
     })
     // **한 낱말로 뭉치면 넣는 10초 동안 화면이 거짓말한다.** 실제로 그랬다.
     expect(screen.getByText(/넣는 중입니다/)).toBeTruthy()
-    expect(screen.queryByText('읽는 중…')).toBeNull()
+    expect(screen.queryByText('불러오는 중…')).toBeNull()
     const close = screen.getAllByRole('button').find((one) => one.textContent === '닫기')
     expect((close as HTMLButtonElement).disabled).toBe(true)
 

@@ -149,7 +149,7 @@ export function CalibrationPanel({
                   {/* **지났으면 말한다.** 날짜만 적어 두면 사람이 오늘 날짜와
                       비교해야 하고, 대개 안 한다. */}
                   {isOverdue(one.next_due_on) && (
-                    <span className="text-destructive ml-2 text-xs">기한 지남</span>
+                    <span className="text-destructive ml-2 text-xs">기한 초과</span>
                   )}
                 </TableCell>
                 <TableCell>{one.certificate_no ?? '—'}</TableCell>

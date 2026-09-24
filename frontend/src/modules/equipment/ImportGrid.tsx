@@ -96,7 +96,7 @@ export function ImportGrid({
               {/* 전부 켜고 끄기. 20줄을 빼려고 20번 누르게 하지 않는다. */}
               <input
                 type="checkbox"
-                aria-label="전부 넣기"
+                aria-label="전체 선택"
                 checked={allOn}
                 onChange={(event) => onInclude(null, event.target.checked)}
                 disabled={disabled || filledRows.length === 0}

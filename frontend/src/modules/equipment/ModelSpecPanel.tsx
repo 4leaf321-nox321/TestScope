@@ -307,7 +307,7 @@ export function ModelSpecPanel({
               사람은 되는지 안 되는지를 못 본다 — 891 중 224 가 이 상태다. */}
           <strong>아직 적힌 사양이 없습니다.</strong> 그래서 검색은 이 기종을 「조건 미상」
           으로 답합니다. 아래에서 칸을 골라, 이 쪽 맨 아래 <strong>「카탈로그 원문」</strong>{' '}
-          에 적힌 값을 한 칸씩 옮겨 적으세요.
+          에 적힌 값을 한 칸씩 옮겨 적으십시오.
         </p>
       ) : (
         <div className="space-y-4">
@@ -333,7 +333,7 @@ export function ModelSpecPanel({
                         // 모름이라 하지」 가 된다.
                         <span
                           className="text-destructive rounded bg-red-500/10 px-1.5 py-0.5 text-xs"
-                          title="이 사양은 검색 조건에 이어져 있지만 단위를 조건의 단위로 못 바꿔 검색에 안 실립니다. 「장비 기종 사양」 에서 단위나 축을 고치세요."
+                          title="이 사양은 검색 조건에 이어져 있지만 단위를 조건의 단위로 못 바꿔 검색에 안 실립니다. 「장비 기종 사양」 에서 단위나 축을 고치십시오."
                         >
                           단위 안 맞음 · 검색에 안 실림
                         </span>
@@ -434,7 +434,7 @@ export function ModelSpecPanel({
                       })
                     }
                   />
-                  옵션 부속이 있어야 나오는 값
+                  옵션 부속 기준 값
                 </label>
                 {/* **어디서 나온 값이냐에 답하는 자리.** 반년 뒤 물을 사람은 반드시 있다. */}
                 <Select

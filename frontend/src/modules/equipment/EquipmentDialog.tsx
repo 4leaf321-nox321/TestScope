@@ -1,5 +1,12 @@
 /**
- * 장비 등록.
+ * 보유 장비 등록·수정.
+ *
+ * **한 벌이다.** 등록 창과 수정 창을 따로 두면 칸이 갈라지고, 그때 「등록은 되는데 수정은
+ * 안 되는 칸」 이 생긴다 — 그 칸은 반입(엑셀)으로만 고칠 수 있게 되고, 한 대의 위치를
+ * 바꾸려고 대장을 통째로 다시 붙여넣게 된다.
+ *
+ * **자산번호는 수정에서 못 고친다.** 서버가 안 받는다(`EquipmentUpdateRequest`) — 그것이
+ * 이 장비를 가리키는 이름이라, 바꾸면 밖에 나간 문서·라벨과 어긋난다.
  *
  * ## 무엇을 필수로 두나
  *
@@ -17,7 +24,7 @@
  * 직접 고르고, 제조사·모델명도 그때만 글자로 적는다 — **그 글자는 검색이 안 본다.**
  */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 
 import { ApiError } from '@/shared/api/client'
@@ -35,6 +42,7 @@ import {
 } from '@/shared/components/ui/dialog'
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
+import { Textarea } from '@/shared/components/ui/textarea'
 import {
   Select,
   SelectContent,
@@ -43,21 +51,29 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select'
 import { useResource } from '@/shared/hooks/useResource'
-import { AttributeValuesEditor, toPayload } from '@/modules/attributes/AttributeValuesEditor'
+import {
+  AttributeValuesEditor,
+  fromValues,
+  toPayload,
+} from '@/modules/attributes/AttributeValuesEditor'
 import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
 import { ModelPicker } from '@/modules/equipment/ModelPicker'
 import { EQUIPMENT_STATUS_OPTIONS } from '@/modules/equipment/status'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { equipmentApi } from '@/modules/equipment/api'
+import type { Equipment } from '@/modules/equipment/api'
 
-export function NewEquipmentDialog({
+export function EquipmentDialog({
   open,
+  editing = null,
   onClose,
-  onCreated,
+  onSaved,
 }: {
   open: boolean
+  /** 있으면 수정, 없으면 등록. */
+  editing?: Equipment | null
   onClose: () => void
-  onCreated: () => void
+  onSaved: () => void
 }) {
   const { user } = useAuth()
   const sites = useResource(() => vocabularyApi.terms(AXIS.site), [])
@@ -91,19 +107,64 @@ export function NewEquipmentDialog({
   const [calibrated, setCalibrated] = useState(false)
   const [interval, setInterval] = useState('12')
 
+  const [note, setNote] = useState('')
+  const [retiredOn, setRetiredOn] = useState('')
+
   const [attributes, setAttributes] = useState<AttributeRow[]>([])
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
 
   const linked = model !== ''
+  const siteId = (value: string | null) =>
+    (sites.data ?? []).find((one) => one.value === value)?.id ?? ''
+  const categoryId = (value: string | null) =>
+    (categories.data ?? []).find((one) => one.value === value)?.id ?? ''
+
+  /**
+   * 열 때마다 대상에 맞춰 채운다 — **지난번에 적던 값이 남아 있으면 안 된다.**
+   *
+   * 거점·분류는 응답이 **이름**으로 온다(`site` · `category`). 고르는 칸은 id 를 쓰므로
+   * 목록에서 되짚는다 — 그래서 목록이 도착한 뒤에도 한 번 더 돈다.
+   */
+  useEffect(() => {
+    if (!open) return
+    setError(null)
+    setAssetNo(editing?.asset_no ?? '')
+    setName(editing?.name ?? '')
+    setDeptAssetNo(editing?.dept_asset_no ?? '')
+    setSerialNo(editing?.serial_no ?? '')
+    setModel(editing?.model_id ?? '')
+    setCategory(editing ? categoryId(editing.category) : '')
+    setMakerText(editing?.catalog_linked ? '' : (editing?.manufacturer ?? ''))
+    setModelText(editing?.catalog_linked ? '' : (editing?.model_name ?? ''))
+    setWorkspace(editing?.workspace_slug ?? managed[0]?.slug ?? '')
+    setSite(editing ? siteId(editing.site) : '')
+    setLocation(editing?.location ?? '')
+    setShared(editing?.shared_use ?? false)
+    setStatus(editing?.status ?? 'operational')
+    setAcquiredOn(editing?.acquired_on ?? '')
+    setMadeYear(editing?.manufactured_year ? String(editing.manufactured_year) : '')
+    setCalibrated(editing?.calibration_required ?? false)
+    setInterval(
+      editing?.calibration_interval_months
+        ? String(editing.calibration_interval_months)
+        : '12',
+    )
+    setNote(editing?.note ?? '')
+    setRetiredOn(editing?.retired_on ?? '')
+    setAttributes(fromValues(editing?.attributes ?? []))
+    // 기준정보 목록이 늦게 와도 거점·분류가 채워지게 같이 본다.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, editing, sites.data, categories.data])
 
   async function submit(event: FormEvent) {
     event.preventDefault()
     setBusy(true)
     setError(null)
     try {
-      await equipmentApi.create({
-        asset_no: assetNo,
+      // **빈 칸은 `null` 로 보낸다.** 수정에서 안 보낸 칸은 「안 바꿈」 이라, 비우려고
+      // 지운 값이 그냥 남는다(`EquipmentUpdateRequest` 의 주석과 짝).
+      const body = {
         name,
         dept_asset_no: deptAssetNo || null,
         serial_no: serialNo || null,
@@ -122,14 +183,18 @@ export function NewEquipmentDialog({
         manufactured_year: madeYear ? Number(madeYear) : null,
         calibration_required: calibrated,
         calibration_interval_months: calibrated && interval ? Number(interval) : null,
+        retired_on: status === 'retired' ? retiredOn || null : null,
+        note: note || null,
         attributes: toPayload(attributes),
-      })
-      setAttributes([])
-      setAssetNo('')
-      setName('')
-      setDeptAssetNo('')
-      setSerialNo('')
-      onCreated()
+      }
+      if (editing) {
+        // **자산번호는 안 보낸다** — 서버가 안 받는다. 이 장비를 가리키는 이름이라,
+        // 바꾸면 밖에 나간 문서·라벨과 어긋난다.
+        await equipmentApi.update(editing.id, body)
+      } else {
+        await equipmentApi.create({ ...body, asset_no: assetNo })
+      }
+      onSaved()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
     } finally {
@@ -145,17 +210,18 @@ export function NewEquipmentDialog({
       <DialogContent className="sm:max-w-3xl">
         <form onSubmit={submit} className="space-y-6">
           <DialogHeader>
-            <DialogTitle>장비 등록</DialogTitle>
+            <DialogTitle>{editing ? '보유 장비 수정' : '장비 등록'}</DialogTitle>
             <DialogDescription>
-              기종을 고르면 그 계열의 시험 항목이 복사되고 분류·제조사가 따라옵니다. 안 고르면
-              장비유형을 직접 골라야 합니다.
+              {editing
+                ? '자산번호는 바꿀 수 없습니다 — 이 장비를 가리키는 이름이라 밖에 나간 문서·라벨과 어긋납니다. 시험 항목·사양·교정 이력은 상세 화면의 탭에서 고칩니다.'
+                : '기종을 고르면 그 계열의 시험 항목이 복사되고 분류·제조사가 따라옵니다. 안 고르면 장비유형을 직접 골라야 합니다.'}
             </DialogDescription>
           </DialogHeader>
 
           {/* 묶는 순서가 사람이 아는 순서다 — **무엇인지 먼저, 어디 있는지 다음.**
               라벨을 보며 앞의 둘을 적고, 그다음 고개를 들어 자리를 적는다. */}
           <section className="space-y-4">
-            <h3 className="text-muted-foreground text-xs font-medium">무엇인가</h3>
+            <h3 className="text-muted-foreground text-xs font-medium">장비 구분</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="asset-no">자산번호</Label>
@@ -165,6 +231,10 @@ export function NewEquipmentDialog({
                   onChange={(event) => setAssetNo(event.target.value)}
                   placeholder="UTM-001"
                   required
+                  // 수정에서는 못 고친다 — 서버가 안 받는다. 칸을 숨기지는 않는다:
+                  // 어느 장비를 고치고 있는지가 보여야 한다.
+                  disabled={editing !== null}
+                  readOnly={editing !== null}
                 />
               </div>
               <div className="space-y-2">
@@ -209,8 +279,8 @@ export function NewEquipmentDialog({
               <ModelPicker id="model" value={model} onChange={(id) => setModel(id)} />
               <p className="text-muted-foreground text-xs">
                 고르면 그 기종이 속한 계열의 시험 항목이 이 장비로 복사되고, 조건은 이 기종의
-                사양에서 옵니다. <strong>카탈로그에 없으면 비워 두세요</strong> — 비슷한 기종을
-                고르면 그 장비의 하중·온도가 남의 것이 됩니다.
+                사양에서 옵니다. <strong>카탈로그에 없으면 비워 두십시오</strong> — 비슷한
+                기종을 고르면 그 장비의 하중·온도가 남의 것이 됩니다.
               </p>
             </div>
 
@@ -218,7 +288,7 @@ export function NewEquipmentDialog({
             {!linked && (
               <div className="bg-muted/40 space-y-4 rounded-md border p-3">
                 <p className="text-xs">
-                  카탈로그에 없는 장비입니다. <strong>장비유형은 반드시 고르세요</strong> —
+                  카탈로그에 없는 장비입니다. <strong>장비유형은 반드시 고르십시오</strong> —
                   종류를 모르는 장비는 분류로 좁히는 화면에서 통째로 빠집니다.
                 </p>
                 <div className="space-y-2">
@@ -265,7 +335,7 @@ export function NewEquipmentDialog({
           </section>
 
           <section className="space-y-4 border-t pt-4">
-            <h3 className="text-muted-foreground text-xs font-medium">어디에 있나</h3>
+            <h3 className="text-muted-foreground text-xs font-medium">설치 위치</h3>
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="space-y-2">
                 <Label htmlFor="workspace">보유 부서</Label>
@@ -398,6 +468,36 @@ export function NewEquipmentDialog({
             </div>
           </section>
 
+          <section className="space-y-4 border-t pt-4">
+            <h3 className="text-muted-foreground text-xs font-medium">그 밖</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {/* 폐기일은 폐기일 때만 묻는다 — 아닌 장비에 세워 두면 빈 칸으로만 남는다. */}
+              {status === 'retired' && (
+                <div className="space-y-2">
+                  <Label htmlFor="retired-on">폐기일</Label>
+                  <Input
+                    id="retired-on"
+                    type="date"
+                    value={retiredOn}
+                    onChange={(event) => setRetiredOn(event.target.value)}
+                  />
+                </div>
+              )}
+              <div className="space-y-2 sm:col-span-2">
+                <Label htmlFor="equipment-note">비고</Label>
+                <Textarea
+                  id="equipment-note"
+                  className="max-w-2xl"
+                  value={note}
+                  onChange={(event) => setNote(event.target.value)}
+                  rows={3}
+                  maxLength={4000}
+                  placeholder="상세 화면에 그대로 보입니다. 검색은 이 글자를 안 봅니다."
+                />
+              </div>
+            </div>
+          </section>
+
           {/* **고정 칸이 아닌 정보는 여기.** 담당 구역·구매 연도처럼 부서마다 다른 것 — 열을
               미리 뚫지 않고 「보유 장비 속성」 정의로 받는다(attributes 모듈). */}
           <section className="space-y-2 border-t pt-4">
@@ -416,7 +516,7 @@ export function NewEquipmentDialog({
               취소
             </Button>
             <Button type="submit" disabled={busy}>
-              {busy ? '등록 중…' : '등록'}
+              {busy ? '저장 중…' : editing ? '저장' : '등록'}
             </Button>
           </DialogFooter>
         </form>

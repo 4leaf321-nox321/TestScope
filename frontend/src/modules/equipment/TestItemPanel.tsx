@@ -90,7 +90,7 @@ export function TestItemPanel({
       {list.data && list.data.length === 0 ? (
         <EmptyState
           title="등록된 시험 항목이 없습니다"
-          hint="시험 항목이 없으면 이 장비는 검색에 걸리지 않습니다. 수행 가능한 시험 항목부터 적어 주세요."
+          hint="시험 항목이 없으면 이 장비는 검색에 걸리지 않습니다. 수행 가능한 시험 항목부터 적어 주십시오."
         />
       ) : (
         <ul className="space-y-3">
@@ -188,7 +188,7 @@ function CapabilityCard({
             {limit.requires_accessory && (
               <span
                 className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs text-amber-700"
-                title="옵션 부속(챔버·노)이 있어야 나오는 범위 — 검색이 「됨」 대신 「부속 있으면」 으로 답합니다. 이 대에 실제로 있으면 조건을 다시 저장하며 끄세요."
+                title="옵션 부속(챔버·노)이 있어야 나오는 범위 — 검색이 「됨」 대신 「부속 있으면」 으로 답합니다. 이 대에 실제로 있으면 조건을 다시 저장하며 끄십시오."
               >
                 부속 필요
               </span>
@@ -202,7 +202,7 @@ function CapabilityCard({
                   onChanged()
                 }}
               >
-                빼기
+                제거
               </Button>
             )}
           </li>

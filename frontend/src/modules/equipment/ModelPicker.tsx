@@ -240,10 +240,10 @@ export function ModelPicker({
           {(mode === 'series' && !series ? seriesRows : rows).length === 0 && (
             <li className="text-muted-foreground px-3 py-6 text-center text-sm">
               {series && !query
-                ? '이 계열에 기종이 없습니다. 계열 화면에서 먼저 기종을 만드세요.'
+                ? '이 계열에 기종이 없습니다. 계열 화면에서 먼저 기종을 만드십시오.'
                 : query
-                  ? '찾는 것이 없습니다. 카탈로그에 없으면 비워 두고 나중에 이을 수 있습니다.'
-                  : '이름의 일부를 입력하세요.'}
+                  ? '검색 결과가 없습니다. 카탈로그에 없으면 비워 두고 나중에 이을 수 있습니다.'
+                  : '이름의 일부를 입력하십시오.'}
             </li>
           )}
         </ul>
@@ -255,7 +255,7 @@ export function ModelPicker({
             const shown = browsing ? seriesRows.length : rows.length
             const all = browsing ? (seriesPage.data?.total ?? 0) : total
             if (all === 0) return ' '
-            if (all > shown) return `${all}건 중 ${shown}건. 더 자세히 입력하세요.`
+            if (all > shown) return `${all}건 중 ${shown}건. 더 자세히 입력하십시오.`
             return browsing ? `계열 ${all}건` : `기종 ${all}건`
           })()}
         </p>

@@ -540,7 +540,7 @@ export function EquipmentImportDialog({
         <DialogHeader>
           <DialogTitle>장비 일괄 반입</DialogTitle>
           <DialogDescription>
-            엑셀에서 <strong>머리글 줄까지 함께</strong> 복사해 아래 표에 붙여넣으세요
+            엑셀에서 <strong>머리글 줄까지 함께</strong> 복사해 아래 표에 붙여넣으십시오
             (Ctrl+V). 틀린 칸은 표에서 바로 고칠 수 있습니다.
           </DialogDescription>
         </DialogHeader>
@@ -553,7 +553,7 @@ export function EquipmentImportDialog({
               onClick={() => void equipmentApi.importTemplate()}
             >
               <Download className="size-4" />
-              서식 내려받기
+              양식 다운로드
             </Button>
             <Button
               variant="outline"
@@ -573,7 +573,7 @@ export function EquipmentImportDialog({
               {copied === null ? '표 복사' : `${copied}줄 복사했습니다`}
             </Button>
             <Button variant="outline" size="sm" onClick={reset} disabled={phase !== 'idle'}>
-              비우기
+              초기화
             </Button>
             {/* **기본은 거절이다.** 기본이 갱신이면 다른 부서의 옛 대장을 실수로 붙인
                 사람이 남의 장비 위치를 바꾼다. */}
@@ -584,7 +584,7 @@ export function EquipmentImportDialog({
                 onChange={(event) => setUpdateExisting(event.target.checked)}
                 disabled={phase === 'putting'}
               />
-              이미 등록된 장비는 갱신
+              기존 장비 갱신
             </label>
             {bad.length > 0 && !tooMany && (
               <Button variant="outline" size="sm" onClick={() => setOnlyBad(!onlyBad)}>
@@ -626,7 +626,7 @@ export function EquipmentImportDialog({
                 <>
                   {' '}
                   못 넣은 <strong>{sending.length}줄</strong>이 표에 남아 있습니다 — 고쳐서
-                  다시 누르세요.
+                  다시 누르십시오.
                 </>
               )}
             </div>
@@ -645,13 +645,15 @@ export function EquipmentImportDialog({
 
           {tooMany && (
             <p className="text-muted-foreground text-xs">
-              {rows.length}줄이라 <strong>문제 있는 줄만</strong> 그렸습니다 — 표가 너무 크면
-              타이핑 한 번에 멈춥니다. 나머지 {rows.length - bad.length}줄은 그대로 들어갑니다.
+              {rows.length}줄이라 <strong>오류 행만</strong> 그렸습니다 — 표가 너무 크면 타이핑
+              한 번에 멈춥니다. 나머지 {rows.length - bad.length}줄은 그대로 들어갑니다.
             </p>
           )}
 
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            {phase === 'looking' && <span className="text-muted-foreground">읽는 중…</span>}
+            {phase === 'looking' && (
+              <span className="text-muted-foreground">불러오는 중…</span>
+            )}
             {phase === 'putting' && (
               // **몇 대를 넣는 중인지 말한다.** 「지금 1500대째」 는 못 말한다 —
               // 한 트랜잭션이라 그 수는 아직 확정된 것이 아니고, 전부 되돌아가는
@@ -660,7 +662,7 @@ export function EquipmentImportDialog({
                 <Loader2 className="size-4 animate-spin" />
                 <span>
                   <strong>{summary?.ready ?? 0}대</strong>를 넣는 중입니다
-                  {spent(summary?.ready ?? 0)}. <strong>창을 닫지 마세요</strong> — 도중에
+                  {spent(summary?.ready ?? 0)}. <strong>창을 닫지 마십시오</strong> — 도중에
                   끊기면 아무것도 안 들어갑니다.
                 </span>
               </span>
@@ -717,7 +719,7 @@ export function EquipmentImportDialog({
                   <span className="text-amber-700">
                     기종 미연결 <strong>{unlinked}</strong> — 시험 항목이 0 건이 되고,{' '}
                     <strong>0 건이면 검색에 걸리지 않습니다.</strong> 카탈로그에 없는 기종이면{' '}
-                    <strong>모델명</strong> 칸에 적어 두세요. 넣은 뒤 홈의 「카탈로그에 안
+                    <strong>모델명</strong> 칸에 적어 두십시오. 넣은 뒤 홈의 「카탈로그에 안
                     이어진 장비」 에서 다시 찾을 수 있습니다.
                   </span>
                 )}

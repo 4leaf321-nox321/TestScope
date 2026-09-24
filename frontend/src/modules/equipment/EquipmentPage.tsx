@@ -12,11 +12,15 @@
  *
  * 거르는 것은 서버다. 한 쪽을 받아 놓고 화면이 거르면 상한을 넘는 순간 나머지가 조용히
  * 빠지고, 그때 목록은 「그 조건에 맞는 장비가 이것뿐」 이라고 거짓말한다.
+ *
+ * **줄 아무 데나 누르면 상세로 간다** — 자산번호를 누른 것과 같다. 열이 여덟이라 글자
+ * 두 개(자산번호·이름)만 눌리는 것은 과녁이 너무 작았다. 줄 안의 링크·단추 위에서는 안
+ * 가로챈다(`isPlainRowClick`) — 시험 항목을 누른 사람은 그 항목으로 가려던 것이다.
  */
 
 import { useEffect, useState } from 'react'
 import { Plus, Upload } from 'lucide-react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isAnyManager } from '@/shared/auth/roles'
@@ -35,6 +39,7 @@ import {
   TableRow,
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
+import { isPlainRowClick } from '@/shared/lib/rowClick'
 import { Pager } from '@/shared/components/Pager'
 import { shownDate } from '@/shared/lib/datetime'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
@@ -46,7 +51,7 @@ import {
 } from '@/modules/equipment/EquipmentFilters'
 import type { EquipmentFilterState } from '@/modules/equipment/EquipmentFilters'
 import { EquipmentImportDialog } from '@/modules/equipment/EquipmentImportDialog'
-import { NewEquipmentDialog } from '@/modules/equipment/NewEquipmentDialog'
+import { EquipmentDialog } from '@/modules/equipment/EquipmentDialog'
 import { AttributeFilterBar } from '@/modules/attributes/AttributeFilterBar'
 
 /** 한 쪽에 몇 줄. 서버 상한(200)보다 작게 둔다. */
@@ -54,6 +59,7 @@ const PAGE_SIZE = 50
 
 export default function EquipmentPage() {
   const { user } = useAuth()
+  const navigate = useNavigate()
   // **홈의 「남은 일」 이 이 주소로 온다.** 안 읽으면 눌러도 전체 목록이 떠서,
   // 사람은 「왜 안 걸러졌지」 를 겪고 그 목록을 안 믿게 된다.
   const [params, setParams] = useSearchParams()
@@ -203,12 +209,18 @@ export default function EquipmentPage() {
               {page.data?.items.length === 0 && (
                 <TableRow className="hover:bg-transparent">
                   <TableCell colSpan={8} className="text-muted-foreground py-8 text-center">
-                    필터에 맞는 장비가 없습니다. 조건을 해제해 보세요.
+                    필터에 맞는 장비가 없습니다. 조건을 해제해 보십시오.
                   </TableCell>
                 </TableRow>
               )}
               {(page.data?.items ?? []).map((one) => (
-                <TableRow key={one.id}>
+                <TableRow
+                  key={one.id}
+                  className="hover:bg-muted/50 cursor-pointer"
+                  onClick={(event) =>
+                    isPlainRowClick(event) && navigate(`/equipment/${one.id}`)
+                  }
+                >
                   <TableCell className="font-mono text-xs">
                     <Link to={`/equipment/${one.id}`} className="hover:underline">
                       {one.asset_no}
@@ -310,10 +322,10 @@ export default function EquipmentPage() {
         onDone={() => page.reload()}
       />
 
-      <NewEquipmentDialog
+      <EquipmentDialog
         open={creating}
         onClose={() => setCreating(false)}
-        onCreated={() => {
+        onSaved={() => {
           setCreating(false)
           page.reload()
         }}

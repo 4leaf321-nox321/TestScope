@@ -1,4 +1,4 @@
-"""카탈로그 목록은 **줄 수와 무관하게 값싸야 한다.**
+"""목록은 **줄 수와 무관하게 값싸야 한다** — 카탈로그도 보유 장비도.
 
 ## 왜 이 시험이 있나
 
@@ -35,8 +35,8 @@ from tests.api.conftest import Signed
 
 #: 한 쪽에 허용하는 질의 수. **줄 수와 무관해야 한다.**
 #:
-#: 지금 실측은 계열 6회·기종 12회다. 스무 번이면 배치를 몇 개 더 붙일 여유가 있고,
-#: 줄마다 묻는 코드가 돌아오면(줄당 한 번만 물어도 50회) 반드시 넘는다.
+#: 지금 실측은 계열 6회·기종 12회·보유 장비 13회다. 스무 번이면 배치를 몇 개 더 붙일
+#: 여유가 있고, 줄마다 묻는 코드가 돌아오면(줄당 한 번만 물어도 50회) 반드시 넘는다.
 BUDGET = 20
 
 #: 줄 수를 두 배로 늘려 본다. 질의가 함께 늘면 줄마다 묻고 있다는 뜻이다.
@@ -160,3 +160,98 @@ def test_목록_줄은_상세를_안_싣는다(client: TestClient, admin: Signed
         "형제 기종끼리 전부 같고, 목록은 그것을 안 그린다"
     )
     assert "raw_specs" not in model_row, "사양 원문은 상세에서만 본다"
+
+
+def _equipment(client: TestClient, admin: Signed, count: int) -> None:
+    """장비를 채운다. **거점·분류·시험 항목을 달아 둔다** — 낱개로 묻던 자리가 거기다."""
+    site = client.post(
+        "/api/vocabularies/site/terms",
+        json={"value": f"거점-{uuid.uuid4().hex[:8]}"},
+        headers=admin.headers,
+    )
+    assert site.status_code == 201, site.text
+    category = client.post(
+        "/api/vocabularies/equipment_category/terms",
+        json={"value": f"유형-{uuid.uuid4().hex[:8]}"},
+        headers=admin.headers,
+    )
+    assert category.status_code == 201, category.text
+    for _ in range(count):
+        made = client.post(
+            "/api/equipment",
+            json={
+                "asset_no": f"COST-{uuid.uuid4().hex[:10]}",
+                "name": "비용 확인용",
+                "workspace_slug": admin.workspace,
+                "site_term_id": site.json()["id"],
+                "location": "1동",
+                "category_term_id": category.json()["id"],
+                "calibration_required": True,
+                "calibration_interval_months": 12,
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+
+def test_보유_장비_목록의_질의가_줄_수를_따라_늘지_않는다(
+    client: TestClient, admin: Signed
+) -> None:
+    """실측(2026-09-24): 50줄에 **질의 593회**(줄당 11.9회)·330 ms 였다.
+
+    `equipment_out()` 이 줄마다 거점·분류·장비군·제조사·마지막 교정·시험 항목·실측 수·
+    속성·권한을 낱개로 물었다. 299대뿐인 개발 DB 에서 이미 느렸다 — 대장이 자랄수록
+    나빠지는 모양이라, 숫자가 아니라 **모양**을 못박는다.
+    """
+    _equipment(client, admin, MANY)
+    few, _ = _cost(client, admin, f"/api/equipment?limit={FEW}")
+    many, statements = _cost(client, admin, f"/api/equipment?limit={MANY}")
+
+    assert many <= BUDGET, f"{MANY}줄에 질의 {many}회 — 줄마다 묻고 있다.\n" + "\n".join(
+        f"  {one[:110]}" for one in statements[:25]
+    )
+    assert many <= few + 2, f"{FEW}줄에 {few}회 · {MANY}줄에 {many}회 — 줄에 비례한다"
+
+
+def test_보유_장비_목록이_줄을_빠뜨리지_않는다(client: TestClient, admin: Signed) -> None:
+    """배치로 바꾸며 **응답이 빈 목록이 된 적이 있다.**
+
+    `db.scalars` 는 한 번 훑으면 끝나는 이터레이터인데, 배치에 넘기며 `list(rows)` 로
+    감싼 것이 그것을 다 써 버렸다. `total` 은 299 인데 `items` 는 0 이었다 — 질의 수만
+    재는 시험은 **더 빨라졌다고** 답한다.
+    """
+    _equipment(client, admin, FEW)
+    page = client.get(f"/api/equipment?limit={MANY}", headers=admin.headers)
+    assert page.status_code == 200, page.text
+    body = page.json()
+    assert len(body["items"]) == min(MANY, body["total"]), (
+        f"total={body['total']} 인데 items={len(body['items'])} — 줄이 사라졌다"
+    )
+
+
+def test_보유_장비_목록과_상세가_같은_값을_낸다(client: TestClient, admin: Signed) -> None:
+    """목록은 배치로, 상세는 낱개로 만든다 — **두 길이 같은 답을 내야 한다.**
+
+    갈리면 목록에만 틀린 값이 뜨고, 목록을 여는 사람에게만 보인다.
+    """
+    _equipment(client, admin, FEW)
+    page = client.get(f"/api/equipment?limit={FEW}", headers=admin.headers)
+    for row in page.json()["items"]:
+        one = client.get(f"/api/equipment/{row['id']}", headers=admin.headers).json()
+        for key in (
+            "category",
+            "category_group",
+            "site",
+            "manufacturer",
+            "workspace_name",
+            "test_item_count",
+            "test_items",
+            "spec_override_count",
+            "calibration_due_on",
+            "calibration_due_estimated",
+            "calibration_missing",
+            "can_edit",
+        ):
+            assert row[key] == one[key], (
+                f"{row['asset_no']} 의 {key}: 목록={row[key]!r} 상세={one[key]!r}"
+            )
