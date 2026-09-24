@@ -8,7 +8,7 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { ApiError, api, session } from './client'
+import { ApiError, api, fetchBlobUrl, session } from './client'
 
 function reply(status: number, body: unknown, ok = false): Response {
   return {
@@ -129,5 +129,74 @@ describe('요청', () => {
       ),
     )
     await expect(api.delete('/equipment/1')).resolves.toBeUndefined()
+  })
+})
+
+describe('파일 받아 오기', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals()
+    session.setToken(null)
+  })
+
+  it('서버가 준 주소를 **그대로** 부른다 — `/api` 를 또 붙이지 않는다', async () => {
+    /**
+     * 실측(2026-09-24): `fetchBlobUrl` 이 `send()` 를 거치면서 BASE(`/api`)를 한 번 더
+     * 붙여 `/api/api/attachments/…` 로 나갔다. 404 가 나고 화면에는 「못 읽음」 네모만
+     * 떠서, 첨부 기능이 나간 뒤로 **이미지가 한 장도 안 보였다.**
+     *
+     * 화면 시험은 `fetchBlobUrl` 을 통째로 흉내 내고 있어서 이 자리를 못 봤다. 주소를
+     * 만드는 것은 클라이언트의 일이므로 그 시험이 여기 있어야 한다.
+     */
+    const seen: string[] = []
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        seen.push(url)
+        return {
+          ok: true,
+          status: 200,
+          blob: async () => new Blob([new Uint8Array([1, 2, 3])], { type: 'image/png' }),
+        } as unknown as Response
+      }),
+    )
+    vi.stubGlobal('URL', {
+      ...URL,
+      createObjectURL: () => 'blob:그림',
+    })
+
+    await fetchBlobUrl('/api/attachments/a1/file')
+    expect(seen).toEqual(['/api/attachments/a1/file'])
+  })
+
+  it('자격을 싣는다 — 안 실으면 401 이고, 그 오류는 화면에 안 남는다', async () => {
+    let sent: HeadersInit | undefined
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_url: string, init?: RequestInit) => {
+        sent = init?.headers
+        return {
+          ok: true,
+          status: 200,
+          blob: async () => new Blob([]),
+        } as unknown as Response
+      }),
+    )
+    vi.stubGlobal('URL', { ...URL, createObjectURL: () => 'blob:그림' })
+
+    session.setToken('토큰')
+    await fetchBlobUrl('/api/attachments/a1/file')
+    expect((sent as Record<string, string>).Authorization).toBe('Bearer 토큰')
+  })
+
+  it('못 받으면 봉투 오류로 던진다 — 조용히 빈 그림을 두지 않는다', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => reply(404, { error: { code: 'TSC-ATTACH-0001', message: '없음' } })),
+    )
+    const caught = await fetchBlobUrl('/api/attachments/없는것/file').catch(
+      (error: unknown) => error,
+    )
+    expect(caught).toBeInstanceOf(ApiError)
+    expect((caught as ApiError).status).toBe(404)
   })
 })

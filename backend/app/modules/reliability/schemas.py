@@ -27,6 +27,14 @@ class ReliabilityTestOut(BaseModel):
     workspace_name: str
     name: str
     purpose: str
+    status: str = "confirmed"
+    """`candidate`(후보) · `confirmed`(확정). **후보는 AI 가 올리고 아직 사람이 안 본
+    것이다** — 화면이 배지를 달고, 확인 전에는 전사 목록에 안 낸다."""
+    submitted_via: str | None = None
+    """후보를 올린 통로 — PAT 이름. 검토하는 사람이 「이거 누가 올린 거야」 에 바로 답한다."""
+    confirmed_by: str | None = None
+    """확인한 사람의 이름. **「이 값 누가 보증했어」 의 답이다.**"""
+    confirmed_at: datetime | None = None
     test_items: list[ReliabilityTestItemOut]
     attributes: list[AttributeValueOut]
     """항목 값 — 정식이 먼저, 초안이 뒤. `status` 로 가른다."""

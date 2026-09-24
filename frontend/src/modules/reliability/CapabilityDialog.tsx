@@ -68,7 +68,7 @@ export function CapabilityDialog({
     <Dialog open onOpenChange={(open) => (open ? undefined : onClose())}>
       <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-4xl">
         <DialogHeader>
-          <DialogTitle>{test.name} — 가능한 장비</DialogTitle>
+          <DialogTitle>{test.name} — 수행 가능 장비</DialogTitle>
           <DialogDescription>
             이 시험의 조건 속성을 그대로 검색 조건으로 옮겨 시험 항목마다 장비를 봅니다. 부서로
             좁히지 않습니다 — 옆 부서에 있으면 빌리러 갑니다.
@@ -79,7 +79,7 @@ export function CapabilityDialog({
         {answer.loading && (
           <div className="text-muted-foreground flex items-center gap-2 py-8 text-sm">
             <Loader2 className="size-4 animate-spin" />
-            장비를 보는 중…
+            장비를 불러오는 중…
           </div>
         )}
 
@@ -110,8 +110,8 @@ export function CapabilityDialog({
 
             {data.items.length === 0 ? (
               <EmptyState
-                title="쓰는 시험 항목이 없습니다"
-                hint="시험 항목을 정해야 장비로 이어집니다 — 「수정」 에서 고르세요."
+                title="적용 시험 항목이 없습니다"
+                hint="시험 항목을 정해야 장비로 이어집니다 — 「수정」 에서 고르십시오."
               />
             ) : (
               data.items.map((item) => (

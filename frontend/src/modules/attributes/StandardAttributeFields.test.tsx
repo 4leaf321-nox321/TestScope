@@ -8,6 +8,7 @@
  * 3. 시험 조건은 **적은 것만 선다.** 축이 열하나라 전부 세우면 빈 칸으로만 길어진다.
  * 4. 한쪽만 적으면 「이상」·「이하」 다. 숫자로 못 적는 것은 비고에 적고, 그 줄은 판정에 안 쓰인다.
  * 5. 채운 칸만 서버로 간다.
+ * 6. **조건 줄에도 이미지가 붙는다.** 온습도 프로파일은 「시험 온도」 의 그림이다.
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -38,6 +39,7 @@ function definition(over: Record<string, unknown>) {
 }
 
 vi.mock('@/shared/api/client', () => ({
+  fetchBlobUrl: vi.fn(async () => 'blob:이미지'),
   api: {
     get: vi.fn(async () => [
       definition({ key: 'reliability_type', label: '유형', kind: 'text' }),
@@ -65,7 +67,13 @@ type StandardValue = Awaited<
 
 afterEach(() => vi.clearAllMocks())
 
-function Harness({ onDefs }: { onDefs?: (rows: unknown[]) => void }) {
+function Harness({
+  onDefs,
+  attachments,
+}: {
+  onDefs?: (rows: unknown[]) => void
+  attachments?: Parameters<typeof StandardAttributeFields>[0]['attachments']
+}) {
   const [values, setValues] = useState<Record<string, StandardValue>>({})
   return (
     <StandardAttributeFields
@@ -73,8 +81,34 @@ function Harness({ onDefs }: { onDefs?: (rows: unknown[]) => void }) {
       values={values}
       onChange={setValues}
       onLoaded={onDefs}
+      attachments={attachments}
     />
   )
+}
+
+/** 「시험 온도」 에 붙은 이미지 한 장. 조건 칸의 정의 id 는 key 와 같게 두었다. */
+function onTemperature() {
+  return {
+    objectId: 'r1',
+    canEdit: true,
+    onChanged: () => {},
+    rows: [
+      {
+        id: 'a1',
+        target: 'reliability_test',
+        object_id: 'r1',
+        definition_id: 'reliability_temperature',
+        definition_label: '시험 온도',
+        original_name: '온습도-프로파일.png',
+        caption: '온습도 프로파일',
+        content_type: 'image/png',
+        bytes: 2970,
+        sort_order: 1,
+        url: '/api/attachments/a1/file',
+        created_at: '2026-09-24T00:00:00Z',
+      },
+    ],
+  } as Parameters<typeof StandardAttributeFields>[0]['attachments']
 }
 
 describe('정식 속성 칸', () => {
@@ -84,10 +118,10 @@ describe('정식 속성 칸', () => {
     })
 
     // 묶음 이름이 선다 — 무엇이 무엇과 한 묶음인지 보인다.
-    expect(screen.getByText('무엇을 왜')).toBeTruthy()
+    expect(screen.getByText('시험 구분')).toBeTruthy()
     expect(screen.getByText('시험 조건')).toBeTruthy()
     expect(screen.getByText('방법과 판정')).toBeTruthy()
-    expect(screen.getByText('그 밖의 칸')).toBeTruthy()
+    expect(screen.getByText('기타 항목')).toBeTruthy()
 
     // 초안은 이 자리에 안 선다 — 여기는 「원래 있는 칸」 이다.
     expect(screen.queryByText('초안은 안 보인다')).toBeNull()
@@ -180,5 +214,32 @@ describe('정식 속성 칸', () => {
     expect((screen.getByPlaceholderText('최소') as HTMLInputElement).value).toBe('85')
     // **한쪽만 적은 것이 실수인지 뜻인지 사람이 본다.**
     expect(screen.getByText(/85 degC 이상/)).toBeTruthy()
+  })
+
+  it('조건 줄에 붙은 이미지가 보인다 — 값이 비어 있어도 줄이 선다', async () => {
+    /**
+     * 실측(2026-09-24): 이미지 자리가 **조건이 아닌 칸에만** 있었다. 「시험 온도」 에 붙인
+     * 온습도 프로파일은 수정 창 어디에도 안 보여서, 붙인 사람은 붙은 줄 알고 고치려는
+     * 사람은 없는 줄 알았다.
+     *
+     * 값이 비어 있을 때도 줄이 서야 한다 — 프로파일 그림만 먼저 받고 램프 시간은 아직
+     * 모르는 경우가 실제로 있다. 값으로만 줄을 접으면 그 이미지는 찾을 길이 없다.
+     */
+    await act(async () => {
+      render(<Harness attachments={onTemperature()} />)
+    })
+
+    // 값이 없는데도 조건 줄이 서 있다.
+    expect(screen.getByPlaceholderText('최소')).toBeTruthy()
+    // 그 줄 안에 이미지가 있다.
+    expect(screen.getByAltText('온습도 프로파일')).toBeTruthy()
+  })
+
+  it('값도 이미지도 없으면 조건 줄은 안 선다 — 빈 축을 세워 두지 않는다', async () => {
+    await act(async () => {
+      render(<Harness attachments={{ ...onTemperature()!, rows: [] }} />)
+    })
+    expect(screen.queryByPlaceholderText('최소')).toBeNull()
+    expect(screen.getByText('조건 추가')).toBeTruthy()
   })
 })

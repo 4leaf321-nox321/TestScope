@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import uuid
+from typing import Literal
 
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
@@ -26,6 +27,7 @@ router = APIRouter(prefix="/reliability-tests", tags=["reliability"])
 def list_reliability_tests(
     workspace: str | None = Query(default=None, max_length=64),
     attr: list[str] = Query(default_factory=list, max_length=10),
+    status: Literal["candidate", "confirmed", "all"] | None = Query(default=None),
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> list[ReliabilityTestOut]:
@@ -37,10 +39,14 @@ def list_reliability_tests(
     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
+
+    `status` 를 **안 주면 자리에 따라 다르다** — 부서를 주면 후보까지(검토하는 자리라서),
+    전사면 확정된 것만(「저 부서가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
+    보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
     """
     if workspace:
-        return services.list_for_workspace(db, user, workspace, attr)
-    return services.list_all(db, user, attr)
+        return services.list_for_workspace(db, user, workspace, attr, status)
+    return services.list_all(db, user, attr, status)
 
 
 @router.post("", response_model=ReliabilityTestOut, status_code=201)
@@ -92,6 +98,32 @@ def update_reliability_test(
     """부분 수정. 안 보낸 칸은 그대로, `test_item_term_ids` 는 보내면 통째로 바뀐다."""
     row = services.update(db, user, test_id, payload.model_dump(exclude_unset=True))
     return services.test_out(db, user, row)
+
+
+@router.post("/{test_id}/confirm", response_model=ReliabilityTestOut)
+def confirm_reliability_test(
+    test_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ReliabilityTestOut:
+    """**후보를 확인했다** — 사람이 내용을 읽고 맞다고 한 것. 그 부서의 관리자 또는 시스템
+    관리자만, 그리고 **사람 세션만**(기계 자격은 403). AI 가 스스로 확인할 수 있으면 후보라는
+    상태에 아무 뜻이 없다.
+
+    누가 언제 확인했는지가 줄과 감사에 남는다.
+    """
+    return services.test_out(db, user, services.confirm(db, user, test_id))
+
+
+@router.post("/{test_id}/reopen", response_model=ReliabilityTestOut)
+def reopen_reliability_test(
+    test_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ReliabilityTestOut:
+    """확정을 풀어 **다시 후보로.** 그 순간부터 AI 가 다시 채울 수 있으므로, 누가 그 문을
+    열었는지가 감사에 남는다. 확인한 사람·시각은 안 지운다."""
+    return services.test_out(db, user, services.reopen(db, user, test_id))
 
 
 @router.delete("/{test_id}", status_code=204)

@@ -79,7 +79,7 @@ def _answer(
             id=exact.id,
             label=exact.label,
             candidates=[exact],
-            hint="하나로 정해졌습니다. 이 id 를 그대로 쓰세요.",
+            hint="하나로 정해졌습니다. 이 id 를 그대로 쓰십시오.",
         )
     if not candidates:
         return ResolveResponse(
@@ -89,8 +89,8 @@ def _answer(
             candidates=[],
             # **지어내지 마라**가 핵심이다. 없는 것을 만들지, 비워 둘지는 부르는
             # 쪽의 판단이지만, 비슷한 이름을 골라 넣는 것만은 아니다.
-            hint="찾지 못했습니다. 새로 만들거나 비워 두세요 — 비슷한 이름을 "
-            "골라 넣지 마세요.",
+            hint="찾지 못했습니다. 새로 만들거나 비워 두십시오 — 비슷한 이름을 "
+            "골라 넣지 마십시오.",
         )
     if len(candidates) == 1:
         return ResolveResponse(
@@ -98,7 +98,7 @@ def _answer(
             id=None,
             label=None,
             candidates=list(candidates),
-            hint="후보가 하나입니다. 맞는지 확인한 뒤 그 id 를 쓰세요 — "
+            hint="후보가 하나입니다. 맞는지 확인한 뒤 그 id 를 쓰십시오 — "
             "이름의 일부가 우연히 겹쳤을 수 있습니다.",
         )
     return ResolveResponse(
@@ -106,7 +106,7 @@ def _answer(
         id=None,
         label=None,
         candidates=list(candidates),
-        hint=f"후보가 {len(candidates)}개입니다. 고르지 말고 사람에게 물으세요.",
+        hint=f"후보가 {len(candidates)}개입니다. 고르지 말고 사람에게 물으십시오.",
     )
 
 
@@ -340,7 +340,10 @@ def _resolve_reliability_test(
 
     def _label(row: ReliabilityTest) -> tuple[str, str | None]:
         team = db.get(Workspace, row.workspace_id)
-        return row.name, team.name if team else None
+        # **후보는 후보라고 말한다.** 안 붙이면 AI 가 제가 올린 미확인 시험을 확정된 것과
+        # 같이 다루고, 그것을 근거로 「이 부서는 이 시험을 합니다」 라고 답한다.
+        mark = " · 후보(확인 전)" if row.status == "candidate" else ""
+        return row.name, (f"{team.name}{mark}" if team else mark.strip(" ·") or None)
 
     key = compare_key(text)
     same = [row for row in db.scalars(stmt) if compare_key(row.name) == key]
@@ -498,7 +501,7 @@ def resolve_term_id(
     raise AppError(
         "TSC-RESOLVE-0003",
         f"{field}: 「{text}」 을(를) 하나로 정할 수 없습니다. id 로 주거나 "
-        f"기준정보에서 먼저 만드세요.",
+        f"기준정보에서 먼저 만드십시오.",
         status=400,
         details={
             "field": field,

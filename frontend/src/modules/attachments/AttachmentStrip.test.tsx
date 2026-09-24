@@ -7,6 +7,8 @@
  *    화면에 아무 표시도 안 남긴다 — 사용자는 그냥 깨진 그림을 본다.
  * 2. 저장 전에는 붙일 자리가 없다고 **말한다.** 단추만 두면 눌러 보고 아무 일도 안 난다.
  * 3. 읽기만 되는 사람에게는 지우기·설명 칸이 안 보인다.
+ * 4. **눌러서 크게 본다.** 줄에 선 크기는 「있다」 는 표시일 뿐이다 — 그리고 크게 볼 때
+ *    **다시 받지 않는다**(10 MB 사진을 두 번 받게 된다).
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -44,7 +46,7 @@ function row(over: Partial<Attachment> = {}): Attachment {
 
 afterEach(() => vi.clearAllMocks())
 
-describe('그림 줄', () => {
+describe('이미지 줄', () => {
   it('자격을 실어 받아 blob 으로 그린다 — API 주소를 img 에 안 쓴다', async () => {
     await act(async () => {
       render(
@@ -77,7 +79,7 @@ describe('그림 줄', () => {
       )
     })
     expect(screen.getByText(/저장한 뒤에/)).toBeTruthy()
-    expect(screen.queryByText('그림 넣기')).toBeNull()
+    expect(screen.queryByText('이미지 첨부')).toBeNull()
   })
 
   it('읽기만 되는 사람에게는 고치는 자리가 없다', async () => {
@@ -95,6 +97,31 @@ describe('그림 줄', () => {
     // 설명은 **보이되** 고칠 수 없다.
     expect(screen.getByText('시편 장착 방향')).toBeTruthy()
     expect(screen.queryByLabelText('장착.png 설명')).toBeNull()
-    expect(screen.queryByLabelText('시편 장착 방향 빼기')).toBeNull()
+    expect(screen.queryByLabelText('시편 장착 방향 제거')).toBeNull()
+  })
+
+  it('누르면 크게 열리고, 받아 둔 blob 을 다시 받지 않는다', async () => {
+    await act(async () => {
+      render(
+        <AttachmentStrip
+          target="reliability_test"
+          objectId="r1"
+          rows={[row()]}
+          canEdit={false}
+          onChanged={() => {}}
+        />,
+      )
+    })
+    expect(fetchBlobUrl).toHaveBeenCalledTimes(1)
+
+    await act(async () => {
+      screen.getByRole('button', { name: '시편 장착 방향 크게 보기' }).click()
+    })
+
+    // 크게 보는 창이 떴다 — 파일 이름과 크기가 함께 선다.
+    expect(screen.getByText(/장착.png/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: /내려받기/ })).toBeTruthy()
+    // **다시 안 받는다.**
+    expect(fetchBlobUrl).toHaveBeenCalledTimes(1)
   })
 })

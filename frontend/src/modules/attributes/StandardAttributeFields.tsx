@@ -152,7 +152,13 @@ const LONG = new Set([
  * 여기 없는 key 는 마지막 묶음으로 간다 — 다른 대상(보유 장비·계열)이나 나중에 는 칸도
  * 자리를 잃지 않는다.
  */
-const SECTIONS: {
+/**
+ * 칸을 묶는 갈래 — **등록 창과 보기 창이 같은 표를 쓴다.**
+ *
+ * 둘이 따로 갖고 있으면 칸이 하나 늘 때 한쪽만 고쳐지고, 그때부터 같은 카드가 자리에 따라
+ * 다른 순서로 읽힌다. 그것은 「어디 적혀 있었더라」 를 매번 다시 찾게 만든다.
+ */
+export const SECTIONS: {
   title: string
   hint?: string
   keys: string[]
@@ -160,7 +166,7 @@ const SECTIONS: {
   conditions?: boolean
 }[] = [
   {
-    title: '무엇을 왜',
+    title: '시험 구분',
     keys: ['reliability_type', 'reliability_category', 'reliability_product_group'],
   },
   {
@@ -261,7 +267,7 @@ export function StandardAttributeFields({
     const rest = definitions.filter((one) => !placed.has(one.key))
     if (rest.length > 0)
       out.push({
-        title: '그 밖의 칸',
+        title: '기타 항목',
         hint: undefined,
         keys: [],
         conditions: false,
@@ -286,6 +292,7 @@ export function StandardAttributeFields({
               definitions={section.conditionRows}
               values={values}
               onChange={onChange}
+              attachments={attachments}
             />
           )}
           {/* **가로로 다 벌리지 않는다.** 창이 넓어도 입력 칸이 화면을 가로지르면 라벨과
@@ -375,7 +382,7 @@ export function StandardAttributeFields({
                       onValueChange={(next) => set(definition.id, { textValue: next })}
                     >
                       <SelectTrigger id={id}>
-                        <SelectValue placeholder="고르기" />
+                        <SelectValue placeholder="선택" />
                       </SelectTrigger>
                       <SelectContent>
                         {(definition.choices ?? []).map((one) => (
@@ -456,12 +463,28 @@ function ConditionRows({
   definitions,
   values,
   onChange,
+  attachments,
 }: {
   definitions: AttributeDefinition[]
   values: Record<string, StandardValue>
   onChange: (next: Record<string, StandardValue>) => void
+  /** 조건 줄에도 이미지가 붙는다 — 온습도 프로파일은 「시험 온도」 의 그림이다. */
+  attachments?: {
+    rows: Attachment[]
+    canEdit: boolean
+    objectId: string | null
+    onChanged: () => void
+  }
 }) {
+  /**
+   * 줄을 꺼낼 이유 — 값이 있거나 **이미지가 붙어 있거나.**
+   *
+   * 이미지만 있고 수치는 아직 못 적은 조건이 실제로 있다(프로파일 그림은 받았는데 램프
+   * 시간을 아직 모름). 값만 보고 줄을 접으면 그 이미지는 수정 창에서 **찾을 길이 없다** —
+   * 붙인 사람은 붙인 줄 알고, 고치려는 사람은 없는 줄 안다.
+   */
   const filled = (one: AttributeDefinition) => {
+    if (attachments?.rows.some((row) => row.definition_id === one.id)) return true
     const value = values[one.id]
     if (!value) return false
     return value.numMin !== null || value.numMax !== null || value.note.trim() !== ''
@@ -475,9 +498,9 @@ function ConditionRows({
       const next = definitions.filter((one) => filled(one) && !prev.includes(one.id))
       return next.length > 0 ? [...prev, ...next.map((one) => one.id)] : prev
     })
-    // 값이 밖에서 통째로 바뀔 때(수정 창 열기)만 맞춘다.
+    // 값이 밖에서 통째로 바뀔 때(수정 창 열기)와 이미지가 붙고 빠질 때 맞춘다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [definitions, values])
+  }, [definitions, values, attachments?.rows])
 
   const rows = definitions.filter((one) => shown.includes(one.id))
   const rest = definitions.filter((one) => !shown.includes(one.id))
@@ -531,7 +554,7 @@ function ConditionRows({
               />
               <button
                 type="button"
-                aria-label={`${definition.label} 빼기`}
+                aria-label={`${definition.label} 제거`}
                 className="text-muted-foreground hover:text-foreground"
                 onClick={() => {
                   setShown((prev) => prev.filter((one) => one !== definition.id))
@@ -544,6 +567,11 @@ function ConditionRows({
             <p className="text-muted-foreground mt-1 pl-30 text-xs">
               {describeRange(value, definition.unit)}
             </p>
+            {attachments && (
+              <div className="mt-1 pl-30">
+                <FieldAttachments definition={definition} bag={attachments} />
+              </div>
+            )}
           </div>
         )
       })}
@@ -599,7 +627,7 @@ function FieldAttachments({
         className="text-muted-foreground hover:text-foreground text-xs underline decoration-dotted underline-offset-2"
         onClick={() => setOpen(true)}
       >
-        그림 넣기
+        이미지 첨부
       </button>
     )
   }
@@ -611,7 +639,7 @@ function FieldAttachments({
       rows={mine}
       canEdit={bag.canEdit}
       onChanged={bag.onChanged}
-      label="이 칸에 그림"
+      label="이 항목의 이미지"
     />
   )
 }
@@ -639,7 +667,7 @@ function TermField({
       options={options}
       value={value ?? ''}
       onChange={(next) => onChange(next || null)}
-      placeholder={options.length > 0 ? '고르기' : '값이 아직 없습니다'}
+      placeholder={options.length > 0 ? '선택' : '값이 아직 없습니다'}
       detailTitle={definition.label}
       detailHint="기준정보에서 고릅니다 — 없으면 관리자가 값을 더합니다."
     />
@@ -669,7 +697,7 @@ function MethodField({
       options={options}
       value={value ?? ''}
       onChange={(next) => onChange(next || null)}
-      placeholder="규격 고르기"
+      placeholder="규격 선택"
       searchPlaceholder="규격 번호의 일부 (ISO 6892)"
       detailTitle="규격"
       detailHint="규격 사전에서 고릅니다 — 글자로 적으면 같은 규격이 둘로 갈립니다."

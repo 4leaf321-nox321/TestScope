@@ -18,6 +18,7 @@ import uuid
 from datetime import datetime
 
 from sqlalchemy import (
+    CheckConstraint,
     DateTime,
     ForeignKey,
     Index,
@@ -44,6 +45,7 @@ class ReliabilityTest(Base):
             unique=True,
             postgresql_where=text("deleted_at IS NULL"),
         ),
+        CheckConstraint("status IN ('candidate','confirmed')", name="status"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(
@@ -60,6 +62,24 @@ class ReliabilityTest(Base):
     purpose: Mapped[str] = mapped_column(Text, default="", server_default="")
     """무엇을 확인하는 시험인가. 이름만으로는 「HAST」 가 무엇을 보려는 것인지 옆 부서
     사람은 모른다."""
+
+    status: Mapped[str] = mapped_column(
+        String(12), default="confirmed", server_default="confirmed", index=True
+    )
+    """`candidate`(후보) · `confirmed`(확정).
+
+    **기계 자격(PAT)으로 들어온 쓰기는 후보가 된다.** 사람이 화면에서 읽고 확인해야
+    확정이다 — 자세한 것은 ADR 0009."""
+    submitted_via: Mapped[str | None] = mapped_column(String(60), nullable=True)
+    """올린 통로 — PAT 이름. `created_by` 는 토큰 **소유자**라 사람과 AI 를 못 가른다."""
+
+    confirmed_by_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    """내용을 보고 확인한 사람. **반년 뒤 「이 값 누가 보증했어」 에 답할 자리가 여기다.**"""
+    confirmed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
 
     created_by: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True

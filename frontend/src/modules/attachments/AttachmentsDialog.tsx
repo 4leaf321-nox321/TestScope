@@ -49,7 +49,7 @@ export function AttachmentsDialog({
     for (const row of shots.data ?? []) {
       const key = row.definition_id ?? ''
       const bucket = byField.get(key) ?? {
-        title: row.definition_label ?? '어느 칸에도 안 붙은 그림',
+        title: row.definition_label ?? '항목에 연결되지 않은 이미지',
         rows: [],
       }
       bucket.rows.push(row)
@@ -64,15 +64,15 @@ export function AttachmentsDialog({
     <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
       <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>{title} — 그림</DialogTitle>
+          <DialogTitle>{title} — 이미지</DialogTitle>
           <DialogDescription>
-            어느 칸에 붙은 그림인지로 묶었습니다. 넣고 지우는 것은 등록·수정 창에서 합니다.
+            연결된 항목별로 묶었습니다. 첨부와 삭제는 등록·수정 창에서 합니다.
           </DialogDescription>
         </DialogHeader>
 
         <ErrorNotice error={shots.error} />
         {groups.length === 0 && !shots.loading && (
-          <p className="text-muted-foreground text-sm">붙은 그림이 없습니다.</p>
+          <p className="text-muted-foreground text-sm">첨부된 이미지가 없습니다.</p>
         )}
         <div className="space-y-4">
           {groups.map((group) => (

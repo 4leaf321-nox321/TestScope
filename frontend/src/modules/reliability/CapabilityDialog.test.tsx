@@ -67,7 +67,7 @@ import { CapabilityDialog } from '@/modules/reliability/CapabilityDialog'
 
 const TEST = { id: 't1', name: '열충격' } as ReliabilityTest
 
-suite('가능한 장비', () => {
+suite('수행 가능 장비', () => {
   it('물은 조건과 뺀 조건을 말하고, 장비 줄에 연락할 곳을 담는다', async () => {
     render(
       <MemoryRouter>

@@ -11,6 +11,9 @@
  *
  * 시험 항목은 **이 부서에 장비가 몇 대인지**를 옆에 달아 고른다. 「열충격」 을 고르는 순간
  * 「우리 부서에 챔버가 0대」 가 보여야, 등록하면서 「돌릴 장비가 없다」 를 안다.
+ *
+ * **후보를 확인하는 자리도 여기다**(맨 위 띠). 「맞으면 ok, 아니면 수정」 이 정확히 이 창이
+ * 하는 일이라, 검토용 화면을 따로 두면 거기서 고칠 수 없어 창을 한 번 더 열게 된다.
  */
 
 import { useEffect, useMemo, useState } from 'react'
@@ -48,6 +51,7 @@ import type { StandardValue } from '@/modules/attributes/StandardAttributeFields
 import type { AttributeDefinition } from '@/modules/attributes/api'
 import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
 import { attachmentApi } from '@/modules/attachments/api'
+import { ReviewBanner } from '@/modules/reliability/CandidateReview'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 import { testItemCatalogApi } from '@/modules/test_items/api'
@@ -58,6 +62,7 @@ export function ReliabilityTestDialog({
   editing,
   onClose,
   onSaved,
+  onReviewed,
 }: {
   open: boolean
   /** 부서 주소. 등록은 이 부서로 들어간다. */
@@ -66,6 +71,9 @@ export function ReliabilityTestDialog({
   editing: ReliabilityTest | null
   onClose: () => void
   onSaved: () => void
+  /** 확인·되돌리기로 상태만 바뀌었다 — **창은 닫지 않는다.** 확인하자마자 창이 닫히면
+   *  「내가 방금 뭘 확인했더라」 가 되고, 이어서 고칠 수도 없다. */
+  onReviewed?: (next: ReliabilityTest) => void
 }) {
   // 시험 항목 목록 — 이 부서 장비 수를 함께 받는다(카탈로그의 `?workspace=`).
   const catalog = useResource(() => testItemCatalogApi.list(workspace), [workspace])
@@ -148,10 +156,13 @@ export function ReliabilityTestDialog({
           <DialogHeader>
             <DialogTitle>{editing ? '신뢰성 시험 수정' : '신뢰성 시험 등록'}</DialogTitle>
             <DialogDescription>
-              이 부서가 제품 개발·검증을 위해 수행하는 시험입니다. 쓰는 시험 항목을 이어 두면
+              이 부서가 제품 개발·검증을 위해 수행하는 시험입니다. 적용 시험 항목을 이어 두면
               그 항목이 되는 장비로 연결됩니다.
             </DialogDescription>
           </DialogHeader>
+
+          {/* **후보인지 먼저 말한다.** 스물두 칸을 다 읽은 뒤에 알면 늦다. */}
+          <ReviewBanner row={editing} onChanged={(next) => onReviewed?.(next)} />
 
           <fieldset className="rounded-lg border p-4">
             <legend className="px-1.5 text-sm font-medium">이름과 목적</legend>
@@ -183,9 +194,9 @@ export function ReliabilityTestDialog({
           </fieldset>
 
           <fieldset className="max-w-2xl space-y-2 rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">쓰는 시험 항목</legend>
+            <legend className="px-1.5 text-sm font-medium">적용 시험 항목</legend>
             <Label htmlFor="rt-item" className="sr-only">
-              쓰는 시험 항목
+              적용 시험 항목
             </Label>
             {termIds.length > 0 && (
               <ul className="flex flex-wrap gap-1">
@@ -206,7 +217,7 @@ export function ReliabilityTestDialog({
                       )}
                       <button
                         type="button"
-                        aria-label={`${label ?? id} 빼기`}
+                        aria-label={`${label ?? id} 제거`}
                         className="text-muted-foreground hover:text-foreground"
                         onClick={() => setTermIds((prev) => prev.filter((one) => one !== id))}
                       >
@@ -246,10 +257,10 @@ export function ReliabilityTestDialog({
           />
 
           <fieldset className="rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">그림</legend>
+            <legend className="px-1.5 text-sm font-medium">이미지</legend>
             <p className="text-muted-foreground mb-3 text-xs">
               **어느 칸에도 안 붙는 그림**이 여기 섭니다(부록·전경 사진). 절차나 판정 기준에
-              붙는 그림은 그 칸 아래에서 넣으세요.
+              항목별 이미지는 해당 항목 아래에서 첨부하십시오.
             </p>
             <AttachmentStrip
               target="reliability_test"
@@ -261,7 +272,7 @@ export function ReliabilityTestDialog({
           </fieldset>
 
           <fieldset className="rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">그 밖에 적을 것</legend>
+            <legend className="px-1.5 text-sm font-medium">기타 사항</legend>
             <p className="text-muted-foreground text-xs">
               위 칸으로 안 잡히는 것만. 여기서 새로 적은 이름은 **초안**으로 남고, 관리자가
               정식으로 올리면 그때부터 모두의 칸이 됩니다.

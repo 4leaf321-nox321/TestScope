@@ -85,6 +85,15 @@ METHOD_REQUIREMENTS_IMPORTED = "method.requirements_imported"
 RELIABILITY_TEST_DELETED = "reliability_test.deleted"
 """부서가 등록한 신뢰성 시험을 내렸다. 화면에서는 사라지므로 「그 시험 어디 갔어」 의 답이
 여기뿐이다. 만들고 고친 것은 줄 자체(created_by · updated_at)가 말한다."""
+RELIABILITY_TEST_CONFIRMED = "reliability_test.confirmed"
+"""AI 가 올린 후보를 사람이 읽고 **확인했다.**
+
+줄에도 `confirmed_by_id` · `confirmed_at` 이 남지만, 그것은 **지금의 상태**다. 확인했다가
+다시 후보로 열고 다시 확인한 이력은 여기에만 남는다 — 「이 값 누가 언제 보증했어」 를 물을
+때 필요한 것이 그 이력이다."""
+RELIABILITY_TEST_REOPENED = "reliability_test.reopened"
+"""확정된 시험을 **다시 후보로** 열었다. 그 순간부터 AI 가 다시 고칠 수 있게 되므로,
+누가 그 문을 열었는지가 남아야 한다."""
 
 
 def diff(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:

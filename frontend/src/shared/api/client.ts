@@ -225,8 +225,19 @@ export async function downloadFile(path: string, filename: string): Promise<void
  * 그래서 자격을 실어 받아 온 뒤 blob 주소를 만든다. **쓰고 나면 돌려줘야 한다** —
  * 부르는 쪽이 `URL.revokeObjectURL` 을 하지 않으면 그 탭이 살아 있는 동안 메모리에 남는다.
  */
-export async function fetchBlobUrl(path: string): Promise<string> {
-  const response = await send(path)
+/**
+ * 자격을 실어 파일을 받아 blob 주소로 — `<img src="/api/…">` 는 401 이 난다.
+ *
+ * **받는 것은 API 경로가 아니라 완성된 주소다.** 서버가 주는 `attachment.url` 은
+ * `/api/attachments/…/file` 처럼 뿌리부터 적힌 주소라, `api.get('/equipment')` 이 받는
+ * BASE 상대 경로와 다르다. 둘을 섞어 `send()` 에 넘겼더니 `/api/api/…` 로 나가 404 가
+ * 났고, 화면에는 그냥 「못 읽음」 네모만 떴다 — 이미지가 처음부터 한 장도 안 보였다.
+ */
+export async function fetchBlobUrl(url: string): Promise<string> {
+  const response = await fetch(url, {
+    credentials: 'same-origin',
+    headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+  })
   if (!response.ok) throw await parseError(response)
   return URL.createObjectURL(await response.blob())
 }
