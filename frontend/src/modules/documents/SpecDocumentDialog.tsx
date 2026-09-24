@@ -3,12 +3,17 @@
  *
  * 따로 두면 칸이 갈라지고, 그때 「등록은 되는데 수정은 안 되는 칸」 이 생긴다.
  *
- * 파일은 여기서 안 올린다 — **저장한 뒤에** 보기 창에서 붙인다. 문서 줄이 있어야 파일이
- * 붙을 자리가 정해지기 때문이다(첨부는 대상 id 를 요구한다).
+ * **파일도 여기서 고른다.** 첨부는 대상 id 를 요구해서 문서 줄이 먼저 있어야 하지만,
+ * 그 두 걸음을 사람에게 시키면 「만들고 → 다시 열고 → 올리기」 가 된다 — 그러면 대개
+ * 만들기까지만 하고 파일은 안 올라온다. 창이 저장한 뒤에 이어서 올린다.
+ *
+ * 저장은 됐는데 올리기가 막히는 경우가 있다(형식·크기). 그때 **창을 닫지 않는다** —
+ * 문서는 이미 만들어졌고 어느 파일이 안 갔는지 말해 줘야 사람이 다시 고를 수 있다.
  */
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import { FileUp, X } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { useAuth } from '@/shared/auth/AuthContext'
@@ -32,6 +37,7 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select'
 import { Textarea } from '@/shared/components/ui/textarea'
+import { attachmentApi } from '@/modules/attachments/api'
 import { specDocumentApi } from '@/modules/documents/api'
 import type { SpecDocument } from '@/modules/documents/api'
 
@@ -57,8 +63,11 @@ export function SpecDocumentDialog({
   const [title, setTitle] = useState('')
   const [revision, setRevision] = useState('')
   const [note, setNote] = useState('')
+  /** 저장한 뒤에 올릴 것들. 문서 줄이 없으면 붙을 자리가 없어서 여기 들고 있는다. */
+  const [picked, setPicked] = useState<File[]>([])
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [busy, setBusy] = useState(false)
+  const picker = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (!open) return
@@ -68,6 +77,7 @@ export function SpecDocumentDialog({
     setTitle(editing?.title ?? '')
     setRevision(editing?.revision ?? '')
     setNote(editing?.note ?? '')
+    setPicked([])
     // 열 때마다 대상에 맞춰 채운다 — 지난번 값이 남아 있으면 안 된다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, editing])
@@ -83,8 +93,30 @@ export function SpecDocumentDialog({
         revision: revision.trim() || null,
         note: note.trim() || null,
       }
-      if (editing) await specDocumentApi.update(editing.id, body)
-      else await specDocumentApi.create(workspace, body)
+      const saved = editing
+        ? await specDocumentApi.update(editing.id, body)
+        : await specDocumentApi.create(workspace, body)
+
+      // **한 장씩 보낸다** — 하나가 막혀도 나머지는 들어가고, 어느 것이 막혔는지 말한다.
+      const failed: string[] = []
+      for (const file of picked) {
+        try {
+          await attachmentApi.upload('spec_document', saved.id, file)
+        } catch {
+          failed.push(file.name)
+        }
+      }
+      if (failed.length > 0) {
+        // 문서는 이미 만들어졌다 — 창을 닫으면 사람은 파일이 갔는지 모른 채 나간다.
+        setPicked([])
+        setError(
+          new Error(
+            `문서는 저장됐지만 파일 ${failed.length}개가 안 올라갔습니다: ${failed.join(', ')}. ` +
+              '형식(png·jpg·webp·pdf)과 크기(100 MB)를 보고 다시 올려 주십시오.',
+          ),
+        )
+        return
+      }
       onSaved()
     } catch (caught) {
       setError(caught instanceof Error ? caught : new Error('알 수 없는 오류'))
@@ -101,7 +133,7 @@ export function SpecDocumentDialog({
             <DialogTitle>{editing ? '사내 규격서 수정' : '사내 규격서 등록'}</DialogTitle>
             <DialogDescription>
               부서가 만든 시험 문서입니다. 공개 규격(ASTM·ISO·KS)은 「시험법·규격」 에
-              등록합니다. <strong>원본 파일은 저장한 뒤에 붙입니다.</strong>
+              등록합니다. <strong>원본 파일을 여기서 같이 올립니다.</strong>
             </DialogDescription>
           </DialogHeader>
 
@@ -177,6 +209,61 @@ export function SpecDocumentDialog({
             </div>
           </div>
 
+          {/* **파일도 여기서 고른다.** 만들고 다시 열어 올리게 하면 대개 만들기까지만
+              하고 파일은 안 올라온다 — 그러면 번호만 있는 문서가 남는다. */}
+          <div className="space-y-2 border-t pt-4">
+            <Label>원본 파일</Label>
+            <input
+              ref={picker}
+              type="file"
+              accept="image/png,image/jpeg,image/webp,application/pdf"
+              multiple
+              hidden
+              onChange={(event) => {
+                setPicked((prev) => [...prev, ...Array.from(event.target.files ?? [])])
+                if (picker.current) picker.current.value = ''
+              }}
+            />
+            {picked.length > 0 && (
+              <ul className="space-y-1">
+                {picked.map((file, at) => (
+                  <li
+                    key={`${file.name}-${at}`}
+                    className="bg-muted/40 flex items-center justify-between gap-2 rounded-md px-2.5 py-1 text-sm"
+                  >
+                    <span className="truncate">{file.name}</span>
+                    <button
+                      type="button"
+                      aria-label={`${file.name} 빼기`}
+                      className="text-muted-foreground hover:text-foreground shrink-0"
+                      onClick={() =>
+                        setPicked((prev) => prev.filter((_, index) => index !== at))
+                      }
+                    >
+                      <X className="size-3.5" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              disabled={busy}
+              onClick={() => picker.current?.click()}
+            >
+              <FileUp className="size-3.5" />
+              파일 고르기
+            </Button>
+            <p className="text-muted-foreground text-xs">
+              {editing
+                ? '여기서 고른 파일은 저장할 때 더해집니다. 이미 붙은 파일은 보기 창에서 지웁니다.'
+                : '저장하면 문서가 만들어지고 이어서 올라갑니다. 나중에 보기 창에서 더할 수도 있습니다.'}{' '}
+              pdf · png · jpg · webp, 장당 100 MB 까지.
+            </p>
+          </div>
+
           <ErrorNotice error={error} />
 
           <DialogFooter>
@@ -184,7 +271,13 @@ export function SpecDocumentDialog({
               취소
             </Button>
             <Button type="submit" disabled={busy}>
-              {busy ? '저장 중…' : editing ? '저장' : '등록'}
+              {busy
+                ? picked.length > 0
+                  ? '올리는 중…'
+                  : '저장 중…'
+                : editing
+                  ? '저장'
+                  : '등록'}
             </Button>
           </DialogFooter>
         </form>
