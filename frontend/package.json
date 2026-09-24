@@ -2,7 +2,7 @@
   "name": "testscope-frontend",
   "private": true,
   "//": "이 version 이 곧 릴리스 번호다. 백엔드가 /api/health 로 이 값을 돌려준다.",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
