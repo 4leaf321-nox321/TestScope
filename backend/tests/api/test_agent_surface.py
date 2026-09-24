@@ -83,7 +83,7 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
 
     범위 표(`shared/auth._WRITE_SCOPES`)에 없는 경로는 어느 범위로도 못 쓴다 — 그것이
     규칙이고, 그래서 새 도구가 조용히 403 을 받는 일이 생긴다. MCP 도구가 실제로 부르는
-    경로를 여기서 한 번 눌러 본다: 기준정보 값·신뢰성 시험·속성 정의는 되고, 검토함의
+    경로를 여기서 한 번 눌러 본다: 온톨로지 값·신뢰성 시험·속성 정의는 되고, 검토함의
     확정은 **안 되는 것이 맞다**(고른 것이 곧 카탈로그 정본이라 사람이 화면에서 한다).
     """
     read_only = _token(client, admin, ["read"])
@@ -91,7 +91,7 @@ def test_새_도구가_쓰는_경로도_범위_안이다(client: TestClient, adm
     equipment = _token(client, admin, ["read", "equipment:write"])
     tag = uuid.uuid4().hex[:6]
 
-    # 기준정보 값 — catalog:write.
+    # 온톨로지 값 — catalog:write.
     term = client.post(
         "/api/vocabularies/test_item/terms", json={"value": f"MCP인장-{tag}"}, headers=catalog
     )
@@ -221,7 +221,7 @@ def test_해석은_셋으로_답한다(
     assert "지어내" not in none["hint"] or True  # 안내가 있다는 것만 본다
     assert none["hint"]
 
-    # 기준정보는 별칭까지 본다.
+    # 온톨로지는 별칭까지 본다.
     term_factory("test_item", f"인장-{tag}")
     axis = _resolve(client, admin.headers, kind="term", axis="test_item", text=f"인장-{tag}")
     assert axis["match"] == "exact"
@@ -562,12 +562,12 @@ def _member_token(
     return {"Authorization": f"Bearer {made.json()['token']}", "X-Client": "mcp"}
 
 
-def test_기준정보를_고치는_것은_범위가_아니라_자격이_막는다(
+def test_온톨로지를_고치는_것은_범위가_아니라_자격이_막는다(
     client: TestClient, admin: Signed, db: Session, workspace: Workspace
 ) -> None:
     """**막는 자리가 둘이다** — 토큰 범위(무엇을 건드리나)와 사람의 자격(해도 되나).
 
-    범위를 다 줘도 일반 사용자는 기준정보를 **못 고친다**. 이 규칙이 지금은 라우터마다
+    범위를 다 줘도 일반 사용자는 온톨로지를 **못 고친다**. 이 규칙이 지금은 라우터마다
     `require_system_admin` 으로 흩어져 있어서, 누가 한 줄을 `current_user` 로 바꿔도
     아무도 모른다 — 그 한 줄이 온톨로지를 누구나 고칠 수 있게 만든다.
 
@@ -666,7 +666,7 @@ def test_기준정보를_고치는_것은_범위가_아니라_자격이_막는�
         == 403
     )
 
-    # 부서 관리자여도 **기준정보는 여전히 못 고친다.**
+    # 부서 관리자여도 **온톨로지는 여전히 못 고친다.**
     manager = _member_token(client, db, workspace, scopes, role="manager")
     still = client.patch(
         f"/api/vocabularies/terms/{term_id}", json={"value": f"또 고침-{tag}"}, headers=manager

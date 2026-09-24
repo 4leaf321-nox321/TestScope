@@ -145,7 +145,7 @@ def test_시험_항목이_없는_계열만_거른다(client: TestClient, admin: 
 
 
 def test_고를_수_있는_값은_카탈로그에_있는_것뿐이다(client: TestClient, admin: Signed) -> None:
-    """기준정보 전체를 펼치면 골라도 0 건인 선택지가 섞이고, 한 번 겪으면 사람은
+    """온톨로지 전체를 펼치면 골라도 0 건인 선택지가 섞이고, 한 번 겪으면 사람은
     거르기를 안 믿는다."""
     used = _term(client, admin, "manufacturer", f"쓰는제조사-{uuid.uuid4().hex[:8]}")
     unused = _term(client, admin, "manufacturer", f"안쓰는제조사-{uuid.uuid4().hex[:8]}")

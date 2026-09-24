@@ -27,7 +27,7 @@ export const KIND_LABEL: Record<AttributeKind, string> = {
   date: '날짜',
   choice: '선택',
   condition: '시험 조건',
-  term: '기준정보',
+  term: '온톨로지',
   method: '규격',
   pairs: '이름별 수량',
   matrix: '사양별 수량',

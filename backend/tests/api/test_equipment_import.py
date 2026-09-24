@@ -14,7 +14,7 @@
 2. **미리보기는 아무것도 저장하지 않는다.**
 3. **못 정하는 이름은 거절한다** — 비슷한 기종에 끼워 넣지 않는다(ADR 0003).
 4. **줄 번호로 말한다** — 사람이 엑셀에서 그 줄을 찾을 수 있어야 한다.
-5. **기준정보를 만들지 않는다** — 오타가 그대로 축이 되면 합칠 방법이 없다.
+5. **온톨로지를 만들지 않는다** — 오타가 그대로 축이 되면 합칠 방법이 없다.
 6. **엑셀이 주는 그대로 읽는다** — 탭 구분·`\\r\\n`·끝의 빈 줄.
 """
 
@@ -202,7 +202,7 @@ def test_문제를_모아서_준다(client: TestClient, admin: Signed) -> None:
     assert {"workspace", "site", "category", "status"} <= _fields(result["rows"][0])
 
 
-def test_기준정보에_없는_값을_만들지_않는다(client: TestClient, admin: Signed) -> None:
+def test_온톨로지에_없는_값을_만들지_않는다(client: TestClient, admin: Signed) -> None:
     """반입이 값을 만들면 오타가 그대로 축이 되고, 「본사」 와 「본사 」 가 서로 다른
     거점이 된다 — 그 둘은 나중에 합칠 방법이 없다."""
     workspace, _site, category = _fixture(client, admin)
@@ -524,7 +524,7 @@ def test_서버가_읽은_칸_값을_그대로_돌려준다(client: TestClient, 
 def test_축에_없는_값은_그_자리에서_만들_수_있다고_알려_준다(
     client: TestClient, admin: Signed
 ) -> None:
-    """거점 「3공장」 이 아직 없다고 반입을 멈추면, 사람은 창을 닫고 기준정보로 가서
+    """거점 「3공장」 이 아직 없다고 반입을 멈추면, 사람은 창을 닫고 온톨로지로 가서
     만들고 돌아와 다시 붙여넣어야 한다 — 그 사이 표에서 고치던 것을 잃는다.
 
     **열린 축은 원래 누구나 더한다**(`entry_policy=open`). 여기서 막을 이유가 없다.

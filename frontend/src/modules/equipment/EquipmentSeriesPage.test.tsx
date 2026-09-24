@@ -104,7 +104,7 @@ describe('계열 목록의 열별 거르기', () => {
 
   it('고를 수 있는 값을 서버에서 받아 온다', async () => {
     await open()
-    // 기준정보 전체가 아니라 **카탈로그에 쓰인 값만** — 제조사 축 수백 종 중
+    // 온톨로지 전체가 아니라 **카탈로그에 쓰인 값만** — 제조사 축 수백 종 중
     // 계열이 가리키는 것은 79종이다.
     expect(calls.some((one) => one.startsWith('/equipment-series/filter-options'))).toBe(true)
   })

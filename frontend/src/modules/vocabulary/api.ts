@@ -1,4 +1,4 @@
-/** 기준정보·조건 정의 API. 여러 화면이 피커로 쓴다. */
+/** 온톨로지·조건 정의 API. 여러 화면이 피커로 쓴다. */
 
 import { api } from '@/shared/api/client'
 import type { components } from '@/shared/api/schema'

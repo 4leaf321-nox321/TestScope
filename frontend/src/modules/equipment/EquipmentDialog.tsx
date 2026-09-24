@@ -153,7 +153,7 @@ export function EquipmentDialog({
     setNote(editing?.note ?? '')
     setRetiredOn(editing?.retired_on ?? '')
     setAttributes(fromValues(editing?.attributes ?? []))
-    // 기준정보 목록이 늦게 와도 거점·분류가 채워지게 같이 본다.
+    // 온톨로지 목록이 늦게 와도 거점·분류가 채워지게 같이 본다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, editing, sites.data, categories.data])
 
@@ -327,7 +327,7 @@ export function EquipmentDialog({
                   </div>
                 </div>
                 <p className="text-muted-foreground text-xs">
-                  이 둘은 <strong>표시용입니다</strong> — 기준정보와 이어져 있지 않아 검색이
+                  이 둘은 <strong>표시용입니다</strong> — 온톨로지와 이어져 있지 않아 검색이
                   보지 않습니다. 나중에 기종에 연결하면 지워집니다.
                 </p>
               </div>

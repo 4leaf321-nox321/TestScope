@@ -58,7 +58,7 @@ def _published_on(raw: str | None) -> date | None:
 
 def _makers(db) -> dict[str, VocabularyTerm]:  # type: ignore[no-untyped-def]
     """제조사 축의 값들을 비교키로 집는다. **없는 것은 안 만든다** —
-    기준정보의 값은 쓰는 사람이 채운다는 규칙이 여기서도 같다."""
+    온톨로지의 값은 쓰는 사람이 채운다는 규칙이 여기서도 같다."""
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == "manufacturer"))
     if axis is None:
         return {}

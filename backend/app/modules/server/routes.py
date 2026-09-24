@@ -161,7 +161,7 @@ def status(
             TableCountOut(
                 label="시험법", count=_count(db, TestMethod, TestMethod.deleted_at.is_(None))
             ),
-            TableCountOut(label="기준정보 값", count=_count(db, VocabularyTerm)),
+            TableCountOut(label="온톨로지 값", count=_count(db, VocabularyTerm)),
             TableCountOut(label="계정", count=_count(db, User, User.deleted_at.is_(None))),
         ],
         started_at=STARTED_AT,

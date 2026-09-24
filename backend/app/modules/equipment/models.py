@@ -134,7 +134,7 @@ class EquipmentSeries(Base):
         nullable=True,
         index=True,
     )
-    """제조사(기준정보 축 manufacturer).
+    """제조사(온톨로지 축 manufacturer).
 
     **비울 수 있다.** 자작 장비에는 제조사가 없다 — 그때 막으면 사람은 「사내」 같은
     가짜 값을 만들어 넣고, 그 값이 목록에서 진짜 제조사들 사이에 선다."""
@@ -159,7 +159,7 @@ class EquipmentSeries(Base):
         nullable=True,
         index=True,
     )
-    """장비 분류(기준정보 축 equipment_category). 트리라 상위 분류는 term 의 부모다."""
+    """장비 분류(온톨로지 축 equipment_category). 트리라 상위 분류는 term 의 부모다."""
 
     kind: Mapped[str] = mapped_column(
         String(20), default="main", server_default="main", index=True
@@ -173,7 +173,7 @@ class EquipmentSeries(Base):
         nullable=True,
         index=True,
     )
-    """구동 방식(기준정보 축 `drive`) — 전기기계식·유압식·진자식.
+    """구동 방식(온톨로지 축 `drive`) — 전기기계식·유압식·진자식.
 
     **무엇으로 힘을 내나는 무엇을 할 수 있나와 곧장 이어진다.** 유압은 큰 하중을,
     전기동력은 높은 주파수를, 진자는 충격을 낸다 — 고르는 사람이 실제로 묻는 축이라
@@ -185,7 +185,7 @@ class EquipmentSeries(Base):
         nullable=True,
         index=True,
     )
-    """형태(기준정보 축 `form_factor`) — 탁상형·바닥형·휴대형.
+    """형태(온톨로지 축 `form_factor`) — 탁상형·바닥형·휴대형.
 
     **자유 문자열이 아니라 축이다.** 원본이 `benchtop` 으로 적어 오는 것을 그대로 두면
     화면에 영어가 뜨고, 「탁상형만」 으로 거를 수도 없다. 값의 `code` 에 원본 슬러그가
@@ -315,7 +315,7 @@ class EquipmentModel(Base):
         nullable=True,
         index=True,
     )
-    """형태(기준정보 축 `form_factor`) — 탁상형·바닥형·휴대형.
+    """형태(온톨로지 축 `form_factor`) — 탁상형·바닥형·휴대형.
 
     **자유 문자열이 아니라 축이다.** 원본이 `benchtop` 으로 적어 오는 것을 그대로 두면
     화면에 영어가 뜨고, 「탁상형만」 으로 거를 수도 없다. 값의 `code` 에 원본 슬러그가
@@ -427,7 +427,7 @@ class Equipment(Base):
     model_text: Mapped[str | None] = mapped_column(String(200), nullable=True)
     """카탈로그 미연결일 때만 쓰는 **표시용** 제조사·모델명.
 
-    **검색은 이 둘을 안 본다.** 기준정보의 제조사 값과 이어져 있지 않아서, 여기 적힌
+    **검색은 이 둘을 안 본다.** 온톨로지의 제조사 값과 이어져 있지 않아서, 여기 적힌
     「인스트론」 과 축의 「Instron」 은 서로 다른 글자다. 카탈로그에 연결하는 순간
     서버가 이 칸들을 비운다 — 같은 사실이 두 곳에 남으면 어느 쪽이 맞는지 알 수 없다.
 
@@ -462,13 +462,13 @@ class Equipment(Base):
         nullable=False,
         index=True,
     )
-    """거점(기준정보 축 site). 공장·연구소처럼 **가려면 이동해야 하는 단위**.
+    """거점(온톨로지 축 site). 공장·연구소처럼 **가려면 이동해야 하는 단위**.
 
     **비울 수 없다** — 장비는 어딘가에 놓여 있고, 어디 있는지 모르는 장비는 찾아도
     소용이 없다. RESTRICT: 쓰는 장비가 있는 거점은 못 지운다."""
     location: Mapped[str] = mapped_column(String(200))
     """거점 안의 자리. 3동 201호. 자유 문자열로 둔다 — 이것까지 축으로 만들면
-    호실 하나 바뀔 때마다 기준정보를 고쳐야 한다."""
+    호실 하나 바뀔 때마다 온톨로지를 고쳐야 한다."""
 
     status: Mapped[str] = mapped_column(
         String(20), default="operational", server_default="operational", index=True
@@ -538,7 +538,7 @@ class EquipmentCalibration(Base):
         nullable=True,
         index=True,
     )
-    """교정 기관(기준정보 축 `calibration_provider`).
+    """교정 기관(온톨로지 축 `calibration_provider`).
 
     **자유 문자열로 두면 갈린다.** 같은 기관이 「한국계량측정협회」 와 「(주)한국계량
     측정협회」 로 적히면 그 둘은 서로 다른 기관이 되고, 「이 기관이 교정한 장비」 를

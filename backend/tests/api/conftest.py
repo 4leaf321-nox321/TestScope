@@ -37,7 +37,7 @@ class Signed:
 
 @pytest.fixture(scope="session", autouse=True)
 def reference(schema: None) -> None:
-    """기준정보 축과 조건 정의.
+    """온톨로지 축과 조건 정의.
 
     설치와 **같은 코드**로 심는다 — 시험이 자기 목록을 따로 들면 두 벌이 갈리고,
     그때 시험은 통과하는데 설치는 다른 축을 만든다.
@@ -86,7 +86,7 @@ def admin(client: TestClient, db: Session, workspace: Workspace) -> Signed:
 
 @pytest.fixture
 def term_factory(client: TestClient, admin: Signed) -> Iterator[object]:
-    """기준정보 값을 만들어 id 를 돌려준다."""
+    """온톨로지 값을 만들어 id 를 돌려준다."""
 
     def make(axis: str, value: str) -> str:
         response = client.post(

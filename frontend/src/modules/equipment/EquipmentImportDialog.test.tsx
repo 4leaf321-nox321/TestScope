@@ -240,7 +240,7 @@ describe('틀린 칸', () => {
       rows: [
         row({
           cells: { asset_no: 'A-1', name: '만능기', site: '없는거점', note: '' },
-          problems: [{ field: 'site', message: '거점: 「없는거점」 가 기준정보에 없습니다' }],
+          problems: [{ field: 'site', message: '거점: 「없는거점」 가 온톨로지에 없습니다' }],
         }),
       ],
     }
@@ -250,7 +250,7 @@ describe('틀린 칸', () => {
     const bad = cell('거점')
     // 줄 단위로만 말하면 열여덟 칸 중 어디를 고칠지 사람이 되짚어야 한다.
     expect(bad.className).toMatch(/red/)
-    expect(bad.title).toMatch(/기준정보에 없습니다/)
+    expect(bad.title).toMatch(/온톨로지에 없습니다/)
     // 멀쩡한 칸은 안 칠한다 — 다 붉으면 아무것도 안 가리킨 것과 같다.
     expect(cell('장비명').className).not.toMatch(/red/)
   })
@@ -359,7 +359,7 @@ describe('없는 거점·분류 만들기', () => {
         problems: [
           {
             field: 'site',
-            message: `거점: 「${value}」 가 기준정보에 없습니다`,
+            message: `거점: 「${value}」 가 온톨로지에 없습니다`,
             make_axis: 'site',
             make_value: value,
           },
@@ -372,7 +372,7 @@ describe('없는 거점·분류 만들기', () => {
     answer = missing('3공장')
     await open()
     await paste()
-    // 「기준정보에서 먼저 만드세요」 하고 멈추면 창을 닫고 나갔다 와야 하고,
+    // 「온톨로지에서 먼저 만드세요」 하고 멈추면 창을 닫고 나갔다 와야 하고,
     // 그 사이 표에서 고치던 것을 잃는다.
     expect(screen.getByRole('button', { name: /거점 「3공장」 만들기/ })).toBeTruthy()
   })
@@ -407,7 +407,7 @@ describe('없는 거점·분류 만들기', () => {
     await paste()
     // 300줄에 같은 거점이 50번 나와도 단추가 50개면 그 줄은 못 읽는다.
     expect(screen.getAllByRole('button', { name: /만들기/ })).toHaveLength(1)
-    expect(screen.getByText(/기준정보에 없는 값 1개/)).toBeTruthy()
+    expect(screen.getByText(/온톨로지에 없는 값 1개/)).toBeTruthy()
   })
 
   it('만들 수 없는 문제에는 단추를 안 준다', async () => {
@@ -459,7 +459,7 @@ describe('엑셀로 되가져가기', () => {
       created: 0,
       rows: [
         row({
-          problems: [{ field: 'site', message: '거점: 「없는거점」 가 기준정보에 없습니다' }],
+          problems: [{ field: 'site', message: '거점: 「없는거점」 가 온톨로지에 없습니다' }],
         }),
       ],
     }
@@ -469,7 +469,7 @@ describe('엑셀로 되가져가기', () => {
       copyButton().click()
     })
     // 값만 돌려주면 무엇이 틀렸는지가 화면 안에만 남고, 그러면 되가져가는 뜻이 없다.
-    expect(copied[0]).toContain('기준정보에 없습니다')
+    expect(copied[0]).toContain('온톨로지에 없습니다')
   })
 
   it('빈 줄은 안 내보낸다', async () => {

@@ -1,4 +1,4 @@
-"""기준정보 축과 조건 정의만 심는다 — **배포가 매번 부른다.**
+"""온톨로지 축과 조건 정의만 심는다 — **배포가 매번 부른다.**
 
 `seed_install.py` 와 나눈 이유: 설치 시드는 관리자 계정과 뿌리 부서까지 만드는데,
 그것은 **첫 설치에서 한 번**만 할 일이다. 배포가 그것을 부르면 계정 생성 경로가
@@ -32,14 +32,14 @@ def main() -> int:
         counts = ensure_reference_data(db)
         if any(counts):
             print(
-                f"기준정보: 축 {counts.axes}개, 조건 정의 {counts.conditions}개, "
+                f"온톨로지: 축 {counts.axes}개, 조건 정의 {counts.conditions}개, "
                 f"사양 그룹 {counts.spec_groups}개, 사양 정의 {counts.spec_definitions}개 추가"
                 f" · 검색축 이음 {counts.linked_definitions}개"
                 f", 문장→구간 {counts.converted_values}건"
                 f", 보유 장비 속성 {counts.attributes}개"
             )
         else:
-            print("기준정보: 이미 갖춰져 있습니다")
+            print("온톨로지: 이미 갖춰져 있습니다")
         return 0
     finally:
         db.close()

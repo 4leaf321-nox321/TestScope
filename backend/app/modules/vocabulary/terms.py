@@ -32,7 +32,7 @@ from app.shared.text import clean, compare_key
 def get_vocabulary(db: Session, slug: str) -> Vocabulary:
     found = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if found is None:
-        raise NotFound("TSC-VOCAB-0001", f"기준정보 축을 찾을 수 없습니다: {slug}")
+        raise NotFound("TSC-VOCAB-0001", f"온톨로지 축을 찾을 수 없습니다: {slug}")
     return found
 
 

@@ -51,7 +51,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
 
-#: 속성이 붙는 대상. **모든 객체 종류에 관리자가 칸을 더할 수 있어야 한다** — 기준정보 허브가
+#: 속성이 붙는 대상. **모든 객체 종류에 관리자가 칸을 더할 수 있어야 한다** — 온톨로지 허브가
 #: 그것을 한 표로 보여 준다. 새 대상은 여기와 AttributeValue 의 열, services._TARGET_COLUMN,
 #: 그 대상의 Out/Update 에 한 줄씩.
 ATTRIBUTE_TARGETS = ("reliability_test", "equipment", "series", "method")
@@ -65,7 +65,7 @@ ATTRIBUTE_TARGETS = ("reliability_test", "equipment", "series", "method")
 #:   date       날짜.                    제정일
 #:   choice     정의가 준 선택지 중 하나. 시료 형태 = 시편 | 완제품
 #:   condition  검색 조건 축의 값.       정의의 condition_key_id 가 축, 값은 range 와 같은 칸
-#:   term       기준정보 축의 값 참조.   정의의 vocabulary_id 가 축, 값은 term_id
+#:   term       온톨로지 축의 값 참조.   정의의 vocabulary_id 가 축, 값은 term_id
 #:   method     규격 참조.               값은 ref_method_id
 #:   document   사내 규격서 참조.        값은 ref_document_id
 #:
@@ -137,7 +137,7 @@ class AttributeDefinition(Base):
         ForeignKey("vocabularies.id", ondelete="RESTRICT"),
         nullable=True,
     )
-    """kind=term 의 축 — 어느 기준정보 축의 값을 고르나."""
+    """kind=term 의 축 — 어느 온톨로지 축의 값을 고르나."""
 
     status: Mapped[str] = mapped_column(String(10), default="draft", server_default="draft")
     is_required: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")

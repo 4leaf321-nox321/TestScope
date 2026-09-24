@@ -14,7 +14,7 @@ uuid 를 쓸 일은 없지만, id 를 보고 어느 화면으로 갈지 정해�
 관계도 HTML(2026-09-16)의 ①~⑬ 이 그대로다: 측정 물성 · 조회 조건 축 · 규격의 소속 시험
 항목 · 규격 요구 조건 · 수행 가능 시험 항목 · 인용 규격 · 구성 기종 · 계열 간 관계 ·
 지정 기종 · 수행 시험 항목 · 소유 부서 · 수행 부서 · 구성 시험 항목. 거기에 제조사·분류·
-거점·제정기관·후속 판·상위 분류·상위 부서, 그리고 정식 속성이 가리키는 규격·기준정보 값.
+거점·제정기관·후속 판·상위 분류·상위 부서, 그리고 정식 속성이 가리키는 규격·온톨로지 값.
 """
 
 from __future__ import annotations
@@ -54,7 +54,7 @@ class NodeType:
     """catalog · vocabulary · operations — 색 묶음과 설명에 쓴다."""
     icon: str
     axis: str | None = None
-    """기준정보 축의 값이면 그 축 slug. 아니면 None(자기 표)."""
+    """온톨로지 축의 값이면 그 축 slug. 아니면 None(자기 표)."""
     detail_path: str | None = None
     """상세 화면 주소 서식 — `{id}` 가 uuid."""
     sort_order: int = 0
@@ -179,7 +179,7 @@ def _series_relation_kinds() -> list[EdgeKind]:
     return out
 
 
-#: 정식 속성이 가리키는 규격·기준정보 값 — 「근거 규격」 같은 속성이 선이 된다.
+#: 정식 속성이 가리키는 규격·온톨로지 값 — 「근거 규격」 같은 속성이 선이 된다.
 _ATTRIBUTE_TARGETS: dict[str, tuple[str, Any]] = {
     "reliability_test": ("reliability_test", AttributeValue.reliability_test_id),
     "equipment": ("equipment", AttributeValue.equipment_id),
@@ -216,7 +216,7 @@ def _attribute_kinds() -> list[EdgeKind]:
         out.append(
             _kind(
                 f"attribute_term:{target}",
-                "속성이 가리키는 기준정보 값",
+                "속성이 가리키는 온톨로지 값",
                 "이 값을 속성으로 적은 것",
                 node_type,
                 "term",

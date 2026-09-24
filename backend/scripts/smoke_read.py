@@ -6,7 +6,7 @@
 ## 왜 있나
 
 큰 파일을 가르거나 옮길 때 「정의가 같다」(AST) 와 「시험이 초록이다」 만으로는 **이어 붙인
-것이 실제 데이터로 도는가**를 못 본다. 2026-09-13 에 반입 스크립트·카탈로그·기준정보를
+것이 실제 데이터로 도는가**를 못 본다. 2026-09-13 에 반입 스크립트·카탈로그·온톨로지를
 갈랐을 때 이 방법으로 잡은 것이 있다 — 정의는 글자 그대로였는데 `DEFAULT_ROOT` 가 패키지
 안으로 한 층 들어가 저장소 뿌리를 놓쳤다.
 
@@ -134,7 +134,7 @@ def collect() -> dict[str, tuple[int, Any]]:
             get(f"/api/equipment/{row['id']}/calibrations")
             get("/api/equipment-test-items", equipment_id=row["id"])
 
-        # --- 기준정보 ---------------------------------------------------------
+        # --- 온톨로지 ---------------------------------------------------------
         for axis in get("/api/vocabularies") or []:
             terms = get(f"/api/vocabularies/{axis['slug']}/terms") or []
             for term in terms[:2]:

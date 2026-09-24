@@ -706,7 +706,7 @@ function TermField({
       onChange={(next) => onChange(next || null)}
       placeholder={options.length > 0 ? '선택' : '값이 아직 없습니다'}
       detailTitle={definition.label}
-      detailHint="기준정보에서 고릅니다 — 없으면 관리자가 값을 더합니다."
+      detailHint="온톨로지에서 고릅니다 — 없으면 관리자가 값을 더합니다."
     />
   )
 }

@@ -54,7 +54,7 @@ class RefreshToken(Base):
 #:
 #:   read            모든 읽기
 #:   equipment:write 보유 장비·시험 항목·교정
-#:   catalog:write   계열·기종·사양·기준정보
+#:   catalog:write   계열·기종·사양·온톨로지
 #:
 #: **왜 나누나.** 카탈로그 쓰기는 시스템 관리자 몫인데, MCP 용 토큰에 그 계정을
 #: 주면 계정 관리와 서버 설정까지 함께 열린다. 자동화가 필요한 것은 그중 둘뿐이다.

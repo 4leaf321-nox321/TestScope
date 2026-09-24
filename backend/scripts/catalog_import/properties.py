@@ -34,7 +34,7 @@ from catalog_import.terms import (
 def step_property_terms(
     db: Session, cat: Catalog, actor: User | None
 ) -> tuple[dict[str, VocabularyTerm], int]:
-    """1-d. 물성 항목을 기준정보 축 `property` 의 값으로 심는다. {key: 값}.
+    """1-d. 물성 항목을 온톨로지 축 `property` 의 값으로 심는다. {key: 값}.
 
     **key 가 `code` 다.** 한글 이름은 사람이 바꿀 수 있지만 `mechanical.yield_strength` 는
     MatNexus 와 공유하는 이름이라 안 바뀐다 — 반입도 화면도 검색도 code 로 건다.

@@ -48,6 +48,24 @@ describe('권한별 메뉴', () => {
     expect(labels).toContain('서버')
   })
 
+  it('온톨로지는 관리에 있다 — 고치는 것이 전부 시스템 관리자다', () => {
+    /**
+     * 전에는 「공통」 에 있어 멤버도 봤다(값을 매일 드롭다운에서 고르는 것은 멤버니까).
+     * 고치는 것이 전부 시스템 관리자라 **볼 수만 있는 화면**이었고, 이제 관리로 옮겼다 —
+     * StandardPlatform 의 관리 화면과 같은 형태로 주소도 `/admin/` 아래다.
+     */
+    const forMember = visibleGroups(MEMBER).flatMap((group) =>
+      group.items.map((one) => one.label),
+    )
+    expect(forMember).not.toContain('온톨로지')
+
+    const groups = visibleGroups(ADMIN)
+    const holder = groups.find((group) => group.items.some((one) => one.label === '온톨로지'))
+    expect(holder?.title).toBe('관리')
+    const item = groups.flatMap((group) => group.items).find((one) => one.label === '온톨로지')
+    expect(item?.to).toBe('/admin/ontology')
+  })
+
   it('빈 그룹은 제목까지 사라진다', () => {
     // 제목만 남으면 「뭔가 안 나온다」 로 읽힌다.
     const titles = visibleGroups(MEMBER).map((group) => group.title)

@@ -159,11 +159,11 @@ METHODS: list[tuple[str, str, str, str, str, dict[str, tuple[float | None, float
 
 
 def _term(db: Session, axis_slug: str, value: str, actor: User) -> VocabularyTerm:
-    """기준정보 값을 없으면 만든다. **비교키로 찾는다** — 표기가 달라도 같은 값이다."""
+    """온톨로지 값을 없으면 만든다. **비교키로 찾는다** — 표기가 달라도 같은 값이다."""
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == axis_slug))
     if axis is None:
         raise SystemExit(
-            f"기준정보 축 '{axis_slug}' 가 없습니다. 먼저 scripts/seed_install.py 를 돌리세요."
+            f"온톨로지 축 '{axis_slug}' 가 없습니다. 먼저 scripts/seed_install.py 를 돌리세요."
         )
     key = compare_key(value)
     found = db.scalar(
@@ -235,7 +235,7 @@ def _conditions(db: Session) -> dict[str, ConditionKey]:
 
 
 def purge(db: Session) -> int:
-    """데모가 만든 장비와 그 아래 것들을 지운다. 기준정보 값은 남긴다 —
+    """데모가 만든 장비와 그 아래 것들을 지운다. 온톨로지 값은 남긴다 —
     운영에서 이미 쓰고 있을 수 있고, 그것을 지우면 가리키던 것이 끊긴다."""
     rows = list(db.scalars(select(Equipment).where(Equipment.asset_no.startswith(PREFIX))))
     for row in rows:

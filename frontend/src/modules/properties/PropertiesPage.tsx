@@ -65,8 +65,15 @@ import type { Property, TestItemProperty } from '@/modules/properties/api'
 
 type View = 'property' | 'item'
 
+/**
+ * 이 연결을 누가 적었나.
+ *
+ * **「카탈로그 원본」 이라고 밝힌다.** 화면 하나가 「온톨로지」 라는 이름을 갖게 됐으므로
+ * (관리 → 온톨로지), 여기서 그냥 「온톨로지」 라고 쓰면 「저 화면에서 누가 적었나」 로
+ * 읽힌다 — 실제로는 반입이 카탈로그 원본(`source/catalog/ontology`)에서 가져온 것이다.
+ */
 const SOURCE_LABEL: Record<string, string> = {
-  ontology: '온톨로지',
+  ontology: '카탈로그 원본',
   materialtwin: 'MaterialTwin',
   manual: '손으로',
 }

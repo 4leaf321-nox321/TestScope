@@ -243,7 +243,7 @@ export default function AttributeDefinitionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        back={{ to: `/reference?kind=${HUB_KIND[target]}`, label: '기준정보' }}
+        back={{ to: `/admin/ontology?kind=${HUB_KIND[target]}`, label: '온톨로지' }}
         title={`${TARGET_LABEL[target]} 속성 정의`}
         description={`${TARGET_LABEL[target]}에 붙는 속성(고정 칸이 아닌 정보)입니다. 정식 속성은 검색·색인에 쓰이고, 초안은 값을 적은 사람이 새 이름을 쓴 것 — 건수를 보고 정식으로 올리거나 합칩니다.`}
       />
@@ -347,9 +347,9 @@ export default function AttributeDefinitionsPage() {
           )}
           {kind === 'term' && (
             <div className="space-y-1">
-              <span className="block text-xs">기준정보 축</span>
+              <span className="block text-xs">온톨로지 축</span>
               <Select value={vocabulary} onValueChange={setVocabulary}>
-                <SelectTrigger className="w-40" aria-label="기준정보 축">
+                <SelectTrigger className="w-40" aria-label="온톨로지 축">
                   <SelectValue placeholder="선택" />
                 </SelectTrigger>
                 <SelectContent>

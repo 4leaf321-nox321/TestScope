@@ -36,7 +36,7 @@ def _term(
     parent: VocabularyTerm | None = None,
     code: str | None = None,
 ) -> VocabularyTerm:
-    """기준정보 값을 없으면 만든다. **코드로 먼저, 그다음 비교키로 찾는다.**
+    """온톨로지 값을 없으면 만든다. **코드로 먼저, 그다음 비교키로 찾는다.**
 
     코드(온톨로지 id — `tensile` · `universal_testing_machine` · `instron`)가 있으면 그것으로
     찾는다. 이름으로만 찾으면 관리 화면에서 「인장」 을 「인장 시험」 으로 바꾼 다음 반입이
@@ -90,7 +90,7 @@ def _axis(db: Session, slug: str) -> Vocabulary:
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if axis is None:
         raise SystemExit(
-            f"기준정보 축 '{slug}' 가 없습니다. 먼저 scripts/seed_install.py 를 돌리세요."
+            f"온톨로지 축 '{slug}' 가 없습니다. 먼저 scripts/seed_install.py 를 돌리세요."
         )
     return axis
 

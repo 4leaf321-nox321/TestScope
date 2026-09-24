@@ -216,7 +216,7 @@ class _Lookup:
         if found is None:
             picked.problems.append(
                 f"조건: 조건 정의에 없습니다 ({name}) — "
-                "기준정보의 조건 이름(하중 용량·시험 온도 …)으로 적으십시오"
+                "온톨로지의 조건 이름(하중 용량·시험 온도 …)으로 적으십시오"
             )
         return found
 

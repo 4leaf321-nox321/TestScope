@@ -11,7 +11,7 @@
     attr=invest_year>=2020      수치 · 날짜
     attr=purpose~고온           문장 포함(대소문자 무시)
     attr=reserve_url*           값이 적혀 있기만 하면
-    attr=sample_form=시편       선택지 · 기준정보 값 · 참(true)/거짓(false)
+    attr=sample_form=시편       선택지 · 온톨로지 값 · 참(true)/거짓(false)
     attr=holder!=3동            같지 않다
 
 연산자는 `>=` `<=` `>` `<` `!=` `=` `~` `*` 여덟이고, 왼쪽은 정의의 `key` 다(이름이 아니라).

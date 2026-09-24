@@ -33,7 +33,7 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 | 범위 | 무엇을 |
 | --- | --- |
 | `read` | 모든 읽기 |
-| `catalog:write` | 계열·기종·사양·기준정보 |
+| `catalog:write` | 계열·기종·사양·온톨로지 |
 | `equipment:write` | 보유 장비·시험 항목·교정 |
 
 **기본은 읽기뿐이다.** 계정 관리와 서버 설정은 어느 범위로도 안 열린다 — 표에 없는
@@ -58,7 +58,7 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 | **보유 장비 등록·수정 · 시험 항목 달기 · 교정 이력** | 그 **부서 멤버** |
 | 보유 장비 **지우기** · 신뢰성 시험 · 부서 멤버 관리 | 그 **부서 관리자** |
 | 계열·기종·사양 · 규격 · 속성 정의 · **닫힌 축에 값 더하기**(시험 항목 …) | **시스템 관리자** |
-| **기준정보를 고치기** — 값 이름·별칭·병합, 축 만들기·고치기, 조건 축 | **시스템 관리자** |
+| **온톨로지를 고치기** — 값 이름·별칭·병합, 축 만들기·고치기, 조건 축 | **시스템 관리자** |
 
 **제 부서의 장비는 멤버가 넣고 고친다**(2026-09-23). 장비를 쓰는 사람이 등록한다 — 부서
 관리자를 거치게 하면 등록이 밀리고, 밀린 장비는 검색에 안 걸린다. 등록만 열고 시험 항목을
@@ -70,7 +70,7 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 감사 기록뿐이다. 그래서 `update_term`·`update_axis`·`merge_terms` 는 시스템 관리자다.
 
 이 표는 `tests/api/test_agent_surface.py` 의
-`test_기준정보를_고치는_것은_범위가_아니라_자격이_막는다` 가 실제로 눌러서 지킨다.
+`test_온톨로지를_고치는_것은_범위가_아니라_자격이_막는다` 가 실제로 눌러서 지킨다.
 
 ## 도구가 몇 개 실리나
 
@@ -104,7 +104,7 @@ TestScope 화면의 「내 정보 → 토큰」 에서 개인 토큰을 발급�
 교정       get_calibrations · list_calibrations_due · add_calibration
 규격       list_methods · get_method · create_method · set_requirement · import_requirements
 물성 연결   search_properties · suggest_property_link(제안만) · confirm_property_links
-기준정보    list_reference · list_axes · list_terms
+온톨로지    list_reference · list_axes · list_terms
             create_term · update_term · add_term_alias · merge_terms
             create_axis · update_axis · create_condition_key   ← 축. 드물다, 먼저 목록을 본다
 신뢰성 시험  list_reliability_tests · create_reliability_test · update_reliability_test

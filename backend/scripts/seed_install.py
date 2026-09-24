@@ -1,4 +1,4 @@
-"""첫 설치 — 기준정보 축, 뿌리 부서, 시스템 관리자 계정 하나.
+"""첫 설치 — 온톨로지 축, 뿌리 부서, 시스템 관리자 계정 하나.
 
 **이것 없이는 아무도 로그인할 수 없다.** 가입은 승인이 필요하고 승인할 사람이
 없기 때문이다. 그래서 설치 스크립트가 반드시 한 번 돈다.
@@ -46,19 +46,19 @@ def main() -> int:
 
     db = SessionLocal()
     try:
-        # **기준정보 축이 먼저다.** 축이 없으면 장비를 등록할 때 고를 값이 없고,
+        # **온톨로지 축이 먼저다.** 축이 없으면 장비를 등록할 때 고를 값이 없고,
         # 그러면 사람은 빈 칸으로 저장한다 — 그 빈 칸은 나중에 안 채워진다.
         counts = ensure_reference_data(db)
         if any(counts):
             print(
-                f"기준정보: 축 {counts.axes}개, 조건 정의 {counts.conditions}개, "
+                f"온톨로지: 축 {counts.axes}개, 조건 정의 {counts.conditions}개, "
                 f"사양 그룹 {counts.spec_groups}개, 사양 정의 {counts.spec_definitions}개 추가"
                 f" · 검색축 이음 {counts.linked_definitions}개"
                 f", 문장→구간 {counts.converted_values}건"
                 f", 보유 장비 속성 {counts.attributes}개"
             )
         else:
-            print("기준정보: 이미 갖춰져 있습니다")
+            print("온톨로지: 이미 갖춰져 있습니다")
 
         workspace = db.scalar(select(Workspace).where(Workspace.slug == args.workspace_slug))
         if workspace is None:

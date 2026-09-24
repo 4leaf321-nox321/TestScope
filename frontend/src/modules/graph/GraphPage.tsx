@@ -551,15 +551,15 @@ function SchemaView({
         title="그릴 종류가 없습니다"
         hint={
           canDefine
-            ? '기준정보에 객체가 들어오면 여기 구조가 그려집니다.'
-            : '시스템 관리자가 기준정보를 채우면 여기 구조가 그려집니다.'
+            ? '온톨로지에 객체가 들어오면 여기 구조가 그려집니다.'
+            : '시스템 관리자가 온톨로지를 채우면 여기 구조가 그려집니다.'
         }
         action={
           canDefine ? (
             <Button asChild size="sm" variant="outline">
-              <Link to="/reference">
+              <Link to="/admin/ontology">
                 <Boxes className="mr-1 size-4" />
-                기준정보 열기
+                온톨로지 열기
               </Link>
             </Button>
           ) : undefined

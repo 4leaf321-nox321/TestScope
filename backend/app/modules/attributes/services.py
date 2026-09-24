@@ -168,7 +168,7 @@ def _find_by_label(
 
 
 def _check_axes(db: Session, kind: str, payload: dict[str, Any]) -> None:
-    """종류가 요구하는 축이 있나. condition 은 조건 축, term 은 기준정보 축."""
+    """종류가 요구하는 축이 있나. condition 은 조건 축, term 은 온톨로지 축."""
     if kind == "condition":
         key_id = payload.get("condition_key_id")
         if key_id is None or db.get(ConditionKey, key_id) is None:
@@ -176,7 +176,7 @@ def _check_axes(db: Session, kind: str, payload: dict[str, Any]) -> None:
     if kind == "term":
         vocabulary_id = payload.get("vocabulary_id")
         if vocabulary_id is None or db.get(Vocabulary, vocabulary_id) is None:
-            raise AppError("TSC-ATTR-0004", "기준정보 종류는 어느 축인지 골라야 합니다.")
+            raise AppError("TSC-ATTR-0004", "온톨로지 종류는 어느 축인지 골라야 합니다.")
     if kind == "choice" and not [c for c in payload.get("choices") or [] if clean(c)]:
         raise AppError("TSC-ATTR-0004", "선택 종류는 선택지를 하나 이상 적어야 합니다.")
 
@@ -452,7 +452,7 @@ def _check_value_shape(
         term = db.get(VocabularyTerm, item.term_id) if item.term_id else None
         if term is None or term.vocabulary_id != definition.vocabulary_id:
             raise AppError(
-                "TSC-ATTR-0011", f"「{label}」 은 그 축의 기준정보 값이어야 합니다."
+                "TSC-ATTR-0011", f"「{label}」 은 그 축의 온톨로지 값이어야 합니다."
             )
     if kind == "method":
         method = db.get(TestMethod, item.method_id) if item.method_id else None

@@ -1,10 +1,10 @@
 /**
- * 기준정보 — **이 시스템이 다루는 객체 종류 전부를 한 화면에서.**
+ * 온톨로지 — **이 시스템이 다루는 객체 종류 전부를 한 화면에서.**
  *
  * 왼쪽에 객체 종류가 세 층(카탈로그 · 사내 운영 · 이름 사전)으로 펼쳐져 있고, 하나를 고르면
- * 오른쪽에 그 종류의 판이 선다 — 「기준정보 편집」 이 축을 고르던 것과 같은 모양이다. 전에는
- * 「기준정보」(이름 사전 보기)와 「기준정보 편집」 이 다른 메뉴였고, 계열·기종·규격 같은 객체는
- * 어느 쪽에도 없어서 기준정보가 아닌 것처럼 읽혔다. 이제 한 화면이다:
+ * 오른쪽에 그 종류의 판이 선다 — 「온톨로지 편집」 이 축을 고르던 것과 같은 모양이다. 전에는
+ * 「온톨로지」(이름 사전 보기)와 「온톨로지 편집」 이 다른 메뉴였고, 계열·기종·규격 같은 객체는
+ * 어느 쪽에도 없어서 온톨로지가 아닌 것처럼 읽혔다. 이제 한 화면이다:
  *
  *     이름 사전의 축   →  값 목록 + (관리자면) 축 편집·값 등록·값 편집   (AxisPanel)
  *     자기 표의 객체   →  건수 · 고정 칸 · 관리자가 정의한 칸 · 목록/정의 화면    (KindPanel)
@@ -13,7 +13,7 @@
  */
 
 import { useEffect, useMemo } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom'
 
 import { useAuth } from '@/shared/auth/AuthContext'
 import { isSystemAdmin } from '@/shared/auth/roles'
@@ -169,7 +169,7 @@ export default function ReferenceHubPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="기준정보"
+        title="온톨로지"
         description="이 시스템이 다루는 객체 종류 전부 — 왼쪽에서 고르면 그 종류의 칸과 값이 보입니다. 이름 사전의 축은 여기서 값을 등록·편집하고(시스템 관리자), 자기 표를 가진 객체는 목록·정의 화면으로 이어집니다."
       />
       <ErrorNotice error={kinds.error} />
@@ -189,4 +189,15 @@ export default function ReferenceHubPage() {
       </div>
     </div>
   )
+}
+
+/**
+ * 예전 주소(`/reference`)로 온 사람을 보낸다 — **쓰던 주소가 죽으면 안 된다.**
+ *
+ * 화면이 「관리 → 온톨로지」 로 옮겨 가면서 주소도 `/admin/ontology` 가 됐다. 북마크와
+ * 남이 붙여 둔 링크는 그대로 남아 있으므로, 고르던 객체 종류(`?kind=…`)까지 실어 보낸다.
+ */
+export function ReferenceRedirect() {
+  const { search } = useLocation()
+  return <Navigate to={`/admin/ontology${search}`} replace />
 }

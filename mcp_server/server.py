@@ -344,7 +344,7 @@ def get_guide(topic: str | None = None) -> str:
 
     `topic` 없이 부르면 머리말(이 시스템이 답하는 물음 · 세 층 · 규약 넷)과 **대목의
     목록**이 온다. 대목 이름의 한 조각을 `topic` 으로 주면 그 대목만 온다 —
-    `get_guide("장비 등록")` · `get_guide("기준정보")` · `get_guide("권한")`.
+    `get_guide("장비 등록")` · `get_guide("온톨로지")` · `get_guide("권한")`.
 
     통째로 받고 싶으면 `topic="전부"`. 안내는 길어서(수천 자) 매번 다 받으면 정작
     도구를 부를 자리가 줄어든다 — 그래서 대목으로 나눠 준다.
@@ -575,7 +575,7 @@ async def search_properties(
     """물성으로 묻기 전에 — **「인장강도」 가 어느 시험 항목으로 나오나.**
 
     사람은 「인장 되는 장비」 가 아니라 「인장강도 재는 장비」 라고 묻는다. 이 도구가 그
-    물성(기준정보 축 `property`, code 가 `mechanical.tensile_strength` 같은 MaterialTwin
+    물성(온톨로지 축 `property`, code 가 `mechanical.tensile_strength` 같은 MaterialTwin
     키)과 그것을 내는 시험 항목들(`links`)을 준다 — **N:M** 이다. 유리전이온도는
     DSC·DMA·TMA 셋에서 나오고, 인장은 강도·항복·영률·연신율을 낸다.
 
@@ -685,7 +685,7 @@ async def create_series(
     나뉜다. 이미 있으면 409 와 함께 `details.series_id` 가 온다 — **409 는 실패가
     아니라 답이다.** 그 id 를 쓰면 된다.
 
-    `maker`·`category` 는 이름으로 준다. 기준정보에 **하나로 정해질 때만** 받고,
+    `maker`·`category` 는 이름으로 준다. 온톨로지에 **하나로 정해질 때만** 받고,
     없으면 거절한다 — 오타가 새 제조사가 되면 그 계열은 목록에서 혼자 선다.
 
     챔버·퍼니스·신율계 같은 부속도 계열이다(`kind="accessory"`).
@@ -1807,12 +1807,12 @@ async def promote_free_spec(
     )
 
 
-# ── 기준정보 — 축과 값 ────────────────────────────────────────────────────────
+# ── 온톨로지 — 축과 값 ────────────────────────────────────────────────────────
 
 
 @mcp.tool()
 async def list_reference(ctx: Context) -> dict[str, Any]:
-    """**이 시스템의 기준정보가 무엇인가** — 객체 종류마다 한 줄.
+    """**이 시스템의 온톨로지가 무엇인가** — 객체 종류마다 한 줄.
 
     종류(시험 항목·물성·장비 계열·기종·보유 장비·신뢰성 시험 …)마다 저장 방식(축의 값인지
     제 표를 가진 객체인지) · 건수 · 고정 칸 · 관리자가 정의한 칸(검색 조건·사양·속성)이 온다.
@@ -1824,7 +1824,7 @@ async def list_reference(ctx: Context) -> dict[str, Any]:
 
 @mcp.tool()
 async def list_axes(ctx: Context) -> dict[str, Any]:
-    """기준정보 **축**의 목록 — slug · 이름 · 소속 · 값 수 · 등록 정책.
+    """온톨로지 **축**의 목록 — slug · 이름 · 소속 · 값 수 · 등록 정책.
 
     `entry_policy` 가 `open` 이면 값은 **누구나 더한다**(`create_term`). `closed` 면 시스템
     관리자만 — 제정기관·조건처럼 뜻이 계약인 축이다. 값이 0인 축은 아직 아무도 안 채운
@@ -1865,7 +1865,7 @@ async def create_axis(
     parent_slug: str | None = None,
     attribute_schema: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """기준정보 **축**을 새로 세운다. 시스템 관리자. **웬만하면 만들지 마라.**
+    """온톨로지 **축**을 새로 세운다. 시스템 관리자. **웬만하면 만들지 마라.**
 
     **먼저 `list_axes` 로 본다.** 뜻이 닿는 축이 있으면 그 축에 값을 더하는 것(`create_term`)
     이 맞다. 축이 둘로 갈리면 값도 둘로 갈리고, 합치는 길이 없다 — 값 병합(`merge_terms`)은
@@ -1996,7 +1996,7 @@ async def create_term(
     parent_term_id: str | None = None,
     attributes: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """기준정보 값 하나를 더한다. **만들기 전에 반드시 찾는다.**
+    """온톨로지 값 하나를 더한다. **만들기 전에 반드시 찾는다.**
 
     `resolve(kind="term", axis=…, name=…)` 나 `list_terms` 로 먼저 보고, 같은 뜻의 값이
     있으면 **그것을 쓴다**. 이미 있는 이름이면 409 가 오는데 그것은 실패가 아니라 답이다
@@ -2040,7 +2040,7 @@ async def update_term(
     status: str | None = None,
     attributes: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """기준정보 값을 고친다. **안 보낸 칸은 그대로.**
+    """온톨로지 값을 고친다. **안 보낸 칸은 그대로.**
 
     **이름을 바꾸는 것은 그 값을 쓰는 모든 화면의 글자를 바꾸는 일이다.** 오타를 고치는
     것이라면 맞다. 뜻이 다른 값이면 고치지 말고 새로 만들어라 — 「인장」 을 「고온 인장」 으로
@@ -2064,7 +2064,7 @@ async def update_term(
 
 @writes
 async def add_term_alias(ctx: Context, term_id: str, value: str) -> dict[str, Any]:
-    """기준정보 값에 **다른 이름**을 붙인다. 시스템 관리자.
+    """온톨로지 값에 **다른 이름**을 붙인다. 시스템 관리자.
 
     별칭은 찾기(`resolve`)가 이름보다 먼저 보는 것이라, 「thermal shock」 으로 물어도
     「열충격」 을 찾게 만든다. **사람이 「이 표기는 저 값이다」 라고 말했을 때만** 붙인다 —
@@ -2092,12 +2092,12 @@ async def merge_terms(ctx: Context, term_id: str, into_term_id: str) -> dict[str
     )
 
 
-# ── 기준정보 — 쓰임과 연결 해제 ──────────────────────────────────────────────
+# ── 온톨로지 — 쓰임과 연결 해제 ──────────────────────────────────────────────
 
 
 @mcp.tool()
 async def get_term_references(ctx: Context, term_id: str) -> dict[str, Any]:
-    """기준정보 값 하나가 **어디에 쓰이나** — 계열·기종·장비·규격·물성 연결 등, 종류마다
+    """온톨로지 값 하나가 **어디에 쓰이나** — 계열·기종·장비·규격·물성 연결 등, 종류마다
     수와 줄. 값을 지우거나 합치기 전에 본다: 쓰이는 값은 못 지우고, 쓰임을 풀거나 다른
     값으로 옮긴 뒤에 지운다(`detach_term_reference`)."""
     return _listed(await _get(ctx, f"/vocabularies/terms/{term_id}/references"), "groups")
@@ -2111,7 +2111,7 @@ async def detach_term_reference(
     row_id: str,
     reassign_to_term_id: str | None = None,
 ) -> dict[str, Any]:
-    """기준정보 값의 쓰임 하나를 **풀거나 다른 값으로 옮긴다.** 시스템 관리자.
+    """온톨로지 값의 쓰임 하나를 **풀거나 다른 값으로 옮긴다.** 시스템 관리자.
 
     `kind` 와 `row_id` 는 `get_term_references` 가 준다. `reassign_to_term_id` 를 주면
     그 값으로 옮기고, 안 주면 푼다(종류에 따라 비우거나 지운다 — 응답의 `detach` 가 말한다).
@@ -2251,7 +2251,7 @@ async def create_reliability_test(
         {"definition_id": "…", "num_min": -40, "num_max": 125, "unit": "degC"}   구간·조건
         {"definition_id": "…", "num_value": 5}                                    수치
         {"definition_id": "…", "text_value": "외관 이상 없음"}                     문장
-        {"definition_id": "…", "term_id": "…"}          기준정보(유형·적용군)
+        {"definition_id": "…", "term_id": "…"}          온톨로지(유형·적용군)
         {"definition_id": "…", "method_id": "…"}        규격(참조 규격)
         {"definition_id": "…", "json_value": [{"label": "A등급", "value": 4}]}   이름별 수량
         {"new_label": "시료 수", "new_kind": "number", "num_value": 5}      새 이름 → 초안
@@ -2409,8 +2409,8 @@ async def create_attribute_definition(
     """새 속성 칸을 정의한다. **시스템 관리자만**, 그리고 사람이 시켰을 때만.
 
     `kind` 는 number(수치) · range(구간) · text(문장) · boolean · date · choice(선택지) ·
-    condition(검색축에 이어진 조건) · term(기준정보 값) · method(규격). 조건은
-    `condition_key_id`(`list_conditions`), 기준정보는 `vocabulary_id`, 선택은 `choices` 가
+    condition(검색축에 이어진 조건) · term(온톨로지 값) · method(규격). 조건은
+    `condition_key_id`(`list_conditions`), 온톨로지는 `vocabulary_id`, 선택은 `choices` 가
     필요하다.
 
     `key` 는 **거르기 조건에 그대로 실리는 이름**이라 영문·숫자·`_.-` 만 된다. 비우면 서버가

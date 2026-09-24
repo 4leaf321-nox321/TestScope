@@ -1,5 +1,5 @@
 /**
- * 기준정보 편집 — **고칠 수 있는 것이 전부 보여야 화면이 정본이 된다.**
+ * 온톨로지 편집 — **고칠 수 있는 것이 전부 보여야 화면이 정본이 된다.**
  *
  * 값 편집 창이 이름·코드·상위 값·속성(축이 정한 칸)·표기·병합·폐기를 한 자리에서 내밀고,
  * 축 편집이 이름·설명·정책·속성 칸을 저장한다. prompt 로 묻던 셋에서 여기까지 왔다.
@@ -108,7 +108,7 @@ vi.mock('@/shared/api/client', () => ({
 
 import { AxisPanel } from '@/modules/vocabulary/VocabularyAdminPage'
 
-// 축 편집 판은 기준정보 허브(`/reference`)의 오른쪽이다 — 축 하나를 직접 준다.
+// 축 편집 판은 온톨로지 허브(`/admin/ontology`)의 오른쪽이다 — 축 하나를 직접 준다.
 async function open() {
   await act(async () => {
     render(
@@ -123,7 +123,7 @@ beforeEach(() => {
   calls.length = 0
 })
 
-describe('기준정보 편집', () => {
+describe('온톨로지 편집', () => {
   it('값 편집 창이 축이 정한 속성 칸을 그리고, 저장하면 속성이 통째로 간다', async () => {
     await open()
     await act(async () => {

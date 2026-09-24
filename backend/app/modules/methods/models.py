@@ -66,7 +66,7 @@ class TestMethod(Base):
         nullable=True,
         index=True,
     )
-    """제정 기관(기준정보 축 standard_body). ASTM · ISO · KS · 사내."""
+    """제정 기관(온톨로지 축 standard_body). ASTM · ISO · KS · 사내."""
 
     status: Mapped[str] = mapped_column(
         String(20), default="active", server_default="active", index=True

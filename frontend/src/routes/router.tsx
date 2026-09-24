@@ -67,6 +67,11 @@ const VocabularyAdminPage = lazy(() => import('@/modules/vocabulary/VocabularyAd
 const VocabularyPage = lazy(() => import('@/modules/vocabulary/VocabularyPage'))
 const SpecDocumentsPage = lazy(() => import('@/modules/documents/SpecDocumentsPage'))
 const ReferenceHubPage = lazy(() => import('@/modules/reference/ReferenceHubPage'))
+const ReferenceRedirect = lazy(() =>
+  import('@/modules/reference/ReferenceHubPage').then((m) => ({
+    default: m.ReferenceRedirect,
+  })),
+)
 const GraphPage = lazy(() => import('@/modules/graph/GraphPage'))
 const WorkspaceHomePage = lazy(() => import('@/modules/workspaces/WorkspaceHomePage'))
 const WorkspacesAdminPage = lazy(() => import('@/modules/workspaces/WorkspacesAdminPage'))
@@ -142,7 +147,8 @@ export const router = createBrowserRouter([
           // 공통
           { path: 'notices', element: <NoticesPage /> },
           { path: 'spec-documents', element: <SpecDocumentsPage /> },
-          { path: 'reference', element: <ReferenceHubPage /> },
+          // 예전 주소 — 쓰던 주소가 죽으면 안 된다. `?kind=` 까지 실어 보낸다.
+          { path: 'reference', element: <ReferenceRedirect /> },
           { path: 'graph', element: <GraphPage /> },
           { path: 'vocabulary', element: <VocabularyPage /> },
           { path: 'conditions', element: <ConditionsPage /> },
@@ -151,6 +157,7 @@ export const router = createBrowserRouter([
           { path: 'audit', element: <AuditPage /> },
 
           // 관리 (전사)
+          { path: 'admin/ontology', element: <ReferenceHubPage /> },
           { path: 'admin/accounts', element: <AccountsAdminPage /> },
           { path: 'admin/workspaces', element: <WorkspacesAdminPage /> },
           { path: 'admin/vocabulary', element: <VocabularyAdminPage /> },

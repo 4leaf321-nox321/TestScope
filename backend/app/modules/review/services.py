@@ -1143,7 +1143,7 @@ ATTRIBUTE_KIND_LABELS = {
     "date": "날짜",
     "choice": "선택",
     "condition": "시험 조건",
-    "term": "기준정보",
+    "term": "온톨로지",
     "method": "규격",
 }
 
@@ -1161,7 +1161,7 @@ def _attribute_value_counts(db: Session, ids: list[uuid.UUID]) -> dict[uuid.UUID
 
 def display_attribute_value(value: AttributeValue, definition: AttributeDefinition) -> str:
     """값 한 줄 — 화면·색인 카드와 같은 글자(`shared/attribute_text`). 가리키는 이름
-    (기준정보 값·규격)은 여기서 안 읽는다: 예시 몇 줄에 질의를 더 붙일 일이 아니다."""
+    (온톨로지 값·규격)은 여기서 안 읽는다: 예시 몇 줄에 질의를 더 붙일 일이 아니다."""
     return display_attribute(
         definition.kind,
         num_value=value.num_value,

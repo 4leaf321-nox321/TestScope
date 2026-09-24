@@ -81,7 +81,7 @@ export default function SpecDefinitionsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        back={{ to: '/reference?kind=model', label: '기준정보' }}
+        back={{ to: '/admin/ontology?kind=model', label: '온톨로지' }}
         title="장비 기종 사양"
         description="장비 모델에 적을 수 있는 칸입니다. 적용 분류를 비워 두면 모든 장비에 뜹니다 — 전원·무게처럼 분류를 가리지 않는 것이 실제로 많습니다."
       />

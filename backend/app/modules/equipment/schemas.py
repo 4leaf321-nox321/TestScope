@@ -55,7 +55,7 @@ class EquipmentOut(BaseModel):
     적히면 열 번 다 같을 이유가 없다.
 
     카탈로그 미연결일 때만 개체의 표시용 칸(`maker_text`·`model_text`)에서 온다.
-    그 값은 기준정보와 안 이어져 있어 **검색이 안 본다** — 화면이 그 사실을 말한다.
+    그 값은 온톨로지와 안 이어져 있어 **검색이 안 본다** — 화면이 그 사실을 말한다.
 
     이름으로 주는 이유: id 만 주면 목록 한 줄을 그리려고 화면이 카탈로그를 또
     조회해야 하고, 그 조회가 빠진 화면은 빈 칸을 보여 준다."""
@@ -143,7 +143,7 @@ class EquipmentFilterOptionsOut(BaseModel):
 class CatalogFilterOptionsOut(BaseModel):
     """카탈로그 목록(계열·기종)의 열마다 고를 수 있는 값들.
 
-    **목록에 실제로 있는 값만 준다.** 기준정보 전체를 펼치면 제조사 축 수백 종 중
+    **목록에 실제로 있는 값만 준다.** 온톨로지 전체를 펼치면 제조사 축 수백 종 중
     79종만 카탈로그에 쓰이고, 나머지는 골라도 0 건인 선택지가 된다 — 한 번 겪으면
     사람은 거르기를 안 믿는다.
 
@@ -248,9 +248,9 @@ class ImportProblem(BaseModel):
     한 칸에 못 붙이는 것이 있다."""
     message: str
     make_axis: str | None = None
-    """**그 자리에서 만들 수 있는 기준정보 축**(열린 축일 때만). 없으면 `None`.
+    """**그 자리에서 만들 수 있는 온톨로지 축**(열린 축일 때만). 없으면 `None`.
 
-    거점 「3공장」 이 아직 축에 없다고 반입을 멈추면, 사람은 창을 닫고 기준정보로 가서
+    거점 「3공장」 이 아직 축에 없다고 반입을 멈추면, 사람은 창을 닫고 온톨로지로 가서
     만들고 돌아와 다시 붙여넣어야 한다 — 그 사이 표에서 고치던 것을 잃는다. 열린 축은
     원래 누구나 더하는 것이므로(`entry_policy=open`) 여기서 막을 이유가 없다.
 
@@ -577,11 +577,11 @@ class EquipmentSeriesOut(BaseModel):
     kind: str
     """본체(main)인가 부속(accessory·sensor·software)인가."""
     drive: str | None
-    """구동 방식(기준정보 축). 이름으로 준다."""
+    """구동 방식(온톨로지 축). 이름으로 준다."""
     drive_term_id: uuid.UUID | None
     form_factor: str | None
-    """기종 형태(기준정보 축). 이름으로 준다 — id 만 주면 목록 한 줄을 그리려고
-    화면이 기준정보를 또 조회해야 한다."""
+    """기종 형태(온톨로지 축). 이름으로 준다 — id 만 주면 목록 한 줄을 그리려고
+    화면이 온톨로지를 또 조회해야 한다."""
     form_factor_term_id: uuid.UUID | None
     status: str
     summary: str | None
@@ -618,7 +618,7 @@ class EquipmentSeriesCreateRequest(BaseModel):
     보유 장비가 어느 쪽을 가리켰는지에 따라 검색 결과가 나뉜다. 이미 있으면 409 가
     오고, `details.series_id` 에 그 id 가 실려 온다 — **409 는 실패가 아니라 답이다.**
 
-    id 대신 이름을 줘도 된다(`maker` · `category`). 다만 그 이름이 기준정보에
+    id 대신 이름을 줘도 된다(`maker` · `category`). 다만 그 이름이 온톨로지에
     **하나로 정해질 때만** 받는다: 여럿이면 거절하고 후보를 돌려준다. 고르는 것은
     사람의 일이다.
     """
@@ -712,10 +712,10 @@ class EquipmentModelOut(BaseModel):
     적히면 열 번 다 같을 이유가 없다.
 
     이름과 id 를 함께 주는 이유: 이름만으로는 사양 정의를 분류로 거를 수 없고,
-    id 만으로는 목록 한 줄을 그리려고 화면이 기준정보를 또 조회해야 한다."""
+    id 만으로는 목록 한 줄을 그리려고 화면이 온톨로지를 또 조회해야 한다."""
     form_factor: str | None
-    """기종 형태(기준정보 축). 이름으로 준다 — id 만 주면 목록 한 줄을 그리려고
-    화면이 기준정보를 또 조회해야 한다."""
+    """기종 형태(온톨로지 축). 이름으로 준다 — id 만 주면 목록 한 줄을 그리려고
+    화면이 온톨로지를 또 조회해야 한다."""
     form_factor_term_id: uuid.UUID | None
     status: str
     summary: str | None

@@ -246,7 +246,7 @@ def test_사내_시험_카드의_칸이_설치에_들어있다(client: TestClien
         assert one["kind"] == "condition", label
         assert one["condition_key_id"], f"「{label}」 이 조건 축에 안 이어져 있습니다"
 
-    # 고르는 칸은 기준정보 축에 이어져 있어야 고를 것이 있다.
+    # 고르는 칸은 온톨로지 축에 이어져 있어야 고를 것이 있다.
     for label in ("유형", "적용군"):
         assert by_label[label]["kind"] == "term", label
         assert by_label[label]["vocabulary_id"], f"「{label}」 이 축에 안 이어져 있습니다"

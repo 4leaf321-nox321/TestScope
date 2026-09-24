@@ -71,7 +71,7 @@ class EquipmentTestItem(Base):
         ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
         index=True,
     )
-    """시험 항목(기준정보 축 test_item). RESTRICT — 쓰는 시험 항목이 있는 항목을 지우면
+    """시험 항목(온톨로지 축 test_item). RESTRICT — 쓰는 시험 항목이 있는 항목을 지우면
     그 장비가 무엇을 할 수 있었는지 알 수 없게 된다."""
 
     method_id: Mapped[uuid.UUID | None] = mapped_column(

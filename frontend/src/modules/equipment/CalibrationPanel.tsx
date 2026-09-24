@@ -115,7 +115,7 @@ export function CalibrationPanel({
               }))}
               placeholder="기관 선택"
               detailTitle="교정 기관"
-              detailHint="없는 기관은 기준정보 화면에서 더합니다."
+              detailHint="없는 기관은 온톨로지 화면에서 더합니다."
               className="w-56"
             />
           </div>

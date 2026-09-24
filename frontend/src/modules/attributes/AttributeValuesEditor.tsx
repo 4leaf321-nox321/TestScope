@@ -230,7 +230,7 @@ function TermPicker({
       options={options}
       value={row.termId ?? ''}
       onChange={(id) => onPick(id, options.find((one) => one.id === id)?.label ?? '')}
-      placeholder="기준정보 값 선택"
+      placeholder="온톨로지 값 선택"
       className="w-full"
     />
   )

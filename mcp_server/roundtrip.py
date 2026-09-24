@@ -58,7 +58,7 @@ async def _write_chain(ctx: _Ctx) -> int:
         print(f"  {'  ok' if refused else '실패'} {label:34s} {_short(got, 70)}")
 
     print(f"\n쓰기 사슬 (표 {tag})")
-    # 1. 기준정보 값 — 만들기 전에 찾고, 같은 이름은 거절되어야 한다.
+    # 1. 온톨로지 값 — 만들기 전에 찾고, 같은 이름은 거절되어야 한다.
     step(
         "resolve(없는 값)",
         await server.resolve(ctx, "term", f"MCP확인 인장-{tag}", axis="test_item"),

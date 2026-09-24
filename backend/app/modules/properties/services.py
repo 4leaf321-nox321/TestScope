@@ -28,7 +28,7 @@ TEST_ITEM_AXIS = "test_item"
 def _axis_id(db: Session, slug: str) -> uuid.UUID:
     axis = db.scalar(select(Vocabulary).where(Vocabulary.slug == slug))
     if axis is None:
-        raise NotFound("TSC-PROPERTIES-0001", f"기준정보 축이 없습니다: {slug}")
+        raise NotFound("TSC-PROPERTIES-0001", f"온톨로지 축이 없습니다: {slug}")
     return axis.id
 
 

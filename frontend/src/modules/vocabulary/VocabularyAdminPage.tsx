@@ -1,5 +1,5 @@
 /**
- * 기준정보 편집 — **화면에서 고친 것이 사실이 되는 자리.**
+ * 온톨로지 편집 — **화면에서 고친 것이 사실이 되는 자리.**
  *
  * 전에는 이름 바꾸기·표기 추가·폐기 셋뿐이었다. 코드·상위 값·속성은 API 가 받는데
  * 화면이 안 내밀었고, 병합은 화면에 없었다. 그래서 반입한 값을 고치려면 파일을 고쳐 다시
@@ -244,7 +244,7 @@ function AxisEditor({
 }
 
 /**
- * 축 하나의 편집 판 — 기준정보 허브의 오른쪽. `canEdit` 이 아니면 읽기만(축 편집·등록·값
+ * 축 하나의 편집 판 — 온톨로지 허브의 오른쪽. `canEdit` 이 아니면 읽기만(축 편집·등록·값
  * 편집 단추를 감춘다). 권한은 서버가 판정한다.
  */
 export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean }) {
@@ -442,7 +442,7 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
   )
 }
 
-/** 예전 주소(`/admin/vocabulary`)로 온 사람을 허브로 보낸다 — 기준정보는 한 화면이다. */
+/** 예전 주소(`/admin/vocabulary`)로 온 사람을 허브로 보낸다 — 온톨로지는 한 화면이다. */
 export default function VocabularyAdminPage() {
-  return <Navigate to="/reference" replace />
+  return <Navigate to="/admin/ontology" replace />
 }

@@ -18,7 +18,7 @@
 
 ## 물성의 정본은 MaterialTwin 키다
 
-물성 항목은 기준정보 축 `property` 의 값이고, 그 값의 `code` 가 `mechanical.yield_strength`
+물성 항목은 온톨로지 축 `property` 의 값이고, 그 값의 `code` 가 `mechanical.yield_strength`
 같은 MaterialTwin 키다. 재료 물성 쪽(MatNexus)이 같은 271 키를 쓰므로 세 시스템이 **같은
 말**을 한다. 한글 이름을 우리가 따로 지어 대응표를 두는 길은 MatNexus 가 먼저 가 봤고,
 실측으로 9개를 잇는 데서 멈췄다.
@@ -78,13 +78,13 @@ class TestItemProperty(Base):
         ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
         index=True,
     )
-    """기준정보 축 `test_item` 의 값. RESTRICT — 연결이 있는 시험 항목은 못 지운다."""
+    """온톨로지 축 `test_item` 의 값. RESTRICT — 연결이 있는 시험 항목은 못 지운다."""
     property_term_id: Mapped[uuid.UUID] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
         index=True,
     )
-    """기준정보 축 `property` 의 값. `code` 가 MaterialTwin 키다."""
+    """온톨로지 축 `property` 의 값. `code` 가 MaterialTwin 키다."""
 
     status: Mapped[str] = mapped_column(
         String(20), default="suggested", server_default="suggested", index=True

@@ -10,7 +10,7 @@
 ## 네 단계로 좁힌다
 
     1. 비교키가 정확히 같다      -> exact
-    2. 별칭이 정확히 같다        -> exact (기준정보 값만)
+    2. 별칭이 정확히 같다        -> exact (온톨로지 값만)
     3. 이름에 포함된다           -> candidates
     4. 뜻이 가깝다               -> candidates (의미 검색이 켜져 있을 때만)
 
@@ -208,7 +208,7 @@ def _resolve_model(db: Session, text: str, maker: str | None, limit: int) -> Res
 
 
 def _resolve_term(db: Session, text: str, axis: str | None, limit: int) -> ResolveResponse:
-    """기준정보 값을 찾는다. **별칭도 본다.**
+    """온톨로지 값을 찾는다. **별칭도 본다.**
 
     중복은 사후에 합치는 것보다 애초에 안 생기게 하는 것이 싸다 — 「UTM」 으로 물은
     사람에게 「만능재료시험기」 를 돌려주는 자리가 여기다.
@@ -216,7 +216,7 @@ def _resolve_term(db: Session, text: str, axis: str | None, limit: int) -> Resol
     if not axis:
         raise AppError(
             "TSC-RESOLVE-0001",
-            "기준정보 값을 찾으려면 축(axis)이 필요합니다.",
+            "온톨로지 값을 찾으려면 축(axis)이 필요합니다.",
             status=400,
             details={"axis": "manufacturer · equipment_category · test_item · site"},
         )
@@ -488,7 +488,7 @@ def resolve(
 def resolve_term_id(
     db: Session, axis: str, text: str | None, *, field: str
 ) -> uuid.UUID | None:
-    """이름 하나를 기준정보 id 로 바꾼다. **못 정하면 거절한다.**
+    """이름 하나를 온톨로지 id 로 바꾼다. **못 정하면 거절한다.**
 
     쓰기 API 가 이름을 받을 때 쓰는 자리다. 후보가 여럿이면 고르지 않는다 — 여기서
     첫 줄을 집으면 그 선택은 아무 데도 안 남고, 틀렸을 때 찾을 방법이 없다.
@@ -501,7 +501,7 @@ def resolve_term_id(
     raise AppError(
         "TSC-RESOLVE-0003",
         f"{field}: 「{text}」 을(를) 하나로 정할 수 없습니다. id 로 주거나 "
-        f"기준정보에서 먼저 만드십시오.",
+        f"온톨로지에서 먼저 만드십시오.",
         status=400,
         details={
             "field": field,

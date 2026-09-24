@@ -1,4 +1,4 @@
-"""기준정보 API 의 요청·응답 형태."""
+"""온톨로지 API 의 요청·응답 형태."""
 
 from __future__ import annotations
 

@@ -296,7 +296,7 @@ def _bulk(db: Session, rows: list[Equipment], viewer: User) -> _Bulk:
             )
         )
     }
-    # 거점 · 분류(계열 것이 이긴다) · 제조사 — 세 자리가 모두 기준정보 값이다.
+    # 거점 · 분류(계열 것이 이긴다) · 제조사 — 세 자리가 모두 온톨로지 값이다.
     wanted: set[uuid.UUID] = set()
     for row in rows:
         model = models.get(row.model_id) if row.model_id else None
@@ -700,7 +700,7 @@ def _check_identity(db: Session, category_term_id: Any, model_id: Any) -> None:
 def filter_options(db: Session, user: User) -> EquipmentFilterOptionsOut:
     """열마다 고를 수 있는 값과 그 수.
 
-    **목록에 실제로 있는 값만 준다.** 기준정보 전체를 내려보내면 분류 108종 중 100종이
+    **목록에 실제로 있는 값만 준다.** 온톨로지 전체를 내려보내면 분류 108종 중 100종이
     골라도 0 건인 선택지가 되고, 사람은 거르기를 안 믿게 된다.
 
     부서를 따로 세는 이유가 하나 더 있다: `/api/workspaces` 는 **내 소속만** 준다.
@@ -991,7 +991,7 @@ def delete(db: Session, user: User, equipment_id: uuid.UUID) -> None:
 
 def calibration_out(db: Session, row: EquipmentCalibration) -> CalibrationOut:
     """교정 한 줄. **기관은 이름까지 준다** — id 만 주면 목록 한 줄을 그리려고 화면이
-    기준정보를 또 조회해야 하고, 그 조회가 빠진 화면은 빈 칸을 보여 준다."""
+    온톨로지를 또 조회해야 하고, 그 조회가 빠진 화면은 빈 칸을 보여 준다."""
     return CalibrationOut(
         id=row.id,
         calibrated_on=row.calibrated_on,

@@ -1,4 +1,4 @@
-"""플랫폼 규약 — 부분 수정·권한·기준정보 중복·감사 기록."""
+"""플랫폼 규약 — 부분 수정·권한·온톨로지 중복·감사 기록."""
 
 from __future__ import annotations
 
@@ -100,7 +100,7 @@ def test_남의_부서_장비는_고칠_수_없다(
     assert blocked.status_code == 403
 
 
-def test_기준정보는_별칭까지_뒤져_중복을_막는다(
+def test_온톨로지는_별칭까지_뒤져_중복을_막는다(
     client: TestClient, admin: Signed, term_factory: Callable[[str, str], str]
 ) -> None:
     """별칭은 **예방**이다. 안 보면 같은 값을 다시 등록할 수 있게 되고, 그 순간

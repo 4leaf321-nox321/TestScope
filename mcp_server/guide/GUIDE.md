@@ -29,7 +29,7 @@
 
 ### 1. 만들기 전에 찾는다
 
-`resolve` 는 계열·기종·기준정보 값·규격뿐 아니라 **신뢰성 시험 · 보유 장비 · 부서**도
+`resolve` 는 계열·기종·온톨로지 값·규격뿐 아니라 **신뢰성 시험 · 보유 장비 · 부서**도
 찾는다. 부서가 가진 것은 이름이 겹치므로(「고온고습 1000h」 는 거의 모든 부서에 하나씩
 있다) 이름이 같아도 둘이면 `candidates` 다 — `workspace` 를 함께 주면 하나로 줄어들고,
 slug 를 모르면 `resolve(kind="workspace", …)` 로 먼저 찾는다. 목록에서 이름만 보고 고르면
@@ -195,13 +195,13 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 내는 것은 이 다섯 개, 맞다」 고 했을 때 `confirm_property_links` 로 그 줄을 묶어 올린다.
 **AI 가 알아서 확인하지 않는다** — 확인은 「사람이 봤다」 는 뜻이고 카탈로그 정본에 실린다.
 
-## 기준정보 값의 쓰임
+## 온톨로지 값의 쓰임
 
 값을 지우거나 합치기 전에 `get_term_references` 로 어디에 쓰이나 본다. 쓰이는 값은 못
 지우고, `detach_term_reference` 로 쓰임을 풀거나 다른 값으로 옮긴 뒤에 지운다 — 사람이
 「이 장비의 분류를 저것으로 바꿔라」 고 했을 때만.
 
-## 기준정보 — 축의 값인가, 제 표를 가진 객체인가
+## 온톨로지 — 축의 값인가, 제 표를 가진 객체인가
 
 「이 값을 어디에 적나」 를 모르면 `list_reference` 를 먼저 부른다. 종류마다 저장 방식(축의
 값 / 제 표) · 건수 · 고정 칸 · 관리자가 정의한 칸을 한 줄로 준다.
@@ -297,7 +297,7 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 
     read             모든 읽기
     catalog:read     — (읽기는 read 하나로 충분하다)
-    catalog:write    계열·기종·사양·기준정보
+    catalog:write    계열·기종·사양·온톨로지
     equipment:write  보유 장비·시험 항목·교정
 
 계정 관리와 서버 설정은 **어느 범위로도 안 열린다.**

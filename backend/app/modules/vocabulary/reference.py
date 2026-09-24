@@ -1,4 +1,4 @@
-"""설치가 심는 기준정보 — 축과 조건 정의.
+"""설치가 심는 온톨로지 — 축과 조건 정의.
 
 **값(term)은 안 심는다.** 인장·압축이 어느 조직에나 같은 이름일 것 같지만, 실제로는
 부서마다 부르는 말이 다르고 그것을 우리가 정해 주면 사람들은 자기 말로 하나를 더
@@ -834,7 +834,7 @@ EQUIPMENT_ATTRIBUTES: tuple[tuple[str, str, str, str, str, int], ...] = (
 #: 하려는 일이다. 여기 없는 축(전압·토크 …)이 필요하면 `create_attribute_definition` 으로
 #: 한 칸 더 만든다. 그 밖의 조건은 「기타 조건」 에 글로 적는다.
 #:
-#:   (key, label, kind, unit, 조건축 key, 기준정보 축 slug, help, sort_order)
+#:   (key, label, kind, unit, 조건축 key, 온톨로지 축 slug, help, sort_order)
 RELIABILITY_ATTRIBUTES: tuple[
     tuple[str, str, str, str, str | None, str | None, str, int], ...
 ] = (
@@ -876,7 +876,7 @@ RELIABILITY_ATTRIBUTES: tuple[
         "",
         None,
         "reliability_category",
-        "사내 시험을 묶는 분류. 없으면 기준정보에서 값을 더한다.",
+        "사내 시험을 묶는 분류. 없으면 온톨로지에서 값을 더한다.",
         3,
     ),
     (
@@ -1096,7 +1096,7 @@ def ensure_reliability_attributes(db: Session) -> int:
     """신뢰성 시험의 정식 속성을 심는다 — key 로 찾아 **없는 것만.**
 
     관리자가 끄거나 이름을 바꾼 것을 설치가 되돌리면 안 된다(보유 장비 속성과 같은 규칙).
-    조건 축·기준정보 축이 아직 없으면 그 칸은 **안 심는다** — 빈 축을 가리키는 속성은
+    조건 축·온톨로지 축이 아직 없으면 그 칸은 **안 심는다** — 빈 축을 가리키는 속성은
     화면에서 고를 것이 없는 칸으로 서고, 그것은 사람이 「고장」 으로 읽는다.
     """
     known = set(db.scalars(select(AttributeDefinition.key)))

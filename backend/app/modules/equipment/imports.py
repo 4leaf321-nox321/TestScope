@@ -377,7 +377,7 @@ class Lookup:
     def term(self, axis: str, text: str, field: str, problems: Problems) -> Any:
         """축의 값 하나를 이름으로 찾는다. **없으면 만들지 않는다.**
 
-        반입이 값을 만들면 오타가 그대로 기준정보가 되고, 「본사」 와 「본사 」 가 서로
+        반입이 값을 만들면 오타가 그대로 온톨로지가 되고, 「본사」 와 「본사 」 가 서로
         다른 거점이 된다 — 그 둘은 나중에 합칠 방법이 없다.
         """
         body = clean(text)
@@ -387,13 +387,13 @@ class Lookup:
         if len(found) == 1:
             return found[0]
         if not found:
-            # **열린 축이면 그 자리에서 만들 수 있다.** 창을 닫고 기준정보로 갔다
+            # **열린 축이면 그 자리에서 만들 수 있다.** 창을 닫고 온톨로지로 갔다
             # 오게 하면 표에서 고치던 것을 잃는다.
             can = axis in self.open_axis
             problems.add(
                 field,
-                f"「{text}」 가 기준정보에 없습니다"
-                + ("" if can else ". 기준정보에서 먼저 만드십시오"),
+                f"「{text}」 가 온톨로지에 없습니다"
+                + ("" if can else ". 온톨로지에서 먼저 만드십시오"),
                 make_axis=axis if can else None,
                 make_value=body if can else None,
             )

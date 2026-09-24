@@ -1,4 +1,4 @@
-"""기준정보 허브의 응답 — 객체 종류 하나가 한 줄."""
+"""온톨로지 허브의 응답 — 객체 종류 하나가 한 줄."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ class ObjectKindOut(BaseModel):
     layer: str
     """catalog(전사 공용 객체) · vocabulary(이름 사전) · operations(부서가 적는 것)."""
     storage: str
-    """table(자기 표) · vocabulary(기준정보 축의 값)."""
+    """table(자기 표) · vocabulary(온톨로지 축의 값)."""
     count: int
     """지금 몇 건인가. 지운 것은 빼고."""
     fixed_fields: list[str]

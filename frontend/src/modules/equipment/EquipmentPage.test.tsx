@@ -134,7 +134,7 @@ describe('보유 장비 목록', () => {
 
   it('고를 수 있는 값을 서버에서 받아 온다', async () => {
     await open()
-    // 기준정보 전체가 아니라 **목록에 있는 값만** — 골라도 0 건인 선택지가 섞이면
+    // 온톨로지 전체가 아니라 **목록에 있는 값만** — 골라도 0 건인 선택지가 섞이면
     // 사람은 거르기를 안 믿는다.
     expect(calls.some((one) => one.startsWith('/equipment/filter-options'))).toBe(true)
   })

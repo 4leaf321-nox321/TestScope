@@ -102,13 +102,13 @@ async def main() -> int:
         print(f"  {'실패' if failed else '  ok'} {label:34s} {_short(got)}")
 
     # 검색 — 이 시스템이 존재하는 이유. **축이 없으면 그렇다고 말하고 끝낸다** —
-    # 그 설치는 기준정보를 아직 안 심은 것이고, 그것은 오류가 아니라 상태다.
+    # 그 설치는 온톨로지를 아직 안 심은 것이고, 그것은 오류가 아니라 상태다.
     force = next(
         (one for one in reachable.get("conditions", []) if one["key"] == "force"), None
     )
     items = await server.resolve(ctx, "term", "인장", axis="test_item")
     if force is None:
-        print("\n  조건축 force 가 없습니다 — 검색 확인은 건너뜁니다(기준정보를 심으세요).")
+        print("\n  조건축 force 가 없습니다 — 검색 확인은 건너뜁니다(온톨로지를 심으세요).")
     elif items.get("match") == "exact":
         found = await server.search_test_items(
             ctx,

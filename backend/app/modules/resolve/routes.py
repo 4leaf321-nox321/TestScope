@@ -24,7 +24,7 @@ def resolve(
     user: User = Depends(current_user),
     db: Session = Depends(get_db),
 ) -> ResolveResponse:
-    """이름으로 계열·기종·기준정보 값·시험법·신뢰성 시험·보유 장비·부서를 찾는다.
+    """이름으로 계열·기종·온톨로지 값·시험법·신뢰성 시험·보유 장비·부서를 찾는다.
 
     **무엇을 만들기 전에 이것을 먼저 부른다.** 응답의 `match` 가 셋이다:
 

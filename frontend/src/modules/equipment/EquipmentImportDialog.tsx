@@ -39,7 +39,7 @@
  *
  * ## 없는 거점·분류는 여기서 만든다
  *
- * 대장에 새 거점이 섞여 있는 것은 흔하다. 「기준정보에서 먼저 만드세요」 하고 멈추면
+ * 대장에 새 거점이 섞여 있는 것은 흔하다. 「온톨로지에서 먼저 만드세요」 하고 멈추면
  * 사람은 창을 닫고 나갔다 와야 하고, **그 사이 표에서 고치던 것을 잃는다.** 거점과
  * 장비 분류는 원래 누구나 더하는 열린 축이라(`entry_policy=open`) 막을 이유가 없다.
  *
@@ -592,7 +592,7 @@ export function EquipmentImportDialog({
               </Button>
             )}
             <span className="text-muted-foreground text-xs">
-              부서·거점·장비유형·기종은 <strong>이름으로</strong> 적습니다. 기준정보에 없는
+              부서·거점·장비유형·기종은 <strong>이름으로</strong> 적습니다. 온톨로지에 없는
               거점·분류는 여기서 만들어지지 않습니다.
             </span>
           </div>
@@ -602,7 +602,7 @@ export function EquipmentImportDialog({
           {makeable.length > 0 && (
             // **창을 안 떠나고 만든다.** 나갔다 오면 표에서 고치던 것을 잃는다.
             <div className="flex flex-wrap items-center gap-2 rounded-md border border-amber-300 bg-amber-50 p-2 text-sm">
-              <span>기준정보에 없는 값 {makeable.length}개 —</span>
+              <span>온톨로지에 없는 값 {makeable.length}개 —</span>
               {makeable.map((one) => (
                 <Button
                   key={`${one.axis}:${one.value}`}
