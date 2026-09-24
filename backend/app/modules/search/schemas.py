@@ -13,8 +13,10 @@ import uuid
 
 from pydantic import BaseModel, Field
 
+from app.shared.schemas import Request
 
-class ConditionQuery(BaseModel):
+
+class ConditionQuery(Request):
     """조건 하나에 대한 물음.
 
     **셋 중 하나만 채운다.** 여러 개를 채우면 서로 다른 물음이 한 줄에 섞인다.
@@ -37,7 +39,7 @@ class ConditionQuery(BaseModel):
     """choice·boolean 조건의 값."""
 
 
-class SearchRequest(BaseModel):
+class SearchRequest(Request):
     test_item_term_id: uuid.UUID | None = None
     property_term_id: uuid.UUID | None = None
     """물성으로 묻는다 — 「인장강도 재는 장비」. 그 물성을 내는 시험 항목 **전부**로

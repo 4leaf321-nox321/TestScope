@@ -33,7 +33,10 @@ def _definitions(client: TestClient, who: Signed, **params: str) -> list[dict[st
 def test_새_이름은_초안이_되고_정식_항목과_함께_값이_붙는다(
     client: TestClient, db: Session, admin: Signed, condition_ids: dict[str, str]
 ) -> None:
-    tag = uuid.uuid4().hex[:6]
+    # **글자가 하나는 들어가게 한다.** 이 시험은 아래에서 `tag.upper()` 가 **다른 이름**
+    # 이라고 보는데, 16진수 여섯 자리가 전부 숫자로 나오면(약 4%) 같은 이름이 되어 시험이
+    # 저 혼자 깨진다 — 스물여섯 번에 한 번꼴로 빨간 CI 를 보고 원인을 못 찾게 된다.
+    tag = "a" + uuid.uuid4().hex[:5]
     lab = Workspace(slug=f"lab-{tag}", name="신뢰성팀")
     db.add(lab)
     db.commit()

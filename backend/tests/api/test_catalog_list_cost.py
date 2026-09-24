@@ -108,7 +108,10 @@ def _cost(client: TestClient, admin: Signed, path: str) -> tuple[int, list[str]]
     with counted() as seen:
         response = client.get(path, headers=admin.headers)
     assert response.status_code == 200, response.text
-    assert response.json()["items"], "빈 목록으로는 아무것도 못 잰다"
+    # 쪽으로 오는 목록(`items`)도 있고 그냥 줄 목록도 있다 — 둘 다 비면 못 잰다.
+    body = response.json()
+    rows = body["items"] if isinstance(body, dict) else body
+    assert rows, "빈 목록으로는 아무것도 못 잰다"
     return len(seen), seen
 
 
@@ -255,3 +258,80 @@ def test_보유_장비_목록과_상세가_같은_값을_낸다(client: TestClie
             assert row[key] == one[key], (
                 f"{row['asset_no']} 의 {key}: 목록={row[key]!r} 상세={one[key]!r}"
             )
+
+
+def _methods(client: TestClient, admin: Signed, count: int) -> None:
+    """규격 몇 건 — 줄마다 묻는 자리가 있으면 이만큼이면 드러난다."""
+    for index in range(count):
+        made = client.post(
+            "/api/methods",
+            json={
+                "code": f"COST {uuid.uuid4().hex[:6]}-{index}",
+                "title": "질의 수 확인용 규격",
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+
+def _why(statements: list[str]) -> str:
+    """세기만 하면 **어디가 범인인지** 모른다 — 나간 SQL 을 몇 줄 보인다."""
+    return "\n".join(f"  {one[:110]}" for one in statements[:25])
+
+
+def test_규격_목록의_질의가_줄_수를_따라_늘지_않는다(
+    client: TestClient, admin: Signed
+) -> None:
+    """**실측 2026-09-24: 50줄에 253회** — 줄마다 다섯씩 붙었다.
+
+    시험 항목·제정기관·소유 부서·대체 규격·장비 수를 줄마다 따로 물었다. 이 시험이
+    계열·기종·보유 장비에만 있어서 규격은 그렇게 자란 것이다 — 목록이 하나 늘면
+    여기도 한 줄 는다.
+    """
+    _methods(client, admin, MANY)
+    few, _ = _cost(client, admin, f"/api/methods?limit={FEW}")
+    many, statements = _cost(client, admin, f"/api/methods?limit={MANY}")
+
+    assert many <= BUDGET, f"{MANY}줄에 질의 {many}회 — 줄마다 묻고 있다.\n{_why(statements)}"
+    assert many <= few + 2, f"{FEW}줄에 {few}회 · {MANY}줄에 {many}회 — 줄에 비례한다"
+
+
+def test_신뢰성_시험_목록의_질의가_줄_수를_따라_늘지_않는다(
+    client: TestClient, admin: Signed
+) -> None:
+    """카드에 칸이 스물 넘게 서는 표라 **줄마다 묻기 시작하면 제일 빨리 자란다.**"""
+    for index in range(MANY):
+        made = client.post(
+            "/api/reliability-tests",
+            json={
+                "workspace_slug": admin.workspace,
+                "name": f"질의 수 확인-{uuid.uuid4().hex[:6]}-{index}",
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+    many, statements = _cost(
+        client, admin, f"/api/reliability-tests?workspace={admin.workspace}&status=all"
+    )
+    assert many <= BUDGET, f"질의 {many}회 — 줄마다 묻고 있다.\n{_why(statements)}"
+
+
+def test_사내_규격서_목록의_질의가_줄_수를_따라_늘지_않는다(
+    client: TestClient, admin: Signed
+) -> None:
+    """줄마다 붙은 파일 수와 거는 시험 수를 세는 표다 — 묶어 세지 않으면 곧장 는다."""
+    for index in range(MANY):
+        made = client.post(
+            "/api/spec-documents",
+            json={
+                "workspace_slug": admin.workspace,
+                "code": f"MX-COST-{uuid.uuid4().hex[:6]}-{index}",
+                "title": "질의 수 확인용 문서",
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+
+    many, statements = _cost(client, admin, f"/api/spec-documents?workspace={admin.workspace}")
+    assert many <= BUDGET, f"질의 {many}회 — 줄마다 묻고 있다.\n{_why(statements)}"

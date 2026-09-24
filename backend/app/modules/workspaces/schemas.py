@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
+
 #: URL 에 들어가므로 소문자·숫자·하이픈만 받는다. 한글 부서명은 name 이 갖는다.
 SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,49}$"
 
@@ -46,13 +48,13 @@ class WorkspaceOut(BaseModel):
     """요청한 사람의 역할. 화면이 버튼을 보일지 정하는 데 쓴다."""
 
 
-class WorkspaceCreateRequest(BaseModel):
+class WorkspaceCreateRequest(Request):
     slug: str = Field(pattern=SLUG_PATTERN)
     name: str = Field(min_length=1, max_length=100)
     parent_slug: str | None = None
 
 
-class WorkspaceUpdateRequest(BaseModel):
+class WorkspaceUpdateRequest(Request):
     name: str | None = Field(default=None, min_length=1, max_length=100)
     is_active: bool | None = None
     """false 로 두면 보관 상태. 자료는 남기고 새 활동만 막는다(삭제하지 않는다)."""
@@ -62,7 +64,7 @@ class WorkspaceUpdateRequest(BaseModel):
     """true 로 두면 사이드바 「신뢰성 시험」 아래에 이 부서가 선다. 안 보내면 그대로."""
 
 
-class WorkspaceMoveRequest(BaseModel):
+class WorkspaceMoveRequest(Request):
     """상위 부서 바꾸기. null 이면 뿌리로 올린다.
 
     이름 변경(PATCH)과 분리한 이유: PATCH 로 받으면 "안 바꿈" 과 "뿌리로 올림" 이
@@ -72,7 +74,7 @@ class WorkspaceMoveRequest(BaseModel):
     parent_slug: str | None = None
 
 
-class WorkspaceReorderRequest(BaseModel):
+class WorkspaceReorderRequest(Request):
     direction: str = Field(pattern=r"^(up|down)$")
 
 
@@ -95,16 +97,16 @@ class MemberOut(BaseModel):
     joined_at: datetime
 
 
-class MemberAddRequest(BaseModel):
+class MemberAddRequest(Request):
     email: str = Field(min_length=3, max_length=254)
     role: str = "member"
 
 
-class MemberRoleRequest(BaseModel):
+class MemberRoleRequest(Request):
     role: str
 
 
-class WorkspaceImportRequest(BaseModel):
+class WorkspaceImportRequest(Request):
     """ReportArchive 「부서 정보 내보내기」 를 **붙여넣은 글자**.
 
     파일이 아닌 이유는 장비 반입과 같다 — 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수

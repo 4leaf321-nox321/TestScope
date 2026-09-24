@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
+from app.shared.schemas import Request
+
 
 class SpecDocumentOut(BaseModel):
     id: uuid.UUID
@@ -29,7 +31,7 @@ class SpecDocumentOut(BaseModel):
     updated_at: datetime
 
 
-class SpecDocumentCreateRequest(BaseModel):
+class SpecDocumentCreateRequest(Request):
     workspace_slug: str
     code: str = Field(min_length=1, max_length=100)
     """문서관리 시스템의 번호를 그대로 — MX-REL-012."""
@@ -38,7 +40,7 @@ class SpecDocumentCreateRequest(BaseModel):
     note: str | None = Field(default=None, max_length=4000)
 
 
-class SpecDocumentUpdateRequest(BaseModel):
+class SpecDocumentUpdateRequest(Request):
     """안 보낸 칸은 그대로."""
 
     code: str | None = Field(default=None, min_length=1, max_length=100)

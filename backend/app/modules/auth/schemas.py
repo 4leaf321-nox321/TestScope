@@ -10,8 +10,10 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
 
-class LoginRequest(BaseModel):
+
+class LoginRequest(Request):
     email: str = Field(min_length=3, max_length=254)
     """EmailStr 을 쓰지 않는다.
 
@@ -56,7 +58,7 @@ class LoginResponse(BaseModel):
     user: UserOut
 
 
-class ProfileUpdateRequest(BaseModel):
+class ProfileUpdateRequest(Request):
     """자기 정보 수정.
 
     **표시 이름만 바꾼다.** 아이디(email)는 로그인 식별자라 본인이 바꾸면 감사
@@ -66,7 +68,7 @@ class ProfileUpdateRequest(BaseModel):
     display_name: str = Field(min_length=1, max_length=100)
 
 
-class ChangePasswordRequest(BaseModel):
+class ChangePasswordRequest(Request):
     current_password: str = Field(min_length=1, max_length=200)
     new_password: str = Field(min_length=1, max_length=200)
     """길이 하한을 두지 않는다.
@@ -78,7 +80,7 @@ class ChangePasswordRequest(BaseModel):
     """
 
 
-class PatCreateRequest(BaseModel):
+class PatCreateRequest(Request):
     name: str = Field(min_length=1, max_length=100)
     """어디에 쓰는 토큰인지. **폐기할 때 이것만 보고 판단하게 된다** — 그리고
     감사 기록에 이 이름이 남는다."""

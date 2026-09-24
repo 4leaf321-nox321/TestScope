@@ -8,6 +8,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
+from app.shared.schemas import Request
 
 
 class RequirementOut(BaseModel):
@@ -78,7 +79,7 @@ class MethodOut(BaseModel):
     can_edit: bool
 
 
-class MethodCreateRequest(BaseModel):
+class MethodCreateRequest(Request):
     code: str = Field(min_length=1, max_length=100)
     edition: str | None = Field(default=None, max_length=30)
     title: str = Field(min_length=1, max_length=300)
@@ -90,7 +91,7 @@ class MethodCreateRequest(BaseModel):
     """비우면 전사 공용 — 공개 규격은 대개 이쪽이다."""
 
 
-class MethodUpdateRequest(BaseModel):
+class MethodUpdateRequest(Request):
     title: str | None = Field(default=None, min_length=1, max_length=300)
     edition: str | None = None
     test_item_term_ids: list[uuid.UUID] | None = None
@@ -103,7 +104,7 @@ class MethodUpdateRequest(BaseModel):
     """보내면 통째로 바뀐다."""
 
 
-class RequirementUpsertRequest(BaseModel):
+class RequirementUpsertRequest(Request):
     """요구 조건 하나를 넣거나 고친다. 같은 조건이 이미 있으면 덮어쓴다.
 
     **한쪽을 비울 수 있다.** 20 kN 이상은 min 만 있고 max 가 없다 — 0 으로 채우면
@@ -118,7 +119,7 @@ class RequirementUpsertRequest(BaseModel):
     note: str | None = None
 
 
-class RequirementImportRequest(BaseModel):
+class RequirementImportRequest(Request):
     """엑셀에서 복사해 붙여넣은 요구 조건 표. **머리글 줄까지 함께.** 파일이 아닌 이유는
     장비 대장 반입과 같다 — DRM 이 파일은 막고 붙여넣기는 못 막는다."""
 

@@ -6,8 +6,10 @@ import uuid
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
 
-class ResolveRequest(BaseModel):
+
+class ResolveRequest(Request):
     """「이게 이미 있나?」
 
     AI 가 하는 첫 동작은 언제나 이것이다. 목록 검색(`?q=`)으로 흉내낼 수는 있지만,

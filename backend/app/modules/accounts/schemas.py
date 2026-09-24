@@ -7,13 +7,15 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
+
 #: 아이디 최소 길이. **이메일 형식을 강제하지 않는다** — 사내 관리자 계정은 admin
 #: 처럼 짧은 아이디를 쓰고, 폐쇄망은 .local 같은 도메인을 쓴다.
 _ID_FIELD = Field(min_length=3, max_length=254)
 _PASSWORD_FIELD = Field(min_length=8, max_length=200)
 
 
-class SignupRequest(BaseModel):
+class SignupRequest(Request):
     email: str = _ID_FIELD
     password: str = _PASSWORD_FIELD
     display_name: str = Field(min_length=1, max_length=100)
@@ -51,18 +53,18 @@ class AccountOut(BaseModel):
     decision_note: str | None
 
 
-class ApproveRequest(BaseModel):
+class ApproveRequest(Request):
     workspace_slug: str | None = None
     """비우면 신청한 부서를 그대로 쓴다."""
     role: str = "member"
 
 
-class RejectRequest(BaseModel):
+class RejectRequest(Request):
     note: str = Field(min_length=1, max_length=500)
     """거절 사유. 메일이 없어 통보가 앱 안에서만 되므로 반드시 남긴다."""
 
 
-class CreateAccountRequest(BaseModel):
+class CreateAccountRequest(Request):
     """관리자가 직접 계정을 만들 때. 승인 절차 없이 바로 활성이다."""
 
     email: str = _ID_FIELD
@@ -72,7 +74,7 @@ class CreateAccountRequest(BaseModel):
     is_system_admin: bool = False
 
 
-class HomeWorkspaceRequest(BaseModel):
+class HomeWorkspaceRequest(Request):
     """대표 소속을 정한다.
 
     **비우는 길은 두지 않는다.** 대표 소속이 없으면 로그인이 소속 중 첫 부서로
@@ -83,7 +85,7 @@ class HomeWorkspaceRequest(BaseModel):
     workspace_slug: str = Field(min_length=1, max_length=50)
 
 
-class SystemAdminRequest(BaseModel):
+class SystemAdminRequest(Request):
     """시스템 관리자 권한을 주거나 뺀다.
 
     **한 엔드포인트에 참·거짓을 실어 보낸다.** 이 값은 상태가 아니라 권한 한

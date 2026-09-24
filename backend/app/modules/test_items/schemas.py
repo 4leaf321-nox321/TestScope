@@ -7,6 +7,8 @@ from datetime import date, datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
+
 
 class LimitOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -107,7 +109,7 @@ class TestItemCatalogOut(BaseModel):
     can_edit: bool
 
 
-class TestItemConditionKeysRequest(BaseModel):
+class TestItemConditionKeysRequest(Request):
     condition_key_ids: list[uuid.UUID] = Field(max_length=20)
 
 
@@ -130,7 +132,7 @@ class EquipmentTestItemOut(BaseModel):
     can_edit: bool
 
 
-class EquipmentTestItemCreateRequest(BaseModel):
+class EquipmentTestItemCreateRequest(Request):
     equipment_id: uuid.UUID
     test_item_term_id: uuid.UUID
     method_id: uuid.UUID | None = None
@@ -140,14 +142,14 @@ class EquipmentTestItemCreateRequest(BaseModel):
     note: str | None = None
 
 
-class EquipmentTestItemUpdateRequest(BaseModel):
+class EquipmentTestItemUpdateRequest(Request):
     method_id: uuid.UUID | None = None
     confidence: str | None = Field(default=None, pattern="^(catalog|verified|limited)$")
     verified_on: date | None = None
     note: str | None = None
 
 
-class LimitUpsertRequest(BaseModel):
+class LimitUpsertRequest(Request):
     """조건 한 칸의 범위를 넣거나 덮어쓴다.
 
     **값은 화면 단위로 받고 서버가 SI 로 바꾸지 않는다** — 프론트가 조건 정의의

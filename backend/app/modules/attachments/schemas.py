@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
+from app.shared.schemas import Request
+
 
 class AttachmentOut(BaseModel):
     id: uuid.UUID
@@ -29,7 +31,7 @@ class AttachmentOut(BaseModel):
     created_at: datetime
 
 
-class AttachmentUpdateRequest(BaseModel):
+class AttachmentUpdateRequest(Request):
     """설명과 붙는 자리를 고친다. **파일은 안 바꾼다** — 다른 그림이면 새로 붙인다."""
 
     caption: str | None = Field(default=None, max_length=300)

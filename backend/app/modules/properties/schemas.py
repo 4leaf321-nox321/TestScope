@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
+
 
 class TestItemPropertyOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -41,7 +43,7 @@ class PropertyOut(BaseModel):
     links: list[TestItemPropertyOut]
 
 
-class TestItemPropertyCreateRequest(BaseModel):
+class TestItemPropertyCreateRequest(Request):
     test_item_term_id: uuid.UUID
     property_term_id: uuid.UUID
     note: str | None = Field(default=None, max_length=2000)
@@ -54,7 +56,7 @@ class TestItemPropertyCreateRequest(BaseModel):
     있나」 에 답할 때 사람이 더한 것과 구별되어야 한다."""
 
 
-class LinkBulkRequest(BaseModel):
+class LinkBulkRequest(Request):
     """제안 여럿을 **한 번에** 확인하거나 되돌린다.
 
     254건을 한 줄씩 누르게 두면 아무도 끝내지 못하고, 그 사이 연결은 계속 「기계가 그렇게
@@ -76,6 +78,6 @@ class LinkBulkResult(BaseModel):
     """바뀐 줄들. 화면이 다시 안 받아도 되게."""
 
 
-class TestItemPropertyUpdateRequest(BaseModel):
+class TestItemPropertyUpdateRequest(Request):
     status: str | None = Field(default=None, pattern="^(suggested|confirmed)$")
     note: str | None = Field(default=None, max_length=2000)

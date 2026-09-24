@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import contextlib
 import hashlib
+import time
 import uuid
 from pathlib import Path
 from typing import Any
@@ -291,3 +292,60 @@ def bytes_of(db: Session, row: Attachment) -> tuple[bytes, str, str]:
             "파일이 파일스토어에 없습니다 — 백업 복구가 DB 만 된 것일 수 있습니다.",
         )
     return full.read_bytes(), stored.content_type, row.original_name
+
+
+def sweep_filestore(
+    db: Session, *, older_than_hours: float = 24.0, delete: bool = False
+) -> dict[str, Any]:
+    """**주인 없는 파일을 쓸어낸다** — 그리고 그 반대도 말한다.
+
+    ## 왜 생기나
+
+    올리기는 ① 디스크에 쓰고 ② 표에 적는 순서다. ②가 안 되고 되돌아가면 ①의 파일만
+    남는다 — 아무 줄도 안 가리키는 바이트다. 2026-09-24 개발 DB 실측: 디스크 18개 중 16개.
+
+    **순서를 뒤집지 않는 이유**: 표를 먼저 적으면 그 사이에 프로세스가 죽었을 때 「줄은
+    있는데 파일이 없는」 첨부가 남는다. 그쪽이 더 나쁘다 — 화면에 깨진 그림으로 서고,
+    사람은 파일이 지워진 줄 안다. 스치고 지나간 바이트는 나중에 지우면 되지만, 가리키는
+    줄이 있는데 없는 파일은 아무도 못 되살린다.
+
+    ## 갓 올라온 것은 안 건드린다
+
+    `older_than_hours` 가 그것이다. 지금 올라가는 중인 파일은 아직 표에 안 적혔을 수
+    있다 — 그걸 지우면 멀쩡한 올리기를 우리가 깨뜨린다.
+
+    돌려주는 것: 지운(또는 지울) 파일 수와 바이트, 그리고 **표에는 있는데 파일이 없는**
+    것들. 뒤쪽은 지울 수 없는 고장이라 세어서 말만 한다.
+    """
+    root = get_settings().filestore_dir
+    known = {row.sha256 for row in db.scalars(select(StoredFile))}
+    cutoff = time.time() - older_than_hours * 3600
+
+    orphans: list[Path] = []
+    freed = 0
+    recent = 0
+    if root.exists():
+        for path in root.rglob("*"):
+            if not path.is_file() or path.name in known:
+                continue
+            if path.stat().st_mtime > cutoff:
+                recent += 1  # 아직 올라가는 중일 수 있다 — 건드리지 않는다
+                continue
+            orphans.append(path)
+            freed += path.stat().st_size
+
+    if delete:
+        for path in orphans:
+            with contextlib.suppress(OSError):  # 잠긴 파일은 다음 번에 지워진다
+                path.unlink()
+
+    missing = [
+        row.sha256 for row in db.scalars(select(StoredFile)) if not (root / row.path).exists()
+    ]
+    return {
+        "orphans": len(orphans),
+        "bytes": freed,
+        "deleted": delete,
+        "skipped_recent": recent,
+        "missing_files": missing,
+    }

@@ -16,8 +16,14 @@ bcrypt 라운드를 낮춘다. 시험 하나가 계정을 만들고(해시) 로�
 from __future__ import annotations
 
 import os
+import tempfile
 
 os.environ.setdefault("TSC_BCRYPT_ROUNDS", "4")
+
+# **첨부는 시험용 폴더에 쓴다.** 안 그러면 개발 파일스토어에 쌓인다 — 시험은 DB 를
+# 되돌리지만 디스크에 쓴 파일은 되돌아가지 않아서, 아무 줄도 안 가리키는 바이트가 남는다
+# (2026-09-24 실측: 개발 파일스토어 18개 중 16개가 그것이었다).
+os.environ.setdefault("FILESTORE_DIR", tempfile.mkdtemp(prefix="testscope-filestore-"))
 
 
 def _test_database_url() -> str:

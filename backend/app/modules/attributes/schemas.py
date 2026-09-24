@@ -8,6 +8,8 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from app.shared.schemas import Request
+
 
 class AttributeDefinitionOut(BaseModel):
     id: uuid.UUID
@@ -32,7 +34,7 @@ class AttributeDefinitionOut(BaseModel):
     created_at: datetime
 
 
-class AttributeDefinitionCreateRequest(BaseModel):
+class AttributeDefinitionCreateRequest(Request):
     """시스템 관리자가 정식(또는 미리 준비하는 초안) 항목을 만든다."""
 
     target: str
@@ -49,7 +51,7 @@ class AttributeDefinitionCreateRequest(BaseModel):
     sort_order: int = 0
 
 
-class AttributeDefinitionUpdateRequest(BaseModel):
+class AttributeDefinitionUpdateRequest(Request):
     """안 보낸 칸은 그대로. `kind` 는 값이 하나도 없을 때만 바뀐다."""
 
     label: str | None = Field(default=None, min_length=1, max_length=150)
@@ -66,12 +68,12 @@ class AttributeDefinitionUpdateRequest(BaseModel):
     is_active: bool | None = None
 
 
-class AttributeMergeRequest(BaseModel):
+class AttributeMergeRequest(Request):
     target_id: uuid.UUID
     """남는 쪽. 값이 이쪽으로 옮겨 가고 원래 항목은 꺼진다."""
 
 
-class AttributeValueIn(BaseModel):
+class AttributeValueIn(Request):
     """값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로
     만든다.**
 

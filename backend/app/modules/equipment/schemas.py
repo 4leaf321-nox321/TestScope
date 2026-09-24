@@ -9,6 +9,7 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
+from app.shared.schemas import Request
 
 
 class CalibrationOut(BaseModel):
@@ -163,7 +164,7 @@ class CatalogFilterOptionsOut(BaseModel):
     """기종 목록에서 계열로 좁힐 때. 계열 목록에서는 빈 목록이다."""
 
 
-class EquipmentImportRequest(BaseModel):
+class EquipmentImportRequest(Request):
     """엑셀에서 복사해 붙여넣은 대장.
 
     **파일이 아니다.** 문서 보안(DRM)이 걸린 환경에서는 파일을 올릴 수 없다 — 서식을
@@ -325,7 +326,7 @@ class EquipmentImportResult(BaseModel):
     rows: list[EquipmentImportRow]
 
 
-class EquipmentCreateRequest(BaseModel):
+class EquipmentCreateRequest(Request):
     """보유 장비를 등록한다.
 
     **필수는 여덟이다** — 자산번호·장비명·보유 부서·거점·상세위치·공용여부·상태,
@@ -385,7 +386,7 @@ class EquipmentCreateRequest(BaseModel):
     """속성 값. `definition_id` 없이 `new_label` 이면 초안 속성이 생긴다."""
 
 
-class EquipmentUpdateRequest(BaseModel):
+class EquipmentUpdateRequest(Request):
     """**안 보낸 것과 비운 것을 구별한다.**
 
     부분 수정이라 None 은 "안 바꿈" 이다. 구별하지 않으면 상태 하나 바꿀 때마다
@@ -421,7 +422,7 @@ class EquipmentUpdateRequest(BaseModel):
     """보내면 통째로 바뀐다 — 신뢰성 시험과 같은 규칙."""
 
 
-class CalibrationCreateRequest(BaseModel):
+class CalibrationCreateRequest(Request):
     calibrated_on: date
     next_due_on: date | None = None
     certificate_no: str | None = Field(default=None, max_length=100)
@@ -489,7 +490,7 @@ class FreeSpecOut(BaseModel):
     여러 기종이 공유하는 값은 비교할 수 있어야 한다."""
 
 
-class FreeSpecUpsertRequest(BaseModel):
+class FreeSpecUpsertRequest(Request):
     label: str = Field(min_length=1, max_length=150)
     value_text: str = Field(min_length=1, max_length=4000)
     unit: str | None = Field(default=None, max_length=40)
@@ -498,7 +499,7 @@ class FreeSpecUpsertRequest(BaseModel):
     source_page: int | None = Field(default=None, ge=1)
 
 
-class FreeSpecPromoteRequest(BaseModel):
+class FreeSpecPromoteRequest(Request):
     """이 기종만의 사양을 **정의로 세운다.** 이름·단위·종류는 사람이 정한다 — 기계가 지어내면
     그것이 진실이 된다."""
 
@@ -611,7 +612,7 @@ class EquipmentSeriesOut(BaseModel):
     """카탈로그는 전사 공용이라 시스템 관리자만 고친다. **서버가 판정한다.**"""
 
 
-class EquipmentSeriesCreateRequest(BaseModel):
+class EquipmentSeriesCreateRequest(Request):
     """계열을 만든다.
 
     **만들기 전에 `POST /api/resolve` 로 먼저 찾는다.** 같은 계열이 두 줄로 갈리면
@@ -647,7 +648,7 @@ class EquipmentSeriesCreateRequest(BaseModel):
     source_id: uuid.UUID | None = None
 
 
-class EquipmentSeriesUpdateRequest(BaseModel):
+class EquipmentSeriesUpdateRequest(Request):
     """**안 보낸 것과 비운 것을 구별한다.** None 은 "안 바꿈" 이다."""
 
     name: str | None = Field(default=None, min_length=1, max_length=200)
@@ -666,7 +667,7 @@ class EquipmentSeriesUpdateRequest(BaseModel):
     """보내면 통째로 바뀐다 — 신뢰성 시험과 같은 규칙."""
 
 
-class SeriesRelationCreateRequest(BaseModel):
+class SeriesRelationCreateRequest(Request):
     part_series_id: uuid.UUID
     relation: str = Field(max_length=30)
     note: str | None = None
@@ -833,7 +834,7 @@ class EquipmentModelRow(BaseModel):
     구멍이고, 뒤엣것은 이 분류에 대표를 안 정해 둔 것뿐이다."""
 
 
-class EquipmentModelCreateRequest(BaseModel):
+class EquipmentModelCreateRequest(Request):
     """기종을 만든다. **계열이 먼저 있어야 한다.**
 
     `series_id` 대신 `series`(계열 이름)를 줘도 된다. 제조사를 함께 주면 같은
@@ -857,7 +858,7 @@ class EquipmentModelCreateRequest(BaseModel):
     spec_note: str | None = None
 
 
-class EquipmentModelUpdateRequest(BaseModel):
+class EquipmentModelUpdateRequest(Request):
     """**안 보낸 것과 비운 것을 구별한다.** None 은 "안 바꿈" 이다."""
 
     name: str | None = Field(default=None, min_length=1, max_length=150)
@@ -871,7 +872,7 @@ class EquipmentModelUpdateRequest(BaseModel):
     spec_note: str | None = None
 
 
-class SeriesTestItemCreateRequest(BaseModel):
+class SeriesTestItemCreateRequest(Request):
     """이 계열이 무슨 시험을 하나.
 
     시험 항목은 **닫힌 축**이라 없는 이름은 안 받는다 — 오타가 값이 되면 그 계열의
@@ -888,7 +889,7 @@ class SeriesTestItemCreateRequest(BaseModel):
     note: str | None = None
 
 
-class ModelLimitUpsertRequest(BaseModel):
+class ModelLimitUpsertRequest(Request):
     """조건 한 칸을 넣거나 덮어쓴다. 개체 쪽과 같은 규칙이다 —
     **비운 쪽은 "제한 없음"** 이고 0 이 아니다."""
 
@@ -964,7 +965,7 @@ class ModelSpecSheetOut(BaseModel):
     groups: list[ModelSpecGroupOut]
 
 
-class ModelSpecValueUpsertRequest(BaseModel):
+class ModelSpecValueUpsertRequest(Request):
     """사양 한 칸을 넣거나 덮어쓴다.
 
     **종류에 맞는 칸만 채운다.** 나머지는 안 보내면 되고, 서버가 그것을 비운다 —
@@ -1084,7 +1085,7 @@ class EquipmentSpecSheetOut(BaseModel):
     override_count: int
 
 
-class EquipmentSpecSaveRequest(BaseModel):
+class EquipmentSpecSaveRequest(Request):
     """실측 한 칸을 넣거나 덮어쓴다. **종류에 맞는 칸만 채운다.**"""
 
     definition_id: uuid.UUID

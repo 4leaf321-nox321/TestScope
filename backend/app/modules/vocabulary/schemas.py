@@ -8,8 +8,10 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
 
-class AttributeField(BaseModel):
+
+class AttributeField(Request):
     key: str = Field(min_length=1, max_length=50, pattern=r"^[a-z][a-z0-9_]*$")
     label: str = Field(min_length=1, max_length=100)
     kind: str = Field(default="text", pattern="^(text|number|list)$")
@@ -39,7 +41,7 @@ class VocabularyOut(BaseModel):
     같아 보이고, 어디를 채워야 하는지 알 수 없다."""
 
 
-class VocabularyCreateRequest(BaseModel):
+class VocabularyCreateRequest(Request):
     """축 하나를 새로 세운다. **slug 는 코드가 거는 이름**이라 만든 뒤 못 바꾼다.
 
     `domain` 은 화면이 축을 묶는 자리다 — 안 고르면 `common` 이 되는데, 그것은 얼버무리는
@@ -58,7 +60,7 @@ class VocabularyCreateRequest(BaseModel):
     attribute_schema: list[AttributeField] = Field(default_factory=list)
 
 
-class VocabularyUpdateRequest(BaseModel):
+class VocabularyUpdateRequest(Request):
     """축을 고친다. **slug 와 소속은 못 바꾼다** — 코드가 걸고 있다.
 
     정책을 open 에서 closed 로 바꾸는 것은 된다: 값이 흩어지기 시작한 축을 잠그는 일이
@@ -87,14 +89,14 @@ class TermOut(BaseModel):
     created_at: datetime
 
 
-class TermCreateRequest(BaseModel):
+class TermCreateRequest(Request):
     value: str = Field(min_length=1, max_length=200)
     code: str | None = Field(default=None, max_length=120)
     parent_term_id: uuid.UUID | None = None
     attributes: dict[str, Any] = Field(default_factory=dict)
 
 
-class TermUpdateRequest(BaseModel):
+class TermUpdateRequest(Request):
     """**안 보낸 것과 비운 것을 구별한다.**
 
     None 은 "안 바꿈" 이다. 구별하지 않으면 이름 하나 고칠 때마다 코드와 상위 값이
@@ -108,7 +110,7 @@ class TermUpdateRequest(BaseModel):
     attributes: dict[str, Any] | None = None
 
 
-class TermMergeRequest(BaseModel):
+class TermMergeRequest(Request):
     """이 값을 다른 값으로 합친다. 원본은 별칭이 되어 남는다.
 
     **지우지 않고 별칭으로 남기는 이유**: 같은 오타가 또 들어오는 것을 막는다.
@@ -118,7 +120,7 @@ class TermMergeRequest(BaseModel):
     target_term_id: uuid.UUID
 
 
-class AliasCreateRequest(BaseModel):
+class AliasCreateRequest(Request):
     value: str = Field(min_length=1, max_length=200)
 
 
@@ -139,7 +141,7 @@ class ReferenceGroupOut(BaseModel):
     rows: list[ReferenceRowOut]
 
 
-class ReferenceReassignRequest(BaseModel):
+class ReferenceReassignRequest(Request):
     target_term_id: uuid.UUID
 
 
@@ -162,7 +164,7 @@ class ConditionKeyOut(BaseModel):
     고치면 이미 저장된 그 숫자들의 뜻이 통째로 바뀐다."""
 
 
-class ConditionKeyCreateRequest(BaseModel):
+class ConditionKeyCreateRequest(Request):
     key: str = Field(pattern=r"^[a-z][a-z0-9_]{1,49}$")
     """코드와 검색이 거는 이름. 소문자와 밑줄만 — 화면 이름은 label 이 갖는다."""
     label: str = Field(min_length=1, max_length=100)
@@ -175,7 +177,7 @@ class ConditionKeyCreateRequest(BaseModel):
     sort_order: int = 0
 
 
-class ConditionKeyUpdateRequest(BaseModel):
+class ConditionKeyUpdateRequest(Request):
     label: str | None = Field(default=None, min_length=1, max_length=100)
     dimension: str | None = Field(default=None, max_length=30)
     si_unit: str | None = Field(default=None, max_length=20)
@@ -202,14 +204,14 @@ class SpecGroupOut(BaseModel):
     지웠는데 뒤에 스무 개가 매달려 있는 일이 없어야 한다."""
 
 
-class SpecGroupCreateRequest(BaseModel):
+class SpecGroupCreateRequest(Request):
     slug: str = Field(pattern=r"^[a-z][a-z0-9_]{1,49}$")
     label: str = Field(min_length=1, max_length=100)
     description: str | None = None
     sort_order: int = 0
 
 
-class SpecGroupUpdateRequest(BaseModel):
+class SpecGroupUpdateRequest(Request):
     label: str | None = Field(default=None, min_length=1, max_length=100)
     description: str | None = None
     sort_order: int | None = None
@@ -245,7 +247,7 @@ class SpecDefinitionOut(BaseModel):
     """이 사양으로 적힌 값의 수. 끄거나 고치기 전에 보여 준다."""
 
 
-class SpecDefinitionCreateRequest(BaseModel):
+class SpecDefinitionCreateRequest(Request):
     key: str = Field(pattern=r"^[a-z][a-z0-9_]{1,59}$")
     label: str = Field(min_length=1, max_length=150)
     group_id: uuid.UUID
@@ -263,7 +265,7 @@ class SpecDefinitionCreateRequest(BaseModel):
     "이건 저 장비에만 있다" 를 아는 사람만 하면 된다."""
 
 
-class SpecDefinitionUpdateRequest(BaseModel):
+class SpecDefinitionUpdateRequest(Request):
     """**안 보낸 것과 비운 것을 구별한다.** None 은 "안 바꿈" 이다."""
 
     label: str | None = Field(default=None, min_length=1, max_length=150)

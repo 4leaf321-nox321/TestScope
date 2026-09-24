@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field
 
 from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
 from app.modules.search.schemas import SearchHit
+from app.shared.schemas import Request
 
 
 class ReliabilityTestItemOut(BaseModel):
@@ -48,7 +49,7 @@ class ReliabilityTestOut(BaseModel):
     updated_at: datetime
 
 
-class ReliabilityTestCreateRequest(BaseModel):
+class ReliabilityTestCreateRequest(Request):
     workspace_slug: str
     name: str = Field(min_length=1, max_length=200)
     purpose: str = Field(default="", max_length=4000)
@@ -57,7 +58,7 @@ class ReliabilityTestCreateRequest(BaseModel):
     """항목 값. `definition_id` 가 없고 `new_label` 이 있으면 초안 항목이 생긴다."""
 
 
-class ReliabilityTestUpdateRequest(BaseModel):
+class ReliabilityTestUpdateRequest(Request):
     """안 보낸 칸은 그대로. `test_item_term_ids` 는 보내면 **통째로** 바뀐다."""
 
     name: str | None = Field(default=None, min_length=1, max_length=200)

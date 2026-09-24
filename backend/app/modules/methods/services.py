@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import uuid
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any
 
@@ -67,22 +68,24 @@ def _requirements(db: Session, method_id: uuid.UUID) -> list[RequirementOut]:
         .where(MethodRequirement.method_id == method_id)
         .order_by(ConditionKey.sort_order, ConditionKey.label)
     ).all()
-    return [
-        RequirementOut(
-            id=req.id,
-            condition_key_id=key.id,
-            condition_key=key.key,
-            condition_label=key.label,
-            si_unit=key.si_unit,
-            display_unit=key.display_unit,
-            min_value=req.min_value,
-            max_value=req.max_value,
-            text_value=req.text_value,
-            is_mandatory=req.is_mandatory,
-            note=req.note,
-        )
-        for req, key in rows
-    ]
+    return [_requirement_out(req, key) for req, key in rows]
+
+
+def _requirement_out(req: MethodRequirement, key: ConditionKey) -> RequirementOut:
+    """요구 조건 한 줄. **낱개로 읽을 때와 묶어 읽을 때가 같은 글자를 내야 한다.**"""
+    return RequirementOut(
+        id=req.id,
+        condition_key_id=key.id,
+        condition_key=key.key,
+        condition_label=key.label,
+        si_unit=key.si_unit,
+        display_unit=key.display_unit,
+        min_value=req.min_value,
+        max_value=req.max_value,
+        text_value=req.text_value,
+        is_mandatory=req.is_mandatory,
+        note=req.note,
+    )
 
 
 def promote_pending(db: Session, method: TestMethod) -> int:
@@ -195,27 +198,103 @@ def _can_edit(db: Session, user: User, row: TestMethod) -> bool:
     return True
 
 
+@dataclass(frozen=True)
+class _Bulk:
+    """`method_out` 이 **줄마다** 묻던 것을 한 번씩 담아 둔 것.
+
+    묶기 전 실측(2026-09-24, 개발 DB): 규격 목록 50줄에 질의 **253회**, 10줄에 53회 —
+    줄마다 다섯씩 붙었다. 보유 장비에서 같은 것을 고쳤을 때가 593 → 13 이었다.
+    질의 수가 **줄 수를 따라 늘지 않는 것**이 규칙이고, `test_catalog_list_cost.py` 가 본다.
+    """
+
+    items: dict[uuid.UUID, list[VocabularyTerm]]
+    counts: dict[uuid.UUID, tuple[int, int]]
+    bodies: dict[uuid.UUID, VocabularyTerm]
+    workspaces: dict[uuid.UUID, Workspace]
+    successors: dict[uuid.UUID, TestMethod]
+    equipment: dict[uuid.UUID, int]
+    requirements: dict[uuid.UUID, list[RequirementOut]]
+    attributes: dict[uuid.UUID, list[Any]]
+    editable: dict[uuid.UUID | None, bool]
+
+
+def _bulk(db: Session, rows: list[TestMethod], viewer: User) -> _Bulk:
+    ids = [row.id for row in rows]
+    if not ids:
+        empty: dict[Any, Any] = {}
+        return _Bulk(empty, empty, empty, empty, empty, empty, empty, empty, empty)
+
+    def _by_id(model: Any, wanted: set[uuid.UUID]) -> dict[uuid.UUID, Any]:
+        if not wanted:
+            return {}
+        return {one.id: one for one in db.scalars(select(model).where(model.id.in_(wanted)))}
+
+    equipment: dict[uuid.UUID, int] = {
+        method_id: count
+        for method_id, count in db.execute(
+            select(
+                EquipmentTestItem.method_id,
+                func.count(func.distinct(EquipmentTestItem.equipment_id)),
+            )
+            .where(EquipmentTestItem.method_id.in_(ids))
+            .group_by(EquipmentTestItem.method_id)
+        ).all()
+    }
+
+    requirements: dict[uuid.UUID, list[RequirementOut]] = {one: [] for one in ids}
+    for req, key in db.execute(
+        select(MethodRequirement, ConditionKey)
+        .join(ConditionKey, ConditionKey.id == MethodRequirement.condition_key_id)
+        .where(MethodRequirement.method_id.in_(ids))
+        .order_by(ConditionKey.sort_order, ConditionKey.label)
+    ).all():
+        requirements[req.method_id].append(_requirement_out(req, key))
+
+    # **고칠 수 있나는 부서마다 한 번이면 된다** — 규격 쉰 건이 한 부서 것이면 판정도 하나다.
+    editable: dict[uuid.UUID | None, bool] = {}
+    for row in rows:
+        if row.owner_workspace_id not in editable:
+            editable[row.owner_workspace_id] = _can_edit(db, viewer, row)
+
+    return _Bulk(
+        items=items_of(db, ids),
+        counts=series_counts(db, ids),
+        bodies=_by_id(VocabularyTerm, {r.body_term_id for r in rows if r.body_term_id}),
+        workspaces=_by_id(
+            Workspace, {r.owner_workspace_id for r in rows if r.owner_workspace_id}
+        ),
+        successors=_by_id(
+            TestMethod, {r.superseded_by_id for r in rows if r.superseded_by_id}
+        ),
+        equipment=equipment,
+        requirements=requirements,
+        attributes=attributes.values_of(db, target="method", object_ids=ids),
+        editable=editable,
+    )
+
+
 def method_out(
     db: Session,
     row: TestMethod,
     viewer: User,
     *,
-    counts: dict[uuid.UUID, tuple[int, int]] | None = None,
+    bulk: _Bulk | None = None,
     with_series: bool = False,
 ) -> MethodOut:
-    items = items_of(db, [row.id])[row.id]
-    linked, pending = (counts or series_counts(db, [row.id]))[row.id]
-    body = db.get(VocabularyTerm, row.body_term_id) if row.body_term_id else None
-    workspace = db.get(Workspace, row.owner_workspace_id) if row.owner_workspace_id else None
-    successor = db.get(TestMethod, row.superseded_by_id) if row.superseded_by_id else None
-    equipment_count = (
-        db.scalar(
-            select(func.count(func.distinct(EquipmentTestItem.equipment_id))).where(
-                EquipmentTestItem.method_id == row.id
-            )
-        )
-        or 0
+    """규격 한 줄. **목록은 묶음을 주고 상세는 안 준다** — 글자는 어느 쪽이든 같다.
+
+    묶음이 없으면 이 한 줄만큼을 여기서 읽는다(상세 화면). 목록이 줄마다 이 길로 오면
+    질의가 줄 수를 따라 늘어난다 — 그래서 목록은 `_bulk` 를 한 번 만들어 건넨다.
+    """
+    at_hand = bulk or _bulk(db, [row], viewer)
+    items = at_hand.items[row.id]
+    linked, pending = at_hand.counts[row.id]
+    body = at_hand.bodies.get(row.body_term_id) if row.body_term_id else None
+    workspace = (
+        at_hand.workspaces.get(row.owner_workspace_id) if row.owner_workspace_id else None
     )
+    successor = at_hand.successors.get(row.superseded_by_id) if row.superseded_by_id else None
+    equipment_count = at_hand.equipment.get(row.id, 0)
     return MethodOut(
         id=row.id,
         code=row.code,
@@ -231,10 +310,10 @@ def method_out(
         series_count=linked,
         pending_series_count=pending,
         cited_series=cited_series(db, row.id) if with_series else [],
-        requirements=_requirements(db, row.id),
-        attributes=attributes.values_of(db, target="method", object_ids=[row.id])[row.id],
+        requirements=at_hand.requirements[row.id],
+        attributes=at_hand.attributes[row.id],
         created_at=row.created_at,
-        can_edit=_can_edit(db, viewer, row),
+        can_edit=at_hand.editable[row.owner_workspace_id],
     )
 
 
@@ -309,9 +388,9 @@ def list_methods(
             stmt.order_by(TestMethod.code, TestMethod.edition).limit(limit).offset(offset)
         )
     )
-    counts = series_counts(db, [row.id for row in rows])
+    bulk = _bulk(db, rows, user)
     return Page(
-        items=[method_out(db, row, user, counts=counts) for row in rows],
+        items=[method_out(db, row, user, bulk=bulk) for row in rows],
         total=total,
         limit=limit,
         offset=offset,

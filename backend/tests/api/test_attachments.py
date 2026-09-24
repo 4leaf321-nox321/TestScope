@@ -15,8 +15,11 @@
 from __future__ import annotations
 
 import io
+import os
+import time
 import uuid
 import zlib
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -290,3 +293,65 @@ def test_목록은_장수만_보이고_낱장은_안_받는다(client: TestClien
     assert mine["attachment_count"] == 2
     # 낱장은 목록에 안 실린다.
     assert "attachments" not in mine
+
+
+def test_주인_없는_파일은_쓸어내고_없는_파일은_말한다(
+    client: TestClient,
+    admin: Signed,
+    db: Session,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """**올리기는 파일을 먼저 쓰고 표에 적는다** — ②가 되돌아가면 ①만 남는다.
+
+    순서를 뒤집지 않는 이유는 `sweep_filestore` 머리말에 있다(줄은 있는데 파일이 없는
+    쪽이 더 나쁘다). 대신 쓸어낼 자리를 둔다.
+
+    **갓 올라온 것은 안 건드린다.** 지금 올라가는 중인 파일은 아직 표에 없을 수 있고,
+    그걸 지우면 멀쩡한 올리기를 우리가 깨뜨린다.
+    """
+    from app.config import get_settings
+    from app.modules.attachments import services
+
+    store = tmp_path / "filestore"
+    store.mkdir()
+    settings = get_settings().model_copy(update={"filestore_dir": store})
+    monkeypatch.setattr(services, "get_settings", lambda: settings)
+
+    test = _test(client, admin, f"쓸어내기-{uuid.uuid4().hex[:6]}")
+    made = _upload(client, admin.headers, test, name="정상.png")
+    assert made.status_code == 201, made.text
+    alive = [one for one in store.rglob("*") if one.is_file()]
+    assert len(alive) == 1, "올린 파일이 이 폴더에 있어야 시험이 뜻이 있다"
+
+    # **주인 없는 바이트** — 표에 안 적힌 파일. 시간을 하루 전으로 돌려 둔다.
+    stray = store / "zz" / ("z" * 64)
+    stray.parent.mkdir(parents=True)
+    stray.write_bytes(b"rolled-back upload")
+    old = time.time() - 48 * 3600
+    os.utime(stray, (old, old))
+
+    seen = services.sweep_filestore(db, delete=False)
+    assert seen["orphans"] == 1 and seen["bytes"] > 0
+    assert stray.exists(), "세기만 할 때는 안 지운다"
+
+    # 갓 쓴 파일은 건너뛴다.
+    fresh = store / "yy" / ("y" * 64)
+    fresh.parent.mkdir(parents=True)
+    fresh.write_bytes(b"still uploading")
+    counted = services.sweep_filestore(db, delete=False)
+    assert counted["orphans"] == 1, "갓 올라온 것을 지울 후보로 세면 안 된다"
+    assert counted["skipped_recent"] == 1
+
+    swept = services.sweep_filestore(db, delete=True)
+    assert swept["orphans"] == 1 and swept["deleted"] is True
+    assert not stray.exists()
+    assert fresh.exists(), "갓 올라온 것은 그대로"
+    assert alive[0].exists(), "붙어 있는 파일을 지우면 카드가 깨진다"
+
+    # **반대 방향은 고장이다** — 가리키는 줄이 있는데 파일이 없다. 지울 수 없으니 말한다.
+    # 파일 이름이 곧 내용의 해시다(sha256) — 그 이름으로 「없어진 것」 에 섰는지 본다.
+    digest = alive[0].name
+    alive[0].unlink()
+    broken = services.sweep_filestore(db, delete=False)
+    assert digest in broken["missing_files"], broken

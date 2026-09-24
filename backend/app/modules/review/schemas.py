@@ -8,6 +8,8 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
+
 
 class QueueOut(BaseModel):
     key: str
@@ -88,7 +90,7 @@ class ProposalPage(BaseModel):
     total: int
 
 
-class DecideRequest(BaseModel):
+class DecideRequest(Request):
     """고른 것. 후보에 없는 코드도 된다(「직접 고르기」) — 다만 그 큐의 어휘여야 한다."""
 
     choice: list[str] = Field(max_length=20)
@@ -96,7 +98,7 @@ class DecideRequest(BaseModel):
     note: str | None = Field(default=None, max_length=1000)
 
 
-class VoteRequest(BaseModel):
+class VoteRequest(Request):
     """의견 하나. 후보에 없는 코드도 된다(직접 고르기)."""
 
     choice: list[str] = Field(max_length=20)

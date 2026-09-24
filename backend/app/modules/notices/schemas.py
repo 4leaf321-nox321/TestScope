@@ -7,6 +7,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.shared.schemas import Request
+
 
 class NoticeOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -24,7 +26,7 @@ class NoticeOut(BaseModel):
     created_at: datetime
 
 
-class NoticeWriteRequest(BaseModel):
+class NoticeWriteRequest(Request):
     title: str = Field(min_length=1, max_length=200)
     body: str = Field(min_length=1)
     level: str = Field(default="info", pattern="^(info|warning|urgent)$")

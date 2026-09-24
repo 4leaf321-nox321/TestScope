@@ -684,3 +684,40 @@ def _any_test_item(client: TestClient, admin: Signed) -> str:
     )
     assert made.status_code == 201, made.text
     return str(made.json()["id"])
+
+
+def test_칸_이름을_틀리면_조용히_사라지지_않는다(client: TestClient, admin: Signed) -> None:
+    """**틀린 값보다 사라진 값이 안 잡힌다.**
+
+    파이단틱은 기본적으로 모르는 칸을 말없이 버린다. 기계가 `document_id` 를
+    `spec_document_id` 로 잘못 보내면 서버는 201 을 주고 그 값만 사라진다 — 보낸 쪽은
+    들어간 줄 알고, 확인하는 사람은 화면에 없으니 「안 적었구나」 로 읽는다. 신뢰성 시험은
+    값 하나로 장비를 고르고 그 장비로 보고서가 나가는 표라, 그 조용함이 곧 사고다.
+
+    스키마가 빠짐없이 막고 있는지는 `tests/architecture/test_request_schemas.py` 가 본다.
+    """
+    made = client.post(
+        "/api/spec-documents",
+        json={
+            "workspace_slug": admin.workspace,
+            "code": f"MX-REL-{uuid.uuid4().hex[:6]}",
+            "title": "칸 이름을 틀렸다",
+            "spec_document_id": "00000000-0000-0000-0000-000000000000",
+        },
+        headers=admin.headers,
+    )
+    assert made.status_code == 422, made.text
+    # **무엇이 틀렸는지 말한다** — 거절만 하면 보낸 쪽은 어디를 고칠지 모른다.
+    assert "spec_document_id" in made.text, made.text
+
+    # 이름을 바로 잡으면 들어간다 — 막는 것은 오타지 기능이 아니다.
+    good = client.post(
+        "/api/spec-documents",
+        json={
+            "workspace_slug": admin.workspace,
+            "code": f"MX-REL-{uuid.uuid4().hex[:6]}",
+            "title": "제대로 보냈다",
+        },
+        headers=admin.headers,
+    )
+    assert good.status_code == 201, good.text
