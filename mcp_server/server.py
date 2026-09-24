@@ -80,7 +80,7 @@ ROUTING = """무엇을 물었나 -> 여기서 시작한다 (자세한 것은 그
 mcp = MCPServer(
     name="testscope",
     instructions=(
-        "TestScope 시험 장비 지도. 「이 시험이 가능한 장비가 우리 조직에 있나」 에"
+        "TestScope 시험 장비 지도. 「이 시험이 수행 가능 장비가 우리 조직에 있나」 에"
         " 답한다. 카탈로그는 계열(무슨 시험이 되나)과 기종(어디까지 되나) 두 층이고,"
         " 보유 장비는 기종을 가리킨다. 규약 둘이 모든 도구에 걸린다 — **만들기 전에"
         " resolve 로 찾는다**, **모르면 비운다**(지어낸 값은 검색이 「됩니다」 로"
@@ -1471,7 +1471,7 @@ async def list_test_items(ctx: Context, gap: str | None = None) -> dict[str, Any
 
 @mcp.tool()
 async def get_test_item(ctx: Context, test_item_term_id: str) -> dict[str, Any]:
-    """시험 항목 하나 — **얻는 물성 · 규격 · 되는 계열 · 보유 장비 · 검색축**을 한 자리에.
+    """시험 항목 하나 — **측정 물성 · 규격 · 되는 계열 · 보유 장비 · 검색축**을 한 자리에.
 
     `condition_keys` 가 이 시험에 뜻이 있는 조건 축이다(인장 → 하중·속도·온도). 검색에
     조건을 붙일 때 이것을 먼저 보라 — 축 밖의 조건은 대개 `unknown` 만 늘린다. 비어
@@ -1520,10 +1520,10 @@ async def list_methods(
 
     줄마다 `test_item`(이 규격이 무슨 시험의 것인지) · `series_count`(이어진 계열) ·
     `pending_series_count`(인용은 했는데 시험 항목이 안 정해져 못 이어진 계열) ·
-    `equipment_count`(가능 장비) · `requirements`(요구 조건) 가 온다.
+    `equipment_count`(수행 가능 장비) · `requirements`(요구 조건) 가 온다.
 
     **`series_count` 가 0 인데 `pending_series_count` 가 0 이 아니면 못 하는 시험이 아니라
-    끊긴 연결이다** — `set_method_test_item` 으로 시험 항목을 정하면 붙는다.
+    끊긴 연결이다** — `set_method_test_items` 로 시험 항목을 정하면 붙는다.
 
     거르기: `test_item` 은 값 id 또는 `none`(안 정해진 것만) · `requirement=none`(요구
     조건 없는 것만) · `cited=none`(어느 계열에도 안 이어진 것만) · `used=owned`(보유 장비가
@@ -1550,7 +1550,7 @@ async def create_method(
     code: str,
     title: str,
     edition: str | None = None,
-    test_item_term_id: str | None = None,
+    test_item_term_ids: list[str] | None = None,
     body_term_id: str | None = None,
     summary: str | None = None,
 ) -> dict[str, Any]:
@@ -1560,9 +1560,15 @@ async def create_method(
     이미 있으면 409 가 오고, 그것은 실패가 아니라 답이다(그 id 를 쓴다).
 
     `edition` 은 판(「2019」 「Ed.3」). 같은 규격의 다른 판은 **다른 줄**이다 — 요구 조건이
-    판마다 바뀐다. `test_item_term_id` 는 이 규격이 어느 시험의 것인지(`resolve(kind="term",
-    axis="test_item")`), `body_term_id` 는 제정기관(`axis="standard_body"`). **둘 다 모르면
-    비운다** — 항목 미정 규격은 검토함이 사람에게 묻는다. 전사 공용으로 만들어진다.
+    판마다 바뀐다.
+
+    `test_item_term_ids` 는 이 규격이 어느 시험의 것인지 — **목록이다**(`resolve(kind="term",
+    axis="test_item")`). 규격 하나가 시험 항목 여럿을 덮는 일이 흔하다: IEC 60529 는 IP 코드의
+    1자리(방진)와 2자리(방수)를 한 문서가 정의하고, MIL-STD-810 은 방법 번호마다 다른 시험이다.
+    **하나만 적으면 나머지 항목에서 이 규격이 안 보인다.**
+
+    `body_term_id` 는 제정기관(`axis="standard_body"`). **모르면 비운다** — 항목 미정 규격은
+    검토함이 사람에게 묻는다. 전사 공용으로 만들어진다.
     """
     return await _send(
         ctx,
@@ -1572,7 +1578,7 @@ async def create_method(
             "code": code,
             "title": title,
             "edition": edition,
-            "test_item_term_id": test_item_term_id,
+            "test_item_term_ids": test_item_term_ids or [],
             "body_term_id": body_term_id,
             "summary": summary,
         },
@@ -1618,11 +1624,17 @@ async def set_requirement(
 
 
 @writes
-async def set_method_test_item(
-    ctx: Context, method_id: str, test_item_term_id: str
+async def set_method_test_items(
+    ctx: Context, method_id: str, test_item_term_ids: list[str]
 ) -> dict[str, Any]:
-    """규격에 **시험 항목을 정한다.** 정하는 순간 그 규격을 항목 미정으로 인용해 둔 계열의
-    그 시험 항목에 자동으로 붙는다 — 사람이 계열마다 다시 잇지 않는다.
+    """규격에 **시험 항목을 정한다 — 여럿을 받는다.** 정하는 순간 그 규격을 항목 미정으로
+    인용해 둔 계열의 그 시험 항목에 자동으로 붙는다 — 사람이 계열마다 다시 잇지 않는다.
+
+    **보낸 것으로 통째로 바뀐다.** 하나를 더하려면 지금 있는 것(`get_method` 의
+    `test_items`)에 더해서 전부 보낸다 — 빠뜨리면 조용히 끊긴다.
+
+    규격 하나가 시험 항목 여럿을 덮는 일이 흔하다: IEC 60529 는 IP 코드의 1자리(방진)와
+    2자리(방수)를 한 문서가 정의하고, MIL-STD-810 은 방법 번호마다 다른 시험이다.
 
     **지어서 정하지 마라.** ASTM D638 이 인장이라는 것은 규격 번호를 아는 사람의 판단이다.
     모르면 `get_method` 의 `cited_series`(어느 계열이 인용했나)를 보고 사람에게 물어라.
@@ -1632,14 +1644,17 @@ async def set_method_test_item(
     「검토함 첫 줄 확정해줘」 에는 「화면에서 하시라」 고 답한다.
     """
     return await _send(
-        ctx, "PATCH", f"/methods/{method_id}", {"test_item_term_id": test_item_term_id}
+        ctx, "PATCH", f"/methods/{method_id}", {"test_item_term_ids": test_item_term_ids}
     )
 
 
 @mcp.tool()
 async def get_method(ctx: Context, method_id: str) -> dict[str, Any]:
     """규격 하나 — 시험 항목 · 요구 조건 · **인용한 계열**(`cited_series`, `pending` 이면 어느
-    시험 항목의 것인지 미정) · 가능 장비 수."""
+    시험 항목의 것인지 미정) · 수행 가능 장비 수.
+
+    `test_items` 는 **목록이다** — 규격 하나가 여럿을 덮는다(IEC 60529 는 방진·방수 둘 다).
+    비어 있으면 아직 안 정한 것이고, 그 규격은 계열의 시험 항목에 못 붙는다."""
     return await _get(ctx, f"/methods/{method_id}")
 
 
@@ -2115,7 +2130,10 @@ async def detach_term_reference(
 
 @mcp.tool()
 async def list_reliability_tests(
-    ctx: Context, workspace: str | None = None, attr: list[str] | None = None
+    ctx: Context,
+    workspace: str | None = None,
+    attr: list[str] | None = None,
+    status: str | None = None,
 ) -> dict[str, Any]:
     """부서가 수행하는 **신뢰성 시험**(고온고습 1000h · 열충격 500 cycle …).
 
@@ -2123,7 +2141,7 @@ async def list_reliability_tests(
     항목 하나 이상을 써서 돌고, 그 항목이 장비로 이어진다. `workspace` 를 주면 그 부서 것만,
     안 주면 전사 전부 — 「저 부서는 무슨 시험을 하나」 를 가로질러 본다.
 
-    줄마다 쓰는 시험 항목과 **그 항목이 되는 그 부서 장비 수**가 온다. 0 이면 시험은 정했는데
+    줄마다 적용 시험 항목과 **그 항목이 되는 그 부서 장비 수**가 온다. 0 이면 시험은 정했는데
     돌릴 장비가 그 부서에 없다는 뜻이다(다른 부서에는 있을 수 있다 — `test_capability`).
 
     `attr` 은 속성 값 조건이다 — 왼쪽은 `list_attribute_definitions` 가 주는 `key` 다
@@ -2132,9 +2150,18 @@ async def list_reliability_tests(
     조건을 걸었는데 0건이면 `diagnosis` 가 함께 온다 — 조건마다 값이 적힌 수 · 단위 못
     바꾼 수 · 그 조건 하나로 걸리는 수와 한 줄. **「그런 시험 없습니다」 로 뭉개지 말고 그
     줄을 그대로 말하라.** 가장 흔한 실제는 「아무도 안 적었다」 다.
+
+    줄마다 `status` 가 온다 — `candidate`(후보) · `confirmed`(확정). **후보는 AI 가 올리고
+    아직 사람이 확인 안 한 것이다:** 그것을 근거로 「이 부서는 이 시험을 합니다」 라고 말하지
+    마라. 전사 목록(`workspace` 없이)에는 확정된 것만 온다. 내가 올린 것이 확인됐는지 보려면
+    `workspace` 와 함께 `status="candidate"` 로 부른다.
     """
     found = _listed(
-        await _get(ctx, "/reliability-tests", {"workspace": workspace, "attr": attr}),
+        await _get(
+            ctx,
+            "/reliability-tests",
+            {"workspace": workspace, "attr": attr, "status": status},
+        ),
         "tests",
     )
     if attr and found.get("count") == 0:
@@ -2150,7 +2177,7 @@ async def list_reliability_tests(
 
 @mcp.tool()
 async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
-    """신뢰성 시험 하나 — 목적 · 쓰는 시험 항목 · 속성 값 전부.
+    """신뢰성 시험 하나 — 목적 · 적용 시험 항목 · 속성 값 전부.
 
     속성의 `status` 가 `draft` 면 **초안**이다: 표시와 수집만 하고 검색·판정·색인 카드에는
     안 들어간다. 초안 값을 근거로 「이 조건으로 검색됩니다」 라고 말하지 마라.
@@ -2188,7 +2215,15 @@ async def create_reliability_test(
     test_item_term_ids: list[str] | None = None,
     attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """신뢰성 시험 하나를 등록한다. **그 부서의 관리자**(또는 시스템 관리자)만.
+    """신뢰성 시험 하나를 **후보로** 올린다. **그 부서의 관리자**(또는 시스템 관리자)만.
+
+    **네가 올린 것은 바로 쓰이지 않는다.** 신뢰성 시험은 값 하나가 틀리면 그 조건으로 장비를
+    고르고 그 장비로 보고서가 나간다 — 그래서 사람이 화면에서 읽고 확인해야 확정이다. 그때까지
+    전사 목록에도 안 나온다. 사용자에게 「등록했습니다」 가 아니라 **「후보로 올렸습니다,
+    확인이 필요합니다」** 라고 말하라.
+
+    그러니 **모르는 칸은 비워 두고 무엇을 못 채웠는지 말하라.** 그럴듯하게 채워 넣으면
+    검토하는 사람이 그것을 못 가려낸다 — 빈 칸은 눈에 띄지만 그럴듯한 오답은 안 띈다.
 
     먼저 `resolve(kind="reliability_test", text=…, workspace=…)` 로 **같은 시험이 이미
     있는지** 본다. 부서마다 같은 이름이 있는 표라, 안 보고 만들면 한 부서에 「고온고습
@@ -2217,17 +2252,22 @@ async def create_reliability_test(
     `test_capability` 가 그 온도를 내는 장비만 답한다. 그래서 조건은 문장이 아니라 수치로
     적는 것이 중요하다.
     """
-    return await _send(
-        ctx,
-        "POST",
-        "/reliability-tests",
-        {
-            "workspace_slug": workspace_slug,
-            "name": name,
-            "purpose": purpose,
-            "test_item_term_ids": test_item_term_ids or [],
-            "attributes": attributes or [],
-        },
+    return _then(
+        await _send(
+            ctx,
+            "POST",
+            "/reliability-tests",
+            {
+                "workspace_slug": workspace_slug,
+                "name": name,
+                "purpose": purpose,
+                "test_item_term_ids": test_item_term_ids or [],
+                "attributes": attributes or [],
+            },
+        ),
+        "후보로 올라갔다. 사람이 부서 화면에서 확인해야 확정이고, 그때까지 전사 목록에 안"
+        " 나온다. 「등록 완료」 가 아니라 「후보로 올렸으니 확인해 달라」 고 말하고, 못 채운"
+        " 칸이 있으면 무엇인지 함께 말하라. 확인은 네가 못 한다 — 사람이 화면에서 한다.",
     )
 
 
@@ -2241,6 +2281,10 @@ async def update_reliability_test(
     attributes: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """신뢰성 시험을 고친다. **안 보낸 칸은 그대로.**
+
+    **확정된 시험은 못 고친다**(409 `TSC-RELIABILITY-0005`). 사람이 내용을 읽고 확인한
+    것이라, 내용이 바뀌려면 그 확인이 먼저 풀려야 한다 — 사용자에게 화면에서 「다시 후보로」
+    를 눌러 달라고 말하라. **네가 푸는 길은 없다.** 고칠 수 있는 것은 아직 후보인 시험이다.
 
     `test_id` 는 `resolve(kind="reliability_test", …)` 로 정한다 — 목록에서 이름만 보고
     고르면 같은 이름의 **다른 부서 시험**을 고치게 된다.

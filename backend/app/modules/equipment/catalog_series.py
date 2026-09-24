@@ -46,7 +46,7 @@ from app.modules.equipment.schemas import (
     SeriesRelationOut,
     SeriesTestItemOut,
 )
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.methods.services import promote_pending
 from app.modules.resolve.services import resolve, resolve_term_id
 from app.modules.test_items.models import (
@@ -387,7 +387,7 @@ def delete_series(db: Session, series_id: uuid.UUID) -> None:
         raise Conflict(
             "TSC-CATALOG-0011",
             f"이 계열에 기종이 {using}개 있습니다. 먼저 기종을 정리하거나, "
-            f"지우는 대신 상태를 단종으로 바꾸세요.",
+            f"지우는 대신 상태를 단종으로 바꾸십시오.",
         )
     row.deleted_at = datetime.now(UTC)
     db.commit()
@@ -466,7 +466,7 @@ def add_test_item(
     if payload.get("test_item_term_id") is None:
         raise AppError(
             "TSC-CATALOG-0017",
-            "시험 항목이 필요합니다. test_item_term_id 나 test_item(이름)을 주세요.",
+            "시험 항목이 필요합니다. test_item_term_id 나 test_item(이름)을 주십시오.",
             status=400,
         )
     clash = db.scalar(
@@ -481,7 +481,7 @@ def add_test_item(
     if clash is not None:
         raise Conflict(
             "TSC-CATALOG-0004",
-            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치세요.",
+            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치십시오.",
             details={"equipment_test_item_id": str(clash.id)},
         )
 
@@ -497,9 +497,10 @@ def add_test_item(
     for method in db.scalars(
         select(TestMethod)
         .join(SeriesPendingMethod, SeriesPendingMethod.method_id == TestMethod.id)
+        .join(TestMethodItem, TestMethodItem.method_id == TestMethod.id)
         .where(
             SeriesPendingMethod.series_id == series.id,
-            TestMethod.test_item_term_id == row.test_item_term_id,
+            TestMethodItem.test_item_term_id == row.test_item_term_id,
         )
     ):
         promote_pending(db, method)

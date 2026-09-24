@@ -14,8 +14,13 @@ from app.modules.attributes import filters as attribute_filters
 from app.modules.attributes import services as attributes
 from app.modules.attributes.schemas import AttributeValueIn
 from app.modules.equipment.models import EquipmentSeries
-from app.modules.methods.models import MethodRequirement, TestMethod
-from app.modules.methods.schemas import CitedSeriesOut, MethodOut, RequirementOut
+from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
+from app.modules.methods.schemas import (
+    CitedSeriesOut,
+    MethodOut,
+    MethodTestItemOut,
+    RequirementOut,
+)
 from app.modules.review.models import ReviewProposal
 from app.modules.test_items.models import (
     EquipmentTestItem,
@@ -87,7 +92,10 @@ def promote_pending(db: Session, method: TestMethod) -> int:
     갖고 있으면 `series_test_item_methods` 에 잇고 미정 줄을 지운다. 계열에 그 시험 항목이
     없으면 미정으로 남는다 — 사람이 계열에 그 시험을 더하거나 규격의 항목을 다시 볼 자리다.
     """
-    if method.test_item_term_id is None:
+    # **규격이 덮는 항목 전부**를 본다. 하나만 보면 IEC 60529 를 인용한 계열이
+    # 방진으로는 이어지고 방수로는 안 이어진다.
+    wanted = item_ids(db, method.id)
+    if not wanted:
         return 0
     moved = 0
     for pending in list(
@@ -98,7 +106,7 @@ def promote_pending(db: Session, method: TestMethod) -> int:
         target = db.scalar(
             select(SeriesTestItem).where(
                 SeriesTestItem.series_id == pending.series_id,
-                SeriesTestItem.test_item_term_id == method.test_item_term_id,
+                SeriesTestItem.test_item_term_id.in_(wanted),
             )
         )
         if target is None:
@@ -195,7 +203,7 @@ def method_out(
     counts: dict[uuid.UUID, tuple[int, int]] | None = None,
     with_series: bool = False,
 ) -> MethodOut:
-    item = db.get(VocabularyTerm, row.test_item_term_id) if row.test_item_term_id else None
+    items = items_of(db, [row.id])[row.id]
     linked, pending = (counts or series_counts(db, [row.id]))[row.id]
     body = db.get(VocabularyTerm, row.body_term_id) if row.body_term_id else None
     workspace = db.get(Workspace, row.owner_workspace_id) if row.owner_workspace_id else None
@@ -213,8 +221,7 @@ def method_out(
         code=row.code,
         edition=row.edition,
         title=row.title,
-        test_item=item.value if item else None,
-        test_item_term_id=row.test_item_term_id,
+        test_items=[MethodTestItemOut(term_id=one.id, value=one.value) for one in items],
         body=body.value if body else None,
         status=row.status,
         superseded_by_code=successor.code if successor else None,
@@ -251,11 +258,18 @@ def list_methods(
         text = f"%{clean(query)}%"
         stmt = stmt.where(TestMethod.code.ilike(text) | TestMethod.title.ilike(text))
     if test_item_term_id:
-        stmt = stmt.where(TestMethod.test_item_term_id == test_item_term_id)
+        # 규격 하나가 항목 여럿을 덮으므로 **있는가**를 묻는다(N:M).
+        stmt = stmt.where(
+            TestMethod.id.in_(
+                select(TestMethodItem.method_id).where(
+                    TestMethodItem.test_item_term_id == test_item_term_id
+                )
+            )
+        )
     if test_item == "none":
         # **어느 시험의 규격인지 안 정해진 것.** 인용한 계열이 있어도 못 이어진다 — 홈의
         # 「남은 일」 이 이 조건으로 온다. 세는 조건과 거르는 조건이 같아야 한다.
-        stmt = stmt.where(TestMethod.test_item_term_id.is_(None))
+        stmt = stmt.where(TestMethod.id.not_in(select(TestMethodItem.method_id).distinct()))
     if cited == "none":
         # 어느 계열의 시험 항목에도 안 이어진 규격. 「못 하는 시험」 과 「끊긴 연결」 을
         # 여기서 가른다 — 항목 미정 인용(pending)이 있으면 끊긴 것이다.
@@ -326,19 +340,60 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> TestMethod:
         code=code,
         edition=edition,
         title=clean(payload["title"]),
-        test_item_term_id=payload.get("test_item_term_id"),
         body_term_id=payload.get("body_term_id"),
         summary=payload.get("summary"),
         owner_workspace_id=owner,
         created_by_id=user.id,
     )
     db.add(row)
+    db.flush()
+    set_test_items(db, row.id, list(payload.get("test_item_term_ids") or []))
     db.commit()
     db.refresh(row)
     return row
 
 
-_PLAIN_FIELDS = ("title", "edition", "test_item_term_id", "body_term_id", "summary")
+_PLAIN_FIELDS = ("title", "edition", "body_term_id", "summary")
+
+
+def item_ids(db: Session, method_id: uuid.UUID) -> list[uuid.UUID]:
+    """이 규격이 덮는 시험 항목 id 들."""
+    return list(
+        db.scalars(
+            select(TestMethodItem.test_item_term_id).where(
+                TestMethodItem.method_id == method_id
+            )
+        )
+    )
+
+
+def items_of(
+    db: Session, method_ids: list[uuid.UUID]
+) -> dict[uuid.UUID, list[VocabularyTerm]]:
+    """여러 규격의 시험 항목을 **한 번에** — 줄마다 물으면 목록이 줄 수만큼 왕복한다."""
+    out: dict[uuid.UUID, list[VocabularyTerm]] = {one: [] for one in method_ids}
+    if not method_ids:
+        return out
+    for method_id, term in db.execute(
+        select(TestMethodItem.method_id, VocabularyTerm)
+        .join(VocabularyTerm, VocabularyTerm.id == TestMethodItem.test_item_term_id)
+        .where(TestMethodItem.method_id.in_(method_ids))
+        .order_by(VocabularyTerm.value)
+    ).all():
+        out[method_id].append(term)
+    return out
+
+
+def set_test_items(db: Session, method_id: uuid.UUID, term_ids: list[uuid.UUID]) -> None:
+    """**통째로** 바꾼다. 같은 값이 두 번 와도 한 줄만 남는다."""
+    for link in db.scalars(
+        select(TestMethodItem).where(TestMethodItem.method_id == method_id)
+    ):
+        db.delete(link)
+    db.flush()
+    for term_id in dict.fromkeys(term_ids):
+        db.add(TestMethodItem(method_id=method_id, test_item_term_id=term_id))
+    db.flush()
 
 
 def _refuse_machine_decision(db: Session, row: TestMethod) -> None:
@@ -374,8 +429,9 @@ def update(
     for field in _PLAIN_FIELDS:
         if field in changes:
             setattr(row, field, changes[field])
-    if changes.get("test_item_term_id"):
+    if changes.get("test_item_term_ids") is not None:
         _refuse_machine_decision(db, row)
+        set_test_items(db, row.id, list(changes["test_item_term_ids"]))
         # 시험 항목이 정해지는 순간 항목 미정 인용이 그 계열의 시험 항목에 붙는다 —
         # 사람이 계열마다 다시 이을 필요가 없다.
         promote_pending(db, row)
@@ -441,7 +497,7 @@ def delete(db: Session, user: User, method_id: uuid.UUID) -> None:
         raise Conflict(
             "TSC-METHODS-0004",
             f"이 시험법을 거는 시험 항목이 {using}건 있습니다. "
-            f"지우는 대신 상태를 대체됨으로 바꾸세요.",
+            f"지우는 대신 상태를 대체됨으로 바꾸십시오.",
         )
     row.deleted_at = datetime.now(UTC)
     db.commit()
@@ -524,8 +580,9 @@ def merge_into(
         select(TestMethod).where(TestMethod.superseded_by_id == source.id)
     ):
         other.superseded_by_id = target.id
-    if target.test_item_term_id is None and source.test_item_term_id is not None:
-        target.test_item_term_id = source.test_item_term_id
+    # **합집합이다.** 한쪽만 남기면 합치면서 연결이 준다 — 합치기는 정보를 잃지 않는
+    # 일이어야 한다.
+    set_test_items(db, target.id, item_ids(db, target.id) + item_ids(db, source.id))
     db.flush()
     promote_pending(db, target)
     audit.record(

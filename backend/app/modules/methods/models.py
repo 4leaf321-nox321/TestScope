@@ -60,13 +60,6 @@ class TestMethod(Base):
     """판. 2024 · 22. **비워 둘 수 있다** — 사내 시험법에는 판이 없다."""
     title: Mapped[str] = mapped_column(String(300))
 
-    test_item_term_id: Mapped[uuid.UUID | None] = mapped_column(
-        PgUUID(as_uuid=True),
-        ForeignKey("vocabulary_terms.id", ondelete="SET NULL"),
-        nullable=True,
-        index=True,
-    )
-    """어느 시험 항목의 규격인가(기준정보 축 test_item)."""
     body_term_id: Mapped[uuid.UUID | None] = mapped_column(
         PgUUID(as_uuid=True),
         ForeignKey("vocabulary_terms.id", ondelete="SET NULL"),
@@ -153,3 +146,43 @@ class MethodRequirement(Base):
 
     is_mandatory: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+class TestMethodItem(Base):
+    """이 규격이 **어느 시험 항목의 것인가** — 규격 하나가 여럿을 덮는다.
+
+    ## 왜 표로 뺐나
+
+    칸 하나(`test_methods.test_item_term_id`)로 두었을 때, **규격 하나가 시험 항목 둘을
+    덮는 경우를 표현할 수 없었다.** IEC 60529 가 그렇다: IP 코드의 1자리(방진)와
+    2자리(방수)를 한 문서가 정의하는데, 칸이 하나뿐이라 「분진 침투」 에 붙이면
+    「방수(IPX)」 는 **규격이 없는 항목**이 된다 — 그리고 그 항목으로 장비를 찾는 사람은
+    「그런 규격이 없다」 는 답을 받는다(실측 2026-09-24).
+
+    흔한 모양이다. MIL-STD-810 은 방법 번호마다 다른 시험이고, IEC 60068-2 계열도
+    한 문서가 여러 조건을 담는다. 규격은 **문서**이지 시험 항목이 아니다.
+
+    ## 왜 계열 쪽 표와 다른가
+
+    `series_test_item_methods` 는 **「이 계열이 이 시험 항목을 할 때 이 규격을 인용한다」**
+    는 세 겹 관계다(ADR 0002). 이 표는 그 아래층의 사실, **「이 규격은 이 시험의 것이다」**
+    를 말한다 — 계열과 무관하게 참이다.
+    """
+
+    __tablename__ = "test_method_items"
+    __table_args__ = (
+        UniqueConstraint("method_id", "test_item_term_id", name="uq_test_method_items_pair"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    method_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True), ForeignKey("test_methods.id", ondelete="CASCADE"), index=True
+    )
+    test_item_term_id: Mapped[uuid.UUID] = mapped_column(
+        PgUUID(as_uuid=True),
+        # RESTRICT — 시험 항목을 지우면 이 규격이 무엇의 것인지 알 수 없게 된다.
+        ForeignKey("vocabulary_terms.id", ondelete="RESTRICT"),
+        index=True,
+    )

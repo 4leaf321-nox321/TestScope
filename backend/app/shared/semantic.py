@@ -267,9 +267,12 @@ def _test_item_cards(db: Session) -> list[Chunk]:
     methods = _grouped(
         db,
         """
-        SELECT test_item_term_id, code || CASE WHEN title <> code THEN ' ' || title ELSE '' END
-        FROM test_methods WHERE deleted_at IS NULL AND test_item_term_id IS NOT NULL
-        ORDER BY code
+        SELECT i.test_item_term_id,
+               m.code || CASE WHEN m.title <> m.code THEN ' ' || m.title ELSE '' END
+        FROM test_method_items i
+        JOIN test_methods m ON m.id = i.method_id
+        WHERE m.deleted_at IS NULL
+        ORDER BY m.code
         """,
     )
     made: list[Chunk] = []
@@ -279,7 +282,7 @@ def _test_item_cards(db: Session) -> list[Chunk]:
             [
                 _listed("별칭", aliases.get(term_id, [])),
                 f"코드: {code}" if code else "",
-                _listed("얻는 물성", properties.get(term_id, [])),
+                _listed("측정 물성", properties.get(term_id, [])),
                 _listed("검색 조건", axes.get(term_id, [])),
                 _listed("규격", methods.get(term_id, [])),
             ],
@@ -304,7 +307,7 @@ def _property_cards(db: Session) -> list[Chunk]:
             [
                 _listed("별칭", aliases.get(term_id, [])),
                 f"코드: {code}" if code else "",
-                _listed("얻는 시험", tests.get(term_id, [])),
+                _listed("측정 시험 항목", tests.get(term_id, [])),
             ],
         )
         made.append(Chunk("property", term_id, 0, value, body))
@@ -352,7 +355,7 @@ def _series_cards(db: Session) -> list[Chunk]:
             [
                 f"한글 이름: {name_ko}" if name_ko else "",
                 f"분류: {category}" if category else "",
-                _listed("되는 시험", tests.get(sid, [])),
+                _listed("수행 가능 시험 항목", tests.get(sid, [])),
                 _listed("인용 규격", standards.get(sid, [])),
                 _listed("기종", models.get(sid, [])),
                 *attributes.get(sid, []),
@@ -397,22 +400,30 @@ def _model_cards(db: Session) -> list[Chunk]:
 def _method_cards(db: Session) -> list[Chunk]:
     rows = db.execute(
         text("""
-        SELECT m.id, m.code, m.edition, m.title, m.summary, t.value
+        SELECT m.id, m.code, m.edition, m.title, m.summary
         FROM test_methods m
-        LEFT JOIN vocabulary_terms t ON t.id = m.test_item_term_id
         WHERE m.deleted_at IS NULL
         ORDER BY m.code
         """)
     ).all()
+    # 규격 하나가 시험 항목 여럿을 덮는다(N:M) — 카드에 **전부** 적는다.
+    items = _grouped(
+        db,
+        """
+        SELECT i.method_id, t.value FROM test_method_items i
+        JOIN vocabulary_terms t ON t.id = i.test_item_term_id
+        ORDER BY t.value
+        """,
+    )
     attributes = _standard_attributes(db, "method_id")
     made: list[Chunk] = []
-    for method_id, code, edition, title, summary, test_item in rows:
+    for method_id, code, edition, title, summary in rows:
         label = f"{code} {title}" if title and title != code else code
         body = _card(
             f"시험법·규격: {label}",
             [
                 f"판: {edition}" if edition else "",
-                f"시험 항목: {test_item}" if test_item else "",
+                _listed("시험 항목", items.get(str(method_id), [])),
                 *attributes.get(str(method_id), []),
                 f"요약: {summary}" if summary else "",
             ],
@@ -472,7 +483,7 @@ def _equipment_cards(db: Session) -> list[Chunk]:
                 f"분류: {category}" if category else "",
                 f"부서: {workspace}",
                 f"위치: {site} {location}".strip() if site or location else "",
-                _listed("되는 시험", tests.get(eid, [])),
+                _listed("수행 가능 시험 항목", tests.get(eid, [])),
                 *attributes.get(eid, []),
                 f"비고: {note}" if note else "",
             ],
@@ -539,7 +550,7 @@ def _reliability_cards(db: Session) -> list[Chunk]:
             f"신뢰성 시험: {name}",
             [
                 f"부서: {workspace}",
-                _listed("쓰는 시험 항목", tests.get(str(test_id), [])),
+                _listed("적용 시험 항목", tests.get(str(test_id), [])),
                 f"목적: {purpose}" if purpose else "",
                 *attributes.get(str(test_id), []),
             ],

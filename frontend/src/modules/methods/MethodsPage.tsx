@@ -90,7 +90,7 @@ export default function MethodsPage() {
             <div className="flex flex-wrap gap-2">
               <Button variant="outline" onClick={() => setImporting(true)}>
                 <Upload className="size-4" />
-                요구 조건 표로 넣기
+                요구 조건 일괄 등록
               </Button>
               <Button onClick={() => setCreating(true)}>
                 <Plus className="size-4" />
@@ -131,14 +131,14 @@ export default function MethodsPage() {
             variant={used === 'owned' ? 'default' : 'outline'}
             onClick={() => toggle('used', 'owned')}
           >
-            보유 장비가 쓰는 것
+            보유 장비 적용 규격
           </Button>
           <Button
             size="sm"
             variant={requirement === 'none' ? 'default' : 'outline'}
             onClick={() => toggle('requirement', 'none')}
           >
-            요구 조건 없는 것
+            요구 조건 미지정
           </Button>
           <Button
             size="sm"
@@ -175,9 +175,9 @@ export default function MethodsPage() {
             )}
             {testItem === 'none' && (
               <>
-                <strong>어느 시험의 규격인지 안 정해진 것만</strong> 보고 있습니다. 카탈로그가
-                인용했는데 시험이 여럿인 계열이라 반입이 못 정한 것입니다 — 상세에서 시험
-                항목을 정하면 인용한 계열에 바로 붙습니다.
+                <strong>시험 항목 미지정 규격만</strong> 보고 있습니다. 카탈로그가 인용했는데
+                시험이 여럿인 계열이라 반입이 못 정한 것입니다 — 상세에서 시험 항목을 정하면
+                인용한 계열에 바로 붙습니다.
               </>
             )}
             {cited === 'none' && (
@@ -211,7 +211,7 @@ export default function MethodsPage() {
               <TableHead>시험 항목</TableHead>
               <TableHead className="text-right">요구 조건</TableHead>
               <TableHead className="text-right">인용 계열</TableHead>
-              <TableHead className="text-right">가능 장비</TableHead>
+              <TableHead className="text-right">수행 가능 장비</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -228,7 +228,9 @@ export default function MethodsPage() {
                 <TableCell>{one.edition ?? '—'}</TableCell>
                 <TableCell className="max-w-md truncate">{one.title}</TableCell>
                 <TableCell>
-                  {one.test_item ?? (
+                  {one.test_items.length > 0 ? (
+                    one.test_items.map((item) => item.value).join(' · ')
+                  ) : (
                     <Link
                       to={`/methods/${one.id}`}
                       className="text-amber-600 underline decoration-dotted underline-offset-2"

@@ -67,7 +67,14 @@ export default function MethodDetailPage() {
     if (!pickingItem) return
     setError(null)
     try {
-      await methodApi.update(id, { test_item_term_id: pickingItem })
+      // **더한다.** 통째로 바뀌는 칸이라, 이미 정해진 것을 안 실으면 조용히 끊긴다 —
+      // 규격 하나가 시험 항목 여럿을 덮으므로 실제로 일어나는 일이다.
+      await methodApi.update(id, {
+        test_item_term_ids: [
+          ...(one?.test_items ?? []).map((item) => item.term_id),
+          pickingItem,
+        ],
+      })
       setPickingItem('')
       method.reload()
     } catch (caught) {
@@ -105,8 +112,13 @@ export default function MethodDetailPage() {
       <dl className="grid grid-cols-2 gap-4 rounded-md border p-4 sm:grid-cols-4">
         <div>
           <dt className="text-muted-foreground text-xs">시험 항목</dt>
+          {/* **여럿일 수 있다** — IEC 60529 는 방진과 방수를 한 문서가 정의한다. */}
           <dd className="text-sm">
-            {one.test_item ?? <span className="text-amber-600">안 정해짐</span>}
+            {one.test_items.length === 0 ? (
+              <span className="text-amber-600">안 정해짐</span>
+            ) : (
+              one.test_items.map((item) => item.value).join(' · ')
+            )}
           </dd>
         </div>
         <div>
@@ -124,7 +136,7 @@ export default function MethodDetailPage() {
           </dd>
         </div>
         <div>
-          <dt className="text-muted-foreground text-xs">가능 장비</dt>
+          <dt className="text-muted-foreground text-xs">수행 가능 장비</dt>
           <dd className="text-sm">
             {one.equipment_count === 0 ? (
               <span className="text-amber-600">없음 — 현재 수행 불가한 시험입니다</span>
@@ -137,10 +149,10 @@ export default function MethodDetailPage() {
 
       {one.summary && <p className="text-sm">{one.summary}</p>}
 
-      {one.test_item === null && one.can_edit && (
+      {one.test_items.length === 0 && one.can_edit && (
         <div className="space-y-2 rounded-md border border-amber-300 bg-amber-50 p-4 dark:bg-amber-950/30">
           <p className="text-sm">
-            <strong>이 규격이 어느 시험의 것인지 정해 주세요.</strong>
+            <strong>이 규격이 어느 시험의 것인지 정해 주십시오.</strong>
             {one.pending_series_count > 0
               ? ` 인용한 계열 ${one.pending_series_count}개가 정하는 순간 이 규격에 붙습니다.`
               : ' 정해 두면 계열의 시험 항목에 이 규격을 걸 수 있습니다.'}
@@ -159,7 +171,7 @@ export default function MethodDetailPage() {
               </SelectContent>
             </Select>
             <Button onClick={decideTestItem} disabled={!pickingItem}>
-              이 시험의 규격으로 정하기
+              적용 규격으로 지정
             </Button>
           </div>
         </div>

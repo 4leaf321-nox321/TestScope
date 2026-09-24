@@ -29,7 +29,8 @@ def _method(client: TestClient, admin: Signed, item_id: str) -> dict[str, Any]:
         json={
             "code": f"ASTM D{uuid.uuid4().hex[:4]}",
             "title": "Standard Test Method",
-            "test_item_term_id": item_id,
+            # 모르면 **빈 목록**이다 — `[None]` 은 「모름」 이 아니라 잘못된 값이다.
+            "test_item_term_ids": [item_id] if item_id else [],
         },
         headers=admin.headers,
     )

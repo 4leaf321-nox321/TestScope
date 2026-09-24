@@ -6925,7 +6925,7 @@
           "reliability"
         ],
         "summary": "List Reliability Tests",
-        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다\n쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.",
+        "description": "신뢰성 시험 — **부서가 등록한 절차**다. 「시험 항목」(장비가 할 수 있는 측정, 전사\n공용)과 다르다. `workspace` 를 주면 그 부서 것만, 안 주면 전사 전부(부서 순). 시험마다\n쓰는 시험 항목과, 그 항목이 되는 그 부서의 장비 수를 함께 준다 — 0 이면 시험은 정했는데\n돌릴 장비가 없다는 뜻이다.\n\n`attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,\n연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의\n`key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.\n\n`status` 를 **안 주면 자리에 따라 다르다** — 부서를 주면 후보까지(검토하는 자리라서),\n전사면 확정된 것만(「저 부서가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러\n보려면 `status=\"all\"`, 후보만 세려면 `status=\"candidate\"`.",
         "operationId": "list_reliability_tests_api_reliability_tests_get",
         "parameters": [
           {
@@ -6956,6 +6956,27 @@
               },
               "maxItems": 10,
               "title": "Attr"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "candidate",
+                    "confirmed",
+                    "all"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
             }
           }
         ],
@@ -7184,6 +7205,94 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CapabilityOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/confirm": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Confirm Reliability Test",
+        "description": "**후보를 확인했다** — 사람이 내용을 읽고 맞다고 한 것. 그 부서의 관리자 또는 시스템\n관리자만, 그리고 **사람 세션만**(기계 자격은 403). AI 가 스스로 확인할 수 있으면 후보라는\n상태에 아무 뜻이 없다.\n\n누가 언제 확인했는지가 줄과 감사에 남는다.",
+        "operationId": "confirm_reliability_test_api_reliability_tests__test_id__confirm_post",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityTestOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reliability-tests/{test_id}/reopen": {
+      "post": {
+        "tags": [
+          "reliability"
+        ],
+        "summary": "Reopen Reliability Test",
+        "description": "확정을 풀어 **다시 후보로.** 그 순간부터 AI 가 다시 채울 수 있으므로, 누가 그 문을\n열었는지가 감사에 남는다. 확인한 사람·시각은 안 지운다.",
+        "operationId": "reopen_reliability_test_api_reliability_tests__test_id__reopen_post",
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Test Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliabilityTestOut"
                 }
               }
             }
@@ -15101,17 +15210,13 @@
             "minLength": 1,
             "title": "Title"
           },
-          "test_item_term_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Test Item Term Id"
+          "test_item_term_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Test Item Term Ids"
           },
           "body_term_id": {
             "anyOf": [
@@ -15181,28 +15286,12 @@
             "type": "string",
             "title": "Title"
           },
-          "test_item": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Test Item"
-          },
-          "test_item_term_id": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Test Item Term Id"
+          "test_items": {
+            "items": {
+              "$ref": "#/components/schemas/MethodTestItemOut"
+            },
+            "type": "array",
+            "title": "Test Items"
           },
           "body": {
             "anyOf": [
@@ -15303,8 +15392,7 @@
           "code",
           "edition",
           "title",
-          "test_item",
-          "test_item_term_id",
+          "test_items",
           "body",
           "status",
           "superseded_by_code",
@@ -15318,6 +15406,26 @@
           "can_edit"
         ],
         "title": "MethodOut"
+      },
+      "MethodTestItemOut": {
+        "properties": {
+          "term_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Term Id"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value"
+          }
+        },
+        "type": "object",
+        "required": [
+          "term_id",
+          "value"
+        ],
+        "title": "MethodTestItemOut",
+        "description": "이 규격이 덮는 시험 항목 하나."
       },
       "MethodUpdateRequest": {
         "properties": {
@@ -15345,17 +15453,20 @@
             ],
             "title": "Edition"
           },
-          "test_item_term_id": {
+          "test_item_term_ids": {
             "anyOf": [
               {
-                "type": "string",
-                "format": "uuid"
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "type": "array"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Test Item Term Id"
+            "title": "Test Item Term Ids"
           },
           "body_term_id": {
             "anyOf": [
@@ -17601,6 +17712,45 @@
           "purpose": {
             "type": "string",
             "title": "Purpose"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "confirmed"
+          },
+          "submitted_via": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted Via"
+          },
+          "confirmed_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmed By"
+          },
+          "confirmed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmed At"
           },
           "test_items": {
             "items": {

@@ -189,7 +189,7 @@ def test_쓰임의_내역을_보고_한_줄씩_떼거나_옮긴다(
     _series_item(client, admin, series_b, item)
     method = client.post(
         "/api/methods",
-        json={"code": f"ISO 178-{tag}", "title": "굽힘", "test_item_term_id": item},
+        json={"code": f"ISO 178-{tag}", "title": "굽힘", "test_item_term_ids": [item]},
         headers=admin.headers,
     ).json()
 
@@ -202,7 +202,8 @@ def test_쓰임의_내역을_보고_한_줄씩_떼거나_옮긴다(
     }
     assert by_key["series_test_item"]["detach"] == "delete"
     assert by_key["method_test_item"]["rows"][0]["href"] == f"/methods/{method['id']}"
-    assert by_key["method_test_item"]["detach"] == "null"
+    # N:M 이 되면서 **줄을 지운다** — 칸이 아니라 관계라 비울 것이 없다.
+    assert by_key["method_test_item"]["detach"] == "delete"
     # 내역의 합이 쓰임 수다 — 세는 표와 보여 주는 표가 같다.
     total = sum(len(one["rows"]) for one in groups.json())
     assert _term(client, admin, item, "test_item")["usage_count"] == total == 3
@@ -217,15 +218,15 @@ def test_쓰임의_내역을_보고_한_줄씩_떼거나_옮긴다(
     a = client.get(f"/api/equipment-series/{series_a}", headers=admin.headers).json()
     assert a["test_items"] == []
 
-    # 시험법의 시험 항목을 뗀다 → 칸이 비워진다(규격은 남는다).
+    # 시험법의 시험 항목을 뗀다 → **그 줄만 지워지고 규격은 남는다**(N:M).
     m_row = by_key["method_test_item"]["rows"][0]
     client.delete(
         f"/api/vocabularies/terms/{item}/references/method_test_item/{m_row['id']}",
         headers=admin.headers,
     )
     assert (
-        client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()["test_item"]
-        is None
+        client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()["test_items"]
+        == []
     )
 
     # 계열 B 의 줄을 다른 값으로 옮긴다.

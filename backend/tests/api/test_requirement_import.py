@@ -24,7 +24,7 @@ from tests.api.conftest import Signed
 def _method(client: TestClient, admin: Signed, code: str) -> dict[str, Any]:
     made = client.post(
         "/api/methods",
-        json={"code": code, "title": "Standard", "test_item_term_id": None},
+        json={"code": code, "title": "Standard", "test_item_term_ids": []},
         headers=admin.headers,
     )
     assert made.status_code == 201, made.text

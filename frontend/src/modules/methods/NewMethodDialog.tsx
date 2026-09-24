@@ -63,7 +63,8 @@ export function NewMethodDialog({
         code,
         edition: edition || null,
         title,
-        test_item_term_id: testItem || null,
+        // **목록이다** — 규격 하나가 시험 항목 여럿을 덮는다. 모르면 빈 목록.
+        test_item_term_ids: testItem ? [testItem] : [],
         body_term_id: bodyTerm || null,
         summary: summary || null,
         // 비우면 전사 공용 — 공개 규격은 대개 이쪽이고, 시스템 관리자만 만들 수 있다.

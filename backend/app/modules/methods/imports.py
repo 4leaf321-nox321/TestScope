@@ -116,7 +116,7 @@ def _header_map(fields: Sequence[str] | None) -> dict[str, str]:
         raise AppError(
             "TSC-IMPORT-0003",
             f"머리글에 다음 열이 없습니다: {' · '.join(missing)}. "
-            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보세요.",
+            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보십시오.",
             status=400,
             details={"missing": missing},
         )
@@ -172,7 +172,7 @@ def _flag(raw: str, picked: _Picked) -> bool:
         return True
     if text in NO:
         return False
-    picked.problems.append(f"필수: 예/아니오로 적으세요 ({clean(raw)})")
+    picked.problems.append(f"필수: 예/아니오로 적으십시오 ({clean(raw)})")
     return True
 
 
@@ -206,7 +206,7 @@ class _Lookup:
                 return current[0]
             picked.problems.append(
                 "규격: 판이 여럿입니다 "
-                f"({' · '.join(one.edition or '?' for one in rows)}) — 판 열에 적으세요"
+                f"({' · '.join(one.edition or '?' for one in rows)}) — 판 열에 적으십시오"
             )
             return None
         return rows[0]
@@ -216,7 +216,7 @@ class _Lookup:
         if found is None:
             picked.problems.append(
                 f"조건: 조건 정의에 없습니다 ({name}) — "
-                "기준정보의 조건 이름(하중 용량·시험 온도 …)으로 적으세요"
+                "기준정보의 조건 이름(하중 용량·시험 온도 …)으로 적으십시오"
             )
         return found
 
@@ -225,14 +225,14 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
     if len(text) > MAX_CHARS:
         raise AppError(
             "TSC-IMPORT-0004",
-            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리세요.",
+            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리십시오.",
             status=400,
         )
     body = text.replace("\r\n", "\n").replace("\r", "\n").strip("\n").lstrip("﻿")
     if not body.strip():
         raise AppError(
             "TSC-IMPORT-0006",
-            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하세요.",
+            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하십시오.",
             status=400,
         )
     reader = csv.DictReader(io.StringIO(body), delimiter=_delimiter(body.split("\n", 1)[0]))
@@ -243,7 +243,7 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
         if len(picked_rows) >= MAX_ROWS:
             raise AppError(
                 "TSC-IMPORT-0005",
-                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으세요.",
+                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으십시오.",
                 status=400,
             )
         cells = {field: (values.get(column) or "") for field, column in header.items()}
@@ -293,7 +293,9 @@ def run(db: Session, user: User, text: str, *, dry_run: bool) -> RequirementImpo
                     and picked.max_value is None
                     and not picked.problems
                 ):
-                    picked.problems.append("최소·최대: 둘 다 비어 있습니다 — 하나는 적으세요")
+                    picked.problems.append(
+                        "최소·최대: 둘 다 비어 있습니다 — 하나는 적으십시오"
+                    )
                 if (
                     picked.min_value is not None
                     and picked.max_value is not None

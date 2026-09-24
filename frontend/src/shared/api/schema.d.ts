@@ -2191,6 +2191,10 @@ export interface paths {
          *     `attr` 은 **속성 값으로 거른다** — 여러 번 주면 모두 만족해야 한다(`attr=<키><연산><값>`,
          *     연산은 `>=` `<=` `>` `<` `=` `!=` `~`(포함) `*`(적혀 있기만 하면)). 왼쪽은 속성 정의의
          *     `key` 다 — 이름은 관리자가 고치면 바뀌고, 그때 저장해 둔 주소가 조용히 빈 답을 낸다.
+         *
+         *     `status` 를 **안 주면 자리에 따라 다르다** — 부서를 주면 후보까지(검토하는 자리라서),
+         *     전사면 확정된 것만(「저 부서가 무슨 시험을 하나」 에 후보는 아직 답이 아니다). 일부러
+         *     보려면 `status="all"`, 후보만 세려면 `status="candidate"`.
          */
         get: operations["list_reliability_tests_api_reliability_tests_get"];
         put?: never;
@@ -2252,6 +2256,51 @@ export interface paths {
         get: operations["read_capability_api_reliability_tests__test_id__equipment_get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}/confirm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Confirm Reliability Test
+         * @description **후보를 확인했다** — 사람이 내용을 읽고 맞다고 한 것. 그 부서의 관리자 또는 시스템
+         *     관리자만, 그리고 **사람 세션만**(기계 자격은 403). AI 가 스스로 확인할 수 있으면 후보라는
+         *     상태에 아무 뜻이 없다.
+         *
+         *     누가 언제 확인했는지가 줄과 감사에 남는다.
+         */
+        post: operations["confirm_reliability_test_api_reliability_tests__test_id__confirm_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/reliability-tests/{test_id}/reopen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reopen Reliability Test
+         * @description 확정을 풀어 **다시 후보로.** 그 순간부터 AI 가 다시 채울 수 있으므로, 누가 그 문을
+         *     열었는지가 감사에 남는다. 확인한 사람·시각은 안 지운다.
+         */
+        post: operations["reopen_reliability_test_api_reliability_tests__test_id__reopen_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -5003,8 +5052,8 @@ export interface components {
             edition?: string | null;
             /** Title */
             title: string;
-            /** Test Item Term Id */
-            test_item_term_id?: string | null;
+            /** Test Item Term Ids */
+            test_item_term_ids?: string[];
             /** Body Term Id */
             body_term_id?: string | null;
             /** Summary */
@@ -5025,10 +5074,8 @@ export interface components {
             edition: string | null;
             /** Title */
             title: string;
-            /** Test Item */
-            test_item: string | null;
-            /** Test Item Term Id */
-            test_item_term_id: string | null;
+            /** Test Items */
+            test_items: components["schemas"]["MethodTestItemOut"][];
             /** Body */
             body: string | null;
             /** Status */
@@ -5065,14 +5112,27 @@ export interface components {
             /** Can Edit */
             can_edit: boolean;
         };
+        /**
+         * MethodTestItemOut
+         * @description 이 규격이 덮는 시험 항목 하나.
+         */
+        MethodTestItemOut: {
+            /**
+             * Term Id
+             * Format: uuid
+             */
+            term_id: string;
+            /** Value */
+            value: string;
+        };
         /** MethodUpdateRequest */
         MethodUpdateRequest: {
             /** Title */
             title?: string | null;
             /** Edition */
             edition?: string | null;
-            /** Test Item Term Id */
-            test_item_term_id?: string | null;
+            /** Test Item Term Ids */
+            test_item_term_ids?: string[] | null;
             /** Body Term Id */
             body_term_id?: string | null;
             /** Summary */
@@ -5860,6 +5920,17 @@ export interface components {
             name: string;
             /** Purpose */
             purpose: string;
+            /**
+             * Status
+             * @default confirmed
+             */
+            status: string;
+            /** Submitted Via */
+            submitted_via?: string | null;
+            /** Confirmed By */
+            confirmed_by?: string | null;
+            /** Confirmed At */
+            confirmed_at?: string | null;
             /** Test Items */
             test_items: components["schemas"]["ReliabilityTestItemOut"][];
             /** Attributes */
@@ -11583,6 +11654,7 @@ export interface operations {
             query?: {
                 workspace?: string | null;
                 attr?: string[];
+                status?: ("candidate" | "confirmed" | "all") | null;
             };
             header?: never;
             path?: never;
@@ -11756,6 +11828,68 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["CapabilityOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    confirm_reliability_test_api_reliability_tests__test_id__confirm_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityTestOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reopen_reliability_test_api_reliability_tests__test_id__reopen_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                test_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReliabilityTestOut"];
                 };
             };
             /** @description Validation Error */

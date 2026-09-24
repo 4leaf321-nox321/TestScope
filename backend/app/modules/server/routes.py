@@ -26,7 +26,7 @@ from app.modules.equipment.models import (
     EquipmentSeries,
     ModelSpecValue,
 )
-from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.server import catalog_state
 from app.modules.server.schemas import (
     CalibrationDueOut,
@@ -280,8 +280,13 @@ def maintenance(
             )
         )
 
+    # **어느 시험 항목에도 안 이어진 규격.** N:M 이라 「칸이 비었나」 가 아니라
+    # 「줄이 하나도 없나」 를 묻는다(`TestMethodItem`).
     undecided = _count(
-        db, TestMethod, TestMethod.deleted_at.is_(None), TestMethod.test_item_term_id.is_(None)
+        db,
+        TestMethod,
+        TestMethod.deleted_at.is_(None),
+        TestMethod.id.not_in(select(TestMethodItem.method_id).distinct()),
     )
     if undecided:
         items.append(

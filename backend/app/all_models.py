@@ -28,7 +28,7 @@ from app.modules.equipment.models import (
     SeriesRelation,
     SpecSource,
 )
-from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.notices.models import Notice, NoticeRead
 from app.modules.notifications.models import Notification
 from app.modules.properties.models import TestItemProperty
@@ -97,6 +97,7 @@ __all__ = [
     "TestItemConditionKey",
     "TestItemProperty",
     "TestMethod",
+    "TestMethodItem",
     "User",
     "Vocabulary",
     "VocabularyAlias",

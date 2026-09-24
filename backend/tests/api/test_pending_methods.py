@@ -39,7 +39,8 @@ def _method(client: TestClient, admin: Signed, item_id: str | None) -> dict[str,
         json={
             "code": f"ISO {uuid.uuid4().hex[:5]}",
             "title": "Standard",
-            "test_item_term_id": item_id,
+            # 모르면 **빈 목록**이다 — `[None]` 은 「모름」 이 아니라 잘못된 값이다.
+            "test_item_term_ids": [item_id] if item_id else [],
         },
         headers=admin.headers,
     )
@@ -94,7 +95,7 @@ def test_시험_항목을_정하면_인용한_계열에_붙는다(client: TestCl
 
     fixed = client.patch(
         f"/api/methods/{method['id']}",
-        json={"test_item_term_id": item},
+        json={"test_item_term_ids": [item]},
         headers=admin.headers,
     )
     assert fixed.status_code == 200, fixed.text
@@ -115,7 +116,9 @@ def test_계열에_시험_항목을_나중에_더해도_붙는다(client: TestCl
     series_id = _series(client, admin)
     _pend(series_id, method["id"])
     client.patch(
-        f"/api/methods/{method['id']}", json={"test_item_term_id": item}, headers=admin.headers
+        f"/api/methods/{method['id']}",
+        json={"test_item_term_ids": [item]},
+        headers=admin.headers,
     )
     # 계열에 그 시험이 없어 아직 미정.
     series = client.get(f"/api/equipment-series/{series_id}", headers=admin.headers).json()

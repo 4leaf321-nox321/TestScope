@@ -26,7 +26,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelSpecValue
-from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.properties.models import TestItemProperty
 from app.modules.test_items.models import (
     SeriesPendingMethod,
@@ -75,6 +75,7 @@ class Sheet:
     _series_methods: dict[uuid.UUID, list[uuid.UUID]] | None = None
     _series_models: dict[uuid.UUID, list[str]] | None = None
     _methods: dict[uuid.UUID, TestMethod] | None = None
+    _method_items: dict[uuid.UUID, list[uuid.UUID]] | None = None
     _item_properties: dict[uuid.UUID, list[uuid.UUID]] | None = None
     _item_axes: dict[uuid.UUID, list[uuid.UUID]] | None = None
     _condition_keys: dict[uuid.UUID, ConditionKey] | None = None
@@ -179,6 +180,20 @@ class Sheet:
             }
         return self._methods
 
+    def method_items(self) -> dict[uuid.UUID, list[uuid.UUID]]:
+        """규격이 덮는 시험 항목들. **한 번만 받는다** — 검토함은 줄이 수백이다."""
+        if self._method_items is None:
+            out: dict[uuid.UUID, list[uuid.UUID]] = {}
+            for method_id, term_id in self.db.execute(
+                select(TestMethodItem.method_id, TestMethodItem.test_item_term_id)
+            ).all():
+                out.setdefault(method_id, []).append(term_id)
+            self._method_items = out
+        return self._method_items
+
+    def covers(self, method_id: uuid.UUID, term_id: uuid.UUID) -> bool:
+        return term_id in self.method_items().get(method_id, [])
+
     def method_label(self, method_id: uuid.UUID) -> str | None:
         method = self.methods().get(method_id)
         if method is None:
@@ -277,7 +292,7 @@ class Sheet:
             for kid, n in self.spec_dimensions(sid).items():
                 models[kid] += n
         for method in self.methods().values():
-            if method.test_item_term_id == term.id:
+            if self.covers(method.id, term.id):
                 for kid in self.requirement_axes(method.id):
                     methods[kid] += 1
         return {
@@ -380,15 +395,19 @@ class Sheet:
         if len(citing) > 3:
             out.append(fact("", f"인용 계열 {len(citing) - 3}개 더"))
         siblings = [
-            m for m in self.editions(method.code) if m.id != method.id and m.test_item_term_id
+            m
+            for m in self.editions(method.code)
+            if m.id != method.id and self.method_items().get(m.id)
         ]
         for sibling in siblings[:2]:
+            # 판마다 항목이 여럿일 수 있다 — 전부 적는다.
+            names = [self.term_value(one) for one in self.method_items().get(sibling.id, [])]
             out.append(
                 fact(
                     "다른 판",
                     f"{sibling.code}"
                     + (f":{sibling.edition}" if sibling.edition else "")
-                    + f" → {self.term_value(sibling.test_item_term_id)}",
+                    + f" → {_join([x for x in names if x])}",
                 )
             )
         requirements = self.requirement_count(method.id)
@@ -400,12 +419,13 @@ class Sheet:
         """다른 판이 정한 시험 항목 (code, 근거). 후보에 얹고 추천의 근거로 쓴다."""
         out: list[tuple[str, str]] = []
         for sibling in self.editions(method.code):
-            if sibling.id == method.id or not sibling.test_item_term_id:
+            if sibling.id == method.id:
                 continue
-            term = self.terms().get(sibling.test_item_term_id)
-            if term and term.code:
-                label = sibling.code + (f":{sibling.edition}" if sibling.edition else "")
-                out.append((term.code, f"다른 판 「{label}」 이 이 시험으로 정해져 있음"))
+            for term_id in self.method_items().get(sibling.id, []):
+                term = self.terms().get(term_id)
+                if term and term.code:
+                    label = sibling.code + (f":{sibling.edition}" if sibling.edition else "")
+                    out.append((term.code, f"다른 판 「{label}」 이 이 시험으로 정해져 있음"))
         return out
 
     def test_item_facts(
@@ -451,7 +471,7 @@ class Sheet:
         for sid in doing:
             for mid in self.series_methods(sid):
                 method = self.methods().get(mid)
-                if method and method.test_item_term_id == term.id and method.code not in cited:
+                if method and self.covers(method.id, term.id) and method.code not in cited:
                     cited.append(method.code)
         if cited:
             out.append(fact("이 시험의 규격", _join(sorted(cited))))

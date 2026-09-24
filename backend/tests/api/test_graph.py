@@ -47,7 +47,7 @@ def test_구조와_찾기와_이웃이_한_사슬로_이어진다(client: TestCl
     assert added.status_code == 201, added.text
     method = client.post(
         "/api/methods",
-        json={"code": f"ISO {tag}", "title": "인장 규격", "test_item_term_id": item},
+        json={"code": f"ISO {tag}", "title": "인장 규격", "test_item_term_ids": [item]},
         headers=admin.headers,
     ).json()
 

@@ -36,7 +36,7 @@ from app.modules.equipment.models import (
     EquipmentSeries,
     SpecSource,
 )
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.properties.models import TestItemProperty
 from app.modules.reliability.models import ReliabilityTest
 from app.modules.test_items.models import EquipmentTestItem, SeriesTestItem
@@ -93,6 +93,14 @@ def _describe_equipment(db: Session, row: Equipment) -> Described:
 
 def _describe_method(db: Session, row: TestMethod) -> Described:
     return " ".join(x for x in (row.code, row.edition) if x), f"/methods/{row.id}"
+
+
+def _describe_method_item(db: Session, row: TestMethodItem) -> Described:
+    """짝 표의 줄 하나 — 가리키는 것은 **규격**이다. 줄 자체는 이름이 없다."""
+    method = db.get(TestMethod, row.method_id)
+    if method is None:
+        return "(규격 없음)", None
+    return _describe_method(db, method)
 
 
 def _describe_series_item(db: Session, row: SeriesTestItem) -> Described:
@@ -162,10 +170,11 @@ REFERENCE_KINDS: tuple[ReferenceKind, ...] = (
         "method_test_item",
         "test_item",
         "시험법의 시험 항목",
-        TestMethod,
-        TestMethod.test_item_term_id,
-        "null",
-        _describe_method,
+        TestMethodItem,
+        TestMethodItem.test_item_term_id,
+        # 짝 표의 줄은 **지운다** — 칸이 아니라 관계라 비울 것이 없다.
+        "delete",
+        _describe_method_item,
     ),
     ReferenceKind(
         "item_property_by_item",

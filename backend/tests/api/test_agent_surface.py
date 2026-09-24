@@ -510,14 +510,18 @@ def test_검토함에_열린_규격의_시험_항목은_기계_자격으로_못_
 
     machine = _token(client, admin, ["read", "catalog:write"])
     blocked = client.patch(
-        f"/api/methods/{method_id}", json={"test_item_term_id": item}, headers=machine
+        f"/api/methods/{method_id}",
+        json={"test_item_term_ids": [item]},
+        headers=machine,
     )
     assert blocked.status_code == 409, blocked.text
     assert blocked.json()["error"]["code"] == "TSC-METHODS-0007"
 
     # 사람은 된다 — 그 사람의 권한이 이미 한계다.
     allowed = client.patch(
-        f"/api/methods/{method_id}", json={"test_item_term_id": item}, headers=admin.headers
+        f"/api/methods/{method_id}",
+        json={"test_item_term_ids": [item]},
+        headers=admin.headers,
     )
     assert allowed.status_code == 200, allowed.text
 

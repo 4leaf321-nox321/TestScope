@@ -70,10 +70,10 @@ export function RequirementImportDialog({
     <Dialog open={open} onOpenChange={(next) => !next && close()}>
       <DialogContent className="max-w-4xl">
         <DialogHeader>
-          <DialogTitle>요구 조건 표로 넣기</DialogTitle>
+          <DialogTitle>요구 조건 일괄 등록</DialogTitle>
           <DialogDescription>
             규격서를 보고 엑셀에 적은 표를 <strong>머리글 줄까지 함께</strong> 복사해
-            붙여넣으세요. 열: 규격 · 판 · 조건 · 최소 · 최대 · 값 · 필수 · 비고. 값은 조건의
+            붙여넣으십시오. 열: 규격 · 판 · 조건 · 최소 · 최대 · 값 · 필수 · 비고. 값은 조건의
             단위(kN · °C)로 적습니다 — 단위를 같이 적어도 됩니다.
           </DialogDescription>
         </DialogHeader>
@@ -87,7 +87,7 @@ export function RequirementImportDialog({
               onClick={() => void methodApi.requirementTemplate()}
             >
               <Download className="size-4" />
-              서식 내려받기
+              양식 다운로드
             </Button>
             <span className="text-muted-foreground text-xs">
               보기 줄은 실제 규격(ISO 6892-1)의 값입니다.

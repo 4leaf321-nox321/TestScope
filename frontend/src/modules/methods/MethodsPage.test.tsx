@@ -20,8 +20,8 @@ function method(over: Record<string, unknown> = {}) {
     edition: null,
     title: 'Tension Testing of Metallic Materials',
     status: 'active',
-    test_item_term_id: null,
-    test_item: null,
+    // **목록이다**(N:M) — 규격 하나가 시험 항목 여럿을 덮는다.
+    test_items: [],
     body: 'ASTM',
     superseded_by_code: null,
     summary: null,
@@ -55,7 +55,10 @@ vi.mock('@/shared/api/client', () => ({
     }),
     patch: vi.fn(async (url: string, body: unknown) => {
       calls.push({ method: 'patch', url, body })
-      return method({ test_item: '인장', test_item_term_id: 't1', pending_series_count: 0 })
+      return method({
+        test_items: [{ term_id: 't1', value: '인장' }],
+        pending_series_count: 0,
+      })
     }),
     post: vi.fn(),
   },
@@ -92,7 +95,7 @@ describe('시험법 목록', () => {
     // 세는 조건과 거르는 조건이 같아야 그 줄을 눌러 온 사람이 같은 목록을 본다.
     const list = calls.find((one) => one.url.startsWith('/methods?'))
     expect(list?.url).toContain('test_item=none')
-    expect(screen.getByText('어느 시험의 규격인지 안 정해진 것만')).toBeTruthy()
+    expect(screen.getByText('시험 항목 미지정 규격만')).toBeTruthy()
   })
 
   it('인용 계열과 항목 미정을 따로 말한다', async () => {
@@ -113,8 +116,8 @@ describe('시험법 상세', () => {
 
   it('시험 항목을 정하는 자리가 있고, 고르기 전에는 못 누른다', async () => {
     await open('/methods/m1')
-    expect(screen.getByText('이 규격이 어느 시험의 것인지 정해 주세요.')).toBeTruthy()
-    const button = screen.getByText('이 시험의 규격으로 정하기')
+    expect(screen.getByText('이 규격이 어느 시험의 것인지 정해 주십시오.')).toBeTruthy()
+    const button = screen.getByText('적용 규격으로 지정')
     // 고르기 전에는 못 누른다.
     expect((button as HTMLButtonElement).disabled).toBe(true)
   })

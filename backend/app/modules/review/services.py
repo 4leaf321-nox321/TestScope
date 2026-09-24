@@ -36,8 +36,16 @@ from app.modules.attributes import services as attributes
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.equipment import free_specs
 from app.modules.equipment.models import EquipmentModel, EquipmentSeries, ModelFreeSpec
-from app.modules.methods.models import TestMethod
-from app.modules.methods.services import detach_citations, merge_into, promote_pending
+from app.modules.methods.models import TestMethod, TestMethodItem
+from app.modules.methods.services import (
+    detach_citations,
+    merge_into,
+    promote_pending,
+    set_test_items,
+)
+from app.modules.methods.services import (
+    item_ids as method_items,
+)
 from app.modules.properties.models import TestItemProperty
 from app.modules.review.facts import Sheet
 from app.modules.review.models import ReviewProposal, ReviewVote
@@ -92,8 +100,11 @@ QUEUES: dict[str, Queue] = {
     "method_test_items": Queue(
         "method_test_items",
         "규격의 시험 항목",
-        "카탈로그가 인용한 규격이 어느 시험의 것인지. 정하면 인용한 계열에 자동으로 붙는다.",
-        False,
+        "카탈로그가 인용한 규격이 어느 시험의 것인지. 정하면 인용한 계열에 자동으로 붙는다. "
+        "**여러 개를 고를 수 있다** — 규격 하나가 시험 항목 둘을 덮는 일이 흔하다"
+        "(IEC 60529 는 IP 코드의 방진과 방수를 한 문서가 정의한다).",
+        # 하나만 고르게 두었던 것은 모델이 칸 하나였기 때문이다 — N:M 이 되면서 풀린다.
+        True,
         "/methods/{id}",
     ),
     "test_item_axes": Queue(
@@ -429,7 +440,8 @@ def _refresh_method_test_items(
                 codes.append(code)
             reasons.setdefault(code, why)
         del derived
-        if method.test_item_term_id is not None:
+        decided_items = method_items(db, method.id)
+        if decided_items:
             # 이미 정해졌다 — 열린 검토가 있었으면 결정으로 닫는다.
             row = db.scalar(
                 select(ReviewProposal).where(
@@ -438,8 +450,14 @@ def _refresh_method_test_items(
                 )
             )
             if row is not None and row.status == "open":
-                term = by_id.get(method.test_item_term_id)
-                _settle(db, row, [term.code] if term and term.code else [], "화면에서 정함")
+                # 항목이 여럿이면 **전부** 기록한다 — 하나만 남기면 나중에 「왜 이것만
+                # 정해졌지」 를 묻게 된다.
+                picked = [
+                    term.code
+                    for term in (by_id.get(one) for one in decided_items)
+                    if term and term.code
+                ]
+                _settle(db, row, picked, "화면에서 정함")
             continue
         decided = (filed_row or {}).get("decided")
         if not codes and not decided:
@@ -968,7 +986,7 @@ def _refresh_series_test_items(
             question=sheet.series_question(
                 series,
                 "아래 시험도 합니까? 논문이나 제조사 페이지가 그렇게 적었지만 카탈로그 PDF "
-                "에는 없던 것입니다. 인용문을 열어 읽고 정말 하는 것만 고르세요 — 고르면 그 "
+                "에는 없던 것입니다. 인용문을 열어 읽고 정말 하는 것만 고르십시오 — 고르면 그 "
                 "시험이 이 계열에 붙습니다.",
             ),
             facts=sheet.series_facts(series),
@@ -1027,7 +1045,7 @@ def _refresh_series_summary(
             question=sheet.series_question(
                 series,
                 "소개에 아래 문장을 붙입니까? 제조사 페이지의 응용 문장입니다 — 무엇에 쓰는지 "
-                "말하는 문장만 고르고 마케팅 문구는 두세요. 고른 문장이 지금 소개 뒤에 "
+                "말하는 문장만 고르고 마케팅 문구는 두십시오. 고른 문장이 지금 소개 뒤에 "
                 "붙습니다.",
             ),
             facts=sheet.series_facts(series),
@@ -1104,7 +1122,7 @@ def _refresh_test_item_aliases(
                 f"「{term.value}」 을 부르는 다른 이름으로 아래 표기를 별칭에 더합니까? "
                 "별칭은 찾기(resolve)가 이름보다 먼저 보는 것이라, AI 가 「thermal shock」 "
                 "으로 물어도 이 시험을 찾게 됩니다. 이 시험만 가리키는 표기만 고르고, 후보에 "
-                "없는 표기는 직접 적으세요."
+                "없는 표기는 직접 적으십시오."
             ),
             facts=sheet.test_item_facts(term),
         )
@@ -1204,7 +1222,7 @@ def _attribute_merge_candidates(
                 "reason": (
                     "띄어쓰기·대소문자를 지우면 이름이 같습니다."
                     if same
-                    else "이름이 한쪽에 들어 있습니다 — 같은 칸인지 읽고 정하세요."
+                    else "이름이 한쪽에 들어 있습니다 — 같은 칸인지 읽고 정하십시오."
                 ),
             }
         )
@@ -1314,7 +1332,7 @@ def _refresh_attribute_drafts(db: Session) -> None:
             question=(
                 f"「{draft.label}」 은 {target_label}에 {count}건 적힌 **초안** 속성입니다. "
                 "초안은 온톨로지 밖이라 검색·판정·색인 카드 어디에도 안 쓰입니다. 같은 뜻인 "
-                "속성이 이미 있으면 거기 합치고, 이 이름으로 굳힐 것이면 정식으로 올리세요."
+                "속성이 이미 있으면 거기 합치고, 이 이름으로 굳힐 것이면 정식으로 올리십시오."
             ),
             facts=_attribute_draft_facts(db, draft, count),
         )
@@ -1409,8 +1427,8 @@ def _refresh_series_standards(
             question=sheet.series_question(
                 series,
                 "아래 규격도 씁니까? 제조사 웹·대리점·논문이 이 계열과 함께 적었지만 카탈로그 "
-                "PDF 에는 없던 규격입니다. 출처를 열어 이 계열 얘기가 맞는지 보고 고르세요 — "
-                "고르면 그 규격이 이 계열에 붙습니다.",
+                "PDF 에는 없던 규격입니다. 출처를 열어 이 계열 얘기가 맞는지 보고 "
+                "고르십시오 — 고르면 그 규격이 이 계열에 붙습니다.",
             ),
             facts=sheet.series_facts(series),
             candidates=candidates,
@@ -1460,13 +1478,14 @@ def _link_series_standard(
         db.scalars(select(SeriesTestItem).where(SeriesTestItem.series_id == series.id))
     )
     target = None
-    if method.test_item_term_id is not None:
-        target = next(
-            (t for t in items if t.test_item_term_id == method.test_item_term_id), None
-        )
+    covered = method_items(db, method.id)
+    if covered:
+        target = next((t for t in items if t.test_item_term_id in covered), None)
     elif len(items) == 1:
+        # 계열에 시험 항목이 하나뿐이면 그것이 이 규격의 항목이다.
         target = items[0]
-        method.test_item_term_id = target.test_item_term_id
+        db.add(TestMethodItem(method_id=method.id, test_item_term_id=target.test_item_term_id))
+        db.flush()
     if target is not None:
         exists = db.scalar(
             select(SeriesTestItemMethod.id).where(
@@ -1494,13 +1513,17 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         if not choice:
             return
         items = _axis_terms(db, "test_item")
-        term = items.get(choice[0])
-        if term is None:
-            raise NotFound("TSC-REVIEW-0002", f"시험 항목 코드를 모릅니다: {choice[0]}")
+        unknown = [code for code in choice if code not in items]
+        if unknown:
+            raise NotFound("TSC-REVIEW-0002", f"시험 항목 코드를 모릅니다: {unknown[0]}")
         method = db.get(TestMethod, row.subject_id) if row.subject_id else None
         if method is None:
             raise NotFound("TSC-REVIEW-0003", "규격을 찾을 수 없습니다.")
-        method.test_item_term_id = term.id
+        # **고른 것 전부를 건다.** 검토함은 처음부터 목록을 받고 있었는데 모델이 하나만
+        # 담을 수 있어 첫 줄만 쓰였다 — IEC 60529 처럼 방진·방수를 둘 다 덮는 규격이
+        # 그래서 한쪽을 잃었다.
+        picked = [items[code].id for code in choice if code in items]
+        set_test_items(db, method.id, picked)
         promote_pending(db, method)
     elif queue == "test_item_axes":
         if row.subject_id is None:
@@ -1551,7 +1574,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
         if not payload.get("key") or not payload.get("group_id"):
             raise AppError(
                 "TSC-REVIEW-0005",
-                "올릴 정의의 키와 그룹이 정본에 없습니다 — 기종 상세에서 직접 올리세요.",
+                "올릴 정의의 키와 그룹이 정본에 없습니다 — 기종 상세에서 직접 올리십시오.",
                 status=400,
             )
         model = db.get(EquipmentModel, sample.model_id)
@@ -1612,7 +1635,7 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
                 raise AppError(
                     "TSC-REVIEW-0012",
                     f"보유 장비 시험 항목 {used}건이 이 규격을 걸고 있어 못 지웁니다"
-                    " — 합치거나 두세요.",
+                    " — 합치거나 두십시오.",
                     status=409,
                 )
             detach_citations(db, method.id)
@@ -1742,9 +1765,10 @@ def _apply(db: Session, row: ReviewProposal, choice: list[str], *, actor: User |
             for method in db.scalars(
                 select(TestMethod)
                 .join(SeriesPendingMethod, SeriesPendingMethod.method_id == TestMethod.id)
+                .join(TestMethodItem, TestMethodItem.method_id == TestMethod.id)
                 .where(
                     SeriesPendingMethod.series_id == series.id,
-                    TestMethod.test_item_term_id == term.id,
+                    TestMethodItem.test_item_term_id == term.id,
                 )
             ):
                 promote_pending(db, method)
@@ -2071,7 +2095,9 @@ def decide(
     row = get_proposal(db, proposal_id)
     if row.status == "decided":
         raise AppError(
-            "TSC-REVIEW-0008", "이미 결정된 항목입니다. 바꾸려면 먼저 다시 여세요.", status=409
+            "TSC-REVIEW-0008",
+            "이미 결정된 항목입니다. 바꾸려면 먼저 다시 여십시오.",
+            status=409,
         )
     if row.status == "gone":
         raise AppError("TSC-REVIEW-0009", "대상이 없어진 항목입니다.", status=409)

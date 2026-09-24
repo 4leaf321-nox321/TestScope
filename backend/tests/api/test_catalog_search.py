@@ -163,7 +163,7 @@ def test_규격으로_물으면_그_규격을_인용한_계열만_온다(
     item = term_factory("test_item", f"굽힘-{tag}")
     method = client.post(
         "/api/methods",
-        json={"code": f"ISO 178-{tag}", "title": "굽힘", "test_item_term_id": item},
+        json={"code": f"ISO 178-{tag}", "title": "굽힘", "test_item_term_ids": [item]},
         headers=admin.headers,
     ).json()
     cited = client.post(

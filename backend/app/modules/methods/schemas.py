@@ -37,6 +37,13 @@ class CitedSeriesOut(BaseModel):
     pending: bool
 
 
+class MethodTestItemOut(BaseModel):
+    """이 규격이 덮는 시험 항목 하나."""
+
+    term_id: uuid.UUID
+    value: str
+
+
 class MethodOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -44,8 +51,10 @@ class MethodOut(BaseModel):
     code: str
     edition: str | None
     title: str
-    test_item: str | None
-    test_item_term_id: uuid.UUID | None
+    test_items: list[MethodTestItemOut]
+    """**여럿일 수 있다.** IEC 60529 는 방진과 방수를 한 문서가 정의한다 — 하나만
+    가리키게 두면 나머지 항목은 「규격이 없는 항목」 이 된다. 비어 있으면 아직 안 정한
+    것이고, 그 규격은 계열의 시험 항목에 못 붙는다."""
     body: str | None
     status: str
     superseded_by_code: str | None
@@ -73,7 +82,8 @@ class MethodCreateRequest(BaseModel):
     code: str = Field(min_length=1, max_length=100)
     edition: str | None = Field(default=None, max_length=30)
     title: str = Field(min_length=1, max_length=300)
-    test_item_term_id: uuid.UUID | None = None
+    test_item_term_ids: list[uuid.UUID] = Field(default_factory=list)
+    """어느 시험 항목의 규격인가 — **여럿을 받는다.** 모르면 비운다."""
     body_term_id: uuid.UUID | None = None
     summary: str | None = None
     workspace_slug: str | None = None
@@ -83,7 +93,8 @@ class MethodCreateRequest(BaseModel):
 class MethodUpdateRequest(BaseModel):
     title: str | None = Field(default=None, min_length=1, max_length=300)
     edition: str | None = None
-    test_item_term_id: uuid.UUID | None = None
+    test_item_term_ids: list[uuid.UUID] | None = None
+    """보내면 **통째로** 바뀐다. 안 보내면 그대로."""
     body_term_id: uuid.UUID | None = None
     summary: str | None = None
     status: str | None = Field(default=None, pattern="^(draft|active|superseded)$")

@@ -19,7 +19,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.modules.audit.models import AuditEntry
-from app.modules.methods.models import TestMethod
+from app.modules.methods.models import TestMethod, TestMethodItem
 from app.modules.review import services
 from app.modules.review.models import ReviewProposal
 from app.shared import audit
@@ -63,6 +63,51 @@ def _rows(
     return rows
 
 
+def _items(db: Session, method_id: uuid.UUID) -> list[str]:
+    """이 규격이 덮는 시험 항목 id 들 — 칸이 아니라 짝 표에서 읽는다(N:M)."""
+    return [
+        str(one)
+        for one in db.scalars(
+            select(TestMethodItem.test_item_term_id).where(
+                TestMethodItem.method_id == method_id
+            )
+        )
+    ]
+
+
+def test_규격_하나에_시험_항목_둘을_한_번에_확정한다(
+    client: TestClient, admin: Signed, db: Session
+) -> None:
+    """**검토함은 처음부터 목록(`choice`)을 받고 있었는데 모델이 하나만 담을 수 있었다.**
+
+    그래서 IEC 60529 처럼 방진·방수를 둘 다 덮는 규격은 확정하는 순간 한쪽을 잃었다.
+    N:M 으로 바꾼 뒤 이 자리가 성립한다(실측 2026-09-24).
+    """
+    dust_id, dust = _item(client, admin, "분진 침투")
+    water_id, water = _item(client, admin, "방수")
+    method = _cited_method(client, admin, [dust_id, water_id])
+
+    client.post("/api/review/refresh", headers=admin.headers)
+    row = next(
+        one
+        for one in _rows(client, admin, "method_test_items")
+        if one["subject_id"] == method["id"]
+    )
+
+    decided = client.post(
+        f"/api/review/method_test_items/{row['id']}/decide",
+        json={"choice": [dust, water], "note": "IP 코드는 한 문서가 둘을 정의한다"},
+        headers=admin.headers,
+    )
+    assert decided.status_code == 200, decided.text
+    assert set(decided.json()["choice"]) == {dust, water}
+
+    # **둘 다 걸렸다.** 하나만 남으면 나머지 항목은 규격이 없는 항목이 된다.
+    assert set(_items(db, uuid.UUID(method["id"]))) == {dust_id, water_id}
+    shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
+    assert {one["term_id"] for one in shown["test_items"]} == {dust_id, water_id}
+
+
 def test_인용한_계열의_시험이_후보로_서고_고르면_계열에_붙는다(
     client: TestClient, admin: Signed, db: Session
 ) -> None:
@@ -96,7 +141,7 @@ def test_인용한_계열의_시험이_후보로_서고_고르면_계열에_붙�
 
     # **기존 규칙이 돌았다** — 규격에 항목이 정해지고 인용한 계열에 붙었다.
     shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
-    assert shown["test_item_term_id"] == vib_id
+    assert [one["term_id"] for one in shown["test_items"]] == [vib_id]
     assert shown["pending_series_count"] == 0
     assert shown["series_count"] == 1
 
@@ -135,7 +180,7 @@ def test_직접_고르기는_후보_밖의_시험_항목도_받는다(client: Te
     )
     assert decided.status_code == 200, decided.text
     shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
-    assert shown["test_item_term_id"] == other_id
+    assert [one["term_id"] for one in shown["test_items"]] == [other_id]
 
     unknown = _cited_method(client, admin, [a_id, b_id])
     client.post("/api/review/refresh", headers=admin.headers)
@@ -199,7 +244,7 @@ def test_정본의_추천과_결정이_따라온다(
     assert done["decided_by"] == "김전문"
     assert done["followed"] is True
     method = db.get(TestMethod, uuid.UUID(settled["id"]))
-    assert method is not None and str(method.test_item_term_id) == b_id
+    assert method is not None and _items(db, method.id) == [b_id]
 
     # 추천을 거스르면 followed 가 거짓으로 남는다 — 어느 추천이 틀리는지 셀 수 있게.
     against = client.post(
@@ -225,7 +270,9 @@ def test_화면에서_정한_것은_다시_세울_때_결정으로_닫힌다(
     )
 
     fixed = client.patch(
-        f"/api/methods/{method['id']}", json={"test_item_term_id": a_id}, headers=admin.headers
+        f"/api/methods/{method['id']}",
+        json={"test_item_term_ids": [a_id]},
+        headers=admin.headers,
     )
     assert fixed.status_code == 200, fixed.text
     client.post("/api/review/refresh", headers=admin.headers)
@@ -299,7 +346,10 @@ def test_결정은_정본으로_되돌려_쓰이고_다시_들이면_적용된�
     # 다른 설치를 흉내 낸다: 규격의 항목을 비우고 검토 줄을 지운 뒤, 정본으로 다시 세운다.
     target = db.get(TestMethod, uuid.UUID(method["id"]))
     assert target is not None
-    target.test_item_term_id = None
+    for link in db.scalars(
+        select(TestMethodItem).where(TestMethodItem.method_id == target.id)
+    ):
+        db.delete(link)
     db.execute(
         select(ReviewProposal).where(ReviewProposal.id == uuid.UUID(row["id"]))
     )  # 존재 확인
@@ -308,7 +358,7 @@ def test_결정은_정본으로_되돌려_쓰이고_다시_들이면_적용된�
     services.refresh(db, tmp_path)
     db.commit()
     db.refresh(target)
-    assert str(target.test_item_term_id) == a_id, "정본의 결정이 적용됐다"
+    assert _items(db, target.id) == [a_id], "정본의 결정이 적용됐다"
     again = next(
         one
         for one in _rows(client, admin, "method_test_items", status="all")
@@ -537,7 +587,7 @@ def test_정한_것은_다시_열어_다른_걸로_고를_수_있다(
     assert "다시 열림" in (reopened.json()["note"] or "")
     # 실제 데이터는 그대로다 — 다시 여는 것은 되돌리는 것이 아니다.
     shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
-    assert shown["test_item_term_id"] == a_id
+    assert [one["term_id"] for one in shown["test_items"]] == [a_id]
 
     second = client.post(
         f"/api/review/method_test_items/{row['id']}/decide",
@@ -546,7 +596,7 @@ def test_정한_것은_다시_열어_다른_걸로_고를_수_있다(
     )
     assert second.status_code == 200, second.text
     shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
-    assert shown["test_item_term_id"] == b_id
+    assert [one["term_id"] for one in shown["test_items"]] == [b_id]
     kinds = [
         one.action
         for one in db.scalars(
@@ -605,7 +655,7 @@ def test_의견은_누구나_내고_확정은_관리자가_한다(
     assert voted.json()["my_vote"] == [a]
     assert voted.json()["status"] == "open"
     shown = client.get(f"/api/methods/{method['id']}", headers=admin.headers).json()
-    assert shown["test_item_term_id"] is None, "의견은 확정이 아니다"
+    assert shown["test_items"] == [], "의견은 확정이 아니다"
 
     # 전문가는 확정 못 한다.
     denied = client.post(
@@ -897,9 +947,7 @@ def test_계열이_하는_규격을_더하면_시험에_붙거나_미정_인용�
     )
     assert decided.status_code == 200, decided.text
     method = db.scalar(select(TestMethod).where(TestMethod.code == new_code))
-    assert (
-        method is not None and str(method.test_item_term_id) == item_id
-    )  # 시험이 하나뿐 → 소거
+    assert method is not None and _items(db, method.id) == [item_id]  # 시험이 하나뿐 → 소거
     assert method.title == "Standard Test Method for Something"  # 정본의 제목이 이름이 된다
     assert (
         db.scalar(
@@ -960,7 +1008,7 @@ def test_계열이_하는_규격을_더하면_시험에_붙거나_미정_인용�
     )
     assert decided2.status_code == 200, decided2.text
     method2 = db.scalar(select(TestMethod).where(TestMethod.code == second))
-    assert method2 is not None and method2.test_item_term_id is None
+    assert method2 is not None and _items(db, method2.id) == []
     assert (
         db.scalar(
             select(SeriesPendingMethod).where(SeriesPendingMethod.method_id == method2.id)
@@ -1120,7 +1168,7 @@ def test_줄마다_물음과_근거_자료가_붙고_다른_판의_결정이_추
             "code": method["code"],
             "edition": "2019",
             "title": "다른 판",
-            "test_item_term_id": vib_id,
+            "test_item_term_ids": [vib_id],
         },
         headers=admin.headers,
     )

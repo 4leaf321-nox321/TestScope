@@ -32,7 +32,7 @@ from app.modules.equipment.models import (
     EquipmentSeries,
     SeriesRelation,
 )
-from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.properties.models import TestItemProperty
 from app.modules.reliability.models import ReliabilityTest, ReliabilityTestItem
 from app.modules.test_items.models import (
@@ -264,12 +264,15 @@ EDGE_KINDS: tuple[EdgeKind, ...] = (
         "규격",
         "method",
         "test_item",
-        TestMethod.id,
-        TestMethod.test_item_term_id,
-        TestMethod.id,
-        base=select(TestMethod.id, TestMethod.test_item_term_id, TestMethod.id).where(
-            TestMethod.deleted_at.is_(None)
-        ),
+        TestMethodItem.method_id,
+        TestMethodItem.test_item_term_id,
+        TestMethodItem.id,
+        # N:M 이라 간선이 규격마다 여럿일 수 있다 — 짝 표에서 바로 읽는다.
+        base=select(
+            TestMethodItem.method_id, TestMethodItem.test_item_term_id, TestMethodItem.id
+        )
+        .join(TestMethod, TestMethod.id == TestMethodItem.method_id)
+        .where(TestMethod.deleted_at.is_(None)),
     ),
     # ④ 규격 → 검색 조건 축 (요구 조건)
     _kind(

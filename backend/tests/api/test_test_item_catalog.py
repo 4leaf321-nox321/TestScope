@@ -54,7 +54,7 @@ def test_항목마다_사슬_전체의_수를_준다(client: TestClient, admin: 
     )
     method = client.post(
         "/api/methods",
-        json={"code": f"ISO {tag}", "title": "T", "test_item_term_id": item},
+        json={"code": f"ISO {tag}", "title": "T", "test_item_term_ids": [item]},
         headers=admin.headers,
     ).json()
     series = client.post(

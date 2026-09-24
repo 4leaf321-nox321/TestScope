@@ -27,7 +27,7 @@ from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
 from app.modules.equipment.models import Equipment, EquipmentModel, EquipmentSeries
-from app.modules.methods.models import MethodRequirement, TestMethod
+from app.modules.methods.models import MethodRequirement, TestMethod, TestMethodItem
 from app.modules.properties.models import TestItemProperty
 from app.modules.test_items.models import (
     EquipmentTestItem,
@@ -90,16 +90,18 @@ def _counts(
     ).all():
         out["properties_confirmed"][term_id] = int(count)
     for term_id, count in db.execute(
-        select(TestMethod.test_item_term_id, func.count())
-        .where(TestMethod.deleted_at.is_(None), TestMethod.test_item_term_id.is_not(None))
-        .group_by(TestMethod.test_item_term_id)
+        select(TestMethodItem.test_item_term_id, func.count())
+        .join(TestMethod, TestMethod.id == TestMethodItem.method_id)
+        .where(TestMethod.deleted_at.is_(None))
+        .group_by(TestMethodItem.test_item_term_id)
     ).all():
         out["methods_total"][term_id] = int(count)
     for term_id, count in db.execute(
-        select(TestMethod.test_item_term_id, func.count(func.distinct(TestMethod.id)))
+        select(TestMethodItem.test_item_term_id, func.count(func.distinct(TestMethod.id)))
+        .join(TestMethod, TestMethod.id == TestMethodItem.method_id)
         .join(MethodRequirement, MethodRequirement.method_id == TestMethod.id)
-        .where(TestMethod.deleted_at.is_(None), TestMethod.test_item_term_id.is_not(None))
-        .group_by(TestMethod.test_item_term_id)
+        .where(TestMethod.deleted_at.is_(None))
+        .group_by(TestMethodItem.test_item_term_id)
     ).all():
         out["methods_with_requirements"][term_id] = int(count)
     live_series = select(EquipmentSeries.id).where(
@@ -246,7 +248,11 @@ def detail(db: Session, user: User, term_id: uuid.UUID) -> TestItemCatalogOut:
         )
         for m in db.scalars(
             select(TestMethod)
-            .where(TestMethod.test_item_term_id == term.id, TestMethod.deleted_at.is_(None))
+            .join(TestMethodItem, TestMethodItem.method_id == TestMethod.id)
+            .where(
+                TestMethodItem.test_item_term_id == term.id,
+                TestMethod.deleted_at.is_(None),
+            )
             .order_by(TestMethod.code, TestMethod.edition)
         )
     ]
