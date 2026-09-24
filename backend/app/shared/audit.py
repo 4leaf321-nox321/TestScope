@@ -85,6 +85,9 @@ METHOD_REQUIREMENTS_IMPORTED = "method.requirements_imported"
 RELIABILITY_TEST_DELETED = "reliability_test.deleted"
 """부서가 등록한 신뢰성 시험을 내렸다. 화면에서는 사라지므로 「그 시험 어디 갔어」 의 답이
 여기뿐이다. 만들고 고친 것은 줄 자체(created_by · updated_at)가 말한다."""
+SPEC_DOCUMENT_DELETED = "spec_document.deleted"
+"""사내 규격서를 내렸다. **그 문서로 한 시험의 결과가 밖에 나가 있다** — 번호가 무엇을
+가리켰는지 물을 자리가 여기뿐이다."""
 RELIABILITY_TEST_CONFIRMED = "reliability_test.confirmed"
 """AI 가 올린 후보를 사람이 읽고 **확인했다.**
 

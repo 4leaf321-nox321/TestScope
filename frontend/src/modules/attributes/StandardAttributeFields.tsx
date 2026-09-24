@@ -36,6 +36,7 @@ import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
 import type { Attachment } from '@/modules/attachments/api'
 import type { MatrixRow, Pair } from '@/modules/attributes/kinds'
 import { MatrixEditor, PairsEditor } from '@/modules/attributes/PairsEditor'
+import { specDocumentApi } from '@/modules/documents/api'
 import { methodApi } from '@/modules/methods/api'
 import { vocabularyApi } from '@/modules/vocabulary/api'
 
@@ -47,6 +48,7 @@ export interface StandardValue {
   textValue: string
   termId: string | null
   methodId: string | null
+  documentId: string | null
   pairs: Pair[]
   matrix: MatrixRow[]
   /** 조건 줄의 비고 — 숫자로 못 적는 것(「상온」·「규격에 따름」). */
@@ -61,6 +63,7 @@ function empty(): StandardValue {
     textValue: '',
     termId: null,
     methodId: null,
+    documentId: null,
     pairs: [],
     matrix: [],
     note: '',
@@ -79,6 +82,7 @@ export function fromValues(rows: AttributeValue[] | undefined): Record<string, S
       textValue: row.text_value ?? '',
       termId: row.term_id ?? null,
       methodId: row.method_id ?? null,
+      documentId: row.document_id ?? null,
       pairs: Array.isArray(json) && row.kind === 'pairs' ? (json as Pair[]) : [],
       matrix: Array.isArray(json) && row.kind === 'matrix' ? (json as MatrixRow[]) : [],
       note: row.note ?? '',
@@ -116,6 +120,8 @@ export function toStandardPayload(
       out.push({ ...base, term_id: value.termId })
     } else if (definition.kind === 'method' && value.methodId) {
       out.push({ ...base, method_id: value.methodId })
+    } else if (definition.kind === 'document' && value.documentId) {
+      out.push({ ...base, document_id: value.documentId })
     } else if (definition.kind === 'pairs') {
       const rows = value.pairs.filter((one) => one.label.trim() && one.value !== null)
       if (rows.length > 0) out.push({ ...base, json_value: rows })
@@ -375,6 +381,12 @@ export function StandardAttributeFields({
                       id={id}
                       value={value.methodId}
                       onChange={(methodId) => set(definition.id, { methodId })}
+                    />
+                  ) : definition.kind === 'document' ? (
+                    <DocumentField
+                      id={id}
+                      value={value.documentId}
+                      onChange={(documentId) => set(definition.id, { documentId })}
                     />
                   ) : definition.kind === 'choice' ? (
                     <Select
@@ -670,6 +682,40 @@ function TermField({
       placeholder={options.length > 0 ? '선택' : '값이 아직 없습니다'}
       detailTitle={definition.label}
       detailHint="기준정보에서 고릅니다 — 없으면 관리자가 값을 더합니다."
+    />
+  )
+}
+
+/** 사내 규격서 고르기 — **공개 규격과 다른 사전이다.** 부서가 만든 문서고 파일이 붙는다. */
+function DocumentField({
+  id,
+  value,
+  onChange,
+}: {
+  id: string
+  value: string | null
+  onChange: (next: string | null) => void
+}) {
+  const found = useResource(() => specDocumentApi.list(), [])
+  const options = (found.data ?? []).map((one) => ({
+    id: one.id,
+    label: `${one.code} ${one.title}`.trim(),
+    // **파일이 없으면 그 사실을 고르는 자리에서 말한다** — 번호만 있는 문서를 걸어 두면
+    // 읽는 사람이 원본을 찾아 헤맨다.
+    detail: [one.revision, one.workspace_name, one.file_count === 0 ? '파일 없음' : null]
+      .filter(Boolean)
+      .join(' · '),
+  }))
+  return (
+    <SearchablePicker
+      id={id}
+      options={options}
+      value={value ?? ''}
+      onChange={(next) => onChange(next || null)}
+      placeholder="규격서 선택"
+      searchPlaceholder="문서 번호의 일부 (MX-REL)"
+      detailTitle="사내 규격서"
+      detailHint="「사내 규격서」 화면에서 등록하고 원본 파일을 올립니다."
     />
   )
 }

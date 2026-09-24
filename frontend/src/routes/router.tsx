@@ -65,6 +65,7 @@ const WorkspaceReliabilityPage = lazy(
 const SignupPage = lazy(() => import('@/modules/auth/SignupPage'))
 const VocabularyAdminPage = lazy(() => import('@/modules/vocabulary/VocabularyAdminPage'))
 const VocabularyPage = lazy(() => import('@/modules/vocabulary/VocabularyPage'))
+const SpecDocumentsPage = lazy(() => import('@/modules/documents/SpecDocumentsPage'))
 const ReferenceHubPage = lazy(() => import('@/modules/reference/ReferenceHubPage'))
 const GraphPage = lazy(() => import('@/modules/graph/GraphPage'))
 const WorkspaceHomePage = lazy(() => import('@/modules/workspaces/WorkspaceHomePage'))
@@ -140,6 +141,7 @@ export const router = createBrowserRouter([
 
           // 공통
           { path: 'notices', element: <NoticesPage /> },
+          { path: 'spec-documents', element: <SpecDocumentsPage /> },
           { path: 'reference', element: <ReferenceHubPage /> },
           { path: 'graph', element: <GraphPage /> },
           { path: 'vocabulary', element: <VocabularyPage /> },

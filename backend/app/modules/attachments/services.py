@@ -75,8 +75,14 @@ def require_can_edit(db: Session, user: User, *, target: str, object_id: uuid.UU
         if not user.is_system_admin:
             raise Forbidden(
                 "TSC-ATTACH-0006",
-                "규격서 파일은 시스템 관리자만 올리고 지웁니다.",
+                "공개 규격의 원문은 시스템 관리자만 올리고 지웁니다.",
             )
+    elif target == "spec_document":
+        # 사내 규격서는 **그 부서**가 만들고 고친다 — 시스템 관리자를 거치게 하면
+        # 문서가 안 올라온다(신뢰성 시험과 같은 규칙).
+        from app.modules.documents import services as documents
+
+        documents.require_editable(db, user, object_id)
 
 
 def _store(data: bytes, content_type: str) -> tuple[str, Path]:

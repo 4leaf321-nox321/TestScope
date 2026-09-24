@@ -28,6 +28,7 @@ def display_attribute(
     date_value: date | None = None,
     term_value: str | None = None,
     method_code: str | None = None,
+    document_code: str | None = None,
     json_value: Any | None = None,
 ) -> str:
     """「-40 ~ 125 degC」 「85 %」 「ISO 6892-1」 「있음」. 비어 있으면 빈 글자."""
@@ -54,6 +55,8 @@ def display_attribute(
         return term_value or ""
     if kind == "method":
         return method_code or ""
+    if kind == "document":
+        return document_code or ""
     if kind == "pairs":
         return _pairs_text(json_value, suffix)
     if kind == "matrix":

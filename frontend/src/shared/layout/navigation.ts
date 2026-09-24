@@ -12,9 +12,10 @@ import {
   Building2,
   CheckSquare,
   ClipboardList,
+  FileText,
   Gauge,
-  ListChecks,
   Home,
+  ListChecks,
   Megaphone,
   Package,
   ScrollText,
@@ -22,8 +23,8 @@ import {
   Server,
   Tags,
   UserCog,
-  Waypoints,
   Users,
+  Waypoints,
   Wrench,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
@@ -174,6 +175,14 @@ export const NAV_GROUPS: NavGroup[] = [
         label: '시험법·규격',
         icon: ClipboardList,
         to: '/methods',
+      },
+      {
+        // **공개 규격 바로 옆이되 다른 줄이다.** 사내 규격서는 부서가 만들고 부서가
+        // 고치며 밖에서는 존재조차 모른다 — 한 목록에 섞으면 「우리가 인용하는 공개
+        // 규격」 을 세는 숫자가 전부 틀어진다.
+        label: '사내 규격서',
+        icon: FileText,
+        to: '/spec-documents',
       },
       {
         // **사슬의 맨 앞.** 사람은 「인장」 이 아니라 「인장강도」 로 묻는다 — 어떤 시험으로

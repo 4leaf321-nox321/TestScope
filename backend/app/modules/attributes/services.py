@@ -26,6 +26,7 @@ from app.modules.attributes.schemas import (
     AttributeValueIn,
     AttributeValueOut,
 )
+from app.modules.documents.models import SpecDocument
 from app.modules.methods.models import TestMethod
 from app.modules.vocabulary.models import ConditionKey, Vocabulary, VocabularyTerm
 from app.shared.attribute_text import display_attribute
@@ -457,6 +458,10 @@ def _check_value_shape(
         method = db.get(TestMethod, item.method_id) if item.method_id else None
         if method is None or method.deleted_at is not None:
             raise AppError("TSC-ATTR-0011", f"「{label}」 은 있는 규격이어야 합니다.")
+    if kind == "document":
+        document = db.get(SpecDocument, item.document_id) if item.document_id else None
+        if document is None or document.deleted_at is not None:
+            raise AppError("TSC-ATTR-0011", f"「{label}」 은 있는 사내 규격서여야 합니다.")
     if kind in ("pairs", "matrix"):
         _check_pairs_shape(kind, label, item.json_value)
 
@@ -542,6 +547,7 @@ def set_values(
             date_value=item.date_value if definition.kind == "date" else None,
             term_id=item.term_id if definition.kind == "term" else None,
             ref_method_id=item.method_id if definition.kind == "method" else None,
+            ref_document_id=(item.document_id if definition.kind == "document" else None),
             json_value=(item.json_value if definition.kind in ("pairs", "matrix") else None),
             note=clean(item.note or "") or None,
         )
@@ -558,6 +564,7 @@ def display_of(
     *,
     term_value: str | None,
     method_code: str | None,
+    document_code: str | None = None,
 ) -> str:
     """사람이 읽는 한 줄. 화면과 MCP 와 색인 카드가 같은 글자를 쓰게 서버가 만든다.
 
@@ -578,6 +585,7 @@ def display_of(
         date_value=value.date_value,
         term_value=term_value,
         method_code=method_code,
+        document_code=document_code,
         json_value=value.json_value,
     )
 
@@ -622,9 +630,19 @@ def values_of(
         if method_ids
         else {}
     )
+    document_ids = {v.ref_document_id for v, _ in pairs if v.ref_document_id}
+    documents = (
+        {
+            d.id: d.code
+            for d in db.scalars(select(SpecDocument).where(SpecDocument.id.in_(document_ids)))
+        }
+        if document_ids
+        else {}
+    )
     for value, definition in pairs:
         term_value = terms.get(value.term_id) if value.term_id else None
         method_code = methods.get(value.ref_method_id) if value.ref_method_id else None
+        document_code = documents.get(value.ref_document_id) if value.ref_document_id else None
         out[getattr(value, column.key)].append(
             AttributeValueOut(
                 definition_id=definition.id,
@@ -643,9 +661,15 @@ def values_of(
                 method_id=value.ref_method_id,
                 json_value=value.json_value,
                 method_code=method_code,
+                document_id=value.ref_document_id,
+                document_code=document_code,
                 note=value.note,
                 display=display_of(
-                    value, definition, term_value=term_value, method_code=method_code
+                    value,
+                    definition,
+                    term_value=term_value,
+                    method_code=method_code,
+                    document_code=document_code,
                 ),
             )
         )

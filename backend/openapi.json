@@ -7612,6 +7612,248 @@
         }
       }
     },
+    "/api/spec-documents": {
+      "get": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "List Spec Documents",
+        "description": "사내 규격서 — **공개 규격(`/methods`)과 다른 표다.** 부서가 만들고 부서가 고친다.\n\n줄마다 붙은 파일 수와 **이 문서를 가리키는 신뢰성 시험 수**가 온다. 0 이면 아무도\n안 쓰는 문서다.",
+        "operationId": "list_spec_documents_api_spec_documents_get",
+        "parameters": [
+          {
+            "name": "workspace",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SpecDocumentOut"
+                  },
+                  "title": "Response List Spec Documents Api Spec Documents Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Create Spec Document",
+        "description": "등록 — 그 부서의 관리자 또는 시스템 관리자. 파일은 만든 뒤에 첨부로 붙인다\n(`POST /attachments` · `target=\"spec_document\"`).",
+        "operationId": "create_spec_document_api_spec_documents_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecDocumentCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecDocumentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/spec-documents/{document_id}": {
+      "get": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Read Spec Document",
+        "operationId": "read_spec_document_api_spec_documents__document_id__get",
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecDocumentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Update Spec Document",
+        "description": "부분 수정. **판(`revision`)을 고치는 것이 개정이다** — 줄을 새로 만들지 않는다.\n걸어 둔 신뢰성 시험의 링크가 안 끊긴다.",
+        "operationId": "update_spec_document_api_spec_documents__document_id__patch",
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecDocumentUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecDocumentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Delete Spec Document",
+        "description": "지우지 않고 `deleted_at` 만 채운다. **걸려 있는 시험이 있으면 409.**",
+        "operationId": "delete_spec_document_api_spec_documents__document_id__delete",
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Document Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/attachments": {
       "get": {
         "tags": [
@@ -9930,6 +10172,18 @@
             ],
             "title": "Method Id"
           },
+          "document_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Id"
+          },
           "note": {
             "anyOf": [
               {
@@ -9945,7 +10199,7 @@
         },
         "type": "object",
         "title": "AttributeValueIn",
-        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id · pairs/matrix: json_value. 다른 칸은 무시한다."
+        "description": "값 하나. `definition_id` 가 있으면 그 항목, 없으면 `new_label` 로 **초안을 새로\n만든다.**\n\n종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·\nnum_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·\nterm: term_id · method: method_id · document: document_id · pairs/matrix: json_value.\n다른 칸은 무시한다."
       },
       "AttributeValueOut": {
         "properties": {
@@ -10082,6 +10336,29 @@
               }
             ],
             "title": "Method Code"
+          },
+          "document_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Id"
+          },
+          "document_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Code"
           },
           "json_value": {
             "anyOf": [
@@ -19591,6 +19868,210 @@
         "type": "object",
         "title": "SpecDefinitionUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.** None 은 \"안 바꿈\" 이다."
+      },
+      "SpecDocumentCreateRequest": {
+        "properties": {
+          "workspace_slug": {
+            "type": "string",
+            "title": "Workspace Slug"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Code"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 30
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "workspace_slug",
+          "code",
+          "title"
+        ],
+        "title": "SpecDocumentCreateRequest"
+      },
+      "SpecDocumentOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "workspace_slug": {
+            "type": "string",
+            "title": "Workspace Slug"
+          },
+          "workspace_name": {
+            "type": "string",
+            "title": "Workspace Name"
+          },
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "file_count": {
+            "type": "integer",
+            "title": "File Count"
+          },
+          "linked_test_count": {
+            "type": "integer",
+            "title": "Linked Test Count"
+          },
+          "can_edit": {
+            "type": "boolean",
+            "title": "Can Edit"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "workspace_slug",
+          "workspace_name",
+          "code",
+          "title",
+          "revision",
+          "note",
+          "file_count",
+          "linked_test_count",
+          "can_edit",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "SpecDocumentOut"
+      },
+      "SpecDocumentUpdateRequest": {
+        "properties": {
+          "code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 300,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 30
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "workspace_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Workspace Slug"
+          }
+        },
+        "type": "object",
+        "title": "SpecDocumentUpdateRequest",
+        "description": "안 보낸 칸은 그대로."
       },
       "SpecGroupCreateRequest": {
         "properties": {

@@ -67,6 +67,7 @@ ATTRIBUTE_TARGETS = ("reliability_test", "equipment", "series", "method")
 #:   condition  검색 조건 축의 값.       정의의 condition_key_id 가 축, 값은 range 와 같은 칸
 #:   term       기준정보 축의 값 참조.   정의의 vocabulary_id 가 축, 값은 term_id
 #:   method     규격 참조.               값은 ref_method_id
+#:   document   사내 규격서 참조.        값은 ref_document_id
 #:
 #: condition 을 range 와 따로 두는 이유: 같은 물리량을 검색 조건 축과 **같은 축·같은 차원**
 #: 으로 적어야 나중에 「이 절차를 돌릴 수 있는 장비」 판정이 성립한다. 문장으로 받으면 그
@@ -81,6 +82,7 @@ ATTRIBUTE_KINDS = (
     "condition",
     "term",
     "method",
+    "document",
     # **값이 하나가 아닌 것들.** 「A등급 4 · B등급 4」 처럼 이름마다 숫자가 붙는다.
     # matrix 는 그 짝이 사양마다 따로 있는 것(사양 -> 등급 -> 값).
     "pairs",
@@ -270,6 +272,15 @@ class AttributeValue(Base):
         nullable=True,
     )
     """kind=method 값이 가리키는 규격. 대상 열 `method_id`(이 값이 붙은 규격)와 다르다."""
+    ref_document_id: Mapped[uuid.UUID | None] = mapped_column(
+        PgUUID(as_uuid=True),
+        # RESTRICT — 걸려 있는 규격서를 지우면 그 시험이 무엇을 따랐는지 알 수 없게 된다.
+        # 규격서는 어차피 소프트 삭제라 실제로 이 길로 지워지지 않는다.
+        ForeignKey("spec_documents.id", ondelete="RESTRICT"),
+        nullable=True,
+    )
+    """kind=document 값이 가리키는 **사내 규격서**. 공개 규격(`ref_method_id`)과 다른 표다 —
+    출처도 권한도 개정 주기도 다르다."""
     note: Mapped[str | None] = mapped_column(Text, nullable=True)
     """수치로 못 담는 단서. 「챔버 장착 시」 「시료 5개 기준」."""
 

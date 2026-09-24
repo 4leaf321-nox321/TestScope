@@ -880,6 +880,17 @@ RELIABILITY_ATTRIBUTES: tuple[
         3,
     ),
     (
+        "reliability_spec_document",
+        "규격서",
+        "document",
+        "",
+        None,
+        None,
+        "이 시험이 적힌 **사내 규격서**를 목록에서 고른다(「공통 → 사내 규격서」 에서 "
+        "등록하고 파일을 올린다). 공개 규격(ASTM·ISO)은 위의 「참조 규격」 이다.",
+        4,
+    ),
+    (
         "reliability_document_type",
         "문서 유형",
         "term",

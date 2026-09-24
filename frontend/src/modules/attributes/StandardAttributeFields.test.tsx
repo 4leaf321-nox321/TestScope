@@ -150,6 +150,7 @@ describe('정식 속성 칸', () => {
       textValue: '',
       termId: null,
       methodId: null,
+      documentId: null,
       pairs: [],
       matrix: [],
       note: '',

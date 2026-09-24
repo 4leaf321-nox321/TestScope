@@ -77,7 +77,8 @@ class AttributeValueIn(BaseModel):
 
     종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·
     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
-    term: term_id · method: method_id · pairs/matrix: json_value. 다른 칸은 무시한다.
+    term: term_id · method: method_id · document: document_id · pairs/matrix: json_value.
+    다른 칸은 무시한다.
     """
 
     definition_id: uuid.UUID | None = None
@@ -101,6 +102,8 @@ class AttributeValueIn(BaseModel):
     date_value: date | None = None
     term_id: uuid.UUID | None = None
     method_id: uuid.UUID | None = None
+    document_id: uuid.UUID | None = None
+    """kind=document — **사내 규격서**를 가리킨다(`/spec-documents`)."""
     note: str | None = Field(default=None, max_length=2000)
 
 
@@ -121,6 +124,9 @@ class AttributeValueOut(BaseModel):
     term_value: str | None
     method_id: uuid.UUID | None
     method_code: str | None
+    document_id: uuid.UUID | None = None
+    document_code: str | None = None
+    """kind=document 가 가리키는 **사내 규격서**. 공개 규격(`method_*`)과 다른 표다."""
     json_value: Any | None = None
     note: str | None
     display: str

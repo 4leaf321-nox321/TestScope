@@ -17,6 +17,7 @@ from app.modules.attachments.models import Attachment, StoredFile
 from app.modules.attributes.models import AttributeDefinition, AttributeValue
 from app.modules.audit.models import AccessLog, AuditEntry
 from app.modules.auth.models import PersonalAccessToken, RefreshToken
+from app.modules.documents.models import SpecDocument
 from app.modules.equipment.models import (
     Equipment,
     EquipmentCalibration,
@@ -91,6 +92,7 @@ __all__ = [
     "SeriesTestItemMethod",
     "SpecDefinition",
     "SpecDefinitionCategory",
+    "SpecDocument",
     "SpecGroup",
     "SpecSource",
     "StoredFile",

@@ -22,9 +22,10 @@ from app.database import Base
 #:
 #: `method` 는 **규격서 원문**이 붙는 자리다. 601건 중 원문을 가진 것이 19건뿐이라
 #: 「이 규격으로 시험하려면 어떤 장비가 필요한가」(요구 조건)를 채울 재료가 없었다.
-#: 사내 규격서도 여기 붙는다 — 여러 신뢰성 시험이 한 문서를 인용하므로, 시험마다
-#: 복사하지 않고 규격 하나에 두고 「참조 규격」 으로 가리킨다.
-ATTACHMENT_TARGETS = ("reliability_test", "method")
+#:
+#: `spec_document` 는 **사내 규격서**의 파일이다 — 원본과 개정본이 함께 붙는다.
+#: 공개 규격(`method`)과 다른 표인 이유는 `documents/models.py` 머리말에 있다.
+ATTACHMENT_TARGETS = ("reliability_test", "method", "spec_document")
 
 #: 받는 형식. 스캔본이 PDF 로 오는 일이 많아 그림만 받지 않는다.
 ALLOWED_TYPES = {

@@ -2403,6 +2403,60 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/spec-documents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Spec Documents
+         * @description 사내 규격서 — **공개 규격(`/methods`)과 다른 표다.** 부서가 만들고 부서가 고친다.
+         *
+         *     줄마다 붙은 파일 수와 **이 문서를 가리키는 신뢰성 시험 수**가 온다. 0 이면 아무도
+         *     안 쓰는 문서다.
+         */
+        get: operations["list_spec_documents_api_spec_documents_get"];
+        put?: never;
+        /**
+         * Create Spec Document
+         * @description 등록 — 그 부서의 관리자 또는 시스템 관리자. 파일은 만든 뒤에 첨부로 붙인다
+         *     (`POST /attachments` · `target="spec_document"`).
+         */
+        post: operations["create_spec_document_api_spec_documents_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/spec-documents/{document_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read Spec Document */
+        get: operations["read_spec_document_api_spec_documents__document_id__get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete Spec Document
+         * @description 지우지 않고 `deleted_at` 만 채운다. **걸려 있는 시험이 있으면 409.**
+         */
+        delete: operations["delete_spec_document_api_spec_documents__document_id__delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Spec Document
+         * @description 부분 수정. **판(`revision`)을 고치는 것이 개정이다** — 줄을 새로 만들지 않는다.
+         *     걸어 둔 신뢰성 시험의 링크가 안 끊긴다.
+         */
+        patch: operations["update_spec_document_api_spec_documents__document_id__patch"];
+        trace?: never;
+    };
     "/api/attachments": {
         parameters: {
             query?: never;
@@ -3231,7 +3285,8 @@ export interface components {
          *
          *     종류별로 채우는 칸이 다르다 — number: num_value(+unit) · range/condition: num_min·
          *     num_max(+unit) · text/choice: text_value · boolean: bool_value · date: date_value ·
-         *     term: term_id · method: method_id · pairs/matrix: json_value. 다른 칸은 무시한다.
+         *     term: term_id · method: method_id · document: document_id · pairs/matrix: json_value.
+         *     다른 칸은 무시한다.
          */
         AttributeValueIn: {
             /** Definition Id */
@@ -3266,6 +3321,8 @@ export interface components {
             term_id?: string | null;
             /** Method Id */
             method_id?: string | null;
+            /** Document Id */
+            document_id?: string | null;
             /** Note */
             note?: string | null;
         };
@@ -3304,6 +3361,10 @@ export interface components {
             method_id: string | null;
             /** Method Code */
             method_code: string | null;
+            /** Document Id */
+            document_id?: string | null;
+            /** Document Code */
+            document_code?: string | null;
             /** Json Value */
             json_value?: unknown | null;
             /** Note */
@@ -6572,6 +6633,71 @@ export interface components {
             is_active?: boolean | null;
             /** Category Term Ids */
             category_term_ids?: string[] | null;
+        };
+        /** SpecDocumentCreateRequest */
+        SpecDocumentCreateRequest: {
+            /** Workspace Slug */
+            workspace_slug: string;
+            /** Code */
+            code: string;
+            /** Title */
+            title: string;
+            /** Revision */
+            revision?: string | null;
+            /** Note */
+            note?: string | null;
+        };
+        /** SpecDocumentOut */
+        SpecDocumentOut: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Workspace Slug */
+            workspace_slug: string;
+            /** Workspace Name */
+            workspace_name: string;
+            /** Code */
+            code: string;
+            /** Title */
+            title: string;
+            /** Revision */
+            revision: string | null;
+            /** Note */
+            note: string | null;
+            /** File Count */
+            file_count: number;
+            /** Linked Test Count */
+            linked_test_count: number;
+            /** Can Edit */
+            can_edit: boolean;
+            /**
+             * Created At
+             * Format: date-time
+             */
+            created_at: string;
+            /**
+             * Updated At
+             * Format: date-time
+             */
+            updated_at: string;
+        };
+        /**
+         * SpecDocumentUpdateRequest
+         * @description 안 보낸 칸은 그대로.
+         */
+        SpecDocumentUpdateRequest: {
+            /** Code */
+            code?: string | null;
+            /** Title */
+            title?: string | null;
+            /** Revision */
+            revision?: string | null;
+            /** Note */
+            note?: string | null;
+            /** Workspace Slug */
+            workspace_slug?: string | null;
         };
         /** SpecGroupCreateRequest */
         SpecGroupCreateRequest: {
@@ -12086,6 +12212,166 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AttributeDefinitionOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_spec_documents_api_spec_documents_get: {
+        parameters: {
+            query?: {
+                workspace?: string | null;
+                q?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecDocumentOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_spec_document_api_spec_documents_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SpecDocumentCreateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecDocumentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    read_spec_document_api_spec_documents__document_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                document_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecDocumentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    delete_spec_document_api_spec_documents__document_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                document_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_spec_document_api_spec_documents__document_id__patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                document_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SpecDocumentUpdateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SpecDocumentOut"];
                 };
             };
             /** @description Validation Error */
