@@ -226,14 +226,14 @@ export default function SearchPage() {
     <div className="space-y-6">
       <PageHeader
         title="장비 검색"
-        description="시험 항목과 조건을 주면, 그것이 가능한 장비와 보유 위치를 찾습니다."
+        description="시험 항목과 조건을 주면, 그것이 수행 가능 장비와 보유 위치를 찾습니다."
       />
 
       <div className="space-y-4 rounded-md border p-4">
         <div className="flex flex-wrap items-end gap-3">
           <div className="space-y-1">
             <Label htmlFor="property">
-              물성으로 묻기
+              물성으로 검색
               <span className="text-muted-foreground ml-2 font-normal">
                 「인장강도」 처럼 — 그것을 내는 시험 항목 전부로 찾습니다
               </span>
@@ -255,7 +255,7 @@ export default function SearchPage() {
           </div>
           {property && (
             <Button variant="ghost" size="sm" onClick={() => setProperty('')}>
-              물성 풀기
+              물성 전개
             </Button>
           )}
         </div>
@@ -305,7 +305,7 @@ export default function SearchPage() {
             ))}
             {shownItems.length === 0 && (
               <p className="text-muted-foreground text-sm">
-                그 말과 맞는 시험 항목이 없습니다.
+                그 말과 조건에 맞는 시험 항목이 없습니다.
               </p>
             )}
           </div>
@@ -348,7 +348,7 @@ export default function SearchPage() {
                   }
                   className="underline"
                 >
-                  시험 항목에서 정하기
+                  시험 항목에서 지정
                 </Link>
               </p>
             )}
@@ -404,7 +404,7 @@ export default function SearchPage() {
               size="sm"
               onClick={() => setRows((current) => current.filter((_, i) => i !== index))}
             >
-              빼기
+              제거
             </Button>
           </div>
         ))}
@@ -412,11 +412,7 @@ export default function SearchPage() {
         <div className="flex flex-wrap items-center gap-3">
           {/* **어디서 찾나.** 가진 것과 세상에 있는 것은 다른 물음이라 갈라 둔다 — 한
               목록에 섞으면 「우리한테 있다」 로 읽힌다. */}
-          <div
-            className="inline-flex rounded-md border"
-            role="tablist"
-            aria-label="어디서 찾나"
-          >
+          <div className="inline-flex rounded-md border" role="tablist" aria-label="검색 범위">
             {(
               [
                 ['owned', '보유 장비에서'],

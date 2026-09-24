@@ -126,7 +126,7 @@ def create(db: Session, user: User, payload: dict[str, Any]) -> EquipmentTestIte
     if clash is not None:
         raise Conflict(
             "TSC-CAPABILITIES-0003",
-            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치세요.",
+            "같은 시험 항목·시험법의 시험 항목이 이미 있습니다. 그것을 고치십시오.",
             details={"equipment_test_item_id": str(clash.id)},
         )
 

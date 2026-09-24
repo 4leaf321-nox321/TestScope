@@ -244,9 +244,7 @@ export function TermEditorDialog({
                   <div key={key} className="space-y-1">
                     <Label htmlFor={`attr-${key}`}>
                       <span className="font-mono">{key}</span>
-                      <span className="text-muted-foreground ml-2 font-normal">
-                        그 밖의 속성
-                      </span>
+                      <span className="text-muted-foreground ml-2 font-normal">기타 속성</span>
                     </Label>
                     <Input
                       id={`attr-${key}`}
@@ -262,7 +260,7 @@ export function TermEditorDialog({
           )}
 
           <div className="space-y-2">
-            <p className="text-sm font-medium">다른 표기</p>
+            <p className="text-sm font-medium">별칭</p>
             <div className="flex flex-wrap items-center gap-1.5">
               {(term?.aliases ?? []).map((one) => (
                 <span

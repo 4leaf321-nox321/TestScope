@@ -80,7 +80,7 @@ export default function NotificationsPage() {
                   )}
                   {one.link && (
                     <Link to={one.link} className="mt-1 inline-block text-xs underline">
-                      보러 가기
+                      바로 가기
                     </Link>
                   )}
                 </div>

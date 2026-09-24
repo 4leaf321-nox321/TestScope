@@ -132,7 +132,7 @@ describe('기준정보 편집', () => {
     // 축의 칸 셋. 스키마에 없는 domain 은 「그 밖의 속성」 으로 보인다 — 지우지 않는다.
     expect((screen.getByLabelText(/기호/) as HTMLInputElement).value).toBe('Rp0.2')
     expect((screen.getByLabelText(/조건 축/) as HTMLInputElement).value).toBe('temperature_k')
-    expect(screen.getByText('그 밖의 속성')).toBeTruthy()
+    expect(screen.getByText('기타 속성')).toBeTruthy()
 
     fireEvent.change(screen.getByLabelText(/SI 단위/), { target: { value: 'MPa' } })
     fireEvent.change(screen.getByLabelText(/조건 축/), {
@@ -195,7 +195,7 @@ describe('기준정보 편집', () => {
   it('축의 설명·정책·속성 칸을 저장한다', async () => {
     await open()
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: /축 고치기/ }))
+      fireEvent.click(screen.getByRole('button', { name: /축 편집/ }))
     })
     fireEvent.change(screen.getByLabelText('설명'), { target: { value: '고친 설명' } })
     await act(async () => {

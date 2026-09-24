@@ -515,7 +515,7 @@ function SchemaView({
         id: one.slug,
         label: one.label,
         sublabel: `${one.count.toLocaleString()}개`,
-        card: [one.label, `${one.count.toLocaleString()}개 · 더블클릭: 이 종류 전체 그리기`],
+        card: [one.label, `${one.count.toLocaleString()}개 · 더블클릭: 이 종류 전체 표시`],
         color: one.count === 0 ? withAlpha(typeColor(one.slug), 0.35) : typeColor(one.slug),
         // 객체 수에 비례하되 sqrt 로 완만하게 — 1개와 1만 개가 백 배 차이 나면 작은 것이 안 보인다.
         radius: 7 + Math.sqrt(one.count / maxCount) * 12,
@@ -618,8 +618,8 @@ function SchemaView({
           )}
           {flow.dropped > 0 && (
             <p className="text-muted-foreground px-2 pb-1 text-xs">
-              되돌아오는 관계 {flow.dropped}개는 흐름에서 뺐습니다 — 흐름 그림은 한 방향으로만
-              흐릅니다. 그 관계들은 <strong>그물</strong>에서 보입니다.
+              되돌아오는 관계 {flow.dropped}개는 흐름에서 뺐습니다 — 흐름 그래프는 한
+              방향으로만 흐릅니다. 그 관계들은 <strong>그물</strong>에서 보입니다.
             </p>
           )}
         </div>
@@ -728,7 +728,7 @@ function SchemaView({
                 disabled={picked.count === 0}
                 onClick={() => onDrawType(picked.slug)}
               >
-                <Play className="mr-1 size-3.5" />이 종류 전체 그리기
+                <Play className="mr-1 size-3.5" />이 종류 전체 표시
               </Button>
             </div>
           </div>
@@ -1037,7 +1037,7 @@ function ExploreView({
     () => [
       { keys: 'Enter', what: '고른 노드에서 확장' },
       { keys: 'Shift+Enter', what: '고른 노드를 중심으로' },
-      { keys: '/', what: '그림 안에서 검색' },
+      { keys: '/', what: '그래프에서 검색' },
       { keys: 'R', what: '새로고침' },
     ],
     [],
@@ -1126,7 +1126,7 @@ function ExploreView({
             </Select>
           </label>
           <label className="col-span-2 space-y-1">
-            <span className="text-muted-foreground text-xs">그림에 세울 노드</span>
+            <span className="text-muted-foreground text-xs">그래프에 표시할 노드</span>
             <Select
               value={String(nodeLimit)}
               onValueChange={(value) => setNodeLimit(Number(value))}
@@ -1148,8 +1148,8 @@ function ExploreView({
                 그것을 고장으로 읽고, 다음부터 이 화면을 안 연다. */}
             {nodeLimit > NODE_LIMITS[1] && (
               <span className="text-muted-foreground block text-xs">
-                수천 개를 한 그림에 두면 배치가 느려집니다 — 1만 개가 넘으면 자리 잡는 데 수십
-                초가 걸릴 수 있습니다. 필터로 좁히는 편이 대개 빠르고 잘 읽힙니다.
+                수천 개를 한 그래프에 두면 배치가 느려집니다 — 1만 개가 넘으면 자리 잡는 데
+                수십 초가 걸릴 수 있습니다. 필터로 좁히는 편이 대개 빠르고 잘 읽힙니다.
               </span>
             )}
           </label>
@@ -1226,7 +1226,7 @@ function ExploreView({
                     event.currentTarget.blur()
                   }
                 }}
-                placeholder="그림 안에서 검색 (/) — 맞는 노드만 또렷하게"
+                placeholder="그래프에서 검색 (/) — 맞는 노드만 또렷하게"
                 className="pl-8"
                 disabled={nodeList.length < 2}
               />
@@ -1240,7 +1240,7 @@ function ExploreView({
               size="icon-sm"
               variant="outline"
               aria-label="새로고침"
-              title="같은 씨앗을 다시 읽기 (R)"
+              title="다시 불러오기 (R)"
               disabled={loading}
               onClick={() => setReloadTick((value) => value + 1)}
             >
@@ -1250,7 +1250,7 @@ function ExploreView({
         )}
         {!seed ? (
           <EmptyState
-            title="시작점을 선택하세요"
+            title="시작점을 선택하십시오"
             hint="왼쪽에서 이름으로 찾거나(시험 항목·규격·계열·장비 …), 종류에서 훑어 고르거나, 한 종류를 전부 그립니다. 모든 종류를 한 번에 그리는 단추는 없습니다 — 전체 모양은 「구조」 에서 봅니다."
           />
         ) : (
@@ -1285,7 +1285,7 @@ function ExploreView({
                   <div className="text-muted-foreground absolute inset-x-0 top-3 text-center text-xs">
                     연결된 관계가 없습니다
                     {relationFilter.size + typeFilter.size > 0
-                      ? ' — 필터를 넓혀 보세요.'
+                      ? ' — 필터를 넓혀 보십시오.'
                       : '.'}
                   </div>
                 )}
@@ -1537,8 +1537,8 @@ function NodeDetail({
                       className="hover:bg-muted flex w-full items-baseline justify-between gap-2 rounded px-1.5 py-0.5 text-left text-xs disabled:cursor-default disabled:opacity-60"
                       title={
                         here
-                          ? '그림에서 선택'
-                          : '그림에 없습니다 — 「여기서 확장」 로 불러옵니다'
+                          ? '그래프에서 선택'
+                          : '그래프에 없습니다 — 「여기서 확장」 로 불러옵니다'
                       }
                       disabled={!here}
                       onClick={() => onSelect(one.node_id)}
@@ -1708,7 +1708,7 @@ function SeedPanel({
         )}
       </div>
       {text.trim() && !searching && hits.length === 0 && (
-        <p className="text-muted-foreground text-xs">맞는 것이 없습니다.</p>
+        <p className="text-muted-foreground text-xs">결과가 없습니다.</p>
       )}
       {hits.length > 0 && (
         <ul className="space-y-0.5 rounded-md border p-1">
@@ -1811,7 +1811,7 @@ function SeedPanel({
             )}
             {rows.items.length === 0 ? (
               <p className="text-muted-foreground text-xs">
-                {browsing ? '읽는 중…' : '보이는 객체가 없습니다.'}
+                {browsing ? '불러오는 중…' : '보이는 객체가 없습니다.'}
               </p>
             ) : (
               <ul className="space-y-0.5 rounded-md border p-1">

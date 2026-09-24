@@ -59,7 +59,7 @@ export default function WorkspaceHomePage() {
         {/* **0 건인 항목은 서버가 안 내보낸다.** 다 0 인 목록을 매일 보면 사람은
             그 자리를 아예 안 읽게 되고, 그때 진짜 하나가 떠도 눈에 안 들어온다. */}
         {maintenance.data && maintenance.data.length === 0 ? (
-          <p className="text-muted-foreground text-sm">지금 처리할 일이 없습니다.</p>
+          <p className="text-muted-foreground text-sm">처리할 항목이 없습니다.</p>
         ) : (
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {(maintenance.data ?? []).map((one) => (
@@ -78,7 +78,7 @@ export default function WorkspaceHomePage() {
                     to={one.link}
                     className="text-muted-foreground mt-2 block text-xs underline"
                   >
-                    보러 가기
+                    바로 가기
                   </Link>
                 )}
               </li>

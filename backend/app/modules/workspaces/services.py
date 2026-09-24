@@ -381,7 +381,7 @@ def delete(db: Session, *, slug: str, actor: User) -> None:
         detail = ", ".join(f"{one.label} {one.count}건" for one in blocking)
         raise Conflict(
             "TSC-WORKSPACES-0006",
-            f"이 부서를 가리키는 것이 남아 있습니다({detail}). 먼저 옮기거나 정리하세요.",
+            f"이 부서를 가리키는 것이 남아 있습니다({detail}). 먼저 옮기거나 정리하십시오.",
         )
     audit.record(
         db,
@@ -468,7 +468,7 @@ def set_role(db: Session, *, workspace: Workspace, user_id: uuid.UUID, role: str
     ):
         raise Conflict(
             "TSC-WORKSPACES-0012",
-            "부서의 마지막 관리자입니다. 다른 사람을 관리자로 올린 뒤에 바꾸세요.",
+            "부서의 마지막 관리자입니다. 다른 사람을 관리자로 올린 뒤에 바꾸십시오.",
         )
 
     member.role = role
@@ -498,7 +498,7 @@ def remove_member(db: Session, *, workspace: Workspace, user_id: uuid.UUID) -> N
     if member.role == "manager" and _manager_count(db, workspace.id) <= 1:
         raise Conflict(
             "TSC-WORKSPACES-0012",
-            "부서의 마지막 관리자입니다. 다른 사람을 관리자로 올린 뒤에 빼세요.",
+            "부서의 마지막 관리자입니다. 다른 사람을 관리자로 올린 뒤에 빼십시오.",
         )
     db.delete(member)
     db.commit()

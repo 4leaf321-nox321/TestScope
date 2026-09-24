@@ -60,7 +60,7 @@ function PairRows({
           {unit && <span className="text-muted-foreground w-6 text-sm">{unit}</span>}
           <button
             type="button"
-            aria-label={`${row.label || `${index + 1}번째`} 줄 빼기`}
+            aria-label={`${row.label || `${index + 1}번째`} 줄 제거`}
             className="text-muted-foreground hover:text-foreground"
             onClick={() => onChange(rows.filter((_, at) => at !== index))}
           >
@@ -127,7 +127,7 @@ export function MatrixEditor({
             />
             <button
               type="button"
-              aria-label={`${row.label || `${index + 1}번째`} 사양 빼기`}
+              aria-label={`${row.label || `${index + 1}번째`} 사양 제거`}
               className="text-muted-foreground hover:text-foreground"
               onClick={() => onChange(shown.filter((_, at) => at !== index))}
             >

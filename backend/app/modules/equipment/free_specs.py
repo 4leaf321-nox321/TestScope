@@ -225,7 +225,7 @@ def promote(
         raise AppError(
             "TSC-SPEC-0023",
             f"「{row.value_text}」 를 {kind} 로 읽을 수 없습니다. 값을 숫자로 고치거나 종류를"
-            " 「글자」 로 하세요.",
+            " 「글자」 로 하십시오.",
             status=400,
         )
     db.commit()

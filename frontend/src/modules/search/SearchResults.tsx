@@ -48,9 +48,9 @@ function whyUnknown(reason: string | null | undefined, scope: 'owned' | 'catalog
     case 'no_range':
       return `${where} 범위가 비어 있습니다`
     case 'no_max':
-      return `${where} 상한이 없어 「이상」 을 판정할 수 없습니다 — 상한을 적으세요`
+      return `${where} 상한이 없어 「이상」 을 판정할 수 없습니다 — 상한을 적으십시오`
     case 'no_min':
-      return `${where} 하한이 없어 「이하」 를 판정할 수 없습니다 — 하한을 적으세요`
+      return `${where} 하한이 없어 「이하」 를 판정할 수 없습니다 — 하한을 적으십시오`
     default:
       return ''
   }
@@ -69,7 +69,7 @@ function Diagnosis({ result }: { result: SearchResponse }) {
       ) : (
         <li>
           조건에 걸려 빠진 시험 항목이 <strong>{result.unmet_count}건</strong> 있습니다
-          {d && ` (이 시험을 적은 장비 ${d.equipment_with_item}대 중)`}. 조건을 넓혀 보세요.
+          {d && ` (이 시험을 적은 장비 ${d.equipment_with_item}대 중)`}. 조건을 넓혀 보십시오.
         </li>
       )}
       {d && d.catalog_series_with_item > 0 && (
@@ -83,7 +83,7 @@ function Diagnosis({ result }: { result: SearchResponse }) {
           기종에 안 이어진 장비가 <strong>{d.unlinked_equipment}대</strong> 있습니다 — 그
           장비들은 카탈로그의 시험 항목을 못 받아 검색에 안 걸립니다.{' '}
           <Link to="/equipment?catalog=unlinked" className="underline">
-            이어 주기
+            기종 연결
           </Link>
         </li>
       )}
@@ -92,7 +92,7 @@ function Diagnosis({ result }: { result: SearchResponse }) {
           시험 항목이 하나도 안 적힌 장비가 <strong>{result.unregistered_equipment}대</strong>{' '}
           있습니다.{' '}
           <Link to="/equipment?test_item=none" className="underline">
-            적으러 가기
+            시험 항목 입력
           </Link>
         </li>
       )}
@@ -294,7 +294,7 @@ export function SearchResult({ result }: { result: SearchResponse }) {
                           to={`/equipment/${hit.equipment_id}`}
                           className="underline decoration-dotted underline-offset-2"
                         >
-                          채우기
+                          값 입력
                         </Link>
                       </span>
                     )}
@@ -302,9 +302,7 @@ export function SearchResult({ result }: { result: SearchResponse }) {
                       <Accessory offer={one.accessory} />
                     ) : (
                       one.verdict === 'accessory' && (
-                        <span className="text-amber-700">
-                          옵션 부속(챔버·노)이 있어야 되는 범위
-                        </span>
+                        <span className="text-amber-700">옵션 부속(챔버·노) 기준 범위</span>
                       )
                     )}
                   </li>

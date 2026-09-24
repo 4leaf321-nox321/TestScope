@@ -499,8 +499,8 @@ function ProposalRow({
               <Input
                 value={direct}
                 onChange={(event) => setDirect(event.target.value)}
-                placeholder="직접 적기 — 후보에 없는 표기"
-                aria-label="별칭 직접 적기"
+                placeholder="직접 입력 — 후보에 없는 표기"
+                aria-label="별칭 직접 입력"
                 className="w-56"
               />
             )}
@@ -587,7 +587,8 @@ function ProposalRow({
             )}
             {recommended && !picked.length && !direct && (
               <span className="text-muted-foreground text-xs">
-                추천을 따르려면 「{recommended.label}」 을 누르세요 — 자동으로 고르지 않습니다.
+                추천을 따르려면 「{recommended.label}」 을 누르십시오 — 자동으로 고르지
+                않습니다.
               </span>
             )}
             {majority && !live.my_vote && picked.length > 0 && (

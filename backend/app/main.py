@@ -132,7 +132,7 @@ def _guard_production_secrets(settings: Settings) -> None:
         return
     if settings.jwt_secret == Settings.model_fields["jwt_secret"].default:
         raise RuntimeError(
-            "JWT_SECRET 이 기본값입니다. .env 에 난수 값을 넣고 다시 시작하세요."
+            "JWT_SECRET 이 기본값입니다. .env 에 난수 값을 넣고 다시 시작하십시오."
         )
 
 

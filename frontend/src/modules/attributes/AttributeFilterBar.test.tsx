@@ -70,9 +70,9 @@ suite('속성 거르기 칸', () => {
     await waitFor(() => expect(screen.getByText('시험 온도 100 degC 이상')).toBeTruthy())
     expect(screen.getByText('장비 용도 고온 포함')).toBeTruthy()
     // 여러 조건은 **모두** 만족해야 한다 — 「또는」 으로 읽으면 결과 수를 오해한다.
-    expect(screen.getByText('모두 만족하는 것만')).toBeTruthy()
+    expect(screen.getByText('조건 모두 만족')).toBeTruthy()
 
-    await userEvent.click(screen.getByRole('button', { name: '시험 온도 100 degC 이상 빼기' }))
+    await userEvent.click(screen.getByRole('button', { name: '시험 온도 100 degC 이상 제거' }))
     expect(onChange).toHaveBeenCalledWith(['use_x~고온'])
   })
 

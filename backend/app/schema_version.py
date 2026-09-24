@@ -53,7 +53,7 @@ def warn_if_behind(engine: Engine) -> str | None:
 
     logger.warning(
         "데이터베이스가 코드보다 뒤처져 있습니다: %s -> %s. "
-        "`alembic upgrade head` 를 돌리세요. "
+        "`alembic upgrade head` 를 돌리십시오. "
         "그전까지는 새 컬럼을 읽는 화면이 500 으로 실패합니다.",
         current,
         head,

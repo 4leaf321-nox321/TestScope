@@ -70,7 +70,7 @@ export function ChangePasswordDialog({
           <DialogHeader>
             <DialogTitle>비밀번호 변경</DialogTitle>
             <DialogDescription>
-              바꾸면 다른 기기의 로그인이 모두 끊깁니다. 다시 로그인해 주세요.
+              바꾸면 다른 기기의 로그인이 모두 끊깁니다. 다시 로그인해 주십시오.
             </DialogDescription>
           </DialogHeader>
 

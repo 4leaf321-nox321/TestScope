@@ -83,7 +83,7 @@ export default function SpecDefinitionsPage() {
       <PageHeader
         back={{ to: '/reference?kind=model', label: '기준정보' }}
         title="장비 기종 사양"
-        description="장비 모델에 적을 수 있는 칸입니다. 붙는 분류를 비워 두면 모든 장비에 뜹니다 — 전원·무게처럼 분류를 가리지 않는 것이 실제로 많습니다."
+        description="장비 모델에 적을 수 있는 칸입니다. 적용 분류를 비워 두면 모든 장비에 뜹니다 — 전원·무게처럼 분류를 가리지 않는 것이 실제로 많습니다."
       />
 
       {canEdit && (
@@ -191,7 +191,7 @@ export default function SpecDefinitionsPage() {
             <TableHead>그룹</TableHead>
             <TableHead>종류</TableHead>
             <TableHead>단위</TableHead>
-            <TableHead>붙는 분류</TableHead>
+            <TableHead>적용 분류</TableHead>
             <TableHead>검색 조건</TableHead>
             <TableHead className="text-right">참조</TableHead>
             <TableHead className="text-right">사용</TableHead>
@@ -283,7 +283,7 @@ export default function SpecDefinitionsPage() {
                       )
                     }
                   >
-                    {one.is_active ? '끄기' : '켜기'}
+                    {one.is_active ? '비활성화' : '활성화'}
                   </Button>
                 )}
               </TableCell>
@@ -295,7 +295,7 @@ export default function SpecDefinitionsPage() {
       {/* 조건 정의를 못 찾은 사람이 여기서 헤매지 않게 길을 적어 둔다. */}
       <p className="text-muted-foreground text-xs">
         검색 조건에 잇는 것은 지금 {conditions.data?.length ?? 0}개 조건 중에서 고릅니다. 새
-        축이 필요하면 「시험 항목 검색 조건」 에서 먼저 만드세요.
+        축이 필요하면 「시험 항목 검색 조건」 에서 먼저 만드십시오.
       </p>
     </div>
   )

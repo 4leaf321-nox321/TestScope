@@ -318,11 +318,11 @@ describe('시험 항목 고르기', () => {
   })
 })
 
-describe('물성으로 묻기', () => {
-  it('이어진 것만 고르게 하고, 고른 물성이 서버로 간다', async () => {
+describe('물성으로 검색', () => {
+  it('연결된 것만 고르게 하고, 고른 물성이 서버로 간다', async () => {
     await open()
     // 검색 화면은 **이어진 물성만** 받는다 — 연결 없는 것을 골라 봐야 결과가 늘 빈다.
-    const trigger = screen.getByLabelText(/물성으로 묻기/)
+    const trigger = screen.getByLabelText(/물성으로 검색/)
     expect(trigger.textContent).toContain('물성 (선택)')
 
     await act(async () => {
@@ -379,10 +379,10 @@ describe('왜 모르는지, 왜 없는지', () => {
     expect(screen.getByText(/카탈로그에는 이 시험을 하는 계열이/).textContent).toContain(
       '12개',
     )
-    expect(screen.getByRole('link', { name: '이어 주기' }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: '기종 연결' }).getAttribute('href')).toBe(
       '/equipment?catalog=unlinked',
     )
-    expect(screen.getByRole('link', { name: '적으러 가기' }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: '시험 항목 입력' }).getAttribute('href')).toBe(
       '/equipment?test_item=none',
     )
   })
@@ -392,7 +392,7 @@ describe('왜 모르는지, 왜 없는지', () => {
     await act(async () => chip('압축').click())
     await act(async () => chip('검색').click())
     expect(screen.getByText(/상한이 없어 「이상」 을 판정할 수 없습니다/)).toBeTruthy()
-    expect(screen.getByRole('link', { name: '채우기' }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: '값 입력' }).getAttribute('href')).toBe(
       '/equipment/q1',
     )
   })
@@ -413,7 +413,7 @@ describe('조건은 시험 항목이 정한다', () => {
     await act(async () => chip('압축').click())
     // 조용히 일곱 개를 다 내면 사람은 뭘 채워야 하는지 모른다.
     expect(screen.getByText(/검색 조건이 아직 안 정해져/)).toBeTruthy()
-    expect(screen.getByText('시험 항목에서 정하기').closest('a')?.getAttribute('href')).toBe(
+    expect(screen.getByText('시험 항목에서 지정').closest('a')?.getAttribute('href')).toBe(
       '/catalog/test-items/t2',
     )
   })

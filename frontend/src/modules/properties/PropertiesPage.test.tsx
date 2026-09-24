@@ -137,10 +137,10 @@ describe('물성 항목', () => {
     expect(screen.getByText('전기')).toBeTruthy()
   })
 
-  it('「이어진 것만」 을 켜면 이어진 것이 없는 줄이 빠진다', async () => {
+  it('「연결된 것만」 을 켜면 이어진 것이 없는 줄이 빠진다', async () => {
     await open()
     await act(async () => {
-      fireEvent.click(screen.getByLabelText('이어진 것만'))
+      fireEvent.click(screen.getByLabelText('연결된 것만'))
     })
     expect(screen.queryByText('밴드갭')).toBeNull()
     expect(screen.getByText('인장강도(UTS)')).toBeTruthy()
@@ -183,7 +183,7 @@ describe('물성 항목', () => {
   it('멤버에게는 확인·지우기 단추가 없다', async () => {
     await open()
     expect(screen.queryByLabelText('인장 연결 확인')).toBeNull()
-    expect(screen.queryByText('시험 잇기')).toBeNull()
+    expect(screen.queryByText('시험 연결')).toBeNull()
   })
 
   it('관리자는 제안을 확인하고, 시험을 잇고, 지운다', async () => {
@@ -199,7 +199,7 @@ describe('물성 항목', () => {
     })
 
     await act(async () => {
-      fireEvent.click(screen.getAllByText('시험 잇기')[1])
+      fireEvent.click(screen.getAllByText('시험 연결')[1])
     })
     // 피커가 뜬다 — 87종을 <Select> 에 펼치지 않는다.
     expect(screen.getByRole('button', { name: '시험 항목' })).toBeTruthy()

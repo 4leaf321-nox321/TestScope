@@ -99,7 +99,7 @@ function AxisEditor({
           )}
         </div>
         <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
-          <Pencil className="mr-1 size-3" />축 고치기
+          <Pencil className="mr-1 size-3" />축 편집
         </Button>
       </div>
     )
@@ -117,7 +117,7 @@ function AxisEditor({
           />
         </div>
         <div className="space-y-1">
-          <Label htmlFor="axis-policy">값을 더하는 정책</Label>
+          <Label htmlFor="axis-policy">값 추가 정책</Label>
           <Select value={policy} onValueChange={setPolicy}>
             <SelectTrigger id="axis-policy">
               <SelectValue />
@@ -142,7 +142,7 @@ function AxisEditor({
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label>값이 갖는 칸 (속성)</Label>
+          <Label>값 속성 항목</Label>
           <Button
             variant="ghost"
             size="sm"
@@ -197,7 +197,7 @@ function AxisEditor({
             <Button
               variant="ghost"
               size="sm"
-              aria-label={`속성 ${index + 1} 빼기`}
+              aria-label={`속성 ${index + 1} 제거`}
               onClick={() => setFields((current) => current.filter((_, i) => i !== index))}
             >
               <Trash2 className="size-4" />
@@ -355,7 +355,7 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
               <TableHead>값</TableHead>
               <TableHead>코드</TableHead>
               <TableHead>상위 값</TableHead>
-              <TableHead>다른 표기</TableHead>
+              <TableHead>별칭</TableHead>
               <TableHead>상태</TableHead>
               <TableHead className="text-right">참조</TableHead>
               <TableHead className="text-right"> </TableHead>
@@ -392,7 +392,7 @@ export function AxisPanel({ slug, canEdit }: { slug: string; canEdit: boolean })
                     <button
                       type="button"
                       className="underline decoration-dotted underline-offset-2"
-                      title="무엇이 이 값을 쓰는지 본다"
+                      title="이 값의 사용처 보기"
                       onClick={() => setEditing(term)}
                     >
                       {term.usage_count}

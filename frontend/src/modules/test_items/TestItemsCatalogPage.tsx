@@ -146,9 +146,11 @@ export default function TestItemsCatalogPage() {
 
       {rows.data && shown.length === 0 ? (
         <EmptyState
-          title="맞는 시험 항목이 없습니다"
+          title="조건에 맞는 시험 항목이 없습니다"
           hint={
-            gap ? '이 공백은 다 채워졌습니다 — 필터를 해제해 보세요.' : '검색어를 바꿔 보세요.'
+            gap
+              ? '이 공백은 다 채워졌습니다 — 필터를 해제해 보십시오.'
+              : '검색어를 바꿔 보십시오.'
           }
         />
       ) : (
@@ -158,7 +160,7 @@ export default function TestItemsCatalogPage() {
               <TableHead>시험 항목</TableHead>
               <TableHead className="text-right">측정 물성</TableHead>
               <TableHead className="text-right">규격</TableHead>
-              <TableHead className="text-right">가능 계열 / 기종</TableHead>
+              <TableHead className="text-right">수행 가능 계열 · 기종</TableHead>
               <TableHead className="text-right">보유 장비</TableHead>
               <TableHead>검색 조건</TableHead>
             </TableRow>

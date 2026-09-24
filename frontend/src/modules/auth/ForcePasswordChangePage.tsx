@@ -52,7 +52,7 @@ export default function ForcePasswordChangePage() {
     <div className="flex min-h-svh items-center justify-center p-6">
       <form onSubmit={submit} className="w-full max-w-sm space-y-5">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight">비밀번호를 바꿔 주세요</h1>
+          <h1 className="text-xl font-semibold tracking-tight">비밀번호를 바꿔 주십시오</h1>
           <p className="text-muted-foreground mt-1 text-sm">
             임시 비밀번호로 로그인했습니다. 바꾸기 전에는 다른 화면을 쓸 수 없습니다.
           </p>

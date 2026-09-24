@@ -91,7 +91,9 @@ def parse(text: str) -> list[dict[str, str]]:
     body = text.lstrip("﻿").strip()
     if not body:
         raise AppError(
-            "TSC-WORKSPACES-0020", "비어 있습니다. 부서 정보 CSV 를 붙여넣으세요.", status=422
+            "TSC-WORKSPACES-0020",
+            "비어 있습니다. 부서 정보 CSV 를 붙여넣으십시오.",
+            status=422,
         )
     first = body.splitlines()[0]
     delimiter = "\t" if first.count("\t") > first.count(",") else ","
@@ -102,7 +104,7 @@ def parse(text: str) -> list[dict[str, str]]:
         raise AppError(
             "TSC-WORKSPACES-0020",
             f"부서 정보 형식이 아닙니다 — {', '.join(missing)} 열이 없습니다. "
-            "ReportArchive 의 「부서 정보 내보내기」 파일을 머리글까지 붙여넣으세요.",
+            "ReportArchive 의 「부서 정보 내보내기」 파일을 머리글까지 붙여넣으십시오.",
             status=422,
         )
     return [

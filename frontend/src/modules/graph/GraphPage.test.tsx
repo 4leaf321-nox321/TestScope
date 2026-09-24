@@ -221,7 +221,7 @@ describe('지식 그래프', () => {
     // 옆 판 — 객체 수와 걸린 관계 종류.
     expect(screen.getByText('433')).toBeTruthy()
     expect(screen.getAllByText(/수행 가능 시험 항목/).length).toBeGreaterThan(0)
-    expect(screen.getByRole('button', { name: /이 종류 전체 그리기/ })).toBeTruthy()
+    expect(screen.getByRole('button', { name: /이 종류 전체 표시/ })).toBeTruthy()
   })
 
   it('검색으로 시작점을 고르면 이웃을 들고, 잘린 노드에 +N 이 붙으며 상세가 확장을 낸다', async () => {

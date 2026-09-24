@@ -159,7 +159,7 @@ export default function ConditionsPage() {
                       )
                     }
                   >
-                    {one.is_active ? '끄기' : '켜기'}
+                    {one.is_active ? '비활성화' : '활성화'}
                   </Button>
                 )}
               </TableCell>

@@ -229,6 +229,6 @@ def register_error_handlers(app: FastAPI) -> None:
             status_code=500,
             content=_body(
                 "TSC-COMMON-0500",
-                "서버 오류가 발생했습니다. 요청 ID를 관리자에게 알려주세요.",
+                "서버 오류가 발생했습니다. 요청 ID를 관리자에게 알려주십시오.",
             ),
         )

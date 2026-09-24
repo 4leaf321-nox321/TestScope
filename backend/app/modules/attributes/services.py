@@ -217,7 +217,7 @@ def create_definition(db: Session, user: User, payload: dict[str, Any]) -> Attri
         raise AppError("TSC-ATTR-0003", f"모르는 상태입니다: {status}")
     label = clean(str(payload["label"]))
     if not label:
-        raise AppError("TSC-ATTR-0006", "이름을 적어 주세요.")
+        raise AppError("TSC-ATTR-0006", "이름을 적어 주십시오.")
     if _find_by_label(db, target, label) is not None:
         raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있습니다: {label}")
     _check_axes(db, kind, payload)
@@ -257,7 +257,7 @@ def update_definition(
     if "label" in changes:
         label = clean(str(changes["label"]))
         if not label:
-            raise AppError("TSC-ATTR-0006", "이름을 적어 주세요.")
+            raise AppError("TSC-ATTR-0006", "이름을 적어 주십시오.")
         if _find_by_label(db, row.target, label, except_id=row.id) is not None:
             raise Conflict("TSC-ATTR-0007", f"같은 이름의 속성이 있습니다: {label}")
         row.label = label
@@ -272,7 +272,7 @@ def update_definition(
         if _value_counts(db, [row.id]).get(row.id, 0) > 0:
             raise Conflict(
                 "TSC-ATTR-0008",
-                "값이 적힌 속성의 종류는 바꿀 수 없습니다. 새 속성을 만들고 합치세요.",
+                "값이 적힌 속성의 종류는 바꿀 수 없습니다. 새 속성을 만들고 합치십시오.",
             )
         row.kind = kind
     if "unit" in changes:
@@ -321,7 +321,8 @@ def delete_definition(db: Session, definition_id: uuid.UUID) -> None:
     row = get_definition(db, definition_id)
     if _value_counts(db, [row.id]).get(row.id, 0) > 0:
         raise Conflict(
-            "TSC-ATTR-0013", "값이 적힌 속성은 지울 수 없습니다. 끄거나 다른 속성에 합치세요."
+            "TSC-ATTR-0013",
+            "값이 적힌 속성은 지울 수 없습니다. 끄거나 다른 속성에 합치십시오.",
         )
     pointing = db.scalar(
         select(AttributeDefinition.id).where(AttributeDefinition.merged_into_id == row.id)
@@ -423,7 +424,7 @@ def _check_value_shape(
     ):
         raise AppError(
             "TSC-ATTR-0011",
-            f"「{label}」 은 최소·최대 중 하나를 적거나, 숫자로 못 적으면 비고에 적으세요.",
+            f"「{label}」 은 최소·최대 중 하나를 적거나, 숫자로 못 적으면 비고에 적으십시오.",
         )
     if (
         kind in ("range", "condition")
@@ -524,7 +525,7 @@ def set_values(
         else:
             label = clean(item.new_label or "")
             if not label:
-                raise AppError("TSC-ATTR-0006", "속성 이름을 적어 주세요.")
+                raise AppError("TSC-ATTR-0006", "속성 이름을 적어 주십시오.")
             definition = _ensure_draft(db, user, target, label, item.new_kind)
         _check_value_shape(db, definition, item)
         numeric = definition.kind in _NUMERIC_KINDS

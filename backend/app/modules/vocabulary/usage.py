@@ -90,7 +90,7 @@ def detach_reference(
     else:
         raise AppError(
             "TSC-VOCAB-0014",
-            f"{kind.label}은(는) 비울 수 없는 칸입니다. 다른 값으로 옮기세요.",
+            f"{kind.label}은(는) 비울 수 없는 칸입니다. 다른 값으로 옮기십시오.",
             status=400,
         )
     audit.record(

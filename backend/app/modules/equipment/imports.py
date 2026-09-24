@@ -249,7 +249,7 @@ def _header_map(
         raise AppError(
             "TSC-IMPORT-0003",
             f"머리글에 다음 열이 없습니다: {' · '.join(missing)}. "
-            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보세요.",
+            f"엑셀에서 **머리글 줄까지 함께** 복사했는지 보십시오.",
             status=400,
             details={"missing": missing},
         )
@@ -393,7 +393,7 @@ class Lookup:
             problems.add(
                 field,
                 f"「{text}」 가 기준정보에 없습니다"
-                + ("" if can else ". 기준정보에서 먼저 만드세요"),
+                + ("" if can else ". 기준정보에서 먼저 만드십시오"),
                 make_axis=axis if can else None,
                 make_value=body if can else None,
             )
@@ -625,12 +625,12 @@ def _update_plan(
         if owner is not None and owner.slug != payload["workspace_slug"]:
             problems.add(
                 "workspace",
-                "반입으로는 부서를 옮길 수 없습니다. 상세 화면에서 이관하세요",
+                "반입으로는 부서를 옮길 수 없습니다. 상세 화면에서 이관하십시오",
             )
     if clean(picked.get("model", "")) and payload.get("model_id") != existing.model_id:
         problems.add(
             "model",
-            "반입으로는 기종을 바꿀 수 없습니다. 상세 화면에서 바꾸세요",
+            "반입으로는 기종을 바꿀 수 없습니다. 상세 화면에서 바꾸십시오",
         )
 
     changes: dict[str, Any] = {}
@@ -667,7 +667,7 @@ def run(
     if len(text) > MAX_CHARS:
         raise AppError(
             "TSC-IMPORT-0004",
-            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리세요.",
+            f"붙여넣은 내용이 너무 깁니다 ({len(text) // 1024}천 자). 나눠 올리십시오.",
             status=400,
         )
     body = text.replace("\r\n", "\n").replace("\r", "\n").strip("\n")
@@ -676,7 +676,7 @@ def run(
     if not body.strip():
         raise AppError(
             "TSC-IMPORT-0006",
-            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하세요.",
+            "붙여넣은 내용이 없습니다. 엑셀에서 **머리글 줄까지 함께** 복사하십시오.",
             status=400,
         )
 
@@ -690,7 +690,7 @@ def run(
         if len(picked_rows) >= MAX_ROWS:
             raise AppError(
                 "TSC-IMPORT-0005",
-                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으세요.",
+                f"한 번에 {MAX_ROWS}줄까지 받습니다. 나눠 붙여넣으십시오.",
                 status=400,
             )
         picked = {field: (values.get(column) or "") for field, column in header.items()}

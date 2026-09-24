@@ -66,10 +66,10 @@ export default function AuditPage() {
           <TableHeader>
             <TableRow>
               <TableHead>시각</TableHead>
-              <TableHead>한 일</TableHead>
-              <TableHead>누가</TableHead>
+              <TableHead>작업</TableHead>
+              <TableHead>수행자</TableHead>
               <TableHead>대상</TableHead>
-              <TableHead>바뀐 것</TableHead>
+              <TableHead>변경 내용</TableHead>
               <TableHead>요청 ID</TableHead>
             </TableRow>
           </TableHeader>

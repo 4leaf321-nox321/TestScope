@@ -168,7 +168,11 @@ export const router = createBrowserRouter([
           {
             path: '*',
             element: (
-              <Placeholder title="없는 페이지" phase="—" description="주소를 확인해 주세요." />
+              <Placeholder
+                title="존재하지 않는 페이지"
+                phase="—"
+                description="주소를 확인해 주십시오."
+              />
             ),
           },
         ],

@@ -119,7 +119,7 @@ function KindPanel({ kind }: { kind: ObjectKind }) {
       </section>
 
       <section className="space-y-1">
-        <h3 className="text-sm font-medium">관리자가 정의한 칸</h3>
+        <h3 className="text-sm font-medium">관리자 정의 항목</h3>
         {kind.defined_kind ? (
           <p className="text-sm">
             {kind.define_path ? (

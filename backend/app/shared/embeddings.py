@@ -105,7 +105,7 @@ def _ollama(texts: list[str], dim: int) -> list[list[float]]:
         if len(one) != dim:
             raise EmbeddingError(
                 f"차원이 다릅니다 — 모델은 {len(one)}, 설정(EMBEDDING_DIM)은 {dim}. "
-                "설정을 모델에 맞추고 색인을 다시 만드세요."
+                "설정을 모델에 맞추고 색인을 다시 만드십시오."
             )
     return [list(one) for one in made]
 

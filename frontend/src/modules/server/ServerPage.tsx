@@ -106,7 +106,7 @@ export default function ServerPage() {
       {one.schema_behind && (
         <div className="border-destructive/40 bg-destructive/5 text-destructive rounded-md border p-3 text-sm">
           데이터베이스가 코드보다 뒤처져 있습니다 ({one.schema_current} → {one.schema_head}).
-          서버에서 <span className="font-mono">alembic upgrade head</span> 를 돌리세요.
+          서버에서 <span className="font-mono">alembic upgrade head</span> 를 돌리십시오.
           그전까지는 새 칸을 읽는 화면이 오류를 냅니다.
         </div>
       )}
@@ -119,7 +119,7 @@ export default function ServerPage() {
             ? '카탈로그가 아직 반입되지 않았습니다.'
             : `카탈로그 반입이 정본보다 뒤져 있습니다 (반입 ${shownDateTime(one.catalog.imported_at)} · 객체 ${one.catalog.imported_objects ?? '?'} → 정본 ${one.catalog.objects}).`}{' '}
           서버에서 <span className="font-mono">python scripts\import_catalog.py</span> 를
-          돌리세요.
+          돌리십시오.
         </div>
       )}
 

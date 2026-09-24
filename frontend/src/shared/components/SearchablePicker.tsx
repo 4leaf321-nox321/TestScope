@@ -86,7 +86,7 @@ export function SearchablePicker({
   value,
   onChange,
   placeholder = '선택',
-  searchPlaceholder = '이름의 일부를 입력하세요',
+  searchPlaceholder = '이름의 일부를 입력하십시오',
   detailTitle,
   detailHint,
   id,
@@ -160,7 +160,7 @@ export function SearchablePicker({
           <ul className="h-64 overflow-y-auto py-1">
             {shown.length === 0 && (
               <li className="text-muted-foreground px-3 py-6 text-center text-sm">
-                찾는 것이 없습니다.
+                검색 결과가 없습니다.
               </li>
             )}
             {shown.map((one) => (
@@ -214,7 +214,7 @@ export function SearchablePicker({
             <ul className="grid max-h-[52vh] grid-cols-1 gap-x-4 overflow-y-auto sm:grid-cols-2">
               {inDetail.length === 0 && (
                 <li className="text-muted-foreground col-span-full py-10 text-center text-sm">
-                  찾는 것이 없습니다.
+                  검색 결과가 없습니다.
                 </li>
               )}
               {inDetail.map((one) => (

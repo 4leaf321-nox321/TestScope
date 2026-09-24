@@ -198,7 +198,7 @@ export function convertValue(raw: string, targetUnit: string): ConvertResult {
   const target = UNITS[to]
   if (!source)
     return {
-      error: `모르는 단위입니다 (${typed}) — 이 칸의 단위(${targetUnit || '없음'})로 적으세요`,
+      error: `모르는 단위입니다 (${typed}) — 이 칸의 단위(${targetUnit || '없음'})로 적으십시오`,
     }
   if (!target) return { error: `이 칸은 단위가 ${targetUnit || '없음'} 이라 바꿀 수 없습니다` }
   if (source.dimension !== target.dimension) {

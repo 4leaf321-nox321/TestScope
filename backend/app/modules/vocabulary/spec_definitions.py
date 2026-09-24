@@ -105,7 +105,7 @@ def delete_spec_group(db: Session, group_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-SPEC-0003",
-            f"이 그룹에 사양이 {using}개 있습니다. 먼저 다른 그룹으로 옮기세요.",
+            f"이 그룹에 사양이 {using}개 있습니다. 먼저 다른 그룹으로 옮기십시오.",
         )
     db.delete(row)
     db.commit()
@@ -309,7 +309,7 @@ def delete_spec_definition(db: Session, definition_id: uuid.UUID) -> None:
     if using:
         raise Conflict(
             "TSC-SPEC-0007",
-            f"이 사양으로 적힌 값이 {using}개 있습니다. 지우는 대신 끄세요.",
+            f"이 사양으로 적힌 값이 {using}개 있습니다. 지우는 대신 끄십시오.",
         )
     db.delete(row)
     db.commit()

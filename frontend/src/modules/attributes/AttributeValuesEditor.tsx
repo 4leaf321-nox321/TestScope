@@ -230,7 +230,7 @@ function TermPicker({
       options={options}
       value={row.termId ?? ''}
       onChange={(id) => onPick(id, options.find((one) => one.id === id)?.label ?? '')}
-      placeholder="기준정보 값 고르기"
+      placeholder="기준정보 값 선택"
       className="w-full"
     />
   )
@@ -260,7 +260,7 @@ function MethodPicker({
             className="text-muted-foreground hover:text-foreground text-xs underline"
             onClick={() => onPick('', '')}
           >
-            바꾸기
+            변경
           </button>
         </div>
       ) : (
@@ -519,7 +519,7 @@ export function AttributeValuesEditor({
                     type="button"
                     variant="ghost"
                     size="icon"
-                    aria-label={`${labelOf(row, definition)} 빼기`}
+                    aria-label={`${labelOf(row, definition)} 제거`}
                     onClick={() => onChange(rows.filter((one) => one.key !== row.key))}
                   >
                     <X className="size-4" />
@@ -528,7 +528,7 @@ export function AttributeValuesEditor({
                 {isNumeric(row.kind) && !row.kindLocked && row.raw && (
                   <p className="text-muted-foreground mt-1 text-xs">
                     {KIND_LABEL[row.kind]}로 읽었습니다
-                    {row.unit ? ` · 단위 ${row.unit}` : ''}. 아니면 종류를 바꾸세요.
+                    {row.unit ? ` · 단위 ${row.unit}` : ''}. 아니면 종류를 바꾸십시오.
                   </p>
                 )}
               </li>
@@ -545,7 +545,7 @@ export function AttributeValuesEditor({
             const definition = byId.get(id)
             if (definition) onChange([...rows, rowFor(definition)])
           }}
-          placeholder="속성 고르기"
+          placeholder="속성 선택"
           detailTitle="속성 전부"
           detailHint="정식 속성이 먼저, 누가 이미 쓴 초안이 건수와 함께 다음입니다."
           className="w-56"

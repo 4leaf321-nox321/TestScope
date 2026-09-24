@@ -120,7 +120,7 @@ def resolve_owner_workspace(
     if slug is None:
         if not user.is_system_admin:
             raise Forbidden(
-                code, f"전역 {what}은 시스템 관리자만 만들 수 있습니다. 부서를 고르세요."
+                code, f"전역 {what}은 시스템 관리자만 만들 수 있습니다. 부서를 고르십시오."
             )
         return None
     workspace = workspace_by_slug(db, slug)

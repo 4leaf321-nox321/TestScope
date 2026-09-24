@@ -135,7 +135,7 @@ def import_workspaces(
             db.rollback()
             raise Conflict(
                 "TSC-WORKSPACES-0021",
-                "같은 순간에 다른 관리자가 부서를 만들고 있습니다. 다시 시도해 주세요.",
+                "같은 순간에 다른 관리자가 부서를 만들고 있습니다. 다시 시도해 주십시오.",
             ) from exc
     return WorkspaceImportResult(
         rows=[

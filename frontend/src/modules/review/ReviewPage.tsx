@@ -44,7 +44,7 @@ export default function ReviewPage() {
               }}
             >
               <RefreshCw className="mr-1 size-4" />
-              후보 다시 세우기
+              후보 재생성
             </Button>
           )
         }
@@ -91,7 +91,7 @@ export default function ReviewPage() {
       <p className="text-muted-foreground text-xs">
         후보는 반입(카탈로그)과 정본의 추천(
         <span className="font-mono">source/catalog/proposals</span>)에서 옵니다. 추천은 정답이
-        아닙니다 — 근거를 읽고, 아니면 직접 고르세요. 의견은 모이기만 하고 데이터를 바꾸지
+        아닙니다 — 근거를 읽고, 아니면 직접 고르십시오. 의견은 모이기만 하고 데이터를 바꾸지
         않습니다; 확정할 때 바뀝니다.
       </p>
     </div>

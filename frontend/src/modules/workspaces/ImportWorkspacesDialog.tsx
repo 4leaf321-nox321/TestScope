@@ -168,7 +168,7 @@ export function ImportWorkspacesDialog({
                 disabled={busy}
               >
                 <FileUp className="size-4" />
-                파일에서 읽기
+                파일 불러오기
               </Button>
               <label className="flex items-center gap-2 text-sm">
                 <input

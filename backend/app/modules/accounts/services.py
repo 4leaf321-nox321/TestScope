@@ -188,7 +188,7 @@ def approve(
         if requested is None:
             raise AppError(
                 "TSC-ACCOUNTS-0004",
-                "신청한 부서가 없어졌습니다. 배정할 부서를 골라 주세요.",
+                "신청한 부서가 없어졌습니다. 배정할 부서를 골라 주십시오.",
                 status=400,
             )
         slug = requested.slug
@@ -263,7 +263,7 @@ def _guard_last_admin(db: Session, user: User, *, what: str) -> None:
     if user.is_system_admin and user.status == "active" and active_system_admin_count(db) <= 1:
         raise Conflict(
             "TSC-ACCOUNTS-0005",
-            f"마지막 활성 시스템 관리자입니다. 다른 사람을 지정한 뒤에 {what}세요.",
+            f"마지막 활성 시스템 관리자입니다. 다른 사람을 지정한 뒤에 {what}십시오.",
         )
 
 

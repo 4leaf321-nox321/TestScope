@@ -115,7 +115,7 @@ export default function ProfilePage() {
           <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
             {/* **여기서 한 번만 보인다.** 다시 볼 수 없다는 것을 말하지 않으면
                 사람은 창을 닫고 나서 다시 찾는다. */}
-            <p className="font-medium">지금 복사해 두세요. 다시 볼 수 없습니다.</p>
+            <p className="font-medium">지금 복사해 두십시오. 다시 볼 수 없습니다.</p>
             <p className="mt-1 font-mono text-xs break-all">{issued}</p>
           </div>
         )}
@@ -124,7 +124,7 @@ export default function ProfilePage() {
           <Input
             value={tokenName}
             onChange={(event) => setTokenName(event.target.value)}
-            placeholder="어디에 쓰는 토큰인지"
+            placeholder="토큰 용도"
             required
           />
           <Button type="submit">발급</Button>
@@ -134,7 +134,7 @@ export default function ProfilePage() {
           <TableHeader>
             <TableRow>
               <TableHead>이름</TableHead>
-              <TableHead>앞자리</TableHead>
+              <TableHead>접두어</TableHead>
               <TableHead>발급</TableHead>
               <TableHead>마지막 사용</TableHead>
               <TableHead />

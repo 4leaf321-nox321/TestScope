@@ -101,7 +101,7 @@ def _enforce_token_scope(request: Request, token_scopes: list[str], path: str) -
     if needed is None:
         raise Forbidden(
             "TSC-AUTH-0105",
-            "개인 토큰으로는 이 경로를 고칠 수 없습니다. 화면에서 하세요.",
+            "개인 토큰으로는 이 경로를 고칠 수 없습니다. 화면에서 하십시오.",
             details={"path": path},
         )
     if needed not in token_scopes:
@@ -139,7 +139,7 @@ def current_user(request: Request, db: Session = Depends(get_db)) -> User:
 
     signed_in = db.get(User, payload["sub"])
     if signed_in is None:
-        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하세요.")
+        raise Forbidden("TSC-AUTH-0002", "삭제된 계정입니다. 관리자에게 문의하십시오.")
     services.ensure_can_sign_in(signed_in)
     request.scope["tsc_user_id"] = signed_in.id
     return signed_in

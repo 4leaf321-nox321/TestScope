@@ -191,7 +191,7 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
               {describe(one, rows)}
               <button
                 type="button"
-                aria-label={`${describe(one, rows)} 빼기`}
+                aria-label={`${describe(one, rows)} 제거`}
                 className="hover:bg-background rounded-full p-0.5"
                 onClick={() => onChange(value.filter((row) => row !== one))}
               >
@@ -200,7 +200,7 @@ export function AttributeFilterBar({ target, value, onChange, empty = false }: P
             </li>
           ))}
           {/* 여러 조건은 **모두** 만족해야 한다 — 「또는」 으로 읽으면 결과 수를 오해한다. */}
-          <li className="text-muted-foreground ml-1">모두 만족하는 것만</li>
+          <li className="text-muted-foreground ml-1">조건 모두 만족</li>
         </ul>
       )}
       {empty && value.length > 0 && <EmptyDiagnosis target={target} attrs={value} />}

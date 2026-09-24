@@ -137,7 +137,7 @@ export default function TestItemCatalogDetailPage() {
           {admin && !editingAxes && (
             <Button size="sm" variant="ghost" onClick={() => setEditingAxes(true)}>
               <Pencil className="size-3.5" />
-              정하기
+              지정
             </Button>
           )}
         </div>
@@ -222,7 +222,7 @@ export default function TestItemCatalogDetailPage() {
         </h2>
         {one.methods.length === 0 ? (
           <p className="text-sm text-amber-600">
-            이 시험의 규격으로 정해진 것이 없습니다.{' '}
+            적용 규격으로 정해진 것이 없습니다.{' '}
             <Link to="/methods?test_item=none" className="underline">
               시험 항목 미지정 규격
             </Link>
@@ -283,7 +283,7 @@ export default function TestItemCatalogDetailPage() {
                 <TableHead>계열</TableHead>
                 <TableHead>제조사 · 분류</TableHead>
                 <TableHead className="text-right">기종</TableHead>
-                <TableHead>이 시험의 규격</TableHead>
+                <TableHead>적용 규격</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

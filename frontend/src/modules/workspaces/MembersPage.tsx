@@ -119,7 +119,7 @@ export default function MembersPage() {
                   size="sm"
                   onClick={() => act(() => workspaceApi.removeMember(slug, one.user_id))}
                 >
-                  빼기
+                  제거
                 </Button>
               </TableCell>
             </TableRow>

@@ -62,7 +62,7 @@ export function RouteError() {
       </h1>
       <p className="text-muted-foreground text-sm">
         {stale
-          ? '새로고침하면 됩니다. 자동으로 한 번 시도했는데도 이 화면이면, 서버가 새 파일을 아직 못 주는 것이라 잠시 뒤 다시 여세요.'
+          ? '새로고침하면 됩니다. 자동으로 한 번 시도했는데도 이 화면이면, 서버가 새 파일을 아직 못 주는 것이라 잠시 뒤 다시 여십시오.'
           : message}
       </p>
       <div className="flex gap-2">

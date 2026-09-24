@@ -96,7 +96,7 @@ function LinkChip({
         suggested ? 'border-dashed text-muted-foreground' : 'bg-muted'
       }`}
       title={[
-        suggested ? '기계가 제안한 연결 — 아직 사람이 확인하지 않았습니다' : '확인된 연결',
+        suggested ? '자동 제안 연결 — 아직 사람이 확인하지 않았습니다' : '확인된 연결',
         `출처: ${SOURCE_LABEL[link.source] ?? link.source}`,
         link.note ?? '',
       ]
@@ -319,7 +319,7 @@ export default function PropertiesPage() {
           }}
         >
           <Plus className="mr-1 size-3" />
-          {kind === 'property' ? '시험 잇기' : '물성 잇기'}
+          {kind === 'property' ? '시험 연결' : '물성 연결'}
         </Button>
       )
     }
@@ -355,7 +355,7 @@ export default function PropertiesPage() {
             })
           }
         >
-          잇기
+          연결
         </Button>
         <Button size="sm" variant="ghost" onClick={() => setAdding(null)}>
           취소
@@ -377,7 +377,7 @@ export default function PropertiesPage() {
 
       <div className="flex flex-wrap items-center gap-3">
         {/* **두 방향.** 한쪽만 두면 반대 물음은 표를 전부 훑어야 한다. */}
-        <div className="inline-flex rounded-md border" role="tablist" aria-label="보는 방향">
+        <div className="inline-flex rounded-md border" role="tablist" aria-label="표시 방향">
           {(
             [
               ['property', '물성에서'],
@@ -435,7 +435,7 @@ export default function PropertiesPage() {
             checked={linkedOnly}
             onChange={(event) => setLinkedOnly(event.target.checked)}
           />
-          이어진 것만
+          연결된 것만
         </label>
         <label className="text-muted-foreground flex items-center gap-2 text-sm">
           <input
@@ -462,9 +462,9 @@ export default function PropertiesPage() {
       {admin && suggested > 0 && (
         <div className="flex flex-wrap items-center gap-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm dark:bg-amber-950/30">
           <p>
-            기계가 제안한 연결 <strong>{suggested}건</strong>을 아직 아무도 확인하지
-            않았습니다. 확인된 연결만이 「이 물성은 이 시험으로 나온다」 의 근거가 되고,
-            내보내기가 카탈로그에 싣는 값입니다.
+            자동 제안 연결 <strong>{suggested}건</strong>을 아직 아무도 확인하지 않았습니다.
+            확인된 연결만이 「이 물성은 이 시험으로 나온다」 의 근거가 되고, 내보내기가
+            카탈로그에 싣는 값입니다.
           </p>
           {shownSuggested.length > 0 && (
             <Button size="sm" disabled={busy} onClick={() => void confirmMany(shownSuggested)}>
@@ -528,7 +528,7 @@ export default function PropertiesPage() {
           title={view === 'property' ? '물성이 없습니다' : '시험 항목이 없습니다'}
           hint={
             linkedOnly || manyOnly
-              ? '필터를 해제해 보세요.'
+              ? '필터를 해제해 보십시오.'
               : '카탈로그 반입(import_catalog.py)이 MaterialTwin 물성 271종과 연결을 심습니다.'
           }
         />

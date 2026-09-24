@@ -91,7 +91,7 @@ def _number(raw: str, label: str) -> float:
         return float(raw.strip())
     except ValueError:
         raise AppError(
-            "TSC-ATTR-0120", f"「{label}」 는 수치 속성입니다. 숫자로 물어 주세요."
+            "TSC-ATTR-0120", f"「{label}」 는 수치 속성입니다. 숫자로 물어 주십시오."
         ) from None
 
 
@@ -100,7 +100,7 @@ def _date(raw: str, label: str) -> date:
         return date.fromisoformat(raw.strip())
     except ValueError:
         raise AppError(
-            "TSC-ATTR-0121", f"「{label}」 는 날짜 속성입니다. 2024-05-01 꼴로 물어 주세요."
+            "TSC-ATTR-0121", f"「{label}」 는 날짜 속성입니다. 2024-05-01 꼴로 물어 주십시오."
         ) from None
 
 
@@ -118,7 +118,7 @@ def parse(db: Session, target: str, raw_filters: list[str]) -> list[AttributeFil
             raise AppError(
                 "TSC-ATTR-0123",
                 f"속성 조건 「{one}」 를 못 읽었습니다."
-                f" 「키{'·'.join(_OPS)}값」 꼴로 적어 주세요.",
+                f" 「키{'·'.join(_OPS)}값」 꼴로 적어 주십시오.",
             )
         key = matched.group("key")
         definition = db.scalar(
@@ -326,7 +326,7 @@ def _hint(one: AttributeFilter, with_value: int, unconvertible: int, matched: in
         )
     if matched == 0:
         parts.append(
-            f"값은 {with_value}건 있지만 이 조건에 든 것이 없습니다 — 조건을 넓혀 보세요"
+            f"값은 {with_value}건 있지만 이 조건에 든 것이 없습니다 — 조건을 넓혀 보십시오"
         )
     else:
         parts.append(

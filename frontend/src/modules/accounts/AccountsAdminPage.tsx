@@ -69,14 +69,14 @@ export default function AccountsAdminPage() {
       {summary.data && onlyOneAdmin && (
         <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
           활성 시스템 관리자가 1명입니다. 그 계정이 잠기면 서버 콘솔로만 복구할 수 있습니다 —
-          한 명 더 지정해 두세요.
+          한 명 더 지정해 두십시오.
         </div>
       )}
 
       {issued && (
         <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-sm">
           <p className="font-medium">
-            {issued.email} 의 임시 비밀번호입니다. 지금 전달하세요 — 다시 볼 수 없습니다.
+            {issued.email} 의 임시 비밀번호입니다. 지금 전달하십시오 — 다시 볼 수 없습니다.
           </p>
           <p className="mt-1 font-mono text-xs">{issued.password}</p>
         </div>
@@ -129,7 +129,7 @@ export default function AccountsAdminPage() {
                       onClick={() => {
                         // **사유를 반드시 받는다.** 메일이 없어 통보가 앱 안에서만
                         // 되므로, 안 적으면 신청한 사람은 이유를 영영 모른다.
-                        const note = window.prompt('거절 사유를 적어 주세요')
+                        const note = window.prompt('거절 사유를 적어 주십시오')
                         if (note) act(() => accountApi.reject(one.id, note))
                       }}
                     >

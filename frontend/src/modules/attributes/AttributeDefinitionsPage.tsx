@@ -197,7 +197,7 @@ export default function AttributeDefinitionsPage() {
                 variant="ghost"
                 onClick={() => act(() => attributeApi.update(row.id, { is_active: false }))}
               >
-                끄기
+                비활성화
               </Button>
             )}
             {!row.is_active && !row.merged_into_id && (
@@ -206,7 +206,7 @@ export default function AttributeDefinitionsPage() {
                 variant="ghost"
                 onClick={() => act(() => attributeApi.update(row.id, { is_active: true }))}
               >
-                켜기
+                활성화
               </Button>
             )}
             {row.value_count === 0 && !row.merged_into_id && (
@@ -303,7 +303,7 @@ export default function AttributeDefinitionsPage() {
           {(kind === 'number' || kind === 'range' || kind === 'condition') && (
             <div className="space-y-1">
               <label className="text-xs" htmlFor="attr-unit">
-                읽는 단위
+                표시 단위
               </label>
               <Input
                 id="attr-unit"
@@ -426,7 +426,7 @@ export default function AttributeDefinitionsPage() {
           </span>
           <Select value={mergeTarget} onValueChange={setMergeTarget}>
             <SelectTrigger className="w-56" aria-label="합칠 속성">
-              <SelectValue placeholder="남는 속성" />
+              <SelectValue placeholder="대상 속성 선택" />
             </SelectTrigger>
             <SelectContent>
               {rows

@@ -111,7 +111,7 @@ export function AttributeValuesPanel({
         {canEdit && (
           <Button type="button" variant="outline" size="sm" onClick={open}>
             <Pencil className="size-4" />
-            속성 고치기
+            속성 편집
           </Button>
         )}
       </div>

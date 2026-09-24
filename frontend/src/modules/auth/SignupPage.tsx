@@ -68,7 +68,7 @@ export default function SignupPage() {
           <h1 className="text-xl font-semibold">신청이 접수되었습니다</h1>
           <p className="text-muted-foreground text-sm">
             관리자가 승인하면 로그인할 수 있습니다. 메일 통보는 없으니 담당자에게 직접 알려
-            주세요.
+            주십시오.
           </p>
           <Button onClick={() => navigate('/login')} className="w-full">
             로그인 화면으로
@@ -125,7 +125,7 @@ export default function SignupPage() {
               보여 주면 신청자가 어느 쪽인지 고를 수 없다. */}
           <Select value={workspace} onValueChange={setWorkspace}>
             <SelectTrigger id="workspace">
-              <SelectValue placeholder="부서를 고르세요" />
+              <SelectValue placeholder="부서를 고르십시오" />
             </SelectTrigger>
             <SelectContent>
               {(options.data ?? []).map((one) => (
