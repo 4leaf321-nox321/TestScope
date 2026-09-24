@@ -16,13 +16,19 @@ class ResolveRequest(BaseModel):
     """
 
     kind: str = Field(
-        pattern="^(series|model|term|method|reliability_test|equipment|workspace)$"
+        pattern=(
+            "^(series|model|term|method|spec_document|reliability_test|equipment|workspace)$"
+        )
     )
     """무엇을 찾나. `term` 이면 `axis` 를 함께 준다.
 
-    카탈로그(series·model·term·method)뿐 아니라 **부서가 가진 것**(reliability_test ·
-    equipment)과 부서 자신(workspace)도 여기서 찾는다 — 목록으로 찾게 두면 AI 가 첫 줄을
-    집고, 「고온고습」 이 부서마다 하나씩 있는 표에서 그것은 곧 틀린 줄이다."""
+    카탈로그(series·model·term·method)뿐 아니라 **부서가 가진 것**(spec_document ·
+    reliability_test · equipment)과 부서 자신(workspace)도 여기서 찾는다 — 목록으로 찾게
+    두면 AI 가 첫 줄을 집고, 「고온고습」 이 부서마다 하나씩 있는 표에서 그것은 곧 틀린
+    줄이다.
+
+    `spec_document` 는 **사내 규격서**다(공개 규격은 `method`). 신뢰성 시험의 「규격서」
+    칸이 가리키는 것이라, 이것을 못 찾으면 그 칸은 영영 빈 채로 남는다."""
     text: str = Field(min_length=1, max_length=300)
     """사람이 쓰는 말 그대로. `Instron 68FM-300` · `인스트론 6800 시리즈` · `인장` ·
     `고온고습 1000h` · `UTM-301`."""

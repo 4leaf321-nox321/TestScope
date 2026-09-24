@@ -186,6 +186,66 @@ async def _write_chain(ctx: _Ctx) -> int:
         bad += 1
         print("  실패 안 보낸 칸(시험 항목)이 바뀌었습니다")
 
+    # 7-2. **칸 몇 개만 고치기** — 나머지가 살아남아야 한다.
+    #
+    # `update_reliability_test` 는 속성을 통째로 갈아 끼운다. 카드에 칸이 스물 넘게 서는
+    # 지금, 하나를 고치려다 나머지를 지우는 것이 실제 위험이라 `set_reliability_attributes`
+    # 가 읽어서 겹치는 줄만 바꾼다. 그 병합은 **MCP 안에서** 일어나므로, 서버가 살아 있는
+    # 여기서만 실제로 확인된다.
+    added = step(
+        "set_reliability_attributes(더하기)",
+        await server.set_reliability_attributes(
+            ctx,
+            test["id"],
+            [{"new_label": f"MCP확인 비고-{tag}", "new_kind": "text", "text_value": "메모"}],
+        ),
+        ["name"],
+    )
+    if added is not None and len(added.get("attributes", [])) != 2:
+        bad += 1
+        print(f"  실패 더했는데 칸이 {len(added.get('attributes', []))}개입니다")
+
+    narrowed = step(
+        "set_reliability_attributes(한 칸만)",
+        await server.set_reliability_attributes(
+            ctx,
+            test["id"],
+            [{"definition_id": definition["id"], "num_min": -55, "num_max": 125}],
+        ),
+        ["name"],
+    )
+    if narrowed is not None:
+        values = {one["label"]: one["display"] for one in narrowed["attributes"]}
+        if len(values) != 2:
+            bad += 1
+            print(f"  실패 한 칸을 고쳤는데 나머지가 사라졌습니다: {_short(values, 80)}")
+        elif values.get(f"MCP확인 시험 온도-{tag}") != "-55 ~ 125 degC":
+            bad += 1
+            print(f"  실패 고친 값이 안 들어갔습니다: {_short(values, 80)}")
+
+    if narrowed is not None:
+        extra = next(
+            (
+                one
+                for one in narrowed["attributes"]
+                if one["label"] == f"MCP확인 비고-{tag}"
+            ),
+            None,
+        )
+        if extra is not None:
+            emptied = step(
+                "set_reliability_attributes(빼기)",
+                await server.set_reliability_attributes(
+                    ctx,
+                    test["id"],
+                    [{"definition_id": extra["definition_id"], "remove": True}],
+                ),
+                ["name"],
+            )
+            if emptied is not None and len(emptied.get("attributes", [])) != 1:
+                bad += 1
+                print("  실패 뺐는데 칸이 그대로입니다")
+
     # 8. 규격과 요구 조건 — 표기만 다른 중복은 거절되어야 한다.
     method = step(
         "create_method",

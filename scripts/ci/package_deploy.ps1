@@ -155,6 +155,7 @@ if (Test-Path .\mcp_server\server.py) {
     # 「서비스가 STOPPED」 로만 보인다(운영 실측 2026-09-23, v0.15.0~v0.17.0 세 판이 그랬다).
     # 새 모듈을 더하면 여기에도 더한다 — 잊으면 test_mcp_tools.py 가 잡는다.
     Copy-Item -Force .\mcp_server\calltrace.py .\deploy\mcp_server\calltrace.py
+    Copy-Item -Force .\mcp_server\merge.py .\deploy\mcp_server\merge.py
     Copy-Item -Force .\mcp_server\requirements.txt .\deploy\mcp_server\requirements.txt
     Copy-Item -Force .\mcp_server\README.md .\deploy\mcp_server\README.md
     Copy-Item -Force .\mcp_server\guide\GUIDE.md .\deploy\mcp_server\guide\GUIDE.md

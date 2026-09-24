@@ -216,9 +216,23 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     사실과 설명은 읽어야 한다 — 「절차 그림 3장이 붙어 있습니다」 를 말할 수 없으면 AI 가
     카드를 절반만 옮기고, 사람은 그 절반을 전부로 읽는다. **더 늘리기 전에는 묶을 자리부터
     찾아라.**
+
+    74 -> 76 (2026-09-24): `list_spec_documents` 와 `set_reliability_attributes`.
+
+    사내 규격서는 도구가 **하나도 없었다.** 그래서 신뢰성 시험의 「규격서」 칸
+    (`kind="document"`)은 AI 가 채울 길이 원천적으로 없었다 — 값이 `document_id` 인데 그
+    id 를 얻을 방법이 없었다. 사람이 화면에서 뒤늦게 채우게 되고, 그때 「이 시험이 무엇을
+    따르는가」 가 빈 채로 굳는다. 상세 도구는 **안 만들었다**: 목록 줄과 상세가 같은
+    모양(`SpecDocumentOut`)이라 `q` 로 찾으면 같은 것이 온다.
+
+    `set_reliability_attributes` 는 **덮어쓰기 사고를 막는다.** `update_reliability_test`
+    는 속성을 통째로 갈아 끼우는데, 카드에 칸이 스물 넘게 서면서 「온도 하나 고치려고
+    스물둘을 다시 보내다 하나를 빠뜨리는」 일이 현실이 됐다 — 빠뜨린 값은 조용히 사라지고
+    지운 기억이 없으니 아무도 못 찾는다. 읽어서 겹치는 줄만 갈아 끼우는 자리가 하나
+    있어야 한다.
     """
     tools = _tools()
-    assert len(tools) <= 74, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 76, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (

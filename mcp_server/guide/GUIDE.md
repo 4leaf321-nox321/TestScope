@@ -248,8 +248,40 @@ search_models(series="6800 Series Universal Testing Systems")  ->  그 계열의
 새 이름을 적으면 초안이 생기고, 초안은 온톨로지 밖이라 검색·판정·색인 카드 어디에도 안
 들어간다 — 쌓이면 검토함의 「초안 속성 정리」 가 사람에게 묻는다.
 
+### 칸 하나를 고칠 때는 `set_reliability_attributes`
+
 `update_reliability_test` 의 `test_item_term_ids` 와 `attributes` 는 **보내면 통째로 바뀐다.**
-하나를 더하려면 지금 있는 것에 더해 전부 보낸다.
+카드에 칸이 스물 넘게 서는데, 온도 하나를 고치려고 스물둘을 다시 보내다 하나를 빠뜨리면 그
+값은 조용히 사라진다 — 지운 기억이 없으니 아무도 못 찾는다. 그래서 **몇 칸만 고칠 때는
+`set_reliability_attributes`** 를 쓴다: 지금 있는 것을 읽어 `definition_id` 가 같은 줄만
+갈아 끼운다. 지우려면 `{"definition_id": "…", "remove": true}` 라고 그렇게 말한다.
+
+### 속성 한 줄의 모양 — 칸의 종류마다 채우는 자리가 다르다
+
+`list_attribute_definitions(target="reliability_test")` 의 `kind` 가 어느 자리인지 말해 준다.
+**종류와 다른 값을 보내면 그 값은 조용히 버려진다.**
+
+    range·condition   {"num_min": -40, "num_max": 125, "unit": "degC"}   구간·조건
+    number            {"num_value": 5}                                   수치
+    text·choice       {"text_value": "외관 이상 없음"}                     문장·선택지
+    boolean           {"bool_value": true}                               있다·없다
+    date              {"date_value": "2026-09-24"}                       날짜
+    term              {"term_id": "…"}        온톨로지 값(유형·적용군)
+    method            {"method_id": "…"}      공개 규격(참조 규격)
+    document          {"document_id": "…"}    사내 규격서(규격서)
+    pairs             {"json_value": [{"label": "A등급", "value": 4}]}        이름별 수량
+    matrix            {"json_value": [{"label": "사양 A", "entries": [ … ]}]}  사양 매트릭스
+    새 이름 → 초안     {"new_label": "시료 수", "new_kind": "number", "num_value": 5}
+
+줄마다 `definition_id` 를 함께 싣는다(`new_label` 로 만들 때만 뺀다).
+
+id 를 얻는 길: `term_id` 는 `resolve(kind="term", axis=…)`, `method_id` 는 `list_methods` ·
+`resolve(kind="method")`, **`document_id` 는 `resolve(kind="spec_document", text="MX-REL-012",
+workspace=…)`** 다. 공개 규격과 사내 규격서는 **다른 표**라 서로의 자리에 넣을 수 없다 —
+「참조 규격」 은 ASTM·ISO·KS 고, 「규격서」 는 우리 부서가 만든 문서다.
+
+**이름 없는 숫자는 안 받는다**(pairs·matrix, 422). 「4」 만 남으면 그것이 A등급인지
+1단계인지 적어 둔 사람 말고는 아무도 모른다.
 
 ## 「이 시험, 어느 장비로 돌리나」
 

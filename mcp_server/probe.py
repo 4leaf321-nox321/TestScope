@@ -85,6 +85,7 @@ async def main() -> int:
         ("list_axes", server.list_axes(ctx)),
         ("list_terms(test_item)", server.list_terms(ctx, "test_item", q="인장")),
         ("list_reliability_tests", server.list_reliability_tests(ctx)),
+        ("list_spec_documents", server.list_spec_documents(ctx)),
         (
             "list_attribute_definitions",
             server.list_attribute_definitions(ctx, "reliability_test"),

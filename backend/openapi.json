@@ -18487,7 +18487,7 @@
         "properties": {
           "kind": {
             "type": "string",
-            "pattern": "^(series|model|term|method|reliability_test|equipment|workspace)$",
+            "pattern": "^(series|model|term|method|spec_document|reliability_test|equipment|workspace)$",
             "title": "Kind"
           },
           "text": {

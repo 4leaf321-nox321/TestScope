@@ -31,6 +31,7 @@ from typing import Any
 
 import calltrace
 import httpx
+from merge import merge
 from mcp.server.mcpserver import Context, MCPServer
 
 #: 백엔드 API. 같은 기계에서 도는 것이 기본이다(개발 8021 · 운영 8020).
@@ -2190,16 +2191,47 @@ async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
 
 
 @mcp.tool()
+async def list_spec_documents(
+    ctx: Context, workspace: str | None = None, q: str | None = None
+) -> dict[str, Any]:
+    """**사내 규격서** — 부서가 만든 시험 문서(MX-REL-012 「환경 시험 표준」).
+
+    공개 규격(`list_methods` — ASTM·ISO·KS 601건)과 **다른 표다.** 공개 규격은 밖에서
+    만들어 전사가 인용하는 것이고, 사내 규격서는 부서가 만들고 부서가 고치며 밖에서는
+    존재조차 모른다 — 섞어 세면 「우리가 인용하는 공개 규격」 이 전부 틀어진다.
+
+    줄마다 `code`(문서 번호 — 사람이 쓰는 이름) · `title` · `revision`(판) · `file_count`
+    (붙은 원본 수) · `linked_test_count`(이 문서를 가리키는 신뢰성 시험 수)가 온다.
+    `file_count` 가 0 이면 번호만 있고 원본이 없는 문서다.
+
+    **판은 줄을 나누지 않는다.** 개정하면 `revision` 을 고치고 파일을 더하므로, 「Rev.2 를
+    새로 만들까요」 가 아니라 「그 문서의 판을 올리고 파일을 더하십시오」 가 맞는 답이다.
+
+    **id 는 `resolve(kind="spec_document", text="MX-REL-012", workspace=…)` 로 정한다** —
+    부서를 가로지르면 번호가 겹칠 수 있고, 거기서 첫 줄을 집으면 남의 부서 문서를 시험에
+    건다. 그 id 가 신뢰성 시험의 「규격서」 칸(`document_id`)과 첨부 목록
+    (`list_attachments(target="spec_document")`)에 그대로 들어간다.
+
+    **원문은 못 읽는다**(첨부는 파일 이름과 설명까지만 준다). 한글·워드로 올라온 것이 많고,
+    붙어 있다는 사실과 이름까지만 안다 — 안의 조건을 말하면 지어내는 것이다.
+    """
+    return _listed(
+        await _get(ctx, "/spec-documents", {"workspace": workspace, "q": q}),
+        "documents",
+    )
+
+
+@mcp.tool()
 async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[str, Any]:
     """붙은 **그림과 첨부**의 목록 — 무엇이 어느 칸에 붙어 있나.
 
-    `target` 은 `reliability_test` 와 `method` 다. 줄마다 `caption` · `definition_label`
-    (어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
+    `target` 은 `reliability_test` · `method` · `spec_document` 셋이다. 줄마다 `caption` ·
+    `definition_label`(어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
 
-    **`method` 는 규격서 원문이다.** 사내 규격서도 여기 붙는다 — 여러 신뢰성 시험이 한
-    문서를 인용하므로 시험마다 복사하지 않고 규격에 두고 「참조 규격」 으로 가리킨다.
-    어느 신뢰성 시험의 규격서를 찾으려면 그 시험의 「참조 규격」 속성이 가리키는
-    `method_id` 로 이 도구를 부른다.
+    **원문이 붙는 자리는 둘이고 서로 다른 표다.** `method` 는 공개 규격(ASTM·ISO·KS)의
+    원문이고, `spec_document` 는 **사내 규격서**다(`list_spec_documents`). 어느 신뢰성
+    시험의 문서를 찾으려면 그 시험의 「참조 규격」 이 가리키는 `method_id`, 또는 「규격서」
+    가 가리키는 `document_id` 로 이 도구를 부른다.
 
     **너는 그림을 못 본다.** 읽을 수 있는 것은 `caption` 뿐이다 — 설명이 비어 있으면 그
     그림은 너에게 없는 것과 같으니, 「그림 3장이 있고 설명은 없습니다」 라고 그대로 말하고
@@ -2245,16 +2277,12 @@ async def create_reliability_test(
     axis="test_item", name=…)` 로 찾는다. **모르면 비운다**: 비슷한 항목을 끼워 넣으면 그
     시험이 엉뚱한 장비로 이어지고, 검색은 그 장비로 「됩니다」 라고 답한다.
 
-    `attributes` 는 칸 하나가 한 줄이다(`list_attribute_definitions(target="reliability_test")`
-    가 정의를 준다):
-
-        {"definition_id": "…", "num_min": -40, "num_max": 125, "unit": "degC"}   구간·조건
-        {"definition_id": "…", "num_value": 5}                                    수치
-        {"definition_id": "…", "text_value": "외관 이상 없음"}                     문장
-        {"definition_id": "…", "term_id": "…"}          온톨로지(유형·적용군)
-        {"definition_id": "…", "method_id": "…"}        규격(참조 규격)
-        {"definition_id": "…", "json_value": [{"label": "A등급", "value": 4}]}   이름별 수량
-        {"new_label": "시료 수", "new_kind": "number", "num_value": 5}      새 이름 → 초안
+    `attributes` 는 칸 하나가 한 줄이고 **칸의 종류마다 채우는 자리가 다르다** — 구간은
+    `num_min`·`num_max`, 온톨로지 값은 `term_id`, 공개 규격은 `method_id`, **사내 규격서는
+    `document_id`**(`resolve(kind="spec_document", …)`), 이름별 수량·매트릭스는 `json_value`.
+    열두 갈래의 모양과 id 얻는 길은 `get_guide("신뢰성 시험")` 에 표로 있다. 종류와 다른
+    값을 보내면 **그 값은 조용히 버려진다** — 먼저 `list_attribute_definitions` 로 `kind` 를
+    본다.
 
     **새 이름을 만들기 전에 정의 목록을 본다.** `new_label` 로 적으면 초안 속성이 새로 생기고,
     초안은 온톨로지 밖이라 검색·판정에 안 쓰인다 — 같은 뜻의 정식 속성이 있으면 그 쪽
@@ -2303,6 +2331,9 @@ async def update_reliability_test(
 
     `test_item_term_ids` 와 `attributes` 는 보내면 **통째로 바뀐다** — 하나를 더하려면 지금
     있는 것(`get_reliability_test`)에 더해서 **전부** 보낸다. 빠뜨리면 조용히 지워진다.
+
+    **칸 몇 개만 고칠 것이면 `set_reliability_attributes` 를 써라.** 그쪽은 읽어서 겹치는
+    줄만 갈아 끼운다 — 스물두 칸을 다시 적다 하나를 빠뜨리는 일이 여기서 실제로 난다.
     """
     body: dict[str, Any] = {}
     if name is not None:
@@ -2314,6 +2345,42 @@ async def update_reliability_test(
     if attributes is not None:
         body["attributes"] = attributes
     return await _send(ctx, "PATCH", f"/reliability-tests/{test_id}", body)
+
+
+@writes
+async def set_reliability_attributes(
+    ctx: Context, test_id: str, attributes: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """신뢰성 시험의 **칸 몇 개만** 고친다 — 나머지는 그대로 둔다.
+
+    `update_reliability_test(attributes=…)` 는 목록을 **통째로 갈아 끼운다.** 카드에 칸이
+    스물 넘게 서는데, 온도 하나를 고치려고 스물둘을 다시 보내다 하나를 빠뜨리면 그 값은
+    조용히 사라진다 — 지운 기억이 없으니 아무도 못 찾는다. 여기서는 지금 있는 것을 읽어
+    **`definition_id` 가 같은 줄만 갈아 끼우고** 나머지는 그대로 보낸다.
+
+    줄의 모양은 `create_reliability_test` 와 같다(구간·수치·문장·불리언·날짜·term·method·
+    document·pairs·matrix). 없던 칸이면 새로 붙고, `new_label` 로 주면 초안이 생긴다.
+
+    **지우려면 그렇게 말한다** — `{"definition_id": "…", "remove": true}`. 빈 값을 보내는
+    것으로는 안 지워진다(빈 문자열과 「안 적음」 은 다르다).
+
+    확정된 시험은 못 고친다(409) — 사람이 화면에서 「다시 후보로」 를 눌러야 한다.
+    """
+    now = await _get(ctx, f"/reliability-tests/{test_id}")
+    if isinstance(now, dict) and now.get("error"):
+        # 못 읽었으면 **보내지 않는다** — 빈 목록으로 덮으면 스물둘이 한 번에 사라진다.
+        return now
+
+    return _then(
+        await _send(
+            ctx,
+            "PATCH",
+            f"/reliability-tests/{test_id}",
+            {"attributes": merge(now.get("attributes", []), attributes)},
+        ),
+        "보낸 칸만 바뀌었고 나머지는 그대로다. 고친 칸이 조건(`kind=\"condition\"`)이면"
+        " 장비 판정이 따라 바뀐다 — `test_capability` 로 다시 보고 말하라.",
+    )
 
 
 @mcp.tool()
@@ -2409,7 +2476,8 @@ async def create_attribute_definition(
     """새 속성 칸을 정의한다. **시스템 관리자만**, 그리고 사람이 시켰을 때만.
 
     `kind` 는 number(수치) · range(구간) · text(문장) · boolean · date · choice(선택지) ·
-    condition(검색축에 이어진 조건) · term(온톨로지 값) · method(규격). 조건은
+    condition(검색축에 이어진 조건) · term(온톨로지 값) · method(공개 규격) ·
+    document(사내 규격서) · pairs(이름별 수량) · matrix(사양 매트릭스). 조건은
     `condition_key_id`(`list_conditions`), 온톨로지는 `vocabulary_id`, 선택은 `choices` 가
     필요하다.
 

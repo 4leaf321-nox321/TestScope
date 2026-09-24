@@ -32,6 +32,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.documents.models import SpecDocument
 from app.modules.equipment.models import Equipment, EquipmentModel, EquipmentSeries
 from app.modules.methods.models import TestMethod
 from app.modules.reliability.models import ReliabilityTest
@@ -379,6 +380,63 @@ def _resolve_reliability_test(
     )
 
 
+def _resolve_spec_document(
+    db: Session, text: str, workspace: str | None, limit: int
+) -> ResolveResponse:
+    """사내 규격서를 **문서 번호**나 제목으로 찾는다.
+
+    번호(`MX-REL-012`)가 사람이 실제로 쓰는 이름이고 한 부서 안에서 유일하다 — 그래서
+    번호가 맞으면 exact 다. 다만 **부서를 가로지르면 겹칠 수 있다**: 두 부서가 같은 번호
+    체계를 쓰면 같은 번호가 둘이고, 그때 첫 줄을 집으면 남의 부서 문서를 시험에 건다.
+
+    제목은 겹치는 것이 기본이다(「환경 시험 표준」). 부분으로 걸린 것은 전부 후보다.
+    """
+    stmt = select(SpecDocument).where(SpecDocument.deleted_at.is_(None))
+    picked = _workspace_id(db, workspace)
+    if picked is not None:
+        stmt = stmt.where(SpecDocument.workspace_id == picked)
+
+    def _label(row: SpecDocument) -> tuple[str, str | None]:
+        team = db.get(Workspace, row.workspace_id)
+        # 번호가 이름이고, 제목·판·부서가 그것을 가른다 — 후보 둘이 같아 보이면 못 고른다.
+        detail = " · ".join(
+            part for part in (row.title, row.revision, team.name if team else None) if part
+        )
+        return row.code, detail or None
+
+    key = compare_key(text)
+    same = [row for row in db.scalars(stmt) if compare_key(row.code) == key]
+    if len(same) == 1:
+        head, detail = _label(same[0])
+        return _answer(
+            ResolveCandidate(id=same[0].id, label=head, detail=detail, why=_EXACT), []
+        )
+    if len(same) > 1:
+        return _answer(
+            None,
+            [
+                ResolveCandidate(
+                    id=row.id, label=_label(row)[0], detail=_label(row)[1], why=_EXACT
+                )
+                for row in same[:limit]
+            ],
+        )
+
+    like = f"%{clean(text)}%"
+    rows = db.scalars(
+        stmt.where(SpecDocument.code.ilike(like) | SpecDocument.title.ilike(like))
+        .order_by(SpecDocument.code)
+        .limit(limit)
+    ).all()
+    return _answer(
+        None,
+        [
+            ResolveCandidate(id=row.id, label=_label(row)[0], detail=_label(row)[1], why=_PART)
+            for row in rows
+        ],
+    )
+
+
 def _resolve_equipment(
     db: Session, user: User, text: str, workspace: str | None, limit: int
 ) -> ResolveResponse:
@@ -482,6 +540,8 @@ def resolve(
         return _resolve_equipment(db, user, text, workspace, limit)
     if kind == "workspace":
         return _resolve_workspace(db, text, limit)
+    if kind == "spec_document":
+        return _resolve_spec_document(db, text, workspace, limit)
     return _resolve_method(db, text, limit)
 
 

@@ -244,3 +244,60 @@ def test_문서_형식을_받고_형식을_모르면_이름으로_본다(
     # **아는 형식이 오면 그것이 우선이다** — 이름은 누구나 바꿀 수 있다.
     lying = upload("표준.pdf", "application/x-msdownload")
     assert lying.status_code == 422, lying.text
+
+
+def test_이름으로_찾는_길이_있다(client: TestClient, admin: Signed, db: Session) -> None:
+    """**id 를 얻을 길이 없으면 MCP 는 그 칸을 영영 못 채운다.**
+
+    신뢰성 시험의 「규격서」 칸은 `document_id` 를 요구한다. 사람은 화면의 드롭다운에서
+    고르지만 기계에게는 이름밖에 없다 — 번호(`MX-REL-012`)를 id 로 바꿔 주는 자리가
+    `resolve` 다. **하나로 안 정해지면 거절한다**: 두 부서가 같은 번호 체계를 쓰면 같은
+    번호가 둘이고, 그때 첫 줄을 집으면 남의 부서 문서를 시험에 건다.
+    """
+    code = f"MX-REL-{uuid.uuid4().hex[:6]}"
+    _document(client, admin, code=code, title="환경 시험 표준")
+
+    def ask(**body: Any) -> dict[str, Any]:
+        found = client.post(
+            "/api/resolve", json={"kind": "spec_document", **body}, headers=admin.headers
+        )
+        assert found.status_code == 200, found.text
+        answer: dict[str, Any] = found.json()
+        return answer
+
+    exact = ask(text=code)
+    assert exact["match"] == "exact", exact
+    assert exact["label"] == code, "사람이 쓰는 이름은 문서 번호다"
+    assert "환경 시험 표준" in (exact["candidates"][0]["detail"] or "")
+
+    # 제목은 겹치는 것이 기본이다 — 부분으로 걸린 것은 전부 후보다.
+    assert ask(text="환경 시험")["match"] == "candidates"
+    assert ask(text=f"없는번호-{uuid.uuid4().hex[:6]}")["match"] == "none"
+
+    # **부서를 가로지르면 번호가 겹칠 수 있다.**
+    other = Workspace(slug=f"other-{uuid.uuid4().hex[:6]}", name="남의팀")
+    db.add(other)
+    db.commit()
+    twin = _signed(client, db, other, "manager")
+    _document(client, twin, code=code, title="남의 부서의 같은 번호")
+
+    both = ask(text=code)
+    assert both["match"] == "candidates", "같은 번호가 둘인데 하나로 정하면 안 된다"
+    assert ask(text=code, workspace=other.slug)["match"] == "exact"
+
+
+def test_공개_규격과_사내_규격서는_다른_길로_찾는다(client: TestClient, admin: Signed) -> None:
+    """**두 표를 한 `kind` 로 찾으면 섞인다.** 「참조 규격」 과 「규격서」 는 다른 칸이다."""
+    code = f"MX-REL-{uuid.uuid4().hex[:6]}"
+    _document(client, admin, code=code)
+
+    asked = client.post(
+        "/api/resolve", json={"kind": "method", "text": code}, headers=admin.headers
+    )
+    assert asked.status_code == 200
+    assert asked.json()["match"] == "none", "사내 규격서가 공개 규격으로 잡히면 안 된다"
+
+    bad = client.post(
+        "/api/resolve", json={"kind": "spec_doc", "text": code}, headers=admin.headers
+    )
+    assert bad.status_code == 422, "모르는 종류는 조용히 규격 검색으로 새면 안 된다"
