@@ -200,3 +200,47 @@ def test_같은_부서에_같은_번호는_하나(client: TestClient, admin: Sig
     clash = _document(client, admin, code=code)
     assert clash.status_code == 409, clash.text
     assert clash.json()["error"]["code"] == "TSC-DOCS-0003"
+
+
+def test_문서_형식을_받고_형식을_모르면_이름으로_본다(
+    client: TestClient, admin: Signed
+) -> None:
+    """사내 규격서 원본은 한글·워드·엑셀로 오는 일이 흔하다.
+
+    **형식을 모를 때만 이름을 본다.** 브라우저는 형식을 OS 에서 읽어 오는데, 한글(.hwp)
+    처럼 그 PC 에 프로그램이 없으면 빈 값이나 `application/octet-stream` 을 보낸다 —
+    형식만 보면 정작 받아야 할 문서가 거절된다.
+    """
+    document = _document(client, admin).json()
+
+    def upload(name: str, content_type: str) -> Response:
+        # **파일마다 다른 바이트다.** 같은 내용은 한 벌로 모이므로(sha256) 형식도
+        # 먼저 올린 것의 것이 된다 — 여기서 보려는 것은 문 앞의 판정이다.
+        made: Response = client.post(
+            "/api/attachments",
+            data={"target": "spec_document", "object_id": document["id"], "caption": ""},
+            files={"file": (name, io.BytesIO(PDF + name.encode()), content_type)},
+            headers=admin.headers,
+        )
+        return made
+
+    docx = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    assert upload("표준.docx", docx).status_code == 201
+    xlsx = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    assert upload("시료표.xlsx", xlsx).status_code == 201
+
+    # **형식을 모르고 왔다** — 한글이 안 깔린 PC 가 보내는 모양이다.
+    unknown = upload("규격서.hwp", "application/octet-stream")
+    assert unknown.status_code == 201, unknown.text
+    # **문 앞에서 이름을 붙여 저장한다.** 「모름」 으로 저장하면 그 뒤로는 그 줄을 보고
+    # 무엇인지 알 길이 없어서, 화면이 「한글로 여십시오」 라고 말하지 못한다.
+    assert unknown.json()["content_type"] == "application/haansofthwp", unknown.text
+
+    # 이름도 아는 것이 아니면 거절한다 — 모르는 것을 다 받지는 않는다.
+    blocked = upload("설치.exe", "application/octet-stream")
+    assert blocked.status_code == 422, blocked.text
+    assert blocked.json()["error"]["code"] == "TSC-ATTACH-0002"
+
+    # **아는 형식이 오면 그것이 우선이다** — 이름은 누구나 바꿀 수 있다.
+    lying = upload("표준.pdf", "application/x-msdownload")
+    assert lying.status_code == 422, lying.text

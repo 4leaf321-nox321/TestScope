@@ -27,14 +27,56 @@ from app.database import Base
 #: 공개 규격(`method`)과 다른 표인 이유는 `documents/models.py` 머리말에 있다.
 ATTACHMENT_TARGETS = ("reliability_test", "method", "spec_document")
 
-#: 받는 형식. 스캔본이 PDF 로 오는 일이 많아 그림만 받지 않는다.
+#: 받는 형식. 스캔본이 PDF 로 오는 일이 많아 그림만 받지 않고, **사내 규격서는 원본이
+#: 한글·워드·엑셀로 오는 일이 흔해서** 그것도 받는다.
+#:
+#: **보여 주지는 않는다.** 브라우저는 이 형식들을 못 그리고, MS·구글의 온라인 뷰어는
+#: 파일이 인터넷에 공개돼 있어야 해서 사내망에서는 원리상 못 쓴다. 받아 두고 내려받게
+#: 하는 것이 지금의 답이다 — 화면이 그렇게 말한다.
 ALLOWED_TYPES = {
     "image/jpeg": "jpg",
     "image/png": "png",
     "image/webp": "webp",
     "image/gif": "gif",
     "application/pdf": "pdf",
+    # 문서 — 여는 것은 사람의 프로그램이다.
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "xlsx",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation": "pptx",
+    "application/msword": "doc",
+    "application/vnd.ms-excel": "xls",
+    "application/vnd.ms-powerpoint": "ppt",
+    "application/haansofthwp": "hwp",
+    "application/x-hwp": "hwp",
+    "application/vnd.hancom.hwp": "hwp",
+    "application/hwp+zip": "hwpx",
 }
+
+#: 형식을 **이름으로도** 본다.
+#:
+#: 브라우저는 형식을 OS 에서 읽어 오는데, 한글(.hwp)처럼 그 PC 에 프로그램이 없으면
+#: 빈 값이나 `application/octet-stream` 을 보낸다 — 형식만 보면 정작 받아야 할 사내
+#: 규격서가 거절된다. 그래서 **형식을 모를 때만** 확장자를 본다. 아는 형식이 오면
+#: 그것이 우선이다(이름은 누구나 바꿀 수 있다).
+GENERIC_TYPES = frozenset({"", "application/octet-stream", "binary/octet-stream"})
+
+
+def _by_extension() -> dict[str, str]:
+    """확장자 → 대표 형식. 같은 확장자가 여럿이면 **먼저 적힌 것**이 대표다(hwp 는 셋)."""
+    out: dict[str, str] = {}
+    for mime, extension in ALLOWED_TYPES.items():
+        out.setdefault(extension, mime)
+    out["jpeg"] = "image/jpeg"
+    return out
+
+
+#: 확장자 → 형식. **모르고 온 것에 문 앞에서 이름을 붙여 준다.**
+#:
+#: 안 붙여 주면 `application/octet-stream` 이 그대로 저장되고, 그 뒤로는 그 줄을 보고
+#: 무엇인지 알 길이 없다 — 화면은 「무엇으로 열라」 고 말하지 못하고, 브라우저가 못 그리는
+#: 것을 `<img>` 로 그리려다 깨진 그림을 보인다. 판정은 문 앞에서 한 번 한다.
+EXTENSION_TYPES = _by_extension()
+ALLOWED_EXTENSIONS = frozenset(EXTENSION_TYPES)
 
 #: 장당 한계. 넘으면 413 이 아니라 422 로 **무엇이 문제인지 말해서** 거절한다.
 #:

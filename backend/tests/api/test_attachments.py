@@ -212,7 +212,9 @@ def test_형식과_크기를_막고_무엇이_문제인지_말한다(
     assert wrong.status_code == 422, wrong.text
     assert wrong.json()["error"]["code"] == "TSC-ATTACH-0002"
     # **무엇을 받는지 말해 준다** — 「안 됩니다」 만 하면 사람은 될 때까지 찔러 본다.
-    assert "image/png" in wrong.json()["error"]["details"]["allowed"]
+    # 확장자로 말한다: 사람이 아는 말은 `image/png` 가 아니라 `png` 다.
+    allowed = wrong.json()["error"]["details"]["allowed"]
+    assert {"png", "pdf", "docx", "xlsx", "hwp"} <= set(allowed), allowed
 
     # **한계를 낮춰서 잰다.** 진짜 한계는 100 MB 라(사내 규격서 스캔본이 20~50 MB),
     # 그만큼을 HTTP 본문으로 보내면 시험 한 줄이 몇 초를 먹고 메모리도 그만큼 쓴다.

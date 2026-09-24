@@ -9,7 +9,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
-import { ImagePlus, X } from 'lucide-react'
+import { FileText, ImagePlus, X } from 'lucide-react'
 
 import { ApiError, fetchBlobUrl } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -17,6 +17,7 @@ import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { ImageLightbox } from '@/modules/attachments/ImageLightbox'
 import { attachmentApi } from '@/modules/attachments/api'
+import { ACCEPT, ACCEPT_WORDS, kindOf, programOf } from '@/modules/attachments/fileKind'
 import type { Attachment, AttachmentTarget } from '@/modules/attachments/api'
 
 /**
@@ -40,7 +41,13 @@ const SIZES = {
 
 export type StripSize = keyof typeof SIZES
 
-/** 이미지 한 장. **자격을 실어 받아 온다** — `<img src="/api/…">` 는 401 이 난다. */
+/**
+ * 한 장. **자격을 실어 받아 온다** — `<img src="/api/…">` 는 401 이 난다.
+ *
+ * **그릴 수 있는 것만 받아 온다.** 워드·한글·PDF 는 상자로 서므로 바이트가 필요 없다 —
+ * 50 MB 짜리 스캔본 열 장이 목록을 여는 것만으로 내려오면 사내망에서 바로 느껴진다.
+ * 그 바이트는 크게 보기를 누를 때 그쪽에서 받는다.
+ */
 function Thumb({
   row,
   size,
@@ -52,6 +59,7 @@ function Thumb({
   onReady?: (url: string) => void
 }) {
   const look = SIZES[size]
+  const kind = kindOf(row)
   const [url, setUrl] = useState<string | null>(null)
   const [failed, setFailed] = useState(false)
   // 콜백을 의존성에 넣으면 그릴 때마다 다시 받는다 — 최신 것만 들고 있는다.
@@ -59,6 +67,7 @@ function Thumb({
   report.current = onReady
 
   useEffect(() => {
+    if (kind !== 'image') return
     let dropped = false
     let made: string | null = null
     fetchBlobUrl(row.url)
@@ -77,7 +86,7 @@ function Thumb({
       // 안 돌려주면 그 탭이 살아 있는 동안 메모리에 남는다.
       if (made) URL.revokeObjectURL(made)
     }
-  }, [row.url])
+  }, [row.url, kind])
 
   if (failed) {
     return (
@@ -88,12 +97,15 @@ function Thumb({
       </div>
     )
   }
-  if (row.content_type === 'application/pdf') {
+  if (kind !== 'image') {
+    // **무엇으로 여는지 적는다.** 브라우저는 이 형식들을 못 그리므로 상자가 전부다 —
+    // 「워드」 라고 써 두면 누르기 전에 무엇인지 안다.
     return (
       <div
-        className={`bg-muted flex ${look.box} items-center justify-center rounded-md border text-xs`}
+        className={`bg-muted text-muted-foreground flex ${look.box} flex-col items-center justify-center gap-1 rounded-md border`}
       >
-        PDF
+        <FileText className="size-6" />
+        <span className="text-xs font-medium">{programOf(row)}</span>
       </div>
     )
   }
@@ -238,7 +250,7 @@ export function AttachmentStrip({
           <input
             ref={picker}
             type="file"
-            accept="image/png,image/jpeg,image/webp,image/gif,application/pdf"
+            accept={ACCEPT}
             multiple
             hidden
             onChange={(event) => void pick(event.target.files)}
@@ -254,8 +266,8 @@ export function AttachmentStrip({
           </Button>
           {rows.length === 0 && (
             <p className="text-muted-foreground text-xs">
-              png · jpg · webp · pdf, 장당 10 MB 까지. **설명을 적어 두십시오** — AI 는
-              이미지를 못 보고 그 글자만 읽습니다.
+              {ACCEPT_WORDS}, 장당 100 MB 까지. **설명을 적어 두십시오** — AI 는 이미지를 못
+              보고 그 글자만 읽습니다.
             </p>
           )}
         </>

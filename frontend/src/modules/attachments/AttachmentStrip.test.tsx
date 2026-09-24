@@ -9,6 +9,8 @@
  * 3. 읽기만 되는 사람에게는 지우기·설명 칸이 안 보인다.
  * 4. **눌러서 크게 본다.** 줄에 선 크기는 「있다」 는 표시일 뿐이다 — 그리고 크게 볼 때
  *    **다시 받지 않는다**(10 MB 사진을 두 번 받게 된다).
+ * 5. 브라우저가 못 그리는 것(워드·한글)은 **그리는 시늉을 안 한다.** `<img>` 로 떠넘기면
+ *    깨진 그림이 뜨고, 사람은 「올리기가 잘못됐나」 한다.
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -123,5 +125,65 @@ describe('이미지 줄', () => {
     expect(screen.getByRole('link', { name: /내려받기/ })).toBeTruthy()
     // **다시 안 받는다.**
     expect(fetchBlobUrl).toHaveBeenCalledTimes(1)
+  })
+  it('워드·한글은 상자로 서고, 목록을 여는 것만으로는 안 내려온다', async () => {
+    /** 50 MB 짜리 스캔본 열 장이 목록을 여는 것만으로 내려오면 사내망에서 바로 느껴진다. */
+    await act(async () => {
+      render(
+        <AttachmentStrip
+          target="spec_document"
+          objectId="d1"
+          rows={[
+            row({
+              id: 'a2',
+              original_name: 'MX-REL-012_Rev2.hwp',
+              caption: '',
+              content_type: 'application/haansofthwp',
+              url: '/api/attachments/a2/file',
+            }),
+          ]}
+          canEdit={false}
+          onChanged={() => {}}
+        />,
+      )
+    })
+
+    // **무엇으로 여는지 적힌 상자다.**
+    expect(screen.getByText('한글')).toBeTruthy()
+    // 깨진 그림이 안 선다 — 브라우저는 한글 파일을 못 그린다.
+    expect(document.querySelector('img')).toBeNull()
+    expect(fetchBlobUrl).not.toHaveBeenCalled()
+  })
+
+  it('문서를 누르면 그리는 시늉 대신 내려받기를 내민다', async () => {
+    await act(async () => {
+      render(
+        <AttachmentStrip
+          target="spec_document"
+          objectId="d1"
+          rows={[
+            row({
+              id: 'a2',
+              original_name: 'MX-REL-012_Rev2.hwp',
+              caption: '',
+              content_type: 'application/haansofthwp',
+              url: '/api/attachments/a2/file',
+            }),
+          ]}
+          canEdit={false}
+          onChanged={() => {}}
+        />,
+      )
+    })
+
+    await act(async () => {
+      screen.getByRole('button', { name: 'MX-REL-012_Rev2.hwp 크게 보기' }).click()
+    })
+
+    // **누른 사람은 파일을 원한다** — 바이트는 그때 받는다.
+    expect(fetchBlobUrl).toHaveBeenCalledTimes(1)
+    expect(screen.getByText(/브라우저는 이 형식을 못 그립니다/)).toBeTruthy()
+    expect(screen.getByRole('link', { name: /내려받기/ })).toBeTruthy()
+    expect(document.querySelector('img')).toBeNull()
   })
 })

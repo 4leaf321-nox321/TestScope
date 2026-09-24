@@ -31,8 +31,11 @@ from sqlalchemy.orm import Session
 from app.config import get_settings
 from app.modules.accounts.models import User
 from app.modules.attachments.models import (
+    ALLOWED_EXTENSIONS,
     ALLOWED_TYPES,
     ATTACHMENT_TARGETS,
+    EXTENSION_TYPES,
+    GENERIC_TYPES,
     MAX_BYTES,
     Attachment,
     StoredFile,
@@ -85,6 +88,25 @@ def require_can_edit(db: Session, user: User, *, target: str, object_id: uuid.UU
         documents.require_editable(db, user, object_id)
 
 
+def _resolve_type(content_type: str, filename: str) -> str | None:
+    """받을 형식인가, 받는다면 **무엇이라 적어 둘 것인가.** 못 받으면 `None`.
+
+    **형식을 모를 때만 이름을 본다.** 브라우저는 형식을 OS 에서 읽어 오는데, 한글(.hwp)
+    처럼 그 PC 에 프로그램이 없으면 빈 값이나 `application/octet-stream` 을 보낸다 —
+    형식만 보면 정작 받아야 할 사내 규격서가 거절된다. 아는 형식이 오면 그것이 우선이다
+    (이름은 누구나 바꿀 수 있다).
+
+    모르고 온 것에는 **여기서 이름을 붙인다.** 그대로 저장하면 그 뒤로는 그 줄을 보고
+    무엇인지 알 길이 없어서, 화면이 「한글로 여십시오」 라고 말하지 못한다.
+    """
+    if content_type in ALLOWED_TYPES:
+        return content_type
+    if content_type.lower() not in GENERIC_TYPES:
+        return None
+    suffix = Path(filename).suffix.lstrip(".").lower()
+    return EXTENSION_TYPES.get(suffix)
+
+
 def _store(data: bytes, content_type: str) -> tuple[str, Path]:
     """바이트를 파일스토어에 둔다. 이미 있으면 안 쓴다. (sha256, 상대 경로)."""
     digest = hashlib.sha256(data).hexdigest()
@@ -111,11 +133,12 @@ def add(
 ) -> Attachment:
     """그림 한 장을 붙인다. 커밋은 부르는 쪽이 한다."""
     require_can_edit(db, user, target=target, object_id=object_id)
-    if content_type not in ALLOWED_TYPES:
+    resolved = _resolve_type(content_type, filename)
+    if resolved is None:
         raise AppError(
             "TSC-ATTACH-0002",
             f"받을 수 없는 형식입니다: {content_type or '(모름)'}",
-            details={"allowed": sorted(ALLOWED_TYPES)},
+            details={"allowed": sorted(ALLOWED_EXTENSIONS)},
             status=422,
         )
     if not data:
@@ -136,13 +159,13 @@ def add(
                 status=422,
             )
 
-    digest, relative = _store(data, content_type)
+    digest, relative = _store(data, resolved)
     stored = db.scalar(select(StoredFile).where(StoredFile.sha256 == digest))
     if stored is None:
         stored = StoredFile(
             sha256=digest,
             path=str(relative).replace("\\", "/"),
-            content_type=content_type,
+            content_type=resolved,
             bytes=len(data),
         )
         db.add(stored)

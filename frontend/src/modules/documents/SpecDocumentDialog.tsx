@@ -38,6 +38,7 @@ import {
 } from '@/shared/components/ui/select'
 import { Textarea } from '@/shared/components/ui/textarea'
 import { attachmentApi } from '@/modules/attachments/api'
+import { ACCEPT, ACCEPT_WORDS } from '@/modules/attachments/fileKind'
 import { specDocumentApi } from '@/modules/documents/api'
 import type { SpecDocument } from '@/modules/documents/api'
 
@@ -112,7 +113,7 @@ export function SpecDocumentDialog({
         setError(
           new Error(
             `문서는 저장됐지만 파일 ${failed.length}개가 안 올라갔습니다: ${failed.join(', ')}. ` +
-              '형식(png·jpg·webp·pdf)과 크기(100 MB)를 보고 다시 올려 주십시오.',
+              `형식(${ACCEPT_WORDS})과 크기(100 MB)를 보고 다시 올려 주십시오.`,
           ),
         )
         return
@@ -216,7 +217,7 @@ export function SpecDocumentDialog({
             <input
               ref={picker}
               type="file"
-              accept="image/png,image/jpeg,image/webp,application/pdf"
+              accept={ACCEPT}
               multiple
               hidden
               onChange={(event) => {
@@ -260,7 +261,15 @@ export function SpecDocumentDialog({
               {editing
                 ? '여기서 고른 파일은 저장할 때 더해집니다. 이미 붙은 파일은 보기 창에서 지웁니다.'
                 : '저장하면 문서가 만들어지고 이어서 올라갑니다. 나중에 보기 창에서 더할 수도 있습니다.'}{' '}
-              pdf · png · jpg · webp, 장당 100 MB 까지.
+              {ACCEPT_WORDS}, 장당 100 MB 까지.
+            </p>
+            {/* **못 보여 준다고 먼저 말한다.** 올리고 나서 알면 「왜 안 열리지」 가 된다.
+                브라우저는 워드·한글을 못 그리고, MS·구글의 온라인 뷰어는 파일이 인터넷에
+                공개돼 있어야 해서 사내망에서는 원리상 못 쓴다. */}
+            <p className="text-muted-foreground text-xs">
+              워드·엑셀·한글 문서는 <strong>화면에서 열리지 않고 내려받습니다</strong> —
+              사내망에서는 온라인 뷰어를 쓸 수 없습니다. 목록에서 찾을 글자(문서 번호·제목)를
+              위 칸에 적어 두십시오.
             </p>
           </div>
 
