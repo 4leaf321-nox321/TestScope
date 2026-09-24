@@ -1653,6 +1653,10 @@ async def get_method(ctx: Context, method_id: str) -> dict[str, Any]:
     """규격 하나 — 시험 항목 · 요구 조건 · **인용한 계열**(`cited_series`, `pending` 이면 어느
     시험 항목의 것인지 미정) · 수행 가능 장비 수.
 
+    **규격서 원문이 붙어 있는지는 `list_attachments(target="method", …)` 가 안다.**
+    요구 조건이 비어 있는 규격이 대부분이라(601 중 598), 원문이 있으면 사람에게 그것을
+    읽고 채워 달라고 말할 수 있다.
+
     `test_items` 는 **목록이다** — 규격 하나가 여럿을 덮는다(IEC 60529 는 방진·방수 둘 다).
     비어 있으면 아직 안 정한 것이고, 그 규격은 계열의 시험 항목에 못 붙는다."""
     return await _get(ctx, f"/methods/{method_id}")
@@ -2189,16 +2193,24 @@ async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
 async def list_attachments(ctx: Context, target: str, object_id: str) -> dict[str, Any]:
     """붙은 **그림과 첨부**의 목록 — 무엇이 어느 칸에 붙어 있나.
 
-    `target` 은 지금 `reliability_test` 뿐이다. 줄마다 `caption`(무엇을 찍었나) ·
-    `definition_label`(어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
+    `target` 은 `reliability_test` 와 `method` 다. 줄마다 `caption` · `definition_label`
+    (어느 칸에 붙었나, 비면 카드 전체) · 형식 · 크기가 온다.
+
+    **`method` 는 규격서 원문이다.** 사내 규격서도 여기 붙는다 — 여러 신뢰성 시험이 한
+    문서를 인용하므로 시험마다 복사하지 않고 규격에 두고 「참조 규격」 으로 가리킨다.
+    어느 신뢰성 시험의 규격서를 찾으려면 그 시험의 「참조 규격」 속성이 가리키는
+    `method_id` 로 이 도구를 부른다.
 
     **너는 그림을 못 본다.** 읽을 수 있는 것은 `caption` 뿐이다 — 설명이 비어 있으면 그
     그림은 너에게 없는 것과 같으니, 「그림 3장이 있고 설명은 없습니다」 라고 그대로 말하고
     **내용을 짐작하지 마라.** 「시편 장착 방향」 이라고 적힌 그림을 보고 방향을 말하는 것도
     짐작이다 — 적힌 글자까지만 옮긴다.
 
-    사람에게 보이려면 화면의 그 시험을 열라고 말한다. 파일 주소(`url`)는 자격이 있어야
-    열리므로 그대로 건네도 브라우저에서 안 열린다.
+    **PDF 의 본문도 못 읽는다.** 규격서가 붙어 있다는 사실과 파일 이름·설명까지만 안다 —
+    「ASTM E8 원문이 있습니다」 는 되지만 그 안의 요구 조건을 말하면 지어내는 것이다.
+
+    사람에게 보이려면 화면의 그 시험이나 규격을 열라고 말한다. 파일 주소(`url`)는 자격이
+    있어야 열리므로 그대로 건네도 브라우저에서 안 열린다.
     """
     return _listed(
         await _get(ctx, "/attachments", {"target": target, "object_id": object_id}),

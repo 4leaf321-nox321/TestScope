@@ -323,15 +323,6 @@ REFERENCE_KINDS: tuple[ReferenceKind, ...] = (
         _describe_attribute_value,
     ),
     ReferenceKind(
-        "spec_document_value",
-        "spec_document",
-        "신뢰성 시험의 규격서",
-        AttributeValue,
-        AttributeValue.term_id,
-        "delete",
-        _describe_attribute_value,
-    ),
-    ReferenceKind(
         "document_type_value",
         "document_type",
         "신뢰성 시험의 문서 유형",

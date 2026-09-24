@@ -38,7 +38,7 @@ from app.modules.attachments.models import (
     StoredFile,
 )
 from app.modules.attributes.models import AttributeDefinition
-from app.shared.errors import AppError, NotFound
+from app.shared.errors import AppError, Forbidden, NotFound
 from app.shared.text import clean
 
 
@@ -63,6 +63,20 @@ def require_can_edit(db: Session, user: User, *, target: str, object_id: uuid.UU
         from app.modules.reliability import services as reliability
 
         reliability.require_editable(db, user, object_id)
+    elif target == "method":
+        # **규격서는 시스템 관리자만 올린다.** 규격은 전사 공용이고 그 원문은 여러 부서가
+        # 함께 보는 것이라, 한 부서가 올린 판이 전사의 근거가 되면 안 된다. 부서가 가진
+        # 규격(사내 시험법)도 같다 — 파일은 관리자를 거친다.
+        from app.modules.methods.models import TestMethod
+
+        row = db.get(TestMethod, object_id)
+        if row is None or row.deleted_at is not None:
+            raise NotFound("TSC-METHODS-0001", "규격을 찾을 수 없습니다.")
+        if not user.is_system_admin:
+            raise Forbidden(
+                "TSC-ATTACH-0006",
+                "규격서 파일은 시스템 관리자만 올리고 지웁니다.",
+            )
 
 
 def _store(data: bytes, content_type: str) -> tuple[str, Path]:

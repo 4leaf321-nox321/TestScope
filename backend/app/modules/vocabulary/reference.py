@@ -145,25 +145,6 @@ AXES: list[tuple[str, str, str, str, str | None, int, str]] = [
         "사내 시험을 묶는 분류. 유형(환경·기계 …)보다 위이거나 옆인 갈래로, 회사마다 다르다 "
         "— 그래서 값을 코드로 심지 않고 축으로 연다.",
     ),
-    (
-        "spec_document",
-        "규격서",
-        "method",
-        "open",
-        None,
-        58,
-        "사내 규격서 — MX-REL-012 처럼 문서관리 시스템의 번호. 글자로 두면 같은 문서가 "
-        "판(Rev.)마다 다른 값이 되고, 그러면 「이 규격서를 쓰는 시험」 을 못 묶는다.",
-    ),
-    (
-        "document_type",
-        "문서 유형",
-        "method",
-        "open",
-        None,
-        59,
-        "규격서·지침서·작업표준처럼 문서의 갈래.",
-    ),
 ]
 
 #: 축의 값이 갖는 칸. **설치가 심고, 이미 적힌 축은 안 덮는다.** 물성만 갖는다 —
@@ -897,17 +878,6 @@ RELIABILITY_ATTRIBUTES: tuple[
         "reliability_category",
         "사내 시험을 묶는 분류. 없으면 기준정보에서 값을 더한다.",
         3,
-    ),
-    (
-        "reliability_spec_document",
-        "규격서",
-        "term",
-        "",
-        None,
-        "spec_document",
-        "사내 규격서를 목록에서 고른다. **글자로 적지 않는다** — 같은 문서가 판마다 다른 "
-        "값이 되면 「이 규격서를 쓰는 시험」 을 못 묶는다.",
-        4,
     ),
     (
         "reliability_document_type",

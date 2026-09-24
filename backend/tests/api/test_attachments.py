@@ -18,12 +18,14 @@ import io
 import uuid
 import zlib
 
+import pytest
 from fastapi.testclient import TestClient
 from httpx import Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import User
+from app.modules.attachments import services as attachments
 from app.modules.attachments.models import Attachment, StoredFile
 from app.modules.auth import security
 from app.modules.workspaces.models import Workspace, WorkspaceMember
@@ -193,7 +195,9 @@ def test_시험을_지우면_그림도_간다(client: TestClient, admin: Signed,
     assert db.get(StoredFile, file_id) is None
 
 
-def test_형식과_크기를_막고_무엇이_문제인지_말한다(client: TestClient, admin: Signed) -> None:
+def test_형식과_크기를_막고_무엇이_문제인지_말한다(
+    client: TestClient, admin: Signed, monkeypatch: pytest.MonkeyPatch
+) -> None:
     tag = uuid.uuid4().hex[:6]
     test_id = _test(client, admin, f"거절 시험-{tag}")
 
@@ -210,9 +214,11 @@ def test_형식과_크기를_막고_무엇이_문제인지_말한다(client: Tes
     # **무엇을 받는지 말해 준다** — 「안 됩니다」 만 하면 사람은 될 때까지 찔러 본다.
     assert "image/png" in wrong.json()["error"]["details"]["allowed"]
 
-    big = _upload(
-        client, admin.headers, test_id, data=b"\x89PNG\r\n\x1a\n" + b"0" * (10 * 1024 * 1024)
-    )
+    # **한계를 낮춰서 잰다.** 진짜 한계는 100 MB 라(사내 규격서 스캔본이 20~50 MB),
+    # 그만큼을 HTTP 본문으로 보내면 시험 한 줄이 몇 초를 먹고 메모리도 그만큼 쓴다.
+    # 확인할 것은 막는 규칙이지 100 MB 를 만들 수 있는지가 아니다.
+    monkeypatch.setattr(attachments, "MAX_BYTES", 256)
+    big = _upload(client, admin.headers, test_id, data=b"\x89PNG\r\n\x1a\n" + b"0" * 512)
     assert big.status_code == 422, big.text
     assert big.json()["error"]["code"] == "TSC-ATTACH-0004"
 

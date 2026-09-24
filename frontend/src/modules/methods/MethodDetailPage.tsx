@@ -35,7 +35,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/components/ui/table'
+import { useAuth } from '@/shared/auth/AuthContext'
 import { useResource } from '@/shared/hooks/useResource'
+import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
+import { attachmentApi } from '@/modules/attachments/api'
 import { AXIS, vocabularyApi } from '@/modules/vocabulary/api'
 import { AttributeValuesPanel } from '@/modules/attributes/AttributeValuesPanel'
 import { GraphPanel } from '@/modules/graph/GraphPanel'
@@ -48,7 +51,10 @@ function shownBound(value: number | null, unit: string): string {
 
 export default function MethodDetailPage() {
   const { id = '' } = useParams<{ id: string }>()
+  const { user } = useAuth()
   const method = useResource(() => methodApi.read(id), [id])
+  /** 규격서 원문 — 목록과 따로 받는다. 상세를 열 때마다 파일 목록이 필요하다. */
+  const documents = useResource(() => attachmentApi.list('method', id), [id])
   const conditions = useResource(() => vocabularyApi.conditions(), [])
   const items = useResource(() => vocabularyApi.terms(AXIS.testItem), [])
   const [pickingItem, setPickingItem] = useState('')
@@ -178,6 +184,34 @@ export default function MethodDetailPage() {
       )}
 
       <GraphPanel objectId={`method:${one.id}`} />
+
+      {/* **규격서 원문.** 번호만 있고 문서가 없으면 읽을 수가 없고, 요구 조건을 채울
+          재료도 없다(601건 중 원문을 가진 것이 19건이었다). 사내 규격서도 여기 붙는다 —
+          여러 신뢰성 시험이 한 문서를 인용하므로 시험마다 복사하지 않는다.
+
+          **올리고 지우는 것은 시스템 관리자만**이다. 규격은 전사 공용이라 한 부서가 올린
+          판이 전사의 근거가 되면 안 된다 — 판정은 서버가 하고 여기는 표시일 뿐이다. */}
+      <section className="space-y-3">
+        <h2 className="text-base font-semibold">
+          규격서
+          {(documents.data ?? []).length > 0 && ` · ${(documents.data ?? []).length}`}
+        </h2>
+        <ErrorNotice error={documents.error} />
+        <AttachmentStrip
+          target="method"
+          objectId={one.id}
+          rows={documents.data ?? []}
+          canEdit={Boolean(user?.is_system_admin)}
+          size="lg"
+          label="규격서 올리기"
+          onChanged={() => documents.reload()}
+        />
+        {(documents.data ?? []).length === 0 && !user?.is_system_admin && (
+          <p className="text-muted-foreground text-sm">
+            올라온 규격서가 없습니다. 시스템 관리자가 올립니다.
+          </p>
+        )}
+      </section>
 
       <section className="space-y-3">
         <h2 className="text-base font-semibold">속성</h2>
