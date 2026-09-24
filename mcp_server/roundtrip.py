@@ -131,11 +131,21 @@ async def _write_chain(ctx: _Ctx) -> int:
     if shown != ["-40 ~ 125 degC"]:
         bad += 1
         print(f"  실패 속성 표시가 다릅니다: {shown}")
+    # **기계 자격으로 올린 것은 후보다**(ADR 0009). 확정으로 서면 사람 확인을 건너뛴
+    # 것이므로 그 자체가 고장이다.
+    if test.get("status") != "candidate":
+        bad += 1
+        print(f"  실패 후보로 서야 하는데 status={test.get('status')!r}")
 
     # 4. 되찾기 — 걸려야 할 것은 걸리고, 안 걸릴 것은 진단이 온다.
+    #
+    # `status="all"` 을 준다: 전사 목록은 **확정된 것만** 내고 방금 만든 것은 후보라
+    # 안 나온다. 이것을 안 주면 왕복이 「못 찾았다」 로 끝난다(실측 2026-09-24, CI).
     hot = step(
         "list_reliability_tests(>=100)",
-        await server.list_reliability_tests(ctx, attr=[f"mcp_temp_{tag}>=100"]),
+        await server.list_reliability_tests(
+            ctx, attr=[f"mcp_temp_{tag}>=100"], status="all"
+        ),
         ["count"],
     )
     if hot is not None and hot.get("count", 0) < 1:
@@ -143,7 +153,9 @@ async def _write_chain(ctx: _Ctx) -> int:
         print("  실패 속성 조건으로 되찾지 못했습니다")
     cold = step(
         "list_reliability_tests(>=200)",
-        await server.list_reliability_tests(ctx, attr=[f"mcp_temp_{tag}>=200"]),
+        await server.list_reliability_tests(
+            ctx, attr=[f"mcp_temp_{tag}>=200"], status="all"
+        ),
         ["count"],
     )
     diagnosis = cold.get("diagnosis") if cold is not None else None
