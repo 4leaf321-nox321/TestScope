@@ -33,8 +33,10 @@ import { attachmentApi } from '@/modules/attachments/api'
 import type { Attachment } from '@/modules/attachments/api'
 import { attributeApi } from '@/modules/attributes/api'
 import type { AttributeValue } from '@/modules/attributes/api'
-import { SECTIONS } from '@/modules/attributes/StandardAttributeFields'
+import { SECTIONS, anchorOf } from '@/modules/attributes/StandardAttributeFields'
 import { CandidateBadge, ReviewBanner } from '@/modules/reliability/CandidateReview'
+import { CardOutline } from '@/modules/reliability/CardOutline'
+import type { OutlineItem } from '@/modules/reliability/CardOutline'
 import type { ReliabilityTest } from '@/modules/reliability/api'
 
 /** 한 줄에 안 들어가는 것 — 긴 글과 표는 칸을 통째로 쓴다. */
@@ -119,10 +121,15 @@ export function ReliabilityTestViewDialog({
     [testId],
   )
 
+  /** 정의 id → key. 목차와 본문이 같은 자리표를 써야 해서 밖으로 뺀다. */
+  const keyOf = useMemo(
+    () => new Map((defs.data ?? []).map((one) => [one.id, one.key])),
+    [defs.data],
+  )
+
   const grouped = useMemo(() => {
     const values = test?.attributes ?? []
     if (values.length === 0) return []
-    const keyOf = new Map((defs.data ?? []).map((one) => [one.id, one.key]))
     const left = new Map(values.map((one) => [one.definition_id, one]))
     const out: { title: string; rows: AttributeValue[] }[] = []
     for (const section of SECTIONS) {
@@ -142,6 +149,33 @@ export function ReliabilityTestViewDialog({
     if (left.size > 0) out.push({ title: '기타 항목', rows: [...left.values()] })
     return out
   }, [test?.attributes, defs.data])
+
+  /**
+   * 왼쪽 목차 — **적힌 칸만 선다.** 보기 창은 읽는 자리라, 없는 칸을 목차에 세워 두면
+   * 「왜 빈 자리로 가지」 가 된다(수정 창은 반대로 빈 칸도 세운다 — 채울 자리니까).
+   */
+  const outline = useMemo(() => {
+    const items: OutlineItem[] = []
+    if (test?.purpose) {
+      items.push({ anchor: anchorOf('section', '목적'), label: '목적' })
+    }
+    items.push({
+      anchor: anchorOf('section', '적용 시험 항목'),
+      label: '적용 시험 항목',
+    })
+    for (const section of grouped) {
+      items.push({
+        anchor: anchorOf('section', section.title),
+        label: section.title,
+        children: section.rows.map((row) => ({
+          anchor: anchorOf('field', keyOf.get(row.definition_id) ?? row.definition_id),
+          label: row.label,
+          filled: true,
+        })),
+      })
+    }
+    return items
+  }, [grouped, keyOf, test?.purpose])
 
   const byField = useMemo(() => {
     const out = new Map<string, Attachment[]>()
@@ -176,7 +210,7 @@ export function ReliabilityTestViewDialog({
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && onClose()}>
-      <DialogContent className="max-h-[85vh] w-[80vw] overflow-y-auto sm:max-w-[80vw] lg:max-w-5xl">
+      <DialogContent className="max-h-[88vh] w-[92vw] overflow-y-auto sm:max-w-[92vw] lg:max-w-[1300px]">
         <DialogHeader>
           <DialogTitle className="flex flex-wrap items-center gap-2">
             {test.name}
@@ -190,105 +224,114 @@ export function ReliabilityTestViewDialog({
         <ReviewBanner row={test} onChanged={(next) => onChanged?.(next)} />
         <ErrorNotice error={defs.error ?? shots.error} />
 
-        <dl className="space-y-5">
-          {test.purpose && (
-            <div className="space-y-1">
-              <dt className="text-muted-foreground text-xs font-medium">목적</dt>
-              <dd className="text-sm whitespace-pre-line">{test.purpose}</dd>
-            </div>
-          )}
-
-          <div className="space-y-1">
-            <dt className="text-muted-foreground text-xs font-medium">적용 시험 항목</dt>
-            <dd className="flex flex-wrap gap-1.5 text-sm">
-              {test.test_items.length === 0 ? (
-                // 「장비 없음」 이 아니라 「안 정함」 — 둘은 해야 할 일이 다르다.
-                <span className="text-muted-foreground">시험 항목 미지정</span>
-              ) : (
-                test.test_items.map((item) => (
-                  <span key={item.term_id} className="bg-muted rounded-md px-2 py-0.5">
-                    {item.value}
-                    <span
-                      className={
-                        item.equipment_count === 0
-                          ? 'text-amber-600 ml-1 text-xs'
-                          : 'text-muted-foreground ml-1 text-xs'
-                      }
-                      title={
-                        item.equipment_count === 0
-                          ? '이 항목이 되는 장비가 이 부서에 없습니다'
-                          : undefined
-                      }
-                    >
-                      {item.equipment_count}대
-                    </span>
-                  </span>
-                ))
-              )}
-            </dd>
-          </div>
-
-          {grouped.map((section) => (
-            <section key={section.title} className="space-y-2">
-              <h3 className="border-b pb-1 text-sm font-medium">{section.title}</h3>
-              <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
-                {section.rows.map((row) => (
-                  <div
-                    key={row.definition_id}
-                    className={`space-y-1 ${isWide(row) ? 'md:col-span-2' : ''}`}
-                  >
-                    <dt className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
-                      {row.label}
-                      {row.status === 'draft' && (
-                        <span title="초안 속성 — 검색·판정에는 안 쓰입니다">초안</span>
-                      )}
-                    </dt>
-                    <dd className="space-y-1">
-                      <Value row={row} />
-                      {row.note && (
-                        <p className="text-muted-foreground text-xs whitespace-pre-line">
-                          {row.note}
-                        </p>
-                      )}
-                      {/* 이 칸에 붙은 그림 — **읽는 사람의 것이다.** 넣고 지우는 것은 수정 창. */}
-                      {(byField.get(row.definition_id) ?? []).length > 0 && (
-                        <AttachmentStrip
-                          target="reliability_test"
-                          objectId={test.id}
-                          rows={byField.get(row.definition_id) ?? []}
-                          canEdit={false}
-                          size="lg"
-                          onChanged={() => shots.reload()}
-                        />
-                      )}
-                    </dd>
-                  </div>
-                ))}
+        {/* 왼쪽 목차 + 오른쪽 본문 — 수정 창과 같은 모양이다. */}
+        <div className="flex gap-6">
+          <CardOutline items={outline} />
+          <dl className="min-w-0 flex-1 space-y-5">
+            {test.purpose && (
+              <div id={anchorOf('section', '목적')} className="scroll-mt-4 space-y-1">
+                <dt className="text-muted-foreground text-xs font-medium">목적</dt>
+                <dd className="text-sm whitespace-pre-line">{test.purpose}</dd>
               </div>
-            </section>
-          ))}
+            )}
 
-          {orphans.map((group) => (
-            <section key={group.title} className="space-y-2">
-              <h3 className="border-b pb-1 text-sm font-medium">{group.title}</h3>
-              <AttachmentStrip
-                target="reliability_test"
-                objectId={test.id}
-                rows={group.rows}
-                canEdit={false}
-                size="lg"
-                onChanged={() => shots.reload()}
-              />
-            </section>
-          ))}
+            <div id={anchorOf('section', '적용 시험 항목')} className="scroll-mt-4 space-y-1">
+              <dt className="text-muted-foreground text-xs font-medium">적용 시험 항목</dt>
+              <dd className="flex flex-wrap gap-1.5 text-sm">
+                {test.test_items.length === 0 ? (
+                  // 「장비 없음」 이 아니라 「안 정함」 — 둘은 해야 할 일이 다르다.
+                  <span className="text-muted-foreground">시험 항목 미지정</span>
+                ) : (
+                  test.test_items.map((item) => (
+                    <span key={item.term_id} className="bg-muted rounded-md px-2 py-0.5">
+                      {item.value}
+                      <span
+                        className={
+                          item.equipment_count === 0
+                            ? 'text-amber-600 ml-1 text-xs'
+                            : 'text-muted-foreground ml-1 text-xs'
+                        }
+                        title={
+                          item.equipment_count === 0
+                            ? '이 항목이 되는 장비가 이 부서에 없습니다'
+                            : undefined
+                        }
+                      >
+                        {item.equipment_count}대
+                      </span>
+                    </span>
+                  ))
+                )}
+              </dd>
+            </div>
 
-          {grouped.length === 0 && !defs.loading && (
-            <p className="text-muted-foreground text-sm">
-              적힌 항목이 없습니다. 시험 조건을 적어 두면 「수행 가능 장비」 가 답할 수
-              있습니다.
-            </p>
-          )}
-        </dl>
+            {grouped.map((section) => (
+              <section
+                key={section.title}
+                id={anchorOf('section', section.title)}
+                className="scroll-mt-4 space-y-2"
+              >
+                <h3 className="border-b pb-1 text-sm font-medium">{section.title}</h3>
+                <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+                  {section.rows.map((row) => (
+                    <div
+                      key={row.definition_id}
+                      id={anchorOf('field', keyOf.get(row.definition_id) ?? row.definition_id)}
+                      className={`scroll-mt-4 space-y-1 ${isWide(row) ? 'md:col-span-2' : ''}`}
+                    >
+                      <dt className="text-muted-foreground flex items-center gap-1 text-xs font-medium">
+                        {row.label}
+                        {row.status === 'draft' && (
+                          <span title="초안 속성 — 검색·판정에는 안 쓰입니다">초안</span>
+                        )}
+                      </dt>
+                      <dd className="space-y-1">
+                        <Value row={row} />
+                        {row.note && (
+                          <p className="text-muted-foreground text-xs whitespace-pre-line">
+                            {row.note}
+                          </p>
+                        )}
+                        {/* 이 칸에 붙은 그림 — **읽는 사람의 것이다.** 넣고 지우는 것은 수정 창. */}
+                        {(byField.get(row.definition_id) ?? []).length > 0 && (
+                          <AttachmentStrip
+                            target="reliability_test"
+                            objectId={test.id}
+                            rows={byField.get(row.definition_id) ?? []}
+                            canEdit={false}
+                            size="lg"
+                            onChanged={() => shots.reload()}
+                          />
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+
+            {orphans.map((group) => (
+              <section key={group.title} className="space-y-2">
+                <h3 className="border-b pb-1 text-sm font-medium">{group.title}</h3>
+                <AttachmentStrip
+                  target="reliability_test"
+                  objectId={test.id}
+                  rows={group.rows}
+                  canEdit={false}
+                  size="lg"
+                  onChanged={() => shots.reload()}
+                />
+              </section>
+            ))}
+
+            {grouped.length === 0 && !defs.loading && (
+              <p className="text-muted-foreground text-sm">
+                적힌 항목이 없습니다. 시험 조건을 적어 두면 「수행 가능 장비」 가 답할 수
+                있습니다.
+              </p>
+            )}
+          </dl>
+        </div>
 
         <DialogFooter>
           {test.can_edit && onEdit && (

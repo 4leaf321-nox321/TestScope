@@ -214,6 +214,47 @@ export const SECTIONS: {
   },
 ]
 
+export interface GroupedSection {
+  title: string
+  hint?: string
+  rows: AttributeDefinition[]
+  /** 조건 종류 칸 — 축마다 하나라 이름으로 못 적고 종류로 모은다. */
+  conditionRows: AttributeDefinition[]
+}
+
+/**
+ * 갈래마다 제 칸을 모은다. 표에 없는 key 는 마지막 갈래로 — 나중에 는 칸도 자리를 잃지 않는다.
+ *
+ * **함수로 빼 둔 이유:** 목차(왼쪽 줄)와 본문이 같은 표를 봐야 한다. 두 벌로 두면 칸이
+ * 하나 늘 때 한쪽만 고쳐지고, 그때 목차가 없는 자리를 가리킨다.
+ */
+export function groupDefinitions(definitions: AttributeDefinition[]): GroupedSection[] {
+  const placed = new Set<string>()
+  const take = (one: AttributeDefinition | undefined): one is AttributeDefinition => {
+    if (!one) return false
+    placed.add(one.key)
+    return true
+  }
+  const out: GroupedSection[] = SECTIONS.map((section) => ({
+    title: section.title,
+    hint: section.hint,
+    rows: section.keys.map((key) => definitions.find((one) => one.key === key)).filter(take),
+    conditionRows: section.conditions
+      ? definitions.filter((one) => one.kind === 'condition').filter(take)
+      : [],
+  })).filter((section) => section.rows.length > 0 || section.conditionRows.length > 0)
+  const rest = definitions.filter((one) => !placed.has(one.key))
+  if (rest.length > 0) {
+    out.push({ title: '기타 항목', rows: rest, conditionRows: [] })
+  }
+  return out
+}
+
+/** 목차가 가리키는 자리. 본문의 갈래·칸에 같은 id 를 단다. */
+export function anchorOf(kind: 'section' | 'field', key: string): string {
+  return `rt-${kind}-${key.replace(/\s+/g, '-')}`
+}
+
 /** 한 줄을 통째로 쓰는 종류 — 글상자와 짝 목록은 좁은 칸에 못 담는다. */
 function isWide(definition: AttributeDefinition): boolean {
   return (
@@ -254,41 +295,18 @@ export function StandardAttributeFields({
   const set = (id: string, patch: Partial<StandardValue>) =>
     onChange({ ...values, [id]: { ...(values[id] ?? empty()), ...patch } })
 
-  // 갈래마다 제 칸을 모은다. 표에 없는 key 는 마지막 갈래로 — 나중에 는 칸도 자리를 잃지 않는다.
-  const grouped = useMemo(() => {
-    const placed = new Set<string>()
-    const take = (one: AttributeDefinition | undefined): one is AttributeDefinition => {
-      if (!one) return false
-      placed.add(one.key)
-      return true
-    }
-    const out = SECTIONS.map((section) => ({
-      ...section,
-      rows: section.keys.map((key) => definitions.find((one) => one.key === key)).filter(take),
-      // 조건 칸은 축마다 하나라 이름으로 못 적는다 — 종류로 모은다.
-      conditionRows: section.conditions
-        ? definitions.filter((one) => one.kind === 'condition').filter(take)
-        : [],
-    })).filter((section) => section.rows.length > 0 || section.conditionRows.length > 0)
-    const rest = definitions.filter((one) => !placed.has(one.key))
-    if (rest.length > 0)
-      out.push({
-        title: '기타 항목',
-        hint: undefined,
-        keys: [],
-        conditions: false,
-        rows: rest,
-        conditionRows: [],
-      })
-    return out
-  }, [definitions])
+  const grouped = useMemo(() => groupDefinitions(definitions), [definitions])
 
   if (definitions.length === 0) return null
 
   return (
     <>
       {grouped.map((section) => (
-        <fieldset key={section.title} className="rounded-lg border p-4">
+        <fieldset
+          key={section.title}
+          id={anchorOf('section', section.title)}
+          className="scroll-mt-4 rounded-lg border p-4"
+        >
           <legend className="px-1.5 text-sm font-medium">{section.title}</legend>
           {section.hint && (
             <p className="text-muted-foreground mb-3 text-xs">{section.hint}</p>
@@ -310,8 +328,11 @@ export function StandardAttributeFields({
               return (
                 <div
                   key={definition.id}
+                  id={anchorOf('field', definition.key)}
                   className={
-                    isWide(definition) ? 'space-y-2 md:col-span-2 xl:col-span-3' : 'space-y-2'
+                    isWide(definition)
+                      ? 'scroll-mt-4 space-y-2 md:col-span-2 xl:col-span-3'
+                      : 'scroll-mt-4 space-y-2'
                   }
                 >
                   <Label htmlFor={id}>
@@ -525,7 +546,11 @@ function ConditionRows({
         const value = values[definition.id] ?? empty()
         const id = `attr-${definition.id}`
         return (
-          <div key={definition.id} className="bg-muted/30 rounded-md border p-2.5">
+          <div
+            key={definition.id}
+            id={anchorOf('field', definition.key)}
+            className="bg-muted/30 scroll-mt-4 rounded-md border p-2.5"
+          >
             <div className="flex flex-wrap items-center gap-2">
               <Label htmlFor={id} className="w-28 shrink-0 text-sm">
                 {definition.label}

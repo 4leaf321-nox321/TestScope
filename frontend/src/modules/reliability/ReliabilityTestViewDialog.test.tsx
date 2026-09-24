@@ -134,13 +134,33 @@ describe('보기 창', () => {
 
   it('등록 창과 같은 갈래로 묶인다', async () => {
     await show(test())
+    // **제목 쪽만 본다.** 왼쪽 목차에도 같은 이름이 서므로 `getByText` 는 둘을 만난다.
+    const titles = [...document.querySelectorAll('h3')].map((one) => one.textContent?.trim())
     // 조건은 「시험 조건」, 절차·판정은 「방법과 판정」, 수량은 「대상과 수량」.
-    expect(screen.getByText('시험 조건')).toBeTruthy()
-    expect(screen.getByText('대상과 수량')).toBeTruthy()
-    expect(screen.getByText('방법과 판정')).toBeTruthy()
+    expect(titles).toContain('시험 조건')
+    expect(titles).toContain('대상과 수량')
+    expect(titles).toContain('방법과 판정')
     // 값이 없는 갈래는 아예 안 선다 — 빈 제목만 줄줄이 있으면 카드가 안 읽힌다.
-    expect(screen.queryByText('시험 구분')).toBeNull()
-    expect(screen.queryByText('근거')).toBeNull()
+    expect(titles).not.toContain('시험 구분')
+    expect(titles).not.toContain('근거')
+  })
+
+  it('왼쪽 목차가 적힌 칸을 순서대로 세운다', async () => {
+    /**
+     * 스물두 칸을 세로로 늘어놓으면 어디까지 읽었는지 사람이 잃는다. 목차는 **본문과
+     * 같은 표**(`groupDefinitions`)를 보므로 칸이 하나 늘어도 한쪽만 고쳐지지 않는다.
+     */
+    await show(test())
+    const outline = screen.getByRole('navigation', { name: '목차' })
+    const labels = [...outline.querySelectorAll('button')].map((one) =>
+      one.textContent?.trim(),
+    )
+    // 고정 칸이 먼저, 그다음 갈래와 그 아래 칸.
+    expect(labels.slice(0, 2)).toEqual(['목적', '적용 시험 항목'])
+    expect(labels).toContain('시험 온도')
+    expect(labels).toContain('시험 절차')
+    // **보기 창은 적힌 칸만 세운다** — 없는 칸으로 보내면 「왜 빈 자리로 가지」 가 된다.
+    expect(labels).not.toContain('판정 기준')
   })
 
   it('절차의 줄바꿈이 살아 있다', async () => {

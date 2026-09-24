@@ -44,13 +44,17 @@ import {
 import type { AttributeRow } from '@/modules/attributes/AttributeValuesEditor'
 import {
   StandardAttributeFields,
+  anchorOf,
   fromValues as fromStandardValues,
+  groupDefinitions,
   toStandardPayload,
 } from '@/modules/attributes/StandardAttributeFields'
 import type { StandardValue } from '@/modules/attributes/StandardAttributeFields'
 import type { AttributeDefinition } from '@/modules/attributes/api'
 import { AttachmentStrip } from '@/modules/attachments/AttachmentStrip'
 import { attachmentApi } from '@/modules/attachments/api'
+import { CardOutline } from '@/modules/reliability/CardOutline'
+import type { OutlineItem } from '@/modules/reliability/CardOutline'
 import { ReviewBanner } from '@/modules/reliability/CandidateReview'
 import { reliabilityApi } from '@/modules/reliability/api'
 import type { ReliabilityTest } from '@/modules/reliability/api'
@@ -114,6 +118,69 @@ export function ReliabilityTestDialog({
     () => new Map((catalog.data ?? []).map((row) => [row.id, row])),
     [catalog.data],
   )
+  /**
+   * 왼쪽 목차 — 갈래와 그 아래 칸을 **본문과 같은 순서로** 세운다.
+   *
+   * 값이 있는 칸은 또렷하고 빈 칸은 흐리다. 스물두 칸을 다 세워 두고 무엇이 채워졌는지
+   * 본문에서 다시 찾게 하면 목차를 두는 이유의 절반이 사라진다.
+   */
+  const outline = useMemo(() => {
+    const filled = (definition: AttributeDefinition) => {
+      const value = standard[definition.id]
+      if (!value) return false
+      return Boolean(
+        value.numValue !== null ||
+        value.numMin !== null ||
+        value.numMax !== null ||
+        value.textValue.trim() ||
+        value.termId ||
+        value.methodId ||
+        value.documentId ||
+        value.note.trim() ||
+        value.pairs.length ||
+        value.matrix.length,
+      )
+    }
+    const fixed: OutlineItem[] = [
+      {
+        anchor: anchorOf('section', '이름과 목적'),
+        label: '이름과 목적',
+        children: [
+          {
+            anchor: anchorOf('section', '이름과 목적'),
+            label: '이름',
+            filled: Boolean(name.trim()),
+          },
+          {
+            anchor: anchorOf('section', '이름과 목적'),
+            label: '목적',
+            filled: Boolean(purpose.trim()),
+          },
+        ],
+      },
+      {
+        anchor: anchorOf('section', '적용 시험 항목'),
+        label: '적용 시험 항목',
+        children: [],
+      },
+    ]
+    const middle: OutlineItem[] = groupDefinitions(standardDefs).map((section) => ({
+      anchor: anchorOf('section', section.title),
+      label: section.title,
+      children: [...section.rows, ...section.conditionRows].map((definition) => ({
+        anchor: anchorOf('field', definition.key),
+        label: definition.label,
+        filled: filled(definition),
+      })),
+    }))
+    return [
+      ...fixed,
+      ...middle,
+      { anchor: anchorOf('section', '이미지'), label: '이미지' },
+      { anchor: anchorOf('section', '기타 사항'), label: '기타 사항' },
+    ]
+  }, [standardDefs, standard, name, purpose])
+
   const options = useMemo(
     () =>
       (catalog.data ?? [])
@@ -151,7 +218,7 @@ export function ReliabilityTestDialog({
 
   return (
     <Dialog open={open} onOpenChange={(next) => !next && !busy && onClose()}>
-      <DialogContent className="max-h-[85vh] w-[80vw] overflow-y-auto sm:max-w-[80vw] lg:max-w-6xl">
+      <DialogContent className="max-h-[88vh] w-[92vw] overflow-y-auto sm:max-w-[92vw] lg:max-w-[1400px]">
         <form onSubmit={submit} className="space-y-4">
           <DialogHeader>
             <DialogTitle>{editing ? '신뢰성 시험 수정' : '신뢰성 시험 등록'}</DialogTitle>
@@ -164,125 +231,146 @@ export function ReliabilityTestDialog({
           {/* **후보인지 먼저 말한다.** 스물두 칸을 다 읽은 뒤에 알면 늦다. */}
           <ReviewBanner row={editing} onChanged={(next) => onReviewed?.(next)} />
 
-          <fieldset className="rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">이름과 목적</legend>
-            <div className="grid gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
-              <div className="space-y-2">
-                <Label htmlFor="rt-name">이름</Label>
-                <Input
-                  id="rt-name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  placeholder="고온고습 1000h"
-                  required
-                  maxLength={200}
+          {/* 왼쪽 목차 + 오른쪽 본문. 목차는 붙박이라 긴 카드에서도 안 사라진다. */}
+          <div className="flex gap-6">
+            <CardOutline items={outline} />
+            <div className="min-w-0 flex-1 space-y-4">
+              <fieldset
+                id={anchorOf('section', '이름과 목적')}
+                className="scroll-mt-4 rounded-lg border p-4"
+              >
+                <legend className="px-1.5 text-sm font-medium">이름과 목적</legend>
+                <div className="grid gap-x-6 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+                  <div className="space-y-2">
+                    <Label htmlFor="rt-name">이름</Label>
+                    <Input
+                      id="rt-name"
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                      placeholder="고온고습 1000h"
+                      required
+                      maxLength={200}
+                    />
+                  </div>
+                  <div className="space-y-2 md:col-span-2 xl:col-span-3">
+                    <Label htmlFor="rt-purpose">목적</Label>
+                    <Textarea
+                      id="rt-purpose"
+                      className="max-w-3xl"
+                      value={purpose}
+                      onChange={(event) => setPurpose(event.target.value)}
+                      placeholder="무엇을 확인하는 시험인지. 옆 부서 사람이 이름만 보고는 모릅니다."
+                      rows={3}
+                      maxLength={4000}
+                    />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset
+                id={anchorOf('section', '적용 시험 항목')}
+                className="max-w-2xl scroll-mt-4 space-y-2 rounded-lg border p-4"
+              >
+                <legend className="px-1.5 text-sm font-medium">적용 시험 항목</legend>
+                <Label htmlFor="rt-item" className="sr-only">
+                  적용 시험 항목
+                </Label>
+                {termIds.length > 0 && (
+                  <ul className="flex flex-wrap gap-1">
+                    {termIds.map((id) => {
+                      const row = byId.get(id)
+                      const label =
+                        row?.value ??
+                        editing?.test_items.find((one) => one.term_id === id)?.value
+                      return (
+                        <li
+                          key={id}
+                          className="bg-muted flex items-center gap-1 rounded-md px-2 py-0.5 text-sm"
+                        >
+                          <span>{label ?? id}</span>
+                          {row && (
+                            <span className="text-muted-foreground text-xs">
+                              {row.equipment_count}대
+                            </span>
+                          )}
+                          <button
+                            type="button"
+                            aria-label={`${label ?? id} 제거`}
+                            className="text-muted-foreground hover:text-foreground"
+                            onClick={() =>
+                              setTermIds((prev) => prev.filter((one) => one !== id))
+                            }
+                          >
+                            <X className="size-3" />
+                          </button>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
+                <SearchablePicker
+                  id="rt-item"
+                  options={options}
+                  value=""
+                  onChange={(id) => id && setTermIds((prev) => [...prev, id])}
+                  placeholder="시험 항목 추가"
+                  detailTitle="시험 항목 전부"
+                  detailHint="배지의 수는 이 부서 장비 중 그 항목이 되는 대수입니다."
                 />
-              </div>
-              <div className="space-y-2 md:col-span-2 xl:col-span-3">
-                <Label htmlFor="rt-purpose">목적</Label>
-                <Textarea
-                  id="rt-purpose"
-                  className="max-w-3xl"
-                  value={purpose}
-                  onChange={(event) => setPurpose(event.target.value)}
-                  placeholder="무엇을 확인하는 시험인지. 옆 부서 사람이 이름만 보고는 모릅니다."
-                  rows={3}
-                  maxLength={4000}
+                <p className="text-muted-foreground text-xs">
+                  비워 둘 수 있습니다 — 장비 없이 하는 시험이거나 아직 안 정한 경우.
+                </p>
+              </fieldset>
+
+              {/* 사내 시험 카드의 칸들 — 이름·목적과 나란히 선다. */}
+              <StandardAttributeFields
+                target="reliability_test"
+                values={standard}
+                onChange={setStandard}
+                onLoaded={setStandardDefs}
+                attachments={{
+                  rows: shots.data ?? [],
+                  canEdit: Boolean(editing),
+                  objectId: editing?.id ?? null,
+                  onChanged: () => shots.reload(),
+                }}
+              />
+
+              <fieldset
+                id={anchorOf('section', '이미지')}
+                className="scroll-mt-4 rounded-lg border p-4"
+              >
+                <legend className="px-1.5 text-sm font-medium">이미지</legend>
+                <p className="text-muted-foreground mb-3 text-xs">
+                  **어느 칸에도 안 붙는 그림**이 여기 섭니다(부록·전경 사진). 절차나 판정
+                  기준에 항목별 이미지는 해당 항목 아래에서 첨부하십시오.
+                </p>
+                <AttachmentStrip
+                  target="reliability_test"
+                  objectId={editing?.id ?? null}
+                  rows={(shots.data ?? []).filter((one) => one.definition_id === null)}
+                  canEdit
+                  onChanged={() => shots.reload()}
                 />
-              </div>
+              </fieldset>
+
+              <fieldset
+                id={anchorOf('section', '기타 사항')}
+                className="scroll-mt-4 rounded-lg border p-4"
+              >
+                <legend className="px-1.5 text-sm font-medium">기타 사항</legend>
+                <p className="text-muted-foreground text-xs">
+                  위 칸으로 안 잡히는 것만. 여기서 새로 적은 이름은 **초안**으로 남고, 관리자가
+                  정식으로 올리면 그때부터 모두의 칸이 됩니다.
+                </p>
+                <AttributeValuesEditor
+                  target="reliability_test"
+                  rows={attributes}
+                  onChange={setAttributes}
+                />
+              </fieldset>
             </div>
-          </fieldset>
-
-          <fieldset className="max-w-2xl space-y-2 rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">적용 시험 항목</legend>
-            <Label htmlFor="rt-item" className="sr-only">
-              적용 시험 항목
-            </Label>
-            {termIds.length > 0 && (
-              <ul className="flex flex-wrap gap-1">
-                {termIds.map((id) => {
-                  const row = byId.get(id)
-                  const label =
-                    row?.value ?? editing?.test_items.find((one) => one.term_id === id)?.value
-                  return (
-                    <li
-                      key={id}
-                      className="bg-muted flex items-center gap-1 rounded-md px-2 py-0.5 text-sm"
-                    >
-                      <span>{label ?? id}</span>
-                      {row && (
-                        <span className="text-muted-foreground text-xs">
-                          {row.equipment_count}대
-                        </span>
-                      )}
-                      <button
-                        type="button"
-                        aria-label={`${label ?? id} 제거`}
-                        className="text-muted-foreground hover:text-foreground"
-                        onClick={() => setTermIds((prev) => prev.filter((one) => one !== id))}
-                      >
-                        <X className="size-3" />
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
-            <SearchablePicker
-              id="rt-item"
-              options={options}
-              value=""
-              onChange={(id) => id && setTermIds((prev) => [...prev, id])}
-              placeholder="시험 항목 추가"
-              detailTitle="시험 항목 전부"
-              detailHint="배지의 수는 이 부서 장비 중 그 항목이 되는 대수입니다."
-            />
-            <p className="text-muted-foreground text-xs">
-              비워 둘 수 있습니다 — 장비 없이 하는 시험이거나 아직 안 정한 경우.
-            </p>
-          </fieldset>
-
-          {/* 사내 시험 카드의 칸들 — 이름·목적과 나란히 선다. */}
-          <StandardAttributeFields
-            target="reliability_test"
-            values={standard}
-            onChange={setStandard}
-            onLoaded={setStandardDefs}
-            attachments={{
-              rows: shots.data ?? [],
-              canEdit: Boolean(editing),
-              objectId: editing?.id ?? null,
-              onChanged: () => shots.reload(),
-            }}
-          />
-
-          <fieldset className="rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">이미지</legend>
-            <p className="text-muted-foreground mb-3 text-xs">
-              **어느 칸에도 안 붙는 그림**이 여기 섭니다(부록·전경 사진). 절차나 판정 기준에
-              항목별 이미지는 해당 항목 아래에서 첨부하십시오.
-            </p>
-            <AttachmentStrip
-              target="reliability_test"
-              objectId={editing?.id ?? null}
-              rows={(shots.data ?? []).filter((one) => one.definition_id === null)}
-              canEdit
-              onChanged={() => shots.reload()}
-            />
-          </fieldset>
-
-          <fieldset className="rounded-lg border p-4">
-            <legend className="px-1.5 text-sm font-medium">기타 사항</legend>
-            <p className="text-muted-foreground text-xs">
-              위 칸으로 안 잡히는 것만. 여기서 새로 적은 이름은 **초안**으로 남고, 관리자가
-              정식으로 올리면 그때부터 모두의 칸이 됩니다.
-            </p>
-            <AttributeValuesEditor
-              target="reliability_test"
-              rows={attributes}
-              onChange={setAttributes}
-            />
-          </fieldset>
+          </div>
 
           <ErrorNotice error={error ?? catalog.error} />
 
