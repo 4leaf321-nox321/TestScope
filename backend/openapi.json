@@ -1116,6 +1116,7 @@
           "workspaces"
         ],
         "summary": "Delete Workspace",
+        "description": "부서를 지운다.\n\n`reassign_to` 를 주면 가진 것(장비·신뢰성 시험·사내 규격서·시험법·멤버·하위 부서)을\n그 부서로 **한 걸음에** 옮기고 지운다. 안 주면 예전 그대로 — 가리키는 것이 있으면\n거절한다. 보관(`is_active=false`)이 여전히 기본 수단이다.",
         "operationId": "delete_workspace_api_workspaces__slug__delete",
         "parameters": [
           {
@@ -1125,6 +1126,23 @@
             "schema": {
               "type": "string",
               "title": "Slug"
+            }
+          },
+          {
+            "name": "reassign_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reassign To"
             }
           }
         ],
@@ -1279,6 +1297,60 @@
                     "$ref": "#/components/schemas/WorkspaceReferenceOut"
                   },
                   "title": "Response Workspace References Api Workspaces  Slug  References Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workspaces/{slug}/reassign-preview": {
+      "get": {
+        "tags": [
+          "workspaces"
+        ],
+        "summary": "Reassign Preview",
+        "description": "이 부서를 저 부서로 합치면 무엇이 옮겨지고 무엇이 겹치나 — **누르기 전에.**",
+        "operationId": "reassign_preview_api_workspaces__slug__reassign_preview_get",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Slug"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64,
+              "title": "To"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceReassignOut"
                 }
               }
             }
@@ -21699,6 +21771,33 @@
         "title": "VoteRequest",
         "description": "의견 하나. 후보에 없는 코드도 된다(직접 고르기)."
       },
+      "WorkspaceClashOut": {
+        "properties": {
+          "table": {
+            "type": "string",
+            "title": "Table"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "values": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Values"
+          }
+        },
+        "type": "object",
+        "required": [
+          "table",
+          "label",
+          "values"
+        ],
+        "title": "WorkspaceClashOut",
+        "description": "옮기면 **같은 이름이 둘이 되는** 것. 값까지 준다 — 「겹칩니다」 만으로는 못 고친다."
+      },
       "WorkspaceCreateRequest": {
         "properties": {
           "slug": {
@@ -21880,6 +21979,30 @@
         ],
         "title": "WorkspaceMembershipOut"
       },
+      "WorkspaceMoveOut": {
+        "properties": {
+          "table": {
+            "type": "string",
+            "title": "Table"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "table",
+          "label",
+          "count"
+        ],
+        "title": "WorkspaceMoveOut",
+        "description": "이관하면 옮겨지는 것 하나. `WorkspaceReferenceOut` 과 같은 표를 센다."
+      },
       "WorkspaceMoveRequest": {
         "properties": {
           "parent_slug": {
@@ -22021,6 +22144,41 @@
           "my_role"
         ],
         "title": "WorkspaceOut"
+      },
+      "WorkspaceReassignOut": {
+        "properties": {
+          "target_slug": {
+            "type": "string",
+            "title": "Target Slug"
+          },
+          "target_name": {
+            "type": "string",
+            "title": "Target Name"
+          },
+          "moves": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceMoveOut"
+            },
+            "type": "array",
+            "title": "Moves"
+          },
+          "clashes": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceClashOut"
+            },
+            "type": "array",
+            "title": "Clashes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "target_slug",
+          "target_name",
+          "moves",
+          "clashes"
+        ],
+        "title": "WorkspaceReassignOut",
+        "description": "이관 미리보기 — 무엇이 어디로 가고 무엇이 막는가.\n\n**누르기 전에 답한다.** 「장비 12대가 옮겨집니다」 를 보고 누르는 것과, 누르고 나서\n아는 것은 다른 일이다. `clashes` 가 비어 있지 않으면 그대로는 못 옮긴다."
       },
       "WorkspaceReferenceOut": {
         "properties": {

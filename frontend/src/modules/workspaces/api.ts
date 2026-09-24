@@ -6,6 +6,7 @@ import type { components } from '@/shared/api/schema'
 export type Workspace = components['schemas']['WorkspaceOut']
 export type Member = components['schemas']['MemberOut']
 export type WorkspaceReference = components['schemas']['WorkspaceReferenceOut']
+export type WorkspaceReassign = components['schemas']['WorkspaceReassignOut']
 export type WorkspaceOption = components['schemas']['WorkspaceOption']
 export type WorkspaceImportResult = components['schemas']['WorkspaceImportResult']
 export type WorkspaceImportRow = components['schemas']['WorkspaceImportRowOut']
@@ -47,7 +48,28 @@ export const workspaceApi = {
   /** **누르기 전에 무엇이 딸려 있는지 보여 준다.** */
   references: (slug: string) =>
     api.get<WorkspaceReference[]>(`/workspaces/${slug}/references`),
-  remove: (slug: string) => api.delete<void>(`/workspaces/${slug}`),
+  /**
+   * 이 부서를 저 부서로 합치면 무엇이 옮겨지고 무엇이 겹치나 — **고르는 순간 본다.**
+   *
+   * `clashes` 가 있으면 그대로는 못 옮긴다(같은 이름이 둘이 된다). 값까지 오므로
+   * 화면이 「무엇을 고쳐야 하는지」 를 그대로 보일 수 있다.
+   */
+  reassignPreview: (slug: string, to: string) =>
+    api.get<WorkspaceReassign>(
+      `/workspaces/${slug}/reassign-preview?to=${encodeURIComponent(to)}`,
+    ),
+  /**
+   * 부서를 지운다. `reassignTo` 를 주면 가진 것을 그 부서로 **한 걸음에** 옮기고 지운다.
+   *
+   * 옮기기와 지우기를 두 번에 나누지 않는 이유: 그 사이에 반쯤 옮겨진 부서가 남고,
+   * 그때 무엇이 어디 있는지 아무도 모른다.
+   */
+  remove: (slug: string, reassignTo?: string | null) =>
+    api.delete<void>(
+      reassignTo
+        ? `/workspaces/${slug}?reassign_to=${encodeURIComponent(reassignTo)}`
+        : `/workspaces/${slug}`,
+    ),
 
   members: (slug: string) => api.get<Member[]>(`/workspaces/${slug}/members`),
   addMember: (slug: string, email: string, role: string) =>

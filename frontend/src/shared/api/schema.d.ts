@@ -450,7 +450,14 @@ export interface paths {
         get?: never;
         put?: never;
         post?: never;
-        /** Delete Workspace */
+        /**
+         * Delete Workspace
+         * @description 부서를 지운다.
+         *
+         *     `reassign_to` 를 주면 가진 것(장비·신뢰성 시험·사내 규격서·시험법·멤버·하위 부서)을
+         *     그 부서로 **한 걸음에** 옮기고 지운다. 안 주면 예전 그대로 — 가리키는 것이 있으면
+         *     거절한다. 보관(`is_active=false`)이 여전히 기본 수단이다.
+         */
         delete: operations["delete_workspace_api_workspaces__slug__delete"];
         options?: never;
         head?: never;
@@ -504,6 +511,26 @@ export interface paths {
          * @description 무엇이 이 부서를 가리키는가. 삭제 확인 화면이 부른다.
          */
         get: operations["workspace_references_api_workspaces__slug__references_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/workspaces/{slug}/reassign-preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Reassign Preview
+         * @description 이 부서를 저 부서로 합치면 무엇이 옮겨지고 무엇이 겹치나 — **누르기 전에.**
+         */
+        get: operations["reassign_preview_api_workspaces__slug__reassign_preview_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -7294,6 +7321,18 @@ export interface components {
             /** Note */
             note?: string | null;
         };
+        /**
+         * WorkspaceClashOut
+         * @description 옮기면 **같은 이름이 둘이 되는** 것. 값까지 준다 — 「겹칩니다」 만으로는 못 고친다.
+         */
+        WorkspaceClashOut: {
+            /** Table */
+            table: string;
+            /** Label */
+            label: string;
+            /** Values */
+            values: string[];
+        };
         /** WorkspaceCreateRequest */
         WorkspaceCreateRequest: {
             /** Slug */
@@ -7371,6 +7410,18 @@ export interface components {
             role: string;
         };
         /**
+         * WorkspaceMoveOut
+         * @description 이관하면 옮겨지는 것 하나. `WorkspaceReferenceOut` 과 같은 표를 센다.
+         */
+        WorkspaceMoveOut: {
+            /** Table */
+            table: string;
+            /** Label */
+            label: string;
+            /** Count */
+            count: number;
+        };
+        /**
          * WorkspaceMoveRequest
          * @description 상위 부서 바꾸기. null 이면 뿌리로 올린다.
          *
@@ -7431,6 +7482,23 @@ export interface components {
             equipment_count: number;
             /** My Role */
             my_role: string | null;
+        };
+        /**
+         * WorkspaceReassignOut
+         * @description 이관 미리보기 — 무엇이 어디로 가고 무엇이 막는가.
+         *
+         *     **누르기 전에 답한다.** 「장비 12대가 옮겨집니다」 를 보고 누르는 것과, 누르고 나서
+         *     아는 것은 다른 일이다. `clashes` 가 비어 있지 않으면 그대로는 못 옮긴다.
+         */
+        WorkspaceReassignOut: {
+            /** Target Slug */
+            target_slug: string;
+            /** Target Name */
+            target_name: string;
+            /** Moves */
+            moves: components["schemas"]["WorkspaceMoveOut"][];
+            /** Clashes */
+            clashes: components["schemas"]["WorkspaceClashOut"][];
         };
         /**
          * WorkspaceReferenceOut
@@ -8273,7 +8341,9 @@ export interface operations {
     };
     delete_workspace_api_workspaces__slug__delete: {
         parameters: {
-            query?: never;
+            query?: {
+                reassign_to?: string | null;
+            };
             header?: never;
             path: {
                 slug: string;
@@ -8423,6 +8493,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["WorkspaceReferenceOut"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reassign_preview_api_workspaces__slug__reassign_preview_get: {
+        parameters: {
+            query: {
+                to: string;
+            };
+            header?: never;
+            path: {
+                slug: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkspaceReassignOut"];
                 };
             };
             /** @description Validation Error */

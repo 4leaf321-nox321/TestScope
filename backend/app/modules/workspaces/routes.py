@@ -29,6 +29,7 @@ from app.modules.workspaces.schemas import (
     WorkspaceMoveRequest,
     WorkspaceOption,
     WorkspaceOut,
+    WorkspaceReassignOut,
     WorkspaceReferenceOut,
     WorkspaceReorderRequest,
     WorkspaceUpdateRequest,
@@ -223,13 +224,31 @@ def workspace_references(
     return services.references(db, slug=slug)
 
 
+@router.get("/{slug}/reassign-preview", response_model=WorkspaceReassignOut)
+def reassign_preview(
+    slug: str,
+    to: str = Query(min_length=1, max_length=64),
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> WorkspaceReassignOut:
+    """이 부서를 저 부서로 합치면 무엇이 옮겨지고 무엇이 겹치나 — **누르기 전에.**"""
+    return services.reassign_preview(db, slug=slug, to=to)
+
+
 @router.delete("/{slug}", status_code=204)
 def delete_workspace(
     slug: str,
+    reassign_to: str | None = Query(default=None, max_length=64),
     admin: User = Depends(require_system_admin),
     db: Session = Depends(get_db),
 ) -> Response:
-    services.delete(db, slug=slug, actor=admin)
+    """부서를 지운다.
+
+    `reassign_to` 를 주면 가진 것(장비·신뢰성 시험·사내 규격서·시험법·멤버·하위 부서)을
+    그 부서로 **한 걸음에** 옮기고 지운다. 안 주면 예전 그대로 — 가리키는 것이 있으면
+    거절한다. 보관(`is_active=false`)이 여전히 기본 수단이다.
+    """
+    services.delete(db, slug=slug, actor=admin, reassign_to=reassign_to)
     return Response(status_code=204)
 
 

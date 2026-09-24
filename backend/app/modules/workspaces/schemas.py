@@ -88,6 +88,35 @@ class WorkspaceReferenceOut(BaseModel):
     """지우려면 먼저 정리해야 하는가. RESTRICT 도 여기 들어간다 — DB 가 거부한다."""
 
 
+class WorkspaceMoveOut(BaseModel):
+    """이관하면 옮겨지는 것 하나. `WorkspaceReferenceOut` 과 같은 표를 센다."""
+
+    table: str
+    label: str
+    count: int
+
+
+class WorkspaceClashOut(BaseModel):
+    """옮기면 **같은 이름이 둘이 되는** 것. 값까지 준다 — 「겹칩니다」 만으로는 못 고친다."""
+
+    table: str
+    label: str
+    values: list[str]
+
+
+class WorkspaceReassignOut(BaseModel):
+    """이관 미리보기 — 무엇이 어디로 가고 무엇이 막는가.
+
+    **누르기 전에 답한다.** 「장비 12대가 옮겨집니다」 를 보고 누르는 것과, 누르고 나서
+    아는 것은 다른 일이다. `clashes` 가 비어 있지 않으면 그대로는 못 옮긴다.
+    """
+
+    target_slug: str
+    target_name: str
+    moves: list[WorkspaceMoveOut]
+    clashes: list[WorkspaceClashOut]
+
+
 class MemberOut(BaseModel):
     user_id: uuid.UUID
     email: str

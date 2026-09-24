@@ -9,7 +9,7 @@
  */
 
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Download, FileInput, Plus } from 'lucide-react'
+import { ChevronDown, ChevronUp, Download, FileInput, Plus, Trash2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -27,8 +27,10 @@ import {
 } from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
+import { DeleteWorkspaceDialog } from '@/modules/workspaces/DeleteWorkspaceDialog'
 import { ImportWorkspacesDialog } from '@/modules/workspaces/ImportWorkspacesDialog'
 import { workspaceApi } from '@/modules/workspaces/api'
+import type { Workspace } from '@/modules/workspaces/api'
 
 export default function WorkspacesAdminPage() {
   const list = useResource(() => workspaceApi.list(true), [])
@@ -36,6 +38,8 @@ export default function WorkspacesAdminPage() {
   const [name, setName] = useState('')
   const [error, setError] = useState<ApiError | Error | null>(null)
   const [importing, setImporting] = useState(false)
+  /** 지우려고 연 부서. 창이 확인과 이관을 맡는다. */
+  const [removing, setRemoving] = useState<Workspace | null>(null)
 
   async function act(run: () => Promise<unknown>) {
     setError(null)
@@ -208,11 +212,31 @@ export default function WorkspacesAdminPage() {
                 >
                   <ChevronDown className="size-4" />
                 </Button>
+                {/* **지우기는 보관 옆이 아니라 끝에 둔다.** 매일 누르는 단추 옆에 두면
+                    언젠가 잘못 눌린다 — 그리고 이것은 되돌릴 수 없다. */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label={`${one.name} 지우기`}
+                  onClick={() => setRemoving(one)}
+                >
+                  <Trash2 className="text-destructive size-4" />
+                </Button>
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+
+      <DeleteWorkspaceDialog
+        target={removing}
+        all={list.data ?? []}
+        onClose={() => setRemoving(null)}
+        onDeleted={() => {
+          setRemoving(null)
+          list.reload()
+        }}
+      />
     </div>
   )
 }
