@@ -7,18 +7,41 @@
 # 릴리스를 **같은 실행 안에서** 호출한다. GitHub 은 GITHUB_TOKEN 이 만든 이벤트로
 # 다른 워크플로를 트리거하지 않아서, 태그만 밀어 두면 release 워크플로가 영영 돌지
 # 않는다. PAT 없이 해결하는 방법이 workflow_call 이다.
+#
+# ## CI 뒤에 붙는다
+#
+# 전에는 `push` 로 걸려 있어서 CI 와 **나란히** 달렸다. 태그는 1분 32초, CI 는 6분
+# 32초라 태그와 릴리스가 먼저 끝났고, **CI 가 실패한 커밋에서 v0.20.0 이 발행됐다**
+# (2026-09-24). 그때는 깨진 것이 배포본에 안 들어가는 파일(MCP 왕복 스크립트)이라
+# 피해가 없었지만, 그것은 운이었다.
+#
+# 그래서 `workflow_run` 으로 **CI 가 성공한 뒤에만** 돈다. 세 가지가 따라온다:
+#
+# 1. **경로 거르기가 없어진다.** `workflow_run` 은 어떤 파일이 바뀌었는지 모른다.
+#    대신 「그 버전의 태그가 이미 있나」 를 보고 없을 때만 만든다 — 원래 있던 가드가
+#    그대로 조건이 된다. 멱등이라 CI 가 몇 번 돌아도 태그는 하나다.
+# 2. **그 커밋을 그대로 체크아웃한다**(`head_sha`). 안 하면 기본 브랜치의 지금
+#    버전을 읽어서, 버전을 올린 커밋이 아닌 엉뚱한 자리에 태그가 붙는다.
+# 3. 버전을 올린 커밋의 CI 가 깨지면 태그가 안 붙는다. 고쳐서 CI 가 통과하는 순간
+#    **그 커밋에** 붙는다 — 태그가 가리키는 자리가 언제나 검증된 커밋이다.
 
 name: Auto tag on version bump
 
 on:
-  push:
-    branches: [main, master]
-    paths:
-      - 'frontend/package.json'
+  workflow_run:
+    workflows: ['CI - Windows']
+    types: [completed]
 
 jobs:
   tag:
     runs-on: ubuntu-latest
+    # PR 의 CI 나 실패한 CI 로는 안 돈다. 브랜치도 본다 — workflow_run 은 어느
+    # 브랜치의 CI 였든 똑같이 들어온다.
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      (github.event.workflow_run.head_branch == 'main' ||
+       github.event.workflow_run.head_branch == 'master')
     permissions:
       contents: write
     outputs:
@@ -28,6 +51,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          # **CI 가 통과한 바로 그 커밋.** 기본값(기본 브랜치 끝)을 쓰면 그 사이에
+          # 들어온 커밋의 버전을 읽는다.
+          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
 
       - name: 버전 읽기
