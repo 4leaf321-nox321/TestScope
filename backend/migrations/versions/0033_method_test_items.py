@@ -77,9 +77,7 @@ def downgrade() -> None:
         ["id"],
         ondelete="SET NULL",
     )
-    op.create_index(
-        "ix_test_methods_test_item_term_id", "test_methods", ["test_item_term_id"]
-    )
+    op.create_index("ix_test_methods_test_item_term_id", "test_methods", ["test_item_term_id"])
     # 여럿이던 것은 **하나만** 돌아온다 — 되돌리면 정보가 준다.
     op.execute(
         """
