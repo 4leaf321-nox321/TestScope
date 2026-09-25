@@ -90,27 +90,36 @@ describe('지울 수 있나 (판정)', () => {
     { table: 'equipment', label: '장비', count: 12, blocks_delete: true },
   ]
 
+  it('아직 모르면 막는다 — 답이 오기 전에 눌리면 「누르기 전에 답한다」 가 빈말이다', () => {
+    // 세는 중.
+    expect(removalState({ to: NONE, references: null, preview: null }).blocked).toBe(true)
+    // 대상은 골랐는데 미리보기가 아직(또는 실패해서) 없다.
+    expect(removalState({ to: 'stays', references: [], preview: null }).blocked).toBe(true)
+  })
+
   it('옮기지 않을 때는 막는 것이 하나라도 있으면 못 지운다', () => {
-    expect(removalState({ to: NONE, references: blocking, clashes: [] }).blocked).toBe(true)
-    expect(removalState({ to: NONE, references: [], clashes: [] }).blocked).toBe(false)
+    expect(removalState({ to: NONE, references: blocking, preview: null }).blocked).toBe(true)
+    expect(removalState({ to: NONE, references: [], preview: null }).blocked).toBe(false)
   })
 
   it('막지 않는 참조는 지우기를 막지 않는다 — 옮겨 갈 필요가 없다', () => {
     const soft: Reference[] = [
       { table: 'test_methods', label: '사내 시험법', count: 3, blocks_delete: false },
     ]
-    expect(removalState({ to: NONE, references: soft, clashes: [] }).blocked).toBe(false)
+    expect(removalState({ to: NONE, references: soft, preview: null }).blocked).toBe(false)
   })
 
   it('옮길 때는 이름이 겹치면 못 지운다 — 옮긴 순간 같은 이름이 둘이 된다', () => {
     const moving = { to: 'stays', references: blocking }
-    expect(removalState({ ...moving, clashes: [] }).blocked).toBe(false)
-    expect(removalState({ ...moving, clashes: [{ values: ['고온고습'] }] }).blocked).toBe(true)
+    expect(removalState({ ...moving, preview: { clashes: [] } }).blocked).toBe(false)
+    expect(
+      removalState({ ...moving, preview: { clashes: [{ values: ['고온고습'] }] } }).blocked,
+    ).toBe(true)
   })
 
   it('단추의 말이 무엇을 하는지 말한다', () => {
-    expect(removalState({ to: NONE, references: [], clashes: [] }).label).toBe('지우기')
-    expect(removalState({ to: 'stays', references: [], clashes: [] }).label).toBe(
+    expect(removalState({ to: NONE, references: [], preview: null }).label).toBe('지우기')
+    expect(removalState({ to: 'stays', references: [], preview: null }).label).toBe(
       '옮기고 지우기',
     )
   })

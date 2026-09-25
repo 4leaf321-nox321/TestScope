@@ -221,8 +221,9 @@ class _Bulk:
 def _bulk(db: Session, rows: list[TestMethod], viewer: User) -> _Bulk:
     ids = [row.id for row in rows]
     if not ids:
-        empty: dict[Any, Any] = {}
-        return _Bulk(empty, empty, empty, empty, empty, empty, empty, empty, empty)
+        # **자리마다 새 사전을 준다.** 하나를 아홉에 나눠 주면 그 뒤로는 같은 것이라,
+        # 한 곳에 적으면 여덟 곳이 함께 바뀐다(frozen 은 묶는 것을 막지 사전 안을 막지 않는다).
+        return _Bulk(*({} for _ in range(9)))
 
     def _by_id(model: Any, wanted: set[uuid.UUID]) -> dict[uuid.UUID, Any]:
         if not wanted:

@@ -7499,6 +7499,13 @@ export interface components {
             moves: components["schemas"]["WorkspaceMoveOut"][];
             /** Clashes */
             clashes: components["schemas"]["WorkspaceClashOut"][];
+            /**
+             * Lifts Target
+             * @default false
+             */
+            lifts_target: boolean;
+            /** Target New Parent Name */
+            target_new_parent_name?: string | null;
         };
         /**
          * WorkspaceReferenceOut

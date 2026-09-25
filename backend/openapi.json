@@ -22168,6 +22168,22 @@
             },
             "type": "array",
             "title": "Clashes"
+          },
+          "lifts_target": {
+            "type": "boolean",
+            "title": "Lifts Target",
+            "default": false
+          },
+          "target_new_parent_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target New Parent Name"
           }
         },
         "type": "object",

@@ -365,3 +365,114 @@ def test_지우는_것은_시스템_관리자뿐(client: TestClient, admin: Sign
         ).status_code
         == 403
     )
+
+
+def test_지운_시험이_남아_있어도_막고_말한다(client: TestClient, admin: Signed) -> None:
+    """**지운 줄도 표에는 남고, DB 는 그것까지 보고 막는다.**
+
+    산 것만 세면 「가리키는 것이 없다」 고 답해 놓고 삭제에서 ForeignKeyViolation 이 난다 —
+    화면에는 원인이 안 적힌 500 이 뜬다(2026-09-25 실측). 세는 자리가 DB 와 같은 눈으로
+    봐야 하고, 사람에게는 **지운 것이라고 말해 줘야** 한다(「나는 지웠는데?」 가 되지 않게).
+    """
+    team = _team(client, admin)
+    test = _reliability(client, admin, team, f"지울 시험-{uuid.uuid4().hex[:6]}").json()
+    assert (
+        client.delete(
+            f"/api/reliability-tests/{test['id']}", headers=admin.headers
+        ).status_code
+        == 204
+    )
+
+    seen = _references(client, admin, team)
+    assert seen["reliability_tests_deleted"]["count"] == 1
+    assert seen["reliability_tests_deleted"]["blocks_delete"] is True
+    assert "지운 것" in seen["reliability_tests_deleted"]["label"]
+    assert "reliability_tests" not in seen, "산 시험은 0건이라 안 선다"
+
+    blocked = client.delete(f"/api/workspaces/{team}", headers=admin.headers)
+    assert blocked.status_code == 409, blocked.text
+
+    # **이관하면 지운 줄도 함께 간다** — 그것 말고는 치울 방법이 없다.
+    stays = _team(client, admin)
+    dropped = client.delete(
+        f"/api/workspaces/{team}", params={"reassign_to": stays}, headers=admin.headers
+    )
+    assert dropped.status_code == 204, dropped.text
+
+
+def test_번호를_안_적은_장비가_둘이어도_들어간다(client: TestClient, admin: Signed) -> None:
+    """빈 글자는 **안 적은 것**이다. 그대로 두면 빈 문자열끼리 부딪힌다 —
+    포스트그레스의 유일 제약은 NULL 은 넘어가지만 `''` 는 값으로 보기 때문에, 같은 부서에
+    번호를 안 적은 장비가 **둘째부터 500** 이었다(2026-09-25 실측).
+    """
+    team = _team(client, admin)
+    _equipment(client, admin, team, dept_asset_no="")
+    _equipment(client, admin, team, dept_asset_no="   ")
+
+    # 이관도 막히지 않는다 — 빈 값은 겹침이 아니다.
+    stays = _team(client, admin)
+    _equipment(client, admin, stays, dept_asset_no="")
+    preview = client.get(
+        f"/api/workspaces/{team}/reassign-preview",
+        params={"to": stays},
+        headers=admin.headers,
+    )
+    assert preview.json()["clashes"] == [], preview.text
+    dropped = client.delete(
+        f"/api/workspaces/{team}", params={"reassign_to": stays}, headers=admin.headers
+    )
+    assert dropped.status_code == 204, dropped.text
+
+
+def test_미리보기_숫자가_실제로_옮겨지는_것과_같다(
+    client: TestClient, admin: Signed, db: Session
+) -> None:
+    """**미리보기가 약속한 수와 감사에 남는 수가 달라선 안 된다.**
+
+    대상 자신은 제 밑으로 안 들어가고, 양쪽에 다 있는 사람은 합쳐진다 — 그냥 참조 수를
+    보이면 「하위 부서 2건」 이라 해 놓고 하나만 옮겨 가고, 승인한 사람이 본 숫자와 기록이
+    어긋난다.
+    """
+    head = _team(client, admin)
+    keep = _team(client, admin, parent=head)
+    _team(client, admin, parent=head)
+
+    email = f"both-{uuid.uuid4().hex[:8]}@testscope.local"
+    user = User(
+        email=email,
+        password_hash=security.hash_password("pw"),
+        display_name="양쪽 사람",
+        status="active",
+    )
+    db.add(user)
+    db.commit()
+    for slug in (head, keep):
+        client.post(
+            f"/api/workspaces/{slug}/members",
+            json={"email": email, "role": "member"},
+            headers=admin.headers,
+        )
+
+    preview = client.get(
+        f"/api/workspaces/{head}/reassign-preview",
+        params={"to": keep},
+        headers=admin.headers,
+    ).json()
+    planned = {one["table"]: one["count"] for one in preview["moves"]}
+    assert planned["workspaces"] == 1, "대상 자신은 제 밑으로 안 들어간다"
+    assert "workspace_members" not in planned, "양쪽에 다 있는 사람은 옮겨지는 것이 아니다"
+
+    # **조직도가 바뀌는 것도 말한다.**
+    assert preview["lifts_target"] is True
+
+    client.delete(
+        f"/api/workspaces/{head}", params={"reassign_to": keep}, headers=admin.headers
+    )
+    merged = db.scalars(
+        select(AuditEntry)
+        .where(AuditEntry.action == "workspace.merged")
+        .order_by(AuditEntry.created_at.desc())
+    ).first()
+    assert merged is not None
+    assert merged.changes["moved"].get("workspaces") == planned["workspaces"]
+    assert "workspace_members" not in merged.changes["moved"]

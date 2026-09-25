@@ -15,7 +15,9 @@ bcrypt 라운드를 낮춘다. 시험 하나가 계정을 만들고(해시) 로�
 
 from __future__ import annotations
 
+import atexit
 import os
+import shutil
 import tempfile
 
 os.environ.setdefault("TSC_BCRYPT_ROUNDS", "4")
@@ -23,7 +25,13 @@ os.environ.setdefault("TSC_BCRYPT_ROUNDS", "4")
 # **첨부는 시험용 폴더에 쓴다.** 안 그러면 개발 파일스토어에 쌓인다 — 시험은 DB 를
 # 되돌리지만 디스크에 쓴 파일은 되돌아가지 않아서, 아무 줄도 안 가리키는 바이트가 남는다
 # (2026-09-24 실측: 개발 파일스토어 18개 중 16개가 그것이었다).
-os.environ.setdefault("FILESTORE_DIR", tempfile.mkdtemp(prefix="testscope-filestore-"))
+# **없을 때만 만든다.** `setdefault` 에 넘기면 값이 먼저 만들어지므로, 이미 정해져 있어도
+# 폴더가 하나 생기고 그대로 버려진다. 그리고 만든 것은 끝날 때 치운다 — 안 치우면 누수가
+# 개발 파일스토어에서 %TEMP% 로 자리만 옮긴 셈이 된다.
+if "FILESTORE_DIR" not in os.environ:
+    _filestore = tempfile.mkdtemp(prefix="testscope-filestore-")
+    os.environ["FILESTORE_DIR"] = _filestore
+    atexit.register(shutil.rmtree, _filestore, True)
 
 
 def _test_database_url() -> str:

@@ -24,15 +24,18 @@ def _body_models() -> dict[str, type[BaseModel]]:
     found: dict[str, type[BaseModel]] = {}
 
     def walk_model(model: Any) -> None:
+        # **겹친 것 안쪽까지 들어간다.** `list[Model]` 만 풀고 멈추면
+        # `list[list[Model]]` · `Annotated[Model, ...]` 안의 스키마가 이 시험을 조용히
+        # 빠져나간다 — 정작 사고가 난 자리가 중첩 모델(`AttributeValueIn`)이었다.
+        for arg in getattr(model, "__args__", ()):
+            walk_model(arg)
         if not (isinstance(model, type) and issubclass(model, BaseModel)):
             return
         if model.__name__ in found:
             return
         found[model.__name__] = model
         for field in model.model_fields.values():
-            annotation = field.annotation
-            for arg in (annotation, *getattr(annotation, "__args__", ())):
-                walk_model(arg)
+            walk_model(field.annotation)
 
     def walk_routes(node: Any) -> None:
         for route in getattr(node, "routes", []) or []:

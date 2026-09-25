@@ -296,42 +296,68 @@ def test_규격_목록의_질의가_줄_수를_따라_늘지_않는다(
     assert many <= few + 2, f"{FEW}줄에 {few}회 · {MANY}줄에 {many}회 — 줄에 비례한다"
 
 
+def _workspace(client: TestClient, admin: Signed) -> str:
+    """빈 부서 하나. **줄 수를 달리해 두 번 재려고** 쓴다 — 이 두 목록은 `limit` 이 없어서
+    부서로 가른다."""
+    made = client.post(
+        "/api/workspaces",
+        json={"slug": f"c-{uuid.uuid4().hex[:8]}", "name": "질의 수 확인"},
+        headers=admin.headers,
+    )
+    assert made.status_code == 201, made.text
+    return str(made.json()["slug"])
+
+
 def test_신뢰성_시험_목록의_질의가_줄_수를_따라_늘지_않는다(
     client: TestClient, admin: Signed
 ) -> None:
-    """카드에 칸이 스물 넘게 서는 표라 **줄마다 묻기 시작하면 제일 빨리 자란다.**"""
-    for index in range(MANY):
-        made = client.post(
-            "/api/reliability-tests",
-            json={
-                "workspace_slug": admin.workspace,
-                "name": f"질의 수 확인-{uuid.uuid4().hex[:6]}-{index}",
-            },
-            headers=admin.headers,
-        )
-        assert made.status_code == 201, made.text
+    """카드에 칸이 스물 넘게 서는 표라 **줄마다 묻기 시작하면 제일 빨리 자란다.**
 
+    **상한만 보면 부족하다.** 줄당 한 번씩만 묻는 코드도 열두 줄이면 상한 안에 들어오고,
+    그러면 규격이 253회까지 자란 길을 그대로 되밟는다 — 적은 줄과 많은 줄을 함께 잰다.
+    """
+    thin = _workspace(client, admin)
+    thick = _workspace(client, admin)
+    for slug, count in ((thin, FEW), (thick, MANY)):
+        for index in range(count):
+            made = client.post(
+                "/api/reliability-tests",
+                json={
+                    "workspace_slug": slug,
+                    "name": f"질의 수 확인-{uuid.uuid4().hex[:6]}-{index}",
+                },
+                headers=admin.headers,
+            )
+            assert made.status_code == 201, made.text
+
+    few, _ = _cost(client, admin, f"/api/reliability-tests?workspace={thin}&status=all")
     many, statements = _cost(
-        client, admin, f"/api/reliability-tests?workspace={admin.workspace}&status=all"
+        client, admin, f"/api/reliability-tests?workspace={thick}&status=all"
     )
     assert many <= BUDGET, f"질의 {many}회 — 줄마다 묻고 있다.\n{_why(statements)}"
+    assert many <= few + 2, f"{FEW}줄에 {few}회 · {MANY}줄에 {many}회 — 줄에 비례한다"
 
 
 def test_사내_규격서_목록의_질의가_줄_수를_따라_늘지_않는다(
     client: TestClient, admin: Signed
 ) -> None:
     """줄마다 붙은 파일 수와 거는 시험 수를 세는 표다 — 묶어 세지 않으면 곧장 는다."""
-    for index in range(MANY):
-        made = client.post(
-            "/api/spec-documents",
-            json={
-                "workspace_slug": admin.workspace,
-                "code": f"MX-COST-{uuid.uuid4().hex[:6]}-{index}",
-                "title": "질의 수 확인용 문서",
-            },
-            headers=admin.headers,
-        )
-        assert made.status_code == 201, made.text
+    thin = _workspace(client, admin)
+    thick = _workspace(client, admin)
+    for slug, count in ((thin, FEW), (thick, MANY)):
+        for index in range(count):
+            made = client.post(
+                "/api/spec-documents",
+                json={
+                    "workspace_slug": slug,
+                    "code": f"MX-COST-{uuid.uuid4().hex[:6]}-{index}",
+                    "title": "질의 수 확인용 문서",
+                },
+                headers=admin.headers,
+            )
+            assert made.status_code == 201, made.text
 
-    many, statements = _cost(client, admin, f"/api/spec-documents?workspace={admin.workspace}")
+    few, _ = _cost(client, admin, f"/api/spec-documents?workspace={thin}")
+    many, statements = _cost(client, admin, f"/api/spec-documents?workspace={thick}")
     assert many <= BUDGET, f"질의 {many}회 — 줄마다 묻고 있다.\n{_why(statements)}"
+    assert many <= few + 2, f"{FEW}줄에 {few}회 · {MANY}줄에 {many}회 — 줄에 비례한다"

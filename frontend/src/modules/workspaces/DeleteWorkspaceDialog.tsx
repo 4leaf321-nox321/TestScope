@@ -47,22 +47,26 @@ export const NONE = '__none__'
  * 지금 지울 수 있나, 단추에 뭐라고 쓸까 — **판정만 떼어 둔다.**
  *
  * 창에 두면 이 규칙을 확인하려고 Select 를 눌러야 하는데, 그건 브라우저 밖에서는
- * 잘 안 되는 일이다. 규칙은 둘이다:
+ * 잘 안 되는 일이다. 규칙은 셋이다:
  *
+ * * **아직 모르면 막는다.** 세는 중이거나 미리보기가 안 왔으면(또는 실패했으면) 누를 수
+ *   없다 — 이 창의 약속이 「누르기 전에 답한다」 인데, 답이 오기 전에 눌리면 그 약속이
+ *   빈말이 된다. 옮기기는 되돌릴 수 없다.
  * * 옮기지 않고 지우려면 **막는 것이 하나도 없어야** 한다(장비·시험·규격서·하위 부서).
  * * 옮기고 지우려면 **겹치는 이름이 없어야** 한다 — 옮긴 순간 같은 이름이 둘이 된다.
  */
 export function removalState(input: {
   to: string
   references: WorkspaceReference[] | null
-  clashes: { values: string[] }[]
+  /** 대상을 골랐을 때의 미리보기. 아직 안 왔으면 `null`. */
+  preview: { clashes: { values: string[] }[] } | null
 }): { blocked: boolean; label: string } {
   const moving = input.to !== NONE
-  const blocking = (input.references ?? []).filter((one) => one.blocks_delete)
-  return {
-    blocked: moving ? input.clashes.length > 0 : blocking.length > 0,
-    label: moving ? '옮기고 지우기' : '지우기',
-  }
+  const label = moving ? '옮기고 지우기' : '지우기'
+  if (input.references === null) return { blocked: true, label }
+  if (moving)
+    return { blocked: input.preview === null || input.preview.clashes.length > 0, label }
+  return { blocked: input.references.some((one) => one.blocks_delete), label }
 }
 
 export function DeleteWorkspaceDialog({
@@ -117,7 +121,7 @@ export function DeleteWorkspaceDialog({
 
   const blocking = (refs ?? []).filter((one) => one.blocks_delete)
   const clashes = preview?.clashes ?? []
-  const { blocked, label } = removalState({ to, references: refs, clashes })
+  const { blocked, label } = removalState({ to, references: refs, preview })
 
   async function remove() {
     if (!slug) return
@@ -193,11 +197,25 @@ export function DeleteWorkspaceDialog({
             )}
           </section>
 
+          {to !== NONE && preview === null && (
+            // **답이 오기 전에는 못 누른다.** 「누르기 전에 답한다」 가 이 창의 약속이다.
+            <p className="text-muted-foreground text-sm">옮길 것을 세는 중…</p>
+          )}
+
           {preview && (
             <section className="space-y-2 rounded-md border p-3">
               <p className="text-sm">
                 <strong>{preview.target_name}</strong> 으로 옮깁니다
               </p>
+              {preview.lifts_target && (
+                // **두 단짜리 개편이다.** 본부를 없애고 그 아래 팀으로 합치면 그 팀이
+                // 한 단 올라가고 형제들이 그 밑으로 들어간다 — 모르고 누르면 안 된다.
+                <p className="text-sm">
+                  <strong>{preview.target_name}</strong> 이(가){' '}
+                  {preview.target_new_parent_name ?? '맨 위'} 아래로 올라가고, 나머지 하위
+                  부서가 그 아래로 들어갑니다.
+                </p>
+              )}
               {preview.moves.length === 0 ? (
                 <p className="text-muted-foreground text-sm">옮길 것이 없습니다.</p>
               ) : (

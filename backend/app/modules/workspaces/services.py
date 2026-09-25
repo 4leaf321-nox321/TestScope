@@ -332,52 +332,58 @@ def references(db: Session, *, slug: str) -> list[WorkspaceReferenceOut]:
     ]
 
 
+def _restricted(
+    db: Session, table: str, label: str, model: Any, mine: Any, gone: Any
+) -> list[Reference]:
+    """RESTRICT 로 막는 표 하나를 **산 것과 지운 것으로 갈라** 센다.
+
+    **지운 줄도 표에는 남아 있고, DB 는 그것까지 보고 막는다.** 산 것만 세면 「가리키는
+    것이 없다」 고 답해 놓고 삭제에서 500 이 난다 — 실제로 그랬다(2026-09-25 실측: 시험
+    하나를 지운 부서를 지우려 하면 참조 목록은 「멤버 1건」 만 보여 주고 ForeignKeyViolation
+    이 났다). 그래서 **세는 자리가 DB 와 같은 눈으로 봐야 한다.**
+
+    갈라 세는 이유는 사람이 읽을 수 있어야 해서다. 「신뢰성 시험 1건」 이라고만 하면 방금
+    지운 사람은 「나는 지웠는데?」 가 되고, 어떻게 치워야 하는지 모른다 — 지운 줄은
+    이관으로만 따라간다.
+    """
+    live = db.scalar(select(func.count()).select_from(model).where(mine, gone.is_(None))) or 0
+    dropped = (
+        db.scalar(select(func.count()).select_from(model).where(mine, gone.is_not(None))) or 0
+    )
+    return [
+        Reference(table, label, live, True),
+        Reference(f"{table}_deleted", f"{label}(지운 것)", dropped, True),
+    ]
+
+
 def _counts(db: Session, workspace: Workspace) -> list[Reference]:
     """이 부서를 가리키는 것을 표마다 센다. **세는 자리는 한 곳이다** — 삭제가 막는
     것과 이관이 옮기는 것이 같은 목록이어야, 「막혔는데 옮길 것이 없다」 가 안 생긴다.
     """
     counts = [
-        Reference(
+        *_restricted(
+            db,
             "equipment",
             "장비",
-            db.scalar(
-                select(func.count())
-                .select_from(Equipment)
-                .where(Equipment.owner_workspace_id == workspace.id)
-            )
-            or 0,
-            # RESTRICT — DB 가 거부한다. 먼저 다른 부서로 옮기거나 지워야 한다.
-            True,
+            Equipment,
+            Equipment.owner_workspace_id == workspace.id,
+            Equipment.deleted_at,
         ),
-        Reference(
+        *_restricted(
+            db,
             "reliability_tests",
             "신뢰성 시험",
-            db.scalar(
-                select(func.count())
-                .select_from(ReliabilityTest)
-                .where(
-                    ReliabilityTest.workspace_id == workspace.id,
-                    ReliabilityTest.deleted_at.is_(None),
-                )
-            )
-            or 0,
-            # RESTRICT — 이 표가 생긴 뒤로 여기 안 적혀 있었고, 그래서 시험이 있는
-            # 부서를 지우면 DB 가 막아 500 이 났다. 세는 자리와 막는 자리는 같아야 한다.
-            True,
+            ReliabilityTest,
+            ReliabilityTest.workspace_id == workspace.id,
+            ReliabilityTest.deleted_at,
         ),
-        Reference(
+        *_restricted(
+            db,
             "spec_documents",
             "사내 규격서",
-            db.scalar(
-                select(func.count())
-                .select_from(SpecDocument)
-                .where(
-                    SpecDocument.workspace_id == workspace.id,
-                    SpecDocument.deleted_at.is_(None),
-                )
-            )
-            or 0,
-            True,
+            SpecDocument,
+            SpecDocument.workspace_id == workspace.id,
+            SpecDocument.deleted_at,
         ),
         Reference(
             "test_methods",
@@ -435,12 +441,19 @@ def _clashes(db: Session, source: Workspace, target: Workspace) -> list[Workspac
     """
 
     def _names(column: Any, *where: Any) -> list[str]:
-        """빈 것은 뺀다 — 자산번호는 안 적어도 되는 칸이라 None 이 흔하다."""
-        return [one for one in db.scalars(select(column).where(*where)) if one]
+        """**`None` 만 뺀다.**
+
+        빈 글자(`''`)는 빼면 안 된다 — 포스트그레스의 유일 제약은 NULL 은 넘어가지만
+        `''` 는 값으로 보기 때문에, 양쪽에 하나씩 있으면 옮기는 순간 부딪힌다. 지금은
+        문 앞에서 None 으로 바꾸지만(`_none_if_blank`) 그 전에 들어온 줄이 남아 있다.
+        """
+        return [one for one in db.scalars(select(column).where(*where)) if one is not None]
 
     def _both(taken: list[str], coming: list[str], *, fold: bool = False) -> list[str]:
         keys = {one.casefold() for one in taken} if fold else set(taken)
-        return sorted({one for one in coming if (one.casefold() if fold else one) in keys})
+        hit = {one for one in coming if (one.casefold() if fold else one) in keys}
+        # 빈 글자를 그대로 보이면 화면에 아무것도 안 뜬다 — 무엇이 겹쳤는지 말해 준다.
+        return sorted(one or "(빈 값)" for one in hit)
 
     alive = ReliabilityTest.deleted_at.is_(None)
     live = SpecDocument.deleted_at.is_(None)
@@ -482,20 +495,70 @@ def reassign_preview(db: Session, *, slug: str, to: str) -> WorkspaceReassignOut
     """
     source = workspace_by_slug(db, slug)
     target = workspace_by_slug(db, to)
-    _check_target(db, source, target)
+    _check_target(source, target)
+
+    # **옮기는 쪽에서 빠지는 둘은 따로 센다.** 대상 자신은 제 밑으로 안 들어가고,
+    # 양쪽에 다 있는 사람은 합쳐지므로 「옮겨진다」 가 아니다 — 미리보기가 그냥 참조 수를
+    # 보이면 「하위 부서 3건」 이라 해 놓고 둘만 옮겨 가고, 그때 감사 기록과도 어긋난다.
+    planned = {
+        "workspaces": len(_children_to_move(db, source, target)),
+        "workspace_members": len(_members_to_move(db, source, target)[0]),
+    }
+    lifted = _lifts_target(db, source, target)
+    parent = db.get(Workspace, source.parent_id) if source.parent_id else None
     return WorkspaceReassignOut(
         target_slug=target.slug,
         target_name=target.name,
         moves=[
-            WorkspaceMoveOut(table=one.table, label=one.label, count=one.count)
+            WorkspaceMoveOut(
+                table=one.table, label=one.label, count=planned.get(one.table, one.count)
+            )
             for one in _counts(db, source)
-            if one.count
+            if planned.get(one.table, one.count)
         ],
         clashes=_clashes(db, source, target),
+        # **조직도가 바뀌는 것도 말한다.** 본부를 없애고 그 아래 팀으로 합치면 그 팀이
+        # 한 단 올라가고 형제들이 그 밑으로 들어간다 — 두 단짜리 개편을 모르고 누르면 안 된다.
+        lifts_target=lifted,
+        target_new_parent_name=(parent.name if parent else None) if lifted else None,
     )
 
 
-def _check_target(db: Session, source: Workspace, target: Workspace) -> None:
+def _lifts_target(db: Session, source: Workspace, target: Workspace) -> bool:
+    """대상이 지울 부서의 아래에 있나 — 그러면 이관할 때 한 단 올라간다."""
+    return target.id in _descendants(db, source)
+
+
+def _children_to_move(db: Session, source: Workspace, target: Workspace) -> list[Workspace]:
+    """대상 아래로 들어갈 하위 부서. **대상 자신은 뺀다** — 제 밑으로 못 들어간다."""
+    return list(
+        db.scalars(
+            select(Workspace).where(
+                Workspace.parent_id == source.id, Workspace.id != target.id
+            )
+        )
+    )
+
+
+def _members_to_move(
+    db: Session, source: Workspace, target: Workspace
+) -> tuple[list[WorkspaceMember], list[tuple[WorkspaceMember, WorkspaceMember]]]:
+    """(옮겨 갈 멤버, 합쳐질 짝). 양쪽에 다 있는 사람은 줄이 하나로 준다."""
+    here = list(
+        db.scalars(select(WorkspaceMember).where(WorkspaceMember.workspace_id == source.id))
+    )
+    there = {
+        row.user_id: row
+        for row in db.scalars(
+            select(WorkspaceMember).where(WorkspaceMember.workspace_id == target.id)
+        )
+    }
+    moving = [row for row in here if row.user_id not in there]
+    merging = [(row, there[row.user_id]) for row in here if row.user_id in there]
+    return moving, merging
+
+
+def _check_target(source: Workspace, target: Workspace) -> None:
     if target.id == source.id:
         raise AppError(
             "TSC-WORKSPACES-0007",
@@ -517,42 +580,21 @@ def _reassign(db: Session, *, source: Workspace, target: Workspace) -> dict[str,
 
     # **멤버는 합친다.** 양쪽에 다 있으면 강한 역할을 남긴다 — 옮기다가 권한을 뺏으면
     # 그 사람은 어제 하던 일을 오늘 못 한다.
-    here = {
-        row.user_id: row
-        for row in db.scalars(
-            select(WorkspaceMember).where(WorkspaceMember.workspace_id == source.id)
-        )
-    }
-    there = {
-        row.user_id: row
-        for row in db.scalars(
-            select(WorkspaceMember).where(WorkspaceMember.workspace_id == target.id)
-        )
-    }
-    merged = 0
-    for user_id, row in here.items():
-        twin = there.get(user_id)
-        if twin is None:
-            row.workspace_id = target.id
-            merged += 1
-            continue
+    moving, merging = _members_to_move(db, source, target)
+    for row in moving:
+        row.workspace_id = target.id
+    for row, twin in merging:
         if row.role == "manager" and twin.role != "manager":
             twin.role = "manager"
         db.delete(row)
-    moved["workspace_members"] = merged
+    moved["workspace_members"] = len(moving)
 
     # **하위 부서는 대상 아래로 들어간다.** 대상이 제 자식이면 먼저 올린다 — 안 그러면
     # 그 부서가 제 부모가 된다(고리가 생기면 조직도가 통째로 안 그려진다).
-    if target.parent_id == source.id or target.id in _descendants(db, source):
+    children = _children_to_move(db, source, target)
+    if _lifts_target(db, source, target):
         target.parent_id = source.parent_id
         db.flush()
-    children = list(
-        db.scalars(
-            select(Workspace).where(
-                Workspace.parent_id == source.id, Workspace.id != target.id
-            )
-        )
-    )
     for child in children:
         child.parent_id = target.id
     moved["workspaces"] = len(children)
@@ -591,7 +633,7 @@ def delete(db: Session, *, slug: str, actor: User, reassign_to: str | None = Non
     workspace = workspace_by_slug(db, slug)
     if reassign_to:
         target = workspace_by_slug(db, reassign_to)
-        _check_target(db, workspace, target)
+        _check_target(workspace, target)
         clashes = _clashes(db, workspace, target)
         if clashes:
             # **우리가 고르지 않는다.** 둘 중 무엇을 남길지는 사람이 정할 일이다.

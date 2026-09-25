@@ -23,6 +23,7 @@
 | `papers/<객체 id>.json` | **논문에서 본 사용 예**(3등급) — OpenAlex(제목·초록·주제, 언급 논문 수)와 Europe PMC(오픈액세스 전문에서 「Instron 3400」 앞뒤 문장 = `usage_snippets`), 거기서 뽑은 규격·시험 항목 낌새 |
 | `wiki/<제조사>.json` | Wikipedia 제조사 소개 한 단락 (배경 — 값이 아니다) |
 | `standard_titles.json` | 규격 코드 → 제목·정식 표기·출처. `tools_standard_titles.py` 가 ANSI 웹스토어 검색과 모은 본문에서 찾는다. 반입(`catalog_import/methods.py`)과 검토함이 시험법을 만들 때 이 제목을 쓴다 |
+| `ks_standards.json` | **KS(한국산업표준) 조사 결과** — 번호·제목·제정/확인일·대응 국제표준(IDT/MOD)·어느 시험 항목의 것인가, 그리고 **못 찾은 것과 폐지된 것**까지. 전부 e나라 표준인증(standard.go.kr) 상세 화면을 한 건씩 열어 확인했다(2026-09-24). **아직 반입하는 코드가 없다** — 별도 줄로 넣을지 대응 국제표준으로 이을지가 정해지면 그때 스크립트를 만든다. 규격 601건 중 KS 가 1건뿐인 것은 카탈로그가 제조사 인용에서 왔기 때문이다(제조사 97곳 중 한국 1곳) |
 | `tools_harvest.py` | 제조사 사이트맵 + extra_urls 를 모으는 도구. 다시 돌려도 있는 객체는 건너뛴다 |
 | `tools_harvest_papers.py` | 논문·Wikipedia 를 모으는 도구 |
 | `tools_propose.py` | 원료에서 검토함 물음 셋(규격·시험·소개 문장)을 세운다 → `source/catalog/proposals/series_*.json` |

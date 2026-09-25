@@ -6,7 +6,7 @@ import uuid
 from datetime import date, datetime
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.modules.attributes.schemas import AttributeValueIn, AttributeValueOut
 from app.shared.schemas import Request
@@ -326,6 +326,17 @@ class EquipmentImportResult(BaseModel):
     rows: list[EquipmentImportRow]
 
 
+def _none_if_blank(value: object) -> object:
+    """빈 글자·공백만 있는 글자는 **안 적은 것**으로 본다.
+
+    「없음」 을 두 가지 모양(`None` 과 `""`)으로 저장하면 유일 제약도 검색도 둘을 다르게
+    보고, 그 차이는 아무도 의도한 적이 없다.
+    """
+    if isinstance(value, str) and not value.strip():
+        return None
+    return value
+
+
 class EquipmentCreateRequest(Request):
     """보유 장비를 등록한다.
 
@@ -341,7 +352,13 @@ class EquipmentCreateRequest(Request):
     name: str = Field(min_length=1, max_length=200)
     """현장 호칭. 「3동 만능기」 처럼 부르는 이름을 적는다 — 사람이 찾을 때 치는 말이다."""
     dept_asset_no: str | None = Field(default=None, max_length=50)
-    """부서관리번호. 부서 안에서만 유일하면 된다."""
+    """부서관리번호. 부서 안에서만 유일하면 된다.
+
+    **빈 글자는 「안 적음」 이다.** 그대로 두면 빈 문자열끼리 부딪힌다 — 포스트그레스의
+    유일 제약은 NULL 은 넘어가지만 `''` 는 값으로 보기 때문에, 같은 부서에 번호를 안 적은
+    장비가 **둘째부터 500** 이었다(2026-09-25 실측). 문 앞에서 None 으로 바꾼다."""
+
+    _blank_is_none = field_validator("dept_asset_no", mode="before")(_none_if_blank)
     workspace_slug: str
     """보유 부서. **비울 수 없다** — 장비에는 관리하는 부서가 반드시 있다.
     공용 장비도 마찬가지고, 공용인지는 `shared_use` 가 따로 말한다."""
@@ -396,6 +413,9 @@ class EquipmentUpdateRequest(Request):
 
     name: str | None = Field(default=None, min_length=1, max_length=200)
     dept_asset_no: str | None = None
+    """빈 글자는 「안 적음」 이다 — `EquipmentCreateRequest` 와 같은 이유."""
+
+    _blank_is_none = field_validator("dept_asset_no", mode="before")(_none_if_blank)
     model_id: uuid.UUID | None = None
     """카탈로그 연결을 바꾼다. **시험 항목은 다시 복사되지 않는다** — 이미 이 장비의
     것이 된 값을 사양서로 덮으면, 손으로 고쳐 둔 실측이 조용히 사라진다.

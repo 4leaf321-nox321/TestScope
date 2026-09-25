@@ -318,7 +318,10 @@ def sweep_filestore(
     것들. 뒤쪽은 지울 수 없는 고장이라 세어서 말만 한다.
     """
     root = get_settings().filestore_dir
-    known = {row.sha256 for row in db.scalars(select(StoredFile))}
+    # **한 번만 읽는다.** 줄마다 객체를 세우면 5만 건짜리 파일스토어에서 두 벌이 뜬다 —
+    # 필요한 것은 해시와 경로 둘뿐이다.
+    stored = db.execute(select(StoredFile.sha256, StoredFile.path)).all()
+    known = {row.sha256 for row in stored}
     cutoff = time.time() - older_than_hours * 3600
 
     orphans: list[Path] = []
@@ -328,20 +331,19 @@ def sweep_filestore(
         for path in root.rglob("*"):
             if not path.is_file() or path.name in known:
                 continue
-            if path.stat().st_mtime > cutoff:
+            fact = path.stat()
+            if fact.st_mtime > cutoff:
                 recent += 1  # 아직 올라가는 중일 수 있다 — 건드리지 않는다
                 continue
             orphans.append(path)
-            freed += path.stat().st_size
+            freed += fact.st_size
 
     if delete:
         for path in orphans:
             with contextlib.suppress(OSError):  # 잠긴 파일은 다음 번에 지워진다
                 path.unlink()
 
-    missing = [
-        row.sha256 for row in db.scalars(select(StoredFile)) if not (root / row.path).exists()
-    ]
+    missing = [row.sha256 for row in stored if not (root / row.path).exists()]
     return {
         "orphans": len(orphans),
         "bytes": freed,

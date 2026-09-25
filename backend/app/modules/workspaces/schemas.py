@@ -115,6 +115,13 @@ class WorkspaceReassignOut(BaseModel):
     target_name: str
     moves: list[WorkspaceMoveOut]
     clashes: list[WorkspaceClashOut]
+    lifts_target: bool = False
+    """대상이 지울 부서의 **아래**에 있어서 한 단 올라가나.
+
+    본부를 없애고 그 아래 팀 하나로 합치는 일은 흔한데, 그러면 그 팀이 본부 자리로
+    올라가고 형제들이 그 밑으로 들어간다 — **두 단짜리 개편이다.** 모르고 누르면 안 된다."""
+    target_new_parent_name: str | None = None
+    """올라간 뒤의 상위 부서 이름. 뿌리로 올라가면 비어 있다."""
 
 
 class MemberOut(BaseModel):
