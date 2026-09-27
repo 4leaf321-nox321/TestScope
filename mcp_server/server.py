@@ -2242,7 +2242,7 @@ async def extract_document_images(ctx: Context, attachment_id: str) -> dict[str,
 
     **줄마다 `caption` 이 붙어 온다** — 문서에서 그 그림 자리의 제목과 글이다
     (「3.2 열충격 — 온습도 프로파일」). **너는 그림을 못 보므로 그 글자가 유일한 단서다.**
-    그것으로 어느 시험의 것인지 정하고 `attach_reference` 로 건다.
+    그것으로 어느 시험의 것인지 정하고 `attach_references` 로 **한 번에** 건다.
 
     같은 그림이 여러 쪽에 나오면(머리글 로고) 한 번만 꺼낸다. 못 꺼낸 것은
     `skipped_*` 로 세어서 말한다 — 조용히 빠지면 사람이 못 알아챈다.
@@ -2251,35 +2251,33 @@ async def extract_document_images(ctx: Context, attachment_id: str) -> dict[str,
 
 
 @writes
-async def attach_reference(
-    ctx: Context,
-    attachment_id: str,
-    target: str,
-    object_id: str,
-    definition_id: str | None = None,
-    caption: str | None = None,
+async def attach_references(
+    ctx: Context, items: list[dict[str, Any]], dry_run: bool = True
 ) -> dict[str, Any]:
-    """이미 올라온 그림을 **다른 자리에도 가리킨다.** 바이트는 안 움직인다.
+    """이미 올라온 그림들을 **한 번에 제자리로.** 바이트는 안 움직인다.
 
-    규격서에서 꺼낸 그림 서른 장을 신뢰성 시험 서른 건에 나눠 걸 때 쓴다. 다시 올리면
-    같은 바이트가 서른 벌 생기고, 무엇보다 그 바이트가 **너를 거쳐야** 한다.
+    규격서 한 벌에서 그림이 서른 장 나오고, 그것을 시험 서른 건에 나눠 건다 — 한 장씩
+    부르면 서른 번이고, 중간에 끊기면 어디까지 갔는지 알기 어렵다. 줄 하나가 한 장이다:
 
-    `definition_id` 를 주면 그 칸에 붙고, 안 주면 카드 전체에 붙는다. `caption` 을 안
-    주면 원본의 설명을 그대로 가져온다 — 그림을 고른 이유가 대개 그 설명이다.
+        {"attachment_id": "…", "target": "reliability_test", "object_id": "…",
+         "definition_id": "…(어느 칸에. 없으면 카드 전체)", "caption": "…(없으면 원본 것)"}
 
-    **확정된 시험에는 못 붙인다**(409) — 칸과 그림의 판정이 한 곳이라, 사람이 확인한
-    카드는 그림도 안 바뀐다.
+    **기본은 미리보기다**(`dry_run=true`) — 판정만 하고 아무것도 안 건다. 서른 장을
+    엉뚱한 시험에 걸어 놓고 되돌리는 것보다 표로 먼저 보는 편이 싸다. 사람에게 그 표를
+    보이고, 확인받으면 같은 것을 `dry_run=false` 로 다시 보낸다.
+
+    줄마다 따로 판정한다 — 한 줄이 막혀도 나머지는 걸리고, **못 건 줄은 이유와 함께**
+    돌아온다. 거는 것은 전부 되거나 전부 안 된다.
+
+    어느 그림이 어느 시험의 것인지는 `extract_document_images` 가 준 `caption` 으로
+    정한다 — **너는 그림을 못 본다.** 설명이 빈 그림은 짐작해서 걸지 말고 사람에게 물어라.
     """
     return await _send(
         ctx,
         "POST",
-        f"/attachments/{attachment_id}/attach",
-        {
-            "target": target,
-            "object_id": object_id,
-            "definition_id": definition_id,
-            "caption": caption,
-        },
+        "/attachments/attach-batch",
+        {"items": items},
+        {"dry_run": "true" if dry_run else "false"},
     )
 
 

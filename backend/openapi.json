@@ -8187,6 +8187,60 @@
         }
       }
     },
+    "/api/attachments/attach-batch": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Attach Batch",
+        "description": "그림 여럿을 **한 번에** 제자리로 — 규격서 한 벌에서 서른 장이 나온다.\n\n줄마다 「어느 그림을 · 어느 대상의 · 어느 칸에」 를 적는다. **기본은 미리보기**다\n(`dry_run=true`) — 서른 장을 엉뚱한 시험에 걸어 놓고 되돌리는 것보다 표로 먼저 보는\n편이 싸다. 사람이 확인하면 같은 것을 `dry_run=false` 로 다시 보낸다.\n\n줄마다 따로 판정한다 — 한 줄이 막혀도 나머지는 걸린다. 못 건 줄은 이유와 함께 남는다.",
+        "operationId": "attach_batch_api_attachments_attach_batch_post",
+        "parameters": [
+          {
+            "name": "dry_run",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Dry Run"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachBatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachBatchResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/attachments/{attachment_id}/attach": {
       "post": {
         "tags": [
@@ -9694,6 +9748,57 @@
         "type": "object",
         "title": "ApproveRequest"
       },
+      "AttachBatchRequest": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AttachItem"
+            },
+            "type": "array",
+            "maxItems": 200,
+            "minItems": 1,
+            "title": "Items"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "title": "AttachBatchRequest",
+        "description": "그림 여럿을 **한 번에** 제자리로. 규격서 한 벌에서 서른 장이 나온다.\n\n`dry_run` 이 기본이다 — 먼저 판정만 보고, 사람이 확인하면 같은 것을 다시 보낸다\n(장비 대장·요구 조건 반입과 같은 규칙)."
+      },
+      "AttachBatchResult": {
+        "properties": {
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/AttachRowOut"
+            },
+            "type": "array",
+            "title": "Rows"
+          },
+          "attached": {
+            "type": "integer",
+            "title": "Attached"
+          },
+          "refused": {
+            "type": "integer",
+            "title": "Refused"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rows",
+          "attached",
+          "refused",
+          "dry_run"
+        ],
+        "title": "AttachBatchResult"
+      },
       "AttachExistingRequest": {
         "properties": {
           "target": {
@@ -9738,6 +9843,104 @@
         ],
         "title": "AttachExistingRequest",
         "description": "이미 올라온 파일을 다른 자리에도 가리킨다 — 바이트는 안 움직인다."
+      },
+      "AttachItem": {
+        "properties": {
+          "attachment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Attachment Id"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "object_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Object Id"
+          },
+          "definition_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definition Id"
+          },
+          "caption": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 300
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caption"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "attachment_id",
+          "target",
+          "object_id"
+        ],
+        "title": "AttachItem",
+        "description": "그림 한 장을 어디에 걸까 — **한 줄.**"
+      },
+      "AttachRowOut": {
+        "properties": {
+          "index": {
+            "type": "integer",
+            "title": "Index"
+          },
+          "attachment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Attachment Id"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "object_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Object Id"
+          },
+          "ok": {
+            "type": "boolean",
+            "title": "Ok"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          }
+        },
+        "type": "object",
+        "required": [
+          "index",
+          "attachment_id",
+          "target",
+          "object_id",
+          "ok"
+        ],
+        "title": "AttachRowOut",
+        "description": "한 줄이 어떻게 됐나. **못 건 줄은 이유와 함께 남는다** — 조용히 빠지면 못 알아챈다."
       },
       "AttachmentOut": {
         "properties": {

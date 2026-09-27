@@ -27,9 +27,12 @@ from app.modules.accounts.models import User
 from app.modules.attachments import services
 from app.modules.attachments.models import MAX_BYTES, Attachment
 from app.modules.attachments.schemas import (
+    AttachBatchRequest,
+    AttachBatchResult,
     AttachExistingRequest,
     AttachmentOut,
     AttachmentUpdateRequest,
+    AttachRowOut,
     ExtractImagesResult,
     UploadTicketOut,
 )
@@ -188,6 +191,34 @@ def extract_images(
         skipped_oversize=result["skipped_oversize"],
         skipped_kind=result["skipped_kind"],
         skipped_duplicate=result["skipped_duplicate"],
+    )
+
+
+@router.post("/attach-batch", response_model=AttachBatchResult)
+def attach_batch(
+    payload: AttachBatchRequest,
+    dry_run: bool = Query(default=True),
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> AttachBatchResult:
+    """그림 여럿을 **한 번에** 제자리로 — 규격서 한 벌에서 서른 장이 나온다.
+
+    줄마다 「어느 그림을 · 어느 대상의 · 어느 칸에」 를 적는다. **기본은 미리보기**다
+    (`dry_run=true`) — 서른 장을 엉뚱한 시험에 걸어 놓고 되돌리는 것보다 표로 먼저 보는
+    편이 싸다. 사람이 확인하면 같은 것을 `dry_run=false` 로 다시 보낸다.
+
+    줄마다 따로 판정한다 — 한 줄이 막혀도 나머지는 걸린다. 못 건 줄은 이유와 함께 남는다.
+    """
+    result = services.attach_batch(
+        db, user, items=[one.model_dump() for one in payload.items], dry_run=dry_run
+    )
+    if not dry_run:
+        db.commit()
+    return AttachBatchResult(
+        rows=[AttachRowOut(**one) for one in result["rows"]],
+        attached=result["attached"],
+        refused=result["refused"],
+        dry_run=result["dry_run"],
     )
 
 

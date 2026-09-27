@@ -311,3 +311,133 @@ def test_사내_문서의_험한_모양에서도_제자리를_찾는다() -> Non
     )
     # 표 안의 그림도, 아래 캡션도.
     assert found["word/media/image2.png"] == "3.2 열충격 — 그림 3-2 온습도 프로파일"
+
+
+def test_그림_여럿을_한_번에_제자리로(client: TestClient, admin: Signed) -> None:
+    """규격서에서 나온 그림을 시험 서른 건에 나눠 건다 — **한 번에.**
+
+    여기서 지키는 것 셋:
+
+    1. **기본은 미리보기다.** 판정만 하고 아무것도 안 건다 — 서른 장을 엉뚱한 시험에
+       걸어 놓고 되돌리는 것보다 표로 먼저 보는 편이 싸다.
+    2. **한 줄이 막혀도 나머지는 걸린다.** 안 그러면 한 장 때문에 스물아홉이 함께 막힌다.
+    3. **못 건 줄은 이유와 함께** 남는다 — 조용히 빠지면 못 알아챈다.
+    """
+    document = _document(client, admin)
+    source = _upload(client, admin, document["id"], _docx()).json()
+    images = client.post(
+        f"/api/attachments/{source['id']}/extract-images", headers=admin.headers
+    ).json()["images"]
+    assert len(images) == 2, images
+
+    tests = []
+    for index in range(2):
+        made = client.post(
+            "/api/reliability-tests",
+            json={
+                "workspace_slug": admin.workspace,
+                "name": f"일괄-{uuid.uuid4().hex[:6]}-{index}",
+            },
+            headers=admin.headers,
+        )
+        assert made.status_code == 201, made.text
+        tests.append(made.json()["id"])
+
+    rows = [
+        {
+            "attachment_id": images[0]["id"],
+            "target": "reliability_test",
+            "object_id": tests[0],
+        },
+        {
+            "attachment_id": images[1]["id"],
+            "target": "reliability_test",
+            "object_id": tests[1],
+        },
+        # 없는 대상 — 이 줄만 막혀야 한다.
+        {
+            "attachment_id": images[0]["id"],
+            "target": "reliability_test",
+            "object_id": str(uuid.uuid4()),
+        },
+    ]
+
+    looked = client.post(
+        "/api/attachments/attach-batch", json={"items": rows}, headers=admin.headers
+    )
+    assert looked.status_code == 200, looked.text
+    assert looked.json()["dry_run"] is True
+    # 미리보기도 **걸릴 수**를 말한다 — 「둘은 걸리고 하나는 막힙니다」.
+    assert looked.json()["attached"] == 2
+    assert looked.json()["refused"] == 1
+    assert looked.json()["rows"][2]["error"], "왜 안 되는지 말해야 한다"
+    assert (
+        client.get(
+            "/api/attachments",
+            params={"target": "reliability_test", "object_id": tests[0]},
+            headers=admin.headers,
+        ).json()
+        == []
+    ), "미리보기 뒤에는 하나도 안 붙어 있어야 한다"
+
+    done = client.post(
+        "/api/attachments/attach-batch",
+        params={"dry_run": "false"},
+        json={"items": rows},
+        headers=admin.headers,
+    )
+    assert done.status_code == 200, done.text
+    assert done.json()["attached"] == 2 and done.json()["refused"] == 1
+    for test_id in tests:
+        hung = client.get(
+            "/api/attachments",
+            params={"target": "reliability_test", "object_id": test_id},
+            headers=admin.headers,
+        ).json()
+        assert len(hung) == 1, hung
+        # 설명이 따라온다 — 그림을 고른 이유가 그것이다.
+        assert "MCP" not in hung[0]["caption"] or hung[0]["caption"]
+
+
+def test_미리보기는_커밋해도_아무것도_안_남긴다(
+    client: TestClient, admin: Signed, db: Any
+) -> None:
+    """**겉보기로는 구별이 안 된다.** 요청이 커밋을 안 하니 미리보기가 실제로 걸었어도
+    화면에는 아무것도 안 보인다 — 그래서 API 로만 보는 시험은 이 고장을 못 문다.
+    서비스를 직접 부르고 **커밋까지 해서** 본다.
+    """
+    from app.modules.accounts.models import User
+    from app.modules.attachments import services
+    from app.modules.attachments.models import Attachment
+
+    document = _document(client, admin)
+    source = _upload(client, admin, document["id"], _docx()).json()
+    images = client.post(
+        f"/api/attachments/{source['id']}/extract-images", headers=admin.headers
+    ).json()["images"]
+    made = client.post(
+        "/api/reliability-tests",
+        json={"workspace_slug": admin.workspace, "name": f"미리보기-{uuid.uuid4().hex[:6]}"},
+        headers=admin.headers,
+    )
+    test_id = made.json()["id"]
+
+    user = db.query(User).filter(User.email == admin.email).one()
+    before = db.query(Attachment).filter(Attachment.object_id == uuid.UUID(test_id)).count()
+    services.attach_batch(
+        db,
+        user,
+        items=[
+            {
+                "attachment_id": images[0]["id"],
+                "target": "reliability_test",
+                "object_id": uuid.UUID(test_id),
+                "definition_id": None,
+                "caption": None,
+            }
+        ],
+        dry_run=True,
+    )
+    db.commit()
+    after = db.query(Attachment).filter(Attachment.object_id == uuid.UUID(test_id)).count()
+    assert after == before, "미리보기가 줄을 만들면 안 된다"

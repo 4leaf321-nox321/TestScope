@@ -2579,6 +2579,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/attachments/attach-batch": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Attach Batch
+         * @description 그림 여럿을 **한 번에** 제자리로 — 규격서 한 벌에서 서른 장이 나온다.
+         *
+         *     줄마다 「어느 그림을 · 어느 대상의 · 어느 칸에」 를 적는다. **기본은 미리보기**다
+         *     (`dry_run=true`) — 서른 장을 엉뚱한 시험에 걸어 놓고 되돌리는 것보다 표로 먼저 보는
+         *     편이 싸다. 사람이 확인하면 같은 것을 `dry_run=false` 로 다시 보낸다.
+         *
+         *     줄마다 따로 판정한다 — 한 줄이 막혀도 나머지는 걸린다. 못 건 줄은 이유와 함께 남는다.
+         */
+        post: operations["attach_batch_api_attachments_attach_batch_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/attachments/{attachment_id}/attach": {
         parameters: {
             query?: never;
@@ -3184,6 +3210,28 @@ export interface components {
             role: string;
         };
         /**
+         * AttachBatchRequest
+         * @description 그림 여럿을 **한 번에** 제자리로. 규격서 한 벌에서 서른 장이 나온다.
+         *
+         *     `dry_run` 이 기본이다 — 먼저 판정만 보고, 사람이 확인하면 같은 것을 다시 보낸다
+         *     (장비 대장·요구 조건 반입과 같은 규칙).
+         */
+        AttachBatchRequest: {
+            /** Items */
+            items: components["schemas"]["AttachItem"][];
+        };
+        /** AttachBatchResult */
+        AttachBatchResult: {
+            /** Rows */
+            rows: components["schemas"]["AttachRowOut"][];
+            /** Attached */
+            attached: number;
+            /** Refused */
+            refused: number;
+            /** Dry Run */
+            dry_run: boolean;
+        };
+        /**
          * AttachExistingRequest
          * @description 이미 올라온 파일을 다른 자리에도 가리킨다 — 바이트는 안 움직인다.
          */
@@ -3199,6 +3247,52 @@ export interface components {
             definition_id?: string | null;
             /** Caption */
             caption?: string | null;
+        };
+        /**
+         * AttachItem
+         * @description 그림 한 장을 어디에 걸까 — **한 줄.**
+         */
+        AttachItem: {
+            /**
+             * Attachment Id
+             * Format: uuid
+             */
+            attachment_id: string;
+            /** Target */
+            target: string;
+            /**
+             * Object Id
+             * Format: uuid
+             */
+            object_id: string;
+            /** Definition Id */
+            definition_id?: string | null;
+            /** Caption */
+            caption?: string | null;
+        };
+        /**
+         * AttachRowOut
+         * @description 한 줄이 어떻게 됐나. **못 건 줄은 이유와 함께 남는다** — 조용히 빠지면 못 알아챈다.
+         */
+        AttachRowOut: {
+            /** Index */
+            index: number;
+            /**
+             * Attachment Id
+             * Format: uuid
+             */
+            attachment_id: string;
+            /** Target */
+            target: string;
+            /**
+             * Object Id
+             * Format: uuid
+             */
+            object_id: string;
+            /** Ok */
+            ok: boolean;
+            /** Error */
+            error?: string | null;
         };
         /** AttachmentOut */
         AttachmentOut: {
@@ -12777,6 +12871,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ExtractImagesResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    attach_batch_api_attachments_attach_batch_post: {
+        parameters: {
+            query?: {
+                dry_run?: boolean;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AttachBatchRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttachBatchResult"];
                 };
             };
             /** @description Validation Error */

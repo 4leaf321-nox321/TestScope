@@ -199,6 +199,15 @@ def add(
     return row
 
 
+def _check_definition(db: Session, definition_id: Any, target: str) -> None:
+    """그 칸이 이 대상의 칸인가. **거는 자리와 미리보는 자리가 같은 판정을 써야** 한다."""
+    if definition_id is None:
+        return
+    definition = db.get(AttributeDefinition, definition_id)
+    if definition is None or definition.target != target:
+        raise AppError("TSC-ATTACH-0005", "그 칸은 이 대상의 칸이 아닙니다.", status=422)
+
+
 def attach_existing(
     db: Session,
     user: User,
@@ -220,10 +229,7 @@ def attach_existing(
     대개 그 설명이라, 비워 두면 받는 쪽에서 무엇인지 알 수 없다.
     """
     require_can_edit(db, user, target=target, object_id=object_id)
-    if definition_id is not None:
-        definition = db.get(AttributeDefinition, definition_id)
-        if definition is None or definition.target != target:
-            raise AppError("TSC-ATTACH-0005", "그 칸은 이 대상의 칸이 아닙니다.", status=422)
+    _check_definition(db, definition_id, target)
 
     last = (
         db.scalar(
@@ -246,6 +252,64 @@ def attach_existing(
     db.add(row)
     db.flush()
     return row
+
+
+def attach_batch(
+    db: Session, user: User, *, items: list[dict[str, Any]], dry_run: bool
+) -> dict[str, Any]:
+    """그림 여럿을 **한 번에** 제자리로. 규격서 한 벌에서 서른 장이 나온다.
+
+    **줄마다 따로 판정한다.** 한 줄이 막혔다고 나머지를 안 걸면, 서른 장 중 한 장의
+    시험이 확정됐다는 이유로 스물아홉이 함께 막힌다 — 그때 사람이 할 수 있는 일은
+    하나씩 다시 부르는 것뿐이다. 못 건 줄은 **이유와 함께** 남는다.
+
+    **거는 것은 전부 되거나 전부 안 된다.** 줄마다 커밋하면 중간에 끊겼을 때 어디까지
+    갔는지 알 수 없다 — 부르는 쪽이 한 번 커밋한다(장비 대장 반입과 같은 규칙).
+
+    `dry_run` 이면 판정만 하고 **아무것도 안 건다.** 서른 장을 엉뚱한 시험에 걸어 놓고
+    되돌리는 것보다, 먼저 표로 보는 편이 싸다.
+    """
+    rows: list[dict[str, Any]] = []
+    attached = 0
+    for index, one in enumerate(items):
+        row: dict[str, Any] = {
+            "index": index,
+            "attachment_id": one["attachment_id"],
+            "target": one["target"],
+            "object_id": one["object_id"],
+            "ok": False,
+            "error": None,
+        }
+        try:
+            source = get(db, uuid.UUID(str(one["attachment_id"])))
+            if dry_run:
+                # 판정만 — 걸 수 있는지는 권한과 칸을 보면 알 수 있다.
+                require_can_edit(db, user, target=one["target"], object_id=one["object_id"])
+                _check_definition(db, one.get("definition_id"), one["target"])
+            else:
+                attach_existing(
+                    db,
+                    user,
+                    source=source,
+                    target=one["target"],
+                    object_id=one["object_id"],
+                    definition_id=one.get("definition_id"),
+                    caption=one.get("caption"),
+                )
+            row["ok"] = True
+            attached += 1
+        except AppError as failed:
+            # **이유를 그대로 남긴다** — 「안 됐습니다」 만 있으면 고칠 수가 없다.
+            row["error"] = failed.message
+        rows.append(row)
+    return {
+        "rows": rows,
+        # 미리보기에서도 **걸릴 수**를 그대로 말한다 — 0 으로 누르면 「27건이 걸립니다」 를
+        # 못 보여 주고, 진짜로 걸었는지 아닌지를 겉에서 구별할 수도 없다(시험이 못 문다).
+        "attached": attached,
+        "refused": len(rows) - attached,
+        "dry_run": dry_run,
+    }
 
 
 #: 오피스 문서 안에서 그림이 사는 곳. 확장자가 아니라 **압축 안의 경로**로 가른다.

@@ -253,12 +253,26 @@ async def _write_chain(ctx: _Ctx) -> int:
                 if "MCP확인 절차" not in (images[0].get("caption") or ""):
                     bad += 1
                     print(f"  실패 그림에 설명이 안 붙었습니다: {_short(images[0], 80)}")
+                # 미리보기 → 진짜. **미리보기는 아무것도 안 걸어야** 한다.
+                rows = [
+                    {
+                        "attachment_id": images[0]["id"],
+                        "target": "reliability_test",
+                        "object_id": test["id"],
+                    }
+                ]
+                looked = step(
+                    "attach_references(미리보기)",
+                    await server.attach_references(ctx, rows),
+                    ["dry_run", "attached"],
+                )
+                if looked is not None and looked.get("dry_run") is not True:
+                    bad += 1
+                    print("  실패 미리보기인데 dry_run 이 아닙니다")
                 step(
-                    "attach_reference",
-                    await server.attach_reference(
-                        ctx, images[0]["id"], "reliability_test", test["id"]
-                    ),
-                    ["original_name"],
+                    "attach_references(거는 것)",
+                    await server.attach_references(ctx, rows, dry_run=False),
+                    ["attached", "refused"],
                 )
 
     fixed = step(

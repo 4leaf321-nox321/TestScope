@@ -68,3 +68,44 @@ class ExtractImagesResult(BaseModel):
     """emf·wmf 처럼 브라우저가 못 그리는 것."""
     skipped_duplicate: int
     """같은 그림이 여러 쪽에 나온 것(머리글 로고) — 한 번만 꺼낸다."""
+
+
+class AttachItem(Request):
+    """그림 한 장을 어디에 걸까 — **한 줄.**"""
+
+    attachment_id: uuid.UUID
+    target: str
+    object_id: uuid.UUID
+    definition_id: uuid.UUID | None = None
+    """카드의 **어느 칸**에. 안 주면 카드 전체."""
+    caption: str | None = Field(default=None, max_length=300)
+
+
+class AttachBatchRequest(Request):
+    """그림 여럿을 **한 번에** 제자리로. 규격서 한 벌에서 서른 장이 나온다.
+
+    `dry_run` 이 기본이다 — 먼저 판정만 보고, 사람이 확인하면 같은 것을 다시 보낸다
+    (장비 대장·요구 조건 반입과 같은 규칙).
+    """
+
+    items: list[AttachItem] = Field(min_length=1, max_length=200)
+
+
+class AttachRowOut(BaseModel):
+    """한 줄이 어떻게 됐나. **못 건 줄은 이유와 함께 남는다** — 조용히 빠지면 못 알아챈다."""
+
+    index: int
+    attachment_id: uuid.UUID
+    target: str
+    object_id: uuid.UUID
+    ok: bool
+    error: str | None = None
+
+
+class AttachBatchResult(BaseModel):
+    rows: list[AttachRowOut]
+    attached: int
+    """건 수. **미리보기에서는 「걸릴 수」** 다 — 「27건이 걸립니다」 를 보여 주려는 것이다."""
+    refused: int
+    dry_run: bool
+    """참이면 **아무것도 안 걸었다** — 같은 것을 `dry_run=false` 로 다시 보내면 건다."""
