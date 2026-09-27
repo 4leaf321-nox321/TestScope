@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import contextlib
 import hashlib
+import re
 import time
 import uuid
 import xml.etree.ElementTree as ElementTree
@@ -260,6 +261,38 @@ _R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
 _PKG = "{http://schemas.openxmlformats.org/package/2006/relationships}"
 
 
+#: 번호로 시작하는 절 제목 — 「3.1 고온고습 저장」 「3.1.2 …」 「4. 판정」.
+#:
+#: **스타일만 보면 못 찾는다.** 사내 문서는 제목 스타일 없이 굵게만 쓰는 일이 흔하고,
+#: 그러면 그림에 붙는 설명이 「…아래와 같다.」 가 되어 어느 시험의 것인지 알 수 없다
+#: (실측 2026-09-27: 흉내 낸 규격서에서 셋 중 둘이 그랬다).
+#: 「3.1 …」 처럼 **여러 단**이거나, 「4. …」 처럼 **문장부호가 붙은** 것만 제목으로 본다.
+#: 느슨하게 잡으면 「85 degC / 85 %RH 에서 1000시간…」 같은 본문이 제목이 되어, 그림에
+#: 엉뚱한 설명이 붙는다(실측 2026-09-27).
+_SECTION = re.compile(r"^\s*(?:\d+(?:[.-]\d+)+\s+\S|\d+(?:[.-]\d+)*\s*[.)]\s+\S)")
+
+#: 그림 **아래**에 붙는 캡션 — 「그림 3-1 시편 장착」 「Figure 2. Profile」.
+_FIGURE = re.compile(r"^\s*(그림|사진|도면|figure|fig\.?|table|표)\s", re.IGNORECASE)
+
+_VML = "{urn:schemas-microsoft-com:vml}"
+
+
+def _text_of(paragraph: Any) -> str:
+    return "".join(node.text or "" for node in paragraph.iter(f"{_W}t")).strip()
+
+
+def _embeds_of(paragraph: Any) -> list[str]:
+    """이 문단이 가리키는 그림의 관계 id. **옛 모양(VML)도 본다** — 한글에서 옮긴 문서에
+    흔하다."""
+    found = [
+        one.get(f"{_R}embed") for one in paragraph.iter(f"{_A}blip") if one.get(f"{_R}embed")
+    ]
+    found += [
+        one.get(f"{_R}id") for one in paragraph.iter(f"{_VML}imagedata") if one.get(f"{_R}id")
+    ]
+    return [one for one in found if one]
+
+
 def _docx_captions(archive: zipfile.ZipFile) -> dict[str, str]:
     """그림마다 **문서에서 그 자리의 글**을 뽑는다 — `word/media/image7.png` → 설명.
 
@@ -267,9 +300,13 @@ def _docx_captions(archive: zipfile.ZipFile) -> dict[str, str]:
     것인지 고를 방법이 없다 — 이 글자가 유일한 단서다. 그래서 뜯는 쪽이 만들어야 할
     것은 이미지가 아니라 **이 목록**이다.
 
-    문단을 차례로 읽으며 마지막 제목과 직전 글을 들고 가다가, 그림을 만나면 그 둘로
-    설명을 만든다. 제목은 스타일(`Heading…`)로 알아보고, 없으면 직전 문단을 쓴다 —
-    사내 문서는 「3.2 열충격」 을 제목 스타일 없이 굵게만 쓰는 일이 흔하다.
+    설명은 「절 제목 — 그림 옆의 글」 로 만든다. 셋을 본다:
+
+    * **절 제목**은 스타일(`Heading…`)이거나 **번호로 시작하는 줄**이다(`_SECTION`).
+      사내 문서는 제목 스타일을 잘 안 쓴다.
+    * **그림 옆의 글**은 같은 문단의 글, 없으면 **바로 아래 캡션**(「그림 3-1 …」),
+      그것도 없으면 직전 문단.
+    * 표 안의 그림도 같다 — 문단을 문서 순서로 훑으므로 표 안이든 밖이든 순서가 산다.
     """
     try:
         rels = ElementTree.fromstring(archive.read("word/_rels/document.xml.rels"))
@@ -280,37 +317,46 @@ def _docx_captions(archive: zipfile.ZipFile) -> dict[str, str]:
     target_of = {
         one.get("Id", ""): one.get("Target", "") for one in rels.iter(f"{_PKG}Relationship")
     }
-    found: dict[str, str] = {}
-    heading = ""
-    previous = ""
-    for paragraph in body.iter(f"{_W}p"):
-        text = "".join(node.text or "" for node in paragraph.iter(f"{_W}t")).strip()
-        embeds = [
-            one.get(f"{_R}embed")
-            for one in paragraph.iter(f"{_A}blip")
-            if one.get(f"{_R}embed")
-        ]
-        if embeds:
-            near = text or previous or heading
-            for rid in embeds:
-                target = target_of.get(rid or "", "")
-                name = target.rsplit("/", 1)[-1]
-                if not name:
-                    continue
-                # 제목과 그 자리의 글을 잇는다 — 같은 글이면 한 번만.
-                parts = [one for one in (heading, near) if one]
-                if len(parts) == 2 and parts[0] == parts[1]:
-                    parts = parts[:1]
-                found.setdefault(f"word/media/{name}", " — ".join(parts)[:300])
-            continue
-        if not text:
-            continue
-        style = paragraph.find(f"{_W}pPr/{_W}pStyle")
+    paragraphs = list(body.iter(f"{_W}p"))
+    texts = [_text_of(one) for one in paragraphs]
+
+    def _heading(index: int) -> bool:
+        style = paragraphs[index].find(f"{_W}pPr/{_W}pStyle")
         if style is not None and (style.get(f"{_W}val") or "").lower().startswith(
             ("heading", "제목")
         ):
-            heading = text
-        previous = text
+            return True
+        text = texts[index]
+        return bool(text) and len(text) <= 60 and bool(_SECTION.match(text))
+
+    found: dict[str, str] = {}
+    heading = ""
+    previous = ""
+    for index, paragraph in enumerate(paragraphs):
+        embeds = _embeds_of(paragraph)
+        if not embeds:
+            if texts[index]:
+                if _heading(index):
+                    heading = texts[index]
+                previous = texts[index]
+            continue
+
+        near = texts[index]
+        if not near:
+            # 바로 아래 줄이 캡션이면 그것이 가장 정확하다 — 사람이 그러라고 적은 글이다.
+            for after in range(index + 1, min(index + 3, len(paragraphs))):
+                if texts[after] and _FIGURE.match(texts[after]):
+                    near = texts[after]
+                    break
+        near = near or previous
+        parts = [one for one in (heading, near) if one]
+        if len(parts) == 2 and parts[0] == parts[1]:
+            parts = parts[:1]
+        label = " — ".join(parts)[:300]
+        for rid in embeds:
+            name = target_of.get(rid, "").rsplit("/", 1)[-1]
+            if name:
+                found.setdefault(f"word/media/{name}", label)
     return found
 
 

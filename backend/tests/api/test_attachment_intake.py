@@ -249,3 +249,65 @@ def test_이미_올라온_그림을_시험에_가리킨다(
         headers=admin.headers,
     ).json()
     assert len(hung) == 1 and hung[0]["original_name"] == "image2.png"
+
+
+def test_사내_문서의_험한_모양에서도_제자리를_찾는다() -> None:
+    """실제 규격서는 **제목 스타일을 안 쓴다.**
+
+    2026-09-27 에 흉내 내어 재 보니 셋 중 둘이 엉뚱한 설명을 달았다 — 절 제목이 굵게만
+    돼 있어 「85 degC / 85 %RH 에서 1000시간…」 같은 본문이 제목으로 잡혔다. 여기서
+    굳히는 것 넷:
+
+    1. **번호로 시작하는 줄**을 제목으로 본다(스타일이 없어도).
+    2. 그런데 **아무 숫자 문장이나** 제목이 되면 안 된다 — 「85 degC …」 는 본문이다.
+    3. **표 안의 그림**도 순서가 산다.
+    4. 그림 **아래**의 캡션(「그림 3-2 …」)이 가장 정확하다 — 사람이 그러라고 적은 글이다.
+    """
+    from app.modules.attachments.services import _docx_captions
+
+    def para(text: str = "", *, embed: str | None = None) -> str:
+        bits = []
+        if text:
+            bits.append(f"<w:r><w:t>{text}</w:t></w:r>")
+        if embed:
+            bits.append(
+                f'<w:r><w:drawing><wp:inline xmlns:wp="x"><a:graphic xmlns:a="{_A}">'
+                f'<a:blip r:embed="{embed}"/></a:graphic></wp:inline></w:drawing></w:r>'
+            )
+        return f"<w:p>{''.join(bits)}</w:p>"
+
+    body = "".join(
+        [
+            para("3.1 고온고습 저장"),  # 굵게만 — 제목 스타일 없음
+            para("85 degC / 85 %RH 에서 1000시간 보관한 뒤 외관을 본다."),
+            para("시편 장착 방향은 아래와 같다.", embed="rId10"),
+            para("3.2 열충격"),
+            # 표 안의 그림 — 옆 칸에 다른 글이 있다
+            f"<w:tbl><w:tr><w:tc>{para('프로파일')}</w:tc>"
+            f"<w:tc>{para('', embed='rId11')}</w:tc></w:tr></w:tbl>",
+            para("그림 3-2 온습도 프로파일"),
+        ]
+    )
+    document = (
+        f'<?xml version="1.0"?><w:document xmlns:w="{_W}" xmlns:r="{_R}">'
+        f"<w:body>{body}</w:body></w:document>"
+    )
+    rels = (
+        '<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org'
+        '/package/2006/relationships">'
+        '<Relationship Id="rId10" Target="media/image1.png"/>'
+        '<Relationship Id="rId11" Target="media/image2.png"/>'
+        "</Relationships>"
+    )
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr("word/document.xml", document)
+        archive.writestr("word/_rels/document.xml.rels", rels)
+    with zipfile.ZipFile(io.BytesIO(buffer.getvalue())) as archive:
+        found = _docx_captions(archive)
+
+    assert (
+        found["word/media/image1.png"] == "3.1 고온고습 저장 — 시편 장착 방향은 아래와 같다."
+    )
+    # 표 안의 그림도, 아래 캡션도.
+    assert found["word/media/image2.png"] == "3.2 열충격 — 그림 3-2 온습도 프로파일"
