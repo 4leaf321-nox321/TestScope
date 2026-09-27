@@ -8022,6 +8022,225 @@
         }
       }
     },
+    "/api/attachments/upload-ticket": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Mint Upload Ticket",
+        "description": "**PC 의 파일을 서버로 바로 올릴** 짧은 자격을 하나 낸다(5분).\n\n큰 파일을 AI 를 거쳐 나르면 안 된다 — 50 MB 스캔본은 base64 로 모델 문맥을 통째로\n먹는다. 그래서 바이트는 셸에서 곧장 간다(`curl`). 그때 진짜 토큰을 셸에 적으면 오래\n사는 자격이 기록에 남으므로, **올리기만 되는 티켓**을 대신 준다.",
+        "operationId": "mint_upload_ticket_api_attachments_upload_ticket_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadTicketOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attachments/upload-with-ticket": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Upload With Ticket",
+        "description": "티켓으로 올린다 — **몸통은 파일 바이트 그대로**(`curl --data-binary @파일`).\n\nmultipart 가 아닌 이유: 셸에서 한 줄로 쓸 수 있어야 하고, 그 한 줄을 사람이 보고\n무엇을 올리는지 알 수 있어야 한다. 자격은 티켓이 싣고 있으므로 Bearer 를 안 받는다 —\n**그래서 티켓은 5분만 산다.**",
+        "operationId": "upload_with_ticket_api_attachments_upload_with_ticket_post",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Target"
+            }
+          },
+          {
+            "name": "object_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Object Id"
+            }
+          },
+          {
+            "name": "filename",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 255,
+              "title": "Filename"
+            }
+          },
+          {
+            "name": "definition_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Definition Id"
+            }
+          },
+          {
+            "name": "caption",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Caption"
+            }
+          },
+          {
+            "name": "x-upload-ticket",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Upload-Ticket"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attachments/{attachment_id}/extract-images": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Extract Images",
+        "description": "올려 둔 워드·파워포인트에서 **그림을 낱장으로 꺼낸다.** 서버가 zip 으로 푼다.\n\n바이트가 AI 를 안 거치는 것이 요점이다. 꺼낸 것은 문서와 같은 자리에 붙고, 문서에서\n그림 자리의 글을 설명으로 달아 둔다 — AI 는 그림을 못 보므로 그 글자가 유일한 단서다.",
+        "operationId": "extract_images_api_attachments__attachment_id__extract_images_post",
+        "parameters": [
+          {
+            "name": "attachment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Attachment Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractImagesResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/attachments/{attachment_id}/attach": {
+      "post": {
+        "tags": [
+          "attachments"
+        ],
+        "summary": "Attach Existing",
+        "description": "이미 올라온 파일을 **다른 자리에도 가리킨다.** 바이트는 안 움직인다.\n\n규격서에 올린 그림 서른 장을 시험 서른 건에 나눠 걸 때 쓴다 — 다시 올리면 같은\n바이트가 서른 벌 생기고, 무엇보다 그 바이트가 AI 를 거쳐야 한다.",
+        "operationId": "attach_existing_api_attachments__attachment_id__attach_post",
+        "parameters": [
+          {
+            "name": "attachment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Attachment Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachExistingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/attachments/{attachment_id}/file": {
       "get": {
         "tags": [
@@ -9474,6 +9693,51 @@
         "additionalProperties": false,
         "type": "object",
         "title": "ApproveRequest"
+      },
+      "AttachExistingRequest": {
+        "properties": {
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "object_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Object Id"
+          },
+          "definition_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definition Id"
+          },
+          "caption": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 300
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caption"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "target",
+          "object_id"
+        ],
+        "title": "AttachExistingRequest",
+        "description": "이미 올라온 파일을 다른 자리에도 가리킨다 — 바이트는 안 움직인다."
       },
       "AttachmentOut": {
         "properties": {
@@ -14748,6 +15012,49 @@
         "type": "object",
         "title": "EquipmentUpdateRequest",
         "description": "**안 보낸 것과 비운 것을 구별한다.**\n\n부분 수정이라 None 은 \"안 바꿈\" 이다. 구별하지 않으면 상태 하나 바꿀 때마다\n담당자와 설치 위치가 지워지고, 그 손실은 저장한 사람 눈에 안 보인다.\n빈 문자열을 보내면 그것은 \"비운다\" 이다."
+      },
+      "ExtractImagesResult": {
+        "properties": {
+          "source_attachment_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Source Attachment Id"
+          },
+          "images": {
+            "items": {
+              "$ref": "#/components/schemas/AttachmentOut"
+            },
+            "type": "array",
+            "title": "Images"
+          },
+          "extracted": {
+            "type": "integer",
+            "title": "Extracted"
+          },
+          "skipped_oversize": {
+            "type": "integer",
+            "title": "Skipped Oversize"
+          },
+          "skipped_kind": {
+            "type": "integer",
+            "title": "Skipped Kind"
+          },
+          "skipped_duplicate": {
+            "type": "integer",
+            "title": "Skipped Duplicate"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source_attachment_id",
+          "images",
+          "extracted",
+          "skipped_oversize",
+          "skipped_kind",
+          "skipped_duplicate"
+        ],
+        "title": "ExtractImagesResult",
+        "description": "문서에서 꺼낸 그림들. 건너뛴 것도 **세어서 말한다** — 조용히 빠지면 못 알아챈다."
       },
       "FilterOption": {
         "properties": {
@@ -21385,6 +21692,25 @@
           "unread"
         ],
         "title": "UnreadCountOut"
+      },
+      "UploadTicketOut": {
+        "properties": {
+          "ticket": {
+            "type": "string",
+            "title": "Ticket"
+          },
+          "expires_in_seconds": {
+            "type": "integer",
+            "title": "Expires In Seconds"
+          }
+        },
+        "type": "object",
+        "required": [
+          "ticket",
+          "expires_in_seconds"
+        ],
+        "title": "UploadTicketOut",
+        "description": "PC 의 파일을 서버로 바로 올릴 짧은 자격. **올리기 말고는 아무것도 못 한다.**"
       },
       "UserOut": {
         "properties": {

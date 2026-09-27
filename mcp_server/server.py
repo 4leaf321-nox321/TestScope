@@ -29,6 +29,10 @@ import time
 from pathlib import Path
 from typing import Any
 
+import shlex
+from pathlib import Path
+from urllib.parse import quote
+
 import calltrace
 import httpx
 from merge import merge
@@ -2188,6 +2192,95 @@ async def get_reliability_test(ctx: Context, test_id: str) -> dict[str, Any]:
     안 들어간다. 초안 값을 근거로 「이 조건으로 검색됩니다」 라고 말하지 마라.
     """
     return await _get(ctx, f"/reliability-tests/{test_id}")
+
+
+@writes
+async def create_upload_ticket(ctx: Context, local_path: str | None = None) -> dict[str, Any]:
+    """**PC 의 파일을 서버로 바로 올릴** 준비물 — 5분짜리 티켓과 그대로 실행할 `curl`.
+
+    **바이트가 너를 안 거친다.** 50 MB 짜리 규격서를 base64 로 실어 나르면 대화가 통째로
+    그것에 먹힌다 — 그래서 파일은 셸에서 곧장 간다. 진짜 토큰을 셸에 적지 않는 이유도
+    같다: 그 글자는 오래 사는 자격이고 기록에 남는다. 티켓은 5분 살고 **올리기 말고는
+    아무것도 못 한다.**
+
+    돌려주는 `curl` 에 `<대상>` 자리를 채워 실행하면 `{id, …}` 가 나온다. 그 id 가
+    첨부의 id 이고, 워드·파워포인트면 `extract_document_images` 에 넘긴다.
+
+    사람에게는 **명령을 그대로 보여 주고 실행해 달라고 말한다** — 네가 셸을 가진 자리면
+    직접 돌려도 된다.
+    """
+    got = await _send(ctx, "POST", "/attachments/upload-ticket", {})
+    if isinstance(got, dict) and got.get("error"):
+        return got
+    ticket = got.get("ticket", "")
+    url = f"{API_BASE}/attachments/upload-with-ticket"
+    where = local_path or "<로컬 파일 경로>"
+    query = (
+        "?target=spec_document&object_id=<규격서 id>"
+        f"&filename={quote(Path(where).name, safe='')}"
+    )
+    return {
+        "ticket": ticket,
+        "expires_in_seconds": got.get("expires_in_seconds", 300),
+        "curl": (
+            f"curl -sS -X POST '{url}{query}' "
+            f"-H 'X-Upload-Ticket: {ticket}' --data-binary @{shlex.quote(where)}"
+        ),
+        "next": (
+            "이 명령을 셸에서 실행하면 첨부 id 가 나온다. 워드·파워포인트면"
+            " extract_document_images 로 그림을 낱장으로 꺼낸다."
+        ),
+    }
+
+
+@writes
+async def extract_document_images(ctx: Context, attachment_id: str) -> dict[str, Any]:
+    """올려 둔 **워드·파워포인트에서 그림을 낱장으로** 꺼낸다 — 서버가 zip 으로 푼다.
+
+    규격서 한 벌에 그림이 서른 장 들어 있는 일이 흔하다. 문서를 통째로 올린 뒤 이것을
+    부르면 낱장 첨부가 되어 문서와 **같은 자리**에 선다. 바이트는 서버 안에서만 움직인다.
+
+    **줄마다 `caption` 이 붙어 온다** — 문서에서 그 그림 자리의 제목과 글이다
+    (「3.2 열충격 — 온습도 프로파일」). **너는 그림을 못 보므로 그 글자가 유일한 단서다.**
+    그것으로 어느 시험의 것인지 정하고 `attach_reference` 로 건다.
+
+    같은 그림이 여러 쪽에 나오면(머리글 로고) 한 번만 꺼낸다. 못 꺼낸 것은
+    `skipped_*` 로 세어서 말한다 — 조용히 빠지면 사람이 못 알아챈다.
+    """
+    return await _send(ctx, "POST", f"/attachments/{attachment_id}/extract-images", {})
+
+
+@writes
+async def attach_reference(
+    ctx: Context,
+    attachment_id: str,
+    target: str,
+    object_id: str,
+    definition_id: str | None = None,
+    caption: str | None = None,
+) -> dict[str, Any]:
+    """이미 올라온 그림을 **다른 자리에도 가리킨다.** 바이트는 안 움직인다.
+
+    규격서에서 꺼낸 그림 서른 장을 신뢰성 시험 서른 건에 나눠 걸 때 쓴다. 다시 올리면
+    같은 바이트가 서른 벌 생기고, 무엇보다 그 바이트가 **너를 거쳐야** 한다.
+
+    `definition_id` 를 주면 그 칸에 붙고, 안 주면 카드 전체에 붙는다. `caption` 을 안
+    주면 원본의 설명을 그대로 가져온다 — 그림을 고른 이유가 대개 그 설명이다.
+
+    **확정된 시험에는 못 붙인다**(409) — 칸과 그림의 판정이 한 곳이라, 사람이 확인한
+    카드는 그림도 안 바뀐다.
+    """
+    return await _send(
+        ctx,
+        "POST",
+        f"/attachments/{attachment_id}/attach",
+        {
+            "target": target,
+            "object_id": object_id,
+            "definition_id": definition_id,
+            "caption": caption,
+        },
+    )
 
 
 @mcp.tool()

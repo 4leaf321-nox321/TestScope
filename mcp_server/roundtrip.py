@@ -14,10 +14,14 @@ curl 로는 멀쩡한데 도구로는 죽는 고장(반환 모양 검증 · 경�
 from __future__ import annotations
 
 import asyncio
+import io
 import json
 import sys
 import uuid
+import zipfile
 from typing import Any
+
+import httpx
 
 import probe
 import server
@@ -26,6 +30,41 @@ for _stream in (sys.stdout, sys.stderr):
     _reconfigure = getattr(_stream, "reconfigure", None)
     if _reconfigure is not None:
         _reconfigure(errors="replace")
+
+
+#: 그림 한 장이 든 워드 한 벌 — 진짜 .docx 의 최소 모양(zip + document.xml + media).
+_PNG = bytes.fromhex(
+    "89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4"
+    "890000000d4944415478da6364f8cf000000030101002718e3660000000049454e44ae426082"
+)
+
+
+def _docx() -> bytes:
+    w = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+    a = "http://schemas.openxmlformats.org/drawingml/2006/main"
+    r = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+    body = (
+        '<w:p><w:pPr><w:pStyle w:val="Heading2"/></w:pPr>'
+        "<w:r><w:t>MCP확인 절차</w:t></w:r></w:p>"
+        f'<w:p><w:r><w:t>시편 장착</w:t></w:r><w:r><w:drawing><wp:inline xmlns:wp="x">'
+        f'<a:graphic xmlns:a="{a}"><a:blip r:embed="rId9"/></a:graphic>'
+        "</wp:inline></w:drawing></w:r></w:p>"
+    )
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr(
+            "word/document.xml",
+            f'<?xml version="1.0"?><w:document xmlns:w="{w}" xmlns:r="{r}">'
+            f"<w:body>{body}</w:body></w:document>",
+        )
+        archive.writestr(
+            "word/_rels/document.xml.rels",
+            '<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org'
+            '/package/2006/relationships"><Relationship Id="rId9" Target="media/a.png"/>'
+            "</Relationships>",
+        )
+        archive.writestr("word/media/a.png", _PNG)
+    return buffer.getvalue()
 
 
 class _Ctx:
@@ -177,6 +216,51 @@ async def _write_chain(ctx: _Ctx) -> int:
         await server.graph_node(ctx, f"reliability_test:{test['id']}"),
         ["label", "related_total"],
     )
+    # 7-1. 규격서 반입 사슬 — **바이트가 모델을 안 거치는 길**이 실제로 도는지.
+    #
+    # 티켓으로 올리고 · 서버가 zip 을 풀고 · id 로 가리킨다. 셋 다 살아 있는 서버에서만
+    # 드러나는 자리다(원시 몸통 스트리밍 · zip 풀기 · 첨부 공유).
+    ticket = step(
+        "create_upload_ticket", await server.create_upload_ticket(ctx), ["expires_in_seconds"]
+    )
+    if ticket is not None and ticket.get("ticket"):
+        put = httpx.post(
+            f"{server.API_BASE}/attachments/upload-with-ticket",
+            params={
+                "target": "reliability_test",
+                "object_id": test["id"],
+                "filename": "MCP확인.docx",
+            },
+            content=_docx(),
+            headers={"X-Upload-Ticket": ticket["ticket"]},
+            timeout=30.0,
+        )
+        ok = put.status_code == 201
+        bad += not ok
+        print(f"  {'  ok' if ok else '실패'} {'티켓으로 올리기':34s} {put.status_code}")
+        if ok:
+            pulled = step(
+                "extract_document_images",
+                await server.extract_document_images(ctx, put.json()["id"]),
+                ["extracted"],
+            )
+            images = (pulled or {}).get("images") or []
+            if pulled is not None and len(images) != 1:
+                bad += 1
+                print(f"  실패 그림 한 장이 나와야 하는데 {len(images)}장입니다")
+            elif images:
+                # **설명이 붙어 와야 한다** — AI 는 그림을 못 보고 이 글자만 읽는다.
+                if "MCP확인 절차" not in (images[0].get("caption") or ""):
+                    bad += 1
+                    print(f"  실패 그림에 설명이 안 붙었습니다: {_short(images[0], 80)}")
+                step(
+                    "attach_reference",
+                    await server.attach_reference(
+                        ctx, images[0]["id"], "reliability_test", test["id"]
+                    ),
+                    ["original_name"],
+                )
+
     fixed = step(
         "update_reliability_test",
         await server.update_reliability_test(ctx, test["id"], purpose="고침 확인"),

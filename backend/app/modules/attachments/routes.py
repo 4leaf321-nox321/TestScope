@@ -9,16 +9,34 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends, File, Form, Query, Response, UploadFile
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    Header,
+    Query,
+    Request,
+    Response,
+    UploadFile,
+)
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.modules.accounts.models import User
 from app.modules.attachments import services
 from app.modules.attachments.models import MAX_BYTES, Attachment
-from app.modules.attachments.schemas import AttachmentOut, AttachmentUpdateRequest
+from app.modules.attachments.schemas import (
+    AttachExistingRequest,
+    AttachmentOut,
+    AttachmentUpdateRequest,
+    ExtractImagesResult,
+    UploadTicketOut,
+)
 from app.modules.attributes.models import AttributeDefinition
+from app.modules.auth import security
 from app.shared.auth import current_user
+from app.shared.errors import AppError
 
 router = APIRouter(prefix="/attachments", tags=["attachments"])
 
@@ -82,6 +100,117 @@ async def upload(
         data=data,
         definition_id=definition_id,
         caption=caption,
+    )
+    db.commit()
+    db.refresh(row)
+    return _out(db, row)
+
+
+@router.post("/upload-ticket", response_model=UploadTicketOut)
+def mint_upload_ticket(user: User = Depends(current_user)) -> UploadTicketOut:
+    """**PC 의 파일을 서버로 바로 올릴** 짧은 자격을 하나 낸다(5분).
+
+    큰 파일을 AI 를 거쳐 나르면 안 된다 — 50 MB 스캔본은 base64 로 모델 문맥을 통째로
+    먹는다. 그래서 바이트는 셸에서 곧장 간다(`curl`). 그때 진짜 토큰을 셸에 적으면 오래
+    사는 자격이 기록에 남으므로, **올리기만 되는 티켓**을 대신 준다.
+    """
+    ticket, seconds = security.create_upload_ticket(user.id)
+    return UploadTicketOut(ticket=ticket, expires_in_seconds=seconds)
+
+
+@router.post("/upload-with-ticket", response_model=AttachmentOut, status_code=201)
+async def upload_with_ticket(
+    request: Request,
+    target: str = Query(...),
+    object_id: uuid.UUID = Query(...),
+    filename: str = Query(..., max_length=255),
+    definition_id: uuid.UUID | None = Query(default=None),
+    caption: str = Query(default=""),
+    x_upload_ticket: str = Header(...),
+    db: Session = Depends(get_db),
+) -> AttachmentOut:
+    """티켓으로 올린다 — **몸통은 파일 바이트 그대로**(`curl --data-binary @파일`).
+
+    multipart 가 아닌 이유: 셸에서 한 줄로 쓸 수 있어야 하고, 그 한 줄을 사람이 보고
+    무엇을 올리는지 알 수 있어야 한다. 자격은 티켓이 싣고 있으므로 Bearer 를 안 받는다 —
+    **그래서 티켓은 5분만 산다.**
+    """
+    who = security.decode_upload_ticket(x_upload_ticket)
+    if who is None:
+        raise AppError(
+            "TSC-ATTACH-0010",
+            "업로드 티켓이 유효하지 않거나 만료되었습니다(5분). 다시 받으십시오.",
+            status=401,
+        )
+    user = db.get(User, who)
+    if user is None or user.status != "active":
+        raise AppError("TSC-ATTACH-0011", "티켓의 주인을 찾을 수 없습니다.", status=401)
+
+    # **한계까지만 읽는다** — 통째로 읽고 재면 1 GB 가 먼저 메모리에 올라간다.
+    data = b""
+    async for chunk in request.stream():
+        data += chunk
+        if len(data) > MAX_BYTES + 1:
+            break
+    row = services.add(
+        db,
+        user,
+        target=target,
+        object_id=object_id,
+        filename=filename,
+        content_type="",
+        data=data,
+        definition_id=definition_id,
+        caption=caption,
+    )
+    db.commit()
+    db.refresh(row)
+    return _out(db, row)
+
+
+@router.post("/{attachment_id}/extract-images", response_model=ExtractImagesResult)
+def extract_images(
+    attachment_id: uuid.UUID,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> ExtractImagesResult:
+    """올려 둔 워드·파워포인트에서 **그림을 낱장으로 꺼낸다.** 서버가 zip 으로 푼다.
+
+    바이트가 AI 를 안 거치는 것이 요점이다. 꺼낸 것은 문서와 같은 자리에 붙고, 문서에서
+    그림 자리의 글을 설명으로 달아 둔다 — AI 는 그림을 못 보므로 그 글자가 유일한 단서다.
+    """
+    result = services.extract_images(db, user, source=services.get(db, attachment_id))
+    db.commit()
+    return ExtractImagesResult(
+        source_attachment_id=result["source_attachment_id"],
+        images=[_out(db, row) for row in result["images"]],
+        extracted=result["extracted"],
+        skipped_oversize=result["skipped_oversize"],
+        skipped_kind=result["skipped_kind"],
+        skipped_duplicate=result["skipped_duplicate"],
+    )
+
+
+@router.post("/{attachment_id}/attach", response_model=AttachmentOut, status_code=201)
+def attach_existing(
+    attachment_id: uuid.UUID,
+    payload: AttachExistingRequest,
+    user: User = Depends(current_user),
+    db: Session = Depends(get_db),
+) -> AttachmentOut:
+    """이미 올라온 파일을 **다른 자리에도 가리킨다.** 바이트는 안 움직인다.
+
+    규격서에 올린 그림 서른 장을 시험 서른 건에 나눠 걸 때 쓴다 — 다시 올리면 같은
+    바이트가 서른 벌 생기고, 무엇보다 그 바이트가 AI 를 거쳐야 한다.
+    """
+    row = services.attach_existing(
+        db,
+        user,
+        source=services.get(db, attachment_id),
+        target=payload.target,
+        object_id=payload.object_id,
+        definition_id=payload.definition_id,
+        caption=payload.caption,
     )
     db.commit()
     db.refresh(row)

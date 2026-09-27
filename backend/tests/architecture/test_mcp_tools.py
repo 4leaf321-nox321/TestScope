@@ -27,6 +27,9 @@ WRITE_PREFIXES = (
     "detach_",
     "confirm_",
     "suggest_",
+    # 붙이고 꺼내는 것도 바꾸는 일이다 — 읽기 전용 프로필에서 실리면 403 이 온다.
+    "attach_",
+    "extract_",
 )
 
 
@@ -225,6 +228,15 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     따르는가」 가 빈 채로 굳는다. 상세 도구는 **안 만들었다**: 목록 줄과 상세가 같은
     모양(`SpecDocumentOut`)이라 `q` 로 찾으면 같은 것이 온다.
 
+    76 -> 79 (2026-09-27): 규격서 한 벌을 시험 서른 건으로 푸는 길 —
+    `create_upload_ticket` · `extract_document_images` · `attach_reference`.
+
+    **바이트가 모델을 안 거치게 하려고 셋으로 갈랐다.** 워드 규격서는 50 MB 가 넘고 그
+    안에 그림이 서른 장 들어 있다. base64 로 실어 나르면 그림 한 장이 3만 토큰이라
+    대화가 통째로 그것에 먹힌다. 그래서 바이트는 셸에서 서버로 직접 가고(티켓), 서버가
+    zip 으로 풀고(꺼내기), **AI 는 id 와 설명만 다룬다**(가리키기). 셋 중 하나라도 없으면
+    규격서 반입에서 그림이 통째로 빠진다.
+
     `set_reliability_attributes` 는 **덮어쓰기 사고를 막는다.** `update_reliability_test`
     는 속성을 통째로 갈아 끼우는데, 카드에 칸이 스물 넘게 서면서 「온도 하나 고치려고
     스물둘을 다시 보내다 하나를 빠뜨리는」 일이 현실이 됐다 — 빠뜨린 값은 조용히 사라지고
@@ -232,7 +244,7 @@ def test_도구_목록이_조용히_불어나지_않는다() -> None:
     있어야 한다.
     """
     tools = _tools()
-    assert len(tools) <= 76, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
+    assert len(tools) <= 79, f"도구가 {len(tools)}개입니다 — 묶거나 상한을 다시 정하세요"
     for tool in tools:
         doc = ast.get_docstring(tool) or ""
         assert len(doc) <= 1600, (

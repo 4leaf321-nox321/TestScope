@@ -88,6 +88,54 @@ def create_access_token(user_id: uuid.UUID) -> tuple[str, int]:
     return token, int(ttl.total_seconds())
 
 
+#: 업로드 티켓이 사는 시간. **짧다** — 셸에 붙여 넣고 curl 한 번 돌릴 만큼이면 된다.
+UPLOAD_TICKET_MINUTES = 5
+
+
+def create_upload_ticket(user_id: uuid.UUID) -> tuple[str, int]:
+    """(티켓, 만료까지 초) — **올리기 하나만 되는 짧은 자격.**
+
+    큰 파일을 AI 를 거쳐 나르면 안 된다(50 MB 스캔본은 base64 로 모델 문맥을 통째로
+    먹는다). 그래서 바이트는 **PC 에서 서버로 직접** 간다. 그때 셸에 진짜 토큰(PAT)을
+    적어 넣으면 그 글자가 화면·기록·셸 히스토리에 남고, 그것은 오래 사는 자격이다.
+
+    이 티켓은 5분 살고 **첨부 올리기 말고는 아무것도 못 한다.** 서명 안에 누구인지가
+    들어 있어 올린 것의 주인이 흐려지지 않는다.
+    """
+    settings = get_settings()
+    ttl = timedelta(minutes=UPLOAD_TICKET_MINUTES)
+    now = datetime.now(UTC)
+    payload = {
+        "sub": str(user_id),
+        "iat": int(now.timestamp()),
+        "exp": int((now + ttl).timestamp()),
+        "typ": "upload",
+    }
+    return jwt.encode(payload, settings.jwt_secret, algorithm="HS256"), int(
+        ttl.total_seconds()
+    )
+
+
+def decode_upload_ticket(token: str) -> uuid.UUID | None:
+    """티켓이 가리키는 사람. 만료·위조·**다른 종류의 토큰**이면 None.
+
+    `typ` 를 보는 것이 핵심이다 — 안 보면 로그인 토큰(`access`)이 업로드 티켓으로도
+    쓰이고, 그러면 「올리기만 되는 자격」 이라는 말이 거짓이 된다.
+    """
+    try:
+        payload: dict[str, Any] = jwt.decode(
+            token, get_settings().jwt_secret, algorithms=["HS256"]
+        )
+    except jwt.PyJWTError:
+        return None
+    if payload.get("typ") != "upload":
+        return None
+    try:
+        return uuid.UUID(str(payload.get("sub")))
+    except ValueError:
+        return None
+
+
 def decode_access_token(token: str) -> dict[str, Any] | None:
     """검증에 실패하면 None.
 

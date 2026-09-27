@@ -2508,6 +2508,100 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/attachments/upload-ticket": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mint Upload Ticket
+         * @description **PC 의 파일을 서버로 바로 올릴** 짧은 자격을 하나 낸다(5분).
+         *
+         *     큰 파일을 AI 를 거쳐 나르면 안 된다 — 50 MB 스캔본은 base64 로 모델 문맥을 통째로
+         *     먹는다. 그래서 바이트는 셸에서 곧장 간다(`curl`). 그때 진짜 토큰을 셸에 적으면 오래
+         *     사는 자격이 기록에 남으므로, **올리기만 되는 티켓**을 대신 준다.
+         */
+        post: operations["mint_upload_ticket_api_attachments_upload_ticket_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/attachments/upload-with-ticket": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Upload With Ticket
+         * @description 티켓으로 올린다 — **몸통은 파일 바이트 그대로**(`curl --data-binary @파일`).
+         *
+         *     multipart 가 아닌 이유: 셸에서 한 줄로 쓸 수 있어야 하고, 그 한 줄을 사람이 보고
+         *     무엇을 올리는지 알 수 있어야 한다. 자격은 티켓이 싣고 있으므로 Bearer 를 안 받는다 —
+         *     **그래서 티켓은 5분만 산다.**
+         */
+        post: operations["upload_with_ticket_api_attachments_upload_with_ticket_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/attachments/{attachment_id}/extract-images": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Extract Images
+         * @description 올려 둔 워드·파워포인트에서 **그림을 낱장으로 꺼낸다.** 서버가 zip 으로 푼다.
+         *
+         *     바이트가 AI 를 안 거치는 것이 요점이다. 꺼낸 것은 문서와 같은 자리에 붙고, 문서에서
+         *     그림 자리의 글을 설명으로 달아 둔다 — AI 는 그림을 못 보므로 그 글자가 유일한 단서다.
+         */
+        post: operations["extract_images_api_attachments__attachment_id__extract_images_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/attachments/{attachment_id}/attach": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Attach Existing
+         * @description 이미 올라온 파일을 **다른 자리에도 가리킨다.** 바이트는 안 움직인다.
+         *
+         *     규격서에 올린 그림 서른 장을 시험 서른 건에 나눠 걸 때 쓴다 — 다시 올리면 같은
+         *     바이트가 서른 벌 생기고, 무엇보다 그 바이트가 AI 를 거쳐야 한다.
+         */
+        post: operations["attach_existing_api_attachments__attachment_id__attach_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/attachments/{attachment_id}/file": {
         parameters: {
             query?: never;
@@ -3088,6 +3182,23 @@ export interface components {
              * @default member
              */
             role: string;
+        };
+        /**
+         * AttachExistingRequest
+         * @description 이미 올라온 파일을 다른 자리에도 가리킨다 — 바이트는 안 움직인다.
+         */
+        AttachExistingRequest: {
+            /** Target */
+            target: string;
+            /**
+             * Object Id
+             * Format: uuid
+             */
+            object_id: string;
+            /** Definition Id */
+            definition_id?: string | null;
+            /** Caption */
+            caption?: string | null;
         };
         /** AttachmentOut */
         AttachmentOut: {
@@ -4799,6 +4910,27 @@ export interface components {
             workspace_slug?: string | null;
             /** Attributes */
             attributes?: components["schemas"]["AttributeValueIn"][] | null;
+        };
+        /**
+         * ExtractImagesResult
+         * @description 문서에서 꺼낸 그림들. 건너뛴 것도 **세어서 말한다** — 조용히 빠지면 못 알아챈다.
+         */
+        ExtractImagesResult: {
+            /**
+             * Source Attachment Id
+             * Format: uuid
+             */
+            source_attachment_id: string;
+            /** Images */
+            images: components["schemas"]["AttachmentOut"][];
+            /** Extracted */
+            extracted: number;
+            /** Skipped Oversize */
+            skipped_oversize: number;
+            /** Skipped Kind */
+            skipped_kind: number;
+            /** Skipped Duplicate */
+            skipped_duplicate: number;
         };
         /**
          * FilterOption
@@ -7173,6 +7305,16 @@ export interface components {
         UnreadCountOut: {
             /** Unread */
             unread: number;
+        };
+        /**
+         * UploadTicketOut
+         * @description PC 의 파일을 서버로 바로 올릴 짧은 자격. **올리기 말고는 아무것도 못 한다.**
+         */
+        UploadTicketOut: {
+            /** Ticket */
+            ticket: string;
+            /** Expires In Seconds */
+            expires_in_seconds: number;
         };
         /** UserOut */
         UserOut: {
@@ -12537,6 +12679,129 @@ export interface operations {
         requestBody: {
             content: {
                 "multipart/form-data": components["schemas"]["Body_upload_api_attachments_post"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttachmentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    mint_upload_ticket_api_attachments_upload_ticket_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UploadTicketOut"];
+                };
+            };
+        };
+    };
+    upload_with_ticket_api_attachments_upload_with_ticket_post: {
+        parameters: {
+            query: {
+                target: string;
+                object_id: string;
+                filename: string;
+                definition_id?: string | null;
+                caption?: string;
+            };
+            header: {
+                "x-upload-ticket": string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttachmentOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    extract_images_api_attachments__attachment_id__extract_images_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                attachment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExtractImagesResult"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    attach_existing_api_attachments__attachment_id__attach_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                attachment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AttachExistingRequest"];
             };
         };
         responses: {

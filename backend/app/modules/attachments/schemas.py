@@ -37,3 +37,34 @@ class AttachmentUpdateRequest(Request):
     caption: str | None = Field(default=None, max_length=300)
     definition_id: uuid.UUID | None = None
     sort_order: int | None = None
+
+
+class UploadTicketOut(BaseModel):
+    """PC 의 파일을 서버로 바로 올릴 짧은 자격. **올리기 말고는 아무것도 못 한다.**"""
+
+    ticket: str
+    expires_in_seconds: int
+
+
+class AttachExistingRequest(Request):
+    """이미 올라온 파일을 다른 자리에도 가리킨다 — 바이트는 안 움직인다."""
+
+    target: str
+    object_id: uuid.UUID
+    definition_id: uuid.UUID | None = None
+    caption: str | None = Field(default=None, max_length=300)
+    """안 주면 **원본의 설명을 그대로** 가져온다. 그림을 고른 이유가 대개 그 설명이다."""
+
+
+class ExtractImagesResult(BaseModel):
+    """문서에서 꺼낸 그림들. 건너뛴 것도 **세어서 말한다** — 조용히 빠지면 못 알아챈다."""
+
+    source_attachment_id: uuid.UUID
+    images: list[AttachmentOut]
+    extracted: int
+    skipped_oversize: int
+    """장당 20 MB 를 넘어 안 꺼낸 것."""
+    skipped_kind: int
+    """emf·wmf 처럼 브라우저가 못 그리는 것."""
+    skipped_duplicate: int
+    """같은 그림이 여러 쪽에 나온 것(머리글 로고) — 한 번만 꺼낸다."""

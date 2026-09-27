@@ -23,6 +23,9 @@ import contextlib
 import hashlib
 import time
 import uuid
+import xml.etree.ElementTree as ElementTree
+import zipfile
+from io import BytesIO
 from pathlib import Path
 from typing import Any
 
@@ -193,6 +196,203 @@ def add(
     db.add(row)
     db.flush()
     return row
+
+
+def attach_existing(
+    db: Session,
+    user: User,
+    *,
+    source: Attachment,
+    target: str,
+    object_id: uuid.UUID,
+    definition_id: uuid.UUID | None = None,
+    caption: str | None = None,
+) -> Attachment:
+    """이미 올라온 파일을 **다른 자리에도 가리킨다.** 바이트는 안 움직인다.
+
+    파일은 내용으로 모여 있으므로(sha256) 붙는 줄만 하나 더 만들면 된다 — 규격서 하나에
+    올린 그림 서른 장을 시험 서른 건에 나눠 거는 일이 이 길로 된다. 그림을 다시 올리게
+    하면 같은 바이트가 서른 벌 생기고, 무엇보다 **그 바이트가 AI 를 거쳐야** 한다.
+
+    권한은 **가는 쪽**이 정한다(`require_can_edit`) — 보는 것은 누구나 하므로 원본 쪽에
+    따로 묻지 않는다. 설명을 안 주면 원본의 것을 그대로 가져온다: 그림을 고른 이유가
+    대개 그 설명이라, 비워 두면 받는 쪽에서 무엇인지 알 수 없다.
+    """
+    require_can_edit(db, user, target=target, object_id=object_id)
+    if definition_id is not None:
+        definition = db.get(AttributeDefinition, definition_id)
+        if definition is None or definition.target != target:
+            raise AppError("TSC-ATTACH-0005", "그 칸은 이 대상의 칸이 아닙니다.", status=422)
+
+    last = (
+        db.scalar(
+            select(func.max(Attachment.sort_order)).where(
+                Attachment.target == target, Attachment.object_id == object_id
+            )
+        )
+        or 0
+    )
+    row = Attachment(
+        target=target,
+        object_id=object_id,
+        definition_id=definition_id,
+        file_id=source.file_id,
+        original_name=source.original_name,
+        caption=clean(caption)[:300] if caption is not None else source.caption,
+        sort_order=last + 1,
+        created_by_id=user.id,
+    )
+    db.add(row)
+    db.flush()
+    return row
+
+
+#: 오피스 문서 안에서 그림이 사는 곳. 확장자가 아니라 **압축 안의 경로**로 가른다.
+_MEDIA_DIRS = ("word/media/", "ppt/media/", "xl/media/")
+
+#: 한 번에 꺼낼 수 있는 장수와 장당 크기. 없으면 200쪽짜리 문서가 서버를 채운다.
+_MAX_IMAGES = 200
+_MAX_IMAGE_BYTES = 20 * 1024 * 1024
+
+_W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+_A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
+_R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+_PKG = "{http://schemas.openxmlformats.org/package/2006/relationships}"
+
+
+def _docx_captions(archive: zipfile.ZipFile) -> dict[str, str]:
+    """그림마다 **문서에서 그 자리의 글**을 뽑는다 — `word/media/image7.png` → 설명.
+
+    **AI 는 그림을 못 본다.** 파일 이름만 있으면 서른 장 중 어느 것이 열충격 시험의
+    것인지 고를 방법이 없다 — 이 글자가 유일한 단서다. 그래서 뜯는 쪽이 만들어야 할
+    것은 이미지가 아니라 **이 목록**이다.
+
+    문단을 차례로 읽으며 마지막 제목과 직전 글을 들고 가다가, 그림을 만나면 그 둘로
+    설명을 만든다. 제목은 스타일(`Heading…`)로 알아보고, 없으면 직전 문단을 쓴다 —
+    사내 문서는 「3.2 열충격」 을 제목 스타일 없이 굵게만 쓰는 일이 흔하다.
+    """
+    try:
+        rels = ElementTree.fromstring(archive.read("word/_rels/document.xml.rels"))
+        body = ElementTree.fromstring(archive.read("word/document.xml"))
+    except (KeyError, ElementTree.ParseError):
+        return {}
+
+    target_of = {
+        one.get("Id", ""): one.get("Target", "") for one in rels.iter(f"{_PKG}Relationship")
+    }
+    found: dict[str, str] = {}
+    heading = ""
+    previous = ""
+    for paragraph in body.iter(f"{_W}p"):
+        text = "".join(node.text or "" for node in paragraph.iter(f"{_W}t")).strip()
+        embeds = [
+            one.get(f"{_R}embed")
+            for one in paragraph.iter(f"{_A}blip")
+            if one.get(f"{_R}embed")
+        ]
+        if embeds:
+            near = text or previous or heading
+            for rid in embeds:
+                target = target_of.get(rid or "", "")
+                name = target.rsplit("/", 1)[-1]
+                if not name:
+                    continue
+                # 제목과 그 자리의 글을 잇는다 — 같은 글이면 한 번만.
+                parts = [one for one in (heading, near) if one]
+                if len(parts) == 2 and parts[0] == parts[1]:
+                    parts = parts[:1]
+                found.setdefault(f"word/media/{name}", " — ".join(parts)[:300])
+            continue
+        if not text:
+            continue
+        style = paragraph.find(f"{_W}pPr/{_W}pStyle")
+        if style is not None and (style.get(f"{_W}val") or "").lower().startswith(
+            ("heading", "제목")
+        ):
+            heading = text
+        previous = text
+    return found
+
+
+def extract_images(db: Session, user: User, *, source: Attachment) -> dict[str, Any]:
+    """올려 둔 오피스 문서에서 **그림을 낱장으로 꺼낸다.** 서버가 푼다.
+
+    워드·파워포인트는 사실 zip 이라 `word/media/` 에 그림이 원본 그대로 들어 있다.
+    **바이트가 AI 를 안 거치는 것이 요점이다** — 문서 한 벌만 올리면 그 안의 서른 장이
+    서버 안에서 낱장 첨부가 되고, AI 는 그 id 와 설명만 보고 제자리에 건다.
+
+    꺼낸 것은 **문서와 같은 자리**(같은 target/object)에 붙는다 — 규격서에 올린 문서면
+    규격서에. 거기서 `attach_existing` 으로 시험마다 나눠 건다.
+
+    같은 그림이 여러 쪽에 나오면(머리글의 로고) **한 번만 꺼낸다** — 안 그러면 로고가
+    서른 줄이 되어 정작 볼 것을 가린다. 바이트는 어차피 한 벌이지만 줄은 는다.
+    """
+    require_can_edit(db, user, target=source.target, object_id=source.object_id)
+    stored = db.get(StoredFile, source.file_id)
+    if stored is None:
+        raise NotFound("TSC-ATTACH-0007", "파일 기록이 없습니다.")
+    full = get_settings().filestore_dir / stored.path
+    if not full.exists():
+        raise NotFound("TSC-ATTACH-0008", "파일이 파일스토어에 없습니다.")
+
+    try:
+        archive = zipfile.ZipFile(BytesIO(full.read_bytes()))
+    except zipfile.BadZipFile as exc:
+        raise AppError(
+            "TSC-ATTACH-0009",
+            "이 파일에서는 그림을 꺼낼 수 없습니다 — 워드·파워포인트·엑셀만 됩니다.",
+            status=422,
+        ) from exc
+
+    captions = _docx_captions(archive)
+    made: list[Attachment] = []
+    seen: set[str] = set()
+    skipped_big = 0
+    skipped_kind = 0
+    skipped_same = 0
+    with archive:
+        names = sorted(
+            one
+            for one in archive.namelist()
+            if one.startswith(_MEDIA_DIRS) and not one.endswith("/")
+        )
+        for name in names:
+            if len(made) >= _MAX_IMAGES:
+                break
+            data = archive.read(name)
+            if len(data) > _MAX_IMAGE_BYTES:
+                skipped_big += 1
+                continue
+            digest = hashlib.sha256(data).hexdigest()
+            if digest in seen:
+                skipped_same += 1
+                continue
+            plain = name.rsplit("/", 1)[-1]
+            if _resolve_type("", plain) is None:
+                # emf·wmf 처럼 브라우저가 못 그리는 것은 꺼내도 볼 수가 없다.
+                skipped_kind += 1
+                continue
+            seen.add(digest)
+            made.append(
+                add(
+                    db,
+                    user,
+                    target=source.target,
+                    object_id=source.object_id,
+                    filename=plain,
+                    content_type="",
+                    data=data,
+                    caption=captions.get(name, ""),
+                )
+            )
+    return {
+        "source_attachment_id": source.id,
+        "images": made,
+        "extracted": len(made),
+        "skipped_oversize": skipped_big,
+        "skipped_kind": skipped_kind,
+        "skipped_duplicate": skipped_same,
+    }
 
 
 def get(db: Session, attachment_id: uuid.UUID) -> Attachment:
