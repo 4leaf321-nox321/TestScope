@@ -146,9 +146,7 @@ def test_띄우는_길_셋이_server_py_의_main_하나를_지난다() -> None:
         text = (root / rel).read_text(encoding="utf-8-sig")
         #: 주석은 뺀다 — 「전에는 이렇게 적었다」 라고 **설명하는** 줄까지 잡으면, 왜
         #: 그러면 안 되는지를 적어 둘 수가 없게 된다(`.env.example` 과 같은 방식).
-        code = "\n".join(
-            one for one in text.splitlines() if not one.lstrip().startswith("#")
-        )
+        code = "\n".join(one for one in text.splitlines() if not one.lstrip().startswith("#"))
         assert "server.mcp.run(" not in code, (
             f"{rel} 이 전송·바인딩을 제가 정합니다 — server.py 의 main() 을 지나게 하세요"
         )
