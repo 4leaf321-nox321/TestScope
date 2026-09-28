@@ -6,6 +6,7 @@ import type { components } from '@/shared/api/schema'
 export type Account = components['schemas']['AccountOut']
 export type AccountSummary = components['schemas']['AccountSummaryOut']
 export type TemporaryPassword = components['schemas']['TemporaryPasswordResponse']
+export type Membership = components['schemas']['MembershipOut']
 
 export const accountApi = {
   summary: () => api.get<AccountSummary>('/accounts/summary'),
@@ -17,6 +18,13 @@ export const accountApi = {
   reject: (id: string, note: string) => api.post<Account>(`/accounts/${id}/reject`, { note }),
   suspend: (id: string) => api.post<Account>(`/accounts/${id}/suspend`),
   activate: (id: string) => api.post<Account>(`/accounts/${id}/activate`),
+  /**
+   * 지금 소속 — **역할까지.** 목록(`Account.memberships`)은 slug 만 준다.
+   *
+   * 그것만 보고 창을 채우면 역할을 모르는 채로 되보내게 되고, 그러면 **부서 관리자가
+   * 조용히 멤버로 내려앉는다** — 그 사람은 어제 하던 일을 오늘 못 하면서 왜인지도 모른다.
+   */
+  memberships: (id: string) => api.get<Membership[]>(`/accounts/${id}/memberships`),
   /**
    * 소속을 **한 번에** 정한다 — 준 목록이 곧 소속이다(있던 것은 지운다).
    *

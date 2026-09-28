@@ -14,7 +14,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.accounts.models import USER_STATUSES, User
-from app.modules.accounts.schemas import AccountOut
+from app.modules.accounts.schemas import AccountOut, MembershipOut
 from app.modules.auth import security
 from app.modules.notifications import rules
 from app.modules.workspaces.models import WORKSPACE_ROLES, Workspace, WorkspaceMember
@@ -347,6 +347,27 @@ def set_home_workspace(
     db.commit()
     db.refresh(user)
     return user
+
+
+def memberships_of(db: Session, *, user_id: uuid.UUID) -> list[MembershipOut]:
+    """이 사람의 지금 소속 — **역할까지.** 소속 창이 이것으로 채운다.
+
+    계정 목록은 slug 만 준다(줄이 가벼워야 하므로). 그것만 보고 창을 채우면 역할을 모르는
+    채로 되보내게 되고, 그러면 부서 관리자가 조용히 멤버로 내려앉는다.
+    """
+    user = get_account(db, user_id)
+    rows = db.execute(
+        select(WorkspaceMember, Workspace)
+        .join(Workspace, Workspace.id == WorkspaceMember.workspace_id)
+        .where(WorkspaceMember.user_id == user.id)
+        .order_by(Workspace.sort_order, Workspace.name)
+    ).all()
+    return [
+        MembershipOut(
+            workspace_slug=workspace.slug, workspace_name=workspace.name, role=member.role
+        )
+        for member, workspace in rows
+    ]
 
 
 def set_memberships(

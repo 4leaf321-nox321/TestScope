@@ -20,6 +20,7 @@ from app.modules.accounts.schemas import (
     ApproveRequest,
     CreateAccountRequest,
     HomeWorkspaceRequest,
+    MembershipOut,
     MembershipsRequest,
     RejectRequest,
     SignupRequest,
@@ -151,6 +152,16 @@ def set_home_workspace(
         db, user_id=account_id, workspace_slug=payload.workspace_slug, actor=admin
     )
     return services.account_out(db, user)
+
+
+@router.get("/{account_id}/memberships", response_model=list[MembershipOut])
+def list_memberships(
+    account_id: uuid.UUID,
+    _: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> list[MembershipOut]:
+    """지금 소속 — **역할까지.** 소속 창이 이것으로 채운다(목록은 slug 만 준다)."""
+    return services.memberships_of(db, user_id=account_id)
 
 
 @router.put("/{account_id}/memberships", response_model=AccountOut)

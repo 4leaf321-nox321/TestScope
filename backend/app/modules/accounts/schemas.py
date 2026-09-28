@@ -92,6 +92,19 @@ class MembershipItem(Request):
     role: str = "member"
 
 
+class MembershipOut(BaseModel):
+    """지금 소속 한 줄 — **역할까지.**
+
+    목록(`AccountOut.memberships`)은 slug 만 준다. 그것만 보고 창을 채우면 역할을 모르는
+    채로 되보내게 되고, 그러면 **부서 관리자가 조용히 멤버로 내려앉는다** — 그 사람은
+    어제 하던 일을 오늘 못 하면서 왜인지도 모른다(2026-09-28 실측).
+    """
+
+    workspace_slug: str
+    workspace_name: str
+    role: str
+
+
 class MembershipsRequest(Request):
     """이 사람의 **소속을 통째로** 정한다 — 있던 것은 지우고 준 것만 남긴다.
 
@@ -101,7 +114,9 @@ class MembershipsRequest(Request):
     비우는 것은 **된다** — 내보내는 일이 실제로 있다. 그때 대표 소속도 함께 비워진다.
     """
 
-    items: list[MembershipItem] = Field(default_factory=list, max_length=50)
+    items: list[MembershipItem] = Field(default_factory=list, max_length=500)
+    """**조직도만큼 길 수 있다.** 처음에 50으로 뒀다가 부서가 쉰이 넘는 곳에서
+    「너무 많습니다」 로 막혔다(2026-09-28 실측) — 전사 관리자는 모든 부서에 속한다."""
 
 
 class SystemAdminRequest(Request):

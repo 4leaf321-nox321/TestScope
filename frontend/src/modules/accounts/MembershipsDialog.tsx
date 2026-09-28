@@ -51,7 +51,8 @@ export function MembershipsDialog({
   onClose: () => void
   onSaved: () => void
 }) {
-  const [rows, setRows] = useState<Row[]>([])
+  /** 지금 소속. **아직 못 읽었으면 `null`** — 그 상태로 저장하면 소속을 통째로 지운다. */
+  const [rows, setRows] = useState<Row[] | null>(null)
   const [options, setOptions] = useState<WorkspaceOption[]>([])
   const [adding, setAdding] = useState('')
   const [error, setError] = useState<ApiError | Error | null>(null)
@@ -61,25 +62,31 @@ export function MembershipsDialog({
   useEffect(() => {
     setError(null)
     setAdding('')
-    // **지금 소속을 그대로 띄운다** — 빈 칸에서 시작하면 「고치려다 지우는」 일이 난다.
-    setRows(
-      (account?.memberships ?? []).map((slug) => ({ workspace_slug: slug, role: 'member' })),
-    )
+    setRows(null)
     if (!id) return
     let dropped = false
-    workspaceApi
-      .options()
-      .then((got) => !dropped && setOptions(got))
+    // **역할까지 받아 온다.** 목록은 slug 만 주므로, 그것만 보고 채우면 역할을 모르는
+    // 채로 되보내게 되고 **부서 관리자가 조용히 멤버로 내려앉는다**(2026-09-28 실측).
+    // 그래서 다 받기 전에는 아무것도 안 보낸다(`rows === null`).
+    Promise.all([accountApi.memberships(id), workspaceApi.options()])
+      .then(([mine, all]) => {
+        if (dropped) return
+        setOptions(all)
+        setRows(mine.map((one) => ({ workspace_slug: one.workspace_slug, role: one.role })))
+      })
       .catch((caught) => !dropped && setError(caught as Error))
     return () => {
       dropped = true
     }
-  }, [id, account?.memberships])
+  }, [id])
 
-  const left = options.filter((one) => !rows.some((row) => row.workspace_slug === one.slug))
+  const left = options.filter(
+    (one) => !(rows ?? []).some((row) => row.workspace_slug === one.slug),
+  )
 
   async function save() {
-    if (!id) return
+    // **못 읽었으면 저장하지 않는다.** 빈 목록을 보내면 소속을 통째로 지우는 것이 된다.
+    if (!id || rows === null) return
     setBusy(true)
     setError(null)
     try {
@@ -104,7 +111,9 @@ export function MembershipsDialog({
         </DialogHeader>
 
         <div className="space-y-3">
-          {rows.length === 0 ? (
+          {rows === null ? (
+            <p className="text-muted-foreground text-sm">읽는 중…</p>
+          ) : rows.length === 0 ? (
             <p className="text-muted-foreground text-sm">
               소속이 없습니다 — 이대로 저장하면 이 사람은 갈 부서가 없습니다.
             </p>
@@ -120,7 +129,7 @@ export function MembershipsDialog({
                     value={row.role}
                     onValueChange={(next) =>
                       setRows((prev) =>
-                        prev.map((one, index) =>
+                        (prev ?? []).map((one, index) =>
                           index === at ? { ...one, role: next } : one,
                         ),
                       )
@@ -139,7 +148,9 @@ export function MembershipsDialog({
                     variant="ghost"
                     size="icon"
                     aria-label={`${row.workspace_slug} 빼기`}
-                    onClick={() => setRows((prev) => prev.filter((_, index) => index !== at))}
+                    onClick={() =>
+                      setRows((prev) => (prev ?? []).filter((_, index) => index !== at))
+                    }
                   >
                     <X className="size-4" />
                   </Button>
@@ -169,7 +180,10 @@ export function MembershipsDialog({
               variant="outline"
               disabled={!adding}
               onClick={() => {
-                setRows((prev) => [...prev, { workspace_slug: adding, role: 'member' }])
+                setRows((prev) => [
+                  ...(prev ?? []),
+                  { workspace_slug: adding, role: 'member' },
+                ])
                 setAdding('')
               }}
             >
@@ -185,7 +199,7 @@ export function MembershipsDialog({
           <Button variant="outline" onClick={onClose} disabled={busy}>
             취소
           </Button>
-          <Button onClick={save} disabled={busy}>
+          <Button onClick={save} disabled={busy || rows === null}>
             저장
           </Button>
         </DialogFooter>

@@ -728,6 +728,52 @@
       }
     },
     "/api/accounts/{account_id}/memberships": {
+      "get": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "List Memberships",
+        "description": "지금 소속 — **역할까지.** 소속 창이 이것으로 채운다(목록은 slug 만 준다).",
+        "operationId": "list_memberships_api_accounts__account_id__memberships_get",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Account Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MembershipOut"
+                  },
+                  "title": "Response List Memberships Api Accounts  Account Id  Memberships Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "accounts"
@@ -16196,6 +16242,30 @@
         "title": "MembershipItem",
         "description": "소속 한 줄 — 어느 부서에 어떤 역할로."
       },
+      "MembershipOut": {
+        "properties": {
+          "workspace_slug": {
+            "type": "string",
+            "title": "Workspace Slug"
+          },
+          "workspace_name": {
+            "type": "string",
+            "title": "Workspace Name"
+          },
+          "role": {
+            "type": "string",
+            "title": "Role"
+          }
+        },
+        "type": "object",
+        "required": [
+          "workspace_slug",
+          "workspace_name",
+          "role"
+        ],
+        "title": "MembershipOut",
+        "description": "지금 소속 한 줄 — **역할까지.**\n\n목록(`AccountOut.memberships`)은 slug 만 준다. 그것만 보고 창을 채우면 역할을 모르는\n채로 되보내게 되고, 그러면 **부서 관리자가 조용히 멤버로 내려앉는다** — 그 사람은\n어제 하던 일을 오늘 못 하면서 왜인지도 모른다(2026-09-28 실측)."
+      },
       "MembershipsRequest": {
         "properties": {
           "items": {
@@ -16203,7 +16273,7 @@
               "$ref": "#/components/schemas/MembershipItem"
             },
             "type": "array",
-            "maxItems": 50,
+            "maxItems": 500,
             "title": "Items"
           }
         },

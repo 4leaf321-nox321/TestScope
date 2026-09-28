@@ -182,3 +182,44 @@ def test_누가_어디서_어디로_옮겼는지_남는다(
     assert entry is not None
     assert entry.changes["memberships"]["before"] == [here]
     assert entry.changes["memberships"]["after"] == [there]
+
+
+def test_지금_소속을_역할과_함께_준다(client: TestClient, admin: Signed, db: Session) -> None:
+    """**목록은 slug 만 준다.** 그것만 보고 창을 채우면 역할을 모르는 채로 되보내게 되고,
+    그러면 부서 관리자가 조용히 멤버로 내려앉는다 — 그 사람은 어제 하던 일을 오늘 못
+    하면서 왜인지도 모른다(2026-09-28 실측).
+    """
+    one = _team(client, admin, "관리팀")
+    two = _team(client, admin, "참여팀")
+    user = _person(client, db, one)
+    _set(
+        client,
+        admin,
+        user.id,
+        [
+            {"workspace_slug": one, "role": "manager"},
+            {"workspace_slug": two, "role": "member"},
+        ],
+    )
+
+    got = client.get(f"/api/accounts/{user.id}/memberships", headers=admin.headers)
+    assert got.status_code == 200, got.text
+    rows = {row["workspace_slug"]: row for row in got.json()}
+    assert rows[one]["role"] == "manager"
+    assert rows[two]["role"] == "member"
+    # 이름도 함께 — 창이 slug 말고 사람이 아는 이름을 보여야 한다.
+    assert rows[one]["workspace_name"] == "관리팀"
+
+
+def test_부서가_쉰이_넘어도_저장된다(client: TestClient, admin: Signed, db: Session) -> None:
+    """한도를 50으로 뒀다가 **부서가 쉰이 넘는 곳에서 막혔다** — 전사 관리자는 모든
+    부서에 속한다. 조직도만큼은 받아야 한다."""
+    user = _person(client, db, _team(client, admin, "첫팀"))
+    slugs = [_team(client, admin, f"팀{index}") for index in range(55)]
+
+    done = _set(client, admin, user.id, [{"workspace_slug": one} for one in slugs])
+    assert done.status_code == 200, done.text
+    assert (
+        len(client.get(f"/api/accounts/{user.id}/memberships", headers=admin.headers).json())
+        == 55
+    )

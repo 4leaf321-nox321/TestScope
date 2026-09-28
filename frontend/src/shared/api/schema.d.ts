@@ -304,7 +304,11 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        get?: never;
+        /**
+         * List Memberships
+         * @description 지금 소속 — **역할까지.** 소속 창이 이것으로 채운다(목록은 slug 만 준다).
+         */
+        get: operations["list_memberships_api_accounts__account_id__memberships_get"];
         /**
          * Set Memberships
          * @description 소속을 **한 번에** 바꾼다 — 부서 이동이 두 걸음으로 갈라지지 않게.
@@ -5417,6 +5421,22 @@ export interface components {
             role: string;
         };
         /**
+         * MembershipOut
+         * @description 지금 소속 한 줄 — **역할까지.**
+         *
+         *     목록(`AccountOut.memberships`)은 slug 만 준다. 그것만 보고 창을 채우면 역할을 모르는
+         *     채로 되보내게 되고, 그러면 **부서 관리자가 조용히 멤버로 내려앉는다** — 그 사람은
+         *     어제 하던 일을 오늘 못 하면서 왜인지도 모른다(2026-09-28 실측).
+         */
+        MembershipOut: {
+            /** Workspace Slug */
+            workspace_slug: string;
+            /** Workspace Name */
+            workspace_name: string;
+            /** Role */
+            role: string;
+        };
+        /**
          * MembershipsRequest
          * @description 이 사람의 **소속을 통째로** 정한다 — 있던 것은 지우고 준 것만 남긴다.
          *
@@ -8430,6 +8450,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AccountOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_memberships_api_accounts__account_id__memberships_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MembershipOut"][];
                 };
             };
             /** @description Validation Error */
