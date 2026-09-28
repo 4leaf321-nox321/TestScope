@@ -177,15 +177,22 @@ function Get-Definitions {
     if ($hasMcp -and -not $NoMcp) {
         $mcpPort = Read-EnvValue 'MCP_PORT' '8022'
         $mcpHost = Read-EnvValue 'MCP_HOST' '127.0.0.1'
+        $mcpAllowed = Read-EnvValue 'MCP_ALLOWED_HOSTS' ''
+        # 서비스는 창이 없다 — 거절 사유는 service-mcp 로그에만 남는다. 등록하는 이 자리에서
+        # 미리 말해 준다(여기서 막지는 않는다: 등록은 되고 띄울 때 정하는 것이 맞다).
+        if ($mcpHost -ne '127.0.0.1' -and $mcpHost -ne 'localhost' -and -not $mcpAllowed) {
+            Write-Warning "MCP_HOST=$mcpHost 인데 MCP_ALLOWED_HOSTS 가 비었습니다 — MCP 서비스가 기동을 거절합니다."
+        }
         $defs += @{
             Id = 'TestScope-MCP'
             DisplayName = 'TestScope MCP'
             Description = "TestScope AI 연결(MCP) — 포트 $mcpPort. 백엔드 서비스 뒤에 뜬다"
             Executable = Join-Path $venvs 'mcp_server\Scripts\python.exe'
-            # **공식 mcp SDK 2.x 다** — 전송 이름은 'streamable-http' 이고 host·port 는 인자로 준다.
-            # 'http' 와 FASTMCP_* 환경변수는 다른 패키지(fastmcp)의 것이라 안 통한다(운영 첫 설치
-            # 실측: 그렇게 띄운 MCP 서비스가 곧장 죽었다). 개발용 mcp_server\run_mcp.ps1 과 같은 호출.
-            Arguments = "-c ""import server; server.mcp.run(transport='streamable-http', host='$mcpHost', port=$mcpPort)"""
+            # **server.py 의 main() 이 전송·바인딩·허용 Host 를 정한다.** 값을 여기 박아 두면
+            # .env 를 고쳐도 서비스는 옛 포트를 보므로, MCP_PORT·MCP_HOST·MCP_ALLOWED_HOSTS 는
+            # server.py 가 backend\.env 에서 직접 읽는다(환경변수가 비어 있을 때만).
+            # 창 방식(mcp_server\run_mcp.ps1)과 배포판 run_mcp.ps1 도 같은 자리를 지난다.
+            Arguments = 'server.py'
             WorkingDirectory = Join-Path $AppPath 'mcp_server'
             Env = @{
                 PYTHONIOENCODING = 'utf-8'

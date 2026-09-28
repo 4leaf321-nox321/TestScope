@@ -33,10 +33,54 @@ import shlex
 from pathlib import Path
 from urllib.parse import quote
 
+import bind
 import calltrace
 import httpx
 from merge import merge
 from mcp.server.mcpserver import Context, MCPServer
+from mcp.server.transport_security import TransportSecuritySettings
+
+
+def _load_env_defaults() -> None:
+    """`backend\\.env` 의 값을 **환경변수가 비어 있을 때만** 채운다.
+
+    창으로 띄울 때는 `run_mcp.ps1` 이 .env 를 읽어 `TESTSCOPE_*` 를 준다. 서비스로 띄우면
+    (`scripts\\deploy\\service.ps1`) 그 스크립트를 안 거치므로 여기서 같은 일을 한다 —
+    등록할 때 값을 박아 두면 .env 를 고쳐도 서비스는 옛 포트를 본다. 이미 있는 환경변수가
+    이긴다(인자로 준 것이 파일보다 세다).
+
+        PORT · APP_ENV      → TESTSCOPE_API_BASE  (개발은 PORT+1, 운영은 PORT)
+        MCP_PORT            → TESTSCOPE_MCP_PORT
+        MCP_HOST            → TESTSCOPE_MCP_HOST
+        MCP_ALLOWED_HOSTS   → TESTSCOPE_MCP_ALLOWED_HOSTS
+    """
+    env_file = Path(__file__).resolve().parent.parent / "backend" / ".env"
+    if not env_file.exists():
+        return
+    values: dict[str, str] = {}
+    for raw in env_file.read_text(encoding="utf-8-sig").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        values[key.strip()] = value.strip().strip('"').strip("'")
+    if "TESTSCOPE_API_BASE" not in os.environ and values.get("PORT", "").isdigit():
+        # run.py 가 개발에서 PORT+1 을 쓴다. 그 규칙을 여기서도 따른다 — 두 벌로 두면
+        # 개발에서만 주소가 어긋나고, 그것은 도구가 전부 실패하고 나서야 드러난다.
+        port = int(values["PORT"])
+        if values.get("APP_ENV", "development") == "development":
+            port += 1
+        os.environ["TESTSCOPE_API_BASE"] = f"http://127.0.0.1:{port}/api"
+    for source, target in (
+        ("MCP_PORT", "TESTSCOPE_MCP_PORT"),
+        ("MCP_HOST", "TESTSCOPE_MCP_HOST"),
+        ("MCP_ALLOWED_HOSTS", "TESTSCOPE_MCP_ALLOWED_HOSTS"),
+    ):
+        if target not in os.environ and values.get(source):
+            os.environ[target] = values[source]
+
+
+_load_env_defaults()
 
 #: 백엔드 API. 같은 기계에서 도는 것이 기본이다(개발 8021 · 운영 8020).
 API_BASE = os.environ.get("TESTSCOPE_API_BASE", "http://127.0.0.1:8021/api").rstrip("/")
@@ -2684,6 +2728,37 @@ async def graph_node(ctx: Context, node_id: str) -> dict[str, Any]:
     return await _get(ctx, "/graph/node", {"id": node_id})
 
 
+def main() -> None:
+    """기동. **기본은 127.0.0.1 이고, 밖에 열 때는 허용 Host 를 반드시 받는다.**
+
+    띄우는 길 셋(`run_mcp.ps1` · 배포판 `run_mcp.ps1` · 서비스 정의)이 전부 이 함수를
+    지난다 — 전에는 셋이 각자 `-c "import server; server.mcp.run(...)"` 를 적어서, 한 곳만
+    고치면 갈라졌다. 그러면 갈라진 쪽만 조용히 보호 없이 뜬다.
+
+    허용 Host 판정은 `bind.py` 에 있다(시험이 `mcp` 패키지 없이도 돌게).
+    """
+    if os.environ.get("TESTSCOPE_MCP_TRANSPORT", "streamable-http") == "stdio":
+        mcp.run(transport="stdio")
+        return
+
+    host = os.environ.get("TESTSCOPE_MCP_HOST", "127.0.0.1")
+    try:
+        allowed = bind.allowed_hosts(host, os.environ.get("TESTSCOPE_MCP_ALLOWED_HOSTS"))
+    except ValueError as refusal:
+        raise SystemExit(str(refusal)) from None
+
+    mcp.run(
+        transport="streamable-http",
+        host=host,
+        port=int(os.environ.get("TESTSCOPE_MCP_PORT", "8022")),
+        # **넘기지 않으면 보호가 꺼진다.** SDK 는 localhost 로 들을 때만 저절로 켠다 —
+        # 0.0.0.0 으로 바꾸는 순간 Host·Origin 검사가 사라진다(bind.py 머리의 실측).
+        transport_security=TransportSecuritySettings(
+            enable_dns_rebinding_protection=True,
+            allowed_hosts=allowed,
+        ),
+    )
+
+
 if __name__ == "__main__":
-    # stdio 로 뜬다. HTTP 로 띄우려면 run_mcp.ps1 을 쓴다.
-    mcp.run()
+    main()

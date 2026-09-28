@@ -1,6 +1,7 @@
 ﻿Param(
     [int]$Port = 0,
     [string]$BindHost,
+    [string]$AllowedHosts,
     [string]$ApiBase,
     [switch]$Stdio,
     [switch]$ReadOnly,
@@ -33,6 +34,9 @@ un_mcp.ps1 -Stdio            개인 연결(stdio) — HTTP 대신
     -ReadOnly 를 주면 읽기 도구만 싣는다(39개 · 목록 절반).
     -Trace 를 주면 도구 호출 자취를 logs\calls.jsonl 에 남긴다 — eval\score.py 의 재료.
     -BindHost 0.0.0.0 으로 밖에 연다(기본은 .env 의 MCP_HOST, 없으면 127.0.0.1).
+    밖에 열 때는 -AllowedHosts(또는 .env 의 MCP_ALLOWED_HOSTS)가 **필수**다 — 없으면
+    서버가 기동을 거절한다. 사람들이 등록에 적는 주소를 포트까지 그대로 적는다:
+    -AllowedHosts '10.240.25.85:8022,127.0.0.1:8022'
 #>
 
 $ErrorActionPreference = 'Stop'
@@ -58,12 +62,14 @@ $backendPort = 8020
 $isDev = $true
 $envMcpPort = 0
 $envMcpHost = ''
+$envMcpAllowed = ''
 if (Test-Path $envFile) {
     foreach ($line in Get-Content $envFile) {
         if ($line -match '^\s*PORT\s*=\s*(\d+)') { $backendPort = [int]$Matches[1] }
         if ($line -match '^\s*APP_ENV\s*=\s*(\w+)') { $isDev = ($Matches[1] -eq 'development') }
         if ($line -match '^\s*MCP_PORT\s*=\s*(\d+)') { $envMcpPort = [int]$Matches[1] }
         if ($line -match '^\s*MCP_HOST\s*=\s*(\S+)') { $envMcpHost = $Matches[1].Trim('"').Trim("'") }
+        if ($line -match '^\s*MCP_ALLOWED_HOSTS\s*=\s*(\S+)') { $envMcpAllowed = $Matches[1].Trim('"').Trim("'") }
     }
 }
 
@@ -85,6 +91,8 @@ if ($ReadOnly) { Write-Host '도구: 읽기만' }
 if ($Trace) { $env:TESTSCOPE_MCP_TRACE = '1'; Write-Host '자취: logs\calls.jsonl' }
 
 if ($Stdio) {
+    # 전송은 server.py 가 환경변수로 고른다 — 기본은 HTTP 다.
+    $env:TESTSCOPE_MCP_TRANSPORT = 'stdio'
     & $venvPython (Join-Path $here 'server.py')
     exit $LASTEXITCODE
 }
@@ -95,15 +103,34 @@ if ($Stdio) {
 # 순서: 인자 > backend\.env > 기본값. 운영 service.ps1 도 같은 두 키를 같은 순서로 본다.
 if ($Port -eq 0) { if ($envMcpPort -ne 0) { $Port = $envMcpPort } else { $Port = 8022 } }
 if (-not $BindHost) { if ($envMcpHost) { $BindHost = $envMcpHost } else { $BindHost = '127.0.0.1' } }
-Write-Host "MCP: http://${BindHost}:$Port/mcp"
+if (-not $AllowedHosts) { $AllowedHosts = $envMcpAllowed }
+
+# **띄우는 길 셋이 server.py 의 main() 하나를 지난다.** 전에는 셋이 각자
+# `-c "import server; server.mcp.run(...)"` 를 적어서, 한 곳만 고치면 갈라졌다 —
+# 그러면 갈라진 쪽만 조용히 DNS rebinding 보호 없이 뜬다.
+$env:TESTSCOPE_MCP_HOST = $BindHost
+$env:TESTSCOPE_MCP_PORT = "$Port"
+if ($AllowedHosts) { $env:TESTSCOPE_MCP_ALLOWED_HOSTS = $AllowedHosts }
+
+Write-Host "MCP: ${BindHost}:$Port 에서 듣습니다"
+if ($BindHost -ne '127.0.0.1' -and $BindHost -ne 'localhost' -and -not $AllowedHosts) {
+    Write-Warning '밖으로 열었는데 MCP_ALLOWED_HOSTS 가 없습니다 — 서버가 기동을 거절합니다.'
+}
+# **듣는 자리와 붙는 주소는 다르다.** 0.0.0.0 은 바인딩이지 주소가 아니라서, 그대로
+# 찍으면 그걸 등록에 붙여 넣는 사람이 나온다. 허용 Host 를 적어 뒀으면 그 첫 줄이 곧
+# 사람들이 쓸 주소다 — 서버가 Host 헤더를 그것과 글자 그대로 견주기 때문이다.
+$shown = if ($AllowedHosts) { ($AllowedHosts -split ',')[0].Trim() }
+         elseif ($BindHost -eq '0.0.0.0') { "<서버>:$Port" }
+         else { "${BindHost}:$Port" }
+Write-Host ("등록: claude mcp add --transport http testscope " +
+    "http://$shown/mcp --header 'Authorization: Bearer <내 개인 토큰>'")
+
 # `python -c` 는 **부른 자리**를 sys.path 에 얹는다 — 저장소 뿌리에서 부르면 URL 까지
 # 찍어 놓고 `ModuleNotFoundError: server` 로 죽는다. 배포판(run_mcp_template.ps1)처럼
 # 자리를 옮겨 두고 부른다.
 Push-Location $here
 try {
-    # 공식 mcp SDK(2.x)다 — 전송 이름은 'streamable-http' 이고 host·port 는 인자로 받는다.
-    # 'http' 와 FASTMCP_PORT 환경변수는 다른 패키지(fastmcp)의 것이라 여기서는 통하지 않는다.
-    & $venvPython -c "import server; server.mcp.run(transport='streamable-http', host='$BindHost', port=$Port)"
+    & $venvPython (Join-Path $here 'server.py')
 } finally {
     Pop-Location
 }

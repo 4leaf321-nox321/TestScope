@@ -119,22 +119,38 @@ def test_도구가_부르는_경로가_실재한다() -> None:
     assert not missing, f"서버에 없는 경로를 부른다: {missing}"
 
 
-def test_배포_스크립트가_개발용과_같은_전송으로_MCP_를_띄운다() -> None:
-    """서버는 공식 mcp SDK 2.x 라 `run(transport='streamable-http', host=…, port=…)` 다.
+def test_띄우는_길_셋이_server_py_의_main_하나를_지난다() -> None:
+    """전송·바인딩·허용 Host 를 정하는 자리는 **하나**여야 한다.
 
-    `'http'` 와 `FASTMCP_*` 환경변수는 다른 패키지(fastmcp)의 관례라 여기서는 안 통한다 —
-    개발용 run_mcp.ps1 은 맞게 부르는데 배포용 템플릿과 서비스 정의가 옛 관례로 남아, 운영
-    첫 설치에서 MCP 서비스만 곧장 죽었다. 셋이 같은 이름을 쓰는지 여기서 본다.
+    전에는 셋이 각자 `-c "import server; server.mcp.run(transport=…, host=…, port=…)"` 를
+    적었다. 그러면 한 곳만 고쳤을 때 갈라지고, 갈라진 쪽은 **조용히 DNS rebinding 보호
+    없이 뜬다** — SDK 는 넘겨 주지 않으면 보호를 끄기 때문이다(`bind.py` 머리의 실측).
+    실제로 그 갈림 때문에 운영 첫 설치에서 MCP 서비스만 곧장 죽은 적도 있다(fastmcp 관례의
+    `'http'`·`FASTMCP_*` 가 배포본에만 남아서).
     """
     root = SERVER.parents[1]
+    source = SERVER.read_text(encoding="utf-8")
+    assert 'transport="streamable-http"' in source, (
+        "server.py 가 streamable-http 로 안 띄웁니다"
+    )
+    assert "transport_security=" in source, (
+        "server.py 가 transport_security 를 안 넘깁니다 — 넘기지 않으면 localhost 밖에서"
+        " Host·Origin 검사가 통째로 꺼집니다"
+    )
+
     for rel in (
         "mcp_server/run_mcp.ps1",
         "scripts/ci/run_mcp_template.ps1",
         "scripts/deploy/service.ps1",
     ):
         text = (root / rel).read_text(encoding="utf-8-sig")
-        assert "transport='streamable-http'" in text, (
-            f"{rel} 이 streamable-http 로 안 띄웁니다"
+        #: 주석은 뺀다 — 「전에는 이렇게 적었다」 라고 **설명하는** 줄까지 잡으면, 왜
+        #: 그러면 안 되는지를 적어 둘 수가 없게 된다(`.env.example` 과 같은 방식).
+        code = "\n".join(
+            one for one in text.splitlines() if not one.lstrip().startswith("#")
+        )
+        assert "server.mcp.run(" not in code, (
+            f"{rel} 이 전송·바인딩을 제가 정합니다 — server.py 의 main() 을 지나게 하세요"
         )
         assert "transport='http'" not in text, (
             f"{rel} 이 fastmcp 의 전송 이름 'http' 를 씁니다"
@@ -145,30 +161,41 @@ def test_배포_스크립트가_개발용과_같은_전송으로_MCP_를_띄운�
 
 
 def test_MCP_설정은_개발도_운영도_backend_env_에서_읽는다() -> None:
-    """`MCP_PORT`·`MCP_HOST` 는 **띄우는 스크립트 셋이 같은 파일에서** 읽어야 한다.
+    """`MCP_PORT`·`MCP_HOST`·`MCP_ALLOWED_HOSTS` 는 **셋이 같은 파일에서** 읽어야 한다.
 
-    운영(service.ps1)만 이 두 키를 읽고 개발(run_mcp.ps1)은 무시하던 때가 있었다 —
+    운영(service.ps1)만 이 키를 읽고 개발(run_mcp.ps1)은 무시하던 때가 있었다 —
     `.env` 에 적어 둔 포트가 개발에서만 안 듣는 것은, 도구가 실패하고 나서야 드러나고
     그때 원인이 「내가 적은 값이 안 읽힌다」 라 찾는 데 오래 걸린다. 셋이 같은 키를
     보는지, 그리고 `.env.example` 이 그 키를 알려 주는지 여기서 본다.
+
+    `server.py` 도 같은 파일을 직접 읽는다(`_load_env_defaults`) — 서비스는 스크립트를
+    안 거치므로, 그러지 않으면 등록할 때 박은 값이 굳어 `.env` 를 고쳐도 안 바뀐다.
     """
     root = SERVER.parents[1]
+    keys = ("MCP_PORT", "MCP_HOST", "MCP_ALLOWED_HOSTS")
     for rel in (
         "mcp_server/run_mcp.ps1",
         "scripts/ci/run_mcp_template.ps1",
         "scripts/deploy/service.ps1",
     ):
         text = (root / rel).read_text(encoding="utf-8-sig")
-        for key in ("MCP_PORT", "MCP_HOST"):
+        for key in keys:
             assert key in text, f"{rel} 이 {key} 를 안 읽습니다 — 개발·운영이 갈립니다"
 
+    source = SERVER.read_text(encoding="utf-8")
+    for key in keys:
+        assert key in source, (
+            f"server.py 가 {key} 를 안 읽습니다 — 서비스로 띄우면 스크립트를 안 거칩니다"
+        )
+
     example = (root / "backend" / ".env.example").read_text(encoding="utf-8-sig")
-    for key in ("MCP_PORT", "MCP_HOST"):
+    for key in keys:
         assert f"{key}=" in example, (
             f".env.example 에 {key} 가 없습니다 — 이 파일만 보고 설정하는 사람은"
             f" 그 키의 존재를 모릅니다"
         )
-    #: 서버 주소는 스크립트가 PORT 로 계산한다. 두 군데 적으면 언젠가 한쪽만 고친다.
+    #: 서버 주소는 `PORT`·`APP_ENV` 로 **계산한다**(개발은 PORT+1). 두 군데 적으면
+    #: 언젠가 한쪽만 고치고, 그때 도구가 전부 「백엔드에 닿지 못했습니다」 로 실패한다.
     #: 주석으로 「여기 적지 않는다」 라고 말하는 것은 괜찮다 — 값을 주는 줄만 막는다.
     assigned = [
         one.split("=", 1)[0].strip()
@@ -176,8 +203,8 @@ def test_MCP_설정은_개발도_운영도_backend_env_에서_읽는다() -> Non
         if "=" in one and not one.lstrip().startswith("#")
     ]
     assert "TESTSCOPE_API_BASE" not in assigned, (
-        ".env.example 이 TESTSCOPE_API_BASE 에 값을 줍니다 — mcp_server/server.py 는"
-        " .env 를 안 읽으므로 그 값은 효과가 없고, 주소가 두 군데로 갈립니다"
+        ".env.example 이 TESTSCOPE_API_BASE 에 값을 줍니다 — 주소는 PORT·APP_ENV 로"
+        " 계산하는 것이라, 적어 두면 두 군데로 갈립니다"
     )
 
 

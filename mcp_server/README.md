@@ -18,10 +18,54 @@ MCP SDK 가 언제든 프레임워크 판을 올릴 수 있고, 그때 앱이 �
 | `PORT`·`APP_ENV` | 백엔드 주소를 계산한다(개발은 `PORT`+1, 운영은 `PORT`) | 8020 · development |
 | `MCP_PORT` | 이 서버가 들을 포트 | 8022 (백엔드 +2) |
 | `MCP_HOST` | 들을 자리. 밖에 열려면 `0.0.0.0` | 127.0.0.1 |
+| `MCP_ALLOWED_HOSTS` | 밖에 열 때 허용할 Host. **비면 기동을 거절한다** | (비어 있음) |
 
 한 번만 다르게 띄우려면 인자가 이긴다 — `-ApiBase 'http://…/api'`, `-Port 8032`,
-`-BindHost 0.0.0.0`. `TESTSCOPE_API_BASE` 같은 `TESTSCOPE_*` 는 `.env` 에 적어도
-안 읽힌다(서버는 프로세스 환경변수만 본다) — 띄우는 스크립트가 넣어 준다.
+`-BindHost 0.0.0.0`, `-AllowedHosts '10.240.25.85:8022'`. `TESTSCOPE_API_BASE` 같은
+`TESTSCOPE_*` 를 `.env` 에 적지는 않는다 — 주소는 `PORT`·`APP_ENV` 로 계산한다.
+
+띄우는 길 셋(개발 `run_mcp.ps1` · 배포판 `run_mcp.ps1` · 서비스 정의)이 전부
+`server.py` 의 `main()` 을 지난다. 전에는 셋이 각자 전송·바인딩을 적어서, 한 곳만
+고치면 갈라졌다.
+
+## 밖에 열기 — 사람마다 제 연결로
+
+**허용 Host 없이는 안 연다.** 공식 SDK 는 듣는 자리가 localhost 일 때만 DNS rebinding
+보호를 저절로 켜고, 그 밖이면 설정이 없는 채로 돈다 — `MCP_HOST` 를 `0.0.0.0` 으로
+바꾸는 것만으로 **Host·Origin 검사가 조용히 사라진다.** 실측(2026-09-28, 같은 서버에서
+바인딩만 바꿈):
+
+    MCP_HOST=127.0.0.1   Host: evil.example → 421   Origin: http://evil… → 403
+    MCP_HOST=0.0.0.0     Host: evil.example → 200   Origin: http://evil… → 200
+
+그래서 `MCP_HOST` 가 localhost 가 아닌데 `MCP_ALLOWED_HOSTS` 가 비어 있으면 **기동을
+거절한다**(판정은 `bind.py`, 시험은 `backend/tests/unit/test_mcp_bind.py`).
+
+서버 쪽 `backend\.env` 에 두 줄:
+
+```
+MCP_HOST=0.0.0.0
+MCP_ALLOWED_HOSTS=10.240.25.85:8022,127.0.0.1:8022
+```
+
+**사람들이 등록에 적는 주소를 포트까지 그대로** 적는다. 서버는 요청의 Host 헤더와 이
+목록을 글자 그대로 견준다 — 허용에 `127.0.0.1:8022` 만 있으면 같은 서버라도
+`localhost:8022` 로 들어온 요청은 421 이다. 와일드카드는 `호스트:*`(포트 자리)뿐이다.
+
+그다음은 **사람마다 제 토큰으로** 붙는다. 서버는 만능 토큰을 안 두므로, 쓰는 사람 수만큼
+연결이 생겨도 권한은 각자의 것이다:
+
+```
+claude mcp add --transport http testscope http://10.240.25.85:8022/mcp \
+  --header 'Authorization: Bearer <내 개인 토큰>'
+```
+
+토큰은 각자 화면의 「내 정보 → 토큰」 에서 발급한다. **토큰은 클라이언트 설정 파일에
+평문으로 남는다** — MCP 클라이언트 공통 성질이라 막을 수 없으니 수명을 짧게 주고, 사람이
+바뀌거나 PC 를 옮기면 그 자리에서 폐기한다.
+
+전송은 평문 HTTP 다. 사내망 밖으로 낼 것이면 앞에 TLS 리버스 프록시를 두고, 그 프록시가
+보내는 Host 를 `MCP_ALLOWED_HOSTS` 에 적는다.
 
 ## 자격
 

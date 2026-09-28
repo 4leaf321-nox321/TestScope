@@ -212,6 +212,30 @@ if ($existing) {
     }
 }
 
+# --- 8-a. MCP 포트 ------------------------------------------------------------
+# **밖에 열기로 한 경우에만 연다.** MCP 는 기본이 127.0.0.1 이라 평소에는 인바운드가
+# 필요 없다 — 늘 열어 두면 「기본값은 안전하다」 가 거짓이 된다. `.env` 의 MCP_HOST 가
+# localhost 가 아닐 때만, 그 포트를 연다.
+$mcpHostLine = Select-String -Path $envFile -Pattern '^\s*MCP_HOST\s*=\s*(\S+)' -ErrorAction SilentlyContinue | Select-Object -First 1
+$mcpHostValue = if ($mcpHostLine) { $mcpHostLine.Matches[0].Groups[1].Value.Trim('"').Trim("'") } else { '' }
+if ($mcpHostValue -and $mcpHostValue -ne '127.0.0.1' -and $mcpHostValue -ne 'localhost') {
+    $mcpPortLine = Select-String -Path $envFile -Pattern '^\s*MCP_PORT\s*=\s*(\d+)' -ErrorAction SilentlyContinue | Select-Object -First 1
+    $mcpPortValue = if ($mcpPortLine) { $mcpPortLine.Matches[0].Groups[1].Value } else { '8022' }
+    $mcpRule = "TestScope MCP $mcpPortValue"
+    if (Get-NetFirewallRule -DisplayName $mcpRule -ErrorAction SilentlyContinue) {
+        Write-Log "방화벽 규칙이 이미 있습니다: $mcpRule"
+    } else {
+        try {
+            New-NetFirewallRule -DisplayName $mcpRule -Direction Inbound -Action Allow `
+                -Protocol TCP -LocalPort $mcpPortValue -ErrorAction Stop | Out-Null
+            Write-Log "방화벽 열기: TCP $mcpPortValue (MCP)"
+        } catch {
+            Write-Warning "MCP 방화벽 규칙을 만들지 못했습니다(관리자 권한 필요)."
+            Write-Warning "  New-NetFirewallRule -DisplayName '$mcpRule' -Direction Inbound -Action Allow -Protocol TCP -LocalPort $mcpPortValue"
+        }
+    }
+}
+
 # --- 8-b. pgvector (선택) -------------------------------------------------------
 # 의미 검색의 부품이다. **없어도 앱은 돈다** — 검색이 이름·별칭으로만 답할 뿐이다. DB 가 이
 # PC 에 있고 패키지에 그 판의 산출물이 있으면 넣는다(관리자 권한이 필요한 자리라 실패해도

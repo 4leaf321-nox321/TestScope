@@ -15,6 +15,7 @@
     PORT=8020            ← 백엔드 포트. MCP 가 이 값으로 API 주소를 맞춘다
     MCP_PORT=8022        ← 이 서버가 들을 포트 (기본 8022 — 백엔드 +2)
     MCP_HOST=127.0.0.1   ← 밖에 열려면 0.0.0.0
+    MCP_ALLOWED_HOSTS=   ← 밖에 열 때 **필수**. 없으면 서버가 기동을 거절한다
 
 **백엔드와 다른 가상환경을 쓴다.** MCP SDK 가 언제든 프레임워크 판을 올릴 수 있고,
 그때 앱이 인질이 되면 안 된다. `_venvs\mcp_server` 는 deploy.ps1 이 만든다.
@@ -54,6 +55,7 @@ $mcpPort = Read-EnvValue 'MCP_PORT'
 if (-not $mcpPort) { $mcpPort = '8022' }
 $mcpHost = Read-EnvValue 'MCP_HOST'
 if (-not $mcpHost) { $mcpHost = '127.0.0.1' }
+$mcpAllowed = Read-EnvValue 'MCP_ALLOWED_HOSTS'
 
 # 백엔드가 살아 있는지 먼저 본다. 안 떠 있으면 도구가 전부 실패하는데, 그 사실은
 # 도구를 불러야 드러나므로 여기서 말해 준다.
@@ -74,13 +76,17 @@ if ($owner) {
 
 Write-Host "MCP ${mcpHost}:${mcpPort} — 등록 주소 http://<서버>:$mcpPort/mcp"
 Write-Host '개인 토큰은 화면의 「내 정보 → 토큰」 에서 발급합니다(범위: read · catalog:write).'
+if ($mcpHost -ne '127.0.0.1' -and $mcpHost -ne 'localhost' -and -not $mcpAllowed) {
+    Write-Warning 'MCP_HOST 를 밖으로 열었는데 MCP_ALLOWED_HOSTS 가 없습니다 — 서버가 기동을 거절합니다.'
+}
 
 Push-Location $serverDir
 try {
-    # 공식 mcp SDK(2.x)다 — 전송 이름은 'streamable-http' 이고 host·port 는 인자로 받는다.
-    # 'http' 와 FASTMCP_* 환경변수는 다른 패키지(fastmcp)의 것이라 여기서는 통하지 않는다
-    # (개발용 mcp_server\run_mcp.ps1 과 같은 호출 — 둘이 갈리면 배포본만 조용히 안 뜬다).
-    & $venvPython -c "import server; server.mcp.run(transport='streamable-http', host='$mcpHost', port=$mcpPort)"
+    # **server.py 의 main() 이 전송·바인딩·허용 Host 를 정한다.** 개발용
+    # mcp_server\run_mcp.ps1 과 서비스 정의도 같은 자리를 지난다 — 셋이 각자 적으면
+    # 한 곳만 고쳤을 때 갈라지고, 갈라진 쪽만 조용히 보호 없이 뜬다.
+    # 설정은 server.py 가 backend\.env 에서 직접 읽는다(환경변수가 비어 있을 때만).
+    & $venvPython server.py
 } finally {
     Pop-Location
 }
