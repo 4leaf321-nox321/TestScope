@@ -9,7 +9,7 @@
  */
 
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Download, FileInput, Plus, Trash2 } from 'lucide-react'
+import { Download, FileInput, Plus, Trash2 } from 'lucide-react'
 
 import { ApiError } from '@/shared/api/client'
 import { ErrorNotice } from '@/shared/components/ErrorNotice'
@@ -17,17 +17,10 @@ import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import { Label } from '@/shared/components/ui/label'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/shared/components/ui/table'
 import { useResource } from '@/shared/hooks/useResource'
 import { useBackFromReference } from '@/shared/hooks/useBackFromReference'
 import { DeleteWorkspaceDialog } from '@/modules/workspaces/DeleteWorkspaceDialog'
+import { WorkspaceTree } from '@/modules/workspaces/WorkspaceTree'
 import { ImportWorkspacesDialog } from '@/modules/workspaces/ImportWorkspacesDialog'
 import { workspaceApi } from '@/modules/workspaces/api'
 import type { Workspace } from '@/modules/workspaces/api'
@@ -127,106 +120,69 @@ export default function WorkspacesAdminPage() {
 
       <ErrorNotice error={error ?? list.error} />
 
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>부서</TableHead>
-            <TableHead>주소</TableHead>
-            <TableHead className="text-right">멤버</TableHead>
-            <TableHead className="text-right">장비</TableHead>
-            <TableHead>공개</TableHead>
-            <TableHead>신뢰성 시험</TableHead>
-            <TableHead>상태</TableHead>
-            <TableHead className="text-right">순서</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {(list.data ?? []).map((one) => (
-            <TableRow key={one.id}>
-              <TableCell>
-                {/* 깊이만큼 들여쓴다 — 경로 문자열을 그대로 쓰면 줄이 길어져 표가 접힌다. */}
-                <span style={{ paddingLeft: `${one.depth * 16}px` }}>{one.name}</span>
-              </TableCell>
-              <TableCell className="font-mono text-xs">{one.slug}</TableCell>
-              <TableCell className="text-right">{one.member_count}</TableCell>
-              <TableCell className="text-right">{one.equipment_count}</TableCell>
-              <TableCell>
-                {/* **가리는 쪽이 예외다.** 기본은 전원 공개 — 이 시스템의 물음이
-                    부서를 가로지르기 때문이다. */}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() =>
-                    act(() => workspaceApi.update(one.slug, { restricted: !one.restricted }))
+      {/* **표가 아니라 트리다.** 열이 여섯이나 서 있으면 들여쓰기가 묻혀 상하 관계가
+          없는 것처럼 보인다 — 실제로 그렇게 보인다는 말을 들었다(2026-09-28). 줄기를
+          그리고, 줄마다 「↳ 상위」 를 적고, 끌어다 놓아 옮길 수 있게 한다. */}
+      <p className="text-muted-foreground text-xs">
+        손잡이를 끌어 옮깁니다 — <strong>줄 위의 얇은 띠</strong> 에 놓으면 그 부서의 앞 형제가
+        되고, <strong>줄 자체</strong> 에 놓으면 그 부서의 마지막 자식이 됩니다.
+      </p>
+
+      <div className="rounded-md border">
+        <WorkspaceTree
+          rows={list.data ?? []}
+          onMove={(plan) => act(() => workspaceApi.applyTree(plan))}
+          renderActions={(one) => (
+            <div className="flex shrink-0 items-center gap-1">
+              {/* **가리는 쪽이 예외다.** 기본은 전원 공개 — 이 시스템의 물음이
+                  부서를 가로지르기 때문이다. */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() =>
+                  act(() => workspaceApi.update(one.slug, { restricted: !one.restricted }))
+                }
+              >
+                {one.restricted ? '멤버만' : '전원'}
+              </Button>
+              {/* 체크한 부서가 사이드바 「신뢰성 시험」 아래에 선다 — 조직도를 통째로
+                  메뉴에 펼치지 않는다. */}
+              <label className="flex cursor-pointer items-center gap-1 text-xs">
+                <input
+                  type="checkbox"
+                  checked={one.reliability_listed}
+                  aria-label={`${one.name} 신뢰성 시험 메뉴 표시`}
+                  onChange={(event) =>
+                    act(() =>
+                      workspaceApi.update(one.slug, {
+                        reliability_listed: event.target.checked,
+                      }),
+                    )
                   }
-                >
-                  {one.restricted ? '멤버만' : '전원'}
-                </Button>
-              </TableCell>
-              <TableCell>
-                {/* 체크한 부서가 사이드바 「신뢰성 시험」 아래에 선다 — 부서마다 그
-                    부서의 신뢰성 시험 화면 하나. 조직도를 통째로 메뉴에 펼치지 않는다. */}
-                <label className="flex cursor-pointer items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={one.reliability_listed}
-                    aria-label={`${one.name} 신뢰성 시험 메뉴 표시`}
-                    onChange={(event) =>
-                      act(() =>
-                        workspaceApi.update(one.slug, {
-                          reliability_listed: event.target.checked,
-                        }),
-                      )
-                    }
-                  />
-                  <span className="text-muted-foreground text-xs">
-                    {one.reliability_listed ? '메뉴 표시' : '—'}
-                  </span>
-                </label>
-              </TableCell>
-              <TableCell>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() =>
-                    act(() => workspaceApi.update(one.slug, { is_active: !one.is_active }))
-                  }
-                >
-                  {one.is_active ? '사용' : '보관'}
-                </Button>
-              </TableCell>
-              <TableCell className="text-right">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label="위로"
-                  onClick={() => act(() => workspaceApi.reorder(one.slug, 'up'))}
-                >
-                  <ChevronUp className="size-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label="아래로"
-                  onClick={() => act(() => workspaceApi.reorder(one.slug, 'down'))}
-                >
-                  <ChevronDown className="size-4" />
-                </Button>
-                {/* **지우기는 보관 옆이 아니라 끝에 둔다.** 매일 누르는 단추 옆에 두면
-                    언젠가 잘못 눌린다 — 그리고 이것은 되돌릴 수 없다. */}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  aria-label={`${one.name} 지우기`}
-                  onClick={() => setRemoving(one)}
-                >
-                  <Trash2 className="text-destructive size-4" />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+                />
+                <span className="text-muted-foreground">메뉴</span>
+              </label>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() =>
+                  act(() => workspaceApi.update(one.slug, { is_active: !one.is_active }))
+                }
+              >
+                {one.is_active ? '사용' : '보관'}
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label={`${one.name} 지우기`}
+                onClick={() => setRemoving(one)}
+              >
+                <Trash2 className="text-destructive size-4" />
+              </Button>
+            </div>
+          )}
+        />
+      </div>
 
       <DeleteWorkspaceDialog
         target={removing}

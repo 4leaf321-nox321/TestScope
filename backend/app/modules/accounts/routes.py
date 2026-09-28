@@ -20,6 +20,7 @@ from app.modules.accounts.schemas import (
     ApproveRequest,
     CreateAccountRequest,
     HomeWorkspaceRequest,
+    MembershipsRequest,
     RejectRequest,
     SignupRequest,
     SystemAdminRequest,
@@ -148,6 +149,24 @@ def set_home_workspace(
     """대표 소속 — 이 사람이 로그인해서 처음 서는 부서."""
     user = services.set_home_workspace(
         db, user_id=account_id, workspace_slug=payload.workspace_slug, actor=admin
+    )
+    return services.account_out(db, user)
+
+
+@router.put("/{account_id}/memberships", response_model=AccountOut)
+def set_memberships(
+    account_id: uuid.UUID,
+    payload: MembershipsRequest,
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> AccountOut:
+    """소속을 **한 번에** 바꾼다 — 부서 이동이 두 걸음으로 갈라지지 않게.
+
+    준 목록이 곧 소속이 된다(있던 것은 지운다). 대표 소속이 목록에서 빠지면 남은 것 중
+    첫 번째로 따라가고, 목록이 비면 함께 비워진다.
+    """
+    user = services.set_memberships(
+        db, user_id=account_id, items=[one.model_dump() for one in payload.items], actor=admin
     )
     return services.account_out(db, user)
 

@@ -85,6 +85,25 @@ class HomeWorkspaceRequest(Request):
     workspace_slug: str = Field(min_length=1, max_length=50)
 
 
+class MembershipItem(Request):
+    """소속 한 줄 — 어느 부서에 어떤 역할로."""
+
+    workspace_slug: str
+    role: str = "member"
+
+
+class MembershipsRequest(Request):
+    """이 사람의 **소속을 통째로** 정한다 — 있던 것은 지우고 준 것만 남긴다.
+
+    **떼기와 붙이기를 따로 두지 않는 이유**: 부서를 옮기는 일은 두 걸음인데, 두 번에
+    나누면 그 사이에 아무 데도 안 속한 사람이 남고 두 번째가 실패하면 그 상태로 굳는다.
+
+    비우는 것은 **된다** — 내보내는 일이 실제로 있다. 그때 대표 소속도 함께 비워진다.
+    """
+
+    items: list[MembershipItem] = Field(default_factory=list, max_length=50)
+
+
 class SystemAdminRequest(Request):
     """시스템 관리자 권한을 주거나 뺀다.
 

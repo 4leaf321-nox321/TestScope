@@ -32,6 +32,7 @@ from app.modules.workspaces.schemas import (
     WorkspaceReassignOut,
     WorkspaceReferenceOut,
     WorkspaceReorderRequest,
+    WorkspaceTreeRequest,
     WorkspaceUpdateRequest,
 )
 from app.shared.auth import current_user, require_system_admin
@@ -212,6 +213,23 @@ def reorder_workspace(
 ) -> WorkspaceOut:
     workspace = services.reorder(db, slug=slug, direction=payload.direction)
     return services.workspace_out(db, workspace, admin)
+
+
+@router.put("/tree", response_model=list[WorkspaceOut])
+def apply_tree(
+    payload: WorkspaceTreeRequest,
+    admin: User = Depends(require_system_admin),
+    db: Session = Depends(get_db),
+) -> list[WorkspaceOut]:
+    """조직도를 **한 번에** 고친다 — 끌어다 놓기가 만든 자리 그대로.
+
+    보낸 줄만 바뀐다(다른 부서는 그대로). 고리가 생기는 자리는 거절한다.
+    """
+    services.apply_tree(db, items=[one.model_dump() for one in payload.items], actor=admin)
+    # 바뀐 뒤의 **전체 조직도**를 돌려준다 — 화면이 다시 받아 오면 그 사이에 순서가
+    # 어긋난 채로 한 번 그려진다.
+    rows: list[WorkspaceOut] = services.list_for(db, admin, all_workspaces=True)
+    return rows
 
 
 @router.get("/{slug}/references", response_model=list[WorkspaceReferenceOut])

@@ -476,3 +476,58 @@ def test_미리보기_숫자가_실제로_옮겨지는_것과_같다(
     assert merged is not None
     assert merged.changes["moved"].get("workspaces") == planned["workspaces"]
     assert "workspace_members" not in merged.changes["moved"]
+
+
+def test_조직도를_한_번에_고친다(client: TestClient, admin: Signed, db: Session) -> None:
+    """끌어 놓으면 **형제들의 순서가 함께** 바뀐다 — 줄마다 따로 보내면 그중 하나가
+    실패했을 때 순서가 반쯤 섞인 채로 남고, 그 상태는 새로 고쳐야 드러난다.
+    """
+    top = _team(client, admin)
+    first = _team(client, admin, parent=top)
+    second = _team(client, admin, parent=top)
+    loose = _team(client, admin)
+
+    done = client.put(
+        "/api/workspaces/tree",
+        json={
+            "items": [
+                {"slug": loose, "parent_slug": top, "sort_order": 0},
+                {"slug": first, "parent_slug": top, "sort_order": 1},
+                {"slug": second, "parent_slug": top, "sort_order": 2},
+            ]
+        },
+        headers=admin.headers,
+    )
+    assert done.status_code == 200, done.text
+
+    rows = {row.slug: row for row in db.scalars(select(Workspace))}
+    for slug in (loose, first, second):
+        db.refresh(rows[slug])
+    assert rows[loose].parent_id == rows[top].id
+    assert [rows[loose].sort_order, rows[first].sort_order, rows[second].sort_order] == [
+        0,
+        1,
+        2,
+    ]
+
+    # **고리는 막는다** — 제 하위 아래로 옮기면 그 가지가 화면에서 통째로 사라진다.
+    looped = client.put(
+        "/api/workspaces/tree",
+        json={"items": [{"slug": top, "parent_slug": first, "sort_order": 0}]},
+        headers=admin.headers,
+    )
+    assert looped.status_code == 400, looped.text
+    assert looped.json()["error"]["code"] == "TSC-WORKSPACES-0005"
+
+    # 보낸 줄로 **함께 만들어지는** 고리도 막는다(한 요청 안에서 둘이 서로를 가리킨다).
+    pair = client.put(
+        "/api/workspaces/tree",
+        json={
+            "items": [
+                {"slug": top, "parent_slug": loose, "sort_order": 0},
+                {"slug": loose, "parent_slug": top, "sort_order": 0},
+            ]
+        },
+        headers=admin.headers,
+    )
+    assert pair.status_code == 400, pair.text

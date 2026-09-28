@@ -727,6 +727,60 @@
         }
       }
     },
+    "/api/accounts/{account_id}/memberships": {
+      "put": {
+        "tags": [
+          "accounts"
+        ],
+        "summary": "Set Memberships",
+        "description": "소속을 **한 번에** 바꾼다 — 부서 이동이 두 걸음으로 갈라지지 않게.\n\n준 목록이 곧 소속이 된다(있던 것은 지운다). 대표 소속이 목록에서 빠지면 남은 것 중\n첫 번째로 따라가고, 목록이 비면 함께 비워진다.",
+        "operationId": "set_memberships_api_accounts__account_id__memberships_put",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Account Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MembershipsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/accounts/{account_id}/system-admin": {
       "post": {
         "tags": [
@@ -16075,6 +16129,42 @@
           "role"
         ],
         "title": "MemberRoleRequest"
+      },
+      "MembershipItem": {
+        "properties": {
+          "workspace_slug": {
+            "type": "string",
+            "title": "Workspace Slug"
+          },
+          "role": {
+            "type": "string",
+            "title": "Role",
+            "default": "member"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "workspace_slug"
+        ],
+        "title": "MembershipItem",
+        "description": "소속 한 줄 — 어느 부서에 어떤 역할로."
+      },
+      "MembershipsRequest": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MembershipItem"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Items"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "MembershipsRequest",
+        "description": "이 사람의 **소속을 통째로** 정한다 — 있던 것은 지우고 준 것만 남긴다.\n\n**떼기와 붙이기를 따로 두지 않는 이유**: 부서를 옮기는 일은 두 걸음인데, 두 번에\n나누면 그 사이에 아무 데도 안 속한 사람이 남고 두 번째가 실패하면 그 상태로 굳는다.\n\n비우는 것은 **된다** — 내보내는 일이 실제로 있다. 그때 대표 소속도 함께 비워진다."
       },
       "MethodCreateRequest": {
         "properties": {

@@ -8,6 +8,7 @@ from __future__ import annotations
 import secrets
 import uuid
 from datetime import UTC, datetime
+from typing import Any
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -16,7 +17,7 @@ from app.modules.accounts.models import USER_STATUSES, User
 from app.modules.accounts.schemas import AccountOut
 from app.modules.auth import security
 from app.modules.notifications import rules
-from app.modules.workspaces.models import Workspace, WorkspaceMember
+from app.modules.workspaces.models import WORKSPACE_ROLES, Workspace, WorkspaceMember
 from app.shared import audit
 from app.shared.errors import AppError, Conflict, NotFound
 from app.shared.permissions import workspace_by_slug
@@ -342,6 +343,76 @@ def set_home_workspace(
         target_label=user.email,
         workspace_id=workspace.id,
         changes={"home_workspace": {"before": str(before), "after": workspace.slug}},
+    )
+    db.commit()
+    db.refresh(user)
+    return user
+
+
+def set_memberships(
+    db: Session, *, user_id: uuid.UUID, items: list[dict[str, Any]], actor: User
+) -> User:
+    """이 사람의 **소속을 통째로 정한다** — 있던 것은 지우고 준 것만 남긴다.
+
+    부서를 옮기는 일은 「떼고 붙이기」 두 걸음인데, 두 번에 나누면 그 사이에 **아무 데도
+    안 속한 사람**이 남는다. 두 번째가 실패하면 그 상태로 굳는다 — 그 사람은 로그인해도
+    갈 곳이 없고, 무엇이 잘못됐는지도 모른다. 그래서 한 번에 바꾼다.
+
+    **대표 소속은 따라간다.** 소속에서 뺀 부서가 대표였으면 남은 것 중 첫 번째로 옮기고,
+    남은 것이 없으면 비운다 — 소속이 아닌 부서를 대표로 두면 로그인하자마자 403 이 나고,
+    사람은 그것을 「시스템이 고장났다」 로 읽는다(`set_home_workspace` 와 같은 판단).
+    """
+    user = get_account(db, user_id)
+    wanted: dict[uuid.UUID, str] = {}
+    order: list[Workspace] = []
+    for one in items:
+        workspace = workspace_by_slug(db, str(one["workspace_slug"]))
+        role = str(one.get("role") or "member")
+        if role not in WORKSPACE_ROLES:
+            raise AppError(
+                "TSC-ACCOUNTS-0010",
+                f"역할은 {' · '.join(WORKSPACE_ROLES)} 중 하나입니다: {role}",
+                status=422,
+            )
+        if workspace.id not in wanted:
+            order.append(workspace)
+        wanted[workspace.id] = role
+
+    rows = {
+        row.workspace_id: row
+        for row in db.scalars(
+            select(WorkspaceMember).where(WorkspaceMember.user_id == user.id)
+        )
+    }
+    before = sorted(
+        one.slug for one in db.scalars(select(Workspace).where(Workspace.id.in_(rows.keys())))
+    )
+    for workspace_id, role in wanted.items():
+        row = rows.get(workspace_id)
+        if row is None:
+            db.add(WorkspaceMember(workspace_id=workspace_id, user_id=user.id, role=role))
+        else:
+            row.role = role
+    for workspace_id, row in rows.items():
+        if workspace_id not in wanted:
+            db.delete(row)
+
+    if user.home_workspace_id not in wanted:
+        user.home_workspace_id = order[0].id if order else None
+
+    audit.record(
+        db,
+        action=audit.ACCOUNT_MEMBERSHIPS_CHANGED,
+        actor=actor,
+        target_table="users",
+        target_id=user.id,
+        target_label=user.email,
+        changes={
+            "memberships": {
+                "before": before,
+                "after": sorted(one.slug for one in order),
+            }
+        },
     )
     db.commit()
     db.refresh(user)

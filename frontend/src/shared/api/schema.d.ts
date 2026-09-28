@@ -297,6 +297,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/accounts/{account_id}/memberships": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Set Memberships
+         * @description 소속을 **한 번에** 바꾼다 — 부서 이동이 두 걸음으로 갈라지지 않게.
+         *
+         *     준 목록이 곧 소속이 된다(있던 것은 지운다). 대표 소속이 목록에서 빠지면 남은 것 중
+         *     첫 번째로 따라가고, 목록이 비면 함께 비워진다.
+         */
+        put: operations["set_memberships_api_accounts__account_id__memberships_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/accounts/{account_id}/system-admin": {
         parameters: {
             query?: never;
@@ -5358,6 +5381,32 @@ export interface components {
             /** Role */
             role: string;
         };
+        /**
+         * MembershipItem
+         * @description 소속 한 줄 — 어느 부서에 어떤 역할로.
+         */
+        MembershipItem: {
+            /** Workspace Slug */
+            workspace_slug: string;
+            /**
+             * Role
+             * @default member
+             */
+            role: string;
+        };
+        /**
+         * MembershipsRequest
+         * @description 이 사람의 **소속을 통째로** 정한다 — 있던 것은 지우고 준 것만 남긴다.
+         *
+         *     **떼기와 붙이기를 따로 두지 않는 이유**: 부서를 옮기는 일은 두 걸음인데, 두 번에
+         *     나누면 그 사이에 아무 데도 안 속한 사람이 남고 두 번째가 실패하면 그 상태로 굳는다.
+         *
+         *     비우는 것은 **된다** — 내보내는 일이 실제로 있다. 그때 대표 소속도 함께 비워진다.
+         */
+        MembershipsRequest: {
+            /** Items */
+            items?: components["schemas"]["MembershipItem"][];
+        };
         /** MethodCreateRequest */
         MethodCreateRequest: {
             /** Code */
@@ -8323,6 +8372,41 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["HomeWorkspaceRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_memberships_api_accounts__account_id__memberships_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MembershipsRequest"];
             };
         };
         responses: {

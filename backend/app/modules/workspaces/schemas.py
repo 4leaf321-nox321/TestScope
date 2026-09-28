@@ -74,6 +74,24 @@ class WorkspaceMoveRequest(Request):
     parent_slug: str | None = None
 
 
+class WorkspaceTreeItem(Request):
+    """조직도의 한 줄 — 어느 부서가 누구 아래 몇 번째인가."""
+
+    slug: str
+    parent_slug: str | None = None
+    sort_order: int = 0
+
+
+class WorkspaceTreeRequest(Request):
+    """끌어다 놓아 바뀐 자리를 **한 번에** 보낸다.
+
+    한 부서를 옮기면 형제들의 순서가 함께 바뀐다 — 줄마다 따로 보내면 그중 하나가
+    실패했을 때 순서가 반쯤 섞인 채로 남고, 그 상태는 새로 고쳐야 드러난다.
+    """
+
+    items: list[WorkspaceTreeItem] = Field(min_length=1, max_length=500)
+
+
 class WorkspaceReorderRequest(Request):
     direction: str = Field(pattern=r"^(up|down)$")
 

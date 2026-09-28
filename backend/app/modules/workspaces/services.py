@@ -309,6 +309,63 @@ def reorder(db: Session, *, slug: str, direction: str) -> Workspace:
     return workspace
 
 
+def apply_tree(db: Session, *, items: list[dict[str, Any]], actor: User) -> list[Workspace]:
+    """조직도를 **한 번에** 고친다 — 끌어다 놓기가 만든 자리 그대로.
+
+    끌어 놓으면 옮긴 부서 하나만 바뀌는 것이 아니라 **형제들의 순서가 함께** 바뀐다.
+    줄마다 따로 부르면 그중 하나가 실패했을 때 순서가 반쯤 섞인 채로 남고, 그 상태는
+    화면을 새로 고쳐야 드러난다. 그래서 한 걸음이다.
+
+    **고리는 막는다.** 자기 자신이나 제 하위로 옮기면 그 가지가 트리에서 통째로 사라지고,
+    화면에 안 나오니 되돌릴 수도 없다 — 옮기기 전에 전부 본다(`move` 와 같은 판단).
+    """
+    wanted: list[tuple[Workspace, Workspace | None, int]] = []
+    for one in items:
+        workspace = workspace_by_slug(db, str(one["slug"]))
+        parent_slug = one.get("parent_slug")
+        parent = workspace_by_slug(db, str(parent_slug)) if parent_slug else None
+        wanted.append((workspace, parent, int(one["sort_order"])))
+
+    # **먼저 다 보고 나서 고친다.** 고치면서 보면 앞줄이 바꾼 트리를 뒷줄이 보게 된다.
+    planned = {one.id: (parent.id if parent else None) for one, parent, _ in wanted}
+    for workspace, parent, _ in wanted:
+        if parent is None:
+            continue
+        walker: uuid.UUID | None = parent.id
+        seen: set[uuid.UUID] = set()
+        while walker is not None and walker not in seen:
+            if walker == workspace.id:
+                raise AppError(
+                    "TSC-WORKSPACES-0005",
+                    "자기 자신이나 하위 부서 아래로는 옮길 수 없습니다.",
+                    status=400,
+                )
+            seen.add(walker)
+            found = db.get(Workspace, walker)
+            walker = planned.get(walker, found.parent_id if found else None)
+
+    changed: list[Workspace] = []
+    for workspace, parent, order in wanted:
+        before = (workspace.parent_id, workspace.sort_order)
+        workspace.parent_id = parent.id if parent else None
+        workspace.sort_order = order
+        if before != (workspace.parent_id, workspace.sort_order):
+            changed.append(workspace)
+
+    if changed:
+        audit.record(
+            db,
+            action=audit.WORKSPACE_MOVED,
+            actor=actor,
+            target_table="workspaces",
+            target_id=changed[0].id,
+            target_label=changed[0].name,
+            changes={"moved": [one.slug for one in changed]},
+        )
+    db.commit()
+    return changed
+
+
 @dataclass(frozen=True)
 class Reference:
     table: str

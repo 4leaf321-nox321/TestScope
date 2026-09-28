@@ -43,6 +43,14 @@ export const workspaceApi = {
     api.patch<Workspace>(`/workspaces/${slug}`, body),
   move: (slug: string, parentSlug: string | null) =>
     api.post<Workspace>(`/workspaces/${slug}/move`, { parent_slug: parentSlug }),
+  /**
+   * 끌어다 놓아 바뀐 자리를 **한 번에** 보낸다.
+   *
+   * 한 부서를 옮기면 형제들의 순서가 함께 바뀐다 — 줄마다 따로 보내면 그중 하나가
+   * 실패했을 때 순서가 반쯤 섞인 채로 남고, 그 상태는 새로 고쳐야 드러난다.
+   */
+  applyTree: (items: { slug: string; parent_slug: string | null; sort_order: number }[]) =>
+    api.put<Workspace[]>('/workspaces/tree', { items }),
   reorder: (slug: string, direction: 'up' | 'down') =>
     api.post<Workspace>(`/workspaces/${slug}/reorder`, { direction }),
   /** **누르기 전에 무엇이 딸려 있는지 보여 준다.** */

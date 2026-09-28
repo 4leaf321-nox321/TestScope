@@ -25,6 +25,8 @@ import { useSearchParams } from 'react-router-dom'
 import { useResource } from '@/shared/hooks/useResource'
 import { shownDate } from '@/shared/lib/datetime'
 import { accountApi } from '@/modules/accounts/api'
+import type { Account } from '@/modules/accounts/api'
+import { MembershipsDialog } from '@/modules/accounts/MembershipsDialog'
 
 export default function AccountsAdminPage() {
   // **홈의 「남은 일」 이 `?status=pending` 으로 온다.** 승인 대기가 며칠씩 방치되는
@@ -37,6 +39,8 @@ export default function AccountsAdminPage() {
   const filtered = status === 'pending'
   const summary = useResource(() => accountApi.summary(), [])
   const [error, setError] = useState<ApiError | Error | null>(null)
+  /** 소속을 바꾸려고 연 사람. 창이 목록 전체를 들고 있다가 한 번에 보낸다. */
+  const [moving, setMoving] = useState<Account | null>(null)
   // 임시 비밀번호는 **한 번만** 나온다. 화면이 붙들고 있어야 관리자가 옮겨 적는다.
   const [issued, setIssued] = useState<{ email: string; password: string } | null>(null)
 
@@ -108,8 +112,16 @@ export default function AccountsAdminPage() {
               <TableCell>
                 <StatusBadge kind="account" value={one.status} />
               </TableCell>
-              <TableCell className="text-sm">
-                {one.memberships.join(', ') || one.requested_workspace_slug || '—'}
+              {/* **길면 줄인다.** 부서 이름이 길거나 여럿이면 이 칸이 표를 통째로 밀어
+                  버려서, 오른쪽의 처리 단추가 화면 밖으로 나간다. 전체는 `title` 에 남으므로
+                  마우스를 올리면 보인다. */}
+              <TableCell className="max-w-[16rem] text-sm">
+                <span
+                  className="block truncate"
+                  title={one.memberships.join(', ') || one.requested_workspace_slug || ''}
+                >
+                  {one.memberships.join(', ') || one.requested_workspace_slug || '—'}
+                </span>
               </TableCell>
               <TableCell className="text-sm">
                 {shownDate(one.decided_at ?? one.created_at)}
@@ -150,6 +162,9 @@ export default function AccountsAdminPage() {
                     >
                       비밀번호 초기화
                     </Button>
+                    <Button size="sm" variant="outline" onClick={() => setMoving(one)}>
+                      소속
+                    </Button>
                     <Button
                       size="sm"
                       variant="outline"
@@ -170,6 +185,15 @@ export default function AccountsAdminPage() {
           ))}
         </TableBody>
       </Table>
+
+      <MembershipsDialog
+        account={moving}
+        onClose={() => setMoving(null)}
+        onSaved={() => {
+          setMoving(null)
+          list.reload()
+        }}
+      />
     </div>
   )
 }
