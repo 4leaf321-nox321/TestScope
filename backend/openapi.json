@@ -1321,6 +1321,52 @@
         }
       }
     },
+    "/api/workspaces/tree": {
+      "put": {
+        "tags": [
+          "workspaces"
+        ],
+        "summary": "Apply Tree",
+        "description": "조직도를 **한 번에** 고친다 — 끌어다 놓기가 만든 자리 그대로.\n\n보낸 줄만 바뀐다(다른 부서는 그대로). 고리가 생기는 자리는 거절한다.",
+        "operationId": "apply_tree_api_workspaces_tree_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkspaceTreeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WorkspaceOut"
+                  },
+                  "type": "array",
+                  "title": "Response Apply Tree Api Workspaces Tree Put"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/workspaces/{slug}/references": {
       "get": {
         "tags": [
@@ -22858,6 +22904,57 @@
           "direction"
         ],
         "title": "WorkspaceReorderRequest"
+      },
+      "WorkspaceTreeItem": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "parent_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Slug"
+          },
+          "sort_order": {
+            "type": "integer",
+            "title": "Sort Order",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "slug"
+        ],
+        "title": "WorkspaceTreeItem",
+        "description": "조직도의 한 줄 — 어느 부서가 누구 아래 몇 번째인가."
+      },
+      "WorkspaceTreeRequest": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceTreeItem"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Items"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "title": "WorkspaceTreeRequest",
+        "description": "끌어다 놓아 바뀐 자리를 **한 번에** 보낸다.\n\n한 부서를 옮기면 형제들의 순서가 함께 바뀐다 — 줄마다 따로 보내면 그중 하나가\n실패했을 때 순서가 반쯤 섞인 채로 남고, 그 상태는 새로 고쳐야 드러난다."
       },
       "WorkspaceUpdateRequest": {
         "properties": {

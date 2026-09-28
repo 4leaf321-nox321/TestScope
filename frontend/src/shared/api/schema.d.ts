@@ -522,6 +522,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/workspaces/tree": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Apply Tree
+         * @description 조직도를 **한 번에** 고친다 — 끌어다 놓기가 만든 자리 그대로.
+         *
+         *     보낸 줄만 바뀐다(다른 부서는 그대로). 고리가 생기는 자리는 거절한다.
+         */
+        put: operations["apply_tree_api_workspaces_tree_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/workspaces/{slug}/references": {
         parameters: {
             query?: never;
@@ -7811,6 +7833,32 @@ export interface components {
             /** Direction */
             direction: string;
         };
+        /**
+         * WorkspaceTreeItem
+         * @description 조직도의 한 줄 — 어느 부서가 누구 아래 몇 번째인가.
+         */
+        WorkspaceTreeItem: {
+            /** Slug */
+            slug: string;
+            /** Parent Slug */
+            parent_slug?: string | null;
+            /**
+             * Sort Order
+             * @default 0
+             */
+            sort_order: number;
+        };
+        /**
+         * WorkspaceTreeRequest
+         * @description 끌어다 놓아 바뀐 자리를 **한 번에** 보낸다.
+         *
+         *     한 부서를 옮기면 형제들의 순서가 함께 바뀐다 — 줄마다 따로 보내면 그중 하나가
+         *     실패했을 때 순서가 반쯤 섞인 채로 남고, 그 상태는 새로 고쳐야 드러난다.
+         */
+        WorkspaceTreeRequest: {
+            /** Items */
+            items: components["schemas"]["WorkspaceTreeItem"][];
+        };
         /** WorkspaceUpdateRequest */
         WorkspaceUpdateRequest: {
             /** Name */
@@ -8789,6 +8837,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["WorkspaceOut"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    apply_tree_api_workspaces_tree_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["WorkspaceTreeRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WorkspaceOut"][];
                 };
             };
             /** @description Validation Error */
